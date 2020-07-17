@@ -1,26 +1,17 @@
 ---
 title: Azure Application Insights から SQL へのエクスポート | Microsoft Docs
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: mbullwin
-ms.openlocfilehash: eecd2a50607fa42562a9ae6a7fb950a253655a45
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872703"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536915"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
-この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL データベースに移動する方法を示します。 
+この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL データベースに移動する方法について説明します。 
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。 Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
@@ -41,7 +32,7 @@ ms.locfileid: "65872703"
 ## <a name="create-storage-in-azure"></a>Azure でのストレージの作成
 連続エクスポートでは、常に Azure のストレージ アカウントにデータが出力されるため、まずストレージを作成する必要があります。
 
-1. [Azure Portal][portal] で、サブスクリプションのストレージ アカウントを作成します。
+1. [Azure ポータル][portal]で、サブスクリプションのストレージ アカウントを作成します。
    
     ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します [クラシック] を選択し、[作成] をクリックします。 Storage の名前を指定します。](./media/code-sample-export-sql-stream-analytics/040-store.png)
 2. コンテナーを作成する
@@ -70,10 +61,10 @@ ms.locfileid: "65872703"
     ![イベントの種類の選択](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
-2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、**[参照]**、ストレージ アカウント、**[コンテナー]** の順に選択します。 Visual Studio で、**[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます  (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、 **[参照]** 、ストレージ アカウント、 **[コンテナー]** の順に選択します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
    
     ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -82,7 +73,7 @@ ms.locfileid: "65872703"
 イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL database に移動することです。 それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Database の作成
-再び、[Azure Portal][portal] 内のサブスクリプションから、データを書き込むデータベース (および、まだ存在しない場合は新しいサーバー) を作成します。
+再度、[Azure portal][portal] でサブスクリプションから始め、データを書き込むデータベース (および、まだ保有していない場合は新しいサーバー) を作成します。
 
 ![[新規]、[データ]、[SQL]](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
@@ -146,7 +137,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
-新しいジョブが作成されたら、**[リソースに移動]** を選びます。
+新しいジョブが作成されたら、 **[リソースに移動]** を選びます。
 
 ![Stream Analytics の設定](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
@@ -258,7 +249,7 @@ SQL データベースを指定します。
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
 

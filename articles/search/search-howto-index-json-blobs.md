@@ -1,33 +1,31 @@
 ---
-title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する - Azure Search
-description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
-ms.date: 05/02/2019
+title: JSON BLOB による検索
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 5b04cabe734b97436421595dbb0ab7584efd4911
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/04/2019
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024939"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74533966"
 ---
-# <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
-この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Search インデックスを作成し、JSON BLOB から抽出された既存のテキストとともに読み込みます。 
+# <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
-[ポータル](#json-indexer-portal)、[REST API](#json-indexer-rest)、または [.NET SDK](#json-indexer-dotnet) を使用して、JSON コンテンツのインデックスを作成できます。 すべての方法に共通するのは、JSON ドキュメントが Azure Storage アカウントの BLOB コンテナー内にあるということです。 他の Azure 以外のプラットフォームから JSON ドキュメントをプッシュする方法については、[Azure Search でのデータのインポート](search-what-is-data-import.md)に関する記事をご覧ください。
+この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Cognitive Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Cognitive Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Cognitive Search インデックスを作成し、JSON BLOB から抽出された既存のテキストと共に読み込みます。 
 
-Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュメントまたは JSON エンティティのコレクションのいずれかです。 JSON コレクションの場合、BLOB には整形式の JSON 要素の**配列**が格納されている可能性があります。 BLOB は、改行で区切られた複数の JSON エンティティで構成されていることもあります。 Azure Search の BLOB インデクサーでは、要求で **parsingMode** パラメーターがどのように設定されているかに応じて、そのような構成を解析できます。
+[ポータル](#json-indexer-portal)、[REST API](#json-indexer-rest)、または [.NET SDK](#json-indexer-dotnet) を使用して、JSON コンテンツのインデックスを作成できます。 すべての方法に共通するのは、JSON ドキュメントが Azure Storage アカウントの BLOB コンテナー内にあるということです。 他の Azure 以外のプラットフォームから JSON ドキュメントをプッシュする方法については、[Azure Cognitive Search でのデータのインポート](search-what-is-data-import.md)に関する記事をご覧ください。
 
-現在、すべての JSON 解析モード (`json`、`jsonArray`、`jsonLines`) が一般公開されています。 
+Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュメント (解析モードは `json`) または JSON エンティティのコレクションのいずれかです。 コレクションの場合、BLOB には整形式の JSON 要素 (解析モードは `jsonArray`) の**配列**が格納されている可能性があります。 BLOB は、改行で区切られた複数の JSON エンティティ (解析モードは `jsonLines`) で構成されていることもあります。 要求の **parsingMode** パラメーターによって、出力構造が決定されます。
 
 > [!NOTE]
-> 1 つの Azure BLOB から複数の検索ドキュメントを出力するには、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関するページにあるインデクサー構成の推奨事項に従ってください。
+> 1つの BLOB から複数の検索ドキュメントにインデックスを作成する方法の詳細については、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関する記事を参照してください。
 
 <a name="json-indexer-portal"></a>
 
@@ -35,57 +33,49 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 JSON ドキュメントのインデックスを作成する最も簡単な方法は、[Azure portal](https://portal.azure.com/) のウィザードを使用することです。 Azure BLOB コンテナー内のメタデータを解析することにより、[**データのインポート**](search-import-data-portal.md) ウィザードでは、既定のインデックスを作成し、ソース フィールドをターゲット インデックス フィールドにマップし、1 回の操作でインデックスを読み込むことができます。 ソース データのサイズと複雑さによっては、数分で運用可能なフルテキスト検索インデックスを作成できます。
 
-Azure Search と Azure Cosmos DB の両方で (可能であれば同じリージョン内の) 同じ Azure サブスクリプションを使用することをお勧めします。
+待機時間を短くし、帯域幅の課金を回避するために、Azure Cognitive Search と Azure Storage の両方に同じリージョンまたは場所を使用することをお勧めします。
 
 ### <a name="1---prepare-source-data"></a>1 - ソース データを準備する
 
-1. [Azure portal](https://portal.azure.com/)にサインインします。
-
-1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してデータを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+[Azure portal にサインイン](https://portal.azure.com/)し、データを格納する [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
 **インポート データ** ウィザードでデータを取得するには、ストレージ アカウント名、コンテナー名、アクセス キーが必要です。
 
 ### <a name="2---start-import-data-wizard"></a>2 - データのインポート ウィザードを開始する
 
-Azure Search サービスの [概要] ページで、コマンド バーから、またはストレージ アカウントの左側のナビゲーション ウィンドウの **[Blob service]** セクションで **[Azure Search の追加]** をクリックして、[ウィザードを開始する](search-import-data-portal.md)ことができます。
+検索サービスの [概要] ページでは、コマンド バーから[ウィザードを開始](search-import-data-portal.md)できます。
 
-   ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを起動する")
+   ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
 
 ### <a name="3---set-the-data-source"></a>3 - データ ソースを設定する
 
 **データソース**のページでは、ソースが次のように指定された **Azure BLOB ストレージ**になっている必要があります。
 
-+ **[抽出されるデータ]** は、*[コンテンツとメタデータ]* になっている必要があります。 このオプションを選択すると、ウィザードでインデックス スキーマを推測して、インポート用のフィールドをマップすることができます。
++ **[抽出されるデータ]** は、 *[コンテンツとメタデータ]* になっている必要があります。 このオプションを選択すると、ウィザードでインデックス スキーマを推測して、インポート用のフィールドをマップすることができます。
    
-+ **[解析モード]** を、*[JSON]*、"*[JSON 配列]*"、または "*[JSON 行]*" に設定する必要があります。 
++ **[解析モード]** を、 *[JSON]* 、" *[JSON 配列]* "、または " *[JSON 行]* " に設定する必要があります。 
 
   *[JSON]* は、各 BLOB が 1 つの検索ドキュメントであり、検索結果で独立した項目として表示されることを示します。 
 
-  "*JSON 配列*" は、整形式の JSON データを含む BLOB 用です。この整形式の JSON は、オブジェクトの配列またはオブジェクトの配列であるプロパティに対応し、各要素をスタンドアロンの独立した検索ドキュメントとして使用できます。 BLOB が複雑な場合に、*[JSON 配列]* を選択しないと、BLOB 全体が 1 つのドキュメントとして取り込まれます。
+  "*JSON 配列*" は、整形式の JSON データを含む BLOB 用です。この整形式の JSON は、オブジェクトの配列またはオブジェクトの配列であるプロパティに対応し、各要素をスタンドアロンの独立した検索ドキュメントとして使用できます。 BLOB が複雑な場合に、 *[JSON 配列]* を選択しないと、BLOB 全体が 1 つのドキュメントとして取り込まれます。
 
-  "*[JSON 行]*" は、改行で区切られた複数の JSON 要素で構成されている BLOB 用であり、各エンティティをスタンドアロンの独立した検索ドキュメントとして使用できます。 BLOB が複雑なときに、"*[JSON 行]*" 解析モードが選択されていない場合は、BLOB 全体が単一のドキュメントとして取り込まれます。
+  " *[JSON 行]* " は、改行で区切られた複数の JSON 要素で構成されている BLOB 用であり、各エンティティをスタンドアロンの独立した検索ドキュメントとして使用できます。 BLOB が複雑なときに、" *[JSON 行]* " 解析モードが選択されていない場合は、BLOB 全体が単一のドキュメントとして取り込まれます。
    
 + **[ストレージ コンテナー]** では、使用するストレージ アカウントとコンテナー、またはコンテナーとして解決される接続文字列を指定する必要があります。 接続文字列は、Blob service のポータル ページで取得できます。
 
    ![BLOB データ ソースの定義](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 - ウィザードの [認知検索を追加します] ページをスキップする
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - ウィザードの [コンテンツのエンリッチ] ページをスキップする
 
-JSON ドキュメントをインポートするときは、コグニティブ スキルを追加する必要はありません。 インデックス作成パイプラインに [Cognitive Services APIs と変換を含める](cognitive-search-concept-intro.md)特定のニーズがない限り、このステップをスキップする必要があります。
+コグニティブ スキル (またはエンリッチメント) の追加は、インポート要件ではありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略してください。
 
-このステップをスキップするには、先に次のページに移動します。
-
-   ![コグニティブ検索用の次のページ ボタン](media/search-get-started-portal/next-button-add-cog-search.png)
-
-そのページから、インデックスのカスタマイズに進むことができます。
-
-   ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
+手順をスキップするには、ページの下部にある [次へ] と [スキップ] の青いボタンをクリックします。
 
 ### <a name="5---set-index-attributes"></a>5 - インデックスの属性を設定する
 
 **[インデックス]** ページには、フィールドとデータ型およびインデックスの属性を設定するための一連のチェック ボックスが一覧表示されます。 このウィザードで、メタデータに基づいてソース データをサンプリングすることで、フィールドの一覧を生成できます。 
 
-属性列の上部にあるチェック ボックスをクリックすることで、属性を一括選択できます。 クライアント アプリに返してフル検索処理の対象にする必要があるすべてのフィールドで、**[取得可能]** と **[検索可能]** を選択します。 整数はフルテキスト検索もあいまい検索もできないことに注意してください (数値は逐語的に評価され、多くの場合フィルターで役立ちます)。
+属性列の上部にあるチェック ボックスをクリックすることで、属性を一括選択できます。 クライアント アプリに返してフル検索処理の対象にする必要があるすべてのフィールドで、 **[取得可能]** と **[検索可能]** を選択します。 整数はフルテキスト検索もあいまい検索もできないことに注意してください (数値は逐語的に評価され、多くの場合フィルターで役立ちます)。
 
 詳細については、[インデックス属性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)と[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)の説明を参照してください。 
 
@@ -95,9 +85,9 @@ JSON ドキュメントをインポートするときは、コグニティブ �
 
 ### <a name="6---create-indexer"></a>6 - インデクサーを作成する
 
-完全に指定すると、ウィザードによって検索サービスに 3 つの異なるオブジェクトが作成されます。 データ ソース オブジェクトとインデックス オブジェクトは、Azure Search サービスに名前付きリソースとして保存されます。 最後のステップでは、インデクサー オブジェクトが作成されます。 インデクサーに名前を付けると、インデクサーはスタンドアロン リソースとして存在することができ、同じウィザードのシーケンスで作成されるインデックス オブジェクトやデータ ソース オブジェクトとは独立して、スケジュールを設定したり管理したりできます。
+完全に指定すると、ウィザードによって検索サービスに 3 つの異なるオブジェクトが作成されます。 データ ソース オブジェクトとインデックス オブジェクトは、Azure Cognitive Search サービスに名前付きリソースとして保存されます。 最後のステップでは、インデクサー オブジェクトが作成されます。 インデクサーに名前を付けると、インデクサーはスタンドアロン リソースとして存在することができ、同じウィザードのシーケンスで作成されるインデックス オブジェクトやデータ ソース オブジェクトとは独立して、スケジュールを設定したり管理したりできます。
 
-インデクサーに慣れていないユーザーのために説明すると、"*インデクサー*" とは Azure Search のリソースであり、外部データ ソースで検索可能なコンテンツのクロールを行います。 **データのインポート** ウィザードで出力されるインデクサーでは、JSON データ ソースがクロールされ、検索可能なコンテンツが抽出されて、Azure Search のインデックスにインポートされます。
+インデクサーに慣れていないユーザーのために説明すると、"*インデクサー*" とは Azure Cognitive Search のリソースであり、外部データ ソースで検索可能なコンテンツのクロールを行います。 **データのインポート** ウィザードで出力されるインデクサーでは、JSON データ ソースがクロールされ、検索可能なコンテンツが抽出されて、Azure Cognitive Search のインデックスにインポートされます。
 
    ![BLOB インデクサーの定義](media/search-howto-index-json/import-wizard-json-indexer.png)
 
@@ -114,11 +104,11 @@ JSON ドキュメントをインポートするときは、コグニティブ �
 
 ## <a name="use-rest-apis"></a>REST API の使用
 
-REST API を使用して、Azure Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースを作成し、インデックスを作成し、インデクサーを作成する) で、JSON BLOB データのインデックスを作成できます。 BLOB ストレージからのデータ抽出は、インデクサー作成要求を送信した時点で発生します。 この要求が完了すると、クエリ可能なインデックスが作成されます。 
+REST API を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースを作成し、インデックスを作成し、インデクサーを作成する) で、JSON BLOB データのインデックスを作成できます。 BLOB ストレージからのデータ抽出は、インデクサー作成要求を送信した時点で発生します。 この要求が完了すると、クエリ可能なインデックスが作成されます。 
 
 このセクションの最後にある [REST サンプル コード](#rest-example)で、3 つのオブジェクトをすべて作成する方法を確認できます。 このセクションには、[JSON 解析モード](#parsing-modes)、[単一 BLOB](#parsing-single-blobs)、[JSON 配列](#parsing-arrays)、および[入れ子になった配列](#nested-json-arrays)の詳細も含まれています。
 
-コードベースの JSON インデックスでは、[Postman](search-fiddler.md) と REST API を使用して、次のオブジェクトが作成されます。
+コードベースの JSON インデックスでは、[Postman](search-get-started-postman.md) と REST API を使用して、次のオブジェクトが作成されます。
 
 + [インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -126,42 +116,42 @@ REST API を使用して、Azure Search のすべてのインデクサーに共�
 
 オブジェクトを作成して呼び出す操作は、この順序で実行する必要があります。 ポータルを使用するワークフローとは異なり、コードを使用する方法では、**インデックス作成**要求を通して送信された JSON ドキュメントを受け取るために利用できるインデックスが必要です。
 
-Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュメントまたは JSON "配列" のいずれかです。 Azure Search の BLOB インデクサーでは、要求で **parsingMode** パラメーターを設定する方法に応じて、構成を解析できます。
+Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュメントまたは JSON "配列" のいずれかです。 Azure Cognitive Search の BLOB インデクサーでは、要求で **parsingMode** パラメーターを設定する方法に応じて、構成を解析できます。
 
 | JSON ドキュメント | parsingMode | 説明 | 可用性 |
 |--------------|-------------|--------------|--------------|
-| BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
-| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
-| BLOB あたり複数 | `jsonLines` | 改行によって分離された複数の JSON エンティティ ("配列") を含む BLOB を解析します。各エンティティが独立した Azure Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Cognitive Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Cognitive Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり複数 | `jsonLines` | 改行によって分離された複数の JSON エンティティ ("配列") を含む BLOB を解析します。各エンティティが独立した Azure Cognitive Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
 
-要求ごとに、Azure Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-fiddler.md) を使用して、Azure Search に HTTP 要求を送信できます。
+要求ごとに、Azure Cognitive Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-get-started-postman.md) を使用して、Azure Cognitive Search に HTTP 要求を送信できます。
 
 次の 4 つの値をメモ帳にコピーして、要求に貼り付けることができるようにします。
 
-+ Azure Search サービス名
-+ Azure Search 管理者キー
++ Azure Cognitive Search サービス名
++ Azure Cognitive Search の管理者キー
 + Azure ストレージ アカウント名
 + Azure ストレージ アカウント キー
 
 これらの値は、ポータルで調べることができます。
 
-1. Azure Search のポータル ページで、[概要] ページから Search サービスの URL をコピーします。
+1. Azure Cognitive Search のポータル ページで、[概要] ページから Search サービスの URL をコピーします。
 
 2. 左側のナビゲーション ウィンドウで **[キー]** をクリックし、プライマリまたはセカンダリのいずれかのキー (どちらも働きは同じです) をコピーします。
 
-3. ストレージ アカウントのポータル ページに切り替えます。 左側のナビゲーション ウィンドウで、**[設定]** の **[アクセス キー]** をクリックします。 このページには、アカウント名とキーの両方が表示されます。 ストレージ アカウント名といずれかのキーをメモ帳にコピーします。
+3. ストレージ アカウントのポータル ページに切り替えます。 左側のナビゲーション ウィンドウで、 **[設定]** の **[アクセス キー]** をクリックします。 このページには、アカウント名とキーの両方が表示されます。 ストレージ アカウント名といずれかのキーをメモ帳にコピーします。
 
 ### <a name="2---create-a-data-source"></a>2 - データ ソースを作成する
 
-この手順では、インデクサーで使用されるデータ ソース接続情報を指定します。 データ ソースは、接続情報を保持する Azure Search 内の名前付きオブジェクトです。 `azureblob` というデータ ソースの種類によって、インデクサーによって呼び出されるデータ抽出動作が決まります。 
+この手順では、インデクサーで使用されるデータ ソース接続情報を指定します。 データ ソースは、接続情報を保持する Azure Cognitive Search 内の名前付きオブジェクトです。 `azureblob` というデータ ソースの種類によって、インデクサーによって呼び出されるデータ抽出動作が決まります。 
 
 サービス名、管理者キー、ストレージ アカウント、およびアカウント キーのプレースホルダーを有効な値を置き換えてください。
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
-    api-key: [admin key for Azure Search]
+    api-key: [admin key for Azure Cognitive Search]
 
     {
         "name" : "my-blob-datasource",
@@ -174,13 +164,13 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 インデクサーは、インデックス スキーマとペアになります。 (ポータルではなく) API を使用する場合は、インデクサー操作で指定できるようにインデックスを事前に準備します。
 
-インデックスには、Azure Search の検索可能なコンテンツが格納されます。 インデックスを作成するには、検索エクスペリエンスを構成するドキュメント内のフィールド、属性、およびその他の構造が指定されているスキーマを提供します。 ソースと同じフィールド名とデータ型を持つインデックスを作成すると、インデクサーによってソースのフィールドとインデックスのフィールドが照合されるので、フィールドを明示的にマップする作業をしなくて済みます。
+インデックスには、Azure Cognitive Search の検索可能なコンテンツが格納されます。 インデックスを作成するには、検索エクスペリエンスを構成するドキュメント内のフィールド、属性、およびその他の構造が指定されているスキーマを提供します。 ソースと同じフィールド名とデータ型を持つインデックスを作成すると、インデクサーによってソースのフィールドとインデックスのフィールドが照合されるので、フィールドを明示的にマップする作業をしなくて済みます。
 
 [インデックス作成](https://docs.microsoft.com/rest/api/searchservice/create-index)要求の例を次に示します。 インデックスには、BLOB から抽出されたテキストを格納するための、検索可能な `content` フィールドが含まれます。   
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
-    api-key: [admin key for Azure Search]
+    api-key: [admin key for Azure Cognitive Search]
 
     {
           "name" : "my-target-index",
@@ -193,11 +183,11 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 - インデクサーを構成して実行する
 
-インデックスおよびデータ ソースと同様に、インデクサーも Azure Search サービス上に作成して再利用する名前付きオブジェクトです。 インデクサーを作成するための完全に指定された要求は次のようになります。
+インデックスおよびデータ ソースと同様に、インデクサーも Azure Cognitive Search サービス上に作成して再利用する名前付きオブジェクトです。 インデクサーを作成するための完全に指定された要求は次のようになります。
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
-    api-key: [admin key for Azure Search]
+    api-key: [admin key for Azure Cognitive Search]
 
     {
       "name" : "my-json-indexer",
@@ -207,7 +197,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
       "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
 
-インデクサーの構成は、要求の本文内にあります。 データ ソースと、Azure Search に既に存在する空のターゲット インデックスが必要です。 
+インデクサーの構成は、要求の本文内にあります。 データ ソースと、Azure Cognitive Search に既に存在する空のターゲット インデックスが必要です。 
 
 スケジュールとパラメーターは省略可能です。 これらを省略した場合、インデクサーは、解析モードとして `json` を使用してすぐに実行されます。
 
@@ -224,7 +214,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
-    api-key: [admin key for Azure Search]
+    api-key: [admin key for Azure Cognitive Search]
 
     {
         "name" : "my-blob-datasource",
@@ -240,7 +230,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
-    api-key: [admin key for Azure Search]
+    api-key: [admin key for Azure Cognitive Search]
 
     {
           "name" : "my-target-index",
@@ -255,11 +245,11 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 次の要求は、完全に指定されたインデクサーを示しています。 これには、前の例では省略されていたフィールド マッピングが含まれています。 使用可能な既定値がある限り、"schedule"、"parameters"、および "fieldMappings" は省略できます。 "schedule" を省略すると、インデクサーはすぐに実行されます。 "parsingMode" を省略すると、インデックスでは 既定の "json" が使用されます。
 
-Azure Search 上にインデクサーを作成すると、データのインポートがトリガーされます。 それはすぐに実行されます。スケジュールが指定されている場合は、スケジュールに従って実行されます。
+Azure Cognitive Search 上にインデクサーを作成すると、データのインポートがトリガーされます。 それはすぐに実行されます。スケジュールが指定されている場合は、スケジュールに従って実行されます。
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
-    api-key: [admin key for Azure Search]
+    api-key: [admin key for Azure Cognitive Search]
 
     {
       "name" : "my-json-indexer",
@@ -290,27 +280,27 @@ Azure Search 上にインデクサーを作成すると、データのインポ�
 
 ## <a name="parsing-modes"></a>解析モード
 
-JSON BLOB では、複数の形式を想定できます。 JSON インデクサーの **parsingMode** パラメーターによって、JSON BLOB のコンテンツをどのように解析し、Azure Search インデックスをどのように構成するかが決まります。
+JSON BLOB では、複数の形式を想定できます。 JSON インデクサーの **parsingMode** パラメーターによって、JSON BLOB のコンテンツをどのように解析し、Azure Cognitive Search インデックスをどのように構成するかが決まります。
 
 | parsingMode | 説明 |
 |-------------|-------------|
-| `json`  | 各 BLOB を単一のドキュメントとしてインデックス化します。 既定のプランです。 |
-| `jsonArray` | BLOB が JSON 配列で構成され、配列の各要素を Azure Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
-|`jsonLines` | BLOB が、改行で分離されている複数の JSON エンティティで構成され、各エンティティを Azure Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
+| `json`  | 各 BLOB を単一のドキュメントとしてインデックス化します。 これは既定値です。 |
+| `jsonArray` | BLOB が JSON 配列で構成され、配列の各要素を Azure Cognitive Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
+|`jsonLines` | BLOB が、改行で分離されている複数の JSON エンティティで構成され、各エンティティを Azure Cognitive Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
 
 ドキュメントは、検索結果の 1 つの項目として考えることができます。 配列の各要素を、検索結果に独立した項目として表示する場合は、`jsonArray` または `jsonLines` オプションを使用します。
 
 インデクサーの定義では、必要に応じて、[フィールド マッピング](search-indexer-field-mappings.md)を使用して、ターゲットの検索インデックスの設定に使用されるソース JSON ドキュメントのプロパティを選択できます。 `jsonArray` 解析モードでは、配列が下位レベルのプロパティとして存在する場合は、BLOB 内での配列の配置場所を示すドキュメント ルートを設定できます。
 
 > [!IMPORTANT]
-> `json`、`jsonArray`、または `jsonLines` 解析モードを使用した場合、Azure Search では、データ ソース内のすべての BLOB に JSON が含まれていると想定されます。 JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
+> `json`、`jsonArray`、または `jsonLines` 解析モードを使用した場合、Azure Cognitive Search では、データ ソース内のすべての BLOB に JSON が含まれていると想定されます。 JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
 
 
 <a name="parsing-single-blobs"></a>
 
 ## <a name="parse-single-json-blobs"></a>単一の JSON BLOB を解析する
 
-[Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は、既定では JSON BLOB を 1 つのテキスト チャンクとして解析します。 多くの場合、JSON ドキュメントの構造はそのままに維持する必要があります。 たとえば、Azure Blob Storage に次の JSON ドキュメントがあると仮定します。
+[Azure Cognitive Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は、既定では JSON BLOB を 1 つのテキスト チャンクとして解析します。 多くの場合、JSON ドキュメントの構造はそのままに維持する必要があります。 たとえば、Azure Blob Storage に次の JSON ドキュメントがあると仮定します。
 
     {
         "article" : {
@@ -320,7 +310,7 @@ JSON BLOB では、複数の形式を想定できます。 JSON インデクサ�
         }
     }
 
-BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Search ドキュメントとして解析されます。 インデクサーでは、ソースの "text"、"datePublished"、"tags" が、同じ名前と型のターゲット インデックス フィールドと照合されて、インデックスが読み込まれます。
+BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Cognitive Search ドキュメントとして解析されます。 インデクサーでは、ソースの "text"、"datePublished"、"tags" が、同じ名前と型のターゲット インデックス フィールドと照合されて、インデックスが読み込まれます。
 
 前述のように、フィールド マッピングは必要ありません。 "text"、"datePublished、"tags" のフィールドでインデックスを指定すると、BLOB インデクサーは、要求にフィールド マッピングがない場合でも正しいマッピングを推測することができます。
 
@@ -328,7 +318,7 @@ BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Search
 
 ## <a name="parse-json-arrays"></a>JSON 配列を解析する
 
-別の方法として、[JSON 配列] オプションを使用できます。 このオプションは、BLOB に "*JSON オブジェクトの配列*" が含まれ、各要素を個別の Azure Search ドキュメントにする場合に役立ちます。 たとえば、次の JSON BLOB では、それぞれ "id" および "text" フィールドを持つ 3 つの独立したドキュメントで Azure Search インデックスを作成できます。  
+別の方法として、[JSON 配列] オプションを使用できます。 このオプションは、BLOB に "*JSON オブジェクトの配列*" が含まれ、各要素を個別の Azure Cognitive Search ドキュメントにする場合に役立ちます。 たとえば、次の JSON BLOB では、それぞれ "id" および "text" フィールドを持つ 3 つの独立したドキュメントで Azure Cognitive Search インデックスを作成できます。  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -377,7 +367,7 @@ JSON 配列の場合、インデクサーの定義は次の例のようになり
 
 ## <a name="parse-blobs-separated-by-newlines"></a>改行で区切られた BLOB を解析する
 
-BLOB に改行で分離された複数の JSON エンティティが含まれ、各要素を独立した Azure Search ドキュメントにする場合は、[JSON 行] オプションを選択できます。 たとえば、次の BLOB (3 つの異なる JSON があります) では、それぞれが "id" フィールドと "text" フィールドを持つ 3 つの独立したドキュメントを含む Azure Search インデックスを作成できます。
+BLOB に改行で分離された複数の JSON エンティティが含まれ、各要素を独立した Azure Cognitive Search ドキュメントにする場合は、[JSON 行] オプションを選択できます。 たとえば、次の BLOB (3 つの異なる JSON があります) では、それぞれが "id" フィールドと "text" フィールドを持つ 3 つの独立したドキュメントを含む Azure Cognitive Search インデックスを作成できます。
 
     { "id" : "1", "text" : "example 1" }
     { "id" : "2", "text" : "example 2" }
@@ -403,7 +393,7 @@ JSON 行では、インデクサーの定義は次の例のようになります
 
 ソースとターゲットのフィールドが完全には一致していない場合、要求本文のフィールド マッピング セクションでフィールド間の明示的なアソシエーションを定義できます。
 
-現在、Azure Search では、プリミティブ データ型、文字列配列、および GeoJSON ポイントのみをサポートしているため、任意の JSON ドキュメントに対して直接インデックス作成を行うことはできません。 ただし、 **フィールド マッピング** を使用すると、JSON ドキュメントの一部を選択して、それを検索ドキュメントの最上位レベルのフィールドに "引き上げる" ことができます。 フィールド マッピングの基礎については、「[Azure Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)」をご覧ください。
+現在、Azure Cognitive Search では、プリミティブ データ型、文字列配列、および GeoJSON ポイントのみをサポートしているため、任意の JSON ドキュメントに対して直接インデックス作成を行うことはできません。 ただし、 **フィールド マッピング** を使用すると、JSON ドキュメントの一部を選択して、それを検索ドキュメントの最上位レベルのフィールドに "引き上げる" ことができます。 フィールド マッピングの基礎については、[Azure Cognitive Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)に関する記事をご覧ください。
 
 JSON ドキュメントの例に戻りましょう。
 
@@ -436,7 +426,7 @@ JSON ドキュメントの例に戻りましょう。
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search のインデクサー](search-indexer-overview.md)
-+ [Azure Blob Storage のインデックスを Azure Search で作成する](search-howto-index-json-blobs.md)
-+ [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
++ [Azure Cognitive Search のインデクサー](search-indexer-overview.md)
++ [Azure Blob Storage のインデックスを Azure Cognitive Search で作成する](search-howto-index-json-blobs.md)
++ [Azure Cognitive Search BLOB インデクサーを使用して CSV BLOB のインデックスを作成する](search-howto-index-csv-blobs.md)
 + [チュートリアル:Azure Blob Storage で半構造化データを検索する](search-semi-structured-data.md)

@@ -1,23 +1,23 @@
 ---
 title: Phoenix Query Server REST SDK - Azure HDInsight
 description: Azure HDInsight 上の Phoenix Query Server に対応した REST SDK をインストールし、使用します。
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695950"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75612259"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-phoenix-squirrel-linux.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 Phoenix にはまた、Phoenix Query Server (PQS) と呼ばれる HTTP サーバーも用意されています。これは、クライアント通信のために JSON と Protocol Buffers の 2 つのトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
+[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-query-with-phoenix.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 また、Phoenix では、Phoenix Query Server (PQS) という名前の HTTP サーバーも提供されています。これは、クライアント通信用に JSON と Protocol Buffers の 2 種類のトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
 
 この記事では、PQS REST SDK を使って、テーブルを作成する方法、行を個別にまたは一括でアップサートする方法、および SQL ステートメントでデータを選ぶ方法について説明します。 例では、[Apache Phoenix Query Server 用の Microsoft .NET ドライバー](https://www.nuget.org/packages/Microsoft.Phoenix.Client)を使います。 この SDK は [Apache Calcite の Avatica](https://calcite.apache.org/avatica/) API を基に構築されており、シリアル化形式に Protocol Buffers のみを使います。
 
@@ -76,7 +76,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 | AutoCommit | Phoenix トランザクションに対して `autoCommit` が有効かどうかを示すブール値です。 |
 | ReadOnly | 接続が読み取り専用かどうかを示すブール値です。 |
 | TransactionIsolation | JDBC の仕様に従ってトランザクション分離のレベルを示す整数値です。次の表をご覧ください。|
-| カタログ | 接続プロパティをフェッチするときに使うカタログの名前です。 |
+| Catalog | 接続プロパティをフェッチするときに使うカタログの名前です。 |
 | スキーマ | 接続プロパティをフェッチするときに使うスキーマの名前です。 |
 | IsDirty | プロパティが変更されたかどうかを示すブール値です。 |
 
@@ -164,7 +164,7 @@ finally
 
 ## <a name="insert-data-individually"></a>データの個別挿入
 
-この例では、アメリカの州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
+この例では、アメリカ合衆国の州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
@@ -277,7 +277,7 @@ finally
 }
 ```
 
-挿入ステートメントを実行する構造は、新しいテーブルの作成と似ています。 `try` ブロックの最後でトランザクションが明示的にコミットされていることに注意してください。 この例では、挿入トランザクションを 300 回繰り返します。 次の例では、さらに効率的なバッチ挿入処理を示します。
+挿入ステートメントを実行する構造は、新しいテーブルの作成と似ています。 `try` ブロックの最後で、トランザクションが明示的にコミットされています。 この例では、挿入トランザクションを 300 回繰り返します。 次の例では、さらに効率的なバッチ挿入処理を示します。
 
 ## <a name="batch-insert-data"></a>データのバッチ挿入
 
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight の Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
 * [Apache HBase REST SDK の使用](apache-hbase-rest-sdk.md)

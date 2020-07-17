@@ -1,11 +1,10 @@
 ---
-title: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成
 description: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5aa682af11744389739a539e900924ed93a3bbd6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4cea4fa293083298858a775eff01b9acf17d6c7c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691152"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81458618"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
 
@@ -61,7 +60,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
@@ -69,7 +68,7 @@ az group delete --name myResourceGroup
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、カスタム スクリプト拡張機能を使用して NGINX をインストールします。|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

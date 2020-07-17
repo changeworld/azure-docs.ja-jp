@@ -3,23 +3,22 @@ title: SAP HANA on Azure (L インスタンス) の認定 | Microsoft Docs
 description: SAP HANA on Azure (L インスタンス) の認定。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1346018d99a1c26290ad8928d9794f3b55050910
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77617224"
 ---
 # <a name="certification"></a>認定
 
@@ -41,5 +40,5 @@ VM で SAP HANA を実行する場合に比べ、このソリューションに�
 - ここで説明するソリューション以外にも、SAP HANA on Azure (L インスタンス) に接続する Azure サブスクリプションに他のコンポーネントをインストールできます。 例として、SAP HANA データベースとの (直接) 通信を可能にするコンポーネント (ジャンプ サーバー、RDP サーバー、SAP HANA Studio、SAP BI シナリオ向け SAP Data Services、ネットワーク監視ソリューションなど) が挙げられます。
 - Azure 内と同様に、HANA L インスタンスは高可用性とディザスター リカバリー機能をサポートします。
 
-**次のステップ**
+**次の手順**
 - [HLI で利用可能な SKU](hana-available-skus.md)を参照してください 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617599"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81393460"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
@@ -22,11 +22,12 @@ ms.locfileid: "59617599"
 
 イベントは、システム内で発生した何かを完全に記述する最小限の情報です。 すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。 各イベントには、特定の種類のイベントにのみ関連する情報も含まれます。 たとえば、Azure Storage に作成される新しいファイルに関するイベントには、`lastTimeModified` 値などのファイルの詳細が含まれます。 または、Event Hubs イベントには、キャプチャ ファイルの URL が含まれます。 
 
-各イベントは、64 KB のデータに制限されます。
+一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
+
 
 イベントで送信されるプロパティについては、[Azure Event Grid イベント スキーマ](event-schema.md)を参照してください。
 
-## <a name="publishers"></a>発行元
+## <a name="publishers"></a>[ディストリビューターのプロパティ]
 
 発行元は、Event Grid にイベントを送信することを決定するユーザーまたは組織です。 Microsoft では、いくつかの Azure サービスのためのイベントを発行しています。 お客様独自のアプリケーションからイベントを発行することができます。 Azure を使用しないでサービスをホストしている組織は、Event Grid からイベントを発行できます。
 
@@ -34,7 +35,7 @@ ms.locfileid: "59617599"
 
 イベント ソースは、イベントの発生場所です。 各イベント ソースは、1 つまたは複数のイベントの種類に関連付けられます。 たとえば、Azure Storage は、BLOB 作成イベントのイベント ソースです。 IoT Hub は、デバイスによって作成されたイベントのためのイベント ソースです。 お客様のアプリケーションは、お客様が定義するカスタム イベントのイベント ソースです。 イベント ソースは、Event Grid にイベントを送信します。
 
-サポートされている任意の Event Grid ソースの実装方法については、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](event-sources.md)」を参照してください。
+サポートされている任意の Event Grid ソースの実装方法については、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](overview.md#event-sources)」を参照してください。
 
 ## <a name="topics"></a>トピック
 
@@ -59,9 +60,6 @@ Event Grid のトピックには、ソースがイベントを送信するエン
 現在の Event Grid サブスクリプションの取得については、「[Event Grid サブスクリプションのクエリを実行する](query-event-subscriptions.md)」を参照してください。
 
 ## <a name="event-subscription-expiration"></a>イベント サブスクリプションの有効期限
-
-Azure CLI 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list) では、イベント サブスクリプションの作成時に、有効期限を設定できます。 REST API を使用している場合は、`api-version=2018-09-15-preview` を使用します。
-
 イベント サブスクリプションは、その日付後、自動的に期限切れになります。 限られた期間にだけ必要なイベント サブスクリプションに対して有効期限を設定することで、これらのサブスクリプションのクリーンアップについて心配する必要がなくなります。 たとえば、シナリオをテストするためのイベント サブスクリプションを作成するときに、有効期限を設定することができます。 
 
 有効期限の設定の例については、「[高度なフィルターを使用してサブスクライブする](how-to-filter-events.md#subscribe-with-advanced-filters)」を参照してください。
@@ -72,7 +70,7 @@ Event Grid から考えると、イベント ハンドラーはイベントの�
 
 サポートされている任意の Event Grid ハンドラーの実装方法については、「[Event handlers in Azure Event Grid (Azure Event Grid 内のイベント ハンドラー)](event-handlers.md)」を参照してください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Event Grid は、トピックのサブスクライブと発行をセキュリティで保護します。 サブスクライブするときは、リソースまたは Event Grid トピックに対する十分なアクセス許可が必要です。 発行するときは、トピック用の SAS トークンまたはキー認証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
 
@@ -82,9 +80,12 @@ Event Grid は、トピックのサブスクライブと発行をセキュリテ
 
 ## <a name="batching"></a>バッチ処理
 
-カスタム トピックを使用する場合は、イベントを常に配列内で発行する必要があります。 低スループットのシナリオでは 1 つのバッチで対応できますが、高ボリュームのユース ケースでは、効率性を向上するために、発行ごとに複数のイベントを 1 つのバッチにまとめることをお勧めします。 バッチのサイズは最大 1 MB に指定できます。 各イベントが 64 KB より大きくならないようにしてください。
+カスタム トピックを使用する場合は、イベントを常に配列内で発行する必要があります。 低スループットのシナリオでは 1 つのバッチで対応できますが、高ボリュームのユース ケースでは、効率性を向上するために、発行ごとに複数のイベントを 1 つのバッチにまとめることをお勧めします。 バッチのサイズは最大 1 MB に指定できます。 各イベントが引き続き、64 KB (一般提供) または 1 MB (プレビュー) を超えないようにしてください。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> 一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
+
+## <a name="next-steps"></a>次のステップ
 
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。

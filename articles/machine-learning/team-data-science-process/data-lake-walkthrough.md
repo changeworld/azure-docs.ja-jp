@@ -3,30 +3,40 @@ title: Azure Data Lake を使用したスケーラブルなデータ サイエ�
 description: Azure Data Lake を使用してデータセットに対してデータ探索と二項分類タスクを行う方法について説明します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835241"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76717914"
 ---
-# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス:エンド ツー エンド チュートリアル
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル
 このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。 また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)のエンド ツー エンドの手順について説明します。
+
+## <a name="technologies"></a>テクノロジ
+
+このチュートリアルでは、次のテクノロジを使用します。
+* Azure Data Lake Analytics
+* U-SQL と Visual Studio
+* Python
+* Azure Machine Learning
+* スクリプト
+
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) には、データ科学者が、拡張性が高く、コスト効率がよい方法で、任意のサイズ、形状、および速度のデータを格納し、データ処理、高度な分析、および機械学習モデリングを行うために必要なすべての機能が揃っています。   データが実際に処理されたときにのみ、ジョブごとに課金されます。 Azure Data Lake Analytics には U-SQL が含まれています。U-SQL は、SQL の宣言型の性質と C# の表現力を兼ね備え、スケーラブルな分散クエリ機能を持つ言語です。 読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックとユーザー定義関数 (UDF) を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。 U-SQL の背景にある設計理念の詳細については、[Visual Studio ブログの投稿](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)を参照してください。
 
-Data Lake Analytics は、Cortana Analytics Suite の重要な部分でもあり、Azure SQL Data Warehouse、Power BI、Data Factory と連携します。 そのため、一式そろったクラウド ビッグ データと高度な分析プラットフォームを利用できます。
+Data Lake Analytics は、Cortana Analytics Suite の重要な部分でもあり、Azure SQL Data Warehouse、Power BI、Data Factory と連携します。 この組み合わせにより、一式そろったクラウド ビッグ データと高度な分析プラットフォームを利用できます。
 
-このチュートリアルでは、まず、データ サイエンス プロセスのタスクの実行に必要な前提条件とリソースのインストール方法について説明します。 その後、U-SQL を使用したデータ処理手順の概要を説明し、最後に予測モデルを構築およびデプロイするために Azure Machine Learning Studio と共に Python と Hive を使用する方法を示します。
+このチュートリアルでは、まず、データ サイエンス プロセスのタスクの実行に必要な前提条件とリソースのインストール方法について説明します。 その後、U-SQL を使用したデータ処理手順の概要を説明し、最後に予測モデルを構築してデプロイするために Azure Machine Learning Studio (クラシック) と共に Python と Hive を使用する方法を示します。
 
 ### <a name="u-sql-and-visual-studio"></a>U-SQL と Visual Studio
 このチュートリアルでは、データセットを処理する U-SQL スクリプトの編集に Visual Studio を使用することをお勧めします。 ここでは U-SQL スクリプトについて説明します。また、スクリプトは別ファイルで提供されます。 プロセスには、データの取り込み、探索、サンプリングが含まれています。 また、U-SQL スクリプトで作成したジョブを Azure ポータルから実行する方法についても説明します。 Azure Machine Learning Studio の二項分類モデルの構築とデプロイを容易にするために、関連する HDInsight クラスターのデータについて Hive テーブルを作成します。
@@ -34,8 +44,8 @@ Data Lake Analytics は、Cortana Analytics Suite の重要な部分でもあり
 ### <a name="python"></a>Python
 このチュートリアルには、Python と Azure Machine Learning Studio を使用して予測モデルを構築およびデプロイする方法について説明するセクションも含まれています。 このプロセスのこれらの手順に関する Python スクリプトを含む Jupyter Notebook を提供します。 この Notebook には、ここで概要を説明する二項分類モデルに加え、追加機能のエンジニアリング手順とモデル構築のコードが含まれています。たとえば、多クラス分類や回帰モデリングなどです。 回帰タスクでは、チップの他の特徴に基づいてチップの金額を予測します。
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning Studio は、予測モデルを構築およびデプロイするために使用します。 その操作は、2 つのアプローチで行います。まず、Python スクリプトを使用し、次に HDInsight (Hadoop) クラスターの Hive テーブルを使用します。
+### <a name="azure-machine-learning"></a>Azure Machine Learning 
+Azure Machine Learning Studio (クラシック) は、予測モデルを構築してデプロイするために使用され、これは 2 つのアプローチで行われます。まず、Python スクリプトを使用し、次に HDInsight (Hadoop) クラスターの Hive テーブルを使用します。
 
 ### <a name="scripts"></a>スクリプト
 このチュートリアルでは、基本的な手順の概要のみを説明します。 完全な **U-SQL スクリプト**と **Jupyter Notebook** は、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) からダウンロードできます。
@@ -55,10 +65,10 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>Azure Data Lake のデータ サイエンス環境を準備する
 このチュートリアルのデータ サイエンス環境を準備するには、次のリソースを作成します。
 
-* Azure Data Lake Store (ADLS)
+* Azure Data Lake Storage (ADLS)
 * Azure Data Lake Analytics (ADLA)
 * Azure BLOB ストレージ アカウント
-* Azure Machine Learning Studio アカウント
+* Azure Machine Learning Studio (クラシック) アカウント
 * Azure Data Lake Tools for Visual Studio (推奨)
 
 このセクションでは、これらの各リソースを作成する手順について説明します。 Python ではなく、Azure Machine Learning で Hive テーブルを使ってモデルを構築する場合は、HDInsight (Hadoop) クラスターもプロビジョニングする必要があります。 この代替手順については、「オプション 2」のセクションで説明します。
@@ -69,7 +79,7 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 >
 >
 
-### <a name="create-an-azure-data-lake-store"></a>Azure Data Lake Store を作成する
+### <a name="create-an-azure-data-lake-storage"></a>Azure Data Lake Storage を作成する
 
 
 [Azure Portal](https://portal.azure.com) から ADLS を作成します。 詳しくは、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。 そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。
@@ -82,19 +92,19 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
-[Azure Portal](https://portal.azure.com) で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
+[Azure Portal](https://portal.azure.com) で Azure BLOB ストレージ アカウントを作成します。 詳細については、[Azure Storage アカウント](../../storage/common/storage-create-storage-account.md)に関するページの「ストレージ アカウントの作成」セクションを参照してください。
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
-### <a name="set-up-an-azure-machine-learning-studio-account"></a>Azure Machine Learning Studio アカウントをセットアップする
-[[Azure Machine Learning Studio]](https://azure.microsoft.com/services/machine-learning/) ページから Azure Machine Learning Studio にサインアップまたはサインインします。 **[今すぐ開始]** ボタンをクリックし、"Free ワークスペース" または "Standard ワークスペース" を選択します。 Azure Machine Learning Studio で実験を作成できるようになりました。
+### <a name="set-up-an-azure-machine-learning-studio-classic-account"></a>Azure Machine Learning Studio (クラシック) アカウントを設定する
+[[Azure Machine Learning Studio]](https://azure.microsoft.com/services/machine-learning/) ページから Azure Machine Learning Studio (クラシック) にサインアップ/サインインします。 **[今すぐ開始]** ボタンをクリックし、"Free ワークスペース" または "Standard ワークスペース" を選択します。 Azure Machine Learning Studio で実験を作成できるようになりました。
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>Azure Data Lake Tools をインストールする [推奨]
 お使いの Visual Studio バージョン用の Azure Data Lake Tools は、 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)からインストールします。
 
  ![6](./media/data-lake-walkthrough/6-install-ADL-tools-VS.PNG)
 
-インストールが正常に完了したら、Visual Studio を開きます。 上部のメニューに [Data Lake] タブが表示されます。 Azure アカウントにサインインすると、左側のパネルに Azure リソースが表示されます。
+インストールが完了したら、Visual Studio を開きます。 上部のメニューに [Data Lake] タブが表示されます。 Azure アカウントにサインインすると、左側のパネルに Azure リソースが表示されます。
 
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
@@ -121,7 +131,7 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data と trip\_fare を結合するための一意のキーは、medallion、hack\_licence、pickup\_datetime の 3 つのフィールドで構成されています。 パブリック Azure ストレージ BLOB から、生の CSV ファイルにアクセスできます。 この結合の U-SQL スクリプトは、「 [乗車テーブルと料金テーブルの結合](#join) 」セクションにあります。
+trip\_data と trip\_fare を結合するための一意のキーは、medallion、hack\_licence、pickup\_datetime の 3 つのフィールドで構成されています。 Azure Storage BLOB から、生の CSV ファイルにアクセスできます。 この結合の U-SQL スクリプトは、「 [乗車テーブルと料金テーブルの結合](#join) 」セクションにあります。
 
 ## <a name="process-data-with-u-sql"></a>U-SQL を使用してデータを処理する
 このセクションで説明するデータ処理タスクには、データの取り込み、品質チェック、探索、サンプリングが含まれています。 また、乗車テーブルと料金テーブルを結合する方法についても説明します。 最後のセクションでは、U-SQL スクリプトで作成したジョブを Azure ポータルから実行する方法について説明します。 以下は各セクションのリンクです。
@@ -135,7 +145,7 @@ trip\_data と trip\_fare を結合するための一意のキーは、medallion
 
 ここでは U-SQL スクリプトについて説明します。また、スクリプトは別ファイルで提供されます。 完全な **U-SQL スクリプト**は、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) からダウンロードできます。
 
-U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新規作成]、[プロジェクト]** の順にクリックし、**[U-SQL プロジェクト]** を選択して、名前を付けてフォルダーに保存します。
+U-SQL を実行するには、Visual Studio を開き、 **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックし、 **[U-SQL プロジェクト]** を選択して、名前を付けてフォルダーに保存します。
 
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -146,7 +156,7 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>データ インジェスト:パブリック BLOB からデータを読み込む
+### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
 
 Azure BLOB のデータの場所は、**wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開できます。 次のスクリプトで wasb アドレスの container\_name\@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data\_\{\*\}.csv** を使って、12 個の乗車ファイルすべてを読み込むことができます。
 
@@ -203,14 +213,14 @@ Azure BLOB のデータの場所は、**wasb://container\_name\@blob\_storage\_a
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
     USING Outputters.Csv();
 
-同様に、料金データセットを読み込むことができます。 Azure Data Lake Store を右クリックし、**[Azure Portal] > [データ エクスプローラー]** か、Visual Studio の **[ファイル エクスプローラー]** でデータを確認することができます。
+同様に、料金データセットを読み込むことができます。 Azure Data Lake Storage を右クリックし、 **[Azure portal] > [データ エクスプローラー]** か、Visual Studio の **[エクスプローラー]** でデータを確認することができます。
 
  ![10](./media/data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
  ![11](./media/data-lake-walkthrough/11-data-in-ADL.PNG)
 
-### <a name="quality"></a>データ品質チェック
-乗車テーブルと料金テーブルを読み込んだら、次の方法でデータ品質チェックを実行できます。 結果の CSV ファイルは、Azure BLOB Storage または Azure Data Lake Store に出力できます。
+### <a name="data-quality-checks"></a><a name="quality"></a>データ品質チェック
+乗車テーブルと料金テーブルを読み込んだら、次の方法でデータ品質チェックを実行できます。 結果の CSV ファイルは、Azure BLOB Storage または Azure Data Lake Storage に出力できます。
 
 メダリオンの数とメダリオンの一意の数を検索します。
 
@@ -281,7 +291,7 @@ pickup_longitude に関して無効なレコードを検索します。
 
 
 
-### <a name="explore"></a>データの探索
+### <a name="data-exploration"></a><a name="explore"></a>データの探索
 以下のスクリプトでデータの探索を実行して、データの理解を深めることができます。
 
 チップが払われた乗車と払われなかった乗車の分布を検索します。
@@ -301,7 +311,7 @@ pickup_longitude に関して無効なレコードを検索します。
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
     USING Outputters.Csv();
 
-カットオフ値でチップ金額の分布を検索します (0、5、10、および 20 ドル)。
+0、5、10、および 20 ドルというカットオフ値でチップ金額の分布を検索します。
 
     //tip class/range distribution
     @tip_class =
@@ -348,7 +358,7 @@ pickup_longitude に関して無効なレコードを検索します。
     USING Outputters.Csv();
 
 
-### <a name="join"></a>乗車テーブルと料金テーブルの結合
+### <a name="join-trip-and-fare-tables"></a><a name="join"></a>乗車テーブルと料金テーブルの結合
 乗車テーブルと料金テーブルは、medallion、hack_license、pickup_time によって結合できます。
 
     //join trip and fare table
@@ -390,7 +400,7 @@ pickup_longitude に関して無効なレコードを検索します。
     USING Outputters.Csv();
 
 
-### <a name="sample"></a>データのサンプリング
+### <a name="data-sampling"></a><a name="sample"></a>データのサンプリング
 まず、結合したテーブルから 0.1% のデータをランダムに選びます。
 
     //random select 1/1000 data for modeling purpose
@@ -430,12 +440,12 @@ pickup_longitude に関して無効なレコードを検索します。
     USING Outputters.Csv();
 
 
-### <a name="run"></a>U-SQL ジョブの実行
-U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics アカウントを使用してサーバーに送信できます。 **[Data Lake]**、**[ジョブの送信]** の順にクリックし、**[Analytics アカウント]** を選択し、**[並列処理]** を選択して、**[送信]** ボタンをクリックします。
+### <a name="run-u-sql-jobs"></a><a name="run"></a>U-SQL ジョブの実行
+U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics アカウントを使用してサーバーに送信できます。 **[Data Lake]** 、 **[ジョブの送信]** の順にクリックし、 **[Analytics アカウント]** を選択し、 **[並列処理]** を選択して、 **[送信]** ボタンをクリックします。
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
 
-ジョブが正常にコンパイルされると、ジョブの状態が Visual Studio に表示され、監視できるようになります。 ジョブの実行が完了した後は、ジョブの実行プロセスを再現し、ボトルネックになっている手順を特定してジョブの効率を改善することもできます。 また、Azure Portal を開いて、U-SQL ジョブの状態を確認することもできます。
+ジョブが正常にコンパイルされると、ジョブの状態が Visual Studio に表示され、監視できるようになります。 ジョブが完了した後は、ジョブの実行プロセスを再現し、ボトルネックになっている手順を特定してジョブの効率を改善することもできます。 また、Azure Portal を開いて、U-SQL ジョブの状態を確認することもできます。
 
  ![13](./media/data-lake-walkthrough/13-USQL-running-v2.PNG)
 
@@ -453,7 +463,7 @@ Azure Machine Learning にデータをプルするには 2 つのオプション
 * 最初のオプションでは、上記の「 **データのサンプリング** 」手順で Azure BLOB に書き込まれたサンプリング データを使用し、Python を使用して Azure Machine Learning からモデルを構築およびデプロイします。
 * 2 つ目のオプションでは、Hive クエリを使用して、Azure Data Lake のデータを直接クエリします。 このオプションの場合、新しい HDInsight クラスターを作成するか、Hive テーブルが Azure Data Lake ストレージの NYC タクシー データを指している既存の HDInsight クラスターを使用する必要があります。  以下のセクションでは、両方のオプションについて説明します。
 
-## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>オプション 1:Python を使用して機械学習モデルを構築してデプロイする
+## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>オプション 1: Python を使用して機械学習モデルを構築してデプロイする
 Python を使用して機械学習モデルを構築およびデプロイするには、ローカル コンピューターまたは Azure Machine Learning Studio に Jupyter Notebook を作成します。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) で提供される Jupyter Notebook には、探索、データの視覚化、特徴エンジニアリング、モデリング、デプロイを行う完全なコードが含まれています。 この記事では、モデリングとデプロイの手順についてのみ説明します。
 
 ### <a name="import-python-libraries"></a>Python ライブラリをインポートする
@@ -557,9 +567,9 @@ Python を使用して機械学習モデルを構築およびデプロイする�
        ![c2](./media/data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web サービス API を構築して Python で使用する
-機械学習モデルの構築後に、運用可能な状態にする必要があります。 ここでは、二項ロジスティック モデルを例として使います。 ローカル コンピューターの scikit-learn のバージョンが 0.15.1 であることを確認してください。 Azure Machine Learning Studio を使用している場合、確認する必要はありません。
+機械学習モデルの構築後に、運用可能な状態にする必要があります。 ここでは、二項ロジスティック モデルを例として使います。 ローカル コンピューターの scikit-learn のバージョンが 0.15.1 であることを確認してください (Azure Machine Learning Studio は既にこのバージョン以降になっています)。
 
-* Azure Machine Learning Studio 設定でワークスペースの資格情報を確認します。 Azure Machine Learning Studio で、**[設定]** --> **[名前]** --> **[承認トークン]** の順にクリックします。
+* Azure Machine Learning Studio (クラシック) の設定で、ワークスペースの資格情報を確認します。 Azure Machine Learning Studio で、 **[設定]**  -->  **[名前]**  -->  **[承認トークン]** の順にクリックします。
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -587,22 +597,22 @@ Python を使用して機械学習モデルを構築およびデプロイする�
         @services.returns(float)
         def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
             pass
-* Web サービス API を呼び出す。 前の手順の後に、5 ～ 10 秒待つ必要があります。
+* Web サービス API を呼び出す。 通常は、前の手順の後に 5 から 10 秒待ちます。
 
         NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
 
        ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
-## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>オプション 2:Azure Machine Learning で直接モデルを作成してデプロイする
-Azure Machine Learning Studio では、Azure Data Lake Store から直接データを読み取り、モデルを作成してデプロイできます。 このアプローチでは、Azure Data Lake ストアを指す Hive テーブルを使用します。 そのためには、別の Azure HDInsight クラスターをプロビジョニングする必要があります。そこに Hive テーブルが作成されます。 以降のセクションでは、その方法について説明します。
+## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>オプション 2: Azure Machine Learning で直接モデルを作成してデプロイする
+Azure Machine Learning Studio では、Azure Data Lake Storage から直接データを読み取り、モデルを作成してデプロイするために使用できます。 このアプローチでは、Azure Data Lake Storage を指す Hive テーブルを使用します。 Hive テーブル 用に個別の Azure HDInsight クラスターをプロビジョニングする必要があります。 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターを作成する
-[Azure Portal](https://portal.azure.com) で HDInsight クラスター (Linux) を作成します。 詳しくは、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」の「**Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する**」セクションをご覧ください。
+[Azure Portal](https://portal.azure.com) で HDInsight クラスター (Linux) を作成します。 詳細については、[Azure portal での Data Lake Store を使用する HDInsight クラスターの作成](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するページの**Azure Data Lake Storage にアクセスできる HDInsight クラスターの作成**に関するセクションをご覧ください。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>HDInsight で Hive テーブルを作成する
-次に、前の手順で Azure Data Lake Store に格納したデータを使って、HDInsight クラスターに Azure Machine Learning Studio で使用される Hive テーブルを作成します。 作成した HDInsight クラスターに移動します。 **[設定]** --> **[プロパティ]** --> **[クラスター AAD ID]** --> **[ADLS アクセス]** の順にクリックし、読み取り、書き込み、実行の権限がある Azure Data Lake Store アカウントが一覧に追加されたことを確認します。
+次に、前の手順で Azure Data Lake Storage に格納したデータを使って、HDInsight クラスターに Azure Machine Learning Studio (クラシック) で使用される Hive テーブルを作成します。 作成した HDInsight クラスターに移動します。 **[設定]**  -->  **[プロパティ]**  -->  **[クラスター AAD ID]**  -->  **[ADLS アクセス]** の順にクリックし、読み取り、書き込み、実行の権限がある Azure Data Lake Storage アカウントが一覧に追加されたことを確認します。
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -612,7 +622,7 @@ Azure Machine Learning Studio では、Azure Data Lake Store から直接デー�
 
  ![21](./media/data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
-次の Hive スクリプトを貼り付けてテーブルを作成します。 データ ソースの場所は Azure Data Lake Store 内であり、**adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
+次の Hive スクリプトを貼り付けてテーブルを作成します。 データ ソースの場所は Azure Data Lake Storage 内であり、**adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
 
     CREATE EXTERNAL TABLE nyc_stratified_sample
     (
@@ -645,19 +655,19 @@ Azure Machine Learning Studio では、Azure Data Lake Store から直接デー�
     LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
 
 
-クエリの実行が完了すると、次のような結果が表示されます。
+クエリが完了すると、次のような結果が表示されます。
 
  ![22](./media/data-lake-walkthrough/22-Hive-Query-results.PNG)
 
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルを構築してデプロイする
 これで、チップが支払われるかどうかを予測するモデルを Azure Machine Learning で構築およびデプロイする準備が整いました。 階層サンプル データは、この二項分類 (チップが支払われるか支払われないか) 問題で使用する準備ができています。 多クラス分類 (tip_class) と回帰 (tip_amount) を使う予測モデルも Azure Machine Learning Studio で構築およびデプロイできますが、ここでは二項分類モデルを使うケースの処理方法だけを示します。
 
-1. **[データの入力と出力]** セクションにある **[データのインポート]** モジュールを使用して、Azure Machine Learning Studio にデータを取り込みます。 詳細については、 [データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) モジュールのリファレンスのページをご覧ください。
+1. **[データの入力と出力]** セクションで利用できる**データのインポート** モジュールを使用して、Azure Machine Learning Studio (クラシック) にデータを取り込みます。 詳細については、 [データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) モジュールのリファレンスのページをご覧ください。
 2. **[プロパティ]** パネルで、**データ ソース**として **Hive クエリ**を選択します。
 3. **Hive データベース クエリ** エディターに次の Hive スクリプトを貼り付けます。
 
         select * from nyc_stratified_sample;
-4. HDInsight クラスターの URI (Azure Portal で確認できます)、Hadoop の資格情報、出力データの場所、Azure ストレージ アカウントの名前/キー/コンテナー名を入力します。
+4. HDInsight クラスターの URI (この URI は Azure portal で確認できます)、Hadoop の資格情報、出力データの場所、Azure Storage アカウントの名前/キー/コンテナー名を入力します。
 
    ![23](./media/data-lake-walkthrough/23-reader-module-v3.PNG)
 
@@ -665,7 +675,7 @@ Hive テーブルからデータを読み取る二項分類の実験の例を次
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-実験の作成後に、**[Web サービスのセットアップ]** --> **[予測 Web サービス]** の順にクリックします。
+実験の作成後に、 **[Web サービスのセットアップ]**  -->  **[予測 Web サービス]** の順にクリックします。
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
@@ -678,9 +688,9 @@ Web サービス ダッシュボードがすぐに表示されます。
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
 ## <a name="summary"></a>まとめ
-このチュートリアルを終了すると、Azure Data Lake でスケーラブルなエンド ツー エンド ソリューションを構築するデータ サイエンス環境を作成することができます。 この環境を使用して、大規模なパブリック データセットが分析されました。モデル トレーニングによるデータの取得から、Web サービスとしてのモデルのデプロイまで、データ サイエンス プロセスの正規の手順を使用して行われました。 データの処理、調査、およびサンプリングには、U-SQL が使用されました。 予測モデルの構築とデプロイには、Azure Machine Learning Studio と共に、Python と Hive が使用されました。
+このチュートリアルを終了すると、Azure Data Lake でスケーラブルなエンド ツー エンド ソリューションを構築するデータ サイエンス環境を作成できます。 この環境を使用して、大規模なパブリック データセットが分析されました。モデル トレーニングによるデータの取得から、Web サービスとしてのモデルのデプロイまで、データ サイエンス プロセスの正規の手順を使用して行われました。 データの処理、調査、およびサンプリングには、U-SQL が使用されました。 予測モデルの構築とデプロイには、Azure Machine Learning Studio (クラシック) と共に、Python と Hive が使用されました。
 
-## <a name="whats-next"></a>次の手順
+## <a name="whats-next"></a>次の操作
 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。 「[Team Data Science Process のチュートリアル](walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
 
 * [Team Data Science Process の活用: SQL Data Warehouse の使用](sqldw-walkthrough.md)

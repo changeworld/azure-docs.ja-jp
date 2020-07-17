@@ -1,23 +1,22 @@
 ---
-title: Azure Time Series Insights 環境の規模を計画する | Microsoft Docs
-description: この記事では、ストレージ容量、データ保有期間、イングレス容量、監視、ビジネスのディザスター リカバリー (BCDR) など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。
+title: GA の環境を計画する - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights GA 環境を準備、構成、およびデプロイするためのベスト プラクティス。
 services: time-series-insights
 ms.service: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1c6e8ef9effdb5cf31aee1603de28bed0d894cbb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239083"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272714"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 
@@ -25,101 +24,107 @@ ms.locfileid: "66239083"
 
 ## <a name="video"></a>ビデオ
 
-### <a name="learn-more-about-data-retention-in-azuretime-series-insights-and-how-to-plan-for-itbr"></a>Azure Time Series Insights でのデータ リテンション期間と、その計画方法を説明します。</br>
+**Azure Time Series Insights でのデータ リテンション期間と、その計画方法について詳細を確認するには、以下のビデオをご覧ください**。<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-Time Series Insights の使用を開始するときは、分単位でプッシュすることが予想されるデータの量と、データを保存する必要がある期間を把握しておくことをお勧めします。  
+Azure Time Series Insights の使用を開始するには、分単位でプッシュすることが予想されるデータの量と、データを保存する必要がある期間を把握しておくことをお勧めします。  
 
 Time Series Insights の 2 つの SKU の容量とリテンション期間の詳細については、「[Time Series Insights の価格](https://azure.microsoft.com/pricing/details/time-series-insights/)」をご覧ください。
 
-長期的な成功に向けて環境を最適に計画するには、次の属性を検討します。
+長期的な成功に向けて Time Series Insights 環境を最善に計画するには、次の属性を検討します。
 
-- <a href="#understand-storage-capacity">[ストレージ容量]</a>
-- <a href="#understand-data-retention">データ リテンション期間</a>
-- <a href="#understand-ingress-capacity">イングレス容量</a>
-- <a href="#shape-your-events">イベントの整形</a>
-- <a href="#ensure-you-have-reference-data">参照データの配置確認</a>
+- [[ストレージ容量]](#storage-capacity)
+- [データ リテンション期間](#data-retention)
+- [イングレス容量](#ingress-capacity)
+- [イベントの整形](#shape-your-events)
+- [参照データが配置されていることを確認](#ensure-that-you-have-reference-data)
 
-## <a name="understand-storage-capacity"></a>ストレージ容量について
+## <a name="storage-capacity"></a>ストレージの容量
 
-既定では、Azure Time Series Insights は、プロビジョニング済みのストレージの容量 (ユニット数とユニットあたりのストレージ容量の積) とイングレスに基づいてデータを保持します。
+既定では、Time Series Insight は、プロビジョニングするストレージの容量 (ユニット数 &#215; ユニットごとのストレージ容量) とイングレスに基づいてデータを保持します。
 
-## <a name="understand-data-retention"></a>データ リテンション期間について
+## <a name="data-retention"></a>データの保持
 
-Time Series Insight 環境の **[データ リテンション期間]** 設定を構成できます。最大 400 日のリテンション期間を設定できます。 Time Series Insights には 2 つのモードがあります。1 つは、環境で最新のデータを確保するように最適化するモードです (既定で有効)。もう 1 つは、リテンション期間の制限が満たされるように最適化するモードです。このモードでは、環境の全ストレージ容量に達した場合にイングレスが一時停止されます。  Azure Portal の環境の構成ページで、リテンション期間を調整し、2 つのモードを切り替えることができます。
+お使いの Azure Time Series Insights 環境内で **[データ リテンション期間]** 設定を変更できます。 リテンション期間は最大 400 日まで有効にできます。 
 
-Time Series Insights 環境では、最大 400 日のデータ リテンション期間を構成できます。
+Azure Time Series Insights には 2 つのモードがあります。
+
+* 1 つのモードでは、最新のデータに対して最適化されます。 **古いデータを消去する**ポリシーが強制され、最近のデータをインスタンスで利用できるように残します。 このモードは、既定でオンになっています。 
+* もう 1 つのモードでは、構成されているリテンション制限を下回るようにデータが最適化されます。 **[Pause ingress]\(イングレスを一時停止\)** が**ストレージ上限の超過動作**として選択されているとき、新しいデータのイングレスが防止されます。
+
+Azure portal 内の環境の構成ページ上で、リテンション期間を調整し、2 つのモードを切り替えることができます。
+
+> [!IMPORTANT]
+> Azure Time Series Insights GA 環境では、最大 400 日のデータ リテンション期間を構成できます。
 
 ### <a name="configure-data-retention"></a>データ リテンション期間の構成
 
 1. [Azure Portal](https://portal.azure.com) で、Time Series Insights 環境を選択します。
 
-1. **[Time Series Insights 環境]** ページで、 **[設定]** の **[構成]** を選択します。
+1. **[Time Series Insights 環境]** ウィンドウで、 **[設定]** 下の **[ストレージの構成]** を選択します。
 
-1. **[データ リテンション期間 (日)]** ボックスに、1 ～ 400 の値を入力します。
+1. **[データ リテンション期間 (日)]** ボックスに、1 から 400 までの値を入力します。
 
-   [![リテンション期間の構成](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![リテンション期間の構成](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
-> 適切なデータ リテンション ポリシーの実装の詳細については、[リテンション期間の構成方法](./time-series-insights-how-to-configure-retention.md)に関するページを参照してください。
+> 適切なデータ リテンション ポリシーの実装方法について詳しくは、[リテンション期間の構成方法](./time-series-insights-how-to-configure-retention.md)に関する記事をご覧ください。
 
-## <a name="understand-ingress-capacity"></a>イングレス容量について
+## <a name="ingress-capacity"></a>イングレス容量
 
-計画を立てる際に重視すべきもう 1 つの領域は、1 分あたりの割り当ての派生物であるイングレス容量です。
+[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
-調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
+### <a name="environment-planning"></a>環境の計画
 
-各 SKU のイングレス容量を次の表に示します。
+Time Series Insights 環境を計画する場合に注目すべき 2 つ目の分野は、イングレス容量です。 1 日あたりのイングレス ストレージとイベント容量は、1 KB ブロック単位で 1 分ごとに測定されます。 最大許容パケット サイズは 32 KB です。 32 KB を超えるデータ パケットは切り捨てられます。
 
-|SKU  |イベント数/月/ユニット  |イベント サイズ/月/ユニット  |イベント数/分/ユニット  | サイズ/分/ユニット   |
-|---------|---------|---------|---------|---------|
-|S1     |   30,000,000     |  30 GB     |  720    |  720 KB   |
-|S2     |   300,000,000    |   300 GB   | 7,200   | 7,200 KB  |
+1 つの環境で、S1 SKU または S2 SKU の容量を 10 ユニットまで増やすことができます。 S1 環境から S2 に移行することはできません。 S2 環境から S1 に移行することはできません。
 
-1 つの環境で、S1 SKU または S2 SKU の容量を 10 ユニットまで増やすことができます。 S1 環境から S2 環境、または S2 環境から S1 環境に移行することはできません。
+イングレス容量については、最初に、1 か月単位を基にして必要な合計イングレスを決定します。 次に、分単位でのニーズを決定します。 
 
-イングレス容量については、1 か月あたりに必要なイングレスの合計数をまず決定する必要があります。 次に、1 分あたりのニーズを決定します。これには、調整と待機時間が関与するためです。
+分単位の容量においては、調整と待機時間を考慮します。 データ イングレスの持続するスパイクが 24 時間未満の場合、Time Series Insights では、上の表に示したレートの 2 倍のイングレス レートまで "キャッチアップ" することが可能です。
 
-データ イングレスのスパイクの持続が 24 時間未満の場合、Time Series Insights は上記のレートの 2 倍のイングレス レートで "キャッチアップ" できます。
+たとえば、単一の S1 SKU を用意して 1 分あたり 720 イベントのレートでデータをイングレスすると、データ レートのスパイクが 1440 イベント以下のレートで 1 時間未満であれば、環境内で顕著な待機時間は発生しません。 ただし、1 分あたり 1440 イベントを超える状態が 1 時間以上続いた場合、環境内では、視覚化されクエリに使用できるデータに待機時間が発生する傾向があります。
 
-たとえば、単一の S1 SKU を使用し、1 分あたり 720 イベントのレートでデータをイングレスしている場合、1440 イベント以下のレートでスパイクの持続が 1 時間未満であれば、環境に顕著な待機時間は発生しません。 ただし、1 分あたり 1440 イベントを超える状態が 1 時間以上続いた場合、環境内で視覚化され、クエリに使用できるデータに待機時間が発生する可能性があります。
-
-プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure Portal で [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) と [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) のデータ テレメトリを確認できます。 このテレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure Portal で、それぞれのイベント ソースの **[メトリック]** ページを使用してテレメトリを表示します。 イベント ソースのメトリックを理解すると、Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
+プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure portal サブスクリプションで [Azure IoT Hub](../iot-hub/iot-hub-metrics.md) と [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) のデータ テレメトリを確認できます。 テレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure portal にあるそれぞれのイベント ソースの **[メトリック]** ウィンドウを使用して、テレメトリを表示します。 イベント ソースのメトリックを理解すると、Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
 
 ### <a name="calculate-ingress-requirements"></a>イングレス要件の計算
 
-- イングレス容量が 1 分あたりの平均レートを上回っていることを確認し、環境が、現在の容量の 2 倍に相当する予想されるイングレスを 1 時間未満で十分に処理できる規模であることを確認します。
+イングレス要件を計算するには:
 
-- 1 時間以上続くイングレス スパイクが発生した場合は、スパイク レートを平均値として使用し、スパイク レートに対応する容量を備えた環境をプロビジョニングします。
+- イングレス容量が 1 分あたりの平均レートを上回っていることを確認し、環境が、用意している容量の 2 倍に相当する予想されるイングレスを 1 時間未満で十分に処理できる規模であることを確認します。
+
+- 1 時間を超えて持続するイングレスのスパイクが発生した場合、そのスパイク レートを平均として使用します。 スパイク レートを処理するために、その容量を備えた環境をプロビジョニングします。
 
 ### <a name="mitigate-throttling-and-latency"></a>調整と待機時間の緩和
 
-調整と待ち時間が発生しないようにする方法については、[待ち時間と調整の緩和](time-series-insights-environment-mitigate-latency.md)に関するページを参照してください。
+調整と待機時間が発生しないようにする方法については、[待機時間と調整の緩和](time-series-insights-environment-mitigate-latency.md)に関する記事をご覧ください。
 
 ## <a name="shape-your-events"></a>イベントの調整
 
-イベントを TSI に送信する方法がプロビジョニングする環境のサイズに対応していることを確認することが重要です (逆に言えば、TSI で読み込まれるイベントの数と各イベントのサイズに、環境のサイズをマッピングできます)。 同様に、データにクエリを実行するときのスライスとフィルターの基準にする属性について考えることが重要です。
+Time Series insights へイベントを送信する方法によって、プロビジョニングしている環境のサイズが確実にサポートされることが重要です。 (その逆として、Time Series Insights が読み取るイベント数と各イベントのサイズに対して、環境のサイズをマップできます。)また、データにクエリを実行する際に、必要に応じてスライスとフィルターに使用する属性を検討することも重要です。
 
 > [!TIP]
-> [イベントの送信](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)に関するページで、JSON の整形のドキュメントを参照してください。
+> [イベントの送信](time-series-insights-send-events.md)に関するページで、JSON の整形のドキュメントを参照してください。
 
-## <a name="ensure-you-have-reference-data"></a>参照データの確認
+## <a name="ensure-that-you-have-reference-data"></a>参照データの確認
 
-**参照データ セット**は、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
+*参照データセット*は、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースからの各イベントは、Time Series Insights のイングレス エンジンによって、参照データセット内の対応するデータ行と結合されます。 増幅されたイベントは、その後、クエリに利用できます。 結合は、参照データセットに定義されている**主キー**列に基づきます。
 
-参照データは遡及的に結合されないことにご注意ください。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。  大量の履歴データを TSI に送信する予定のとき、TSI で最初に参照データをアップロードまたは作成しない場合、作業をやり直す必要があるかもしれません (それは楽しい作業ではないかもしれません)。  
+> [!NOTE]
+> 参照データは、遡及的に結合されることはありません。 構成されてアップロードされた後は、現在および将来のイングレス データのみが対応付けられ、参照データセットに結合されます。 大量の履歴データを Time Series Insights に送信することを計画している場合、Time Series Insights 内で最初に参照データのアップロードや作成を行わないと、作業をやり直す必要が生じることがあります (ちなみに、楽しいことではありません)。  
 
-TSI での参照データの作成、アップロード、管理方法についての詳細は、Microsoft の[参照データ](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)に関する文書をご覧ください。
+Time Series Insights での参照データの作成、アップロード、管理方法について詳しくは、[参照データセットのドキュメント](time-series-insights-add-reference-data-set.md)をご覧ください。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal で新しい Time Series Insights 環境](time-series-insights-get-started.md)を作成することから開始します。
 
-- Time Series Insights に[イベント ハブ イベント ソースを追加する](time-series-insights-how-to-add-an-event-source-eventhub.md)方法を学習します。
+- Time Series Insights に[イベント ハブのイベント ソースを追加する](time-series-insights-how-to-add-an-event-source-eventhub.md)方法を学習します。
 
 - [IoT Hub イベント ソースを構成する](time-series-insights-how-to-add-an-event-source-iothub.md)方法を参照します。

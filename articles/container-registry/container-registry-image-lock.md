@@ -1,18 +1,14 @@
 ---
-title: Azure Container Registry のイメージをロックする
+title: イメージのロック
 description: コンテナー イメージまたはリポジトリの属性を設定して、Azure コンテナー レジストリで削除や上書きができないようにします。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
-ms.author: danlep
-ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 09/30/2019
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77659698"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
@@ -20,11 +16,18 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 
 この記事では、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
+> [!IMPORTANT]
+> この記事は、Azure portal の **[設定] > [ロック]** 、または Azure CLI で `az lock` コマンドを使用するレジストリ全体のロックには適用されません。 レジストリ リソースをロックしても、レポジトリ内のデータの作成、更新、または削除は実行できます。 レジストリのロックは、レプリケーションの追加や削除、あるいはレジストリ自体の削除などの管理操作にのみ影響します。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/management/lock-resources.md)」を参照してください。
+
 ## <a name="scenarios"></a>シナリオ
 
 既定では、Azure Container Registry のタグ付けされたイメージは*変更可能*であるため、適切なアクセス許可で、同じタグのイメージを定期的に更新し、レジストリにプッシュすることができます。 必要に応じて、コンテナー イメージを[削除する](container-registry-delete.md)こともできます。 この動作は、イメージを開発し、レジストリのサイズを維持する必要がある場合に役立ちます。
 
-しかし、コンテナー イメージを運用環境にデプロイするときに、*不変の*コンテナー イメージが必要になる場合があります。 不変のイメージとは、誤って削除や上書きできないものです。 [az acr repository update][az-acr-repository-update] コマンドを使用してリポジトリ属性を設定することで、以下のことが可能になります。
+しかし、コンテナー イメージを運用環境にデプロイするときに、*不変の*コンテナー イメージが必要になる場合があります。 不変のイメージとは、誤って削除や上書きできないものです。
+
+レジストリでのタグ付けとイメージ作成の方法については、「[コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](container-registry-image-tag-version.md)」を参照してください。
+
+[az acr repository update][az-acr-repository-update] コマンドを使用してリポジトリ属性を設定することで、以下のことが可能になります。
 
 * イメージ バージョン、またはリポジトリ全体をロックする
 
@@ -32,7 +35,7 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 
 * イメージ バージョン、またはリポジトリ全体で読み取り (プル) 操作ができないようにする
 
-例については、次のセクションを参照してください。
+例については、次のセクションを参照してください。 
 
 ## <a name="lock-an-image-or-repository"></a>イメージまたはリポジトリをロックする 
 
@@ -41,7 +44,7 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 
@@ -66,7 +69,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>マニフェスト ダイジェストでイメージをロックする
 
-マニフェスト ダイジェスト (`sha256:...` として表される、SHA-256 ハッシュ) で識別された *myrepo/myimage* イメージをロックするには、次のコマンドを実行します  (1 つまたは複数のイメージ タグに関連付けられているマニフェスト ダイジェストを見つけるには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドを実行します)。
+マニフェスト ダイジェスト (`sha256:...` として表される、SHA-256 ハッシュ) で識別された *myrepo/myimage* イメージをロックするには、次のコマンドを実行します (1 つまたは複数のイメージ タグに関連付けられているマニフェスト ダイジェストを見つけるには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドを実行します)。
 
 ```azurecli
 az acr repository update \
@@ -142,7 +145,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、[az acr repository update][az-acr-repository-update] コマンドを使用して、リポジトリ内のイメージ バージョンの削除や更新ができないようにする方法を学習しました。 追加の属性を設定する場合は、[az acr repository update][az-acr-repository-update] コマンドのリファレンスを参照してください。
 

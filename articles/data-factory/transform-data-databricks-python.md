@@ -1,25 +1,26 @@
 ---
-title: Databricks Python でデータを変換する - Azure | Microsoft Docs
+title: Databricks Python でデータを変換する
 description: Databricks Python を実行してデータを処理または変換する方法を説明します。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
-manager: craigg
-ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+manager: anandsub
+ms.openlocfilehash: e102b14d8471a19564f66edc27cc328c2a789c98
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002843"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81414596"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 [Data Factory パイプライン](concepts-pipelines-activities.md) の Azure Databricks Python アクティビティは、Azure Databricks クラスターで Python ファイルを実行します。 この記事は、データ変換の概要とサポートされる変換アクティビティを説明している [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。
 
@@ -65,12 +66,12 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 |プロパティ|説明|必須|
 |---|---|---|
 |name|パイプラインのアクティビティの名前。|はい|
-|description|アクティビティの動作を説明するテキスト。|いいえ |
+|description|アクティビティの動作を説明するテキスト。|いいえ|
 |type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|はい|
 |linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
 |pythonFile|実行される Python ファイルの URI。 DBFS パスのみがサポートされています。|はい|
-|parameters|Python ファイルに渡されるコマンド ライン パラメーター。 文字列の配列です。|いいえ |
-|libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|いいえ |
+|parameters|Python ファイルに渡されるコマンド ライン パラメーター。 文字列の配列です。|いいえ|
+|libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|いいえ|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks アクティビティでサポートされるライブラリ
 
@@ -112,7 +113,7 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks でライブラリをアップロードする方法
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Databricks ワークスペース UI の使用](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)。
+#### <a name="using-databricks-workspace-ui"></a>[Databricks ワークスペース UI の使用](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
 UI を使用して追加されたライブラリの dbfs パスを取得するには、[Databricks CLI (インストール)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) を使用します。 
 
@@ -120,6 +121,6 @@ UI を使用する場合、通常、Jar ライブラリは dbfs:/FileStore/jars 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Databricks CLI を使用したライブラリのコピー](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Databricks CLI を使用したライブラリのコピー](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
 例: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*

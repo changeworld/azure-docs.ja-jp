@@ -1,41 +1,35 @@
 ---
-title: Azure クイック スタート - Batch ジョブの実行 - Python
-description: Batch Python クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.devlang: python
+title: Python API を使用して Azure Batch ジョブを実行する
+description: Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。 Batch サービスの主要概念について説明します。
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.custom:
+- seo-python-october2019
+- mvc
+ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754423"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117201"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート:Python API で最初の Batch ジョブを実行する
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>クイック スタート:Python API を使用して Azure Batch ジョブを実行する
 
-このクイック スタートでは、Azure Batch Python API に基づいて構築されたアプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
- 
-![クイック スタート アプリのワークフロー](./media/quick-run-python/sampleapp.png)
+このクイックスタートでは、Python API を使用して、アプリから Azure Batch ジョブを実行します。 このアプリでは、入力データ ファイルを Azure Storage にアップロードし、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行する "*ジョブ*" を作成します。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+ここでは、Batch サービスの主要な概念を説明します。より大規模でより現実的なワークロードで Batch を試す準備をしましょう。
+
+![Azure Batch ワークフローの概要](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python バージョン 2.7 または 3.3 以降](https://www.python.org/downloads/)
-
-* [pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャー
-
-* Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。 
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure Batch** アカウントおよびリンクされた **Azure ストレージ** アカウント。 [Azure portal](quick-create-portal.md) または [CLI](quick-create-cli.md) を使用してこれらのアカウントを作成します。
+- [Python](https://python.org/downloads) バージョン 2.7 または 3.3 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -43,7 +37,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 GitHub から[サンプル アプリをダウンロードまたは複製](https://github.com/Azure-Samples/batch-python-quickstart)します。 Git クライアントを使用してサンプル アプリ リポジトリを複製するには、次のコマンドを使用します。
 
-```
+```bash
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
@@ -55,7 +49,7 @@ Python スクリプト `python_quickstart_client.py` が含まれているディ
 pip install -r requirements.txt
 ```
 
-ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウント用に取得した値で更新します。 例: 
+ファイル `config.py`を開きます。 Batch アカウントとストレージ アカウントの資格情報文字列を、アカウント用に取得した値で更新します。 次に例を示します。
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -65,11 +59,11 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 Batch ワークフローの動作を確認するには、スクリプトを実行します。
 
-```
+```bash
 python python_quickstart_client.py
 ```
 
@@ -77,7 +71,7 @@ python python_quickstart_client.py
 
 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 タスクは、最初のコンピューティング ノードが実行中になるとすぐに、実行するためにキューに登録されます。 Batch アカウントにプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal](https://portal.azure.com) で Batch アカウントに移動します。
 
-```
+```output
 Sample start: 11/26/2018 4:02:54 PM
 
 Container [input] created.
@@ -92,7 +86,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 
 タスクが完了すると、タスクごとに次のような出力が表示されます。
 
-```
+```output
 Printing task output...
 Task: Task0
 Node: tvm-2850684224_3-20171205t000401z
@@ -116,7 +110,7 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 
 ### <a name="preliminaries"></a>準備
 
-ストレージ アカウントを操作するには、アプリで [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) パッケージを使用して [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice) オブジェクトを作成します。
+ストレージ アカウントを操作するには、アプリで [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) パッケージを使用して [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) オブジェクトを作成します。
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,12 +118,12 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-このアプリでは、`blob_client` 参照を使用して、ストレージ アカウントにコンテナーを作成したり、そのコンテナーにデータ ファイルをアップロードしたりします。 ストレージ内のファイルは、Batch の [ResourceFile](/python/api/azure.batch.models.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。
+このアプリでは、`blob_client` 参照を使用して、ストレージ アカウントにコンテナーを作成したり、そのコンテナーにデータ ファイルをアップロードしたりします。 ストレージ内のファイルは、Batch の [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。
 
 ```python
-input_file_paths =  [os.path.join(sys.path[0], 'taskdata0.txt'),
-                     os.path.join(sys.path[0], 'taskdata1.txt'),
-                     os.path.join(sys.path[0], 'taskdata2.txt')]
+input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
+                    os.path.join(sys.path[0], 'taskdata1.txt'),
+                    os.path.join(sys.path[0], 'taskdata2.txt')]
 
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
@@ -140,20 +134,20 @@ input_files = [
 
 ```python
 credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
-    config._BATCH_ACCOUNT_KEY)
+                                              config._BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
-    base_url=config._BATCH_ACCOUNT_URL)
+    batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
-Batch プールを作成するために、このアプリでは [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 18.04 LTS イメージを指定します。 Batch は、Azure Marketplace の Linux および Windows Server のさまざまなイメージだけでなく、カスタム VM イメージもサポートしています。
+Batch プールを作成するために、このアプリでは [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 18.04 LTS イメージを指定します。 Batch は、Azure Marketplace の Linux および Windows Server のさまざまなイメージだけでなく、カスタム VM イメージもサポートしています。
 
 ノードの数 (`_POOL_NODE_COUNT`) と VM のサイズ (`_POOL_VM_SIZE`) は、定義済みの定数です。 このサンプルでは、既定で、サイズ *Standard_A1_v2* の 2 つのノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
+[pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -164,7 +158,7 @@ new_pool = batch.models.PoolAddParameter(
             offer="UbuntuServer",
             sku="18.04-LTS",
             version="latest"
-            ),
+        ),
         node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=config._POOL_VM_SIZE,
     target_dedicated_nodes=config._POOL_NODE_COUNT
@@ -174,7 +168,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Batch ジョブの作成
 
-Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 このアプリでは、[JobAddParameter](/python/api/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure.batch.operations.joboperations) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
+Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 このアプリでは、[JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) メソッドにより、指定の Batch アカウントにジョブが追加されます。 最初、ジョブにはタスクがありません。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,21 +179,21 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>タスクの作成
 
-このアプリは、[TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) クラスを使用して、タスク オブジェクトの一覧を作成します。 各タスクは、`command_line` プロパティを使用して入力の `resource_files` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Bash シェルの `cat` コマンドを実行してテキスト ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
+このアプリは、[TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) クラスを使用して、タスク オブジェクトの一覧を作成します。 各タスクは、`command_line` プロパティを使用して入力の `resource_files` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Bash シェルの `cat` コマンドを実行してテキスト ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
 
-その後、アプリは、[task.add_collection](/python/api/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、アプリは、[task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
 
 ```python
 tasks = list()
 
-for idx, input_file in enumerate(input_files): 
+for idx, input_file in enumerate(input_files):
     command = "/bin/bash -c \"cat {}\"".format(input_file.file_path)
     tasks.append(batch.models.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
         resource_files=[input_file]
     )
-)
+    )
 batch_service_client.task.add_collection(job_id, tasks)
 ```
 
@@ -211,12 +205,13 @@ batch_service_client.task.add_collection(job_id, tasks)
 tasks = batch_service_client.task.list(job_id)
 
 for task in tasks:
-    
+
     node_id = batch_service_client.task.get(job_id, task.id).node_info.node_id
     print("Task: {}".format(task.id))
     print("Node: {}".format(node_id))
 
-    stream = batch_service_client.file.get_from_task(job_id, task.id, config._STANDARD_OUT_FILE_NAME)
+    stream = batch_service_client.file.get_from_task(
+        job_id, task.id, config._STANDARD_OUT_FILE_NAME)
 
     file_text = _read_stream_as_string(
         stream,
@@ -225,13 +220,13 @@ for task in tasks:
     print(file_text)
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリは自動的に、作成された入力用ストレージ コンテナーを削除し、Batch プールとジョブを削除するためのオプションを表示します。 ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールは不要になったら、削除してください。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 
 
-リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、**[リソース グループの削除]** をクリックしてください。
+リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Batch Python API を使用して構築された小さいアプリを実行し、Batch プールと Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行され、作成された出力がノードにダウンロードされました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細を確認し、実際のアプリケーションで並列ワークロードを詳しく見てみるには、Batch Python のチュートリアルに進んでください。
 

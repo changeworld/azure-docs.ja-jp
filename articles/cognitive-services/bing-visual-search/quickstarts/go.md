@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Visual Search REST API と Go を使用して画像に関する分析情報を取得する
+title: クイック スタート:REST API と Go を使用して画像に関する分析情報を取得する - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: dcfb2d7dc49dae03c733a3016d37425e33fb0535
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796480"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75446640"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>クイック スタート:Bing Visual Search REST API と Go を使用して画像に関する分析情報を取得する
 
@@ -26,13 +26,13 @@ ms.locfileid: "65796480"
 * [Go バイナリ](https://golang.org/dl/)をインストールします。
 * 結果の表示には、go-spew ディープ プリティ プリンターを使用します。 go-spew は、`$ go get -u https://github.com/davecgh/go-spew` コマンドを使用してインストールできます。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>プロジェクトとライブラリ
 
 お使いの IDE またはエディターで Go プロジェクトを作成します。 次に、要求のための `net/http`、応答を読み取るための `ioutil`、結果の JSON テキストを処理するための `encoding/json` をインポートします。 `go-spew` ライブラリは JSON の結果を解析するために使用されます。
 
-```
+```go
 package main
 
 import (
@@ -54,7 +54,7 @@ import (
 
 JSON 応答で返されたデータの書式は、`BingAnswer` 構造体で設定します。これは、複数のレベルから成る複雑な構造になっています。 次の実装では、いくつかの基本を示しています。
 
-```
+```go
 type BingAnswer struct {
     Type         string `json:"_type"`
     Instrumentation struct {
@@ -109,9 +109,9 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>main 関数と変数  
 
-次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `batchNumber` は Post データの前後の境界に必要な GUID です。 `fileName` 変数は、POST の画像ファイルを識別します。 以降のセクションでは、コードの詳細について説明します。
+次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `batchNumber` は Post データの前後の境界に必要な GUID です。 `fileName` 変数は、POST の画像ファイルを識別します。 `endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.se
     endpoint := "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch"
@@ -161,7 +161,7 @@ func main() {
 
 Visual Search エンドポイントへの POST 要求には、POST データを囲む前後の境界が必要です。 先頭の境界には、バッチ番号、コンテンツ タイプ ID `Content-Disposition: form-data; name="image"; filename=`、および POST する画像のファイル名が含まれます。 末尾の境界は、単にバッチ番号です。 これらの関数は `main` ブロックに含まれていません。
 
-```
+```go
 func BuildFormDataStart(batNum string, fileName string) string{
 
     startBoundary := "--batch_" + batNum + "\r\n"
@@ -180,7 +180,7 @@ func BuildFormDataEnd(batNum string) string{
 
 このコード セグメントでは、画像データを含む POST 要求を作成します。
 
-```
+```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
     file, err := os.Open(fileName)
     if err != nil {
@@ -209,7 +209,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 次のコードでは、要求を送信して結果を読み取ります。
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -228,7 +228,7 @@ resp, err := client.Do(req)
 
 `Unmarshall` 関数は、Visual Search API から返された JSON テキストから情報を抽出します。 `go-spew` プリティ プリンターに結果が表示されます。
 
-```
+```go
     // Create a new answer.  
     ans := new(BingAnswer)
     err = json.Unmarshal(resbody, &ans)
@@ -251,7 +251,7 @@ resp, err := client.Do(req)
 
 結果では、POST 本文に含まれる画像に似た画像が識別されます。 便利なフィールドは `WebSearchUrl` と `Name` です。
 
-```
+```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
      (struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) {
       WebSearchUrl: (string) (len=129) "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&id=B9E6621161769D578A9E4DD9FD742128DE65225A&simid=608046863828453626",
@@ -284,7 +284,7 @@ resp, err := client.Do(req)
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Visual Search API とは](../overview.md)

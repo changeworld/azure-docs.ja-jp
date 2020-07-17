@@ -1,19 +1,19 @@
 ---
-title: Azure Spatial Anchors を使用してアンカーを作成および探知する方法 | Microsoft Docs
+title: アンカーの作成および配置の概要
 description: Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bbb2eb6cca09c496328d35e075b7d2e548898b4c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964723"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74270454"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Azure Spatial Anchors を使用してアンカーを作成および探知する方法
 
@@ -21,7 +21,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 これは複数の異なる開発環境をサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、自分の開発環境を選択して続行してください。
 
 > [!div class="nextstepaction"]

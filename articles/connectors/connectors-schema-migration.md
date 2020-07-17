@@ -1,20 +1,17 @@
 ---
-title: アプリを最新のスキーマに移行する - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリを最新のスキーマ バージョンに移行する方法
+title: アプリを最新のスキーマに移行する
+description: ロジック アプリ ワークフローの JSON 定義を最新のワークフロー定義言語スキーマ バージョンに移行する方法
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: bf27739bd42106550c18e3bbc27a1ff8b3770747
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321128"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75666790"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行する
 
@@ -22,7 +19,7 @@ ms.locfileid: "54321128"
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-2. ロジック アプリのメニューで、**[概要]** を選択します。 ツール バーで **[スキーマの更新]** を選択します。
+2. ロジック アプリのメニューで、 **[概要]** を選択します。 ツール バーで **[スキーマの更新]** を選択します。
 
    > [!NOTE]
    > **[スキーマの更新]** を選択すると、Azure Logic Apps によって自動的に移行ステップが実行され、必要な出力コードが提供されます。 この出力を使用してロジック アプリの定義を更新することができます。 ただし、以降の「**ベスト プラクティス**」セクションに記載されているベスト プラクティスには必ず従ってください。
@@ -41,6 +38,6 @@ ms.locfileid: "54321128"
 
 * 移行が完了したら、できるだけ [マネージド API](../connectors/apis-list.md) を使用するようにロジック アプリを更新します。 たとえば、DropBox v1 が使われている箇所はすべて Dropbox v2 を使用するように変更します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロジック アプリを手動で移行する方法について](../logic-apps/logic-apps-schema-2015-08-01.md)

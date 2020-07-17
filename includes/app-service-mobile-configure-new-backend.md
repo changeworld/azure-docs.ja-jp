@@ -5,50 +5,99 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 894dd5ea7270390780813b647fe7a8b4c0f173bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139979"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67440210"
 ---
-1. **[App Services]** ボタンをクリックして Mobile Apps バックエンドを選択し、**[クイック スタート]** を選択して目的のクライアント プラットフォーム (iOS、Android、Xamarin、Cordova) を選択します。
+1. 次のプラットフォームのためのクライアント SDK クイック スタートをダウンロードします。
+    
+    [iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS)  
+    [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift)  
+    [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android)  
+    [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS)  
+    [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android)  
+    [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms)  
+    [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova)  
+    [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)  
 
-    ![Mobile Apps のクイックスタートが強調表示された Azure Portal][quickstart]
+    > [!NOTE]
+    > iOS プロジェクトを使用する場合は、[GitHub の最新リリース](https://github.com/Azure/azure-mobile-apps-ios-client/releases/latest)から "azuresdk-iOS-\*.zip" をダウンロードする必要があります。 `MicrosoftAzureMobile.framework` ファイルを解凍して、プロジェクトのルートに追加します。
+    >
 
-1. データベース接続が構成されていない場合は、次の手順で作成します。
+2. データベース接続を追加するか、または既存の接続に接続する必要があります。 まず、データ ストアを作成するか、または既存のデータ ストアを使用するかを決定します。
 
-    ![Azure Portal (Mobile Apps をデータベースに接続)][connect]
+    - **新しいデータ ストアを作成する**:データ ストアを作成する場合は、次のクイック スタートを使用します。
 
-    a. 新しい SQL データベースとサーバーを作成します。 以降の手順 3. を実行するために、接続文字列名フィールドを既定値 (MS_TableConnectionString) のままにしておく必要があります。
+        [クイック スタート: Azure SQL Database の単一データベースの概要](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    ![Azure Portal (Mobile Apps の新しいデータベースとサーバーを作成)][server]
+    - **既存のデータ ソース**:既存のデータベース接続を使用する場合は、次の手順に従います。
 
-    b. データ接続が正常に作成されるまで待ちます。
+        1. SQL Database の接続文字列の形式 - `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
 
-    ![データ接続が正常に作成されたことを示す Azure Portal の通知][notification]
+           **{your_SQLServer}** サーバーの名前。これは、データベースの概要ページで見つけることができ、通常は "server_name.database.windows.net" の形式になっています。
+            **{ポート}** 通常は 1433 です。
+            **{your_catalogue}** データベースの名前。
+            **{your_username}** データベースにアクセスするユーザー名。
+            **{your_password}** データベースにアクセスするためのパスワード。
 
-    c. データ接続の作成に成功しました。
+            [SQL 接続文字列の形式](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)の詳細を確認してください。
 
-    ![Azure Portal の通知 ("データ接続が既に存在します")][already-connection]
+        2. **モバイル アプリ**に接続文字列を追加します。App Service では、メニューの **[構成]** オプションを使用して、アプリケーションの接続文字列を管理できます。
 
-1. **[2. テーブル API の作成]** で、**[バックエンド言語]** として Node.js を選択します。
+            接続文字列を追加するには:
 
-1. 確認要求をそのまま受け入れ、**[TodoItem テーブルを作成する]** を選択します。
-    この操作で新しい TodoItem テーブルがデータベースに作成されます。
+            1. **[アプリケーションの設定]** タブをクリックします。
 
-    >[!IMPORTANT]
-    > 既存のバックエンドを Node.js に切り替えると、すべてのコンテンツが上書きされます。 .NET バックエンドを作成するには、[Mobile Apps 用 .NET バックエンド サーバー SDK の操作][instructions]に関するページを参照してください。
+            2. **[[+] New connection string] ([+] 新しい接続文字列)** をクリックします。
 
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
-[connect]: ./media/app-service-mobile-configure-new-backend/connect-to-bd.png
-[notification]: ./media/app-service-mobile-configure-new-backend/notification-data-connection-create.png
-[server]: ./media/app-service-mobile-configure-new-backend/create-new-server.png
-[already-connection]: ./media/app-service-mobile-configure-new-backend/already-connection.png
+            3. 接続文字列の **[名前]** 、 **[値]** 、および **[種類]** を指定する必要があります。
 
-<!-- URLs -->
-[instructions]: ../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app
+            4. **[名前]** を「`MS_TableConnectionString`」と入力します。
+
+            5. [値] は、前の手順で作成した接続文字列にしてください。
+
+            6. SQL Azure データベースに接続文字列を追加している場合は、 **[種類]** の下の **[SQLAzure]** を選択します。
+
+3. Azure Mobile Apps には、.NET バックエンド用と Node.js バックエンド用の SDK があります。
+
+   - **Node.JS バックエンド**
+    
+     Node.js クイックスタート アプリを使用する場合は、以下の手順に従ってください。
+
+     1. Azure portal で、 **[Easy Tables]** に移動します。次の画面が表示されます。
+      
+        ![Node Easy Tables](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
+
+     2. SQL 接続文字列が **[構成]** タブに既に追加されていることを確認します。次に、 **[これにより、すべてのサイト コンテンツが上書きされることを確認しました]** のボックスをオンにし、 **[TodoItem テーブルを作成する]** をクリックします。
+     
+        ![Node Easy Tables の構成](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
+
+     3. **[Easy Tables]** で、 **[+ 追加]** をクリックします。
+    
+        ![Node Easy Tables の追加ボタン](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
+
+     4. 匿名アクセス権で `TodoItem` テーブルを作成します。
+      
+        ![Node Easy Tables のテーブルの追加](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
+
+   - **.NET バックエンド**
+    
+        .NET クイックスタート アプリを使用する場合は、次の手順に従います。
+
+        1. [azure-mobile-apps-quickstarts リポジトリ](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet/Quickstart)から Azure Mobile Apps .NET サーバー プロジェクトをダウンロードします。
+
+        2. Visual Studio でローカルに .NET サーバー プロジェクトをビルドします。
+
+        3. Visual Studio でソリューション エクスプローラーを開き、`ZUMOAPPNAMEService` プロジェクトを右クリックして、 **[発行]** をクリックすると、`Publish to App Service` ウィンドウが表示されます。 Mac で作業している場合は、[こちら](https://docs.microsoft.com/azure/app-service/deploy-local-git)から、アプリをデプロイする他の方法を確認してください。
+        
+           ![Visual Studio の発行](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
+
+        4. 発行先として **[App Service]** を選択し、 **[既存のものを選択]** をクリックし、次にウィンドウ下部にある **[発行]** をクリックします。
+
+        5. 最初に、Azure サブスクリプションを使用して Visual Studio にログインする必要があります。 `Subscription`、`Resource Group` を選択し、次にアプリの名前を選択します。 準備ができたら **[OK]** をクリックします。これにより、ローカル環境にある .NET サーバー プロジェクトが App Service バックエンドにデプロイされます。 デプロイが完了すると、ブラウザーで `http://{zumoappname}.azurewebsites.net/` にリダイレクトされます。                   

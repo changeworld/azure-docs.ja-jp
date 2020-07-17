@@ -1,25 +1,25 @@
 ---
-title: Microsoft Authenticator アプリに職場または学校のアカウントを追加する - Azure Active Directory | Microsoft Docs
-description: 2 要素認証のために Microsoft Authenticator アプリに職場または学校のアカウントを追加する方法。
+title: Microsoft Authenticator アプリに職場または学校アカウントを追加する - Azure AD
+description: 2 要素検証の使用中に ID を検証するために、Microsoft Authenticator アプリに職場または学校アカウントを追加します。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231f3c44344f4119bab6e1efb5546e6fded0c784
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 8f084057c8bc2d0be1e04dc1821378c9733cc050
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960620"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741534"
 ---
-# <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに職場または学校アカウントを追加する
+
 組織で 2 要素認証を使用している場合は、認証方法の 1 つとして、Microsoft Authenticator アプリを使用するように職場または学校のアカウントを設定できます。
 
 >[!Important]
@@ -27,20 +27,23 @@ ms.locfileid: "56960620"
 
 ## <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 
-1. お使いのコンピューターで、[[追加のセキュリティ確認]](https://aka.ms/mfasetup) ページに移動します。
+1. お使いのコンピューターで、[[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページに移動します。
 
     >[!Note]
     >**[追加のセキュリティ確認]** ページが表示されない場合は、管理者がセキュリティ情報 (プレビュー) エクスペリエンスをオンにしている可能性があります。 その場合は、[[認証アプリを使用するようにセキュリティ情報を設定する]](security-info-setup-auth-app.md) セクションの指示に従います。 そうでない場合は、組織のヘルプ デスクに問い合わせる必要があります。 セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。
 
-2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、**[構成]** を選択します。
+2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、 **[構成]** を選択します。
 
     **[モバイル アプリケーションの構成]** ページが表示されます。
-    
+
     ![QR コードを提供する画面](./media/user-help-auth-app-download-install/auth-app-barcode.png)
 
-3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[職場または学校アカウント]** を選択します。
+3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[職場または学校アカウント]** を選択します。
 
-4. お使いのデバイスのカメラを使用して、コンピューターの **[モバイル アプリケーションの構成]** 画面から QR コードをスキャンして、**[完了]** を選択します。
+    >[!Note]
+    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
+
+4. お使いのデバイスのカメラを使用して、コンピューターの **[モバイル アプリケーションの構成]** 画面から QR コードをスキャンして、 **[完了]** を選択します。
 
     >[!Note]
     >カメラで QR コードをキャプチャできない場合は、2 要素検証のために Microsoft Authenticator アプリにご自分のアカウント情報を手動で追加できます。 これを行う方法と詳細については、[手動でのアカウントの追加](user-help-auth-app-add-account-manual.md)に関するページを参照してください。
@@ -49,7 +52,7 @@ ms.locfileid: "56960620"
 
     ![[アカウント] 画面](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - アプリにアカウントを追加すると、デバイスで Authenticator アプリを使用してサインインできます。 詳細については、[アプリを使用したサインイン](user-help-auth-app-sign-in.md)に関するページを参照してください。
 

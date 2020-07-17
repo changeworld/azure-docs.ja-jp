@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492857"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478959"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -76,11 +76,11 @@ Azure でマシンを起動するには、Azure 環境で、いくつかのド�
 
 Azure でフェールオーバーされた VM で **[接続]** ボタンが淡色表示され、Express Route またはサイト間 VPN 接続を使用して Azure に接続されない場合は、次の操作を実行します。
 
-1. **[仮想マシン]** > **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![ネットワーク インターフェイス](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. **[仮想マシン]**  >  **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![ネットワーク インターフェイス](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. パブリック IP アドレスを有効にするには、**[有効にする]** をクリックします。 ![IP の有効化](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. **[必要な設定の構成]** > **[新規作成]** をクリックします。 ![新規作成](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. パブリック アドレスの名前を入力し、**[SKU]** と **[割り当て]** の既定のオプションを選択し、**[OK]** をクリックします。
+3. パブリック IP アドレスを有効にするには、 **[有効にする]** をクリックします。 ![IP の有効化](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. **[必要な設定の構成]**  >  **[新規作成]** をクリックします。 ![新規作成](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. パブリック アドレスの名前を入力し、 **[SKU]** と **[割り当て]** の既定のオプションを選択し、 **[OK]** をクリックします。
 6. **[保存]** をクリックして変更を保存します。
 7. パネルを閉じ、仮想マシンの **[概要]** セクションに移動して、/RDP に接続します。
 
@@ -106,6 +106,18 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが使�
 >[!Note]
 >ブート診断以外の設定を有効にした場合は、フェールオーバーの前に Azure VM エージェントを仮想マシンにインストールする必要があります。
 
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>UEFI ベースのマシンを Azure にフェールオーバーした後、シリアル コンソールを開くことができない
+
+RDP を使用してマシンに接続できても、シリアル コンソールを開くことができない場合は、次の手順に従います。
+
+* マシンの OS が Red Hat または Oracle Linux 7.*/8.0 の場合は、ルート アクセス許可を使用してフェールオーバー Azure VM で次のコマンドを実行します。 コマンドを実行した後に VM を再起動します。
+
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+
+* マシンの OS が CentOS 7.* の場合は、ルート アクセス許可を使用してフェールオーバー Azure VM で次のコマンドを実行します。 コマンドを実行した後に VM を再起動します。
+
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>予期しないシャット ダウンのメッセージ (イベント ID 6008)
 
 フェールオーバー後の Windows VM 起動時に、回復した VM で、予期しないシャット ダウンのメッセージを受信した場合、それはフェールオーバーに使用された復旧ポイントで、VM のシャット ダウン状態がキャプチャされなかったことを示しています。 これは、VM が完全にはシャット ダウンされていないときのポイントに復旧すると発生します。
@@ -116,7 +128,7 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが使�
 
 この問題は、フェールオーバーが発生した仮想マシンを再保護しようとしたときに、Azure portal でデータストアを表示できない場合に指摘されます。 これは、マスター ターゲットが、Azure Site Recovery に追加された vCenter の仮想マシンとして認識されていないためです。
 
-仮想マシンの再保護の詳細については、「[Reprotect and fail back machines to an on-premises site after failover to Azure (Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする)](vmware-azure-reprotect.md)」を参照してください。
+仮想マシンの再保護の詳細については、「[Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする](vmware-azure-reprotect.md)」を参照してください。
 
 この問題を解決するには:
 
@@ -126,7 +138,7 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが使�
 > 
 > 検出および更新のファブリック操作は完了までに最大 30 分かかります。 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux マスター ターゲット登録が SSL エラー 35 CS で失敗する 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>Linux マスター ターゲット登録が TLS エラー 35 CS で失敗する 
 
 認証済みプロキシがマスター ターゲットで有効になっているため、構成サーバーでの Azure Site Recovery マスター ターゲット登録が失敗します。 
  
@@ -157,7 +169,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
      - マスター ターゲット サーバーでプロキシを無効にします。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Windows VM への RDP 接続](../virtual-machines/windows/troubleshoot-rdp-connection.md)のトラブルシューティング
 - [Linux VM への SSH 接続](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)のトラブルシューティング
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Time Series Insights 環境に参照データ セットを追加する方法 | Microsoft Docs
+title: 参照データ セットを環境に追加する方法 - Azure Time Series Insights | Microsoft Docs
 description: この記事では、参照データ セットを追加して、Azure Time Series Insights 環境内のデータを増幅する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: anshan
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/15/2018
-ms.custom: seodec18
-ms.openlocfilehash: 17ba15ea12efc80dcc830f6338a837d1abb77a71
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/05/2020
+ms.custom: seodec18~~~~
+ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708866"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838520"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -24,80 +24,98 @@ ms.locfileid: "64708866"
 
 参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
 
-参照データは、遡及的に結合されることはありません。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。
+参照データは、遡及的に結合されることはありません。 そのため、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。
 
-## <a name="video"></a>ビデオ: 
+## <a name="video"></a>ビデオ
 
-### <a name="in-this-video-we-cover-time-series-insights-reference-data-modelbr"></a>このビデオでは、Time Series Insight の参照データ モデルについて説明します。</br>
+### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Time Series Insight の参照データ モデルについて説明します。</br>
 
 > [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
 ## <a name="add-a-reference-data-set"></a>参照データ セットを追加する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックします。 Time Series Insights 環境を選択します。
+1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 
-3. **[概要]** ページを選択します。 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
+1. **[概要]** ページを選択します。 ページの上部付近にある **[Essentials]** セクションを展開して、 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
 
-   TSI 環境のエクスプローラーを参照します。
+   [![[Essentials] セクションを展開する](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-4. TSI エクスプローラーで、環境セレクターを展開します。 アクティブな環境を選択します。 エクスプローラー ページの右上にある参照データ アイコンを選択します。
+   お使いの Time Series Insights 環境に対するエクスプローラーを表示します。
 
-   ![参照データの追加](media/add-reference-data-set/add_reference_data.png)
+1. Time Series Insights エクスプローラーで環境セレクターを展開します。 アクティブな環境を選択します。 エクスプローラー ページの右上にある参照データ アイコンを選択します。
 
-5. **[+ データ セットの追加]** ボタンをクリックして、新しいデータ セットの追加を開始します。
+   [![参照データの追加](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 
-   ![データ セットの追加](media/add-reference-data-set/add_data_set.png)
+1. **[+ データ セットの追加]** ボタンをクリックして、新しいデータ セットの追加を開始します。
 
-6. **[新しい参照データ セット]** ページで、データの形式を選択します。 
-   - **[CSV]**(コンマ区切りのデータ) を選択します。 最初の行は、ヘッダー行として扱われます。 
-   - **[JSON 配列]**(javascript オブジェクト表記法 (JSON) 形式のデータ) を選択します。
+   [![データ セットの追加](media/add-reference-data-set/tsi-add-a-reference-data-set.png)](media/add-reference-data-set/tsi-add-a-reference-data-set.png#lightbox)
 
-   ![データ形式を選択します。](media/add-reference-data-set/add_data.png)
+1. **[新しい参照データ セット]** ページで、データの形式を選択します。
 
-7. 次のいずれかの方法を使用して、データを指定します。
-   - データをテキスト エディターに貼り付けます。 その後、**[参照データの解析]** ボタンをクリックします。
-   - **[ファイルの選択]** ボタンをクリックして、ローカル テキスト ファイルからデータを追加します。 
+   - **[CSV]** (コンマ区切りのデータ) を選択します。 最初の行は、ヘッダー行として扱われます。
+   - JavaScript オブジェクト表記法 (JSON) 形式のデータの場合は **[JSON 配列]** を選択します。
 
-   たとえば、CSV データを貼り付けます。![貼り付けられた CSV データ](media/add-reference-data-set/csv_data_pasted.png)
+   [![データ形式を選択する。](media/add-reference-data-set/tsi-select-data-upload-option.png)](media/add-reference-data-set/tsi-select-data-upload-option.png#lightbox)
 
-   たとえば、JSON 配列データを貼り付けます。![JSON データを貼り付ける](media/add-reference-data-set/json_data_pasted.png)
+1. 次のいずれかの方法を使用して、データを指定します。
+
+   - データをテキスト エディターに貼り付けます。 その後、 **[参照データの解析]** ボタンをクリックします。
+   - **[ファイルの選択]** ボタンをクリックして、ローカル テキスト ファイルからデータを追加します。
+
+   たとえば、CSV データを貼り付けます。[![貼り付けられた CSV データ](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+
+   たとえば、JSON 配列データを貼り付けます。[![JSON データを貼り付ける](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
 
    データ値の解析中にエラーが発生した場合は、ページの下部に赤色でエラーが表示されます (たとえば、`CSV parsing error, no rows extracted`)。
 
-8. データが正常に解析されると、データ グリッドが表示され、データを表す行と列が表示されます。  データ グリッドをレビューし、内容が正しいこと確認してください。
+1. データが正常に解析されると、データ グリッドが表示され、データを表す行と列が表示されます。 データ グリッドをレビューし、内容が正しいこと確認してください。
 
-   ![参照データの追加](media/add-reference-data-set/parse_data.png)
+   [![参照データをレビューする](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-9. 各列をレビューして、仮定されたデータ型を確認し、必要であればデータ型を変更します。  列見出しにあるデータ型のシンボルを選択します。**#** はdouble (数値データ)、**T|F** はブール型、**Abc** は文字列を表します。
+1. 各列をレビューして、仮定されたデータ型を理解し、必要であればデータ型を変更します。  列見出しにあるデータ型のシンボルを選択します。 **#** はdouble (数値データ)、**T|F** はブール型、**Abc** は文字列を表します。
 
-   ![列見出しでデータ型を選択します。](media/add-reference-data-set/choose_datatypes.png)
+   [![列見出しでデータ型を選択する。](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-10. 必要であれば、列見出しの名前を変更します。 キー列の名前は、イベント ソース内の対応するプロパティに結合させるために必要です。 参照データのキー列名が、大文字小文字の区別も含め、受信データへのイベント名と正確に一致することを確認してください。 非キー列の名前は、受信データを対応する参照データの値で増幅するために使用されます。
+1. 必要であれば、列見出しの名前を変更します。 キー列の名前は、イベント ソース内の対応するプロパティに結合させるために必要です。
 
-11. 必要であれば、**[行の追加]** または **[列の追加]** をクリックして参照データの値を追加します。
+   > [!IMPORTANT]
+   > 参照データのキー列名が、大文字小文字の区別も含め、受信データへのイベント名と正確に一致することを確認してください。 非キー列の名前は、受信データを対応する参照データの値で増幅するために使用されます。
 
-12. 必要であれば、**[Filter the rows...]\(行をフィルター...\)** フィールドに値を入力して、特定の行をレビューします。 フィルターはデータをレビューするのに便利ですが、データのアップロード中には適用されません。
- 
-13. データ グリッドの上の **[データ セット名]** フィールドに値を入力して、データ セットに名前を付けます。
+1. 必要であれば、 **[Filter the rows...]\(行をフィルター...\)** フィールドに値を入力して、特定の行をレビューします。 フィルターはデータをレビューするのに便利ですが、データのアップロード中には適用されません。
 
-    ![データ セットに名前を付けます。](media/add-reference-data-set/name_reference_dataset.png)
+1. データ グリッドの上の **[データ セット名]** フィールドに値を入力して、データ セットに名前を付けます。
 
-14. データ グリッドの上にあるドロップダウン リストを選択して、データ セット内の **[主キー]** 列を指定します。
+    [![データ セットに名前を付ける。](media/add-reference-data-set/enter-reference-data-set-name.png)](media/add-reference-data-set/enter-reference-data-set-name.png#lightbox)
 
-    ![キー列を選択します。](media/add-reference-data-set/set_primary_key.png)
+1. データ グリッドの上にあるドロップダウン リストを選択して、データ セット内の **[主キー]** 列を指定します。
 
-    必要であれば、**[+]** ボタンをクリックして、セカンダリ キー列を (複合主キーとして) 追加します。 選択を元に戻す必要がある場合は、ドロップダウン リストから空の値を選択して、セカンダリ キーを削除します。
+    [![キー列を選択する。](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
-15. データをアップロードするには、**[アップロード]** ボタンをクリックします。
+    **(オプション)** **+** ボタンを選択して、セカンダリ キー列を複合主キーとして追加します。 選択を元に戻す必要がある場合は、ドロップダウン リストから空の値を選択して、セカンダリ キーを削除します。
 
-    ![アップロード](media/add-reference-data-set/upload_rows.png)
+1. データをアップロードするには、 **[アップロード]** ボタンをクリックします。
 
-    完了したアップロードが確認され、**[データセットが正常にアップロードされました]** というメッセージが表示されます。
+    [![行をアップロードしデータを確認します。](media/add-reference-data-set/confirm-upload-reference-data.png)](media/add-reference-data-set/confirm-upload-reference-data.png#lightbox)
 
-## <a name="next-steps"></a>次の手順
+    完了したアップロードが確認され、 **[データセットが正常にアップロードされました]** というメッセージが表示されます。
+
+    > [!WARNING]
+    > 参照データセット間で共有されている列またはプロパティは、**重複したプロパティ名** アップロードエラーが表示されます。 このエラーが発生すると、参照データセットを正常にアップロードすることはできません。 重複するプロパティ名を共有する行を結合することによって削除できます。
+
+1. **[行の追加]** 、 **[行の一括インポート]** または **[列の追加]** を選択し、必要に応じて参照データの値をさらに追加します。
+
+    [![行の追加、行の一括インポートまたは列の追加をします。](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
+
+   > [!IMPORTANT]
+   > 一意のキーを別の行と共有する行は、その一意のキーを共有する最後に追加された行によってオーバーライドされる列を含みます。
+
+   > [!NOTE]
+   > 追加された行は、*長方形*である**必要**はありません - 参照データセット内の他のエントリの列の数が少なくなったり、大きくたり、変化したりする可能性があります。
+
+## <a name="next-steps"></a>次のステップ
 
 * プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 
-* 詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/ga-reference-data-api) に関するドキュメントを参照してください。
+* 詳細な API リファレンスについては、[参照データ API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) に関するドキュメントを参照してください。

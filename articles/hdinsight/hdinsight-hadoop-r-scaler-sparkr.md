@@ -1,18 +1,19 @@
 ---
 title: Azure HDInsight で ScaleR と SparkR を使用する
-description: HDInsight 上で ML Services と共に ScaleR と SparkR を使用する
+description: Azure HDInsight で ML サービスを使用してデータ操作とモデル開発を行うために ScaleR と SparkR を使用する
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 78ea29b9b37c55a588a44f8d4b69486b89ee2fee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684823"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75500077"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
@@ -20,7 +21,7 @@ ms.locfileid: "64684823"
 
 どちらのパッケージも Apache Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 ML Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
 
-この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) にあります。
+この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop) にあります。
 
 これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する ML Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。
 
@@ -30,7 +31,7 @@ ms.locfileid: "64684823"
 
 フライト データは[米国政府のアーカイブ](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードできます。 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) から、zip ファイルとしても入手可能です。
 
-気象データについては、[米国海洋大気庁のリポジトリ](https://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。 
+気象データについては、[米国海洋大気庁のリポジトリ](https://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。
 
 ## <a name="setting-up-the-spark-environment"></a>Spark 環境のセットアップ
 
@@ -193,7 +194,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Spark DataFrames への航空データと気象データのインポート
 
-今度は、SparkR の [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) 関数を使って気象データと航空データを Spark DataFrames にインポートします。 この関数は、他の多くの Spark メソッドと同様、遅延実行されます。つまり実行キューに格納されるだけで、必要なタイミングが来るまでは実行されません。
+今度は、SparkR の [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) 関数を使って気象データと航空データを Spark DataFrames にインポートします。 この関数は、他の多くの Spark メソッドと同様、遅延実行されます。つまり実行キューに格納されるだけで、必要なタイミングが来るまでは実行されません。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +267,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>気象データと航空データの結合
 
-今度は、SparkR の [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join) 関数を使い、出発空港 (AirportID) と出発時刻 (datetime) で航空データと気象データの左外部結合を実行します。 対応する気象データがなくても、外部結合を使用することですべての航空データ レコードを維持することができます。 結合後、不要な列を除去し、維持する列については名前を変更して、結合処理によって追加された受信 DataFrame プレフィックスを削除します。
+今度は、SparkR の [join()](https://spark.apache.org/docs/latest/api/R/join.html) 関数を使い、出発空港 (AirportID) と出発時刻 (datetime) で航空データと気象データの左外部結合を実行します。 対応する気象データがなくても、外部結合を使用することですべての航空データ レコードを維持することができます。 結合後、不要な列を除去し、維持する列については名前を変更して、結合処理によって追加された受信 DataFrame プレフィックスを削除します。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -458,7 +459,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>ロジスティック回帰モデルのトレーニングとテスト
 
-以上でモデルを構築する準備が整いました。 気象データが到着時刻の遅延に及ぼす影響を調べるために、ScaleR のロジスティック回帰ルーチンを使います。 発着空港における気象の条件が 15 分を超える到着遅延に関係しているかどうかを、ロジスティック回帰ルーチンによってモデル化します。
+さて、以上でモデルを構築する準備が整いました。 気象データが到着時刻の遅延に及ぼす影響を調べるために、ScaleR のロジスティック回帰ルーチンを使います。 発着空港における気象の条件が 15 分を超える到着遅延に関係しているかどうかを、ロジスティック回帰ルーチンによってモデル化します。
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -505,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>外部でのスコア付け
 
-データのスコア付けのモデルは、別のプラットフォームに移して使うこともできます。 その場合は、モデルを RDS ファイルに保存し、それを移行先のスコア付け環境 (MIcrosoft SQL Server R Services など) に転送してインポートします。 スコア付けの対象となるデータのファクター レベルは、モデルが構築された環境と確実に合わせることが重要です。 この要件は、モデリング データに関連付けられている列情報を ScaleR の `rxCreateColInfo()` 関数で抽出して保存し、その列情報を予測の入力データ ソースに適用することで満たすことができます。 次のコードでは、テスト データセットからいくつかの行を保存し、そのサンプルから列情報を抽出して予測スクリプトに使用しています。
+データのスコア付けのモデルは、別のプラットフォームに移して使うこともできます。 その場合は、モデルを RDS ファイルに保存し、それを移行先のスコア付け環境 (MIcrosoft SQL Server R Services など) に転送してインポートします。 スコア付けの対象となるデータのファクター レベルを、モデルが構築された環境と確実に合わせることが重要です。 この要件は、モデリング データに関連付けられている列情報を ScaleR の `rxCreateColInfo()` 関数で抽出して保存し、その列情報を予測の入力データ ソースに適用することで満たすことができます。 次のコードでは、テスト データセットからいくつかの行を保存し、そのサンプルから列情報を抽出して予測スクリプトに使用しています。
 
 ```
 # save the model and a sample of the test dataset 
@@ -536,9 +537,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 - Apache Spark での ML Server の使用について詳しくは、[概要のガイダンス](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)を参照してください。
 
-- ML Server の一般情報については、[R の基礎](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)に関する記事をご覧ください。
-
-- HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)および[ Azure HDInsight での ML Services の基礎](r-server/r-server-get-started.md)に関するページをご覧ください。
+- HDInsight での ML Services については、[HDInsight での ML Services の概要](r-server/r-server-overview.md)に関するページをご覧ください。
 
 SparkR の使い方について詳しくは、次のドキュメントをご覧ください。
 

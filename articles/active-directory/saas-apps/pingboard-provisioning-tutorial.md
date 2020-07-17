@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Pingboard を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: チュートリアル:Pingboard のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを Pingboard に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7e2fabc86374f7fe055303d056ae8e00f33389
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964373"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77061277"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル:Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,11 +58,11 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Azure AD で Pingboard への自動ユーザー アカウント プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]** > **[エンタープライズ アプリ]** > **[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリ]**  >  **[すべてのアプリケーション]** セクションの順に移動します。
 
-1. シングル サインオンのために Pingboard を既に構成している場合は、検索フィールドで Pingboard のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Pingboard** を検索します。 検索結果から **Pingboard** を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために Pingboard を既に構成している場合は、検索フィールドで Pingboard のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **Pingboard** を検索します。 検索結果から **Pingboard** を選択してアプリケーションの一覧に追加します。
 
-1. Pingboard のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. Pingboard のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -74,13 +74,13 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
     b. 管理者アカウントを使用して [Pingboard](https://pingboard.com/) にサインインします。
 
-    c. **[アドオン]** > **[統合]** > **[Azure Active Directory]** の順に選択します。
+    c. **[アドオン]**  >  **[統合]**  >  **[Azure Active Directory]** の順に選択します。
 
-    d. **[構成]** タブをクリックし、**[Enable user provisioning from Azure]\(Azure からのユーザー プロビジョニングを有効にする\)** に移動します。
+    d. **[構成]** タブをクリックし、 **[Enable user provisioning from Azure]\(Azure からのユーザー プロビジョニングを有効にする\)** に移動します。
 
-    e. **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** からトークンをコピーして、**[シークレット トークン]** に入力します。
+    e. **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** からトークンをコピーして、 **[シークレット トークン]** に入力します。
 
-1. Azure portal で、**[テスト接続]** を選択して Azure AD が Pingboard アプリに接続できるかどうかをテストします。 接続が失敗した場合、使用中の Pingboard アカウントに Admin アクセス許可があるかどうかを確認して、**[テスト接続]** の手順をもう一度試してください。
+1. Azure portal で、 **[テスト接続]** を選択して Azure AD が Pingboard アプリに接続できるかどうかをテストします。 接続が失敗した場合、使用中の Pingboard アカウントに Admin アクセス許可があるかどうかを確認して、 **[テスト接続]** の手順をもう一度試してください。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
 
@@ -88,18 +88,18 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Pingboard]\(Azure Active Directory ユーザーを Pingboard に同期する\)** を選びます。
 
-1. **[属性マッピング]** セクションで、Azure AD から Pingboard に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Pingboard のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、**[保存]** を選択します。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](../manage-apps/customize-application-attributes.md)に関するページを参照してください。
+1. **[属性マッピング]** セクションで、Azure AD から Pingboard に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Pingboard のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](../app-provisioning/customize-application-attributes.md)に関するページを参照してください。
 
-1. Pingboard に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. Pingboard に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 1. **[保存]** を選択すると、Pingboard に割り当てられたユーザーの初期同期が開始されます。
 
 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用して、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。 これらのログには、Pingboard アプリでプロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](pingboard-tutorial.md)

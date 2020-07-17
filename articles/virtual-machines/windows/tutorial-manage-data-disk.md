@@ -1,28 +1,21 @@
 ---
-title: チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する | Microsoft Docs
+title: チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 description: このチュートリアルでは、Azure PowerShell を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
+ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: 4a60d3d77408e7c05311a2bd6bcceeb9331bd1af
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924681"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100330"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
@@ -45,13 +38,13 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 Azure 仮想マシンを作成すると、2 つのディスクが仮想マシンに自動的に接続されます。 
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 4 TB までサイズを変更でき、VM のオペレーティング システムをホストします。  OS ディスクには、既定でドライブ文字 *C:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
+**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 4 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 [Azure Marketplace](https://azure.microsoft.com/marketplace/) イメージから新しい仮想マシン (VM) を作成する場合は、通常、127 GB です (ただし、一部のイメージの OS ディスクは、これより小さいサイズです)。 OS ディスクには、既定でドライブ文字 *C:* が割り当てられます。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。
 
 **一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは [VM のサイズ](sizes.md)によって決まります。 一時ディスクには、既定でドライブ文字 *D:* が割り当てられます。
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
 
-アプリケーションのインストールやデータの保存のために、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが必要な状況では、必ず、データ ディスクを使用する必要があります。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。 各 VM vCPU に、4 つのデータ ディスクを接続できます。
+アプリケーションのインストールやデータの保存のために、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが必要な状況では、必ず、データ ディスクを使用する必要があります。 仮想マシンのサイズによって、VM に接続できるデータ ディスクの数が決まります。
 
 ## <a name="vm-disk-types"></a>VM ディスクの種類
 
@@ -145,7 +138,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>データ ディスクを確認する
 
-データ ディスクが接続されていることを確認するには、接続されている `DataDisks` の `StorageProfile` を表示します。
+データ ディスクが接続されていることを確認するには、接続されている `StorageProfile` の `DataDisks` を表示します。
 
 ```azurepowershell-interactive
 $vm.StorageProfile.DataDisks
@@ -164,7 +157,7 @@ VirtualHardDisk :
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
 

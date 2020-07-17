@@ -1,27 +1,25 @@
 ---
-title: 管理グループを変更、削除、または管理する方法 - Azure のガバナンス
+title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-author: rthorn17
-ms.service: azure-resource-manager
-ms.date: 04/04/2019
-ms.author: rithorn
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272480"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747472"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 Azure 管理グループの範囲は、サブスクリプションを上回ります。 "管理グループ" と呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用された条件を自動的に継承します。
 
-管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。  管理グループの詳細については、「[Azure 管理グループでリソースを整理する](overview.md)」を参照してください。
+管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。 管理グループの詳細については、「[Azure 管理グループでリソースを整理する](./overview.md)」を参照してください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> Azure Resource Manager のユーザー トークンと管理グループ キャッシュは、強制的に更新されるまで 30 分間継続します。 管理グループまたはサブスクリプションの移動などの操作を行った後、表示されるまでに最大 30 分かかることがあります。 更新プログラムをすぐに確認するには、ブラウザーを更新するか、サインインしてからサインアウトするか、新しいトークンを要求して、トークンを更新する必要があります。  
 
 ## <a name="change-the-name-of-a-management-group"></a>管理グループの名前を変更する
 
@@ -31,7 +29,7 @@ ms.locfileid: "59272480"
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 名前を変更する管理グループを選択します。
 
@@ -39,11 +37,11 @@ ms.locfileid: "59272480"
 
 1. ページの上部にある **[グループ名の変更]** オプションを選択します。
 
-   ![管理グループのページにある [グループ名の変更] オプション](./media/detail_action_small.png)
+   :::image type="content" source="./media/detail_action_small.png" alt-text="管理グループのページにある [グループ名の変更] オプション" border="false":::
 
 1. メニューが開いたら、表示する新しい名前を入力します。
 
-   ![管理グループの名前を変更する [グループ名の変更] ウィンドウ](./media/rename_context.png)
+   :::image type="content" source="./media/rename_context.png" alt-text="管理グループの名前を変更する [グループ名の変更] ペイン" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -69,17 +67,16 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 管理グループの下に子管理グループやサブスクリプションがないこと。
 
-   - サブスクリプションを管理グループ外に移動する場合は、[別の管理グループへのサブスクリプションの移動](#move-subscriptions-in-the-hierarchy)に関する記事を参照してください。
+   - サブスクリプションまたは管理グループを別の管理グループに移動するには、[階層内での管理グループおよびサブスクリプションの移動](#moving-management-groups-and-subscriptions)に関する記事をご覧ください。
 
-   - 管理グループを別の管理グループに移動するには、[階層内での管理グループの移動](#move-management-groups-in-the-hierarchy)に関する記事をご覧ください。
-
-1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。  
+1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、 **[IAM]** を選択します。 RBAC ロールの詳細については、  
+   [RBAC によるアクセスおよびアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事を参照してください。
 
 ### <a name="delete-in-the-portal"></a>ポータルでの削除
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 削除する管理グループを選択します。
 
@@ -87,14 +84,14 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. **[削除]** を選択します
 
-    > [!TIP]
-    > アイコンが無効になっている場合は、アイコンの上にマウス セレクターを置くと理由が表示されます。
+   :::image type="content" source="./media/delete.png" alt-text="[グループの削除] オプション" border="false":::
 
-   ![[グループの削除] オプション](./media/delete.png)
+   > [!TIP]
+   > アイコンが無効になっている場合は、アイコンの上にマウス セレクターを置くと理由が表示されます。
 
 1. 管理グループを削除することを確認するウィンドウが開きます。
 
-   ![グループの削除の確認ウィンドウ](./media/delete_confirm.png)
+   :::image type="content" source="./media/delete_confirm.png" alt-text="グループの削除の確認ウィンドウ" border="false":::
 
 1. **[はい]** を選択します。
 
@@ -122,17 +119,17 @@ az account management-group delete --name 'Contoso'
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 管理グループ階層ページが読み込まれます。 このページで、アクセスできるすべての管理グループとサブスクリプションを調べることができます。 グループ名を選択すると、階層の下位レベルに移動します。 ナビゲーションは、ファイル エクスプローラーと同じように機能します。
 
 1. 管理グループの詳細を表示するには、管理グループのタイトルの横にある **[(詳細])** リンクを選択します。 このリンクを使用できない場合は、その管理グループを表示するアクセス許可がありません。
 
-   ![メイン](./media/main.png)
+   :::image type="content" source="./media/main.png" alt-text="メイン" border="false":::
 
 ### <a name="view-in-powershell"></a>PowerShell での表示
 
-すべてのグループを取得するには、Get-AzManagementGroup コマンドを使用します。  管理グループの GET PowerShell コマンドの一覧については、[Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) モジュールを参照してください。  
+すべてのグループを取得するには、Get-AzManagementGroup コマンドを使用します。 管理グループの GET PowerShell コマンドの一覧については、[Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) モジュールを参照してください。  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -144,7 +141,7 @@ Get-AzManagementGroup
 Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
-特定の管理グループとその下の階層のすべてのレベルを返すには、**-Expand** パラメーターと **-Recurse** パラメーターを使用します。  
+特定の管理グループとその下の階層のすべてのレベルを返すには、 **-Expand** パラメーターと **-Recurse** パラメーターを使用します。  
 
 ```azurepowershell-interactive
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
@@ -193,61 +190,68 @@ az account management-group list
 az account management-group show --name 'Contoso'
 ```
 
-特定の管理グループとその下の階層のすべてのレベルを返すには、**-Expand** パラメーターと **-Recurse** パラメーターを使用します。
+特定の管理グループとその下の階層のすべてのレベルを返すには、 **-Expand** パラメーターと **-Recurse** パラメーターを使用します。
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>階層内でのサブスクリプションの移動
+## <a name="moving-management-groups-and-subscriptions"></a>管理グループとサブスクリプションの移動   
 
 管理グループを作成する理由の 1 つは、サブスクリプションをバンドルするためです。 管理グループとサブスクリプションのみが別の管理グループの子になることができます。 管理グループに移動するサブスクリプションは、親管理グループからすべてのユーザー アクセスとポリシーを継承します。
 
-サブスクリプションを移動するには、次のすべての RBAC アクセス許可に該当する必要があります。
+管理グループまたはサブスクリプションを移動して別の管理グループの子にする場合、3 つのルールが true として評価されなければなりません。
 
-- 子サブスクリプションに対する "所有者" ロール。
-- ターゲット親管理グループに対する "所有者"、"共同作成者"、または "管理グループ共同作成者" ロール。*
-- 既存の親管理グループに対する "所有者"、"共同作成者"、または "管理グループ共同作成者" ロール。*
+移動操作を行う際は、次のことが必要です。 
 
-*: ターゲットまたは既存の親管理グループがルート管理グループである場合を除きます。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
+- 子のサブスクリプションまたは管理グループに対する、管理グループの書き込みアクセス許可とロールの割り当ての書き込みアクセス許可。
+  - 組み込みロールの例: **所有者**
+- 移動先の親管理グループに対する、管理グループの書き込みアクセス権限。
+  - 組み込みロールの例: **所有者**、**共同作成者**、**管理グループ共同作成者**
+- 既存の親管理グループに対する、管理グループの書き込みアクセス権限。
+  - 組み込みロールの例: **所有者**、**共同作成者**、**管理グループ共同作成者**
 
-現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。
+**例外**: ターゲットまたは既存の親管理グループがルート管理グループである場合、この管理の要件は必要ありません。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
 
-### <a name="move-subscriptions-in-the-portal"></a>ポータルでのサブスクリプションの移動
+サブスクリプションの所有者ロールが現在の管理グループから継承される場合、移動先は制限されます。 サブスクリプションは、所有者ロールを持つ別の管理グループにのみ移動できます。 サブスクリプションの所有者ではなくなってしまうので、ご自分が共同作成者である管理グループには移動できません。 サブスクリプションの所有者ロールに (管理グループから継承しているのではなく) 直接割り当てられている場合、ご自分が共同作成者である任意の管理グループに移動できます。
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>既存のサブスクリプションを管理グループに追加する
+現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、 **[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。
+
+## <a name="move-subscriptions"></a>サブスクリプションの移動 
+
+### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>ポータルで既存のサブスクリプションを管理グループに追加する
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 親にする予定の管理グループを選択します。
 
-1. ページの上部で、**[サブスクリプションの追加]** を選択します。
+1. ページの上部で、 **[サブスクリプションの追加]** を選択します。
 
 1. 一覧で、正しい ID を持つサブスクリプションを選択します。
 
-   ![管理グループに追加できるサブスクリプション](./media/add_context_sub.png)
+   :::image type="content" source="./media/add_context_sub.png" alt-text="管理グループに追加できるサブスクリプション" border="false":::
 
 1. [保存] を選択します。
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>管理グループからサブスクリプションを削除する
+### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>ポータルで管理グループからサブスクリプションを削除する
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 現在親となっている管理グループを選択します。  
 
 1. 一覧内で移動するサブスクリプションの行末にある省略記号を選択します。
 
-   ![管理グループの [移動] オプション](./media/move_small.png)
+   :::image type="content" source="./media/move_small.png" alt-text="管理グループの [移動] オプション" border="false":::
 
 1. **[移動]** を選択します。
 
 1. 開かれたメニューで、**親管理グループ**を選択します。
 
-   ![親グループを変更する [移動] ウィンドウ](./media/move_small_context.png)
+   :::image type="content" source="./media/move_small_context.png" alt-text="親グループを変更する [移動] ペイン" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -279,26 +283,24 @@ az account management-group subscription add --name 'Contoso' --subscription '12
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>階層内での管理グループの移動  
-
-親管理グループを移動すると、そのグループの下の階層も一緒に移動します。
+## <a name="move-management-groups"></a>管理グループの移動 
 
 ### <a name="move-management-groups-in-the-portal"></a>ポータルでの管理グループの移動
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 親にする予定の管理グループを選択します。
 
-1. ページの上部で、**[管理グループの追加]** を選択します。
+1. ページの上部で、 **[管理グループの追加]** を選択します。
 
 1. 開いたメニューで、管理グループを新規作成するか、既存のものを使用するかを選択します。
 
    - 新規作成を選んだ場合、新しい管理グループが作成されます。
    - 既存のものを使用することを選んだ場合は、この管理グループに移動できるすべての管理グループのドロップダウンが表示されます。  
 
-   ![管理グループを新規または既存のグループに移動する](./media/add_context_MG.png)
+   :::image type="content" source="./media/add_context_MG.png" alt-text="管理グループを新規または既存のグループに移動する" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -321,19 +323,19 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
 
-管理グループは、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントのクエリを実行できます。  たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
+管理グループは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントのクエリを実行できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
 
-![管理グループが含まれているアクティビティ ログ](media/al-mg.png)
+:::image type="content" source="./media/al-mg.png" alt-text="管理グループが含まれているアクティビティ ログ" border="false":::
 
-Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、**"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
+Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>他のリソース プロバイダーからの管理グループの参照
 
 他のリソース プロバイダーのアクションから管理グループを参照するときは、スコープとして次のパスを使用します。 このパスは、PowerShell、Azure CLI、REST API を使用しているときに使用されます。  
 
->"/providers/Microsoft.Management/managementGroups/{yourMgID}"
+`/providers/Microsoft.Management/managementGroups/{yourMgID}`
 
-たとえば、PowerShell で管理グループに新しいロールを割り当てるときにこのパスを使用します。
+たとえば、PowerShell で管理グループに新しいロール割り当てを行うときにこのパスを使用します。
 
 ```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
@@ -342,15 +344,15 @@ New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Co
 管理グループでポリシー定義を取得するときにも、同じスコープ パスが使用されます。
 
 ```http
-GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 管理グループについて詳しくは、以下をご覧ください。
 
-- [管理グループを作成して Azure リソースを整理する](create.md)
-- [管理グループを変更、削除、または管理する方法](manage.md)
+- [管理グループを作成して Azure リソースを整理する](./create.md)
+- [管理グループを変更、削除、または管理する方法](./manage.md)
 - [Azure PowerShell Resources モジュールで管理グループを確認する](/powershell/module/az.resources#resources)
 - [REST API で管理グループを確認する](/rest/api/resources/managementgroups)
 - [Azure CLI で管理グループを確認する](/cli/azure/account/management-group)

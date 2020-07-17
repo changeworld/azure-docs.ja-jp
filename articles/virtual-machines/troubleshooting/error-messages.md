@@ -4,7 +4,7 @@ description: Azure で仮想マシンをプロビジョニングし、管理す�
 services: virtual-machines
 documentationcenter: ''
 author: xujing-ms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437600"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76543020"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure で仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 
@@ -37,7 +37,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
     "message":"Top level error message",
     "details":[
      {
-      "code":"Inner evel error code",
+      "code":"Inner level error code",
       "message":"Inner level error message"
      }
     ]
@@ -69,7 +69,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  BadRequest  |  操作 '{0}' はマネージド ディスクを使用するリソース '{1}' ではサポートされていません。  |
 |  CertificateImproperlyFormatted  |  {0} から取得したシークレットの JSON 表現には、適切にフォーマットされた PFX ファイルではないデータ フィールドが含まれているか、指定されたパスワードでは PFX ファイルを正しくデコードできません。  |
 |  CertificateImproperlyFormatted  |  {0} から取得したデータは JSON に逆シリアル化できません。  |
-|  競合  |  ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。  |
+|  Conflict  |  ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。  |
 |  ConflictingUserInput  |  ディスク '{0}' は VM '{1}' に既に所有されているのでアタッチできません。  |
 |  ConflictingUserInput  |  ソースとターゲットのリソース グループが同じです。  |
 |  ConflictingUserInput  |  ディスク {0} のソースとターゲットのストレージ アカウントが異なります。  |
@@ -131,7 +131,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  NetworkingInternalOperationError  |  不明なネットワーク割り当てエラー  |
 |  NetworkingInternalOperationError  |  VM のネットワーク プロファイルを処理中に内部エラーが発生しました。  |
 |  NotFound  |  可用性セット {0} が見つかりません。  |
-|  NotFound  |  要求で指定されたソース バーチャル マシン '{0}' は、この Azure の場所には存在しません。  |
+|  NotFound  |  要求で指定されたソース仮想マシン '{0}' は、この Azure の場所には存在しません。  |
 |  NotFound  |  ID {0} のテナントが見つかりません。  |
 |  NotFound  |  イメージ {0} が見つかりません。  |
 |  NotSupported  |  ライセンスの種類は {0} ですが、イメージ BLOB {1} はオンプレミスのものではありません。  |
@@ -172,7 +172,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure Portal での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針について詳しくは、 https://aka.ms/azure-resizevm をご覧ください。  |
 |  OSProvisioningClientError  |  VM '{0}' に OS をプロビジョニングできませんでした。現在、ゲスト OS をプロビジョニングしています。  |
 |  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細:{1}。イメージが適切に準備 (一般化) されていることも確認してください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ で手順を確認することができます </li></ul> |
+|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>[https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ ) で手順を確認することができます </li></ul> |
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。  |
@@ -215,5 +215,5 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  VMStartTimedOut  |  割り当てられた時間内に VM '{0}' が起動しませんでした。 まだ VM が正常に起動する可能性があります。 後で電源の状態を確認してください。  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 さらに支援が必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

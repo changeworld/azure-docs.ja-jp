@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から Salesforce に接続する | Microsoft Docs
+title: Azure Logic Apps から Salesforce に接続する
 description: Azure Logic Apps を使用して Salesforce のレコードおよびジョブを監視、作成、および管理するタスクとワークフローを自動化する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 000f4381ef2a7c0a2099a021b991087725ff2070
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233839"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789292"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Salesforce リソースを監視、作成、および管理する
 
@@ -29,7 +25,7 @@ Salesforce トリガーを使用すると、Salesforce からの応答を取得�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * [Salesforce アカウント](https://salesforce.com/)
 
@@ -50,7 +46,7 @@ Salesforce トリガーを使用すると、Salesforce からの応答を取得�
 
      または
 
-   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「salesforce」と入力します。 アクションの一覧で、目的のアクションを選択します。
+   * 既存のロジック アプリの場合、アクションを追加する手順で、 **[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「salesforce」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
 1. Salesforce へのサインインを求めるメッセージが表示される場合は、ここでサインインしてアクセスを許可します。
 
@@ -67,6 +63,6 @@ Salesforce トリガーを使用すると、Salesforce からの応答を取得�
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

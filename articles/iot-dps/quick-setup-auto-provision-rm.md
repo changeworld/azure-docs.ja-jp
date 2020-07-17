@@ -1,24 +1,23 @@
 ---
-title: Azure Resource Manager テンプレートを使用した Device Provisioning の設定 | Microsoft Docs
-description: Azure クイック スタート - テンプレートを使用して Azure IoT Hub Device Provisioning Service を設定する
+title: Azure Resource Manager テンプレートを使用した Azure IoT Hub Device Provisioning の設定
+description: Azure クイックスタート - テンプレートを使用して Azure IoT Hub Device Provisioning Service (DPS) を設定する
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126479"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74969583"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使うと、デバイスのプロビジョニングで必要になる Azure のクラウド リソースをプログラミングを使って設定することができます。 ここで紹介する手順では、Azure Resource Manager テンプレートを使用して IoT ハブおよび新しい IoT Hub Device Provisioning Service を作成し、その 2 つのサービスをリンクする方法を示します。 このクイック スタートでは、リソース グループの作成とテンプレートのデプロイに必要なプログラミング手順を実行するために [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) を使用していますが、[Azure ポータル](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) のほか、.NET、Ruby などのプログラミング言語を使用してこれらの手順を実行し、テンプレートをデプロイすることも簡単です。 
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使うと、デバイスのプロビジョニングで必要になる Azure のクラウド リソースをプログラミングを使って設定することができます。 ここで紹介する手順では、Azure Resource Manager テンプレートを使用して IoT ハブおよび新しい IoT Hub Device Provisioning Service を作成し、その 2 つのサービスをリンクする方法を示します。 このクイック スタートでは、リソース グループの作成とテンプレートのデプロイに必要なプログラミング手順を実行するために [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) を使用していますが、[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) のほか、.NET、Ruby などのプログラミング言語を使用してこれらの手順を実行し、テンプレートを簡単にデプロイできます。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -39,7 +38,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
 
     指示に従って、コードを使用して認証し、Web ブラウザーで Azure アカウントにサインインします。
 
-2. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべてのAzure アカウントへのアクセスが許可されます。 以下の、利用できる [Azure アカウントを一覧表示するコマンド][lnk-az-account-command] を使用します。
+2. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべてのAzure アカウントへのアクセスが許可されます。 以下の、利用できる [Azure アカウントを一覧表示するコマンド][lnk-az-account-command]を使用します。
     
     ```azurecli
     az account list 
@@ -78,7 +77,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
    }
    ```
 
-2. **parameters** セクションを次の内容に置き換えます。 parameters セクションは、別のファイルから渡すことができるパラメーターを指定するものです。 このセクションには、作成する IoT ハブとプロビジョニング　サービスの名前を指定します。 また、IoT ハブとプロビジョニング サービスの両方の場所もここで指定します。 指定できる値は、IoT ハブとプロビジョニング サービスをサポートしている Azure リージョンに限られます。 Device Provisioning Service をサポートしている場所の一覧は、次のコマンド `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` を実行するか、[[Azure の状態]](https://azure.microsoft.com/status/) ページに移動して "Device Provisioning Service" を検索すると確認できます。
+2. **parameters** セクションを次の内容に置き換えます。 parameters セクションは、別のファイルから渡すことができる値を持つパラメーターを定義するものです。 このセクションには、作成する IoT ハブとプロビジョニング サービスの名前を定義します。 また、IoT ハブとプロビジョニング サービスの両方の場所もここで定義します。 指定できる値は、IoT ハブとプロビジョニング サービスをサポートしている Azure リージョンに限られます。 Device Provisioning Service をサポートしている場所の一覧は、次のコマンド `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` を実行するか、[[Azure の状態]](https://azure.microsoft.com/status/) ページに移動して "Device Provisioning Service" を検索すると確認できます。
 
    ```json
     "parameters": {
@@ -114,7 +113,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
    ```
 
-4. IoT ハブを作成するために、**resources** コレクションに次の行を追加します。 この JSON では、IoT ハブを作成するために最低限必要なプロパティを指定しています。 **name** と **location** のプロパティは、パラメーターとして渡されます。 テンプレート内の IoT ハブに指定できるプロパティの詳細については、「[Microsoft.Devices/IotHubs template reference (Microsoft.Devices/IotHubs のテンプレート リファレンス)](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)」を参照してください。
+4. IoT ハブを作成するために、**resources** コレクションに次の行を追加します。 この JSON では、IoT ハブを作成するために最低限必要なプロパティを指定しています。 **name** と **location** の値は、別のファイルからパラメーターとして渡されます。 テンプレート内の IoT ハブに指定できるプロパティの詳細については、[Microsoft.Devices/IotHubs テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)に関する記事を参照してください。
 
    ```json
         {
@@ -136,7 +135,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
 5. プロビジョニング サービスを作成するために、**resources** コレクションで IoT ハブの詳細が書かれた場所よりも下に次の行を追加します。 プロビジョニング サービスの **name** と **location** は、パラメーターとして渡されます。 **iotHubs** コレクションには、プロビジョニング サービスにリンクさせる IoT ハブを指定します。 リンクさせる IoT ハブのそれぞれには、少なくとも **connectionString** と **location** の 2 つのプロパティを指定する必要があります。 このほか、各 IoT ハブには **allocationWeight**、**applyAllocationPolicy** などのプロパティ、プロビジョニング サービスそのものには **allocationPolicy**、**authorizationPolicies** などのプロパティを、それぞれ設定できます。 詳細については、「[Microsoft.Devices/provisioningServices template reference (Microsoft.Devices/provisioningServices のテンプレート リファレンス)](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)」を参照してください。
 
-   **dependsOn** プロパティを使用しているのは、Resource Manager がプロビジョニング サービスよりも先に IoT ハブを作成するようにするためです。 このテンプレートでは IoT ハブからプロビジョニング サービスへのリンクを指定するにあたって IoT ハブの接続文字列が必要なので、ハブとそのキーを最初に作成する必要があります。 接続文字列の作成については、テンプレートでは **concat**、**listKeys** などの関数を使用しています。 詳細は、「[Azure Resource Manager テンプレートの関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)」を参照してください。
+   **dependsOn** プロパティを使用しているのは、Resource Manager がプロビジョニング サービスよりも先に IoT ハブを作成するようにするためです。 このテンプレートでは IoT ハブからプロビジョニング サービスへのリンクを指定するにあたって IoT ハブの接続文字列が必要なので、ハブとそのキーを最初に作成する必要があります。 テンプレートでは **concat**、**listKeys** などの関数を使用して、パラメーター化された変数から接続文字列を作成します。 詳細は、「[Azure Resource Manager テンプレートの関数](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)」を参照してください。
 
    ```json
         {
@@ -235,7 +234,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
 ## <a name="create-a-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
-前の手順で定義したテンプレートでは、IoT ハブの名前、プロビジョニング サービスの名前、およびこの 2 つを作成する場所 (Azure リージョン) を指定するにあたりパラメーターを使用しています。 これらのパラメーターは、別個のファイルで指定して渡すことになります。 このようにすることによって、同じテンプレートを多数のデプロイに再利用することができます。 パラメーター ファイルの作成手順は次のとおりです。
+前の手順で定義したテンプレートでは、IoT ハブの名前、プロビジョニング サービスの名前、およびこれらを作成する場所 (Azure リージョン) を指定するためにパラメーターを使用します。 これらのパラメーターは、別個のファイルからテンプレートに渡します。 このようにすることによって、同じテンプレートを多数のデプロイに再利用することができます。 パラメーター ファイルの作成手順は次のとおりです。
 
 1. テキスト エディターを使用して、骨組みとなる次の内容を備えた **parameters.json** という Azure Resource Manager パラメーター ファイルを作成します。 
 
@@ -248,7 +247,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
    }
    ```
 
-2. parameter セクションに値 **iotHubName** を追加します。 名前を変更する場合には、IoT ハブの名前付け規則に従うようにしてください。 長さは 3 から 50 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ('-') のみです。 
+2. parameter セクションに値 **iotHubName** を追加します。  IoT ハブ名は Azure でグローバルに一意である必要があるため、一意のプレフィックスまたはサフィックスを例の名前に追加するか、まったく新しい名前を選択できます。 名前は、IoT ハブの適切な名前付け規則に従う必要があります。長さは 3 から 50 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ("-") のみです。 
 
    ```json
     "parameters": {
@@ -259,7 +258,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
    
    ```
 
-3. parameter セクションに値 **provisioningServiceName** を追加します。 名前を変更する場合には、IoT Hub Device Provisioning Service の名前付け規則に従うようにしてください。 長さは 3 から 64 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ('-') のみです。
+3. parameter セクションに値 **provisioningServiceName** を追加します。 また、プロビジョニング サービスに対して、グローバルに一意の名前を選択する必要があります。 名前は、IoT Hub Device Provisioning Service の適切な名前付け規則に従う必要があります。長さは 3 から 64 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ("-") のみです。
 
    ```json
     "parameters": {
@@ -273,7 +272,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
    ```
 
-4. parameter セクションに値 **hubLocation** を追加します。 この値は、IoT ハブとプロビジョニング サービスの両方の場所を指定するものです。 値は、テンプレート ファイルのパラメーターの定義にある **allowedValues** コレクションで指定した場所のいずれかに対応している必要があります。 このコレクションにより、値が IoT ハブとプロビジョニング サービスを両方ともサポートしている Azure リージョンに限定されます。 Device Provisioning Service をサポートしている場所の一覧は、次のコマンド `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` を実行するか、[[Azure の状態]](https://azure.microsoft.com/status/) ページに移動して "Device Provisioning Service" を検索すると確認できます。
+4. parameter セクションに値 **hubLocation** を追加します。 この値は、IoT ハブとプロビジョニング サービスの両方の場所を指定するものです。 値は、テンプレート ファイルのパラメーターの定義にある **allowedValues** コレクションで指定した場所のいずれかに対応している必要があります。 このコレクションにより、値が IoT ハブとプロビジョニング サービスを両方ともサポートしている Azure リージョンに限定されます。 Device Provisioning Service をサポートしている場所の一覧は、コマンド `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` を実行するか、[[Azure の状態]](https://azure.microsoft.com/status/) ページに移動して "Device Provisioning Service" を検索すると確認できます。
 
    ```json
     "parameters": {
@@ -301,13 +300,13 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
 次の Azure CLI コメンドを使用してテンプレートをデプロイし、デプロイを確認します。
 
-1. テンプレートをデプロイするために、次に示す[デプロイを開始するためのコマンド](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)を実行します。
+1. テンプレートをデプロイするには、テンプレートとパラメーター ファイルが格納されているフォルダーに移動し、次に示す[デプロイを開始するコマンド](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)を実行します。
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
     ```
 
-   出力で、**provisioningState** プロパティが "Succeeded" に設定されていることを確認します。 
+   この操作は、完了するまで数分かかる場合があります。 完了したら、出力で **provisioningState** プロパティが "Succeeded" に設定されていることを確認します。 
 
    ![プロビジョニングの出力](./media/quick-setup-auto-provision-rm/output.png) 
 
@@ -319,9 +318,9 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
     ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 引き続き作業を行わない場合には、Azure CLI を使用して、IoT Hub やプロビジョニング サービスなどの[個々のリソースを削除][lnk-az-resource-command]することも、リソース グループとそのすべてのリソースを削除をすることもできます。
+このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 引き続き作業を行わない場合には、Azure CLI を使用して、IoT Hub やプロビジョニング サービスなどの[個々のリソースを削除][lnk-az-resource-command]することも、リソース グループとそのすべてのリソースを削除することもできます。
 
 プロビジョニング サービスを削除するには、次のコマンドを実行します。
 
@@ -340,11 +339,11 @@ az iot hub delete --name {your iot hub name} --resource-group {your resource gro
 az group delete --name {your resource group name}
 ```
 
-このほか、Azure Portal、PowerShell、または REST API や、サポートされているプラットフォームで Azure Resource Manager または IoT Hub Device Provisioning Service 向けに公開されている SDK を使って、リソース グループと個々のリソースを削除することもできます。
+また、Azure portal、PowerShell、または REST API のほか、Azure Resource Manager または IoT Hub Device Provisioning Service 向けに公開済みのサポートされているプラットフォーム SDK を使って、リソース グループと個々のリソースを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクさせました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
+このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 
 > [!div class="nextstepaction"]
 > [シミュレートされたデバイスを作成するためのクイックスタート](./quick-create-simulated-device.md)

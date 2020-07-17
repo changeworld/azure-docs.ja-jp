@@ -1,55 +1,42 @@
 ---
-title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU | Microsoft Docs
+title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU
 description: 古い仮想ネットワーク ゲートウェイ SKU (Basic、Standard、HighPerformance) を使用する方法。
 services: vpn-gateway
-documentationcenter: na
-author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
+author: cherylmc
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 03/20/2018
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/15/2019
+ms.author: cherylmc
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235751"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
 この記事には、従来の (古い) 仮想ネットワーク ゲートウェイ SKU に関する情報が含まれています。 従来の SKU は、作成済みの VPN ゲートウェイの両方のデプロイメント モデルで引き続き動作します。 クラシック VPN ゲートウェイでは、既存のゲートウェイと新しいゲートウェイの両方に対して従来の SKU が引き続き使用されます。 新しい Resource Manager VPN ゲートウェイを作成する場合は、新しいゲートウェイ SKU を使用します。 新しい SKU については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
-## <a name="gwsku"></a>ゲートウェイの SKU
+## <a name="gateway-skus"></a><a name="gwsku"></a>ゲートウェイの SKU
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-## <a name="agg"></a>SKU の予測される合計スループット
+レガシ ゲートウェイの価格は、[ExpressRoute の価格ページ](https://azure.microsoft.com/pricing/details/expressroute)にある「**仮想ネットワーク ゲートウェイ**」セクションで表示できます。
+
+## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>SKU の予測される合計スループット
 
 [!INCLUDE [Aggregated throughput by legacy SKU](../../includes/vpn-gateway-table-gwtype-legacy-aggtput-include.md)]
 
-## <a name="config"></a>SKU と VPN の種類別のサポートされる構成
+## <a name="supported-configurations-by-sku-and-vpn-type"></a><a name="config"></a>SKU と VPN の種類別のサポートされる構成
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="resize"></a>ゲートウェイのサイズを変更する
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="resize-a-gateway"></a><a name="resize"></a>ゲートウェイのサイズを変更する
 
 使用しているゲートウェイのサイズを、同じ SKU ファミリ内のゲートウェイ SKU のサイズに変更できます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 ただし、古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU から VpnGw2 SKU にしたり、Basic SKU から VpnGw1 にしたりすることはできません。
 
-クラシック デプロイ モデルのゲートウェイのサイズを変更するには、次のコマンドを使用します。
-
-```powershell
-Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
-```
+### <a name="resource-manager"></a>リソース マネージャー
 
 Resource Manager デプロイ モデルのゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
 
@@ -57,16 +44,23 @@ Resource Manager デプロイ モデルのゲートウェイのサイズを変�
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
+
 ゲートウェイのサイズ変更は、Azure Portal でも行うことができます。
 
-## <a name="change"></a>新しいゲートウェイ SKU に変更する
+### <a name="classic"></a><a name="classicresize"></a>クラシック
+
+クラシック デプロイ モデル用のゲートウェイのサイズを変更するには、サービス管理の PowerShell コマンドレットを使用する必要があります。 次のコマンドを使用します。
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
+
+## <a name="change-to-the-new-gateway-skus"></a><a name="change"></a>新しいゲートウェイ SKU に変更する
 
 [!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 新しいゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
 構成設定の詳細については、「[VPN ゲートウェイの構成設定について](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
-
-<!--Update_Description: wording update-->

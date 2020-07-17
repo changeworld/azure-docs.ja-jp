@@ -1,25 +1,25 @@
 ---
-title: クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル | Microsoft Docs
+title: クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル
 description: Azure CDN クエリ文字列のキャッシュにより、Web 要求にクエリ文字列が含まれる場合のファイルのキャッシュ方法を制御します。 この記事では、Azure CDN Standard 製品でのクエリ文字列のキャッシュについて説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: magattus
-ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.author: allensu
+ms.openlocfilehash: a0df9cecc4ccd09db3f6b07fa6fd4c5283753aa2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093801"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81260209"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル
 > [!div class="op_single_selector"]
@@ -49,11 +49,11 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
    
    ![CDN プロファイル エンドポイント](./media/cdn-query-string/cdn-endpoints.png)
    
-2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** をクリックします。
+2. 左側のウィンドウの [設定] で、 **[キャッシュ規則]** をクリックします。
    
     ![CDN の [キャッシュ規則] ボタン](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
-3. **[クエリ文字列のキャッシュ動作]** 一覧でクエリ文字列モードを選択し、**[保存]** をクリックします。
+3. **[クエリ文字列のキャッシュ動作]** 一覧でクエリ文字列モードを選択し、 **[保存]** をクリックします。
    
    ![CDN クエリ文字列のキャッシュ オプション](./media/cdn-query-string/cdn-query-string.png)
 

@@ -12,20 +12,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232103"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 このチュートリアルでは、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングする方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
 仮想アレイをプロビジョニングして構成するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
@@ -85,37 +88,37 @@ ms.locfileid: "55810543"
 
 #### <a name="to-provision-a-virtual-array"></a>仮想アレイをプロビジョニングするには
 1. Windows Server ホストで、仮想アレイのイメージをローカル ドライブにコピーします。 このイメージ (VHD または VHDX) は、Azure Portal からダウンロードしました。 このイメージは後で使用するため、コピー先はメモしておいてください。
-2. **サーバー マネージャー**を開きます。 右上隅の **[ツール]** をクリックし、**[Hyper-V マネージャー]** を選択します。
+2. **サーバー マネージャー**を開きます。 右上隅の **[ツール]** をクリックし、 **[Hyper-V マネージャー]** を選択します。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
-   Windows Server 2008 R2 を実行している場合は、Hyper-V マネージャーを開きます。 サーバー マネージャーで、**[ロール] > [Hyper-V] > [Hyper-V マネージャー]** をクリックします。
-3. **Hyper-V マネージャー**のスコープ ウィンドウで、システム ノードを右クリックしてコンテキスト メニューを開き、**[新規]** > **[仮想マシン]** の順にクリックします。
+   Windows Server 2008 R2 を実行している場合は、Hyper-V マネージャーを開きます。 サーバー マネージャーで、 **[ロール] > [Hyper-V] > [Hyper-V マネージャー]** をクリックします。
+3. **Hyper-V マネージャー**のスコープ ウィンドウで、システム ノードを右クリックしてコンテキスト メニューを開き、 **[新規]**  >  **[仮想マシン]** の順にクリックします。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 仮想マシンの新規作成ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
 5. **[名前と場所を指定]** ページで、仮想アレイの**名前**を入力します。 **[次へ]** をクリックします。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
-6. **[世代の指定]** ページで、デバイスのイメージの種類を選択し、**[次へ]** をクリックします。 Windows Server 2008 R2 を使用している場合、このページは表示されません。
+6. **[世代の指定]** ページで、デバイスのイメージの種類を選択し、 **[次へ]** をクリックします。 Windows Server 2008 R2 を使用している場合、このページは表示されません。
 
    * Windows Server 2012 以降の .vhdx イメージをダウンロードした場合は、 **[第 2 世代]** を選択します。
    * Windows Server 2008 R2 以降の .vhd イメージをダウンロードした場合は、 **[第 1 世代]** を選択します。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image5.png)
-7. **[メモリの割り当て]** ページで、**8192 MB** 以上の**起動メモリ**を指定します。動的メモリは有効にしないでください。**[次へ]** をクリックします。
+7. **[メモリの割り当て]** ページで、**8192 MB** 以上の**起動メモリ**を指定します。動的メモリは有効にしないでください。 **[次へ]** をクリックします。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image6.png)  
-8. **[ネットワークの構成]** ページで、インターネットに接続されている仮想スイッチを指定し、**[次へ]** をクリックします。
+8. **[ネットワークの構成]** ページで、インターネットに接続されている仮想スイッチを指定し、 **[次へ]** をクリックします。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. **[仮想ハード ディスクの接続]** ページで、**[既存の仮想ハード ディスクを使用する]** を選択し、仮想アレイのイメージ (.vhdx または .vhd) の場所を指定して、**[次へ]** をクリックします。
+9. **[仮想ハード ディスクの接続]** ページで、 **[既存の仮想ハード ディスクを使用する]** を選択し、仮想アレイのイメージ (.vhdx または .vhd) の場所を指定して、 **[次へ]** をクリックします。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
-10. **[概要]** を確認し、**[完了]** をクリックして仮想マシンを作成します。
+10. **[概要]** を確認し、 **[完了]** をクリックして仮想マシンを作成します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image9.png)
-11. 最小要件を満たすには、4 コアが必要です。 4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
+11. 最小要件を満たすには、4 コアが必要です。 4 つの仮想プロセッサを追加するには、 **[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
 12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[Apply]** をクリックします。
@@ -124,23 +127,23 @@ ms.locfileid: "55810543"
 13. 最小要件を満たすには、500 GB の仮想データ ディスクを追加する必要もあります。 **[設定]** ページで次の操作を行います。
 
     1. 左側のウィンドウで **[SCSI コントローラー]** を選択します。
-    2. 右側のウィンドウで **[ハード ドライブ]** を選択し、**[追加]** をクリックします。
+    2. 右側のウィンドウで **[ハード ドライブ]** を選択し、 **[追加]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image12.png)
-14. **[ハード ドライブ]** ページで **[仮想ハード ディスク]** を選択し、**[新規]** をクリックします。 **仮想ハード ディスクの新規作成ウィザード**が開始されます。
+14. **[ハード ドライブ]** ページで **[仮想ハード ディスク]** を選択し、 **[新規]** をクリックします。 **仮想ハード ディスクの新規作成ウィザード**が開始されます。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
-15. 仮想ハード ディスクの新規作成ウィザードの **[開始する前に]** ページで、**[次へ]** をクリックします。
+15. 仮想ハード ディスクの新規作成ウィザードの **[開始する前に]** ページで、 **[次へ]** をクリックします。
 16. **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。 **[次へ]** をクリックします。 Windows Server 2008 R2 を実行している場合、この画面は表示されません。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. **[ディスクの種類の選択]** ページで、仮想ハード ディスクの種類を **[容量可変]** に設定します (推奨)。 **固定サイズ**のディスクでも動作しますが、待機時間が長くなる可能性があります。 **[差分]** は使用しないことをお勧めします。 **[次へ]** をクリックします。 Windows Server 2012 R2 および Windows Server 2012 では、**[容量可変]** オプションが既定で設定されていますが、Windows Server 2008 R2 では **[固定サイズ]** が既定の設定です。
+17. **[ディスクの種類の選択]** ページで、仮想ハード ディスクの種類を **[容量可変]** に設定します (推奨)。 **固定サイズ**のディスクでも動作しますが、待機時間が長くなる可能性があります。 **[差分]** は使用しないことをお勧めします。 **[次へ]** をクリックします。 Windows Server 2012 R2 および Windows Server 2012 では、 **[容量可変]** オプションが既定で設定されていますが、Windows Server 2008 R2 では **[固定サイズ]** が既定の設定です。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
 18. **[名前と場所の指定]** ページで、データ ディスクの**名前**と**場所**を入力します (場所は参照することもできます)。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[次へ]** をクリックします。
+19. **[ディスクの構成]** ページで、 **[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。 500 GB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、展開も圧縮もできなくなることに注意してください。 プロビジョニングするディスク サイズについて詳しくは、[ベスト プラクティス](storsimple-ova-best-practices.md) ドキュメントの「サイズ変更」セクションをご確認ください。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. **[概要]** ページで仮想データ ディスクの詳細を確認し、問題がなければ **[完了]** をクリックしてディスクを作成します。 ウィザードが終了し、仮想ハード ディスクがコンピューターに追加されます。
@@ -214,6 +217,6 @@ ms.locfileid: "55810543"
 * 診断テストを実行して [Web UI のセットアップのトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 * [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)

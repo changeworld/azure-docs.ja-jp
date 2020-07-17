@@ -1,25 +1,14 @@
 ---
-title: Azure Resource Manager を使用したアプリケーションとサービスのデプロイとアップグレード | Microsoft Docs
+title: Azure Resource Manager を使用したデプロイとアップグレード
 description: Azure Resource Manager テンプレートを使用して Service Fabric クラスターにアプリケーションとサービスをデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: dekapur
-ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663130"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75610252"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -36,25 +25,25 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 
 ```json
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications/services",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
     "location": "[variables('clusterLocation')]"
@@ -142,7 +131,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
     },
     "resources": [
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
         "location": "[variables('clusterLocation')]",
@@ -152,7 +141,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
         "location": "[variables('clusterLocation')]",
@@ -165,7 +154,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applications",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
         "location": "[variables('clusterLocation')]",
@@ -200,7 +189,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applications/services",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
         "location": "[variables('clusterLocation')]",
@@ -221,7 +210,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applications/services",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName2'))]",
         "location": "[variables('clusterLocation')]",
@@ -255,18 +244,29 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
    ```
 
    > [!NOTE] 
-   > *apiVersion* は `"2017-07-01-preview"` に設定する必要があります。 クラスターが既にデプロイされている場合は、このテンプレートをクラスターとは別にデプロイすることもできます。
+   > *apiVersion* は `"2019-03-01"` に設定する必要があります。 クラスターが既にデプロイされている場合は、このテンプレートをクラスターとは別にデプロイすることもできます。
 
 5. デプロイします。 
 
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>Service Fabric リソース プロバイダーのアプリケーション リソースを削除する
+次のコマンドは、クラスターからプロビジョニング解除されるようにアプリ パッケージをトリガーし、それによって、使用されているディスク領域がクリーンアップされます。
+```powershell
+Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2019-03-01" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
+```
+Microsoft.ServiceFabric/clusters/application を ARM テンプレートから削除するだけでは、アプリケーションはプロビジョニング解除されません
+
+>[!NOTE]
+> 削除が完了すると、SFX または ARM でパッケージ バージョンが表示されなくなります。 実行されているアプリケーションの種類のバージョン リソースを削除することはできません。ARM/SFRP によって妨げられます。 実行中のパッケージをプロビジョニング解除しようとすると、SF ランタイムによって妨げられます。
+
+
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Resource Manager を使用して既存のアプリケーションを管理する
 
-クラスターが既に稼働していて、Resource Manager のリソースとして管理したいアプリケーションのいくつかが既にデプロイされている場合は、それらのアプリケーションを削除してから再デプロイする代わりに、同じAPI の PUT 呼び出しを使用してアプリケーションを Resource Manager のリソースとして認識させることができます。 
+クラスターが既に稼働していて、Resource Manager のリソースとして管理したいアプリケーションのいくつかが既にデプロイされている場合は、それらのアプリケーションを削除してから再デプロイする代わりに、同じAPI の PUT 呼び出しを使用してアプリケーションを Resource Manager のリソースとして認識させることができます。 詳細については、「[Service Fabric アプリケーション リソース モデルとは](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)」を参照してください。
 
 > [!NOTE]
 > クラスターのアップグレードで異常なアプリを無視できるようにするには、"upgradeDescription/healthPolicy" セクションで "maxPercentUnhealthyApplications: 100" を指定します。すべての設定について詳しくは、[Service Fabrics REST API クラスター アップグレード ポリシーのドキュメント](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI](service-fabric-cli.md) または [PowerShell](service-fabric-deploy-remove-applications.md) を使用して、他のアプリケーションをクラスターにデプロイします。 
 * [Service Fabric クラスターをアップグレードします](service-fabric-cluster-upgrade.md)。

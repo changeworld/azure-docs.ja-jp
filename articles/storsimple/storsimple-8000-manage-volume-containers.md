@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 シリーズ デバイスの StorSimple ボリューム コンテナーを管理する| Microsoft Docs
+title: StorSimple 8000 シリーズ デバイスのボリューム コンテナーを管理する
 description: StorSimple デバイス マネージャー サービスの [ボリューム コンテナー] ページを使用して、ボリューム コンテナーを追加、変更、または削除する方法について説明します。
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 0f8e00d6d07224f56625482f339e612e68914be2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cbdad3c68848ce552811ee658bb29df74a6fad19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232147"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple ボリューム コンテナーを管理する
 
@@ -56,7 +56,7 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 
 [!INCLUDE [storsimple-8000-delete-volume-container](../../includes/storsimple-8000-delete-volume-container.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームの管理の詳細](storsimple-8000-manage-volumes-u2.md) 
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

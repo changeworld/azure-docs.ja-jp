@@ -14,14 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259076"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74978204"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure Portal を使用したコンテンツ保護ポリシーの構成
+
+> [!NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>
+
  Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) 128 ビット暗号化キーを使用して、動的に暗号化されたコンテンツを配信できます。 また、PlayReady や Widevine デジタル著作権管理 (DRM) と Apple FairPlay を使用した共通暗号化 (CENC) と共に使用することもできます。 
 
 Media Services は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure Portal を使用して、すべての種類の暗号化に対して 1 つのキー/ライセンス承認ポリシーを作成できます。
@@ -35,7 +40,7 @@ Media Services は、承認されたクライアントに DRM ライセンスと
 
 1. **[設定]**  >  **[コンテンツ保護]** の順に選択します。
 
-    ![コンテンツ保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
+    ![コンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
 ## <a name="keylicense-authorization-policy"></a>キー/ライセンス承認ポリシー
 Media Services では、キーまたはライセンスを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。 キー/ライセンスをクライアントに配信するには、クライアントがポリシーを満たしている必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。
@@ -71,13 +76,13 @@ Widevine ライセンス テンプレートは、Widevine ライセンスで有�
 ### <a name="basic"></a>Basic
 **[Basic]** を選択すると、テンプレートはすべて既定値で作成されます。
 
-### <a name="advanced"></a>詳細
+### <a name="advanced"></a>詳細設定
 Widevine 権利テンプレートの詳細については、「[Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)」を参照してください。
 
 ![高度なコンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay 構成
-FairPlay の暗号化を有効にするには、**[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。 FairPlay の構成と要件の詳細については、「[Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護](media-services-protect-hls-with-FairPlay.md)」を参照してください。
+FairPlay の暗号化を有効にするには、 **[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。 FairPlay の構成と要件の詳細については、「[Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護](media-services-protect-hls-with-FairPlay.md)」を参照してください。
 
 ![FairPlay 構成](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
@@ -85,12 +90,12 @@ FairPlay の暗号化を有効にするには、**[FairPlay の構成]** を選�
 動的暗号化を利用するには、ソース ファイルを、一連のアダプティブ ビットレート MP4 ファイルにエンコードします。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>暗号化するアセットを選択する
-すべてのアセットを表示するには、**[設定]**  >  **[アセット]** の順にクリックします。
+すべてのアセットを表示するには、 **[設定]**  >  **[アセット]** の順にクリックします。
 
 ![アセットのオプション](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>AES または DRM による暗号化
-アセットの **[暗号化]** を選択すると、**[AES]** または **[DRM]** の 2 つの選択肢が表示されます。 
+アセットの **[暗号化]** を選択すると、 **[AES]** または **[DRM]** の 2 つの選択肢が表示されます。 
 
 #### <a name="aes"></a>AES
 AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH のすべてのストリーミング プロトコルで有効になります。
@@ -110,16 +115,20 @@ AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH 
     
     e. **HLS とのみの FairPlay**: FairPlay により HLS ストリームが動的に暗号化されます。
 
-1. FairPlay 暗号化を有効にするには、**[Content Protection Global Settings]\(コンテンツ保護のグローバル設定\)** ブレードで、**[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。
+1. FairPlay 暗号化を有効にするには、 **[Content Protection Global Settings]\(コンテンツ保護のグローバル設定\)** ブレードで、 **[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。
 
     ![暗号化の種類](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-1. 暗号化を選択したら、**[適用]** を選択します。
+1. 暗号化を選択したら、 **[適用]** を選択します。
 
 >[!NOTE] 
 >AES で暗号化された HLS を Safari で再生する予定の場合は、[Safari の暗号化された HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) に関するのブログ投稿を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

@@ -1,27 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch での Windows プール | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Batch での Windows プールの作成と管理
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI のサンプル スクリプト - Batch での Windows プール
+description: このスクリプトでは、Azure Batch で Windows コンピューティング ノードのプールを作成して管理するために、Azure CLI で使用できるコマンドの一部を示します。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: c4906ca67137790e19342f0434e6c2b3932819fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/12/2019
+ms.openlocfilehash: 869e9990fe2d7d3f909ccf3db2c49ce7c33e579e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127425"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681857"
 ---
-# <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI の例:Azure Batch での Windows プールの作成と管理
+# <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI の例: Azure Batch での Windows プールの作成と管理
 
 このスクリプトでは、Azure Batch で Windows コンピューティング ノードのプールを作成して管理するために、Azure CLI で使用できるコマンドの一部を示します。 Windows プールは、クラウド サービスの構成と仮想マシンの構成という 2 つの方法で構成できます。 この例では、クラウド サービスの構成を使用して Windows プールを作成する方法を示します。
 
@@ -58,6 +47,6 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。

@@ -1,30 +1,21 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh service-replica | Microsoft Docs
-description: Service Fabric CLI sfctl mesh service-replica のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI- sfctl mesh service-replica
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 アプリケーション リソースに対するレプリカの詳細を取得するためのコマンドの一覧が含まれます。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1e0955ef2a52a6313f0449b956229e03f0a5b5e8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662433"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76905941"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 アプリケーション リソース内にあるレプリカの詳細を取得し、指定されたサービスのレプリカを一覧表示します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
 |command|説明|
 | --- | --- |
@@ -47,11 +38,11 @@ ms.locfileid: "58662433"
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-mesh-service-replica-show"></a>sfctl mesh service-replica show
 アプリケーションのサービスの指定されたレプリカを取得します。
@@ -70,13 +61,13 @@ ms.locfileid: "58662433"
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

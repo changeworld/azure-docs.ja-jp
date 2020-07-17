@@ -1,23 +1,18 @@
 ---
-title: Azure DNS での逆引き DNS 参照ゾーンのホスト | Microsoft Docs
+title: Azure DNS での逆引き DNS 参照ゾーンのホスト
 description: Azure DNS を使って IP アドレス範囲の逆引き DNS 参照ゾーンをホストする方法について説明します
-services: dns
-documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohink
+ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66143633"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454263"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 
@@ -33,12 +28,12 @@ Azure サービスに割り当てられている Azure が所有する IP アド
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>逆引き参照 DNS ゾーンを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[ハブ]** メニューで、**[新規]** > **[ネットワーク]** の順に選択し、**[DNS ゾーン]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. **[ハブ]** メニューで、 **[新規]**  >  **[ネットワーク]** の順に選択し、 **[DNS ゾーン]** を選択します。
 
    ![[DNS ゾーン] の選択](./media/dns-reverse-dns-hosting/figure1.png)
 
-1. **[DNS ゾーンの作成]** ウィンドウで、DNS ゾーンの名前を入力します。 ゾーンの名前の構造は、IPv4 プレフィックスと IPv6 プレフィックスでは異なります。 [IPv4](#ipv4) または [IPv6](#ipv6) の手順を使って、ゾーンの名前を設定します。 完了したら、**[作成]** を選択してゾーンを作成します。
+1. **[DNS ゾーンの作成]** ウィンドウで、DNS ゾーンの名前を入力します。 ゾーンの名前の構造は、IPv4 プレフィックスと IPv6 プレフィックスでは異なります。 [IPv4](#ipv4) または [IPv6](#ipv6) の手順を使って、ゾーンの名前を設定します。 完了したら、 **[作成]** を選択してゾーンを作成します。
 
 ### <a name="ipv4"></a>IPv4
 
@@ -126,7 +121,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 1. PTR レコードのレコード セットの名前は、IPv4 アドレスの残りの部分を逆の順序にしたものでなければなりません。 
 
-   この例では、最初の 3 つのオクテットは既にゾーン名の一部として設定されています (.2.0.192)。 したがって、**[名前]** ボックスでは最後のオクテットだけを指定します。 たとえば、IP アドレスが 192.0.2.15 のリソースでは、レコード セットの名前を **15** にします。  
+   この例では、最初の 3 つのオクテットは既にゾーン名の一部として設定されています (.2.0.192)。 したがって、 **[名前]** ボックスでは最後のオクテットだけを指定します。 たとえば、IP アドレスが 192.0.2.15 のリソースでは、レコード セットの名前を **15** にします。  
 1. **[種類]** には **[PTR]** を選択します。  
 1. **[ドメイン名]** に、その IP アドレスを使うリソースの完全修飾ドメイン名 (FQDN) を入力します。
 1. ウィンドウ下部の **[OK]** を選択すると、DNS レコードが作成されます。
@@ -149,7 +144,7 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
 ```
 
 ### <a name="ipv6"></a>IPv6
@@ -162,7 +157,7 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 
 2. PTR レコードのレコード セットの名前は、IPv6 アドレスの残りの部分を逆の順序にしたものでなければなりません。 ゼロ圧縮を含めることはできません。 
 
-   この例では、IPv6 の最初の 64 ビットはゾーン名の一部として既に設定されています (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa)。 したがって、**[名前]** ボックスでは最後の 64 ビットだけを指定します。 IP アドレスの最後の 64 ビットを逆の順序で入力し、各 16 進数の間の区切り記号としてピリオドを使います。 たとえば、IP アドレスが 2001:0db8:abdc:0000:f524:10bc:1af9:405e であるリソースの場合、レコード セットの名前は **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** となります。  
+   この例では、IPv6 の最初の 64 ビットはゾーン名の一部として既に設定されています (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa)。 したがって、 **[名前]** ボックスでは最後の 64 ビットだけを指定します。 IP アドレスの最後の 64 ビットを逆の順序で入力し、各 16 進数の間の区切り記号としてピリオドを使います。 たとえば、IP アドレスが 2001:0db8:abdc:0000:f524:10bc:1af9:405e であるリソースの場合、レコード セットの名前は **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** となります。  
 3. **[種類]** には **[PTR]** を選択します。  
 4. **[ドメイン名]** に、その IP アドレスを使うリソースの FQDN を入力します。
 5. ウィンドウ下部の **[OK]** を選択すると、DNS レコードが作成されます。
@@ -179,14 +174,14 @@ New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -Zone
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
-```
+```azurecli
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
 ```
 
 ## <a name="view-records"></a>レコードの表示
@@ -210,13 +205,13 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
+azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
+az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
 ```
 
 ### <a name="ipv6"></a>IPv6
@@ -236,16 +231,16 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>ISP から割り当てられた IP アドレス ブロックの逆引き DNS 参照ゾーンを Azure DNS でホストできますか?
 
@@ -267,7 +262,7 @@ ISP によって割り当てられた IP アドレス ブロックの逆引き D
 
 詳しくは、[Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>

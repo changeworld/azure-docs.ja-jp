@@ -1,19 +1,19 @@
 ---
-title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
+title: メリット:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することの動機と利点について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: b45fb5cbfbef334b40ccadecd32f65fa9a59a610
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685665"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74267320"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -21,7 +21,7 @@ ms.locfileid: "64685665"
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Azure HDInsight に移行する理由
 
-Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/) の Hadoop コンポーネントのクラウド ディストリビューションです。 Azure HDInsight によって大量のデータを簡単かつ迅速に高いコスト効率で処理できるようになります。 HDInsight には、好評を博している次のようなオープン ソース フレームワークが含まれています。
+Azure HDInsight は、Hadoop コンポーネントのクラウド ディストリビューションです。 Azure HDInsight によって大量のデータを簡単かつ迅速に高いコスト効率で処理できるようになります。 HDInsight には、好評を博している次のようなオープン ソース フレームワークが含まれています。
 
 - Apache Hadoop
 - Apache Spark
@@ -43,7 +43,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 
 - **グローバルに利用可能** - HDInsight は、他のあらゆるビッグ データ分析サービスよりも多くの[リージョン](https://azure.microsoft.com/regions/services/)で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。
 
-- **セキュリティとコンプライアンス** - HDInsight を使用すると、 [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md)、 [暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、 [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な [コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
+- **セキュリティとコンプライアンス** - HDInsight を使用すると、 [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)、 [暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、 [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な [コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
 
 - **バージョン管理を簡略化** - Azure HDInsight は Hadoop エコシステム コンポーネントのバージョンを管理し、最新の状態に保持します。 ソフトウェアの更新は、オンプレミスの展開では一般的に複雑なプロセスです。
 
@@ -61,7 +61,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
     - Azure Blob Storage
     - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
-    - Azure SQL Database
+    - Azure SQL データベース
     - Azure Analysis Services
 
 - **プロセスとコンポーネントを自動修復** - HDInsight は常に独自の監視インフラストラクチャを使用して、インフラストラクチャとオープン ソース コンポーネントを継続的に確認しています。 また、オープン ソース コンポーネントやノードが利用できないなどの重大な障害も自動的に回復します。 いずれかの OSS コンポーネントに障害が発生した場合、Ambari でアラートがトリガーされます。
@@ -90,7 +90,6 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 | **質問** | **例** | **回答** |
 |---|---|---|
 |**トピック**:**Environment**|||
-|クラスター ディストリビューションの種類|Hortonworks、Cloudera、MapR| |
 |クラスター ディストリビューションのバージョン|HDP 2.6.5、CDH 5.7|
 |ビッグ データ エコシステム コンポーネント|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |クラスターの種類|Hadoop、Spark、Confluent Kafka、Storm、Solr|
@@ -104,7 +103,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |エッジ ノード構成|m/y、cpu、ディスクなど|
 |HDFS の暗号化?|はい|
 |高可用性|HDFS HA、Metastore HA|
-|ディザスター リカバリー/バックアップ|クラスターのバックアップ?|  
+|ディザスター リカバリー / バックアップ|クラスターのバックアップ?|  
 |クラスターに依存するシステム|SQL Server、Teradata、Power BI、MongoDB|
 |サードパーティによる統合|Tableau、GridGain、Qubole、Informatica、Splunk|
 |**トピック**:**セキュリティ**|||
@@ -130,7 +129,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |Structured Streaming ジョブ|1 分ごとに 5 個のジョブ||
 |ML モデルのトレーニング ジョブ|1 週間に 1 回 2 個ジョブ||
 |プログラミング言語|Python、Scala、Java||
-|スクリプト|Shell、Python||
+|スクリプトの作成|Shell、Python||
 |**トピック**:**データ**|||
 |データ ソース|フラット ファイル、Json、Kafka、RDBMS||
 |データのオーケストレーション|Oozie ワークフロー、エアフロー||
@@ -138,10 +137,10 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |データの保存先|HDFS、RDBMS、Kafka、MPP ||
 |**トピック**:**メタデータ**|||
 |Hive DB の種類|Mysql、Postgres||
-|いいえ。 Hive メタストアの数|2||
-|いいえ。 Hive テーブルの数|100||
-|いいえ。 Ranger ポリシーの数|20||
-|いいえ。 Oozie ワークフローの数|100||
+|Hive メタストアの数|2||
+|Hive テーブルの数|100||
+|Ranger ポリシーの数|20||
+|Oozie ワークフローの数|100||
 |**トピック**:**スケール**|||
 |レプリケーションを含むデータ ボリューム|100 TB||
 |日次インジェストの量|50 GB||
@@ -153,13 +152,13 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |使用済みディスク領域|75%||
 |平均ネットワーク 使用率|25%
 |**トピック**:**スタッフ**|||
-|いいえ。 管理者数|2||
-|いいえ。 開発者数|10||
-|いいえ。 エンド ユーザー数|100||
+|管理者数|2||
+|開発者数|10||
+|エンド ユーザー数|100||
 |スキル|Hadoop、Spark||
-|いいえ。 移行作業に使用可能なリソース数|2||
+|移行作業に使用可能なリソース数|2||
 |**トピック**:**制限事項**|||
-|現時点での制限事項|待機時間が長い||
+|現在の制限|待機時間が長い||
 |現在の課題|コンカレンシーの問題||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure の要件のアンケート
@@ -181,10 +180,10 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |プライベートな保護済みのデータ パイプラインですか?|はい||
 |ドメイン参加済みクラスター (ESP) ですか?|     はい||
 |クラウドへのオンプレミス AD Sync ですか?|     はい||
-|いいえ。 同期する AD ユーザー数|          100||
+|同期する AD ユーザー数?|          100||
 |パスワードをクラウドに同期しますか?|    はい||
 |クラウドのみのユーザー?|                 はい||
-|MFA が必要ですか?|                       いいえ || 
+|MFA が必要ですか?|                       いいえ|| 
 |データの承認要件ですか?|  はい||
 |ロール ベースのアクセス制御?|        はい||
 |監査が必要ですか?|                  はい||
@@ -198,10 +197,9 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |リモート メタストアを使用するか?|はい||
 |異なるクラスター間でメタストアを共有するか?|はい||
 |ワークロードを分解するか?|Hive ジョブを Spark ジョブに置き換える||
-|データのオーケストレーションに ADF を使用するか?|いいえ ||
-|IaaS で HDInsight または Hortonworks Data Platform のどちらを指定するか?|HDInsight||
+|データのオーケストレーションに ADF を使用するか?|いいえ||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このシリーズの次の記事をお読みください。
 

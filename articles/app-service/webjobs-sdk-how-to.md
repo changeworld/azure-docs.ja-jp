@@ -1,24 +1,17 @@
 ---
-title: WebJobs SDK の使用方法 - Azure
-description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理ジョブを作成します。
-services: app-service\web, storage
-documentationcenter: .net
+title: WebJobs SDK の使用方法
+description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理のジョブを作成します。
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895209"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734996"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -30,7 +23,7 @@ WebJobs SDK のバージョン 3.*x* とバージョン 2.*x* には、重要な
 
 * バージョン 3.*x* では、.NET Core のサポートが追加されています。
 * バージョン 3.*x* では、WebJobs SDK で必要となるストレージ バインディング拡張機能を明示的にインストールする必要があります。 バージョン 2.*x* では、ストレージのバインドは SDK に含まれていました。
-* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
+* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して WebJobs を開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
 
 可能な場合は、バージョン 3.*x* とバージョン 2.*x* 両方の例が提供されています。
 
@@ -91,7 +84,7 @@ static void Main(string[] args)
 バージョン 3.*x* では、標準の ASP.NET Core API が使用されます。 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) インスタンスで [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) メソッドを呼び出します。 次の例のように、`development` という名前の文字列を渡します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -102,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -126,7 +119,7 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>コンカレント接続の管理 (バージョン 2.*x*)
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>コンカレント接続の管理 (バージョン 2.*x*)
 
 バージョン 3.*x* では、接続制限は既定で無限接続に設定されます。 何らかの理由でこの制限を変更する必要がある場合は、[`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) クラス の [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) プロパティを使用できます。
 
@@ -136,7 +129,7 @@ static void Main()
 
 ASP.NET アプリケーションの既定値は `Int32.MaxValue` であり、これは Basic またはそれ以降の App Service プランで実行されている WebJobs で適切に動作します。 WebJobs は通常、Always On の設定を必要としており、これは Basic またはそれ以降の App Service プランでのみサポートされています。
 
-Web ジョブが Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
+WebJobs が Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
 
 あらゆる HTTP 要求が行われる前に、この設定を構成する必要があります。 このため、WebJobs ホストでは設定を自動的に調整しないでください。 ホストが開始する前に HTTP 要求が発生する可能性があり、予期しない動作を招くことがあります。 最善の方法は、次に示すように、`JobHost` を初期化する前に `Main` メソッドですぐに値を設定することです。
 
@@ -162,15 +155,16 @@ static void Main(string[] args)
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-`QueueTrigger` 属性は、キュー メッセージが `myqueue-items` キューに出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `myQueueItem` パラメーターで関数に渡されるキュー メッセージの内容は、BLOB の名前です。
+`QueueTrigger` 属性は、キュー メッセージが `myqueue-items` キューに出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `samples-workitems` コンテナー内の BLOB 項目の名前は、キュー トリガーからバインド式 (`{queueTrigger}`) として直接取得されます。
 
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>手動トリガー
 
@@ -242,7 +236,7 @@ static void Main(string[] args)
 バージョン 3.*x`Microsoft.Azure.WebJobs.Extensions.Storage` では、ストレージのバインドは*  パッケージに含まれています。 次に示すように、`ConfigureWebJobs` メソッドで `AddAzureStorage` 拡張メソッドを呼び出します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -253,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -261,7 +255,7 @@ static void Main()
 他のトリガーやバインドの種類を使用するには、それらを含む NuGet パッケージをインストールして、拡張で実装されている `Add<binding>` 拡張メソッドを呼び出します。 たとえば、Azure Cosmos DB バインドを使用する場合は、次のように、`Microsoft.Azure.WebJobs.Extensions.CosmosDB` をインストールして `AddCosmosDB` を呼び出します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -272,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -324,7 +318,7 @@ public class Functions
 次に示すように、`ConfigureWebJobs` メソッドで `AddExecutionContextBinding` 拡張メソッドを呼び出します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -335,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -370,7 +364,7 @@ class Program
 
 * [Azure CosmosDB トリガー](#azure-cosmosdb-trigger-configuration-version-3x)
 * [Event Hubs トリガー](#event-hubs-trigger-configuration-version-3x)
-* Queue ストレージ トリガー
+* [Queue ストレージ トリガー](#queue-storage-trigger-configuration)
 * [SendGrid バインド](#sendgrid-binding-configuration-version-3x)
 * [Service Bus トリガー](#service-bus-trigger-configuration-version-3x)
 
@@ -379,7 +373,7 @@ class Program
 次の例では、Azure Cosmos DB トリガーを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -396,20 +390,19 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
 
-詳しくは、[Azure CosmosDB のバインド](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Azure CosmosDB のバインド](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)に関する記事をご覧ください。
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs トリガーの構成 (バージョン 3.*x*)
 
 次の例では、Event Hubs トリガーを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -425,13 +418,12 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
 
-詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)に関する記事をご覧ください。
 
 ### <a name="queue-storage-trigger-configuration"></a>Queue Storage トリガーの構成
 
@@ -440,7 +432,7 @@ static void Main()
 #### <a name="version-3x"></a>バージョン 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -456,13 +448,12 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
 
-詳しくは、[Queue Storage のバインド](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Queue Storage のバインド](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties)に関する記事をご覧ください。
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
@@ -486,7 +477,7 @@ static void Main(string[] args)
 次の例では、SendGrid 出力バインドを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -501,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -514,7 +504,7 @@ static void Main()
 次の例では、Service Bus  トリガーを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -529,13 +519,12 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
 
-詳しくは、[Service Bus のバインド](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)に関する記事をご覧ください。
+詳しくは、[Service Bus のバインド](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings)に関する記事をご覧ください。
 
 ### <a name="configuration-for-other-bindings"></a>その他のバインドの構成
 
@@ -544,7 +533,7 @@ static void Main()
 #### <a name="version-3x"></a>バージョン 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -555,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -692,11 +680,11 @@ public static void CreateQueueMessage(
 
 Azure Functions のドキュメントでは、各バインドの種類に関する参照情報が提供されています。 各バインド参照記事には、以下の情報が記載されています。 (この例は、Storage キューに基づいています。)
 
-* [パッケージ](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 WebJobs SDK プロジェクトにバインドのサポートを含めるためにインストールする必要のあるパッケージです。
-* [例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
-* [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 バインドの種類に使用する属性です。
-* [構成](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
-* [[使用状況]](../azure-functions/functions-bindings-storage-queue.md#trigger---usage):  どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
+* [パッケージ](../azure-functions/functions-bindings-storage-queue.md)。 WebJobs SDK プロジェクトにバインドのサポートを含めるためにインストールする必要のあるパッケージです。
+* [例](../azure-functions/functions-bindings-storage-queue-trigger.md)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
+* [属性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 バインドの種類に使用する属性です。
+* [構成](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
+* [使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
   
 バインドの参照記事の一覧については、Azure Functions の[トリガーとバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)に関する記事の「サポートされるバインディング」をご覧ください。 その一覧では、HTTP、Webhook、Event Grid のバインドは、Azure Functions でのみサポートされており、WebJobs SDK ではサポートされていません。
 
@@ -811,11 +799,11 @@ Async 関数のコードを書く方法については、[Azure Functions](../az
 
 キャンセル トークンを処理する方法については、Azure Functions ドキュメントの[キャンセル トークンと正常なシャットダウン](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens)を参照してください。
 
-## <a name="multiple-instances"></a>複数のインスタンス
+## <a name="multiple-instances"></a>複数インスタンス
 
-Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
+Web アプリが複数のインスタンス上で稼働している場合、継続的な WebJobs は各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
 
-キューと BLOB トリガーは、関数がキュー メッセージや BLOB を 1 回を超えて処理することを自動的に防止します。関数は冪等である必要はありません。
+一部のトリガーで二重の処理が発生する可能性がありますが、キューと BLOB ストレージ トリガーでは、関数がキュー メッセージや BLOB を 2 回以上処理することが自動的に防止されます。 詳細については、Azure Functions ドキュメントの[同一入力のための設計](../azure-functions/functions-idempotent.md)に関する記事を参照してください。
 
 タイマー トリガーは、指定された時刻に常に 1 つを超える関数のインスタンスが実行しないように、自動的に タイマーの1 つのインスタンスのみが実行するようにします。
 
@@ -837,10 +825,10 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 |------------|---|
 |Trace       | 0 |
 |デバッグ       | 1 |
-|情報 | 2 |
+|Information | 2 |
 |警告     | 3 |
-|Error       | 4 |
-|重大    | 5 |
+|エラー       | 4 |
+|Critical    | 5 |
 |なし        | 6 |
 
 各カテゴリを特定の [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) に個別にフィルター処理できます。 たとえば、BLOB トリガー処理のすべてのログを表示するが、それ以外に関しては `Error` 以降のみを表示するなどが可能です。
@@ -930,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 ビルダーで [`ConfigureServices`] を呼び出して、カスタム [`ITelemetryInitializer`] をパイプラインに追加します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -957,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -969,9 +956,9 @@ static void Main()
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
-バージョン 2.*x* では、WebJobs SDK 用に Application Insights プロバイダーによって内部で作成された [`TelemetryClient`] では、[`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs) が使用されます。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)します。
+バージョン 2.*x* では、WebJobs SDK 用に Application Insights プロバイダーによって内部で作成された [`TelemetryClient`] では、[`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) が使用されます。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)します。
 
-[`TelemetryClient`] は、`ITelemetryClientFactory` を実装するクラスによって作成されます。 既定で、これは [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs) です。
+[`TelemetryClient`] は、`ITelemetryClientFactory` を実装するクラスによって作成されます。 既定で、これは [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) です。
 
 Application Insights パイプラインの一部を変更する場合、独自の `ITelemetryClientFactory` を提供できます。そして、ホストは提供されたクラスを使用して [`TelemetryClient`] を構築します。 たとえば、次のコードでは `DefaultTelemetryClientFactory` がオーバーライドされて、`ServerTelemetryChannel` のプロパティが変更されます。
 
@@ -1006,9 +993,9 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a id="nextsteps"></a> 次のステップ
+## <a name="next-steps"></a><a id="nextsteps"></a> 次のステップ
 
-この記事では、WebJobs SDK を操作するための一般的なシナリオの処理方法を示すコード スニペットを提供しました。 完全なサンプルは、[azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk-samples) を参照してください。
+この記事では、WebJobs SDK を操作するための一般的なシナリオの処理方法を示すコード スニペットを提供しました。 完全なサンプルは、[azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost) を参照してください。
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient

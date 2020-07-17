@@ -1,10 +1,9 @@
 ---
-title: Azure Service Bus で処理されるトランザクションの概要 | Microsoft Docs
-description: Azure Service Bus のアトミック トランザクションと経由送信の概要
+title: Azure Service Bus でのトランザクション処理の概要
+description: この記事では、Azure Service Bus のトランザクション処理の概要と経由送信機能について説明します。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230063"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
 
@@ -37,8 +36,8 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 
 トランザクション スコープ内で実行できる操作は次のとおりです。
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Send、SendAsync、SendBatch、SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send、SendAsync、SendBatch、SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
 
 一部の受信ループ内、または [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) コールバックで、[ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) モードを使用してアプリケーションがメッセージを取得した後にのみ、メッセージを処理するためのトランザクション スコープを開くことを前提としているため、受信操作は含まれません。
 
@@ -52,7 +51,7 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 
 ### <a name="see-it-in-code"></a>コードでの確認
 
-このような転送を設定するには、転送キューを経由して送信先キューを対象とするメッセージの送信者を作成します。 同じキューからメッセージをプルする受信者も必要です。 例: 
+このような転送を設定するには、転送キューを経由して送信先キューを対象とするメッセージの送信者を作成します。 同じキューからメッセージをプルする受信者も必要です。 次に例を示します。
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);
@@ -98,7 +97,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus キューの詳細については、次の記事を参照してください。
 

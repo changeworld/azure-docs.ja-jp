@@ -1,25 +1,18 @@
 ---
 title: Grafana を使用して Azure のサービスとアプリケーションを監視する
 description: Grafana で表示できるように Azure Monitor および Application Insights データをルーティングします。
-services: azure-monitor
-keywords: ''
-author: rboucher
-ms.author: robb
-ms.date: 11/06/2017
-ms.topic: conceptual
-ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 11/06/2017
+ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77672210"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
-
-このプラグインは現在、プレビューの段階です。
 
 Grafana サーバーをセットアップし、Azure Monitor のメトリックとログ用のダッシュボードを構築するには、次の手順を使用します。
 
@@ -37,15 +30,15 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 4. ネットワーク構成設定を構成します。
 
-5. 概要を表示し、使用条件を受け入れた後、**[作成]** を選択します。
+5. 概要を表示し、使用条件を受け入れた後、 **[作成]** を選択します。
 
-6. デプロイが完了したら、**[Go to Resource Group] \(リソース グループに移動する)** を選択します。 新しく作成されたリソースの一覧が表示されます。
+6. デプロイが完了したら、 **[Go to Resource Group] \(リソース グループに移動する)** を選択します。 新しく作成されたリソースの一覧が表示されます。
 
     ![Grafana リソース グループ オブジェクト](media/grafana-plugin/grafana1.png)
 
     ネットワーク セキュリティ グループ (この場合は *grafana-nsg*) を選択すると、Grafana サーバーへのアクセスのためにポート 3000 が使用されることを確認できます。
 
-7. Grafana サーバーのパブリック IP アドレスを取得します。リソースの一覧に戻り、**[パブリック IP アドレス]** を選択します。
+7. Grafana サーバーのパブリック IP アドレスを取得します。リソースの一覧に戻り、 **[パブリック IP アドレス]** を選択します。
 
 ## <a name="sign-in-to-grafana"></a>Grafana にサインインする
 
@@ -61,7 +54,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 ![Grafana に Azure Monitor プラグインが含まれている](./media/grafana-plugin/grafana-includes-azure-monitor-plugin-dark.png)
 
-1. Azure Monitor データソースを追加するには、**[Add data source]\(データ ソースの追加\)** を選択します。
+1. Azure Monitor データソースを追加するには、 **[Add data source]\(データ ソースの追加\)** を選択します。
 
 2. データ ソースの名前を選択し、種類としてドロップダウンから **[Azure Monitor]** を選択します。
 
@@ -71,7 +64,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
     Log Analytics API には、閲覧者ロールのアクセス許可を含む[Log Analytics 閲覧者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)が必要なので、それを追加します。
 
 4. 使用する API への接続の詳細を指定します。 それらのすべてまたは一部に接続できます。 
-    * Azure Monitor のメトリックとログの両方に接続する場合は、**[Same details as Azure Monitor API]\(Azure Monitor API の詳細と同じ\)** を選択することで、同じ資格情報を再利用できます。
+    * Azure Monitor のメトリックとログの両方に接続する場合は、 **[Same details as Azure Monitor API]\(Azure Monitor API の詳細と同じ\)** を選択することで、同じ資格情報を再利用できます。
     * プラグインを構成するときに、このプラグインで監視する Azure クラウド (パブリック、Azure US Government、Azure Germany、または Azure China) を指定できます。
     * Application Insights を使用する場合は、Application Insights ベースのメトリックを収集するための Application Insights API とアプリケーション ID も含めることができます。 詳細については、「[Getting your API key and Application ID (API キーとアプリケーション ID の取得)](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)」を参照してください。
 
@@ -88,17 +81,17 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 
 ## <a name="build-a-grafana-dashboard"></a>Grafana ダッシュボードを構築する
 
-1. Grafana のホーム ページに移動し、**[New Dashboard]\(新しいダッシュボード\)** を選択します。
+1. Grafana のホーム ページに移動し、 **[New Dashboard]\(新しいダッシュボード\)** を選択します。
 
-2. 新しいダッシュボードで、**[Graph] \(グラフ)** を選択します。 他のチャート作成オプションを試すこともできますが、この記事では *[Graph] \(グラフ)* を例として使用します。
+2. 新しいダッシュボードで、 **[Graph] \(グラフ)** を選択します。 他のチャート作成オプションを試すこともできますが、この記事では *[Graph] \(グラフ)* を例として使用します。
 
-3. ダッシュボードに空白のグラフが表示されます。 パネルのタイトルをクリックし、**[編集]** を選択して、このグラフ チャートにプロットするデータの詳細を入力します。
+3. ダッシュボードに空白のグラフが表示されます。 パネルのタイトルをクリックし、 **[編集]** を選択して、このグラフ チャートにプロットするデータの詳細を入力します。
     ![Grafana の新しいグラフ](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. 構成した Azure Monitor データ ソースを選択します。
    * Azure Monitor のメトリックの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Monitor]** を選択します。 セレクターの一覧が表示されます。この一覧から、このグラフで監視するリソースとメトリックを選択できます。 VM からメトリックを収集するには、**Microsoft.Compute/VirtualMachines** 名前空間を使用します。 VM とメトリックを選択したら、ダッシュボードでのそれらのデータの表示を開始できます。
      ![Grafana での Azure Monitor 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * Azure Monitor ログ データの収集 - サービスのドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みのログ クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化の種類と**時系列** **テーブル**を選択し、クエリを実行します。
+   * Azure Monitor ログ データの収集 - サービスのドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みのログ クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化タイプ **[タイム シリーズ]** **[テーブル]** を選択し、クエリを実行します。
     
      > [!NOTE]
      >
@@ -111,7 +104,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
     ![Grafana の 2 つのグラフの例](media/grafana-plugin/grafana6.png)
 
 
-## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能:同じ Grafana サーバーでカスタム メトリックを監視する
+## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能: 同じ Grafana サーバーでカスタム メトリックを監視する
 
 Telegraf と InfluxDB をインストールして、同じ Grafana インスタンスでカスタム メトリックとエージェント ベースのメトリックの両方を収集してプロットすることもできます。 これらのメトリックをダッシュボードにまとめて表示するために使用できる多くのデータ ソース プラグインがあります。
 
@@ -120,8 +113,6 @@ Telegraf と InfluxDB をインストールして、同じ Grafana インスタ�
 Telegraf、InfluxDB、Prometheus、および Docker の使用方法に関する優れた参照記事を次に示します。
  - [How To Monitor System Metrics with the TICK Stack on Ubuntu 16.04 (Ubuntu 16.04 で TICK スタックを使用してシステム メトリックを監視する方法)](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
 
- - [Monitor Docker resource metrics with Grafana, InfluxDB, and Telegraf (Grafana、InfluxDB、および Telegraf を使用した Docker リソース メトリックの監視)](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
-
  - [A monitoring solution for Docker hosts, containers, and containerized services (Docker ホスト、コンテナー、およびコンテナー化されたサービスの監視ソリューション)](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Azure Monitor および Application Insights からのメトリックを含む完全な Grafana ダッシュボードのイメージを次に示します。
@@ -129,7 +120,7 @@ Azure Monitor および Application Insights からのメトリックを含む�
 
 ## <a name="advanced-grafana-features"></a>Grafana の高度な機能
 
-### <a name="variables"></a>variables
+### <a name="variables"></a>変数:
 いくつかのクエリの値は、UI のドロップダウン リストから選択してクエリ内で更新できます。 例として次のクエリを検討します。
 ```
 Usage 
@@ -139,7 +130,7 @@ Usage
 ```
 
 使用可能なすべての**ソリューション**の値を一覧表示する変数を構成し、それを使用するようにクエリを更新できます。
-新しい変数を作成するには、ダッシュボードの右上の領域にある [Settings]\(設定\) をクリックし、**[Variables]\(変数\)**、**[New]\(新規\)** の順に選択します。
+新しい変数を作成するには、ダッシュボードの右上の領域にある [Settings]\(設定\) をクリックし、 **[Variables]\(変数\)** 、 **[New]\(新規\)** の順に選択します。
 [Variable]\(変数\) ページで、データ ソースと、値の一覧を取得するために実行するクエリを定義します。
 ![Grafana での変数の構成](./media/grafana-plugin/grafana-configure-variable-dark.png)
 
@@ -155,17 +146,17 @@ Usage
 
 ### <a name="create-dashboard-playlists"></a>ダッシュボード再生リストを作成する
 
-Grafana の多くの有効な機能の 1 つに、ダッシュボード再生リストがあります。 複数のダッシュボードを作成し、それらを再生リストに追加して、表示するダッシュボードごとに間隔を構成できます。 ダッシュボードのサイクル全体を表示するには、**[再生]** を選択します。 それらを大きな壁のモニタに表示して、グループの状態ボードを提供できます。
+Grafana の多くの有効な機能の 1 つに、ダッシュボード再生リストがあります。 複数のダッシュボードを作成し、それらを再生リストに追加して、表示するダッシュボードごとに間隔を構成できます。 ダッシュボードのサイクル全体を表示するには、 **[再生]** を選択します。 それらを大きな壁のモニタに表示して、グループの状態ボードを提供できます。
 
 ![Grafana の再生リストの例](./media/grafana-plugin/grafana7.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure 上に Grafana 環境をセットアップした場合、VM を使用しているかどうかにかかわらず、VM が実行されたときに課金されます。 追加料金が発生しないようにするには、この記事で作成されたリソース グループをクリーンアップします。
 
-1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[Grafana]** の順にクリックします。
-2. リソース グループのページで、**[削除]** をクリックし、テキスト ボックスに「**Grafana**」と入力してから **[削除]** をクリックします。
+1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[Grafana]** の順にクリックします。
+2. リソース グループのページで、 **[削除]** をクリックし、テキスト ボックスに「**Grafana**」と入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Monitor メトリックの概要](data-platform.md)
 

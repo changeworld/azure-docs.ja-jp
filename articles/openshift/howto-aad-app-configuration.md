@@ -1,108 +1,123 @@
 ---
-title: Azure Red Hat OpenShift の Azure AD アプリ登録とユーザーを作成する | Microsoft Docs
-description: サービス プリンシパルの作成、クライアント シークレットと認証コールバック URL の生成、Microsoft Azure Red Hat OpenShift クラスター上でアプリをテストするための Active Directory ユーザーの新規作成の方法について説明します。
-author: tylermsft
-ms.author: twhitney
-ms.service: openshift
-manager: jeconnoc
+title: Azure Red Hat OpenShift の Azure Active Directory 統合
+description: Microsoft Azure Red Hat OpenShift クラスターでアプリをテストするために Azure AD のセキュリティ グループとユーザーを作成する方法について説明します。
+author: jimzim
+ms.author: jzim
+ms.service: container-service
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 05/06/2019
-ms.openlocfilehash: de3f3c30848d26ea399bcccc29a6149a149f6a55
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/13/2019
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080585"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382912"
 ---
-# <a name="create-an-azure-ad-app-registration-and-user-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure AD アプリ登録とユーザーを作成する
+# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
 
-Microsoft Azure Red Hat OpenShift には、クラスターに代わってタスクを実行するためのアクセス許可が必要です。 サービス プリンシパルとして使用する Azure Active Directory (Azure AD) アプリの登録が組織にまだない場合は、次の手順に従って作成します。
+Azure Active Directory (Azure AD) テナントをまだ作成していない場合は、これらの手順を続行する前に [Azure Red Hat OpenShift 用の Azure AD テナントの作成](howto-create-tenant.md)に関する記事の手順を行います。
 
-このトピックでは、Azure Red Hat OpenShift クラスター上で実行されているアプリにアクセスするために必要な、新しい Azure AD ユーザーを作成する手順について説明します。
+Microsoft Azure Red Hat OpenShift には、クラスターに代わってタスクを実行するためのアクセス許可が必要です。 サービス プリンシパルとして使用する Azure AD ユーザー、Azure AD セキュリティ グループ、Azure AD アプリの登録が組織にまだない場合は、次の手順に従って作成します。
 
-Azure AD テナントをまだ作成していない場合は、これらの手順を続行する前に [Azure Red Hat OpenShift 用の Azure AD テナントの作成](howto-create-tenant.md)に関する記事の手順を実行してください。
+## <a name="create-a-new-azure-active-directory-user"></a>新しい Azure Active Directory ユーザーを作成する
 
-## <a name="create-a-new-app-registration"></a>新しいアプリ登録の作成
+[Azure portal](https://portal.azure.com) で、ポータルの右上のユーザー名の下にテナントが表示されていることを確認します。
 
-アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリが配置されている URL、ユーザーが認証された後の応答の送信先となる URL、アプリを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
+![右上にテナントが表示されているポータルのスクリーンショット](./media/howto-create-tenant/tenant-callout.png) 不適切なテナントが表示される場合は、右上の自分のユーザー名をクリックし、 **[ディレクトリの切り替え]** をクリックして **[すべてのディレクトリ]** リストから正しいテナントを選択します。
 
-1. [Azure portal](https://portal.azure.com) で、ポータルの右上のユーザー名の下にテナントが表示されていることを確認します。
+Azure Red Hat OpenShift クラスターにサインインするための新しい Azure Active Directory の "所有者" ユーザーを作成します。
 
-    ![右上にテナントが表示されているポータルのスクリーンショット][tenantcallout] 不適切なテナントが表示される場合は、右上の自分のユーザー名をクリックし、**[ディレクトリの切り替え]** をクリックして **[すべてのディレクトリ]** リストから正しいテナントを選択します。
+1. [[ユーザー - すべてのユーザー]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) ブレードに移動します。
+2. **[+ 新しいユーザー]** をクリックし、 **[ユーザー]** ウィンドウを開きます。
+3. このユーザーの **[名前]** を入力します。
+4. 末尾に `.onmicrosoft.com` を追加して作成したテナントの名前に基づいて **[ユーザー名]** を作成します。 たとえば、「 `yourUserName@yourTenantName.onmicrosoft.com` 」のように入力します。 このユーザー名をメモします。 これは、クラスターにサインインするときに必要になります。
+5. **[ディレクトリ ロール]** をクリックしてディレクトリ ロール ペインを開き、 **[所有者]** を選択してから、ペインの下部にある **[OK]** をクリックします。
+6. **[ユーザー]** ウィンドウで **[パスワードを表示]** をクリックして一時パスワードをメモします。 初めてサインインした後は、リセットするように求められます。
+7. ウィンドウの下部にある **[作成]** をクリックしてユーザーを作成します。
 
-2. [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) ブレードを開き、**[新しいアプリケーションの登録]** をクリックします。
-3. **[作成]** ウィンドウにアプリケーション オブジェクトのフレンドリ名を入力します。
-4. **[アプリケーションの種類]** が *[Web アプリ/API]* に設定されていることを確認します。
-5. 次のパターンを使用して **[サインオン URL]** を作成します。
+## <a name="create-an-azure-ad-security-group"></a>Azure AD セキュリティ グループを作成する
 
-    ```
-    https://<cluster-name>.<azure-region>.cloudapp.azure.com
-    ```
+クラスター管理者アクセスを与える目的で、Azure AD セキュリティ グループのメンバーシップが OpenShift グループ "osa-customer-admins" に同期されます。 指定しない場合、クラスター管理者アクセスは与えられません。
 
-    。 . 。 この `<cluster-name>` は Azure Red Hat OpenShift クラスターに指定する名前、`<azure-region>` は [Azure Red Hat OpenShift クラスターをホストしている Azure リージョン](supported-resources.md#azure-regions)です。 たとえば、クラスター名を `contoso` にして、`eastus` リージョンに作成する場合は、**サインオン URL** に入力する完全修飾ドメイン名 (FQDN) は `https://contoso.eastus.cloudapp.azure.com` になります
+1. [[Azure Active Directory グループ]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) ブレードを開きます。
+2. **[+ 新しいグループ]** をクリックします。
+3. グループ名と説明を指定します。
+4. **[グループの種類]** を **[セキュリティ]** に設定します。
+5. **[メンバーシップの種類]** を **[割り当て済み]** を選択します。
 
-    > [!IMPORTANT]
-    > クラスター名はすべて小文字にして、FQDN URL は一意にする必要があります。
-    > クラスターには十分に特徴的な名前を選択します。
+    前の手順で作成した Azure AD ユーザーをこのセキュリティ グループに追加します。
 
-    クラスター名とサインオン URL をメモします。後で、クラスター上で実行中のアプリにアクセスするために必要になります。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、クラスター名を `CLUSTER_NAME`、このサインオン URL を `FQDN` と呼びます。
+6. **[メンバー]** をクリックし、 **[メンバーの選択]** ウィンドウを開きます。
+7. メンバーの一覧で、上記で作成した Azure AD ユーザーを選択します。
+8. ポータルの下部で **[選択]** をクリックし、 **[作成]** をクリックしてセキュリティ グループを作成します。
 
-6. **サインオン URL** の値が緑色のチェック マークで検証されていることを確認します (Tab キーを押して *[サインオン URL]* フィールドからフォーカスを外し、検証チェックを実行します)。
-7. **[作成]** ボタンをクリックして Azure AD アプリケーション オブジェクトを作成します。
-8. 表示される **[登録済みのアプリケーション]** ページで、**[アプリケーション ID]** をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `APPID` と呼びます。
+    グループ ID 値を書き留めます。
 
-    ![アプリケーション ID テキストボックスのスクリーンショット][appidimage]
-    
+9. グループが作成されると、すべてのグループの一覧に表示されます。 新しいグループをクリックします。
+10. ページが表示されたら、 **[オブジェクト ID]** をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `GROUPID` と呼びます。
+
+> [!IMPORTANT]
+> このグループを osa-customer-admins OpenShift グループと同期するには、Azure CLI を使用してクラスターを作成します。 現在 Azure portal には、このグループを設定するためのフィールドがありません。
+
+## <a name="create-an-azure-ad-app-registration"></a>Azure AD アプリの登録を作成する
+
+`az openshift create` コマンドの `--aad-client-app-id` フラグを省略することで、クラスター作成の一環として Azure Active Directory (Azure AD) アプリの登録を自動作成できます。 このチュートリアルでは、完全を期す目的で、Azure AD アプリの登録を作成する方法を示します。
+
+サービス プリンシパルとして使用する Azure Active Directory (Azure AD) アプリの登録が組織にまだない場合は、次の手順に従って作成します。
+
+1. [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) ブレードを開き、 **[+ 新しい登録]** をクリックします。
+2. **[アプリケーションの登録]** ウィンドウで、アプリケーションの登録の名前を入力します。
+3. **[サポートされているアカウントの種類]** で **[この組織のディレクトリ内のアカウントのみ]** を確実に選択します。 これは最も確実な選択肢です。
+4. 後で、クラスターの URI が確認されたとき、リダイレクト URI が追加されます。 **[登録]** ボタンをクリックして Azure AD アプリケーションの登録を作成します。
+5. 表示されたページで、 **[アプリケーション (クライアント) ID]** をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `APPID` と呼びます。
+
+![アプリ オブジェクト ページのスクリーンショット](./media/howto-create-tenant/get-app-id.png)
+
+### <a name="create-a-client-secret"></a>クライアント シークレットの作成
+
+Azure Active Directory に対してアプリを認証するためのクライアント シークレットを生成します。
+
+1. アプリの登録ページの **[管理]** セクションで、 **[証明書とシークレット]** をクリックします。
+2. **[証明書とシークレット]** ウィンドウで、 **[+ 新しいクライアント シークレット]** をクリックします。  **[クライアント シークレットの追加]** ウィンドウが表示されます。
+3. **[説明]** を入力します。
+4. **[有効期限]** を任意の期間に設定します。たとえば、 **[年 2]** にします。
+5. **[追加]** をクリックします。ページの **[クライアント シークレット]** セクションにキー値が表示されます。
+6. キー値をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `SECRET` と呼びます。
+
+![[証明書とシークレット] ウィンドウのスクリーンショット](./media/howto-create-tenant/create-key.png)
+
 Azure アプリケーション オブジェクトの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください。
 
 新しい Azure AD アプリケーションの作成の詳細については、[Azure Active Directory v1.0 エンドポイントへのアプリの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)に関する記事を参照してください。
 
-### <a name="create-a-client-secret"></a>クライアント シークレットの作成
+## <a name="add-api-permissions"></a>API アクセス許可を追加する
 
-これで、Azure Active Directory に対してアプリを認証するためのクライアント シークレットを生成する準備が整いました。
+[//]: # (Microsoft Graph に変更しないでください。Microsoft Graph では機能しません。)
+1. **[管理]** セクションで **[API のアクセス許可]** をクリックします。
+2. **[アクセス許可の追加]** をクリックし、 **[Azure Active Directory Graph]** 、 **[委任されたアクセス許可]** の順に選択します。
+> [!NOTE]
+> "Microsoft Graph" タイルではなく、"Azure Active Directory Graph" を選択したことを確認します。
 
-1. **[登録済みのアプリケーション]** ページから **[設定]** をクリックして登録済みのアプリの設定を開きます。
-2. 表示される **[設定]** ウィンドウで、**[キー]** をクリックします。  **[キー]** ウィンドウが表示されます。
-![ポータルのキーの作成ページのスクリーンショット][createkeyimage]
-3. キーの **[説明]** を入力します。
-4. **[有効期限]** に値 (たとえば *[2 年]*) を設定します。
-5. **[保存]** をクリックすると、キー値が表示されます。
-6. キー値をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `SECRET` と呼びます。
+3. 下の一覧で **[ユーザー]** を展開し、**User.Read** アクセス許可を有効にします。 **User.Read** が既定で有効になっている場合、**Azure Active Directory Graph** のアクセス許可 **User.Read** であることを確認してください。
+4. 上にスクロールして **[アプリケーションのアクセス許可]** を選択します。
+5. 下の一覧で **[ディレクトリ]** を展開し、**Directory.ReadAll** を有効にします。
+6. **[アクセス許可の追加]** をクリックして変更を適用します。
+7. この時点で、API アクセス許可パネルに *User.Read* と *Directory.ReadAll* の両方が表示されているはずです。 *Directory.ReadAll* の隣の **[Admin consent required]\(管理者の同意が必要\)** 列の警告に注意してください。
+8. *Azure サブスクリプション管理者*である場合、下の **[Grant admin consent for *Subscription Name*]\(<サブスクリプション名> に管理者の同意を付与する\)** をクリックします。 *Azure サブスクリプション管理者*でない場合、管理者からの同意を要求します。
 
-### <a name="create-a-reply-url"></a>応答 URL を作成する
+![API アクセス許可パネルのスクリーンショット。 User.Read および Directory.ReadAll アクセス許可が追加され、Directory.ReadAll に管理者の同意が必要](./media/howto-aad-app-configuration/permissions-required.png)
 
-Azure AD は、アプリを承認するときに使用するコールバックを指定するためにアプリ オブジェクトの "*応答 URL*" を使用します。 Web API または Web アプリケーションの場合、応答 URL は Azure AD が認証の応答 (認証が成功した場合のトークンなど) を送信する場所です。
+> [!IMPORTANT]
+> クラスター管理者グループの同期は、同意が付与された後でないと機能しません。 チェックマークが付いた緑色の円と、"Granted for *Subscription Name*" (<サブスクリプション名> に許可済み) というメッセージが *[Admin consent required]\(管理者の同意が必要\)* 列に表示されます。
 
-最小の不一致 (末尾のスラッシュの欠落、大文字と小文字の区別の違い) でも、トークン発行操作が失敗し、サインインできなくなります。
-
-1. **[設定]** ウィンドウに戻り (ポータルの上部にある階層リンクの **[設定]** をクリックします)、右側の **[応答 URL]** をクリックします。  **[応答 URL]** ウィンドウが表示されます。
-2. リストの最初の応答 URL は、「[新しいアプリ登録の作成](#create-a-new-app-registration)」に関する記事の手順 6 の `FQDN` 値になります。 それを編集して `/oauth2callback/Azure%20AD` を追加します。  たとえば、応答 URL は `https://mycluster.eastus.cloudapp.azure.com/oauth2callback/Azure%20AD` のようになります
-3. **[保存]** をクリックして応答 URL を保存します。
-
-## <a name="create-a-new-active-directory-user"></a>新しい Active Directory ユーザーを作成します。
-
-Azure Red Hat OpenShift クラスター上で実行されているアプリにサインインするために使用する新しいユーザーを Active Directory に作成します。
-
-1. [[ユーザー - すべてのユーザー]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) ブレードに移動します。
-2. **[+ 新しいユーザー]** をクリックします。 **[ユーザー]** ウィンドウが表示されます。
-3. このユーザーに使用する **[名前]** を入力します。
-4. 末尾に `.onmicrosoft.com` を追加して作成したテナントの名前に基づいて **[ユーザー名]** を作成します。 たとえば、「 `yourUserName@yourTenantName.onmicrosoft.com` 」のように入力します。 このユーザー名をメモします。 クラスター上でアプリを使用するにはサインインする必要があります。
-5. **[ディレクトリ ロール]** をクリックし、**[グローバル管理者]** を選択してから、ウィンドウの下部にある **[OK]** をクリックします。
-6. **[ユーザー]** ウィンドウの中央にある **[パスワードを表示]** をクリックして一時パスワードをメモします。 初めてサインインした後は、リセットするように求められます。
-7. ウィンドウの下部にある **[作成]** をクリックしてユーザーを作成します。
+管理者およびその他のロールの管理の詳細については、[Azure サブスクリプション管理者の追加または変更](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)に関する記事を参照してください。
 
 ## <a name="resources"></a>リソース
 
-* [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
-* [クイック スタート:Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  
+* [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
-[appidimage]: ./media/howto-create-tenant/get-app-id.png
-[createkeyimage]: ./media/howto-create-tenant/create-key.png
-[tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Red Hat OpenShift の前提条件](howto-setup-environment.md)をすべて満たすと、最初のクラスターを作成する準備は完了です。
 

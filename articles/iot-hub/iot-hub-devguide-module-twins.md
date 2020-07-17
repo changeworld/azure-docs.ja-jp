@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295744"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78303598"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
 
@@ -113,7 +113,7 @@ ms.locfileid: "58295744"
 
 ### <a name="desired-property-example"></a>必要なプロパティの例
 
-上記の例では、ソリューション バックエンドとモジュール アプリが `telemetryConfig` モジュール ツインの必要なプロパティと報告されたプロパティを使用して、モジュールのテレメトリ構成を同期しています。 例: 
+上記の例では、ソリューション バックエンドとモジュール アプリが `telemetryConfig` モジュール ツインの必要なプロパティと報告されたプロパティを使用して、モジュールのテレメトリ構成を同期しています。 次に例を示します。
 
 1. ソリューション バックエンドでは、必要なプロパティが必要な構成値で設定されます。 以下は、ドキュメント内の必要なプロパティ セットを使用した部分です。
 
@@ -176,7 +176,7 @@ ms.locfileid: "58295744"
 
   - Properties
 
-    | Name | 値 |
+    | 名前 | 値 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -186,12 +186,12 @@ ms.locfileid: "58295744"
     moduleId | モジュールの ID |
     hubName | IoT Hub の名前 |
     operationTimestamp | 操作の [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) タイムスタンプ |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" または "updateTwin" |
 
     メッセージのシステム プロパティには、`$` シンボルが付きます。
 
-  - 本文
+  - Body
         
     このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
 
@@ -236,11 +236,15 @@ ms.locfileid: "58295744"
 
 タグ、必要なプロパティ、報告されるプロパティは JSON オブジェクトであり、次のような制限があります。
 
-* JSON オブジェクトのすべてのキーは、大文字小文字が区別される 64 バイトの UTF-8 UNICODE 文字列です。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、SP、`$` は使用できません。
+* **キー**: JSON オブジェクトのすべてのキーは、大文字小文字が区別される 64 バイトの UTF-8 UNICODE 文字列です。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、SP、`$` は使用できません。
 
-* JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。 整数の最大値は 4503599627370495 であり、整数の最小値は -4503599627370496 です。
+* **値**:JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。
 
-* タグ、必要なプロパティ、および報告されるプロパティのすべての JSON オブジェクトは、深さ 5 まで許容されます。 たとえば、次のオブジェクトは有効です。
+    * 使用できる整数の範囲は、-4503599627370496 (最小値) から 4503599627370495 (最大値) までです。
+
+    * 文字列値は UTF-8 でエンコードされ、最大長は 512 バイトです。
+
+* **深さ**: タグ、必要なプロパティ、および報告されるプロパティのすべての JSON オブジェクトは、深さ 5 まで許容されます。 たとえば、次のオブジェクトは有効です。
 
     ```json
     {
@@ -262,20 +266,28 @@ ms.locfileid: "58295744"
     }
     ```
 
-* すべての文字列値の長さは、最大で 512 バイトまで許容されます。
-
 ## <a name="module-twin-size"></a>モジュール ツインのサイズ
 
-読み取り専用の要素を除き、IoT Hub では `tags`、`properties/desired`、`properties/reported` の各合計値に対して強制的に 8 KB のサイズ制限が適用されます。
+IoT Hub では `tags` の値に 8 KB のサイズ制限が適用され、`properties/desired` と `properties/reported` の値にそれぞれ 32 KB のサイズ制限が適用されます。 これらの合計には、`$etag`、`$version`、`$metadata/$lastUpdated` などの読み取り専用の要素は含まれません。
 
-このサイズは、UNICODE 制御文字 (セグメント C0 と C1) を除くすべての文字と、文字列定数以外で使用されるスペースをカウントして計算されます。
+ツインのサイズは、次のように計算されます。
+
+* IoT Hub では、JSON ドキュメント内のプロパティごとに、プロパティのキーと値の長さを累積的に計算して追加します。
+
+* プロパティ キーは、UTF8 でエンコードされた文字列と見なされます。
+
+* 単純なプロパティ値は、UTF8 でエンコードされた文字列、数値 (8 バイト)、またはブール値 (4 バイト) と見なされます。
+
+* UTF8 でエンコードされた文字列のサイズは、UNICODE 制御文字 (セグメント C0 と C1) を除くすべての文字をカウントして計算されます。
+
+* 複合プロパティ値 (入れ子になったオブジェクト) は、プロパティ キーの合計サイズと、そこに含まれるプロパティ値に基づいて計算されます。
 
 ドキュメントのサイズが上述の制限を超えると、IoT Hub はすべての操作を拒否して、エラーを返します。
 
 ## <a name="module-twin-metadata"></a>モジュール ツインのメタデータ
 
 IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタイムスタンプを、モジュール ツインの必要なプロパティと報告されるプロパティに保持します。 タイムスタンプは UTC であり、[ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の `YYYY-MM-DDTHH:MM:SS.mmmZ` でエンコードされます。
-例: 
+次に例を示します。
 
 ```json
 {
@@ -333,7 +345,7 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
 
 バージョンは、監視エージェント (必要なプロパティを監視するモジュール アプリなど) が取得操作に関する結果と更新の通知の間の競合を調整する場合に便利です。 詳細については、「[デバイスの再接続フロー](iot-hub-devguide-device-twins.md#device-reconnection-flow)」セクションを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 

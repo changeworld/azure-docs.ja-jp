@@ -2,16 +2,16 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 7058d7f46373f8adaacbcbf90e5ea591a15f8f37
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58404077"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562323"
 ---
-コンピューティング ロールが構成されている Data Box Edge デバイスでは、一部の Docker コマンドをモジュールの監視やトラブルシューティングに利用できます。 利用できるコマンドの一覧を表示するには、[PowerShell インターフェイスに接続し](#connect-to-the-powershell-interface)、`dkrdbe` 関数を使用します。
+コンピューティング ロールが構成されている Azure Stack Edge デバイスでは、一部の Docker コマンドをモジュールの監視やトラブルシューティングに利用できます。 利用できるコマンドの一覧を表示するには、[PowerShell インターフェイスに接続し](#connect-to-the-powershell-interface)、`dkrdbe` 関数を使用します。
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -39,7 +39,7 @@ Commands:
 
 |command  |説明 |
 |---------|---------|
-|`image`     | イメージの管理       |
+|`image`     | イメージを管理する。 未使用のイメージを削除するには、以下を使用します: `dkrdbe image prune -a -f`       |
 |`images`     | イメージの一覧表示         |
 |`inspect`     | Docker オブジェクトに関する詳細な情報を返す         |
 |`login`     | Docker レジストリにサインインする         |
@@ -89,10 +89,10 @@ Options:
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
@@ -121,16 +121,16 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 
 特定のコンテナーのログを取得するには、まず、コンテナーを一覧表示し、次に、関心があるコンテナーのログを取得します。
 
-1. [PowerShell インターフェイスに接続します](#connect-to-the-powershell-interface)。
+1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
 2. 実行中のコンテナーの一覧を取得するには、`ps` コマンドを実行します。
 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
 3. ログが必要なコンテナーのコンテナー ID をメモします。
@@ -154,7 +154,7 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 
 デバイスのメモリ、CPU 使用率、IO を監視するには、`stats` コマンドを使用します。
 
-1. [PowerShell インターフェイスに接続します](#connect-to-the-powershell-interface)。
+1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
 2. `stats` コマンドを実行し、ライブ ストリームを無効にし、最初の結果のみをプルします。
 
    ```powershell

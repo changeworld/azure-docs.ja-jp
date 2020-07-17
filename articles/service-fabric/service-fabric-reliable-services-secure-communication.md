@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric で C# を使ってサービス リモート処理通信をセキュリティで保護する | Microsoft Docs
+title: C# を使用したサービス リモート処理通信をセキュリティで保護する
 description: Azure Service Fabric クラスターで実行されている C# Reliable Services のサービス リモート処理ベースの通信をセキュリティで保護する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pepogors
+ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886269"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75609623"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>C# サービスでのサービス リモート処理通信をセキュリティで保護する
 > [!div class="op_single_selector"]

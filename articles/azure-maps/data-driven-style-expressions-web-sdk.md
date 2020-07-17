@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 |Microsoft Docs
-description: Azure Maps Web SDK でデータ ドリブンのスタイルの式を使用する方法。
+title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK でデータ ドリブンのスタイルの式を使用する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579497"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804726"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
-式を使用すると、データ ソース内の各図形で定義されたプロパティを監視するスタイル設定オプションにビジネス ロジックを適用できます。 また、式は、データ ソースまたはレイヤーでデータをフィルター処理するのにも使用できます。 式は、if ステートメントなどの条件付きロジックで構成でき、文字列、論理演算子、数学演算子によるデータの操作にも使用できます。 
+式を使用すると、データ ソース内の各図形で定義されたプロパティを監視するスタイル設定オプションにビジネス ロジックを適用できます。 式は、データ ソースまたはレイヤーのデータをフィルター処理できます。 式は、if ステートメントなどの条件付きロジックで構成されている場合があります。 また、文字列演算子、論理演算子、および算術演算子を使用して、データを操作するために使用することもできます。
 
-データ ドリブンのスタイルを使用すると、スタイル設定関連のビジネス ロジックを実装するために必要なコードの量を削減できます。 レイヤーを併用すると、式は個々のスレッドでのレンダリング時に評価されます。この場合、UI スレッドでのビジネス ロジックの評価時と比較して、パフォーマンスが向上します。
+データ ドリブンのスタイルを使用すると、スタイル設定関連のビジネス ロジックを実装するために必要なコードの量が削減されます。 レイヤーで使用する場合、式は別のスレッドでレンダリング時に評価されます。 この機能により、ビジネス ロジックを UI スレッドで評価する場合に比べてパフォーマンスが向上します。
 
-次のビデオでは、Azure Maps Web SDK でのデータ ドリブンのスタイル処理の概要を示します。
+このビデオでは、Azure Maps Web SDK でのデータ ドリブンのスタイル処理の概要を示します。
 
 <br/>
 
@@ -39,10 +39,11 @@ ms.locfileid: "59579497"
 ] 
 ```
 
-Azure Maps Web SDK では、単独で、または他の式と組み合わせて使用できる、さまざまな種類の式がサポートされています。
+Azure Maps Web SDK では、さまざまな種類の式がサポートされています。 式は、独自に使用することも、他の式と組み合わせて使用することもできます。
 
 | 式の種類 | 説明 |
 |---------------------|-------------|
+| [集計式](#aggregate-expression) | データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義する式です。 |
 | [ブール式](#boolean-expressions) | ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。 |
 | [色の式](#color-expressions) | 色の式を使用すると、色の値の作成と操作が容易になります。 |
 | [条件式](#conditional-expressions) | 条件式では、if ステートメントのようなロジック操作が提供されます。 |
@@ -64,7 +65,8 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -79,20 +81,22 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
 
 データ式では、機能内のプロパティ データへのアクセスを提供します。 
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | 配列から項目を取得します。 |
 | `['geometry-type']` | string | 機能の geometry 型: Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon を取得します。 |
 | `['get', string]` | value | 現在の機能のプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
 | `['get', string, object]` | value | 指定されたオブジェクトのプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
-| `['has', string]` | ブール値 | 機能のプロパティに、指定されたプロパティがあるかどうかを判断します。 |
-| `['has', string, object]` | ブール値 | オブジェクトのプロパティに、指定されたプロパティがあるかどうかを判断します。 |
+| `['has', string]` | boolean | 機能のプロパティに、指定されたプロパティがあるかどうかを判断します。 |
+| `['has', string, object]` | boolean | オブジェクトのプロパティに、指定されたプロパティがあるかどうかを判断します。 |
 | `['id']` | value | 機能の ID がある場合は取得します。 |
 | `['length', string | array]` | number | 文字列または配列の長さを取得します。 |
+| `['in', boolean | string | number, array]` | boolean | 項目が配列に存在するかどうかを判断します |
+| `['in', substring, string]` | boolean | substring が文字列に存在するかどうかを判断します |
 
-**例**
+**使用例**
 
-機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 次の例では、機能の "zoneColor" 値を使用して、バブル レイヤーの色のプロパティを指定します。 
+機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の "zoneColor" 値を使用して、バブル レイヤーの色のプロパティを指定します。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -100,7 +104,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-すべてのポイント機能に `zoneColor` プロパティがある場合、上記の例は問題なく機能しますが、プロパティがない場合、色は "黒" にフォールバックする可能性があります。 フォールバックの色を変更するには、`case` 式と `has` 式を組み合わせて使用して、プロパティが存在するかどうかをチェックします。プロパティが存在しない場合は代わりにフォールバックの色が返されます。
+上の例は、すべてのポイント機能に `zoneColor` プロパティがある場合、問題なく動作します。 そうでない場合は、色が "黒色" にフォールバックする可能性があります。 フォールバックの色を変更するには、`case` 式と `has` 式を組み合わせて使用して、このプロパティが存在するかどうかをチェックします。 このプロパティが存在しない場合は、フォールバックの色が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -115,7 +119,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-バブルとシンボルのレイヤーでは、既定でデータ ソース内のすべての図形の座標がレンダリングされます。 これは、多角形または線の頂点を強調表示するために実行できます。 レイヤーの `filter` オプションを使用すると、ブール式内で `['geometry-type']` 式を使用して、レンダリングする機能の geometry 型を制限できます。 次の例では、`Point` 機能のみがレンダリングされるようにバブル レイヤーを制限できます。
+バブルとシンボルのレイヤーでは、既定でデータ ソース内のすべての図形の座標がレンダリングされます。 この動作により、多角形または線の頂点を強調表示できます。 レイヤーの `filter` オプションを使用すると、ブール式内で `['geometry-type']` 式を使用して、レンダリングする機能の geometry 型を制限できます。 次の例では、`Point` 機能のみがレンダリングされるようにバブル レイヤーを制限できます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -137,7 +141,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 数式では、式のフレームワーク内でデータ ドリブンの計算を実行する数学演算子を提供します。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | 指定された数値の合計が計算されます。 |
 | `['-', number]` | number | 0 から、指定された数値が減算されます。 |
@@ -165,23 +169,44 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 | `['sin', number]` | number | 指定された数値のサインが計算されます。 |
 | `['sqrt', number]` | number | 指定された数値の平方根が計算されます。 |
 | `['tan', number]` | number | 指定された数値のタンジェントが計算されます。 |
+
+## <a name="aggregate-expression"></a>集計式
+
+集計式では、データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義します。 これらの式の出力は、数値またはブール値である必要があります。 
+
+集計式には 3 つの値があります。演算子の値と初期値、そして集計操作を適用するためにデータ内の各機能からプロパティを取得する式です。 この式の書式は次のとおりです。
+
+```javascript
+[operator: string, initialValue: boolean | number, mapExpression: Expression]
+```
+
+- 演算子:クラスター内の各ポイントについて `mapExpression` によって計算されるすべての値に適用される式関数。 サポートされている演算子は次のとおりです。 
+    - 数値の場合: `+`、`*`、`max`、`min`
+    - ブール値の場合: `all`、`any`
+- initialValue:最初の計算値が集計される初期値。
+- mapExpression:データ セット内の各ポイントに適用される式。
+
+**使用例**
+
+データ セット内のすべての機能に、数値である `revenue` プロパティがある場合。 この場合、データ セットから作成されたクラスター内のすべてのポイントの合計収益を計算できます。 この計算は、次の集計式を使用して行われます。`['+', 0, ['get', 'revenue']]`
+
 ## <a name="boolean-expressions"></a>ブール式
 
 ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。
 
 値を比較する際に、比較は厳密に型指定されます。 異なる型の値は、常に等しくないと見なされます。 解析時に型が異なるとがわかった場合は、無効と見なされ、解析エラーが生成されます。 
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | ブール値 | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
-| `['!= ', value, value]` | ブール値 | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
-| `['<', value, value]` | ブール値 | 最初の入力が厳密に 2 番目の入力未満の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['<=', value, value]` | ブール値 | 最初の入力が 2 番目の入力以下の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['==', value, value]` | ブール値 | 入力値が等しい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['>', value, value]` | ブール値 | 最初の入力が厳密に 2 番目の入力より大きい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['>=' value, value]` | ブール値 | 最初の入力が 2 番目の入力以上の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
-| `['all', boolean, boolean, …]` | ブール値 | すべての入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
-| `['any', boolean, boolean, …]` | ブール値 | いずれかの入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['! ', boolean]` | boolean | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
+| `['!= ', value, value]` | boolean | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['<', value, value]` | boolean | 最初の入力が厳密に 2 番目の入力未満の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['<=', value, value]` | boolean | 最初の入力が 2 番目の入力以下の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['==', value, value]` | boolean | 入力値が等しい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['>', value, value]` | boolean | 最初の入力が厳密に 2 番目の入力より大きい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['>=' value, value]` | boolean | 最初の入力が 2 番目の入力以上の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
+| `['all', boolean, boolean, …]` | boolean | すべての入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['any', boolean, boolean, …]` | boolean | いずれかの入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
 
 ## <a name="conditional-expressions"></a>条件式
 
@@ -191,7 +216,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="case-expression"></a>case 式
 
-`case` 式は、ロジック (if/then/else) などの if ステートメントを提供する一種の条件式です。 この種類の式では、一連のブール条件を通過し、true となる最初のブール条件の出力値が返されます。
+`case` 式は、"if/then/else" ロジックを提供する一種の条件式です。 この種類の式は、ブール条件のリストを通過します。 True に評価される最初のブール条件の出力値を返します。
 
 次の疑似コードでは、`case` 式の構造が定義されます。 
 
@@ -249,7 +274,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-**例**
+**使用例**
 
 次の例では、バブル レイヤー内のポイント機能の `entityType` プロパティを確認し、一致を検索します。 一致が見つかると、その指定値が返されるか、フォールバック値が返されます。
 
@@ -292,6 +317,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
+次の例では、match 式を使用して、"配列内にある" または "配列が含む" の種類のフィルターを実行します。 この場合、式は、許可された ID の一覧に含まれる ID 値を持つデータをフィルター処理します。 フィルターを含む式を使用するときは、結果がブール値である必要があります。
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
+    ]
+});
+```
+
 ### <a name="coalesce-expression"></a>coalesce 式
 
 `coalesce` 式では、一連の式を通過し、最初の null 以外の値を取得したら、その値が返されます。 
@@ -330,14 +377,33 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
+次の例では、`coalesce` 式を使用して、指定されたイメージ名のリストからマップ スプライトで使用可能な最初の使用可能なイメージ アイコンを取得します。
+
+```javascript
+var layer = new atlas.layer.SymbolLayer(datasource, null, {
+    iconOptions: {
+        image: [
+            'coalesce',
+
+            //Try getting the image with id 'missing-image'.
+            ['image', 'missing-image'],
+
+            //Specify an image id to fallback to. 
+            'marker-blue'
+        ]
+    }
+});
+``` 
+
 ## <a name="type-expressions"></a>型式
 
 型式では、文字列、数値、ブール値などのさまざまなデータ型をテストおよび変換するためのツールを提供します。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | リテラル配列またはオブジェクト値が返されます。 配列またはオブジェクトが式として評価されないようにするには、この式を使用します。 この操作は、式で配列またはオブジェクトを返さなければならない場合に必要となります。 |
-| `['to-boolean', value]` | ブール値 | 入力値をブール値に変換します。 入力が空の文字列、`0`、`false`、`null`、`NaN` である場合は、結果は `false` になり、それ以外の場合は `true` になります。 |
+| `['image', string]` | string | 指定されたイメージ ID がマップ イメージ スプライトに読み込まれているかどうかを確認します。 そうである場合は、ID が返されます。それ以外の場合は、null 値が返されます。 |
+| `['to-boolean', value]` | boolean | 入力値をブール値に変換します。 入力が空の文字列、`0`、`false`、`null`、`NaN` である場合は、結果は `false` になり、それ以外の場合は `true` になります。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 入力値が色に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 可能な場合は、入力値を数値に変換します。 入力が `null` または `false` の場合、結果は 0 になります。 入力が `true` の場合、結果は 1 になります。 入力が文字列である場合は、ECMAScript 言語仕様の [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) 文字列関数を使用して、数値に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
 | `['to-string', value]` | string | 入力値が文字列に変換されます。 入力が `null` の場合、結果は `""` になります。 入力がブール値の場合、結果は `"true"` または `"false"` になります。 入力が数値である場合は、ECMAScript 言語仕様の [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) 数値関数を使用して、文字列に変換されます。 入力が色である場合は、CSS RGBA 色文字列 `"rgba(r,g,b,a)"` に変換されます。 それ以外の場合、入力は ECMAScript 言語仕様の [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) 関数を使用して、文字列に変換されます。 |
@@ -355,7 +421,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 >             //Get the entityType value.
 >             ['get', 'entityType'],
 >
->             //If there is no title, try getting the subtitle. 
+>             //If the entity type is 'restaurant', return a different pixel offset. 
 >             'restaurant', ['literal', [0, -10]],
 >
 >             //Default to value.
@@ -369,7 +435,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 色の式を使用すると、色の値の作成と操作が容易になります。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、およびアルファ コンポーネント `1` から、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
 | `['rgba', number, number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、および `0` から `1` の範囲内のアルファ コンポーネントから、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
@@ -377,7 +443,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **例**
 
-次の例では、*red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色は網掛けの異なる *red* に変化します。
+次の例では、*red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色はさまざまな色調の *red* に変化します。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -397,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 文字列演算子式では、連結や大文字と小文字の変換など、文字列の変換操作を実行します。 
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | string | 複数の文字列を連結します。 各値は文字列である必要があります。 必要に応じて、`to-string` 型式を使用して、他の型の値を文字列に変換します。 |
 | `['downcase', string]` | string | 指定された文字列を小文字に変換します。 |
@@ -428,7 +494,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ## <a name="interpolate-and-step-expressions"></a>補間式とステップ式
 
-補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 これらの式では、入力として数値を返す式が包含されします (たとえば、`['get',  'temperature']`)。 入力値は、入力値と出力値のペア ("分岐点" と呼ばれる) に対して評価され、補間曲線またはステップ関数に最適な値が判断されます。 各分岐点の入力値は数値で、昇順である必要があります。 出力値は、数値、数値の配列、または色である必要があります。
+補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 これらの式では、入力として数値を返す式が包含されします (たとえば、`['get',  'temperature']`)。 入力値は、入力値と出力値のペアに対して評価され、補間曲線またはステップ関数に最適な値が判断されます。 出力値は "分岐点" と呼ばれます。 各分岐点の入力値は数値で、昇順である必要があります。 出力値は、数値、数値の配列、または色である必要があります。
 
 ### <a name="interpolate-expression"></a>補間式
 
@@ -463,7 +529,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **例**
 
-次の例では、`linear interpolate` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合は "blue"、60 以上 70 未満の場合は "yellow"、70 以上 80 未満の場合は "orange"、80 以上の場合は "red"が返されます。
+次の例では、`linear interpolate` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合、"blue" が返されます。 60 以上 70 未満の場合は、yellow が返されます。 70 以上 80 未満の場合は、"orange" が返されます。 80 以上の場合は、"red" が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -512,7 +578,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **例**
 
-次の例では、`step` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合は "blue"、60 以上 70 未満の場合は "yellow"、70 以上 80 未満の場合は "orange"、80 以上の場合は "red"が返されます。
+次の例では、`step` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `color` プロパティが設定されます。 `temperature` 値が 60 未満の場合、"blue" が返されます。 60 以上 70 未満の場合は、"yellow" が返されます。 70 以上 80 未満の場合は、"orange" が返されます。 80 以上の場合は、"red" が返されます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -543,10 +609,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="heat-map-density-expression"></a>ヒート マップ密度式
 
-ヒート マップ密度式では、ヒート マップ レイヤー内の各ピクセルに対してヒート マップ密度値を取得します。この式は `['heatmap-density']` として定義されます。 この値は `0` と `1` の間の数値で、`interpolation` 式または `step` 式と組み合わせて使用して、ヒート マップの色分けに使用される色のグラデーションが定義されます。 この式は、ヒート マップ レイヤーの[色のオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)でのみ使用できます。
+ヒート マップ密度式では、ヒート マップ レイヤー内の各ピクセルに対してヒート マップ密度値を取得します。この式は `['heatmap-density']` として定義されます。 この値は `0` から `1` までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用して、ヒート マップの色分けに使用される色のグラデーションが定義されます。 この式は、ヒート マップ レイヤーの[色のオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)でのみ使用できます。
 
 > [!TIP]
-> 補間式のインデックス 0 の色、または段階色の既定の色では、データのない領域の色が定義されます。これは背景色を定義するために使用できます。 多くの場合、この値は透明または半透明の黒に設定することが好まれます。 
+> 補間式内のインデックス 0 の色、または段階色の既定の色では、データのない領域の色が定義されます。 インデックス 0 の色は背景色を定義するために使用できます。 多くの場合、この値は透明または半透明の黒に設定することが好まれます。
 
 **例**
 
@@ -587,14 +653,14 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ### <a name="line-progress-expression"></a>線形進行状況の式
 
-線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 の数値で、`interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)でのみ使用できます。 
+線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)でのみ使用できます。 
 
 > [!NOTE]
 > 線レイヤーの `strokeGradient` オプションでは、データ ソースの `lineMetrics` オプションが `true` に設定される必要があります。
 
 **例**
 
-次の例では、`['line-progress']` 式を使用して、線のストロークに色のグラデーションを適用します。
+この例では、`['line-progress']` 式を使用して、線のストロークに色のグラデーションを適用します。
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -612,7 +678,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[実際に操作できる例をご覧ください](map-add-shape.md#line-stroke-gradient)
+[実際に操作できる例をご覧ください](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>テキスト フィールドの書式指定式
 
@@ -620,6 +686,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
  * `'font-scale'` - フォント サイズのスケール ファクターを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `size` プロパティをオーバーライドします。
  * `'text-font'` - この文字列に使用する 1 つまたは複数のフォント ファミリを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `font` プロパティをオーバーライドします。
+ * `'text-color'` - レンダリング時にテキストに適用する色を指定します。 
 
 次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。 
 
@@ -629,12 +696,14 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[],
+        'text-color': color
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[] ,
+        'text-color': color
     },
     …
 ]
@@ -642,7 +711,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 **例**
 
-次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして、改行で機能の `subtitle` プロパティを追加します。
+次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして色を赤にし、改行で機能の `subtitle` プロパティを追加します。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -661,7 +730,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             //Scale the font size down of the subtitle property. 
             ['get', 'subtitle'],
-            { 'font-scale': 0.75 }
+            { 
+                'font-scale': 0.75, 
+                'text-color': 'red' 
+            }
         ]
     }
 });
@@ -721,13 +793,51 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ![数値形式の式の例](media/how-to-expressions/number-format-expression.png) </center>
 
-## <a name="zoom-expression"></a>ズーム式
+### <a name="image-expression"></a>イメージ式
 
-`zoom` 式は、レンダリング時にマップの現在のズーム レベルを取得するために使用され、`['zoom']` として定義されます。 この式では、マップの最小ズーム レベルと最大ズーム レベルの範囲内にある数値が返されます。 この式を使用すると、マップのズーム レベルの変更に応じて、スタイルを動的に変更できます。 `zoom` 式は、`interpolate` 式と `step` 式でのみ使用できます。
+イメージ式は、シンボル レイヤーの `image` および `textField` オプション、および多角形レイヤーの `fillPattern` オプションで使用できます。 この式では、要求したイメージがスタイルに存在するかどうかがチェックされて、イメージが現在スタイル内に存在するかどうかに応じて、解決されたイメージ名または `null` が返されます。 この検証プロセスは同期的であり、イメージ引数でイメージを要求する前に、イメージがスタイルに追加されている必要があります。
 
 **例**
 
-既定では、ヒート マップ レイヤーにレンダリングされるデータ ポイントの半径には、すべてのズーム レベルの固定ピクセル半径が含まれます。 マップがズームされると、データがまとめて集計され、ヒート マップ レイヤーの外観が変化します。 `zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 これにより、ヒート マップ レイヤーの外観は、より静的で一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。 ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 この操作は、次に示すように、`base 2 exponential interpolation` 式で `zoom` 式を使用して実現できます。 
+次の例では、`image` 式を使用して、シンボル レイヤーのテキストの行内にアイコンを追加します。 
+
+```javascript
+ //Load the custom image icon into the map resources.
+map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
+
+    //Create a data source and add it to the map.
+    datasource = new atlas.source.DataSource();
+    map.sources.add(datasource);
+
+    //Create a point feature and add it to the data source.
+    datasource.add(new atlas.data.Point(map.getCamera().center));
+
+    //Add a layer for rendering point data as symbols.
+    map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+        iconOptions: {
+            image: 'none'
+        },
+        textOptions: {
+            //Create a formatted text string that has an icon in it.
+            textField: ["format", 'Ricky\'s ', ["image", "wifi-icon"], ' Palace']
+        }
+    }));
+});
+```
+
+このレイヤーでは、次の図に示すように、シンボル レイヤーのテキスト フィールドがレンダリングされます。
+
+<center>
+
+![イメージ式の例](media/how-to-expressions/image-expression.png)</center>
+
+## <a name="zoom-expression"></a>ズーム式
+
+`zoom` 式は、レンダリング時にマップの現在のズーム レベルを取得するために使用され、`['zoom']` として定義されます。 この式では、マップの最小ズーム レベルと最大ズーム レベルの範囲内にある数値が返されます。 Web および Android 用の Azure Maps 対話型コントロールでは、25 のズーム レベル (0 から 24 までの番号が付けられている) がサポートされます。 `zoom` 式を使用すると、マップのズーム レベルの変更に応じて、スタイルを動的に変更できます。 `zoom` 式は、`interpolate` 式と `step` 式でのみ使用できます。
+
+**例**
+
+既定では、ヒート マップ レイヤーにレンダリングされるデータ ポイントの半径には、すべてのズーム レベルの固定ピクセル半径が含まれます。 マップがズームされると、データがまとめて集計され、ヒート マップ レイヤーの外観が変化します。 `zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 これにより、ヒート マップ レイヤーの外観は、より静的で一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。 ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 これを実現するには、次のように、`zoom` 式と `base 2 exponential interpolation` 式を使用し、最小ズーム レベルに設定されたピクセル半径と最大ズーム レベルにスケーリングされた半径を `2 * Math.pow(2, minZoom - maxZoom)` として計算します。
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -739,8 +849,8 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         //For zoom level 1 set the radius to 2 pixels.
         10, 2,
 
-        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 10,000 pixels.
-        19, 10000
+        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
+        19, 2 * Math.pow(2, 19 - 1)
     ]
 };
 ```
@@ -749,16 +859,16 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ## <a name="variable-binding-expressions"></a>変数バインド式
 
-変数バインド式では、計算結果を変数に格納して、格納された値を再計算することなく、式内の別の場所で繰り返し参照できるようにします。 これは、多くの計算を含む式で便利な最適化です。
+変数バインド式は、計算結果を変数に格納します。 そのため、計算結果は式内の別の場所で繰り返し参照することができます。 これは、多くの計算を含む式で便利な最適化です。
 
-| 式 | 戻り値の型 | 説明 |
+| 式 | の戻り値の型 : | 説明 |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'let',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 結果を返す子式内に、`var` 式で使用する変数として 1 つまたは複数の値を格納します。 |
-| `['var', name: string]` | 任意 | `let` 式を使用して作成された変数を参照します。 |
+| `['var', name: string]` | any | `let` 式を使用して作成された変数を参照します。 |
 
 **例**
 
-この例では、温度の比率を基準として収益を計算する式を使用した後、`case` 式を使用して、この値に対してさまざまなブール演算子を評価します。 `let` 式を使用して、温度の比率を基準とした収益を格納します。これにより、収益を 1 回計算するだけで済み、`var` 式では再計算を行うことなく、必要な回数だけこの変数を参照できます。
+この例では、温度の比率を基準として収益を計算する式を使用した後、`case` 式を使用して、この値に対してさまざまなブール演算子を評価します。 `let` 式は、温度を基準とした収益の比率を格納するために使用され、その結果、1 回だけ計算すればよくなります。 `var` 式は、必要に応じてこの変数を再計算することなく何度も参照できます。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -784,7 +894,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 式を実装するその他のコード サンプルについては、次の記事を参照してください。
 
@@ -794,8 +904,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"] 
 > [バブル レイヤーを追加する](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [図形を追加する](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [線レイヤーを追加する](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [多角形レイヤーを追加する](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [ヒート マップ レイヤーを追加する](map-add-heat-map-layer.md)

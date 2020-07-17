@@ -1,24 +1,17 @@
 ---
-title: Azure Monitor で Active Directory のレプリケーション状態を監視する | Microsoft Docs
+title: Active Directory レプリケーションの状態を監視する
 description: Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.subservice: logs
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.author: magoedte
-ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055895"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
@@ -26,12 +19,19 @@ ms.locfileid: "59425850"
 
 Active Directory は、エンタープライズ IT 環境の重要なコンポーネントです。 各ドメイン コントローラーには、高い可用性とパフォーマンスを保証するために、Active Directory データベースのコピーが保持されています。 ドメイン コントローラーは、エンタープライズ全体に変更を反映するために、相互にレプリケートを行います。 このレプリケーション処理で失敗すると、エンタープライズ全体でさまざまな問題が発生します。
 
-AD レプリケーションの状態ソリューション パックは、レプリケーションの失敗を Active Directory 環境で定期的に監視します。
+AD レプリケーションの状態ソリューションは、レプリケーションの失敗を Active Directory 環境で定期的に監視します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
+
+### <a name="prerequisites"></a>前提条件
+
+* AD レプリケーションの状態ソリューションを使用するには、各コンピューターに (Microsoft Monitoring Agent (MMA) とも呼ばれる) Windows 用の Log Analytics エージェントがインストールされ、4.6.2 以降のサポートされているバージョンの .NET Framework がインストールされている必要があります。  このエージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。
+* このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
+* Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。 追加の構成は必要ありません。
+
 
 ### <a name="install-agents-on-domain-controllers"></a>ドメイン コントローラーにエージェントをインストールする
 評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Azure Monitor に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Azure Monitor に接続する方法について詳しくは、[Azure Monitor への Windows コンピューターの接続](../../azure-monitor/platform/agent-windows.md)に関する記事をご覧ください。 ドメイン コントローラーが、Azure Monitor に接続する既存の System Center Operations Manager 環境の一部である場合は、[Azure Monitor への Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。
@@ -106,7 +106,7 @@ AD Replication Status タイルには、現在発生しているレプリケー�
 >
 
 ### <a name="ad-replication-status-details"></a>AD レプリケーションの状態の詳細
-一覧のいずれかの任意の項目をクリックすると、ログ クエリにその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、**[宛先サーバーの状態 (ADDC02)]** の最初のドメイン コントローラーをクリックすると、クエリ結果がフィルター処理されて、エラーと、宛先サーバーとして示されているそのドメイン コントローラーが表示されます。
+一覧のいずれかの任意の項目をクリックすると、ログ クエリにその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、 **[宛先サーバーの状態 (ADDC02)]** の最初のドメイン コントローラーをクリックすると、クエリ結果がフィルター処理されて、エラーと、宛先サーバーとして示されているそのドメイン コントローラーが表示されます。
 
 ![クエリ結果内の AD レプリケーションの状態エラー](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
@@ -154,5 +154,5 @@ AD レプリケーションの状態ソリューション パックでデータ�
 
 ドメイン コントローラーを Azure Monitor または System Center Operations Manager に直接接続しない場合は、「[非ドメイン コントローラーを有効にする](#enable-non-domain-controller)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Active Directory のレプリケーション状態の詳細データを見るには、[Azure Monitor のログ クエリ](../../azure-monitor/log-query/log-query-overview.md)を使用します。

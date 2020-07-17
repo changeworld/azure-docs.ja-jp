@@ -2,18 +2,19 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/09/2019
-ms.author: adgera
+ms.date: 01/10/2020
 ms.custom: include file
-ms.openlocfilehash: 0d5f483f074f90c51f500e8f8142bb54f9f6bb1e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ee105969282dd41b4b56abb50e06f9fa219388ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157924"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75901771"
 ---
 この記事は、Azure Digital Twins Management API シリーズを使用した認証についてある程度の知識があることを前提としています。
 

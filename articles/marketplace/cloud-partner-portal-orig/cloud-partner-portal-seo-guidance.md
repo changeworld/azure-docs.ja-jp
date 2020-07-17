@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace SEO ガイド
 description: 検索エンジンの最適化 (SEO) を最大化するためのガイダンスを提供します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: pabutler
-ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: dsindona
+ms.openlocfilehash: 761cdc2233bce3619d4c2c9ce1d7d7177d3bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935153"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280152"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO ガイド
 
@@ -21,7 +21,7 @@ ms.locfileid: "64935153"
 
 ## <a name="general-explanation-of-algorithm"></a>アルゴリズムの一般的な説明
 
-Microsoft マーケットプレースでは、サイトの検索機能を強化するために Azure Search が使用されます。 アルゴリズムは、用語の出現頻度/逆文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)) に基づきます。 標準の [Lucene アナライザー](https://lucene.apache.org/core/)が使用されます。
+Microsoft マーケットプレースでは、サイトの検索機能を強化するために Azure Cognitive Search が使用されます。 アルゴリズムは、用語の出現頻度/逆文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)) に基づきます。 標準の [Lucene アナライザー](https://lucene.apache.org/core/)が使用されます。
 
 一般的に、すべてのテキスト フィールド、カテゴリ、および業界が適合性の重み付けに加味されます。 他のアプリではあまり使用されないももの、お客様のアプリで頻繁に使用される特殊な用語は、検索でより高い一致スコアが付けられます。 "VM" などの用語が含まれる場合、あまり効果が上がらないかもしれませんが、"Azure search" のような用語は大きな効果を発揮します。
 以下に、考慮すべき重要なフィールドを示します。

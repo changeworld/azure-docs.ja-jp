@@ -1,23 +1,25 @@
 ---
 title: Web サービス用の Excel アドイン
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 9e801e0d7a26cd4d6c43118959aee1dec7216b1c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120246"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204377"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスの Excel アドイン
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>ブックで既存の Web サービスを使用する手順
@@ -30,7 +32,7 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
 2. 対象の Web サービスをクリックして選択します。この例では、「Titanic Survivor Predictor (Excel Add-in Sample) [Score]」を選択します。
    
     ![Web サービスの選択](./media/excel-add-in-for-web-services/image1.png)
-3. この操作により、**[予測]** セクションが表示されます。  このブックにはサンプル データが既に含まれていますが、空のブックで Excel のセルを選択して、 **[サンプル データを使用]** をクリックすることもできます。
+3. この操作により、 **[予測]** セクションが表示されます。  このブックにはサンプル データが既に含まれていますが、空のブックで Excel のセルを選択して、 **[サンプル データを使用]** をクリックすることもできます。
 4. ヘッダーを含めてデータを選択し、入力データ範囲のアイコンをクリックします。  [先頭行をデータの見出しとして使用する] ボックスを必ずオンにします。
 5. **[出力]** で、データを出力するセル番号を入力します。この場合、「H1」などと入力します。
 6. **[予測]** をクリックします。 [Auto-predict]\(自動予測\) チェックボックスを選択すると、予測ボタンを押さなくても、選択した領域 (入力として指定した領域) での任意の変更によって、出力セルの要求と更新がトリガーされます。
@@ -43,13 +45,13 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 
 **クラシック Web サービスを使用する** 
 
-1. Machine Learning Studio の左側の **[Web サービス]** セクションをクリックして、Web サービスを選択します。
+1. Machine Learning Studio (クラシック) の左側の **[Web サービス]** セクションをクリックして、Web サービスを選択します。
    
     ![Studio での Web サービスの選択](./media/excel-add-in-for-web-services/image4.png)
 2. Web サービスの API キーをコピーします。
    
     ![Studio での API キー](./media/excel-add-in-for-web-services/image5.png)
-3. Web サービスの **[ダッシュボード]** タブで、**[要求/応答]** をクリックします。
+3. Web サービスの **[ダッシュボード]** タブで、 **[要求/応答]** をクリックします。
 4. **[Request URI (要求 URI)]** セクションを探します。  URL をコピーして保存します。
 
 > [!NOTE]
@@ -59,7 +61,7 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 
 **新しい Web サービスを使用する**
 
-1. [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルで、**[WEB サービス]** をクリックし、Web サービスを選択します。 
+1. [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルで、 **[WEB サービス]** をクリックし、Web サービスを選択します。 
 2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
 
@@ -68,11 +70,11 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 1. Web サービスをデプロイするか、既存の Web サービスを使用します。 Web サービスのデプロイの詳細については、[チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。
 2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー**と**要求応答** URL をコピーして保存します。
-4. Excel で、**[Web サービス]** セクションに移動します (**[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。
+4. Excel で、 **[Web サービス]** セクションに移動します ( **[予測]** セクションにいる場合は、戻る矢印をクリックして Web サービスの一覧に移動します)。
    
     ![Web サービスの選択への移動](./media/excel-add-in-for-web-services/image3.png)
 5. **[Web サービスの追加]** をクリックします。
-6. **URL**というラベルが付いた、Excell アドインのテキスト ボックスに URL を貼り付けます。
+6. **URL**というラベルが付いた、Excel アドインのテキスト ボックスに URL を貼り付けます。
 7. **API キー**というラベルが付いたテキスト ボックスに API/主キーを貼り付けます。
 8. **[追加]** をクリックします。
    

@@ -1,11 +1,10 @@
 ---
-title: Azure CLI サンプル - Azure Monitor を実行する Azure VM を作成する | Microsoft Docs
+title: Azure CLI サンプル - Azure Monitor を実行する Azure VM を作成する
 description: Azure CLI のサンプル - Windows Server 2016 VM と Azure Monitor を実行する Azure VM を作成します。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b3c8c045b7d773f6345072ed46c4a668d0db8ec5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543323"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459476"
 ---
 # <a name="monitor-a-vm-with-azure-monitor-logs"></a>Azure Monitor ログを使用して VM を監視する
 
@@ -54,7 +53,7 @@ az group delete --name myResourceGroup --yes
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

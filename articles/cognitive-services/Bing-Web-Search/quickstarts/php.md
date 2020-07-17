@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:PHP で検索を実行する - Bing Web Search API
+title: 'クイック スタート: PHP で検索を実行する - Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858203"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76169721"
 ---
-# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート:PHP を使用して Bing Web Search API を呼び出す  
+# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート: PHP を使用して Bing Web Search API を呼び出す  
 
 このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Node.js アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
@@ -43,7 +43,7 @@ ms.locfileid: "57858203"
 
 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。 開始タグと終了タグの `<?php` と `?>` を追加し忘れないでください。
 
-先に進む前に、いくつかの変数を設定する必要があります。 `$endpoint` が正しいことを確認し、`$accesskey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `$term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+先に進む前に、いくつかの変数を設定する必要があります。 `$endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 `$endpoint` が正しいことを確認し、`$accesskey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `$term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
 
 ```php
 $accessKey = 'enter key here';
@@ -177,9 +177,9 @@ Bing Web Search API からの応答は、JSON として返されます。 この
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -281,7 +281,7 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)

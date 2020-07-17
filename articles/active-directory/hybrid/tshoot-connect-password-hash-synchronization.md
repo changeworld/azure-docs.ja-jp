@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227799"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 
@@ -64,13 +64,13 @@ Azure Active Directory (Azure AD) Connect バージョン 1.1.614.0 以降のデ
 
 3. Azure AD Connect ウィザードを開始します。
 
-4. **[追加のタスク]** ページに移動し、**[トラブルシューティング]** を選択して **[次へ]** をクリックします。
+4. **[追加のタスク]** ページに移動し、 **[トラブルシューティング]** を選択して **[次へ]** をクリックします。
 
-5. トラブルシューティング ページで、**[起動]** をクリックして PowerShell でトラブルシューティング メニューを起動します。
+5. トラブルシューティング ページで、 **[起動]** をクリックして PowerShell でトラブルシューティング メニューを起動します。
 
-6. メイン メニューで、**[Troubleshoot password hash synchronization]\(パスワード ハッシュ同期のトラブルシューティング\)** を選択します。
+6. メイン メニューで、 **[Troubleshoot password hash synchronization]\(パスワード ハッシュ同期のトラブルシューティング\)** を選択します。
 
-7. サブ メニューで、**[Password hash synchronization does not work at all]\(パスワード ハッシュ同期がまったく機能しない\)** を選択します。
+7. サブ メニューで、 **[Password hash synchronization does not work at all]\(パスワード ハッシュ同期がまったく機能しない\)** を選択します。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
 
@@ -147,13 +147,13 @@ Azure AD Connect サーバーがステージング モードである場合、�
 
 3. Azure AD Connect ウィザードを開始します。
 
-4. **[追加のタスク]** ページに移動し、**[トラブルシューティング]** を選択して **[次へ]** をクリックします。
+4. **[追加のタスク]** ページに移動し、 **[トラブルシューティング]** を選択して **[次へ]** をクリックします。
 
-5. トラブルシューティング ページで、**[起動]** をクリックして PowerShell でトラブルシューティング メニューを起動します。
+5. トラブルシューティング ページで、 **[起動]** をクリックして PowerShell でトラブルシューティング メニューを起動します。
 
-6. メイン メニューで、**[Troubleshoot password hash synchronization]\(パスワード ハッシュ同期のトラブルシューティング\)** を選択します。
+6. メイン メニューで、 **[Troubleshoot password hash synchronization]\(パスワード ハッシュ同期のトラブルシューティング\)** を選択します。
 
-7. サブ メニューで、**[Password is not synchronized for a specific user account]\(特定のユーザー アカウントのパスワードが同期されない\)** を選択します。
+7. サブ メニューで、 **[Password is not synchronized for a specific user account]\(特定のユーザー アカウントのパスワードが同期されない\)** を選択します。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
 
@@ -235,7 +235,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   例: 
+   次に例を示します。
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -274,7 +274,7 @@ Azure AD との接続がありますか。
  
 2. **[コネクタ]** に移動し、トラブルシューティングを行うオンプレミスの Active Directory フォレストを検索します。 
  
-3. コネクタを選択し、**[プロパティ]** をクリックします。 
+3. コネクタを選択し、 **[プロパティ]** をクリックします。 
  
 4. **[Active Directory フォレストに接続]** を選択します。  
     
@@ -285,13 +285,13 @@ Azure AD との接続がありますか。
     * ディレクトリの変更のレプリケート
     * ディレクトリの変更をすべてにレプリケート
 
-6. ドメイン コントローラーは、Azure AD Connect からアクセスできますか。 Connect サーバーがすべてのドメイン コントローラーに接続できない場合は、**[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** を構成します。  
+6. ドメイン コントローラーは、Azure AD Connect からアクセスできますか。 Connect サーバーがすべてのドメイン コントローラーに接続できない場合は、 **[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** を構成します。  
     
     ![Active Directory コネクタで使用されるドメイン コントローラー](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
     
 7. **Synchronization Service Manager** と **[ディレクトリ パーティションの構成]** に戻ります。 
  
-8. **[ディレクトリ パーティションの選択]** でドメインを選択し、**[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** チェック ボックスをオンにして、**[構成]** をクリックします。 
+8. **[ディレクトリ パーティションの選択]** でドメインを選択し、 **[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** チェック ボックスをオンにして、 **[構成]** をクリックします。 
 
 9. 一覧で、Connect がパスワード同期に使用するドメイン コントローラーを入力します。同じ一覧がインポートとエクスポートにも使用されます。 すべてのドメインに対してこの手順を実行します。
 
@@ -301,7 +301,7 @@ Azure AD との接続がありますか。
 
 オブジェクトの状態を確認することで、パスワード ハッシュ同期の問題を簡単に解決できます。
 
-1. **[Active Directory ユーザーとコンピューター]** で、ユーザーを検索し、**[ユーザーは次回ログオン時にパスワードの変更が必要]** チェック ボックスがオフになっていることを確認します。  
+1. **[Active Directory ユーザーとコンピューター]** で、ユーザーを検索し、 **[ユーザーは次回ログオン時にパスワードの変更が必要]** チェック ボックスがオフになっていることを確認します。  
 
     ![Active Directory productive passwords](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
@@ -317,19 +317,19 @@ Azure AD との接続がありますか。
 
     d. **[Search Connector Space (コネクタ スペースの検索)]** を選択します。
 
-    e. **[スコープ]** ボックスで、**[DN or Anchor]\(DN またはアンカー\)** を選択し、トラブルシューティングを行うユーザーの完全な DN を入力します。
+    e. **[スコープ]** ボックスで、 **[DN or Anchor]\(DN またはアンカー\)** を選択し、トラブルシューティングを行うユーザーの完全な DN を入力します。
 
     ![DN でコネクタ スペース内のユーザーを検索](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. 探しているユーザーを特定し、**[プロパティ]** をクリックして、すべての属性を参照します。 ユーザーが検索結果にない場合は、[フィルター処理規則](how-to-connect-sync-configure-filtering.md)を確認し、ユーザーに対して[変更の適用と検証](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)を実行して Connect に表示します。
+    f. 探しているユーザーを特定し、 **[プロパティ]** をクリックして、すべての属性を参照します。 ユーザーが検索結果にない場合は、[フィルター処理規則](how-to-connect-sync-configure-filtering.md)を確認し、ユーザーに対して[変更の適用と検証](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)を実行して Connect に表示します。
 
-    g. 過去 1 週間のオブジェクトのパスワード同期の詳細を確認するには、**[ログ]** をクリックします。  
+    g. 過去 1 週間のオブジェクトのパスワード同期の詳細を確認するには、 **[ログ]** をクリックします。  
 
     ![オブジェクト ログの詳細](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
     オブジェクト ログが空の場合、Azure AD Connect は Active Directory からパスワード ハッシュを読み取ることができていません。 接続エラーのトラブルシューティングに進みます。 **[成功]** 以外の値が表示される場合は、「[パスワード同期ログ](#password-sync-log)」の表をご覧ください。
 
-    h. **[系列]** タブを選択し、**[PasswordSync]** 列の少なくとも 1 つの同期規則が **True** であることを確認します。 既定の構成では、同期規則の名前は **[In from AD - User AccountEnabled]\(AD からの受信 - ユーザー AccountEnabled)** です。  
+    h. **[系列]** タブを選択し、 **[PasswordSync]** 列の少なくとも 1 つの同期規則が **True** であることを確認します。 既定の構成では、同期規則の名前は **[In from AD - User AccountEnabled]\(AD からの受信 - ユーザー AccountEnabled)** です。  
 
     ![ユーザーに関する系列情報](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
@@ -343,7 +343,7 @@ Azure AD との接続がありますか。
 
     ![メタバース情報](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Azure AD を表す行を選択し、**[プロパティ]**、**[系列]** タブの順にクリックします。コネクタ スペース オブジェクトでは、**[PasswordSync]** 列の送信規則が **True** に設定されている必要があります。 既定の構成では、 **[Out to AAD - User Join]** という名前の同期規則です。  
+    k. Azure AD を表す行を選択し、 **[プロパティ]** 、 **[系列]** タブの順にクリックします。コネクタ スペース オブジェクトでは、 **[PasswordSync]** 列の送信規則が **True** に設定されている必要があります。 既定の構成では、 **[Out to AAD - User Join]** という名前の同期規則です。  
 
     ![[コネクタ スペース オブジェクトのプロパティ] ダイアログ ボックス](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -359,7 +359,7 @@ Azure AD との接続がありますか。
 | SourceConnectorNotPresent |オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
 | TargetNotExportedToDirectory |Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |
 | MigratedCheckDetailsForMoreInfo |ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
-| Error |サービスから不明なエラーが返されました。 |
+| エラー |サービスから不明なエラーが返されました。 |
 | Unknown |パスワード ハッシュのバッチを処理するときにエラーが発生しました。  |
 | MissingAttribute |Azure AD Domain Services で必要な特定の属性 (たとえば、Kerberos ハッシュ) を使用できません。 |
 | RetryRequestedByTarget |以前、Azure AD Domain Services で必要な特定の属性 (たとえば、Kerberos ハッシュ) を使用できませんでした。 ユーザーのパスワード ハッシュの再同期が試行されました。 |
@@ -442,7 +442,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)

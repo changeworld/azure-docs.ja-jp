@@ -1,25 +1,21 @@
 ---
-title: Azure Container Instances - よく寄せられる質問
+title: よく寄せられる質問
 description: Azure Container Instances サービスに関連するよく寄せられる質問の回答
-services: container-instances
 author: dkkapur
-manager: jeconnoc
-ms.service: container-instances
 ms.topic: article
-ms.date: 4/25/2019
-ms.author: dekapur
-ms.openlocfilehash: 5657ac9f10c42c2201641c9af447b7ad2e6a3507
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 04/10/2020
+ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080651"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115229"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
 この記事では、Azure Container Instances についてよく寄せられる質問に回答します。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 ### <a name="how-large-can-my-container-image-be"></a>コンテナー イメージのサイズはどのくらいになる可能性がありますか。
 
@@ -47,9 +43,9 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 とクライアント ベース イメージ (プレビュー)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`、`10.0.17763.x`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`、`1809`、`10.0.17763.x`
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`、`10.0.17763.x` 
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`、`10.0.17763.914` 以前
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`、`1809`、`10.0.17763.914` 以前
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`、`10.0.17763.914` 以前
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>どの .NET または .NET Core イメージ レイヤーをコンテナーに使用すればよいですか。 
 
@@ -59,9 +55,12 @@ Azure Container Instances のデプロイ可能なコンテナー イメージ�
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>コンテナーまたはコンテナー グループに割り当てる必要があるコアとメモリはどのくらいですか。
 
-実際のところ、これはワークロードによって異なります。 小規模から始めてパフォーマンスをテストし、コンテナーの動作を確認します。 [CPU およびメモリ リソースの使用状況を監視します](container-instances-monitor.md)。次に、コンテナーにデプロイするプロセスの種類に基づいてコアまたはメモリを追加します。 
+実際のところ、これはワークロードによって異なります。 小規模から始めてパフォーマンスをテストし、コンテナーの動作を確認します。 [CPU およびメモリ リソースの使用状況を監視します](container-instances-monitor.md)。次に、コンテナーにデプロイするプロセスの種類に基づいてコアまたはメモリを追加します。
 
 コンテナー グループごとに使用できる CPU コアとメモリの上限について、デプロイしているリージョンの[リソースの可用性](container-instances-region-availability.md#availability---general)も必ず確認します。 
+
+> [!NOTE]
+> コンテナー グループの少量のリソースは、サービスの基になるインフラストラクチャによって使用されます。 コンテナーでは、グループに割り当てられているほとんどのリソースにアクセスできますが、すべてのリソースにアクセスできるわけではありません。 このため、グループ内のコンテナーのリソースを要求するときは、小さいリソース バッファーを計画してください。
 
 ### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI はどのような基盤インフラストラクチャ上で動作しますか。
 
@@ -77,7 +76,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>特定のリージョンで、ACI はいつ使用できるようになりますか。
 
-現在のリージョンの可用性は[こちら](container-instances-region-availability.md#availability---general)で公開されています。また、最新の情報は [List Capabilities](/rest/api/container-instances/listcapabilities) API を介して入手できます。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
+現在の利用可能なリージョンについては、[こちら](container-instances-region-availability.md#availability---general)で公開されています。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
 
 ## <a name="features-and-scenarios"></a>機能とシナリオ
 
@@ -87,7 +86,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>カスタム VNet で実行されているインスタンスにはどのような機能を使用できますか。
 
-選択した Azure 仮想ネットワークにコンテナー グループをデプロイし、プライベート IP をコンテナー グループにデリゲートして、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 仮想ネットワークへのコンテナー グループのデプロイは現在プレビュー段階にあり、この機能の一部の側面は一般提供 (GA) の前に変更される可能性があります。 最新情報については、「[プレビューの制限事項](container-instances-vnet.md#preview-limitations)」を参照してください。
+選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 仮想ネットワークへのコンテナー グループのデプロイは、現在、Azure リージョンのサブセット内にある運用環境ワークロードで使用できます。
 
 ## <a name="pricing"></a>価格
 
@@ -99,7 +98,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 コンテナー グループ全体が停止すると、測定は停止します。 コンテナー グループのコンテナーが実行されている限り、コンテナーを再起動する場合に備えてリソースは保持されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Container Service の[詳細情報](container-instances-overview.md)。
 * Azure Container Instances の[一般的な問題のトラブルシューティング](container-instances-troubleshooting.md)。

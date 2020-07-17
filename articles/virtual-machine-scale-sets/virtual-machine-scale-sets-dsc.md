@@ -1,27 +1,20 @@
 ---
-title: Desired State Configuration と仮想マシン スケール セットの使用 | Microsoft Docs
-description: 仮想マシン スケール セットと Azure DSC 拡張機能の使用
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: zjalexander
-manager: jeconnoc
-editor: ''
-tags: azure-service-management,azure-resource-manager
-keywords: ''
-ms.assetid: c8f047b5-0e6c-4ef3-8a47-f1b284d32942
+title: Desired State Configuration と仮想マシン スケール セットの使用
+description: 仮想マシン スケール セットと Azure Desired State Configuration Extension を使用し、仮想マシンを構成します。
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
+ms.subservice: extensions
 ms.date: 04/05/2017
-ms.author: zachal
-ms.openlocfilehash: a68a5f31952d636c054b66dc0bb6ec0579cd7192
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30909005"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124843"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>仮想マシン スケール セットと Azure DSC 拡張機能の使用
 [仮想マシン スケール セット](virtual-machine-scale-sets-overview.md) は、[Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能ハンドラーとともに使用できます。 仮想マシン スケール セットは、多数の仮想マシンをデプロイおよび管理する手段であり、負荷に応じて柔軟にスケールインおよびスケールアウトができます。 DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。
@@ -100,12 +93,12 @@ ms.locfileid: "30909005"
 ## <a name="behavior-for-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの動作
 仮想マシン スケール セットの動作は、1 つの VM の動作と同じです。 新しく作成された VM は、DSC 拡張機能で自動的にプロビジョニングされます。 拡張機能に新しいバージョンの WMF が必要な場合、VM はオンラインになる前に再起動されます。 オンラインになると、DSC 構成 .zip がダウンロードされ、VM 上でプロビジョニングされます。 詳細については、 [Azure DSC 拡張機能の概要](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [DSC 拡張機能用の Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 [DSC 拡張機能で資格情報を安全に処理する方法](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを確認してください。 
 
 Azure DSC 拡張機能ハンドラーの詳細については、「 [Azure Desired State Configuration 拡張機能ハンドラーの概要](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
 
-PowerShell DSC の詳細については、 [PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。 
+PowerShell DSC の詳細については、 [PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。 
 

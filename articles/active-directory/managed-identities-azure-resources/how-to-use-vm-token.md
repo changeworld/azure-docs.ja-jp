@@ -1,5 +1,5 @@
 ---
-title: 仮想マシン上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法
+title: 仮想マシン上でマネージド ID を使用してアクセス トークンを取得する - Azure AD
 description: 仮想マシン上で Azure リソースのマネージド ID を使用して OAuth アクセス トークンを取得する手順と例について説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a58103bad3914bd0c0c6e70f8e3d2882271e1070
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258914"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049206"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -38,14 +38,14 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 
 > [!IMPORTANT]
-> - この記事のすべてのサンプル コード/スクリプトは、Azure リソースのマネージド ID を使用する仮想マシン上でクライアントが実行されていることを前提としています。 お使いの VM にリモート接続するには、Azure portal で VM への "接続" 機能を使用します。 VM で Azure リソースのマネージド ID を有効にする方法の詳細については、「[Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md)」(Azure portal を使用して VM 上で Azure リソースのマネージド ID を構成する)、または関連する記事 (PowerShell、CLI、テンプレート、または Azure SDK を使用) のいずれかを参照してください。 
+> - この記事のすべてのサンプル コード/スクリプトは、Azure リソースのマネージド ID を使用する仮想マシン上でクライアントが実行されていることを前提としています。 お使いの VM にリモート接続するには、Azure portal で仮想マシンへの "接続" 機能を使用します。 VM で Azure リソースのマネージド ID を有効にする方法の詳細については、「[Azure Portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」、または関連する記事 (PowerShell、CLI、テンプレート、または Azure SDK の使用) のいずれかを参照してください。 
 
 > [!IMPORTANT]
 > - Azure リソースのマネージド ID のセキュリティ境界は、使用されているリソースです。 仮想マシン上で実行されるすべてのコード/スクリプトは、そこで使用できる任意のマネージド ID のトークンを要求して取得できます。 
 
 ## <a name="overview"></a>概要
 
-クライアント アプリケーションは、特定のリソースにアクセスするために、Azure リソースの[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)に対してマネージド ID を要求できます。 トークンは、[Azure リソース サービス プリンシパルのマネージド ID に基づいています](overview.md#how-does-it-work)。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v1-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
+クライアント アプリケーションは、特定のリソースにアクセスするために、Azure リソースの[アプリ専用アクセス トークン](../develop/developer-glossary.md#access-token)に対してマネージド ID を要求できます。 トークンは、[Azure リソース サービス プリンシパルのマネージド ID に基づいています](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 そのため、独自のサービス プリンシパルでアクセス トークンを取得するために、クライアントそのものを登録する必要がありません。 トークンは、[クライアント資格情報を必要とするサービス間の呼び出し](../develop/v2-oauth2-client-creds-grant-flow.md)のベアラー トークンとしての使用に適しています。
 
 |  |  |
 | -------------- | -------------------- |
@@ -64,7 +64,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 アクセス トークンの取得に使用する基本的なインターフェイスは REST に基づいているため、HTTP REST の呼び出しを行える VM 上で実行されている、すべてのクライアント アプリケーションにアクセスできます。 これは、クライアントが仮想マシン上のエンドポイントを使用する点以外は、Azure AD のプログラミング モデルと同じです (Azure AD のプログラミング モデルでは、Azure AD エンドポイントを使用)。
 
-Azure Instance Metadata Service (IMDS) エンドポイントを使用するサンプル要求 *(推奨)*:
+Azure Instance Metadata Service (IMDS) エンドポイントを使用するサンプル要求 *(推奨)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -75,13 +75,13 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Instance Metadata Service 用の Azure リソース エンドポイントのマネージド ID。 |
 | `api-version`  | クエリ文字列パラメーター。IMDS エンドポイントの API バージョンです。 API バージョン `2018-02-01` 以上を使用してください。 |
-| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が `https://management.azure.com/` の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。 |
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `mi_res_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の mi_res_id (Azure リソース ID) を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。 |
 
-Azure リソース VM 拡張機能エンドポイントにマネージド ID を使用するサンプル要求 *(2019 年 1 月に非推奨となる予定)*:
+Azure リソース VM 拡張機能エンドポイントにマネージド ID を使用するサンプル要求 *(2019 年 1 月に非推奨となる予定)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | Azure リソース エンドポイントのマネージド ID (50342 は既定のポートであり、構成可能です)。 |
-| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が `https://management.azure.com/` の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。|
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
@@ -371,9 +371,9 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 
 このセクションでは、想定されるエラー応答について説明します。 "200 OK" の状態は成功応答であり、access_token 要素内の応答本文の JSON にアクセス トークンが含まれています。
 
-| 状態コード | Error | エラーの説明 | 解決策 |
+| status code | エラー | エラーの説明 | 解決策 |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Bad Request | invalid_resource | AADSTS50001:*\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
+| 400 Bad Request | invalid_resource | AADSTS50001: *\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
 | 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
 | 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。|
 |           | invalid_request | 要求に必要なパラメーターが含まれていないか、要求に無効なパラメーター値が含まれているか、要求に複数回パラメーターが含まれているか、要求の形式が正しくないかのいずれかです。 |  |
@@ -381,7 +381,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 |           | access_denied | リソース所有者または承認サーバーによって、要求が拒否されました。 |  |
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
-| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
+| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、 *\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
 
@@ -400,7 +400,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 Azure AD をサポートするリソースで、Azure リソースのマネージド ID をテスト済みのリソースとそれぞれのリソース ID の一覧については、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM 上で Azure リソースのマネージド ID を有効にするには、「[Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md)」 (Azure portal を使用して VM 上で Azure リソースのマネージド ID を構成する) を参照してください。
 

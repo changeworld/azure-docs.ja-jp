@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/25/2019
+ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170712"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73182238"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
 
-ExpressRoute Direct では、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続する機能がお客様に提供されます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps 接続が提供されます。 
+ExpressRoute Direct では、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続する機能がお客様に提供されます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 または 10 Gbps 接続が提供されます。 
 
 ### <a name="how-do-customers-connect-to-expressroute-direct"></a>ExpressRoute Direct に接続するにはどうすればよいですか? 
 
@@ -25,26 +25,7 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 
 ### <a name="what-locations-currently-support-expressroute-direct"></a>現在どの場所で ExpressRoute Direct がサポートされていますか? 
 
-使用可能なポートは動的であり、PowerShell を使用して容量を表示できます。 次の場所が含まれ、*可用性に基づいて変更される可能性があります*。
-
-* アムステルダム
-* キャンベラ
-* シカゴ
-* ワシントン DC
-* ダラス 
-* 香港特別行政区
-* ロンドン
-* ロサンゼルス
-* New York City
-* パリ
-* パース
-* トロント
-* サンアントニオ
-* シアトル
-* ソウル
-* シリコン バレー
-* シンガポール 
-* シドニー
+[場所のページ](../articles/expressroute/expressroute-locations-providers.md)で提供状況を確認してください。 
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>ExpressRoute Direct の SLA は何ですか?
 
@@ -52,7 +33,7 @@ ExpressRoute Direct は同じ [ExpressRoute のエンタープライズ グレ�
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>ExpressRoute Direct ではどのようなシナリオを検討する必要がありますか?  
 
-ExpressRoute Direct では、お客様に、Microsoft グローバル バックボーンへの直接 100 Gbps ポート ペアが提供されます。 最大のメリットをお客様に提供するシナリオは次のとおりです: レンダリングのような、大量のデータ インジェスト、規制市場向けの物理的な分離、バースト シナリオ専用の容量。 
+ExpressRoute Direct では、お客様に、Microsoft グローバル バックボーンへの直接 100 または 10 Gbps ポート ペアが提供されます。 最大のメリットをお客様に提供するシナリオとしては、大量のデータ インジェスト、規制市場向けの物理的な分離、バースト シナリオ専用の容量などがあります。 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>ExpressRoute Direct の請求モデルは何ですか? 
 

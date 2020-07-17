@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Peakon の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Peakon の統合 | Microsoft Docs'
 description: Azure Active Directory と Peakon の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a98ec0d460e050f8158ffee1262dd85f0cd07d9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869758"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67094717"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル:Azure Active Directory と Peakon の統合
+# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル: Azure Active Directory と Peakon の統合
 
 このチュートリアルでは、Peakon と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Peakon と Azure AD の統合には、次の利点があります。
@@ -53,11 +53,11 @@ Azure AD への Peakon の統合を構成するには、ギャラリーからマ
 
 **ギャラリーから Peakon を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Peakon の統合を構成するには、ギャラリーからマ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Peakon**」と入力し、結果パネルで **[Peakon]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Peakon**」と入力し、結果パネルで **[Peakon]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Peakon](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
 Peakon で Azure AD シングル サインオンを構成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) の **Peakon** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Peakon** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
     b. **[応答 URL]** ボックスに、`https://app.peakon.com/saml/<companyid>/assert` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Peakon のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -118,7 +118,7 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL に値を置き換えます。実際の値については後で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -136,15 +136,15 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
 1. 別の Web ブラウザー ウィンドウで、管理者として Peakon にサインインします。
 
-2. ページの左側にあるメニュー バーの **[Configuration]\(構成\)** をクリックした後、**[Integrations]\(統合\)** に移動します。
+2. ページの左側にあるメニュー バーの **[Configuration]\(構成\)** をクリックした後、 **[Integrations]\(統合\)** に移動します。
 
     ![構成](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. **[Integrations]\(統合\)** ページで、**[Single Sign-On]\(シングル サインオン\)** をクリックします。
+3. **[Integrations]\(統合\)** ページで、 **[Single Sign-On]\(シングル サインオン\)** をクリックします。
 
     ![シングル](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. **[Single Sign-On]\(シングル サインオン\)** セクションで、**[Enable]\(有効化\)** をクリックします。
+4. **[Single Sign-On]\(シングル サインオン\)** セクションで、 **[Enable]\(有効化\)** をクリックします。
 
     ![有効化](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
@@ -168,7 +168,7 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -182,7 +182,7 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -193,7 +193,7 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Peakon へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Peakon]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Peakon]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -205,15 +205,15 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-peakon-test-user"></a>Peakon テスト ユーザーの作成
 
@@ -224,7 +224,7 @@ Peakon の場合、プロビジョニングは手動で行います。
 
 1. Peakon 企業サイトに管理者としてサインインします。
 
-2. ページの左側にあるメニュー バーの **[Configuration]\(構成\)** をクリックした後、**[Employees]\(従業員\)** に移動します。
+2. ページの左側にあるメニュー バーの **[Configuration]\(構成\)** をクリックした後、 **[Employees]\(従業員\)** に移動します。
 
     ![従業員](./media/peakon-tutorial/tutorial_peakon_employee.png)
 

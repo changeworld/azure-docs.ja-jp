@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119511"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79486139"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
-いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
+BGP は、Basic SKU を除くすべての Azure VPN Gateway SKU でサポートされています。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>Azure のポリシーベースの VPN ゲートウェイでは BGP を使用できますか。
 いいえ、BGP は、ルートベースの VPN ゲートウェイでのみサポートされています。
@@ -24,8 +24,8 @@ ms.locfileid: "66119511"
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>プライベート ASN (自律システム番号) は使用できますか。
 はい、オンプレミスのネットワークと Azure 仮想ネットワークの両方に対して独自のパブリック ASN またはプライベート ASN を使用できます。
 
-### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>32 ビットの ASN (自律システム番号) は使用できますか。
-いいえ。現時点で Azure VPN Gateway がサポートしているのは 16 ビットの ASN となります。
+### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>32 ビット (4 バイト) の ASN (自律システム番号) は使用できますか。
+はい。Azure VPN Gateway では、32 ビット (4 バイト) の ASN がサポートされるようになりました。 10 進数形式で ASN を使用して構成するには、PowerShell/CLI/SDK を使用してください。
 
 ### <a name="are-there-asns-reserved-by-azure"></a>Azure によって予約済みの ASN はありますか。
 はい、次の ASN は、内外両方のピアリング用に Azure によって予約されています。
@@ -39,6 +39,13 @@ ms.locfileid: "66119511"
 はい。以下の ASN は [IANA によって予約済み](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml)であり、Azure VPN Gateway では構成できません。
 
 23456、64496 ～ 64511、65535 ～ 65551、および 429496729
+
+### <a name="what-private-asns-can-i-use"></a>どのようなプライベート ASN を使用できますか。
+使用できるプライベート ASN の範囲は次のとおりです。
+
+* 64512 ～ 65514、65521 ～ 65534
+
+これらの ASN は、IANA または Azure で使用するために予約されていないため、Azure VPN Gateway に割り当てるために使用できます。
 
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>オンプレミスの VPN ネットワークと Azure Vnet の両方に同じ ASN を使用できますか。
 いいえ、BGP を使用して接続している場合は、オンプレミスのネットワークと Azure Vnet に異なる ASN を割り当てる必要があります。 Azure VPN Gateway には、クロスプレミス接続向けに BGP が有効になっているかどうかにかかわらず、ASN の既定値として 65515 が割り当てられています。 VPN ゲートウェイを作成する際に異なる ASN を割り当てて既定値をオーバーライドするか、ゲートウェイの作成後に ASN を変更することができます。 対応する Azure ローカル ネットワーク ゲートウェイにオンプレミスの ASN を割り当てる必要があります。
@@ -85,10 +92,10 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 はい。 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Azure VPN ゲートウェイでは、BGP ピア IP にどのようなアドレスが使用されますか。
-Azure VPN ゲートウェイでは、仮想ネットワークに対して定義されている GatewaySubnet 範囲から 1 つの IP アドレスを割り当てます。 既定では、範囲内で最後から 2 つ目のアドレスが使用されます。 たとえば、GatewaySubnet が 10.12.255.0/27 で、範囲が 10.12.255.0 から 10.12.255.31 となる場合、Azure VPN ゲートウェイの BGP ピア IP アドレスは 10.12.255.30 になります。 Azure VPN ゲートウェイの情報を表示すると、この情報を確認できます。
+Azure VPN ゲートウェイは、GatewaySubnet 範囲から 1 つの IP アドレスをアクティブ/スタンバイ VPN ゲートウェイに割り当てるか、2 つの IP アドレスをアクティブ/アクティブ VPN ゲートウェイに割り当てます。 PowerShell (Get-AzVirtualNetworkGateway、"bgpPeeringAddress" プロパティを探してください) を使用して、または Azure portal ([ゲートウェイの構成] ページの [BGP ASN の構成] プロパティの下) で、割り当てられた実際の BGP IP アドレスを取得できます。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN デバイスの BGP ピア IP アドレスに関する要件はどんなものですか。
-オンプレミスの BGP ピア アドレスを VPN デバイスのパブリック IP アドレスと **同じにすることはできません** 。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイス上のループバック インターフェイスに割り当てられたアドレスを使用することもできますが、APIPA (169.254.x.x) アドレスは使用できません。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。
+オンプレミスの BGP ピア アドレスをご使用の VPN デバイスまたは VPN Gateway の Vnet アドレス空間のパブリック IP アドレスと同じにすることは**できません**。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイス上のループバック インターフェイスに割り当てられたアドレスを使用することもできますが、APIPA (169.254.x.x) アドレスは使用できません。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>BGP を使用する際、ローカル ネットワーク ゲートウェイのアドレス プレフィックスとして何を指定する必要がありますか。
 Azure のローカル ネットワーク ゲートウェイでは、オンプレミス ネットワークに初期アドレス プレフィックスが指定されます。 BGP を使用する際は、BGP ピア IP アドレスのホスト プレフィックス (/32 プレフィックス) をオンプレミス ネットワークのアドレス空間として割り当てる必要があります。 BGP ピア IP アドレスが 10.52.255.254 の場合は、このオンプレミス ネットワークを表しているローカル ネットワーク ゲートウェイの localNetworkAddressSpace として "10.52.255.254/32" を指定します。 これにより、Azure VPN ゲートウェイで S2S VPN トンネルを経由する BGP セッションが確立されます。

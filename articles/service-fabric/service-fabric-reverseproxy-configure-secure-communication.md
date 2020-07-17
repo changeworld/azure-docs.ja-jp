@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric のリバース プロキシによる安全な通信 | Microsoft Docs
-description: リバース プロキシを構成して、安全なエンド ツー エンド通信を実現します。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric のリバース プロキシによる安全な通信
+description: Azure Service Fabric アプリケーションにリバース プロキシを構成して、安全なエンド ツー エンド通信を実現します。
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502442"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617106"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
@@ -30,7 +22,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>リバース プロキシとサービス間の安全な通信の確立 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>リバース プロキシによるサービスの認証:
-リバース プロキシでは、その証明書を利用してサービスにその ID を証明します。 Azure クラスターの場合、Resource Manager テンプレートの [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [リソースの種類セクション](../azure-resource-manager/resource-group-authoring-templates.md)にある ***reverseProxyCertificate*** プロパティで証明書が指定されます。 スタンドアロン クラスターの場合、証明書は ClusterConfig.json の **[セキュリティ]** セクションの ***ReverseProxyCertificate*** または ***ReverseProxyCertificateCommonNames*** プロパティで指定されます。 詳細については、「[スタンドアロン クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)」を参照してください。 
+リバース プロキシでは、その証明書を利用してサービスにその ID を証明します。 Azure クラスターの場合は、Resource Manager テンプレートの [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の「[リソースの種類](../azure-resource-manager/templates/template-syntax.md)」セクションにある ***reverseProxyCertificate*** プロパティで証明書が指定されます。 スタンドアロン クラスターの場合、証明書は ClusterConfig.json の **[セキュリティ]** セクションの ***ReverseProxyCertificate*** または ***ReverseProxyCertificateCommonNames*** プロパティで指定されます。 詳細については、「[スタンドアロン クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)」を参照してください。 
 
 サービスにロジックを実装して、リバース プロキシによって提示される証明書を検証できます。 サービスでは、構成パッケージの構成設定として、許容されるクライアント証明書の詳細事項を指定できます。 これは実行時に読み込まれ、リバース プロキシによって提示される証明書の検証に使用されます。 構成設定を追加するには、[アプリケーション パラメーターの管理](service-fabric-manage-multiple-environment-app-configuration.md)に関する記事を参照してください。 
 
@@ -42,7 +34,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
 
 ### <a name="service-certificate-validation-options"></a>サービス証明書の検証オプション 
 
-- **None**: リバース プロキシではプロキシ対象のサービス証明書の検証がスキップされて、セキュリティで保護された接続が確立します。　 これは既定の動作です。
+- **なし**: リバース プロキシではプロキシ対象のサービス証明書の検証がスキップされて、セキュリティで保護された接続が確立します。 これは既定の動作です。
 値が **None**である **ApplicationCertificateValidationPolicy**を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
 
    ```json
@@ -63,7 +55,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: リバース プロキシは、証明書の共通名および直近の発行者のサムプリントに基づき、サービスによって提示された証明書を検証します。値が **ServiceCommonNameAndIssuer** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
+- **ServiceCommonNameAndIssuer**:リバース プロキシでは、証明書の共通名と直近の発行者の拇印に基づいて、サービスから提示された証明書が検証されます。値が **ServiceCommonNameAndIssuer** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
 
    ```json
    {
@@ -85,7 +77,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
 
    サービス共通名と発行者のサムプリントの一覧を指定するには、以下に示すように **fabricSettings** の下に [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) セクションを追加します。 **parameters** 配列には、証明書共通名と発行者のサムプリントの複数のペアを追加できます。 
 
-   エンドポイントのリバース プロキシが接続し、共通名と発行者のサムプリントがここで指定された値のいずれかと一致する証明書が提示されると、SSL チャネルが確立されます。 
+   エンドポイントのリバース プロキシで接続され、共通名と発行者のサムプリントがここで指定された値のいずれかと一致する証明書が提示されると、TLS チャネルが確立されます。
    証明書の詳細と一致しなかった場合は、リバース プロキシでクライアントの要求が失敗し、502 (無効なゲートウェイ) の状態コードが表示されます。 また HTTP ステータス行に "Invalid SSL Certificate" (無効な SSL 証明書) の語句が含まれます。 
 
    ```json
@@ -110,7 +102,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
    }
    ```
 
-- **ServiceCertificateThumbprints**: リバース プロキシでは、サムプリントに基づいてプロキシ対象のサービス証明書が検証されます。 自己署名証明書でサービスが構成されている場合は、次の方法を選択できます。 値が **ServiceCertificateThumbprints** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
+- **ServiceCertificateThumbprints**:リバース プロキシでは、サムプリントに基づいてプロキシ対象のサービス証明書が検証されます。 サービスが自己署名証明書を使って構成されている場合は、このルートを選択することができます。値が **ServiceCertificateThumbprints** である **ApplicationCertificateValidationPolicy** を、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに指定します。
 
    ```json
    {
@@ -151,7 +143,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
    }
    ```
 
-   サーバー証明書のサムプリントがこの構成エントリに一覧表示されている場合、リバース プロキシは SSL 接続に成功します。 それ以外の場合は接続が終了し、クライアントの要求が失敗して 502 (無効なゲートウェイ) のエラーが表示されます。 また HTTP ステータス行に "Invalid SSL Certificate" (無効な SSL 証明書) の語句が含まれます。
+   サーバー証明書のサムプリントがこの構成エントリに表示されている場合、リバース プロキシの TLS 接続は成功します。 それ以外の場合は接続が終了し、クライアントの要求が失敗して 502 (無効なゲートウェイ) のエラーが表示されます。 また HTTP ステータス行に "Invalid SSL Certificate" (無効な SSL 証明書) の語句が含まれます。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>サービスが、セキュリティで保護されたエンドポイントとセキュリティで保護されていないエンドポイントを公開した場合のエンドポイント選択のロジック
 Service Fabric では、1 つのサービスに複数のエンドポイントを構成できます。 詳しくは、「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。
@@ -181,12 +173,12 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 > リバース プロキシが **SecureOnlyMode** で動作しているときに、クライアントによって HTTP (セキュリティ保護なし) エンドポイントに該当する **ListenerName** が指定された場合、リバース プロキシは、404 (見つかりません) HTTP 状態コードで要求をエラーにします。
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>リバース プロキシ経由でのクライアント証明書認証の設定
-リバース プロキシで SSL の終了が発生すると、クライアント証明書のすべてのデータが失われます。 サービスがクライアント証明書の認証を実行するようにするには、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに **ForwardClientCertificate** を指定します。
+リバース プロキシで TLS の終了が発生すると、クライアント証明書のすべてのデータが失われます。 サービスがクライアント証明書の認証を実行するようにするには、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに **ForwardClientCertificate** を指定します。
 
-1. **ForwardClientCertificate** を **false** に設定すると、リバース プロキシは、クライアントとの SSL ハンドシェイク時にクライアント証明書を要求しません。
+1. **ForwardClientCertificate** を **false** に設定すると、リバース プロキシのクライアントとの TLS ハンドシェイク時にクライアント証明書は要求されません。
 これは既定の動作です。
 
-2. **ForwardClientCertificate** を **true** に設定すると、リバース プロキシは、クライアントとの SSL ハンドシェイク時にクライアント証明書を要求します。
+2. **ForwardClientCertificate** を **true** に設定すると、リバース プロキシのクライアントとの TLS ハンドシェイク時にクライアント証明書が要求されます。
 **X-Client-Certificate** という名前のカスタム HTTP ヘッダーに、クライアント証明書のデータが転送されます。 ヘッダーの値は、クライアント証明書のデータが Base64 でエンコードされた PEM 形式の文字列です。 サービスで証明書のデータが調査された後に、要求が成功または失敗し、該当する状態コードが表示されます。
 クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。
 
@@ -194,9 +186,9 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 > リバース プロキシは単なるフォワーダーに過ぎず、 クライアント証明書の検証は実行しません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)
-* 「[Configure reverse proxy to connect to secure services (セキュリティで保護されたサービスに接続するためのリバース プロキシの構成)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services)」を参照して Azure Resource Manager テンプレートのサンプルを取得し、サービス証明書のさまざまな検証オプションでセキュリティ保護されたリバース プロキシを構成します。
+* 「[セキュリティで保護されたサービスに接続するためのリバース プロキシの構成](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)」を参照します。
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)

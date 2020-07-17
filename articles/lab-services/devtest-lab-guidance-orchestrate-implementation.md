@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242993"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82025001"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Azure DevTest Labs の実装を調整する
 この記事では、Azure DevTest Labs を短時間でデプロイして実装するための推奨される方法を示します。 次の図は、規範的なガイダンスとして全体的なプロセスに注目したものです。業界のさまざまな要件とシナリオが柔軟にサポートされていることがわかります。
@@ -43,7 +43,7 @@ Azure DevTest Labs ソリューションをデプロイするときに最初に�
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>マイルストーン 2:パイロット ラボをデプロイする
 ネットワーク トポロジを設定した後は、以下の手順で最初のパイロット ラボを作成できます。
 
-1. 初期 DevTest Labs 環境を作成します (詳細な手順については[こちら](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)をご覧ください)
+1. 最初の DevTest Labs 環境を作成します。
 2. ラボで使用できる VM イメージとサイズを決定します。 DevTest Labs で使用するために Azure にカスタム イメージをアップロードできるかどうかを決定します。
 3. ラボに対して最初のロールベースのアクセス制御 (RBAC) を作成してアクセスをセキュリティ保護します (ラボ所有者とラボ ユーザー)。 DevTest Labs での ID に対しては Azure Active Directory と同期された Active Directory アカウントを使用することをお勧めします。
 4. スケジュール、コスト管理、クレーム可能 VM、カスタム イメージ、数式など、ポリシーを使用するように DevTest Labs を構成します。
@@ -60,5 +60,5 @@ Azure DevTest Labs ソリューションをデプロイするときに最初に�
 4. 最初の利用状況に基づき、IP アドレス空間の当初の予測が合理的で正確かどうかを検証します
 5. 適切なコンプライアンスとセキュリティ レビューが完了したことを確認します
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このシリーズの次の記事をご覧ください。[Azure DevTest Labs インフラストラクチャのガバナンス](devtest-lab-guidance-governance-resources.md)

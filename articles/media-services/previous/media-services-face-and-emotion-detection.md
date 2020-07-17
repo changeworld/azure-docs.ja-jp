@@ -13,16 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919313"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
+
+> [!NOTE]
+> **Azure Media Face Detector** メディア プロセッサは廃止予定です。 廃止日については、[レガシ コンポーネント](legacy-components.md)に関するトピックをご参照ください。
+
 ## <a name="overview"></a>概要
+
 **Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。 このサービスには 2 つの機能があります。 
 
 * **顔検出**
@@ -49,7 +55,7 @@ ms.locfileid: "58188188"
 
 検出されて追跡される顔に対しては、画像内での顔の位置を示す座標 (左端、上端、幅、高さ、ピクセル単位) と、追跡対象の個人を識別する顔 ID 番号が返されます。 顔 ID 番号は、前向きの顔が失われたりフレーム内で重なったりするとリセットされる場合があり、同じ顔に複数の ID が割り当てられる可能性があります。
 
-## <a id="output_elements"></a>出力 JSON ファイルの要素
+## <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
@@ -77,7 +83,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 #### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | 説明 |
 | --- | --- |
-| Mode |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
+| モード |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
 
 ### <a name="json-output"></a>JSON 出力
 次の JSON 出力例は途中までです。
@@ -152,7 +158,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 #### <a name="attribute-descriptions"></a>属性の説明
 | 属性名 | 説明 |
 | --- | --- |
-| Mode |Faces:顔検出のみ。<br/>PerFaceEmotion:検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion:フレーム内のすべての顔の平均的感情値を返します。 |
+| モード |Faces:顔検出のみ。<br/>PerFaceEmotion:検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion:フレーム内のすべての顔の平均的感情値を返します。 |
 | AggregateEmotionWindowMs |AggregateEmotion モードが選択されている場合に使用します。 各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。 |
 | AggregateEmotionIntervalMs |AggregateEmotion モードが選択されている場合に使用します。 集計結果を生成する頻度を指定します。 |
 

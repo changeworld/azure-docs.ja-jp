@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Data Lake Storage Gen1 のドキュメント
+summary: あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。 Azure Data Lake Storage Gen2 の一般提供が開始されました。 今すぐ使用を開始することをお勧めします。
+metadata:
+  title: Azure Data Lake Storage Gen1 のドキュメント
+  description: あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。
+  ms.service: data-lake-store
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf688b1230c8fd4eecba08ce361e92b9030a241f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79410093"
+landingContent:
+- title: Azure Data Lake Storage Gen1 について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Lake Storage Gen1 とは
+      url: data-lake-store-overview.md
+    - text: Azure Storage との比較
+      url: data-lake-store-comparison-with-blob-storage.md
+    - text: Data Lake Storage Gen2 のドキュメントに切り替える
+      url: ../storage/data-lake-storage/introduction.md
+- title: はじめに
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure portal
+      url: data-lake-store-get-started-portal.md
+    - text: Azure PowerShell
+      url: data-lake-store-get-started-powershell.md
+    - text: Azure CLI
+      url: data-lake-store-get-started-cli-2.0.md
+- title: データの読み込みと移動
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Factory の使用
+      url: ../data-factory/load-azure-data-lake-store.md
+    - text: ストレージ エクスプローラーの使用
+      url: data-lake-store-in-storage-explorer.md
+    - text: AdlCopy を使用
+      url: data-lake-store-copy-data-azure-storage-blob.md
+    - text: DistCp を使用
+      url: data-lake-store-copy-data-wasb-distcp.md
+    - text: Sqoop の使用
+      url: data-lake-store-data-transfer-sql-sqoop.md
+- title: データのセキュリティ保護
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: セキュリティの概要
+      url: data-lake-store-security-overview.md
+    - text: アクセス制御
+      url: data-lake-store-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: 保存されたデータのセキュリティ保護
+      url: data-lake-store-secure-data.md
+    - text: 暗号化
+      url: data-lake-store-encryption.md
+    - text: 仮想ネットワークの統合
+      url: data-lake-store-network-security.md
+- title: 認証
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 認証オプション
+      url: data-lakes-store-authentication-using-azure-active-directory.md
+  - linkListType: how-to-guide
+    links:
+    - text: エンドユーザー認証
+      url: data-lake-store-end-user-authenticate-using-active-directory.md
+    - text: サービス間認証
+      url: data-lake-store-service-to-service-authenticate-using-active-directory.md
+- title: ファイルシステム操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-data-operations-net-sdk.md
+    - text: Java SDK
+      url: data-lake-store-get-started-java-sdk.md
+    - text: REST API
+      url: data-lake-store-data-operations-rest-api.md
+    - text: Python
+      url: data-lake-store-data-operations-python.md
+- title: アカウント管理操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-get-started-net-sdk.md
+    - text: REST API
+      url: data-lake-store-get-started-rest-api.md
+    - text: Python
+      url: data-lake-store-get-started-python.md

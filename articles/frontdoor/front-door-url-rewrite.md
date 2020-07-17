@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - URL 書き換え | Microsoft Docs
-description: この記事では、Azure Front Door Service で構成されている場合に、ルートに対して URL 書き換えがどのように実行されるかについて説明します。
+title: Azure Front Door - URL 書き換え | Microsoft Docs
+description: この記事では、Azure Front Door で構成されている場合に、ルートに対する URL 書き換えがどのように実行されるかについて説明します。
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 00fe3aa7a641b9d07aad90a9d008a99efc6e9d97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471474"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 書き換え (カスタム転送パス)
-Azure Front Door Service では、バックエンドに転送する要求の作成時に使用する、省略可能な**カスタム転送パス**の構成を許可することで、URL 書き換えがサポートされています。 既定では、カスタム転送パスが指定されていない場合、Front Door により、転送された要求で使用される URL に受信 URL パスがコピーされます。 転送された要求で使用されるホスト ヘッダーは、選択されたバックエンド用に構成されています。 その機能と構成方法については、「[バックエンド ホスト ヘッダー](front-door-backend-pool.md#hostheader)」をご覧ください。
+Azure Front Door では、バックエンドに転送する要求を作成するときに使用するオプションの**カスタム転送パス**を構成できるようにすることで、URL 書き換えがサポートされています。 既定では、カスタム転送パスが指定されていない場合、Front Door により、転送された要求で使用される URL に受信 URL パスがコピーされます。 転送された要求で使用されるホスト ヘッダーは、選択されたバックエンド用に構成されています。 その機能と構成方法については、「[バックエンド ホスト ヘッダー](front-door-backend-pool.md#hostheader)」をご覧ください。
 
 カスタム転送パスを使用した URL 書き換えの強力な部分では、転送されたパスに、ワイルドカード パスと一致する受信パスの任意の部分をコピーします (これらのパス セグメントは、次の例の**緑色**のセグメントです)。
 </br>
@@ -28,9 +28,9 @@ Azure Front Door Service では、バックエンドに転送する要求の作�
 ## <a name="url-rewrite-example"></a>URL 書き換えの例
 次のフロントエンド ホストおよびパスが構成されているルーティング規則を考えてみてください。
 
-| ホスト      | パス       |
+| Hosts      | パス       |
 |------------|-------------|
-| www.contoso.com | /\*         |
+| www\.contoso.com | /\*         |
 |            | /foo        |
 |            | /foo/\*     |
 |            | /foo/bar/\* |
@@ -42,12 +42,12 @@ Azure Front Door Service では、バックエンドに転送する要求の作�
 
 | 着信要求       | 代表的な一致パス | /          | /fwd/          | /foo/          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www.contoso.com/**sub**     | /\*                      | /**sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
-| www.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
-| www.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+| www\.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
+| www\.contoso.com/**sub**     | /\*                      | /**sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
+| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
+| www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
+| www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
+| www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
 
 
 ## <a name="optional-settings"></a>オプション設定
@@ -57,10 +57,10 @@ Azure Front Door Service では、バックエンドに転送する要求の作�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Front Door の作成](quickstart-create-front-door.md)方法について説明します。
-- [Front Door の機能](front-door-routing-architecture.md)について説明します。
+- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
 
 <!--Image references-->
 [1]: ./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg

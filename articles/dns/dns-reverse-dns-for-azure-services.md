@@ -1,23 +1,23 @@
 ---
-title: Azure サービスの逆引き DNS | Microsoft Docs
-description: Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します
+title: Azure サービスの逆引き DNS - Azure DNS
+description: このラーニング パスでは、Azure でホストされているサービスに対する逆引き DNS 参照の構成を始めます。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
+author: rohinkoul
+manager: KumudD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohink
+ms.openlocfilehash: 073e84ece11f6817bfe2c5a94735ec6e16dac4fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160919"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76932366"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -61,7 +61,7 @@ Azure DNS では、コンピューティング リソース (仮想マシン、�
 
 #### <a name="powershell"></a>PowerShell
 
-既存の PublicIpAddress に逆引き DNS を追加するには:
+既存の PublicIpAddress に逆引き DNS を更新するには
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
@@ -212,7 +212,7 @@ Get-AzureService "contosoapp1"
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>逆引き DNS レコードのコストはどのくらいですか?
 
@@ -250,7 +250,7 @@ FQDN は順方向で指定します。末尾にはドットを指定する必要
 
 Azure のデプロイから電子メールを直接送信する技術的能力は、サブスクリプションの種類によって異なります。 Microsoft では、サブスクリプションの種類に関係なく、信頼できるメール リレー サービスを使用して発信メールを送信することをお勧めしています。 詳細については、「[Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/)」 (電子メールを送信するための Azure セキュリティの強化 - 2017 年 11 月更新) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>

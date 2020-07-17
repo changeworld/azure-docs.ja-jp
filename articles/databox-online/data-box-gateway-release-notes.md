@@ -8,18 +8,18 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499881"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561051"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway 一般提供リリース ノート
 
 ## <a name="overview"></a>概要
 
-次のリリース ノートでは、Azure Data Box Edge および Azure Data Box Gateway の一般提供 (GA) リリースの重大な未解決の問題と解決済みの問題を識別します。
+次のリリース ノートでは、Azure Data Box Edge および Azure Data Box Gateway の一般提供 (GA) リリースの重大な未解決の問題と解決済みの問題を識別します。 
 
 リリース ノートは継続的に更新されます。対応策を必要とする重大な問題が見つかった場合は、それらの問題が追加されます。 Data Box Edge/Data Box Gateway をデプロイする前に、リリース ノートに含まれている情報を注意深く確認してください。
 
@@ -33,7 +33,7 @@ ms.locfileid: "58499881"
 
 - **新しい仮想ディスク イメージ** - Azure Portal で新しい VHDX および VMDK を入手できるようになりました。 新しい Data Box Gateway GA デバイスをプロビジョニング、構成、およびデプロイするには、これらのイメージをダウンロードしてください。 以前のプレビュー リリースで作成された Data Box Gateway デバイスをこのバージョンに更新することはできません。 詳細については、[Azure Data Box Gateway のデプロイ準備](data-box-gateway-deploy-prep.md)に関する記事をご覧ください。
 - **NFS サポート** - NFS サポートは現在プレビュー段階にあり、Data Box Edge および Data Box Gateway デバイスにアクセスする v3.0 および v4.1 クライアントで使用できます。
-- **ストレージ回復性** - ストレージ回復性機能により、Data Box Edge デバイスは 1 台のデータ ディスクの障害に耐えることができます。 現在、この機能はプレビュー段階にあります。 ストレージ回復性は、ローカル Web UI で、**[ストレージの設定]** の **[Resilient] (回復性がある)** オプションを選択することによって有効にすることができます。
+- **ストレージ回復性** - ストレージ回復性機能により、Data Box Edge デバイスは 1 台のデータ ディスクの障害に耐えることができます。 現在、この機能はプレビュー段階にあります。 ストレージ回復性は、ローカル Web UI で、 **[ストレージの設定]** の **[Resilient] (回復性がある)** オプションを選択することによって有効にすることができます。
 
 
 ## <a name="known-issues-in-ga-release"></a>GA リリースの既知の問題
@@ -47,7 +47,7 @@ ms.locfileid: "58499881"
 | **3.** |コピー | データのコピーが次のエラーで失敗します。ファイル システム制限のため、要求された操作を完了できませんでした。  |128 KB を超えるファイル サイズに関連付けられた代替データ ストリーム (ADS) はサポートされていません。   |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Box Gateway のデプロイを準備](data-box-gateway-deploy-prep.md)します。
-- [Azure Data Box Edge のデプロイを準備](data-box-edge-deploy-prep.md)します。
+- [Azure Data Box Edge のデプロイを準備](azure-stack-edge-deploy-prep.md)します。

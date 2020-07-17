@@ -1,19 +1,19 @@
 ---
 title: Azure デバイス プロビジョニングにおけるデバイスの概念 | Microsoft Docs
-description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のデバイス プロビジョニングの概念を説明します。
+description: Device Provisioning Service（DPS）および IoT Hub を備えたデバイスに固有のデバイス プロビジョニングの概念を説明します
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237527"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub デバイス プロビジョニング サービスのデバイスの概念
 
@@ -30,7 +30,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 デバイス プロビジョニング サービスは、以下の形式の構成証明をサポートします。
 * 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。
-* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
+* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)** 。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
 * 共有アクセス署名 (SAS) **セキュリティ トークン**に基づく[対称キー](../iot-hub/iot-hub-devguide-security.md#security-tokens)。これにはハッシュの署名と埋め込みの有効期限が含まれています。 詳細については、「[対称キーの構成証明](concepts-symmetric-key-attestation.md)」を参照してください。
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
@@ -44,14 +44,14 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 ## <a name="registration-id"></a>登録 ID
 
-登録 ID は、デバイス プロビジョニング サービスでデバイスを一意に識別するために使用されます。 デバイス ID は、プロビジョニング サービスの[ ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID には、英数字、小文字と、必要に応じてハイフンを含めます。
+登録 ID は、デバイス プロビジョニング サービスでデバイスを一意に識別するために使用されます。 デバイス ID は、プロビジョニング サービスの[ ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID は大文字と小文字が区別されない英数字であり、コロン、ピリオド、アンダースコア、ハイフンなどの特殊文字を含めることができます。
 
 * TPM の場合、登録 ID は TPM 自身によって提供されます。
 * X.509 ベースの構成証明の場合、登録 ID は、証明書のサブジェクト名として提供されます。
 
 ## <a name="device-id"></a>Device ID
 
-デバイス ID は、IoT Hub に表示される ID です。 加入契約エントリに目的のデバイス ID を設定できますが、設定は必須ではありません。 加入契約リストに目的のデバイス ID が指定されていない場合、デバイスの登録時の登録 ID がデバイス ID として使用されます。 詳細については、[IoT Hub のデバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) に関する記事をご覧ください。
+デバイス ID は、IoT Hub に表示される ID です。 加入契約エントリに目的のデバイス ID を設定できますが、設定は必須ではありません。 希望するデバイス ID の設定は、個別の登録でのみサポートされています。 加入契約リストに目的のデバイス ID が指定されていない場合、デバイスの登録時の登録 ID がデバイス ID として使用されます。 詳細については、[IoT Hub のデバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) に関する記事をご覧ください。
 
 ## <a name="id-scope"></a>ID スコープ
 

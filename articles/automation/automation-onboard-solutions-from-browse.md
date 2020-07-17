@@ -2,27 +2,23 @@
 title: Azure Automation の Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用する準備を行う方法について説明します
 description: Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の使用準備を行う方法について説明します
 services: automation
-ms.service: automation
-author: georgewallace
-ms.author: gwallace
 ms.date: 04/11/2019
 ms.topic: article
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578494"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731919"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
 Azure Automation には、オペレーティング システムのセキュリティ更新プログラム、変更の追跡、およびご使用のコンピューターにインストールされている内容のインベントリを管理するソリューションが用意されています。 マシンの使用準備を行う方法は複数あります。[仮想マシンから](automation-onboard-solutions-from-vm.md)、お使いの [Automation アカウントから](automation-onboard-solutions-from-automation-account.md) (仮想マシンを参照する場合) または [Runbook](automation-onboard-solutions.md) によってソリューションの使用準備を行うことができます。 この記事では、Azure の仮想マシンを参照するときにこれらのソリューションの使用準備を行う方法について説明します。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure にサインインします ( https://portal.azure.com )。
+https://portal.azure.com で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
@@ -34,24 +30,26 @@ Azure Portal で**仮想マシン**に移動します。
 > [!TIP]
 > フィルター コントロールを使用して仮想マシンの一覧を変更し、一番上のチェックボックスをオンにし、一覧のすべての仮想マシンを選択します。
 
-コマンド バーから **[サービス]** をクリックし、**[Change Tracking]**、**[Inventory]**、または **[Update Management]** のいずれかを選択します。
+コマンド バーから **[サービス]** をクリックし、 **[Change Tracking]** 、 **[Inventory]** 、または **[Update Management]** のいずれかを選択します。
 
 > [!NOTE]
-> **[変更追跡]** と **[インベントリ]** は、同じソリューションを使用します。一方が有効であれば、もう一方も有効です。
+> 変更の追跡とインベントリは、同じソリューションを使用します。 1 つを有効にすると、もう一方も有効になります。
 
 次のイメージは Update Management です。 Change Tracking と Inventory のレイアウトおよび動作は同じです。
 
 仮想マシンの一覧はフィルターされ、同じサブスクリプションおよび場所にある仮想マシンのみが表示されます。 お使いの仮想マシンが 4 つ以上のリソース グループにある場合、最初の 3 つのリソース グループが選択されます。
 
-### <a name="resource-group-limit"></a> オンボードの制限事項
+### <a name="onboarding-limitations"></a><a name="resource-group-limit"></a> オンボードの制限事項
 
-オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイメントは、更新プログラムの展開と混同してはならず、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。
+オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/templates/cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイ (更新プログラムの展開と混同しないでください) は、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。 この制限は、Automation ソリューションによって管理できるリソース グループの数ではなく、同時オンボードのみに適用されます。
+
+また、Runbook をオンボードに使用することもできます。 詳細については、「[Update と Change Tracking ソリューションの Azure Automation への配布準備をする](automation-onboard-solutions.md)」を参照してください。
 
 フィルター コントロールを使用して、異なるサブスクリプション、場所、およびリソース グループから仮想マシンを選択します。
 
 ![Update Management ソリューションの使用準備](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Log Analytics ワークスペースと Automation アカウントの選択を確認します。 既定では、既存のワークスペースと Automation アカウントが選択されます。 異なる Log Analytics ワークスペースと Automation アカウントを使用する場合は、**[CUSTOM] (カスタム)** をクリックして、**[Custom Configuration] (カスタム構成)** ページから選択します。 Log Analytics ワークスペースを選択すると、それが Automation アカウントにリンクされているかどうかを判断するためのチェックが行われます。 リンクされている Automation アカウントが見つかった場合は、次の画面が表示されます。 完了したら、**[OK]** をクリックします。
+Log Analytics ワークスペースと Automation アカウントの選択を確認します。 既定では、既存のワークスペースと Automation アカウントが選択されます。 異なる Log Analytics ワークスペースと Automation アカウントを使用する場合は、 **[CUSTOM] (カスタム)** をクリックして、 **[Custom Configuration] (カスタム構成)** ページから選択します。 Log Analytics ワークスペースを選択すると、それが Automation アカウントにリンクされているかどうかを判断するためのチェックが行われます。 リンクされている Automation アカウントが見つかった場合は、次の画面が表示されます。 完了したら、 **[OK]** をクリックします。
 
 ![ワークスペースとアカウントを選択する](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
@@ -59,27 +57,10 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 ![ワークスペースがありません](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
-
-サポートするマッピングを次の表に示します。
-
-|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|西ヨーロッパ|西ヨーロッパ|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、同じリージョンどうしのマッピングではありませんが、正しいマッピングです。
-
-<sup>2</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには、Automation アカウントと Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
+> [!NOTE]
+> ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+>
+> サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
 
 有効にしない仮想マシンの横のチェックボックスをオフにします。 有効にできない仮想マシンは既に選択解除されています。
 
@@ -120,17 +101,19 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* variables
+* 変数
+
+Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-複数のマシンを使用準備する場合、**[有効にできません]** と表示されるマシンが存在する場合があります。 有効にできないマシンが存在する理由はさまざまです。 次の各セクションでは、使用準備しようとするときに VM が**有効にできない**状態になる考え得る理由を示します。
+複数のマシンを使用準備する場合、`Cannot enable` と表示されるマシンが存在する場合があります。 有効にできないマシンが存在する理由はさまざまです。 次の各セクションでは、使用準備しようとするときに VM が `Cannot enable` 状態になる考え得る理由を示します。
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM reports to a different workspace: '\<workspaceName\>' (VM のレポート先が異なるワークスペース <ワークスペース名> である)。  Change configuration to use it for enabling (これを使用するように構成を変更して有効化できるようにしてください)
 
 **原因**:このエラーは、使用準備しようとしている VM のレポート先が別のワークスペースであることを示しています。
 
-**解決策**:**[構成として使用する]** をクリックして、対象の Automation アカウントおよび Log Analytics ワークスペースを変更します。
+**解決策**: **[構成として使用する]** をクリックして、対象の Automation アカウントおよび Log Analytics ワークスペースを変更します。
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM reports to a workspace that is not available in this subscription (VM のレポート先がこのサブスクリプションで使用できないワークスペースである)
 
@@ -146,13 +129,13 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 **原因:** このソリューションは、すべての Linux ディストリビューションまたはすべてのバージョンの Windows に対してサポートされているわけではありません。
 
-**解決策:**[サポート対象クライアントの一覧](automation-update-management.md#clients)を参照して解決してください。
+**解決方法:** [サポートされているクライアントの一覧](automation-update-management.md#supported-client-types)を参照してください。
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Classic VMs cannot be enabled (クラシック VM を有効にできない)
 
 **原因**:クラシック デプロイ モデルを使用する仮想マシンはサポートされていません。
 
-**解決策**:仮想マシンをリソース マネージャー デプロイ モデルに移行します。 この方法については、「[Migrate classic deployment model resources](../virtual-machines/windows/migration-classic-resource-manager-overview.md)」(クラシック デプロイ モデル リソースの移行) を参照してください。
+**解決策**:仮想マシンを Resource Manager デプロイ モデルに移行します。 この方法については、「[Migrate classic deployment model resources](../virtual-machines/windows/migration-classic-resource-manager-overview.md)」(クラシック デプロイ モデル リソースの移行) を参照してください。
 
 ### <a name="vm-is-stopped-deallocated"></a>VM is stopped. (deallocated) (VM が停止 (割り当て解除) している)
 
@@ -160,12 +143,19 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 **解決策**:VM がソリューションを使用できるようにするためには VM は実行中である必要があります。 **[VM の起動]** インライン リンクをクリックし、ページから移動せずに VM を起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-お使いの仮想マシンでソリューションを使用できるようになりました。Update Management の概要の記事にアクセスし、お使いのマシンに更新の評価を表示する方法を参照してください。
+Update Management から VM を削除するには:
+
+* Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
+* [Windows 用の Log Analytics エージェント](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources)または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
+
+## <a name="next-steps"></a>次のステップ
+
+お使いの仮想マシンでソリューションを使用できるようになりました。Update Management の概要の記事にアクセスして、お使いのマシンに**更新プログラムの展開**を作成する方法を参照してください。
 
 > [!div class="nextstepaction"]
-> [Update Management - 更新の評価を表示する](./automation-update-management.md#viewing-update-assessments)
+> [Update Management - Azure VM の更新プログラムとパッチの管理](./automation-tutorial-update-management.md)
 
 ソリューションおよびその使用方法についてのその他のチュートリアル
 

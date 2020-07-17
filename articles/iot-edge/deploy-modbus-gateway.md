@@ -6,19 +6,18 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 11/19/2019
 ms.author: kgremban
-ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873765"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76511146"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 
-Modbus TCP (または RTU) プロトコルを使用した IoT デバイスを Azure IoT Hub に接続するには、ゲートウェイとして IoT Edge デバイスを使用します。 ゲートウェイ デバイスが Modbus デバイスからデータを読み取り、サポートされているプロトコルを使用して、そのデータをクラウドに伝送します。
+Modbus TCP または RTU プロトコルを使用する IoT デバイスを Azure IoT Hub に接続する場合は、ゲートウェイとして IoT Edge デバイスを使用できます。 ゲートウェイ デバイスが Modbus デバイスからデータを読み取り、サポートされているプロトコルを使用して、そのデータをクラウドに伝送します。
 
 ![Modbus デバイスを IoT Edge ゲートウェイ経由で IoT Hub に接続](./media/deploy-modbus-gateway/diagram.png)
 
@@ -27,15 +26,16 @@ Modbus TCP (または RTU) プロトコルを使用した IoT デバイスを Az
 この記事は、Modbus TCP プロトコルの使用を前提として執筆されています。 Modbus RTU をサポートするようにモジュールを構成する方法について詳しくは、GitHub の [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
 * Azure IoT Edge デバイス。 そのセットアップ方法を紹介したチュートリアルについては、「[Windows に Azure IoT Edge をデプロイする](quickstart.md)」(またはその [Linux](quickstart-linux.md) 版) を参照してください。
 * IoT Edge デバイスの主キー接続文字列。
-* Modbus TCP をサポートする物理 (またはシミュレーション) Modbus デバイス。
+* Modbus TCP をサポートする物理 (またはシミュレーション) Modbus デバイス。 その IPv4 アドレスがわかっている必要があります。
 
 ## <a name="prepare-a-modbus-container"></a>Modbus コンテナーの準備
 
-Modbus ゲートウェイの機能をテストしたい方のために、Microsoft からサンプル モジュールが提供されています。 Azure Marketplace や [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) から、またはイメージ URI (**mcr.microsoft.com/azureiotedge/modbus:1.0**) を使用してモジュールにアクセスできます。
+Modbus ゲートウェイの機能をテストしたい方のために、Microsoft からサンプル モジュールが提供されています。 このモジュールには Azure Marketplace ([Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)) から、またはイメージの URI (`mcr.microsoft.com/azureiotedge/modbus:1.0`) を使用してアクセスできます。
 
-独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 独自のコンテナー イメージを作成する場合は、「[Develop C# modules in Visual Studio (Visual Studio で C# モジュールを開発する)](how-to-visual-studio-develop-csharp-module.md)」または「[Develop modules in Visual Studio Code (Visual Studio Code でモジュールを開発する)](how-to-vs-code-develop-module.md)」をご覧ください。 これらの記事では、新規のモジュール作成や、コンテナー イメージのレジストリへの発行に関する手順について説明します。
+独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 コンテナー イメージを作成するには、[Visual Studio での C# モジュールの開発](how-to-visual-studio-develop-csharp-module.md)に関するページ、または [Visual Studio Code でのモジュールの開発](how-to-vs-code-develop-module.md)に関するページをご覧ください。 これらの記事では、新規のモジュール作成や、コンテナー イメージのレジストリへの発行に関する手順について説明します。
 
 ## <a name="try-the-solution"></a>ソリューションをお試しください
 
@@ -47,68 +47,34 @@ Modbus ゲートウェイの機能をテストしたい方のために、Microso
 
 3. **[Set modules]\(モジュールの設定\)** を選びます。
 
-4. Modbus モジュールを追加します。
+4. **[IoT Edge モジュール]** セクションで、Modbus モジュールを追加します。
 
-   1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
+   1. **[追加]** ドロップダウンをクリックし、 **[Marketplace モジュール]** を選択します。
+   2. `Modbus` を検索し、Microsoft の **[Modbus TCP Module] (Modbus TCP モジュール)** を選択します。
+   3. このモジュールが IoT Hub に対して自動的に構成され、IoT Edge モジュールの一覧に表示されます。 また、ルートも自動的に構成されます。 **[Review + create]\(レビュー + 作成\)** を選択します。
+   4. デプロイ マニフェストを確認し、 **[作成]** を選択します。
 
-   2. **[名前]** フィールドに「modbus」と入力します。
+5. 一覧内の Modbus モジュール (`ModbusTCPModule`) を選択し、 **[モジュール ツインの設定]** タブを選択します。モジュール ツインの目的のプロパティに必要な JSON にはデータが自動的に入力されます。
 
-   3. **[イメージ]** フィールドに、サンプル コンテナーのイメージの URI として「`mcr.microsoft.com/azureiotedge/modbus:1.0`」を入力します。
+6. JSON の **SlaveConnection** プロパティを探し、その値を Modbus デバイスの IPv4 アドレスに設定します。
 
-   4. 必要なモジュール ツインのプロパティを更新するには、**[Enable]\(有効\)** チェック ボックスをオンにします。
+7. **[Update]\(更新\)** を選択します。
 
-   5. 次の JSON をテキスト ボックスにコピーします。 **SlaveConnection** の値を実際の Modbus デバイスの IPv4 アドレスに変更します。
+8. **[確認と作成]** を選択し、デプロイを確認して **[作成]** を選択します。
 
-      ```JSON
-      {
-        "properties.desired":{
-          "PublishInterval":"2000",
-          "SlaveConfigs":{
-            "Slave01":{
-              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{
-                "Op01":{
-                  "PollingInterval": "1000",
-                  "UnitId":"1",
-                  "StartAddress":"400001",
-                  "Count":"2",
-                  "DisplayName":"Voltage"
-                }
-              }
-            }
-          }
-        }
-      }
-      ```
-
-   6. **[保存]** を選択します。
-
-5. **[モジュールの追加]** 手順に戻り、**[次へ]** を選択します。
-
-7. **[Specify Routes]\(ルートの指定\)** の手順で、以下の JSON をテキスト ボックスにコピーします。 Modbus モジュールによって収集されたすべてのメッセージが、このルートによって IoT Hub に送信されます。 このルートの "modbusOutput" は、Modbus モジュールがデータを出力するために使用するエンドポイントです。また、"upstream" は特別な転送先で、IoT Edge ハブに対して、メッセージを IoT Hub に送信するように指示します。
-   ```JSON
-   {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
-   }
-   ```
-
-8. **[次へ]** を選択します。
-
-9. **[Review Deployment]\(展開のレビュー\)** ステップで、**[送信]** を選びます。
-
-10. デバイスの詳細ページに戻り、**[更新]** を選びます。 新しい **modbus** モジュールが IoT Edge ランタイムと一緒に実行されていることが表示されます。
+9. デバイスの詳細ページに戻り、 **[更新]** を選びます。 新しい `ModbusTCPModule` モジュールが IoT Edge ランタイムと共に実行されているようすが表示されます。
 
 ## <a name="view-data"></a>データの表示
-Modbus モジュールを介して送信されているデータを確認します。
+
+Modbus モジュールから来ているデータを表示します。
+
 ```cmd/sh
 iotedge logs modbus
 ```
 
-[Visual Studio Code 用の Azure IoT Hub Toolkit 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (以前は Azure IoT Toolkit 拡張機能) を使用して、デバイスによって送信されているテレメトリを表示することもできます。
+[Visual Studio Code 用の Azure IoT Hub 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称 Azure IoT Toolkit 拡張機能) を使用して、デバイスから送信されているテレメトリを表示することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- IoT Edge デバイスのゲートウェイとしての振る舞いについて詳しくは、「[透過的なゲートウェイとして動作する IoT Edge デバイスを作成する](./how-to-create-transparent-gateway.md)」を参照してください。
-- IoT Edge モジュールの動作について詳しくは、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」を参照してください。
+* IoT Edge デバイスのゲートウェイとしての振る舞いについて詳しくは、「[透過的なゲートウェイとして動作する IoT Edge デバイスを作成する](./how-to-create-transparent-gateway.md)」を参照してください。
+* IoT Edge モジュールの動作について詳しくは、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」を参照してください。

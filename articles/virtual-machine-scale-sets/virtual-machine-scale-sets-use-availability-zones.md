@@ -1,26 +1,20 @@
 ---
-title: 可用性ゾーンを使用する Azure スケール セットを作成する | Microsoft Docs
+title: Availability Zones を使用する Azure スケール セットを作成する
 description: 障害に対する冗長性を高めるために可用性ゾーンを使用する Azure 仮想マシン スケール セットを作成する方法について説明します
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.devlang: na
-ms.topic: article
+ms.subservice: availability
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994709"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197349"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -34,18 +28,18 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 最大拡散では、VM が拡散される障害ドメインの数に関係なく、スケール セット VM インスタンス ビューおよびインスタンス メタデータには、既定の 1 つのドメインだけが表示されることに注意してください。 各ゾーン内の拡散は暗黙で行われます。
 
-最大拡散を使うには、*platformFaultDomainCount* を *1* に設定します。 5 障害ドメインの固定拡散を使うには、*platformFaultDomainCount* を *5* に設定します。 API バージョン *2017-12-01* では、単一ゾーンおよびクロスゾーンのスケール セットに対する *platformFaultDomainCount* の既定値は *1* です。 現在、リージョン スケール セットでは 5 障害ドメインの固定拡散のみがサポートされています。
+最大拡散を使うには、*platformFaultDomainCount* を *1* に設定します。 5 障害ドメインの固定拡散を使うには、*platformFaultDomainCount* を *5* に設定します。 API バージョン *2017-12-01* では、単一ゾーンおよびクロスゾーンのスケール セットに対する *platformFaultDomainCount* の既定値は *1* です。 現在、リージョン (非ゾーン) スケール セットでは 5 障害ドメインの固定拡散のみがサポートされています。
 
 ### <a name="placement-groups"></a>配置グループ
 
-スケール セットを展開するときは、可用性ゾーンごとに 1 つの[配置グループ](./virtual-machine-scale-sets-placement-groups.md)、またはゾーンごとに複数の配置グループのどちらかを選んで展開することもできます リージョン スケール セットでの選択肢は、リージョンに 1 つの配置グループ、またはリージョンに複数の配置グループです。 ほとんどのワークロードでは、より大きいスケールに対応できるので、複数の配置グループをお勧めします。 API バージョン *2017-12-01* でのスケール セットの既定値は、単一ゾーンとクロスゾーンのスケール セットについては複数の配置グループですが、リージョン スケール セットについては単一の配置グループです。
+スケール セットを展開するときは、可用性ゾーンごとに 1 つの[配置グループ](./virtual-machine-scale-sets-placement-groups.md)、またはゾーンごとに複数の配置グループのどちらかを選んで展開することもできます リージョン (非ゾーン) スケール セットでの選択肢は、リージョンに 1 つの配置グループ、またはリージョンに複数の配置グループです。 ほとんどのワークロードでは、より大きいスケールに対応できるので、複数の配置グループをお勧めします。 API バージョン *2017-12-01* でのスケール セットの既定値は、単一ゾーンとクロスゾーンのスケール セットについては複数の配置グループですが、リージョン (非ゾーン) スケール セットについては単一の配置グループです。
 
 > [!NOTE]
 > 最大拡散を使う場合は、複数の配置グループを使う必要があります。
 
 ### <a name="zone-balancing"></a>ゾーン バランス
 
-最後に、複数のゾーンにまたがって展開されるスケール セットの場合、"ベスト エフォートのゾーン バランス" または "厳密なゾーン バランス" を選ぶこともできます。 スケール セットが "バランスが取れている" ものと見なされるのは、スケール セットの各ゾーンの VM 数が同じであるか差が \\1 つ以内の場合です。 例: 
+最後に、複数のゾーンにまたがって展開されるスケール セットの場合、"ベスト エフォートのゾーン バランス" または "厳密なゾーン バランス" を選ぶこともできます。 スケール セットが "バランスが取れている" ものと見なされるのは、スケール セットの各ゾーンの VM 数が同じであるか差が \\1 つ以内の場合です。 次に例を示します。
 
 - ゾーン 1 が 2 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れているものと考えられます。 VM 数が異なるゾーンは 1 つのみで、他のゾーンよりも 1 個少ないだけです。 
 - ゾーン 1 が 1 VM、ゾーン 2 が 3 VM、ゾーン 3 が 3 VM であるスケール セットは、バランスが取れていないものと考えられます。 ゾーン 1 の VM 数は、ゾーン 2 および 3 と比べて 2 個少ないです。
@@ -62,7 +56,7 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 単一のゾーンにスケール セットを作成する場合は、すべての VM インスタンスが実行するゾーンをユーザーが制御し、スケール セットはそのゾーン内でのみ管理および自動スケールされます。 ゾーン冗長スケール セットを使うと、複数のゾーンにまたがる単一のスケール セットを作成できます。 VM インスタンスが作成されると、既定で、複数のゾーンに均等に分散されます。 ゾーンの 1 つで中断が発生しても、スケール セットは容量を増やすためのスケールアウトを自動的には行いません。 CPU またはメモリの使用率に基づく自動スケール ルールを構成するのがベスト プラクティスです。 自動スケール ルールを作成すると、スケール セットは、その 1 つのゾーンでの VM インスタンスの喪失に、残りの動作しているゾーンに新しいインスタンスをスケールアウトすることによって、対応できるようになります。
 
-可用性ゾーンを使うには、[サポートされている Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)にスケール セットを作成する必要があります。 次のいずれかの方法で、可用性ゾーンを使うスケール セットを作成できます。
+可用性ゾーンを使うには、[サポートされている Azure リージョン](../availability-zones/az-region.md)にスケール セットを作成する必要があります。 次のいずれかの方法で、可用性ゾーンを使うスケール セットを作成できます。
 
 - [Azure Portal](#use-the-azure-portal)
 - Azure CLI
@@ -215,10 +209,10 @@ New-AzVmss `
 }
 ```
 
-パブリック IP アドレスまたはロード バランサーを作成する場合、*"sku": { "name":"Standard" }"* プロパティを指定してゾーン冗長ネットワーク リソースを作成します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+パブリック IP アドレスまたはロード バランサーを作成する場合、 *"sku": { "name":"Standard" }"* プロパティを指定してゾーン冗長ネットワーク リソースを作成します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 可用性ゾーンにスケール セットを作成したので、次に、[仮想マシン スケール セットにアプリケーションを展開する](tutorial-install-apps-cli.md)方法または[仮想マシン スケール セットで自動スケールを使用する](tutorial-autoscale-cli.md)方法を学習できます。

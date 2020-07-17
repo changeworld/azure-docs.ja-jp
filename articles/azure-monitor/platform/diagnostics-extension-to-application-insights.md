@@ -1,19 +1,17 @@
 ---
-title: Application Insights にデータを送信するための Azure Diagnostics の構成
+title: Azure Diagnostics のデータを Application Insights に送信する
 description: Application Insights にデータを送信するように Azure Diagnostics のパブリック構成を更新します。
-services: azure-monitor
-author: rboucher
-ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2016
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 03/19/2016
+ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77672329"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure Diagnostics 拡張機能を使用してデータを収集します。  Azure Diagnostics のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure Diagnostics 拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -60,18 +58,18 @@ Application Insights のシンクの構成の例を以下に示します。
 ```
 - **シンク**の *name* 属性は、シンクを一意に識別する文字列値です。
 
-- **ApplicationInsights** 要素では、Azure 診断データの送信先となる Application Insights リソースのインストルメンテーション キーを指定します。
+- **ApplicationInsights** 要素では、Azure Diagnostics データの送信先となる Application Insights リソースのインストルメンテーション キーを指定します。
     - 既存の Application Insights リソースがない場合、リソースの作成方法とインストルメンテーション キーの取得方法の詳細については、「[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )」を参照してください。
     - Azure SDK 2.8 以降でクラウド サービスを開発する場合、このインストルメンテーション キーが自動的に設定されます。 この値は、クラウド サービス プロジェクトをパッケージ化するときの **APPINSIGHTS_INSTRUMENTATIONKEY** サービス構成設定に基づきます。 [Cloud Services での Application Insights の使用](../../azure-monitor/app/cloudservices.md)に関するページを参照してください。
 
 - **Channels** 要素には、1 つ以上の **Channel** 要素が含まれます。
     - *name* 属性は、そのチャンネルを一意に参照します。
     - *loglevel* 属性では、チャンネルで許可されるログ レベルを指定できます。 使用可能なログ レベルを情報の多い順に並べると、次のようになります。
-        - 詳細
-        - 情報
+        - "詳細"
+        - Information
         - 警告
-        - Error
-        - 重大
+        - エラー
+        - Critical
 
 チャンネルはフィルターのように機能し、対象のシンクに送信する特定のログ レベルを選択するために使用できます。 たとえば、詳細ログを収集してストレージに送信し、シンクにはエラーのみを送信することができます。
 
@@ -211,11 +209,11 @@ Application Insights のシンクの構成の例を以下に示します。
 ## <a name="limitations"></a>制限事項
 
 - **チャンネルでは、種類のみがログに記録されます。パフォーマンス カウンターは記録されません。** パフォーマンス カウンターの要素を含むチャンネルを指定した場合、そのチャンネルは無視されます。
-- **チャンネルのログ レベルには、Azure 診断によって収集されるデータのログ レベルを超えるログを指定することはできません。** たとえば、Logs 要素でアプリケーション ログのエラーを収集できないため、Application Insight シンクに "詳細" ログを送信することにします。 *scheduledTransferLogLevelFilter* 属性では、シンクに送信するログと同じかそれを超えるレベルのログを常に収集する必要があります。
-- **Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
+- **チャンネルのログ レベルには、Azure Diagnostics によって収集されるデータのログ レベルを超えるログを指定することはできません。** たとえば、Logs 要素でアプリケーション ログのエラーを収集できないため、Application Insight シンクに "詳細" ログを送信することにします。 *scheduledTransferLogLevelFilter* 属性では、シンクに送信するログと同じかそれを超えるレベルのログを常に収集する必要があります。
+- **Azure Diagnostics の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## <a name="next-steps"></a>次の手順
 * Application Insights で [Azure Diagnostics 情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)方法について説明します。
-* [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
-* [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
+* [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure Diagnostics の拡張機能を有効にします。
+* [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) を使用して、アプリケーションの Azure Diagnostics の拡張機能を有効にします。
 

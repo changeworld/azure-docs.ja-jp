@@ -1,21 +1,15 @@
 ---
 title: Azure Blockchain Service のセキュリティ
 description: Azure Blockchain Service のデータ アクセスとセキュリティの概念です
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/22/2019
+ms.topic: conceptual
+ms.reviewer: janders
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027657"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879600"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ
 
@@ -23,27 +17,27 @@ Azure Blockchain Service では、Azure の複数の機能を使用して、デ�
 
 ## <a name="isolation"></a>分離:
 
-Azure Blockchain Service のリソースは、プライベート仮想ネットワーク内に分離されます。 各トランザクション ノードと検証ノードは、仮想マシン (VM) です。 ある仮想ネットワーク内の VM は、別の仮想ネットワーク内の VM とは直接通信できません。 分離により、通信は仮想ネットワーク内でプライベートの状態を維持されます。 Azure 仮想ネットワークの分離について詳しくは、「[Azure Public Cloud での分離](../../security/azure-isolation.md#networking-isolation)」をご覧ください。
+Azure Blockchain Service のリソースは、プライベート仮想ネットワーク内に分離されます。 各トランザクション ノードと検証ノードは、仮想マシン (VM) です。 ある仮想ネットワーク内の VM は、別の仮想ネットワーク内の VM とは直接通信できません。 分離により、通信は仮想ネットワーク内でプライベートの状態を維持されます。 Azure 仮想ネットワークの分離について詳しくは、「[Azure Public Cloud での分離](../../security/fundamentals/isolation-choices.md#networking-isolation)」をご覧ください。
 
 ![VNET の図](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>暗号化
 
-ユーザー データは Azure Storage に格納されます。 ユーザー データは、セキュリティと機密保持のため、移動時および保存時に暗号化されます。 詳細については、次を参照してください。[Azure Storage のセキュリティ ガイド](../../storage/common/storage-security-guide.md)。
+ユーザー データは Azure Storage に格納されます。 ユーザー データは、セキュリティと機密保持のため、移動時および保存時に暗号化されます。 詳細については、次を参照してください。[Azure Storage のセキュリティ ガイド](../../storage/blobs/security-recommendations.md)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
-トランザクションは、RPC エンドポイント経由でブロックチェーン ノードに送信できます。 クライアントは、ユーザーの認証を処理し SSL 経由でデータを暗号化するリバース プロキシ サーバーを使用して、トランザクション ノードを通信します。
+トランザクションは、RPC エンドポイント経由でブロックチェーン ノードに送信できます。 クライアントは、ユーザーの認証を処理し、TLS 経由でデータを暗号化するリバース プロキシ サーバーを使用して、トランザクション ノードを通信します。
 
 ![認証のダイアグラム](./media/data-security/authentication.png)
 
 RPC アクセスの認証には 3 つのモードがあります。
 
-### <a name="basic-authentication"></a>基本認証
+### <a name="basic-authentication"></a>[基本認証]
 
 基本認証では、ユーザー名とパスワードが含まれる HTTP 認証ヘッダーが使われます。 ユーザー名は、ブロックチェーン ノードの名前です。 パスワードは、メンバーまたはノードのプロビジョニング中に設定されます。 パスワードは、Azure portal または CLI を使用して変更できます。
 
-### <a name="access-keys"></a>[アクセス キー]
+### <a name="access-keys"></a>アクセス キー
 
 アクセス キーでは、エンドポイントの URL に含まれる、ランダムに生成された文字列が使用されます。 2 つのアクセス キーにより、キーをローテーションできます。 Azure portal および CLI で、キーを再生成できます。
 
@@ -63,6 +57,6 @@ Azure Blockchain Service のメンバーをプロビジョニングするとき�
 
 Quorum ノードを一意に識別するには、Constellation キーが使用されます。 Constellation キーは、ノードのプロビジョニング時に生成され、Quorum のプライベート トランザクションの privateFor パラメーターで指定されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Azure Blockchain Service のトランザクション ノードを構成する](configure-transaction-nodes.md)
+[Azure Blockchain Service 用に Azure Active Directory アクセスを構成する方法](configure-aad.md)に関するページを参照してください。

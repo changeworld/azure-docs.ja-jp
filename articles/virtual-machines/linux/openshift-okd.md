@@ -1,26 +1,20 @@
 ---
-title: Azure で OKD をデプロイする | Microsoft Docs
+title: Azure で OKD をデプロイする
 description: Azure で OKD をデプロイします。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: joraio
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 7db50007dd32c84a360eaec25bf860709272437b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999075"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759434"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure で OKD をデプロイする
 
@@ -154,7 +148,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、OpenShift クラスター、およびすべての関連リソースが不要になったら、[az group delete](/cli/azure/group) コマンドを使用して削除できます。
 
@@ -162,8 +156,8 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [デプロイ後タスク](./openshift-post-deployment.md)
-- [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
+- [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)
 - [OKD の概要](https://docs.okd.io)

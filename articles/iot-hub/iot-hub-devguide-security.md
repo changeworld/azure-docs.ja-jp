@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534367"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726062"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -29,18 +32,18 @@ ms.locfileid: "57534367"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub のエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、IoT Hub に送信するすべてのメッセージと共に、デバイスにはセキュリティ資格情報が格納されているトークンを含める必要があります。
+IoT Hub のエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、デバイスは IoT Hub に送信するすべてのメッセージにセキュリティ資格情報含めたトークンを付けなければいけません。
 
 ## <a name="access-control-and-permissions"></a>アクセス制御とアクセス許可
 
 次の方法で[アクセス許可](#iot-hub-permissions)を付与できます。
 
-* **IoT Hub レベルの共有アクセス ポリシー**:  共有アクセス ポリシーにより、[アクセス許可](#iot-hub-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal](https://portal.azure.com) で、[IoT Hub Resource REST API](/rest/api/iothub/iothubresource) を使ってプログラムにより、または [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI を使って、定義することができます。 新しく作成された IoT Hub には、次の既定のポリシーがあります。
+* **IoT Hub レベルの共有アクセス ポリシー**: 共有アクセス ポリシーにより、[アクセス許可](#iot-hub-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal](https://portal.azure.com) で定義したり、[IoT Hub Resource REST API](/rest/api/iothub/iothubresource) や [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI を使ってプログラムで定義できます。 新しく作成された IoT Hub には、次の既定のポリシーがあります。
   
   | 共有アクセス ポリシー | アクセス許可 |
   | -------------------- | ----------- |
   | iothubowner | すべてのアクセス許可 |
-  | service | **ServiceConnect** アクセス許可 |
+  | サービス (service) | **ServiceConnect** アクセス許可 |
   | device | **DeviceConnect** アクセス許可 |
   | registryRead | **RegistryRead** アクセス許可 |
   | registryReadWrite | **RegistryRead** および **RegistryWrite** アクセス許可 |
@@ -57,14 +60,14 @@ IoT Hub のエンドポイントにアクセスするには、適切なアクセ
 > [!NOTE]
 > 詳細については、[権限](#iot-hub-permissions)に関する項目をご覧ください。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
-Azure IoT Hub では、共有アクセス ポリシーと ID レジストリのセキュリティ資格情報に対してトークンを確認することにより、エンドポイントへのアクセスを許可します。
+Azure IoT Hub は、トークンを共有アクセス ポリシーと ID レジストリのセキュリティ資格情報に対して確認することにより、エンドポイントへのアクセスを許可します。
 
-対称キーなどのセキュリティの資格情報がネットワーク上で送信されることはありません。
+対称キーなどのセキュリティ資格情報がネットワーク上で送信されることはありません。
 
 > [!NOTE]
-> Azure IoT Hub のリソース プロバイダーは、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) のすべてのプロバイダーと同様、Azure のサブスクリプションによりセキュリティで保護されています。
+> Azure IoT Hub のリソース プロバイダーは、[Azure Resource Manager](../azure-resource-manager/management/overview.md) のすべてのプロバイダーと同様、Azure のサブスクリプションによりセキュリティで保護されています。
 
 セキュリティ トークンを作成して使用する方法の詳細については、[IoT Hub セキュリティ トークン](iot-hub-devguide-security.md#security-tokens)に関するセクションを参照してください。
 
@@ -72,7 +75,7 @@ Azure IoT Hub では、共有アクセス ポリシーと ID レジストリの�
 
 MQTT、AMQP、および HTTPS など、サポートされているプロトコルごとに、さまざまな方法でトークンが転送されます。
 
-MQTT を使用する場合、CONNECT パケットでは、ClientId、ユーザー名フィールドの `{iothubhostname}/{deviceId}`、およびパスワード フィールドの SAS トークンとして、deviceId が使用されます。 `{iothubhostname}` は IoT Hub の完全な CName とする必要があります (contoso.azure-devices.net など)。
+MQTT を使用する場合、CONNECT パケットには、ClientId として deviceId が指定され、ユーザー名フィールドには `{iothubhostname}/{deviceId}`、パスワード フィールドには SAS トークンが指定されます。 `{iothubhostname}` は IoT Hub の完全な CName とする必要があります (contoso.azure-devices.net など)。
 
 [AMQP](https://www.amqp.org/) を使用する場合、IoT Hub では [SASL PLAIN](https://tools.ietf.org/html/rfc4616) と [AMQP Claims-Based-Security](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) がサポートされます。
 
@@ -91,7 +94,7 @@ HTTPS では、 **Authorization** 要求ヘッダーに有効なトークンを�
 
 ユーザー名 (DeviceId では大文字と小文字が区別されます): `iothubname.azure-devices.net/DeviceId`
 
-パスワード ([デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) ツール、CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)、または [Visual Studio Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます):
+パスワード (CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) または [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -116,7 +119,7 @@ SASL PLAIN を AMQP で使用する場合、IoT Hub に接続するクライア�
 
 IoT Hub では、デバイスとサービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT SDK](iot-hub-devguide-sdks.md) を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 これらのシナリオは、次のとおりです。
 
-* MQTT、AMQP、または HTTPS のサーフェスを直接使用する。
+* 直接、MQTT、AMQP、または HTTPS を使用する。
 
 * トークンのサービス パターンを実装する (「[カスタム デバイスの認証](iot-hub-devguide-security.md#custom-device-and-module-authentication)」で説明)。
 
@@ -124,7 +127,7 @@ IoT Hub では、[X.509](iot-hub-devguide-security.md#supported-x509-certificate
 
 ### <a name="security-token-structure"></a>セキュリティ トークンの構造
 
-セキュリティ トークンは、IoT Hub の特定の機能へのアクセスを期限付きでデバイスとサービスに許可するために使用します。 IoT Hub に接続する承認を取得するには、デバイス とサービスが共有アクセスまたは対称キーのいずれかで署名されたセキュリティ トークンを送信する必要があります。 これらのキーは、ID レジストリにデバイス ID と共に格納されます。
+セキュリティ トークンは、IoT Hub の特定の機能へのアクセスを期限付きでデバイスとサービスに許可するために使用します。 IoT Hub に接続する承認を取得するには、デバイスとサービスが共有アクセス キーまたは対称キーのいずれかで署名されたセキュリティ トークンを送信する必要があります。 これらのキーは、ID レジストリにデバイス ID と共に格納されます。
 
 共有アクセス キーで署名されたトークンでは、その共有アクセス ポリシーのアクセス許可に関連付けられたすべての機能へのアクセスが許可されます。 デバイス ID の対称キーで署名されたトークンは、関連付けられたデバイス ID の **DeviceConnect** アクセス許可のみを付与します。
 
@@ -136,7 +139,7 @@ IoT Hub では、[X.509](iot-hub-devguide-security.md#supported-x509-certificate
 
 | 値 | 説明 |
 | --- | --- |
-| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
+| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**:キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
 | {resourceURI} |IoT Hub のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、`myHub.azure-devices.net/devices/device1` のように指定します。 |
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} |小文字のリソース URI の小文字の URL エンコード |
@@ -156,7 +159,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
     var toSign = resourceUri + '\n' + expires;
 
     // Use crypto
-    var hmac = crypto.createHmac('sha256', new Buffer(signingKey, 'base64'));
+    var hmac = crypto.createHmac('sha256', Buffer.from(signingKey, 'base64'));
     hmac.update(toSign);
     var base64UriEncoded = encodeURIComponent(hmac.digest('base64'));
 
@@ -174,14 +177,14 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 from base64 import b64encode, b64decode
 from hashlib import sha256
 from time import time
-from urllib import quote_plus, urlencode
+from urllib import parse
 from hmac import HMAC
 
 def generate_sas_token(uri, key, policy_name, expiry=3600):
     ttl = time() + expiry
-    sign_key = "%s\n%d" % ((quote_plus(uri)), int(ttl))
+    sign_key = "%s\n%d" % ((parse.quote_plus(uri)), int(ttl))
     print sign_key
-    signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+    signature = b64encode(HMAC(b64decode(key), sign_key.encode('utf-8'), sha256).digest())
 
     rawtoken = {
         'sr' :  uri,
@@ -192,8 +195,13 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     if policy_name is not None:
         rawtoken['skn'] = policy_name
 
-    return 'SharedAccessSignature ' + urlencode(rawtoken)
+    return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
+
+前提条件のインストール手順は次のとおりです。
+
+[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
 
 セキュリティ トークンを生成する C# の機能を下に示します。
 
@@ -272,7 +280,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) ツール、CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)、または [Visual Studio Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます。
+> CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) または [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます。
 
 ### <a name="use-a-shared-access-policy"></a>共有アクセス ポリシーを使用する
 
@@ -342,7 +350,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>サポートされている X.509 証明書
 
-証明書拇印や証明書機関 (CA) を Azure IoT Hub にアップロードすることで、あらゆる X.509 証明書を使用し、IoT Hub のあるデバイスを認証できます。 証明書拇印のみを利用する認証の場合、提示された拇印が設定されている拇印に一致することが確認されます。 証明書機関を使用して認証する場合、証明書チェーンが検証されます。 
+証明書拇印や証明書機関 (CA) を Azure IoT Hub にアップロードすることで、IoT Hub のデバイスを X.509 証明書で認証できます。 証明書拇印を利用する認証の場合、提示された拇印が、構成されている拇印と一致することが確認されます。 証明書機関を使用して認証する場合、証明書チェーンが検証されます。 いずれの場合も、TLS ハンドシェイクでは、デバイスに有効な証明書と秘密キーが必要です。 詳細については、TLS 仕様を参照してください。次に例を示します。[RFC 5246 - トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2](https://tools.ietf.org/html/rfc5246/)。
 
 次の証明書に対応しています。
 
@@ -358,9 +366,9 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>デバイスの X.509 証明書を登録する
 
-[C# 用 Azure IoT サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service) (バージョン 1.0.8 以上) では、認証に X.509 証明書を使用するデバイスの登録がサポートされています。 デバイスのインポート/エクスポートなどの他の API でも X.509 証明書がサポートされます。
+[C# 用 Azure IoT サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (バージョン 1.0.8 以上) では、認証に X.509 証明書を使用するデバイスの登録がサポートされています。 デバイスのインポート/エクスポートなどの他の API でも X.509 証明書がサポートされます。
 
-CLI 拡張コマンド [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) を使って、デバイスの X.509 証明書を構成することもできます。
+CLI 拡張コマンド [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) を使って、デバイスの X.509 証明書を構成することもできます。
 
 ### <a name="c-support"></a>C\# のサポート
 
@@ -383,9 +391,9 @@ RegistryManager registryManager = RegistryManager.CreateFromConnectionString(dev
 await registryManager.AddDeviceAsync(device);
 ```
 
-### <a name="use-an-x509-certificate-during-run-time-operations"></a>ランタイム操作中に X.509 証明書を使用する
+### <a name="use-an-x509-certificate-during-run-time-operations"></a>実行に X.509 証明書を使用する
 
-[.NET 用 Azure IoT device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device) (バージョン 1.0.11+) では、X.509 証明書の使用がサポートされています。
+[.NET 用 Azure IoT device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (バージョン 1.0.11+) では、X.509 証明書の使用がサポートされています。
 
 ### <a name="c-support"></a>C\# のサポート
 
@@ -436,7 +444,7 @@ IoT Hub でカスタム ID レジストリ/認証スキームを実装する場�
 
 次の表は、IoT hub へのアクセス制御に使用できるアクセス許可の一覧です。
 
-| アクセス許可 | メモ |
+| 権限 | Notes |
 | --- | --- |
 | **RegistryRead** |ID レジストリへの読み取りアクセスを許可します。 詳細については、「[Identity registry](iot-hub-devguide-identity-registry.md)」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **RegistryReadWrite** |ID レジストリへの読み取りと書き込みアクセスを許可します。 詳細については、「[Identity registry](iot-hub-devguide-identity-registry.md)」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
@@ -457,7 +465,9 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+* [RFC 5246 - トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2](https://tools.ietf.org/html/rfc5246/) では、TLS 認証についてさらに詳細な情報が提供されます。
+
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 開発者ガイドのトピックもご覧ください。
 

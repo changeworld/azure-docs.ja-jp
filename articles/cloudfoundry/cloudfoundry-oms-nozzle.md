@@ -1,23 +1,22 @@
 ---
-title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ | Microsoft Docs
+title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ
 description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111465"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76277353"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -53,7 +52,7 @@ Nozzle は、CF 環境でアプリケーションとして実行されます。 
 
 UAA コマンドライン クライアントをセットアップする前に、RubyGems がインストールされていることを確認します。
 
-### <a name="3-create-a-log-analytics-workspace-in-azure"></a>手順 3.Azure で Log Analytics ワークスペースを作成する
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3.Azure で Log Analytics ワークスペースを作成する
 
 Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 テンプレートにより、Azure Monitor ログ コンソール用に事前構成された KPI ビューとアラートのセットアップがデプロイされます。 
 
@@ -64,8 +63,8 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 
    * **Log Analytics ワークスペース**:ワークスペースの名前を入力します。
    * **サブスクリプション**:複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
-   * **[リソース グループ]**:新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
-   * **[場所]**:場所を入力します。
+   * **[リソース グループ]** :新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
+   * **[場所]** :場所を入力します。
    * **価格レベル**:完了するには **[OK]** を選択します。
 
 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)に関するページを参照してください
@@ -78,7 +77,7 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 1. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
 1. 必要なパラメーターを入力します。
     * **サブスクリプション**:Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
-    * **[リソース グループ]**:既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
+    * **[リソース グループ]** :既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
     * **リソース グループの場所**:リソース グループの場所を選択します。
     * **OMS_Workspace_Name**:ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
     * **OMS_Workspace_Region**:ワークスペースの場所を選択します。
@@ -184,7 +183,7 @@ Log Analytics ワークスペースを手動で作成した場合は、次の手
 
 ### <a name="1-import-the-oms-view"></a>1.OMS ビューをインポートする
 
-OMS ポータルから **[ビュー デザイナー]** > **[インポート]** > **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
+OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**  >  **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
 
 **[ビュー デザイナー]** で、これらのビューをカスタマイズするか、新しいビューを作成できます。
 
@@ -220,7 +219,7 @@ Nozzle をスケールアップするには、Apps Manager または CF CLI を�
 loggregator は、ログのプロセスに関する問題を示す **LGR** ログ メッセージを送信します。 アラートを監視して、Loggregator のスケールアップが必要かどうかを決定できます。
 loggregator をスケール アップするには、CF マニフェストで Doppler のバッファー サイズを増やすか、Doppler サーバー インスタンスを追加します。 詳細については、[loggregator のスケーリングに関するガイダンス](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)を参照してください。
 
-## <a name="update"></a>アップデート
+## <a name="update"></a>更新
 
 Nozzle を新しいバージョンに更新するには、Nozzle の新しいリリースをダウンロードし、前述の「Nozzle のデプロイ」セクションの手順に従ってアプリケーションをもう一度プッシュします。
 

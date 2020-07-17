@@ -1,20 +1,19 @@
 ---
-title: メッセージをグループまたはコレクションとしてバッチ処理を行う - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps でメッセージをバッチとして送受信する
+title: メッセージをグループとしてバッチ処理する
+description: Azure Logic Apps でバッチ処理を使用して、ワークフローの間でグループ内のメッセージを送受信します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, jonfan, LADocs
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352514"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144337"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
 
@@ -32,13 +31,15 @@ ms.locfileid: "54352514"
 
 ## <a name="prerequisites"></a>前提条件
 
-この例に従うには、次の項目が必要です。
-
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金制サブスクリプション](https://azure.microsoft.com/pricing/purchase-options/)にサインアップすることもできます。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。
+また、[従量課金制サブスクリプション](https://azure.microsoft.com/pricing/purchase-options/)にサインアップすることもできます。
 
 * 任意の [Azure Logic Apps でサポートされる電子メール プロバイダー](../connectors/apis-list.md)の電子メール アカウント
 
-* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識 
+  > [!IMPORTANT]
+  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントをお持ちの場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
+
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
 * Azure portal ではなく Visual Studio を使う場合は、[Logic Apps と連携するように Visual Studio を設定](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)してください。
 
@@ -63,7 +64,7 @@ ms.locfileid: "54352514"
    | **リリース条件** | **インライン** バッチ モードにのみ適用されます。個々のバッチを処理する前に満たすべき条件を選択します。 <p>- **メッセージ数ベース**:バッチによって収集されたメッセージの数に基づいてバッチをリリースします。 <br>- **サイズ ベース**:そのバッチによって収集されたすべてのメッセージの合計サイズ (バイト) に基づいてバッチをリリースします。 <br>- **スケジュール**:間隔と頻度を指定する定期的なスケジュールに基づいてバッチをリリースします。 詳細オプションでは、タイム ゾーンを選択し、開始日時を指定することもできます。 <br>- **すべて選択**:指定した条件をすべて使用します。 | 
    | **メッセージ数** | バッチとして収集するメッセージの数 (10 件など)。 バッチの制限は、8,000 メッセージです。 | 
    | **バッチ サイズ** | バッチで収集する合計サイズ (10 MB など)。 バッチ サイズの上限は 80 MB です。 | 
-   | **スケジュール** | バッチをリリースする間隔と頻度 (10 分など)。 最小間隔は 60 秒 (1 分) です。 分の小数値は 1 分単位に切り上げられます。 タイム ゾーンまたは開始日時を指定するには、**[詳細オプションを表示する]** を選択します。 | 
+   | **[スケジュール]** | バッチをリリースする間隔と頻度 (10 分など)。 最小間隔は 60 秒 (1 分) です。 分の小数値は 1 分単位に切り上げられます。 タイム ゾーンまたは開始日時を指定するには、 **[詳細オプションを表示する]** を選択します。 | 
    ||| 
 
    > [!NOTE]
@@ -79,18 +80,16 @@ ms.locfileid: "54352514"
    この例では、バッチ トリガーが起動したときにメールを送信するアクションを追加します。 
    バッチのメッセージが 10 件に達するか、10 MB に達するか、または 10 分が経過すると、トリガーが作動してメールが送信されます。
 
-   1. バッチ トリガーで、**[新しいステップ]** を選択します。
+   1. バッチ トリガーで、 **[新しいステップ]** を選択します。
 
    2. 検索ボックスに、フィルターとして「send email」と入力します。
    電子メール プロバイダーに基づいて、電子メール コネクタを選択します。
 
-      たとえば個人用アカウント (@outlook.com、@hotmail.com など) がある場合、Outlook.com コネクタを選択します。 
-      Gmail アカウントがある場合は、Gmail コネクタを選択します。 
-      この例では Office 365 Outlook を使います。 
+      たとえば個人用アカウント (@outlook.com、@hotmail.com など) がある場合、Outlook.com コネクタを選択します。 この例では Office 365 Outlook コネクタを使用します。
 
    3. このアクションを選択: **[電子メールの送信 - <*電子メール プロバイダー*>]**
 
-      例: 
+      次に例を示します。
 
       ![電子メール プロバイダーの "電子メールの送信" アクションを選択する](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 
@@ -101,7 +100,7 @@ ms.locfileid: "54352514"
    * **[宛先]** ボックスに、受信者の電子メール アドレスを入力します。 
    テスト目的で自分の電子メール アドレスを使用できます。
 
-   * **[件名]** ボックスで、動的なコンテンツの一覧が表示されたら、**[パーティション名]** フィールドを選択します。
+   * **[件名]** ボックスで、動的なコンテンツの一覧が表示されたら、 **[パーティション名]** フィールドを選択します。
 
      ![動的なコンテンツの一覧で [パーティション名] を選択する](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
@@ -112,13 +111,13 @@ ms.locfileid: "54352514"
      > [!IMPORTANT]
      > パーティションには 5,000 メッセージまたは 80 MB という制限があります。 どちらかの条件が満たされた場合、ユーザーによって定義されたリリース条件が満たされていなくても、Logic Apps はバッチをリリースします。
 
-   * **[本文]** ボックスで、動的なコンテンツの一覧が表示されたら、**[メッセージ ID]** フィールドを選択します。 
+   * **[本文]** ボックスで、動的なコンテンツの一覧が表示されたら、 **[メッセージ ID]** フィールドを選択します。 
 
      Logic Apps デザイナーでは、電子メール送信アクションを囲む "For each" ループが自動的に追加されます。これは、そのアクションで、前のアクションの出力をバッチではなくコレクションとして処理するためです。 
 
      ![[本文] で [メッセージ ID] を選択する](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
-7.  ロジック アプリを保存し、 バッチ受信アプリの作成は以上です。
+7.  ロジック アプリを保存します。 バッチ受信アプリの作成は以上です。
 
     ![ロジック アプリを保存する](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
@@ -137,7 +136,7 @@ ms.locfileid: "54352514"
 1. 次の名前の別のロジック アプリを作成します:"BatchSender"
 
    1. 検索ボックスに、フィルターとして「recurrence」と入力します。 
-   トリガーとして、**[定期的なスケジュール]** を選択します。
+   トリガーとして、 **[定期的なスケジュール]** を選択します。
 
       !["定期的なスケジュール" トリガーの追加](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
@@ -147,10 +146,10 @@ ms.locfileid: "54352514"
 
 2. メッセージをバッチに送信する新しいアクションを追加します。
 
-   1. 繰り返しトリガーで、**[新しいステップ]** を選択します。
+   1. 繰り返しトリガーで、 **[新しいステップ]** を選択します。
 
    2. 検索ボックスに、フィルターとして「batch」と入力します。 
-   **[アクション]** リストを選択し、**[バッチ トリガーを含む Logic Apps ワークフローを選択します - バッチ処理するメッセージの送信]** アクションを選択します。
+   **[アクション]** リストを選択し、 **[バッチ トリガーを含む Logic Apps ワークフローを選択します - バッチ処理するメッセージの送信]** アクションを選択します。
 
       ![[バッチ トリガーを含む Logic Apps ワークフローを選択します] を選択します](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 
@@ -181,11 +180,11 @@ ms.locfileid: "54352514"
 
    2. 動的コンテンツ リストが表示されたら **[式]** を選択します。 
 
-   3. `utcnow()` という式を入力し、**[OK]** を選択します。 
+   3. `utcnow()` という式を入力し、 **[OK]** を選択します。 
 
       ![[メッセージのコンテンツ] で [式] を選択し、「utcnow()」と入力して [OK] を選択します。](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
-4. ここでバッチのパーティションを設定します。 "BatchReceiver" アクションで、**[詳細オプションの表示]** を選択し、次のプロパティを設定します。
+4. ここでバッチのパーティションを設定します。 "BatchReceiver" アクションで、 **[詳細オプションの表示]** を選択し、次のプロパティを設定します。
 
    | プロパティ | 説明 | 
    |----------|-------------| 
@@ -199,14 +198,14 @@ ms.locfileid: "54352514"
 
    2. 動的コンテンツ リストの **[式]** を選択します。
    
-   3. `rand(1,6)` という式を入力し、**[OK]** を選択します。
+   3. `rand(1,6)` という式を入力し、 **[OK]** を選択します。
 
       ![ターゲット バッチのパーティションをセットアップする](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 
       この **rand** 関数は 1 から 5 の間の数字を生成します。 
       これにより、この式が動的に設定した 5 つの番号のパーティションにこのバッチが分割されます。
 
-5. ロジック アプリを保存し、 送信ロジック アプリは次の例のようになります。
+5. ロジック アプリを保存します。 送信ロジック アプリは次の例のようになります。
 
    ![送信ロジック アプリを保存する](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
 
@@ -219,7 +218,7 @@ ms.locfileid: "54352514"
 > [!IMPORTANT]
 > テストが完了したら、BatchSender ロジック アプリを無効にしてメッセージの送信を停止し、受信トレイのオーバーロードを防止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [EDI メッセージのバッチ処理と送信](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [JSON を使用してロジック アプリの定義に基づいて構築する](../logic-apps/logic-apps-author-definitions.md)

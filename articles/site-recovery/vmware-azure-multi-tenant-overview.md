@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Azure (CSP) への VMware VM ディザスター リカバリーに対するマルチテナント サポートの概要 | Microsoft Docs
+title: Azure Site Recovery を使用した VMware VM マルチテナント ディザスター リカバリー
 description: マルチ テナント環境 (CSP) プログラムでの、Azure への VMWare ディザスター リカバリーに対する、Azure Site Recovery のサポートの概要について説明します。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104456"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74083986"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP を使用した Azure への VMware ディザスター リカバリーにおけるマルチテナント サポートの概要
 
@@ -24,11 +24,11 @@ ms.locfileid: "58104456"
 
 主なマルチテナント モデルとして次の 3 つがあります。
 
-* **共有ホスティング サービス プロバイダー (HSP)**:パートナーが物理インフラストラクチャを所有し、共有リソース (vCenter、データセンター、物理記憶領域など) を使用して、複数のテナント VM を同じインフラストラクチャ上でホストします。 パートナーは管理サービスとしてディザスター リカバリーの管理を提供できます。また、テナントはセルフサービス ソリューションとしてディザスター リカバリーを所有できます。
+* **共有ホスティング サービス プロバイダー (HSP)** :パートナーが物理インフラストラクチャを所有し、共有リソース (vCenter、データセンター、物理記憶領域など) を使用して、複数のテナント VM を同じインフラストラクチャ上でホストします。 パートナーは管理サービスとしてディザスター リカバリーの管理を提供できます。また、テナントはセルフサービス ソリューションとしてディザスター リカバリーを所有できます。
 
 * **専用ホスティング サービス プロバイダー**:パートナーが物理インフラストラクチャを所有しますが、専用リソース (複数の vCenter、物理データストアなど) を使用して個別のインフラストラクチャ上の各テナントの VM をホストします。 パートナーは管理サービスとしてディザスター リカバリーの管理を提供できます。また、テナントはセルフサービス ソリューションとしてディザスター リカバリーを所有できます。
 
-* **管理サービス プロバイダー (MSP)**:VM をホストする物理インフラストラクチャを顧客が所有し、パートナーがディザスター リカバリーを有効にして管理します。
+* **管理サービス プロバイダー (MSP)** :VM をホストする物理インフラストラクチャを顧客が所有し、パートナーがディザスター リカバリーを有効にして管理します。
 
 ## <a name="shared-hosting-services-provider-hsp"></a>共有ホスティング サービス プロバイダー (HSP)
 
@@ -120,7 +120,7 @@ ms.locfileid: "58104456"
 
 1. Azure Portal を使用し、以前に作成した資格情報コンテナー内で、作成した vCenter アカウントを使用して vCenter サーバーを構成サーバーに登録します。
 2. 通常のプロセスごとに、Site Recovery の "インフラストラクチャの準備" プロセスを完了します。
-3. これで VM をレプリケートする準備ができました。 **[レプリケート]** > **[仮想マシンの選択]** に、目的のテナントの VM だけが表示されていることを確認してください。
+3. これで VM をレプリケートする準備ができました。 **[レプリケート]**  >  **[仮想マシンの選択]** に、目的のテナントの VM だけが表示されていることを確認してください。
 
 ## <a name="dedicated-hosting-solution"></a>専用ホスティング ソリューション
 
@@ -136,7 +136,7 @@ ms.locfileid: "58104456"
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
 **複数の vCenter を使用する管理されたサービス シナリオ**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Site Recovery のロールベースのアクセス制御の詳細について[学習する](site-recovery-role-based-linked-access-control.md)。
 - [Azure に VMware VM のディザスター リカバリーを設定する](vmware-azure-tutorial.md)方法を学習する。
 - [VMWare VM 向け CSP によるマルチ テナント](vmware-azure-multi-tenant-csp-disaster-recovery.md)について学習する。

@@ -1,27 +1,20 @@
 ---
-title: Azure 書き込みアクセラレータ | Microsoft Docs
+title: Azure 書き込みアクセラレータ
 description: 書き込みアクセラレータを有効にして使用する方法に関するドキュメント
-services: virtual-machines-linux
-documentationcenter: ''
 author: raiye
 manager: markkie
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
-ms.devlang: NA
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
-ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: fcd7b43bf142ab33c1a3421cbc539bb2646d48f2
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 032ce960ce0d2cca5e1690522f6a16e7b610c4fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587686"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78945076"
 ---
+# <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

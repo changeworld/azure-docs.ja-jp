@@ -1,19 +1,19 @@
 ---
-title: チュートリアル:Azure CLI を使用して Azure Database for MariaDB を設計する
+title: チュートリアル:Azure Database for MariaDB を設計する - Azure CLI
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MariaDB サーバーとデータベースを作成および管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/10/2018
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999151"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79534849"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MariaDB を設計する
 
@@ -23,8 +23,8 @@ Azure Database for MariaDB は、Microsoft クラウドにおける、MariaDB �
 > * Azure Database for MariaDB を作成する
 > * サーバーのファイアウォールの構成
 > * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)を使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > * データの復元
 
@@ -41,10 +41,10 @@ CLI をローカルにインストールして使用する場合、この記事�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
+次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -185,7 +185,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 `az mariadb server restore` コマンドには、次のパラメーターが必要です。
 
-| Setting | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
@@ -196,13 +196,13 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 コマンドは同期的であり、サーバーが復元された後に戻ります。 復元が終了した後、作成された新しいサーバーを調べます。 データが期待どおりに復元されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure Database for MariaDB サーバーを作成する
 > * サーバーのファイアウォールの構成
 > * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)を使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > * データの復元

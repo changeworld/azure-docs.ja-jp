@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:LinkedIn Elevate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: チュートリアル:LinkedIn Elevate のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを LinkedIn Elevate に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adefb0c88e88a8bfb4b896c0788654e478ff4555
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963691"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77057415"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -59,7 +59,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Azure AD で LinkedIn Elevate への自動ユーザー アカウント プロビジョニングを構成するには
 
-まず最初に、LinkedIn アクセス トークンを取得します。 エンタープライズ管理者の場合は、アクセス トークンをセルフ プロビジョニングできます。 アカウント センターで、**[設定] &gt; [グローバル設定]** をクリックすると、**[SCIM セットアップ]** パネルが開きます。
+まず最初に、LinkedIn アクセス トークンを取得します。 エンタープライズ管理者の場合は、アクセス トークンをセルフ プロビジョニングできます。 アカウント センターで、 **[設定] &gt; [グローバル設定]** をクリックすると、 **[SCIM セットアップ]** パネルが開きます。
 
 > [!NOTE]
 > リンクからではなく、アカウント センターに直接アクセスしている場合は、次の手順を使用してアクセスできます。
@@ -86,11 +86,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. ページを離れる前に、クリップボードまたはコンピューターにアクセス トークンを保存します。
 
-7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
-8. シングル サインオンのために LinkedIn Elevate を既に構成している場合は、検索フィールドで LinkedIn Elevate のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Elevate** を検索します。 検索結果から LinkedIn Elevate を選択してアプリケーションの一覧に追加します。
+8. シングル サインオンのために LinkedIn Elevate を既に構成している場合は、検索フィールドで LinkedIn Elevate のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Elevate** を検索します。 検索結果から LinkedIn Elevate を選択してアプリケーションの一覧に追加します。
 
-9. LinkedIn Elevate のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+9. LinkedIn Elevate のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 10. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -100,27 +100,27 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     * **[テナント URL]** フィールドに、「`https://api.linkedin.com`」と入力します。
 
-    * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、**[テスト接続]** をクリックします。
+    * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、 **[テスト接続]** をクリックします。
 
     * ポータルの右上に成功通知が表示されます。
 
 12. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-13. **[Save]** をクリックします。
+13. **[保存]** をクリックします。
 
 14. **[属性マッピング]** セクションで、Azure AD から LinkedIn Elevate に同期するユーザーおよびグループ属性を確認します。 **[Matching (照合)]** プロパティとして選択されている属性は、更新処理で LinkedIn Elevate のユーザー アカウントおよびグループとの照合に使用されることに注意してください。 [保存] ボタンをクリックして変更をコミットします。
 
     ![LinkedIn Elevate のプロビジョニング](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15. LinkedIn Elevate に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+15. LinkedIn Elevate に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-16. **[Save]** をクリックします。
+16. **[保存]** をクリックします。
 
 これで、[ユーザーとグループ] セクションで LinkedIn Elevate に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって LinkedIn Elevate アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

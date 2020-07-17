@@ -2,20 +2,17 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: c579aed1acb555a82d5a04308ab4e68f4bfecb8c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305287"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77593276"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 独自のアプリケーションとサービスをビルドして Kubernetes クラスターにデプロイし、クラスターで可用性と接続性を管理できるようにします。 このチュートリアル (4/7) では、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 学習内容は次のとおりです。
 
@@ -26,7 +23,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 追加のチュートリアルでは、このアプリケーションがスケールアウトされて更新されます。
 
-このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳しくは、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」をご覧ください。
+このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -70,9 +67,9 @@ containers:
 
 ファイルを保存して閉じます。 `vi` では、`:wq` を使用します。
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 
-アプリケーションをデプロイするには、[kubectl apply][kubectl-apply] コマンドを使用します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。 次の例に示すように、サンプルのマニフェスト ファイルを指定します。
+ご利用になるアプリケーションをデプロイするには、[kubectl apply][kubectl-apply] コマンドを使用します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。 次の例に示すように、サンプルのマニフェスト ファイルを指定します。
 
 ```console
 kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -93,7 +90,7 @@ service "azure-vote-front" created
 
 アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。 このプロセスが完了するまでに数分かかることがあります。
 
-進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
+進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -102,24 +99,24 @@ kubectl get service azure-vote-front --watch
 最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
 
 ```
-azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
+azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 *EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
 ```
-azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
+azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 アプリケーションが動作していることを確認するには、Web ブラウザーを開いてサービスの外部 IP アドレスにアクセスします。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。 コンテナーのステータスを表示するには、`kubectl get pods` コマンドを使用します。 コンテナー イメージをプルできない場合は、[Kubernetes シークレットによる Container Registry へのアクセスの許可](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)に関するページを参照してください。
+アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。 コンテナーのステータスを表示するには、`kubectl get pods` コマンドを使用します。 コンテナー イメージがプルできない場合は、「[Azure Kubernetes Service から Azure Container Registry の認証を受ける](cluster-container-registry-integration.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、サンプルの Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、サンプルの Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Kubernetes マニフェスト ファイルを更新する
@@ -129,7 +126,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 次のチュートリアルに進んで、Kubernetes アプリケーションとその基になっている Kubernetes インフラストラクチャのスケーリング方法に関して学習してください。
 
 > [!div class="nextstepaction"]
-> [Kubernetes アプリケーションと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]
+> [Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

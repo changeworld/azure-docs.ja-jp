@@ -1,22 +1,22 @@
 ---
-title: カスタム イベントを Web エンドポイントに送信する - Event Grid、Azure portal
-description: Azure Event Grid と Azure portal を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
+title: クイック スタート:カスタム イベントを Web エンドポイントに送信する - Event Grid、Azure portal
+description: クイック スタート:Azure Event Grid と Azure portal を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 03/27/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 0861c47ef9f9649dfe223d8abeb51310a87ea4a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9edeecdfb0c0e7ef0ef6e9d1704d81b844ac8c53
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169914"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293753"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート: Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート:Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure portal を使用し、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
@@ -35,7 +35,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. 左側のナビゲーション メニューで **[すべてのサービス]** を選択します。"**Event Grid**" を検索し、**[Event Grid トピック]** を選択します。 
+2. 左側のナビゲーション メニューで **[すべてのサービス]** を選択します。"**Event Grid**" を検索し、 **[Event Grid トピック]** を選択します。 
 
     ![[Event Grid トピック] を選択する](./media/custom-event-quickstart-portal/select-event-grid-topics.png)
 3. **[Event Grid トピック]** ページで、ツール バーの **[+ 追加]** を選択します。 
@@ -44,12 +44,12 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 4. **[トピックの作成]** ページで、次の手順に従います。
     1. カスタム トピックの一意の**名前**を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 代わりに、必ず 3 - 50 文字以内で、a - z、A - Z、0 - 9、および "-" のみを含む独自の名前を作成します。
     2. Azure **サブスクリプション**を選択します。
-    3. 既存のリソース グループを選択するか、**[新規作成]** を選択し、**リソース グループ**の**名前**を入力します。
+    3. 既存のリソース グループを選択するか、 **[新規作成]** を選択し、**リソース グループ**の**名前**を入力します。
     4. イベント グリッド トピックの**場所**を選択します。
     5. **[イベント スキーマ]** フィールドでは、既定値の **[イベント グリッド スキーマ]** をそのまま使用します。 
 
        ![[トピックの作成] ページ](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. **作成** を選択します。 
+    6. **［作成］** を選択します 
 5. カスタム トピックが作成されると、成功の通知が表示されます。 **[リソース グループに移動]** を選択します。 
 
    ![成功の通知を確認](./media/custom-event-quickstart-portal/success-notification.png)
@@ -87,7 +87,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     5. Web hook エンドポイントに対して、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。 **[選択の確認]** を選択します。
 
        ![エンドポイントの URL の指定](./media/custom-event-quickstart-portal/provide-endpoint.png)
-    6. 再び **[イベント サブスクリプションの作成]** ページで、**[作成]** を選択します。
+    6. 再び **[イベント サブスクリプションの作成]** ページで、 **[作成]** を選択します。
 
 3. Web アプリをもう一度表示し、その Web アプリにサブスクリプションの検証イベントが送信されたことに注目します。 目のアイコンを選択してイベント データを展開します。 Event Grid は検証イベントを送信するので、エンドポイントはイベント データを受信することを確認できます。 Web アプリには、サブスクリプションを検証するコードが含まれています。
 
@@ -101,7 +101,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
 
 ### <a name="azure-cli"></a>Azure CLI
-1. Azure portal で、**[Cloud Shell]** を選択します。 Cloud Shell ウィンドウの左上隅の **[Bash]** を選択します。 
+1. Azure portal で、 **[Cloud Shell]** を選択します。 Cloud Shell ウィンドウの左上隅の **[Bash]** を選択します。 
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
 1. 次のコマンドを実行して、トピックの**エンドポイント**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ名**を更新してください。 
@@ -128,20 +128,22 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 ### <a name="azure-powershell"></a>Azure PowerShell
 2 番目の例では、PowerShell を使用して、同様の手順を実行します。
 
-1. Azure portal で、**[Cloud Shell]** を選択します。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。 
-2. 次のコマンドを実行して、トピックの**エンドポイント**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ名**を更新してください。 
+1. Azure portal で **[Cloud Shell]** を選択します (または `https://shell.azure.com/` にアクセスします)。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
+2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名**と**リソース グループ名**を更新してから、次のコマンドを実行します。
 
     ```powershell
-    $endpoint = (Get-AzEventGridTopic -ResourceGroupName <resource group name> -Name <topic name>).Endpoint
+    $resourceGroupName = <resource group name>
+    $topicName = <topic name>
     ```
-3. 次のコマンドを実行して、カスタム トピックの**キー**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ**名を更新してください。
+3. 次のコマンドを実行して、トピックの**エンドポイント**と**キー**を取得します。
 
     ```powershell
-    $keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic name>
+    $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
+    $keys = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroupName -Name $topicName
     ```
 4. イベントを準備します。 ステートメントをコピーし、Cloud Shell ウィンドウ内で実行します。 
 
-    ```azurepowershell
+    ```powershell
     $eventID = Get-Random 99999
 
     #Date format should be SortableDateTimePattern (ISO 8601)
@@ -189,19 +191,19 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 }
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、この記事で作成したリソースを削除してください。
 
-1. 左側のメニューの **[リソース グループ]** を選択します。 左側のメニューにこれが表示されていない場合は、左側のメニューの **[すべてのサービス]** を選択し、**[リソース グループ]** を選択します。 
+1. 左側のメニューの **[リソース グループ]** を選択します。 左側のメニューにこれが表示されていない場合は、左側のメニューの **[すべてのサービス]** を選択し、 **[リソース グループ]** を選択します。 
 2. リソース グループを選択して **[リソース グループ]** ページを開きます。 
 3. ツール バーの **[リソース グループの削除]** を選択します。 
-4. リソース グループの名前を入力して削除を確認し、**[削除]** を選択します。 
+4. リソース グループの名前を入力して削除を確認し、 **[削除]** を選択します。 
 
     ![リソース グループ](./media/custom-event-quickstart-portal/delete-resource-groups.png)
 
     画像に表示されている他のリソース グループは、Cloud Shell ウィンドウによって作成および使用されたものです。 後で Cloud Shell ウィンドウを使用しない場合はこれを削除してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 

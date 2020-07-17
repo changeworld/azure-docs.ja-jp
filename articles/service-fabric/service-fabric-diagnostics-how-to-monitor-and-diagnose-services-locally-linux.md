@@ -1,27 +1,16 @@
 ---
-title: Linux で Azure Service Fabric アプリをデバッグする | Microsoft Docs
+title: Linux で Azure Service Fabric アプリをデバッグする
 description: ローカルの Linux 開発用コンピューターで Service Fabric サービスを監視し、診断する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659748"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991332"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>ローカル Linux コンピューター開発のセットアップでサービスを監視して診断する
 
 
 > [!div class="op_single_selector"]
@@ -70,7 +59,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ## <a name="debugging-service-fabric-c-applications"></a>Service Fabric の C# アプリケーションのデバッグ
 
 
-Linux で CoreCLR アプリケーションをトレースするときには、複数のフレームワークを使用できます。 詳細については、「[GitHub: logging](http:/github.com/aspnet/logging)」(GitHub: ログ記録) を参照してください。  EventSource は、C# 開発者にとってわかりやすいので、この資料では、Linux での CoreCLR サンプルでのトレースに EventSource を使用します。
+Linux で CoreCLR アプリケーションをトレースするときには、複数のフレームワークを使用できます。 詳細については、[ロギング用の .NET 拡張機能](https://github.com/dotnet/extensions/tree/master/src/Logging)に関するページをご覧ください。  EventSource は、C# 開発者にとってわかりやすいので、この資料では、Linux での CoreCLR サンプルでのトレースに EventSource を使用します。
 
 最初の手順では、メモリ、出力ストリーム、またはコンソール ファイルにログを書き込むことができるように、System.Diagnostics.Tracing を含めます。  EventSource を使用したログ記録の場合は、project.json に、次のプロジェクトを追加します。
 
@@ -141,6 +130,6 @@ public static TextWriter Out = Console.Out;
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
-* [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Azure Diagnostics でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)

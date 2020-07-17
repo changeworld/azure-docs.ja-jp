@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor における Azure Key Vault ソリューション | Microsoft Docs
 description: Azure Monitor の Azure Key Vault ソリューションを使用して、Azure Key Vault のログを調査することができます。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/27/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.date: 03/27/2019
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629268"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81455463"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Key Vault Analytics ソリューション
 
@@ -57,7 +50,7 @@ Azure Key Vault ソリューションのインストールと構成は、次の�
 8. *[保存]* をクリックして Log Analytics ワークスペースの診断ログを有効にします。
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>PowerShell を使用して Key Vault 診断を有効にする
-次の PowerShell スクリプトは、`Set-AzDiagnosticSetting` を使用して Key Vault の診断ログを有効にする方法の例を示しています。
+次の PowerShell スクリプトは、`Set-AzDiagnosticSetting` を使用して Key Vault のリソース ログを有効にする方法の例を示しています。
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -74,12 +67,12 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 
 次の表は、Azure Key Vault のデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
 
-| Platform | 直接エージェント | Systems Center Operations Manager エージェント | Azure | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Systems Center Operations Manager エージェント | Azure | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |  |  |&#8226; |  |  | 着信時 |
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault の使用
-[ソリューションをインストール](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)すると、Azure Monitor の **[概要]** ページの **[Key Vault Analytics]** タイルをクリックすることで、Key Vault データが表示されます。 このページは、**Azure Monitor** メニューの **[Insights]** セクションの **[More]\(詳細\)** をクリックして開きます。 
+[ソリューションをインストール](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)すると、Azure Monitor の **[概要]** ページの **[Key Vault Analytics]** タイルをクリックすることで、Key Vault データが表示されます。 このページは、**Azure Monitor** メニューの **[Insights]** セクションの **[More]\(詳細\)** をクリックして開きます。 
 
 ![[Azure Key Vault] タイルの画像](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
@@ -101,30 +94,30 @@ Azure Blob Storage にログを記述する必要はありません。データ�
     どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
-Azure Key Vault ソリューションによって分析されるのは、Azure Diagnostics の [AuditEvent ログ](../../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
+Azure Key Vault ソリューションによって分析されるのは、Azure Diagnostics の [AuditEvent ログ](../../key-vault/general/logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--- |:--- |
-| Type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| CallerIpAddress |要求を行ったクライアントの IP アドレス |
-| Category | *AuditEvent* |
-| CorrelationId |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
-| DurationMs |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 この時間にはネットワーク待機時間が含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
-| httpStatusCode_d |要求によって返された HTTP 状態コード (例: *200*) |
-| id_s |要求の一意の ID |
-| identity_claim_appid_g | アプリケーション ID の GUID |
-| OperationName |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/key-vault-logging.md)」を参照) |
-| OperationVersion |クライアントによって要求された REST API バージョン (例: *2015-06-01*) |
-| requestUri_s |要求の URI |
-| Resource |Key Vault の名前 |
-| ResourceGroup |Key Vault のリソース グループ |
-| ResourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、Key Vault リソース ID となります。 |
-| ResourceProvider |*MICROSOFT.KEYVAULT* |
-| ResourceType | *VAULTS* |
-| ResultSignature |HTTP の状態 (例: *OK*) |
-| ResultType |REST API 要求の結果 (例: *Success*) |
-| SubscriptionId |Key Vault を含んでいるサブスクリプションの Azure サブスクリプション ID |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |要求を行ったクライアントの IP アドレス |
+| `Category` | *AuditEvent* |
+| `CorrelationId` |オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。 |
+| `DurationMs` |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 この時間にはネットワーク待機時間が含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
+| `httpStatusCode_d` |要求によって返された HTTP 状態コード (例: *200*) |
+| `id_s` |要求の一意の ID |
+| `identity_claim_appid_g` | アプリケーション ID の GUID |
+| `OperationName` |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/general/logging.md)」を参照) |
+| `OperationVersion` |クライアントによって要求された REST API バージョン (例: *2015-06-01*) |
+| `requestUri_s` |要求の URI |
+| `Resource` |Key Vault の名前 |
+| `ResourceGroup` |Key Vault のリソース グループ |
+| `ResourceId` |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、Key Vault リソース ID となります。 |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
+| `ResultSignature` |HTTP の状態 (例: *OK*) |
+| `ResultType` |REST API 要求の結果 (例: *Success*) |
+| `SubscriptionId` |Key Vault を含んでいるサブスクリプションの Azure サブスクリプション ID |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>古い Key Vault ソリューションからの移行
 2017 年 1 月に、Key Vault から Log Analytics へのログ送信のサポート方法が変更されました。 これらの変更には次の利点があります。
@@ -152,5 +145,5 @@ Azure Key Vault ソリューションによって分析されるのは、Azure D
 ## <a name="troubleshooting"></a>トラブルシューティング
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Monitor で[ログ クエリ](../../azure-monitor/log-query/log-query-overview.md)を使用して、詳細な Azure Key Vault データを表示します。

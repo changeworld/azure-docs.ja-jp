@@ -2,43 +2,34 @@
 title: Storm を使用して Event Hubs のイベントを処理する - Azure HDInsight
 description: Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Azure Event Hubs のデータを処理する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/27/2017
-ms.author: hrasheed
-ROBOTS: NOINDEX
-ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 01/14/2020
+ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690941"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75981637"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
 HDInsight 上の [Apache Storm](https://storm.apache.org/) から Azure Event Hubs を使用する方法について説明します。 このドキュメントでは、C# Storm トポロジを使用して Event Hubs からデータの読み取りや書き込みを行います。
 
 > [!NOTE]  
-> このプロジェクトの Java バージョンについては、「[HDInsight で Apache Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)」を参照してください。
+> このプロジェクトの Java バージョンについては、「[HDInsight で Apache Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)」を参照してください。
 
 ## <a name="scpnet"></a>SCP.NET
 
 このドキュメントの手順では SCP.NET を使用します。SCP.NET は、HDInsight の Storm で使用する C# トポロジとコンポーネントを作成しやすくする NuGet パッケージです。
-
-> [!IMPORTANT]  
-> このドキュメントの手順は Visual Studio を使う Windows 開発環境でのものですが、コンパイル済みのプロジェクトは、Linux を使用する HDInsight クラスターの Storm に送信できます。 SCP.NET トポロジをサポートする Linux ベースのクラスターは、2016 年 10 月 28 日より後に作成されたものだけです。
 
 HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 このドキュメントで使用される例は、HDInsight 3.6 で動作します。 HDInsight の独自の .NET ソリューションを作成する場合は、[Mono の互換性](https://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントで、非互換性がないか確認してください。
 
 ### <a name="cluster-versioning"></a>クラスターのバージョン管理
 
 プロジェクトで使用する Microsoft.SCP.Net.SDK NuGet パッケージは、HDInsight にインストールされた Storm のメジャー バージョンと一致する必要があります。 HDInsight バージョン 3.5 および 3.6 は Storm 1.x を使用するため、これらのクラスターでは SCP.NET バージョン 1.0.x.x を使用する必要があります。
-
-> [!IMPORTANT]  
-> このドキュメントの例では、HDInsight 3.5 クラスターまたは HDInsight 3.6 クラスターが想定されています。
->
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 C# トポロジは .NET 4.5 も対象にする必要があります。
 
@@ -51,10 +42,10 @@ Microsoft では、Storm トポロジからの Event Hubs との通信に使用�
 
 この例では、次のコンポーネントを使用します。
 
-* __EventHubSpout__:イベント ハブからデータを読み取ります。
-* __EventHubBolt__:イベント ハブにデータを書き込みます。
-* __EventHubSpoutConfig__:EventHubSpout の構成に使用します。
-* __EventHubBoltConfig__:EventHubBolt の構成に使用します。
+* __EventHubSpout__: イベント ハブからデータを読み取ります。
+* __EventHubBolt__: イベント ハブにデータを書き込みます。
+* __EventHubSpoutConfig__: EventHubSpout の構成に使用します。
+* __EventHubBoltConfig__: EventHubBolt の構成に使用します。
 
 ### <a name="example-spout-usage"></a>スパウトの使用例
 
@@ -103,14 +94,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
 
-このチュートリアルで作成したプロジェクトの完全なバージョンを [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からダウンロードできます。 ただし、このチュートリアルの手順に従って構成設定を指定する必要があります。
+この記事で作成したプロジェクトの完全なバージョンを [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からダウンロードできます。 ただし、この記事の手順に従って構成設定を指定する必要があります。
 
 ### <a name="prerequisites"></a>前提条件
 
-* [HDInsight クラスター バージョン 3.5 または 3.6 での Apache Storm](apache-storm-tutorial-get-started-linux.md)。
-
-    > [!WARNING]  
-    > このドキュメントで使用している例では、HDInsight バージョン 3.5 または 3.6 での Storm が必要です。 クラス名の変更があるため、これは旧バージョンの HDInsight では動作しません。 以前のクラスターで動作するこの例のバージョンについては、[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases) を参照してください。
+* HDInsight 上の Apache Storm クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[Storm]** を選択してください。
 
 * [Azure イベント ハブ](../../event-hubs/event-hubs-create.md)。
 
@@ -133,14 +121,14 @@ Event Hubs スパウトとボルト コンポーネントは [https://github.com
 
 Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用](../../event-hubs/event-hubs-create.md)に関するページの "イベント ハブの作成" のセクションにある情報を使用します。
 
-1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
+1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、 **[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを作成します。
 
    | Name | アクセス許可 |
    | --- | --- |
    | ライター |Send |
    | リーダー |リッスン |
 
-    ![[共有アクセス ポリシー] ウィンドウのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
+    ![[共有アクセス ポリシー] ウィンドウのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
 2. **reader** ポリシーと **writer** ポリシーを選択します。 両方のポリシーのプライマリ キー値をコピーして保存します (これらは後で使用します)。
 
@@ -150,9 +138,9 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 2. [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からソリューションをダウンロードします。
 
-3. **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
+3. **EventHubExample.sln** を開きます。 **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
 
-   | キー | 値 |
+   | Key | 値 |
    | --- | --- |
    | EventHubPolicyName |writer (*Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |writer ポリシーのキー。 |
@@ -168,7 +156,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 2. **EventHubReader** の **App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
 
-   | キー | 値 |
+   | Key | 値 |
    | --- | --- |
    | EventHubPolicyName |reader (*listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |reader ポリシーのキー。 |
@@ -180,21 +168,21 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
-1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、**[HDInsight の Storm に送信]** を選択します。
+1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
-    ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
+    ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
-2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
+2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
-    ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
+    ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
-3. トポロジが送信されると、**[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
+3. トポロジが送信されると、 **[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
 
-    ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
+    ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
-4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、**[HDInsight の Storm に送信]** を選択します。
+4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
-5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
+5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
 6. トポロジが送信されたら、 **[Storm トポロジ ビューアー]** でトポロジ一覧を最新情報に更新し、両方のトポロジがクラスターで実行中であることを確認します。
 
@@ -202,23 +190,25 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 8. ボルトのコンポーネントの概要を開くには、ダイアグラムの **[LogBolt]** コンポーネントをダブルクリックします。
 
-9. **[Executors]** セクションで、**[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
+9. **[Executors]** セクションで、 **[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
 
-        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
-        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
-        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```output
+    2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+    2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+    2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```
 
 ## <a name="stop-the-topologies"></a>トポロジの停止
 
-トポロジを停止するには、**[Storm トポロジ ビューアー]** で各トポロジを選択し、**[強制終了]** をクリックします。
+トポロジを停止するには、 **[Storm トポロジ ビューアー]** で各トポロジを選択し、 **[強制終了]** をクリックします。
 
-![Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
+![Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>クラスターを削除する
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、C# トポロジから Java Event Hubs スパウトおよびボルトを使用して、Azure Event Hubs のデータを操作する方法について説明しました。 C# トポロジの作成の詳細については、次の記事を参照してください。
 

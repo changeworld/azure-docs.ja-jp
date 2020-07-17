@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager プロファイルの作成 - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: Traffic Manager プロファイルの作成 - Azure CLI
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: チュートリアル
   items:
     - name: トラフィックをルーティングして待ち時間を削減する
@@ -57,7 +59,7 @@
       href: traffic-manager-how-it-works.md
     - name: FAQ
       href: traffic-manager-FAQs.md
-- name: 方法
+- name: 操作方法
   items:
     - name: Traffic Manager でのパフォーマンス ルーティングの構成
       href: traffic-manager-configure-performance-routing-method.md
@@ -81,12 +83,18 @@
       href: traffic-manager-load-balancing-azure.md
     - name: Traffic Manager のパフォーマンスの測定
       href: traffic-manager-performance-considerations.md
-    - name: Traffic Manager で診断ログを有効にする
+    - name: リソース ログの有効化
       href: traffic-manager-diagnostic-logs.md
     - name: Azure PowerShell を使用して Traffic Manager を管理する
       href: traffic-manager-powershell-arm.md
     - name: インターネット ドメインが Traffic Manager を指すように指定する
       href: traffic-manager-point-internet-domain.md
+    - name: サブネットのオーバーライド
+      items:
+        - name: サブネットのオーバーライドの構成 - Azure CLI
+          href: traffic-manager-subnet-override-cli.md
+        - name: サブネットのオーバーライドの構成 - PowerShell
+          href: traffic-manager-subnet-override-powershell.md
     - name: トラブルシューティング
       items:
         - name: Azure Traffic Manager での機能低下状態のトラブルシューティング
@@ -106,33 +114,25 @@
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
     - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html'
+      href: 'https://azure.github.io/azure-sdk-for-python/ref/Traffic-Manager.html'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: 関連項目
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: リソース
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/networking/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの制限
-      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

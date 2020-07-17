@@ -1,25 +1,18 @@
 ---
-title: Azure Resource Manager の体験版 | Microsoft Docs
+title: Azure Resource Manager 体験版 | Azure Marketplace
 description: Azure Resource Manager を使用して Markeplace 体験版を作成します
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: pbutlerm
-manager: Patrick .Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: dsindona
+ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541164"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275936"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -61,7 +54,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 体験版は完全自動モードでデプロイを実行するので、体験版テンプレートには以下で説明するいくつかの制限があります。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 ほとんどのテンプレートにはパラメーターのセットがあります。 パラメーターでは、リソース名、リソースのサイズ (たとえば、ストレージ アカウントの種類や仮想マシンのサイズ)、ユーザー名とパスワード、DNS 名などを定義します。 Azure portal を使用してソリューションをデプロイするときは、手動でこれらすべてのパラメーターを設定し、使用可能な DNS 名やストレージ アカウント名などを選択できます。
 
@@ -88,14 +81,14 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 ### <a name="accepted-parameter-metadata-types"></a>使用できるパラメーター メタデータの種類
 
-| メタデータの種類   | パラメーターのタイプ  | 説明     | 値の例    |
+| メタデータの種類   | パラメーターの型  | 説明     | 値の例    |
 |---|---|---|---|
 | **baseuri**     | string          | デプロイ パッケージのベース URI| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
 | **username**    | string          | 新しいランダムなユーザー名。| admin68876      |
 | **password**    | secure string    | 新しいランダムなパスワード | Lp!ACS\^2kh     |
 | **session id**   | string          | 一意の体験版 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>username
+#### <a name="baseuri"></a>baseuri
 
 体験版はこのパラメーターをデプロイ パッケージの**ベース URI** で初期化するので、このパラメーターを使用して、パッケージに含まれるすべてのファイルの URI を作成できます。
 
@@ -213,7 +206,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 たとえば、ほとんどのリソース名は数字で始めることができませんが、一意文字列関数は数字で始まる文字列を返す可能性があります。 そのため、一意の文字列出力をそのまま使用すると、デプロイは失敗します。 
 
-リソースの名前付け規則と制限に関する追加情報については、[こちらの記事](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions)を参照してください。
+リソースの名前付け規則と制限に関する追加情報については、[こちらの記事](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)を参照してください。
 
 ### <a name="deployment-location"></a>デプロイの場所
 
@@ -294,7 +287,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 考慮する必要があるもう 1 つの点は、サブスクリプションとサービスの制限です。 たとえば、最大 10 個の 4 コア仮想マシンをデプロイする場合、ラボに使用するサブスクリプションで 40 コアの使用が許可されていることを確認する必要があります。
 
-Azure サブスクリプションとサービスの制限について詳しくは、[こちらの記事](https://docs.microsoft.com/azure/azure-subscription-service-limits)をご覧ください。 複数の体験版が同時に使用される可能性があるので、コアの数に同時実行できる体験版の合計数を掛けた値を、サブスクリプションが処理できることを確認します。
+Azure サブスクリプションとサービスの制限について詳しくは、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)をご覧ください。 複数の体験版が同時に使用される可能性があるので、コアの数に同時実行できる体験版の合計数を掛けた値を、サブスクリプションが処理できることを確認します。
 
 ### <a name="what-to-upload"></a>アップロードするもの
 
@@ -323,7 +316,7 @@ Azure サブスクリプションとサービスの制限について詳しく�
 
 ![ユーザー インターフェイスでの体験版の有効化](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。 **[はい]** を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。**[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
+最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。 **[はい]** を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。 **[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
 
 注:ユーザーによってアクティブに使用されている体験版が存在する場合は、そのセッションの期限が切れるまで、それらの体験版は引き続き実行されます。
 
@@ -368,7 +361,7 @@ Azure サブスクリプションとサービスの制限について詳しく�
 
 **[Test Drive Resource Manager template]\(体験版 Resource Manager テンプレート\) -** "*必須*" Resource Manager テンプレートをここにアップロードします。 これは、前のセクションで作成したファイルです。 メイン テンプレート ファイルに "main-template.json" という名前を付け、必要な主要変数の出力パラメーターが Resource Manager テンプレートに含まれることを確認します。 (.zip ファイルにする必要があります)
 
-**[Access Information]\(アクセス情報\) -** "*必須*" 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}**)、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
+**[Access Information]\(アクセス情報\) -** "*必須*" 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}** )、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
 
 ### <a name="test-drive-deployment-subscription-details"></a>体験版デプロイ サブスクリプションの詳細
 
@@ -388,7 +381,7 @@ Azure サブスクリプションとサービスの制限について詳しく�
 
 ![Azure Active Directory テナントの一覧](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Azure AD テナントの組織、ドメイン、国を定義します](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Azure AD テナントの組織、ドメイン、国や地域を定義します](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![選択を確認する](./media/azure-resource-manager-test-drive/subdetails6.png)
 
@@ -415,17 +408,17 @@ Azure サブスクリプションとサービスの制限について詳しく�
 1. **共同作成者**としてロールを設定します。
 1. Azure AD アプリケーションの名前を入力し、ロールを割り当てるアプリケーションを選択します。
     ![アクセス許可を追加する](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 **[Azure AD App Key]\(Azure AD アプリ キー\) -** "*必須*" 最後のフィールドでは、認証キーを生成します。 キーの下で、キーの説明を追加し、期間を無期限に設定して、[保存] を選択します。 キーの有効期限が切れないようにすることが**重要**です。切れると、運用環境の体験版が中断されます。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
 
 ![Azure AD アプリケーションのキーを表示する](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 体験版のすべてのフィールドを設定したので、オファーを**再発行**します。 体験版が認定に合格したら、オファーの**プレビュー**で顧客エクスペリエンスを広範にテストする必要があります。 UI で体験版を開始し、Azure portal 内で Azure サブスクリプションを開いて、体験版が完全に正しくデプロイされていることを確認します。
 
-![Azure ポータル](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Azure portal](./media/azure-resource-manager-test-drive/subdetails9.png)
 
 重要なこととして、体験版は顧客用にプロビジョニングされており、顧客がその使用を終了すると体験版サービスによってリソース グループが自動的にクリーンアップされるので、体験版のインスタンスを削除しないでください。
 

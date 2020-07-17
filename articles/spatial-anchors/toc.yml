@@ -4,30 +4,39 @@
   items:
     - name: Spatial Anchors について
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
+  expanded: true
   items:
     - name: Unity アプリの作成
-      href: unity-overview.yml
       expanded: true
       items:
+        - name: Unity の概要
+          href: unity-overview.md
         - name: HoloLens
           href: quickstarts/get-started-unity-hololens.md
         - name: Android
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: iOS アプリの作成
-      href: quickstarts/get-started-ios.md
-    - name: Android アプリの作成
-      href: quickstarts/get-started-android.md
     - name: HoloLens アプリの作成
       href: quickstarts/get-started-hololens.md
+    - name: Android アプリの作成
+      href: quickstarts/get-started-android.md
+    - name: iOS アプリの作成
+      href: quickstarts/get-started-ios.md
+    - name: Xamarin アプリの作成
+      items:
+        - name: Android
+          href: quickstarts/get-started-xamarin-android.md
+        - name: iOS
+          href: quickstarts/get-started-xamarin-ios.md
 - name: チュートリアル
   items:
-    - name: Unity での共有
+    - name: セッションやデバイス間での共有
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: Azure Cosmos DB を使用した Unity での共有
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: Azure Cosmos DB を使用した永続的な共有
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: 新しい Unity HoloLens アプリの開始
       href: tutorials/tutorial-new-unity-hololens-app.md
     - name: 新しい Android アプリの開始
@@ -49,13 +58,27 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: C++/WinRT の場合
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: 粗い再局在化を使用して近くのアンカーを検出する
+      items:
+        - name: 'C#/Unity の場合'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: Objective-C の場合
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: Swift の場合
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: Java の場合
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: C++/NDK の場合
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: C++/WinRT の場合
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: サンプル
   items:
     - name: Azure Spatial Anchors のサンプル (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: 概念
   items:
-    - name: Authentication
+    - name: 認証
       href: concepts/authentication.md
     - name: アンカーのリレーションシップ
       href: concepts/anchor-relationships-way-finding.md
@@ -63,7 +86,9 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: ログ記録と診断
       href: concepts/logging-diagnostics.md
-- name: 参照
+    - name: 粗い再局在化
+      href: concepts/coarse-reloc.md
+- name: References
   items:
     - name: Unity 用 SDK
       href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
@@ -77,7 +102,11 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: リソース
   items:
-    - name: FAQ
+    - name: リリース ノート
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
+    - name: Azure Mixed Reality Resource Management REST API
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+    - name: よく寄せられる質問
       href: spatial-anchor-faq.md
     - name: 製品フィードバックの提供
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'

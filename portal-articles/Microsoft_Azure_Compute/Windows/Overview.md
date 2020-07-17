@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: 15a89a03e07deb02a812e54c01e857f972681931
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "64710783"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
@@ -27,7 +27,7 @@ Windows Server 2016 を実行している仮想マシン内で IIS Web サーバ
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure CLI](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
+## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
 Azure で Windows VM のデプロイ、管理、監視を行う方法について説明します。
 

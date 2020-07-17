@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
+title: 自動バキュームを最適化する - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する方法について説明します
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fb1ab9525974601a8b8c22ccc44e2cf37baf21a1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069113"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74770188"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
@@ -44,7 +44,7 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 
 ここでは、この問いに基づいて更新することができる自動バキューム構成パラメーターの一部と、いくつかのガイダンスを示します。
 
-パラメーター|説明|Default value
+パラメーター|説明|既定値
 ---|---|---
 autovacuum_vacuum_threshold|任意の 1 つのテーブルでバキューム操作をトリガーするために必要な、更新または削除されたタプルの最小数を指定します。 既定値は 50 タプルです。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|50
 autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|5%
@@ -101,7 +101,7 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 
 自動バキュームは、テーブルごとの同期プロセスです。 テーブルにある使用不能タプルの割合が増えるにつれて、自動バキュームを行う "コスト" が高くなります。 更新と削除の頻度が高いテーブルは、複数のテーブルに分割できます。 テーブルを分割することで、自動バキュームを並列化し、1 つのテーブルで自動バキュームを完了するための "コスト" を削減できます。 並列の自動バキューム worker の数を増やし、worker が豊富にスケジュールされるようにすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 自動バキュームの使用方法と調整方法の詳細については、以下の PostgreSQL ドキュメントを参照してください。
 
  - [第 18 章、サーバー構成](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)

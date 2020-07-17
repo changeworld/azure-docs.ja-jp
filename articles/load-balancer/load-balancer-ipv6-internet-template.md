@@ -1,10 +1,10 @@
 ---
 title: IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
+titleSuffix: Azure Load Balancer
+description: Azure テンプレートを使用して、Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.author: allensu
+ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039794"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76045449"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -29,6 +29,8 @@ ms.locfileid: "54039794"
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
 
+>[!NOTE] 
+>この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください  
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -70,7 +72,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. [パラメーターの編集] をクリックします。 [パラメーター] ブレードで、[テンプレート パラメーター] セクションのガイダンスに従って値を指定し、[保存] をクリックして [パラメーター] ブレードを閉じます。 [カスタム デプロイ] ブレードで、サブスクリプションを選択するか、既存のリソース グループを選択または新しいリソース グループを作成します。 リソース グループを作成する場合は、リソース グループの場所を選択します。 次に、**[法律条項]** をクリックし、法律条項で **[購入]** をクリックします。 Azure でリソースのデプロイを開始します。 すべてのリソースをデプロイするのに数分かかります。
+6. [パラメーターの編集] をクリックします。 [パラメーター] ブレードで、[テンプレート パラメーター] セクションのガイダンスに従って値を指定し、[保存] をクリックして [パラメーター] ブレードを閉じます。 [カスタム デプロイ] ブレードで、サブスクリプションを選択するか、既存のリソース グループを選択または新しいリソース グループを作成します。 リソース グループを作成する場合は、リソース グループの場所を選択します。 次に、 **[法律条項]** をクリックし、法律条項で **[購入]** をクリックします。 Azure でリソースのデプロイを開始します。 すべてのリソースをデプロイするのに数分かかります。
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
@@ -134,6 +136,6 @@ Azure Resource Manager のテンプレートには複数の変数とパラメー
 
 テンプレート内の残りの変数には、Azure がリソースを作成するときに割り当てられている派生値が含まれます。 これらの変数は変更しないでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テンプレート内のロード バランサーの JSON の構文とプロパティについては、「[Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)」を参照してください。

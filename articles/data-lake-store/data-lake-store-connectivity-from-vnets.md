@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878062"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60878870"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Azure VNET 内の VM から Azure Data Lake Storage Gen1 へのアクセス
 Azure Data Lake Storage Gen1 は、パブリック インターネット IP アドレスで動作する PaaS サービスです。 パブリック インターネットに接続できるサーバーは、通常、Azure Data Lake Storage Gen1 エンドポイントにも接続できます。 既定では、Azure VNET 内のすべての VM はインターネットにアクセスできるため、Azure Data Lake Storage Gen1 にアクセスできます。 ただし、VNET 内の VM をインターネットにアクセスできないように構成することもできます。 そのような VM では、Azure Data Lake Storage Gen1 へのアクセスも制限されます。 Azure VNET 内の VM のパブリック インターネット アクセスをブロックするには、次のいずれかの方法を使用します。
@@ -50,7 +50,7 @@ NSG ルールを使用してインターネットへのアクセスがブロッ�
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>ExpressRoute を使用して制限されている VM からの接続を有効にする
 ExpressRoute 回線を構成すると、オンプレミスのサーバーはパブリック ピアリングを介して Data Lake Storage Gen1 にアクセスできます。 パブリック ピアリングのための ExpressRoute の構成の詳細については、「[ExpressRoute FAQs (ExpressRoute に関する FAQ)](../expressroute/expressroute-faqs.md)」を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護](data-lake-store-security-overview.md)
 

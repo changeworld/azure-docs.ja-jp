@@ -1,11 +1,10 @@
 ---
-title: Azure Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行 | Microsoft Docs
+title: オープン ソース ツールを使用してネットワーク不正侵入検出を実行する
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure Network Watcher とオープン ソース ツールを使用してネットワーク不正侵入検出を実行する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: e1b0e49dcc69a7458c22b859df1a4721342f0728
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730147"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474915"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
 パケット キャプチャは、ネットワークの侵入検出システム (IDS) を実装し、ネットワーク セキュリティ監視 (NSM) を実行するうえで重要なコンポーネントです。 パケット キャプチャを処理し、ネットワークへの侵入と悪意のあるアクティビティの可能性を示すシグネチャを検出するオープン ソース IDS ツールは複数公開されています。 Network Watcher で取得したパケット キャプチャを使用して、害のある侵入または脆弱性に関してネットワークを分析できます。
 
-そのようなオープン ソース ツールの 1 つに Suricata があります。これは、ルール セットを使用してネットワーク トラフィックを監視し、疑わしいイベントが発生したときにアラートをトリガーする IDS エンジンです。 Suricata にはマルチスレッド エンジンがあるため、高速かつ高効率なネットワーク トラフィック分析を実行することができます。 Suricata とその機能の詳細については、Suricata の Web サイト (https://suricata-ids.org/) を参照してください。
+そのようなオープン ソース ツールの 1 つに Suricata があります。これは、ルール セットを使用してネットワーク トラフィックを監視し、疑わしいイベントが発生したときにアラートをトリガーする IDS エンジンです。 Suricata にはマルチスレッド エンジンがあるため、高速かつ高効率なネットワーク トラフィック分析を実行することができます。 Suricata とその機能の詳細については、Suricata の Web サイト (https://suricata-ids.org/ ) を参照してください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -39,7 +38,7 @@ ms.locfileid: "64730147"
 
 ### <a name="install-suricata"></a>Suricata のインストール
 
-その他すべてのインストール方法については、 https://suricata.readthedocs.io/en/latest/install.html を参照してください。
+その他すべてのインストール方法については、 https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation を参照してください。
 
 1. VM のコマンドライン ターミナルで、次のコマンドを実行します。
 
@@ -126,7 +125,7 @@ Elasticsearch のインストール方法の詳細については、[インス�
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. 次に、eve.json ファイルの出力を読み取るように Logstash を構成する必要があります。 次のコマンドで logstash.conf ファイルを作成します。
+1. 次に、eve.json ファイルの出力を読み取るように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
@@ -241,11 +240,11 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 ### <a name="create-a-kibana-dashboard"></a>Kibana ダッシュボードの作成
 
-この記事では、アラートの傾向と詳細を確認するためのサンプル ダッシュボードが提供されています。
+この記事では、アラートのトレンドと詳細を確認するためのサンプル ダッシュボードが提供されています。
 
-1. [ダッシュボード ファイル](https://aka.ms/networkwatchersuricatadashboard)、[視覚化ファイル](https://aka.ms/networkwatchersuricatavisualization)、[保存された検索ファイル](https://aka.ms/networkwatchersuricatasavedsearch)をダウンロードします。
+1. [ダッシュボード ファイル](https://aka.ms/networkwatchersuricatadashboard)、[視覚化ファイル](https://aka.ms/networkwatchersuricatavisualization)、[保存された検索ファイル](https://aka.ms/networkwatchersuricatasavedsearch)をそれぞれダウンロードします。
 
-1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
+1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
 関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
 
@@ -255,7 +254,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 サンプル ダッシュボードでは、Suricata アラート ログを複数の方法で視覚化できます。
 
-1. GeoIP によるアラート – (IP で特定された) 地理的な場所に基づいて、発信元の国別でアラートの分布を示すマップ。
+1. GeoIP によるアラート – (IP で特定された) 地理的な場所に基づいて、発信元の国または地域別でアラートの分布を示すマップ
 
     ![GeoIP][3]
 
@@ -281,7 +280,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 Network Watcher で取得したパケット キャプチャと、Suricata などのオープン ソース IDS ツールを組み合わせることで、広範な脅威を対象としたネットワーク不正侵入検出を実行できます。 これらのダッシュボードでは、ネットワーク内の傾向と異常を迅速に特定できます。また、データを詳しく調査して、悪意のあるユーザー エージェントや脆弱なポートなど、アラートの根本原因を突き止めることができます。 抽出したこのデータを活用すると、害のある侵入の試行からネットワークを保護する方法について、情報に基づいた意思決定を行えるほか、ネットワークへの今後の侵入を防ぐルールを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アラート ベースでパケット キャプチャをトリガーする方法については、「[パケット キャプチャを使用して Azure Functions によるプロアクティブなネットワーク監視を実行する](network-watcher-alert-triggered-packet-capture.md)」を参照してください。
 

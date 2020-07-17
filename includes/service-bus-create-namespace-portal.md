@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111109"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75927958"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
 Azure の Service Bus メッセージング エンティティを使用するには、Azure 全体で一意となる名前を備えた名前空間を最初に作成しておく必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
@@ -21,7 +21,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
 名前空間を作成するには:
 
 1. [Azure ポータル](https://portal.azure.com)
-2. ポータルの左側のナビゲーション ウィンドウで、**[+ リソースの作成]**、**[統合]**、**[Service Bus]** の順に選択します。
+2. ポータルの左側のナビゲーション ウィンドウで、 **[+ リソースの作成]** 、 **[統合]** 、 **[Service Bus]** の順に選択します。
 
     ![[リソースの作成] -> [統合] -> [Service Bus]](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. **[名前空間の作成]** ダイアログで、次の手順を実行します。 
@@ -50,14 +50,14 @@ Azure の Service Bus メッセージング エンティティを使用するに
 新しい名前空間を作成すると、Shared Access Signature (SAS) の初期規則が自動的に生成され、あらゆる角度から名前空間を完全に制御することを可能にするプライマリ キーとセカンダリ キーのペアが関連付けられます。 通常の送信者と受信者を対象に、より権限を制限した規則を作成する方法については、「[Service Bus の認証と承認](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md)」をご覧ください。 名前空間のプライマリ キーとセカンダリ キーをコピーするには、次の手順を実行します。 
 
 1. **[すべてのリソース]** で、新しく作成した名前空間の名前をクリックします。
-2. 名前空間ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
-3. **[共有アクセス ポリシー]** 画面で、**[RootManageSharedAccessKey]** をクリックします。
+2. 名前空間ウィンドウで、 **[共有アクセス ポリシー]** をクリックします。
+3. **[共有アクセス ポリシー]** 画面で、 **[RootManageSharedAccessKey]** をクリックします。
    
     ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
-4. **[ポリシー:RootManageSharedAccessKey]** ウィンドウで、**[プライマリ接続文字列]** の横にあるコピー ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
+4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、 **[プライマリ接続文字列]** の横にある [コピー] ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
    
     ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
-5. 前の手順を繰り返し、**[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。
+5. 前の手順を繰り返し、 **[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。
 
 <!--Image references-->
 

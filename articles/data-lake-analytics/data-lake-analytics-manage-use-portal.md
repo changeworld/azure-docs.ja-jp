@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724062"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231539"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,16 +27,16 @@ ms.locfileid: "52724062"
 
 ## <a name="manage-data-lake-analytics-accounts"></a>Data Lake Analytics アカウントの管理
 
-### <a name="create-an-account"></a>アカウントの作成
+### <a name="create-an-account"></a>アカウントを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[リソースの作成]** > **[インテリジェンス + 分析]** > **Data Lake Analytics** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. **[リソースの作成]**  >  **[インテリジェンス + 分析]**  > **Data Lake Analytics** をクリックします。
 3. 次の項目の値を選択します。 
-   1. **[名前]**:Data Lake Analytics アカウントの名前。
+   1. **Name**:Data Lake Analytics アカウントの名前。
    2. **サブスクリプション**:アカウントに使用する Azure サブスクリプション。
-   3. **[リソース グループ]**:アカウントの作成先の Azure リソース グループ。 
-   4. **[場所]**:Data Lake Analytics アカウントの Azure データセンター。 
-   5. **[Data Lake Store]**:Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
+   3. **リソース グループ**:アカウントの作成先の Azure リソース グループ。 
+   4. **[場所]** :Data Lake Analytics アカウントの Azure データセンター。 
+   5. **[Data Lake Store]** :Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
 4. **Create** をクリックしてください。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントの削除
@@ -73,7 +73,7 @@ Data Lake Analytics では、次のデータ ソースがサポートされて�
 
 Data Lake Analytics を使用すると、ネットワーク レベルで Data Lake Analytics アカウントへのアクセスをさらにロックダウンできます。 ファイアウォールを有効にして、IP アドレスを指定するか、信頼されているクライアントの IP アドレス範囲を定義することができます。 こうした方法を有効にすると、定義された範囲内の IP アドレスを使用しているクライアントだけがストアに接続できます。
 
-Azure Data Factory や VM など、他の Azure サービスが Data Lake Analytics アカウントに接続する場合は、**[Allow Azure Services]\(Azure サービスを許可する\)** が **[オン]** になっていることを確認してください。 
+Azure Data Factory や VM など、他の Azure サービスが Data Lake Analytics アカウントに接続する場合は、 **[Allow Azure Services]\(Azure サービスを許可する\)** が **[オン]** になっていることを確認してください。 
 
 ### <a name="set-up-a-firewall-rule"></a>ファイアウォール規則の設定
 
@@ -85,13 +85,13 @@ Azure Data Factory や VM など、他の Azure サービスが Data Lake Analyt
 **ユーザー追加ウィザード**を使用すると、新しい Data Lake ユーザーを簡単にプロビジョニングできます。
 
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
-2. 左側の **[作業の開始]** で、**[ユーザー追加ウィザード]** をクリックします。
-3. ユーザーを選択し、**[選択]** をクリックします。
-4. ロールを選択し、**[選択]** をクリックします。 Azure Data Lake を使用する新しい開発者を設定するには、**Data Lake Analytics の開発者**ロールを選択します。
-5. U-SQL データベースのアクセス制御リスト (ACL) を選択します。 正しく選択できたら、**[選択]** をクリックします。
+2. 左側の **[作業の開始]** で、 **[ユーザー追加ウィザード]** をクリックします。
+3. ユーザーを選択し、 **[選択]** をクリックします。
+4. ロールを選択し、 **[選択]** をクリックします。 Azure Data Lake を使用する新しい開発者を設定するには、**Data Lake Analytics の開発者**ロールを選択します。
+5. U-SQL データベースのアクセス制御リスト (ACL) を選択します。 正しく選択できたら、 **[選択]** をクリックします。
 6. ファイルの ACL を選択します。 既定のストアの場合は、ルート フォルダー "/" と /system フォルダーの ACL を変更しないでください。 **[選択]** をクリックします。
-7. 選択したすべての変更を確認し、**[実行]** をクリックします。
-8. ウィザードが終了したら、**[完了]** をクリックします。
+7. 選択したすべての変更を確認し、 **[実行]** をクリックします。
+8. ウィザードが終了したら、 **[完了]** をクリックします。
 
 ## <a name="manage-role-based-access-control"></a>ロールベースのアクセス制御の管理
 
@@ -111,10 +111,10 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントへのユーザーまたはセキュリティ グループの追加
 
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
-2. **[アクセス制御 (IAM)]** > **[ロールの割り当ての追加]** の順にクリックします。
+2. **[アクセス制御 (IAM)]**  >  **[ロールの割り当ての追加]** の順にクリックします。
 3. ロールを選択します。
 4. ユーザーを追加します。
-5. Click **OK**.
+5. **[OK]** をクリックします。
 
 >[!NOTE]
 >ユーザーまたはセキュリティ グループがジョブを送信する必要がある場合は、ストア アカウントに対するアクセス許可も必要です。 詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。
@@ -131,9 +131,9 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 
 2. **[新しいジョブ]** をクリックします。 各ジョブで、以下の項目を構成します。
 
-    1. **[ジョブ名]**:ジョブの名前。
-    2. **[優先度]**:数値が小さいほど優先度が高くなります。 2 つのジョブがキューに登録されている場合は、優先度の値が小さい方のジョブが先に実行されます。
-    3. **[並行処理]**:このジョブのために予約する計算プロセスの最大数。
+    1. **[ジョブ名]** :ジョブの名前。
+    2. **[優先度]** :数値が小さいほど優先度が高くなります。 2 つのジョブがキューに登録されている場合は、優先度の値が小さい方のジョブが先に実行されます。
+    3. **[並行処理]** :このジョブのために予約する計算プロセスの最大数。
 
 3. **[ジョブの送信]** をクリックします。
 
@@ -141,7 +141,7 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[すべてのジョブの表示]** をクリックします。 アカウントのすべてのアクティブなジョブと最近終了したジョブの一覧が表示されます。
-3. 必要に応じて **[フィルター]** をクリックして、**[時間の範囲]**、**[ジョブ名]**、および **[作成者]** の値でジョブを見つけやすくします。 
+3. 必要に応じて **[フィルター]** をクリックして、 **[時間の範囲]** 、 **[ジョブ名]** 、および **[作成者]** の値でジョブを見つけやすくします。 
 
 ### <a name="monitoring-pipeline-jobs"></a>パイプライン ジョブの監視
 パイプラインの一部であるジョブは、特定のシナリオを実現するために、通常は順次実行されます。 たとえば、Customer Insights 用に利用状況をクリーンアップ、抽出、変換、集約するパイプラインがあります。 パイプライン ジョブは、ジョブの送信時に "Pipeline" プロパティを使用して識別されます。 ADF V2 を使用してスケジュールされたジョブには、このプロパティが自動的に設定されます。 
@@ -161,8 +161,8 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 2. **[ジョブ洞察]** をクリックします。 既定では [すべてのジョブ] タブに移動し、実行中のジョブ、キューに登録済みのジョブ、終了したジョブの一覧が表示されます。
 3. **[定期的なジョブ]** タブをクリックします。定期的なジョブの一覧が、それぞれのジョブの集計された統計と共に表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure PowerShell を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-powershell.md)
-* [ポリシーを使用して Azure Data Lake Analytics を管理する](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-policies)
+* [ポリシーを使用して Azure Data Lake Analytics を管理する](data-lake-analytics-account-policies.md)

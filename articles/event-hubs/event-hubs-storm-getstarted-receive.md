@@ -1,6 +1,6 @@
 ---
-title: Apache Storm を使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
-description: この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。
+title: クイック スタート:Apache Storm を使用してイベントを受信する - Azure Event Hubs
+description: クイック スタート:この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,29 +11,29 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679263"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73717613"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>クイック スタート:Apache Storm を使用して Azure Event Hubs からイベントを受信する
 
 [Apache Storm](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。 このセクションでは、Azure Event Hubs Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。 Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。 Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
-Event Hub の受信パターンの詳細については、「[Event Hub の概要][Event Hubs overview]」を参照してください。
+Event Hub の受信パターンの詳細については、「 [Event Hub の概要][Event Hubs overview]」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 クイックスタートを始める前に、**Event Hubs 名前空間とイベント ハブを作成します**。 [Azure portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 
 
 ## <a name="create-project-and-add-code"></a>プロジェクトの作成とコードの追加
 
-このチュートリアルでは、[HDInsight Storm][HDInsight Storm] インストールを使用します。これは、Event Hubs スパウトと共に既に利用できます。
+このチュートリアルでは、[HDInsight Storm][HDInsight Storm] インストールを使用します。これは、既に使用可能な Event Hubs スパウトに付属しています。
 
 1. [HDInsight Storm の使用](../hdinsight/storm/apache-storm-overview.md) の手順に従って、新しい HDInsight クラスターを作成し、リモート デスクトップを介して接続します。
 2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` ファイルをローカル開発環境にコピーします。 これには events-storm-spout が含まれています。
@@ -42,12 +42,12 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
+4. Eclipse で、新しい Maven プロジェクトを作成します ( **[ファイル]** 、 **[新規作成]** 、 **[プロジェクト]** の順にクリックします)。
    
     ![[ファイル] > [新規作成] > [プロジェクト]][12]
-5. **[既定のワークスペースの場所を使用する]** を選択し、**[次へ]** をクリックします。
-6. **maven-archetype-quickstart** アーキタイプを選択し、**[次へ]** をクリックします。
-7. **GroupID** と **ArtifactID** を挿入し、**[完了]** をクリックします。
+5. **[既定のワークスペースの場所を使用する]** を選択し、 **[次へ]** をクリックします。
+6. **maven-archetype-quickstart** アーキタイプを選択し、 **[次へ]** をクリックします。
+7. **GroupID** と **ArtifactID** を挿入し、 **[完了]** をクリックします。
 8. **pom.xml** で、`<dependency>` ノードに次の依存関係を追加します。
 
     ```xml  
@@ -242,7 +242,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
     このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。 この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要][Event Hubs overview]
@@ -252,7 +252,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[イベント ハブでの HDInsight Storm の例]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[イベント ハブでの HDInsight Storm の例]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

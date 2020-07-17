@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric の環境変数 | Microsoft Docs
-description: Service Fabric の環境変数に関するリファレンス ドキュメントです
-documentationcenter: .net
+title: Azure Service Fabric の環境変数
+description: Azure Service Fabric の環境変数について説明します。 変数とその使用法の完全な一覧のリファレンスが含まれています。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268006"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645686"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric の環境変数
 

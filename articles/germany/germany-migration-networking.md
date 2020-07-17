@@ -10,10 +10,10 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 2d6814653967fa76ad22bcefcc94df42d60d67b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165954"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>ネットワーク リソースをグローバル Azure に移行する
@@ -166,7 +166,7 @@ az network dns record-set ns list -g <resource group> -z --output json
 
 ## <a name="traffic-manager"></a>Traffic Manager
 
-Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません  (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
+Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
 
 ソース環境で引き続き実行されている Traffic Manager を使用して、ターゲット環境で追加のエンドポイントを定義できます。 Traffic Manager が新しい環境で実行されている場合も引き続き、ソース環境でまだ移行されていないエンドポイントを定義できます。 このシナリオは、[ブルーグリーン シナリオ](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/)と呼ばれます。 このシナリオには、次の手順が必要です。
 

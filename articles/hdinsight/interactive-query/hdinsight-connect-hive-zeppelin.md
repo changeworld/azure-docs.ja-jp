@@ -1,20 +1,19 @@
 ---
-title: クイック スタート:Azure HDInsight で Apache Hive クエリを実行する - Apache Zeppelin
-description: Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
-keywords: hdinsight,hadoop,hive,対話型クエリ,LLAP
+title: クイック スタート:Azure HDInsight での Apache Zeppelin を使用した Apache Hive
+description: このクイックスタートでは、Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: f4b8495646e83005dc48e8a729a0e5987b832721
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.custom: hdinsightactive
+ms.date: 12/03/2019
+ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801036"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79367926"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>クイック スタート:Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
 
@@ -24,7 +23,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)に関するセクションを参照してください。  クラスターの種類では、**[インタラクティブ クエリ]** を必ず選択してください。
+HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するセクションを参照してください。  クラスターの種類では、 **[インタラクティブ クエリ]** を必ず選択してください。
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
 
@@ -71,24 +70,53 @@ HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作�
 
     従来の Hive と比較すると、クエリ結果が返されるまでの時間が短くなりました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="additional-examples"></a>追加の例
+
+1. テーブルを作成します。 Zeppelin Notebook で次のコードを実行します。
+
+    ```hql
+    %jdbc(hive)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE;
+    ```
+
+1. 新しいテーブルにデータを読み込みます。 Zeppelin Notebook で次のコードを実行します。
+
+    ```hql
+    %jdbc(hive)
+    LOAD DATA
+    INPATH 'wasbs:///example/data/sample.log'
+    INTO TABLE log4jLogs;
+    ```
+
+1. レコードを 1 件挿入します。 Zeppelin Notebook で次のコードを実行します。
+
+    ```hql
+    %jdbc(hive)
+    INSERT INTO TABLE log4jLogs2
+    VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
+    ```
+
+その他の構文については、[Hive 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)を参照してください。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する方法について学習しました。 Hive クエリの詳細について、次の記事で Visual Studio を使用してクエリを実行する方法を紹介します。
 
 > [!div class="nextstepaction"]
 > [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
-
-## <a name="see-also"></a>関連項目
-
-* [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
-* [Azure HDInsight の Power BI で対話型クエリの Apache Hive データを視覚化する](./apache-hadoop-connect-hive-power-bi-directquery.md)。
-* [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
-* [Power Query を使用して Excel を Apache Hadoop に接続する](../hadoop/apache-hadoop-connect-excel-power-query.md)。
-* [Azure HDInsight Tool for Visual Studio Code の使用](../hdinsight-for-vscode.md)。
-* [HDInsight にデータをアップロードする](../hdinsight-upload-data.md)。

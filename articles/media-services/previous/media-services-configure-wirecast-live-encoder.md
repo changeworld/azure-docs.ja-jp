@@ -13,25 +13,26 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890051"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641657"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
->
 >
 
-この記事では、[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。  詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+この記事では、[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。 このツールは、Windows PC でのみ実行されます。 Mac または Linux の場合は、Azure Portal を使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel.md)を作成します。
+
+> [!NOTE]
+> RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。 TLS 1.2 の要件により、Wirecast バージョン 13.0.2 以降を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure Media Services アカウントを作成します](media-services-portal-create-account.md)
@@ -45,11 +46,11 @@ ms.locfileid: "57890051"
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
+1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
-2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
+2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、 **[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
 
     **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
 
@@ -69,7 +70,7 @@ ms.locfileid: "57890051"
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream Wirecast エンコーダーを構成する
+## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream Wirecast エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:
@@ -91,10 +92,10 @@ ms.locfileid: "57890051"
 2. **[出力]** タブに移動して **[出力設定]** を選択し、出力を構成します。
 
     **[出力先]** に **[RTMP Server]** が設定されていることを確認します。
-3. Click **OK**.
-4. 設定ページで、**[ターゲット]** フィールドを **[Azure Media Services]** に設定します。
+3. **[OK]** をクリックします。
+4. 設定ページで、 **[ターゲット]** フィールドを **[Azure Media Services]** に設定します。
 
-    エンコードのプロファイルは、 **Azure H.264 720 p 16:9 (1280 x 720)** に事前に選択されています。 これらの設定をカスタマイズするには、ドロップダウンの右側にある歯車アイコンを選択し、**[新しいプリセット]** を選択します。
+    エンコードのプロファイルは、 **Azure H.264 720 p 16:9 (1280 x 720)** に事前に選択されています。 これらの設定をカスタマイズするには、ドロップダウンの右側にある歯車アイコンを選択し、 **[新しいプリセット]** を選択します。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. エンコーダー プリセットを構成します。
@@ -124,7 +125,7 @@ ms.locfileid: "57890051"
 
     AMSE ツールに戻り、チャネルの完了状態を確認します。 状態が **[開始中]** から **[実行中]** に変わったら、入力 URL を取得することができます。
 
-    チャネルが実行されている場合、チャネル名を右クリックして、下へ移動して **[入力 URL をクリップボードにコピー]** にマウスを合わせ、**[プライマリ入力 URL]** を選択します。  
+    チャネルが実行されている場合、チャネル名を右クリックして、下へ移動して **[入力 URL をクリップボードにコピー]** にマウスを合わせ、 **[プライマリ入力 URL]** を選択します。  
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
 8. Wirecast の **[出力設定]** ウィンドウで、この情報を出力セクションの **[アドレス]** フィールドに貼り付け、ストリーム名を割り当てます。
@@ -144,7 +145,7 @@ ms.locfileid: "57890051"
 
 ## <a name="test-playback"></a>再生をテストする
 
-AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。  
+AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、 **[プレビューの再生]** にマウスを合わせ、 **[Azure Media Player を使用]** を選択します。  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
@@ -153,18 +154,18 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
 エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。 ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。  
 
 ## <a name="create-a-program"></a>プログラムを作成する
-1. チャネルの再生が確認されたら、プログラムを作成します。 AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、**[新しいプログラムの作成]** を選択します。  
+1. チャネルの再生が確認されたら、プログラムを作成します。 AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、 **[新しいプログラムの作成]** を選択します。  
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
-2. 必要に応じてプログラムに名前を付け、**[アーカイブ ウィンドウの長さ]** (既定では 4 時間) を調整します。 ストレージの場所を指定することも、既定値のままにすることもできます。  
+2. 必要に応じてプログラムに名前を付け、 **[アーカイブ ウィンドウの長さ]** (既定では 4 時間) を調整します。 ストレージの場所を指定することも、既定値のままにすることもできます。  
 3. **[プログラムを今すぐ開始]** ボックスを選択します。
 4. **[プログラムの作成]** をクリックします。  
 
    >[!NOTE]
    >プログラムの作成は、チャネルの作成ほど時間はかかりません。
        
-5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、**[Azure Media Player を使用]** を選択します。  
-6. 確認したら、プログラムをもう一度右クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
+5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、 **[Azure Media Player を使用]** を選択します。  
+6. 確認したら、プログラムをもう一度右クリックし、 **[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
 
 これで、ストリームをプレーヤーに埋め込んだり、ライブ表示のために対象ユーザーに配信したりできるようになりました。  
 

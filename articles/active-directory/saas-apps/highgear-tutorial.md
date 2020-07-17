@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 55dcd2fb-96b7-46ec-9e69-eee71c535773
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873bc340d738704418310e22c34b0042f71a96bd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890901"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73159042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>チュートリアル:Azure Active Directory と HighGear の統合
 
@@ -53,11 +54,11 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
 **ギャラリーから HighGear を追加するには、次の手順を実行します。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**HighGear**」と入力し、結果パネルで **HighGear** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**HighGear**」と入力し、結果パネルで **HighGear** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果リストの HighGear](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
 お客様の HighGear システムで Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **HighGear** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **HighGear** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -118,18 +119,18 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
     ![[Assertion Consumer Service (ACS) URL] フィールド](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
-    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+    c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
      ![HighGear のドメインと URL のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-     **[サインオン URL]** テキスト ボックスに、お客様の HighGear システムの [Single Sign-On Settings]\(シングル サインオンの設定\) ページにある **[Service Provider Entity ID]\(サービス プロバイダー エンティティ ID\)** フィールドの値を貼り付けます  (このエンティティ ID は、SP によって開始されたサインオンに使用される HighGear システムのベース URL でもあります)。
+     **[サインオン URL]** テキスト ボックスに、お客様の HighGear システムの [Single Sign-On Settings]\(シングル サインオンの設定\) ページにある **[Service Provider Entity ID]\(サービス プロバイダー エンティティ ID\)** フィールドの値を貼り付けます (このエンティティ ID は、SP によって開始されたサインオンに使用される HighGear システムのベース URL でもあります)。
 
     ![[Service Provider Entity ID]\(サービス プロバイダー エンティティ ID\) フィールド](media/highgear-tutorial/service-provider-entity-id-field.png)
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、お客様の HighGear システムの **[Single Sign-On Settings]\(シングル サインオンの設定\)** ページにある実際の識別子、返信 URL、サインオン URL で更新してください。 ヘルプが必要な場合は、[HighGear サポート チーム](mailto:support@highgear.com)にお問い合わせください。
 
-4. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書 (Base64)** をダウンロードし、コンピューターに保存します。 これは、後のシングル サインオンの構成手順で必要になります。
+4. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[Download]\(ダウンロード\)** をクリックして**証明書 (Base64)** をダウンロードし、コンピューターに保存します。 これは、後のシングル サインオンの構成手順で必要になります。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -149,7 +150,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
 ![[Single Sign-On Settings]\(シングル サインオンの設定\) メニュー項目](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. **[Identity Provider Name]\(ID プロバイダー名\)** に、ログイン ページの HighGear のシングル サインオン ボタンに表示される簡単な説明を入力します。 例: Azure AD
+1. **[Identity Provider Name]\(ID プロバイダー名\)** に、ログイン ページの HighGear のシングル サインオン ボタンに表示される簡単な説明を入力します。 次に例を示します。Azure AD
 
 2. HighGear の **[Single Sign-On (SSO) URL]\(シングル サインオン (SSO) URL\)** フィールドに、Azure の **[HighGear の設定]** セクションにある **[ログイン URL]** フィールドの値を貼り付けます。
 
@@ -159,7 +160,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
 5. メモ帳を使用して、お客様が Azure の **[SAML 署名証明書]** セクションからダウンロードした証明書を開きます。 **[証明書 (Base64)]** 形式でダウンロードしている必要があります。 メモ帳から証明書の内容をコピーし、HighGear の **[Identity Provider Certificate]\(ID プロバイダー証明書\)** フィールドに貼り付けます。
 
-6. お客様の HighGear 証明書をリクエストするメールを [HighGear サポート チーム](mailto:support@highgear.com)に送信します。 受け取った指示に従って、**[HighGear Certificate]\(HighGear 証明書\)** フィールドと **[HighGear Certificate Password]\(HighGear 証明書パスワード\)** フィールドに入力します。
+6. お客様の HighGear 証明書をリクエストするメールを [HighGear サポート チーム](mailto:support@highgear.com)に送信します。 受け取った指示に従って、 **[HighGear Certificate]\(HighGear 証明書\)** フィールドと **[HighGear Certificate Password]\(HighGear 証明書パスワード\)** フィールドに入力します。
 
 7. **[Save]\(保存\)** ボタンをクリックして、お客様の HighGear シングル サインオン構成を保存します。
 
@@ -167,7 +168,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -192,7 +193,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
 このセクションでは、HighGear へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**HighGear** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、**HighGear** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -204,15 +205,15 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-highgear-test-user"></a>HighGear テスト ユーザーの作成
 
@@ -229,9 +230,9 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
     ウィンドウが右側にスライドして、新しいユーザーの情報を入力できるようになります。  
     ![新しい連絡先フォーム](media/highgear-tutorial/new-contact-form.png)
 
-3. **[Name]\(名前\)** フィールドに、連絡先の名前を入力します。 例: Britta Simon
+3. **[Name]\(名前\)** フィールドに、連絡先の名前を入力します。 次に例を示します。Britta Simon
 
-4. **[More Options]\(その他のオプション\)** メニューをクリックし、**[Account Info]\(アカウント情報\)** メニュー項目を選択します。
+4. **[More Options]\(その他のオプション\)** メニューをクリックし、 **[Account Info]\(アカウント情報\)** メニュー項目を選択します。
 
     ![[Account Info]\(アカウント情報\) メニュー項目をクリックする](media/highgear-tutorial/account-info-menu-item.png)
 
@@ -239,7 +240,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
     **[Enable Single Sign-On]\(シングル サインオンを有効にする\)** フィールドも自動的に [Yes]\(はい\) に設定されます。
 
-6. **[Single Sign-On User Id]\(シングル サインオン ユーザー ID\)** フィールドに、ユーザーの ID を入力します。 次に例を示します。BrittaSimon@contoso.com
+6. **[Single Sign-On User Id]\(シングル サインオン ユーザー ID\)** フィールドに、ユーザーの ID を入力します。 例: BrittaSimon@contoso.com
 
     [Account Info]\(アカウント情報\) セクションは次のようになります。  
     ![完成した [Account Info]\(アカウント情報\) セクション](media/highgear-tutorial/finished-account-info-section.png)

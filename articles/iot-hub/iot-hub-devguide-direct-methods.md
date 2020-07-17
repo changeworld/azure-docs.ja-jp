@@ -6,13 +6,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: caccdcb0d90a817c82e8d7816f0770b09b4ea27a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: rezas
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101024"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583683"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -36,7 +39,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 > デバイス上のダイレクト メソッドを呼び出す場合、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
 > 
 
-ダイレクト メソッドは同期型であり、タイムアウト期間後に成功または失敗します (既定では30 秒、最長 300 秒に設定可能)。 ダイレクト メソッドは、デバイスがオンラインでコマンドを受け取っている場合のみデバイスを操作する対話型のシナリオで便利です。 たとえば、携帯電話からの照明を点灯させる場合です。 このようなシナリオでは、成功か失敗かを即座に確認し、クラウド サービスがその結果に対してできるだけ早く対応することが必要になります。 デバイスはメッセージの結果として何らかのメッセージ本文を返すことがありますが、メソッドにはその機能は必要ありません。 順番の保証や、メソッドの呼び出しのコンカレンシー セマンティクスはありません。
+ダイレクト メソッドは同期型であり、タイムアウト期間後に成功または失敗します (既定では30 秒、5 - 300 秒の範囲で設定可能)。 ダイレクト メソッドは、デバイスがオンラインでコマンドを受け取っている場合のみデバイスを操作する対話型のシナリオで便利です。 たとえば、携帯電話からの照明を点灯させる場合です。 このようなシナリオでは、成功か失敗かを即座に確認し、クラウド サービスがその結果に対してできるだけ早く対応することが必要になります。 デバイスはメッセージの結果として何らかのメッセージ本文を返すことがありますが、メソッドにはその機能は必要ありません。 順番の保証や、メソッドの呼び出しのコンカレンシー セマンティクスはありません。
 
 ダイレクト メソッドは、クラウド側からは HTTPS のみに、デバイス側からは MQTT または AMQP になります。
 
@@ -50,7 +53,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 デバイスでのダイレクト メソッドの呼び出しは HTTPS 呼び出しであり、次で構成されます。
 
-* [API バージョン](/rest/api/iothub/service/invokedevicemethod)が適合するデバイスに固有の*要求の URI*:
+* [API バージョン](/rest/api/iothub/service/devicemethod/invokedevicemethod)が適合するデバイスに固有の*要求の URI*:
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -73,15 +76,26 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
     }
     ```
 
-タイムアウトは秒単位です。 タイムアウトが設定されていない場合の既定値は 30 秒です。
+要求で `responseTimeoutInSeconds` として指定された値は、IoT Hub サービスがデバイスでのダイレクト メソッドの実行が完了するまで待機する必要がある時間です。 このタイムアウトは、少なくとも、デバイスによるダイレクト メソッドの予想実行時間と同じ長さに設定してください。 タイムアウトが指定されていない場合は、既定値の 30 秒が使用されます。 `responseTimeoutInSeconds` の最小値は 5 秒で、最大値は 300 秒です。
+
+要求で `connectTimeoutInSeconds` として指定された値は、ダイレクト メソッドの呼び出し時に、IoT Hub サービスが接続されていないデバイスがオンラインになるまで待機する必要がある時間です。 既定値は 0 です。これは、ダイレクト メソッドの呼び出し時にデバイスが既にオンラインである必要があることを意味します。 `connectTimeoutInSeconds` の最大値は 300 秒です。
+
 
 #### <a name="example"></a>例
 
-`curl` を使用したベアボーンの例については、以下を参照してください。 
+この例では、Azure IoT Hub に登録されている IoT デバイス上でダイレクト メソッドを呼び出すための要求を安全に開始することができます。
+
+まず、[Azure CLI 用の Microsoft Azure IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用して、SharedAccessSignature を作成します。 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+次に、Authorization ヘッダーを、新しく生成された SharedAccessSignature に置き換えます。次に、以下の `curl` コマンドの例の実装に一致するように、`iothubName`、`deviceId`、`methodName`、および `payload` パラメーターを変更します。  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -94,11 +108,22 @@ curl -X POST \
 }'
 ```
 
+変更したコマンドを実行して、指定したダイレクト メソッドを呼び出します。 要求が成功すると、HTTP 200 状態コードが返されます。
+
+> [!NOTE]
+> 上の例は、デバイスでダイレクト メソッドを呼び出す方法を示しています。  IoT Edge モジュールでダイレクト メソッドを呼び出す場合は、次に示すように URL 要求を変更する必要があります。
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>Response
 
 バックエンド アプリは、次の項目で構成されている応答を受け取ります。
 
-* *HTTP 状態コード*。接続されていないデバイスの 404 エラーを含む、IoT Hub からのエラーに使用される。
+* *HTTP 状態コード*:
+  * 200 は、ダイレクト メソッドが正常に実行されたことを示します。
+  * 404 は、デバイス ID が無効であること、またはダイレクト メソッドの呼び出し時とその後 `connectTimeoutInSeconds` の間、デバイスがオンラインになっていなかったことを示します (根本原因を把握するには、付随するエラー メッセージを使用してください)。
+  * 504 は、`responseTimeoutInSeconds` 内のダイレクト メソッドの呼び出しにデバイスが応答していないことが原因で、ゲートウェイのタイムアウトが発生したことを示します。
 
 * *ヘッダー*。ETag、要求 ID、コンテンツの種類、コンテンツのエンコーディングを含む。
 
@@ -172,7 +197,7 @@ AMQP メッセージは、メソッド要求を表す受信リンクに到着し
 
 デバイスは、メソッド応答を返す送信リンクをアドレス `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` に作成します。
 
-メソッドの応答は送信リンクで返され、以下から構成されています。
+メソッドの応答は送信リンクで返され、以下のもので構成されています。
 
 * 関連付け ID プロパティ。メソッドの要求メッセージで渡される要求 ID が含まれています。
 
@@ -194,7 +219,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ダイレクト メソッドの使用方法を理解できたら、次の IoT Hub 開発者ガイドの記事も参考にしてください。
 

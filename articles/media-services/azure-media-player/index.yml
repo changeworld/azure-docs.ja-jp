@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Azure Media Player
+summary: Azure Media Player の使用の詳細について説明します
+metadata:
+  title: Azure Media Player のランディング ページ
+  description: Web ページでの Azure Media Player の使用に関する詳細を説明します。
+  ms.service: media-services
+  ms.topic: landing-page
+  author: IngridAtMicrosoft
+  ms.author: inhenkel
+  ms.date: 04/20/2020
+  ms.openlocfilehash: 522821be3b5921ba6cb9c8b25643a5337e502b43
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81873224"
+landingContent:
+- title: Azure Media Player
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 概要
+      url: azure-media-player-overview.md
+    - text: リリース ノート
+      url: azure-media-player-release-notes.md
+    - text: 変更ログ
+      url: azure-media-player-changelog.md
+- title: はじめに
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Media Player クイックスタート
+      url: azure-media-player-quickstart.md
+    - text: Azure Media Player のフル セットアップ
+      url: azure-media-player-full-setup.md
+    - text: Azure Media Player のサンプル
+      url: https://github.com/Azure-Samples/azure-media-player-samples
+- title: 概念
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 再生テクノロジ
+      url: azure-media-player-playback-technology.md
+    - text: 保護されたコンテンツ
+      url: azure-media-player-protected-content.md
+    - text: 機能一覧
+      url: azure-media-player-feature-list.md
+    - text: URL リライター
+      url: azure-media-player-url-rewriter.md
+    - text: アクセシビリティ
+      url: azure-media-player-accessibility.md
+    - text: プラグインを作成する
+      url: azure-media-player-writing-plugins.md
+    - text: プラグイン ギャラリー
+      url: azure-media-player-plugin-gallery.md
+    - text: ローカリゼーション
+      url: azure-media-player-localization.md
+- title: リファレンス
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: サンプル
+      url: https://github.com/Azure-Samples/azure-media-player-samples
+    - text: API
+      url: https://docs.microsoft.com/javascript/api/azuremediaplayer/?view=azure-node-latest
+    - text: API メソッド
+      url: azure-media-player-api-methods.md
+    - text: Options
+      url: azure-media-player-options.md
+    - text: エラー コード
+      url: azure-media-player-error-codes.md
+    - text: 既知の問題
+      url: azure-media-player-known-issues.md

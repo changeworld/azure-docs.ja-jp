@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と FreshDesk の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と FreshDesk の統合 | Microsoft Docs'
 description: Azure Active Directory と FreshDesk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4bdeecc5682eb09ac0a65d3834ad1770258c4e0
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898452"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74227610"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
 このチュートリアルでは、FreshDesk と Azure Active Directory (Azure AD) を統合する方法について説明します。
 FreshDesk と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 
 **ギャラリーから FreshDesk を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**FreshDesk**」と入力し、結果ウィンドウで **[FreshDesk]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**FreshDesk**」と入力し、結果ウィンドウで **[FreshDesk]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の FreshDesk](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
 FreshDesk で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **FreshDesk** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **FreshDesk** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -116,7 +117,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
     
     | Name | ソース属性 |
     | ---------------| --------------- |
@@ -138,9 +139,9 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -167,9 +168,9 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
 1. 別の Web ブラウザー ウィンドウで、Freshdesk 企業サイトに管理者としてログインします。
 
-2. **[設定]** アイコンを選択し、**[セキュリティ]** セクションで次の手順を実行します。
+2. **[設定]** アイコンを選択し、 **[セキュリティ]** セクションで次の手順を実行します。
 
-    ![Single Sign On](./media/freshdesk-tutorial/IC776770.png "Single Sign On")
+    ![シングル サインオン](./media/freshdesk-tutorial/IC776770.png "シングル サインオン")
   
     a. **[シングル サインオン (SSO)]** で **[オン]** を選択します。
 
@@ -181,13 +182,13 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     e. **[セキュリティ証明書フィンガープリント]** テキストボックスに、先ほど得た **Cert ハッシュ (sha256)** の値を貼り付けます。
   
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -212,7 +213,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に FreshDesk へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[FreshDesk]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[FreshDesk]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -224,15 +225,15 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-freshdesk-test-user"></a>FreshDesk のテスト ユーザーの作成
 
@@ -245,19 +246,19 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
-    ![管理](./media/freshdesk-tutorial/IC776772.png "Admin")
+    ![管理者](./media/freshdesk-tutorial/IC776772.png "[Admin]")
 
 3. **[全般設定]** タブで **[エージェント]** をクリックします。
   
-    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![[エージェント]](./media/freshdesk-tutorial/IC776773.png "[エージェント]")
 
 4. **[新しいエージェント]** をクリックします。
 
-    ![New Agent](./media/freshdesk-tutorial/IC776774.png "New Agent")
+    ![新しいエージェント](./media/freshdesk-tutorial/IC776774.png "[新しいエージェント]")
 
 5. [エージェント情報] ダイアログで、次の手順を実行します。
 
-    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
+    ![エージェント情報](./media/freshdesk-tutorial/IC776775.png "エージェント情報")
 
     a. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの Azure AD 電子メール アドレスを入力します。
 
@@ -265,13 +266,13 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
     >
     >[!NOTE]
-    >Freshdesk から提供されているその他の Freshdesk ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントを Freshdesk にプロビジョニングできます。
+    >その他の Freshdesk ユーザー アカウント作成ツールや、Freshdesk から提供されている API を使用して、Azure AD ユーザー アカウントを Freshdesk にプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

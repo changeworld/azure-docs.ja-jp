@@ -3,23 +3,22 @@ title: SAP HANA on Azure (L インスタンス) の監視 | Microsoft Docs
 description: SAP HANA on Azure (L インスタンス) を監視します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5a5d462be5555090d1dfced5fa07c9b748eb312
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77617287"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) の監視方法
 
@@ -49,6 +48,6 @@ Microsoft サポート チームと協力して問題のトラブルシューテ
 tar  -czvf health_check_logs.tar.gz /var/log/health_check
 ```
 
-**次のステップ**
+**次の手順**
 
-- 「[SAP HANA on Azure (L インスタンス) の監視方法](troubleshooting-monitoring.md)」を参照してください。
+- 「[SAP HANA on Azure (L インスタンス) の監視方法](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)」を参照してください。

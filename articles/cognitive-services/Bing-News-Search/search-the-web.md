@@ -1,6 +1,6 @@
 ---
 title: Bing News Search API とは
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing News Search API を使用して、ヘッドラインやトレンド トピックなど、複数のカテゴリにおける最新ヘッドラインについて Web 検索する方法について説明します。
 services: cognitive-services
 author: swhite-msft
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877101"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75448446"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
 
@@ -46,14 +46,14 @@ Bing News Search API は RESTful Web サービスです。HTTP 要求を作成�
 
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まず、Bing News Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)をお試しください。 このデモには、検索クエリをすばやくカスタマイズして Web 上のニュースを検索する方法が紹介されています。
 
 初めての API 要求を簡単に体験したい場合は、[REST API](quickstart.md) またはいずれかの [SDK](sdk.md) のクイック スタートをお試しください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-* [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
-
+* [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。

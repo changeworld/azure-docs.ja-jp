@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162545"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76021324"
 ---
 ## <a name="create-base-resources"></a>基本のリソースの作成
 
-メッセージ ルーティングを構成するには、IoT ハブ、ストレージ アカウント、および Service Bus キューを事前に作成する必要があります。 これらのリソースは、このチュートリアルのパート 1 の 4 つの記事 (Azure CLI、Azure PowerShell、Azure portal、または Azure Resource Manager テンプレート) のいずれかを使用して作成できます。
+メッセージ ルーティングを構成するには、IoT ハブ、ストレージ アカウント、および Service Bus キューを事前に作成する必要があります。 これらのリソースは、このチュートリアルのパート 1 にある 4 つの記事 (Azure portal、Azure Resource Manager テンプレート、Azure CLI、または Azure PowerShell) のいずれかを使用して作成できます。
 
 すべてのリソースに同じリソース グループと場所を使います。 最後に、リソース グループを削除することによって、すべてのリソースを一度に削除できます。
 
-以降のセクションで、実行する手順について説明します。
+次に、以下のセクションで実行する手順の概要を示します。 
 
-1. [リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)を作成します。
+1. [リソース グループ](../articles/azure-resource-manager/management/overview.md)を作成します。
 
 2. S1 レベルに IoT ハブを作成します。 コンシューマー グループを IoT ハブに追加します。 コンシューマー グループは、データを取得するときに Azure Stream Analytics によって使われます。
 

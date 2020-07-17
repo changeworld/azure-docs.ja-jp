@@ -1,43 +1,42 @@
 ---
-title: 'クイック スタート: テキストを音声に変換する (Python) - Speech Services'
+title: テキストを音声に変換する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドに含まれているサンプル テキストは、音声合成マークアップ言語 (SSML) として構成されています。 そのため、音声応答の音声と言語を選択することができます。
+description: この記事では、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドに含まれているサンプル テキストは、音声合成マークアップ言語 (SSML) として構成されています。 そのため、音声応答の音声と言語を選択することができます。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 087440b60e1d5fecc668849bc1350d66988b16b9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.topic: how-to
+ms.date: 04/13/2020
+ms.author: trbye
+ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339087"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400835"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>クイック スタート: Python を使用してテキストを音声に変換する
+# <a name="convert-text-to-speech-using-python"></a>Python を使用してテキストを音声に変換する
 
-このクイック スタートでは、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドでは、要求本文が[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として構成されており、応答の音声と言語を選択することができます。
+この記事では、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドでは、要求本文が[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として構成されており、応答の音声と言語を選択することができます。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Services リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
+この記事では、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech サービス リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは以下が必要です。
-
 * Python 2.7.x または 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Services 用の Azure サブスクリプション キー
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a>、または任意のテキスト エディター
+* Speech サービス用の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
 普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `tts.py` という名前のファイルにコピーします。
 
 ```python
-import os, requests, time
+import os
+import requests
+import time
 from xml.etree import ElementTree
 ```
 
@@ -51,8 +50,10 @@ from xml.etree import ElementTree
 以降いくつかのセクションで、承認を処理して Text to Speech API を呼び出し、応答を検証するためのメソッドを作成します。 まず、このサンプルが Python 2.7.x と 3.x で動作することを確認するコードを追加します。
 
 ```python
-try: input = raw_input
-except NameError: pass
+try:
+    input = raw_input
+except NameError:
+    pass
 ```
 
 次にクラスを作成しましょう。 トークンを交換したり Text to Speech API を呼び出したりするためのメソッドは、ここに記述します。
@@ -70,9 +71,9 @@ class TextToSpeech(object):
 
 ## <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、ご利用の Speech Services のサブスクリプション キーをアクセス トークンと交換します。
+Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、Speech サービスのサブスクリプション キーをアクセス トークンと交換します。
 
-このサンプルでは、ご利用の Speech Services のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
+このサンプルでは、ご利用の Speech サービスのサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
 
 このコードを `TextToSpeech` クラスにコピーします。
 
@@ -91,14 +92,14 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>要求を実行して応答を保存する
 
-ここでは、要求を構築して音声応答を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
+ここでは、要求を構築して音声応答を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech サービスのリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するページを参照してください。
 
 次に、要求に必要なヘッダーを追加する必要があります。 必ず `User-Agent` を (Azure portal にある) ご使用のリソースの名前に更新し、`X-Microsoft-OutputFormat` を、優先するオーディオ出力に設定してください。 出力形式の全一覧については、[オーディオ出力](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)に関するセクションを参照してください。
 
 次に、音声合成マークアップ言語 (SSML) を使用して要求本文を構成します。 このサンプルでは、その構造を定義し、先ほど作成した `tts` 入力を使用しています。
 
 >[!NOTE]
-> このサンプルでは、`ZiraRUS` の音声フォントを使用しています。 Microsoft から提供されている音声/言語の全一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
+> このサンプルでは、`Guy24kRUS` の音声フォントを使用しています。 Microsoft から提供されている音声/言語の全一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
 > 認識できる独自の音声を自社ブランド用に作成することを検討している場合は、「[カスタム音声フォントの作成](how-to-customize-voice-font.md)」を参照してください。
 
 最後に、サービスに対して要求を実行します。 要求が成功して状態コード 200 が返された場合、タイムスタンプの付いたファイルに音声応答が書き込まれます。
@@ -120,7 +121,8 @@ def save_audio(self):
     xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-    voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+    voice.set(
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 
@@ -128,9 +130,11 @@ def save_audio(self):
     if response.status_code == 200:
         with open('sample-' + self.timestr + '.wav', 'wb') as audio:
             audio.write(response.content)
-            print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
+            print("\nStatus code: " + str(response.status_code) +
+                  "\nYour TTS is ready for playback.\n")
     else:
-        print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+        print("\nStatus code: " + str(response.status_code) +
+              "\nSomething went wrong. Check your subscription key and headers.\n")
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
@@ -155,11 +159,11 @@ python tts.py
 
 プロンプトが表示されたら、音声に変換したいテキストを何か入力してください。 成功した場合、プロジェクト フォルダーに音声ファイルが格納されます。 任意のメディア プレーヤーを使用して再生してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Python のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
@@ -167,5 +171,6 @@ python tts.py
 ## <a name="see-also"></a>関連項目
 
 * [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Python と Speech SDK を使用してテキストを音声に変換する](quickstarts/speech-to-text-from-microphone.md)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)
 * [カスタム音声を作成するための音声サンプルを録音する](record-custom-voice-samples.md)

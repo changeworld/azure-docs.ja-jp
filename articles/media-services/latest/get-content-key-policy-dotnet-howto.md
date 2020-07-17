@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 .NET SDK を使用して既存のポリシーから署名キーを取得する - Azure | Microsoft Docs
+title: Azure Media Services v3 .NET を使用してポリシーから署名キーを取得する
 description: このトピックでは、Media Services v3 .NET SDK を使用して既存のポリシーから署名キーを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 58b6f49f4bbbd93fefb9b616f92baf7ef30f7deb
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.custom: seodec18
+ms.openlocfilehash: 2dea262fadb61adc9e219b76f9ac048c11e650d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065958"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>既存のポリシーから署名キーを取得する
 
@@ -41,6 +41,6 @@ v3 API の主要な設計原則の 1 つは、API の安全性の向上です。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md) 

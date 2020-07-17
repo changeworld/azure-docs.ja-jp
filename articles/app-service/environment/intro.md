@@ -1,25 +1,18 @@
 ---
-title: App Service Environment の概要 - Azure
-description: Azure App Service Environment の簡単な概要
-services: app-service
-documentationcenter: na
+title: はじめに
+description: Azure App Service Environments を利用して、完全に分離された専用の環境でアプリをスケーリング、セキュリティ保護、および最適化する方法について学習します。
 author: ccompy
-manager: stefsch
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 48b053b6520bff2ac83cd02af31194f81413e92c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598756"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770646"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
@@ -31,7 +24,7 @@ Azure App Service Environment は、App Service アプリを大規模かつ安�
 * Linux Web アプリ 
 * Docker コンテナー
 * モバイル アプリ
-* Functions
+* 関数
 
 App Service Environment (ASE) は、以下を必要とするアプリケーション ワークロードに最適です。
 
@@ -41,13 +34,14 @@ App Service Environment (ASE) は、以下を必要とするアプリケーシ�
 
 顧客は、複数の ASE を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。 この柔軟性により、ASE は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
-ASE は、単一の顧客のアプリケーションだけを実行するために分離され、常に仮想ネットワークにデプロイされます。 顧客は、受信と送信の両方のアプリケーション ネットワーク トラフィックをきめ細かく制御することができます。 アプリケーションは VPN を介した、オンプレミスの企業リソースへのセキュリティで保護された高速な接続を確立することができます。
+ASE では、単一の顧客のアプリケーションは VNet の 1 つでホストされます。 顧客は、受信と送信の両方のアプリケーション ネットワーク トラフィックをきめ細かく制御することができます。 アプリケーションは VPN を介した、オンプレミスの企業リソースへのセキュリティで保護された高速な接続を確立することができます。
 
 * ASE には専用の価格レベルがあります。[独立したオファー](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)が高い拡張性とセキュリティを促進するのにどのように役立つかを学習してください。
 * [App Service Environments v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) は、ネットワークのサブネット内のアプリを保護するための環境と、Azure App Service の独自のプライベートな展開を提供します。
 * 複数の ASE を使って水平方向にスケーリングすることができます。 詳細については、[地理的に分散したアプリ フットプリントの設定](app-service-app-service-environment-geo-distributed-scale.md)に関するページを参照してください。
 * AzureCon Deep Dive に示されているようなセキュリティ アーキテクチャは、ASE を使用して構成できます。 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャのインプリメント方法](app-service-app-service-environment-layered-security.md)に関する記事を参照してください。
-* ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳しくは、「[Web アプリケーション ファイアウォール (WAF)][AppGW]」をご覧ください。
+* ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳細については、[Web アプリケーション ファイアウォール (WAF)][AppGW] に関するページを参照してください。
+* Availability Zones (AZ) には、ゾーンの固定を使用して App Service Environment をデプロイできます。  詳細については、「[App Service Environment の Availability Zones サポート][ASEAZ]」を参照してください。
 
 ## <a name="dedicated-environment"></a>専用の環境 ##
 
@@ -81,7 +75,7 @@ ASE と仮想ネットワークおよびオンプレミス ネットワークと
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 
-App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 
+App Service Environment には、ASEv1 と ASEv2 です。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 
 
 ASEv1 では、すべてのリソースを手動で管理する必要があります。 これには、フロントエンド、ワーカー、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストするワーカー プールを先にスケールアウトしておく必要があります。
 
@@ -104,8 +98,9 @@ ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 �
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md
+[ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

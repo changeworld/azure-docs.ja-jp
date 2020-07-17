@@ -10,11 +10,11 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 4e607d821d0a587b25c6cb6929ac6765d500b6fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685185"
 ---
 # <a name="migrate-web-resources-to-global-azure"></a>Web リソースをグローバル Azure に移行する
 

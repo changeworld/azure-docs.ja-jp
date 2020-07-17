@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 382e342f2144bcc6eeedafd74790bb442b8f9308
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784860"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73161781"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -64,7 +64,7 @@ ssh-keygen -t rsa -b 2048
 
     > [!NOTE]
     >
-    > 独自のアプリケーションのホーム ページと識別子 URI (http://www.contoso.com など) を選択します。
+    > 独自のアプリケーションのホーム ページと識別子 URI (http\://www\.contoso.com など) を選択します。
 
 4. 新しいアプリ ID でサービス プリンシパルを作成します。
 
@@ -72,11 +72,11 @@ ssh-keygen -t rsa -b 2048
 
 5. サービス プリンシパルのアクセス許可のロールは、共同作成者として設定します。
 
-    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor”`
+    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
 
     以下を使用することもできます
 
-    `az role assignment create --assignee {service-principal-name} --role “Contributor”`
+    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
 
     ![サービス プリンシパルのロールの割り当て](media/deploy/svc-princ.png )
 
@@ -123,7 +123,7 @@ ssh-keygen -t rsa -b 2048
          
     > [!NOTE]
     >
-    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、**[詳細]** を選択して Web ページに移動します。 Firefox の場合は、**[Advance]** を選択し、証明書を追加して続行します。
+    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、 **[詳細]** を選択して Web ページに移動します。 Firefox の場合は、 **[Advance]** を選択し、証明書を追加して続行します。
 
 5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されます。 これで、アプリケーションをここでデプロイして管理できます。
                

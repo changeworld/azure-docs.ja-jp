@@ -3,9 +3,9 @@ title: Web API を使用した現在のユーザーのプッシュ通知への�
 description: ASP.NET Web API により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101977"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71211873"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
@@ -34,11 +36,11 @@ ms.locfileid: "58101977"
 
 1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
-   * **ラベル**:"Push to User with Notification Hubs"
-   * **ラベル**:"InstallationId"
-   * **ラベル**:"User"
+   * **ラベル**: "Push to User with Notification Hubs"
+   * **ラベル**: "InstallationId"
+   * **ラベル**: "User"
    * **テキスト フィールド**: "User"
-   * **ラベル**:"Password"
+   * **ラベル**: "Password"
    * **テキスト フィールド**: "Password"
    * **ボタン**: "Login"
 

@@ -2,18 +2,32 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Resource Graph の概要
+    - name: Azure Resource Graph とは
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
+    - name: 最初のクエリを実行する - Azure portal
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: 最初のクエリを実行する - Azure CLI
       displayName: 'extension, docker'
       href: first-query-azurecli.md
     - name: 最初のクエリを実行する - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 最初のクエリを実行する - Python
+      displayName: 'library, azure-mgmt, cli'
+      href: first-query-python.md
+    - name: 共有クエリをデプロイする - ARM テンプレート
+      displayName: 'resource manager, queries'
+      href: shared-query-template.md
+- name: チュートリアル
+  items:
+    - name: Azure portal でのクエリの作成と共有
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: サンプル
   items:
     - name: 初歩的なクエリ
@@ -33,11 +47,17 @@
     - name: 大規模なデータ セットを処理する
       displayName: 'page, first, skip, token'
       href: ./concepts/work-with-data.md
-- name: ハウツー ガイド
+    - name: スロットルされた要求に関するガイダンス
+      displayName: 'pagination, batching, throttling, parallel'
+      href: ./concepts/guidance-for-throttled-requests.md
+- name: 操作方法ガイド
   items:
     - name: リソースの変更の取得
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: トラブルシューティング
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -61,16 +81,22 @@
     - name: Azure SDK for Ruby (Gem)
       href: 'https://rubygems.org/gems/azure_mgmt_resourcegraph'
     - name: REST
-      href: /rest/api/azureresourcegraph/resources/resources
+      href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.resourcegraph/allversions
+    - name: Resource Graph テーブルとリソースの種類
+      href: ./reference/supported-tables-resources.md
 - name: リソース
   items:
+    - name: GitHub - ガバナンスのサンプル
+      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
+    - name: ガバナンスに関する YouTube チャンネル
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: UserVoice
       href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345061'
-    - name: ガバナンスに関する YouTube チャンネル
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

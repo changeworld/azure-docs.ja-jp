@@ -1,27 +1,19 @@
 ---
-title: サンプルの Azure インフラストラクチャによるチュートリアル | Microsoft Docs
+title: サンプルの Azure インフラストラクチャによるチュートリアル
 description: Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。
-documentationcenter: ''
-services: virtual-machines-windows
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: example-scenario
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932859"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869463"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワーク、およびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -55,13 +47,13 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 * Adventure Works Cycles は、プレフィックスとして **[IT ワークロード]-[場所]-[Azure リソース]** を使用します。
   * たとえば、"**azos**" (Azure Online Store) は IT ワークロード名であり、"**use**" (米国東部 2) は場所です。
 * 仮想ネットワークは、AZOS-USE-VN **[番号]** を使用します。
-* 可用性セットは、azos-use-as-**[ロール]** を使用します。
-* 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
+* 可用性セットは、azos-use-as- **[ロール]** を使用します。
+* 仮想マシン名は、azos-use-vm- **[仮想マシン名]** を使用します。
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure サブスクリプションとアカウント
 Adventure Works Cycles は、Adventure Works Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する課金を行います。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 Adventure Works Cycles では、Azure Managed Disks を使用する必要があると決定しました。 VM を作成するときに、使用可能な両方のストレージ層が使用されます。
 
 * Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらのデータ ディスクの **Standard Storage**。
@@ -72,15 +64,15 @@ Adventure Works Cycles では、Azure Managed Disks を使用する必要があ�
 
 Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
-* 名前: AZOS-USE-VN01
-* 場所: East US 2
-* 仮想ネットワークのアドレス空間: 10.0.0.0/8
+* 名前:AZOS-USE-VN01
+* 場所:米国東部 2
+* 仮想ネットワークのアドレス空間:10.0.0.0/8
 * 1 番目のサブネット:
-  * 名前: FrontEnd
-  * アドレス空間: 10.0.1.0/24
+  * 名前:FrontEnd
+  * アドレス空間:10.0.1.0/24
 * 2 番目のサブネット:
-  * 名前: BackEnd
-  * アドレス空間: 10.0.2.0/24
+  * 名前:BackEnd
+  * アドレス空間:10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性セット
 オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。

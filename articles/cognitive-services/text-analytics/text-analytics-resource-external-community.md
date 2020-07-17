@@ -1,21 +1,21 @@
 ---
 title: Text Analytics API の外部/コミュニティ コンテンツ
 titleSuffix: Azure Cognitive Services
-description: パートナー ブログ、YouTube 動画、Azure 上の Microsoft Cognitive Services Text Analytics API トレーニング。
+description: パートナー ブログ、YouTube 動画、Azure Cognitive Services Text Analytics API のトレーニング。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: b46acb2f0fe04c37e73a69a09ee6ede9110864ca
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78251303"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service の外部/コミュニティ コンテンツ
 
@@ -33,7 +33,11 @@ ms.locfileid: "57543544"
 
 + [Sentiment analysis with Dynamics 365 CRM Online (Dynamics 365 CRM Online による感情分析) (MSDN ブログ)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ Power Bi ブログ: PowerBI ブログ: Facebook メッセージからキー フレーズを抽出する: [パート 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) と[パート 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI ブログ:PowerBI ブログ: Facebook メッセージからキー フレーズを抽出する: [パート 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) と[パート 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
+
++ [MS Flow を使って Yammer グループ内のコメントのセンチメントを特定する (Microsoft Tech コミュニティ)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
+
+
 
 ## <a name="videos"></a>ビデオ
 
@@ -43,7 +47,7 @@ ms.locfileid: "57543544"
 
 + [Text analytics extract key phrases using Power BI and Microsoft Cognitive Services](https://www.youtube.com/watch?v=R_-1TB2BF14) (Power BI と Microsoft Cognitive Services を利用したテキスト分析のキー フレーズ抽出)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 今回取り上げなかった機能やユースケースをお探しですか。 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) でご要望またはご投票ください。 
 

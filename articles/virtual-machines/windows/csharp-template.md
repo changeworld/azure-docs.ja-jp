@@ -1,26 +1,19 @@
 ---
-title: C# と Resource Manager テンプレートを使用した VM のデプロイ | Microsoft Docs
+title: C# と Resource Manager テンプレートを使用して VM をデプロイする
 description: C# および Resource Manager テンプレートを使用して Azure VM をデプロイする方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796028"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82082919"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ
 
@@ -34,15 +27,15 @@ ms.locfileid: "59796028"
 
 この手順では、Visual Studio がインストールされていることを確認し、テンプレートをデプロイするために使用するコンソール アプリケーションを作成します。
 
-1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、**[インストール]** をクリックします。 サマリーで、**[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
-2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** をクリックします。
-3. **[テンプレート]** > **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
+1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、 **[インストール]** をクリックします。 サマリーで、 **[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
+2. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** をクリックします。
+3. **[テンプレート]**  >  **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、 **[OK]** をクリックします。
 
 ## <a name="install-the-packages"></a>パッケージのインストール
 
 NuGet パッケージを使用すると、手順を完了するために必要なライブラリを簡単にインストールできます。 Visual Studio で必要なライブラリを入手するには、次の手順に従います。
 
-1. **[ツール]** > **[NuGet パッケージ マネージャー]** をクリックし、**[パッケージ マネージャー コンソール]** をクリックします。
+1. **[ツール]**  >  **[NuGet パッケージ マネージャー]** をクリックし、 **[パッケージ マネージャー コンソール]** をクリックします。
 2. コンソールに次のコマンドを入力します。
 
     ```powershell
@@ -56,7 +49,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-template-file"></a>テンプレート ファイルを作成する
 
-1. ソリューション エクスプローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに「*CreateVMTemplate.json*」と名前を付けて、**[追加]** をクリックします。
+1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 **[Visual C# アイテム]** で *[テキスト ファイル]* を選択します。 ファイルに「*CreateVMTemplate.json*」と名前を付けて、 **[追加]** をクリックします。
 2. この JSON コードを作成したファイルに追加します。
 
     ```json
@@ -166,9 +159,9 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-parameters-file"></a>パラメーター ファイルの作成
 
-テンプレートに定義されているリソース パラメーターの値を指定するには、値を含むパラメーター ファイルを作成します。
+テンプレートのリソース パラメーターの値を指定するには、値を含むパラメーター ファイルを作成します。
 
-1. ソリューション エクスプローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに「*Parameters.json*」と名前を付けて、**[追加]** をクリックします。
+1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 **[Visual C# アイテム]** で *[テキスト ファイル]* を選択します。 ファイルに「*Parameters.json*」と名前を付けて、 **[追加]** をクリックします。
 2. この JSON コードを作成したファイルに追加します。
 
     ```json
@@ -188,7 +181,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 テンプレートをデプロイする前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)にアクセスできることを確認します。 このサービス プリンシパルから、Azure Resource Manager への要求を認証するためのトークンを取得します。 また、承認ファイルに必要なアプリケーション ID、認証キー、テナント ID を控えておく必要があります。
 
-1. ソリューション エクスプローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、**[追加]** をクリックします。
+1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 **[Visual C# アイテム]** で *[テキスト ファイル]* を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
 2. 次の承認プロパティを追加します。
 
     ```
@@ -199,23 +192,23 @@ NuGet パッケージを使用すると、手順を完了するために必要�
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
-    **&lt;subscription-id&gt;** をサブスクリプション ID に、**&lt;application-id&gt;** を Active Directory アプリケーション ID に、**&lt;authentication-key&gt;** をアプリケーション キーに、**&lt;tenant-id&gt;** をテナント識別子に置き換えます。
+    **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
 
 3. azureauth.properties ファイルを保存します。
 4. AZURE_AUTH_LOCATION という名前の Windows 環境変数に、作成した承認ファイルへの完全なパスを設定します。たとえば、次の PowerShell コマンドを使用できます。
 
     ```powershell
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
     
 
-## <a name="create-the-management-client"></a>管理クライアントの作成
+## <a name="create-the-management-client"></a>管理クライアントを作成する
 
-1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭の既存のステートメントに追加します。
+1. 作成したプロジェクトの Program.cs ファイルを開きます。 次に、ファイルの先頭にある既存のステートメントに次の using ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -240,7 +233,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
         .WithDefaultSubscription();
     ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 アプリケーションの値を指定するには、Main メソッドにコードを追加します。
 
@@ -316,7 +309,7 @@ Console.ReadLine();
 
 Azure で使用されるリソースに対して課金されるため、不要になったリソースは削除することを常にお勧めします。 リソース グループから各リソースを個別に削除する必要はありません。 リソース グループを削除すると、そのすべてのリソースが自動的に削除されます。 
 
-リソース グループを削除するには、次のメソッドを Main メソッドに追加します。
+リソース グループを削除するには、次のコードを Main メソッドに追加します。
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -326,11 +319,11 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 
 
-1. コンソール アプリケーションを実行するには、**[開始]** をクリックします。
+1. コンソール アプリケーションを実行するには、 **[開始]** をクリックします。
 
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * デプロイに問題がある場合は、次の手順として、「[Troubleshoot common Azure deployment errors with Azure Resource Manager](../../resource-manager-common-deployment-errors.md)」(Azure Resource Manager を使用した Azure のデプロイで発生する一般的なエラーのトラブルシューティング) を参照してください。
 * 「[C# を使用した Azure 仮想マシンのデプロイ](csharp.md)」で、仮想マシンとそれをサポートするリソースのデプロイ方法を確認します。

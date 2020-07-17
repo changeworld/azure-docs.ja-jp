@@ -1,27 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加 | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加
+description: このサンプルでは、Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: a2abcfeee6fe1a08e2b02ff87e75217daddcfad4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 792af55be17551d1635b6821456c6e8e53e9daea
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127468"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681936"
 ---
-# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例:Azure Batch アカウントへのアプリケーションの追加
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例: Azure Batch アカウントへのアプリケーションの追加
 
 このスクリプトでは、Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。 Batch アカウントに追加するようにアプリケーションをセットアップするには、実行ファイルをすべての依存関係と共に zip ファイルにパッケージ化します。 
 
@@ -57,6 +46,6 @@ az group delete --name myResourceGroup
 | [az batch application set](/cli/azure/batch/application#az-batch-application-set) | アプリケーションのプロパティを更新します。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。

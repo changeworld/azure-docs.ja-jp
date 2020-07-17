@@ -1,24 +1,23 @@
 ---
-title: Azure 仮想マシン上での SLES 12 SP3 による SAP HANA 2.0 スケールアウトの HSR と Pacemaker のセットアップに対するトラブルシューティング | Microsoft Docs
+title: Azure VM 上の SLES での SAP HANA の HSR-Pacemaker のスケールアウトに関するトラブルシューティング | Microsoft Docs
 description: Azure 仮想マシンで実行されている SLES 12 SP3 での SAP HANA システム レプリケーション (HSR) と Pacemaker に基づく複雑な SAP HANA スケールアウトの高可用性構成の確認とトラブルシューティングのガイド
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: jeconnoc
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77617123"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -94,7 +93,7 @@ SAP HANA ネットワークの推奨事項に従って、1 つの Azure 仮想�
 
 複数のネットワークの使用に関連する SAP HANA 構成については、「[SAP HANA global.ini](#sap-hana-globalini)」を参照してください。
 
-クラスター内のすべての VM には、サブネットの数に対応する 3 つの vNIC があります。 「[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法][azure-linux-multiple-nics]」では、Linux VM のデプロイ時に Azure で発生する可能性のあるルーティングの問題について説明しています。 この特定のルーティングの記事は、複数の vNIC を使用する場合にのみ適用されます。 SLES 12 SP3 では、この問題は既定で SUSE により解決されます。 詳細については、「[Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig]」 (EC2 および Azure で cloud-netconfig を使用した複数の NIC) を参照してください。
+クラスター内のすべての VM には、サブネットの数に対応する 3 つの vNIC があります。 「[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法][azure-linux-multiple-nics]」では、Linux VM のデプロイ時に Azure で発生する可能性のあるルーティングの問題について説明しています。 この特定のルーティングの記事は、複数の vNIC を使用する場合にのみ適用されます。 SLES 12 SP3 では、この問題は既定で SUSE により解決されます。 詳細については、「[EC2 および Azure で cloud-netconfig を使用した複数の NIC][suse-cloud-netconfig]」を参照してください。
 
 
 複数のネットワークを使用するように SAP HANA が正しく構成されていることを確認するには、次のコマンドを実行します。 最初に、3 つのすべてのサブネットに対する 3 つのすべての内部 IP アドレスがアクティブであることを、OS レベルで確認します。 別の IP アドレス範囲でサブネットを定義した場合は、コマンドを調整する必要があります。
@@ -456,11 +455,11 @@ node.startup = automatic
 3. 右側で **[iSCSI Initiator]\(iSCSI イニシエーター\)** までスクロールして選択します。
 4. 次の画面の **[Service]\(サービス\)** タブに、ノードの一意のイニシエーター名が表示されます。
 5. イニシエーター名の上にある **[Service Start]\(サービスの開始\)** 値が **[When Booting]\(起動時\)** に設定されていることを確認します。
-6. そうでない場合は、**[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
+6. そうでない場合は、 **[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
 7. 次に、上部のタブを **[Connected Targets]\(接続済みのターゲット\)** に切り替えます。
-8. **[Connected Targets]\(接続済みのターゲット)** 画面に、次の例のような SBD デバイスのエントリが表示されます:**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
+8. **[Connected Targets]\(接続済みのターゲット\)** 画面に、この例: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso** のような SBD デバイスのエントリが表示されます。
 9. **Start-Up** 値が **on boot** に設定されているかどうかを確認します。
-10. そうでない場合は、**[Edit]\(編集\)** を選択して変更します。
+10. そうでない場合は、 **[Edit]\(編集\)** を選択して変更します。
 11. 変更内容を保存し、YaST2 を終了します。
 
 
@@ -726,7 +725,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Azure の計画メンテナンス 
 
 計画メンテナンスについては、さまざまなユース ケースがあります。 問題は、それが OS レベルでの変更やディスク構成などのインフラストラクチャのメンテナンスだけなのか、または HANA アップグレードなのかということです。
-追加情報については、「[Towards Zero Downtime][sles-zero-downtime-paper]」 (ゼロ ダウンタイムに向けて) や「[SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]」 (SAP HANA SR パフォーマンス最適化シナリオ) などの SUSE のドキュメントを参照してください。 これらのドキュメントには、プライマリを手動で移行する方法を示す例も記載されています。
+追加情報については、「[ゼロ ダウンタイムに向けて][sles-zero-downtime-paper]」や「[SAP HANA SR パフォーマンス最適化シナリオ][sles-12-for-sap]」などの SUSE のドキュメントを参照してください。 これらのドキュメントには、プライマリを手動で移行する方法を示す例も記載されています。
 
 インフラストラクチャのメンテナンスのユース ケースを確認するために、集中的な内部テストが行われました。 プライマリの移行に関連するあらゆる問題を回避するために、クラスターをメンテナンス モードにする前に、必ずプライマリを移行することを決定しました。 このようにすると、クラスターに前の状況 (どちらの側がプライマリで、どちら側がセカンダリであったか) を忘れさせる必要がなくなります。
 
@@ -821,7 +820,7 @@ INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 
 
 
-## <a name="hbreport-to-collect-log-files"></a>ログ ファイルを収集する hb_report
+## <a name="hb_report-to-collect-log-files"></a>ログ ファイルを収集する hb_report
 
 Pacemaker クラスターの問題を分析するには、**hb_report** ユーティリティの実行が有用であり、また SUSE サポートで要求されています。 何が起こったかを分析する必要があるすべての重要なログ ファイルを収集します。 このサンプルの呼び出しでは、特定のインシデントが発生した開始時間と終了時間を使用します。 「[重要](#important-notes)」も参照してください。
 
@@ -964,7 +963,7 @@ https://&ltnode&gt:7630
 ![Hawk で制約を一覧表示する](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-次のように、**[History]\(履歴\)** の下の Hawk で **hb_report** 出力をアップロードすることもできます。 「ログ ファイルを収集する hb_report」を参照してください。 
+次のように、 **[History]\(履歴\)** の下の Hawk で **hb_report** 出力をアップロードすることもできます。 「ログ ファイルを収集する hb_report」を参照してください。 
 
 ![Hawk で hb_report 出力をアップロードする](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
@@ -977,7 +976,7 @@ https://&ltnode&gt:7630
 ![Hawk の 1 つの遷移](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このトラブルシューティング ガイドでは、スケールアウト構成での SAP HANA の高可用性について説明しました。 データベースに加え、SAP ランドスケープ内のもう 1 つの重要なコンポーネントは、SAP NetWeaver スタックです。 [SUSE Enterprise Linux Server を使用した Azure の仮想マシン上の SAP NetWeaver の高可用性][sap-nw-ha-guide-sles]について学習します。
 

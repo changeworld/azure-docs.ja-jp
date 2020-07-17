@@ -1,0 +1,69 @@
+- name: Azure セキュリティ ベンチマーク
+  href: index.yml
+- name: はじめに
+  href: introduction.md
+- name: シングル サインオンの設定
+  expanded: true
+  items:
+    - name: Azure セキュリティ コントロールの概要
+      href: overview.md
+    - name: ネットワークのセキュリティ
+      href: security-control-network-security.md
+    - name: ログ記録と監視
+      href: security-control-logging-monitoring.md
+    - name: ID とアクセスの制御
+      href: security-control-identity-access-control.md
+    - name: データ保護
+      href: security-control-data-protection.md
+    - name: 脆弱性の管理
+      href: security-control-vulnerability-management.md
+    - name: インベントリと資産の管理
+      href: security-control-inventory-asset-management.md
+    - name: セキュリティで保護された構成
+      href: security-control-secure-configuration.md
+    - name: マルウェアからの防御
+      href: security-control-malware-defense.md
+    - name: データの復旧
+      href: security-control-data-recovery.md
+    - name: インシデント対応
+      href: security-control-incident-response.md
+    - name: 侵入テストとレッド チーム演習
+      href: security-control-penetration-tests-red-team-exercises.md
+- name: Azure のセキュリティ ベースライン
+  items:
+    - name: Azure のセキュリティ ベースラインの概要
+      href: security-baselines-overview.md
+    - name: API Management のセキュリティ ベースライン
+      href: ../../api-management/security-baseline.md
+    - name: Azure Cache for Redis のセキュリティ ベースライン
+      href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Backup のセキュリティ ベースライン
+      href: ../../backup/security-baseline.md
+    - name: Batch のセキュリティ ベースライン
+      href: ../../batch/security-baseline.md
+    - name: Container Registry のセキュリティ ベースライン
+      href: ../../container-registry/security-baseline.md
+    - name: Cosmos DB のセキュリティ ベースライン
+      href: ../../cosmos-db/security-baseline.md
+    - name: データ エクスプローラーのセキュリティ ベースライン
+      href: /azure/data-explorer/security-baseline
+    - name: Databricks のセキュリティ ベースライン
+      href: ../../azure-databricks/security-baseline.md
+    - name: Event Hubs のセキュリティ ベースライン
+      href: ../../event-hubs/security-baseline.md
+    - name: Functions のセキュリティ ベースライン
+      href: ../../azure-functions/security-baseline.md
+    - name: HDInsight のセキュリティ ベースライン
+      href: ../../hdinsight/security-baseline.md
+    - name: Key Vault のセキュリティ ベースライン
+      href: ../../key-vault/security-baseline.md
+    - name: MariaDB のセキュリティ ベースライン
+      href: ../../mariadb/security-baseline.md
+    - name: MySQL のセキュリティ ベースライン
+      href: ../../mysql/security-baseline.md
+    - name: PostgreSQL のセキュリティ ベースライン
+      href: ../../postgresql/security-baseline.md
+    - name: SQL Database のセキュリティ ベースライン
+      href: ../../sql-database/security-baseline.md
+    - name: Storage のセキュリティ ベースライン
+      href: ../../storage/common/security-baseline.md

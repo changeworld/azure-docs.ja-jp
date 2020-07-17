@@ -1,23 +1,26 @@
 ---
-title: Azure クイック スタート - Azure PowerShell を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+title: クイックスタート - PowerShell を使用して BLOB を作成する
+titleSuffix: Azure Storage
 description: このクイック スタートでは、オブジェクト (BLOB) ストレージで Azure PowerShell を使用します。 その後、PowerShell を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: c0a5f7271628e11dbc8fa8b18b21358923f567cc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: bca04317acf589e8bae46f086c6c79dfc82152a8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149402"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176653"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>クイック スタート:PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 Azure PowerShell モジュールを使用して Azure リソースを作成および管理します。 Azure リソースの作成または管理は、PowerShell のコマンド ラインまたはスクリプトから行うことができます。 このガイドでは、PowerShell を使用してローカル ディスクと Azure Blob Storage の間でファイルを転送する方法について説明します。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +28,7 @@ Azure Storage にアクセスするには、Azure サブスクリプションが
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-このクイック スタートでは、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 バージョンを確認するには、`Get-InstalledModule -Name Az -AllVersions | select Name,Version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
+このクイック スタートでは、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 バージョンを確認するには、`Get-InstalledModule -Name Az -AllVersions | select Name,Version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -33,30 +36,30 @@ Azure Storage にアクセスするには、Azure サブスクリプションが
 
 BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、BLOB のグループを整理できます。
 
-コンテナー名を設定し、[New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) を使用してコンテナーを作成します。 `blob` に対するアクセス許可を設定して、ファイルのパブリック アクセスを許可します。 この例でのコンテナー名は *quickstartblobs* です。
+コンテナー名を設定し、[New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) を使用してコンテナーを作成します。 `blob` に対するアクセス許可を設定して、ファイルのパブリック アクセスを許可します。 この例でのコンテナー名は *quickstartblobs* です。
 
 ```powershell
 $containerName = "quickstartblobs"
-new-AzStoragecontainer -Name $containerName -Context $ctx -Permission blob
+New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 ```
 
 ## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 IaaS VM をバックアップするための VHD ファイルはページ BLOB です。 追加 BLOB は、ファイルに書き込んでからも情報を追加し続ける場合などの、ログ記録に使用します。 BLOB ストレージに格納されているほとんどのファイルはブロック BLOB です。 
 
-ファイルをブロック BLOB にアップロードするには、コンテナー参照を取得してから、そのコンテナー内のブロック BLOB への参照を取得します。 BLOB 参照を取得したら、[Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent) を使用して、それにデータをアップロードできます。 この処理により、BLOB が存在しない場合は作成され、存在する場合は上書きされます。
+ファイルをブロック BLOB にアップロードするには、コンテナー参照を取得してから、そのコンテナー内のブロック BLOB への参照を取得します。 BLOB 参照を取得したら、[Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) を使用して、それにデータをアップロードできます。 この処理により、BLOB が存在しない場合は作成され、存在する場合は上書きされます。
 
 次の例では、ローカル ディスク上の *D:\\_TestImages* フォルダーの *Image001.jpg* と *Image002.png* を作成したコンテナーにアップロードします。
 
 ```powershell
 # upload a file
-set-AzStorageblobcontent -File "D:\_TestImages\Image001.jpg" `
+Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
 # upload another file
-set-AzStorageblobcontent -File "D:\_TestImages\Image002.png" `
+Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
@@ -66,7 +69,7 @@ set-AzStorageblobcontent -File "D:\_TestImages\Image002.png" `
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-[Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob) を使用して、コンテナー内の BLOB の一覧を取得します。 この例では、アップロードされた BLOB の名前だけを示しています。
+[Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) を使用して、コンテナー内の BLOB の一覧を取得します。 この例では、アップロードされた BLOB の名前だけを示しています。
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -74,19 +77,19 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 
-BLOB をローカル ディスクにダウンロードします。 ダウンロードする BLOB ごとに名前を設定し、[Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) を呼び出して BLOB をダウンロードします。
+BLOB をローカル ディスクにダウンロードします。 ダウンロードする BLOB ごとに名前を設定し、[Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) を呼び出して BLOB をダウンロードします。
 
 この例では、BLOB をローカル ディスク上の *D:\\_TestImages\Downloads* にダウンロードします。 
 
 ```powershell
 # download first blob
-Get-AzStorageblobcontent -Blob "Image001.jpg" `
+Get-AzStorageBlobContent -Blob "Image001.jpg" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx 
 
 # download another blob
-Get-AzStorageblobcontent -Blob "Image002.png" `
+Get-AzStorageBlobContent -Blob "Image002.png" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx
@@ -94,19 +97,16 @@ Get-AzStorageblobcontent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy でのデータ転送
 
-[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ユーティリティは、Azure Storage 用のスクリプト可能な高性能データ転送のためのもう 1 つのオプションです。 AzCopy を使用して、Blob Storage、File Storage、および Table Storage との間でデータを転送します。
+AzCopy コマンド ライン ユーティリティは、Azure Storage に対する高速かつスクリプトで制御可能なデータ転送を実現します。 Blob Storage や Azure Files との間のデータ転送に AzCopy を使用できます。 最新バージョンである AzCopy v10 の詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md)」を参照してください。 Blob Storage での AzCopy v10 の使用については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)」を参照してください。
 
-簡単な例として、PowerShell ウィンドウ内から、*myfile.txt* という名前のファイルを *mystoragecontainer* コンテナーにアップロードするための AzCopy コマンドを次に示します。
+次の例では、AzCopy を使用してローカル ファイルを BLOB にアップロードします。 サンプルの値は忘れずに実際の値に置き換えてください。
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したすべての資産を削除します。 アセットを削除する最も簡単な方法は、リソース グループを削除することです。 リソース グループを削除すると、そのグループに含まれるすべてのリソースも削除されます。 次の例では、リソース グループを削除して、ストレージ アカウントとリソース グループ自体を削除しています。
 
@@ -114,12 +114,12 @@ Get-AzStorageblobcontent -Blob "Image002.png" `
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、ローカル ディスクと Azure Blob Storage の間でファイルを転送しました。 PowerShell を使用した BLOB ストレージの操作については、Azure Storage で Azure PowerShell を使用する方法に関するページに進みます。
+このクイックスタートでは、ローカル ファイル システムと Azure Blob Storage の間でファイルを転送しました。 PowerShell を使用した BLOB ストレージの操作をさらに学習するには、BLOB ストレージ用の Azure PowerShell サンプルを調べてください。
 
 > [!div class="nextstepaction"]
-> [Azure Storage での Azure PowerShell の使用](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure Blob Storage の Azure PowerShell サンプル](storage-samples-blobs-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets-reference"></a>Microsoft Azure PowerShell Storage コマンドレット リファレンス
 

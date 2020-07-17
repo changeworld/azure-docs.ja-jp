@@ -1,5 +1,5 @@
 ---
-title: Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題 | Microsoft Docs
+title: Azure AD ギャラリー アプリのフェデレーション SSO を構成する際の問題
 description: Azure AD アプリケーション ギャラリーの一覧にあるアプリケーションの SAML を使用してフェデレーション シングル サインオンを構成するときに発生することがある一般的な問題の一部に対処します
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554fb73ea7bf4f866eda3e9f3d629f871cb5e582
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781163"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74274652"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
@@ -42,23 +42,23 @@ ms.locfileid: "65781163"
 
 アプリケーション用に構成済みのパターンを確認するには、次の手順に従います。
 
-1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。既に  Azure AD のアプリケーションの構成ブレードが表示されている場合は、手順 7. に進みます。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。既に Azure AD のアプリケーションの構成ブレードが表示されている場合は、手順 7. に進みます。
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成するアプリケーションを選択します。
 
 7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
-8. **[モード]** ボックスの一覧から、**[SAML ベースのサインオン]** を選択します。
+8. **[モード]** ボックスの一覧から、 **[SAML ベースのサインオン]** を選択します。
 
 9. **[ドメインと URL]** セクションの **[識別子]** または **[応答 URL]** ボックスに移動します。
 
@@ -90,19 +90,19 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成したアプリケーションを選択します。
 
 7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
-8. **[SAML 署名証明書]** セクションに移動して、**[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
+8. **[SAML 署名証明書]** セクションに移動して、 **[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
 
 Azure AD には、メタデータを取得する URL は用意されていません。 メタデータは、XML ファイルとしてのみ取得できます。
 
@@ -110,5 +110,5 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 8ebb10f955be8f3004fdbdc595ea0fefc0d2b7ea
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110768"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67180888"
 ---
 ## <a name="update-properties"></a>プロパティを更新する
 

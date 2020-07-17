@@ -3,24 +3,24 @@ title: クイック スタート - Azure CDN プロファイルとエンドポ�
 description: このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure CDN を有効にする方法を紹介しています。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b1e287ee949aedf084d4390fe672f0fe41899c34
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091768"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81254038"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート: Azure CDN プロファイルとエンドポイントの作成
 このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure Content Delivery Network (CDN) を有効にします。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツの配信を開始することができます。
@@ -39,7 +39,7 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
 
 CDN プロファイルを作成したら、これを使用してエンドポイントを作成できます。
 
-1. Azure Portal のダッシュボードで、作成した CDN プロファイルを選択します。 目的の CDN プロファイルが見つからない場合は、**[すべてのサービス]**、**[CDN のプロファイル]** の順に選択します。 **[CDN のプロファイル]** ページで、使用するプロファイルを選択します。 
+1. Azure Portal のダッシュボードで、作成した CDN プロファイルを選択します。 目的の CDN プロファイルが見つからない場合は、 **[すべてのサービス]** 、 **[CDN のプロファイル]** の順に選択します。 **[CDN のプロファイル]** ページで、使用するプロファイルを選択します。 
    
     [CDN のプロファイル] ページが表示されます。
 
@@ -51,9 +51,9 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
 
 3. エンドポイント設定については、次の表で指定されている値を使用します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | **名前** | エンドポイントのホスト名として「*my-endpoint-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 この名前は、ドメイン _&lt;エンドポイント名&gt;_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。|
+    | **名前** | エンドポイントのホスト名として「*my-endpoint-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 この名前は、ドメイン _&lt;エンドポイント名&gt;_ .azureedge.net でキャッシュされたリソースにアクセスする際に使用します。|
     | **配信元の種類** | **[ストレージ]** を選択します。 | 
     | **配信元のホスト名** | ホスト名として「*mystorageacct123.blob.core.windows.net*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
     | **配信元のパス** | 空白のままにします。 |
@@ -75,16 +75,16 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
    - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
    - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 前の手順では、リソース グループ内に CDN プロファイルとエンドポイントを作成しました。 [次の手順](#next-steps)に進んでエンドポイントにカスタム ドメインを追加する方法について学習するには、これらのリソースを保存してください。 ただし、将来これらのリソースを使用する予定がない場合は、次の手順に従ってリソース グループを削除してリソースを削除することで、追加の料金が発生するのを避けることができます。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]**、**[my-resource-group-123]** の順に選択します。
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** 、 **[my-resource-group-123]** の順に選択します。
 
-2. **[リソース グループ]** ページで、**[リソース グループの削除]** を選択し、テキスト ボックスに「*my-resource-group-123*」と入力し、**[削除]** を選択します。
+2. **[リソース グループ]** ページで、 **[リソース グループの削除]** を選択し、テキスト ボックスに「*my-resource-group-123*」と入力し、 **[削除]** を選択します。
 
     このアクションにより、このクイック スタートで作成したリソース グループ、プロファイル、およびエンドポイントが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 カスタム ドメインを CDN エンドポイントに追加する方法については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]

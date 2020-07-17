@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 API に接続する - Python
-description: Python を使用して Media Services v3 API に接続する方法について学習します。
+description: この記事では、Python を使用して Media Services v3 API に接続する方法を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 971e36b600a2c6be516e39ce84ca5780a2f23bbd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699996"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74888463"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API に接続する - Python
 
@@ -30,6 +30,9 @@ ms.locfileid: "59699996"
 - `PATH` 環境変数を必ず設定します
 - [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
 - [API へのアクセス](access-api-cli-how-to.md)に関するトピックの手順を実行します。 後の手順で必要になるので、サブスクリプション ID、アプリケーション ID (クライアント ID)、認証キー (シークレット)、テナント ID を控えておきます。
+
+> [!IMPORTANT]
+> [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
 
 ## <a name="install-the-modules"></a>モジュールをインストールする
 
@@ -98,7 +101,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 1. ファイルを実行します
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Python SDK](https://aka.ms/ams-v3-python-sdk) を使用します。
 - Media Services の [Python リファレンス](https://aka.ms/ams-v3-python-ref) ドキュメントを確認してください。

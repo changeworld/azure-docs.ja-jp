@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
-ms.topic: overview
-ms.date: 04/04/2019
+ms.topic: conceptual
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: d8f8d110a13e768d93f0be3c4baaf5715436f2ed
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218533"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -29,7 +29,7 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>記録された受信カスタマー コールを分析する
 
-テキスト読み上げ、感情分析、およびキー フレーズ抽出を使用して、カスタマー サービスから分析情報を引き出します。 顧客の理解を深め、カスタマー サービスの傾向を明らかにし、顧客エンゲージメントを促進するために、結果を Power BI ダッシュボードまたはポータルに表示します。 API 要求をレポートのためにバッチとして送信するか、または介入のためにリアルタイムで送信します。 
+テキスト読み上げ、感情分析、およびキー フレーズ抽出を使用して、カスタマー サービスから分析情報を引き出します。 顧客の理解を深め、カスタマー サービスの傾向を明らかにし、顧客エンゲージメントを促進するために、結果を Power BI ダッシュボードまたはポータルに表示します。 API 要求をレポートのためにバッチとして送信するか、または介入のためにリアルタイムで送信します。 [GitHub 上](https://github.com/rlagh2/callcenteranalytics)のサンプル コードを参照してください。
 
 ![カスタマー サービスの問い合わせからの分析情報の取得をセンチメント分析を使用して自動化する方法を説明する画像](media/use-cases/azure-inbound.svg)
 
@@ -41,11 +41,17 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 
 ## <a name="monitor-your-products-social-media-feeds"></a>商品のソーシャル メディア フィードを監視する
 
-商品の Twitter または Facebook ページで商品に関するユーザーのフィードバックを監視します。 このデータを使用して、新商品の発売に対する顧客の感情を分析したり、機能や機能要求に関するキー フレーズを抽出したり、発生した顧客の苦情に対処したりできます。
+商品の Twitter または Facebook ページで商品に関するユーザーのフィードバックを監視します。 このデータを使用して、新商品の発売に対する顧客の感情を分析したり、機能や機能要求に関するキー フレーズを抽出したり、発生した顧客の苦情に対処したりできます。 サンプルの [Microsoft Flow テンプレート](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)を参照してください。
 
 ![キー フレーズ抽出を使用してソーシャル メディアでの商品や企業のフィードバックを監視する方法を説明する画像](media/use-cases/social-feed.svg)
 
-## <a name="next-steps"></a>次の手順
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>機密情報を含んだドキュメントを分類、編集する
+
+ドキュメントに含まれる個人情報や機密情報を識別するには、名前付きエンティティの認識を使用します。 そのデータを使用してドキュメントを分類または編集し、それらを安全に共有できるようにします。
+
+![NER を使用して個人情報を検出したりドキュメントを分類、編集したりする方法を説明する画像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="next-steps"></a>次のステップ
 
 * [Text Analytics API とは](overview.md)
-* [C# を使用して Text Analytics API に要求を送信する](quickstarts/csharp.md)
+* [クライアント ライブラリを使用して Text Analytics API に要求を送信する](quickstarts/text-analytics-sdk.md)

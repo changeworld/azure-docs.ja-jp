@@ -1,36 +1,53 @@
 ---
-title: Cookie の定義 - Azure Active Directory B2C | Microsoft Docs
+title: Cookie の定義
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で使われる Cookie の定義を提供します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7864320b71416d1b06661b8ae96c6113962250dd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 01/23/2020
+ms.author: mimart
+ms.subservice: B2C
+ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703978"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78189516"
 ---
-# <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Azure Active Directory B2C での Cookie の定義
+# <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C での Cookie の定義
 
-次の表では、Azure Active Directory B2C で使われる Cookie の一覧を示します。
+以下のセクションでは、Azure Active Directory B2C (Azure AD B2C) で使用される Cookie に関する情報を提供します。
 
-| Name | Domain | 有効期限 | 目的 |
+## <a name="samesite"></a>SameSite
+
+Microsoft Azure AD B2C サービスは、SameSite ブラウザー構成と互換性があります。これには、`SameSite=None` と、`Secure` 属性のサポートが含まれます。
+
+サイトへのアクセスを保護するために、Web ブラウザーでは、新しい "既定でセキュリティ保護" モデルが導入されます。このモデルでは、特に指定のない場合、すべての Cookie を外部アクセスから保護していることが前提になります。 この変更が最初に実装されるのは Chrome ブラウザーであり、[2020 年 2 月の Chrome 80](https://www.chromium.org/updates/same-site) から実装されます。 Chrome での変更に向けた準備の詳細については、「[Developers: Get Ready for New SameSite=None; Secure Cookie Settings](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)」(開発者へ: 新しい SameSite=None; セキュア Cookie 設定に備えよ) という Chromium ブログの記事を参照してください。
+
+開発者は、新しい Cookie 設定 `SameSite=None` を使用して、クロスサイト アクセス用の Cookie を指定する必要があります。 `SameSite=None` 属性が存在する場合は、追加の `Secure` 属性を使用して、クロスサイト Cookie には HTTPS 接続経由でしかアクセスできないようにする必要があります。 Azure AD B2C を使用するアプリケーションをはじめ、すべてのアプリケーションを検証およびテストします。
+
+詳細については、次を参照してください。
+
+* [Chrome ブラウザーにおける SameSite Cookie の変更の処理](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
+* [Chrome バージョン 80 以降のお客様の Web サイトと Microsoft のサービスおよび製品への影響](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
+
+## <a name="cookies"></a>Cookie
+
+次の表では、Azure AD B2C で使われる Cookie の一覧を示します。
+
+| 名前 | Domain | 有効期限 | 目的 |
 | ----------- | ------ | -------------------------- | --------- |
-| x-ms-cpim-admin | main.b2cadmin.ext.azure.com | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | テナント間でユーザーのメンバーシップ データを保持します。 ユーザーがメンバーになっているテナントと、メンバーシップのレベル (管理者またはユーザー) です。 |
-| x-ms-cpim-slice | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | 適切な運用インスタンスに要求をルーティングするために使われます。 |
-| x-ms-cpim-trans | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | トランザクション (Azure AD B2C に対する認証要求の数) と現在のトランザクションを追跡するために使われます。 |
-| x-ms-cpim-sso:{Id} | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | SSO セッションを維持するために使われます。 |
-| x-ms-cpim-cache:{id}_n | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了、認証の成功 | 要求の状態を維持するために使われます。 |
-| x-ms-cpim-csrf | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | クロスサイト リクエスト フォージェリの保護に使われる CRSF トークン。 |
-| x-ms-cpim-dc | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | Azure AD B2C のネットワーク ルーティングに使われます。 |
-| x-ms-cpim-ctx | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | Context |
-| x-ms-cpim-rp | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | リソース プロバイダー テナントのメンバーシップ データの格納に使われます。 |
-| x-ms-cpim-rc | login.microsoftonline.com、b2clogin.com、ブランド化されたドメイン | [ブラウザー セッション](active-directory-b2c-token-session-sso.md)の終了 | リレー Cookie を格納するために使われます。 |
-
+| `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [ブラウザー セッション](session-behavior.md)の終了 | テナント間でユーザーのメンバーシップ データを保持します。 ユーザーがメンバーになっているテナントと、メンバーシップのレベル (管理者またはユーザー) です。 |
+| `x-ms-cpim-slice` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | 適切な運用インスタンスに要求をルーティングするために使われます。 |
+| `x-ms-cpim-trans` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | トランザクション (Azure AD B2C に対する認証要求の数) と現在のトランザクションを追跡するために使われます。 |
+| `x-ms-cpim-sso:{Id}` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | SSO セッションを維持するために使われます。 |
+| `x-ms-cpim-cache:{id}_n` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了、認証の成功 | 要求の状態を維持するために使われます。 |
+| `x-ms-cpim-csrf` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | クロスサイト リクエスト フォージェリの保護に使われる CRSF トークン。 |
+| `x-ms-cpim-dc` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | Azure AD B2C のネットワーク ルーティングに使われます。 |
+| `x-ms-cpim-ctx` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | Context |
+| `x-ms-cpim-rp` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | リソース プロバイダー テナントのメンバーシップ データの格納に使われます。 |
+| `x-ms-cpim-rc` | b2clogin.com、login.microsoftonline.com、ブランド化されたドメイン | [ブラウザー セッション](session-behavior.md)の終了 | リレー Cookie を格納するために使われます。 |

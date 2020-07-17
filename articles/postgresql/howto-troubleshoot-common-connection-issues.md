@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング
+title: 接続のトラブルシューティング - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
-author: jan-eng
-ms.author: janeng
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 9026b561f52b2d43fff2d3e36ba569d7b62a4684
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069021"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562221"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング
 
@@ -49,6 +49,7 @@ ms.locfileid: "65069021"
 * サーバーのファイアウォールの構成:Azure Database for PostgreSQL サーバーのファイアウォールが、プロキシ サーバーやゲートウェイなど、クライアントからの接続を許可するように構成されていることを確認します。
 * クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、PostgreSQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
 * ユーザー エラー:接続文字列のサーバー名の間違いや、ユーザー名に *\@servername* サフィックスがないなど、接続パラメーターを誤って入力している可能性があります。
+* "_Server is not configured to allow ipv6 connections (ipv6 接続を許可するようにサーバーが構成されていません)_ " というエラーが表示された場合は、Basic レベルでは、VNet サービス エンドポイントはサポートされていないことに注意してください。 Basic サーバーに接続しようとしているサブネットから Microsoft.Sql エンドポイントを削除する必要があります。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
 
@@ -57,6 +58,6 @@ ms.locfileid: "65069021"
 3. 接続文字列およびその他の接続設定を確認します。
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧する手順について「[Azure Database for PostgreSQL によるビジネス継続性の概要](concepts-business-continuity.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for PostgreSQL の一時的な接続エラーに対処する](concepts-connectivity.md)

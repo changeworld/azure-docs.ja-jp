@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
-ms.date: 11/20/2017
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: 257d55fd0c7d843934c4f07a798247c5271d8ed7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 11/20/2018
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 420c9e5a1e86f54e52905e7d7d2459fa2f68e405
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044299"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76771287"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python:リリース ノートとリソース
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -38,10 +38,10 @@ ms.locfileid: "54044299"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * 一般公開リリース
 
-### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
+### <a name="0371"></a><a name="0.37.1"/>0.37.1
 * プレリリース SDK
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
@@ -57,9 +57,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [0.37.1](#0.37.1) |2017 年 10 月 5 日 |--- |
 
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>関連項目
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。 
+## <a name="see-also"></a>参照
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。 
 

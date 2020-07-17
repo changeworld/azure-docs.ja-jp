@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 5b126ac5d5cadaa1f81cce955ff5b76883103c3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 44050ab9367572a8160f6e268781478ca3313419
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637397"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100857"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure Lab Services 用 Azure PowerShell サンプル
 
@@ -25,9 +25,9 @@ ms.locfileid: "34637397"
 
 | |  |
 |---|---|
-|[外部ユーザーをラボに追加する](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure DevTest Labs でラボに外部ユーザーを追加します。 |
-|[マーケットプレース イメージをラボに追加する](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure DevTest Labs でラボにマーケットプレース イメージを追加します。 |
-|[VHD からカスタム イメージを作成する](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure DevTest Labs のラボでカスタム イメージを作成します。 |
-|[ラボ内にカスタム ロールを作成する](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure Lab Services のラボ内にカスタム ロールを作成します。 |
-|[許可される VM のサイズをラボ内に設定する](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、許可される仮想マシン (VM) のサイズをラボ内に設定します。 |
+|[外部ユーザーをラボに追加する](scripts/add-external-user-to-lab.md)| この PowerShell スクリプトは、Azure DevTest Labs でラボに外部ユーザーを追加します。 |
+|[マーケットプレース イメージをラボに追加する](scripts/add-marketplace-images-to-lab.md)| この PowerShell スクリプトは、Azure DevTest Labs でラボにマーケットプレース イメージを追加します。 |
+|[VHD からカスタム イメージを作成する](scripts/create-custom-image-from-vhd.md)| この PowerShell スクリプトは、Azure DevTest Labs のラボでカスタム イメージを作成します。 |
+|[ラボ内にカスタム ロールを作成する](scripts/create-custom-role-in-lab.md)| この PowerShell スクリプトは、Azure Lab Services のラボ内にカスタム ロールを作成します。 |
+|[許可される VM のサイズをラボ内に設定する](scripts/set-allowed-vm-sizes-in-lab.md)| この PowerShell スクリプトは、許可される仮想マシン (VM) のサイズをラボ内に設定します。 |
 

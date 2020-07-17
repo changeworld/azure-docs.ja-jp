@@ -4,21 +4,20 @@ description: この記事では、Azure 仮想マシンのブート エラーの
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: c12f753225f8c6fc4fdb3fdcbaf0e915cb85fdbf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779447"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71059182"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure 仮想マシンのブート エラーのトラブルシューティング
 
@@ -34,7 +33,7 @@ ms.locfileid: "57779447"
 * [再起動ループの問題](troubleshoot-reboot-loop.md)
 * [VM の起動が Windows Update の段階で停止する](troubleshoot-stuck-updating-boot-error.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブート診断](boot-diagnostics.md)
 - [VM シリアル コンソール](../windows/serial-console.md)

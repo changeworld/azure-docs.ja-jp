@@ -1,25 +1,22 @@
 ---
-title: Azure CLI を使用して Linux VM に MongoDB をインストールする | Microsoft Docs
+title: Azure CLI を使用して Linux VM に MongoDB をインストールする
 description: Azure CLI を使用して Linux 仮想マシンに MongoDB をインストールして構成する方法について説明する
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
+manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 5fadf23cc1fc2e1a6092c48033580d398fc689a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012794"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "78944881"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
 
@@ -210,12 +207,12 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事の例では、VM からローカルに MongoDB インスタンスに接続しました。 別の VM またはネットワークから MongoDB インスタンスに接続する場合は、適切な[ネットワーク セキュリティ グループ規則を作成する](nsg-quickstart.md)必要があります。
 
 これらの例では、開発用のコア MongoDB 環境をデプロイします。 環境に必要なセキュリティ構成オプションを適用します。 詳細については、[MongoDB のセキュリティ ドキュメント](https://docs.mongodb.com/manual/security/)を参照してください。
 
-テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
 
 Azure Resource Manager テンプレートは、カスタム スクリプト拡張機能を使って、スクリプトをダウンロードして VM で実行します。 詳しくは、「[Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用](extensions-customscript.md)」をご覧ください。
 

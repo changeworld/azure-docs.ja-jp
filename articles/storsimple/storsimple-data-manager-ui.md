@@ -1,29 +1,21 @@
 ---
-title: Microsoft Azure StorSimple データ マネージャーの UI | Microsoft Docs
+title: Microsoft Azure StorSimple Data Manager の UI
 description: StorSimple Data Manager サービスの UI を使う方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78933754"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Azure Portal で StorSimple Data Manager サービスを管理する
 
-この記事では、StorSimple Data Manager UI を使って、StorSimple 8000 シリーズ デバイス上にあるデータを変換する方法について説明します。 変換されたデータは、Azure Media Services、Azure HDInsight、Azure Machine Learning、Azure Search など、他の Azure サービスが使用できます。
+この記事では、StorSimple Data Manager UI を使って、StorSimple 8000 シリーズ デバイス上にあるデータを変換する方法について説明します。 変換されたデータは、Azure Media Services、Azure HDInsight、Azure Machine Learning、Azure Cognitive Search など、他の Azure サービスが使用できます。
 
 
 ## <a name="use-storsimple-data-transformation"></a>StorSimple データ変換を使用する
@@ -40,7 +32,7 @@ StorSimple データ マネージャー サービスを作成するには、次�
 
     ![StorSimple Data Manager サービスを作成する 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-3. StorSimple Data Manager をクリックし、**[作成]** をクリックします。
+3. StorSimple Data Manager をクリックし、 **[作成]** をクリックします。
     
     ![StorSimple Data Manager サービスを作成する 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
@@ -54,7 +46,7 @@ StorSimple データ マネージャー サービスを作成するには、次�
 
    4. ストレージ アカウントを含むサービスと StorSimple Data Manager サービスの **[場所]** を指定します。 StorSimple Device Manager サービス、Data Manager サービス、および関連するストレージ アカウントはすべて、サポートされているリージョンに存在する必要があります。
     
-   5. ダッシュボードにこのサービスへのリンクを作成するには、**[ダッシュボードにピン留めする]** をオンにします。
+   5. ダッシュボードにこのサービスへのリンクを作成するには、 **[ダッシュボードにピン留めする]** をオンにします。
     
    6. **Create** をクリックしてください。
 
@@ -84,11 +76,11 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
 6. これは新しいデータ マネージャー サービスであるため、データ リポジトリは構成されていません。 **[データ ソースの構成]** で、StorSimple 8000 シリーズ デバイスと対象データの詳細を指定します。
 
-   StorSimple Device Manager をデータ リポジトリとして追加するには、データ リポジトリのドロップダウンで **[新規追加]** をクリックし、**[データ リポジトリの追加]** をクリックします。
+   StorSimple Device Manager をデータ リポジトリとして追加するには、データ リポジトリのドロップダウンで **[新規追加]** をクリックし、 **[データ リポジトリの追加]** をクリックします。
 
     ![新しいデータ リポジトリを追加する](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-   1. データ リポジトリの種類としては、**[StorSimple 8000 series Manager]\(StorSimple 8000 シリーズ マネージャー\)** を選びます。
+   1. データ リポジトリの種類としては、 **[StorSimple 8000 series Manager]\(StorSimple 8000 シリーズ マネージャー\)** を選びます。
     
    2. ソース データ リポジトリのフレンドリ名を入力します。
     
@@ -100,7 +92,7 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
       ![ソース データ リポジトリを構成する 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      完了したら、**[OK]** をクリックします。 データ リポジトリが保存されます。 これらのパラメーターをもう一度入力することなく、他のジョブ定義でこの StorSimple Device Manager を再利用できます。 **[OK]** をクリックしてから数秒後に、新しく作成したソース データ リポジトリがドロップダウンに表示されます。
+      完了したら、 **[OK]** をクリックします。 データ リポジトリが保存されます。 これらのパラメーターをもう一度入力することなく、他のジョブ定義でこの StorSimple Device Manager を再利用できます。 **[OK]** をクリックしてから数秒後に、新しく作成したソース データ リポジトリがドロップダウンに表示されます。
 
 7. **[データ リポジトリ]** ドロップダウン リストから、作成したデータ リポジトリを選びます。 
 
@@ -108,15 +100,15 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
    2. 対象データが存在する、StorSimple デバイス上のボリュームの名前を指定します。
 
-   3. **[フィルター]** サブセクションで、対象データを含むルート ディレクトリを、_\MyRootDirectory\Data_ の形式で入力します。 _\C:\Data_ などのドライブ文字はサポートされていません。 任意のファイル フィルターをここで追加することもできます。
+   3. **[フィルター]** サブセクションで、対象データを含むルート ディレクトリを、 _\MyRootDirectory\Data_ の形式で入力します。 _\C:\Data_ などのドライブ文字はサポートされていません。 任意のファイル フィルターをここで追加することもできます。
 
-   4. データ変換サービスは、スナップショットを使用して Azure にプッシュされたデータで機能します。 このジョブを実行するとき、ジョブを実行するたびに (最新のデータで機能する) バックアップを作成するように選択できます。また、クラウド内の既存のバックアップを使うこともできます (アーカイブされたデータで作業している場合)。
+   4. データ変換サービスは、Azure にプッシュされたデータの最新スナップショットでのみ機能します。
 
-   5. Click **OK**.
+   5. **[OK]** をクリックします。
 
       ![ソース データ リポジトリを構成する 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
-8. 次に、ターゲット データ リポジトリを構成する必要があります。 ストレージ アカウントを選択すると、そのアカウントの BLOB にファイルが配置されます。 ドロップダウンで **[新規追加]** を選択し、**[設定の構成]** を選択します。
+8. 次に、ターゲット データ リポジトリを構成する必要があります。 ストレージ アカウントを選択すると、そのアカウントの BLOB にファイルが配置されます。 ドロップダウンで **[新規追加]** を選択し、 **[設定の構成]** を選択します。
 
 9. 追加するターゲット リポジトリの種類と、そのリポジトリに関連付けられている他のパラメーターを選びます。
 
@@ -129,7 +121,7 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
     
     1. **[Target repository]\(ターゲット リポジトリ\)** のドロップダウン リストから、作成したリポジトリをターゲットとして選びます。
 
-    2. ストレージの種類として、BLOB またはファイルを選びます。 変換後のデータが存在するストレージ コンテナーの名前を指定します。 Click **OK**.
+    2. ストレージの種類として、BLOB またはファイルを選びます。 変換後のデータが存在するストレージ コンテナーの名前を指定します。 **[OK]** をクリックします。
 
         ![ターゲット データ リポジトリのストレージ アカウントを構成する](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -143,7 +135,7 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
 StorSimple のデータを、ジョブ定義で指定したストレージ アカウントに移動する必要がある場合は必ず、そのジョブを実行する必要があります。 実行時に、一部のパラメーターに異なる値を指定できます。 手順は次のとおりです。
 
-1. StorSimple Data Manager サービスを選び、**[管理] > [ジョブ定義]** に移動します。 実行するジョブ定義を選んでクリックします。
+1. StorSimple Data Manager サービスを選び、 **[管理] > [ジョブ定義]** に移動します。 実行するジョブ定義を選んでクリックします。
      
      ![ジョブの実行を開始する 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
@@ -151,7 +143,7 @@ StorSimple のデータを、ジョブ定義で指定したストレージ ア�
      
      ![ジョブの実行を開始する 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-3. **[実行設定]** をクリックして、このジョブの実行に対する設定を変更します。 **[OK]** をクリックし、**[実行]** をクリックしてジョブを起動します。
+3. **[実行設定]** をクリックして、このジョブの実行に対する設定を変更します。 **[OK]** をクリックし、 **[実行]** をクリックしてジョブを起動します。
 
     ![ジョブの実行を開始する 3](./media/storsimple-data-manager-ui/start-job-run3.png)
 
@@ -159,7 +151,12 @@ StorSimple のデータを、ジョブ定義で指定したストレージ ア�
 
     ![ジョブの実行を開始する 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
+### <a name="view-logs-after-job-completion"></a>ジョブの完了後にログを表示する
 
-## <a name="next-steps"></a>次の手順
+ジョブの完了後、ジョブの状態を表示できます。 ジョブの状態には**成功**、**一部成功**、**失敗**があります。 正常にコピーされたファイルとコピーできなかったファイルを一覧表示できます。 このような一覧は、ターゲット ストレージ アカウント内で **"storsimple-data-manager-joblogs"** という名称のコンテナーで見つかります。 このコンテナー内では、ジョブ定義と同じ名前のフォルダーを探してください。 このコンテナーでは、ジョブが実行されるたびにフォルダーが作成され、その中に一覧が入ります。 このフォルダーの名前はジョブの GUID になりますが、これはジョブの詳細ページで確認できます。 あるいは、ほとんどの場合、ジョブ ページ自体の中にコピー ログのリンクがあります。
+このフォルダーには csv ファイルが 2 セットあります。 **copiedfilelist...** で始まるファイルにはすべて、正常にコピーされたファイルの一覧が含まれます。 **failedfilelist...** で始まるファイルにはすべて、コピーできなかったファイルとエラー メッセージが含まれます。
+
+
+## <a name="next-steps"></a>次のステップ
 
 [.NET SDK を使用して StorSimple データ マネージャー ジョブを起動します](storsimple-data-manager-dotnet-jobs.md)。

@@ -1,25 +1,18 @@
 ---
-title: Azure Application Insights Snapshot Debugger に関する問題のトラブルシューティング | Microsoft Docs
+title: Azure Application Insights スナップショット デバッガーのトラブルシューティング
 description: この記事では、Application Insights Snapshot Debugger の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
-services: application-insights
-documentationcenter: ''
-author: brahmnes
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
+author: brahmnes
 ms.date: 03/07/2019
-ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.reviewer: mbullwin
+ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671411"
 ---
-# <a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
 
 ## <a name="use-the-snapshot-health-check"></a>スナップショットの正常性チェックを使用する
@@ -39,6 +32,10 @@ ms.locfileid: "58094941"
 
 公開したアプリケーションで、正しいインストルメンテーション キーを使用していることを確認します。 通常、インストルメンテーション キーは、ApplicationInsights.config ファイルから読み取られます。 値が、ポータルに表示される Application Insights リソースのインストルメンテーション キーと同じであることを確認します。
 
+## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
+アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず「[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)」の手順を実行して [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"***さらに***" [Application Insights ウィンドウで有効にします](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+
+
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>最新バージョンの NuGet にアップグレードする
 
 [ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。 リリース ノートについては https://github.com/Microsoft/ApplicationInsights-Home/issues/167 を参照してください。
@@ -50,7 +47,7 @@ ms.locfileid: "58094941"
 1. Azure Portal で App Service アプリケーションを開きます。
 2. **[高度なツール]** をクリックするか、**Kudu** を検索します。
 3. **[Go]** をクリックします。
-4. **[Debug console]**(デバッグ コンソール) ドロップダウン リスト ボックスで、**[CMD]** を選択します。
+4. **[Debug console]** (デバッグ コンソール) ドロップダウン リスト ボックスで、 **[CMD]** を選択します。
 5. **[LogFiles]** をクリックします。
 
 `Uploader_` または `SnapshotUploader_`で始まる名前で拡張子が `.log` であるファイルが 1 つ以上表示されます。 適切なアイコンをクリックしてログ ファイルをダウンロードするか、またはブラウザーでログ ファイルを開きます。
@@ -164,13 +161,13 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 - APPDATA
 - TEMP
 
-適切なフォルダーが見つからない場合は、Snapshot Collector によって "_Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)_" エラーが報告されます。
+適切なフォルダーが見つからない場合は、Snapshot Collector によって "_Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)_ " エラーが報告されます。
 
 コピーに失敗した場合、Snapshot Collector は `ShadowCopyFailed` エラーを報告します。
 
 アップローダーを起動できない場合、Snapshot Collector は `UploaderCannotStartFromShadowCopy` エラーを報告します。 メッセージの本文に `System.UnauthorizedAccessException` が含まれることがよくあります。 このエラーは、通常、アクセス許可が制限されたアカウントの下でアプリケーションが実行されているために発生します。 このアカウントには、シャドウ コピー フォルダーに書き込むためのアクセス許可が与えられていますが、コードを実行するためのアクセス許可が与えられていません。
 
-これらのエラーは通常、起動時に発生するため、"_Uploader failed to start (アップローダーを起動できませんでした)_" という `ExceptionDuringConnect` エラーが続いて表示されます。
+これらのエラーは通常、起動時に発生するため、"_Uploader failed to start (アップローダーを起動できませんでした)_ " という `ExceptionDuringConnect` エラーが続いて表示されます。
 
 これらのエラーを回避するには、`ShadowCopyFolder` 構成オプションを使用して、シャドウ コピー フォルダーを手動で指定します。 たとえば、ApplicationInsights.config を使用する場合は、次のように指定します。
 
@@ -202,7 +199,7 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 スナップショットが作成されている場合、例外がスローされるとスナップショット ID がタグ付けされます。 Application Insights に例外テレメトリがレポートされると、そのスナップショット ID はカスタム プロパティとして含まれます。 Application Insights の **[検索]** を使用すると、`ai.snapshot.id` カスタム プロパティを使用してすべてのテレメトリを見つけることができます。
 
 1. Azure Portal の Application Insights のリソースを参照します。
-2. **[Search (検索)]** をクリックします。
+2. **[検索]** をクリックします。
 3. [検索] テキスト ボックスに `ai.snapshot.id` と入力し、Enter キーを押します。
 
 ![ポータルでスナップショット ID を使用してテレメトリを検索](./media/snapshot-debugger/search-snapshot-portal.png)
@@ -219,4 +216,4 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>ネットワーク プロキシまたはファイアウォール規則を編集する
 
-アプリケーションがプロキシまたはファイアウォールを介してインターネットに接続する場合は、アプリケーションがスナップショット デバッガーサービスと通信できるように規則を編集する必要があります。 こちらの[スナップショット デバッガーで使用される IP アドレスとポートの一覧](../../azure-monitor/app/ip-addresses.md#snapshot-debugger)を参照してください。
+アプリケーションがプロキシまたはファイアウォールを介してインターネットに接続する場合は、アプリケーションがスナップショット デバッガーサービスと通信できるように規則を編集する必要があります。 スナップショット デバッガーによって使用される IP は、Azure Monitor サービス タグに含まれています。

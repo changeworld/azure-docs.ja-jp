@@ -1,19 +1,19 @@
 ---
-title: クイック スタート - Azure Spatial Anchors を使用する Android アプリを作成する | Microsoft Docs
+title: クイック スタート:Android アプリの作成
 description: このクイック スタートでは、Spatial Anchors を使用する Android アプリを構築する方法について説明します。
 author: craigktreasure
-manager: aliemami
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800045"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75376462"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android アプリを作成する
 
@@ -32,46 +32,61 @@ ms.locfileid: "65800045"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 以降</a>がインストールされている Windows または macOS コンピューター。
-  - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> も必要になります。
-  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 次に、`brew install git` を実行します。
-  - NDK サンプルを構築するには、Android Studio の NDK と CMake 3.6 SDK Tools もインストールする必要があります。
+- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 以降</a>がインストールされている Windows または macOS マシン。
+  - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> も必要になります。
+  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
+  - NDK サンプルを構築するには、Android Studio の NDK と CMake 3.6 以降の SDK Tools もインストールする必要があります。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
-- アプリでは、ARCore 1.7 をターゲットにする必要があります。
+  - コンピューターが Android デバイスと通信するには、追加のデバイス ドライバーが必要になることがあります。 追加情報と手順については、[こちら](https://developer.android.com/studio/run/device.html)を参照してください。
+- アプリは ARCore **1.11.0** をターゲットにする必要があります。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="open-the-sample-project"></a>サンプル プロジェクトを開く
 
+# <a name="java"></a>[Java](#tab/openproject-java)
+
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Android NDK サンプルを構築している場合は、`arcore_c_api.h` を[こちら](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.7.0/libraries/include/arcore_c_api.h)からダウンロードし、`Android\NDK\libraries\include` に配置する必要があります。
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+`arcore_c_api.h` を[ここ](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h)からダウンロードし、`Android\NDK\libraries\include` に配置してください。
+
+新しく複製されたリポジトリ内から、次のコマンドを実行して、サブモジュールを初期化します。
+
+```console
+git submodule update --init --recursive
+```
+
+---
 
 Android Studio を起動します。
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 **[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)**  を選択し、`Android/Java/` にあるプロジェクトを選択します。
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 **[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)**  を選択し、`Android/NDK/` にあるプロジェクトを選択します。
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>アカウント識別子とキーを構成する
 
 次に、自分のアカウント識別子とアカウント キーを使用するようにアプリを構成します。 これらの情報は、[Spatial Anchors リソースを設定](#create-a-spatial-anchors-resource)するときにテキスト エディターにコピーしました。
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
-`Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`を開きます。
+`Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`を開きます。
 
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`を開きます。
 
@@ -79,7 +94,7 @@ Android Studio を起動します。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>アプリを Android デバイスに配置する
 
@@ -89,7 +104,7 @@ Android Studio のツール バーから **[Run]\(実行\)** を選択します�
 
 ![Android Studio での配置と実行](./media/get-started-android/android-studio-deploy-run.png)
 
-**[Select Deployment Target]\(配置ターゲットの選択\)** ダイアログで Android デバイスを選択し、**[OK]** を選択して Android デバイス上でアプリを実行します。
+**[Select Deployment Target]\(配置ターゲットの選択\)** ダイアログで Android デバイスを選択し、 **[OK]** を選択して Android デバイス上でアプリを実行します。
 
 アプリの指示に従って、アンカーを配置し、呼び戻します。
 

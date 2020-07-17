@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall ログ分析のサンプル
-description: Azure Firewall ログ分析のサンプル
+description: Azure Monitor ログを使って、Azure Firewall を分析できます。 サンプル ファイルが、Azure Monitor のビュー デザイナーに組み込まれています。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/15/2019
+ms.date: 01/23/2020
 ms.author: victorh
-ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793833"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76705987"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ログ分析のサンプル
 
@@ -22,15 +22,15 @@ ms.locfileid: "59793833"
 
 ## <a name="azure-monitor-logs-view"></a>Azure Monitor ログのビュー
 
-Azure Monitor ログの視覚化の例を構成する方法を次に示します。 視覚化の例は、[azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) リポジトリからダウンロードできます。 最も簡単な方法は、このページのハイパーリンクを右クリックし、*[名前を付けてて保存]* を選択し、**AzureFirewall.omsview** のような名前を指定することです。 
+Azure Monitor ログの視覚化の例を構成する方法を次に示します。 視覚化の例は、[azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) リポジトリからダウンロードできます。 最も簡単な方法は、このページのハイパーリンクを右クリックし、 *[名前を付けてて保存]* を選択し、**AzureFirewall.omsview** のような名前を指定することです。 
 
 次の手順を実行して、Log Analytics ワークスペースにビューを追加します。
 
-1. Azure Portal で Log Analytics ワークスペースを開きます。
+1. Azure portal で Log Analytics ワークスペースを開きます。
 2. **[全般]** の下の **[ビュー デザイナー]** を開きます。
 3. **[インポート]** をクリックします。
 4. 前にダウンロードした **AzureFirewall.omsview** ファイルを参照し、選択します。
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ビューでアプリケーション ルールのログ データを検索する方法を次に示します。
 
@@ -70,7 +70,7 @@ SourcePort = tostring(SourcePortInt)
 TargetPort = tostring(TargetPortInt)
 | extend
 //make sure we only have Allowed / Deny in the Action Field
-Action1 = case(Action1 == "denied","Deny","Unknown Action")
+Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend
     Action = case(Action2 == "",Action1,Action2),
     Rule = case(Rule2a == "",case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
@@ -92,7 +92,7 @@ AzureDiagnostics
 | parse TempDetails with * "Deny." RuleCollection2b ". Proceeding with" Rule2b
 | extend SourcePort = tostring(SourcePortInt)
 | extend TargetPort = tostring(TargetPortInt)
-| extend Action1 = case(Action1 == "denied","Deny","Unknown Action")
+| extend Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend Action = case(Action2 == "",Action1,Action2),Rule = case(Rule2a == "", case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
 RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rule matched",RuleCollection2a), RuleCollection2b),FQDN = case(FQDN == "", "N/A", FQDN),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
@@ -166,6 +166,15 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="sample-logs"></a>サンプル ログ
 
-Azure Firewall の監視と診断については、[チュートリアル: 「Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。
+次のログ サンプルは、ログ エントリに含まれるデータを示しています。
+
+![ログ エントリ](media/log-analytics-samples/log1.png)
+
+![ログ エントリ](media/log-analytics-samples/log2.png)
+
+![ログ エントリ](media/log-analytics-samples/log3.png)
+## <a name="next-steps"></a>次のステップ
+
+Azure Firewall の監視と診断については、「[チュートリアル: Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。

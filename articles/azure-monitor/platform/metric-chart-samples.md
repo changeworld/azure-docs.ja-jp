@@ -1,21 +1,20 @@
 ---
-title: Azure Monitor のメトリック グラフのサンプル
+title: Azure Monitor のメトリック グラフの例
 description: Azure Monitor データの視覚化について学習します。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302983"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797446"
 ---
-# <a name="metric-chart-samples"></a>メトリック グラフのサンプル
+# <a name="metric-chart-examples"></a>メトリック グラフの例 
 
 Azure プラットフォームでは [1,000 個を超えるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)が提供されます。その多くはディメンションを備えています。 [ディメンション フィルター](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)の使用、[分割](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)の適用、グラフの種類の制御、グラフ設定の調整を通じて、お客様のインフラストラクチャとアプリケーションの正常性に関する分析情報を提供する強力な診断ビューとダッシュボードを作成できます。 この記事では、お客様が[メトリックス エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)を使用して作成できるグラフの例をいくつか紹介し、これらのそれぞれのグラフを構成するために必要な手順を説明します。
 
@@ -29,7 +28,7 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
-お客様の App Service リソースを選択し、**[CPU の割合]** メトリックを見つけます。 次に、**[Apply splitting]\(分割の適用\)** をクリックし、**[インスタンス]** ディメンションを選択します。
+お客様の App Service リソースを選択し、 **[CPU の割合]** メトリックを見つけます。 次に、 **[Apply splitting]\(分割の適用\)** をクリックし、 **[インスタンス]** ディメンションを選択します。
 
 ## <a name="application-availability-by-region"></a>リージョンごとのアプリケーションの可用性
 
@@ -49,9 +48,9 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
-メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を**棒グラフ**に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、**[API 名]** ディメンションを選択します。 次に、**[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
+メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を**棒グラフ**に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[API 名]** ディメンションを選択します。 次に、 **[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor [Workbooks](../../azure-monitor/app/usage-workbooks.md) について学習します
+* Azure Monitor [Workbooks](../../azure-monitor/platform/workbooks-overview.md) について学習します
 * [メトリックス エクスプローラー](metrics-charts.md)について学習します

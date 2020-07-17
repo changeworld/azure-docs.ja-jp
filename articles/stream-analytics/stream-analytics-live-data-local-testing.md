@@ -1,7 +1,6 @@
 ---
 title: Visual Studio 用の Azure Stream Analytics を使用してライブ データをテストする
 description: ライブ ストリーミング データを使用して Azure Stream Analytics ジョブをローカルにテストする方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090331"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76840487"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
 
@@ -24,7 +23,7 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 次のローカル テスト オプションがサポートされています。
 
-|**Input (入力)**  |**Output**  |**ジョブの種類**  |
+|**入力**  |**出力**  |**ジョブの種類**  |
 |---------|---------|---------|
 |ローカル静的データ   |  ローカル静的データ   |   クラウド/エッジ |
 |ライブ入力データ   |  ローカル静的データ   |   クラウド |
@@ -39,7 +38,6 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 2. ライブ データをテストするには、ドロップダウン ボックスから **[Use Cloud Input]\(クラウド入力を使用\)** を選択します。
 
    ![Azure Stream Analytics Visual Studio のライブ クラウド入力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. **[Start Time]\(開始日時\)** を設定して、ジョブが入力データの処理を開始する日時を定義します。 ジョブは、正確な結果を得るため、事前に入力データを読み取ることが必要な場合があります。 既定の日時は、現在の日時の 30 分前に設定されます。
 
@@ -63,9 +61,8 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 * クラウド入力オプションのみが[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)をサポートしており、ローカル入力オプションではサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
-* [Visual Studio の Azure Stream Analytics ツールのインストール](stream-analytics-tools-for-visual-studio-install.md)
 * [Visual Studio で Stream Analytics クエリをローカルでテストする](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)

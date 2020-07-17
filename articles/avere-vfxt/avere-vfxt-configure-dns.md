@@ -4,26 +4,26 @@ description: Azure の Avere vFXT を使用してラウンド ロビン負荷分
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 12/19/2019
+ms.author: rohogue
+ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187146"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76153787"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere クラスターの DNS 構成
 
-このセクションでは、Avere vFXT クラスターを負荷分散するための DNS システムの構成の基礎について説明します。 
+このセクションでは、Avere vFXT クラスターを負荷分散するための DNS システムの構成の基礎について説明します。
 
-このドキュメントには、Azure 環境内で DNS サーバーを設定して管理するための手順は*含まれていません*。 
+このドキュメントには、Azure 環境内で DNS サーバーを設定して管理するための手順は*含まれていません*。
 
-Azure で vFXT クラスターを負荷分散するためにラウンドロビン DNS を使用する代わりに、クライアントをマウントするときに、手動による方法を使用して IP アドレスをクライアント間で均等に割り当てることを検討してください。 [Avere クラスターのマウント](avere-vfxt-mount-clients.md)に関する記事に、いくつかの方法が記載されています。 
+Azure で vFXT クラスターを負荷分散するためにラウンドロビン DNS を使用する代わりに、クライアントをマウントするときに、手動による方法を使用して IP アドレスをクライアント間で均等に割り当てることを検討してください。 [Avere クラスターのマウント](avere-vfxt-mount-clients.md)に関する記事に、いくつかの方法が記載されています。
 
-DNS サーバーを使用するかどうかを決定する際は、以下の点に注意してください。 
+DNS サーバーを使用するかどうかを決定する際は、以下の点に注意してください。
 
-* NFS クライアントのみがシステムにアクセスする場合、DNS を使用する必要はありません。数値 IP アドレスを使用して、すべてのネットワーク アドレスを指定できます。 
+* NFS クライアントのみがシステムにアクセスする場合、DNS を使用する必要はありません。数値 IP アドレスを使用して、すべてのネットワーク アドレスを指定できます。
 
 * システムが SMB (CIFS) アクセスをサポートする場合、Active Directory サーバーの DNS ドメインを指定する必要があるため DNS が必要になります。
 
@@ -41,12 +41,12 @@ DNS サーバーを使用するかどうかを決定する際は、以下の点�
 
 クラスター vserver が左側に示され、IP アドレスが中央と右側に示されています。 図に示すように、A レコードとポインターを使用して各クライアントのアクセス ポイントを構成します。
 
-![Avere クラスターのラウンドロビン DNS 図](media/avere-vfxt-rrdns-diagram.png) 
+![Avere クラスターのラウンドロビン DNS 図](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 クライアントに接続する IP アドレスには、クラスターによる内部使用のための一意の名前がそれぞれ必要です。 (この図では、わかりやすくするためにクライアント IP に vs1-client-IP-* という名前が付いていますが、運用環境では client* のような簡潔なものがおそらく使用されます。)
 
-クライアントはサーバーの引数として vserver 名を使用してクラスターをマウントします。 
+クライアントはサーバーの引数として vserver 名を使用してクラスターをマウントします。
 
 DNS サーバーの ``named.conf`` ファイルを変更して、vserver へのクエリの循環の順序を設定します。 このオプションにより、使用可能なすべての値が循環して使用されます。 次のようなステートメントを追加します。
 
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-次の nsupdate コマンドは、DNS を正しく構成した例を示しています。
+次の ``nsupdate`` コマンドは、DNS を正しく構成した例を示しています。
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -74,12 +74,10 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>クラスター DNS 設定
 
-vFXT クラスターが使用する DNS サーバーを、**[クラスター]** > **[Administrative Network]\(管理ネットワーク)** 設定ページで指定します。 このページでは、以下の内容を設定します。
+vFXT クラスターが使用する DNS サーバーを、 **[クラスター]**  >  **[Administrative Network]\(管理ネットワーク)** 設定ページで指定します。 このページでは、以下の内容を設定します。
 
 * DNS サーバー アドレス
 * DNS ドメイン名
 * DNS 検索ドメイン
 
 このページの使用についての詳細は、Avere クラスター構成ガイドの[DNS 設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>)に関するページをお読みください。
-
-

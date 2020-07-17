@@ -1,23 +1,23 @@
 ---
-title: チュートリアル:IntelliJ を使用した Azure HDInsight での Spark の Scala Maven アプリケーションの作成
-description: Scala で記述され、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA によって提供される Scala 用の既存の Maven アーキタイプを使用する Spark アプリケーションを作成します。
+title: チュートリアル:Spark と IntelliJ のための Scala Maven アプリ - Azure HDInsight
+description: チュートリアル - Scala で記述された Spark アプリケーションを作成します。ビルド システムとして Apache Maven を使用すると共に、 IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプを使用します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/28/2019
-ms.openlocfilehash: 212a2ca89b91de518f07d097b00b31e785216cb0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.custom: hdinsightactive,mvc,seoapr2020
+ms.date: 04/17/2020
+ms.openlocfilehash: 4da8fd4c2b5d736f0b384db306c62304384b2766
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304007"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82194025"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
-このチュートリアルでは、[Apache Maven](https://maven.apache.org/) と IntelliJ IDEA を利用し、[Scala](https://www.scala-lang.org/) で記述された [Apache Spark](https://spark.apache.org/) アプリケーションを作成する方法について説明します。 この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。  IntelliJ IDEA での Scala アプリケーションには次の手順があります。
+このチュートリアルでは、Apache Maven と IntelliJ IDEA を利用し、Scala で記述された Apache Spark アプリケーションを作成する方法について説明します。 この記事では、ビルド システムとして Apache Maven を使用し、 IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。  IntelliJ IDEA での Scala アプリケーションには次の手順があります。
 
 * ビルド システムとして Maven を使用します。
 * プロジェクト オブジェクト モデル (POM) ファイルを更新して、Spark モジュールの依存関係を解決します。
@@ -25,51 +25,51 @@ ms.locfileid: "66304007"
 * HDInsight Spark クラスターに送信できる jar ファイルを生成します。
 * Livy を使用して Spark クラスターでアプリケーションを実行します。
 
-> [!NOTE]  
-> HDInsight には、アプリケーションを作成して Linux の HDInsight Spark クラスターに送信するプロセスを容易にする IntelliJ IDEA プラグイン ツールも用意されています。 詳細については、[IntelliJ IDEA 用の HDInsight Tools プラグインを使用した Apache Spark アプリケーションの作成と送信](apache-spark-intellij-tool-plugin.md)に関するページを参照してください。
-
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
+> * IntelliJ IDEA 用の Scala プラグインをインストールする
 > * IntelliJ を使用して Scala Maven アプリケーションを開発する
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+> * スタンドアロンの Scala プロジェクトを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
+
 * [Oracle Java Development Kit](https://www.azul.com/downloads/azure-only/zulu/)。  このチュートリアルでは、Java バージョン 8.0.202 を使用します。
+
 * Java IDE。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
-* Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)」を参照してください。
+
+* Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA 用の Scala プラグインをインストールする
+
 Scala プラグインをインストールするには、次の手順を実行します。
 
 1. IntelliJ IDEA を開きます。
 
 2. ようこそ画面で **[構成]**  >  **[プラグイン]** の順に移動し、 **[プラグイン]** ウィンドウを開きます。
-   
-    ![Scala プラグインの有効化](./media/apache-spark-create-standalone-application/enable-scala-plugin.png)
+
+    ![`IntelliJ IDEA Scala プラグインを有効にする`](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
 
 3. 新しいウィンドウに表示される Scala プラグインの **[インストール]** を選択します。  
- 
-    ![Scala プラグインのインストール](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
+
+    ![`IntelliJ IDEA Scala プラグインをインストールする`](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
 
 4. プラグインが正常にインストールされたら、IDE を再起動する必要があります。
-
 
 ## <a name="use-intellij-to-create-application"></a>IntelliJ を使用してアプリケーションを作成する
 
 1. IntelliJ IDEA を起動し、 **[Create New Project]\(新しいプロジェクトの作成\)** を選択して、 **[New Project]\(新しいプロジェクト\)** ウィンドウを開きます。
 
-2. 左側のウィンドウの **[Azure Spark/HDInsight]** を選択します。
+2. 左側のウィンドウから **[Apache Spark/HDInsight]** を選択します。
 
 3. メイン ウィンドウで **[Spark Project (Scala)]\(Spark プロジェクト (Scala)\)** を選択します。
 
-4. **[Build tool]\(ビルド ツール\)** ドロップダウン ボックスの一覧で、次のいずれかを選択します。
+4. **[Build tool]\(ビルド ツール\)** ドロップダウン ボックスの一覧で、次の値のいずれかを選択します。
       * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
       * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
-   ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+   ![IntelliJ の [New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
 5. **[次へ]** を選択します。
 
@@ -78,11 +78,11 @@ Scala プラグインをインストールするには、次の手順を実行�
   	|  プロパティ   | 説明   |  
   	| ----- | ----- |  
   	|プロジェクト名| 名前を入力します。|  
-  	|Project&nbsp;location (プロジェクトの場所)| プロジェクトを保存する任意の場所を入力します。|
-  	|Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、これは空白になっています。  **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
-  	|Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
+  	|Project&nbsp;location (プロジェクトの場所)| プロジェクトを保存する場所を入力します。|
+  	|Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、このフィールドは空白です。  **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
+  	|Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
 
-    ![Spark SDK の選択](./media/apache-spark-create-standalone-application/hdi-new-project.png)
+    ![IntelliJ IDEA Spark SDK を選択する](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
 7. **[完了]** を選択します。
 
@@ -96,16 +96,18 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 4. **[Create from archetype]\(アーキタイプからの作成\)** チェック ボックスをオンにします。  
 
-5. アーキタイプの一覧から、 **org.scala-tools.archetypes:scala-archetype-simple**を選択します。 このアーキタイプによって、正しいディレクトリ構造が作成され、Scala プログラムを作成するのに必要な既定の依存関係がダウンロードされます。
+5. アーキタイプの一覧から、 **`org.scala-tools.archetypes:scala-archetype-simple`** を選択します。 このアーキタイプによって、正しいディレクトリ構造が作成され、Scala プログラムを作成するのに必要な既定の依存関係がダウンロードされます。
 
-    ![Maven プロジェクトの作成](./media/apache-spark-create-standalone-application/create-maven-project.png)
+    ![`IntelliJ IDEA Maven プロジェクトを作成する`](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. **[次へ]** を選択します。
 
-7. **[GroupId]** 、 **[ArtifactId]** 、および **[Version]** に関連する値を指定します。 このチュートリアルでは、次の値を使用しています。
+7. **[Artifact Coordinates]\(成果物の調整\)** を展開します。 **[GroupId]\(グループ ID\)** および **[ArtifactId]\(成果物 ID\)** に、適切な値を指定します。 **[Name]\(名前\)** および **[Location]\(場所\)** は自動的に設定されます。 このチュートリアルでは、次の値を使用しています。
 
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
+
+    ![`IntelliJ IDEA Maven プロジェクトを作成する`](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. **[次へ]** を選択します。
 
@@ -115,7 +117,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 11. プロジェクトがインポートされたら、左側のウィンドウで **[SparkSimpleApp]**  >  **[src]\(ソース\)**  >  **[test]\(テスト\)**  >  **[scala]**  >  **[com]**  >  **[microsoft]**  >  **[spark]**  >  **[example]\(例\)** の順に移動します。  **[MySpec]** を右クリックし、 **[Delete]\(削除\)** を選択します。このファイルはアプリケーションに必要ありません。  ダイアログ ボックスで **[OK]** を選択します。
   
-12. 以降の手順では、**pom.xml** を更新して、Spark Scala アプリケーションの依存関係を定義します。 これらの依存関係が自動的にダウンロードされ解決されるように、適宜、Maven を構成する必要があります。
+12. 以降の手順では、**pom.xml** を更新して、Spark Scala アプリケーションの依存関係を定義します。 これらの依存関係が自動的にダウンロードされ解決されるように、Maven を構成する必要があります。
 
 13. **[File]\(ファイル\)** メニューの **[Settings]\(設定\)** を選択し、 **[Settings]\(設定\)** ウィンドウを開きます。
 
@@ -124,13 +126,12 @@ Scala プラグインをインストールするには、次の手順を実行�
 15. **[Import Maven projects automatically]\(Maven プロジェクトを自動的にインポートする\)** チェック ボックスをオンにします。
 
 16. **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。  元のプロジェクト ウィンドウが表示されます。
-   
-    ![自動ダウンロードのための Maven の構成](./media/apache-spark-create-standalone-application/configure-maven.png)
-   
+
+    ![自動ダウンロードのための Maven の構成](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
 17. 左側のウィンドウで、 **[src]\(ソース\)**  >  **[main]**  >  **[scala]**  >  **[com.microsoft.spark.example]** の順に移動し、 **[App]** をダブルクリックして App.scala を開きます。
 
-18. 既存のサンプル コードを次のコードに置き換え、変更を保存します。 このコードでは、HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、6 番目の列に 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
+18. 既存のサンプル コードを次のコードに置き換え、変更を保存します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取ります。 6 番目の列から 1 桁の数字のみが含まれる行を取得し、 クラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に出力を書き込みます。
 
         package com.microsoft.spark.example
    
@@ -154,57 +155,74 @@ Scala プラグインをインストールするには、次の手順を実行�
           }
         }
 19. 左ウィンドウで **pom.xml** をダブルクリックします。  
-   
+
 20. `<project>\<properties>` に、以下のセグメントを追加します。
-      
+
           <scala.version>2.11.8</scala.version>
           <scala.compat.version>2.11.8</scala.compat.version>
           <scala.binary.version>2.11</scala.binary.version>
 
 21. `<project>\<dependencies>` に、以下のセグメントを追加します。
-      
+
            <dependency>
              <groupId>org.apache.spark</groupId>
              <artifactId>spark-core_${scala.binary.version}</artifactId>
              <version>2.3.0</version>
            </dependency>
-      
+
     Pom.xml に変更内容を保存します。
 
-22. jar ファイルを作成します。 IntelliJ IDEA では、JAR をプロジェクトのアーティファクトとして作成できます。 次の手順に従います。
-    
+22. jar ファイルを作成します。 IntelliJ IDEA では、JAR をプロジェクトのアーティファクトとして作成できます。 手順は次のとおりです。
+
     1. **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
 
     2. **[Project Structure]\(プロジェクトの構造\)** ウィンドウで、 **[Artifacts]\(成果物\)**  > **プラス記号 (+)**  >  **[JAR]**  >  **[From modules with dependencies]\(依存関係を持つモジュールから\)** の順に移動します。
-       
-        ![JAR の作成](./media/apache-spark-create-standalone-application/create-jar-1.png)
+
+        ![`IntelliJ IDEA プロジェクトの構造 - jar を追加する`](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
 
     3. **[Create JAR from Modules]\(モジュールから JAR を作成\)** ウィンドウで、 **[Main Class]\(メイン クラス\)** ボックスのフォルダー アイコンを選択します。
 
     4. **[Select Main Class]\(メイン クラスの選択\)** ウィンドウで、既定で表示されるクラスを選択し、 **[OK]** を選択します。
-       
-        ![JAR の作成](./media/apache-spark-create-standalone-application/create-jar-2.png)
+
+        ![`IntelliJ IDEA プロジェクトの構造 - クラスを選択する`](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
 
     5. **[Create JAR from Modules]\(モジュールから JAR を作成\)** ウィンドウで、 **[extract to the target JAR]\(ターゲット JAR に抽出する\)** オプションが選択されていることを確認し、 **[OK]** を選択します。  これにより、すべての依存関係を持つ 1 つの JAR が作成されます。
-       
-        ![JAR の作成](./media/apache-spark-create-standalone-application/create-jar-3.png)
+
+        ![IntelliJ IDEA プロジェクトの構造 - モジュールから jar を作成する](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
     6. **[Output Layout (出力レイアウト)]** タブに、Maven プロジェクトの一部として取り込まれたすべての jar が一覧表示されます。 Scala アプリケーションと直接的な依存関係がないものについては、選択し削除できます。 ここで作成するアプリケーションの場合は、最後の 1 つ (**SparkSimpleApp compile output**) を除き、あとはすべて削除することができます。 削除する jar を選択し、マイナス記号 ( **-** ) を選択します。
-       
-        ![JAR の作成](./media/apache-spark-create-standalone-application/delete-output-jars.png)
-       
-        **[Include in project build]\(プロジェクト ビルドに含める\)** ボックスがオンになっていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]\(適用\)** 、 **[OK]** の順に選択します。
+
+        ![`IntelliJ IDEA プロジェクトの構造 - 出力を削除する`](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
+
+        **[Include in project build]\(プロジェクト ビルドに含める\)** ボックスがオンになっていることを確認します。 このオプションをオンにすることで、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]\(適用\)** 、 **[OK]** の順に選択します。
 
     7. jar を作成するには、 **[Build]\(ビルド\)**  >  **[Build Artifacts]\(ビルド成果物\)**  >  **[Build]\(ビルド\)** の順に移動します。 プロジェクトは 30 秒ほどでコンパイルされます。  出力 jar が **\out\artifacts** の下に作成されます。
-       
-        ![JAR の作成](./media/apache-spark-create-standalone-application/output.png)
+
+        ![IntelliJ IDEA プロジェクト成果物出力](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>Apache Spark クラスターでアプリケーションを実行する
+
 クラスターでアプリケーションを実行するには、次のアプローチを使用できます。
 
-* **Azure Storage BLOB にアプリケーション jar をコピーします** 。 コピーには、[**AzCopy**](../../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
+* クラスターに関連付けられている **Azure Storage Blob にアプリケーション jar をコピーします**。 コピーには、**AzCopy** コマンドライン ユーティリティを使用できます。 他にも、データのアップロードに使用できるクライアントが多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
 * Spark クラスターに、**Apache Livy を使用してリモートからアプリケーション ジョブを送信**します。 HDInsight の Spark クラスターには、Spark ジョブをリモートで送信するための REST エンドポイントを公開する Livy が含まれています。 詳細については、[HDInsight の Spark クラスターで Apache Livy を使用してリモートから Apache Spark ジョブを送信する方法](apache-spark-livy-rest-interface.md)に関するページを参照してください。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+
+1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
+
+1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** を選択します。
+
+1. **[削除]** を選択します。 **[はい]** を選択します。
+
+![`HDInsight におけるクラスターの削除 (Azure portal)`](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
 ## <a name="next-step"></a>次のステップ
 

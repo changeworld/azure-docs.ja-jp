@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
 ms.date: 10/09/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117285"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "71174966"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>Marketplace の契約条件でイメージを展開する
 

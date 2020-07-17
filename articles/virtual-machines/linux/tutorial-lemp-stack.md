@@ -1,10 +1,10 @@
 ---
-title: チュートリアル - Azure 内の Linux 仮想マシンに LEMP を展開する | Microsoft Docs
+title: チュートリアル - Azure 内の Linux 仮想マシンに LEMP をデプロイする
 description: このチュートリアルでは、Azure 内の Linux 仮想マシンに LEMP スタックをインストールする方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 0a9d63f4064952adbfedfc3f9656370ef7c4a1cc
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 6d603dbf2746608f499ba37b4f17b533b64bc941
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511279"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154357"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに LEMP Web サーバーをインストールする
 
@@ -35,7 +35,7 @@ ms.locfileid: "55511279"
 
 このセットアップは、簡単なテストまたは概念実証のためのものです。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -159,9 +159,9 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure に LEMP サーバーを展開しました。 以下の方法について学習しました。
+このチュートリアルでは、Azure に LEMP サーバーを展開しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Ubuntu VM を作成する
@@ -170,10 +170,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * インストールと構成を確認する
 > * LEMP スタックに WordPress をインストールする
 
-SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
+TLS/SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
+> [TLS による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

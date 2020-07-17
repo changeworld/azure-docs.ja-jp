@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 20e18819-e330-4e40-bd8d-2ff3b98e035f
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 020e0395c7678f6856a293c8386a44d7a959bc06
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786527"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -290,7 +291,7 @@ Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインイン
 
 アクセス パネルで [SAML SSO for Jira by resolution GmbH] タイルをクリックすると、SSO を設定した SAML SSO for Jira by resolution GmbH に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-[https://\<server-base-url>/plugins/servlet/samlsso](https://\<server-base-url>/plugins/servlet/samlsso) に移動してシングル サインオンをテストすることもできます。 **\<server-base-url>** は、Jira インスタンスのベース URL に置き換えます。
+`https://<server-base-url>/plugins/servlet/samlsso` に移動すると、シングル サインオンをテストすることもできます。 **\<server-base-url>** は、Jira インスタンスのベース URL に置き換えます。
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Jira のシングル サインオン リダイレクトを有効にする
@@ -310,7 +311,7 @@ SSO リダイレクトを有効にするには、**お使いの Jira インス�
 
 1. 右上隅の **[Save Settings]\(設定の保存\)** ボタンをクリックします。
 
-オプションを有効にした後でも、[https://\<server-base-url>/login.jsp?nosso](https://\<server-base-url>/login.jsp?nosso) に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、ユーザー名/パスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
+`https://\<server-base-url>/login.jsp?nosso` に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、このオプションを有効にした後でもユーザー名とパスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
 
 
 ## <a name="additional-resources"></a>その他のリソース

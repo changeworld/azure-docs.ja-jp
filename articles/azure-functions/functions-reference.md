@@ -1,26 +1,18 @@
 ---
-title: Azure Functions の開発に関するガイダンス | Microsoft Docs
+title: Azure Functions の開発に関するガイダンス
 description: プログラミング言語とバインドを問わず、Azure での関数開発に必要な Azure Functions の概念とテクニックについて説明します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: 開発者向けガイド, Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891891"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405350"
 ---
-# <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
-Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
+# <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
+Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
 
 この記事では、「[Azure Functions の概要](functions-overview.md)」を既に読んでいることを前提としています。
 
@@ -44,16 +36,18 @@ function.json ファイルには、関数のトリガー、バインド、その
 }
 ```
 
+詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
+
 `bindings` プロパティで、トリガーとバインドの両方を構成します。 各バインドは、いくつかの一般的な設定と、バインドの特定の種類に固有の設定を共有します。 すべてのバインドには次の設定が必要です。
 
 | プロパティ | 値/型 | 説明 |
 | --- | --- | --- |
-| `type` |string |バインドの種類。 たとえば、「 `queueTrigger`」のように入力します。 |
+| `type` |string |バインドの種類。 たとえば、「 `queueTrigger` 」のように入力します。 |
 | `direction` |"in"、"'out" |バインドが関数への受信データか、関数からの送信データかを示します。 |
 | `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
-関数アプリからは、関数が実行される、Azure における実行コンテキストが提供されます。 関数アプリは、まとめて管理、デプロイ、およびスケールされる 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
+関数アプリからは、関数が実行される、Azure における実行コンテキストが提供されます。 そのため、これが関数のデプロイと管理の単位となります。 関数アプリは、まとめて管理、デプロイ、およびスケールされる 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、デプロイ方法、およびランタイム バージョンを共有します。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 詳しくは、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md)に関する記事をご覧ください。 
 
 > [!NOTE]
 > 関数アプリ内のすべての関数は、同じ言語で作成する必要があります。 Azure Functions ランタイムの[以前のバージョン](functions-versions.md)では、これは必須ではありませんでした。
@@ -71,7 +65,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a> Azure portal で関数を編集する方法
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> Azure portal で関数を編集する方法
 Azure portal に組み込まれている関数エディターを使用すると、コードと *function.json* ファイルを直接インラインで更新できます。 これは、軽微な変更や概念実証の場合にのみお勧めします。ベスト プラクティスは、VS Code などのローカル開発ツールを使うことです。
 
 ## <a name="parallel-execution"></a>並列実行
@@ -79,7 +73,7 @@ Azure portal に組み込まれている関数エディターを使用すると�
 
 ## <a name="functions-runtime-versioning"></a>Functions ランタイムのバージョン管理
 
-`FUNCTIONS_EXTENSION_VERSION` アプリ設定を使用して、Functions ランタイムのバージョンを構成できます。 たとえば、"~2" の値は、Function App がそのメジャー バージョンとして 2.x を使用することを示します。 Function App は、リリースされたときにそれぞれの新しいマイナー バージョンにアップグレードされます。 お使いの関数アプリの正確なバージョンを表示する方法など、詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」をご覧ください。
+`FUNCTIONS_EXTENSION_VERSION` アプリ設定を使用して、Functions ランタイムのバージョンを構成できます。 たとえば、"~3" の値は、Function App がそのメジャー バージョンとして 3.x を使用することを示します。 Function App は、リリースされたときにそれぞれの新しいマイナー バージョンにアップグレードされます。 お使いの関数アプリの正確なバージョンを表示する方法など、詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」をご覧ください。
 
 ## <a name="repositories"></a>リポジトリ
 Azure Functions のコードはオープン ソースであり、GitHub リポジトリに保存されています。
@@ -101,11 +95,11 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 ## <a name="reporting-issues"></a>問題の報告
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Azure Functions をローカルでコーディングしてテストする](./functions-develop-local.md)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
-* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
-* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
+* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)
+* [Azure Functions Node.js 開発者向けリファレンス](functions-reference-node.md)

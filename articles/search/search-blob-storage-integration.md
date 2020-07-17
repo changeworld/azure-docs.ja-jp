@@ -1,56 +1,74 @@
 ---
-title: Azure Blob Storage にフル テキスト検索を追加する - Azure Search
-description: HTTP REST API を使ったコードで、Azure Blob Storage 内のテキスト コンテンツを Azure Search のインデックス作成用にクロールします。
-services: search
-ms.service: search
+title: Azure Blob Storage にフル テキスト検索を追加する
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search でフル テキスト検索インデックスを作成するときに、コンテンツを抽出し、Azure BLOB に構造体を追加します。
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: cgronlun
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 11/04/2019
+ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759393"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73496495"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>Azure Search を使用した Blob Storage の検索
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure BLOB データにフル テキスト検索を追加する
 
-Azure Blob Storage に格納されているさまざまなコンテンツの種類の検索は、解決するのが難しい問題になる場合があります。 ただし、Azure Search を使用すると、数回クリックするだけで BLOB のコンテンツのインデックスを作成して検索できます。 Blob Storage の検索には、Azure Search サービスのプロビジョニングが必要です。 Azure Search のさまざまなサービス制限や価格レベルについては、[価格に関するページ](https://aka.ms/azspricing)を参照してください。
+Azure Blob Storage に格納されているさまざまなコンテンツの種類の検索は、解決するのが難しい問題になる場合があります。 ただし、[Azure Cognitive Search](search-what-is-azure-search.md) を使用すると、数回クリックするだけでご利用の BLOB のコンテンツのインデックスを作成して検索できます。 Azure Cognitive Search には、データソース対応機能をインデックス作成に追加する ["*BLOB インデクサー*"](search-howto-indexing-azure-blob-storage.md) を介して BLOB ストレージからインデックスを作成するための組み込みの統合機能が用意されています。
 
-## <a name="what-is-azure-search"></a>Azure Search とは
-[Azure Search](https://aka.ms/whatisazsearch) は、開発者が Web アプリケーションやモバイル アプリケーションに強力なフルテキスト検索操作を容易に追加できるようにする検索サービスです。 サービスとして、Azure Search は検索インフラストラクチャを管理する必要がなく、[99.9% のアップタイム SLA](https://aka.ms/azuresearchsla) を提供します。
+## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>フルテキスト検索を BLOB データに追加することの意味
 
-## <a name="index-and-search-enterprise-document-formats"></a>エンタープライズ ドキュメント形式のインデックス作成と検索
-Azure Blob Storage で[ドキュメント抽出](https://aka.ms/azsblobindexer)をサポートすると、次のコンテンツのインデックスを作成できます。
+Azure Cognitive Search とはクラウド検索サービスであり、ご利用の検索サービスでホストされているユーザー定義のインデックスを操作するインデックス作成エンジンとクエリ エンジンを備えています。 検索可能なコンテンツとクエリ エンジンをクラウド内に併置することは、パフォーマンス上必要であり、これにより、ユーザーが検索クエリに期待する速度で結果を返すことができます。
+
+Azure Cognitive Search はインデックス層で Azure Blob Storage と統合されます。これにより、ご利用の BLOB コンテンツは、*逆インデックス*や、自由形式のテキスト クエリおよびフィルター式をサポートするその他のクエリ構造体に、インデックスが作成された検索ドキュメントとしてインポートされます。 ご利用の BLOB コンテンツは検索インデックスに対してインデックスが作成されるため、BLOB コンテンツにアクセスするときは、Azure Cognitive Search 内のすべてのクエリ機能を利用できます。
+
+インデックスが作成され設定されると、それはご利用の BLOB コンテナーとは独立した存在となりますが、基になるコンテナーに変更が生じた場合はインデックス作成操作を再実行することでインデックスを更新することができます。 変更を検出するには、個々の BLOB に関するタイムスタンプ情報が使用されます。 更新メカニズムとしては、スケジュールされた実行またはオンデマンドのインデックス作成のいずれかを選択できます。
+
+Azure Blob Storage 内の単一コンテナーにあるご利用の BLOB が入力となります。 BLOB は、ほぼ任意の種類のテキスト データとすることができます。 ご利用の BLOB に画像が含まれている場合は、[AI エンリッチメントを BLOB インデックス作成](search-blob-ai-integration.md)に追加することで、画像からテキストを作成し、抽出することができます。
+
+出力は常に Azure Cognitive Search インデックスであり、これはクライアント アプリケーションでの高速テキスト検索、取得、および探索に使用されます。 中間にあるのは、インデックス作成のパイプライン アーキテクチャそのものです。 パイプラインは、この記事で詳しく説明する "*インデクサー*" 機能に基づいています。
+
+## <a name="start-with-services"></a>サービスの使用を開始する
+
+Azure Cognitive Search と Azure Blob Storage が必要です。 BLOB ストレージ内には、ソース コンテンツを提供するコンテナーが必要です。
+
+ご自分のストレージ アカウント ポータル ページで直接開始できます。 左側のナビゲーション ページの **[Blob service]** で、 **[Azure Cognitive Search の追加]** をクリックして新しいサービスを作成するか、既存のサービスを選択します。 
+
+ご利用のストレージ アカウントに Azure Cognitive Search を追加したら、標準的なプロセスに従って BLOB データのインデックスを作成できます。 最初の導入を簡単に行うには Azure Cognitive Search の **[データのインポート]** ウィザードをお勧めします。または、Postman などのツールを使用して REST API を呼び出すこともできます。 このチュートリアルでは、Postman で REST API を呼び出す手順について説明します。[Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)。 
+
+## <a name="use-a-blob-indexer"></a>BLOB インデクサーを使用する
+
+"*インデクサー*" は、データソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 
+
+Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
+
+インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 ご利用の BLOB に画像コンテンツが含まれている場合、[AI エンリッチメントを追加](search-blob-ai-integration.md)しない限り、画像は無視されます。 標準のインデックス作成は、テキスト コンテンツのみに適用されます。
+
+BLOB インデクサーでは、構成パラメーターが用意されているほか、基になるデータが十分な情報を提供している場合は、変更の追跡がサポートされます。 コア機能の詳細については、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)に関するページを参照してください。
+
+### <a name="supported-content-types"></a>サポートされているコンテンツの種類
+
+コンテナーに対して BLOB インデクサーを実行すれば、次のコンテンツの種類からテキストとメタデータを 1 つのクエリで抽出することができます。
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-これらのファイルの種類のテキストとメタデータを抽出することにより、1 つのクエリで複数のファイル形式を容易に検索できます。 
+### <a name="indexing-blob-metadata"></a>BLOB メタデータのインデックス作成
 
-## <a name="search-through-your-blob-metadata"></a>BLOB メタデータを検索する
-任意のコンテンツの種類を含む BLOB の並べ替えを容易にする一般的なシナリオは、各 BLOB でカスタム メタデータとシステム プロパティの両方のインデックスを作成することです。 そうすることで、ドキュメントの種類に関係なく、すべての BLOB の情報のインデックスが作成されます。 その後は、すべての BLOB ストレージ コンテンツの並べ替え、フィルター処理、およびファセット処理を行うことができます。
+任意のコンテンツの種類を含む BLOB の並べ替えを容易にする一般的なシナリオは、各 BLOB でカスタム メタデータとシステム プロパティの両方のインデックスを作成することです。 そうすることで、検索サービス内のインデックスに格納されているドキュメントの種類に関係なく、すべての BLOB の情報のインデックスが作成されます。 新しいインデックスを使用すれば、すべての BLOB ストレージ コンテンツの並べ替え、フィルター処理、およびファセット処理を行うことができます。
 
-[BLOB メタデータのインデックス作成の詳細を学習します。](https://aka.ms/azsblobmetadataindexing)
+### <a name="indexing-json-blobs"></a>JSON BLOB のインデックス作成
+インデクサーは、JSON を含む BLOB 内にある構造化コンテンツを抽出するように構成できます。 インデクサーは、JSON BLOB を読み取り、その構造化コンテンツを検索ドキュメントの適切なフィールドに解析できます。 インデクサーはまた、JSON オブジェクトの配列を含む BLOB を取得し、各要素を個別の検索ドキュメントにマップすることもできます。 解析モードを設定すると、インデクサーによって作成された JSON オブジェクトの種類に影響を与える場合があります。
 
-## <a name="image-search"></a>イメージの検索
-Azure Search のフルテキスト検索、ファセット ナビゲーション、および並べ替え機能は現在、BLOB に格納されているイメージのメタデータに適用できます。
+## <a name="search-blob-content-in-a-search-index"></a>検索インデックス内の BLOB コンテンツを検索する 
 
-Cognitive Search には、[光学式文字認識 (OCR)](cognitive-search-skill-ocr.md) や、各画像内で見つかったビジュアル コンテンツのインデックス作成を可能にする[視覚的特徴](cognitive-search-skill-image-analysis.md)の特定などの画像処理スキルが含まれています。
+インデックス作成の出力は検索インデックスです。これは、クライアント アプリでフリー テキストとフィルター処理されたクエリを使用して対話型探索を行う場合に使用されます。 コンテンツの探索と検証を初めて行う場合は、ポータル内の[検索エクスプローラー](search-explorer.md)を使用してドキュメントの構造を確認することから始めることをお勧めします。 検索エクスプローラーでは、[シンプルなクエリ構文](query-simple-syntax.md)、[完全なクエリ構文](query-lucene-syntax.md)、および[フィルター式構文](query-odata-filter-orderby-syntax.md)を使用することができます。
 
-## <a name="index-and-search-through-json-blobs"></a>JSON BLOB のインデックス作成および検索
-Azure Search は、JSON を含む BLOB 内にある構造化コンテンツを抽出するように構成できます。 Azure Search は、JSON BLOB を読み取り、その構造化コンテンツを Azure Search ドキュメントの適切なフィールドに解析できます。 Azure Search はまた、JSON オブジェクトの配列を含む BLOB を取得し、各要素を個別の Azure Search ドキュメントにマップすることもできます。
+より永続的な解決策は、クエリ入力を収集し、クライアント アプリケーションでの検索結果として応答を提示することです。 次 C# のチュートリアルでは、検索アプリケーションを構築する方法について説明します。[Azure Cognitive Search で初めてのアプリを作成する](tutorial-csharp-create-first-app.md)。
 
-JSON 解析は現在、ポータル経由では構成できません。 [Azure Search での JSON 解析の詳細を学習します。](https://aka.ms/azsjsonblobindexing)
+## <a name="next-steps"></a>次のステップ
 
-## <a name="quick-start"></a>クイック スタート
-Azure Search は、Blob Storage ポータル ページから直接 BLOB に追加できます。
-
-![](./media/search-blob-storage-integration/blob-blade.png)
-
-**[Azure Search の追加]** をクリックするとフローが開始され、既存の Azure Search サービスを選択するか、新しいサービスを作成することができます。 新しいサービスを作成すると、ストレージ アカウントのポータル エクスペリエンスの外部に移動します。 ストレージのポータル ページに戻って、**[Azure Search の追加]** オプションを再度選択することができます。そこで、既存のサービスを選択できます。
-
-## <a name="next-steps"></a>次の手順
-完全な[ドキュメント](https://aka.ms/azsblobindexer)にある Azure Search BLOB インデクサの詳細を学習します。
++ [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [BLOB インデクサーを設定する (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 

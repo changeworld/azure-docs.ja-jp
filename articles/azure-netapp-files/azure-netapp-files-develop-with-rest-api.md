@@ -12,18 +12,25 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 05/17/2019
 ms.author: b-juche
-ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104626"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "65957031"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API を使用して Azure NetApp Files 用の開発を行う 
 
 Azure NetApp Files サービス用の REST API では、NetApp アカウント、容量プール、ボリューム、スナップショットなどのリソースに対する HTTP 操作が定義されます。 この記事は、Azure NetApp Files REST API の使用を開始するために役立ちます。
+
+## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp Files の REST API 仕様
+
+Azure NetApp Files の REST API 仕様は、[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager) を介して公開されています。
+
+`https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
+
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Azure NetApp Files REST API にアクセスする  
 
@@ -162,6 +169,6 @@ Azure NetApp Files サービス用の REST API では、NetApp アカウント�
 > [!NOTE] 
 > スナップショットの作成では、`fileSystemId` を指定する必要があります。  `fileSystemId` の値は、ボリュームに対する GET 要求によって取得できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure NetApp Files REST API リファレンスを参照する](https://docs.microsoft.com/rest/api/netapp/)

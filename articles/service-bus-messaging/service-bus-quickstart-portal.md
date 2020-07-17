@@ -1,23 +1,22 @@
 ---
-title: クイック スタート - Azure portal を使用して Service Bus キューを作成する | Microsoft Docs
+title: Azure portal を使用して Service Bus キューを作成する
 description: このクイック スタートでは、Azure portal を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル クライアント アプリケーションを使用してキューとの間でメッセージを送受信します。
 services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: a946443e1d1e66a1ae8f70671ff328cdf47ff009
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992010"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215610"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>クイック スタート:Azure portal を使用して Service Bus キューを作成する
-このクイック スタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure Portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
+このクイックスタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -35,7 +34,19 @@ ms.locfileid: "65992010"
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
-名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
+> [!NOTE]
+> このセクションで使用されているメッセージ送受信サンプルは、.NET のサンプルです。 他のプログラミング言語を使用してメッセージを送受信するサンプルについては、「[Service Bus サンプル](service-bus-samples.md)」を参照してください。 
+> 
+> 各種のプログラミング言語を使用してメッセージを送受信する具体的な手順については、次のクイック スタートを参照してください。
+> - [.NET](service-bus-dotnet-get-started-with-queues.md)
+> - [Java](service-bus-java-how-to-use-queues.md)
+> - [Node.js で azure/service-bus パッケージを使用する](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node.js で azure-sb パッケージを使用する](service-bus-nodejs-how-to-use-queues.md)
+> - [PHP](service-bus-php-how-to-use-queues.md)
+> - [Python](service-bus-python-how-to-use-queues.md)
+> - [Ruby](service-bus-ruby-how-to-use-queues.md)
+
+名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)でコードを調べることができます。
 
 コードを実行するには、次の手順を実行します。
 
@@ -61,7 +72,7 @@ ms.locfileid: "65992010"
 
    ![プログラムの出力](./media/service-bus-quickstart-portal/dotnet.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ポータルを使用して、リソース グループ、名前空間、およびキューを削除できます。
 
@@ -200,7 +211,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの作成についてさらに詳しく学習するには、「**メッセージを送受信する**」セクションのチュートリアルに進んでください。 
 

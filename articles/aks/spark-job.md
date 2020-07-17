@@ -1,24 +1,21 @@
 ---
 title: Apache Spark ジョブを Azure Kubernetes Service (AKS) で実行する
-description: Azure Kubernetes Service (AKS) を使用して Apache Spark job を実行します
-services: container-service
+description: Azure Kubernetes Service (AKS) を使用して、大規模データ処理のための Apache Spark ジョブを作成、実行します。
 author: lenadroid
-manager: jeconnoc
-ms.service: container-service
-ms.topic: article
-ms.date: 03/15/2018
+ms.topic: conceptual
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414031"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877629"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
-[Apache Spark] [apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark は、Kubernetes クラスターとのネイティブな統合をサポートしています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
+[Apache Spark][apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark では Kubernetes クラスターとのネイティブな統合がサポートされています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,11 +24,11 @@ ms.locfileid: "50414031"
 * Kubernetes と [Apache Spark][spark-quickstart] に関する基礎知識。
 * [Docker Hub][docker-hub] アカウント、または [Azure Container Registry][acr-create]。
 * 開発システムに[インストール][azure-cli]された Azure CLI。
-* システムにインストールされた [JDK 8][ java-install]。
+* システムにインストールされた [JDK 8][java-install]。
 * システムにインストールされた SBT ([Scala Build Tool][sbt-install])。
 * システムにインストールされた Git コマンド ライン ツール。
 
-## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
 大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Kubernetes Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
 
@@ -43,10 +40,16 @@ ms.locfileid: "50414031"
 az group create --name mySparkCluster --location eastus
 ```
 
-サイズが `Standard_D3_v2` のノードを持つ AKS クラスターを作成します。
+クラスターのサービス プリンシパルを作成します。 作成した後、次のコマンドのサービス プリンシパル appId とパスワードが必要になります。
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+ノードのサイズを `Standard_D3_v2` に指定し、appId およびパスワードの値を service-principal および client-secret のパラメーターとして渡して AKS クラスターを作成します。
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 AKS クラスターに接続します。
@@ -64,7 +67,7 @@ AKS クラスターで Spark ジョブを実行する前に、Spark ソース �
 開発システムに Spark プロジェクト リポジトリを複製します。
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 複製したリポジトリのディレクトリに変更し、Spark ソースのパスを変数に保存します。
@@ -136,7 +139,7 @@ cd sparkpi
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 次のコマンドを実行して、新しく作成されたプロジェクトにサンプル コードをコピーし、必要なすべての依存関係を追加します。
@@ -151,7 +154,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -183,7 +186,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 次のコマンドを使用して、Azure ストレージ アカウントに jar ファイルをアップロードします。
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -214,6 +217,13 @@ Spark リポジトリのルートに移動します。
 cd $sparkdir
 ```
 
+ジョブを実行するための十分なアクセス許可を持つサービス アカウントを作成します。
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 `spark-submit` を使用してジョブを送信します。
 
 ```bash
@@ -223,6 +233,7 @@ cd $sparkdir
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
@@ -230,8 +241,10 @@ cd $sparkdir
 この操作によって、シェル セッションにジョブの状態をストリーミングする Spark ジョブが開始されます。 ジョブの実行中に、kubectl get pods コマンドを使用して、Spark ドライバー ポッドと Executor ポッドを確認できます。 これらのコマンドを実行するには、2 つ目のターミナル セッションを開きます。
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -259,7 +272,7 @@ kubectl get pods --show-all
 
 出力:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -272,7 +285,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 これらのログの中で、Pi の値である Spark ジョブの結果を確認できます。
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
@@ -308,14 +321,15 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
 
 > [!WARNING]
-> Spark [ドキュメント][spark-docs]から引用: "Kubernetes スケジューラーは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
+> Spark [ドキュメント][spark-docs]から引用: "Kubernetes スケジューラは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、Spark ドキュメントをご覧ください。
 
@@ -333,7 +347,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 
 
 <!-- LINKS - internal -->
-[acr-aks]: https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks
+[acr-aks]: cluster-container-registry-integration.md
 [acr-create]: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
 [aks-quickstart]: https://docs.microsoft.com/azure/aks/
 [azure-cli]: https://docs.microsoft.com/cli/azure/?view=azure-cli-latest

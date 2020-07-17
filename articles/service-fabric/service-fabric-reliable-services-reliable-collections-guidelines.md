@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric の Reliable Collections のガイドラインと推奨事項 | Microsoft Docs
-description: Service Fabric Reliable Collections を使用するためのガイドラインと推奨事項
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Reliable Collection のガイドライン
+description: Azure Service Fabric アプリケーションで Service Fabric Reliable Collection を使用するためのガイドラインと推奨事項。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
-ms.date: 12/10/2017
-ms.author: aljo
-ms.openlocfilehash: 810427c394c3912142e0a21cf1b5c29b81620afb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 03/10/2020
+ms.openlocfilehash: db37067069b2a9eb08009eb6bb373f6fce1cafa9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549032"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398538"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
@@ -52,14 +41,26 @@ ms.locfileid: "59549032"
   プライマリからの読み取りは常に安定しており、誤って進められることはありません。
 * アプリケーションによってリライアブル コレクションに保持されるデータのセキュリティ/プライバシーは、ユーザーの判断事項であり、ストレージ管理によって提供される保護の対象となります。 つまり、オペレーティング システムのディスク暗号化を使用して、保存データを保護できます。  
 
-### <a name="next-steps"></a>次の手順
+## <a name="volatile-reliable-collections"></a>揮発性の Reliable Collection
+揮発性の Reliable Collection を使用する場合は、次の点を考慮してください。
+
+* ```ReliableDictionary``` では揮発性がサポートされます
+* ```ReliableQueue``` では揮発性がサポートされます
+* ```ReliableConcurrentQueue``` では揮発性がサポートされません
+* 永続化されたサービスを揮発性にすることはできません。 ```HasPersistedState``` フラグを ```false``` に変更するには、サービス全体を最初から再作成する必要があります
+* 揮発性サービスを永続化することはできません。 ```HasPersistedState``` フラグを ```true``` に変更するには、サービス全体を最初から再作成する必要があります
+* ```HasPersistedState``` はサービス レベルの構成です。これは**すべて**のコレクションが永続化または揮発性となることを意味します。 揮発性コレクションと永続化されたコレクションを混在させることはできません
+* 揮発性パーティションのクォーラム損失により、データが完全に失われます
+* 揮発性サービスでは、バックアップと復元は利用できません
+
+## <a name="next-steps"></a>次のステップ
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
 * [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * データの管理
   * [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
-  * [Notifications](service-fabric-reliable-services-notifications.md)
+  * [通知](service-fabric-reliable-services-notifications.md)
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他
-  * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
   * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

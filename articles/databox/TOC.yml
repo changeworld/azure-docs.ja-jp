@@ -7,7 +7,7 @@
           items:
             - name: Data Box とは
               href: data-box-overview.md
-        - name: クイック スタート
+        - name: クイックスタート
           expanded: true
           items:
             - name: 設定 - Azure portal
@@ -36,7 +36,7 @@
           items:
             - name: 安全性のガイドラインを読む
               href: data-box-safety.md
-            - name: 追跡とログ記録
+            - name: 追跡とログ記録を確認する
               href: data-box-logs.md
             - name: 要件を確認する
               items:
@@ -48,7 +48,7 @@
               href: data-box-limits.md
             - name: セキュリティを確認する
               href: data-box-security.md
-            - name: FAQ
+            - name: よく寄せられる質問
               href: data-box-faq.md
         - name: 方法
           items:
@@ -56,6 +56,10 @@
               href: data-box-portal-admin.md
             - name: ローカル Web UI で管理する
               href: data-box-local-web-ui-admin.md
+            - name: 自己管理の出荷の使用
+              href: data-box-portal-customer-managed-shipping.md
+            - name: カスタマー マネージド キーの有効化
+              href: data-box-customer-managed-encryption-key-portal.md
             - name: データを BLOB 層に移動する
               href: data-box-how-to-set-data-tier.md
             - name: デバイスをケーブル接続する
@@ -70,6 +74,8 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Azure Backup へ
+                  href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: トラブルシューティング
               items:
                 - name: Data Box の問題
@@ -82,7 +88,7 @@
           items:
             - name: Data Box ディスクとは
               href: data-box-disk-overview.md
-        - name: クイック スタート
+        - name: クイックスタート
           expanded: true
           items:
             - name: 設定 - Azure portal
@@ -95,8 +101,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 - テストおよび検証
               href: data-box-disk-deploy-copy-data.md
-            - name: 4 - 返却、アップロード、確認
+            - name: 4 - 返却
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 - アップロードの確認
+              href: data-box-disk-deploy-upload-verify.md
         - name: 概念
           items:
             - name: 要件を確認する
@@ -105,14 +113,24 @@
               href: data-box-disk-limits.md
             - name: セキュリティを確認する
               href: data-box-disk-security.md
-            - name: FAQ
+            - name: よく寄せられる質問
               href: data-box-disk-faq.md
         - name: 方法
           items:
             - name: Azure Portal で管理する
               href: data-box-portal-ui-admin.md
-            - name: ディスクに関する問題のトラブルシューティング
-              href: data-box-disk-troubleshoot.md
+            - name: 自己管理の出荷の使用
+              href: data-box-disk-portal-customer-managed-shipping.md
+            - name: トラブルシューティング
+              items:
+                - name: ロック解除の問題
+                  href: data-box-disk-troubleshoot-unlock.md
+                - name: データ コピーの問題
+                  href: data-box-disk-troubleshoot-data-copy.md
+                - name: 検証の問題
+                  href: data-box-disk-troubleshoot.md
+                - name: アップロードの問題
+                  href: data-box-disk-troubleshoot-upload.md
             - name: サポートに問い合わせる
               href: data-box-disk-contact-microsoft-support.md
     - name: Data Box Heavy
@@ -121,12 +139,62 @@
           items:
             - name: Data Box Heavy とは
               href: data-box-heavy-overview.md
+        - name: クイックスタート
+          items:
+            - name: 設定 - Azure portal
+              href: data-box-heavy-quickstart-portal.md
+        - name: チュートリアル
+          items:
+            - name: 1 - 注文
+              href: data-box-heavy-deploy-ordered.md
+            - name: 2 - 設定
+              href: data-box-heavy-deploy-set-up.md
+            - name: 3 - 接続とコピー
+              items:
+                - name: SMB 経由
+                  href: data-box-heavy-deploy-copy-data.md
+                - name: NFS 経由
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: REST 経由
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: データ コピー サービス経由
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: マネージド ディスクへ
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
+            - name: 4 - 返却、アップロード、確認
+              href: data-box-heavy-deploy-picked-up.md
         - name: 概念
           items:
+            - name: 安全性のガイドラインを読む
+              href: data-box-heavy-safety.md
+            - name: 追跡とログ記録を確認する
+              href: data-box-logs.md
             - name: 要件を確認する
               href: data-box-heavy-system-requirements.md
             - name: 制限を理解する
               href: data-box-heavy-limits.md
+        - name: 方法
+          items:
+            - name: Azure Portal で管理する
+              href: data-box-portal-admin.md
+            - name: ローカル Web UI で管理する
+              href: data-box-local-web-ui-admin.md
+            - name: カスタマー マネージド キーの有効化
+              href: data-box-customer-managed-encryption-key-portal.md
+            - name: デバイスの問題のトラブルシューティング
+              href: data-box-troubleshoot.md
+            - name: データを BLOB 層に移動する
+              href: data-box-how-to-set-data-tier.md
+            - name: サポートに問い合わせる
+              href: data-box-disk-contact-microsoft-support.md
+            - name: 移行
+              items:
+                - name: SharePoint Online へ
+                  href: data-box-heavy-migrate-spo.md
+                - name: Azure File Sync へ
+                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: HDFS ストアから
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: リソース
       items:
         - name: Data Box 製品

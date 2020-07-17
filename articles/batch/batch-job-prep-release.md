@@ -1,26 +1,15 @@
 ---
-title: コンピューティング ノードでジョブを準備しジョブを完了するタスクの作成 - Azure Batch | Microsoft Docs
+title: コンピューティング ノードでジョブを準備し完了するタスクの作成
 description: Azure Batch コンピューティング ノード間のデータ転送を最小にするにはジョブ レベルの準備タスクを使用し、ジョブの完了時にノードをクリーンアップするには解放タスクを使用します。
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 02/27/2017
-ms.author: lahugh
+ms.topic: how-to
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a73baa03500dfbcdd7193035bf70b0f3e03be283
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548699"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726674"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
@@ -55,24 +44,29 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 > [!TIP]
 > ログ ファイルのほか、他のジョブやタスクの出力データを保持するもう 1 つの方法は、 [Azure Batch ファイル規則](batch-task-output.md) ライブラリを使用することです。
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>ジョブの準備タスク
-ジョブのタスクを実行する前に、タスクの実行がスケジュールされている各コンピューティング ノードで、Batch によってジョブの準備タスクが実行されます。 既定では、Batch サービスはジョブの準備タスクが完了するまで待機してから、ノードでスケジュールされているタスクを実行します。 ただし、完了を待たないようにサービスを構成することもできます。 ノードが再起動するとジョブの準備タスクも再度実行されますが、この動作を無効にすることもできます。
+
+
+ジョブのタスクを実行する前に、タスクの実行がスケジュールされている各コンピューティング ノードで、Batch によってジョブの準備タスクが実行されます。 既定では、Batch では、ジョブの準備タスクが完了するまで待機してから、ノード上で実行するようにスケジュールされたタスクが実行されます。 ただし、完了を待たないようにサービスを構成することもできます。 ノードが再起動されると、ジョブの準備タスクが再度実行されます。 また、この動作を無効にすることもできます。 ジョブの準備タスクとジョブ マネージャー タスクが構成されたジョブがある場合、他のすべてのタスクと同様に、ジョブの準備タスクはジョブ マネージャー タスクの前に実行されます。 ジョブの準備タスクは常に最初に実行されます。
 
 ジョブの準備タスクは、タスクを実行するようにスケジュールされているノードでのみ実行されます。 これにより、ノードにタスクが割り当てられていない場合は、準備タスクが無駄に実行されることがなくなります。 これは、ジョブのタスク数がプール内のノード数より少ない場合に発生する可能性があります。 また、[同時実行タスクの実行](batch-parallel-node-tasks.md)が有効になっている場合も当てはまります。この場合、タスク数が同時実行可能なタスクの総数より少ないと、一部のノードがアイドル状態のままになります。 アイドル状態のノードでジョブ準備タスクを実行しないことで、データ転送の費用を削減できます。
 
 > [!NOTE]
 > [JobPreparationTask][net_job_prep_cloudjob] と [CloudPool.StartTask][pool_starttask] は異なります。JobPreparationTask が各ジョブの開始時に実行されるのに対し、StartTask はコンピューティング ノードが初めてプールに追加されたとき、または再起動したときにのみ実行されます。
-> 
-> 
+>
 
-## <a name="job-release-task"></a>ジョブの解放タスク
+
+>## <a name="job-release-task"></a>ジョブの解放タスク
+
 ジョブが完了とマークされると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。 ジョブを完了済みとして指定するには、終了要求を発行します。 それに対し、Batch サービスはジョブの状態を " *終了中*" に設定し、ジョブに関連付けられているアクティブなタスクまたは実行中のタスクを終了してから、ジョブの解放タスクを実行します。 その後、ジョブは *完了* 状態に移行します。
 
 > [!NOTE]
 > ジョブを削除した場合もジョブ解放タスクが実行されます。 ただし、ジョブが既に終了している場合は、その後でジョブを削除しても解放タスクが再度実行されることはありません。
+
+ジョブの解放タスクは、Batch サービスによって終了されるまでに最大 15 分間実行できます。 詳細については、[REST API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask)に関する記事を参照してください。
 > 
 > 
 
@@ -180,18 +174,18 @@ Sample complete, hit ENTER to exit...
 ### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Azure Portal でのジョブの準備タスクと解放タスクの確認
 サンプル アプリケーションを実行する際、[Azure Portal][portal] を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
 
-以下のスクリーンショットは、サンプル アプリケーション実行後の Azure Portal の **[準備タスク]** ブレードです。 タスクの完了後 (ただし、ジョブとプールが削除される前)、*JobPrepReleaseSampleJob* プロパティに移動し、**[準備タスク]** または **[リリース タスク]** をクリックして、それらのプロパティを表示します。
+以下のスクリーンショットは、サンプル アプリケーション実行後の Azure Portal の **[準備タスク]** ブレードです。 タスクの完了後 (ただし、ジョブとプールが削除される前)、*JobPrepReleaseSampleJob* プロパティに移動し、 **[準備タスク]** または **[リリース タスク]** をクリックして、それらのプロパティを表示します。
 
 ![Job preparation properties in Azure portal][1]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ### <a name="application-packages"></a>アプリケーション パッケージ
 タスクの実行に使用するコンピューティング ノードは、ジョブの準備タスクのほか、Batch の [アプリケーション パッケージ](batch-application-packages.md) 機能を使用して準備することもできます。 この機能は特に、インストーラーの実行を必要としないアプリケーションや、多数 (100 個超) のファイルを含んだアプリケーション、厳密なバージョン管理が要求されるアプリケーションをデプロイする場合に利便性を発揮します。
 
 ### <a name="installing-applications-and-staging-data"></a>アプリケーションとステージング データのインストール
 この MSDN フォーラムの投稿では、タスクの実行に使用するノードの準備方法の概要をいくつか示しています。
 
-[Installing Applications and staging data on Batch compute nodes (Batch コンピューティング ノードでのアプリケーションとステージング データのインストール)][forum_post]
+[Batch コンピューティング ノードでのアプリケーションとステージング データのインストール][forum_post]
 
 Azure Batch チームのメンバーによって投稿されたもので、コンピューティング ノードへのアプリケーションとデータのデプロイに使用できるいくつかの手法について説明しています。
 

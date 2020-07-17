@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor で SQL Server 環境を最適化する | Microsoft Docs
 description: Azure Monitor では、SQL 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価できます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629122"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77662486"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Monitor で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -32,7 +25,7 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 
 組織にとって最も重要な対象領域を選択し、リスクのない正常な環境の実行に向けた進行状況を追跡できます。
 
-ソリューションを追加し、評価が完了すると、環境のインフラストラクチャの **[SQL 正常性チェック]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[SQL 正常性チェック]** ダッシュボードの情報を使用する方法について説明します。ここでは、SQL Server インフラストラクチャを確認し、推奨された解決方法を実行できます。
+ソリューションを追加し、評価が完了すると、環境のインフラストラクチャの **[SQL 正常性チェック]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、 **[SQL 正常性チェック]** ダッシュボードの情報を使用する方法について説明します。ここでは、SQL Server インフラストラクチャを確認し、推奨された解決方法を実行できます。
 
 ![[SQL 正常性チェック] タイルの画像](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
@@ -40,7 +33,7 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 
 ## <a name="prerequisites"></a>前提条件
 
-* SQL 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4 がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。  
+* SQL 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.6.2 がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。  
 * このソリューションは、SQL Server バージョン 2012、2014、2016 をサポートしています。
 * Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。
 
@@ -84,7 +77,7 @@ Log Analytics では、データの収集と Log Analytics サービスへのデ
 >
 
 1. Operations Manager でオペレーション コンソールを開き、 **[管理]** をクリックします。
-2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[SQL Assessment Run As Profile]\(SQL の評価の実行プロファイル\)** を開きます。
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、 **[SQL Assessment Run As Profile]\(SQL の評価の実行プロファイル\)** を開きます。
 3. **[実行アカウント]** ページの **[追加]** をクリックします。
 4. SQL Server に必要な資格情報を含んだ Windows 実行アカウントを選択するか、 **[新規]** をクリックして新たに作成します。
 
@@ -92,7 +85,7 @@ Log Analytics では、データの収集と Log Analytics サービスへのデ
    > 実行アカウントの種類は Windows であることが必要です。 さらに、SQL Server インスタンスをホストするすべての Windows Server 上のローカルの Administrators グループに、その実行アカウントが属している必要があります。
    >
    >
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 6. 次の T-SQL サンプルに変更を加えて、各 SQL Server インスタンスで実行します。実行アカウントで正常性チェックを行うために必要な最低限の権限が付与されます。 ただし、実行アカウントが既に SQL Server インスタンスの sysadmin サーバー ロールに属している場合、この作業は不要です。
 
 ```
@@ -162,10 +155,10 @@ Azure Monitor の評価ソリューションを使用するには、そのソリ
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で「**Monitor**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[モニター]** を選択します。
-3. メニューの **[洞察]** セクションで、**[詳細]** を選択します。  
-4. **[概要]** ページで、**[SQL 正常性チェック]** タイルをクリックします。
+3. メニューの **[洞察]** セクションで、 **[詳細]** を選択します。  
+4. **[概要]** ページで、 **[SQL 正常性チェック]** タイルをクリックします。
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![SQL 正常性チェックの推奨事項の画像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。
@@ -202,6 +195,19 @@ Azure Monitor の評価ソリューションを使用するには、そのソリ
 3. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
 ## <a name="sql-health-check-solution-faq"></a>SQL 正常性チェック ソリューションについてよく寄せられる質問 (FAQ)
+
+*SQL Assessment ソリューションでは、どのようなチェックが行われますか*
+
+* 次のクエリは、現在実行されているすべてのチェックの説明を示します。
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+結果を Excel にエクスポートしてレビューすることができます。
+
+
 *正常性チェックはどのような頻度で実行されますか?*
 
 * チェックは 7 日ごとに実行されます。
@@ -250,5 +256,5 @@ Azure Monitor の評価ソリューションを使用するには、そのソリ
 
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../log-query/log-query-overview.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学習します。

@@ -1,21 +1,16 @@
 ---
 title: Durable Functions における診断 - Azure
 description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
+author: cgillum
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235383"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -25,15 +20,15 @@ ms.locfileid: "59608488"
 
 Azure Functions の診断と監視には、[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用する方法が推奨されています。 Durable Functions にもそれが当てはまります。 Application Insights を関数アプリで活用する方法の概要については、「[Azure Functions を監視する](../functions-monitoring.md)」を参照してください。
 
-また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらは、Azure Portal で [Application Insights 分析](../../azure-monitor/app/analytics.md)ツールを使って検出および照会できます。
+また、Azure Functions Durable 拡張機能では "*追跡イベント*" が生成されます。このイベントを使って、オーケストレーションの実行をエンドツーエンドでトレースできます。 これらの追跡イベントは、Azure portal で [Application Insights 分析](../../azure-monitor/app/analytics.md)ツールを使って検出および照会できます。
 
 ### <a name="tracking-data"></a>データの追跡
 
 追跡イベントは、オーケストレーション インスタンスの各ライフサイクル イベントによって Application Insights の **traces** コレクションに出力されます。 このイベントに格納されている **customDimensions** ペイロードには、いくつかのフィールドがあります。  フィールド名は、いずれも `prop__` で始まります。
 
 * **hubName**: オーケストレーションが実行されているタスク ハブの名前。
-* **appName**: Function App の名前。 これは、複数の関数アプリで同じ Application Insights インスタンスを共有しているときなどに使用できます。
-* **slotName**: 現在の関数アプリが実行されている[デプロイ スロット](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 デプロイ スロットを利用してオーケストレーションのバージョン管理を行う際に使用できます。
+* **appName**: Function App の名前。 このフィールドは、複数の関数アプリで同じ Application Insights インスタンスを共有しているときなどに使用できます。
+* **slotName**: 現在の関数アプリが実行されている[デプロイ スロット](../functions-deployment-slots.md)。 このフィールドは、デプロイ スロットを利用してご自分のオーケストレーションのバージョン管理を行うときに便利です。
 * **functionName**: オーケストレーターまたはアクティビティ関数の名前。
 * **functionType**: 関数の種類 (**オーケストレーター**や**アクティビティ**など)。
 * **instanceId**: オーケストレーション インスタンスの一意の ID。
@@ -43,15 +38,15 @@ Azure Functions の診断と監視には、[Application Insights](../../azure-mo
   * **Awaited**: オーケストレーターが何らかの作業をスケジュールし、その完了を待っています。
   * **Listening**: オーケストレーターが外部のイベント通知をリッスンしています。
   * **Completed**: 関数が正常に完了しました。
-  * **Failed**: 関数がエラーで失敗しました。
-* **reason**: 追跡イベントに関連付けられている追加のデータ。 たとえば外部イベントの通知をインスタンスが待機している場合、待機しているイベントの名前がこのフィールドによって表されます。 関数が失敗した場合、エラーの詳細がここに格納されます。
+  * **[失敗]** : 関数がエラーで失敗しました。
+* **reason**: 追跡イベントに関連付けられている追加のデータ。 たとえば外部イベントの通知をインスタンスが待機している場合、待機しているイベントの名前がこのフィールドによって表されます。 関数が失敗した場合、このフィールドにはエラーの詳細が格納されます。
 * **isReplay**: 追跡イベントが再生された実行に対するものであるかどうかを示すブール値。
-* **extensionVersion**: Durable Task 拡張機能のバージョン。 拡張機能のバグの可能性を報告するときにこのデータが特に重要となります。 長時間実行されるインスタンスでは、実行中に更新が生じた場合、複数のバージョンが報告されます。
-* **sequenceNumber**: イベントの実行シーケンス番号。 タイムスタンプと組み合わせると、イベントを実行時刻順に並べ替えるのに役立ちます。 "*インスタンスの実行中にホストが再起動した場合、この番号はゼロにリセットされるので、常に、最初にタイムスタンプで並べ替えて、次に sequenceNumber で並べ替えることが重要です。*"
+* **extensionVersion**: Durable Task 拡張機能のバージョン。 このバージョン情報は、拡張機能にバグの可能性があることを報告するときに特に重要です。 長時間実行されるインスタンスでは、実行中に更新が生じた場合、複数のバージョンが報告されます。
+* **sequenceNumber**: イベントの実行シーケンス番号。 タイムスタンプと組み合わせると、イベントを実行時刻順に並べ替えるのに役立ちます。 "*インスタンスの実行中にホストが再起動した場合、この番号はゼロにリセットされるので、常に、最初にタイムスタンプで並べ替えて、次に sequenceNumber で並べ替えることが重要です。* "
 
-Application Insights に出力される追跡データの詳細レベルは、`host.json` ファイルの `logger` (Functions 1.x) または `logging` (Functions 2.x) セクションで構成できます。
+Application Insights に出力される追跡データの詳細レベルは、`host.json` ファイルの `logger` (Functions 1.x) または `logging` (Functions 2.0) セクションで構成できます。
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name="functions-10"></a>Functions 1.0
 
 ```json
 {
@@ -65,7 +60,7 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -81,7 +76,7 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 
 詳細なオーケストレーション再生イベントの生成を有効にするには、次のように `durableTask` の下で `host.json` ファイルの `LogReplayEvents` を `true` に設定します。
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name="functions-10"></a>Functions 1.0
 
 ```json
 {
@@ -91,7 +86,7 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Functions 2.0
 
 ```javascript
 {
@@ -155,15 +150,16 @@ traces
 
 ![Application Insights クエリ](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
 オーケストレーター関数から直接ログを書き込む際には、常にオーケストレーターの再生動作を考慮することが大切です。 たとえば次のオーケストレーター関数について考えてみます。
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>プリコンパイル済み C#
 
-```cs
+```csharp
+[FunctionName("FunctionChain")]
 public static async Task Run(
-    DurableOrchestrationContext context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
@@ -176,7 +172,24 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+### <a name="c-script"></a>C# スクリプト
+
+```csharp
+public static async Task Run(
+    IDurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -192,7 +205,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-最終的なログ データは、次のようになります。
+最終的なログ データは、次の出力例のようになります。
 
 ```txt
 Calling F1.
@@ -212,11 +225,12 @@ Done!
 
 再生以外の実行だけをログに記録する場合は、`IsReplaying` が `false` である場合にのみログを記録する条件式を記述してください。 先ほどの例に再生の条件判定を加えます。
 
-#### <a name="c"></a>C#
+#### <a name="precompiled-c"></a>プリコンパイル済み C#
 
-```cs
+```csharp
+[FunctionName("FunctionChain")]
 public static async Task Run(
-    DurableOrchestrationContext context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger log)
 {
     if (!context.IsReplaying) log.LogInformation("Calling F1.");
@@ -229,7 +243,24 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+#### <a name="c"></a>C#
+
+```cs
+public static async Task Run(
+    IDurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -245,7 +276,26 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-このように変更した場合、ログ出力は次のようになります。
+Durable Functions 2.0 以降、.NET のオーケストレーター関数にも、再生中にログ ステートメントを自動的にフィルターで除外する `ILogger` を作成するオプションがあります。 この自動でのフィルター処理は、`IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API を使用して行われます。
+
+```csharp
+[FunctionName("FunctionChain")]
+public static async Task Run(
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
+    ILogger log)
+{
+    log = context.CreateReplaySafeLogger(log);
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+前述の変更により、ログ出力は次のようになります。
 
 ```txt
 Calling F1.
@@ -254,14 +304,18 @@ Calling F3.
 Done!
 ```
 
+> [!NOTE]
+> 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
 ## <a name="custom-status"></a>カスタム状態
 
-オーケストレーションのカスタム状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、HTTP status query API または `DurableOrchestrationClient.GetStatusAsync` API によって提供されます。 オーケストレーションのカスタム状態により、オーケストレーター関数のより充実した監視が可能になります。 たとえば、オーケストレーター関数コードに `DurableOrchestrationContext.SetCustomStatus` 呼び出しを含めて、実行時間の長い操作の進行状況を更新できます。 クライアント (Web ページや他の外部システムなど) は、HTTP status query API に定期的に照会して豊富な進行状況情報を取得できます。 `DurableOrchestrationContext.SetCustomStatus` を使用したサンプルを次に示します。
+カスタムオーケストレーションの状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、HTTP status query API または `IDurableOrchestrationClient.GetStatusAsync` API によって提供されます。 オーケストレーションのカスタム状態により、オーケストレーター関数のより充実した監視が可能になります。 たとえば、オーケストレーター関数コードに `IDurableOrchestrationContext.SetCustomStatus` 呼び出しを含めて、実行時間の長い操作の進行状況を更新できます。 クライアント (Web ページや他の外部システムなど) は、HTTP status query API に定期的に照会して豊富な進行状況情報を取得できます。 `IDurableOrchestrationContext.SetCustomStatus` を使用したサンプルを次に示します。
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>プリコンパイル済み C#
 
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
+[FunctionName("SetStatusTest")]
+public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     // ...do work...
 
@@ -273,7 +327,10 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -316,16 +373,17 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Functions ではデバッグ関数コードが直接サポートされており、それと同じ機能が Durable Functions でも利用できます。Azure 内で実行するか、ローカルで実行するかは関係ありません。 ただしデバッグの際は、いくつかの動作に注意してください。
 
-* **再生**: オーケストレーター関数は、新しい入力が受信されると定期的に再生されます。 つまり、オーケストレーター関数の実行が "*論理上*" は 1 回でも、複数回、同じブレークポイントに到達する可能性があります。特に、関数コードの最初の方にブレークポイントが設定されていると、その傾向が強くなります。
-* **待機**: `await` に到達した場合は常に、Durable Task Framework ディスパッチャーに制御が戻されます。 特定の `await` に到達したのが初めてである場合、関連するタスクは "*決して*" 再開されません。 タスクが再開されない以上、await を "*ステップ オーバー*" (Visual Studio では F10) することは実質的に不可能です。 ステップ オーバーが機能するのは、タスクが再生されているときだけです。
-* **メッセージングのタイムアウト**: Durable Functions は、オーケストレーター関数とアクティビティ関数の両方の実行を開始するために内部的にキュー メッセージを使用します。 マルチ VM 環境では、長時間デバッグにブレークインすると、別の VM によってメッセージが取り出され、二重実行となる可能性があります。 この動作は、キューによってトリガーされる通常の関数でも起こりますが、あえてこのコンテキストで指摘したのは、キューが実装の要となる動作であるためです。
+* **再生**: オーケストレーター関数は、新しい入力を受信すると、定期的に[再生](durable-functions-orchestrations.md#reliability)されます。 この動作は、オーケストレーター関数の実行が*論理上*は 1 回でも、複数回、同じブレークポイントに到達する可能性があることを意味します。特に、関数コードの最初の方に設定されている場合、その可能性が強くなります。
+* **待機**: オーケストレーター関数内で `await` に到達した場合は常に、Durable Task Framework ディスパッチャーに制御が戻されます。 特定の `await` に到達したのが初めてである場合、関連するタスクが再開されることは*ありません*。 タスクが再開されない以上、await をステップ *オーバー* (Visual Studio では F10) することは不可能です。 ステップ オーバーが機能するのは、タスクが再生されているときだけです。
+* **メッセージングのタイムアウト**: Durable Functions は、オーケストレーター関数、アクティビティ関数、およびエンティティ関数の実行を開始するために、内部的にキュー メッセージを使用します。 マルチ VM 環境では、長時間デバッグにブレークインすると、別の VM によってメッセージが取り出され、二重実行となる可能性があります。 この動作は、キューによってトリガーされる通常の関数でも起こりますが、あえてこのコンテキストで指摘したのは、キューが実装の要となる動作であるためです。
+* **停止と開始**: Durable Functions のメッセージは、デバッグ セッション間で保持されます。 持続的関数の実行中にデバッグを停止し、ローカル ホスト プロセスを終了すると、その関数は今後のデバッグ セッションで自動的に再実行される可能性があります。 この動作は、予期していない場合、混乱を招くことがあります。 この動作を回避する 1 つの方法は、デバッグ セッション間に[内部ストレージ キュー](durable-functions-perf-and-scale.md#internal-queue-triggers)のすべてのメッセージを消去することです。
 
 > [!TIP]
-> ブレークポイントを設定するとき、再生以外の実行でのみ停止させる必要がある場合は、`IsReplaying` が `false` の場合にのみ停止させる条件付きブレークポイントを設定できます。
+> オーケストレーター関数にブレークポイントを設定するとき、再生以外の実行でのみ停止させる必要がある場合は、`IsReplaying` が `false` の場合にのみ停止させる条件付きブレークポイントを設定できます。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
-既定では、Durable Functions の状態が Azure Storage に格納されます。 つまり、オーケストレーションの状態は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用して調査することができます。
+既定では、Durable Functions の状態が Azure Storage に格納されます。 この動作は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用してご自分のオーケストレーションの状態を調査することができることを意味します。
 
 ![Azure Storage Explorer のスクリーンショット](./media/durable-functions-diagnostics/storage-explorer.png)
 
@@ -334,7 +392,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 > [!WARNING]
 > テーブル ストレージ内の実行履歴を確認できるのは便利ですが、このテーブルに依存することは避けてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [持続的タイマーの使用方法](durable-functions-timers.md)
+> [Azure Functions での監視の詳細を学習する](../functions-monitoring.md)

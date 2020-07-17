@@ -1,20 +1,20 @@
 ---
 title: Azure Digital Twins 内でユーザー定義関数を作成する方法 | Microsoft Docs
 description: Azure Digital Twins でユーザー定義関数、マッチャー、役割の割り当てを作成する方法。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
-ms.author: alinast
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 232d85789c25e905873286eba6fda32c327a6e25
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076248"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76276932"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
 
@@ -46,7 +46,7 @@ ms.locfileid: "54076248"
 
 次の例のマッチャーは、データ型の値が `"Temperature"` であるすべてのセンサー テレメトリ イベントに対して true と評価されます。 ユーザー定義関数に複数のマッチャーを作成するには、以下に対して認証済みの HTTP POST 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
@@ -54,16 +54,18 @@ JSON 本文は次のようになります。
 
 ```JSON
 {
-  "Name": "Temperature Matcher",
-  "Conditions": [
+  "id": "3626464-f39b-46c0-d9b0c-436aysj55",
+  "name": "Temperature Matcher",
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "conditions": [
     {
+      "id": "ag7gq35cfu3-e15a-4e9c-6437-sj6w68sy44s",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     }
-  ],
-  "SpaceId": "YOUR_SPACE_IDENTIFIER"
+  ]
 }
 ```
 
@@ -79,7 +81,7 @@ JSON 本文は次のようになります。
 
 マッチャーが作成された後、次の認証済みマルチパート HTTP POST 要求で関数スニペットをアップロードします。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
@@ -191,15 +193,15 @@ function process(telemetry, executionContext) {
 }
 ```
 
-より複雑なユーザー定義関数のコード サンプルについては、[占有率のクイック スタート](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)に関するページをご覧ください。
+より複雑なユーザー定義関数のコード サンプルについては、[占有率のクイック スタート](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)に関するページをお読みください。
 
 ## <a name="create-a-role-assignment"></a>役割の割り当ての作成
 
-ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをご覧ください。
+ユーザー定義関数の実行に使われるロールの割り当てを作成します。 ユーザー定義関数にロールが割り当てられていない場合、ユーザー定義関数には Management API と対話したり、グラフ オブジェクトで操作を実行したりするための適切なアクセス許可がありません。 ユーザー定義関数で実行できるアクションは、Azure Digital Twins Management API 内のロールベースのアクセス制御によって指定および定義されます。 たとえば、ユーザー定義関数の範囲は、特定のロールまたは特定のアクセス制御パスを指定することで限定できます。 詳しくは、[ロールベースのアクセス制御](./security-role-based-access-control.md)のドキュメントをお読みください。
 
-1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#all)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
+1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#retrieve-all-roles)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    目的のロール ID を保持します。 これは、下で JSON 本文属性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) として渡されます。
@@ -208,7 +210,7 @@ function process(telemetry, executionContext) {
 1. `fullpath` を使用して空間に対してクエリを実行して、**path** (`YOUR_ACCESS_CONTROL_PATH`) の値を見つけます。
 1. 返された `spacePaths` 値をコピーします。 次のように使用します。 以下に対して認証済みの HTTP GET 要求を実行します。
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
@@ -218,7 +220,7 @@ function process(telemetry, executionContext) {
 
 1. 返された `spacePaths` 値を **path** に貼り付けて、認証済み HTTP POST 要求を以下に対して実行することでユーザー定義関数のロールの割り当てを作成します。
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
     JSON 本文は次のようになります。
@@ -236,7 +238,7 @@ function process(telemetry, executionContext) {
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 目的の役割の識別子 |
     | YOUR_USER_DEFINED_FUNCTION_ID | 使用するユーザー定義関数の ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ユーザー定義関数の種類を指定する ID |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ユーザー定義関数 (`UserDefinedFunctionId`) の種類を指定する ID |
     | YOUR_ACCESS_CONTROL_PATH | アクセス制御パス |
 
 >[!TIP]
@@ -250,7 +252,7 @@ function process(telemetry, executionContext) {
 1. どのマッチャーが正常に評価されたかに応じて、関連付けられているユーザー定義関数を取得します。
 1. 各ユーザー定義関数を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - イベントの送信先となる [Azure Digital Twins エンドポイントを作成する](./how-to-egress-endpoints.md)方法を学習する。
 

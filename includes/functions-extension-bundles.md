@@ -1,12 +1,19 @@
 ---
-ms.openlocfilehash: 0b0d2ead4a10d037b09c2a532eb21372ffd0cb82
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 05/27/2019
+ms.author: glenga
+ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132075"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "68639154"
 ---
-Azure Functions 2.x の既定のバインドを参照するには、*host.json* ファイルを開き、次のコードに一致するようにコンテンツを更新します。
+バインド拡張機能をインストールする最も簡単な方法は、[拡張機能のバンドル](../articles/azure-functions/functions-bindings-register.md#extension-bundles)を有効にすることです。 バンドルを有効にすると、事前定義された一連の拡張機能パッケージが自動的にインストールされます。
+
+拡張機能のバンドルを有効にするには、host.json ファイルを開き、その内容を次のコードに合わせて更新します。
 
 ```json
 {

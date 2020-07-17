@@ -1,23 +1,15 @@
 ---
-title: Azure Application Insights Telemetry のデータ モデル - トレース テレメトリ | Microsoft Docs
+title: Azure Application Insights データ モデル - トレース テレメトリ
 description: トレース テレメトリ用の Application Insights データ モデル
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671955"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>トレース テレメトリ:Application Insights データ モデル
 
@@ -37,7 +29,7 @@ ms.locfileid: "54118066"
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Application Insights で .NET トレース ログを調べます](../../azure-monitor/app/asp-net-trace-logs.md)。
 - [Application Insights で Java トレース ログを調べます](../../azure-monitor/app/java-trace-logs.md)。

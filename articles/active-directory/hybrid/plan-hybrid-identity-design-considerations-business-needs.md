@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/27/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47273bf687d88e82afba5de878f08bd53422479c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204774"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "65950896"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  
 
-このようなビジネスの主要側面を確認し、現在の要件と、今後の会社の計画を理解する必要があります。 ハイブリッド ID 設計の長期的な戦略が見えていない場合、ビジネス ニーズの成長や変化に合わせてソリューションを拡大または縮小できなくなる可能性があります。   次の図は、ユーザーに対してロックを解除するハイブリッド ID のアーキテクチャとワークロードの例です。 これは、純粋なハイブリッド ID 戦略でロックを解除し、提供することができる新しい可能性のほんの一例です。 
+このようなビジネスの主要側面を確認し、現在の要件と、今後の会社の計画を理解する必要があります。 ハイブリッド ID 設計の長期的な戦略が見えていない場合、ビジネス ニーズの成長や変化に合わせてソリューションを拡大または縮小できなくなる可能性があります。 次の図は、ユーザーに対してロックを解除するハイブリッド ID のアーキテクチャとワークロードの例です。 これは、純粋なハイブリッド ID 戦略でロックを解除し、提供することができる新しい可能性のほんの一例です。 
 
-ハイブリッド ID アーキテクチャに含まれるコンポーネントの一部 ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+ハイブリッド ID アーキテクチャに含まれるコンポーネントの一部 ![ハイブリッド ID アーキテクチャ](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>ビジネス ニーズの決定
 企業によって要件は異なります。同じ業界の企業であっても、本当のビジネス要件は異なる可能性があります。 業界のベスト プラクティスを利用することもできますが、最終的にはその会社のビジネス ニーズであり、ハイブリッド ID 設計の要件を定義することになります。 
@@ -107,9 +107,9 @@ ms.locfileid: "56204774"
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ディレクトリ同期要件の決定](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

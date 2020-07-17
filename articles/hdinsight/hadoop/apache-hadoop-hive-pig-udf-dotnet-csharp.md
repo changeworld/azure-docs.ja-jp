@@ -1,26 +1,26 @@
 ---
-title: HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# を使用する - Azure
+title: Apache Hadoop 上での C#、Apache Hive、Apache Pig - Azure HDInsight
 description: Azure HDInsight 上の Apache Hive と Apache Pig のストリーミングで C# のユーザー定義関数 (UDF) を使用する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 31738c43756da14ba6c2c92afbcb2882561c8001
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9ef9eada9b9aec50642a8bf357edab0677868817
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722880"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74949391"
 ---
-# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数 (UDF) を使用する
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# のユーザー定義関数を使用する
 
-HDInsight 上の Apache Hive と Apache Pig で C# のユーザー定義関数 (UDF) を使用する方法について説明します。
+HDInsight 上の [Apache Hive](https://hive.apache.org) と [Apache Pig](https://pig.apache.org) で C# のユーザー定義関数 (UDF) を使用する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Linux および Windows ベースの HDInsight クラスターに対してのみ有効です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。
+> このドキュメントの手順は、Linux ベースの HDInsight クラスターに対してのみ有効です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。
 
 Hive と Pig では、両方とも、外部のアプリケーションにデータを渡して処理できます。 このプロセスは _ストリーミング_ と呼ばれます。 .NET アプリケーションを使用する場合、データは STDIN 上のアプリケーションに渡され、そのアプリケーションから結果が STDOUT に返されます。 STDIN および STDOUT から読み取りと書き込みを実行する場合は、`Console.ReadLine()` と `Console.WriteLine()` をコンソール アプリケーションから使用できます。
 
@@ -28,38 +28,39 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
 * .NET Framework 4.5 を対象にした C# コードの記述と構築に精通していること。
 
-    * 必要なすべての IDE を使用します。 [Visual Studio](https://www.visualstudio.com/vs) 2015、2017、または [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。 このドキュメントの手順では、Visual Studio 2017 を使用します。
+    必要なすべての IDE を使用します。 [Visual Studio](https://www.visualstudio.com/vs)または [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。 このドキュメントの手順では、Visual Studio 2019 を使用します。
 
-* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 Visual Studio、Azure PowerShell、Azure Classic CLI の Data Lake ツールをお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
+* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 [Data Lake Tools for Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、[Azure PowerShell](/powershell/azure)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
 
-    Hive クエリと Pig ジョブを実行する他の方法については、次のドキュメントを参照してください。
-
-    * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
-
-    * [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
+    Hive クエリを実行する他の方法については、「[Azure HDInsight における Apache Hive と HiveQL](hdinsight-use-hive.md)」を参照してください。
 
 * HDInsight クラスターでの Hadoop。 クラスターの作成の詳細については、「[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-* __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
+*Linux ベースの HDInsight* クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
 
-    .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
+.NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
-* __Windows ベースの HDInsight__ クラスターでは、Microsoft .NET CLR を使用して、.NET アプリケーションを実行します。
-
-HDInsight バージョンに付属する Mono と .NET framework のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。
+HDInsight バージョンに付属する Mono と .NET Framework のバージョンの詳細については、[HDInsight コンポーネントのバージョン](../hdinsight-component-versioning.md)に関するページを参照してください。
 
 ## <a name="create-the-c-projects"></a>C\# プロジェクトを作成する
 
+以下のセクションでは、Apache Hive UDF と Apache Pig UDF 用に Visual Studio で C# プロジェクトを作成する方法について説明します。
+
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
-1. Visual Studio を開き、ソリューションを作成します。 プロジェクトの種類で、**[Console App (.NET Framework)]** を選択し、新しいプロジェクトに **HiveCSharp** という名前を付けます。
+Apache Hive UDF の C# プロジェクトを作成するには、次のようにします。
 
-    > [!IMPORTANT]
-    > Linux ベースの HDInsight クラスターを使用している場合は、[__.NET Framework 4.5__] を選択します。 .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
+1. Visual Studio を起動します。
 
-2. **Program.cs** の内容を次のコードに置き換えます。
+2. **[新しいプロジェクトの作成]** を選択します。
+
+3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
+
+4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
+
+5. Visual Studio IDE で、*Program.cs* の内容を次のコードに置き換えます。
 
     ```csharp
     using System;
@@ -110,13 +111,23 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
     }
     ```
 
-3. プロジェクトをビルドします。
+6. メニュー バーで **[ビルド]**  >  **[ソリューションのビルド]** の順に選択して、プロジェクトをビルドします。
+
+7. ソリューションを閉じます。
 
 ### <a name="apache-pig-udf"></a>Apache Pig UDF
 
-1. Visual Studio を開き、ソリューションを作成します。 プロジェクトの種類で、**[コンソール アプリケーション]** を選択し、新しいプロジェクトに **PigUDF** という名前を付けます。
+Apache Hive UDF の C# プロジェクトを作成するには、次のようにします。
 
-2. **Program.cs** ファイルの内容を次のコードに置き換えます。
+1. Visual Studio を開きます。
+
+2. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
+
+3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
+
+4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
+
+5. Visual Studio IDE で、*Program.cs* の内容を次のコードに置き換えます。
 
     ```csharp
     using System;
@@ -149,47 +160,53 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
     このコードは、Pig から送信された行を解析し、`java.lang.Exception` で始まる行を再フォーマットします。
 
-3. **Program.cs**を保存し、プロジェクトをビルドします。
+6. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してプロジェクトをビルドします。
+
+7. ソリューションを開いたままにしておきます。
 
 ## <a name="upload-to-storage"></a>ストレージにアップロードする
 
-1. Visual Studio で、 **サーバー エクスプローラー**を開きます。
+次に、Hive と Pig の UDF アプリケーションを HDInsight クラスター上のストレージにアップロードします。
 
-2. **[Azure]** を展開して、**[HDInsight]** を展開します。
+1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
 
-3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]** をクリックします。
+1. **[サーバー エクスプローラー]** で、 **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択し、サインイン処理を完了します。
 
-4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト __(既定のストレージ アカウント)__ が一覧表示されます。
+1. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
 
-    ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![既定のストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント**を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
 
-    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Storage__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
+    * このエントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用します。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
-6. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
+1. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-   * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+    * **Azure ストレージ アカウント**を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
-       ![アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
-    
-   * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+        ![新しいプロジェクトの HDInsight アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
-     __HiveCSharp.exe__ のアップロードが完了したら、__PigUDF.exe__ ファイルのアップロード プロセスを繰り返します。
+        **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、*HiveCSharp* プロジェクトの *bin\debug* フォルダーに移動し、*HiveCSharp.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
+
+    * **Azure Data Lake Storage** を使用している場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、*HiveCSharp.exe* ファイルを選び、 **[OK]** を選択します。
+
+    *HiveCSharp.exe* のアップロードが完了したら、*PigUDF.exe* ファイルのアップロード プロセスを繰り返します。
 
 ## <a name="run-an-apache-hive-query"></a>Apache Hive クエリを実行する
 
-1. Visual Studio で、 **サーバー エクスプローラー**を開きます。
+Hive UDF アプリケーションを使用する Hive クエリを実行できるようになりました。
 
-2. **[Azure]** を展開して、**[HDInsight]** を展開します。
+1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
 
-3. **HiveCSharp** アプリケーションをデプロイしたクラスターを右クリックし、**[Write a Hive Query]** を選択します。
+2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
+
+3. *HiveCSharp* アプリケーションをデプロイしたクラスターを右クリックし、 **[Write a Hive Query]** を選択します。
 
 4. Hive クエリには、次のテキストを使用します。
 
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
-    -- add file wasb:///HiveCSharp.exe;
+    -- add file wasbs:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Storage Gen1
     -- add file adl:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Storage Gen2
@@ -205,56 +222,59 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
     > [!IMPORTANT]
     > クラスターに使用した既定のストレージの種類に一致する `add file` ステートメントのコメントを解除します。
 
-    このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` フィールドを選択し、HiveCSharp.exe アプリケーションにそのフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 このクエリでは、既定のストレージ コンテナーのルートで HiveCSharp.exe を見つけることを想定しています。
+    このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` の各フィールドを選択し、*HiveCSharp.exe* アプリケーションに選択したフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 このクエリでは、既定のストレージ コンテナーのルートで *HiveCSharp.exe* が見つかることを想定しています。
 
-5. **[送信]** をクリックして、HDInsight クラスターにジョブを送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
+5. 既定の **[対話型]** を **[バッチ]** に切り替えてから、 **[送信]** を選択して、ジョブを HDInsight クラスターに送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 
-6. **[更新]** をクリックし、**[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** をクリックします。
+6. **[更新]** を選択し、 **[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** を選択します。
 
 ## <a name="run-an-apache-pig-job"></a>Apache Pig ジョブを実行する
 
-1. SSH を使用して、HDInsight クラスターに接続します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+Pig UDF アプリケーションを使用する Pig ジョブを実行することもできます。
 
-2. 次のいずれかのコマンドを使用して、Pig コマンド ラインを開始します。
+1. SSH を使用して、HDInsight クラスターに接続します。 (たとえば、コマンド `ssh sshuser@<clustername>-ssh.azurehdinsight.net` を実行します。) 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-        pig
+2. 次のコマンドを使用して、Pig コマンド ラインを開始します。
 
-    > [!IMPORTANT]
-    > Windows ベースのクラスターを使用している場合は、代わりに、次のコマンドを使用します。
-    > ```
-    > cd %PIG_HOME%
-    > bin\pig
-    > ```
+    ```shell
+    pig
+    ```
 
     `grunt>` プロンプトが表示されます。
 
 3. .NET Framework アプリケーションを使用する Pig ジョブを実行するには、次のように入力します。
 
-        DEFINE streamer `PigUDF.exe` CACHE('/PigUDF.exe');
-        LOGS = LOAD '/example/data/sample.log' as (LINE:chararray);
-        LOG = FILTER LOGS by LINE is not null;
-        DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
-        DUMP DETAILS;
+    ```pig
+    DEFINE streamer `PigUDF.exe` CACHE('/PigUDF.exe');
+    LOGS = LOAD '/example/data/sample.log' as (LINE:chararray);
+    LOG = FILTER LOGS by LINE is not null;
+    DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
+    DUMP DETAILS;
+    ```
 
-    `DEFINE`ステートメントは pigudf.exe アプリケーションに `streamer` のエイリアスを作成し、`CACHE` がクラスターの既定のストレージから読み込みます。 その後、`streamer` は `STREAM` 演算子で使用され、LOG に含まれる単一行を処理し、一連の列としてデータを返します。
+    `DEFINE` ステートメントで *PigUDF.exe* アプリケーションの `streamer` というエイリアスを作成し、それを `CACHE` でクラスターの既定のストレージから読み込みます。 その後、`streamer` が `STREAM` 演算子で使用され、`LOG` に含まれる単一行が処理されて、一連の列としてデータが返されます。
 
     > [!NOTE]
-    > ストリーミングで使用されるアプリケーション名は、エイリアスを使用する場合は \` (アクサン グラーブ) 文字、`SHIP` で使用する場合は ' (一重引用符) で囲む必要があります。
+    > ストリーミングで使用されるアプリケーション名は、エイリアスを使用する場合は \` (アクサン グラーブ) 文字、`SHIP` で使用する場合は ' (一重引用符) 文字で囲む必要があります。
 
 4. 最後の行を入力すると、ジョブが開始されます。 次のテキストのような出力が返されます。
 
-        (2012-02-03 20:11:56 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
-        (2012-02-03 20:11:56 SampleClass5 [DEBUG] detail for id 1976092771)
-        (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1317358561)
-        (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1737534798)
-        (2012-02-03 20:11:56 SampleClass7 [DEBUG] detail for id 1475865947)
+    ```output
+    (2019-07-15 16:43:25 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
+    (2019-07-15 16:43:25 SampleClass5 [DEBUG] detail for id 1976092771)
+    (2019-07-15 16:43:25 SampleClass5 [TRACE] verbose detail for id 1317358561)
+    (2019-07-15 16:43:25 SampleClass5 [TRACE] verbose detail for id 1737534798)
+    (2019-07-15 16:43:25 SampleClass7 [DEBUG] detail for id 1475865947)
+    ```
 
-## <a name="next-steps"></a>次の手順
+5. `exit` を使用して、pig を終了します。
+
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、HDInsight の Hive と Pig から .NET Framework アプリケーションを使用する方法について説明しました。 Hive と Pig で Python を使用する方法について学習するには、[HDInsight における Apache Hive および Apache Pig での Python の使用](python-udf-hdinsight.md)に関するページを参照してください。
 
-Pig と Hive を使用する他の方法と、MapReduce の使用方法については、次のドキュメントをご覧ください。
+Hive を使用する他の方法と、MapReduce の使用方法については、以下の記事をご覧ください。
 
 * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+* [Pig Latin の基本](https://pig.apache.org/docs/latest/basic.html)

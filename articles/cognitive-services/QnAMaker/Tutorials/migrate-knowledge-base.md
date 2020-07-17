@@ -1,26 +1,24 @@
 ---
 title: ナレッジ ベースの移行 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。
-services: cognitive-services
-author: tulasim88
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/08/2019
-ms.author: tulasim
-ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 03/25/2020
+ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264320"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258092"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
-ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。 
+移行は、既存のナレッジ ベースから新しいナレッジ ベースを作成するプロセスです。 これを行うには、いくつかの理由があります。
+
+* バックアップと復元のプロセス
+* CI/CD パイプライン
+* リージョンの移動
+
+ナレッジ ベースを移行するには、既存のナレッジ ベースからエクスポートし、別のナレッジ ベースにインポートする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,38 +27,47 @@ ms.locfileid: "59264320"
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>QnA Maker からのナレッジ ベースの移行
 1. [QnA Maker ポータル](https://qnamaker.ai)にサインインします。
-1. 移行するナレッジ ベースを選択します。
+1. 移行する元のナレッジ ベースを選択します。
 
-1. **[SETTINGS]\(設定\)** ページで **[Export knowledge base]\(ナレッジ ベースのエクスポート\)** をクリックして、ナレッジ ベースのコンテンツを含む .tsv ファイルをダウンロードします。質問、回答、メタデータ、データ ソース名などは、このファイルから抽出されました。
+1. **[SETTINGS]\(設定\)** ページで **[Export knowledge base]\(ナレッジ ベースのエクスポート\)** をクリックして、元のナレッジ ベースのコンテンツを含む .tsv ファイルをダウンロードします。質問、回答、メタデータ、追加プロンプト、データ ソース名などは、このファイルから抽出されました。
 
-1. 上部のメニューから **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択し、空のナレッジ ベースを作成します。 
+1. 上部のメニューから **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択し、_空の_ ナレッジ ベースを作成します。 これは空です。これを作成すると、URL やファイルは追加されません。 これらは、作成後にインポート ステップで追加されます。
 
-    ![データ ソースの設定](../media/qnamaker-how-to-create-kb/set-data-sources.png)
+    ナレッジ ベースを構成します。 新しいナレッジ ベース名のみを設定します。 名前は重複しても構いません。特殊文字も使用できます。
 
-    - サービスに**名前**を付けます。 名前は重複しても構いません。特殊文字も使用できます。
+    ステップ 4 の値は、ファイルをインポートするときに上書きされるため、選択しないでください。
 
-1. **作成** を選択します。
+1. ステップ 5 で、**作成**を選択します。
 
-    ![KB の作成](../media/qnamaker-how-to-create-kb/create-kb.png)
+1. この新しいナレッジ ベースで、 **[SETTINGS]\(設定\)** タブを開いて、 **[Import knowledge base]\(ナレッジ ベースのインポート\)** を選択します。 これにより質問、回答、およびメタデータ、追加プロンプトがインポートされ、抽出元のデータ ソースの名前は保持されます。
 
-1. この新しいナレッジ ベースで、**[SETTINGS]\(設定\)** タブを開いて、**[Import knowledge base]\(ナレッジ ベースのインポート\)** を選択します。 これにより質問、回答、およびメタデータがインポートされ、抽出元のデータ ソースの名前は保持されます。
-
-   ![ナレッジ ベースのインポート](../media/qnamaker-how-to-migrate-kb/Import.png)
+   > [!div class="mx-imgBorder"]
+   > [![ナレッジ ベースのインポート](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
 1. テスト パネルを使用して、新しいナレッジ ベースを**テスト**します。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
-1. ナレッジ ベースを**公開**します。 [ナレッジ ベースの公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)方法を確認してください。
-1. お使いのアプリケーションまたはボット コードで、エンドポイントを使用します。 ここで、[QnA ボットの作成](../Tutorials/create-qna-bot.md)方法を参照してください。
 
-    ![QnA Maker の値](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
+1. ナレッジ ベースを**公開**し、チャットボットを作成します。 [ナレッジ ベースの公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)方法を確認してください。
 
-    この時点で、ナレッジ ベースのすべてのコンテンツ、つまり、質問、回答、メタデータと、ソース ファイルの名前、URL が新しいナレッジ ベースにインポートされています。 
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>プログラムで QnA Maker からナレッジ ベースを移行する
+
+次の REST API を使用して、プログラムで移行プロセスを利用できます。
+
+**エクスポート**
+
+* [ナレッジ ベースのダウンロード API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+
+**[インポート]**
+
+* [置換 API (同じナレッジ ベース ID での再読み込み)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
+* [作成 API (新しいナレッジ ベース ID での読み込み)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+
 
 ## <a name="chat-logs-and-alterations"></a>チャットログと変更
-大文字と小文字が区別されない変更 (シノニム) は、自動的にはインポートされません。 古いナレッジから変更をエクスポートするには [V2 API](https://aka.ms/qnamaker-v2-apis) を使用し、新しいナレッジ ベースに変更を移動するには [V4 API](https://aka.ms/qnamaker-v4-apis) を使用します。
+大文字と小文字が区別されない変更 (シノニム) は、自動的にはインポートされません。 [V4 API](https://go.microsoft.com/fwlink/?linkid=2092179) を使用して、新しいナレッジ ベースに変更を移行します。
 
-チャットログを移行することはできません。新しいナレッジ ベースでは Application Insights を使ってチャットログが格納されているためです。 
+チャットログを移行することはできません。新しいナレッジ ベースでは Application Insights を使ってチャットログが格納されているためです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースを編集する](../How-To/edit-knowledge-base.md)

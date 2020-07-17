@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager テンプレートを使用した Azure Service Bus とトピック、サブスクリプション、ルールの作成 | Microsoft Docs
+title: Azure テンプレートを使用して Service Bus のトピック、サブスクリプション、およびルールを作成する
 description: トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成する
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,20 +12,20 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6cbaf447dfcf06ae11f2282d7d847978297af8b8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851268"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384893"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>トピック、サブスクリプション、ルールを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成します。
 
 この記事では、Azure Resource Manager テンプレートを使用して、トピック、サブスクリプション、ルール (フィルター) を含んだ Service Bus の名前空間を作成する方法について説明します。 この記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを指定する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」を参照してください。
 
 Azure リソースの名前付け規則のプラクティスとパターンについて詳しくは、「[Azure リソースの推奨される名前付け規則][Recommended naming conventions for Azure resources]」をご覧ください。
 
@@ -39,9 +39,7 @@ Azure リソースの名前付け規則のプラクティスとパターンに�
 > * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 > 
-> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Service Bus" を検索してください。
-> 
-> 
+> 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure Quickstart Templates] 」ギャラリーで "Service Bus" を検索してください。
 
 ## <a name="what-do-you-deploy"></a>デプロイ対象
 
@@ -57,13 +55,14 @@ Azure リソースの名前付け規則のプラクティスとパターンに�
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-subscription-rule%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 Azure Resource Manager を使用して、テンプレートのデプロイ時に指定する値用のパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値用のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトあるいはデプロイ先の環境によって異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
 このテンプレートでは、次のパラメーターを定義します。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 作成する Service Bus 名前空間の名前。
 
 ```json
@@ -73,6 +72,7 @@ Azure Resource Manager を使用して、テンプレートのデプロイ時に
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 Service Bus 名前空間に作成するトピックの名前。
 
 ```json
@@ -82,6 +82,7 @@ Service Bus 名前空間に作成するトピックの名前。
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 Service Bus 名前空間に作成するサブスクリプションの名前。
 
 ```json
@@ -89,7 +90,9 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
 "type": "string"
 }
 ```
+
 ### <a name="servicebusrulename"></a>serviceBusRuleName
+
 Service Bus 名前空間に作成するルール (フィルター) の名前。
 
 ```json
@@ -97,7 +100,9 @@ Service Bus 名前空間に作成するルール (フィルター) の名前。
    "type": "string",
   }
 ```
+
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 テンプレートの Service Bus API バージョン。
 
 ```json
@@ -108,7 +113,9 @@ Service Bus 名前空間に作成するルール (フィルター) の名前。
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
+
 **Messaging** タイプの標準的な Service Bus 名前空間を作成し、トピックとサブスクリプションとルールを追加します。
 
 ```json
@@ -164,33 +171,36 @@ Service Bus 名前空間に作成するルール (フィルター) の名前。
 JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces)、[topics](/azure/templates/microsoft.servicebus/namespaces/topics)、[subscriptions](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)、および [rules](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules) を参照してください。
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>次の手順
-Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
+## <a name="next-steps"></a>次のステップ
+
+次の記事を参照して、これらのリソースの管理方法を確認してください。
 
 * [Azure Service Bus を管理する](service-bus-management-libraries.md)
 * [PowerShell で Service Bus を管理する](service-bus-manage-with-ps.md)
 * [Service Bus リソースを Service Bus Explorer で管理する](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-[Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
+[Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-

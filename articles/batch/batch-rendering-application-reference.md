@@ -1,18 +1,16 @@
 ---
-title: レンダリング アプリケーションを使用する - Azure Batch
-description: Azure Batch でレンダリング アプリケーションを使用する方法
-services: batch
-ms.service: batch
+title: レンダリング アプリケーションを使用する
+description: Azure Batch でレンダリング アプリケーションを使用する方法。 この記事は各レンダリング アプリケーションを実行するための簡単な説明を提供します。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789592"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726504"
 ---
 # <a name="rendering-applications"></a>アプリケーションをレンダリングする
 
@@ -33,7 +31,7 @@ ms.locfileid: "57789592"
 
 `3dsmaxcmdio.exe` アプリケーションを呼び出し、プール ノード上でコマンド ライン レンダリングを実行します。  このアプリケーションはタスクが実行されるときにはパス上にあります。 `3dsmaxcmdio.exe` アプリケーションでは `3dsmaxcmd.exe` アプリケーションと同じパラメーターを使用できます。これは、[3ds Max のヘルプ ドキュメント](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Command-Line Rendering セクション) に記載されています。
 
-例: 
+次に例を示します。
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
@@ -83,6 +81,6 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 プールやジョブのテンプレートは、Batch Explorer の **[ギャラリー]** からアクセスできます。  テンプレートのソース ファイルは、[GitHub の Batch Explorer データ リポジトリ](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)にあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Batch Explorer を使用して [GitHub のデータ リポジトリ](https://github.com/Azure/BatchExplorer-data/tree/master/ncj)からプールとジョブのテンプレートを使用します。  必要に応じて、新しいテンプレートするか、提供されたテンプレートの 1 つを変更します。

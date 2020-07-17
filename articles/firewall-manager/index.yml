@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Azure Firewall Manager のドキュメント
+summary: グローバルに分散されたセキュリティ管理サービスである Azure Firewall Manager をデプロイする方法について説明します。
+metadata:
+  title: Azure Firewall Manager のドキュメント
+  description: グローバルに分散されたセキュリティ管理サービスである Azure Firewall Manager をデプロイする方法について説明します。
+  services: firewall
+  ms.service: firewall-manager
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 10/10/2019
+  ms.openlocfilehash: e3b98f3954ee70b5e002bb844147d4d51b1f6d9d
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "73508671"
+landingContent:
+- title: Azure Firewall Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Firewall Manager とは
+      url: overview.md
+    - text: デプロイの概要
+      url: deployment-overview.md
+- title: セキュリティ保護付き仮想ハブについて
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ保護付き仮想ハブとは
+      url: secured-virtual-hub.md
+- title: 信頼されたセキュリティ パートナー
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 信頼されたセキュリティ パートナー (プレビュー) とは
+      url: trusted-security-partners.md
+  - linkListType: how-to-guide
+    links:
+    - text: 信頼されたセキュリティ パートナー (プレビュー) のデプロイ
+      url: deploy-trusted-security-partner.md
+- title: Azure クラウド ネットワークのセキュリティ保護
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure portal を使用して仮想ネットワークをセキュリティで保護する
+      url: secure-cloud-network.md

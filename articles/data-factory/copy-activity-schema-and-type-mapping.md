@@ -1,61 +1,122 @@
 ---
-title: コピー アクティビティでのスキーマ マッピング | Microsoft Docs
+title: コピー アクティビティでのスキーマ マッピング
 description: Azure Data Factory のコピー アクティビティが、データのコピー時にスキーマとデータ型をソース データからシンク データにどのようにマッピングするかについて説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
+manager: shwang
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267125"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414130"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 この記事では、Azure Data Factory のコピー アクティビティが、データ コピーの実行時にソース データからシンク データへのスキーマ マッピングとデータ型のマッピングをどのように行うかについて説明します。
 
-## <a name="column-mapping"></a>列マッピング
+## <a name="schema-mapping"></a>スキーマ マッピング
 
-列マッピングは、表形式の整形データ間でデータをコピーするときに適用されます。 既定では、[明示的な列マッピング](#explicit-column-mapping)が構成されていない限り、コピー アクティビティは**ソース データをシンクに列名でマッピングします**。 具体的には、コピー アクティビティは次のことを行います。
+列マッピングは、ソースからシンクにデータをコピーするときに適用されます。 既定では、アクティビティ **マップ ソース データを列名でシンクにコピー**します。 [明示的なマッピング](#explicit-mapping)を指定して、必要に応じて列マッピングをカスタマイズできます。 具体的には、コピー アクティビティは次のことを行います。
 
 1. ソースからデータを読み取り、ソース スキーマを特定する
-
-    * メタデータを含むデータベース/ファイル (Avro/ORC/Parquet/ヘッダー付きのテキスト) など、データ ストア内の定義済みのスキーマを持つデータ ソースや、ファイル形式のデータ ソースの場合、ソース スキーマはクエリの結果またはファイル メタデータから抽出されます。
-    * Azure テーブル/Cosmos DB など、柔軟なスキーマを持つデータ ソースの場合、ソース スキーマはクエリの結果から推測されます。 データセット内に "structure" を構成することによって、それを上書きできます。
-    * ヘッダーのないテキスト ファイルの場合は、パターン "Prop_0"、"Prop_1"、... で既定の列名が生成されます。データセット内に "structure" を構成することによって、それを上書きできます。
-    * Dynamics ソースの場合は、データセットの "structure" セクション内にスキーマ情報を指定する必要があります。
-
-2. 指定されている場合は、明示的な列マッピングを適用します。
-
+2. 名前で列をマップするには列マッピングの既定値を使用します。または明示的な列マッピングが指定されている場合はそれを適用します。
 3. データをシンクに書き込む
 
-    * 定義済みのスキーマを持つデータ ストアの場合、データは同じ名前を持つ列に書き込まれます。
-    * 固定のスキーマのないデータ ストアや、ファイル形式のデータ ストアの場合、列名/メタデータはソース スキーマに基づいて生成されます。
+### <a name="explicit-mapping"></a>明示的なマッピング
 
-### <a name="explicit-column-mapping"></a>明示的な列マッピング
+[コピー アクティビティ] -> [`translator` -> `mappings` プロパティ] でマップする列を指定できます。 次の例では、区切られたテキストから Azure SQL Database にデータをコピーするパイプラインで、コピー アクティビティを定義します。
 
-明示的な列マッピングを行うには、コピー アクティビティの **typeProperties** セクションで **columnMappings** を指定できます。 このシナリオでは、入力データセットと出力データセットの両方に "structure" セクションが必要です。 列マッピングでは、**ソース データセットの "structure" 内のすべての列または列のサブセットのシンク データセットの "structure" 内のすべての列へのマッピング**がサポートされます。 次のエラー状態では例外が発生します。
+```json
+{
+    "name": "CopyActivity",
+    "type": "Copy",
+    "inputs": [{
+        "referenceName": "DelimitedTextInput",
+        "type": "DatasetReference"
+    }],
+    "outputs": [{
+        "referenceName": "AzureSqlOutput",
+        "type": "DatasetReference"
+    }],
+    "typeProperties": {
+        "source": { "type": "DelimitedTextSource" },
+        "sink": { "type": "SqlSink" },
+        "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+                {
+                    "source": {
+                        "name": "UserId",
+                        "type": "Guid"
+                    },
+                    "sink": {
+                        "name": "MyUserId"
+                    }
+                }, 
+                {
+                    "source": {
+                        "name": "Name",
+                        "type": "String"
+                    },
+                    "sink": {
+                        "name": "MyName"
+                    }
+                }, 
+                {
+                    "source": {
+                        "name": "Group",
+                        "type": "String"
+                    },
+                    "sink": {
+                        "name": "MyGroup"
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
+次のプロパティは、[`translator` -> `mappings`] -> [オブジェクト] で `source` と `sink` によりサポートされます。
+
+| プロパティ | 説明                                                  | 必須 |
+| -------- | ------------------------------------------------------------ | -------- |
+| name     | ソースまたはシンク列の名前。                           | はい      |
+| ordinal  | 列のインデックス。 1 から始まります。 <br>ヘッダー行がない区切りテキストを使用するときに適用され、必須です。 | いいえ       |
+| path     | 抽出またはマップする各フィールドの JSON パス式。 たとえば MongoDB/REST などの階層データに適用します。<br>ルート オブジェクトの下のフィールドでは、JSON パスはルート $ で始まり、`collectionReference` プロパティにより選択された配列内のフィールドでは、JSON パスは配列要素で始まります。 | いいえ       |
+| type     | ソースまたはシンク列の Data Factory 中間データ型。 | いいえ       |
+| culture  | ソースまたはシンク列のカルチャ。 <br>型が `Datetime` または `Datetimeoffset` の場合に適用します。 既定では、 `en-us`です。 | いいえ       |
+| format   | 種類が `Datetime` または `Datetimeoffset` のときに使用される書式文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ       |
+
+次のプロパティは、`translator` -> `mappings` の下で、`source` および `sink` があるオブジェクトに加えてサポートされます。
+
+| プロパティ            | 説明                                                  | 必須 |
+| ------------------- | ------------------------------------------------------------ | -------- |
+| collectionReference | MongoDB/REST などの階層データがソースである場合にのみサポートされます。<br>同じパターンを持つ**配列フィールド内**のオブジェクトからのデータの反復処理と抽出を行って、オブジェクトごとの行ごとに変換する場合は、その配列の JSON のパスを指定してクロス適用を行います。 | いいえ       |
+
+### <a name="alternative-column-mapping"></a>代替列マッピング
+
+[コピー アクティビティ]-> [`translator` -> `columnMappings`] を指定して、表形式データ間でマップできます。 この場合、"structure" セクションは、入力と出力の両方のデータセットに必要です。 列マッピングでは、**ソース データセットの "structure" 内のすべての列または列のサブセットのシンク データセットの "structure" 内のすべての列へのマッピング**がサポートされます。 次のエラー状態では例外が発生します。
 
 * ソース データ ストアのクエリの結果に、入力データセットの "構造" セクションで指定された列名は含まれません。
 * シンク データ ストア (定義済みのスキーマを持つ場合) に、出力データセットの "structure" セクションで指定された列名は含まれません。
 * シンク データセットの "structure" 内の列数が、マッピングで指定された数より少ないかまたは多い。
 * 重複したマッピング。
 
-#### <a name="explicit-column-mapping-example"></a>明示的な列マッピングの例
-
-このサンプルでは、入力テーブルは構造を持ち、オンプレミスの SQL データベース内のテーブルを指しています。
+次の例では、入力データセットには構造があり、オンプレミス Oracle データベース内のテーブルをポイントします。
 
 ```json
 {
-    "name": "SqlServerInput",
+    "name": "OracleDataset",
     "properties": {
         "structure":
          [
@@ -63,9 +124,9 @@ ms.locfileid: "59267125"
             { "name": "Name"},
             { "name": "Group"}
          ],
-        "type": "SqlServerTable",
+        "type": "OracleTable",
         "linkedServiceName": {
-            "referenceName": "SqlServerLinkedService",
+            "referenceName": "OracleLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -75,11 +136,11 @@ ms.locfileid: "59267125"
 }
 ```
 
-このサンプルでは、出力テーブルは構造を持ち、Azure SQL Database 内のテーブルを指しています。
+この例では、出力データセットには構造があり、Salesfoce 内のテーブルをポイントします。
 
 ```json
 {
-    "name": "AzureSqlOutput",
+    "name": "SalesforceDataset",
     "properties": {
         "structure":
         [
@@ -87,9 +148,9 @@ ms.locfileid: "59267125"
             { "name": "MyName" },
             { "name": "MyGroup"}
         ],
-        "type": "AzureSqlTable",
+        "type": "SalesforceObject",
         "linkedServiceName": {
-            "referenceName": "AzureSqlLinkedService",
+            "referenceName": "SalesforceLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -99,7 +160,7 @@ ms.locfileid: "59267125"
 }
 ```
 
-次の JSON は、パイプラインのコピー アクティビティを定義します。 **translator** プロパティを使用して、シンク (**columnMappings**) 内の列にマッピングされたソースの列。
+次の JSON は、パイプラインのコピー アクティビティを定義します。 **translator** -> **columnMappings** プロパティを使用してシンク内の列にマップされるソースからの列。
 
 ```json
 {
@@ -107,23 +168,23 @@ ms.locfileid: "59267125"
     "type": "Copy",
     "inputs": [
         {
-            "referenceName": "SqlServerInput",
+            "referenceName": "OracleDataset",
             "type": "DatasetReference"
         }
     ],
     "outputs": [
         {
-            "referenceName": "AzureSqlOutput",
+            "referenceName": "SalesforceDataset",
             "type": "DatasetReference"
         }
     ],
     "typeProperties":    {
-        "source": { "type": "SqlSource" },
-        "sink": { "type": "SqlSink" },
+        "source": { "type": "OracleSource" },
+        "sink": { "type": "SalesforceSink" },
         "translator":
         {
             "type": "TabularTranslator",
-            "columnMappings": 
+            "columnMappings":
             {
                 "UserId": "MyUserId",
                 "Group": "MyGroup",
@@ -136,23 +197,19 @@ ms.locfileid: "59267125"
 
 列マッピングの指定に `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` の構文を使用している場合は、引き続きそのままサポートされます。
 
-**列マッピングのフロー:**
+### <a name="alternative-schema-mapping"></a>代替スキーマ マッピング
 
-![列マッピングのフロー](./media/copy-activity-schema-and-type-mapping/column-mapping-sample.png)
-
-## <a name="schema-mapping"></a>スキーマ マッピング
-
-スキーマ マッピングは、階層形式の整形データと表形式の整形データ間でデータをコピーするときに適用されます。たとえば、MongoDB/REST からテキスト ファイルにコピーしたり、SQL から Azure Cosmos DB の MongoDB 用 API にコピーしたりする場合です。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
+[コピー アクティビティ] -> [`translator` -> `schemaMapping`] を指定して、階層形式データと表形式データの間をマップできます。たとえば MongoDB/REST からテキスト ファイルにコピーしたり、Oracle から MongoDB の Azure Cosmos DB の API にコピーしたりできます。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのトランスレーターの type プロパティは**TabularTranslator** に設定する必要があります。 | はい |
-| schemaMapping | キーと値のペアのコレクション。**ソース側からシンク側**へのマッピングの関係を表します。<br/>- **Key:** ソースを表します。 **表形式のソース**の場合、データセットの構造に定義された列名を指定します。**階層構造のソース**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。<br/>- **Value:** シンクを表します。 **表形式のシンク**の場合、データセットの構造に定義された列名を指定します。**階層構造のシンク**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。 <br/> 階層構造のデータで、ルート オブジェクトの直下のフィールドの場合、JSON パスはルートの $ から記述します。`collectionReference` プロパティによって選択された配列内のフィールドの場合、JSON パスは配列要素から記述します。  | はい |
-| collectionReference | 同じパターンを持つ**配列フィールド内**のオブジェクトからのデータの反復処理と抽出を行って、オブジェクトごとの行ごとに変換する場合は、その配列の JSON のパスを指定してクロス適用を行います。 このプロパティは、階層形式のデータがソースであるときにのみサポートされます。 | いいえ  |
+| schemaMapping | キーと値のペアのコレクション。**ソース側からシンク側**へのマッピングの関係を表します。<br/>- **Key:** ソースを表します。 **表形式のソース**の場合、データセットの構造に定義された列名を指定します。**階層構造のソース**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。<br>- **Value:** シンクを表します。 **表形式のシンク**の場合、データセットの構造に定義された列名を指定します。**階層構造のシンク**の場合、抽出とマッピングの対象となる各フィールドの JSON パス式を指定します。 <br>階層構造のデータで、ルート オブジェクトの直下のフィールドの場合、JSON パスはルートの $ から記述します。`collectionReference` プロパティによって選択された配列内のフィールドの場合、JSON パスは配列要素から記述します。  | はい |
+| collectionReference | 同じパターンを持つ**配列フィールド内**のオブジェクトからのデータの反復処理と抽出を行って、オブジェクトごとの行ごとに変換する場合は、その配列の JSON のパスを指定してクロス適用を行います。 このプロパティは、階層形式のデータがソースであるときにのみサポートされます。 | いいえ |
 
-**例: MongoDB から SQL にコピーする:**
+**例: MongoDB から Oracle へのコピー:**
 
-たとえば、次の内容が含まれる MongoDB ドキュメントがあるとします。 
+たとえば、次の内容が含まれる MongoDB ドキュメントがあるとします。
 
 ```json
 {
@@ -183,31 +240,31 @@ ms.locfileid: "59267125"
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
-| 01 | 20170122 | P1 | 23 | シアトル |
-| 01 | 20170122 | P2 | 13 | シアトル |
-| 01 | 20170122 | P3 | 231 | シアトル |
+| 01 | 20170122 | P1 | 23 | Seattle |
+| 01 | 20170122 | P2 | 13 | Seattle |
+| 01 | 20170122 | P3 | 231 | Seattle |
 
 次のコピー アクティビティの JSON サンプルとしてスキーマ マッピング ルールを構成します。
 
 ```json
 {
-    "name": "CopyFromMongoDBToSqlAzure",
+    "name": "CopyFromMongoDBToOracle",
     "type": "Copy",
     "typeProperties": {
         "source": {
             "type": "MongoDbV2Source"
         },
         "sink": {
-            "type": "SqlSink"
+            "type": "OracleSink"
         },
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number", 
-                "orderDate": "$.date", 
-                "order_pd": "prod", 
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -215,22 +272,18 @@ ms.locfileid: "59267125"
 }
 ```
 
-## <a name="data-type-mapping"></a>データ型のマッピング
+## <a name="data-type-mapping"></a>データ型マッピング
 
 コピー アクティビティは、次の 2 段階のアプローチを使用してソースの型からシンクの型へのマッピングを実行します。
 
 1. ネイティブなソースの型から Azure Data Factory の中間データ型に変換する
 2. Azure Data Factory の中間データ型からネイティブなシンクの型に変換する
 
-ネイティブ型から中間型へのマッピングは、各コネクタのトピックにある「データ型のマッピング」のセクションで見つけることができます。
-
-### <a name="supported-data-types"></a>サポートされているデータ型
-
-Data Factory は次の中間データ型をサポートしています。[データセット構造](concepts-datasets-linked-services.md#dataset-structure)の構成で型情報を構成するときは、次の値を指定できます。
+コピー アクティビティは、次の中間データ型をサポートしています。 
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double
@@ -242,31 +295,7 @@ Data Factory は次の中間データ型をサポートしています。[デー
 * String
 * Timespan
 
-### <a name="explicit-data-type-conversion"></a>明示的なデータ型変換
-
-固定のスキーマを持つデータ ストア (SQL Server/Oracle など) にデータをコピーするとき、ソースとシンクが同じ列に異なる型を持っている場合は、ソース側で明示的な型変換を宣言する必要があります。
-
-* ファイル ソース (CSV/Avro など) の場合、型変換は、完全な列リスト (ソース側の列名とシンク側の型) を持つソース構造によって宣言されます。
-* リレーショナル ソース (SQL/Oracle など) の場合、型変換は、クエリ ステートメント内の明示的な型キャストによって実現されます。
-
-## <a name="when-to-specify-dataset-structure"></a>データセットの "structure" を指定する場合
-
-次のシナリオでは、データセット内に "structure" が必要です。
-
-* コピー中のファイル ソースへの[明示的なデータ型変換](#explicit-data-type-conversion)の適用 (入力データセット)
-* コピー中の[明示的な列マッピング](#explicit-column-mapping)の適用 (入力データセットと出力データセットの両方)
-* Dynamics 365/CRM ソースからのコピー (入力データセット)
-* ソースが JSON ファイルでない場合、入れ子になったオブジェクトとしての Cosmos DB へのコピー (出力データセット)
-
-次のシナリオでは、データセット内に "structure" が推奨されます。
-
-* ヘッダーのないテキスト ファイルからのコピー (入力データセット)。 明示的な列マッピングを構成する代わりに、対応するシンク列に合わせたテキスト ファイルの列名を指定できます。
-* 柔軟なスキーマを持つデータ ストア (Azure テーブル/Cosmos DB (入力データセット) など) からのコピー。これは、アクティビティの実行ごとに上部の行に基づいてコピー アクティビティにスキーマを推測させることなく、予測されるデータ (列) がコピーされることを保証するためです。
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティの他の記事を参照してください。
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
-- [コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)
-- [コピー アクティビティのパフォーマンス](copy-activity-performance.md)

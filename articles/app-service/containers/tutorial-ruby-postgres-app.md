@@ -1,23 +1,16 @@
 ---
-title: Linux 上の Ruby (Rails) と Postgres - Azure App Service | Microsoft Docs
-description: Ruby アプリを Azure で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。 このチュートリアルでは Rails を使用します。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: チュートリアル:Linux Ruby アプリと Postgres
+description: Linux Ruby アプリを Azure App Service で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。 このチュートリアルでは Rails を使用します。
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2bc30786ccd0bccfba438fa6e553fdcbbf7fdde1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544690"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82085785"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -105,7 +98,7 @@ rake db:migrate
 rails server
 ```
 
-ブラウザーで `http://localhost:3000` にアクセスします。 ページにいくつかのタスクを追加します。
+ブラウザーで `http://localhost:3000` にアクセスします。 ページで、いくつかのタスクを追加します。
 
 ![Postgres に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
@@ -117,7 +110,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 
 この手順では、Postgres データベースを [Azure Database for PostgreSQL](/azure/postgresql/) に作成します。 後で、このデータベースに接続するように Ruby on Rails アプリケーションを構成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -125,7 +118,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 
 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) コマンドを使用して、PostgreSQL サーバーを作成します。
 
-Cloud Shell で次のコマンドを実行します。*\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。 このサーバー名は、Azure のすべてのサーバーで一意である必要があります。 
+Cloud Shell で次のコマンドを実行します。 *\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。 このサーバー名は、Azure のすべてのサーバーで一意である必要があります。 
 
 ```azurecli-interactive
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
@@ -133,14 +126,14 @@ az postgres server create --location "West Europe" --resource-group myResourceGr
 
 Azure Database for PostgreSQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "administratorLogin": "adminuser",
   "earliestRestoreDate": "2018-06-15T12:38:25.280000+00:00",
-  "fullyQualifiedDomainName": "<postgres-server-name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres-server-name>",
+  "fullyQualifiedDomainName": "&lt;postgres-server-name&gt;.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/&lt;postgres-server-name&gt;",
   "location": "westeurope",
-  "name": "<postgres-server-name>",
+  "name": "&lt;postgres-server-name&gt;",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 2,
@@ -149,16 +142,16 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
     "size": null,
     "tier": "GeneralPurpose"
   },
-  < Output has been truncated for readability >
+  &lt; Output has been truncated for readability &gt;
 }
-```
+</pre>
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
 Cloud Shell で [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) コマンドを使用して、Postgres サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 *\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -265,7 +258,7 @@ rails server -e production
 
 `http://localhost:3000` に移動します。 エラーなしでページが読み込まれれば、Ruby on Rails アプリケーションは Azure の Postgres データベースに接続しています。
 
-ページにいくつかのタスクを追加します。
+ページで、いくつかのタスクを追加します。
 
 ![Azure Database for PostgreSQL に正常に接続された Ruby on Rails](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
 
@@ -342,7 +335,7 @@ git push azure master
 
 デプロイ中、Azure App Service は進行状況について Git と通信します。
 
-```bash
+<pre>
 Counting objects: 3, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
@@ -354,10 +347,10 @@ remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
 remote: Running deployment command...
 ...
-< Output has been truncated for readability >
-```
+&lt; Output has been truncated for readability &gt;
+</pre>
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -498,7 +491,7 @@ git push azure master
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

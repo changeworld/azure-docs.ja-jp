@@ -1,19 +1,18 @@
 ---
 title: Azure Analysis Services データベースのバックアップと復元 | Microsoft Docs
-description: Azure Analysis Services データベースのバックアップと復元の方法について説明します。
+description: この記事では、モデルのメタデータとデータを Azure Analysis Services データベースからバックアップおよび復元する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539107"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408667"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -32,13 +31,13 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 
 ### <a name="to-configure-storage-settings"></a>ストレージ設定を構成するには
-1.  Azure Portal の **[設定]** で、**[バックアップ]** をクリックします。
+1.  Azure Portal の **[設定]** で、 **[バックアップ]** をクリックします。
 
     ![[設定] の [バックアップ]](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  **[有効]** をクリックし、**[ストレージの設定]** をクリックします。
+2.  **[有効]** をクリックし、 **[ストレージの設定]** をクリックします。
 
-    ![有効化](./media/analysis-services-backup/aas-backup-enable.png)
+    ![[有効化]](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. 既存のストレージ アカウントを選択するか、新しいアカウントを作成します。
 
@@ -54,9 +53,9 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="to-backup-by-using-ssms"></a>SSMS を使用してバックアップするには
 
-1. SSMS でデータベースを右クリックし、**[バックアップ]** を選択します。
+1. SSMS でデータベースを右クリックし、 **[バックアップ]** を選択します。
 
-2. **[データベースのバックアップ]** > **[バックアップ ファイル]** の順に移動し、**[参照]** をクリックします。
+2. **[データベースのバックアップ]**  >  **[バックアップ ファイル]** の順に移動し、 **[参照]** をクリックします。
 
 3. **[ファイル名を付けて保存]** ダイアログでフォルダーのパスを確認し、バックアップ ファイルの名前を入力します。 
 
@@ -72,9 +71,9 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 
 ### <a name="powershell"></a>PowerShell
-[Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) コマンドレットを使用します。
+[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) コマンドレットを使用します。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
 
@@ -86,7 +85,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="to-restore-by-using-ssms"></a>SSMS を使って復元するには
 
-1. SSMS でデータベースを右クリックし、**[復元]** を選択します。
+1. SSMS でデータベースを右クリックし、 **[復元]** を選択します。
 
 2. **[データベースのバックアップ]** ダイアログの **[バックアップ ファイル]** で **[参照]** をクリックします。
 
@@ -99,7 +98,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="powershell"></a>PowerShell
 
-[Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) コマンドレットを使用します。
+[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) コマンドレットを使用します。
 
 
 ## <a name="related-information"></a>関連情報

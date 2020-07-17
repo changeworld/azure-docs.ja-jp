@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と UserVoice の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と UserVoice の統合 | Microsoft Docs'
 description: Azure Active Directory と UserVoice の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: dbd7189b1761a9ea88ce32dae3d7b45a88301ff6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905631"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74232003"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>チュートリアル:Azure Active Directory と UserVoice の統合
+# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>チュートリアル: Azure Active Directory と UserVoice の統合
 
 このチュートリアルでは、UserVoice と Azure Active Directory (Azure AD) を統合する方法について説明します。
 UserVoice と Azure AD の統合には、次の利点があります。
@@ -53,11 +53,11 @@ Azure AD への UserVoice の統合を構成するには、ギャラリーから
 
 **ギャラリーから UserVoice を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への UserVoice の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**UserVoice**」と入力し、結果ウィンドウで **[UserVoice]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**UserVoice**」と入力し、結果ウィンドウで **[UserVoice]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の UserVoice](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
 
 UserVoice で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **UserVoice** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **UserVoice** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ UserVoice で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[UserVoice クライアント サポート チーム](https://www.uservoice.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、**[SAML 署名証明書]** ダイアログを開きます。
+5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
@@ -136,15 +136,15 @@ UserVoice で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のツール バーの **[設定]** をクリックし、メニューから **[Web ポータル]** を選択します。
    
-    ![アプリ側の [設定] セクション](./media/uservoice-tutorial/ic777519.png "設定")
+    ![アプリ側の [Settings]\(設定\) セクション](./media/uservoice-tutorial/ic777519.png "設定")
 
-3. **[Web ポータル]** タブの **[ユーザー認証]** セクションで、**[編集]** をクリックして **[ユーザー認証の編集]** ダイアログ ページを開きます。
+3. **[Web ポータル]** タブの **[ユーザー認証]** セクションで、 **[編集]** をクリックして **[ユーザー認証の編集]** ダイアログ ページを開きます。
    
     ![[Web ポータル] タブ](./media/uservoice-tutorial/ic777520.png "Web ポータル")
 
 4. **[ユーザー認証の編集]** ダイアログ ページで、次の手順に従います。
    
-    ![ユーザー認証の編集](./media/uservoice-tutorial/ic777521.png "Edit user authentication")
+    ![[ユーザー認証の編集]](./media/uservoice-tutorial/ic777521.png "[ユーザー認証の編集]")
    
     a. **[シングル サインオン]** をクリックします。
  
@@ -160,7 +160,7 @@ UserVoice で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -184,7 +184,7 @@ UserVoice で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に UserVoice へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[UserVoice]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[UserVoice]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -196,15 +196,15 @@ UserVoice で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-uservoice-test-user"></a>UserVoice のテスト ユーザーの作成
 
@@ -216,28 +216,28 @@ Azure AD ユーザーが UserVoice にサインインできるようにするに
 
 2. **[設定]** に移動します。
    
-    ![設定](./media/uservoice-tutorial/ic777811.png "Settings")
+    ![[設定]](./media/uservoice-tutorial/ic777811.png "設定")
 
 3. **[全般]** をクリックします。
 
 4. **[エージェントとアクセス許可]** をクリックします。
    
-    ![エージェントとアクセス許可](./media/uservoice-tutorial/ic777812.png "Agents and permissions")
+    ![[エージェントとアクセス許可]](./media/uservoice-tutorial/ic777812.png "[エージェントとアクセス許可]")
 
 5. **[管理者の追加]** をクリックします。
    
-    ![管理者の追加](./media/uservoice-tutorial/ic777813.png "Add admins")
+    ![[管理者の追加]](./media/uservoice-tutorial/ic777813.png "[管理者の追加]")
 
 6. **[管理者の招待]** ダイアログで、次の手順を実行します。
    
-    ![管理者の招待](./media/uservoice-tutorial/ic777814.png "Invite admins")
+    ![[管理者の招待]](./media/uservoice-tutorial/ic777814.png "[管理者の招待]")
    
-    a. [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
+    a. [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、 **[追加]** をクリックします。
    
     b. **[招待]** をクリックします。
 
 > [!NOTE]
-> UserVoice から提供されている他の UserVoice ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の UserVoice ユーザー アカウント作成ツールや、UserVoice から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

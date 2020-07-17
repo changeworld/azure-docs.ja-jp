@@ -1,21 +1,16 @@
 ---
 title: Azure Functions のトリガーとバインドの例
 description: Azure 関数のバインドを構成する方法について学習します
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 6d5f9b171a4efc5e52d281655de143ac9d40d437
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740252"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74227243"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions のトリガーとバインドの例
 
@@ -135,9 +130,9 @@ public class Person
 }
 ```
 
-これで、Azure Table ストレージによってトリガーされ、データをキューに出力する実用的な関数が完成しました。
+これで、Azure Queue によってトリガーされ、データを Azure Table Storage に出力する実用的な関数が完成しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のバインド式のパターン](./functions-bindings-expressions-patterns.md)

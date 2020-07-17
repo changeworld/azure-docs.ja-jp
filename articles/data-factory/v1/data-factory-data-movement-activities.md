@@ -1,27 +1,26 @@
 ---
-title: コピー アクティビティを使用したデータの移動 | Microsoft Docs
+title: コピー アクティビティを使用したデータの移動
 description: Data Factory パイプラインでのデータの移動 (クラウド ストア間、およびオンプレミスのストアとクラウド ストアの間でのデータ移行) について説明します。 コピー アクティビティの使用。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236519"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-data-movement-activities.md)
 > * [バージョン 2 (最新バージョン)](../copy-activity-overview.md)
 
@@ -73,12 +72,12 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
+> \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
 コピー アクティビティを使用して、2 つのファイル ベースのデータ ストア間で**ファイルをそのままコピー**することができ、入力および出力の両方のデータセット定義の [format セクション](data-factory-create-datasets.md)をスキップすることもできます。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
-また、コピー アクティビティでは、指定された形式 (**テキスト、JSON、Avro、ORC、Parquet**) でのファイルの読み取りと書き込み、および圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
+また、コピー アクティビティは、指定された形式 (**テキスト、JSON、Avro、ORC、Parquet**) でファイルの読み取りと書き込みを行い、圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
 たとえば、次のようなコピー アクティビティを実行できます。
 
@@ -87,7 +86,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 * オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
 * Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
 
-## <a name="global"></a>グローバルに使用できるデータの移動
+## <a name="globally-available-data-movement"></a><a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リージョンでのみ使用できます。 ただし、コピー アクティビティを実行するサービスは、以下のリージョンと場所でグローバルに使用できます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンにおける Data Factory とデータ移動の提供状況については、[リージョン別のサービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
 
 ### <a name="copy-data-between-cloud-data-stores"></a>クラウド データ ストア間でのデータのコピー
@@ -97,7 +96,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 |:--- |:--- |:--- |
 | 米国 | 米国東部 | 米国東部 |
 | &nbsp; | 米国東部 2 | 米国東部 2 |
-| &nbsp; | 米国中央部 | 米国中央部 |
+| &nbsp; | 米国中部 | 米国中部 |
 | &nbsp; | 米国中北部 | 米国中北部 |
 | &nbsp; | 米国中南部 | 米国中南部 |
 | &nbsp; | 米国中西部 | 米国中西部 |
@@ -138,7 +137,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 Data Factory コピー ウィザードは、コピー アクティビティのあるパイプラインを作成するのに役立ちます。 このパイプラインを使用すると、リンクされたサービス、データセット、およびパイプラインの " *JSON 定義を作成しなくても* "、サポートされているソースからデータをコピーできます。 このウィザードの詳細については、「 [Data Factory コピー ウィザード](data-factory-copy-wizard.md) 」をご覧ください。  
 
 ### <a name="by-using-json-scripts"></a>JSON スクリプトを使用
-Azure ポータル、Visual Studio、または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 手順については、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。    
+Visual Studio または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 詳しい手順については、 [Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関するチュートリアルをご覧ください。    
 
 JSON プロパティ (名前、説明、入力テーブル、出力テーブル、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 アクティビティの `typeProperties` セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
 
@@ -209,8 +208,8 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 1. ネイティブの source 型から .NET 型に変換する。
 2. .NET 型からネイティブの sink 型に変換する。
 
-データ ストアのネイティブ型システムから .NET 型へのマッピングは、該当するデータ ストアの記事を参照してください  (サポートされるデータ ストアの表に示されているリンクをクリックしてください)。 このマッピングを使用して、テーブル作成時に適切な型を決定でき、コピー アクティビティによって適切な変換が実行されます。
+データ ストアのネイティブ型システムから .NET 型へのマッピングは、該当するデータ ストアの記事を参照してください (サポートされるデータ ストアの表に示されているリンクをクリックしてください)。 このマッピングを使用して、テーブル作成時に適切な型を決定でき、コピー アクティビティによって適切な変換が実行されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * コピー アクティビティの詳細については、「 [Azure Blob Storage から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 * オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動については、 [オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページをご覧ください。

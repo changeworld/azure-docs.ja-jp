@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric でのオンデマンド バックアップ | Microsoft Docs
+title: Azure Service Fabric でのオンデマンド バックアップ
 description: Service Fabric でバックアップと復元機能を使用し、必要に応じてアプリケーションのデータをバックアップします。
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413933"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75458422"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric でのオンデマンド バックアップ
 
@@ -111,6 +102,17 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API を使用して、[オンデマンド バックアップの進行状況](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)の追跡を設定することができます。
 
+### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+Service Fabric Explorer の設定で、詳細設定モードが有効になっていることを確認します。
+1. 目的のパーティションを選択し、[アクション] をクリックします。 
+2. [Trigger Partition Backup]\(パーティションのバックアップのトリガー\) を選択し、Azure の情報を入力します。
+
+    ![パーティションのバックアップのトリガー][0]
+
+    または、FileShare の場合:
+
+    ![パーティションのバックアップのトリガー (FileShare)][1]
+
 ## <a name="tracking-on-demand-backup-progress"></a>オンデマンド バックアップの進行状況の追跡
 
 Reliable Stateful サービスまたは Reliable Actors のパーティションで受け付けられるオンデマンド バックアップ要求は、一度に 1 つだけです。 別の要求は、現在のオンデマンド バックアップ要求が完了した後にのみ受け付けられます。
@@ -179,7 +181,10 @@ $backupResponse
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Service Fabric の定期バックアップ構成を理解する](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Compute REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
+[1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

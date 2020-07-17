@@ -1,23 +1,21 @@
 ---
 title: Azure Blob Storage イベントを Web エンドポイントに送信する - Azure CLI | Microsoft Docs
 description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。 Webhook にイベントを送信します。 Web アプリケーションでイベントを処理します。
-services: storage,event-grid
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
-ms.date: 12/06/2018
-ms.topic: quickstart
+ms.date: 03/05/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: 7d92614556fdc6822f749002d2e5a8fc92946d0a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141128"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80745516"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート: Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。
 
@@ -27,20 +25,19 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 ![サブスクリプション イベントの表示](./media/storage-blob-event-quickstart/view-results.png)
 
-
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択した場合、この記事では、最新バージョンの Azure CLI (2.0.24 以降) が実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用することを選択した場合、この記事では、最新バージョンの Azure CLI (2.0.70 以降) が実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 
 
 次の例では、`<resource_group_name>` という名前のリソース グループを場所 *westcentralus* に作成します。  `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 
@@ -96,7 +93,7 @@ storageid=$(az storage account show --name <storage_account_name> --resource-gro
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  --resource-id $storageid \
+  --source-resource-id $storageid \
   --name <event_subscription_name> \
   --endpoint $endpoint
 ```
@@ -149,7 +146,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのストレージ アカウントとイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 `<resource_group_name>` は、先ほど作成したリソース グループに置き換えます。
@@ -158,7 +155,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Blob Storage のイベントについて、また Event Grid でできることについて、さらに情報を収集しましょう。
 

@@ -1,5 +1,5 @@
 ---
-title: REST API:Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs
+title: 'REST API: Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs'
 description: WebHDFS REST API を使用して、Azure Data Lake Storage Gen1 に対するファイルシステム操作を実行します
 services: data-lake-store
 documentationcenter: ''
@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877633"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60878785"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "58877633"
 
 * **Azure Data Lake Storage Gen1 アカウント**。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* **[cURL](https://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
+* **[cURL](https://curl.haxx.se/)** 。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
 Azure Active Directory を使用した認証方法には 2 つあります。
@@ -158,10 +158,10 @@ Data Lake Storage Gen1 アカウントからのデータの読み取りは、2 �
 
     {"boolean":true}
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [REST API を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
 * [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 

@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - SQL データベースへのアプリの接続 | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - SQL データベースへの App Service アプリの接続
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell:SQL Database への接続
+description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、SQL Database にアプリを接続する方法を紹介しています。
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b008ef47ba530affd65e4d0e5e293312cfe74b69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136523"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74685399"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>SQL データベースへの App Service アプリの接続
 
@@ -47,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
@@ -57,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | データベースまたはエラスティック データベースを作成します。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | App Service アプリの構成を変更します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

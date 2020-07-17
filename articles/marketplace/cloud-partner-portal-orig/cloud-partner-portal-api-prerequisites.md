@@ -1,28 +1,24 @@
 ---
-title: API 前提条件 | Microsoft Docs
+title: API 前提条件 | Azure Marketplace
 description: クラウド パートナー ポータル API を使用するための前提条件
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878649"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255976"
 ---
 <a name="api-prerequisites"></a>API 前提条件
 ================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更が導入されています。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 クラウド パートナー ポータル API を使用するには、プログラム アセットが 2 つ必要になります。サービス プリンシパルと Azure Active Directory (Azure AD) アクセス トークンです。
 
@@ -41,16 +37,16 @@ ms.locfileid: "57878649"
 次の手順でサービス プリンシパルを追加します。
 
 1. クラウド パートナー ポータルにサインオンします。 
-2. 左のメニュー バーで **[ユーザー]** をクリックし、**[ユーザーの追加]** を選択します。
+2. 左のメニュー バーで **[ユーザー]** をクリックし、 **[ユーザーの追加]** を選択します。
 
    ![ユーザーをポータルに追加する](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
 3. **[種類]** ドロップダウンから **[サービス プリンシパル]** を選択し、次の詳細を追加します。
 
 -   サービス プリンシパルの**フレンドリ名**。たとえば、`spAccount`。
--   **アプリケーション ID**。 この ID を見つけるには、[[Azure portal]](https://portal.azure.com) に移動し、**[Azure Active Directory]** をクリックし、**[アプリの登録]** を選択して自分のアプリをクリックします。
+-   **アプリケーション ID**。 この ID を見つけるには、[[Azure portal]](https://portal.azure.com) に移動し、 **[Azure Active Directory]** をクリックし、 **[アプリの登録]** を選択して自分のアプリをクリックします。
 -   自分の Azure AD テナントの**テナント ID**。これは**ディレクトリ ID** とも呼ばれています。 この ID は、[Azure portal](https://portal.azure.com) の Azure Active Directory ページの **[プロパティ]** にあります。
--   サービス プリンシパル オブジェクトの**オブジェクト ID**。 この ID は Azure portal から取得できます。 **[Azure Active Directory]** に移動し、**[アプリの登録]** を選択し、自分のアプリをクリックし、**[ローカル ディレクトリでのマネージド アプリケーション]** の下にあるアプリ名をクリックします。 次に、**[プロパティ]** ページに移動し、オブジェクト ID を見つけます。 アプリに存在する最初のオブジェクト ID を取得せずに、マネージド アプリケーションのオブジェクト ID を取得してください。
+-   サービス プリンシパル オブジェクトの**オブジェクト ID**。 この ID は Azure portal から取得できます。 **[Azure Active Directory]** に移動し、 **[アプリの登録]** を選択し、自分のアプリをクリックし、 **[ローカル ディレクトリでのマネージド アプリケーション]** の下にあるアプリ名をクリックします。 次に、 **[プロパティ]** ページに移動し、オブジェクト ID を見つけます。 アプリに存在する最初のオブジェクト ID を取得せずに、マネージド アプリケーションのオブジェクト ID を取得してください。
 -   アカウントに関連付けられている**ロール**。RBAC に使用されます。
 
      ![マネージド アプリをポータルに追加する](./media/cloud-partner-portal-api-prerequisites/managedapp.png)

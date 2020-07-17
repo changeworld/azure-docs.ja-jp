@@ -9,11 +9,11 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1a8c90a7ae2e89122db0823da7cb0b084df3dbae
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67180910"
 ---
 > [!IMPORTANT]
 > 2017 年 3 月 1 日の時点で、クラシック デプロイ モデルに新しい ExpressRoute 回線を作成することはできません。

@@ -13,19 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;mingfeiy
-ms.openlocfilehash: 744887a3b23518a5b970a3fda94bf990806bd2d8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846907"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227079"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的な暗号化:コンテンツ キー承認ポリシーを構成する
+# <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
+
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概要
- Azure Media Services を使用すると、128 ビット暗号化キーまたは [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) を使用して Advanced Encryption Standard (AES) で保護された MPEG-DASH、スムーズ ストリーミング、HTTP ライブ ストリーミング (HLS) ストリームを配信できます。 Media Services では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
+ Azure Media Services を使用すると、128 ビット暗号化キーまたは [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) を使用して Advanced Encryption Standard (AES) で保護された MPEG-DASH、スムーズ ストリーミング、HTTP ライブ ストリーミング (HLS) ストリームを配信できます。 Media Services では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも Common Encryption (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
 Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できるキー/ライセンス配信サービスも提供します。
 
@@ -33,7 +34,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES または DRM 暗号化によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限  (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と JSON Web トークン ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) 形式のトークンがサポートされます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と JSON Web トークン ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) 形式のトークンがサポートされます。
 
 Media Services は STS を提供しません。 カスタム STS を作成するか、Azure Access Control Service を使用してトークンを発行することができます。 STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
@@ -391,8 +392,8 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、「[テスト トークン](#test-token)」のセクションをご覧ください。 
 
-## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
 
 ```csharp
     public enum ContentKeyRestrictionType
@@ -403,7 +404,7 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
     }
 ```
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 ```csharp 
     public enum ContentKeyDeliveryType
@@ -415,7 +416,7 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
     }
 ```
 
-### <a id="TokenType"></a>TokenType
+### <a name="tokentype"></a><a id="TokenType"></a>TokenType
 
 ```csharp
     public enum TokenType
@@ -426,12 +427,16 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
     }
 ```
 
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関する記事をご覧ください。
 

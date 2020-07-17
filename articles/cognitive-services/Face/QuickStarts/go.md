@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API と Go を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Go で Face API を使って画像から顔を検出します。
+description: このクイックスタートでは、Go で Face サービスを使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b3e6f5746df6197938d3a91de5ff11b1a311d762
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312601"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402947"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>クイック スタート:REST API と Go を使用して画像内の顔を検出する
 
@@ -23,7 +23,7 @@ ms.locfileid: "56312601"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
 ## <a name="write-the-script"></a>スクリプトを作成する
@@ -49,7 +49,7 @@ func main() {
     // subscription keys. For example, if you got your subscription keys from
     // westus, replace "westcentralus" in the URL below with "westus".
     const uriBase =
-      "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect"
+      "https://<My Endpoint String>.com/face/v1.0/detect"
     const imageUrl =
       "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg"
 
@@ -60,8 +60,16 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
+    //Configure TLS, etc.
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{
+            InsecureSkipVerify: true,
+        },
+    }
+    
     // Create the Http client
     client := &http.Client{
+        Transport: tr,
         Timeout: time.Second * 2,
     }
 
@@ -100,7 +108,9 @@ func main() {
 }
 ```
 
-`subscriptionKey` の値は、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 
+`subscriptionKey` 値は、実際のサブスクリプション キーで更新する必要があります。また `uriBase` 文字列も、適切なエンドポイント文字列を含むように変更する必要があります。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 また、`imageUrl` フィールドも実際の入力画像を指すように変更する必要があります。 さらに、`returnFaceAttributes` フィールドも変更する必要があります。このフィールドで、取得する顔の属性を指定します。
 
@@ -299,9 +309,9 @@ detect-face
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す Ruby スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイックスタートでは、Azure Face サービスを呼び出して画像内の顔を検出し、その属性を返す Go コンソール アプリケーションを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

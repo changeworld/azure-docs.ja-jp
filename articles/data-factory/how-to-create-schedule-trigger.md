@@ -1,25 +1,26 @@
 ---
-title: Azure Data Factory でのスケジュール トリガーの作成 | Microsoft Docs
+title: Azure Data Factory でのスケジュール トリガーの作成
 description: スケジュールでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: shlo
-ms.openlocfilehash: 09f80f69857ae17a0136229fe9bf13d4f63e7096
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151085"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641501"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
 
 スケジュール トリガーを作成するときは、トリガーのスケジュール (開始日、繰り返し、終了日など) を指定し、パイプラインと関連付けます。 パイプラインとトリガーには多対多の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。
@@ -30,38 +31,46 @@ ms.locfileid: "65151085"
 **スケジュール トリガー** を作成して、パイプラインを定期的 (毎時、毎日など) に実行するようにスケジュールできます。 
 
 > [!NOTE]
-> パイプラインとスケジュール トリガーの作成、トリガーとパイプラインの関連付け、およびパイプラインの実行と監視の完全なチュートリアルについては、[Data Factory UI を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-portal.md)をご覧ください。
+> パイプラインとスケジュール トリガーの作成に関する完全なチュートリアル (トリガーをパイプラインに関連付けて、パイプラインを実行および監視する) については、[Data Factory UI を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-portal.md)をご覧ください。
 
-1. **[編集]** タブに切り替えます。 
+1. 鉛筆のシンボルを使用して表示された **[編集]** タブに切り替えます。 
 
     ![[編集] タブに切り替える](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. メニューの **[トリガー]** をクリックし、**[New/Edit]\(新規作成/編集\)** をクリックします。 
+
+1. メニューの **[トリガー]** を選択して、 **[New/Edit]\(新規作成/編集\)** を選択します。 
 
     ![新しいトリガーのメニュー](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. **[Add Triggers]\(トリガーの追加\)** ページで、**[Choose trigger...]\(トリガーの選択...\)**、**[新規]** の順にクリックします。 
+
+1. **[Add Triggers]\(トリガーの追加\)** ページで、 **[Choose trigger]\(トリガーの選択\)** を選択してから、 **[+新規]** を選択します。 
 
     ![トリガーの追加 - 新しいトリガー](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. **[新しいトリガー]** ページで、次の手順を実行します。 
+
+1. **[新しいトリガー]** ページで、次の手順を行います。 
 
     1. **[種類]** で **[スケジュール]** が選択されていることを確認します。 
-    2. **[開始日 (UTC)]** にトリガーの開始日時を指定します。 これは、既定で現在の日時に設定されています。 
-    3. トリガーの**繰り返し**を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、**[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
-    4. トリガーの終了日時を指定しない場合は、**[終了]** フィールドで **[終了日指定なし]** を選択します。 終了日時を指定するには、**[指定日]** を選択し、終了日時を指定して、**[適用]** をクリックします。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
+    1. **[開始日 (UTC)]** にトリガーの開始日時を指定します。 これは、既定で現在の日時に設定されています。 
+    1. トリガーの**繰り返し**を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、 **[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
+    1. トリガーの終了日時を指定しない場合は、 **[終了]** フィールドで **[終了日指定なし]** を選択します。 終了日時を指定するには、 **[指定日]** を選択し、終了日時を指定して、 **[OK]** を選択します。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
 
         ![トリガー設定](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. **[新しいトリガー]** ウィンドウで、**[アクティブ化]** をオンにし、**[次へ]** をクリックします。 このチェック ボックスを使用して、トリガーを後で非アクティブ化できます。 
+
+1. **[新しいトリガー]** ウィンドウで、 **[アクティブ化]** オプションの **[はい]** を選択し、 **[OK]** を選択します。 このチェック ボックスを使用して、トリガーを後で非アクティブ化できます。 
 
     ![トリガーの設定 - [次へ] ボタン](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. **[新しいトリガー]** ページで警告メッセージを確認し、**[完了]** をクリックします。
+
+1. **[新しいトリガー]** ウィンドウで警告メッセージを確認し、 **[OK]** を選択します。
 
     ![トリガーの設定 - [完了] ボタン](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. **[発行]** をクリックして、変更を Data Factory に発行します。 変更を Data Factory に発行するまで、トリガーはパイプライン実行のトリガーを開始しません。 
+
+1. **[すべて発行]** を選択して、変更を Data Factory に発行します。 変更を Data Factory に発行するまで、そのトリガーによって、パイプライン実行のトリガーは開始されません。 
 
     ![[発行] ボタン](./media/how-to-create-schedule-trigger/publish-2.png)
-8. 左側で **[監視]** タブに切り替えます。 **[最新の情報に更新]** をクリックして、リストを更新します。 スケジュールされたトリガーによってトリガーされたパイプライン実行が表示されます。 **[トリガー元]** 列の値に注意してください。 **[Trigger Now]\(今すぐトリガー\)** を使用すると、一覧に手動のトリガー実行が表示されます。 
+
+1. 左側の **[パイプラインの実行]** タブに切り替えてから、 **[更新]** を選択して一覧を更新します。 スケジュールされたトリガーによってトリガーされたパイプライン実行が表示されます。 **[トリガー元]** 列の値に注意してください。 **[Trigger Now]\(今すぐトリガー\)** を使用すると、一覧に手動のトリガー実行が表示されます。 
 
     ![トリガーされた実行を監視する](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. **[Pipeline Runs]\(パイプラインの実行\)** の横にある下向き矢印をクリックして、**[Trigger Runs]\(トリガーの実行\)** ビューに切り替えます。 
+
+1. **[Trigger Runs]\(トリガーの実行\)** ビューへの切り替え 
 
     ![トリガーの実行を監視する](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -69,7 +78,7 @@ ms.locfileid: "65151085"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-このセクションでは、Azure PowerShell を使用してスケジュール トリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[Azure PowerShell を使用したデータ ファクトリの作成のクイック スタートに関するページ](quickstart-create-data-factory-powershell.md)に目を通します。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
+このセクションでは、Azure PowerShell を使用してスケジュール トリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[Azure PowerShell を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-powershell.md)に関する記事を参照してください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
 
 1. 次の内容が含まれた **MyTrigger.json** という名前の JSON ファイルを C:\ADFv2QuickStartPSH\ フォルダーに作成します。
 
@@ -111,31 +120,31 @@ ms.locfileid: "65151085"
     - トリガーは、**Adfv2QuickStartPipeline** パイプラインに関連付けられます。 複数のパイプラインをトリガーに関連付けるには、**pipelineReference** セクションを追加します。
     - クイック スタートのパイプラインは、**inputPath** と **outputPath** の 2 つの**パラメーター**の値を受け取ります。 そのため、これらのパラメーターの値をトリガーから渡します。
 
-2. **Set-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
+1. **Set-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
+1. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. **Start-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
+1. **Start-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
+1. **Get-AzDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  **Get-AzDataFactoryV2TriggerRun** コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
+1.  **Get-AzDataFactoryV2TriggerRun** コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -145,7 +154,7 @@ ms.locfileid: "65151085"
 
 
 ## <a name="net-sdk"></a>.NET SDK
-このセクションでは、.NET SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[.NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)」に目を通します。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
+このセクションでは、.NET SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[.NET SDK を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-dot-net.md)に関する記事を参照してください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
 
 15 分ごとに実行されるスケジュール トリガーを作成して起動するには、メイン メソッドに次のコードを追加します。
 
@@ -254,9 +263,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 "parameters": {
     "scheduledRunTime": "@trigger().scheduledTime"
 }
-```    
-
-詳細については、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関する記事をご覧ください。
+```
 
 ## <a name="json-schema"></a>JSON スキーマ
 次の JSON 定義は、スケジュールと繰り返しを指定してスケジュール トリガーを作成する方法を示しています。
@@ -325,13 +332,13 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 ### <a name="schema-defaults-limits-and-examples"></a>スキーマの既定値、制限、例
 
-| JSON プロパティ | Type | 必須 | Default value | 有効な値 | 例 |
+| JSON プロパティ | Type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | はい | なし | ISO-8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Number | いいえ  | 1 | 1 ～ 1,000 | `"interval":10` |
+| **interval** | Number | いいえ | 1 | 1 ～ 1,000 | `"interval":10` |
 | **endTime** | String | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | Object | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | Object | いいえ | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
 次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。
@@ -361,8 +368,8 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 | JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
-| **分** | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-| **hours** | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul> |
+| **分** | トリガーを実行する時刻 (分)。 | <ul><li>Integer</li><li>整数の配列</li></ul>
+| **hours** | トリガーを実行する時刻 (時)。 | <ul><li>Integer</li><li>整数の配列</li></ul> |
 | **weekDays** | トリガーが実行される曜日。 この値を指定できるのは、頻度が週単位の場合のみです。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>曜日の値の配列 (配列の最大サイズは 7)</li><li>曜日の値の大文字小文字は区別されません</li></ul> |
 | **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>**monthlyOccurrence** オブジェクトの配列: `{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。</li><li>**occurrence** 属性は、月の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。</li></ul> |
 | **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列</li></ul> |
@@ -403,5 +410,5 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
 
-## <a name="next-steps"></a>次の手順
-トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。
+## <a name="next-steps"></a>次のステップ
+トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」をご覧ください。

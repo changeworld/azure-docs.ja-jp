@@ -1,11 +1,11 @@
 ---
 title: Azure Notification Hubs - エンタープライズ環境のプッシュ アーキテクチャ
-description: エンタープライズ環境での Azure Notification Hubs の使用に関するガイダンス
+description: エンタープライズ環境での Azure Notification Hubs の使用について
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 903023e9-9347-442a-924b-663af85e05c6
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 938801148b175456553865b54d59271021811401
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372422"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76264035"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 
@@ -33,7 +35,7 @@ ms.locfileid: "58372422"
 
 次のセクションでは、このソリューションの全般的なアーキテクチャを紹介します (概論として、複数のモバイル アプリを前提としていますが、モバイル アプリが 1 つしかない場合にも同様に該当します)。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 ![][1]
 
@@ -224,7 +226,7 @@ ms.locfileid: "58372422"
     }
     ```
 
-    e. このアプリを **WebJob** として発行するには、Visual Studio でソリューションを右クリックし、**[WebJob として発行]** を選択します。
+    e. このアプリを **WebJob** として発行するには、Visual Studio でソリューションを右クリックし、 **[WebJob として発行]** を選択します。
 
     ![][2]
 

@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド ID 設計 - 導入戦略 - Azure | Microsoft Docs
-description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
+description: 条件付きアクセス制御を使用して、Azure Active Directory では、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193487"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67109331"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -37,7 +37,7 @@ ms.locfileid: "56193487"
 ## <a name="define-an-integration-strategy"></a>統合戦略の定義
 マイクロソフトでは、クラウド ID、同期済み ID、フェデレーション ID の 3 つの主な統合シナリオを用意しています。  これらの統合戦略の 1 つを導入する計画を行う必要があります。  選択する戦略はさまざまで、選択の決定要因には、どのようなタイプのユーザー エクスペリエンスを提供するか、既存のインフラストラクチャがあるか、何が最もコスト効率に優れているか、などがあります。  
 
-![](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![統合シナリオ](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
 上の図で定義されているシナリオは、次のとおりです。
 
@@ -111,14 +111,14 @@ ms.locfileid: "56193487"
 ### <a name="supported-topologies"></a>サポートされているトポロジ
 同期戦略を定義する場合、使用するトポロジを決定する必要があります。 手順 2. で決定した情報に基づいて、使用に適したトポロジを決定できます。 単一のフォレスト、単一の Azure AD トポロジが最も一般的で、単一の Active Directory フォレストと Azure AD の単一のインスタンスで構成されます。  このトポロジは、多くのシナリオで使用されており、次の図に示すように、Azure AD Connect の高速インストールを使用する場合に想定されるトポロジです。
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest.png) 単一フォレストのシナリオ: 図 5 に示すように、大規模な組織でも小規模な組織でも、複数のフォレストを持つのが一般的です。
+![サポートされるトポロジ](./media/plan-hybrid-identity-design-considerations/single-forest.png)単一フォレスト シナリオでは、図 5 に示すとおり、大規模な組織はもちろんのこと小規模な組織でも複数のフォレストを持つことは一般的です。
 
 > [!NOTE]
 > Azure AD Connect の同期を使用したオンプレミス AD や Azure AD のさまざまなトポロジの詳細については、記事「 [Azure AD Connect のトポロジ](plan-connect-topologies.md)」をお読みください。
 > 
 > 
 
-![](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![複数フォレスト トポロジ](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 複数フォレストのシナリオ
 
@@ -140,7 +140,7 @@ ms.locfileid: "56193487"
 
 上記に該当しない場合で、かつアクティブなアカウントまたはメールボックスが複数ある場合は、Azure AD Connect により 1 つだけ選択され、それ以外は無視されます。  リンクされたメールボックスはあるが、その他のアカウントがない場合、それらのアカウントは Azure AD にはエクスポートされず、そのユーザーはどのグループのメンバーにもなりません。  これは、以前に DirSync で実施されていた処理とは異なります。このような複数フォレストのシナリオのサポートを向上するための措置です。 次の図に、複数フォレストのシナリオを示します。
 
-![](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![複数の Azure AD テナント](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **複数のフォレストと複数の Azure AD のシナリオ**
 
@@ -148,7 +148,7 @@ ms.locfileid: "56193487"
 
 次の図に示すように、Active Directory の単一のオンプレミス インスタンスと複数の Azure AD ディレクトリの接続も可能でサポートされています。
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![単一フォレストのフィルター処理](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **単一フォレストのフィルター処理のシナリオ**
 
@@ -158,7 +158,7 @@ ms.locfileid: "56193487"
 * DNS ドメインは 1 つの Azure AD ディレクトリにしか登録できないため、オンプレミス AD のユーザーの UPN で個別の名前空間を使用する必要があります。
 * Azure AD の 1 つのインスタンスのユーザーは、そのインスタンスのユーザーのみを表示できます。  他のインスタンスのユーザーを表示することはできません。
 * 1 つの Azure AD ディレクトリだけが、オンプレミスの AD を持つ Exchange ハイブリッドを有効にできます。
-* 相互排他性は書き戻しにも適用されます。  そのため、単一のオンプレミス構成を前提としている一部の書き戻し機能は、このトポロジではサポートされません。  次のトピックがあります。
+* 相互排他性は書き戻しにも適用されます。  そのため、単一のオンプレミス構成を前提としている一部の書き戻し機能は、このトポロジではサポートされません。  これには次のものが含まれます
   * 既定の構成によるグループの書き戻し
   * デバイスの書き戻し
 
@@ -184,9 +184,9 @@ ms.locfileid: "56193487"
 | --- | --- | --- |
 | Microsoft アプリ |はい |はい |
 | アプリ ギャラリー内の SaaS アプリ |はい |はい |
-| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション  |はい |はい |
-| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |× |はい |
-| VPN、RDG などのリモート アクセス |× |はい |
+| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション |はい |はい |
+| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |いいえ |はい |
+| VPN、RDG などのリモート アクセス |いいえ |はい |
 
 戦略のソリューションが決定した場合でも、さらに上記の評価を使用して、ユーザーの配置を検討する必要があります。  これにより、ソリューションが変更される可能性があります。  次の表を使用すると、この決定に役立ちます。
 
@@ -199,8 +199,7 @@ ms.locfileid: "56193487"
 | オンプレミスの AD |Multi-Factor Authentication Server |
 
 > [!NOTE]
-> また、選択した多要素認証の設計オプションで、設計に必要な機能がサポートされていることを確認する必要があります。  詳細については、「 [ユーザーに適した多要素のセキュリティ ソリューションの選択](../authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure)」をお読みください。
-> 
+> また、選択した多要素認証の設計オプションで、設計に必要な機能がサポートされていることを確認する必要があります。  詳細については、「 [ユーザーに適した多要素のセキュリティ ソリューションの選択](../authentication/concept-mfa-howitworks.md)」をお読みください。
 > 
 
 ## <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
@@ -211,9 +210,9 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [データ保護要件の決定](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

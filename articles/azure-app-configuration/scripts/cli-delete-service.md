@@ -1,25 +1,20 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの削除 | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの削除
+title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアを削除する
+titleSuffix: Azure App Configuration
+description: Azure CLI スクリプトを使用して Azure App Configuration ストアを削除します
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 02/19/2020
+ms.author: lcozzens
+ms.openlocfilehash: 7f73de459d8ce9f74e3925789af630b7c804d605
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884220"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77523575"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Azure App Configuration ストアの削除
 
@@ -31,16 +26,12 @@ ms.locfileid: "56884220"
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-最初に次のコマンドを実行して Azure App Configuration CLI の拡張機能をインストールする必要があります。
-
-        az extension add -n appconfig
-
 ## <a name="sample-script"></a>サンプル スクリプト
 
 ```azurecli-interactive
 #/bin/bash
 
-# Delete an app configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
+# Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
 az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 ```
 
@@ -48,14 +39,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用してアプリ構成ストアを削除します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して App Configuration ストアを削除します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | メモ |
 |---|---|
-| [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | アプリ構成ストア リソースを削除します。 |
+| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | App Configuration ストア リソースを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration のドキュメント](../cli-samples.md)のページにあります。
+その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration の CLI サンプル](../cli-samples.md)のページにあります。

@@ -7,26 +7,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: e7e8d12af92a566753d8f3d7baf5019bae44de2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: mqtt
+ms.openlocfilehash: d8552391e8e8c389a44174595305b8f28224a833
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163519"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732532"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 「[Send telemetry from a device to an IoT hub](quickstart-send-telemetry-ios.md)」(デバイスから IoT ハブへのテレメトリの送信) の記事には、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するクイックスタートには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、および device-to-cloud メッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
-この記事では、その方法について説明します。
+このチュートリアルでは、次の操作方法について説明します。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
 
 * クラウドからデバイスへのメッセージをデバイスで受信する。
 
-* IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を、ソリューション バックエンドから要求する。
+* ソリューション バックエンドから、IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を要求する。
 
 クラウドからデバイスへのメッセージの詳細については、[IoT Hub 開発者ガイドのメッセージに関するセクション](iot-hub-devguide-messaging.md)を参照してください。
 
@@ -37,19 +38,21 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * **sample-service**: IoT Hub を介してシミュレート対象デバイス アプリに cloud-to-device メッセージを送信し、その配信確認を受け取ります。
 
 > [!NOTE]
-> IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、 [Azure IoT デベロッパー センター](https://www.azure.com/develop/iot)のページを参照してください。
+> IoT Hub には、Azure IoT device SDK シリーズを介した多数のデバイス プラットフォームや言語 (C、Java、Python、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、 [Azure IoT デベロッパー センター](https://www.azure.com/develop/iot)のページを参照してください。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
-- アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
-- Azure のアクティブな IoT ハブ。 
+* Azure のアクティブな IoT ハブ。
 
-- [Azure サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)からのコード サンプル。
+* [Azure サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)からのコード サンプル。
 
-- iOS SDK の最新バージョンを実行している最新バージョンの [XCode](https://developer.apple.com/xcode/)。 このクイック スタートは、XCode 9.3 と iOS 11.3 でテストされました。
+* iOS SDK の最新バージョンを実行している最新バージョンの [XCode](https://developer.apple.com/xcode/)。 このクイック スタートは、XCode 9.3 と iOS 11.3 でテストされました。
 
-- 最新バージョンの [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
+* 最新バージョンの [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
+
+* ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="simulate-an-iot-device"></a>IoT デバイスのシミュレート
 
@@ -73,11 +76,11 @@ XCode が終了していることを確認し、次のコマンドを実行し�
 pod install
 ```
 
-インストール コマンドでは、プロジェクトに必要なポッドをインストールすると共に、依存関係にポッドを使用するように既に構成されている XCode ワークスペース ファイルも作成されます。 
+インストール コマンドでは、プロジェクトに必要なポッドをインストールすると共に、依存関係にポッドを使用するように既に構成されている XCode ワークスペース ファイルも作成されます。
 
-### <a name="run-the-sample-device-application"></a>サンプル デバイス アプリケーションの実行 
+### <a name="run-the-sample-device-application"></a>サンプル デバイス アプリケーションの実行
 
-1. デバイスの接続文字列を取得します。 [Azure Portal](https://portal.azure.com) のデバイスの詳細ブレードからこの文字列をコピーするか、次の CLI コマンドを使用して取得できます。 
+1. デバイスの接続文字列を取得します。 [Azure Portal](https://portal.azure.com) のデバイスの詳細ブレードからこの文字列をコピーするか、次の CLI コマンドを使用して取得できます。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
@@ -97,13 +100,19 @@ pod install
 
 5. 変更を保存します。 
 
-6. デバイス エミュレーターで、**[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
+6. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
 
-   ![プロジェクトの実行](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-sample.png)
+
+## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
+
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="simulate-a-service-device"></a>サービス デバイスのシミュレート
 
-ここでは、IoT ハブを通じて cloud-to-device メッセージを送信する Swift アプリを使用している 2 番目の iOS デバイスをシミュレートします。 この構成は、IoT ハブに接続されている他の iOS デバイスのコントローラーとして機能している 1 台の iPhone または iPad がある IoT シナリオに役立ちます。 
+ここでは、IoT ハブを通じて cloud-to-device メッセージを送信する Swift アプリを使用している 2 番目の iOS デバイスをシミュレートします。 この構成は、IoT ハブに接続されている他の iOS デバイスのコントローラーとして機能している 1 台の iPhone または iPad がある IoT シナリオに役立ちます。
 
 ### <a name="install-cocoapods"></a>CocoaPods のインストール
 
@@ -125,31 +134,25 @@ pod install
 
 ### <a name="run-the-sample-service-application"></a>サンプル サービス アプリケーションの実行
 
-1. IoT ハブのサービス接続文字列を取得します。 [Azure Portal](https://portal.azure.com) で **[共有アクセス ポリシー]** ブレードの **iothubowner** ポリシーからこの文字列をコピーするか、次の CLI コマンドを使用して取得できます。  
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --output table
-    ```
-
-2. XCode で、サンプル ワークスペースを開きます。
+1. XCode で、サンプル ワークスペースを開きます。
 
    ```sh
    open AzureIoTServiceSample.xcworkspace
    ```
 
-3. **AzureIoTServiceSample** プロジェクトを展開し、同じ名前のフォルダーを展開します。  
+2. **AzureIoTServiceSample** プロジェクトを展開し、同じ名前のフォルダーを展開します。  
 
-4. XCode で編集するために **ViewController.swift** を開きます。 
+3. XCode で編集するために **ViewController.swift** を開きます。 
 
-5. **connectionString** 変数を検索し、前にコピーしたサービス接続文字列で値を更新します。
+4. **connectionString** 変数を検索し、「[Get the IoT hub connection string](#get-the-iot-hub-connection-string)」で前にコピーしたサービス接続文字列で値を更新します。
 
-6. 変更を保存します。 
+5. 変更を保存します。
 
-7. Xcode で、エミュレーターの設定を、IoT デバイスの実行に使用したのとは異なる iOS デバイスに変更します。 XCode では、同じ種類の複数のエミュレーターを実行できません。 
+6. Xcode で、エミュレーターの設定を、IoT デバイスの実行に使用したのとは異なる iOS デバイスに変更します。 XCode では、同じ種類の複数のエミュレーターを実行できません。
 
    ![エミュレーター デバイスの変更](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. デバイス エミュレーターで、**[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
+7. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
 
    ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-app.png)
 
@@ -157,13 +160,13 @@ pod install
 
 2 つのアプリケーションを使用して、cloud-to-device メッセージを送受信する準備が整いました。
 
-1. シミュレートされた IoT デバイスで実行されている **iOS App Sample** アプリで、**[開始]** をクリックします。 アプリケーションは device-to-cloud メッセージの送信を開始しますが、cloud-to-device メッセージのリッスンも開始します。 
+1. シミュレートされた IoT デバイスで実行されている **iOS App Sample** アプリで、 **[開始]** をクリックします。 アプリケーションは device-to-cloud メッセージの送信を開始しますが、cloud-to-device メッセージのリッスンも開始します。
 
    ![サンプル IoT デバイス アプリの表示](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
 2. シミュレートされたサービス デバイスで実行されている **IoTHub Service Client Sample** アプリで、メッセージの送信先の IoT デバイスの ID を入力します。 
 
-3. プレーンテキスト メッセージを作成し、**[送信]** をクリックします。 
+3. プレーンテキスト メッセージを作成し、 **[送信]** をクリックします。
 
     [送信] をクリックするとすぐにいくつかのアクションが発生します。 サービス サンプルでは、指定したサービス接続文字列によりアプリがアクセスできる IoT ハブにメッセージが送信されます。 IoT ハブは、デバイス ID を確認し、宛先デバイスにメッセージを送信し、ソース デバイスに受信確認を送信します。 シミュレートされた IoT デバイスで実行されているアプリは、IoT ハブからのメッセージを確認し、最新のメッセージのテキストを画面に出力します。
 
@@ -171,10 +174,9 @@ pod install
 
    ![cloud-to-device メッセージの表示](media/iot-hub-ios-swift-c2d/view-c2d.png)
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
-
-このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
+このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
 
 IoT Hub を使用する完全なエンドツーエンド ソリューションの例については、[Azure IoT ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するドキュメントを参照してください。
 

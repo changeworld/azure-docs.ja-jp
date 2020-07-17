@@ -1,6 +1,6 @@
 ---
-title: アプリのトレーニング
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: アプリをトレーニングする - LUIS
+titleSuffix: Azure Cognitive Services
 description: トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリ バージョンを教育するプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。
 services: cognitive-services
 author: diberry
@@ -8,22 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/07/2019
+ms.topic: conceptual
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218757"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする 
 
 トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリを教えるプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。 
-
-<!--
-When you train a LUIS app by example, LUIS generalizes from the examples you have labeled, and it learns to recognize the relevant intents and entities. This teaches LUIS to improve classification accuracy in the future. -->
 
 アプリのトレーニングと[テスト](luis-concept-test.md)は反復処理です。 LUIS アプリをトレーニングした後で、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
 
@@ -33,16 +30,11 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 [LUIS ポータル](https://www.luis.ai)で反復的なプロセスを開始するには、まず、LUIS アプリを少なくとも 1 回トレーニングする必要があります。 すべての意図に少なくとも 1 つの発話があることをトレーニングの前に確認してください。
 
-1. **My Apps** ページでアプリの名前を選択してアプリにアクセスします。 
+1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。 
 
-2. アプリで、上部パネルの **[トレーニング]** を選択します。 
+1. アプリで、上部パネルの **[トレーニング]** を選択します。 
 
-3. トレーニングが完了したら、ブラウザーの上部に緑のバーが表示されます。
-
-<!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
-
->[!NOTE]
->アプリの 1 つまたは複数の意図に、発話の例が含まれていない場合は、アプリのトレーニングを行うことはできません。 すべての意図に発話を追加します。 詳細については、「[Add example utterances](luis-how-to-add-example-utterances.md)」(発話の追加) を参照してください。
+1. トレーニングが完了したら、ブラウザーの上部に通知が表示されます。
 
 ## <a name="training-date-and-time"></a>日付と時刻をトレーニングする
 
@@ -50,7 +42,11 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 ## <a name="train-with-all-data"></a>すべてのデータでトレーニングする
 
-トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 少数のネガティブ サンプリングではなく、すべてのデータを使用したい場合は、`UseAllTrainingData` を True に設定した状態で[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用し、この機能をオフにします。 
+トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 小規模なネガティブ サンプリングではなくすべてのデータを使用する場合は、[API](#version-settings-api-use-of-usealltrainingdata) を使用します。
+
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>バージョン設定 API の UseAllTrainingData の使用
+
+`UseAllTrainingData` を true に設定してこの機能を無効にし、[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用します。 
 
 ## <a name="unnecessary-training"></a>不要なトレーニング
 
@@ -58,11 +54,11 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 ## <a name="training-with-the-rest-apis"></a>REST API によるトレーニング
 
-LUIS ポータルでのトレーニングは、**[トレーニング]** ボタンをクリックする 1 ステップだけです。 REST API によるトレーニングは、2 ステップのプロセスです。 最初に、HTTP POST で[トレーニングを要求](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)します。 次に、HTTP Get で[トレーニングの状態](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)を要求します。 
+LUIS ポータルでのトレーニングは、 **[トレーニング]** ボタンをクリックする 1 ステップだけです。 REST API によるトレーニングは、2 ステップのプロセスです。 最初に、HTTP POST で[トレーニングを要求](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)します。 次に、HTTP Get で[トレーニングの状態](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)を要求します。 
 
 トレーニングが完了したことを知るには、すべてのモデルが正常にトレーニングされるまで状態をポーリングする必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
-* [LUIS アプリのパフォーマンスを向上させるフィーチャーを使用する](luis-how-to-add-features.md) 
+* [対話型テスト](luis-interactive-test.md)
+* [バッチ テスト](luis-how-to-batch-test.md)

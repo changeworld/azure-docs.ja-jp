@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB での読み取りと書き込みのコストの最適化
 description: この記事では、データに対して読み取りおよび書き込み操作を実行する際に Azure Cosmos DB のコストを削減する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 13ce5ee8b0e2a5d9cc84ea1a408ebba152b46050
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 03/05/2020
+ms.openlocfilehash: 725876594a7e7c5f3b3a02802f487dc5fdfb64dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967405"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535937"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の読み取りと書き込みのコストの最適化
 
@@ -30,14 +30,6 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 1 KB のサイズのアイテムを読み取るには、1 RU のコストがかかります。 1 KB のアイテムを書き込むには、5 RU のコストがかかります。 読み取りと書き込みのコストは、既定のセッションである[一貫性レベル](consistency-levels.md)を使用する場合に適用されます。  RU に関する考慮事項には、アイテムのサイズ、プロパティの数、データの整合性、インデックス付きプロパティ、インデックス作成、クエリのパターンなどがあります。
 
-## <a name="normalized-cost-for-1-million-reads-and-writes"></a>100 万件の読み取りと書き込みに対する正規化されたコスト
-
-1,000 RU/秒のプロビジョニングは 360 万 RU/時間に変換され、その 1 時間のコストは 0.08 ドルになります (米国とヨーロッパの場合)。 1 KB のアイテムでは、このプロビジョニング済みスループットにより、1 時間あたり 360 万件の読み取りまたは 72 万件の書き込みを実行できます (この値は `3.6 million RU / 5` として計算)。 100 万件の読み取りと書き込みに正規化され、コストは 100 万件の読み取りに対して 0.022 ドル (この値は $0.08/360 万件として計算)、100 万件の書き込みに対して 0.111 ドル (この値は $0.08/72 万件として計算) となります。
-
-## <a name="number-of-regions-and-the-request-units-cost"></a>リージョンの数と要求ユニットのコスト
-
-書き込みのコストは、Azure Cosmos アカウントに関連付けられたリージョンの数に関係なく一定です。 つまり、1 KB の書き込みは、アカウントに関連付けられたリージョンの数とは無関係に 5 RU のコストがかかります。 各リージョンでレプリケーション トラフィックのレプリケート、受け入れ、および処理に費やされるリソースの量は、少なくありません。 複数リージョンのコストの最適化の詳細については、[複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)に関する記事を参照してください。
-
 ## <a name="optimize-the-cost-of-writes-and-reads"></a>書き込みと読み取りのコストを最適化する
 
 書き込み操作を実行するときは、1 秒あたりに必要な書き込みの数をサポートするために十分な容量をプロビジョニングする必要があります。 書き込みの実行前に SDK、ポータル、CLI を使用してプロビジョニング済みスループットを増大させ、書き込みの完了後にスループットを減少させることができます。 書き込み期間中のスループットは、指定されたデータに必要な最小スループットと、他のワークロードが実行されていないと仮定した場合に挿入ワークロードに必要なスループットです。 
@@ -46,7 +38,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 また、[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) を使用して、Azure Cosmos DB にデータを一括挿入したり、サポートされているソース データ ストアから Azure Cosmos DB にデータをコピーしたりできます。 Azure Data Factory は、データを書き込むときに最適なパフォーマンスを提供できるよう、Azure Cosmos DB Bulk API とネイティブに統合されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 

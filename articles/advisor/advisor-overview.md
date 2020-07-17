@@ -1,21 +1,14 @@
 ---
-title: Azure Advisor の概要 | Microsoft Docs
+title: Azure Advisor の概要
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494547"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75443089"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -29,14 +22,15 @@ Advisor では、以下の項目を実行できます。
 * リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する機会を捉える。
 * アクション提案をインラインで含めた推奨事項を取得する。
 
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[すべてのサービス]** メニューで Advisor を検索します。
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、 **[すべてのサービス]** メニューで Advisor を検索します。
 
 Advisor ダッシュボードに、すべてのサブスクリプションの個人用に設定された推奨事項が表示されます。  フィルターを適用して、特定のサブスクリプションやリソースの種類の推奨事項を表示できます。  推奨事項は、4 つのカテゴリに分割されています。 
 
 * **高可用性**: ビジネスに不可欠なアプリケーションの継続稼働を確保し、さらに向上させることができます。 詳細については、「[Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)」を参照してください。
-* **セキュリティ**: セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
+* **セキュリティ**:セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
 * **パフォーマンス**: アプリケーションの速度を向上させます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)」を参照してください。
 * **コスト**: Azure の全体的な支出を最適化し、削減します。 詳細については、「[Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)」を参照してください。
+* **オペレーショナル エクセレンス**:プロセスとワークフローの効率性、リソースの管理性、デプロイに関するベスト プラクティスの実現を支援します。 。 詳細については、「[Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)」を参照してください。
 
   ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-dashboard.png)
 
@@ -51,7 +45,7 @@ Advisor ダッシュボードに、すべてのサブスクリプションの個
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="how-do-i-access-advisor"></a>Advisor にアクセスする方法は?
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[すべてのサービス]** メニューで Advisor を検索します。
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、 **[すべてのサービス]** メニューで Advisor を検索します。
 
 仮想マシンのリソース インターフェイスを使用して、Advisor の推奨事項を表示することもできます。 仮想マシンを選択し、メニューで [Advisor の推奨事項] までスクロールします。 
 
@@ -61,13 +55,15 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
-Advisor により、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、Azure Cache for Redis に関する推奨事項が提供されます。
+Advisor では、Application Gateway、App Services、可用性セット、Azure Cache、Azure Data Factory、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure パブリック IP アドレス、SQL Data Warehouse、SQL サーバー、ストレージ アカウント、Traffic Manager プロファイル、および仮想マシンに対する推奨事項が提供されます。
+
+Azure Advisor には、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) からの推奨事項も含まれ、別のリソースの種類に対する推奨事項が含まれる可能性があります。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 
-推奨事項を延期するか無視するには、**[延期]** リンクをクリックします。 延期期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
+推奨事項を延期するか無視するには、 **[延期]** リンクをクリックします。 延期期間を指定するか、 **[Never]** を選択して推奨事項を無視できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 

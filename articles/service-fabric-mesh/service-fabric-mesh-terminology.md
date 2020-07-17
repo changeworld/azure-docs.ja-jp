@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric Mesh の用語 | Microsoft Docs
-description: Azure Service Fabric Mesh でよく使われる用語について説明します。
-services: service-fabric-mesh
-keywords: ''
+title: Azure Service Fabric Mesh の用語
+description: この記事では、Azure Service Fabric Mesh 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 2d2661593ba3d9be2755d81803c8e248a2f7d0e1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335812"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75351968"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh の用語
 
@@ -77,12 +73,12 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 
 次の表では、Service Fabric に対してさまざまなアプリケーション モデルとそのツールをまとめています。
 
-| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
 | Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | VS 2017 |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません|
 |Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | VS 2017 と VS 2015| サポートされています|サポートされています|サポートされています|サポートされています|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
 

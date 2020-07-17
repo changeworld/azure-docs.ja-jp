@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アクターでの機能の実装 | Microsoft Docs
+title: Azure Service Fabric アクターでの機能の実装
 description: StatefulService を継承したときと同様に、サービス レベルの機能を実装する独自のアクター サービスを記述する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 57894770ad9d27430d5803c9a93ce6973355878a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 55ee4c7498dcda3060d4e4221711793b80132bdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662977"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502290"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>アクター サービスでのサービス レベルの機能の実装
 
@@ -152,11 +143,11 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>アクターのバックアップと復元の実装
 
-カスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開することができます。 例については、[アクターのバックアップおよび復元](service-fabric-reliable-actors-backup-and-restore.md)を参照してください。
+カスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開することができます。 例については、[アクターのバックアップおよび復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)を参照してください。
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>リモート処理 V2 スタック (インターフェイスとの互換性あり) を使用するアクター
 
-リモート処理 V2 (インターフェイスとの互換性あり、V2_1 と呼ばれる) スタックには、V2 のリモート処理スタックのすべての機能があります。 そのインターフェイスには、リモート処理 V1 スタックとの互換性がありますが、V2 および V1 との下位互換性はありません。 サービスの可用性に影響を与えずに V2_1 V1 からアップグレードするには、次のセクションの手順に従います。
+リモート処理 V2 (インターフェイス互換、V2_1 と呼ばれます) スタックは、V2 リモート処理スタックのすべての機能を備えています。 そのインターフェイスには、リモート処理 V1 スタックとの互換性がありますが、V2 および V1 との下位互換性はありません。 サービスの可用性に影響を与えずに V2_1 V1 からアップグレードするには、次のセクションの手順に従います。
 
 リモート処理 V2_1 スタックを使用するには、次の変更が必要です。
 
@@ -170,7 +161,7 @@ public class Program
 
 ### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>サービスの可用性に影響を与えずにアクター サービスをリモート処理 V2 (インターフェイスとの互換性あり) スタックにアップグレードする
 
-この変更は、2 段階アップグレードです。 こちらのシーケンスの手順に従います。
+この変更は、2 段階アップグレードです。 この順序で以下の手順に従います。
 
 1. アクター インターフェイスで次の Assembly 属性を追加します。 この属性は、ActorService 用の 2 つのリスナーである、V1 (既存) および V2_1 リスナーを開始します。 この変更で ActorService をアップグレードします。
 
@@ -203,7 +194,7 @@ public class Program
 
 ### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>サービスの可用性に影響を与えずにアクター サービスをリモート処理 V2 スタックにアップグレードする
 
-この変更は、2 段階アップグレードです。 こちらのシーケンスの手順に従います。
+この変更は、2 段階アップグレードです。 この順序で以下の手順に従います。
 
 1. アクター インターフェイスで次の Assembly 属性を追加します。 この属性は、ActorService 用の 2 つのリスナーである、V1 (既存) および V2 リスナーを開始します。 この変更で ActorService をアップグレードします。
 
@@ -220,7 +211,7 @@ public class Program
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アプリをテストするためにクラスター ノードを起動および停止する | Microsoft Docs
+title: クラスター ノードを起動および停止する
 description: フォールト挿入を使い、クラスター ノードを起動および停止することによって、Service Fabric アプリケーションをテストする方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: LMWF
-manager: rsinha
-editor: ''
-ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752944"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75609793"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Start Node API と Stop Node API を Node Transition API に置き換える
 
@@ -45,7 +36,7 @@ Stop Node API (マネージド:[StopNodeAsync()][stopnode]、PowerShell:[Stop-Se
 Node Transition API を呼び出したときに例外がスローされなければ、非同期操作はシステムによって受け入れられおり、実行されます。  呼び出しが成功していても、操作が完了しているとは限りません。  操作の現在の状態に関する情報を取得するには、この操作のために Node Transition API を呼び出したときに使用した guid を指定して、Node Transition Progress API (マネージド:[GetNodeTransitionProgressAsync()][gntp]) を呼び出します。  Node Transition Progress API は、NodeTransitionProgress オブジェクトを返します。  このオブジェクトの State プロパティを見れば、操作の現在の状態がわかります。  値が "Running" の場合、操作は実行中です。  "Completed" の場合、エラーが発生することなく操作が完了しています。  "Faulted" の場合、操作の実行に問題が発生しています。  問題の内容は、Result プロパティの Exception プロパティに示されています。  State プロパティの詳細については https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate を参照してください。また、コード例については、下の “使用例” セクションをご覧ください。
 
 
-**停止したノードとダウンしたノードを見分ける方法** Node Transition API を使用してノードを "*停止*" した場合、ノード クエリの出力 (マネージド:[GetNodeListAsync()][nodequery]、PowerShell:[Get-ServiceFabricNode][nodequeryps]) を見ると、このノードの *IsStopped* プロパティの値が true になっているのがわかります。  これは、*NodeStatus* プロパティの値 (*Down*) とは異なります。  *NodeStatus* プロパティの値が *Down* であるにもかかわらず、*IsStopped* が false の場合、そのノードは Node Transition API で停止されたのではなく、別の理由により "*ダウン*" しています。  *IsStopped* プロパティが true で、*NodeStatus* プロパティが *Down* の場合、そのノードは Node Transition API で停止されています。
+**停止したノードとダウンしたノードを見分ける方法** Node Transition API を使用してノードを "*停止*" した場合、ノード クエリの出力 (マネージド:[GetNodeListAsync()][nodequery]、PowerShell:[Get-ServiceFabricNode][nodequeryps]) を見ると、このノードの *IsStopped* プロパティの値が true になっていることがわかります。  これは、*NodeStatus* プロパティの値 (*Down*) とは異なります。  *NodeStatus* プロパティの値が *Down* であるにもかかわらず、*IsStopped* が false の場合、そのノードは Node Transition API で停止されたのではなく、別の理由により "*ダウン*" しています。  *IsStopped* プロパティが true で、*NodeStatus* プロパティが *Down* の場合、そのノードは Node Transition API で停止されています。
 
 "*停止*" されているノードを Node Transition API を使って開始すると、そのノードはクラスターの通常のメンバーとして再び機能するようになります。  ノード クエリ API の出力では、*IsStopped* は false に、*NodeStatus* は Down 以外のいずれか (Up など) になります。
 

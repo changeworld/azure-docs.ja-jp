@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: ddc1c7f2dd207cba18a8c080c8b14cc53c149a39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78331504"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure portal を使用して Media Services アカウントを作成する
 
@@ -39,23 +39,19 @@ Media Services アカウントおよび関連するすべてのストレージ �
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
 
 ## <a name="create-an-ams-account"></a>AMS アカウントの作成
 
 このセクションでは、AMS アカウントを作成する方法について説明します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[+新規]** > **[Web + モバイル]** > **[Media Services]** の順にクリックします。
-   
-    ![Media Services Create](./media/media-services-create-account/media-services-new1.png)
+2. **[+リソースの作成]**  >  **[メディア]**  >  **[Media Services]** の順にクリックします。
 3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
-   
-    ![Media Services Create](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。 Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 文字から 24 文字です。
    2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
-   3. **[リソース グループ]** ボックスで、新規または既存のリソースを選択します。  リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../../azure-resource-manager/resource-group-overview.md#resource-groups)を参照してください。
+   3. **[リソース グループ]** ボックスで、新規または既存のリソースを選択します。  リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../../azure-resource-manager/management/overview.md#resource-groups)をご覧ください。
    4. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。 このリージョンでメディアの処理とストリーミングが行われます。 ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。 
    5. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。 Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、ストレージ アカウントを作成することもできます。 新しいストレージ アカウントは同じリージョンに作成されます。 ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
       
@@ -70,10 +66,9 @@ Media Services アカウントおよび関連するすべてのストレージ �
    
 ## <a name="to-manage-your-ams-account"></a>AMS アカウントを管理するには
 
-AMS アカウントの管理 (たとえば、プログラムによる AMS API への接続、ビデオのアップロード、資産のエンコード、コンテンツ保護の構成、ジョブの進行状況の監視など) を行うには、ポータルの左側にある **[設定]** を選択します。 **[設定]** から、使用可能ないずれかのブレード (たとえば、**[API アクセス]**、**[資産]**、**[ジョブ]**、**[コンテンツ保護]**) に移動します。
+AMS アカウントの管理 (たとえば、プログラムによる AMS API への接続、ビデオのアップロード、資産のエンコード、コンテンツ保護の構成、ジョブの進行状況の監視など) を行うには、ポータルの左側にある **[設定]** を選択します。 **[設定]** から、使用可能ないずれかのブレード (たとえば、 **[API アクセス]** 、 **[資産]** 、 **[ジョブ]** 、 **[コンテンツ保護]** ) に移動します。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、ファイルを AMS アカウントにアップロードできるようになりました。 詳細については、 [ファイルのアップロード](media-services-portal-upload-files.md)に関するページを参照してください。
 

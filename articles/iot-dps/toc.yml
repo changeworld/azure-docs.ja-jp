@@ -2,32 +2,28 @@
   href: index.yml
 - name: 概要
   items:
-    - name: IoT Device Provisioning Service について
+    - name: IoT Hub Device Provisioning Service の概要
       href: about-iot-dps.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: 自動プロビジョニングの設定 - Azure CLI
-      href: quick-setup-auto-provision-cli.md
-    - name: 自動プロビジョニングの設定 - ポータル
-      href: quick-setup-auto-provision.md
-    - name: 自動プロビジョニングの設定 - テンプレート
-      href: quick-setup-auto-provision-rm.md
-    - name: シミュレートされたデバイスの自動プロビジョニング
+    - name: DPS を設定する
       items:
-        - name: TPM の構成証明
+        - name: Azure portal
+          href: quick-setup-auto-provision.md
+        - name: Azure CLI
+          href: quick-setup-auto-provision-cli.md
+        - name: Azure RM テンプレート
+          href: quick-setup-auto-provision-rm.md
+    - name: シングル デバイスのプロビジョニング
+      items:
+        - name: 対称キーの構成証明
           items:
             - name: C
-              href: quick-create-simulated-device.md
+              href: quick-create-simulated-device-symm-key.md
             - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: 'C#'
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
-        - name: X.509 の構成証明
+              href: quick-create-simulated-device-symmetric-key-java.md
+        - name: X.509 証明書の構成証明
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
@@ -39,23 +35,21 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-        - name: 対称キーの構成証明
+        - name: シミュレートされた TPM デバイスの構成証明
           items:
             - name: C
-              href: quick-create-simulated-device-symm-key.md
-    - name: プロビジョニング サービス API を使用したデバイス登録
-      items:
-        - name: TPM の構成証明
-          items:
+              href: quick-create-simulated-device.md
             - name: Java
-              href: quick-enroll-device-tpm-java.md
+              href: quick-create-simulated-device-tpm-java.md
             - name: 'C#'
-              href: quick-enroll-device-tpm-csharp.md
+              href: quick-create-simulated-device-tpm-csharp.md
             - name: Node.js
-              href: quick-enroll-device-tpm-node.md
+              href: quick-create-simulated-device-tpm-node.md
             - name: Python
-              href: quick-enroll-device-tpm-python.md
-        - name: X.509 の構成証明
+              href: quick-create-simulated-device-tpm-python.md
+    - name: DPS API を使用してデバイス登録を作成する
+      items:
+        - name: X.509 証明書の構成証明を使用したグループ登録
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -65,6 +59,16 @@
               href: quick-enroll-device-x509-node.md
             - name: Python
               href: quick-enroll-device-x509-python.md
+        - name: TPM 構成証明を使用した個々のデバイスの登録
+          items:
+            - name: Java
+              href: quick-enroll-device-tpm-java.md
+            - name: 'C#'
+              href: quick-enroll-device-tpm-csharp.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
+            - name: Python
+              href: quick-enroll-device-tpm-python.md
 - name: チュートリアル
   items:
     - name: 1 - クラウド リソースを設定する
@@ -79,7 +83,7 @@
           href: tutorial-net-provision-device-to-hub.md
     - name: 4 - デバイスを複数のハブにプロビジョニングする
       href: tutorial-provision-multiple-hubs.md
-    - name: 5 - グループ登録をプロビジョニングする
+    - name: 5 - グループ登録を設定する
       href: tutorial-group-enrollments.md
 - name: 概念
   items:
@@ -89,15 +93,19 @@
       href: concepts-device-reprovision.md
     - name: デバイス
       href: concepts-device.md
-    - name: セキュリティ
+    - name: Security
       href: concepts-security.md
-    - name: Service
+    - name: サービス
       href: concepts-service.md
+    - name: DPS IP アドレスについて
+      href: iot-dps-understand-ip-address.md
     - name: TPM の構成証明
       href: concepts-tpm-attestation.md
     - name: 対称キーの構成証明
       href: concepts-symmetric-key-attestation.md
-- name: ハウツー ガイド
+    - name: デバイス製造元のセキュリティ プラクティス
+      href: concepts-device-oem-security-practices.md
+- name: 操作方法ガイド
   items:
     - name: IoT Hub に対する MXChip IoT DevKit の接続
       href: how-to-connect-mxchip-iot-devkit.md
@@ -123,6 +131,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: Provisioning Service API へのアクセスの制御
           href: how-to-control-access.md
+        - name: IP フィルター処理を構成する
+          href: iot-dps-ip-filtering.md
     - name: IoT Edge デバイスのプロビジョニング
       items:
         - name: Linux
@@ -141,6 +151,12 @@
       href: how-to-legacy-device-symm-key.md
     - name: 開発での SDK ツールの使用
       href: how-to-use-sdk-tools.md
+    - name: デバイスから追加データを送信する方法
+      href: how-to-send-additional-data.md
+    - name: トラブルシューティング
+      href: how-to-troubleshoot-dps.md
+    - name: MQTT プロトコルを使用した DPS との通信
+      href: iot-dps-mqtt-support.md
 - name: リファレンス
   items:
     - name: REST API
@@ -157,46 +173,46 @@
       href: 'https://github.com/Azure/azure-iot-sdk-java'
     - name: Azure IoT SDK for .NET
       href: 'https://github.com/Azure/azure-iot-sdk-csharp'
-- name: 関連項目
+- name: リソース
   items:
-    - name: 解決方法
-      items:
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: プラットフォーム サービス
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT のサービス
       items:
         - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: マップ
-          href: /azure/azure-maps
-        - name: サービス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
         - name: IoT Edge
           href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT デバイス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: リソース
-  items:
-    - name: 'C# 用 Azure IoT サンプル (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: Node.js 用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: Java 用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: Python 用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: iOS プラットフォーム用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Azure IoT Hub
-      href: 'https://azure.microsoft.com/services/iot-hub/'
+    - name: Azure IoT サンプル
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS プラットフォーム
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: IoT デバイス カタログ向けの Azure 認定
       href: 'https://catalog.azureiotsolutions.com/'
     - name: Azure IoT デベロッパー センター
@@ -205,19 +221,19 @@
       href: iot-dps-customer-data-requests.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Device Explorer ツール
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: Azure IoT エクスプローラー ツール
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-iot-hub.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

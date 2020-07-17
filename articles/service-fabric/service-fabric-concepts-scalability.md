@@ -1,25 +1,16 @@
 ---
-title: Service Fabric サービスの拡張性 | Microsoft Docs
-description: Service Fabric サービスの拡張方法を説明する
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric サービスのスケーラビリティ
+description: Azure Service Fabric のスケールイン、およびアプリケーションをスケーリングするために使用されるさまざまな手法について説明します。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 08/18/2017
+ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236727"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric での拡大縮小
 Azure Service Fabric では、クラスター内のノードでサービス、パーティション、およびレプリカを管理することにより、スケーラブルなアプリケーションを簡単に構築できます。 同じハードウェアで多くのワークロードを実行することで、リソースを最大限に活用すると同時に、ワークロードを拡大縮小する方法も柔軟に選択できます。 この Channel 9 ビデオでは、スケーラブルなマイクロサービス アプリケーションを構築する方法について説明します。
@@ -122,6 +113,10 @@ Service Fabric には、クラスターのサイズを変更して拡大縮小�
 
 詳細については、 [クラスター スケーリング](service-fabric-cluster-scaling.md)に関するセクションを参照してください。
 
+## <a name="choosing-a-platform"></a>プラットフォームの選択
+
+オペレーティング システムによって実装が異なることから、Service Fabric と共に Windows を使用するか、Linux を使用するかという選択はアプリケーションのスケーリングにおいて非常に重要な部分を占めることがあります。 潜在的な障壁の 1 つに、段階的なログの記録方法があります。 Windows 上の Service Fabric では、コンピューターごとに 1 つのログについてカーネル ドライバーが使用されます。このログは、ステートフル サービス レプリカ間で共有されます。 このログの容量は約 8 GB です。 一方、Linux の場合、レプリカごとに 256 MB のステージング ログが使用されます。特定のノードで実行される軽量サービスの数を最大化するアプリケーションの場合、最適ではありません。 Service Fabric クラスター デプロイで最適なプラットフォームは、一時的ストレージ要件におけるこのような違いからわかることもあります。
+
 ## <a name="putting-it-all-together"></a>まとめ
 それでは、ここまでに説明した内容を、例を挙げながらまとめてみてみましょう。 次のサービスについて考えてみてください。あなたは、名前情報や連絡先情報を保持できる、アドレス帳のサービスを構築しようとしています。 
 
@@ -145,7 +140,7 @@ Service Fabric には、クラスターのサイズを変更して拡大縮小�
   - 顧客がサインアップする前に、多数のサービス インスタンスやレプリカを実行する必要がありません
   - 顧客がサービスの利用をやめる際は、作成したサービスまたはアプリケーションをマネージャーで削除するだけなので、サービスの情報削除も簡単です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)

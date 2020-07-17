@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 360674514aff79908dcab8c8b93095ca2feb5d51
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199231"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181170"
 ---
 SQL Server や Oracle などの一部のデータベース ワークロードでは、メモリ、記憶域、I/O 帯域幅は大量に必要ですが、コアの数は多くなくてもかまいません。 多くのデータベース ワークロードは、CPU 集中型ではありません。 Azure で提供される一部の VM サイズでは、VM の vCPU の数を制限してフトウェア ライセンスのコストを抑えながら、同じメモリ、記憶域、I/O 帯域幅を維持できます。
 
@@ -21,7 +21,7 @@ vCPU の数を、元の VM サイズの半分または 4 分の 1 に制限す�
 
 たとえば、現在の VM サイズ Standard_GS5 の仕様は、32 vCPU、448 GB RAM、64 ディスク (最大 256 TB)、80,000 IOP または 2 GB/秒の I/O 帯域幅です。 新しい VM サイズ Standard_GS5-16 および Standard_GS5-8 の仕様は、アクティブな vCPU はそれぞれ 16 個および 8 個ですが、メモリ、記憶域、I/O 帯域幅は Standard_GS5 と同じです。
 
-SQL Server または Oracle のライセンス料金は新しい vCPU の数に制限され、他の製品は新しい vCPU の数に基づいて課金されます。 その結果、アクティブな (課金対象の) vCPU に対する VM の仕様の比は 50 ～ 75% 高くなります。 Azure でのみ使用可能なこれらの新しい VM サイズでは、ワークロードは何分の 1 かの (コアごとの) ライセンス コストで、より高い CPU 使用率を実現できます。 現時点では、OS のライセンスを含むコンピューティング コストは元のサイズと同じです。 詳しくは、[コスト効率の高いデータベース ワークロードのための新しい VM サイズ](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
+SQL Server または Oracle のライセンス料金は新しい vCPU の数に制限され、他の製品は新しい vCPU の数に基づいて課金されます。 その結果、アクティブな (課金対象の) vCPU に対する VM の仕様の比は 50 ～ 75% 高くなります。 これらの新しい VM サイズを利用すると、お客様のワークロードで、ソフトウェア ライセンスのコストを最適化しながら、同じメモリ、ストレージ、I/O 帯域幅を使用できます。 現時点では、OS のライセンスを含むコンピューティング コストは元のサイズと同じです。 詳しくは、[コスト効率の高いデータベース ワークロードのための新しい VM サイズ](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)に関するページをご覧ください。
 
 
 | Name                | vCPU | 仕様           |

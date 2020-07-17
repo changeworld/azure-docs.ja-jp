@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235819"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -43,32 +43,33 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 - [Awake Security](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop Reveal(x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-次の図は、仮想ネットワーク TAP のしくみを示しています。 仮想ネットワークにデプロイされている仮想マシンに接続された[ネットワーク インターフェイス](virtual-network-network-interface.md)に TAP 構成を追加できます。 接続先は、監視対象のネットワーク インターフェイスまたは [ピアリングされた仮想](virtual-network-peering-overview.md)ネットワークと同じ仮想ネットワーク内の仮想ネットワーク IP アドレスです。 仮想ネットワーク TAP 用のコレクター ソリューションは、高可用性のために [Azure 内部ロード バランサー](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts)の背後にデプロイできます。 個々のソリューションのデプロイ オプションを評価するには、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してください。
+次の図は、仮想ネットワーク TAP のしくみを示しています。 仮想ネットワークにデプロイされている仮想マシンに接続された[ネットワーク インターフェイス](virtual-network-network-interface.md)に TAP 構成を追加できます。 接続先は、監視対象のネットワーク インターフェイスまたは [ピアリングされた仮想](virtual-network-peering-overview.md)ネットワークと同じ仮想ネットワーク内の仮想ネットワーク IP アドレスです。 仮想ネットワーク TAP 用のコレクター ソリューションは、高可用性のために Azure 内部ロード バランサーの背後にデプロイできます。 個々のソリューションのデプロイ オプションを評価するには、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してください。
 
 ![仮想ネットワーク TAP のしくみ](./media/virtual-network-tap/architecture.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-仮想ネットワーク TAP を作成する前に、プレビューへの登録を確認するメールを受信済みであり、同じ Azure リージョンの TAP トラフィックを集計するために、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) デプロイ モデルとパートナー ソリューションを使用して 1 つまたは複数の仮想マシンを作成している必要があります。 仮想ネットワークにパートナー ソリューションがない場合は、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してデプロイしてください。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションの複数のネットワーク インターフェイスからのトラフィックを集計できます。 監視対象のネットワーク インターフェイスが異なるサブスクリプションに属している場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 また、監視対象のネットワーク インターフェイスと、TAP トラフィックを集計するための宛先エンドポイントは、同じリージョン内のピアリングされた仮想ネットワーク内に存在することができます。 このデプロイ モデルを使用している場合は、仮想ネットワーク TAP を構成する前に[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)が有効になっていることを確認してください。
+仮想ネットワーク TAP を作成する前に、プレビューへの登録を確認するメールを受信済みであり、同じ Azure リージョンの TAP トラフィックを集計するために、[Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) デプロイ モデルとパートナー ソリューションを使用して 1 つまたは複数の仮想マシンを作成している必要があります。 仮想ネットワークにパートナー ソリューションがない場合は、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してデプロイしてください。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションの複数のネットワーク インターフェイスからのトラフィックを集計できます。 監視対象のネットワーク インターフェイスが異なるサブスクリプションに属している場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 また、監視対象のネットワーク インターフェイスと、TAP トラフィックを集計するための宛先エンドポイントは、同じリージョン内のピアリングされた仮想ネットワーク内に存在することができます。 このデプロイ モデルを使用している場合は、仮想ネットワーク TAP を構成する前に[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)が有効になっていることを確認してください。
 
 ## <a name="permissions"></a>アクセス許可
 
 ネットワーク インターフェイスで TAP 構成を適用するために使用するアカウントには、[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている必要なアクションを実行できる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられている必要があります。
 
-| Action | Name |
+| アクション | 名前 |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | 仮想ネットワーク TAP リソースの作成、更新、読み取り、および削除に必要 |
 | Microsoft.Network/networkInterfaces/read | TAP が構成されるネットワーク インターフェイス リソースを読み取るために必要 |
 | Microsoft.Network/tapConfigurations/* | ネットワーク インターフェイス上の TAP 構成の作成、更新、読み取り、削除に必要 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [仮想ネットワーク TAP の作成](tutorial-tap-virtual-network-cli.md)方法について説明します。

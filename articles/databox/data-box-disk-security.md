@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box Disk の概要 | Microsoft Docs in data
-description: 大量のデータを Azure に転送できるクラウド ソリューションである Azure Data Box Disk について説明します。
+title: Microsoft Azure Data Box Disk のセキュリティ機能 | Microsoft Docs in data
+description: 大量のデータを Azure に転送できるクラウド ソリューションの Azure Data Box Disk で実装されているセキュリティ機能について説明します
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093458"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79117277"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk のセキュリティとデータ保護
 
@@ -34,7 +34,7 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 
 ## <a name="security-features"></a>セキュリティ機能
 
-Data Box Disk は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 このソリューションのセキュリティ機能は、ディスクおよび関連するサービスを対象としたものであり、そこに格納されるデータのセキュリティを確保するものです。 
+Data Box Disk は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 このソリューションのセキュリティ機能は、ディスクおよび関連するサービスを対象としたものであり、そこに格納されるデータのセキュリティを確保するものです。
 
 ### <a name="data-box-disk-protection"></a>Data Box Disk の保護
 
@@ -48,7 +48,7 @@ Data Box Disk は、次の機能によって保護されます。
 
 Data Box Disk に対する入出力データは、次の機能によって保護されます。
 
-- データは常時 BitLocker で暗号化されます。 
+- データは常時 BitLocker で暗号化されます。
 - Azure へのアップロードが完了したデータは、ディスクから確実に消去されます。 データの消去は、NIST 800-88r1 標準に準拠しています。
 
 ### <a name="data-box-service-protection"></a>Data Box サービスの保護
@@ -56,10 +56,9 @@ Data Box Disk に対する入出力データは、次の機能によって保護
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box Disk サービスにアクセスするには、Data Box Disk を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。 
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
 - このサービスでは、ディスクのロック解除にパスキーが使用されます。ディスクのパスキーは、Data Box Disk に格納されます。 
-- Data Box Disk サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。 
-
+- Data Box Disk サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。
 
 ## <a name="managing-personal-data"></a>個人データの管理
 
@@ -73,11 +72,11 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 
   - 連絡先の名前
   - 電話番号
-  - 電子メール
+  - Email
   - 番地
   - City
   - 郵便番号
-  - 状態
+  - State
   - 国/地方/地域
   - ドライブ ID
   - 運送業者のアカウント番号
@@ -87,10 +86,10 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[Security Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Disk の要件](data-box-disk-system-requirements.md)を確認する。
 - [Data Box Disk の制限事項](data-box-disk-limits.md)を理解する。

@@ -1,57 +1,49 @@
 ---
-title: 操作のキャンセル API | Microsoft Docs
+title: 操作のキャンセル API | Azure Marketplace
 description: 操作をキャンセルします。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 18f00391beded0744c80eab73bb1efe1c6ab8dbc
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: f9e55ff2c581f9392a125f6dc3ec8d903e9876a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807206"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256435"
 ---
-<a name="cancel-operation"></a>操作を取り消す 
-=================
+# <a name="cancel-operation"></a>操作を取り消す
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、プランがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更がなされています。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 この API は、現在プランで進行中の操作をキャンセルします。 この API に渡す `operationId` は、[操作の取得 API](./cloud-partner-portal-api-retrieve-operations.md) を使用して取得します。 キャンセルは同期操作であるのが一般的ですが、一部の複雑なシナリオでは、既存の操作をキャンセルするために新しい操作が必要になることがあります。 このケースでは、状態を照会するために使用すべき操作の場所が HTTP 応答本文に格納されます。
 
-要求と共にメール アドレスのコンマ区切りのリストを指定すると、それらのアドレスに操作の進行状況が API から通知されます。
-
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI パラメーター
+## <a name="uri-parameters"></a>URI パラメーター
+
 --------------
 
 |  **名前**    |      **説明**                                  |    **データの種類**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  パブリッシャー ID (例: `contoso`)         |   String          |
-| offerId      |  プラン ID                                     |   String          |
-| api-version  |  API の現在のバージョン                               |    日付           |
+| offerId      |  オファー ID                                     |   String          |
+| api-version  |  API の現在のバージョン                               |    Date           |
 |  |  |  |
 
-
-<a name="header"></a>ヘッダー
+## <a name="header"></a>ヘッダー
 ------
 
-|  **名前**              |  **値**         |
+|  **名前**              |  **Value**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
-|  Authorization         |  Bearer <実際のトークン> |
+|  承認         |  Bearer <実際のトークン> |
 |  |  |
 
-
-<a name="body-example"></a>本文の例
+## <a name="body-example"></a>本文の例
 ------------
 
 ### <a name="request"></a>Request
@@ -71,19 +63,22 @@ ms.locfileid: "48807206"
 |  notification-emails     | 発行操作の進捗状況を通知するメール ID の、コンマ区切りの一覧です。 |
 |  |  |
 
-
 ### <a name="response"></a>Response
 
-  `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
+#### <a name="migrated-offers"></a>移行されたオファー
 
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>移行されていないオファー
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **名前**             |    **値**                       |
+|  **名前**             |    **Value**                       |
 |  ---------            |    ----------                      |
-| Operation-Location    | 操作の現在の状態を確認するための、クエリ可能な URL。 |
+| 場所    | この操作の状態を取得する相対パス。 |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>応答状態コード
 

@@ -1,21 +1,14 @@
 ---
-title: Azure Functions の zip プッシュ デプロイ | Microsoft Docs
+title: Azure Functions の zip プッシュ デプロイ
 description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.author: glenga
-ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086583"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75769671"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -53,7 +46,7 @@ Azure Functions には、Azure App Service によって提供されている、�
 
   1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
 
-  2. **[概要]** タブで、**[アプリのコンテンツのダウンロードド]** を選択します。 ダウンロード オプションを選択し、**[ダウンロード]** を選択します。
+  2. **[概要]** タブで、 **[アプリのコンテンツのダウンロード]** を選択します。 ダウンロード オプションを選択し、 **[ダウンロード]** を選択します。
 
       ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
 
@@ -69,14 +62,14 @@ Azure Functions には、Azure App Service によって提供されている、�
 
 .zip ファイルは GitHub リポジトリからダウンロードすることもできます。 GitHub リポジトリを .zip ファイルとしてダウンロードする場合は、分岐用のフォルダー レベルが追加されます。 この追加のフォルダー レベルは、.zip ファイルを GitHub からダウンロードする際、その .zip ファイルを直接デプロイすることはできないということを意味します。 GitHub リポジトリを使用して関数アプリを管理している場合は、[継続的インテグレーション](functions-continuous-deployment.md)を使用してアプリをデプロイする必要があります。  
 
-## <a name="cli"></a>Azure CLI を使用したデプロイ
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Azure CLI を使用したデプロイ
 
 プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
 
-次のコマンドでは、`<zip_file_path>` プレース ホルダーを .zip ファイルの場所へのパスに置き換えてください。 また、`<app_name>` を、お使いの関数アプリの一意の名前に置き換えてください。 
+次のコマンドでは、`<zip_file_path>` プレース ホルダーを .zip ファイルの場所へのパスに置き換えてください。 また、`<app_name>` を関数アプリの一意の名前に置き換え、`<resource_group>` をリソース グループの名前に置き換えます。
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 
@@ -94,7 +87,7 @@ zip デプロイとこの機能は統合されており、関数アプリの設�
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)

@@ -1,25 +1,18 @@
 ---
 title: 管理ソリューションの Azure Automation リソース | Microsoft Docs
 description: 一般的な管理ソリューションでは、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。
-services: monitoring
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 5281462e-f480-4e5e-9c19-022f36dce76d
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
 ms.author: bwren
+ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c9b13f44dae068597cb82a0aa803283ad5e67bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763608"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682877"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -37,10 +30,10 @@ ms.locfileid: "57763608"
 
 - [管理ソリューションの作成]( solutions-creating.md)方法
 - [ソリューション ファイル]( solutions-solution-file.md)の構造
-- [Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)方法
+- [Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)方法
 
 ## <a name="automation-account"></a>Automation アカウント
-Azure Automation のリソースはすべて、[Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview) に含まれています。  [Log Analytics ワークスペースと Automation アカウント]( solutions.md#log-analytics-workspace-and-automation-account)の説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Azure Automation のリソースはすべて、[Automation アカウント](../../automation/automation-security-overview.md) に含まれています。  [Log Analytics ワークスペースと Automation アカウント]( solutions.md#log-analytics-workspace-and-automation-account)の説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
 各 Automation リソースの名前には、Automation アカウントの名前を含めます。  これは、次の Runbook リソースの例で示すように **accountName** パラメーターをソリューションで指定することにより行います。
 
@@ -247,7 +240,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>変数
 [Azure Automation 変数](../../automation/automation-variables.md)のタイプは **Microsoft.Automation/automationAccounts/variables** であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。
 
     {
@@ -281,10 +274,10 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 | データ型 | 説明 | 例 | 結果 |
 |:--|:--|:--|:--|
-| 文字列   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
+| string   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
 | numeric  | 数値を 1 組の引用符で囲みます。| "64" | 64 |
-| ブール値  | 引用符で囲まれた **true** または **false**。  この値は小文字にする必要があることに注意してください。 | "true" | true |
-| Datetime | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| boolean  | 引用符で囲まれた **true** または **false**。  この値は小文字にする必要があることに注意してください。 | "true" | true |
+| DATETIME | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>モジュール
 Runbook で使用する[グローバル モジュール](../../automation/automation-integration-modules.md)は Automation アカウントで常に利用可能であるため、管理ソリューションで定義する必要はありません。  ただし、Runbook で使用する他のモジュールのリソースを含める必要があります。
@@ -649,5 +642,5 @@ Runbook で使用する[グローバル モジュール](../../automation/automa
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ビューをソリューションに追加]( solutions-resources-views.md)して、収集したデータを視覚化します。

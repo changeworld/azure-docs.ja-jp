@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 0c3bc3f2995131c7777bfc48269a17fceda33192
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170749"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75646392"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
@@ -29,4 +29,4 @@ Azure 仮想マシン (VM) には、1 つ以上のネットワーク インタ�
 
 VM に接続された各 NIC には、1 つ以上の IP 構成が関連付けられています。 各構成には、1 つの静的または動的プライベート IP アドレスが割り当てられています。 また、1 つのパブリック IP アドレス リソースが関連付けられている場合もあります。 パブリック IP アドレス リソースには、動的または静的なパブリック IP アドレスが割り当てられています。 Azure における IP アドレスの詳細については、「[Azure 内の IP アドレス](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)」を参照してください。 
 
-NIC に割り当てることができるプライベート IP アドレスの数には上限があります。 また、Azure サブスクリプションで使用できるパブリック IP アドレスの数にも上限があります。 詳細については、[Azure の制限](../articles/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。
+NIC に割り当てることができるプライベート IP アドレスの数には上限があります。 また、Azure サブスクリプションで使用できるパブリック IP アドレスの数にも上限があります。 詳細については、[Azure の制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。

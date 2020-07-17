@@ -1,10 +1,10 @@
 ---
-title: Azure PowerShell スクリプト サンプル - 多層アプリケーション用のネットワークの作成 | Microsoft Docs
+title: 多層アプリケーション用の仮想ネットワークの作成 - Azure PowerShell スクリプト サンプル
 description: Azure PowerShell スクリプト サンプル - 多層アプリケーション用の仮想ネットワークの作成。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: efd496f2f69f243b958f4e780b9f3455d2ffece3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648696"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74091320"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>多層アプリケーション用のネットワークの作成のスクリプト サンプル
 
@@ -34,7 +34,8 @@ Azure [Cloud Shell](https://shell.azure.com/powershell) から、またはロー
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> 仮想ネットワークを作成すると (具体的には、-Subnet オプションを指定して New-AzVirtualNetwork コマンドレットを使用した場合)、サブネット ID が割り当てられます。 New-AzVirtualNetwork を呼び出す前に New-AzVirtualNetworkSubnetConfig コマンドレットを使用してサブネットを構成した場合は、New-AzVirtualNetwork を呼び出すまでサブネット ID は表示されません。
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
+仮想ネットワークを作成すると (具体的には、-Subnet オプションを指定して New-AzVirtualNetwork コマンドレットを使用した場合)、サブネット ID が割り当てられます。 New-AzVirtualNetwork を呼び出す前に New-AzVirtualNetworkSubnetConfig コマンドレットを使用してサブネットを構成した場合は、New-AzVirtualNetwork を呼び出すまでサブネット ID は表示されません。
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
@@ -62,7 +63,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | 仮想マシンを作成し、NIC を各 VM にアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループとそれに含まれるすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

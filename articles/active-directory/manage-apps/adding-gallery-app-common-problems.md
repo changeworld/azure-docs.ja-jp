@@ -3,8 +3,8 @@ title: Azure AD ギャラリーのアプリケーションの追加に関する�
 description: Azure AD ギャラリーのアプリケーションを追加するときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容の説明
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853173"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "65784422"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD ギャラリーのアプリケーションの追加に関する問題
 
@@ -28,19 +28,19 @@ ms.locfileid: "57853173"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されるまでに長い時間がかかる
 
-状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、**[進行中]** または **[アプリケーションの追加]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
+状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、 **[進行中]** または **[アプリケーションの追加]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
 
-アプリケーションが追加されていない場合、または **[追加]** ボタンをクリックしたときにエラーが発生した場合は、**[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
+アプリケーションが追加されていない場合、または **[追加]** ボタンをクリックしたときにエラーが発生した場合は、 **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されない
 
-一時的な問題、ネットワークの問題、または、バグによって、アプリケーションの追加に失敗することがあります。 このような状況が発生すると、Azure portal の右上隅にある **[通知]** アイコン (ベル) をクリックしたときに、**[アプリケーションの追加]** 通知の横に赤い (!) アイコンが表示されます。 これは、アプリケーションを作成するときにエラーが発生したことを示します。
+一時的な問題、ネットワークの問題、または、バグによって、アプリケーションの追加に失敗することがあります。 このような状況が発生すると、Azure portal の右上隅にある **[通知]** アイコン (ベル) をクリックしたときに、 **[アプリケーションの追加]** 通知の横に赤い (!) アイコンが表示されます。 これは、アプリケーションを作成するときにエラーが発生したことを示します。
 
-エラーが発生すると、**[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
+エラーが発生すると、 **[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>アプリケーションを追加した後に設定する方法がわからない
 
-アプリケーションについて学習する必要がある場合、 「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)」という記事をお勧めします。
+アプリケーションの学習について支援が必要な場合は、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)に関する記事から始めることをお勧めします。
 
 さらに、[Azure AD アプリケーションのドキュメント ライブラリ](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)では、Azure AD を使用したシングル サインオンおよびそのしくみの詳細について確認できます。
 
@@ -61,11 +61,11 @@ ms.locfileid: "57853173"
 
 5.  サポートが必要な場合は、この情報をサポート エンジニアや製品グループと共有して支援を受けることもできます。
 
-6.  **[エラーのコピー]** ボックスの右にある **[コピー]** **アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有することができます。
+6.  すべての通知の詳細をコピーしてサポート エンジニアまたは製品グループの技術者と共有するには、 **[コピー エラー]** ボックスの右にある **[コピー]** **アイコン**をクリックします。
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>通知の詳細をサポート エンジニアに送信して支援を受ける方法
 
-支援が必要な場合は、**以下に記載された詳細をすべて**サポート エンジニアと共有することが重要です。これにより、すばやい解決が実現します。 **スクリーンショットを取ったり**、**[エラーのコピー]** ボックスの右にある **[エラーのコピー] アイコン**をクリックすると、簡単に実行できます。
+支援が必要な場合は、**以下に記載された詳細をすべて**サポート エンジニアと共有することが重要です。これにより、すばやい解決が実現します。 **スクリーンショットを取ったり**、 **[エラーのコピー]** ボックスの右にある **[エラーのコピー] アイコン**をクリックすると、簡単に実行できます。
 
 ## <a name="notification-details-explained"></a>通知の詳細についての説明
 
@@ -113,7 +113,7 @@ ms.locfileid: "57853173"
 
 -   **表示名** – **(空白でも可)** エラーの詳細な表示名
 
-    -   例 - **アプリケーションのプロキシ設定**
+    -   例 – **アプリケーション プロキシの設定**
 
 -   **状態** – 通知の特定の状態
 

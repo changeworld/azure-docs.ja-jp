@@ -1,59 +1,41 @@
 ---
-title: PHP ランタイムを構成する - Azure App Service
+title: PHP ランタイムの構成
 description: Azure App Service 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。
-services: app-service
-documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: PHP
+ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 38e0983830c540082a915332aa4158d2af84567b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408915"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272476"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Azure App Service での PHP の構成方法
 
 ## <a name="introduction"></a>はじめに
 
-このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリ、モバイル バックエンド、および API アプリで構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。 App Service を使用するには、 [無料試用版]にサインアップしてください。 このガイドを最大限に活用するには、まず App Service で PHP アプリを作成する必要があります。
+このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリと API アプリで構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。 App Service を使用するには、 [無料試用版]にサインアップしてください。 このガイドを最大限に活用するには、まず App Service で PHP アプリを作成する必要があります。
 
 ## <a name="how-to-change-the-built-in-php-version"></a>方法:ビルトインの PHP バージョンを変更する
 
-既定では、App Service アプリを作成すると PHP 5.6 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
+Web アプリを作成するときは、構成する PHP のバージョンを選択できます。 現在サポートされているバージョンの最新情報については、「[App Service 上の PHP](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md)」を参照してください。
 
-PHP 7.0 および PHP 7.2 バージョンも使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
+アプリの既存のランタイム バージョンを確認するには、[phpinfo()] 関数を呼び出すスクリプトをデプロイします。
 
-### <a name="azure-portal"></a>Azure ポータル
+PHP バージョンを更新するには、次のいずれかの方法に従います。
 
-1. [Azure portal](https://portal.azure.com) で目的のアプリに移動し、**[構成]** ページにスクロールします。
+### <a name="azure-portal"></a>Azure portal
+
+1. [Azure portal](https://portal.azure.com) で目的のアプリに移動し、 **[構成]** ページにスクロールします。
 
 2. **[構成]** から **[全般設定]** を選択し、新しい PHP バージョンを選択します。
 
 3. **[全般設定]** ブレードの上部にある **[保存]** ボタンをクリックします。
-
-### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-1. Azure PowerShell を起動し、アカウントにログインします。
-
-        PS C:\> Connect-AzAccount
-2. アプリの PHP バージョンを設定します。
-
-        PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
-3. PHP バージョンが設定されました。 これらの設定を確認できます。
-
-        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
 ### <a name="azure-cli"></a>Azure CLI 
 
@@ -69,7 +51,7 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 
 2. アプリの PHP バージョンを設定します。
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. PHP バージョンが設定されました。 これらの設定を確認できます。
 
@@ -77,9 +59,9 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 
 ## <a name="how-to-change-the-built-in-php-configurations"></a>方法:ビルトインの PHP 構成を変更する
 
-次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます  (php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
+次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます (php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
-### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
+### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
 
 1. [.user.ini] ファイルをルート ディレクトリに追加します。
 1. `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を `.user.ini` ファイルに追加します。 たとえば、`display_errors` 設定をオンにして `upload_max_filesize` を 10 M に設定する場合は、`.user.ini` ファイルに次のテキストを含めます。
@@ -95,7 +77,7 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 
 `.user.ini` ファイルを使用する代わりに、スクリプト内で [ini_set()] 関数を使用して、システム レベルのディレクティブではない構成オプションを設定することもできます。
 
-### <a name="changing-phpinisystem-configuration-settings"></a>PHP\_INI\_SYSTEM 構成設定の変更
+### <a name="changing-php_ini_system-configuration-settings"></a>PHP\_INI\_SYSTEM 構成設定の変更
 
 1. アプリの設定 (キー `PHP_INI_SCAN_DIR`、値 `d:\home\site\ini`) をアプリに追加する
 1. Kudu Console (http://&lt;site-name&gt;.scm.azurewebsite.net) を使用して、`d:\home\site\ini` ディレクトリに `settings.ini` ファイルを作成します。
@@ -128,10 +110,10 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 1. ディレクトリを `bin` ディレクトリに追加します。
 2. `bin` ディレクトリに、`.dll` 拡張ファイル (`php_xdebug.dll` など) を配置します。 拡張機能は、PHP の既定バージョンとの互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
 3. アプリをデプロイします。
-4. Azure portal で目的のアプリに移動し、**[設定]** セクションの下にある **[構成]** をクリックします。
+4. Azure portal で目的のアプリに移動し、 **[設定]** セクションの下にある **[構成]** をクリックします。
 5. **[構成]** ブレードから **[アプリケーション設定]** を選択します。
 6. **[アプリケーション設定]** セクションの **[+ 新しいアプリケーション設定]** をクリックし、**PHP_EXTENSIONS** キーを作成します。 このキーの値は、Web サイト ルート (**bin\your-ext-file**) への相対パスになります。
-7. 一番下にある **[更新]** ボタンをクリックし、**[アプリケーション設定]** タブの上の **[保存]** をクリックします。
+7. 一番下にある **[更新]** ボタンをクリックし、 **[アプリケーション設定]** タブの上の **[保存]** をクリックします。
 
 Zend 拡張機能も、**PHP_ZENDEXTENSIONS** キーを使用することによってサポートされます。 複数の拡張機能を有効にするには、複数の `.dll` ファイルをコンマで区切って指定します。
 
@@ -144,9 +126,9 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 3. また、PHP ランタイムに拡張機能を追加して、これらを `php.ini` ファイル内で有効にすることもできます。
 4. `bin` ディレクトリをルート ディレクトリに追加し、その中に、PHP ランタイムが含まれているディレクトリ (`bin\php` など) を配置します。
 5. アプリをデプロイします。
-6. Azure portal で目的のアプリに移動し、**[構成]** ブレードをクリックします。
+6. Azure portal で目的のアプリに移動し、 **[構成]** ブレードをクリックします。
 8. **[構成]** ブレードから **[Path mappings]\(パスのマッピング\)** を選択します。 
-9. **[+ New Handler]\(+ 新しいハンドラー\)** をクリックし、拡張子フィールドに `*.php` を追加し、**[スクリプト プロセッサ]** に `php-cgi.exe` 実行可能ファイルのパスを追加します。 アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
+9. **[+ New Handler]\(+ 新しいハンドラー\)** をクリックし、拡張子フィールドに `*.php` を追加し、 **[スクリプト プロセッサ]** に `php-cgi.exe` 実行可能ファイルのパスを追加します。 アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
 10. 一番下の **[更新]** をクリックして、ハンドラー マッピングの追加を完了します。
 11. **[保存]** をクリックして変更を保存します。
 
@@ -160,10 +142,10 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 > [こちらで App Service の優れた Composer サポートに投票](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)できます。
 >
 
-1. [Microsoft Azure portal](https://portal.azure.com) の PHP アプリのブレードで、**[ツール]** > **[拡張機能]** をクリックします。
+1. [Microsoft Azure portal](https://portal.azure.com) の PHP アプリのブレードで、 **[ツール]**  >  **[拡張機能]** をクリックします。
 
     ![Azure での Composer 自動化を有効にする Azure Portal の設定のブレード](./media/web-sites-php-configure/composer-extension-settings.png)
-2. **[追加]**、**[Composer]** の順にクリックします。
+2. **[追加]** 、 **[Composer]** の順にクリックします。
 
     ![Azure で Composer 拡張機能を追加して Composer 自動化を有効にする](./media/web-sites-php-configure/composer-extension-add.png)
 3. **[OK]** をクリックして法律条項に同意します。 もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
@@ -174,7 +156,7 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 
     ![Azure での Composer 自動化を使用した Git デプロイ](./media/web-sites-php-configure/composer-extension-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)を参照してください。
 

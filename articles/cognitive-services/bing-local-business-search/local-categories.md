@@ -1,24 +1,25 @@
 ---
-title: Bing Local Business Search API の検索カテゴリ | Microsoft Docs
+title: Bing Local Business Search API の検索カテゴリ
 titleSuffix: Azure Cognitive Services
 description: この記事を使用して、Bing Local Business Search API エンドポイントの検索カテゴリを指定する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.subservice: bing-local-business
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 61bd230ffdb79b31390e96179e5beb3646902142
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: rosh
+ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "69906392"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing Local Business Search API の検索カテゴリ
 
-Bing Local Business Search API では、ユーザーの場所に近い結果に指定されている優先順で、さまざまなカテゴリの地元企業エンティティを検索することができます。 このような検索を、`localCircularView` および `localMapView` [パラメーター](specify-geographic-search.md)と共に検索に含めることができます。
+Bing Local Business Search API では、ユーザーの場所に近い結果に指定されている優先順で、さまざまなカテゴリの地元企業エンティティを検索することができます。 このような検索を、`localCircularView` パラメーターと `localMapView` [パラメーター](specify-geographic-search.md) と共に検索に含めることができます。
 
 
 ## <a name="toplevel-categories"></a>最上位カテゴリ 
@@ -215,7 +216,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [地理的検索境界](specify-geographic-search.md)
 - [クエリと応答](local-search-query-response.md)
 - [C# のクイック スタート](quickstarts/local-quickstart.md)

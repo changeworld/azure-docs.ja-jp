@@ -13,23 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
-ms.author: hkanna
-ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: matd
+ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011132"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75561645"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
 ## <a name="overview"></a>概要
 
-Azure StorSimple は、Microsoft が提供するハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、Azure ストレージ アカウントをオンプレミス ソリューションの拡張機能として使用し、オンプレミス ストレージとクラウド ストレージにまたがって自動でデータを階層化することでデータ急増の難点に対応できます。
+Azure StorSimple は、Microsoft が提供するハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、Azure ストレージ アカウントをオンプレミス ソリューションの拡張機能として使用し、オンプレミス ストレージとクラウド ストレージにまたがって自動的にデータを階層化することでデータ急増の難点に対応できます。
 
 この記事では、Veritas Backup Exec と StorSimple の統合について取り上げ、両方のソリューションを統合するためのベスト プラクティスについて説明します。 StorSimple との統合を最適化できるように Backup Exec をセットアップする方法についての推奨事項も紹介します。 個別のバックアップ要件とサービスレベル アグリーメント (SLA) に合わせて Backup Exec を最適にセットアップする方法については、Veritas のベスト プラクティス、バックアップ アーキテクト、および管理者に従います。
 
-構成手順と主要な概念についての説明は行いますが、この記事は構成またはインストールの方法をステップバイステップで説明するガイドではありません。 基本的なコンポーネントとインフラストラクチャが正常に動作しており、ここで説明する概念をサポートする準備が整っていることを前提としています。
+構成手順と主要な概念について説明しますが、この記事は構成またはインストールの方法を詳しく説明するガイドではありません。 基本的なコンポーネントとインフラストラクチャが正常に動作しており、ここで説明する概念をサポートする準備が整っていることを前提としています。
 
 ### <a name="who-should-read-this"></a>対象読者
 
@@ -37,7 +37,7 @@ Azure StorSimple は、Microsoft が提供するハイブリッド クラウド 
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 
--   [Backup Exec 16 以降のバージョン](http://backupexec.com/compatibility)
+-   [Backup Exec 16 以降のバージョン](https://www.veritas.com/content/support/en_US/article.100040087)
 -   [StorSimple Update 3 以降のバージョン](storsimple-overview.md#storsimple-workload-summary)
 
 
@@ -73,13 +73,13 @@ StorSimple には次の利点があります。
 -   クラウドを使用してこれまでにない重複除去レベルを実現するための一意の重複除去と圧縮アルゴリズム
 -   高可用性
 -   Azure を使用した geo レプリケーション
--   Azure の統合
+-   Azure との統合
 -   クラウドのデータ暗号化
 -   ディザスター リカバリーとコンプライアンスの強化
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -129,7 +129,7 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 
 このシナリオでの StorSimple ボリュームの主な用途は、長期間の保持またはアーカイブです。
 
-次の図は、初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャを表しています。 これらのバックアップは、設定したスケジュールで StorSimple 階層化ボリュームにコピー、アーカイブされます。
+次の図は、初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャを表しています。 これらのバックアップは、設定したスケジュールで StorSimple 階層化ボリュームにコピーおよびアーカイブされます。
 
 高性能ボリュームのサイズは、保持ポリシーの容量とパフォーマンスの要件に対応できるものにする必要があります。
 
@@ -153,7 +153,7 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 ソリューションのデプロイでは、3 つの手順を行う必要があります。
-1. ネットワーク インフラストラクチャを計画する。
+1. ネットワーク インフラストラクチャを準備する。
 2. StorSimple デバイスをバックアップ ターゲットとしてデプロイする。
 3. Backup Exec をデプロイする。
 
@@ -184,16 +184,16 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
-| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョン:Update 3 以降。 |
+| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
 | バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
-| StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
+| StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、 **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
 | すべてのバックアップ ターゲット ボリュームに対し、一意の StorSimple バックアップ ポリシーを作成する。 | ボリュームの整合性グループは、StorSimple のバックアップ ポリシーで定義されます。 |
 | スナップショットに有効期限があるためスケジュールを無効にする。 | スナップショットは後処理オペレーションとしてトリガーされます。 |
 
 ### <a name="set-up-the-host-backup-server-storage"></a>ホスト バックアップ サーバー ストレージのセットアップ
 
-次のガイドラインに従って、ホスト バックアップ サーバーのストレージを用意します。  
+次のガイドラインに従って、ホスト バックアップ サーバー ストレージをセットアップします。  
 
 - (Windows Disk マネージャーで作成された) スパン ボリュームは使用しないでください。 スパン ディスクはサポートされていません。
 - アロケーション サイズ 64 KB の NTFS を使用してボリュームをフォーマットします。
@@ -233,7 +233,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 -   StorSimple では、Backup Exec の完全バックアップと増分バックアップがサポートされています。 合成バックアップや差分バックアップは使用しないことをお勧めします。
 -   バックアップ データ ファイルに含めるデータは、特定のジョブのものだけに限定する必要があります。 たとえば、複数のジョブにまたがってメディアを追加することはできません。
 -   ジョブの検証を無効にします。 必要に応じて、最近のバックアップ ジョブの後に検証をスケジュールします。 このジョブがバックアップの時間帯に影響を与えることを理解しておくことが重要です。
--   **[Storage] \(ストレージ)** > **[Your disk] \(ディスク)** > **[Details] \(詳細)** > **[Properties] \(プロパティ)** の順に選択します。 **[Pre-allocate disk space] \(ディスク領域の事前割当)** を無効にします。
+-   **[Storage] \(ストレージ)**  >  **[Your disk] \(ディスク)**  >  **[Details] \(詳細)**  >  **[Properties] \(プロパティ)** の順に選択します。 **[Pre-allocate disk space] \(ディスク領域の事前割当)** を無効にします。
 
 これらの要件を実装するための最新の Backup Exec 設定およびベスト プラクティスについては、[Veritas 社の Web サイト](https://www.veritas.com)をご覧ください。
 
@@ -267,11 +267,11 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 ### <a name="to-set-up-backup-exec-storage"></a>Backup Exec ストレージのセットアップ方法
 
-1.  Backup Exec 管理コンソールで、**[Storage] \(ストレージ)** > **[Configure Storage] \(ストレージの構成)** > **[Disk-Based Storage] \(ディスクベース ストレージ)** > **[Next] \(次へ)** の順に選択します。
+1.  Backup Exec 管理コンソールで、 **[Storage] \(ストレージ)**  >  **[Configure Storage] \(ストレージの構成)**  >  **[Disk-Based Storage] \(ディスクベース ストレージ)**  >  **[Next] \(次へ)** の順に選択します。
 
     ![Backup Exec 管理コンソール、ストレージの構成ページ](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-2.  **[Disk Storage] \(ディスク ストレージ)** を選択して、**[Next] \(次へ)** を選択します。
+2.  **[Disk Storage] \(ディスク ストレージ)** を選択して、 **[Next] \(次へ)** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージの選択ページ](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
@@ -279,15 +279,15 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、名前と説明のページ](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
-4.  ディスク ストレージ デバイスの作成先になるディスクを選択して、**[Next] \(次へ)** を選択します。
+4.  ディスク ストレージ デバイスの作成先になるディスクを選択して、 **[Next] \(次へ)** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージ ディスクの選択ページ](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-5.  書き込み操作の数を **16** に増やして、**[Next] \(次へ)** を選択します。
+5.  書き込み操作の数を **16** に増やして、 **[Next] \(次へ)** を選択します。
 
     ![Backup Exec 管理コンソール、同時書き込み操作の設定ページ](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
-6.  設定を確認し、**[Finish] \(完了)** を選択します。
+6.  設定を確認し、 **[Finish (完了)]** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージ構成の概要ページ](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
 
@@ -310,7 +310,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 4 週間、月単位、および年単位の GFS ローテーション スケジュールの例を以下に示します。
 
-| 頻度/バックアップ タイプ | 完全 | 増分 (1 - 5 日目)  |   
+| 頻度/バックアップ タイプ | [完全] | 増分 (1 - 5 日目)  |   
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
@@ -323,33 +323,33 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple ボリュームを Backup Exec バックアップ ジョブに割り当てる方法
 
-1.  Backup Exec 管理コンソールで、**[Host] \(ホスト)** > **[Backup] \(バックアップ)** > **[Backup to Disk] \(ディスクへのバックアップ)** の順に選択します。
+1.  Backup Exec 管理コンソールで、 **[Host] \(ホスト)**  >  **[Backup] \(バックアップ)**  >  **[Backup to Disk] \(ディスクへのバックアップ)** の順に選択します。
 
     ![Backup Exec 管理コンソール、ホスト、バックアップ、ディスクへのバックアップの選択](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-2.  **[Backup Definition Properties] \(バックアップ定義のプロパティ)** ダイアログ ボックスの **[Backup] \(バックアップ)** で、**[Edit] \(編集)** を選択します。
+2.  **[Backup Definition Properties] \(バックアップ定義のプロパティ)** ダイアログ ボックスの **[Backup] \(バックアップ)** で、 **[Edit] \(編集)** を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティ ダイアログ ボックス](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
 3.  完全バックアップと増分バックアップを、RPO 要件および RTO 要件と Veritas のベスト プラクティスに合うよう設定します。
 
-4.  **[Backup Options] \(バックアップ オプション)** ダイアログ ボックスで、**[Storage] \(ストレージ)** を選択します。
+4.  **[Backup Options] \(バックアップ オプション)** ダイアログ ボックスで、 **[Storage] \(ストレージ)** を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ オプションのストレージ ダイアログ ボックス](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
 
 5.  該当する StorSimple ボリュームをバックアップ スケジュールに割り当てます。
 
     > [!NOTE]
-    > **[圧縮]** と **[暗号化の種類]** は、**[なし]** に設定します。
+    > **[圧縮]** と **[暗号化の種類]** は、 **[なし]** に設定します。
 
-6.  **[Verify] \(検証)** で、**[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。 このオプションを使用すると、StorSimple 階層化に影響する可能性があります。
+6.  **[Verify] \(検証)** で、 **[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。 このオプションを使用すると、StorSimple 階層化に影響する可能性があります。
 
     > [!NOTE]
     > 最適化、インデックス作成とバックグラウンドの検証は、StorSimple 階層化に悪影響を与えます。
 
     ![Backup Exec 管理コンソール、バックアップ オプションの検証設定](./media/storsimple-configure-backup-target-using-backup-exec/image17.png)
 
-7.  要件を満たすよう残りのバックアップ オプションを設定したら、**[OK]** を選択し完了します。
+7.  要件を満たすよう残りのバックアップ オプションを設定したら、 **[OK]** を選択し完了します。
 
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>セカンダリ バックアップ ターゲットとして StorSimple をセットアップする
 
@@ -379,9 +379,9 @@ Backup Exec のインストールのベスト プラクティスについては�
 \* 合計容量は、StorSimple ディスクの 17 TiB とローカル RAID ボリュームの 1 TiB の合計です。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュールの例:週、月、年単位の GFS ローテーション スケジュール
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュール例: 週、月、年単位の GFS ローテーション スケジュール
 
-| 週 | 完全 | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
+| Week | [完全] | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
 |---|---|---|---|---|---|---|
 | 第 1 週 | ローカル RAID ボリューム  | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム |
 | 第 2 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
@@ -395,15 +395,15 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>StorSimple ボリュームを Backup Exec のアーカイブおよび重複除去ジョブに割り当てる方法
 
-1.  Backup Exec 管理コンソールで、StorSimple ボリュームへのアーカイブを行うように設定するジョブを右クリックして、**[Backup Definition Properties] \(バックアップ定義のプロパティ)** > **[Edit] \(編集)** の順に選択します。
+1.  Backup Exec 管理コンソールで、StorSimple ボリュームへのアーカイブを行うように設定するジョブを右クリックして、 **[Backup Definition Properties] \(バックアップ定義のプロパティ)**  >  **[Edit] \(編集)** の順に選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティ タブ](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  **[Add Stage] \(ステージの追加)** > **[Duplicate to Disk] \(ディスクに複製)** > **[Edit] \(編集)** の順に選択します。
+2.  **[Add Stage] \(ステージの追加)**  >  **[Duplicate to Disk] \(ディスクに複製)**  >  **[Edit] \(編集)** の順に選択します。
 
     ![Backup Exec 管理コンソール、ステージの追加](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
-3.  **[Duplicate Options] \(複製のオプション)** ダイアログ ボックスで、**[Source] \(ソース)** および **[Schedule] \(スケジュール)** について使用する値を選択します。
+3.  **[Duplicate Options] \(複製のオプション)** ダイアログ ボックスで、 **[Source] \(ソース)** および **[Schedule] \(スケジュール)** について使用する値を選択します。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
 
@@ -411,7 +411,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-5.  **[Verify] \(検証)** を選択し、**[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。
+5.  **[Verify] \(検証)** を選択し、 **[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。
 
     ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
@@ -478,16 +478,16 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 | Backup Exec サーバーの不具合 | バックアップと復元のオペレーションが中断されます。 | 「[Backup Exec (BEDB) データベースの手動バックアップと復元方法](http://www.veritas.com/docs/000041083)」に従ってバックアップ サーバーを再構築し、データベースの復元を実行します。 | ディザスター リカバリー サイトの Backup Exec サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元した Backup Exec データベースと最新のバックアップ ジョブが同期されない場合、インデックスとカタログを作成する必要があります。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ:シン プロビジョニング](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。

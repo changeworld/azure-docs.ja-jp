@@ -1,21 +1,19 @@
 ---
-title: EDIFACT メッセージをデコードする - Azure Logic Apps | Microsoft Docs
+title: EDIFACT メッセージをデコードする
 description: Azure Logic Apps と Enterprise Integration Pack の EDIFACT メッセージ デコーダーを使用して EDI の検証および受信確認の生成を行います
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
-ms.date: 01/27/2017
-ms.openlocfilehash: b101922d15a3f90c29eff51c223d2ea7dc30ddf2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 04/22/2020
+ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125354"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106289"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 
@@ -31,6 +29,10 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
 * 統合アカウントで既に定義されている [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>EDIFACT メッセージをデコードする
+
+> [!IMPORTANT]
+> EDIFACT コネクタでは、UTF-8 文字のみがサポートされます。
+> 出力に予期しない文字が含まれている場合は、EDIFACT メッセージで UTF-8 文字セットが使用されていることを確認します。 
 
 1. [ロジック アプリを作成](quickstart-create-first-logic-app-workflow.md)します。
 
@@ -51,7 +53,7 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-4. 接続の作成が完了したら、**[作成]** を選択します。 接続の詳細は次の例のようになります。
+4. 接続の作成が完了したら、 **[作成]** を選択します。 接続の詳細は次の例のようになります。
 
     ![統合アカウントの詳細](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
@@ -59,7 +61,7 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
 
     ![integration account connection created](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    例: 
+    次に例を示します。
 
     ![デコードする EDIFACT フラット ファイル メッセージの選択](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
@@ -81,13 +83,13 @@ Decode EDIFACT コネクタは次のタスクを実行します。
   * インターチェンジ内の他のグループ制御番号と照らし合わせて、グループ制御番号を確認する。 
   * グループ内の他のトランザクション セット制御番号と照らし合わせて、トランザクション セット制御番号を確認する。
 * インターチェンジをトランザクション セットに分割するか、インターチェンジ全体を保持する。
-  * [インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断]: インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
+  * インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
   X12 Decode アクションは、検証が失敗したこれらのトランザクション セットのみを `badMessages` に出力し、残りのトランザクション セットを `goodMessages` に出力します。
-  * [インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断]: インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
+  * インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
   インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、X12 Decode アクションはそのインターチェンジのすべてのトランザクション セットを `badMessages` に出力します。
-  * [インターチェンジの保存 - エラー発生時にトランザクション セットを中断]: インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
+  * インターチェンジの保存 - エラー発生時にトランザクション セットを中断インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
   X12 Decode アクションは、検証が失敗したこれらのトランザクション セットのみを `badMessages` に出力し、残りのトランザクション セットを `goodMessages` に出力します。
-  * [インターチェンジの保存 - エラー発生時にインターチェンジを中断]: インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
+  * インターチェンジの保存 - エラー発生時にインターチェンジを中断インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
   インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、X12 Decode アクションはそのインターチェンジのすべてのトランザクション セットを `badMessages` に出力します。
 * 技術 (制御) 確認または機能確認を生成する (構成されている場合)
   * 技術確認または制御確認は、完全に受信したインターチェンジの構文チェックの結果を報告します。
@@ -96,6 +98,6 @@ Decode EDIFACT コネクタは次のタスクを実行します。
 ## <a name="view-swagger-file"></a>Swagger ファイルを表示する
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
-[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
+## <a name="next-steps"></a>次のステップ
+[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 

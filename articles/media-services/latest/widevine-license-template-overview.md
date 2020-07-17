@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services と Widevine ライセンス テンプレートの概要 | Microsoft Docs
+title: Widevine ライセンス テンプレートを使用した Azure Media Services v3 の概要
 description: このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。
 author: juliako
 manager: femila
@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f614bd7f00587c5bdc0e7bc3e4ec737985da328b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548715"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996980"
 ---
-# <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要 
+# <a name="media-services-v3-with-widevine-license-template-overview"></a>Widevine ライセンス テンプレートを使用した Media Services v3 の概要
 
 Azure Media Services では、**Google Widevine** を使用してコンテンツを暗号化できます。 Media Services も Widevine ライセンスを提供するサービスを提供しています。 Azure Media Services API を使用すると、Widevine ライセンスを構成できます。 プレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスが要求を承認すると、サービスがライセンスを発行します。 これはクライアントに送信され、指定されたコンテンツの復号化と再生に使用されます。
 
@@ -54,13 +54,13 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
           "renewal_server_url":"<renewal server url>",
           "renewal_delay_seconds":<renewal delay>,
           "renewal_retry_interval_seconds":<renewal retry interval>,
-          "renew_with_usage”:<renew with usage>
+          "renew_with_usage":<renew with usage>
        }
     }
 
 ## <a name="json-message"></a>JSON メッセージ
 
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | payload |Base64 でエンコードされた文字列 |クライアントから送信されたライセンス要求です。 |
 | content_id |Base64 でエンコードされた文字列 |各 content_key_specs.track_type のキー ID およびコンテンツ キーを取得するために使用される識別子です。 |
@@ -78,7 +78,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 
 use_policy_overrides_exclusively オプションに関係なく、各 content_key_specs 値がすべてのトラックに対して指定されている必要があります。 
 
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | content_key_specs track_type |string |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、直前の 10 秒間を再生できません。 |
 | content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/> - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/> - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/> - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/> - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/> - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
@@ -87,7 +87,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | content_key_specs.key_id |Base64 でエンコードされた文字列バイナリ、16 バイト |キーの一意識別子です。 |
 
 ## <a name="policy-overrides"></a>ポリシーのオーバーライド
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |ブール値、true または false |コンテンツの再生が許可されていることを示します。 既定値は false です。 |
 | policy_overrides&#46;can_persist |ブール値、true または false |オフラインで使用するために、ライセンスを非揮発性ストレージに保持できることを示します。 既定値は false です。 |
@@ -102,7 +102,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | policy_overrides&#46;renew_with_usage |ブール値、true または false |使用が開始されたときに、更新のためにライセンスが送信されることを示します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |
 
 ## <a name="session-initialization"></a>セッションの初期化
-| Name | 値 | 説明 |
+| 名前 | 値 | 説明 |
 | --- | --- | --- |
 | provider_session_token |Base64 でエンコードされた文字列 |このセッション トークンはライセンスに渡され、後続の更新に含まれます。 セッション トークンは、セッションの範囲を超えて保持されません。 |
 | provider_client_token |Base64 でエンコードされた文字列 |ライセンスの応答で返信されるクライアント トークンです。 ライセンス要求にクライアント トークンが含まれる場合、この値は無視されます。 クライアント トークンは、ライセンス セッションの範囲を超えて保持されます。 |
@@ -125,39 +125,131 @@ ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration =
 };
 ```
 
-### <a id="classes"></a>定義が必要なクラスと JSON へのシリアル化
+### <a name="define-needed-classes-and-serialize-to-json"></a><a id="classes"></a>定義が必要なクラスと JSON へのシリアル化
 
 #### <a name="define-classes"></a>クラスの定義
 
 次の例では、Widevine JSON スキーマにマップするクラスの定義の例を示します。 それらのクラスを JSON 文字列にシリアル化する前に、クラスをインスタンス化できます。  
 
 ```csharp
+/// <summary>
+/// Widevine PolicyOverrides class.
+/// </summary>
 public class PolicyOverrides
 {
+    /// <summary>
+    /// Gets or sets a value indicating whether playback of the content is allowed. Default is false.
+    /// </summary>
+    [JsonProperty("can_play")]
     public bool CanPlay { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the license might be persisted to nonvolatile storage for offline use. Default is false.
+    /// </summary>
+    [JsonProperty("can_persist")]
     public bool CanPersist { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether renewal of this license is allowed. If true, the duration of the license can be extended by heartbeat. Default is false.
+    /// </summary>
+    [JsonProperty("can_renew")]
     public bool CanRenew { get; set; }
-    public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
-    public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
-    public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
+
+    /// <summary>
+    /// Gets or sets the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    /// </summary>
+    [JsonProperty("rental_duration_seconds")]
+    public int RentalDurationSeconds { get; set; }
+
+    /// <summary>
+    /// Gets or sets the viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    /// </summary>
+    [JsonProperty("playback_duration_seconds")]
+    public int PlaybackDurationSeconds { get; set; }
+
+    /// <summary>
+    /// Gets or sets the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    /// </summary>
+    [JsonProperty("license_duration_seconds")]
+    public int LicenseDurationSeconds { get; set; }
 }
 
+/// <summary>
+/// Widevine ContentKeySpec class.
+/// </summary>
 public class ContentKeySpec
 {
+    /// <summary>
+    /// Gets or sets track type.
+    /// If content_key_specs is specified in the license request, make sure to specify all track types explicitly.
+    /// Failure to do so results in failure to play back past 10 seconds.
+    /// </summary>
+    [JsonProperty("track_type")]
     public string TrackType { get; set; }
+
+    /// <summary>
+    /// Gets or sets client robustness requirements for playback.
+    /// Software-based white-box cryptography is required.
+    /// Software cryptography and an obfuscated decoder are required.
+    /// The key material and cryptography operations must be performed within a hardware-backed trusted execution environment.
+    /// The cryptography and decoding of content must be performed within a hardware-backed trusted execution environment.
+    /// The cryptography, decoding, and all handling of the media (compressed and uncompressed) must be handled within a hardware-backed trusted execution environment.
+    /// </summary>
+    [JsonProperty("security_level")]
     public int SecurityLevel { get; set; }
+
+    /// <summary>
+    /// Gets or sets the OutputProtection.
+    /// </summary>
+    [JsonProperty("required_output_protection")]
     public OutputProtection RequiredOutputProtection { get; set; }
 }
 
+/// <summary>
+/// OutputProtection Widevine class.
+/// </summary>
 public class OutputProtection
 {
+    /// <summary>
+    /// Gets or sets HDCP protection.
+    /// Supported values : HDCP_NONE, HDCP_V1, HDCP_V2
+    /// </summary>
+    [JsonProperty("hdcp")]
     public string HDCP { get; set; }
+
+    /// <summary>
+    /// Gets or sets CGMS.
+    /// </summary>
+    [JsonProperty("cgms_flags")]
+    public string CgmsFlags { get; set; }
 }
 
+/// <summary>
+/// Widevine template.
+/// </summary>
 public class WidevineTemplate
 {
+    /// <summary>
+    /// Gets or sets the allowed track types.
+    /// SD_ONLY or SD_HD.
+    /// Controls which content keys are included in a license.
+    /// </summary>
+    [JsonProperty("allowed_track_types")]
     public string AllowedTrackTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets a finer-grained control on which content keys to return.
+    /// For more information, see the section "Content key specs."
+    /// Only one of the allowed_track_types and content_key_specs values can be specified.
+    /// </summary>
+    [JsonProperty("content_key_specs")]
     public ContentKeySpec[] ContentKeySpecs { get; set; }
+
+    /// <summary>
+    /// Gets or sets policy settings for the license.
+    /// In the event this asset has a predefined policy, these specified values are used.
+    /// </summary>
+    [JsonProperty("policy_overrides")]
     public PolicyOverrides PolicyOverrides { get; set; }
 }
 ```
@@ -203,6 +295,10 @@ private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTem
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
+## <a name="next-steps"></a>次のステップ
 
 [DRM での保護](protect-with-drm.md)に関するページを参照してください。

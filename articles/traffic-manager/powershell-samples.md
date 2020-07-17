@@ -1,9 +1,9 @@
 ---
 title: Traffic Manager の Azure PowerShell サンプル | Microsoft Docs
-description: Traffic Manager の Azure PowerShell サンプル
+description: このサンプルでは、Azure PowerShell を使用して Azure Traffic Manager をデプロイおよび構成します。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
-ms.author: kumud
-ms.openlocfilehash: 280a8df6849360fda57bd29590f45421dc2c8164
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.author: rohink
+ms.openlocfilehash: 25864e3b419d86cbe1ec816bea4438958ca33124
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229100"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76934545"
 ---
 # <a name="azure-powershell-samples-for-traffic-manager"></a>Traffic Manager の Azure PowerShell サンプル
 

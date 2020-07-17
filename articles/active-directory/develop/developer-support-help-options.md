@@ -1,28 +1,23 @@
 ---
-title: Azure AD アプリ開発者向けのサポート オプションとヘルプ オプション | Microsoft Docs
+title: Azure AD アプリ開発者向けのサポート オプションとヘルプ オプション
 description: Microsoft ID (Azure Active Directory および Microsoft アカウント) と連携するアプリケーションを作成するときの開発関連の質問や問題について、ヘルプとサポートを入手する方法について確認します
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
+ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962663"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885533"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -35,7 +30,7 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 > * 認証ライブラリで問題が見つかった場合は *GitHub* の問題として提起する
 > * 最後に、サポート要求をオープンしてサポート担当者と話をする
 
-## <a name="search"></a>Search
+## <a name="search"></a>検索
 
 開発関連の質問がある場合、ドキュメント内、[GitHub のサンプル](https://github.com/azure-samples)、または [Stack Overflow](https://www.stackoverflow.com) の質問への回答の中に、回答を見つけられることがあります。
 
@@ -47,7 +42,7 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-ここで、*{Your Search Terms}* は検索するキーワードに該当します。
+ここで、 *{Your Search Terms}* は検索するキーワードに該当します。
 
 ## <a name="use-the-development-support-tools"></a>開発サポート ツールを使用する
 
@@ -81,10 +76,10 @@ Stack Overflow の次の投稿には、質問方法やソース コードの追�
 
 ライブラリに関するバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、プル要求を送信することもできます。
 
-ライブラリの一覧と GitHub リポジトリを確認するには、次の記事を参照してください。
+ライブラリとその GitHub リポジトリの一覧については、以下を参照してください。
 
-* [ADAL](active-directory-authentication-libraries.md) ライブラリおよび GitHub リポジトリ
-* [MSAL](reference-v2-libraries.md) ライブラリおよび GitHub リポジトリ
+* [Azure Active Directory 認証ライブラリ (ADAL) ライブラリと GitHub リポジトリ](../azuread-dev/active-directory-authentication-libraries.md)
+* [Microsoft 認証ライブラリ (MSAL) ライブラリと GitHub リポジトリ](reference-v2-libraries.md)
 
 ## <a name="open-a-support-request"></a>サポート要求をオープンする
 
@@ -95,9 +90,3 @@ Stack Overflow の次の投稿には、質問方法やソース コードの追�
 * Azure をご利用でない場合、マイクロソフトの[商用サポート](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)からサポート要求をオープンすることもできます。
 
 サポートを受けたり質問したりするために、[仮想エージェント](https://support.microsoft.com/contactus/?ws=support)をお試しいただくこともできます。
-
-### <a name="free-chat-support-for-a-limited-time"></a>無料のチャット サポート (時間制限あり)
-
-マイクロソフトのパートナーであれば、所定の時間、無料のチャット サポートを利用することもできます。 マイクロソフトのパートナーでない場合は、[こちら](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)から無料で登録し、他のメリットも享受できます。
-
-登録後、[こちら](https://aka.ms/devchat)からチャット要求を開始できます。

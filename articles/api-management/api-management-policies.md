@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005521"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128732"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。  
@@ -27,7 +26,7 @@ ms.locfileid: "60005521"
   
  ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーや[変数の設定](api-management-advanced-policies.md#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](api-management-advanced-policies.md#AdvancedPolicies)」と「[ポリシーの式](api-management-policy-expressions.md)」をご覧ください。  
   
-##  <a name="ProxyPolicies"></a> ポリシー  
+##  <a name="policies"></a><a name="ProxyPolicies"></a> ポリシー  
   
 -   [アクセス制限ポリシー](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
     -   [HTTP ヘッダーを確認する](api-management-access-restriction-policies.md#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。  
@@ -39,21 +38,24 @@ ms.locfileid: "60005521"
     -   [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。  
 -   [高度なポリシー](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [制御フロー](api-management-advanced-policies.md#choose) - ブール式の評価に基づいてポリシー ステートメントを条件付きで適用します。  
-    -   [要求を転送する](api-management-advanced-policies.md#ForwardRequest) - バックエンド サービスに要求を転送します。  
-    -   [Event Hub にログを記録する](api-management-advanced-policies.md#log-to-eventhub) - Logger エンティティによって定義されたメッセージ ターゲットに、指定された形式でメッセージを送信します。  
+    -   [要求を転送する](api-management-advanced-policies.md#ForwardRequest) - バックエンド サービスに要求を転送します。
+    -   [コンカレンシーを制限する](api-management-advanced-policies.md#LimitConcurrency) - 含まれているポリシーが指定された数を超える要求によって同時に実行されないようにします。
+    -   [Event Hub にログを記録する](api-management-advanced-policies.md#log-to-eventhub) - Logger エンティティによって定義されたメッセージ ターゲットに、指定された形式でメッセージを送信します。
+    -   [Mock response (モック応答)](api-management-advanced-policies.md#mock-response) - パイプラインの実行を中止し、モック応答を呼び出し元に直接返します。
     -   [再試行](api-management-advanced-policies.md#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。 実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。  
     -   [応答を返す](api-management-advanced-policies.md#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。  
     -   [1 方向の要求を送信する](api-management-advanced-policies.md#SendOneWayRequest) - 指定された URL に要求を送信します。応答は待機しません。  
-    -   [要求を送信する](api-management-advanced-policies.md#SendRequest) - 指定された URL に要求を送信します。  
+    -   [要求を送信する](api-management-advanced-policies.md#SendRequest) - 指定された URL に要求を送信します。
+    -   [HTTP プロキシを設定する](api-management-advanced-policies.md#SetHttpProxy) - HTTP プロキシ経由で、転送された要求をルーティングできます。
     -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付きコンテキスト変数の値を、後でアクセスできるように保持します。  
     -   [要求メソッドを設定する](api-management-advanced-policies.md#SetRequestMethod) - 要求の HTTP メソッドを変更できます。  
     -   [状態コードを設定する](api-management-advanced-policies.md#SetStatus) - HTTP 状態コードを指定された値に変更します。  
-    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。  
+    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、およびリソース ログにカスタム トレースを追加します。  
     -   [待機](api-management-advanced-policies.md#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
 -   [認証ポリシー](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [基本認証](api-management-authentication-policies.md#Basic) -基本認証を使用してバックエンド サービスで認証します。  
     -   [クライアント証明書による認証](api-management-authentication-policies.md#ClientCertificate) -クライアント証明書を使用してバックエンド サービスで認証します。  
-    -   [マネージド ID による認証](api-management-authentication-policies.md#ManagedIdentity) - クライアント証明書を使用してバックエンド サービスで認証します。  
+    -   [マネージド ID による認証](api-management-authentication-policies.md#ManagedIdentity) - [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用してバックエンド サービスで認証します。  
 -   [キャッシュ ポリシー](api-management-caching-policies.md#CachingPolicies)  
     -   [キャッシュから取得](api-management-caching-policies.md#GetFromCache) - キャッシュを検索して、キャッシュに格納された有効な応答があればそれを返します。  
     -   [キャッシュに格納](api-management-caching-policies.md#StoreToCache) - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。  
@@ -78,10 +80,9 @@ ms.locfileid: "60005521"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
 + [ポリシーのサンプル](policy-samples.md)   

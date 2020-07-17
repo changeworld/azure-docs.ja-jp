@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple データ マネージャー ジョブに .NET SDK を使用する | Microsoft Docs
+title: Microsoft Azure StorSimple データ マネージャー ジョブに .NET SDK を使用する
 description: .NET SDK を使用して StorSimple データ マネージャー ジョブを起動する方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885052"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76270720"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK を使用してデータ変換を開始する
 
@@ -82,12 +74,12 @@ ms.locfileid: "57885052"
 
 4. ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに**参照**として追加します。 dll ファイルを追加するには、次の手順を実行します。
 
-   1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
-   2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
+   1. Visual Studio で、 **[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
+   2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、 **[参照の追加]** を右クリックします。
     
        ![dlls の追加 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
+   3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、 **[追加]** 、 **[OK]** の順にクリックします。
 
        ![dlls の追加 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
@@ -200,6 +192,6 @@ ms.locfileid: "57885052"
 
     ![.NET ジョブをトリガーするコードのスニペット全体](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。

@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric コンテナー サービスに対して gMSA を設定する | Microsoft Docs
-description: Azure Service Fabric で実行されているコンテナーに対して gMSA を設定する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Azure Service Fabric コンテナー サービスに対して gMSA を設定する
+description: Azure Service Fabric で実行されているコンテナーに対してグループの管理されたサービス アカウント (gMSA) を設定する方法について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: aljo, subramar
-ms.openlocfilehash: fc4edf4cb411ea2872437f4909f06e5ac2b9f622
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9873e2d7672412b0e1e22c6c2a774cf629fd728a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926369"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75639209"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Service Fabric で実行されている Windows コンテナーに対して gMSA を設定する
 

@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187729"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72792301"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 > [!NOTE]
 > この記事で説明する Media Encoder Premium Workflow メディア プロセッサは中国では提供されません。
 >
 >
-
-プレミアム エンコーダーに関するご質問は、電子メールで mepd@microsoft.com までお送りください。
 
 ## <a name="overview"></a>概要
 Microsoft Azure Media Services には、 **メディア エンコーダー プレミアム ワークフロー** メディア プロセッサが導入されています。 このプロセッサでは、プレミアム オンデマンド ワークフローの高度なエンコード機能が提供されます。
@@ -231,7 +229,9 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-プレミアム エンコーダーに関するご質問は、電子メールで mepd@microsoft.com までお送りください。
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric クラスターへの安全な接続 | Microsoft Docs
+title: Azure Service Fabric クラスターに安全に接続する
 description: Service Fabric クラスターへのクライアント アクセスを認証する方法、およびクライアントとクラスター間の通信をセキュリティで保護する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: aljo
-ms.openlocfilehash: 42c8fa15c6b1e7c98ae47180bec5cc61236a7c44
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229347"
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -35,15 +24,15 @@ Service Fabric CLI (sfctl) を使用してセキュリティで保護された�
 
 証明書とキーのペアとして、または単一の PFX ファイルとして、2 つの異なる方法でクライアント証明書を指定できます。 パスワードで保護された PEM ファイルの場合、自動的にパスワードの入力が求められます。 クライアント証明書を PFX ファイルとして入手した場合は、最初に次のコマンドを使用して PFX ファイルを PEM ファイルに変換します。 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
 .pfx ファイルがパスワードで保護されていない場合は、最後のパラメーターとして -passin pass: を使用します。
 
-クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 例: 
+クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 次に例を示します。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -51,22 +40,22 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 証明書を指定するために、キー ペアは `--cert` および `--key` 引数を使用して、各ファイルにファイル パスを指定します。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 例: 
+テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 次に例を示します。
 
 > [!WARNING]
 > 運用環境の Service Fabric クラスターに接続するときに `no-verify` オプションを使用しないでください。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 例: 
+さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 次に例を示します。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
@@ -355,7 +344,7 @@ AAD でセキュリティ保護されているクラスターに接続するに�
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-自動的に、AAD を使用したログインを求められます。
+自動的に、AAD へのサインインを求められます。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>セキュリティで保護されたクラスターにクライアント証明書を使用して接続する
 
@@ -389,7 +378,7 @@ AAD でセキュリティ保護されているクラスターに接続するに�
 
 * Mac の場合:PFX ファイルをダブルクリックし、プロンプトに従ってキーチェーンに証明書をインストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)

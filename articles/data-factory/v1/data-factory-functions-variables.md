@@ -1,24 +1,21 @@
 ---
-title: Data Factory の関数およびシステム変数 | Microsoft Docs
+title: Data Factory の関数およびシステム変数
 description: Azure Data Factory の関数およびシステム変数の一覧を提供する
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-services: data-factory
-ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523938"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73667650"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -31,7 +28,7 @@ ms.locfileid: "59523938"
 | 変数名 | 説明 | オブジェクトのスコープ | JSON のスコープと使用事例 |
 | --- | --- | --- | --- |
 | WindowStart |現在のアクティビティ実行ウィンドウの時間間隔の開始 |activity |<ol><li>データ選択クエリを指定します。 [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。</li> |
-| WindowEnd |現在のアクティビティ実行ウィンドウの時間間隔の終了 |アクティビティ |WindowStart と同じです。 |
+| WindowEnd |現在のアクティビティ実行ウィンドウの時間間隔の終了 |activity |WindowStart と同じです。 |
 | SliceStart |生成されているデータ スライスの時間間隔の開始 |activity<br/>dataset |<ol><li>[Azure Blob](data-factory-azure-blob-connector.md) と [ファイル システム データセット](data-factory-onprem-file-system-connector.md) の処理で、動的フォルダー パスおよびファイル名を指定します。</li><li>アクティビティ入力コレクションで、Data Factory 関数を使用して入力の依存関係を指定する。</li></ol> |
 | SliceEnd |現在のデータ スライスの時間間隔の終了。 |activity<br/>dataset |SliceStart と同じです。 |
 
@@ -75,22 +72,22 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 
 使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「[カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)」を参照してください。 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>関数
 次の表は、Azure Data Factory の全関数の一覧です。
 
-| Category | Function | parameters | 説明 |
+| カテゴリ | 機能 | パラメーター | 説明 |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X:DateTime <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X:DateTime <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X:DateTime |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |StartOfHour(X) |X:Datetime |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Date |AddDays(X,Y) |X:DateTime<br/><br/>Y: int |X に Y 日を追加します。 <br/><br/>例:9/15/2013 12:00:00 PM + 2 days = 9/17/2013 12:00:00 PM<br/><br/>Y を負数に指定して、日数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Date |AddMonths(X,Y) |X:DateTime<br/><br/>Y: int |X に Y か月を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`<br/><br/>Y を負数に指定して、月数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Date |AddQuarters(X,Y) |X:DateTime <br/><br/>Y: int |X に Y * 3 か月を追加します。<br/><br/>例: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| Date |AddWeeks(X,Y) |X:DateTime<br/><br/>Y: int |X に Y * 7 日を追加します。 <br/><br/>例:9/15/2013 12:00:00 PM + 1 week = 9/22/2013 12:00:00 PM<br/><br/>Y を負数に指定して、週数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| Date |AddWeeks(X,Y) |X:DateTime<br/><br/>Y: int |X に Y * 7 日を追加します。<br/><br/>例:9/15/2013 12:00:00 PM + 1 week = 9/22/2013 12:00:00 PM<br/><br/>Y を負数に指定して、週数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
 | Date |AddYears(X,Y) |X:DateTime<br/><br/>Y: int |X に Y 年を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Y を負数に指定して、年数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| 日付 |Day(X) |X:DateTime |X の日付コンポーネントを取得します。<br/><br/>例: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Date |Day(X) |X:DateTime |X の日付コンポーネントを取得します。<br/><br/>例: `Day of 9/15/2013 12:00:00 PM is 9`. |
 | Date |DayOfWeek(X) |X:DateTime |X の曜日コンポーネントを取得します。<br/><br/>例: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| Date |DayOfYear(X) |X:DateTime |X の年コンポーネントで表される、その年の日付を取得します。<br/><br/>次に例を示します。<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| Date |DayOfYear(X) |X:DateTime |X の年コンポーネントで表される、その年の日付を取得します。<br/><br/>例 :<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
 | Date |DaysInMonth(X) |X:DateTime |パラメーター X の月コンポーネントで表される、その月の日数を取得します。<br/><br/>例: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
 | Date |EndOfDay(X) |X:DateTime |X の日 (日コンポーネント) の終了を表す日時を取得します。<br/><br/>例: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Date |EndOfMonth(X) |X:DateTime |パラメーター X の月コンポーネントで表される月の終了を取得します。 <br/><br/>例: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (9 月の終了を表す日時) |

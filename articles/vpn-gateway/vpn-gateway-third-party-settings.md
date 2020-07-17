@@ -1,26 +1,19 @@
 ---
-title: Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定 | Microsoft Docs
+title: Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定
 description: Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定について説明します。
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
-manager: cshepard
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
+manager: dcscontentpm
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991873"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75862715"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定
 
@@ -39,7 +32,7 @@ ms.locfileid: "57991873"
 |Cisco ISR  |[Azure VPN で使う Cisco ISR に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[Azure VPN で使う Cisco ASR に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |Sonicwall |[Sonicwall のサイト](https://www.sonicwall.com/en-us/support)で「**Azure VPN**」を検索してください。 |
-| チェックポイント    |[Checkpoint のサイト](https://supportcenter.checkpoint.com/supportcenter/portal)で「**Azure VPN**」を検索してください。 |
+| Checkpoint    |[Checkpoint のサイト](https://supportcenter.checkpoint.com/supportcenter/portal)で「**Azure VPN**」を検索してください。 |
 |Juniper |[Juniper のサイト]( https://www.juniper.net/search/public/)で「**Azure VPN**」を検索してください。|
 |Barracuda  |[Azure VPN で使う Barracuda に関してコミュニティで推奨されるソリューション](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Azure VPN で使う F5 に関してコミュニティで推奨されるソリューション](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |

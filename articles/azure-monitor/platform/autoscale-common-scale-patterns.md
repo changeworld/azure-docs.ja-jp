@@ -1,19 +1,15 @@
 ---
 title: 自動スケールの一般的なパターンの概要
 description: Azure におけるリソースの自動スケールの一般的なパターンについて説明します。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997261"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75396088"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>自動スケールの一般的なパターンの概要
 この記事では、Azure におけるリソースのスケールの一般的なパターンについて説明します。

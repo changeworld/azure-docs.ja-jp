@@ -3,22 +3,20 @@ title: Azure Network Watcher との接続のトラブルシューティングの
 description: このページでは、Network Watcher の接続のトラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705821"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236947"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Network Watcher の接続のトラブルシューティングの概要
 
@@ -48,7 +46,7 @@ Network Watcher の接続のトラブルシューティング機能を使用す�
 |Hops[].Issues | そのホップのチェック中に発生した問題のコレクション。 問題がない場合、値は空になります。|
 |Hops[].Issues[].Origin | 現在のホップで、問題が発生した場所。 次のいずれかの値になります。<br/> **Inbound** - 問題が前のホップから現在のホップへのリンク上にある<br/>**Outbound** - 問題が現在のホップから次のホップへのリンク上にある<br/>**Local** - 問題が現在のホップにある|
 |Hops[].Issues[].Severity | 検出された問題の重大度。 値は、**Error** か **Warning** のいずれかです。 |
-|Hops[].Issues[].Type |見つかった問題の種類。 次のいずれかの値になります。 <br/>**CPU**<br/>**メモリ**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |見つかった問題の種類。 次のいずれかの値になります。 <br/>**CPU**<br/>**[メモリ]**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |見つかった問題に関する詳細。|
 |Hops[].Issues[].Context[].key |返されたキーと値のペアのキー。|
 |Hops[].Issues[].Context[].value |返されたキーと値のペアの値。|
@@ -74,7 +72,7 @@ Network Watcher の接続のトラブルシューティング機能を使用す�
 
 接続のトラブルシューティングでは、接続に関する障害の種類が返されます。 次の表は、返された現在の障害の種類の一覧を示します。
 
-|Type  |説明  |
+|種類  |説明  |
 |---------|---------|
 |CPU     | CPU の使用率が高くなっています。       |
 |メモリ     | メモリの使用率が高くなっています。       |
@@ -83,6 +81,6 @@ Network Watcher の接続のトラブルシューティング機能を使用す�
 |NetworkSecurityRule    | トラフィックが NSG ルールによりブロックされています (ルールが返されている)        |
 |UserDefinedRoute|ユーザー定義またはシステム ルートによりトラフィックがドロップしました。 |
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 [Azure Portal](network-watcher-connectivity-portal.md)、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md)、または [REST API](network-watcher-connectivity-rest.md) を使用して接続をトラブルシューティングする方法を説明します。

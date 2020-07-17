@@ -1,0 +1,97 @@
+- name: 安全な開発に関するドキュメント
+  href: index.yml
+- name: サンプル アプリ
+  expanded: true
+  items:
+    - name: 安全な開発に詳しくない場合
+      items:
+        - name: Linux コンテナー内の Web アプリ
+          href: secure-web-app.md
+        - name: Web アプリと Azure Active Directory
+          href: secure-aad-app.md
+    - name: 業界準拠のソリューション
+      items:
+        - name: ペイメント カード業界
+          href: secure-pci-web-app.md
+- name: 概念
+  expanded: true
+  items:
+    - name: ベスト プラクティス
+      items:
+        - name: 概要
+          href: secure-dev-overview.md
+        - name: セキュリティで保護されたアプリを設計する
+          href: secure-design.md
+        - name: セキュリティで保護されたアプリを開発する
+          href: secure-develop.md
+        - name: セキュリティで保護されたアプリをデプロイする
+          href: secure-deploy.md
+- name: リソース
+  expanded: true
+  items:
+    - name: Microsoft Security Code Analysis
+      items:
+        - name: 概要
+          href: security-code-analysis-overview.md
+        - name: オンボードとインストール
+          href: security-code-analysis-onboard.md
+        - name: 構成
+          href: security-code-analysis-customize.md
+        - name: FAQ
+          href: security-code-analysis-faq.md
+        - name: YAML の構成
+          href: yaml-configuration.md
+        - name: リリースとロードマップ
+          href: security-code-analysis-releases.md
+    - name: Microsoft Threat Modeling Tool
+      displayName: stride
+      href: threat-modeling-tool.md
+      items:
+        - name: 作業の開始
+          href: threat-modeling-tool-getting-started.md
+        - name: 機能の概要
+          href: threat-modeling-tool-feature-overview.md
+        - name: 脅威
+          href: threat-modeling-tool-threats.md
+        - name: リリース
+          href: threat-modeling-tool-releases.md
+          items:
+            - name: Threat Modeling Tool GA リリース 7.1.5091.2 - 2018 年 9 月 12 日
+              href: threat-modeling-tool-releases-71509112.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 2018 年 11 月 1 日
+              href: threat-modeling-tool-releases-71510231.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 2019 年 1 月 29 日
+              href: threat-modeling-tool-releases-71601261.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 2019 年 4 月 9 日
+              href: threat-modeling-tool-releases-71604081.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 2019 年 7 月 2 日
+              href: threat-modeling-tool-releases-71607021.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.61015.1 - 2019 年 10 月 16 日
+              href: threat-modeling-tool-releases-71610151.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00206.1 - 2020 年 2 月 11 日
+              href: threat-modeling-tool-releases-73002061.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00316.1 - 2020 年 3 月 22 日
+              href: threat-modeling-tool-releases-73003161.md
+        - name: 軽減策
+          href: threat-modeling-tool-mitigations.md
+          items:
+            - name: 監査とログ記録
+              href: threat-modeling-tool-auditing-and-logging.md
+            - name: 認証
+              href: threat-modeling-tool-authentication.md
+            - name: 承認
+              href: threat-modeling-tool-authorization.md
+            - name: 通信のセキュリティ
+              href: threat-modeling-tool-communication-security.md
+            - name: 構成管理
+              href: threat-modeling-tool-configuration-management.md
+            - name: Cryptography
+              href: threat-modeling-tool-cryptography.md
+            - name: 例外管理
+              href: threat-modeling-tool-exception-management.md
+            - name: 入力の検証
+              href: threat-modeling-tool-input-validation.md
+            - name: 機微なデータ
+              href: threat-modeling-tool-sensitive-data.md
+            - name: セッションの管理
+              href: threat-modeling-tool-session-management.md

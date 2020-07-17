@@ -2,20 +2,20 @@
 title: Azure Traffic Manager エンドポイントの監視 | Microsoft Docs
 description: この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。
 services: traffic-manager
-author: KumudD
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: kumud
-ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rohink
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076141"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757264"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -25,9 +25,9 @@ Azure Traffic Manager には、エンドポイントの監視と自動フェー�
 
 エンドポイント監視を構成するには、Traffic Manager プロファイルで次の設定を指定する必要があります。
 
-* **プロトコル**。 Traffic Manager がエンドポイントをプローブして正常性をチェックするときに使用するプロトコルとして、HTTP、HTTPS、または TCP を選択します。 HTTPS 監視では、SSL 証明書の存在だけがチェックされ、その証明書が有効かどうかは検証されません。
+* **プロトコル**。 Traffic Manager がエンドポイントをプローブして正常性をチェックするときに使用するプロトコルとして、HTTP、HTTPS、または TCP を選択します。 HTTPS 監視では、TLS/SSL 証明書が有効であるかどうかは検証されず、その証明書が存在することだけが確認されます。
 * **Port**。 要求に使用するポートを選択します。
-* **パス**。 この構成設定は、パス設定を指定する必要がある HTTP プロトコルと HTTPS プロコルでのみ有効です。 TCP 監視プロトコルにこの設定を指定するとエラーになります。 HTTP および HTTPS プロトコルの場合は、監視でアクセスされる Web ページまたはファイルの相対パスと名前を指定します。 スラッシュ (/) は、相対パスの有効なエントリであり、 ファイルがルート ディレクトリ (既定値) にあることを示します。
+* **Path**。 この構成設定は、パス設定を指定する必要がある HTTP プロトコルと HTTPS プロコルでのみ有効です。 TCP 監視プロトコルにこの設定を指定するとエラーになります。 HTTP および HTTPS プロトコルの場合は、監視でアクセスされる Web ページまたはファイルの相対パスと名前を指定します。 スラッシュ (/) は、相対パスの有効なエントリであり、 ファイルがルート ディレクトリ (既定値) にあることを示します。
 * **カスタム ヘッダーの設定** この構成設定は、Traffic Manager がプロファイルのエンドポイントに送信する正常性チェックに特定の HTTP ヘッダーを追加するうえで役に立ちます。 カスタム ヘッダーは、プロファイル レベルおよびエンドポイント レベルで指定できます。プロファイル レベルで指定すると、そのプロファイルのすべてのエンドポイントに適用され、エンドポイント レベルで指定すると、エンドポイントにのみ適用されます。 カスタム ヘッダーを使用すると、ホスト ヘッダーを指定することで、マルチテナント環境のエンドポイントに対する正常性チェックを目的の場所に正しくルーティングできます。 Traffic Manager からの HTTP (S) 要求を特定し、それを別の方法で処理するために使用できる一意のヘッダーを追加することで、この設定を使用することもできます。 コンマで区切られたヘッダーと値のペアを最大 8 つ指定できます。 たとえば、"header1:value1、header2:value2" です。 
 * **予測される状態コード範囲** この設定を使用すると、200-299、301-301 という形式で複数の成功コードの範囲を指定できます。 正常性チェックが開始されたとき、これらの状態コードをエンドポイントから応答として受け取ると、そのエンドポイントは、Traffic Manager によって正常としてマークされます。 指定できる状態コードの範囲は 8 個までです。 この設定は、HTTP と HTTPS プロトコルのみ、およびすべてのエンドポイントに適用できます。 この設定は Traffic Manager プロファイル レベルであり、既定では成功の状態コードとして 200 という値が定義されています。
 * **プローブ間隔**。 この値により、Traffic Manager プローブ エージェントによってエンドポイントの正常性がチェックされる頻度を指定します。 ここで、30 秒 (普通のプローブ) と 10 秒 (速いプローブ) という 2 つの値を指定できます。 値が指定されていない場合、プロファイルによって既定値の 30 秒に設定されます。 高速プローブの料金の詳細については、「[Traffic Manager の価格](https://azure.microsoft.com/pricing/details/traffic-manager)」をご覧ください。
@@ -67,14 +67,14 @@ Traffic Manager のプロファイルとエンドポイントは、ユーザー�
 
 エンドポイント監視の状態は Traffic Manager で生成される値で、エンドポイントの状態を示します。 手動でこの設定を変更することはできません。 エンドポイントの監視の状態は、エンドポイントの監視の結果と構成されているエンドポイントの状態の組み合わせです。 エンドポイント監視の状態がとりうる値を、次の表に示します。
 
-| プロファイルの状態 | エンドポイントの状態 | エンドポイント監視の状態 | メモ |
+| プロファイルの状態 | エンドポイントの状態 | エンドポイント監視の状態 | Notes |
 | --- | --- | --- | --- |
-| Disabled |Enabled |非アクティブ |プロファイルは無効にされています。 エンドポイントの状態を有効にすることはできますが、プロファイルの状態 (無効) が優先されます。 無効状態のプロファイルに含まれているエンドポイントは監視されません。 DNS クエリに対して、NXDOMAIN 応答コードが返されます。 |
-| &lt;任意&gt; |無効 |Disabled |エンドポイントは無効にされています。 無効状態のエンドポイントは監視されません。 エンドポイントは DNS 応答に含まれないため、トラフィックを受信しません。 |
+| 無効 |Enabled |非アクティブ |プロファイルは無効にされています。 エンドポイントの状態を有効にすることはできますが、プロファイルの状態 (無効) が優先されます。 無効状態のプロファイルに含まれているエンドポイントは監視されません。 DNS クエリに対して、NXDOMAIN 応答コードが返されます。 |
+| &lt;任意&gt; |無効 |無効 |エンドポイントが無効になっています。 無効状態のエンドポイントは監視されません。 エンドポイントは DNS 応答に含まれないため、トラフィックを受信しません。 |
 | Enabled |Enabled |オンライン |エンドポイントは監視されており、正常です。 DNS 応答に含めることができるため、トラフィックを受信できます。 |
 | Enabled |Enabled |低下しています |エンドポイント監視の正常性チェックが失敗しています。 エンドポイントは DNS 応答に含まれないため、トラフィックを受信しません。 <br>すべてのエンドポイントが低下状態の場合は例外です。この場合、すべてのエンドポイントがクエリの応答で返されると見なされます。</br>|
 | Enabled |Enabled |エンドポイン トチェック中 |エンドポイントを監視していますが、最初のプローブの結果をまだ受信していません。 CheckingEndpoint は、プロファイル内のエンドポイントの追加または有効化の直後に通常発生する一時的な状態です。 この状態のエンドポイントは DNS 応答に含まれるため、トラフィックを受信できます。 |
-| Enabled |Enabled |停止済み |このエンドポイントが参照するクラウド サービスまたは Web アプリが実行されていません。 クラウド サービスまたは Web アプリの設定を確認してください。 この状況は、エンドポイントが入れ子になったエンドポイントであり、子プロファイルが無効になっているか非アクティブである場合にも発生する可能性があります。 <br>停止状態のエンドポイントは監視されません。 DNS 応答に含まれないため、トラフィックを受信しません。 すべてのエンドポイントが低下状態の場合は例外です。この場合、すべてのエンドポイントがクエリの応答で返されると見なされます。</br>|
+| Enabled |Enabled |停止済み |このエンドポイントが参照する Web アプリが実行されていません。 Web アプリの設定を確認してください。 この状況は、エンドポイントが入れ子になったエンドポイントであり、子プロファイルが無効になっているか非アクティブである場合にも発生する可能性があります。 <br>停止状態のエンドポイントは監視されません。 DNS 応答に含まれないため、トラフィックを受信しません。 すべてのエンドポイントが低下状態の場合は例外です。この場合、すべてのエンドポイントがクエリの応答で返されると見なされます。</br>|
 
 入れ子になったエンドポイントのエンドポイント監視の状態を計算する方法の詳細については、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」を参照してください。
 
@@ -83,11 +83,11 @@ Traffic Manager のプロファイルとエンドポイントは、ユーザー�
 
 ### <a name="profile-monitor-status"></a>プロファイル モニターの状態
 
-プロファイル モニターの状態は、構成済みのプロファイル状態とすべてのエンドポイントのエンドポイント監視状態の値を組み合わせたものです。 とりうる値を、次の表に示します。
+プロファイル モニターの状態は、構成済みのプロファイル状態とすべてのエンドポイントのエンドポイント監視状態の値を組み合わせたものです。 次の表に、このオプションで使用可能な値を示します。
 
-| (構成された)プロファイルの状態  | エンドポイント監視の状態 | プロファイル モニターの状態 | メモ |
+| (構成された)プロファイルの状態 | エンドポイント監視の状態 | プロファイル モニターの状態 | Notes |
 | --- | --- | --- | --- |
-| Disabled |&lt;いずれも&gt; または、プロファイルでエンドポイントが定義されていません。 |Disabled |プロファイルは無効にされています。 |
+| 無効 |&lt;いずれも&gt; または、プロファイルでエンドポイントが定義されていません。 |無効 |プロファイルは無効にされています。 |
 | Enabled |少なくとも 1 つのエンドポイントの状態が低下です。 |低下しています |個々のエンドポイントの状態の値を確認し、さらなる注意が必要なエンドポイントを特定します。 |
 | Enabled |少なくとも 1 つのエンドポイントの状態がオンラインです。 低下の状態になっているエンドポイントがありません。 |オンライン |サービスをトラフィックを受信しています。 ユーザーによる対処は不要です。 |
 | Enabled |少なくとも 1 つのエンドポイントの状態が、エンドポイント チェック中です。 オンラインまたは低下のエンドポイントはありません。 |エンドポイント チェック中 |このトラフィックの状態は、プロファイルが作成されるか有効になったときに発生します。 エンドポイントの正常性が初めてチェックされます。 |
@@ -98,10 +98,11 @@ Traffic Manager のプロファイルとエンドポイントは、ユーザー�
 Traffic Manager は、問題のあるエンドポイントを含むすべてのエンドポイントの正常性を定期的にチェックします。 Traffic Manager は、エンドポイントが正常な状態になり、ローテーションに帰ったときに検出します。
 
 次のいずれかのイベントが発生した場合、エンドポイントは異常です。
+
 - 監視プロトコルが HTTP または HTTPS の場合:
     - 200 以外の応答、または**予測される状態コード範囲**設定で指定された状態範囲を含まない応答を受信した (別の 2xx コードまたは 301/302 リダイレクトを含む)。
 - 監視プロトコルが TCP の場合: 
-    - 接続を確立するために Traffic Manager が送信した SYNC 要求に対して、ACK または SYN-ACK 以外の応答を受信した。
+    - 接続を確立するために Traffic Manager が送信した SYN 要求に対して、ACK または SYN-ACK 以外の応答を受信した。
 - タイムアウトになった。 
 - その他の接続の問題によってエンドポイントに到達できない。
 
@@ -152,9 +153,47 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 失敗した正常性チェックのトラブルシューティングについての詳細については、「 [Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)」を参照してください。
 
+## <a name="faqs"></a>FAQ
 
+* [Traffic Manager には、Azure リージョンの障害に対する回復性がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-traffic-manager-resilient-to-azure-region-failures)
 
-## <a name="next-steps"></a>次の手順
+* [リソース グループの場所の選択は Traffic Manager にどのような影響を与えますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
+
+* [各エンドポイントの現在の正常性を確認するには、どうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-determine-the-current-health-of-each-endpoint)
+
+* [HTTPS エンドポイントを監視できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-monitor-https-endpoints)
+
+* [エンドポイントを追加する際には、IP アドレスと DNS 名のどちらを使用しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
+
+* [エンドポイントを追加するときに、どの種類の IP アドレスを使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
+
+* [1 つのプロファイル内で異なる種類のエンドポイント アドレス指定方法を使用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
+
+* [受信クエリのレコード タイプが、エンドポイントのアドレス指定方法に関連付けられているレコード タイプと異なる場合はどうなりますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+
+* [入れ子になったプロファイル内で、IPv4/IPv6 アドレスでエンドポイントが指定されているプロファイルを使用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
+
+* [Web アプリケーションのエンドポイントを Traffic Manager プロファイルで停止しましたが、それを再起動した後でもトラフィックを受信していません。どうしたらいいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
+
+* [アプリケーションが HTTP または HTTPS をサポートしていなくても Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
+
+* [TCP 監視を使用する場合、エンドポイントからどのような応答が必要ですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
+
+* [Traffic Manager は、どの程度迅速に異常なエンドポイントからユーザーを移動させますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
+
+* [プロファイル内のエンドポイントごとに異なる監視設定を指定するにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
+
+* [エンドポイントに対する Traffic Manager の正常性チェックに HTTP ヘッダーを割り当てるにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
+
+* [エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-host-header-do-endpoint-health-checks-use)
+
+* [正常性チェックはどの IP アドレスから発信されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-ip-addresses-from-which-the-health-checks-originate)
+
+* [Traffic Manager では、エンドポイントに対して正常性チェックが何回実行されるのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
+
+* [いずれかのエンドポイントがダウンした場合に通知を受ける方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
+
+## <a name="next-steps"></a>次のステップ
 
 [Traffic Manager のしくみ](traffic-manager-how-it-works.md)
 

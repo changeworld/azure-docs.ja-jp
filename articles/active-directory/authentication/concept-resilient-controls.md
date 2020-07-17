@@ -1,22 +1,23 @@
 ---
-title: 回復性があるアクセス制御管理戦略を作成する - Azure Active Directory
+title: 回復性があるアクセス制御管理戦略を作成する - Azure AD
 description: このドキュメントでは、予期されていない中断の間のロックアウトのリスクを軽減する回復性を提供するために、組織で採用する必要がある戦略に関するガイダンスを示します
 services: active-directory
 author: martincoetzer
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.date: 01/29/2020
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886082"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76908736"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -116,14 +117,14 @@ ms.locfileid: "58886082"
 
 * 1 つの資格情報の種類または 1 つのアクセス制御メカニズムの中断によってアプリへのアクセスが影響を受ける場合は、フォールバック ポリシーのセットを構成します。 サード パーティの MFA プロバイダーを必要とするアクティブなポリシーに対するバックアップとして、制御としてのドメイン参加が必要なポリシーを無効化された状態で構成します。
 * [パスワードのガイダンス](https://aka.ms/passwordguidance)に関するホワイト ペーパーでの方法に従って、MFA が必要ないときに、パスワードを推測する悪意のあるユーザーのリスクを軽減します。
-* [Azure AD のセルフサービスのパスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) および [Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)を展開し、ユーザーが禁止されているありふれたパスワードや条件を使用しないようにします。
-* 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 例: 
+* [Azure AD のセルフサービス パスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) および [Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)を展開し、ユーザーが禁止されているありふれたパスワードや条件を使用しないようにします。
+* 単にフル アクセスにフォールバックするのではなく、特定の認証レベルが満たされていない場合はアプリ内でアクセスを制限するポリシーを使用します。 次に例を示します。
   * Exchange および SharePoint に制限されたセッション要求を送信するバックアップ ポリシーを構成します。
   * 組織で Microsoft Cloud App Security が使用されている場合は、フォールバックするポリシーで、MCAS を適用し、MCAS によって読み取り専用アクセスを許可してアップロードを許可しないことを検討します。
 * 中断中にポリシーを簡単に見つけられるよう、ポリシーに名前を付けます。 ポリシー名には次の要素を含めます。
   * ポリシーの*ラベル番号*。
-  * 表示するテキスト。このポリシーは緊急時のみを対象としています。 例: **ENABLE IN EMERGENCY**
-  * 適用される*中断*。 例: **During MFA Disruption**
+  * 表示するテキスト。このポリシーは緊急時のみを対象としています。 次に例を示します。**ENABLE IN EMERGENCY**
+  * 適用される*中断*。 次に例を示します。**During MFA Disruption**
   * ポリシーをアクティブ化する順序を示す、*シーケンス番号*。
   * 適用される*アプリ*。
   * 適用される*コントロール*。
@@ -135,7 +136,7 @@ ms.locfileid: "58886082"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-次の例をご覧ください。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー**は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を宇ｆくむグループ **CoreAdmins**、緊急アクセス用管アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
+次に例を示します。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー**は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用管理者アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
 
 **例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー:**
 
@@ -143,30 +144,30 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * 名前:EM001 - ENABLE IN EMERGENCY:MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
   * ユーザーとグループ:ContingencyAccess を含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
-  * 条件:任意
+  * 条件:Any
   * 許可の制御:ドメインへの参加が必要
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 2:Windows 以外のプラットフォームをブロック
   * 名前:EM002 - ENABLE IN EMERGENCY:MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:デバイス プラットフォームは、Windows 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 3:CorpNetwork 以外のネットワークをブロック
   * 名前:EM003 - ENABLE IN EMERGENCY:MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:場所は、CorpNetwork 以外のすべての場所を含む
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 4:EAS を明示的にブロックする
   * 名前:EM004 - ENABLE IN EMERGENCY:MFA Disruption[4/4] - Exchange - Block EAS for all users
   * ユーザーとグループ:すべてのユーザーを含める
   * クラウド アプリ:Exchange Online を含める
   * 条件:クライアント アプリ:Exchange Active Sync
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 
 アクティブ化の順序:
 
@@ -187,14 +188,14 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * クラウド アプリ:Salesforce。
   * 条件:なし
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 2:(攻撃対象領域を減らすため) モバイル以外の任意のプラットフォームからのセールス チームをブロックする
   * 名前:EM002 - ENABLE IN EMERGENCY:Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
   * ユーザーとグループ:SalesforceContingency を含める。 SalesAdmins を除外する
   * クラウド アプリ:Salesforce
   * 条件:デバイス プラットフォームは、iOS と Android 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 
 アクティブ化の順序:
 
@@ -210,7 +211,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 - 組織で、パススルー認証またはフェデレーションによるハイブリッド ID ソリューションが使用されている。
 - オンプレミスの ID システム (Active Directory、AD FS、依存コンポーネントなど) を使用できない。 
  
-回復性を向上させるには、組織で[パスワード ハッシュ同期を有効にする](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)必要があります。そうすれば、オンプレミスの ID システムがダウンした場合は、[パスワード ハッシュ同期の使用に切り替える](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)ことができます。
+回復性を向上させるには、組織で[パスワード ハッシュ同期を有効にする](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)必要があります。そうすれば、オンプレミスの ID システムがダウンした場合は、[パスワード ハッシュ同期の使用に切り替える](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)ことができます。
 
 #### <a name="microsoft-recommendations"></a>Microsoft の推奨事項
  組織でフェデレーションまたはパススルー認証が使用されているかどうかにかかわらず、Azure AD Connect ウィザードを使用してパスワード ハッシュ同期を有効にします。
@@ -232,7 +233,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 1. 変更管理戦略の一環として、アクセス制御が完全に動作するようになったら直ちに、実装したコンティンジェンシーをロールバックできるように、すべての変更と以前の状態を文書化します。
 2. MFA を無効にしている間は、悪意のあるユーザーがパスワード スプレーやフィッシング攻撃を使用してパスワードを取得しようとするものと想定します。 また、悪意のあるユーザーは、以前はどのリソースにもアクセスできなかったパスワードを既に持っていて、この期間中にアクセスを試みるかもしれません。 管理職などの重要なユーザーについては、MFA を無効にする前に、それらのユーザーのパスワードをリセットすることで、このリスクを軽減することができます。
 3. すべてのサインイン アクティビティをアーカイブし、MFA が無効にされていた期間に誰がアクセスしたかを識別します。
-4. この期間中に[報告されたすべてのリスク イベントをトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
+4. この期間中に[報告されたすべてのリスク検出をトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
 
 ## <a name="after-a-disruption"></a>中断の後
 
@@ -242,7 +243,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. コンティンジェンシー ポリシーを無効にします。 
 3. 中断中に行って文書化した他のすべての変更をロールバックします。
 4. 緊急アクセス用アカウントを使用した場合は、緊急アクセス用アカウントの手順の一部として、忘れずに資格情報を再生成し、新しい資格情報の詳細を物理的にセキュリティ保護します。
-5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク イベントをトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
+5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク検出をトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
 6. [PowerShell を使用して](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)一連のユーザーを対象に発行されたすべての更新トークンを取り消します。 すべての更新トークンの取り消しは中断中に使用された特権アカウントについて重要であり、そうすることで、強制的に再認証が行われ、復元されたポリシーの制御に対応します。
 
 ## <a name="emergency-options"></a>緊急時のオプション
@@ -254,7 +255,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
    1. 送信 IP アドレスのインベントリがない場合、または企業ネットワークの内部と外部でアクセスを有効にする必要があった場合は、0.0.0.0/1 と 128.0.0.0/1 を指定することにより、IPv4 アドレス空間全体を信頼できる IP アドレスとして追加できます。
 
 >[!IMPORTANT]
- > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク イベント (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
+ > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク検出 (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
 
 >[!NOTE]
  > Azure MFA に対する[信頼できる IP アドレス](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)の構成は、[Azure AD Premium ライセンス](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)でのみ使用できます。
@@ -263,7 +264,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 * [Azure AD Authentication のドキュメント](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Azure AD で緊急アクセス用管理者アカウントを管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Azure Active Directory で名前付きの場所を構成する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure Active Directory でネームド ロケーションを構成する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business の展開ガイド](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)

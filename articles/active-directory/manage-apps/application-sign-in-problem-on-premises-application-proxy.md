@@ -1,5 +1,5 @@
 ---
-title: Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない | Microsoft ドキュメント
+title: Azure AD アプリケーション プロキシを使用したオンプレミス アプリへのサインインの問題 | Microsoft Docs
 description: Azure AD と統合しているオンプレミスのアプリケーションにAzure AD アプリケーション プロキシでサインインできない場合の一般的な問題のトラブルシューティング
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0adc2effb27ffcd870ec543ee7b353a092808797
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825252"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74232335"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない
 
 オンプレミスのアプリケーションへのサインインに関する問題が発生した場合は、次の手順で問題を解決できます。
 
-## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>自分のアプリケーションを読み込むことはできるがページが壊れているように見える
+## <a name="i-can-load-my-application-but-something-on-the-page-looks-broken"></a>アプリケーションを読み込むことができるが、ページ上の何かが壊れているように見える
 
 次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
 
@@ -58,5 +58,5 @@ ms.locfileid: "65825252"
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
   * [アプリケーション プロキシ エージェント コネクタのインストールで問題が発生する](application-proxy-connector-installation-problem.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](application-proxy.md)

@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から Twilio に接続する | Microsoft Docs
+title: Azure Logic Apps から Twilio に接続する
 description: Azure Logic Apps を使用して、Twilio アカウントを通じてグローバル SMS、MMS、および IP メッセージを管理するタスクとワークフローを自動化します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: fab52236c701f10c8e8e23ac398362ca4583ea06
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228841"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789105"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Azure Logic Apps で Twilio のメッセージを管理する
 
@@ -24,7 +20,7 @@ Azure Logic Apps と Twilio コネクタを使用すると、Twilio のメッセ
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * [Twilio](https://www.twilio.com/) から: 
 
@@ -49,17 +45,17 @@ Azure Logic Apps と Twilio コネクタを使用すると、Twilio のメッセ
 
 1. 以下からパスを選択します。 
 
-     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+     * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
        または
 
      * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+     表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
      
        検索ボックスに、フィルターとして「twilio」と入力します。 
        アクションの一覧で、目的のアクションを選択します。
 
-1. 接続で必要な詳細を指定し、**[作成]** を選択します。
+1. 接続で必要な詳細を指定し、 **[作成]** を選択します。
 
    * 接続のために使用する名前
    * Twilio アカウント ID 
@@ -76,6 +72,6 @@ Azure Logic Apps と Twilio コネクタを使用すると、Twilio のメッセ
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

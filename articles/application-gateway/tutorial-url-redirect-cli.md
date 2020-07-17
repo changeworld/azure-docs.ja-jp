@@ -1,25 +1,24 @@
 ---
-title: チュートリアル - URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する - Azure CLI
+title: チュートリアル:CLI を使用した URL パスベースのリダイレクト
+titleSuffix: Azure Application Gateway
 description: このチュートリアルでは、Azure CLI を使用して、URL パスベースでトラフィックがリダイレクトされるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e0b7995a8234ddb5927c4ef3e1ddd31fab9a00b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 87f6febaf89f82c2c81b397c94d744229b3f4b34
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996406"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239505"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure CLI を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 次に、Web トラフィックが適切なバックエンド プールにリダイレクトされるようにする URL ルーティング規則を作成します。
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure CLI を使用して [URL パス ベースのルーティング規則](tutorial-url-route-cli.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 次に、Web トラフィックが適切なバックエンド プールにリダイレクトされるようにする URL ルーティング規則を作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -39,9 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
@@ -72,7 +71,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
@@ -87,7 +88,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -285,7 +286,7 @@ done
 
 アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm`、`http://40.121.222.19:8080/video/test.htm`、`http://40.121.222.19:8081/images/test.htm` などです。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -295,7 +296,7 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-URL を http://&lt;ip-address&gt;:8080/images/test.html に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+URL を http://&lt;IP アドレス&gt;:8080/images/test.html に変更し、&lt;IP アドレス&gt; を使用している IP アドレスに置き換えると、次の例のように表示されるはずです。
 
 ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
@@ -305,14 +306,14 @@ URL を http://&lt;ip-address&gt;:8080/video/test.html に変更します。&lt;
 
 URL を http://&lt;ip-address&gt;:8081/images/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。トラフィックが http://&lt;ip-address&gt;:8080/images の images バックエンド プールにリダイレクトされるのがわかります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリケーション ゲートウェイでできることについてさらに学習する](application-gateway-introduction.md)

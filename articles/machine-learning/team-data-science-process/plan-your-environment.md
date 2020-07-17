@@ -3,20 +3,20 @@ title: シナリオを特定し分析プロセスを計画する - Team Data Sci
 description: 一連の重要な確認事項を考慮することにより、高度な分析データ処理のためのシナリオとプランを特定します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704484"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76710313"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 
@@ -30,8 +30,6 @@ ms.locfileid: "64704484"
 * データの特性
 * データセットの品質
 * 推奨されるツールと言語
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="logistic-questions-data-locations-and-movement"></a>ロジスティックの確認事項: データの場所と移動
 
@@ -68,7 +66,7 @@ ms.locfileid: "64704484"
 データをさまざまなストレージや処理環境に取り込んだり読み込んだりするために使用する手順とリソースについては、以下をご覧ください。
 
 * [分析用のストレージ環境にデータを読み込む](ingest-data.md)
-* [さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする](../studio/import-data.md)
+* [さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>データを定期的なスケジュールで移動したり移行中に変更したりする必要がありますか。
 
@@ -81,7 +79,7 @@ ms.locfileid: "64704484"
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>どのくらいの量のデータが Azure に移動されますか。
 
-非常に大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](sample-data.md)に関するページをご覧ください。
+大きいデータセットの場合、特定の環境のストレージ容量を超える可能性があります。 たとえば、次のセクションで、Machine Learning Studio (クラシック) のサイズ制限の説明を参照してください。 このような場合、分析中はデータのサンプルを使用できます。 さまざまな Azure 環境でデータセットをダウンサンプリングする方法の詳細については、 [Team Data Science Process のデータのサンプリング](sample-data.md)に関するページをご覧ください。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>データの特性の確認事項: 型、形式、およびサイズ
 
@@ -90,7 +88,7 @@ ms.locfileid: "64704484"
 ### <a name="what-are-the-data-types"></a>データ型とは
 
 * 数値
-* カテゴリ
+* Categorical
 * 文字列
 * Binary
 
@@ -104,14 +102,14 @@ ms.locfileid: "64704484"
 
 ### <a name="how-large-is-your-data"></a>データのサイズはどの程度か?
 
-* 小さい:2 GB 未満
-* 中程度:2 GB から 10 GB
-* 大きい:10 GB 超
+* 小さい: 2 GB 未満
+* 中程度: 2 GB から 10 GB
+* 大きい: 10 GB 超
 
-Azure Machine Learning 環境を例とします。
+たとえば Azure Machine Learning Studio (クラシック) 環境を使用します。
 
 * Azure Machine Learning Studio でサポートされているデータ形式および型の一覧については、「 [サポートされるデータ形式とデータ型](../studio/import-data.md#supported-data-formats-and-data-types) 」セクションを参照してください。
-* 分析プロセスで使用されるその他の Azure サービスの制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。
+* 分析プロセスで使用されるその他の Azure サービスの制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>データ品質の確認事項: 探索と前処理
 
@@ -160,7 +158,7 @@ Azure Machine Learning 環境を例とします。
 
 前のセクションの質問に答えたら、現在の状況に最適なシナリオを決定する準備が整います。 サンプル シナリオは、「 [Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ](plan-sample-scenarios.md)」に記載されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Team Data Science Process (TDSP) とは](overview.md)

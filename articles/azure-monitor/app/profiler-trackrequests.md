@@ -1,23 +1,17 @@
 ---
 title: Azure Application Insights を使用して要求を追跡するコードを記述する | Microsoft Docs
 description: 要求のプロファイルを取得できるように、Application Insights を使用して要求を追跡するコードを記述します。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882065"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671598"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Application Insights を使用して要求を追跡するコードを記述する
 
@@ -51,7 +45,7 @@ Azure Cloud Service の worker ロールや Service Fabric ステートレス AP
         }
         ```
 
-        別の `StartOperation<RequestTelemetry>` スコープ内で `StartOperation<RequestTelemetry>` を呼び出すことはサポートされていません。 代わりに、入れ子にしたスコープで `StartOperation<DependencyTelemetry>` を使用できます。 例:   
+        別の `StartOperation<RequestTelemetry>` スコープ内で `StartOperation<RequestTelemetry>` を呼び出すことはサポートされていません。 代わりに、入れ子にしたスコープで `StartOperation<DependencyTelemetry>` を使用できます。 次に例を示します。  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

@@ -1,27 +1,25 @@
 ---
-title: チュートリアル - Azure 内の Linux VM に Azure Security Center を使用する | Microsoft Docs
+title: チュートリアル - Azure で Linux VM に Azure Security Center を使用する
 description: このチュートリアルでは、Azure 内の Linux 仮想マシンをセキュリティで保護するために役立つ Azure Security Center の機能について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460105"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
@@ -49,7 +47,7 @@ Security Center の機能はデータを検出するだけではありません�
 
 VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 これには、データ収集をオンにすることが含まれます。これにより、ご利用のサブスクリプションのすべての VM に Microsoft Monitoring Agent が自動的にインストールされます。
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
+1. Security Center ダッシュボードで、 **[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
 2. **[データ収集]** の **[自動プロビジョニング]** で **[オン]** を選択します。
 3. **[既定のワークスペース構成]** を **[Security Center によって作成されたワークスペースを使用 (既定)]** のままにします。
 4. **[セキュリティ イベント]** で、既定のオプションの **[共通]** を保持します。
@@ -63,7 +61,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 サブスクリプション全体を対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
+1. Security Center ダッシュボードで、 **[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
 2. **[セキュリティ ポリシー]** ブレードで **[セキュリティ ポリシー]** を選択します。 
 3. **[セキュリティ ポリシー - セキュリティ ポリシー]** ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
 4. 設定の選択が完了したら、ブレードの上部にある **[保存]** を選択します。 
@@ -72,13 +70,13 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 ## <a name="view-vm-configuration-health"></a>VM の構成の正常性を表示する
 
-データ収集を有効にしてセキュリティ ポリシーを設定すると、Security Center によるアラートの生成と推奨事項の提示が開始されます。 VM をデプロイすると、データ収集エージェントがインストールされます。 その後、その新しい VM のデータが Security Center に収集されていきます。 VM の構成の正常性の詳細については、[Security Center での VM の保護](../../security-center/security-center-virtual-machine-recommendations.md)に関するページを参照してください。 
+データ収集を有効にしてセキュリティ ポリシーを設定すると、Security Center によるアラートの生成と推奨事項の提示が開始されます。 VM をデプロイすると、データ収集エージェントがインストールされます。 その後、その新しい VM のデータが Security Center に収集されていきます。 VM の構成の正常性の詳細については、[Security Center での VM の保護](../../security-center/security-center-virtual-machine-protection.md)に関するページを参照してください。 
 
 データが収集されると、各 VM のリソースの正常性および関連する Azure リソースの正常性が収集されます。 その情報が見やすいグラフの形で表示されます。 
 
 リソースの正常性を表示するには、次の手順に従います。
 
-1.  Security Center ダッシュボードの **[防止]** で、**[コンピューティング]** を選択します。 
+1.  Security Center ダッシュボードの **[防止]** で、 **[コンピューティング]** を選択します。 
 2.  **[コンピューティング]** ブレードで **[VM とコンピューター]** を選択します。 このビューでは、自分の VM すべてについて構成の状態の概要を確認できます。
 
 ![コンピューティングの正常性](./media/tutorial-azure-security/compute-health.png)
@@ -104,13 +102,13 @@ Security Center による構成データの収集が開始されると、設定�
 
 ## <a name="view-detected-threats"></a>検出された脅威を表示する
 
-Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md)」を参照してください。
+Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Security Center での脅威の検出方法](../../security-center/security-center-alerts-overview.md#detect-threats)」を参照してください。
 
 セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げるときは、**無料試用版**をご利用いただけます。 
 
 価格レベルを変更する方法は、次のとおりです。  
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。
+1. Security Center ダッシュボードで、 **[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。
 2. **[価格レベル]** を選択します。
 3. **[Standard]** を選択し、ブレードの上部にある **[保存]** をクリックします。
 
@@ -123,8 +121,8 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 
 ![RDP 攻撃](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データ収集を設定する
@@ -135,5 +133,5 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 次のチュートリアルに進み、Jenkins、GitHub、Docker を使った CI/CD パイプラインの作成について理解を深めてください。
 
 > [!div class="nextstepaction"]
-> [Jenkins、GitHub、Docker を使用した CI/CD インフラストラクチャの作成](tutorial-jenkins-github-docker-cicd.md)
+> [Jenkins、GitHub、Docker を使用した CI/CD インフラストラクチャの作成](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
 

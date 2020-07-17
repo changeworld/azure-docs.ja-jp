@@ -1,22 +1,21 @@
 ---
-title: Azure Database for PostgreSQL のサーバーをバックアップして復元する方法
-description: Azure CLI を使用して、Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法について説明します。
+title: バックアップと復元 - Azure CLI - Azure Database for PostgreSQL - Single Server
+description: Azure CLI を使用して、バックアップ構成を設定し、Azure Database for PostgreSQL-Single Server でサーバーを復元する方法を学習します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 10/25/2019
+ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349792"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74775706"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
-## <a name="backup-happens-automatically"></a>自動バックアップ
 Azure Database for PostgreSQL サーバーは、復元機能が有効になるように、バックアップが定期的に行われます。 この機能を使用して、新しいサーバー上で、サーバーとそのすべてのデータベースを過去の特定の時点に復元できます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -69,7 +68,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
 
-| Setting | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
@@ -80,9 +79,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 復元されたサーバーの場所と価格レベルの値は、元のサーバーと同じです。 
 
-復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。
+復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則はありません。 この新しいサーバー用のファイアウォール規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
 ## <a name="geo-restore"></a>geo リストア
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for PostgreSQL を使用できる任意のリージョンに作成できます。  
@@ -109,7 +108,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 `az postgres server georestore` コマンドには、次のパラメーターが必要です。
 
-| Setting | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |name | mydemoserver-georestored | 新しいサーバーの名前。 |
@@ -117,14 +116,13 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 |location | eastus | 新しいサーバーの場所。 |
 |sku-name| GP_Gen4_8 | このパラメーターは、新しいサーバーの価格レベル、コンピューティングの世代、および仮想コアの数を設定します。 GP_Gen4_8 は、8 つの仮想コアを備えた汎用 Gen 4 サーバーに対応します。|
 
+geo リストアで新しいサーバーを作成すると、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。 作成時にこれらの値を変更することはできません。 新しいサーバーを作成した後、ストレージ サイズをスケールアップすることはできます。
 
->[!Important]
->geo リストアで新しいサーバーを作成すると、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。 作成時にこれらの値を変更することはできません。 新しいサーバーを作成した後、ストレージ サイズをスケールアップすることはできます。
+復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。
+復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則はありません。 この新しいサーバー用のファイアウォール規則を個別に設定する必要があります。
-
-## <a name="next-steps"></a>次の手順
-- サービスの[バックアップ](concepts-backup.md)の詳細を確認します。
-- [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します。
+## <a name="next-steps"></a>次のステップ
+- サービスの[バックアップ](concepts-backup.md)の詳細について確認します
+- [レプリカ](concepts-read-replicas.md)について確認します
+- [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します

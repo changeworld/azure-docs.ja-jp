@@ -1,19 +1,15 @@
 ---
-title: Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
+title: VM、Cloud Services、および Web Apps での自動スケーリング
 description: Microsoft Azure での自動スケール。 Virtual Machines、Virtual Machine Scale Sets、Cloud Services、および Web Apps に適用されます。
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
+ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: robb
-ms.subservice: autoscale
-ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085645"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114140"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -91,7 +87,6 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 
 一方、垂直方向のスケーリングは、それとは異なります。 VM の数は同じままですが、VM の能力を強めたり ("アップ") 弱めたり ("ダウン") します。 能力は、メモリ、CPU 速度、ディスク領域などで計測します。垂直スケーリングには、より多くの制限があります。 これはハードウェアの規模によって左右されます。大規模なハードウェアは拡張の上限に達しやすく、リージョンによって違いが出ることもあります。 垂直スケーリングでは、多くの場合、VM の停止と再起動も必要になります。
 
-詳細については、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ## <a name="methods-of-access"></a>アクセスの方法
 以下を通じて、自動スケールを設定することができます。
@@ -102,7 +97,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>自動スケールでサポートされているサービス
-| Service | スキーマとドキュメント |
+| サービス | スキーマとドキュメント |
 | --- | --- |
 | Web Apps |[Web アプリのスケーリング](../../azure-monitor/platform/autoscale-get-started.md) |
 | Cloud Services |[クラウド サービスの自動スケール](../../cloud-services/cloud-services-how-to-scale-portal.md) |
@@ -112,7 +107,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 | Virtual Machines: Windows の例 |[VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | API Management サービス|[Azure API Management インスタンスを自動的にスケーリングする](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 自動スケールについてさらに学習するには、上の一覧にある自動スケールのチュートリアルを使用するか、以下のリソースを参照してください。
 
 * [Azure Monitor の自動スケールの一般的なメトリック](../../azure-monitor/platform/autoscale-common-metrics.md)

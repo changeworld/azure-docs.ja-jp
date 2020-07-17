@@ -1,28 +1,18 @@
 ---
-title: パフォーマンスの低下のトラブルシューティング - Azure App Service | Microsoft Docs
-description: この記事は、Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: パフォーマンスの低下をトラブルシューティングする
+description: アプリの動作の監視、データの収集、問題の軽減など、Azure App Service でのアプリパフォーマンスの低下に関する問題のトラブルシューティングの方法について説明します。
 tags: top-support-issue
 keywords: Web アプリのパフォーマンス、低速なアプリ、アプリが低速
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884224"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74688308"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -131,7 +121,7 @@ Web アプリケーションのソース コードにアクセスできる場合
 #### <a name="use-the-diagnostics-tool"></a>診断ツールの使用
 App Service には、アプリのトラブルシューティングに役立つ構成不要のインテリジェントな対話型のエクスペリエンスが用意されています。 アプリに問題が発生した場合、診断ツールは問題点を指摘し、その問題のトラブルシューティングをすばやく簡単に行って解決するための適切な情報へとユーザーをガイドします。
 
-App Service 診断にアクセスするには、[Azure Portal](https://portal.azure.com) の App Service アプリまたは App Service 環境に移動します。 左側のナビゲーションで、**[問題の診断と解決]** をクリックします。
+App Service 診断にアクセスするには、[Azure Portal](https://portal.azure.com) の App Service アプリまたは App Service 環境に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** をクリックします。
 
 #### <a name="use-the-kudu-debug-console"></a>Kudu デバッグ コンソールを使用する
 App Service には、ファイルのデバッグ、調査、アップロード用のデバッグ コンソールのほか、ご利用の環境についての情報を入手するための JSON エンドポイントが用意されています。 このコンソールは、アプリの "*Kudu コンソール*" または "*SCM ダッシュボード*" と呼ばれます。
@@ -151,11 +141,11 @@ Kudu で利用できる機能の詳細については、[知っておくべき A
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>手順 3.問題を緩和する
+### <a name="3-mitigate-the-issue"></a>3.問題を緩和する
 #### <a name="scale-the-app"></a>アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 
-スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](web-sites-scale.md)に関する記事を参照してください。
+スケーリングの詳細については、[Azure App Service でのアプリのスケーリング](manage-scale-up.md)に関する記事を参照してください。
 
 さらに、アプリケーションを複数のインスタンスで実行することもできます。 スケールアウトすると、処理能力が向上するだけでなく、ある程度のフォールト トレランスを確保することができます。 1 つのインスタンスでプロセスがダウンしても、他のインスタンスが要求の処理を続行します。
 

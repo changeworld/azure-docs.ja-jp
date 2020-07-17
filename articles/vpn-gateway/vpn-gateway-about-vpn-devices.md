@@ -1,18 +1,18 @@
 ---
-title: クロスプレミス Azure 接続の VPN デバイスについて | Microsoft Docs
+title: Azure VPN Gateway:接続用の VPN デバイスについて
 description: この記事では、S2S VPN Gateway クロスプレミス接続の VPN デバイスと IPsec パラメーターについて説明します。 構成の手順およびサンプルへのリンクが提供されています。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 30558300036974a765765fe0eb0181e2a8dc73ca
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508359"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235763"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -29,11 +29,7 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
   * 動的ルーティング = RouteBased
 * HighPerformance VPN ゲートウェイと RouteBased VPN ゲートウェイの仕様は、特に記載がない限り同じです。 たとえば、RouteBased VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、HighPerformance VPN ゲートウェイとも互換性があります。
 
-## <a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
-
-> [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。
->
+## <a name="validated-vpn-devices-and-device-configuration-guides"></a><a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
 
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、VPN ゲートウェイで動作します。 構成する VPN Gateway ソリューションの VPN の種類 (PolicyBased または RouteBased) については、[VPN ゲートウェイの設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)に関するページを参照してください。
 
@@ -41,18 +37,20 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 |**ベンダー名**          |**デバイス ファミリ**     |**OS の最小バージョン** |**PolicyBased の構成手順** |**RouteBased の構成手順** |
 | ---                | ---                  | ---                   | ---            | ---           |
-| A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |互換性なし  |[構成ガイド](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
-| Allied Telesis     |AR シリーズ VPN ルーター |AR-Series 5.4.7 以降               |近日対応予定     |[構成ガイド](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
-| Barracuda Networks, Inc. |Barracuda NextGen Firewall F シリーズ |PolicyBased:5.4.3<br>RouteBased:6.2.0 |[構成ガイド](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[構成ガイド](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
-| Barracuda Networks, Inc. |Barracuda NextGen Firewall X シリーズ |Barracuda Firewall 6.5 |[構成ガイド](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |互換性なし |
+| A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |互換性なし  |[構成ガイド](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
+| Allied Telesis     |AR シリーズ VPN ルーター |AR-Series 5.4.7 以降               | [構成ガイド](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[構成ガイド](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Barracuda Networks, Inc. |Barracuda CloudGen Firewall |PolicyBased:5.4.3<br>RouteBased:6.2.0 |[構成ガイド](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[構成ガイド](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
 | Check Point |セキュリティ ゲートウェイ |R80.10 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |サポートされています |[構成ガイド*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased:IOS 15.1<br>RouteBased:IOS 15.2 |サポートされています |サポートされています |
+| Cisco | CSR | RouteBased:IOS-XE 16.10 | (未テスト) | [構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased:IOS 15.0<br>RouteBased*:IOS 15.1 |サポートされています |サポートされています |
 | Cisco |Meraki |該当なし |互換性なし |互換性なし |
+| Cisco | vEdge (Viptela OS) | 18.4.0 (アクティブ/パッシブ モード)<br><br>19.2 (アクティブ/アクティブ モード) | 互換性なし |  [手動構成 (アクティブ/パッシブ)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onramp 構成 (アクティブ/アクティブ)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
 | F5 |BIG-IP シリーズ |12.0 |[構成ガイド](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成ガイド](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.6 |  |[構成ガイド](https://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
+| Fortinet |FortiGate |FortiOS 5.6 | (未テスト) |[構成ガイド](https://docs.fortinet.com/document/fortigate/5.6.0/cookbook/255100/ipsec-vpn-to-azure) |
+| Hillstone Networks | Next-Gen Firewalls (NGFW) | 5.5R7  | (未テスト) | [構成ガイド](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL シリーズ |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[構成ガイド](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |互換性なし |
 | Juniper |SRX |PolicyBased:JunOS 10.2<br>Routebased:JunOS 11.4 |サポートされています |[構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |J シリーズ |PolicyBased:JunOS 10.4r9<br>RouteBased:JunOS 11.4 |サポートされています |[構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
@@ -61,12 +59,15 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Juniper |MX |JunOS 12.x|サポートされています |[構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |ルーティングとリモート アクセス サービス |Windows Server 2012 |互換性なし |サポートされています |
 | Open Systems AG |Mission Control Security Gateway |該当なし |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |互換性なし |
-| Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased:6.1.5 以降<br>RouteBased:7.1.4 |[構成ガイド](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[構成ガイド](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased:6.1.5 以降<br>RouteBased:7.1.4 |サポートされています |[構成ガイド](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Sentrium (Developer) | VyOS | VyOS 1.2.2 | (未テスト) | [構成ガイド](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Next Generation UTM (NU シリーズ) | 9.0.1.3 | 互換性なし | [構成ガイド](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |互換性なし |[構成ガイド](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
-| Sophos | XG Next Gen Firewall | XG v17 | | [構成ガイド](https://community.sophos.com/kb/127546)<br><br>[構成ガイド - 複数 SA](https://community.sophos.com/kb/en-us/133154) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [BGP over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
+| Sophos | XG Next Gen Firewall | XG v17 | (未テスト) | [構成ガイド](https://community.sophos.com/kb/127546)<br><br>[構成ガイド - 複数 SA](https://community.sophos.com/kb/en-us/133154) |
+| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | (未テスト) | [構成ガイド](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 | (未テスト) | [BGP over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |All |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Zyxel |ZyWALL USG シリーズ<br>ZyWALL ATP シリーズ<br>ZyWALL VPN シリーズ | ZLD v4.32 以降 | (未テスト) | [VTI over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br><br>[BGP over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >
@@ -74,7 +75,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 >
 > (\*\*) ISR 7200 シリーズのルーターでは、PolicyBased の VPN のみがサポートされています。
 
-## <a name="configscripts"></a>Azure からの VPN デバイス構成スクリプトのダウンロード
+## <a name="download-vpn-device-configuration-scripts-from-azure"></a><a name="configscripts"></a>Azure からの VPN デバイス構成スクリプトのダウンロード
 
 特定のデバイスについて、Azure から直接構成スクリプトをダウンロードできます。 詳細およびダウンロードの方法については、[VPN デバイス構成スクリプトのダウンロード](vpn-gateway-download-vpndevicescript.md)に関するページをご覧ください。
 
@@ -82,11 +83,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="additionaldevices"></a>未検証の VPN デバイス
+## <a name="non-validated-vpn-devices"></a><a name="additionaldevices"></a>未検証の VPN デバイス
 
 検証済み VPN デバイスの表にお使いのデバイスが見つからない場合でも、そのデバイスをサイト間接続に利用できる可能性があります。 詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
 
-## <a name="editing"></a>デバイス構成のサンプルの編集
+## <a name="editing-device-configuration-samples"></a><a name="editing"></a>デバイス構成のサンプルの編集
 
 提供されている VPN デバイス構成のサンプルをダウンロードしたら、一部の値を使用している環境の設定を反映した値に置換する必要があります。
 
@@ -109,7 +110,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | &lt;SP_AzureGatewayIpAddress&gt; |この情報は仮想ネットワークに固有であり、 **ゲートウェイの IP アドレス**として管理ポータルに存在しています。 |
 | &lt;SP_PresharedKey&gt; |この情報は仮想ネットワークに固有であり、[キーの管理] として管理ポータルに存在しています。 |
 
-## <a name="ipsec"></a>IPsec/IKE パラメーター
+## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE パラメーター
 
 > [!IMPORTANT]
 > 1. 下の表には、Azure VPN ゲートウェイが既定の構成で使用するアルゴリズムとパラメーターの組み合わせが示されています。 Azure Resource Manager デプロイメント モデルで作成されたルートベースの VPN ゲートウェイでは、個別の接続ごとにカスタム ポリシーを指定できます。 詳細な手順については、[IPsec/IKE ポリシーの構成](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください。
@@ -127,25 +128,25 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 | **プロパティ**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
-| IKE のバージョン           |IKEv1              |IKEv2              |
+| IKE のバージョン           |IKEv1              |IKEv1 および IKEv2    |
 | Diffie-hellman グループ  |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
 | 認証方法 |事前共有キー     |事前共有キー     |
-| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>手順 3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
 | SA の有効期間           |28,800 秒     |28,800 秒     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE フェーズ 2 (クイック モード) のパラメーター
 
 | **プロパティ**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
-| IKE のバージョン                   |IKEv1          |IKEv2                                        |
-| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
-| SA の有効期間 (時間)            |3,600 秒  |27,000 秒                                |
+| IKE のバージョン                   |IKEv1          |IKEv1 および IKEv2                              |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| SA の有効期間 (時間)            |3,600 秒  |27,000 秒                               |
 | SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
-| Perfect Forward Secrecy (PFS) |いいえ              |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |
 
 
-### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec セキュリティ アソシエーション (IKE クイック モード SA) プラン
+### <a name="routebased-vpn-ipsec-security-association-ike-quick-mode-sa-offers"></a><a name ="RouteBasedOffers"></a>RouteBased VPN IPsec セキュリティ アソシエーション (IKE クイック モード SA) プラン
 
 以下の表は、IPsec SA (IKE クイック モード) プランの一覧です。 プランは提示される、または受け入れられる優先度順に表示されています。
 
@@ -194,7 +195,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 * RouteBased および HighPerformance VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。 Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。 クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 * インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-## <a name="known"></a>デバイスの互換性に関する既知の問題
+## <a name="known-device-compatibility-issues"></a><a name="known"></a>デバイスの互換性に関する既知の問題
 
 > [!IMPORTANT]
 > この内容は、サード パーティの VPN デバイスと Azure VPN ゲートウェイの互換性に関する既知の問題です。 Azure チームは、ここに記載されている問題に対処するためにベンダーと積極的に連携しています。 問題が解決されると、このページが最新の情報で更新されるため、 定期的に確認してください。

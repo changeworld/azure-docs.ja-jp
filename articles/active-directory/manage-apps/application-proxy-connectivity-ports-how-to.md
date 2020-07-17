@@ -1,5 +1,5 @@
 ---
-title: アプリケーション プロキシ アプリケーションに必要なファイアウォール ポートを開く方法 | Microsoft Docs
+title: アプリケーション プロキシ アプリに必須のファイアウォール ポートを開く方法
 description: Azure AD アプリケーション プロキシを正しく動作させるために開くポートを確認します
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e69f2e5049ca290a17c058c9d18dc7c6ec91f49
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783557"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74275543"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに必要なファイアウォール ポートを開く方法
 
@@ -37,7 +37,7 @@ ms.locfileid: "65783557"
 
 -   コネクタをインストールしたサーバーからブラウザーでツールを開く。
 
--   コネクタに適用されるプロキシまたはファイアウォールが、このページにも適用されるようにする。 これを設定するため、Internet Explorer で、**[設定]** -&gt; **[インターネット オプション]** -&gt; **[接続]** -&gt; **[LAN の設定]** の順に移動します。 このページに、[LAN にプロキシ サーバーを使用する] フィールドがあります。 このボックスをオンにし、[アドレス] フィールドにプロキシ アドレスを入力します。
+-   コネクタに適用されるプロキシまたはファイアウォールが、このページにも適用されるようにする。 これを行うには、Internet Explorer で、 **[設定]**  -&gt; **[インターネット オプション]**  -&gt; **[接続]**  -&gt; **[LAN の設定]** の順に移動します。 このページに、[LAN にプロキシ サーバーを使用する] フィールドがあります。 このボックスをオンにし、[アドレス] フィールドにプロキシ アドレスを入力します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)

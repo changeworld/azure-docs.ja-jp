@@ -1,21 +1,19 @@
 ---
-title: REST API を使用して Azure 仮想マシンの使用状況データを取得する | Microsoft Docs
+title: REST API を使用して Azure 仮想マシンの使用状況データを取得する
 description: Azure REST API を使用して、仮想マシンの使用率メトリックを収集します。
-services: virtual-machines
 author: rloutlaw
-ms.reviewer: routlaw
-manager: jeconnoc
-ms.service: load-balancer
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754848"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78944746"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
@@ -38,7 +36,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [ アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |  
+|*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |  
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
@@ -49,7 +47,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | vmname | Azure 仮想マシンの名前。 |
 | metricnames | 有効な[Load Balancer メトリック](/azure/load-balancer/load-balancer-standard-diagnostics)のコンマ区切りリスト。 |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2018-01-01` を使用し、上記の URL に含まれています。  |
-| timespan | 返されるメトリックの時間範囲を定義する次の形式の文字列: `startDateTime_ISO/endDateTime_ISO`。 この省略可能なパラメーターは、例では 1 日分のデータを返すように設定されています。 |
+| TimeSpan | 返されるメトリックの時間範囲を定義する次の形式の文字列: `startDateTime_ISO/endDateTime_ISO`。 この省略可能なパラメーターは、例では 1 日分のデータを返すように設定されています。 |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>要求本文

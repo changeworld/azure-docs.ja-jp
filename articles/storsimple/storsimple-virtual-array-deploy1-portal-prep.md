@@ -1,31 +1,28 @@
 ---
-title: StorSimple Virtual Array のポータルの準備 | Microsoft Docs
+title: StorSimple Virtual Array のポータルの準備
 description: StorSimple Virtual Array をデプロイする最初のチュートリアルでは、Azure Portal の準備を行います。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/11/2019
+ms.topic: conceptual
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228103"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+
+
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 これは、Resource Manager モデルを使用して、仮想アレイを、ファイル サーバーまたは iSCSI サーバーとして完全にデプロイするためのチュートリアル シリーズの最初の記事で、 仮想アレイをプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成するために必要な準備について説明します。 デプロイ構成チェックリストや構成の前提条件へのリンクも記載しています。
 
@@ -33,7 +30,7 @@ ms.locfileid: "58088708"
 
 この記事に記載されている情報は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
-### <a name="get-started"></a>作業開始
+### <a name="get-started"></a>はじめに
 デプロイのワークフローは、ポータルの準備、仮想化環境内への仮想アレイのプロビジョニング、セットアップ ウィザードの完了という構成になっています。 ファイル サーバーまたは iSCSI サーバーとして StorSimple Virtual Array をデプロイする作業を開始するには、次の表のリソースを参照してください。
 
 #### <a name="deployment-articles"></a>デプロイに関する記事
@@ -44,7 +41,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 | --- | --- | --- | --- |
 | 1. |**Azure Portal のセットアップ** |StorSimple Virtual Array をプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成します。 |[ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md) |
 | 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 手順 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 これで、Azure Portal をセットアップする準備が整いました。
 
@@ -90,9 +87,9 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 次の手順を順番に実行すると、StorSimple デバイス マネージャー サービス用のポータルを準備できます。
 
-## <a name="step-1-create-a-new-service"></a>手順 1:新しいサービスの作成
+## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
 
-StorSimple デバイス マネージャー サービスの 1 つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key)」をご覧ください。
+StorSimple デバイス マネージャー サービスの 1 つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -100,11 +97,11 @@ StorSimple デバイス マネージャー サービスの 1 つのインスタ�
 > サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。
 > 
 > * ストレージ アカウントを自動的に作成していない場合は、「 [サービスの新しいストレージ アカウントを構成する](#optional-step-configure-a-new-storage-account-for-the-service) 」に移動して詳細な手順をご確認ください。
-> * ストレージ アカウントの自動作成を有効にしている場合は、「 [手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key)」をご覧ください。
+> * ストレージ アカウントの自動作成を有効にしている場合は、「 [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>手順 2:サービス登録キーを取得する
+## <a name="step-2-get-the-service-registration-key"></a>手順 2. サービス登録キーを取得する
 
 StorSimple デバイス マネージャー サービスが稼働したら、サービス登録キーを取得する必要があります。 このキーを使用して StorSimple デバイスを登録し、サービスに接続します。
 
@@ -117,7 +114,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>手順 3:仮想アレイのイメージをダウンロードする
+## <a name="step-3-download-the-virtual-array-image"></a>手順 3: 仮想アレイのイメージをダウンロードする
 
 サービス登録キーを取得したら、ホスト システムで仮想アレイをプロビジョニングするために、適切な仮想アレイのイメージをダウンロードする必要があります。 仮想アレイのイメージはオペレーティング システムに固有で、Azure Portal の [クイック スタート] ページからダウンロードできます。
 
@@ -130,8 +127,8 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 
 #### <a name="to-get-the-virtual-array-image"></a>仮想アレイのイメージを取得するには
 
-1. [Azure Portal](https://portal.azure.com/)にサインインします。 
-2. Azure Portal で、**[参照] > [StorSimple デバイス マネージャー]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 
+2. Azure Portal で、 **[参照] > [StorSimple デバイス マネージャー]** の順にクリックします。
 3. 既存の StorSimple デバイス マネージャー サービスを選択します。 **[StorSimple デバイス マネージャー]** ブレードで **[クイック スタート]** をクリックします。 
 4. Microsoft ダウンロード センターからダウンロードするイメージに対応するリンクをクリックします。 イメージ ファイルは約 4.8 GB です。
    
@@ -140,11 +137,11 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
    * VMWare ESXi 5.0、5.5、6.0、または 6.5 用 VMDK
 5. ファイルをローカル ドライブにダウンロードして解凍し、解凍したファイルの場所をメモしておきます。
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>省略可能な手順:サービスの新しいストレージ アカウントを構成する
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>省略可能な手順: サービスの新しいストレージ アカウントを構成する
 
 この手順は省略可能で、サービスでストレージ アカウントの自動作成を有効にしていない場合にのみ実行する必要があります。
 
-別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-quickstart-create-account.md)に関するセクションをご覧ください。
+別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)に関するセクションをご覧ください。
 
 既存の Microsoft Azure ストレージ アカウントを追加するには、[Azure Portal](https://ms.portal.azure.com/) の [StorSimple Device Manager service (StorSimple デバイス マネージャー サービス)] ページで、次の手順を実行します。
 

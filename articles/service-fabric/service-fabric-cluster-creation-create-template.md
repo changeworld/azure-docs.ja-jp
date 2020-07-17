@@ -1,31 +1,20 @@
 ---
-title: Azure Service Fabric クラスター テンプレートの作成 | Microsoft Docs
+title: Azure Service Fabric クラスター テンプレートを作成する
 description: Service Fabric クラスター用の Resource Manager テンプレートの作成方法について説明します。 セキュリティ、Azure Key Vault、および Azure Active Directory (Azure AD) をクライアント認証のために構成します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046186"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80985373"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
 
 [Azure Service Fabric クラスター](service-fabric-deploy-anywhere.md)はネットワークで接続された一連の仮想マシンです。マイクロサービスは Service Fabric クラスターにデプロイされ、そこで管理されます。 Azure で動作する Service Fabric クラスターは Azure リソースであり、Resource Manager を使用してデプロイ、管理、および監視されます。  この記事では、Azure で動作する Service Fabric クラスター用の Resource Manager テンプレートの作成方法について説明します。  テンプレートが完成したら、[クラスターを Azure にデプロイ](service-fabric-cluster-creation-via-arm.md)できます。
 
-クラスター セキュリティはクラスターの初回セットアップ時に構成され、後からの変更はできません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳細については、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」\(クライアントを認証するための Azure AD のセットアップ\)をお読みください。
+クラスター セキュリティはクラスターの初回セットアップ時に構成され、後からの変更はできません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
 
 運用環境のワークロードを実行するための運用環境クラスターをデプロイする前に、必ず「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」を最初にお読みください。
 
@@ -95,7 +84,7 @@ ms.locfileid: "59046186"
       "extensionProfile": {
         "extensions": [
           {
-            "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+            "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType0Name'))]",
             "properties": {
               ...
               "settings": {
@@ -146,7 +135,7 @@ ms.locfileid: "59046186"
 Azure AD 構成は、証明書キーを含む Key Vault を参照することによって、Cluster Resource Manager テンプレートに追加されます。 Resource Manager テンプレート パラメーター ファイル (*azuredeploy.parameters.json*) にこれらの Azure AD パラメーターと値を追加します。 
 
 > [!NOTE]
-> Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
+> Linux 上では、Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
 
 ```json
 {
@@ -258,7 +247,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 
 ![Resource Manager の依存関係マップ][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラスター用のテンプレートが完成したので、[クラスターを Azure にデプロイ](service-fabric-cluster-creation-via-arm.md)する方法を学びます。  「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」をまだお読みでない場合は、 運用環境クラスターをデプロイする前にお読みください。
 
 この記事でデプロイしたリソースの JSON 構文およびプロパティについては、次をご覧ください。

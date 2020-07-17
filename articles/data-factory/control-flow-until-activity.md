@@ -1,25 +1,26 @@
 ---
-title: Azure Data Factory の Until アクティビティ | Microsoft Docs
+title: Azure Data Factory の Until アクティビティ
 description: Until アクティビティでは、関連付けられている条件が true に評価されるか、アクティビティがタイムアウトになるまで、一連のアクティビティがループ実行されます。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66155175"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81417948"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory の Until アクティビティ
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Until アクティビティは、プログラミング言語における do-until ループ構文と同じ働きを持ちます。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。 
 
 ## <a name="syntax"></a>構文
@@ -57,7 +58,7 @@ Until アクティビティは、プログラミング言語における do-unti
 name | `Until` アクティビティの名前。 | String | はい
 type | **Until** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 式。  | はい
-timeout | ここに指定した時間が経過すると、do-until ループがタイムアウトします。 | 文字列 をオンにします。 `d.hh:mm:ss` または `hh:mm:ss`。 既定値は 7 日間です。 最大値は 90 日間です。 | いいえ 
+timeout | ここに指定した時間が経過すると、do-until ループがタイムアウトします。 | 文字列 をオンにします。 `d.hh:mm:ss` または `hh:mm:ss`。 既定値は 7 日間です。 最大値は 90 日間です。 | いいえ
 Activities | 式が `true` に評価されるまで実行される一連のアクティビティです。 | アクティビティの配列。 |  はい
 
 ## <a name="example-1"></a>例 1
@@ -66,7 +67,7 @@ Activities | 式が `true` に評価されるまで実行される一連のア�
 > このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-until-activity"></a>Until アクティビティのあるパイプライン
-この例では、パイプラインに 2 つのアクティビティ **Until** および **Wait** が含まれています。 Web アクティビティをループ実行する前に、指定した待ち時間が Wait アクティビティによって確保されます。 Data Factory における式と関数については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
+この例では、パイプラインに **Until** および **Wait** という 2 つのアクティビティが含まれています。 Web アクティビティをループ実行する前に、指定した待ち時間が Wait アクティビティによって確保されます。 Data Factory における式と関数については、[式言語と関数](control-flow-expression-language-functions.md)に関するページを参照してください。 
 
 ```json
 {
@@ -200,10 +201,7 @@ Activities | 式が `true` に評価されるまで実行される一連のア�
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -289,12 +287,12 @@ while ($True) {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)

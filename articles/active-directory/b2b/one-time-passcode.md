@@ -1,23 +1,23 @@
 ---
-title: B2B ゲスト ユーザーのワンタイム パスコード認証 - Azure Active Directory | Microsoft Docs
+title: B2B ゲスト ユーザーのワンタイム パスコード認証 - Azure AD
 description: 電子メール ワンタイム パスコードを使用して、Microsoft アカウントを必要とせずに B2B ゲスト ユーザーを認証する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b817346c37ec43fd66d166684f5d51ecb5a9718
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799441"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585923"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>電子メール ワンタイム パスコード認証 (プレビュー)
 
@@ -34,7 +34,7 @@ ms.locfileid: "59799441"
 > ワンタイム パスコードのユーザーは、テナントのコンテキストを含むリンクを使用してサインインする必要があります (たとえば、`https://myapps.microsoft.com/?tenantid=<tenant id>` や `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`)。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
-ワンタイム パスコード認証では、ゲスト ユーザーは、直接リンクをクリックするか、招待メールを使用して、招待に応じることができます。 どちらの場合も、ブラウザーのメッセージで、ゲスト ユーザーのメール アドレスにコードが送信されることが示されます。 ゲスト ユーザーは、**[コードの送信]** を選択します。
+ワンタイム パスコード認証では、ゲスト ユーザーは、直接リンクをクリックするか、招待メールを使用して、招待に応じることができます。 どちらの場合も、ブラウザーのメッセージで、ゲスト ユーザーのメール アドレスにコードが送信されることが示されます。 ゲスト ユーザーは、 **[コードの送信]** を選択します。
  
    ![[コードの送信] ボタンを示すスクリーンショット](media/one-time-passcode/otp-send-code.png)
  
@@ -56,7 +56,7 @@ ms.locfileid: "59799441"
 
 招待するとき、招待されるユーザーにワンタイム パスコード認証が使用されることは示されません。 ただし、ゲスト ユーザーがサインインするとき、他の認証方法を使用できない場合は、ワンタイム パスコード認証がフォールバック メソッドになります。 
 
-Azure portal の **[Azure Active Directory]** > **[組織の関係]** > **[他の組織からのユーザー]** で、ワンタイム パスコードを使用して認証しているゲスト ユーザーを確認できます。
+Azure portal の **[Azure Active Directory]**  >  **[ユーザー]** で、ワンタイム パスコードを使用して認証しているゲスト ユーザーを確認できます。
 
 ![[Source]\(ソース\) の値が OTP のワンタイム パスワード ユーザーを示すスクリーンショット](media/one-time-passcode/otp-users.png)
 
@@ -64,17 +64,16 @@ Azure portal の **[Azure Active Directory]** > **[組織の関係]** > **[他�
 > ユーザーがワンタイム パスコードを使用した後、MSA、Azure AD アカウント、または他のフェデレーション アカウントを取得した場合、引き続きワンタイム パスコードによる認証が使用されます。 認証方法を更新する場合は、ゲスト ユーザー アカウントを削除して、招待し直すことができます。
 
 ### <a name="example"></a>例
-ゲスト ユーザー alexdoe@gmail.com は、Google フェデレーションが設定されていない Fabrikam に招待されます。 Alex は Microsoft アカウントを持っていません。 彼は認証用のワンタイム パスコードを受け取ります。
+ゲスト ユーザー alexdoe@gmail.com は、Google フェデレーションが設定されていない Fabrikam に招待されます。 Alex は Microsoft アカウントを持っていません。 認証用のワンタイム パスコードを受け取ります。
 
 ## <a name="opting-in-to-the-preview"></a>プレビューにオプトインする 
 オプトイン アクションが有効になるまで、数分かかる場合があります。 その後は、上記の条件を満たす新しく招待されたユーザーだけが、ワンタイム パスコード認証を使用します。 以前に招待に応じたゲスト ユーザーは引き続き、同じ認証方法を使用します。
 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してオプトインするには
 1.  Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
-2.  ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
-3.  **[管理]** で **[組織の関係]** を選択します。
-4.  **[設定]** を選択します。
-5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、**[はい]** を選択します。
+2.  ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
+3.  **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
+5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、 **[はい]** を選択します。
  
 ### <a name="to-opt-in-using-powershell"></a>PowerShell を使用してオプトインするには
 
@@ -138,10 +137,9 @@ $currentpolicy -ne $null
 
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してプレビューをオフにするには
 1.  Azure AD の全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
-2.  ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
-3.  **[管理]** で **[組織の関係]** を選択します。
-4.  **[設定]** を選択します。
-5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、**[いいえ]** を選択します。
+2.  ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
+3.  **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
+5.  **[ゲストの電子メール ワンタイム パスコードを有効にする (プレビュー)]** で、 **[いいえ]** を選択します。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell を使用してプレビューをオフにするには
 まだ行っていない場合は、最新の AzureADPreview モジュールをインストールします (前の「[前提条件:最新の AzureADPreview モジュールをインストールする](#prerequisite-install-the-latest-azureadpreview-module)」を参照してください)。 次に、以下を実行して、ワンタイム パスコード プレビュー ポリシーが現在存在するかどうかを確認します。

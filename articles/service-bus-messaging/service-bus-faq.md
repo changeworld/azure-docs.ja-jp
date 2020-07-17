@@ -1,22 +1,22 @@
 ---
 title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
-description: Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答を紹介します。
+description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 services: service-bus-messaging
 author: axisc
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046089"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76760251"
 ---
-# <a name="service-bus-faq"></a>Service Bus に関する FAQ
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
 この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。
 
@@ -42,6 +42,48 @@ ms.locfileid: "59046089"
 
  パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
 
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
+Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
+
+- Advanced Message Queuing Protocol (AMQP)
+- Service Bus メッセージング プロトコル (SBMP)
+- HTTP
+
+これらのプロトコルを使用して Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
+
+| Protocol | Port | 詳細 | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
+| SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet)」 (接続モード) を参照してください。 |
+| HTTP、HTTPS | 80、443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイトリストに登録する必要がありますか。
+接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
+
+1. コマンド プロンプトで、次のコマンドを実行します。 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
+
+名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
+
+1. まず、名前空間に対して nslookup を実行します。
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
+
+
 ## <a name="best-practices"></a>ベスト プラクティス
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus のベスト プラクティスを教えてください。
 「[Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス][Best practices for performance improvements using Service Bus]」を参照してください。この記事では、メッセージを交換するときのパフォーマンスを最適化する方法について説明します。
@@ -49,7 +91,7 @@ ms.locfileid: "59046089"
 ### <a name="what-should-i-know-before-creating-entities"></a>エンティティを作成する前に知っておく必要があることは何ですか。
 キューとトピックの次のプロパティは変更できません。 エンティティをプロビジョニングするときはこの制限を考慮してください。代替の新しいエンティティを作成しない限り、これらのプロパティは変更できません。
 
-* パーティション分割
+* [パーティション分割]
 * セッション
 * 重複検出
 * Express エンティティ
@@ -69,6 +111,13 @@ Service Bus の価格の詳細については、 [Service Bus の価格の詳細
 
 ### <a name="does-service-bus-charge-for-storage"></a>Service Bus ではストレージに対して課金されますか
 いいえ、Service Bus ではストレージに対して課金されません。 ただし、キューまたはトピックごとに保持できる最大データ量を制限するクォータはあります。 次の FAQ を参照してください。
+
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus Standard 名前空間があります。 リソースグループ ' $system ' に料金がされるのはなぜですか?
+Azure Service Bus は最近、課金コンポーネントをアップグレードしました。 このため、Service Bus Standard 名前空間がある場合は、リソース グループ ' $system ' の下に、リソース'/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system' の明細項目が表示されることがあります。
+
+これらの料金は、Service Bus Standard 名前空間をプロビジョニングした Azure サブスクリプションごとの基本料金を表します。 
+
+これらは新しい料金ではなく、以前の課金モデルにも存在していたことに注意する必要があります。 唯一の変更は、'$system' の下に一覧表示されるようになったことです。 これは、新しい課金システムの制約によって行われています。この制約により、特定のリソースに関連付けられていないサブスクリプション レベルの料金が "$system" リソース ID でグループ化されます。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 
@@ -92,7 +141,7 @@ Service Bus メッセージング サービス (キューおよびトピック/�
 Service Bus で可能性のある例外の一覧については、「[例外の概要][Exceptions overview]」をご覧ください。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Shared Access Signature とは何ですか。どの言語で署名の生成がサポートされますか。
-Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Java、および C\# で独自の署名を生成する方法については、[Shared Access Signature][Shared Access Signatures] に関する記事を参照してください。
+Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Java、Python、C# で独自の署名を生成する方法については、[Shared Access Signature][Shared Access Signatures] に関する記事を参照してください。
 
 ## <a name="subscription-and-namespace-management"></a>サブスクリプションと名前空間の管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>別の Azure サブスクリプションに名前空間を移行する方法を教えてください
@@ -101,7 +150,7 @@ Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に
 
 #### <a name="portal"></a>ポータル
 
-Azure Portal を使用して Service Bus 名前空間を別のサブスクリプションに移行するには、[こちら](../azure-resource-manager/resource-group-move-resources.md#use-portal)の説明に従ってください。 
+Azure Portal を使用して Service Bus 名前空間を別のサブスクリプションに移行するには、[こちら](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)の説明に従ってください。 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -118,7 +167,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Bus の詳細については、次の記事をご覧ください。
 
 * [Azure Service Bus Premium の概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

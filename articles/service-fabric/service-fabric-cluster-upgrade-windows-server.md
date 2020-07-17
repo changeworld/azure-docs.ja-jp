@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric スタンドアロン クラスターのバージョンをアップグレードする | Microsoft Docs
+title: スタンドアロン クラスターのバージョンをアップグレードする
 description: スタンドアロンの Service Fabric クラスターを実行する Azure Service Fabric コードをアップグレードします。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 29d034be5999d0bc3f0a244cfa7a5658a4ecce32
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661464"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793144"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>クラスターで実行される Service Fabric のバージョンをアップグレードする 
 
@@ -148,7 +139,7 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
     Register-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file>
 
     ###### Here is a filled-out example
-    Register-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab
+    Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
     ```
 6. 利用可能なバージョンへのクラスターのアップグレードを開始します。
 
@@ -168,10 +159,10 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
     ロールバックの原因となった問題を解決したら、前述の手順に従って、もう一度アップグレードを開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [スタンドアロン クラスターの構成をアップグレードする](service-fabric-cluster-config-upgrade-windows-server.md)
 * 一部の [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)をカスタマイズします。
-* [クラスターのスケールインとスケールアウト](service-fabric-cluster-scale-up-down.md)
+* [クラスターのスケールインとスケールアウト](service-fabric-cluster-scale-in-out.md)
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

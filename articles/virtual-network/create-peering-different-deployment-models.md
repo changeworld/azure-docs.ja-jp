@@ -14,24 +14,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2018
-ms.author: kumud;anavin
-ms.openlocfilehash: 56474ee56051c3b0b7482e81b0174b7945537654
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: kumud
+ms.reviewer: anavin
+ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694707"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77023261"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション
 
 このチュートリアルでは、異なるデプロイメント モデルで作成された仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法について説明します。 どちらの仮想ネットワークも同じサブスクリプションに存在する必要があります。 2 つの仮想ネットワークをピアリングすると、別々の仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような帯域幅と待ち時間で相互に通信を行うことができます。 詳しくは、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」をご覧ください。
 
-仮想ネットワーク ピアリングを作成する手順は、サブスクリプションが同じか異なるか、また、どの[Azure デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使用して仮想ネットワークが作成されているかによって異なります。 他のシナリオで仮想ネットワークを作成する方法については、次の表で目的のシナリオをクリックしてください。
+仮想ネットワーク ピアリングを作成する手順は、サブスクリプションが同じか異なるか、また、どの[Azure デプロイメント モデル](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使用して仮想ネットワークが作成されているかによって異なります。 他のシナリオで仮想ネットワークを作成する方法については、次の表で目的のシナリオをクリックしてください。
 
 |Azure デプロイメント モデル  | Azure サブスクリプション  |
 |--------- |---------|
 |[両方とも Resource Manager](tutorial-connect-virtual-networks-portal.md) |同じ|
-|[両方が Resource Manager](create-peering-different-subscriptions.md) |異なる|
+|[両方とも Resource Manager](create-peering-different-subscriptions.md) |異なる|
 |[一方が Resource Manager、もう一方がクラシック](create-peering-different-deployment-models-subscriptions.md) |異なる|
 
 クラシック デプロイ モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイ モデルで作成された仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。
@@ -42,44 +43,44 @@ ms.locfileid: "64694707"
 
 ## <a name="create-peering---azure-portal"></a>ピアリングの作成 - Azure Portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 サインインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
-2. **[+ 新規]**、**[ネットワーキング]**、**[仮想ネットワーク]** の順にクリックします。
-3. **[仮想ネットワークの作成]** ブレードで、次の設定の値を入力するか選択し、**[作成]** をクリックします。
-    - **[名前]**: *myVnet1*
-    - **[アドレス空間]**: *10.0.0.0/16*
-    - **[サブネット名]**: "*既定値*"
-    - **[サブネットのアドレス範囲]**: *10.0.0.0/24*
+1. [Azure portal](https://portal.azure.com) にサインインします。 サインインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
+2. **[+ 新規]** 、 **[ネットワーキング]** 、 **[仮想ネットワーク]** の順にクリックします。
+3. **[仮想ネットワークの作成]** ブレードで、次の設定の値を入力するか選択し、 **[作成]** をクリックします。
+    - **[名前]** : *myVnet1*
+    - **[アドレス空間]** : *10.0.0.0/16*
+    - **[サブネット名]** : "*既定値*"
+    - **[サブネットのアドレス範囲]** : *10.0.0.0/24*
     - **サブスクリプション**:サブスクリプションを選択します。
-    - **[リソース グループ]**:**[新規作成]** を選択し、「*myResourceGroup*」と入力します
-    - **[場所]**:*米国東部*
+    - **[リソース グループ]** : **[新規作成]** を選択し、「*myResourceGroup*」と入力します
+    - **[場所]** :*米国東部*
 4. **[+ 新規]** をクリックします。 **[Marketplace を検索]** ボックスに「*仮想ネットワーク*」と入力します。 検索結果に **[仮想ネットワーク]** が表示されたら、それをクリックします。
-5. **[仮想ネットワーク]** ブレードの **[デプロイ モデルの選択]** ボックスで、**[クラシック]** を選択し、**[作成]** をクリックします。
-6. **[仮想ネットワークの作成]** ブレードで、次の設定の値を入力するか選択し、**[作成]** をクリックします。
-    - **[名前]**: *myVnet2*
-    - **[アドレス空間]**: *10.1.0.0/16*
-    - **[サブネット名]**: "*既定値*"
-    - **[サブネットのアドレス範囲]**: *10.1.0.0/24*
+5. **[仮想ネットワーク]** ブレードの **[デプロイ モデルの選択]** ボックスで、 **[クラシック]** を選択し、 **[作成]** をクリックします。
+6. **[仮想ネットワークの作成]** ブレードで、次の設定の値を入力するか選択し、 **[作成]** をクリックします。
+    - **[名前]** : *myVnet2*
+    - **[アドレス空間]** : *10.1.0.0/16*
+    - **[サブネット名]** : "*既定値*"
+    - **[サブネットのアドレス範囲]** : *10.1.0.0/24*
     - **サブスクリプション**:サブスクリプションを選択します。
-    - **[リソース グループ]**:**[既存のものを使用]** を選択し、*[myResourceGroup]* を選択します。
-    - **[場所]**:*米国東部*
+    - **[リソース グループ]** : **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。
+    - **[場所]** :*米国東部*
 7. ポータル上部の **[リソースの検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **myResourceGroup** が表示されたら、それをクリックします。 **myresourcegroup** リソース グループのブレードが表示されます。 このリソース グループには、先ほどの手順で作成した 2 つの仮想ネットワークが存在します。
 8. **[myVNet1]** をクリックします。
 9. 表示された **[myVnet1]** ブレードの左側にある縦長のオプション一覧で **[ピアリング]** をクリックします。
 10. 表示された **[myVnet1 - ピアリング]** ブレードで **[+ 追加]** をクリックします。
-11. 表示された **[ピアリングの追加]** ブレードで次のオプションを入力または選択し、**[OK]** をクリックします。
-     - **[名前]**: *myVnet1ToMyVnet2*
+11. 表示された **[ピアリングの追加]** ブレードで次のオプションを入力または選択し、 **[OK]** をクリックします。
+     - **[名前]** : *myVnet1ToMyVnet2*
      - **仮想ネットワークのデプロイ モデル**: **[クラシック]** を選択します。
      - **サブスクリプション**:サブスクリプションを選択します。
-     - **仮想ネットワーク**:**[仮想ネットワークの選択]** をクリックし、**[myVnet2]** をクリックします。
-     - **[仮想ネットワーク アクセスを許可する]**: **[有効]** が選択されていることを確認します。
+     - **仮想ネットワーク**: **[仮想ネットワークの選択]** をクリックし、 **[myVnet2]** をクリックします。
+     - **[仮想ネットワーク アクセスを許可する]** : **[有効]** が選択されていることを確認します。
     その他の設定は、このチュートリアルでは使用しません。 すべてのピアリング設定については、[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md#create-a-peering)に関するページを参照してください。
-12. 前の手順で **[OK]** をクリックすると、**[ピアリングの追加]** ブレードが閉じて、**[myVnet1 - ピアリング]** ブレードが再度表示されます。 数秒後、作成したピアリングがブレードに表示されます。 作成した **myVnet1ToMyVnet2** ピアリングの **[ピアリング状態]** 列に **[接続済み]** と表示されます。
+12. 前の手順で **[OK]** をクリックすると、 **[ピアリングの追加]** ブレードが閉じて、 **[myVnet1 - ピアリング]** ブレードが再度表示されます。 数秒後、作成したピアリングがブレードに表示されます。 作成した **myVnet1ToMyVnet2** ピアリングの **[ピアリング状態]** 列に **[接続済み]** と表示されます。
 
     これでピアリングが確立されました。 2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
-13. **省略可能**: このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
-14. **省略可能**: このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」セクションの手順を実行してください。
+13. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
+14. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」セクションの手順を実行してください。
 
-## <a name="cli"></a>ピアリングの作成 - Azure CLI
+## <a name="create-peering---azure-cli"></a><a name="cli"></a>ピアリングの作成 - Azure CLI
 
 Azure クラシック CLI と Azure CLI を使用して、次の手順を完了します。 次の手順のいずれかで **[試してみる]** ボタンを選択するだけで、または[クラシック CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) と [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールし、ローカル コンピューター上のコマンドを実行すると、Azure Cloud Shell からの手順を行うことができます。
 
@@ -136,13 +137,13 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
      --output table
    ```
 
-   **PeeringState** 列に **Connected** と出力されます。
+   出力の **PeeringState** 列に **Connected** と表示されます。
 
    2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
-7. **省略可能**: このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
-8. **省略可能**: このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
+7. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
+8. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
 
-## <a name="powershell"></a>ピアリングの作成 - PowerShell
+## <a name="create-peering---powershell"></a><a name="powershell"></a>ピアリングの作成 - PowerShell
 
 1. PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) および [Az](https://www.powershellgallery.com/packages/Az/) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 2. PowerShell セッションを開始します。
@@ -202,20 +203,20 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
 
     2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 
-9. **省略可能**: このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
-10. **省略可能**: このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-powershell)」の手順を実行してください。
+9. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
+10. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-powershell)」の手順を実行してください。
 
-## <a name="delete"></a>リソースの削除
+## <a name="delete-resources"></a><a name="delete"></a>リソースの削除
 
 このチュートリアルが完了したら、使用料がかからないように、チュートリアルで作成したリソースを削除することをお勧めします。 リソース グループを削除すると、リソース グループ内にあるリソースもすべて削除されます。
 
-### <a name="delete-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
-1. ポータルの検索ボックスに、「**myResourceGroup**」と入力します。 検索結果で、**[myResourceGroup]** をクリックします。
+1. ポータルの検索ボックスに、「**myResourceGroup**」と入力します。 検索結果で、 **[myResourceGroup]** をクリックします。
 2. **myResourceGroup** ブレードで **[削除]** アイコンをクリックします。
-3. 削除を確定するには、**[リソース グループ名を入力してください]** ボックスに「**myResourceGroup**」と入力し、**[削除]** をクリックします。
+3. 削除を確定するには、 **[リソース グループ名を入力してください]** ボックスに「**myResourceGroup**」と入力し、 **[削除]** をクリックします。
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. 次のコマンドで、Azure CLI を使用して仮想ネットワーク (Resource Manager) を削除します。
 
@@ -231,7 +232,7 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
     azure network vnet delete --vnet myVnet2 --quiet
     ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. 次のコマンドを入力して、仮想ネットワーク (Resource Manager) を削除します。
 
@@ -255,10 +256,10 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
     ```
 
     > [!WARNING]
-    > 変更したネットワーク構成ファイルをインポートすると、ご使用のサブスクリプションの既存の仮想ネットワーク (クラシック) が変更される可能性があります。 前の仮想ネットワークのみを削除し、サブスクリプションの他の既存の仮想ネットワークは変更または削除しないようにしてください。
+    > 変更したネットワーク構成ファイルをインポートすると、サブスクリプションの既存の仮想ネットワーク (クラシック) が変更される可能性があります。 前の仮想ネットワークのみを削除し、サブスクリプションの他の既存の仮想ネットワークは変更または削除しないようにしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 運用環境で使用する仮想ネットワーク ピアリングを作成する前に、[仮想ネットワーク ピアリングの制約と動作](virtual-network-manage-peering.md#requirements-and-constraints)の要点をしっかりと理解します。
 - [仮想ネットワーク ピアリングのさまざまな設定](virtual-network-manage-peering.md#create-a-peering)について理解を深めます。
-- 仮想ネットワーク ピアリングで[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)する方法を学習します。
+- 仮想ネットワーク ピアリングで[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)する方法を学習します。

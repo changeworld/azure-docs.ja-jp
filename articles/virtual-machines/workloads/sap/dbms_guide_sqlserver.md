@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881088"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645805"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -78,8 +77,8 @@ ms.locfileid: "58881088"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide_general.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +235,7 @@ ms.locfileid: "58881088"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +249,7 @@ ms.locfileid: "58881088"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -329,7 +328,7 @@ ms.locfileid: "58881088"
 
 * **SQL バージョンのサポート**: SAP のお客様に対しては、Microsoft Azure Virtual Machines で SQL Server 2008 R2 以降がサポートされています。 これより前のエディションはサポートされていません。 詳細については、この一般的な [サポートの説明](https://support.microsoft.com/kb/956893) を確認してください。 マイクロソフトは基本的には SQL Server 2008 をサポートしています。 ただし、SQL Server 2008 R2 で導入された SAP の重要な機能によって、SQL Server 2008 R2 が SAP の最小リリースとなっています。 一般的に、Azure IaaS で SAP ワークロードを実行するには、最新の SQL Server リリースを使用することを検討することをお勧めします。 最新の SQL Server リリースは、Azure のサービスと機能の一部との統合性が向上しています。 または、Azure IaaS インフラストラクチャで操作を最適化するように変更します。 そのため、このドキュメントは SQL Server 2016 と SQL Server 2017 に制限されています。
 * **SQL のパフォーマンス**: Microsoft Azure がホストする Virtual Machines は、他のパブリック クラウド仮想化製品と比べて良好に機能しますが、個々の結果は異なる場合があります。 「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)」の記事を参照してください。
-* **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。 Azure Marketplace には、最新の SQL Server リリースを含むイメージがあります。 SQL Server が既にインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。 その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。 このようなイメージを使用するには、「[Microsoft Azure Marketplace の SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順をご確認ください。 
+* **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。 Azure Marketplace には、最新の SQL Server リリースを含むイメージがあります。 SQL Server が既にインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。 その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。 このようなイメージを使用するには、「[Microsoft Azure Marketplace からの SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順をご確認ください。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>SAP 関連 SQL Server のデプロイメントの VM/VHD 構造に関する推奨事項
@@ -342,7 +341,7 @@ ms.locfileid: "58881088"
 これらの構成によって、tempdb はシステム ドライブが提供するよりも多くの領域を使用ができます。 非永続ドライブの D:\ は、(A シリーズの VM を除き) I/O 待機時間とスループットが優れています。 適切な tempdb のサイズを決定するために、既存のシステムの tempdb のサイズを確認します。 
 
 >[!NOTE]
-> 作成した D:\ ドライブ上のフォルダーに tempdb データ ファイルとログ ファイルを配置する場合は、VM を再起動した後にフォルダーが存在することを確認する必要があります。 VM の再起動後に D:\ ドライブは新たに初期化されるので、すべてのファイルおよびディレクトリ構造は消去されます。SQL Server サービスの開始前に D:\ ドライブ上の最終的なディレクトリ構造を再作成する可能性については、[こちらの記事](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)を参照してください。
+> 作成した D:\ ドライブ上のフォルダーに tempdb データ ファイルとログ ファイルを配置する場合は、VM を再起動した後にフォルダーが存在することを確認する必要があります。 VM の再起動後に D:\ ドライブは新たに初期化されるので、すべてのファイルおよびディレクトリ構造は消去されます。SQL Server サービスの開始前に D:\ ドライブ上の最終的なディレクトリ構造を再作成する可能性については、[こちらの記事](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)を参照してください。
 
 SQL Server と SAP データベースを実行し、D:\ ドライブに tempdb データと tempdb ログ ファイルを配置する VM 構成は次のようになります。
 
@@ -362,7 +361,7 @@ Azure M シリーズ VM で Azure 書き込みアクセラレータを使用す�
 ### <a name="formatting-the-disks"></a>ディスクのフォーマット
 SQL Server の場合、SQL Server のデータ ファイルとログ ファイルを含むディスクの NTFS ブロック サイズは 64 KB にする必要があります。 D:\ ドライブをフォーマットする必要はありません。 このドライブはフォーマット済みのものです。
 
-データベースの復元または作成によってデータ ファイルの初期化が実行され、ファイルの内容が消去されないことをことを確認するために、SQL Server サービスが実行されているユーザー コンテキストが特定の権限を持っていることを確認する必要があります。 通常、Windows 管理者グループのユーザーは、これらのアクセス権限を持っています。 Windows 管理者以外のユーザーのユーザー コンテキストで SQL Server サービスが実行されている場合は、**[ボリュームの保守タスクを実行]** ユーザー権限をそのユーザーに割り当てる必要があります。  Microsoft サポート技術情報の記事 (<https://support.microsoft.com/kb/2574695>) で詳細をご覧ください。
+データベースの復元または作成によってデータ ファイルの初期化が実行され、ファイルの内容が消去されないことをことを確認するために、SQL Server サービスが実行されているユーザー コンテキストが特定の権限を持っていることを確認する必要があります。 通常、Windows 管理者グループのユーザーは、これらのアクセス権限を持っています。 Windows 管理者以外のユーザーのユーザー コンテキストで SQL Server サービスが実行されている場合は、 **[ボリュームの保守タスクを実行]** ユーザー権限をそのユーザーに割り当てる必要があります。  Microsoft サポート技術情報の記事 (<https://support.microsoft.com/kb/2574695>) で詳細をご覧ください。
 
 ### <a name="impact-of-database-compression"></a>データベースの圧縮の影響
 I/O 帯域幅が制限要因になる構成では、IOPS を削減するすべての手段が Azure のような IaaS シナリオで実行できるワークロードを拡張するのに役立つ場合があります。 そのため、まだ実行していない場合、SAP と Microsoft では、既存のデータベースを Azure にアップロードする前に SQL Server のページ圧縮を適用することお勧めします。
@@ -437,7 +436,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 非常に多数の SAP ユーザーにとって、Azure 上で実行されていた SAP ランドスケープの部分に、完全に新しいバックアップ ソリューションを一から導入することはできませんでした。 その結果、既存のバックアップ ソリューションを使用して Azure に拡張する必要がありました。 通常、この分野の主要ベンダーの大部分では、既存のバックアップ ソリューションを Azure に拡張できました。 
 
 
-## <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Microsoft Azure Marketplace からの SQL Server イメージの使用
+## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Microsoft Azure Marketplace からの SQL Server イメージの使用
 マイクロソフトは Azure Marketplace で VM を提供しています。VM には SQL Server のバージョンがすでに含まれています。 SQL Server および Windows のライセンスが必要な SAP ユーザーの場合、これらのイメージを使用すると、SQL Server が既にインストールされている VM をスピン アップしてライセンスの必要性に対応できる可能性があります。 SAP でそのようなイメージを使用するためには、次の事項を考慮する必要があります。
 
 * SQL Server 評価版以外のバージョンでは、Azure Marketplace から "Windows のみ" の VM をデプロイする場合よりもコストがかかります。 価格を比較する場合は、<https://azure.microsoft.com/pricing/details/virtual-machines/windows/> および <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/> を参照してください。 
@@ -547,13 +546,13 @@ Azure Key Vault を SQL Server TDE に使用する方法の詳細については
 >SQL Server TDE を使用する場合、特に Azure Key Vault と共に使用する場合は、SQL Server 2014、SQL Server 2016、および SQL Server 2017 の最新のパッチを使用することをお勧めします。 その理由は、ユーザーのフィードバックに基づいて、最適化と修正がコードに適用されているためです。 例については、[KBA #4058175](https://support.microsoft.com/help/4058175/tde-enabled-backup-and-restore-slow-if-encryption-key-is-stored-in-ekm) を参照してください。
 >  
 
-## <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Azure での一般的な SAP 用 SQL Server の概要
+## <a name="general-sql-server-for-sap-on-azure-summary"></a><a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Azure での一般的な SAP 用 SQL Server の概要
 このガイドには多くの推奨事項が記載されているため、Azure デプロイを計画する前に 2 回以上読むことをお勧めします。 ただし、Azure 上の DBMS に固有の主な一般的な推奨事項に従ってください。
 
 1. Azure で多くのメリットのある SQL Server 2017 のように、最新の DBMS リリースを使用する。 
 2. データ ファイルのレイアウトと Azure の制限事項のバランスをとるために、Azure での SAP システム ランドスケープを慎重に計画します。
    * あまり多くはないが、必要な IOPS を達成するには十分な数のディスクがある。
-   * Managed Disks を使用しない場合、IOPS は Azure Storage アカウントごとに制限され、Storage のアカウントは各 Azure サブスクリプション内に制限されることに注意する ([詳細][azure-subscription-service-limits])。 
+   * Managed Disks を使用しない場合、IOPS は Azure Storage アカウントごとに制限され、Storage のアカウントは各 Azure サブスクリプション内に制限されることに注意する ([詳細][azure-resource-manager/management/azure-subscription-service-limits])。 
    * 高いスループットを実現する必要がある場合にのみディスク間でストライピングします。
 3. D:\ ドライブにソフトウェアをインストールおよび保持する必要があるファイルを置かない。このドライブは非永続的であるため、Windows の再起動時にすべて失われます。
 4. Azure Standard Storage でディスク キャッシュを使用しない。
@@ -563,4 +562,4 @@ Azure Key Vault を SQL Server TDE に使用する方法の詳細については
 8. SQL Server TDE を使用して、最新の SQL Server パッチを適用する。
 9. 考えられる最高のデータベースの圧縮を使用する。 SQL Server の場合はページ圧縮。
 10. Azure Marketplace の SQL Server イメージを使用するよう注意してください。 いずれかの SQL Server を使用する場合は、SAP NetWeaver システムをインストールする前にインスタンスの照合順序を変更する必要があります。
-11. 「[デプロイ ガイド][deployment-guide]」に従い、SAP Host Monitoring for Azure をインストールして構成します。
+11. [デプロイ ガイド][deployment-guide]に従い、SAP Host Monitoring for Azure をインストールして構成します。

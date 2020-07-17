@@ -4,27 +4,26 @@ description: SAP HANA on Azure で HANA のバックアップと復元を実行�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/22/2019
+ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21232e5a678d6deed920e57cd0433a3b85ca4fdc
-ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64987912"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901390"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
 >[!IMPORTANT]
->この記事は、SAP HANA の管理ドキュメントまたは SAP Note の代わりになるものではありません。 SAP HANA の管理と操作 (特にバックアップ、復元、高可用性、ディザスター リカバリー) について、読者が十分な理解と専門知識を有していることを前提としています。 この記事では、SAP HANA Studio のスクリーンショットを示します。 SAP 管理ツールの画面およびツール自体の内容、構造、特徴は、SAP HANA のリリースごとに変わる可能性があります。
+>この記事は、SAP HANA の管理ドキュメントや SAP Note の代わりになるものではありません。 SAP HANA の管理と操作 (特にバックアップ、復元、高可用性、ディザスター リカバリー) について、読者が十分な理解と専門知識を有していることを前提としています。 この記事では、SAP HANA Studio のスクリーンショットを示します。 SAP 管理ツールの画面およびツール自体の内容、構造、特徴は、SAP HANA のリリースごとに変わる可能性があります。
 
 お使いの環境、および使用する HANA のバージョンとリリースに応じた手順とプロセスを理解することが重要です。 この記事で説明されている一部のプロセスは、一般的な理解を深めるために簡略化されています。 最終的な操作ハンドブックの詳細な手順として使用するためのものではありません。 使用する構成に対応した操作ハンドブックを作成する場合は、実際のプロセスをテストおよび練習し、特定の構成に関連するプロセスを文書化してください。 
 
@@ -68,7 +67,7 @@ SAP HANA on Azure (L インスタンス) の基になっているストレージ
 - /hana/logbackups に対する個別スナップショット。
 - オペレーティング システム パーティション。
 
-スナップショットの最新のスクリプトとドキュメントを入手するには、[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) をご覧ください。 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) からスナップショットのスクリプト パッケージをダウンロードすると、3 つのファイルが取得されます。 ファイルの 1 つは、提供されている機能の PDF に記載されています。 ツール セットをダウンロードした後、「Get the snapshot tools (スナップショット ツールを入手する)」の手順に従います。
+スナップショットの最新のスクリプトとドキュメントを入手するには、[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) をご覧ください。 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) からスナップショットのスクリプト パッケージをダウンロードすると、3 つのファイルが取得されます。 ファイルの 1 つは、提供されている機能の PDF に記載されています。 ツール セットをダウンロードした後、「Get the snapshot tools (スナップショット ツールを入手する)」の手順に従います。
 
 ## <a name="storage-snapshot-considerations"></a>ストレージ スナップショットに関する考慮事項
 
@@ -117,24 +116,24 @@ HANA Large Instances でストレージ スナップショットを設定する�
 1. 実行されている各 SAP HANA インスタンスのマスター ノードで、SAP HANA バックアップ ユーザー アカウントを作成します (該当する場合)。
 1. すべての SAP HANA L インスタンス サーバーに、SAP HANA HDB クライアントをインストールします。
 1. スナップショットの作成を制御する、基になるストレージ インフラストラクチャにアクセスするために、各リージョンの最初の SAP HANA (L インスタンス) サーバーで公開キーを作成します。
-1. [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) から SAP HANA インストールの **hdbsql** の場所にスクリプトと構成ファイルをコピーします。
+1. [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) から SAP HANA インストールの **hdbsql** の場所にスクリプトと構成ファイルをコピーします。
 1. 適切な顧客仕様での必要に応じて、*HANABackupDetails.txt* ファイルを変更します。
 
-[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) から最新のスナップショット スクリプトとドキュメントを入手してください。 前記の手順については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」をご覧ください。
+[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) から最新のスナップショット スクリプトとドキュメントを入手してください。 前記の手順については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」をご覧ください。
 
 ### <a name="consideration-for-mcod-scenarios"></a>MCOD のシナリオに関する考慮事項
-1 つの HANA Large Instances ユニット上の複数の SAP HANA インスタンスで [MCOD のシナリオ](https://launchpad.support.sap.com/#/notes/1681092)を実行している場合は、個々の SAP HANA インスタンスごとに個別のストレージ ボリュームがプロビジョニングされています。 MDC と他の考慮事項について詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Important things to remember (重要な注意点)」をご覧ください。
+1 つの HANA Large Instances ユニット上の複数の SAP HANA インスタンスで [MCOD のシナリオ](https://launchpad.support.sap.com/#/notes/1681092)を実行している場合は、個々の SAP HANA インスタンスごとに個別のストレージ ボリュームがプロビジョニングされています。 MDC と他の考慮事項について詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Important things to remember (重要な注意点)」をご覧ください。
  
 
 ### <a name="step-1-install-the-sap-hana-hdb-client"></a>手順 1:SAP HANA HDB クライアントをインストールする
 
-SAP HANA on Azure (Large Instances) にインストールされている Linux オペレーティング システムには、バックアップとディザスター リカバリーの目的で SAP HANA ストレージ スナップショットを実行するために必要なフォルダーとスクリプトが含まれています。 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) に新しいリリースがあるかどうかを確認してください。 スクリプトの最新のリリース バージョンは 4.0 です。 異なるスクリプトでは、同じメジャー リリースでもマイナー リリースが異なる可能性があります。
+SAP HANA on Azure (Large Instances) にインストールされている Linux オペレーティング システムには、バックアップとディザスター リカバリーの目的で SAP HANA ストレージ スナップショットを実行するために必要なフォルダーとスクリプトが含まれています。 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) に新しいリリースがあるかどうかを確認してください。 
 
 お客様自身で、SAP HANA のインストール時に、SAP HANA HDB クライアントを HANA Large Instances ユニットにインストールする必要があります。
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>手順 2:/etc/ssh/ssh\_config を変更する
+### <a name="step-2-change-the-etcsshssh_config"></a>手順 2:/etc/ssh/ssh\_config を変更する
 
-この手順については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Enable communication with storage (ストレージとの通信を有効にする)」をご覧ください。
+この手順については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Enable communication with storage (ストレージとの通信を有効にする)」をご覧ください。
 
 
 ### <a name="step-3-create-a-public-key"></a>手順 3:公開キーを作成する
@@ -143,14 +142,14 @@ HANA Large Instances テナントのストレージ スナップショット イ
 
 テナントの最初の SAP HANA on Azure (Large Instances) サーバーで、ストレージ インフラストラクチャにアクセスするための公開キーを作成します。 公開キーを使用すると、ストレージ スナップショット インターフェイスへのサインインにパスワードが不要になります。 また、公開キーと共にパスワードの資格情報を保持する必要もありません。 
 
-公開キーを生成するには、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Enable communication with storage (ストレージとの通信を有効にする)」をご覧ください。
+公開キーを生成するには、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Enable communication with storage (ストレージとの通信を有効にする)」をご覧ください。
 
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>手順 4:SAP HANA ユーザー アカウントを作成する
 
 SAP HANA スナップショットの作成を開始するには、ストレージ スナップショット スクリプトで使用できるユーザー アカウントを SAP HANA に作成します。 そのために、SAP HANA Studio 内で SAP HANA ユーザー アカウントを作成します。 MDC 用の SID データベースでは "*なく*"、SYSTEMDB に、ユーザーを作成する必要があります。 単一のコンテナー環境では、ユーザーはテナント データベース内に設定されます。 このアカウントには、**バックアップ管理**と**カタログ読み取り**という特権が必要です。 
 
-ユーザー アカウントを設定して使用するには、[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
+ユーザー アカウントを設定して使用するには、[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
 
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>手順 5:SAP HANA ユーザー アカウントを承認する
@@ -163,29 +162,29 @@ SAP HANA スナップショットの作成を開始するには、ストレー�
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>手順 6:スナップショット スクリプトを取得し、スナップショットを構成して、構成と接続をテストする
 
-[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.0) から最新バージョンのスクリプトをダウンロードします。 スクリプトのインストール方法は、スクリプトのリリース 4.0 で変更されました。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
+[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) から最新バージョンのスクリプトをダウンロードします。 スクリプトのインストール方法は、スクリプトのリリース 4.1 で変更されました。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Enable communication with SAP HANA (SAP HANA との通信を有効にする)」をご覧ください。
 
-コマンドの正確なシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Easy installation of snapshot tools (default) (スナップショット ツールの簡単なインストール (既定))」をご覧ください。 既定のインストールを使うことをお勧めします。 
+コマンドの正確なシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Easy installation of snapshot tools (default) (スナップショット ツールの簡単なインストール (既定))」をご覧ください。 既定のインストールを使うことをお勧めします。 
 
-バージョン 3.x から 4.0 へのアップグレードについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Upgrade an existing install (既存のインストールをアップグレードする)」をご覧ください。 4.0 ツール セットのアンインストールについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Uninstallation of the snapshot tools (スナップショット ツールのアンインストール)」をご覧ください。
+バージョン 3.x から 4.1 へのアップグレードについては、「[SAP HANA on Azure 用の Microsoft スナップショット ツール](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「既存のインストールをアップグレードする」をご覧ください。 4\.1 ツール セットのアンインストールについては、「[SAP HANA on Azure 用の Microsoft スナップショット ツール](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「スナップショット ツールのアンインストール」をご覧ください。
 
-「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Complete setup of snapshot tools (スナップショット ツールのセットアップを完了する)」で説明されている手順を実行することを忘れないでください。
+「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Complete setup of snapshot tools (スナップショット ツールのセットアップを完了する)」で説明されている手順を実行することを忘れないでください。
 
-インストールされるさまざまなスクリプトとファイルの目的については、「What are these snapshot tools? (これらのスナップショット ツールは何か?)」で説明されています  (「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」)。
+インストールされるさまざまなスクリプトとファイルの目的については、「What are these snapshot tools? (これらのスナップショット ツールは何か?)」で説明されています (「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」)。
 
-スナップショット ツールを構成する前に、HANA のバックアップの場所と設定を正しく構成したことも確認します。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「SAP HANA Configuration (SAP HANA の構成)」をご覧ください。
+スナップショット ツールを構成する前に、HANA のバックアップの場所と設定を正しく構成したことも確認します。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「SAP HANA Configuration (SAP HANA の構成)」をご覧ください。
 
-スナップショット ツール セットの構成については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」が「Config file - HANABackupCustomerDetails.txt (構成ファイル - HANABackupCustomerDetails.txt)」で説明されています。
+スナップショット ツール セットの構成については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」が「Config file - HANABackupCustomerDetails.txt (構成ファイル - HANABackupCustomerDetails.txt)」で説明されています。
 
 #### <a name="test-connectivity-with-sap-hana"></a>SAP HANA との接続をテストする
 
 *HANABackupCustomerDetails.txt* ファイルにすべての構成データを入力したら、HANA インスタンスのデータに関して構成が正しいかどうかを確認します。 使用するスクリプトは `testHANAConnection` です。このスクリプトは、SAP HANA のスケールアップ構成またはスケールアウト構成に依存しません。
 
-詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Check connectivity with SAP HANA - testHANAConnection (SAP HANA との接続を確認する - testHANAConnection)」をご覧ください。
+詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Check connectivity with SAP HANA - testHANAConnection (SAP HANA との接続を確認する - testHANAConnection)」をご覧ください。
 
 #### <a name="test-storage-connectivity"></a>ストレージの接続をテストする
 
-次のテスト ステップでは、*HANABackupCustomerDetails.txt* 構成ファイルに設定したデータに基づいて、ストレージへの接続を確認します。 次に、テスト スナップショットを実行します。 `azure_hana_backup`コマンドを実行する前に、このテストを実行する必要があります。 このテストのコマンドのシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Check connectivity with storage - testStorageSnapshotConnection (ストレージとの接続を確認する - testStorageSnapshotConnection)」をご覧ください。
+次のテスト ステップでは、*HANABackupCustomerDetails.txt* 構成ファイルに設定したデータに基づいて、ストレージへの接続を確認します。 次に、テスト スナップショットを実行します。 `azure_hana_backup`コマンドを実行する前に、このテストを実行する必要があります。 このテストのコマンドのシーケンスについては、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Check connectivity with storage - testStorageSnapshotConnection (ストレージとの接続を確認する - testStorageSnapshotConnection)」をご覧ください。
 
 ストレージの仮想マシン インターフェイスに正常にサインインすると、スクリプトはフェーズ 2 に進み、テスト スナップショットが作成されます。 SAP HANA の 3 ノード スケールアウト構成の場合、次のように出力されます。
 
@@ -196,7 +195,7 @@ SAP HANA スナップショットの作成を開始するには、ストレー�
 
 準備手順が完了したら、実際のストレージ スナップショットの構成とスケジュールを開始できます。 スケジュールされたスクリプトは、SAP HANA のスケールアップ構成とスケールアウト構成で動作します。 バックアップ スクリプトを定期的に実行するには、cron ユーティリティを使ってスクリプトをスケジュールします。 
 
-コマンドの正確な構文と機能については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Perform snapshot backup - azure_hana_backup (スナップショットのバックアップを実行する - azure_hana_backup)」をご覧ください。 
+コマンドの正確な構文と機能については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Perform snapshot backup - azure_hana_backup (スナップショットのバックアップを実行する - azure_hana_backup)」をご覧ください。 
 
 スクリプト `azure_hana_backup` を実行すると、次の 3 つのフェーズで、ストレージ スナップショットが作成されます。
 
@@ -282,7 +281,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 ![ファイル ベースのバックアップで単一のバックアップ エントリが作成されるようにする](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
 
 
-ストレージ スナップショットの実行が初めて成功した後で、手順 6 で実行したテスト スナップショットを削除します。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Remove test snapshots - removeTestStorageSnapshot (テスト スナップショットを削除する - removeTestStorageSnapshot)」をご覧ください。 
+ストレージ スナップショットの実行が初めて成功した後で、手順 6 で実行したテスト スナップショットを削除します。 詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Remove test snapshots - removeTestStorageSnapshot (テスト スナップショットを削除する - removeTestStorageSnapshot)」をご覧ください。 
 
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>ディスク ボリューム上のスナップショットの数とサイズを監視する
@@ -290,7 +289,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 特定のストレージ ボリュームで、スナップショットの数とそれらのスナップショットによるストレージの使用量を監視できます。 `ls` コマンドでは、スナップショットのディレクトリまたはファイルが表示されません。 ストレージ スナップショットは同じボリュームに保存されているので、Linux OS コマンドの `du` を使用すると、それらのスナップショットの詳細が表示されます。 コマンドでは次のオプションを使用します。
 
 - `du –sh .snapshot`:このオプションでは、スナップショット ディレクトリ内にあるすべてのスナップショットの合計が提供されます。
-- `du –sh --max-depth=1`:このオプションでは、**.snapshot** フォルダーに保存されているすべてのスナップショットと、各スナップショットのサイズが一覧表示されます。
+- `du –sh --max-depth=1`:このオプションでは、 **.snapshot** フォルダーに保存されているすべてのスナップショットと、各スナップショットのサイズが一覧表示されます。
 - `du –hc`:このオプションでは、すべてのスナップショットによって使用される合計サイズが提供されます。
 
 作成および格納したスナップショットがボリューム上のストレージを使用し尽くしていないことを確認するには、上記のコマンドを使用します。
@@ -308,7 +307,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
       - スナップショットの頻度
       - 該当する場合、そのスナップショットに関連付けられている HANA バックアップ ID
 
-コマンドの構文と出力については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「List snapshots - azure_hana_snapshot_details (スナップショットを一覧表示する - azure_hana_snapshot_details)」をご覧ください。 
+コマンドの構文と出力については、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「List snapshots - azure_hana_snapshot_details (スナップショットを一覧表示する - azure_hana_snapshot_details)」をご覧ください。 
 
 
 
@@ -337,7 +336,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-スクリプトについて詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)」の「Delete a snapshot - azure_hana_snapshot_delete (スナップショットを削除する - azure_hana_snapshot_delete)」をご覧ください。
+スクリプトについて詳しくは、「[Microsoft snapshot tools for SAP HANA on Azure (SAP HANA on Azure 用の Microsoft スナップショット ツール)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「Delete a snapshot - azure_hana_snapshot_delete (スナップショットを削除する - azure_hana_snapshot_delete)」をご覧ください。
 
 このスクリプトは、**root** ユーザーとして実行します。
 
@@ -364,7 +363,7 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 
 要求を送信する前に準備する必要があります。 そうすることで、SAP HANA on Azure チームが要求を処理し、復元されたボリュームを提供できます。 その後、スナップショットに基づいて HANA データベースを復元します。
 
-新しいツール セットで復元されたスナップショットを取得する可能性については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)」の「How to restore a snapshot (スナップショットを復元する方法)」をご覧ください。
+新しいツール セットで復元されたスナップショットを取得する可能性については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」の「How to restore a snapshot (スナップショットを復元する方法)」をご覧ください。
 
 要求の準備をするには、次の手順のようにします。
 
@@ -390,17 +389,17 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 
 
 
-ストレージ スナップショットから復旧されたたとえば SAP HANA データ ファイルを取得する別の可能性については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)」のステップ 7 をご覧ください。
+ストレージ スナップショットから復旧されたたとえば SAP HANA データ ファイルを取得する別の可能性については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」のステップ 7 をご覧ください。
 
-スナップショット バックアップからの復元については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)」をご覧ください。 
+スナップショット バックアップからの復元については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)」をご覧ください。 
 
 >[!Note]
 >スナップショットが Microsoft の操作によって復元された場合は、ステップ 7 を行う必要はありません。
 
 
 ### <a name="recover-to-another-point-in-time"></a>異なる特定の時点への復旧
-特定の時点への復元については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)の「Recover the database to the following point in time (次の時点にデータベースを復旧する)」をご覧ください。 
+特定の時点への復元については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)の「Recover the database to the following point in time (次の時点にデータベースを復旧する)」をご覧ください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [ディザスター リカバリーの原則と準備](hana-concept-preparation.md)に関するページを参照してください。

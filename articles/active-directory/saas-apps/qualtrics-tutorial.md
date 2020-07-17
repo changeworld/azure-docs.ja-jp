@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Qualtrics の統合 | Microsoft Docs
-description: Azure Active Directory と Qualtrics の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と SAP Qualtrics の統合 | Microsoft Docs
+description: Azure Active Directory と SAP Qualtrics の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,198 +11,157 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 5e7c1ce6ab217149acd3aed9e5268b70fbd664df
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2e27d020bd25f234d084fba770e234bdccb40a99
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890385"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682388"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル:Azure Active Directory と Qualtrics の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Qualtrics の統合
 
-このチュートリアルでは、Qualtrics と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Qualtrics と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、SAP Qualtrics と Azure Active Directory (Azure AD) を統合する方法について説明します。 SAP Qualtrics と Azure AD を統合すると、次のことができます。
 
-* Qualtrics にアクセスするユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Qualtrics に自動的にサインイン (シングル サインオン) するように設定できます。
+* SAP Qualtrics にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して SAP Qualtrics に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Qualtrics と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、以下が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Qualtrics でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* シングル サインオン (SSO) が有効な SAP Qualtrics サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Qualtrics では、**SP** Initiated SSO がサポートされます
+* SAP Qualtrics では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます。
+* SAP Qualtrics では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* SAP Qualtrics を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
 
-* Qualtrics では、**Just In Time** ユーザー プロビジョニングがサポートされます
+## <a name="add-sap-qualtrics-from-the-gallery"></a>ギャラリーからの SAP Qualtrics の追加
 
-## <a name="adding-qualtrics-from-the-gallery"></a>ギャラリーからの Qualtrics の追加
+Azure AD への SAP Qualtrics の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SAP Qualtrics を追加する必要があります。
 
-Azure AD への Qualtrics の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Qualtrics を追加する必要があります。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左側のペインで、 **[Azure Active Directory]** を選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP Qualtrics**」と入力します。
+1. 結果から **[SAP Qualtrics]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-**ギャラリーから Qualtrics を追加するには、次の手順に従います。**
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>SAP Qualtrics の Azure AD シングル サインオンの構成とテスト
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+**B.Simon** というテスト ユーザーを使用して、SAP Qualtrics に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと SAP Qualtrics の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+SAP Qualtrics で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+1. [Azure AD SSO を構成](#configure-azure-ad-sso)して、ユーザーがこの機能を使用できるようにします。
+    1. [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)して、B.Simon を使って Azure AD のシングル サインオンをテストします。
+    1. [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. [SAP Qualtrics の SSO を構成](#configure-sap-qualtrics-sso)して、アプリケーション側でシングル サインオン設定を構成します。
+    1. [SAP Qualtrics のテスト ユーザーを作成](#create-sap-qualtrics-test-user)し、B.Simon に対応するユーザーを SAP Qualtrics に作成して、Azure AD の B.Simon にリンクさせます。
+1. [SSO をテスト](#test-sso)して、構成が機能するかどうかを確認します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+1. [Azure portal](https://portal.azure.com/) の **SAP Qualtrics** アプリケーション統合ページで、 **[管理]** セクションを見つけます。 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンを選択して設定を編集します。
 
-4. 検索ボックスに「**Qualtrics**」と入力し、結果ウィンドウで **[Qualtrics]** を選択します。次に、**[追加]** をクリックしてアプリケーションを追加します。
+   ![鉛筆アイコンが強調表示された [SAML によるシングル サインオンのセットアップ] ページのスクリーンショット](common/edit-urls.png)
 
-     ![結果リストの Qualtrics](common/search-new-app.png)
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+    
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+    `https://< DATACENTER >.qualtrics.com`
+   
+    b. **[応答 URL]** ボックスに、次の形式で URL を入力します。
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Qualtrics で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Qualtrics 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
+    `https://< DATACENTER >.qualtrics.com/login/v1/sso/saml2/default-sp`
 
-Qualtrics で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+    c. **[リレー状態]** ボックスに、次の形式で URL を入力します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Qualtrics シングル サインオンの構成](#configure-qualtrics-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Qualtrics のテスト ユーザーの作成](#create-qualtrics-test-user)** - Qualtrics で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+    `https://< brandID >.< DATACENTER >.qualtrics.com`
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順を実行します。
 
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
+    **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-Qualtrics で Azure AD シングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の **Qualtrics** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
-
-    ![[Qualtrics のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
-
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.qualtrics.com`
-
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
-
-    | |
-    |--|
-    | `https://<companyname>.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
-    | `https://<companyname>.co1.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
-    | |
+    `https://< brandID >.< DATACENTER >.qualtrics.com`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Qualtrics クライアント サポート チーム](https://www.qualtrics.com/support/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、応答 URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Qualtrics クライアント サポート チーム](https://www.qualtrics.com/support/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、コピー アイコンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/metadataxml.png)
+    ![コピー アイコンが強調表示された [SAML 署名証明書] セクションのスクリーンショット](common/copy-metadataurl.png)
 
-6. **[Qualtrics のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
-### <a name="configure-qualtrics-single-sign-on"></a>Qualtrics シングル サインオンの構成
-
-**Qualtrics** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Qualtrics サポート チーム](https://www.qualtrics.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[Show password]\(パスワードの表示\)** チェック ボックスをオンにし、パスワードを書き留めます。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Qualtrics へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、SAP Qualtrics へのアクセスを許可することで、B.Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Qualtrics]** の順に選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+1. アプリケーションの一覧で **[SAP Qualtrics]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+   ![[ユーザーとグループ] が強調表示された [管理] セクションのスクリーンショット](common/users-groups-blade.png)
 
-2. アプリケーションの一覧で **[Qualtrics]** を選択します。
+1. **[ユーザーの追加]** を選択します。 次に、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーション一覧の [Qualtrics] リンク](common/all-applications.png)
+    ![[ユーザーの追加] が強調表示された [ユーザーとグループ] ページのスクリーンショット](common/add-assign-user.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[B.Simon]** を選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+## <a name="configure-sap-qualtrics-sso"></a>SAP Qualtrics の SSO の構成
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+SAP Qualtrics 側でシングル サインオンを構成するには、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** を [SAP Qualtrics サポート チーム](https://www.qualtrics.com/support/)に送信します。 サポート チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
 
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics のテスト ユーザーの作成
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+SAP Qualtrics では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 追加の操作は必要ありません。 SAP Qualtrics にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
-
-### <a name="create-qualtrics-test-user"></a>Qualtrics のテスト ユーザーの作成
-
-このセクションでは、Britta Simon というユーザーを Qualtrics に作成します。 Qualtrics では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Qualtrics にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
-
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Qualtrics] タイルをクリックすると、SSO を設定した Qualtrics に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SAP Qualtrics] タイルをクリックすると、SSO を設定した SAP Qualtrics に自動的にサインインします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で SAP Qualtrics を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [高度な可視性と制御によって SAP Qualtrics を保護する](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

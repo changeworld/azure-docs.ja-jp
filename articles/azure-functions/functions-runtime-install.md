@@ -1,21 +1,16 @@
 ---
-title: Azure Functions ランタイムのインストール | Microsoft Docs
+title: Azure Functions Runtime のインストール
 description: Azure Functions ランタイム プレビュー 2 をインストールする方法
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547554"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74226738"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
 
@@ -52,8 +47,8 @@ Azure Functions ランタイム プレビュー インストーラーの手順�
     ![Azure Functions ランタイム プレビュー インストーラー][1]
 
 1. **[次へ]** をクリックします。
-1. **使用許諾契約書**の条項を読み終わったら、**チェック ボックスをオン**にして条項に同意し、**[次へ]** をクリックして先に進みます。
-1. このマシンにインストールするロールとして **[Functions Management Role]\(Functions 管理ロール\)** と **[Functions Worker Role]\(Functions worker ロール\)** のどちらか一方または両方を選び、**[次へ]** をクリックします。
+1. **使用許諾契約書**の条項を読み終わったら、**チェック ボックスをオン**にして条項に同意し、 **[次へ]** をクリックして先に進みます。
+1. このマシンにインストールするロールとして **[Functions Management Role]\(Functions 管理ロール\)** と **[Functions Worker Role]\(Functions worker ロール\)** のどちらか一方または両方を選び、 **[次へ]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー インストーラー - ロールの選択][3]
 
@@ -76,15 +71,15 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
     ![Azure Functions ランタイム プレビュー構成ツール][7]
 
-1. **[データベース]** タブをクリックし、[データベース マスター キー](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)の指定など、SQL Server インスタンスの接続の詳細を入力して、**[適用]** をクリックします。  SQL Server インスタンスへの接続性は、Azure Functions ランタイムでランタイムをサポートするデータベースを作成するために必要です。
+1. **[データベース]** タブをクリックし、[データベース マスター キー](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)の指定など、SQL Server インスタンスの接続の詳細を入力して、 **[適用]** をクリックします。  SQL Server インスタンスへの接続性は、Azure Functions ランタイムでランタイムをサポートするデータベースを作成するために必要です。
 
     ![Azure Functions ランタイム プレビュー データベース構成][8]
 
-1. **[資格情報]** タブをクリックします。ここで、すべての関数アプリをホストするために、ファイル共有で使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有の所有者**および**ファイル共有のユーザー**の **[ユーザー名]** と **[パスワード]** の組み合わせを指定し、**[適用]** をクリックします。
+1. **[資格情報]** タブをクリックします。ここで、すべての関数アプリをホストするために、ファイル共有で使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有の所有者**および**ファイル共有のユーザー**の **[ユーザー名]** と **[パスワード]** の組み合わせを指定し、 **[適用]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー資格情報][9]
 
-1. **[ファイルの共有]** タブをクリックします。ここでは、ファイルの共有の場所の詳細を指定する必要があります。  自分用のファイル共有を作成するか、既存のファイル共有を使用して、**[適用]** をクリックします。  新しいファイル共有の場所を選択した場合は、Azure Functions ランタイムで使用するディレクトリを指定する必要があります。
+1. **[ファイルの共有]** タブをクリックします。ここでは、ファイルの共有の場所の詳細を指定する必要があります。  自分用のファイル共有を作成するか、既存のファイル共有を使用して、 **[適用]** をクリックします。  新しいファイル共有の場所を選択した場合は、Azure Functions ランタイムで使用するディレクトリを指定する必要があります。
 
     ![Azure Functions ランタイム プレビュー ファイル共有][10]
 
@@ -92,7 +87,7 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
     ![Azure Functions ランタイム プレビュー IIS][11]
 
-1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールのサービスの状態が表示されます。  初期構成後に **Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、**[サービスの開始]** をクリックします。
+1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールのサービスの状態が表示されます。  初期構成後に **Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、 **[サービスの開始]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー構成の完了][12]
 
@@ -114,11 +109,11 @@ Azure Functions ランタイム プレビューで最初の関数を作成する
 
     ![Azure Functions ランタイム プレビュー ポータルのサブスクリプション][15]
 
-1. **[DefaultPlan]** を選択し、サブスクリプションの名前を入力して、**[作成]** をクリックします。
+1. **[DefaultPlan]** を選択し、サブスクリプションの名前を入力して、 **[作成]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー ポータルのサブスクリプション プランと名前][16]
 
-1. すべての関数アプリがポータルの左側のウィンドウに表示されます。  新しい Function App を作成するには、見出し **[Function App]** を選択し、**[+]** オプションをクリックします。
+1. すべての関数アプリがポータルの左側のウィンドウに表示されます。  新しい Function App を作成するには、見出し **[Function App]** を選択し、 **[+]** オプションをクリックします。
 
 1. 関数アプリの名前を入力し、適切なサブスクリプションを選び、プログラミング対象の Azure Functions ランタイムのバージョンを選んで **[作成]** をクリックします
 
@@ -128,7 +123,7 @@ Azure Functions ランタイム プレビューで最初の関数を作成する
 
     ![Azure Functions ランタイム プレビュー テンプレート][18]
 
-1. タイマー トリガー関数を選び、右側のポップアップで関数に名前を付け、スケジュールを `*/5 * * * * *` に変更し (この cron 式によってタイマー関数が 5 秒ごとに実行されます)、**[作成]** をクリックします
+1. タイマー トリガー関数を選び、右側のポップアップで関数に名前を付け、スケジュールを `*/5 * * * * *` に変更し (この cron 式によってタイマー関数が 5 秒ごとに実行されます)、 **[作成]** をクリックします
 
     ![Azure Functions ランタイム プレビューの新しいタイマー関数構成][19]
 

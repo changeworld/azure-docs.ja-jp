@@ -1,65 +1,64 @@
 ---
 title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
-ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 12/09/2019
+ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58889755"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422493"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
- Azure Functions ランタイムには、次の 2 つのメジャー バージョンがあります:1.x と 2.x。 新機能が動作し、機能強化が行われている現在のバージョンは 2.x ですが、どちらも運用シナリオに対してサポートされています。  以下では、2 つのバージョンの違い、各バージョンを作成する方法、および 1.x から 2.x にアップグレードする方法について詳しく説明します。
+Azure Functions ランタイムのメジャー バージョンは、そのランタイムのベースとなる .NET のバージョンに関連しています。 次の表は、ランタイムの現在のバージョン、リリース レベル、および関連する .NET バージョンを示しています。 
 
-> [!NOTE]
-> この記事は、クラウド サービスの Azure Functions に関するものです。 オンプレミスで Azure Functions を実行できるプレビュー製品については、「[Azure Functions Runtime の概要 (プレビュー)](functions-runtime-overview.md)」をご覧ください。
+| ランタイム バージョン | リリース レベル<sup>1</sup> | .NET バージョン | 
+| --------------- | ------------- | ------------ |
+| 3.x | GA | .NET Core 3.1 | 
+| 2.x | GA | .NET Core 2.2 |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>クロスプラットフォーム開発
+<sup>1</sup> GA リリースは運用環境シナリオでサポートされています。   
+<sup>2</sup> バージョン 1.x はメンテナンス モードにあります。 拡張機能は、それ以降のバージョンでのみ提供されます。   
+<sup>3</sup> Azure portal または Windows コンピューター上のローカルでの開発のみをサポートします。
 
-バージョン 2.x のランタイムは .NET Core 2 で実行され、ランタイム 2.x は、macOS や Linux など、.NET Core でサポートされるすべてのプラットフォームで実行できます。 .NET Core 上で実行されることで、クロスプラットフォーム開発とホスティング シナリオが可能になります。
-
-比較すると、バージョン 1.x のランタイムは、Azure portal または Windows コンピューターでの開発とホスティングのみをサポートしています。
+この記事では、各種のバージョン間のいくつかの相違点、各バージョンを作成する方法、およびバージョンの変更方法について詳細に説明します。
 
 ## <a name="languages"></a>Languages
 
-バージョン2.x のランタイム では、新しい言語拡張モデルが使用されます。 バージョン 2.x では、関数アプリ内のすべての関数は同じ言語を共有する必要があります。 関数アプリ内の関数の言語は、アプリの作成時に選択されます。
+バージョン 2.x から、ランタイムでは言語拡張モデルが使用されており、関数アプリ内のすべての関数が同じ言語を共有する必要があります。 関数アプリ内の関数の言語はそのアプリの作成時に選択され、[FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 設定に保持されます。 
 
-Azure Functions 1.x の試験段階の言語は、新しいモデルを使用するよう更新されていないため、2.x ではサポートされません。 次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
+Azure Functions 1.x の試験段階の言語は新しいモデルを使用できないため、2.x ではサポートされません。 次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。
 
-## <a name="creating-1x-apps"></a>バージョン 1.x での実行
+## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>特定のバージョンで実行する
 
-既定では、Azure portal で作成された関数アプリはバージョン 2.x に設定されます。 新機能への投資が行われているので、可能であれば、このランタイム バージョンを使用するようにします。 必要に応じて、バージョン 1.x ランタイム上で関数アプリを実行することもできます。 ランタイムのバージョンを変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。 ランタイム バージョンを 1.x に固定する方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
+既定では、Azure portal と Azure CLI で作成された関数アプリはバージョン 3.x に設定されます。 このバージョンは必要に応じて変更できます。 ランタイムのバージョンを 1.x に変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。  2\.x と 3.x の間の移行は関数が含まれるアプリでも許可されますが、まず、新しいアプリでテストすることをお勧めします。
 
-## <a name="migrating-from-1x-to-2x"></a>1.x から 2.x への移行
+## <a name="migrating-from-1x-to-later-versions"></a>1\.x からそれ以降のバージョンへの移行
 
-バージョン 2.x ではなくバージョン 1.x のランタイムを使用するように記述された既存のアプリを移行することができます。 必要な変更の大部分は、.NET Framework 4.7 と .NET Core 2 間の C# API の変更など、言語ランタイムの変更に関連する変更です。 また、コードとライブラリが、選択した言語ランタイムと互換性があることを確認する必要があります。 最後に、以下で示すトリガー、バインド、および機能での変更にも注意してください。 最適な移行結果を得るには、バージョン 2.x 用の新しい関数アプリを作成し、既存のバージョン 1.x の関数コードを新しいアプリに移植する必要があります。  
+最新のバージョンではなくバージョン 1.x のランタイムを使用するように記述された既存のアプリを移行することができます。 必要な変更の大部分は、.NET Framework 4.7 と .NET Core 間の C# API の変更など、言語ランタイムの変更に関連する変更です。 また、コードとライブラリが、選択した言語ランタイムと互換性があることを確認する必要があります。 最後に、以下で示すトリガー、バインド、および機能での変更にも注意してください。 最適な移行結果を得るために、新しいバージョンで新しい関数アプリを作成し、既存のバージョン 1.x の関数コードを新しいアプリに移植してください。  
 
-### <a name="changes-in-triggers-and-bindings"></a>トリガーとバインドでの変更
+アプリ構成を手動で更新することで "インプレース" アップグレードすることが可能ですが、1.x から上位のバージョンへの移行には、いくつかの破壊的変更が含まれます。 たとえば、C# では、デバッグ オブジェクトが `TraceWriter` から `ILogger` に変更されています。 最新のバージョン 3.x のテンプレートに基づいて新しいバージョン 3.x プロジェクトを作成することで、更新された関数から始めます。
 
-バージョン 2.x では、アプリの関数から使用される特定のトリガーとバインドの拡張機能をインストールする必要があります。 この例外は、拡張機能を必要としない HTTP トリガーとタイマー トリガーのみです。  詳細については、[バインド拡張機能の登録とインストール](./functions-bindings-register.md)に関するページを参照してください。
+### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>バージョン 1.x 後のトリガーとバインドの変更
 
-バージョン間には、関数の `function.json` や属性の変更もいくつかあります。 たとえば、イベント ハブの `path` のプロパティは `eventHubName` になりました。 各バインドのドキュメントへのリンクについては、[既存のバインド一覧](#bindings)を参照してください。
+バージョン 2.x 以降では、アプリの関数で使用される特定のトリガーとバインドの拡張機能をインストールする必要があります。 この例外は、拡張機能を必要としない HTTP トリガーとタイマー トリガーのみです。  詳細については、[バインド拡張機能の登録とインストール](./functions-bindings-register.md)に関するページを参照してください。
 
-### <a name="changes-in-features-and-functionality"></a>機能の変更
+バージョン間には、関数の *function.json* や属性の変更もいくつかあります。 たとえば、イベント ハブの `path` のプロパティは `eventHubName` になりました。 各バインドのドキュメントへのリンクについては、[既存のバインド一覧](#bindings)を参照してください。
 
-新しいバージョンでは、いくつかの機能が削除、更新、または置き換えられました。 このセクションでは、バージョン 1.x の後にバージョン 2.x を使用した場合に気づく変更点について詳しく説明します。
+### <a name="changes-in-features-and-functionality-after-version-1x"></a>バージョン 1.x 後の機能の変更
+
+バージョン 1.x 後、いくつかの機能が削除、更新、置換されました。 このセクションでは、バージョン 1.x の後に後続のバージョンを使用した場合に気づく変更点について詳しく説明します。
 
 バージョン 2.x では次の点が変更されました。
 
-* HTTP エンドポイントを呼び出すキーは、Azure Blob Storage 内で常に暗号化されて格納されます。 バージョン 1.x では、既定で Azure Files ストレージにキーが格納されていました。 アプリをバージョン 1.x からバージョン 2.x にアップグレードすると、ファイル ストレージ内の既存のシークレットはリセットされます。
+* HTTP エンドポイントを呼び出すキーは、Azure Blob Storage 内で常に暗号化されて格納されます。 バージョン 1.x では、既定で Azure File ストレージにキーが格納されていました。 アプリをバージョン 1.x からバージョン 2.x にアップグレードすると、ファイル ストレージ内の既存のシークレットはリセットされます。
 
 * バージョン 2.x ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。 この変更はパフォーマンスを向上するために行われました。 Webhook のエンドポイントとして HTTP トリガーを使用することもできます。
 
@@ -77,13 +76,50 @@ Azure Functions 1.x の試験段階の言語は、新しいモデルを使用す
 
 * Event Grid トリガー Webhook の URL 形式は `https://{app}/runtime/webhooks/{triggerName}` に変更されました。
 
-### <a name="migrating-a-locally-developed-application"></a>ローカルで開発されたアプリケーションの移行
+## <a name="migrating-from-2x-to-3x"></a>2\.x から 3.x への移行
 
-バージョン 1.x ランタイムを使用してローカルで開発した既存の関数アプリ プロジェクトがあるとします。 バージョン 2.x にアップグレードするには、バージョン 2.x に対してローカル関数アプリ プロジェクトを作成し、既存のコードを新しいアプリに移植する必要があります。 既存のプロジェクトとコードを手動で更新することができます。これは一種の "インプレース" アップグレードです。 ただし、バージョン 1.x とバージョン 2.x 間にはまだ改善の余地がいくつかあります。 たとえば、C# ではデバッグ オブジェクトが `TraceWriter` から `ILogger` に変更されました。 最新のバージョン 2.x のテンプレートに基づいて新しいバージョン 2.x プロジェクトを作成することで、更新された関数から始めます。
+Azure Functions バージョン 3.x は、バージョン 2.x との下位互換性が高くなっています。  多くのアプリは、コードを変更することなく、3.x に安全にアップグレードできるはずです。  3\.x への移行が推奨されますが、運用アプリでメジャー バージョンを変更する前に、広範囲なテストを必ず実行してください。
+
+### <a name="breaking-changes-between-2x-and-3x"></a>2\.x と 3.x の間の破壊的変更
+
+2\.x アプリを 3.x にアップグレードする前に次の変更点にご留意ください。
+
+#### <a name="javascript"></a>JavaScript
+
+* `context.done` 経由で割り当てられた出力バインディングまたは戻り値が `context.bindings` の設定と同じ動作をするようになりました。
+
+* タイマー トリガー オブジェクトはパスカル ケースではなくキャメル ケースです。
+
+* `dataType` バイナリが指定された、イベント ハブにトリガーされる関数の場合、`string` ではなく、`binary` の配列を受け取ります。
+
+* HTTP 要求ペイロードには `context.bindingData.req` 経由でアクセスできなくなりました。  引き続き入力パラメーター `context.req` としてアクセスできるほか、`context.bindings` でアクセスできます。
+
+* Node.js 8 のサポートが終了し、3.x 関数では実行されません。
+
+#### <a name="net"></a>.NET
+
+* [同期サーバー操作は既定では無効になっています](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+
+### <a name="changing-version-of-apps-in-azure"></a>Azure でのアプリのバージョンの変更
+
+Azure の公開アプリから使用される Functions ランタイムのバージョンは、[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) アプリケーションの設定によって決まります。 次のランタイムのメジャー バージョン値がサポートされています。
+
+| 値 | ランタイム ターゲット |
+| ------ | -------- |
+| `~3` | 3.x |
+| `~2` | 2.x |
+| `~1` | 1.x |
+
+>[!IMPORTANT]
+> 他のアプリ設定の変更や関数のコード変更が必要になる可能性があるため、この設定を独断で変更しないでください。
+
+### <a name="locally-developed-application-versions"></a>ローカルで開発されたアプリケーションのバージョン
+
+関数アプリを次のように更新し、ターゲット バージョンをローカルで変更できます。
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio のランタイム バージョン
 
-Visual Studio では、プロジェクトを作成するときにランタイムのバージョンを選択します。 Visual Studio 用の Azure Functions ツールは、ランタイムの両メジャー バージョンをサポートしています。 デバッグ時と公開時には、プロジェクトの設定に基づいて正しいバージョンが使用されます。 バージョン設定は、`.csproj` ファイルの次のプロパティで定義されています。
+Visual Studio では、プロジェクトを作成するときにランタイムのバージョンを選択します。 Visual Studio 用の Azure Functions ツールは、ランタイムのメジャー バージョン 3 つをサポートしています。 デバッグ時と公開時には、プロジェクトの設定に基づいて正しいバージョンが使用されます。 バージョン設定は、`.csproj` ファイルの次のプロパティで定義されています。
 
 ##### <a name="version-1x"></a>バージョン 1.x
 
@@ -95,25 +131,60 @@ Visual Studio では、プロジェクトを作成するときにランタイム
 ##### <a name="version-2x"></a>バージョン 2.x
 
 ```xml
-<TargetFramework>netcoreapp2.2</TargetFramework>
+<TargetFramework>netcoreapp2.1</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-プロジェクトをデバッグまたは公開すると、正しいバージョンのランタイムが使用されます。
+##### <a name="version-3x"></a>バージョン 3.x
+
+```xml
+<TargetFramework>netcoreapp3.1</TargetFramework>
+<AzureFunctionsVersion>v3</AzureFunctionsVersion>
+```
+
+> [!NOTE]
+> Azure Functions 3.x と .NET では、`Microsoft.NET.Sdk.Functions` 拡張機能を `3.0.0` 以上にする必要があります。
+
+###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Visual Studio で 2.x アプリを 3.x に更新する
+
+2\.x をターゲットにする既存の関数を開き、`.csproj` ファイルを編集し、上記の値を更新することで 3.x に移行できます。  Visual Studio では、プロジェクト メタデータに基づき、ランタイム バージョンがユーザーに代わって自動的に管理されます。  ただし、お使いのコンピューターでその Visual Studio で 3.x 用のテンプレートとランタイムが設定される前に 3.x アプリを作成していない場合にのみ可能です。  "プロジェクトで指定されたバージョンと一致する、利用可能な Functions ランタイムはありません" のようなエラーが表示されることがあります。  最新のテンプレートとランタイムを取得するには、新しい関数プロジェクトを作成する操作を進めます。  バージョンとテンプレートの選択画面に進んだら、Visual Studio で最新テンプレートの取得が完了するまで待ちます。  最新の .NET Core 3 テンプレートが利用できるようになり、表示されたら、バージョン 3.x 用に構成されているプロジェクトの実行とデバッグができます。
+
+> [!IMPORTANT]
+> バージョン 3.x 関数は、Visual Studio バージョン 16.4 以降を使用している場合にのみ、Visual Studio で開発できます。
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code と Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) は、コマンド ラインの開発に使用されます。また、Visual Studio Code 用の [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)からも使用されます。 バージョン 2.x に対して開発するには、Core Tools のバージョン 2.x をインストールします。 バージョン 1.x の開発には Core Tools のバージョン 1.x が必要です。 詳細については、「[Azure Functions Core Tools のインストール](functions-run-local.md#install-the-azure-functions-core-tools)」を参照してください。
+[Azure Functions Core Tools](functions-run-local.md) は、コマンド ラインの開発に使用されます。また、Visual Studio Code 用の [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)からも使用されます。 バージョン 3.x に対して開発するには、Core Tools のバージョン 3.x をインストールします。 バージョン 2.x の開発には Core Tools のバージョン 2.x が必要です。他のバージョンも同様です。 詳細については、「[Azure Functions Core Tools のインストール](functions-run-local.md#install-the-azure-functions-core-tools)」を参照してください。
 
-Visual Studio Code の開発の場合は、必要に応じてインストールされているツールのバージョンと一致するように `azureFunctions.projectRuntime` のユーザー設定を更新します。  この設定で、関数アプリの作成時に使用されるテンプレートと言語も更新されます。
+Visual Studio Code の開発の場合は、必要に応じてインストールされているツールのバージョンと一致するように `azureFunctions.projectRuntime` のユーザー設定を更新します。  この設定で、関数アプリの作成時に使用されるテンプレートと言語も更新されます。  `~3` でアプリを作成するには、`azureFunctions.projectRuntime` ユーザー設定を `~3` に更新します。
 
-### <a name="changing-version-of-apps-in-azure"></a>Azure でのアプリのバージョンの変更
+![Azure Functions 拡張機能ランタイム設定](./media/functions-versions/vs-code-version-runtime.png)
 
-Azure の公開アプリから使用される Functions ランタイムのバージョンは、[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) アプリケーションの設定によって決まります。 `~2` の値はバージョン 2.x のランタイムをターゲットにし、`~1` はバージョン 1.x のランタイムをターゲットにしています。 他のアプリ設定の変更や関数のコード変更が必要になる可能性があるため、この設定を任意に変更しないでください。 関数アプリを別のランタイム バージョンに移行する場合に推奨される方法については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
+#### <a name="maven-and-java-apps"></a>Maven および Java アプリ
+
+ローカル実行に必要な[コア ツールの 3.x バージョンをインストールする](functions-run-local.md#install-the-azure-functions-core-tools)ことで、Java アプリを 2.x から 3.x に移行できます。  バージョン 3.x でアプリが正しくローカル実行されることを確認したら、アプリの `POM.xml` ファイルを更新し、次の例のように、`FUNCTIONS_EXTENSION_VERSION` 設定を `~3` に変更します。
+
+```xml
+<configuration>
+    <resourceGroup>${functionResourceGroup}</resourceGroup>
+    <appName>${functionAppName}</appName>
+    <region>${functionAppRegion}</region>
+    <appSettings>
+        <property>
+            <name>WEBSITE_RUN_FROM_PACKAGE</name>
+            <value>1</value>
+        </property>
+        <property>
+            <name>FUNCTIONS_EXTENSION_VERSION</name>
+            <value>~3</value>
+        </property>
+    </appSettings>
+</configuration>
+```
 
 ## <a name="bindings"></a>バインド
 
-バージョン 2.x のランタイムで使用される新しい[バインド拡張モデル](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)の利点は、次のとおりです。
+バージョン 2.x から、ランタイムでは、次の利点を提供する新しい[バインド拡張モデル](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が使用されています。
 
 * サード パーティのバインド拡張のサポート。
 
@@ -129,7 +200,7 @@ HTTP とタイマーのトリガーを除き、すべてのバインドを関数
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

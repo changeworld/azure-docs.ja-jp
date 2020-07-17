@@ -1,23 +1,23 @@
 ---
 title: C# でカスタム用語リストと照らしてテキストを確認する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム用語リストと照らしてテキストをモデレートする方法。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
-ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858401"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72935952"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>クイック スタート:C# でカスタム用語リストと照らしてテキストを確認する
+# <a name="check-text-against-a-custom-term-list-in-c"></a>C# でカスタム用語リストと照らしてテキストを確認する
 
 Azure Content Moderator の既定のグローバルな用語リストは、ほとんどのコンテンツ モデレーションのニーズに十分対応できます。 しかし、組織に固有の用語のスクリーニングが必要になる場合があります。 たとえば、さらに詳しくレビューするために、競合他社名にタグを付けたい場合などです。 
 
@@ -59,8 +59,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -70,10 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
 
-次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
-
-> [!IMPORTANT]
-> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。 エンドポイント URL とサブスクリプション キーの値を使用して、`AzureEndpoint` および `CMSubscriptionKey` フィールドを更新します。 これらは、Azure portal 内のリソースの **[クイック スタート]** タブで確認できます。
 
 ```csharp
 /// <summary>
@@ -85,16 +81,9 @@ using System.Threading;
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -113,7 +102,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -275,7 +264,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - MIME の種類 ("text/html"、"text/xml"、"text/markdown"、"text/plain" のいずれか)。
 - スクリーニングするテキスト。
 - ブール値。 スクリーニングの前にテキストのオートコレクトを実行するには、このフィールドを **true** に設定します。
-- ブール値。 テキスト内の個人を特定できる情報 (PII) を検出するには、このフィールドを **true** に設定します。
+- ブール値。 テキスト内の個人データを検出するには、このフィールドを **true** に設定します。
 - 用語リスト ID。
 
 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)に関するページを参照してください。
@@ -373,7 +362,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>まとめ
+## <a name="compose-the-main-method"></a>Main メソッドを作成する
 
 名前空間 **TermLists**、クラス **Program** に **Main** メソッドの定義を追加します。 最後に、**Program** クラスと **TermLists** 名前空間を閉じます。
 
@@ -415,9 +404,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>アプリケーションを実行して出力を確認する
 
-出力は次の行のようになりますが、データは異なる場合があります。
+コンソールの出力は次のようになります。
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.
@@ -447,6 +436,6 @@ Deleting term list with ID 252.
 Press ENTER to close the application.
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61487463"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76289800"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -86,13 +86,13 @@ Azure のコンピューティング能力は、メインフレームのキャ�
 
 Azure では、コミットメントベースのサービス レベル アグリーメント (SLA) を提供します。 複数ナインの可用性が既定になっていて、SLA は、ローカルまたは geo ベースのサービスのレプリケーションによって最適化できます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
-VM などの Azure IaaS の場合、特定のシステム関数によってフェールオーバー サポートが提供されます。たとえば、フェールオーバー クラスタリング インスタンスや[可用性セット](/azure/virtual-machines/windows/regions-and-availability#availability-sets)などです。 Azure PaaS (サービスとしてのプラットフォーム) リソースを使用する場合、フェールオーバーはプラットフォームで自動的に処理されます。 たとえば、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) や [Azure Cosmos DB](/azure/cosmos-db/introduction) などがあります。
+VM などの Azure IaaS の場合、特定のシステム関数によってフェールオーバー サポートが提供されます。たとえば、フェールオーバー クラスタリング インスタンスや可用性セットなどです。 Azure PaaS (サービスとしてのプラットフォーム) リソースを使用する場合、フェールオーバーはプラットフォームで自動的に処理されます。 たとえば、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) や [Azure Cosmos DB](/azure/cosmos-db/introduction) などがあります。
 
 ### <a name="scalability"></a>スケーラビリティ
 
 メインフレームは通常スケールアップしますが、クラウド環境はスケールアウトします。Azure は、ユーザーのニーズを満たすために、さまざまな [Linux](/azure/virtual-machines/linux/sizes) および [Windows](/azure/virtual-machines/windows/sizes) のサイズを提供しています。 クラウドはまた、正確なユーザー仕様に一致するようにスケールアップまたはスケールダウンします。 コンピューティング能力、ストレージ、およびサービスは、使用量ベースの課金モデルのもとで、オンデマンドで[スケール調整](/azure/architecture/best-practices/auto-scaling)されます。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 クラウドには、柔軟でスケーラブルなストレージ オプションがあり、必要な分だけ支払うことができます。 [Azure Storage](/azure/storage/common/storage-introduction) は、データ オブジェクトのための高度にスケーラブルなオブジェクト ストア、クラウドのためのファイル システム サービス、信頼性の高いメッセージング ストア、および NoSQL ストアを提供します。 VM の場合、マネージド ディスクとアンマネージド ディスクは、永続的でセキュリティで保護されたディスク ストレージを提供します。
 
@@ -110,9 +110,9 @@ Azure Government は、この種類の環境が必要なシステムに対して
 
 開始するには、[メインフレーム アプリケーション用の Microsoft Azure Government クラウド](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/)をダウンロードします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-メインフレーム アプリケーションの移行またはリホストの手伝いを Microsoft [パートナー](partner-workloads.md)に依頼します。 パートナー ソリューションの選択に関する詳細なガイダンスについては、[プラットフォーム最新化アライアンス](https://www.platformmodernization.org/pages/mainframe.aspx)の Web ページを参照してください。
+メインフレーム アプリケーションの移行またはリホストの手伝いを Microsoft [パートナー](partner-workloads.md)に依頼します。 
 
 関連項目:
 

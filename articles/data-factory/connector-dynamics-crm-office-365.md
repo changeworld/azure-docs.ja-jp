@@ -1,37 +1,49 @@
 ---
-title: Azure Data Factory を使用して Dynamics CRM または Dynamics 365 (Common Data Service) をコピー元またはコピー先としてデータをコピーする | Microsoft Docs
+title: Dynamics でデータをコピーする (Common Data Service)
 description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 11/20/2019
+ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545435"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81417358"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Dynamics 365 または Microsoft Dynamics CRM をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
+このコネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
+
 Dynamics 365 (Common Data Service) または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
 
-この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします  (IFD は Internet Facing Deployment の省略形です)。
+この Dynamics コネクタでは、オンラインとオンプレミスの両方で Dynamics バージョン 7.x から 9.x がサポートされます。 具体的には次のとおりです。
+
+- バージョン 7.x は、Dynamics CRM 2015 にマップされます
+- バージョン 8.x は、Dynamics CRM 2016 および初期バージョンの Dynamics 365 にマップされます
+- バージョン 9.x は、以降のバージョンの Dynamics 365 にマップされます
+
+Dynamics のそれぞれのバージョン/製品でサポートされている認証の種類と構成については、次の表を参照してください。 (IFD は Internet Facing Deployment の省略形です)。
 
 | Dynamics のバージョン | 認証の種類 | リンクされたサービスの例 |
 |:--- |:--- |:--- |
-| Dynamics 365 Online <br> Dynamics CRM Online | Office365 | [Dynamics Online + Office365 認証](#dynamics-365-and-dynamics-crm-online) |
+| Common Data Service <br> Dynamics 365 Online <br> Dynamics CRM Online | AAD サービス プリンシパル <br> Office365 | [Dynamics online + AAD サービス プリンシパルまたは Office365 認証](#dynamics-365-and-dynamics-crm-online) |
 | IFD 対応オンプレミス Dynamics 365 <br> IFD 対応オンプレミス Dynamics CRM 2016 <br> IFD 対応オンプレミス Dynamics CRM 2015 | IFD | [IFD + IFD 認証対応オンプレミス Dynamics](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 具体的には、Dynamics 365 では、次のアプリケーションの種類がサポートされます。
@@ -44,10 +56,12 @@ Dynamics 365 (Common Data Service) または Dynamics CRM から、サポート�
 
 その他のアプリケーションの種類 (金融、運用、タレントなど) は、このコネクタではサポートされていません。
 
+この Dynamics コネクタは [Dynamics XRM ツール](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
+
 >[!TIP]
 >**Dynamics 365 Finance and Operations** からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -61,19 +75,71 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Dynamics** に設定する必要があります。 | はい |
+| type | type プロパティは、**Dynamics**、**DynamicsCrm**、**CommonDataServiceForApps** のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 Dynamics Online を **"Online"** にする必要があります。 | はい |
 | serviceUri | Dynamics インスタンスのサービス URL (例: `https://adfdynamics.crm.dynamics.com`)。 | はい |
-| authenticationType | Dynamics サーバーに接続する認証の種類。 Dynamics Online を **"Office365"** に指定します。 | はい |
-| ユーザー名 | Dynamics に接続するためのユーザー名を指定します。 | はい |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| authenticationType | Dynamics サーバーに接続する認証の種類。 使用できる値は、以下のとおりです。**AADServicePrincipal**、または **"Office365"** 。 | はい |
+| servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | はい (`AADServicePrincipal` 認証を使用する場合) |
+| servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類を指定します。 使用できる値は、以下のとおりです。**ServicePrincipalKey** または **ServicePrincipalCert**。 | はい (`AADServicePrincipal` 認証を使用する場合) |
+| servicePrincipalCredential | サービス プリンシパル認証を指定します。 <br>資格情報の種類として `ServicePrincipalKey` を使用する場合、`servicePrincipalCredential` は文字列 (ADF はリンクされたサービスのデプロイ時に ADF が暗号化します)、または AKV のシークレットへの参照になります。 <br>資格情報として `ServicePrincipalCert` を使用する場合、`servicePrincipalCredential` は AKV の証明書への参照である必要があります。 | はい (`AADServicePrincipal` 認証を使用する場合) | 
+| username | Dynamics に接続するためのユーザー名を指定します。 | はい (`Office365` 認証を使用する場合) |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (`Office365` 認証を使用する場合) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
-
->[!IMPORTANT]
->Dynamics にデータをコピーする場合は、既定の Azure Integration Runtime を使用してコピーを実行することはできません。 言い換えると、ソースのリンクされたサービスに指定された統合ランタイムがない場合は、Dynamics インスタンスに近い場所に明示的に [Azure Integration Runtime を作成](create-azure-integration-runtime.md#create-azure-ir)します。 [Dynamics 365 の地域一覧](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions)を参照して、Dynamics インスタンスのある場所を確認してください。 次の例のように、Dynamics のリンクされたサービスに関連付けます。
 
 >[!NOTE]
 >Dynamics コネクタは、省略可能な "organizationName" プロパティを使用して Dynamics CRM/365 Online インスタンスを識別するために使用されていました。 それは引き続き機能しますが、代わりに新しい "serviceUri" プロパティを指定して、インスタンス検出のパフォーマンスを向上させることをお勧めします。
+
+**例:AAD サービス プリンシパル + キー認証を使用した Dynamics Online**
+
+```json
+{  
+    "name": "DynamicsLinkedService",  
+    "properties": {  
+        "type": "Dynamics",  
+        "typeProperties": {  
+            "deploymentType": "Online",  
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "authenticationType": "AADServicePrincipal",  
+            "servicePrincipalId": "<service principal id>",  
+            "servicePrincipalCredentialType": "ServicePrincipalKey",  
+            "servicePrincipalCredential": "<service principal key>"
+        },  
+        "connectVia": {  
+            "referenceName": "<name of Integration Runtime>",  
+            "type": "IntegrationRuntimeReference"  
+        }  
+    }  
+}  
+```
+**例:AAD サービスプリンシパル + 証明書認証を使用した Dynamics Online**
+
+```json
+{ 
+    "name": "DynamicsLinkedService", 
+    "properties": { 
+        "type": "Dynamics", 
+        "typeProperties": { 
+            "deploymentType": "Online", 
+            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "authenticationType": "AADServicePrincipal", 
+            "servicePrincipalId": "<service principal id>", 
+            "servicePrincipalCredentialType": "ServicePrincipalCert", 
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            } 
+        }, 
+        "connectVia": { 
+            "referenceName": "<name of Integration Runtime>", 
+            "type": "IntegrationRuntimeReference" 
+        } 
+    } 
+} 
+```
 
 **例:Office 365 の認証を使用する Dynamics Online**
 
@@ -82,7 +148,6 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
     "name": "DynamicsLinkedService",
     "properties": {
         "type": "Dynamics",
-        "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
             "serviceUri": "https://adfdynamics.crm.dynamics.com",
@@ -103,22 +168,19 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>IFD 対応 Dynamics 365 および Dynamics CRM (オンプレミス)
 
-"*Dyanmics Online と比べた場合に追加されたプロパティは、"hostName" と "port" です。*"
+"*Dyanmics Online と比べた場合に追加されたプロパティは、"hostName" と "port" です。* "
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Dynamics** に設定する必要があります。 | はい |
+| type | type プロパティは、**Dynamics**、**DynamicsCrm**、**CommonDataServiceForApps** のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 IFD 対応オンプレミス Dynamics を **"OnPremisesWithIfd"** にする必要があります。| はい |
 | hostName | オンプレミス Dynamics サーバーのホスト名。 | はい |
 | port | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
 | organizationName | Dynamics インスタンスの組織の名前。 | はい |
 | authenticationType | Dynamics サーバーに接続する認証の種類。 IFD 対応オンプレミス Dynamics を **"Ifd"** に指定します。 | はい |
-| ユーザー名 | Dynamics に接続するためのユーザー名を指定します。 | はい |
+| username | Dynamics に接続するためのユーザー名を指定します。 | はい |
 | password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
-
->[!IMPORTANT]
->Dynamics にコピーするには、Dynamics インスタンスに近い場所に明示的に [Azure Integration Runtime を作成](create-azure-integration-runtime.md#create-azure-ir)します。 次の例のように、リンクされたサービスに関連付けます。
 
 **例:IFD 認証を使用する IFD 対応オンプレミス Dynamics**
 
@@ -152,17 +214,12 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Dynamics データセット でサポートされるプロパティの一覧を示します。
 
-Dynamics をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **DynamicsEntity** に設定します。 次のプロパティがサポートされています。
+Dynamics との間でのデータ コピーについては、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**DynamicsEntity** に設定する必要があります。 |はい |
+| type | データセットの type プロパティは、**DynamicsEntity**、**DynamicsCrmEntity**、**CommonDataServiceForAppsEntity** のいずれかに設定する必要があります。 |はい |
 | entityName | 取得するエンティティの論理名。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、シンクの場合ははい |
-
-> [!IMPORTANT]
->- Dynamics からデータをコピーする場合､"structure" セクションは省略できますが、確定的なコピーの結果を得るには､Dynamics データセットに含めることを推奨します。 それは、コピーする Dynamics のデータの列名とデータ型を定義します。 詳細については、「[データセット構造](concepts-datasets-linked-services.md#dataset-structure)」と「[Dynamics のデータ型のマッピング](#data-type-mapping-for-dynamics)」を参照してください。
->- UI 作成でスキーマをインポートするさい､ADF は Dynamics のクエリ結果の上位の行をサンプリングすることで (値のない列は除外)､スキーマを推論し､構造体構築を初期化します｡ Dynamics データセット スキーマ/構造体を調べて、必要に応じて複数の列を追加できます。この変更は､コピーのランライム時に受け入れられます｡
->- Dynamics にデータをコピーする場合、Dynamics データセットの "structure" セクションは省略可能です。 コピー先の列は、ソース データ スキーマによって決定されます。 ソースがヘッダーのない CSV ファイルの場合、入力データセットに列名とデータ型を "structure" で指定します。 それらは、1 つづつ順番に CSV ファイルのフィールドにマップされます。
 
 **例:**
 
@@ -171,24 +228,7 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
     "name": "DynamicsDataset",
     "properties": {
         "type": "DynamicsEntity",
-        "structure": [
-            {
-                "name": "accountid",
-                "type": "Guid"
-            },
-            {
-                "name": "name",
-                "type": "String"
-            },
-            {
-                "name": "marketingonly",
-                "type": "Boolean"
-            },
-            {
-                "name": "modifiedon",
-                "type": "Datetime"
-            }
-        ],
+        "schema": [],
         "typeProperties": {
             "entityName": "account"
         },
@@ -206,15 +246,19 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
 
 ### <a name="dynamics-as-a-source-type"></a>ソースの種類としての Dynamics
 
-Dynamics からデータをコピーするは、コピー アクティビティのソースの種類を **DynamicsSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Dynamics からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティは、**DynamicsSource**、**DynamicsCrmSource**、**CommonDataServiceForAppsSource** のいずれかに設定する必要があります。 | はい |
 | query | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
 
 >[!NOTE]
 >PK 列は、FetchXML クエリで構成する列のプロジェクションに含まれていない場合でも常にコピーされます。
+
+> [!IMPORTANT]
+>- Dynamics からデータをコピーするとき、Dynamics からシンクへの明示的な列のマッピングを省略できますが、決定論的なコピー結果を確保することを強くお勧めします。
+>- UI 作成でスキーマをインポートする際､ADF は Dynamics のクエリ結果の上位の行をサンプリングすることで (上位の行における値のない列は除外)､スキーマを推論し､ソース列のリストを初期化します。 明示的なマッピングがない場合でも、コピーの実行には同じ動作が適用されます。 マッピングには、自分で確認したうえで列を追加することができます。コピーの実行時には、それが反映されます。
 
 **例:**
 
@@ -270,17 +314,18 @@ Dynamics からデータをコピーするは、コピー アクティビティ�
 
 ### <a name="dynamics-as-a-sink-type"></a>シンクの種類としての Dynamics
 
-Dynamics にデータをコピーするは、コピー アクティビティのシンクの種類を **DynamicsSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+Dynamics にデータをコピーするために、コピー アクティビティの **sink** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | はい |
-| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"**。 | はい |
+| type | コピー アクティビティのシンクの type プロパティは **DynamicsSink**、**DynamicsCrmSink**、**CommonDataServiceForAppsSink** のいずれかに設定する必要があります。 | はい |
+| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"** 。 | はい |
+| alternateKeyName | "Upsert" を実行するには、エンティティに定義されている代替キー名を指定します。 | いいえ |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ (既定値は 10) |
 | ignoreNullValues | 書き込み操作時に入力データ (キー フィールドを除く) からの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**:upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**:upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
 >[!NOTE]
->Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
+>Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ " **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** " の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
 
 Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 状態が発生します。 "writeBatchSize" を 10 以下に保つと、このような同時呼び出しの制限が回避されます。
 
@@ -328,10 +373,10 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 
 | Dynamics データ型 | Data Factory の中間データ型 | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |
-| AttributeTypeCode.BigInt | long | ✓ | ✓ |
+| AttributeTypeCode.BigInt | Long | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | | 
-| AttributeType.DateTime | DateTime | ✓ | ✓ |
+| AttributeType.Customer | Guid | ✓ | |
+| AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
@@ -347,9 +392,12 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> Dynamics データ型の AttributeType.CalendarRules と AttributeType.PartyList はサポートされていません。
+> Dynamics データ型の AttributeType.CalendarRules、AttributeType.MultiSelectPicklist および AttributeType.PartyList はサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

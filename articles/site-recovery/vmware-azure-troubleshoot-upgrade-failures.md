@@ -1,18 +1,18 @@
 ---
-title: Microsoft Azure Site Recovery Provider のアップグレード エラーのトラブルシューティング | Microsoft Docs
-description: 理解を深める
-author: vDonGlover
-manager: jarrettr
+title: Microsoft Azure Site Recovery プロバイダーのアップグレードに関するトラブルシューティング
+description: Microsoft Azure Site Recovery プロバイダーのアップグレード時に発生する一般的な問題を解決します。
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 02/05/2019
-ms.author: v-doglov
-ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 11/10/2019
+ms.author: raynew
+ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117304"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75893911"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
 
@@ -27,8 +27,8 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 アップグレードするには、次の手順を使用します。
 
 1. Microsoft Azure Site Recovery 統合セットアップをダウンロードします。
-   1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md##links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
-   2. ロールアップ ページで、**[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
+   1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md#links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
+   2. ロールアップ ページで、 **[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
 
 2. コマンド プロンプトを開き、統合セットアップ ファイルをダウンロードしたフォルダーに移動します。 「MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;抽出したファイルのフォルダー パス&gt;」というコマンドを使用して、ダウンロードからセットアップ ファイルを抽出します。
     
@@ -51,8 +51,8 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 1. レジストリ エディター (regedit.exe) を開始し、HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ブランチを開きます。
 1. `Build_Version` キーの値を調べます。 最新バージョンに設定されている場合は、バージョン番号を下げます。 たとえば、最新バージョンが 9.22.\* で、`Build_Version` キーがその値に設定されている場合は、9.21.\* に下げます。
 1. 最新の Microsoft Azure Site Recovery 統合セットアップをダウンロードします。
-   1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md##links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
-   2. ロールアップ ページで、**[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
+   1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md#links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
+   2. ロールアップ ページで、 **[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
 1. コマンド プロンプトを開き、統合セットアップ ファイルをダウンロードしたフォルダーに移動し、コマンド「MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;抽出したファイルのフォルダー パス&gt;」を使用してダウンロードからセットアップ ファイルを抽出します。
 
     コマンドの例:

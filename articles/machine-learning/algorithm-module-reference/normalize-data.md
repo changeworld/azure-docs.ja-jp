@@ -1,25 +1,24 @@
 ---
 title: 'Normalize Data (データの正規化): モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Normalize Data (データの正規化) モジュールを使用して、*正規化*によってデータセットを変換する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Normalize Data (データの正規化) モジュールを使用して、*正規化*によってデータセットを変換する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 95069bafa94770511c7ee40e82068960298fd6c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 02/22/2020
+ms.openlocfilehash: a740c81aa165e221bca19987c7b3c62da56b0402
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477529"
 ---
 # <a name="normalize-data-module"></a>Normalize Data (データの正規化) モジュール
 
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、*正規化*によってデータセットを変換します。
 
@@ -33,7 +32,7 @@ ms.locfileid: "65027799"
 
 - すべての値を 0-1 スケールに変換したり、絶対値ではなく、パーセンタイル順位として表すことで、値を変換したりすることができます。
 - 1 つの列、または同じデータセット内の複数の列に正規化を適用できます。
-- 実験を繰り返す必要があったり、同じ正規化の手順を他のデータに適用したりする場合は、正規化の変換として手順を保存し、同じスキーマを含む他のデータセットに適用することができます。
+- パイプラインを繰り返す必要があったり、同じ正規化の手順を他のデータに適用したりする場合は、正規化の変換として手順を保存し、同じスキーマを含む他のデータセットに適用することができます。
 
 > [!WARNING]
 > 一部のアルゴリズムでは、モデルをトレーニングする前に、データを正規化する必要があります。 他のアルゴリズムでは、独自のデータのスケーリングや正規化を実行します。 そのため、予測モデルのビルドで使用する機械学習アルゴリズムを選ぶ場合、トレーニング データに正規化を適用する前に、アルゴリズムのデータ要件を確認してください。
@@ -42,7 +41,7 @@ ms.locfileid: "65027799"
 
 このモジュールを使用するときは、1 つの正規化メソッドのみを適用できます。 そのため、同じ正規化メソッドが、選択したすべての列に適用されます。 異なる正規化メソッドを使用するには、**Normalize Data (データの正規化)** の 2 つ目のインスタンスを使用します。
 
-1. **Normalize Data (データの正規化)** モジュールを自分の実験に追加します。 Azure Machine Learning で、**[Data Transformation]\(データ変換\)** の下の **[Scale and Reduce]\(拡大縮小\)** カテゴリでそのモジュールを見つけることができます。
+1. **Normalize Data (データの正規化)** モジュールを自分のパイプラインに追加します。 Azure Machine Learning で、 **[Data Transformation]\(データ変換\)** の下の **[Scale and Reduce]\(拡大縮小\)** カテゴリでそのモジュールを見つけることができます。
 
 2. すべての数値で少なくとも 1 列を含むデータセットに接続します。
 
@@ -55,7 +54,7 @@ ms.locfileid: "65027799"
     > [!TIP]
     > 特定の型の列が入力として確実に提供されようにするには、**Normalize Data (データの正規化)** の前に、[Select Columns in Dataset (データセット内の列の選択)](./select-columns-in-dataset.md) モジュールを使用するようにします。
 
-4. **Use 0 for constant columns when checked (チェック時に定数の列に 0 を使用する)**: 任意の数値列に 1 つの変更なしの値が含まれるときに、このオプションを選択します。 これにより、このような列は正規化の操作で使用されなくなります。
+4. **Use 0 for constant columns when checked (チェック時に定数の列に 0 を使用する)** : 任意の数値列に 1 つの変更なしの値が含まれるときに、このオプションを選択します。 これにより、このような列は正規化の操作で使用されなくなります。
 
 5. **[Transformation method]\(変換メソッド\)** ドロップダウン リストから、すべての選択した列に適用する 1 つの数学関数を選びます。 
   
@@ -73,7 +72,7 @@ ms.locfileid: "65027799"
       
       列の値は、次の数式を使用して変換されます。  
   
-      ![最小-最大を使用した正規化](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![最小最大関数を使用した正規化](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
   
     - **Logistic**: 列の値は、次の数式を使用して変換されます。
 
@@ -93,21 +92,21 @@ ms.locfileid: "65027799"
     
       ![tanh 関数を使用した正規化](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
 
-6. 実験を実行するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
+6. パイプラインを送信するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
 
 ## <a name="results"></a>結果
 
 **Normalize Data (データの正規化)** モジュールでは、2 つの出力が生成されます。
 
-- 変換された値を表示するには、モジュールを右クリックして、**[Transformed dataset]\(変換後のデータセット\)** を選択し、**[Visualize]\(可視化\)** をクリックします。
+- 変換後の値を表示するには、モジュールを右クリックして **[可視化]** を選択します。
 
     既定では、値はその場で変換されます。 変換された値を元の値と比較する場合は、[Add Columns (列の追加)](./add-columns.md) モジュールを使用して、データセットを再結合し、列を並べて表示します。
 
-- 別の同様のデータセットに同じ正規化メソッドを適用できるように、変換を保存するには、モジュールを右クリックして、**[Transformation function]\(変換関数\)** を選択し、**[Save as Transform]\(変換として保存\)** をクリックします。
+- 同じ正規化メソッドを別のデータセットに適用できるように変換を保存するには、モジュールを選択し、右側のパネルの **[出力]** タブの下にある **[データ セットの登録]** を選択します。
 
-    ナビゲーション ウィンドウの左側の **[変換]** グループから保存された変換を読み込み、[./Apply Transformation](apply-transformation.md) を使用することで同じスキーマを使ってデータセットに適用することができます。  
+    ナビゲーション ウィンドウの左側の **[変換]** グループから保存された変換を読み込み、[Apply Transformation](apply-transformation.md) を使用することで同じスキーマを使ってデータセットに適用することができます。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

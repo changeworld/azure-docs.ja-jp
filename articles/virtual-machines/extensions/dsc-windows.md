@@ -1,5 +1,5 @@
 ---
-title: Azure Desired State Configuration 拡張機能ハンドラー | Microsoft Docs
+title: Azure Desired State Configuration 拡張機能ハンドラー
 description: DSC 拡張機能を使用して Azure VM に PowerShell DSC 構成をアップロード､適用します｡
 services: virtual-machines-windows
 documentationcenter: ''
@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451911"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227927"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -72,7 +71,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
             "dataCollection": "enable"
         },
         "advancedOptions": {
-            "forcePullAndApply": false
+            "forcePullAndApply": false,
             "downloadMappings": {
                 "specificDependencyKey": "https://myCustomDependencyLocation"
             }
@@ -100,22 +99,22 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 | Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
-| apiVersion | 2018 年 10 月 1 日 | date |
-| publisher | Microsoft.Powershell.DSC | 文字列 |
-| type | DSC | 文字列 |
-| typeHandlerVersion | 2.77 | int |
+| apiVersion | 2018-10-01 | date |
+| publisher | Microsoft.Powershell.DSC | string |
+| type | DSC | string |
+| typeHandlerVersion | 2.77 | INT |
 
 ### <a name="settings-property-values"></a>設定のプロパティ値
 
 | Name | データ型 | 説明
 | ---- | ---- | ---- |
-| settings.wmfVersion | 文字列 | VM にインストールする Windows Management Framework のバージョンを指定します。 このプロパティを "latest" に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0 か 5.0、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は "latest" です。 |
-| settings.configuration.url | 文字列 | DSC 構成 zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationUrlSasToken プロパティに SAS トークンの値を設定する必要があります。 settings.configuration.script または settings.configuration.function を定義する場合、このプロパティは必須です。
-| settings.configuration.script | 文字列 | DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、configuration.url プロパティで指定した URL からダウンロードされた zip ファイルのルート フォルダーに含まれている必要があります。 settings.configuration.url または settings.configuration.script を定義する場合、このプロパティは必須です。
-| settings.configuration.function | 文字列 | DSC 構成の名前を指定します。 名前が指定された構成は、configuration.script で定義したスクリプト内に含まれている必要があります。 settings.configuration.url または settings.configuration.functiont を定義する場合、このプロパティは必須です。
+| settings.wmfVersion | string | VM にインストールする Windows Management Framework のバージョンを指定します。 このプロパティを "latest" に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0 か 5.0、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は "latest" です。 |
+| settings.configuration.url | string | DSC 構成 zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationUrlSasToken プロパティに SAS トークンの値を設定する必要があります。 settings.configuration.script または settings.configuration.function を定義する場合、このプロパティは必須です。
+| settings.configuration.script | string | DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、configuration.url プロパティで指定した URL からダウンロードされた zip ファイルのルート フォルダーに含まれている必要があります。 settings.configuration.url または settings.configuration.script を定義する場合、このプロパティは必須です。
+| settings.configuration.function | string | DSC 構成の名前を指定します。 名前が指定された構成は、configuration.script で定義したスクリプト内に含まれている必要があります。 settings.configuration.url または settings.configuration.functiont を定義する場合、このプロパティは必須です。
 | settings.configurationArguments | コレクション | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されません｡
-| settings.configurationData.url | 文字列 | DSC 構成の入力として使用する構成データ (.pds1) ファイルのダウンロード元の URL を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationDataUrlSasToken プロパティに SAS トークンの値を設定する必要があります。
-| settings.privacy.dataEnabled | 文字列 | テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、Enable か Disable、"､$null のみです。 このプロパティを空白または null のままにすると、テレメトリが有効になります。
+| settings.configurationData.url | string | DSC 構成の入力として使用する構成データ (.pds1) ファイルのダウンロード元の URL を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationDataUrlSasToken プロパティに SAS トークンの値を設定する必要があります。
+| settings.privacy.dataEnabled | string | テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、Enable か Disable、"､$null のみです。 このプロパティを空白または null のままにすると、テレメトリが有効になります。
 | settings.advancedOptions.forcePullAndApply | Bool | この設定の目的は、拡張機能を使用して Azure Automation DSC にノードを登録する際のエクスペリエンスを向上させることです。  値が `$true` の場合、この拡張機能は、成功または失敗を返す前に、サービスからプルされた構成が最初に実行されるのを待ちます。  値が $false に設定されている場合は、拡張機能によって返される状態により、ノードが Azure Automation State Configuration に正常に登録されているかどうかが示されるだけで、登録時にノード構成は実行されません。
 | settings.advancedOptions.downloadMappings | コレクション | WMF や .NET などの依存関係をダウンロードする代替場所を定義します｡
 
@@ -123,9 +122,9 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 | Name | データ型 | 説明
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | 文字列 | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます｡ |
-| protectedSettings.configurationUrlSasToken | 文字列 | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
-| protectedSettings.configurationDataUrlSasToken | 文字列 | ConfigurationData.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
+| protectedSettings.configurationArguments | string | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます｡ |
+| protectedSettings.configurationUrlSasToken | string | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
+| protectedSettings.configurationDataUrlSasToken | string | ConfigurationData.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
 
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
@@ -136,7 +135,7 @@ Windows 用の DSC 拡張機能を含む Resource Manager テンプレートの�
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 
@@ -164,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 | エラー コード | 意味 | 可能なアクション |
 | :---: | --- | --- |
-| 1,000 | 一般的なエラー | 拡張機能のログには､このエラーのメッセージが特定の例外によって提供されます｡ |
+| 1000 | 一般的なエラー | 拡張機能のログには､このエラーのメッセージが特定の例外によって提供されます｡ |
 | 52 | 拡張機能のインストール エラー | このエラーのメッセージは特定の例外によって提供されます｡ |
 | 1002 | WMF インストール エラー | WMF のインストール中のエラーです｡ |
 | 1004 | 無効な zip パッケージ | 無効な zip｡zipの解凍エラー｡ |

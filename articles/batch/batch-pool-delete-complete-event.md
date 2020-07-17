@@ -1,23 +1,14 @@
 ---
-title: Azure Batch プール削除完了イベント | Microsoft Docs
-description: Batch のプール削除完了イベントのリファレンスです。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+title: Azure Batch のプール削除完了イベント
+description: Batch のプール削除完了イベントのリファレンスです。 このイベントは、プールの削除操作が完了したときに出力されます。
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: e715ccd0f5e79f9c640a3c060b0252b798748b4d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6e009b55869b7ba8c81190837086557743d53219
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474550"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724056"
 ---
 # <a name="pool-delete-complete-event"></a>プール削除の完了イベント
 
@@ -33,11 +24,11 @@ ms.locfileid: "55474550"
 }
 ```
 
-|要素|型|メモ|
+|要素|種類|メモ|
 |-------------|----------|-----------|
-|id|String|プールの ID。|
-|startTime|DateTime|プールの削除が開始された時刻。|
-|endTime|DateTime|プールの削除が完了した時刻。|
+|`id`|String|プールの ID。|
+|`startTime`|DateTime|プールの削除が開始された時刻。|
+|`endTime`|DateTime|プールの削除が完了した時刻。|
 
 ## <a name="remarks"></a>解説
 プールのサイズ変更操作の状態とエラー コードの詳細については、[アカウントからのプールの削除](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account)を参照してください。

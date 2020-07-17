@@ -1,25 +1,20 @@
 ---
-title: Azure 上の Windows VM に MongoDB をインストールする | Microsoft Docs
+title: Azure の Windows VM に MongoDB をインストールします。
 description: Windows Server 2012 R2 を実行している、Resource Manager デプロイ モデルで作成された Azure VM に、MongoDB をインストールする方法について説明します。
-services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998486"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869450"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
 [MongoDB](https://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2016 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md)こともできます。
@@ -38,30 +33,30 @@ MongoDB のインストールと構成を開始するには、リモート デ�
 
 
 1. リモート デスクトップを使用して VM に接続したら、タスク バーから Internet Explorer を開きます。
-2. Internet Explorer を初めて開くときは **[お勧めのセキュリティ、プライバシー、互換性の設定を使う]** を選択し、**[OK]** をクリックします。
+2. Internet Explorer を初めて開くときは **[お勧めのセキュリティ、プライバシー、互換性の設定を使う]** を選択し、 **[OK]** をクリックします。
 3. Internet Explorer の強化されたセキュリティ構成は、既定で有効になっています。 MongoDB Web サイトを、許可されたサイトの一覧に追加します。
    
    * 右上隅にある **[ツール]** アイコンを選択します。
-   * **[インターネット オプション]** で、**[セキュリティ]** タブ、**[信頼済みサイト]** アイコンの順に選択します。
+   * **[インターネット オプション]** で、 **[セキュリティ]** タブ、 **[信頼済みサイト]** アイコンの順に選択します。
    * **[サイト]** ボタンをクリックします。 信頼済みサイトの一覧に *https://\*.mongodb.com* を追加し、ダイアログ ボックスを閉じます。
      
      ![Internet Explorer のセキュリティ設定の構成](./media/install-mongodb/configure-internet-explorer-security.png)
-4. [MongoDB のダウンロード](https://www.mongodb.com/downloads) ページ (https://www.mongodb.com/downloads)) を参照します。
-5. 必要に応じて、**Community Server** エディションを選んでから、"*Windows Server 2008 R2 64 ビット以降*" 用の最新の安定版リリースを選びます。 インストーラーをダウンロードするには、**[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
+4. [MongoDB のダウンロード](https://www.mongodb.com/downloads) ページ (https://www.mongodb.com/downloads) ) を参照します。
+5. 必要に応じて、**Community Server** エディションを選んでから、"*Windows Server 2008 R2 64 ビット以降*" 用の最新の安定版リリースを選びます。 インストーラーをダウンロードするには、 **[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
    
     ![MongoDB インストーラーのダウンロード](./media/install-mongodb/download-mongodb.png)
    
     ダウンロードが完了したら、インストーラーを実行します。
-6. 使用許諾契約を読み、同意します。 メッセージが表示されたら、**[Complete (完全)]** インストールを選択します。
+6. 使用許諾契約を読み、同意します。 メッセージが表示されたら、 **[Complete (完全)]** インストールを選択します。
 7. 必要に応じて、MongoDB のグラフィカル インターフェイスである Compass をインストールすることもできます。
 8. 最後の画面で **[Install (インストール)]** をクリックします。
 
 ## <a name="configure-the-vm-and-mongodb"></a>VM と MongoDB の構成
 1. path 変数は、MongoDB インストーラーでは更新されません。 path 変数に MongoDB の `bin` の場所が指定されていない場合は、MongoDB 実行可能ファイルを使用するたびに完全パスを指定する必要があります。 path 変数に場所を追加する方法は、次のとおりです。
    
-   * **[スタート]** メニューを右クリックし、**[システム]** を選択します。
-   * **[システムの詳細設定]** をクリックし、**[環境変数]** をクリックします。
-   * **[システム変数]** で、**[Path]**、**[編集]** の順にクリックします。
+   * **[スタート]** メニューを右クリックし、 **[システム]** を選択します。
+   * **[システムの詳細設定]** をクリックし、 **[環境変数]** をクリックします。
+   * **[システム変数]** で、 **[Path]** 、 **[編集]** の順にクリックします。
      
      ![PATH 変数の構成](./media/install-mongodb/configure-path-variables.png)
      
@@ -72,7 +67,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
      ```
      
      > [!NOTE]
-     > `PATH` 変数に場所を追加していることを示すために、先頭にセミコロン (`;`) を追加してください。
+     > `;` 変数に場所を追加していることを示すために、先頭にセミコロン (`PATH`) を追加してください。
 
 2. データ ディスクに MongoDB データ ディレクトリとログ ディレクトリを作成します。 **[スタート]** メニューの **[コマンド プロンプト]** を選択します。 次の例では、ドライブ F: にディレクトリを作成しています。
    
@@ -86,7 +81,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    MongoDB がジャーナル ファイルを割り当て、接続のリッスンを開始するまでには、数分かかる場合があります。 `mongod.exe` サーバーが開始され、ジャーナル ファイルを割り当てると、すべてのログ メッセージが *F:\MongoLogs\mongolog.log* ファイルにダイレクトされます。
+    MongoDB がジャーナル ファイルを割り当て、接続のリッスンを開始するまでには、数分かかる場合があります。 *サーバーが開始され、ジャーナル ファイルを割り当てると、すべてのログ メッセージが*F:\MongoLogs\mongolog.log`mongod.exe` ファイルにダイレクトされます。
    
    > [!NOTE]
    > MongoDB インスタンスが実行している間は、コマンド プロンプトのフォーカスがこのタスクに設定された状態になります。 MongoDB を実行し続けるためには、コマンド プロンプト ウィンドウを開いたままにしておく必要があります。 ただし、サービスとして MongoDB をインストールすれば、その必要はありません。詳しい手順については、以下で説明します。
@@ -112,7 +107,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
     MongoDB サービスの作成の詳細については、「[Configure a Windows Service for MongoDB (MongoDB 用の Windows サービスの構成)](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service)」を参照してください。
 
 ## <a name="test-the-mongodb-instance"></a>MongoDB インスタンスのテスト
-MongoDB を 1 つのインスタンスとして実行するか、サービスとしてインストールしたら、データベースの作成と使用を開始できます。 MongoDB 管理シェルを開始するには、**[スタート]** メニューからもう 1 つコマンド プロンプト ウィンドウを開き、次のコマンドを入力します。
+MongoDB を 1 つのインスタンスとして実行するか、サービスとしてインストールしたら、データベースの作成と使用を開始できます。 MongoDB 管理シェルを開始するには、 **[スタート]** メニューからもう 1 つコマンド プロンプト ウィンドウを開き、次のコマンドを入力します。
 
 ```
 mongo  
@@ -159,9 +154,9 @@ New-NetFirewallRule `
 必要に応じて、既存の Azure 仮想ネットワーク サブネットの外部から MongoDB にアクセスすることを許可するネットワーク セキュリティ グループの規則を作成します。 ネットワーク セキュリティ グループの規則を作成するには、[Azure Portal](nsg-quickstart-portal.md) または [Azure PowerShell](nsg-quickstart-powershell.md) を使用します。 Windows ファイアウォール規則と同様に、TCP ポート 27017 から MongoDB VM の仮想ネットワーク インターフェイスへの接続を許可します。
 
 > [!NOTE]
-> TCP ポート 27017 は、MongoDB によって使用される既定のポートです。 このポートを変更するには、`mongod.exe` サービスを手動で開始するかサービスから開始するときに、`--port` パラメーターを使用します。 ポートを変更した場合には、前の手順の Windows ファイアウォールとネットワーク セキュリティ グループの規則を更新してください。
+> TCP ポート 27017 は、MongoDB によって使用される既定のポートです。 このポートを変更するには、`--port` サービスを手動で開始するかサービスから開始するときに、`mongod.exe` パラメーターを使用します。 ポートを変更した場合には、前の手順の Windows ファイアウォールとネットワーク セキュリティ グループの規則を更新してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Windows VM に MongoDB をインストールして構成する方法を学習しました。 これで、[MongoDB のドキュメント](https://docs.mongodb.com/manual/)の高度なトピックに従って、Windows VM の MongoDB にアクセスできます。
 

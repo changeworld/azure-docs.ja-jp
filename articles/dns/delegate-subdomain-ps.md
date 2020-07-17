@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell を使用して Azure DNS サブドメインを委任する
-description: Azure PowerShell を使用して Azure DNS サブドメインを委任する方法について説明します。
+title: サブドメインを委任する - Azure PowerShell - Azure DNS
+description: このラーニング パスでは、Azure PowerShell を使用した Azure DNS サブドメインの委任について説明します。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 40b2a4d98e6269d9740856ba44c1043af75ce1b8
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.author: rohink
+ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896605"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76937704"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS サブドメインを委任する
 
@@ -25,7 +25,7 @@ Azure PowerShell を使用して DNS サブドメインを委任することが�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ Azure DNS サブドメインを委任するには、まずパブリック ドメ
 
 engineering ゾーンに、テストに使用する **A** レコードを作成します。
 
-   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`
+   [https://login.microsoftonline.com/consumers/](`New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`)
 
 ## <a name="create-an-ns-record"></a>NS レコードの作成
 
@@ -70,6 +70,6 @@ nslookup を使用して委任をテストします。
 2. コマンド プロンプトに「`nslookup www.engineering.contoso.com.`」と入力します。
 3. アドレス **10.10.10.10** を示す権限のない回答を受け取ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure でホストされているサービスの逆引き DNS を構成する](dns-reverse-dns-for-azure-services.md)方法について説明します。

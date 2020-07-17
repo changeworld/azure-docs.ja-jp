@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド ID 設計 - 管理タスク - Azure | Microsoft Docs
-description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
+description: 条件付きアクセス制御を使用して、Azure Active Directory では、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166999"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67109378"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる
 ID はエンタープライズ モビリティとアプリケーション アクセスの戦略基盤の 1 つです。 モバイル デバイスにサインオンする場合でも、SaaS アプリにサインオンする場合でも、ID があらゆるアクセスを得るための鍵となります。 ID 管理ソリューションとは、概して、ID リポジトリ間の統一と同期であり、その中にリソースのプロビジョニングというプロセスの自動化と集中化が含まれます。 ID ソリューションはオンプレミスとクラウドにわたり ID を一元化するものでなければならず、また、何らかの形式の ID フェデレーションを利用し、認証を一元化し、外部のユーザーや企業と安全に共有し、共同作業するものです。 リソースは、オペレーティング システムやアプリケーションから組織内のユーザーや関連組織まで多岐にわたります。 組織構造を変更し、プロビジョニングのポリシーと手続を調整できます。
@@ -32,7 +32,7 @@ ID ソリューションを調整し、ユーザーにセルフサービス機�
 ## <a name="determine-hybrid-identity-management-tasks"></a>ハイブリッド ID 管理タスクを決定する
 組織内で管理タスクを配分することで、管理の精度と効果が上がり、組織の作業負荷のバランスが良くなります。 堅牢な ID 管理システムは、次のような軸を基に定義されます。
 
- ![](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![ID 管理に関する考慮事項](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
 ハイブリッド ID 管理タスクを定義するには、ハイブリッド ID を導入する組織の本質的特性を理解する必要があります。 ID ソースとして利用されている現在のリポジトリを理解することが重要です。 以上の中心的要素を知ることで、基礎的な要件が与えられ、それに基づいてさらに細かく質問に答えることで、ID ソリューションの設計が効率的に導き出されます。  
 
@@ -48,26 +48,27 @@ ID ソリューションを調整し、ユーザーにセルフサービス機�
   
   * そのハイブリッド ID ソリューションはライセンス管理を処理しますか。
     * 処理する場合、どのような機能を利用できますか。
-* そのソリューションはグループ基準のライセンス管理を処理しますか。 
+  * そのソリューションはグループ基準のライセンス管理を処理しますか。 
   
-      - 処理する場合、セキュリティ グループをそれに割り当てることができますか。 
-       - 処理する場合、クラウド ディレクトリはグループのすべてのメンバーにライセンスを自動的に割り当てますか。 
-        - その後、ユーザーがグループに追加されるか、グループから削除された場合、どのような動作が行われますか。ライセンスは適宜、自動的に割り当てられるか、削除されますか。 
+    * 処理する場合、セキュリティ グループをそれに割り当てることができますか。 
+    * 処理する場合、クラウド ディレクトリはグループのすべてのメンバーにライセンスを自動的に割り当てますか。 
+    * その後、ユーザーがグループに追加されるか、グループから削除された場合、どのような動作が行われますか。ライセンスは適宜、自動的に割り当てられるか、削除されますか。 
 * 他のサード パーティの ID プロバイダーと統合する:
-* このハイブリッド ソリューションをサード パーティの ID プロバイダーと統合し、シングル サインオンを実装できますか。
-* さまざまな ID プロバイダーを密着した ID システムに統合できますか。
-* 統合できる場合、それは何という ID プロバイダーであり、どのような機能を利用できますか。
+  * このハイブリッド ソリューションをサード パーティの ID プロバイダーと統合し、シングル サインオンを実装できますか。
+  * さまざまな ID プロバイダーを密着した ID システムに統合できますか。
+  * 統合できる場合、それは何という ID プロバイダーであり、どのような機能を利用できますか。
 
 ## <a name="synchronization-management"></a>同期管理
 ID マネージャーの目標の 1 つは、あらゆる ID プロバイダーを同期させることです。 権限のあるマスター ID プロバイダーに基づき、データを同期します。 同期管理モデルのあるハイブリッド ID シナリオでは、オンプレミス サーバーですべてのユーザーとデバイスの ID を管理し、アカウントと、必要に応じて、パスワードをクラウドに同期します。 ユーザーはクラウドと同じパスワードをオンプレミスで入力します。サインイン時にパスワードが ID ソリューションにより検証されます。 このモデルではディレクトリ同期ツールが使用されます。
 
-![](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) ハイブリッド ID ソリューションの同期を適切に設計するには、次の質問に答えます。•    ハイブリッド ID ソリューションに利用できる同期ソリューションは何ですか。
-•    どのようなシングル サインオン機能が利用できますか。
-•    B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
+![ディレクトリ同期](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)ハイブリッド ID ソリューションの同期を適正に設計するために、次の質問の回答を確認します。
+*    ハイブリッド ID ソリューションに利用できる同期ソリューションは何ですか。
+*    どのようなシングル サインオン機能が利用できますか。
+*    B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ハイブリッド ID 管理の導入戦略の決定](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

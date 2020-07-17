@@ -1,24 +1,17 @@
 ---
-title: Azure Monitor Data Collector API を使用してデータ パイプラインを作成する | Microsoft Docs
+title: データ コレクター API を使用してデータ パイプラインを作成する
 description: Azure Monitor HTTP Data Collector API を使用すると、REST API を呼び出すことのできる任意のクライアントから POST JSON データを Log Analytics ワークスペースに追加できます。 この記事では、ファイルに格納されたデータを自動的にアップロードする方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.author: magoedte
-ms.openlocfilehash: 961ce4427c509142077c95a6569ad2c444ec0a52
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205958"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055111"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>データ コレクター API によるデータ パイプラインの作成
 
@@ -27,7 +20,7 @@ ms.locfileid: "65205958"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>問題の例
-以降この記事では、Application Insights のページ ビュー データを詳しく見ていきます。 ここではあるシナリオを想定しています。Application Insights SDK により既定で収集された地理的情報を、世界各国の人口が格納されているカスタム データに関連付けるというものです。マーケティングの予算をどこに一番多く費やすべきかを見極めるのがその目的です。 
+以降この記事では、Application Insights のページ ビュー データを詳しく見ていきます。 ここではあるシナリオを想定しています。Application Insights SDK により既定で収集された地理的情報を、世界各国/地域の人口が格納されているカスタム データに関連付けるというものです。マーケティングの予算をどこに一番多く費やすべきかを見極めるのがその目的です。 
 
 そこで、[UN World Population Prospects](https://esa.un.org/unpd/wpp/) などのパブリック データ ソースを使用します。 このデータのスキーマは次のとおり単純です。
 
@@ -129,7 +122,7 @@ Logic Apps を使えば JSON データは簡単に取り込むことができ、
     ```
 
 4. 関数を保存します。
-5. 関数をテストして、そのコードが正しく動作することを確認します。 右側のウィンドウで **[テスト]** タブに切り替えて、次のようにテストを構成します。 **[要求本文]** ボックスに、サンプル データが格納されている BLOB へのリンクを配置します。 **[実行]** をクリックすると、**[出力]** ボックスに JSON 出力が表示されます。
+5. 関数をテストして、そのコードが正しく動作することを確認します。 右側のウィンドウで **[テスト]** タブに切り替えて、次のようにテストを構成します。 **[要求本文]** ボックスに、サンプル データが格納されている BLOB へのリンクを配置します。 **[実行]** をクリックすると、 **[出力]** ボックスに JSON 出力が表示されます。
 
     ![Function App のテスト コード](./media/create-pipeline-datacollector-api/functions-test-01.png)
 
@@ -172,5 +165,5 @@ app("fabrikamprod").pageViews
 * 複数の異なる種類のデータをアップロードする場合は、それらを BLOB コンテナー内の個別のフォルダーに分け、データの種類に応じて分散するようにロジックを作成します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 REST API クライアントから [Data Collector API](data-collector-api.md) を使用して Log Analytics ワークスペースにデータを書き込む方法の詳細を確認します。

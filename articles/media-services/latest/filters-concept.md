@@ -11,45 +11,37 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: 3a562f98635d581aa320fdbd59d05a0382f09606
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227159"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>アカウント フィルターとアセット フィルターの定義  
+# <a name="filters"></a>フィルター
 
-コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 
+コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services には、定義済みのフィルターに基づいた[動的マニフェスト](filters-dynamic-manifest-overview.md)が用意されています。 
 
 フィルターは、次のような操作を顧客に許可するサーバー側のルールです。 
 
-- ビデオ全体を再生するのではなく、ビデオの 1 つのセクションのみを再生する。 例: 
+- ビデオ全体を再生するのではなく、ビデオの 1 つのセクションのみを再生する。 次に例を示します。
   - マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)、または
   - ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
 - コンテンツの再生に使用するデバイスでサポートされている演奏や言語のトラックのみを指定して配信する ("演奏フィルタ―処理")。 
 - プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する ("プレゼンテーション ウィンドウの調整")。
 
-Media Services には、定義済みのフィルターに基づいた[動的マニフェスト](filters-dynamic-manifest-overview.md)が用意されています。 フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
+Media Services では、**アカウント フィルター**と、コンテンツの**資産フィルター**を作成することができます。 さらに、事前に作成したフィルターを**ストリーミング ロケーター**に関連付けることができます。
 
-次の表に、フィルターを含んだ URL の例をいくつか示します。
+## <a name="defining-filters"></a>フィルターを定義する
 
-|Protocol|例|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>HLS v3 の場合は、`format=m3u8-aapl-v3` を使用します。|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|スムーズ ストリーミング|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
-## <a name="define-filters"></a>フィルターを定義する
-
-次の 2 種類のアセット フィルターがあります。 
+2 種類のフィルターがあります。 
 
 * [アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters) (グローバル) - Azure Media Services アカウントのすべてのアセットに適用可能。アカウントの有効期間があります。
 * [アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters) (ローカル) - 作成時にフィルターに関連付けられたアセットにのみ適用可能。アセットの有効期間があります。 
 
-[アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters) タイプと[アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters) タイプは、フィルターの定義/記述に関して、まったく同じプロパティを持ちます。 ただし**アセット フィルター**を作成するときは、フィルターを関連付けるアセットの名前を指定する必要があります。
+**アカウント フィルター** タイプと**アセット フィルター** タイプは、フィルターの定義/記述に関して、まったく同じプロパティを持ちます。 ただし**アセット フィルター**を作成するときは、フィルターを関連付けるアセットの名前を指定する必要があります。
 
 実際のシナリオに応じて、アセット フィルターとアカウント フィルターのどちらのタイプのフィルターが適しているかを判断することになります。 アカウント フィルターは、デバイス プロファイル (演奏フィルター処理) に適しています。一方、アセット フィルターは、特定のアセットをトリミングする目的で使用できます。
 
@@ -88,11 +80,9 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 |**Name**|フィルタリングにトラックの名前を使用します。|
 |**Type**|フィルタリングにトラックの種類を使用します。<br/><br/>"video"、"audio"、"text" のいずれかの値を指定できます。|
 
-## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+### <a name="example"></a>例
 
-資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
-
-## <a name="definition-example"></a>定義の例
+次の例では、ライブ ストリーミングのフィルターを定義します。 
 
 ```json
 {
@@ -147,7 +137,24 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="associating-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
+
+次の例を参照してください。
+
+* [フィルターをストリーミング ロケーターに関連付ける - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [フィルターをストリーミング ロケーターに関連付ける - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+
+## <a name="updating-filters"></a>フィルターの更新
+ 
+フィルターは更新できますが、**ストリーミング ロケーター**は更新できません。 
+
+CDN が有効になっている場合は特に、アクティブに公開されている**ストリーミング ロケーター**に関連付けられているフィルターの定義を更新することはお勧めできません。 ストリーミング サーバーと CDN には内部キャッシュが存在する可能性があり、その結果として古いキャッシュ データが返される場合があります。 
+
+フィルター定義を変更する必要がある場合は、新しいフィルターを作成してそれを**ストリーミング ロケーター**の URL に追加するか、またはフィルターを直接参照する新しい**ストリーミング ロケーター**を公開することを検討してください。
+
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、プログラムを使ってフィルターを作成する方法が紹介されています。  
 

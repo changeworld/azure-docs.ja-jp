@@ -1,4 +1,4 @@
-- name: Azure Storage のドキュメント
+- name: Azure Table Storage のドキュメント
   href: /azure/storage/
 - name: 概要
   expanded: true
@@ -8,7 +8,7 @@
     - name: Table Storage またはテーブル API の選択
       href: /azure/cosmos-db/table-support
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Azure portal でのテーブルの作成
       href: table-storage-quickstart-portal.md
@@ -45,13 +45,25 @@
   items:
     - name: ストレージ アカウント
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Security
       items:
-        - name: ストレージ アカウントの管理
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: ストレージ アカウントのアップグレード
-          href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: 高性能で拡張性の高いテーブルの設計
-      href: table-storage-design.md
+        - name: セキュリティ ベースライン
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Azure Storage の保存時の暗号化
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+          items:
+            - name: Azure Key Vault でのカスタマー マネージド キー
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: データの冗長性
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: ディザスター リカバリーとフェールオーバー
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: パフォーマンス、スケーリング、コストの最適化
+      items:
+        - name: パフォーマンスとスケーラビリティのチェックリスト
+          href: storage-performance-checklist.md
+        - name: 高性能で拡張性の高いテーブルの設計
+          href: table-storage-design.md
     - name: テーブル設計のガイドライン
       href: table-storage-design-guidelines.md
     - name: クエリに対応した設計
@@ -64,27 +76,89 @@
       href: table-storage-design-modeling.md
     - name: テーブルの設計パターン
       href: table-storage-design-patterns.md
-- name: ハウツー ガイド
+- name: 操作方法
   items:
     - name: ストレージ アカウントの作成
       displayName: 'resource manager, resource manager template, template, ARM'
-      href: /azure/storage/common/storage-quickstart-create-account
+      href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
-    - name: ストレージ エミュレーターを使用する方法
-      href: /azure/storage/common/storage-use-emulator
+    - name: ストレージ アカウントのアップグレード
+      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: ストレージ エミュレーターを使用する
+      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
       maintainContext: true
+    - name: テーブル データの保護
+      items:
+        - name: テーブル データへのアクセスの承認
+          items:
+            - name: アカウント キーの表示と管理
+              href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: 接続文字列の構成
+              href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Azure Storage REST API の使用
+              href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Azure Storage の暗号化の管理
+          items:
+            - name: 顧客管理キーをサポートするアカウントの作成
+              href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: 顧客管理キーの構成
+              items:
+                - name: ポータル
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: アカウントの暗号化キー モデルの確認
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: クライアント側の暗号化の構成
+          items:
+            - name: .NET
+              href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Java
+              href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: Python
+              href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: ネットワーク セキュリティの構成
+          items:
+            - name: ファイアウォールと仮想ネットワークの構成
+              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: 安全な転送が必要
+              href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: トランスポート層セキュリティの有効化
+              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: データの冗長性を管理する
+      items:
+        - name: データのレプリケート方法の変更
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: 高可用性アプリケーションの設計
+          href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: ディザスター リカバリーの管理
+      items:
+        - name: 最終同期時刻プロパティを確認する
+          href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: アカウントのフェールオーバーを開始する
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: データの転送
       items:
-        - name: AzCopy (v10)
-          href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: AzCopy on Windows (v8)
-          href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
         - name: AzCopy on Linux (v8)
-          href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: アカウントのフェールオーバーを開始する
-      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-- name: リソース
+          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
+    - name: トラブルシューティング
+      items:
+        - name: 待機時間に関する問題
+          href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+- name: リファレンス
   items:
+    - name: スケーラビリティとパフォーマンスのターゲット
+      items:
+        - name: テーブル ストレージ
+          href: scalability-targets.md
+        - name: Standard Storage アカウント
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: ストレージ リソース プロバイダー
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Table Storage REST API
       href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
       maintainContext: true

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Docs
+title: Azure Service Fabric のエンティティの正常性の集計を確認する方法
 description: 正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c8113bffba824ddb0885e92b0d6c5392748899da
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662773"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75464131"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
 Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
@@ -32,7 +23,7 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 * 正常性クエリ (PowerShell、API、または REST を使用)
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、API、または REST を使用)
 
-これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](https://aka.ms/servicefabric-wordcountapp)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
+これらのオプションについて、5 つのノードがあるローカル クラスターと [fabric:/WordCount アプリケーション](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg)を使用して説明します。 **fabric:/WordCount** アプリケーションには、既定のサービスとして `WordCountServiceType` というステートフル サービスと、`WordCountWebServiceType` というステートレス サービスの 2 つがあります。 ステートフル サービスと 1 つのパーティションについて、7 つのターゲット レプリカを必須にするように `ApplicationManifest.xml` を変更しました。 クラスターには 5 つのノードのみがあり、ターゲット数を下回っているため、システム コンポーネントからサービス パーティションについて警告が報告されます。
 
 ```xml
 <Service Name="WordCountService">
@@ -677,7 +668,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ### <a name="powershell"></a>PowerShell
 デプロイされたアプリケーションの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。 アプリケーションのデプロイ先を探すには、 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) を実行して、デプロイされたアプリケーションの子を確認します。
 
-次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
+次のコマンドレットは、 **_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -735,7 +726,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ### <a name="powershell"></a>PowerShell
 デプロイされたサービス パッケージの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。 アプリケーションのデプロイ先を確認するには、 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) を実行して、デプロイされたアプリケーションを確認します。 アプリケーション内のサービス パッケージを確認するには、 [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) の出力で、デプロイされたサービス パッケージの子を確認します。
 
-次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。 エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
+次のコマンドレットは、 **_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。 エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -1030,30 +1021,30 @@ ApplicationHealthStateChunks :
 
 エンティティの **HealthState** が含まれるクエリは次のとおりです。
 
-* ノード一覧:クラスター内のノードの一覧を返します (ページング)。
-  * API:[FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * PowerShell:Get-ServiceFabricNode
-* アプリケーション一覧:クラスター内のアプリケーションの一覧を返します (ページング)。
-  * API:[FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * PowerShell:Get-ServiceFabricApplication
-* サービス一覧:アプリケーション内のサービスの一覧を返します (ページング)。
-  * API:[FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * PowerShell:Get-ServiceFabricService
-* パーティション一覧:サービス内のパーティションの一覧を返します (ページング)。
-  * API:[FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * PowerShell:Get-ServiceFabricPartition
-* レプリカ一覧:パーティション内のレプリカの一覧を返します (ページング)。
-  * API:[FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * PowerShell:Get-ServiceFabricReplica
-* デプロイ済みアプリケーション一覧:ノード上にデプロイされたアプリケーションの一覧を返します。
-  * API:[FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * PowerShell:Get-ServiceFabricDeployedApplication
-* デプロイ済みサービス パッケージ一覧:デプロイされたアプリケーション内のサービス パッケージの一覧を返します。
-  * API:[FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * PowerShell:Get-ServiceFabricDeployedApplication
+* ノード一覧: クラスター内のノードの一覧を返します (ページング)。
+  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * PowerShell: Get-ServiceFabricNode
+* アプリケーション一覧: クラスター内のアプリケーションの一覧を返します (ページング)。
+  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * PowerShell: Get-ServiceFabricApplication
+* サービス一覧: アプリケーション内のサービスの一覧を返します (ページング)。
+  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * PowerShell: Get-ServiceFabricService
+* パーティション一覧: サービス内のパーティションの一覧を返します (ページング)。
+  * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * PowerShell: Get-ServiceFabricPartition
+* レプリカ一覧: パーティション内のレプリカの一覧を返します (ページング)。
+  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * PowerShell: Get-ServiceFabricReplica
+* デプロイ済みアプリケーション一覧: ノード上にデプロイされたアプリケーションの一覧を返します。
+  * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * PowerShell: Get-ServiceFabricDeployedApplication
+* デプロイ済みサービス パッケージ一覧: デプロイされたアプリケーション内のサービス パッケージの一覧を返します。
+  * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡します。
+> 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡します。
 
 ### <a name="examples"></a>例
 次のコードは、クラスター内の正常でないアプリケーションを取得します。
@@ -1236,7 +1227,7 @@ HealthEvents          :
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
 [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)

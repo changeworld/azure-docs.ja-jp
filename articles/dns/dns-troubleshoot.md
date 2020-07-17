@@ -1,31 +1,24 @@
 ---
-title: Azure DNS トラブルシューティング ガイド | Microsoft Docs
-description: Azure DNS における一般的な問題のトラブルシューティング方法
+title: トラブルシューティング ガイド - Azure DNS
+description: このラーニング パスでは、Azure DNS に関する一般的な問題のトラブルシューティングを開始します
 services: dns
-documentationcenter: na
-author: genlin
-manager: cshepard
-editor: ''
-ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
+author: rohinkoul
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/20/2017
-ms.author: genli
-ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 09/20/2019
+ms.author: rohink
+ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541572"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76939027"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド
 
-このページには、Azure DNS についてよく寄せられる質問のトラブルシューティング情報が示されています。
+この記事では、Azure DNS についてよく寄せられる質問のトラブルシューティング情報を提供します。
 
-次の手順で問題が解決しない場合は、[MSDN のコミュニティ サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)で検索したり、こうしたフォーラムに問題を投稿したりすることもできます。 または、Azure のサポート要求を開きます。
+次の手順で問題が解決しない場合は、[MSDN のコミュニティ サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)で検索したり、こうしたフォーラムに問題を投稿したりすることもできます。 または、Azure のサポート リクエストを開くことができます。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>DNS ゾーンを作成できない
@@ -33,16 +26,15 @@ ms.locfileid: "57541572"
 一般的な問題を解決するには、次の手順のうち 1 つ以上を試してください。
 
 1.  Azure DNS 監査ログを確認して、失敗の理由を特定します。
-2.  各 DNS ゾーン名は、リソース グループ内で一意である必要があります。 つまり、同じ名前の 2 つの DNS ゾーンがリソース グループを共有することはできません。 別のゾーン名 (別のリソース グループ) を使用してみてください。
+2.  各 DNS ゾーン名は、リソース グループ内で一意である必要があります。 つまり、同じ名前の 2 つの DNS ゾーンでリソース グループを共有することはできません。 別のゾーン名 (別のリソース グループ) を使用してみてください。
 3.  "サブスクリプション {サブスクリプション ID} のゾーンが最大数に達したか、最大数を超えました" というエラー メッセージが表示される場合があります。 別の Azure サブスクリプションを使用するか、ゾーンのいくつかを削除するか、Azure サポートに連絡してサブスクリプションの上限を引き上げてください。
-4.  "ゾーン '{ゾーン名}' は使用できません" というエラー メッセージが表示される場合があります。 このエラーは、Azure DNS で、この DNS ゾーンのネーム サーバーを割り当てることができなかったことを示します。 別のゾーン名を使用してみてください。 ドメイン名の所有者である場合は、Azure サポートに連絡してください。Azure サポートがネーム サーバーを割り当てます。
+4.  "ゾーン '{ゾーン名}' は使用できません" というエラー メッセージが表示される場合があります。 このエラーは、Azure DNS で、この DNS ゾーンのネーム サーバーを割り当てることができなかったことを示します。 別のゾーン名を使用してみてください。 または、ドメイン名の所有者である場合は、Azure サポートに連絡して、ネーム サーバーを割り当ててもらうことができます。
 
 
-### <a name="recommended-documents"></a>**推奨されるドキュメント**
+### <a name="recommended-articles"></a>推奨される記事
 
-[DNS ゾーンとレコード](dns-zones-records.md)
-<br>
-[DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
+* [DNS ゾーンとレコード](dns-zones-records.md)
+* [DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>DNS レコードを作成できない
 
@@ -55,11 +47,10 @@ ms.locfileid: "57541572"
 5.  DNS ゾーンで許可されているレコード セット数の上限に達していませんか。 レコード セットの現在の数と最大数は、Azure Portal のゾーンの [プロパティ] に表示されます。 この上限に達している場合、一部のレコード セットを削除するか、Azure サポートに連絡してこのゾーンのレコード セットの上限を引き上げてから、もう一度試してください。 
 
 
-### <a name="recommended-documents"></a>**推奨されるドキュメント**
+### <a name="recommended-articles"></a>推奨される記事
 
-[DNS ゾーンとレコード](dns-zones-records.md)
-<br>
-[DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
+* [DNS ゾーンとレコード](dns-zones-records.md)
+* [DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
 
 
 
@@ -76,9 +67,9 @@ DNS 名前解決は数段階のプロセスであり、多くの理由で失敗�
 4.  上記の手順が完了すると、DNS レコードが正しく解決されるようになります。 これを確認するには、既定のネーム サーバー設定を使用して、[digwebinterface](https://digwebinterface.com) をもう一度使用します。
 
 
-### <a name="recommended-documents"></a>**推奨されるドキュメント**
+### <a name="recommended-articles"></a>推奨される記事
 
-[Azure DNS へのドメインの委任](dns-domain-delegation.md)
+* [Azure DNS へのドメインの委任](dns-domain-delegation.md)
 
 
 
@@ -91,16 +82,14 @@ SRV レコード名の例 (サービス名が "sip"、プロトコルが "tcp") 
 - \_sip.\_tcp (レコード セットをゾーンの頂点に作成)
 - \_sip.\_tcp.sipservice ("sipservice" という名前のレコード セットを作成)
 
-### <a name="recommended-documents"></a>**推奨されるドキュメント**
+### <a name="recommended-articles"></a>推奨される記事
 
-[DNS ゾーンとレコード](dns-zones-records.md)
-<br>
-[Azure portal を使用した DNS レコード セットとレコードの作成](dns-getstarted-create-recordset-portal.md)
-<br>
-[SRV レコード タイプ (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
+* [DNS ゾーンとレコード](dns-zones-records.md)
+* [Azure portal を使用した DNS レコード セットとレコードの作成](dns-getstarted-create-recordset-portal.md)
+* [SRV レコード タイプ (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure DNS ゾーンとレコード](dns-zones-records.md)について学習します
 * Azure DNS の使用を開始する場合は、[DNS ゾーンの作成方法](dns-getstarted-create-dnszone-portal.md)と [DNS レコードの作成方法](dns-getstarted-create-recordset-portal.md)について確認してください。

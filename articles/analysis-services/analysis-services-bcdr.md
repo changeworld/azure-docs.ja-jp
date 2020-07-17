@@ -1,19 +1,18 @@
 ---
 title: Azure Analysis Services の高可用性 | Microsoft Docs
-description: Azure Analysis Services の高可用性。
+description: この記事では、Azure Analysis Services で、サービスの中断中に高可用性を実現する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51a0f560a0e4b6ff791d5ed3f9f221eb2eeb9b4d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 78a6d41b638d79111a58830f0cb0d5190ea0796c
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191345"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408680"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services の高可用性
 

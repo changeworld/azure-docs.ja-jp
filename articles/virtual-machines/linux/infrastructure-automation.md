@@ -1,25 +1,18 @@
 ---
-title: Azure の Linux VM 用インフラストラクチャ自動化ツールを使用する | Microsoft Docs
-description: Ansible、Chef、Puppet、Terraform、Packer などのインフラストラクチャ自動化ツールを使用して、Azure で Linux 仮想マシンを作成して管理する方法を説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: インフラストラクチャ自動化ツールを使用する
+description: Ansible、Chef、Puppet、Terraform、Packer などのインフラストラクチャ自動化ツールを使用して、Azure で仮想マシンを作成して管理する方法を説明します。
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 96440faaaea1883d80f441520a6091e3fce078b1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 176e8fcc04f6e1e95c13488f755757a313386490
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886146"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "78944910"
 ---
+# <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

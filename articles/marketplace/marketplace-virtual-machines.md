@@ -2,17 +2,18 @@
 title: Azure Marketplace 用の仮想マシンのオファー発行ガイド
 description: この記事では、Marketplace からデプロイされる仮想マシンとソフトウェアの無料試用版を発行するための要件について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+author: dsindona
 ms.service: marketplace
-ms.topic: article
-ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: ccb6fc9c522e8d05d0184fc5e248d070efb9921d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937740"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687498"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>仮想マシンのオファー発行ガイド
 
@@ -22,14 +23,7 @@ ms.locfileid: "64937740"
 
 ## <a name="free-trial"></a>無料試用版 
 
-ライセンス持ち込み (BYOL) 課金モデルを使用するときに、期限付きのソフトウェア ライセンスにアクセスすることで、オファーをテストするユーザー向けに手配できます。 このオファーをデプロイする要件は以下のとおりです。 
-
-|必要条件  |詳細  |
-|---------|---------|
-|無料試用期間および試用エクスペリエンス     |   顧客は、期間限定で、アプリを無料で試用することができます。 オファーに関して、顧客にはライセンス料金やサブスクリプション料金の支払いを一切要求しません。 基本となる Microsoft のファーストパーティ製品またはサービスの対価を顧客には一切要求しません。 すべての試用版オプションは、公開元の Azure サブスクリプションにデプロイされます。 コストの最適化と管理は、公開元によってのみ決められます。 無料試用版または対話型デモを選ぶことができます。 何を選んでも、無料試用版では、追加コストなしでオファーを試す期間を事前に設定して顧客に提供する必要があります。|
-|簡単に構成できてすぐに使用できるソリューション    |  アプリは、短時間で簡単に構成およびセットアップできる必要があります。       |
-|可用性/アップタイム    |    SaaS アプリまたはプラットフォームのアップタイムは 99.9% 以上である必要があります。     |
-|Azure Active Directory     |    オファーでは、同意が有効な Azure Active Directory (Azure AD) フェデレーション シングル サインオン (SSO) (Azure AD フェデレーション SSO) を許可する必要があります。     |
+ライセンス持ち込み (BYOL) 課金モデルを使用するときに、期限付きのソフトウェア ライセンスにアクセスすることで、オファーをテストするユーザー向けに手配できます。 
 
 ## <a name="test-drive"></a>体験版
 
@@ -59,18 +53,18 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 | 要件 | 詳細 |  
 |:--- |:--- | 
 | 請求/メータリング | 対象の VM は、BYOL または従量課金制の月額請求をサポートしている必要があります。 |  
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 <ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」を参照してください。</li> </ul> |  
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 <ul> <li>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。</li> <li>Windows VHD の作成の詳細については、「[Azure と互換性のある VHD の作成](./partner-center-portal/azure-vm-create-offer.md)」を参照してください。</li> </ul> |  
 
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、 
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
+- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
-- 詳細については、「[仮想マシン サイズ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer)」を参照してください。
+- [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
+- 詳細については、「[仮想マシン オファーを作成する](./partner-center-portal/azure-vm-create-offer.md)」を参照してください。

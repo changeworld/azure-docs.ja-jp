@@ -1,7 +1,7 @@
 ---
 title: ユーザー データをエクスポートまたは削除する - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: Content Moderator のデータをエクスポートまたは削除する方法について説明します。
+titleSuffix: Azure Cognitive Services
+description: データはお客様が完全に制御できます。 Content Moderator のデータを表示、エクスポートまたは削除する方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 1cd70bee22e56e2580b322b93e0f121261d97a94
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758104"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73744795"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Content Moderator のユーザー データをエクスポートまたは削除する
 
@@ -25,7 +25,7 @@ Content Moderator は、サービスの運用にユーザー データを収集�
 
 Content Moderator のユーザー データをエクスポートおよび削除する方法については、次の表を参照してください。
 
-| データ | エクスポート操作 | 削除操作。 |
+| Data | エクスポート操作 | 削除操作。 |
 | ---- | ---------------- | ---------------- |
 | アカウントの情報 (サブスクリプション キー) | 該当なし | Azure Portal (Azure のサブスクリプション) を使用して削除します。 または、[[Review UI]\(UI の確認\)](https://contentmoderator.cognitive.microsoft.com/) チーム設定ページの **[チームの削除]** ボタンを使用します。 |
 | カスタム照合用の画像 | [画像 ID の取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676) を呼び出します。 画像は、一方向の独自のハッシュ形式で格納され、実際の画像を抽出する方法はありません。 | [すべての画像を削除 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686) を呼び出します。 または、Azure Portal を使用して、Content Moderator のリソースを削除します。 |

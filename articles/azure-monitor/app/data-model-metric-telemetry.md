@@ -1,25 +1,17 @@
 ---
-title: Azure Application Insights Telemetry のデータ モデル - メトリック テレメトリ | Microsoft Docs
+title: メトリック テレメトリ用のデータ モデル - Azure Application Insights
 description: メトリック テレメトリ用の Application Insights データ モデル
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671972"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ:Application Insights データ モデル
+# <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
 
@@ -57,7 +49,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 集計メトリックの最小値。 測定には設定しないでください。
 
-## <a name="max"></a>max
+## <a name="max"></a>Max
 
 集計メトリックの最大値。 測定には設定しないでください。
 
@@ -71,7 +63,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタムのイベントとメトリックのための Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。

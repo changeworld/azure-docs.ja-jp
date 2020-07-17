@@ -4,12 +4,12 @@ ms.author: magoedte
 ms.service: log-analytics
 ms.topic: include
 ms.date: 08/14/2018
-ms.openlocfilehash: eac230f8cad796a35a59fd5f2783404e979fecc0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e8f93a1c16481f00d78a2d335020b2eb91d80ce8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129414"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67122543"
 ---
 >[!NOTE]
->現在 Microsoft Operations Management Suite (OMS) から Azure Monitor への移行作業が進行していますが、その一環として、OMS エージェント for Windows と OMS エージェント for Linux は、それぞれ Log Analytics エージェント for Windows および Log Analytics エージェント for Linux という名称になります。  
+>現在進行中の Microsoft Operations Management Suite から Azure Monitor への移行の一環として、Windows 用または Linux 用の Operations Management Suite エージェントは、Windows 用 Log Analytics エージェントおよび Linux 用 Log Analytics エージェントと呼ばれるようになります。

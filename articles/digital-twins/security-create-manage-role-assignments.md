@@ -1,27 +1,24 @@
 ---
-title: Azure Digital Twins 内でのロールの割り当ての作成と管理 | Microsoft Docs
-description: Azure Digital Twins 内でのロールの割り当てを作成および管理します。
-author: lyrana
-manager: alinast
+title: ロールの割り当ての作成と管理 - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins 内でのロールの割り当ての作成と管理について説明します。
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
-ms.author: lyrana
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162116"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77110408"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
 Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./security-role-based-access-control.md)) を使用してリソースに対するアクセス権を管理します。
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>ロールの割り当ての概要
 
@@ -39,13 +36,13 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | Name | 必須 | Type | 説明 |
+| 属性 | 名前 | 必須 | Type | 説明 |
 | --- | --- | --- | --- | --- |
 | roleId | ロール定義識別子 | はい | String | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
 | objectId | オブジェクト識別子 | はい | String | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
 | objectIdType | オブジェクト識別子の型 | はい | String | 使用するオブジェクト識別子の種類。 下の「**サポートされているオブジェクト識別子の型**」をご覧ください。 |
-| path | スペース パス | はい | String | `Space` オブジェクトへの完全アクセス パス。 例: `/{Guid}/{Guid}`。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
-| tenantId | テナント識別子 | 多様 | String | ほとんどの場合、Azure Active Directory テナント ID。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
+| path | スペース パス | はい | String | `Space` オブジェクトへの完全アクセス パス。 たとえば `/{Guid}/{Guid}` です。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
+| tenantId | テナント識別子 | 場合により異なる | String | ほとんどの場合、Azure Active Directory テナント ID。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
 
 ### <a name="supported-role-definition-identifiers"></a>サポートされているロール定義識別子
 
@@ -63,7 +60,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 Azure Digital Twins では、ロールの割り当てに対して *CREATE*、*READ*、*DELETE* の操作が完全にサポートされます。 *UPDATE* 操作は、ロールの割り当ての追加、ロールの割り当ての削除、またはロールの割り当てによってアクセス権が付与される[空間インテリジェンス グラフ](./concepts-objectmodel-spatialgraph.md) ノードの変更によって処理されます。
 
-![ロールの割り当てのエンドポイント][1]
+[![ロールの割り当てのエンドポイント](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 提供される Swagger リファレンス ドキュメントには、すべての使用可能な API エンドポイント、要求の操作、および定義に関する詳細情報が含まれています。
 
@@ -71,28 +68,33 @@ Azure Digital Twins では、ロールの割り当てに対して *CREATE*、*RE
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-<div id="grant"></div>
-
 ### <a name="grant-permissions-to-your-service-principal"></a>サービス プリンシパルにアクセス許可を付与する
 
 サービス プリンシパルへのアクセス許可の付与は、多くの場合、Azure Digital Twins を操作するときに実行する最初の手順の 1 つです。 以下を伴います。
 
-1. PowerShell を使用した Azure インスタンスへのログイン。
+1. [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) または [PowerShell](https://docs.microsoft.com/powershell/azure/) を使用した Azure インスタンスへのログイン。
 1. サービス プリンシパル情報の取得。
 1. サービス プリンシパルへの必要なロールの割り当て。
 
 Azure Active Directory 内でアプリケーション ID が提供されます。 Active Directory での Azure Digital Twins の構成とプロビジョニングについて詳しくは、[クイック スタート](./quickstart-view-occupancy-dotnet.md)をご覧ください。
 
-アプリケーション ID を入手したら、次の PowerShell コマンドを実行します。
+アプリケーション ID を入手したら、次のコマンドのいずれかを実行します。 Azure CLI の場合:
 
-```shell
+```azurecli
+az login
+az ad sp show --id <ApplicationId>
+```
+
+Powershell の場合:
+
+```powershell
 Login-AzAccount
-Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
+Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
 **管理者**ロールを持つユーザーは、URL に認証済みの HTTP POST 要求を実行することによってユーザーにスペース管理者ロールを割り当てることができます。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -108,15 +110,13 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 }
 ```
 
-<div id="all"></div>
-
 ### <a name="retrieve-all-roles"></a>すべてのロールの取得
 
-![システム ロール][2]
+[![システム ロール](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 すべての利用可能なロール (ロールの定義) を一覧表示するには、認証済みの HTTP GET 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -153,13 +153,11 @@ YOUR_MANAGEMENT_API_URL/system/roles
 ]
 ```
 
-<div id="check"></div>
-
 ### <a name="check-a-specific-role-assignment"></a>特定のロールの割り当ての確認
 
 特定のロールの割り当てを確認するには、認証済みの HTTP GET 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
@@ -167,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | String |   UserId objectIdType の objectId。 |
 | YOUR_PATH | True | String |   アクセスを確認する選択済みパス。 |
-| YOUR_ACCESS_TYPE |  True | String |   確認するアクセスの種類。 |
-| YOUR_RESOURCE_TYPE | True | String |  確認するリソース。 |
+| YOUR_ACCESS_TYPE |  True | String |   *Read*、*Create*、*Update*、または *Delete* |
+| YOUR_RESOURCE_TYPE | True | String |  *Device*、*DeviceBlobMetadata*、*DeviceExtendedProperty*、*ExtendedPropertyKey*、*ExtendedType*、*Endpoint*、*KeyStore*、*Matcher*、*Ontology*、*Report*、*RoleDefinition*、*Sensor*、*SensorExtendedProperty*、*Space*、*SpaceBlobMetadata*、*SpaceExtendedProperty*、*SpaceResource*、*SpaceRoleAssignment*、*System*、*UerDefinedFunction*、*User*、*UserBlobMetadata*、または *UserExtendedProperty* |
 
 要求が成功すると、指定されたパスとリソースについてアクセスの種類がユーザーに割り当てられているかどうかを示すブール値 `true` または `false` が返されます。
 
@@ -176,7 +174,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 1 つのパスに対するすべてのロールの割り当てを取得するには、認証済みの HTTP GET 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -202,7 +200,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 受信者からアクセス許可を取り消すには、認証済みの HTTP DELETE 要求を実行してロールの割り当てを削除します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -210,13 +208,13 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | 削除するロールの割り当ての **id** |
 
-DELETE 要求が成功すると、204 応答状態が返されます。 ロールの割り当てがまだ保持されているかどうかを[チェック](#check)して、ロールの割り当ての削除を確認します。
+DELETE 要求が成功すると、204 応答状態が返されます。 ロールの割り当てがまだ保持されているかどうかを[チェック](#check-a-specific-role-assignment)して、ロールの割り当ての削除を確認します。
 
 ### <a name="create-a-role-assignment"></a>役割の割り当ての作成
 
 ロールの割り当てを作成するには、URL に対して認証済みの HTTP POST 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -277,12 +275,8 @@ JSON 本文が次のスキーマに準拠していることを確認します。
    }
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins のロール ベースのアクセス制御を確認するには、[ロール ベースのアクセス制御](./security-authenticating-apis.md)に関するページをご覧ください。
 
 - Azure Digital Twins 認証について詳しくは、[API 認証](./security-authenticating-apis.md)に関するページをご覧ください。
-
-<!-- Images -->
-[1]: media/security-roles/roleassignments.png
-[2]: media/security-roles/system.png

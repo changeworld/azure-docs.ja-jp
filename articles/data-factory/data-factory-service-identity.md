@@ -1,24 +1,25 @@
 ---
-title: Data Factory のマネージド ID | Microsoft Docs
+title: Data Factory のマネージド ID
 description: Azure Data Factory のマネージド ID について説明します。
 services: data-factory
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153427"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81416592"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事は、Data Factory のマネージド ID (以前は、マネージド サービス ID/MSI と呼ばれていました) の概要と機能について理解するのに役立ちます。
 
@@ -26,7 +27,7 @@ ms.locfileid: "66153427"
 
 ## <a name="overview"></a>概要
 
-データ ファクトリの作成時に、ファクトリの作成に加え、マネージド ID を作成できます。 マネージド ID は、Azure Activity Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
+データ ファクトリの作成時に、ファクトリの作成に加え、マネージド ID を作成できます。 マネージド ID は、Azure Active Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
 
 Data Factory のマネージド ID は次の機能に役立ちます。
 
@@ -78,7 +79,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**要求本文**: add "identity": { "type":"SystemAssigned" } を追加します。
+**要求本文**: "identity": { "type": "SystemAssigned" } を追加します。
 
 ```json
 {
@@ -116,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したマネージド ID の生成
 
-**テンプレート**: add "identity": { "type":"SystemAssigned" } を追加します。
+**テンプレート**: "identity": { "type": "SystemAssigned" } を追加します。
 
 ```json
 {
@@ -156,17 +157,19 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Azure portal を使用したマネージド ID の取得
 
-[Azure Portal] -> 自分のデータ ファクトリ -> [プロパティ] でマネージド ID 情報を検索できます。
+Azure portal -> ご自分のデータ ファクトリ -> [プロパティ] でマネージド ID 情報を検索できます。
 
 - マネージド ID オブジェクト ID
 - マネージド ID のテナント
-- **マネージド ID アプリケーション ID** > この値をコピーします
+- マネージド ID アプリケーション ID
 
-![マネージド ID の取得](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+マネージ ID 情報は、Azure Blob、Azure Data Lake Storage、Azure Key Vault などのマネージド ID 認証をサポートする、リンクされたサービスを作成するときにも表示されます。
+
+アクセス許可を付与する場合は、オブジェクト ID またはデータ ファクトリ名 (マネージド ID 名) を使用して、この ID を検索します。
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>PowerShell を使用したマネージド ID の取得
 
-特定のデータ ファクトリを取得すると、次のように、マネージド ID のプリンシパル ID とテナント ID が返されます。
+特定のデータ ファクトリを取得すると、次のように、マネージド ID のプリンシパル ID とテナント ID が返されます。 **PrincipalId** を使用してアクセス権を付与します。
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -176,7 +179,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-**ApplicationId** を取得するには、プリンシパル ID をコピーし、プリンシパル ID をパラメーターとして指定して次の Azure Active Directory コマンドを実行します。ApplicationId は、アクセス権を付与するために使用します。
+アプリケーション ID を取得するには、上のプリンシパル ID をコピーし、プリンシパル ID をパラメーターとして指定して次の Azure Active Directory コマンドを実行します。
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -188,7 +191,7 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ファクトリのマネージド ID を使用する状況と方法を紹介する次のトピックをご覧ください。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)

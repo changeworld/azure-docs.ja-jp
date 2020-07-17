@@ -1,24 +1,14 @@
 ---
-title: Azure 上の Jupyter Notebook からデータ リソースにアクセスする
-description: Jupyter Notebook からファイル、REST API、データベース、さまざまな Azure Storage リソースにアクセスする方法です。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: Jupyter ノートブックでデータにアクセスする - Azure Notebooks プレビュー
+description: Jupyter Notebook からファイル、REST API、データベース、さまざまな Azure Storage リソースにアクセスする方法について説明します。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271520"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75646349"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 
@@ -28,9 +18,11 @@ Jupyter Notebook で面白い仕事を行うには、データが必要です。
 
 この記事では、これらのさまざまなオプションについて簡単に説明します。 データ アクセスは動いているところを見るのが最もよくわかるので、「[Azure Notebooks Samples - Access your data](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)」(Azure Notebooks サンプル - データにアクセスする) の実行可能なコードをご覧ください。
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 ## <a name="rest-apis"></a>REST API
 
-一般に、インターネットから使用できる膨大な量のデータには、ファイルではなく、REST API を介してアクセスします。 さいわい、ノートブックのセルにはどのようなコードでも含めることができるので、コードを使用して、要求を送信し、JSON データを受信することができます。 その後、その JSON を、Pandas データフレームなどの任意の形式に変換して使用できます。
+一般に、インターネットから使用できる膨大な量のデータには、ファイルではなく、REST API を介してアクセスします。 幸いノートブックのセルにはどのようなコードでも含めることができるので、コードを使用して、要求を送信し、JSONデータを受信することができます。 その後、受信した JSON データを、 Pandas データフレームなどの任意の形式に変換して使用できます。
 
 REST API を使用してデータにアクセスするには、他の任意のアプリケーションで使用するのと同じコードをノートブックのコード セルで使用します。 要求ライブラリを使用する一般的な構造は次のとおりです。
 
@@ -42,7 +34,7 @@ import requests
 data_url = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json'
 
 # General data request; include other API keys and credentials as needed in the data argument
-response = requests.get(data_url, data={"limit" : "20"})
+response = requests.get(data_url, data={"limit": "20"})
 
 if response.status_code == 200:
     dataframe_rest2 = pandas.DataFrame.from_records(response.json())
@@ -53,7 +45,7 @@ if response.status_code == 200:
 
 pyodbc または pymssql ライブラリを利用して、SQL Server データベースにアクセスできます。
 
-「[Python を使用して Azure SQL Database に照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを行う方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
+「[Python を使用して Azure SQL データベースに照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを行う方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -81,11 +73,11 @@ Cosmos DB を使用するときは、[azure-cosmosdb-table](https://pypi.org/pro
 Azure で使用できるデータベースが他にもいくつか提供されています。 以下の記事では、Python からそれらのデータベースにアクセスするためのガイダンスが示されています。
 
 - [Azure Database for PostgreSQL:Python を使って接続とデータの照会を行う](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [クイック スタート:Python で Azure Redis Cache を使用する](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [クイック スタート: Python で Azure Redis Cache を使用する](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [Azure Database for MySQL:Python を使って接続とデータの照会を行う](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory のコピー ウィザード](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [方法:プロジェクト データ ファイルを操作する](work-with-project-data-files.md)
+- [方法: プロジェクト データ ファイルを操作する](work-with-project-data-files.md)

@@ -1,27 +1,16 @@
 ---
-title: Azure CLI を使って Web App for Containers を管理する - Azure App Service | Microsoft Docs
-description: Azure CLI を使って Web App for Containers を管理します。
+title: CLI を使用してカスタム Linux コンテナーを管理する
+description: コマンド ラインから Azure App Service のカスタム Linux コンテナーを管理する方法について説明します。 アプリのプロビジョニングまたはメンテナンスを自動化します。
 keywords: Azure App Service, Web アプリ, CLI, Linux, OSS
-services: app-service
-documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78255920"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 
@@ -103,7 +92,7 @@ az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure App Service on Linux とは](app-service-linux-intro.md)
 * [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)

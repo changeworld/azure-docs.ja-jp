@@ -1,22 +1,19 @@
 ---
-title: XSLT マップを使用した XML 変換 - Azure Logic Apps | Microsoft Docs
+title: XSLT マップを使用した XML 変換
 description: Enterprise Integration Pack を備えた Azure Logic Apps で、XML を変換するための XSLT マップを追加します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-manager: carmonm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455804"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75979408"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でマップを使用して XML を変換する
 
@@ -28,11 +25,11 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * エンタープライズ統合および企業間取引 (B2B) ソリューションのためのマップとその他のアーティファクトを格納する[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
 
-* マップで外部アセンブリを参照する場合は、"*アセンブリとマップの両方*" を統合アカウントにアップロードする必要があります。 "*最初にアセンブリをアップロード*" し、その後、そのアセンブリを参照するマップをアップロードするようにしてください。
+* マップで外部アセンブリを参照する場合は、"*アセンブリとマップの両方*" を統合アカウントにアップロードする必要があります。 [*最初にアセンブリをアップロード*](#add-assembly)し、その後、そのアセンブリを参照するマップをアップロードするようにしてください。
 
   アセンブリが 2 MB 以下の場合は、Azure portal からアセンブリを統合アカウントに "*直接*" 追加できます。 ただし、アセンブリやマップが 2 MB よりも大きく、かつ[アセンブリやマップのサイズ制限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)を超えていない場合には、次のオプションを利用できます。
 
@@ -41,18 +38,20 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
     | Item | 説明 |
     |------|-------------|
-    | [Azure Storage アカウント](../storage/common/storage-account-overview.md) | このアカウントには、アセンブリの Azure BLOB コンテナーを作成します。 [ストレージ アカウントの作成方法](../storage/common/storage-quickstart-create-account.md)を確認してください。 |
+    | [Azure Storage アカウント](../storage/common/storage-account-overview.md) | このアカウントには、アセンブリの Azure BLOB コンテナーを作成します。 [ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)を確認してください。 |
     | BLOB コンテナー | このコンテナーに、アセンブリをアップロードできます。 このコンテナーの場所は、アセンブリを統合アカウントに追加するときにも必要になります。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | このツールを使用すると、ストレージ アカウントと BLOB コンテナーをより簡単に管理できます。 Storage Explorer を使用するには、[Azure Storage Explorer をダウンロードしてインストール](https://www.storageexplorer.com/)します。 次に、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」の手順に従って Storage Explorer をストレージ アカウントに接続します。 詳しくは、「[クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)」を参照してください。 <p>または、Azure portal でストレージ アカウントを検索して選択します。 ストレージ アカウント メニューから **[Storage Explorer]** を選択します。 |
+    | [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md) | このツールを使用すると、ストレージ アカウントと BLOB コンテナーをより簡単に管理できます。 Storage Explorer を使用するには、[Azure Storage Explorer をダウンロードしてインストール](https://www.storageexplorer.com/)します。 次に、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」の手順に従って Storage Explorer をストレージ アカウントに接続します。 詳しくは、「[クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)」を参照してください。 <p>または、Azure portal でストレージ アカウントを検索して選択します。 ストレージ アカウント メニューから **[Storage Explorer]** を選択します。 |
     |||
 
   * マップの場合は、現在のところ、[Azure Logic Apps REST API のマップ](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)を使用することで、より大きなマップを追加できます。
 
 マップの作成時と追加時にロジック アプリは必要ありません。 ただし、マップを使用するには、ロジック アプリからそのマップを格納する統合アカウントにリンクする必要があります。 [統合アカウントにロジック アプリをリンクする方法についてはこちら](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)を参照してください。 ロジック アプリを用意していない場合は、[ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)を確認してください。
 
+<a name="add-assembly"></a>
+
 ## <a name="add-referenced-assemblies"></a>参照先アセンブリを追加する
 
-1. Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
+1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. 統合アカウントを検索して開くには、Azure のメイン メニューで **[すべてのサービス]** を選択します。 
    検索ボックスに「integration account」と入力します。 
@@ -64,16 +63,19 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[アセンブリ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[アセンブリ]** タイルを選択します。
 
    !["アセンブリ" を選択する](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. **[アセンブリ]** ページが開いたら、**[追加]** を選択します。
+1. **[アセンブリ]** ページが開いたら、 **[追加]** を選択します。
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 アセンブリ ファイルのサイズに基づいて、[最大 2 MB](#smaller-assembly)、または [2 MB を超える最大 8 MB](#larger-assembly) のアセンブリをアップロードする手順を実行します。
 統合アカウント内のアセンブリの数に関する制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)に関するページをご覧ください。
+
+> [!NOTE]
+> アセンブリを変更する場合、マップに変更があるかどうかに関わらず、マップも更新する必要があります。
 
 <a name="smaller-assembly"></a>
 
@@ -85,9 +87,9 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
    **[アセンブリ名]** プロパティには、アセンブリを選択した後にアセンブリのファイル名が自動的に表示されます。
 
-1. 準備ができたら、**[OK]** を選択します。
+1. 準備ができたら、 **[OK]** を選択します。
 
-   アセンブリ ファイルのアップロードが完了すると、**[アセンブリ]** の一覧にアセンブリが表示されます。
+   アセンブリ ファイルのアップロードが完了すると、 **[アセンブリ]** の一覧にアセンブリが表示されます。
 
    ![アップロードされたアセンブリの一覧](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
@@ -99,7 +101,7 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
 ### <a name="add-assemblies-more-than-2-mb"></a>2 MB 以上のアセンブリを追加する
 
-より大きなアセンブリを追加するには、アセンブリを Azure ストレージ アカウントの Azure BLOB コンテナーにアップロードします。 アセンブリを追加する手順は、BLOB コンテナーがパブリック読み取りアクセス権を持っているかどうかによって変わります。 そのため、まず最初に BLOB コンテナーがパブリック読み取りアクセス権を持っているかどうかを確認します。このとき、「[BLOB コンテナーのパブリック アクセス レベルを設定する](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)」の手順に従います。
+より大きなアセンブリを追加するには、アセンブリを Azure ストレージ アカウントの Azure BLOB コンテナーにアップロードします。 アセンブリを追加する手順は、お使いの BLOB コンテナーにパブリック読み取りアクセス権が与えられているかどうかによって変わります。 そのため、まず最初に BLOB コンテナーがパブリック読み取りアクセス権を持っているかどうかを確認します。このとき、「[BLOB コンテナーのパブリック アクセス レベルを設定する](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)」の手順に従います。
 
 #### <a name="check-container-access-level"></a>コンテナーのアクセス レベルを確認する
 
@@ -109,11 +111,11 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
 1. BLOB コンテナーのショートカット メニューから **[Set Public Access Level]\(パブリック アクセス レベルの設定\)** を選択します。
 
-   * BLOB コンテナーが少なくともパブリック アクセス権を持っている場合は、**[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持つコンテナーにアップロードする](#public-access-assemblies)」の手順を実行します
+   * BLOB コンテナーが少なくともパブリック アクセス権を持っている場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持つコンテナーにアップロードする](#public-access-assemblies)」の手順を実行します
 
      ![パブリック アクセス権](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * BLOB コンテナーがパブリック アクセス権を持っていない場合は、**[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持たないコンテナーにアップロードする](#no-public-access-assemblies)」の手順を実行します
+   * BLOB コンテナーがパブリック アクセス権を持っていない場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持たないコンテナーにアップロードする](#no-public-access-assemblies)」の手順を実行します
 
      ![パブリック アクセス権なし](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -130,12 +132,12 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
    アセンブリの名前を入力します。 
    **[大きいファイル (2 MB 超)]** を選択します。
 
-   **[アセンブリ]** ボックスではなく、**[コンテンツ URI]** ボックスが表示されます。
+   **[アセンブリ]** ボックスではなく、 **[コンテンツ URI]** ボックスが表示されます。
 
 1. **[コンテンツ URI]** ボックスに、アセンブリの URL を貼り付けます。 
    アセンブリの追加を完了します。
 
-アセンブリのアップロードが完了すると、**[アセンブリ]** の一覧にスキーマが表示されます。
+アセンブリのアップロードが完了すると、 **[アセンブリ]** の一覧にスキーマが表示されます。
 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[アセンブリ]** タイルに、アップロードされたアセンブリの数が表示されます。
 
 <a name="no-public-access-assemblies"></a>
@@ -148,18 +150,18 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 1. アップロードが完了したら、アセンブリの共有アクセス署名 (SAS) を生成します。 
    アセンブリのショートカット メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
-1. **[Shared Access Signature]** ウィンドウで **[Generate container-level shared access signature URI]\(コンテナーレベルの共有アクセス署名 URI の生成\)** > **[作成]** の順に選択します。 
-   SAS URL が生成されたら、**[URL]** に進み、**[コピー]** を選択します。
+1. **[Shared Access Signature]** ウィンドウで **[Generate container-level shared access signature URI]\(コンテナーレベルの共有アクセス署名 URI の生成\)**  >  **[作成]** の順に選択します。 
+   SAS URL が生成されたら、 **[URL]** に進み、 **[コピー]** を選択します。
 
 1. **[アセンブリの追加]** ウィンドウが開いている Azure portal に戻ります。 
    アセンブリの名前を入力します。 
    **[大きいファイル (2 MB 超)]** を選択します。
 
-   **[アセンブリ]** ボックスではなく、**[コンテンツ URI]** ボックスが表示されます。
+   **[アセンブリ]** ボックスではなく、 **[コンテンツ URI]** ボックスが表示されます。
 
 1. **[コンテンツ URI]** ボックスに、前に生成した SAS URI を貼り付けます。 アセンブリの追加を完了します。
 
-アセンブリのアップロードが完了すると、**[スキーマ]** の一覧にアセンブリが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[アセンブリ]** タイルに、アップロードされたアセンブリの数が表示されます。
+アセンブリのアップロードが完了すると、 **[スキーマ]** の一覧にアセンブリが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[アセンブリ]** タイルに、アップロードされたアセンブリの数が表示されます。
 
 ## <a name="create-maps"></a>マップを作成する
 
@@ -170,7 +172,7 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
 マップから参照するすべてのアセンブリをアップロードしたら、次にマップをアップロードできます。
 
-1. まだサインインしていない場合は、Azure アカウントの資格情報を使用して <a href="https://portal.azure.com" target="_blank">Azure portal</a> にサインインします。 
+1. まだサインインしていない場合は、Azure アカウントの資格情報を使用して [Azure portal](https://portal.azure.com) にサインインします。 
 
 1. 統合アカウントがまだ開いていない場合は、Azure のメイン メニューで **[すべてのサービス]** を選択します。 
    検索ボックスに「integration account」と入力します。 
@@ -182,11 +184,11 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
 
    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[マップ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[マップ]** タイルを選択します。
 
    !["マップ" を選択する](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
-1. **[マップ]** ページが開いたら、**[追加]** を選択します。
+1. **[マップ]** ページが開いたら、 **[追加]** を選択します。
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
@@ -205,8 +207,8 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
    **[名前]** プロパティを空のままにした場合は、マップ ファイルを選択した後に、マップのファイル名がそのプロパティに自動的に表示されます。 
    ただし、任意の一意名を使用することもできます。
 
-1. 準備ができたら、**[OK]** を選択します。 
-   マップ ファイルのアップロードが完了すると、**[マップ]** の一覧にマップが表示されます。
+1. 準備ができたら、 **[OK]** を選択します。 
+   マップ ファイルのアップロードが完了すると、 **[マップ]** の一覧にマップが表示されます。
 
    ![アップロードされたマップの一覧](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
@@ -310,39 +312,39 @@ the map appears in the **Maps** list.
 
 既存のマップを更新するには、目的の変更を含む新しいマップ ファイルをアップロードする必要があります。 ただし、編集対象の既存のマップをまずダウンロードすることができます。
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、統合アカウントをまだ開いていない場合は検索して開きます。
+1. [Azure portal](https://portal.azure.com) で、統合アカウントをまだ開いていない場合は検索して開きます。
 
-1. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「integration account」と入力します。 **[統合アカウント]** を選択します。
+1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 検索ボックスに「integration account」と入力します。 **[統合アカウント]** を選択します。
 
 1. マップを更新する統合アカウントを選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[マップ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[マップ]** タイルを選択します。
 
 1. **[マップ]** ページが開いたら、マップを選択します。 
-   まずマップをダウンロードして編集するには、**[ダウンロード]** を選択し、マップを保存します。
+   まずマップをダウンロードして編集するには、 **[ダウンロード]** を選択し、マップを保存します。
 
-1. 更新したマップをアップロードする準備ができたら、**[マップ]** ページで更新するマップを選択して **[更新]** を選択します。
+1. 更新したマップをアップロードする準備ができたら、 **[マップ]** ページで更新するマップを選択して **[更新]** を選択します。
 
 1. アップロードする更新済みマップを探して選択します。 
-   マップ ファイルのアップロードが完了すると、**[マップ]** の一覧に更新されたマップが表示されます。
+   マップ ファイルのアップロードが完了すると、 **[マップ]** の一覧に更新されたマップが表示されます。
 
 ## <a name="delete-maps"></a>マップを削除する
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、統合アカウントをまだ開いていない場合は検索して開きます。
+1. [Azure portal](https://portal.azure.com) で、統合アカウントをまだ開いていない場合は検索して開きます。
 
-1. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 
+1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
    検索ボックスに「integration account」と入力します。 
    **[統合アカウント]** を選択します。
 
 1. マップを削除する統合アカウントを選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[マップ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[マップ]** タイルを選択します。
 
-1. **[マップ]** ページが開いたら、マップを選択し、**[削除]** を選択します。
+1. **[マップ]** ページが開いたら、マップを選択し、 **[削除]** を選択します。
 
-1. マップの削除を確定するには、**[はい]** を選択します。
+1. マップの削除を確定するには、 **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md)  
 * [スキーマについての詳細情報](../logic-apps/logic-apps-enterprise-integration-schemas.md)

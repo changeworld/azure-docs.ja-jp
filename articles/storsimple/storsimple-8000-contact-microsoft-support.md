@@ -1,31 +1,23 @@
 ---
-title: StorSimple 8000 シリーズのサポート チケットまたはサポート ケースを作成する | Microsoft Docs
+title: StorSimple 8000 シリーズのサポート チケットまたはケースを作成する
 description: サポート要求をログに記録する方法と StorSimple 8000 シリーズ デバイスでサポート セッションを開始する方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
-ms.author: alkohli;
-ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: alkohli
+ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107129"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228243"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
 StorSimple デバイス マネージャーのサービスの概要ブレードには、**新しいサポート要求を記録**する機能が用意されています。 StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。 この記事で説明する内容は次のとおりです。
 
-* サポート要求を作成する方法
+* サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
 * StorSimple デバイスの Windows PowerShell インターフェイスでサポート セッションを開始する方法
 
@@ -37,11 +29,11 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 #### <a name="to-create-a-support-request"></a>サポート要求を作成するには
 
-1. StorSimple デバイス マネージャー サービスに移動します。 サービスの概要ブレードの設定で、**[サポート + トラブルシューティング]** セクションに移動し、**[新しいサポート要求]** をクリックします。
+1. StorSimple デバイス マネージャー サービスに移動します。 サービスの概要ブレードの設定で、 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート要求]** をクリックします。
      
     ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. **[新しいサポート要求]** ブレードで、**[基本]** を選択します。 **[基本]** ブレードで、次の手順を実行します。
+2. **[新しいサポート要求]** ブレードで、 **[基本]** を選択します。 **[基本]** ブレードで、次の手順を実行します。
    1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
    2. 現在の**サブスクリプション**、**サービス**の種類、および**リソース** (StorSimple デバイス マネージャー サービス) が自動的に選択されています。 
    3. 複数のプランがサブスクリプションに関連付けられている場合は、適切な**サポート プラン**をドロップダウン リストから選択します。 テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
@@ -49,7 +41,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
        ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. **[新しいサポート要求]** ブレードで、**[手順 2 問題]** を選択します。 **[問題]** ブレードで、次の手順を実行します。
+3. **[新しいサポート要求]** ブレードで、 **[手順 2 問題]** を選択します。 **[問題]** ブレードで、次の手順を実行します。
     
     1. **[重大度]** を選択します。
     2. 問題がアプライアンスまたは StorSimple デバイス マネージャー サービスに関連付けられているかどうかを指定します。
@@ -61,10 +53,10 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
        ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. **[新しいサポート要求]** ブレードで、**[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** ブレードで、次の手順を実行します。
+4. **[新しいサポート要求]** ブレードで、 **[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** ブレードで、次の手順を実行します。
 
    1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
-   2. [連絡先情報] で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
+   2. [連絡先情報] で、名前、メール、オプションの連絡先、国や地域を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
    3. **Create** をクリックしてください。
    
        ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
@@ -78,7 +70,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 #### <a name="to-manage-your-support-requests"></a>サポート要求を管理するには
 
-1. ヘルプとサポート ページにアクセスするには、**[参照] > [ヘルプとサポート]** の順に移動します。
+1. ヘルプとサポート ページにアクセスするには、 **[参照] > [ヘルプとサポート]** の順に移動します。
 
     ![サポート要求を管理する](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
@@ -86,7 +78,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
     ![サポート要求を管理する](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
-3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、**[+ 新しいメッセージ]** をクリックします。
+3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 
     ![サポート要求を管理する](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
@@ -114,6 +106,6 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 > サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。 また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。 サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple 8000 シリーズ デバイスに関連する問題を診断および解決](storsimple-8000-troubleshoot-deployment.md)する方法を確認します

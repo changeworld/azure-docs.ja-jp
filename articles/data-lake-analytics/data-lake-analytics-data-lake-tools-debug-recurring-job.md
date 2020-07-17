@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260042"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60629759"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
 
@@ -33,7 +33,7 @@ Azure Data Lake Tools for Visual Studio の**関連ジョブ ビュー**を使�
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>ケース 1: 定期的なジョブの URL がわかっている
 
-**[ツール]** > **[Data Lake]** > **[ジョブ ビュー]** の順に選択し、ジョブの URL を貼り付けて Visual Studio でジョブ ビューを開きます。 **[関連ジョブの表示]** を選択して関連ジョブ ビューを開きます。
+**[ツール]**  >  **[Data Lake]**  >  **[ジョブ ビュー]** の順に選択し、ジョブの URL を貼り付けて Visual Studio でジョブ ビューを開きます。 **[関連ジョブの表示]** を選択して関連ジョブ ビューを開きます。
 
 ![Data Lake Analytics Tools の [関連ジョブの表示] リンク](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
@@ -66,7 +66,7 @@ Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake An
 
 ![ジョブ間の相違点を確認するためのプロセス図](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [データ スキュー問題を解決する](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 * [失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする](data-lake-analytics-debug-u-sql-jobs.md)

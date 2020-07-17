@@ -1,68 +1,128 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Search のドキュメント
+### YamlMime:Landing
+title: Azure Cognitive Search のドキュメント
+summary: コンテンツが構造化されていない場合や未加工の形式で検索できない場合に、AI エンリッチメントのオプションを使用して、プライベートな異種コンテンツに対してクラウド検索を行います。
 metadata:
-  document_id: null
-  title: Azure Search のドキュメント - チュートリアル、クイックスタート、API リファレンス
-  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。
+  title: Azure Cognitive Search のドキュメント
+  description: コンテンツが構造化されていない場合や未加工の形式で検索できない場合に、AI エンリッチメントのオプションを使用して、プライベートな異種コンテンツに対してクラウド検索を行います。
   services: search
-  author: HeidiSteen
-  manager: cgronlun
-  ms.service: search
-  ms.devlang: na
+  ms.service: service
   ms.topic: landing-page
-  ms.date: 05/02/2019
+  ms.collection: collection
+  author: HeidiSteen
   ms.author: heidist
-abstract:
-  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Cognitive Search</b></a> は現在、運用環境のシナリオでサポートされる AI エンリッチメントを備え、一般提供されています。<p/><a href="/azure/search/knowledge-store-concept-intro"><b>ナレッジ ストア (プレビュー)</b></a> は Cognitive Search を拡張します。 AI エンリッチメントを保存して、Azure Search 以外の他のアプリ内でエンリッチメントを表示、再形成、および使用できる場所に格納します。 今すぐ<a href="/azure/search/knowledge-store-howto"><b>お試しください</b></a>。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
-      width: 250
-    title: 'Azure Search とは (1:27)'
-    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 'ポータルで Search サービスを開始した後、C# または REST でインデックスの定義、読み込み、クエリを実行できます。'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/search/media/index/portal.svg
-            text: Azure ポータル
-            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
-          - image:
-              src: /azure/search/media/index/logo_Csharp.svg
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
-          - image:
-              src: /azure/search/media/index/rest.svg
-            text: REST
-            href: 'https://docs.microsoft.com/azure/search/search-fiddler'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: .NET または REST でコードを書くか、ポータルを使用して、概念の簡単なテストを実行します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/search/search-get-started-portal">インデックスの作成とクエリのテストにポータルを使用する</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">.NET を使用して最初の検索ソリューションを書き込む</a>
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">AI によるエンリッチ (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-indexer-tutorial">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>
-          - html: <a href="/azure/search/search-semi-structured-data">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 言語
-            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (管理)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (管理)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/searchservice">Service API リファレンス</a></p><p><a href="/rest/api/searchmanagement">Management API リファレンス</a></p>
+  ms.date: 02/25/2020
+  ms.openlocfilehash: ab3352dbd6631c0c86656764dac748eac10fa79b
+  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/07/2020
+  ms.locfileid: "82890088"
+landingContent:
+- title: Cognitive Search について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cognitive Search とは
+      url: search-what-is-azure-search.md
+    - text: AI エンリッチメントとは
+      url: cognitive-search-concept-intro.md
+    - text: インデクサーとは
+      url: search-indexer-overview.md
+  - linkListType: video
+    links:
+    - text: 検索ソリューションで AI を使用する
+      url: https://youtu.be/M4Rf1s0WcWQ?t=19
+- title: Azure データのインデックス作成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Blob Storage のインデックス
+      url: search-blob-storage-integration.md
+    - text: Azure SQL Database のインデックス
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Cosmos DB のインデックス
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: 半構造化 BLOB データのインデックスを作成する
+      url: search-semi-structured-data.md
+- title: 10 分間のクイック スタート
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サービスの作成
+      url: search-create-service-portal.md
+    - text: インデックスを作成する
+      url: search-get-started-portal.md
+    - text: アプリを作成する
+      url: search-create-app-portal.md
+    - text: 画像およびアプリ ファイルからテキストを抽出する
+      url: cognitive-search-quickstart-blob.md
+- title: 任意のデータのインデックス作成
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: インデックスを定義する
+      url: search-what-is-an-index.md
+    - text: データのインポート
+      url: search-what-is-data-import.md
+  - linkListType: reference
+    links:
+    - text: インデックスを作成する (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+    - text: インデクサーを作成する (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+- title: AI によるエンリッチ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: スキルセット
+      url: cognitive-search-defining-skillset.md
+    - text: ナレッジ ストア
+      url: knowledge-store-concept-intro.md
+    - text: プロジェクション
+      url: knowledge-store-projections-examples.md
+  - linkListType: how-to-guide
+    links:
+    - text: Cognitive Services をアタッチする
+      url: cognitive-search-attach-cognitive-services.md
+    - text: スキルセットを定義する
+      url: cognitive-search-defining-skillset.md
+    - text: ナレッジ ストアの作成
+      url: knowledge-store-create-portal.md
+  - linkListType: reference
+    links:
+    - text: 組み込みのスキル
+      url: cognitive-search-predefined-skills.md
+- title: クエリ データ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: クエリの種類と構成
+      url: search-query-overview.md
+    - text: 単純な構文 (既定)
+      url: query-simple-syntax.md
+    - text: 完全な Lucene 構文
+      url: query-lucene-syntax.md
+  - linkListType: how-to-guide
+    links:
+    - text: 簡単なクエリを作成する
+      url: search-query-simple-examples.md
+    - text: 完全な構文を使用する
+      url: search-query-lucene-examples.md
+  - linkListType: reference
+    links:
+    - text: OData 言語のリファレンス
+      url: query-odata-filter-orderby-syntax.md
+    - text: ドキュメントを検索する (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: search-faq-frequently-asked-questions.md
+    - text: Stack Overflow で質問する
+      url: https://stackoverflow.com/questions/tagged/azure-search
+    - text: 機能をリクエストする
+      url: https://feedback.azure.com/forums/263029-azure-search

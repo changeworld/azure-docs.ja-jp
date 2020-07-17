@@ -1,30 +1,32 @@
 ---
 title: データが存在しない場合のトラブルシューティング - Application Insights for .NET
 description: Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.author: mbullwin
-ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471852"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802588"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
+
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
 *Application Insights で、アプリによって生成されているイベントのごく一部しか表示されません。*
 
 * 同じ部分が常に表示される場合は、アダプティブ [サンプリング](../../azure-monitor/app/sampling.md)が原因である可能性があります。 これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。 プロパティ セクションの下部で、[...] をクリックし、すべてのプロパティの詳細を取得します。 要求数が > 1 の場合は、サンプリングが実行中です。
 * それ以外の場合、料金プランの [データ速度の上限](../../azure-monitor/app/pricing.md#limits-summary) に達してる可能性があります。 これらの制限は分単位で適用されます。
+
+*データがランダムに失われます。*
+
+* [テレメトリ チャネル](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)でデータ損失がないか確認してください
+
+* テレメトリ チャネル [GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)で既知の問題がないか確認してください
+
+*アプリが停止する直前、コンソール アプリや Web アプリでデータが失われます。*
+
+* SDK チャネルでは、バッファにテレメトリが保存され、一括送信されます。 アプリケーションがシャットダウンするとき、場合によっては、[Flush()](api-custom-events-metrics.md#flushing-data) を明示的に呼び出す必要があります。 `Flush()` の動作は、使用されている実際の[チャネル](telemetry-channels.md#built-in-telemetry-channels)に依存します。
 
 ## <a name="no-data-from-my-server"></a>サーバーからデータを取得できない
 *Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*
@@ -36,15 +38,15 @@ ms.locfileid: "65471852"
 
 * 「 [Status Monitor のトラブルシューティング](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
 
-## <a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
+## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
 *ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](../../azure-monitor/app/windows-desktop.md)できます。
 * [Visual Studio 2013 Update 3 以降](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
-* **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、Developer Analytics Tools をアンインストールしてから再インストールしてみてください。
 
-## <a name="q02"></a>Application Insights の追加に失敗する
+## <a name="adding-application-insights-failed"></a><a name="q02"></a>Application Insights の追加に失敗する
 *Application Insights を既存のプロジェクトに追加しようとしたときに、エラー メッセージが表示されます。*
 
 考えられる原因:
@@ -58,14 +60,13 @@ ms.locfileid: "65471852"
 * 適切な Azure アカウントのサインイン資格情報を指定していることを確認してください。
 * ブラウザーで、 [Azure ポータル](https://portal.azure.com)に対するアクセス権があることを確認してください。 設定を開き、制限がないかどうか確認してください。
 * [Application Insights をご自身の既存のプロジェクトに追加する](../../azure-monitor/app/asp-net.md):ソリューション エクスプローラーでご自身のプロジェクトを右クリックし、[Application Insights の追加] を選択します。
-* 解決しない場合は、 [手動の手順](../../azure-monitor/app/windows-services.md) を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。
 
-## <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
+## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしているとき、またはログ アダプターをインストールしているときに、何かの問題が発生した可能性があります。
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights]、[Application Insights の構成]** の順に選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、 **[Application Insights]、[Application Insights の構成]** の順に選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。
 
-## <a name="NuGetBuild"></a> ビルド サーバーに NuGet パッケージが見つからない
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> ビルド サーバーに NuGet パッケージが見つからない
 *開発コンピューターでデバッグするときはすべて問題なくビルドされるのに、ビルド サーバーでは NuGet エラーが発生します。*
 
 [NuGet パッケージの復元](https://docs.nuget.org/Consume/Package-Restore)に関するページと[自動パッケージの復元](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)に関するページをご覧ください。
@@ -82,7 +83,7 @@ Application Insights をインストールしているとき、またはログ �
 解決策:
 
 * Visual Studio のバージョンが 2013 Update 3 以降であることを確認してください。
-* **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* **[ツール]** 、 **[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * ソリューション エクスプローラーでプロジェクトを右クリックします。 **[Application Insights] > [Application Insights の構成]** コマンドが表示される場合は、そのコマンドを使用して Application Insights サービスのリソースにプロジェクトを接続します。
 
 それ以外の場合、ご使用のプロジェクトは Developer Analytics Tools で直接サポートされているプロジェクト タイプではありません。 テレメトリを表示するには、 [Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで [Application Insights] を選択して目的のアプリケーションを選択してください。
@@ -109,7 +110,7 @@ Application Insights をインストールしているとき、またはログ �
 
 解決策:
 
-* ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights]、[Application Insights の構成] の順に選択します。 テレメトリを既存のリソースに送信するか、または新しく作成するかをダイアログで選択できます。 または
+* ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights]、[Application Insights の構成] の順に選択します。 テレメトリを既存のリソースに送信するか、または新しく作成するかをダイアログで選択できます。 または:
 * リソースを直接開きます。 [Azure ポータル](https://portal.azure.com)にサインインして左側のナビゲーション バーにある [Application Insights] をクリックし、目的のアプリを選択します。
 
 ## <a name="where-do-i-find-my-telemetry"></a>テレメトリはどこで確認できますか
@@ -119,14 +120,14 @@ Application Insights をインストールしているとき、またはログ �
   いくつかのサマリー グラフが表示されます。 それらをクリックしていくと、詳しい情報が表示されます。
 * Visual Studio でアプリをデバッグしているときに、[Application Insights] ボタンをクリックします。
 
-## <a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> サーバー データが表示されない (またはデータが一切表示されない)
 *アプリを実行し、Microsoft Azure の Application Insights サービスを開きましたが、どのグラフでも、データの収集方法についての説明か、必要な構成が行われていないという内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データが表示されません。*
 
 * Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。 ある程度テレメトリを生成するために、アプリケーションを使用します。 記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。  
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights ポータルで [診断検索](../../azure-monitor/app/diagnostic-search.md)を開きます。 通常、まずここにデータが表示されます。
 * [更新] ボタンをクリックします。 ブレードは周期的に自動で更新されますが、手動でも更新できます。 時間範囲が広いと、更新間隔は長くなります。
-* インストルメンテーション キーが一致していることを確認します。 Application Insights ポータルのアプリのメイン ブレードで、**[要点]** ボックスの一覧に表示される **[インストルメンテーション キー]** を確認します。 次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、 `<instrumentationkey>`を探します。 2 つのキーが等しいことを確認してください。 等しくない場合は、次の作業を行います。  
+* インストルメンテーション キーが一致していることを確認します。 Application Insights ポータルのアプリのメイン ブレードで、 **[要点]** ボックスの一覧に表示される **[インストルメンテーション キー]** を確認します。 次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、 `<instrumentationkey>`を探します。 2 つのキーが等しいことを確認してください。 等しくない場合は、次の作業を行います。  
   * ポータルで [Application Insights] をクリックし、適切なキーのアプリ リソースを探します。または、
   * Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights]、[構成] の順に選択します。 適切なリソースにテレメトリを送信するようにアプリをリセットします。
   * 一致するキーが見つからない場合は、ポータルにサインインするときと同じ資格情報を Visual Studio で使用していることを確認してください。
@@ -135,7 +136,7 @@ Application Insights をインストールしているとき、またはログ �
 * [サーバー側 SDK](../../azure-monitor/app/api-custom-events-metrics.md) で作成したコードによって、`TelemetryClient` インスタンス内または `TelemetryContext` 内のインストルメンテーション キーが変更されていないか確認します。 自分が記述した [フィルターやサンプリング構成](../../azure-monitor/app/api-filtering-sampling.md) によって、必要なデータまで排除されていないかも確認してください。
 * ApplicationInsights.config を編集した場合は、 [TelemetryInitializers と TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)の構成を慎重に確認します。 不適切な名前が付けられた型またはパラメーターがあると、SDK によってデータが送信されない場合があります。
 
-## <a name="q04"></a>ページ ビュー、ブラウザー、利用状況にデータが表示されない
+## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>ページ ビュー、ブラウザー、利用状況にデータが表示されない
 *サーバー応答時間グラフとサーバー要求グラフにはデータが表示されますが、[ページ ビューの読み込み時間]、[ブラウザー] ブレードまたは [利用状況] ブレードにはデータが表示されません。*
 
 データは、Web ページのスクリプトによって取得されます。 
@@ -170,7 +171,7 @@ Application Insights をインストールしているとき、またはログ �
 2018 年 2 月 5 日、クライアント IP アドレスのログ記録を削除したことを発表しました。 これは geo ロケーションには影響しません。
 
 > [!NOTE]
-> IP アドレスの最初の 3 オクテットが必要な場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)を使用して、カスタム属性を追加できます。
+> IP アドレスの最初の 3 オクテットが必要な場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)を使用して、カスタム属性を追加できます。
 > これは、2018 年 2 月 5 日より前に収集されたデータには影響しません。
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>ユーザー テレメトリの地理データに誤りがある
@@ -206,7 +207,9 @@ Application Insights をインストールしているとき、またはログ �
 
 ### <a name="net-core"></a>.NET Core
 
-1. NuGet から [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) パッケージをインストールします。 インストールするバージョンは、`Microsoft.ApplicationInsights` の現在インストールされているバージョンと一致する必要があります。
+1. NuGet から [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) パッケージをインストールします。 インストールするバージョンは、`Microsoft.ApplicationInsights` の現在インストールされているバージョンと一致する必要があります。
+
+Microsoft.ApplicationInsights.AspNetCore の最新バージョンは 2.8.2 であり、これにより Microsoft.ApplicationInsights バージョン 2.11.2 が参照されます。 そのため、インストールする Microsoft.AspNet.ApplicationInsights.HostingStartup のバージョンは 2.11.2 になります。
 
 2. `Startup.cs` クラスの `ConfigureServices` メソッドを変更します。
 
@@ -223,6 +226,31 @@ Application Insights をインストールしているとき、またはログ �
 3. プロセスを再起動して、SDK によってこれらの新しい設定が取得されるようにします。
 
 4. 完了したら、これらの変更を元に戻します。
+
+
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> PerfView でログを収集する
+[PerfView](https://github.com/Microsoft/perfview) は、多くのソースから診断情報を収集して視覚化することによって、CPU、メモリ、およびその他の問題を特定するために役立つ、無料の診断およびパフォーマンス分析ツールです。
+
+Application Insights SDK は、PerfView でキャプチャできる EventSource の自己トラブルシューティング ログを記録します。
+
+ログを収集するには、PerfView をダウンロードし、次のコマンドを実行します。
+```cmd
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+```
+
+以下のパラメーターは、必要に応じて変更できます。
+- **MaxCollectSec**。 PerfView が無期限に実行され、サーバーのパフォーマンスに影響が及ぶのを防ぐには、このパラメーターを設定します。
+- **OnlyProviders**。 SDK だけからログを収集するには、このパラメーターを設定します。 特定の調査に基づいて、この一覧をカスタマイズすることができます。 
+- **NoGui**。 GUI なしでログを収集するには、このパラメーターを設定します。
+
+
+詳細については、以下を参照してください。
+- [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
+- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>Application Insights を削除する方法
+
+削除の[記事](../../azure-monitor/app/remove-application-insights.md)に示されている手順に従って Visual Studio で Application Insights を削除する方法を学習してください。
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

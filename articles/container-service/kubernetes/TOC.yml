@@ -4,7 +4,7 @@
   items:
     - name: Kubernetes on Azure
       href: container-service-intro-kubernetes.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Kubernetes on Azure
@@ -29,7 +29,7 @@
   items:
     - name: サービス プリンシパル - Kubernetes
       href: container-service-kubernetes-service-principal.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Windows と連携する Kubernetes
       href: container-service-kubernetes-windows-walkthrough.md
@@ -43,7 +43,7 @@
       href: container-service-draft-up.md
     - name: クラスターのスケーリング
       href: container-service-scale.md
-    - name: 監視
+    - name: モニター
       items:
         - name: Log Analytics による監視
           href: container-service-kubernetes-oms.md
@@ -73,7 +73,7 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: container-service-faq.md
     - name: テンプレート - ACS Engine
       href: 'https://github.com/Azure/acs-engine'

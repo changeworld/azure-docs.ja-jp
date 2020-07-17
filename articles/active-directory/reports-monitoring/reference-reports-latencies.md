@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65594023"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74007701"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -59,18 +59,18 @@ ms.locfileid: "65594023"
 
 次の表に、セキュリティ レポートの待機時間情報を一覧表示します。
 
-| レポート | 最小値 | 平均 | 最大値 |
+| レポート | 最小値 | Average | 最大値 |
 | :-- | --- | --- | --- |
 | リスクのあるユーザー          | 5 分   | 約 15 分  | 2 時間  |
 | リスクの高いサインイン         | 5 分   | 約 15 分  | 2 時間  |
 
-## <a name="risk-events"></a>リスク イベント
+## <a name="risk-detections"></a>リスク検出
 
-Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
+Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク検出**と呼ばれるレコードに格納されます。
 
-次の表に、リスク イベントの待機時間情報を一覧表示します。
+次の表に、リスク検出の待機時間情報を一覧表示します。
 
-| レポート | 最小値 | 平均 | 最大値 |
+| レポート | 最小値 | Average | 最大値 |
 | :-- | --- | --- | --- |
 | 匿名の IP アドレスからのサインイン |5 分 |約 15 分 |2 時間 |
 | 未知の場所からのサインイン |5 分 |約 15 分 |2 時間 |
@@ -80,8 +80,8 @@ Azure AD では、アダプティブ機械学習アルゴリズムとヒュー�
 | 不審なアクティビティのある IP アドレスからのサインイン |2 時間 |4 時間 |8 時間  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD レポートの概要](overview-reports.md)
 * [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)
-* [Azure Active Directory リスク イベント](concept-risk-events.md)
+* [Azure Active Directory リスク検出](concept-risk-events.md)

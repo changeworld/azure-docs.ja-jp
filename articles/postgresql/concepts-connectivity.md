@@ -2,17 +2,17 @@
 title: Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する
 description: Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
-author: jan-eng
-ms.author: janeng
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ea90de612dcfb2559b29fbffce8306278beb45b9
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 026a0edf24d349c4b445d6229d3b1ad73decf87d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073509"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82097831"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する
 
@@ -36,7 +36,7 @@ ms.locfileid: "65073509"
 * 以降再試行するたびに、60 秒を上限として、待ち時間を指数関数的に増やします。
 * 操作が失敗したとアプリケーションで見なされる最大再試行回数を設定します。
 
-アクティブなトランザクションが進行している接続でエラーが発生した場合、回復に向けた正しい対処への難易度が上がります。 次の 2 つのケースがあります。トランザクションが本来読み取り専用である場合は、接続を再度開いてトランザクションを再試行するのが安全です。 一方、データベースへの書き込みも伴うトランザクションの場合は、そのトランザクションがロールバックされたかどうかや、一時的なエラーが発生する前に成功したかどうかを判断しなければなりません。 このケースでは、データベース サーバーからコミットの確認を受け取っていないだけかもしれません。
+アクティブなトランザクションが進行している接続でエラーが発生した場合、回復に向けた正しい対処への難易度が上がります。 次の 2 つのケースがあります。トランザクションが本来読み取り専用である場合は、接続を再度開いてトランザクションを再試行するのが安全です。 一方、データベースへの書き込みも伴うトランザクションの場合は、そのトランザクションがロールバックされたかどうかや、一時的なエラーが発生する前に成功したかどうかを判断しなければなりません。 その場合は、データベース サーバーからコミットの確認を受信していないだけである可能性があります。
 
 その判断を行う 1 つの方法として、すべての再試行に使用される一意の ID をクライアントで生成することが考えられます。 この一意の ID をトランザクションの一環としてサーバーに渡し、一意制約のある列に格納します。 こうすることで、トランザクションを安全に再試行することができます。 前のトランザクションがロールバックされ、なおかつクライアントで生成された一意の ID がまだシステムに存在しなければ、これは成功します。 一意の ID が既に格納されている場合は、前回のトランザクションが正常に完了していることになるので、再試行は失敗し、キーが重複している旨の違反が表示されます。
 
@@ -44,6 +44,6 @@ ms.locfileid: "65073509"
 
 再試行ロジックは必ずテストしてください。 たとえば、Azure Database for PostgreSQL サーバーのコンピューティング リソースをスケールアップまたはスケールダウンしているときに、実際のコードを実行してみましょう。 この操作中に発生した短時間のダウンタイムには、アプリケーションで問題なく対処する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

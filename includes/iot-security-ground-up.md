@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289276"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72789711"
 ---
-# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>モノのインターネット (IoT) の徹底的なセキュリティ
-
 モノのインターネット (IoT) は、世界各地の企業に固有のセキュリティ、プライバシー、およびコンプライアンスの課題をもたらします。 ソフトウェアとその実装方法に関する問題が発生した場合、従来のサイバー テクノロジとは異なり、IoT ではサイバーおよび物理世界が融合すると何が起こるかが懸念されます。 IoT ソリューションを保護するには、デバイスの安全なプロビジョニング、デバイスとクラウド間の安全な接続、処理中および保管中のクラウドでの安全なデータ保護を確実に行う必要があります。 ただし、そのような機能には、リソースが限られたデバイス、デプロイの地理的分散、およびソリューション内の多数のデバイスという問題が伴います。
 
 この記事では、どのように IoT ソリューションアクセラレータによって安全でプライベートなモノのインターネット クラウド ソリューションが提供されるかについて説明します。 ソリューションアクセラレータは完全なエンド ツー エンド ソリューションが提供され、セキュリティは最初から各ステージに組み込まれています。 Microsoft における安全なソフトウェアの開発は、数十年にわたる安全なソフトウェアの開発に関する長い経験に根ざしているソフトウェア エンジニアリング プラクティスの一部です。 Security Development Lifecycle (SDL) はこれを実現するための基本的な開発方法です。Operational Security Assurance (OSA) や Microsoft Digital Crimes Unit、Microsoft Security Response Center、および Microsoft Malware Protection Center などのインフラストラクチャ レベルのセキュリティ サービス ホストを併用します。
@@ -33,7 +31,7 @@ ms.locfileid: "51289276"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>最初からインフラストラクチャをセキュリティで保護する
 
-[Microsoft Cloud](https://azure.microsoft.com) インフラストラクチャは、127 か国で 10 億人を超えるお客様をサポートしています。 エンタープライズ ソフトウェアの構築と世界最大規模のオンライン サービスの実行に関する Microsoft の数十年にわたる 経験を生かし、Microsoft Cloud は、より高いレベルの強化されたセキュリティ、プライバシー、コンプライアンス、およびほとんどのお客様が自分で実行できる脅威緩和プラクティスを提供します。
+[Microsoft Cloud](https://azure.microsoft.com) インフラストラクチャは、127 の国と地域で 10 億人を超えるお客様をサポートしています。 エンタープライズ ソフトウェアの構築と世界最大規模のオンライン サービスの実行に関する Microsoft の数十年にわたる 経験を生かし、Microsoft Cloud は、より高いレベルの強化されたセキュリティ、プライバシー、コンプライアンス、およびほとんどのお客様が自分で実行できる脅威緩和プラクティスを提供します。
 
 [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/) では、ソフトウェア ライフサイクル全体にセキュリティ要件を組み込む必須の全社的な開発プロセスが提供されます。 運用アクティビティが同じレベルのセキュリティ プラクティスに従うように、SDL では Microsoft の Operational Security Assurance (OSA) プロセスにおいて規定されている厳格なセキュリティ ガイドラインを使用します。 さらに、Microsoft では、順守義務を満たしていることを継続的に検証するためにサード パーティの監査法人と連携して、Microsoft Digital Crimes Unit、Microsoft Security Response Center、および Microsoft Malware Protection Center を含む、優れたセンターを作成して広範なセキュリティ活動に取り組みます。
 
@@ -99,7 +97,7 @@ IoT インフラストラクチャで使用されるすべてのキーはクラ�
 
 ソリューションアクセラレータには仕様でセキュリティ対策が組み込まれているため、資産を安全に監視して効率性を高め、運用パフォーマンスを向上させて革新を実現し、高度なデータ分析を採用して事業を転換することができます。 セキュリティ、複数のセキュリティ機能、および設計パターンに対するレイヤー アプローチで、ソリューションアクセラレータは事業を転換するための信頼できるインフラストラクチャをデプロイできます。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 各ソリューション アクセラレータでは、Azure のサービスのインスタンスを作成します：
 

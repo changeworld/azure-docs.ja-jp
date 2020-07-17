@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: e66e7d4646b650d2d811d3807db04605dfddeded
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141213"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181689"
 ---
 1. **アプリ** プロジェクトで、`AndroidManifest.xml` ファイルを開きます。 `application` 開始タグの後に次のコードを追加します。
 
@@ -56,13 +56,13 @@ ms.locfileid: "66141213"
         }
         ```
 
-    - `ToDoActivity` クラスの **onCreate** メソッドを更新します。 `MobileServiceClient` がインスタンス化された後に、このコードを追加します。
+    - **クラスの**onCreate`ToDoActivity` メソッドを更新します。 `MobileServiceClient` がインスタンス化された後に、このコードを追加します。
 
         ```java
         registerPush();
         ```
 
-3. 通知を処理する新しいクラスを追加します。 プロジェクト エクスプローラーで、**[app]** > **java** > **<お使いのプロジェクト名前空間>** ノードの順に開き、パッケージ名のノードを右クリックします。 **[New (新規)]** をクリックし、**[Java Class (Java クラス)]** をクリックします。 [名前] に「`ToDoMessagingService`」と入力して、[OK] をクリックします。 次に、クラスの宣言を以下の内容に置き換えます。
+3. 通知を処理する新しいクラスを追加します。 プロジェクト エクスプローラーで、 **[app]**  > **java** >  **<お使いのプロジェクト名前空間>** ノードの順に開き、パッケージ名のノードを右クリックします。 **[New (新規)]** をクリックし、 **[Java Class (Java クラス)]** をクリックします。 [名前] に「`ToDoMessagingService`」と入力して、[OK] をクリックします。 次に、クラスの宣言を以下の内容に置き換えます。
 
     ```java
     import android.app.Notification;

@@ -1,23 +1,22 @@
 ---
-title: Data Management Gateway に関する問題のトラブルシューティング | Microsoft Docs
+title: Data Management Gateway に関する問題をトラブルシューティングする
 description: Data Management Gateway に関連する問題のトラブルシューティングを行うためのヒントを示します。
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119345"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065024"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -28,7 +27,7 @@ ms.locfileid: "58119345"
 ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」を参照してください。 ゲートウェイを使用してオンプレミスの SQL Server データベースから Microsoft Azure Blob Storage にデータを移動する方法のチュートリアルについては、[オンプレミスとクラウドの間のデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
 
 ## <a name="failed-to-install-or-register-gateway"></a>ゲートウェイをインストールまたは登録できない
-### <a name="1-problem"></a>1.問題点
+### <a name="1-problem"></a>1.問題
 ゲートウェイをインストールして登録するときに (具体的には、ゲートウェイのインストール ファイルをダウンロードしているときに)、次のエラー メッセージが表示されます。
 
 `Unable to connect to the remote server". Please check your local settings (Error Code: 10003).`
@@ -41,7 +40,7 @@ ms.locfileid: "58119345"
 
 または、ダウンロード センターにアクセスできる別のコンピューターで、[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新のゲートウェイのインストール ファイルをダウンロードすることができます。 次に、インストーラー ファイルをゲートウェイ ホスト コンピューターにコピーし、手動で実行してゲートウェイをインストールおよび更新することができます。
 
-### <a name="2-problem"></a>2.問題点
+### <a name="2-problem"></a>2.問題
 Azure Portal で **[このコンピューターに直接インストールします]** をクリックしてゲートウェイをインストールしようとすると、次のエラーが表示されます。
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
@@ -50,9 +49,9 @@ Azure Portal で **[このコンピューターに直接インストールしま
 ゲートウェイが既にコンピューターにインストールされています。
 
 #### <a name="resolution"></a>解決策
-コンピューター上の既存のゲートウェイをアンインストールしてから、**[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
+コンピューター上の既存のゲートウェイをアンインストールしてから、 **[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
 
-### <a name="3-problem"></a>手順 3.問題点
+### <a name="3-problem"></a>3.問題
 新しいゲートウェイを登録するときに、次のエラーが表示される場合があります。
 
 `Error: The gateway has encountered an error during registration.`
@@ -67,7 +66,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="resolution"></a>解決策
 ポータルから取得した正しいゲートウェイ キーを使用しているかどうかを確認します。 必要に応じて、キーを再生成し、そのキーを使用してゲートウェイを登録します。
 
-### <a name="4-problem"></a>4.問題点
+### <a name="4-problem"></a>4.問題
 ゲートウェイを登録するときに、次のエラー メッセージが表示される場合があります。
 
 `Error: The content or format of the gateway key "{gatewayKey}" is invalid, please go to azure portal to create one new gateway or regenerate the gateway key.`
@@ -82,7 +81,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="resolution"></a>解決策
 ポータルでゲートウェイ キーを生成した後、コピー ボタンを使用してキー全体をコピーします。 その後、キーをこのウィンドウに貼り付けてゲートウェイを登録します。
 
-### <a name="5-problem"></a>5.問題点
+### <a name="5-problem"></a>5.問題
 ゲートウェイを登録するときに、次のエラー メッセージが表示される場合があります。
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
@@ -97,7 +96,7 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 
 セットアップが最新で、ゲートウェイがまだポータルに存在している場合は、Azure Portal でゲートウェイ キーを再生成した後、コピー ボタンを使用してキー全体をコピーし、キーをこのウィンドウに貼り付けてゲートウェイを登録します。 それ以外の場合は、ゲートウェイを再作成して最初からやり直します。
 
-### <a name="6-problem"></a>6.問題点
+### <a name="6-problem"></a>6.問題
 ゲートウェイを登録するときに、次のエラー メッセージが表示される場合があります。
 
 `Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
@@ -108,11 +107,11 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 このエラーは、ゲートウェイが削除されているか、関連付けられているゲートウェイ キーが再生成されている場合に発生する可能性があります。
 
 #### <a name="resolution"></a>解決策
-ゲートウェイが削除されている場合は、ポータルでゲートウェイを再作成し、**[登録]** をクリックします。ポータルからキーをコピーして貼り付け、ゲートウェイを登録します。
+ゲートウェイが削除されている場合は、ポータルでゲートウェイを再作成し、 **[登録]** をクリックします。ポータルからキーをコピーして貼り付け、ゲートウェイを登録します。
 
 ゲートウェイが存在している一方でそのキーが再生成されている場合、新しいキーを使用してゲートウェイを登録します。 キーがない場合は、ポータルでもう一度キーを生成します。
 
-### <a name="7-problem"></a>7.問題点
+### <a name="7-problem"></a>7.問題
 ゲートウェイを登録するときに、証明書のパスとパスワードの入力が必要になる場合があります。
 
 ![証明書の指定](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
@@ -129,7 +128,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
 ゲートウェイを回復させるうえでこのステージをスキップすることはできません。 証明書がない場合は、ポータルからゲートウェイを削除し、新しいゲートウェイを再作成する必要があります。  さらに、資格情報を再入力して、ゲートウェイに関係するすべてのリンクされたサービスを更新します。
 
-### <a name="8-problem"></a>8.問題点
+### <a name="8-problem"></a>8.問題
 次のようなエラー メッセージが表示されることがあります。
 
 `Error: The remote server returned an error: (407) Proxy Authentication Required.`
@@ -141,7 +140,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 この記事のプロキシ サーバーに関する考慮事項セクションの手順に従い、Data Management Gateway Configuration Manager でプロキシ設定を構成します。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>ゲートウェイはオンラインだが機能が制限されている
-### <a name="1-problem"></a>1.問題点
+### <a name="1-problem"></a>1.問題
 ゲートウェイの状態が、オンラインではあるものの機能が制限されています。
 
 #### <a name="cause"></a>原因
@@ -155,7 +154,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="resolution"></a>解決策
 この問題 (オンラインだが機能が制限されている) の解決策は、ゲートウェイからクラウド サービスに接続できないのか、その逆かによって異なります。 次のセクションでそれぞれの解決策を説明します。
 
-### <a name="2-problem"></a>2.問題点
+### <a name="2-problem"></a>2.問題
 次のエラーが表示されます。
 
 `Error: Gateway cannot connect to cloud service through service bus`
@@ -172,7 +171,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 1. ゲートウェイのプロキシ設定を構成します。 詳細については、プロキシ サーバーに関する考慮事項セクションを参照してください。
 1. ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、ポートとファイアウォールのセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
-### <a name="3-problem"></a>手順 3.問題点
+### <a name="3-problem"></a>3.問題
 次のエラーが表示されます。
 
 `Error: Cloud service cannot connect to gateway through service bus.`
@@ -187,7 +186,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 1. エラーが解決しない場合は、ゲートウェイ サービスを再起動してください。
 
 ## <a name="failed-to-author-linked-service"></a>リンクされたサービスを作成できない
-### <a name="problem"></a>問題点
+### <a name="problem"></a>問題
 ポータルの資格情報マネージャーを使用して新しいリンクされたサービスの資格情報を入力しようとしたときや、既存のリンクされたサービスの資格情報を更新しようとしたときに、このエラーが表示される場合があります。
 
 `Error: The data store '<Server>/<Database>' cannot be reached. Check connection settings for the data source.`
@@ -197,7 +196,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 ![データ ストアに接続できない](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>原因
-ゲートウェイ コンピューター上で SSL 証明書が見つからない可能性があります。 現在 SSL 暗号化に使用されている証明書をゲートウェイ コンピューターで読み込むことができません。 イベント ログに次のようなエラー メッセージが表示される場合もあります。
+ゲートウェイ コンピューター上で TLS/SSL 証明書が見つからない可能性があります。 現在 TLS 暗号化に使用されている証明書をゲートウェイ コンピューターで読み込むことができません。 イベント ログに次のようなエラー メッセージが表示される場合もあります。
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
@@ -206,15 +205,15 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
 1. Data Management Gateway Configuration Manager を起動します。
 2. **[設定]** タブに切り替えます。  
-3. SSL 証明書を変更するために、**[変更]** をクリックします。
+3. TLS/SSL 証明書を変更するために、 **[変更]** をクリックします。
 
    ![証明書の変更ボタン](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. 新しい証明書を SSL 証明書として選択します。 自分で生成した SSL 証明書も、任意の組織によって生成された SSL 証明書も使用できます。
+4. 新しい証明書を TLS/SSL 証明書として選択します。 自分で生成した TLS/SSL 証明書も、任意の組織によって生成された SSL 証明書も使用できます。
 
    ![証明書の指定](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
 ## <a name="copy-activity-fails"></a>コピー アクティビティが失敗する
-### <a name="problem"></a>問題点
+### <a name="problem"></a>問題
 ポータルでパイプラインを設定した後、次の "UserErrorFailedToConnectToSqlserver" エラーが表示される場合があります。
 
 `Error: Copy activity encountered a user error: ErrorCode=UserErrorFailedToConnectToSqlServer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server`
@@ -280,7 +279,7 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
 詳細なゲートウェイ ログの情報は、Windows イベント ログで確認できます。
 
 1. Windows **イベント ビューアー**を起動します。
-2. **[アプリケーションとサービス ログ]** > **[Data Management Gateway]** フォルダーでログを見つけます。
+2. **[アプリケーションとサービス ログ]**  >  **[Data Management Gateway]** フォルダーでログを見つけます。
 
    ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
 

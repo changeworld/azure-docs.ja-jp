@@ -1,30 +1,26 @@
 ---
-title: Azure Active Directory に登録されたアプリをユーザーのセットに制限する方法
+title: Azure AD アプリを一連のユーザーに制限する | Azure
+titleSuffix: Microsoft identity platform
 description: Azure AD に登録されたアプリへのアクセスを選択したユーザーのセットに制限する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: kalyankrishna1
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07d9f0fa6ec6b4abc7ce96279b7b02faae298fa
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8bdc7e6e3795719128a8ecfb1e8bc97c1a9a08c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540192"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81759030"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>方法:ご利用のアプリを特定のユーザー セットに制限する
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>方法:Azure AD アプリを Azure AD テナントの一連のユーザーに制限する
 
 Azure Active Directory (Azure AD) テナントに登録されたアプリケーションは、既定ではテナントの正常に認証されたすべてのユーザーが利用できます。
 
@@ -32,7 +28,7 @@ Azure Active Directory (Azure AD) テナントに登録されたアプリケー�
 
 テナントの管理者と開発者には、多くの場合、アプリを特定のユーザーのセットに制限しなければならない要件があります。 開発者はロール ベースのアクセス制御 (RBAC) のような一般的な承認パターンを使用して同じことを実現できますが、この方法では開発者に相当の負担がかかります。
 
-Azure AD により、テナントの管理者と開発者が、テナントのユーザーまたはセキュリティ グループの特定のセットにアプリを制限できるようになります。
+Azure AD のこの組み込み機能も使用することにより、テナントの管理者と開発者が、テナント内のユーザーまたはセキュリティ グループの特定のセットにアプリを制限できるようになります。
 
 ## <a name="supported-app-configurations"></a>サポートされているアプリの構成
 
@@ -47,35 +43,60 @@ Azure AD により、テナントの管理者と開発者が、テナントの�
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>アプリを更新してユーザーの割り当てを有効にする
 
+ユーザーの割り当てが有効なアプリケーションを作成するには、2 つの方法があります。 1 つ目には**グローバル管理者**ロールが必要ですが、2 つ目には必要ありません。
+
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>エンタープライズ アプリケーション (グローバル管理者ロールが必要)
+
 1. [**Azure portal**](https://portal.azure.com/) に移動し、**グローバル管理者**としてサインインします。
 1. 上部のバーで、サインインしているアカウントを選択します。 
 1. **[ディレクトリ]** で、アプリを登録する Azure AD テナントを選択します。
-1. 左側のナビゲーションで、**[Azure Active Directory]** を選択します。 Azure Active Directory がナビゲーション ウィンドウに表示されない場合は、次の手順を実行してください。
+1. 左側のナビゲーションで、 **[Azure Active Directory]** を選択します。 Azure Active Directory がナビゲーション ウィンドウに表示されない場合は、以下の手順のようにします。
 
     1. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** を選択します。
     1. フィルター検索ボックスに「**Azure Active Directory**」と入力し、結果から **[Azure Active Directory]** 項目を選択します。
 
-1. **[Azure Active Directory]** ウィンドウで、**[Azure Active Directory]** の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** を選択します。
+1. **[Azure Active Directory]** ウィンドウで、 **[Azure Active Directory]** の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** を選択します。
 1. **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。
 
-     必要なアプリケーションが表示されていない場合は、**[すべてのアプリケーション]** リストの一番上にあるさまざまなフィルターを使用して表示内容を制限するか、一覧表示の下までスクロールしてアプリケーションを探します。
+     必要なアプリケーションが表示されていない場合は、 **[すべてのアプリケーション]** リストの一番上にあるさまざまなフィルターを使用して表示内容を制限するか、一覧表示の下までスクロールしてアプリケーションを探します。
 
 1. ユーザーまたはセキュリティ グループを割り当てるアプリケーションを一覧から選びます。
-1. アプリケーションの **[概要]** ページで、アプリケーションの左側のナビゲーション メニューから **[プロパティ]** をクリックします。
-1. **[ユーザーの割り当てが必要ですか?]** の設定を探し、**[はい]** に設定します。 このオプションを **[はい]** に設定すると、ユーザーをこのアプリケーションに割り当てるまでアプリケーションにアクセスできません。
+1. アプリケーションの **[概要]** ページで、アプリケーションの左側のナビゲーション メニューから **[プロパティ]** を選択します。
+1. **[ユーザーの割り当てが必要ですか?]** の設定を探し、 **[はい]** に設定します。 このオプションを **[はい]** に設定すると、テナント内のユーザーは、まずこのアプリケーションに割り当てられることが必要になります。そうしないと、アプリケーションにアクセスできません。
+1. **[保存]** を選択してこの構成の変更を保存します。
+
+### <a name="app-registration"></a>アプリの登録
+
+1. [**Azure portal**](https://portal.azure.com/) にアクセスします。
+1. 上部のバーで、サインインしているアカウントを選択します。 
+1. **[ディレクトリ]** で、アプリを登録する Azure AD テナントを選択します。
+1. 左側のナビゲーションで、 **[Azure Active Directory]** を選択します。
+1. **[Azure Active Directory]** ウィンドウで、 **[Azure Active Directory]** の左側のナビゲーション メニューから **[アプリの登録]** を選択します。
+1. 管理するアプリを作成または選択します。 ご自分がこのアプリの登録の**所有者**である必要があります。
+1. アプリケーションの **[概要]** ページで、ページ上部の [要点] の下にある **[ローカル ディレクトリでのマネージド アプリケーション]** リンクを選択します。 これにより、アプリの登録の "_マネージド エンタープライズ アプリケーション_" に移動します。
+1. 左側のナビゲーション ブレードで、 **[プロパティ]** を選択します。
+1. **[ユーザーの割り当てが必要ですか?]** の設定を探し、 **[はい]** に設定します。 このオプションを **[はい]** に設定すると、テナント内のユーザーは、まずこのアプリケーションに割り当てられることが必要になります。そうしないと、アプリケーションにアクセスできません。
 1. **[保存]** を選択してこの構成の変更を保存します。
 
 ## <a name="assign-users-and-groups-to-the-app"></a>アプリにユーザーとグループを割り当てる
 
 ユーザーの割り当てを有効にするようにアプリを構成したら、次はユーザーとグループをそのアプリに割り当てることができます。
 
-1. アプリケーションの左側のナビゲーション メニューで、**[ユーザーとグループ]** ウィンドウを選択します。
-1. **[ユーザーとグループ]** 一覧の上部にある **[ユーザーの追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
+1. アプリケーションの左側のナビゲーション メニューで、 **[ユーザーとグループ]** ウィンドウを選択します。
+1. **[ユーザーとグループ]** 一覧の上部にある **[ユーザーの追加]** ボタンをクリックして、 **[割り当ての追加]** ウィンドウを開きます。
 1. **[割り当ての追加]** ウィンドウから **[ユーザー]** セレクターを選択します。 
 
      ユーザーとセキュリティ グループの一覧と一緒に、特定のユーザーまたはグループを検索して探すためのテキスト ボックスが表示されます。 この画面では、一度に複数のユーザーとグループを選択できます。
 
 1. ユーザーとグループの選択が終了したら、一番下の **[選択]** ボタンをクリックして次の段階に進みます。
+1. (オプション) アプリケーションでアプリ ロールを定義している場合は、 **[ロールの選択]** オプションを使用して、選択したユーザーとグループをいずれかのアプリケーションのロールに割り当てることができます。 
 1. 一番下の **[割り当て]** ボタンをクリックすると、ユーザーとグループのアプリへの割り当てが完了します。 
 1. 追加したユーザーとグループが、更新された **[ユーザーとグループ]** のリストに表示されていることを確認します。
 
+## <a name="more-information"></a>詳細情報
+
+- [方法: ご利用のアプリケーションにアプリ ロールを追加する](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+- [アプリ ロールおよびロール要求を使用して ASP.NET Core Web アプリに承認を追加する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [アプリでのセキュリティ グループとアプリケーション ロールの使用 (ビデオ)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [グループ要求とアプリケーション ロールが追加された Azure Active Directory](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
+- [Azure Active Directory のアプリ マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

@@ -2,25 +2,20 @@
 title: Azure PowerShell のサンプル スクリプト - RDP ポート範囲の変更 | Microsoft Docs
 description: Azure PowerShell のサンプル スクリプト - デプロイしたクラスターの RDP ポート範囲を変更します。
 services: service-fabric
-documentationcenter: ''
-author: aljo-microsoft
-manager: chackdan
-editor: ''
 tags: azure-service-management
-ms.assetid: ''
+author: athinanthny
+ms.author: atsenthi
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: aljo
-ms.custom: mvc
-ms.openlocfilehash: 001574cef8f0ea074b65fdc94f6d8b255f98bff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: sfrev
+ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159956"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76025004"
 ---
 # <a name="update-the-rdp-port-range-values"></a>RDP ポート範囲の値の更新
 
@@ -28,7 +23,7 @@ ms.locfileid: "66159956"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。 
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -43,7 +38,7 @@ ms.locfileid: "66159956"
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | `Microsoft.Network/loadBalancers` リソースを取得します。 |
 |[Set-AzResource](/powershell/module/az.resources/set-azresource)|`Microsoft.Network/loadBalancers` リソースを更新します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

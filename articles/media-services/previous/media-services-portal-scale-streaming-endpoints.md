@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257209"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80985543"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントのスケール設定
 ## <a name="overview"></a>概要
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
 > 
 > 
 
@@ -33,7 +33,7 @@ ms.locfileid: "58257209"
  
 このトピックでは、ストリーミング エンドポイントを拡大縮小する方法を示します。
 
-料金設定の詳細については、「 [Azure 料金早見表](https://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+料金設定の詳細については、「 [Azure 料金早見表](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
 
 ## <a name="scale-streaming-endpoints"></a>ストリーミング エンドポイントのスケール設定
 
@@ -50,7 +50,7 @@ ms.locfileid: "58257209"
 
     ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

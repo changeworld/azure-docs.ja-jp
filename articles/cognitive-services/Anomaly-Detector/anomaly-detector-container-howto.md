@@ -1,28 +1,29 @@
 ---
-title: コンテナーのインストールと実行 - Anomaly Detector
+title: Anomaly Detector API を使用するためのコンテナーをインストールして実行する方法
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API の高度なアルゴリズムを利用し、時系列データ内の異常を特定します。
 services: cognitive-services
 author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
-ms.topic: article
-ms.date: 05/28/2019
+ms.subservice: anomaly-detector
+ms.topic: conceptual
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 40906c97dc088687bbd960fecc91921a3eb888a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306974"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589977"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行
+# <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomaly Detector コンテナー (プレビュー) のインストールと実行
 
-Anomaly Detector には次のコンテナーがあります。 
+Anomaly Detector には次のコンテナー機能があります。
 
-|Function|機能|
-|-|-|
-|Anomaly Detector| <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
+| 機能 | 特徴 |
+|--|--|
+| Anomaly Detector | <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
 
 API の詳細情報については、以下を参照してください。
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -37,15 +38,9 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Anomaly Detector_ Azure リソース。 どちらの値も、Azure portal の Anomaly Detector の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus2.api.cognitive.microsoft.com`|
+|Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Anomaly Detector_ リソース。 どちらの値も、Azure portal の **Anomaly Detector** の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
-## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
-
-まず、[Anomaly Detector Containers Request フォーム](https://aka.ms/adcontainer)に入力して、送信し、コンテナーへのアクセスを要求する必要があります。
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="the-host-computer"></a>ホスト コンピューター
 
@@ -59,8 +54,8 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 
 | QPS (秒間クエリ) | 最小値 | 推奨 |
 |-----------|---------|-------------|
-| 10 QPS | 4 コア、1 GB メモリ | 8 コア 2 GB メモリ |
-| 20 QPS | 8 コア、2 GB メモリ | 16 コア 4 GB メモリ |
+| 10 QPS | 4 コア、1 GB メモリ | 8 コア、2 GB メモリ |
+| 20 QPS | 8 コア、2 GB メモリ | 16 コア、4 GB メモリ |
 
 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
 
@@ -72,44 +67,38 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 
 | コンテナー | リポジトリ |
 |-----------|------------|
-| cognitive-services-anomaly-detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
+| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
 -->
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-
 ### <a name="docker-pull-for-the-anomaly-detector-container"></a>Anomaly Detector コンテナーの docker pull
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](anomaly-detector-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
-1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。 
+1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](anomaly-detector-container-configuration.md#example-docker-run-commands)もご覧いただけます。
+1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
-3 つのコンテナーのいずれかを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 このコマンドには、次のパラメーターが使用されます。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。
 
-| プレースホルダー | 値 |
-|-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Anomaly Detector の [キー] ページで入手できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Anomaly Detector の [概要] ページで入手できます。|
-
-次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
+`docker run` コマンドの[例](anomaly-detector-container-configuration.md#example-docker-run-commands)を利用できます。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 このコマンドは、次の操作を行います。
@@ -134,8 +123,8 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ポート 5001 上で 2 番目のコンテナーを実行します。
@@ -145,8 +134,8 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 後続の各コンテナーは、別のポート上になっている必要があります。 
@@ -155,7 +144,7 @@ ApiKey={BILLING_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。
+コンテナーの API のホストとしては http://localhost:5000 を使用します。
 
 <!--  ## Validate container is running -->
 
@@ -167,7 +156,9 @@ ApiKey={BILLING_KEY}
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-出力[マウント](anomaly-detector-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
+出力[マウント](anomaly-detector-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 
@@ -194,7 +185,8 @@ Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector
 > [!IMPORTANT]
 > Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の時系列データなど) を Microsoft に送信することはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](anomaly-detector-container-configuration.md)を確認する
+* [Anomaly Detector コンテナーを Azure Container Instances にデプロイする](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

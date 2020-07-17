@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric ノード タイプのセットアップ | Microsoft Docs
+title: Azure Service Fabric ノード タイプのスケールアップ
 description: 仮想マシン スケール セットを追加することで Service Fabric クラスターをスケーリングする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: e6b429189491af71f6215f1c7660be5965741bf7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154869"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998941"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 この記事では、仮想マシンのリソースを増やして、Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -27,7 +16,7 @@ ms.locfileid: "66154869"
 > [!WARNING]
 > クラスターの正常性が異常である場合、プライマリ ノードタイプ VM SKU の変更を開始しないでください。 クラスターの正常性が異常である場合は、VM SKU を変更しようとすると、クラスターがさらに不安定になります。
 >
-> [Silver 以上の耐久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)で実行されている場合を除き、スケール セット/特定の種類のノードの VM SKU は変更しないことをお勧めします。 VM SKU サイズの変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートレス サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。 つまり、ステートフルなサービス ファブリック システム サービスを実行しているプライマリ ノード タイプまたはステートフルなアプリケーション ワークロードを実行している任意のノード タイプです。
+> [Silver 以上の耐久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)で実行されている場合を除き、スケール セット/特定の種類のノードの VM SKU は変更しないことをお勧めします。 VM SKU サイズの変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートフル サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。 つまり、ステートフルなサービス ファブリック システム サービスを実行しているプライマリ ノード タイプまたはステートフルなアプリケーション ワークロードを実行している任意のノード タイプです。
 >
 
 
@@ -45,7 +34,7 @@ ms.locfileid: "66154869"
     テンプレートで新しいスケール セットを見つけるには、*vmNodeType2Name* パラメーターに指定されている "Microsoft.Compute/virtualMachineScaleSets" リソースを探します。  新しいスケール セットは、properties->virtualMachineProfile->extensionProfile->extensions->properties->settings->nodeTypeRef 設定を使用してプライマリ ノード タイプに追加されます。
 4. クラスターの正常性を確認し、すべてのノードが正常であることを確認します。
 5. プライマリ ノード タイプの以前のスケール セットに含まれるノードは、削除するために無効にします。 一度にすべてを無効にすることができます。この操作はキューに格納されます。 すべてのノードが無効になるまで待ちます。この操作には時間がかかることがあります。  ノード タイプの以前のノードが無効になると、システム サービスとシード ノードによって、プライマリ ノード タイプに含まれる新しいスケール セットの VM は移行されます。
-6. プライマリ ノード タイプから以前のスケール セットを削除します。
+6. プライマリ ノード タイプから以前のスケール セットを削除します。 (手順 5 のようにノードを無効にした後、Azure portal の [仮想マシン スケール セット] ブレードで、種類が古いノードを 1 つずつ割り当て解除します)。
 7. 以前のスケール セットに関連付けられているロード バランサーを削除します。 新しいパブリック IP アドレスとロード バランサーが新しいスケール セット用に構成されている間、クラスターは使用できません。  
 8. 以前のプライマリ ノード タイプのスケール セットに関連付けられたパブリック IP アドレスの DNS 設定を変数に格納し、そのパブリック IP アドレスを削除します。
 9. 新しいプライマリ ノード タイプのスケール セットに関連付けられたパブリック IP アドレスの DNS 設定を、削除されたパブリック IP アドレスの DNS 設定に置き換えます。  これで、クラスターに再びアクセスできるようになります。
@@ -160,7 +149,7 @@ foreach($name in $nodeNames){
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスターにノード タイプを追加する](virtual-machine-scale-set-scale-node-type-scale-out.md)方法について学習します。
 * [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。
 * [Azure クラスターをスケールインまたはスケールアウト](service-fabric-tutorial-scale-cluster.md)します。

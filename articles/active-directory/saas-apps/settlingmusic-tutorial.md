@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と楽楽精算の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と楽楽精算の統合 | Microsoft Docs'
 description: Azure Active Directory と楽楽精算の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713ca571a4321eded82cbc9db56dae7616126e2a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08f084bc0231bceeaf2c7d87dc0a160cdf188978
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902406"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67090981"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル:Azure Active Directory と楽楽精算の統合
+# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル: Azure Active Directory と楽楽精算の統合
 
 このチュートリアルでは、楽楽精算と Azure Active Directory (Azure AD) を統合する方法について説明します。
 楽楽精算と Azure AD の統合には、次の利点があります。

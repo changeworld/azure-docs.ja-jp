@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる | Microsoft Docs
+title: Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 description: Advisor を使用して、Azure のデプロイのパフォーマンスを最適化します。
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920444"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787942"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -33,6 +28,10 @@ Advisor は、すべての Azure リソースに関する推奨事項を、一�
 > 推奨事項を取得するには、データベースを約 1 週間使用し、その週の間に、何らかの一貫性のあるアクティビティが行われている必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
 
 SQL Database Advisor の詳細については「[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)」を参照してください。
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>信頼性とパフォーマンスを向上させるために、ストレージ クライアント ライブラリを最新バージョンにアップグレードする
+
+ストレージ クライアント ライブラリ/SDK の最新バージョンには、お客様から報告された問題に対する修正と、QA プロセスを通じて事前に明らかになった問題の修正が含まれています。 また、最新バージョンには、Azure Storage の使用に関する全体的なエクスペリエンスを向上させる新機能に加えて、信頼性とパフォーマンスの最適化も含まれています。 Advisor では、古いバージョンの SDK を最新バージョンにアップグレードするための推奨事項と手順が提供されます。 推奨事項は、サポートされている言語である C++ および .Net 用です。
 
 ## <a name="improve-app-service-performance-and-reliability"></a>App Service のパフォーマンスと信頼性の向上
 
@@ -73,11 +72,31 @@ Advisor では、レプリケートされたテーブルではないが、変換
 ストレージ アカウント デプロイ モデルを Azure Resource Manager (Resource Manager) に移行して、テンプレート デプロイや、追加のセキュリティ オプションをご利用ください。また、GPv2 アカウントにアップグレードして Azure Storage の最新機能を利用することもできます。 Advisor は、クラシック デプロイ モデルを使用しているスタンドアロンのストレージ アカウントをすべて特定して、Resource Manager デプロイ モデルに移行することを推奨します。
 
 > [!NOTE]
-> Azure Monitor のクラシック アラートは 2019 年 6 月に廃止される予定です。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳しくは、[クラシック アラートの廃止](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)に関するページをご覧ください。
+> Azure Monitor のクラシック アラートは 2019 年 8 月に廃止されました。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳しくは、[クラシック アラートの廃止](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)に関するページをご覧ください。
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>サブスクリプションの上限に到達しないようにストレージ アカウントを設計する
 
 Azure リージョンでは、サブスクリプションごとに最大 250 個のストレージ アカウントをサポートできます。 制限に達した場合、そのリージョン/サブスクリプションの組み合わせでは、それ以上ストレージ アカウントを作成することはできません。 Advisor は、サブスクリプションを確認して、上限に近づいている場合はストレージ アカウント数を減らして設計するように勧告します。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>高 P2S 使用率に対処するために VNet Gateway SKU のサイズを大きくすることを検討する
+
+各ゲートウェイの SKU は、指定された数の同時 P2S 接続にのみ対応します。 接続数がゲートウェイの上限に迫っていると、追加の接続試行が失敗する可能性があります。 ゲートウェイのサイズを大きくすると、より多くの同時 P2S ユーザー数に対応できるようになります。Advisor では、このための推奨事項と手順が提供されています。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>高 CPU 使用率に対処するために VNet Gateway SKU のサイズを大きくすることを検討する
+
+トラフィックの負荷が高い状況下では、CPU の使用率が高いと VPN ゲートウェイでパケットが破棄されることがあります。 VPN は常に実行されているため、VPN Gateway SKU をアップグレードすることを検討してください。VPN ゲートウェイのサイズを大きくすることで、CPU の使用率が高いことが原因で接続が切断されないようにします。 Advisor では、この問題に事前に対処するための推奨事項が提供されています。 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>読み込み時のバッチ サイズを増加して、読み込みスループット、データ圧縮、クエリ パフォーマンスを最大化する
+
+Advisor では、データベースに読み込む際にバッチ サイズを増加することで、読み込みのパフォーマンスとスループットを向上できることを検出できます。 COPY ステートメントの使用を検討する必要があります。 COPY ステートメントを使用できない場合は、SQLBulkCopy API や BCP などの読み込みユーティリティを使用する際にバッチ サイズを増加することを検討してください。一般的には、10 万行から 100 万行のバッチ サイズが適切です。 これにより、負荷のスループット、データ圧縮、およびクエリ パフォーマンスが向上します。
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>読み込み時の待機時間を最小限に抑えるために、ストレージ アカウントを同じリージョン内に配置する
+
+Advisor では、SQL プールとは異なるリージョンから読み込んでいることを検出できます。 データを読み込むときの待機時間を最小限に抑えるには、SQL プールと同じリージョン内にあるストレージ アカウントから読み込むことを検討する必要があります。 これにより、待機時間を最小限に抑え、読み込みパフォーマンスを向上させることができます。
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>サポートされていない Kubernetes バージョンが検出されます
+
+Advisor では、サポートされていない Kubernetes バージョンが検出されたかどうかを検出できます。 推奨事項は、Kubernetes クラスターがサポートされているバージョンで実行されることを確認するのに役立ちます。
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Azure MySQL、Azure PostgreSQL、および Azure MariaDB サーバーのパフォーマンスを最適化する 
 
@@ -94,18 +113,35 @@ Azure Advisor は、サーバー上での過去 7 日間にわたる書き込み
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Azure MySQL、Azure PostgreSQL、または Azure MariaDB サーバーをより上位の SKU にスケーリングして接続の制約を回避する
 データベース サーバーへの新しい接続ごとに、一定のメモリが占有されます。 メモリの [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor は、多くの接続エラーを伴う実行中のサーバーを特定して、コンピューティング処理をスケールアップするかメモリ最適化された SKU を使用して、コアごとのコンピューティング処理数を増やすことで、サーバーの接続制限を引き上げてお使いのサーバーにより多くのメモリを提供するよう勧告します。
 
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>キャッシュやアプリケーションのパフォーマンスを向上させるためにキャッシュを別のサイズまたは SKU にスケーリングする
+
+キャッシュ インスタンスは、メモリ不足、サーバー負荷、ネットワーク帯域幅などが高い状態で実行されていないときにパフォーマンスが最大になります。これらの状態が発生すると、無応答になったり、データが失われたり、使用できなくなったりする場合があります。 Advisor は、これらの状態にあるキャッシュ インスタンスを識別し、メモリ不足、サーバー負荷、ネットワーク帯域幅などを削減するためのベスト プラクティスの適用か、あるいは別のサイズまたは容量の大きな SKU へのスケーリングのどちらかを推奨します。
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>トラフィックが存在するリージョンを Azure Cosmos DB アカウントに追加する
+
+Advisor は、現在構成されていないリージョンからのトラフィックが存在する Azure Cosmos DB アカウントを検出し、そのリージョンを追加することを推奨します。 これにより、そのリージョンから来る要求の待ち時間が改善されると共に、リージョン障害が発生した場合の可用性が確保されます。 [Azure Cosmos DB でのグローバルなデータの分散](https://aka.ms/cosmos/globaldistribution)の詳細を確認してください。
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>顧客の含めるパスまたは除外するパスを使用して Azure Cosmos DB インデックス作成ポリシーを構成する
+
+Azure Advisor は、既定のインデックス作成ポリシーを使用しているが、ワークロード パターンに基づいてカスタム インデックス作成ポリシーの利点が得られる可能性がある Cosmos DB コンテナーを識別します。 既定のインデックス作成ポリシーはすべてのプロパティのインデックスを作成しますが、クエリ フィルターで使用される明示的な含めるパスまたは除外するパスと共にカスタム インデックス作成ポリシーを使用すると、インデックス作成のために消費される RU やストレージが削減される場合があります。 [インデックス ポリシーの変更](https://aka.ms/cosmosdb/modify-index-policy)の詳細を確認してください。
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB クエリ ページ サイズ (MaxItemCount) を -1 に構成する 
+
+Azure Advisor は、100 のクエリ ページ サイズを使用している Azure Cosmos DB コンテナーを識別し、より高速なスキャンのために -1 のページ サイズを使用することを推奨します。 [最大項目数](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)の詳細を確認してください。
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2.  Advisor ダッシュボードで、**[パフォーマンス]** タブをクリックします。
+2.  Advisor ダッシュボードで、 **[パフォーマンス]** タブをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 
 * [Advisor 入門](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
-* [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
+* [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)

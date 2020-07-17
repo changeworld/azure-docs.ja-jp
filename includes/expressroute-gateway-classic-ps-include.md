@@ -9,11 +9,11 @@ ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121299"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67180909"
 ---
 > [!NOTE]
 > これらの例は、S2S/ExpressRoute の共存構成には該当しません。

@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161716"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68857425"
 ---
 ## <a name="install-wordpress"></a>WordPress のインストール
 
@@ -45,7 +45,6 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
 ON wordpress.*
 TO wordpress@localhost
 IDENTIFIED BY 'yourPassword';
-FLUSH PRIVILEGES;
 ```
 
 次のコマンドを実行してデータベースを作成します。

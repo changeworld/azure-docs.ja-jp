@@ -1,25 +1,18 @@
 ---
-title: Marketplace のオファーを作成する - Azure Marketplace | Microsoft Docs
+title: Marketplace のオファーを作成する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーを作成する
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: pbutlerm
-ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: dsindona
+ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454546"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80286474"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Azure Marketplace および AppSource のオファーを作成する
 
@@ -31,7 +24,7 @@ Cloud パートナー ポータルの重要な目的の 1 つは、パブリッ�
 - **[エディター]** タブ - 新しいオファー インスタンスの情報の入力と資産のアップロードを行うことができます。  このタブは既定で表示されます。
 - **[状態]** タブ - 発行の状態が表示されます。また、検証とレビューの問題がある場合は一覧表示されます。 
 
-オファーを作成するときは、**[エディター]** タブを使用してそのオファーに関する情報を入力します。 
+オファーを作成するときは、 **[エディター]** タブを使用してそのオファーに関する情報を入力します。 
 
 ## <a name="editing-operations"></a>編集操作
 
@@ -39,17 +32,17 @@ Cloud パートナー ポータルの重要な目的の 1 つは、パブリッ�
 
 |   ボタン    |   目的                                                          |
 |   ------    |  --------                                                          |
-| **[[Save]]**    | 最近のデータ入力の変更を保存します。  ページから離れる前に変更を手動で保存する必要があります。そうしないと、変更は失われます。 | 
+| **および**    | 最近のデータ入力の変更を保存します。  ページから離れる前に変更を手動で保存する必要があります。そうしないと、変更は失われます。 | 
 | **破棄** | (最後の保存以降の) 最近のデータ入力の変更を破棄します             |
 | **比較** | 現在のオファーと発行済みのオファーの状態を比較します。  オファーが正常に発行された後にのみ有効になります。  |
-| **[発行]** | このオファーの発行プロセスを開始します                       |
+| **公開** | このオファーの発行プロセスを開始します                       |
 | **削除**  | 作成から発行までの間に、このオファーを削除します。 |
 |   |   |
 
 
 ## <a name="editing-tabs"></a>編集タブ
 
-オファーを作成するときに、**[新しいプラン]** ページの左側の縦の列にある各タブに必須データと省略可能データを入力します。  テキスト ボックス、ドロップダウン メニュー、チェック ボックスなどの標準のユーザー インターフェイス コントロールがデータ コレクションに対して表示されます。  編集タブの一部のコレクションはオファーの種類によって変わりますが、次の表に一般的なタブの一部を示します。
+オファーを作成するときに、 **[新しいプラン]** ページの左側の縦の列にある各タブに必須データと省略可能データを入力します。  テキスト ボックス、ドロップダウン メニュー、チェック ボックスなどの標準のユーザー インターフェイス コントロールがデータ コレクションに対して表示されます。  編集タブの一部のコレクションはオファーの種類によって変わりますが、次の表に一般的なタブの一部を示します。
 
 |      タブ名       |   目的                                                            |
 |      --------       |   -------                                                            |
@@ -63,6 +56,6 @@ Cloud パートナー ポータルの重要な目的の 1 つは、パブリッ�
 似た名前のタブでも、オファーの種類によって内容が異なる場合があります。  これらのタブのオファー固有の詳細は、各オファーの種類の [プランの作成] セクション内に表示されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オファーを作成して保存した後は、発行する前後に[状態を表示](./cpp-view-status-offer.md)することができます。

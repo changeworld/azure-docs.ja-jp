@@ -1,21 +1,21 @@
 ---
-title: Azure HDInsight のリリース ノート
-description: Azure HDInsight の最新のリリース ノート。 Hadoop、Spark、Microsoft R Server、Hive などの開発に関するヒントや詳細を紹介します。
+title: Azure HDInsight のリリース ノート (アーカイブ)
+description: Azure HDInsight のリリース ノート (アーカイブ)。 Hadoop、Spark、Microsoft R Server、Hive などの開発に関するヒントや詳細を紹介します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 01/08/2019
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713045"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76720335"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
+# <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
 > [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
@@ -24,7 +24,247 @@ ms.locfileid: "64713045"
 
 Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
 
-## <a name="new-features"></a>新機能
+## <a name="release-date-12172019"></a>リリース日: 12/17/2019
+
+このリリースは、HDInsight 3.6 と4.0 の両方に適用されます。
+
+### <a name="new-features"></a>新機能
+
+#### <a name="service-tags"></a>サービス タグ
+サービス タグを利用することで、ネットワーク アクセスを Azure サービスに簡単に制限できるため、Azure 仮想マシンと Azure 仮想ネットワークのセキュリティが簡単になります。 ネットワーク セキュリティ グループ (NSG) ルールでサービス タグを使用し、グローバルで、または Azure リージョンごとに特定の Azure サービスへのトラフィックを許可または拒否できます。 Azure では、各タグの基になる IP アドレスが保守管理されます。 ネットワーク セキュリティ グループ (NSG) 用の HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 HDInsight をご利用のお客様は Azure portal、PowerShell、REST API からサービス タグを有効にできます。 詳細については、「[Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)」を参照してください。
+
+#### <a name="custom-ambari-db"></a>カスタム Ambari DB
+HDInsight では、自分の SQL DB for Apache Ambari を使用できるようになりました。 このカスタム Ambari DB は、Azure portal または Resource Manager テンプレートから構成できます。  この機能により、自分に必要な処理と容量に最適な SQL DB を選択できます。 また、事業の成長に合わせて簡単にアップグレードできます。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](hdinsight-custom-ambari-db.md)」を参照してください。
+
+![カスタム Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+
+### <a name="deprecation"></a>非推奨
+このリリースに非推奨はありません。 今後の非推奨に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
+
+### <a name="behavior-changes"></a>動作の変更
+このリリースに動作変更はありません。 今後の動作変更に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
+
+### <a name="upcoming-changes"></a>今後の変更
+今後のリリースでは、次の変更が行われます。 
+
+#### <a name="transport-layer-security-tls-12-enforcement"></a>トランスポート層セキュリティ (TLS) 1.2 施行
+TLS (トランスポート層セキュリティ) と SSL (Secure Sockets Layer) は、コンピューター ネットワーク上の通信にセキュリティを確保する暗号プロトコルです。 詳細については、「[トランスポート層セキュリティ](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)」を参照してください。 Azure HDInsight クラスターのパブリック HTTPS エンドポイントは TLS 1.2 に対応していますが、旧クライアントとの下位互換性のため、TLS 1.1 も引き続きサポートされます。
+
+次のリリースから、新しい HDInsight クラスターで TLS 1.2 接続のみを許可するように選択し、構成できます。 
+
+2020 年 6 月 30 日以降、Azure HDInsight ではすべての HTTPS 接続で TLS 1.2 以降のバージョンが強制されます。 すべてのクライアントで確実に TLS 1.2 以降のバージョンに対応できるようにすることをお勧めします。
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 2020 年 2 月より (正式な日付は今後通達します)、HDInsight では Azure 仮想マシン スケール セットが代わりに使用されます。 [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)についてご確認ください。
+
+#### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark クラスター ノード サイズの変更 
+次期リリースで:
+- ESP Spark クラスターに許容される最小ノード サイズが Standard_D13_V2 に変更されます。 
+- CPU とメモリの容量が比較的低いことに起因し、A シリーズの VM は ESP クラスターに問題を引き起こす可能性があるため、新しい ESP クラスターの作成するとき、A シリーズ VM は非推奨となります。
+
+#### <a name="hbase-20-to-21"></a>HBase 2.0 から 2.1
+今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1 にアップグレードされます。
+
+### <a name="bug-fixes"></a>バグの修正
+HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
+
+### <a name="component-version-change"></a>コンポーネントのバージョンの変更
+HDInsight 3.6 のサポートが 2020 年 12 月 31 日に延長されます。 詳細は「[サポートされている HDInsight バージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」にあります。
+
+HDInsight 4.0 のコンポーネント バージョン変更はありません。
+
+HDInsight 3.6 の Apache Zeppelin:0.7.0 --> 0.7.3 
+
+最新のコンポーネント バージョンについては[こちらのドキュメント](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)でご確認いただけます。
+
+### <a name="new-regions"></a>新しいリージョン
+
+#### <a name="uae-north"></a>アラブ首長国連邦北部
+アラブ首長国連邦北部の管理 IP: `65.52.252.96` と `65.52.252.97`
+
+
+## <a name="release-date-11072019"></a>リリース日: 2019/07/11
+
+このリリースは、HDInsight 3.6 と4.0 の両方に適用されます。
+
+### <a name="new-features"></a>新機能
+
+#### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity Broker (HIB) (プレビュー)
+
+HDInsight Identity Broker (HIB) を使用すると、ユーザーは多要素認証 (MFA) を使用して Apache Ambari にサインインし、Azure Active Directory Domain Services (AAD) でパスワードハッシュを必要とせずに必要な Kerberos チケットを取得できます。 現在、HIB は Azure Resource Management (ARM) テンプレートを使用してデプロイされたクラスターでのみ使用できます。
+
+#### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API プロキシ (プレビュー)
+
+Kafka Rest API プロキシでは、セキュリティで保護された AAD 認証と OAuth プロトコルを使用して、Kafka クラスターで高可用性 REST プロキシをワンクリックでデプロイできます。 
+
+#### <a name="auto-scale"></a>自動スケール
+
+Apache Spark および Hadoop クラスターの種類向けに、すべてのリージョンで Azure HDInsight の自動スケールの一般提供が開始されました。 この機能により、よりコスト効率に優れた生産性の高い方法で、ビッグ データ分析のワークロードを管理できるようになります。 HDInsight クラスターの使用を最適化し、必要な分だけ支払うことができるようになりました。
+
+要件に応じて、負荷ベースまたはスケジュール ベースの自動スケーリングを選択できます。 負荷ベースの自動スケールでは、現在のリソースのニーズに基づいてクラスター サイズをスケールアップ/スケールダウンできます。スケジュール ベースの自動スケールでは、事前定義されたスケジュールに基づいてクラスター サイズを変更できます。 
+
+自動スケールでの HBase および LLAP ワークロードのサポートもパブリック プレビュー段階です。 詳細については、「[Azure HDInsight クラスターを自動的にスケール調整する](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)」を参照してください。
+
+#### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>HDInsight の Apache HBase 用書き込みアクセラレータ 
+
+高速書き込みでは、Azure Premium SSD マネージド ディスクが使用されて、Apache HBase の先書きログ (WAL) のパフォーマンスが向上します。 詳細については、「[Azure HDInsight の Apache HBase 用書き込みアクセラレータ](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)」を参照してください。
+
+#### <a name="custom-ambari-db"></a>カスタム Ambari DB
+
+HDInsight では、お客様が独自の SQL DB for Ambari を使用できるようにするための新しい容量が提供されるようになりました。 お客様は、適切な SQL DB for Ambari を選択し、独自のビジネス拡張要件に基づいて簡単にアップグレードすることができます。 デプロイには、Azure Resource Manager テンプレートを使用します。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)」を参照してください。
+
+#### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>HDInsight で F シリーズの仮想マシンを使用できるようになりました
+
+F シリーズの仮想マシン (VM) は、低負荷の処理要件を持つ HDInsight の使用を開始する場合に適しています。 F シリーズは時間あたりの料金が抑えられており、vCPU あたりの Azure コンピューティング ユニット (ACU) に基づく Azure ポートフォリオにおいて、最もコスト パフォーマンスに優れています。 詳細については、「[Azure HDInsight クラスターの適切な VM サイズの選択](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)」を参照してください。
+
+### <a name="deprecation"></a>非推奨
+
+#### <a name="g-series-virtual-machine-deprecation"></a>G シリーズの仮想マシンの非推奨
+このリリースから、G シリーズの VM は HDInsight で提供されなくなりました。
+
+#### <a name="dv1-virtual-machine-deprecation"></a>Dv1 仮想マシンの非推奨
+このリリースから、HDInsight での Dv1 VM の使用は非推奨とされます。 Dv1 のお客様の要求は、Dv2 で自動的に提供されます。 Dv1 VM と Dv2 VM の価格に違いはありません。
+
+### <a name="behavior-changes"></a>動作の変更
+
+#### <a name="cluster-managed-disk-size-change"></a>クラスター マネージド ディスクのサイズ変更
+HDInsight では、クラスターにマネージド ディスク領域が用意されています。 このリリースから、新しく作成されたクラスター内の各ノードのマネージド ディスクのサイズが 128 GB に変更されます。
+
+### <a name="upcoming-changes"></a>今後の変更
+今後のリリースでは、次の変更が行われます。 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 12 月以降、HDInsight では代わりに Azure 仮想マシン スケール セットが使用されます。 [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)についてご確認ください。
+
+#### <a name="hbase-20-to-21"></a>HBase 2.0 から 2.1
+今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1 にアップグレードされます。
+
+#### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>ESP クラスターにおける A シリーズの仮想マシンの非推奨
+A シリーズの VM では、CPU とメモリの容量が比較的少ないため、ESP クラスターの問題が発生する可能性があります。 今後のリリースでは、新しい ESP クラスターを作成するために A シリーズの VM が非推奨とされます。
+
+### <a name="bug-fixes"></a>バグの修正
+HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
+
+### <a name="component-version-change"></a>コンポーネントのバージョンの変更
+このリリースでは、コンポーネントのバージョンの変更はありません。 HDInsight 4.0 および HDInsight 3.6 の現在のコンポーネント バージョンについては、[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)を参照してください。
+
+
+## <a name="release-date-08072019"></a>リリース日:2019/08/07
+
+### <a name="component-versions"></a>コンポーネントのバージョン
+
+以下に HDInsight 4.0 のすべてのコンポーネントの正式な Apache バージョンを示します。 ここに列挙されているコンポーネントは、利用できる最新の安定したバージョンのリリースです。
+
+- Apache Ambari 2.7.1
+- Apache Hadoop 3.1.1
+- Apache HBase 2.0.0
+- Apache Hive 3.1.0
+- Apache Kafka 1.1.1、2.1.0
+- Apache Mahout 0.9.0+
+- Apache Oozie 4.2.0
+- Apache Phoenix 4.7.0
+- Apache Pig 0.16.0
+- Apache Ranger 0.7.0
+- Apache Slider 0.92.0
+- Apache Spark 2.3.1、2.4.0
+- Apache Sqoop 1.4.7
+- Apache TEZ 0.9.1
+- Apache Zeppelin 0.8.0
+- Apache ZooKeeper 3.4.6
+
+新しいバージョンの Apache のコンポーネントは、上の一覧のバージョンに加えて HDP ディストリビューションにバンドルされていることがあります。 この場合、これらの新しいバージョンの一覧はテクニカル プレビューの表に表示され、運用環境で上の一覧の Apache コンポーネントのバージョンの代替にはなりません。
+
+### <a name="apache-patch-information"></a>Apache のパッチ情報
+
+HDInsight 4.0 で使用可能なパッチの詳細については、以下の表の各製品のパッチ一覧を参照してください。
+
+| 製品名 | パッチ情報 |
+|---|---|
+| Ambari | [Ambari のパッチ情報](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
+| Hadoop | [Hadoop のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
+| hbase | [HBase のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| Hive  | このリリースは Hive 3.1.0 を提供します。Apache の追加パッチはありません。  |
+| Kafka | このリリースは Kafka 1.1.1 を提供します。Apache の追加パッチはありません。 |
+| Oozie | [Oozie のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
+| Phoenix | [Phoenix のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
+| Pig | [Pig のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
+| Ranger | [Ranger のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
+| Spark | [Spark のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
+| Sqoop | このリリースは Sqoop 1.4.7 を提供します。Apache の追加パッチはありません。 |
+| Tez | このリリースは Tez 0.9.1 を提供します。Apache の追加パッチはありません。 |
+| Zeppelin | このリリースは Zeppelin 0.8.0 を提供します。Apache の追加パッチはありません。 |
+| Zookeeper | [Zookeeper のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+
+### <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
+
+このリリースで解決されたセキュリティの問題の詳細については、Hortonworks の「[Fixed Common Vulnerabilities and Exposures for HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html)」を参照してください。
+
+### <a name="known-issues"></a>既知の問題
+
+#### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>既定のインストールで Secure HBase のレプリケーションが破損する
+
+HDInsight 4.0 の場合は、次の手順を実行します。
+
+1. クラスター間通信を有効にします。
+1. アクティブなヘッドノードにサインインします。
+1. 次のコマンドを使用して、スクリプトをダウンロードしてレプリケーションを有効にします。
+
+    ```
+    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
+    ```
+1. コマンド `sudo kinit <domainuser>` を入力します。
+1. 次のコマンドを入力して、スクリプトを実行します。
+
+    ```
+    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    ```
+HDInsight 3.6 の場合は、次の手順を実行します。
+
+1. アクティブな HMaster ZK にサインインします。
+1. 次のコマンドを使用して、スクリプトをダウンロードしてレプリケーションを有効にします。
+    ```
+    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
+    ```
+1. コマンド `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>` を入力します。
+1. 次のコマンドを入力します。
+
+    ```bash
+    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    ```
+
+#### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>HBase クラスターを HDInsight 4.0 に移行した後に Phoenix Sqlline の動作が停止する
+
+手順は次のとおりです。
+
+1. 次の Phoenix テーブルを削除します。
+    1. `SYSTEM.FUNCTION`
+    1. `SYSTEM.SEQUENCE`
+    1. `SYSTEM.STATS`
+    1. `SYSTEM.MUTEX`
+    1. `SYSTEM.CATALOG`
+1. テーブルを削除できない場合は、HBase を再起動してテーブルへの接続をすべて解除してください。
+1. `sqlline.py` をもう一度実行します。 手順 1 で削除されたすべてのテーブルが Phoenix によって再作成されます。
+1. HBase データ用の Phoenix テーブルとビューを再生成します。
+
+#### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>HBase Phoenix のメタデータを HDInsight 3.6 から 4.0 にレプリケートした後に Phoenix Sqlline の動作が停止する
+
+手順は次のとおりです。
+
+1. レプリケーションを行う前に、宛先の 4.0 クラスターに移動して `sqlline.py` を実行します。 このコマンドによって、4.0 にのみ存在する `SYSTEM.MUTEX` や `SYSTEM.LOG` などのPhoenix テーブルが生成されます。
+1. 次のテーブルを削除します。
+    1. `SYSTEM.FUNCTION`
+    1. `SYSTEM.SEQUENCE`
+    1. `SYSTEM.STATS`
+    1. `SYSTEM.CATALOG`
+1. HBase レプリケーションの起動
+
+### <a name="deprecation"></a>非推奨
+
+Apache Storm と ML サービスは、HDInsight 4.0 では使用できません。
+
+## <a name="release-date-04142019"></a>リリース日:2019/04/14
+
+### <a name="new-features"></a>新機能
 
 新しい更新内容や機能は、次のカテゴリに分類されます。
 
@@ -34,13 +274,13 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
     b.  [**Apache Kafka 1.0 の新機能**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新***: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、普段使用している言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
+*  ***Microsoft R Server 9.1 から Machine Learning Services 9.3 への更新***: このリリースでは、データ サイエンティストとエンジニア向けに先進的なアルゴリズムと使いやすさで強化したオープン ソースを提供しています。すべての機能を Apache Spark の速度で、好みの言語で利用できます。 このリリースでは、Microsoft R Server で提供されている機能に基づいて拡張し、Python のサポートを追加したため、クラスター名を Microsoft R Server から ML Services に変更しました。 
 
 *  ***Azure Data Lake Storage Gen2 のサポート***: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
 
 *  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
 
-## <a name="component-versions"></a>コンポーネントのバージョン
+### <a name="component-versions"></a>コンポーネントのバージョン
 
 以下に HDInsight 3.6 のすべてのコンポーネントの正式な Apache バージョンの一覧を示します。 ここに列挙されているすべてのコンポーネントは、利用できる最新の安定したバージョンの公式の Apache リリースです。
 
@@ -80,9 +320,9 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 新しいバージョンの Apache のいくつかのコンポーネントは、上の一覧のバージョンに加えて HDP ディストリビューションにバンドルされています。 この場合、これらの新しいバージョンの一覧はテクニカル プレビューの表に表示され、運用環境で上の一覧の Apache コンポーネントのバージョンの代替にはなりません。
 
-## <a name="apache-patch-information"></a>Apache のパッチ情報
+### <a name="apache-patch-information"></a>Apache のパッチ情報
 
-### <a name="hadoop"></a>Hadoop
+#### <a name="hadoop"></a>Hadoop
 
 このリリースは、Hadoop Common 2.7.3 と次の Apache のパッチを提供します。
 
@@ -166,7 +406,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805): PrivilegedOperationException の終了コードが null であることにより LinuxContainerExecutor に NPE が発生する。
 
-### <a name="hbase"></a>hbase
+#### <a name="hbase"></a>hbase
 
 このリリースは、HBase 1.1.2 と次の Apache のパッチを提供します。
 
@@ -232,7 +472,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [HBASE-20008](https://issues.apache.org/jira/browse/HBASE-20008): リージョン分割後にスナップショットを復元するときに、NullPointerException を\[バックポート\]する。
 
-### <a name="hive"></a>Hive
+#### <a name="hive"></a>Hive
 
 このリリースは、次のパッチに加えて、Hive 1.2.1 と Hive 2.1.0 を提供します。
 
@@ -492,7 +732,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944): DPP 中に Grouping Sets の位置が間違って設定されている。
 
-### <a name="kafka"></a>Kafka
+#### <a name="kafka"></a>Kafka
 
 このリリースは、Kafka 1.0.0 と次の Apache のパッチを提供します。
 
@@ -526,7 +766,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [KAFKA-6274](https://issues.apache.org/jira/browse/KAFKA-6274): KTable ソース状態ストアで自動生成された名前を改善する。
 
-### <a name="mahout"></a>Mahout
+#### <a name="mahout"></a>Mahout
 
 HDP-2.3.x と 2.4.x では、Mahout という特定 Apache リリースを配布する代わりに、Apache Mahout トランク上の特定のリビジョン ポイントに同期しました。 このリビジョン ポイントは、0.9.0 リリースの後、かつ 0.10.0 リリースの前です。 これには 0.9.0 リリースを上回る多数のバグ修正と機能改善が施されており、新しい Spark ベースの 0.10.0 の Mahout に完全に変換される前の Mahout の機能の安定版リリースを提供します。
 
@@ -540,7 +780,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   さらに低い確率で、一部の Mahout のジョブで、バイナリの互換性の問題により、Mahout の HBase クライアント コードが Hadoop の共通ライブラリを呼び出すと、クラッシュが発生する場合があります。 残念ながら、セキュリティ上問題がある可能性がある HDP-2.4.2 バージョンの Mahout に戻す以外に、この問題を解決する方法はありません。 繰り返しますが、これは非常にまれなケースで、ほとんどの Mahout ジョブ スイートでは発生しません。
 
-### <a name="oozie"></a>Oozie
+#### <a name="oozie"></a>Oozie
 
 このリリースは、Oozie 4.2.0 と次の Apache のパッチを提供します。
 
@@ -566,7 +806,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [OOZIE-3167](https://issues.apache.org/jira/browse/OOZIE-3167): Oozie 4.3 ブランチ上の Tomcat のバージョンをアップグレードする。
 
-### <a name="phoenix"></a>Phoenix
+#### <a name="phoenix"></a>Phoenix
 
 このリリースは、Phoenix 4.7.0 と次の Apache のパッチを提供します。
 
@@ -610,7 +850,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [PHOENIX-4588](https://issues.apache.org/jira/browse/PHOENIX-4588): 式の子に Determinism.PER\_INVOCATION がある場合は、その式も複製する。
 
-### <a name="pig"></a>Pig
+#### <a name="pig"></a>Pig
 
 このリリースは、Pig 0.16.0 と次の Apache のパッチを提供します。
 
@@ -618,7 +858,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [PIG-5175](https://issues.apache.org/jira/browse/PIG-5175): JRuby を 1.7.26 にアップグレードする。
 
-### <a name="ranger"></a>Ranger
+#### <a name="ranger"></a>Ranger
 
 このリリースは、Ranger 0.7.0 と次の Apache のパッチを提供します。
 
@@ -638,11 +878,11 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008): マルチライン ポリシー条件でポリシーの評価が失敗する。
 
-### <a name="slider"></a>スライダー
+#### <a name="slider"></a>スライダー
 
 このリリースは Slider 0.92.0 を提供します。Apache の追加パッチはありません。
 
-### <a name="spark"></a>Spark
+#### <a name="spark"></a>Spark
 
 このリリースは、Spark 2.3.0 と次の Apache のパッチを提供します。
 
@@ -768,11 +1008,11 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881): 不安定なテスト JobCancellationSuite."interruptible iterator of shuffle reader" を修正する。
 
-### <a name="sqoop"></a>Sqoop
+#### <a name="sqoop"></a>Sqoop
 
 このリリースは Sqoop 1.4.6 を提供します。Apache の追加パッチはありません。
 
-### <a name="storm"></a>Storm
+#### <a name="storm"></a>Storm
 
 このリリースは、Storm 1.1.1 と次の Apache のパッチを提供します。
 
@@ -786,13 +1026,13 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [STORM-2960](https://issues.apache.org/jira/browse/STORM-2960): Storm プロセスの適切な OS アカウントを設定することの重要性をより強調する。
 
-### <a name="tez"></a>Tez
+#### <a name="tez"></a>Tez
 
 このリリースは、Tez 0.7.0 と次の Apache のパッチを提供します。
 
 -   [TEZ-1526](https://issues.apache.org/jira/browse/TEZ-1526): TezTaskID の LoadingCache が大きなジョブで低速になる。
 
-### <a name="zeppelin"></a>Zeppelin
+#### <a name="zeppelin"></a>Zeppelin
 
 このリリースは Zeppelin 0.7.3 を提供します。Apache の追加パッチはありません。
 
@@ -802,7 +1042,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [ZEPPELIN-903](https://issues.apache.org/jira/browse/ZEPPELIN-903): CXF を Jersey2 に置き換える。
 
-### <a name="zookeeper"></a>ZooKeeper
+#### <a name="zookeeper"></a>ZooKeeper
 
 このリリースは、ZooKeeper 3.4.6 と次の Apache のパッチを提供します。
 
@@ -816,81 +1056,81 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [ZOOKEEPER-2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): 潜在的な競合状態に対するパッチ。
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
+### <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
 
 このセクションでは、このリリースで対処されているすべての共通脆弱性識別子 (CVE) を紹介します。
 
-### <a name="cve-2017-7676"></a>**CVE-2017-7676**
+#### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **概要:** Apache Ranger ポリシーの評価で '\*' ワイルドカード文字の後の文字が無視される |
+| **概要:** Apache Ranger ポリシーの評価で "\*" ワイルドカード文字の後の文字が無視される |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **重大度:** 重大                                                                           |
-| **ベンダー:** Hortonworks                                                                          |
-| **影響を受けるバージョン:** Apache Ranger バージョン 0.5.x/0.6.x/0.7.0 を含む HDInsight 3.6 バージョン     |
-| **影響を受けるユーザー:** '\*' ワイルドカード文字の後に文字を含む Ranger ポリシー (my\*test、test\*.txt など) を使用する環境 |
-| **影響:** ポリシー リソースのマッチ機能は '\*' ワイルドカード文字の後の文字を無視します。これにより、意図しない動作が実行されることがあります。      |
-| **修正の詳細:** ワイルドカードの一致を正しく処理するように、Ranger ポリシー リソースのマッチ機能が更新されました。           |
-| **推奨されるアクション:** HDI 3.6 (および Apache Ranger 0.7.1+) にアップグレードしてください。                                |
+| **重大度:** Critical                                                                           |
+| **ベンダー:** Hortonworks                                                                          |
+| **影響を受けるバージョン:** Apache Ranger バージョン 0.5.x/0.6.x/0.7.0 を含む HDInsight 3.6 バージョン     |
+| **影響を受けるユーザー:** "\*" ワイルドカード文字の後に文字を含む Ranger ポリシー (my\*test、test\*.txt など) を使用する環境 |
+| **影響:** ポリシー リソースのマッチ機能は "\*" ワイルドカード文字の後の文字を無視します。これにより、意図しない動作が実行されることがあります。      |
+| **修正の詳細:** ワイルドカードの一致を正しく処理するように、Ranger ポリシー リソースのマッチ機能が更新されました。           |
+| **推奨される操作:** HDI 3.6 (および Apache Ranger 0.7.1 以降) にアップグレードしてください。                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **概要:** 外部の場所が指定された場合、Apache Ranger Hive Authorizer は RWX のアクセス許可をチェックする必要がある |
+| **概要:** 外部の場所が指定された場合、Apache Ranger Hive Authorizer は RWX のアクセス許可をチェックする必要がある |
 |--------------------------------------------------------------------------------------------------|
-| **重大度:** 重大                                                                           |
-| **ベンダー:** Hortonworks                                                                          |
-| **影響を受けるバージョン:** Apache Ranger バージョン 0.5.x/0.6.x/0.7.0 を含む HDInsight 3.6 バージョン |
-| **影響を受けるユーザー:** hive テーブルに外部の場所を使用する環境 |
-| **影響:** hive テーブルに外部の場所を使用する環境の場合、Apache Ranger Hive Authorizer は、テーブル作成用に指定された外部の場所のために RWX のアクセス許可をチェックする必要があります。 |
-| **修正の詳細:** 外部の場所に関するアクセス許可のチェックを正しく処理するように、Ranger Hive Authorizer が更新されました。 |
-| **推奨されるアクション:** ユーザーは、HDI 3.6 (および Apache Ranger 0.7.1+) にアップグレードしてください。 |
+| **重大度:** Critical                                                                           |
+| **ベンダー:** Hortonworks                                                                          |
+| **影響を受けるバージョン:** Apache Ranger バージョン 0.5.x/0.6.x/0.7.0 を含む HDInsight 3.6 バージョン |
+| **影響を受けるユーザー:** hive テーブルに外部の場所を使用する環境 |
+| **影響:** hive テーブルに外部の場所を使用する環境では、Apache Ranger Hive Authorizer は、テーブル作成用に指定された外部の場所に対する RWX のアクセス許可をチェックする必要があります。 |
+| **修正の詳細:** 外部の場所に関するアクセス許可のチェックを正しく処理するように、Ranger Hive Authorizer が更新されました。 |
+| **推奨される操作:** ユーザーは、HDI 3.6 (および Apache Ranger 0.7.1+) にアップグレードしてください。 |
 
-### <a name="cve-2017-9799"></a>**CVE-2017-9799**
+#### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **概要:** Apache Storm で正しくないユーザーとしてコードが実行される可能性がある |
+| **概要:** Apache Storm で正しくないユーザーとしてコードが実行される可能性がある |
 |--------------------------------------------------------------------------------------------------|
-|**重大度:** 重要 |
-| **ベンダー:** Hortonworks |
-| **影響を受けるバージョン:** HDP 2.4.0、HDP-2.5.0、HDP-2.6.0 |
-| **影響を受けるユーザー:** Storm をセキュア モードで使用し、かつ blobstore を使用してトポロジ ベースのアーティファクトを配布しているか、または blobstore を使用してすべてのトポロジ リソースを配布しているユーザー。 |
-| **影響:** storm の状況や構成によっては、トポロジの所有者が、別の (root 以外の) ユーザーとして worker を起動するようにスーパーバイザーをだますことが理論的に可能になる場合があります。 最悪の場合、他のユーザーのセキュリティ資格情報が侵害されることがあります。 この脆弱性は、セキュリティが有効な Apache Storm のインストールにのみ当てはまります。 |
-| **軽減策:** 現時点は対処法がないため、HDP-2.6.2.1 にアップグレードしてください。  |
+|**重大度:** 重要 |
+| **ベンダー:** Hortonworks |
+| **影響を受けるバージョン:** HDP 2.4.0、HDP-2.5.0、HDP-2.6.0 |
+| **影響を受けるユーザー:** Storm をセキュア モードで使用し、かつ blobstore を使用してトポロジ ベースの成果物を配布しているか、または blobstore を使用してすべてのトポロジ リソースを配布しているユーザー。 |
+| **影響:** Storm の状況や構成によっては、トポロジの所有者が、別の (ルート以外の) ユーザーとして worker を起動するようにスーパーバイザーをだますことが理論的に可能になる場合があります。 最悪の場合、他のユーザーのセキュリティ資格情報が侵害されることがあります。 この脆弱性は、セキュリティが有効な Apache Storm のインストールにのみ当てはまります。 |
+| **対応策:** 現時点は対処法がないため、HDP-2.6.2.1 にアップグレードしてください。  |
 
-### <a name="cve-2016-4970"></a>**CVE-2016-4970**
+#### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **概要:** 4.0.37.Final より前の Netty 4.0.x および 4.1.1.Final より前の 4.1.x の handler/ssl/OpenSslEngine.java では、リモートの攻撃者がサービスの拒否 (無限ループ) を発生させることができる |
+| **概要:** 4.0.37.Final より前の Netty 4.0.x および 4.1.1.Final より前の 4.1.x の handler/ssl/OpenSslEngine.java で、リモート攻撃によりサービスが妨害 (無限ループ) されることがある |
 |--------------------------------------------------------------------------------------------------|
 | **重大度:** 中  |
-| **ベンダー:** Hortonworks  |
-| **影響を受けるバージョン:** 2.3.x 以降の HDP 2.x.x  |
-| **影響を受けるユーザー:** HDFS を使用しているすべてのユーザー。 |
-| **影響:** Hortonworks は Hadoop コードベースで直接 OpenSslEngine.java を使用していないため、影響は大きくありません。     |
-| **推奨されるアクション:** HDP 2.6.3 にアップグレードしてください。   |
+| **ベンダー:** Hortonworks  |
+| **影響を受けるバージョン:** 2.3. x 以降の HDP 2.x.x  |
+| **影響を受けるユーザー:** HDFS を使用しているすべてのユーザー。 |
+| **影響:** Hortonworks は Hadoop コードベースで直接 OpenSslEngine.java を使用していないため、影響は大きくありません。     |
+| **推奨される操作:** HDP 2.6.3 にアップグレードしてください。   |
 
-### <a name="cve-2016-8746"></a>**CVE-2016-8746**
+#### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **概要:** ポリシーの評価における Apache Ranger のパス照合の問題                                                                    |
+| **概要:** ポリシーの評価における Apache Ranger のパス照合の問題                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **重大度:** 標準                                                                                                                   |
+| **重大度:** Normal                                                                                                                   |
 | **ベンダー:** Hortonworks                                                                                                                |
-| **影響を受けるバージョン:** Apache Ranger バージョン 0.6.0/0.6.1/0.6.2 を含むすべての HDP 2.5 バージョン                                         |
-| **影響を受けるユーザー:** Ranger ポリシー管理ツールのすべてのユーザー。                                                                         |
-| **影響:** ポリシーにワイルドカードや recursive フラグか含まれている場合は、特定の条件で Ranger ポリシー エンジンがパスを誤って照合します。 |
+| **影響を受けるバージョン:** Apache Ranger バージョン 0.6.0/0.6.1/0.6.2 を含むすべての HDP 2.5 バージョン                                         |
+| **影響を受けるユーザー:** Ranger ポリシー管理ツールのすべてのユーザー。                                                                         |
+| **影響:** ポリシーにワイルドカードや recursive フラグか含まれている場合は、特定の条件で Ranger ポリシー エンジンがパスを誤って照合します。 |
 | **修正の詳細:** ポリシー評価のロジックを修正しました                                                                                          |
-| **推奨されるアクション:** ユーザーは、HDP 2.5.4+ (および Apache Ranger 0.6.3+) または HDP 2.6+ (および Apache Ranger 0.7.0+) にアップグレードしてください。         |
+| **推奨される操作:** ユーザーは、HDP 2.5.4 以降 (および Apache Ranger 0.6.3 以降) または HDP 2.6 以降 (および Apache Ranger 0.7.0 以降) にアップグレードしてください         |
 
-### <a name="cve-2016-8751"></a>**CVE-2016-8751**
+#### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **概要:** Apache Ranger の蓄積型クロス サイト スクリプティングの問題  |
+| **概要:** Apache Ranger の蓄積型クロス サイト スクリプティングの問題  |
 |--------------------------------------------------------------------------------------------------|
-| **重大度:** 標準 |
-| **ベンダー:** Hortonworks |
-| **影響を受けるバージョン:** Apache Ranger バージョン 0.5.x/0.6.0/0.6.1/0.6.2 を含むすべての HDP 2.3/2.4/2.5 バージョン  |
-| **影響を受けるユーザー:** Ranger ポリシー管理ツールのすべてのユーザー。 |
-| **影響:** カスタム ポリシーの条件を入力する場合、Apache Ranger は蓄積型クロス サイト スクリプティングに対して脆弱です。 管理者ユーザーは、一般ユーザーがサインインしてポリシーにアクセスするときに、任意の JavaScript コードの実行を一部格納できます。 |
-| **修正の詳細:** ユーザー入力をサニタイズするロジックを追加しました。  |
-| **推奨されるアクション:** ユーザーは、HDP 2.5.4+ (および Apache Ranger 0.6.3+) または HDP 2.6+ (および Apache Ranger 0.7.0+) にアップグレードしてください。  |
+| **重大度:** Normal |
+| **ベンダー:** Hortonworks |
+| **影響を受けるバージョン:** Apache Ranger バージョン 0.5.x/0.6.0/0.6.1/0.6.2 を含むすべての HDP 2.3/2.4/2.5 バージョン  |
+| **影響を受けるユーザー:** Ranger ポリシー管理ツールのすべてのユーザー。 |
+| **影響:** カスタム ポリシー条件を入力する場合、Apache Ranger は蓄積型クロス サイト スクリプティングに対して脆弱です。 管理者ユーザーは、一般ユーザーがサインインしてポリシーにアクセスするときに、任意の JavaScript コードの実行を一部格納できます。 |
+| **修正の詳細:** ユーザー入力をサニタイズするロジックを追加しました。  |
+| **推奨される操作:** ユーザーは、HDP 2.5.4 以降 (および Apache Ranger 0.6.3 以降) または HDP 2.6 以降 (および Apache Ranger 0.7.0 以降) にアップグレードしてください  |
 
-## <a name="fixed-issues-for-support"></a>修正されたサポートの問題
+### <a name="fixed-issues-for-support"></a>修正されたサポートの問題
 
 修正された問題は、以前に Hortonworks のサポートにログされたことのある選択された問題を表しますが、現在のリリースでは対処されています。 これらの問題は、以前のバージョンの「既知の問題」セクション内で報告されている場合があります。それらはお客様によって報告されたか、Hortonworks の Quality Engineering チームによって特定された問題であることを意味します。
 
@@ -1001,7 +1241,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | BUG-98082              | [HIVE-18597](https://issues.apache.org/jira/browse/HIVE-18597)                                                                         | LLAP: 常に org.apache.log4j 用に log4j2 API jar をパッケージ化する                                           |
 | BUG-99849              | 該当なし                                                                                                                                    | ファイル ウィザードからの新しいテーブルの作成に、既定のデータベースの使用を試行する                                    |
 
-**セキュリティ**
+**Security**
 
 | **Hortonworks のバグ ID** | **Apache JIRA**                                                                                                                                                                                            | **まとめ**                                                                                                           |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
@@ -1049,7 +1289,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | BUG-100073             | 該当なし                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | HiveServer からデータ ノードへの close\_wait 接続が多すぎる                                                                                   |
 | BUG-100319             | [HIVE-19248](https://issues.apache.org/jira/browse/HIVE-19248)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | ファイルのコピーが失敗した場合に REPL LOAD がエラーをスローしない。                                                                                              |
 | BUG-100352             | 該当なし                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | CLONE - RM が論理スキャン/レジストリ znode を消去する頻度が高すぎる                                                                                  |
-| BUG-100427             | [HIVE-19249](https://issues.apache.org/jira/browse/HIVE-19249)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | レプリケーション: WITH 句がすべてのケースでタスクに構成を正しく渡さない                                                       |
+| BUG-100427             | [HIVE-19249](https://issues.apache.org/jira/browse/HIVE-19249)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | レプリケーション:WITH 句がすべてのケースでタスクに構成を正しく渡さない                                                       |
 | BUG-100430             | [HIVE-14483](https://issues.apache.org/jira/browse/HIVE-14483)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | java.lang.ArrayIndexOutOfBoundsException org.apache.orc.impl.TreeReaderFactory\$BytesColumnVectorUtil.commonReadByteArrays                     |
 | BUG-100432             | [HIVE-19219](https://issues.apache.org/jira/browse/HIVE-19219)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 要求されたイベントがクリーンアップされた場合、増分 REPL DUMP がエラーをスローする必要がある。                                                                   |
 | BUG-100448             | [SPARK-23637](https://issues.apache.org/jira/browse/SPARK-23637), [SPARK-23802](https://issues.apache.org/jira/browse/SPARK-23802), [SPARK-23809](https://issues.apache.org/jira/browse/SPARK-23809), [SPARK-23816](https://issues.apache.org/jira/browse/SPARK-23816), [SPARK-23822](https://issues.apache.org/jira/browse/SPARK-23822), [SPARK-23823](https://issues.apache.org/jira/browse/SPARK-23823), [SPARK-23838](https://issues.apache.org/jira/browse/SPARK-23838), [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Spark2 を 2.3.0+ に更新する (4/11)                                                                                                                 |
@@ -1092,7 +1332,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | BUG-93426              | [CALCITE-2086](https://issues.apache.org/jira/browse/CALCITE-2086)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Authorization ヘッダーが大きいことが原因で、特定の状況で HTTP/413 が発生する                                                                           |
 | BUG-93429              | [PHOENIX-3240](https://issues.apache.org/jira/browse/PHOENIX-3240)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Pig ローダーから ClassCastException が発生する                                                                                                             |
 | BUG-93485              | 該当なし                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | テーブル mytestorg.apache.hadoop.hive.ql.metadata.InvalidTableException を取得できない。LLAP の列に対するテーブル分析の実行時にテーブルが見つからない |
-| BUG-93512              | [PHOENIX-4466](https://issues.apache.org/jira/browse/PHOENIX-4466)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | java.lang.RuntimeException: 応答コード 500 - phoenix のクエリ サーバーに接続し、データを読み込む Spark ジョブを実行する                         |
+| BUG-93512              | [PHOENIX-4466](https://issues.apache.org/jira/browse/PHOENIX-4466)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | java.lang.RuntimeException: 応答コード 500 - Phoenix のクエリ サーバーに接続し、データを読み込む Spark ジョブを実行する                         |
 | BUG-93550              | 該当なし                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Scala のバージョンが一致しないため、Zeppelin %spark.r が spark1 で機能しない                                                                      |
 | BUG-93910              | [HIVE-18293](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Hive がHiveMetaStore を実行している ID が所有していないフォルダーに含まれるテーブルの圧縮に失敗する                                |
 | BUG-93926              | [ZEPPELIN-3114](https://issues.apache.org/jira/browse/ZEPPELIN-3114)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | &gt;1 日のストレス テスト後、Zeppelin にノートブックやインタープリターが保存されない                                                       |
@@ -1192,7 +1432,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BUG-100045             | [HIVE-19056](https://issues.apache.org/jira/browse/HIVE-19056)                                                                                                                                                                                                                 | ORC ファイルの行数が 0 のときに FixAcidKeyIndex で IllegalArgumentException が発生する                                                                                         |
 | BUG-100139             | [KNOX-1243](https://issues.apache.org/jira/browse/KNOX-1243)                                                                                                                                                                                                                   | KnoxToken サービスで構成されている必要な DN を正規化する                                                                                          |
-| BUG-100570             | [ATLAS-2557](https://issues.apache.org/jira/browse/ATLAS-2557)                                                                                                                                                                                                                 | UGI からのグループが間違って設定されてる、または空でないときに、Hadoop LDAP のグループを参照するように修正する                                                          |
+| BUG-100570             | [ATLAS-2557](https://issues.apache.org/jira/browse/ATLAS-2557)                                                                                                                                                                                                                 | UGI からのグループが間違って設定されている、または空でないときに、Hadoop LDAP のグループを参照するように修正する                                                          |
 | BUG-100646             | [ATLAS-2102](https://issues.apache.org/jira/browse/ATLAS-2102)                                                                                                                                                                                                                 | Atlas UI の改善: 検索結果ページ                                                                                                                   |
 | BUG-100737             | [HIVE-19049](https://issues.apache.org/jira/browse/HIVE-19049)                                                                                                                                                                                                                 | Druid の ALTER TABLE ADD 列のサポートを追加する                                                                                                            |
 | BUG-100750             | [KNOX-1246](https://issues.apache.org/jira/browse/KNOX-1246)                                                                                                                                                                                                                   | Ranger の最新の構成をサポートするよう Knox でサービスの構成を更新する。                                                                                   |
@@ -1293,18 +1533,18 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | BUG-99807              | [OOZIE-2844](https://issues.apache.org/jira/browse/OOZIE-2844)                                                                                                                                                                                                                 | Log4j.properties が見つからないか読み取れないときに、Oozie のアクションの安定性を向上させる                                                                         |
 | RMP-9995               | [AMBARI-22222](https://issues.apache.org/jira/browse/AMBARI-22222)                                                                                                                                                                                                             | ローカル ディスク上の /apps/druid の代わりに /var/druid ディレクトリを使用するように druid を切り替える                                                                                |
 
-## <a name="behavioral-changes"></a>動作の変更
+### <a name="behavioral-changes"></a>動作の変更
 
 |**Apache コンポーネント**|**Apache JIRA**|**まとめ**|**詳細**|
 |--|--|--|--|
-|**Spark 2.3** |**該当なし** |**Apache Spark のリリース ノートに記載されている変更点** |- 「Deprecation」(廃止) のドキュメントと「Change of behavior」(動作変更) のガイド (https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations) がある<br /><br />- SQL に関する内容については、別の詳細な「Migration」(移行) ガイド (2.2 から 2.3) (https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23) がある|
+|**Spark 2.3** |**N/A** |**Apache Spark のリリース ノートに記載されている変更点** |- 「Deprecation」(廃止) のドキュメントと「Change of behavior」(動作変更) のガイド (https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations ) がある<br /><br />- SQL に関する内容については、別の詳細な「Migration」(移行) ガイド (2.2 から 2.3) (https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23 ) がある|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark ジョブは正常に完了するが、HDFS のディスク クォータ超過のエラーが発生する |**シナリオ:** コマンドを実行するユーザーのごみ箱フォルダー上にクォータが設定されているときに **insert overwrite** を実行します。<br /><br />**以前の動作:** ごみ箱にデータを移動することに失敗しても、ジョブが成功します。 結果に以前にテーブルに存在していたデータの一部が間違って含まれることがあります。<br /><br />**新しい動作:** ごみ箱フォルダーへの移動が失敗すると、ファイルは永続的に削除されます。|
-|**Kafka 1.0**|**該当なし**|**Apache Spark のリリース ノートに記載されている変更点** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive/ Ranger** | |INSERT OVERWRITE に Ranger Hive の追加のポリシーが必要とされる |**シナリオ:** **INSERT OVERWRITE** に Ranger Hive の追加のポリシーが必要とされる<br /><br />**以前の動作:** Hive の **INSERT OVERWRITE** のクエリが通常どおりに成功します。<br /><br />**新しい動作:** HDP-2.6.x にアップグレードすると、Hive の **INSERT OVERWRITE** のクエリがエラーにより予期せず失敗します。<br /><br />Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user jdoe does not have WRITE privilege on /tmp/\*(state=42000,code=40000)<br /><br />HDP-2.6.0 以降、Hive の **INSERT OVERWRITE** のクエリで書き込み操作を許可するには、ユーザーに HDFS ポリシーを通じて書き込みアクセス許可が付与されている場合でも、Ranger URI ポリシーが必要です。<br /><br />**回避策/期待されるアクション:**<br /><br />1.Hive リポジトリの下に新しいポリシーを作成します。<br />2.データベースが表示されるドロップダウンで、[URI] を選択します。<br />手順 3.パス (例: /tmp/*) を更新します。<br />4.ユーザーやグループを追加して保存します。<br />5.insert クエリを再試行します。|
-|**HDFS**|**該当なし** |HDFS が KMS の複数の URI をサポートする必要がある |**以前の動作:** KMS プロバイダー パスの構成に dfs.encryption.key.provider.uri プロパティが使用されていました。<br /><br />**新しい動作:** dfs.encryption.key.provider.uri が非推奨になり、KMS プロバイダー パスの構成に hadoop.security.key.provider.path が優先的に使用されるようになりました。|
+|**Kafka 1.0**|**N/A**|**Apache Spark のリリース ノートに記載されている変更点** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Hive/ Ranger** | |INSERT OVERWRITE に Ranger Hive の追加のポリシーが必要とされる |**シナリオ:** **INSERT OVERWRITE** に Ranger Hive の追加のポリシーが必要とされる<br /><br />**以前の動作:** Hive の **INSERT OVERWRITE** のクエリが通常どおりに成功します。<br /><br />**新しい動作:** HDP-2.6.x にアップグレードすると、Hive の **INSERT OVERWRITE** のクエリがエラーにより予期せず失敗します。<br /><br />Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user jdoe does not have WRITE privilege on /tmp/\*(state=42000,code=40000)<br /><br />HDP-2.6.0 以降、Hive の **INSERT OVERWRITE** のクエリで書き込み操作を許可するには、ユーザーに HDFS ポリシーを通じて書き込みアクセス許可が付与されている場合でも、Ranger URI ポリシーが必要です。<br /><br />**回避策/期待されるアクション:**<br /><br />1.Hive リポジトリの下に新しいポリシーを作成します。<br />2.データベースが表示されるドロップダウンで、[URI] を選択します。<br />3.パス (例: /tmp/*) を更新します。<br />4.ユーザーやグループを追加して保存します。<br />5.insert クエリを再試行します。|
+|**HDFS**|**N/A** |HDFS が KMS の複数の URI をサポートする必要がある |**以前の動作:** KMS プロバイダー パスの構成に dfs.encryption.key.provider.uri プロパティが使用されていました。<br /><br />**新しい動作:** dfs.encryption.key.provider.uri が非推奨になり、KMS プロバイダー パスの構成に hadoop.security.key.provider.path が優先的に使用されるようになりました。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|スケジューラを無効にするためのオプション |**影響を受けるコンポーネント:** Zeppelin サーバー<br /><br />**以前の動作:** Zeppelin の以前のリリースでは、スケジューラを無効にするオプションがありませんでした。<br /><br />**新しい動作:** 既定でスケジューラが無効になっているため、既定ではユーザーにスケジューラが表示されなくなります。<br /><br />**回避策/期待されるアクション:** スケジューラを有効にするには、Ambari から Zeppelin の設定の zeppelin のカスタム サイトの下に、値が true の azeppelin.notebook.cron.enable を追加する必要があります。|
 
-## <a name="known-issues"></a>既知の問題
+### <a name="known-issues"></a>既知の問題
 
 - **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 を使用する HDInsight ESP クラスターには、ユーザー ディレクトリとアクセス許可に関して次の 2 つの問題があります。
    
@@ -1371,7 +1611,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
     
   ユーザーがカスタム ポリシー条件でポリシーを作成することを希望し、式やテキストに特殊文字が含まれている場合、ポリシーの適用が機能しません。 特殊文字は、データベースにポリシーを保存する前に、ASCII に変換されます。
     
-  **特殊文字:** & &lt; &gt; " \` '
+  **特殊文字:**  & &lt; &gt; " \` '
     
   たとえば、ポリシーが保存されると、条件 tags.attributes\['type'\]='abc' は次のように変換されます。
     
@@ -1379,7 +1619,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
     
   編集モードでポリシーを開くと、これらの文字でポリシーの条件を確認できます。
     
-  **対処法**
+  **回避策**
     
   - **オプション \#1: Ranger Rest API を使用してポリシーを作成または更新する**
         
@@ -1425,7 +1665,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
     1.  ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策は、これらを手動で作成し、所有権をそれぞれのユーザーの UPN に変更することです。
     2.  /hdp に対するアクセス許可が、現在は 751 に設定されません。 これを次のように設定する必要があります。a.  chmod 751 /hdp b.  chmod –R 755 /hdp/apps
 
-## <a name="deprecation"></a>非推奨
+### <a name="deprecation"></a>非推奨
 
 -   **OMS ポータル:** HDInsight のリソース ページから OMC ポータルへのリンクを削除しました。 Azure Monitor ログでは当初、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。 このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。 HDInsight では、OMC ポータルのサポートが非推奨になりました。 お客様は Azure portal の HDInsight Azure Monitor ログの統合を使用します。
 
@@ -1433,7 +1673,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-## <a name="upgrading"></a>アップグレード中
+### <a name="upgrading"></a>アップグレード中
 
 これらの機能はすべて HDInsight 3.6 で利用できます。 Spark、Kafka、および Microsoft R Server (Machine Learning Services) の最新バージョンを取得するには、[HDInsight 3.6 クラスターを作成する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)ときに、Spark、Kafka、ML Services のバージョンを選択してください。 ADLS のサポートを受けるには、オプションとして ADLS ストレージ タイプを選択できます。 既存のクラスターは、これらのバージョンに自動的にはアップグレードされません。
 

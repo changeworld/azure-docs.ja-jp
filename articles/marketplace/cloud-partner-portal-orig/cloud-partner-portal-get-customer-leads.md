@@ -1,25 +1,18 @@
 ---
-title: リードを構成する | Microsoft Docs
+title: 潜在顧客の構成 | Azure Marketplace
 description: Cloud パートナー ポータルでリードを構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dsindona
+ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118580"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280322"
 ---
 <a name="get-customer-leads"></a>潜在顧客の獲得
 ==================
@@ -72,7 +65,7 @@ ms.locfileid: "58118580"
 
 リードのソースの形式は、"**ソース**-**アクション** |  **オファー**" です
 
-**Sources**:"AzureMarketplace"、"AzurePortal"、"TestDrive"、"AppSource (SPZA)"
+**ソース**: "AzureMarketplace"、"AzurePortal"、"TestDrive"、"AppSource (SPZA)"
 
 **Actions**:
 - "INS" -- インストール。 このアクションは、Azure Marketplace または AppSource で顧客が製品を購入したことを示します。
@@ -95,7 +88,7 @@ checkpoint.check-point-r77-10sg-byol、bitnami.openedxcypress、docusign.3701c77
 - Phone: 1234567890
 - Country: US
 - Company: Microsoft
-- タイトル:CTO
+- Title: CTO
 
 >[!Note]
 >個々のリードについて、上記の例のすべてのデータが常に得られるわけではありません。

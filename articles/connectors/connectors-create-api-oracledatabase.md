@@ -1,22 +1,18 @@
 ---
-title: Oracle Database に接続する - Azure Logic Apps | Microsoft Docs
+title: Oracle Database に接続する
 description: Oracle Database REST API と Azure Logic Apps を使用して、レコードを挿入および管理します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/29/2017
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 03/29/2017
 tags: connectors
-ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551757"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147810"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -49,17 +45,17 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 ## <a name="add-the-connector"></a>コネクタの追加
 
 > [!IMPORTANT]
-> このコネクタにはトリガーがありません。 含まれているのはアクションだけです。 したがって、ロジック アプリを作成するときは、**[スケジュール - 繰り返し]**、**[要求/応答 - 応答]** など、他のトリガーを追加してロジック アプリを開始します。 
+> このコネクタにはトリガーがありません。 含まれているのはアクションだけです。 したがって、ロジック アプリを作成するときは、 **[スケジュール - 繰り返し]** 、 **[要求/応答 - 応答]** など、他のトリガーを追加してロジック アプリを開始します。 
 
 1. [Azure Portal](https://portal.azure.com) で、空のロジック アプリを作成します。
 
-2. ロジック アプリを開始するときに、**[要求/応答 - 要求]** トリガーを選択します。 
+2. ロジック アプリを開始するときに、 **[要求/応答 - 要求]** トリガーを選択します。 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. **[保存]** を選択します。 保存すると、要求 URL が自動的に生成されます。 
 
-4. **[新しいステップ]**、**[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
+4. **[新しいステップ]** 、 **[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
@@ -76,16 +72,16 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. この手順では、その他のコネクタのいずれかを使用してワークフローを構築します。 Oracle からデータを取得しているかどうかをテストするには、Office 365、Gmail など、電子メール送信コネクタのいずれかを使用して、Oracle データを含む電子メールを自分宛てに送信します。 Oracle テーブルからの動的トークンを使用して、電子メールの `Subject` および `Body` を作成します。
+7. この手順では、その他のコネクタのいずれかを使用してワークフローを構築します。 Oracle からデータを取得しているかどうかをテストするには、Office 365 Outlook など、メール送信コネクタのいずれかを使用して、Oracle データを含むメールを自分宛てに送信します。 Oracle テーブルからの動的トークンを使用して、電子メールの `Subject` および `Body` を作成します。
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. ロジック アプリを**保存**して、**[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
+8. ロジック アプリを**保存**して、 **[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
 
 
 ### <a name="workflow-ideas"></a>ワークフローについて
 
-* oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、**#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
+* oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、 **#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
@@ -95,19 +91,19 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="common-errors"></a>一般的なエラー
 
-#### <a name="error-cannot-reach-the-gateway"></a>**エラー**: ゲートウェイに到達できません
+#### <a name="error-cannot-reach-the-gateway"></a>**Error**: ゲートウェイに到達できません
 
 **原因**:オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
 
 **対応策**:ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**エラー**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Error**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
 
 **原因**:オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 
 **解決方法**:Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**エラー**: テーブル '[Tablename]' には、キー列が定義されていません
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Error**: テーブル '[Tablename]' には、キー列が定義されていません
 
 **原因**:テーブルに主キーがありません。  
 
@@ -130,5 +126,5 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)し、[API の一覧](apis-list.md)で Logic Apps で使用できるコネクタを確認します。

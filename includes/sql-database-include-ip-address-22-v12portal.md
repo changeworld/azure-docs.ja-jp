@@ -11,24 +11,24 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66164295"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181254"
 ---
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
-2. 左側の一覧で、**[すべてのサービス]** を選びます。
+2. 左側の一覧で、 **[すべてのサービス]** を選びます。
 
-3. スクロールして、**[SQL Server]** を選びます。
+3. スクロールして、 **[SQL Server]** を選びます。
 
     ![ポータルで Azure SQL Database サーバーを見つける][b21-FindServerInPortal]
 5. フィルター テキスト ボックスで、サーバーの名前の入力を開始します。 行が表示されます。
 
 6. お使いのサーバーの行を選びます。 サーバー用のブレードが表示されます。
 
-7. お使いのサーバーのブレードで、**[設定]** を選びます。
+7. お使いのサーバーのブレードで、 **[設定]** を選びます。
 
 8. **[ファイアウォール]** を選びます。
 

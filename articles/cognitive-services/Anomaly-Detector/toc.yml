@@ -5,10 +5,14 @@
   items:
     - name: Anomaly Detector API とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: データの異常を検出する
+    - name: クライアント ライブラリ
+      items:
+        - name: Anomaly Detector クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
+    - name: REST API
       items:
         - name: 'C# の使用'
           href: quickstarts/detect-data-anomalies-csharp.md
@@ -22,7 +26,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: Azure Databricks を使用した、ストリーミング データの異常検出
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: データの異常を特定する
       href: how-to/identify-anomalies.md
@@ -34,6 +38,8 @@
         - name: コンテナーを構成する
           href: anomaly-detector-container-configuration.md
           displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+        - name: Container Instances の使用
+          href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: 概念
   items:
     - name: Anomaly Detection API のベスト プラクティス
@@ -52,25 +58,41 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
         - name: Node.js
           href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: テクニカル ブログ
+      items:
+        - name: Azure Anomaly Detector API の概要
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: SR-CNN アルゴリズムの概要
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+    - name: デモ
+      items:
+        - name: 対話型デモ
+          href: 'https://aka.ms/adDemo'
+        - name: Jupyter Notebook について
+          href: 'https://aka.ms/adNotebook'
+    - name: KDD 2019 の SR-CNN に関する文書
+      href: 'https://arxiv.org/abs/1906.03821'
 - name: リソース
   items:
+    - name: サポート
+      items:
+        - name: サポートを受ける
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: ユーザーの声
+          href: 'https://aka.ms/aduservoice'
     - name: 価格
       href: 'https://aka.ms/adpricing'
     - name: リージョン別の提供状況
       href: 'https://aka.ms/adregion'
+    - name: ユーザー生成コンテンツ
+      href: user-generated-content.md
+    - name: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
+      href: 'https://aka.ms/adadvisorsjoin'
     - name: ソリューション アーキテクチャの参照
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: サポート
-  items:
-    - name: サポートを受ける
-      href: 'https://aka.ms/adsupport'
-    - name: パブリック コミュニティに参加する
-      href: 'https://aka.ms/adadvisorsjoin'
-    - name: スタック オーバーフロー
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: ユーザーの声
-      href: 'https://aka.ms/aduservoice'

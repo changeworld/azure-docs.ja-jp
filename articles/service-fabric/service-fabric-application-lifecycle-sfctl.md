@@ -1,19 +1,16 @@
 ---
-title: Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
+title: sfctl を使用して Azure Service Fabric アプリケーションを管理する
 description: Azure Service Fabric CLI を使用して Azure Service Fabric クラスターにアプリケーションをデプロイまたは Azure Service Fabric クラスターからアプリケーションを削除する方法について説明します。
-services: service-fabric
 author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229499"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
 
@@ -50,7 +47,7 @@ Azure Service Fabric クラスターで実行されているアプリケーシ�
 
 たとえば、アプリケーション パッケージが `app_package_dir` ディレクトリにある場合は、次のコマンドを使用してディレクトリをアップロードします。
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -60,7 +57,7 @@ sfctl application upload --path ~/app_package_dir
 
 アップロードが完了したら、アプリケーションをプロビジョニングします。 アプリケーションをプロビジョニングするには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -72,7 +69,7 @@ sfctl application provision --application-type-build-path app_package_dir
 
 アプリケーション パッケージをイメージ ストアから削除するには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -82,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 アプリケーションがプロビジョニングされたら、次のコマンドを使用して、アプリケーションに名前を付けて作成できます。
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -94,7 +91,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 アプリケーションを作成したら、そのアプリケーションからサービスを作成します。 次の例では、アプリケーションから新しいステートレス サービスを作成します。 アプリケーションから作成できるサービスは、プロビジョニング済みのアプリケーション パッケージ内のサービス マニフェストで定義されています。
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -103,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 すべてが正常な状態にあることを確認するには、次に示す正常性のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 サービスが正常な状態にあることを確認するには、同様のコマンドを使用して、サービスとアプリケーションの両方の正常性を取得します。
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -125,7 +122,7 @@ sfctl service health --service-id TestApp/TestSvc
 
 アプリケーションを削除するには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -133,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 アプリケーションを削除したら、不要になったアプリケーションの種類のプロビジョニングを解除できます。 アプリケーションの種類のプロビジョニングを解除するには、次のコマンドを実行します。
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -145,7 +142,7 @@ sfctl application unprovision --application-type-name TestAppType --application-
 
 アップグレードを実行するには、まず、前と同じコマンドを使用してアプリケーションの次のバージョンをプロビジョニングします。
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -153,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 その後、監視付きの自動アップグレードを実行することをお勧めします。次のコマンドを実行してアップグレードを行います。
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
@@ -165,7 +162,7 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 
 また、進行中のアップグレードをキャンセルする必要がある場合は、`sfctl application upgrade-rollback` を使用してアップグレードをロールバックできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI の基本](service-fabric-cli.md)
 * [Linux 上の Service Fabric の概要](service-fabric-get-started-linux.md)

@@ -1,21 +1,18 @@
 ---
-title: Azure のネットワーク間接続 | Microsoft Docs
+title: Azure ネットワーク間接続
 description: このページでは、Azure ネットワーク機能に基づいたネットワーク間接続とソリューションのアプリケーション シナリオについて説明します。
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48ec26cc98310dfeb61aa17018c940b431cfbcee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784741"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75644258"
 ---
 # <a name="cross-network-connectivity"></a>ネットワーク間接続
 
@@ -115,11 +112,11 @@ ExpressRoute Global Reach は、異なる ExpressRoute 回線に接続されて�
 
 [![16]][16]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-VNet と VNet ピアリングについてさらにご質問がある場合、「[仮想ネットワークに関する FAQ][VNet-FAQ]」をご覧ください。 ExpressRoute と仮想ネットワーク接続についてさらにご質問がある場合は、「[ExpressRoute の FAQ][ER-FAQ]」をご覧ください。
+VNet と VNet ピアリングについてさらにご質問がある場合、「[仮想ネットワークに関する FAQ][VNet-FAQ]」をご覧ください。 ExpressRoute と仮想ネットワーク接続についてさらにご質問がある場合は、「[ExpressRoute の FAQ][ER-FAQ]」を参照してください。
 
-Global Reach は国ごとにロールアウトされています。 Global Reach が必要な国で使用可能かどうかを確認するには、「[ExpressRoute Global Reach][Global Reach]」を参照してください。
+Global Reach は国や地域ごとに国や地域でロールアウトされています。 Global Reach が必要な国や地域で使用可能かどうかを確認するには、「[ExpressRoute Global Reach][Global Reach]」を参照してください。
 
 <!--Image References-->
 [1]: ./media/cross-network-connectivity/premergerscenario.png "アプリケーションのシナリオ"
@@ -145,7 +142,7 @@ Global Reach は国ごとにロールアウトされています。 Global Reach
 [Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-global-reach
 [Configure VNet peering]: https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions
 [Configure Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
-[Subscription limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits
+[Subscription limits]: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits
 [Connect-ER-VNet]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
 [VNet-FAQ]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq

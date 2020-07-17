@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric Reliable Services のライフサイクル | Microsoft Docs
-description: Service Fabric Reliable Services のライフサイクル イベントについて説明します。
-services: service-fabric
-documentationcenter: java
+title: Azure Service Fabric Reliable Services のライフサイクル
+description: ステートフル サービス向け、およびステートレス サービス向けの Java を使用した Azure Service Fabric Reliable Services アプリケーションでのライフサイクル イベントについて説明します。
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 36c1ff2ace944d84120bf456060c7504170a814c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667414"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75639600"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services のライフサイクル
 > [!div class="op_single_selector"]
@@ -135,7 +127,7 @@ Reliable Services のテストと検証の重要な部分は、`ReliableCollecti
 * `onCloseAsync()` のパスで障害が起きると、`onAbort()` が呼び出されます。 これは、サービスが要求したリソースすべてをクリーンアップし解放するための最後のベストエフォートの機会になります。 これは一般に、ノードで永続的なエラーが検出されたときや Service Fabric が内部エラーのために、サービス インスタンスのライフ サイクルを確実に管理できないときに呼び出されます。
 * `OnChangeRoleAsync()` は、ステートフル サービス レプリカのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。 プライマリ レプリカには書き込み状態が与えられます (Reliable Collection の作成と Reliable Collection への書き込みが可能)。 セカンダリ レプリカには読み取り状態が与えられます (既存の Reliable Collection からの読み取りのみが可能)。 ステートフル サービスの作業のほとんどは、プライマリ レプリカで実行されます。 セカンダリ レプリカでは、読み取り専用の検証、レポートの生成、データ マイニングなど、読み取り専用のジョブを実行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Reliable Services 入門](service-fabric-reliable-services-introduction.md)
 * [Reliable Services の概要](service-fabric-reliable-services-quick-start-java.md)
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Icertis Contract Management Platform の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合 | Microsoft Docs'
 description: Azure Active Directory と Icertis Contract Management Platform の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 15fac61856115ef5c4746c96b36e383b9a5b7b30
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4d105fd9d0611ad56cd5ec2ecaa36bdcf9deed18
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898273"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67100738"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル:Azure Active Directory と Icertis Contract Management Platform の統合
+# <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合
 
 このチュートリアルでは、Icertis Contract Management Platform と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Icertis Contract Management Platform と Azure AD の統合には、次の利点があります。

@@ -1,29 +1,26 @@
 ---
-title: ワークフロー定義言語の関数のリファレンス - Azure Logic Apps と Microsoft Flow
-description: Azure Logic Apps および Microsoft Flow 用のワークフロー定義言語で作成された式での関数のリファレンス ガイドです
+title: 式関数のリァレンス ガイド
+description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
-ms.date: 08/15/2018
-ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
+ms.date: 02/03/2020
+ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237143"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow でのワークフロー定義言語の関数リファレンス
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](https://docs.microsoft.com/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。 
 
 > [!NOTE]
-> このリファレンス ページは、Azure Logic Apps と Microsoft Flow の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Microsoft Flow での関数と式について詳しくは、[条件での式の使用](https://docs.microsoft.com/flow/use-expressions-in-conditions)に関する記事をご覧ください。
+> このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](https://docs.microsoft.com/flow/use-expressions-in-conditions)に関する記事をご覧ください。
 
-たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を 2 つ示します。
+たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を示します。
 
 | タスク | 関数の構文 | 結果 |
 | ---- | --------------- | ------ |
@@ -84,6 +81,7 @@ ms.locfileid: "64693262"
 | --------------- | ---- |
 | [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | 2 つ以上の文字列を結合し、結合された文字列を返します。 |
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | 文字列が指定された部分文字列で終わっているかどうかを調べます。 |
+| [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | 指定された形式に基づいて数値を文字列として返します |
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 文字列としてグローバル一意識別子 (GUID) を生成します。 |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 部分文字列の開始位置を返します。 |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 部分文字列の最後の出現箇所の開始位置を返します。 |
@@ -152,7 +150,7 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | 文字列の base64 エンコード バージョンを返します。 |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | base64 エンコード文字列のバイナリ バージョンを返します。 |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | base64 エンコード文字列の文字列バージョンを返します。 |
-| [binary](../logic-apps/workflow-definition-language-functions-reference.md#binary) | 入力値のバイナリ バージョンを返します。 |
+| [[バイナリ]](../logic-apps/workflow-definition-language-functions-reference.md#binary) | 入力値のバイナリ バージョンを返します。 |
 | [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | 入力値のブール値バージョンを返します。 |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | 複数の入力から配列を作成して返します。 |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | 入力値のデータ URI を返します。 |
@@ -240,16 +238,19 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | ----------------- | ---- |
 | [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | 実行時に現在のアクションの出力を返すか、または他の JSON の名前と値のペアの値を返します。 [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) もご覧ください。 |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | 実行時のアクションの `body` 出力を返します。 [body](../logic-apps/workflow-definition-language-functions-reference.md#body) もご覧ください。 |
-| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | 実行時のアクションの出力を返します。 [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) をご覧ください。 |
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | 実行時のアクションの出力を返します。 [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) と [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) を参照してください。 |
 | [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) | 実行時にアクションの出力を返すか、または他の JSON の名前と値のペアの値を返します。 [action](../logic-apps/workflow-definition-language-functions-reference.md#action) もご覧ください。  |
 | [body](#body) | 実行時のアクションの `body` 出力を返します。 [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) もご覧ください。 |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | *form-data* または *form-encoded* アクション出力内のキー名と一致する値を含む配列を作成します。 |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | アクションの *form-data* 出力または *form-encoded* 出力内のキー名と一致する単一の値を返します。 |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 配列に対する繰り返しアクションの内部で使うと、アクションの現在の繰り返しの間に配列の現在の項目を返します。 |
-| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | for-each または do-until ループの内部で使用すると、指定したループから現在の項目を返します。|
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | Foreach ループまたは Until ループ内で使用すると、指定したループから現在の項目を返します。|
+| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Until ループ内で使用すると、現在の繰り返しのインデックス値を返します。 この関数は、入れ子になった Until ループ内で使用できます。 |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | トリガーまたはアクションを呼び出す "コールバック URL" を返します。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 複数の部分を持つアクションの出力の特定の部分に対する本文を返します。 |
+| [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 実行時のアクションの出力を返します。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | ワークフローの定義で記述されているパラメーターの値を返します。 |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | `For_each`、`Until`、`Scope` など、指定されたスコープ付きアクション内のすべてのアクションからの入力と出力を返します。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 実行時に、または他の JSON の名前と値のペアから、トリガーの出力を返します。 [triggerOutputs](#triggerOutputs) および [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) もご覧ください。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 実行時にトリガーの `body` 出力を返します。 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) をご覧ください。 |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *form-data* または *form-encoded* トリガー出力のキー名と一致する単一の値を返します。 |
@@ -294,6 +295,11 @@ JSON オブジェクトと XML ノードを処理するには、以下の操作�
 |||
 
 <a name="alphabetical-list"></a>
+
+## <a name="all-functions---alphabetical-list"></a>すべての関数 (アルファベット順)
+
+このセクションでは、使用可能なすべての関数をアルファベット順に示します。
+
 <a name="action"></a>
 
 ### <a name="action"></a>action
@@ -315,7 +321,7 @@ action().outputs.body.<property>
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | いいえ  | String | 値が必要なアクション オブジェクトのプロパティの名前: **name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId**、**clientTrackingId**。 Azure portal では、特定の実行履歴の詳細を調べることで、これらのプロパティを確認できます。 詳しくは、[REST API のワークフロー実行アクション](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)に関するページをご覧ください。 |
+| <*property*> | いいえ | String | 値が必要なアクション オブジェクトのプロパティの名前: **name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId**、**clientTrackingId**。 Azure portal では、特定の実行履歴の詳細を調べることで、これらのプロパティを確認できます。 詳しくは、[REST API のワークフロー実行アクション](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)に関するページをご覧ください。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -374,9 +380,7 @@ actionBody('Get_user')
 
 ### <a name="actionoutputs"></a>actionOutputs
 
-実行時のアクションの出力を返します。
-`actions('<actionName>').outputs` の短縮形です。
-[actions()](#actions) をご覧ください。
+実行時のアクションの出力を返します。  `actions('<actionName>').outputs` の短縮形です。 [actions()](#actions) をご覧ください。 `actionOutputs()` 関数はロジック アプリ デザイナーでは `outputs()` に解決されるため、`actionOutputs()` ではなく [outputs()](#outputs) を使用することを検討してください。 どちらの関数も機能は同じですが、`outputs()` をお勧めします。
 
 ```
 actionOutputs('<actionName>')
@@ -455,7 +459,7 @@ actions('<actionName>').outputs.body.<property>
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | はい | String | 出力を取得するアクション オブジェクトの名前  |
-| <*property*> | いいえ  | String | 値が必要なアクション オブジェクトのプロパティの名前: **name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId**、**clientTrackingId**。 Azure portal では、特定の実行履歴の詳細を調べることで、これらのプロパティを確認できます。 詳しくは、[REST API のワークフロー実行アクション](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)に関するページをご覧ください。 |
+| <*property*> | いいえ | String | 値が必要なアクション オブジェクトのプロパティの名前: **name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId**、**clientTrackingId**。 Azure portal では、特定の実行履歴の詳細を調べることで、これらのプロパティを確認できます。 詳しくは、[REST API のワークフロー実行アクション](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get)に関するページをご覧ください。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -516,8 +520,8 @@ addDays('<timestamp>', <days>, '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*days*> | はい | 整数 | 追加する正または負の日数 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*days*> | はい | Integer | 追加する正または負の日数 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -558,8 +562,8 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*hours*> | はい | 整数 | 追加する正または負の時間数 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*hours*> | はい | Integer | 追加する正または負の時間数 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -600,8 +604,8 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*minutes*> | はい | 整数 | 追加する正または負の分数 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*minutes*> | はい | Integer | 追加する正または負の分数 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -633,7 +637,7 @@ addMinutes('2018-03-15T00:20:00Z', -5)
 
 ### <a name="addproperty"></a>addProperty
 
-JSON オブジェクトにプロパティとその値または名前と値のペアを追加し、更新されたオブジェクトを返します。 実行時にオブジェクトが既に存在する場合、関数はエラーをスローします。
+JSON オブジェクトにプロパティとその値または名前と値のペアを追加し、更新されたオブジェクトを返します。 実行時にプロパティが既に存在する場合、関数は失敗し、エラーをスローします。
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -643,7 +647,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | はい | Object | プロパティを追加する JSON オブジェクト |
 | <*property*> | はい | String | 追加するプロパティの名前 |
-| <*value*> | はい | 任意 | プロパティの値 |
+| <*value*> | はい | Any | プロパティの値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -651,13 +655,81 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | 指定したプロパティを含む更新された JSON オブジェクト |
 ||||
 
-*例*
-
-この例は、`accountNumber` プロパティを `customerProfile` オブジェクトに追加します。オブジェクトは、[JSON()](#json) 関数で JSON に変換されます。
-この関数は、[guid()](#guid) 関数によって生成された値を代入し、更新されたオブジェクトを返します。
+既存のプロパティに子プロパティを追加するには、次の構文を使用します。
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | はい | Object | プロパティを追加する JSON オブジェクト |
+| <*parent-property*> | はい | String | 子プロパティを追加する親プロパティの名前 |
+| <*child-property*> | はい | String | 追加する子プロパティの名前 |
+| <*value*> | はい | Any | 指定したプロパティに設定する値 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | プロパティが設定された更新後の JSON オブジェクト |
+||||
+
+*例 1*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトに `middleName` プロパティを追加します。 このオブジェクトには、プロパティ `firstName` と `surName` が既に含まれています。 この関数は、指定された値を新しいプロパティに割り当て、更新されたオブジェクトを返します。
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*例 2*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの既存の `customerName` プロパティに `middleName` 子プロパティを追加します。 この関数は、指定された値を新しいプロパティに割り当て、更新されたオブジェクトを返します。
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -673,8 +745,8 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*seconds*> | はい | 整数 | 追加する正または負の秒数 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*seconds*> | はい | Integer | 追加する正または負の秒数 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -716,9 +788,9 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*interval*> | はい | 整数 | 追加する指定した時間単位の数 |
+| <*interval*> | はい | Integer | 追加する指定した時間単位の数 |
 | <*timeUnit*> | はい | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -734,7 +806,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-返される結果: `"2018-01-02T00:00:00:0000000Z"`
+返される結果: `"2018-01-02T00:00:00.0000000Z"`
 
 *例 2*
 
@@ -1005,7 +1077,7 @@ body('Get_user')
 
 <a name="bool"></a>
 
-### <a name="bool"></a>bool
+### <a name="bool"></a>[bool]
 
 値のブール値バージョンを返します。
 
@@ -1015,7 +1087,7 @@ bool(<value>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | 任意 | 変換する値 |
+| <*value*> | はい | Any | 変換する値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1055,7 +1127,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | 任意 | null ではない最初の項目または値。 すべてのパラメーターが null の場合、この関数は null を返します。 |
+| <*first-non-null-item*> | Any | null ではない最初の項目または値。 すべてのパラメーターが null の場合、この関数は null を返します。 |
 ||||
 
 *例*
@@ -1091,7 +1163,7 @@ concat('<text1>', '<text2>', ...)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*text1text2...*> | String | 入力文字列を結合して作成された文字列 |
+| <*text1text2...* > | String | 入力文字列を結合して作成された文字列 |
 ||||
 
 *例*
@@ -1163,8 +1235,8 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1205,9 +1277,9 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
-| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1248,8 +1320,8 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1422,7 +1494,7 @@ dayOfMonth('<timestamp>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*day-of-month*> | 整数 | 指定したタイムスタンプの月の日付 |
+| <*day-of-month*> | Integer | 指定したタイムスタンプの月の日付 |
 ||||
 
 *例*
@@ -1452,7 +1524,7 @@ dayOfWeek('<timestamp>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*day-of-week*> | 整数 | 指定したタイムスタンプの曜日。日曜日は 0、月曜日は 1、などとなります。 |
+| <*day-of-week*> | Integer | 指定したタイムスタンプの曜日。日曜日は 0、月曜日は 1、などとなります。 |
 ||||
 
 *例*
@@ -1482,7 +1554,7 @@ dayOfYear('<timestamp>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*day-of-year*> | 整数 | 指定したタイムスタンプの年初からの通算日数 |
+| <*day-of-year*> | Integer | 指定したタイムスタンプの年初からの通算日数 |
 ||||
 
 *例*
@@ -1613,7 +1685,7 @@ div(<dividend>, <divisor>)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | 整数 | 1 番目の数値を 2 番目の数値で除算した結果の整数値 |
+| <*quotient-result*> | Integer | 1 番目の数値を 2 番目の数値で除算した結果の整数値 |
 ||||
 
 *例*
@@ -1791,7 +1863,7 @@ first([<collection>])
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | 任意 | コレクション内の最初の項目 |
+| <*first-collection-item*> | Any | コレクション内の最初の項目 |
 ||||
 
 *例*
@@ -1852,7 +1924,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1933,6 +2005,60 @@ formDataValue('Send_an_email', 'Subject')
 
 文字列として件名のテキストを返します (例: `"Hello world"`)
 
+<a name="formatNumber"></a>
+
+### <a name="formatnumber"></a>formatNumber
+
+指定された形式に基づいた文字列として数値を返します。
+
+```text
+formatNumber(<number>, <format>, <locale>?)
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*number*> | はい | 整数または倍精度浮動小数点数 | 形式を設定する値。 |
+| <*format*> | はい | String | 使用する形式を指定する複合形式文字列。 サポートされている数値形式文字列については、`number.ToString(<format>, <locale>)` によってサポートされている[標準の数値形式文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings)を参照してください。 |
+| <*locale*> | いいえ | String | `number.ToString(<format>, <locale>)` によってサポートされているとおりに使用するロケール。 指定しない場合は、既定値の `en-us` が使用されます。 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*formatted-number*> | String | 指定された数値を、指定した形式の文字列で表したもの。 この戻り値は `int` または `float` にキャストできます。 |
+||||
+
+*例 1*
+
+数値 `1234567890` の形式を設定するとします。 この例では、この数値の形式を文字列 "1,234,567,890.00" として設定します。
+
+```
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
+```
+
+*例 2"
+
+数値 `1234567890` の形式を設定するとします。 この例では、数値の形式を文字列 "1.234.567.890,00" に設定します。
+
+```
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
+```
+
+*例 3*
+
+数値 `17.35` の形式を設定するとします。 この例では、数値の形式を文字列 "$17.35" に設定します。
+
+```
+formatNumber(17.36, 'C2')
+```
+
+*例 4*
+
+数値 `17.35` の形式を設定するとします。 この例では、数値の形式を文字列 "17,35 kr" に設定します。
+
+```
+formatNumber(17.36, 'C2', 'is-is')
+```
+
 <a name="getFutureTime"></a>
 
 ### <a name="getfuturetime"></a>getFutureTime
@@ -1945,9 +2071,9 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | はい | 整数 | 減算する指定した時間単位の数 |
+| <*interval*> | はい | Integer | 追加する指定した時間単位の数 |
 | <*timeUnit*> | はい | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -1989,9 +2115,9 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*interval*> | はい | 整数 | 減算する指定した時間単位の数 |
+| <*interval*> | はい | Integer | 減算する指定した時間単位の数 |
 | <*timeUnit*> | はい | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2113,7 +2239,7 @@ guid('<format>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | いいえ  | String | 返される GUID の単一の[形式指定子](https://msdn.microsoft.com/library/97af8hh4)。 規定の形式は "D" ですが、"N"、"D"、"B"、"P"、"X" も指定できます。 |
+| <*format*> | いいえ | String | 返される GUID の単一の[形式指定子](https://msdn.microsoft.com/library/97af8hh4)。 規定の形式は "D" ですが、"N"、"D"、"B"、"P"、"X" も指定できます。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2145,13 +2271,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | はい | Boolean | 調べる式。 |
-| <*valueIfTrue*> | はい | 任意 | 式が true の場合に返す値 |
-| <*valueIfFalse*> | はい | 任意 | 式が false の場合に返す値 |
+| <*valueIfTrue*> | はい | Any | 式が true の場合に返す値 |
+| <*valueIfFalse*> | はい | Any | 式が false の場合に返す値 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | 任意 | 式が true か false かに基づいて返すように指定された値 |
+| <*specified-return-value*> | Any | 式が true か false かに基づいて返すように指定された値 |
 ||||
 
 *例*
@@ -2182,7 +2308,7 @@ indexOf('<text>', '<searchText>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*index-value*>| 整数 | 指定した部分文字列の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 |
+| <*index-value*>| Integer | 指定した部分文字列の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 |
 ||||
 
 *例*
@@ -2197,7 +2323,7 @@ indexOf('hello world', 'world')
 
 <a name="int"></a>
 
-### <a name="int"></a>int
+### <a name="int"></a>INT
 
 文字列の整数バージョンを返します。
 
@@ -2212,7 +2338,7 @@ int('<value>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*integer-result*> | 整数 | 指定した文字列の整数バージョン |
+| <*integer-result*> | Integer | 指定した文字列の整数バージョン |
 ||||
 
 *例*
@@ -2238,7 +2364,7 @@ item()
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*current-array-item*> | 任意 | アクションの現在の繰り返しに対する配列内の現在の項目 |
+| <*current-array-item*> | Any | アクションの現在の繰り返しに対する配列内の現在の項目 |
 ||||
 
 *例*
@@ -2267,7 +2393,7 @@ items('<loopName>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*item*> | 任意 | 指定した for-each ループの現在のサイクルからの項目 |
+| <*item*> | Any | 指定した for-each ループの現在のサイクルからの項目 |
 ||||
 
 *例*
@@ -2276,6 +2402,96 @@ items('<loopName>')
 
 ```
 items('myForEachLoopName')
+```
+
+<a name="iterationIndexes"></a>
+
+### <a name="iterationindexes"></a>iterationIndexes
+
+Until ループ内の現在の繰り返しのインデックス値を返します。 この関数は、入れ子になった Until ループ内で使用できます。 
+
+```
+iterationIndexes('<loopName>')
+```
+
+| パラメーター | 必須 | Type | 説明 | 
+| --------- | -------- | ---- | ----------- | 
+| <*loopName*> | はい | String | Until ループの名前 | 
+||||| 
+
+| 戻り値 | Type | 説明 | 
+| ------------ | ---- | ----------- | 
+| <*index*> | Integer | 指定された Until ループ内の現在の繰り返しのインデックス値 | 
+|||| 
+
+*例* 
+
+この例では、カウンター変数を作成し、カウンター値が 5 に達するまで、Until ループ内の各繰り返しの間に 1 つずつその変数を増分します。 また、この例では各繰り返しの現在のインデックスを追跡する変数も作成します。 Until ループで、各繰り返しの間にカウンターを増分し、カウンターの値を現在のインデックス値に割り当ててから、カウンターを増分します。 いつでも、現在のインデックス値を取得することによって、現在の繰り返しの回数を判別できます。
+
+```
+{
+   "actions": {
+      "Create_counter_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [ 
+               {
+                  "name": "myCounter",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {}
+      },
+      "Create_current_index_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [
+               {
+                  "name": "myCurrentLoopIndex",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {
+            "Create_counter_variable": [ "Succeeded" ]
+         }
+      },
+      "Until": {
+         "type": "Until",
+         "actions": {
+            "Assign_current_index_to_counter": {
+               "type": "SetVariable",
+               "inputs": {
+                  "name": "myCurrentLoopIndex",
+                  "value": "@variables('myCounter')"
+               },
+               "runAfter": {
+                  "Increment_variable": [ "Succeeded" ]
+               }
+            },
+            "Increment_variable": {
+               "type": "IncrementVariable",
+               "inputs": {
+                  "name": "myCounter",
+                  "value": 1
+               },
+               "runAfter": {}
+            }
+         },
+         "expression": "@equals(variables('myCounter'), 5),
+         "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+         },
+         "runAfter": {
+            "Create_current_index_variable": [ "Succeeded" ]
+         }
+      }
+   }
+}
 ```
 
 <a name="json"></a>
@@ -2465,7 +2681,7 @@ lastIndexOf('<text>', '<searchText>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*ending-index-value*> | 整数 | 指定された部分文字列の最後の出現箇所の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 |
+| <*ending-index-value*> | Integer | 指定された部分文字列の最後の出現箇所の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 |
 ||||
 
 *例*
@@ -2496,7 +2712,7 @@ length([<collection>])
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*length-or-count*> | 整数 | コレクション内の項目数 |
+| <*length-or-count*> | Integer | コレクション内の項目数 |
 ||||
 
 *例*
@@ -2752,7 +2968,7 @@ multipartBody('<actionName>', <index>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | はい | String | 複数の部分を含む出力を持つアクションの名前 |
-| <*index*> | はい | 整数 | 取得する部分のインデックス値 |
+| <*index*> | はい | Integer | 取得する部分のインデックス値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2858,6 +3074,69 @@ or(equals(1, 2), equals(1, 3))
 * 1 番目の例:少なくとも 1 つの式が true なので、関数は `true` を返します。
 * 2 番目の例:両方の式が false なので、関数は `false` を返します。
 
+<a name="outputs"></a>
+
+### <a name="outputs"></a>outputs
+
+実行時のアクションの出力を返します。 ロジック アプリ デザイナーで `outputs()` に解決される `actionOutputs()` ではなく、この関数を使用してください。 どちらの関数も機能は同じですが、`outputs()` をお勧めします。
+
+```
+outputs('<actionName>')
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*actionName*> | はい | String | 取得するアクションの出力の名前 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | -----| ----------- |
+| <*output*> | String | 指定したアクションからの出力 |
+||||
+
+*例*
+
+この例は、Twitter アクション `Get user` からの出力を取得します。
+
+```
+outputs('Get_user')
+```
+
+返される結果:
+
+```json
+{
+  "statusCode": 200,
+  "headers": {
+    "Pragma": "no-cache",
+    "Vary": "Accept-Encoding",
+    "x-ms-request-id": "a916ec8f52211265d98159adde2efe0b",
+    "X-Content-Type-Options": "nosniff",
+    "Timing-Allow-Origin": "*",
+    "Cache-Control": "no-cache",
+    "Date": "Mon, 09 Apr 2018 18:47:12 GMT",
+    "Set-Cookie": "ARRAffinity=b9400932367ab5e3b6802e3d6158afffb12fcde8666715f5a5fbd4142d0f0b7d;Path=/;HttpOnly;Domain=twitter-wus.azconn-wus.p.azurewebsites.net",
+    "X-AspNet-Version": "4.0.30319",
+    "X-Powered-By": "ASP.NET",
+    "Content-Type": "application/json; charset=utf-8",
+    "Expires": "-1",
+    "Content-Length": "339"
+  },
+  "body": {
+    "FullName": "Contoso Corporation",
+    "Location": "Generic Town, USA",
+    "Id": 283541717,
+    "UserName": "ContosoInc",
+    "FollowersCount": 172,
+    "Description": "Leading the way in transforming the digital workplace.",
+    "StatusesCount": 93,
+    "FriendsCount": 126,
+    "FavouritesCount": 46,
+    "ProfileImageUrl": "https://pbs.twimg.com/profile_images/908820389907722240/gG9zaHcd_400x400.jpg"
+  }
+}
+```
+
 <a name="parameters"></a>
 
 ### <a name="parameters"></a>parameters
@@ -2875,7 +3154,7 @@ parameters('<parameterName>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*parameter-value*> | 任意 | 指定したパラメーターの値 |
+| <*parameter-value*> | Any | 指定したパラメーターの値 |
 ||||
 
 *例*
@@ -2908,13 +3187,13 @@ rand(<minValue>, <maxValue>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | はい | 整数 | 範囲に含まれる最小の整数 |
-| <*maxValue*> | はい | 整数 | 関数が返すことのできる範囲内で最も大きい整数の次の整数 |
+| <*minValue*> | はい | Integer | 範囲に含まれる最小の整数 |
+| <*maxValue*> | はい | Integer | 関数が返すことのできる範囲内で最も大きい整数の次の整数 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*random-result*> | 整数 | 指定した範囲から返されるランダムな整数 |
+| <*random-result*> | Integer | 指定した範囲から返されるランダムな整数 |
 ||||
 
 *例*
@@ -2939,8 +3218,8 @@ range(<startIndex>, <count>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | はい | 整数 | 最初の項目として配列を開始する整数値 |
-| <*count*> | はい | 整数 | 配列内の整数の数 |
+| <*startIndex*> | はい | Integer | 最初の項目として配列を開始する整数値 |
+| <*count*> | はい | Integer | 配列内の整数の数 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -2994,7 +3273,7 @@ replace('the old string', 'old', 'new')
 
 ### <a name="removeproperty"></a>removeProperty
 
-オブジェクトからプロパティを削除し、更新されたオブジェクトを返します。
+オブジェクトからプロパティを削除し、更新されたオブジェクトを返します。 削除しようとしたプロパティが存在しない場合、この関数は元のオブジェクトを返します。
 
 ```
 removeProperty(<object>, '<property>')
@@ -3011,20 +3290,208 @@ removeProperty(<object>, '<property>')
 | <*updated-object*> | Object | 指定したプロパティを含まない更新された JSON オブジェクト |
 ||||
 
-*例*
-
-この例は、`"customerProfile"` オブジェクトから `"accountLocation"` プロパティを削除し、[JSON()](#json) 関数で JSON に変換した後、更新されたオブジェクトを返します。
+既存のプロパティから子プロパティを削除するには、次の構文を使用します。
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | はい | Object | プロパティを削除する JSON オブジェクト |
+| <*parent-property*> | はい | String | 子プロパティを削除する親プロパティの名前 |
+| <*child-property*> | はい | String | 削除する子プロパティの名前 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | 子プロパティが削除された、更新済みの JSON オブジェクト |
+||||
+
+*例 1*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトから `middleName` プロパティを削除し、更新されたオブジェクトを返します。
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*例 2*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの `customerName` 親プロパティから `middleName` 子プロパティを削除し、更新されたオブジェクトを返します。
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>結果
+
+`For_each`、`Until`、`Scope` アクションなど、指定されたスコープ付きアクション内のすべてのアクションからの入力と出力を返します。 この関数は、例外を診断して処理できるように、失敗したアクションの結果を返すため、役立ちます。 詳細については「[エラーのコンテキストと結果を取得する](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)」をご覧ください。
+
+```
+result('<scopedActionName>')
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*scopedActionName*> | はい | String | すべての内部アクションからの入力と出力を返すスコープ付きアクションの名前。 |
+||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*array-object*> | Array オブジェクト | 指定されたスコープ付きアクション内に出現する各アクションからの入力と出力の配列を格納している配列 |
+||||
+
+*例*
+
+この例では、`Compose` アクションで `result()` 関数を使用して、`For_each` ループ内にある HTTP アクションの各繰り返しからの入力と出力を返します。
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+以下に、返される配列の例を示します。ここで、外側の `outputs` オブジェクトに、`For_each` アクション内にあるアクションの各繰り返しからの入力と出力が格納されています。
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>setProperty
 
-オブジェクトのプロパティの値を設定し、更新されたオブジェクトを返します。
-新しいプロパティを追加するには、この関数または [addProperty()](#addProperty) 関数を使うことができます。
+JSON オブジェクトのプロパティの値を設定し、更新されたオブジェクトを返します。 設定しようとしたプロパティが存在しない場合、そのプロパティがオブジェクトに追加されます。 新しいプロパティを追加するには、[addProperty()](#addProperty) 関数を使用します。
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3034,7 +3501,21 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*object*> | はい | Object | プロパティを設定する JSON オブジェクト |
 | <*property*> | はい | String | 設定する既存または新規のプロパティの名前 |
-| <*value*> | はい | 任意 | 指定したプロパティに設定する値 |
+| <*value*> | はい | Any | 指定したプロパティに設定する値 |
+|||||
+
+子オブジェクト内に子プロパティを設定するには、入れ子になった `setProperty()` 呼び出しを代わりに使用します。 それ以外の場合、関数は子オブジェクトだけを出力として返します。
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | はい | Object | プロパティを設定する JSON オブジェクト |
+| <*parent-property*> | はい | String | 子プロパティを設定する親プロパティの名前 |
+| <*child-property*> | はい | String | 設定する子プロパティの名前 |
+| <*value*> | はい | Any | 指定したプロパティに設定する値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3042,13 +3523,60 @@ setProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | プロパティが設定された更新後の JSON オブジェクト |
 ||||
 
-*例*
+*例 1*
 
-この例は、`"customerProfile"` オブジェクトの `"accountNumber"` プロパティを設定します。オブジェクトは、[JSON()](#json) 関数で JSON に変換されます。
-この関数は、[guid()](#guid) 関数によって生成された値を代入し、更新された JSON オブジェクトを返します。
+この例では [JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトに `surName` プロパティを設定します。 この関数は、指定された値をこのプロパティに割り当て、更新されたオブジェクトを返します。
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*例 2*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの `customerName` 親プロパティに `surName` 子プロパティを設定します。 この関数は、指定された値をこのプロパティに割り当て、更新されたオブジェクトを返します。
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>
@@ -3064,7 +3592,7 @@ skip([<collection>], <count>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | Array | 項目を削除するコレクション |
-| <*count*> | はい | 整数 | 先頭から削除する項目の数を示す正の整数 |
+| <*count*> | はい | Integer | 先頭から削除する項目の数を示す正の整数 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3126,7 +3654,7 @@ startOfDay('<timestamp>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3157,7 +3685,7 @@ startOfHour('<timestamp>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3188,7 +3716,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3261,7 +3789,7 @@ string(<value>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | はい | 任意 | 変換する値 |
+| <*value*> | はい | Any | 変換する値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3334,8 +3862,8 @@ substring('<text>', <startIndex>, <length>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 文字を取得する文字列 |
-| <*startIndex*> | はい | 整数 | 開始位置またはインデックスの値として使用する 0 以上の正の数 |
-| <*length*> | はい | 整数 | 取得する部分文字列の文字数を示す正の値 |
+| <*startIndex*> | はい | Integer | 開始位置またはインデックスの値として使用する 0 以上の正の数 |
+| <*length*> | はい | Integer | 取得する部分文字列の文字数を示す正の値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3367,9 +3895,9 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*interval*> | はい | 整数 | 減算する指定した時間単位の数 |
+| <*interval*> | はい | Integer | 減算する指定した時間単位の数 |
 | <*timeUnit*> | はい | String | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3411,7 +3939,7 @@ take([<collection>], <count>)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列 | 項目を取得するコレクション |
-| <*count*> | はい | 整数 | 先頭から取得する項目の数を示す正の整数 |
+| <*count*> | はい | Integer | 先頭から取得する項目の数を示す正の整数 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3451,7 +3979,7 @@ ticks('<timestamp>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*ticks-number*> | 整数 | 指定したタイムスタンプからのティック数 |
+| <*ticks-number*> | Integer | 指定したタイムスタンプからのティック数 |
 ||||
 
 <a name="toLower"></a>
@@ -3516,7 +4044,7 @@ toUpper('Hello World')
 
 <a name="trigger"></a>
 
-### <a name="trigger"></a>trigger
+### <a name="trigger"></a>トリガー (trigger)
 
 実行時のトリガーの出力を返すか、または式に割り当てることができる他の JSON の名前と値のペアの値を返します。
 
@@ -3626,7 +4154,7 @@ triggerMultipartBody(<index>)
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*index*> | はい | 整数 | 取得する部分のインデックス値 |
+| <*index*> | はい | Integer | 取得する部分のインデックス値 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -3917,7 +4445,7 @@ uriPort('<uri>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*port-value*> | 整数 | 指定した URI の `port` 値 `port` の値が指定されていない場合は、プロトコルの既定のポートを返します。 |
+| <*port-value*> | Integer | 指定した URI の `port` 値 `port` の値が指定されていない場合は、プロトコルの既定のポートを返します。 |
 ||||
 
 *例*
@@ -4005,7 +4533,7 @@ utcNow('<format>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -4052,7 +4580,7 @@ variables('<variableName>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*variable-value*> | 任意 | 指定した変数の値 |
+| <*variable-value*> | Any | 指定した変数の値 |
 ||||
 
 *例*
@@ -4078,7 +4606,7 @@ workflow().<property>
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | いいえ  | String | 値を取得するワークフロー プロパティの名前 <p>ワークフロー オブジェクトのプロパティ: **name**、**type**、**id**、**location**、**run**。 **run** プロパティの値は、次のプロパティを持つオブジェクトでもあります: **name**、**type**、**id**。 |
+| <*property*> | いいえ | String | 値を取得するワークフロー プロパティの名前 <p>ワークフロー オブジェクトのプロパティ: **name**、**type**、**id**、**location**、**run**。 **run** プロパティの値は、次のプロパティを持つオブジェクトでもあります: **name**、**type**、**id**。 |
 |||||
 
 *例*
@@ -4159,14 +4687,14 @@ xpath('<xml>', '<xpath>')
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | はい | 任意 | XPath 式の値に一致するノードまたは値を検索する XML 文字列 |
-| <*xpath*> | はい | 任意 | 一致する XML ノードまたは値の検索に使用する XPath 式 |
+| <*xml*> | はい | Any | XPath 式の値に一致するノードまたは値を検索する XML 文字列 |
+| <*xpath*> | はい | Any | 一致する XML ノードまたは値の検索に使用する XPath 式 |
 |||||
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 1 つのノードだけが指定した XPath 式と一致するときの XML ノード |
-| <*value*> | 任意 | 1 つの値だけが指定した XPath 式と一致するときの XML ノードの値 |
+| <*value*> | Any | 1 つの値だけが指定した XPath 式と一致するときの XML ノードの値 |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>または </br>[<*value1*>, <*value2*>, ...] | Array | 指定した XPath 式と一致する XML ノードまたは値の配列 |
 ||||
 
@@ -4202,15 +4730,27 @@ xpath('<xml>', '<xpath>')
 
 *例 3*
 
-この例の式はどちらも、名前空間を含む XML が格納されている指定した引数で、`<location></location>` ノードと一致するノードを検索します。 式では、二重引用符 (") のエスケープ文字としてバックスラッシュ文字 (\\) を使います。
+この例の式はどちらも、名前空間を含む XML が格納されている指定した引数で、`<location></location>` ノードと一致するノードを検索します。 
+
+> [!NOTE]
+>
+> コード ビューで作業している場合は、円記号 (\\) を使用して二重引用符 (") をエスケープします。 
+> たとえば、式を JSON 文字列としてシリアル化する場合は、エスケープ文字を使用する必要があります。 
+> ただし、ロジック アプリ デザイナーまたは式エディターで作業している場合、基になる定義に円記号が自動的に追加されるため、二重引用符をエスケープする必要はありません。次に例を示します。
+> 
+> * コード ビュー: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+>
+> * 式エディター: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> 
+> 以下の例は、式エディターで入力する式に適用されます。
 
 * *式 1*
 
-  `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+  `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
 * *式 2*
 
-  `xpath(xml(body('Http')), '/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]')`
+  `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
 
 引数は次のとおりです。
 
@@ -4222,11 +4762,11 @@ xpath('<xml>', '<xpath>')
 
 * どちらかの XPath 式:
 
-  * `/*[name()=\"file\"]/*[name()=\"location\"]`
+  * `/*[name()="file"]/*[name()="location"]`
 
-  * `/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]`
+  * `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]`
 
-`<location></location` ノードと一致する結果のノード:
+`<location></location>` ノードと一致する結果のノード:
 
 ```xml
 <location xmlns="https://contoso.com">Paris</location>
@@ -4236,10 +4776,10 @@ xpath('<xml>', '<xpath>')
 
 例 3 に続き、この例では `<location></location>` ノードの値を検索します。
 
-`xpath(xml(body('Http')), 'string(/*[name()=\"file\"]/*[name()=\"location\"])')`
+`xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
 返される結果: `"Paris"`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)について学習してください

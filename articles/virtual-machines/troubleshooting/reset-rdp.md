@@ -4,7 +4,7 @@ description: Azure portal または Azure PowerShell を使用して、Windows V
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 45c69812-d3e4-48de-a98d-39a0f5675777
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407693"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71058438"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
 Windows 仮想マシン (VM) に接続できない場合は、ご自分のローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 パスワードをリセットするには、Azure portal を使用するか、Azure PowerShell で VM アクセス拡張機能を使用します。 VM にサインインした後、そのローカル管理者のパスワードをリセットします。  
@@ -39,7 +39,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。
 
-2. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、**[更新]** を選択します。 
+2. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、 **[更新]** を選択します。 
 
 3. VM への接続を再度試してみます。
 
@@ -88,7 +88,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 1. それでも仮想マシンにリモート接続できない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 Windows ドメイン コントローラーへの接続を失った場合は、ドメイン コントローラーのバックアップから復元する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM アクセス拡張機能が応答せず、パスワードをリセットできない場合は、[オフラインのローカル Windows パスワードをリセット](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)できます。 この方法はより高度であり、問題のある VM の仮想ハード ディスクを別の VM に接続する必要があります。 最初に、この記事に記載されている手順を実行し、これらの手順でうまくいかない場合にのみ、オフラインのパスワードをリセットする方法をお試しください。
 

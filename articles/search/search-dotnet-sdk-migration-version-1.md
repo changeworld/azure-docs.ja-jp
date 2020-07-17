@@ -1,27 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 1.1 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 1.1 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前の API バージョンから Azure Search .NET SDK バージョン 1.1 にコードを移行します。 新機能と必要なコード変更について説明します。
+manager: nitinme
 author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 3f47656bb13d08ea56cf25a2a29897722abb1cdb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/04/2019
+ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024160"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72792376"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
-
-> [!Important]
-> このコンテンツはまだ準備中の段階です。 Azure Search .NET SDK のバージョン 9.0 が NuGet 上で提供されています。 この記事では、9.0 へのアップグレード方法について説明します。 
-> 
+# <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
 
 バージョン 1.0.2-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 1.1 を使用するようにアプリケーションをアップグレードできます。
 
@@ -37,7 +32,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 以前にバージョン 1.0.0-preview、1.0.1-preview、または 1.0.2-preview を使用していた場合、ビルドは成功するはずであり、次に進む準備が整います。
 
-0.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
+0\.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
 
     Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
     Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
@@ -105,14 +100,14 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 たとえば、旧バージョンの SDK の「インデックス統計の取得」操作は、次のようなシグネチャを公開しました。
 
-`IIndexOperations`で、次のように記述します。
+`IIndexOperations`:
 
     // Asynchronous operation with all parameters
     Task<IndexGetStatisticsResponse> GetStatisticsAsync(
         string indexName,
         CancellationToken cancellationToken);
 
-`IndexOperationsExtensions`で、次のように記述します。
+`IndexOperationsExtensions`:
 
     // Asynchronous operation with only required parameters
     public static Task<IndexGetStatisticsResponse> GetStatisticsAsync(
@@ -126,7 +121,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 バージョン 1.1 での同じ操作のメソッド シグネチャは、次のようになります。
 
-`IIndexesOperations`で、次のように記述します。
+`IIndexesOperations`:
 
     // Asynchronous operation with lower-level HTTP features exposed
     Task<AzureOperationResponse<IndexGetStatisticsResult>> GetStatisticsWithHttpMessagesAsync(
@@ -135,7 +130,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         Dictionary<string, List<string>> customHeaders = null,
         CancellationToken cancellationToken = default(CancellationToken));
 
-`IndexesOperationsExtensions`で、次のように記述します。
+`IndexesOperationsExtensions`:
 
     // Simplified asynchronous operation
     public static Task<IndexGetStatisticsResult> GetStatisticsAsync(
@@ -178,7 +173,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         };
 
 ### <a name="model-class-changes"></a>モデル クラスの変更
-「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、クラスが削除されました。 例: 
+「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、クラスが削除されました。 次に例を示します。
 
 * `IndexDefinitionResponse` は `AzureOperationResponse<Index>` によって置き換えられました
 * `DocumentSearchResponse` の名前が `DocumentSearchResult` に変更されました
@@ -349,7 +344,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 さらに `IntValue` を 0 に設定します。現在では、この値はネットワーク上で正しく 0 としてシリアル化され、インデックスに 0 と格納されるようになっています。 ラウンドトリップも予期したとおりに動作します。
 
-この方法には、注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを含むモデル タイプ使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
+この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 

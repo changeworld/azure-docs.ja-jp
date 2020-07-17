@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239659"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -23,7 +23,9 @@ ms.locfileid: "59681422"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は新しいオープン ソースの IoT 拡張機能であり、[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) の機能に追加されます。 Azure CLI には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
+[Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) の機能に追加されるオープン ソースの IoT 拡張機能です。 Azure CLI には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,7 +35,7 @@ ms.locfileid: "59681422"
 | デバイス ツインの必要なプロパティ    | デバイスを特定の状態にします (LED を緑に設定したり、テレメトリの送信間隔を 30 分に設定したりします)。         |
 | デバイス ツインの報告されるプロパティ   | デバイスの報告される状態を取得します。 たとえば、デバイスは、現在 LED が点滅していることを報告します。                                    |
 | デバイス ツインのタグ                  | デバイス固有のメタデータをクラウドに格納します。 例: 自動販売機の設置場所。                         |
-| デバイス ツイン クエリ        | すべてのデバイス ツインをクエリして、任意の条件と一致するデバイスを取得します (例: 使用可能なデバイスを識別する)。 |
+| デバイス ツイン クエリ        | すべてのデバイス ツインをクエリして、任意の条件 (使用可能なデバイスを識別するなど) でそれらのツインを取得します。 |
 
 これらのオプションの相違点の詳細な説明と使用するためのガイダンスについては、「[device-to-cloud 通信に関するガイダンス](iot-hub-devguide-d2c-guidance.md)」と「[cloud-to-device 通信に関するガイダンス](iot-hub-devguide-c2d-guidance.md)」を参照してください。
 
@@ -41,7 +43,7 @@ ms.locfileid: "59681422"
 
 ## <a name="what-you-learn"></a>学習内容
 
-開発マシン上で Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションで使用します。
+開発マシン上で Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションで使用することを学習します。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -49,7 +51,7 @@ Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプ
 
 ## <a name="what-you-need"></a>必要なもの
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 これらの項目では、次の要件について取り上げています。
 
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
@@ -59,21 +61,23 @@ Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプ
 
 * [Python 2.7x または Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 
+* Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az –version` を使用します。
 
-* IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
+* IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-iot` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
 
-次のコマンドを実行して Azure アカウントにログインします。
+## <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-```bash
+次のコマンドを実行して Azure アカウントにサインインします。
+
+```azurecli
 az login
 ```
 
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
-```bash
+```azurecli
 az iot hub invoke-device-method --device-id <your device id> \
   --hub-name <your hub name> \
   --method-name <the method name> \
@@ -84,7 +88,7 @@ az iot hub invoke-device-method --device-id <your device id> \
 
 次のコマンドを実行して、目的のプロパティ interval = 3000 を設定します。
 
-```bash
+```azurecli
 az iot hub device-twin update -n <your hub name> \
   -d <your device id> --set properties.desired.interval = 3000
 ```
@@ -95,23 +99,23 @@ az iot hub device-twin update -n <your hub name> \
 
 次のコマンドを実行して、デバイスの報告されるプロパティを取得します。
 
-```bash
+```azurecli
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-ツインの reported プロパティの 1 つは $metadata.$lastUpdated です。これは、デバイス アプリがその reported プロパティのセットを最後に更新した時刻を示します。
+ツインの報告されるプロパティの 1 つは $metadata.$lastUpdated です。これは、デバイス アプリによって、その報告されるプロパティのセットが最後に更新された時刻を示します。
 
 ## <a name="device-twin-tags"></a>デバイス ツインのタグ
 
 次のコマンドを実行して、デバイスのタグとプロパティを取得します。
 
-```bash
+```azurecli
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
 次のコマンドを実行して、フィールド role = temperature&humidity をデバイスに追加します。
 
-```bash
+```azurecli
 az iot hub device-twin update \
   --hub-name <your hub name> \
   --device-id <your device id> \
@@ -122,19 +126,19 @@ az iot hub device-twin update \
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' のクエリを実行します。
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' 以外のすべてのデバイスのクエリを実行します。
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 

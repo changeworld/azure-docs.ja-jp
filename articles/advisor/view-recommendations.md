@@ -1,18 +1,14 @@
 ---
 title: 重要な Azure Advisor の推奨事項を表示する
 description: Azure Advisor の推奨事項を表示したり、ノイズを減らすためにフィルター処理したりします。
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59053288"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75422369"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>重要な Azure Advisor の推奨事項を表示する
 
@@ -32,7 +28,7 @@ Azure portal で変更を行うには、次の手順に従います。
 
 1. Advisor の推奨事項を受け取るサブスクリプションまたはリソース グループの **[含める]** チェック ボックスをオンにします。 このボックスが無効になっている場合は、そのサブスクリプションまたはリソース グループの構成を変更するアクセス許可がない可能性があります。 「[Azure Advisor でのアクセス許可](permissions.md)」を参照してください。
 
-1. 変更を行った後、**[適用]** をクリックします。
+1. 変更を行った後、 **[適用]** をクリックします。
 
 ## <a name="filtering-your-view-in-the-azure-portal"></a>Azure portal のビューをフィルター処理する
 
@@ -79,7 +75,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
 
     ![Advisor のフィルター メニュー](./media/view-recommendations/activate-postponed.png)
 
-1. カテゴリを選択して、**[延期]** および **[却下]** の推奨事項を表示します。
+1. カテゴリを選択して、 **[延期]** および **[却下]** の推奨事項を表示します。
 
 1. 推奨事項の一覧にある推奨事項を選択します。 これにより、あらかじめ選択されている **[延期と却下]** タブで推奨事項が開いて、この推奨事項が延期または却下されたリソースが表示されます。
 
@@ -87,7 +83,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
  
      ![Advisor のフィルター メニュー](./media/view-recommendations/activate-postponed-2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Advisor で重要な推奨事項を表示する方法について説明します。 Advisor の詳細については、次を参照してください。 
 

@@ -1,22 +1,36 @@
 ---
-title: Microsoft Azure Data Box Disk にデータをコピーする | Microsoft Docs
+title: Azure Data Box Disk にデータをコピーするチュートリアル | Microsoft Docs
 description: このチュートリアルでは、Azure Data Box Disk にデータをコピーする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 418b158b127a688314fb3a0a506d116cc27da98c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.localizationpriority: high
+ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678498"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214328"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Azure Data Box Disk にデータをコピーして検証する
+
+ディスクが接続され、ロックが解除されたら、ソース データ サーバーからディスクにデータをコピーできます。 データのコピーが完了した後は、データを検証して、Azure へのアップロードが正常に行われることを確認する必要があります。
+
+::: zone-end
+
+::: zone target="docs"
 
 このチュートリアルでは、ホスト コンピューターからデータをコピーして、データ整合性を確認するためのチェックサムを生成する方法について説明します。
 
@@ -31,7 +45,7 @@ ms.locfileid: "59678498"
 開始する前に次の点を確認します。
 - [チュートリアル:Azure Data Box Disk のインストールと構成](data-box-disk-deploy-set-up.md)を完了していること。
 - ディスクは、ロックが解除されてクライアント コンピューターに接続されます。
-- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)が実行されている必要があります。
+- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されている必要があります。
 - データのための目的のストレージの種類が、[サポートされるストレージの種類](data-box-disk-system-requirements.md#supported-storage-types-for-upload)と一致することを確認します。
 - [Azure オブジェクトのサイズ制限におけるマネージド ディスク制限](data-box-disk-limits.md#azure-object-size-limits)を確認します。
 
@@ -88,7 +102,7 @@ ms.locfileid: "59678498"
     
     |パラメーター/オプション  |説明 |
     |--------------------|------------|
-    |ソース            | コピー元ディレクトリのパスを指定します。        |
+    |source            | コピー元ディレクトリのパスを指定します。        |
     |宛先       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
@@ -173,7 +187,7 @@ ms.locfileid: "59678498"
     |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
     |    Data Box Disk        |    4 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |
     
-    *"*各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。*"
+    **各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。* "
     
     >[!NOTE]
     > 上記で推奨されているパラメーターは、社内テストで使用された環境に基づいています。
@@ -217,7 +231,7 @@ ms.locfileid: "59678498"
 
      ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. ファイル形式を検証するには、`JSONlint` に移動します。 ファイルを `ConfigFile.json`という名前で保存します。 
+6. ファイル形式を検証するには、`JSONlint` に移動します。 このファイルを `ConfigFile.json` として保存します。 
 
      ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
@@ -250,6 +264,8 @@ ms.locfileid: "59678498"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+分割コピー ツールの使用中にエラーが発生した場合は、[分割コピー ツールのエラーのトラブルシューティングを行う](data-box-disk-troubleshoot-data-copy.md)方法をご覧ください。
+
 データのコピーが完了した後、お客様のデータの検証に進むことができます。 分割コピー ツールを使用した場合は、検証をスキップして (分割コピー ツールで検証も行われます)、次のチュートリアルに進んでください。
 
 
@@ -271,7 +287,9 @@ ms.locfileid: "59678498"
 
 3. 複数のディスクを使用している場合は、ディスクごとにコマンドを実行します。
 
-## <a name="next-steps"></a>次の手順
+検証中にエラーが発生した場合は、[検証エラーのトラブルシューティング](data-box-disk-troubleshoot.md)に関する記事を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Data Box Disk に関する次のようなトピックについて説明しました。
 
@@ -283,3 +301,40 @@ ms.locfileid: "59678498"
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に返送する](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+### <a name="copy-data-to-disks"></a>ディスクにデータをコピーする
+
+ご利用のコンピューターから Data Box Disk に接続してデータをコピーするには、次の手順に従います。
+
+1. ロックを解除したドライブの内容を表示します。 ドライブの事前に作成されたフォルダーとサブフォルダーのリストは、Data Box Disk の注文時に選択したオプションによって異なります。
+2. 適切なデータ形式に対応するフォルダーにデータをコピーします。 たとえば、非構造化データを *BlockBlob* フォルダーのフォルダーに、VHD または VHDX データを *PageBlob* フォルダーに、ファイルを *AzureFile* にコピーします。 データ形式が適切なフォルダー (ストレージの種類) と一致しない場合、後続の手順で、Azure へのデータのアップロードに失敗します。
+
+    - すべてのコンテナー、BLOB、およびファイルが、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)および [Azure オブジェクトのサイズ制限](data-box-disk-limits.md#azure-object-size-limits)に準拠していることを確認してください。 これらの規則および制限に従っていない場合、Azure へのデータのアップロードに失敗します。     
+    - 注文で保管先の 1 つとしてマネージド ディスクがある場合は、[マネージド ディスク](data-box-disk-limits.md#managed-disk-naming-conventions)の命名規則を参照してください。
+    - Azure Storage アカウントには、BlockBlob フォルダー下および PageBlob フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 *BlockBlob* フォルダーの下のファイルと *PageBlob* フォルダーの下のファイルはすべて、Azure Storage アカウントの既定のコンテナー $root にコピーされます。 $root コンテナー内のファイルは、常にブロック BLOB としてアップロードされます。
+    - *AzureFile* フォルダー内にサブフォルダーを作成します。 このサブフォルダーは、クラウド内のファイル共有にマップされます。 そのサブフォルダーにファイルをコピーします。 *AzureFile* フォルダーに直接コピーされたファイルは失敗し、ブロック BLOB としてアップロードされます。
+    - ルート ディレクトリにファイルやフォルダーが存在する場合は、それらを別のフォルダーに移動してからデータのコピーを開始してください。
+
+3. データをコピーするには、エクスプローラーでのドラッグ アンド ドロップや、Robocopy などの SMB 互換ファイル コピー ツールを使用します。 次のコマンドを使用すると、複数のコピー ジョブを開始することができます。
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにログ ファイルをダウンロードしてください。 ログ ファイルは、robocopy コマンドで指定した場所に格納されます。
+
+複数のディスクを使用しており、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合は、[分割とコピー](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks)のオプションの手順を使用できます。
+
+### <a name="validate-data"></a>データの検証
+
+次の手順に従って、データを検証します。
+
+1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。
+2. オプション 2 を使用して、ファイルを検証し、チェックサムを生成します。 データのサイズによっては、この手順にしばらく時間がかかることがあります。 検証とチェックサムの生成の間にエラーが発生した場合は、通知が表示され、エラー ログへのリンクも提供されます。
+
+    データ検証の詳細については、「[データの検証](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)」を参照してください。 検証中にエラーが発生する場合は、[検証エラーのトラブルシューティング](data-box-disk-troubleshoot.md)に関する記事を参照してください。
+
+::: zone-end

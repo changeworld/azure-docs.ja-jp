@@ -1,26 +1,25 @@
 ---
-title: Service Fabric CLI スクリプト サンプル - クラスター上のアプリケーションを列挙する
+title: sfctl でクラスター上のアプリケーションを一覧表示する
 description: Service Fabric CLI スクリプト サンプル - Service Fabric クラスターにプロビジョニングされているアプリケーションを列挙します。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 04/13/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: 8fd83190f3cf92ef0f88ff0fb2a807e03199a5c1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 41685e53eb0915f54bdc2d678191e5b767990dde
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670287"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75610269"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Service Fabric クラスターで実行されているアプリケーションを列挙する
 
@@ -32,7 +31,7 @@ ms.locfileid: "58670287"
 
 [!code-sh[main](../../../cli_scripts/service-fabric/list-application/list-application.sh "List provisioned applications from a cluster")]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Service Fabric CLI ドキュメント](../service-fabric-cli.md)をご覧ください。
 

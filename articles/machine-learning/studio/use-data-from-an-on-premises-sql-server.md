@@ -1,27 +1,29 @@
 ---
 title: オンプレミスの SQL Server
-titleSuffix: Azure Machine Learning Studio
-description: オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning Studio で高度な分析を実行します。
+titleSuffix: ML Studio (classic) - Azure
+description: オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning Studio (クラシック) で高度な分析を実行します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888350"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204184"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースを使用して Azure Machine Learning Studio で分析を実行する
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する
 
-多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio は、現在、オンプレミスの SQL Server データベースからのデータの読み取りと、そのデータによるモデルのトレーニングおよびスコア付けをサポートしています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのためにオンプレミス SQL Server データベースから直接読み取ることができます。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-この記事では、オンプレミスの SQL サーバー データを Azure Machine Learning Studio で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Studio の概念を理解していることが前提となっています。
+多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、オンプレミスの SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのためにオンプレミス SQL Server データベースから直接読み取ることができます。
+
+この記事では、オンプレミスの SQL サーバー データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Studio (クラシック) の概念を理解していることが前提となっています。
 
 > [!NOTE]
 > この機能は、無料のワークスペースでは使用できません。 Machine Learning の価格とレベルの詳細については、 [Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページを参照してください。
@@ -33,7 +35,7 @@ ms.locfileid: "57888350"
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Data Factory セルフホステッド統合ランタイムをインストールする
-Azure Machine Learning Studio でオンプレミス SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio で接続を構成するときに、後で説明する **[Download and register data gateway]\(データ ゲートウェイのダウンロードと登録\)** ダイアログを使用して、統合ランタイム (IR) をダウンロードおよびインストールできます。
+Azure Machine Learning Studio (クラシック) でオンプレミス SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio (クラシック) で接続を構成するときに、後で説明する **[データ ゲートウェイをダウンロードして登録]** ダイアログを使用して、統合ランタイム (IR) をダウンロードしてインストールできます。
 
 
 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行することにより、IR を事前にインストールすることもできます。MSI を使うと、すべての設定を保持したまま、既存の IR を最新バージョンにアップグレードすることもできます。
@@ -54,17 +56,17 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 * 一度に 1 つだけのワークスペースに対して、IR を構成します。 現在、複数のワークスペースで IR を共有することはできません。
 * 1 つのワークスペースに対して複数の IR を構成することはできます。 たとえば、開発中はテスト データ ソースに接続されている IR を使用し、運用の準備ができたら運用 IR を使用したい場合があります。
 * IR はデータ ソースと同じコンピューター上に存在する必要はありませんが、 データ ソースの近くにあると、ゲートウェイがデータ ソースに接続するときの時間が短縮されます。 IR とデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターに IR をインストールすることをお勧めします。
-* Power BI または Azure Data Factory のシナリオを提供する IR がコンピューターに既にインストールされている場合は、Azure Machine Learning Studio 用の IR を別のコンピューターにインストールしてください。
+* Power BI または Azure Data Factory のシナリオを提供する IR がコンピューターに既にインストールされている場合は、Azure Machine Learning Studio (クラシック) 用の IR を別のコンピューターにインストールしてください。
 
   > [!NOTE]
   > Data Factory セルフホステッド統合ランタイムと Power BI Gateway を同じコンピューターで実行することはできません。
   >
   >
-* 他のデータ用に Azure ExpressRoute を使用している場合でも、Azure Machine Learning Studio 用に Data Factory セルフホステッド統合ランタイムを使用する必要があります。 ExpressRouteを使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱う必要があります。 Data Factory セルフホステッド統合ランタイムを使用して、Machine Learning とデータ ソースの間の接続を確立します。
+* 他のデータ用に Azure ExpressRoute を使用している場合でも、Azure Machine Learning Studio (クラシック) 用に Data Factory セルフホステッド統合ランタイムを使用する必要があります。 ExpressRouteを使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱う必要があります。 Data Factory セルフホステッド統合ランタイムを使用して、Machine Learning とデータ ソースの間の接続を確立します。
 
 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Azure Data Factory の統合ランタイム](../../data-factory/concepts-integration-runtime.md)」をご覧ください。
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-idtoc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>オンプレミスの SQL Server データベースから Azure Machine Learning にデータを受信する
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>オンプレミスの SQL Server データベースから Azure Machine Learning にデータを受信する
 このチュートリアルでは、Azure Machine Learning ワークスペースに Azure Data Factory Integration Runtime を設定して構成し、オンプレミスの SQL Server データベースからデータを読み取ります。
 
 > [!TIP]
@@ -76,7 +78,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 ### <a name="step-1-create-a-gateway"></a>手順 1:ゲートウェイを作成する
 最初の手順は、オンプレミス SQL データベースにアクセスするゲートウェイを作成し、セットアップすることです。
 
-1. [Azure Machine Learning Studio](https://studio.azureml.net/Home/) にログインし、作業するワークスペースを選択します。
+1. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/Home/) にログインし、作業するワークスペースを選択します。
 2. 左側の **[設定]** ブレードをクリックし、上部の **[データ ゲートウェイ]** タブをクリックします。
 3. 画面の下部の **[新しいデータ ゲートウェイ]** をクリックします。
 
@@ -88,9 +90,9 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 
     ![データ ゲートウェイをダウンロードして登録](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」という記事の冒頭のセクションを参照してください。
-7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
-8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
-9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、**[登録]** をクリックします。
+7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、 **[登録]** をクリックします。
+8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、 **[OK]** をクリックします。
+9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、 **[登録]** をクリックします。
 
     ![ゲートウェイを登録](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. Microsoft Data Management Gateway 構成マネージャーの **[ホーム]** タブで以下の値が設定されていれば、ゲートウェイの構成は完了です。
@@ -102,7 +104,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 
       ![Data Management Gateway マネージャー](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-      登録が正常に完了すると、Azure Machine Learning Studio も更新されます。
+      登録が正常に完了すると、Azure Machine Learning Studio (クラシック) も更新されます。
 
     ![ゲートウェイ登録が成功](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
 11. **[Download and register data gateway (データ ゲートウェイのダウンロードと登録)]** ダイアログで、セットアップを完了するチェック マークをクリックします。 **[設定]** ページに、ゲートウェイの状態が "オンライン" として表示されます。 右側のウィンドウには、状態とその他の有益な情報が表示されます。
@@ -111,21 +113,21 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 12. Microsoft Data Management Gateway 構成マネージャーで、 **[証明書]** タブに切り替えます。このタブで指定された証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号解除に使用されます。 この証明書は、既定の証明書です。 これを、証明書管理システムにバックアップする独自の証明書に変更することをお勧めします。 代わりに独自の証明書を使用する場合は、 **[変更]** をクリックします。
 
     ![ゲートウェイ証明書を変更](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (省略可能) ゲートウェイの問題をトラブルシューティングするために詳細ログを有効にする場合は、Microsoft Data Management Gateway 構成マネージャーで **[診断]** タブに切り替え、**[トラブルシューティングができるように詳細なログ記録を有効にします]** オプションをオンにします。 ログ情報については、Windows イベント ビューアーで **[アプリケーションとサービス ログ]** -&gt;**[Data Management Gateway]** ノードの下を参照してください。 **[診断]** タブを使用すると、ゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストすることもできます。
+13. (省略可能) ゲートウェイの問題をトラブルシューティングするために詳細ログを有効にする場合は、Microsoft Data Management Gateway 構成マネージャーで **[診断]** タブに切り替え、 **[トラブルシューティングができるように詳細なログ記録を有効にします]** オプションをオンにします。 ログ情報については、Windows イベント ビューアーで **[アプリケーションとサービス ログ]**  -&gt; **[Data Management Gateway]** ノードの下を参照してください。 **[診断]** タブを使用すると、ゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストすることもできます。
 
     ![詳細ログ記録を有効化](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-これで、Azure Machine Learning Studio でのゲートウェイのセットアップ作業が完了しました。
+これで、Azure Machine Learning Studio (クラシック) でのゲートウェイのセットアップ作業が完了しました。
 オンプレミス データを使用する準備ができました。
 
-Studio で各ワークスペースに対して複数のゲートウェイを作成し、セットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning Studio では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」を参照してください。
+Studio (クラシック) で各ワークスペースに対して複数のゲートウェイを作成してセットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning Studio (クラシック) では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」を参照してください。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2:ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
 ゲートウェイをセットアップした後は、オンプレミス SQL Server データベースからデータを入力する実験に **データのインポート** モジュールを追加できます。
 
-1. Machine Learning Studio で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、**[Blank Experiment (空白の実験)]** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。
+1. Machine Learning Studio (クラシック) で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、 **[Blank Experiment]\(空の実験\)** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。
 2. **データのインポート** モジュールを見つけて、実験キャンバスにドラッグします。
-3. キャンバスの下にある **[名前を付けて保存]** をクリックします。 実験名として「Azure Machine Learning Studio オンプレミス SQL Server チュートリアル」と入力し、ワークスペースを選択して **OK** チェック マークをクリックします。
+3. キャンバスの下にある **[名前を付けて保存]** をクリックします。 実験名として「Azure Machine Learning Studio (クラシック) オンプレミス SQL Server チュートリアル」と入力し、ワークスペースを選択して **[OK]** チェック マークをクリックします。
 
    ![新しい名前で実験を保存](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
 4. **データのインポート** モジュールをクリックして選択し、キャンバスの右側の **[プロパティ]** ウィンドウにある **[データ ソース]** ドロップダウン リストで "オンプレミス SQL データベース" を選択します。
@@ -137,11 +139,11 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
 
    ![データベースの資格情報を入力](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   "値が必要" というメッセージが "値が設定された" に変わり、緑色のチェック マークが付きます。 データベース情報やパスワードが変更されない限り、資格情報の入力は 1 度だけ必要です。 Azure Machine Learning Studio は、ゲートウェイがインストールされたときに指定された証明書を使用して、クラウド内の資格情報を暗号化します。 Azure では、オンプレミスの資格情報を暗号化せずに保存することはありません。
+   "値が必要" というメッセージが "値が設定された" に変わり、緑色のチェック マークが付きます。 データベース情報やパスワードが変更されない限り、資格情報の入力は 1 度だけ必要です。 Azure Machine Learning Studio (クラシック) は、ゲートウェイがインストールされたときに指定された証明書を使用して、クラウド内の資格情報を暗号化します。 Azure では、オンプレミスの資格情報を暗号化せずに保存することはありません。
 
    ![データのインポート モジュールのプロパティ](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. **[実行]** をクリックして、実験を実行します。
 
-実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、**[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
+実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。

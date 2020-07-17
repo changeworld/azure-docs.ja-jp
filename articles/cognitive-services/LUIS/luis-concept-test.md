@@ -1,6 +1,6 @@
 ---
 title: LUIS アプリのテスト
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 02c079e9cda88c969e5382b2c70c551cf9a88e14
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73486687"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
 テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。 
 
-LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactive-test.md)することも、発話の[バッチ](luis-concept-batch-test.md)を提供することもできます。 テストを使用して、現在の[アクティブ](luis-concept-version.md#active-version) モデルを、公開済みのモデルと比較します。 
+LUIS で、対話的に一度に 1 つずつ発話をテストすることも、発話のバッチを提供することもできます。 テスト中に、現在のアクティブ モデルの予測応答と、発行済みのモデルの予測応答を比較できます。 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
@@ -32,7 +32,7 @@ LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactiv
 予測スコアの詳細については、「[予測スコア](luis-concept-prediction-score.md)」の概念を参照してください。
 
 ## <a name="interactive-testing"></a>対話型テスト
-対話型テストは、Web サイトの **[Test]\(テスト\)** パネルから実行します。 発話を入力すると、意図とエンティティがどのように識別され、スコア付けされるかを確認することができます。 テスト ウィンドウで発話の意図とエンティティが期待どおりに予測されない場合、LUIS によってその発話が新しい発話として **[Intent]\(意図\)** ページにコピーされます。 次に、その発話の部分にラベルを付け、LUIS をトレーニングします。 
+対話型テストは、LUIS ポータルの **[Test]\(テスト\)** パネルから実行します。 発話を入力すると、意図とエンティティがどのように識別され、スコア付けされるかを確認することができます。 テスト パネルで発話の意図とエンティティが期待どおりに予測されない場合、LUIS によってその発話が新しい発話として **[Intent]\(意図\)** ページにコピーされます。 次に、エンティティのその発話の部分にラベルを付け、LUIS をトレーニングします。 
 
 ## <a name="batch-testing"></a>バッチ テスト
 一度に複数の発話をテストする場合は、[バッチ テスト](luis-concept-batch-test.md)に関するページを参照してください。
@@ -46,18 +46,16 @@ LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactiv
 エンドポイントに対してテストを実行し、発話をログに記録したくない場合は、必ず `logging=false` クエリ文字列構成を使用してください。
 
 ## <a name="where-to-find-utterances"></a>発話の検索場所
-LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、[LUIS](luis-reference-regions.md) Web サイトの **[アプリ]** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) で使用したりできます。 
+LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、LUIS ポータルの **[Apps]\(アプリ\)** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) で使用したりできます。 
 
 LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) Web サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endpoint-utterances.md)** ページに一覧表示されます。 
 
-![エンドポイントの発言の確認](./media/luis-concept-test/review-endpoint-utterances.png)
- 
 ## <a name="remember-to-train"></a>必ずトレーニングする
 モデルに変更を加えた後は、必ず LUIS を[トレーニング](luis-how-to-train.md)します。 LUIS アプリへの変更は、アプリをトレーニングするまで、テストで表示されません。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 [ベスト プラクティス](luis-concept-best-practices.md)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 発話の[テスト](luis-interactive-test.md)の詳細について確認します。

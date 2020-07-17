@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3778ec2fac13aee29ce361402a535ca70fd56c33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75750682"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>診断設定を使用してログ記録を有効にする
 
@@ -37,7 +37,7 @@ ms.locfileid: "66146319"
 
 6. 監視する操作を選択し、それらの操作のログを有効にします。 診断設定では、次の操作をレポートできます。
 
-   * Connections
+   * 接続
    * デバイス テレメトリ
    * クラウドからデバイスへのメッセージ
    * デバイス ID の操作
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断設定]** ブレードに表示されます。 診断の構成の詳細については、「[Azure リソースからのログ データの収集と使用](../articles/azure-monitor/platform/diagnostic-logs-overview.md)」を参照してください。
+新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断設定]** ブレードに表示されます。 診断の構成の詳細については、「[Azure リソースからのログ データの収集と使用](../articles/azure-monitor/platform/platform-logs-overview.md)」を参照してください。

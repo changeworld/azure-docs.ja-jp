@@ -1,27 +1,18 @@
 ---
-title: データ ディスクを Linux VM に接続する | Microsoft Docs
+title: データ ディスクを Linux VM に接続する
 description: ポータルを利用し、新しいデータ ディスクまたは既存のデータ ディスクを Linux VM に接続します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327961"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774193"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -34,22 +25,21 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューで **[仮想マシン]** をクリックします。
-3. 一覧から仮想マシンを選択します。
-4. [仮想マシン] ページにアクセスし、**[要点]** にある **[ディスク]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) にアクセスして VM を検索します。 **[仮想マシン]** を検索して選択します。
+2. 一覧から VM を選択します。
+3. **[仮想マシン]** ページのサイドバーの **[設定]** で、 **[ディスク]** を選択します。
    
     ![ディスク設定を開く](./media/attach-disk-portal/find-disk-settings.png)
 
 
 ## <a name="attach-a-new-disk"></a>新しいディスクの接続
 
-1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
-2. **[名前]** のドロップダウン メニューをクリックして、**[ディスクの作成]** を選択します。
+1. **[ディスク]** ウィンドウで、 **[+ データ ディスクの追加]** をクリックします。
+2. **[名前]** のドロップダウン メニューをクリックして、 **[ディスクの作成]** を選択します。
 
     ![Azure マネージド ディスクの作成](./media/attach-disk-portal/create-new-md.png)
 
-3. マネージド ディスクの名前を入力します。 既定の設定を確認し、必要に応じて更新して、**[作成]** をクリックします。
+3. マネージド ディスクの名前を入力します。 既定の設定を確認し、必要に応じて更新して、 **[作成]** をクリックします。
    
    ![ディスク設定を確認する](./media/attach-disk-portal/create-new-md-settings.png)
 
@@ -62,7 +52,7 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
    ![リソース グループの Azure Managed Disk](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>既存のディスクの接続
-1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
+1. **[ディスク]** ウィンドウで、 **[+ データ ディスクの追加]** をクリックします。
 2. **[名前]** のドロップダウン メニューをクリックして、Azure サブスクリプションにアクセスできる既存のマネージド ディスク一覧を確認します。 接続するマネージド ディスクを選択します。
 
    ![既存の Azure Managed Disk の接続](./media/attach-disk-portal/select-existing-md.png)
@@ -100,6 +90,9 @@ dmesg | grep SCSI
 
 ### <a name="partition-a-new-disk"></a>新しいディスクのパーティション分割
 データを含む既存のディスクを使用する場合、ディスクのマウントをスキップします。 新規ディスクをアタッチする場合、ディスクをパーティション分割する必要があります。
+
+> [!NOTE]
+> ご使用のディストリビューションで利用できる最新バージョンの fdisk または parted を使用することをお勧めします。
 
 `fdisk` を使用してディスクをパーティション分割します。 ディスクのサイズが 2 テビバイト (TiB) 以上であり GPT パーティション分割を使用する必要がある場合、`parted` を使用して GPT パーティション分割を実行できます。 ディスクのサイズが 2TiB 未満の場合、MBR または GPT どちらかのパーティション分割を使用できます。 それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 
@@ -181,14 +174,24 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>parted を使用する別の方法
+fdisk ユーティリティでは対話式で入力が必要なため、自動化スクリプト内での使用には適していません。 ただし、[parted](https://www.gnu.org/software/parted/) ユーティリティはスクリプト化できるため、自動化のシナリオに適しています。 parted ユーティリティを使用して、データ ディスクのパーティション分割とフォーマットを行うことができます。 以下のチュートリアルでは、新しいデータ ディスクである /dev/sdc を使用し、[XFS](https://xfs.wiki.kernel.org/) ファイルシステムを使用してそれをフォーマットします。
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
+partprobe /dev/sdc1
+```
+前述のように、[partprobe](https://linux.die.net/man/8/partprobe) ユーティリティを使用して、カーネルが新しいパーティションとファイルシステムをすぐに認識できるようにしています。 partprobe を使用しないと、blkid または lslbk コマンドで、新しいファイルシステムの UUID がすぐに返されない可能性があります。
+
 ### <a name="mount-the-disk"></a>ディスクのマウント
-`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、*/datadrive* にディレクトリを作成します。
+`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、 */datadrive* にディレクトリを作成します。
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-`mount` を使用して、ファイル システムをマウントします。 次の例では、*/dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
+`mount` を使用して、ファイル システムをマウントします。 次の例では、 */dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -222,7 +225,7 @@ sudo vi /etc/fstab
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-
+完了したら、 */etc/fstab* ファイルを保存し、システムを再起動します。
 > [!NOTE]
 > この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。 ほとんどのディストリビューションでは、*nofail* または *nobootwait* fstab オプションが提供されています。 これにより起動時にディスクのマウントが失敗しても、システムを起動できます。 これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 > 
@@ -254,5 +257,5 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
     sudo fstrim /datadrive
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure CLI を利用し、[データ ディスクを接続する](add-disk.md)こともできます。

@@ -1,26 +1,26 @@
 ---
-title: イベント データを SQL Data Warehouse に移行する - Azure Event Hubs | Microsoft Docs
-description: このチュートリアルでは、Event Grid によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
+title: チュートリアル:イベント データを SQL Data Warehouse に移行する - Azure Event Hubs
+description: チュートリアル:このチュートリアルでは、Event Grid によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604302"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80130848"
 ---
-# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>チュートリアル:Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) は、Event Hubs のストリーミング データを Azure Blob Storage アカウントまたは Azure Data Lake Store に自動的に配信するもっとも簡単な方法です。 その後、データを処理して、SQL Data Warehouse や Cosmos DB などの選択した他の宛先ストレージに配信できます。 このチュートリアルでは、[Event Grid](https://docs.microsoft.com/azure/event-grid/overview) によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
 
-![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
+![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
 *   最初に、**Capture** 機能が有効なイベント ハブを作成し、宛先として Azure Blob Storage を設定します。 WindTurbineGenerator によって生成されたデータがイベント ハブにストリーミングされ、Avro ファイルとして Azure Storage に自動的にキャプチャされます。 
 *   次に、Azure Event Grid サブスクリプションで、ソースとしての Event Hubs 名前空間とその宛先としての Azure 関数のエンドポイントを作成します。
@@ -39,10 +39,12 @@ Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capt
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs/)。 インストール時に、次のワークロードがインストールされることを確認します。.NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発。
-- [Git サンプルのダウンロード](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 サンプル ソリューションには、次のコンポーネントが含まれます。
+- [Visual Studio 2019](https://www.visualstudio.com/vs/)。 インストール時に、次のワークロードがインストールされることを確認します。.NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発
+- [Git サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)をダウンロードします。サンプル ソリューションには、次のコンポーネントが含まれます。
     - *WindTurbineDataGenerator* – 風力タービンのサンプル データを Capture が有効なイベント ハブに送信する単純な発行元。
     - *FunctionDWDumper* – Azure Blob Storage に Avro ファイルがキャプチャされたときに、Event Grid の通知を受信する Azure 関数。 BLOB の URI パスを受信し、その内容を読み取り、データを SQL Data Warehouse にプッシュします。
+
+    このサンプルには、最新の Azure.Messaging.EventHubs パッケージが使用されています。 Microsoft.Azure.EventHubs パッケージを使用した以前のサンプルは、[こちら](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)で確認できます。 
 
 ### <a name="deploy-the-infrastructure"></a>インフラストラクチャをデプロイする
 このチュートリアルで必要なインフラストラクチャをデプロイするには、Azure PowerShell または Azure CLI でこちらの[Azure Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json)を使用します。 このテンプレートでは、次のリソースを作成します。
@@ -74,9 +76,9 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 ```azurecli-interactive
 az group create -l westus -n rgDataMigrationSample
 
-az group deployment create \
-  --resource-group rgDataMigrationSample \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
+az group deployment create `
+  --resource-group rgDataMigrationSample `
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json `
   --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
 ```
 
@@ -91,7 +93,7 @@ New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri ht
 
 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Data Warehouse でテーブルを作成する 
-[Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../sql-data-warehouse/sql-data-warehouse-query-ssms.md)、またはポータルのクエリ エディターを使用して [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、SQL Data Warehouse 内にテーブルを作成します。 
+[Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md)、またはポータルのクエリ エディターを使用して [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、SQL Data Warehouse 内にテーブルを作成します。 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -139,9 +141,9 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. **Event Grid サブスクリプションの追加**を選択します。
 
-   ![[サブスクリプションの追加]](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
+   ![サブスクリプションを追加する](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **作成** を選択します。
+1. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **［作成］** を選択します
 
    ![サブスクリプションの作成](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
@@ -174,7 +176,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ## <a name="verify-captured-data-in-data-warehouse"></a>Data Warehouse 内にキャプチャされたデータを確認する
 数分後に、SQL Data Warehouse 内のテーブルのクエリを実行します。 WindTurbineDataGenerator によって生成されたデータがイベント ハブにストリーミングされ、Azure Storage コンテナーにキャプチャされた後、Azure 関数によって SQL Data Warehouse テーブルに移行していることを確認します。  
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 Data Warehouse で強力なデータ視覚化ツールを使用して、実用的な分析情報を取得できます。
 
 [SQL Data Warehouse での Power BI の使用方法](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)に関する記事を参照してください。

@@ -1,22 +1,14 @@
 ---
-title: Azure Application Insights による Batch の監視 | Microsoft docs
+title: Azure Application Insights で Batch を監視する
 description: Azure Application Insights ライブラリを使用して Azure Batch .NET アプリケーションをインストルメント化する方法を説明します。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: .NET
-ms.topic: article
-ms.workload: na
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473464"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723614"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
@@ -31,13 +23,13 @@ ms.locfileid: "55473464"
 >
 
 ## <a name="prerequisites"></a>前提条件
-* [Visual Studio 2017](https://www.visualstudio.com/vs)
+* [Visual Studio 2017 以降](https://www.visualstudio.com/vs)
 
 * [Batch アカウントおよびリンクされたストレージ アカウント](batch-account-create-portal.md)
 
 * [Application Insights リソース](../azure-monitor/app/create-new-resource.md )
   
-   * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 "*一般的*" な**アプリケーションの種類**を選択します。
+   * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 **[アプリケーションの種類]** として *[全般]* を選択します。
 
    * ポータルから[インストルメンテーション キー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
   
@@ -265,13 +257,13 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 ### <a name="view-live-stream-data"></a>ライブ ストリーム データの表示
 
-Application Insights リソースのトレース ログを表示するには、**[ライブ ストリーム]** をクリックします。 次のスクリーンショットは、コンピューティング ノードあたりの CPU 使用率など、プール内のコンピューティング ノードから取得したライブ データを表示する方法を示しています。
+Application Insights リソースのトレース ログを表示するには、 **[ライブ ストリーム]** をクリックします。 次のスクリーンショットは、コンピューティング ノードあたりの CPU 使用率など、プール内のコンピューティング ノードから取得したライブ データを表示する方法を示しています。
 
 ![ライブ ストリーム コンピューティング ノード データ](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>トレース ログの表示
 
-Application Insights リソースのトレース ログを表示するには、**[検索]** をクリックします。 このビューには、トレース、イベント、例外など、Application Insights によってキャプチャされた診断データの一覧が表示されます。 
+Application Insights リソースのトレース ログを表示するには、 **[検索]** をクリックします。 このビューには、トレース、イベント、例外など、Application Insights によってキャプチャされた診断データの一覧が表示されます。 
 
 次のスクリーンショットは、タスクの 1 つのトレースがどのようにログに記録され、その後デバッグを目的としたクエリがどのように実行されるかを示しています。
 
@@ -288,13 +280,13 @@ Application Insights リソースのトレース ログを表示するには、*
 カスタム メトリックも、ポータルの重要なツールです。 たとえば、各コンピューティング ノードが処理する必須テキスト ファイルのダウンロードに要した平均時間を表示できます。
 
 サンプル グラフを作成するには:
-1. Application Insights リソースで、**[メトリックス エクスプローラー]** > **[グラフの追加]** をクリックします。
+1. Application Insights リソースで、 **[メトリックス エクスプローラー]**  >  **[グラフの追加]** をクリックします。
 2. 追加されたグラフで **[編集]** をクリックします。
 2. グラフの詳細を次のように更新します。
    * **[グラフの種類]** を **[グリッド]** に設定します。
    * **[集計]** を **[平均]** に設定します。
    * **[グループ化]** を **[NodeId]** に設定します。
-   * **[メトリック]** で、**[カスタム]** > **[Blob download in seconds]\(秒単位の BLOB ダウンロード\)** を選択します。
+   * **[メトリック]** で、 **[カスタム]**  >  **[Blob download in seconds]\(秒単位の BLOB ダウンロード\)** を選択します。
    * **[カラー パレット]** の表示を任意に調整します。 
 
 ![ノードあたりの BLOB ダウンロード時間](./media/monitor-application-insights/blobdownloadtime.png)
@@ -341,7 +333,7 @@ pool.StartTask = new StartTask()
 運用環境で実行される Azure Batch アプリケーションは大規模となる性質があるため、コストを管理するために Application Insights によって収集されるデータ量を制限することが必要な場合があります。 これを実現するいくつかのメカニズムについては、「[Application Insights におけるサンプリング](../azure-monitor/app/sampling.md)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Application Insights](../azure-monitor/app/app-insights-overview.md) についてさらに学習します。
 
 * 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../azure-monitor/app/platforms.md)をご覧ください。

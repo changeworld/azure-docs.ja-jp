@@ -3,9 +3,8 @@ title: Azure Security Center を使用してセキュリティ体制を強化す
 description: この記事は、Azure Security Center でリソースを監視することによってセキュリティ体制を強化するのに役立ちます。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: memildin
+ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77603775"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Security Center を使用してセキュリティ体制を強化する
 この記事は、セキュリティ体制を強化するために役立ちます。 リソースのセキュリティを可能な限り厳密にしたり、ポリシーへの準拠を監視したりするには、Azure Security Center の監視機能を使用します。
@@ -35,7 +34,7 @@ ms.locfileid: "56112259"
 - 仮想マシン、ネットワーク セキュリティ グループ、エンドポイントなど、ネットワーク リソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)」を参照してください。 
 - SQL サーバーやストレージ アカウントなど、データとストレージ リソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center での Azure SQL サービスとデータの保護](security-center-sql-service-recommendations.md)」を参照してください。 
 - MFA やアカウント アクセス許可など、ID やアクセスのリソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)」を参照してください。 
-- リソースへの Just in Time アクセスを監視する方法については、「[Just in Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。 
+- リソースへの Just-In-Time アクセスを監視する方法については、「[Just-In-Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。 
 
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
@@ -46,11 +45,9 @@ ms.locfileid: "56112259"
 
 
 
-## <a name="see-also"></a>関連項目
-この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
+## <a name="see-also"></a>参照
+この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure Security Center の詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md): Azure Security Center でセキュリティ設定を構成する方法について説明します。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* 「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」: Azure Security Center でセキュリティ設定を構成する方法について説明します。
+* 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」: セキュリティの警告の管理と対応の方法について説明しています。
+* 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」: パートナー ソリューションの正常性状態を監視する方法について説明しています。

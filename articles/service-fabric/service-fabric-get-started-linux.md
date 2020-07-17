@@ -1,25 +1,14 @@
 ---
-title: Linux での開発環境の設定 | Microsoft Docs
+title: Linux 上に開発環境をセットアップする
 description: Linux にランタイムと SDK をインストールし、ローカル開発クラスターを作成します。 このセットアップが終わると、アプリケーションを構築する準備は完了です。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470244"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193413"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -31,7 +20,7 @@ ms.locfileid: "65470244"
 
 Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
 
-この記事の手順では、Linux にネイティブにインストールするか、Service Fabric OneBox コンテナー イメージ (`microsoft/service-fabric-onebox`) を使うことを想定しています。
+この記事の手順では、Linux にネイティブにインストールするか、Service Fabric OneBox コンテナー イメージ (`mcr.microsoft.com/service-fabric/onebox:latest`) を使うことを想定しています。
 
 Service Fabric のランタイムと SDK を Windows Subsystem for Linux にインストールすることはサポートされません。 Azure Service Fabric コマンド ライン インターフェイス (CLI) を使用して、クラウドやオンプレミスでホストされた Service Fabric のエンティティを管理することができ、これはサポートされています。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
 
@@ -87,8 +76,7 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 4. 新しい Gnu Privacy Guard (GnuPG または GPG) キーを APT キーリングに追加します。
 
     ```bash
-    sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
 5. 公式の Docker GPG キーを APT キーリングに追加します。
@@ -107,8 +95,8 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 7. Azul JDK キーを APT キーリングに追加し、そのリポジトリを設定します。
 
     ```bash
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
-    sudo apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
 8. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
@@ -191,7 +179,7 @@ RHEL | - | OpenJDK 1.8 | npm から暗黙的に | latest |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Web ブラウザーを開いて､[Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
+2. Web ブラウザーを開いて､**Service Fabric Explorer** (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
 
     ![Service Fabric Explorer on Linux][sfx-linux]
 
@@ -216,7 +204,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 1. マシンに Node.js と npm をインストールします。
 
     ```bash
-    sudo apt-add-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
+    sudo add-apt-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
     sudo apt-get update
     sudo apt-get install nodejs
     ```
@@ -273,21 +261,21 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 > 
 > Ubuntu では、パッケージ インストーラー (`apt` または `apt-get`) を使用するのではなく、Eclipse サイトから直接インストールすることをお勧めします。 そうすることで、Eclipse の最新バージョンを確実に入手することができます。 Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers をインストールできます。
 
-1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[ヘルプ]** > **[Eclipse について]** > **[インストール詳細]** の順に選択して、インストールされたコンポーネントのバージョンを確認します。 Buildship は、[Eclipse Buildship:Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
+1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[ヘルプ]**  >  **[Eclipse について]**  >  **[インストール詳細]** の順に選択して、インストールされたコンポーネントのバージョンを確認します。 Buildship は、[Eclipse Buildship:Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
 
-2. **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
+2. **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに「 **https://dl.microsoft.com/eclipse** 」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに、「**https:\//dl.microsoft.com/eclipse**」と入力します。
 
 4. **[追加]** を選択します。
 
     ![[利用可能なソフトウェア] ページ][sf-eclipse-plugin]
 
-5. **[ServiceFabric]** プラグインを選択し、**[次へ]** を選択します。
+5. **[ServiceFabric]** プラグインを選択し、 **[次へ]** を選択します。
 
 6. インストール手順を実行します。 次に、使用許諾契約に同意します。
 
-Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 確認するには、**[ヘルプ]** > **[Eclipse について]** > **[インストール詳細]** の順に選択します。 次に、インストールされているプラグインの一覧で Service Fabric を探します。新しいバージョンが使用できる場合は **[更新]** を選択します。
+Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 確認するには、 **[ヘルプ]**  >  **[Eclipse について]**  >  **[インストール詳細]** の順に選択します。 次に、インストールされているプラグインの一覧で Service Fabric を探します。新しいバージョンが使用できる場合は **[更新]** を選択します。
 
 詳細については、「[Eclipse Java アプリケーション開発用の Service Fabric プラグイン](service-fabric-get-started-eclipse.md)」を参照してください。
 
@@ -325,7 +313,7 @@ Service Fabric SDK を削除するには、次のコマンドを実行します�
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)

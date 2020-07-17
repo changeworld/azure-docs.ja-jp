@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric の Reliable Services アプリケーション マニフェストの例 | Microsoft Docs
+title: Reliable Services のアプリ マニフェストの例
 description: Reliable Services Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 6c4c8f0ee6aa12c58e02f71b42312cd6872076aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665969"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236663"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
 ASP.NET Core Web フロント エンドとステートフルなバックエンドを持つ Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Service Fabric .NET クイック スタート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) のマニフェストに基づいています。
 
 次の機能が示されます。
 
-|Manifest|機能|
+|Manifest|[機能]|
 |---|---|
 |[アプリケーション マニフェスト](#application-manifest)| [リソース ガバナンス](service-fabric-resource-governance.md)、[ローカル管理者アカウントとしてサービスを実行する](service-fabric-application-runas-security.md)、[すべてのサービス コード パッケージに既定のポリシーを適用する](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[ユーザーとグループのプリンシパルを作成する](service-fabric-application-runas-security.md)、サービス インスタンス間でデータ パッケージを共有する、[サービス エンドポイントをオーバーライドする](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService サービス マニフェスト| [サービスの起動時にスクリプトを実行する](service-fabric-run-script-at-service-startup.md)、[HTTPS エンドポイントを定義する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
@@ -78,7 +69,7 @@ ASP.NET Core Web フロント エンドとステートフルなバックエン�
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         
@@ -400,7 +391,7 @@ ServiceManifestImport セクションに特定の RunAsPolicy が定義されて
  詳細については、「[Arguments 要素](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="workingfolder-element"></a>WorkingFolder 要素
-アプリケーションがデプロイされるクラスター ノード上のコード パッケージ内のプロセス用の作業ディレクトリ。 次の 3 つの値のいずれかを指定できます。Work (既定値)、CodePackage、または CodeBase。 CodeBase は、作業ディレクトリがコード パッケージで EXE が定義されるディレクトリに設定されることを指定します。 CodePackage は、コード パッケージ ディレクトリで EXE が定義されている場所にかかわらず、作業ディレクトリがコード パッケージのルートになるように設定します。 Work は、作業ディレクトリをノード上に作成された一意のフォルダーに設定します。  このフォルダーは、アプリケーション インスタンス全体で同じです。 既定では、アプリケーションのすべてのプロセスの作業ディレクトリは、アプリケーションの作業フォルダーに設定されます。 ここにプロセスがデータを書き込むことができます。 コード パッケージまたはコード ベースのフォルダーは、さまざまなアプリケーション インスタンス間で共有されたり削除されたりする可能性があるため、これらのフォルダーにデータを書き込むことはお勧めできません。 詳細については、「[WorkingFolder 要素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)」を参照してください。
+アプリケーションがデプロイされるクラスター ノード上のコード パッケージ内のプロセス用の作業ディレクトリ。 Work (既定値)、CodePackage、または CodeBase の 3 つの値を指定することができます。 CodeBase は、作業ディレクトリがコード パッケージで EXE が定義されるディレクトリに設定されることを指定します。 CodePackage は、コード パッケージ ディレクトリで EXE が定義されている場所にかかわらず、作業ディレクトリがコード パッケージのルートになるように設定します。 Work は、作業ディレクトリをノード上に作成された一意のフォルダーに設定します。  このフォルダーは、アプリケーション インスタンス全体で同じです。 既定では、アプリケーションのすべてのプロセスの作業ディレクトリは、アプリケーションの作業フォルダーに設定されます。 ここにプロセスがデータを書き込むことができます。 コード パッケージまたはコード ベースのフォルダーは、さまざまなアプリケーション インスタンス間で共有されたり削除されたりする可能性があるため、これらのフォルダーにデータを書き込むことはお勧めできません。 詳細については、「[WorkingFolder 要素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection 要素
 
@@ -450,7 +441,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 実行可能ファイル名。  たとえば、"MySetup.bat"、"MyServiceHost.exe" などです。 詳細については、「[Program 要素](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="workingfolder-element"></a>WorkingFolder 要素
-アプリケーションがデプロイされるクラスター ノード上のコード パッケージ内のプロセス用の作業ディレクトリ。 次の 3 つの値のいずれかを指定できます。Work (既定値)、CodePackage、または CodeBase。 CodeBase は、作業ディレクトリがコード パッケージで EXE が定義されるディレクトリに設定されることを指定します。 CodePackage は、コード パッケージ ディレクトリで EXE が定義されている場所にかかわらず、作業ディレクトリがコード パッケージのルートになるように設定します。 Work は、作業ディレクトリをノード上に作成された一意のフォルダーに設定します。  このフォルダーは、アプリケーション インスタンス全体で同じです。 既定では、アプリケーションのすべてのプロセスの作業ディレクトリは、アプリケーションの作業フォルダーに設定されます。 ここにプロセスがデータを書き込むことができます。 コード パッケージまたはコード ベースのフォルダーは、さまざまなアプリケーション インスタンス間で共有されたり削除されたりする可能性があるため、これらのフォルダーにデータを書き込むことはお勧めできません。 詳細については、「[WorkingFolder 要素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)」を参照してください。
+アプリケーションがデプロイされるクラスター ノード上のコード パッケージ内のプロセス用の作業ディレクトリ。 Work (既定値)、CodePackage、または CodeBase の 3 つの値を指定することができます。 CodeBase は、作業ディレクトリがコード パッケージで EXE が定義されるディレクトリに設定されることを指定します。 CodePackage は、コード パッケージ ディレクトリで EXE が定義されている場所にかかわらず、作業ディレクトリがコード パッケージのルートになるように設定します。 Work は、作業ディレクトリをノード上に作成された一意のフォルダーに設定します。  このフォルダーは、アプリケーション インスタンス全体で同じです。 既定では、アプリケーションのすべてのプロセスの作業ディレクトリは、アプリケーションの作業フォルダーに設定されます。 ここにプロセスがデータを書き込むことができます。 コード パッケージまたはコード ベースのフォルダーは、さまざまなアプリケーション インスタンス間で共有されたり削除されたりする可能性があるため、これらのフォルダーにデータを書き込むことはお勧めできません。 詳細については、「[WorkingFolder 要素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="configpackage-element"></a>ConfigPackage 要素
 Settings.xml ファイルを含む PackageRoot の下で、Name 属性を使用して名前が付けられたフォルダーを宣言します。 このファイルには、実行時にプロセスが読み取ることができるユーザー定義のキー値ペアの設定のセクションが含まれています。 アップグレード中に ConfigPackage のバージョンのみが変更された場合、実行中のプロセスは再起動されません。 代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。 詳細については、「[ConfigPackage 要素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)」を参照してください。

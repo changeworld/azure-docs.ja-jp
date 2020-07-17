@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric のネットワーク パターン | Microsoft Docs
+title: Azure Service Fabric のネットワーク パターン
 description: Service Fabric の一般的なネットワーク パターンと、Azure のネットワーク機能を使用してクラスターを作成する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110274"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75466280"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -30,6 +19,8 @@ Azure Service Fabric クラスターを Azure の他のネットワーク機能�
 - [内部ロード バランサーと外部ロード バランサー](#internalexternallb)
 
 Service Fabric は標準の仮想マシン スケール セットで実行されます。 仮想マシン スケール セットで使用できる機能は、Service Fabric クラスターでも使用できます。 仮想マシン スケール セットと Service Fabric のAzure Resource Manager テンプレートのネットワーク セクションは同じです。 既存の仮想ネットワークにデプロイしたら、Azure ExpressRoute、Azure VPN Gateway、ネットワーク セキュリティ グループ、仮想ネットワーク ピアリングなどの他のネットワーク機能を簡単に組み込むことができます。
+
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>Service Fabric リソース プロバイダーによるクラスターに対するクエリの許可
 
 Service Fabric には、他のネットワーク機能とは異なる点が 1 つあります。 [Azure Portal](https://portal.azure.com) がService Fabric リソース プロバイダーを内部で使用してクラスターを呼び出し、ノードとアプリケーションに関する情報を取得します。 Service Fabric リソース プロバイダーは、管理エンドポイントの受信 HTTP ゲートウェイ ポート (既定では 19080) にパブリックにアクセスできる必要があります。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) では、管理エンドポイントを使用してクラスターを管理します。 また、Service Fabric リソース プロバイダーは、このポートを使用してクラスターに関する情報を照会し、Azure Portal に表示します。 
 
@@ -200,7 +191,7 @@ DnsSettings              : {
     }
     ```
 
-2. `dnsName` パラメーターを削除します  (静的 IP アドレスには既にパラメーターがあります)。
+2. `dnsName` パラメーターを削除します (静的 IP アドレスには既にパラメーターがあります)。
 
     ```json
     /*
@@ -268,7 +259,7 @@ DnsSettings              : {
                     ],
     ```
 
-7. `Microsoft.ServiceFabric/clusters` リソースで、`managementEndpoint` を静的 IP アドレスの DNS FQDN に変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください  (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
+7. `Microsoft.ServiceFabric/clusters` リソースで、`managementEndpoint` を静的 IP アドレスの DNS FQDN に変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
 
     ```json
                     "fabricSettings": [],
@@ -293,9 +284,9 @@ DnsSettings              : {
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>内部ロード バランサー
 
-このシナリオでは、既定の Service Fabric テンプレートの外部ロード バランサーを内部専用ロード バランサーに置き換えます。 Azure Portal と Service Fabric リソースプロバイダーへの影響については、前のセクションをご覧ください。
+このシナリオでは、既定の Service Fabric テンプレートの外部ロード バランサーを内部専用ロード バランサーに置き換えます。 Azure portal と Service Fabric リソース プロバイダーへの影響については、[この記事の前述の説明](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)をご覧ください。
 
-1. `dnsName` パラメーターを削除します  (不要です)。
+1. `dnsName` パラメーターを削除します (不要です)。
 
     ```json
     /*
@@ -370,7 +361,7 @@ DnsSettings              : {
                     ],
     ```
 
-6. `Microsoft.ServiceFabric/clusters` リソースで、内部ロード バランサーのアドレスを指すように `managementEndpoint` を変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください  (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
+6. `Microsoft.ServiceFabric/clusters` リソースで、内部ロード バランサーのアドレスを指すように `managementEndpoint` を変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
 
     ```json
                     "fabricSettings": [],
@@ -391,11 +382,11 @@ DnsSettings              : {
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部ロード バランサーと外部ロード バランサー
 
-このシナリオでは、既存の単一ノード タイプの外部ロード バランサーを使用し、同じノード タイプの内部ロード バランサーを追加します。 バックエンド アドレス プールに接続されたバックエンド ポートは、1 つのロード バランサーにのみ割り当てることができます。 アプリケーション ポートを配置するロード バランサーと、管理エンドポイント (ポート 19000 と 19080) を配置するロード バランサーを選択します。 管理エンドポイントを内部ロード バランサーに配置する場合は、前述の Service Fabric リソースプロバイダーの制限に注意してください。 ここで使用する例では、管理エンドポイントは引き続き外部ロード バランサーに配置しています。 また、アプリケーション ポート 80 を追加して内部ロード バランサーに配置します。
+このシナリオでは、既存の単一ノード タイプの外部ロード バランサーを使用し、同じノード タイプの内部ロード バランサーを追加します。 バックエンド アドレス プールに接続されたバックエンド ポートは、1 つのロード バランサーにのみ割り当てることができます。 アプリケーション ポートを配置するロード バランサーと、管理エンドポイント (ポート 19000 と 19080) を配置するロード バランサーを選択します。 管理エンドポイントを内部ロード バランサーに配置する場合は、[この記事で前述した](#allowing-the-service-fabric-resource-provider-to-query-your-cluster) Service Fabric リソース プロバイダーの制限に注意してください。 ここで使用する例では、管理エンドポイントは引き続き外部ロード バランサーに配置しています。 また、アプリケーション ポート 80 を追加して内部ロード バランサーに配置します。
 
 2 ノード タイプのクラスターでは、ノード タイプの 1 つを外部ロード バランサーに配置し、 もう 1 つのノード タイプを内部ロード バランサーに配置します。 2 ノード タイプのクラスターを使用するには、ポータルで作成された (2 つのロード バランサーを含む) 2 ノード タイプ テンプレートで、2 つ目のロード バランサーを内部ロード バランサーに切り替えます。 詳細については、「[内部ロード バランサー](#internallb)」をご覧ください。
 
-1. 内部ロード バランサーの静的 IP アドレス パラメーターを追加します  (動的 IP アドレスの使用に関する注意事項については、この記事の前のセクションをご覧ください)。
+1. 内部ロード バランサーの静的 IP アドレス パラメーターを追加します (動的 IP アドレスの使用に関する注意事項については、この記事の前のセクションをご覧ください)。
 
     ```json
             "internalLBAddress": {
@@ -605,11 +596,12 @@ DnsSettings              : {
 
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
 
-## <a name="next-steps"></a>次の手順
-[クラスター](service-fabric-cluster-creation-via-arm.md) ternalLB.json の作成
-    ```
+## <a name="notes-for-production-workloads"></a>運用環境のワークロードに関する注意事項
+
+上記の GitHub テンプレートは、Azure Standard Load Balancer (SLB) の既定の SKU である Basic SKU で動作するように設計されています。 この SLB には SLA がないため、運用環境のワークロードには Standard SKU を使用する必要があります。 詳しくは、「[Azure Standard Load Balancer の概要](/azure/load-balancer/load-balancer-standard-overview)」をご覧ください。 SLB の Standard SKU を使用しているすべての Service Fabric クラスターで、ポート 443 での送信トラフィックを許可するルールがノード タイプごとに設定されていることを確認する必要があります。 これはクラスターの設定を完了するために必要であり、このルールのないデプロイは失敗します。 上記の "内部専用" ロード バランサーの例では、追加の外部ロード バランサーを、ポート 443 での送信トラフィックを許可するルールと共にテンプレートに追加する必要があります。
+
+## <a name="next-steps"></a>次のステップ
+[クラスターの作成](service-fabric-cluster-creation-via-arm.md)
 
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
 
-## <a name="next-steps"></a>次の手順
-[クラスターの作成](service-fabric-cluster-creation-via-arm.md)

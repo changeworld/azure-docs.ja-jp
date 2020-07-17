@@ -1,20 +1,18 @@
 ---
 title: Python での Azure Files 用の開発 | Microsoft Docs
 description: Azure Files を使ってファイル データを格納する Python アプリケーションとサービスを開発する方法を説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: python
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ecb3ef82196c3b6febd44850b47f467ba37facc2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701601"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68699389"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -103,7 +101,7 @@ Azure ファイル共有には、少なくとも、ファイルが置かれる�
 from azure.storage.file import ContentSettings
 file_service.create_file_from_path(
     'myshare',
-    None, # We want to create this blob in the root directory, so we specify None for the directory_name
+    None,  # We want to create this blob in the root directory, so we specify None for the directory_name
     'myfile',
     'sunset.png',
     content_settings=ContentSettings(content_type='image/png'))
@@ -151,7 +149,8 @@ shares = list(file_service.list_shares(include_snapshots=True))
 各共有スナップショットのコンテンツを参照して、その時点からのファイルとディレクトリを取得することができます。
 
 ```python
-directories_and_files = list(file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
+directories_and_files = list(
+    file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
 ## <a name="get-file-from-share-snapshot"></a>共有スナップショットからのファイルの取得
@@ -159,7 +158,8 @@ directories_and_files = list(file_service.list_directories_and_files(share_name,
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
-    file = file_service.get_file_to_stream(share_name, directory_name, file_name, stream, snapshot=snapshot_id)
+    file = file_service.get_file_to_stream(
+        share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
 ## <a name="delete-a-single-share-snapshot"></a>単一の共有スナップショットの削除  
@@ -176,7 +176,7 @@ file_service.delete_share(share_name, snapshot=snapshot_id)
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Python での Azure Files を操作する方法を習得したので、詳細について次のリンクを参照してください。
 
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)

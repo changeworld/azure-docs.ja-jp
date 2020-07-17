@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Ruby を使用して Bing Entity Search REST API に検索要求を送信する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:Ruby を使用して REST API に検索要求を送信する - Bing Entity Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Ruby を使って Bing Entity Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 35659a77f80bd3b3d105b9ea91513784dbca01c4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539005"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75385781"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Bing Entity Search API のクイック スタート (Ruby)
 
@@ -39,7 +39,7 @@ ms.locfileid: "57539005"
     require 'json'
     ```
 
-2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、検索クエリの各変数を作成します。
+2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、検索クエリの各変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -140,10 +140,10 @@ ms.locfileid: "57539005"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../search-the-web.md)
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

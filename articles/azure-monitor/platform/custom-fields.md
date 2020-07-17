@@ -1,29 +1,22 @@
 ---
-title: Azure Monitor のカスタム フィールド | Microsoft Docs
+title: Azure Monitor (プレビュー) のカスタムフィールド | Microsoft Docs
 description: Azure Monitor のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される Log Analytics ワークスペース内のレコードから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/23/2019
+ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77655363"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースにカスタム フィールドを作成する
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する
 
 > [!NOTE]
-> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 [Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページで説明されているように、収集後にクエリ内のテキスト データを解析することには利点があります。
+> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 「[Azure Monitor ログのテキスト データの解析](../log-query/parse-text.md)」で説明されているガイダンスに従って、収集後に、クエリ フィルターのテキスト データを解析することをお勧めします。 カスタム フィールドを使用するよりもすぐれた点がいくつかあります。
 
 Azure Monitor の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、ご自身の Log Analytics ワークスペースの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 
@@ -50,7 +43,7 @@ Azure Monitor の**カスタム フィールド**機能を使用すると、独�
 
 1. **[ログ]** に移動し、[クエリを使用してカスタム フィールドがあるレコードを取得](../log-query/log-query-overview.md)します。
 2. Log Analytics でカスタム フィールドを設定するデータを抽出する際に、モデルとして機能するために使用するレコードを選択します。  このレコードから抽出するデータを特定すると、Log Analytics はその情報を使用して、すべての同様のレコードのカスタム フィールドを設定します。
-3. レコードのプロパティを展開し、レコードの最上位のプロパティの左にある省略記号をクリックして、**[Extract fields from]\(フィールドの抽出\)** を選択します。
+3. レコードのプロパティを展開し、レコードの最上位のプロパティの左にある省略記号をクリックして、 **[Extract fields from]\(フィールドの抽出\)** を選択します。
 4. **フィールドの抽出ウィザード**が開き、選択したレコードが **[メインの例]** 列に表示されます。  選択したプロパティと同じ値を持つ、そのレコードのカスタム フィールドが定義されます。  
 5. 目的の選択内容ではない場合、追加のフィールドを選択して条件を絞り込みます。  条件のフィールド値を変更するには、取り消して、目的の条件と一致する別のレコードを選択する必要があります。
 
@@ -64,8 +57,8 @@ Azure Monitor の**カスタム フィールド**機能を使用すると、独�
 ### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>手順 3 - 抽出の正確さを確認し、カスタム フィールドを作成する
 初回の抽出を実行すると、既に収集されたデータに基づいて結果が Log Analytics に表示されます。  結果が正確と判断したら、追加作業なしでカスタム フィールドを作成できます。  結果が正確ではない場合、Log Analytics がロジックを改善できるように結果を調整することができます。
 
-1. 初回の抽出の値が正しくない場合、不正確なレコードの横にある **[編集]** アイコンをクリックし、**[この選択内容の変更]** を選択して選択内容を変更します。
-2. エントリは、**[メインの例]** の **[追加の例]** セクションにコピーされます。  この選択内容を調整することで、Log Analytics が正しい選択内容を理解しやすくなります。
+1. 初回の抽出の値が正しくない場合、不正確なレコードの横にある **[編集]** アイコンをクリックし、 **[この選択内容の変更]** を選択して選択内容を変更します。
+2. エントリは、 **[メインの例]** の **[追加の例]** セクションにコピーされます。  この選択内容を調整することで、Log Analytics が正しい選択内容を理解しやすくなります。
 3. **[抽出]** をクリックし、この新しい情報を使用してすべての既存のレコードを評価します。  この新しい情報に基づいて、変更したレコード以外のレコードの結果を変更できます。
 4. 抽出のすべてのレコードによって、新しいカスタム フィールドを設定できるデータが正しく特定されるまで、修正を加え続けます。
 5. 結果に満足したら、 **[抽出の保存]** をクリックします。  カスタム フィールドは定義されましたが、まだレコードには追加されません。
@@ -85,7 +78,7 @@ Azure Portal で Log Analytics ワークスペースの **[詳細設定]** メ�
 
 Service Control Manager からイベント ID が 7036 のすべてのイベント (サービスの開始または停止を示すイベント) を返すために、ここでは次のクエリを入力します。
 
-![Query](media/custom-fields/query.png)
+![クエリ](media/custom-fields/query.png)
 
 イベント ID が 7036 の任意のレコードを選択して展開します。
 
@@ -95,15 +88,15 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 
 ![フィールドの抽出](media/custom-fields/extract-fields.png)
 
-**フィールド抽出ウィザード**が開き、**[メインの例]** 列の **[EventLog]** フィールドと **[EventID]** フィールドが選択されます。  これは、システム ログからイベント ID が 7036 のイベントに対してカスタム フィールドが定義されることを示します。  これで十分なので、他のフィールドは選択する必要がありません。
+**フィールド抽出ウィザード**が開き、 **[メインの例]** 列の **[EventLog]** フィールドと **[EventID]** フィールドが選択されます。  これは、システム ログからイベント ID が 7036 のイベントに対してカスタム フィールドが定義されることを示します。  これで十分なので、他のフィールドは選択する必要がありません。
 
 ![[主な例]](media/custom-fields/main-example.png)
 
-**[RenderedDescription]** プロパティのサービス名を選択し、**[サービス]** を使用してサービス名を指定します。  カスタム フィールド名は **Service_CF** になります。 ここでのフィールドの種類は文字列なので、変更する必要はありません。
+**[RenderedDescription]** プロパティのサービス名を選択し、 **[サービス]** を使用してサービス名を指定します。  カスタム フィールド名は **Service_CF** になります。 ここでのフィールドの種類は文字列なので、変更する必要はありません。
 
 ![フィールドのタイトル](media/custom-fields/field-title.png)
 
-サービス名が正しく指定されたレコードと、指定されていないレコードがあります。   **[検索結果]** は、**[WMI Performance Adapter]** の名前の一部が選択されなかったことを示しています。  **[概要]** では、**Windows Modules Installer** ではなく **Modules Installer** を検出したレコードが 1 つあることが示されています。  
+サービス名が正しく指定されたレコードと、指定されていないレコードがあります。   **[検索結果]** は、 **[WMI Performance Adapter]** の名前の一部が選択されなかったことを示しています。  **[概要]** では、**Windows Modules Installer** ではなく **Modules Installer** を検出したレコードが 1 つあることが示されています。  
 
 ![[検索結果]](media/custom-fields/search-results-01.png)
 
@@ -131,7 +124,7 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 
 ![クエリによるグループ化](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 基準となるカスタム フィールドを使用してクエリを作成するための[ログ クエリ](../log-query/log-query-overview.md)について学習します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](data-sources-custom-logs.md)を監視します。
 

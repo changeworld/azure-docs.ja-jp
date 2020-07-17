@@ -1,23 +1,17 @@
 ---
-title: REST API:Azure Data Lake Storage Gen1 に対するアカウント管理操作 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 と WebHDFS REST API を使用し、Data Lake Storage Gen1 でアカウント管理操作を実行します
-services: data-lake-store
-documentationcenter: ''
+title: REST を使用した Azure Data Lake Storage Gen1 アカウントの管理
+description: WebHDFS REST API を使用し、Azure Data Lake Storage Gen1 でアカウント管理操作を実行します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880170"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692091"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -32,7 +26,7 @@ ms.locfileid: "58880170"
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **[cURL](https://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
+* **[cURL](https://curl.haxx.se/)** 。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
 Azure Active Directory を使用した認証方法には 2 つあります。
@@ -71,7 +65,7 @@ Data Lake Storage Gen1 アカウントを削除するには、次の cURL コマ
     ...
     ...
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>関連項目

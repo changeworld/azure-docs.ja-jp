@@ -1,28 +1,28 @@
 ---
-title: Azure Cosmos DB で Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法
+title: Azure Cosmos DB の JavaScript クエリ API を使用してストアドプロシージャとトリガーを記述する
 description: Azure Cosmos DB で Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法について説明します
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
-ms.author: mjbrown
-ms.openlocfilehash: f465ac91936b766d2c19ea8efd67b3acc8df6d75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: conceptual
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: bc92a1276232506d291e367f74a9dcf8d58d7e07
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243941"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982328"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Javascript クエリ API を使用して Azure Cosmos DB でストアド プロシージャおよびトリガーを記述する方法
 
 Azure Cosmos DB では、ストアド プロシージャまたはトリガーの記述に使用できる SQL 言語の知識がなくても、円滑な JavaScript インターフェイスを使用して最適化されたクエリを実行できます。 Azure Cosmos DB のJavaScript クエリ API サポートについての詳しくは、 [Azure Cosmos DB のJavaScript 言語統合クエリ API の操作](javascript-query-api.md)に関する記事を参照してください。
 
-## <a id="stored-procedures"></a>JavaScript クエリ API を使用したストアド プロシージャ
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>JavaScript クエリ API を使用したストアド プロシージャ
 
-次のコード サンプルでは、ストアド プロシージャで JavaScript クエリ API を使用する方法の例を示します。 ストアド プロシージャは入力パラメーターによって指定された Azure Cosmos DB 項目を挿入し、`__.filter()` メソッドでメタデータ ドキュメントを更新します。このメソッドと共に入力項目のサイズ プロパティに基づき、minSize、maxSize、totalSize が指定されます。
+次のコード サンプルでは、ストアド プロシージャで JavaScript クエリ API を使用する方法の例を示します。 ストアド プロシージャは入力パラメーターによって指定された Azure Cosmos 項目を挿入し、`__.filter()` メソッドでメタデータ ドキュメントを更新します。このメソッドと共に入力項目のサイズ プロパティに基づき、minSize、maxSize、totalSize が指定されます。
 
 > [!NOTE]
-> `__` (二重下線) は JavaScript クエリ API を使用する場合の `getContext().getCollection()` のエイリアスです。
+> `__` (2 つのアンダースコア) は JavaScript クエリ API を使用する場合の `getContext().getCollection()` のエイリアスです。
 
 ```javascript
 /**
@@ -78,7 +78,7 @@ function insertDocumentAndUpdateMetadata(item) {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB のストアド プロシージャ、トリガー、およびユーザー定義関数については、以下の記事を参照してください。
 

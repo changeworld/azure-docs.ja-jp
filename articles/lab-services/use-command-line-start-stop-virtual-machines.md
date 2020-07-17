@@ -1,5 +1,5 @@
 ---
-title: コマンドライン ツールを使用した Azure DevTest Labs VM の開始と停止 | Microsoft Docs
+title: コマンドライン ツールを使用した Azure DevTest Labs VM の開始と停止
 description: コマンドライン ツールを使用して、Azure DevTest Labs 内の仮想マシンを開始および停止する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: fd643559a09d5c75aad9be5f35c653994c8488cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996460"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76169248"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>コマンドライン ツールを使用した Azure DevTest Labs 仮想マシンの開始と停止
 この記事では、Azure PowerShell または Azure CLI を使用して、Azure DevTest Labs 内のラボにある仮想マシンを開始または停止する方法について説明します。 PowerShell/CLI スクリプトを作成してこの操作を自動化することができます。 
@@ -34,6 +34,10 @@ Azure DevTest Labs を使用すると、高速で簡単な無駄のない開発/
 - CI/CD ワークフロー内のタスクとして使用して、フローの最初に開始し、VM をビルド マシン、テスト マシン、またはインフラストラクチャとして使用し、プロセスの完了時に VM を停止します。 たとえば、Azure DevTest Labs を使用したカスタム イメージ ファクトリなどです。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+> [!NOTE]
+> 次のスクリプトは Azure PowerShell Az モジュールを使用します。 
+
 次の PowerShell スクリプトは、ラボ内の VM を開始します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) が、このスクリプトの主な目的です。 **ResourceId** パラメーターは、ラボ内の VM の完全修飾リソース ID です。 **Action** パラメーターには、**Start** または **Stop** オプションが必要に応じて設定されます。
 
 ```powershell
@@ -53,11 +57,7 @@ $vmAction = "Start"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
-if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
-} else {
-    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
-}
+$devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
 
 # Start the VM and return a succeeded or failed status
 $returnStatus = Invoke-AzResourceAction `
@@ -92,5 +92,5 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事で、これらの操作を Azure portal を使用して行う方法について確認します: [VM の再起動](devtest-lab-restart-vm.md)に関する記事。

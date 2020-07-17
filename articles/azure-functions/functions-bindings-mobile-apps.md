@@ -1,27 +1,21 @@
 ---
 title: Azure Functions における Mobile Apps のバインド
 description: Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5fd220f15f363c1987f1576009519e4b2feae6b9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814862"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559579"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
 > [!NOTE]
-> Azure Mobile Apps のバインドは、Azure Functions 1.x でのみ使用できます。 これらは Azure Functions 2.x ではサポートされていません。
+> Azure Mobile Apps のバインドは、Azure Functions 1.x でのみ使用できます。 これらは Azure Functions 2.x 以降ではサポートされていません。
 
 この記事では、Azure Functions で [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) のバインドを操作する方法について説明します。 Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。
 
@@ -56,17 +50,17 @@ Mobile Apps 入力バインドは、モバイル テーブル エンドポイン
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
         "name": "record",
         "type": "mobileTable",
         "tableName": "MyTable",
-        "id" : "{queueTrigger}",
+        "id": "{queueTrigger}",
         "connection": "My_MobileApp_Url",
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
@@ -101,17 +95,17 @@ public static void Run(string myQueueItem, JObject record)
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
         "name": "record",
         "type": "mobileTable",
         "tableName": "MyTable",
-        "id" : "{queueTrigger}",
+        "id": "{queueTrigger}",
         "connection": "My_MobileApp_Url",
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
@@ -142,9 +136,9 @@ module.exports = function (context, myQueueItem) {
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-| **type**|| "mobileTable" に設定する必要があります。|
-| **direction**||"in" に設定する必要があります。|
-| **name**|| 関数シグネチャの入力パラメーターの名前。|
+| **type**| 該当なし | "mobileTable" に設定する必要があります。|
+| **direction**| 該当なし |"in" に設定する必要があります。|
+| **name**| 該当なし | 関数シグネチャの入力パラメーターの名前。|
 |**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
 | **id**| **Id** | 取得するレコードの識別子。 静的にすることも、関数を呼び出すトリガーに基づいて設定することもできます。 たとえば、関数にキュー トリガーを使用した場合、`"id": "{queueTrigger}"` は、キュー メッセージの文字列値を、取得するレコード ID として使用します。|
 |**connection**|**Connection**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
@@ -163,7 +157,7 @@ JavaScript 関数では、レコードは `context.bindings.<name>` オブジェ
 
 C# および F# の関数では、入力レコード (名前付き入力パラメーター) に加えられた変更は、関数が正常に終了したときに、テーブルに自動的に送り返されます。 JavaScript 関数ではレコードを変更できません。
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 Mobile Apps 出力バインドを使用して、Mobile Apps テーブルにレコードを書き込みます。  
 
@@ -200,19 +194,19 @@ public static object Run(
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
-    "name": "record",
-    "type": "mobileTable",
-    "tableName": "MyTable",
-    "connection": "My_MobileApp_Url",
-    "apiKey": "My_MobileApp_Key",
-    "direction": "out"
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "out"
     }
 ]
 }
@@ -241,19 +235,19 @@ public static void Run(string myQueueItem, out object record)
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
-    "name": "record",
-    "type": "mobileTable",
-    "tableName": "MyTable",
-    "connection": "My_MobileApp_Url",
-    "apiKey": "My_MobileApp_Key",
-    "direction": "out"
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "out"
     }
 ],
 "disabled": false
@@ -300,9 +294,9 @@ public static object Run(
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-| **type**|| "mobileTable" に設定する必要があります。|
-| **direction**||"out" に設定する必要があります。|
-| **name**|| 関数シグネチャの出力パラメーターの名前。|
+| **type**| 該当なし | "mobileTable" に設定する必要があります。|
+| **direction**| 該当なし |"out" に設定する必要があります。|
+| **name**| 該当なし | 関数シグネチャの出力パラメーターの名前。|
 |**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
 |**connection**|**MobileAppUriSetting**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
 |**apiKey**|**ApiKeySetting**|モバイル アプリの API キーを含むアプリ設定の名前。 [API キーを Node.js モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や [API キーを .NET モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、API キーを指定します。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
@@ -322,7 +316,7 @@ C# スクリプト関数では、`out object` 型の名前付き出力パラメ�
 
 Node.js 関数では、`context.bindings.<name>` を使用して出力レコードにアクセスします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

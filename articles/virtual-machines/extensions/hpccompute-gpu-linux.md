@@ -1,25 +1,24 @@
 ---
-title: NVIDIA GPU ドライバー拡張機能 - Azure Linux VM | Microsoft Docs
+title: NVIDIA GPU ドライバー拡張機能 - Azure Linux VM
 description: Linux を実行中の N シリーズのコンピューティング VM に NVIDIA GPU ドライバーをインストールする Microsoft Azure 拡張機能です。
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.author: akjosh
+ms.openlocfilehash: 2cfc48f7c152f0f38ca70713dc989029e4e64e8b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620684"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773119"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -27,6 +26,8 @@ ms.locfileid: "58620684"
 
 この拡張機能は、Linux N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、[NVIDIA のエンドユーザー使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=874330)の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
+ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)をご覧ください。
 NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-windows.md) にインストールする拡張機能も利用可能です。
 
 ## <a name="prerequisites"></a>前提条件
@@ -35,11 +36,11 @@ NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-win
 
 この拡張機能では、特定の OS バージョンのドライバー サポートに応じて、次の OS ディストリビューションをサポートしています。
 
-| ディストリビューション | バージョン |
+| Distribution | Version |
 |---|---|
-| Linux:Ubuntu | 16.04 LTS、18.04 LTS |
-| Linux:Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6 |
-| Linux:CentOS | 7.3、7.4、7.5、7.6 |
+| Linux: Ubuntu | 16.04 LTS、18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6 |
+| Linux: CentOS | 7.3、7.4、7.5、7.6 |
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
@@ -74,9 +75,9 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | 文字列 |
-| type | NvidiaGpuDriverLinux | 文字列 |
-| typeHandlerVersion | 1.2 | int |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
+| typeHandlerVersion | 1.2 | INT |
 
 ### <a name="settings"></a>設定
 
@@ -84,12 +85,12 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 
 | 名前 | 説明 | Default value | 有効な値 | データ型 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | ドライバーのインストールに必要ない場合でも、カーネルを更新します。 | false | true、false | ブール値 |
-| driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA Toolkit のバージョン。 選択した CUDA の最新のドライバーが自動的にインストールされます。 | latest | GRID: "410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA: "10.0.130"、"9.2.88"、"9.1.85" | 文字列 |
-| installCUDA | CUDA Toolkit をインストールします。 NC/ND シリーズの VM のみに関係します。 | true | true、false | ブール値 |
+| updateOS | ドライバーのインストールに必要ない場合でも、カーネルを更新します。 | false | true、false | boolean |
+| driverVersion | NV: GRID ドライバーのバージョン<br> NC/ND: CUDA Toolkit のバージョン。 選択した CUDA の最新のドライバーが自動的にインストールされます。 | latest | GRID: "430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA: "10.0.130"、"9.2.88"、"9.1.85" | string |
+| installCUDA | CUDA Toolkit をインストールします。 NC/ND シリーズの VM のみに関係します。 | true | true、false | boolean |
 
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 
@@ -140,15 +141,15 @@ Set-AzVMExtension
 次の例では、上記の Azure Resource Manager と PowerShell の例を反映し、既定以外のドライバーのインストールの例としてカスタム設定も追加します。 具体的には、OS カーネルを更新し、特定の CUDA Toolkit バージョンのドライバーをインストールします。
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.2 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "9.1.85" \
   }'
 ```
 
@@ -189,7 +190,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 拡張機能の詳細については、「[Linux 用の仮想マシンの拡張機能とその機能](features-linux.md)」を参照してください。
 
 N シリーズ VM の詳細については、「[GPU 最適化済み仮想マシンのサイズ](../linux/sizes-gpu.md)」を参照してください。

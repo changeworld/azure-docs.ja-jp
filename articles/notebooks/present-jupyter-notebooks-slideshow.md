@@ -1,28 +1,20 @@
 ---
-title: Azure 上で Jupyter Notebook をスライドショーとして表示する
-description: Jupyter ノートブックのスライドショー モードにセルを構成してから、RISE 拡張機能を使ってスライドショーを表示する方法。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: Azure Notebooks プレビュー上で Jupyter Notebook をスライドショーとして表示する
+description: Jupyter ノートブックのスライドショー モードにセルを構成してから、RISE 拡張機能を使ってスライドショーを表示する方法を説明します。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280470"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75647120"
 ---
-# <a name="run-a-notebook-slideshow"></a>ノートブックのスライドショーを実行する
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでノートブックのスライドショーを実行する
 
-Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事前に構成されており、ノートブックをスライドショーとして直接表示できます。 スライドショーでは、セルは通常、大きな画面での表示に適したフォント サイズを使って一度に 1 つずつ表示され、別個のデモ コンピューターに切り替えるのではなく、引き続きコードを実行することが可能です。
+Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事前に構成されており、ノートブックをスライドショーとして直接表示できます。 スライドショー機能では、通常、セルが 1 つずつ大画面での表示に適したフォント サイズで表示され、別個のデモ用コンピューターに切り替えることなく引き続きコードを実行することが可能です。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 次の画像は、Markdown とコード セルをまとめて確認できる標準的なノートブック ビューを示しています。
 
@@ -42,7 +34,7 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
 
 ランダム ノートブックを利用しており、これをスライドショーに使う場合、通常は、すべてのセルが未整理の状態で、コンテンツのほとんどがブラウザー ウィンドウの下端で表示が切れてしまいます。 効果的なプレゼンテーションを行うには、[スライドショー] セルのツールバーを使用して、各セルにスライドショーの種類を割り当てる必要があります。
 
-1. **[表示]** メニューで、**[Cell Toolbar]\(セルのツールバー\)** > **[スライドショー]** の順に選択します。
+1. **[表示]** メニューで、 **[Cell Toolbar]\(セルのツールバー\)**  >  **[スライドショー]** の順に選択します。
 
     ![セルのスライドショーツールバーが有効になっている](media/slideshow/slideshow-view-cell-toolbar.png)
 
@@ -61,13 +53,13 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
     | サブスライド | セルは、主要なスライドの "下位" になります。ナビゲーション コントロールの下向き矢印を使用して移動できます。 上向き矢印を使用すると、主要なスライドに戻ります。 サブスライドは、二次的な資料に使用されます。プレゼンテーションのメイン パスでは省略でき、必要に応じて、いつでも利用可能です。 |
     | フラグメント | 下向きのナビゲーション矢印を使用すると、セルのコンテンツが、前のスライドまたはサブスライドのコンテキストに表示されます (上向き矢印を使用すると、フラグメントは削除されます)。 コード セルにフラグメントを使用して、コードがスライド内に表示されるようにしたり、複数のフラグメントを使用して箇条書きを 1 つずつ表示したりできます (次のセクションの例を参照してください)。 フラグメントは現在のスライド上に作成されるので、余分なフラグメントはブラウザー ウィンドウの下端から表示が切れてしまいます。 |
     | Skip | セルは、スライドショーには表示されません。 |
-    | メモ | セルには、発話者のメモが含まれます。スライドショーには表示されません。 |
+    | Notes | セルには、発話者のメモが含まれます。スライドショーには表示されません。 |
 
 1. 最初に、どのセルに対しても **[スライド]** を選択しておくと便利です。 その後、スライドショーを実行して、適切な調整を行います。
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>例: 箇条書き項目のフラグメント セル
 
-スライド上に箇条書きを 1 つずつ表示するには、**[スライド]** 種類の Markdown セルにスライドのヘッダーを配置して、**[フラグメント]** 種類の別個の Markdown セルに各箇条書きを配置します。
+スライド上に箇条書きを 1 つずつ表示するには、 **[スライド]** 種類の Markdown セルにスライドのヘッダーを配置して、 **[フラグメント]** 種類の別個の Markdown セルに各箇条書きを配置します。
 
 ![箇条書き項目のために複数の Markdown セルを作成している例](media/slideshow/slideshow-fragments.png)
 
@@ -96,11 +88,11 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
     ![コード セルの出力がスライド ショーに表示される](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > セルの出力は、スライドショー内でセルの一部と見なされます。 Notebook またはスライドショー ビューのいずれかでセルを実行すると、出力はもう一方のビューにも表示されます。 出力をクリアするには、**[セル]** > **[Current Outputs]\(現在の出力\)** > **[クリア]** コマンド (現在のセルに対して) または **[セル]** > **[All Outputs]\(すべての出力\)** > **[クリア]** (すべてのセルに対して) を使用します。
+    > セルの出力は、スライドショー内でセルの一部と見なされます。 Notebook またはスライドショー ビューのいずれかでセルを実行すると、出力はもう一方のビューにも表示されます。 出力をクリアするには、 **[セル]**  >  **[Current Outputs]\(現在の出力\)**  >  **[クリア]** コマンド (現在のセルに対して) または **[セル]**  >  **[All Outputs]\(すべての出力\)**  >  **[クリア]** (すべてのセルに対して) を使用します。
 
-1. スライドショーを終了する場合は、**[X]** を使用してノートブックのビューに戻ります。
+1. スライドショーを終了する場合は、 **[X]** を使用してノートブックのビューに戻ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
 - [方法: ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)

@@ -1,19 +1,19 @@
 ---
-title: ExpressRoute 回線への仮想ネットワークのリンク:PowerShell:Azure | Microsoft Docs
+title: ExpressRoute:VNet を回線にリンクする:Azure PowerShell
 description: このドキュメントでは、Resource Manager デプロイ モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/30/2018
-ms.author: ganesr
+ms.date: 05/20/2018
+ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: b0ae3d5b2c60badfb9b59820b1e0b85383e524ca
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 755b1898ee4cbc32de3a65a6bbc368ecf3eb3acf
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406322"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616379"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続する
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "57406322"
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -176,5 +176,24 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 *RoutingWeight* の範囲は 0 ～ 32000 です。 既定値は 0 です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath を構成する 
+仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ である場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効にすることができます。 FastPath により、オンプレミス ネットワークと仮想ネットワークの間の 1 秒あたりのパケット数や 1 秒あたりの接続数などのデータ パスのパフォーマンスが向上します。 
+
+**新しい接続で FastPath を構成する**
+
+```azurepowershell-interactive 
+$circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
+$gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
+$connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
+
+**既存の接続を更新して FastPath を有効にする**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
+``` 
+
+## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

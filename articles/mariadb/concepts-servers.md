@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB のサーバーの概念
+title: サーバー - Azure Database for MariaDB
 description: このトピックでは、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 3/18/2020
+ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997903"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79527794"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のサーバーの概念
 この記事では、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。
@@ -48,7 +48,7 @@ Azure Database for MariaDB サーバー内には 1 つまたは複数のデー�
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 Azure Database for MariaDB サーバーを管理するには、Azure portal または Azure CLI を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの概要については、[Azure Database for MariaDB の概要](./overview.md)に関するページをご覧ください。
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66159095"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
@@ -37,7 +37,7 @@ RBAC は、ロールに基づいて割り当てることができます。 ロ�
 
 * **カスタム ロール** - 組み込みのロールがニーズに適合しない場合は、StorSimple 用のカスタム RBAC ロールを作成できます。 カスタム RBAC ロールを作成するには、組み込みのロールから始めてそれを編集した後、環境にインポートします。 ロールのダウンロードとアップロードは Azure PowerShell または Azure CLI を使用して管理されます。 詳細については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md)」を参照してください。
 
-Azure ポータルの StorSimple デバイス ユーザーのために使用できる異なるロールを表示するには、StorSimple デバイス マネージャー サービスに移動し、**[Access control (IAM)]、[ロール]** の順に選択します。
+Azure ポータルの StorSimple デバイス ユーザーのために使用できる異なるロールを表示するには、StorSimple デバイス マネージャー サービスに移動し、 **[Access control (IAM)]、[ロール]** の順に選択します。
 
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>StorSimple インフラストラクチャ管理者用のカスタム ロールを作成する
@@ -169,7 +169,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
     ![RBAC ロールにアクセス権を追加する](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
-2. 割り当てるロールを選択します。ここでは、**[StorSimple インフラストラクチャ管理者]** を選択します。
+2. 割り当てるロールを選択します。ここでは、 **[StorSimple インフラストラクチャ管理者]** を選択します。
 
 3. ディレクトリで、アクセス権を付与するユーザー、グループ、またはアプリケーションを選択します。 ディレクトリは、表示名、電子メール アドレス、およびオブジェクト識別子を使用して検索できます。
 
@@ -183,9 +183,9 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ロールを作成した後、Azure ポータルでこのロールに関連付けられているアクセス許可を確認できます。
 
-1. このロールに関連付けられているアクセス許可を表示するには、**[アクセス制御 (IAM)]、[ロール]、[StorSimple インフラストラクチャ管理者]** の順に移動します。このロールのユーザーの一覧が表示されます。
+1. このロールに関連付けられているアクセス許可を表示するには、 **[アクセス制御 (IAM)]、[ロール]、[StorSimple インフラストラクチャ管理者]** の順に移動します。このロールのユーザーの一覧が表示されます。
 
-2. StorSimple インフラストラクチャ管理者ユーザーを選択し、**[アクセス許可]** をクリックします。
+2. StorSimple インフラストラクチャ管理者ユーザーを選択し、 **[アクセス許可]** をクリックします。
 
     ![StorSimple インフラストラクチャ管理者ロールのアクセス許可を表示する](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 
@@ -194,6 +194,6 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
     ![StorSimple インフラストラクチャ管理者ロールのユーザーを表示する](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [内部ユーザーと外部ユーザーへのカスタム ロールの割り当て](../role-based-access-control/role-assignments-external-users.md)に関する記事で詳細を確認します。

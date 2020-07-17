@@ -3,20 +3,20 @@ title: SQL パーティション テーブルにデータを並列一括イン�
 description: データを SQL Server データベースに高速で並列一括インポートするためにパーティション分割されたテーブルを作成します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853037"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891681"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化
 
@@ -54,7 +54,7 @@ ms.locfileid: "57853037"
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>パーティション テーブルを作成する
+## <a name="create-a-partitioned-table"></a>パーティション テーブルを作成します。
 データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマッピングされる、パーティション分割されたテーブルを作成するには、まずパーティション関数とパーティション構成を作成する必要があります。 パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されるように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
 
 ### <a name="1-create-a-partition-function"></a>1.パーティション関数の作成
@@ -85,7 +85,7 @@ ms.locfileid: "57853037"
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>手順 3.パーティション テーブルの作成
+### <a name="3-create-a-partition-table"></a>3.パーティション テーブルの作成
 データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション構成と制約フィールドを指定します。たとえば、以下のようにします。
   
         CREATE TABLE <table_name> ( [include schema definition here] )
@@ -99,7 +99,7 @@ ms.locfileid: "57853037"
 * [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「 [1 時間未満で 1 TB を読み込む](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
+* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)」を参照してください。
 
 次の PowerShell スクリプトは、BCP を使用した並行データ読み込みの例を示しています。
 

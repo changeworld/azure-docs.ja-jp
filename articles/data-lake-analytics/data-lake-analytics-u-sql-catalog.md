@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics の U-SQL カタログを使用する
-description: U-SQL カタログを使用して、コードとデータを共有する方法について説明します。
+title: Azure Data Lake Analytics で U-SQL カタログを使用する
+description: U-SQL カタログを使用して、コードとデータを共有する方法について説明します。 テーブル値関数を作成し、ビューを作成し、テーブルを作成し、それらにクエリを実行します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
-ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401601"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71672840"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL カタログを使用する
 

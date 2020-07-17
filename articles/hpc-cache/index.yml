@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure HPC Cache のドキュメント
+summary: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) ワークロードのファイル アクセスを高速化するには、Azure HPC Cache を使用します。
+metadata:
+  title: Microsoft Azure HPC Cache
+  description: Azure HPC Cache を作成および使用して、コンピューティング リソースとストレージの間の待ち時間の問題を解決する方法について説明します。 Azure HPC Cache は、ファイルベースの読み取り負荷の高いワークロードを対象としており、Azure Blob Storage とオンプレミスのハードウェア ファイラーが組み込まれた集約型の仮想ファイル システムを作成できます。
+  ms.service: hpc-cache
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ekpgh
+  ms.author: rohogue
+  ms.date: 11/07/2019
+  ms.openlocfilehash: 3cee41dd9cb4852eab884345404ba89eff8d9d91
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "77651034"
+landingContent:
+- title: Azure HPC Cache について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure HPC Cache とは
+      url: hpc-cache-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure HPC Cache の前提条件を構成する
+      url: hpc-cache-prereqs.md
+    - text: キャッシュを作成する
+      url: hpc-cache-create.md
+    - text: ストレージを追加する
+      url: hpc-cache-add-storage.md
+    - text: クライアントをマウントする
+      url: hpc-cache-mount.md
+    - text: キャッシュを管理および監視する
+      url: hpc-cache-manage.md
+  - linkListType: concept
+    links:
+    - text: 集約された名前空間を計画する
+      url: hpc-cache-namespace.md
+    - text: データをストレージ ターゲットに移動する (必要な場合)
+      url: hpc-cache-ingest.md
+- title: '[トラブルシューティング]'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: サポート チケットを開く
+      url: hpc-cache-support-ticket.md
+    - text: ストレージ ターゲットを編集する
+      url: hpc-cache-edit-storage.md
+    - text: ファイアウォール設定を回避して BLOB ストレージ ターゲットを作成する
+      url: hpc-cache-blob-firewall-fix.md
+    - text: NFS ストレージ ターゲットの作成のトラブルシューティング
+      url: troubleshoot-nas.md
+  - linkListType: concept
+    links:
+    - text: リージョンの障害から復旧する
+      url: hpc-region-recovery.md
+    - text: Azure NetApp Files のストレージ ターゲットを使用する
+      url: hpc-cache-netapp.md

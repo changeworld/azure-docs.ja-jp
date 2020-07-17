@@ -1,25 +1,24 @@
 ---
 title: Azure IoT Hub を使用したデバイス ファームウェアの更新 | Microsoft Docs
-description: ジョブとデバイス ツインを使用してデバイス ファームウェアの更新プロセスを実装します。
+description: IoT ハブに接続されているバックエンド アプリケーションからトリガーできるデバイス ファームウェア更新プロセスを実装する方法について説明します。
 services: iot-hub
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 57ec4990447070d1889f7476b89abb742296c056
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.date: 06/28/2019
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: 2eec96eee943d6fe291d054e1d73876e38f61d6d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597527"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81769957"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル: デバイス ファームウェアの更新プロセスを実装する
 
 場合によっては、IoT ハブに接続されているデバイスのファームウェアを更新する必要があります。 たとえば、ファームウェアに新しい機能を追加したり、セキュリティ パッチを適用したりできます。 多くの IoT シナリオでは、対象のデバイスに物理的にアクセスして、手動でファームウェア更新を適用することは現実的ではありません。 このチュートリアルでは、ハブに接続されたバックエンド アプリケーションを介してファームウェアの更新プロセスをリモートで開始および監視する方法を示します。
 
@@ -37,7 +36,7 @@ ms.locfileid: "65597527"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +50,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+
+ポート 8883 がファイアウォールで開放されていることを確認してください。 このチュートリアルのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -64,7 +65,7 @@ hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group
 az group create --name tutorial-iot-hub-rg --location $location
@@ -73,7 +74,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -95,12 +96,11 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 ```
 
 > [!TIP]
-> これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
-)に関するページを参照してください。
+> これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips)に関するページを参照してください。
 
 ## <a name="start-the-firmware-update"></a>ファームウェアの更新を開始する
 
-**devicetype** として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで[自動デバイス管理構成](iot-hub-automatic-device-management.md#create-a-configuration)を作成します。 このセクションでは、次の方法について説明します。
+[devicetype](iot-hub-automatic-device-management.md#create-a-configuration) として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで**自動デバイス管理構成**を作成します。 このセクションでは、次の方法について説明します。
 
 * バックエンド アプリケーションから構成を作成する。
 * 完了するまでジョブを監視する。
@@ -187,11 +187,11 @@ node ServiceClient.js "{your service connection string}"
 
 ![バックエンド アプリケーション](./media/tutorial-firmware-update/BackEnd2.png)
 
-IoT Hub デバイス ID レジストリの待ち時間のため、バックエンド アプリケーションに送信されたすべての状態更新が表示されない場合があります。 ポータルの IoT ハブの **[Automatic device management]\(自動デバイス管理\) -> [IoT device configuration]\(IoT デバイス構成\)** セクションでメトリックを表示することもできます。
+デバイスの自動構成は、作成時に実行された後は 5 分ごとに実行されるため、バックエンド アプリケーションに送信されるすべての状態更新を確認できるわけではありません。 ポータルの IoT ハブの **[Automatic device management]\(自動デバイス管理\) -> [IoT device configuration]\(IoT デバイス構成\)** セクションでメトリックを表示することもできます。
 
 ![ポータルで構成を表示する](./media/tutorial-firmware-update/portalview.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルを実行する場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
 
@@ -204,7 +204,7 @@ IoT ハブが必要でなくなった場合は、ポータルを使用して IoT
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、接続されたデバイスのファームウェア更新プロセスを実装する方法を学習しました。 Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイス接続をテストする方法については、次のチュートリアルに進んでください。
 

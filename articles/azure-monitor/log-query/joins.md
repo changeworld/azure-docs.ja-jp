@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリでの結合 | Microsoft Docs
 description: この記事には、Azure Monitor ログ クエリでの結合の使用に関するレッスンが含まれています。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/16/2018
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079113"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "77670204"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの結合
 
@@ -104,7 +97,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 - 一方のテーブルがもう一方よりも常に小さい場合は、それを結合の左側として使用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ クエリの使用に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

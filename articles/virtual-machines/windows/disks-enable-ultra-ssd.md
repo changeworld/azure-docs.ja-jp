@@ -1,22 +1,21 @@
 ---
-title: Windows VM 向けの Ultra Disks - Azure Managed Disks | Microsoft Docs
-description: Azure VM 向けの Ultra SSD について説明します
-services: virtual-machines-windows
+title: Windows VM 向けの Ultra ディスク - Azure Managed Disks
+description: Azure VM 用の Ultra ディスクについて説明します。
 author: roygara
-ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2019
+ms.service: virtual-machines
+ms.topic: conceptual
+ms.date: 05/11/2020
 ms.author: rogarana
-ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: c569996c05d3ef854276701168f8100ba45fe331
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: dcecd80fce20046b05a3c35b878e33e13001ee86
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546534"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196931"
 ---
+# <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
+
+この記事では、Ultra ディスクをデプロイして使用する方法を説明します。Ultra ディスクに関する概念的な情報については、「[Azure で使用できるディスクの種類](disks-types.md#ultra-disk)」を参照してください。
+
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

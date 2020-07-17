@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
-description: Azure PowerShell を使用して、ロールベースのアクセス制御 (RBAC) による Azure リソースのカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
+title: Azure PowerShell を使用して Azure カスタム ロールを作成または更新する - Azure RBAC
+description: Azure PowerShell と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、カスタム ロールを一覧表示、作成、更新、または削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,21 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158460"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734809"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
+# <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure カスタム ロールを作成または更新する
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
+> [!IMPORTANT]
+> `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)」を参照してください。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用して、カスタム ロールを一覧表示、作成、更新、または削除する方法について説明します。
+
+カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)」をご覧ください。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -74,7 +79,7 @@ Virtual Machine Operator     True
 カスタム ロールの定義を一覧表示するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用します。 これは、組み込みロールに使用するコマンドと同じです。
 
 ```azurepowershell
-Get-AzRoleDefinition <role name> | ConvertTo-Json
+Get-AzRoleDefinition <role_name> | ConvertTo-Json
 ```
 
 ```Example
@@ -109,7 +114,7 @@ PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
 次の例では、ロールのアクションのみを一覧表示します。
 
 ```azurepowershell
-(Get-AzRoleDefinition <role name>).Actions
+(Get-AzRoleDefinition <role_name>).Actions
 ```
 
 ```Example
@@ -297,6 +302,42 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
+次の例では、*仮想マシン オペレーター* カスタム ロールの `AssignableScopes` に管理グループが追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+
+```azurepowershell
+Get-AzManagementGroup
+
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/{groupId1}")
+Set-AzRoleDefinition -Role $role
+```
+
+```Example
+PS C:\> Get-AzManagementGroup
+
+Id          : /providers/Microsoft.Management/managementGroups/marketing-group
+Type        : /providers/Microsoft.Management/managementGroups
+Name        : marketing-group
+TenantId    : 99999999-9999-9999-9999-999999999999
+DisplayName : Marketing group
+
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
+PS C:\> $role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/marketing-group")
+PS C:\> Set-AzRoleDefinition -Role $role
+
+Name             : Virtual Machine Operator
+Id               : 88888888-8888-8888-8888-888888888888
+IsCustom         : True
+Description      : Can monitor and restart virtual machines.
+Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
+                   Microsoft.Compute/virtualMachines/start/action...}
+NotActions       : {}
+AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
+                   /subscriptions/11111111-1111-1111-1111-111111111111,
+                   /subscriptions/22222222-2222-2222-2222-222222222222,
+                   /providers/Microsoft.Management/managementGroups/marketing-group}
+```
+
 ### <a name="update-a-custom-role-with-a-json-template"></a>JSON テンプレートを使用したカスタム ロールの更新
 
 前の JSON テンプレートを使用して、既存のカスタム ロールを簡単に変更して、操作を追加または削除できます。 次の例のように、JSON テンプレートを更新し、ネットワークの読み取り操作を追加します。 テンプレートに示されている定義は、既存の定義に累積的には適用されません。つまり、ロールは、テンプレートに指定したとおりに表れます。 また、Id フィールドをロールの ID で更新する必要もあります。 この値が不明な場合は、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) コマンドレットを使用してこの情報を取得できます。
@@ -358,8 +399,8 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)
-- [Azure リソースのカスタム ロール](custom-roles.md)
+- [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [Azure カスタム ロール](custom-roles.md)
 - [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

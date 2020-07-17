@@ -1,19 +1,18 @@
 ---
-title: Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する | Microsoft Docs
-description: IoT Hub Device Provisioning Service と Service SDK でデバイス登録を管理する方法
-author: yzhong94
-ms.author: yizhon
+title: Azure DPS SDK を使用してデバイスの登録を管理する
+description: Service SDK を使用して IoT Hub Device Provisioning Service (DPS) でデバイス登録を管理する方法
+author: robinsh
+ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
-ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674754"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74975076"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法
 "*デバイス登録*" では、ある時点でデバイス プロビジョニング サービスに登録できる、1 つのデバイスまたはデバイス グループのレコードが作成されます。 登録レコードには、必要な IoT ハブを含む、目的のデバイス初期構成がその登録の一部として含まれます。 この記事では、Azure IoT プロビジョニング サービス SDK を使ってプログラムでプロビジョニング サービスのデバイス登録を管理する方法を示します。  この SDK は、GitHub の Azure IoT SDK と同じリポジトリにあります。
@@ -21,12 +20,12 @@ ms.locfileid: "56674754"
 ## <a name="prerequisites"></a>前提条件
 * デバイス プロビジョニング サービス インスタンスから接続文字列を取得します。
 * 使用されている[構成証明メカニズム](concepts-security.md#attestation-mechanism)のデバイス セキュリティ アーティファクトを取得します。
-    * [**トラステッド プラットフォーム モジュール (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * 個別登録：物理デバイスまたは TPM シミュレーターからの登録 ID と TPM 保証キー。
+    * [**トラステッド プラットフォーム モジュール (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
+        * 個別登録: 物理デバイスまたは TPM シミュレーターからの登録 ID と TPM 保証キー。
         * 登録グループは、TPM 構成証明には適用されません。
     * [**X.509**](/azure/iot-dps/concepts-security):
-        * 個別登録：物理デバイスまたは SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) エミュレーターからの[リーフ証明書](/azure/iot-dps/concepts-security)。
-        * 登録グループ:物理デバイスでデバイス証明書を生成するために使われる [CA/ルート証明書](/azure/iot-dps/concepts-security#root-certificate)または[中間証明書](/azure/iot-dps/concepts-security#intermediate-certificate)。  SDK DICE エミュレーターから生成することもできます。
+        * 個別登録: 物理デバイスまたは SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) エミュレーターからの[リーフ証明書](/azure/iot-dps/concepts-security)。
+        * 登録グループ: 物理デバイスでデバイス証明書を生成するために使われる [CA/ルート証明書](/azure/iot-dps/concepts-security#root-certificate)または[中間証明書](/azure/iot-dps/concepts-security#intermediate-certificate)。  SDK DICE エミュレーターから生成することもできます。
 * API の正確な呼び出し方法は、言語によって異なる場合があります。 詳しくは、GitHub で提供されているサンプルをご覧ください。
    * [Java によるプロビジョニング サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
    * [Node.js によるプロビジョニング サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
@@ -48,8 +47,8 @@ ms.locfileid: "56674754"
     以下のワークフローに従って、SDK で個別登録を作成できます。
     
     1. ```attestation``` メカニズム (TPM または X.509) を選びます。
-        1. **TPM**:物理デバイスまたは TPM シミュレーターからの保証キーを入力として使用することにより、サービス SDK の API ```TpmAttestation``` を呼び出して、登録の構成証明を作成できます。 
-        2. **X.509**:クライアント証明書を入力として使用することにより、サービス SDK の API ```X509Attestation.createFromClientCertificate``` を呼び出して、登録の構成証明を作成できます。
+        1. **TPM**: 物理デバイスまたは TPM シミュレーターからの保証キーを入力して使い、サービス SDK の API ```TpmAttestation``` を呼び出して、登録の構成証明を作成できます。 
+        2. **X.509**: クライアント証明書を入力として使い、サービス SDK の API ```X509Attestation.createFromClientCertificate``` を呼び出して、登録の構成証明を作成できます。
     2. 作成された ```attestation``` と一意の ```registrationId``` (デバイス上にあるか、または TPM シミュレーターから生成されます) を入力として使って、新しい ```IndividualEnrollment``` 変数を作成します。  必要に応じて、```Device ID```、```IoTHubHostName```、```ProvisioningStatus``` などのパラメーターを設定できます。
     3. バックエンド アプリケーションで ```IndividualEnrollment``` を指定してサービス SDK の API ```createOrUpdateIndividualEnrollment``` を呼び出し、個別登録を作成します。
 

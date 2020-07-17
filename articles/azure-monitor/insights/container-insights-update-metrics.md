@@ -1,27 +1,22 @@
 ---
 title: メトリックのためのコンテナーの Azure Monitor の更新方法 | Microsoft Docs
 description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするために、コンテナーの Azure Monitor を更新する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/06/2019
-ms.author: magoedte
-ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/11/2019
+ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148868"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76715908"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
+
 コンテナーの Azure Monitor では、Azure Kubernetes Services (AKS) クラスター ノードおよびポッドからのメトリックの収集と、Azure Monitor メトリック ストアへのそれらの書き込みのサポートを導入します。 この変更は、パフォーマンス グラフでの集計計算 (Avg、Count、Max、Min、Sum) を表示するときの適時性の改善、Azure portal ダッシュボードでのパフォーマンス グラフのピン留めのサポート、およびメトリック アラートのサポートを実現するためのものです。
+
+>[!NOTE]
+>現在、この機能は Azure Red Hat OpenShift クラスターをサポートしていません。
+>
 
 この機能の一部として、次のメトリックが有効にされています。
 
@@ -34,8 +29,12 @@ ms.locfileid: "65148868"
 
 どちらのプロセスでも、エージェントが収集したデータをクラスター リソースにパブリッシュできるように、クラスターのサービス プリンシパルに対して**メトリックの発行元の監視**ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。
 
-## <a name="prerequisites"></a>前提条件 
-開始する前に、AKS クラスター リソースの **[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
+## <a name="prerequisites"></a>前提条件
+
+開始する前に、次のことを確認してください。
+
+* カスタム メトリックは、一部の Azure リージョンでのみ利用できます。 サポートされているリージョンの一覧については、[こちら](../platform/metrics-custom-overview.md#supported-regions)を参照してください。
+* AKS クラスター リソースの **[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
 
@@ -48,6 +47,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 **[有効化]** をクリックすると、クラスターをアップグレードするためのプロセスが開始されます。 このプロセスには終了するまでに数秒かかる場合があり、メニューの [通知] の下で進行状況を追跡できます。
 
 ## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Azure コマンド シェルで Bash を使用してすべてのクラスターをアップグレードする
+
 Azure コマンド シェルで Bash を使用してサブスクリプション内のすべてのクラスターを更新するには、次の手順を実行します。
 
 1. Azure CLI を使用して、次のコマンドを実行します。  AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** の値を編集します。
@@ -65,6 +65,7 @@ Azure コマンド シェルで Bash を使用してサブスクリプション�
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>Azure CLI を使用してクラスターごとにアップグレードする
+
 Azure CLI を使用してサブスクリプション内の特定のクラスターを更新するには、次の手順を実行します。
 
 1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
@@ -77,6 +78,7 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
     ``` 
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Azure PowerShell を使用してすべてのクラスターをアップグレードする
+
 Azure PowerShell を使用してサブスクリプション内のすべてのクラスターを更新するには、次の手順を実行します。
 
 1. 次のスクリプトをコピーして、ファイルに貼り付けます。
@@ -332,6 +334,7 @@ Azure PowerShell を使用してサブスクリプション内のすべてのク
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-powershell"></a>Azure PowerShell を使用してクラスターごとにアップグレードする
+
 Azure PowerShell を使用して特定のクラスターを更新するには、次の手順を実行します。
 
 1. 次のスクリプトをコピーして、ファイルに貼り付けます。
@@ -526,7 +529,7 @@ Azure PowerShell を使用して特定のクラスターを更新するには、
     }
 
     #
-    #   Check AKS cluster existance and access check
+    #   Check AKS cluster existence and access check
     #
     Write-Host("Checking aks cluster exists...")
     $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $clusterName  -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -582,4 +585,5 @@ Azure PowerShell を使用して特定のクラスターを更新するには、
     ```
 
 ## <a name="verify-update"></a>更新を確認する 
-前に説明した方法のいずれかを使用して更新を開始したら、Azure Monitor メトリックス エクスプローラーを使用できます。また、**[メトリック名前空間]** から **[Insights]** が表示されていることを確認できます。 表示されている場合は、[メトリック アラート](../platform/alerts-metric.md)の設定または[ダッシュボード](../../azure-portal/azure-portal-dashboards.md)へのグラフのピン留めを開始できます。  
+
+前に説明した方法のいずれかを使用して更新を開始したら、Azure Monitor メトリックス エクスプローラーを使用できます。また、 **[メトリック名前空間]** から **[Insights]** が表示されていることを確認できます。 表示されている場合は、[メトリック アラート](../platform/alerts-metric.md)の設定または[ダッシュボード](../../azure-portal/azure-portal-dashboards.md)へのグラフのピン留めを開始できます。  

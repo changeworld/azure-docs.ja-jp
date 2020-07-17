@@ -1,20 +1,19 @@
 ---
 title: DistCp を使用して Azure Data Lake Storage Gen2 にデータをコピーする | Microsoft Docs
 description: DistCp ツールを使用して Data Lake Storage Gen2 との間でデータをコピーする
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.openlocfilehash: 0e85d2b2c7e9a3022e7fea2063ffa0aa915abb53
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.reviewer: stewu
+ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228411"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする
 
@@ -66,15 +65,15 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 **例**
 
-    hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
+    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>使用するマッパーの数を特定するにはどうすればよいですか。
 
 使用できるガイダンスがいくつかあります。
 
-* **手順 1: '既定' の YARN アプリ キューに使用できる合計メモリを決定する** - 最初の手順では、'既定' の YARN アプリ キューに使用可能なメモリを決定します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs]\(構成\) タブで '既定' の YARN アプリ キューに使用可能な YARN メモリを確認します。 これは、DistCp ジョブ (実際には MapReduce ジョブ) に使用可能なメモリの合計です。
+* **ステップ 1:'既定' の YARN アプリ キューに使用できる合計メモリを決定する** - 最初の手順では、'既定' の YARN アプリ キューに使用可能なメモリを決定します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs]\(構成\) タブで '既定' の YARN アプリ キューに使用可能な YARN メモリを確認します。 これは、DistCp ジョブ (実際には MapReduce ジョブ) に使用可能なメモリの合計です。
 
-* **手順 2: マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
+* **手順 2:マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 

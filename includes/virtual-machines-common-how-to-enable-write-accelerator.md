@@ -5,18 +5,16 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74566302"
 ---
-# <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
-
 書き込みアクセラレータは、専用の Azure Managed Disks がある Premium Storage 上の M シリーズ仮想マシン (VM) 用のディスク機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待機時間を短縮することです。 書き込みアクセラレータは、最新のデータベース用のパフォーマンスの高い方法でログ ファイルの更新をディスクに永続化する必要がある場合に最適です。
 
 書き込みアクセラレータは、パブリック クラウド内の M シリーズ VM に一般提供されています。
@@ -48,7 +46,9 @@ Azure ディスク/VHD で書き込みアクセラレータを使うときは、
 
 | VM の SKU | 書き込みアクセラレータ ディスクの数 | VM あたりの書き込みアクセラレータ ディスクの IOPS |
 | --- | --- | --- |
-| M128ms、128s | 16 | 20000 |
+| M416ms_v2、M416s_v2| 16 | 20000 |
+| M208ms_v2、M208s_v2| 8 | 10000 |
+| M128ms、M128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
 | M16ms、M16s | 2 | 2500 |
@@ -135,7 +135,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>PowerShell を使用して既存の Azure ディスクで書き込みアクセラレータを有効にする
 
-このスクリプトを使って、既存のディスクで書き込みアクセラレータを有効にすることができます。 `myVM`、`myWAVMs`、および `test-log001` を特定のデプロイに対して適切な値に置き換えます。 スクリプトでは、**$newstatus** の値を "$true" に設定して、既存のディスクに書き込みアクセラレータを追加します。 値 "$false" を使うと、特定のディスクの書き込みアクセラレータが無効になります。
+このスクリプトを使って、既存のディスクで書き込みアクセラレータを有効にすることができます。 `myVM`、`myWAVMs`、および `test-log001` を特定のデプロイに対して適切な値に置き換えます。 スクリプトでは、 **$newstatus** の値を "$true" に設定して、既存のディスクに書き込みアクセラレータを追加します。 値 "$false" を使うと、特定のディスクの書き込みアクセラレータが無効になります。
 
 ```powershell
 #Specify your VM Name

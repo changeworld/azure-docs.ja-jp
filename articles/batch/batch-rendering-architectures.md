@@ -1,20 +1,15 @@
 ---
-title: Azure レンダリング - 参照アーキテクチャ - Azure Batch
+title: Azure レンダリングの参照アーキテクチャ
 description: クラウドにバーストすることで Azure Batch およびその他の Azure サービスを使用してオンプレミス レンダー ファームを拡張するためのアーキテクチャ
-services: batch
-ms.service: batch
-author: davefellows
-manager: jeconnoc
-ms.author: lahugh
 ms.date: 02/07/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791207"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726521"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure レンダリング向け参照アーキテクチャ
 
@@ -57,7 +52,7 @@ ms.locfileid: "57791207"
   ![クラウド バースティング - ハイブリッド コンピューティングとストレージ](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Batch での[レンダー マネージャー](batch-rendering-render-managers.md)の使用について確認します。
 

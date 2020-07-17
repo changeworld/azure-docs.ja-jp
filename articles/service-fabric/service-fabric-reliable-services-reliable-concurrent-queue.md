@@ -1,25 +1,14 @@
 ---
 title: Azure Service Fabric の ReliableConcurrentQueue
 description: ReliableConcurrentQueue は、並列エンキューと並列デキューが利用できる高スループットのキューです。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: aljo
-ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663649"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75462724"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
 Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高いコンカレンシーを備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
@@ -32,7 +21,7 @@ Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) との比較
+## <a name="comparison-with-reliable-queue"></a>[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) との比較
 
 Reliable Concurrent Queue は、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の代替手段として提供されています。 このキューは FIFO の厳密な順序付けが必要ないケースで使用してください。FIFO の順序を確実に守るためには、そのトレードオフとして、コンカレンシーは放棄しなければなりません。  [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) では、エンキューとデキューを許可するトランザクションを一度に 1 つまでとし、FIFO の順序付けを強制的に適用するためにロックが使用されます。 これに対し、Reliable Concurrent Queue では、順序付けの制約が緩和され、任意の数の同時トランザクションが交互に、そのエンキュー操作とデキュー操作を実行できます。 Reliable Concurrent Queue では、ベストエフォートでの順序付けは備わっていますが、2 つの値の相対的順序は保証されません。
 
@@ -45,17 +34,24 @@ ReliableConcurrentQueue の使用例として、[メッセージ キュー](http
 * このキューでは、FIFO の厳密な順序が保証されません。
 * このキューは、それ自身の書き込みを読み取りません。 トランザクション内で何らかの要素がエンキューされた場合、同じトランザクション内のデキュー側からは、その要素が見えません。
 * デキューは互いに分離されているわけではありません。 トランザクション *txnA* で要素 *A* がデキューされた場合、*txnA* がコミットされなかったとしても、同時トランザクション *txnB* からは、要素 *A* が見えません。  *txnA* が中止された場合は、直ちに *txnB* から *A* が見えるようになります。
-* *TryPeekAsync* の動作は、*TryDequeueAsync* の後でトランザクションを中止することで実装できます。 その例については、「プログラミング パターン」セクションを参照してください。
+* *TryPeekAsync* の動作は、*TryDequeueAsync* の後でトランザクションを中止することで実装できます。 この動作の例については、「プログラミング パターン」セクションを参照してください。
 * Count にトランザクション性はありません。 キュー内の要素数を大まかに把握する目的で使うことはできますが、それが表すのは特定の時点での情報であり、信頼することはできません。
-* トランザクションの実行時間が長引くのを避けるため、トランザクションがアクティブである間は、デキューした要素に対して負荷の大きい処理を実行しないでください。トランザクションの実行に時間がかかると、システムのパフォーマンスに影響が生じる可能性があります。
+* システムのパフォーマンスに影響が生じる可能性がある長時間実行されるトランザクションを回避するため、トランザクションがアクティブである間は、デキューされた項目に対して負荷の大きい処理を実行しないでください。
 
 ## <a name="code-snippets"></a>コード スニペット
 いくつかのコード スニペットとその結果として得られる出力について見ていきましょう。 このセクションでは例外処理は行っていません。
 
+### <a name="instantiation"></a>インスタンス化
+信頼性の高い同時実行キューのインスタンスを作成することは、他のリライアブル コレクションに似ています。
+
+```csharp
+IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
+```
+
 ### <a name="enqueueasync"></a>EnqueueAsync
 以下に示したのは、EnqueueAsync を使ったいくつかのコード スニペットと予想される出力結果です。
 
-- *ケース 1:単一のエンキュー タスク*
+- "*ケース 1: 単一のエンキュー タスク*"
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -74,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 20、10
 
 
-- *ケース 2:並列エンキュー タスク*
+- "*ケース 2: 並列エンキュー タスク*"
 
 ```
 // Parallel Task 1
@@ -103,7 +99,7 @@ using (var txn = this.StateManager.CreateTransaction())
 以下に示したのは、TryDequeueAsync を使ったいくつかのコード スニペットと予想される出力結果です。 キューには既に、次の要素が格納されているとします。
 > 10、20、30、40、50、60
 
-- *ケース 1:単一のデキュー タスク*
+- "*ケース 1: 単一のデキュー タスク*"
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -118,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 このタスクが正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 キュー内の要素の順序を推測することはできません。任意の 3 つの要素が任意の順序でデキューされる可能性があります。 キューは、元の (エンキュー時の) 順序で要素を保とうとしますが、同時に実行される操作やエラーが原因でやむをえず順序を変更する可能性があります。  
 
-- *ケース 2:並列デキュー タスク*
+- "*ケース 2: 並列デキュー タスク*"
 
 ```
 // Parallel Task 1
@@ -146,7 +142,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 同じ要素が両方のリストに出現することは "*ありません*"。 したがって dequeue1 に *10*、*30* が格納されている場合、dequeue2 には *20*、*40* が格納されます。
 
-- *ケース 3:トランザクションの中止を伴うデキューの順序*
+- "*ケース 3: トランザクションの中止を伴うデキューの順序*"
 
 デキューの途中でトランザクションを中止すると、取り出された要素がキューの先頭に戻されます。 キューの先頭に要素が戻される順序は保証されません。 以下のコードを見てください。
 
@@ -174,7 +170,7 @@ using (var txn = this.StateManager.CreateTransaction())
 このセクションでは、ReliableConcurrentQueue を使う際に役立つと考えられるプログラミング パターンをいくつか見ていきます。
 
 ### <a name="batch-dequeues"></a>バッチ デキュー
-推奨されるプログラミング パターンは、コンシューマー タスクで、そのデキューを 1 つずつ実行するのではなくバッチ処理することです。 個々のバッチ (バッチ サイズ) の後に設ける待ち時間は、ユーザーがスロットルできます。 このプログラミング モデルを示したのが、以下のコード スニペットです。  この例では、トランザクションがコミットされた後に処理が実行されます。したがって、処理中にエラーが発生した場合、未処理の要素は、処理されないまま失われることに注意してください。  別の方法として、トランザクションのスコープ内で処理を実行することもできますが、その場合、パフォーマンスに悪影響が生じるうえ、一度処理された要素の処理が必要となります。
+推奨されるプログラミング パターンは、コンシューマー タスクで、そのデキューを 1 つずつ実行するのではなくバッチ処理することです。 個々のバッチ (バッチ サイズ) の後に設ける待ち時間は、ユーザーがスロットルできます。 このプログラミング モデルを示したのが、以下のコード スニペットです。 この例では、トランザクションがコミットされた後に処理が実行されます。したがって、処理中にエラーが発生した場合、未処理の項目は、処理されないまま失われることに注意してください。  代わりに、トランザクションのスコープ内で処理を実行することもできますが、パフォーマンスに悪影響が生じる可能性があり、既に処理されている項目の処理が必要になります。
 
 ```
 int batchSize = 5;
@@ -268,9 +264,9 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>ベストエフォートのドレイン
-データ構造の同時性のために、キューのドレインは保証できません。  実行待ちになっているユーザーの操作がキューに存在していないとしても、TryDequeueAsync に対する特定の呼び出しから、既にエンキューされてコミットされた要素が返されない可能性があります。  "*最終的には*"、エンキューされた要素がデキュー側から見えるようになりますが、アウトオブバンドの通信メカニズムがなければ、個々のコンシューマーは、そのキューが定常状態に到達したことを把握できません。これは、すべてのプロデューサーが停止して、新しいエンキュー処理が発生することがないとしても同様です。 したがってドレインはベストエフォートの処理として、以下のように実装されます。
+データ構造の同時性のために、キューのドレインは保証できません。  キューに実行中のユーザーの操作がない場合でも、TryDequeueAsync に対する特定の呼び出しから、既にエンキューされてコミットされた項目が返されない可能性があります。  "*最終的には*"、エンキューされた要素がデキュー側から見えるようになりますが、アウトオブバンドの通信メカニズムがなければ、個々のコンシューマーは、そのキューが定常状態に到達したことを把握できません。これは、すべてのプロデューサーが停止して、新しいエンキュー処理が発生することがないとしても同様です。 したがってドレインはベストエフォートの処理として、以下のように実装されます。
 
-キューのドレインを試行する場合は、あらかじめ後続のプロデューサー タスクとコンシューマー タスクをすべて停止し、実行中のトランザクションをコミット (または中止) しておく必要があります。  キューに格納されていると考えられる要素の数がわかっている場合は、すべての要素がデキューされたことを知らせる通知を設定することができます。
+キューのドレインを試行する場合は、あらかじめ後続のプロデューサー タスクとコンシューマー タスクをすべて停止し、実行中のトランザクションをコミット (または中止) しておく必要があります。  キューに予期される項目の数がわかっている場合は、すべての項目がデキューされたことを知らせる通知を設定することができます。
 
 ```
 int numItemsDequeued;

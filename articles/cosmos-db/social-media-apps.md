@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8206bff765b59ddc5d6be2388145bf51e1000241
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256875"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73827293"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 
@@ -96,7 +96,7 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-作成日順に並べ替えられた投稿を含む "最新の" ストリームを作成できます。 または、過去 24 時間により多くの "いいね" を獲得した投稿を含む "最もホットな" ストリームを作成することもできます。 フォロワーや関心事などのロジックに基づいて、ユーザーごとにカスタム ストリームを実装することさえできます。 それもやはり投稿のリストです。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN 演算子](how-to-sql-query.md#WhereClause)を使用して Cosmos DB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
+作成日順に並べ替えられた投稿を含む "最新の" ストリームを作成できます。 または、過去 24 時間により多くの "いいね" を獲得した投稿を含む "最もホットな" ストリームを作成することもできます。 フォロワーや関心事などのロジックに基づいて、ユーザーごとにカスタム ストリームを実装することさえできます。 それもやはり投稿のリストです。 これは、これらのリストの構築方法の問題ですが、読み取りパフォーマンスは引き続き制約を受けていません。 これらのリストのいずれかを取得したら、[IN キーワード](sql-query-keywords.md#in)を使用して Cosmos DB に対して 1 つのクエリを発行し、投稿のページを一度に取得します。
 
 フィードのストリームは、[Azure App Service](https://azure.microsoft.com/services/app-service/) のバックグラウンド プロセス ([Webjobs](../app-service/webjobs-create.md)) を使用して構築できました。 投稿が作成されたら、[Azure Storage](https://azure.microsoft.com/services/storage/) [Queues](../storage/queues/storage-dotnet-how-to-use-queues.md) を使用してバックグラウンド処理をトリガーし、[Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) を使用して Webjobs をトリガーすることで、独自のカスタム ロジックに基づいてストリーム内での投稿の伝達を実装できます。
 
@@ -194,13 +194,13 @@ Azure Cosmos DB では、自動的なインデックス付けによって、す�
 
 ユーザーは、幸いにも大量のコンテンツを生成します。 コンテンツのストリームに直接存在しない可能性のあるコンテンツを検索して見つける機能を提供できる必要があります。作成者をフォローするのではなく、6 か月前に行われた古い投稿を見つけようとしているだけだからです。
 
-Azure Cosmos DB を使用しているので、[Azure Search](https://azure.microsoft.com/services/search/) を使用して、検索プロセスと UI 以外のコードを入力せずに、検索エンジンを数分で簡単に実装できます。
+Azure Cosmos DB を使用しているので、[Azure Cognitive Search](https://azure.microsoft.com/services/search/) を使用して、検索プロセスと UI 以外のコードを入力せずに、検索エンジンを数分で簡単に実装できます。
 
 このプロセスがとても簡単な理由
 
-Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure Cosmos DB インデクサー](../search/search-howto-index-documentdb.md)がサポートされています。 Cosmos DB から Azure Search への情報の移行は簡単です。 どちらのテクノロジも JSON 形式で情報を保存するので、必要なのは、[インデックスを作成](../search/search-create-index-portal.md)し、インデックス付けするドキュメントから属性をマップすることだけです。 これで終了です。 データのサイズによっては、クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。
+Azure Cognitive Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。 [Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure Cosmos DB インデクサー](../search/search-howto-index-documentdb.md)がサポートされています。 Cosmos DB から Azure Cognitive Search への情報の移行は簡単です。 どちらのテクノロジも JSON 形式で情報を保存するので、必要なのは、[インデックスを作成](../search/search-create-index-portal.md)し、インデックス付けするドキュメントから属性をマップすることだけです。 これで終了です。 データのサイズによっては、クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。
 
-Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検索のためのヒッチハイカー ガイド)](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
+Azure Cognitive Search の詳細については、「[検索のヒッチハイク ガイド](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
 
 ## <a name="the-underlying-knowledge"></a>基礎となる知識
 
@@ -248,8 +248,8 @@ Cosmos DB を使用すると、数回のクリックで[データをグローバ
 
 ![ソーシャル ネットワーキングでの Azure サービス間の対話を示すダイアグラム](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-実際には、この種のシナリオに対応する特効薬はありません。 優れたソーシャル アプリケーションを提供する Azure Cosmos DB の速度と自由度、Azure Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
+実際には、この種のシナリオに対応する特効薬はありません。 優れたソーシャル アプリケーションを提供する Azure Cosmos DB の速度と自由度、Azure Cognitive Search のような最高クラスの検索ソリューションの背後にあるインテリジェンス、言語に依存しないアプリケーションではなく、強力なバックグラウンド プロセスをホストする Azure App Services の柔軟性、大量のデータを保存する拡張可能な Azure Storage と Azure SQL Database、プロセスにフィードバックを提供することができ、適切なコンテンツを適切なユーザーに提供するうえで役立つ知識とインテリジェンスを生み出す Azure Machine Learning の分析力など、優れたサービスの組み合わせによって生まれる相乗効果により、優れた体験を構築することが可能になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cosmos DB のユース ケースの詳細については、[Cosmos DB の一般的なユース ケース](use-cases.md)に関するページをご覧ください。

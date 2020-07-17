@@ -1,24 +1,24 @@
 ---
-title: Azure AD パスワード保護での監視とログ記録 - Azure Active Directory
-description: Azure AD パスワード保護の監視とログ記録について
+title: オンプレミスの Azure AD パスワード保護を監視する
+description: オンプレミスの Active Directory Domain Services 環境で Azure AD のパスワード保護を監視してログを確認する方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479726"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652611"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD パスワード保護の監視とログ記録
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>オンプレミスの Azure AD パスワード保護環境を監視してログを確認する
 
 Azure AD パスワード保護のデプロイ後、監視とレポートは重要なタスクです。 この記事では、各サービスが情報をログに記録する場所や、Azure AD パスワード保護の使用について報告する方法など、さまざまな監視手法を理解できるように詳しく説明します。
 
@@ -94,7 +94,7 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-コマンドレット レポートのスコープは、–Forest、-Domain、–DomainController のいずれかのパラメーターの使用の影響を受けることがあります。 パラメーターを指定しないと暗黙的に –Forest が指定されます。
+コマンドレット レポートのスコープは、-Forest、-Domain、-DomainController のいずれかのパラメーターの使用の影響を受けることがあります。 パラメーターを指定しないと暗黙的に –Forest が指定されます。
 
 `Get-AzureADPasswordProtectionSummaryReport` コマンドレットでは、DC エージェント管理イベント ログのクエリが実行され、表示されている各結果カテゴリに対応するイベントの合計数がカウントされます。 次の表では、各結果とそれに対応するイベント ID のマッピングを示します。
 
@@ -271,6 +271,27 @@ HeartbeatUTC の値が古い場合は、そのドメイン コントローラー
 
 PasswordPolicyDateUTC の値が古い場合は、そのマシンの Azure AD パスワード保護 DC エージェントが正しく動作していないことを示している可能性があります。
 
+## <a name="dc-agent-newer-version-available"></a>DC エージェントの新しいバージョンが使用可能
+
+DC エージェント サービスは、新しいバージョンの DC エージェント ソフトウェアがあることを検出すると、30034 警告イベントを操作ログに記録します。その例を次に示します。
+
+```text
+An update for Azure AD Password Protection DC Agent is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+```
+
+前述のイベントには、新しいソフトウェアのバージョンが明記されていません。 その情報については、イベント メッセージに記載されたリンク先にアクセスする必要があります。
+
+> [!NOTE]
+> 前述のイベント メッセージでは自動アップグレード ("autoupgrade") について触れられていますが、現在 DC エージェント ソフトウェアでは、その機能はサポートされません。
+
 ## <a name="proxy-service-event-logging"></a>プロキシ サービス イベント ログ
 
 プロキシ サービスでは、次のイベント ログに最小セットのイベントが生成されます。
@@ -340,7 +361,28 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 HeartbeatUTC の値が古い場合は、そのコンピューターの Azure AD パスワード保護プロキシが実行されていないか、アンインストールされていることを示している可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="proxy-agent-newer-version-available"></a>プロキシ エージェントの新しいバージョンが使用可能
+
+プロキシ エージェント サービスは、新しいバージョンのプロキシ ソフトウェアがあることを検出すると、20002 警告イベントを操作ログに記録します。その例を次に示します。
+
+```text
+An update for Azure AD Password Protection Proxy is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+.
+```
+
+前述のイベントには、新しいソフトウェアのバージョンが明記されていません。 その情報については、イベント メッセージに記載されたリンク先にアクセスする必要があります。
+
+自動アップグレードを有効にしてプロキシ エージェントを構成した場合でも、このイベントは生成されます。
+
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD パスワード保護のトラブルシューティング](howto-password-ban-bad-on-premises-troubleshoot.md)
 

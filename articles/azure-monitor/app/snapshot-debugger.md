@@ -1,30 +1,22 @@
 ---
-title: .NET アプリ向け Azure Application Insights スナップショット デバッガー | Microsoft Docs
+title: .NET アプリ向け Azure Application Insights スナップショット デバッガー
 description: 例外が運用 .NET アプリでスローされるときにデバッグ スナップショットが自動的に収集される
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: brahmnes
-ms.date: 03/07/2019
-ms.author: mbullwin
-ms.openlocfilehash: 074b701422f32f4cd18fd2eb05e3453e139e17ae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 10/23/2019
+ms.reviewer: cweining
+ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205597"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234635"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
-例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のスナップショット デバッガー (プレビュー) により、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](../../azure-monitor/app/asp-net-exceptions.md)に表示されます。
+例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](../../azure-monitor/app/asp-net-exceptions.md)に表示されます。
 
-ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 ソース コードによるデバッグ エクスペリエンスをさらに向上させるには、Visual Studio 2017 Enterprise でスナップショットを開きます。 Visual Studio では、例外を待たずに[スナップポイントを設定し、対話形式でスナップショットを取得](https://aka.ms/snappoint)できます。
+ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 ソース コードによるデバッグ エクスペリエンスをさらに向上させるには、Visual Studio 2019 Enterprise でスナップショットを開きます。 Visual Studio では、例外を待たずに[スナップポイントを設定し、対話形式でスナップショットを取得](https://aka.ms/snappoint)できます。
 
-デバッグ スナップショットは 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
+デバッグ スナップショットは 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>アプリケーションに対して Application Insights スナップショット デバッガーを有効にする
 スナップショット コレクションは次のアプリケーションで使用できます。
@@ -37,14 +29,14 @@ ms.locfileid: "65205597"
 * OS ファミリ 4 以降を実行している [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Windows Server 2012 R2 以降で稼働している [Azure Service Fabric サービス](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Windows Server 2012 R2 以降を実行している [Azure Virtual Machines および仮想マシン スケール セット](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* Windows Server 2012 R2 以降を実行している[オンプレミスの仮想マシンまたは物理マシン](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* Windows Server 2012 R2 以降または Windows 8.1 以降を実行している[オンプレミスの仮想マシンまたは物理マシン](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
 > クライアント アプリケーション (たとえば、WPF、Windows フォーム、または UWP) はサポートされません。
 
 スナップショット デバッガーを有効にしたのにスナップショットが表示されない場合は、「[トラブルシューティング ガイド](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)」を参照してください。
 
-## <a name="grant-permissions"></a>アクセス許可を付与する
+## <a name="grant-permissions"></a>[アクセス許可の付与]
 
 スナップショットへのアクセスは、ロールベースのアクセス制御 (RBAC) によって保護されます。 スナップショットを検査するユーザーは、最初にサブスクリプション所有者によって必要なロールに追加される必要があります。
 
@@ -66,11 +58,11 @@ ms.locfileid: "65205597"
 
 ## <a name="view-snapshots-in-the-portal"></a>Portal でスナップショットを表示する
 
-アプリケーションで例外が発生してスナップショットが作成されたら、スナップショットを表示することができます。 例外が発生してから、スナップショットの準備ができて Portal から表示できるまでには、5 分から 10 分かかります。 スナップショットを表示するには、**[失敗]** ウィンドウで、**[操作]** タブを表示しているときは **[操作]** ボタンを選択し、**[例外]** タブを表示しているときには **[例外]** ボタンを選択します。
+アプリケーションで例外が発生してスナップショットが作成されたら、スナップショットを表示することができます。 例外が発生してから、スナップショットの準備ができて Portal から表示できるまでには、5 分から 10 分かかります。 スナップショットを表示するには、 **[失敗]** ウィンドウで、 **[操作]** タブを表示しているときは **[操作]** ボタンを選択し、 **[例外]** タブを表示しているときには **[例外]** ボタンを選択します。
 
 ![[失敗] ページ](./media/snapshot-debugger/failures-page.png)
 
-右側のウィンドウで操作または例外を選択して、**[エンドツーエンド トランザクション詳細]** ウィンドウを開き、次に例外イベントを選択します。 特定の例外のスナップショットが使用可能な場合、[例外](../../azure-monitor/app/asp-net-exceptions.md)の詳細と共に右側のウィンドウに **[デバッグ スナップショットを開く]** ボタンが表示されます。
+右側のウィンドウで操作または例外を選択して、 **[エンドツーエンド トランザクション詳細]** ウィンドウを開き、次に例外イベントを選択します。 特定の例外のスナップショットが使用可能な場合、[例外](../../azure-monitor/app/asp-net-exceptions.md)の詳細と共に右側のウィンドウに **[デバッグ スナップショットを開く]** ボタンが表示されます。
 
 ![例外の [Debug Snapshot (デバッグ スナップショット)] ボタンを開く](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -81,9 +73,9 @@ ms.locfileid: "65205597"
 スナップショットには機密情報が含まれている可能性があるため、既定では非表示になっています。 スナップショットを表示するには、`Application Insights Snapshot Debugger` のロールを割り当てられている必要があります。
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Visual Studio 2017 Enterprise 以上でスナップショットを表示する
-1. **[Download Snapshot]\(スナップショットのダウンロード\)** をクリックして `.diagsession` ファイルをダウンロードします。このファイルは Visual Studio 2017 Enterprise で開くことができます。
+1. **[Download Snapshot]\(スナップショットのダウンロード\)** をクリックして `.diagsession` ファイルをダウンロードします。このファイルは Visual Studio Enterprise で開くことができます。
 
-2. `.diagsession` ファイルを開くには、スナップショット デバッガーの VS コンポーネントがインストールされている必要があります。 スナップショット デバッガー コンポーネントは、VS の ASP.net ワークロードに必要なコンポーネントです。これは、VS インストーラーの個々のコンポーネント リストから選択することができます。 15.5 より前のバージョンの Visual Studio 2017 を使用している場合、拡張機能は [VS Marketplace](https://aka.ms/snapshotdebugger) からインストールする必要があります。
+2. `.diagsession` ファイルを開くには、スナップショット デバッガーの Visual Studio コンポーネントがインストールされている必要があります。 スナップショット デバッガー コンポーネントは、Visual Studio の ASP.net ワークロードに必要なコンポーネントです。これは、Visual Studio インストーラーの個々のコンポーネント リストから選択することができます。 Visual Studio 2017 バージョン 15.5 より前のバージョンの Visual Studio を使用している場合、拡張機能は [Visual Studio Marketplace](https://aka.ms/snapshotdebugger) からインストールする必要があります。
 
 3. スナップショット ファイルを開くと、Visual Studio の[ミニダンプ デバッグ] ページが表示されます。 **[Debug Managed Code]\(マネージド コードをデバッグする\)** をクリックして、スナップショットのデバッグを開始します。 例外がスローされたコード行がスナップショットに表示され、プロセスの現在の状態をデバッグできます。
 
@@ -124,6 +116,10 @@ Visual Studio 2017 のバージョン 15.2 (またはそれ以上) では、App 
 
 Azure Compute や他の種類の場合、シンボル ファイルがメイン アプリケーション .dll (通常は `wwwroot/bin`) の同じフォルダーにあるか、現在のパスで使用できることを確認してください。
 
+> [!NOTE]
+> 使用できるさまざまなシンボル オプションについて詳しくは、[Visual Studio のドキュメント](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+)をご覧ください。 最良の結果を得るために、"Full"、"ポータブル"、または "埋め込み" を使用することをお勧めします。
+
 ### <a name="optimized-builds"></a>最適化されたビルド
 場合によっては、JIT コンパイラによって適用される最適化のために、リリース ビルドでローカル変数を表示できないことがあります。
 ただし、Azure App Services では、Snapshot Collector は収集計画の一部であるスロー方法を非最適化する可能性があります。
@@ -131,7 +127,7 @@ Azure Compute や他の種類の場合、シンボル ファイルがメイン �
 > [!TIP]
 > Application Insights サイト拡張機能を App Service にインストールして、非最適化のサポートを得ます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のアプリケーションに対して Application Insights スナップショット デバッガーを有効にします。
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)

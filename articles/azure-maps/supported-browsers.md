@@ -1,31 +1,31 @@
 ---
-title: Web SDK でサポートされているブラウザー - Azure Maps | Microsoft Docs
-description: Azure Maps Web SDK でサポートされているブラウザーについて説明します。
+title: Web SDK でサポートされているブラウザー | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK でサポートされているブラウザーについて説明します。また、ブラウザーがサポート対象のブラウザーかどうかを確認する方法についても説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: bc876fbf0eb15f887d57d4ddcca2301ef7233afa
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+manager: cpendle
+ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577341"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76988789"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 
-Azure Maps Web SDK は、Web ブラウザーがマップ コントロールの読み込みと表示をサポートするために最低限必要な WebGL 機能が搭載されているかを検出するために、ヘルパー関数 [atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-) を提供しています。 
+Azure Maps の Web SDK は、[atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)という名前のヘルパー関数を提供します。 この関数は、マップ コントロールのロードとレンダリグをサポートするために必要な WebGL 機能の最小セットが Web ブラウザにあるかどうかを検出します。 この関数の使用方法の例を次に示します。
 
-```
-if(!atlas.isSupported()) {
+```JavaScript
+if (!atlas.isSupported()) {
     alert('Your browser is not supported by Azure Maps');
-} else if(!atlas.isSupported(true)) {
+} else if (!atlas.isSupported(true)) {
     alert('Your browser is supported by Azure Maps, but may have major performance caveats.');
 } else {
-    //Your browser is supported. Add your map code here.
+    // Your browser is supported. Add your map code here.
 }
 ```
 
@@ -33,27 +33,27 @@ if(!atlas.isSupported()) {
 
 Azure Maps Web SDK は、次のデスクトップ ブラウザーをサポートしています。
 
-- Microsoft Edge の現在と以前のバージョン 
-- Chrome の現在と以前のバージョン 
-- Firefox の現在と以前のバージョン 
-- Safari (Mac OS X) の現在と以前のバージョン 
+- Microsoft Edge (現在と以前のバージョン)
+- Google Chrome (現在と以前のバージョン)
+- Mozilla Firefox (現在と以前のバージョン)
+- Apple Safari (Mac OS X) (現在と以前のバージョン)
 
-「[レガシ ブラウザーを対象にする](#Target-Legacy-Browsers)」も参照してください。
+このアーティクルで後述する「[Target legacy browsers](#Target-Legacy-Browsers) (レガシ ブラウザーをターゲット)」も参照してください。
 
 ## <a name="mobile"></a>モバイル
 
 Azure Maps Web SDK は、次のモバイル ブラウザーをサポートしています。
 
--  Android
-    * Android 6.0 以降の Chrome の現在のバージョン
-    * Android 6.0 以降の Chrome WebView
+- Android
+  - Android 6.0 以降の Chrome の現在のバージョン
+  - Android 6.0 以降の Chrome WebView
 - iOS
-    * 現在と以前のメジャー バージョンの iOS の Mobile Safari
-    * 現在と以前のメジャー バージョンの iOS の UIWebView と WKWebView
-    * 現在のバージョンの iOS 用 Chrome
+  - 現在と以前のメジャー バージョンの iOS の Mobile Safari
+  - 現在と以前のメジャー バージョンの iOS の UIWebView と WKWebView
+  - 現在のバージョンの iOS 用 Chrome
 
 > [!TIP]
-> WebView コントロールを使用してモバイル アプリケーション内にマップを組み込んでいる場合は、Azure Maps Web SDK の CDN でホストされたバージョンを参照する代わりに、[この SDK の npm パッケージ](https://www.npmjs.com/package/azure-maps-control)を使用することをお勧めします。 SDK が既にユーザーのデバイスに存在し、実行時にダウンロードする必要がないので、読み込み時間が減少します。
+> WebView コントロールを使用してモバイル アプリケーション内にマップを組み込んでいる場合は、Azure Content Delivery Network でホストされた SDK のバージョンを参照する代わりに、[Azure Maps Web SDK の npm パッケージ](https://www.npmjs.com/package/azure-maps-control)を使用することをお勧めします。 このアプローチでは、既に SDK がユーザーのデバイスにあり実行時にダウンロードする必要がないため、読み込み時間が短縮されます。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -61,17 +61,18 @@ Azure Maps Web SDK は、次のモバイル ブラウザーをサポートして
 
 - サービス モジュール ([ドキュメント](how-to-use-services-module.md) | [npm モジュール](https://www.npmjs.com/package/azure-maps-rest))
 
-## <a name="Target-Legacy-Browsers"></a>レガシ ブラウザーを対象にする
+## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>レガシ ブラウザーを対象にする
 
-WebGL がサポートされていないか、またはサポートに制限がある可能性のある古いブラウザーを対象にする必要がある場合は、Azure Maps サービスを [leaflet](https://leafletjs.com/) などのオープン ソースのマップ コントロールと組み合わせて使用することをお勧めします。 
+WebGL をサポートしていない、または制限付きでのみサポートしている古いブラウザーを対象とする場合があります。 このような場合は、[リーフレット](https://leafletjs.com/)などのオープンソース マップ コントロールと一緒に Azure Maps サービスを使うことをお勧めします。 次に例を示します。
 
+<br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a>」Pen を表示します。
 </iframe>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps Web SDK の詳細について学習します。
 

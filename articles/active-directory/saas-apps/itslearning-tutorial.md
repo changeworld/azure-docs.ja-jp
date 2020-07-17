@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と itslearning の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と itslearning の統合 | Microsoft Docs'
 description: Azure Active Directory と itslearning の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3f53cd80fcd17241dcecb07f631277abe795946d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 9a4a95452c11993f57674bcbd16cf3ed5ea828e4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897964"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67099546"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>チュートリアル:Azure Active Directory と itslearning の統合
+# <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>チュートリアル: Azure Active Directory と itslearning の統合
 
 このチュートリアルでは、itslearning と Azure Active Directory (Azure AD) を統合する方法について説明します。
 itslearning と Azure AD の統合には、次の利点があります。
@@ -105,7 +105,7 @@ itslearning で Azure AD シングル サインオンを構成するには、次
 
     ![[itslearning のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、URL として次のように入力します: 
+    a. **[サインオン URL]** ボックスに、URL として次のように入力します:
     
     | |
     |--|

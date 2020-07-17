@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Adobe Sign の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Adobe Sign の統合 | Microsoft Docs'
 description: Azure Active Directory と Adobe Sign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91d4cf874d4d98735582d2690072e6a04683c1f5
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988720"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73154027"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル:Azure Active Directory と Adobe Sign の統合
+# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル: Azure Active Directory と Adobe Sign の統合
 
 このチュートリアルでは、Adobe Sign と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Adobe Sign と Azure AD の統合には、次の利点があります。
@@ -151,13 +152,13 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
 
 1. [SAML] メニューで、 **[アカウント設定]**  >  **[SAML 設定]** を選択します。
    
-    ![Adobe Sign の [SAML 設定] ページ](./media/adobe-echosign-tutorial/ic789520.png "[アカウント]") のスクリーンショット
+    ![Adobe Sign の [SAML 設定] ページのスクリーンショット](./media/adobe-echosign-tutorial/ic789520.png "Account")
 
 1. **[SAML 設定]** セクションで、次の手順に従います。
   
-   ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789521.png "[SAML 設定]") のスクリーンショット
+   ![[SAML 設定] のスクリーンショット](./media/adobe-echosign-tutorial/ic789521.png "SAML 設定")
    
-   ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789522.png "[SAML 設定]") のスクリーンショット
+   ![[SAML 設定] のスクリーンショット](./media/adobe-echosign-tutorial/ic789522.png "SAML 設定")
 
    a. **[SAML モード]** で **[SAML Mandatory]** を選択します。
    
@@ -237,11 +238,11 @@ Azure AD ユーザーが Adobe Sign にサインインできるようにする�
 
 2. 上部のメニューで、 **[アカウント]** を選択します。 次に、左側のウィンドウで **[ユーザーとグループ]**  >  **[新規ユーザーを作成]** を選択します。
    
-    ![Adobe Sign 企業サイトのスクリーンショット ([アカウント]、[ユーザーとグループ]、[新規ユーザーを作成] が赤枠で示されています)](./media/adobe-echosign-tutorial/ic789524.png "アカウント")
+    ![Adobe Sign 企業サイトのスクリーンショット ([アカウント]、[ユーザーとグループ]、[新規ユーザーを作成] が強調表示されています)](./media/adobe-echosign-tutorial/ic789524.png "Account")
    
 3. **[新しいユーザーの作成]** セクションで、次の手順に従います。
    
-    ![[新規ユーザーを作成] セクションのスクリーンショット](./media/adobe-echosign-tutorial/ic789525.png "ユーザーの作成")
+    ![[新しいユーザーの作成] セクションのスクリーンショット](./media/adobe-echosign-tutorial/ic789525.png "[Create User]")
    
     a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]** 、 **[名]** 、 **[姓]** を入力します。
    

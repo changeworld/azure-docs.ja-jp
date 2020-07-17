@@ -1,38 +1,35 @@
 ---
-title: Azure IoT Hub Device Provisioning Service でカスタム割り当てポリシーを使用する方法 | Microsoft Docs
-description: Azure IoT Hub Device Provisioning Service でカスタム割り当てポリシーを使用する方法
+title: Azure IoT Hub Device Provisioning Service のカスタム割り当てポリシー
+description: Azure IoT Hub Device Provisioning Service (DPS) でカスタム割り当てポリシーを使用する方法
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: f0eb2f7358e8fb1564275e1de510f302d2eef90b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500942"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75453933"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
-
 
 カスタム割り当てポリシーを使用すると、デバイスを IoT ハブに割り当てる方法をより細かく制御できます。 これは、デバイスを IoT ハブに割り当てる際に、[Azure 関数](../azure-functions/functions-overview.md)でカスタム コードを使用することで実現されます。 Device Provisioning Service から、デバイスと登録に関するすべての関連情報を提供する Azure 関数コードを呼び出します。 関数コードが実行され、デバイスのプロビジョニングに使用する IoT ハブ情報が返されます。
 
 Device Provisioning Service で提供されるポリシーがご自身のシナリオの要件を満たしていない場合は、カスタム割り当てポリシーを使用して独自の割り当てポリシーを定義します。
 
-たとえば、プロビジョニングの際にデバイスで使用されている証明書を確認し、証明書のプロパティに基づいて IoT ハブにデバイスを割り当てる必要がある場合です。 また、デバイス用のデータベースに情報を格納していて、どの IoT ハブにデバイスを割り当てるかを決定するためにそのデータベースを照会する必要がある場合です。
-
+たとえば、プロビジョニングの際にデバイスで使用されている証明書を確認し、証明書のプロパティに基づいて IoT ハブにデバイスを割り当てる必要がある場合です。 または、デバイス用のデータベースに情報を格納していて、どの IoT ハブにデバイスを割り当てるかを決定するためにそのデータベースを照会する必要がある場合です。
 
 この記事では、C# で記述された Azure 関数を使用して、カスタム割り当てポリシーについて説明します。 "*Contoso トースター部門*" と "*Contoso ヒート ポンプ部門*" を表す 2 つの新しい IoT ハブを作成します。 プロビジョニングを必要とするデバイスには、プロビジョニングの要求が受け入れられるようにするために、次のいずれかのサフィックスを持つ登録 ID が必要です。
 
-- **-contoso-tstrsd-007**: Contoso トースター部門
-- **-contoso-hpsd-088**: Contoso ヒート ポンプ部門
+* **-contoso-tstrsd-007**: Contoso トースター部門
+* **-contoso-hpsd-088**: Contoso ヒート ポンプ部門
 
-デバイスは、これらの登録 ID の必須サフィックスのいずれかに基づいてプロビジョニングされます。 これらのデバイスは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) に含まれるプロビジョニング サンプルを使用してシミュレートされます。 
+デバイスは、これらの登録 ID の必須サフィックスのいずれかに基づいてプロビジョニングされます。 これらのデバイスは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) に含まれるプロビジョニング サンプルを使用してシミュレートされます。
 
-この記事では、以下の手順を実施します。
+この記事の以下の手順を実施します。
 
 * Azure CLI を使用して 2 つの Contoso 部門 IoT ハブ (**Contoso トースター部門**と**Contoso ヒート ポンプ部門**) を作成する
 * カスタム割り当てポリシー用に Azure 関数を使用して新しいグループ登録を作成する
@@ -40,137 +37,148 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 * Azure IoT C SDK の開発環境をセットアップする
 * デバイスをシミュレートして、デバイスがカスタム割り当てポリシーのコード例に従ってプロビジョニングされているかどうかを確認する
 
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するクイック スタートが完了していること。
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
+
+* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-two-divisional-iot-hubs"></a>2 つの部門 IoT ハブを作成する
+## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>プロビジョニング サービスと 2 つの部門 IoT ハブを作成する
 
-このセクションでは、Azure Cloud Shell を使用して、**Contoso トースター部門**と **Contoso ヒート ポンプ部門**を表す 2 つの新しい IoT ハブを作成します。
+このセクションでは、Azure Cloud Shell を使用して、プロビジョニング サービスと、**Contoso トースター部門**と **Contoso ヒート ポンプ部門**を表す 2 つの IoT ハブを作成します。
 
-1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+> [!TIP]
+> この記事で使用するコマンドにより、米国西部の場所にプロビジョニング サービスとその他のリソースが作成されます。 ご自分の場所から最も近い、Device Provisioning Service がサポートされているリージョンにリソースを作成することをお勧めします。 使用可能な場所の一覧を表示するには、`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` コマンドを実行するか、[Azure の状態](https://azure.microsoft.com/status/)ページに移動して "Device Provisioning Service" を検索します。 コマンドでは、場所は 1 単語または複数単語の形式で指定できます。たとえば、westus、West US、WEST US などです。この値で、大文字と小文字は区別されません。 複数単語形式で場所を指定する場合は、値を引用符で囲みます。たとえば、`-- location "West US"` のようにします。
+>
 
-    次の例では、*contoso-us-resource-group* という名前のリソース グループを *eastus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 こうすることで、終わった後のクリーンアップが簡単になります。
+1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-    ```azurecli-interactive 
-    az group create --name contoso-us-resource-group --location eastus
-    ```
-
-2. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso トースター部門** IoT ハブを作成します。 この IoT ハブは、*contoso-us-resource-group* に追加されます。
-
-    次の例では、*contoso-toasters-hub-1098* という名前の IoT ハブを場所 *eastus* に作成します。 独自の一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-toasters-` が必要です。
+    次の例では、*contoso-us-resource-group* という名前のリソース グループを *westus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 こうすることで、終わった後のクリーンアップが簡単になります。
 
     ```azurecli-interactive 
-    az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
+    az group create --name contoso-us-resource-group --location westus
     ```
-    
+
+2. Azure Cloud Shell を使用して、[az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) コマンドでデバイス プロビジョニング サービスを作成します。 このプロビジョニング サービスは、*contoso-us-resource-group* に追加されます。
+
+    次の例では、*contoso-provisioning-service-1098* という名前のプロビジョニング サービスを *westus* の場所に作成します。 一意のサービス名を使用する必要があります。 **1098** の代わりに、サービス名に独自のサフィックスを構成します。
+
+    ```azurecli-interactive 
+    az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
+    ```
+
     このコマンドが完了するまでに数分かかる場合があります。
 
-3. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso ヒート ポンプ部門** IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
+3. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso トースター部門** IoT ハブを作成します。 この IoT ハブは、*contoso-us-resource-group* に追加されます。
 
-    次の例では、*contoso-heatpumps-hub-1098* という名前の IoT ハブを場所 *eastus* に作成します。 独自の一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名に `-heatpumps-` が必要です。
+    次の例では、*contoso-toasters-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-toasters-` が必要です。
 
     ```azurecli-interactive 
-    az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
+    az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
-    
-    このコマンドも、完了するまでに数分かかる場合があります。
 
+    このコマンドが完了するまでに数分かかる場合があります。
 
+4. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso ヒート ポンプ部門** IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
 
+    次の例では、*contoso-heatpumps-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 カスタム割り当てポリシーのコード例では、ハブ名内に `-heatpumps-` が必要です。
 
-## <a name="create-the-enrollment"></a>登録を作成する
+    ```azurecli-interactive 
+    az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
+    ```
 
-このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
+    このコマンドが完了するまでに数分かかる場合があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+## <a name="create-the-custom-allocation-function"></a>カスタム割り当て関数を作成する
 
-2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
+このセクションでは、カスタム割り当てポリシーを実装する Azure 関数を作成します。 この関数により、デバイスの登録 ID に文字列 **-contoso-tstrsd-007** または **-contoso-hpsd-088** が含まれているかどうかに基づいて、デバイスをどちら部門の IoT ハブに登録すべきかが決定されます。 また、デバイスがトースターであるかヒート ポンプであるかに基づいて、デバイス ツインの初期状態が設定されます。
 
-3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインします。 ご自分のホーム ページから **[+ リソースの作成]** を選択します。
 
-    **[グループ名]**: 「**contoso-custom-allocated-devices**」を入力します。
+2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、 **[作成]** を選択します。
 
-    **[構成証明の種類]**: **[対称キー]** を選択します。
+3. **関数アプリ**の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、 **[確認と作成]** を選択します。
 
-    **[キーの自動生成]**: このチェック ボックスは既にオンになっているはずです。
+    **リソース グループ**: **[contoso-us-resource-group]** を選択して、この記事で作成されるすべてのリソースをまとめて保持します。
 
-    **[デバイスをハブに割り当てる方法を選択してください]**: **[カスタム (Azure 関数を使用)]** を選択します。
+    **関数アプリ名**:一意の関数アプリ名を入力します。 この例では、**contoso-function-app-1098** を使用します。
 
-    ![対称キー構成証明用にカスタム割り当て登録グループを追加する](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+    **発行**: **[コード]** が選択されていることを確認します。
 
+    **ランタイム スタック**:ドロップダウンから **[.NET Core]** を選択します。
 
-4. **[登録グループの追加]** で、**[Link a new IoT hub]\(新しい IoT ハブにリンクする\)** をクリックして新しい両方の部門 IoT ハブをリンクします。 
+    **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では**米国西部**を使用します。
 
-    両方の部門 IoT ハブに対してこの手順を実行する必要があります。
+    > [!NOTE]
+    > 既定では、Application Insights が有効になっています。 この記事では Application Insights は必要ありませんが、カスタム割り当てで発生する問題を理解し、調査するのに役立つ場合があります。 必要に応じて、 **[監視]** タブを選択し、 **[Application Insights を有効にする]** を **[いいえ]** に選択することで、Application Insights を無効にすることができます。
 
-    **サブスクリプション**:複数のサブスクリプションがある場合は、部門 IoT ハブを作成したサブスクリプションを選択します。
+    ![カスタム割り当て関数をホストする Azure 関数アプリを作成する](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-    **[IoT ハブ]**: 作成した部門ハブのいずれかを選択します。
+4. **[概要]** ページで、 **[作成]** を選択して関数アプリを作成します。 デプロイには数分かかることがあります。 完了したら、 **[リソースに移動]** を選択します。
 
-    **[アクセス ポリシー]:** **[iothubowner]** を選択します。
+5. 関数アプリの **概要]** [ ページの左側のウィンドウで、] **[関数** の横にある [ **+** ] を選択して、新しい関数を追加します。
 
-    ![部門 IoT ハブをプロビジョニング サービスとリンクする](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+    ![関数アプリに関数を追加する](./media/how-to-use-custom-allocation-policies/create-function.png)
 
+6. **.NET 用の Azure Functions - 作業の開始**ページの**デプロイ環境の選択**ステップで **[ポータル内]** タイルを選択してから、 **[続行]** を選択します。
 
-5. 両方の部門 IoT ハブをリンクした後、**[登録グループの追加]** で、以下に示すように登録グループの IoT ハブ グループとしてこれらを選択する必要があります。
+    ![ポータル開発環境を選択する](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-    ![登録用の部門ハブ グループを作成する](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+7. 次のページの**関数の作成**ステップで、 **[Webhook + API]** タイルを選択してから、 **[作成]** を選択します。 **HttpTrigger1** という名前の関数が作成され、ポータルに **run.csx** コード ファイルの内容が表示されます。
 
+8. 必須の Nuget パッケージを参照します。 初期デバイス ツインを作成するために、カスタム割り当て関数では、ホスティング環境に読み込む必要がある 2 つの Nuget パッケージで定義されているクラスが使用されます。 Azure Functions では、*function.host* ファイルを使用して Nuget パッケージが参照されます。 このステップで、*function.host* ファイルを保存してアップロードします。
 
-6. **[登録グループの追加]** で、**[Select Azure Function]\(Azure Function を選択\)** セクションまで下にスクロールし、**[Create a new function app]\(新しい関数アプリを作成する\)** をクリックします。
+    1. 次の行を任意のエディターにコピーし、ファイルを *function.host* としてご使用のコンピューターに保存します。
 
-7. 開いた **[Function App]** の作成ページで、新しい関数用に次の設定を入力して **[作成]** をクリックします。
+        ```xml
+        <Project Sdk="Microsoft.NET.Sdk">  
+            <PropertyGroup>  
+                <TargetFramework>netstandard2.0</TargetFramework>  
+            </PropertyGroup>  
+            <ItemGroup>  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+            </ItemGroup>  
+        </Project>
+        ```
 
-    **[アプリ名]**: 一意の関数アプリ名を入力します。 例として **contoso-function-app-1098** が表示されています。
+    2. **HttpTrigger1** 関数で、ウィンドウの右側にある **[ファイルの表示]** タブを展開します。
 
-    **[リソース グループ]**: この記事で作成するすべてのリソースをまとめるため、**[既存のものを使用]** と **[contoso-us-resource-group]** を選択します。
+        ![[ファイルの表示] を開く](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    **[Application Insights]**: この演習ではオフにできます。
+    3. **[アップロード]** を選択し、**function.proj** ファイルを参照し、 **[開く]** を選択してファイルをアップロードします。
 
-    ![Function App の作成](./media/how-to-use-custom-allocation-policies/function-app-create.png)
+        ![アップロード ファイルの選択](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
 
+9. **HttpTrigger1** 関数のコードを次のコードに置き換え、 **[保存]** を選択します。
 
-8. **[登録グループの追加]** ページに戻り、新しい関数アプリが選択されていることを確認します。 関数アプリの一覧を更新するには、サブスクリプションを再度選択することが必要になる場合があります。
-
-    新しい関数アプリが選択されていたら、**[Create a new function]\(新しい関数を作成する\)** をクリックします。
-
-    ![Function App の作成](./media/how-to-use-custom-allocation-policies/click-create-new-function.png)
-
-    新しい関数アプリが開きます。
-
-9. その関数アプリでクリックして、新しい関数を作成します。
-
-    ![Function App の作成](./media/how-to-use-custom-allocation-policies/new-function.png)
-
-    この新しい関数には、既定の設定を使用し、**C#** 言語を使って新しく **Webhook + API** を作成します。 **[この関数を作成する]** をクリックします。
-
-    これによって、**HttpTriggerCSharp1** という名前の新しい C# 関数が作成されます。
-
-10. 新しい C# 関数のコードを次のコードで置き換え、**[保存]** をクリックします。    
-
-    ```C#
+    ```csharp
     #r "Newtonsoft.Json"
+
     using System.Net;
-    using System.Text;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
     using Newtonsoft.Json;
 
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    using Microsoft.Azure.Devices.Shared;               // For TwinCollection
+    using Microsoft.Azure.Devices.Provisioning.Service; // For TwinState
+
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {
-        // Just some diagnostic logging
-        log.Info("C# HTTP trigger function processed a request.");
-        log.Info("Request.Content:...");    
-        log.Info(req.Content.ReadAsStringAsync().Result);
+        log.LogInformation("C# HTTP trigger function processed a request.");
 
         // Get request body
-        dynamic data = await req.Content.ReadAsAsync<object>();
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+
+        log.LogInformation("Request.Body:...");
+        log.LogInformation(requestBody);
 
         // Get registration ID of the device
         string regId = data?.deviceRuntimeContext?.registrationId;
@@ -182,7 +190,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
         if (regId == null)
         {
             message = "Registration ID not provided for the device.";
-            log.Info("Registration ID : NULL");
+            log.LogInformation("Registration ID : NULL");
             fail = true;
         }
         else
@@ -193,7 +201,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
             if (hubs == null)
             {
                 message = "No hub group defined for the enrollment.";
-                log.Info("linkedHubs : NULL");
+                log.LogInformation("linkedHubs : NULL");
                 fail = true;
             }
             else
@@ -211,8 +219,23 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
                     if (obj.iotHubHostName == null)
                     {
                         message = "No toasters hub found for the enrollment.";
-                        log.Info(message);
+                        log.LogInformation(message);
                         fail = true;
+                    }
+                    else
+                    {
+                        // Specify the initial tags for the device.
+                        TwinCollection tags = new TwinCollection();
+                        tags["deviceType"] = "toaster";
+
+                        // Specify the initial desired properties for the device.
+                        TwinCollection properties = new TwinCollection();
+                        properties["state"] = "ready";
+                        properties["darknessSetting"] = "medium";
+
+                        // Add the initial twin state to the response.
+                        TwinState twinState = new TwinState(tags, properties);
+                        obj.initialTwin = twinState;
                     }
                 }
                 // This is a Contoso Heat pump Model 008
@@ -228,8 +251,23 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
                     if (obj.iotHubHostName == null)
                     {
                         message = "No heat pumps hub found for the enrollment.";
-                        log.Info(message);
+                        log.LogInformation(message);
                         fail = true;
+                    }
+                    else
+                    {
+                        // Specify the initial tags for the device.
+                        TwinCollection tags = new TwinCollection();
+                        tags["deviceType"] = "heatpump";
+
+                        // Specify the initial desired properties for the device.
+                        TwinCollection properties = new TwinCollection();
+                        properties["state"] = "on";
+                        properties["temperatureSetting"] = "65";
+
+                        // Add the initial twin state to the response.
+                        TwinState twinState = new TwinState(tags, properties);
+                        obj.initialTwin = twinState;
                     }
                 }
                 // Unrecognized device.
@@ -237,44 +275,67 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
                 {
                     fail = true;
                     message = "Unrecognized device registration.";
-                    log.Info("Unknown device registration");
+                    log.LogInformation("Unknown device registration");
                 }
             }
         }
 
-        return (fail)
-            ? req.CreateResponse(HttpStatusCode.BadRequest, message)
-            : new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(JsonConvert.SerializeObject(obj, Formatting.Indented), Encoding.UTF8, "application/json")
-            };
-    }    
+        log.LogInformation("\nResponse");
+        log.LogInformation((obj.iotHubHostName != null) ? JsonConvert.SerializeObject(obj) : message);
 
-    public class DeviceTwinObj
-    {
-        public string deviceId {get; set;}
+        return (fail)
+            ? new BadRequestObjectResult(message) 
+            : (ActionResult)new OkObjectResult(obj);
     }
 
     public class ResponseObj
     {
         public string iotHubHostName {get; set;}
-        public string IoTHub {get; set;}
-        public DeviceTwinObj initialTwin {get; set;}
-        public string[] linkedHubs {get; set;}
-        public string enrollment {get; set;}
+        public TwinState initialTwin {get; set;}
     }
     ```
 
+## <a name="create-the-enrollment"></a>登録を作成する
 
-11. **[登録グループの追加]** ページに戻り、新しい関数が選択されていることを確認します。 関数の一覧を更新するには、関数アプリを再度選択することが必要になる場合があります。
+このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
 
-    新しい関数が選択されていたら、**[保存]** をクリックして登録グループを保存します。
+1. 引き続き [Azure portal](https://portal.azure.com) でプロビジョニング サービスを開きます。
 
-    ![最後に登録グループを保存する](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+2. 左側のウィンドウで **[登録を管理します]** を選択してから、ページの上部にある **[登録グループの追加]** ボタンを選択します。
 
+3. **[登録グループの追加]** で、次の情報を入力して、 **[保存]** ボタンを選択します。
 
-12. 登録を保存した後、もう一度開き、**[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、シミュレートされたデバイスに対する一意のデバイス キーを生成するために後で使用します。
+    **[グループ名]** : 「**contoso-custom-allocated-devices**」を入力します。
 
+    **[構成証明の種類]** : **[対称キー]** を選択します。
+
+    **[キーの自動生成]** : このチェック ボックスは既にオンになっているはずです。
+
+    **[デバイスをハブに割り当てる方法を選択してください]** : **[カスタム (Azure 関数を使用)]** を選択します。
+
+    ![対称キー構成証明用にカスタム割り当て登録グループを追加する](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+
+4. **[登録グループの追加]** で、 **[Link a new IoT hub]\(新しい IoT ハブにリンクする\)** を選択して新しい両方の部門 IoT ハブをリンクします。
+
+    両方の部門 IoT ハブに対してこの手順を実行する必要があります。
+
+    **サブスクリプション**:複数のサブスクリプションがある場合は、部門 IoT ハブを作成したサブスクリプションを選択します。
+
+    **[IoT ハブ]** : 作成した部門ハブのいずれかを選択します。
+
+    **[アクセス ポリシー]:** **[iothubowner]** を選択します。
+
+    ![部門 IoT ハブをプロビジョニング サービスとリンクする](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+
+5. 両方の部門 IoT ハブをリンクした後、 **[登録グループの追加]** で、以下に示すように登録グループの IoT ハブ グループとしてこれらを選択する必要があります。
+
+    ![登録用の部門ハブ グループを作成する](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+
+6. **[登録グループの追加]** で、 **[Azure 関数の選択]** セクションまで下にスクロールし、前のセクションで作成した関数アプリを選択します。 次に、作成した関数を選択し、[保存] を選択して登録グループを保存します。
+
+    ![関数を選択して登録グループを保存する](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+
+7. 登録を保存した後、もう一度開き、 **[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、シミュレートされたデバイスに対する一意のデバイス キーを生成するために後で使用します。
 
 ## <a name="derive-unique-device-keys"></a>一意のデバイス キーを派生させる
 
@@ -284,10 +345,10 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 この記事の例では、次の 2 つのデバイス登録 ID を使用して、両方のデバイスのデバイス キーを計算します。 両方の登録 ID に、カスタム割り当てポリシーのサンプル コードを操作するために有効なサフィックスが付いています。
 
-- **breakroom499-contoso-tstrsd-007**
-- **mainbuilding167-contoso-hpsd-088**
+* **breakroom499-contoso-tstrsd-007**
+* **mainbuilding167-contoso-hpsd-088**
 
-#### <a name="linux-workstations"></a>Linux ワークステーション
+### <a name="linux-workstations"></a>Linux ワークステーション
 
 Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
 
@@ -311,8 +372,7 @@ Linux ワークステーションを使用している場合は、次の例に�
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
-
-#### <a name="windows-based-workstations"></a>Windows ベースのワークステーション
+### <a name="windows-based-workstations"></a>Windows ベースのワークステーション
 
 Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
 
@@ -339,15 +399,11 @@ Windows ベースのワークステーションを使用している場合は、
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
-
 シミュレートされたデバイスは、派生デバイス キーと各登録 ID を使用して、対称キーの構成証明を実行します。
-
-
-
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Azure IoT C SDK の開発環境を準備する
 
-このセクションでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のビルドに使用する開発環境を準備します。 この SDK には、シミュレートされたデバイスのサンプル コードが含まれています。 このシミュレートされたデバイスでは、デバイスのブート シーケンス中にプロビジョニングを試行します。
+このセクションでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のビルドに使用する開発環境を準備します。 この SDK には、シミュレートされたデバイス用のサンプル コードが含まれています。 このシミュレートされたデバイスでは、デバイスのブート シーケンス中にプロビジョニングを試行します。
 
 このセクションは、Windows ベースのワークステーション向けです。 Linux の例については、「[How to provision for multitenancy (マルチテナント用にプロビジョニングする方法)](how-to-provision-multitenant.md)」の VM のセットアップに関するセクションを参照してください。
 
@@ -355,29 +411,32 @@ Windows ベースのワークステーションを使用している場合は、
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
-2. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、Azure IoT C SDK の GitHub リポジトリを複製します。
-    
+2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
+
+3. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、最新リリースの [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub リポジトリを複製します。 `-b` パラメーターの値として、前の手順で見つけたタグを使用します。
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
+
     この操作は、完了するまでに数分かかります。
 
-
-3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
+4. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 `azure-iot-sdk-c` ディレクトリから次のコマンドを実行します。
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
+5. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
-    
-    `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
+
+    `cmake` で C++ コンパイラが見つからない場合は、コマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でコマンドを実行してください。
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
@@ -395,12 +454,9 @@ Windows ベースのワークステーションを使用している場合は、
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
-
 ## <a name="simulate-the-devices"></a>デバイスをシミュレートする
 
-このセクションでは、前にセットアップした Azure IoT C SDK にある **prov\_dev\_client\_sample** という名前のプロビジョニング サンプルを更新します。 
+このセクションでは、前にセットアップした Azure IoT C SDK にある **prov\_dev\_client\_sample** という名前のプロビジョニング サンプルを更新します。
 
 このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、トースター デバイスが認識され、カスタム割り当てポリシーを使用して IoT ハブに割り当てられます。
 
@@ -411,7 +467,7 @@ Windows ベースのワークステーションを使用している場合は、
 2. 前に CMake を実行して生成された **azure_iot_sdks.sln** ソリューション ファイルを Visual Studio で開きます。 ソリューション ファイルは次の場所にあります。
 
     ```
-    \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
+    azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
 3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Samples** フォルダーに移動します。 **prov\_dev\_client\_sample** という名前のサンプル プロジェクトを展開します。 **Source Files** を展開し、**prov\_dev\_client\_sample.c** を開きます。
@@ -431,10 +487,9 @@ Windows ベースのワークステーションを使用している場合は、
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
-
-#### <a name="simulate-the-contoso-toaster-device"></a>Contoso トースター デバイスをシミュレートする
+### <a name="simulate-the-contoso-toaster-device"></a>Contoso トースター デバイスをシミュレートする
 
 1. トースター デバイスをシミュレートするには、**prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
 
@@ -443,21 +498,21 @@ Windows ベースのワークステーションを使用している場合は、
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    関数呼び出しのコメントを解除し、プレースホルダーの値 (山かっこを含む) を、トースターの登録 ID とデバイス派生キー (先ほど生成したもの) に置き換えます。 以下に示したキーの値 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** は、あくまで一例です。
+    関数呼び出しのコメントを解除し、プレースホルダーの値 (山かっこを含む) を、前に生成したトースター登録 ID と派生デバイスキーに置き換えます。 以下に示したキーの値 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** は、あくまで一例です。
 
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
-   
+
     ファイルを保存します。
 
-2. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+2. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたトースター デバイスが正常に起動し、プロビジョニング サービス インスタンスに接続して、カスタム割り当てポリシーによってトースター IoT ハブに割り当てられる例です。
 
     ```cmd
-    Provisioning API Version: 1.2.9
+    Provisioning API Version: 1.3.6
 
     Registering Device
 
@@ -470,8 +525,7 @@ Windows ベースのワークステーションを使用している場合は、
     Press enter key to exit:
     ```
 
-
-#### <a name="simulate-the-contoso-heat-pump-device"></a>Contoso ヒート ポンプ デバイスをシミュレートする
+### <a name="simulate-the-contoso-heat-pump-device"></a>Contoso ヒート ポンプ デバイスをシミュレートする
 
 1. ヒート ポンプ デバイスをシミュレートするには、**prov\_dev\_client\_sample.c** の `prov_dev_set_symmetric_key_info()` の呼び出しを、同じようにヒート ポンプの登録 ID とデバイス派生キー (先ほど生成したもの) で更新します。 以下に示したキーの値 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** も、あくまで一例です。
 
@@ -479,15 +533,15 @@ Windows ベースのワークステーションを使用している場合は、
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
-   
+
     ファイルを保存します。
 
-2. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+2. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたヒート ポンプ デバイスが正常に起動し、プロビジョニング サービス インスタンスに接続して、カスタム割り当てポリシーによって Contoso ヒート ポンプ IoT ハブに割り当てられる例です。
 
     ```cmd
-    Provisioning API Version: 1.2.9
+    Provisioning API Version: 1.3.6
 
     Registering Device
 
@@ -500,23 +554,20 @@ Windows ベースのワークステーションを使用している場合は、
     Press enter key to exit:
     ```
 
-
 ## <a name="troubleshooting-custom-allocation-policies"></a>カスタム割り当てポリシーのトラブルシューティング
 
 次の表に、想定されるシナリオと、表示される可能性のある結果のエラー コードを示します。 この表は、Azure Functions でのカスタム割り当てポリシーのエラーのトラブルシューティングに利用してください。
 
-
 | シナリオ | プロビジョニング サービスでの登録結果 | プロビジョニング SDK の結果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook から "200 OK" が返され、"iotHubHostName" が有効な IoT ハブ ホスト名に設定されている | 結果の状態: 割り当て済み  | SDK からハブの情報と共に PROV_DEVICE_RESULT_OK が返される |
-| Webhook から "200 OK" が返され、応答に "iotHubHostName" が存在するが、空の文字列または null が設定されている | 結果の状態: 失敗<br><br> エラー コード: CustomAllocationIotHubNotSpecified (400208) | SDK から PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED が返される |
-| Webhook から "401 権限がありません" が返される | 結果の状態: 失敗<br><br>エラー コード: CustomAllocationUnauthorizedAccess (400209) | SDK から PROV_DEVICE_RESULT_UNAUTHORIZED が返される |
-| デバイスを無効にする個々の登録が作成された | 結果の状態: Disabled | SDK から PROV_DEVICE_RESULT_DISABLED が返される |
+| Webhook から "200 OK" が返され、応答に "iotHubHostName" が存在するが、空の文字列または null が設定されている | 結果の状態: 失敗<br><br> エラー コード:CustomAllocationIotHubNotSpecified (400208) | SDK から PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED が返される |
+| Webhook から "401 権限がありません" が返される | 結果の状態: 失敗<br><br>エラー コード:CustomAllocationUnauthorizedAccess (400209) | SDK から PROV_DEVICE_RESULT_UNAUTHORIZED が返される |
+| デバイスを無効にする個々の登録が作成された | 結果の状態: 無効 | SDK から PROV_DEVICE_RESULT_DISABLED が返される |
 | Webhook からエラー コード 429 以上が返される | DPS のオーケストレーションが何回も再試行される。 再試行ポリシーは現在以下の通り。<br><br>&nbsp;&nbsp;- 再試行回数: 10<br>&nbsp;&nbsp;- 初期間隔: 1 秒<br>&nbsp;&nbsp;- 増分: 9 秒 | SDK では、エラーが無視され、特定の期間内に別の状態の取得メッセージが送信される |
-| Webhook からその他の状態コードが返される | 結果の状態: 失敗<br><br>エラー コード: CustomAllocationFailed (400207) | SDK から PROV_DEVICE_RESULT_DEV_AUTH_ERROR が返される |
+| Webhook からその他の状態コードが返される | 結果の状態: 失敗<br><br>エラー コード:CustomAllocationFailed (400207) | SDK から PROV_DEVICE_RESULT_DEV_AUTH_ERROR が返される |
 
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースを引き続き使用する場合は、そのままにしてかまいません。 これ以上リソースを使用しない場合は、不要な課金を避けるために、次の手順に従って、この記事で作成したすべてのリソースを削除してください。
 
@@ -528,26 +579,15 @@ Windows ベースのワークステーションを使用している場合は、
 
 名前でリソース グループを削除するには
 
-1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
 2. **[名前でフィルター]** テキスト ボックスに、リソースが含まれているリソース グループの名前 **contoso-us-resource-group** を入力します。 
 
-3. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+3. 結果一覧のリソース グループの右側で、 **[...]** 、 **[リソース グループの削除]** の順に選択します。
 
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、**[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにもう一度リソース グループの名前を入力し、 **[削除]** を選択します。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
-
-
-
-
-
-
-
-
-
-
-
+* 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
+* プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 

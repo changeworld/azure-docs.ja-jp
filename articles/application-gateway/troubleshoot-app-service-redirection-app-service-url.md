@@ -1,58 +1,61 @@
 ---
-title: App Service を使用した Azure Application Gateway のトラブルシューティング - App Service の URL へのリダイレクト
+title: App Service URL へのリダイレクトのトラブルシューティング
+titleSuffix: Azure Application Gateway
 description: この記事では、Azure Application Gateway を Azure App Service と共に使用した場合のリダイレクトの問題のトラブルシューティング方法について説明します。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797791"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293538"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service"></a>Application Gateway と App Service のトラブルシューティング
+# <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
-Application Gateway とバックエンド サーバーとしての App Service で発生した問題を診断して解決する方法について説明します。
+Azure Application Gateway と共に Azure App Service をバックエンド ターゲットとして使用するときに発生する問題を診断し、解決する方法について説明します。
 
 ## <a name="overview"></a>概要
 
 この記事では、次の問題のトラブルシューティング方法について説明します。
 
 > [!div class="checklist"]
-> * リダイレクトが生じたときに App Service の URL がブラウザーに公開される
-> * App Service の ARRAffinity Cookie ドメインが元のホストではなく App Service のホスト名 (example.azurewebsites.net) に設定される
+> * リダイレクトが生じたときに App Service URL がブラウザーに公開されます。
+> * App Service の ARRAffinity Cookie ドメインが元のホストではなく App Service のホスト名 (example.azurewebsites.net) に設定されます。
 
-Application Gateway のバックエンド プールで公開される App Service を構成し、アプリケーション コードでリダイレクトを構成した場合、Application Gateway にアクセスすると、ブラウザーから App Service の URL に直接リダイレクトされることがあります。
+バックエンド アプリケーションでリダイレクト応答が送信されるとき、バックエンド アプリケーションで指定されているものとは別の URL にクライアントをリダイレクトしたい場合があります。 App Service が Application Gateway の背後でホストされており、クライアントに相対パスへのリダイレクトを行わせる必要があるときに、これを行うことがあります。 たとえば、contoso.azurewebsites.net/path1 から contoso.azurewebsites.net/path2 へのリダイレクトです。 
 
-この問題が発生する主な理由としては、次のことが考えられます。
+App Service では、リダイレクト応答を送信するとき、その応答の location ヘッダーで、アプリケーション ゲートウェイから受信した要求のものと同じホスト名が使用されます。 たとえば、クライアントでは、Application Gateway contoso.com/path2 を経由するのではなく、contoso.azurewebsites.net/path2 に直接要求を行います。 Application Gateway の迂回は望まれません。
 
-- App Service 上でリダイレクトが構成されています。 要求の末尾にスラッシュを追加するだけでリダイレクトが実行される場合があります。
-- Azure AD 認証が構成されており、これが原因でリダイレクトが実行されています。
-- Application Gateway の HTTP 設定で [バックエンド アドレスからホスト名を選択します] スイッチを有効にしています。
-- カスタム ドメインを App Service に登録していません。
+この問題は次のような主な理由から発生することがあります。
 
-また、Application Gateway の内側で App Services を使用していて、かつカスタム ドメインを使用して Application Gateway にアクセスしている場合、App Service によって設定される ARRAffinity Cookie のドメイン値に "example.azurewebsites.net" というドメイン名が反映されることがわかります。 元のホスト名を Cookie ドメインとしても使用したい場合は、この記事の解決策に従ってください。
+- App Service でリダイレクトを構成しています。 要求の末尾にスラッシュを追加するだけでリダイレクトが実行される場合があります。
+- 導入している Azure Active Directory 認証がリダイレクトを発生させます。
+
+また、Application Gateway の背後で App Service を使用するとき、Application Gateway (example.com) に関連付けられているドメイン名が App Service のドメイン名と異なっています (たとえば、example.azurewebsites.net になっています)。 App Service によって設定された ARRAffinity Cookie のドメイン値では example.azurewebsites.net というドメイン名が保持されますが、それは望ましくありません。 Cookie のドメイン名の値は、元のホスト名 (example.com) である必要があります。
 
 ## <a name="sample-configuration"></a>サンプル構成
 
 - HTTP リスナー:基本またはマルチサイト
 - バックエンド アドレス プール:App Service
-- HTTP 設定:[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\) を有効にします
-- プローブ:[Pick Hostname from HTTP Settings]\(HTTP 設定からホスト名を選択する\) を有効にします
+- HTTP 設定: **[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\)** を有効にします
+- プローブ: **[Pick Hostname from HTTP Settings]\(HTTP 設定からホスト名を選択する\)** を有効にします
 
 ## <a name="cause"></a>原因
 
-App Service にアクセスするには、カスタム ドメイン設定で構成されたホスト名を使用する必要があります。既定値は "example.azurewebsites.net" です。App Service に登録されていないホスト名、または Application Gateway の FQDN で Application Gateway を使用する App Service にアクセスする場合、元の要求のホスト名をオーバーライドして、App Service のホスト名にする必要があります。
+App Service はマルチテナント サービスであるため、要求のホスト ヘッダーを使用して適切なエンドポイントに要求をルーティングします。 App Service の既定のドメイン名である *.azurewebsites.net (たとえば contoso.azurewebsites.net) は、Application Gateway のドメイン名 (たとえば contoso.com) とは異なります。 
 
-Application Gateway でこれを実現するために、ここでは [Pick Hostname from HTTP Settings]\(HTTP 設定からホスト名を選択する\) スイッチを使用します。また、プローブを機能させるために、プローブ構成で [Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\) を使用します。
+クライアントからの元の要求には、ホスト名として Application Gateway のドメイン名 (contoso.com) があります。 App Service バックエンドに要求をルーティングするとき、元の要求にあるホスト名を App Service のホスト名に変更するように Application Gateway を構成する必要があります。 Application Gateway の HTTP 設定構成にある **[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\)** というスイッチを使用します。 正常性プローブ構成にある **[Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\)** というスイッチを使用します。
 
-![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-このため、App Service がリダイレクトを行うときは、特に構成されていない限り、Location ヘッダーには元のホスト名ではなくホスト名 "example.azurewebsites.net" が使用されます。 以下の要求と応答のヘッダー例を参照してください。
+
+![アプリケーション ゲートウェイでホスト名が変更される](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
+
+App Service でリダイレクトが実行されるときは、特に構成されていない限り、location ヘッダーには元のホスト名 contoso.com ではなくオーバーライドされたホスト名 contoso.azurewebsites.net が使用されます。 次の要求と応答のヘッダー例を参照してください。
 ```
 ## Request headers to Application Gateway:
 
@@ -66,44 +69,51 @@ Host: www.contoso.com
 
 Status Code: 301 Moved Permanently
 
-Location: http://example.azurewebsites.net/path/
+Location: http://contoso.azurewebsites.net/path/
 
 Server: Microsoft-IIS/10.0
 
-Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=example.azurewebsites.net
+Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=contoso.azurewebsites.net
 
 X-Powered-By: ASP.NET
 ```
-上の例で、応答ヘッダーにはリダイレクト用の状態コード 301 があり、location ヘッダーには元のホスト名 "www.contoso.com" ではなく App Service のホスト名があります。
+前の例では、応答ヘッダーにリダイレクトの状態コード 301 があることがわかります。 location ヘッダーには、元のホスト名 `www.contoso.com` ではなく、App Service のホスト名があります。
 
-## <a name="solution"></a>解決策
+## <a name="solution-rewrite-the-location-header"></a>解決方法:location ヘッダーを書き換える
 
-この問題はアプリケーション側にリダイレクトを設定しないことで解決できますが、それが不可能な場合は、ホストのオーバーライドを実行するのではなく、Application Gateway が受信に使用するものと同じホスト ヘッダーを App Service にも渡す必要があります。
+location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)に関する記事の手順を参照してください。
 
-これを実行すると、(リダイレクトがある場合) App Service は、Application Gateway を指し、自ホストではない、元の同じホスト ヘッダーに対してリダイレクトを行います。
+> [!NOTE]
+> HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
 
-これを実現するには、カスタム ドメインを所有し、以下の手順を実行する必要があります。
+## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション:カスタム ドメイン名の使用
 
-- ドメインを App Service のカスタム ドメイン リストに登録します。 そのためには、カスタム ドメインに App Service の FQDN を指す CNAME が必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)」を参照してください。
+v1 SKU を使用する場合、location ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service に渡します。
 
-![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+(リダイレクトがある場合) App Service は、Application Gateway を指し、自ホストではない、元の同じホスト ヘッダーに対してリダイレクトを行うようになります。
 
-- それが完了すると、App Service でホスト名 "www.contoso.com" を受け入れる準備は完了です。 次は、DNS の CNAME エントリを変更して Application Gateway の FQDN を指すようにします。 たとえば、"appgw.eastus.cloudapp.azure.com" です。
+カスタム ドメインを所有していることと、このプロセスに従うことが必要になります。
 
-- DNS クエリを実行するときに、ドメイン "www.contoso.com" が Application Gateway の FQDN に解決されることを確認します。
+- App Service のカスタム ドメイン一覧にドメインを登録します。 App Service の FQDN を指す CNAME がカスタム ドメインに必要です。 詳細については、「[既存のカスタム DNS 名を Azure App Service にマップする](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)」を参照してください。
 
-- [Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\) を無効にするようにカスタム プローブを設定します。 ポータルのプローブ設定でチェックボックスをオフにして、PowerShell の Set-AzApplicationGatewayProbeConfig コマンドで -PickHostNameFromBackendHttpSettings スイッチを使用しないことで、これを実行できます。 プローブのホスト名フィールドに App Service の FQDNである「example.azurewebsites.net」を入力します。これは、Application Gateway から送信されたプローブ要求のホスト ヘッダーで送信されるためです。
+    ![App Service のカスタムドメインの一覧](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+
+- App Service では、ホスト名 `www.contoso.com` を受け取る準備ができています。 DNS の CNAME エントリを変更して Application Gateway の FQDN (例えば `appgw.eastus.cloudapp.azure.com`) を指すようにします。
+
+- DNS クエリの実行時、ドメイン `www.contoso.com` が Application Gateway の FQDN に解決されることを確認します。
+
+- **[Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\)** を無効にするようにカスタム プローブを設定します。 Azure portal で、プローブ設定でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayProbeConfig** コマンドで **-PickHostNameFromBackendHttpSettings** スイッチを使用しないでください。 プローブのホスト名フィールドに、App Service の FQDN、example.azurewebsites.net を入力します。 Application Gateway から送信されたプローブ要求のホスト ヘッダーにこの FQDN が含まれます。
 
   > [!NOTE]
-  > この時点では、HTTP 設定でまだ [Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\) スイッチが有効なため、次の手順を実行するときに、カスタム プローブがバックエンドの HTTP 設定に関連付けられていないことを確認してください。
+  > 次の手順のために、カスタム プローブがバックエンド HTTP 設定に関連付けられていないことを確認します。 HTTP 設定では、この時点で **[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\)** スイッチはまだ有効です。
 
-- [Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\) を無効にするように Application Gateway の HTTP 設定を指定します。 ポータルでチェックボックスをオフにして、PowerShell の Set-AzApplicationGatewayBackendHttpSettings コマンドで -PickHostNameFromBackendAddress スイッチを使用しないことで、これを実行できます。
+- **[Pick Hostname from Backend Address] (バックエンド アドレスからホスト名を選択する)** を無効にするように Application Gateway の HTTP 設定を指定します。 Azure portal でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayBackendHttpSettings** コマンドで **-PickHostNameFromBackendAddress** スイッチを使用しないでください。
 
-- カスタム プローブを元どおりバックエンドの HTTP 設定に関連付け、バックエンドの正常性に問題がないことを確認します。
+- カスタム プローブを元どおりバックエンドの HTTP 設定に関連付け、バックエンドが正常であることを確認します。
 
-- これが完了すると、Application Gateway は同じホスト名 "www.contoso.com" を App Service に転送し、同じホスト名でリダイレクトが実行されます。 以下の要求と応答のヘッダー例を参照してください。
+- Application Gateway からは同じホスト名 (`www.contoso.com`) が App Service に転送されるようになったはずです。 リダイレクトは同じホスト名で行われます。 次の要求と応答のヘッダー例を参照してください。
 
-既存の構成に対し、PowerShell を使用して前述の手順を実装するには、下のサンプル PowerShell スクリプトに従ってください。 Probe と HTTP Settings の構成に -PickHostname スイッチを使用していないことに注目してください。
+既存の構成に対し、PowerShell を使用して前述の手順を実装するには、下のサンプル PowerShell スクリプトを使用します。 Probe と HTTP Settings の構成に **-PickHostname** スイッチを使用していないことに注目してください。
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
@@ -133,6 +143,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
   X-Powered-By: ASP.NET
   ```
-  ## <a name="next-steps"></a>次の手順
+  ## <a name="next-steps"></a>次のステップ
 
-前の手順で問題を解決できない場合は、 [サポート チケット](https://azure.microsoft.com/support/options/)を開きます。
+前の手順で問題を解決できなかった場合、[サポート チケット](https://azure.microsoft.com/support/options/)を開きます。

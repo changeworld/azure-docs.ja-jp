@@ -1,26 +1,18 @@
 ---
-title: Windows AWS VM から Azure への移行 | Microsoft Docs
+title: Windows AWS EC2 インスタンスを Azure に移動する
 description: アマゾン ウェブ サービス (AWS) EC2 Windows インスタンスを Azure 仮想マシンに移行します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: d6a4c5b2b6d9818dffdb1c1fee8c4c0df7cad77c
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539804"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82084517"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
 
@@ -61,7 +53,7 @@ VHD のエクスポートが完了したら、「[How Do I Download an Object fr
 > VHD をダウンロードする場合、AWS からデータ転送料金が請求されます。 詳細については、「[Amazon S3 Pricing (Amazon S3 の料金)](https://aws.amazon.com/s3/pricing/)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、VHD を Azure にアップロードして新しい VM を作成できるようになりました。 
 

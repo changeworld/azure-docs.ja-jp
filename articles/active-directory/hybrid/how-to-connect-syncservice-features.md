@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680283"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682230"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 
@@ -41,7 +41,7 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 
 以下の設定は、 `Set-MsolDirSyncFeature`で設定できます。
 
-| DirSyncFeature | Comment (コメント) |
+| DirSyncFeature | 解説 |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |プライマリ SMTP アドレスに加えて userPrincipalName でオブジェクトを結合できます。 |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |同期エンジンに管理対象ユーザー/ライセンス ユーザー (非フェデレーション ユーザー) の userPrincipalName 属性の更新を許可します。 |
@@ -55,15 +55,15 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 
 以下の設定は、Azure AD Connect によって構成されており、 `Set-MsolDirSyncFeature`で変更することはできません。
 
-| DirSyncFeature | Comment (コメント) |
+| DirSyncFeature | 解説 |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect:デバイス ライトバックの有効化](how-to-connect-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同期:ディレクトリ拡張機能](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
 | パスワード ハッシュの同期 |[Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md) |
 |パススルー認証|[Azure Active Directory パススルー認証によるユーザー サインイン](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[プレビュー: グループの書き戻し](how-to-connect-preview.md#group-writeback) |
-| UserWriteback |現在、サポートされていません。 |
+| UnifiedGroupWriteback |グループの書き戻し|
+| UserWriteback |現在はサポートされていません。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重複属性の回復性
 
@@ -89,14 +89,16 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>userPrincipalName の更新の同期
 
-これまで、オンプレミスから同期サービスを使用して UserPrincipalName 属性を更新することは、次の 2 つの条件が両方とも当てはまらない限り、できませんでした。
+これまで、次の 2 つの条件が両方とも当てはまらない限り、オンプレミスから同期サービスを使用して UserPrincipalName 属性を更新することはできませんでした。
 
 * ユーザーが管理対象ユーザー (非フェデレーション ユーザー) である。
 * ユーザーにライセンスが割り当てられていない。
 
-詳細については、「 [Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)」を参照してください。
+> [!NOTE]
+> 2019 年 3 月から、フェデレーション ユーザー アカウントでの UPN 変更の同期が許可されています。
+> 
 
-この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード ハッシュ同期またはパススルー認証を使用している場合は、同期エンジンによって userPrincipalName が更新されます。 フェデレーションを使用している場合、この機能はサポートされません。
+この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード ハッシュ同期またはパススルー認証を使用している場合は、同期エンジンによって userPrincipalName が更新されます。
 
 新たに作成した Azure AD ディレクトリでは、この機能は既定で有効になっています。 この機能が有効になっているかどうかを確認するには、次のコマンドレットを実行します。  
 

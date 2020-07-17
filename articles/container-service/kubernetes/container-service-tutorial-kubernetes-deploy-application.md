@@ -1,25 +1,23 @@
 ---
 title: (非推奨) Azure Container Service チュートリアル - アプリケーションのデプロイ
 description: Azure Container Service チュートリアル - アプリケーションのデプロイ
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998767"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78274056"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを実行する
 
 > [!TIP]
-> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行](../../aks/tutorial-kubernetes-deploy-application.md)」を参照してください。
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行](../../aks/tutorial-kubernetes-deploy-application.md)」を参照してください。
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -72,13 +70,13 @@ containers:
 
 [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) コマンドを使用してアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
 
-```azurecli-interactive
+```console
 kubectl create -f azure-vote-all-in-one-redis.yml
 ```
 
 出力:
 
-```bash
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -91,13 +89,13 @@ service "azure-vote-front" created
 
 進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを `--watch` 引数と一緒に使用します。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 最初に `azure-vote-front` サービスの **EXTERNAL-IP** が `pending` として表示されます。 EXTERNAL-IP アドレスが `pending` から `IP address` に変わったら、`CTRL-C` を使用して kubectl ウォッチ プロセスを停止します。
 
-```bash
+```output
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   10.0.42.158   <pending>     80:31873/TCP   1m
 azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m
@@ -107,7 +105,7 @@ azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Vote アプリケーションを Azure Container Service の Kubernetes クラスターにデプロイしました。 次のタスクを行います。  
 

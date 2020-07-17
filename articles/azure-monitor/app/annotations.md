@@ -1,110 +1,119 @@
 ---
 title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: mbullwin
-ms.openlocfilehash: 652591fc4539e6f19c0606c1502609a823327f2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 07/01/2019
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811020"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010727"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
-[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Azure DevOps Services ビルド システム](https://docs.microsoft.com/azure/devops/pipelines/tasks/)により自動で作成されます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
+注釈は、新しいビルドのデプロイ先やその他の重要なイベントを示します。 注釈により、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 それらは、[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) ビルド システムで自動的に作成できます。 PowerShell から作成することにより、任意のイベントにフラグを設定する注釈を作成することもできます。
 
-> [!NOTE]
-> この記事には、非推奨の**クラシック メトリック エクスペリエンス**が反映されています。 現在、注釈は、クラシック エクスペリエンスと**[ブック](../../azure-monitor/app/usage-workbooks.md)** においてのみ使用できます。 現在のメトリック エクスペリエンスについて詳しくは、[こちらの記事](../../azure-monitor/platform/metrics-charts.md)をご覧ください。
+## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines ビルドでのリリース注釈
 
-![サーバー応答時間と明確な相関関係のある注釈の例](./media/annotations/00.png)
-
-## <a name="release-annotations-with-azure-devops-services-build"></a>Azure DevOps Services ビルドを使用したリリース注釈
-
-リリース注釈は、Azure DevOps Services のクラウド ベースの Azure Pipelines サービスの機能です。 
+リリース注釈は、Azure DevOps のクラウド ベースの Azure Pipelines サービスの機能です。
 
 ### <a name="install-the-annotations-extension-one-time"></a>注釈拡張機能のインストール (1 回限り)
-リリース注釈を作成できるようにするには、Visual Studio Marketplace で入手可能な Azure DevOps Services 拡張機能のいずれかをインストールする必要があります。
 
-1. [Azure DevOps Services](https://visualstudio.microsoft.com/vso/) プロジェクトにサインインします。
-2. Visual Studio Marketplace で [リリース注釈拡張機能を取得](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)して、Azure DevOps Services 組織に追加します。
+リリース注釈を作成できるようにするには、Visual Studio Marketplace で入手可能な Azure DevOps 拡張機能のいずれかをインストールする必要があります。
 
-![Azure DevOps Services Web ページの右上で Marketplace を開きます。 [Azure DevOps Services] を選択し、[Azure Pipelines] の下で [さらに参照する] を選択します。](./media/annotations/10.png)
-
-これは、Azure DevOps Services 組織に対して一度だけ行う必要があります。 これで、リリース注釈を組織のプロジェクトに対して構成できるようになりました。 
+1. [Azure DevOps](https://azure.microsoft.com/services/devops/) プロジェクトにサインインします。
+   
+1. Visual Studio Marketplace の[リリース注釈拡張機能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)のページで、自分の Azure DevOps 組織を選択し、 **[インストール]** を選択して Azure DevOps 組織に拡張機能を追加します。
+   
+   ![Azure DevOps 組織を選択してから、[インストール] を選択します。](./media/annotations/1-install.png)
+   
+Azure DevOps 組織に拡張機能をインストールする必要があるのは一度だけです。 これで、組織内の任意のプロジェクトに対してリリース注釈を構成できるようになります。
 
 ### <a name="configure-release-annotations"></a>リリース注釈を構成する
 
-Azure DevOps Services リリース テンプレートごとに別個の API キーを取得する必要があります。
+Azure Pipelines のリリース テンプレートごとに個別の API キーを作成します。
 
-1. [Microsoft Azure Portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます  (まだリソースを作成していない場合は、[この時点で作成します](../../azure-monitor/app/app-insights-overview.md))。
-2. **[API アクセス]** を開き、**Application Insights Id** をコピーします。
+1. [Azure portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます。 または、まだない場合は、[新しい Application Insights リソースを作成](../../azure-monitor/app/app-insights-overview.md)します。
    
-    ![portal.azure.com で、Application Insights リソースを開き、[設定] を選択します。 [API アクセス] を開きます。 アプリケーション ID をコピーする](./media/annotations/20.png)
+1. **[API アクセス]** タブを開き、 **[Application Insights ID]** をコピーします。
+   
+   ![[API アクセス] で、アプリケーション ID をコピーします。](./media/annotations/2-app-id.png)
 
-4. 別のブラウザー ウィンドウで、Azure DevOps Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。 
+1. 別のブラウザー ウィンドウで、Azure Pipelines のデプロイを管理するリリース テンプレートを開くか、作成します。
    
-    タスクを追加し、メニューから [Application Insights Release Annotation]\(Application Insights リリース注釈) タスクを選択します。
+1. **[タスクの追加]** を選択した後、メニューから **[Application Insights Release Annotation]\(Application Insights リリース注釈\)** タスクを選択します。
    
-    [API アクセス] ブレードからコピーした **アプリケーション ID** を貼り付けます。
-   
-    ![Azure DevOps Services で、[リリース] を開き、リリース パイプラインを選択して [編集] を選択します。 [タスクの追加] をクリックし、[Application Insights Release Annotation] (Application Insights リリース注釈) を選択します。 Application Insights ID を貼り付けます。](./media/annotations/30.png)
-4. **[APIKey]** フィールドを `$(ApiKey)` 変数に設定します。
+   ![[タスクの追加] をクリックし、[Application Insights Release Annotation]\(Application Insights リリース注釈\) を選択する。](./media/annotations/3-add-task.png)
 
-5. Azure ウィンドウに戻り、新しい API キーを作成し、それをコピーします。
+   > [!NOTE]
+   > リリース注釈タスクは、現在、Windows ベースのエージェントのみをサポートしています。Linux、macOS、または他の種類のエージェントでは実行されません。
    
-    ![[Azure] ウィンドウの [API アクセス] ブレードで、[API キーの作成] をクリックします。 コメントを指定し、[書き込み] 注釈にチェックを入れ、[キーの生成] をクリックします。 新しいキーをコピーします。](./media/annotations/40.png)
+1. **[アプリケーション ID]** に、 **[API アクセス]** タブからコピーした Application Insights ID を貼り付けます。
+   
+   ![Application Insights ID を貼り付けます。](./media/annotations/4-paste-app-id.png)
+   
+1. Application Insights の **[API アクセス]** ウィンドウに戻り、 **[API キーの作成]** を選択します。 
+   
+   ![[API アクセス] タブで、[API キーの作成] を選択する。](./media/annotations/5-create-api-key.png)
+   
+1. **[API キーの作成]** ウィンドウで、説明を入力し、 **[コメントを書く]** を選択して、 **[キーの生成]** を選択します。 新しいキーをコピーします。
+   
+   ![[API キーの作成] ウィンドウで、説明を入力し、[コメントを書く] を選択して、[キーの生成] を選択します。](./media/annotations/6-create-api-key.png)
+   
+1. リリース テンプレート ウィンドウの **[変数]** タブで、 **[追加]** を選択して新しい API キーの変数定義を作成します。
 
-6. リリース テンプレートの [構成] タブを開きます。
+1. **[名前]** に「`ApiKey`」と入力し、 **[値]** に **[API アクセス]** タブからコピーした API キーを貼り付けます。
    
-    `ApiKey`の変数の定義を作成します。
+   ![Azure DevOps の [変数] タブで、[追加] を選択し、変数名を ApiKey にして、[値] に API キーを貼り付ける。](./media/annotations/7-paste-api-key.png)
    
-    ApiKey の変数の定義に API キーを貼り付けます。
-   
-    ![[Azure DevOps Services] ウィンドウで、[構成] タブを選択し、[変数の追加] をクリックします。 ApiKey の名前を設定し、[値] に生成したキーを貼り付けて、ロック アイコンをクリックします。](./media/annotations/50.png)
-7. 最後に、リリース パイプラインを **[保存]** します。
-
+1. メイン リリース テンプレート ウィンドウで **[保存]** 選択して、テンプレートを保存します。
 
 ## <a name="view-annotations"></a>注釈を表示する
-これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになりました。 注釈は、メトリックス エクスプローラーのグラフに表示されます。
 
-要求元、ソース管理の分岐、リリース パイプライン、環境などを含む、リリースに関する詳細を表示するための注釈マーカーをクリックします。
 
-![任意のリリース注釈マーカーをクリックします。](./media/annotations/60.png)
+   > [!NOTE]
+   > リリース注釈は、Application Insights の [メトリック] ペインでは現在使用できません。
+
+これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになります。 注釈は次の場所に表示できます。
+
+使用状況ペイン。ここではリリース注釈を手動で作成することもできます。
+
+![一定時間内のユーザーのアクセス数を表示した棒グラフのスクリーンショット。 リリース注釈は、リリースが発生した時刻を示すグラフの上の緑色のチェックマークとして表示されます。](./media/annotations/usage-pane.png)
+
+視覚化により x 軸に時間を表示したログベースのブック クエリ。
+
+![注釈が表示された時系列ログベース クエリを示すブック ペインのスクリーンショット](./media/annotations/workbooks-annotations.png)
+
+ブックの注釈を有効にするには、 **[詳細設定]** に移動して **[コメントを表示する]** を選択します。
+
+![[詳細設定] メニューのスクリーンショット。[コメントを表示する] というテキストが強調表示され、有効にするために設定の横にチェックマークが付いています。](./media/annotations/workbook-show-annotations.png)
+
+注釈マーカーを選択すると、要求元、ソース管理の分岐、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
 
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell からカスタム注釈を作成する
-(Azure DevOps Services を利用せずに) あらゆるプロセスから注釈を作成することもできます。 
+Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。 
 
+1. [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) のローカル コピーを作成します。
+   
+1. 前の手順のステップを使って、Application Insights ID を取得し、Application Insights の **[API アクセス]** タブから API キーを作成します。
+   
+1. 次のコードで PowerShell スクリプトを呼び出します。角かっこのプレースホルダーは実際の値に置き換えます。 `-releaseProperties` は省略可能です。 
+   
+   ```powershell
+   
+        .\CreateReleaseAnnotation.ps1 `
+         -applicationId "<applicationId>" `
+         -apiKey "<apiKey>" `
+         -releaseName "<releaseName>" `
+         -releaseProperties @{
+             "ReleaseDescription"="<a description>";
+             "TriggerBy"="<Your name>" }
+   ```
 
-1. [GitHub から Powershell スクリプト](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)のローカル コピーを作成します。
+過去に関する注釈を作成する場合など、スクリプトを変更できます。
 
-2. [API アクセス] ブレードからアプリケーション ID を取得して API キーを作成します。
-
-3. 次のようなスクリプトを呼び出します。
-
-```PS
-
-     .\CreateReleaseAnnotation.ps1 `
-      -applicationId "<applicationId>" `
-      -apiKey "<apiKey>" `
-      -releaseName "<myReleaseName>" `
-      -releaseProperties @{
-          "ReleaseDescription"="a description";
-          "TriggerBy"="My Name" }
-```
-
-このスクリプトは、過去に関する注釈を作成するなどの場合に簡単に修正できます。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [作業項目を作成する](../../azure-monitor/app/diagnostic-search.md#create-work-item)
 * [PowerShell でのオートメーション](../../azure-monitor/app/powershell.md)

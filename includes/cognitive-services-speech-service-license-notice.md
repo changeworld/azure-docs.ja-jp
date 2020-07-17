@@ -1,15 +1,17 @@
 ---
-author: wolfma61
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/07/2018
-ms.author: wolfma
-ms.openlocfilehash: f35a6c61cdbbb71d937b5293df1535e7751cf31d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 03/25/2020
+ms.author: dapine
+ms.openlocfilehash: f17cbc17558c22abefa0b0309b01780657c037f2
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145309"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656699"
 ---
 > [!IMPORTANT]
-> このページにある Azure Cognitive Services 用 Speech SDK コンポーネントのいずれかをダウンロードした時点で、そのライセンス条件に同意したものと見なされます。 「[Microsoft Software License Terms for the Speech SDK (Speech SDK の Microsoft ソフトウェア ライセンス条項)](https://aka.ms/csspeech/license201809)」をご覧ください。
+> Azure Cognitive Services Speech SDK のいずれかをダウンロードした時点で、同 SDK のライセンス条件に同意したものと見なされます。 詳細については、次を参照してください。
+> - <a href="https://aka.ms/csspeech/license201809" target="_blank">Speech SDK の Microsoft ソフトウェア ライセンス条項<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> - <a href="https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html" target="_blank">サード パーティ ソフトウェアに関する通知 <span class="docon docon-navigate-external x-hidden-focus"></span></a>

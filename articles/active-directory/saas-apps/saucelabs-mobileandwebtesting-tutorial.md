@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合 | Microsoft Docs'
 description: Azure Active Directory と Sauce Labs - Mobile and Web Testing の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 41b35324ccca8cf40edbc53ed25a2d8615a9294e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813626"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67091552"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル:Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル: Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
 
 このチュートリアルでは、Sauce Labs - Mobile and Web Testing と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Sauce Labs - Mobile and Web Testing と Azure AD の統合には、次の利点があります。
@@ -144,7 +144,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD シングル サインオンを
 
     b. **[ALLOW JUST-IN-TIME PROVISIONING]\(Just-In-Time プロビジョニングを許可する\)** チェックボックスをオンにします。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

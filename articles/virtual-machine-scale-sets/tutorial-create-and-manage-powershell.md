@@ -1,29 +1,22 @@
 ---
-title: チュートリアル - Azure 仮想マシン スケール セットの作成および管理 | Microsoft Docs
+title: チュートリアル - Azure 仮想マシン スケール セットを作成および管理する
 description: Azure PowerShell を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 05/18/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 0eb5a33b91925260c89e0b1c23800614ed637bdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990636"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195189"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
 
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,15 +27,15 @@ ms.locfileid: "57990636"
 > * スケール セットを手動でスケーリングする
 > * スケール セットの一般的な管理タスクを実行する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシン スケール セットの前にリソース グループを作成する必要があります。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *EastUS* リージョンに作成されます。 
 
 ```azurepowershell-interactive
@@ -91,7 +84,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
+特定の VM インスタンスに関する追加情報を表示するには、`-InstanceId`Get-AzVmssVM[ に ](/powershell/module/az.compute/get-azvmssvm) パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -140,7 +133,7 @@ IpAddress
 52.168.121.216
 ```
 
-最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスのパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P\@ssw0rd!*) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *1* に接続します。
+最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスのパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P\@ssw0rd!* ) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *1* に接続します。
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -156,7 +149,7 @@ Azure Marketplace には、VM インスタンスの作成に使用できる多�
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-特定の発行元のイメージの一覧を表示するには、[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) を使用します。 また、`-PublisherName` か `–Offer` を使用してリストをフィルタリングすることも可能です。 次の例では、発行元名が *MicrosoftWindowsServer* で、*WindowsServer* に一致するプランがあるすべてのイメージを表示するように、リストをフィルター処理します。
+特定の発行元のイメージの一覧を表示するには、[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) を使用します。 また、`-PublisherName` か `-Offer` を使用してリストをフィルタリングすることも可能です。 次の例では、発行元名が *MicrosoftWindowsServer* で、*WindowsServer* に一致するプランがあるすべてのイメージを表示するように、リストをフィルター処理します。
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -205,13 +198,13 @@ VM インスタンス サイズ (または *SKU*) により、CPU、GPU、メモ
 ### <a name="vm-instance-sizes"></a>VM インスタンス サイズ
 次の表は、ユース ケース別に一般的な VM サイズを分類したものです。
 
-| type                     | 一般的なサイズ           |    説明       |
+| 種類                     | 一般的なサイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
 | [メモリの最適化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
 | [ストレージの最適化](../virtual-machines/windows/sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
+| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック レンダリングやビデオ編集に特化した VM です。       |
 | [高性能](../virtual-machines/windows/sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
 
 ### <a name="find-available-vm-instance-sizes"></a>利用可能な VM インスタンス サイズを確認する
@@ -313,7 +306,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 リソース グループを削除すると、グループに含まれているリソース (VM インスタンス、仮想ネットワーク、ディスクなど) もすべて削除されます。 `-Force` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。 `-AsJob` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。
 
 ```azurepowershell-interactive
@@ -321,7 +314,7 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure PowerShell を使用していくつかの基本的なスケール セットの作成および管理タスクを実行する方法について学習しました。
 
 > [!div class="checklist"]

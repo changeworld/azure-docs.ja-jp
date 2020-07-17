@@ -1,24 +1,23 @@
 ---
-title: 結果をトリミングするためのセキュリティ フィルター - Azure Search
-description: セキュリティ フィルターとユーザー ID を使用した Azure Search コンテンツに対するアクセス制御。
-ms.service: search
-ms.topic: conceptual
-services: search
-ms.date: 05/02/2019
+title: 結果をトリミングするためのセキュリティ フィルター
+titleSuffix: Azure Cognitive Search
+description: セキュリティ フィルターとユーザー ID を使用した Azure Cognitive Search コンテンツに対するアクセス制御。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: a222b9e506988929c25a560361611b8f78142053
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024364"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72794279"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search の結果をトリミングするためのセキュリティ フィルター
+# <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
-ユーザー ID に基づいて Azure Search の検索結果をトリミングするためのセキュリティ フィルターを適用できます。 一般的に、このような検索エクスペリエンスでは、検索を実行したユーザーの ID と、ドキュメントにアクセス許可を持つユーザーに関する原則を含むフィールドを比較する必要があります。 一致が見つかった場合、ユーザーまたはプリンシパル (グループ、ロールなど) はそのドキュメントへのアクセス権を持っています。
+ユーザー ID に基づいて Azure Cognitive Search の検索結果をトリミングするためのセキュリティ フィルターを適用できます。 一般的に、このような検索エクスペリエンスでは、検索を実行したユーザーの ID と、ドキュメントにアクセス許可を持つユーザーに関する原則を含むフィールドを比較する必要があります。 一致が見つかった場合、ユーザーまたはプリンシパル (グループ、ロールなど) はそのドキュメントへのアクセス権を持っています。
 
 セキュリティ フィルター処理を実現するには、`Id eq 'id1' or Id eq 'id2'` など、等値式の複雑な論理和演算を使用する方法があります。 この方法は誤りが発生しやすく、保守が困難です。また、一覧の値の数が数百、数千単位の場合、クエリの応答時間が何秒も遅くなります。 
 
@@ -35,7 +34,7 @@ ms.locfileid: "65024364"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure Search サービス](https://docs.microsoft.com/azure/search/search-create-service-portal)、および [Azure Search インデックス](https://docs.microsoft.com/azure/search/search-create-index-portal)がある前提で説明します。  
+この記事では、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure Cognitive Search サービス](https://docs.microsoft.com/azure/search/search-create-service-portal)、および [Azure Cognitive Search インデックス](https://docs.microsoft.com/azure/search/search-create-index-portal)がある前提で説明します。  
 
 ## <a name="create-security-field"></a>セキュリティ フィールドを作成する
 
@@ -113,7 +112,7 @@ api-key: [admin key]
 
 `group_ids` のアクセス権に基づいてドキュメントをトリミングするには、`group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` フィルターを含む検索クエリを発行する必要があります (この "group_id1, group_id2,..." は、検索要求の発行元が属するグループです)。
 このフィルターは、指定された識別子のいずれかが `group_ids` フィールドに含まれるすべてのドキュメントと一致します。
-Azure Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページを参照してください。
+Azure Cognitive Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページを参照してください。
 このサンプルでは、POST 要求を使用してドキュメントを検索する方法について説明している点に注意してください。
 
 HTTP POST 要求を発行します。
@@ -152,10 +151,10 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>まとめ
 
-ここでは、ユーザー ID と Azure Search の `search.in()` 関数に基づいて結果をフィルターする方法について説明しました。 この関数を使用して、各ターゲット ドキュメントに関連付けられたプリンシパルの識別子と一致する要求元のユーザーについて、プリンシパルの識別子を渡すことができます。 検索要求が処理されると、`search.in` 関数によって、ユーザーのプリンシパルが読み取りアクセス権を持っていない検索結果は除外されます。 プリンシパルの識別子は、セキュリティ グループ、ロール、さらにはユーザー自身の ID を表す場合があります。
+ここでは、ユーザー ID と Azure Cognitive Search の `search.in()` 関数に基づいて結果をフィルターする方法について説明しました。 この関数を使用して、各ターゲット ドキュメントに関連付けられたプリンシパルの識別子と一致する要求元のユーザーについて、プリンシパルの識別子を渡すことができます。 検索要求が処理されると、`search.in` 関数によって、ユーザーのプリンシパルが読み取りアクセス権を持っていない検索結果は除外されます。 プリンシパルの識別子は、セキュリティ グループ、ロール、さらにはユーザー自身の ID を表す場合があります。
  
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search フィルターを使用した Active Directory の ID ベースのアクセス制御](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure Search のフィルター](search-filters.md)
-+ [Azure Search 操作でのデータ セキュリティとアクセス制御](search-security-overview.md)
++ [Azure Cognitive Search フィルターを使用した Active Directory の ID ベースのアクセス制御](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure Cognitive Search のフィルター](search-filters.md)
++ [Azure Cognitive Search 操作でのデータ セキュリティとアクセスの制御](search-security-overview.md)

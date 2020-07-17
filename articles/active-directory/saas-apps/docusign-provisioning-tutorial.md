@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:DocuSign を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: DocuSign を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory と DocuSign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121d147a3f8c91f17e955120b2c14f7dbd3da592
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191845"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77058180"
 ---
-# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル:DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル: DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から DocuSign にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで DocuSign と Azure AD で実行する必要がある手順について説明します。
 
@@ -62,11 +62,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを DocuSign に対して有効にする方法を説明します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-1. シングル サインオンのために DocuSign を既に構成している場合は、検索フィールドで DocuSign のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **DocuSign** を検索します。 検索結果から DocuSign を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために DocuSign を既に構成している場合は、検索フィールドで DocuSign のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **DocuSign** を検索します。 検索結果から DocuSign を選択してアプリケーションの一覧に追加します。
 
-1. DocuSign のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. DocuSign のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
@@ -78,7 +78,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
-1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が DocuSign アプリに接続できることを確認します。
+1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が DocuSign アプリに接続できることを確認します。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、チェック ボックスをオンにします。
 
@@ -94,7 +94,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 [ユーザーとグループ] セクションで DocuSign に割り当てたユーザーの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって DocuSign アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tomfitz
 ms.openlocfilehash: 03e4053b65cf39101e8cb5d35ce439a759ec11d6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181562"
 ---
 1. ロックを適用するリソース、リソース グループ、またはサブスクリプションの [設定] ブレードで、 **[ロック]** を選択します。
    

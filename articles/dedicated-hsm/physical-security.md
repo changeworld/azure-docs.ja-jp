@@ -2,8 +2,8 @@
 title: HSM の物理的なセキュリティ - Azure Dedicated HSM | Microsoft Docs
 description: データ センター内での Azure Dedicated HSM デバイスの物理的なセキュリティに関する情報
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: e7a7e1d27f230bc5f38080abfbe3aeeb077e557b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107890"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "70881030"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure Dedicated HSM の物理的なセキュリティ
 
@@ -51,12 +51,12 @@ HSM は、ハードウェア アプライアンス (実際の HSM はアプラ�
 
 HSM は、お客様が作成した仮想ネットワークにプロビジョニングされます。 これは、お客様のプライベート IUP アドレス空間です。  この構成では、貴重な論理ネットワーク レベルの分離が提供され、確実にお客様だけがアクセスするようにします。 これは、すべての論理レベルのセキュリティ コントロールがお客様の責任で行われることを意味します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスのプロビジョニング、アプリケーションの設計、またはアプリケーションのデプロイ前に、高可用性、セキュリティ、サポート可能性など、サービスのすべての主要概念を十分に理解しておくことをお勧めします。
 
 * [高可用性](high-availability.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)
 * [デプロイ アーキテクチャ](deployment-architecture.md)

@@ -1,10 +1,10 @@
 ---
 title: Azure VM のゲスト OS のファイアウォールが正しく構成されていない | Microsoft Docs
-description: ''
+description: シリアル コンソールまたはオフライン手法を使用して、リモート Azure VM のゲスト オペレーティング システムにおけるファイアウォールの構成ミスを診断、修正する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839748"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422529"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM のゲスト OS のファイアウォールが正しく構成されていない
 

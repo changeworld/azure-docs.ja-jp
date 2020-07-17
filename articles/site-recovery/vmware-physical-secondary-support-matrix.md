@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery を使用した VMware VM または物理サーバーのセカンダリ VMware サイトへのディザスター リカバリーのサポート マトリックス | Microsoft Docs
+title: Azure Site Recovery を使用したセカンダリ サイトへの VMware VM/物理サーバーのディザスター リカバリーのサポート
 description: Azure Site Recovery を使用して VMware VM および物理サーバーをセカンダリ サイトにディザスター リカバリーする場合のサポートについてまとめています。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360145"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228799"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -25,12 +25,23 @@ ms.locfileid: "59360145"
 > [!NOTE]
 > オンプレミスの VMware VM と物理サーバーのレプリケーションは、InMage Scout によって提供されます。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
 
+## <a name="end-of-support-announcement"></a>サポート終了のお知らせ
+Site Recovery によるオンプレミスの VMware データセンターまたは物理データセンター間のレプリケーションのシナリオのサポート終了が近づいています。
+
+- 2018 年 8 月以降、このシナリオを Recovery Services コンテナーで構成することはできません。また、InMage Scout ソフトウェアをコンテナーからダウンロードすることもできません。 既存の展開はサポートされます。
+- - 2020 年 12 月 31 日以降、このシナリオはサポートされなくなります。
+既存のパートナーは、サポート終了まで新しいお客様にこのシナリオを提供できます。
+- 2018 年と 2019 年中に、2 つの更新プログラムがリリースされます。
+
+    - 更新プログラム 7:ネットワーク構成とコンプライアンスの問題を修正し、TLS 1.2 のサポートを提供します。
+    - 更新プログラム 8:Linux オペレーティング システム RHEL/CentOS 7.3/7.4/7.5 および SUSE 12 のサポートを追加します
+    - 更新プログラム 8 以降、更新プログラムはリリースされません。 更新プログラム 8 で追加されたオペレーティング システムに対する限定的な修正プログラムのサポートおよびベスト エフォートに基づくバグの修正が提供されます。
 
 ## <a name="host-servers"></a>ホスト サーバー
 
 **オペレーティング システム** | **詳細**
 --- | ---
-vCenter サーバー | vCenter 5.5、6.0、6.5<br/><br/> 6.0 または 6.5 を実行する場合、5.5 機能のみがサポートされることに注意してください。
+vCenter サーバー | vCenter 5.5、6.0、6.5<br/><br/> 6\.0 または 6.5 を実行する場合、5.5 機能のみがサポートされることに注意してください。
 
 
 ## <a name="replicated-vm-support"></a>レプリケートされた VM のサポート
@@ -55,20 +66,20 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ## <a name="network-configuration---hostguest-vm"></a>ネットワークの構成 - ホスト/ゲスト VM
 
-**構成** | **サポートされています**  
+**Configuration** | **サポートされています**  
 --- | --- 
 ホスト - NIC チーミング | はい 
 ホスト - VLAN | はい 
 ホスト - IPv4 | はい 
-ホスト - IPv6 | いいえ  
-ゲスト VM - NIC チーミング | いいえ 
+ホスト - IPv6 | いいえ 
+ゲスト VM - NIC チーミング | いいえ
 ゲスト VM - IPv4 | はい
-ゲスト VM - IPv6 | いいえ 
+ゲスト VM - IPv6 | いいえ
 Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 ### <a name="host-storage"></a>ホスト ストレージ
 
@@ -81,42 +92,42 @@ SAN (ISCSI) | はい
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
-**構成** | **サポートされています** 
+**Configuration** | **サポートされています** 
 --- | --- 
 VMDK | はい 
 VHD/VHDX | 該当なし 
 第 2 世代 VM | 該当なし 
 共有クラスター ディスク | はい 
-暗号化されたディスク | いいえ  
+暗号化されたディスク | いいえ 
 UEFI| はい 
-NFS | いいえ  
-SMB 3.0 | いいえ  
+NFS | いいえ 
+SMB 3.0 | いいえ 
 RDM | はい 
 1 TB より大きいディスク | はい 
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい 
-記憶域 | いいえ  
+記憶域スペース | いいえ 
 ディスクのホット アド/削除 | はい 
 ディスクの除外 | はい 
 マルチパス (MPIO) | 該当なし 
 
 ## <a name="vaults"></a>資格情報コンテナー
 
-**アクション** | **サポートされています** 
+**操作** | **サポートされています** 
 --- | --- 
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ  
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ  
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ 
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ 
 
 ## <a name="mobility-service-and-updates"></a>モビリティ サービスと更新プログラム
 
 モビリティ サービスは、オンプレミスの VMware サーバー/物理サーバーとセカンダリ サイトの間のレプリケーションを調整します。 レプリケーションを設定するときは、モビリティ サービスとその他のコンポーネントが最新バージョンになっていることを確認する必要があります。
 
-| **Update** | **詳細** |
+| **アップデート** | **詳細** |
 | --- | --- |
 |Scout 更新プログラム | Scout 更新プログラムは累積的です。 <br/><br/> 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) |
-|コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
+|コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細については、こちらを参照してください](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [InMage Scout ユーザー ガイド](https://aka.ms/asr-scout-user-guide) をダウンロードする
 

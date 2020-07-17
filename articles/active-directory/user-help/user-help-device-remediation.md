@@ -1,27 +1,27 @@
 ---
-title: 「ここからアクセスすることはできません」というエラーのトラブルシューティング - Azure Active Directory | Microsoft Docs
-description: 「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由についてトラブルシューティングします。
+title: "\"ここからアクセスすることはできません\" というエラーに対する修正 - Azure AD"
+description: "\"ここからアクセスすることはできません\" というエラー メッセージを受け取る理由に対して可能性のある修正を探します。"
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/10/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452039"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740990"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"ここからアクセスすることはできません" というエラー メッセージに対して可能性のある修正方法
+
 組織内部の Web アプリやサービスにアクセスするとき、「**ここからアクセスすることはできません**」というエラー メッセージが出力されることがあります。 このメッセージは、デバイスが組織のリソースにアクセスできないようにするポリシーが組織で設定されていることを意味します。 最終的にはヘルプデスクに連絡してこの問題を解決してもらうことになりますが、まず最初に試すことができるいくつかの操作を以下に示します。
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>サポートされているブラウザーを使用しているかどうかを確認する
@@ -29,18 +29,18 @@ ms.locfileid: "57452039"
 
 ![ブラウザーのサポートに関連するエラー メッセージ](media/user-help-device-remediation/browser-version.png)
 
-この問題を解決するには、オペレーティング システムに基づいて、サポートされているブラウザーをインストールして実行する必要があります。 Windows 10 を使用している場合、サポートされているブラウザーには、Microsoft Edge、Internet Explorer、および Google Chrome が含まれます。 別のオペレーティング システムを使用している場合は、[サポートされているブラウザー](../conditional-access/technical-reference.md#supported-browsers)から完全な一覧を確認できます。
+この問題を解決するには、オペレーティング システムに基づいて、サポートされているブラウザーをインストールして実行する必要があります。 Windows 10 を使用している場合、サポートされているブラウザーには、Microsoft Edge、Internet Explorer、および Google Chrome が含まれます。 別のオペレーティング システムを使用している場合は、[サポートされているブラウザー](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)から完全な一覧を確認できます。
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>サポートされているオペレーティング システムを使用しているかどうかを確認する
 サポートされているオペレーティング システムのバージョンを実行しているかどうかを確認します。これには以下のバージョンが含まれます。
 
-- **Windows クライアント。**  Windows 7 以降。
+- **Windows クライアント。** Windows 7 以降。
 
-- **Windows Server。**  Windows Server 2008 R2 以降。
+- **Windows Server。** Windows Server 2008 R2 以降。
 
-- **MacOS。**  macOS X 以降
+- **MacOS。** macOS X 以降
 
-- **Android および iOS。**  Android および iOS モバイル オペレーティング システムの最新バージョン
+- **Android および iOS。** Android および iOS モバイル オペレーティング システムの最新バージョン
 
 この問題を解決するには、サポートされているオペレーティング システムをインストールして実行する必要があります。
 
@@ -58,7 +58,7 @@ ms.locfileid: "57452039"
 
 4. 職場または学校アカウントを使用してデバイスのロックを解除し、問題のあるアプリまたはサービスにもう一度アクセスしてみます。
 
-    「**ここからアクセスすることはできません**」エラー メッセージが再び表示される場合、**[詳細]** リンクを選択し、詳細情報をヘルプデスクに連絡してください。
+    「**ここからアクセスすることはできません**」エラー メッセージが再び表示される場合、 **[詳細]** リンクを選択し、詳細情報をヘルプデスクに連絡してください。
 
 ### <a name="to-join-your-device-to-your-network"></a>デバイスをネットワークに参加させる
 デバイスが組織のネットワークに参加していない場合は、次の 2 つのいずれかの操作を行います。
@@ -67,7 +67,7 @@ ms.locfileid: "57452039"
 
 - **個人所有の職場のデバイスを登録する。** 個人デバイス (通常は電話またはタブレット) を組織のネットワークに登録します。 デバイスが登録されたら、そのデバイスは組織の制限されたリソースにアクセスできるようになります。 詳細情報および手順については、「[個人デバイスを組織のネットワークに登録する](user-help-register-device-on-network.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [MyApps ポータルとは](active-directory-saas-access-panel-introduction.md)
 
 - [パスワードではなく携帯電話でサインインする](user-help-auth-app-sign-in.md)

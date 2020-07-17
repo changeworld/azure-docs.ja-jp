@@ -8,43 +8,42 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ee5eec5a5c17e443fe71f0093f09c96cf81ece0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 137531ab0d96c24a3ce19e429a5765d6e4a13c93
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998636"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561249"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway のユーザーを管理する 
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway のユーザーを管理する
 
-この記事では、Data Box Gateway のユーザーを管理する方法について説明します。 Azure Data Box Gateway の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
+この記事では、Data Box Gateway のユーザーを管理する方法について説明します。 Azure Data Box Gateway の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。 
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ユーザーの追加
 > * ユーザーの変更
-> * ユーザーの削除 
+> * ユーザーの削除
 
 ## <a name="about-users"></a>ユーザーについて
 
-ユーザーには、読み取りアクセス権だけを指定することも、すべての特権を指定することもできます。 名前が示すとおり、読み取り専用ユーザーは、共有データを表示することだけができます。 すべての特権を持つユーザーは、共有データの読み取り、これらの共有への書き込み、および共有データの変更または削除を行うことができます。 
+ユーザーには、読み取りアクセス権だけを指定することも、すべての特権を指定することもできます。 名前が示すとおり、読み取り専用ユーザーは、共有データを表示することだけができます。 すべての特権を持つユーザーは、共有データの読み取り、これらの共有への書き込み、および共有データの変更または削除を行うことができます。
 
- - **すべての特権を持つユーザー** - フル アクセス権を持つローカル ユーザー。 
+ - **すべての特権を持つユーザー** - フル アクセス権を持つローカル ユーザー。
  - **読み取り専用ユーザー** - 読み取り専用アクセス権を持つローカル ユーザー。 これらのユーザーは、読み取り専用の操作を許可する共有に関連付けられます。
 
-ユーザーのアクセス許可は、まず、共有の作成中にユーザーを作成するときに定義します。 ユーザーに関連付けられるアクセス許可を定義した後、これらのアクセス許可は、エクスプローラーを使用して変更することができます。 
-
+ユーザーのアクセス許可は、まず、共有の作成中にユーザーを作成するときに定義します。 共有レベルのアクセス許可の変更は現在サポートされていません。
 
 ## <a name="add-a-user"></a>ユーザーの追加
 
 ユーザーを追加するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Data Box Gateway リソースに移動し、**[概要]** に移動します。 コマンド バーの **[+ ユーザーの追加]** をクリックします。
+1. Azure portal で Data Box Gateway リソースに移動し、 **[概要]** に移動します。 コマンド バーの **[+ ユーザーの追加]** をクリックします。
 
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-users/add-user-1.png)
 
-2. 追加するユーザーのユーザー名とパスワードを指定します。 パスワードを確認し、**[追加]** をクリックします。
+2. 追加するユーザーのユーザー名とパスワードを指定します。 パスワードを確認し、 **[追加]** をクリックします。
 
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-users/add-user-2.png)
 
@@ -65,7 +64,7 @@ ms.locfileid: "59998636"
 
 ユーザーを削除するには、Azure portal で次の手順を実行します。
 
-1. ユーザーの一覧でユーザーを選択してクリックし、**[削除]** をクリックします。  
+1. ユーザーの一覧でユーザーを選択してクリックし、 **[削除]** をクリックします。  
 
    ![ユーザーの削除](media/data-box-gateway-manage-users/delete-user-1.png)
 
@@ -78,6 +77,6 @@ ms.locfileid: "59998636"
 ![ユーザーの削除](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [帯域幅を管理する](data-box-gateway-manage-bandwidth-schedules.md)方法について学習します。

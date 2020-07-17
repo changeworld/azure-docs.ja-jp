@@ -1,18 +1,17 @@
 ---
 title: Azure Data Catalog でサポートされるデータ ソース
-description: この記事では、現在サポートされているデータ ソースの仕様を示します。
-services: data-catalog
+description: この記事では、Azure Data Catalog に対して現在サポートされているデータ ソースの仕様を示します。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: f97f84ebf1dc4406bd924817bfd4aa3267559751
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 08/01/2019
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694339"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78898146"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
@@ -125,7 +124,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 以降のバージョン。</td>
     </tr>
     <tr>
       <td>Oracle Database ビュー</td>
@@ -133,7 +132,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 以降のバージョン。</td>
     </tr>
     <tr>
       <td>その他 (汎用アセット)</td>
@@ -152,7 +151,7 @@ ms.locfileid: "64694339"
       <td></td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse ビュー</td>
+      <td>Azure SQL Data Warehouse ビュー</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -165,7 +164,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -173,7 +172,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services メジャー</td>
@@ -181,7 +180,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services テーブル</td>
@@ -189,15 +188,15 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services レポート</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>[ブラウザー] ボタンを</td>
-      <td>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。</td>
+      <td>Browser</td>
+      <td>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。 SQL Server 2008 以降のバージョンのみ</td>
     </tr>
     <tr>
       <td>SQL Server テーブル</td>
@@ -205,7 +204,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>SQL Server ビュー</td>
@@ -213,7 +212,7 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
-      <td></td>
+      <td>SQL Server 2008 以降のバージョン。</td>
     </tr>
     <tr>
       <td>Teradata テーブル</td>
@@ -230,6 +229,14 @@ ms.locfileid: "64694339"
       <td>✓</td>
       <td>Excel</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>SAP Business Warehouse</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td></td>
+      <td>英語でのみ機能します。 メジャーはサポートされていません。</td>
     </tr>
     <tr>
       <td>SAP HANA ビュー</td>

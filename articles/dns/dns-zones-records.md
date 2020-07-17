@@ -1,26 +1,20 @@
 ---
-title: DNS ゾーンとレコードの概要 - Azure DNS | Microsoft Docs
+title: DNS ゾーンとレコードの概要 - Azure DNS
 description: Microsoft Azure DNS での DNS ゾーンとレコードのホスティングに対するサポートの概要
-services: dns
-documentationcenter: na
-author: vhorne
-manager: jeconnoc
-editor: ''
+author: rohinkoul
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: victorh
-ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.author: rohink
+ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231371"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -28,9 +22,9 @@ ms.locfileid: "39174293"
 
 ## <a name="domain-names"></a>ドメイン名
 
-ドメイン ネーム システムはドメインの階層構造です。 階層は、"**.**" という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
+ドメイン ネーム システムはドメインの階層構造です。 階層は、" **.** " という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
 
-"contoso.com" などのドメイン名は、ドメイン名レジストラーという組織から購入できます。  ドメイン名を購入すると、"www.contoso.com" という名前で会社の Web サイトを表示するなど、そのドメイン名で DNS 階層を制御する権限が付与されます。 レジストラーが顧客に代わって自社のネーム サーバーでドメインをホストする場合もあれば、顧客が他のネーム サーバーを指定できる場合もあります。
+`contoso.com` などのドメイン名は、ドメイン名レジストラーという組織から購入できます。  ドメイン名を購入すると、`www.contoso.com` という名前で会社の Web サイトを表示するなど、その名前で DNS 階層を制御する権限が付与されます。 レジストラーが顧客に代わって自社のネーム サーバーでドメインをホストする場合もあれば、顧客が他のネーム サーバーを指定できる場合もあります。
 
 Azure DNS では世界各地に分散された高可用性ネーム サーバー インフラストラクチャを提供しており、お客様はこれを利用してドメインをホストできます。 Azure DNS でドメインをホストすることで、他の Azure サービスと同じ資格情報、API、ツール、課金情報、サポートを使用して DNS レコードを管理できます。
 
@@ -88,6 +82,8 @@ SOA レコード セットは各ゾーンの頂点に自動的に作成され (�
 
 SOA レコードのプロパティはすべて変更可能ですが、"host" プロパティは変更できません。このプロパティは、Azure DNS で提供されているプライマリ ネーム サーバー名を参照するよう事前構成されています。
 
+ゾーン内のレコードに変更が加えられても、SOA レコード内にあるゾーンのシリアル番号が自動的に更新されることはありません。 必要に応じて、これは SOA レコードを編集することによって、手動で更新できます。
+
 ### <a name="spf-records"></a>SPF レコード
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
@@ -111,9 +107,9 @@ DNS レコード内の複数の文字列と TXT レコード セット内の複�
 
 ## <a name="tags-and-metadata"></a>タグとメタデータ
 
-### <a name="tags"></a>タグ
+### <a name="tags"></a>Tags
 
-タグは名前と値のペアのリストで、Azure Resource Manager でリソースのラベル付けに使用されます。  Azure Resource Manager ではこのタグを使用して、Azure の課金内容に関するフィルター ビューを表示したり、必須タグに関するポリシーを設定したりします。 タグの詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)を参照してください。
+タグは名前と値のペアのリストで、Azure Resource Manager でリソースのラベル付けに使用されます。  Azure Resource Manager ではこのタグを使用して、Azure の課金内容に関するフィルター ビューを表示したり、必須タグに関するポリシーを設定したりします。 タグの詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)を参照してください。
 
 Azure DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。  DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、この後説明する 'メタデータ' がサポートされます。
 
@@ -134,7 +130,7 @@ Azure DNS REST API のレベルでは、HTTP ヘッダーを使用して Etag �
 | ヘッダー | 動作 |
 | --- | --- |
 | なし |PUT は常に成功します (Etag チェックなし)。 |
-| If-match <etag> |PUT は、リソースが存在し、Etag が一致する場合にのみ成功します |
+| If-match \<etag> |PUT は、リソースが存在し、Etag が一致する場合にのみ成功します |
 | If-match * |PUT はリソースが存在する場合にのみ成功します |
 | If-none-match * |PUT はリソースが存在しない場合にのみ成功します |
 
@@ -145,7 +141,7 @@ Azure DNS を使用する際は、次の制限が既定で適用されます。
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure DNS の使用を開始する場合は、[DNS ゾーンの作成方法](dns-getstarted-create-dnszone-portal.md)と [DNS レコードの作成方法](dns-getstarted-create-recordset-portal.md)について確認してください。
 * 既存の DNS ゾーンを移行する場合は、[DNS ゾーン ファイルのインポートとエクスポート](dns-import-export.md)の実行方法を確認してください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: 0e7d7f44a70278a7777ba6c32c8e546074953fdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108570"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60723308"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理
 
@@ -52,15 +52,15 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 | 目的の操作 | 実行する手順 |
 | --- | --- |
-| サービスを作成する</br>サービスを削除する</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-8000-manage-service.md) |
+| サービスの作成</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-8000-manage-service.md) |
 | アクティビティ ログを表示する |[StorSimple デバイス マネージャー サービスの概要ブレードの使用](storsimple-8000-service-dashboard.md) |
-| サービス データ暗号化キーを変更する</br>操作ログを表示する |[StorSimple デバイス マネージャー サービスのダッシュボードの使用](storsimple-8000-service-dashboard.md) |
-| デバイスの非アクティブ化</br>デバイスを削除する |[デバイスを非アクティブ化または削除する](storsimple-8000-deactivate-and-delete-device.md) |
-| 障害復旧とデバイスのフェールオーバーについて学習する</br>物理デバイスへのフェイルオーバー</br>仮想デバイスへのフェールオーバー</br>ビジネス継続性ディザスター リカバリー (BCDR) |[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-8000-device-failover-disaster-recovery.md) |
+| サービス データ暗号化キーの変更</br>操作ログを表示する |[StorSimple デバイス マネージャー サービスのダッシュボードの使用](storsimple-8000-service-dashboard.md) |
+| デバイスの非アクティブ化</br>デバイスの削除 |[デバイスを非アクティブ化または削除する](storsimple-8000-deactivate-and-delete-device.md) |
+| ディザスター リカバリーとデバイスのフェールオーバーについて学習する</br>物理デバイスへのフェイルオーバー</br>仮想デバイスへのフェールオーバー</br>ビジネス継続性ディザスター リカバリー (BCDR) |[StorSimple デバイスのフェールオーバーとディザスター リカバリー](storsimple-8000-device-failover-disaster-recovery.md) |
 | ボリュームのバックアップを一覧表示する</br>バックアップ セットの選択</br>バックアップ セットの削除 |[バックアップを管理する](storsimple-8000-manage-backup-catalog.md) |
 | ボリュームを複製する |[ボリュームを複製する](storsimple-8000-clone-volume-u2.md) |
 | バックアップ セットを復元する |[バックアップ セットを復元する](storsimple-8000-restore-from-backup-set-u2.md) |
-| ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントの削除</br>ストレージ アカウントのキー ローテーション |[ストレージ アカウントを管理する](storsimple-8000-manage-storage-accounts.md) |
+| ストレージ アカウントについて</br>ストレージ アカウントの追加</br>ストレージ アカウントの編集</br>ストレージ アカウントを削除する</br>ストレージ アカウントのキー ローテーション |[ストレージ アカウントを管理する](storsimple-8000-manage-storage-accounts.md) |
 | 帯域幅テンプレートについて</br>帯域幅テンプレートを追加する</br>帯域幅テンプレートを編集する</br>帯域幅テンプレートを削除する</br>既定の帯域幅テンプレートを使用する</br>指定した時刻に開始する終日帯域幅テンプレートを作成する |[帯域幅テンプレートを管理する](storsimple-8000-manage-bandwidth-templates.md) |
 | アクセス制御レコードについて</br>アクセス制御レコードの作成</br>アクセス制御レコードの編集</br>アクセス制御レコードの削除 |[アクセス制御レコードを管理する](storsimple-8000-manage-acrs.md) |
 | ジョブの詳細を表示する</br>ジョブを取り消す |[ジョブを管理する](storsimple-8000-manage-jobs-u2.md) |
@@ -72,7 +72,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | Web プロキシ表示設定を構成する |[デバイスの Web プロキシを構成する](storsimple-8000-configure-web-proxy.md) |
 | デバイス管理者のパスワードを変更する</br>StorSimple Snapshot Manager のパスワードを変更する |[StorSimple のパスワードを変更する](storsimple-8000-change-passwords.md) |
 | リモート管理の構成 |[StorSimple デバイスにリモート接続する](storsimple-8000-remote-connect.md) |
-| アラート設定を構成する |[StorSimple アラートを表示および管理する](storsimple-8000-manage-alerts.md) |
+| アラート設定の構成 |[StorSimple アラートを表示および管理する](storsimple-8000-manage-alerts.md) |
 | StorSimple デバイスの CHAP の構成 |[StorSimple デバイスの CHAP を構成する](storsimple-configure-chap.md) |
 | バックアップ ポリシーを追加する</br>スケジュールの追加または変更</br>バックアップ ポリシーの削除</br>手動バックアップの取得</br>複数のボリュームとスケジュールによるカスタム バックアップ ポリシーの作成 |[バックアップ ポリシーを管理する](storsimple-8000-manage-backup-policies-u2.md) |
 | デバイス コントローラーを停止する</br>デバイス コントローラーを再起動する</br>デバイス コントローラーをシャット ダウンする</br>デバイスを工場出荷時の既定値にリセットする</br>(これらはオンプレミスのデバイスのみに適用されます) |[StorSimple デバイス コントローラーを管理する](storsimple-8000-manage-device-controller.md) |

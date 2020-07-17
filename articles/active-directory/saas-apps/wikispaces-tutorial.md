@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Wikispaces の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Wikispaces の統合 | Microsoft Docs'
 description: Azure Active Directory と Wikispaces の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d57ec0299aa541d1642d77421e85c6fbdf070c7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7a683923ba48b1f354f90ac94d746cb92f359e7a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888105"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74233313"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル:Azure Active Directory と Wikispaces の統合
+# <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル: Azure Active Directory と Wikispaces の統合
 
 このチュートリアルでは、Wikispaces と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Wikispaces と Azure AD の統合には、次の利点があります。
@@ -53,11 +53,11 @@ Azure AD への Wikispaces の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Wikispaces を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Wikispaces の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Wikispaces**」と入力し、結果ウィンドウで **[Wikispaces]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Wikispaces**」と入力し、結果ウィンドウで **[Wikispaces]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Wikispaces](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Wikispaces で Azure AD のシングル サインオンを構成してテスト�
 
 Wikispaces で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Wikispaces** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Wikispaces** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Wikispaces で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Wikispaces クライアント サポート チーム](https://www.wikispaces.com/site/help)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -134,7 +134,7 @@ Wikispaces で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -158,7 +158,7 @@ Wikispaces で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Wikispaces へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Wikispaces]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Wikispaces]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -170,15 +170,15 @@ Wikispaces で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-wikispaces-test-user"></a>Wikispaces テスト ユーザーの作成
 
@@ -190,17 +190,17 @@ Azure AD ユーザーが Wikispaces にサインインできるようにする�
 
 2. **[メンバー]** に移動します。
    
-    ![メンバー](./media/wikispaces-tutorial/ic787193.png "メンバー")
+    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png "メンバー")
 
 3. **[ユーザーの招待]** をクリックします。
    
-    ![ユーザーの招待](./media/wikispaces-tutorial/ic787194.png "ユーザーの招待")
+    ![ユーザーの招待](./media/wikispaces-tutorial/ic787194.png "[ユーザーの招待]")
 
 4. **[ユーザーの招待]** セクションで、次の手順を実行します。
    
-    ![ユーザーの招待](./media/wikispaces-tutorial/ic787208.png "ユーザーの招待")
+    ![ユーザーの招待](./media/wikispaces-tutorial/ic787208.png "[ユーザーの招待]")
    
-    a. プロビジョニングする有効な AAD アカウントの関連するテキスト ボックスに、 **名前または電子メール アドレス** を入力します。
+    a. プロビジョニングする有効な Azure AD アカウントの関連するテキスト ボックスに、**ユーザー名またはメール アドレス**を入力します。
    
     b. **[送信]** をクリックします。  
       
@@ -208,7 +208,7 @@ Azure AD ユーザーが Wikispaces にサインインできるようにする�
     > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
     
 > [!NOTE]
-> Wikispaces から提供されている他の Wikispaces ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Wikispaces ユーザー アカウント作成ツールや、Wikispaces から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

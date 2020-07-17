@@ -1,40 +1,28 @@
 ---
-title: Azure PowerShell のサンプル - Service Fabric | Microsoft Docs
-description: Azure PowerShell のサンプル - Service Fabric
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
-ms.devlang: na
+title: Azure PowerShell のサンプル - Service Fabric
+description: Powershell を使用した Azure Service Fabric クラスター、アプリ、サービスの作成と管理について説明します。
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 11/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8a3a80fb6ae20eddc3237d986ecda1d4cb5b65a5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f9ba1b4833b3aff13284a68c23f398ea47ef2ae2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666038"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75645652"
 ---
-# <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell のサンプル
 
 次の表には、Service Fabric クラスター、アプリケーション、およびサービスを作成して管理する PowerShell のサンプル スクリプトへのリンクが含まれています。
 
-[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+[!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
 | | |
 |-|-|
 | **クラスターの作成** ||
 | [クラスターの作成 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Azure Service Fabric クラスターを作成します。 |
 | **クラスター、ノード、およびインフラストラクチャの管理** ||
-| [アプリケーション証明書の追加](./scripts/service-fabric-powershell-add-application-certificate.md)| クラスター内のすべてのノードにアプリケーションの X.509 証明書を追加します。 |
+| [アプリケーション証明書の追加](./scripts/service-fabric-powershell-add-application-certificate.md)| Key Vault に X509 証明書を作成して、クラスター内の仮想マシン スケール セットにデプロイします。 |
 | [クラスター VM の RDP ポート範囲の更新](./scripts/service-fabric-powershell-change-rdp-port-range.md)|展開されたクラスター内にあるクラスター ノード VM の RDP ポート範囲を変更します。|
 | [クラスター ノード VM の管理者ユーザー名とパスワードの更新](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | クラスター ノード VM の管理者ユーザー名とパスワードを更新します。 |
 | [ロード バランサーでポートを開く](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | Azure ロード バランサーの特定のポートで受信トラフィックを許可するため、アプリケーション ポートを開きます。 |

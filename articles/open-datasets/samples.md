@@ -1,18 +1,18 @@
 ---
-title: NOAA オープン データセットを使用するサンプル Jupyter Notebooks
+title: NOAA データを使用するサンプル Jupyter Notebooks
 titleSuffix: Azure Open Datasets
 description: Azure オープン データセット用のサンプル Jupyter Notebooks を使用して、オープン データセットを読み込んでデモ データのエンリッチメントのために使用する方法を学習します。 データを処理するために手法として Spark と Pandas の使用が含まれます。
 ms.service: open-datasets
 ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/06/2020
+ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442338"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930320"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>サンプル Jupyter Notebooks は、オープン データセットを使用してデータをエンリッチする方法を示します。 
 Azure オープン データセット用のサンプル Jupyter Notebooks は、オープン データセットを読み込んでデモ データのエンリッチメントのために使用する方法を示します。 データを処理するために手法として Apache Spark と Pandas の使用が含まれます。
@@ -38,8 +38,8 @@ Azure オープン データセット用のサンプル Jupyter Notebooks は、
 |[気象データによってエンリッチされたタクシー乗車データ - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | ニューヨーク市のグリーン タクシー データ (1 か月分) を読み込み、気象データによって Pandas データフレームでエンリッチします。 この例は、メソッド `get_pandas_limit` をオーバーライドして、データ読み込みパフォーマンスとデータ容量のバランスを調整します。|
 |[気象データによってエンリッチされたタクシー乗車データ - Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | ニューヨーク市のグリーン タクシー データを読み込み、気象データによって Spark データフレームでエンリッチします。  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル:自動機械学習とオープン データセットを使う回帰モデル](tutorial-opendatasets-automl.md)
-* [オープン データセット用 Python SDK](https://aka.ms/open-datasets-api)
+* [チュートリアル:自動機械学習とオープン データセットを使う回帰モデル](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
+* [オープン データセット用 Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure オープン データセット カタログ](https://azure.microsoft.com/services/open-datasets/catalog/)

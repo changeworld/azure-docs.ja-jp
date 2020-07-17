@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d1ca6d37d6133786aff7ad3156fea2a0c22dfb97
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181239"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>クラウド アプライアンスを作成するには
 
 1. Azure Portal で **StorSimple デバイス マネージャー** サービスに移動します。
-2. **[デバイス]** ブレードに移動します。 サービスの概要ブレードのコマンド バーで、**[クラウド アプライアンスの作成]** をクリックします。
+2. **[デバイス]** ブレードに移動します。 サービスの概要ブレードのコマンド バーで、 **[クラウド アプライアンスの作成]** をクリックします。
     ![StorSimple の [クラウド アプライアンスの作成]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. **[クラウド アプライアンスの作成]** ブレードで、次のように詳細を指定します。
    

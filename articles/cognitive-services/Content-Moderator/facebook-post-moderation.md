@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Facebook のコンテンツをモデレートする - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、機械学習ベースの Content Moderator を使用して Facebook の投稿とコメントをモデレートする方法について説明します。
 services: cognitive-services
 author: PatrickFarley
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233811"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76774279"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 !["FBListener" を介して Facebook から情報を受信し、"CMListener" を介して情報を送信する、Content Moderator の図](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
+> 2018 年に、Facebook は Facebook アプリのより厳密な審査ポリシーを実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,11 +48,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-image-moderation-workflow"></a>画像モデレーション ワークフローを構成する
 
-「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、カスタム画像ワークフローを作成します。 これにより、Content Moderator では自動的に Facebook 上の画像を確認し、レビュー ツールに送信できます。 ワークフローの**名前**を記録しておきます。
+「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、カスタム画像ワークフローを作成します。 Content Moderator では、このワークフローを使用して自動的に Facebook 上の画像を確認し、一部をレビュー ツールに送信します。 ワークフローの**名前**を記録しておきます。
 
 ## <a name="configure-text-moderation-workflow"></a>テキスト モデレーション ワークフローを構成する
 
-再び、「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、今度はカスタム テキスト ワークフローを作成します。 これにより、Content Moderator でテキスト コンテンツを自動的に確認できるようになります。 ワークフローの**名前**を記録しておきます。
+もう一度、[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)に関するガイドを参照して、今度はカスタム テキスト ワークフローを作成します。 Content Moderator では、このワークフローを使用して、テキスト コンテンツを自動的に確認します。 ワークフローの**名前**を記録しておきます。
 
 ![テキスト ワークフローを構成する](images/text-workflow-configure.PNG)
 
@@ -66,22 +66,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [[Azure Functions]](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) ページの表示に従って Azure Function アプリを作成します。
 1. 新しく作成した Function アプリに移動します。
-1. アプリ内で **[プラットフォーム機能]** タブに移動し、**[構成]** を選択します。 次のページの **[アプリケーション設定]** セクションで、**[新しいアプリケーション設定]** を選択し、次のキー/値ペアを追加します。
+1. アプリ内で **[プラットフォーム機能]** タブに移動し、 **[構成]** を選択します。 次のページの **[アプリケーション設定]** セクションで、 **[新しいアプリケーション設定]** を選択し、次のキー/値ペアを追加します。
     
     | アプリ設定の名前 | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | Content Moderator のチーム ID  | 
     | cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
-    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 |
+    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 これは、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
     | cm:ImageWorkflow | 画像に対して実行するワークフローの名前 |
     | cm:TextWorkflow | テキストに対して実行するワークフローの名前 |
     | cm:CallbackEndpoint | このガイドで後で作成する CMListener 関数アプリの URL |
     | fb:VerificationToken | お客様が作成するシークレット トークン。Facebook のフィード イベントにサブスクライブするために使用されます |
-    | fb:PageAccessToken | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 これは、後の手順で取得します。 |
+    | fb:PageAccessToken | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 このトークンは、後の手順で取得します。 |
 
     ページ上部にある **[保存]** ボタンをクリックします。
 
-1. **[プラットフォーム機能]** タブに戻ります。左側のウィンドウの **[+]** ボタンを使用して、**[新しい関数]** ウィンドウを表示します。 作成する関数は、Facebook からイベントを受け取ることになります。
+1. **[プラットフォーム機能]** タブに戻ります。左側のウィンドウの **[+]** ボタンを使用して、 **[新しい関数]** ウィンドウを表示します。 作成する関数は、Facebook からイベントを受け取ることになります。
 
     ![[関数の追加] ボタンが強調表示されている Azure Functions ウィンドウ。](images/new-function.png)
 
@@ -109,10 +109,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. 新しいアプリを追加します。
     1. 適当な名前を付けます
     1. **[Webhooks] > [設定]** を選択します
-    1. ドロップダウン メニューで **[ページ]** を選択し、**[Subscribe to this object]\(このオブジェクトをサブスクライブする\)** を選択します
-    1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、**[Function App Settings]\(Function アプリの設定\)** で構成した**トークンを確認**します。
-    1. サブスクライブが完了したら、フィードまで下にスクロールして、**[Subscribe]\(サブスクライブ\)** を選択します。
-    1. **フィード**行の **[テスト]** ボタンをクリックして、テスト メッセージを FBListener Azure 関数に送信してから、**[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
+    1. ドロップダウン メニューで **[ページ]** を選択し、 **[Subscribe to this object]\(このオブジェクトをサブスクライブする\)** を選択します
+    1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、 **[Function App Settings]\(Function アプリの設定\)** で構成した**トークンを確認**します。
+    1. サブスクライブが完了したら、フィードまで下にスクロールして、 **[Subscribe]\(サブスクライブ\)** を選択します。
+    1. **フィード**行の **[テスト]** ボタンをクリックして、テスト メッセージを FBListener Azure 関数に送信してから、 **[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
 
 1. Facebook ページを作成します。
 
@@ -144,20 +144,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. 以下の環境変数を更新します。
     
-        | キー | 値   | 
+        | Key | 値   | 
         | -------------------- |-------------|
         | appId   | Facebook アプリ識別子をここに挿入します  | 
         | appSecret | Facebook アプリのシークレットをここに挿入します | 
         | short_lived_token | 前の手順で生成した短命のユーザー アクセス トークンを挿入します |
     4. コレクションに含まれている 3 つの API を実行します。 
-        1. **[Generate Long-Lived Access Token]\(長命のアクセス トークンの生成\)** を選択し、**[Send]\(送信\)** をクリックします。
-        2. **[Get User ID]\(ユーザー ID の取得\)** を選択し、**[Send]\(送信\)** をクリックします。
-        3. **[Get Permanent Page Access Token]\(永続的なページ アクセス トークンの取得\)** を選択し、**[Send]\(送信\)** をクリックします。
+        1. **[Generate Long-Lived Access Token]\(長命のアクセス トークンの生成\)** を選択し、 **[Send]\(送信\)** をクリックします。
+        2. **[Get User ID]\(ユーザー ID の取得\)** を選択し、 **[Send]\(送信\)** をクリックします。
+        3. **[Get Permanent Page Access Token]\(永続的なページ アクセス トークンの取得\)** を選択し、 **[Send]\(送信\)** をクリックします。
     5. 応答から **access_token** の値をコピーし、それをアプリ設定 **fb: PageAccessToken** に割り当てます。
 
 このソリューションは Facebook ページに投稿されたすべての画像とテキストを Content Moderator に送信します。 すると、前に構成したワークフローが呼び出されます。 ワークフローに定義されている条件を満たさないコンテンツは、レビュー ツール内のレビューに渡されます。 その他のコンテンツは自動的に公開されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、製品の種類別にタグを付けてレビュー チームがコンテンツ モデレーションに関して情報に基づいた決定を行えるようにすることを目的として、製品画像を分析するプログラムを設定しました。 次は、画像のモデレーションの詳細について学習してください。
 

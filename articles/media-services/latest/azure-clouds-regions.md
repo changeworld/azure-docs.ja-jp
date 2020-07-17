@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 を使用できるクラウドとリージョン | Microsoft Docs
+title: Azure Media Services v3 を使用できるクラウドとリージョン
 description: この記事では、Azure Media Services v3 を使用できる Azure クラウドとリージョンについて説明します。
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409281"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382972"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 が存在するクラウドとリージョン
 
@@ -26,22 +26,22 @@ Azure Media Services v3 は、Azure Resource Manager マニフェストを通し
 
 | 機能|グローバル Azure リージョン | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | 使用可能 | 使用できません。 | 使用できません。 | 使用できません。 |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  使用可能 | 使用できません。 | 使用できません。 | 使用できません。 |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  使用可能 | 使用できません。 | 使用できません。 | 使用できません。 |
-| [StandardEncoderPreset](encoding-concept.md) | 使用可能 | 使用可能 | 使用可能 | 使用可能 |
-| [LiveEvents](live-streaming-overview.md) | 使用可能 | 使用可能 | 使用可能 | 使用可能 |
-| [StreamingEndpoints](streaming-endpoint-concept.md) | 使用可能 | 使用可能 | 使用可能 | 使用可能 |
+| [Azure EventGrid](reacting-to-media-services-events.md) | 利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  利用可能 | 使用不可 | 使用不可 | 使用不可 |
+| [StandardEncoderPreset](encoding-concept.md) | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
+| [LiveEvents](live-streaming-overview.md) | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
+| [StreamingEndpoints](streaming-endpoint-concept.md) | 利用可能 | 利用可能 | 利用可能 | 利用可能 |
 
 ## <a name="regionsgeographieslocations"></a>リージョン/地域/場所
 
 [Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>リージョン コード名 
+### <a name="region-code-name"></a>リージョン コード名
 
 **location** パラメーターを指定する必要がある場合は、**location** 値としてリージョンのコード名を指定する必要があります。 お使いのアカウントが存在し、呼び出しがルーティングされるリージョンのコード名を取得するには、次の行を [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で実行できます
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -66,18 +66,18 @@ az account list-locations
 
 ### <a name="global-azure"></a>グローバル Azure
 
-|エンドポイント ||
-| --- | --- | 
+|エンドポイント||
+| --- | --- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` | 
+| 認証 | `https://login.microsoftonline.com/` |
 | トークン対象ユーザー | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
 |エンドポイント||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` | 
+| 認証 | `https://login.microsoftonline.us/` |
 | トークン対象ユーザー | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
@@ -85,15 +85,15 @@ az account list-locations
 | エンドポイント ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
+| 認証 | `https://login.microsoftonline.de/` |
 | トークン対象ユーザー | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 |エンドポイント||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
+| 認証 | `https://login.chinacloudapi.cn/` |
 | トークン対象ユーザー |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>関連項目
@@ -102,6 +102,6 @@ az account list-locations
 * [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Media Services v3 の概要](media-services-overview.md)

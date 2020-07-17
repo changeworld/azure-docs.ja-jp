@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:C# を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、C# を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 87e328230b346deaa25a1d83ca46c1698dd84882
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798341"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448476"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>クイック スタート:C# と Bing News Search REST API を使用してニュースを検索する
 
@@ -32,8 +32,6 @@ ms.locfileid: "65798341"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
 1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
@@ -46,7 +44,7 @@ ms.locfileid: "65798341"
     using System.Collections.Generic;
     ```
 
-2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。
+2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```csharp
     const string accessKey = "enter key here";
@@ -85,25 +83,6 @@ ms.locfileid: "65798341"
     request.Headers["Ocp-Apim-Subscription-Key"] = subscriptionKey;
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-    ```
-
-3. 検索結果オブジェクトを作成し、Bing HTTP ヘッダーを抽出します。 次に `searchResult` を返します。
-
-    ```csharp
-    // Create the result object for return
-    var searchResult = new SearchResult()
-    {
-        jsonResult = json,
-        relevantHeaders = new Dictionary<String, String>()
-    };
-
-    // Extract Bing HTTP headers
-    foreach (String header in response.Headers)
-    {
-        if (header.StartsWith("BingAPIs-") || header.StartsWith("X-MSEdge-"))
-            searchResult.relevantHeaders[header] = response.Headers[header];
-    }
-    return searchResult;
     ```
 
 3. 検索結果オブジェクトを作成し、Bing HTTP ヘッダーを抽出します。 次に `searchResult` を返します。
@@ -231,7 +210,7 @@ ms.locfileid: "65798341"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

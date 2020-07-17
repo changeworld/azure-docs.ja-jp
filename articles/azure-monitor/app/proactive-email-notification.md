@@ -1,20 +1,17 @@
 ---
-title: Azure Application Insights のスマート検出 – 既定の通知受信者に対する今後の変更 | Microsoft Docs
-description: トレースのテレメトリで異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。
-services: application-insights
-author: harelbr
-manager: carmonm
-ms.service: application-insights
+title: スマート検出の通知変更 - Azure Application Insights
+description: スマート検出の既定の通知受信者を変更します。 スマート検出では、Azure Application Insights を利用し、トレース テレメトリに異常なパターンがないか、アプリケーション トレースを監視できます。
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/13/2019
+author: harelbr
 ms.author: harelbr
-ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/13/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889286"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671785"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
 
@@ -43,7 +40,7 @@ Azure portal を使用してユーザーを監視閲覧者または監視共同�
 
 この変更に関する質問や懸念がある場合は、ご遠慮なく[お問い合わせ](mailto:smart-alert-feedback@microsoft.com)ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スマート検出の詳細を確認します。
 

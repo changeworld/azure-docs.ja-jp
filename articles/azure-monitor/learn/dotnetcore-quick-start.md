@@ -1,21 +1,18 @@
 ---
-title: Azure Application Insights のクイック スタート | Microsoft docs
-description: Application Insights で監視するために ASP.NET Core Web アプリを迅速に設定する手順を説明します
-services: application-insights
-keywords: ''
+title: クイックスタート ASP.NET Core - Azure Monitor Application Insights
+description: Azure Monitor Application Insights で監視する ASP.NET Core Web アプリを迅速にセットアップする手順を説明します
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2019
-ms.service: application-insights
+ms.date: 06/26/2019
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: e6afd342a27fa13ae79e037e6e42e582dd9856cc
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015305"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144861"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -27,19 +24,19 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 
 このクイック スタートを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2019 をインストール](https://www.visualstudio.com/downloads/)します。
+- 次のワークロードを使って、[Visual Studio 2019 をインストール](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)します。
   - ASP.NET および Web の開発
   - Azure の開発
-- [.NET Core 2.0 SDK のインストール](https://www.microsoft.com/net/core)
+- [.NET Core 2.0 SDK のインストール](https://dotnet.microsoft.com/download)
 - Azure サブスクリプションと既存の .NET Core Web アプリケーションが必要です。
 
 ASP.NET Core Web アプリケーションがない場合は、ステップ バイ ステップ ガイドを使用して [ASP.NET Core アプリを作成し、Application Insights を追加](../../azure-monitor/app/asp-net-core.md)してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
@@ -47,18 +44,20 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
-   ![Application Insights リソースの追加](./media/dotnetcore-quick-start/1createresourceappinsight.png)
+   > [!NOTE]
+   >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
 
     構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
-    | 設定        |  値           | 説明  |
+   | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | ASP.NET Web アプリケーション | 監視しているアプリの種類 |
-   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
+   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
    | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
+
+
 
 ## <a name="configure-app-insights-sdk"></a>App Insights SDK を構成する
 
@@ -70,7 +69,9 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 3. アカウントとサブスクリプションを選択します。Azure portal で作成した**既存のリソース**を選択し、 **[登録]** をクリックします。
 
-4. **[デバッグ]**  >  **[Start without Debugging (デバッグなしで開始)]** (Ctrl+F5) を選択して、アプリを起動します。
+4. **[プロジェクト]**  >  **[NuGet パッケージの管理]**  >  **[パッケージ ソース: nuget.org]**  >  **[更新]** の順に選択して、Application Insights SDK パッケージを最新の安定版リリースに更新します。
+
+5. **[デバッグ]**  >  **[Start without Debugging (デバッグなしで開始)]** (Ctrl+F5) を選択して、アプリを起動します。
 
     ![Application Insights の概要メニュー](./media/dotnetcore-quick-start/3debug.png)
 
@@ -99,17 +100,16 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
      ![[メトリック] タブ: ブラウザーの平均ページ読み込み時間のグラフ](./media/dotnetcore-quick-start/8metrics.png)
 
-## <a name="video"></a>ビデオ
-
-- 最初から [.NET Core と Visual Studio を使って Application Insights を構成する](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)手順に関するステップ バイ ステップの外部ビデオ。
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
+
+> [!NOTE]
+> 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
 
 1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [実行時の例外の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

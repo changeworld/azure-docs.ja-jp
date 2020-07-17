@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77622572"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API での DDL 操作
 
@@ -85,7 +85,7 @@ DESCRIBE keyspaces;
 **考慮事項:**  
 
 - create table ステートメントを使用して、テーブル レベルでスループットを割り当てることができます。  
-- 1 つのパーティション キーで、10 GB のデータを格納できます。  
+- 1 つのパーティション キーで、20 GB のデータを格納できます。  
 - 1 つのレコードで、最大 2 MB のデータを格納できます。  
 - 1 つのパーティション キー範囲で、複数のパーティション キーを格納できます。
 
@@ -136,7 +136,7 @@ USE books_ks;
 DESCRIBE tables;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 キースペースとテーブルを作成した後は、CRUD 操作などに関する次の記事に進んでください。
  

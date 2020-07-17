@@ -1,27 +1,28 @@
 ---
-title: 高可用性と信頼性 - Azure Scheduler
+title: 高可用性と信頼性
 description: Azure Scheduler での高可用性と信頼性について説明します
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: d647de379972bac317a213e2f8925c0ff8c3372c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78898558"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure Scheduler の高可用性と信頼性
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
-Azure Scheduler では、[高可用性](https://docs.microsoft.com/azure/architecture/guide/pillars#availability)と信頼性の両方がジョブに提供されます。 詳しくは、「[Scheduler の SLA](https://azure.microsoft.com/support/legal/sla/scheduler)」をご覧ください。
+Azure Scheduler では、[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)と信頼性の両方がジョブに提供されます。 詳しくは、「[Scheduler の SLA](https://azure.microsoft.com/support/legal/sla/scheduler)」をご覧ください。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -29,7 +30,7 @@ Azure Scheduler では、"高可用性" に加え、geo 冗長サービスのデ
 
 ### <a name="geo-redundant-service-deployment"></a>geo 冗長サービスのデプロイ
 
-Azure Scheduler は、[現在 Azure でサポートされているほぼすべての地理的リージョン](https://azure.microsoft.com/global-infrastructure/regions/#services)の Azure portal で使用できます。 したがって、ホストされているリージョンの Azure データ センターが使用できなくなった場合でも、サービスのフェールオーバー機能により Scheduler は別のデータ センターから使用できるようになるため、Azure Scheduler を引き続き使用できます。
+Azure Scheduler は、[現在 Azure でサポートされているほぼすべての地理的リージョン](https://azure.microsoft.com/global-infrastructure/regions/#services)で使用できます。 したがって、ホストされているリージョンの Azure データ センターが使用できなくなった場合でも、サービスのフェールオーバー機能により Scheduler は別のデータ センターから使用できるようになるため、Azure Scheduler を引き続き使用できます。
 
 ### <a name="geo-regional-job-replication"></a>geo リージョンのジョブ レプリケーション
 
@@ -41,7 +42,7 @@ Azure Scheduler 内の自分のジョブは、Azure リージョン間でレプ�
 
 さらに、Azure Scheduler により、Azure 内で障害が発生した場合に備えて、データは同じリージョン内のさらに広い地理的リージョンに確実に留められます。 そのため、高可用性のためだけにジョブを複製する必要はありません。 Azure Scheduler では、ジョブの高可用性は自動的に提供されます。
 
-## <a name="reliability"></a>信頼性
+## <a name="reliability"></a>[信頼性]
 
 Azure Scheduler では、独自の高可用性を保証し、ユーザーが作成したジョブに対して別のアプローチを採用しています。 たとえば、使用できない HTTP エンドポイントをジョブが呼び出したとします。 Azure Scheduler はそれでも、障害に対処するための代わりの手段を提供することにより、ジョブが正常に実行されるようにします。 
 
@@ -70,9 +71,9 @@ Azure Scheduler ジョブにより到達不可能なエンドポイントが呼�
 
 代替エンドポイントを設定する方法については、「[errorAction](scheduler-concepts-terms.md#error-action)」をご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
 * [概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
-* [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
+* [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 * [制限、クォータ、既定値、エラー コード](scheduler-limits-defaults-errors.md)

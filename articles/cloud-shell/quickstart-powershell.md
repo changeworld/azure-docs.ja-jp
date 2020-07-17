@@ -1,25 +1,20 @@
 ---
-title: Azure Cloud Shell クイックスタートのPowerShell | Microsoft Docs
-description: Cloud Shell の PowerShell のクイックスタート
-services: Azure
-documentationcenter: ''
+title: Azure Cloud Shell のクイックスタート - PowerShell
+description: Azure Cloud Shell のブラウザーで PowerShell を使用する方法について説明します。
 author: maertendmsft
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
-ms.author: damaerte
-ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905071"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233787"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -27,8 +22,6 @@ ms.locfileid: "58905071"
 
 > [!NOTE]
 > [Azure Cloud Shell の Bash](quickstart.md) のクイックスタートもあります。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 
@@ -147,7 +140,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-詳しくは、「[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]」をご覧ください。
+詳細については、[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]方法に関するページを参照してください。
 
 次のようにして、Azure ファイル共有の下のディレクトリ間を移動することもできます。
 
@@ -186,14 +179,15 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   MyVM1 という VM があるとすると、`Invoke-AzVMCommand` を使ってリモート マシンの PowerShell スクリプト ブロックを呼び出すことができます。
 
   ```azurepowershell-interactive
-  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
+  Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
+  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
   また、最初に VirtualMachines ディレクトリに移動して、次のように `Invoke-AzVMCommand` を実行することもできます。
 
   ```azurepowershell-interactive
-  PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
-  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo}
+  PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
+  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
 
   # You will see output similar to the following:
 
@@ -215,13 +209,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 `Enter-AzVM` を使うと、Azure で実行されている VM に対話形式でログインできます。
 
   ```azurepowershell-interactive
-  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
+  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
 また、最初に `VirtualMachines` ディレクトリに移動して、次のように `Enter-AzVM` を実行することもできます
 
   ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM
+ PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
 ### <a name="discover-webapps"></a>WebApps を検出する
@@ -334,7 +328,7 @@ Cloud Shell で PowerShell を次に使用するときは、`helloworld.ps1` フ
 PowerShell プロファイル (`profile.ps1` または `Microsoft.PowerShell_profile.ps1`) を作成することで、PowerShell 環境をカスタマイズできます。
 それを `$profile.CurrentUserAllHosts` (または `$profile.CurrentUserAllHosts`) に保存して、Cloud Shell セッションのすべての PowerShell で読み込めるようにします。
 
-プロファイルの作成方法については、「[About Profiles][profile]」(プロファイルについて) を参照してください。
+プロファイルの作成方法については、「[プロファイルについて][profile]」を参照してください。
 
 ## <a name="use-git"></a>Git を使う
 

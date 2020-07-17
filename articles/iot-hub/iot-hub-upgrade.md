@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571279"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "61440235"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>IoT Hub のアップグレード方法
 
@@ -41,11 +41,11 @@ IoT ソリューションの成長と共に、Azure IoT Hub をスケールア�
 
    ![価格とスケール](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. Hub のレベルを変更するには、**[価格とスケール レベル]** を選択します。 新しいレベルを選択し、**[選択]** をクリックします。
+3. Hub のレベルを変更するには、 **[価格とスケール レベル]** を選択します。 新しいレベルを選択し、 **[選択]** をクリックします。
 
    ![価格とスケール ティア](./media/iot-hub-upgrade/select-tier.png)
 
-4. Hub のユニット数を変更するには、**[IoT Hub ユニット]** の下に新しい値を入力します。
+4. Hub のユニット数を変更するには、 **[IoT Hub ユニット]** の下に新しい値を入力します。
 
 5. **[保存]** を選択して変更を保存します。
 
@@ -53,6 +53,6 @@ IoT Hub が調整されますが、構成は変更されません。
 
 Basic レベルの IoT Hub と Standard レベルの IoT Hub のパーティションの上限は 32 です。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 IoT Hub の作成時にパーティション制限が選択され、device-to-cloud メッセージがこれらのメッセージの同時閲覧者数に関連付けられます。 Basic レベルから Standard レベルに移行してもこの値は変わりません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [適切な IoT Hub のレベルを選択する方法](iot-hub-scaling.md)に関する記事で詳細を確認します。

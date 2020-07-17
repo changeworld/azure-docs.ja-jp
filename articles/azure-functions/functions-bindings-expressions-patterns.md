@@ -1,21 +1,16 @@
 ---
 title: Azure Functions のバインド式とパターン
 description: 一般的なパターンに基づいてさまざまな Azure Functions バインド式を作成する方法について学習します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887184"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235215"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
@@ -136,7 +131,19 @@ public static void Run(
 
 ```
 
-また、拡張機能などのファイル名の一部のための式を作成することもできます。 式を使用する方法および BLOB パス文字列内のパターンの詳細については、[ストレージ BLOB バインディングのリファレンス](functions-bindings-storage-blob.md)に関するページを参照してください。
+また、ファイル名の一部のための式を作成することもできます。 次の例の関数は、パターン (`anyname-anyfile.csv`) に一致するファイル名でのみトリガーされます。
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+式を使用する方法および BLOB パス文字列内のパターンの詳細については、[ストレージ BLOB バインディングのリファレンス](functions-bindings-storage-blob.md)に関するページを参照してください。
 
 ## <a name="trigger-metadata"></a>トリガー メタデータ
 
@@ -172,7 +179,7 @@ public static void Run(
   ]
 ```
 
-各トリガーのメタデータ プロパティの詳細については、対応するリファレンス記事を参照してください。 例については、[キュー トリガー メタデータ](functions-bindings-storage-queue.md#trigger---message-metadata)に関するセクションを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
+各トリガーのメタデータ プロパティの詳細については、対応するリファレンス記事を参照してください。 例については、[キュー トリガー メタデータ](functions-bindings-storage-queue-trigger.md#message-metadata)に関するセクションを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
 
 ## <a name="json-payloads"></a>JSON ペイロード
 
@@ -290,7 +297,7 @@ public class BlobName
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{rand-guid}"
+  "path": "my-output-container/{rand-guid}.txt"
 }
 ```
 
@@ -303,13 +310,13 @@ public class BlobName
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{DateTime}"
+  "path": "my-output-container/{DateTime}.txt"
 }
 ```
 ## <a name="binding-at-runtime"></a>実行時のバインド
 
 C# やその他の .NET 言語では、*function.json* の宣言型のバインドと属性ではなく、命令型のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 詳細については、[C# 開発者向けリファレンス](functions-dotnet-class-library.md#binding-at-runtime)または[C# スクリプト開発者向けリファレンス](functions-reference-csharp.md#binding-at-runtime)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure 関数の戻り値の使用](./functions-bindings-return-value.md)

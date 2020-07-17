@@ -1,18 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) のネットワーク ポリシーによるポッドの保護
+title: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク ポリシーを使用して、ポッドとの間で送受信されるトラフィックをセキュリティ保護する方法について説明します。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ca0b6d4acd48dde0ea381ab37080fb6af1fb936c
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230012"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854231"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -45,26 +43,21 @@ Azure CLI バージョン 2.0.61 以降がインストールされて構成さ�
 
 Azure には、ネットワーク ポリシーを実装する 2 つの方法が用意されています。 AKS クラスターを作成するときに、ネットワーク ポリシーのオプションを選択します。 クラスターの作成後は、ポリシー オプションは変更できません。
 
-* *Azure ネットワーク ポリシー*という、Azure の独自の実装。
+* "*Azure ネットワーク ポリシー*" と呼ばれる Azure の独自の実装。
 * [Tigera][tigera] によって設立されたオープンソース ネットワークおよびネットワーク セキュリティ ソリューションである *Calico ネットワーク ポリシー*。
 
 どちらの実装も Linux *IPTables* を使用して、指定されたポリシーを適用します。 ポリシーは、許可される IP ペアと許可されない IP ペアのセットに変換されます。 その後、これらのペアは IPTable フィルタ ルールとしてプログラミングされます。
-
-ネットワーク ポリシーは、Azure の CNI (詳細) オプションでのみ機能します。 これらの 2 つのオプションの実装は異なります。
-
-* *Azure ネットワーク ポリシー* -Azure CNI は、イントラ ノード ネットワークの VM ホストにブリッジを設定します。 フィルター ルールは、パケットがブリッジを通過するときに適用されます。
-* *Calico ネットワーク ポリシー* -Azure CNI は、イントラ ノード トラフィックのローカル カーネル ルートを設定します。 これらのポリシーは、ポッドのネットワーク インターフェースで適用されます。
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure と Calico のポリシーとその機能の相違点
 
 | 機能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| サポートされるプラットフォーム                      | Linux                      | Linux                       |
-| サポートされているネットワーク オプション             | Azure CNI                  | Azure CNI                   |
+| サポートされているプラットフォーム                      | Linux                      | Linux                       |
+| サポートされているネットワーク オプション             | Azure CNI                  | Azure CNI と Kubernetes       |
 | Kubernetes 仕様の準拠 | サポートされているすべてのポリシーの種類 |  サポートされているすべてのポリシーの種類 |
 | その他の機能                      | なし                       | グローバル ネットワーク ポリシー、グローバル ネットワーク セット、およびホスト エンドポイントで構成される拡張ポリシー モデル。 `calicoctl` CLI を使用した拡張機能の管理の詳細については、[calicoctl ユーザー リファレンス][calicoctl]を参照してください。 |
 | サポート                                  | Azure のサポートとエンジニアリング チームによってサポートされる | Calico コミュニティ サポート。 その他の有料サポートの詳細については、[Project Calico support options][calico-support] を参照してください。 |
-| ログの記録                                  | IPTable で追加/削除されたルールは、すべてのホストにおいて */var/log/azure-npm.log* に記録されます | 詳しくは、[Calico のコンポーネント ログ][calico-logs]に関するページをご覧ください |
+| ログ記録                                  | IPTable で追加/削除されたルールは、すべてのホストにおいて */var/log/azure-npm.log* に記録されます | 詳しくは、[Calico のコンポーネント ログ][calico-logs]に関するページをご覧ください |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS クラスターを作成してネットワーク ポリシーを有効にする
 
@@ -74,9 +67,13 @@ Azure には、ネットワーク ポリシーを実装する 2 つの方法が�
 * ポッド ラベルに基づいてトラフィックを許可します。
 * 名前空間に基づいてトラフィックを許可します。
 
-最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。 ネットワーク ポリシー機能を有効にできるのは、クラスターの作成時のみになります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。
+最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。 
 
-AKS クラスターでネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、独自の仮想ネットワークとサブネットを定義する必要があります。 必要なサブネット範囲を計画する方法の詳細については、[高度なネットワークの構成][use-advanced-networking]に関するページを参照してください。
+> [!IMPORTANT]
+>
+> ネットワーク ポリシー機能を有効にできるのは、クラスターの作成時のみになります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。
+
+Azure ネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、独自の仮想ネットワークとサブネットを定義する必要があります。 必要なサブネット範囲を計画する方法の詳細については、[高度なネットワークの構成][use-advanced-networking]に関するページを参照してください。 Calico ネットワーク ポリシーは、この同じ Azure CNI プラグインや Kubernet CNI プラグインで使用できます。
 
 次のサンプル スクリプトでは、
 
@@ -84,12 +81,13 @@ AKS クラスターでネットワーク ポリシーを使用するには、[Az
 * AKS クラスターで使用するための Azure Active Directory (Azure AD) サービス プリンシパルを作成します。
 * 仮想ネットワーク上の AKS クラスター サービス プリンシパルに*共同作成者*のアクセス許可を割り当てます。
 * 定義された仮想ネットワーク内に AKS クラスターを作成し、ネットワーク ポリシーを有効にします。
-    * *azure* ネットワーク ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。
+    * *azure* ネットワーク ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
+
+なお、サービス プリンシパルを使用する代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 独自の安全な *SP_PASSWORD* を指定してください。 *RESOURCE_GROUP_NAME* および *CLUSTER_NAME* 変数を置き換えることができます。
 
 ```azurecli-interactive
-SP_PASSWORD=mySecurePassword
 RESOURCE_GROUP_NAME=myResourceGroup-NP
 CLUSTER_NAME=myAKSCluster
 LOCATION=canadaeast
@@ -106,7 +104,9 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP=$(az ad sp create-for-rbac --output json)
+SP_ID=$(echo $SP | jq -r .appId)
+SP_PASSWORD=$(echo $SP | jq -r .password)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."
@@ -175,7 +175,7 @@ wget -qO- http://backend
 
 次のサンプル出力は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -207,14 +207,15 @@ spec:
   ingress: []
 ```
 
+[https://shell.azure.com](https://shell.azure.com) にアクセスし、ブラウザーで Azure Cloud Shell を開きます。
+
 [kubectl apply][kubectl-apply] コマンドを使用してネットワーク ポリシーを適用し、YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
 ### <a name="test-the-network-policy"></a>ネットワーク ポリシーをテストする
-
 
 再びバックエンド ポッドで NGINX Web ページを使用できるかどうかを確認しましょう。 別のテスト ポッドを作成してターミナル セッションをアタッチします。
 
@@ -225,8 +226,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 今回は、タイムアウト値を *2* 秒に設定します。 ネットワーク ポリシーがすべての受信トラフィックをブロックするようになったため、次の例に示すように、ページを読み込めません。
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -267,7 +270,7 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用して、更新されたネットワーク ポリシーを適用し、YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -285,7 +288,7 @@ wget -qO- http://backend
 
 イングレス ルールは *app: webapp,role: frontend* のラベルが付いたポッドのトラフィックを許可するため、フロントエンド ポッドからのトラフィックは許可されます。 次の出力例は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -310,8 +313,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 ネットワーク ポリシーが受信トラフィックをブロックするため、次の例に示すように、ページを読み込めません。
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -346,7 +351,7 @@ wget -qO- http://backend.development
 
 ポッドのラベルがネットワーク ポリシーで現在許可されているものに一致するため、トラフィックは許可されます。 ネットワーク ポリシーは名前空間を調べず、ポッド ラベルだけを調べます。 次の出力例は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -390,7 +395,7 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用して、更新されたネットワーク ポリシーを適用し、YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -405,8 +410,10 @@ kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend -
 シェル プロンプトで `wget` を使用して、ネットワーク ポリシーがトラフィックを拒否するようになったことを確認します。
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
@@ -430,7 +437,7 @@ wget -qO- http://backend
 
 そのポッドが、ネットワーク ポリシーで許可されているものに一致する名前空間でスケジュールされているため、トラフィックは許可されます。 次のサンプル出力は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -444,7 +451,7 @@ wget -qO- http://backend
 exit
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事では、2 つの名前空間を作成し、ネットワーク ポリシーを適用しました。 これらのリソースをクリーンアップするには、[kubectl delete][kubectl-delete] コマンドを使用し、リソース名を指定します。
 
@@ -453,7 +460,7 @@ kubectl delete namespace production
 kubectl delete namespace development
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ネットワーク リソースの詳細については、「[Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念][concepts-network]」を参照してください。
 
@@ -467,14 +474,14 @@ kubectl delete namespace development
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
-[calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calico-support]: https://www.tigera.io/tigera-products/calico/
+[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
-[use-advanced-networking]: configure-advanced-networking.md
+[use-advanced-networking]: configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [concepts-network]: concepts-network.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

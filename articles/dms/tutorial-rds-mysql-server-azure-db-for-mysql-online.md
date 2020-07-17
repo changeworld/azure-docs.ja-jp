@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:RDS MySQL の Azure Database for MySQL へのオンライン移行で Azure Database Migration Service を使用する | Microsoft Docs
+title: チュートリアル:RDS MySQL をオンラインで Azure Database for MySQL に移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用する RDS MySQL から Azure Database for MySQL へのオンライン移行の実行について学習します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: e971fd160a43be088f6d3c4a9fb6fddc7dd769b0
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 01/08/2020
+ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78255162"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する
 
@@ -24,6 +25,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
+>
 > * mysqldump および mysql ユーティリティを使用して、サンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
 > * Azure Database Migration Service を使用して移行プロジェクトを作成する。
@@ -54,12 +56,9 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 * [MySQL **Employees** サンプル データベース](https://dev.mysql.com/doc/employee/en/employees-installation.html)をダウンロードしてインストールします。
 * [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal) のインスタンスを作成します。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
-* VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
-* [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
-* Azure Database Migration Service でソース MySQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 3306 が使用されます。
-* ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* Azure Database for MySQL サーバーのサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service でターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、「[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)」を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
+* データベース エンジン アクセスを許可するように [Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (または Linux ファイアウォール) を構成します。 MySQL サーバーの場合は、接続用にポート 3306 を許可します。
 
 > [!NOTE]
 > Azure Database for MySQL では、InnoDB テーブルのみがサポートされます。 MyISAM テーブルを InnoDB に変換する場合は、[MyISAM から InnoDB へのテーブルの変換](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)に関する記事を参照してください。
@@ -71,6 +70,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
     * binlog_format = row
     * binlog_checksum = NONE
 3. 新しいパラメーター グループを保存します。
+4. 新しいパラメーター グループを RDS MySQL インスタンスに関連付けます。 再起動が必要になる場合があります。
 
 ## <a name="migrate-the-schema"></a>スキーマを移行する
 
@@ -108,15 +108,15 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
         FROM
         (SELECT
         KCU.REFERENCED_TABLE_SCHEMA as SchemaName,
-        KCU.TABLE_NAME,
-        KCU.COLUMN_NAME,
-        CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
+                    KCU.TABLE_NAME,
+                    KCU.COLUMN_NAME,
+                    CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
         CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery
-        FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC
-        WHERE
-          KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
-          AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
-      AND KCU.REFERENCED_TABLE_SCHEMA = ['SchemaName') Queries
+                    FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC
+                    WHERE
+                      KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+                      AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA
+      AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries
       GROUP BY SchemaName;
     ```
 
@@ -135,11 +135,11 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-subscription1.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、**[リソース プロバイダー]** を選びます。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
 
     ![リソース プロバイダーの表示](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-resource-provider.png)
 
@@ -153,7 +153,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
     ![Azure Marketplace](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create1.png)
   
@@ -161,11 +161,11 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 4. Azure Database Migration Service のインスタンスを作成する場所を選択します。
 
-5. 既存の VNet を選択するか、新しいものを作成します。
+5. 既存の仮想ネットワークを選択するか、新しく作成します。
 
-    VNet によって、Azure Database Migration Service に、ソース MySQL インスタンスとターゲット Azure Database for MySQL インスタンスへのアクセスが提供されます。
+    この仮想ネットワークによって、Azure Database Migration Service に、ソース MySQL インスタンスとターゲット Azure Database for MySQL インスタンスへのアクセスが提供されます。
 
-    Azure portal で VNet を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
+    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
 
 6. 価格レベルを選択します。このオンライン移行では、Premium:4 仮想コア価格レベルを選択してください。
 
@@ -177,7 +177,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
       ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-search.png)
 
@@ -186,8 +186,8 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
      ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-instance-search.png)
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択してから、**[ターゲット サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選びます。
-5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、 **[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択してから、 **[ターゲット サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選びます。
+5. **[アクティビティの種類を選択します]** セクションで、 **[オンライン データの移行]** を選択します。
 
     > [!IMPORTANT]
     > 必ず **[オンライン データの移行]** を選択してください。オフライン移行は、このシナリオではサポートされていません。
@@ -195,7 +195,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
     ![Database Migration Service プロジェクトを作成する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-create-project6.png)
 
     > [!NOTE]
-    > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
+    > または、 **[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
 
 6. **[保存]** を選択します。
 
@@ -212,17 +212,17 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[ターゲットの詳細]** 画面で、事前プロビジョニングされており、MySQLDump を使用して **Employees** スキーマがデプロイされている、ターゲットの Azure Database for MySQL サーバーの接続の詳細を指定します。
+1. **[保存]** を選択し、 **[ターゲットの詳細]** 画面で、事前プロビジョニングされており、MySQLDump を使用して **Employees** スキーマがデプロイされている、ターゲットの Azure Database for MySQL サーバーの接続の詳細を指定します。
 
     ![ターゲットを選択する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-select-target5.png)
 
-2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
+2. **[保存]** を選択し、 **[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service では、既定でターゲット データベースが選択されます。
 
     ![ターゲット データベースにマップする](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-map-targets-activity5.png)
 
-3. **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
+3. **[保存]** を選択し、 **[移行の概要]** 画面で、 **[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
     ![移行の概要](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-migration-summary2.png)
 
@@ -238,7 +238,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
     ![アクティビティの状態 - 実行中](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-activity-status4.png)
 
-2. **[データベース名]** で、特定のデータベースを選択して、**[データ全体の読み込み]** 操作と **[増分データ同期]** 操作の移行状態を取得します。
+2. **[データベース名]** で、特定のデータベースを選択して、 **[データ全体の読み込み]** 操作と **[増分データ同期]** 操作の移行状態を取得します。
 
     **データ全体の読み込み** には初回の読み込みの移行状態が表示され、**増分データ同期** には変更データ キャプチャ (CDC) の状態が表示されます。
 
@@ -250,17 +250,17 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 初回の全体の読み込みが完了した後、データベースは **[一括準備完了]** とマークされます。
 
-1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
+1. データベースの移行を完了する準備ができたら、 **[一括で開始]** を選択します。
 
     ![一括で開始](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-inventory-start-cutover.png)
 
-2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
-3. **[確認]** を選択し、**[適用]** を選択します。
+2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。 **[保留中の変更]** カウンターが **0** を示すまで待ってください。
+3. **[確認]** を選択し、 **[適用]** を選択します。
 4. データベースの移行状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure Database for MySQL データベースに接続します。
 
 これで、MySQL のオンプレミス インスタンスの Azure Database for MySQL へのオンライン移行が完了しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。
 * Azure Database for MySQL の詳細については、「[Azure Database for MySQL とは](https://docs.microsoft.com/azure/mysql/overview)」の記事を参照してください。

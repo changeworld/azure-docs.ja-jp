@@ -1,5 +1,5 @@
 ---
-title: Azure CLI スクリプト - Azure Database for MySQL でサーバーのログをダウンロードする
+title: CLI スクリプト - 低速クエリ ログをダウンロードする - Azure Database for MySQL
 description: この Azure CLI のサンプル スクリプトでは、Azure Database for MySQL サーバーのログを有効にし、ダウンロードする方法を説明します。
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: 7cb28d22dbd1fb7fcefbc16d01f55f4785a5932d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 12/02/2019
+ms.openlocfilehash: a574d7c36ce1d701504ea1d202eeafca542ad946
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544502"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74771258"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI で Azure Database for MySQL サーバーの低速のクエリ ログを有効にしてダウンロードする
 このCLI のサンプル スクリプトでは、単一の Azure Database for MySQL サーバーの、低速クエリ ログを有効にしてダウンロードします。
@@ -33,7 +33,7 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトで使用されているコマンドを次の表にまとめました。
 
-| **コマンド** | **メモ** |
+| **コマンド** | **注** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | データベースのホストとなる MySQL サーバーを作成します。 |
@@ -43,6 +43,6 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 | [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) | ログ ファイルをダウンロードします。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- さらに他のスクリプトも試す: [Azure Database for MySQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for MySQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)

@@ -1,20 +1,20 @@
 ---
-title: Azure Marketplace と AppSource の公開ガイド
-description: アプリとサービスのパブリッシャー向けに Azure Marketplace と Microsoft AppSource の概要を取り上げます。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+title: コマーシャル マーケットプレース公開ガイド
+description: アプリとサービスの発行元向けのコマーシャル マーケットプレースの概要です。
+author: dsindona
 ms.service: marketplace
-ms.topic: article
-ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: a3d75f09ac21fcdb4862cf8eefff0b5c05fd3369
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 04/12/2020
+ms.author: dsindona
+ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937609"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261994"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
+# <a name="commercial-marketplace-publishing-guide"></a>コマーシャル マーケットプレース公開ガイド
 
 この Marketplace 公開ガイドでは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップを使い、アプリケーションとサービスを登録することによって、Microsoft と連携してそのビジネスを成長させる方法を、新しいパブリッシャーと既存のパブリッシャー向けにわかりやすく説明しています。
 
@@ -30,7 +30,7 @@ ms.locfileid: "64937609"
 
 このガイドには、アプリケーションやサービスをリストに登録する前に理解する必要があるステップに関する、技術情報とビジネス面の情報の両方が含まれています。 このガイドのさまざまなセクションに移動したり、重要なトピックに直接移動したりするには、目次を使用してください。
 
-Azure Marketplace および AppSource に関する質問は、**[Problem Type]\(問題のタイプ\)** > **[Marketplace Onboarding]\(Marketplace オンボーディング\)** からメッセージをお送りください。  Marketplace パブリッシャー オンボーディング チームが喜んでお手伝いします。 
+Azure Marketplace および AppSource に関する質問は、 **[Problem Type]\(問題のタイプ\)**  >  **[Marketplace Onboarding]\(Marketplace オンボーディング\)** からメッセージをお送りください。  Marketplace パブリッシャー オンボーディング チームが喜んでお手伝いします。 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Marketplace に参加することの利点 
 
@@ -52,7 +52,7 @@ Marketplace の機能を活用して、ビジネスを成長させましょう�
 
 Marketplace から提供される分析情報および分析を通じて、リスト登録のパフォーマンスに関する分析情報が得られます。 キャンペーンのパフォーマンス、注文と支払い、および、ソリューションのキャンペーン活動を最大化する方法について、より多くの情報を入手します。
 
-### <a name="marketplace-go-to-market-benefits"></a>Marketplace の Go-To-Market 特典 
+### <a name="commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット 
 
 Marketplace に新しく参加することで、パートナーは、Marketplace でビジネスを成長させるための多様な特典を無料で手に入れることができます。 これらの特典は次のカテゴリに分類されます。 
 
@@ -62,10 +62,10 @@ Marketplace に新しく参加することで、パートナーは、Marketplace
 
 *   共同販売: Marketplace を通じた Microsoft との共同販売のプロセスを開始または加速します。 Microsoft チームとの共同販売を推進するプログラムおよびサポートにアクセスします。
 
-Marketplace に[ソリューションを提出](https://azuremarketplace.microsoft.com/sell/signup)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。
+Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。
 
-Microsoft Go-To-Market の特典および Marketplace でビジネスを拡大する方法については、「[Microsoft Go-To-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」をご覧ください。
+[商用マーケットプレースのベネフィット](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 左側の目次でクラウド マーケットプレースのトピックを探しながら詳細な情報を確認します。 

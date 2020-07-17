@@ -1,17 +1,17 @@
 ---
-title: Azure Kubernetes Service (AKS) と Azure Database for MySQL を接続する
+title: Azure Kubernetes Service への接続 - Azure Database for MySQL
 description: Azure Kubernetes Service と Azure Database for MySQL を接続する方法について説明します
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 3/18/2020
+ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485451"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79537280"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes Service と Azure Database for MySQL を接続する
 
@@ -48,6 +48,6 @@ OSBA を使用すると、Azure Database for MySQL サーバーを作成し、Ku
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Kubernetes Service クラスターを作成する](../aks/kubernetes-walkthrough.md)
 - [OSBA と Azure Database for MySQL を使用して Helm チャートから WordPress をインストールする](../aks/integrate-azure.md)方法を学習する

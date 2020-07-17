@@ -1,18 +1,17 @@
 ---
-title: Azure Database for MySQL サーバーの VNet サービス エンドポイントの概要 | Microsoft Docs
+title: Azure Database for MySQL - VNet サービス エンドポイント
 description: Azure Database for MySQL サーバーで VNet サービス エンドポイントがどのように機能するかについて説明します。
-author: bolzmj
-ms.author: mbolz
-manager: jhubbard
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/20/2018
-ms.openlocfilehash: 3a7eaacc4c234ec7d1d3d88455bd423256a07e90
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 3/18/2020
+ms.openlocfilehash: 4ca8fe3e217d3b4affc1bc0bda9ed193e91b2104
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005853"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79537144"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -34,9 +33,9 @@ ms.locfileid: "60005853"
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MySQL サービスと PostgreSQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。 
+**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MySQL サービスと PostgreSQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。 
 
-**仮想ネットワーク ルール:** お使いの Azure Database for MySQL サーバーの仮想ネットワーク規則は、Azure Database for MySQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MySQL サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
+**仮想ネットワーク規則:** お使いの Azure Database for MySQL サーバーの仮想ネットワーク規則は、Azure Database for MySQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MySQL サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、お使いの Azure Database for MySQL サーバーに指示します。
 
@@ -54,13 +53,13 @@ ms.locfileid: "60005853"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
-接続のセキュリティ ペインには、**[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらく Azure Database for MySQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
+接続のセキュリティ ペインには、 **[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらく Azure Database for MySQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
 Azure Database for MySQL のファイアウォールでは、Azure Database for MySQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、*動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
+お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
@@ -90,8 +89,8 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 
 仮想ネットワーク サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
-- **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
-- **データベース管理者:**&nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for MySQL サーバーに追加します。
+- **ネットワーク管理者:** &nbsp; エンドポイントを有効にします。
+- **データベース管理者:** &nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for MySQL サーバーに追加します。
 
 *RBAC による代替:*
 
@@ -103,6 +102,7 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 > Azure Database for MySQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
+> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 
@@ -140,13 +140,13 @@ Azure Database for MySQL の場合、仮想ネットワーク規則機能には�
 - [Azure 仮想ネットワーク][vm-virtual-network-overview]
 - [Azure 仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VNet ルールの作成については、以下の記事を参照してください。
 - [Azure Portal を使用した Azure Database for MySQL VNet 規則の作成と管理](howto-manage-vnet-using-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL VNet 規則の作成と管理](howto-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -159,3 +159,5 @@ VNet ルールの作成については、以下の記事を参照してくださ
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
+
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

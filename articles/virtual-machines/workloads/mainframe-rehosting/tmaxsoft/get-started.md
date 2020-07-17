@@ -7,11 +7,11 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896688"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "61485445"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Azure 上の TmaxSoft OpenFrame の概要
 
@@ -40,6 +40,6 @@ Azure 上の OpenFrame 環境には、次のコンポーネントが含まれま
 
 ![OpenFrame アーキテクチャ](media/openframe-02.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure 上に TmaxSoft OpenFrame をインストールする](./install-openframe-azure.md)

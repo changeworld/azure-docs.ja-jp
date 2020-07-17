@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーション ユーザーの条件付きアクセス - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーション ユーザーの条件付きアクセス - Azure AD
 description: Azure Active Directory B2B コラボレーションでは、会社のアプリケーションへの選択的なアクセスのために、多要素認証 (MFA) をサポートしています
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3bfe067b7a927f800f88958ee2ffca09711c10
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812805"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74272996"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -93,6 +93,10 @@ Contoso が会社のデータに対するデバイス ベースの条件付き�
 
 B2B ユーザーのデバイスが Contoso によって管理されていない場合、このポリシーが適用される環境では、常にパートナー組織の B2B ユーザーのアクセスはブロックされます。 ただし、Contoso は、デバイス ベースの条件付きアクセス ポリシーから除外する特定のパートナー ユーザーを含む除外リストを作成できます。
 
+#### <a name="mobile-application-management-policies-for-b2b"></a>B2B 向けのモバイル アプリケーション管理ポリシー
+
+招待側の組織は B2B ユーザーのホーム組織内を認識できないため、条件付きアクセス アプリ保護ポリシーを B2B ユーザーに適用することはできません。
+
 #### <a name="location-based-conditional-access-for-b2b"></a>B2B 向けの場所ベースの条件付きアクセス
 
 招待側組織がパートナー組織を定義する信頼できる IP アドレス範囲を作成できる場合は、B2B ユーザーに対して場所ベースの条件付きアクセス ポリシーを適用できます。
@@ -101,7 +105,7 @@ B2B ユーザーのデバイスが Contoso によって管理されていない�
 
 現時点では、リスク評価は B2B ユーザーのホーム組織で実行されるため、B2B ユーザーに対してリスクベースのサインイン ポリシーを適用することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

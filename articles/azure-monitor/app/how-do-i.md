@@ -1,23 +1,14 @@
 ---
 title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074208"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701949"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -25,7 +16,7 @@ ms.locfileid: "54074208"
 [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)を設定します。
 
 ### <a name="email-if-my-site-is-overloaded"></a>サイトが過負荷になっている場合の電子メール
-[サーバー応答時間](../../azure-monitor/app/alerts.md) の **アラート**を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
+[サーバー応答時間](../../azure-monitor/platform/alerts-log.md) の **アラート**を設定します。 1 ～ 2 秒の間のしきい値で機能する必要があります。
 
 ![](./media/how-do-i/030-server.png)
 
@@ -35,16 +26,16 @@ ms.locfileid: "54074208"
 
 ### <a name="email-on-exceptions"></a>例外での電子メール
 1. [例外の監視を設定します](../../azure-monitor/app/asp-net-exceptions.md)
-2. [アラートを設定](../../azure-monitor/app/alerts.md) します
+2. [アラートを設定](../../azure-monitor/platform/alerts-log.md) します
 
 ### <a name="email-on-an-event-in-my-app"></a>アプリのイベントでの電子メール
-特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](../../azure-monitor/app/alerts.md)できます。
+特定のイベントが発生したときに電子メールを受け取りたいものとします。 Application Insights は直接この機能を提供しませんが、 [メトリックがしきい値を超えたときにアラートを送信](../../azure-monitor/platform/alerts-log.md)できます。
 
 アラートは [カスタム メトリック](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)には設定できますが、カスタム イベントには設定できません。 イベントが発生したときにメトリックを増やすコードを記述します。
 
     telemetry.TrackMetric("Alarm", 10);
 
-または:
+または
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -54,7 +45,7 @@ ms.locfileid: "54074208"
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-アラームを表示するには [メトリック エクスプローラー](../../azure-monitor/app/metrics-explorer.md) でグラフを作成します。
+アラームを表示するには [メトリック エクスプローラー](../../azure-monitor/platform/metrics-charts.md) でグラフを作成します。
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -74,11 +65,11 @@ ms.locfileid: "54074208"
 * 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。 たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
 
 ### <a name="set-up-alerts-automatically"></a>アラートの自動設定
-[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../../azure-monitor/app/alerts.md#automation)
+[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>PowerShell を使用した Application Insights の管理
-* [新しいリソースの作成に関するページ](../../azure-monitor/app/powershell-script-create-resource.md)
-* [新しいアラートの作成に関するページ](../../azure-monitor/app/alerts.md#automation)
+* [新しいリソースの作成に関するページ](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [新しいアラートの作成に関するページ](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>異なるバージョンのテレメトリを分離する
 
@@ -91,7 +82,7 @@ ms.locfileid: "54074208"
 
 ## <a name="visualize-data"></a>データの視覚化
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>複数のアプリケーションのメトリックを使用したダッシュボード
-* [Metric エクスプローラー](../../azure-monitor/app/metrics-explorer.md)でグラフをカスタマイズし、お気に入りとして保存します。 Azure ダッシュボードにピン留めします。
+* [Metric エクスプローラー](../../azure-monitor/platform/metrics-charts.md)でグラフをカスタマイズし、お気に入りとして保存します。 Azure ダッシュボードにピン留めします。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>他のソースや Application Insights からのデータのあるダッシュボード
 * [テレメトリを Power BI にエクスポートします](../../azure-monitor/app/export-power-bi.md )。
@@ -103,9 +94,9 @@ ms.locfileid: "54074208"
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>匿名ユーザーまたは認証済みユーザーのフィルター処理
-ユーザーがサインインしたら、[認証されたユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) を設定できます。(自動的には設定されません。)
+ユーザーがサインインしたら、[認証されたユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) を設定できます。 (自動的には設定されません。)
 
-次に以下のことを行えます。
+この場合は、次のいずれかの操作を行うことができます。
 
 * 特定のユーザー ID で検索
 
@@ -137,16 +128,25 @@ ms.locfileid: "54074208"
 ## <a name="disable-telemetry"></a>遠隔測定を無効にする
 サーバーからテレメトリの収集と送信を **動的に停止および開始** するには:
 
-```
+### <a name="aspnet-classic-applications"></a>ASP.NET Classic アプリケーション
 
+```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+### <a name="other-applications"></a>他のアプリケーション
+コンソールまたは ASP.NET Core アプリケーションで `TelemetryConfiguration.Active` シングルトンを使用することはお勧めしません。
+ご自分で `TelemetryConfiguration` インスタンスを作成した場合は、`DisableTelemetry` を `true` に設定します。
 
+ASP.NET Core アプリケーションの場合は、[ASP.NET Core の依存関係の挿入](/aspnet/core/fundamentals/dependency-injection/)を使用して `TelemetryConfiguration` インスタンスにアクセスできます。 詳細については、「[Application Insights for ASP.NET Core applications (ASP.NET Core アプリケーション用の Application Insights)](../../azure-monitor/app/asp-net-core.md)」を参照してください。
 
-**選択されている標準のコレクターを無効にする** には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、 [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md)内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+## <a name="disable-selected-standard-collectors"></a>選択されている標準のコレクターを無効にする
+標準のコレクター (パフォーマンス カウンター、HTTP 要求、依存関係など) を無効にすることができます
+
+* **ASP.NET アプリケーション** - [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 内の該当する行を無効にするか、コメント アウトします
+* **ASP.NET Core アプリケーション** - [ASP.NET Core 用の Application Insights](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules) に関する記事のテレメトリ モジュールの構成オプションに従います
 
 ## <a name="view-system-performance-counters"></a>システム パフォーマンス カウンターの表示
 メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。 事前定義された **サーバー** というブレードに、それらのいくつかが表示されます。
@@ -159,5 +159,5 @@ ms.locfileid: "54074208"
 * **Unix サーバー** - [collectd をインストール](../../azure-monitor/app/java-collectd.md)します。
 
 ### <a name="to-display-more-performance-counters"></a>表示するパフォーマンス カウンターの数を増やすには
-* 最初に、 [新しいグラフを追加](../../azure-monitor/app/metrics-explorer.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
+* 最初に、 [新しいグラフを追加](../../azure-monitor/platform/metrics-charts.md) し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](../../azure-monitor/app/performance-counters.md)します。

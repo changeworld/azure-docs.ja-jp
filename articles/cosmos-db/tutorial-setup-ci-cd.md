@@ -4,15 +4,15 @@ description: Azure DevOps で Cosmos DB エミュレーター ビルド タス�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242555"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410950"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -31,7 +31,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 次に、拡張機能のインストール先となる組織を選択します。 
 
 > [!NOTE]
-> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
 ![拡張機能のインストール先となる Azure DevOps 組織を選択する](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
@@ -39,7 +39,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 拡張機能をインストールしたら、Azure DevOps アカウントにサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
 
-1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]** を選択します
+1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]**
 
    ![新しいビルド パイプラインを作成する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
@@ -47,11 +47,19 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
    ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 
+3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 
-これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
+> [!NOTE]
+> CI の一環として前のタスクで手動でインストールしていない場合、この CI 用に選択するエージェント プールには Docker for Windows をインストールしておく必要があります。 エージェント プールの選択については、[Microsoft によってホストされているエージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)に関する記事を参照してください。`Hosted VS2017` から始めることをお勧めします。
 
-## <a name="addEmulatorBuildTaskToBuildDefinition"></a>ビルド パイプラインへのタスクの追加
+Azure Cosmos DB エミュレーターは現在、ホステッド VS2019 エージェント プールをサポートしません。 ただし、エミュレーターにはあらかじめ VS2019 がインストールされており、次の PowerShell コマンドレットでエミュレーターを起動することによって使用できます。 VS2019 の使用中に問題が発生した場合は、[Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) チームにお問い合わせください。
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
+
+## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>ビルド パイプラインへのタスクの追加
 
 1. ビルド パイプラインにタスクを追加する前に、エージェント ジョブを追加する必要があります。 ビルド パイプラインに移動します。 **[...]** を選択し、 **[エージェント ジョブを追加する]** を選択します。
 
@@ -148,8 +156,26 @@ Visual Studio Test タスクの [実行オプション] に移動します。 **
 
 ![ビルドを保存して実行する](./media/tutorial-setup-ci-cd/buildComplete_1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="set-up-using-yaml"></a>YAML を使用して設定する
+
+YAML タスクを使用して CI/CD パイプラインを設定する場合は、次のコードに示すように YAML タスクを定義できます。
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
+
+## <a name="next-steps"></a>次のステップ
 
 エミュレーターを使用して開発とテストをローカルで行う方法の詳細については、「[ローカルの開発とテストでの Azure Cosmos DB Emulator の使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator)」を参照してください。
 
-エミュレーター SSL 証明書のエクスポートについては、「[Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)」を参照してください。
+エミュレーター TLS/SSL 証明書のエクスポートについては、「[Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)」を参照してください。

@@ -1,0 +1,117 @@
+### YamlMime:Landing
+title: Azure Lighthouse ドキュメント
+summary: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
+metadata:
+  title: Azure Lighthouse ドキュメント
+  description: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
+  ms.service: lighthouse
+  ms.topic: landing-page
+  ms.collection: collection
+  author: JnHs
+  ms.author: jenhayes
+  ms.date: 04/14/2020
+  ms.openlocfilehash: e62db32a20c4124f64e7c77d626099905a960815
+  ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "83871802"
+landingContent:
+- title: Azure Lighthouse について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Lighthouse とは
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: Azure の委任されたリソース管理
+      url: ./concepts/azure-delegated-resource-management.md
+    - text: テナント間の管理エクスペリエンス
+      url: ./concepts/cross-tenant-management-experience.md
+- title: はじめに
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure の委任されたリソース管理に顧客をオンボードする
+      url: ./how-to/onboard-customer.md
+  - linkListType: concept
+    links:
+    - text: 推奨セキュリティ プラクティス
+      url: ./concepts/recommended-security-practices.md
+    - text: Cloud Solution Provider プログラムの考慮事項
+      url: ./concepts/cloud-solution-provider.md
+    - text: エンタープライズ シナリオ
+      url: ./concepts/enterprise.md
+    - text: テナント、ロール、ユーザー
+      url: ./concepts/tenants-users-roles.md
+- title: Marketplace のオファー
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: マネージド サービス オファーの公開
+      url: ./how-to/publish-managed-services-offers.md
+  - linkListType: concept
+    links:
+    - text: Azure Marketplace のマネージド サービス オファー
+      url: ./concepts/managed-services-offers.md
+- title: サンプルとテンプレート
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Lighthouse のサンプル リポジトリ (GitHub)
+      url: https://github.com/Azure/Azure-Lighthouse-samples/
+    - text: Azure Lighthouse サンプルのインデックス
+      url: ./samples/index.md
+- title: Azure portal エクスペリエンス
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 顧客を表示し、管理する
+      url: ./how-to/view-manage-customers.md
+    - text: サービス プロバイダーを表示し、管理する
+      url: ./how-to/view-manage-service-providers.md
+- title: Azure サービスの操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Monitor ログの大規模な使用
+      url: ./how-to/monitor-at-scale.md
+    - text: 委任変更の監視
+      url: ./how-to/monitor-at-scale.md
+    - text: Azure Policy を大規模にデプロイする
+      url: ./how-to/policy-at-scale.md
+    - text: 修復できるポリシーをデプロイする
+      url: ./how-to/deploy-policy-remediation.md
+- title: リファレンス - SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.managedservices/
+    - text: Azure CLI
+      url: /cli/azure/managedservices
+    - text: REST
+      url: /rest/api/managedservices/
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+    - text: Python
+      url: /python/api/azure-mgmt-managedservices
+- title: リファレンス - ダウンロード
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-06-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: SDK for .NET - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: Python 用 SDK - PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
+- title: 参加する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Lighthouse 用の Microsoft Q&A
+      url: https://docs.microsoft.com/answers/topics/azure-lighthouse.html
+    - text: 製品機能のリクエスト
+      url: https://feedback.azure.com/forums/922753

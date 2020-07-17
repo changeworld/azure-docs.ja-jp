@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847299"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60456728"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラーの使用
 
@@ -77,7 +77,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 ## <a name="delete-a-file-share"></a>ファイル共有の削除
 
-ファイル共有は、必要に応じて簡単に作成したり削除したりすることができます  (個々のファイルを削除する方法については、[ファイル共有内のファイル管理](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
+ファイル共有は、必要に応じて簡単に作成したり削除したりすることができます (個々のファイルを削除する方法については、[ファイル共有内のファイル管理](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
 
 次の手順では、Storage Explorer からファイル共有を削除する方法を説明します。
 
@@ -97,7 +97,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 ## <a name="copy-a-file-share"></a>ファイル共有のコピー
 
-Storage Explorer を使用すると、ファイル共有をクリップボードにコピーし、そのファイル共有を別のストレージ アカウントに貼り付けることができます  (個々のファイルをコピーする方法については、[ファイル共有内のファイル管理](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
+Storage Explorer を使用すると、ファイル共有をクリップボードにコピーし、そのファイル共有を別のストレージ アカウントに貼り付けることができます (個々のファイルをコピーする方法については、[ファイル共有内のファイル管理](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントにファイル共有をコピーする方法を説明します。
 
@@ -165,7 +165,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
     
     - **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。 生成後、 **[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
 
-    - **アクセス ポリシーを編集する** - 必要な編集を行い、**[保存]** を選択します。
+    - **アクセス ポリシーを編集する** - 必要な編集を行い、 **[保存]** を選択します。
 
     - **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
 
@@ -201,9 +201,9 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         a.  メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
 
-        ![ファイルのアップロード](media/vs-azure-tools-storage-explorer-files/image18.png)
+        ![ファイルをアップロードする](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. **[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
+        b. **[Upload Files (ファイルのアップロード)]** ダイアログで、 **[ファイル]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![ファイルの追加](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         ![Upload folder menu](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
+        b. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、 **[フォルダー]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
 
         c. 必要に応じて、選択したフォルダーの内容のアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
 
@@ -257,7 +257,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com/)を確認します。
 

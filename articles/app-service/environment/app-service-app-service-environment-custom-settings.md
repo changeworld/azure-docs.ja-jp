@@ -1,26 +1,18 @@
 ---
-title: App Service Environment のカスタム設定 - Azure
-description: App Service Environment のカスタム構成設定
-services: app-service
-documentationcenter: ''
+title: カスタム設定の構成
+description: Azure App Service Environment 全体に適用する設定を構成します。 その作業を Azure Resource Manager テンプレートで行う方法について説明します。
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 12/19/2019
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390815"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057562"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>概要
@@ -65,9 +57,22 @@ App Service Environment は、 [Azure リソース エクスプローラー](htt
 ただし、変更を送信してから反映されるまでに、App Service Environment 内のフロント エンドの数に 30 分をかけた程度の時間がかかります。
 たとえば、App Service Environment に 4 つのフロント エンドがある場合、構成の更新が完了するまでに約 2 時間かかります。 構成の変更がロールアウトされている間は、App Service Environment で他のスケーリング操作や構成の変更操作は実行できません。
 
+## <a name="enable-internal-encryption"></a>内部暗号化を有効にする
+
+App Service Environment は、内部コンポーネントまたはシステム内の通信を表示できないブラック ボックス システムとして動作します。 より高いスループットを実現するために、内部コンポーネント間の暗号化は既定では有効になっていません。 監視またはアクセスの対象としてトラフィックにアクセスすることはできないため、システムの安全性は確保されています。 それにもかかわらず、データ パスを端から端まで完全に暗号化する必要があるコンプライアンス要件が存在する場合は、clusterSetting を使用して、これを有効にする方法があります。  
+
+        "clusterSettings": [
+            {
+                "name": "InternalEncryption",
+                "value": "1"
+            }
+        ],
+ 
+InternalEncryption clusterSetting を有効にすると、システムのパフォーマンスに影響する可能性があります。 InternalEncryption を有効にするように変更を加えると、変更が完全に反映されるまで ASE が不安定な状態になります。 ASE 上に存在するインスタンスの数によっては、変更の反映が完了するまで数時間かかる可能性があります。 ASE の使用中は、この機能を有効にしないことを強くお勧めします。 アクティブに使用されている ASE でこれを有効にする必要がある場合は、操作が完了するまで、トラフィックをバックアップ環境に転送することを強くお勧めします。 
+
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 と TLS 1.1 の無効化
 
-TLS の設定をアプリごとに管理したい場合は、[TLS 設定の適用](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions)に関するドキュメントに記載されたガイダンスが参考になります。 
+TLS の設定をアプリごとに管理したい場合は、[TLS 設定の適用](../configure-ssl-bindings.md#enforce-tls-versions)に関するドキュメントに記載されたガイダンスが参考になります。 
 
 ASE のすべてのアプリについて、TLS 1.0 と TLS 1.1 のインバウンド トラフィックをすべて無効にしたい場合は、次の **clusterSettings** エントリを設定してください。
 
@@ -95,7 +100,7 @@ ASE のすべてのアプリについて、TLS 1.0 と TLS 1.1 のインバウ�
 > 
 > 
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 Azure クイック スタート Resource Manager テンプレートのサイトには、 [App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
 
 <!-- LINKS -->

@@ -1,20 +1,19 @@
 ---
-title: チュートリアル:Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
+title: チュートリアル:Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む Java アプリ
 description: このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル ユーザー データを読み込む方法を示します。
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
-Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 68baffea86ce5c877217ec05d477288b71830a42
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6a12db8e34421dd16c12d167896ef66b3377d524
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037431"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853028"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
 
@@ -24,7 +23,7 @@ ms.locfileid: "54037431"
 
 > [!div class="checklist"]
 > * Cassandra テーブルへのデータの読み込み
-> * アプリの実行
+> * アプリを実行する
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -74,7 +73,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
      repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
    ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 コマンド プロンプトまたはターミナル ウィンドウを開いて、フォルダーのパスをプロジェクトを作成した場所に変更します。 "mvn clean install" コマンドを実行してターゲット フォルダー内に cassandra-examples.jar ファイルを生成し、アプリケーションを実行します。 
 
@@ -88,7 +87,7 @@ java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.exa
 
 これで､Azure portal でデータ エクスプローラーを開きユーザー情報がテーブルに追加されていることを確認できます｡
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Cosmos DB の Cassandra API アカウントにサンプル データを読み込む方法を学習しました。 次の記事に進むことができます。
 

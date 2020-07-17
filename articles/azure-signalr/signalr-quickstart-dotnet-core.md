@@ -5,19 +5,19 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/01/2019
+ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 3dc893ea10e47e867110f674a458498a6bd24a4f
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560720"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254888"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>クイック スタート:SignalR Service を使用してチャット ルームを作成する
 
 
-Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは、[SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction) に基づいています。
+Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは、[SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-2.1) に基づいていますが、[SignalR for ASP.NET Core 3.0](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.0) もサポートしています。
 
 この記事では、Azure SignalR Service の使用を開始する方法について説明します。 このクイック スタートでは、ASP.NET Core MVC Web アプリを使用してチャット アプリケーションを作成します。 このアプリでは、Azure SignalR Service との接続を確立して、リアルタイムのコンテンツ更新を可能にします。 Web アプリケーションをローカルでホストし、複数のブラウザー クライアントに接続します。 各クライアントは、他のすべてのクライアントにコンテンツ更新をプッシュできるようになります。 
 
@@ -107,7 +107,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
     `AddAzureSignalR()` にパラメーターを渡していないため、このコードは、SignalR Service リソースの接続文字列に既定の構成キーを使用します。 既定の構成キーは *Azure:SignalR:ConnectionString* です。
 
-5. また、*Startup.cs* で、`app.UseStaticFiles()` への呼び出しを次のコードに置き換えることで `Configure` メソッドを更新し、ファイルを保存します。
+5. また、*Startup.cs* で、`app.UseStaticFiles()` への呼び出しを次のコードに置き換えることで `Configure` メソッドを更新し、ファイルを保存します (ASP.NET Core 2 の場合のみ)。
 
     ```csharp
     app.UseFileServer();
@@ -116,6 +116,18 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
         routes.MapHub<Chat>("/chat");
     });
     ```            
+    ASP.NET Core 3 以降の場合は、上記のコードを次のコードに置き換えます。
+
+    ```csharp
+    app.UseFileServer();
+    app.UseRouting();
+    app.UseAuthorization();
+
+    app.UseEndpoints(routes =>
+    {
+        routes.MapHub<Chat>("/chat");
+    });
+    ```
 
 ### <a name="add-a-hub-class"></a>ハブ クラスの追加
 
@@ -232,7 +244,7 @@ connection.start()
 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成されたリソースを保持し、それを再利用できます。
 
@@ -257,7 +269,7 @@ connection.start()
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、新しい Azure SignalR Service リソースを作成しました。 その後、それを ASP.NET Core Web アプリで使用して、コンテンツの更新を接続されている複数のクライアントにリアルタイムにプッシュしました。 Azure SignalR Service の使用についてさらに学習するには、認証をデモンストレーションするチュートリアルに進んでください。
 

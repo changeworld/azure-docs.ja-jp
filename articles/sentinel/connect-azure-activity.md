@@ -1,54 +1,49 @@
 ---
-title: Azure Sentinel Preview に Azure アクティビティ データを接続する | Microsoft Docs
+title: Azure Sentinel に Azure アクティビティ データを接続する | Microsoft Docs
 description: Azure Sentinel に Azure アクティビティ データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 8c25baa8-b93b-41da-9e6c-15bb7b5c5511
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 67e4bb2d0f308a3f20f0a29ec8b1f2a0d46fc082
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 03/22/2020
+ms.author: yelevin
+ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204354"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124981"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを接続する
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)から Azure Sentinel にシングル クリックでログをストリーミングできます。 アクティビティ ログは、Azure で発生したサブスクリプション レベルのイベントの分析情報を提供するサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 アクティビティ ログを使用して、お使いのサブスクリプションのリソースに対して発生したすべての書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用しているリソースに対する操作は含まれません。 
-
+[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)から Azure Sentinel にシングル クリックでログをストリーミングできます。 アクティビティ ログは、Azure Resource Manager オペレーショナル データから Service Health イベントに関する最新情報まで、Azure 全体でサブスクリプション レベルのイベントを記録して表示するサブスクリプション ログです。 アクティビティ ログを使用して、お使いのサブスクリプションのリソースに対して実行されたすべての書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 また、操作の状態やその他の関連するプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用しているリソースに対する操作は含まれません。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- グローバル理者またはセキュリティ管理者のアクセス許可を持つユーザー
+- ユーザーは、Log Analytics ワークスペースに対する共同作成者のアクセス許可を持っている必要があります。
+- ユーザーは、Azure Sentinel にストリーミングするログを保持するサブスクリプションに対する閲覧者のアクセス許可を持っている必要があります。
 
+## <a name="set-up-the-azure-activity-connector"></a>Azure アクティビティ コネクタの設定
 
-## <a name="connect-to-azure-activity-log"></a>Azure アクティビティ ログに接続する
+1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[Azure アクティビティ]** をクリックし、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure アクティビティ ログ]** タイルをクリックします。
+2. **[手順]** タブで、 **[Configure Azure Activity logs >]\(Azure アクティビティログの構成 >\)** リンクをクリックします。
 
-2. [Azure アクティビティ ログ] ウィンドウで、Azure Sentinel にストリーミングするサブスクリプションを選択します。 
+3. **[Azure アクティビティ ログ]** ペインで、Azure Sentinel にストリーミングするログを保持するサブスクリプションを選択します。 
 
-3. **[接続]** をクリックします。
+4. 右側に表示されるサブスクリプション ペインで、 **[接続]** をクリックします。
 
-4. Activity アクティビティのアラートで Log Analytics の関連スキーマを使用するには、**AzureActivity** を検索します。
+5. Azure アクティビティのアラートに Log Analytics 内の関連スキーマを使用するには、クエリ ウィンドウで「`AzureActivity`」と入力します。
 
-
- 
-
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Azure アクティビティ ログを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Azure アクティビティ ログを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [組み込み](tutorial-detect-threats-built-in.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

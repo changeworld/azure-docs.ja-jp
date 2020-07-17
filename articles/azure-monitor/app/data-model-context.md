@@ -1,23 +1,15 @@
 ---
 title: Azure Application Insights Telemetry のデータ モデル - テレメトリ コンテキスト | Microsoft Docs
 description: Application Insights Telemetry のコンテキスト データ モデル
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671865"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル
 
@@ -100,7 +92,7 @@ ms.locfileid: "54015476"
 
 ## <a name="account-id"></a>アカウント ID
 
-マルチテナント アプリケーションでは、これはユーザーが操作しているアカウント ID またはアカウント名です。 例には、Azure ポータルのサブスクリプション ID やブログ プラットフォームのブログ名などがあります。
+マルチテナント アプリケーションでは、これはユーザーが操作しているアカウント ID またはアカウント名です。 例には、Azure portal のサブスクリプション ID やブログ プラットフォームのブログ名などがあります。
 
 最大長:1024
 
@@ -121,7 +113,7 @@ ms.locfileid: "54015476"
 
 ## <a name="internal-sdk-version"></a>内部:SDK バージョン
 
-SDK バージョン。 詳細については、「 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification」を参照してください。
+SDK バージョン。 情報については、[こちらの記事](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)を参照してください。
 
 最大長:64
 
@@ -133,7 +125,7 @@ SDK バージョン。 詳細については、「 https://github.com/Microsoft/
 最大長:256
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。

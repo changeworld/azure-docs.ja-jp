@@ -1,73 +1,68 @@
 ---
-title: Azure App Configuration でのデータのインポートまたはエクスポート | Microsoft Docs
+title: Azure App Configuration でのデータのインポートまたはエクスポート
 description: Azure App Configuration でのデータのインポートまたはエクスポート方法について説明します
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 6557f3a4129076c1e8708208e5d4e0d4f53dcec3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 02/25/2020
+ms.author: lcozzens
+ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056861"
 ---
 # <a name="import-or-export-configuration-data"></a>構成データのインポートまたはエクスポート
 
-Azure App Configuration はデータのインポート操作とエクスポート操作をサポートします。 これらの操作を使用して、構成データを一括処理し、アプリ構成ストアとコード プロジェクト間でデータを交換することができます。 たとえば、1 つのアプリケーション構成ストアをテスト用に、もう 1 つのアプリ構成ストアを実稼働用に設定することができます。 こうすると、ファイルを介してアプリケーション設定をコピーできるので、データを 2 回入力する必要がなくなります。
+Azure App Configuration はデータのインポート操作とエクスポート操作をサポートします。 これらの操作を使用して、構成データを一括処理し、お使いの App Configuration ストアとコード プロジェクト間でデータを交換することができます。 たとえば、1 つの App Configuration ストアをテスト用に、もう 1 つの App Configuration を実稼働用に設定することができます。 それらの間でアプリケーション設定をコピーできるので、データを 2 回入力する必要がなくなります。
 
-この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。
+この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。 GitHub リポジトリとの継続的な同期を設定する場合は、[GitHub Actions](https://aka.ms/azconfig-gha1) に関する記事を参照してください。
 
 ## <a name="import-data"></a>データのインポート
 
-インポートでは、手動で入力するのではなく、既存のソースから App Configuration ストアに構成データが取り込まれます。 インポート機能は、データをアプリ構成ストアに移行したり、複数ソースのデータを集計するために使用します。 App Configuration は、JSON、YAML、またはプロパティ ファイルからのインポートをサポートしています。
+インポートでは、既存のソースから App Configuration ストアに構成データが取り込まれます。 インポート機能は、データを App Configuration ストアに移行したり、複数ソースのデータを集計したりするために使用します。 App Configuration は、JSON、YAML、またはプロパティ ファイルからのインポートをサポートしています。
 
-データのインポートには、[Azure portal](https://aka.ms/azconfig/portal) または [Azure CLI](./scripts/cli-import.md) のいずれかを使用します。 Azure portal から次の手順を実行します。
+データのインポートには、[Azure portal](https://portal.azure.com) または [Azure CLI](./scripts/cli-import.md) のいずれかを使用します。 Azure portal から次の手順を実行します。
 
-1. アプリ構成ストアを参照し、**[インポート/エクスポート]** を選択します。
+1. お使いの App Configuration ストアを参照し、 **[操作]** メニューから **[インポート/エクスポート]** を選択します。
 
-2. **[インポート]** タブで、**[Source service]\(ソース サービス\)** > **[構成ファイル]** を選択します。
+1. **[インポート]** タブで、 **[Source service]\(ソース サービス\)**  >  **[構成ファイル]** を選択します。
 
-3. **[For language]\(言語\)** > **[ファイルの種類]** を選択します。
+1. **[言語]** を選択し、目的の入力の種類を選択します。
 
-4. **フォルダー** アイコンを選択し、インポートするファイルを参照します。
+1. **フォルダー** アイコンを選択し、インポートするファイルを参照します。
 
     ![ファイルのインポート](./media/import-file.png)
 
-5. **[区切り記号]** を選択し、必要に応じて、インポートされるキー名に使用する **[プレフィックス]** を入力します。
+1. **[区切り記号]** を選択し、必要に応じて、インポートされるキー名に使用する **[プレフィックス]** を入力します。
 
-6. 必要に応じて、**[ラベル]** を選択します。
+1. 必要に応じて、 **[ラベル]** を選択します。
 
-7. **[適用]** を選択してインポートを完了します。
+1. **[適用]** を選択してインポートを完了します。
 
     ![完了したファイルのインポート](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>データのエクスポート
 
-エクスポートでは、App Configuration に保存されている構成データが別の保存先に書き込まれます。 たとえば、デプロイ時に、アプリケーション構成ストア内のデータをアプリケーション コードに埋め込まれるファイルに保存するときにエクスポート機能を使用します。
+エクスポートでは、App Configuration に保存されている構成データが別の保存先に書き込まれます。 エクスポート機能は、お使いの App Configuration ストア内のデータを、お使いのアプリケーション コードに埋め込まれるファイルにデプロイ時に保存するときなどに使用します。
 
-データのエクスポートには、[Azure portal](https://aka.ms/azconfig/portal) または [Azure CLI](./scripts/cli-export.md) のいずれかを使用します。 Azure portal から次の手順を実行します。
+データのエクスポートには、[Azure portal](https://portal.azure.com) または [Azure CLI](./scripts/cli-export.md) のいずれかを使用します。 Azure portal から次の手順を実行します。
 
-1. アプリ構成ストアを参照し、**[インポート/エクスポート]** を選択します。
+1. お使いの App Configuration ストアを参照し、 **[インポート/エクスポート]** を選択します。
 
-2. **[エクスポート]** タブで、**[Target service]\(ターゲット サービス\)** > **[構成ファイル]** を選択します。
+1. **[エクスポート]** タブで、 **[Target service]\(ターゲット サービス\)**  >  **[構成ファイル]** を選択します。
 
-3. 必要に応じて **[プレフィックス]** を入力し、エクスポートするキーの **[ラベル]** と特定の時点を選択します。
+1. 必要に応じて **[プレフィックス]** を入力し、エクスポートするキーの **[ラベル]** と特定の時点を選択します。
 
-4. **[ファイルの種類]** > **[区切り記号]** を選択します。
+1. **[ファイルの種類]**  >  **[区切り記号]** を選択します。
 
-5. **[適用]** を選択してエクスポートを完了します。
+1. **[適用]** を選択してエクスポートを完了します。
 
     ![完了したファイルのエクスポート](./media/export-file-complete.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)  

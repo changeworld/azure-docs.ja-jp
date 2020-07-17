@@ -1,20 +1,20 @@
 ---
 title: Microsoft Translator Hub ワークスペースとプロジェクトの移行 - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Microsoft Translator Hub ワークスペースとプロジェクトを移行します。
-author: rajdeep-in
-manager: christw
+description: この記事では、Hub ワークスペースとプロジェクトを Azure Cognitive Services Custom Translator に移行する方法について説明します。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698401"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587001"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -26,8 +26,8 @@ ms.locfileid: "59698401"
 * 移行されたトレーニングのうち、デプロイ済み状態でなかったものはすべて、移行済みドラフト状態になります。 この状態では、移行済みの定義を使用してモデルをトレーニングするかどうかを選択できますが、通常のトレーニング料金が適用されます。
 * Hub トレーニングから移行された BLEU スコアは、モデルの TrainingDetails ページ ([Bleu score in MT Hub]\(MT Hub におけるBLEU スコア\) という見出し) でいつでも確認できます。
 
-> [!Note]
-> Custom Translator でトレーニングを正常に実行するには、一意の文が最低 10,000 個抽出されている必要があります。 [推奨される最小要件](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences)に満たない場合、Custom Translator ではトレーニングを実行できません。
+> [!Note] 
+> Custom Translator でトレーニングを正常に実行するには、一意の文が最低 10,000 個抽出されている必要があります。 [推奨される最小要件](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)に満たない場合、Custom Translator ではトレーニングを実行できません。
 
 ## <a name="find-custom-translator-workspace-id"></a>カスタム トランスレーターのワークスペース ID を見つける
 
@@ -122,7 +122,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 * システムの言語ペアにまだカスタム翻訳ツールが対応していない場合、そのシステムの利用は、カスタム翻訳ツールを通じてデータにアクセスするかデプロイを解除する目的に限定されます。 それらのプロジェクトは、[プロジェクト] ページに "利用不可" としてマークされます。 新しい言語ペアにカスタム翻訳ツールが対応した時点で、プロジェクトがアクティブになり、トレーニングとデプロイを行えるようになります。 
 * Hub からカスタム トランスレーターにプロジェクトを移行しても、お客様の Hub のトレーニングまたはプロジェクトには一切影響がありません。 移行中、プロジェクトまたはドキュメントが Hub から削除されたり、モデルのデプロイが解除されたりすることはありません。
 * 移行は、プロジェクトごとに 1 回だけ許可されます。 プロジェクトに対して移行を繰り返す必要がある場合は、Microsoft にお問い合わせください。
-* Custom Translator では、英語との組み合わせに対応した複数の NMT 言語ペアがサポートされています。 [サポートされている言語の完全な一覧は、こちらで確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub にはベースライン モデルが不要であるため、数千の言語がサポートされます。 サポートされていない言語ペアを移行できますが、Microsoft が実施するのはドキュメントとプロジェクトの定義の移行のみです。 Microsoft で新しいモデルをトレーニングすることはできなくなります。 さらに、それらのドキュメントとプロジェクトは、現時点では使用できないことを示すために、非アクティブとして表示されます。 それらのプロジェクトまたはドキュメントは、今後サポートが追加されるとアクティブになってトレーニングできる状態になります。
+* Custom Translator では、英語との組み合わせに対応した複数の NMT 言語ペアがサポートされています。 [サポートされている言語の完全な一覧を確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub にはベースライン モデルが不要であるため、数千の言語がサポートされます。 サポートされていない言語ペアを移行できますが、Microsoft が実施するのはドキュメントとプロジェクトの定義の移行のみです。 Microsoft で新しいモデルをトレーニングすることはできなくなります。 さらに、それらのドキュメントとプロジェクトは、現時点では使用できないことを示すために、非アクティブとして表示されます。 それらのプロジェクトまたはドキュメントは、今後サポートが追加されるとアクティブになってトレーニングできる状態になります。
 * カスタム トランスレーターでは現在、モノリンガルのトレーニング データはサポートされていません。 サポートされていない言語ペアと同様、モノリンガルのドキュメントを移行することはできますが、サポートされるようになるまで、それらは非アクティブとして表示されます。
 * カスタム トランスレーターでは、トレーニングに 10,000 個の並列文が必要です。 Microsoft Hub では、それよりも少ないデータでのトレーニングが可能です。 この要件を満たさないトレーニングを移行した場合、トレーニングされません。
 
@@ -134,16 +134,16 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 |:-----|:----:|:----:|
 |カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2    | V3  |
-| SMT のカスタマイズ | はい   | いいえ  |
-| NMT のカスタマイズ | いいえ     | はい |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
+| SMT のカスタマイズ | はい   | いいえ |
+| NMT のカスタマイズ | いいえ    | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ    | はい |
 | トレースなし | はい | はい |
 
 ## <a name="new-languages"></a>新しい言語
 
 Microsoft Translator 用の新しい言語システムの作成に取り組んでいるコミュニティや組織のお客様は、[custommt@microsoft.com](mailto:custommt@microsoft.com) までご連絡いただき、詳細についてお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
-- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

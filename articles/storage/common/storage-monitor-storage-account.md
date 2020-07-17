@@ -1,29 +1,32 @@
 ---
-title: Azure ストレージ アカウントの監視方法 | Microsoft Docs
+title: Azure portal での Azure Storage アカウントの監視方法 | Microsoft Docs
 description: Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 07/31/2018
+ms.topic: conceptual
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232335"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
-[Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスのメトリックと、BLOB、キュー、およびテーブルのログを利用できます。 [Azure Portal](https://portal.azure.com) を使用すると、アカウントに対してどのメトリックとログを記録するか、また、そのメトリック データを視覚的に表現するグラフを構成できます。
+[Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスのメトリックと、BLOB、キュー、およびテーブルのログを利用できます。 [Azure Portal](https://portal.azure.com) を使用すると、アカウントに対してどのメトリックとログを記録するか、また、そのメトリック データを視覚的に表現するグラフを構成できます。 
+
+[Azure Monitor for Storage](../../azure-monitor/insights/storage-insights-overview.md) (プレビュー) を確認することをお勧めします。 これは、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供されることで、Azure Storage アカウントを包括的に監視できる Azure Monitor の機能です。 何も有効にしたり構成したりする必要はありません。これらのメトリックは、あらかじめ定義されている対話型のグラフやその他の含まれている視覚エフェクトからすぐに表示できます。
 
 > [!NOTE]
 > Azure Portal で監視データを調査するとコストがかかります。 詳細については、「[Storage Analytics](storage-analytics.md)」を参照してください。
 >
 > 現在、Azure Files は、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。
+>
+> Premium パフォーマンス ブロック BLOB のストレージ アカウントでは、ストレージ分析メトリックをサポートしていませんが、ログ記録をサポートしています。 REST API またはクライアント ライブラリを使用してプログラムでログ記録を有効にすることができます。 Premium パフォーマンス ブロック BLOB のストレージ アカウントでメトリックを表示する場合は、[Azure Monitor の Azure Storage メトリック](storage-metrics-in-azure-monitor.md)を使用することを検討してください。
 >
 > Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >
@@ -45,14 +48,14 @@ ms.locfileid: "65153626"
    > メトリック データを手動で削除するときは課金されます。 システムによって古い分析データ (保持ポリシーよりも古いデータ) が削除されるときは費用がかかりません。 アカウントのストレージ分析データを保持する必要がある期間に基づいて、データ保持ポリシーを設定することをお勧めします。 詳細については、「[Billing on storage metrics](storage-analytics-metrics.md#billing-on-storage-metrics)」 (ストレージ メトリックへの課金) を参照してください。
    >
 
-1. 監視の構成が完了したら、**[保存]** を選択します。
+1. 監視の構成が完了したら、 **[保存]** を選択します。
 
 既定のメトリック セットは、ストレージ アカウント ブレードのグラフと、個別のサービス ブレード (BLOB、キュー、テーブル、およびファイル) に表示されます。 サービスのメトリックを有効にした場合、データがグラフに表示されるまでに最大で 1 時間かかる場合があります。 メトリック グラフで **[編集]** を選択すると、グラフに表示するメトリックを構成できます。
 
-メトリックの収集とログ記録を無効にするには、**[ステータス]** を **[オフ]** に設定します。
+メトリックの収集とログ記録を無効にするには、 **[ステータス]** を **[オフ]** に設定します。
 
 > [!NOTE]
-> Azure Storage では[テーブル ストレージ](storage-introduction.md#table-storage)を使用して、ストレージ アカウントのメトリックが保存されます。メトリックが保存されるのはアカウントのテーブルです。 詳細については、 「[メトリックの保存](storage-analytics-metrics.md#how-metrics-are-stored)」を参照してください。
+> Azure Storage では[テーブル ストレージ](storage-introduction.md#table-storage)を使用して、ストレージ アカウントのメトリックが保存されます。メトリックが保存されるのはアカウントのテーブルです。 詳細については、以下を参照してください。 「[メトリックの保存](storage-analytics-metrics.md#how-metrics-are-stored)」を参照してください。
 >
 
 ## <a name="customize-metrics-charts"></a>メトリック グラフのカスタマイズ
@@ -71,7 +74,7 @@ ms.locfileid: "65153626"
 
    ![[グラフの編集] ブレードでの時間の範囲とサービスの選択](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
 
-1. グラフに表示されている必要な個別の**メトリック**を選択し、**[OK]** をクリックします。
+1. グラフに表示されている必要な個別の**メトリック**を選択し、 **[OK]** をクリックします。
 
    ![[グラフの編集] ブレードでの個別のメトリックの選択](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
 
@@ -94,8 +97,8 @@ ms.locfileid: "65153626"
 
 ストレージ リソース メトリックのしきい値に達したときに通知するアラートを作成できます。
 
-1. **警告ルール ブレード**を開くには、下にスクロールして**メニュー ブレード**の **[監視]** セクションを表示し、**[アラート (クラシック)]** を選択します。
-2. **[メトリック アラートの追加 (クラシック)]** を選択して、**[アラート ルールの追加]** ブレードを開きます
+1. **警告ルール ブレード**を開くには、下にスクロールして**メニュー ブレード**の **[監視]** セクションを表示し、 **[アラート (クラシック)]** を選択します。
+2. **[メトリック アラートの追加 (クラシック)]** を選択して、 **[アラート ルールの追加]** ブレードを開きます
 3. 新しい警告ルールの**名前**と**説明**を指定します。
 4. アラートを追加する**メトリック**を選択し、アラートの**条件**、および**しきい値**を選択します。 しきい値の単位の種類は、選択したメトリックによって異なります。 たとえば、"回数" は *ContainerCount* の単位の種類ですが、*PercentNetworkError* の単位は割合です。
 5. **期間**を選択します。 この期間内にメトリックがしきい値以上になると、アラートがトリガーされます。
@@ -107,7 +110,7 @@ ms.locfileid: "65153626"
 
 ストレージ アカウントの Azure Storage メトリック グラフを、ポータルのダッシュボードに追加できます。
 
-1. [Azure Portal](https://portal.azure.com) にダッシュボードが表示されている間に、**[ダッシュボードの編集]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) にダッシュボードが表示されている間に、 **[ダッシュボードの編集]** をクリックします。
 1. **[タイル ギャラリー]** で **[タイルの検索方法]**  >  **[種類]** の順に選択します。
 1. **[種類]**  >  **[ストレージ アカウント]** の順に選択します。
 1. **[リソース]** で、ダッシュボードに追加するメトリックのストレージ アカウントを選択します。
@@ -128,19 +131,19 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
 >
 
 1. [Azure Portal](https://portal.azure.com) で **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択して、ストレージ アカウント ブレードを開きます。
-1. メニュー ブレードの **[監視]** セクションで **[診断]** を選択します。
+1. メニュー ブレードの **[監視 (クラシック)]** セクションで **[Diagnostics settings (classic)]\(診断設定 (クラシック)\)** を選択します。
 
     ![Azure Portal の [監視] の [診断] メニュー。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. **[ステータス]** を **[オン]** に設定して、ログを有効にする**サービス**を選択します。
 
     ![Azure Portal でログを構成する。](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
 
 $Logs コンテナーへのアクセスについては、[ストレージ分析ログ](storage-analytics-logging.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Storage Analytics の[メトリック、ログ、および課金](storage-analytics.md)の詳細について確認する。

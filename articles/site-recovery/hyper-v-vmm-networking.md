@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery を使用したフェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する | Microsoft Docs
+title: Azure Site Recovery を使用したセカンダリ サイト へのフェールオーバー後の IP アドレス指定の設定
 description: Azure Site Recovery を使用したディザスター リカバリーとフェールオーバーの後に、セカンダリ オンプレミス サイトの VM に接続するように IP アドレス指定を設定する方法について説明します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c93f80ba93e84c93ddf58b46b4bbcf98c53478d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794228"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73961421"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
 
@@ -126,7 +125,7 @@ VM の保護を有効にしたら、以下のサンプル スクリプトを使�
 ![異なる IP アドレス - フェールオーバー後](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [フェールオーバーの実行](hyper-v-vmm-failover-failback.md)
 

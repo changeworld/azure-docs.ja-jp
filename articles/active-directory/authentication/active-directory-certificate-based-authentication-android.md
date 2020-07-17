@@ -1,22 +1,22 @@
 ---
-title: Android での証明書ベースの認証 - Azure Active Directory
+title: Android の証明書ベースの認証 - Azure Active Directory
 description: Android デバイスでソリューションに証明書ベースの認証を構成するための対応シナリオや要件について説明する
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368291"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81680207"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
 
@@ -27,7 +27,7 @@ Android デバイスは、次に接続する場合、証明書ベースの認証
 
 この機能を構成すると、モバイル デバイスで特定のメールおよび Microsoft Office アプリケーションにユーザー名とパスワードの組み合わせを入力する必要がなくなります。
 
-このトピックでは、Office 365 Enterprise、Business、Education、US Government、China、Germany プランのテナントのユーザーのために iOS (Android) デバイス上で CBA を構成するための要件およびサポートされるシナリオについて説明します。
+このトピックでは、Office 365 Enterprise、Business、Education、US Government、China、Germany プランのテナントのユーザーのために Android デバイス上で CBA を構成するための要件およびサポートされるシナリオについて説明します。
 
 Office 365 US Government Defense プランと Federal プランでは、この機能はプレビュー版として提供されています。
 
@@ -46,7 +46,7 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 | Word/Excel/PowerPoint |![このアプリケーションのサポートを示すチェック マーク][1] |
 | Yammer |![このアプリケーションのサポートを示すチェック マーク][1] |
 
-### <a name="implementation-requirements"></a>実装要件
+### <a name="implementation-requirements"></a>実装の要件
 
 デバイスの OS バージョンは、Android 5.0 (Lollipop) 以降である必要があります。
 
@@ -66,7 +66,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 
 詳細については、「[AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。
 
-(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は ADFS への要求内の '*prompt=login*' を '*wauth=usernamepassworduri*' (ADFS に U/P 認証を実行するよう依頼する)、および '*wfresh=0*' (ADFS に SSO 状態を無視し、新しい認証を実行するよう依頼する) として変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定内の '*PromptLoginBehavior*' を *[無効]* に設定します。
+(先進認証が有効にされている) 一部の Office アプリでは、要求で "*prompt=login*" が Azure AD に送信されます。 既定では、Azure AD によって、ADFS への要求内の "*prompt=login*" が、"*wauth=usernamepassworduri*" (ADFS に U/P 認証を実行するよう依頼する) および "*wfresh=0*" (ADFS に SSO 状態を無視し、新しい認証を実行するよう依頼する) として変換されます。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメインの設定で "*PromptLoginBehavior*" を "*Disabled*" に設定します。
 このタスクを実行するには、[MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) コマンドレットを使用します。
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
@@ -75,7 +75,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 
 Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーションがサポートされています。 電子メール アプリケーションがこの機能をサポートしているかどうかを確認するには、アプリケーション開発者に問い合わせてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご自分の環境で証明書ベースの認証を構成しようとする場合は、[Android での証明書ベースの認証の概要](active-directory-certificate-based-authentication-get-started.md)に関するページで手順を参照してください。
 

@@ -1,38 +1,30 @@
 ---
-title: Azure Cache for Redis の構成方法 | Microsoft Docs
+title: Azure Cache for Redis の構成方法
 description: Azure Cache for Redis の既定の Redis 構成について説明し、Azure Cache for Redis インスタンスの構成方法について説明します
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849966"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010309"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
 
 > [!NOTE]
 > Premium キャッシュ機能の構成と使用の詳細については、[永続化の構成方法](cache-how-to-premium-persistence.md)、[クラスタリングの構成方法](cache-how-to-premium-clustering.md)、[Virtual Network のサポートの構成方法](cache-how-to-premium-vnet.md)に関する各記事をご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>Azure Cache for Redis の設定を構成する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]** ブレードの **[リソース]** メニューを使って行うことができます。
+Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis]** ブレードの **[リソース]** メニューを使って行うことができます。
 
 ![Azure Cache for Redis の設定](./media/cache-configure/redis-cache-settings.png)
 
@@ -48,20 +40,20 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
     * [詳細設定](#advanced-settings)
     * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
     * [スケール](#scale)
-    * [Redis クラスター サイズ](#cluster-size)
-    * [Redis データの保持](#redis-data-persistence)
+    * [クラスター サイズ](#cluster-size)
+    * [データの永続化](#redis-data-persistence)
     * [更新のスケジュール](#schedule-updates)
     * [geo レプリケーション](#geo-replication)
     * [Virtual Network](#virtual-network)
     * [ファイアウォール](#firewall)
-    * [プロパティ](#properties)
-    * [ロック](#locks)
+    * [Properties](#properties)
+    * [Locks](#locks)
     * [Automation スクリプト](#automation-script)
 * 管理
     * [データのインポート](#importexport)
     * [データのエクスポート](#importexport)
     * [Reboot](#reboot)
-* [監視](#monitoring)
+* [Monitoring](#monitoring)
     * [Redis メトリック](#redis-metrics)
     * [アラート ルール](#alert-rules)
     * [診断](#diagnostics)
@@ -76,7 +68,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-キャッシュに対して実行された操作を表示するには、 **[アクティビティ ログ]** をクリックします。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの処理の詳細については、[Resource Manager の監査操作](../azure-resource-manager/resource-group-audit.md)に関するページを参照してください。 Azure Cache for Redis イベントの監視の詳細については、[操作とアラート](cache-how-to-monitor.md#operations-and-alerts)についてのページを参照してください。
+キャッシュに対して実行された操作を表示するには、 **[アクティビティ ログ]** をクリックします。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの処理の詳細については、[Resource Manager の監査操作](../azure-resource-manager/management/view-activity-logs.md)に関するページを参照してください。 Azure Cache for Redis イベントの監視の詳細については、[操作とアラート](cache-how-to-monitor.md#operations-and-alerts)についてのページを参照してください。
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
@@ -84,7 +76,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 ### <a name="tags"></a>Tags
 
-**[タグ]** セクションでは、リソースを整理できます。 詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)に関するページを参照してください。
+**[タグ]** セクションでは、リソースを整理できます。 詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)に関するページを参照してください。
 
 
 ### <a name="diagnose-and-solve-problems"></a>問題の診断と解決
@@ -100,19 +92,19 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 * [詳細設定](#advanced-settings)
 * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
 * [スケール](#scale)
-* [Redis クラスター サイズ](#cluster-size)
-* [Redis データの保持](#redis-data-persistence)
+* [クラスター サイズ](#cluster-size)
+* [データの永続化](#redis-data-persistence)
 * [更新のスケジュール](#schedule-updates)
 * [geo レプリケーション](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [ファイアウォール](#firewall)
-* [プロパティ](#properties)
-* [ロック](#locks)
+* [Properties](#properties)
+* [Locks](#locks)
 * [Automation スクリプト](#automation-script)
 
 
 
-### <a name="access-keys"></a>[アクセス キー]
+### <a name="access-keys"></a>アクセス キー
 **[アクセス キー]** をクリックすると、キャッシュのアクセス キーを表示したり、再生成したりできます。 これらのキーは、キャッシュに接続するクライアントによって使用されます。
 
 ![Azure Cache for Redis のアクセス キー](./media/cache-configure/redis-cache-manage-keys.png)
@@ -125,10 +117,10 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 * [キースペース通知 (詳細設定)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>アクセス ポート
-新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。 非 SSL ポートを有効にするには、**[詳細設定]** ブレードにある **[SSL によるアクセスのみ許可する]** で **[いいえ]** をクリックしてから、**[保存]** をクリックします。
+新しいキャッシュでは、TLS/SSL を使用しないアクセスが既定で無効になっています。 非 TLS ポートを有効にするには、 **[詳細設定]** ブレードにある **[SSL によるアクセスのみ許可する]** で **[いいえ]** をクリックしてから、 **[保存]** をクリックします。
 
 > [!NOTE]
-> Azure Cache for Redis への SSL アクセスでは、既定で TLS 1.0 がサポートされます。 最小限サポートされる TLS のバージョンは、**[詳細設定]** ブレードの **[TLS の最小バージョン]** ドロップダウンを使用して、必要な場合は、TLS 1.2 まで引き上げることができます。その後、**[保存]** をクリックします。
+> Azure Cache for Redis に対する TLS アクセスでは現在、TLS 1.0、1.1、および 1.2 がサポートされていますが、バージョン 1.0 および 1.1 はまもなく廃止されます。  詳細については、[TLS 1.0 および 1.1 の削除に関するページ](cache-remove-tls-10-11.md)を参照してください。
 
 ![Azure Cache for Redis のアクセス ポート](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -157,8 +149,8 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 > [!IMPORTANT]
 > **maxmemory-reserved** と **maxfragmentationmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
-> 
-> 
+>
+>
 
 #### <a name="keyspace-notifications-advanced-settings"></a>キースペース通知 (詳細設定)
 Redis キースペース通知は、 **[詳細設定]** ブレードで構成します。 キースペース通知により、特定のイベントが発生したときに、クライアントが通知を受信できます。
@@ -167,19 +159,19 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 > [!IMPORTANT]
 > キースペース通知と **notify-keyspace-events** 設定は、Standard キャッシュと Premium キャッシュに対してのみ使用可能です。
-> 
-> 
+>
+>
 
 詳細については、 [Redis キースペース通知](https://redis.io/topics/notifications)に関するトピックを参照してください。 サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) ファイルを参照してください。
 
 
 <a name="recommendations"></a>
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Cache for Redis Advisor
-**[Azure Cache for Redis Advisor]** ブレードにキャッシュに関する推奨事項が表示されます。 通常の操作中に推奨事項は表示されません。 
+**[Azure Cache for Redis Advisor]** ブレードにキャッシュに関する推奨事項が表示されます。 通常の操作中に推奨事項は表示されません。
 
 ![Recommendations](./media/cache-configure/redis-cache-no-recommendations.png)
 
-キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、**[Azure Cache for Redis]** ブレードにアラートが表示されます。
+キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、 **[Azure Cache for Redis]** ブレードにアラートが表示されます。
 
 ![Recommendations](./media/cache-configure/redis-cache-recommendations-alert.png)
 
@@ -198,52 +190,47 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 | サーバーの負荷 |[使用状況グラフ -  Redis サーバーの負荷](cache-how-to-monitor.md#usage-charts) |
 | メモリ使用量 |[キャッシュのパフォーマンス - サイズ](cache-faq.md#cache-performance) |
 
-キャッシュをアップグレードするには、**[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」をご覧ください。
+キャッシュをアップグレードするには、 **[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」をご覧ください。
 
 
 ### <a name="scale"></a>スケール
-キャッシュの価格レベルを表示または変更するには、**[スケール]** をクリックします。 スケーリングの詳細については、「[Azure Cache for Redis のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
+キャッシュの価格レベルを表示または変更するには、 **[スケール]** をクリックします。 スケーリングの詳細については、「[Azure Cache for Redis のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
 
 ![Azure Cache for Redis の価格レベル](./media/cache-configure/pricing-tier.png)
 
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Redis クラスター サイズ
-クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[(プレビュー) Redis クラスター サイズ]** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[クラスター サイズ]** をクリックします。
 
-> [!NOTE]
-> Azure Cache for Redis の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
-> 
-> 
+![クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-![Redis クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
-
-クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+クラスター サイズを変更するには、スライダーを使用するか、 **[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、 **[OK]** をクリックして保存します。
 
 > [!IMPORTANT]
-> Redis クラスタリングは、Premium キャッシュでのみ使用できます。 詳細については、[Premium Azure Cache for Redis のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
-> 
-> 
+> Redis クラスタリングは、Premium キャッシュでのみ使用できます。 詳細については、「[How to configure clustering for a Premium Azure Cache for Redis](cache-how-to-premium-clustering.md)」 (Premium Azure Cache for Redis のクラスタリングの構成方法) を参照してください。
+>
+>
 
 
 ### <a name="redis-data-persistence"></a>Redis データの保持
-**[Redis データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Cache for Redis では、[RDB の永続化](cache-how-to-premium-persistence.md#configure-rdb-persistence)または [AOF の永続化](cache-how-to-premium-persistence.md#configure-aof-persistence)を使用して Redis の永続化を行うことができます。
+**[データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Cache for Redis では、[RDB の永続化](cache-how-to-premium-persistence.md#configure-rdb-persistence)または [AOF の永続化](cache-how-to-premium-persistence.md#configure-aof-persistence)を使用して Redis の永続化を行うことができます。
 
 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
 
 
 > [!IMPORTANT]
 > Redis のデータ永続化は、Premium Cache でのみ使用できます。
-> 
-> 
+>
+>
 
 ### <a name="schedule-updates"></a>更新のスケジュール
-**[更新のスケジュール]** ブレードでは、キャッシュの Redis サーバー更新のメンテナンス時間を指定できます。 
+**[更新のスケジュール]** ブレードでは、キャッシュの Redis サーバー更新のメンテナンス時間を指定できます。
 
 > [!IMPORTANT]
 > このメンテナンス時間は、Redis サーバーの更新にのみ適用されます。Azure の更新や、キャッシュをホストする VM のオペレーティング システムへの更新には適用されません。
-> 
-> 
+>
+>
 
 ![更新のスケジュール](./media/cache-configure/redis-schedule-updates.png)
 
@@ -251,8 +238,8 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 > [!IMPORTANT]
 > **更新のスケジュール**機能は Premium レベルのキャッシュにのみ使用できます。 詳細および手順については、[Azure Cache for Redis の管理の、更新のスケジュール](cache-administration.md#schedule-updates)に関するページをご覧ください。
-> 
-> 
+>
+>
 
 ### <a name="geo-replication"></a>geo レプリケーション
 
@@ -260,22 +247,22 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 > [!IMPORTANT]
 > **geo レプリケーション**は、Premium レベルのキャッシュにのみ使用できます。 詳細と手順については、[Azure Cache for Redis の geo レプリケーションを構成する方法](cache-how-to-geo-replication.md)に関するページを参照してください。
-> 
-> 
+>
+>
 
 ### <a name="virtual-network"></a>Virtual Network
 **[Virtual Network]** セクションでは、キャッシュの仮想ネットワークの設定を構成することができます。 VNET サポートでのプレミアム キャッシュの作成およびその設定の更新の詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 仮想ネットワークの設定は、キャッシュ作成時に VNET サポートで構成されたプレミアム キャッシュでのみ使用できます。 
-> 
-> 
+> 仮想ネットワークの設定は、キャッシュ作成時に VNET サポートで構成されたプレミアム キャッシュでのみ使用できます。
+>
+>
 
 ### <a name="firewall"></a>ファイアウォール
 
 ファイアウォール ルール構成は、すべてのレベルの Azure Cache for Redis で利用できます。
 
-キャッシュのファイアウォール ルールを表示して構成するには、**[ファイアウォール]** をクリックします。
+キャッシュのファイアウォール ルールを表示して構成するには、 **[ファイアウォール]** をクリックします。
 
 ![ファイアウォール](./media/cache-configure/redis-firewall-rules.png)
 
@@ -283,23 +270,23 @@ IP アドレス範囲の開始アドレスと終了アドレスで、ファイ�
 
 > [!IMPORTANT]
 > ファイアウォール ルールが構成されている場合でも、Azure Cache for Redis 監視システムからの接続は常に許可されます。
-> 
-> 
+>
+>
 
 ### <a name="properties"></a>Properties
 **[プロパティ]** をクリックすると、キャッシュ エンドポイントやポートなど、キャッシュに関する情報を表示できます。
 
 ![Azure Cache for Redis のプロパティ](./media/cache-configure/redis-cache-properties.png)
 
-### <a name="locks"></a>ロック
-**[ロック]** セクションでは、サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、「 [Azure リソース マネージャーによるリソースのロック](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
+### <a name="locks"></a>Locks
+**[ロック]** セクションでは、サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、[「Azure Resource Manager によるリソースのロック」](../azure-resource-manager/management/lock-resources.md)を参照してください。
 
 ### <a name="automation-script"></a>Automation スクリプト
 
-**[Automation スクリプト]** をクリックして、将来のデプロイのために、デプロイ済みのリソースのテンプレートをビルドおよびエクスポートします。 テンプレートを操作する方法の詳細については、 [Azure Resource Manager のテンプレートを使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関するページをご覧ください。
+**[Automation スクリプト]** をクリックして、将来のデプロイのために、デプロイ済みのリソースのテンプレートをビルドおよびエクスポートします。 テンプレートを操作する方法の詳細については、 [Azure Resource Manager のテンプレートを使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関するページをご覧ください。
 
 ## <a name="administration-settings"></a>管理の設定
-**[管理]** セクションの設定では、キャッシュに対して次の管理タスクを実行できます。 
+**[管理]** セクションの設定では、キャッシュに対して次の管理タスクを実行できます。
 
 ![管理](./media/cache-configure/redis-cache-administration.png)
 
@@ -308,7 +295,7 @@ IP アドレス範囲の開始アドレスと終了アドレスで、ファイ�
 * [Reboot](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
+### <a name="importexport"></a>インポート/エクスポート
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュからエクスポートし、Azure Storage アカウント内のページ BLOB にインポートすることで、キャッシュ内のデータのインポートとエクスポートが可能です。 Import/Export により、異なる Azure Cache for Redis インスタンス間での移行や、使用前のキャッシュへのデータ入力が可能になります。
 
 Import は、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Cache for Redis は RDB ファイルを Azure ストレージからメモリに読み込み、キーをキャッシュに挿入します。
@@ -317,8 +304,8 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 > [!IMPORTANT]
 > Import/Export は、Premium レベル キャッシュにのみ使用可能です。 詳細および手順については、[Azure Cache for Redis でデータをインポートまたはエクスポートする](cache-how-to-import-export-data.md)ことに関するページを参照してください。
-> 
-> 
+>
+>
 
 ### <a name="reboot"></a>再起動
 **[再起動]** ブレードでは、キャッシュのノードを再起動できます。 この再起動機能により、アプリケーションにキャッシュ ノードの障害が発生した場合の復元性をテストすることができます。
@@ -333,13 +320,14 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 > [!IMPORTANT]
 > 現在、再起動はすべての価格レベルで使用できます。 詳細および手順については、[Azure Redis Cache の管理の再起動](cache-administration.md#reboot)に関するページを参照してください。
-> 
-> 
+>
+>
 
 
 ## <a name="monitoring"></a>監視
 
-**[監視]** セクションでは、Azure Cache for Redis に対する診断および監視を構成できます。 Azure Cache for Redis の監視と診断の詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」を参照してください。
+**[監視]** セクションでは、Azure Cache for Redis に対する診断および監視を構成できます。
+Azure Cache for Redis の監視と診断の詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」を参照してください。
 
 ![診断](./media/cache-configure/redis-cache-diagnostics.png)
 
@@ -352,11 +340,11 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 ### <a name="alert-rules"></a>アラート ルール
 
-**[アラート ルール]** をクリックして、Azure Cache for Redis のメトリックに基づくアラートを構成します。 詳細については、「[アラート](cache-how-to-monitor.md#alerts)」を参照してください。
+**[アラート ルール]** をクリックして、Azure Cache for Redis のメトリックに基づくアラートを構成します。 詳細については、「 [警告](cache-how-to-monitor.md#alerts)」を参照してください。
 
 ### <a name="diagnostics"></a>診断
 
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、**[診断]** をクリックし、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** をクリックし、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
 
 >[!NOTE]
 >キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)できます。
@@ -376,8 +364,8 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 > [!NOTE]
 > 現在、[リソース正常性] では、仮想ネットワークでホストされている Azure Cache for Redis インスタンスの正常性については報告できません。 詳細については、「 [VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
-> 
-> 
+>
+>
 
 ### <a name="new-support-request"></a>新しいサポート要求
 **[新しいサポート要求]** をクリックして、キャッシュのサポート要求を開きます。
@@ -391,14 +379,14 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 > [!NOTE]
 > `StackExchange.Redis.IServer.ConfigSet` メソッドを使用してこのセクションの設定を変更することはできません。 このセクションのいずれかのコマンドでこのメソッドを呼び出すと、次の例のような例外がスローされます。  
-> 
+>
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
-> 
+>
 > **max-memory-policy** などの構成可能な値を、Azure Portal またはコマンド ライン管理ツール (Azure CLI、PowerShell など) を使用して構成できます。
-> 
-> 
+>
+>
 
-| Setting | 既定値 | 説明 |
+| 設定 | 既定値 | 説明 |
 | --- | --- | --- |
 | `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`dbid` が `0` ～ `databases - 1` の間の数値である `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
 | `maxclients` |価格レベルによって異なります。<sup>2</sup> |この値は、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
@@ -429,9 +417,9 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」を参照してください
 
 > [!NOTE]
-> `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
-> 
-> 
+> `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
+>
+>
 
 <a name="maxclients"></a>
 <sup>2</sup>`maxclients` は、Azure Cache for Redis の価格レベルごとに異なっています。
@@ -452,15 +440,15 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 > [!NOTE]
 > 各キャッシュのサイズが特定の接続数*まで*許容される一方で、Redis への各接続はそれにオーバーヘッドが関連付けられています。 このようなオーバーヘッドの例には、TLS/SSL 暗号化の結果としての CPU とメモリの使用量があります。 指定したキャッシュ サイズの最大接続数の上限は、負荷が低いキャッシュを想定しています。 接続オーバーヘッドからの読み込みに*加えて*、クライアントの操作からの読み込みがシステムの容量を超える場合、現在のキャッシュ サイズが接続数の上限を超えていない場合でも、キャッシュ容量の問題が発生する可能性があります。
-> 
-> 
+>
+>
 
 
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Azure Cache for Redis でサポートされない Redis コマンド
 > [!IMPORTANT]
 > Azure Cache for Redis インスタンスの構成と管理は Microsoft によって管理されるため、以下のコマンドは無効にされています。 これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージが送信されます。
-> 
+>
 > * BGREWRITEAOF
 > * BGSAVE
 > * CONFIG
@@ -470,8 +458,8 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 > * SHUTDOWN
 > * SLAVEOF
 > * CLUSTER - クラスターの書き込みコマンドは無効ですが、読み取り専用のクラスター コマンドは許可されます。
-> 
-> 
+>
+>
 
 Redis コマンドの詳細については、[https://redis.io/commands](https://redis.io/commands) を参照してください。
 
@@ -481,10 +469,10 @@ Redis コマンドの詳細については、[https://redis.io/commands](https:/
 > [!IMPORTANT]
 > - [VNET](cache-how-to-premium-vnet.md) では Redis コンソールを使用できません。 キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。 Redis コンソールは、VNET の外部にあるローカル ブラウザーで実行されるため、キャッシュに接続できません。
 > - Azure Cache for Redis では、すべての Redis コマンドがサポートされているわけではありません。 Azure Cache for Redis に対しては無効な Redis コマンドの一覧については、前の「[Azure Cache for Redis でサポートされない Redis コマンド](#redis-commands-not-supported-in-azure-cache-for-redis)」セクションを参照してください。 Redis コマンドの詳細については、[https://redis.io/commands](https://redis.io/commands) を参照してください。
-> 
-> 
+>
+>
 
-Redis コンソールにアクセスするには、**[Azure Cache for Redis]** ブレードの **[コンソール]** をクリックします。
+Redis コンソールにアクセスするには、 **[Azure Cache for Redis]** ブレードの **[コンソール]** をクリックします。
 
 ![Redis コンソール](./media/cache-configure/redis-console-menu.png)
 
@@ -514,8 +502,7 @@ shard1>get myKey
 
 ![Azure Cache for Redis を移動する](./media/cache-configure/redis-cache-move.png)
 
-リソース グループ間、およびサブスクリプション間でのリソースの移動については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」をご覧ください。
+リソース グループ間、およびサブスクリプション間でのリソースの移動については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Redis コマンドの使用の詳細については、「[How can I run Redis commands? (Redis コマンドの実行方法)](cache-faq.md#how-can-i-run-redis-commands)」をご覧ください。
-

@@ -8,16 +8,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: mqtt
+ms.openlocfilehash: 35337a99706f25d62964e08a5b16cd8e81f315c6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050732"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730295"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
-[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関する記事で詳しく説明したように、デバイスは、デバイス向けエンドポイント (**/devices/{deviceId}/files**) を介して通知を送信することで、ファイルのアップロードを開始できます。 アップロードが完了したことをデバイスが IoT Hub に通知すると、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/filenotifications**) を介してファイル アップロード通知メッセージを送信します。
+[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関する記事で詳しく説明したように、デバイスは、デバイス向けエンドポイント ( **/devices/{deviceId}/files**) を介して通知を送信することで、ファイルのアップロードを開始できます。 アップロードが完了したことをデバイスが IoT Hub に通知すると、IoT Hub はサービス向けエンドポイント ( **/messages/servicebound/filenotifications**) を介してファイル アップロード通知メッセージを送信します。
 
 IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT Hub が、関連付けられている Azure ストレージ アカウントへのディスパッチャーとして機能します。 デバイスは、アップロードするファイルに固有のストレージ トークンを IoT Hub に要求します。 SAS URI を使用して、ファイルをストレージにアップロードし、アップロードが完了すると、IoT Hub に完了の通知を送信します。 IoT Hub は、ファイル アップロードが完了したことを確認してから、サービス向けファイル通知エンドポイントにファイル アップロード通知メッセージを追加します。
 
@@ -25,7 +26,7 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 
 その後、デバイスは、[アップロードを開始](iot-hub-devguide-file-upload.md#initialize-a-file-upload)し、アップロードの完了時に [IoT Hub に通知](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)できます。 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知するときに、サービスによって[通知メッセージ](iot-hub-devguide-file-upload.md#file-upload-notifications)を生成できます。
 
-### <a name="when-to-use"></a>いつ使用するか
+### <a name="when-to-use"></a>使用する場合
 
 ファイルのアップロードを使用して、断続的に接続されたデバイスでアップロードされた、または帯域幅を節約するために圧縮されたメディア ファイルや大容量のテレメトリ バッチを送信します。
 
@@ -95,7 +96,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知すると、IoT Hub によって通知メッセージが生成されます。 このメッセージには、ファイルの名前とストレージの場所が含まれています。
 
-「[エンドポイント](iot-hub-devguide-endpoints.md)」で説明したように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは Cloud-to-device メッセージの場合と同様であり、[メッセージのライフサイクル](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle)も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
+「[エンドポイント](iot-hub-devguide-endpoints.md)」で説明したように、IoT Hub はサービス向けエンドポイント ( **/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは cloud-to-device メッセージの場合と同様であり、[メッセージのライフ サイクル](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -125,10 +126,12 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 | プロパティ | 説明 | 範囲と既定値 |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |ファイルのアップロード通知をファイル通知エンドポイントに書き込むかどうかを制御します。 |ブール値。 既定値はTrue。 |
-| **fileNotifications.ttlAsIso8601** |ファイルのアップロード通知の既定の TTL。 |最大 48 時間の ISO_8601 書式による間隔 (最小 1 分)。 既定値は1 時間。 |
-| **fileNotifications.lockDuration** |ファイルのアップロード通知キューのロック期間。 |5 ～ 300 秒 (最小 5 秒)。 既定値は60 秒。 |
-| **fileNotifications.maxDeliveryCount** |ファイルのアップロード通知キューの最大配信数。 |1 ～ 100。 既定値は100。 |
+| **enableFileUploadNotifications** |ファイルのアップロード通知をファイル通知エンドポイントに書き込むかどうかを制御します。 |ブール値。 既定値: True。 |
+| **fileNotifications.ttlAsIso8601** |ファイルのアップロード通知の既定の TTL。 |最大 48 時間の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
+| **fileNotifications.lockDuration** |ファイルのアップロード通知キューのロック期間。 |5 ～ 300 秒 (最小 5 秒)。 既定値: 60 秒。 |
+| **fileNotifications.maxDeliveryCount** |ファイルのアップロード通知キューの最大配信数。 |1 ～ 100。 既定値: 100。 |
+
+IoT ハブ上でこれらのプロパティを設定するには、Azure portal、Azure CLI、または PowerShell を使用します。 詳細については、[ファイル アップロードの構成](iot-hub-configure-file-upload.md)に関する記事を参照してください。
 
 ## <a name="additional-reference-material"></a>参考資料
 
@@ -144,7 +147,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub を使用してデバイスからファイルをアップロードする方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
 

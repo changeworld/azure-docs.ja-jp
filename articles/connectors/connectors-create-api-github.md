@@ -1,24 +1,20 @@
 ---
-title: GitHub に接続する - Azure Logic Apps | Microsoft Docs
-description: GitHub REST API と Azure Logic Apps を使用して、GitHub のイベントを監視します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/02/2018
-ms.topic: article
-ms.service: logic-apps
+title: GitHub リポジトリに対してアクセス、監視、および管理を行う
+description: Azure Logic Apps で自動化されたワークフローを作成することにより、GitHub イベントを監視し、GitHub リポジトリを管理します
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
+ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: ce567dc631c3a147b795eb2355a4961faa8881d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295814"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75378451"
 ---
-# <a name="connect-to-github"></a>GitHub に接続する
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して GitHub リポジトリの監視と管理を行う
 
 GitHub は、Git のすべての分散リビジョン コントロールとソース コード管理 (SCM) 機能、およびその他の機能を提供する、Web ベースの Git リポジトリ ホスティング サービスです。
 
@@ -37,10 +33,10 @@ GitHub コネクタの使用を開始するには、[最初にロジック ア�
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-Swagger で定義されているトリガーとアクション、および制限事項については、[コネクタの詳細](/connectors/github/)に関するページをご覧ください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/github/)を参照してください。
 
-## <a name="find-more-connectors"></a>その他のコネクタ
+## <a name="next-steps"></a>次のステップ
 
-* [コネクタの一覧](apis-list.md)をご覧ください。
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

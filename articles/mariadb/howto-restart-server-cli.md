@@ -1,17 +1,17 @@
 ---
-title: Azure CLI を使用した Azure Database for MariaDB サーバーの再起動
+title: サーバーを再起動する - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI を使用して Azure Database for MariaDB サーバーを再起動する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: a6e0509d941d9bfdfe6db7a8b93ee49c5bece1a6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 3/18/2020
+ms.openlocfilehash: f5572611b99245fd62b4e0a9d73e6ed728e42f5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "66171444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530650"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB サーバーの再起動
 このトピックでは、Azure Database for MariaDB サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -38,6 +38,6 @@ ms.locfileid: "66171444"
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Database for MariaDB でパラメーターを設定する方法](howto-configure-server-parameters-cli.md)について確認する

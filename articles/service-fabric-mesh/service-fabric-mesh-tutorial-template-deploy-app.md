@@ -1,28 +1,19 @@
 ---
-title: チュートリアル - Azure Service Fabric Mesh にアプリをデプロイする | Microsoft Docs
+title: チュートリアル - Azure Service Fabric Mesh にアプリをデプロイする
 description: このチュートリアルでは、テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527338"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75494943"
 ---
-# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル:テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする
+# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
 
 このチュートリアルは、シリーズの第 1 部です。 テンプレートを使用して Azure Service Fabric Mesh アプリケーションをデプロイする方法について説明します。  アプリケーションは ASP.NET Web フロントエンド サービスと ASP.NET Core Web API バックエンド サービスで構成されており、これらは Docker Hub にあります。  2 つのコンテナー イメージを Docker Hub からプルして、独自のプライベート レジストリにプッシュします。 その後、アプリケーション用の Azure RM テンプレートを作成し、コンテナー レジストリから Service Fabric Mesh にアプリケーションをデプロイします。 完了すると、Service Fabric Mesh で実行される簡単な To Do List アプリケーションができあがります。
 
@@ -68,7 +59,7 @@ az login
 az account set --subscription "<subscriptionName>"
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次のコマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -139,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Azure Container Registry にログインします。
+Azure Container Registry にサインインします。
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -204,7 +195,7 @@ Service Fabric Mesh アプリケーションは、Azure Resource Manager (RM) �
 
 このチュートリアルでは、例として To Do List サンプルを使います。  新しいテンプレート ファイルとパラメーター ファイルを作成する代わりに、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをダウンロードします。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。 これを行う適切な方法は、デプロイ テンプレートの先頭に "parameters" セクションを作成し、そこでパラメーターの名前とプロパティを指定して、以降のデプロイ テンプレートではそれを参照することです。 各パラメーターの定義には、*type*、*defaultValue*、および省略可能な *metadata* セクションと *description* が含まれます。
 
 parameters セクションは、デプロイ テンプレートの先頭の、*resources* セクションの直前で定義します。
@@ -264,7 +255,7 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -405,7 +396,7 @@ az mesh app show --resource-group myResourceGroup --name todolistapp
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
@@ -417,4 +408,4 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [ローカルで実行している Service Fabric Mesh アプリケーションをスケールする](service-fabric-mesh-tutorial-template-scale-services.md)
+> [Service Fabric Mesh で実行しているアプリケーションをスケーリングする](service-fabric-mesh-tutorial-template-scale-services.md)

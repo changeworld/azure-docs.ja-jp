@@ -1,27 +1,28 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義する | Microsoft Docs
+title: カスタム ポリシーで OAuth2 技術プロファイルを定義する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 02/24/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 86ec7a5745a58546faf6f0ff15d6dc5f452baa88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78184045"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プロバイダーにサポートを提供しています。 OAuth2 は、認可および委任された認証のための主要なプロトコルです。 詳細については、「[RFC 6749 The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)」を参照してください。 OAuth2 技術プロファイルを使用して、Facebook などの OAuth2 ベースの ID プロバイダーとフェデレーションできます。 ID プロバイダーとのフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
+Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID プロバイダーのサポートを提供しています。 OAuth2 は、認可および委任された認証のための主要なプロトコルです。 詳細については、「[RFC 6749 The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)」を参照してください。 OAuth2 技術プロファイルを使用して、Facebook などの OAuth2 ベースの ID プロバイダーとフェデレーションできます。 ID プロバイダーとのフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
 ## <a name="protocol"></a>Protocol
 
@@ -31,10 +32,10 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 <TechnicalProfile Id="Facebook-OAUTH">
   <DisplayName>Facebook</DisplayName>
   <Protocol Name="OAuth2" />
-  ...    
+  ...
 ```
 
-## <a name="input-claims"></a>入力要求
+## <a name="input-claims"></a>入力クレーム
 
 **InputClaims** と **InputClaimsTransformations** の要素は不要です。 ただし、追加のパラメーターを ID プロバイダーに送信する場合があります。 次の例では、値が `contoso.com` である **domain_hint** クエリ文字列パラメーターを認可要求に追加しています。
 
@@ -44,7 +45,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素には、OAuth2 ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
@@ -57,7 +58,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 - どの名前にもマップされていない **displayName** 要求。
 - どの名前にもマップされていない **email** 要求。
 
-また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。 
+また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。
 
 - ID プロバイダーの名前を保持する **identityProvider** 要求。
 - 既定値の **socialIdpAuthentication** である **authenticationSource** 要求。
@@ -74,27 +75,29 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>メタデータ
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
-| IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
+| IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
 | authorization_endpoint | はい | RFC 6749 に準拠した承認エンドポイントの URL。 |
-| AccessTokenEndpoint | はい | RFC 6749 に準拠したトークン エンドポイントの URL。 |  
-| ClaimsEndpoint | はい | RFC 6749 に準拠したユーザー情報エンドポイントの URL。 | 
-| AccessTokenResponseFormat | いいえ  | アクセス トークン エンドポイント呼び出しの形式。 たとえば、Facebook では HTTP GET メソッドが必要ですが、アクセス トークン応答は JSON 形式です。 |
-| AdditionalRequestQueryParameters | いいえ  | 追加要求クエリ パラメーター。 たとえば、追加のパラメーターを ID プロバイダーに送信する場合があります。 コンマ区切り記号を使用して、複数のパラメーターを列挙できます。 | 
-| ClaimsEndpointAccessTokenName | いいえ  | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 |
-| ClaimsEndpointFormatName | いいえ  | 形式のクエリ文字列パラメーターの名前。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、名前を `format` として設定できます。 | 
-| ClaimsEndpointFormat | いいえ  | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、値を `json` として設定できます。 | 
-| ProviderName | いいえ  | ID プロバイダーの名前。 |
-| response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
-| scope | いいえ  | OAuth2 ID プロバイダーの仕様に従って定義される要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
-| HttpBinding | いいえ  | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 可能な値: `GET` または `POST`。  |
-| ResponseErrorCodeParamName | いいえ  | HTTP 200 (Ok) 経由で返されるエラー メッセージを収納するパラメーターの名前。 |
-| ExtraParamsInAccessTokenEndpointResponse | いいえ  | **AccessTokenEndpoint** からの応答に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 たとえば、**AccessTokenEndpoint** からの応答には、`openid` のような余分なパラメーターがあります。これは、access_token を除けば、**ClaimsEndpoint** 要求クエリ文字列での必須パラメーターです。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
-| ExtraParamsInClaimsEndpointRequest | いいえ  | **ClaimsEndpoint** 要求に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
+| AccessTokenEndpoint | はい | RFC 6749 に準拠したトークン エンドポイントの URL。 |
+| ClaimsEndpoint | はい | RFC 6749 に準拠したユーザー情報エンドポイントの URL。 |
+| AccessTokenResponseFormat | いいえ | アクセス トークン エンドポイント呼び出しの形式。 たとえば、Facebook では HTTP GET メソッドが必要ですが、アクセス トークン応答は JSON 形式です。 |
+| AdditionalRequestQueryParameters | いいえ | 追加要求クエリ パラメーター。 たとえば、追加のパラメーターを ID プロバイダーに送信する場合があります。 コンマ区切り記号を使用して、複数のパラメーターを列挙できます。 |
+| ClaimsEndpointAccessTokenName | いいえ | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 |
+| ClaimsEndpointFormatName | いいえ | 形式のクエリ文字列パラメーターの名前。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、名前を `format` として設定できます。 |
+| ClaimsEndpointFormat | いいえ | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、値を `json` として設定できます。 |
+| ProviderName | いいえ | ID プロバイダーの名前。 |
+| response_mode | いいえ | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
+| scope | いいえ | OAuth2 ID プロバイダーの仕様に従って定義される要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
+| HttpBinding | いいえ | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 指定できる値: `GET` または `POST`。  |
+| ResponseErrorCodeParamName | いいえ | HTTP 200 (Ok) 経由で返されるエラー メッセージを収納するパラメーターの名前。 |
+| ExtraParamsInAccessTokenEndpointResponse | いいえ | **AccessTokenEndpoint** からの応答に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 たとえば、**AccessTokenEndpoint** からの応答には、`openid` のような余分なパラメーターがあります。これは、access_token を除けば、**ClaimsEndpoint** 要求クエリ文字列での必須パラメーターです。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
+| ExtraParamsInClaimsEndpointRequest | いいえ | **ClaimsEndpoint** 要求に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+| ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#outputclaims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -102,7 +105,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |  
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 
@@ -110,9 +113,9 @@ ID プロバイダーのリダイレクト URL を構成する場合は、`https
 
 **login.microsoftonline.com** の代わりに **b2clogin.com** ドメインを使用している場合は、login.microsoftonline.com の代わりに b2clogin.com を使用することを確認します。
 
-次に例を示します。
+例 :
 
-- [カスタム ポリシーを使用して Google+ を OAuth2 ID プロバイダーとして追加する](active-directory-b2c-custom-setup-goog-idp.md)
+- [カスタム ポリシーを使用して Google+ を OAuth2 ID プロバイダーとして追加する](identity-provider-google-custom.md)
 
 
 

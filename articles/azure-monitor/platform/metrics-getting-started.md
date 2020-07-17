@@ -3,17 +3,16 @@ title: Azure メトリックス エクスプローラーの概要
 description: Azure メトリックス エクスプローラーを使用して、ご自分の最初のメトリック グラフを作成する方法について説明します。
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537339"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226331"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -24,13 +23,13 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 1. [ディメンション フィルターの適用と分割](#apply-dimension-filters-and-splitting)をお試しください。 フィルターと分割を使用すると、メトリックのどのセグメントが全体的なメトリック値に影響しているかを分析し、考えられる外れ値を特定することができます。
 
-1. [詳細設定](#advanced-chart-settings-and-next-steps)を使用してグラフをカスタマイズしてから、ダッシュ ボードにピン留めします。 [アラートを構成](alerts-metric-overview.md)して、メトリック値を上回ったときまたは下回ったときに通知が届くようにします。
+1. [詳細設定](#advanced-chart-settings)を使用してグラフをカスタマイズしてから、ダッシュ ボードにピン留めします。 [アラートを構成](alerts-metric-overview.md)して、メトリック値を上回ったときまたは下回ったときに通知が届くようにします。
 
 ## <a name="create-your-first-metric-chart"></a>最初のメトリック グラフを作成する
 
-メトリック グラフを作成するには、ご利用のリソース、リソース グループ、サブスクリプション、または Azure Monitor ビューから、**[メトリック]** タブを開き、次の手順に従います。
+メトリック グラフを作成するには、ご利用のリソース、リソース グループ、サブスクリプション、または Azure Monitor ビューから、 **[メトリック]** タブを開き、次の手順に従います。
 
-1. リソース ピッカーを使用して、メトリックを確認したいリソースを選択します  (特定のリソースのコンテキストで **[メトリック]** を開いた場合、リソースが事前に選択されます)。
+1. リソース ピッカーを使用して、メトリックを確認したいリソースを選択します (特定のリソースのコンテキストで **[メトリック]** を開いた場合、リソースが事前に選択されます)。
 
     > ![リソースの選択](./media/metrics-getting-started/resource-picker.png)
 
@@ -43,13 +42,16 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 4. 必要に応じて、メトリックの集計を変更することができます。 たとえば、メトリックの最小値、最大値、または平均値をグラフに表示したい場合があります。
 
 > [!NOTE]
-> 同じグラフに複数のメトリックをプロットして表示する場合は、**[メトリックの追加]** ボタンを使用して上記の手順を繰り返します。 1 つのビューに複数のグラフを表示する場合は、上部にある **[グラフの追加]** ボタンをクリックします。
+> 同じグラフに複数のメトリックをプロットして表示する場合は、 **[メトリックの追加]** ボタンを使用して上記の手順を繰り返します。 1 つのビューに複数のグラフを表示する場合は、上部にある **[グラフの追加]** ボタンをクリックします。
 
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
 
-既定では、直近の 24 時間のメトリック データがグラフに表示されます。 ご利用のグラフ上で時間範囲を変更したり、ズームインまたはズーム アウトしたりするには、**[時刻の選択]** パネルを使用します。 
+既定では、直近の 24 時間のメトリック データがグラフに表示されます。 ご利用のグラフ上で時間範囲を変更したり、ズームインまたはズーム アウトしたりするには、 **[時刻の選択]** パネルを使用します。 
 
 ![[時間の範囲] パネルを変更する](./media/metrics-getting-started/time-picker.png)
+
+> [!NOTE]
+> グラフ内で関心のある領域 (急上昇または急降下) を調査するには、**時間ブラシ**を使用します。 領域の先頭にマウス ポインターを置き、マウスの左ボタンを押したまま領域のもう一方の側にドラッグしてボタンを離します。 その時間範囲のグラフが拡大されます。 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>ディメンションのフィルターと分割を適用する
 
@@ -61,12 +63,13 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 フィルター処理と分割が適用されたグラフの例については、[こちら](metric-chart-samples.md)を参照してください。 その記事では、グラフを構成するために使用した手順が示されています。
 
-## <a name="advanced-chart-settings-and-next-steps"></a>グラフの詳細設定と次の手順
+## <a name="advanced-chart-settings"></a>グラフの詳細設定
 
 グラフのスタイルおよびタイトルをカスタマイズして、グラフの詳細設定を変更することができます。 カスタマイズが完了したら、ダッシュボードにピン留めして作業内容を保存します。 メトリック アラートを構成することもできます。 Azure Monitor メトリックス エクスプローラーの上記のような高度な機能を学習するには、[製品のドキュメント](metrics-charts.md)に関するページの説明に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
+* [メトリックス エクスプローラーの高度な機能を確認する](metrics-charts.md)
+* [メトリックス エクスプローラーのトラブルシューティング](metrics-troubleshoot.md)
 * [Azure サービスで使用可能なメトリックのリストを表示する](metrics-supported.md)
-* [メトリックス エクスプローラーの高度な機能の詳細](metrics-charts.md)
 * [構成されたグラフの例を参照する](metric-chart-samples.md)

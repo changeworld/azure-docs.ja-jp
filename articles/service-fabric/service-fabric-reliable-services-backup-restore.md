@@ -1,25 +1,16 @@
 ---
-title: Service Fabric のバックアップと復元 | Microsoft Docs
-description: Service Fabric のバックアップと復元の概念をまとめた文書
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric のバックアップと復元
+description: Reliable Stateful services と Reliable Actors のバックアップを構成するためのサービスである Service Fabric のバックアップと復元に関する概念ドキュメントです。
 author: mcoskun
-manager: chackdan
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670130"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75922775"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors をバックアップおよび復元する
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
@@ -73,7 +64,7 @@ Azure Service Fabric は高可用性プラットフォームであり、複数�
 
 ```csharp
 
-BackupDescription myBackupDescription = new BackupDescription(backupOption.Incremental,this.BackupCallbackAsync);
+BackupDescription myBackupDescription = new BackupDescription(BackupOption.Incremental,this.BackupCallbackAsync);
 
 await this.BackupAsync(myBackupDescription);
 
@@ -262,7 +253,7 @@ Reliable State Manager には、`RestoreAsync` API を使用してバックア�
 
 `RestoreAsync` は、まず、このメソッドが呼び出されたプライマリ レプリカで、既存の状態をすべて削除します。 次に、Reliable State Manager は、バックアップ フォルダーに存在するすべての Reliable Objects を作成します。 次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。 最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。 復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。 この手順により、復元したステートに一貫性が与えられます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
   - [Reliable Collection](service-fabric-work-with-reliable-collections.md)
   - [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services の通知](service-fabric-reliable-services-notifications.md)

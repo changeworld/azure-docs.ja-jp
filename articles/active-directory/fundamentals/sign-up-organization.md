@@ -2,23 +2,23 @@
 title: 組織をサインアップする - Azure Active Directory | Microsoft Docs
 description: Azure と Azure Active Directory を使用するために、ご自身の組織をサインアップする手順について説明します。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101365"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68561630"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Azure Active Directory を使用するように組織をサインアップする
 次のいずれかを使用して、Azure Active Directory (Azure AD) または新しい Microsoft Azure サブスクリプションにサインアップします。
@@ -30,7 +30,7 @@ ms.locfileid: "58101365"
   > [!Note]
   >   Azure AD に既にアクセスできる場合は、ご自身の職場または学校アカウントを使用することをお勧めします。 ただし、ご自身の Azure サブスクリプションに関連付けられているアカウントの種類を使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)
 

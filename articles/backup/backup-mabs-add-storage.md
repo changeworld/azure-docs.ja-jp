@@ -1,19 +1,14 @@
 ---
 title: Azure Backup Server で Modern Backup Storage を使用する
 description: Azure Backup Server の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: 621d071f98701ff3a949f4172fef1d13819d7192
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852867"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74172374"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Server へのストレージの追加
 
@@ -22,50 +17,57 @@ Azure Backup Server V2 以降では、ストレージを 50% 削減でき、バ�
 > [!NOTE]
 > Modern Backup Storage を使用するには、Backup Server V2 または V3 を Windows Server 2016 上で実行するか、または V3 を Windows Server 2019 上で実行する必要があります。
 > Backup Server V2 を以前のバージョンの Windows Server で実行した場合は、Azure Backup Server は Modern Backup Storage を利用できません。 代わりに、Backup Server V1 の場合と同様に、ワークロードを保護します。 詳細については、Backup Server のバージョンの[保護マトリックス](backup-mabs-protection-matrix.md)をご覧ください。
+>
+> 強化されたバックアップ パフォーマンスを実現するため、Windows Server 2019 上で階層化ストレージを使用して MABS v3 をデプロイすることをお勧めします。 階層化ストレージを構成するステップについては、「[階層化ストレージを使用した MBS のセットアップ](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」に関する DPM の記事を参照してください。
 
 ## <a name="volumes-in-backup-server"></a>Backup Server のボリューム
 
 Backup Server V2 以降ではストレージ ボリュームを使用できます。 ボリュームを追加すると、Backup Server はボリュームを Resilient File System (ReFS) にフォーマットします。これは Modern Backup Storage で必要とされるフォーマットです。 ボリュームを追加し、必要に応じて後で展開する場合、以下のワークフローを使用することをお勧めします。
 
-1.  VM 上に Backup Server を設定します。
-2.  記憶域プール内の仮想ディスクにボリュームを作成します。
-    1.  記憶域プールにディスクを追加し、単純なレイアウトの仮想ディスクを作成します。
-    2.  任意のディスクを追加し、仮想ディスクを拡張します。
-    3.  仮想ディスクにボリュームを作成します。
-3.  Backup Server にボリュームを追加します。
-4.  ワークロード対応型ストレージを構成します。
+1. VM 上に Backup Server を設定します。
+2. 記憶域プール内の仮想ディスクにボリュームを作成します。
+    1. 記憶域プールにディスクを追加し、単純なレイアウトの仮想ディスクを作成します。
+    2. 任意のディスクを追加し、仮想ディスクを拡張します。
+    3. 仮想ディスクにボリュームを作成します。
+3. Backup Server にボリュームを追加します。
+4. ワークロード対応型ストレージを構成します。
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>Modern Backup Storage のボリュームの作成
 
 ボリュームを含む Backup Server V2 以降をディスク ストレージとして使用すると、ストレージの管理を維持できます。 ボリュームは単一のディスクにすることができます。 ただし、将来ストレージを拡張する場合は、ストレージ スペースを使用して作成したディスクからボリュームを作成してください。 これは、バックアップ ストレージのボリュームを展開する場合に役立ちます。 このセクションでは、このセットアップを使用してボリュームを作成するためのベスト プラクティスを提供します。
 
-1. サーバー マネージャーで、**[ファイル サービスおよびストレージ サービス]** > **[ボリューム]** > **[記憶域プール]** の順に選択します。 **[物理ディスク]** から、**[記憶域プールの新規作成]** を選択します。
+1. サーバー マネージャーで、 **[ファイル サービスおよびストレージ サービス]**  >  **[ボリューム]**  >  **[記憶域プール]** の順に選択します。 **[物理ディスク]** から、 **[記憶域プールの新規作成]** を選択します。
 
     ![新しい記憶域プールの作成](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
-2. **[タスク]** ドロップダウン ボックスで、**[仮想ディスクの新規作成]** を選択します。
+2. **[タスク]** ドロップダウン ボックスで、 **[仮想ディスクの新規作成]** を選択します。
 
     ![仮想ディスクの追加](./media/backup-mabs-add-storage/mabs-add-storage-2.png)
 
-3. 記憶域プールを選択し、**[物理ディスクの追加]** を選択します。
+3. 記憶域プールを選択し、 **[物理ディスクの追加]** を選択します。
 
     ![物理ディスクの追加](./media/backup-mabs-add-storage/mabs-add-storage-3.png)
 
-4. 物理ディスクを選択し、**[仮想ディスクの拡張]** を選択します。
+4. 物理ディスクを選択し、 **[仮想ディスクの拡張]** を選択します。
 
     ![仮想ディスクの拡張](./media/backup-mabs-add-storage/mabs-add-storage-4.png)
 
-5. 仮想ディスクを選択し、**[ボリュームの新規作成]** を選択します。
+5. 仮想ディスクを選択し、 **[ボリュームの新規作成]** を選択します。
 
     ![新しいボリュームの作成](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. **[サーバーとディスクの選択]** ダイアログで、サーバーと新しいディスクを選択します。 次に、**[次へ]** を選択します。
+6. **[サーバーとディスクの選択]** ダイアログで、サーバーと新しいディスクを選択します。 次に、 **[次へ]** を選択します。
 
     ![サーバーとディスクの選択](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Backup Server ディスク ストレージへのボリュームの追加
 
-Backup Server にボリュームを追加するには、**[管理]** ウィンドウで、ストレージを再スキャンして **[追加]** を選択します。 Backup Server Storage に追加できるすべてのボリュームの一覧が表示されます。 選択したボリュームの一覧に使用可能なボリュームを追加したら、管理しやすいように、それらのボリュームにフレンドリ名をつけることができます。 これらのボリュームを ReFS にフォーマットして Backup Server が Modern Backup Storage の利点を活用できるようにするには、**[OK]** を選択します。
+> [!NOTE]
+>
+> - 列カウントを 1 のままにするには、1 つのディスクのみをプールに追加します。 このようにすると、後で必要なディスクを追加することができます。
+> - 一度に複数のディスクをストレージ プールに追加する場合、ディスクの数が列の数として保存されます。 さらに多くのディスクを追加する場合、列数の倍数でのみ追加できます。
+
+Backup Server にボリュームを追加するには、 **[管理]** ウィンドウで、ストレージを再スキャンして **[追加]** を選択します。 Backup Server Storage に追加できるすべてのボリュームの一覧が表示されます。 選択したボリュームの一覧に使用可能なボリュームを追加したら、管理しやすいように、それらのボリュームにフレンドリ名をつけることができます。 これらのボリュームを ReFS にフォーマットして Backup Server が Modern Backup Storage の利点を活用できるようにするには、 **[OK]** を選択します。
 
 ![使用可能なボリュームの追加](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
@@ -75,15 +77,16 @@ Backup Server にボリュームを追加するには、**[管理]** ウィン�
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-PowerShell コマンドレットの Update-DPMDiskStorage を使用して、ワークロード対応型ストレージを設定できます。これにより、Azure Backup Server 上の記憶域プールのボリュームのプロパティが更新されます。 
+PowerShell コマンドレットの Update-DPMDiskStorage を使用して、ワークロード対応型ストレージを設定できます。これにより、Azure Backup Server 上の記憶域プールのボリュームのプロパティが更新されます。
 
 構文:
 
 `Parameter Set: Volume`
 
-```
+```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
+
 次のスクリーン ショットは、PowerShell ウィンドウ内の Update-DPMDiskStorage コマンドレットを示しています。
 
 ![PowerShell ウィンドウ内の Update-DPMDiskStorage コマンド](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
@@ -92,19 +95,19 @@ PowerShell を使用して行った変更は Backup Server 管理者コンソー
 
 ![管理者コンソール内のディスクとボリューム](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>従来の記憶域の Modern Backup Storage への移行
+
 Backup Server V2 にアップグレードまたはこれをインストールし、オペレーティング システムを Windows Server 2016 にアップグレードしたら、 Modern Backup Storage を使用するように保護グループを更新します。 既定では、保護グループは変更されません。 初期のセットアップのとおりに機能します。
 
 Modern Backup Storage を使用するように保護グループを更新することはオプションです。 保護グループを更新するには、データ保持オプションを使用して、すべてのデータ ソースの保護を停止します。 次に、新しい保護グループにデータ ソースを追加します。
 
-1. 管理者コンソールで、**[Protection]**(保護) 機能を選択します。 **[保護グループ メンバー]** 一覧で、メンバーを右クリックし、**[Stop protection of member]**(メンバーの保護を停止する) を選択します。
+1. 管理者コンソールで、 **[Protection]** \(保護) 機能を選択します。 **[保護グループ メンバー]** 一覧で、メンバーを右クリックし、 **[Stop protection of member]** \(メンバーの保護を停止する) を選択します。
 
    ![メンバーの保護の停止](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 Click **OK**.
+2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 **[OK]** をクリックします。
 
-   空き記憶域プールに使用済みディスク領域をすぐに返す場合は、**[ディスク上のレプリカを削除]** チェック ボックスを選択し、そのメンバーに関連付けられているバックアップ データ (および復旧ポイント) を削除します。
+   空き記憶域プールに使用済みディスク領域をすぐに返す場合は、 **[ディスク上のレプリカを削除]** チェック ボックスを選択し、そのメンバーに関連付けられているバックアップ データ (および復旧ポイント) を削除します。
 
    ![[グループ] ダイアログ ボックスから削除](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
@@ -116,15 +119,16 @@ Backup Server で従来の記憶域を使用する場合、ディスクを追加
 
 ディスク ストレージを追加するには、次の手順を実行します。
 
-1. 管理者コンソールで、**[Management]**(管理) > **[Disk Storage]**(ディスク ストレージ) > **[Add]**(追加) の順に選択します。
+1. 管理者コンソールで、 **[Management]** \(管理) >  **[Disk Storage]** \(ディスク ストレージ) >  **[Add]** \(追加) の順に選択します。
 
     ![[Add Disk Storage]\(ディスク ストレージの追加) ダイアログ](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. **[Add Disk Storage]**(ディスク ストレージの追加) ダイアログで **[Add disks]**(ディスクの追加) を選択します。
+2. **[Add Disk Storage]** \(ディスク ストレージの追加) ダイアログで **[Add disks]** \(ディスクの追加) を選択します。
 
-5. 使用可能なディスクの一覧で、追加するディスクを選択し、**[追加]** を選択し、**[OK]** を選択します。
+3. 使用可能なディスクの一覧で、追加するディスクを選択し、 **[追加]** を選択し、 **[OK]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 Backup Server をインストールしたら、サーバーを準備する方法、またはワークロードの保護を開始する方法について見ていきましょう。
 
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)

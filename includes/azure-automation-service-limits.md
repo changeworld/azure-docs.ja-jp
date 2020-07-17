@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012503"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334915"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
-| Resource | 上限 |メモ|
+| リソース | 制限 |メモ|
 | --- | --- |---|
 | Azure Automation アカウントあたりの 30 秒ごとに送信できる新しいジョブの最大数 (スケジュールされていないジョブ) |100 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | Automation アカウントあたりのインスタンスの同じ時刻に同時実行するジョブの最大数 (スケジュールされていないジョブ) |200 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
@@ -31,6 +31,7 @@ ms.locfileid: "60012503"
 | サンドボックスごとに許可されるネットワーク ソケットの最大数<sup>1</sup> |1,000 |Azure サンドボックスにのみ適用されます。|
 | Runbook ごとに許可される最長実行時間<sup>1</sup> |3 時間 |Azure サンドボックスにのみ適用されます。|
 | サブスクリプションでの Automation アカウントの最大数 |制限なし ||
+| Automation アカウントあたりのハイブリッド worker グループの最大数|4,000||
 |1 つの Hybrid Runbook Worker で実行できる同時実行ジョブの最大数|50 ||
 | Runbook ジョブの最大パラメーター サイズ   | 512 キロ ビット||
 | Runbook の最大パラメーター   | 50|パラメーターの 50 の上限に達したら、パラメーターに JSON または XML 文字列を渡し、Runbook を使用して解析することができます。|
@@ -52,3 +53,11 @@ ms.locfileid: "60012503"
 |Linux パッケージ|1,250||
 |サービス|250||
 |デーモン|250||
+
+#### <a name="update-management"></a>更新管理
+
+次の表には、更新管理の制限が示されています。
+
+| **リソース** | **制限**| **メモ** |
+|---|---|---|
+|更新プログラムの展開ごとのマシンの数|1000||

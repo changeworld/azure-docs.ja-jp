@@ -1,25 +1,17 @@
 ---
-title: StorSimple Virtual Array Update 1.0 のリリース ノート | Microsoft Docs
+title: StorSimple Virtual Array Update 1.0 のリリース ノート
 description: Update 1.0 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 777718c4893f1edab3613be5dc941e2716d4c972
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24010865"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76271333"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 のリリース ノート
 
@@ -40,7 +32,7 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 
 **Update 1.0 には、StorSimple デバイス マネージャー サービスの認証に関連する変更が含まれています。この Update 1.0 は、できるだけ早くデプロイすることをお勧めします。** この更新プログラムには、次の強化機能と修正プログラムが含まれています。
 
- - **StorSimple デバイス マネージャー サービスで認証するための Azure Active Directory (AAD) の使用** – Update 1.0 以降、StorSimple デバイス マネージャーサービスでの認証には Azure Active Directory が使用されています。 従来の認証機構は、2017 年 12 月で廃止される予定です。 すべてのユーザーは、ファイアウォール規則に新しい認証 URL を含める必要があります。 詳細については、[StorSimple Virtual Array のネットワーク要件](storsimple-ova-system-requirements.md)に関するページの認証 URL の一覧をご確認ください。
+ - **StorSimple デバイス マネージャー サービスで認証するための Azure Active Directory (AAD) の使用** – Update 1.0 以降、StorSimple デバイス マネージャーサービスでの認証には Azure Active Directory が使用されています。 従来の認証機構は、2017 年 12 月で非推奨となる予定です。 すべてのユーザーは、ファイアウォール規則に新しい認証 URL を含める必要があります。 詳細については、[StorSimple Virtual Array のネットワーク要件](storsimple-ova-system-requirements.md)に関するページの認証 URL の一覧をご確認ください。
  
     認証 URL がファイアウォール規則に含まれていない場合、StorSimple デバイスがサービスで認証できなかったことを示す重要なアラートが、ユーザーに表示されます。 このアラートが表示されると、ユーザーは新しい認証 URL を含める必要があります。 詳細については、[StorSimple のネットワーク アラート](storsimple-virtual-array-manage-alerts.md)に関するページをご覧ください。
 
@@ -55,7 +47,7 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| 番号 | 機能 | 問題 |
+| いいえ。 | 機能 | 問題 |
 | --- | --- | --- |
 | 1 |AAD ベースの認証| このリリースに含まれる変更により、AAD が、StorSimple デバイス マネージャーで認証を行うことができます。|
 | 2 |ガベージ コレクション| この問題は、デバイス アカウントとストレージ アカウントが異なるリージョンにあるお客様のサイトで報告されました。ネットワーク エラーが断続的に発生し、請求が影響を受けるとの報告がお客様からありました。 今回のリリースで、この問題は修正されました。 |
@@ -66,7 +58,7 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。
 
-| No. | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想アレイは、サポートされている一般提供版に更新することはできません。 |これらの仮想アレイは、ディザスター リカバリー (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple Virtual Array を作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
@@ -76,7 +68,7 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 | **6.** |階層化ボリューム/共有 |StorSimple の階層化ボリュームを使用するアプリケーションのバイト範囲ロックはサポートされていません。 バイト範囲ロックを有効にすると、StorSimple の階層化が機能しなくなります。 |推奨される方法は次のとおりです。 <br></br>アプリケーション ロジックでバイト範囲ロックを無効にします。<br></br>階層化ボリュームではなく、ローカル固定ボリュームにこのアプリケーションのデータを配置します。<br></br>"*注意*": ローカル固定ボリュームを使用しているときにバイト範囲ロックを有効にすると、復元が完了する前でも、ローカル固定ボリュームがオンラインになる場合があります。 このような場合、復元中であれば、復元が完了するまで待つ必要があります。 |
 | **7.** |階層化共有 |複数の大きなファイルを処理すると、階層化に時間がかかる可能性があります。 |複数の大きなファイルを処理するときは、最も大きなファイルのサイズを共有のサイズの 3% 未満にすることをお勧めします。 |
 | **8.** |共有の使用済み容量 |共有にデータがなくても、共有の使用量が表示されることがあります。 この使用量は、共有の使用済み容量にメタデータが含まれているためです。 | |
-| **9.** |ディザスター リカバリー |ファイル サーバーの障害復旧はソース デバイスと同じドメインに対してのみ実行できます。 このリリースでは、別のドメインのターゲット デバイスに対する障害復旧はサポートされていません。 |これは今後のリリースで実装されます。 詳細については、[StorSimple Virtual Array のフェールオーバーと障害復旧](storsimple-virtual-array-failover-dr.md)に関するページをご覧ください。 |
+| **9.** |障害復旧 |ファイル サーバーの障害復旧はソース デバイスと同じドメインに対してのみ実行できます。 このリリースでは、別のドメインのターゲット デバイスに対する障害復旧はサポートされていません。 |これは今後のリリースで実装されます。 詳細については、[StorSimple Virtual Array のフェールオーバーと障害復旧](storsimple-virtual-array-failover-dr.md)に関するページをご覧ください。 |
 | **10.** |Azure PowerShell |このリリースでは、Azure PowerShell を使用して StorSimple Virtual Array を管理することはできません。 |仮想デバイスの管理はすべて、Azure Portal とローカル Web UI を使用して行う必要があります。 |
 | **11.** |パスワードの変更 |仮想アレイ デバイス コンソールは、en-US キーボード形式の入力のみを受け入れます。 | |
 | **12.** |CHAP |作成された CHAP 資格情報は、削除できません。 また、CHAP 資格情報を変更する場合は、変更を有効にするために、ボリュームをオフラインにしてからオンラインにする必要があります。 |この問題は今後のリリースで対処されます。 |
@@ -91,7 +83,7 @@ Update 1.0 はソフトウェア バージョン **10.0.10296.0** に対応し�
 ## <a name="next-steps"></a>次のステップ
 StorSimple Virtual Array に [Update 1.0 をインストール](storsimple-virtual-array-install-update-1.md)します。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 以前のリリース ノートをお探しですか。 参照先:
 *  [StorSimple Virtual Array Update 0.6 のリリース ノート](storsimple-virtual-array-update-06-release-notes.md)
 * [StorSimple Virtual Array Update 0.5 のリリース ノート](storsimple-virtual-array-update-05-release-notes.md)

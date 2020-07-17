@@ -1,19 +1,16 @@
 ---
-title: Azure Site Recovery - Azure PowerShell を使用して Azure 仮想マシンのレプリケーション時にディスクを除外する | Microsoft Docs
+title: Azure Site Recovery と Azure PowerShell を使用したレプリケーションから Azure VM ディスクを除外する
 description: Azure PowerShell を使用して Azure Site Recovery 時に Azure 仮想マシンのディスクを除外する方法を説明します。
-services: site-recovery
-author: asgang
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/18/2019
-ms.author: asgang
-ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160309"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75973675"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>PowerShell を使用して Azure VM のレプリケーション時にディスクを除外する
 
@@ -30,6 +27,7 @@ ms.locfileid: "66160309"
 - すべてのコンポーネントの[サポート要件](azure-to-azure-support-matrix.md)を確認する。
 - AzureRm PowerShell "Az" モジュールがあることを確認する。 PowerShell をインストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
 - Recovery Services コンテナー、および保護された仮想マシンを 1 回以上作成したことを確認する。 まだの場合は、「[Set up disaster recovery for Azure virtual machines using Azure PowerShell (Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーをセットアップする)](azure-to-azure-powershell.md)」の手順に従ってください。
+- レプリケーションが有効になっている Azure VM にディスクを追加する方法については、[この記事](azure-to-azure-enable-replication-added-disk.md)を参照してください。
 
 ## <a name="why-exclude-disks-from-replication"></a>レプリケーションからディスクを除外する理由
 次の理由のために、レプリケーションからディスクを除外しなければならない場合があります。
@@ -98,7 +96,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication.
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id
@@ -136,6 +134,6 @@ Azure portal に移動すると、[レプリケートされたアイテム] の�
 
 初期レプリケーションが完了すると、レプリケーションは差分同期フェーズに移行します。 この時点で、仮想マシンが保護されます。 保護された仮想マシンを選択すると、除外されたディスクがないかを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [テスト フェールオーバーの実行](site-recovery-test-failover-to-azure.md)について学習する。

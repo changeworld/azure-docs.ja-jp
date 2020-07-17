@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:同期中のエラーのトラブルシューティング | Microsoft Docs
+title: 'Azure AD Connect: 同期中のエラーのトラブルシューティング | Microsoft Docs'
 description: Azure AD Connect の同期中に発生したエラーのトラブルシューティングを行う方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845095"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75609198"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -31,7 +31,7 @@ Azure AD Connect の最新バージョン \(2016 年 8 月以降\) では、同�
 
 2016 年 9 月 1 日以降、[Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能がすべての "*新しい*" Azure Active Directory テナントに対して既定で有効になります。 この機能は既存のテナントについても数か月のうちに自動的に有効になります。
 
-Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作を実行します。インポート、同期、エクスポートです。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
+Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作 (インポート、同期、エクスポート) を実行します。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
 
 ## <a name="errors-during-export-to-azure-ad"></a>Azure AD へのエクスポート中のエラー
 この後のセクションで、Azure AD コネクタを使用した Azure AD へのエクスポート操作中に発生するさまざまな種類の同期エラーについて説明します。 このコネクタは、"contoso.*onmicrosoft.com*" という形式の名前で識別されます。
@@ -53,7 +53,7 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* オブジェクト ID
+* ObjectId
 
 > [!NOTE]
 > [Azure AD Attribute Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能は、Azure Active Directory の既定動作としても展開されます。  これにより、オンプレミス AD 環境に存在する重複した ProxyAddresses 属性や UserPrincipalName 属性の処理において、Azure AD の復元力が向上し、Azure AD Connect (および他の同期クライアント) によって検出される同期エラーの数が減少します。 この機能では重複エラーは修正されません。 したがって、データの修正は必要です。 ただし、新しいオブジェクトのプロビジョニングは許可されます (この機能がない場合には、Azure AD に重複値があるとプロビジョニングが禁止されます)。 これにより、同期クライアントに返される同期エラーの数も減少します。
@@ -235,11 +235,12 @@ Azure AD Connect は、オンプレミスの AD からのユーザー オブジ�
 
 
 ### <a name="how-to-fix"></a>修正方法
-この問題を解決するには、次のいずれかの操作を行ってください。
+この問題を解決するには、次の操作を行ってください。
 
-
-- UserPrincipalName を Azure AD の管理者ユーザーのものと一致しない値に変更する - Azure AD に UserPrincipalName が一致する新しいユーザーを作成します
-- Azure AD の管理者ユーザーから管理ロールを削除します。これにより、オンプレミスのユーザー オブジェクトと既存の Azure AD ユーザー オブジェクトの間のあいまい一致が有効になります。
+1. Azure AD アカウント (所有者) をすべての管理者ロールから削除する。 
+2. 検疫済みオブジェクトをクラウドから**物理的に削除**する。 
+3. クラウド アカウントに対するオンプレミス ユーザーのあいまい一致を次の同期サイクルで対処します。(クラウド ユーザーはグローバル GA ではなくなっているため)。 
+4. 所有者のロールのメンバーシップを復元する。 
 
 >[!NOTE]
 >オンプレミスのユーザー オブジェクトと Azure AD ユーザー オブジェクトの間のあいまい一致が完了した後、管理ロールを既存のユーザー オブジェクトに再度割り当てることができます。

@@ -3,26 +3,25 @@ title: Azure での SAP マルチ SID 構成の作成 | Microsoft Docs
 description: Windows 仮想マシン上の高可用性 SAP NetWeaver マルチ SID の構成ガイド
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe9b70d74e326166afae366becc47fbcc8b2ea56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66120249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77617396"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -34,7 +33,7 @@ ms.locfileid: "66120249"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -73,7 +72,7 @@ Azure 内部ロード バランサーを使用して複数の仮想 IP アドレ
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager]。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -220,7 +219,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 追加する各 SAP ASCS/SCS インスタンスには新しいクラスター共有ディスクを追加する必要があります。 Windows Server 2012 R2 WSFC で現在使用されているクラスター共有ディスクは、SIOS DataKeeper ソフトウェア ソリューションです。
 
-以下の手順を実行します。
+次の操作を行います。
 1. 各クラスター ノードに追加のディスク、または同じサイズのディスク (ストライピングが必要なもの) を追加してフォーマットします。
 2. SIOS DataKeeper でストレージのレプリケーションを構成します。
 
@@ -242,12 +241,12 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 おおまかな手順は次のとおりです。
 
-1. [最初の SAP クラスター ノードのインストール][sap-ha-guide-9.1.2]  
+1. [最初の SAP クラスター ノードをインストールします][sap-ha-guide-9.1.2]。  
  このステップでは、**EXISTING WSFC クラスター ノード 1** に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
-2. [ASCS/SCS インスタンスの SAP プロファイルの変更][sap-ha-guide-9.1.3]
+2. [ASCS/SCS インスタンスの SAP プロファイルを変更します][sap-ha-guide-9.1.3]。
 
-3. [プローブ ポートの構成][sap-ha-guide-9.1.4]  
+3. [プローブ ポートを構成します][sap-ha-guide-9.1.4]。  
  このステップではPowerShell を使用して、SAP クラスター リソース SAP-SID2-IP プローブ ポートを構成します。 この構成は、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
 
 4. [データベース インスタンスのインストール][sap-ha-guide-9.2]  
@@ -260,15 +259,15 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらのポートのリストは、メインの [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide-8.8]に記載されています。  
  また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。
 
-7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類の変更][sap-ha-guide-9.4]
+7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類を変更します][sap-ha-guide-9.4]。
 
-8. 新しい専用 VM での [SAP プライマリ アプリケーション サーバーのインストール][sap-ha-guide-9.5]
+8. 新しい専用 VM で [SAP プライマリ アプリケーション サーバーをインストールします][sap-ha-guide-9.5]。
 
-9. 新しい専用 VM での [SAP 追加アプリケーション サーバーのインストール][sap-ha-guide-9.6]
+9. 新しい専用 VM で [SAP 追加アプリケーション サーバーをインストールします][sap-ha-guide-9.6]。
 
-10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト][sap-ha-guide-10]
+10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションをテストします][sap-ha-guide-10]。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]

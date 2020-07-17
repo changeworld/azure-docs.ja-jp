@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric での Java を使用したサービスのリモート処理 | Microsoft Docs
+title: Azure Service Fabric での Java を使用したサービスのリモート処理
 description: Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用して Java のサービスと通信できるようにします。
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 51c8c689bd3fe3e8967bab77e776ad02f9cb59f1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667968"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426630"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Java での Reliable Services を使用したサービスのリモート処理
 > [!div class="op_single_selector"]
@@ -105,5 +97,5 @@ ServiceProxy は、それが作成されたサービス パーティションの
 既定の再試行パラメーターは、[OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
 ユーザーは、ServiceProxyFactory コンストラクターに OperationRetrySettings オブジェクトを渡すことによって、これらの値を構成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication-java.md)

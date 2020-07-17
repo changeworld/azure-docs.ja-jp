@@ -1,20 +1,21 @@
 ---
 title: クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
-description: Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
+titleSuffix: Azure Cognitive Services
+description: このクイックスタートでは、Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
-ms.date: 05/02/2019
+ms.topic: quickstart
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 9bb9c23cc1f807cae1d0d22f1652e8f4408f1f91
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: c24d055f1904453d2f512a278f00e23c6fea1d9b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518664"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80371380"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
 
@@ -38,40 +39,21 @@ ms.locfileid: "65518664"
         3. `Newtonsoft.Json` を探して、パッケージをインストールします
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
-- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json) にあります。
+- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-ink-strokes.json) にあります。
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+### <a name="create-an-ink-recognizer-resource"></a>Ink Recognizer リソースを作成する
 
+[!INCLUDE [creating-an-ink-recognizer-resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>新しいアプリケーションを作成する
 
 1. Visual Studio で新しいコンソール ソリューションを作成し、次のパッケージを追加します。 
+    
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
-    ```csharp
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    ```
+2. サブスクリプション キー、エンドポイント、およびサンプル JSON ファイル用の変数を作成します。 エンドポイントは、API にアクセスするために、後で `inkRecognitionUrl` と結合されます。 
 
-2. サブスクリプション キーとエンドポイントの変数を作成します。 インク認識に使用できる URI を以下に示します。 これは、API 要求 URl を作成するために、後からサービス エンドポイントに付加されます。
-
-    ```csharp
-    // Replace the subscriptionKey string with your valid subscription key.
-    const string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-
-    // Replace the dataPath string with a path to the JSON formatted ink stroke data.
-    const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
-
-    // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
-    const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
-    ```
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>要求を送信する関数を作成する
 
@@ -81,25 +63,7 @@ ms.locfileid: "65518664"
  
 3. `PutAsync()` を使用して要求を送信します。 要求が成功した場合は、応答を返します。  
     
-    ```csharp
-    static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
-        
-        using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            var content = new StringContent(requestData, Encoding.UTF8, "application/json");
-            var res = await client.PutAsync(endpoint, content);
-            if (res.IsSuccessStatusCode){
-                return await res.Content.ReadAsStringAsync();
-            }
-            else{
-                return $"ErrorCode: {res.StatusCode}";
-            }
-        }
-    }
-    ```
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>インク認識要求を送信する
 
@@ -107,37 +71,13 @@ ms.locfileid: "65518664"
 
 2. JSON オブジェクトを逆シリアル化し、それをコンソールに書き込みます。 
     
-    ```csharp
-    static void recognizeInk(string requestData){
-
-        //construct the request
-        var result = Request(
-            endpoint,
-            inkRecognitionUrl,
-            subscriptionKey,
-            requestData).Result;
-
-        dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
-        System.Console.WriteLine(jsonObj);
-    }
-    ```
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
 ## <a name="load-your-digital-ink-data"></a>デジタル インク データを読み込む
 
 `LoadJson()` という関数を作成して、インク データの JSON ファイルを読み込みます。 `StreamReader` および `JsonTextReader` を使用して `JObject` を作成し、それを返します。
-    
-```csharp
-public static JObject LoadJson(string fileLocation){
 
-    var jsonObj = new JObject();
-
-    using (StreamReader file = File.OpenText(fileLocation))
-    using (JsonTextReader reader = new JsonTextReader(file)){
-        jsonObj = (JObject)JToken.ReadFrom(reader);
-    }
-    return jsonObj;
-}
-```
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>API 要求を送信する
 
@@ -145,23 +85,15 @@ public static JObject LoadJson(string fileLocation){
 
 2. 上記で作成した `recognizeInk()` 関数を呼び出します。 `System.Console.ReadKey()` を使用して、アプリケーションの実行後にコンソール ウィンドウを開いたままにします。
     
-    ```csharp
-    static void Main(string[] args){
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
-        var requestData = LoadJson(dataPath);
-        string requestString = requestData.ToString(Newtonsoft.Json.Formatting.None);
-        recognizeInk(requestString);
-        System.Console.WriteLine("\nPress any key to exit ");
-        System.Console.ReadKey();
-        }
-    ```
 
 ## <a name="run-the-application-and-view-the-response"></a>アプリケーションを実行し、応答を表示する
 
-アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json) でも確認できます。
+アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json) でも確認できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2089907)

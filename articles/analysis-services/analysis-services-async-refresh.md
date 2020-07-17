@@ -1,25 +1,24 @@
 ---
 title: Azure Analysis Services モデルの非同期更新 | Microsoft Docs
-description: REST API を使用して非同期更新のコードを記述する方法を説明します。
+description: Azure Analysis Services REST API を使用し、モデル データの非同期更新をコーディングする方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506970"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406287"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
 
-データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表形式オブジェクト モデル)、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (表形式モデル スクリプト言語) などの既存の方法を使用して呼び出されていました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
+データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表形式オブジェクト モデル)、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (表形式モデル スクリプト言語) などの既存の方法を使用して呼び出されていました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
 
 Azure Analysis Services 用の REST API なら、データ更新操作を非同期で実行できます。 REST API を使用すれば、クライアント アプリケーションからの実行時間の長い HTTP 接続は不要になります。 他にも、自動の再試行やバッチ処理されたコミットなどの信頼性を高める組み込み機能もあります。
 
@@ -31,7 +30,7 @@ Azure Analysis Services 用の REST API なら、データ更新操作を非同�
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-たとえば、米国西部の Azure リージョンにある myserver という名前のサーバーの、AdventureWorks という名前のモデルの場合、 サーバー名は次のようになります。
+たとえば、米国西部の Azure リージョンにある `myserver` という名前のサーバーの、AdventureWorks という名前のモデルの場合、 サーバー名は次のようになります。
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -57,7 +56,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 すべての呼び出しは、Authorization ヘッダー内の有効な Azure Active Directory (OAuth 2) トークンで認証する必要があり、次の要件を満たす必要があります。
 
@@ -94,15 +93,15 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-| Name             | Type  | 説明  |既定値  |
+| 名前             | Type  | 説明  |Default  |
 |------------------|-------|--------------|---------|
-| `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
+| `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
 | `CommitMode`     | 列挙型  | オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
-| `MaxParallelism` | int   | この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
+| `MaxParallelism` | int   | この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
 | `RetryCount`     | int   | 失敗前の操作の再試行回数を示します。      |     0    |
 | `Objects`        | Array | 処理されるオブジェクトの配列です。 各オブジェクトには、テーブル全体を処理する時には "table" が、またはパーティションを処理する時には "table" と "partition" が含まれます。 オブジェクトが指定されていない場合は、モデル全体が更新されます。 |   モデル全体を処理      |
 
@@ -111,9 +110,20 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 > [!NOTE]
 > 書き込み時、バッチ サイズは MaxParallelism の値になりますが、この値は変わる可能性があります。
 
+### <a name="status-values"></a>状態の値
+
+|ステータス値  |説明  |
+|---------|---------|
+|`notStarted`    |   操作はまだ開始されていません。      |
+|`inProgress`     |   操作は実行中です。      |
+|`timedOut`     |    ユーザー指定のタイムアウトに基づいて、操作がタイムアウトしました。     |
+|`cancelled`     |   操作はユーザーまたはシステムによって取り消されました。      |
+|`failed`     |   操作に失敗しました。      |
+|`succeeded`      |   操作に成功しました。      |
+
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-更新操作の状態を確認するには、更新 ID に対して GET 動詞を使用します。 応答の本文の例を次に示します。 操作が進行中の場合、状態として **inProgress** が返されます。
+更新操作の状態を確認するには、更新 ID に対して GET 動詞を使用します。 応答の本文の例を次に示します。 操作が進行中の場合、状態として `inProgress` が返されます。
 
 ```
 {
@@ -188,18 +198,18 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 - 0:レプリケーション中。 データベース ファイルはターゲット フォルダーにレプリケートされています。
 - 1:リハイドレート中。 データベースは読み取り専用のサーバー インスタンスにリハイドレートされています。
-- 2.完了。 同期操作は正常に完了しました。
+- 2:完了。 同期操作は正常に完了しました。
 - 3:失敗。 同期操作は失敗しました。
 - 4:終了処理中。 同期操作は完了しましたが、クリーンアップ手順を実行中です。
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 開始するための C# コードのサンプルは [GitHub の RestApiSample](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample) にあります。
 
 ### <a name="to-use-the-code-sample"></a>サンプル コードを使用するには
 
-1.  リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
-2.  「**client.BaseAddress = …**」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
+1.    リポジトリをクローンまたはダウンロードします。 RestApiSample ソリューションを開きます。
+2.    「**client.BaseAddress = …** 」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
 このコード例では、[サービス プリンシパル](#service-principal)の認証を使用しています。
 
@@ -207,9 +217,9 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
 
-1.  コード サンプル内で「**string authority = …**」を見つけたら、「**common**」をご所属の組織のテナント ID に置き換えます。
-2.  コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。
-3.  サンプルを実行します。
+1.    コード サンプル内で "**string authority = …** " を見つけたら、"**common**" を自分の組織のテナント ID に置き換えます。
+2.    コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。
+3.    サンプルを実行します。
 
 
 ## <a name="see-also"></a>関連項目

@@ -1,53 +1,101 @@
 ---
 title: Azure HDInsight で対話型の Spark シェルを使用する
 description: 対話型の Spark シェルは、一度に 1 つずつ Spark コマンドを実行し、結果を表示するための read-execute-print プロセスを提供します。
-ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 9044ed3ad9cf9ffa2f54d130bb50b37df121b86f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 02/10/2020
+ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696800"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77162805"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spark Shell から Apache Spark を実行する
 
-対話型の [Apache Spark](https://spark.apache.org/) シェルは、一度に 1 つずつ Spark コマンドを実行し、結果を表示する REPL (read-execute-print loop) 環境を提供します。 このプロセスは、開発およびデバッグに役立ちます。 Spark では、シェルが 1 つサポートしている言語 (Scala、Python、R) ごとに用意されていまます。
-
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>SSH を使用した Apache Spark シェルへのアクセス
-
-SSH を使ってクラスターのプライマリ ヘッド ノードに接続して、HDInsight の Apache Spark シェルにアクセスします。
-
-     ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
-
-お使いのクラスター用の完全な SSH コマンドは Azure Portal から取得できます。
-
-1. [Azure Portal](https://portal.azure.com) にログインします。
-2. HDInsight Spark クラスターのウィンドウに移動します。
-3. [Secure Shell (SSH)] を選択します。
-
-    ![Azure Portal の [HDInsight] ウィンドウ](./media/apache-spark-shell/hdinsight-spark-blade.png)
-
-4. 表示された SSH コマンドをコピーして、ご使用のターミナルで実行します。
-
-    ![Azure Portal の [HDInsight SSH] ウィンドウ](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
-
-SSH を使って HDInsight に接続する方法については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
+対話型の [Apache Spark](https://spark.apache.org/) シェルは、一度に 1 つずつ Spark コマンドを実行し、結果を表示する REPL (read-execute-print loop) 環境を提供します。 このプロセスは、開発およびデバッグに役立ちます。 Spark は、そのサポートされている言語 (Scala、Python、R) ごとに 1 つのシェルを提供します。
 
 ## <a name="run-an-apache-spark-shell"></a>Apache Spark シェルの実行
 
-Spark には、Scala (spark-shell)、Python (pyspark)、および R (sparkR) 向けのシェルが用意されています。 HDInsight クラスターのヘッド ノードの SSH セッションで、次のいずれかのコマンドを入力します。
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-    ./bin/spark-shell
-    ./bin/pyspark
-    ./bin/sparkR
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-これで適切な言語で Spark コマンドを入力できるようになります。
+1. Spark には、Scala (spark-shell) 向けと Python (pyspark) 向けのシェルが用意されています。 この SSH セッションでは、次の "*いずれか*" のコマンドを入力します。
+
+    ```bash
+    spark-shell
+
+    # Optional configurations
+    # spark-shell --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    ```bash
+    pyspark
+
+    # Optional configurations
+    # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    オプション構成を使用する場合は、まず [Apache Spark の OutOfMemoryError 例外](./apache-spark-troubleshoot-outofmemory.md)に関するページを確認してください。
+
+1. 基本的なコマンドの例を次に示します。 該当する言語を選択してください。
+
+    ```spark-shell
+    val textFile = spark.read.textFile("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(line => line.contains("apple")).show()
+    ```
+
+    ```pyspark
+    textFile = spark.read.text("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(textFile.value.contains("apple")).show()
+    ```
+
+1. CSV ファイルに対してクエリを実行します。 下のコマンドは `spark-shell` と `pyspark` の両方に使用できます。
+
+    ```scala
+    spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
+    ```
+
+1. CSV ファイルに対してクエリを実行し、結果を変数に格納します。
+
+    ```spark-shell
+    var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+    ```pyspark
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+1. 結果を表示します。
+
+    ```spark-shell
+    data.show()
+    data.select($"BuildingID", $"Country").show(10)
+    ```
+
+    ```pyspark
+    data.show()
+    data.select("BuildingID", "Country").show(10)
+    ```
+
+1. Exit
+
+    ```spark-shell
+    :q
+    ```
+
+    ```pyspark
+    exit()
+    ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession インスタンスと SparkContext インスタンス
 
@@ -57,7 +105,7 @@ SparkSession インスタンスにアクセスするには、「`spark`」と入
 
 ## <a name="important-shell-parameters"></a>重要なシェル パラメーター
 
-Spark シェル コマンド (`spark-shell`、`pyspark`、または `sparkR`) は、数多くのコマンドライン パラメーターに対応しています。 パラメーターの完全な一覧を表示するには、スイッチ `--help` を使用して Spark シェルを起動します。 これらのパラメーターの一部は `spark-submit` のみに適用される場合があります (これは、Spark シェルによってラップされます)。
+Spark シェル コマンド (`spark-shell` または `pyspark`) は、数多くのコマンドライン パラメーターに対応しています。 パラメーターの完全な一覧を表示するには、スイッチ `--help` を使用して Spark シェルを起動します。 これらのパラメーターの一部は `spark-submit` のみに適用される場合があります (これは、Spark シェルによってラップされます)。
 
 | スイッチ | description | 例 |
 | --- | --- | --- |
@@ -66,7 +114,7 @@ Spark シェル コマンド (`spark-shell`、`pyspark`、または `sparkR`) �
 | --packages MAVEN_COORDS | ドライバーと Executor のクラスパスに含める jar の maven コーディネートのコンマ区切りリスト。 ローカルの maven リポジトリ、maven セントラル、`--repositories` で指定された追加のリモート リポジトリの順に検索します。 コーディネートの形式は、*groupId*:*artifactId*:*version* です。 | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --py-files LIST | Python のみについて、PYTHONPATH に配置する .zip、.egg、.py ファイルのコンマ区切りリストです。 | `--pyfiles "samples.py"` |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Azure HDInsight での Apache Spark の概要](apache-spark-overview.md)」で概要を確認します。
 - Spark クラスターや SparkSQL の操作方法について、「[Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)」を確認します。

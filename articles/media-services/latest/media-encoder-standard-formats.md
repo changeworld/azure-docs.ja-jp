@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard の形式とコーデック - Azure
-description: このトピックでは、Media Encoder Standard の形式とコーデックの概要を示します。
+title: Standard Encoder の形式およびコーデック - Azure
+description: この記事では、StandardEncoderPreset で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084380"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227127"
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
+# <a name="standard-encoder-formats-and-codecs"></a>Standard Encoder の形式およびコーデック
 
 この記事では、[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)」を参照してください。
 
@@ -40,13 +41,9 @@ ms.locfileid: "58084380"
 | WAVE/WAV (.wav) |はい |
 | QuickTime (.mov) |はい |
 
-> [!NOTE]
-> 上に記載したのは、ごく一般的なファイル拡張子の一覧です。 Media Encoder Standard は他にもさまざまな拡張子をサポートしています (例: .m2ts、.mpeg2video、.qt)。 ファイルをエンコードしようとしたときに、ファイル形式がサポートされていないことに関するエラー メッセージが表示された場合は、[こちら](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)からフィードバックをお寄せください。
-> 
-> 
-
 ### <a name="audio-formats-in-input-containers"></a>入力コンテナーのオーディオ形式
-Media Encoder Standard の入力コンテナーは次のオーディオ形式に対応しています。
+
+Standard Encoder の入力コンテナーは、次のオーディオ形式に対応しています。
 
 * オーディオ トラックにインターリーブ ステレオまたは 5.1 サンプルが含まれる MXF、GXF、QuickTime ファイル
 
@@ -65,7 +62,7 @@ or
 | MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル) |最大 422 プロファイル |
 | MPEG-1 |はい |
 | VC-1/WMV9 |はい |
-| Canopus HQ/HQX |いいえ  |
+| Canopus HQ/HQX |いいえ |
 | MPEG-4 Part 2 |はい |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |はい |
 | YUV420 非圧縮または中間 |はい |
@@ -89,19 +86,19 @@ or
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |はい |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |はい |
 | AMR (アダプティブ マルチ レート) |はい |
-| AES (SMPTE 331M および 302M、AES3-2003) |いいえ  |
-| Dolby® E |いいえ  |
-| Dolby® Digital (AC3) |いいえ  |
-| Dolby® Digital Plus (E-AC3) |いいえ  |
+| AES (SMPTE 331M および 302M、AES3-2003) |いいえ |
+| Dolby® E |いいえ |
+| Dolby® Digital (AC3) |いいえ |
+| Dolby® Digital Plus (E-AC3) |いいえ |
 
 ## <a name="output-formats-and-codecs"></a>出力形式とコーデック
 次の表では、エクスポートでサポートされるコーデックおよびファイル形式の一覧を示します。
 
 | ファイル形式 | ビデオ コーデック | オーディオ コーデック |
 | --- | --- | --- |
-| MP4  <br/><br/>(マルチビットレートの MP4 コンテナーを含む) |H.264 (High、Main、Baseline Profile) |AAC-LC、HE-AAC v1、HE-AAC v2 |
+| MP4 <br/><br/>(マルチビットレートの MP4 コンテナーを含む) |H.264 (High、Main、Baseline Profile) |AAC-LC、HE-AAC v1、HE-AAC v2 |
 | MPEG2-TS |H.264 (High、Main、Baseline Profile) |AAC-LC、HE-AAC v1、HE-AAC v2 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [カスタム プリセットを使用して変換を作成する](customize-encoder-presets-how-to.md)

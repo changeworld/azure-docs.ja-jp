@@ -1,17 +1,17 @@
 ---
-title: サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB
+title: Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123778"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985254"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -23,44 +23,45 @@ ms.locfileid: "58123778"
 
 Azure Cosmos DB と Azure Functions を使用して、次の方法でデータベースとサーバーレス アプリケーションを統合できます。
 
-* Azure Functions でイベント ドリブンの **Azure Cosmos DB トリガー**を作成します。 このトリガーは、[変更フィード](change-feed.md) ストリームを利用して、Azure Cosmos DB コンテナーの変更を監視しています。 コンテナーに変更が加えられると、変更フィード ストリームがトリガーに送信され、それによって Azure Functions が呼び出されます。
-* または、**入力バインディング**を使用して、Azure Functions を Azure Cosmos DB コンテナーにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
-* **出力バインディング**を使用して、関数を Azure Cosmos DB コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
+* イベント ドリブンの **Cosmos DB 用 Azure Functions トリガー**を作成します。 このトリガーは、[変更フィード](change-feed.md) ストリームを使用して Azure Cosmos コンテナーの変更を監視します。 コンテナーに変更が加えられると、変更フィード ストリームがトリガーに送信され、それによって Azure Functions が呼び出されます。
+* あるいは、**入力バインディング**を使用して、Azure 関数を Azure Cosmos コンテナーにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
+* **出力バインディング**を使用して、関数を Azure Cosmos コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
-> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
+> 現時点では、Cosmos DB 用 Azure Functions トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
 
 
 次の各図は、これら 3 つの統合を示しています。 
 
 ![Azure Cosmos DB と Azure Functions を統合する方法](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
 
-Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、次の組み合わせで使用できます。
-* Azure Cosmos DB トリガーと出力バインディングを組み合わせて別の Azure Cosmos DB コンテナーに使用することができます。 関数が変更フィードの項目に対してアクションを実行した後に、別のコンテナーに書き込むことができます (同じコンテナーに書き込むと、実質的に再帰的ループが作成されます)。 または、Azure Cosmos DB トリガーと出力バインディングを使用して、実質的に 1 つのコンテナー内の変更されたすべての項目を別のコンテナーに移行できます。
+Azure Cosmos DB 用 Azure Functions トリガー、入力バインディング、および出力バインディングは、次の組み合わせで使用できます。
+
+* Cosmos DB 用 Azure Functions トリガーは、別の Azure Cosmos コンテナーへの出力バインディングで使用できます。 関数が変更フィードの項目に対してアクションを実行した後に、別のコンテナーに書き込むことができます (同じコンテナーに書き込むと、実質的に再帰的ループが作成されます)。 または、Cosmos DB 用 Azure Functions トリガーと出力バインディングを使用して、実質的に 1 つのコンテナー内の変更されたすべての項目を別のコンテナーに移行できます。
 * Azure Cosmos DB の入力バインディングと出力バインディングは、同じ Azure Functions で使用できます。 この方法は、入力バインディングで特定のデータを検索し、Azure Functions で変更し、変更後に同じコンテナーまたは別のコンテナーに保存する場合に適しています。
-* Azure Cosmos DB コンテナーへの入力バインディングは、Azure Cosmos DB トリガーと同じ関数で使用できます。また、出力バインディングの有無にかかわらず使用できます。 この組み合わせを使用すると、ショッピング カート サービスの新しい注文の変更フィードに最新の為替情報を適用できます (為替コンテナーに対する入力バインディングで取得します)。 最新の為替換算を適用して更新した後のショッピング カート合計は、出力バインディングを使用して 3 つ目のコンテナーに書き込むことができます。
+* Azure Cosmos コンテナーへの入力バインディングは Cosmos DB 用 Azure Functions トリガーと同じ関数で使用でき、また出力バインディングの有無にかかわらず使用できます。 この組み合わせを使用すると、ショッピング カート サービスの新しい注文の変更フィードに最新の為替情報を適用できます (為替コンテナーに対する入力バインディングで取得します)。 最新の為替換算を適用して更新した後のショッピング カート合計は、出力バインディングを使用して 3 つ目のコンテナーに書き込むことができます。
 
 ## <a name="use-cases"></a>ユース ケース
 
 次のユース ケースでは、データをイベント ドリブンの Azure Functions に接続して Azure Cosmos DB データを最大限に活用する方法をいくつか紹介します。
 
-### <a name="iot-use-case---azure-cosmos-db-trigger-and-output-binding"></a>IoT のユース ケース - Azure Cosmos DB トリガーと出力バインディング
+### <a name="iot-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>IoT のユース ケース - Cosmos DB 用 Azure Functions トリガーと出力バインディング
 
 IoT 実装では、接続されている車のエンジンのチェック ランプが点灯したときに、関数を呼び出すことができます。
 
-**実装:** Azure Cosmos DB トリガーと出力バインディングを使用する
+**実装:** Cosmos DB 用 Azure Functions トリガーと出力バインディングを使用する
 
-1. **Azure Cosmos DB トリガー**を使用して、接続されている車のエンジンのチェック ランプの点灯など、車の警告に関連するイベントをトリガーします。
+1. **Cosmos DB 用 Azure Functions トリガー**を使用して、接続されている車のエンジンのチェック ランプの点灯など、車の警告に関連するイベントをトリガーします。
 2. エンジンのチェック ランプが点灯すると、センサー データが Azure Cosmos DB に送信されます。
-3. Azure Cosmos DB は新しいセンサー データ ドキュメントを作成または更新し、その変更を Azure Cosmos DB トリガーにストリームします。
+3. Azure Cosmos DB で新しいセンサー データ ドキュメントが作成または更新された後、それらの変更が Cosmos DB 用 Azure Functions トリガーにストリームされます。
 4. トリガーは、センサー データ コレクションに対するデータの変更ごとに呼び出されます。また、変更が変更フィード経由でストリームされたときにも呼び出されます。
 5. 関数でしきい値の条件を使用して、センサー データを保証部門に送信します。
 6. 温度が特定の値を超えた場合も、警告が所有者に送信されます。
-7. 関数に対する**出力バインディング**によって、別の Azure Cosmos DB コンテナーの車の記録が更新され、エンジンのチェック イベントに関する情報が保存されます。
+7. 関数への**出力バインディング**によって、別の Azure Cosmos コンテナー内の車の記録が更新され、エンジンのチェック イベントに関する情報が格納されます。
 
 次の図は、このトリガーで Azure Portal で書き込まれるコードを示しています。
 
-![Azure Portal で Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+![Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務ユース ケース - タイマー トリガーと入力バインディング
 
@@ -68,7 +69,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 **実装:** タイマー トリガーと Azure Cosmos DB 入力バインディング
 
-1. [タイマー トリガー](../azure-functions/functions-bindings-timer.md)と**入力バインディング**を使用して、Azure Cosmos DB コンテナーに格納されている銀行口座残高の情報を一定の間隔で取得できます。
+1. [タイマー トリガー](../azure-functions/functions-bindings-timer.md)を使用すると、**入力バインディング**を使用して、Azure Cosmos コンテナーに格納されている銀行口座残高の情報を一定の間隔で取得できます。
 2. ユーザーが設定した残高の下限しきい値を下回った場合、Azure Functions のアクションが実行されます。
 3. 出力バインディングは、サービス アカウントから、低い残高の各口座に指定された電子メール アドレスに対して電子メールが送信される [SendGrid 統合](../azure-functions/functions-bindings-sendgrid.md)です。
 
@@ -78,13 +79,13 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ![財務シナリオのタイマー トリガーの Run.csx ファイル](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
 
-### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>ゲームのユース ケース - Azure Cosmos DB トリガーと出力バインディング
+### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>ゲームのユース ケース - Cosmos DB 用 Azure Functions トリガーと出力バインディング 
 
 ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Gremlin API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
 
-**実装:** Azure Cosmos DB トリガーと出力バインディングを使用する
+**実装:** Cosmos DB 用 Azure Functions トリガーと出力バインディングを使用する
 
-1. Azure Cosmos DB [グラフ データベース](graph-introduction.md)を使用してすべてのユーザーを格納することで、Azure Cosmos DB トリガーを使用して新しい関数を作成できます。 
+1. Azure Cosmos DB の[グラフ データベース](graph-introduction.md)を使用してすべてのユーザーを格納することで、Cosmos DB 用 Azure Functions トリガーを使用する新しい関数を作成できます。 
 2. 新しいユーザーが挿入されるたびに関数が呼び出され、結果は**出力バインディング**を使用して格納されます。
 3. この関数は、グラフ データベースに対して、新しいユーザーに直接関連するすべてのユーザーを検索するクエリを実行し、そのデータセットを関数に返します。
 4. このデータは、Azure Cosmos DB に格納されます。新規ユーザーに接続されている友人を表示する任意のフロントエンド アプリケーションから、このデータを簡単に取得できます。
@@ -93,31 +94,31 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 小売の実装では、ユーザーがアイテムをバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
 
-**実装:** 1 つのコンテナーをリッスンする複数の Azure Cosmos DB トリガー
+**実装:** 1 つのコンテナーをリッスンする複数の Cosmos DB 用 Azure Functions トリガー
 
-1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。 リース コレクションの詳細については、「[Change Feed Processor ライブラリの概要](change-feed-processor.md)」を参照してください。
+1. それぞれに Cosmos DB 用 Azure Functions トリガーが追加された複数の Azure 関数を作成できます。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。 リース コレクションの詳細については、「[Change Feed Processor ライブラリの概要](change-feed-processor.md)」を参照してください。
 2. 新しい項目がユーザーのショッピング カートに追加されるたびに、各関数はショッピング カート コンテナーの変更フィードから個別に呼び出されます。
    * 1 つの関数で現在のバスケットの内容を使用して、ユーザーが関心を持つ可能性がある他の項目の表示を変更することができます。
    * 別の関数で在庫の合計を更新できます。
    * また、別の関数は特定の製品に関する顧客情報をマーケティング部門に送信できます。マーケティング部門は宣伝メールを送信します。 
 
-     任意の部門が変更フィードをリッスンして Azure Cosmos DB トリガーを作成し、プロセスの重要な注文処理イベントが遅れないようにすることができます。
+     任意の部門で変更フィードをリッスンして Cosmos DB 用 Azure Functions を作成し、プロセスの重要な注文処理イベントが遅れないようにすることができます。
 
 これらのいずれのユース ケースでも、関数でアプリケーション自体が分離されるので、常に新しいアプリケーション インスタンスを起動する必要はありません。 その代わりに必要に応じて Azure Functions が個々の関数を起動して各プロセスを完了します。
 
 ## <a name="tooling"></a>ツール
 
-Azure Portal と Visual Studio 2017 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
+Azure portal と Visual Studio 2019 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
 
-* Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページをご覧ください。
-* Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
-* Visual Studio 2017 では、[Visual Studio 2017 用の Azure Functions Tools](../azure-functions/functions-develop-vs.md) を利用して Azure Cosmos DB トリガーを作成できます。
+* Azure Functions ポータルで、トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Cosmos DB 用 Azure Functions トリガーの作成](../azure-functions/functions-create-cosmos-db-triggered-function.md)に関するページをご覧ください。
+* Azure Cosmos DB ポータルで、同じリソース グループ内の既存の Azure Functions アプリに Cosmos DB 用 Azure Functions トリガーを追加できます。
+* Visual Studio 2019 で、[Azure Functions Tools](../azure-functions/functions-develop-vs.md) を使用してトリガーを作成できます。
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>サーバーレス コンピューティングに Azure Functions 統合を選択する理由
 
-Azure Functions には、スケーラブルなユニットの作業や、オンデマンドで実行できるロジックの簡潔な部分を作成する機能があります。インフラストラクチャをプロビジョニングまたは管理する必要はありません。 Azure Functions を使用すると、Azure Cosmos DB データベースの変更に反応する本格的なアプリケーションを作成する必要はありません。特定のタスクのために小さな再利用可能な関数を作成できます。 また、HTTP 要求または適時のトリガーなどのイベントに応答して、Azure Functions への入力または出力として Azure Cosmos DB データを使用することもできます。
+Azure Functions には、スケーラブルなユニットの作業や、オンデマンドで実行できるロジックの簡潔な部分を作成する機能があります。インフラストラクチャをプロビジョニングまたは管理する必要はありません。 Azure Functions を使用すると、Azure Cosmos データベース内の変更に応答する本格的なアプリを作成する必要はなく、特定のタスクのための小さな再利用可能な関数を作成できます。 また、HTTP 要求または適時のトリガーなどのイベントに応答して、Azure Functions への入力または出力として Azure Cosmos DB データを使用することもできます。
 
 Azure Cosmos DB は、サーバーレス コンピューティング アーキテクチャに推奨されるデータベースです。その理由は次のとおりです。
 
@@ -141,16 +142,10 @@ Azure Functions の利点:
 
 Flow、Logic Apps、Azure Functions、または WebJobs が実装に適しているかどうかがわからない場合は、「[Flow、Logic Apps、Functions、WebJobs の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 それでは実際に Azure Cosmos DB と Azure Functions を接続してみましょう。 
 
-* [Azure Portal で Azure Cosmos DB トリガーを作成する](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成する](https://aka.ms/cosmosdbinputbind)
-* [Azure Cosmos DB のバインディングとトリガー](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成する](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
+* [Azure Cosmos DB のバインディングとトリガー](../azure-functions/functions-bindings-cosmosdb-v2.md)

@@ -1,21 +1,21 @@
 ---
 title: クラスター パフォーマンスの監視 - Azure HDInsight
-description: HDInsight クラスターの容量とパフォーマンスを監視する方法。
-author: maxluk
+description: Azure HDInsight で Apache Hadoop クラスターの正常性とパフォーマンスを監視する方法。
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: arindamc
-ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693215"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79082882"
 ---
-# <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する
 
 HDInsight クラスターの正常性とパフォーマンスを監視することは、最適なパフォーマンスとリソースの使用率を維持するために重要です。 監視は、クラスター構成エラーとユーザー コードの問題を検出し、対応するために役立つ場合もあります。
 
@@ -25,22 +25,22 @@ HDInsight クラスターの正常性とパフォーマンスを監視するこ�
 
 Hadoop クラスターでは、クラスターの負荷がすべてのノードに均等に分散している場合に、最適なパフォーマンスが発揮されます。 これにより、個々のノードの RAM、CPU、またはディスク リソースによって制限されることなく、実行するタスクの処理が可能になります。
 
-クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、**[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
+クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、 **[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
 
-| 色 | 説明 |
+| Color | 説明 |
 | --- | --- |
-| 赤 | ホスト上の少なくとも 1 つのマスター コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
-| オレンジ | ホスト上の少なくとも 1 つのスレーブ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
-| 黄 | Ambari Server がホストからハートビートを受け取らない時間が 3 分を超えています。 |
-| 緑 | 通常の実行状態です。 |
+| [赤] | ホスト上の少なくとも 1 つのマスター コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
+| オレンジ | ホスト上の少なくとも 1 つのセカンダリ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
+| 黄 | Ambari サーバーが、ホストから 3 分以上ハートビートを受信していません。 |
+| [緑] | 通常の実行状態です。 |
 
 各ホストのコア数と RAM 合計の列と、ディスク使用量と負荷の平均の列も表示されます。
 
-![[Hosts]\(ホスト\) タブ](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Apache Ambari の [ホスト] タブの概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 そのホストで実行されているコンポーネントとそのメトリックの詳細を確認するには、いずれかのホスト名を選択します。 メトリックは、CPU 使用量、負荷、ディスク使用率、メモリ使用量、ネットワーク使用量、およびプロセス数の選択可能なタイムラインとして表示されます。
 
-![ホストの詳細](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Apache Ambari ホストの詳細の概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 アラートの設定とメトリックの表示の詳細については、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
@@ -56,7 +56,7 @@ ResourceManager は*純粋なスケジューラ*であり、すべての競合�
 
 YARN を使用すると、これらのキューにリソースを割り当てることができます。また、使用できるすべてのリソースが割り当てられているかどうかがわかります。 キューに関する情報を確認するには、Ambari Web UI にサインインし、上部のメニューから **[YARN Queue Manager]** を選択します。
 
-![[YARN Queue Manager]\(YARN キュー マネージャー\)](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Apache Ambari YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 [YARN Queue Manager]\(YARN キュー マネージャー\) ページの左側にはキュー一覧と、それぞれに割り当てられている容量の割合が表示されます。
 
@@ -64,25 +64,65 @@ YARN を使用すると、これらのキューにリソースを割り当てる
 
 キューの詳細を確認するには、Ambari ダッシュボードの左側の一覧から **[YARN]** を選択します。 **[Quick Links]** ドロップダウン メニューで、アクティブ ノードの下にある **[Resource Manager UI]** を選択します。
 
-![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 ResourceManager UI の左側のメニューから **[Scheduler]** を選択します。 *[Application Queues]\(アプリケーション キュー\)* の下にキューの一覧が表示されます この一覧では、各キューに使用される容量、キュー間のジョブの分散状況、ジョブのリソースに制約があるかどうかを確認できます。
 
-![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Apache HAdoop Resource Manager の UI メニュー](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>ストレージの調整
 
-クラスターのパフォーマンスのボトルネックはストレージ レベルで生じる可能性があります。 この種類のボトルネックは、多くの場合、入力/出力 (IO) 操作の*ブロック*が原因です。この問題は、実行中のタスクから送信される IO が、ストレージ サービスで処理できる量を超えるときに発生します。 このブロックによって、現在の IO 処理が完了するまで処理を待機する IO 要求のキューが作成されます。 このブロックは、*ストレージ調整*が原因です。このストレージ調整は物理的な制限ではなく、サービス レベル アグリーメント (SLA) でストレージ サービスから課せられる制限です。 この制限によって、単一のクライアントまたはテナントがサービスを独占することができないように確保されます。 SLA は、Azure Storage の IO 数/秒 (IOPS) を制限します。詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](https://docs.microsoft.com/azure/storage/storage-scalability-targets)」を参照してください。
+クラスターのパフォーマンスのボトルネックはストレージ レベルで生じる可能性があります。 この種類のボトルネックは、多くの場合、入力/出力 (IO) 操作の*ブロック*が原因です。この問題は、実行中のタスクから送信される IO が、ストレージ サービスで処理できる量を超えるときに発生します。 このブロックによって、現在の IO 処理が完了するまで処理を待機する IO 要求のキューが作成されます。 このブロックは、*ストレージ調整*が原因です。このストレージ調整は物理的な制限ではなく、サービス レベル アグリーメント (SLA) でストレージ サービスから課せられる制限です。 この制限によって、単一のクライアントまたはテナントがサービスを独占することができないように確保されます。 SLA は、Azure Storage の IO 数/秒 (IOPS) を制限します。詳細については、[Standard ストレージ アカウントのスケーラビリティおよびパフォーマンスのターゲット](../storage/common/scalability-targets-standard-account.md)に関するページを参照してください。
 
 Azure Storage を使用している場合、ストレージに関連する問題の監視の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)」を参照してください。
 
-クラスターのバッキング ストアが Azure Data Lake Storage (ADLS) の場合、調整は帯域幅の制限が原因の可能性が高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
+クラスターのバッキング ストアが Azure Data Lake Storage (ADLS) の場合、帯域幅の制限が原因で調整が発生する可能性が最も高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
 
 * [HDInsight の Apache Hive と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [HDInsight の MapReduce と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [HDInsight の Apache Storm と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="troubleshoot-sluggish-node-performance"></a>ノードの動作が遅い場合のトラブルシューティング
+
+場合によっては、クラスターのディスク領域不足が原因で動作が遅くなる可能性があります。 次の手順で調査します。
+
+1. 各ノードに接続するには [ssh コマンド](./hdinsight-hadoop-linux-use-ssh-unix.md)を使用します。
+
+1. 次のいずれかのコマンドを実行して、ディスク使用量を確認します。
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. 出力を確認し、`mnt` フォルダーまたはその他のフォルダーに大きなファイルがあるかどうかを確認します。 通常、`usercache`、および `appcache` (mnt/resource/hadoop/yarn/local/usercache/hive/appcache/) フォルダーには大きなファイルが含まれています。
+
+1. 大きなファイルがある場合、現在のジョブによってファイルの拡張が発生しているか、失敗した前のジョブがこの問題の一因になっている可能性があります。 この動作が現在のジョブによって発生しているかどうかを確認するには、次のコマンドを実行します。
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. このコマンドで特定のジョブが示される場合は、次のようなコマンドを使用してジョブを終了できます。
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    `application_id` をアプリケーション ID で置き換えます。 特定のジョブが示されない場合は、次の手順に進んでください。
+
+1. 上記のコマンドが完了した後、または特定のジョブが指定されていない場合は、次のようなコマンドを実行して、特定したサイズの大きなファイルを削除します。
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+ディスク領域の問題の詳細については、「[ディスク領域の不足](./hadoop/hdinsight-troubleshoot-out-disk-space.md)」を参照してください。
+
+> [!NOTE]  
+> 保持したい大きなファイルがあるが、それがディスク領域不足の問題の一因になっている場合は、HDInsight クラスターをスケールアップしてサービスを再起動する必要があります。 この手順を完了して数分待つと、ストレージが解放され、ノードの通常のパフォーマンスに戻ることがわかります。
+
+## <a name="next-steps"></a>次のステップ
 
 クラスターのトラブルシューティングと監視の詳細については、以下のリンクを参照してください。
 

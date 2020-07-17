@@ -1,0 +1,101 @@
+### YamlMime:Landing
+title: Azure のセキュリティの基礎に関するドキュメント
+summary: ベスト プラクティスやガイダンスを使用して、Azure 上のクラウド ソリューションをセキュリティで保護する方法について説明します。
+metadata:
+  title: Azure のセキュリティの基礎に関するドキュメント
+  description: Azure 上のクラウド ソリューションをセキュリティで保護する方法について説明します。
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/28/2019
+  ms.openlocfilehash: 62a0bc67624c27ccd8185edb8be1a8cb3f16a9b1
+  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/10/2020
+  ms.locfileid: "81115223"
+landingContent:
+- title: Azure のセキュリティについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure のセキュリティの概要
+      url: overview.md
+    - text: セキュリティの技術的な機能
+      url: technical-capabilities.md
+  - linkListType: concept
+    links:
+    - text: Microsoft が Azure のインフラストラクチャをセキュリティで保護するしくみ
+      url: infrastructure.md
+- title: はじめに
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: クラウドにおける共同責任
+      url: shared-responsibility.md
+    - text: セキュリティ サービスとテクノロジ
+      url: services-technologies.md
+    - text: 組み込みのセキュリティ制御
+      url: security-controls.md
+- title: 脅威の軽減
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Security Center
+      url: ../../security-center/security-center-intro.md
+  - linkListType: concept
+    links:
+    - text: 管理と監視
+      url: management-monitoring-overview.md
+    - text: 高度な脅威検出
+      url: threat-detection.md
+- title: クラウド ソリューションをセキュリティで保護するためのベスト プラクティス
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ネットワークのセキュリティ
+      url: network-best-practices.md
+    - text: IaaS ワークロード
+      url: iaas.md
+    - text: ID 管理とアクセス制御
+      url: identity-management-best-practices.md
+    - text: PaaS デプロイ
+      url: paas-deployments.md
+    - text: データ セキュリティと暗号化
+      url: data-encryption-best-practices.md
+    - text: 運用上のセキュリティ
+      url: operational-best-practices.md
+- title: Azure リソースの保護
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 保存時の暗号化
+      url: encryption-atrest.md
+    - text: データ保護
+      url: database-security-overview.md
+    - text: ネットワークのセキュリティ
+      url: network-overview.md
+    - text: 仮想マシンのセキュリティ
+      url: virtual-machines-overview.md
+    - text: ID 管理のセキュリティ
+      url: identity-management-overview.md
+  - linkListType: learn
+    links:
+    - text: クラウド アプリケーションをセキュリティで保護する
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+- title: セキュリティ スキルの構築
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: ネットワーク セキュリティを実装する
+      url: https://docs.microsoft.com/learn/paths/implement-network-security
+    - text: ID とアクセスを管理する
+      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+    - text: リソース管理のセキュリティを実装する
+      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+    - text: 仮想マシン ホストのセキュリティを実装する
+      url: https://docs.microsoft.com/learn/paths/implement-host-security

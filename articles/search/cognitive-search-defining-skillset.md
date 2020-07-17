@@ -1,27 +1,25 @@
 ---
-title: コグニティブ検索パイプラインにスキルセットを作成する - Azure Search
-description: データの抽出、自然言語処理、または画像分析のステップを定義して、データから構造化された情報を抽出および強化して、Azure Search で使用できるようにします。
-manager: pablocas
+title: スキルセットを作成する
+titleSuffix: Azure Cognitive Search
+description: データの抽出、自然言語処理、または画像分析のステップを定義して、データから構造化された情報を抽出して強化し、Azure Cognitive Search で使用できるようにします。
+manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.devlang: NA
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 9eedf0be6089764c8111ae81d558f7e65af0a66d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021781"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75754556"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインにスキルセットを作成する方法
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
 
-コグニティブ検索では、Azure Search で検索できるように、データを抽出および拡充します。 Microsoft では抽出ステップとエンリッチメント ステップを "*コグニティブ スキル*" と呼び、インデックスの作成中に参照される "*スキルセット*" と組み合わせます。 スキルセットでは、[組み込みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[カスタム スキルの作成例](cognitive-search-create-custom-skill-example.md)に関するページを参照してください)。
+AI エンリッチメントは、データを抽出して強化し、Azure Cognitive Search でデータを検索できるようにすることです。 Microsoft では抽出ステップとエンリッチメント ステップを "*コグニティブ スキル*" と呼び、インデックスの作成中に参照される "*スキルセット*" と組み合わせます。 スキルセットでは、[組み込みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[AI エンリッチメント パイプラインにカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください)。
 
-この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure Search [インデクサー](search-indexer-overview.md)に接続されます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
+この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure Cognitive Search [インデクサー](search-indexer-overview.md)にアタッチされます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
 
 > [!NOTE]
 > インデクサーの指定はパイプライン デザインの別の部分として取り上げます (「[次の手順](#next-step)」で説明します)。 インデクサーの定義には、スキルセットの参照と、入力をターゲット インデックスの出力に接続するために使用されるフィールド マッピングが含まれます。
@@ -47,10 +45,10 @@ ms.locfileid: "65021781"
 ![仮定のエンリッチメント パイプライン](media/cognitive-search-defining-skillset/sample-skillset.png "仮定のエンリッチメント パイプライン")
 
 
-このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
+このパイプラインで行うことをきちんと把握できたら、これらのステップを提供するスキルセットを表現できます。 機能上、このスキルセットは、Azure Cognitive Search にインデクサー定義をアップロードするときに表現されます。 インデクサーのアップロード方法の詳細については、[インデクサーに関するドキュメント](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を参照してください。
 
 
-この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure Search では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。
+この図で、"*ドキュメント クラッキング*" のステップは自動的に行われます。 基本的に、Azure Cognitive Search では、よく知られているファイルを開く方法を把握しており、各ドキュメントから抽出されたテキストを含む "*content*" フィールドが作成されます。 白いボックスは組み込みエンリッチャーで、ドットのある "Bing Entity Search" ボックスは、作成するカスタム エンリッチャーを表します。 図に示すように、スキルセットには、3 つのスキルが含まれています。
 
 ## <a name="skillset-definition-in-rest"></a>REST でのスキルセットの定義
 
@@ -173,7 +171,7 @@ Content-Type: application/json
 
 * このスキルには、```"organizations"``` と呼ばれる出力があります。 出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、```"/document/organizations"``` としてこの出力を参照します。
 
-* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 例: 
+* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 次に例を示します。
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -212,7 +210,7 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
-      }
+      },
       "context": "/document/organizations/*",
       "inputs": [
         {
@@ -237,21 +235,21 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 ## <a name="add-structure"></a>構造を追加する
 
-スキルセットによって、非構造化データから構造化情報が生成されます。 次の例を考えてみます。
+スキルセットによって、非構造化データから構造化情報が生成されます。 次の例を確認してください。
 
-"*Microsoft では第 4 四半期に、昨年買収したソーシャル ネットワー キング会社 LinkedIn からの収益として 11 億ドルを記録しました。Microsoft は、この買収によって、LinkedIn の機能を自社の CRM と Office の機能に結合することができます。株主は、これまでの経過に興奮しています。*"
+"*Microsoft では第 4 四半期に、昨年買収したソーシャル ネットワー キング会社 LinkedIn からの収益として 11 億ドルを記録しました。Microsoft は、この買収によって、LinkedIn の機能を自社の CRM と Office の機能に結合することができます。株主は、これまでの経過に興奮しています。* "
 
 結果として生成される構造体は、次の図のようになります。
 
-![サンプル出力構造体](media/cognitive-search-defining-skillset/enriched-doc.png "サンプル出力構造体")
+![出力構造のサンプル](media/cognitive-search-defining-skillset/enriched-doc.png "出力構造のサンプル")
 
-ここまでは、この構造は、内部のみ、メモリのみであり、Azure Search インデックス内だけで使用されていました。 検索以外で使用するシェイプによるエンリッチメントを保存するための 1 つの方法として、ナレッジ ストアの追加が提供されています。
+ここまでは、この構造は、内部のみ、メモリのみであり、Azure Cognitive Search インデックス内だけで使用されていました。 検索以外で使用するシェイプによるエンリッチメントを保存するための 1 つの方法として、ナレッジ ストアの追加が提供されています。
 
 ## <a name="add-a-knowledge-store"></a>ナレッジ ストアを追加する
 
-[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure Search 内のプレビュー機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
+[ナレッジ ストア](knowledge-store-concept-intro.md)は、エンリッチされたドキュメントを保存するための Azure Cognitive Search のプレビュー機能です。 Azure ストレージ アカウントによってサポートされている、自身で作成したナレッジ ストアは、エンリッチされたデータが配置されるリポジトリになります。 
 
-ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[ナレッジ ストアの使用を開始する方法](knowledge-store-howto.md)に関するページをご覧ください。
+ナレッジ ストアの定義は、スキルセットに追加されます。 プロセス全体のチュートリアルについては、[REST でのナレッジ ストアの作成](knowledge-store-create-rest.md)に関するページをご覧ください。
 
 ```json
 "knowledgeStore": {
@@ -277,6 +275,6 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エンリッチメント パイプラインとスキルセットについて学習したので、引き続き[スキルセットの注釈を参照する方法](cognitive-search-concept-annotations-syntax.md)または[インデックス内のフィールドに出力をマップする方法](cognitive-search-output-field-mapping.md)を確認してください。 

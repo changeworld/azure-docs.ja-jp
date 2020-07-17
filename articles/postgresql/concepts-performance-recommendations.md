@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
+title: パフォーマンスに関する推奨事項 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 08/21/2019
+ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068842"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74768471"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10 (単一サーバー)
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 パフォーマンスに関する推奨事項機能では、データベースを分析し、パフォーマンス向上に役立つカスタマイズされた提案が作成されます。 推奨事項を生成するために、分析ではスキーマなどのさまざまなデータベースの特性に注目します。 パフォーマンスに関する推奨事項機能をフル活用するには、サーバー上で[クエリ ストア](concepts-query-store.md)を有効にしてください。 パフォーマンスに関する推奨事項を実装した後は、パフォーマンスをテストし、変更の影響を評価する必要があります。 
 
@@ -25,7 +25,7 @@ ms.locfileid: "65068842"
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスに関する推奨事項](concepts-performance-recommendations.md)機能は、パフォーマンスを向上させる可能性のあるインデックスを識別するために、サーバーの間でワークロードを分析します。
 
-Azure portal の PostgreSQL サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、**[パフォーマンスの推奨事項]** を開きます。
+Azure portal の PostgreSQL サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、 **[パフォーマンスの推奨事項]** を開きます。
 
 ![パフォーマンスに関する推奨事項ランディング ページ](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
@@ -47,7 +47,8 @@ Azure portal の PostgreSQL サーバーに関するページで、メニュー 
 ### <a name="drop-index-recommendations"></a>インデックスの削除に関する推奨事項
 足りないインデックスの検出だけでなく、Azure Database for PostgreSQL は既存のインデックスのパフォーマンスを継続的に分析します。 インデックスがほとんど使用されなかったり、冗長であったりした場合、アナライザーによりドロップが推奨されます。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="considerations"></a>考慮事項
+* パフォーマンスの推奨事項は、[読み取りレプリカ](concepts-read-replicas.md)では使用できません。
+## <a name="next-steps"></a>次のステップ
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。
 

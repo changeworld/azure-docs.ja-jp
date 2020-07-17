@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010230"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68987952"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)
 
@@ -176,7 +176,7 @@ ms.locfileid: "60010230"
 | Target Resource Name | ターゲット リソースの名前。 アプリケーション名、ロール名、ユーザー プリンシパル名、またはサービス プリンシパル名になります。 |
 | additionalTargets | 特定の操作の追加のプロパティをすべて一覧表示します。 たとえば、更新操作の場合、以前の値と新しい値が *targetUpdatedProperties* 以下に一覧表示されます。 | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)
 * [Azure Diagnostics ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)

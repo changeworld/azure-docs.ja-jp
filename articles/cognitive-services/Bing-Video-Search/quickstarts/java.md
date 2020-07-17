@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Bing Video Search REST API と Java を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:REST API と Java を使用して動画を検索する - Bing Video Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 3b0060b189dd941a8705d7e9815f69db8ea035e8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863314"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75382652"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>クイック スタート:Bing Video Search REST API と Java を使用して動画を検索する
 
@@ -59,7 +59,7 @@ ms.locfileid: "55863314"
     }
     ```
 
-3. `SearchVideos()` という名前の新しいメソッドを作成し、API エンドポイントのホストとパス、サブスクリプション キー、検索語句の各変数を宣言します。 戻り値は `SearchResults` オブジェクトです。 
+3. `SearchVideos()` という名前の新しいメソッドを作成し、API エンドポイントのホストとパス、サブスクリプション キー、検索語句の各変数を宣言します。 戻り値は `SearchResults` オブジェクトです。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -243,7 +243,7 @@ ms.locfileid: "55863314"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)

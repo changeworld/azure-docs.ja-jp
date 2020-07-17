@@ -3,22 +3,20 @@ title: Azure トラフィック分析についてよく寄せられる質問 | M
 description: トラフィック分析についてよく寄せられる質問の回答を確認します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: jdial
-ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.author: damendo
+ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149288"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189047"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -90,22 +88,33 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 - インド南部
 - 東日本
 - 西日本
-- 米国政府バージニア州
+- US Gov バージニア州
+- 中国東部 2
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 - カナダ中部
 - 米国中西部
-- 米国西部 2
 - 米国東部
+- 米国東部 2
+- 米国中北部
+- 米国中南部
+- 米国中部
+- 米国西部
+- 米国西部 2
 - フランス中部
 - 西ヨーロッパ
+- 北ヨーロッパ
+- 英国西部
 - 英国南部
+- オーストラリア東部
 - オーストラリア南東部
+- 東アジア
 - 東南アジア 
 - 韓国中部
 - インド中部
 - 東日本
-- 米国政府バージニア州
+- US Gov バージニア州
+- 中国東部 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>フロー ログを有効化する NSG は、自分のワークスペースとは別のリージョンに存在できますか?
 
@@ -125,7 +134,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>未処理のログを別のサブスクリプションで格納することはできますか?
 
-いいえ。 NSG のフロー ログが有効になっているストレージ アカウントでは、未処理のログを保存できます。 ただし、ストレージ アカウントと未処理のログは、同じサブスクリプションとリージョンに属している必要があります。
+はい。 別のサブスクリプションにあるストレージ アカウントに送信されるように NSG フロー ログを構成できます。ただし、適切な特権があり、ストレージ アカウントが NSG と同じリージョンに配置されている必要があります。 また、NSG と送信先のストレージ アカウントが同じ Azure Active Directory テナントを共有する必要もあります。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>"見つかりません" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?
 
@@ -136,8 +145,8 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 フロー ログが正しく機能するには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>ソリューションを構成しました。 ダッシュボードに何も表示されないのはなぜですか?
@@ -241,11 +250,11 @@ Traffic Analytics は従量制です。 測定は、サービスによるフロ�
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Traffic Analytics ではデータがどのような頻度に処理されますか?
 
-Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation)」セクションを参照してください。
+Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)」セクションを参照してください。
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Traffic Analytics では悪意のある IP であるかどうかがどのように判断されますか? 
 
-Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Mircosoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合は、その詳細を知らせるサポート チケットを発行してください。
+Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Mircosoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合、その詳細を知るにはサポート チケットを発行してください。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Traffic Analytics のデータに対してアラートを設定するにはどうすればよいですか?
 
@@ -253,14 +262,70 @@ Traffic Analytics には、アラートに対する組み込みのサポート�
 - Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 
 - [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
 - [新しいアラート ルール] をクリックして、アラートを作成します。
-- [ログ アラートのドキュメント](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)を参照して、アラートを作成します。
+- [ログ アラートのドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)を参照して、アラートを作成します。
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>受信するオンプレミス トラフィックが多い VM を確認するにはどうすればよいですか
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  IP の場合:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+時刻には、yyyy-mm-dd 00:00:00 の形式を使用します。
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>自分の VM がオンプレミスのマシンから受信したトラフィックの標準偏差を確認するにはどうすればよいですか
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+IP の場合:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>NSG ルールを使用して IP ペア間で到達可能な (またはブロックされた) ポートを確認するにはどうすればよいですか
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>geo マップ ビューでキーボードを使用して操作するにはどうすればよいですか?
 
 geo マップ ページには主に次の 2 つのセクションがあります。
     
-- **バナー**: geo マップの上部のバナーには、トラフィック分布フィルター (たとえば、デプロイ、各国からのトラフィック、悪意のある、など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがマップに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブなデータセンターが強調表示されます。
-- **マップ**: バナーの下にある [マップ] セクションには、Azure のデータセンターや各国のトラフィック分布が表示されます。
+- **バナー**: geo マップの上部のバナーには、トラフィック分布フィルター (たとえば、デプロイ、国/地域からのトラフィック、悪意のある、など) を選択するボタンがあります。 ボタンを選択すると、それに対応するフィルターがマップに適用されます。 たとえば、[アクティブ] ボタンを選択すると、マップでデプロイ内のアクティブなデータセンターが強調表示されます。
+- **マップ**: バナーの下にある [マップ] セクションには、Azure のデータセンターや各国/リージョンのトラフィック分布が表示されます。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>バナーでのキーボード ナビゲーション
     
@@ -274,7 +339,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
 - バナーでフィルターを選択してから `Ctrl+F6` を押すと、マップ ビューで強調されたノードの 1 つ (**Azure データセンター**または**国/リージョン**) にフォーカスが移動します。
 - マップ内の他の強調表示されたノードに移動するには、前方移動に `Tab` キーまたは `Right arrow` キーを使用します。 後方移動には、`Shift+Tab` キーまたは `Left arrow` キーを使用します。
 - マップ内で強調表示されたノードを選択するには、`Enter` キーまたは `Down arrow` キーを使用します。
-- そのようなノードを選択すると、そのノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、**[Information Tool Box]\(情報ツール ボックス\)** の [閉じる] ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、**[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
+- そのようなノードを選択すると、そのノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の [閉じる] ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
 - **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスがあるときに `Tab`を押すと、フォーカスは、選択したノードと同じ大陸のエンドポイントに移動します。 `Right arrow` キーと `Left arrow` キーを使用して、これらのエンドポイント間を移動できます。
 - 他のフロー エンドポイントまたは大陸クラスターに移動するには、前方移動では `Tab`、後方移動では `Shift+Tab` を使用します。
 - フォーカスが**大陸クラスター**にある場合は、`Enter` または `Down` 方向キーを使用して、大陸クラスター内のエンドポイントを強調表示します。 大陸クラスターのエンドポイントと情報ボックスの [閉じる] ボタンを移動するには、前方移動では `Right arrow` キー、後方移動では `Left arrow` キーをそれぞれ使用します。 任意のエンドポイントで、`Shift+L` を使用すると、選択したノードからエンドポイントへの接続線に切り替えることができます。 もう一度 `Shift+L` を押して、選択したエンドポイントに移動できます。
@@ -303,7 +368,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
     
 - バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**VNet**) にフォーカスが移動します。
 - トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 
-- 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、**[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する場合、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、**[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
+- 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する場合、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
 - このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。
     
 
@@ -325,6 +390,6 @@ geo マップ ページには主に次の 2 つのセクションがあります
     
 - バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**サブネット**) にフォーカスが移動します。
 - トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 
-- 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、**[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、**[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
+- 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
 - このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。    
 

@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor での監視ソリューションのターゲット設定 | Microsoft Docs
 description: 監視ソリューションのターゲット設定を行うことで、監視ソリューションを特定のエージェント セットに制限できます。  この記事では、スコープの構成を作成して、ソリューションに適用する方法について説明します。
-services: monitoring
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1f054a4e-6243-4a66-a62a-0031adb750d8
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4082847e1871fc03713471b0c043dddb80f91b0d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 04/27/2017
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769235"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77663234"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)
 サブスクリプションに監視ソリューションを追加すると、ソリューションは、既定では Log Analytics ワークスペースに接続されているすべての Windows エージェントと Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
@@ -41,7 +34,7 @@ ms.locfileid: "57769235"
  次のプロセスを使用して、スコープ構成を作成します。  
 
  1. Azure portal で **Log Analytics ワークスペース**に移動し、目的のワークスペースを選択します。
- 2. ワークスペースのプロパティにある **[ワークスペースのデータソース]** で、**[スコープ構成]** を選択します。
+ 2. ワークスペースのプロパティにある **[ワークスペースのデータソース]** で、 **[スコープ構成]** を選択します。
  3. **[追加]** をクリックして、新しいスコープ構成を作成します。
  4. スコープ構成の**名前**を入力します。
  5. **[コンピューター グループの選択]** をクリックします。
@@ -49,18 +42,18 @@ ms.locfileid: "57769235"
  6. **[OK]** をクリックして、スコープ構成を作成します。 
 
 
-### <a name="3-apply-the-scope-configuration-to-a-solution"></a>手順 3.ソリューションへのスコープ構成の適用。
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3.ソリューションへのスコープ構成の適用。
 作成したスコープ構成は、1 つ以上のソリューションに適用できます。  1 つのスコープ構成を複数のソリューションで使用することはできますが、ソリューションが使用できるスコープ構成は、ソリューションごとに 1 つだけです。
 
 次のプロセスを使用して、スコープ構成を適用します。  
 
  1. Azure portal で **Log Analytics ワークスペース**に移動し、目的のワークスペースを選択します。
- 2. ワークスペースのプロパティで、**[ソリューション]** を選択します。
+ 2. ワークスペースのプロパティで、 **[ソリューション]** を選択します。
  3. スコープを設定するソリューションを選択します。
- 4. ソリューションのプロパティにある **[ワークスペースのデータソース]** で、**[Solution Targeting (ソリューションのターゲット設定)]** を選択します。  オプションを利用できない場合、[このソリューションはターゲット設定できません](#solutions-and-agents-that-cant-be-targeted)。
+ 4. ソリューションのプロパティにある **[ワークスペースのデータソース]** で、 **[Solution Targeting (ソリューションのターゲット設定)]** を選択します。  オプションを利用できない場合、[このソリューションはターゲット設定できません](#solutions-and-agents-that-cant-be-targeted)。
  5. **[スコープ構成の追加]** をクリックします。  このソリューションに構成が既に適用されている場合、このオプションは使用できません。  構成を追加する前に、既存の構成を削除する必要があります。
  6. 作成したスコープ構成をクリックします。
- 7. 構成の**状態**を監視して、**[成功]** が表示されることを確認します。  エラーが示される場合は、構成の右側にある省略記号ボタンをクリックして、**[スコープ構成の編集]** を選択して変更を加えます。
+ 7. 構成の**状態**を監視して、 **[成功]** が表示されることを確認します。  エラーが示される場合は、構成の右側にある省略記号ボタンをクリックして、 **[スコープ構成の編集]** を選択して変更を加えます。
 
 ## <a name="solutions-and-agents-that-cant-be-targeted"></a>ターゲット設定できないソリューションとエージェント
 ソリューションのターゲット設定で使用できないエージェントとソリューションの条件を次に示します。
@@ -74,6 +67,6 @@ ms.locfileid: "57769235"
 
 - エージェントの正常性評価
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Log Analytics 監視ソリューションをワークスペースに追加する](solutions.md)ことの関するページで、環境にインストールできるソリューションを含む監視ソリューションについて学習します。
 - [Azure Monitor のログ クエリにおけるコンピューター グループ](../platform/computer-groups.md)に関するページで、コンピューター グループの作成について学習します。

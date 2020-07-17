@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 4f721dc4fda5bef002c794d79dfd2f054f9eaf38
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511188"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72516744"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -40,7 +40,7 @@ ms.locfileid: "65511188"
 専用クラスターでは、完全なスケールで容量が保証され、トラフィックのバーストに対応する十分な耐久性を備えたストレージと 1 秒未満の待機時間によりギガバイトのストリーミング データまでイングレスできます。 
 
 #### <a name="inclusive-and-exclusive-access-to-features"></a>機能への包括アクセスと排他アクセス 
-専用オファリングには、追加コストのないキャプチャや、BYOK のような今後の機能への排他アクセスなどの機能が含まれています。 また、サービスではお客様のために負荷分散、OS 更新、セキュリティ パッチ、パーティション分割が管理され、お客様はインフラストラクチャのメンテナンスの時間を減らし、クライアント側機能の構築にかける時間を増やすことができます。  
+専用オファリングには、追加コストなしでのキャプチャや、BYOK (Bring Your Own Key) などの近日導入される機能への排他アクセスなどの機能があります。 また、サービスではお客様のために負荷分散、OS 更新、セキュリティ パッチ、パーティション分割が管理され、お客様はインフラストラクチャのメンテナンスの時間を減らし、クライアント側機能の構築にかける時間を増やすことができます。  
 
 #### <a name="cost-savings"></a>コスト削減
 高いイングレス量 (> 100 TU) により、Standard オファリングで同等の量のスループット ユニットを購入するより、クラスターのコストが大幅に減ります。
@@ -54,18 +54,18 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 | --- |:---:|:---:|
 | 帯域幅 | 20 TU (最大 40 TU) | 20 CU |
 | 名前空間 |  1 | CU あたり 50 |
-| Event Hubs |  10 | イベント ハブ/トピックに制限なし |
-| イングレス イベント | 100 万イベントごとの課金 | あり |
+| Event Hubs |  名前空間あたり 10 | 名前空間あたり 1,000 |
+| イングレス イベント | 100 万イベントごとの課金 | Included |
 | メッセージ サイズ | 100 万バイト | 100 万バイト |
-| パーティション | 名前空間あたり 40 | CU あたり 2,000 |
+| [メジャー グループ] | イベント ハブあたり 32 | イベント ハブあたり 1024 |
 | コンシューマー グループ | イベント ハブあたり 20 | CU あたりの制限なし、イベント ハブあたり 1,000 |
-| 仲介型接続 | 1,000 (付属) | 100,000 (付属) |
+| 仲介型接続 | 1,000 (付属)、最大 5,000 | 100,000 (付属、最大) |
 | メッセージのリテンション期間 | 7 日、TU あたり 84 GB を含む | 90 日、CU あたり 10 TB を含む |
-| キャプチャ | 1 時間ごとの課金 | あり |
+| キャプチャ | 1 時間ごとの課金 | Included |
 
 ## <a name="how-to-onboard"></a>利用を開始する方法
 
-Event Hubs Dedicated へのオンボードについては、[Event Hubs チーム](mailto:askeventhubs@microsoft.com)にお問い合わせください。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
+[Azure portal](https://aka.ms/eventhubsclusterquickstart) を使用して [Event Hubs クラスター](event-hubs-dedicated-cluster-create-portal.md)を作成するセルフサービス エクスペリエンスは、プレビュー段階になりました。 不明な点がある場合や、Event Hubs Dedicated へのオンボードについてサポートが必要な場合は、[Event Hubs チーム](mailto:askeventhubs@microsoft.com)にお問い合わせください。
 
 ## <a name="faqs"></a>FAQ
 
@@ -87,20 +87,21 @@ Event Hubs クラスターの場合、どれだけの容量を取り込んでス
 - 取り込みに使用されたイベント ハブには 200 パーティションが存在しました。 
 - 取り込まれたデータは、すべてのパーティションから受信している 2 つの受信側アプリケーションによって受信されました。
 
-#### <a name="can-i-scale-down-my-cluster"></a>クラスターをスケールダウンできますか?
+#### <a name="can-i-scale-updown-my-cluster"></a>クラスターをスケールアップ/ダウンできますか?
 
-作成後、クラスターは 4 時間以上の使用に対して課金されます。 セルフサービス エクスペリエンスのプレビュー リリースでは、*[技術] > [クォータ] > [Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)* で[サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を Event Hubs チームに送ることができます。 クラスターのスケールダウンが要求するまで、最大で 7 日かかる場合があります。 
+作成後、クラスターは 4 時間以上の使用に対して課金されます。 セルフサービス エクスペリエンスのプレビュー リリースでは、 *[技術] > [クォータ] > [Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)* でクラスターをスケールアップまたはスケールダウンする[サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を Event Hubs チームに送ることができます。 クラスターのスケールダウンが要求するまで、最大で 7 日かかる場合があります。 
 
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>クラスターでは geo DR はどのようにどうしますか?
 
 Dedicated レベルのクラスターの名前空間を、Dedicated レベルのクラスターの別の名前空間と、geo ペアリングすることができます。 Dedicated レベルの名前空間と Standard オファリングの名前空間のペアリングは、スループットの制限に互換性がないためエラーが発生するので、お勧めしません。 
 
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standard の名前空間を Dedicated レベルのクラスターに属するように移行できますか?
-Standard 名前空間から Dedicated 名前空間にイベント ハブ データを移行する自動移行プロセスを、現在はサポートされていません。 Dedicated レベル クラスターに移行するには、Standard レベルのイベント ハブに残っているメッセージをドレインし、接続エンドポイントを Dedicated 名前空間のものに置き換えることをお勧めします。
+Standard 名前空間から Dedicated 名前空間にイベント ハブ データを移行する自動移行プロセスを、現在はサポートされていません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Event Hubs Dedicated 容量の詳細については、Microsoft の営業担当者または Microsoft サポートにお問い合わせください。 次のリンク先で、Event Hubs の価格レベルの詳細を確認することもできます。
+Event Hubs Dedicated の詳細については、Microsoft の営業担当者または Microsoft サポートにお問い合わせください。 次のリンク先で、クラスターを作成することや、Event Hubs の価格レベルの詳細を確認することもできます。
 
+- [Azure portal を使用して Event Hubs クラスターを作成する](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs Dedicated の価格](https://azure.microsoft.com/pricing/details/event-hubs/)。 Microsoft の営業担当者または Microsoft サポートに連絡して、Event Hubs Dedicated 容量の詳細を確認することもできます。
 - 「[Event Hubs の FAQ](event-hubs-faq.md)」では、Event Hubs の価格の情報について説明し、よく寄せられる質問のいくつかに回答します。

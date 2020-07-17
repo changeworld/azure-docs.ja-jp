@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002699"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858287"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
 Azure リージョン全体または ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない) データ センター全体にダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
-Event Hubs Standard SKU では、geo ディザスター リカバリー機能がグローバルに使用できます。
+> [!NOTE]
+> geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。  
 
 ## <a name="outages-and-disasters"></a>故障と災害
 
@@ -37,7 +38,9 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 ## <a name="basic-concepts-and-terms"></a>基本的な概念と用語
 
-ディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 geo ディザスター リカバリー機能は、[Standard SKU](https://azure.microsoft.com/pricing/details/event-hubs/) でのみ使用可能です。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
+ディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 
+
+geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
 
 この記事では、次の用語を使用します。
 
@@ -48,6 +51,19 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 -  *メタデータ*: 名前空間に関連付けられているサービスのエンティティ (イベント ハブ、コンシューマー グループなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけであることに注意してください。 メッセージやイベントはレプリケートされません。 
 
 -  *フェールオーバー*: セカンダリの名前空間をアクティブ化するプロセスです。
+
+## <a name="supported-namespace-pairs"></a>サポートされている名前空間のペア
+プライマリ名前空間とセカンダリ名前空間の次の組み合わせがサポートされています。  
+
+| プライマリ名前空間 | セカンダリ名前空間 | サポートされています | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | はい | 
+| Standard | 専用 | はい | 
+| 専用 | 専用 | はい | 
+| 専用 | Standard | いいえ | 
+
+> [!NOTE]
+> 同じ専用クラスター内にある名前空間を組み合わせることはできません。 別々のクラスター内にある名前空間を組み合わせることができます。 
 
 ## <a name="setup-and-failover-flow"></a>セットアップとフェールオーバーの流れ
 
@@ -84,7 +100,7 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 ## <a name="samples"></a>サンプル
 
-[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
+[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
 
 - Azure Resource Manager を Event Hubs で使用するために Azure Active Directory に必要な設定。 
 - サンプル コードを実行するために必要な手順。 
@@ -94,33 +110,43 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 このリリースでは次の考慮事項にご注意ください。
 
-1. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
+1. 設計上、Event Hubs の geo ディザスター リカバリーではデータがレプリケートされないため、セカンダリ イベント ハブでプライマリ イベント ハブの古いオフセット値を再利用することはできません。 次のいずれかを使用して、イベント レシーバーを再起動することをお勧めします。
+
+- *EventPosition.FromStart()* - セカンダリ イベント ハブのすべてのデータを読み取る場合。
+- *EventPosition.FromEnd()* - セカンダリ イベント ハブに接続してからのすべての新しいデータを読み取る場合。
+- *EventPosition.FromEnqueuedTime(dateTime)* - 指定した日付と時刻以降にセカンダリ イベント ハブで受信したすべてのデータを読み取る場合。
+
+2. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
  
-2. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
+3. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
 
-3. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation)を行うようお勧めします。 
+4. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)を行うようお勧めします。 
 
-4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
+5. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
 
 ## <a name="availability-zones"></a>可用性ゾーン 
 
 Event Hubs Standard SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 
 
 > [!NOTE]
-> Azure Event Hubs Standard に対する Availability Zones のサポートは、可用性ゾーンが存在する [Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)内でのみ利用できます。
+> Azure Event Hubs Standard に対する Availability Zones のサポートは、可用性ゾーンが存在する [Azure リージョン](../availability-zones/az-region.md)内でのみ利用できます。
 
 Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Event Hubs では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
 
 ![3][]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
-* [REST API リファレンス](/rest/api/eventhub/disasterrecoveryconfigs)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
+* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
+* [REST API リファレンス](/rest/api/eventhub/)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
 
 Event Hubs の詳細については、次のリンクを参照してください。
 
-* [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

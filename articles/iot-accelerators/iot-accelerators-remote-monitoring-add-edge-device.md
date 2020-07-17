@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: d34ac159a216c5c77214b4c8b799a233c3671235
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749547"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72965383"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge デバイスをリモート監視ソリューション アクセラレータに追加する
 
@@ -24,9 +24,9 @@ ms.locfileid: "56749547"
 
 ## <a name="add-the-iot-edge-device"></a>IoT Edge デバイスを追加する
 
-リモート監視ソリューション アクセラレータに IoT Edge デバイスを追加するには、Web UI の **[Device Explorer]** ページに移動し、**[+ 新規デバイス]** をクリックします。
+リモート監視ソリューション アクセラレータに IoT Edge デバイスを追加するには、Web UI の **[Device Explorer]** ページに移動し、 **[+ 新規デバイス]** をクリックします。
 
-**[新規デバイス]** パネルで、**[IoT Edge デバイス]** を選択します。 その他の設定は既定値のままでかまいません。 次に、**[適用]** をクリックします。
+**[新規デバイス]** パネルで、 **[IoT Edge デバイス]** を選択します。 その他の設定は既定値のままでかまいません。 次に、 **[適用]** をクリックします。
 
 ![IoT Edge デバイスを追加する](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
@@ -34,9 +34,9 @@ ms.locfileid: "56749547"
 
 IoT Edge デバイスをソリューション アクセラレータの IoT Hub インスタンスに直接登録することもできます。 次のような攻略ガイドに従う前に、ソリューション アクセラレータで IoT ハブの名前を知る必要があります。
 
-- [Azure portal から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device-portal.md)
-- [Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device-cli.md)
-- [Visual Studio Code から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device-vscode.md)
+- [Azure portal から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
+- [Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
+- [Visual Studio Code から新しい Azure IoT Edge デバイスを登録する](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
 
 リモート監視ソリューション アクセラレータの IoT ハブにデバイスを登録すると、それが Web UI の **[デバイス エクスプローラー]** ページに表示されます。
 
@@ -50,6 +50,6 @@ Edge デバイスにモジュールをデプロイする前に、IoT Edge ラン
 - [Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
 - [IoT Edge ランタイムを Windows IoT Core にインストールする](../iot-edge/how-to-install-iot-core.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Edge デバイスの準備が完了したら、次はモジュールを IoT Edge デバイスに配置します。 「[リモート監視ソリューション アクセラレータに IoT Edge パッケージをインポートする](iot-accelerators-remote-monitoring-import-edge-package.md)」を参照してください。

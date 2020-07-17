@@ -1,21 +1,20 @@
 ---
-title: Azure Monitor での役割、アクセス許可、およびセキュリティの使用
+title: Azure Monitor でのロール、アクセス許可、セキュリティ
 description: Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243433"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836381"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -29,9 +28,9 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
 * [Azure アラート](alerts-overview.md)に定義されているアラート ルールを表示する。
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](powershell-quickstart-samples.md)、または[クロスプラットフォーム CLI](cli-samples.md) を使用して、メトリックにクエリを実行する。
+* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](powershell-quickstart-samples.md)、または[クロスプラットフォーム CLI](../samples/cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
-* リソースの [診断設定](diagnostic-logs-overview.md#diagnostic-settings) を表示する。
+* リソースの [診断設定](diagnostic-settings.md) を表示する。
 * サブスクリプションの [ログ プロファイル](activity-log-export.md) を表示する。
 * 自動スケールの設定を表示する。
 * アラート アクティビティと設定を表示する。
@@ -52,7 +51,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージド サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
-* リソースの[診断設定](diagnostic-logs-overview.md#diagnostic-settings)を設定する。\*
+* リソースの[診断設定](diagnostic-settings.md)を設定する。\*
 * サブスクリプションの[ログ プロファイル](activity-log-export.md)を設定する。\*
 * [Azure アラート](alerts-overview.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
@@ -71,7 +70,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
 上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../../role-based-access-control/custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
-| Operation | 説明 |
+| 操作 | 説明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |
@@ -116,7 +115,7 @@ New-AzRoleDefinition -Role $role
 監視データ、特にログ ファイルには、IP アドレス、ユーザー名などの機密情報が含まれている場合があります。 Azure の監視データは、次の 3 つの基本フォームで提供されます。
 
 1. アクティビティ ログ。Azure サブスクリプションのすべてのコントロール プレーン アクションが記述されています。
-2. 診断ログ。リソースによって出力されるログです。
+2. リソース ログ。リソースによって出力されるログです。
 3. メトリック。リソースによって出力されます。
 
 この 3 つのデータ型はすべて、ストレージ アカウントに保存するか、Event Hub にストリーミングできます。このストレージ アカウントと Event Hub は両方とも 汎用 Azure リソースです。 このような汎用リソースに作成、削除、およびアクセスするには、管理者のために予約された特権が必要です。 監視関連のリソースの場合、誤用を防ぐために、以下を実践することをお勧めします。
@@ -182,12 +181,12 @@ New-AzRoleDefinition -Role $role
 ### <a name="secured-storage-accounts"></a>セキュリティで保護されたストレージ アカウント 
 
 多くの場合、監視データはストレージ アカウントに書き込まれます。 ストレージ アカウントにコピーされたデータに、権限を持たないユーザーがアクセスできないようにすることができます。 さらにセキュリティを強化するために、"選択されたネットワーク" を使用できるストレージ アカウントを制限することによって、権限を持つリソースと信頼できる Microsoft サービスのみがストレージ アカウントにアクセスできるように、ネットワーク アクセスをロックすることができます。
-![Azure Storage の [設定] ダイアログ](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor は、このような "信頼された Microsoft サービス" の 1 つと見なされます。信頼された Microsoft サービスがセキュリティで保護されたストレージにアクセスできるようにする場合、Azure Monitor にはセキュリティで保護されたストレージ アカウントへのアクセス権が付与されます。このような保護された条件下で Azure Monitor 診断ログ、アクティビティ ログ、およびメトリックをストレージ アカウントに書き込むことができます。 これにより、Log Analytics から、セキュリティで保護されたストレージのログを読み取ることもできます。   
+![Azure Storage の [設定] ダイアログ](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor は、このような "信頼された Microsoft サービス" の 1 つと見なされます。信頼された Microsoft サービスがセキュリティで保護されたストレージにアクセスできるようにする場合、Azure Monitor にはセキュリティで保護されたストレージ アカウントへのアクセス権が付与されます。このような保護された条件下で、Azure Monitor リソース ログ、アクティビティ ログ、およびメトリックをストレージ アカウントに書き込むことができます。 これにより、Log Analytics から、セキュリティで保護されたストレージのログを読み取ることもできます。   
 
 
 詳細については、[ネットワーク セキュリティと Azure Storage](../../storage/common/storage-network-security.md) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Resource Manager で RBAC とアクセス許可を確認します](../../role-based-access-control/overview.md)
 * [Azure で監視の概要を確認します](../../azure-monitor/overview.md)
 

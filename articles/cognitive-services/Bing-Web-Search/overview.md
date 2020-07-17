@@ -1,22 +1,22 @@
 ---
 title: Bing Web Search API とは
 titleSuffix: Azure Cognitive Services
-description: Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
+description: Bing Web Search API は、Web サービスのクエリにすぐに回答する RESTful サービスです。 Web ページ、画像、ビデオ、ニュースなどを含むように結果を構成します。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 03/12/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60648146"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80477473"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
@@ -26,7 +26,7 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 しくみを確認するには、 [Bing Web Search API のデモ](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)を試してください。
 
-## <a name="features"></a>機能  
+## <a name="features"></a>[機能]  
 
 Bing Web Search では、インスタント アンサーにアクセスできるだけではありません。 ユーザーの検索結果をカスタマイズできるさまざまな機能も利用できます。
 
@@ -40,15 +40,15 @@ Bing Web Search では、インスタント アンサーにアクセスできる
 
 ## <a name="workflow"></a>ワークフロー
 
-Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search SDK](web-sdk-python-quickstart.md) を使用してアクセスできます。
+Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search クライアント ライブラリ](./quickstarts/client-libraries.md)を使用してアクセスできます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を作成できます。  
+1. Bing Search API に使用する [Azure リソース](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を作成できます。  
 2. [要求を Bing Web Search API](quickstarts/python.md) に送信します。
 3. JSON 応答を解析します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* Bing Web Search API を初めて呼び出す場合は、[Python のクイック スタート](quickstarts/python.md)を参照してください。  
+* Bing Web Search API を初めて呼び出す場合は、[Python のクイック スタート](./quickstarts/client-libraries.md?pivots=programming-language-python)を参照してください。  
 * [シングルページ Web アプリの作成](tutorial-bing-web-search-single-page-app.md)。
-* [Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)のドキュメントを参照してください。  
+* [Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)のドキュメントを参照してください。  
 * Bing Web Search の[使用と表示に関する要件](UseAndDisplayRequirements.md)の詳細を参照してください。  

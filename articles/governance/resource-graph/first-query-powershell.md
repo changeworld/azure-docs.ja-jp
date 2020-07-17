@@ -1,19 +1,14 @@
 ---
-title: Azure PowerShell を使用して最初のクエリを実行する
-description: この記事では、Azure PowerShell の Resource Graph モジュールを有効にして、最初のクエリを実行する手順について説明します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 01/23/2019
+title: クイック スタート:初めての PowerShell クエリ
+description: このクイックスタートでは、手順に従って、Azure PowerShell の Resource Graph 拡モジュールを有効にし、最初のクエリを実行します。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 17003864c7bcc5f8be6acf17d40ce2039f031313
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823241"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215630"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -21,13 +16,15 @@ Azure Resource Graph を使用する最初の手順では、Azure PowerShell の
 
 このプロセスの最後では、選択した Azure PowerShell のインストールにモジュールを追加して、最初の Resource Graph クエリを実行しています。
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Resource Graph モジュールを追加する
 
-Azure PowerShell を Azure Resource Graph のクエリに対して有効にするには、モジュールを追加する必要があります。 このモジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell/)で使用できます。
+Azure PowerShell を Azure Resource Graph のクエリに対して有効にするには、モジュールを追加する必要があります。 このモジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [PowerShell Docker イメージ](https://hub.docker.com/_/microsoft-powershell)で使用できます。
 
 ### <a name="base-requirements"></a>基本要件
 
@@ -35,7 +32,7 @@ Azure Resource Graph モジュールには、次のソフトウェアが必要�
 
 - Azure PowerShell 1.0.0 以降。 インストールされていない場合は、こちらの[手順](/powershell/azure/install-az-ps)に従ってください。
 
-- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/gallery/installing-psget)に従ってください。
+- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/scripting/gallery/installing-psget)に従ってください。
 
 ### <a name="install-the-module"></a>モジュールのインストール
 
@@ -48,7 +45,7 @@ PowerShell の Resource Graph モジュールは、**Az.ResourceGraph** です�
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. モジュールがインポートされており、適切なバージョン (0.7.1) であることを確認します。
+1. モジュールがインポートされていて、最新のバージョン (0.7.5) であることを確認します。
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -65,7 +62,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzGraph -Query 'project name, type | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -75,7 +72,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzGraph -Query 'project name, type | limit 5 | order by name asc'
+   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -85,28 +82,32 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
+   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+> [!NOTE]
+> 既にアクセスできているサブスクリプションからクエリの結果が返されなかった場合、`Search-AzGraph` コマンドレットでは既定コンテキストのサブスクリプションが既定で使用されることに注意してください。 既定のコンテキストの一部であるサブスクリプション ID の一覧を表示するには、この `(Get-AzContext).Account.ExtendedProperties.Subscriptions` を実行します。アクセスできるすべてのサブスクリプション全体を検索する場合は、`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` を実行して `Search-AzGraph` コマンドレットの PSDefaultParameterValues を設定できます
+   
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Resource Graph モジュールを Azure PowerShell 環境から削除する場合は、次のコマンドを使用して行うことができます。
 
 ```azurepowershell-interactive
-# Remove the Resource Graph module from the Azure PowerShell environment
+# Remove the Resource Graph module from the current session
 Remove-Module -Name 'Az.ResourceGraph'
+
+# Uninstall the Resource Graph module from the environment
+Uninstall-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]
 > これにより、以前にダウンロードしたモジュールのファイルは削除されません。 実行中の PowerShell セッションから削除されるだけです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [クエリ言語](./concepts/query-language.md)に関するさらなる情報を入手します
-- [その他のリソース](./concepts/explore-resources.md)
-- [Azure CLI ](first-query-azurecli.md)を使用して最初のクエリを実行します
-- [Starter クエリ](./samples/starter.md)のサンプルを参照してください
-- [高度なクエリ](./samples/advanced.md)のサンプルを参照してください
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供してください
+このクイックスタートでは、Azure PowerShell 環境に Resource Graph モジュールを追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+
+> [!div class="nextstepaction"]
+> [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

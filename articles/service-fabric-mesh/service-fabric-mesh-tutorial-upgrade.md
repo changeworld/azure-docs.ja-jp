@@ -1,26 +1,17 @@
 ---
-title: チュートリアル - Azure Service Fabric Mesh アプリケーションをアップグレードする | Microsoft Docs
-description: Visual Studio を使用して Service Fabric アプリケーションをアップグレードする方法を学習します
-services: service-fabric-mesh
-documentationcenter: .net
+title: チュートリアル - Azure Service Fabric Mesh アプリケーションをアップグレードする
+description: このチュートリアルはシリーズの第 4 部です。ここでは、Azure Service Fabric Mesh アプリケーションを Visual Studio から直接アップグレードする方法について説明します。
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 23809abd06d626eb87e5d5d15d265f1769b97b66
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806737"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75351714"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>チュートリアル:Visual Studio を使用して Service Fabric アプリケーションをアップグレードする方法を学習します
 
@@ -56,15 +47,15 @@ Service Fabric Mesh アプリを作成するときに、Visual Studio で各デ�
 
 `WebFrontEnd_cpu` パラメーターを更新し、**WebFrontEnd** サービスの使用頻度がより高くなるアプリケーションで cpu リソースを `1.5` に更新します。
 
-1. **todolistapp** プロジェクトの **[環境]** > **[クラウド]** で、**parameters.yaml** ファイルを開きます。 `WebFrontEnd_cpu` の値を `1.5` に変更します。 さまざまなサービスに適用される、同じ名前のパラメーターと区別するためのベスト プラクティスとして、パラメーター名の前には `WebFrontEnd_` というサービス名が付けられます。
+1. **todolistapp** プロジェクトの **[環境]**  >  **[クラウド]** で、**parameters.yaml** ファイルを開きます。 `WebFrontEnd_cpu` の値を `1.5` に変更します。 さまざまなサービスに適用される、同じ名前のパラメーターと区別するためのベスト プラクティスとして、パラメーター名の前には `WebFrontEnd_` というサービス名が付けられます。
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. **[WebFrontEnd]** > **[サービスのリソース]** で、**WebFrontEnd** プロジェクトの **service.yaml** ファイルを開きます。
+2. **[WebFrontEnd]**  >  **[サービスのリソース]** で、**WebFrontEnd** プロジェクトの **service.yaml** ファイルを開きます。
 
-    `resources:` セクションでは、`cpu:` が `"[parameters('WebFrontEnd_cpu')]"` に設定されていることに注意してください。 クラウド用にプロジェクトが構築されている場合、`'WebFrontEnd_cpu` の値は **[環境]** > **[クラウド]** > **parameters.yaml** ファイルから取得され、`1.5` になります。 ローカルで実行するためにプロジェクトが構築されている場合、値は **[環境]** > **[ローカル]** > **parameters.yaml** ファイルから取得され、'0.5' となります。
+    `resources:` セクションでは、`cpu:` が `"[parameters('WebFrontEnd_cpu')]"` に設定されていることに注意してください。 クラウド用にプロジェクトが構築されている場合、`'WebFrontEnd_cpu` の値は **[環境]**  >  **[クラウド]**  > **parameters.yaml** ファイルから取得され、`1.5` になります。 ローカルで実行するためにプロジェクトが構築されている場合、値は **[環境]**  >  **[ローカル]**  > **parameters.yaml** ファイルから取得され、'0.5' となります。
 
 > [!Tip]
 > 既定では、profile.yaml ファイルのピアであるパラメーター ファイルが、その profile.yaml ファイルの値を指定するために使用されます。
@@ -132,7 +123,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="upgrade-the-app-from-visual-studio"></a>Visual Studio からアプリをアップグレードする
 
-コードのアップグレードと構成のアップグレードのどちらを行う場合でも (この例では両方を行う)、Azure 上の Service Fabric Mesh アプリをアップグレードするには、Visual Studio で **todolistapp** を右クリックして、**[発行]** を選択します。
+コードのアップグレードと構成のアップグレードのどちらを行う場合でも (この例では両方を行う)、Azure 上の Service Fabric Mesh アプリをアップグレードするには、Visual Studio で **todolistapp** を右クリックして、 **[発行]** を選択します。
 
 **[Service Fabric アプリケーションの発行]** ダイアログが表示されます。
 
@@ -140,13 +131,13 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ![Visual Studio: Service Fabric mesh の発行ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Azure アカウントとサブスクリプションを選択します。 **[場所]** は、最初に To-Do アプリを Azure に発行したときに使用した場所に設定します。 この記事では、**[米国東部]** を使用しました。
+Azure アカウントとサブスクリプションを選択します。 **[場所]** は、最初に To-Do アプリを Azure に発行したときに使用した場所に設定します。 この記事では、 **[米国東部]** を使用しました。
 
 **[リソース グループ]** は、最初に To-Do アプリを Azure に発行したときに使用したリソース グループに設定します。
 
 **[Azure Container Registry]** は、最初に To-Do アプリを Azure に発行したときに作成した Azure コンテナー レジストリの名前に設定します。
 
-発行ダイアログで、**[発行]** ボタンをクリックして Azure 上の To-Do アプリをアップグレードします。
+発行ダイアログで、 **[発行]** ボタンをクリックして Azure 上の To-Do アプリをアップグレードします。
 
 Visual Studio の **[出力]** ウィンドウで **[Service Fabric Tools]** ウィンドウを選択して、アップグレードの進行状況を監視します。 
 
@@ -160,7 +151,7 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Web ブラウザーを開き、その URL に移動して、Azure で実行されている Web サイトを表示します。 カテゴリ列が含まれる Web ページが表示されるはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 > [!div class="checklist"]

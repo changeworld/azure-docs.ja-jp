@@ -1,36 +1,29 @@
 ---
 title: Azure Monitor でのリソース間のクエリ | Microsoft Docs
 description: この記事では、サブスクリプション内の複数のワークスペースや App Insights アプリのリソースに対してクエリを実行する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
-ms.author: magoedte
-ms.openlocfilehash: b0d12021be5a5dca348ea3ffa3f0b853725812da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+author: bwren
+ms.author: bwren
+ms.date: 06/05/2019
+ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226587"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Monitor でクロスリソース ログ クエリを実行する  
 
-Azure Monitor では以前、現在のワークスペース内からしかデータを分析できず、サブスクリプション内に定義されている複数のワークスペース間でクエリを実行する機能が制限されていました。  また、Application Insights を使用した Web ベースのアプリケーションから収集されたテレメトリ項目を、Application Insights または Visual Studio から直接検索することしかできませんでした。  またこれにより、運用データとアプリケーション データを一緒にネイティブ分析することが難しくなっていました。   
+Azure Monitor では以前、現在のワークスペース内からしかデータを分析できず、サブスクリプション内に定義されている複数のワークスペース間でクエリを実行する機能が制限されていました。  また、Application Insights を使用した Web ベースのアプリケーションから収集されたテレメトリ項目を、Application Insights または Visual Studio から直接検索することしかできませんでした。 またこれにより、運用データとアプリケーション データを一緒にネイティブ分析することが難しくなっていました。
 
-現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。  これらの種類のクエリは、[Log Analytics](portals.md) でのみ行うことができます。
+現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。 これらの種類のクエリは、[Log Analytics](portals.md) でのみ行うことができます。
 
 ## <a name="cross-resource-query-limits"></a>リソース間のクエリの制限 
 
-* 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。
-* リソース間のクエリは、ビュー デザイナーでサポートされていません。 Log Analytics でクエリを作成して、Azure ダッシュボードにピン留めし、[ログ検索を視覚化する](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search)ことができます。 
-* ログ アラートでのリソース間のクエリは、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](../platform/api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、リソース間のクエリのログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
+* 1 回のクエリに含めることができる Application Insights リソースと Log Analytics ワークスペースの数は 100 個に制限されています。
+* リソース間のクエリは、ビュー デザイナーでサポートされていません。 Log Analytics でクエリを作成し、それを Azure ダッシュボードにピン留めして、[ログ クエリを視覚化](../learn/tutorial-logs-dashboards.md)できます。 
+* ログ アラートでのリソース間のクエリは、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](../platform/api-alerts.md) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 [scheduledQueryRules API 用の Azure Resource Manager テンプレート](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することにより、切り替えを行わなくてもリソース間のクエリのログ アラート ルールを作成できます。ただし、このアラート ルールは [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) で管理できますが、Azure portal からは管理できません。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Log Analytics ワークスペース間と Application Insights からのクエリ
@@ -44,9 +37,6 @@ Azure Monitor では以前、現在のワークスペース内からしかデー
 * リソース名 - 人間が判読できるワークスペースの名前。"*コンポーネント名*" と呼ばれることもあります。 
 
     `workspace("contosoretail-it").Update | count`
- 
-    >[!NOTE]
-    >ワークスペースを名前で識別する場合、その名前は、アクセス可能なすべてのサブスクリプション間で一意であることが前提とされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
 
 * 修飾名 - ワークスペースの "完全な名前"。*subscriptionName/resourceGroup/componentName* の形式で、サブスクリプション名、リソース グループ、およびコンポーネント名から構成されます。 
 
@@ -60,9 +50,9 @@ Azure Monitor では以前、現在のワークスペース内からしかデー
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 
-* Azure リソース ID - Azure で定義されている、ワークスペースの一意な ID。 リソース名があいまいな場合は、リソース ID を使用します。  ワークスペースごとに、*/subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/workspaces/componentName* という形式になります。  
+* Azure リソース ID - Azure で定義されている、ワークスペースの一意な ID。 リソース名があいまいな場合は、リソース ID を使用します。  ワークスペースごとに、 */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/workspaces/componentName* という形式になります。  
 
-    例: 
+    次に例を示します。
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -75,6 +65,9 @@ Application Insights でのアプリケーションの識別は、*app(Identifie
 * リソース名 - 人間が判読できるアプリの名前。"*コンポーネント名*" と呼ばれることもあります。  
 
     `app("fabrikamapp")`
+
+    >[!NOTE]
+    >アプリケーションを名前で識別する場合、その名前は、アクセス可能なすべてのサブスクリプション間で一意であることが前提とされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
 
 * 修飾名 - アプリの "完全な名前"。*subscriptionName/resourceGroup/componentName* の形式で、サブスクリプション名、リソース グループ、およびコンポーネント名から構成されます。 
 
@@ -90,7 +83,7 @@ Application Insights でのアプリケーションの識別は、*app(Identifie
 
 * Azure リソース ID - Azure で定義されている、アプリの一意な ID。 リソース名があいまいな場合は、リソース ID を使用します。 形式は */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/components/componentName* です。  
 
-    例: 
+    次に例を示します。
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -110,7 +103,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>複数のリソースにクロスリソース クエリを使用する
 クロスリソース クエリを使用して、複数の Log Analytics ワークスペースおよび Application Insights リソースのデータを関連付ける場合、クエリは複雑になり、維持管理が困難になる可能性があります。 [Azure Monitor ログ クエリの関数](functions.md)を利用して、クエリ リソースの範囲設定からクエリ ロジックを分離する必要があります。こうすることで、クエリ構造が簡素化されます。 次の例は、複数の Application Insights リソースを監視し、アプリケーション名別に失敗した要求の数を視覚化する方法を示しています。 
 
-Application Insights リソースの範囲を参照する次のようなクエリを作成します。 `withsource= SourceApp` コマンドで、ログを送信したアプリケーション名を指定する列を追加します。 エイリアス _applicationsScoping_ を使用して[関数としてクエリを保存します](functions.md#create-a-function)。
+Application Insights リソースの範囲を参照する次のようなクエリを作成します。 `withsource= SourceApp` コマンドで、ログを送信したアプリケーション名を指定する列を追加します。 エイリアス [applicationsScoping](functions.md#create-a-function) を使用して_関数としてクエリを保存します_。
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -134,9 +127,14 @@ applicationsScoping
 | summarize count() by applicationName, bin(timestamp, 1h) 
 | render timechart
 ```
+
+>[!NOTE]
+>ログ アラートでは、アラートの作成時にアラート ルール リソース (ワークスペースやアプリケーションなど) のアクセス検証が実行されるため、この方法は使用できません。 アラートの作成後に新しいリソースを関数に追加することはサポートされません。 ログ アラートにおけるリソースの範囲指定に関数を使用する場合は、ポータルまたは Resource Manager テンプレートでアラート ルールを編集して、リソースの範囲指定を更新する必要があります。 または、リソースの一覧をログ アラート クエリに含めることもできます。
+
+
 ![時間グラフ](media/cross-workspace-query/chart.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ログ クエリの概要と、Azure Monitor ログ データがどのように構成されているかについては、[Azure Monitor でログ データを分析する](log-query-overview.md)ことに関するページを参照してください。
 - Azure Monitor ログ クエリのすべてのリソースを確認するには、[Azure Monitor ログ クエリ](query-language.md)に関するページを参照してください。

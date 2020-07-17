@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog でデータ ソースに接続する方法
 description: Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000574"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68976783"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
@@ -30,7 +28,7 @@ ms.locfileid: "60000574"
 
 リスト ビューを使用すると、ポータル ウィンドウの上部にある検索バーにメニューが表示されます。
 
- ![検索バーからレポート マネージャーで SQL Server Reporting Services レポートを開く](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![レポート マネージャーで SQL Server Reporting Services レポートを開く](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>サポートされているクライアント アプリケーション
 Azure Data Catalog ポータルでデータ ソースの "開く" メニューを使用する場合は、 適切なクライアント アプリケーションがクライアント コンピューターにインストールされている必要があります。
@@ -61,5 +59,5 @@ Azure Data Catalog ポータルでデータ ソースの "開く" メニュー�
 ## <a name="summary"></a>まとめ
 **Azure Data Catalog** にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。 データ ソースが登録され探索されると、ユーザーは **Azure Data Catalog** ポータルの "開く" メニューから、 または適切なデータ ツールを使用してデータソースに接続できるようになります。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。

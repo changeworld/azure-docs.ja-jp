@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229775"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Azure portal を使用して Data Box Disk を管理する
 
@@ -129,11 +129,11 @@ Data Box Disk の管理は、Azure portal から行うことができます。 �
 |受取済み     | ディスクは Azure データセンターにて受け取り済みです。 間もなくデータのコピーが開始されます。        |
 |データがコピーされました     |データのコピーが進行中です。<br> データのコピーが完了するまでお待ちください。         |
 |完了       |注文が正常に完了しました。<br> オンプレミスのデータをサーバーから削除する前に、データが Azure に存在することを確認してください。         |
-|完了 (エラーあり)| データのコピーは完了しましたが、エラーが発生しました。 <br> **[概要]** に示されているパスを使用してコピー ログを確認してください。 詳細については、「[Download diagnostic logs (診断ログのダウンロード)](data-box-disk-troubleshoot.md#download-diagnostic-logs)」を参照してください。   |
+|完了 (エラーあり)| データのコピーは完了しましたが、エラーが発生しました。 <br> **[概要]** に示されているパスを使用してアップロードのエラー ログを確認してください。 詳細については、[アップロードのエラー ログのダウンロード](data-box-disk-troubleshoot-upload.md#download-logs)に関するページを参照してください。   |
 |Canceled            |注文はキャンセルされました。 <br> お客様によって注文がキャンセルされたか、またはエラーが発生したために、サービスによって注文がキャンセルされました。     |
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Disk の問題のトラブルシューティング](data-box-disk-troubleshoot.md)に関するページを参照してください。

@@ -1,75 +1,137 @@
 ---
-title: 統合サービス環境 (ISE) により Azure Logic Apps から Azure Virtual Network にアクセスする
-description: この概要では、統合サービス環境 (ISE) によって、Logic Apps から Azure Virtual Network (VNET) にアクセスする方法を説明します
+title: Azure Virtual Network にアクセスする
+description: 統合サービス環境 (ISE) を利用して、ロジック アプリから Azure の仮想ネットワーク (VNET) にアクセスする方法の概要
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 0206fd2b2ea0a7cfaf79aaf19052e0174645780b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 05/01/2020
+ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143155"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734920"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
-場合によって、ご利用のロジック アプリと統合アカウントで、仮想マシン (VM) や [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の他のシステムまたはサービスのようなセキュリティで保護されたリソースにアクセスする必要があります。 このアクセスを設定するため、自分のロジック アプリと統合アカウントを実行するための ["*統合サービス環境*" (ISE) を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)ことができます。 ISE を作成すると、Azure は Logic Apps サービスの分離したプライベート インスタンスを Azure 仮想ネットワークにデプロイします。 このプライベート インスタンスは、ストレージなどの専用のリソースを使用し、パブリックで "グローバル" な Logic Apps サービスとは別に実行されます。 分離したプライベート インスタンスとパブリック グローバル インスタンスを分けることで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。
+ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の仮想マシン (VM) や他のシステムまたはサービスなど、セキュリティで保護されたリソースにアクセスすることが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される分離された Logic Apps サービスのインスタンスです。
 
-ISE の作成後は、ロジック アプリや統合アカウントを作成するときに、以下のように ISE をロジック アプリまたは統合アカウントの場所として選択することができます。
+自分専用の分離されたインスタンスでロジック アプリを実行することで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。 ISE には、次の利点があります。
+
+* 自分専用の静的 IP アドレス。これらの IP アドレスは、マルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは区別されています。 また、送信先システムとの通信のために、単一の予測可能な静的パブリック アウトバウンド IP アドレスを自分で設定することもできます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
+
+* 実行継続時間、ストレージのリテンション期間、スループット、HTTP の要求と応答のタイムアウト、メッセージのサイズ、カスタム コネクタの要求の上限が引き上げられました。 詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md)に関するページを参照してください。
+
+> [!NOTE]
+> 一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md)) を使用して、Azure でホストされている Azure Storage、Azure Cosmos DB、Azure SQL Database、パートナー サービス、カスタマー サービスなどの Azure PaaS サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
+
+ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*"(デプロイ) されます。 アクセスを必要とする統合アカウントやロジック アプリの場所としてその ISE を使用することができます。
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-これで、ロジック アプリは、以下のいずれかの項目を使用して、仮想ネットワーク内のシステム、または仮想ネットワークに接続されているシステムに直接アクセスできるようになりました。
+ロジック アプリと同じ ISE 内で実行される以下の項目を使用して、仮想ネットワーク内のリソース、または仮想ネットワークに接続されているリソースにロジック アプリからアクセスすることができます。
 
-* そのシステムの ISE バージョンのコネクタ。例えば、SQL Server
-* 組み込みトリガーまたは組み込みアクション。例えば、HTTP トリガーまたは HTTP アクション
+* **CORE** というラベルが表示された組み込みトリガーまたは組み込みアクション (例: HTTP トリガーまたは HTTP アクション)
+* そのシステムまたはサービスの **ISE** とラベル付けされたコネクタ
 * カスタム コネクタ
 
-この概要では、ISE によってロジック アプリと統合アカウントに Azure 仮想ネットワークへの直接アクセスが提供される方法を詳しく説明し、ISE とグローバルな Logic Apps サービスとの違いを比較します。
-仮想ネットワークに接続されていない、または ISE バージョン コネクタがないオンプレミス システムの場合は、[オンプレミスのデータ ゲートウェイをセットアップして使用する](../logic-apps/logic-apps-gateway-install.md)ことにより、これらのシステムに接続できます。
+**CORE** や **ISE** のラベルを持たないコネクタを ISE 内のロジック アプリで使用することもできます。 ただし、それらのコネクタは、マルチテナント Logic Apps サービスで実行されます。 詳細については、次のセクションを参照してください。
+
+* [分離とマルチテナント](#difference)
+* [統合サービス環境から接続する](../connectors/apis-list.md#integration-service-environment)
+* [ISE コネクタ](../connectors/apis-list.md#ise-connectors)
 
 > [!IMPORTANT]
-> ご利用の ISE で実行されるロジック アプリ、組み込みアクション、コネクタは、使用量ベースの料金プランではなく、異なる料金プランを使用します。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
+> ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 詳細については、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)を参照してください。 価格の詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」を参照してください。
+
+この概要では、ISE によってロジック アプリに Azure 仮想ネットワークへの直接アクセスが提供される方法を詳しく説明し、ISE とマルチテナント Logic Apps サービスとの違いを比較します。
 
 <a name="difference"></a>
 
-## <a name="isolated-versus-global"></a>分離とグローバル
+## <a name="isolated-versus-multi-tenant"></a>分離とマルチテナント
 
-Azure で統合サービス環境 (ISE) を作成するときは、ISE を "*挿入*" する Azure 仮想ネットワークを選択することができます。 それにより、Azure は、Logic Apps サービスのプライベート インスタンスを仮想ネットワークに挿入、またはデプロイします。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときにアプリの場所として ISE を選択すると、ロジック アプリは仮想ネットワークとそのネットワーク内のリソースに直接アクセスできるようになります。
+ISE にロジック アプリを作成して実行すると、マルチテナント Logic Apps サービスと同じユーザー エクスペリエンスおよび同様の機能が得られます。 マルチテナント Logic Apps サービスで使用できるのと同じすべての組み込みトリガー、アクション、マネージド コネクタを使用できます。 一部のマネージド コネクタでは、追加の ISE バージョンが提供されます。 ISE コネクタと非 ISE コネクタの違いは、ISE 内で作業するときにロジック アプリ デザイナーに付けられるラベルと実行される場所です。
 
-ISE のロジック アプリはグローバルな Logic Apps サービスとユーザー操作が同じで、同様の機能を提供しています。 グローバルな Logic Apps サービスで同じ組み込みアクションとコネクタを使用できるだけでなく、ISE 固有のコネクタも使用できます。 たとえば、次のような標準コネクタは ISE で実行されるバージョンを提供しています。
+![ISE 内のラベルが付いているコネクタと付いていないコネクタ](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
-* Azure Blob Storage、Azure File Storage、Azure Table Storage
-* Azure キュー、Azure Service Bus、Azure Event Hubs、IBM MQ
-* FTP、SFTP-SSH
-* SQL Server、SQL Data Warehouse、Azure Cosmos DB
-* AS2、X12、EDIFACT
+* 組み込みのトリガーとアクションには、**CORE** ラベルが表示されます。 これらは常に、ご利用のロジック アプリと同じ ISE で実行されます。 **ISE** というラベルが表示されるマネージド コネクタも、ロジック アプリと同じ ISE で実行されます。
 
-ISE と ISE 以外のコネクタには、トリガーとアクションが実行される場所に違いがあります。
+  たとえば、ISE のバージョンを提供するコネクタをいくつか次に示します。
 
-* ISE では、組み込みトリガーと HTTP などのアクションは常に、ロジック アプリと同じ ISE 内で動作します。
+  * Azure Blob Storage、Azure File Storage、Azure Table Storage
+  * Azure キュー、Azure Service Bus、Azure Event Hubs、IBM MQ
+  * FTP、SFTP-SSH
+  * SQL Server、Azure SQL Data Warehouse、Azure Cosmos DB
+  * AS2、X12、EDIFACT
 
-* 2 つのバージョンを提供するコネクタの場合、1 つのバージョンは ISE で実行され、もう一方のバージョンはグローバルな Logic Apps サービスで実行されます。  
+* 追加のラベルが表示されないマネージド コネクタは、常にマルチテナント Logic Apps サービスで実行されますが、ISE でホストされたロジック アプリでこれらのコネクタを使用することもできます。
 
-  **ISE** ラベルがあるコネクタは、常にご利用のロジック アプリと同じ ISE で実行されます。 **ISE** ラベルがないコネクタはグローバルな Logic Apps サービスで実行されます。
+<a name="on-premises"></a>
 
-  ![ISE のコネクタを選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+### <a name="access-to-on-premises-systems"></a>オンプレミス システムへのアクセス
 
-* ISE 内で実行されるコネクタは、もグローバルな Logic Apps サービスでも使用できます。
+Azure 仮想ネットワークに接続されたオンプレミスのシステムやデータ ソースにアクセスするために、ISE 内のロジック アプリは、次の項目を使用できます。
+
+* HTTP アクション
+
+* そのシステムの ISE とラベル付けされたコネクタ
+
+  > [!NOTE]
+  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で SQL Server コネクタで Windows 認証を使用するには、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-install.md)でコネクタの ISE 以外のバージョンを使用します。 ISE とラベル付けされたバージョンでは、Windows 認証はサポートされていません。
+
+* カスタム コネクタ
+
+  * オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内のロジック アプリでもそれらのコネクタを使用できます。
+
+  * ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE をホストしている仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
+
+仮想ネットワークに接続されていない、または ISE とラベル付けされたコネクタがないオンプレミス システムでは、お使いのロジック アプリからこれらのシステムに接続する前に、まず[オンプレミスのデータ ゲートウェイを設定する](../logic-apps/logic-apps-gateway-install.md)必要があります。
+
+<a name="ise-level"></a>
+
+## <a name="ise-skus"></a>ISE SKU
+
+ISE を作成するときは、Developer SKU または Premium SKU を選択できます。 これらの SKU の違いを以下に示します。
+
+* **開発者**
+
+  実験、開発、テストには使用できますが、運用環境とパフォーマンス テストには使用できない、低コストの ISE が提供されます。 Developer SKU には、組み込みのトリガーとアクション、標準コネクタ、エンタープライズ コネクタ、および固定月額料金用の 1 つの [Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)統合アカウントが含まれています。 ただし、この SKU には、サービス レベル アグリーメント (SLA)、容量のスケールアップ オプション、またはリサイクル中の冗長性は含まれず、これは遅延やダウンタイムが発生する可能性があることを意味します。
+
+* **Premium**
+
+  運用環境で使用できる ISE が提供され、SLA のサポート、組み込みのトリガーとアクション、標準コネクタ、エンタープライズ コネクタ、単一の [Standard レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント、容量スケールアップ オプション、固定月額料金のリサイクル中の冗長性などが含まれます。
+
+> [!IMPORTANT]
+> この SKU オプションは、ISE 作成時にのみ使用できます。後で変更することはできません。
+
+価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。
+
+<a name="endpoint-access"></a>
+
+## <a name="ise-endpoint-access"></a>ISE エンドポイントへのアクセス
+
+ISE を作成するときに、内部アクセス エンドポイントと外部アクセス エンドポイントのどちらを使用するかを選択できます。 この選択により、ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかが決まります。 これらのエンドポイントは、ロジック アプリの実行履歴から入力と出力にアクセスする方法にも影響します。
+
+> [!IMPORTANT]
+> アクセス エンドポイントは、ISE 作成中にのみ選択できます。後でこのオプションを変更することはできません。
+
+* **内部**:ロジック アプリの実行履歴から、"*仮想ネットワーク内からのみ*"、入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するプライベート エンドポイント。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。
+
+* **外部**:ロジック アプリの実行履歴から、"*仮想ネットワーク外からの*" 入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するパブリック エンドポイント。 ネットワーク セキュリティ グループ (NSG) を使用する場合は、実行履歴の入力と出力へのアクセスを許可する受信規則が設定されていることを確認します。 詳細については、「[ISE のアクセスを有効にする](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)」を参照してください。
+
+ISE が内部アクセス エンドポイントを使用しているか、外部アクセス エンドポイントを使用しているかを確認するには、ISE のメニューで、 **[設定]** の下にある **[プロパティ]** を選択し、 **[アクセス エンドポイント]** プロパティを見つけます。
+
+![ISE アクセス エンドポイントを見つける](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
 <a name="create-integration-account-environment"></a>
 
 ## <a name="integration-accounts-with-ise"></a>ISE での統合アカウント
 
-統合サービス環境 (ISE) の内部のロジック アプリで統合アカウントを使用できます。 ただし、これらの統合アカウントでは、リンクされているロジック アプリと "*同じ ISE*" を使用する必要があります。 ISE のロジック アプリは、同じ ISE にある統合アカウントのみを参照できます。 統合アカウントを作成すると、ご利用の統合アカウントの場所として、自分の ISE を選択できます。
+統合サービス環境 (ISE) の内部のロジック アプリで統合アカウントを使用できます。 ただし、これらの統合アカウントでは、リンクされているロジック アプリと "*同じ ISE*" を使用する必要があります。 ISE のロジック アプリは、同じ ISE にある統合アカウントのみを参照できます。 統合アカウントを作成すると、ご利用の統合アカウントの場所として、自分の ISE を選択できます。 統合アカウントと ISE に対する価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [分離されたロジック アプリから Azure Virtual Network に接続する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)方法を理解する
+* [Azure Logic Apps から Azure Virtual Network に接続する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) の詳細を理解する
 * [Azure サービスの仮想ネットワーク統合](../virtual-network/virtual-network-for-azure-services.md)について理解する

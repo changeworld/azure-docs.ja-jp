@@ -4,21 +4,20 @@ description: リモート デスクトップ ライセンス サーバーが利�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913855"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71088514"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Azure VM に接続すると、リモート デスクトップ ライセンス サーバーが利用できない
 
@@ -63,7 +62,7 @@ mstsc /v:<Server>[:<Port>] /admin
 
     管理セッションを使用して VM に接続できない場合、[Azure 上の仮想マシン シリアル コンソール](serial-console-windows.md)を使用して次のように VM にアクセスできます。
 
-    1. **[サポートとトラブルシューティング]** > **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して[シリアル コンソール] にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
+    1. **[サポートとトラブルシューティング]**  >  **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して[シリアル コンソール] にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
     2. CMD インスタンス用の新しいチャネルを作成します。 「**CMD**」と入力してチャネルを開始し、チャネル名を取得します。
 
@@ -123,10 +122,10 @@ mstsc /v:<Server>[:<Port>] /admin
        telnet <FQDN / IP License Server> 135
        ```
 
-3. 環境にリモート デスクトップ ライセンス サーバーがなく、このサーバーが必要な場合は、[リモート デスクトップ ライセンス役割サービスをインストールする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11))ことができます。 その後、[RDS ライセンスを構成します](https://blogs.technet.microsoft.com/askperf/2013/09/20/rd-licensing-configuration-on-windows-server-2012/)。
+3. 環境にリモート デスクトップ ライセンス サーバーがなく、このサーバーが必要な場合は、[リモート デスクトップ ライセンス役割サービスをインストールする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11))ことができます。 その後、[RDS ライセンスを構成します](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383)。
 
 4. リモート デスクトップ ライセンス サーバーが構成されていて正常な状態の場合、リモート デスクトップ ライセンス サーバーを CAL でアクティブ化するようにします。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
-まだ支援が必要な場合は、[サポートに問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)て問題を解決してください。
+お困りの際は、[サポートに問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)て問題を解決してください。

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Bersin の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Bersin の統合 | Microsoft Docs'
 description: Azure Active Directory と Bersin の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bbc9d229-69fb-4ab5-b6c3-5f3d790ea13e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ff026743ccda0a47ce176db51dbc7913376f46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 6c6794baab00dbb59df89187c8ab91f1a42ab03e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987993"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73158890"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル:Azure Active Directory と Bersin の統合
+# <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル: Azure Active Directory と Bersin の統合
 
 このチュートリアルでは、Bersin と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Bersin と Azure AD の統合には、次の利点があります。

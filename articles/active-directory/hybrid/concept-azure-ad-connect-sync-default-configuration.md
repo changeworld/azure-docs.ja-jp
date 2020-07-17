@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891139"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76548868"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -42,7 +42,7 @@ ms.locfileid: "57891139"
 
 次のユーザー オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])`. 組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `IsPresent([isCriticalSystemObject])` 組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
 * `IsPresent([sAMAccountName]) = False` sAMAccountName 属性のないユーザー オブジェクトは同期されません。 このような局面は、現実的には NT4 からアップグレードされたドメインでのみ発生します。
 * `Left([sAMAccountName], 4) = "AAD_"`、`Left([sAMAccountName], 5) = "MSOL_"`。 Azure AD Connect 同期と以前のバージョンで使用されるサービス アカウントは同期しないでください。
 * Exchange Online で機能しない Exchange アカウントは同期しないでください。
@@ -52,7 +52,7 @@ ms.locfileid: "57891139"
   * `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
 * Exchange Online で機能しないオブジェクトは同期しないでください。
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
-   このビットマスク (&H21C07000) で次のオブジェクトが除外されます。
+  このビットマスク (&H21C07000) で次のオブジェクトが除外されます。
   * メールが有効なパブリック フォルダー (バージョン 1.1.524.0 時点でプレビュー)
   * システム アテンダント メールボックス
   * メールボックス データベース メールボックス (システム メールボックス)
@@ -71,7 +71,7 @@ ms.locfileid: "57891139"
   2. Exchange GAL (グローバル アドレス一覧) で見つかる属性は Exchange Mailbox のあるフォレストから提供されます。
   3. メールボックスが見つからない場合、これらの属性はあらゆるフォレストから取得できます。
   4. Exchange 関連の属性 (GAL で表示されない技術属性) は、 `mailNickname ISNOTNULL`の条件を満たすフォレストから提供されます。
-  5. 以上の規則のいずれかを満たすフォレストが複数存在する場合、コネクタ (フォレスト) の作成順序 (日付/時刻) を利用し、属性を提供するフォレストが決定されます。
+  5. 以上の規則のいずれかを満たすフォレストが複数存在する場合、コネクタ (フォレスト) の作成順序 (日付/時刻) を利用し、属性を提供するフォレストが決定されます。 接続されている最初のフォレストが、最初に同期するフォレストになります。 
 
 ### <a name="contact-out-of-box-rules"></a>連絡先の既定のルール
 連絡先オブジェクトは次の要件を満たさないと同期されません。
@@ -173,7 +173,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 ![Join rules tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[Provision (プロビジョニング)]** に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
+結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[プロビジョニング]** に設定されている場合、結合条件に少なくとも 1 つの属性が存在する (値がある) と、ターゲットのメタバースに新しいオブジェクトが作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
 
 結合規則は、1 回のみ評価されます。 コネクタ スペース オブジェクトとメタバース オブジェクトが結合されている場合は、同期規則のスコープが引き続き満たされている限り、結合が維持されます。
 
@@ -220,7 +220,7 @@ NULL
 ### <a name="putting-it-all-together"></a>まとめ
 ここまでの同期規則に関する説明で、構成がさまざまな同期規則でどのように動作するかを十分理解できるようになりました。 ユーザー、メタバースに影響する属性に注目すると、規則は次の順序で適用されます。
 
-| Name | Comment (コメント) |
+| 名前 | 解説 |
 |:--- |:--- |
 | AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
 | AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |
@@ -229,7 +229,7 @@ NULL
 | AD からの受信 - ユーザー Exchange |Exchange が検出された場合にのみ存在します。 インフラストラクチャの Exchange 属性がすべてフローされます。 |
 | AD からの受信 - ユーザー Lync |Lync が検出された場合にのみ存在します。 インフラストラクチャの Lync 属性がすべてフローされます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](concept-azure-ad-connect-sync-declarative-provisioning.md)」をご覧ください。
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)」をご覧ください。
 * 既定の構成の動作についてさらに詳しく知りたい場合には、「 [ユーザーと連絡先について](concept-azure-ad-connect-sync-user-and-contacts.md)

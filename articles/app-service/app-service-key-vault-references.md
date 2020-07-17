@@ -1,43 +1,37 @@
 ---
-title: Key Vault リファレンス - Azure App Service | Microsoft Docs
-description: Azure App Service と Azure Functions での Key Vault 参照の概念と設定に関するガイドです
-services: app-service
+title: Key Vault 参照を使用する
+description: Azure Key Vault 参照を使用するように Azure App Service と Azure Functions を設定する方法について説明します。 Key Vault シークレットをアプリケーション コードで使用できるようにします。
 author: mattchenderson
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956227"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81453729"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
-> [!NOTE] 
-> Key Vault 参照は現在プレビューの段階です。
-
-このトピックでは、コードを変更せず、App Service または Azure Functions アプリケーションの Azure Key Vault のシークレットを使用する方法を紹介します。 [Azure Key Vault](../key-vault/key-vault-overview.md) は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。
+このトピックでは、コードを変更せず、App Service または Azure Functions アプリケーションの Azure Key Vault のシークレットを使用する方法を紹介します。 [Azure Key Vault](../key-vault/general/overview.md) は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。
 
 ## <a name="granting-your-app-access-to-key-vault"></a>Key Vault へのアクセス許可をアプリに付与する
 
 Key Vault からシークレットを読み取るには、Key Vault を作成し、それにアクセスする許可をアプリに与える必要があります。
 
-1. [Key Vault クイック スタート](../key-vault/quick-create-cli.md)に従い、Key Vault を作成してください。
+1. [Key Vault クイック スタート](../key-vault/secrets/quick-create-cli.md)に従い、Key Vault を作成してください。
 
 1. [システム割り当てのマネージド ID](overview-managed-identity.md) を自分のアプリケーションのために作成します。
 
    > [!NOTE] 
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
-1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `appliationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+
+    > [!NOTE]
+    > Key Vault 参照では現在、[ネットワーク制限](../key-vault/general/overview-vnet-service-endpoints.md)があるキー コンテナーに格納されているシークレットを解決できません。
 
 ## <a name="reference-syntax"></a>参照構文
 
@@ -46,18 +40,14 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 > [!div class="mx-tdBreakAll"]
 > | 参照文字列                                                            | 説明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
+> | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
 
-> [!NOTE] 
-> 現在のプレビューでは、バージョンが必須です。 シークレットをローテーションするとき、アプリケーション構成でバージョンを更新する必要があります。
-
-たとえば、完全な参照は次のようになります。
+たとえば、バージョンを含めた完全な参照は次のようになります。
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-
 あるいは:
 
 ```
@@ -183,3 +173,29 @@ Function App の擬似テンプレートの例は次のようになります。
 
 > [!NOTE] 
 > この例では、ソース管理デプロイはアプリケーション設定に依存します。 アプリ設定は非同期で更新されるため、通常、これは安全ではありません。 しかしながら、`WEBSITE_ENABLE_SYNC_UPDATE_SITE` アプリケーション設定を含めているため、同期で更新されます。 つまり、ソース管理デプロイは、アプリケーションが完全に更新されたときにのみ開始されます。
+
+## <a name="troubleshooting-key-vault-references"></a>Key Vault 参照のトラブルシューティング
+
+参照が正しく解決されない場合は、代わりに参照値が使用されます。 つまり、アプリケーションの設定では、値の構文が `@Microsoft.KeyVault(...)` である環境変数が作成されます。 この場合に、アプリケーションで特定の構造のシークレットが想定されていると、エラーがスローされることがあります。
+
+最も一般的な原因は、[Key Vault アクセス ポリシー](#granting-your-app-access-to-key-vault)が正しく構成されていないことです。 ただし、シークレットが既に存在していないか、参照自体の構文エラーが原因である可能性もあります。
+
+構文が正しい場合は、ポータルで現在の解決状態を確認して、エラーの他の原因を確認できます。 [アプリケーションの設定] に移動し、該当する参照の [編集] を選択します。 設定の構成の下には、エラーなどの状態情報が表示されます。 表示されない場合は、参照構文が無効であることを意味します。
+
+組み込みの検出機能のいずれかを使用して、追加情報を取得することもできます。
+
+### <a name="using-the-detector-for-app-service"></a>App Service の検出機能の使用
+
+1. ポータルで、アプリに移動します。
+2. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。
+3. **[Availability and Performance]\(可用性とパフォーマンス\)** を選択し、 **[Web app down]\(Web アプリのダウン\)** を選択します。
+4. **[Key Vault Application Settings Diagnostics]\(Key Vault のアプリケーション設定の診断\)** を見つけて、 **[詳細情報]** をクリックします。
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Azure Functions の検出機能の使用
+
+1. ポータルで、アプリに移動します。
+2. **[プラットフォーム機能]** に移動します。
+3. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。
+4. **[Availability and Performance]\(可用性とパフォーマンス\)** を選択し、 **[Function app down or reporting errors]\(関数アプリのダウンまたはエラーの報告\)** を選択します。
+5. **[Key Vault Application Settings Diagnostics]\(Key Vault のアプリケーション設定の診断\)** をクリックします。

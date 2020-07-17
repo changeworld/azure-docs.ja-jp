@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs インフラストラクチャのガバナンス
-description: この記事では、Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
+title: Azure DevTest Labs のコストと所有権の管理
+description: この記事では、コストを最適化し、環境全体で所有権を整合させるのに役立つ情報を提供します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,26 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243520"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74561656"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs インフラストラクチャのガバナンス - コストと所有権の管理
 コストと所有権は、開発およびテスト用の環境の構築を検討するときの主な懸案事項です。 このセクションでは、コストを最適化し、環境全体で所有権を整合させるのに役立つ情報を提供します。
 
 ## <a name="optimize-for-cost"></a>コストを最適化する
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 DevTest Labs 環境内でコストを最適化にはどうすればよいですか?
 
 ### <a name="answer"></a>Answer
-DevTest Labs にはコストの最適化に役立つ機能がいくつか組み込まれています。 ユーザーのアクティビティを制限するには、[コスト管理としきい値](devtest-lab-configure-cost-management.md)および[ポリシー](devtest-lab-set-lab-policy.md)に関するページをご覧ください。 
+DevTest Labs にはコストの最適化に役立つ機能がいくつか組み込まれています。 ユーザーのアクティビティを制限するには、[コスト管理としきい値](devtest-lab-configure-cost-management.md)と[ポリシー](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。 
 
 開発とテストのワークロードに DevTest Labs を利用するときは、Enterprise Agreement の一部として [Enterprise Dev/Test サブスクリプションのベネフィット](https://azure.microsoft.com/offers/ms-azr-0148p/)の利用を検討できます。 または、従量課金制のお客様の場合は、[従量課金制の DevTest オファー](https://azure.microsoft.com/offers/ms-azr-0023p/)を検討できます。
 
@@ -44,7 +44,7 @@ Enterprise Dev/Test サブスクリプション内で実行されている Azure
 DevTest のオファーを使用する場合、このベネフィットはアプリケーションの開発とテストだけが対象であることに注意してください。 Azure DevOps および HockeyApp の使用を除いて、このサブスクリプションでの使用には、金銭的な補償を伴う SLA は付随しません。
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>組織全体でロールベースのアクセスを定義する
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 IT 部門が管理作業を行い開発者/テスト担当者がそれぞれの作業を行うことができるように、DevTest Labs 環境に対してロールベースのアクセス制御を定義するにはどうすればよいですか? 
 
 ### <a name="answer"></a>Answer
@@ -61,5 +61,5 @@ DevTest Labs のリソースは、プロジェクト/アプリケーション �
 詳細については、「[Azure enterprise scaffold – prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold)」(Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス) ドキュメントをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「[Corporate policy and compliance](devtest-lab-guidance-governance-policy-compliance.md)」(会社のポリシーとコンプライアンス) をご覧ください。

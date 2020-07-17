@@ -4,22 +4,22 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74451571"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
 
 テンプレートは、[Cloud Shell](../articles/cloud-shell/overview.md) を使ってデプロイすることができます。 外部テンプレートをデプロイするには、外部デプロイの場合とまったく同じように、テンプレートの URI を指定します。 ローカル テンプレートをデプロイするには、最初に Cloud Shell のストレージ アカウントにテンプレートを読み込む必要があります。 このセクションでは、Cloud Shell アカウントにテンプレートを読み込み、ローカル ファイルとしてデプロイする方法について説明します。 Cloud Shell の使用経験がない場合は、その設定について、「[Azure Cloud Shell の概要](../articles/cloud-shell/overview.md)」を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
 
-   ![リソース グループの選択](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![リソース グループの選択](./media/resource-manager-cloud-shell-deploy/select-cloud-shell-resource-group.png)
 
 1. Cloud Shell のストレージ アカウントを選択します。
 

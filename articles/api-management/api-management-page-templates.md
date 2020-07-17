@@ -10,16 +10,15 @@ ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 882bb27c7692f4eaf628d26f6081b1e1015be81b
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27745031"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226567"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API Management のページ テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -34,11 +33,15 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a> サインイン  
+##  <a name="sign-in"></a><a name="SignIn"></a> サインイン  
  **サインイン** テンプレートを使用すると、開発者ポータルでサインイン ページをカスタマイズすることができます。  
   
- ![Sign In Page](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM Sign In Page Developer Portal Templates")  
+ ![サインイン ページ](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM サインイン ページ開発者ポータル テンプレート")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -134,10 +137,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }
 ```  
   
-##  <a name="SignUp"></a> サインアップ  
+##  <a name="sign-up"></a><a name="SignUp"></a> サインアップ  
  **サインアップ** テンプレートを使用すると、開発者ポータルでサインアップ ページをカスタマイズすることができます。  
   
- ![Sign Up Page](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM Sign Up Page Developer Portal Templates")  
+ ![サインアップ ページ](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM サインアップ ページ開発者ポータル テンプレート")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -182,10 +185,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="PageNotFound"></a> ページが見つかりません  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> ページが見つかりません  
  **ページが見つかりません** テンプレートを使用すると、開発者ポータルでページが見つかりませんページをカスタマイズすることができます。  
   
- ![Not Found Page](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM Not Found Page Developer Portal Templates")  
+ ![ページが見つかりませんページ](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM ページが見つかりませんページ開発者ポータル テンプレート")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -224,13 +227,13 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
-|referenceCode|文字列|このページが内部エラーの結果として表示された場合に生成されるコード。|  
-|errorCode|文字列|このページが内部エラーの結果として表示された場合に生成されるコード。|  
-|emailBody|文字列|このページが内部エラーの結果として表示された場合に生成される電子メール本文。|  
-|requestedUrl|文字列|ページが見つからなかったときに要求された URL。|  
-|referrerUrl|文字列|要求された URL の参照元 URL。|  
+|referenceCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  
+|errorCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  
+|emailBody|string|このページが内部エラーの結果として表示された場合に生成される電子メール本文。|  
+|requestedUrl|string|ページが見つからなかったときに要求された URL。|  
+|referrerUrl|string|要求された URL の参照元 URL。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -244,5 +247,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

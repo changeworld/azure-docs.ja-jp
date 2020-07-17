@@ -1,41 +1,43 @@
 ---
-title: Java を使用してイベントを送受信する - Azure Event Hubs | Microsoft Docs
-description: この記事では、Azure Event Hubs にイベントを送信する Java アプリケーションの作成に関するチュートリアルを提供します。
+title: Java を使用して Azure Event Hubs との間でイベントを送受信する (レガシ)
+description: この記事では、以前の azure-eventhubs パッケージを使用して、Azure Event Hubs との間でイベントを送受信する Java アプリケーションを作成する方法について説明します。
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 0487cac6a0cf7d37befdf0d7cfab33ad6a62cf7f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.topic: quickstart
+ms.date: 02/11/2020
+ms.author: spelluru
+ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679644"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81417616"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する | Microsoft Docs
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-eventhubs)
 
-Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
+このクイックスタートでは、**azure-eventhubs** Java パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
 
-このチュートリアルでは、Java アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。 
+> [!WARNING]
+> このクイックスタートでは、以前の **azure-eventhubs** パッケージと **azure-eventhubs-eph** パッケージを使用します。 最新の **azure-messaging-eventhubs** パッケージを使用するクイックスタートについては、[azure-messaging-eventhubs を使用したイベントの送受信](get-started-java-send-v2.md)に関するページを参照してください。 古いパッケージではなく新しいパッケージを使用するようにアプリケーションを移行するには、[azure-eventhubs から azure-messaging-eventhubs への移行ガイド](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)に関するページを参照してください。 
 
-> [!NOTE]
-> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)を参照してください。 
 
-- アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- Java 開発環境。 このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を使用します。
-- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
+このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
+
+- **Microsoft Azure サブスクリプション**。 Azure Event Hubs を含む Azure サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
+- Java 開発環境。 このクイックスタートでは [Eclipse](https://www.eclipse.org/) を使用します。
+- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このクイックスタートの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
 
 ## <a name="send-events"></a>送信イベント 
 このセクションでは、イベント ハブにイベントを送信する Java アプリケーションの作成方法を説明します。 
+
+> [!NOTE]
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このクイックスタートの手順に従って独自のものを作成します。
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Azure Event Hubs ライブラリへの参照を追加する
 
@@ -88,10 +90,10 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
 
 ```java
         final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-                .setNamespaceName("speventhubns") 
-                .setEventHubName("speventhub")
+                .setNamespaceName("<EVENTHUB NAMESPACE") 
+                .setEventHubName("EVENT HUB")
                 .setSasKeyName("RootManageSharedAccessKey")
-                .setSasKey("2+WMsyyy1XmUtEnRsfOmTTyGasfJgsVjGAOIN20J1Y8=");
+                .setSasKey("SHARED ACCESS KEY");
 ```
 
 ### <a name="write-code-to-send-events"></a>イベントを送信するコードを記述する
@@ -108,7 +110,7 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
         // handling different flavors of ingestion to Event Hubs here.
         final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
-        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 
@@ -140,7 +142,7 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
 
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>付録:EventHub パーティションへのメッセージのルーティング動作
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>付録: EventHub パーティションへのメッセージのルーティング動作
 
 コンシューマーがメッセージを取得するためには、あらかじめパブリッシャーがそのメッセージをパーティションに発行する必要があります。 com.microsoft.azure.eventhubs.EventHubClient オブジェクトの sendSync() メソッドを使ってイベント ハブに同期的にメッセージを発行するとき、パーティション キーが指定されているかどうかに応じて、そのメッセージは特定のパーティションに送信されるか、または利用可能なすべてのパーティションにラウンド ロビン方式で分散されます。
 
@@ -178,14 +180,14 @@ eventHubClient.closeSync();
 
 EventProcessorHost を使用するには、[Azure Storage アカウント][Azure Storage アカウント]が必要です。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[+ Create a resource]\(+ リソースの作成\)** をクリックします。
-2. **[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、**[作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[Create a resource]\(リソースの作成\)** を選択します。
+2. **[ストレージ]** を選択し、 **[ストレージ アカウント]** を選択します。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、 **[作成]** を選択します。
    
-    ![ストレージ アカウントの作成](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Azure portal でストレージ アカウントを作成する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
-3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キー]** をクリックします。
+3. 新しく作成したストレージ アカウントを選択し、 **[アクセス キー]** を選択します。
    
-    ![アクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Azure portal でアクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     key1 の値を一時的な場所にコピーします。 このチュートリアルの後の方で、それを使用します。
 
@@ -206,7 +208,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
 </dependency>
 ```
 
-ビルド環境の種類に応じて、[Maven セントラル リポジトリ][https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22] から最新リリースの JAR ファイルを明示的に取得できます。  
+ビルド環境の種類に応じて、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) から最新リリースの JAR ファイルを明示的に取得できます。
 
 1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 このクラスは `ErrorNotificationHandler`と呼ばれます。     
    
@@ -312,7 +314,8 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
         
            System.out.println("End of sample");
        }
-    ```
+   }
+   ```
 3. 次のコードを使用して、`EventProcessor` という名前のクラスをもう 1 つ作成します。
    
     ```java
@@ -421,7 +424,7 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 com.microsoft.azure.eventprocessorhost.EventProcessorHost クラスには、EventProcessorHost のチェックポイント マネージャーをオーバーライドする際に使用できる 2 つのコンストラクターがあります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

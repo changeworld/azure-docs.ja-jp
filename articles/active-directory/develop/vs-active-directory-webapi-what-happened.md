@@ -1,24 +1,21 @@
 ---
 title: Azure AD への接続時に WebAPI プロジェクトに行われる変更
-description: Visual Studio を使用して Azure AD に接続した場合の WebAPI プロジェクトの変更内容の説明
-services: active-directory
+description: Visual Studio を使用して Azure AD に接続した場合の WebAPI プロジェクトの変更内容を説明します
 author: ghogen
-manager: douge
-ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
+manager: jillfra
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46fb0ad37b872a1d7ca72114f2f263df776aabf1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161934"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80886060"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
@@ -34,7 +31,7 @@ ms.locfileid: "56161934"
 
 プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -45,9 +42,9 @@ ms.locfileid: "56161934"
 | .NET; NuGet | Owin |
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 
-追加の参照 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -61,7 +58,7 @@ ms.locfileid: "56161934"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -70,7 +67,7 @@ ms.locfileid: "56161934"
 ## <a name="project-file-changes"></a>プロジェクト ファイルの変更
 
 - プロパティ `IISExpressSSLPort` が個別の数に設定されます。
-- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。**[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
+- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。 **[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
 - プロパティ `IISUrl` が `https://localhost:<port>/` に設定されます。このとき `<port>` は `IISExpressSSLPort` の値と一致します。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config または app.config の変更
@@ -128,7 +125,7 @@ ms.locfileid: "56161934"
 
 [Azure Active Directory の詳細を確認します](https://azure.microsoft.com/services/active-directory/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD の認証シナリオ](authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v2-aspnet-webapp.md)

@@ -1,30 +1,33 @@
 ---
 title: サンプル データセットの使用
-titleSuffix: Azure Machine Learning Studio
-description: Machine Learning Studio に含まれるサンプル モデルで使用されるデータセットの説明です。 実験には、これらのサンプル データセットを使用できます。
+titleSuffix: ML Studio (classic) - Azure
+description: Machine Learning Studio (クラシック) に含まれるサンプル モデルで使用されるデータセットについて説明します。 実験には、これらのサンプル データセットを使用できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217782"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) におけるサンプル データセットの使用
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 [top]: #machine-learning-sample-datasets
 
-Azure Machine Learning Studio で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。 これらのサンプル データセットの多くは、[Azure AI ギャラリー](https://gallery.azure.ai/)のサンプル モデルで使用されます。 その他のデータセットは、機械学習で通常使用されるさまざまなデータのサンプルとして含まれています。
+Azure Machine Learning Studio (クラシック) で新しいワークスペースを作成する場合、既定でさまざまなサンプルのデータセットと実験が含まれています。 これらのサンプル データセットの多くは、[Azure AI ギャラリー](https://gallery.azure.ai/)のサンプル モデルで使用されます。 その他のデータセットは、機械学習で通常使用されるさまざまなデータのサンプルとして含まれています。
 
 データセットの一部は、Azure Blob Storage で使用できます。 これらのデータセットでは、次の表に直接リンクが提供されています。 これらのデータセットは、[データのインポート][import-data] モジュールを使用して実験で使用できます。
 
-これらのサンプル データセットの残りの部分は、**[Saved Datasets]/(保存されたデータセット/)** の下にあるワークスペースで使用できます。 これは、Microsoft Azure Machine Learning Studio の実験キャンバスの左側のモジュール パレットにあります。
+これらのサンプル データセットの残りの部分は、 **[Saved Datasets]/(保存されたデータセット/)** の下にあるワークスペースで使用できます。 これは、Machine Learning Studio (クラシック) の実験キャンバスの左側のモジュール パレットにあります。
 実験キャンバスにこれらのデータセットのいずれかをドラッグすると、独自の実験で使用できます。
 
 ## <a name="datasets"></a>データセット
@@ -169,7 +172,7 @@ KDD Cup 2009 顧客間関係の予測に関する課題のラベル (<a href="ht
   <td>
 米国運輸省の TranStats データ コレクションから取得した旅客機の定時運航データ (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">定時</a>)。
 <p></p>
-データセットには、2013 年 4 月から 10 月までの期間のデータが含まれます。 Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。
+データセットには、2013 年 4 月から 10 月までの期間のデータが含まれます。 Azure Machine Learning Studio (クラシック) にアップロードする前に、データセットは次のように処理されています。
 <ul>
   <li>米国本土の混雑度が上位 70 位までの空港を含めるように、データセットをフィルター処理します。</li>
   <li>キャンセルされたフライトは 15 分超の遅延として分類します。</li>
@@ -215,7 +218,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
 <tr>
   <td>IMDB 映画のタイトル</td>
   <td>
-このデータセットには、Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S.  Dooms, T. De Pessemier and L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
+このデータセットには、Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S. Dooms, T. De Pessemier and L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
   </td>
 </tr>
 
@@ -329,7 +332,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
   <td>
 NOAA の 1 時間ごとの陸上の気象観測 (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">2013 年 4 月から 2013 年 10 月までのデータをマージ</a>)。
 <p></p>
-気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。
+気象データには、2013 年 4 月から 10 月までの期間の航空気象観測所での観測が含まれます。 Azure Machine Learning Studio (クラシック) にアップロードする前に、データセットは次のように処理されています。
 <ul>
   <li>気象観測所 ID を対応する空港 ID にマッピングします。</li>
   <li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li>
@@ -344,7 +347,7 @@ NOAA の 1 時間ごとの陸上の気象観測 (<a href="https://az754797.vo.ms
   <td>
 データは、S&P 500 企業それぞれの記事に基づいて Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) から取得され、XML データとして格納されています。
 <p></p>
-Azure Machine Learning Studio にアップロードする前に、データセットは次のように処理されています。
+Azure Machine Learning Studio (クラシック) にアップロードする前に、データセットは次のように処理されています。
 <ul>
   <li>特定の企業のテキスト コンテンツを抽出します。</li>
   <li>Wiki の書式設定を削除します。</li>
@@ -405,7 +408,7 @@ RCV1-V2 Reuters ニュース データセット内のニュース記事のトピ
 
 </table>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [例を使用して実験を開始する](sample-experiments.md)

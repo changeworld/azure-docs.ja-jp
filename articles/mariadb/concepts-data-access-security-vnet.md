@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB Server VNet サービス エンドポイントの概要 | Microsoft Docs
+title: VNet サービス エンドポイント - Azure Database for MariaDB
 description: VNet サービス エンドポイントが Azure Database for MariaDB サーバーに対してどのように機能するかについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 3/18/2020
+ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532112"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>仮想ネットワーク サービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
 
@@ -32,9 +32,9 @@ ms.locfileid: "59006691"
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL の各サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。
+**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL の各サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。
 
-**仮想ネットワーク ルール:** Azure Database for MariaDB サーバーの仮想ネットワーク規則は、Azure Database for MariaDB サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MariaDB サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
+**仮想ネットワーク規則:** Azure Database for MariaDB サーバーの仮想ネットワーク規則は、Azure Database for MariaDB サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MariaDB サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、お使いの Azure Database for MariaDB サーバーに指示します。
 
@@ -52,13 +52,13 @@ ms.locfileid: "59006691"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
-接続のセキュリティ ペインには、**[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらく Azure Database for MariaDB Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
+接続のセキュリティ ペインには、 **[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらく Azure Database for MariaDB Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
 Azure Database for MariaDB のファイアウォールでは、Azure Database for MariaDB サーバーへの通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、*動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
+お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
@@ -88,7 +88,7 @@ Azure Database for MariaDB のファイアウォールでは、Azure Database fo
 
 仮想ネットワーク サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
-- **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
+- **ネットワーク管理者:** &nbsp; エンドポイントを有効にします。
 - **データベース管理者:** &nbsp; アクセス制御リスト (ACL) を更新して Azure Database for MariaDB サーバーに特定のサブネットを追加します。
 
 *RBAC による代替:*
@@ -101,6 +101,7 @@ Azure Database for MariaDB のファイアウォールでは、Azure Database fo
 > Azure Database for MariaDB と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
+> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 
@@ -138,7 +139,7 @@ Azure Database for MariaDB の場合、仮想ネットワーク規則機能に�
 - [Azure 仮想ネットワーク][vm-virtual-network-overview]
 - [Azure 仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VNet ルールの作成については、以下の記事を参照してください。
 - [Azure portal を使用した Azure Database for MariaDB VNet 規則の作成と管理](howto-manage-vnet-portal.md)
  
@@ -147,7 +148,7 @@ VNet ルールの作成については、以下の記事を参照してくださ
 -->
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[resource-manager-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -160,3 +161,5 @@ VNet ルールの作成については、以下の記事を参照してくださ
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
+
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

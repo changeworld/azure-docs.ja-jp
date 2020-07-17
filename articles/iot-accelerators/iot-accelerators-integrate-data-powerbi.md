@@ -1,19 +1,19 @@
 ---
 title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
-description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズした視覚エフェクトに統合します。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
-author: asdonald
+description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズされた視覚エフェクトに統合しています。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094822"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74184240"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -22,7 +22,7 @@ ms.locfileid: "58094822"
 ## <a name="prerequisites"></a>前提条件
 
 - 現在リモート監視ソリューションを実行している必要があります
-- [Azure portal](https://portal.azure.com) および IoT Hub とソリューションが実行しているサブスクリプションに、アクセスできる必要があります
+- [Azure portal](https://portal.azure.com) および IoT Hub とソリューションが実行されているご自分のサブスクリプションにアクセスできる必要があります
 - [Power BI Desktop](https://powerbi.microsoft.com) がインストールされている必要があります (任意のバージョン)
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "58094822"
   
 1. Power BI Desktop アプリを開き、左上隅の [データの取得] をクリックします。 
 
-    ![データの取得](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
+    ![Get Data](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
 2. データの入力を要求されたら、"Azure Cosmos DB" を検索して、このコネクタを選びます。 このコネクタは、基本的に、Azure IoT ソリューションの Cosmos Database から直接データを取り出します
   
@@ -98,7 +98,7 @@ ms.locfileid: "58094822"
 
 また、公開されたダッシュボードで[データを更新](https://docs.microsoft.com/power-bi/refresh-data)し、最新のデータ セットを保証することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Power BI を使ってリモート監視データを視覚化する方法について学習しました
 

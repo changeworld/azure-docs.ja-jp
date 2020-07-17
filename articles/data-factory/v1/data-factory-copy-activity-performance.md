@@ -1,28 +1,27 @@
 ---
-title: コピー アクティビティのパフォーマンスとチューニングに関するガイド | Microsoft Docs
+title: コピー アクティビティのパフォーマンスとチューニングに関するガイド
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527386"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-copy-activity-performance.md)
 > * [バージョン 2 (最新バージョン)](../copy-activity-performance.md)
 
@@ -39,9 +38,9 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 この記事では、次の内容について説明します。
 
-* [パフォーマンス参照番号](#performance-reference) 
+* [パフォーマンス参照番号](#performance-reference)
 * [クラウド データ移動単位](#cloud-data-movement-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
-* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps) 
+* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps)
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に「 [コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md) 」を参照してください。
@@ -251,7 +250,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 Data Factory の [スライシング モデル](data-factory-scheduling-and-execution.md) を使用することで、操作するデータの量を制限できます。
 
-   **監視と管理アプリ**を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、**[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット**を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]** に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
+   **監視と管理アプリ**を使用して、実行時間とパフォーマンス特性を収集します。 Data Factory のホーム ページで、 **[監視と管理]** を選択します。 ツリー ビューで、 **出力データセット**を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** の一覧で、コピー アクティビティの実行を選択します。 **[Activity Windows (アクティビティ ウィンドウ)]** には、コピー アクティビティの期間とコピーされるデータのサイズが表示されます。 スループットは、 **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]** に一覧表示されます。 このアプリの詳細については、 [新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
    ![アクティビティ実行の詳細](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -265,7 +264,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
      * [Data Management Gateway のスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Data Management Gateway](#considerations-for-data-management-gateway)
    * [ソース](#considerations-for-the-source)
-   * [シンク](#considerations-for-the-sink)
+   * [Sink](#considerations-for-the-sink)
    * [シリアル化と逆シリアル化](#considerations-for-serialization-and-deserialization)
    * [圧縮](#considerations-for-compression)
    * [列マッピング](#considerations-for-column-mapping)
@@ -333,7 +332,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 * **Table Storage**の場合:
   * **パーティション**: インターリーブされたパーティションにデータを書き込むと、パフォーマンスが大幅に低下します。 データが複数のパーティションに順次効率よく挿入されるように、パーティション キーでソース データを並べ替えるか、データが 1 つのパーティションに書き込まれるようにロジックを調整します。
 * **Azure Cosmos DB** の場合:
-  * **バッチ サイズ**: **writeBatchSize** プロパティは、ドキュメントを作成する Azure Cosmos DB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。Azure Cosmos DB に送信される並列要求の数が増えるためです。 ただし、Azure Cosmos DB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
+  * **Batch size**: **writeBatchSize** プロパティは、ドキュメントを作成する Azure Cosmos DB サービスへの並列要求の数を設定します。 **writeBatchSize** を増やすとパフォーマンスがよくなります。Azure Cosmos DB に送信される並列要求の数が増えるためです。 ただし、Azure Cosmos DB に書き込む際は、スロットルに注意してください (エラー メッセージは "要求率が大きいです")。 スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因によって発生する可能性があります。 コピーのスループットを高めるには、より適切なコレクション (S3 など) の使用を検討してください。
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>シリアル化と逆シリアル化に関する考慮事項
 入力データ セットまたは出力データ セットがファイルであると、シリアル化および逆シリアル化が実行されることがあります。 コピー アクティビティでサポートされているファイル形式について詳しくは、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」をご覧ください。
@@ -353,7 +352,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 
 **コーデック**: コピー アクティビティでは、圧縮の種類として gzip、bzip2、および Deflate がサポートされています。 Azure HDInsight では、3 種類すべてを処理に利用できます。 各圧縮コーデックには、長所があります。 たとえば、bzip2 はコピーのスループットが最も低いのですが、分割して処理できるため、最高の Hive クエリ パフォーマンスを発揮します。 Gzip は最もバランスの取れたオプションであり、最も頻繁に使用されます。 エンド ツー エンドのシナリオに最適なコーデックを選択してください。
 
-**レベル**: 各圧縮コーデックに対して、最速圧縮と最適圧縮という 2 つのオプションのいずれかを選択できます。 最速圧縮オプションでは、可能な限り短時間でデータの圧縮を完了しますが、生成ファイルが最適に圧縮されない場合があります。 最適圧縮オプションでは、より多くの時間をデータ圧縮に費やしますが、データ量を最小限まで圧縮します。 両方のオプションを実際にテストして、どちらが全体的なパフォーマンスで優れているかを確認することができます。
+**レベル**:各圧縮コーデックに対して、最速圧縮と最適圧縮という 2 つのオプションのいずれかを選択できます。 最速圧縮オプションでは、可能な限り短時間でデータの圧縮を完了しますが、生成ファイルが最適に圧縮されない場合があります。 最適圧縮オプションでは、より多くの時間をデータ圧縮に費やしますが、データ量を最小限まで圧縮します。 両方のオプションを実際にテストして、どちらが全体的なパフォーマンスで優れているかを確認することができます。
 
 **考慮事項**: オンプレミス ストアとクラウド間で大量のデータをコピーする場合は、中間 Blob Storage と圧縮の使用を検討してください。 企業ネットワークと Azure サービスの帯域幅が制限要因となっていて、入力データ セットと出力データ セットの両方を圧縮されない形式にしたい場合は、中間ストレージを使用すると便利です。 具体的には、1 つのコピー アクティビティを 2 つのコピー アクティビティに分割できます。 最初のコピー アクティビティは、圧縮形式で、ソースから中間またはステージング BLOB へのコピーを行います。 2 番目のコピー アクティビティは、ステージングから圧縮されたデータをコピーし、シンクへの書き込み中に圧縮を解除します。
 
@@ -368,7 +367,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 Data Factory が同じデータ ストアに同時に接続することを必要とするデータ セットの数とコピー アクティビティの数に注意してください。 同時コピー ジョブの数が多いと、データ ストアのスロットルが発生し、パフォーマンスの低下、コピー ジョブの内部的な再試行、場合によっては実行の失敗につながるおそれがあります。
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>サンプル シナリオ: オンプレミス SQL Server から Blob Storage へのコピー
-**シナリオ**: オンプレミスの SQL Server から Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
+**シナリオ**:オンプレミスの SQL Server から Blob Storage に CSV 形式でデータをコピーするパイプラインが構築されています。 コピー ジョブを高速にするために、CSV ファイルは bzip2 形式で圧縮されます。
 
 **テストと分析**: コピー アクティビティのスループットは 2 MBps 未満で、パフォーマンスのベンチマークをかなり下回っています。
 
@@ -384,7 +383,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 
 次に示す要因の 1 つ以上がパフォーマンスのボトルネックの原因である可能性があります。
 
-* **ソース**: 負荷が大きいため、SQL Server 自体のスループットが低くなっています。
+* **ソース**:負荷が大きいため、SQL Server 自体のスループットが低くなっています。
 * **Data Management Gateway**:
   * **LAN**: ゲートウェイは SQL Server マシンから離れた場所にあり、低帯域幅で接続されています。
   * **ゲートウェイ**: ゲートウェイは、以下の操作を実行して、負荷の上限に達しています。
@@ -417,9 +416,10 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 ## <a name="reference"></a>リファレンス
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
-* Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../../storage/common/storage-performance-checklist.md)に関する記事
+* Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../../storage/blobs/storage-performance-checklist.md)。
+* Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
-* Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
-* Azure Cosmos DB は:[Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)
+* Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
+* Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)
 * オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)

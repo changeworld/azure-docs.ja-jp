@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry のコンテンツの形式
-description: Azure Container Registry 内でサポートされているコンテンツの形式について説明します。
-services: container-registry
-author: dlepow
-manager: jeconnoc
-ms.service: container-registry
+title: サポートされているコンテンツの形式
+description: Docker と互換性のあるコンテナー イメージ、Helm チャート、OCI イメージ、OCI 成果物など、Azure Container Registry でサポートされているコンテンツ形式について説明します。
 ms.topic: article
-ms.date: 04/18/2019
-ms.author: danlep
-ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/30/2019
+ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997072"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225787"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry 内でサポートされているコンテンツの形式
 
@@ -29,13 +24,19 @@ Azure Container Registry 内のプライベート リポジトリを使用して
 
 ## <a name="oci-images"></a>OCI イメージ
 
-Azure Container Registry では、[Open Container Initiative (OCI) イメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に準拠するイメージもサポートされています。 パッケージ形式には、[Singularity Image Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/) が含まれています。
+Azure Container Registry では、[Open Container Initiative (OCI) イメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に準拠するイメージをサポートしています。 パッケージ形式には、[Singularity Image Format (SIF)](https://github.com/sylabs/sif) が含まれています。
+
+## <a name="oci-artifacts"></a>OCI 成果物
+
+Azure Container Registry では、コンテナー イメージおよびその他のコンテンツ タイプ (成果物) の格納、共有、セキュリティ保護およびデプロイに、ベンダー中立かつクラウドを問わない仕様である、[OCI Distribution Specification](https://github.com/opencontainers/distribution-spec) をサポートしています。 この仕様では、コンテナー イメージに加え、広範な成果物をレジストリに格納できます。 成果物のプッシュおよびプルには、その成果物に適したツールを使用します。 例については、[Azure コンテナー レジストリを使用した OCI 成果物のプッシュおよびプル](container-registry-oci-artifacts.md)に関する記事を参照してください。
+
+OCI 成果物の詳細については、GitHub 上の[ストレージとしての OCI レジストリ (ORAS)](https://github.com/deislabs/oras) リポジトリおよび [OCI 成果物](https://github.com/opencontainers/artifacts)リポジトリの記事を参照してください。
 
 ## <a name="helm-charts"></a>Helm チャート
 
-Azure Container Registry では、Kubernetes 用のアプリケーションをすばやく管理およびデプロイするために使用されるパッケージ形式である [Helm チャート](https://helm.sh/)のリポジトリをホストすることができます。 [Helm クライアント](https://docs.helm.sh/using_helm/#installing-helm) バージョン 2.11.0 以降がサポートされています。
+Azure Container Registry では、Kubernetes 用のアプリケーションをすばやく管理およびデプロイするために使用されるパッケージ形式である [Helm チャート](https://helm.sh/)のリポジトリをホストすることができます。 [Helm クライアント](https://docs.helm.sh/using_helm/#installing-helm) バージョン 2 (2.11.0 以降) がサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Container Registry を使用してイメージを[プッシュおよびプル](container-registry-get-started-docker-cli.md)する方法を確認します。
 

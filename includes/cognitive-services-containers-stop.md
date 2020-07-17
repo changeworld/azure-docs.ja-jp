@@ -1,14 +1,14 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/02/2019
-ms.openlocfilehash: c0c3675b68c8ecc83a56b99c44db71b2ac2d28d7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a642160fc7e94979a91687b07c26fafeb786bbb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67704180"
 ---
-コンテナーをシャットダウンするには、コンテナーが実行されているコマンドライン環境で、Ctrl + C キーを押します。
+コンテナーをシャットダウンするには、コンテナーが実行されているコマンドライン環境で、<kbd>Ctrl + C</kbd> キーを押します。

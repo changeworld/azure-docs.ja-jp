@@ -1,54 +1,54 @@
 ---
-title: Azure Container Instances のコンテナーを監視する
-description: Azure Container Instances のコンテナーによる CPU やメモリなどのコンピューティング リソースの使用状況を監視する方法の詳細について説明します。
-services: container-instances
-author: dlepow
-ms.service: container-instances
-ms.topic: overview
-ms.date: 04/24/2018
-ms.author: danlep
-ms.openlocfilehash: 950d8b4b5ec1a55e2054039a01d6807915b5c714
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+title: コンテナー インスタンスの監視
+description: Azure Container Instances のコンテナーによる CPU やメモリなどのコンピューティング リソースの使用状況を監視する方法の詳細。
+ms.topic: article
+ms.date: 04/24/2019
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784075"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116369"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances のコンテナー リソースを監視する
 
-Azure Monitor を使用すると、コンテナー インスタンスによって使用されているコンピューティング リソースを把握できます。 Azure Monitor を使用して、コンテナー グループとそのコンテナーの CPU とメモリ使用率を追跡します。 このリソース使用量データは、コンテナー グループの最適な CPU とメモリ設定を決定するために役立ちます。
+[Azure Monitor][azure-monitoring] によって、コンテナー インスタンスによって使用されているコンピューティング リソースの分析情報が提供されます。 このリソース使用量データは、コンテナー グループの最適なリソース設定を決定するために役立ちます。 Azure Monitor には、コンテナー インスタンスのネットワーク アクティビティを追跡するメトリックもあります。
 
-このドキュメントでは、Azure Portal と Azure CLI の両方を使用して、コンテナー インスタンスの CPU とメモリ使用量を収集する方法について詳しく説明します。
+このドキュメントでは、Azure portal と Azure CLI の両方を使用して、コンテナー インスタンスの Azure Monitor メトリックを収集する方法について詳しく説明します。
 
 > [!IMPORTANT]
-> 現時点で、リソース使用量メトリックは Linux コンテナーにのみ使用できます。
->
+> Azure Container Instances の Azure Monitor メトリックは現在プレビュー段階にあり、一部の[制限が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+
+## <a name="preview-limitations"></a>プレビューの制限事項
+
+現時点で、Azure Monitor メトリックは Linux コンテナーにのみ使用できます。
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 
-Azure Monitor を使用すると、Azure Container Instances の **CPU** と**メモリ**の両方の使用量に関するメトリックを把握できます。 両方のメトリックは、コンテナー グループと個々のコンテナーで使用できます。
+Azure Monitor では、次の [Azure Container Instances 用のメトリック][supported-metrics]が提供されます。 これらのメトリックは、コンテナー グループと個々のコンテナーで使用できます。 既定では、メトリックは平均値として集計されます。
 
-CPU メトリックは**ミリコア**単位で表されます。 1 ミリコアは CPU コアの 1/1000 なので、500 ミリコア (つまり 500 m) は CPU コアの 50% の使用率を表します。
+* **[CPU 使用率]** - **ミリコア**単位です。 1 ミリコアは CPU コアの 1/1,000 なので、500 ミリコアは 0.5 CPU コアの使用率を表します。
 
-メモリ メトリックは**バイト**単位で表されます。
+* **[メモリ使用量]** - バイト単位です。
+
+* **[1 秒あたりに受信したネットワーク バイト数]** および **[1 秒あたりに送信したネットワーク バイト数]** 。 
 
 ## <a name="get-metrics---azure-portal"></a>メトリックを取得する - Azure Portal
 
-コンテナー グループが作成されると、Azure Portal で Azure Monitor データを利用できるようになります。 コンテナー グループのメトリックを表示するには、リソース グループを選択してからコンテナー グループを選択します。 ここでは、CPU とメモリの両方の使用量について事前に作成されたグラフを確認できます。
+コンテナー グループが作成されると、Azure Portal で Azure Monitor データを利用できるようになります。 コンテナー グループのメトリックを表示するには、そのコンテナー グループの **[概要]** ページに移動します。 ここでは、使用可能な各メトリックに対して事前に作成されたグラフを見ることができます。
 
 ![2 つのグラフ][dual-chart]
 
-複数のコンテナーを含むコンテナー グループがある場合は、[ディメンション][monitor-dimension]を使用して個々のコンテナーのメトリックを表示します。 個々のコンテナー メトリックを使用してグラフを作成するには、次の手順を実行します。
+複数のコンテナーを含むコンテナー グループで、[ディメンション][monitor-dimension]を使用してコンテナーごとのメトリックを表します。 個々のコンテナー メトリックを使用してグラフを作成するには、次の手順を実行します。
 
-1. 左側のナビゲーション メニューから **[モニター]** を選択します。
-2. コンテナー グループとメトリック (CPU またはメモリ) を選択します。
-3. 緑色のディメンション ボタンを選択し、**[コンテナー名]** を選択します。
+1. **[概要]** ページで、**CPU** などのメトリック チャートを 1 つ選択します。 
+1. **[Apply splitting]\(分割の適用\)** を選択し、 **[コンテナー名]** を選択します。
 
 ![ディメンション][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>メトリックを取得する - Azure CLI
 
-コンテナー インスタンスの CPU とメモリの使用量は、Azure CLI を使用して収集することもできます。 まず、次のコマンドを使用してコンテナー グループの ID を取得します。 `<resource-group>` をリソース グループ名に、`<container-group>` をコンテナー グループの名前に置き換えます。
+コンテナー インスタンスのメトリックは、Azure CLI を使用して収集することもできます。 まず、次のコマンドを使用してコンテナー グループの ID を取得します。 `<resource-group>` をリソース グループ名に、`<container-group>` をコンテナー グループの名前に置き換えます。
 
 
 ```console
@@ -57,83 +57,90 @@ CONTAINER_GROUP=$(az container show --resource-group <resource-group> --name <co
 
 次のコマンドを使用して、**CPU** 使用量のメトリックを取得します。
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
-
-Timestamp            Name              Average
--------------------  ------------  -----------
-2018-04-22 04:39:00  CPU Usage
-2018-04-22 04:40:00  CPU Usage
-2018-04-22 04:41:00  CPU Usage
-2018-04-22 04:42:00  CPU Usage
-2018-04-22 04:43:00  CPU Usage      0.375
-2018-04-22 04:44:00  CPU Usage      0.875
-2018-04-22 04:45:00  CPU Usage      1
-2018-04-22 04:46:00  CPU Usage      3.625
-2018-04-22 04:47:00  CPU Usage      1.5
-2018-04-22 04:48:00  CPU Usage      2.75
-2018-04-22 04:49:00  CPU Usage      1.625
-2018-04-22 04:50:00  CPU Usage      0.625
-2018-04-22 04:51:00  CPU Usage      0.5
-2018-04-22 04:52:00  CPU Usage      0.5
-2018-04-22 04:53:00  CPU Usage      0.5
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
 ```
 
-次のコマンドを使用して、**メモリ**使用量のメトリックを取得します。
-
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
-
-Timestamp            Name              Average
--------------------  ------------  -----------
-2018-04-22 04:38:00  Memory Usage
-2018-04-22 04:39:00  Memory Usage
-2018-04-22 04:40:00  Memory Usage
-2018-04-22 04:41:00  Memory Usage
-2018-04-22 04:42:00  Memory Usage  6.76915e+06
-2018-04-22 04:43:00  Memory Usage  9.22061e+06
-2018-04-22 04:44:00  Memory Usage  9.83552e+06
-2018-04-22 04:45:00  Memory Usage  8.42906e+06
-2018-04-22 04:46:00  Memory Usage  8.39526e+06
-2018-04-22 04:47:00  Memory Usage  8.88013e+06
-2018-04-22 04:48:00  Memory Usage  8.89293e+06
-2018-04-22 04:49:00  Memory Usage  9.2073e+06
-2018-04-22 04:50:00  Memory Usage  9.36243e+06
-2018-04-22 04:51:00  Memory Usage  9.30509e+06
-2018-04-22 04:52:00  Memory Usage  9.2416e+06
-2018-04-22 04:53:00  Memory Usage  9.1008e+06
+```output
+Timestamp            Name       Average
+-------------------  ---------  ---------
+2019-04-23 22:59:00  CPU Usage
+2019-04-23 23:00:00  CPU Usage
+2019-04-23 23:01:00  CPU Usage  0.0
+2019-04-23 23:02:00  CPU Usage  0.0
+2019-04-23 23:03:00  CPU Usage  0.5
+2019-04-23 23:04:00  CPU Usage  0.5
+2019-04-23 23:05:00  CPU Usage  0.5
+2019-04-23 23:06:00  CPU Usage  1.0
+2019-04-23 23:07:00  CPU Usage  0.5
+2019-04-23 23:08:00  CPU Usage  0.5
+2019-04-23 23:09:00  CPU Usage  1.0
+2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-複数コンテナー グループの場合、`containerName` ディメンションを追加して、コンテナーごとにこのデータを返すことができます。
+コマンド内の `--metric` パラメーターの値を変更して、他の[サポートされているメトリック][supported-metrics]を取得します。 たとえば、次のコマンドを使用して、**メモリ**使用量のメトリックを取得します。 
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --dimension containerName --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
+```
 
+```output
+Timestamp            Name          Average
+-------------------  ------------  ----------
+2019-04-23 22:59:00  Memory Usage
+2019-04-23 23:00:00  Memory Usage
+2019-04-23 23:01:00  Memory Usage  0.0
+2019-04-23 23:02:00  Memory Usage  8859648.0
+2019-04-23 23:03:00  Memory Usage  9181184.0
+2019-04-23 23:04:00  Memory Usage  9580544.0
+2019-04-23 23:05:00  Memory Usage  10280960.0
+2019-04-23 23:06:00  Memory Usage  7815168.0
+2019-04-23 23:07:00  Memory Usage  7739392.0
+2019-04-23 23:08:00  Memory Usage  8212480.0
+2019-04-23 23:09:00  Memory Usage  8159232.0
+2019-04-23 23:10:00  Memory Usage  8093696.0
+```
+
+複数コンテナー グループの場合、`containerName` ディメンションを追加して、コンテナーごとにメトリックを返すことができます。
+
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
+```
+
+```output
 Timestamp            Name          Containername             Average
 -------------------  ------------  --------------------  -----------
-2018-04-22 17:03:00  Memory Usage  aci-tutorial-app      1.95338e+07
-2018-04-22 17:04:00  Memory Usage  aci-tutorial-app      1.93096e+07
-2018-04-22 17:05:00  Memory Usage  aci-tutorial-app      1.91488e+07
-2018-04-22 17:06:00  Memory Usage  aci-tutorial-app      1.94335e+07
-2018-04-22 17:07:00  Memory Usage  aci-tutorial-app      1.97714e+07
-2018-04-22 17:08:00  Memory Usage  aci-tutorial-app      1.96178e+07
-2018-04-22 17:09:00  Memory Usage  aci-tutorial-app      1.93434e+07
-2018-04-22 17:10:00  Memory Usage  aci-tutorial-app      1.92614e+07
-2018-04-22 17:11:00  Memory Usage  aci-tutorial-app      1.90659e+07
-2018-04-22 16:12:00  Memory Usage  aci-tutorial-sidecar  1.35373e+06
-2018-04-22 16:13:00  Memory Usage  aci-tutorial-sidecar  1.28614e+06
-2018-04-22 16:14:00  Memory Usage  aci-tutorial-sidecar  1.31379e+06
-2018-04-22 16:15:00  Memory Usage  aci-tutorial-sidecar  1.29536e+06
-2018-04-22 16:16:00  Memory Usage  aci-tutorial-sidecar  1.38138e+06
-2018-04-22 16:17:00  Memory Usage  aci-tutorial-sidecar  1.41312e+06
-2018-04-22 16:18:00  Memory Usage  aci-tutorial-sidecar  1.49914e+06
-2018-04-22 16:19:00  Memory Usage  aci-tutorial-sidecar  1.43565e+06
-2018-04-22 16:20:00  Memory Usage  aci-tutorial-sidecar  1.408e+06
+2019-04-23 22:59:00  Memory Usage  aci-tutorial-app
+2019-04-23 23:00:00  Memory Usage  aci-tutorial-app
+2019-04-23 23:01:00  Memory Usage  aci-tutorial-app      0.0
+2019-04-23 23:02:00  Memory Usage  aci-tutorial-app      16834560.0
+2019-04-23 23:03:00  Memory Usage  aci-tutorial-app      17534976.0
+2019-04-23 23:04:00  Memory Usage  aci-tutorial-app      18329600.0
+2019-04-23 23:05:00  Memory Usage  aci-tutorial-app      19742720.0
+2019-04-23 23:06:00  Memory Usage  aci-tutorial-app      14786560.0
+2019-04-23 23:07:00  Memory Usage  aci-tutorial-app      14651392.0
+2019-04-23 23:08:00  Memory Usage  aci-tutorial-app      15470592.0
+2019-04-23 23:09:00  Memory Usage  aci-tutorial-app      15450112.0
+2019-04-23 23:10:00  Memory Usage  aci-tutorial-app      15339520.0
+2019-04-23 22:59:00  Memory Usage  aci-tutorial-sidecar
+2019-04-23 23:00:00  Memory Usage  aci-tutorial-sidecar
+2019-04-23 23:01:00  Memory Usage  aci-tutorial-sidecar  0.0
+2019-04-23 23:02:00  Memory Usage  aci-tutorial-sidecar  884736.0
+2019-04-23 23:03:00  Memory Usage  aci-tutorial-sidecar  827392.0
+2019-04-23 23:04:00  Memory Usage  aci-tutorial-sidecar  831488.0
+2019-04-23 23:05:00  Memory Usage  aci-tutorial-sidecar  819200.0
+2019-04-23 23:06:00  Memory Usage  aci-tutorial-sidecar  843776.0
+2019-04-23 23:07:00  Memory Usage  aci-tutorial-sidecar  827392.0
+2019-04-23 23:08:00  Memory Usage  aci-tutorial-sidecar  954368.0
+2019-04-23 23:09:00  Memory Usage  aci-tutorial-sidecar  868352.0
+2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Azure Monitoring の概要][azure-monitoring]に関するページで Azure Monitoring の詳細について学習します。
+[Azure Monitoring の概要][azure-monitoring]に関するページで Azure Monitoring について詳しく確認します。
+
+Azure Container Instances のメトリックがしきい値を超えたときに通知されるように、[メトリック アラート][metric-alert]を作成する方法について学習します。
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png
@@ -141,6 +148,11 @@ Timestamp            Name          Containername             Average
 [dual-chart]: ./media/container-instances-monitor/metrics.png
 [memory-chart]: ./media/container-instances-monitor/memory-multi.png
 
+<!-- LINKS - External -->
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+
 <!-- LINKS - Internal -->
-[azure-monitoring]: ../monitoring-and-diagnostics/monitoring-overview.md
+[azure-monitoring]: ../azure-monitor/overview.md
+[metric-alert]: ..//azure-monitor/platform/alerts-metric.md
 [monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics
+[supported-metrics]: ../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups

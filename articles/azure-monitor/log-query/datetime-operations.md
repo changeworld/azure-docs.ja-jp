@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリでの日時値の操作 | Microsoft Docs
 description: Azure Monitor ログ クエリで日時のデータを操作する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/16/2018
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009006"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77655380"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの日時値の操作
 
@@ -39,10 +32,10 @@ timespan を表現するには、10 進数の後に時間単位を続けます�
 |:---|:---|
 |d           | day          |
 |h           | hour         |
-|m           | 分       |
-|s           | 秒       |
+|m           | minute       |
+|s           | second       |
 |ms          | ミリ秒  |
-|microsecond | マイクロ秒  |
+|マイクロ秒 | マイクロ秒  |
 |tick        | ナノ秒   |
 
 datetime を作成するには、`todatetime` 演算子を使用して文字列をキャストします。 たとえば、特定の期間に送信される VM ハートビートを確認するには、`between` 演算子を使用して時間範囲を指定します。
@@ -153,7 +146,7 @@ Event
 
 ## <a name="related-functions"></a>関連する関数
 
-| Category | 関数 |
+| カテゴリ | 機能 |
 |:---|:---|
 | データ型の変換 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | ビン サイズへの値を四捨五入 | [bin](/azure/kusto/query/binfunction) |
@@ -161,7 +154,7 @@ Event
 | 値の一部を取得 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
 | 相対日付値の取得  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

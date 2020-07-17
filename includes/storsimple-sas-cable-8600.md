@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155897"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181209"
 ---
 #### <a name="to-attach-the-sas-cables"></a>SAS ケーブルの取り付け方法
 1. 主エンクロージャと EBOD エンクロージャを識別します。 2 つのエンクロージャはそれぞれのバックプレーンを見て識別できます。 次の図を参考にしてください。 
@@ -44,7 +44,7 @@ ms.locfileid: "66155897"
       | Label | 説明 |
       |:--- |:--- |
       | A |主エンクロージャ |
-      | b |EBOD エンクロージャ |
+      | B |EBOD エンクロージャ |
       | 1 |コントローラー 0 |
       | 2 |コントローラー 1 |
       | 3 |EBOD コントローラー 0 |

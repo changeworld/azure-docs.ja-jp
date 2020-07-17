@@ -1,25 +1,16 @@
 ---
-title: Azure Monitor ログを使用した Azure Service Fabric イベント分析 | Microsoft Docs
+title: Azure Monitor ログを使用した Azure Service Fabric イベント分析
 description: Azure Service Fabric クラスターの監視と診断での Azure Monitor ログを使用したイベントの視覚化と分析について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662161"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75464743"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor ログを使用したイベントの分析と視覚化
  Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、それらの可用性とパフォーマンスを最大限に高めるために役立つ分析ツールが提供されます。 この記事では、Azure Monitor ログでクエリを実行して分析情報を取得し、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。
@@ -43,7 +34,7 @@ Azure Monitor ログによってデータが受信されたら、Azure に用意
 
 [Azure Portal](https://portal.azure.com) で、Service Fabric Analytics ソリューションを作成したリソース グループに移動します。
 
-リソースの [**ServiceFabric\<nameOfOMSWorkspace\>**] を選択します。
+リソースの [**ServiceFabric\<nameOfOMSWorkspace\>** ] を選択します。
 
 `Summary` に、有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 
@@ -68,7 +59,7 @@ Service Fabric Analytics ページで、**Service Fabric Events** グラフを�
 
 ![Service Fabric ソリューションの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-一覧内のイベントを表示するには、**[一覧]** をクリックします。 ここで、収集済みのすべてのシステム イベントが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
+一覧内のイベントを表示するには、 **[一覧]** をクリックします。 ここで、収集済みのすべてのシステム イベントが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
     
 ![クエリの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
@@ -87,7 +78,7 @@ Service Fabric Analytics ページで、**Reliable Services** グラフをクリ
 
 ![Service Fabric ソリューションの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-一覧内のイベントを表示するには、**[一覧]** をクリックします。 ここで、Reliable Services のイベントを確認できます。 通常はデプロイおよびアップグレードで行われるサービス runasync の開始時点および完了時点に関する、さまざまなイベントを表示できます。 
+一覧内のイベントを表示するには、 **[一覧]** をクリックします。 ここで、Reliable Services のイベントを確認できます。 通常はデプロイおよびアップグレードで行われるサービス runasync の開始時点および完了時点に関する、さまざまなイベントを表示できます。 
 
 ![クエリの Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
@@ -109,7 +100,7 @@ Kusto クエリ言語は優れています。 実行可能なもう 1 つの重�
 
 ![クエリのノードごとのイベント](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * インフラストラクチャの監視、つまりパフォーマンス カウンターを有効にするために、[Log Analytics エージェントの追加](service-fabric-diagnostics-oms-agent.md)に関するページにアクセスしてください。 エージェントによって、パフォーマンス カウンターが収集され、既存のワークスペースに追加されます。
 * オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/platform/gateway.md)」を参照してください。

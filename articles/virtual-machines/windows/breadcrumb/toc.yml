@@ -1,16 +1,14 @@
-items:
 - name: Azure
-  tocHref: /
-  topicHref: /index
+  tocHref: /azure/
+  topicHref: /azure/index
   items:
-  - name: Virtual Machines
-    topicHref: /virtual-machines/index
-    items:
-    - name: Windows
-      topicHref: /virtual-machines/windows/index
-ms.openlocfilehash: bfba80a12d286f3fdf6b00bbb3f3a916415b951d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461954"
+    - name: Virtual Machines
+      tocHref: /azure/active-directory/managed-identities-azure-resources/
+      topicHref: /azure/virtual-machines/index
+      items:
+        - name: Windows
+          tocHref: /azure/active-directory/managed-identities-azure-resources/
+          topicHref: /azure/virtual-machines/windows/index
+    - name: Virtual Machines
+      tocHref: /azure/virtual-machines/
+      topicHref: /azure/virtual-machines/index

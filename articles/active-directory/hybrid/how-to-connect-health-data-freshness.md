@@ -7,19 +7,20 @@ author: zhiweiwangmsft
 manager: SamuelD
 editor: ''
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: zhiweiw
+ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a94bd07cf5020981cdf028ec0eccfa8fa531d240
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883702"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76897166"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>アラート "Health サービス データが最新ではありません"
 
@@ -52,7 +53,7 @@ Azure AD Connect Health で監視されているオンプレミスのマシン�
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順 
 
-問題の診断に必要な手順は次のとおりです。 最初に、すべてのサービスの種類に共通する一連の基本的なチェックを行います。 次の表に、各サービスの種類とデータ型に固有の手順を示します。 
+問題の診断に必要な手順は次のとおりです。 最初に、すべてのサービスの種類に共通する一連の基本的なチェックを行います。 
 
 > [!IMPORTANT] 
 > このアラートは、Connect Health [データ リテンション期間ポリシー](reference-connect-health-user-privacy.md#data-retention-policy)に従います。
@@ -66,7 +67,7 @@ Azure AD Connect Health で監視されているオンプレミスのマシン�
 * HTTP プロキシを使用する場合は、こちらの[構成手順](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)に従います。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 上記の手順のいずれかで問題が見つかった場合、問題を修正し、アラートが解決するまで待ちます。 アラートのバック グラウンド プロセスは 2 時間ごとに実行されるため、アラートを解決するには最大 2 時間かかります。 
 
 * [Azure AD Connect Health のデータ リテンション期間ポリシー](reference-connect-health-user-privacy.md#data-retention-policy)

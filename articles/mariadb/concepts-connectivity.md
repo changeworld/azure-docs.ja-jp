@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB の一時的な接続エラーに対処する | Microsoft Docs
+title: 一時的な接続エラー - Azure Database for MariaDB
 description: Azure Database for MariaDB の一時的な接続エラーに対処する方法を説明します。
 keywords: mysql 接続,接続文字列,接続の問題,一時的なエラー,接続エラー
-author: jan-eng
-ms.author: janeng
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: f5f5915e6fdb240fa519ee10526c935a524cb5b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 3/18/2020
+ms.openlocfilehash: 3e6c5c8b6c3f118f1b19c5e2b3455f1f66f7e70e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546285"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100806"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Azure Database for MariaDB の一時的な接続エラーに対処する
 
@@ -36,7 +36,7 @@ ms.locfileid: "53546285"
 * 以降再試行するたびに、60 秒を上限として、待ち時間を指数関数的に増やします。
 * 操作が失敗したとアプリケーションで見なされる最大再試行回数を設定します。
 
-アクティブなトランザクションが進行している接続でエラーが発生した場合、回復に向けた正しい対処への難易度が上がります。 次の 2 つのケースがあります。トランザクションが本来読み取り専用である場合は、接続を再度開いてトランザクションを再試行するのが安全です。 一方、データベースへの書き込みも伴うトランザクションの場合は、そのトランザクションがロールバックされたかどうかや、一時的なエラーが発生する前に成功したかどうかを判断しなければなりません。 このケースでは、データベース サーバーからコミットの確認を受け取っていないだけかもしれません。
+アクティブなトランザクションが進行している接続でエラーが発生した場合、回復に向けた正しい対処への難易度が上がります。 次の 2 つのケースがあります。トランザクションが本来読み取り専用である場合は、接続を再度開いてトランザクションを再試行するのが安全です。 一方、データベースへの書き込みも伴うトランザクションの場合は、そのトランザクションがロールバックされたかどうかや、一時的なエラーが発生する前に成功したかどうかを判断しなければなりません。 その場合は、データベース サーバーからコミットの確認を受信していない可能性があります。
 
 その判断を行う 1 つの方法として、すべての再試行に使用される一意の ID をクライアントで生成することが考えられます。 この一意の ID をトランザクションの一環としてサーバーに渡し、一意制約のある列に格納します。 こうすることで、トランザクションを安全に再試行することができます。 前のトランザクションがロールバックされ、なおかつクライアントで生成された一意の ID がまだシステムに存在しなければ、これは成功します。 一意の ID が既に格納されている場合は、前回のトランザクションが正常に完了していることになるので、再試行は失敗し、キーが重複している旨の違反が表示されます。
 
@@ -44,6 +44,6 @@ ms.locfileid: "53546285"
 
 再試行ロジックは必ずテストしてください。 たとえば、Azure Database for MariaDB サーバーのコンピューティング リソースをスケールアップまたはスケールダウンしているときに、実際のコードを実行してみましょう。 この操作中に発生した短時間のダウンタイムには、アプリケーションで問題なく対処する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for MariaDB への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

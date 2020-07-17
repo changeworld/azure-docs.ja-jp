@@ -1,26 +1,15 @@
 ---
-title: Azure に Windows を実行する Service Fabric クラスターを作成する | Microsoft Docs
+title: Azure で Windows を実行する Service Fabric クラスターを作成する
 description: このチュートリアルでは、PowerShell を使用して Windows Service Fabric クラスターを Azure 仮想ネットワークやネットワーク セキュリティ グループにデプロイする方法を学習します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/13/2019
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158092"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756044"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
@@ -167,7 +156,7 @@ ms.locfileid: "66158092"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory クライアント認証の設定
 Azure でホストされているパブリック ネットワークにデプロイされた Service Fabric クラスターの場合、クライアントとノードの間の相互認証は次のようにすることを推奨します。
 * クライアント ID には Azure Active Directory を使用する。
-* サーバー ID および HTTP 通信の SSL 暗号化には証明書を使用する。
+* サーバー ID および HTTP 通信の TLS 暗号化には証明書を使用する。
 
 Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定は、[クラスターを作成する](#createvaultandcert)前に行う必要があります。 Azure AD は組織 (テナントと呼ばれます) を有効にしてアプリケーションに対するユーザー アクセスを管理します。 
 
@@ -178,12 +167,12 @@ Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer
 
 この記事では、既にテナントが作成されていることを前提としています。 まだ作成していない場合は、まず、[Azure Active Directory テナントを取得する方法](../active-directory/develop/quickstart-create-new-tenant.md)に関するページをお読みください。
 
-Azure AD での Service Fabric クラスターに関する構成の手順を簡略化するために、一連の Windows PowerShell スクリプトが用意されています。 コンピューターに[スクリプトをダウンロード](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)します。
+Azure AD での Service Fabric クラスターに関する構成の手順を簡略化するために、一連の Windows PowerShell スクリプトが用意されています。 コンピューターに[スクリプトをダウンロード](https://github.com/Azure-Samples/service-fabric-aad-helpers)します。
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD アプリケーションを作成し、ユーザーをロールに割り当てる
 クラスターへのアクセスを制御するために、Web アプリケーションとネイティブ アプリケーションの 2 つの Azure AD アプリケーションを作成します。 クラスターを表すアプリケーションを作成したら、[Service Fabric によってサポートされるロール](service-fabric-cluster-security-roles.md) (読み取り専用と管理者) にユーザーを割り当てます。
 
-`SetupApplications.ps1` を実行します。パラメーターとして、テナント ID、クラスター名、および Web アプリケーション応答 URL を指定します。 ユーザーのユーザー名とパスワードを指定します。 例: 
+`SetupApplications.ps1` を実行します。パラメーターとして、テナント ID、クラスター名、および Web アプリケーション応答 URL を指定します。 ユーザーのユーザー名とパスワードを指定します。 次に例を示します。
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -194,7 +183,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > ナショナル クラウド (たとえば Azure Government、Azure China、Azure Germany) については、`-Location` パラメーターを指定します。
 
-*TenantId* (ディレクトリ ID) は、[Azure portal](https://portal.azure.com) で確認できます。 **[Azure Active Directory]** > **[プロパティ]** の順に選択し、**[ディレクトリ ID]** の値をコピーします。
+*TenantId* (ディレクトリ ID) は、[Azure portal](https://portal.azure.com) で確認できます。 **[Azure Active Directory]**  >  **[プロパティ]** の順に選択し、 **[ディレクトリ ID]** の値をコピーします。
 
 *ClusterName* は、スクリプトによって作成される Azure AD アプリケーションのプレフィックスとして使用されます。 実際のクラスター名と完全に一致している必要はありません。 これは、使用されている Service Fabric クラスターへの Azure AD アーティファクトのマッピングを容易にすることだけが目的です。
 
@@ -260,7 +249,7 @@ Azure AD テナント用の管理特権を持っているアカウントにサ�
 }
 ```
 
-[azuredeploy.parameters.json][parameters] パラメーター ファイルで、パラメーター値を追加します。 例: 
+[azuredeploy.parameters.json][parameters] パラメーター ファイルで、パラメーター値を追加します。 次に例を示します。
 
 ```json
 "aadTenantId": {
@@ -442,7 +431,7 @@ EventStore サービスは、Service Fabric の監視オプションです。 Ev
 
 ## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>クラスターの Azure Monitor ログの設定
 
-クラスター レベルのイベントの監視には、Azure Monitor ログをお勧めしています。 クラスターを監視するように Azure Monitor ログを設定するには、[クラスターレベルのイベントを確認できるように診断を有効にする](#configure-diagnostics-collection-on-the-cluster)必要があります。  
+クラスター レベルのイベントを監視する手段として、Microsoft は Azure Monitor ログを推奨しています。 クラスターを監視するように Azure Monitor ログを設定するには、[クラスターレベルのイベントを確認できるように診断を有効にする](#configure-diagnostics-collection-on-the-cluster)必要があります。  
 
 ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。  このログ データは、*applicationDiagnosticsStorageAccountName* ストレージ アカウントの WADServiceFabric*EventTable、WADWindowsEventLogsTable、および WADETWEventTable テーブルに格納されます。
 
@@ -712,11 +701,11 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
 Get-ServiceFabricClusterHealth
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアル シリーズの他の記事では、ここで作成したクラスターを使用します。 次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](service-fabric-cluster-delete.md)することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルに進んで、お使いのクラスターをスケーリングする方法について学習します。
 

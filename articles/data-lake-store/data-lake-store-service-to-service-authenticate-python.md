@@ -1,22 +1,18 @@
 ---
-title: 'サービス間認証: Python から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+title: Python - サービス間認証 - Data Lake Storage Gen1
 description: Python から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 84b7fac10374c1c8f23d17ad775d522b4cb261e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: has-adal-ref
+ms.openlocfilehash: 449159f6857cb2120f4570a8c20cd82fd11016a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877756"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688122"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 に対する Python を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "58877756"
 > * [.NET SDK の使用](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python の使用](data-lake-store-service-to-service-authenticate-python.md)
 > * [REST API の使用](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 この記事では、Python SDK を使用して、Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。 Python を使用した Data Lake Store に対するエンド ユーザー認証については、「[End-user authentication with Data Lake Storage Gen1 using Python](data-lake-store-end-user-authenticate-python.md)」(Data Lake Storage Gen1 での Python を使用したエンドユーザー認証) を参照してください。
 
@@ -43,8 +39,8 @@ ms.locfileid: "58877756"
 Python を使用して Data Lake Storage Gen1 を操作するには、3 つのモジュールをインストールする必要があります。
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
-* `azure-mgmt-datalake-store` モジュール。これには、Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)に関するページをご覧ください。
-* `azure-datalake-store` モジュール。これには、Data Lake Storage Gen1 ファイル システム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
+* `azure-mgmt-datalake-store` モジュール。これには、Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](/python/api/azure-mgmt-datalake-store/)をご覧ください。
+* `azure-datalake-store` モジュール。これには、Data Lake Storage Gen1 ファイル システム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)をご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 
@@ -92,7 +88,7 @@ Data Lake Storage Gen1 アカウントの作成や Data Lake Storage Gen1 アカ
     RESOURCE = 'https://management.core.windows.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     context = adal.AuthenticationContext(authority_uri, api_version=None)
     mgmt_token = context.acquire_token_with_client_credentials(RESOURCE, client_id, client_secret)
     armCreds = AADTokenCredentials(mgmt_token, client_id, resource=RESOURCE)
@@ -105,7 +101,7 @@ Data Lake Storage Gen1 アカウントの作成や Data Lake Storage Gen1 アカ
     RESOURCE = 'https://datalake.azure.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     adlCreds = lib.auth(tenant_id = tenant,
                     client_secret = client_secret,
                     client_id = client_id,
@@ -127,10 +123,8 @@ Use this snippet to authenticate with Azure AD for account management operations
     mgmt_token = context.acquire_token_with_client_certificate(resource_uri, client_id, client_cert, client_cert_thumbprint)
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、サービス間認証を使って、Python を使用して Data Lake Storage Gen1 で認証する方法を説明しました。 これで、Python を使用して Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
 * [Python を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-python.md)
 * [Python を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-python.md)
-
-

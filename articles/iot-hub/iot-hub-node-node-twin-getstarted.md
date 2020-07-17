@@ -6,16 +6,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: f93abac563d47f6505f42d29e882698ef31174bf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: mqtt
+ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795887"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732276"
 ---
-# <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
+# <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -29,48 +30,56 @@ ms.locfileid: "59795887"
 > デバイス アプリとバックエンド アプリの両方をビルドするために使用できる Azure IoT SDK については、記事「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 >
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
-* Node.js バージョン 4.0.x 以降。
+このチュートリアルを完了するには、次のものが必要です。
+
+* Node.js バージョン 10.0.x 以降。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+
+* ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>IoT ハブに対する接続文字列を取得する
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
+
+## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
+
+[!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
 
 ## <a name="create-the-service-app"></a>デバイス アプリを作成する
 
 このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する Node.js コンソール アプリを作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT Hub に格納されているデバイス ツインに対してクエリを実行します。
 
-1. **addtagsandqueryapp** という名前の新しい空のフォルダーを作成します。 **addtagsandqueryapp** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
+1. **addtagsandqueryapp** という名前の新しい空のフォルダーを作成します。 **addtagsandqueryapp** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 `--yes` パラメーターではすべての既定値を使用できます。
 
-    ```
-    npm init
+    ```cmd/sh
+    npm init --yes
     ```
 
 2. コマンド プロンプトで、**addtagsandqueryapp** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** パッケージをインストールします。
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
 
 3. テキスト エディターを使用して、**addtagsandqueryapp** フォルダーに新しい **AddTagsAndQuery.js** ファイルを作成します。
 
-4. **AddTagsAndQuery.js** ファイルに次のコードを追加し、**{iot hub connection string}** プレースホルダーを、ハブの作成時にコピーした IoT Hub 接続文字列で置き換えます。
+4. 次のコードを **AddTagsAndQuery.js** ファイルに追加します。 `{iot hub connection string}` を、「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。
 
    ``` javascript
         'use strict';
         var iothub = require('azure-iothub');
         var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
-   
+
         registry.getTwin('myDeviceId', function(err, twin){
             if (err) {
                 console.error(err.constructor.name + ': ' + err.message);
@@ -83,7 +92,7 @@ ms.locfileid: "59795887"
                       }
                     }
                 };
-   
+
                 twin.update(patch, function(err) {
                   if (err) {
                     console.error('Could not update twin: ' + err.constructor.name + ': ' + err.message);
@@ -112,7 +121,7 @@ ms.locfileid: "59795887"
                     console.log("Devices in Redmond43: " + results.map(function(twin) {return twin.deviceId}).join(','));
                 }
             });
-   
+
             query = registry.createQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
             query.nextAsTwin(function(err, results) {
                 if (err) {
@@ -126,17 +135,17 @@ ms.locfileid: "59795887"
 
     前のコードは 2 つのクエリを実行します。1 つ目では、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 つ目のクエリで携帯ネットワーク経由で接続しているデバイスのみを選択するよう絞り込みます。
 
-    前のコードでは、**query** オブジェクトの作成時に、返されるドキュメントの最大数を指定します。 **query** オブジェクトには、**nextAsTwin** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **hasMoreResults** のブール型プロパティが含まれます。 **next** というメソッドは、集計クエリの結果など、デバイス ツインではない結果に使用できます。
+    コードで**クエリ** オブジェクトが作成されると、2 番目のパラメーターで返されるドキュメントの最大数が指定されます。 **query** オブジェクトには、**nextAsTwin** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **hasMoreResults** のブール型プロパティが含まれます。 **next** というメソッドは、集計クエリの結果など、デバイス ツインではない結果で使用できます。
 
 6. 以下を使用してアプリケーションを実行します。
 
-    ```
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
    **Redmond43** にあるすべてのデバイスを照会するクエリの結果には、1 件のデバイスが表示され、携帯ネットワークを使用するデバイスに絞り込んだ結果には 0 件のデバイスが表示されます。
-   
-    ![クエリ結果で 1 つのデバイスを参照してください](media/iot-hub-node-node-twin-getstarted/service1.png)
+
+   ![クエリ結果で 1 つのデバイスを参照してください](media/iot-hub-node-node-twin-getstarted/service1.png)
 
 次のセクションでは、接続情報を報告し、前のセクションのクエリの結果を変更するデバイス アプリを作成します。
 
@@ -144,36 +153,36 @@ ms.locfileid: "59795887"
 
 このセクションでは、**myDeviceId** としてハブに接続し、デバイス ツインの報告されるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Node.js コンソール アプリを作成します。
 
-1. **reportconnectivity** という名前の新しい空のフォルダーを作成します。 **reportconnectivity** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
-   
-    ```
-    npm init
+1. **reportconnectivity** という名前の新しい空のフォルダーを作成します。 **reportconnectivity** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 `--yes` パラメーターではすべての既定値を使用できます。
+
+    ```cmd/sh
+    npm init --yes
     ```
 
-2. コマンド プロンプトで、**reportconnectivity** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** と **azure-iot-device-mqtt** パッケージをインストールします。
-   
-    ```
+2. **reportconnectivity** フォルダーのコマンド プロンプトで、次のコマンドを実行して、**azure-iot-device** パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
 
-4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
+4. 次のコードを **ReportConnectivity.js** ファイルに追加します。 `{device connection string}` を、「**IoT ハブに新しいデバイスを登録する**」で [myDeviceId](#register-a-new-device-in-the-iot-hub) デバイス ID を作成するときにコピーしておいたデバイス接続文字列に置き換えます。
 
-    ```
+    ```javascript
         'use strict';
         var Client = require('azure-iot-device').Client;
         var Protocol = require('azure-iot-device-mqtt').Mqtt;
-   
+
         var connectionString = '{device connection string}';
         var client = Client.fromConnectionString(connectionString, Protocol);
-   
+
         client.open(function(err) {
         if (err) {
             console.error('could not open IotHub client');
         }  else {
             console.log('client opened');
-   
+
             client.getTwin(function(err, twin) {
             if (err) {
                 console.error('could not get twin');
@@ -183,7 +192,7 @@ ms.locfileid: "59795887"
                         type: 'cellular'
                     }
                 };
-   
+
                 twin.properties.reported.update(patch, function(err) {
                     if (err) {
                         console.error('could not update twin');
@@ -202,7 +211,7 @@ ms.locfileid: "59795887"
 
 5. デバイス アプリを実行する
 
-    ```   
+    ```cmd/sh
         node ReportConnectivity.js
     ```
 
@@ -210,7 +219,7 @@ ms.locfileid: "59795887"
 
 6. これで、デバイスが接続情報を報告したため、両方のクエリで表示されるようになります。 **addtagsandqueryapp** フォルダーに戻り、クエリを再度実行します。
 
-    ```   
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
@@ -218,7 +227,7 @@ ms.locfileid: "59795887"
 
     ![両方のクエリ結果で myDeviceId を表示します](media/iot-hub-node-node-twin-getstarted/service2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリからデバイスのメタデータをタグとして追加し、シミュレート対象デバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
 

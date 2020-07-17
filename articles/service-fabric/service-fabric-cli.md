@@ -1,19 +1,16 @@
 ---
 title: Azure Service Fabric CLI の概要
 description: Azure Service Fabric CLI の使用方法について説明します。 クラスターに接続して、アプリケーションを管理する方法についても説明します。
-services: service-fabric
-author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
+author: jeffj6123
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662654"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229459"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -33,7 +30,9 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 
 | CLI のバージョン   | サポートされているランタイムのバージョン |
 |---------------|---------------------------|
-| 最新 (7 以前)  | 最新 (6.4 以前)            |
+| 最新 (9 以前)  | 最新 (7 以前)              |
+| 8.0.0         | 6.5                       |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -42,7 +41,7 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 
 `pip install` コマンドの末尾にオプションとして `==<version>` を付けると、インストールする CLI のターゲット バージョンを指定できます。 たとえば、バージョン 1.1.0 であれば、次のような構文になります。
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -54,7 +53,7 @@ Service Fabric CLI リリースの詳細については、[GitHub のドキュ�
 
 ご利用のプラットフォームには、さまざまな方法で pip と Python をインストールできます。 ここでは主なオペレーティング システムを対象に、Python 3 と pip をすばやく設定する手順を説明します。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 Windows 10、Windows Server 2016、Windows Server 2012 R2 については、標準的な公式インストール手順を使用してください。 Python インストーラーを実行すると、既定で pip もインストールされます。
 
@@ -68,14 +67,14 @@ Windows 10、Windows Server 2016、Windows Server 2012 R2 については、標�
 
 この時点で新しいコマンド ウィンドウを開くと、対応する Python と pip のバージョンが得られます。
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 その後、次のコマンドを実行して Azure Service Fabric CLI (sfctl) をインストールし、CLI ヘルプ ページを表示します。
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -104,7 +103,7 @@ sfctl -h
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 フォルダーに対するアクセス許可が正しくないとの理由で Windows Subsystem for Linux へのインストールに失敗した場合には、管理者特権を使ってやり直すことが必要になる場合があります。
@@ -149,7 +148,7 @@ sfctl -h
 
 コマンドの構造は、動詞またはアクションの前にコマンドの対象が来るという一定のパターンに従います。
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -162,7 +161,7 @@ sfctl <object> <action>
 > [!WARNING]
 > セキュリティ保護されていない Service Fabric クラスターを運用環境で使用することは避けてください。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -170,7 +169,7 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 証明書を使って保護されているクラスターの場合、PEM でエンコードされた証明書を指定できます。 証明書は、単一のファイルとしてまたは証明書とキーのペアとして指定できます。 CA の署名入りではない自己署名証明書の場合は、`--no-verify` オプションを渡して CA 検証を省略することができます。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -182,7 +181,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 たとえば Service Fabric クラスターの正常性の状態を取得するには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -219,13 +218,13 @@ sfctl cluster health
 
 Service Fabric CLI は、クライアント側の証明書を PEM (拡張子 .pem) ファイルとしてサポートします。 Windows の PFX ファイルを使用している場合は、これらの証明書を PEM 形式に変換する必要があります。 PFX ファイルを PEM ファイルに変換するには、次のコマンドを使用します。
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 同様に、PEM ファイルから PFX ファイルに変換するには、次のコマンドをご利用いただけます (ここではパスワードを指定していません)。
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -247,13 +246,13 @@ openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certif
 
 特定のコマンドや、コマンドのグループについてのヘルプ情報を表示するには、次の例のように、`-h` フラグを使用します。
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 別名を使用した場合の例:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -261,12 +260,12 @@ sfctl application create -h
 
 Service Fabric CLI を更新するには、次のコマンドを実行します (最初のインストール時に選択した内容に応じて `pip` を `pip3` で置き換えます)。
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Service Fabric CLI でアプリケーションをデプロイする](service-fabric-application-lifecycle-sfctl.md)
 * [Linux 上の Service Fabric の概要](service-fabric-get-started-linux.md)

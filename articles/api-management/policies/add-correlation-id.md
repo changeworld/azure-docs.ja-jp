@@ -1,5 +1,6 @@
 ---
-title: Azure API Management ポリシーのサンプル - 関連付け ID を含むヘッダーを追加する | Microsoft Docs
+title: API Management ポリシーのサンプル - 関連付け ID を含むヘッダーを追加する
+titleSuffix: Azure API Management
 description: Azure API Management ポリシーのサンプル - 関連付け ID を含むヘッダーを受信要求に追加する方法を示します。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 126701674b6dc529404f5a7854cda9b31c336170
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868431"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75422248"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>関連付け ID を含むヘッダーの追加
 
@@ -30,7 +30,7 @@ ms.locfileid: "52868431"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Add correlation id to inbound request.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

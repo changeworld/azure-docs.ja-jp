@@ -1,27 +1,18 @@
 ---
-title: サンプルの Azure インフラストラクチャによるチュートリアル | Microsoft Docs
+title: サンプルの Azure インフラストラクチャによるチュートリアル
 description: Azure でのサンプルのインフラストラクチャのデプロイに関する主要な設計と実装のガイドラインについて説明します。
-documentationcenter: ''
-services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78944902"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -55,13 +46,13 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 * Adventure Works Cycles は、プレフィックスとして **[IT ワークロード]-[場所]-[Azure リソース]** を使用します。
   * たとえば、"**azos**" (Azure On-line Store) は IT ワークロード名であり、"**use**" (米国東部 2) は場所です。
 * 仮想ネットワークは、AZOS-USE-VN<strong>[番号]</strong> を使用します。
-* 可用性セットは、azos-use-as-**[ロール]** を使用します。
-* 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
+* 可用性セットは、azos-use-as- **[ロール]** を使用します。
+* 仮想マシン名は、azos-use-vm- **[仮想マシン名]** を使用します。
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure サブスクリプションとアカウント
 Adventure Works Cycles は、Adventure Works Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する課金を行います。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 Adventure Works Cycles では、Azure Managed Disks を使用する必要があると決定しました。 VM を作成するときに、使用可能な両方のストレージ層が使用されます。
 
 * Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらのデータ ディスクの **Standard Storage**。

@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリの workspace() 式 | Microsoft Docs
 description: workspace 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定のワークスペースからデータを取得するために、Azure Monitor ログ クエリで使用します。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/10/2018
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996309"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75364953"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
 
@@ -31,13 +24,13 @@ ms.locfileid: "57996309"
 
 ## <a name="arguments"></a>引数
 
-- *識別子*:次の表のいずれかの形式を使用してワークスペースを識別します。
+- *識別子*: 次の表のいずれかの形式を使用してワークスペースを識別します。
 
-| ID | 説明 | 例
+| [Identifier] | 説明 | 例
 |:---|:---|:---|
 | リソース名 | 人間が判読できるワークスペースの名前 (別名 "コンポーネント名") | workspace("contosoretail") |
 | 修飾名 | "subscriptionName/resourceGroup/componentName" の形式のワークスペースのフルネーム | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | ワークスペースの GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| id | ワークスペースの GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure リソース ID | Azure リソースの識別子 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
@@ -69,7 +62,7 @@ union
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Application Insights アプリを参照する場合には、[app 式](app-expression.md)に関するページをご覧ください。
 - [Azure Monitor データ](log-query-overview.md)の格納方法を確認します。

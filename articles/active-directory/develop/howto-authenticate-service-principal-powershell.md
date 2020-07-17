@@ -1,27 +1,24 @@
 ---
-title: PowerShell での Azure アプリ ID の作成 | Microsoft Docs
+title: Azure アプリ ID を作成する (PowerShell) | Azure
+titleSuffix: Microsoft identity platform
 description: Azure PowerShell を使用して、Azure Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。 証明書を使ってアプリケーションを認証する方法を示します。
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
-ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
+ms.custom: aaddev
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 10/24/2018
+ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d6de5186b1906d56b5a43317d9c36ad1cc6aad
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7bd8c3b25c23ba8586e38ec8eb7d1baefaa21633
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540411"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80884189"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -45,9 +42,17 @@ ms.locfileid: "65540411"
 
 自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](howto-create-service-principal-portal.md#required-permissions)に関するページを参照してください。
 
+## <a name="assign-the-application-to-a-role"></a>アプリケーションをロールに割り当てる
+サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](/azure/role-based-access-control/built-in-roles)」を参照してください。
+
+スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの*閲覧者*ロールに追加すると、そのリソース グループと、その中にあるどのリソースも読み取りができることになります。 アプリケーションがインスタンスの再起動、開始、停止などのアクションを実行できるようにするには、 *[共同作成者]* ロールを選択します。
+
 ## <a name="create-service-principal-with-self-signed-certificate"></a>自己署名証明書を使用したサービス プリンシパルの作成
 
-以下の例では、単純なシナリオについて説明します。 ここでは、[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) を使用して自己署名証明書でのサービス プリンシパルを作成し、[New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールをサービス プリンシパルに割り当てます。 ロールの割り当ては、現在選択されている Azure サブスクリプションに制限されます。 別のサブスクリプションを選択するには、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を使用します。
+以下の例では、単純なシナリオについて説明します。 ここでは、[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) を使用して自己署名証明書でのサービス プリンシパルを作成し、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用して[閲覧者](/azure/role-based-access-control/built-in-roles#reader)ロールをサービス プリンシパルに割り当てます。 ロールの割り当ては、現在選択されている Azure サブスクリプションに制限されます。 別のサブスクリプションを選択するには、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を使用します。
+
+> [!NOTE]
+> New-SelfSignedCertificate コマンドレットと PKI モジュールは、現在、PowerShell Core ではサポートされていません。 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -60,7 +65,7 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
 この例では、新しいサービス プリンシパルが Azure AD 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合は、次のエラーが表示されます。"プリンシパル {0} がディレクトリ {DIR-ID} にありません。" このエラーを解決するには、しばらく待ってから **New-AzRoleAssignment** コマンドを再実行します。
@@ -101,7 +106,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>証明機関の証明書を使用したサービス プリンシパルの作成
 
-次の例では、証明機関から発行された証明書を使用して、サービス プリンシパルを作成します。 割り当ては、指定された Azure サブスクリプションに制限されます。 [共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールにサービス プリンシパルが追加されます。 ロールの割り当て中にエラーが発生した場合は、割り当てが再試行されます。
+次の例では、証明機関から発行された証明書を使用して、サービス プリンシパルを作成します。 割り当ては、指定された Azure サブスクリプションに制限されます。 [閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールにサービス プリンシパルが追加されます。 ロールの割り当て中にエラーが発生した場合は、割り当てが再試行されます。
 
 ```powershell
 Param (
@@ -137,7 +142,7 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
@@ -215,9 +220,8 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 * アカウントに **"'/subscriptions/{guid}' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません"** - このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
-* アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「 [Azure Resource Manager API を使用した承認の開発者ガイド](../../azure-resource-manager/resource-manager-api-authentication.md)」を参照してください。
 * アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
 * Azure AD 認証の詳細については、「[Azure AD の認証シナリオ](authentication-scenarios.md)」をご覧ください。

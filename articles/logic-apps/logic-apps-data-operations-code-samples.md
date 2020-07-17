@@ -1,27 +1,23 @@
 ---
-title: データ操作のサンプル - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps でのデータ操作アクションの定義のコード サンプルです
+title: データ操作を使用するためのコード サンプル
+description: 以下のコード サンプルを試してみてください。これらは、Azure Logic Apps で作成された自動化ワークフローでデータ操作を使用する方法を示しています
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 07/25/2018
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
+ms.date: 09/01/2019
+ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233023"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure Logic Apps のデータ操作のコード サンプル
 
 この記事では、[データ操作の実行](../logic-apps/logic-apps-perform-data-operations.md)に関する記事でのデータ操作アクション定義のコード サンプルを示します。 自分のロジック アプリの基になっているワークフロー定義、Azure サブスクリプション、API 接続で例を試してみたいときに、これらのサンプルを使用できます。 これらのアクション定義をコピーしてロジック アプリのワークフロー定義のコード ビュー エディターに貼り付けてから、特定のワークフローに合わせて定義を変更するだけで使用できます。 
 
-これらのアクション定義は、JavaScript Object Notation (JSON) 標準に基づき、アルファベット順に表示されます。 ただし、各アクション定義の `runAfter` プロパティで実行順序が指定されているため、ロジック アプリ デザイナーでは各定義がワークフロー内の正しい順序で表示されます。 
+これらのアクション定義は、JavaScript Object Notation (JSON) 標準に基づき、アルファベット順に表示されます。 ただし、各アクション定義の `runAfter` プロパティで実行順序が指定されているため、ロジック アプリ デザイナーでは各定義がワークフロー内の正しい順序で表示されます。
 
 <a name="compose-action-example"></a>
 
@@ -367,11 +363,6 @@ ms.locfileid: "50229965"
 },
 ```
 
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [データ操作の実行](../logic-apps/logic-apps-perform-data-operations.md)

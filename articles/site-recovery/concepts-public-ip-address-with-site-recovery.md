@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用したフェールオーバー後にパブリック IP アドレスを使用する | Microsoft Docs
+title: Azure Site Recovery を使用したフェールオーバー後にパブリック IP アドレスを割り当てる
 description: ディザスター リカバリーと移行のために、Azure Site Recovery と Azure Traffic Manager を使用してパブリック IP アドレスを設定する方法について説明します
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 1f20818f0b899eede9fff05d71e98c8bffb94b0a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784502"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236539"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>フェールオーバー後にパブリック IP アドレスを設定する
 
@@ -53,7 +53,7 @@ Traffic Manager でのフェールオーバーシナリオの詳細について�
 - **プライマリ**エンドポイントは、ソース環境がAzure の内部または外部にあるかどうかによって、[Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)または[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)どちらにもなり得ます。
 - **フェールオーバー**エンドポイントが**Azure**エンドポイントとして作成されます。 **静的パブリック IP アドレス**を使用し、これが災害時に Traffic Manager 用の外部に接続するエンドポイントとなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Site Recovery を使ったAzure Traffic Manager](../site-recovery/concepts-traffic-manager-with-site-recovery.md)について詳しく見る
 - Traffic Manager の[ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)の詳細を確認する。
 - アプリケーションのフェールオーバーを自動化するための[復旧計画](site-recovery-create-recovery-plans.md)の詳細を確認する。

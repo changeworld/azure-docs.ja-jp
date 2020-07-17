@@ -2,18 +2,18 @@
 title: Azure REST API を使用して Apache Hadoop クラスターを作成する - Azure
 description: Azure Resource Manager テンプレートを Azure REST API に送信して HDInsight クラスターを作成する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239928"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -22,9 +22,6 @@ ms.locfileid: "64707338"
 Azure Resource Manager テンプレートと Azure REST API を使用して HDInsight クラスターを作成する方法について説明します。
 
 Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。
-
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 > [!NOTE]  
 > このドキュメントの手順では、[curl (https://curl.haxx.se/)](https://curl.haxx.se/) ユーティリティを使用して Azure REST API と通信します。
@@ -148,7 +145,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
                                "name": "headnode",
                                "targetInstanceCount": "2",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}" 
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -161,7 +158,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
                                "name": "workernode",
                                "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}"
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -215,7 +212,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 >
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
-## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
+## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 
 「[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
 
@@ -226,7 +223,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 1. コマンド ラインで、次のコマンドを使用して Azure サブスクリプションを一覧表示します。
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
@@ -234,7 +231,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 2. 次のコマンドを使用して、Azure Active Directory 内にアプリケーションを作成します。
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
@@ -247,7 +244,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 3. 次のコマンドを使用して、**アプリ ID** を使用するサービス プリンシパルを作成します。
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
@@ -255,7 +252,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した**サブスクリプション ID** を使用します。
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
@@ -289,7 +286,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 }
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 次のコマンドを実行してリソース グループを作成します。
 
@@ -346,16 +343,15 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](./hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
+HDInsight クラスターが正常に作成されたので、クラスターの使用方法について、以下のトピックを参照してください。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase クラスター

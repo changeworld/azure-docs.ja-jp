@@ -1,28 +1,28 @@
 ---
-title: Azure Policy を使用して VM 拡張機能のインストールを制限する | Microsoft Docs
+title: Azure Policy を使用して VM 拡張機能のインストールを制限する
 description: Azure Policy を使用して VM 拡張機能の展開を制限できます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 52a08661ffa25bf2105791c1217cfc460034502a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341964"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188571"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
-自分の Linux VM で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、CLI を使用して Azure ポリシーを作成すると、リソース グループ内で VM の拡張機能を制限できます。 
+お使いの Linux VM 上で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、CLI を使用して Azure Policy の定義を作成すると、リソース グループ内での VM の拡張機能を制限できます。 
 
 このチュートリアルでは、Azure Cloud Shell で CLI を使用します。このバージョンは常に更新され最新になっています。 Azure CLI をローカルで実行する場合は、バージョン 2.0.26 以降をインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "56341964"
 
 [Bash Cloud Shell](https://shell.azure.com/bash) で、次のように入力します。
 
-```azurecli-interactive 
+```bash
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
@@ -64,7 +64,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 }
 ```
 
-完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを保存して閉じます。
+完了したら、**Esc** キーを押して、「 **:wq**」と入力し、ファイルを保存して閉じます。
 
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
@@ -75,7 +75,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 
 [Bash Cloud Shell](https://shell.azure.com/bash) で、次のように入力します。
 
-```azurecli-interactive
+```bash
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
@@ -94,7 +94,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 }
 ```
 
-完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを保存して閉じます。
+完了したら、**Esc** キーを押して、「 **:wq**」と入力し、ファイルを保存して閉じます。
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページをご覧ください。

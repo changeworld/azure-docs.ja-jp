@@ -1,23 +1,17 @@
 ---
 title: Azure Monitor でのログ データ インジェスト時間 | Microsoft Docs
 description: Azure Monitor でのログ データ収集の待機時間に影響するさまざまな要因について説明します。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 07/18/2019
+ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77666639"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -45,10 +39,10 @@ Azure Monitor とは、毎月増加するテラバイト単位のデータを送
 ### <a name="agent-upload-frequency"></a>エージェントのアップロードの頻度
 Log Analytics エージェントを軽量にするため、エージェントではログがバッファーに格納されて、定期的に Azure Monitor にアップロードされます。 アップロードの頻度は、データの型に応じて 30 秒から 2 分間の範囲で異なります。 ほとんどのデータは、1 分未満でアップロードされます。 ネットワークの状態は、このデータが Azure Monitor のインジェスト ポイントに達するまでの待機時間に悪影響を及ぼす可能性があります。
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure のアクティビティ ログ、診断ログ、およびメトリック
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure アクティビティログ、リソースログ、メトリック
 Azure データが Log Analytics のインジェスト ポイントで使用可能になるまでには、処理のための追加の時間がかかります。
 
-- 診断ログのデータの場合、Azure サービスによって異なりますが 2 分から 15 分かかります。 ご利用の環境におけるこの待機時間を調べる方法については、[下のクエリ](#checking-ingestion-time)を参照してください。
+- リソースログからのデータは、Azure サービスによって異なりますが、2〜15分かかります。 ご利用の環境におけるこの待機時間を調べる方法については、[下のクエリ](#checking-ingestion-time)を参照してください。
 - Azure プラットフォームのメトリックが Log Analytics のインジェスト ポイントに送信されるまでには 3 分かかります。
 - アクティビティ ログ データが Log Analytics のインジェスト ポイントに送信されるまでには 約 10 分から 15 分かかります。
 
@@ -63,7 +57,7 @@ Azure データが Log Analytics のインジェスト ポイントで使用可�
 各ソリューションのコレクションの頻度を判断するには、そのドキュメントを参照してください。
 
 ### <a name="pipeline-process-time"></a>パイプライン処理時間
-ログ レコードは Azure Monitor パイプラインに取り込まれると、テナントが分離され、データが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
+([_TimeReceived](log-standard-properties.md#_timereceived) プロパティに指定されているように) ログ レコードは Azure Monitor パイプラインに取り込まれると、テナントが分離され、データが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
 
 ### <a name="new-custom-data-types-provisioning"></a>新しいカスタム データ型のプロビジョニング
 新しいカスタム データの型を[カスタム ログ](data-sources-custom-logs.md)または[データ コレクター API](data-collector-api.md) から作成すると、システムにより専用のストレージ コンテナーが作成されます。 これは、最初にこのデータ型が出現したときにのみ発生する 1 回限りのオーバーヘッドです。
@@ -79,38 +73,50 @@ Azure Monitor の最優先事項は、顧客データが失われることがな
 
 
 ## <a name="checking-ingestion-time"></a>インジェスト時間のチェック
-インジェスト時間は、さまざまな状況とリソースの種類によって変わる場合があります。 ログ クエリを使用すると、ご利用の環境の具体的な動作を把握することができます。
+インジェスト時間は、さまざまな状況とリソースの種類によって変わる場合があります。 ログ クエリを使用すると、ご利用の環境の具体的な動作を把握することができます。 次の表は、レコードが作成され、Azure Monitor に送信されるときにそのレコードのさまざまな時間を判断する方法を示しています。
+
+| 手順 | プロパティまたは関数 | 説明 |
+|:---|:---|:---|
+| データ ソースで作成されるレコード | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
+| Azure Monitor のインジェスト エンドポイントによって受信されるレコード | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| ワークスペースに保存され、クエリに使用できるレコード | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>インジェストの待ち時間
-特定のレコードの待ち時間は、[ingestion_time()](/azure/kusto/query/ingestiontimefunction) 関数の結果を _[TimeGenerated]_ フィールドと比較することによって測定することができます。 このデータを、さまざまな集計と組み合わせて使用すれば、取り込みの待ち時間の動作を突き止めることができます。 インジェスト時間のパーセンタイルを観察すれば、大量のデータの分析情報が得られます。 
+特定のレコードの待ち時間は、[ingestion_time()](/azure/kusto/query/ingestiontimefunction) 関数の結果を _TimeGenerated_ プロパティと比較することによって測定することができます。 このデータを、さまざまな集計と組み合わせて使用すれば、取り込みの待ち時間の動作を突き止めることができます。 インジェスト時間のパーセンタイルを観察すれば、大量のデータの分析情報が得られます。 
 
-たとえば、次のクエリを実行すると、その日インジェスト時間が最小であったコンピューターを表示できます。 
+たとえば、次のクエリを実行すると、過去 8 時間でインジェスト時間が最も長かったコンピューターを表示できます。 
 
 ``` Kusto
 Heartbeat
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
-| top 20 by percentile_E2EIngestionLatency_95 desc  
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc
 ```
- 
-一定の期間にわたる特定のコンピューターのインジェスト時間をドリルダウンしたい場合は、次のクエリを使用します。ここではさらに、データをグラフで視覚化しています。 
+
+前出のパーセンタイル チェックは、待ち時間の一般的な傾向を見つけるのに適しています。 待ち時間の短期間のスパイクを識別するのであれば、最大値 (`max()`) を使用した方が効果的である場合があります。
+
+一定の期間にわたる特定のコンピューターのインジェスト時間をドリルダウンする場合は、次のクエリを使用すると、昨日のデータもグラフに視覚化されます。 
+
 
 ``` Kusto
 Heartbeat 
-| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| where TimeGenerated > ago(24h) //and Computer == "ContosoWeb2-Linux"  
 | extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
-| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
-| render timechart  
+| extend AgentLatencyMin = todouble(datetime_diff("Second",_TimeReceived,TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95), percentiles(AgentLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart
 ```
  
-コンピューターのインジェスト時間を、それが置かれている (対応する IP アドレスに基づく) 国ごとに表示するには、次のクエリを使用します。 
+コンピューターのインジェスト時間を、それが置かれている (対応する IP アドレスに基づく) 国や地域ごとに表示するには、次のクエリを使用します。 
 
 ``` Kusto
 Heartbeat 
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95),percentiles(AgentLatency,50,95) by RemoteIPCountry 
 ```
  
 エージェントから送信されるデータの種類が異なれば、インジェストの待ち時間も異なる可能性があるので、前出のクエリを他の種類のデータにも使用してみましょう。 各種 Azure サービスのインジェスト時間を観察するには、次のクエリを使用します。 
@@ -119,7 +125,8 @@ Heartbeat
 AzureDiagnostics 
 | where TimeGenerated > ago(8h) 
 | extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
-| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+| extend AgentLatency = _TimeReceived - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by ResourceProvider
 ```
 
 ### <a name="resources-that-stop-responding"></a>応答していないリソース 
@@ -134,6 +141,6 @@ Heartbeat
 | top 20 by NoHeartbeatPeriod desc 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Monitor の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) をお読みください。
 

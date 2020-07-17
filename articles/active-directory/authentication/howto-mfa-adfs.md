@@ -1,22 +1,22 @@
 ---
-title: Azure MFA と AD FS を使用したクラウド リソースのセキュリティ保護 - Azure Active Directory
+title: Azure MFA と ADFS を使用してリソースをセキュリティで保護する - Azure Active Directory
 description: クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371530"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654015"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
@@ -27,16 +27,16 @@ ms.locfileid: "58371530"
 クラウド リソースをセキュリティで保護するには、ユーザーが 2 段階認証の実行に成功したときに、Active Directory フェデレーション サービスが multipleauthn 要求を出力するよう要求規則を設定します。 この要求は、Azure AD に渡されます。 以下では、その手順を説明します。
 
 1. AD FS 管理を開きます。
-2. 左側で、**[証明書利用者信頼]** を選択します。
-3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、**[要求規則の編集]** を選択します。
+2. 左側で、 **[証明書利用者信頼]** を選択します。
+3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、 **[要求規則の編集]** を選択します。
 
    ![ADFS コンソール - 証明書利用者信頼](./media/howto-mfa-adfs/trustedip1.png)
 
-4. [発行変換規則] で、**[規則の追加]** をクリックします。
+4. [発行変換規則] で、 **[規則の追加]** をクリックします。
 
    ![発行変換規則の編集](./media/howto-mfa-adfs/trustedip2.png)
 
-5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、**[次へ]** をクリックします。
+5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、 **[次へ]** をクリックします。
 
    ![Add Transform Claim Rule Wizard](./media/howto-mfa-adfs/trustedip3.png)
 
@@ -57,19 +57,19 @@ ms.locfileid: "58371530"
 最初に実行する必要があるのは、AD FS の要求を構成することです。 2 つの要求規則を作成します。1 つは [企業ネットワーク内] という要求の種類用であり、もう 1 つはユーザーのサインイン状態を維持するためのものです。
 
 1. AD FS 管理を開きます。
-2. 左側で、**[証明書利用者信頼]** を選択します。
-3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、**[要求規則の編集…]** を選択します
+2. 左側で、 **[証明書利用者信頼]** を選択します。
+3. **[Microsoft Office 365 ID プラットフォーム]** を右クリックし、 **[要求規則の編集…]** を選択します
    ![ADFS コンソール - 要求規則の編集](./media/howto-mfa-adfs/trustedip1.png)
-4. [発行変換規則] で、**[規則の追加]** をクリックします。
+4. [発行変換規則] で、 **[規則の追加]** をクリックします。
    ![要求規則の追加](./media/howto-mfa-adfs/trustedip2.png)
-5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、**[次へ]** をクリックします。
+5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、 **[次へ]** をクリックします。
    ![変換要求規則の追加ウィザード](./media/howto-mfa-adfs/trustedip3.png)
-6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 例: InsideCorpNet。
-7. [入力方向の要求の種類] の横にあるドロップダウンから、**[企業ネットワーク内]** を選択します。
+6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 次に例を示します。InsideCorpNet。
+7. [入力方向の要求の種類] の横にあるドロップダウンから、 **[企業ネットワーク内]** を選択します。
    ![企業ネットワーク内要求の追加](./media/howto-mfa-adfs/trustedip4.png)
 8. **[完了]** をクリックします。
-9. [発行変換規則] で、**[規則の追加]** をクリックします。
-10. 変換要求規則の追加ウィザードで、ドロップダウンから **[カスタム規則を使用して要求を送信]** を選択し、**[次へ]** をクリックします。
+9. [発行変換規則] で、 **[規則の追加]** をクリックします。
+10. 変換要求規則の追加ウィザードで、ドロップダウンから **[カスタム規則を使用して要求を送信]** を選択し、 **[次へ]** をクリックします。
 11. [要求規則名] の下のボックスに 「*Keep Users Signed In*」(ユーザーをサインインしたままにする) と入力します。
 12. [カスタム規則:] ボックスに次のように入力します。
 
@@ -85,13 +85,13 @@ ms.locfileid: "58371530"
 
 これで要求が準備できたので、信頼できる IP を構成できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]** > **[条件付きアクセス]** > **[名前付きの場所]** を選択します。
-3. **[条件付きアクセス - 名前付きの場所]** ブレードから **[MFA の信頼できる IP の構成]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
+3. **[条件付きアクセス - ネームド ロケーション]** ブレードから **[MFA の信頼できる IP の構成]** を選択します。
 
-   ![[Azure AD 条件付きアクセス] の [名前付きの場所] の [MFA の信頼できる IP の構成]](./media/howto-mfa-adfs/trustedip6.png)
+   ![[Azure AD 条件付きアクセス] の [ネームド ロケーション] の [MFA の信頼できる IP の構成]](./media/howto-mfa-adfs/trustedip6.png)
 
-4. [サービス設定] ページの **[信頼できる IP]** で、**[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択します。  
+4. [サービス設定] ページの **[信頼できる IP]** で、 **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択します。  
 5. **[Save]** をクリックします。
 
-これで終了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
+これで完了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。

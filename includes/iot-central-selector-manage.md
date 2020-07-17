@@ -1,21 +1,22 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: iot-accelerators
+services: iot-central
 author: dominicbetts
-ms.service: iot-accelerators
+ms.service: iot-central
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 04/24/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 61f65b5ac9ae4c1ef8253a2d8230643d1fe63291
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d70e699c704f4184981a1819ccc0549635a6f5b4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120413"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744892"
 ---
 > [!div class="op_single_selector"]
-> * [ポータル](../articles/iot-central/howto-manage-iot-central-from-portal.md)
-> * [CLI](../articles/iot-central/howto-manage-iot-central-from-cli.md)
-> * [PowerShell](../articles/iot-central/howto-manage-iot-central-from-powershell.md)
+> * [ポータル](../articles/iot-central/core/howto-manage-iot-central-from-portal.md)
+> * [CLI](../articles/iot-central/core/howto-manage-iot-central-from-cli.md)
+> * [PowerShell](../articles/iot-central/core/howto-manage-iot-central-from-powershell.md)
+> * [プログラムで](../articles/iot-central/core/howto-manage-iot-central-programmatically.md)

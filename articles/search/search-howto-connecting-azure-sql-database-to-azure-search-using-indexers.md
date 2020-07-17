@@ -1,29 +1,28 @@
 ---
-title: Azure SQL Database に接続し、インデクサーを使用してコンテンツのインデックスを作成する - Azure Search
-description: Azure Search でのフルテキスト検索用のインデクサーを使用して Azure SQL Database 内でデータをクロールする方法について説明します。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
-ms.date: 05/02/2019
+title: Azure SQL データを検索する
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search でのフルテキスト検索用のインデクサーを使用して Azure SQL Database からデータをインポートします。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
+manager: nitinme
 author: mgottein
-manager: cgronlun
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/04/2019
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025358"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74113307"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Azure SQL Database に接続し、Azure Search インデクサーを使用してコンテンツのインデックスを作成する
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
 
-[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Search インデックスにデータを入力する必要があります。 データが Azure SQL データベースに存在する場合は、**Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
+[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL データベースに存在する場合は、**Azure SQL Database 用 Azure Cognitive Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
 
 この記事では[インデクサー](search-indexer-overview.md)使用のしくみだけでなく、Azure SQL データベースでのみ使用できる機能 (統合された変更追跡など) についても説明します。 
 
-Azure SQL データベースだけでなく、Azure Searchでは [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
+Azure SQL データベースだけでなく、Azure Cognitive Search では [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Cognitive Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
 
 ## <a name="indexers-and-data-sources"></a>インデクサーとデータ ソース
 
@@ -40,8 +39,8 @@ Azure SQL データベースだけでなく、Azure Searchでは [Azure Cosmos D
 Azure SQL インデクサーのセットアップと構成には次を使用できます。
 
 * [Azure Portal](https://portal.azure.com) のデータのインポート ウィザード
-* Azure Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
 この記事では、REST API を使用して、**インデクサー**と**データソース**を作成します。
 
@@ -51,12 +50,12 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 | 条件 | 詳細 |
 |----------|---------|
 | データが単一のテーブルまたはビューのものである | データが複数のテーブルに分散している場合は、データの 1 つのビューを作成できます。 ただし、ビューを使用する場合は、SQL Server の統合変更検出を使用して、インデックスを増分変更で更新することはできません。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
-| データ型に互換性がある | Azure Search インデックスでは、SQL のほとんどの型がサポートされていますが、すべてではありません。 一覧については、「[データ型間のマッピング](#TypeMapping)」を参照してください。 |
+| データ型に互換性がある | Azure Cognitive Search インデックスでは、SQL のほとんどの型がサポートされていますが、すべてではありません。 一覧については、「[データ型間のマッピング](#TypeMapping)」を参照してください。 |
 | リアルタイムのデータ同期は必要ない | インデクサーがテーブルのインデックスを作成し直すのに、最大で 5 分かかります。 データが頻繁に変更され、秒単位または 1 分以内に変更をインデックスに反映する必要がある場合は、[REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) または [.NET SDK](search-import-data-dotnet.md) を使用して、更新された行を直接プッシュすることをお勧めします。 |
-| インデックスの増分作成が可能 | データ セットが大きく、スケジュールに従ってインデクサーを実行する場合は、Azure Search により、新しい、変更された、または削除された行を効率的に特定できます。 非増分のインデックス作成は、オンデマンドでインデックスを作成 (スケジュールされていない) するか、100,000 未満の行のインデックスを作成する場合にのみ使用できます。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
+| インデックスの増分作成が可能 | データ セットが大きく、スケジュールに従ってインデクサーを実行する場合は、Azure Cognitive Search により、新しい、変更された、または削除された行を効率的に特定できます。 非増分のインデックス作成は、オンデマンドでインデックスを作成 (スケジュールされていない) するか、100,000 未満の行のインデックスを作成する場合にのみ使用できます。 詳細については、後の「[新しい行、変更された行、削除された行の取得](#CaptureChangedRows)」を参照してください。 |
 
 > [!NOTE] 
-> Azure Search では SQL Server 認証のみがサポートされています。 Azure Active Directory パスワード認証のサポートが必要な場合は、こちらの [UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)に投票してください。
+> Azure Cognitive Search では SQL Server 認証のみがサポートされています。 Azure Active Directory パスワード認証のサポートが必要な場合は、こちらの [UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)に投票してください。
 
 ## <a name="create-an-azure-sql-indexer"></a>Azure SQL インデクサーの作成
 
@@ -77,7 +76,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 
    [Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
 
-2. まだない場合は、ターゲットの Azure Search インデックスを作成します。 インデックスを作成するには、[ポータル](https://portal.azure.com)または[インデックス作成 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) を使用します。 ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。「[SQL データ型と Azure Search データ型間のマッピング](#TypeMapping)」を参照してください。
+2. まだない場合は、ターゲットの Azure Cognitive Search インデックスを作成します。 インデックスを作成するには、[ポータル](https://portal.azure.com)または[インデックス作成 API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) を使用します。 ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。詳しくは、「[SQL データ型と Azure Cognitive Search データ型間のマッピング](#TypeMapping)」を参照してください。
 
 3. 名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
@@ -158,32 +157,16 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 **interval** パラメーターは必須です。 interval は、連続する 2 つのインデクサー実行の開始の時間間隔を示します。 許可される最短の間隔は 5 分です。最長は 1 日です。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 使用されるパターンは、`P(nD)(T(nH)(nM))` です。 たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。
 
-省略可能な **startTime** は、スケジュールされた実行を開始するときを示します。 省略すると、現在の UTC 時刻が使用されます。 この時刻は過去でもかまいません。その場合、最初の実行はインデクサーが startTime から継続的に実行されているかのようにスケジュールされます。  
-
-特定のインデクサーを実行できるのは一度に 1 つだけです。 インデクサーの開始予定時間にそのインデクサーが既に実行されている場合、その実行は、次回予定されている時間まで延期されます。
-
-さらに具体的な例を示します。 次のような時間単位のスケジュールを構成したものとします。
-
-    "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
-
-これは次のように動作します。
-
-1. 最初のインデクサーの実行は、UTC で 2015 年 3 月 1 日午前 12 時前後に開始します 。
-2. この実行に 20 分 (または、1 時間未満) かかるものとします。
-3. 第 2 の実行は、2015 年 3 月 1 日午前 1 時前後に開始します。
-4. この実行に 1 時間以上かかるものとします。たとえば、70 分かかって、午前 2 時 10 分前後に終了します。
-5. 今は午前 2 時で、3 番目の実行が開始する時刻です。 ただし、午前 1 時からの 2 番目の実行が 継続中のため、3 番目の実行はスキップされます。 3 番目の実行は午前 3 時に開始します。
-
-**PUT インデクサー** 要求を使用することで、既存のインデクサーのスケジュールを追加、変更、削除できます。
+インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
 <a name="CaptureChangedRows"></a>
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>新しい行、変更された行、削除された行の取得
 
-Azure Search では**増分インデックス作成**を使用することで、インデクサーを実行するたびにテーブルまたはビュー全体のインデックスを再作成する必要を回避できます。 Azure Search は、増分インデックス作成をサポートする 2 つの変更検出ポリシーを備えています。 
+Azure Cognitive Search では**増分インデックス作成**を使用することで、インデクサーを実行するたびにテーブルまたはビュー全体のインデックスを再作成する必要を回避できます。 Azure Cognitive Search は、増分インデックス作成をサポートする 2 つの変更検出ポリシーを備えています。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 統合変更追跡ポリシー
-SQL データベースが [変更追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)をサポートする場合、 **SQL 統合変更追跡ポリシー**の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Search で削除済み行を特定できます。
+SQL データベースが [変更追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)をサポートする場合、 **SQL 統合変更追跡ポリシー**の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Cognitive Search で削除済み行を特定できます。
 
 #### <a name="requirements"></a>必要条件 
 
@@ -268,7 +251,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 ### <a name="soft-delete-column-deletion-detection-policy"></a>論理削除列削除検出ポリシー
 ソース テーブルから行が削除されると、おあそらく検索インデックスからも同様に行を削除する必要があります。 SQL 統合変更追跡ポリシーを使用する場合、これは自動的に行われます。 ただし、高基準変更追跡ポリシーでは行は削除されません。 どうすればよいでしょうか。
 
-行がテーブルから物理的に削除されている場合、Azure Search では、存在しなくなったレコードの存在を推論することはできません。  ただし、"論理削除" テクニックを使用すると、行をテーブルから削除せずに論理的に削除できます。 このテクニックでは、列をテーブルまたはビューに追加し、その列を使用して行を削除済みとしてマークします。
+行がテーブルから物理的に削除されている場合、Azure Cognitive Search では、存在しなくなったレコードの存在を推論することはできません。  ただし、"論理削除" テクニックを使用すると、行をテーブルから削除せずに論理的に削除できます。 このテクニックでは、列をテーブルまたはビューに追加し、その列を使用して行を削除済みとしてマークします。
 
 論理削除手法を使用する場合は、データ ソースを作成または更新するときに、次のような論理削除ポリシーを指定できます。
 
@@ -285,28 +268,28 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-and-azure-search-data-types"></a>SQL データ型と Azure Search データ型間のマッピング
-| SQL データ型 | ターゲット インデックス フィールドに許可される型 | メモ |
+## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL データ型と Azure Cognitive Search データ型間のマッピング
+| SQL データ型 | ターゲット インデックス フィールドに許可される型 | Notes |
 | --- | --- | --- |
-| ビット |Edm.Boolean、Edm.String | |
+| bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
 | bigint |Edm.Int64、Edm.String | |
 | real、float |Edm.Double、Edm.String | |
-| smallmoney、money decimal numeric |Edm.String |Azure Search では、小数点を Edm.Double に変換できません。精度が失われるためです。 |
+| smallmoney、money decimal numeric |Edm.String |Azure Cognitive Search では、小数点を Edm.Double に変換できません。精度が失われるためです。 |
 | char、nchar、varchar、nvarchar |Edm.String<br/>Collection(Edm.String) |SQL 文字列が JSON 文字列配列 `["red", "white", "blue"]` を表している場合、その SQL 文字列を使用して、Collection(Edm.String) フィールドを設定できます |
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
-| 地理 |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
+| geography |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
 | rowversion |該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 |
 | time、timespan、binary、varbinary、image、xml、geometry、CLR 型 |該当なし |サポートされていません |
 
 ## <a name="configuration-settings"></a>構成設定
 SQL インデクサーが公開している構成設定をいくつか次に示します。
 
-| Setting | データ型 | 目的 | Default value |
+| 設定 | データ型 | 目的 | 既定値 |
 | --- | --- | --- | --- |
 | queryTimeout |string |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
-| disableOrderByHighWaterMarkColumn |bool |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
+| disableOrderByHighWaterMarkColumn |[bool] |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
 
 こうした設定は、インデクサー定義の `parameters.configuration` オブジェクトで使用されます。 たとえば、クエリのタイムアウトを 10 分に設定するには、次の構成でインデクサーを作成または更新します。
 
@@ -316,33 +299,33 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
-**Q: Azure 上の IaaS VM で実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
+**Q:Azure 上の IaaS VM で実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
 
-はい。 ただし、Search サービスに対してデータベースへの接続を許可する必要があります。 詳細については、「[Azure VM での Azure Search インデクサーから SQL Server への接続の構成](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)」を参照してください。
+はい。 ただし、Search サービスに対してデータベースへの接続を許可する必要があります。 詳細については、[Azure VM での Azure Cognitive Search インデクサーから SQL Server への接続の構成](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事を参照してください。
 
-**Q: オンプレミスで実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
+**Q:オンプレミスで実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
 
-直接無効にすることはできません。 直接接続は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。 Azure Data Factory などのブリッジ テクノロジを使用してこのシナリオで成功した事例があります。 詳しくは、「[Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)」を参照してください。
+直接無効にすることはできません。 直接接続は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。 Azure Data Factory などのブリッジ テクノロジを使用してこのシナリオで成功した事例があります。 詳しくは、[Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをプッシュする](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)方法に関する記事を参照してください。
 
-**Q: Azure 上の IaaS で実行される SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
+**Q:Azure 上の IaaS で実行される SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
 
 いいえ。 SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
 
-**Q: スケジュールに従って実行される複数のインデクサーを作成できますか?**
+**Q:スケジュールに従って実行される複数のインデクサーを作成できますか?**
 
 はい。 ただし、1 つのノードで一度に実行できるインデクサーは 1 つだけです。 複数のインデクサーを同時に実行する必要がある場合は、複数の検索単位に検索サービスを拡大することを検討してください。
 
-**Q: インデクサーを実行するとクエリのワークロードに影響しますか?**
+**Q:インデクサーを実行するとクエリのワークロードに影響しますか?**
 
 はい。 インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。 大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、[検索サービスのスケールアップ](search-capacity-planning.md)を検討してください。
 
-**Q: [フェールオーバー クラスター](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
+**Q:[フェールオーバー クラスター](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
 
 一概には言えません。 テーブルまたはビューのインデックスの完全作成の場合、セカンダリ レプリカを使用できます。 
 
-Azure Search では、増分インデックス作成用に、SQL 統合変更追跡と高基準値という 2 つの変更検出ポリシーがサポートされています。
+Azure Cognitive Searchでは、増分インデックス作成用に、SQL 統合変更追跡と高基準値という 2 つの変更検出ポリシーがサポートされています。
 
 読み取り専用のレプリカでは、SQL データベースは統合変更追跡に対応しません。 そのため、高基準値ポリシーを使用する必要があります。 
 
@@ -352,10 +335,10 @@ Azure Search では、増分インデックス作成用に、SQL 統合変更追
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**Q: 高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
+**Q:高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
 
 それはお勧めしません。 信頼性の高いデータ同期を実行できるのは、**rowversion** のみです。 ただし、アプリケーション ロジックによっては、次の条件を満たせば、その信頼性が高まる可能性があります。
 
-+ インデクサーの実行時に、インデックスが作成されるテーブルに未処理のトランザクションがない (すべてのテーブルの更新がスケジュールに従ってバッチ操作として実行され、Azure Search インデクサーのスケジュールがテーブル更新スケジュールと重ならないように設定されているなど)。  
++ インデクサーの実行時に、インデックスが作成されるテーブルに未処理のトランザクションがない (すべてのテーブルの更新がスケジュールに従ってバッチ操作として実行され、Azure Cognitive Search インデクサーのスケジュールがテーブル更新スケジュールと重ならないように設定されているなど)。  
 
 + 列が実行されないことを防ぐために、インデックスの完全な再作成を定期的に実行している。 

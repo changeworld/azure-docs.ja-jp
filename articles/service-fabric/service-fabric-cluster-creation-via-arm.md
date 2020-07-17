@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric クラスターを作成する | Microsoft Docs
+title: Azure Service Fabric クラスターを作成する
 description: Azure で Azure Resource Manager を使用してセキュリティで保護された Service Fabric クラスターを設定する方法について説明します。  既定のテンプレートを使用して、または独自のクラスター テンプレートを使用して、クラスターを作成することができます。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 709b59d257dd974e81d8b4058983f6e264ba0708
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925854"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81458302"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
@@ -30,7 +19,7 @@ ms.locfileid: "64925854"
 
 [Azure Service Fabric クラスター](service-fabric-deploy-anywhere.md)はネットワークで接続された一連の仮想マシンです。マイクロサービスは Service Fabric クラスターにデプロイされ、そこで管理されます。  Azure で動作する Service Fabric クラスターは Azure リソースであり、Azure Resource Manager を使用して展開されます。 この記事では、Resource Manager を使用して Azure にセキュリティで保護された Service Fabric クラスターを展開する方法について説明します。 既定のクラスター テンプレートまたはカスタム テンプレートを使用できます。  カスタム テンプレートがまだない場合は、[作成方法の説明](service-fabric-cluster-creation-create-template.md)をご覧ください。
 
-クラスター セキュリティはクラスターの初回セットアップ時に構成され、後からの変更はできません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
+クラスターをセキュリティで保護するために選択したセキュリティの種類 (つまり、Windows ID、X509 など) は、クラスターの初期作成時に指定する必要があり、その後は変更できません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 詳しくは、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」(クライアントを認証するための Azure AD のセットアップ) をご覧ください。
 
 運用ワークロードを実行するための運用クラスターを展開する場合は、最初に「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」を読むことをお勧めします。
 
@@ -262,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>キー コンテナーにアップロードされたシークレットへのポインターを使用する
 
-既存のキー コンテナーを使用するには、コンピューティング リソース プロバイダーがキー コンテナーから証明書を取得し、クラスター ノードにインストールできるように、キー コンテナーで[展開を有効にする](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI)必要があります。
+既存のキー コンテナーを使用するには、コンピューティング リソース プロバイダーがキー コンテナーから証明書を取得し、クラスター ノードにインストールできるように、キー コンテナーで[展開を有効にする](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI)必要があります。
 
 PowerShell を使用してクラスターを展開します。
 
@@ -273,7 +262,7 @@ $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Azure CLI を使用してクラスターを展開します。
@@ -282,14 +271,14 @@ Azure CLI を使用してクラスターを展開します。
 declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
-declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+declare $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifier az $secretID  \
-    --template-file $templateFilePath --parameter-file $parametersFilePath 
+    --secret-identifier $secretID  \
+    --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この時点では、セキュリティで保護されたクラスターが Azure で実行されています。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
 
 テンプレートを使用するための JSON の構文とプロパティについては、[Microsoft.ServiceFabric/clusters のテンプレート リファレンス](/azure/templates/microsoft.servicefabric/clusters)に関するページを参照してください。

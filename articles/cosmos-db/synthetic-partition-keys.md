@@ -1,17 +1,17 @@
 ---
-title: データとワークロードを均等に分散するために Azure Cosmos DB に合成パーティション キーを作成します。
-description: Azure Cosmos コンテナーで合成パーティション キーを使用する方法について説明します
-author: rimman
+title: Azure Cosmos DB で合成パーティション キーを作成する
+description: Azure Cosmos コンテナーで合成パーティション キーを使用して、データとワークロードをパーティション キーに均等に分散させる方法について説明します。
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 1fd436746dcd2e93a1699ac5c68965213c74580e
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 12/03/2019
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978876"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75441215"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成
 
@@ -54,7 +54,7 @@ ms.locfileid: "65978876"
 
 この戦略では、書き込みは、パーティション キー値およびパーティション全体に均等に分散されます。 特定の `Vehicle-Identification-Number` のパーティション キー値を計算できるため、特定の項目と日付を簡単に読み取ることができます。 この方法の利点は、1 つのホット パーティション キー (つまり、すべてのワークロードを取るパーティション キー) の作成を回避できることです。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パーティション分割の概念の詳細については、次の記事を参照してください。
 

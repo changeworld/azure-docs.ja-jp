@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用して Azure リソースにマネージド ID アクセスを割り当てる方法
+title: Azure portal を使用して、リソースにマネージド ID アクセスを割り当てる - Azure AD
 description: Azure portal を使用して、1 つのリソースにマネージド ID を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66112897"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74547287"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal を使用してリソースにマネージド ID アクセスを割り当てる
 
@@ -30,7 +30,7 @@ ms.locfileid: "66112897"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-it-work)を必ず確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>RBAC を使用して他のリソースにマネージド ID アクセスを割り当てる
@@ -41,11 +41,11 @@ ms.locfileid: "66112897"
 
 2. アクセス制御を変更する目的のリソースに移動します。 この例では、ストレージ アカウントに Azure 仮想マシンへのアクセスを許可するため、ストレージ アカウントに移動します。
 
-3. リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ ロール割り当ての追加]** を選択します。 その後、**[ロール]**、**[Assign access to]\(アクセスの割り当て先\)** の順に指定して、該当の **[サブスクリプション]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、**[保存]** を選択します。 
+3. リソースの **[アクセス制御 (IAM)]** ページを選択し、 **[+ ロール割り当ての追加]** を選択します。 その後、 **[ロール]** 、 **[Assign access to]\(アクセスの割り当て先\)** の順に指定して、該当の **[サブスクリプション]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、 **[保存]** を選択します。 
 
    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
 - Azure 仮想マシン上でマネージド ID を有効にするには、「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。

@@ -1,25 +1,25 @@
 ---
 title: 画像のモデレーション - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator のコンピューター支援型画像モデレーションと human-in-the-loop (人間参加) レビュー ツールを使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756046"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404262"
 ---
 # <a name="learn-image-moderation-concepts"></a>画像モデレーションの概念を確認する
 
-Content Moderator のコンピューター支援型画像モデレーションと [human-in-the-loop (人間参加) レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
+Content Moderator のコンピューター支援型画像モデレーションと [ human-in-the-loop (人間参加) レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの評価
 
@@ -106,7 +106,7 @@ Content Moderator のコンピューター支援型画像モデレーション�
 同じ画像を複数回モデレートする代わりに、ブロックするコンテンツのカスタム リストに不快感を与える画像を追加します。 そうすると、コンテンツ モデレーション システムは、着信した画像をカスタム リストと比較し、それ以上の処理を停止します。
 
 > [!NOTE]
-> **画像リストの数は 5 個**まで、各リスト内の**画像の数は 10,000 個**までに制限されています。
+> **画像リスト数は 5 個**、各リストの**画像数は 10,000 個**という上限があります。
 >
 
 Content Moderator は、カスタム画像のリストを管理するための操作を含む完全な [Image List Management API](try-image-list-api.md) を提供します。 [画像リスト API コンソール](try-image-list-api.md)を起動し、REST API コード サンプルを使用します。 また、Visual Studio および C# に精通している場合は、[.NET での画像リストのクイック スタート](image-lists-quickstart-dotnet.md)を確認してください。
@@ -139,12 +139,12 @@ Content Moderator は、カスタム画像のリストを管理するための�
     ....
     }
 
-## <a name="human-review-tool"></a>目視レビュー ツール
+## <a name="review-tool"></a>レビュー ツール
 
 さらに微妙な場合は、Content Moderator の[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)とその API を使用し、レビューでのモデレーション結果とコンテンツをヒューマン モデレーターに示します。 モデレーターはコンピューターが割り当てたタグを調べて、その最終的な決定を確認します。
 
 ![人によるモデレーション用のイメージ レビュー](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[画像モデレーション API コンソール](try-image-api.md)を試験運用して、REST API コード サンプルを使用します。 また、Visual Studio および C# に精通している場合は、[.NET での画像モデレーションのクイックスタート](image-moderation-quickstart-dotnet.md)を確認します。
+[画像モデレーション API コンソール](try-image-api.md)を試験運用して、REST API コード サンプルを使用します。 また、Visual Studio と C# に精通している場合は、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)の画像モデレーションのセクションも確認してください。

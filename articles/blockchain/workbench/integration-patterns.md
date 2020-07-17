@@ -1,21 +1,15 @@
 ---
-title: Azure Blockchain Workbench のスマート コントラクトの統合パターン
-description: Azure Blockchain Workbench のスマート コントラクトの統合パターンについて概要を説明します。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
-ms.topic: article
-ms.service: azure-blockchain
+title: スマート コントラクトの統合パターン - Azure Blockchain Workbench
+description: Azure Blockchain Workbench Preview のスマート コントラクトの統合パターンについて概要を説明します。
+ms.date: 11/20/2019
+ms.topic: conceptual
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 6be1d2b1e68c52d45a42027be5f6d69cc2c25adc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509940"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74325963"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 

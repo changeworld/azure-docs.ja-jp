@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric の詳細 | Microsoft Docs
+title: Azure Service Fabric の詳細について説明します。
 description: Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/08/2017
-ms.author: atsenthi
-ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011182"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791852"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -27,16 +16,18 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 ## <a name="core-concepts"></a>主要な概念
 「[Service Fabric の用語](service-fabric-technical-overview.md)」、「[アプリケーション モデル](service-fabric-application-model.md)」、および「[サポートされるプログラミング モデル](service-fabric-choose-framework.md)」では詳細な概念や説明が提供されていますが、ここでは基本的な概念について説明します。
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>設計時: アプリケーションの種類、サービスの種類、アプリケーションのパッケージとマニフェスト、サービス パッケージとマニフェスト
-アプリケーションの種類は、一連のサービスの種類に割り当てられる名前/バージョンです。 これは、アプリケーション パッケージ ディレクトリに埋め込まれているファイル *ApplicationManifest.xml* に定義されています。 アプリケーション パッケージは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて名前付きアプリケーションを作成できます。作成したアプリケーションはクラスター内で実行します。 
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>設計時: サービスの種類、サービス パッケージとマニフェスト、アプリケーションの種類、アプリケーションのパッケージとマニフェスト
+サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、ServiceManifest.xml ファイルで定義されています。 このサービスの種類は、実行時に読み込まれる実行可能コードおよびサービス構成設定と、サービスによって消費される静的データで構成されます。
 
-サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、サービス パッケージ ディレクトリに埋め込まれているファイル ServiceManifest.xml に定義されています。 サービス パッケージ ディレクトリは、アプリケーション パッケージのファイル *ApplicationManifest.xml* から参照されます。 クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。 サービスの種類は、その *ServiceManifest.xml* ファイルに記述します。 このサービスの種類は、実行時に読み込まれる実行可能コードのサービス構成設定と、サービスによって消費される静的データで構成されます。
+サービス パッケージは、サービスの種類の ServiceManifest.xml ファイルが含まれるディスクのディレクトリで、そのサービスの種類のコード、静的データ、および構成パッケージを参照します。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
+
+アプリケーションの種類は、一連のサービスの種類に割り当てられる名前/バージョンです。 これは、ApplicationManifest.xml ファイルで定義されています。
 
 ![Service Fabric アプリケーションの種類とサービスの種類][cluster-imagestore-apptypes]
 
-アプリケーション パッケージは、アプリケーションの種類の *ApplicationManifest.xml* ファイルが含まれているディスク ディレクトリで、アプリケーションの種類を構成するサービスの種類ごとに、対応するサービス パッケージを参照します。 たとえば電子メール アプリケーション タイプのアプリケーション パッケージであれば、Queue サービス パッケージやフロントエンド サービス パッケージ、データベース サービス パッケージへの参照が含まれることが考えられます。 アプリケーション パッケージ ディレクトリ内のファイルは、Service Fabric クラスターのイメージ ストアにコピーされます。 
+アプリケーション パッケージは、アプリケーションの種類の ApplicationManifest.xml ファイルが含まれているディスク ディレクトリであり、アプリケーションの種類を構成するサービスの種類ごとにサービス パッケージが参照されます。 たとえば電子メール アプリケーション タイプのアプリケーション パッケージであれば、Queue サービス パッケージやフロントエンド サービス パッケージ、データベース サービス パッケージへの参照が含まれることが考えられます。  
 
-サービス パッケージは、サービスの種類の *ServiceManifest.xml* ファイルが含まれているディスク ディレクトリで、サービスの種類に対応するコード、静的データ、構成パッケージなどを参照します。 サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した *ApplicationManifest.xml* ファイルから参照されます。 たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
+アプリケーション パッケージ ディレクトリ内のファイルは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて名前付きアプリケーションを作成できます。作成したアプリケーションはクラスター内で実行します。 名前付きアプリケーションを作成した後、そのアプリケーションの種類のいずれかのサービスの種類から名前付きサービスを作成することができます。 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>実行時: クラスターとノード、名前付きアプリケーション、名前付きサービス、パーティション、およびレプリカ
 [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。
@@ -114,7 +105,7 @@ Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication
 * [フェールオーバー シナリオ](service-fabric-testability-scenarios.md#failover-test) - 他のサービスに影響させずに、特定のサービス パーティションを対象にした、混乱のテスト シナリオの 1 つのバージョンです。
 
 ## <a name="clusters"></a>クラスター
-[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始されるサービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、2 つの実行可能ファイル Fabric.exe と FabricGateway.exe を起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
+[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始されるサービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、Fabric.exe と FabricGateway.exe の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
 Service Fabric クラスターは、Windows Server や Linux が動作している仮想マシン上や物理マシン上に作成できます。 オンプレミスか、Microsoft Azure 上か、任意のクラウド プロバイダー上かに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
 
@@ -144,8 +135,8 @@ Linux スタンドアロン クラスターはまだサポートされていま�
 
 詳細については、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)に関するページを参照してください。
 
-### <a name="scaling"></a>スケーリング
-新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、パーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。 Azure 上のクラスターは、[手動で](service-fabric-cluster-scale-up-down.md)または[プログラムで](service-fabric-cluster-programmatic-scaling.md)スケールできます。 スタンドアロン クラスターは[手動で](service-fabric-cluster-windows-server-add-remove-nodes.md)スケールできます。
+### <a name="scaling"></a>Scaling
+新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、パーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。 Azure 上のクラスターは、[手動で](service-fabric-cluster-scale-in-out.md)または[プログラムで](service-fabric-cluster-programmatic-scaling.md)スケールできます。 スタンドアロン クラスターは[手動で](service-fabric-cluster-windows-server-add-remove-nodes.md)スケールできます。
 
 ### <a name="cluster-upgrades"></a>クラスターのアップグレード
 定期的に、Service Fabric ランタイムの新しいバージョンがリリースされます。 常に[サポートされるバージョン](service-fabric-support.md)を実行しているように、クラスターで、ランタイム、またはファブリック、アップグレードを実行します。 ファブリックのアップグレードだけでなく、証明書やアプリケーション ポートなどのクラスター構成を更新することもできます。
@@ -191,7 +182,7 @@ Service Fabric には、正常性ストアに集計された[正常性レポー�
 
 この 3 つの領域すべてに対応する多数の製品があり、それぞれで異なるテクノロジを自由に選択できます。 詳しくは、「[Azure Service Fabric での監視と診断](service-fabric-diagnostics-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
 * [Reliable Services](service-fabric-reliable-services-quick-start.md) または [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルを使用してサービスを作成してみます。
 * [Cloud Services から移行する](service-fabric-cloud-services-migration-differences.md)方法を学びます。

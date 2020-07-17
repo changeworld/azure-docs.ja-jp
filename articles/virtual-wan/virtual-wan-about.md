@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336254"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743111"
 ---
-# <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
+# <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
-Azure Virtual WAN は、Azure への、または Azure 経由での、最適化および自動化されたブランチ接続を提供するネットワーク サービスです。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。 ブランチが接続されたら、Azure バックボーンを利用して、ブランチから VNet への接続およびブランチ間の接続を確立できます。 Virtual WAN VPN をサポートするパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+Azure Virtual WAN は、ネットワーク、セキュリティ、ルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 これらの機能には、ブランチ接続 (SD-WAN や VPN CPE などの Virtual WAN パートナー デバイスからの接続自動化経由)、サイト間 VPN 接続、リモート ユーザー VPN (ポイント対サイト) 接続、プライベート (ExpressRoute) 接続、クラウド内接続 (仮想ネットワークの推移的な接続)、VPN ExpressRoute 相互接続、ルーティング、Azure ファイアウォール、プライベート接続のための暗号化などが含まれます。Virtual WAN の利用を開始するために、これらのすべてのユース ケースを用意する必要はありません。 単純に 1 つのユース ケースだけで始めて、発展に応じてネットワークを調整することができます。 Virtual WAN アーキテクチャは、ブランチ (VPN または SD-WAN デバイス)、ユーザー (Azure VPN、OpenVPN、または IKEv2 クライアント)、ExpressRoute 回線、および仮想ネットワーク向けにスケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャです。 これにより、[グローバル トランジット ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)が可能になります。つまり、クラウドでホストされたネットワーク "ハブ" によって、さまざまな種類の "スポーク" に分散されている可能性があるエンドポイント間の推移的な接続が可能になります。
 
-Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレビュー)、ポイント対サイト ユーザー VPN (プレビュー) など、多数の Azure クラウド接続サービスを 1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。
+Azure リージョンは、接続先として選択できるハブとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN または VPN デバイスとのスポーク接続の場合、ユーザーは Azure Virtual WAN 内で手動で設定するか、Virtual WAN CPE (SD-WAN または VPN) パートナー ソリューションを使用して Azure への接続を設定することができます。 Azure Virtual WAN での接続の自動化 (デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして接続を確立する機能) をサポートするパートナーの一覧が提供されています。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan1.png)
 
@@ -29,17 +29,34 @@ Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレ�
 * **自動化されたスポークの設定と構成:** 仮想ネットワークとワークロードを Azure ハブにシームレスに接続します。
 * **直感的なトラブルシューティング:** Azure 内でエンド ツー エンドのフローを確認し、この情報を使用して必要なアクションを実行できます。
 
-## <a name="resources"></a>Virtual WAN リソース
+## <a name="basic-and-standard-virtual-wans"></a><a name="basicstandard"></a>Basic および Standard の仮想 WAN
 
-エンド ツー エンドの Virtual WAN を構成するには、次のリソースを作成します。
+仮想 WAN には、次の 2 つの種類があります:Basic と Standard です。 各種類に対して使用できる構成を、次の表に示します。
 
-* **virtualWAN:** virtualWAN リソースは、Azure ネットワークの仮想オーバーレイを表し、複数のリソースのコレクションです。 これには、仮想 WAN 内に配置するすべての仮想ハブへのリンクが含まれます。 Virtual WAN リソースは相互に分離されており、共通のハブを含むことはできません。 Virtual WAN 上の仮想ハブは互いに通信しません。 "ブランチ間のトラフィックを許可する" プロパティにより、VPN サイト間と VPN 対 ExpressRoute (現在プレビュー段階) 対応サイト間のトラフィックが有効になります。
+[!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
-* **ハブ:** 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 ハブは、リージョン内のネットワークのコアです。 1 つの Azure リージョンに配置できるハブは 1 つのみです。 Azure portal を使用してハブを作成すると、仮想ハブ VNet と仮想ハブ vpngateway が作成されます。
+仮想 WAN をアップグレードする手順については、「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」をご覧ください。
+
+## <a name="architecture"></a><a name="architecture"></a>アーキテクチャ
+
+仮想 WAN のアーキテクチャと Virtual WAN への移行方法については、次の記事を参照してください。
+
+* [仮想 WAN のアーキテクチャ](migrate-from-hub-spoke-topology.md)
+* [グローバル転送ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)
+
+## <a name="virtual-wan-resources"></a><a name="resources"></a>Virtual WAN リソース
+
+エンドツーエンドの仮想 WAN を構成するには、次のリソースを作成します。
+
+* **virtualWAN:** virtualWAN リソースは、Azure ネットワークの仮想オーバーレイを表し、複数のリソースのコレクションです。 これには、仮想 WAN 内に配置するすべての仮想ハブへのリンクが含まれます。 Virtual WAN リソースは相互に分離されており、共通のハブを含むことはできません。 Virtual WAN 上の仮想ハブは互いに通信しません。
+
+* **ハブ:** 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、接続を可能にするためのさまざまなサービス エンドポイントが含まれています。 オンプレミス ネットワーク (vpnsite) から、仮想ハブ内の VPN Gateway に接続したり、ExpressRoute 回線を仮想ハブに接続したり、またはモバイル ユーザーを仮想ハブ内のポイント対サイト ゲートウェイに接続したりすることもできます。 ハブは、リージョン内のネットワークのコアです。 1 つの Azure リージョンに配置できるハブは 1 つのみです。
 
   ハブ ゲートウェイは、ExpressRoute および VPN Gateway に使用する仮想ネットワーク ゲートウェイと同じではありません。 たとえば、Virtual WAN を使用する場合は、オンプレミス サイトから直接 VNet にサイト間接続を作成しません。 代わりに、ハブへのサイト間接続を作成します。 トラフィックは、常にハブ ゲートウェイを通過します。 これは、VNet には独自の仮想ネットワーク ゲートウェイが必要ないことを意味します。 Virtual WAN により、VNet は、仮想ハブと仮想ハブ ゲートウェイを介して簡単にスケーリングできます。
 
-* **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。 現時点では、同じハブ リージョン内にある仮想ネットワークにのみ接続できます。
+* **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。
+
+* **(プレビュー) ハブ間接続** - ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
 
 * **ハブのルート テーブル:** 仮想ハブのルートを作成して、そのルートを仮想ハブのルート テーブルに適用することができます。 仮想ハブのルート テーブルには、複数のルートを適用できます。
 
@@ -47,17 +64,17 @@ Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレ�
 
   * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
-## <a name="connectivity"></a>接続
+## <a name="types-of-connectivity"></a><a name="connectivity"></a>接続の種類
 
-Virtual WAN では、サイト間、ポイント対サイト (プレビュー)、および ExpressRoute (プレビュー) という 3 種類の接続が可能です。
+Virtual WAN では、次の種類の接続を使用できます。サイト間 VPN、ユーザー VPN (ポイント対サイト)、および ExpressRoute です。
 
-### <a name="s2s"></a>サイト間 VPN 接続
+### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>サイト間 VPN 接続
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
 
-Virtual WAN サイト間接続を作成するときに、利用可能なパートナーと連携できます。 パートナーを利用しない場合は、手動で接続を構成できます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。
+仮想 WAN サイト間接続を作成するときに、利用可能なパートナーと連携できます。 パートナーを利用しない場合は、手動で接続を構成できます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。
 
-#### <a name="s2spartner"></a>Virtual WAN パートナーのワークフロー
+#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Virtual WAN パートナーのワークフロー
 
 Virtual WAN パートナーと連携する場合のワークフローは、次のとおりです。
 
@@ -65,28 +82,25 @@ Virtual WAN パートナーと連携する場合のワークフローは、次�
 2. ブランチ デバイス (VPN/SDWAN) コントローラーが、Azure 接続構成を取得し、ローカル デバイスを更新します。 これにより、オンプレミス VPN デバイスの構成のダウンロード、編集、および更新が自動化されます。
 3. デバイスに適切な Azure 構成が設定されると、Azure WAN に対してサイト間接続 (2 つのアクティブなトンネル) が確立されます。 Azure では、IKEv1 と IKEv2 の両方がサポートされています。 BGP はオプションです。
 
-#### <a name="partners"></a>サイト間 Virtual WAN 接続のパートナー
+#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>サイト間仮想 WAN 接続のパートナー
 
 利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-### <a name="p2s"></a>ポイント対サイト VPN 接続 (プレビュー)
+### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>ユーザー VPN (ポイント対サイト) 接続
 
-ポイント対サイト (P2S) 接続では、個々のクライアント コンピューターから仮想ハブへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務の人間が自宅や会議室など、リモートの場所から接続する場合に便利です。 P2S VPN は、接続する必要があるクライアントが数台のみの場合に、S2S VPN の代わりに使用するソリューションとしても便利です。
+IPsec/IKE (IKEv2) 接続または OpenVPN 接続を使用して、Azure 内のリソースに接続できます。 この種類の接続を使うには、クライアント コンピューター上で VPN クライアントを構成する必要があります。 詳細については、[ポイント対サイト接続の作成](virtual-wan-point-to-site-portal.md)に関する記事をご覧ください。
 
-接続を作成するには、[Virtual WAN を使用したポイント対サイト接続の作成](virtual-wan-point-to-site-portal.md)に関するページを参照してください。
-
-### <a name="er"></a>ExpressRoute 接続 (プレビュー)
-
+### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 接続
 ExpressRoute を使用すると、プライベート接続を介してオンプレミス ネットワークを Azure に接続できます。 接続を作成するには、[Virtual WAN を使用した ExpressRoute 接続の作成](virtual-wan-expressroute-portal.md)に関するページを参照してください。
 
-## <a name="locations"></a>場所
+## <a name="locations"></a><a name="locations"></a>場所
 
 場所の情報については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a><a name="faq"></a>FAQ
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)

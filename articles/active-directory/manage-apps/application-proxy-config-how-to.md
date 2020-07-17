@@ -3,8 +3,8 @@ title: アプリケーション プロキシ アプリケーションを構成�
 description: いくつかの簡単な手順でアプリケーション プロキシ アプリケーションを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f22f064043467bf52c23cab547a7e6c8ba2205
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7aaf2eb282bc3fd0b9f3853ce493c479a3d3c3a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172316"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67807847"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションを構成する方法
 
 この記事では、Azure AD 内にアプリケーション プロキシ アプリケーションを構成して、オンプレミスのアプリケーションをクラウドに公開する方法を説明しています。
 
-## <a name="recommended-documents"></a>推奨されるドキュメント 
+## <a name="recommended-documents"></a>推奨されるドキュメント
 
 管理ポータルにおけるアプリケーション プロキシ アプリケーションの初期構成と作成については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」の手順に従ってください。
 
@@ -39,19 +39,15 @@ ms.locfileid: "56172316"
 
 「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」の手順に従ってアプリケーションを作成しているときにエラーが発生した場合、アプリケーションの修復方法に関する情報や推奨事項については、そのエラーの詳細を見て確認してください。 ほとんどのエラー メッセージには、推奨される解決方法が記載されています。 一般的なエラーを避けるために、以下の点を確認してください。
 
--   アプリケーション プロキシ アプリケーションする権限を持った管理者であること。
-
--   内部 URL が一意であること。
-
--   外部 URL が一意であること。
-
--   URL が http または https から始まり、"/" で終わっていること。
-
--   URL がドメイン名であって IP アドレスではないこと。
+- アプリケーション プロキシ アプリケーションする権限を持った管理者であること。
+- 内部 URL が一意であること。
+- 外部 URL が一意であること。
+- URL が http または https から始まり、"/" で終わっていること。
+- URL がドメイン名であって IP アドレスではないこと。
 
 アプリケーションを作成する際、エラー メッセージは右上隅に表示されます。 通知アイコンを選択してエラー メッセージを表示することもできます。
 
-   ![通知アイコン](./media/application-proxy-config-how-to/error-message.png)
+![Azure portal の通知プロンプトの場所を示します](./media/application-proxy-config-how-to/error-message.png)
 
 ## <a name="configure-connectorsconnector-groups"></a>コネクタ/コネクタ グループの構成
 
@@ -61,19 +57,16 @@ ms.locfileid: "56172316"
 
 ## <a name="upload-certificates-for-custom-domains"></a>カスタム ドメイン用の証明書のアップロード
 
-カスタム ドメインを使用すると、外部 URL のドメインを指定することができます。 カスタム ドメインを使用するには、そのドメインの証明書をアップロードする必要があります。 カスタム ドメインと証明書の使用については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。 
+カスタム ドメインを使用すると、外部 URL のドメインを指定することができます。 カスタム ドメインを使用するには、そのドメインの証明書をアップロードする必要があります。 カスタム ドメインと証明書の使用については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
 
 証明書のアップロード中に問題が発生した場合は、関連するエラー メッセージをポータルで探し、証明書の問題についての詳しい情報がないかどうかを調べてください。 証明書に関してよく発生する問題の例を次に示します。
 
--   証明書の有効期限切れ
-
--   証明書が自己署名されている
-
--   証明書の秘密キーがない
+- 証明書の有効期限切れ
+- 証明書が自己署名されている
+- 証明書の秘密キーがない
 
 証明書をアップロードする際、エラー メッセージは右上隅に表示されます。 通知アイコンを選択してエラー メッセージを表示することもできます。
 
-   ![通知アイコン](./media/application-proxy-config-how-to/error-message2.png)
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
 [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)

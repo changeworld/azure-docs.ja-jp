@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:単一ページの Web アプリを作成する - Bing Web Search API
+title: 'チュートリアル: 単一ページの Web アプリを作成する - Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: この単一ページのアプリは、Bing Web Search API を使用して、単一ページのアプリで関連する検索結果を取得、解析、および表示する方法を示しています。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798331"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "78943877"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル: Bing Web Search API を使用して単一ページの Web アプリを作成する
 
 この単一ページのアプリは、Bing Web Search API から検索結果を取得、解析、および表示する方法を示しています。 このチュートリアルでは、定型の HTML と CSS を使用し、JavaScript コードに焦点を当てています。 HTML、CSS、および JS ファイルとクイック スタート手順は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) に掲載されています。
 
@@ -37,8 +37,7 @@ ms.locfileid: "65798331"
 アプリを実行するために必要なものを次に示します。
 
 * Node.js 8 以降
-* サブスクリプション キー
-
+* Bing Search API のサブスクリプション キー。 所有していない場合は、[Bing Search v7 リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を使用することもできます。
 ## <a name="get-the-source-code-and-install-dependencies"></a>ソース コードを入手して依存関係をインストールする
 
 最初の手順は、サンプル アプリのソース コードを使用してリポジトリを複製することです。
@@ -80,7 +79,7 @@ npm install
 
 ## <a name="query-options"></a>クエリ オプション
 
-HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
+HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
 
 | パラメーター | 説明 |
 |-----------|-------------|
@@ -93,7 +92,7 @@ HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/re
 | `offset` | 隠しフィールド。 要求における最初の検索結果のオフセット。ページングに使用されます。 新しい要求ごとに `0` にリセットされます。 |
 
 > [!NOTE]
-> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters)を参照してください。
+> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)を参照してください。
 
 `bingSearchOptions()` 関数は、Bing Search API で必要な形式にこれらのオプションを変換します。
 
@@ -105,7 +104,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +127,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` は `strict`、`moderate`、または `off` に設定できます。`moderate` は Bing Web Search の既定の設定です。 このフォームでは、2 つの状態があるチェックボックスを使用します。 このスニペットでは、SafeSearch は `strict` または `off` に設定され、`moderate` は使用されていません。
+`SafeSearch` は `strict`、`moderate`、または `off` に設定できます。`moderate` は Bing Web Search の既定の設定です。 このフォームでは、`strict` と `moderate` という 2 つの状態があるチェック ボックスを使用します。
 
 **[レベル上げ]** チェックボックスがオンの場合、`answerCount` パラメーターがクエリに追加されます。 `answerCount` は `promote` パラメーターを使用する際に必要です。 このスニペットでは、使用できるすべての結果の種類を返す `9` に値が設定されています。
 > [!NOTE]
@@ -382,7 +381,7 @@ searchItemRenderers = {
 > [!IMPORTANT]
 > このサンプル アプリには、Web ページ、ニュース、画像、動画、関連する検索用のレンダラーがあります。 このアプリケーションでは、受け取る可能性のあるすべての種類の結果に対するレンダラーが必要です。結果の種類には、計算、スペル修正候補、エンティティ、タイム ゾーン、定義などがあります。
 
-一部のレンダリング関数は `item` パラメーターのみを受け取ります。 コンテキストに基づいて項目を別の方法でレンダリングするために使用できる他のパラメーターを受け取るものもあります  (この情報を使わないレンダラーは、これらのパラメーターを受け取る必要はありません)。
+一部のレンダリング関数は `item` パラメーターのみを受け取ります。 コンテキストに基づいて項目を別の方法でレンダリングするために使用できる他のパラメーターを受け取るものもあります (この情報を使わないレンダラーは、これらのパラメーターを受け取る必要はありません)。
 
 コンテキスト引数は次のとおりです。
 
@@ -464,7 +463,7 @@ cors-proxy-server
 
 サンプル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下にある展開可能な [HTTP ヘッダー] セクションには、`X-MSEdge-ClientID` ヘッダーが表示されるはずです。 これが各要求で同じであることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API v7 リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

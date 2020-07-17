@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ddbf1eb960a24cfaa8d09ab45b6febca07e6d504
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074412"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75979926"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -38,10 +38,10 @@ Azure で MySQL をホストするには、他にもいくつかの選択肢が�
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Azure Marketplace で Web アプリケーションと MySQL テンプレートを入手するには、クレジット カードが必要ですか。
 ご利用のサブスクリプションの種類によります。 一般的なサブスクリプションの種類をいくつか示します。
 
-* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/):クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
-* [無料試用版](https://azure.microsoft.com/pricing/free-trial/):Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
-* [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**:無料試用版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
-* [マイクロソフト エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/):EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
+* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/): クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
+* [無料評価版](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
+* [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**: 無料評価版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
+* [エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Azure Marketplace から Web アプリケーションと MySQL に 3.50 ドルを課金されているのはなぜですか。
 既定のデータベース オプションは Titan で、価格は 3.50 ドルです。 データベースの作成時には価格が表示されないため、このデータベースを誤って購入してしまった可能性があります。 今後プロセスの改善に努めてまいりますが、それまでは、Web アプリケーションとデータベースについて選択した価格レベルをすべて確認してから、 **[作成]** をクリックしてリソースのデプロイを開始してください。
@@ -49,7 +49,7 @@ Azure で MySQL をホストするには、他にもいくつかの選択肢が�
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>自分が所有する Azure 仮想マシンで MySQL を実行しています。 自分の Azure Web アプリケーションを自分のデータベースに接続することはできますか。
 はい。 Azure VM にご自身の Web アプリケーションへのリモート アクセス権が付与されていれば、そのアプリケーションをご自身のデータベースに接続していただけます。 詳細については、「 [Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>ClearDB Premium MySQL クラスターがサポートされている国を教えてください。
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>ClearDB Premium MySQL クラスターがサポートされている国や地域を教えてください。
 ClearDB Premium MySQL クラスターは、インド、オーストラリア、ブラジル南部、中国を除く、全世界のすべての Azure リージョンでご利用いただけます。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>ClearDB Premium クラスター ソリューションでデータベースを作成する前に新しいクラスターを作成できますか。
@@ -80,7 +80,7 @@ Web Apps には Basic 以上の価格レベルを使用してください。 Cle
 はい、Basic シリーズのデータベースはインプレース アップグレードできます (Basic 60 ～ Basic 500)。 Pro シリーズも、Pro 60 を除き、インプレース アップグレードできます (Pro 125 ～ Pro 1000)。 現在、Pro 60 データベースのアップグレードはサポートされていません。 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>サブスクリプションから別のサブスクリプションにリソースを移行すると、ClearDB MySQL データベースも移行されますか。
-サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
+サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](azure-resource-manager/management/move-support-resources.md) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>サブスクリプションで使用制限に達しました。 制限を削除し、App Service はオンラインになっていますが、データベースにアクセスできません。 ClearDB データベースを再有効化するには、どうしたらいいですか。
 データベースを再有効化するには、[ClearDB サポート](https://www.cleardb.com/developers/help/support)にお問い合わせください。 その際、Azure サブスクリプションの情報とデータベース名をサポートに提供してください。

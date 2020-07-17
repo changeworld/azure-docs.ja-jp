@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Kontiki の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Kontiki の統合 | Microsoft Docs'
 description: Azure Active Directory と Kontiki の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee7454942b9214eeb1253339446df370e20fe01
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785848"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67098498"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>チュートリアル:Azure Active Directory と Kontiki の統合
+# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>チュートリアル: Azure Active Directory と Kontiki の統合
 
 このチュートリアルでは、Kontiki と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -48,14 +48,14 @@ Kontiki と Azure AD の統合を構成するには、次のものが必要で�
 
 Kontiki では、次の機能をサポートしています。
 
-* **SP によって開始されるシングル サインオン**
+* **SP が起点となるシングル サインオン**
 * **Just-in-time のユーザー プロビジョニング**
 
 ## <a name="add-kontiki-in-the-azure-portal"></a>Azure portal で Kontiki を追加する
 
 Kontiki を Azure AD と統合するには、マネージド SaaS アプリの一覧に Kontiki を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 
@@ -83,7 +83,7 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
 | --- | --- |
 | **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** | ユーザーがこの機能を使用できるようにします。 |
 | **[Kontiki シングル サインオンの構成](#configure-kontiki-single-sign-on)** | アプリケーションでシングル サインオン設定を構成します。 |
-| **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** | Britta Simon という名前のユーザーの Azure AD シングル サインオンをテストします。 |
+| **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** | Britta Simon という名前のユーザーの Azure AD シングル サインオンをテストします。 |
 | **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** | Britta Simon が Azure AD シングル サインオンを使用できるようにします。 |
 | **[Kontiki のテスト ユーザーの作成](#create-a-kontiki-test-user)** | Kontiki で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。 |
 | **[シングル サインオンのテスト](#test-single-sign-on)** | 構成が機能することを確認します。 |
@@ -100,7 +100,7 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **[編集]** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Kontiki で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE]
     > 使用する正しい値を取得するには、[Kontiki クライアント サポート チーム](https://customersupport.kontiki.com/enterprise/contactsupport.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** の横の **[ダウンロード]** を選択します。 要件に基づいてダウンロード オプションを選択します。 コンピューターに証明書を保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** の横の **[ダウンロード]** を選択します。 要件に基づいてダウンロード オプションを選択します。 お使いのコンピューターに証明書ファイルを保存します。
 
     ![フェデレーション メタデータ XML 証明書のダウンロード オプション](common/metadataxml.png)
 
@@ -143,7 +143,7 @@ Kontiki 側でシングル サインオンを構成するには、ダウンロ�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」と入力します。
+    1. **[ユーザー名]** ボックスに、「**brittasimon\@\<企業のドメイン>.\<extension>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
@@ -171,9 +171,9 @@ Kontiki 側でシングル サインオンを構成するには、ダウンロ�
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **[Britta Simon]** を選択します。 **[選択]** を選択します。
+1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに関連するロールを選択します。 **[選択]** を選択します。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 
@@ -187,7 +187,7 @@ Kontiki でのユーザー プロビジョニングの構成にあたって必�
 
 シングル サインオンをセットアップした後、マイ アプリ ポータルで **[Kontiki]** を選択すると、Kontiki に自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。
 

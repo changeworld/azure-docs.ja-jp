@@ -1,31 +1,23 @@
 ---
-title: クイック スタート - Azure portal で Windows VM を作成する | Microsoft Docs
+title: クイック スタート - Azure portal で Windows VM を作成する
 description: このクイック スタートでは、Azure portal を使用して Windows 仮想マシンを作成する方法について説明します
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/19/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 08c33068845855fca85f793c21264582be423c2f
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5cf23a9c66c76f778dbd5d2b126b28a5a577c978
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368115"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82098001"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで Windows 仮想マシンを作成する
 
-Azure 仮想マシン (VM) は、Azure portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Windows Server 2016 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
+Azure 仮想マシン (VM) は、Azure portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Windows Server 2019 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -35,15 +27,14 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
-
-1. **[新規]** ページの **[人気順]** で、**[Windows Server 2016 Datacenter]** を選択します。
-
+1. 検索に「**virtual machines**」と入力します。
+1. **[サービス]** で、 **[仮想マシン]** を選択します。
+1. **[仮想マシン]** ページで、 **[追加]** を選択します。 
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。 
 
     ![VM の新しいリソース グループを作成する](./media/quick-create-portal/project-details.png)
 
-1. **[Instance details] (インスタンスの詳細)** で、**[仮想マシン名]** として「*myVM*」と入力し、**[場所]** として *[米国東部]* を選択します。 他の既定値はそのままにします。
+1. **[インスタンスの詳細]** で、 **[仮想マシン名]** として「*myVM*」と入力し、 **[リージョン]** として *[米国東部]* を選択し、 **[イメージ]** として *[Windows Server 2019 Datacenter]* を選択します。 他の既定値はそのままにします。
 
     ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
 
@@ -51,7 +42,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![ユーザー名とパスワードを入力する](./media/quick-create-portal/administrator-account.png)
 
-1. **[受信ポートの規則]** で、**[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[RDP (3389)]** と **[HTTP]** を選択します。
+1. **[受信ポートの規則]** で **[選択したポートを許可する]** を選択し、ドロップダウンから **[RDP (3389)]** と **[HTTP (80)]** を選択します。
 
     ![RDP と HTTP のポートを開く](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -62,17 +53,17 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
-仮想マシンへのリモート デスクトップ接続を作成します。 この手順では、Windows コンピューターから、VM に接続する方法を示します。 Mac では、この[リモート デスクトップ クライアント](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
+仮想マシンへのリモート デスクトップ接続を作成します。 この手順では、Windows コンピューターから、VM に接続する方法を示します。 Mac では、この[リモート デスクトップ クライアント](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
 
-1. 仮想マシンのプロパティ ページで、**[接続]** ボタンをクリックします。 
+1. 仮想マシンの概要ページで **[接続]** ボタンをクリックします。 
 
     ![ポータルから Azure VM に接続する](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. **[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 3389 を介して DNS 名で接続する既定のオプションをそのまま使用して、**[RDP ファイルのダウンロード]** をクリックします。
+2. **[仮想マシンに接続する]** ページで、ポート 3389 を介して IP アドレスで接続する既定のオプションをそのまま使用して、 **[RDP ファイルのダウンロード]** をクリックします。
 
 2. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** をクリックします。 
 
-3. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 ユーザー名として「**localhost**\\*username*」と入力し、仮想マシン用に作成したパスワードを入力して、**[OK]** をクリックします。
+3. **[Windows セキュリティ]** ウィンドウで、 **[その他]** 、 **[別のアカウントを使用する]** の順に選択します。 ユーザー名として「**localhost**\\*username*」と入力し、仮想マシン用に作成したパスワードを入力して、 **[OK]** をクリックします。
 
 4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続を作成します。
 
@@ -93,11 +84,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 これを行うには、仮想マシンのリソース グループを選択し、**[削除]** を選択して、削除するリソース グループの名前を確認します。
+必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 
 
-## <a name="next-steps"></a>次の手順
+仮想マシンのリソース グループを選択し、 **[削除]** をクリックします。 リソース グループの名前を確認してリソースの削除を終了します。
+
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、単純な仮想マシンをデプロイし、Web トラフィック用のネットワーク ポートを開き、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Windows VM のチュートリアルを参照してください。
 

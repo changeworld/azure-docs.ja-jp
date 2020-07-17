@@ -1,37 +1,25 @@
 ---
-title: Azure Red Hat OpenShift のサポートされているリソース | Microsoft Docs
+title: Azure Red Hat OpenShift 3.11 でサポートされているリソース
 description: Microsoft Azure Red Hat OpenShift でサポートされている Azure リージョンと仮想マシンのサイズについて説明します。
-services: container-service
-author: tylermsft
-ms.author: twhitney
-manager: jeconnoc
+author: jimzim
+ms.author: jzim
 ms.service: container-service
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.topic: conceptual
+ms.date: 05/15/2019
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080265"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203677"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift のリソース
 
-このトピックでは、Microsoft Azure Red Hat OpenShift サービスでサポートされている Azure リージョンと仮想マシンのサイズを示します。
+このトピックでは、Microsoft Azure Red Hat OpenShift 3.11 サービスでサポートされている Azure リージョンと仮想マシンのサイズを示します。
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
-世界中の次の Azure リージョンに、Azure Red Hat OpenShift クラスターをデプロイできます。
-
-|リージョン|CLI コード|
-|-|-|
-|AU オーストラリア東部|`australiaeast`|
-|CA カナダ中部|`canadacentral`|
-|CA カナダ東部|`canadaeast`|
-|US 米国東部|`eastus`|
-|US 米国西部|`westus`|
-|EU 西ヨーロッパ|`westeurope`|
-|EU 北ヨーロッパ|`northeurope`|
+Azure Red Hat OpenShift クラスターをデプロイできる最新のリージョン一覧については、[リージョン別の使用できる製品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)に関する記事を参照してください。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
 
@@ -46,7 +34,7 @@ Azure Red Hat OpenShift クラスター内のコンピューティング ノー�
 
 Azure Red Hat OpenShift の REST API では、次のコンピューティング ノードのサイズがサポートされています。
 
-|Size|vCPU|RAM|
+|サイズ|vCPU|RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
 |Standard D8s v3|8|32 GB|
@@ -66,13 +54,13 @@ Azure Red Hat OpenShift の REST API では、次のコンピューティング 
 
 Azure Red Hat OpenShift の REST API では、次のマスター/インフラストラクチャ ノードのサイズがサポートされています。
 
-|Size|vCPU|RAM|
+|サイズ|vCPU|RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
 |Standard D8s v3|8|32 GB|
 |Standard D16s v3|16|64 GB|
 |Standard D32s v3|32|128 GB|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)に関するチュートリアルを試してください。

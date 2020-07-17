@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753921"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73889195"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>デバイス シミュレーション ソリューション アクセラレータで既存の IoT Hub を使用する
 
@@ -25,7 +25,7 @@ IoT Hub がない場合は、いつでも [Azure Portal](https://portal.azure.co
 
 既存の IoT ハブを使用するには、**iothubowner** 共有アクセス ポリシーに対する接続文字列が必要です。 この接続文字列は、[Azure Portal](https://portal.azure.com) から取得できます。
 
-1. ポータルのハブの構成ページで、**[共有アクセス ポリシー]** をクリックします。
+1. ポータルのハブの構成ページで、 **[共有アクセス ポリシー]** をクリックします。
 
 1. **iothubowner** をクリックします。
 
@@ -37,6 +37,6 @@ IoT Hub がない場合は、いつでも [Azure Portal](https://portal.azure.co
 
 ![シミュレーションを構成する](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 このハウツー ガイドでは、シミュレーションで既存の IoT Hub を使用する方法について学習しました。 次は、シミュレーション用の[高度なデバイス モデルを作成する](iot-accelerators-device-simulation-advanced-device.md)方法について学習することができます。

@@ -4,17 +4,17 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140685"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68857432"
 ---
-**.NET バックエンド (C#)**:
+**.NET バックエンド (C#)** :
   
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、**[インストール]** をクリックします。 これにより、バックエンドから通知を送信するために必要な Notification Hubs ライブラリがインストールされます。
-2. バックエンドの Visual Studio プロジェクトで、**[コントローラー]** > **[TodoItemController.cs]** の順に開きます。 ファイルの先頭に、次の `using` ステートメントを追加します。
+1. Visual Studio でサーバー プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、 **[インストール]** をクリックします。 これにより、バックエンドから通知を送信するために必要な Notification Hubs ライブラリがインストールされます。
+2. バックエンドの Visual Studio プロジェクトで、 **[コントローラー]**  >  **[TodoItemController.cs]** の順に開きます。 ファイルの先頭に、次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -67,7 +67,7 @@ ms.locfileid: "66140685"
 
 **Node.js バックエンド**:
 
-1. これをまだ行っていない場合は、[クイック スタート プロジェクト](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)をダウンロードするか、[Azure Portal でオンライン エディター](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。    
+1. バックエンド プロジェクトを設定します。    
 
 2. todoitem.js テーブル スクリプトを次のコードで置き換えます。
 

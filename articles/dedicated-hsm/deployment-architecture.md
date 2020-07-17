@@ -2,22 +2,22 @@
 title: デプロイ アーキテクチャ - Azure Dedicated HSM | Microsoft Docs
 description: アプリケーション アーキテクチャの一部として Azure Dedicated HSM を使用するときの基本設計に関する考慮事項
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 1e00e1f06f2409c94174a752a799cd4c1b7b23ef
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.date: 02/05/2020
+ms.author: mbaldwin
+ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539974"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77048566"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
@@ -35,6 +35,10 @@ HSM は、Microsoft のデータ センター全体に分散され、高可用�
 * 米国中南部
 * 東南アジア
 * 東アジア
+* インド中部
+* インド南部
+* 東日本
+* 西日本
 * 北ヨーロッパ
 * 西ヨーロッパ
 * 英国南部
@@ -59,7 +63,7 @@ HSM デバイスの場所として最適なのは、暗号化操作を実行す�
 
 通常、専用 HSM デバイスは、キーの保管操作と取得操作を実行する必要のあるアプリケーションを支援する手段としてデプロイされます。 専用 HSM デバイスには、アプリケーションの個別サポートを目的として 10 個のパーティションがあります。 デバイスの場所は、このサービスを使用する必要があるすべてのアプリケーションを俯瞰して検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デプロイ アーキテクチャが決まれば、そのアーキテクチャを実装する大半の構成作業は Gemalto によって提供されます。 これには、デバイス構成やアプリケーション統合のシナリオが含まれます。 詳細については、[Gemalto のカスタマー サポート](https://supportportal.gemalto.com/csm/) ポータルを使用して、管理ガイドと構成ガイドをダウンロードしてください。 Microsoft パートナー サイトには、さまざまな統合ガイドがあります。
 デバイスのプロビジョニングや、アプリケーションの設計とデプロイの前に、高可用性やセキュリティなど、サービスのすべての主要概念を十分に理解しておくことをお勧めします。
@@ -69,4 +73,4 @@ HSM デバイスの場所として最適なのは、暗号化操作を実行す�
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)

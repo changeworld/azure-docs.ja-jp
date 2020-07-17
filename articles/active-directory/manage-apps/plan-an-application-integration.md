@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8db7ac63aaf9ae5b1b16bb233e87ace06867309
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824315"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77063382"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 
@@ -77,7 +77,7 @@ ms.locfileid: "65824315"
 Microsoft Azure AD アプリケーション プロキシを使用すると、プライベート ネットワーク内に置かれたアプリケーションへの、任意の場所および任意のデバイスからのアクセスを安全に許可することができます。 アプリケーション プロキシ コネクタは、環境内にインストールすると、Azure AD で簡単に構成することができます。
 
 ### <a name="integrating-custom-applications"></a>カスタム アプリケーションの統合
-新しいアプリケーションの作成中に、開発者が Azure AD の機能を活用できるようにサポートする必要がある場合は、 [開発者ガイド](../active-directory-applications-guiding-developers-for-lob-applications.md)を参照してください。
+新しいアプリケーションの作成中に、開発者が Azure AD の機能を活用できるようにサポートする必要がある場合は、[開発者ガイド](../active-directory-applications-guiding-developers-for-lob-applications.md)を参照してください。
 
 カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、 [Azure AD のセルフ サービス SAML 構成を使用した "ユーザー独自のアプリケーションの持ち込み"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に関するページを参照してください。
 
@@ -85,17 +85,17 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 次の記事では、Azure AD コネクタと Azure AD を使用して Azure AD と統合した後でアプリケーションへのアクセスを管理する方法について説明します。
 
 * [Azure AD を使用したアプリへのアクセスの管理](what-is-access-management.md)
-* [Azure AD コネクタを使用した自動化](user-provisioning.md)
+* [Azure AD コネクタを使用した自動化](../app-provisioning/user-provisioning.md)
 * [アプリケーションへのユーザーの割り当て](../active-directory-applications-guiding-developers-assigning-users.md)
 * [アプリケーションへのグループの割り当て](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [アカウントの共有](../active-directory-sharing-accounts.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[GitHub](https://aka.ms/deploymentplans) から Azure Active Directory のデプロイ計画をダウンロードできます。 ギャラリーのアプリケーションでは、シングル サインオン、条件付きアクセス、およびユーザー プロビジョニングのデプロイ計画を [Azure portal](https://portal.azure.com) からダウンロードすることができます。 
 
 デプロイ計画を Azure portal からダウンロードするには。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **エンタープライズ アプリケーション** | **を選択し、** | **デプロイ計画**アプリケーションを使用します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+2. **エンタープライズ アプリケーション** | **を選択し、**  | **デプロイ計画**アプリケーションを使用します。
 
 [デプロイ計画の調査](https://aka.ms/DeploymentPlanFeedback)を実施し、デプロイ計画に関するフィードバックを提供してください。

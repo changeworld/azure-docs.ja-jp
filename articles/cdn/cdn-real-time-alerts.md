@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 1e85b809-e1a9-4473-b835-69d1b4ed3393
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: e20161147aa16456e31aff2bd3cc6337c3690e89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789925"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67593475"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN のリアルタイム アラート
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "59789925"
 * 帯域幅
 * 状態コード
 * キャッシュの状態
-* Connections
+* 接続
 
 ## <a name="creating-a-real-time-alert"></a>リアルタイム アラートの作成
 1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。
@@ -53,9 +53,9 @@ ms.locfileid: "59789925"
     新しいアラートを作成するためのフォームが表示されます。
    
     ![[新しい警告] フォーム](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. **[保存]** をクリックしたときにこのアラートをアクティブにする場合は、**[有効な警告]** チェックボックスをオンします。
+5. **[保存]** をクリックしたときにこのアラートをアクティブにする場合は、 **[有効な警告]** チェックボックスをオンします。
 6. **[名前]** フィールドにアラートのわかりやすい名前を入力します。
-7. **[Media Type (メディアの種類)]** ドロップダウンで、**[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択します。
+7. **[Media Type (メディアの種類)]** ドロップダウンで、 **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択します。
    
     ![[HTTP Large Object (HTTP ラージ オブジェクト] を選択した [Media Type (メディアの種類)]](./media/cdn-real-time-alerts/cdn-http-large.png)
    
@@ -63,7 +63,7 @@ ms.locfileid: "59789925"
    > **メディアの種類**として **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択する必要があります。  **Azure CDN from Verizon**では、他の選択肢は使用しません。  **[HTTP Large Object]\(HTTP ラージ オブジェクト\)** を選択しないと、アラートはトリガーされません。
    > 
    > 
-8. **[メトリック]**、**[演算子]**、および **[トリガー値]** を選択して、監視する**式**を作成します。
+8. **[メトリック]** 、 **[演算子]** 、および **[トリガー値]** を選択して、監視する**式**を作成します。
    
    * **[メトリック]** では、監視条件の種類を選択します。  **[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。  **[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。  さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](/previous-versions/azure/mt759237(v=azure.100))」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](/previous-versions/azure/mt759238(v=azure.100))」を参照してください
    * **[演算子]** は、メトリックとトリガー値の間のリレーションシップを確立する算術演算子です。
@@ -83,7 +83,7 @@ ms.locfileid: "59789925"
     
     ![[Notify by Email (電子メールで通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    **[To (宛先)]** フィールドに、通知の送信先とする電子メール アドレスを入力します。 **[件名]** と **[本文]** は、既定のままにすることも、**[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することもできます。
+    **[To (宛先)]** フィールドに、通知の送信先とする電子メール アドレスを入力します。 **[件名]** と **[本文]** は、既定のままにすることも、 **[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することもできます。
     
     > [!NOTE]
     > **[テスト通知]** ボタンをクリックすることで電子メール通知をテストできますが、このテストはアラートの構成を保存した後にのみ実行できます。
@@ -93,7 +93,7 @@ ms.locfileid: "59789925"
     
     ![[Notify by HTTP Post (HTTP Post で通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    **[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。 **[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。  **[本文]** は、**[Available keywords]\(使用可能なキーワード\)** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。  **[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
+    **[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。 **[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。  **[本文]** は、 **[Available keywords]\(使用可能なキーワード\)** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。  **[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -108,7 +108,7 @@ ms.locfileid: "59789925"
 13. **[保存]** ボタンをクリックして、アラートの構成を保存します。  手順 5 で **[有効な警告]** をオンにした場合は、ここでアラートがアクティブになります。
 
 ## <a name="next-steps"></a>次の手順
-*  [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
-*  [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-*  [使用量パターン](cdn-analyze-usage-patterns.md)
+* [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)
+* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+* [使用量パターン](cdn-analyze-usage-patterns.md)
 

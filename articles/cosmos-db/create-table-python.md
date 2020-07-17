@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Python での Table API の使用 - Azure Cosmos DB'
+title: クイック スタート:Python での Table API の使用 - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB Table API を使って Azure Portal と Python でアプリケーションを作成する方法を示します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 673155706c3b7d44b41562c2dc8ce24a94ac6a58
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833077"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083633"
 ---
-# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイック スタート: Python と Azure Cosmos DB で Table API アプリを構築する
+# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイック スタート:Python と Azure Cosmos DB で Table API アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -24,19 +25,13 @@ ms.locfileid: "65833077"
 > * [Python](create-table-python.md)
 > 
 
-このクイックスタートでは、GitHub から例を複製することで、Python と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
-
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、ワイドカラム、およびグラフ データベースをすばやく作成およびクエリできます。 
+このクイックスタートでは、Azure portal を使用して、また GitHub からクローンした Python アプリを Visual Studio から使用して、Azure Cosmos DB Table API アカウントの作成と管理を行います。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-加えて次の作業を行います。
-
-* まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ時に、必ず **[Azure の開発]** と **[Python 開発]** ワークロードを選択してください。
-* また、 **[Python 開発]** ワークロードの [Python 2] オプションを選択するか、[python.org](https://www.python.org/downloads/release/python-2712/) から Python 2.7 をダウンロードします。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。 または、`https://localhost:8081` の URI でキー `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` を使用して [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) を使用することもできます。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) (セットアップ時に **[Azure の開発]** および **[Python 開発]** ワークロードを選択)。 
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -78,29 +73,33 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 3. Visual Studio でソリューション ファイルを開きます。 
 
+> ![ヒント] 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](table-storage-how-to-use-python.md)に関する記事を参照してください。
+
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
-1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-    ![[接続文字列] ウィンドウで [接続文字列] を確認してコピーする](./media/create-table-python/connection-string.png)
+    ![[接続文字列] 設定で接続文字列を確認してコピーする](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. 右側のボタンを使って、アカウント名をコピーします。
 
-3. config.py ファイルを開き、ポータルのアカウント名を 19 行目の STORAGE_ACCOUNT_NAME 値に貼り付けます。
+3. *config.py* ファイルを開き、ポータルのアカウント名を 19 行目の STORAGE_ACCOUNT_NAME 値に貼り付けます。
 
 4. ポータルに戻り、主キーをコピーします。
 
 5. ポータルの主キーを 20 行目の STORAGE_ACCOUNT_KEY 値に貼り付けます。
 
-3. config.py ファイルを保存します。
+6. *config.py* ファイルを保存します。
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、現在の Python 環境を選択して、右クリックします。
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックします。
 
-2. [Python パッケージのインストール] を選択し、「**azure-storage-table**」と入力します。
+2. 現在の Python 環境を選択し、右クリックします。
+
+2. **[Python パッケージのインストール]** を選択し、「*azure-storage-table*」と入力します。
 
 3. F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
 
@@ -110,13 +109,13 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、アプリを実行する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
+このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、Visual Studio で Python アプリを実行してテーブル データを追加する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
 
 > [!div class="nextstepaction"]
 > [テーブル データを Table API にインポートする](table-import.md)

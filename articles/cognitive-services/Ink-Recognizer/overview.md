@@ -1,30 +1,30 @@
 ---
 title: Ink Recognizer とは - Ink Recognizer API
-titlesuffix: Azure Cognitive Services
-description: Ink Recognizer をお使いのアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、以下を提供できます。
+titleSuffix: Azure Cognitive Services
+description: Ink Recognizer をお使いのアプリケーション、Web サイト、ツール、またはその他のソリューションに統合すると、インク ストローク データが識別されるようになり、入力として使用することができます。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: overview
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65025607"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448163"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは
 
 
 Ink Recognizer Cognitive Service は、デジタルインク コンテンツ を分析および認識するためのクラウド ベースの REST API を提供します。 光学式文字認識 (OCR) を使用するサービスとは異なり、この API には入力としてデジタル インク ストローク データが必要になります。 デジタル インク ストロークは、デジタル ペンや指などの入力ツールの動きを表す 2D ポイント (X 座標、Y 座標) を時間順に並べたセットです。 入力から図形と手書きのコンテンツを認識し、認識されたすべてのエンティティを含む JSON 応答を返します。
 
-![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.png)
+![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.svg)
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 Ink Recognizer API を使用すると、アプリケーション内の手書きコンテンツを簡単に認識できます。 
 
@@ -47,12 +47,12 @@ Ink Recognizer API は RESTful Web サービスです。HTTP 要求を作成し�
 1. ユーザーのデータとともに Ink Recognizer API に要求を送信します。
 1. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の言語でクイックスタートを実行して、Ink Recognizer API の呼び出しを開始してください。
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 デジタル インキング アプリで Ink Recognition API がどのように動作するかを確認するには、GitHub 上の次のサンプル アプリケーションを参照してください。
 * [C# およびユニバーサル Windows プラットフォーム (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

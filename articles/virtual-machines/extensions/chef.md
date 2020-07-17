@@ -1,25 +1,24 @@
 ---
-title: Azure VM 用の Chef 拡張機能 | Microsoft Docs
+title: Azure VM 用の Chef 拡張機能
 description: Chef VM 拡張機能を使用して、仮想マシンに Chef クライアントをデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
-ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: akjosh
+ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089167"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76544720"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
 
@@ -51,7 +50,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
   "properties": {
     "publisher": "Chef.Bootstrap.WindowsAzure",
     "type": "[parameters('chef_vm_extension_type')]",
-    "typeHandlerVersion": "1210.12",
+    "typeHandlerVersion": "1210.13",
     "settings": {
       "bootstrap_options": {
         "chef_server_url": "[parameters('chef_server_url')]",
@@ -68,26 +67,26 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="core-property-values"></a>コア プロパティ値
 
-| Name | 値/例 | データ型
-| ---- | ---- | ---- 
+| 名前 | 値/例 | データ型
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | 文字列 |
-| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | 文字列 |
-| typeHandlerVersion | `1210.12` | string (double) |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
+| typeHandlerVersion | `1210.13` | string (double) |
 
 ### <a name="settings"></a>設定
 
-| Name | 値/例 | データ型 | 必須
+| 名前 | 値/例 | データ型 | 必須
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | 文字列 | Y |
-| settings/runlist | `recipe[mycookbook::default]` | 文字列 | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
+| settings/runlist | `recipe[mycookbook::default]` | string | Y |
 
 ### <a name="protected-settings"></a>保護された設定
 
-| Name | 例 | データ型 | 必須
+| 名前 | 例 | データ型 | 必須
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 文字列 | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 
 <!--
 ### Linux-specific settings
@@ -119,7 +118,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.12 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.13 --protected-settings '{"validation_key": "<validation_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
@@ -139,7 +138,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myExistingVM -o 
 /var/lib/waagent/Chef.Bootstrap.WindowsAzure.LinuxChefClient
 ```
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 ```powershell
 C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
@@ -153,6 +152,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 トラブルシューティングに関する追加情報は、[Chef VM 拡張機能の readme](https://github.com/chef-partners/azure-chef-extension) に記載されています。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> Chef に直接関連する他のものについては、[Chef サポート](https://www.chef.io/support/)にお問い合わせください。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

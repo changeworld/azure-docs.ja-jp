@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 621d7b01a20748b0ef9349ff192c68988db49a04
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 55ef7a2ef06d29e653516a3915af76a2fcc24e50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67471284"
 ---
 | Standard ディスクの種類 | S4 | S6 | S10 | S15 | S20 | S30 | S40 | S50 | S60 | S70 | S80 |
 |--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| ディスク サイズ (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8,192 | 16,384 | 32,767 |
+| ディスク サイズ (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,096 | 8,192 | 16,384 | 32,767 |
 | ディスクあたりの IOPS | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 1,300 | 最大 2,000 | 最大 2,000 |
 | ディスクあたりのスループット | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒| 最大 300 MiB/秒 | 最大 500 MiB/秒 | 最大 500 MiB/秒 |

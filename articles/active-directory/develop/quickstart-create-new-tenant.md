@@ -1,30 +1,25 @@
 ---
-title: Azure Active Directory テナントの作成 | Microsoft Docs
+title: Azure Active Directory テナントを作成する
 description: アプリケーションを登録および構築するために使用する Azure AD テナントを作成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2019
+ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962505"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883815"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート:開発環境の設定
+# <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
 Microsoft ID プラットフォームでは、開発者がさまざまなカスタムの Microsoft 365 環境と ID を対象とするアプリをビルドできます。 Microsoft ID プラットフォームの使用を開始するには、アプリの登録と管理、Microsoft 365 のデータへのアクセス、およびカスタムの条件付きアクセスとテナント制限のデプロイが可能な環境 (Azure AD テナントとも言う) にアクセスする必要があります。
 
@@ -55,13 +50,13 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 > [!TIP]
 > テナント ID を調べる必要がある場合は、次の操作を実行できます。
 > * アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
-> * Azure portal で、**[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
+> * Azure portal で、 **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
 
 アカウントに関連付けられた既存のテナントがない場合は、アカウント名の下に GUID が表示されます。次のセクションの手順に従うまで、アプリの登録などのアクションは実行できません。
 
 ### <a name="create-a-new-azure-ad-tenant"></a>新しい Azure AD テナントの作成
 
-Azure AD テナントがない場合、または開発用の新しいテナントを作成したい場合は、[ディレクトリ作成エクスペリエンス](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)に従ってください。 新しいテナントを作成するには、次の情報を提供する必要があります。
+Azure AD テナントがない場合、または開発用の新しいテナントを作成する場合は、[クイックスタート](../fundamentals/active-directory-access-create-new-tenant.md)を参照するか、[ディレクトリ作成エクスペリエンス](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)に従ってください。 新しいテナントを作成するには、次の情報を提供する必要があります。
 
 - **組織名**
 - **初期ドメイン** - これは *. onmicrosoft.com の一部となります。 ドメインは後でカスタマイズできます。
@@ -74,8 +69,8 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 
 ソーシャル アカウントとローカル アカウントにサインインするアプリをビルドするには、Azure AD B2C テナントを作成する必要があります。 最初に、[Azure AD B2C テナントの作成](../../active-directory-b2c/tutorial-create-tenant.md)に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* コーディングのクイック スタートを試して、ユーザーの認証を開始します。 
-* 詳細なコード サンプルについては、ドキュメントの**チュートリアル**セクションを確認してください。
-* アプリをクラウドにデプロイしたい場合。 [コンテナーを Azure にデプロイする](https://docs.microsoft.com/azure/index#pivot=products&panel=containers)を確認してください。 
+* [アプリを登録](quickstart-register-app.md)し、Microsoft ID プラットフォームと統合します。 
+* [認証の基本](authentication-scenarios.md)について説明します。
+* サブスクリプションと Azure AD テナントの関係について詳しくは、[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。

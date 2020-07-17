@@ -1,10 +1,11 @@
 ---
-title: Azure App Configuration の動的な構成を ASP.NET Core アプリで使用するためのチュートリアル | Microsoft Docs
+title: チュートリアル:ASP.NET Core で App Configuration の動的な構成を有効にする
+titleSuffix: Azure App Configuration
 description: このチュートリアルでは、ASP.NET Core アプリの構成データを動的に更新する方法を学習します。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,20 +13,22 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519003"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348848"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
-ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、その場で変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。
+ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、動的に変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。 アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。
 
-アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。 また、アプリ構成ストアにおける変更を常時監視して取得するように、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 ポーリングの定期的な間隔を定義します。
+ミドルウェアを使って構成設定のセットを動的に更新するよう、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 Web アプリが要求を受け取るたびに構成設定が構成ストアで更新されます。
+
+App Configuration では、構成ストアへの呼び出しが多くなりすぎないようにするため、個々の設定が自動的にキャッシュされます。 キャッシュされた設定の値は、構成ストアで変更されたとしても、その有効期限が切れるまで、設定の更新操作は先延ばしされます。 キャッシュの既定の有効期間は 30 秒です。 この有効期間は、必要に応じてオーバーライドできます。
 
 このチュートリアルでは、自分が作成するコードに、構成の動的更新を実装する方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
@@ -34,7 +37,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * アプリ構成ストアへの変更に合わせて構成を更新するようにアプリケーションを設定する。
+> * App Configuration ストアへの変更に合わせて構成を更新するようにアプリケーションを設定する。
 > * アプリケーションのコントローラーに最新の構成を挿入する。
 
 ## <a name="prerequisites"></a>前提条件
@@ -43,9 +46,29 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
+
+## <a name="add-a-sentinel-key"></a>センチネル キーを追加する
+
+"*センチネル キー*" は、構成が変更されたときの通知に使用される特殊なキーです。 センチネル キーの変化をアプリで監視してください。 変更を検出したら、すべての構成の値を更新します。 すべてのキーの変化を監視した場合よりも、このアプローチの方が、アプリから App Configuration に対して行う全体的な要求の数が少なくなります。
+
+1. Azure portal で **[構成エクスプローラー] > [作成] > [キー値]** の順に選択します。
+
+1. **[キー]** に「*TestApp:Settings:Sentinel*」と入力します。 **[値]** には、「1」と入力します。 **[ラベル]** と **[コンテンツの種類]** は空にしておきます。
+
+1. **[適用]** を選択します。
+
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
+1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
+
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
+    ```
+
 1. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを追加して `CreateWebHostBuilder` メソッドを更新します。
+
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -53,19 +76,51 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
+
                 config.AddAzureAppConfiguration(options =>
+                {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .Watch("TestApp:Settings:BackgroundColor")
-                           .Watch("TestApp:Settings:FontColor")
-                           .Watch("TestApp:Settings:Message"));
+                           .ConfigureRefresh(refresh =>
+                                {
+                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                });
+                });
             })
             .UseStartup<Startup>();
     ```
 
-    `.Watch` メソッドの第 2 パラメーターは、ポーリング間隔です。ASP.NET クライアント ライブラリは、この間隔でアプリ構成ストアを照会します。 クライアント ライブラリは、特定の構成設定をチェックして、変更が発生したかどうかを確認します。
-    
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(settings["ConnectionStrings:AppConfig"])
+                               .ConfigureRefresh(refresh =>
+                                    {
+                                        refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                               .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                    });
+                    });
+                })
+            .UseStartup<Startup>());
+    ```
+    ---
+
+    更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `Register` メソッドの `refreshAll` パラメーターは、センチネル キーが変化した場合に、すべての構成値を更新する必要があることを示します。
+
+    また、`SetCacheExpiration` メソッドでは、キャッシュの有効期間として 5 分を指定し、既定値である 30 秒をオーバーライドしています。 これによって、App Configuration への要求数が減少します。
+
     > [!NOTE]
-    > 指定しない場合、`Watch` 拡張メソッドの既定のポーリング間隔は 30 秒です。
+    > テスト目的で、キャッシュの有効期間をもっと短くすることもできます。
+
+    実際に更新操作をトリガーするには、変更が生じたときに構成データを更新するようにアプリケーションの更新ミドルウェアを構成する必要があります。 この点については、後続の手順で説明します。
 
 2. 新しい `Settings` クラスを定義して実装する *Settings.cs* ファイルを追加します。
 
@@ -82,12 +137,38 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     }
     ```
 
-3. *Startup.cs* を開き、構成データを `Settings` クラスにバインドするように `ConfigureServices` メソッドを更新します。
+3. *Startup.cs* を開き、`ConfigureServices` メソッドの `IServiceCollection.Configure<T>` を使用して、構成データを `Settings` クラスにバインドします。
+
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
         services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+    }
+    ```
+    ---
+
+4. `Configure` メソッドに `UseAzureAppConfiguration` ミドルウェアを追加して更新し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新用に登録された構成設定を更新できるようにします。
+
+
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
 
         services.Configure<CookiePolicyOptions>(options =>
         {
@@ -95,9 +176,48 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
             options.MinimumSameSitePolicy = SameSiteMode.None;
         });
 
-        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        app.UseMvc();
     }
     ```
+
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            // Add the following line:
+            app.UseAzureAppConfiguration();
+
+            app.UseHttpsRedirection();
+            
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+    }
+    ```
+    ---
+    
+    ミドルウェアでは、`Program.cs` の `AddAzureAppConfiguration` メソッドで指定されている更新の構成を使って、ASP.NET Core Web アプリによって受信された各要求の更新がトリガーされます。 要求ごとに、更新操作がトリガーされ、登録されている構成設定のキャッシュされた値の有効期間が切れているかどうかが、クライアント ライブラリによって確認されます。 有効期間が過ぎていれば更新されます。
 
 ## <a name="use-the-latest-configuration-data"></a>最新の構成データを使用する
 
@@ -108,6 +228,8 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     ```
 
 2. `HomeController` クラスを更新して、依存関係の挿入を通じて `Settings` を受け取り、その値を利用するようにします。
+
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -130,6 +252,37 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     }
     ```
 
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<Settings> settings)
+        {
+            _logger = logger;
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+
+        // ...
+    }
+    ```
+    ---
+
+
+
 3. Views の Home ディレクトリにある *Index.cshtml* を開いて、内容を次のスクリプトに置き換えます。
 
     ```html
@@ -141,7 +294,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
         }
         h1 {
             color: @ViewData["FontColor"];
-            font-size: @ViewData["FontSize"];
+            font-size: @ViewData["FontSize"]px;
         }
     </style>
     <head>
@@ -159,35 +312,35 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
         dotnet build
 
-2. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
+1. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
         dotnet run
+1. ブラウザー ウィンドウを開いて、`dotnet run` 出力に表示される URL に移動します。
 
-3. ブラウザー ウィンドウを開いて、`http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+    ![クイックスタート アプリをローカルで起動する](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local-before.png)
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
-4. [Azure Portal](https://aka.ms/azconfig/portal) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストア インスタンスを選択します。
+1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
-5. **[Configuration Explorer]\(構成エクスプローラー)\** を選択して次のキーの値を更新します。
-
-    | キー | 値 |
+    | Key | 値 |
     |---|---|
-    | TestAppSettings:BackgroundColor | green |
-    | TestAppSettings:FontColor | lightGray |
-    | TestAppSettings:Message | Data from Azure App Configuration - now with live updates! |
+    | TestApp:Settings:BackgroundColor | green |
+    | TestApp:Settings:FontColor | lightGray |
+    | TestApp:Settings:Message | Data from Azure App Configuration - now with live updates! |
+    | TestApp:Settings:Sentinel | 2 |
 
-6. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
+1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。 変更を反映するために複数回の更新が必要になる場合があります。
 
-    ![クイック スタートのアプリ (ローカルで最新の情報に更新)](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    ![更新されたクイックスタート アプリをローカルで起動する](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure マネージド サービス ID を追加して、App Configuration へのアクセスを効率化し、アプリの資格情報管理を改善しました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
+このチュートリアルでは、App Configuration から動的に構成設定を更新できるように ASP.NET Core Web アプリを設定しました。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [CLI のサンプル](./cli-samples.md)
+> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)

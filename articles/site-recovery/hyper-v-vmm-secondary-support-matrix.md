@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにディザスター リカバリーする場合のサポート マトリックス | Microsoft Docs
+title: サポート マトリックス - Azure Site Recovery を使用したセカンダリ VMM サイトへの Hyper-V ディザスター リカバリー
 description: Azure Site Recovery を使用した、セカンダリ サイトへの VMM クラウド内の Hyper-V VM のレプリケーションのサポートについてまとめます。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360798"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74132955"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -22,7 +21,6 @@ ms.locfileid: "59360798"
 > [!NOTE]
 > Hyper-V ホストが VMM クラウドで管理されているときは、セカンダリ サイトにのみレプリケートできます。
 
-  
 
 ## <a name="host-servers"></a>ホスト サーバー
 
@@ -58,15 +56,15 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 ホスト - NIC チーミング | はい 
 ホスト - VLAN | はい 
 ホスト - IPv4 | はい 
-ホスト - IPv6 | いいえ  
-ゲスト VM - NIC チーミング | いいえ 
+ホスト - IPv6 | いいえ 
+ゲスト VM - NIC チーミング | いいえ
 ゲスト VM - IPv4 | はい
-ゲスト VM - IPv6 | いいえ 
+ゲスト VM - IPv6 | いいえ
 Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 ### <a name="host-storage"></a>ホスト ストレージ
 
@@ -84,25 +82,25 @@ SAN (ISCSI) | はい
 VMDK |  該当なし
 VHD/VHDX | はい (最大 16 個のディスク)
 第 2 世代 VM | はい
-共有クラスター ディスク | いいえ 
-暗号化されたディスク | いいえ 
+共有クラスター ディスク | いいえ
+暗号化されたディスク | いいえ
 UEFI| 該当なし
-NFS | いいえ 
-SMB 3.0 | いいえ 
+NFS | いいえ
+SMB 3.0 | いいえ
 RDM | 該当なし
 1 TB より大きいディスク | はい
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい
-記憶域 | はい
-ディスクのホット アド/削除 | いいえ 
+記憶域スペース | はい
+ディスクのホット アド/削除 | いいえ
 ディスクの除外 | はい
 マルチパス (MPIO) | はい
 
 ## <a name="vaults"></a>資格情報コンテナー
 
-**アクション** | **サポートされています**
+**操作** | **サポートされています**
 --- | --- 
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 |  いいえ 
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ 
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 |  いいえ
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery プロバイダー
 
@@ -114,7 +112,7 @@ RDM | 該当なし
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](tutorial-vmm-to-vmm.md)
 

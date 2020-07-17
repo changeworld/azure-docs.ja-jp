@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160759"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181076"
 ---
 ## <a name="set-up-the-development-environment"></a>開発環境を設定する
 
@@ -23,13 +23,13 @@ ms.locfileid: "66160759"
 
 1. Visual Studio を開きます。
 
-1. メイン メニューから、**[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
+1. メイン メニューから、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
 
-1. **[新しいプロジェクト]** ダイアログ ボックスで、**[Web]** > **[ASP.NET Web アプリケーション (.NET Framework)]** の順に選択します。 **[名前]** フィールドで、**StorageAspNet** を指定します。 **[OK]** を選択します。
+1. **[新しいプロジェクト]** ダイアログ ボックスで、 **[Web]**  >  **[ASP.NET Web アプリケーション (.NET Framework)]** の順に選択します。 **[名前]** フィールドで、**StorageAspNet** を指定します。 **[OK]** を選択します。
 
     ![[新しいプロジェクト] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
-1. **[新しい ASP.NET Web アプリケーション]** ダイアログ ボックスで、**[MVC]** を選択し、**[OK]** を選択します。
+1. **[新しい ASP.NET Web アプリケーション]** ダイアログ ボックスで、 **[MVC]** を選択し、 **[OK]** を選択します。
 
     ![[新しい ASP.NET Web アプリケーション] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
 
@@ -37,15 +37,15 @@ ms.locfileid: "66160759"
 
 1. **Solution Explorer** で、プロジェクト名を右クリックします。
 
-1. コンテキスト メニューから、**[追加]** > **[接続済みサービス]** の順に選択します。
+1. コンテキスト メニューから、 **[追加]**  >  **[接続済みサービス]** の順に選択します。
 
-1. **[接続済みサービス]** ダイアログ ボックスで、**[Azure Storage を使用したクラウド ストレージ]** を選択します。
+1. **[接続済みサービス]** ダイアログ ボックスで、 **[Azure Storage を使用したクラウド ストレージ]** を選択します。
 
     ![[接続済みサービス] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-1. **[Azure Storage]** ダイアログ ボックスで、このチュートリアルで使用する Azure ストレージ アカウントを選択します。 新しい Azure ストレージ アカウントを作成するには、**[新しいストレージ アカウントの作成]** を選択し、フォームに入力します。 既存のストレージ アカウントを選択するか新しいストレージ アカウントを作成したら、**[追加]** を選択します。 Visual Studio によって Azure Storage 用の NuGet パッケージと **Web.config** へのストレージ接続文字列がインストールされます。
+1. **[Azure Storage]** ダイアログ ボックスで、このチュートリアルで使用する Azure ストレージ アカウントを選択します。 新しい Azure ストレージ アカウントを作成するには、 **[新しいストレージ アカウントの作成]** を選択し、フォームに入力します。 既存のストレージ アカウントを選択するか新しいストレージ アカウントを作成したら、 **[追加]** を選択します。 Visual Studio によって Azure Storage 用の NuGet パッケージと **Web.config** へのストレージ接続文字列がインストールされます。
 
-1. **ソリューション エクスプローラー**で **[依存関係]** を右クリックし、**[NuGet パッケージの管理]** を選択して、NuGet パッケージ参照を Microsoft.Azure.ConfigurationManager の最新バージョンに追加します。
+1. **ソリューション エクスプローラー**で **[依存関係]** を右クリックし、 **[NuGet パッケージの管理]** を選択して、NuGet パッケージ参照を Microsoft.Azure.ConfigurationManager の最新バージョンに追加します。
 
 > [!TIP]
 > [Azure ポータル](https://portal.azure.com)でのストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)」を参照してください。

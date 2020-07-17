@@ -1,20 +1,18 @@
 ---
 title: (非推奨) アプリケーションまたはユーザー固有の Marathon サービス
 description: アプリケーションまたはユーザー固有の Marathon サービスの作成
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 423dc7f62806f774a5ec4855faa8be9001292773
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996118"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76277714"
 ---
 # <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(非推奨) アプリケーションまたはユーザー固有の Marathon サービスの作成
 

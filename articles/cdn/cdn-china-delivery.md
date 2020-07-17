@@ -3,24 +3,24 @@ title: Azure CDN を使用した中国へのコンテンツ配信 | Microsoft Do
 description: Azure Content Delivery Network (CDN) を使用して、中国のユーザーにコンテンツを配信する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ce136a341809b1a485e86337f428b4685eba22f7
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093548"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81254106"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Azure CDN を使用した中国へのコンテンツ配信
 
@@ -53,7 +53,7 @@ Azure CDN グローバルと Azure CDN China には、次の機能がありま�
      - [ドキュメント](https://docs.azure.cn/en-us/cdn/)
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CDN China に関する詳細については、以下を参照してください。
 
@@ -63,7 +63,7 @@ Azure CDN China に関する詳細については、以下を参照してくだ�
 
 - [Azure Content Delivery Network の使用](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [中国での Azure サービスの利用可能性](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
+- [中国での Azure サービスの利用可能性](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

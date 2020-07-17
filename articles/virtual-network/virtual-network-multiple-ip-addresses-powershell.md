@@ -3,24 +3,22 @@ title: Azure 仮想マシンの複数の IP アドレス - PowerShell | Microsof
 description: PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。 | Resource Manager
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud;annahar
-ms.openlocfilehash: ee6a2d36d88d9a80ba7e64819344f6cca56e47cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: allensu
+ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730429"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147792"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -32,7 +30,7 @@ ms.locfileid: "64730429"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
 以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ VM を作成する方法を示しています。 変数値は実際の実装に合わせて変更してください。
 
@@ -96,7 +94,7 @@ ms.locfileid: "64730429"
 
 6. NIC のプライマリ IP 構成を定義します。 以前に定義した値を使用しなかった場合は、10.0.0.4 を作成済みのサブネットの有効なアドレスに変更します。 静的 IP アドレスを割り当てる前に、そのアドレスがまだ使用されていないことを確認しておくことをお勧めします。 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` コマンドを入力します。 このアドレスを使用できる場合、出力で *True* が返されます。 使用できない場合は、出力で *False* が返され、使用可能なアドレスの一覧が返されます。 
 
-    次のコマンドで、**\<replace-with-your-unique-name> を使用する一意の DNS 名に置き換えます。** この名前は、Azure リージョン内のすべてのパブリック IP アドレス間で一意である必要があります。 これは省略可能なパラメーターです。 パブリック IP アドレスを使用して VM に接続するだけである場合は削除してかまいません。
+    次のコマンドで、 **\<replace-with-your-unique-name> を使用する一意の DNS 名に置き換えます。** この名前は、Azure リージョン内のすべてのパブリック IP アドレス間で一意である必要があります。 これは省略可能なパラメーターです。 パブリック IP アドレスを使用して VM に接続するだけである場合は削除してかまいません。
 
     ```powershell
     
@@ -121,7 +119,7 @@ ms.locfileid: "64730429"
     NIC に複数の IP 構成を割り当てるときは、1 つの構成を *-Primary* として割り当てる必要があります。
 
     > [!NOTE]
-    > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+    > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 
 7. NIC のセカンダリ IP 構成を定義します。 構成は、必要に応じて追加または削除できます。 各 IP 構成には、プライベート IP アドレスが割り当てられている必要があります。 必要に応じて、各構成にパブリック IP アドレスを 1 つ割り当てることもできます。
 
@@ -194,7 +192,7 @@ ms.locfileid: "64730429"
 
 10. この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」に記載されたご使用のオペレーティング システム用の手順に従って、プライベート IP アドレスを VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
-## <a name="add"></a>VM に IP アドレスを追加する
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
 プライベート IP アドレスとパブリック IP アドレスを Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 次のセクションの例では、この記事の[シナリオ](#scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
@@ -260,7 +258,7 @@ ms.locfileid: "64730429"
    パブリック IP アドレスを追加するには、新しい IP 構成または既存の IP 構成にパブリック IP アドレス リソースを関連付けます。 必要に応じて、以下のいずれかのセクションの手順を実行します。
 
    > [!NOTE]
-   > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+   > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
    >
 
    **パブリック IP アドレス リソースを新しい IP 構成に関連付ける**

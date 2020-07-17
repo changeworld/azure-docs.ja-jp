@@ -1,23 +1,23 @@
 ---
-title: クイック スタート:C# でカスタム リストと照らして画像を確認する - Content Moderator
-titlesuffix: Azure Cognitive Services
+title: C# でカスタム リストと照らして画像を確認する - Content Moderator
+titleSuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム画像リストと照らして画像をモデレートする方法。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
-ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881793"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72931763"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>クイック スタート:C# でカスタム画像リストを使用してモデレートする
+# <a name="moderate-with-custom-image-lists-in-c"></a>C# でカスタム画像リストを使用してモデレートする
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
 - カスタム画像リストを作成する
@@ -32,7 +32,7 @@ ms.locfileid: "55881793"
 > [!NOTE]
 > **画像リスト数は 5 個**、各リストの**画像数は 10,000 個**という上限があります。
 
-このクイック スタートのコンソール アプリケーションは、Image List API で実行できるタスクの一部をシミュレートします。
+このガイドのコンソール アプリケーションでは、Image List API で実行できるタスクの一部をシミュレートします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
@@ -62,8 +62,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -73,10 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
 
-次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
-
-> [!IMPORTANT]
-> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。 エンドポイント URL とサブスクリプション キーの値を使用して、`AzureEndpoint` および `CMSubscriptionKey` フィールドを更新します。 これらは、Azure portal 内のリソースの **[クイック スタート]** タブで確認できます。
 
 ```csharp
 /// <summary>
@@ -88,16 +84,9 @@ using System.Threading;
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
+    /// The base URL for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -116,7 +105,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -303,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>リストに画像のコレクションを追加するメソッドを作成する
 
-**Program** クラスに次のメソッドを追加します。 このクイック スタートでは、リスト内の画像にタグを適用する方法を説明しません。 
+**Program** クラスに次のメソッドを追加します。 このガイドでは、リスト内の画像にタグを適用する方法は説明しません。 
 
 ```csharp
 /// <summary>
@@ -598,7 +587,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>画像リストの使用をシミュレートするコードを追加する
 
-次のコードを **Main** メソッドに追加する このコードは、リストを定義および管理するときに実行する多くの操作をシミュレートするだけでなく、リストを使用して画像をスクリーニングします。 ログ記録機能を使用すると、SDK から Content Moderator サービスへの呼び出しによって生成された応答オブジェクトを確認できます。
+次のコードを **Main** メソッドに追加します。 このコードは、リストを定義および管理するときに実行する多くの操作をシミュレートするだけでなく、リストを使用して画像をスクリーニングします。 ログ記録機能を使用すると、SDK から Content Moderator サービスへの呼び出しによって生成された応答オブジェクトを確認できます。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -668,7 +657,7 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 リスト ID と画像コンテンツ ID は、アプリケーションを実行するたびに変わります。
 プログラムからは、次のようなログ ファイル出力が書き込まれます。
@@ -1089,6 +1078,6 @@ Response:
 []
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

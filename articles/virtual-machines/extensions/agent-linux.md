@@ -1,27 +1,26 @@
 ---
-title: Azure Linux VM エージェントの概要 | Microsoft Docs
+title: Azure Linux VM エージェントの概要
 description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011600"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74073862"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -107,11 +106,11 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 ソースからカスタムの場所へのインストールやプレフィックスなどの高度なインストール オプションについては、[GitHub の Azure Linux Agent リポジトリ](https://github.com/Azure/WALinuxAgent)にあるドキュメントを参照してください。
 
 ## <a name="command-line-options"></a>コマンド ライン オプション
-### <a name="flags"></a>フラグ
-* verbose: 指定したコマンドのメッセージの詳細度を上げます
-* force: 一部のコマンドの対話形式の確認をスキップします
+### <a name="flags"></a>Flags
+* verbose: 指定したコマンドのメッセージの詳細度を上げます。
+* force: 一部のコマンドの対話形式の確認をスキップします。
 
-### <a name="commands"></a>command
+### <a name="commands"></a>コマンド
 * help: サポートされているコマンドとフラグを一覧表示します。
 * deprovision: システムをクリーンアップし、再プロビジョニングに適した状態にしようとします。 次の項目を削除します｡
   
@@ -127,8 +126,8 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 > 
 
 * deprovision+user: -deprovision の場合のすべての対象 (上記参照) を実行するほか、前回プロビジョニングされたユーザー アカウント (/var/lib/waagent から取得) および関連付けられたデータも削除します。 このパラメーターは、Azure で前回プロビジョニングされたイメージのプロビジョニングを解除するため、取得して再利用できます。
-* version: waagent のバージョンを表示します
-* serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールになるように構成します。 これにより、カーネルの起動ログがシリアル ポートに送信され、デバッグに使用できるようになります。
+* version: waagent のバージョンを表示します。
+* serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールに なるように構成します。 これにより、カーネルの起動ログがシリアル ポートに送信され、デバッグに使用できるようになります。
 * daemon: プラットフォームとの相互動作を管理するデーモンとして waagent を実行します。 この引数には waagent init スクリプト内で waagent が指定されます。
 * start: バックグラウンド プロセスとして waagent を実行します
 
@@ -344,6 +343,6 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
 * 詳しくは､プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するための次のリソースを参照してください。
   
-  * [Ubuntu Wiki: スワップ パーティションの構成](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Azure の仮想マシンにカスタム データを挿入する](../windows/classic/inject-custom-data.md)
 

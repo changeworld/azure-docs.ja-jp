@@ -1,25 +1,27 @@
 ---
-title: Azure Data Factory を使って機械学習モデルを更新する | Microsoft Docs
+title: Azure Data Factory を使用して機械学習モデルを更新する
 description: Azure Data Factory と機械学習を使用して予測パイプラインを作成する方法について説明します
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shlo
-ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164461"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81409072"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。
 
 ## <a name="overview"></a>概要
@@ -60,7 +62,7 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 | プロパティ                      | 説明                              | 必須 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | パイプラインのアクティビティの名前。     | はい      |
-| description                   | アクティビティの動作を説明するテキスト。  | いいえ        |
+| description                   | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | はい      |
 | linkedServiceName             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | はい      |
 | trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | はい      |
@@ -128,7 +130,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 次のシナリオで詳細を説明します。 このシナリオでは、Azure Data Factory パイプラインから Azure Machine Learning Studio モデルの再トレーニングと更新を行う例を示します。
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル:Azure Machine Learning モデルの再トレーニングと更新
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>サンプル: Azure Machine Learning モデルの再トレーニングと更新
 
 このセクションでは、**Azure Machine Learning Studio バッチ実行アクティビティ**を使用してモデルの再トレーニングを行うサンプル パイプラインを示します。 このパイプラインでは、**Azure Machine Learning Studio 更新リソース アクティビティ**を使用したスコア付け Web サービスのモデルの更新も行います。 このセクションでは、すべてのリンクされたサービス、データ セット、およびパイプラインの JSON スニペットも提供されます。
 
@@ -267,7 +269,7 @@ Azure Storage には次のデータが格納されています。
     }
 }
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

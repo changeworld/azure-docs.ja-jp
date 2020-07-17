@@ -1,5 +1,5 @@
 ---
-title: Azure へのオンプレミスのディザスター リカバリーのために Azure Site Recovery でネットワーク インターフェイスを管理する | Microsoft Docs
+title: Azure Site Recovery を使用してオンプレミスのディザスター リカバリーのネットワーク アダプターを管理する
 description: Azure Site Recovery を使用して、Azure へのオンプレミスのディザスター リカバリーのためにネットワーク インターフェイスを管理する方法について説明します
 author: mayurigupta13
 manager: rochakm
@@ -7,14 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791869"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73954600"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>オンプレミスのディザスター リカバリーから Azure への仮想マシンのネットワーク インターフェイスを管理する
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure へのオンプレミスのディザスター リカバリーの VM のネットワーク インターフェイスを管理する
+
 Azure 内の仮想マシン (VM) には少なくとも 1 つのネットワーク インターフェイスがアタッチされている必要があります。 VM のサイズが対応できるだけの数のネットワーク インターフェイスをアタッチすることができます。
 
 既定では、Azure 仮想マシンにアタッチされた最初のネットワーク インターフェイスがプライマリ ネットワーク インターフェイスとして定義されます。 仮想マシン内の他のネットワーク インターフェイスはすべて、セカンダリ ネットワーク インターフェイスになります。 また既定では、仮想マシンからのすべての送信トラフィックは、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられた IP アドレスで送信されます。
@@ -45,7 +46,7 @@ Virtual Machine Manager クラウドの場合、ネットワーク マッピン�
 
 - **プライマリ**ネットワーク インターフェイスは、フェールオーバーで必要となります。
 - 他のネットワーク インターフェイス (存在する場合) はすべて、**セカンダリ** ネットワーク インターフェイスになります。
-- フェールオーバー時の作成からネットワーク インターフェイスを除外するには、**[使用しない]** を選択します。
+- フェールオーバー時の作成からネットワーク インターフェイスを除外するには、 **[使用しない]** を選択します。
 
 既定では、レプリケーションを有効にする場合、オンプレミス サーバー上で検出されたすべてのネットワーク インターフェイスが Site Recovery によって選択されます。 1 つは**プライマリ**としてマークされ、その他はすべて**セカンダリ**としてマークされます。 オンプレミス サーバー上に追加されるその後のインターフェイスは既定では **[使用しない]** とマークされます。 ネットワーク インターフェイスをさらに追加する場合は、必要なネットワーク インターフェイスをすべて収容するのに適した Azure 仮想マシン ターゲット サイズが選択されていることを確認します。
 
@@ -61,11 +62,11 @@ Virtual Machine Manager クラウドの場合、ネットワーク マッピン�
 
     ![ネットワーク インターフェイスの設定](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
 
-4. **[OK]** を選択して編集を終了し、**[コンピューティングとネットワーク]** ウィンドウに戻ります。
+4. **[OK]** を選択して編集を終了し、 **[コンピューティングとネットワーク]** ウィンドウに戻ります。
 
 5. 他のネットワーク インターフェイスについて手順 1 から手順 4 までを繰り返します。
 
 6. **[保存]** を選択してすべての変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
   Azure 仮想マシンのネットワーク インターフェイスの詳細については、[こちら](../virtual-network/virtual-network-network-interface-vm.md)を参照してください。

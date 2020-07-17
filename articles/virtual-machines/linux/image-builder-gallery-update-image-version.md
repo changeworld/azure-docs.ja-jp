@@ -1,24 +1,25 @@
 ---
-title: Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する (プレビュー)
-description: Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成します。
+title: Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する (プレビュー)
+description: Azure Image Builder を使用して、既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: 31ef53abcf9b416500ee70e42cc3cbd12cb11f35
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.subservice: imaging
+ms.reviewer: danis
+ms.openlocfilehash: 95ad63b7bb283a459cbdeb05baf01046ce120de1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157877"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792464"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>更新:Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>プレビュー:Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 
 この記事では、[共有イメージ ギャラリー](shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
-サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) です。 
+サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) です。 
 
 
 ## <a name="register-the-features"></a>機能の登録
@@ -55,10 +56,10 @@ az provider register -n Microsoft.Storage
 
 [イメージの作成と共有イメージ ギャラリーへの配布](image-builder-gallery.md)に関するページを使用して共有イメージ ギャラリーを作成した場合は、必要とする変数のいくつかが既に作成されています。 それ以外の場合は、この例で使用するいくつかの変数を設定してください。
 
-プレビューの場合、Image Builder は、ソース マネージド イメージと同じリソース グループ内でのソースカスタム イメージの作成だけをサポートします。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
+プレビューの Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
 
 
-```azurecli-interactive
+```console
 # Resource group name 
 sigResourceGroup=ibLinuxGalleryRG
 # Gallery location 
@@ -75,13 +76,13 @@ runOutputName=aibSIGLinuxUpdate
 
 サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
 
-```azurecli-interactive
+```console
 subscriptionID=<Subscription ID>
 ```
 
 更新するイメージ バージョンを取得します。
 
-```
+```azurecli
 sigDefImgVersionId=$(az sig image-version list \
    -g $sigResourceGroup \
    --gallery-name $sigName \
@@ -102,12 +103,12 @@ az role assignment create \
 
 
 ## <a name="modify-helloimage-example"></a>helloImage の例の変更
-.json ファイル [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) と [Image Builder テンプレートのリファレンス](image-builder-json.md)を開いて、使用しようとしている例を確認できます。 
+.json ファイル [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) と [Image Builder テンプレートのリファレンス](image-builder-json.md)を開いて、使用しようとしている例を確認できます。 
 
 
 .json の例をダウンロードし、変数を使用して構成します。 
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json -o helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIGfromSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIGfromSIG.json
@@ -142,7 +143,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-イメージが構築されレプリケーションされるまで待ってから、次の手順に進みます。
+イメージがビルドされてレプリケートされるまで待ってから、次の手順に進みます。
 
 
 ## <a name="create-the-vm"></a>VM の作成
@@ -159,13 +160,13 @@ az vm create \
 
 VM のパブリック IP アドレスを使用して VM への SSH 接続を作成します。
 
-```azurecli-interactive
+```console
 ssh azureuser@<pubIp>
 ```
 
 SSH 接続が確立されるとすぐに、イメージが「当日のメッセージ」でカスタマイズされたことがわかります。
 
-```console
+```output
 *******************************************************
 **            This VM was built from the:            **
 **      !! AZURE VM IMAGE BUILDER Custom Image !!    **
@@ -182,6 +183,6 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使用されている .json ファイルのコンポーネントの詳細については、[Image Builder テンプレートのリファレンス](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。

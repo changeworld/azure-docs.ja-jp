@@ -1,27 +1,20 @@
 ---
 title: Log Analytics のデータ セキュリティ | Microsoft Docs
 description: Log Analytics でプライバシーを保護し、データをセキュリティで保護する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 03/04/2019
-ms.author: magoedte
-ms.openlocfilehash: dd4efcd2f1d4cbf497ad1fde6936088513cb5fd0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312853"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80333356"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
-このドキュメントでは、[Azure セキュリティ センター](../../security/security-microsoft-trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
+このドキュメントでは、[Azure Security Center](../../security/fundamentals/trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
 
 この記事は、Log Analytics によるデータの収集、処理、および保護の方法について説明します。 エージェントを使用して Web サービスに接続し、System Center Operations Manager を使用して運用データを収集し、Azure Diagnostics からデータを取得して Log Analytics に使用することができます。 
 
@@ -73,14 +66,14 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 
 次のテーブルでは、データの種類の例を示しています。
 
-| **データの種類** | **フィールド** |
+| **データの種類** | **Fields** |
 | --- | --- |
 | アラート: |アラート名、アラートの説明、BaseManagedEntityId、問題 ID、IsMonitorAlert、RuleId、ResolutionState、優先度、重大度、カテゴリ、所有者、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
 | 構成 |CustomerID、AgentID、EntityID、ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
 | Event |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、番号、カテゴリ、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注:** カスタム フィールドを使ってイベントを Windows のイベント ログに書き込むと、それらのイベントは Log Analytics によって収集されます。 |
 | Metadata |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、 NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | パフォーマンス |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
-| 状態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
+| State |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理的なセキュリティ
 Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む Log Analytics サービスへの責任がなくなったユーザーに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://azure.microsoft.com/global-infrastructure/)を参照してください。
@@ -110,7 +103,7 @@ Log Analytics には、すべての Microsoft サービスが準拠するイン�
 Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 
 ## <a name="compliance"></a>コンプライアンス
-Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/) と [Microsoft Security Center のコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
@@ -131,7 +124,7 @@ Azure Log Analytics は、次の要件を満たしています。
 * [HIPAA および HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) (HIPAA Business Associate Agreement を締結している企業向け)
 * Windows の一般的なエンジニアリング条件
 * Microsoft の信頼できるコンピューティング
-* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
+* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft Security Center のコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
 
 > [!NOTE]
 > Log Analytics は、一部の認定および認証において、以前の名前である *Operational Insights* として表示されています。
@@ -158,7 +151,7 @@ Operations Manager の場合、Operations Manager 管理グループは、Log An
 各エージェントが Log Analytics のデータを収集します。 収集されるデータの種類は、使用するソリューションの種類によって異なります。 データ収集の概要については「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)」を参照してください。 また、ほぼすべてのソリューションについて、より詳細な収集情報も提供されています。 ソリューションは、定義済みビュー、ログ検索クエリ、データの収集ルール、処理ロジックのバンドルになります。 Log Analytics を使用してソリューションをインポートできるのは管理者のみです。 ソリューションはインポート後、Operations Manager 管理サーバー (使用する場合) に移動され、選択した任意のエージェントに移動されます。 その後、エージェントはデータを収集します。
 
 ## <a name="2-send-data-from-agents"></a>2.エージェントからデータを送信する
-登録キーを使用してすべての種類のエージェントを登録すると、証明書ベースの認証とポート 443 による SSL が使用され、エージェントと Log Analytics サービス間にセキュリティで保護された接続が確立します。 Log Analytics では、キーの生成と管理にシークレット ストアを使用します。 秘密キーは 90 日ごとに交換されて Azure に格納され、厳密な規制およびコンプライアンス手順に従う Azure オペレーターによって管理されます。
+登録キーを使用してすべての種類のエージェントを登録すると、証明書ベースの認証とポート 443 による TLS が使用され、エージェントと Log Analytics サービス間にセキュリティで保護された接続が確立します。 Log Analytics では、キーの生成と管理にシークレット ストアを使用します。 秘密キーは 90 日ごとに交換されて Azure に格納され、厳密な規制およびコンプライアンス手順に従う Azure オペレーターによって管理されます。
 
 Operations Manager では、Log Analytics ワークスペースに登録されている管理グループは、Operations Manager 管理サーバーとのセキュアな HTTPS 接続を確立します。
 
@@ -168,9 +161,9 @@ Log Analytics に統合されている Operations Manager 管理グループに�
 
 Windows または管理サーバー エージェントのキャッシュされたデータは、オペレーティング システムの資格情報ストアによって保護されています。 2 時間が経過してもサービスがデータを処理できない場合、エージェントはデータをキューに格納します。 キューがいっぱいになると、エージェントはパフォーマンス データから順にデータ型を削除し始めます。 エージェントのキューの上限はレジストリ キーであるため、必要に応じて変更できます。 収集されたデータは圧縮され、負荷を追加しないように Operations Manager 管理グループ データベースをバイパスして、サービスに送信されます。 収集したデータが送信されると、データはキャッシュから削除されます。
 
-前述のように、管理サーバーまたは直接接続エージェントからのデータが SSL 経由で Microsoft Azure データセンターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
+前述のように、管理サーバーまたは直接接続エージェントからのデータが TLS 経由で Microsoft Azure データセンターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>手順 3.Log Analytics サービスでデータを受信して処理する
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データは、リージョンの Azure Event Hub に格納され、データは最終的に保存されます。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、生データを処理してデータベースに取り込みます。
 
 データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料*プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは暗号化されます。
@@ -178,7 +171,7 @@ Log Analytics サービスでは、Azure 認証で証明書とデータの整合
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 Log Analytics ワークスペースにアクセスするには、設定済みの組織アカウントまたは Microsoft アカウントを使用して Azure Portal にサインインします。 ポータルと Log Analytics サービス間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、Azure Portal セッションが終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Log Analytics で Azure VM のデータを収集する方法については、[Azure VM のクイック スタート](../../azure-monitor/learn/quick-collect-azurevm.md)に関するページをご覧ください。  
 
 *  環境内の物理または仮想の Windows または Linux コンピューターからデータを収集する場合は、[Linux コンピューターのクイック スタート](../../azure-monitor/learn/quick-collect-linux-computer.md)または [Windows コンピューターのクイック スタート](../../azure-monitor/learn/quick-collect-windows-computer.md)に関するページをご覧ください

@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 8fe22f95c1dfc5171c41d6b3f0e00760fd9c9d69
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: c94e7d1fb5c42a0246b38c88eb097c75ec8ca4e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149198"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74789833"
 ---
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
 * [Facebook](https://www.facebook.com/) アカウント 
 
 ロジック アプリで Facebook アカウントを使用するには、Facebook アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 

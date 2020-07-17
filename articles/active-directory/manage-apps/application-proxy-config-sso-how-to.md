@@ -1,5 +1,5 @@
 ---
-title: アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法 | Microsoft Docs
+title: アプリケーション プロキシ アプリに対するシングル サインオンを構成する方法
 description: アプリケーション プロキシ アプリケーションに対するシングル サインオンを迅速に構成する方法
 services: active-directory
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.date: 03/12/2019
 ms.author: mimart
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f26b28b34a569673b397fa4700c5332c3550500f
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 589b3e51f27147f0a0432b61c22a024c202e388b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825865"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76712018"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法
 
 シングル サインオン (SSO) を導入すると、ユーザーに何度も認証することなく、アプリケーションにアクセスできるようになります。 クラウド内で Azure Active Directory に対して 1 回認証を行えば、それ以降アプリケーションから追加で認証要求があったとしても、サービスまたはコネクタがユーザーに代わって本人性を証明します。
 
 ## <a name="how-to-configure-single-sign-on"></a>シングル サインオンの構成方法
-SSO を構成するにはまず、Azure Active Directory で事前認証を行うようにアプリケーションを構成する必要があります。 この構成を行うには、**[Azure Active Directory]** -&gt; **[エンタープライズ アプリケーション]** -&gt; **[すべてのアプリケーション]** -&gt; <目的のアプリケーション> **-&gt; [アプリケーション プロキシ]** の順に移動します。 このページに [事前認証] フィールドがあるので、それを [Azure Active Directory] に設定してください。 
+SSO を構成するにはまず、Azure Active Directory で事前認証を行うようにアプリケーションを構成する必要があります。 この構成を行うには、 **[Azure Active Directory]**  -&gt; **[エンタープライズ アプリケーション]**  -&gt; **[すべてのアプリケーション]**  -&gt; <目的のアプリケーション> **-&gt; [アプリケーション プロキシ]** の順に移動します。 このページに [事前認証] フィールドがあるので、それを [Azure Active Directory] に設定してください。 
 
 個々の事前認証方法の詳細については、[アプリの発行に関するドキュメント](application-proxy-add-on-premises-application.md)の手順 4 を参照してください。
 
@@ -37,11 +37,11 @@ SSO を構成するにはまず、Azure Active Directory で事前認証を行�
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>アプリケーション プロキシ アプリケーションに使用するシングル サインオン モードの構成
 具体的なシングル サインオンの種類を構成します。 サインオン方法は、バックエンド アプリケーションで使用される認証の種類に基づいて分類されます。 アプリケーション プロキシ アプリケーションは、次の 3 種類のサインオンに対応します。
 
--   **[パスワード ベースのサインオン]**: サインオンにユーザー名フィールドとパスワード フィールドを使うアプリケーションには、パスワード ベースのサインオンを使用できます。 構成手順については、[Azure AD ギャラリー アプリケーションのパスワード シングル サインオンの構成](configure-password-single-sign-on-gallery-applications.md)に関するページに記載されています。
+-   **[パスワード ベースのサインオン]** : サインオンにユーザー名フィールドとパスワード フィールドを使うアプリケーションには、パスワード ベースのサインオンを使用できます。 構成手順については、[Azure AD ギャラリー アプリケーションのパスワード シングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)に関するページに記載されています。
 
--   **[統合 Windows 認証]**: 統合 Windows 認証 (IWA) を使うアプリケーションでは、Kerberos の制約付き委任 (KCD) を通じてシングル サインオンが実現されます。 このメソッドは、Active Directory において、見かけ上ユーザーとして振る舞い、本人に代わってトークンを送受信する権限をアプリケーション プロキシ コネクタに与えます。 KCD の構成の詳細については、[KCD によるシングル サインオンに関するドキュメント](application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
+-   **[統合 Windows 認証]** : 統合 Windows 認証 (IWA) を使うアプリケーションでは、Kerberos の制約付き委任 (KCD) を通じてシングル サインオンが実現されます。 このメソッドは、Active Directory において、見かけ上ユーザーとして振る舞い、本人に代わってトークンを送受信する権限をアプリケーション プロキシ コネクタに与えます。 KCD の構成の詳細については、[KCD によるシングル サインオンに関するドキュメント](application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
 
--   **[ヘッダーベースのサインオン]**: ヘッダーベースのサインオンはパートナーシップを通じて実現されるものであり、特別な構成は不要です。 パートナーシップに関する詳しい情報と、認証にヘッダーを使うアプリケーションに対してシングル サインオンを構成する具体的な手順については、[PingAccess for Azure AD のドキュメント](application-proxy-configure-single-sign-on-with-ping-access.md)を参照してください。
+-   **[ヘッダーベースのサインオン]** : ヘッダーベースのサインオンはパートナーシップを通じて実現されるものであり、特別な構成は不要です。 パートナーシップに関する詳しい情報と、認証にヘッダーを使うアプリケーションに対してシングル サインオンを構成する具体的な手順については、[PingAccess for Azure AD のドキュメント](application-proxy-configure-single-sign-on-with-ping-access.md)を参照してください。
 
 -   **SAML によるシングル サインオン**:SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 SAML ベースのシングル サインオンでは、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。 SAML によるシングル サインオンの設定の詳細については、[アプリケーション プロキシを使用したシングル サインオンの場合の SAML](application-proxy-configure-single-sign-on-on-premises-apps.md) に関するページを参照してください。
 
@@ -51,7 +51,7 @@ SSO を構成するにはまず、Azure Active Directory で事前認証を行�
 
 管理者はこのオプションを選択することで、ユーザーがアプリケーションにアクセスしたときに最初に目にする、アプリケーションへのリンクを作成することができます。 たとえば、Active Directory Federation Services 2.0 を使用してユーザーを認証するように構成されたアプリケーションがある場合、管理者は、[リンクされたサインオン] オプションを使用して、アクセス パネルにそのアプリケーションへのリンクを作成することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [アプリケーション プロキシを使用したシングル サインオンでのパスワードの保管](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [アプリケーション プロキシを使用したシングル サインオンでの Kerberos の制約付き委任](application-proxy-configure-single-sign-on-with-kcd.md)
 - [アプリケーション プロキシを使用したシングル サインオンでのヘッダーベースの認証](application-proxy-configure-single-sign-on-with-ping-access.md) 

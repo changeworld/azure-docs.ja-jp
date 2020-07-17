@@ -1,21 +1,19 @@
 ---
-title: 2016-06-01 スキーマへの更新 - Azure Logic Apps | Microsoft Docs
+title: スキーマの更新 (2016 年 6 月 1 日)
 description: Azure Logic Apps でロジック アプリ定義のために更新されたスキーマ バージョン 2016-06-01
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 6df29543df2b7b2609582f7e8dd9a0629182760c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849783"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74792885"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
 
@@ -105,7 +103,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 1. Azure Portal でロジック アプリを開きます。
 
-2. **[概要]** に移動します。 ロジック アプリのツール バーで、**[スキーマの更新]** を選択します。
+2. **[概要]** に移動します。 ロジック アプリのツール バーで、 **[スキーマの更新]** を選択します。
    
    ![[スキーマの更新] を選択][1]
    
@@ -123,7 +121,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
    > [!NOTE]
    > 手動トリガーまたは要求トリガーを使用している場合、新しいロジック アプリではコールバック URL が変化します。 新しい URL をテストして、エンド ツー エンドのエクスペリエンスを確認してください。 以前の URL をそのまま維持する場合には、既存のロジック アプリを複製しておきます。
 
-6. *(省略可能)* 以前のロジック アプリを新しいスキーマ バージョンで上書きするには、ツール バーの **[Clone (複製)]** (**[スキーマの更新]** の横) を使用します。 このステップは、ロジック アプリのリソース ID または要求トリガー URL をそのまま維持したい場合に必要となります。
+6. *(省略可能)* 以前のロジック アプリを新しいスキーマ バージョンで上書きするには、ツール バーの **[Clone (複製)]** ( **[スキーマの更新]** の横) を使用します。 このステップは、ロジック アプリのリソース ID または要求トリガー URL をそのまま維持したい場合に必要となります。
 
 ## <a name="upgrade-tool-notes"></a>アップグレード ツールの注意事項
 
@@ -155,7 +153,7 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ### <a name="new-trackedproperties-for-actions"></a>アクションの新しい trackedProperties
 
-アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 例: 
+アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 次に例を示します。
 
 ``` json
 {
@@ -174,9 +172,10 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 * [ロジック アプリのワークフロー定義の作成](../logic-apps/logic-apps-author-definitions.md)
-* [ロジック アプリのデプロイ テンプレートの作成](../logic-apps/logic-apps-create-deploy-template.md)
+* [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

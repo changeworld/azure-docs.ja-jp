@@ -1,24 +1,21 @@
 ---
 title: Azure AD への接続時に MVC プロジェクトに行われる変更
 description: Visual Studio 接続済みサービスを使用して Azure AD に接続するときに MVC プロジェクトで何が起こるかについて説明します。
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413996"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80886111"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
@@ -26,15 +23,15 @@ ms.locfileid: "65413996"
 > - [作業の開始](vs-active-directory-dotnet-getting-started.md)
 > - [変更内容](vs-active-directory-dotnet-what-happened.md)
 
-この記事では、[Visual Studio を使用して Azure Active Directory 接続サービスを](vs-active-directory-add-connected-service.md)追加したときに、ASP.NET MVC プロジェクトに対して行われる正確な変更内容を説明します。
+この記事では、[Visual Studio を使用して Azure Active Directory 接続サービス](vs-active-directory-add-connected-service.md)を追加したときに、ASP.NET MVC プロジェクトに対して行われる正確な変更内容を説明します。
 
 接続済みサービスを使用する方法については、[使用開始](vs-active-directory-dotnet-getting-started.md)に関する記事をご覧ください。
 
 ## <a name="added-references"></a>追加された参照
 
-プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
+プロジェクト ファイル (.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -47,9 +44,9 @@ ms.locfileid: "65413996"
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 | .NET        | System.Runtime.Serialization |
 
-追加の参照 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -63,7 +60,7 @@ ms.locfileid: "65413996"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -72,7 +69,7 @@ ms.locfileid: "65413996"
 ## <a name="project-file-changes"></a>プロジェクト ファイルの変更
 
 - プロパティ `IISExpressSSLPort` が個別の数に設定されます。
-- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。**[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
+- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。 **[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
 - プロパティ `IISUrl` が `https://localhost:<port>/` に設定されます。このとき `<port>` は `IISExpressSSLPort` の値と一致します。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config または app.config の変更
@@ -89,9 +86,9 @@ ms.locfileid: "65413996"
     </appSettings>
     ```
 
-- `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Protocol.Extensions`の `<runtime><assemblyBinding>` ノードの下に `<dependentAssembly>` 要素が追加されます。
+- `<dependentAssembly>` と `<runtime><assemblyBinding>`の `System.IdentityModel.Tokens.Jwt` ノードの下に `Microsoft.IdentityModel.Protocol.Extensions` 要素が追加されます。
 
-追加の変更 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+追加の変更 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
 - `<appSettings>` の下に次の構成エントリが追加されます。
 
@@ -123,7 +120,7 @@ ms.locfileid: "65413996"
     </entityFramework>
     ```
 
-- `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm`、`Microsoft.Data.OData` の `<runtime><assemblyBinding>`ノードの下に `<dependentAssembly>` 要素が追加されます。
+- `<dependentAssembly>`、`<runtime><assemblyBinding>`、`Microsoft.Data.Services.Client` の `Microsoft.Data.Edm`ノードの下に `Microsoft.Data.OData` 要素が追加されます。
 
 ## <a name="code-changes-and-additions"></a>コードの変更と追加
 
@@ -163,7 +160,7 @@ ms.locfileid: "65413996"
 
 [Azure Active Directory の詳細を確認します](https://azure.microsoft.com/services/active-directory/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD の認証シナリオ](authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v2-aspnet-webapp.md)

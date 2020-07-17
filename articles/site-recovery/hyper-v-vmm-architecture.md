@@ -1,23 +1,23 @@
 ---
-title: Azure Site Recovery を使用したセカンダリ オンプレミス サイトへの Hyper-V ディザスター リカバリーのアーキテクチャ | Microsoft Docs
+title: Azure Site Recovery を使用し、セカンダリ サイトへの Hyper-V ディザスター リカバリーを設計する
 description: この記事では、Azure Site Recovery を使用してオンプレミスの Hyper-V VM をセカンダリの System Center VMM サイトへとフェールオーバーする、ディザスター リカバリーのアーキテクチャについて概説します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/19/2019
+ms.topic: conceptual
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 553ecefc9f7588de0ee9056f2b2385f9a0ede50f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316169"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74133018"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>アーキテクチャ - セカンダリ サイトへの Hyper-V のレプリケーション
 
 この記事では、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、System Center Virtual Machine Manager (VMM) クラウド内のオンプレミスの Hyper-V 仮想マシン (VM) をセカンダリ VMM サイトにレプリケートする際に使用するコンポーネントとプロセスについて説明します。
-
+a
 
 ## <a name="architectural-components"></a>アーキテクチャ コンポーネント
 
@@ -56,7 +56,7 @@ ms.locfileid: "58316169"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 VMM クラウド間で Hyper-V レプリケーションを有効にするには、[このチュートリアル](hyper-v-vmm-disaster-recovery.md)に従ってください。

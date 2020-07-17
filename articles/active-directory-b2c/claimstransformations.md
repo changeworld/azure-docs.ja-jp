@@ -2,26 +2,26 @@
 title: ClaimsTransformations - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの ClaimsTransformations 要素の定義。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65b64563bf00bb519a65b6d2e0418b4f755dea2d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710821"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529130"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsTransformations** 要素には、[カスタム ポリシー](active-directory-b2c-overview-custom.md)の一部としてユーザー体験に使用できる要求変換関数のリストが含まれています。 要求変換により、所定の要求が別の要求に変換されます。 要求変換で、文字列コレクションに項目を追加したり、文字列の大文字と小文字を変更したりする変換メソッドを指定します。
+**ClaimsTransformations** 要素には、[カスタム ポリシー](custom-policy-overview.md)の一部としてユーザー体験に使用できる要求変換関数のリストが含まれています。 要求変換により、所定の要求が別の要求に変換されます。 要求変換で、文字列コレクションに項目を追加したり、文字列の大文字と小文字を変更したりする変換メソッドを指定します。
 
 ユーザー体験で使用できる要求変換関数のリストを含めるには、ClaimsTransformations XML 要素が、ポリシーの BuildingBlocks セクションで宣言されている必要があります。
 
@@ -35,10 +35,10 @@ ms.locfileid: "64710821"
 
 **ClaimsTransformation** 要素には、次の属性が含まれています。
 
-| Attribute |必須 | 説明 |
+| 属性 |Required | 説明 |
 | --------- |-------- | ----------- |
 | Id |はい | 要求変換を一意に識別するために使用される識別子。 識別子は、ポリシー内の他の XML 要素から参照されます。 |
-| TransformationMethod | はい | 要求変換で使用する変換メソッド。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を参照してください。 |
+| TransformationMethod | はい | 要求変換で使用する変換メソッド。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -51,7 +51,7 @@ ms.locfileid: "64710821"
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -62,14 +62,14 @@ ms.locfileid: "64710821"
 | 要素 | 発生回数 | 説明 |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | 要求変換への入力として取得される要求の種類を指定する **InputClaim** 要素のリスト。 これらの各要素には、ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照が含まれています。 |
-| InputParameters | 0:1 | 要求変換への入力として提供される **InputParameter** 要素のリスト。  
+| InputParameters | 0:1 | 要求変換への入力として提供される **InputParameter** 要素のリスト。
 | OutputClaims | 0:1 | ClaimsTransformation が呼び出された後に生成される要求の種類を指定する **OutputClaim** 要素のリスト。 これらの各要素には、ClaimsSchema セクションに既に定義されている ClaimType への参照が含まれています。 |
 
 ### <a name="inputclaims"></a>InputClaims
 
 **InputClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 予想される入力要求の種類。 |
 
@@ -77,7 +77,7 @@ ms.locfileid: "64710821"
 
 **InputClaim** 要素には、次の属性が含まれています。
 
-| Attribute |必須 | 説明 |
+| 属性 |Required | Description |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。 |
 | TransformationClaimType |はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -92,29 +92,29 @@ ms.locfileid: "64710821"
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Attribute | 必須 |説明 |
+| 属性 | Required |説明 |
 | --------- | ----------- |----------- |
 | Id | はい | 要求変換メソッドのパラメーターへの参照である識別子。 各要求変換メソッドは、独自の値を持ちます。 使用可能な値の完全なリストについては、要求変換の表を参照してください。 |
 | DataType | はい | カスタム ポリシー XML スキーマの DataType エミュレーションに従った、文字列、ブール値、Int、または DateTime などの、パラメーターのデータ型。 この型は、算術演算を正しく行うために使用されます。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
-| 値 | はい | 変換に逐語的に渡される値。 一部の値は任意ですが、一部の値は要求変換メソッドから選択します。 |
+| Value | はい | 変換に逐語的に渡される値。 一部の値は任意ですが、一部の値は要求変換メソッドから選択します。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0:n | 想定される出力要求の種類。 |
+| OutputClaim | 0:n | 予想される出力要求の種類。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
-| Attribute |必須 | 説明 |
+| 属性 |Required | Description |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。
 | TransformationClaimType | はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
- 
+
 入力要求と出力要求が同じ型 (文字列またはブール値) である場合、出力要求と同じ入力要求を使用できます。 この場合、要求変換によって、入力要求が出力要求に取り換えられます。
 
 ## <a name="example"></a>例
@@ -160,11 +160,12 @@ ms.locfileid: "64710821"
 要求変換の例については、次の参照ページを確認してください。
 
 - [Boolean](boolean-transformations.md)
-- [日付](date-transformations.md)
+- [Date](date-transformations.md)
 - [整数](integer-transformations.md)
 - [JSON](json-transformations.md)
+- [電話番号](phone-number-claims-transformations.md)
 - [全般](general-transformations.md)
 - [ソーシャル アカウント](social-transformations.md)
-- [文字列](string-transformations.md)
+- [String](string-transformations.md)
 - [StringCollection](stringcollection-transformations.md)
 

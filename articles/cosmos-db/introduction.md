@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB の概要
 description: Azure Cosmos DB について説明します。 このグローバルに分散されたマルチモデル データベースは、少ない待ち時間、柔軟なスケーラビリティ、高可用性を実現し、NoSQL データのネイティブ サポートを提供することを目指して構築されています。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/20/2019
-ms.author: rimman
-ms.openlocfilehash: a338cec213b82d54b08f2a11a969ddecf72ea7e5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 10/23/2019
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953907"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983026"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
 現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 アプリケーションには、ピーク時の使用量の大きな変化に即応し、増え続けるデータを格納し、ミリ秒単位でユーザーがこうしたデータを利用できるようにすることが求められます。
 
-Azure Cosmos DB は、Microsoft によってグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで、世界中の Azure リージョンをいくつでもまたいでスループットとストレージをエラスティックかつ個別にスケーリングできます。 スループットとストレージをエラスティックにスケーリングし、SQL、MongoDB、Cassandra、Tables、Gremlin などの好みの API を使用して、数ミリ秒 (1 桁) の高速データ アクセスを利用できます。 Cosmos DB では、スループット、待ち時間、可用性、および整合性の保証について包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供されています。この点は、他のどのデータベース サービスにもないメリットです。
+Azure Cosmos DB は、Microsoft によってグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで、世界中の Azure リージョンをいくつでもまたいでスループットとストレージをエラスティックかつ個別にスケーリングできます。 スループットとストレージをエラスティックにスケーリングし、次のような好みの API を使用して、数ミリ秒 (1 桁) の高速データ アクセスを利用できます。SQL、MongoDB、Cassandra、Tables、Gremlin など。 Cosmos DB では、スループット、待ち時間、可用性、および整合性の保証について包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA) が提供されています。この点は、他のどのデータベース サービスにもないメリットです。
 
-Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
+Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](optimize-dev-test.md#azure-cosmos-db-free-tier)を使用してアカウントを取得し、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)
@@ -48,7 +48,7 @@ Cosmos DB を使用すると、応答性に優れた世界規模のアプリケ�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>明確に定義された複数の整合性の選択肢
 
-Cosmos DB でグローバルに分散されたアプリケーションを構築する際に、極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、"*強固*"、"*有界整合性制約*"、"*セッション*"、"*一貫性のあるプレフィックス*"、"*最終*" という [5 つの明確な整合性の選択肢](consistency-levels.md) -  を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
+Cosmos DB でグローバルに分散されたアプリケーションを構築する際に、極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、"*強固*"、"*有界整合性制約*"、"*セッション*"、"*一貫性のあるプレフィックス*"、"*最終的*" という [5 つの明確な整合性の選択肢](consistency-levels.md) -  を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
 
 ### <a name="no-schema-or-index-management"></a>スキーマやインデックスの管理が不要
 
@@ -74,11 +74,11 @@ Cosmos DB はフル マネージド サービスであるため、複雑なマ�
 
 Cosmos DB は、99.999% の高可用性、99 パーセンタイルでの読み取りと書き込みの待機時間、確実なスループット、整合性を実現する[業界トップの包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) が用意された史上初のサービスです。
 
-### <a name="globally-distributed-operational-analytics-with-spark"></a>Spark によるグローバルに分散された運用分析
+### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>Apache Spark がネイティブで組み込まれたグローバル分散型の運用分析と AI
 
 Cosmos DB の格納データに対して [Spark](spark-connector.md) を直接実行することができます。 この機能を使用すると、Cosmos DB を直接使用するトランザクション ワークロードに影響を与えることなく、世界的な規模で低遅延の運用分析を行うことができます。 詳細については、[グローバルに分散された運用分析](lambda-architecture.md)に関するページを参照してください。
 
-### <a name="develop-applications-on-cosmos-db-using-popular-nosql-apis"></a>人気のある NoSQL API を使用した Cosmos DB でのアプリケーションの開発
+### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>人気のあるオープン ソース ソフトウェア (OSS) API を使用した Cosmos DB でのアプリケーションの開発
 
 Cosmos DB では、Cosmos データベースに格納されているデータを操作するための API を選択できます。 既定では、Cosmos データベースに対するクエリを実行するために [SQL](how-to-sql-query.md) (コア API) を使用することができます。 Cosmos DB では、[Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md)、および [Azure Table Storage](table-introduction.md) の API も実装されています。 よく使用される NoSQL (MongoDB、Cassandra、Gremlin など) のクライアント ドライバー (およびツール) で Cosmos データベースを直接参照することができます。 よく使用される NoSQL API のワイヤ プロトコルがサポートされているため、Cosmos DB では次のことが可能です。
 
@@ -91,7 +91,7 @@ Cosmos DB では、Cosmos データベースに格納されているデータを
 
 さまざまなデータについて、リアルタイムに近い応答時間と[グローバルな規模](distribute-data-globally.md)で膨大な量のデータや読み書きを処理する必要のある [Web、モバイル、ゲーム、IoT アプリケーション](use-cases.md)は、Cosmos DB の[保証された高可用性](https://azure.microsoft.com/support/legal/sla/cosmos-db/)、高スループット、低待ち時間、調整可能な整合性の恩恵を受けます。 [IoT とテレマティック](use-cases.md#iot-and-telematics)、[小売りとマーケティング](use-cases.md#retail-and-marketing)、[ゲーム](use-cases.md#gaming)、[Web アプリとモバイル アプリ](use-cases.md#web-and-mobile-applications)の作成に Azure Cosmos DB をどのように適用できるかをご確認ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cosmos DB のコア概念である[ターンキー グローバル分散](distribute-data-globally.md)、[パーティション分割](partitioning-overview.md)、および[プロビジョニング済みのスループット](request-units.md)に関する記事を参照してください。
 

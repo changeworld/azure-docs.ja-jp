@@ -1,10 +1,11 @@
 ---
-title: Azure DNS での .NET SDK を使用した DNS ゾーンとレコード セットの作成 | Microsoft Docs
-description: Azure DNS で、.NET SDK を使用して DNS ゾーンとレコード セットを作成する方法について説明します。
+title: .NET SDK を使用した DNS ゾーンとレコード セットの作成
+titleSuffix: Azure DNS
+description: このラーニング パスでは、.NET SDK を使用して Azure DNS で DNS ゾーンとレコード セットの作成を始めます。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
+manager: kumudD
 ms.assetid: eed99b87-f4d4-4fbf-a926-263f7e30b884
 ms.service: dns
 ms.devlang: na
@@ -12,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
-ms.author: victorh
-ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rohink
+ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860603"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76938856"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
 
@@ -29,7 +30,7 @@ DNS ゾーン、レコード セット、レコードを作成、削除、更新
 通常、Azure リソースへのプログラムによるアクセスは、ユーザー自身の資格情報ではなく、専用アカウント経由で許可されます。 これらの専用アカウントは、"サービス プリンシパル" アカウントと呼ばれます。 Azure DNS SDK のサンプル プロジェクトを使用するには、まずサービス プリンシパル アカウントを作成し、作成したアカウントに適切なアクセス許可を割り当てる必要があります。
 
 1. [こちらの手順](../active-directory/develop/howto-authenticate-service-principal-powershell.md) に従い、サービス プリンシパル アカウントを作成します (Azure DNS SDK のサンプル プロジェクトではパスワードベースの認証を前提としています)。
-2. リソース グループを作成します ([手順はこちら](../azure-resource-manager/resource-group-template-deploy-portal.md))。
+2. リソース グループを作成します ([手順はこちら](../azure-resource-manager/templates/deploy-portal.md))。
 3. Azure RBAC を使用して、サービス プリンシパル アカウント "DNS Zone Contributor" にリソース グループへのアクセス許可を付与します ([手順はこちら](../role-based-access-control/role-assignments-portal.md))。
 4. Azure DNS SDK のサンプル プロジェクトを使用する場合、"program.cs" ファイルを次のように編集します。
 
@@ -43,7 +44,7 @@ Azure DNS .NET SDK を使用するには、 **Azure DNS 管理ライブラリ** 
 
 1. **Visual Studio**で、プロジェクトを開くか、新規作成します。
 2. **[ツール]** **>** **[NuGet パッケージ マネージャー]** **>** **[ソリューションの NuGet パッケージの管理]** の順に移動します。
-3. **[参照]** をクリックし、**[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
+3. **[参照]** をクリックし、 **[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
 4. パッケージを選択し、 **[インストール]** をクリックして Visual Studio プロジェクトに追加します。
 5. 上記のプロセスを繰り返して、次のパッケージもインストールします。**Microsoft.Rest.ClientRuntime.Azure.Authentication** と **Microsoft.Azure.Management.ResourceManager**。
 
@@ -163,6 +164,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure DNS .NET SDK サンプル プロジェクト](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)をダウンロードします。このサンプル プロジェクトには、他の DNS レコードの種類の例など、Azure DNS .NET SDK のさまざまな使用方法の例が含まれています。

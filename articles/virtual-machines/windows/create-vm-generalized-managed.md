@@ -1,25 +1,18 @@
 ---
-title: Azure で管理イメージから VM を作成する | Microsoft Docs
-description: Resource Manager デプロイ モデルで Azure PowerShell または Azure Portal を使って、一般化した管理イメージから仮想マシンを作成します。
-services: virtual-machines-windows
-documentationcenter: ''
+title: Azure で管理イメージから VM を作成する
+description: Azure PowerShell またはポータルを使用して、一般化されたマネージド イメージから Windows 仮想マシンを作成します。
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 57fbab4194f6cd232e1462ecea9a07d104c6cb51
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205731"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82086319"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
@@ -30,13 +23,12 @@ Azure portal または PowerShell を使用して、Azure 管理 VM イメージ
 
 ## <a name="use-the-portal"></a>ポータルの使用
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
-2. 左側のメニューで、**[すべてのリソース]** を選択します。 **[種類]** でリソースを並べ替えて、イメージを簡単に見つけることができます。
+1. [Azure portal](https://portal.azure.com) にアクセスしてマネージド イメージを検索します。 **[イメージ]** を検索して選択します。
 3. 一覧から使うイメージを選びます。 イメージの **[概要]** ページが開きます。
 4. メニューから **[VM の作成]** を選択します。
-5. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、**[OK]** を選択します。 既存のリソース グループに新しい VM を作成するか、**[新規作成]** を選択して VM を格納する新しいリソース グループを作成することができます。
-6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
-7. **[設定]** で必要な変更を行い、**[OK]** を選択します。 
+5. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、 **[OK]** を選択します。 既存のリソース グループに新しい VM を作成するか、 **[新規作成]** を選択して VM を格納する新しいリソース グループを作成することができます。
+6. VM のサイズを選択します。 その他のサイズも表示するには、 **[すべて表示]** を選択するか、 **[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
+7. **[設定]** で必要な変更を行い、 **[OK]** を選択します。 
 8. 概要ページでは、イメージ名が **[プライベート イメージ]** の一覧に表示されます。 **[OK]** を選択して、仮想マシンのデプロイを開始します。
 
 
@@ -44,7 +36,7 @@ Azure portal または PowerShell を使用して、Azure 管理 VM イメージ
 
 PowerShell を使用すると、[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットに対して設定された簡略化されたパラメーターを使用して、イメージから VM を作成できます。 このイメージは、VM を作成する同じリソース グループに存在する必要があります。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) の簡易なパラメーター セットでは、イメージから VM を作成するための名前、リソース グループ、およびイメージ名を指定する必要があります。 New-AzVm には、自動的に作成するすべてのリソースの名前として **-Name** パラメーターの値が使用されます。 この例では、各リソースのより詳細な名前を指定しますが、それらがコマンドレットで自動的に作成されるようにしてください。 また、仮想ネットワークなどのリソースを事前に作成し、そのリソース名をコマンドレットに渡すこともできます。 New-AzVm では、一致する名前の既存のリソースが見つかった場合は、それが使用されます。
 
@@ -66,6 +58,6 @@ New-AzVm `
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

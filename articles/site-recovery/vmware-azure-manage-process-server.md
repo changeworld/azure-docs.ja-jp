@@ -1,76 +1,90 @@
 ---
-title: Azure Site Recovery を使用した VMware VM および物理サーバーの Azure へのディザスター リカバリーのためにプロセス サーバーを管理する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して、VMware VM および物理サーバーを Azure にディザスター リカバリーするために設定されたプロセス サーバーを管理する方法について説明します。
+title: Azure Site Recovery で VMware VM または物理サーバーのディザスター リカバリー用のプロセス サーバーを管理する
+description: この記事では、Azure Site Recovery を使用して、VMware VM または物理サーバーのディザスター リカバリー用のプロセス サーバーを管理する方法について説明します。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228939"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 
-既定では、VMware VM または物理サーバーを Azure にレプリケートするときに使用されるプロセス サーバーはオンプレミスの構成サーバー マシンにインストールされます。 個別のプロセス サーバーを設定することが必要な例がいくつか存在します。
+この記事では、Site Recovery プロセス サーバーを管理する際の一般的なタスクについて説明します。
+
+プロセス サーバーは、レプリケーション データを受け取り、最適化して、Azure に送信するために使用されます。 また、レプリケートする VMware VM および物理サーバーへのモビリティ サービスのプッシュ インストールと、オンプレミス マシンの自動検出も実行されます。 オンプレミスの VMware VM または物理サーバーを Azure にレプリケートする場合、プロセス サーバーは既定で構成サーバー マシンにインストールされます。 
 
 - 大規模なデプロイでは、容量を拡張するためにオンプレミスのプロセス サーバーの追加が必要になる場合があります。
-- フェールバックには、Azure で設定された一時的なプロセス サーバーが必要です。 この VM は、フェールバックが完了したら削除できます。 
+- Azure からオンプレミスへのフェールバックには、Azure に一時的なプロセス サーバーを設定する必要があります。 この VM は、フェールバックが完了したら削除できます。 
 
-この記事では、これらの追加のプロセス サーバーのための標準的な管理タスクを要約しています。
+このプロセス サーバーの詳細について確認してください。
+
 
 ## <a name="upgrade-a-process-server"></a>プロセス サーバーをアップグレードする
 
-オンプレミスで、または (フェールバックの目的で) Azure で実行されているプロセス サーバーを次のようにアップグレードします。
+プロセス サーバーをオンプレミスに展開する場合、またはフェールバック用の Azure VM としてデプロイする場合は、最新バージョンのプロセス サーバーがインストールされます。 Site Recovery チームは修正プログラムや拡張機能を定期的にリリースしているため、プロセス サーバーを最新の状態に維持することをお勧めします。 プロセス サーバーは次の手順でアップグレードできます。
 
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
-> [!NOTE]
->   通常、フェールバックの目的で Azure でプロセス サーバーを作成するために Azure ギャラリー イメージを使用する場合、そのサーバーは使用可能な最新バージョンを実行しています。 Site Recovery チームは修正プログラムや拡張機能を定期的にリリースしているため、プロセス サーバーを最新の状態に維持することをお勧めします。
 
-## <a name="balance-the-load-on-process-server"></a>プロセス サーバーの負荷を分散させる
+## <a name="move-vms-to-balance-the-process-server-load"></a>プロセス サーバーの負荷を分散するために VM を移動する
 
-2 つのプロセス サーバーの間で負荷を分散させるには
+次のように、2 つのプロセス サーバー間で VM を移動して負荷を分散します。
 
-1. **[Recovery Services コンテナー]** > **[管理]** > **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** > **[For VMware & Physical machines]\(VMware および物理マシン\)** > **[構成サーバー]** の順に移動します。
+1. コンテナーの **[管理]** で **[Site Recovery インフラストラクチャ]** をクリックします。 **[For VMware & Physical machines]\(VMware と物理マシン\)** の **[構成サーバー]** をクリックします。
 2. プロセス サーバーが登録されている構成サーバーをクリックします。
-3. ページでは、構成サーバーに登録されているプロセス サーバーの一覧を利用できます。
-4. ワークロードを変更するプロセス サーバーをクリックします。
+3. トラフィックを負荷分散するプロセス サーバーをクリックします。
 
     ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-5. 以下で説明するように、必要に応じて、**[負荷分散]** または **[切り替え]** オプションを使用できます。
-
-### <a name="load-balance"></a>負荷分散
-
-このオプションでは、1 つまたは複数の仮想マシンを選択し、別のプロセス サーバーに転送できます。
-
-1. **[負荷分散]** をクリックし、ドロップダウンからターゲット プロセス サーバーを選択します。 **[OK]**
+4. **[負荷分散]** をクリックして、マシンの移動先のターゲット プロセス サーバーを選択します。 次に、 **[OK]** をクリックします
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. **[コンピューターの選択]** をクリックして、現在のプロセス サーバーからターゲット プロセス サーバーに移動する仮想マシンを選択します。 各仮想マシンについて、平均データの変化の詳細が表示されます。
-3. Click **OK**. **[Recovery Services コンテナー]** > **[監視]** > **[Site Recovery jobs]\(Site Recovery ジョブ\)** で、ジョブの進行状況を監視します。
-4. この操作の正常完了後に変更が反映されるまで 15 分かかります。または、すぐに反映するには[構成サーバーを更新](vmware-azure-manage-configuration-server.md#refresh-configuration-server)します。
+2. **[マシンの選択]** をクリックし、現在のプロセス サーバーからターゲットに移動するマシンを選択します。 各仮想マシンについて、平均データの変化の詳細が表示されます。 次に、 **[OK]** をクリックします 
+3. コンテナーの **[監視]**  >  **[Site Recovery ジョブ]** でジョブの進行状況を監視します。
 
-### <a name="switch"></a>Switch
+変更がポータルに反映されるまでには約 15 分かかります。 すぐに反映するには、[構成サーバーを更新します](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
-このオプションでは、プロセス サーバーで保護されているすべてのワークロードが、別のプロセス サーバーに移動されます。
+## <a name="switch-an-entire-workload-to-another-process-server"></a>ワークロード全体を別のプロセス サーバーに切り替える
 
-1. **[切り替え]** をクリックし、ターゲット プロセス サーバーを選択して、**[OK]** をクリックします。
+次のように、プロセス サーバーによって処理されるワークロード全体を別のプロセス サーバーに移動します。
+
+1. コンテナーの **[管理]** で **[Site Recovery インフラストラクチャ]** をクリックします。 **[For VMware & Physical machines]\(VMware と物理マシン\)** の **[構成サーバー]** をクリックします。
+2. プロセス サーバーが登録されている構成サーバーをクリックします。
+3. ワークロードを切り替えるプロセス サーバーをクリックします。
+4. **[切り替え]** をクリックし、ワークロードを移動するターゲット プロセス サーバーを選択します。 次に、 **[OK]** をクリックします
 
     ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
 
-2. **[Recovery Services コンテナー]** > **[監視]** > **[Site Recovery jobs]\(Site Recovery ジョブ\)** で、ジョブの進行状況を監視します。
-3. この操作の正常完了後に変更が反映されるまで 15 分かかります。または、すぐに反映するには[構成サーバーを更新](vmware-azure-manage-configuration-server.md#refresh-configuration-server)します。
+5. コンテナーの **[監視]**  >  **[Site Recovery ジョブ]** でジョブの進行状況を監視します。
+
+変更がポータルに反映されるまでには約 15 分かかります。 すぐに反映するには、[構成サーバーを更新します](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
+
+## <a name="register-a-master-target-server"></a>マスター ターゲット サーバーを登録する
+
+マスター ターゲット サーバーは、構成サーバーとスケールアウト プロセス サーバーにあります。 これは構成サーバーに登録されている必要があります。 この登録でエラーが発生した場合は、保護された項目の正常性に影響を与える可能性があります。 マスター ターゲット サーバーを構成サーバーに登録するには、登録が必要な特定の構成サーバーまたはスケールアウト プロセス サーバーにログインします。 **%PROGRAMDATA%\ASR\Agent** フォルダーに移動し、管理者コマンド プロンプトで以下を実行します。
+
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="reregister-a-process-server"></a>プロセス サーバーを再登録する
 
-オンプレミスで、または Azure で実行されているプロセス サーバーを構成サーバーに再登録する必要がある場合は、次を実行します。
+次のように、オンプレミスまたは Azure VM 上で実行されているプロセス サーバーを構成サーバーに登録します。
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
@@ -87,9 +101,9 @@ ms.locfileid: "57863629"
 
 ## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>オンプレミスのプロセス サーバーのプロキシ設定を変更する
 
-プロセス サーバーがプロキシを使用して Azure の Site Recovery に接続しているとき、既存のプロキシ設定を変更する必要がある場合は、この手順を使用します。
+オンプレミス プロセス サーバーがプロキシを使用して Azure に接続している場合は、次のようにプロキシ設定を変更できます。
 
-1. プロセス サーバー マシンにログオンします。 
+1. プロセス サーバー マシンにサインインします。 
 2. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
    ```powershell
    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -109,14 +123,13 @@ ms.locfileid: "57863629"
    exit
    ```
 
-
 ## <a name="remove-a-process-server"></a>プロセス サーバーを削除する
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
-## <a name="manage-anti-virus-software-on-process-servers"></a>プロセス サーバーでウイルス対策ソフトウェアを管理する
+## <a name="exclude-folders-from-anti-virus-software"></a>ウイルス対策ソフトウェアからフォルダーを除外する
 
-スタンドアロン プロセス サーバーまたはマスター ターゲット サーバー上でウイルス対策ソフトウェアがアクティブになっている場合は、次のフォルダーをウイルス対策操作から除外します。
+スケールアウト プロセス サーバー (またはマスター ターゲット サーバー) 上でウイルス対策ソフトウェアが実行されている場合は、次のフォルダーをウイルス対策操作から除外します。
 
 
 - C:\Program Files\Microsoft Azure Recovery Services Agent
@@ -125,5 +138,4 @@ ms.locfileid: "57863629"
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- プロセス サーバー インストール ディレクトリ。例:C:\Program Files (x86)\Microsoft Azure Site Recovery
-
+- プロセス サーバーのインストール ディレクトリ。 次に例を示します。C:\Program Files (x86)\Microsoft Azure Site Recovery

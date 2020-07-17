@@ -2,19 +2,19 @@
 title: クイック スタート:カスタム モデルを構築、デプロイ、および使用する - カスタム翻訳ツール
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Custom Translator を使用して翻訳システムを構築する詳細なプロセスを実行します。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 12/09/2019
+ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 7875a32274ddf0ea886727cdc55a0bbb874b2296
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762995"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587097"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート:翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -24,9 +24,23 @@ ms.locfileid: "57762995"
 
 1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルを使用するには、サインインするための [Microsoft アカウント](https://signup.live.com)または [Azure AD アカウント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure でホストされている組織アカウント) が必要になります。
 
-2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
+2. Azure portal を通じた Translator へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator サブスクリプション キーが必要です。 「[Translator にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
 
-3. 上記の両方がある場合は、[Custom Translator](https://portal.customtranslator.azure.ai) ポータルにサインインします。 Custom Translator ポータルで [設定] ページに移動します。ここでは、お客様の Microsoft Translator Text API サブスクリプション キーをお客様のワークスペースに関連付けることができます。
+3. 上記の両方がある場合は、[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルにサインインしてワークスペースとプロジェクトを作成し、ファイルをアップロードしてモデルを作成、デプロイします。
+
+## <a name="create-a-workspace"></a>ワークスペースの作成
+
+初回使用時は、ワークスペースを作成して Translator サブスクリプションに関連付ける際に、サービス利用規約への同意を求められます。
+
+![ワークスペースの作成](media/quickstart/terms-of-service.png)
+![ワークスペースの作成](media/quickstart/create-workspace-1.png)
+![ワークスペースの作成](media/quickstart/create-workspace-2.png)
+![ワークスペースの作成](media/quickstart/create-workspace-3.png)
+![ワークスペースの作成](media/quickstart/create-workspace-4.png)
+![ワークスペースの作成](media/quickstart/create-workspace-5.png)
+![ワークスペースの作成](media/quickstart/create-workspace-6.png)
+
+2 回目以降は、Custom Translator ポータルにアクセスし、[設定] ページに移動してワークスペースを管理できます。ワークスペースを作成したり、Translator のサブスクリプション キーをワークスペースに関連付けたり、共同所有者を追加したり、サブスクリプション キーを変更したりすることが可能です。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
@@ -37,7 +51,7 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ## <a name="upload-documents"></a>ドキュメントのアップロード
 
-次に、[トレーニング](training-and-model.md#training-dataset-for-custom-translator)、[チューニング](training-and-model.md#tuning-dataset-for-custom-translator)、および[テスト](training-and-model.md#testing-dataset-for-custom-translator)のドキュメント セットをアップロードします。 [並列](what-are-parallel-documents.md)ドキュメントと複合ドキュメントの両方をアップロードすることができます。 [辞書](what-is-dictionary.md)をアップロードすることもできます。
+次に、[トレーニング](training-and-model.md#training-document-type-for-custom-translator)、[チューニング](training-and-model.md#tuning-document-type-for-custom-translator)、および[テスト](training-and-model.md#testing-dataset-for-custom-translator)のドキュメント セットをアップロードします。 [並列](what-are-parallel-documents.md)ドキュメントと複合ドキュメントの両方をアップロードすることができます。 [辞書](what-is-dictionary.md)をアップロードすることもできます。
 
 ドキュメントのアップロードは、ドキュメント タブからも、特定のプロジェクトのページからも行うことができます。
 
@@ -45,13 +59,13 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ドキュメントをアップロードするときに、ドキュメントの種類 (トレーニング、チューニング、またはテスト) と言語ペアを選択します。 並列ドキュメントをアップロードする場合は、ドキュメント名をさらに指定する必要があります。 詳細については、[ドキュメントのアップロード](how-to-upload-document.md)に関するページを参照してください。
 
-## <a name="create-a-model"></a>モデルの作成
+## <a name="create-a-model"></a>モデルを作成する
 
 お客様にとって必要なドキュメントをすべてアップロードしたら、次の手順は、お客様のモデルの構築になります。
 
-作成したプロジェクトを選択します。 お客様がアップロードしたすべてのドキュメントが表示されます。これらでは、このプロジェクトと言語ペアが共有されます。 お客様のモデルに含めるドキュメントを選択します。 [トレーニング](training-and-model.md#training-dataset-for-custom-translator) データ、[チューニング](training-and-model.md#tuning-dataset-for-custom-translator) データ、および[テスト](training-and-model.md#testing-dataset-for-custom-translator) データを選択できます。または、トレーニング データだけを選択して、お客様のモデル用のチューニング セットおよびテスト セットが Custom Translator によって自動的に構築されるようにすることができます。
+作成したプロジェクトを選択します。 お客様がアップロードしたすべてのドキュメントが表示されます。これらでは、このプロジェクトと言語ペアが共有されます。 お客様のモデルに含めるドキュメントを選択します。 [トレーニング](training-and-model.md#training-document-type-for-custom-translator) データ、[チューニング](training-and-model.md#tuning-document-type-for-custom-translator) データ、および[テスト](training-and-model.md#testing-dataset-for-custom-translator) データを選択できます。または、トレーニング データだけを選択して、お客様のモデル用のチューニング セットおよびテスト セットが Custom Translator によって自動的に構築されるようにすることができます。
 
-![モデルの作成](media/quickstart/ct-how-to-train.png)
+![モデルを作成する](media/quickstart/ct-how-to-train.png)
 
 お客様が望むドキュメントを選択したら、[モデルの作成] ボタンをクリックして、お客様のモデルを作成し、トレーニングを開始します。 お客様のトレーニングの状態と、トレーニングしたすべてのモデルの詳細は、[モデル] タブで確認できます。
 
@@ -69,8 +83,8 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ## <a name="use-a-deployed-model"></a>デプロイしたモデルの使用
 
-デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)アクセスすることができます。 Translator Text API の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)アクセスすることができます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Custom Translator ワークスペース内を移動し、お客様のプロジェクトを管理する](workspace-and-project.md)方法について学習します。

@@ -1,29 +1,19 @@
 ---
-title: Azure 上での Linux VHD の作成とアップロード
+title: Linux VHD を作成してアップロードする
 description: Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: szarkos
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
+author: gbowerman
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: guybo
+ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105524"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066759"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Azure プラットフォームの SLA は、[動作保証済みディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。 このような動作保証済みディストリビューションの場合、事前構成済みの Linux イメージが Azure Marketplace で提供されています。
 
@@ -45,16 +35,16 @@ Azure で実行されているすべてのディストリビューションに�
 
 ## <a name="general-linux-installation-notes"></a>Linux のインストールに関する一般的な注記
 * Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ**を選択します。
-* Azure は世代 1 の仮想マシンのみサポートします。 第 1 世代の仮想マシンを、VHDX ファイル形式から VHD ファイル形式に、容量可変から容量固定ディスクに変換できます。 ただし仮想マシンの世代を変更することはできません。 詳細については、「[Should I create a generation 1 or 2 virtual machine in Hyper-V? (Hyper-V で第 1 世代または第 2 世代の仮想マシンを作成する必要はありますか?)](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」を参照してください。
+* Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
 * Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * UDF ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを使用して、プロビジョニング構成が Linux VM に渡されます。 Azure Linux エージェントは、その構成を読み取り、VM をプロビジョニングする UDF ファイル システムをマウントする必要があります。
-* 2.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) で修正されました。 2.6.37 より古いカスタム カーネルまたは2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、[Red Hat KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
+* 2\.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) で修正されました。 2\.6.37 より古いカスタム カーネルまたは2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、[Red Hat KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 * OS ディスクにスワップ パーティションを構成しないでください。 次の手順で説明するように、Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 次の手順で説明するように、未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Hyper-V を使用しないカーネル モジュールのインストール
-Azure は、Hyper-V ハイパーバイザーで実行されるため、Linux で Azure を実行するには特定のカーネル モジュールが必要です。 Hyper-V 以外で作成された VM を所有している場合、Linux インストーラーは、Linux が Hyper-V 環境で実行されていることを VM が検出しない限り、初期 RAM ディスク (initrd または initramfs) に Hyper-V 用のドライバーを含まない場合があります。 別の仮想化システム (Virtualbox、KVM など) を使用して Linux イメージを準備する場合は、少なくとも hv_vmbus と hv_storvsc のカーネル モジュールを初期 RAM ディスクで使用できるように initrd の再構築が必要になる場合があります。  これは、アップ ストリームの Red Hat ディストリビューションに基づくシステムの既知の問題ですが、その他のシステムでも発生する可能性があります。
+Azure は、Hyper-V ハイパーバイザーで実行されるため、Linux で Azure を実行するには特定のカーネル モジュールが必要です。 Hyper-V 以外で作成された VM を所有している場合、Linux インストーラーは、Linux が Hyper-V 環境で実行されていることを VM が検出しない限り、初期 RAM ディスク (initrd または initramfs) に Hyper-V 用のドライバーを含まない場合があります。 別の仮想化システム (VirtualBox、KVM など) を使用して Linux イメージを準備する場合は、少なくとも hv_vmbus と hv_storvsc のカーネル モジュールを初期 RAM ディスクで使用できるように initrd の再構築が必要になる場合があります。  これは、アップ ストリームの Red Hat ディストリビューションに基づくシステムの既知の問題ですが、その他のシステムでも発生する可能性があります。
 
 initrd または initramfs イメージの再構築のためのメカニズムは、ディストリビューションによって異なる場合があります。 適切な手順については、使用しているディストリビューションのドキュメントまたはサポートを参照してください。  次は、 `mkinitrd` ユーティリティを使用して initrd を再構築する 1 つの例です。
 
@@ -74,7 +64,7 @@ initrd または initramfs イメージの再構築のためのメカニズム�
 ### <a name="resizing-vhds"></a>VHD のサイズ変更
 Azure の VHD イメージは、1 MB に整列された仮想サイズが必要です。  通常、HYPER-V を使用して作成された VHD は正しく整列されています。  VHD が正しく整列されていない場合は、VHD からイメージを作成しようとすると、次のようなエラー メッセージが表示される場合があります。
 
-* The VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります)。 The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
+* The VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. (VHD http:<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります。) The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
 
 この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
@@ -98,7 +88,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
     size=$(qemu-img info -f raw --output json "$rawdisk" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-    rounded_size=$((($size/$MB + 1)*$MB))
+    rounded_size=$(((($size+$MB-1)/$MB)*$MB))
     
     echo "Rounded Size = $rounded_size"
     ```
@@ -154,10 +144,10 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
 ## <a name="the-azure-linux-agent"></a>Azure Linux エージェント
 [Azure Linux エージェント](../extensions/agent-linux.md) `waagent` は Azure で Linux 仮想マシンをプロビジョニングします。 [Linux Agent GitHub リポジトリ](https://github.com/Azure/WALinuxAgent)で、最新バージョンの取得、問題の報告、pull request の提出が行うことができます。
 
-* Linux エージェントは、Apache 2.0 ライセンス下でリリースされています。 数多くのディストリビューションでは、このエージェント用の RPM パッケージや deb パッケージを既に提供しているため、これらのパッケージを簡単にインストールし、更新できます。
+* Linux エージェントは、Apache 2.0 ライセンス下でリリースされています。 数多くのディストリビューションでは、このエージェント用の RPM パッケージや .deb パッケージを既に提供しているため、これらのパッケージを簡単にインストールし、更新できます。
 * Azure Linux エージェントには、Python v2.6 以上が必要です。
 * このエージェントでは、python-pyasn1 モジュールも必要です。 ほとんどのディストリビューションでは、インストール可能な個別のパッケージとしてこのモジュールを提供しています。
-* Azure Linux エージェントは NetworkManager と互換性がない場合があります。 ディストリビューションによって提供される RPM/Deb パッケージの多くは、waagent パッケージに対する競合として NetworkManager を構成します。 このような場合、Linux エージェント パッケージをインストールすると NetworkManager はアンインストールされます。
+* Azure Linux エージェントは NetworkManager と互換性がない場合があります。 ディストリビューションによって提供される RPM/deb パッケージの多くは、waagent パッケージに対する競合として NetworkManager を構成します。 このような場合、Linux エージェント パッケージをインストールすると NetworkManager はアンインストールされます。
 * Azure Linux エージェントは、[サポートされている最小バージョン](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)以上である必要があります。
 
 ## <a name="general-linux-system-requirements"></a>Linux システムの一般的な要件
@@ -174,7 +164,7 @@ Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行
 
 1. Azure Linux エージェントをインストールします。
   
-    Azure Linux エージェントは、Azure で Linux イメージをプロビジョニングするために必要です。  多くのディストリビューションでは、このエージェントを RPM または Deb パッケージとして提供しています (パッケージは、通常 WALinuxAgent または walinuxagent と呼ばれます)。  このエージェントは、 [Linux エージェント ガイド](../extensions/agent-linux.md)の手順に従って手動でもインストールできます。
+    Azure Linux エージェントは、Azure で Linux イメージをプロビジョニングするために必要です。  多くのディストリビューションでは、このエージェントを RPM または .deb パッケージとして提供しています (パッケージは、通常 WALinuxAgent または walinuxagent と呼ばれます)。  このエージェントは、 [Linux エージェント ガイド](../extensions/agent-linux.md)の手順に従って手動でもインストールできます。
 
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  この構成が通常の既定です。
 

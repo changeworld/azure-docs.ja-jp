@@ -1,22 +1,19 @@
 ---
-title: Azure Application Insights のクイック スタート | Microsoft docs
-description: Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
-services: application-insights
-keywords: ''
+title: Azure Monitor Application Insights を使用してモバイル アプリを監視する
+description: Azure Monitor Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
-ms.service: application-insights
+ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 6f0a59d2b0954c9847219ad1ac8b2fa805767084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c31083c5e0591d5a49f878ba24a7fd2f0ef6c84d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080727"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731953"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -31,9 +28,12 @@ ms.locfileid: "54080727"
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
+## <a name="sign-up-with-app-center"></a>App Center にサインアップする
+まず、アカウントを作成し、[App Center にサインアップ](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs)します。
+
 ## <a name="onboard-to-app-center"></a>App Center へのオンボード
 
-モバイル アプリで Application Insights を使用する前に、アプリを [App Center](https://docs.microsoft.com/mobile-center/) にオンボードする必要があります。 Application Insights は、モバイル アプリから直接テレメトリを受信しません。 その代わりに、アプリが App Center にカスタム イベント テレメトリを送信します。 App Center は、イベントを受信すると、これらのカスタム イベントのコピーを Application Insights に継続的にエクスポートします。
+モバイル アプリで Application Insights を使用する前に、アプリを [App Center](https://docs.microsoft.com/mobile-center/) にオンボードする必要があります。 Application Insights は、モバイル アプリから直接テレメトリを受信しません。 その代わりに、アプリが App Center にカスタム イベント テレメトリを送信します。 App Center は、イベントを受信すると、これらのカスタム イベントのコピーを Application Insights に継続的にエクスポートします。 (このことは、テレメトリが Application Insights に直接送信される [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) または [React Native プラグイン](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native)には適用されません)。
 
 アプリをオンボードするには、アプリでサポートされている各プラットフォームの App Center クイックスタートに従ってください。 プラットフォームごとに個別の App Center インスタンスを作成します。
 
@@ -67,19 +67,19 @@ Analytics.trackEvent("Video clicked")
 
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. **[リソースの作成]** > **[管理ツール]** > **[Application Insights]** の順に選択します。
+1. [Azure portal](https://portal.azure.com/) にサインインする
+2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
-    ![Application Insights リソースの追加](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
     | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 (例: "myApp-iOS") | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | App Center アプリケーション | 監視しているアプリの種類 |
-   | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
-   | **場所** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+     | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
+   | **Location** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 3. **Create** をクリックしてください。
 
@@ -87,12 +87,12 @@ Analytics.trackEvent("Video clicked")
 
 ## <a name="export-to-application-insights"></a>Application Insights へのエクスポート
 
-新しい Application Insights リソースの **[概要]** の上部にある **[基本]** セクションで、このリソースのインストルメンテーション キーをコピーします。
+新しい Application Insights リソースの **[概要]** ページで、 リソースからインストルメンテーション キーをコピーします。
 
-アプリの App Center インスタンスで:
+アプリの [App Center](https://appcenter.ms/) インスタンスで、次の手順を実行します。
 
 1. **[設定]** ページで **[エクスポート]** をクリックします。
-2. **[新しいエクスポート]**、**[Application Insights]** の順に選択し、**[カスタマイズ]** をクリックします。
+2. **[新しいエクスポート]** 、 **[Application Insights]** の順に選択し、 **[カスタマイズ]** をクリックします。
 3. Application Insights のインストルメンテーション キーをボックスに貼り付けます。
 4. 作成した Application Insights リソースを含む Azure サブスクリプションの使用量の増加に同意します。 Application Insights リソースごとに、1 か月に受信したデータの最初の 1 GB が無料となります。 詳しくは、[Application Insights の価格](https://azure.microsoft.com/pricing/details/application-insights/)に関する記事をご覧ください。
 
@@ -106,13 +106,11 @@ Analytics.trackEvent("Video clicked")
 
 Application Insights は、App Center で提供されている分析ツールよりも高度な、アプリからのカスタム イベント テレメトリのクエリ、セグメント化、フィルター、分析を行うことができます。
 
-1. **カスタム イベント テレメトリのクエリ。** Application Insights の **[概要]** ページから、**[Analytics]** を選択します。 
+1. **カスタム イベント テレメトリのクエリ。** Application Insights の **[概要]** ページから **[ログ (Analytics)]** を選択します。
 
-   ![Application Insights の [Analytics] ボタン](./media/mobile-center-quickstart/analytics.png)
-
-   Application Insights リソースに関連付けられている Application Insights の Analytics ポータルが開きます。 Analytics ポータルでは Log Analytics クエリ言語を使用してデータを直接クエリできるので、アプリとそのユーザーに関する任意の複雑な質問をすることができます。
+   Application Insights リソースに関連付けられている Application Insights のログ (Analytics) ポータルが開きます。 ログ (Analytics) ポータルでは Log Analytics クエリ言語を使用してデータを直接クエリできるので、アプリとそのユーザーに関する任意の複雑な質問をすることができます。
    
-   Analytics ポータルで新しいタブを開き、次のクエリを貼り付けます。 このクエリは、過去 24 時間にアプリから各カスタム イベントを送信した個別ユーザーの数を、これらの数を基準として並べ替えて返します。
+   ログ (Analytics) ポータルで新しいタブを開き、次のクエリを貼り付けます。 このクエリは、過去 24 時間にアプリから各カスタム イベントを送信した個別ユーザーの数を、これらの数を基準として並べ替えて返します。
 
    ```AIQL
    customEvents
@@ -121,7 +119,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    | order by dcount_user_Id desc 
    ```
 
-   ![Analytics ポータル](./media/mobile-center-quickstart/analytics-portal.png)
+   ![ログ (Analytics) ポータル](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 
@@ -131,42 +129,42 @@ Application Insights は、App Center で提供されている分析ツールよ
 
 2. **カスタム イベント テレメトリのセグメント化とフィルター。** Application Insights の **[概要]** ページで、目次の **[ユーザー]** を選択します。
 
-   ![[ユーザー] ツールのアイコン](./media/mobile-center-quickstart/users-icon.png)
+   ![[ユーザー] ツールのアイコン](./media/mobile-center-quickstart/users-icon-001.png)
 
    [ユーザー] ツールは、特定のボタンのクリック、特定の画面の閲覧、または App Center SDK を使用してイベントとして追跡している他のアクションを実行したアプリ ユーザーの数を表示します。 App Center イベントをセグメント化およびフィルターする方法を探していた場合は、[ユーザー] ツールが最適な選択肢となります。
 
-   ![[ユーザー] ツール](./media/mobile-center-quickstart/users.png) 
+   ![[ユーザー] ツール](./media/mobile-center-quickstart/users-001.png) 
 
-   たとえば、**[次で分割]** ドロップダウン メニューで **[国または地域]** を選択して、利用状況を地理別にセグメント化できます。
+   たとえば、 **[次で分割]** ドロップダウン メニューで **[国または地域]** を選択して、利用状況を地理別にセグメント化できます。
 
 3. **アプリのコンバージョン、リテンション、ナビゲーションのパターンの分析。** Application Insights の **[概要]** ページで、目次の **[ユーザー フロー]** を選択します。
 
-   ![[ユーザー フロー] ツール](./media/mobile-center-quickstart/user-flows.png)
+   ![[ユーザー フロー] ツール](./media/mobile-center-quickstart/user-flows-001.png)
 
    [ユーザー フロー] ツールは、特定の開始イベントの後にユーザーがどのようなイベントを送信するかを視覚化します。 これは、ユーザーがアプリ内をどのように移動しているかの全体像を把握するのに便利です。 また、多くのユーザーがアプリから離脱している場所や、何度も同じアクションを繰り返している場所を特定できます。
 
    Application Insights には、[ユーザー フロー] 以外にも、特定の質問に答えるためのユーザー行動分析ツールがいくつか用意されています。
 
-   * **[じょうご]**: コンバージョン レートを分析および監視します。
-   * **[リテンション期間]**: アプリが時間の経過と共にどの程度ユーザーを保持できているかを分析します。
-   * **[Workbooks]**: 視覚化とテキストを共有可能なレポートに結合します。
-   * **[コーホート]**: 特定のユーザーまたはイベントのグループに名前を付けて保存し、他の分析ツールから簡単に参照できるようにします。
+   * **[じょうご]** : コンバージョン レートを分析および監視します。
+   * **[リテンション期間]** : アプリが時間の経過と共にどの程度ユーザーを保持できているかを分析します。
+   * **[Workbooks]** : 視覚化とテキストを共有可能なレポートに結合します。
+   * **[コーホート]** : 特定のユーザーまたはイベントのグループに名前を付けて保存し、他の分析ツールから簡単に参照できるようにします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 App Center での Application Insights の使用を続行しない場合は、App Center でエクスポートをオフにして、Application Insights リソースを削除します。 これにより、Application Insights でこのリソースに対する課金が行われなくなります。
 
 App Center でエクスポートをオフにするには:
 
-1. App Center で **[設定]** に移動し、**[エクスポート]** を選択します。
+1. App Center で **[設定]** に移動し、 **[エクスポート]** を選択します。
 2. 削除する Application Insights のエクスポートをクリックし、下部にある **[エクスポートの削除]** をクリックして確認します。
 
 Application Insights リソースを削除するには、次の手順に従います。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、Application Insights リソースが作成されたリソース グループを選択します。
-2. 削除する Application Insights リソースを開きます。 リソースの上部のメニューで、**[削除]** をクリックして確認します。 これにより、Application Insights にエクスポートされたデータのコピーが完全に削除されます。
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックし、Application Insights リソースが作成されたリソース グループを選択します。
+2. 削除する Application Insights リソースを開きます。 リソースの上部のメニューで、 **[削除]** をクリックして確認します。 これにより、Application Insights にエクスポートされたデータのコピーが完全に削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [どのようにお客様がアプリを使用しているかを理解します](../../azure-monitor/app/usage-overview.md)

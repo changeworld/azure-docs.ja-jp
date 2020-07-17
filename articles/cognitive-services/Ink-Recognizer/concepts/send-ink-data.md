@@ -1,21 +1,21 @@
 ---
 title: インク データを Ink Recognizer API に送信する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: さまざまなアプリケーション用の Ink Analyzer API の呼び出しについて学習します
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a212c7332d085c15baabef8650572162c47903d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025455"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219209"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>インク データを Ink Recognizer API に送信する 
 
@@ -82,9 +82,9 @@ Ink Recognizer REST API は、アプリケーションに応じてさまざま�
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Ink Recognizer API と Windows Ink を統合する
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) は、さまざまなデバイスでデジタル インキング エクスペリエンスを可能にするツールとテクノロジを提供します。 Windows Ink プラットフォームと Ink Recognition API を組み合わせて、デジタル インク ストロークを表示および解釈するアプリケーションを作成できます。
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) は、さまざまなデバイスでデジタル インキング エクスペリエンスを可能にするツールとテクノロジを提供します。 Windows Ink プラットフォームと Ink Recognizer API を組み合わせて、デジタル インク ストロークを表示および解釈するアプリケーションを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Ink Recognizer API とは](../overview.md)
 * [Ink Recognizer REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2089907)

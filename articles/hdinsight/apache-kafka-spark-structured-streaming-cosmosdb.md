@@ -1,23 +1,23 @@
 ---
-title: Apache Kafka から Azure Cosmos DB への Apache Spark 構造化ストリーミング - Azure HDInsight
+title: Cosmos DB を使用した Apache Spark と Apache Kafka - Azure HDInsight
 description: Apache Spark 構造化ストリーミングを使って Apache Kafka からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: c2f3d882ac01427ea017d4f9b81edc3c64cc932d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 11/18/2019
+ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728720"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74406168"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
-[Apache Spark](https://spark.apache.org/) [構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) を使って、Azure HDInsight 上で [Apache Kafka](https://kafka.apache.org/) からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。
+[Apache Spark](https://spark.apache.org/) [構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使って、[Azure HDInsight 上で Apache Kafka](https://kafka.apache.org/) からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、グローバル分散型のマルチモデル データベースです。 この例では、SQL API データベース モデルを使用します。 詳細については、「[Azure Cosmos DB の概要](../cosmos-db/introduction.md)」のドキュメントを参照してください。
 
@@ -32,9 +32,9 @@ Spark 構造化ストリーミングは、Spark SQL に組み込まれたスト�
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
-HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
+HDInsight 上の Apache Kafka では、パブリック インターネット経由の Kafka ブローカーへのアクセスは提供されません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
 
-![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
+![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
 > Kafka サービスは、仮想ネットワーク内の通信に制限されます。 SSH や Ambari など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
@@ -42,9 +42,9 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 Azure 仮想ネットワーク、Kafka、および Spark クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワーク、Kafka クラスター、および Spark クラスターを Azure サブスクリプションにデプロイします。
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
-    
+
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="https://azuredeploy.net/deploybutton.png"/>
+    <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
     Azure Resource Manager テンプレートは、このプロジェクトの GitHub リポジトリにあります ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb))。
@@ -55,53 +55,36 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
    * HDInsight 3.6 クラスター上の Spark
 
-   * Azure Virtual Network (HDInsight クラスターを含む)
-
-       > [!NOTE]  
-       > テンプレートによって作成された仮想ネットワークは、10.0.0.0/16 アドレス空間を使用します。
+   * Azure Virtual Network (HDInsight クラスターを含む) テンプレートによって作成された仮想ネットワークは、10.0.0.0/16 アドレス空間を使用します。
 
    * Azure Cosmos DB: SQL API データベース
 
-     > [!IMPORTANT]  
-     > この例で使用する構造化ストリーミングのノートブックでは、HDInsight 3.6 上に Spark が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
+    > [!IMPORTANT]  
+    > この例で使用する構造化ストリーミングのノートブックでは、HDInsight 3.6 上に Spark が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
 
-2. 以下の情報を使用して、**[カスタム デプロイ]** セクションに各エントリを入力します。
-   
-    ![HDInsight のカスタム デプロイ](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
+1. 以下の情報を使用して、 **[カスタム デプロイ]** セクションに各エントリを入力します。
 
-    * **サブスクリプション**:Azure サブスクリプションを選択します。
-   
-    * **リソース グループ**: グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
+    |プロパティ |値 |
+    |---|---|
+    |サブスクリプション|Azure サブスクリプションを選択します。|
+    |Resource group|グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。|
+    |Cosmos DB Account Name (Cosmos DB アカウント名)|この値が、Cosmos DB アカウントの名前として使用されます。 名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 文字から 31 文字でなければなりません。|
+    |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**myhdi**」と入力すると、__spark-myhdi__ という名前の Spark クラスターと、**kafka-myhdi** という名前の Kafka クラスターが作成されます。|
+    |クラスターのバージョン|HDInsight クラスターのバージョン。 この例は HDInsight 3.6 でテストされており、その他の種類のクラスターでは機能しないことがあります。|
+    |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Spark クラスターと Kafka クラスターの管理者のユーザー名。|
+    |[クラスター ログイン パスワード]|Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。|
+    |SSH ユーザー名|Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。|
+    |SSH パスワード|Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。|
 
-    * **場所**: 地理的に近い場所を選択します。
+    ![HDInsight のカスタム デプロイ値](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-    * **Cosmos DB アカウント名**: この値が、Cosmos DB アカウントの名前として使用されます。
+1. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
 
-    * **Base Cluster Name (ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**myhdi**」と入力すると、__spark-myhdi__ という名前の Spark クラスターと、**kafka-myhdi** という名前の Kafka クラスターが作成されます。
-
-    * **クラスターのバージョン**: HDInsight クラスターのバージョン。
-
-        > [!IMPORTANT]  
-        > この例は HDInsight 3.6 でテストされており、その他の種類のクラスターでは機能しないことがあります。
-
-    * **Cluster Login User Name (クラスター ログイン ユーザー名)**: Spark クラスターと Kafka クラスターの管理者のユーザー名。
-
-    * **クラスター ログイン パスワード**: Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
-
-    * **SSH ユーザー名**: Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。
-
-    * **SSH パスワード**: Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。
-
-3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
-
-4. 最後に、**[購入]** を選択します。 クラスターの作成には約 20 分かかります。
-
-> [!IMPORTANT]  
-> クラスター、仮想ネットワーク、および Cosmos DB アカウントを作成するまで、最大で 45 分間かかる場合があります。
+1. 最後に、 **[購入]** を選択します。 クラスター、仮想ネットワーク、および Cosmos DB アカウントを作成するまで、最大で 45 分間かかる場合があります。
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>Cosmos DB データベースとコレクションを作成する
 
-このドキュメントで使用するプロジェクトでは、データを Cosmos DB に格納します。 コードを実行する前に、お使いの Cosmos DB インスタンス内に、まず _データベース_ と _コレクション_ を作成する必要があります。 ドキュメントのエンドポイントと、Cosmos DB に対する要求の認証に使用される _キー_ も取得する必要があります。 
+このドキュメントで使用するプロジェクトでは、データを Cosmos DB に格納します。 コードを実行する前に、お使いの Cosmos DB インスタンス内に、まず _データベース_ と _コレクション_ を作成する必要があります。 ドキュメントのエンドポイントと、Cosmos DB に対する要求の認証に使用される _キー_ も取得する必要があります。
 
 これを実行する方法の 1 つとして、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用します。 次のスクリプトでは、`kafkadata` という名前のデータベースと `kafkacollection` という名前のコレクションを作成します。 その後、プライマリ キーが返されます。
 
@@ -119,15 +102,16 @@ databaseName='kafkadata'
 collectionName='kafkacollection'
 
 # Create the database
-az cosmosdb database create --name $name --db-name $databaseName --resource-group $resourceGroupName
+az cosmosdb sql database create --account-name $name --name $databaseName --resource-group $resourceGroupName
+
 # Create the collection
-az cosmosdb collection create --collection-name $collectionName --name $name --db-name $databaseName --resource-group $resourceGroupName
+az cosmosdb sql container create --account-name $name --database-name $databaseName --name $collectionName --partition-key-path "/my/path" --resource-group $resourceGroupName
 
 # Get the endpoint
 az cosmosdb show --name $name --resource-group $resourceGroupName --query documentEndpoint
 
 # Get the primary key
-az cosmosdb list-keys --name $name --resource-group $resourceGroupName --query primaryMasterKey
+az cosmosdb keys list --name $name --resource-group $resourceGroupName --type keys
 ```
 
 ドキュメントのエンドポイントとプライマリ キーの情報は、次のテキストのようになっています。
@@ -141,38 +125,6 @@ az cosmosdb list-keys --name $name --resource-group $resourceGroupName --query p
 
 > [!IMPORTANT]  
 > Jupyter Notebook で必要とされるため、エンドポイントとキーの値を保存します。
-
-## <a name="get-the-apache-kafka-brokers"></a>Apache Kafka ブローカーを取得します
-
-この例のコードは、Kafka クラスターにある Kafka ブローカー ホストに接続します。 2 つの Kafka ブローカー ホストのアドレスを検出するには、以下の PowerShell または Bash の例を使います。
-
-```powershell
-$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
-$clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
-    -Credential $creds `
-    -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
-($brokerHosts -join ":9092,") + ":9092"
-```
-
-> [!NOTE]  
-> Bash の例では、`$CLUSTERNAME` に Kafka クラスターの名前に含めることが前提となります。
->
-> この例では、[jq](https://stedolan.github.io/jq/) ユーティリティを使って JSON ドキュメントからのデータを解析します。
-
-```bash
-curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
-```
-
-プロンプトが表示されたら、クラスター ログイン (管理者) アカウントのパスワードを入力します。
-
-出力は次のテキストのようになります。
-
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
-
-このドキュメントの以降のセクションで使用するため、この情報を保存してください。
 
 ## <a name="get-the-notebooks"></a>ノートブックを取得する
 
@@ -202,7 +154,7 @@ curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUST
 
 [Jupyter Notebook](https://jupyter.org/) のホーム ページから、__Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ エントリを選択します。 ノートブックの手順に従い、Spark 構造化ストリーミングを使って Kafka から Azure Cosmos DB にデータをストリーミングします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Apache Spark 構造化ストリームの使用方法を説明しました。Apache Spark、Apache Kafka、および Azure Cosmos DB の操作に関する詳細については、以下のドキュメントをご覧ください。
 

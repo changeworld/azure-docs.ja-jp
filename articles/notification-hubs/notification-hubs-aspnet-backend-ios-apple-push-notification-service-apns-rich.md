@@ -3,9 +3,9 @@ title: Azure Notification Hubs のリッチなプッシュ
 description: 機能豊富なプッシュ通知を Azure から iOS アプリに送信する方法について説明します。 コード サンプルは Objective-C と C# で記述されています。
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447754"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71212189"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 
@@ -50,12 +52,12 @@ ms.locfileid: "54447754"
     ![][IOS2]
 5. `Notifications.cs` に次の using ステートメントを追加します。
 
-    ```c#
+    ```csharp
     using System.Reflection;
     ```
 6. `Notifications` クラス全体を次のコードで更新します。 必ず、プレースホルダーを通知ハブの資格情報と画像ファイルの名前に置き換えてください。
 
-    ```c#
+    ```csharp
     public class Notification {
         public int Id { get; set; }
         // Initial notification message to display to users
@@ -105,7 +107,7 @@ ms.locfileid: "54447754"
 
 7. `NotificationsController.cs` で次のスニペットを使用して "NotificationsController" を再定義します。 これによりデバイスに最初のリッチなサイレント通知の ID が送信され、クライアント側で画像の取得が可能になります。
 
-    ```c#
+    ```csharp
     // Return http response with image binary
     public HttpResponseMessage Get(int id) {
         var stream = Notifications.Instance.ReadImage(id);
@@ -135,14 +137,14 @@ ms.locfileid: "54447754"
     }
     ```
 8. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
+9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。 **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
 
 ## <a name="modify-the-ios-project"></a>iOS プロジェクトを変更する
 
 アプリ バックエンドを通知の *ID* だけを送信するように変更したので、iOS アプリをその ID を処理してバックエンドからリッチ メッセージを取得するように変更します。
 
 1. iOS プロジェクトを開き、 **[Targets]** セクションのメイン アプリケーション ターゲットに移動して、リモート通知を有効にします。
-2. **[Capabilities]** をクリックし、**[Background Modes]** を [ON] にし、**[Remote Notifications]** チェックボックスをオンにします。
+2. **[Capabilities]** をクリックし、 **[Background Modes]** を [ON] にし、 **[Remote Notifications]** チェックボックスをオンにします。
 
     ![][IOS3]
 3. `Main.storyboard` を開き、[ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)に関するチュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。

@@ -1,21 +1,15 @@
 ---
-title: Azure Blockchain Workbench のメッセージ統合の概要
-description: Azure Blockchain Workbench でのメッセージの使用の概要。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
+title: メッセージを使用して Azure Blockchain Workbench と統合する
+description: メッセージを使用して Azure Blockchain Workbench Preview を他のシステムと統合する方法の概要。
+ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 8f63c62cd23fef5565628793379afd8bcc9f447b
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510157"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74324504"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
@@ -33,7 +27,7 @@ Azure Blockchain Workbench は、REST API を提供するだけでなく、メ�
 
 要求には次のフィールドが必要です。
 
-| **Name**             | **説明**                                      |
+| **名前**             | **説明**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID                                |
 | firstName            | ユーザーの名                              |
@@ -61,11 +55,11 @@ Azure Blockchain Workbench は、REST API を提供するだけでなく、メ�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **Name**              | **説明**                                                                                                             |
+| **名前**              | **説明**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID |
 | userId                | 作成されたユーザーの ID |
-| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの **オンチェーン**  アドレスです。 |
+| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
 | connectionId          | ブロックチェーン接続の一意識別子|
 | messageSchemaVersion  | メッセージング スキーマ バージョン |
 | messageName           | **CreateUserUpdate** |
@@ -111,7 +105,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 要求には次のフィールドが必要です。
 
-| **Name**             | **説明**                                                                                                           |
+| **名前**             | **説明**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID |
 | userChainIdentifier  | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
@@ -150,7 +144,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **Name**                 | **説明**                                                                   |
+| **名前**                 | **説明**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID                                                             |
 | contractId               | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
@@ -171,7 +165,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractUpdate",
-    "status": "Submitted"
+    "status": "Submitted",
     "additionalInformation": { }
 }
 ```
@@ -201,7 +195,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractUpdate",
-    "status": "Failure"
+    "status": "Failure",
     "additionalInformation": {
         "errorCode": 4000,
         "errorMessage": "Contract cannot be provisioned on connection."
@@ -215,7 +209,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 要求には次のフィールドが必要です。
 
-| **Name**                 | **説明**                                                                                                           |
+| **名前**                 | **説明**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID |
 | userChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
@@ -254,7 +248,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **Name**              | **説明**                                                                   |
+| **名前**              | **説明**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID|
 | contractId            | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
@@ -287,7 +281,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractActionUpdate",
-    "status": "Committed"
+    "status": "Committed",
     "additionalInformation": { }
 }
 ```
@@ -301,7 +295,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractActionUpdate",
-    "status": "Failure"
+    "status": "Failure",
     "additionalInformation": {
         "errorCode": 4000,
         "errorMessage": "Contract action cannot be provisioned on connection."
@@ -368,7 +362,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Logic Apps による Service Bus メッセージの使用
 
 1. Azure Portal で新しい **Azure Logic App** を作成します。
-2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、**[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
+2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、 **[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
 3. ワークフロー デザイナーが表示されたら、Service Bus の接続情報を指定します。
 4. サブスクリプションを選択し、**workbench-external** のトピックを指定します。
 5. このトリガーからのメッセージを利用するアプリケーションのロジックを開発します。
@@ -381,10 +375,10 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 
 個々のブロックに関する情報が含まれます。 *BlockMessage* には、ブロック レベル情報のセクションとトランザクション情報のセクションが含まれます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | block | [ブロック情報](#block-information)を含みます |
-| transactions | ブロックのコレクション [トランザクション情報](#transaction-information)を含みます |
+| トランザクション | ブロックのコレクション [トランザクション情報](#transaction-information)を含みます |
 | connectionId | 接続の一意の識別子 |
 | messageSchemaVersion | メッセージング スキーマ バージョン |
 | messageName | **BlockMessage** |
@@ -392,7 +386,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 
 #### <a name="block-information"></a>ブロック情報
 
-| Name              | 説明 |
+| 名前              | 説明 |
 |-------------------|-------------|
 | blockId           | Azure Blockchain Workbench 内のブロックの一意の識別子 |
 | blockNumber       | 台帳のブロックの一意の識別子 |
@@ -402,7 +396,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 
 #### <a name="transaction-information"></a>トランザクション情報
 
-| Name               | 説明 |
+| 名前               | 説明 |
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 内のトランザクションの一意の識別子 |
 | transactionHash    | 台帳のトランザクションのハッシュ |
@@ -415,7 +409,7 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
 ``` json
 {
     "block": {
-        "blockId": 123
+        "blockId": 123,
         "blockNumber": 1738312,
         "blockHash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
         "previousBlockHash": null,
@@ -423,14 +417,14 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
     },
     "transactions": [
         {
-            "transactionId": 234
+            "transactionId": 234,
             "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
             "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
             "to": null,
             "provisioningStatus": 1
         },
         {
-            "transactionId": 235
+            "transactionId": 235,
             "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
             "from": "0xadd97e1e595916e29ea94fda894941574000ffff",
             "to": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff",
@@ -448,7 +442,7 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
 
 コントラクトに関する情報が含まれます。 このメッセージには、コントラクト プロパティのセクションとトランザクション情報のセクションが含まれます。 特定のブロックのコントラクトを変更したすべてのトランザクションがトランザクション セクションに含まれます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | blockId | Azure Blockchain Workbench 内のブロックの一意の識別子 |
 | blockHash | ブロックのハッシュ |
@@ -464,7 +458,7 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
 
 #### <a name="modifying-transaction-information"></a>トランザクション情報の変更
 
-| Name               | 説明 |
+| 名前               | 説明 |
 |--------------------|-------------|
 | transactionId | Azure Blockchain Workbench 内のトランザクションの一意の識別子 |
 | transactionHash | 台帳のトランザクションのハッシュ |
@@ -473,7 +467,7 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
 
 #### <a name="contract-properties"></a>コントラクトのプロパティ
 
-| Name               | 説明 |
+| 名前               | 説明 |
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 内のワークフロー プロパティの一意の識別子 |
 | name | ワークフロー プロパティの名前 |
@@ -560,7 +554,7 @@ Azure Blockchain Workbench からの *ContractMessage* の例:
 
 関数名、パラメーターの入力、関数の呼び出し元など、コントラクト関数が呼び出されたときの情報を含みます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
 | caller                      | [呼び出し元情報](#caller-information) |
@@ -577,7 +571,7 @@ Azure Blockchain Workbench からの *ContractMessage* の例:
 
 #### <a name="caller-information"></a>呼び出し元情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | type | ユーザーやコントラクトなど、呼び出し元の種類 |
 | id | Azure Blockchain Workbench 内の呼び出し元の一意の識別子 |
@@ -585,14 +579,14 @@ Azure Blockchain Workbench からの *ContractMessage* の例:
 
 #### <a name="parameter-information"></a>パラメータ情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | name | パラメーター名 |
 | value | パラメーター値 |
 
 #### <a name="event-message-transaction-information"></a>イベント メッセージ トランザクション情報
 
-| Name               | 説明 |
+| 名前               | 説明 |
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 内のトランザクションの一意の識別子 |
 | transactionHash    | 台帳のトランザクションのハッシュ |
@@ -640,7 +634,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 
 アップロードされるアプリケーションの名前やバージョンなど、アプリケーションが Workbench にアップロードされるときの情報を含みます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | eventName | **ApplicationIngestion** |
 | applicationId | Azure Blockchain Workbench 内のアプリケーションの一意の識別子 |
@@ -658,7 +652,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 
 #### <a name="contract-code-information"></a>コントラクト コードの情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のコントラクト コード ファイルの一意の識別子 |
 | ledgerId | Azure Blockchain Workbench 内の台帳の一意の識別子 |
@@ -666,14 +660,14 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 
 #### <a name="application-role-information"></a>アプリケーション ロール情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ロールの一意の識別子 |
 | name | アプリケーション ロールの名前 |
 
 #### <a name="application-workflow-information"></a>アプリケーション ワークフロー情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ワークフローの一意の識別子 |
 | name | アプリケーション ワークフロー名 |
@@ -684,7 +678,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 
 ##### <a name="workflow-function-information"></a>ワークフロー関数の情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ワークフロー関数の一意の識別子 |
 | name | 関数名 |
@@ -692,7 +686,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 
 ##### <a name="workflow-state-information"></a>ワークフローの状態の情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | name | 状態名 |
 | displayName | 状態の表示名 |
@@ -700,7 +694,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 
 ##### <a name="workflow-property-information"></a>ワークフロー プロパティの情報
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ワークフロー プロパティの一意の識別子 |
 | name | プロパティ名 |
@@ -714,8 +708,8 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
     "applicationId": 31,
     "applicationName": "AssetTransfer",
     "applicationDisplayName": "Asset Transfer",
-    "applicationVersion": “1.0”,
-    "applicationDefinitionLocation": "http://url"
+    "applicationVersion": "1.0",
+    "applicationDefinitionLocation": "http://url",
     "contractCodes": [
         {
             "id": 23,
@@ -793,19 +787,19 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
                     "id": 879,
                     "name": "Description",
                     "type": {
-                                "name": "string"
+                        "name": "string"
                      }
                 },
                 {
                     "id": 880,
                     "name": "Price",
                     "type": {
-                                "name": "int"
+                        "name": "int"
                      }
                 }
             ]
         }
-    ]
+    ],
     "connectionId": [ ],
     "messageSchemaVersion": "1.0.0",
     "messageName": "EventMessage",
@@ -817,7 +811,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
                     "Name": "BuyerAccepted",
                     "Transitions": [
                         {
-                            "DisplayName": "Accept"
+                            "DisplayName": "Accept",
                             "AllowedRoles": [ ],
                             "AllowedInstanceRoles": [ "InstanceOwner" ],
                             "Function": "Accept",
@@ -834,7 +828,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
 
 ロールの割り当てを実行したユーザーや、ロールおよび対応するアプリケーションの名前など、Workbench でユーザーがロールを割り当てられたときの情報を含みます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | eventName | **RoleAssignment** |
 | applicationId | Azure Blockchain Workbench 内のアプリケーションの一意の識別子 |
@@ -851,14 +845,14 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
 
 #### <a name="roleassignment-application-role"></a>RoleAssignment アプリケーション ロール
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ロールの一意の識別子 |
 | name | アプリケーション ロールの名前 |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment アサイナー
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のユーザーの一意の識別子 |
 | type | アサイナーの種類 |
@@ -866,7 +860,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment アサイニー
 
-| Name | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のユーザーの一意の識別子 |
 | type | アサイニーの種類 |
@@ -880,7 +874,7 @@ Blockchain Workbench からの *EventMessage RoleAssignment* の例:
     "applicationId": 31,
     "applicationName": "AssetTransfer",
     "applicationDisplayName": "Asset Transfer",
-    "applicationVersion": “1.0”,
+    "applicationVersion": "1.0",
     "applicationRole": {
         "id": 134,
         "name": "Buyer"
@@ -902,6 +896,6 @@ Blockchain Workbench からの *EventMessage RoleAssignment* の例:
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [スマート コントラクトの統合パターン](integration-patterns.md)

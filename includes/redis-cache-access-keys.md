@@ -5,27 +5,25 @@ services: redis-cache
 author: wesmc7777
 ms.service: cache
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 50264dfba401f623c4ad14a6310303f2787fc85f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132837"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73720378"
 ---
-### <a name="retrieve-host-name-ports-and-access-keys-by-using-the-azure-portal"></a>Azure portal を使用して、ホスト名、ポート、およびアクセス キーを取得する
+### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Azure portal からホスト名、ポート、アクセス キーを取得する
 
-Azure Cache for Redis のインスタンスに接続するときには、キャッシュ クライアントにキャッシュのホスト名、ポート、およびキーが必要です。 クライアントによっては、これらの項目を参照するための名前が若干異なる場合があります。 この情報は、Azure Portal で取得できます。
+Azure Cache for Redis のインスタンスに接続するには、キャッシュ クライアントにキャッシュのホスト名、ポート、およびキーが必要です。 クライアントによっては、これらの項目を参照するための名前が若干異なる場合があります。 ホスト名、ポート、およびキーは [Azure portal](https://portal.azure.com) から取得できます。
 
-#### <a name="to-retrieve-the-access-keys-and-host-name"></a>アクセス キーおよびホスト名を取得するには
+- アクセス キーを取得するには、キャッシュの左側のナビゲーションから **[アクセス キー]** を選択します。 
+  
+  ![Azure Cache for Redis のキー](media/redis-cache-access-keys/redis-cache-keys.png)
 
-1. [Azure portal](https://portal.azure.com) を使用してアクセス キーを取得するには、キャッシュを参照して、**[アクセス キー]** を選択します。 
+- ホスト名とポートを取得するには、キャッシュの左側のナビゲーションから **[プロパティ]** を選択します。 ホスト名は、 *\<DNS 名>.redis.cache.windows.net* の形式になります。
 
-    ![Azure Cache for Redis のキー](media/redis-cache-access-keys/redis-cache-keys.png)
-
-2. ホスト名とポートを取得するには、**[プロパティ]** を選択します。
-
-    ![Azure Cache for Redis のプロパティ](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
+  ![Azure Cache for Redis のプロパティ](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

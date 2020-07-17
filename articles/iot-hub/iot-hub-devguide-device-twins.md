@@ -7,13 +7,14 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 883e81572218e39d84ad8793423b02468d49d00a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 02/01/2020
+ms.custom: mqtt
+ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294061"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81731461"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -58,7 +59,7 @@ ms.locfileid: "58294061"
 
 * **報告されるプロパティ**。 デバイスの構成や状態を同期するために、必要なプロパティと共に使用します。 デバイス アプリは報告されるプロパティを設定でき、ソリューション バックエンドはそれらを読み取りクエリを実行できます。
 
-* **デバイス ID のプロパティ**。 デバイス ツインの JSON ドキュメントのルートには、[ID レジストリ](iot-hub-devguide-identity-registry.md)に格納される対応するデバイス ID の読み取り専用プロパティが含まれます。
+* **デバイス ID のプロパティ**。 デバイス ツインの JSON ドキュメントのルートには、[ID レジストリ](iot-hub-devguide-identity-registry.md)に格納される対応するデバイス ID の読み取り専用プロパティが含まれます。 `connectionStateUpdatedTime` プロパティと `generationId` プロパティは含まれません。
 
 ![デバイス ツインのプロパティのスナップショット](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -119,7 +120,7 @@ ms.locfileid: "58294061"
 
 ### <a name="desired-property-example"></a>必要なプロパティの例
 
-上記の例では、ソリューション バックエンドとデバイス アプリが `telemetryConfig` デバイス ツインの必要なプロパティと報告されたプロパティを使用して、デバイスのテレメトリ構成を同期しています。 例: 
+上記の例では、ソリューション バックエンドとデバイス アプリが `telemetryConfig` デバイス ツインの必要なプロパティと報告されたプロパティを使用して、デバイスのテレメトリ構成を同期しています。 次に例を示します。
 
 1. ソリューション バックエンドでは、必要なプロパティが必要な構成値で設定されます。 以下は、ドキュメント内の必要なプロパティ セットを使用した部分です。
 
@@ -182,7 +183,7 @@ ms.locfileid: "58294061"
 
   - Properties
 
-    | Name | 値 |
+    | 名前 | 値 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -191,12 +192,12 @@ ms.locfileid: "58294061"
     deviceId | デバイスの ID |
     hubName | IoT Hub の名前 |
     operationTimestamp | 操作の [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) タイムスタンプ |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" または "updateTwin" |
 
     メッセージのシステム プロパティには、`$` シンボルが付きます。
 
-  - 本文
+  - Body
         
     このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
 
@@ -231,7 +232,7 @@ ms.locfileid: "58294061"
 
 デバイス アプリは、次のアトミック操作を使用して、デバイス ツインを操作します。
 
-* **デバイス ツインを取得する**。 この操作は、タグ、必要なシステム プロパティ、報告されるシステム プロパティを含む、現在接続されているデバイスのデバイス ツインのドキュメントを返します。
+* **デバイス ツインを取得する**。 この操作によって、必要なシステム プロパティと報告されるシステム プロパティを含む、現在接続されているデバイスのデバイス ツインのドキュメントが返されます。 (タグは、デバイス アプリには表示されません。)
 
 * **報告されるプロパティの部分的な更新** この操作では、現在接続されているデバイスの報告されるプロパティを部分的に更新できます。 この操作には、必要なプロパティを部分的に更新する際にソリューション バックエンドで使用されるものと同じ JSON 更新フォーマットが使用されます。
 
@@ -245,11 +246,15 @@ ms.locfileid: "58294061"
 
 タグ、必要なプロパティ、報告されるプロパティは JSON オブジェクトであり、次のような制限があります。
 
-* JSON オブジェクトのすべてのキーは、大文字小文字が区別される 64 バイトの UTF-8 UNICODE 文字列です。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、`$`、SP は使用できません。
+* **キー**: JSON オブジェクト内のすべてのキーは UTF-8 でエンコードされ、大文字と小文字が区別され、最大 1 KB の長さです。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、`$`、SP は使用できません。
 
-* JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。 整数の最大値は 4503599627370495 であり、整数の最小値は -4503599627370496 です。
+* **値**:JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。
 
-* タグ、必要なプロパティ、および報告されるプロパティのすべての JSON オブジェクトは、深さ 5 まで許容されます。 たとえば、次のオブジェクトは有効です。
+    * 使用できる整数の範囲は、-4503599627370496 (最小値) から 4503599627370495 (最大値) までです。
+
+    * 文字列値は UTF-8 でエンコードされ、最大長は 4 KB です。
+
+* **深さ**: タグ、必要なプロパティ、およびレポートされるプロパティにおける JSON オブジェクトの深さは最大で 10 です。 たとえば、次のオブジェクトは有効です。
 
    ```json
    {
@@ -260,7 +265,17 @@ ms.locfileid: "58294061"
                    "three": {
                        "four": {
                            "five": {
-                               "property": "value"
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
                            }
                        }
                    }
@@ -271,21 +286,29 @@ ms.locfileid: "58294061"
    }
    ```
 
-* すべての文字列値の長さは、最大で 512 バイトまで許容されます。
-
 ## <a name="device-twin-size"></a>デバイス ツインのサイズ
 
-読み取り専用の要素を除き、IoT Hub では `tags`、`properties/desired`、`properties/reported` の各合計値に対して強制的に 8 KB のサイズ制限が適用されます。
+IoT Hub では `tags` の値に 8 KB のサイズ制限が適用され、`properties/desired` と `properties/reported` の値にそれぞれ 32 KB のサイズ制限が適用されます。 これらの合計には、`$etag`、`$version`、`$metadata/$lastUpdated` などの読み取り専用の要素は含まれません。
 
-このサイズは、UNICODE 制御文字 (セグメント C0 と C1) を除くすべての文字と、文字列定数以外で使用されるスペースをカウントして計算されます。
+ツインのサイズは、次のように計算されます。
 
-ドキュメントのサイズが上述の制限を超えると、IoT Hub はすべての操作を拒否して、エラーを返します。
+* IoT Hub では、JSON ドキュメント内のプロパティごとに、プロパティのキーと値の長さを累積的に計算して追加します。
+
+* プロパティ キーは、UTF8 でエンコードされた文字列と見なされます。
+
+* 単純なプロパティ値は、UTF8 でエンコードされた文字列、数値 (8 バイト)、またはブール値 (4 バイト) と見なされます。
+
+* UTF8 でエンコードされた文字列のサイズは、UNICODE 制御文字 (セグメント C0 と C1) を除くすべての文字をカウントして計算されます。
+
+* 複合プロパティ値 (入れ子になったオブジェクト) は、プロパティ キーの合計サイズと、そこに含まれるプロパティ値に基づいて計算されます。
+
+IoT Hub は、`tags`、`properties/desired`、または `properties/reported` ドキュメントのサイズが制限を超えるすべての操作を拒否し、エラーを返します。
 
 ## <a name="device-twin-metadata"></a>デバイス ツインのメタデータ
 
 IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタイムスタンプを、デバイス ツインの必要なプロパティと報告されるプロパティで保持します。 タイムスタンプは UTC であり、[ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の `YYYY-MM-DDTHH:MM:SS.mmmZ` でエンコードされます。
 
-例: 
+次に例を示します。
 
 ```json
 {
@@ -371,7 +394,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイス ツインの詳細を理解したら、次の IoT Hub 開発者ガイド トピックも参考にしてください。
 

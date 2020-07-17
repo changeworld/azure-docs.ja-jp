@@ -1,36 +1,27 @@
 ---
-title: Azure App Configuration とは  | Microsoft Docs
+title: 'Azure App Configuration とは '
 description: Azure App Configuration サービスの概要。
-services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 985845197f8a1ece76fe0a620f05194109f51bd6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408677"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77523477"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 
 
 Azure App Configuration は、アプリケーション設定と機能フラグを一元的に管理するためのサービスを提供します。 近年のプログラム、特にクラウドで実行されるプログラムは、その性質上、分散されたコンポーネントが多数存在するのが一般的です。 これらのコンポーネント全体に構成設定を分散させることは、トラブルシューティングすることの難しいエラーがアプリケーションのデプロイ中に発生する原因となります。 App Configuration を使用すると、アプリケーションのすべての設定を 1 か所に格納して、そのアクセスをセキュリティで保護することができます。
 
-現在、App Configuration はパブリック プレビュー段階にあります。 プレビュー期間中は無料で使用できます。 サインアップは [Azure portal](https://portal.azure.com) で行うことができます。
-
 ## <a name="why-use-app-configuration"></a>App Configuration を使用する理由
 
-クラウドベースのアプリケーションは、複数リージョンにわたる複数の仮想マシンまたはコンテナーで実行され、複数の外部サービスを使用することが少なくありません。 そのような分散アプリケーションを堅牢でスケーラブルに作成することは、難しいことです。
+クラウドベースのアプリケーションは、複数リージョンにわたる複数の仮想マシンまたはコンテナーで実行され、複数の外部サービスを使用することが少なくありません。 分散環境で堅牢かつスケーラブルなアプリケーションを作成することは、大きな課題です。
 
-アプリケーション構築の増大する複雑さに取り組む開発者には、さまざまなプログラミング手法が役立ちます。 たとえば、"12 ファクター アプリ" では、クラウド アプリケーションで使用される多くの実証済みのアーキテクチャ パターンとベスト プラクティスが示されています。 このガイドの主な推奨事項の 1 つは、コードから構成を切り離すことです。 この場合、アプリケーションの構成設定をその実行可能ファイルとは別の場所に置いておき、その実行環境または外部ソースから読み取るということです。
+アプリケーション構築の増大する複雑さに取り組む開発者には、さまざまなプログラミング手法が役立ちます。 たとえば、[12 ファクター アプリ](https://12factor.net/)には、クラウド アプリケーションで使用される多くの十分にテストされたアーキテクチャ パターンとベスト プラクティスが示されています。 このガイドの主な推奨事項の 1 つは、コードから構成を切り離すことです。 アプリケーションの構成設定をその実行可能ファイルとは別の場所に置いておき、その実行環境または外部ソースから読み取るようにする必要があります。
 
 どのアプリケーションでも App Configuration を利用できますが、以下の例は、それを使用することにメリットがある種類のアプリケーションです。
 
@@ -47,7 +38,7 @@ App Configuration には次の利点があります。
 * 専用の UI で機能フラグを管理
 * 独自に定義したディメンションでの 2 つの構成群の比較
 * Azure のマネージド ID で強化されたセキュリティ
-* 完全なデータ暗号化 (保存データと転送中のデータ)
+* 保存時および転送中の機密情報の暗号化
 * 広く使われているフレームワークとのネイティブ統合
 
 App Configuration は、アプリケーションのシークレットを格納するために使用される [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を補完します。 App Configuration を使用すると、以下のシナリオを簡単に実装できます。
@@ -58,20 +49,21 @@ App Configuration は、アプリケーションのシークレットを格納�
 
 ## <a name="use-app-configuration"></a>App Configuration の使用
 
-アプリ構成ストアを自分のアプリケーションに追加する最も簡単な方法は、Microsoft が提供するクライアント ライブラリを使用することです。 プログラミング言語とフレームワークに基づいて、使用できる最適な方法を次に示します。
+App Configuration ストアを自分のアプリケーションに追加する最も簡単な方法は、Microsoft が提供するクライアント ライブラリを使用することです。 選択した言語とフレームワークに応じて、次の方法を使用して自分のアプリケーションに接続できます
 
 | プログラミング言語とフレームワーク | 接続する方法 |
 |---|---|
 | .NET Core と ASP.NET Core | .NET Core 用 App Configuration プロバイダー |
-| .NET と ASP.NET | .NET 用 App Configuration ビルダー |
+| .NET Framework および ASP.NET | .NET 用 App Configuration ビルダー |
 | Java Spring | Spring Cloud 用 App Configuration クライアント |
 | その他 | App Configuration の REST API |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ASP.NET Core のクイック スタート](./quickstart-aspnet-core-app.md)
 * [.NET Core のクイック スタート](./quickstart-dotnet-core-app.md)
 * [.NET Framework のクイック スタート](./quickstart-dotnet-app.md)
-* [Azure 関数のクイック スタート](./quickstart-azure-function-csharp.md)
+* [Azure Functions のクイックスタート](./quickstart-azure-functions-csharp.md)
 * [Java Spring のクイック スタート](./quickstart-java-spring-app.md)
 * [ASP.NET Core の機能フラグのクイック スタート](./quickstart-feature-flag-aspnet-core.md)
+* [Spring Boot の機能フラグのクイックスタート](./quickstart-feature-flag-spring-boot.md)

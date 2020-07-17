@@ -2,19 +2,19 @@
 title: 並列ドキュメントとは - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: 並列ドキュメントは、一方がもう一方の翻訳であるドキュメントのペアです。 ペアの一方のドキュメントにはソース言語の文が含まれ、もう一方のドキュメントにはターゲット言語に翻訳されたこれらの文が含まれています。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fa3abb9fc7b899fa5c74d6f1cd73ebbbb72b6047
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776633"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72675466"
 ---
 # <a name="what-are-parallel-documents"></a>並列ドキュメントとは
 
@@ -23,7 +23,7 @@ ms.locfileid: "57776633"
 
 ## <a name="requirements"></a>必要条件
 
-システムをトレーニングするには、10,000 以上の一意の並列文が必要です。 翻訳システムの品質を改善するには、並列コンテンツを継続的に追加して保持することをお勧めします。
+システムをトレーニングするには、10,000 以上の一意のアラインされた並列文が必要です。 この制限は、翻訳モデルのトレーニングを成功させるために、並列文に十分な一意のボキャブラリが確実に含まれるようにするための安全策です。 翻訳システムの品質を向上させるために、並列コンテンツを継続的に追加して保持することをお勧めします。 [文のアライン](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)に関するページを参照してください。
 
 Microsoft では、Custom Translator にアップロードするドキュメントが、第三者の著作権または知的財産に違反していないことを必須にしています。 詳細については、[使用条件](https://azure.microsoft.com/support/legal/cognitive-services-terms/)に関するページを参照してください。
 ポータルを使用してドキュメントをアップロードしても、ドキュメント自体の知的財産の所有権は変わりません。
@@ -44,6 +44,6 @@ Microsoft では、Custom Translator にアップロードするドキュメン�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Custom Translator で[辞書](what-is-dictionary.md)を使用する方法について説明します。

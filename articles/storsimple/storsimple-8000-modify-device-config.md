@@ -15,23 +15,23 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008381"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232151"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
 ## <a name="overview"></a>概要
 
-Azure ポータルでは、**[設定]** ブレードの **[デバイスの設定]** セクションに、StorSimple デバイス マネージャー サービスによって管理されている StorSimple デバイスの再構成できるすべてのデバイス パラメーターが含まれます。 このチュートリアルでは、**[設定]** ブレードを使用して以下のデバイス レベルのタスクを実行する方法について説明します。
+Azure ポータルでは、 **[設定]** ブレードの **[デバイスの設定]** セクションに、StorSimple デバイス マネージャー サービスによって管理されている StorSimple デバイスの再構成できるすべてのデバイス パラメーターが含まれます。 このチュートリアルでは、 **[設定]** ブレードを使用して以下のデバイス レベルのタスクを実行する方法について説明します。
 
 * デバイスのフレンドリ名を変更する
 * デバイスの時刻設定を変更する
 * セカンダリ DNS を割り当てる
-* ネットワーク インターフェイスを変更する
-* IP をスワップまたは再割り当てする
+* ネットワーク インターフェイスの変更
+* IP のスワップまたは再割り当て
 
 ## <a name="modify-device-friendly-name"></a>デバイスのフレンドリ名を変更する
 
@@ -93,11 +93,11 @@ Azure ポータルでセカンダリ DNS サーバーを変更するには、次
 
 1. StorSimple デバイス マネージャー サービスに移動します。 デバイスの一覧から、デバイスを選択してクリックします。
 
-2. **[設定]** ブレードで、**[デバイスの設定]、[ネットワーク]** の順に移動します。 これで、**[ネットワーク設定]** ブレードが表示されます。 **[DNS 設定]** タイルをクリックします。 セカンダリ DNS サーバーの IP アドレスを変更します。
+2. **[設定]** ブレードで、 **[デバイスの設定]、[ネットワーク]** の順に移動します。 これで、 **[ネットワーク設定]** ブレードが表示されます。 **[DNS 設定]** タイルをクリックします。 セカンダリ DNS サーバーの IP アドレスを変更します。
 
     ![セカンダリ DNS サーバーの IP アドレスを変更する](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. コマンド バーの **[保存]** をクリックし、確認を求められたら、**[OK]** をクリックします。
+4. コマンド バーの **[保存]** をクリックし、確認を求められたら、 **[OK]** をクリックします。
 
     ![変更を保存して確認する](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
@@ -165,8 +165,8 @@ DATA 1 から DATA 5 までのネットワーク インターフェイスでは�
 1. 両方のインターフェイスの IP アドレスをクリアします。
 2. IP アドレスがクリアされた後に、それぞれのインターフェイスに新しい IP アドレスを割り当てます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [StorSimple デバイスの MPIO の構成方法](storsimple-8000-configure-mpio-windows-server.md)を参照します。
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)を参照します。
+* [StorSimple デバイスの MPIO の構成方法](storsimple-8000-configure-mpio-windows-server.md)。
+* [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
 

@@ -2,17 +2,14 @@
 title: 概念 - Azure Kubernetes Services (AKS) におけるアクセスと ID
 description: Azure Kubernetes Service (AKS) におけるアクセスと ID について説明します。Azure Active Directory の統合、Kubernetes のロールベースのアクセス制御 (RBAC)、およびロールとバインドの説明が含まれています。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229663"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -40,7 +37,7 @@ Azure Active Directory (AD) の統合によって、AKS クラスターのセキ
 
 ![Azure Active Directory と AKS クラスターの統合](media/concepts-identity/aad-integration.png)
 
-Azure AD が統合された AKS クラスターでは、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与できます。 `kubectl` 構成コンテキストを取得するには、ユーザーは、[az aks get-credentials][ az-aks-get-credentials] コマンドを実行できます。 その後、ユーザーが `kubectl` を使用して AKS クラスターにアクセスすると、Azure AD 資格情報でサインインするように求められます。 このアプローチでは、ユーザー アカウントの管理とパスワードの資格情報のために 1 つのソースが提供されます。 ユーザーは、クラスター管理者によって定義されているリソースにのみアクセスできます。
+Azure AD が統合された AKS クラスターでは、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与できます。 `kubectl` 構成コンテキストを取得するには、ユーザーは、[az aks get-credentials][az-aks-get-credentials] コマンドを実行します。 その後、ユーザーが `kubectl` を使用して AKS クラスターにアクセスすると、Azure AD 資格情報でサインインするように求められます。 このアプローチでは、ユーザー アカウントの管理とパスワードの資格情報のために 1 つのソースが提供されます。 ユーザーは、クラスター管理者によって定義されているリソースにのみアクセスできます。
 
 AKS クラスターでの Azure AD 認証では、OAuth 2.0 プロトコル上に構築された ID 層である OpenID Connect を使用します。 OAuth 2.0 が保護されたリソースにアクセスするためのアクセス トークンの取得と使用を行うメカニズムを定義し、OpenID Connect が OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][openid-connect]を参照してください。 OpenID Connect を通して Azure AD から取得された認証トークンを検証するには、AKS クラスターでは Kubernetes Webhook トークン認証を使用します。 詳細については、[Webhook トークン認証のドキュメント][webhook-token-docs]を参照してください。
 
@@ -48,12 +45,12 @@ AKS クラスターでの Azure AD 認証では、OAuth 2.0 プロトコル上�
 
 ユーザーが実行できるアクションの詳細なフィルタ処理を行うには、Kubernetes ではロールベースのアクセス制御 (RBAC) を使用します。 この制御メカニズムを使用して、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うアクセス許可を割り当てることができます。 これらのアクセス許可は、付与するスコープを単一の名前空間にすることも、AKS クラスター全体にすることもできます。 Kubernetes の RBAC では、アクセス許可を定義する "*ロール*" を作成し、それらのロールを "*ロールのバインド*" を使用してユーザーに割り当てます。
 
-詳細については、「[Using RBAC authorization (RBAC 認可の使用)][kubernetes-rbac]」を参照してください。
+詳細については、[RBAC 承認の使用][kubernetes-rbac]に関するページを参照してください。
 
 ### <a name="azure-role-based-access-controls-rbac"></a>Azure のロールベースのアクセス制御
 リソースへのアクセスを制御するために追加された 1 つのメカニズムが、Azure のロールベースのアクセス制御 (RBAC) です。 Kubernetes の RBAC は、AKS クラスター内のリソースに対して機能するように設計され、Azure の RBAC は、Azure サブスクリプション内のリソースに対して機能するように設計されています。 Azure の RBAC では、適用されるアクセス許可の概要を説明する*ロール定義*を作成します。 その後、ユーザーまたはグループに特定の "*スコープ*" (個々のリソース、リソース グループ、またはサブスクリプション) で有効なロール定義が割り当てられます。
 
-詳細については、[Azure RBAC][azure-rbac] に関する記事を参照してください。
+詳細については、「[Azure RBAC とは][azure-rbac]」を参照してください。
 
 ## <a name="roles-and-clusterroles"></a>ロールと ClusterRole
 
@@ -71,11 +68,11 @@ ClusterRole は、リソースへのアクセス許可を付与するのと同�
 
 ClusterRoleBinding は、ユーザーにロールをバインドするのと同じように機能しますが、特定の名前空間ではなく、クラスター全体のリソースに適用できます。 このアプローチでは、管理者またはサポートエンジニアに対して、AKS クラスター内のすべてのリソースへのアクセス許可を付与できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure AD と Kubernetes の RBAC の使用を開始するには、「[Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
+Azure AD と Kubernetes の RBAC の使用を開始するには、[Azure Active Directory と AKS の統合][aks-aad]に関する記事を参照してください。
 
-関連するベスト プラクティスについては、[AKS の認証と承認に関するベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
+関連するベスト プラクティスについては、[AKS の認証と認可のベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
 
 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
@@ -91,7 +88,7 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md

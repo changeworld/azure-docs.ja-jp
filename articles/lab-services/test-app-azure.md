@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730411"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "65872355"
 ---
 # <a name="test-your-app-in-azure"></a>Azure でアプリをテストする 
-このアーティクルでは、DevTest Labs を使用して Azure のアプリケーションをテストするための手順を提供します。 最初に、ラボ内のファイル共有を設定して、ローカル開発用コンピューターとラボ内の VM にドライブとしてマウントします。 次に、Visual Studio 2017 を使用して、ラボの VM でアプリを実行できるように、ファイル共有にアプリをデプロイします。  
+このアーティクルでは、DevTest Labs を使用して Azure のアプリケーションをテストするための手順を提供します。 最初に、ラボ内のファイル共有を設定して、ローカル開発用コンピューターとラボ内の VM にドライブとしてマウントします。 次に、Visual Studio 2019 を使用して、ラボの VM でアプリを実行できるように、ファイル共有にアプリをデプロイします。  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "56730411"
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>ローカル コンピューターにファイル共有をマウントする
 1. ローカル コンピューター上で、[Windows で Azure ファイル共有を使用する](../storage/files/storage-how-to-use-files-windows.md)アーティクルの[Windows で Azure ファイル共有の資格情報を保持する](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows)セクションのスクリプトを使用します。 
-2. 次に、`net use`コマンドを使用して、コンピューターにファイル共有をマウントします。 サンプル コマンドを次に示します:コマンドを実行する前に、ご自分の Azure ストレージ名とファイル共有名を指定します。 
+2. 次に、`net use`コマンドを使用して、コンピューターにファイル共有をマウントします。 サンプル コマンドを次に示します: コマンドを実行する前に、Azure Storage の名前とファイル共有名を指定します。 
 
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
 
@@ -64,7 +64,7 @@ ms.locfileid: "56730411"
 ## <a name="publish-your-app-from-visual-studio"></a>Visual Studio から アプリを発行する
 このセクションでは、Visual Studio からクラウド内のテスト VM にアプリを発行します。
 
-1. Visual Studio 2017 を使用して、デスクトップや web アプリケーションを作成します。
+1. Visual Studio 2019 を使用して、デスクトップや web アプリケーションを作成します。
 2. アプリを作成します。
 3. アプリを発行するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**発行** を選択します。 
 4. **発行ウィザード**内で、ファイル共有にマップされている**ドライブ**を入力します。
@@ -99,7 +99,7 @@ ms.locfileid: "56730411"
 
     Azure で作成した テスト VM 内でアプリにアクセスしテストできるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボで VM を使用する方法については次のアーティクルを参照してください。 
 
 - [VM をラボに追加する](devtest-lab-add-vm.md)

@@ -1,23 +1,17 @@
 ---
-title: Java と Eclipse を使用して Azure 関数アプリを作成する | Microsoft Docs
+title: Java と Eclipse を使用して Azure 関数アプリを作成する
 description: Java と Eclipse を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure Functions に公開するためのハウツー ガイド。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jpconnock
-keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーレス アーキテクチャ, Java
-ms.service: azure-functions
-ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881428"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756488"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -43,15 +37,15 @@ Azure Functions を実行およびデバッグするためのローカル環境�
 
 ## <a name="create-a-functions-project"></a>Functions プロジェクトを作成する
 
-1. Eclipse の **[File]\(ファイル\)** メニューから **[Project]\(プロジェクト\)** を選択します。 
-1. **[New Project]\(新しいプロジェクト\)** ウィンドウで **[Java Project]\(Java プロジェクト\)** フォルダーを開き、**[Maven Project]\(Maven プロジェクト\)** を選択して **[Next]\(次へ\)** を選択します。
+1. Eclipse で、 **[File]\(ファイル\)** メニューを選択し、 **[New]\(新規作成\) &gt; [Maven Project]\(Maven プロジェクト\)** を選択します。 
 1. **[New Maven Project]\(新しい Maven プロジェクト\)** ダイアログを既定値のままにして **[Next]\(次へ\)** を選択します。
 1. **[Add Archetype]\(Archetype の追加\)** を選択し、[azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) のエントリを追加します。
     - [Archetype Group ID]\(Archetype グループ ID\): com.microsoft.azure
     - [Archetype Artifact ID]\(Archetype アーティファクト ID\): azure-functions-archetype
     - バージョン:[中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png) から最新バージョンを使用します  
-1. **[OK]** をクリックして、現在のプロジェクトの詳細を入力し、最後に **[Finish]\(完了\)** をクリックします。
+    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)で最新バージョンを調べて、そのバージョンを使用します  
+1. **[OK]** をクリックし、 **[次へ]** をクリックします。  `resourceGroup`、`appName`、`appRegion` を含むすべてのフィールドに値を入力し (**fabrikam-function-20170920120101928** とは異なる appName を使用してください)、最後に **[完了]** をクリックします。
+    ![Eclipse Maven の作成 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。
 
@@ -60,17 +54,17 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 > [!NOTE]
 > 関数をローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールする必要があります。
 
-1. 生成されたプロジェクトを右クリックし、**[別のユーザーとして実行]** と **[Maven ビルド]** を選択します。
-1. **[構成の編集]** ダイアログで、**[目標]** フィールドと **[名前]** フィールドに `package` を入力し、**[実行]** を選択します。 関数コードがビルドされ、パッケージ化されます。
+1. 生成されたプロジェクトを右クリックし、 **[別のユーザーとして実行]** と **[Maven ビルド]** を選択します。
+1. **[構成の編集]** ダイアログで、 **[目標]** フィールドと **[名前]** フィールドに `package` を入力し、 **[実行]** を選択します。 関数コードがビルドされ、パッケージ化されます。
 1. ビルドが完了したら、目標と名前に `azure-functions:run` を指定して前述のように別の実行構成を作成します。 **[実行]** を選択して IDE で関数を実行します。
 
 関数のテストが完了したら、コンソール ウィンドウのランタイムを終了します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
 
 ### <a name="debug-the-function-in-eclipse"></a>Eclipse で関数をデバッグする
 
-前の手順で設定した **[別のユーザーとして実行]** で、`azure-functions:run` を `mvn azure-functions:run -DenableDebug` に変更し、更新された構成を実行してデバッグ モードで関数アプリを起動します。
+前の手順で設定した **[別のユーザーとして実行]** で、`azure-functions:run` を `azure-functions:run -DenableDebug` に変更し、更新された構成を実行してデバッグ モードで関数アプリを起動します。
 
-**[実行]** メニューを選択し、**[デバッグ構成]** を開きます。 **[Remote Java Application]\(リモート Java アプリケーション\)** を選択し、新しいアプリケーションを作成します。 構成に名前を付けて、設定を入力します。 ポートは、関数ホストによって開かれたデバッグ ポート (既定では `5005`) と同じにする必要があります。 設定が完了したら、[`Debug`] をクリックしてデバッグを開始します。
+**[実行]** メニューを選択し、 **[デバッグ構成]** を開きます。 **[Remote Java Application]\(リモート Java アプリケーション\)** を選択し、新しいアプリケーションを作成します。 構成に名前を付けて、設定を入力します。 ポートは、関数ホストによって開かれたデバッグ ポート (既定では `5005`) と同じにする必要があります。 設定が完了したら、[`Debug`] をクリックしてデバッグを開始します。
 
 ![Eclipse での関数のデバッグ](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
@@ -96,7 +90,7 @@ az login
 [INFO] ------------------------------------------------------------------------
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
 - `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。

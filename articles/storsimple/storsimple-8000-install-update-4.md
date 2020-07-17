@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630196"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60860510"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple デバイスへの Update 4 のインストール
 
@@ -74,18 +74,18 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 指定の順序と推奨されるフォルダーで、次の修正プログラムをダウンロードしてインストールする必要があります。
 
-| 順序 | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
+| Order | KB | 説明 | 更新の種類 | インストール時間 |インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |ソフトウェア更新 |通常  <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
-| 2A. |KB4011841 <br> KB4011842 |LSI ドライバーおよびファームウェアの更新プログラム <br> USM ファームウェアの更新プログラム (バージョン 3.38) |通常  <br></br>中断なし |～ 3 時間 <br> (2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS のセキュリティ更新プログラム <br> Windows Server 2012 R2 のダウンロード |通常  <br></br>中断なし |- |SecondOrderUpdate|
-| 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS の更新プログラム パッケージ <br> Windows Server 2012 R2 のダウンロード |通常  <br></br>中断なし |- |SecondOrderUpdate|
+| 1. |KB4011839 |ソフトウェア更新 |通常 <br></br>中断なし |～ 25 分 |FirstOrderUpdate|
+| 2A. |KB4011841 <br> KB4011842 |LSI ドライバーおよびファームウェアの更新プログラム <br> USM ファームウェアの更新プログラム (バージョン 3.38) |通常 <br></br>中断なし |～ 3 時間 <br> (2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS のセキュリティ更新プログラム <br> Windows Server 2012 R2 のダウンロード |通常 <br></br>中断なし |- |SecondOrderUpdate|
+| 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS の更新プログラム パッケージ <br> Windows Server 2012 R2 のダウンロード |通常 <br></br>中断なし |- |SecondOrderUpdate|
 
 前の表で示したすべての更新プログラムのほか、ディスク ファームウェアの更新プログラムのインストールが必要になることもあります。 `Get-HcsFirmwareVersion` コマンドレットを実行すると、ディスク ファームウェアの更新プログラムが必要かどうかを確認できます。 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002`、`0106` の各ファームウェア バージョンを実行している場合は、これらの更新プログラムをインストールする必要はありません。
 
-| 順序 | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
+| Order | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
-| 手順 3. |KB3121899 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
+| 3. |KB3121899 |ディスク ファームウェア |メンテナンス <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
 
 <br></br>
 
@@ -100,6 +100,6 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳しくは、[Update 4 リリース](storsimple-update4-release-notes.md)に関するページをご覧ください。
 

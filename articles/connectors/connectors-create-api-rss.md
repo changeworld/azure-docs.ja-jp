@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から RSS フィードに接続する | Microsoft Docs
+title: Azure Logic Apps から RSS フィードに接続する
 description: Azure Logic Apps を使用して RSS フィードを監視および管理するタスクとワークフローを自動化する
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233057"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789343"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して RSS フィードを管理する
 
@@ -31,7 +27,7 @@ RSS トリガーを使用すると、RSS フィードからの応答を取得し
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * RSS フィードの URL
 
@@ -49,7 +45,7 @@ RSS トリガーを使用すると、RSS フィードからの応答を取得し
 
      または
 
-   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「rss」と入力します。 アクションの一覧で、目的のアクションを選択します。
+   * 既存のロジック アプリの場合、アクションを追加する手順で、 **[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「rss」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
 1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
@@ -62,6 +58,6 @@ RSS トリガーを使用すると、RSS フィードからの応答を取得し
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

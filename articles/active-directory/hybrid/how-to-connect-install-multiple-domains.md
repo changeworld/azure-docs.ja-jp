@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098680"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201042"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -69,7 +69,7 @@ bmfabrikam.com ドメインの設定は、以下のようになっています�
 
 そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。  一致するものが見つからなければ、認証は失敗します。
 
-たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は <http://bmcontoso.com/adfs/services/trust> に設定されます。 この要素は Azure AD の構成と一致し、認証は成功します。
+たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は `http://bmcontoso.com/adfs/services/trust` に設定されます。 この要素は Azure AD の構成と一致し、認証は成功します。
 
 次の規則は、このロジックを満たすカスタマイズ済みの要求規則です。
 
@@ -82,7 +82,7 @@ bmfabrikam.com ドメインの設定は、以下のようになっています�
 >
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>AD FS と Azure AD の間の信頼を更新するには
-AD FS と Azure AD インスタンスとの間でフェデレーションによる信頼を設定していない場合は、改めてこの信頼の作成が必要になる場合があります。  これは、`-SupportMultipleDomain` パラメーターを使用せずに設定すると、IssuerUri が既定値で設定されるからです。  下記のスクリーンショットでは、IssuerUri が https://adfs.bmcontoso.com/adfs/services/trust に設定されていることがわかります。
+AD FS と Azure AD インスタンスとの間でフェデレーションによる信頼を設定していない場合は、改めてこの信頼の作成が必要になる場合があります。  これは、`-SupportMultipleDomain` パラメーターを使用せずに設定すると、IssuerUri が既定値で設定されるからです。  下記のスクリーンショットでは、IssuerUri が `https://adfs.bmcontoso.com/adfs/services/trust` に設定されていることがわかります。
 
 Azure AD ポータルに新しいドメインを正常に追加した後、`Convert-MsolDomaintoFederated -DomainName <your domain>` を使用してドメインを変換しようとすると、次のエラーが発生します。
 
@@ -101,7 +101,7 @@ Azure AD ポータルに新しいドメインを正常に追加した後、`Conv
 以下の手順で、Microsoft Online の信頼を削除し、元のドメインを更新します。
 
 1. AD FS フェデレーション サーバーで、 **AD FS 管理**
-2. 左側で、**[信頼関係]**、**[証明書利用者信頼]** の順に展開します。
+2. 左側で、 **[信頼関係]** 、 **[証明書利用者信頼]** の順に展開します。
 3. 右側で、 **[Microsoft Office 365 ID プラットフォーム]** エントリを削除します。
    ![Remove Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
@@ -126,18 +126,18 @@ Azure AD ポータルに新しいドメインを正常に追加した後、`Conv
 5. [インストール] をクリックします。
 
 ### <a name="verify-the-new-top-level-domain"></a>新しいトップレベル ドメインの確認
-PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your domain>`を使用して、更新された IssuerUri を確認できます。  下のスクリーンショットは、元のドメイン http://bmcontoso.com/adfs/services/trust でフェデレーション設定が更新されたことを示しています。
+PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your domain>`を使用して、更新された IssuerUri を確認できます。  下のスクリーンショットは、元のドメイン `http://bmcontoso.com/adfs/services/trust` でフェデレーション設定が更新されたことを示しています。
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-また、新しいドメインの IssuerUri として、 https://bmfabrikam.com/adfs/services/trust が設定されています。
+また、新しいドメインの IssuerUri として、`https://bmfabrikam.com/adfs/services/trust` が設定されています。
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 
 ## <a name="support-for-subdomains"></a>サブドメインのサポート
 サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。  そのため、IssuerUri は親に一致させる必要があります。
 
-たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、**http://bmcontoso.com/adfs/services/trust とする必要があります。**  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust**  としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、 **`http://bmcontoso.com/adfs/services/trust`** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **`http://corp.bmcontoso.com/adfs/services/trust`**  としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>サブドメインのサポートを有効にする方法
 この動作を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。
@@ -166,7 +166,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 
 5. [OK] をクリックします。  [適用] をクリックします。  [OK] をクリックします。  AD FS 管理を閉じます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
 
 インストールの結果有効になった機能について詳しくは、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。

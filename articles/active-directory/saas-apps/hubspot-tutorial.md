@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d74cc1665867568032bb1343e4f2c26c50fe15a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65770184"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68944442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
@@ -48,14 +48,14 @@ HubSpot と Azure AD の統合を構成するには、次のものが必要で�
 
 HubSpot では、次の機能がサポートされています。
 
-* **SP によって開始されるシングル サインオン**
+* **SP が起点となるシングル サインオン**
 * **IDP が起点となるシングル サインオン**
 
 ## <a name="add-hubspot-in-the-azure-portal"></a>Azure portal で HubSpot を追加する
 
 HubSpot を Azure AD と統合するには、マネージド SaaS アプリの一覧に HubSpot を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 
@@ -104,7 +104,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** ウィンドウで、"*IDP-initiated モード*" を構成するには、次の手順のようにします。
+1. **[基本的な SAML 構成]** ウィンドウで、*IDP 開始モード*を構成するために、次の手順を実行します。
 
     1. **[識別子]** ボックスに、次のパターンの URL を入力します: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<カスタマー ID\>。
 
@@ -125,7 +125,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択します。 要件に基づいてダウンロード オプションを選択します。 お使いのコンピューターに証明書ファイルを保存します。
 
-    ![証明書 (Base64) のダウンロード オプション](common/certificatebase64.png)
+    ![証明書 (Base64) ダウンロード オプション](common/certificatebase64.png)
 
 1. **[HubSpot のセットアップ]** セクションで、要件に基づいて次の URL をコピーします。
 
@@ -161,7 +161,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     1. HubSpot の **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure portal でコピーした **[ログイン URL]** の値を貼り付けます。
 
-    1. メモ帳で、ダウンロードした証明書 (Base64) ファイルを開きます。 ファイルの内容を選択してコピーします。 次に、HubSpot でそれを  **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    1. Windows のメモ帳で、ダウンロードした証明書 (Base64) ファイルを開きます。 ファイルの内容を選択してコピーします。 次に、HubSpot でそれを **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
     1. **[認証]** を選択します。
 
@@ -187,7 +187,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
@@ -213,7 +213,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに関連するロールを選択します。 **[選択]** を選択します。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 
@@ -258,7 +258,7 @@ HubSpot でユーザー アカウントをプロビジョニングするには
 
 シングル サインオンをセットアップした後、マイ アプリ ポータルで **[HubSpot]** を選択すると、HubSpot に自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。
 

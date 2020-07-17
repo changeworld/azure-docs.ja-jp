@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: f2af216dc199de7a49546a903b929a17cbddfe9f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: e70ee8843e467af152eedefdf7e03a4ea869e4a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341193"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "69638234"
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub と物理デバイス入門チュートリアル
 
@@ -24,6 +24,5 @@ ms.locfileid: "49341193"
 |---------------------------------|----------------------|
 | Raspberry Pi                    | [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)、[C](iot-hub-raspberry-pi-kit-c-get-started.md)  |
 | IoT DevKit                      | [VSCode の Arduino](iot-hub-arduino-iot-devkit-az3166-get-started.md)     |
-| Adafruit Feather HUZZAH ESP8266 | [Arduino](iot-hub-arduino-huzzah-esp8266-get-started.md)              |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]

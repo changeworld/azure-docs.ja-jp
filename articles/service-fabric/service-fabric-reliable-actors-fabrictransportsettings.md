@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アクターで FabricTransport の設定を変更する | Microsoft Docs
-description: Azure Service Fabric アクターの通信の設定を構成する方法について説明します。
-services: Service-Fabric
-documentationcenter: .net
+title: FabricTransport 設定を変更する
+description: さまざまなアクター構成用に Azure Service Fabric アクターの通信の設定を構成する方法について説明します。
 author: suchiagicha
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: b6cff24e5a7812a88673d80476819e51e6f5da35
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: pepogors
+ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667635"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645584"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 

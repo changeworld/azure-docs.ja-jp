@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738727"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "60499887"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
 
@@ -34,7 +34,7 @@ ms.locfileid: "56738727"
 ## <a name="definitions"></a>定義
 
 
-|用語  |説明  |
+|期間  |説明  |
 |---------|---------|
 |Answer     | 応答で返される結果のカテゴリ。 たとえば、Bing Web Search API からの応答であれば、回答として返される可能性のあるカテゴリは Web ページの結果、画像、ビデオ、およびニュースになります。 |
 |Response     | Search API の単一の呼び出しにより取得される回答すべてと、その関連データ。 |
@@ -114,7 +114,7 @@ ms.locfileid: "56738727"
 メッセージング アプリやソーシャル メディアの投稿を通じてユーザーが Search API からの応答を別のユーザーに転送することが許可されている場合は、次の要件が適用されます。 
 
 - 転送される応答は、次の条件を満たす必要があります。
-  - 転送元のユーザーの元に表示された応答のコンテンツに変更を加えていないコンテンツで構成されていること  (形式を変更することは問題ありません)。
+  - 転送元のユーザーの元に表示された応答のコンテンツに変更を加えていないコンテンツで構成されていること (形式を変更することは問題ありません)。
   - メタデータ形式のデータが含まれていないこと。
   - Bing Web Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API からの応答については、その応答が Bing を利用しているインターネット検索エクスペリエンスにより得られたものである旨の文言を表示すること。 たとえば、"Powered by Bing"、"Bing でこの画像の詳細を確認する" などの文言を表示したり、Bing ロゴを使用したりする方法が考えられます。
   - Bing Custom Search API からの応答については、その応答がインターネット検索エクスペリエンスにより得られたものである旨の文言を表示すること。 たとえば、"この検索結果の詳細を確認する" などの文言を表示する方法が考えられます。

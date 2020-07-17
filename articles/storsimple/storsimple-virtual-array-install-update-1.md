@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228095"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 1.0 をインストールする
 
@@ -70,7 +70,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 1.0 については、「**4047203**」を入力して、**[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 1.0 については、「**4047203**」を入力して、 **[検索]** をクリックします。
    
     **StorSimple Virtual Array Update 1.0** など、修正プログラムの一覧が表示されます。
    
@@ -99,11 +99,11 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをインストールするには
 
-1. ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。 実行しているソフトウェアのバージョンをメモしておきます。 **Update 0.6 (10.0.10293.0) を実行している場合にのみ、この更新プログラムを続行します。前のバージョンを実行している場合は、最初に [Update 0.6 をインストール](storsimple-virtual-array-install-update-06.md)してから、Update 1 を適用してください**。
+1. ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 実行しているソフトウェアのバージョンをメモしておきます。 **Update 0.6 (10.0.10293.0) を実行している場合にのみ、この更新プログラムを続行します。前のバージョンを実行している場合は、最初に [Update 0.6 をインストール](storsimple-virtual-array-install-update-06.md)してから、Update 1 を適用してください**。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
@@ -115,7 +115,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
-5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 1.0 では **10.0.0.0.0.10296** です。
+5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 1.0 では **10.0.0.0.0.10296** です。
    
    > [!NOTE]
    > ローカル Web UI と Azure Portal では、ソフトウェアのバージョンの表示方法が少し異なります。 たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10296** と表示され、Azure Portal では **10.0.10296.0** と表示されます。
@@ -127,6 +127,6 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 > [!NOTE]
 > Update 0.6 より前のバージョンを実行しているデバイスに直接 Update 1 を適用すると、一部の更新プログラムはインストールされません。 Microsoft サポートに対処法をお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。

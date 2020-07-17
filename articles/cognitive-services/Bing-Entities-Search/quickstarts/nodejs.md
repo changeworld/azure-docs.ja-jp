@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:Node.js を使用して REST API に検索要求を送信する - Bing Entity Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用すると、C# を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104371"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448627"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -40,7 +40,7 @@ ms.locfileid: "58104371"
     let https = require ('https');
     ```
 
-2. API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。
+2. API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -173,10 +173,10 @@ ms.locfileid: "58104371"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

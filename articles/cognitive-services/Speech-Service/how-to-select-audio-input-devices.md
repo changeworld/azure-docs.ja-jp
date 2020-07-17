@@ -1,27 +1,25 @@
 ---
-title: Speech SDK を使用してオーディオ入力デバイスを選択する方法 - Speech Services
+title: Speech SDK を使用してオーディオ入力デバイスを選択する方法
 titleSuffix: Azure Cognitive Services
-description: Speech SDK でオーディオ入力デバイスを選択する方法について説明します。
+description: システムに接続されているオーディオデバイスの ID の取得することで Speech SDK (C++、C#、Python、Objective-C、Java、JavaScript) でオーディオ入力デバイスを選択することについて説明します。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 2/20/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010381"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74109979"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Speech SDK を使用してオーディオ入力デバイスを選択する
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>方法:Speech SDK を使用してオーディオ入力デバイスを選択する
 
-Speech SDK のバージョン 1.3.0 では、オーディオ入力を選択するための API が導入されています。
-この記事では、システムに接続されているオーディオ デバイスの ID を取得する方法について説明します。
-それらは、`AudioConfig` オブジェクトを使用してオーディオ デバイスを構成することで、Speech SDK で使用できるようになります。
+Speech SDK のバージョン 1.3.0 では、オーディオ入力を選択するための API が導入されています。 この記事では、システムに接続されているオーディオ デバイスの ID を取得する方法について説明します。 それらは、`AudioConfig` オブジェクトを使用してオーディオ デバイスを構成することで、Speech SDK で使用できるようになります。
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,12 +44,14 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```JavaScript
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
->[!Note]
+
+> [!Note]
 > Node.js で実行される JavaScript ではマイクは使用できません。
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>デスクトップ アプリケーション向けの Windows でのオーディオ デバイス ID
 
 デスクトップ アプリケーション向けの Windows では、オーディオ デバイスの[エンドポイント ID 文字列](/windows/desktop/CoreAudio/endpoint-id-strings)を [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) オブジェクトから取得できます。
+
 次のコード サンプルは、これを使用して C++ でオーディオ デバイスを列挙する方法を示しています。
 
 ```cpp
@@ -176,6 +176,7 @@ namespace ConsoleApp
 ## <a name="audio-device-ids-on-uwp"></a>UWP でのオーディオ デバイス ID
 
 ユニバーサル Windows プラットフォーム (UWP) では、対応する [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) オブジェクトの `Id()` プロパティを使用してオーディオ入力デバイスを取得できます。
+
 次のコード サンプルは、C++ と C# でこれを行う方法を示しています。
 
 ```cpp
@@ -226,13 +227,16 @@ namespace helloworld {
 ## <a name="audio-device-ids-on-linux"></a>Linux でのオーディオ デバイス ID
 
 標準の ALSA デバイス ID を使用して、デバイス ID が選択されます。
+
 システムに接続された入力の ID は、コマンド `arecord -L` の出力に含まれます。
 あるいは、[ALSA C ライブラリ](https://www.alsa-project.org/alsa-doc/alsa-lib/)を使用して取得できます。
+
 サンプル ID は `hw:1,0` と `hw:CARD=CC,DEV=0` です。
 
 ## <a name="audio-device-ids-on-macos"></a>macOS でのオーディオ デバイス ID
 
 Objective-C で実装された次の関数は、Mac に接続されているオーディオ デバイスの名前と ID のリストを作成するものです。
+
 `deviceUID` 文字列は、macOS 用 Speech SDK でデバイスを識別するために使用されます。
 
 ```objc
@@ -361,8 +365,8 @@ CFArrayRef CreateInputDeviceArray()
 
 ## <a name="audio-device-ids-on-ios"></a>iOS でのオーディオ デバイス ID
 
-iOS では、Speech SDK を使用したオーディオ デバイスの選択はサポートされていません。
-ただし、SDK を使用しているアプリは、[`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) フレームワークを使用してオーディオ ルーティングに作用できます。
+iOS では、Speech SDK を使用したオーディオ デバイスの選択はサポートされていません。 ただし、SDK を使用しているアプリは、[`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) フレームワークを使用してオーディオ ルーティングに作用できます。
+
 たとえば、次の命令は、
 
 ```objc
@@ -376,7 +380,7 @@ iOS では、Speech SDK を使用したオーディオ デバイスの選択は�
 
 JavaScript では、[MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) メソッドを使用してメディア デバイスを列挙することにより、`fromMicrophone(...)` に渡すデバイス ID を検索できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub でサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

@@ -1,20 +1,20 @@
 ---
-title: チュートリアル - Azure CLI で公開/サブスクライブ チャネルとトピック フィルターを使用して小売在庫品を更新する | Microsoft Docs
-description: このチュートリアルでは、トピックとサブスクリプションからメッセージを送受信する方法と、Azure CLI を使用してフィルター ルールを追加および使用する方法について説明します。
+title: チュートリアル:Azure CLI で公開/サブスクライブ チャネルとトピック フィルターを使用して小売在庫品を更新する
+description: チュートリアル:このチュートリアルでは、トピックとサブスクリプションからメッセージを送受信する方法と、Azure CLI を使用してフィルター ルールを追加および使用する方法について説明します。
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: e55c8c6a579489c8ed5a13ccb93f0e72c286ab13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991939"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73718910"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル:CLI とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -155,7 +155,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
    ![プログラムの出力](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のコマンドを実行して、リソース グループ、名前空間、およびすべての関連リソースを削除します。
 
@@ -328,9 +328,9 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure CLI を使用してリソースをプロビジョニングした後、Service Bus のトピックとそのサブスクリプションからメッセージを送受信しました。 以下の方法について学習しました。
+このチュートリアルでは、Azure CLI を使用してリソースをプロビジョニングした後、Service Bus のトピックとそのサブスクリプションからメッセージを送受信しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して、Service Bus トピックとそのトピックへの 1 つ以上のサブスクリプションを作成する

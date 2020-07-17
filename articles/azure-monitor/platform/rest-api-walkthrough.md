@@ -1,19 +1,16 @@
 ---
 title: Azure 監視 REST API のチュートリアル
 description: 要求を認証し、Azure Monitor REST API を使用して使用可能なメトリック定義およびメトリックの値を取得する方法を説明します。
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
+ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: robb
-ms.subservice: ''
-ms.openlocfilehash: bbc5aaf02f4ab4388e816faaf8df536770f3302a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205631"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610889"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -58,7 +55,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Azure Monitor API を照会するには、クライアント アプリケーションは、前に作成したサービス プリンシパルを使用して認証する必要があります。 次の PowerShell スクリプトの例は、[Active Directory 認証ライブラリ](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) を使用して JWT 認証トークンを取得する 1 つの方法を示しています。 JWT トークンは、要求の HTTP 承認パラメーターの一部として Azure Monitor REST API に渡されます。
+Azure Monitor API を照会するには、クライアント アプリケーションは、前に作成したサービス プリンシパルを使用して認証する必要があります。 次の PowerShell スクリプトの例は、[Active Directory 認証ライブラリ](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) を使用して JWT 認証トークンを取得する 1 つの方法を示しています。 JWT トークンは、要求の HTTP 承認パラメーターの一部として Azure Monitor REST API に渡されます。
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -98,7 +95,7 @@ $authHeader = @{
 
 **メソッド**: GET
 
-**Request URI**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Request URI**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 たとえば、Azure Storage アカウントのメトリック定義を取得する要求は次のようになります。
 
@@ -120,7 +117,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。(2 番目のメトリックがディメンションを備えていることに注意してください)
 
-```JSON
+```json
 {
     "value": [
         {
@@ -242,7 +239,7 @@ Invoke-RestMethod -Uri $request `
 
 **メソッド**: GET
 
-**Request URI**: https\://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api-version=*{apiVersion}*
+**Request URI**: https\://management.azure.com/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &resultType=metadata&api-version= *{apiVersion}*
 
 たとえば、指定した時間範囲内の間は GeoType ディメンションが 'Primary' で、'Transactions' メトリックの 'API Name dimension' に対して生成されたディメンション値のリストを取得する場合、要求は次のようになります。
 
@@ -258,7 +255,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
@@ -315,7 +312,7 @@ Invoke-RestMethod -Uri $request `
 
 **メソッド**: GET
 
-**要求 URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregation=*{aggreation}*&api-version=*{apiVersion}*
+**要求 URI**: https:\//management.azure.com/subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/microsoft.insights/metrics?metricnames= *{metric}* &timespan= *{starttime/endtime}* &$filter= *{filter}* &interval= *{timeGrain}* &aggregation= *{aggreation}* &api-version= *{apiVersion}*
 
 たとえば、5 分の範囲内の 'Transactions' の数を基準にして、GeotType が 'Primary' である上位 3 つの API を降順で取得する場合、要求は次のようになります。
 
@@ -331,7 +328,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "cost": 0,
   "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
@@ -394,7 +391,7 @@ Invoke-RestMethod -Uri $request `
 
 **メソッド**: GET
 
-**Request URI**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Request URI**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 たとえば、Azure Logic App のメトリック定義を取得する要求は次のようになります。
 
@@ -415,7 +412,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
   "value": [
@@ -467,7 +464,7 @@ Invoke-RestMethod -Uri $request `
 
 **メソッド**: GET
 
-**要求 URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*
+**要求 URI**: `https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 たとえば、特定の時間範囲と 1 時間の時間グレインに対して RunsSucceeded メトリック データ ポイントを取得する場合、要求は次のようになります。
 
@@ -483,7 +480,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "value": [
     {
@@ -531,7 +528,7 @@ Invoke-RestMethod -Uri $request `
 
 結果として得られる JSON 応答本文は次の例のようになります。
 
-```JSON
+```json
 {
   "value": [
     {
@@ -591,7 +588,7 @@ Invoke-RestMethod -Uri $request `
 
 たとえば、特定の Logic App のメトリック定義を取得するためには、次のコマンドを実行します。
 
-```
+```console
 armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01
 ```
 
@@ -605,23 +602,23 @@ REST API を使用すると、使用可能なメトリック定義、粒度、�
 
 次の一覧は、さまざまな Azure リソースのリソース ID 形式の例をいくつか示しています。
 
-* **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **Elastic SQL Pool** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
-* **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
-* **Service Bus** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
-* **仮想マシン スケール セット** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{vm-name}*
-* **VM** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
-* **Event Hubs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
+* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **Elastic SQL Pool** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{pool-db}* /elasticpools/ *{sql-pool-name}*
+* **SQL Database (v12)** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{server-name}* /databases/ *{database-name}*
+* **Service Bus** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
+* **仮想マシン スケール セット** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{vm-name}*
+* **VM** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
+* **Event Hubs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{eventhub-namespace}*
 
 他にもリソース ID を取得する方法はあります。Azure リソース エクスプローラーを使用する、Azure ポータル、PowerShell、Azure CLI で目的のリソースを表示する、などの方法です。
 
-### <a name="azure-resource-explorer"></a>Azure リソース エクスプローラー
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
 目的のリソースのリソース ID を見つける 1 つの方法として便利なのは、 [Azure リソース エクスプローラー](https://resources.azure.com) ツールを使用することです。 目的のリソースに移動すると、次のスクリーンショットのように ID が表示されます。
 
 ![Alt "Azure リソース エクスプローラー"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure ポータルからリソース ID を取得することもできます。 これを行うには、目的のリソースに移動し、[プロパティ] を選択します。 リソース ID は、次のスクリーンショットのように [プロパティ] セクションに表示されます。
 
@@ -637,7 +634,7 @@ Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 
 結果は次の例のようになります。
 
-```
+```output
 Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets
 Name           : ContosoTweets
 Type           : Microsoft.Logic/workflows
@@ -659,13 +656,13 @@ Version        : 08586982649483762729
 
 Azure CLI を使用して Azure Storage アカウントのリソース ID を取得するには、次の例で示すように、`az storage account show` コマンドを実行します。
 
-```
+```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 ```
 
 結果は次の例のようになります。
 
-```JSON
+```json
 {
   "accessTier": null,
   "creationTime": "2017-08-18T19:58:41.840552+00:00",
@@ -720,7 +717,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [監視の概要](../../azure-monitor/overview.md)に関するページを確認します。
 * [Azure Monitor のサポートされるメトリック](metrics-supported.md)を表示します。

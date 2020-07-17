@@ -3,25 +3,25 @@ title: リンクと URL の Azure AD アプリ プロキシの変換 | Microsoft
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/04/2018
-ms.author: celested
-ms.reviewer: harshja
+ms.date: 08/15/2019
+ms.author: mimart
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262552"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "69533688"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -30,13 +30,16 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 お客様の企業ネットワークの内でも外でも、リンクを同じように機能させるのに最適な方法は、アプリの外部 URL をその内部 URL と一致するように構成することです。 外部 URL に、規定値のアプリケーション プロキシ ドメインではなく、お客様の企業ドメイン名が含まれるように構成するには、[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用します。
 
 
-テナントでカスタム ドメインを使用できない場合、この機能を提供するその他のいくつかのオプションがあります。 これらはすべて、カスタム ドメインとの互換性も相互の互換性もあるため、カスタム ドメインやその他のソリューションを必要に応じて構成できます。 
+テナントでカスタム ドメインを使用できない場合、この機能を提供するその他のいくつかのオプションがあります。 これらはすべて、カスタム ドメインとの互換性も相互の互換性もあるため、カスタム ドメインやその他のソリューションを必要に応じて構成できます。
 
-**オプション 1:Managed Browser を使用する** – このソリューションは、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに推奨または要求することを計画している場合にのみ適用されます。 すべての公開されている URL を処理します。 
+> [!NOTE]
+> JavaScript によって生成されたハードコーディングされている内部 URL では、リンク変換はサポートされません。
 
-**オプション 2:MyApps 拡張機能を使用する** – このソリューションは、クライアント側のブラウザー拡張機能をインストールすることをユーザーに要求しますが、すべての公開されている URL を処理し、ほとんどの一般的なブラウザーと連携します。 
+**オプション 1: Managed Browser または Microsoft Edge を使用する** – このソリューションは、Intune Managed Browser または Microsoft Edge ブラウザーを使用してアプリケーションにアクセスすることをユーザーに推奨または要求することを計画している場合にのみ適用されます。 すべての公開されている URL を処理します。 
 
-**オプション 3:リンク変換設定を使用する** – これは、ユーザーからは見えない管理者側の設定です。 ただし、HTML および CSS 内の URL のみを処理します。 (たとえば) JavaScript によって生成されるハードコードされた内部 URL は機能しません。  
+**オプション 2: MyApps 拡張機能を使用する** – このソリューションは、クライアント側のブラウザー拡張機能をインストールすることをユーザーに要求しますが、すべての公開されている URL を処理し、ほとんどの一般的なブラウザーと連携します。 
+
+**オプション 3:リンク変換設定を使用する** – これは、ユーザーからは見えない管理者側の設定です。 ただし、HTML および CSS 内の URL のみを処理します。   
 
 これら 3 つの機能は、ユーザーの居場所にかかわらず、リンクを機能させ続けます。 内部エンドポイントまたはポートを直接ポイントするアプリがある場合は、公開されている外部アプリケーション プロキシ URL にこれらの内部 URL をマップできます。 
 
@@ -47,9 +50,9 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 > または、リンク変換を構成したいアプリケーションが SharePoint の場合は、「[SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)」で、リンクをマッピングするための別の方法をご覧ください。 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>オプション 1:Intune Managed Browser の統合 
+### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>オプション 1: Intune Managed Browser と Microsoft Edge の統合 
 
-Intune Managed Browser を使用して、アプリケーションとコンテンツの保護を強化することができます。 このソリューションを使用するには、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに要求または推奨する必要があります。 アプリケーション プロキシで公開されているすべての内部 URL は Managed Browser によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
+Intune Managed Browser または Microsoft Edge を使用して、アプリケーションとコンテンツの保護を強化することができます。 このソリューションを使用するには、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに要求または推奨する必要があります。 アプリケーション プロキシで公開されているすべての内部 URL は Managed Browser によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
 
 このオプションの構成方法などの詳細については、[Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) のドキュメントをご覧ください。  
 
@@ -59,13 +62,14 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 この機能を使用するには、ユーザーが拡張機能をダウンロードしてログインしている必要があります。 管理者またはユーザーに必要なその他の構成はありません。 
 
- 
+このオプションの構成方法などの詳細については、[MyApps Browser 拡張機能](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension)のドキュメントを参照してください。
 
-### <a name="option-3-link-translation-setting"></a>オプション 3: リンク変換設定 
+### <a name="option-3-link-translation-setting"></a>オプション 3:リンク変換設定 
 
-リンク変換が有効になっている場合、アプリケーション プロキシ サービスが HTML と CSS を通じて公開されている内部リンクを検索し、それらを変換して、ユーザーの操作が中断されないようにします。 
+リンク変換が有効になっている場合、アプリケーション プロキシ サービスが HTML と CSS を通じて公開されている内部リンクを検索し、それらを変換して、ユーザーの操作が中断されないようにします。 より高パフォーマンスなエクスペリエンスをユーザーに提供するため、MyApps Browser 拡張機能の使用はリンク変換設定よりも優先されます。
 
-
+> [!NOTE]
+> オプション 2 または 3 を使用している場合は、一度に 1 つのみを有効にするようにします。
 
 ## <a name="how-link-translation-works"></a>リンク変換の仕組み
 
@@ -133,7 +137,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 リンク変換の使用開始は、ボタンをクリックするのと同じくらい簡単です。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、管理するアプリを選び、**[アプリケーション プロキシ]** を選択します。
+2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** に移動し、管理するアプリを選び、 **[アプリケーション プロキシ]** を選択します。
 3. **[Translate URLs in application body]\(アプリケーション本文の URL を変換する\)** を **[はい]** にします。
 
    ![[はい] を選択してアプリケーション本文の URL を変換する](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
@@ -145,7 +149,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 この機能がすべてのアプリで動作するようにするためにご協力ください。 HTML と CSS では 30 以上のタグが検索されます。 変換されていないリンクが生成された例がある場合は、コード スニペットを[アプリケーション プロキシのフィードバック](mailto:aadapfeedback@microsoft.com)に送信してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシとともにカスタム ドメインを使用](application-proxy-configure-custom-domain.md)して、同じ内部および外部 URL を含める
 
 [SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)

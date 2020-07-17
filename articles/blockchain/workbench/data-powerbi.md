@@ -1,31 +1,25 @@
 ---
 title: Microsoft Power BI で Azure Blockchain Workbench データを使用する
 description: Microsoft Power BI で Azure Blockchain Workbench SQL DB のデータを読み込んで表示する方法を説明します。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 04/22/2020
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: dcb6729581d5282b32359874eaad22050d0d2048
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.reviewer: sunri
+ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510705"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82082528"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
 
-Microsoft Power BI は Power BI Desktop を使用して SQL DB データベースから高度なレポートを容易に生成して、[ https://www.powerbi.com](https://www.powerbi.com) に公開する機能を提供します。
+Microsoft Power BI は Power BI Desktop を使用して SQL DB データベースから高度なレポートを容易に生成して、[https://www.powerbi.com](https://www.powerbi.com) に公開する機能を提供します。
 
 この記事には、Power BI Desktop から Azure Blockchain Workbench の SQL データベースへ接続し、レポートを作成し、powerbi.com にレポートをデプロイする方法に関するステップ バイ ステップのチュートリアルが含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Power BI Desktop](https://aka.ms/pbidesktopstore) をダウンロードします。
+* [Power BI Desktop](https://powerbi.microsoft.com/desktop/) をダウンロードします。
 
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI を Azure Blockchain Workbench のデータに接続する
 
@@ -35,7 +29,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
     ![データを取得する](./media/data-powerbi/get-data.png)
 3.  データ ソースの種類の一覧から **[SQL Server]** を選択します。
 
-4.  ダイアログ ボックスでサーバーとデータベースの名前を指定します。 データをインポートするか、**[DirectQuery]** を実行するかを指定します。 **[OK]** を選択します。
+4.  ダイアログ ボックスでサーバーとデータベースの名前を指定します。 データをインポートするか、 **[DirectQuery]** を実行するかを指定します。 **[OK]** を選択します。
 
     ![SQL Server の選択](./media/data-powerbi/select-sql.png)
 
@@ -55,7 +49,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
 これで Power BI で通常行うように、レポートを作成して公開することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench のデータベース ビュー](database-views.md)

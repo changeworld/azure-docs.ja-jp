@@ -1,28 +1,19 @@
 ---
-title: 'Service Fabric クラスター Resource Manager: 移動コスト | Microsoft Docs'
-description: Service Fabric サービスの移動コストの概要
-services: service-fabric
-documentationcenter: .net
+title: 'Service Fabric クラスター Resource Manager: 移動コスト'
+description: Service Fabric サービスの移動コストと、それをアーキテクチャのニーズ (動的構成を含む) に適合するように指定する方法について説明します。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669981"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75563345"
 ---
 # <a name="service-movement-cost"></a>サービスの移動コスト
-クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。 
+クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。
 
 サービスの移動には、最低でも CPU 時間とネットワーク帯域幅のコストがかかります。 ステートフル サービスでは、サービスの状態をコピーする必要があり、メモリとディスクがさらに消費されます。 Azure Service Fabric Cluster Resource Manager が見つけ出すソリューションのコストを最小限に抑えることによって、クラスターのリソースが不必要に費やされることがないことを保証できます。 一方でクラスター内のリソースの割り当てを大幅に改善するソリューションを無視することは避けたいものです。
 
@@ -76,7 +67,14 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移動コストの影響
-MoveCost には 4 つのレベルがあります: Zero、Low、Medium、High。 Zero を除き、MoveCost のレベルは相対的なものです。 移動コストが Zero の場合、移動にコストはかからず、ソリューションのスコアに対してカウントされません。 移動コストを High に設定しても、レプリカが 1 つの場所に維持されると保証されるわけでは*ありません*。
+MoveCost には 5 つのレベルがあります。Zero、Low、Medium、High、VeryHigh です。 次の規則が適用されます。
+
+* Zero と VeryHigh を除き、MoveCost は互いに相対的です。 
+* 移動コストが Zero の場合、移動にコストはかからず、ソリューションのスコアに対してカウントされません。
+* 移動コストを High または VeryHigh に設定しても、レプリカが移動されることは "*決してない*" という保証は提供され "*ません*"。
+* VeryHigh 移動コストでのレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ、(違反の解決のために他の多くのレプリカを移動する必要があったとしても) 移動されます。
+
+
 
 <center>
 
@@ -88,6 +86,9 @@ MoveCost には 4 つのレベルがあります: Zero、Low、Medium、High。 
 - サービスが移動する必要のある状態またはデータの量。
 - クライアント切断のコスト。 通常、プライマリ レプリカの移動は、セカンダリ レプリカの移動よりもコストが高くなります。
 - 実行中の操作を中断するコスト。 一部のデータ ストア レベル操作またはクライアント コールの応答で実行される操作にはコストがかかります。 特定の時点以降では、必要でなければ処理を中止しない方が適切です。 操作の実行中に移動コストを高くすると、そのサービス オブジェクトが移動される可能性は低くなります。 操作が完了したら、コストを通常の設定に戻します。
+
+> [!IMPORTANT]
+> VeryHigh 移動コストの使用は、クラスター内でグローバルに最適化された配置ソリューションを検出する Cluster Resource Manager の機能が大幅に制限されることから、慎重に検討する必要があります。 VeryHigh 移動コストでのレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ、(違反の解決のために他の多くのレプリカを移動する必要があったとしても) 移動されます。
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>クラスターでの移動コストの有効化
 細かい MoveCosts を考慮するためには、MoveCost をクラスターで有効にする必要があります。 この設定がない場合は、移動をカウントする既定のモードを使用して MoveCost が計算され、MoveCost レポートは無視されます。
@@ -117,7 +118,7 @@ ClusterManifest.xml:
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric クラスター リソース マネージャーは、メトリックを使用して、クラスターの利用量と容量を管理します。 メトリックの詳細とその構成方法については、「 [Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「 [Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
 

@@ -1,21 +1,21 @@
 ---
 title: Web Search エンドポイント
 titleSuffix: Azure Cognitive Services
-description: Web Search API エンドポイントの概要。
+description: 検索の結果を取得するには、次のエンドポイントに `GET` 要求を送信します。 ヘッダーと URL パラメーターは、さらに仕様を定義します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: e91f798e6bfae33f8f4c8b5aa2d0f6ddc0047389
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74111345"
 ---
 # <a name="web-search-endpoint"></a>Web Search エンドポイント
 
@@ -31,13 +31,13 @@ Bing API を使用して Web 検索の結果を取得するには、次のエン
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-エンドポイント:ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどの詳細については、[Bing Web API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) のリファレンスを参照してください。
+エンドポイント:ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどの詳細については、[Bing Web API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) のリファレンスを参照してください。
 
 ## <a name="response-json"></a>応答 JSON
 
 Web 検索要求に対する応答には、すべての結果が JSON オブジェクトとして含まれます。 結果を解析するには、各種類の要素を処理するプロシージャが必要です。 例については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app)と[ソース コード](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 

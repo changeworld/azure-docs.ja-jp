@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB の概念について説明したホワイトペーパー
-description: これらのホワイトペーパーでは、Azure Cosmos DB の概念が詳しく説明されています。
+description: 概念について詳しく説明している Azure Cosmos DB のホワイトペーパーの一覧を取得します。
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69e75af8481b21929b8d36a14a2ce72ec3f9f5f2
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: adbbdf39875e67552de2f797b94eae89e0aba409
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257174"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74869784"
 ---
-# <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB のホワイトペーパー 
+# <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB のホワイトペーパー
 
 ホワイトペーパーでは、Azure Cosmos DB の概念がより深いレベルで説明されています。 この記事では、Azure Cosmos DB に関するホワイト ペーパーの一覧を示します。
 

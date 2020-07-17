@@ -1,24 +1,23 @@
 ---
-title: インデックスでの検索結果の範囲指定用フィルター - Azure Search
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理してクエリの検索結果を減らします。
+title: 検索結果のフィルター処理
+titleSuffix: Azure Cognitive Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Cognitive Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理して、クエリの検索結果を減らします。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 49f971fb50d0a8a6a0dab09158f780206a4d32f1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024840"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77191011"
 ---
-# <a name="filters-in-azure-search"></a>Azure Search のフィルター 
+# <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
-*フィルター*は、Azure Search クエリに使用されているドキュメントを選択するための条件を提供します。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
+*フィルター*は、Azure Cognitive Search で使用されているドキュメントの選択条件です。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
 
 一部の検索エクスペリエンスは実装の一部としてフィルター要件を課しますが、*値ベース* (製品の種類を "書籍"、カテゴリを "ノンフィクション"、出版元を "Simon & Schuster" に検索範囲を指定するなど) の条件を使用して検索を制限したいときにいつでもフィルターを使用できます。
 
@@ -50,37 +49,36 @@ ms.locfileid: "65024840"
 
  + `searchFields` クエリ パラメーターは、検索対象を特定のフィールドに限定します。 たとえば、英語とスペイン語の説明用に別のフィールドを用意したインデックスがある場合、searchFields を使用して、フルテキスト検索の対象にするフィールドを指定できます。 
 
-+ `$select` パラメーターは、結果セットに含めるフィールドを指定するために使用できます。効果的に応答をトリミングしてから、呼び出し元アプリケーションに送信することができます。 このパラメーターでクエリが絞り込まれたり、ドキュメント コレクションが減ったりすることはありませんが、より細分化された応答が目標の場合、このパラメーターの使用を検討します。 
++ `$select` パラメーターは、結果セットに含めるフィールドを指定するために使用できます。効果的に応答をトリミングしてから、呼び出し元アプリケーションに送信することができます。 このパラメーターでクエリが絞り込まれたり、ドキュメント コレクションが減ったりすることはありませんが、応答の量を小さくする場合、このパラメーターの使用を検討します。 
 
-各パラメーターの詳細については、[「Search Documents」(ドキュメントの検索) > 「Request」(要求) > 「Query parameters」(クエリ パラメーター)](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) を参照してください。
+各パラメーターの詳細については、[「Search Documents」(ドキュメントの検索) > 「Request」(要求) > 「Query parameters」(クエリ パラメーター)](/rest/api/searchservice/search-documents#query-parameters) を参照してください。
 
 
-## <a name="filters-in-the-query-pipeline"></a>クエリ パイプライン内のフィルター
+## <a name="how-filters-are-executed"></a>フィルターの実行方法
 
-クエリ時に、フィルター パーサーは入力として条件を受け取り、式をアトミックなブール式に変換し、フィルター ツリーを構築します。フィルター ツリーは、インデックスのフィルター可能なフィールドで評価されます。  
+クエリ時に、フィルター パーサーは入力として条件を受け取り、式をツリーとして表されるアトミックなブール式に変換し、フィルター ツリーをインデックスのフィルター可能なフィールドで評価します。
 
-フィルターは検索前に実行され、ドキュメントの取得と関連性のスコア付けのダウンストリーム処理に含める対象ドキュメントを特定します。 フィルターを検索文字列と組み合わせて使用すると、以降の検索操作の対象領域が効果的に少なくなります。 フィルターを単独で使用すると (たとえば、`search=*` ではクエリ文字列が空です)、フィルター条件が唯一の入力になります。 
+フィルターは検索と並行して実行され、ドキュメントの取得と関連性のスコア付けのためにダウンストリーム処理に含めるドキュメントを特定します。 フィルターを検索文字列と組み合わせて使用すると、以降の検索操作での再指定を効果的に減らすことができます。 フィルターを単独で使用すると (たとえば、`search=*` ではクエリ文字列が空です)、フィルター条件が唯一の入力になります。 
 
-## <a name="filter-definition"></a>フィルターの定義
+## <a name="defining-filters"></a>フィルターを定義する
+フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
 
-フィルターは OData 式です。[Azure Search でサポートされている OData V4 構文のサブセット](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述します。 
+各**検索**操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
 
-各**検索**操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数の式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
-
-フィルター式に関するハード リミットは、要求の上限です。 要求全体として (フィルターを含め)、POST の場合は最大 16 MB、GET の場合は最大 8 KB です。 ソフト リミットは、フィルター式内の句の数に関連しています。 目安として数百単位の句がある場合、上限に達する危険性があります。 サイズが無制限のフィルターを生成しない方法でアプリケーションを設計することをお勧めします。
+フィルター式に関する制限の 1 つとして、要求サイズの上限があります。 要求全体として (フィルターを含め)、POST の場合は最大 16 MB、GET の場合は最大 8 KB です。 また、フィルター式内の句の数にも制限があります。 目安として数百単位の句がある場合、上限に達する危険性があります。 サイズが無制限のフィルターを生成しない方法でアプリケーションを設計することをお勧めします。
 
 次の例は、いくつかの API で典型的なフィルター定義を表しています。
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
-# Option 2: Use filter for POST and pass it in the header
+# Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -88,37 +86,46 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
+    var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-design-patterns"></a>フィルターの設計パターン
+## <a name="filter-usage-patterns"></a>フィルターの使用パターン
 
-フィルター シナリオのいくつかの設計パターン例を紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) を参照してください。
+以下に、フィルター シナリオの使用パターン例をいくつか紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) を参照してください。
 
-+ クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列が空である点に注目してください。
-
-   ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
-   ```
-
-+ クエリ文字列と **$filter** の組み合わせ。フィルターによってサブセットが作成され、クエリ文字列は、フィルターされたサブセットに対するフルテキスト検索に用語入力を提供します。 フィルターとクエリ文字列の併用は、最も一般的なコード パターンです。
++ クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列がアスタリスクのみであることに注意してください。これは、"すべてのドキュメントを照合する" ことを意味しています。
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ 複合クエリ。"or" で区切られ、それぞれに独自のフィルター条件があります (たとえば、'dog' の 'beagles'、'cat' の 'siamese')。 OR で接続された式は個別に評価され、各式の応答が 1 つの応答に結合されてから、呼び出し元アプリケーションに返されます。 この設計パターンは、search.ismatch 関数で達成されます。 スコア付けなしバージョン (search.ismatch) またはスコア付けありのバージョン (search.ismatchscoring) を使用できます。
++ クエリ文字列と **$filter** の組み合わせ。フィルターによってサブセットが作成され、クエリ文字列は、フィルターされたサブセットに対するフルテキスト検索に用語入力を提供します。 用語 (walking distance theaters) を追加することにより、結果に検索スコアが導入され、用語に最も一致するドキュメントが上位にランク付けされます。 フィルターとクエリ文字列の併用は、最も一般的な使用パターンです。
+
+   ```
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
+   ```
+
++ 複合クエリ。"or" で区切られ、それぞれに独自のフィルター条件があります (たとえば、'dog' の 'beagles'、'cat' の 'siamese')。 `or` で結合された式は個別に評価され、各式に一致するドキュメントの和集合が応答で返されます。 この使用パターンは、`search.ismatchscoring` 関数を使用して実行されます。 また、スコア付けなしバージョンである `search.ismatch` を使用することもできます。
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
+
+  `or` の代わりに `and` を指定して、`search.ismatchscoring` によるフルテキスト検索とフィルターを結合することもできますが、これは検索要求で `search` パラメーターと `$filter` パラメーターを使用することと機能的に同じです。 たとえば、次の 2 つのクエリでは同じ結果が生成されます。
+
+  ```
+  $filter=search.ismatchscoring('pool') and Rating ge 4
+
+  search=pool&$filter=Rating ge 4
+  ```
 
 特定のユース ケースに関する包括的なガイダンスについては、以下の記事を参照してください。
 
@@ -128,36 +135,32 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="field-requirements-for-filtering"></a>フィルターのフィールド要件
 
-REST API では、フィルター可能の設定は既定で*オン*です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`filterable=FALSE` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
+REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
 
-.NET SDK では、フィルター可能の設定は既定で*オフ*です。 フィルター可能なプロパティを設定する API は [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute) です。 以下の例では、BaseRate フィールド定義に設定されています。
+.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) オブジェクトの [IsFilterable プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="reindexing-requirements"></a>インデックス再作成の要件
+### <a name="making-an-existing-field-filterable"></a>既存のフィールドをフィルター可能にする
 
-フィールドがフィルター可能ではなく、フィルター可能にしたい場合は、新しいフィールドを追加するか、既存のフィールドを再構築する必要があります。 フィールド定義を変更すると、インデックスの物理構造が変わります。 Azure Search の場合、クエリを高速にするために、すべての許可されているパスのインデックスが作成されます。そのため、フィールド定義が変更されると、データ構造の再構築が必要になります。 
-
-個々のフィールドの再構築は影響度の低い操作の可能性があります。既存のドキュメント キーと関連する値をインデックスに送信するマージ操作のみが必要で、各ドキュメントのその他の部分はそのままです。 リビルドが必要になった場合には、[インデックス作成操作 (upload、merge、mergeOrUpload、delete)](search-what-is-data-import.md#indexing-actions) に関するセクションでオプションの一覧を参照してください。
-
+既存のフィールドを変更してフィルター可能にすることはできません。 代わりに、新しいフィールドを追加するか、インデックスを再構築する必要があります。 インデックスの再構築またはフィールドへの再入力の詳細については、[Azure Cognitive Search のインデックスを再構築する方法](search-howto-reindex.md)に関するページをご覧ください。
 
 ## <a name="text-filter-fundamentals"></a>テキスト フィルターの基礎
 
-テキスト フィルターは、文字列フィールドに対して有効です。検索インデックス内の値に基づいて、任意のドキュメントのコレクションを取得します。
-
-文字列で構成されるテキスト フィルターの場合、字句解析または単語区切り処理がないため、比較は完全一致のみです。 たとえば、フィールド *f* に "sunny day" が含まれる場合、`$filter=f eq 'Sunny'` では一致しませんが、`$filter=f eq 'Sunny day'` は一致します。 
+テキスト フィルターでは、文字列フィールドと、フィルターに指定したリテラル文字列とを照合します。 フルテキスト検索とは異なり、テキスト フィルターには字句解析や単語区切り処理がないため、比較は完全一致のみです。 たとえば、フィールド *f* に "sunny day" が含まれる場合、`$filter=f eq 'Sunny'` は一致しませんが、`$filter=f eq 'sunny day'` は一致します。 
 
 テキスト文字列は大文字と小文字が区別されます。 大文字の単語の小文字化処理はないため、`$filter=f eq 'Sunny day'` で "sunny day" は検索されません。
 
+### <a name="approaches-for-filtering-on-text"></a>テキストをフィルター処理するためのアプローチ
 
-| アプローチ | 説明 | 
-|----------|-------------|
-| [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 指定されたフィールドに文字列のコンマ区切りの一覧を提供する関数。 この文字列はフィルター条件で構成され、クエリのスコープ内にある各フィールドに適用されます。 <br/><br/>`search.in(f, ‘a, b, c’)` は意味的には `f eq ‘a’ or f eq ‘b’ or f eq ‘c’` と同じですが、値の一覧が大きい場合、実行ははるかに速くなります。<br/><br/>[セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、指定されたフィールドの値に対してマッチング処理を行う未加工のテキストで構成されたるフィルターには、**search.in** 関数を使用することをお勧めします。 このアプローチは、速度を目的に設計されています。 数百から数千単位の値であれば、1 秒未満の応答時間を期待できます。 関数に渡すことができる項目数に明示的な制限はありませんが、指定する文字列数に比例して待機時間は長くなります。 | 
-| [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 1 つの要求で複数のクエリとフィルターを組み合わせることができます。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |  
-| [$filter = フィールド演算子文字列](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | ユーザー定義の式は、フィールド、演算子、および値で構成されます。 | 
+| アプローチ | 説明 | 使用する場合 |
+|----------|-------------|-------------|
+| [`search.in`](search-query-odata-search-in-function.md) | 区切られた文字列のリストに対してフィールドを照合する関数です。 | [セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、多数の未加工テキスト値を文字列フィールドと照合する必要があるフィルターに推奨されます。 **search.in** 関数は、速度を重視して設計されているため、`eq` と `or` を使用して各文字列とフィールドを明示的に比較するよりもはるかに高速です。 | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 | 1 つの要求で複数の検索フィルターを組み合わせる場合は、**search.ismatch** (または、このスコア付けバージョンである **search.ismatchscoring**) を使用します。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | ユーザー定義の式は、フィールド、演算子、および値で構成されます。 | 文字列フィールドと文字列値の間の完全一致を検索する場合は、これを使用します。 |
 
 ## <a name="numeric-filter-fundamentals"></a>数値フィルターの基礎
 
@@ -165,9 +168,9 @@ REST API では、フィルター可能の設定は既定で*オン*です。 �
 
 数値フィールド (価格、サイズ、SKU、ID) を含むドキュメントで、フィールドが `retrievable` とマークされている場合、検索結果にはそれらの値が表示されます。 ここで大事な点は、フルテキスト検索は数値フィールドの種類には適用できないということです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-まずポータルの **Search エクスプローラー**で、**$filter** パラメーターを使用したクエリを送信します。 [real-estate-sample インデックス](search-get-started-portal.md)では、検索バーに次のフィルターされたクエリを貼り付けると、興味深い結果になります。
+まずポータルの **Search エクスプローラー**で、 **$filter** パラメーターを使用したクエリを送信します。 [real-estate-sample インデックス](search-get-started-portal.md)では、検索バーに次のフィルターされたクエリを貼り付けると、興味深い結果になります。
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -190,11 +193,11 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) を参照してください。
+その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-+ [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)
++ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

@@ -1,61 +1,65 @@
 ---
-title: 述語および PredicateValidations - Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C の Identity Experience Framework スキーマのソーシャル アカウント要求変換の例。
+title: 述語および PredicateValidations
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C のカスタム ポリシーを使用して、不適切な形式のデータが Azure AD B2C テナントに追加されないようにします。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 03/30/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eff8e2cedd6f9388d811002a622dbcdcd0e7ed6c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714167"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396884"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**述語**と **PredicateValidations** 要素を使用して検証プロセスを実行し、適切に形式設定されたデータのみが Azure Active Directory (Azure AD) B2C テナントに入力されるようにすることができます。  
+**Predicates** と **PredicateValidations** 要素を使用して検証プロセスを実行し、適切に形式設定されたデータのみが Azure Active Directory B2C (Azure AD B2C) テナントに入力されるようにすることができます。
 
-次の図に、要素の関係を示します。  
+次の図に、要素の関係を示します。
 
-![Predicates](./media/predicates/predicates.png)
+![述語と述語の検証のリレーションシップを示す図](./media/predicates/predicates.png)
 
-## <a name="predicates"></a>Predicates  
+## <a name="predicates"></a>述語
 
 **Predicate**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
+
+**Predicates** 要素は、[BuildingBlocks](buildingblocks.md) 要素内の **ClaimsSchema** 要素の直後に記述する必要があります。
 
 **Predicates** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Predicate | 1:n | 述語の一覧。 | 
+| Predicate | 1:n | 述語の一覧。 |
 
 **Predicate** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
-| Method | はい | 検証に使用するメソッドの型。 指定できる値**IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
+| Method | はい | 検証に使用するメソッドの型。 指定できる値[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters)、または [IsDateRange](#isdaterange)。  |
+| HelpText | いいえ | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
 
 **Predicate** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
-| parameters | 1:1 | 文字列検証のメソッド タイプのパラメーター。 | 
+| UserHelpText | 0:1 | (非推奨) チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 |
+| パラメーター | 1:1 | 文字列検証のメソッド タイプのパラメーター。 |
 
 **Parameters** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Parameter | 1:n | 文字列検証のメソッド タイプのパラメーター。 | 
+| パラメーター | 1:n | 文字列検証のメソッド タイプのパラメーター。 |
 
 **Parameters** 要素には、次の属性が含まれています。
 
@@ -63,41 +67,75 @@ ms.locfileid: "64714167"
 | ------- | ----------- | ----------- |
 | Id | 1:1 | パラメーターの識別子。 |
 
-次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsLengthRange` メソッドを示しています。
+### <a name="predicate-methods"></a>述語メソッド
+
+#### <a name="islengthrange"></a>IsLengthRange
+
+IsLengthRange メソッドによって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| 最大値 | はい | 入力できる最大文字数です。 |
+| 最小値 | はい | 入力する必要がある最小文字数です。 |
+
+
+次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ IsLengthRange メソッドを示しています。
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
 
+#### <a name="matchesregex"></a>MatchesRegex
+
+MatchesRegex メソッドによって、文字列要求値が正規表現に一致するかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| RegularExpression | はい | 一致させる正規表現パターン。 |
+
 次の例は、正規表現を指定する `RegularExpression` パラメーターを持つ `MatchesRegex` メソッドを示しています。
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>IncludesCharacters
+
+IncludesCharacters メソッドによって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| CharacterSet | はい | 入力できる文字のセット。 たとえば、小文字の `a-z`、大文字の `A-Z`、数字の `0-9`、`@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` などの記号の一覧です。 |
+
 次の例は、文字セットを指定する `CharacterSet` パラメーターを持つ `IncludesCharacters` メソッドを示しています。
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
 </Predicate>
 ```
 
-次の例は、`yyyy-MM-dd` と `Today` の形式で日付範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsDateRange` メソッドを示しています。
+#### <a name="isdaterange"></a>IsDateRange
+
+IsDateRange メソッドによって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| 最大値 | はい | 入力できる可能な最大の日付。 date の形式は `yyyy-mm-dd` 規則、または `Today` に従います。 |
+| 最小値 | はい | 入力できる可能な最小の日付。 date の形式は `yyyy-mm-dd` 規則、または `Today` に従います。|
+
+次の例は、`yyyy-mm-dd` と `Today` の形式で日付範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsDateRange` メソッドを示しています。
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -108,9 +146,11 @@ ms.locfileid: "64714167"
 </Predicate>
 ```
 
-## <a name="predicatevalidations"></a>PredicateValidations 
+## <a name="predicatevalidations"></a>PredicateValidations
 
 述語によって、要求タイプに対してチェックを行う検証が定義されますが、**PredicateValidations** は要求タイプに適用できるユーザー入力検証を形式設定する述語セットをグループ化します。 各 **PredicateValidation** 要素には、**Predicate** をポイントする **PredicateReference** 要素のセットを含む **PredicateGroup** 要素のセットが含まれています。 検証に合格するには、要求の値が、**PredicateReference** 要素のセットを持つすべての **PredicateGroup** に基づき、すべての述語のすべてのテストに合格する必要があります。
+
+**PredicateValidations** 要素は、[BuildingBlocks](buildingblocks.md) 要素内の **Predicates** 要素の直後に表示する必要があります。
 
 ```XML
 <PredicateValidations>
@@ -134,11 +174,11 @@ ms.locfileid: "64714167"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1:n | 述語検証の一覧。 | 
+| PredicateValidation | 1:n | 述語検証の一覧。 |
 
 **PredicateValidation** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。 **ClaimType** 要素は、ポリシーにこの識別子を使用できます。 |
 
@@ -146,17 +186,17 @@ ms.locfileid: "64714167"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1:n | 述語グループの一覧。 | 
+| PredicateGroups | 1:n | 述語グループの一覧。 |
 
 **PredicateGroups** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1:n | 述語の一覧。 | 
+| PredicateGroup | 1:n | 述語の一覧。 |
 
 **PredicateGroups** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語グループに使用される識別子です。  |
 
@@ -164,95 +204,87 @@ ms.locfileid: "64714167"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  ユーザーが入力する必要のある値を把握するのに役立つ、述語の説明。 | 
-| PredicateReferences | 1:n | 述語参照の一覧。 | 
+| UserHelpText | 0:1 |  ユーザーが入力する必要のある値を把握するのに役立つ、述語の説明。 |
+| PredicateReferences | 1:n | 述語参照の一覧。 |
 
 **PredicateReferences** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | いいえ  | 入力が受け入れられるには、少なくともここに指定した述部定義の数だけ、値が一致する必要があることを指定します。 |
+| MatchAtLeast | いいえ | 入力が受け入れられるには、少なくともここに指定した述部定義の数だけ、値が一致する必要があることを指定します。 指定しなかった場合、値はすべての述語定義と一致する必要があります。 |
 
 **PredicateReferences** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1:n | 述語への参照。 | 
+| PredicateReference | 1:n | 述語への参照。 |
 
 **PredicateReference** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。  |
 
 
 ## <a name="configure-password-complexity"></a>パスワードの複雑さの構成
 
-**Predicates** と **PredicateValidationsInput** を使用して、アカウントを作成するときにユーザーによって指定されるパスワードの複雑さに対する要件を制御できます。 既定では、Azure AD B2C では強力なパスワードが使用されます。 Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。 これらの述語要素を使用して、パスワードの複雑さを定義できます。 
+**Predicates** と **PredicateValidationsInput** を使用して、アカウントを作成するときにユーザーによって指定されるパスワードの複雑さに対する要件を制御できます。 既定では、Azure AD B2C では強力なパスワードが使用されます。 Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。 これらの述語要素を使用して、パスワードの複雑さを定義できます。
 
 - **IsLengthBetween8And64**: `IsLengthRange` メソッドを使用して、パスワードが 8 文字から 64 文字の間であることを検証します。
 - **Lowercase**: `IncludesCharacters` メソッドを使用して、パスワードに小文字が含まれていることを検証します。
 - **Uppercase**: `IncludesCharacters` メソッドを使用して、パスワードに大文字が含まれていることを検証します。
 - **Number**: `IncludesCharacters` メソッドを使用して、パスワードに数字が含まれていることを検証します。
-- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードに次のいずれかの記号が含まれていることを検証します `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードにいずれかの記号文字が含まれていることを検証します。
 - **PIN**: `MatchesRegex` メソッドを使用して、パスワードに数字のみが含まれていることを検証します。
 - **AllowedAADCharacters**: `MatchesRegex` メソッドを使用して、パスワードのみの無効な文字が指定されたことを検証します。
 - **DisallowedWhitespace**: `MatchesRegex` メソッドを使用して、パスワードが空白文字で開始または終了していないことを検証します。
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
-      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\:',?/`~"();!</Parameter>
+      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -348,7 +380,7 @@ ms.locfileid: "64714167"
 
 Azure AD B2C にエラー メッセージが表示された場合に、要素がどのように編成されるかを以下に示します。
 
-![述語のプロセス](./media/predicates/predicates-pass.png)
+![述語と PredicateGroup パスワードの複雑さの例の図](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>日付範囲の構成
 
@@ -356,8 +388,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>
@@ -382,8 +413,8 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 </PredicateValidations>
 ```
 
-要求の種類で、**PredicateValidationReference** 要素を追加し、`CustomDateRange` に ID を指定します。 
-    
+要求の種類で、**PredicateValidationReference** 要素を追加し、`CustomDateRange` に ID を指定します。
+
 ```XML
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>
@@ -394,3 +425,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>次のステップ
+
+- 述語の検証を使用して [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](custom-policy-password-complexity.md)方法について確認します。

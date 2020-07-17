@@ -1,22 +1,23 @@
 ---
-title: クイック スタート - Java を使用して Bing Local Business Search API にクエリを送信する | Microsoft Docs
+title: クイック スタート - Java を使用して API にクエリを送信する - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: この記事を利用して、Java での Bing Local Business Search API の使用を開始します。
+description: このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: b87fea5120ae09848eef9fcb29ef0912bf17fa0f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796918"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74665187"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート:Java を使用して Bing Local Business Search API にクエリを送信する
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート: Java を使用して Bing Local Business Search API にクエリを送信する
 
 このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは Java で記述されていますが、この API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
@@ -34,7 +35,7 @@ ms.locfileid: "65796918"
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定して、"hotel in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -52,12 +53,12 @@ ms.locfileid: "65796918"
 
 Bing Local Business Search API では、Bing 検索エンジンからの結果が返されます。
 1. gson ライブラリをダウンロードまたはインストールします。
-2. 適当な IDE またはエディターで新しい Java プロジェクトを作成します。
+2. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成します。
 3. 次に示すコードを追加します。
 4. subscriptionKey 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;
@@ -163,7 +164,7 @@ public class LocalSearchCls {
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search のクイック スタート](local-quickstart.md)
-- [Local Business Search Node のクイック スタート](local-search-node-quickstart.md)
+- [Local Business Search (Node.js) のクイック スタート](local-search-node-quickstart.md)
 - [Local Business Search (Python) のクイック スタート](local-search-python-quickstart.md)

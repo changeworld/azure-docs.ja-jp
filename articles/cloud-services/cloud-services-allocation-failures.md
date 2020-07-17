@@ -4,23 +4,22 @@ description: Azure で Cloud Services をデプロイするときの割り当て
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 22888c76b27d287a8d7fb0f0f1f0a0d39d92375d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225951"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
 ## <a name="summary"></a>まとめ
@@ -36,7 +35,7 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 ### <a name="why-allocation-failure-happens"></a>割り当てエラーが発生する理由
 割り当て要求がクラスターに固定されている場合、利用可能なリソース プールが 1 つのクラスターに制限されるため、空きリソースを見つけられない可能性が高くなります。 さらに、割り当て要求がクラスターに固定されていて、そのクラスターでは要求されたリソースの種類がサポートされていない場合、クラスターに空きリソースがあっても、要求は失敗します。 次の図 3 は、唯一の候補であるクラスターに空きリソースがないため、固定された割り当てがエラーになる場合を示しています。 図 4 は、唯一の候補であるクラスターに空きリソースがあるものの、要求された VM サイズをサポートしていないため、固定された割り当てがエラーになる場合を示しています。
 
-![固定された割り当てのエラー](./media/cloud-services-allocation-failure/Allocation2.png)
+![Pinned Allocation Failure](./media/cloud-services-allocation-failure/Allocation2.png)
 
 ## <a name="troubleshooting-allocation-failure-for-cloud-services"></a>クラウド サービスの割り当てエラーのトラブルシューティング
 ### <a name="error-message"></a>エラー メッセージ
@@ -52,7 +51,7 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 * アフィニティ グループ - 空のクラウド サービスに新しくデプロイする場合は、クラウド サービスがアフィニティ グループに固定されている場合を除き、そのリージョン内の任意のクラスターのファブリックによって割り当てることができます。 同じアフィニティ グループへのデプロイは、同じクラスターで試行されます。 クラスターが限界に近づくと、要求が失敗する場合があります。
 * アフィニティ グループ vNet - 以前の Virtual Network はリージョンではなくアフィニティ グループに関連付けられていたため、これらの仮想ネットワーク内のクラウド サービスはアフィニティ グループのクラスターに固定されました。 このような仮想ネットワークへのデプロイは、固定されたクラスターで試行されます。 クラスターが限界に近づくと、要求が失敗する場合があります。
 
-## <a name="solutions"></a>解決方法
+## <a name="solutions"></a>ソリューション
 1. 新しいクラウド サービスに再デプロイする - この解決方法ではそのリージョン内のすべてのクラスターからプラットフォームを選択できるため、成功する可能性が最も高くなります。
 
    * 新しいクラウド サービスにワークロードをデプロイします  

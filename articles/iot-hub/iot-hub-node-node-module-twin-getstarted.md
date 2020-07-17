@@ -1,22 +1,25 @@
 ---
-title: Azure IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要 | Microsoft Docs
+title: Azure IoT Hub モジュール ID とモジュール ツイン (Node.js) の開始
 description: モジュール ID を作成し、IoT SDK for Node.js を使用して .NET のモジュール ツインを更新する方法を説明します。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
-ms.devlang: node
+ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 312d3abad2ee2c9e668f8b354aaba96f8a652698
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: amqp
+ms.openlocfilehash: 8e1599b1bd5db5e410e8bbd76fffbe0beb5f066e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259288"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81732301"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Node.js バックエンドおよび Node.js デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要
+
+[!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
 > [モジュール ID とモジュール ツイン](iot-hub-devguide-module-twins.md)は Azure IoT Hub のデバイス ID とデバイス ツインに類似していますが、より細かい粒度で設定できます。 Azure IoT Hub のデバイス ID とデバイス ツインを使用した場合、バックエンド アプリケーションからデバイスを構成し、デバイスの状態を可視化できるのに対し、モジュール ID とモジュール ツインでは、デバイスの各コンポーネントごとにこれらの機能を実現できます。 複数のコンポーネントで構成され、この機能をサポートしているデバイス (オペレーティング システム ベースのデバイスやファームウェア デバイスなど) であれば、各コンポーネントの状態を可視化し、個別に構成することができます。
@@ -30,13 +33,21 @@ ms.locfileid: "59259288"
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
+
+* Node.js バージョン 10.0.x 以降。 「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
-* IoT Hub。
-* 最新の [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node) をインストールします。
 
-IoT Hub の作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
+
+[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub でデバイス ID とモジュール ID を作成する
 
@@ -44,9 +55,9 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 1. コードを保持するためのディレクトリを作成します。
 
-2. そのディレクトリ内で、まず  **npm init -y**  を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
+2. そのディレクトリ内で最初に **npm init -y** を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
 
-3.  **npm install -S azure-iothub\@modules-preview** を実行して、 **node_modules**  サブディレクトリ内にサービス SDK をインストールします。
+3. **npm install -S azure-iothub\@modules-preview** を実行して、**node_modules** サブディレクトリ内にサービス SDK をインストールします。
 
     > [!NOTE]
     > サブディレクトリ名 node_modules では、"ノード ライブラリ" を意味する用語モジュールを使用します。 ここで言う用語は IoT Hub モジュールとは関係ありません。
@@ -182,20 +193,25 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     });
     ```
 
-4. 次に、コマンド  **node twin.js** を使用してこれを実行します。
+4. 次に、コマンド **node twin.js** を使用してこれを実行します。
 
-    ```
-    F:\temp\module_twin>node twin.js
-    client opened
-    twin contents:
-    { reported: { update: [Function: update], '$version': 1 },
-      desired: { '$version': 1 } }
-    new desired properties received:
-    {"$version":1}
-    twin state reported
-    ```
+   ```cmd/sh
+   F:\temp\module_twin>node twin.js
+   ```
 
-## <a name="next-steps"></a>次の手順
+   すると、次のように表示されます。
+
+   ```console
+   client opened
+   twin contents:
+   { reported: { update: [Function: update], '$version': 1 },
+     desired: { '$version': 1 } }
+   new desired properties received:
+   {"$version":1}
+   twin state reported
+   ```
+
+## <a name="next-steps"></a>次のステップ
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 

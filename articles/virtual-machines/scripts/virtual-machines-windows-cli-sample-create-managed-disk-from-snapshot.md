@@ -1,11 +1,10 @@
 ---
-title: Azure CLI サンプル スクリプト - スナップショットからマネージド ディスクを作成する | Microsoft Docs
+title: スナップショットからマネージド ディスクを作成する - CLI サンプル
 description: Azure CLI サンプル スクリプト - スナップショットからマネージド ディスクを作成する
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8178f05b83b6128717790cc348865c32ea77d59b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 00fdfe3669e0ad84702f20be4d7efffcdc871149
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249567"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459544"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>CLIでスナップショットからマネージド ディスクを作成する
 
@@ -44,7 +43,7 @@ ms.locfileid: "57249567"
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 Id プロパティはマネージド ディスクを作成するために使用されます。  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | 管理対象スナップショット Id を使用してマネージド ディスクを作成します |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

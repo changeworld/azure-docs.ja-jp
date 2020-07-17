@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric アプリケーションのデプロイ | Microsoft Docs
-description: PowerShell を使用して Service Fabric でアプリケーションをデプロイおよび削除する方法
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: PowerShell を使用した Azure Service Fabric のデプロイ
+description: Azure Service Fabric でのアプリケーションの削除とデプロイ、および Powershell でこれらのアクションを実行する方法について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: f0f66cd32721e277cbd6e4578b0e58bb201ee966
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793154"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236711"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 
@@ -58,7 +47,7 @@ Visual Studio を使ってローカルの開発クラスターでアプリケー
 
  
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 この記事の PowerShell コマンドを実行する前に、必ず最初に [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) で Service Fabric クラスターに接続してください。 ローカル開発クラスターに接続するには、次の手順を実行します。
 
@@ -143,8 +132,8 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 |100|100|00:00:03.3547592|60|
 |512|100|00:00:16.3850303|307|
 |1024|500|00:00:32.5907950|615|
-|2048|1,000|00:01:04.3775554|1,231|
-|5,012|100|00:02:45.2951288|3,074|
+|2048|1000|00:01:04.3775554|1,231|
+|5012|100|00:02:45.2951288|3,074|
 
 圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 圧縮したパッケージは、クラスターのイメージ ストアなどに格納されます。 パッケージは、アプリケーションの実行前に、ノードで圧縮解除されます。
 
@@ -158,7 +147,7 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationP
 *-ApplicationPackagePathInImageStore* パラメーターを指定しなかった場合は、イメージ ストアの "Debug" フォルダーにアプリケーション パッケージがコピーされます。
 
 >[!NOTE]
->**Copy-ServiceFabricApplicationPackage** は、PowerShell セッションが Service Fabric クラスターに接続されている場合に、適切なイメージ ストア接続文字列を自動的に検出します。 5.6 より古いバージョンの Service Fabric では、**-ImageStoreConnectionString** 引数を明示的に指定する必要があります。
+>**Copy-ServiceFabricApplicationPackage** は、PowerShell セッションが Service Fabric クラスターに接続されている場合に、適切なイメージ ストア接続文字列を自動的に検出します。 5\.6 より古いバージョンの Service Fabric では、 **-ImageStoreConnectionString** 引数を明示的に指定する必要があります。
 >
 >```powershell
 >PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
@@ -208,9 +197,9 @@ Service Fabric バージョン 6.1 以降では、プロビジョニングで外
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
 ```
 
-[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、アプリケーション パッケージがシステムによって正常に登録された場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、**-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。
+[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、アプリケーション パッケージがシステムによって正常に登録された場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、 **-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。
 
-アプリケーション パッケージが大規模な場合やタイムアウトが発生する場合は、**-Async** パラメーターを使用します。 このコマンドを実行すると、クラスターが登録コマンドを受け入れたときに制御が返されます。 登録操作は必要に応じて続行されます。
+アプリケーション パッケージが大規模な場合やタイムアウトが発生する場合は、 **-Async** パラメーターを使用します。 このコマンドを実行すると、クラスターが登録コマンドを受け入れたときに制御が返されます。 登録操作は必要に応じて続行されます。
 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、アプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
 
 ```powershell
@@ -234,7 +223,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApp
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 
-[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットでは、正常に登録されているアプリケーションの種類のバージョンを指定して、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、*"fabric:"* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
+[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットでは、正常に登録されているアプリケーションの種類のバージョンを指定して、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、 *"fabric:"* スキームで開始され、各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
 
 ```powershell
 New-ServiceFabricApplication fabric:/MyApp MyApplicationType 1.0.0
@@ -357,14 +346,14 @@ ImageStoreConnectionString は、クラスター マニフェスト内にあり�
 
 ### <a name="deploy-large-application-package"></a>大規模なアプリケーション パッケージをデプロイする
 
-問題: (GB 単位の) 大規模なアプリケーション パッケージで [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) がタイムアウトになる。
+問題点:(GB 単位の) 大規模なアプリケーション パッケージで [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) がタイムアウトになる。
 次の操作を試してください。
 - `TimeoutSec` パラメーターを使用して、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) コマンドのタイムアウト値を大きくします。 既定では、タイムアウトは 30 分です。
 - ソース コンピューターとクラスターの間のネットワーク接続を確認します。 接続が低速な場合は、ネットワーク接続が高速なコンピューターを使用することを検討してください。
 クライアント コンピューターがクラスターとは別のリージョンにある場合は、クラスターと同じかより近いリージョンにあるクライアント コンピューターの使用を検討してください。
 - 外部で調整されていないかどうかを確認してください。 たとえば、イメージ ストアが Azure Storage を使用するように構成されている場合、アップロードが調整される可能性があります。
 
-問題: パッケージのアップロードが正常に完了したが、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) がタイムアウトになる。次の操作を試してください。
+問題点:パッケージのアップロードが正常に完了したが、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) がタイムアウトになる。次の操作を試してください。
 - イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。
 圧縮によってファイル サイズが小さくなりファイル数が減るため、トラフィックの量と Service Fabric が実行する必要のある処理が減ります。 (圧縮時間を含めた場合は特に) アップロード操作が遅くなる場合がありますが、アプリケーションの種類の登録と登録解除は高速になります。
 - `TimeoutSec` パラメーターを使用して、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドのタイムアウト値を大きくします。
@@ -383,7 +372,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 
 ### <a name="deploy-application-package-with-many-files"></a>多数のファイルを含むアプリケーション パッケージをデプロイする
 
-問題: (数千個の) 多数のファイルを含むアプリケーション パッケージに対する [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) がタイムアウトになる。
+問題点:(数千個の) 多数のファイルを含むアプリケーション パッケージに対する [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) がタイムアウトになる。
 次の操作を試してください。
 - イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。 圧縮により、ファイル数を減らすことができます。
 - `TimeoutSec` パラメーターを使用して、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドのタイムアウト値を大きくします。
@@ -401,7 +390,7 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アプリケーションのパッケージ化](service-fabric-package-apps.md)
 

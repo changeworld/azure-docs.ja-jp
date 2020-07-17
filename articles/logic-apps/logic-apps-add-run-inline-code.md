@@ -1,20 +1,17 @@
 ---
-title: コード スニペットを追加および実行する - Azure Logic Apps
-description: Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
+title: インライン コードを使用してコード スニペットを追加および実行する
+description: Azure Logic Apps で作成する自動化されたタスクおよびワークフロー用のインライン コード アクションを使用して、コード スニペットを作成および実行する方法について説明します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: derek1ee, LADocs
+ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 9ef11eb2099ff617fb4da4b9a924dc3f0550f226
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/14/2019
+ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157995"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75453493"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
 
@@ -23,7 +20,11 @@ ms.locfileid: "65157995"
 * JavaScript 内で実行する。 追加の言語がまもなく提供される。
 * 実行の完了に要する時間が 5 秒以内。
 * 処理するデータのサイズが最大 50 MB。
-* 使用する Node.js のバージョンが 8.11.1 である。 詳細については、「[標準ビルトイン オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)」を参照してください。
+* [**変数**アクション](../logic-apps/logic-apps-create-variables-store-values.md)の操作は必要なし (未サポート)。
+* 使用する Node.js のバージョンが 8.11.1 である。 詳細については、「[標準ビルトイン オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)」を参照してください。 
+
+  > [!NOTE]
+  > `require()` 関数は、JavaScript を実行する**インライン コード** アクションではサポートされていません。
 
 このアクションでは、コード スニペットが実行され、そのスニペットから **[結果]** という名前のトークンとして出力が返されます。このトークンは、ロジック アプリ内の後続のアクションで使用できます。 コードの関数を作成する別のシナリオでは、ロジック アプリ内で [Azure 関数の作成および呼び出し](../logic-apps/logic-apps-azure-functions.md)を試みてください。
 
@@ -37,9 +38,12 @@ ms.locfileid: "65157995"
 
 * コード スニペットを追加するロジック アプリ (トリガーを含む)。 ロジック アプリがない場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-   このトピックのサンプルのロジック アプリでは、次の Office 365 Outlook トリガーが使用されます。**[When a new email arrives (新しい電子メールが届いたとき)]**
+   このトピックのサンプルのロジック アプリでは、次の Office 365 Outlook トリガーが使用されます。 **[When a new email arrives (新しい電子メールが届いたとき)]**
 
 * ロジック アプリにリンクされた[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
+
+  > [!NOTE]
+  > ユース ケースまたはシナリオに適した統合アカウントを使用していることを確認します。 たとえば、[Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウントは、運用環境のシナリオではなく探索的なシナリオとワークロードのみを対象としており、用途とスループットが制限されており、サービス レベル アグリーメント (SLA) ではサポートされていません。 他のレベルではコストが発生しますが、SLA のサポートが含まれ、スループットが向上し、上限も高くなります。 統合アカウントの[レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)、[価格](https://azure.microsoft.com/pricing/details/logic-apps/)、および[制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)の詳細を確認してください。
 
 ## <a name="add-inline-code"></a>インライン コードを追加する
 
@@ -47,15 +51,15 @@ ms.locfileid: "65157995"
 
 1. デザイナーを使用して、ロジック アプリのワークフロー内の必要な場所に**インライン コード** アクションを追加します。
 
-   * ワークフローの最後にアクションを追加するには、**[新しいステップ]** を選択します。
+   * ワークフローの最後にアクションを追加するには、 **[新しいステップ]** を選択します。
 
-   * 既存のステップ間にアクションを追加するには、それらのステップを接続している矢印の上にマウス ポインターを移動します。 プラス記号 (**+**)を選択し、**[アクションの追加]** を選択します。
+   * 既存のステップ間にアクションを追加するには、それらのステップを接続している矢印の上にマウス ポインターを移動します。 プラス記号 ( **+** )を選択し、 **[アクションの追加]** を選択します。
 
    この例では、Office 365 Outlook トリガーの下に**インライン コード** アクションが追加されます。
 
    ![新規ステップの追加](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「inline code (インライン コード)」と入力します。 アクションの一覧から、次のアクションを選択します。**[JavaScript コードの実行]**
+1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「inline code (インライン コード)」と入力します。 アクションの一覧から、次のアクションを選択します。 **[JavaScript コードの実行]**
 
    ![[JavaScript コードの実行] の選択](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 
@@ -84,7 +88,7 @@ ms.locfileid: "65157995"
 
    > [!NOTE]
    >
-   > コード スニペットで参照されるアクション名にドット (.) 演算子が使用されている場合は、それらのアクション名を [**[アクション]** パラメーター](#add-parameters)に追加する必要があります。 これらの参照では、アクション名を大かっこ ([]) と引用符で囲む必要もあります。例を次に示します。
+   > コード スニペットで参照されるアクション名にドット (.) 演算子が使用されている場合は、それらのアクション名を [ **[アクション]** パラメーター](#add-parameters)に追加する必要があります。 これらの参照では、アクション名を大かっこ ([]) と引用符で囲む必要もあります。例を次に示します。
    >
    > `// Correct`</br> 
    > `workflowContext.actions["my.action.name"].body`</br>
@@ -93,7 +97,7 @@ ms.locfileid: "65157995"
    > `workflowContext.actions.my.action.name.body`
 
    インライン コード アクションでは、`return` ステートメントは不要ですが、`return` ステートメントの結果は、後のアクションで **[結果]** トークンを通じて参照できます。 
-   たとえば、コード スニペットは、正規表現で電子メール本文内の一致を検索する `match()` 関数を呼び出して結果を返します。 **[作成]** アクションは、**[結果]** トークンを使用して、インライン コード アクションの結果を参照し、1 つの結果を作成します。
+   たとえば、コード スニペットは、正規表現で電子メール本文内の一致を検索する `match()` 関数を呼び出して結果を返します。 **[作成]** アクションは、 **[結果]** トークンを使用して、インライン コード アクションの結果を参照し、1 つの結果を作成します。
 
    ![完成したロジック アプリ](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -201,16 +205,16 @@ ms.locfileid: "65157995"
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>パラメーターを追加する
+## <a name="add-parameters"></a>パラメーターの追加
 
-場合によっては、コードが依存関係として参照するトリガーや特定のアクションの結果を**インライン コード** アクションに含めることを明示的に要求するために、**[トリガー]** パラメーターや **[アクション]** パラメーターを追加することが必要となります。 このオプションは、参照する結果が実行時に見つからないシナリオで役立ちます。
+場合によっては、コードが依存関係として参照するトリガーや特定のアクションの結果を**インライン コード** アクションに含めることを明示的に要求するために、 **[トリガー]** パラメーターや **[アクション]** パラメーターを追加することが必要となります。 このオプションは、参照する結果が実行時に見つからないシナリオで役立ちます。
 
 > [!TIP]
-> コードを再利用する予定の場合は、**[コード]** ボックスを使用してプロパティへの参照を追加し、解決されたトークン参照がコードに含まれるようにします。トリガーやアクションを明示的な依存関係として追加しないでください。
+> コードを再利用する予定の場合は、 **[コード]** ボックスを使用してプロパティへの参照を追加し、解決されたトークン参照がコードに含まれるようにします。トリガーやアクションを明示的な依存関係として追加しないでください。
 
-たとえば、Office 365 Outlook コネクタの **[承認の電子メールを送信します]** アクションからの **SelectedOption** の結果を参照するコードがあるものとします。 作成時、Logic Apps エンジンは、トリガーやアクションの結果が参照されたかをコードを分析して調べ、それらの結果を自動的に含めます。 実行時、参照されるトリガーやアクションの結果が、指定された `workflowContext` オブジェクトで使用できないというエラーが発生した場合は、そのトリガーやアクションを明示的な依存関係として追加します。 この例では、**[アクション]** パラメーターを追加して、**[承認の電子メールを送信します]** アクションの結果を**インライン コード** アクションに明示的に含めることを指定します。
+たとえば、Office 365 Outlook コネクタの **[承認の電子メールを送信します]** アクションからの **SelectedOption** の結果を参照するコードがあるものとします。 作成時、Logic Apps エンジンは、トリガーやアクションの結果が参照されたかをコードを分析して調べ、それらの結果を自動的に含めます。 実行時、参照されるトリガーやアクションの結果が、指定された `workflowContext` オブジェクトで使用できないというエラーが発生した場合は、そのトリガーやアクションを明示的な依存関係として追加します。 この例では、 **[アクション]** パラメーターを追加して、 **[承認の電子メールを送信します]** アクションの結果を**インライン コード** アクションに明示的に含めることを指定します。
 
-これらのパラメーターを追加するには、**[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
+これらのパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
    ![パラメーターの追加](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
@@ -244,22 +248,22 @@ ms.locfileid: "65157995"
 
 1. デザイナーのツールバーで **[コード ビュー]** を選択し、`actions` 属性内のアクション名を検索します。
 
-   たとえば、`Send_approval_email_` は、**[承認の電子メールを送信します]** アクションの JSON 名です。
+   たとえば、`Send_approval_email_` は、 **[承認の電子メールを送信します]** アクションの JSON 名です。
 
    ![JSON のアクション名の検索](./media/logic-apps-add-run-inline-code/find-action-name-json.png)
 
 1. デザイナー ビューに戻るには、コード ビューのツールバー上で **[デザイナー]** を選択します。
 
-1. 最初のアクションを追加するには、**[Actions Item - 1]\(アクション項目 - 1\)** ボックスにアクションの JSON 名を入力します。
+1. 最初のアクションを追加するには、 **[Actions Item - 1]\(アクション項目 - 1\)** ボックスにアクションの JSON 名を入力します。
 
    ![最初のアクションの入力](./media/logic-apps-add-run-inline-code/add-action-parameter.png)
 
-1. 別のアクションを追加するには、**[新しい項目の追加]** を選択します。
+1. 別のアクションを追加するには、 **[新しい項目の追加]** を選択します。
 
 ## <a name="reference"></a>リファレンス
 
 ワークフロー定義言語を使用したロジック アプリの基盤となるワークフロー定義での **[JavaScript コードの実行]** アクションの構造と構文の詳細については、このアクションの[リファレンス セクション](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Logic Apps のコネクタ](../connectors/apis-list.md)の詳細について学習します。

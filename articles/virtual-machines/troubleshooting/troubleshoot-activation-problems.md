@@ -4,22 +4,21 @@ description: Azure での Windows 仮想マシンのライセンス認証に関�
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791713"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81605982"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -27,7 +26,7 @@ ms.locfileid: "58791713"
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Azure Virtual Machines の Windows 製品ライセンス認証の Azure KMS エンドポイントについて
 
-Azure では、KMS ライセンス認証に対して、VM が存在するクラウド リージョンに応じたエンドポイント使用します。 このトラブルシューティング ガイドを使用する際は、ご利用のリージョンに適用される適切な KMS エンドポイントを使用してください。
+Azure では、KMS (キー管理サービス) ライセンス認証に対して、VM が存在するクラウド リージョンに応じたエンドポイントが使用されます。 このトラブルシューティング ガイドを使用する際は、ご利用のリージョンに適用される適切な KMS エンドポイントを使用してください。
 
 * Azure パブリック クラウド リージョン: kms.core.windows.net:1688
 * Azure China 21Vianet 国内クラウド リージョン: kms.core.chinacloudapi.cn:1688
@@ -47,15 +46,13 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 ## <a name="solution"></a>解決策
 
 >[!NOTE]
->サイト間 VPN と強制トンネリングを使用している場合は、「[Use Azure custom routes to enable KMS activation with forced tunneling (強制トンネリングで KMS ライセンス認証を有効にするために Azure カスタム ルートを使用する)](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)」を参照してください。 
+>サイト間 VPN と強制トンネリングを使用している場合は、「[Use Azure custom routes to enable KMS activation with forced tunneling (強制トンネリングで KMS ライセンス認証を有効にするために Azure カスタム ルートを使用する)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)」を参照してください。 
 >
->ExpressRoute を使用していて、既定のルートを公開している場合は、「[Azure VM may fail to activate over ExpressRoute (Azure VM が ExpressRoute 経由でのライセンス認証に失敗する場合がある)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)」を参照してください。
+>ExpressRoute を使用していて、既定のルートが公開されている場合は、「[ExpressRoute 回路に接続された仮想ネットワークへのインターネット接続をブロックできますか?](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)」を参照してください。
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>手順 1: 適切な KMS クライアント セットアップ キーを構成する (Windows Server 2016 および Windows Server 2012 R2 用)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>手順 1: 適切な KMS クライアント セットアップ キーを構成する
 
-Windows Server 2016 または Windows Server 2012 R2 のカスタム イメージから作成する VM には、適切な KMS クライアント セットアップ キーを構成する必要があります。
-
-この手順は、Windows 2012 または Windows 2008 R2 には適用されません。 この手順で使用する仮想マシンの自動ライセンス認証 (AVMA) 機能は、Windows Server 2016 および Windows Server 2012 R2 だけでサポートされています。
+カスタム イメージから作成された VM の場合、適切な KMS クライアント セットアップ キーを構成する必要があります。
 
 1. 管理者特権でのコマンド プロンプトで、**slmgr.vbs /dlv** を実行します。 出力の Description 値を確認して、リテール (RETAIL チャネル) ライセンス メディアから作成されたのか、ボリューム (VOLUME_KMSCLIENT) ライセンス メディアから作成されたのかを判断します。
   
@@ -80,13 +77,12 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>手順 2: VM と Azure KMS サービスの間の接続を確認する
 
-1. ライセンス認証できない VM のローカル フォルダーに [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) ツールをダウンロードし、展開します。 
+1. ライセンス認証できない VM のローカル フォルダーに [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) ツールをダウンロードし、展開します。 
 
 2. [スタート] で [Windows PowerShell] を検索し、それを右クリックして [管理者として実行] を選択します。
 
 3. 正しい Azure KMS サーバーを使用するように VM が構成されていることを確認します。 そのためには、次のコマンドを実行します。
   
-
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
@@ -95,31 +91,30 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
 
 4. Psping を使用して、KMS サーバーへの接続があることを確認します。 ダウンロードした Pstools.zip を展開したフォルダーに移動し、次のコマンドを実行します。
   
-
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-
-  
    出力の最後から 2 番目の行が次のようになっていることを確認します:Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
    Lost が 0 (ゼロ) より大きい場合、VM には KMS サーバーへの接続がありません。 この状況で、VM が仮想ネットワーク内にあり、その VM にカスタム DNS サーバーが指定されている場合は、その DNS サーバーが kms.core.windows.net を解決できることを確認する必要があります。 または、DNS サーバーを、kms.core.windows.net を解決できるサーバーに変更します。
 
-   仮想ネットワークから DNS サーバーをすべて削除すると、VM が Azure 内部の DNS サービスを使用するという点を覚えておいてください。 このサービスは、kms.core.windows.net を解決できます。
+   仮想ネットワークから DNS サーバーをすべて削除すると、VM で Azure の内部の DNS サービスが使用されることにご注意ください。 このサービスは、kms.core.windows.net を解決できます。
   
-また、ゲスト ファイアウォールが、ライセンス認証の試行をブロックするような構成になっていないことを確認します。
+    また、1688 ポートを持つ KMS エンドポイントへの送信ネットワーク トラフィックは、VM 内のファイアウォールによってブロックされません。
 
-1. kms.core.windows.net への接続が成功したことを確認した後、管理者特権の Windows PowerShell プロンプトで次のコマンドを実行します。 このコマンドは、ライセンス認証を複数回試行します。
+5. [[Network Watcher - 次ホップ]](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) を使用して、対象の VM から、宛先 IP 23.102.135.246 (kms.core.windows.net) またはリージョンに適用される適切な KMS エンドポイントの IP アドレスへの、次ホップの種類が**インターネット**であることを確認します。  結果が VirtualAppliance または VirtualNetworkGateway の場合、既定のルートが存在する可能性があります。  ネットワーク管理者に連絡し、協力して適切な措置を決定してください。  このソリューションが組織のポリシーと一致している場合は、[カスタム ルート](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)である可能性があります。
+
+6. kms.core.windows.net への接続が成功したことを確認した後、管理者特権の Windows PowerShell プロンプトで次のコマンドを実行します。 このコマンドは、ライセンス認証を複数回試行します。
 
     ```powershell
-    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-ライセンス認証が成功すると、次のような情報が返されます。
+    ライセンス認証が成功すると、次のような情報が返されます。
+    
+    **Windows(R), ServerDatacenter Edition (12345678-1234-1234-1234-12345678) のライセンス認証を行っています …  製品は正常にライセンス認証されました。**
 
-**Windows(R), ServerDatacenter Edition (12345678-1234-1234-1234-12345678) のライセンス認証を行っています … 製品は正常にライセンス認証されました。**
-
-## <a name="faq"></a>FAQ 
+## <a name="faq"></a>よく寄せられる質問 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Azure Marketplace から Windows Server 2016 を作成しました。 Windows Server 2016 をライセンス認証するために KMS キーを構成する必要はありますか? 
 

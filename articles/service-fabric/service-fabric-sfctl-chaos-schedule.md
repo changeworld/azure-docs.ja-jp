@@ -1,30 +1,21 @@
 ---
-title: Azure Service Fabric CLI- sfctl chaos schedule | Microsoft Docs
-description: Service Fabric CLI sfctl chaos schedule のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI - sfctl chaos schedule
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 chaos をスケジュール設定するためのコマンドの一覧が含まれています。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: dc3dd06b5feac1f66598cd65fa79f447a1bbd9be
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668315"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76906192"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 chaos のスケジュールを取得および設定します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
 |command|説明|
 | --- | --- |
@@ -40,22 +31,22 @@ Chaos をいつどのようにして実行するかを定義する Chaos Schedul
 
 |引数|説明|
 | --- | --- |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 Chaos によって使用されるスケジュールを設定します。
 
-Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュールします。 指定された入力スケジュールのバージョンは、サーバー上の Chaos Schedule のバージョンと一致している必要があります。 指定されたバージョンがサーバー上のバージョンと一致しない場合、Chaos Schedule は更新されません。 指定されたバージョンがサーバー上のバージョンと一致する場合、Chaos Schedule は更新され、サーバー上の Chaos Schedule のバージョンは 1 だけインクリメントされて、2,147,483,647 を超えると 0 に戻ります。 この呼び出しが行われたときに Chaos が実行されていると、呼び出しは失敗します。
+Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュールします。 提供されたバージョンがサーバー上のバージョンと一致する場合、Chaos Schedule が更新されます。 Chaos Schedule を更新すると、サーバー上のバージョンが 1 つ増加します。 サーバー上のバージョンは、大きい番号に到達した後、0 に戻ります。 この呼び出しが行われたときに Chaos が実行されていると、呼び出しは失敗します。
 
 ### <a name="arguments"></a>引数
 
@@ -65,24 +56,25 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
 | --expiry-date-utc | Schedule を使用した Chaos のスケジュール設定を停止する日付と時刻。  既定値\: 9999-12-31T23\:59\:59.999Z。 |
 | --jobs | Chaos を実行する日時と Chaos の実行で使用するパラメーターを表す ChaosScheduleJobs の JSON でエンコードされたリスト。 |
 | --start-date-utc | Schedule を使用した Chaos のスケジュール設定を開始する日付と時刻。  既定値\: 1601-01-01T00\:00\:00.000Z。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 | --version | Schedule のバージョン番号。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ### <a name="examples"></a>例
 
-次のコマンドは、2016-01-01 から 2038-01-01 まで無停止で Chaos を実行するスケジュールを設定します (現在のスケジュールのバージョンは 0 であるものとします)。 Chaos は、その時刻にクラスター上でスケジュールされます。
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+次のコマンドは、2016-01-01 から 2038-01-01 まで無停止で Chaos を実行するスケジュールを設定します (現在のスケジュールのバージョンは 0 であるものとします)。
+Chaos は、その時刻にクラスター上でスケジュールされます。
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -143,8 +135,10 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
         ]
     }
     ]
+```
 
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

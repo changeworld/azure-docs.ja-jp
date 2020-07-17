@@ -1,29 +1,26 @@
 ---
 title: Azure でのカスタム メトリックを使用した自動スケール
 description: Azure でカスタム メトリックを使用してリソースをスケールする方法について説明します。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: e6423f2ce3659fd3dd738dcc8a990261bc7bf60c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088385"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77425121"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
 この記事では、Azure Portal でカスタム メトリックを使用してリソースをスケールする方法について説明します。
 
-Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
+Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、[Azure Data Explorer クラスター](https://azure.microsoft.com/services/data-explorer/)、   
+統合サービス環境および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)のみに適用されます。
 
 ## <a name="lets-get-started"></a>作業の開始
 この記事では、Application Insights が構成されている Web アプリがあることを前提としています。 Web アプリをまだ所有していない場合は、[ASP.NET Web サイト向けに Application Insights を設定する][1]ことができます。
 
-- [Azure Portal][2] を開きます。
+- [Azure portal][2] を開きます。
 - 左側のナビゲーション ウィンドウで、Azure Monitor のアイコンをクリックします。
   ![Azure Monitor の起動][3]
 - [自動スケール] 設定をクリックすると、自動スケールを適用できるすべてのリソースと、現在の自動スケールの状態が表示されます。![Azure Monitor での自動スケールの検出][4]
@@ -35,7 +32,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
   ![カスタム メトリックによるスケール][6]
 - 上記の手順と同様に、カスタム メトリックがしきい値を下回る場合にスケールインし、スケール カウントを 1 ずつ小さくするスケール ルールを追加します。
   ![CPU に基づくスケール][7]
-- インスタンスの制限を設定します。 たとえば、カスタム メトリックの変動に応じて 2～5 個のインスタンスの間でスケールする場合は、[最小] を「2」、[最大] を「5」、[既定] を「2」に設定します。
+- インスタンスの限界を設定します。 たとえば、カスタム メトリックの変動に応じて 2～5 個のインスタンスの間でスケールする場合は、[最小] を「2」、[最大] を「5」、[既定] を「2」に設定します。
   > 注:リソース メトリックの読み取りで問題が発生し、現在の容量が既定の容量を下回る場合は、リソースの可用性を確保するために、自動スケールによって既定値にスケールアウトされます。 現在の容量が既に既定の容量を上回る場合、自動スケールではスケールインされません。
 - [保存] をクリックします。
 

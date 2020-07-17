@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Hyper-V から Azure へのディザスター リカバリーのトラブルシューティング | Microsoft Docs
+title: Azure Site Recovery を使用した Hyper-V のディザスター リカバリーのトラブルシューティング
 description: Azure Site Recovery を使用した Hyper-V から Azure へのレプリケーションに関するディザスター リカバリーの問題をトラブルシューティングする方法について説明します。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149089"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73961474"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -42,8 +42,8 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 1. [最新バージョン](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)の Site Recovery サービスを実行していることを確認します。
 2. レプリケーションが一時停止されているかどうかを確認します。
    - Hyper-V マネージャー コンソールで VM の正常性状態を確認します。
-   - それが重大である場合は、[VM] > **[レプリケーション]** > **[View Replication Health (レプリケーションの正常性の表示)]** を右クリックします。
-   - レプリケーションが一時停止されている場合は、**[Resume Replication (レプリケーションの再開)]** をクリックします。
+   - それが重大である場合は、[VM] > **[レプリケーション]**  >  **[View Replication Health (レプリケーションの正常性の表示)]** を右クリックします。
+   - レプリケーションが一時停止されている場合は、 **[Resume Replication (レプリケーションの再開)]** をクリックします。
 3. 必要なサービスが実行されていることを確認します。 そうでない場合は、それらを再起動します。
     - VMM なしで Hyper-V をレプリケートしている場合は、次のサービスが Hyper-V ホスト上で実行されていることを確認します。
         - Virtual Machine Management サービス
@@ -53,8 +53,8 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
     - 環境内の VMM を使用してレプリケートしている場合は、次のサービスが実行されていることを確認します。
         - Hyper-V ホスト上で、Virtual Machine Management サービス、Microsoft Azure Recovery Services Agent、および WMI Provider Host サービスが実行されていることを確認します。
         - VMM サーバー上で、System Center Virtual Machine Manager サービスが実行されていることを確認します。
-4. Hyper-V サーバーと Azure の間の接続を確認します。 接続を確認するには、Hyper V ホスト上でタスク マネージャーを開きます。 **[パフォーマンス]** タブで、**[リソース モニターを開く]** をクリックします。 **[ネットワーク]** タブ > **[ネットワーク活動のプロセス]** で、cbengine.exe が大量 (数 MB) のデータをアクティブに送信しているかどうかを確認します。
-5. Hyper-V ホストが Azure ストレージ BLOB の URL に接続できるかどうかを確認します。 ホストが接続できるかどうかを確認するには、**cbengine.exe** を選択して確認します。 ホストから Azure ストレージ BLOB への接続を確認するには、**[TCP 接続]** を表示します。
+4. Hyper-V サーバーと Azure の間の接続を確認します。 接続を確認するには、Hyper V ホスト上でタスク マネージャーを開きます。 **[パフォーマンス]** タブで、 **[リソース モニターを開く]** をクリックします。 **[ネットワーク]** タブ > **[ネットワーク活動のプロセス]** で、cbengine.exe が大量 (数 MB) のデータをアクティブに送信しているかどうかを確認します。
+5. Hyper-V ホストが Azure ストレージ BLOB の URL に接続できるかどうかを確認します。 ホストが接続できるかどうかを確認するには、**cbengine.exe** を選択して確認します。 ホストから Azure ストレージ BLOB への接続を確認するには、 **[TCP 接続]** を表示します。
 6. 次の説明に従って、パフォーマンスの問題を確認します。
     
 ### <a name="performance-issues"></a>パフォーマンスの問題
@@ -80,7 +80,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 2. **[View Replication Health (レプリケーションの正常性の表示)]** をクリックして詳細を表示します。
 
-    - レプリケーションが一時停止されている場合は、[VM] > **[レプリケーション]** > **[Resume Replication (レプリケーションの再開)]** を右クリックします。
+    - レプリケーションが一時停止されている場合は、[VM] > **[レプリケーション]**  >  **[Resume Replication (レプリケーションの再開)]** を右クリックします。
     - Site Recovery で構成された Hyper-V ホスト上の VM が同じクラスター内の別の Hyper-V ホストまたはスタンドアロン マシンに移行された場合、その VM のレプリケーションは影響を受けません。 新しい Hyper-V ホストがすべての前提条件を満たし、Site Recovery で構成されていることを確認します。
 
 ## <a name="app-consistent-snapshot-issues"></a>アプリ整合性スナップショットの問題
@@ -107,7 +107,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
     ![ダイナミック ディスク](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. VM に接続された iSCSI ディスクが存在しないことを確認します。 これはサポートされていません。
-5. Backup サービスが有効になっていることを確認します。 **[Hyper-V settings]\(Hyper-V の設定\)** > **[Integration Services]** で、サービスが有効になっていることを確認します。
+5. Backup サービスが有効になっていることを確認します。 **[Hyper-V settings]\(Hyper-V の設定\)**  >  **[Integration Services]** で、サービスが有効になっていることを確認します。
 6. VSS スナップショットを作成しているアプリと競合していないことを確認します。 複数のアプリが同時に VSS スナップショットを作成しようとしている場合は、競合が発生することがあります。 たとえば、レプリケーション ポリシーで Site Recovery がスナップショットを作成するようにスケジュールされているときに、Backup アプリが VSS スナップショットを作成している場合です。   
 7. VM で高いチャーン レートが発生しているかどうかを確認します。
     - Hyper-V ホスト上のパフォーマンス カウンターを使用して、ゲスト VM での 1 日のデータ変更レートを測定できます。 データ変更レートを測定するには、次のカウンターを有効にします。 5 ～ 15 分間の VM ディスクにまたがるこの値のサンプルを集計して、VM のチャーンを取得します。
@@ -128,8 +128,8 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
     - 代表的なエラーは次のとおりです:"Hyper-V は仮想マシン 'XYZ' の VSS スナップショット セットを生成できませんでした:ライターで一過性ではないエラーが発生しました。 サービスが無応答である場合は、VSS サービスの再起動によって問題が解決される可能性があります。"
 
 2. VM の VSS スナップショットを生成するには、その VM に Hyper-V Integration Services がインストールされており、Backup (VSS) Integration Services が有効になっていることを確認します。
-    - ゲスト上で Integration Services VSS サービス/デーモンが実行され、**[OK]** の状態になっていることを確認します。
-    - これは、Hyper-V ホスト上の管理者特権での PowerShell セッションからコマンド **et-VMIntegrationService -VMName<VMName>-Name VSS** を使用して確認できます。この情報はまた、ゲスト VM にログインすることによっても取得できます。 [詳細情報](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - ゲスト上で Integration Services VSS サービス/デーモンが実行され、 **[OK]** の状態になっていることを確認します。
+    - これは、Hyper-V ホスト上の管理者特権での PowerShell セッションからコマンド **Get-VMIntegrationService -VMName\<VMName>-Name VSS** を使用して確認できます。この情報はまた、ゲスト VM にログインすることによっても取得できます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - VM 上の Backup/VSS Integration Services が実行され、正常な状態にあることを確認します。 そうでない場合は、次のサービス、および Hyper-V ホスト サーバー上の Hyper-V ボリューム シャドウ コピー リクエスター サービスを再起動します。
 
 ### <a name="common-errors"></a>一般的なエラー
@@ -145,12 +145,12 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 
 Hyper-V レプリケーション イベントはすべて、**Applications and Services Logs** > **Microsoft** > **Windows** にある Hyper-V-VMMS\Admin ログに記録されています。 さらに、次のように、Hyper-V Virtual Machine Management サービスの分析ログを有効にすることができます。
 
-1. イベント ビューアーに分析およびデバッグ ログを表示できるようにします。 ログを使用可能にするには、イベント ビューアーで、**[表示]** > **[分析およびデバッグ ログの表示]** をクリックします。 分析ログは、**Hyper-V-VMMS** の下に表示されます。
+1. イベント ビューアーに分析およびデバッグ ログを表示できるようにします。 ログを使用可能にするには、イベント ビューアーで、 **[表示]**  >  **[分析およびデバッグ ログの表示]** をクリックします。 分析ログは、**Hyper-V-VMMS** の下に表示されます。
 2. **[操作]** ウィンドウで **[ログを有効にする]** をクリックします。 
 
     ![ログを有効にする](media/hyper-v-azure-troubleshoot/enable-log.png)
     
-3. 有効にすると、**[パフォーマンス モニター]** の **[データ コレクター セット]** の下に **[イベント トレース セッション]** として表示されます。 
+3. 有効にすると、 **[パフォーマンス モニター]** の **[データ コレクター セット]** の下に **[イベント トレース セッション]** として表示されます。 
 4. 収集された情報を表示するには、ログを無効にしてトレース セッションを停止します。 次に、ログを保存し、イベント ビューアーで再度開くか、または他のツールを使用して必要に応じて変換します。
 
 

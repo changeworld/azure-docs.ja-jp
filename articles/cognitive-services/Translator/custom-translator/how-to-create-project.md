@@ -1,20 +1,20 @@
 ---
 title: プロジェクトを作成する方法 - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Custom Translator でプロジェクトを作成する方法
-author: rajdeep-in
-manager: christw
+description: この記事では、Azure Cognitive Services Custom Translator でプロジェクトを作成および管理する方法について説明します。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e01f3ddde96903716cf1fcff0426791ff3a90e07
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762706"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587665"
 ---
 # <a name="create-a-project"></a>プロジェクトの作成
 
@@ -52,7 +52,7 @@ Custom Translator のランディング ページには、ワークスペース�
 
 プロジェクトを選択すると、プロジェクト ページに次のように表示されます。
 
-- CategoryID:CategoryID は、WorkspaceID、プロジェクト ラベル、およびカテゴリ コードを連結して作成されます。 カスタムの翻訳を取得するには、Text Translator API と共に CategoryID を使用します。
+- CategoryID:CategoryID は、WorkspaceID、プロジェクト ラベル、およびカテゴリ コードを連結して作成されます。 カスタムの翻訳を取得するには、Text Translator と共に CategoryID を使用します。
 
 - [Train]\(トレーニング\) ボタン:このボタンを使用して、[モデルのトレーニング](how-to-train-model.md)を開始します。
 
@@ -62,7 +62,7 @@ Custom Translator のランディング ページには、ワークスペース�
 
     ![プロジェクトの詳細を表示する](media/how-to/how-to-view-project.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [プロジェクトの検索、編集、削除方法](how-to-search-edit-delete-projects.md)について説明します。
 - [ドキュメントをアップロード](how-to-upload-document.md)して翻訳モデルを構築する方法について説明します。

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services 内の LiveEvent の待機時間 | Microsoft Docs
-description: このトピックでは、LiveEvent の待機時間の概要を説明し、低待機時間を設定する方法を示します。
+title: Azure Media Services の LiveEvent の低待機時間設定 | Microsoft Docs
+description: このトピックでは、LiveEvent の低待機時間設定の概要について説明し、低待機時間の設定方法を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 30cd77799837f9b1ef08a9c609e518fd679b9b15
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78199650"
 ---
-# <a name="live-event-latency-in-media-services"></a>Media Services 内のライブ イベントの待機時間
+# <a name="live-event-low-latency-settings"></a>ライブ イベントの低待機時間設定
 
 この記事では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)に対して低待機時間を設定する方法を示します。 さらに、さまざまなプレーヤーで低待機時間の設定を使用したときの一般的な結果について説明します。 結果は、CDN およびネットワーク待機時間によって異なります。
 
 新しい **LowLatency** 機能を使用するには、**LiveEvent** の **StreamOptionsFlag** を **LowLatency** に設定します。 HLS 再生用に [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を作成する場合は、[LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) を 1 に設定します。 ストリームが稼働状態になったら、[Azure Media Player](https://ampdemo.azureedge.net/) (AMP のデモ ページ) を使用して、"Low Latency Heuristic Profile" を使用するように再生オプションを設定できます。
 
 > [!NOTE]
-> 現時点では、Azure Media Player の LowLatency HeuristicProfile は、DASH プロトコル、または CMAF を使用する HLS でストリームを再生するために設計されています。 (`format=m3u8-aapl` や `format=m3u8-aapl-v3` などの) TS を使用する HLS を介して MacOS または iOS デバイスをターゲットとする場合は、この設定を使用しないでください。この場合、AMP では、OS によって提供されるネイティブ プレーヤーが直接使用されるためです。
+> 現時点では、Azure Media Player の LowLatency HeuristicProfile は、CSF または CMAF 形式 (`format=mdp-time-csf` または `format=mdp-time-cmaf` など) のMPEG-DASH プロトコでストリームを再生するために設計されています。 
 
 次の .NET の例では、**LiveEvent** に対して **LowLatency** を設定する方法を示しています。
 
@@ -75,7 +75,7 @@ LiveEvent liveEvent = new LiveEvent(
 > [!NOTE]
 > エンドツーエンドの待機時間は、ローカル ネットワークの状態や、CDN キャッシュ レイヤーの導入によって変動する可能性があります。 正しい構成でテストする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ライブ ストリーミングの概要](live-streaming-overview.md)
 - [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)

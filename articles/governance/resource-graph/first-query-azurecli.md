@@ -1,19 +1,14 @@
 ---
-title: Azure CLI を使用して初めてのクエリを実行する
-description: この記事では、Azure CLI の Resource Graph 拡張機能を有効にして、最初のクエリを実行する手順について説明します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 10/22/2018
+title: クイック スタート:初めての Azure CLI クエリ
+description: このクイックスタートでは、手順に従って、Azure CLI の Resource Graph 拡張機能を有効にし、最初のクエリを実行します。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823161"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215640"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -21,13 +16,17 @@ Azure Resource Graph を使用する最初の手順では、[Azure CLI](/cli/azu
 
 このプロセスの最後では、選択した Azure CLI のインストールに拡張機能を追加して、最初の Resource Graph クエリを実行します。
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-extension"></a>Resource Graph 拡張機能を追加する
 
 Azure CLI を Azure Resource Graph のクエリに対して有効にするには、拡張機能を追加する必要があります。 [Windows 10上の bash](/windows/wsl/install-win10)、 [Cloud Shell](https://shell.azure.com) (スタンドアロンと内部の両方のポータル)、 [Azure CLI Docker 画像](https://hub.docker.com/r/microsoft/azure-cli/)、または、ローカルにインストールされた場合を含め、この拡張機能はAzure CLI を使用できる場合はいつでも動作します。
 
-1. 最新の Azure CLI がインストールされていることを確認します (**2.0.45** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)に従ってください。
+1. 最新の Azure CLI がインストールされていることを確認します (**2.0.76** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)に従ってください。
 
 1. 選択された Azure CLI 環境では、次のコマンドでインポートします。
 
@@ -36,7 +35,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    az extension add --name resource-graph
    ```
 
-1. 拡張機能がインストールされており、必要なバージョンである (**0.1.7** 以降) ことを検証します。
+1. 拡張機能がインストールされていて、必要なバージョン (**1.0.0** 以降) であることを検証します。
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -56,7 +55,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -66,7 +65,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -76,12 +75,12 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Resource Graph 拡張機能を Azure CLI 環境から削除する場合は、次のコマンドを使用して行うことができます。
 
@@ -90,14 +89,9 @@ Resource Graph 拡張機能を Azure CLI 環境から削除する場合は、次
 az extension remove -n resource-graph
 ```
 
-> [!NOTE]
-> これにより、以前にダウンロードした拡張ファイルは削除されません。 実行中の Azure CLI 環境から削除されるだけです。
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
+このクイックスタートでは、Azure CLI 環境に Resource Graph 拡張機能を追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
 
-- [クエリ言語](./concepts/query-language.md)に関するさらなる情報を入手します
-- [その他のリソース](./concepts/explore-resources.md)
-- [Azure PowerShell ](first-query-powershell.md) を使用して最初のクエリを実行します
-- [Starter クエリ](./samples/starter.md)のサンプルを参照してください
-- [高度なクエリ](./samples/advanced.md)のサンプルを参照してください
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供してください
+> [!div class="nextstepaction"]
+> [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

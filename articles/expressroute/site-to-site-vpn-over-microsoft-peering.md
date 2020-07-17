@@ -1,5 +1,5 @@
 ---
-title: Microsoft ピアリング経由のサイト間 VPN を構成する - ExpressRoute - Azure | Microsoft Docs
+title: 'Azure ExpressRoute: Microsoft ピアリング経由の S2S VPN を構成する'
 description: サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66115740"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75436810"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 
@@ -24,9 +24,9 @@ ms.locfileid: "66115740"
 >
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a><a name="architecture"></a>アーキテクチャ
 
 
   ![接続の概要](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
@@ -43,7 +43,7 @@ Microsoft ピアリング経由の VPN トンネルを終了するには、VPN �
 >
 >
 
-## <a name="workflow"></a>ワークフロー
+## <a name="workflow"></a><a name="workflow"></a>ワークフロー
 
 1. ExpressRoute 回線用に Microsoft ピアリングを構成します。
 2. 選択した Azure リージョン パブリック プレフィックスを、Microsoft ピアリング経由でオンプレミス ネットワークに公開します。
@@ -53,7 +53,7 @@ Microsoft ピアリング経由の VPN トンネルを終了するには、VPN �
 6. (省略可能) オンプレミスの VPN デバイスでファイアウォール/フィルター処理を構成します。
 7. ExpressRoute 回線経由の IPsec 通信をテストして検証します。
 
-## <a name="peering"></a>1.Microsoft ピアリングを構成する
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1.Microsoft ピアリングを構成する
 
 ExpressRoute 経由のサイト間 VPN 接続を構成するには、ExpressRoute Microsoft ピアリングを活用する必要があります。
 
@@ -65,21 +65,21 @@ ExpressRoute 経由のサイト間 VPN 接続を構成するには、ExpressRout
 
 ![回線](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="routefilter"></a>2.ルート フィルターを構成する
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2.ルート フィルターを構成する
 
-ExpressRoute 回線の Microsoft ピアリング経由で利用するサービスがルート フィルターによって識別されます。 これは、実質的には、すべての BGP コミュニティ値のホワイト リストです。 
+ExpressRoute 回線の Microsoft ピアリング経由で利用するサービスがルート フィルターによって識別されます。 これは、実質的には全 BGP コミュニティ値から成る許可リストです。 
 
 ![ルート フィルター](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
 この例は、"*Azure 米国西部 2*" リージョンのみでのデプロイです。 ルート フィルター規則が追加され、米国西部 2 リージョン プレフィックスの公開のみが許可されます。その BGP コミュニティ値は *12076:51026* です。 **[ルールの管理]** を選択して、許可するリージョン プレフィックスを指定します。
 
-ルート フィルター内で、ルート フィルターを適用する ExpressRoute 回線を選択する必要もあります。 ExpressRoute 回線を選択するには、**[回線の追加]** を選択します。 前の図では、ルート フィルターは、例の ExpressRoute 回線に関連付けられています。
+ルート フィルター内で、ルート フィルターを適用する ExpressRoute 回線を選択する必要もあります。 ExpressRoute 回線を選択するには、 **[回線の追加]** を選択します。 前の図では、ルート フィルターは、例の ExpressRoute 回線に関連付けられています。
 
-### <a name="configfilter"></a>2.1 ルート フィルターを構成する
+### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2.1 ルート フィルターを構成する
 
 ルート フィルターを構成します。 手順については、[Microsoft ピアリングのルート フィルターの構成](how-to-routefilter-portal.md)に関するページをご覧ください。
 
-### <a name="verifybgp"></a>2.2 BGP ルートを確認する
+### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2.2 BGP ルートを確認する
 
 ExpressRoute 回線経由の Microsoft ピアリングを適切に作成し、ルート フィルターを回線に関連付けたら、MSEE とピアリングしている PE デバイスで MSEE から受信した BGP ルートを確認できます。 検証コマンドは、PE デバイスのオペレーティング システムによって異なります。
 
@@ -112,7 +112,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="vpngateway"></a>3.VPN ゲートウェイと IPsec トンネルを構成する
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3.VPN ゲートウェイと IPsec トンネルを構成する
 
 このセクションでは、Azure VPN ゲートウェイとオンプレミス VPN デバイスの間で、IPsec VPN トンネルを作成します。 この例では、Cisco Cloud Service Router (CSR1000) VPN デバイスを使用します。
 
@@ -130,14 +130,14 @@ IPsec トンネル ペア経由で、eBGP セッションが確立され、プ�
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Azure Resource Manager テンプレートの例について
 
-例では、VPN ゲートウェイと IPsec トンネルの終了が、Azure Resource Manager テンプレートを使用して構成されます。 Resource Manager テンプレートを初めて使用する場合、または Resource Manager テンプレートの基本を理解する必要がある場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。 このセクションのテンプレートでは、未開発の Azure 環境 (VNet) が作成されます。 ただし、既存の VNet がある場合は、それをテンプレートで参照できます。 VPN ゲートウェイ IPsec/IKE サイト間の構成に慣れていない場合は、[サイト間接続の作成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページをご覧ください。
+例では、VPN ゲートウェイと IPsec トンネルの終了が、Azure Resource Manager テンプレートを使用して構成されます。 Resource Manager テンプレートを初めて使用する場合、または Resource Manager テンプレートの基本を理解する必要がある場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)」を参照してください。 このセクションのテンプレートでは、未開発の Azure 環境 (VNet) が作成されます。 ただし、既存の VNet がある場合は、それをテンプレートで参照できます。 VPN ゲートウェイ IPsec/IKE サイト間の構成に慣れていない場合は、[サイト間接続の作成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページをご覧ください。
 
 >[!NOTE]
 >この構成を作成するために Azure Resource Manager テンプレートを使用する必要はありません。 この構成は、Azure Portal または PowerShell を使用して作成できます。
 >
 >
 
-### <a name="variables3"></a>3.1 変数を宣言する
+### <a name="31-declare-the-variables"></a><a name="variables3"></a>3.1 変数を宣言する
 
 この例では、変数の宣言は、サンプル ネットワークに対応します。 変数を宣言するときは、環境に合わせてこのセクションを変更します。
 
@@ -175,7 +175,7 @@ IPsec トンネル ペア経由で、eBGP セッションが確立され、プ�
 },
 ```
 
-### <a name="vnet"></a>3.2 仮想ネットワーク (VNet) を作成する
+### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3.2 仮想ネットワーク (VNet) を作成する
 
 既存の VNet を VPN トンネルに関連付ける場合、この手順はスキップできます。
 
@@ -210,7 +210,7 @@ IPsec トンネル ペア経由で、eBGP セッションが確立され、プ�
 },
 ```
 
-### <a name="ip"></a>3.3 パブリック IP アドレスを VPN ゲートウェイ インスタンスに割り当てる
+### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3.3 パブリック IP アドレスを VPN ゲートウェイ インスタンスに割り当てる
  
 VPN ゲートウェイの各インスタンスにパブリック IP アドレスを割り当てます。
 
@@ -237,7 +237,7 @@ VPN ゲートウェイの各インスタンスにパブリック IP アドレス
   },
 ```
 
-### <a name="termination"></a>3.4 オンプレミスの VPN トンネルの終了を指定する (ローカル ネットワーク ゲートウェイ)
+### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3.4 オンプレミスの VPN トンネルの終了を指定する (ローカル ネットワーク ゲートウェイ)
 
 オンプレミスの VPN デバイスは、**ローカル ネットワーク ゲートウェイ**と呼ばれます。 次の JSON スニペットは、リモート BGP ピアの詳細も指定します。
 
@@ -262,7 +262,7 @@ VPN ゲートウェイの各インスタンスにパブリック IP アドレス
 },
 ```
 
-### <a name="creategw"></a>3.5 VPN ゲートウェイを作成する
+### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3.5 VPN ゲートウェイを作成する
 
 テンプレートのこのセクションは、VPN ゲートウェイを、アクティブ/アクティブ構成に必要な設定で構成します。 以下の要件に注意してください。
 
@@ -324,7 +324,7 @@ VPN ゲートウェイの各インスタンスにパブリック IP アドレス
   },
 ```
 
-### <a name="ipsectunnel"></a>3.6 IPsec トンネルを確立する
+### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3.6 IPsec トンネルを確立する
 
 スクリプトの最後のセクションは、Azure VPN ゲートウェイとオンプレミス VPN デバイスの間に IPsec トンネルを作成します。
 
@@ -354,7 +354,7 @@ VPN ゲートウェイの各インスタンスにパブリック IP アドレス
   }
 ```
 
-## <a name="device"></a>4.オンプレミスの VPN デバイスを構成する
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4.オンプレミスの VPN デバイスを構成する
 
 Azure VPN ゲートウェイは、さまざまなベンダーの多くの VPN デバイスと互換性があります。 構成情報と、VPN ゲートウェイとの連携が検証されているデバイスについては、[VPN デバイス情報](../vpn-gateway/vpn-gateway-about-vpn-devices.md)に関するページをご覧ください。
 
@@ -365,7 +365,7 @@ VPN デバイスを構成する場合は、次の項目が必要です。
 
 通常、eBGP ピアは直接接続されます (多くの場合、WAN 接続経由)。 ただし、ExpressRoute Microsoft ピアリングを介した IPsec VPN トンネル経由 eBGP を構成する場合は、eBGP ピア間に複数のルーティング ドメインがあります。 直接接続されていない 2 つのピア間に eBGP ネイバー関係を確立するには、**ebgp-multihop** コマンドを使用します。 ebgp-multihop コマンドに続く整数は、BGP パケットの TTL 値を指定します。 **maximum-paths eibgp 2** コマンドは、2 つの BGP パス間におけるトラフィックの負荷分散を有効にします。
 
-### <a name="cisco1"></a>Cisco CSR1000 の例
+### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Cisco CSR1000 の例
 
 次の例は、オンプレミスの VPN デバイスとしての Hyper-V 仮想マシンにおける Cisco CSR1000 の構成を示しています。
 
@@ -475,11 +475,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="firewalls"></a>5.VPN デバイスのフィルター処理とファイアウォールを構成する (省略可能)
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5.VPN デバイスのフィルター処理とファイアウォールを構成する (省略可能)
 
 要件に従って、ファイアウォールとフィルター処理を構成します。
 
-## <a name="testipsec"></a>6.IPsec トンネルをテストして検証する
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6.IPsec トンネルをテストして検証する
 
 IPsec トンネルの状態を Azure VPN ゲートウェイで確認するには、次の Powershell コマンドを使用します。
 
@@ -597,7 +597,7 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verifye2e"></a>オンプレミス ネットワーク内と Azure VNet の間のエンド ツー エンド接続を確認する
+### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>オンプレミス ネットワーク内と Azure VNet の間のエンド ツー エンド接続を確認する
 
 IPsec トンネルが起動中で、静的ルートが正しく設定されている場合は、リモート BGP ピアの IP アドレスに ping を実行できます。
 
@@ -615,7 +615,7 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verifybgp"></a>IPsec 経由の BGP セッションを確認する
+### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>IPsec 経由の BGP セッションを確認する
 
 Azure VPN ゲートウェイで、BGP ピアの状態を確認します。
 
@@ -707,7 +707,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 2
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute に使用する Network Performance Monitor の構成](how-to-npm.md)
 

@@ -1,25 +1,15 @@
 ---
-title: OS とランタイムのパッチ適用周期 - Azure App Service | Microsoft Docs
-description: Azure App Service で OS とランタイムが更新される方法と、更新プログラムのお知らせを取得する方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: OS とランタイムの修正プログラムの適用頻度
+description: Azure App Service が OS とランタイムを更新する方法、アプリのランタイムと修正プログラムのレベル、および更新プログラムのお知らせを取得する方法について説明します。
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78273639"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -61,7 +51,7 @@ Azure では、2 つのレベルで OS のパッチ適用が管理されます�
 
 ### <a name="new-patch-updates"></a>新しいパッチ更新プログラム
 
-.NET、PHP、Java SDK または Tomcat/Jetty バージョンに対するパッチ更新プログラムは、既存のインストールが新しいバージョンに上書きされることで、自動的に適用されます。 Node.js パッチ更新プログラムは、(次のセクションのメジャー バージョンとマイナー バージョンと同様に) 既存のバージョンとサイド バイ サイドでインストールされます。 新しい Python パッチ バージョンは、[サイト拡張機能](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)を通じて手動でインストールできます。これは、組み込みの Python インストールとサイド バイ サイドでインストールされます。
+.NET、PHP、Java SDK または Tomcat/Jetty バージョンに対するパッチ更新プログラムは、既存のインストールが新しいバージョンに上書きされることで、自動的に適用されます。 Node.js パッチ更新プログラムは、(次のセクションのメジャー バージョンとマイナー バージョンと同様に) 既存のバージョンとサイド バイ サイドでインストールされます。 新しい Python パッチ バージョンは、[サイト拡張機能](https://azure.microsoft.com/blog/azure-web-sites-extensions/)を通じて手動でインストールできます。これは、組み込みの Python インストールとサイド バイ サイドでインストールされます。
 
 ### <a name="new-major-and-minor-versions"></a>新しいメジャー バージョンとマイナー バージョン
 
@@ -85,7 +75,7 @@ OS の重要な情報へのアクセスはロックダウンされています�
 
 次の表では、アプリを実行している Windows と言語ランタイムのバージョンを見つける方法を示します。
 
-| 情報 | 参照先 | 
+| Information | 参照先 | 
 |-|-|
 | Windows のバージョン | `https://<appname>.scm.azurewebsites.net/Env.cshtml` を参照します (システム情報の下) |
 | .NET バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
@@ -93,6 +83,7 @@ OS の重要な情報へのアクセスはロックダウンされています�
 | PHP バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `php --version` |
 | 既定の Node.js バージョン | [Cloud Shell](../cloud-shell/overview.md) で次のコマンドを実行します。 <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `python --version` |  
+| Java バージョン | `https://<appname>.scm.azurewebsites.net/DebugConsole` において、コマンド プロンプトで次のコマンドを実行します。 <br> `java -version` |  
 
 > [!NOTE]  
 > レジストリの場所 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` にアクセスします。ここには ["KB" パッチ](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)に関する情報が格納され、ロックダウンされています。

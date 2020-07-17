@@ -1,22 +1,22 @@
 ---
-title: Azure Maps での検索 | Microsoft Docs
-description: Azure Maps を使用して近くの目的地を検索する
-author: walsehgal
-ms.author: v-musehg
-ms.date: 03/07/2019
+title: チュートリアル:マップ上の近くの場所を検索する | Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps を使用して、マップ上で目的地を検索する方法について学習します。
+author: philmea
+ms.author: philmea
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357616"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80333629"
 ---
-# <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
+# <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 
 このチュートリアルでは、Azure Maps でアカウントを設定してから、Maps API を使って目的地を検索する方法を示します。 このチュートリアルでは、以下の内容を学習します。
 
@@ -28,9 +28,9 @@ ms.locfileid: "66357616"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 <a id="createaccount"></a>
 
@@ -49,25 +49,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
     * **[作成]** ボタンをクリックします。
 
-![ポータルでの Azure Maps アカウントの作成](./media/tutorial-search-location/create-account.png)
+![Azure portal で Azure Maps アカウントを作成する](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
 ## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
 
-Maps アカウントが正常に作成されたら、Maps API のクエリを実行できるキーを取得します。
+Maps アカウントが正常に作成されたら、Maps API のクエリを実行できるキーを取得します。 Azure Maps サービスを呼び出す際は、ご利用のアカウントの主キーをサブスクリプション キーに使用することをお勧めします。
 
 1. ポータルで、Maps アカウントを開きます。
 2. [設定] セクションで **[認証]** を選択します。
 3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
 
-![ポータルで主キーを取得する](./media/tutorial-search-location/get-key.png)
+![Azure portal で主キーを取得する](./media/tutorial-search-location/get-key.png)
+
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>新しいマップの作成
 
-マップ コントロール API は、Maps を Web アプリケーションに簡単に統合できる便利なクライアント ライブラリです。 ベア REST サービスの呼び出しの複雑さを隠ぺいし、スタイルの設定とカスタマイズが可能なコンポーネントにより生産性を高めます。 次の手順は、マップ コントロール API を使用して埋め込まれた静的 HTML ページの作成方法を示したものです。
+マップ コントロール API は、便利なクライアント ライブラリです。 この API を使用すると、Maps を簡単に Web アプリケーションに統合できます。 ベア REST サービスの呼び出しの複雑さを隠され、カスタマイズが可能なコンポーネントにより生産性が高まります。 次の手順は、マップ コントロール API を使用して埋め込まれた静的 HTML ページの作成方法を示したものです。
 
 1. ローカル コンピューターに新しいファイルを作成し、名前を **MapSearch.html** にします。
 2. 次の HTML コンポーネントをファイルに追加します。
@@ -85,7 +87,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -131,7 +133,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
    このセグメントは、Azure Maps アカウント キーに対するマップ コントロール API を開始します。 `atlas` は、API および関連するビジュアル コンポーネントを含む名前空間です。 `atlas.Map` は、ビジュアルと対話型 Web マップに対するコントロールを提供します。
 
-4. 変更をファイルに保存し、ブラウザーで HTML ページを開きます。 これは、アカウント キーを使用して `atlas.Map` を呼び出すことで作成できる、最も基本的なマップです。
+4. 変更をファイルに保存し、ブラウザーで HTML ページを開きます。 表示されるマップは、アカウント キーを使用して `atlas.Map` を呼び出すことで作成できる、最も基本的なマップです。
 
    ![マップの表示](./media/tutorial-search-location/basic-map.png)
 
@@ -161,7 +163,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     });
     ```
 
-   このコード セグメントで、`ready` イベントがマップに追加されます。このイベントは、マップ リソースが読み込まれ、マップへのアクセスの準備ができたときに発生します。 マップの `ready` イベントのハンドラーに、結果データを格納するためのデータ ソースが作成されます。 記号レイヤーを作成し、データ ソースにアタッチします。 データ ソースに格納された結果データのレンダリング方法は、このレイヤーで指定します。ここでは、濃い青色の円形のピン アイコンが、結果座標上に中央揃えで、結果データと共に表示されます。また、このピン アイコン上には他のアイコンを重ねて表示することができます。 その結果のレイヤーがマップ レイヤーに追加されます。
+   このコード セグメントで、`ready` イベントがマップに追加されます。このイベントは、マップ リソースが読み込まれ、マップへのアクセスの準備ができたときに発生します。 マップの `ready` イベントのハンドラーに、結果データを格納するためのデータ ソースが作成されます。 記号レイヤーを作成し、データ ソースにアタッチします。 このレイヤーでは、データ ソース内の結果データをどのようにレンダリングするかを指定します。 この場合は、結果が結果座標の中央に濃い青色の丸いピン アイコンでレンダリングされます。また、このピンのアイコン上には他のアイコンを重ねて表示することができます。 その結果のレイヤーがマップ レイヤーに追加されます。
 
 <a id="usesearch"></a>
 
@@ -213,23 +215,23 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     });
     ```
 
-3. **MapSearch.html** ファイルを保存し、ブラウザーを更新します。 シアトルを中心としたマップが表示され、領域内のガソリン スタンドの位置が青色の円形のピンでマークされます。
+3. **MapSearch.html** ファイルを保存し、ブラウザーを更新します。 シアトルを中心としたマップに、領域内のガソリン スタンドの位置を示す青色の丸いピンが表示されます。
 
    ![検索結果でのマップの表示](./media/tutorial-search-location/pins-map.png)
 
 4. ブラウザーに次の HTTPRequest を入力すると、マップがレンダリングしている生のデータを確認することができます。 \<Your Azure Maps Key\> は、実際の主キーに置き換えてください。
 
    ```http
-   https://atlas.microsoft.com/search/poi/json?api-version=2&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
+   https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
    ```
 
 この時点で、MapSearch ページに、あいまい検索クエリから返される目的地の場所を表示できます。 いくつかの対話型機能と場所の詳細情報を追加しましょう。
 
 ## <a name="add-interactive-data"></a>対話型のデータの追加
 
-作成したマップでは、これまで検索結果の経度/緯度データだけを参照してきました。 しかし、Maps 検索サービスが返す生の JSON を参照すると、名前や番地など、各ガソリン スタンドに関する追加情報が含まれていることがわかります。 対話型のポップアップ ボックスで、そのデータをマップに組み込むことができます。
+作成したマップでは、これまで検索結果の経度/緯度データだけを参照してきました。 ただし、Maps Search Service によって返される未加工の JSON には、各ガソリン スタンドに関する追加情報が含まれています。 たとえば、名前や住所などです。 対話型のポップアップ ボックスで、そのデータをマップに組み込むことができます。
 
-1. マップの `ready` イベントのハンドラーに次のコード行を追加します。ファジー検索サービスを照会するコードの後に追加してください。 これにより、Popup のインスタンスが作成され、mouseover イベントが記号レイヤーに追加されます。
+1. マップの `ready` イベントのハンドラーに次のコード行を追加します。ファジー検索サービスを照会するコードの後に追加してください。 このコードにより、Popup のインスタンスが作成され、mouseover イベントが記号レイヤーに追加されます。
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,25 +241,28 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API `sup` は、マップ上の目的の位置に固定された情報ウィンドウを提供します。 
+    API `*atlas.Popup` は、マップ上の目的の位置に固定された情報ウィンドウを提供します。 
 
-2. *script* タグの `GetMap` 関数に続けて、次のコードを追加します。これは、マウス オーバーした結果の情報をポップアップに表示するものです。
+2. `GetMap` 関数内に次のコードを追加します。これは、マウス オーバーした結果の情報をポップアップに表示するものです。
 
     ```JavaScript
     function showPopup(e) {
-        //Get the properties and coordinates of the first shape that the event occured on.
+        //Get the properties and coordinates of the first shape that the event occurred on.
 
         var p = e.shapes[0].getProperties();
         var position = e.shapes[0].getCoordinates();
 
         //Create HTML from properties of the selected result.
-        var html = ['<div style="padding:5px"><div><b>', p.poi.name,
-            '</b></div><div>', p.address.freeformAddress,
-            '</div><div>', position[1], ', ', position[0], '</div></div>'];
+        var html = `
+          <div style="padding:5px">
+            <div><b>${p.poi.name}</b></div>
+            <div>${p.address.freeformAddress}</div>
+            <div>${position[1]}, ${position[0]}</div>
+          </div>`;
 
         //Update the content and position of the popup.
         popup.setPopupOptions({
-            content: html.join(''),
+            content: html,
             position: position
         });
 
@@ -270,7 +275,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
     ![Azure マップ コントロールと Search Service](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -1,0 +1,33 @@
+- name: Azure Confidential Computing
+  href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Azure Portal で作成する
+      href: quick-create-portal.md
+    - name: Marketplace で作成する
+      href: quick-create-marketplace.md
+- name: 概念
+  expanded: true
+  items:
+    - name: 仮想マシン上のソリューション
+      href: virtual-machine-solutions.md
+- name: リソース
+  expanded: true
+  items:
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: Confidential Computing に関するフィードバック
+      href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
+    - name: Enclave SDK を開く
+      href: 'https://aka.ms/oesdkGitHubRepo'
+    - name: Confidential Computing のコンソーシアム
+      href: 'https://confidentialcomputing.io/'
+    - name: Azure 上の仮想マシン
+      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
+    - name: リージョン
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines'

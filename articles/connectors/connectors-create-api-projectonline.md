@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から Project Online に接続する | Microsoft Docs
+title: Azure Logic Apps から Project Online に接続する
 description: Azure Logic Apps を使用して Project Online のプロジェクト、タスク、およびリソースを監視、作成、および管理するワークフローを自動化する
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230371"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789326"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Project Online のプロジェクト、タスク、およびリソースを管理する
 
@@ -31,7 +27,7 @@ Project Online では、強力なプロジェクト管理機能を利用して�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * [Office 365 アカウント](https://www.office.com/)を通じて使用することができる Project Online、 
 
@@ -52,7 +48,7 @@ Project Online では、強力なプロジェクト管理機能を利用して�
 
      または
 
-   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「Project Online」と入力します。 アクションの一覧で、目的のアクションを選択します。
+   * 既存のロジック アプリの場合、アクションを追加する手順で、 **[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「Project Online」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
 1. Project Online へのサインインを求めるメッセージが表示される場合は、ここでサインインします。
 
@@ -69,6 +65,6 @@ Project Online では、強力なプロジェクト管理機能を利用して�
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリ内の文字列の操作 | Microsoft Docs
 description: この記事は、Azure portal で Azure Monitor Log Analytics を使用して、Azure Monitor でログ データのクエリと分析を行うためのチュートリアルとなっています。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.date: 08/16/2018
+ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750958"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80672968"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の JSON とデータ構造の操作
 
@@ -55,7 +48,7 @@ print hosts_report
 要素が 1 つしかない場合は、ドット表記のみを使用できます:
 
 ```Kusto
-let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
+let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
 print hosts_report 
 | extend status = hosts_report.status
 ```
@@ -130,7 +123,7 @@ print hosts_object
 
 ![スキーマの作成](media/json-data-structures/buildschema.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor でのログ クエリの使用に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

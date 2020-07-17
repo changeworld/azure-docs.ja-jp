@@ -1,21 +1,20 @@
 ---
-title: Azure Data Box およびその他の方法を使用して Azure File Sync にデータを移行する
+title: Azure Data Box を使用して Azure File Sync にデータを移行する
 description: Azure File Sync と互換性のある方法で大量のデータを移行します。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700272"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656760"
 ---
-# <a name="migrate-bulk-data-to-azure-file-sync"></a>Azure File Sync に大量のデータを移行する
+# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure Data Box を使用して Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
 
 * **Azure File Sync を使用してファイルをアップロードする。** これは最もシンプルな方法です。 ファイルをローカルで Windows Server 2012 R2 以降に移動し、Azure File Sync エージェントをインストールします。 同期を設定すると、サーバーからファイルがアップロードされます (現在、お客様の平均アップロード速度は、約 2 日ごとに 1 TiB です)。サーバーがデータセンター用に大量の帯域幅を使用しないように、[帯域幅調整スケジュール](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)を設定する必要があります。
@@ -23,9 +22,10 @@ ms.locfileid: "64700272"
 
 この記事では、Azure File Sync と互換性のある方法でファイルをオフライン移行する方法について説明します。同期を有効にした後で、以下の手順に従って、ファイルの競合を回避し、ファイルとフォルダーのアクセス制御リスト (ACL) とタイムスタンプを保持してください。
 
-## <a name="online-migration-tools"></a>オンライン移行ツール
-この記事で説明するプロセスは、Data Box だけでなく、その他のオフライン移行ツールにも対応しています。 また、AzCopy、Robocopy などのオンライン ツールや、パートナーのツールとサービスにも対応しています。 最初のアップロードの課題を克服した場合でも、この記事に記載されている手順に従って、Azure File Sync と互換性のある方法でこれらのツールを使用してください。
+## <a name="migration-tools"></a>移行ツール
+この記事で説明するプロセスは、Data Box だけでなく、その他のオフライン移行ツールにも対応しています。 また、インターネットでそのまま動作する AzCopy、Robocopy などのツールや、パートナーのツールとサービスにも対応しています。 最初のアップロードの課題を克服した場合でも、この記事に記載されている手順に従って、Azure File Sync と互換性のある方法でこれらのツールを使用してください。
 
+Azure File Sync を導入する前に、Windows Server 間で移動しなければならないケースもあります。そのような場合には [Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) が役立つ可能性があります。 Azure File Sync でサポートされるバージョンのサーバー OS (Windows Server 2012R2 以上) が必要であったり、単純に Azure File Sync 用の新しいシステムを購入するなど、移行の理由が何であれ、円滑な移行を支援するさまざまな機能と利点を SMS は備えています。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>ツールを使用してデータをオフライン転送する利点
 Data Box などの転送ツールをオフライン移行に使用する主な利点は次のとおりです。
@@ -49,18 +49,21 @@ Data Box などの転送ツールをオフライン移行に使用する主な�
 
 ![Azure File Sync の設定方法を示す図](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
-| 手順 | 詳細 |
+| 手順 | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します: *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>*。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
+| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します: *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>* 。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
 | ![手順 2.](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 一時的なステージング共有として選択した Azure ファイル共有にファイルが表示されるまで待ちます。 *それらの共有への同期を有効にしないでください。* |
-| ![手順 3.](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Data Box によって作成されたファイル共有ごとに、空の新しい共有を作成します。 この新しい共有は Data Box 共有と同じストレージ アカウントにある必要があります。 [新しい Azure ファイル共有を作成する方法](storage-how-to-create-file-share.md)。 |
-| ![手順 4.](media/storage-sync-files-offline-data-transfer/bullet_4.png) | ストレージ同期サービスで[同期グループを作成](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)します。 空の共有をクラウド エンドポイントとして参照します。 Data Box のファイル共有ごとにこの手順を繰り返します。 [Azure File Sync を設定します](storage-sync-files-deployment-guide.md)。 |
-| ![手順 5.](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [ライブ サーバー ディレクトリをサーバー エンドポイントとして追加](storage-sync-files-deployment-guide.md#create-a-server-endpoint)します。 このプロセスでは、Azure にファイルを移動したことを指定し、ステージング共有を参照します。 必要に応じて、クラウドの階層化を有効または無効にできます。 ライブ サーバー上でサーバー エンドポイントを作成している間は、ステージング共有を参照します。 **[サーバー エンドポイントの追加]** ブレードの **[オフラインのデータ転送]** で、**[有効]** を選択し、クラウド エンドポイントと同じストレージ アカウントに存在する必要があるステージング共有を選択します。 ここで、利用可能な共有の一覧は、まだ同期されていないストレージ アカウントと共有によってフィルター処理されます。 |
+| ![手順 3.](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Data Box によって作成されたファイル共有ごとに、空の新しい共有を作成します。 この新しい共有は Data Box 共有と同じストレージ アカウントにある必要があります。 [新しい Azure ファイル共有を作成する方法](storage-how-to-create-file-share.md)。</li><li>ストレージ同期サービスで[同期グループを作成](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)します。 空の共有をクラウド エンドポイントとして参照します。 Data Box のファイル共有ごとにこの手順を繰り返します。 [Azure File Sync を設定します](storage-sync-files-deployment-guide.md)。</li></ul> |
+| ![手順 4.](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [ライブ サーバー ディレクトリをサーバー エンドポイントとして追加](storage-sync-files-deployment-guide.md#create-a-server-endpoint)します。 このプロセスでは、Azure にファイルを移動したことを指定し、ステージング共有を参照します。 必要に応じて、クラウドの階層化を有効または無効にできます。 ライブ サーバー上でサーバー エンドポイントを作成している間は、ステージング共有を参照します。 **[サーバー エンドポイントの追加]** ブレードの **[オフラインのデータ転送]** で、 **[有効]** を選択し、クラウド エンドポイントと同じストレージ アカウントに存在する必要があるステージング共有を選択します。 ここで、利用可能な共有の一覧は、まだ同期されていないストレージ アカウントと共有によってフィルター処理されます。 この表の後のスクリーンショットでは、Azure portal でサーバー エンドポイントを作成するときに、DataBox 共有を参照する方法を示します。 |
+| ![手順 5.](media/storage-sync-files-offline-data-transfer/bullet_5.png) | 前の手順でサーバー エンドポイントを追加すると、データは適切なソースから自動的に送信されます。 「[共有の同期](#syncing-the-share)」セクションでは、データが DataBox 共有または Windows Server から送信されるタイミングについて説明しています。 |
+| |
 
 ![新しいサーバー エンドポイントを作成するときにオフライン データ転送を有効にする方法を示す、Azure portal ユーザー インターフェイスのスクリーンショット](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>共有の同期
 サーバー エンドポイントを作成すると、同期が開始されます。 同期プロセスでは、サーバー上の各ファイルが、Data Box がファイルを配置したステージング共有にも存在するかどうかが判断されます。 ファイルが存在する場合、同期プロセスでは、サーバーからファイルがアップロードされるのではなく、ステージング共有からファイルがコピーされます。 ファイルがステージング共有に存在しない場合、またはローカル サーバーで新しいバージョンが利用可能な場合は、同期プロセスによってローカル サーバーからファイルがアップロードされます。
+
+共有を同期すると、存在しないファイル属性、アクセス許可、またはタイムスタンプがローカル サーバー上のファイルのバリアントからマージされ、DataBox 共有にあるそのファイルに対応するファイルと結合されます。 これにより、各ファイルとフォルダーは、Azure ファイル共有内のすべてのファイルの忠実性を保持した状態になります。
 
 > [!IMPORTANT]
 > 一括移行モードは、サーバー エンドポイントの作成中にのみ有効にできます。 サーバー エンドポイントの確立後、既に同期されているサーバーから名前空間に一括移行済みデータを統合することはできません。
@@ -78,14 +81,14 @@ Azure File Sync は、使用した一括移行ツールが最初に ACL を転�
 
 この段階では、次のようにしてステージング共有をクリーンアップしてコストを節約できます。
 
-1. 状態が **[完了]** のときに、**[サーバー エンドポイントのプロパティ]** ブレードで **[オフラインのデータ転送を無効にする]** を選択します。
-2. コストを節約するためにステージング共有を削除することを検討します。 ステージング共有にファイルとフォルダーの ACL が含まれていることはほとんどないため、ステージング共有はそれほど役に立ちません。 バックアップの特定の時点の目的で、[同期する Azure ファイル共有の実際のスナップショット](storage-snapshots-files.md)を作成します。 スケジュールに基づいて[スナップショットを作成するように Azure Backup を設定する]( ../../backup/backup-azure-files.md)ことができます。
+1. 状態が **[完了]** のときに、 **[サーバー エンドポイントのプロパティ]** ブレードで **[オフラインのデータ転送を無効にする]** を選択します。
+2. コストを節約するためにステージング共有を削除することを検討します。 ステージング共有にファイルとフォルダーの ACL が含まれていることはほとんどないため、ステージング共有はそれほど役に立ちません。 バックアップの特定の時点の目的で、[同期する Azure ファイル共有の実際のスナップショット](storage-snapshots-files.md)を作成します。 スケジュールに基づいて[スナップショットを作成するように Azure Backup を設定する]( ../../backup/backup-afs.md)ことができます。
 
 状態が **[完了]** の場合、または構成の誤りが原因で中止したい場合にのみ、オフライン データ転送モードを無効にしてください。 デプロイ時にこのモードを無効にすると、ステージング共有がまだ利用可能であっても、ファイルはサーバーからアップロードされ始めます。
 
 > [!IMPORTANT]
 > オフライン データ転送モードを無効にした後は、一括移行からのステージング共有がまだ利用可能であっても、オフライン データ転送モードを再度有効にすることはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)

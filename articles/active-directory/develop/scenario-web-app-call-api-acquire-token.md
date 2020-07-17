@@ -1,93 +1,169 @@
 ---
-title: Web API を呼び出す Web アプリ (アプリのトークンの取得) | Microsoft ID プラットフォーム
-description: Web API を呼び出す Web アプリを構築する方法について説明します (アプリのトークンの取得)
+title: Web API を呼び出す Web アプリでトークンを取得する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出す Web アプリのトークンを取得する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653db995000308bb3ef78a9183696cd9d8ed1056
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080091"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181734"
 ---
-# <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ - アプリのトークンの取得
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ:アプリのトークンを取得する
 
-クライアント アプリケーション・オブジェクトを構築したので、次にそれを使用して、Web API を呼び出すために使用するトークンを取得します。 ASP.NET または ASP.NET Core では、Web API の呼び出しはコント ローラーで実行されます。 詳細は次のとおりです。
+クライアント アプリケーション オブジェクトは構築済みです。 次はこれを使って Web API を呼び出すトークンを取得します。 ASP.NET または ASP.NET Core では、Web API の呼び出しはコントローラーで実行されます。
 
-- トークン キャッシュを使用して Web API のトークンを取得します。 このために、`AcquireTokenSilent` を呼び出します。
-- アクセス トークンを使用して、保護された API を呼び出します。
+- トークン キャッシュを使用して Web API のトークンを取得します。 このトークンを取得するには、MSAL `AcquireTokenSilent` メソッド (あるいは Microsoft.Identity.Web における同等のメソッド) を呼び出します。
+- 保護された API を呼び出して、アクセス トークンをパラメーターとして渡します。
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-コントローラー メソッドは、ユーザーが Web アプリを使用するために認証されないようにする `[Authorize]` 属性によって保護されます。 以下に、Microsoft Graph を呼び出すコードを示します。
+コントローラー メソッドは、ユーザーが Web アプリを使用するために認証されるようにする `[Authorize]` 属性によって保護されます。 以下に、Microsoft Graph を呼び出すコードを示します。
 
-```CSharp
+```csharp
 [Authorize]
 public class HomeController : Controller
 {
- ...
-}
-```
+ readonly ITokenAcquisition tokenAcquisition;
 
-以下に、Microsoft Graph を呼び出すトークンを取得する、HomeController のアクションの簡略化されたコードを示します。
-
-```CSharp
-public async Task<IActionResult> Profile()
-{
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
-
- // Get the account
- IAccount account = await application.GetAccountAsync(accountIdentifier);
-
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
- if (account == null)
+ public HomeController(ITokenAcquisition tokenAcquisition)
  {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
+  this.tokenAcquisition = tokenAcquisition;
  }
 
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
- ...
- // use the access token to call a web API
+ // Code for the controller actions (see code below)
+
 }
 ```
 
-このシナリオに必要なコードの合計を詳しく理解したい場合は、「[ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)」チュートリアルのフェーズ 2 の「[2-1-Web App Calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)」手順を参照してください。
+`ITokenAcquisition` サービスは、依存関係の挿入を使用して ASP.NET によって挿入されます。
 
-次のように数多くの追加の複雑さがあります。
+Microsoft Graph を呼び出すトークンを取得する `HomeController` のアクションの簡略化されたコードを次に示します。
 
-- Web アプリのトークン キャッシュを実装する (チュートリアルではいくつかの実装を提示しています)
-- ユーザーがサインアウトするときにキャッシュからアカウントを削除する
-- 増分同意を持つことを含め複数の API を呼び出す
+```csharp
+public async Task<IActionResult> Profile()
+{
+ // Acquire the access token.
+ string[] scopes = new string[]{"user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
-## <a name="aspnet"></a>ASP.NET
+ // Use the access token to call a protected web API.
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ string json = await client.GetStringAsync(url);
+}
+```
 
-ASP.NET でも同様です。
+このシナリオに必要なコードをさらに理解したい場合は、[ms-identity-aspnetcore-Webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) チュートリアルのフェーズ 2 ([2-1-Web App Calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) の手順を参照してください。
 
-- [Authorize] 属性によって保護されたコント ローラー アクションは、`ClaimsPrincipal`コント ローラーのメンバー (ASP.NET は `HttpContext.User` を使用) のテナント ID とユーザー ID を抽出します
-- そこから、MSAL.NET `IConfidentialClientApplication` を構築します
-- IT は、機密クライアント アプリケーションの `AcquireTokenSilent` メソッドを呼び出します 
+次のような複雑なバリエーションもあります。
 
-コードは ASP.NET Core で示されたコードと同様です
+- 複数の API の呼び出し。
+- 増分同意と条件付きアクセスの処理。
 
-## <a name="next-steps"></a>次の手順
+このような高度な手順については、[3-WebApp-multi-APIs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) チュートリアルの第 3 章を参照してください。
+
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
+
+ASP.NET のコードは、ASP.NET Core 用に示したコードと似ています。
+
+- [Authorize] 属性によって保護されたコントローラー アクションは、コントローラーの `ClaimsPrincipal` メンバーのテナント ID とユーザー ID を抽出します。 (ASP.NET は `HttpContext.User` を使用します。)
+- そこから、MSAL.NET `IConfidentialClientApplication` オブジェクトを構築します。
+- 最後に、機密クライアント アプリケーションの `AcquireTokenSilent` メソッドを呼び出します。
+
+# <a name="java"></a>[Java](#tab/java)
+
+Java のサンプルでは、API を呼び出すコードは getUsersFromGraph メソッド ([AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)) にあります。
+
+メソッドから `getAuthResultBySilentFlow` の呼び出しが試行されます。 ユーザーがより多くのスコープに同意する必要がある場合、コードでは `MsalInteractionRequiredException` オブジェクトが処理され、ユーザーがチャレンジされます。
+
+```java
+@RequestMapping("/msal4jsample/graph/me")
+public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+        throws Throwable {
+
+    IAuthenticationResult result;
+    ModelAndView mav;
+    try {
+        result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+    } catch (ExecutionException e) {
+        if (e.getCause() instanceof MsalInteractionRequiredException) {
+
+            // If the silent call returns MsalInteractionRequired, redirect to authorization endpoint
+            // so user can consent to new scopes.
+            String state = UUID.randomUUID().toString();
+            String nonce = UUID.randomUUID().toString();
+
+            SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+
+            String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                    httpRequest.getParameter("claims"),
+                    "User.Read",
+                    authHelper.getRedirectUriGraph(),
+                    state,
+                    nonce);
+
+            return new ModelAndView("redirect:" + authorizationCodeUrl);
+        } else {
+
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+            return mav;
+        }
+    }
+
+    if (result == null) {
+        mav = new ModelAndView("error");
+        mav.addObject("error", new Exception("AuthenticationResult not found in session."));
+    } else {
+        mav = new ModelAndView("auth_page");
+        setAccountInfo(mav, httpRequest);
+
+        try {
+            mav.addObject("userInfo", getUserInfoFromGraph(result.accessToken()));
+
+            return mav;
+        } catch (Exception e) {
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+        }
+    }
+    return mav;
+}
+// Code omitted here
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python のサンプルでは、Microsoft Graph を呼び出すコードは [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62) にあります。
+
+このコードでは、トークン キャッシュからのトークンの取得が試行されます。 次に、authorization ヘッダーが設定された後、Web API が呼び出されます。 トークンを取得できない場合は、ユーザーのサインインが再実行されます。
+
+```python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service.
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Web API を呼び出す](scenario-web-app-call-api-call-api.md)

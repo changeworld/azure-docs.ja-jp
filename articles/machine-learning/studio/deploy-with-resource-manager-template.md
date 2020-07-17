@@ -1,30 +1,32 @@
 ---
-title: Azure Resource Manager を使用して Studio ワークスペースをデプロイする
-titleSuffix: Azure Machine Learning Studio
-description: Azure Resource Manager テンプレートを使用して Azure Machine Learning Studio 用のワークスペースをデプロイする方法です
+title: Azure Resource Manager を使用して Studio (クラシック) ワークスペースをデプロイする
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Resource Manager テンプレートを使用して Azure Machine Learning Studio (クラシック) 用のワークスペースをデプロイする方法です
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 91413aa461261824782717ae4edacc2757ad5405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66121353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218112"
 ---
-# <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Machine Learning Studio ワークスペースをデプロイする
+# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Machine Learning Studio (クラシック) ワークスペースをデプロイする
 
-Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。 Azure Machine Learning Studio ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。 この作業を何百ものワークスペースに対して手動で行うことを想像してください。 代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Studio ワークスペースとそのすべての依存関係をデプロイできます。 この記事では、このプロセスを順を追って説明します。 Azure Resource Manager の概要については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。 Azure Machine Learning Studio (クラシック) ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。 この作業を何百ものワークスペースに対して手動で行うことを想像してください。 代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Studio (クラシック) ワークスペースとそのすべての依存関係をデプロイできます。 この記事では、このプロセスを順を追って説明します。 Azure Resource Manager の概要については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>詳細な手順: Machine Learning ワークスペースの作成
-Azure リソース グループを作成し、Resource Manager テンプレートを使用して、新しい Azure ストレージ アカウントと新しい Azure Machine Learning Studio ワークスペースをデプロイします。 デプロイが完了したら、作成されたワークスペースに関する重要な情報 (プライマリ キー、workspaceID、およびワークスペースへの URL) を出力します。
+Azure リソース グループを作成し、Resource Manager テンプレートを使用して、新しい Azure ストレージ アカウントと新しい Azure Machine Learning Studio (クラシック) ワークスペースをデプロイします。 デプロイが完了したら、作成されたワークスペースに関する重要な情報 (プライマリ キー、workspaceID、およびワークスペースへの URL) を出力します。
 
 ### <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの作成
 
@@ -84,10 +86,10 @@ Machine Learning ワークスペースには Azure ストレージ アカウン�
 * Azure Resource Manager と Azure サービス管理をインストールします
 
 ```powershell
-# Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
+# Install the Azure Resource Manager modules from the PowerShell Gallery (press "A")
 Install-Module Az -Scope CurrentUser
 
-# Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
+# Install the Azure Service Management modules from the PowerShell Gallery (press "A")
 Install-Module Azure -Scope CurrentUser
 ```
 
@@ -105,7 +107,7 @@ Connect-AzAccount
 
 これで Azure にアクセスできました。次はリソース グループを作成します。
 
-* リソース グループの作成
+* リソース グループを作成する
 
 ```powershell
 $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
@@ -127,7 +129,7 @@ $rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworks
 デプロイが完了すると、デプロイしたワークスペースのプロパティに簡単にアクセスできます。 たとえば、プライマリ キー トークンにアクセスできます。
 
 ```powershell
-# Access Azure Machine Learning studio Workspace Token after its deployment.
+# Access Azure Machine Learning Studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
@@ -137,11 +139,11 @@ $rgd.Outputs.mlWorkspaceToken.Value
 # List the primary and secondary tokens of all workspaces
 Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-ワークスペースをプロビジョニングしたら、[Azure Machine Learning Studio 用の PowerShell モジュール](https://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
+ワークスペースをプロビジョニングしたら、[Azure Machine Learning Studio (クラシック) 用の PowerShell モジュール](https://aka.ms/amlps)を使用して、Azure Machine Learning Studio (クラシック) タスクを自動化することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)について確認します。
+* [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)について確認します。
 * [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。
 * [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)のビデオを見ます。
 * [Resource Manager テンプレート リファレンス ヘルプ](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)を参照してください

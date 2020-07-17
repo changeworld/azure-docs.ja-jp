@@ -1,27 +1,20 @@
 ---
-title: チュートリアル - Azure 内に Linux 用の仮想マシン スケール セットを作成する | Microsoft Docs
-description: このチュートリアルでは、Azure CLI で仮想マシン スケール セットを使用して、Linux VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+title: チュートリアル:Linux 仮想マシン スケール セットを作成する
+description: Azure CLI で仮想マシン スケール セットを使用して、Linux VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
 ms.date: 06/01/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 2f2ebf5eb52c3e99e98fa5078182491a394cc6f0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e97611cdfdca28b2c2b22f21d3aedcc79c4ee6d0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882355"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198097"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
 
@@ -35,7 +28,7 @@ ms.locfileid: "54882355"
 > * スケール セットのインスタンスの接続情報を表示する
 > * スケール セット内でデータ ディスクを使用する
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -250,8 +243,8 @@ az vmss disk detach \
 ```
 
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、仮想マシン スケール セットを作成しました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、仮想マシン スケール セットを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * cloud-init を使用して、スケーリングするアプリを作成する

@@ -1,11 +1,10 @@
 ---
-title: Azure Security Center 上のネットワーク リソースの保護 | Microsoft Docs
+title: Azure Security Center 上のネットワーク リソースの保護
 description: このドキュメントでは、Azure Security Center 上の推奨事項に従ってご使用の Azure ネットワーク リソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -13,18 +12,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
-ms.author: v-mohabe
-ms.openlocfilehash: e038c500d93e4d631c585eed743a373b5e6cec85
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: memildin
+ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968348"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77431487"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
+# <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
-この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス権が過度な受信トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
+この記事では、Security Center のリソース セキュリティ セクションの **[ネットワーク]** ページについて説明します。
+
+ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-reference.md#recs-network)のページを参照してください。
+
+この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス、過度に許容されるインバウンド トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
 
 > [!NOTE]
 > **[ネットワーク]** ページでは、ネットワークの観点から、Azure リソースの正常性を詳しく確認できます。 ネットワーク マップとアダプティブ ネットワーク コントロールは、Azure Security Center Standard レベルでのみ使用できます。 [Free レベルを使用する場合は、ボタンをクリックして**レガシ ネットワークを表示**し、ネットワーク リソースの推奨事項を受信できます](#legacy-networking)。
@@ -37,17 +40,18 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 - ネットワーク セキュリティに関する推奨事項。
 - レガシ **[ネットワーク]** ブレード (以前のネットワーク ブレード) 
  
-![[ネットワーク] ウィンドウ](./media/security-center-network-recommendations/networking-pane.png)
+[![[ネットワーク] ウィンドウ](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
 
 ## <a name="network-map"></a>ネットワーク マップ
 対話型のネットワーク マップには、ネットワーク リソースを堅牢化するための推奨事項と分析情報を提供するセキュリティ オーバーレイを含むグラフィカル ビューが表示されます。 マップを使用して、Azure ワークロードのネットワーク トポロジ、仮想マシンとサブネット間の接続、およびマップから特定のリソースとそれらのリソースの推奨事項にドリル ダウンする機能を表示できます。
 
 ネットワーク マップを開くには:
 
-1. Security Center の [リソース セキュリティの検疫] で、**[ネットワーク]** を選択します。
-2. **[ネットワーク マップ]** で、**[See topology]\(トポロジを参照\)** をクリックします。
+1. Security Center の [リソース セキュリティの検疫] で、 **[ネットワーク]** を選択します。
+2. **[ネットワーク マップ]** で、 **[See topology]\(トポロジを参照\)** をクリックします。
  
 トポロジ マップの既定のビューが表示されます。
+
 - Azure 内で選択したサブスクリプション。 マップでは、複数のサブスクリプションがサポートされます。
 - Resource Manager リソースの種類の VM、サブネット、VNet (クラシック Azure リソースはサポートされていません)
 - ピアリング VNet
@@ -55,15 +59,16 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 - インターネットに接続するリソース
 - マップは、Azure 内で選択したサブスクリプションに対して最適化されます。 選択内容を変更した場合、マップが再計算され、新しい設定に基づいてもう一度最適化されます。  
 
-![ネットワーク トポロジ マップ](./media/security-center-network-recommendations/network-map-info.png)
+[![ネットワーク トポロジ マップ](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>ネットワーク マップについて
 
-ネットワーク マップでは、Azure リソースを **[トポロジ]** ビューと **[トラフィック]** ビューに表示できます。
+ネットワーク マップでは、Azure リソースを **[トポロジ]** ビューと **[トラフィック]** ビューに表示できます。 
 
 ### <a name="the-topology-view"></a>[トポロジ] ビュー
 
 ネットワーク マップの **[トポロジ]** ビューでは、ネットワーク リソースに関する次の分析情報を参照できます。
+
 - 内側の円では、選択したサブスクリプション内のすべての Vnet を確認できます、次の円はすべてのサブネットで、外側の円はすべての仮想マシンです。
 - マップ内のリソースを結ぶ線を見ると、互いに関連付けられているリソースと、Azure ネットワークの構成方法を把握できます。 
 - 重大度インジケーターを使用して、Security Center からの未処理の推奨事項があるリソースの概要をすばやく取得できます。
@@ -73,13 +78,15 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 マップは対話型かつ動的なので、すべてのノードがクリック可能で、ビューはフィルターに基づいて変化することがあります。
 
 1. 上部にあるフィルターを使用して、ネットワーク マップに表示される内容を変更できます。 次の項目に基づいてマップのフォーカスを設定できます。
-   -  **セキュリティ正常性**:Azure リソースの重大度 (高、中、低) に基づいてマップをフィルター処理できます。
-   - **推奨事項**:リソースに対してアクティブになっている推奨事項に基づいて、表示されるリソースを選択できます。 たとえば、Security Center によってネットワーク セキュリティ グループの有効化が推奨されているリソースのみを表示できます。
-   - **ネットワーク ゾーン**:既定では、マップにはインターネットに接続しているリソースのみが表示され、内部 VM も選択できます。
+
+   -  **セキュリティ正常性**: Azure リソースの重大度 (高、中、低) に基づいてマップをフィルター処理できます。
+   - **推奨事項**: リソースに対してアクティブになっている推奨事項に基づいて、表示されるリソースを選択できます。 たとえば、Security Center によってネットワーク セキュリティ グループの有効化が推奨されているリソースのみを表示できます。
+   - **ネットワーク ゾーン**: 既定では、マップにはインターネットに接続しているリソースのみが表示され、内部 VM も選択できます。
  
 2. いつでも左上隅の **[リセット]** をクリックして、マップを既定の状態に戻すことができます。
 
 リソースにドリル ダウンするには:
+
 1. マップ上の特定のリソースを選択すると、右側のウィンドウが開き、リソースに関する全般情報、接続されたセキュリティ ソリューション (ある場合)、およびリソースに関する推奨事項が表示されます。 この動作の種類は選択したリソースの種類ごとに同じです。 
 2. マップ内のノードをポイントすると、サブスクリプション、リソースの種類、リソース グループなど、リソースに関する全般情報を表示できます。
 3. リンクを使用してツール ヒントにズームインし、その特定のノードにマップのフォーカスを再設定します。 
@@ -98,20 +105,22 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 ### <a name="investigate-resources"></a>リソースの調査
 
 リソースにドリル ダウンするには:
+
 1. マップ上の特定のリソースを選択すると、右側のウィンドウが開き、リソースに関する全般情報、接続されたセキュリティ ソリューション (ある場合)、およびリソースに関する推奨事項が表示されます。 この動作の種類は選択したリソースの種類ごとに同じです。 
 2. **[トラフィック]** をクリックして、リソースに対して可能な送信および受信トラフィックの一覧を表示します。これは、リソースと通信できるユーザーやリソースが通信できるユーザー、経由するプロトコルとポートの包括的な一覧です。 たとえば、VM を選択すると、その VM と通信できるすべての VM が表示され、サブネットを選択すると、そのサブネットと通信できるすべてのサブネットが表示されます。
 
 **このデータは、ネットワーク セキュリティ グループの分析と、交差と相互作用を把握するために複数のルールを分析する高度な機械学習アルゴリズムに基づいています。** 
 
-![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)
+[![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
-## レガシ ネットワーク <a name ="legacy-networking"></a>
+
+## <a name="legacy-networking"></a>レガシ ネットワーク <a name ="legacy-networking"></a>
 
 Security Center Standard レベルがない場合、このセクションではネットワークに関する無料の推奨事項を表示する方法について説明します。
 
-この情報にアクセスするには、[ネットワーク] ブレードで、**[レガシ ネットワークの表示]** をクリックします。 
+この情報にアクセスするには、[ネットワーク] ブレードで、 **[レガシ ネットワークの表示]** をクリックします。 
 
-![レガシ ネットワーク](./media/security-center-network-recommendations/legacy-networking.png)
+[![レガシ ネットワーク](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>[Internet facing endpoints (インターネット接続エンドポイント)] セクション
 **[インターネットに接続するエンドポイント]** セクションでは、インターネット接続エンドポイントで現在構成されている仮想マシンとその状態を確認できます。
@@ -127,29 +136,9 @@ Security Center Standard レベルがない場合、このセクションでは�
 
 3 番目のレベルには、前述したような仮想マシンが表示されます。 リソースをクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
 
-## <a name="network-recommendations"></a>ネットワークの推奨事項
+## <a name="next-steps"></a>次のステップ
 
-|リソースの種類|セキュリティ スコア|推奨|説明|
-|----|----|----|----|
-|Machine|40|仮想マシン上でネットワーク セキュリティ グループを有効にする|仮想マシンのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|
-|Subnet|35|サブネット上のネットワーク セキュリティ グループを有効にする |サブネットにデプロイされたリソースのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|
-|Machine|30|Just-In-Time ネットワーク アクセス制御の適用|ジャスト イン タイム VM アクセス制御を適用して、選択したポートへのアクセスを完全にロックダウンし、承認されたユーザーが同じメカニズムを使用して限られた時間だけそれらのポートを開けるようにします。|
-|Machine|20|インターネットに接続するエンドポイント経由のアクセスの制限|既存の許可ルールのアクセスを制限することで、インターネットに接続する VM のネットワーク セキュリティ グループを強化します。|
-|Machine|10|次世代ファイアウォールを追加する|インターネットに接続する VM の保護を強化するために次世代ファイアウォール (NGFW) ソリューションを追加します。|
-|Machine|5|ネットワーク ゲートウェイ ファイアウォールのみを介したトラフィックのルーティング|次世代ファイアウォール ソリューションのデプロイを完了するには、保護されたインターネットに接続する VM へのトラフィックを、次世代ファイアウォール ソリューションを介してのみルーティングする必要があります。|
-|VNet|5|DDoS Protection Standard を有効にする|これらの仮想ネットワークでパブリック IP を使用しているアプリケーションは、DDoS Protection Standard サービスでは保護されません。 その保護を有効にして、ネットワークに対する帯域幅消費型攻撃およびプロトコル攻撃の軽減を有効にすることをお勧めします。|
-|Machine|10|次世代ファイアウォールを追加する|インターネットに接続する VM の保護を強化する次世代ファイアウォール (NGFW) ソリューションを追加します。|
-|Machine|5|ネットワーク ゲートウェイ ファイアウォールのみを介したトラフィックのルーティング|次世代ファイアウォール ソリューションのデプロイを完了するには、保護されたインターネットに接続する VM へのトラフィックを、次世代ファイアウォール ソリューションを介してのみルーティングする必要があります。|
-VNet|5|DDoS Protection Standard を有効にする|これらの仮想ネットワークでパブリック IP アドレスを使用しているアプリケーションは、DDoS Protection Standard サービスでは保護されません。 その保護を有効にして、ネットワークに対する帯域幅消費型攻撃およびプロトコル攻撃の軽減を有効にすることをお勧めします。|
-## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
-* [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
-* [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)
-
-セキュリティ センターの詳細については、次を参照してください。
-
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。

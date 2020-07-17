@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Linux 用の C# モジュールを開発する - Azure IoT Edge| Microsoft Docs'
+title: チュートリアル - Azure IoT Edge を使用して Linux 用の C# モジュールを開発する
 description: このチュートリアルでは、C# コードを使って IoT Edge モジュールを作成し、Linux IoT Edge デバイスにデプロイする方法について説明します。
 services: iot-edge
 author: kgremban
@@ -8,27 +8,28 @@ ms.author: kgremban
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, seodec18
-ms.openlocfilehash: d98fd0c3417d54321c492b1e47679ec63f8c1603
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.custom: mvc
+ms.openlocfilehash: 53e1863f6f3421a6d8df9112f463f16443cff93e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835180"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78943040"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C# IoT Edge モジュールを開発する
 
-Visual Studio Code を使用して C# コードを開発し、Azure IoT Edge が動作している Linux デバイスにデプロイします。 
+Visual Studio Code を使用して C# コードを開発し、Azure IoT Edge が動作している Linux デバイスにデプロイします。
 
-Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。    
+Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * Visual Studio Code を使用して .NET Core 2.1 SDK に基づく IoT Edge モジュールを作成する。
 > * Visual Studio Code と Docker を使用して Docker イメージを作成し、レジストリに発行する。
 > * モジュールを IoT Edge デバイスに展開する。
 > * 生成されたデータを表示する。
 
-このチュートリアルで作成する IoT Edge モジュールは、デバイスによって生成される温度データをフィルター処理します。 これは、指定されたしきい値を温度が上回っているときにのみ、メッセージを上流に送信します。 エッジでのこの種の分析は、クラウドに送信および保存されるデータ量を削減するうえで役に立ちます。 
+このチュートリアルで作成する IoT Edge モジュールは、デバイスによって生成される温度データをフィルター処理します。 これは、指定されたしきい値を温度が上回っているときにのみ、メッセージを上流に送信します。 エッジでのこの種の分析は、クラウドに送信および保存されるデータ量を削減するうえで役に立ちます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,68 +37,70 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 このチュートリアルでは、**Visual Studio Code** を使用して **C#** でモジュールを開発し、それを **Linux デバイス**にデプロイする方法について説明します。 Windows デバイス用のモジュールを開発する場合は、「[Windows デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module-windows.md)」を参照してください。
 
-次の表を使用し、C モジュールを開発して Linux にデプロイする際のオプションをご確認ください。 
+次の表を使用し、C# モジュールを開発して Linux にデプロイする際のオプションをご確認ください。
 
-| C# | Visual Studio Code | Visual Studio | 
+| C# | Visual Studio Code | Visual Studio |
 | -- | ------------------ | ------------- |
 | **Linux AMD64** | ![VS Code の LinuxAMD64 用 C# モジュール](./media/tutorial-c-module/green-check.png) | ![Visual Studio の LinuxAMD64 用 C# モジュール](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![VS Code の LinuxARM32 用 C# モジュール](./media/tutorial-c-module/green-check.png) | ![Visual Studio の LinuxARM64 用 C# モジュール](./media/tutorial-c-module/green-check.png) |
 
+>[!NOTE]
+>Linux ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でご利用いただけます。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、[Linux デバイス用の IoT Edge モジュールの開発](tutorial-develop-for-linux.md)に関する前のチュートリアルを完了して、開発環境を設定する必要があります。 そのチュートリアルを完了すると、次の前提条件は既に満たしています。 
+このチュートリアルを開始する前に、[Linux デバイス用の IoT Edge モジュールの開発](tutorial-develop-for-linux.md)に関する前のチュートリアルを完了して、開発環境を設定する必要があります。 そのチュートリアルを完了すると、既に以下の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge が動作している Linux デバイス](quickstart-linux.md)。
 * コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
-* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
+* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
-これらのチュートリアルを完了するには、開発マシンでさらに次の前提条件を整えます。 
+これらのチュートリアルを完了するには、開発マシンでさらに次の前提条件を整えます。
 
-* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
+* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-module-project"></a>モジュール プロジェクトを作成する
 
-以下の手順では、Visual Studio Code と Azure IoT Tools 拡張機能を使用して、C# 用の IoT Edge モジュール プロジェクトを作成します。 プロジェクト テンプレートの作成後、新しいコードを追加して、レポートされるプロパティに基づいてモジュールがメッセージを除外するようにします。 
+以下の手順では、Visual Studio Code と Azure IoT Tools 拡張機能を使用して、C# 用の IoT Edge モジュール プロジェクトを作成します。 プロジェクト テンプレートが作成されたら、新しいコードを追加して、報告されたプロパティに基づいてモジュールがメッセージをフィルター処理するようにします。
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-独自のコードでカスタマイズできる C# ソリューション テンプレートを作成します。 
+独自のコードでカスタマイズできる C# ソリューション テンプレートを作成します。
 
-1. Visual Studio Code で、 **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
+1. Visual Studio Code で、 **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 
 2. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 
-3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
+3. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
 
-   | フィールド | 値 |
+   | フィールド | Value |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **C# モジュール**を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュールに **CSharpModule** と名前を付けます。 |
    | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
- 
-   ![Docker イメージ リポジトリを指定する](./media/tutorial-csharp-module/repository.png)
 
+   ![Docker イメージ リポジトリを指定する](./media/tutorial-csharp-module/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 
-コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。 自分の Azure コンテナー レジストリの **[アクセス キー]** セクションにある資格情報を使用します。 
+コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。 該当する Azure コンテナー レジストリの **[アクセス キー]** セクションの資格情報を使用します。
 
-1. VS Code エクスプローラーで、 **.env** ファイルを開きます。 
-2. 自分の Azure コンテナー レジストリの**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。 
-3. このファイルを保存します。 
+1. VS Code エクスプローラーで、 **.env** ファイルを開きます。
+2. 自分の Azure コンテナー レジストリの**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
-現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の C モジュールを開発できます。 ソリューションごとにターゲットのアーキテクチャを選択する必要があります。これは、アーキテクチャの種類ごとに異なる方法でコンテナーがビルドおよび実行されるためです。 既定値は Linux AMD64 です。 
+現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の C# モジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。
 
-1. コマンド パレットを開き、次を検索します: **Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
+1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。
 
-2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** のままにします。 
+2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** のままにします。
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
@@ -111,7 +114,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
     using Newtonsoft.Json;                // For JsonConvert
     ```
 
-3. **temperatureThreshold** 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。 
+3. **temperatureThreshold** 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
@@ -129,12 +132,12 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
     class Machine
     {
         public double temperature {get; set;}
-        public double pressure {get; set;}         
+        public double pressure {get; set;}
     }
     class Ambient
     {
         public double temperature {get; set;}
-        public int humidity {get; set;}         
+        public int humidity {get; set;}
     }
     ```
 
@@ -147,7 +150,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
     // Read the TemperatureThreshold value from the module twin's desired properties
     var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
     await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
-    
+
     // Attach a callback for updates to the module twin's desired properties.
     await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
 
@@ -186,7 +189,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
     }
     ```
 
-7. **PipeMessage** メソッドを **FilterMessages** メソッドに置き換えます。 このメソッドは、モジュールが IoT Edge ハブからメッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。 また、**MessageType** プロパティを、値が **Alert** に設定されたメッセージに追加します。 
+7. **PipeMessage** メソッドを **FilterMessages** メソッドに置き換えます。 このメソッドは、モジュールが IoT Edge ハブからメッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。 また、**MessageType** プロパティを、値が **Alert** に設定されたメッセージに追加します。
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -206,14 +209,16 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
             {
                 Console.WriteLine($"Machine temperature {messageBody.machine.temperature} " +
                     $"exceeds threshold {temperatureThreshold}");
-                var filteredMessage = new Message(messageBytes);
-                foreach (KeyValuePair<string, string> prop in message.Properties)
+                using (var filteredMessage = new Message(messageBytes))
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    foreach (KeyValuePair<string, string> prop in message.Properties)
+                    {
+                        filteredMessage.Properties.Add(prop.Key, prop.Value);
+                    }
 
-                filteredMessage.Properties.Add("MessageType", "Alert");
-                await moduleClient.SendEventAsync("output1", filteredMessage);
+                    filteredMessage.Properties.Add("MessageType", "Alert");
+                    await moduleClient.SendEventAsync("output1", filteredMessage);
+                }
             }
 
             // Indicate that the message treatment is completed.
@@ -243,9 +248,9 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 8. Program.cs ファイルを保存します。
 
-9. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。 
+9. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。
 
-10. **CSharpModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **modulesContent** セクションの下部、 **$edgeHub** モジュール ツインの後に挿入します。 
+10. **CSharpModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **modulesContent** セクションの下部、 **$edgeHub** モジュール ツインの後に挿入します。
 
     ```json
        "CSharpModule": {
@@ -259,38 +264,37 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 11. deployment.template.json ファイルを保存します。
 
-
 ## <a name="build-and-push-your-module"></a>モジュールをビルドしてプッシュする
 
-前のセクションでは、IoT Edge ソリューションを作成したほか、レポートされるマシン温度が許容範囲内である場合にメッセージを除外するコードを CSharpModule に追加しました。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
+前のセクションで IoT Edge ソリューションを作成して、CSharpModule にコードを追加しました。 新しいコードは、レポートされたマシン温度が許容限度内であるメッセージをフィルターで除外するものです。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
 1. **[表示]**  >  **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。
 
-1. ターミナルで次のコマンドを入力して、Docker にサインインします。 自分の Azure コンテナー レジストリのユーザー名、パスワード、ログイン サーバーを使用してサインインしてください。 これらの値は、Azure portal で自分のレジストリの **[アクセス キー]** セクションから取得できます。
-     
+1. ターミナルで次のコマンドを入力して、Docker にサインインします。 自分の Azure コンテナー レジストリのユーザー名、パスワード、ログイン サーバーを使用してサインインします。 これらの値は、Azure portal でご自身のレジストリの **[アクセス キー]** セクションから取得できます。
+
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスを参照してください。
+   `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
 
-2. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
+1. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
 
-   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、**config** という新しいフォルダーをソリューション内に作成します。これは、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持します。 次に、`docker build` を実行して、ターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
+   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 
 Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用して、モジュール プロジェクトを自分の IoT Edge デバイスにデプロイします。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
-IoT Edge デバイスが稼働していることを確認します。
+お使いの IoT Edge デバイスが稼働していることを確認します。
 
 1. Visual Studio Code エクスプローラーで **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開して、IoT デバイスの一覧を確認します。
 
-2. IoT Edge デバイスの名前を右クリックして、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。 
+2. IoT Edge デバイスの名前を右クリックして、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
-5. **config**フォルダーで **deployment.json** ファイルを選択し、 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 deployment.template.json ファイルは使用しないでください。 
+3. **config**フォルダーで **deployment.json** ファイルを選択し、 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 deployment.template.json ファイルは使用しないでください。
 
-6. 更新ボタンをクリックします。 新しい **CSharpModule** が、**TempSensor** モジュール、 **$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。  
+4. 更新ボタンをクリックします。 新しい **CSharpModule** が、**SimulatedTemperatureSensor** モジュール、 **$edgeAgent** および **$edgeHub** と一緒に実行されていることがわかります。  
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
@@ -298,40 +302,41 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 IoT Edge デバイスのステータスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを使用して確認できます。 デバイスの詳細を展開すると、デプロイされて実行中のモジュールが一覧表示されます。
 
-1. Visual Studio Code エクスプローラーで、自分の IoT Edge デバイスの名前を右クリックして、 **[Start Monitoring D2C Messages]\(D2C メッセージの監視を開始する\)** を選択します。
+1. Visual Studio Code のエクスプローラーで、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
-2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取ってすべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 次に、CModule コードに加えられた変更が、マシンの温度が 25 度に到達するまで待機してから、メッセージを送信します。 また、その温度しきい値に達したすべてのメッセージにメッセージ型 **Alert** も追加されます。 
+2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取って、すべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 その後、CModule コードに対して行った変更は、コンピューターの温度が 25 度に達するまで待ってからメッセージを送信します。 また、その温度しきい値に達するどのメッセージにも、メッセージ型 **Alert** が追加されます。
 
-   ![IoT Hub に到着するメッセージの表示](./media/tutorial-csharp-module/view-d2c-message.png)
- 
+   ![IoT Hub に到着するメッセージを表示する](./media/tutorial-csharp-module/view-d2c-message.png)
+
 ## <a name="edit-the-module-twin"></a>モジュール ツインを編集する
 
 配置マニフェストで CSharpModule モジュール ツインを使用して、温度のしきい値を 25 度に設定しました。 モジュール ツインを使用することで、モジュール コードを更新することなく機能を変更できます。
 
-1. Visual Studio Code で、自分の IoT Edge デバイスの詳細を展開し、実行中のモジュールを表示します。 
+1. Visual Studio Code で、自分の IoT Edge デバイスの詳細を展開し、実行中のモジュールを表示します。
 
-2. **[CSharpModule]** を右クリックし、 **[モジュール ツインを編集します]** を選択します。 
+2. **[CSharpModule]** を右クリックし、 **[モジュール ツインを編集します]** を選択します。
 
-3. 目的のプロパティの中から **TemperatureThreshold** を見つけます。 その値を、新しい温度 (最後にレポートされた温度より 5 度から 10 度高い温度) に変更します。 
+3. 目的のプロパティの中から **TemperatureThreshold** を見つけます。 その値を、新しい温度 (最後にレポートされた温度より 5 度から 10 度高い温度) に変更します。
 
 4. モジュール ツイン ファイルを保存します。
 
-5. モジュール ツイン編集ウィンドウ内の任意の場所を右クリックして、 **[Update module twin]\(モジュール ツインの更新\)** を選択します。 
+5. モジュール ツイン編集ウィンドウ内の任意の場所を右クリックして、 **[Update module twin]\(モジュール ツインの更新\)** を選択します。
 
-5. 到着する device-to-cloud メッセージを監視します。 新しいしきい値の温度に達するまで、メッセージは停止するはずです。 
+6. 到着する device-to-cloud メッセージを監視します。 新しい温度しきい値に達するまでメッセージが停止するのを確認できるはずです。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
+次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。
 
-それ以外の場合は、課金を避けるため、この記事で使用したローカル構成と Azure リソースを削除してもかまいません。 
+そうでない場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除できます。
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレート済み温度モジュールを含む IoT Edge モジュールの例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)を参照してください。
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
+次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

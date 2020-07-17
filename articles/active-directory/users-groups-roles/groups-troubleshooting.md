@@ -1,24 +1,24 @@
 ---
-title: グループの動的メンバーシップに関する問題を修正する - Azure Active Directory | Microsoft Docs
-description: Azure AD でのグループの動的メンバーシップ管理に関する問題について、トラブルシューティングのヒントを紹介します。
+title: 動的グループ メンバーシップで問題を修正する - Azure AD | Microsoft Docs
+description: Azure Active Directory での動的グループ メンバーシップのトラブルシューティングのヒント
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791556"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582719"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>グループに関する問題のトラブルシューティングと解決
 
@@ -43,7 +43,7 @@ Powershell で管理者以外のユーザーによるグループの作成を無
    ```
 
 <br/>**Powershell で動的グループを作成しようとしたときに、最大許容グループ数のエラーが表示されました**<br/>
-Powershell で_動的グループ ポリシーの最大許容グループ数に達した_ことを示すメッセージが表示される場合、テナント内の動的グループの数が上限に達したことを意味します。 テナントごとの動的グループの最大数は 5,000 です。
+Powershell で_動的グループ ポリシーの最大許容グループ数に達した_ことを示すメッセージが表示される場合、組織内の動的グループの数が上限に達したことを意味します。 組織ごとの動的グループの最大数は 5,000 です。
 
 新しい動的グループを作成するには、まず既存の動的グループをいくつか削除する必要があります。 上限を増やす方法はありません。
 
@@ -53,7 +53,7 @@ Powershell で_動的グループ ポリシーの最大許容グループ数に�
 1. ルール内のユーザー属性またはデバイス属性の値を確認します。 ルールを満たすユーザーが存在することを確認してください。 デバイスの場合は、デバイスのプロパティを調べて、同期された属性に予期される値が含まれていることを確認してください。<br/>
 2. メンバーシップの処理の状態を調べて、処理が完了しているかどうかを確認してください。 グループの **[概要]** ページで、[メンバーシップの処理状態](groups-create-rule.md#check-processing-status-for-a-rule)と最終更新日を確認できます。
 
-何も問題がなさそうな場合、グループが設定されるまでしばらく待ってください。 グループを初めて設定する場合、またはルールの変更後に設定する場合、テナントのサイズによっては最大 24 時間かかる場合があります。
+何も問題がなさそうな場合、グループが設定されるまでしばらく待ってください。 グループを初めて設定する場合、またはルールの変更後に設定する場合、Azure AD 組織のサイズによっては最大 24 時間かかる場合があります。
 
 **ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**<br/>これは正しい動作です。 ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。 ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。
 
@@ -70,7 +70,7 @@ Powershell で_動的グループ ポリシーの最大許容グループ数に�
 | エラー:属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
 | エラー:クエリ コンパイル エラー。 | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2.  (user.userPrincipalName -match "*@domain.ext") | 1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2.-match に使用されている正規表現に誤りがあります。<br>(user.userPrincipalName -match ".*@domain.ext")<br>あるいは: (user.userPrincipalName -match "@domain.ext$") |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事は、Azure Active Directory に関する追加情報を示します。
 

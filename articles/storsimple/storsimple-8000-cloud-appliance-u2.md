@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763165"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232243"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 
@@ -229,7 +231,7 @@ StorSimple Cloud Appliance の作成と構成が終了したので、操作を�
 
 詳しい手順については、「 [StorSimple デバイスの非アクティブ化と削除](storsimple-8000-deactivate-and-delete-device.md)」をご覧ください。
 
-クラウド アプライアンスは、StorSimple デバイス マネージャー サービス ブレードで非アクティブと表示されたら、**[デバイス]** ブレードのデバイス一覧から削除できます。
+クラウド アプライアンスは、StorSimple デバイス マネージャー サービス ブレードで非アクティブと表示されたら、 **[デバイス]** ブレードのデバイス一覧から削除できます。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>クラウド アプライアンスの開始、停止、および再起動
 StorSimple 物理デバイスとは異なり、StorSimple Cloud Appliance には電源をオンまたはオフにするボタンはありません。 ただし、クラウド アプライアンスを停止して再起動する必要がある場合があります。
@@ -274,6 +276,6 @@ DR の前提条件:
 5. `nslookup` が失敗する場合は、インターネット接続エラーが原因でクラウド アプライアンスが StorSimple デバイス マネージャー サービスに登録できていません。
 6. クラウド アプライアンスが "_windows.net_" などの Azure サイトにアクセスできるように、必要な変更を仮想ネットワークに加えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイス マネージャー サービスを使用してクラウド アプライアンスを管理する](storsimple-8000-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-8000-restore-from-backup-set-u2.md)方法について理解します。

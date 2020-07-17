@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:CLI コマンドの az postgres up を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
+title: クイック スタート:サーバーを作成する - az postgres up - Azure Database for PostgreSQL - Single Server
 description: Azure CLI (コマンド ライン インターフェイス) の up コマンドを使用して Azure Database for PostgreSQL - 単一サーバーを作成するためのクイックスタート ガイド。
 author: rachel-msft
 ms.author: raagyema
@@ -7,19 +7,19 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069084"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146811"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Azure CLI コマンドの az postgres up (プレビュー) を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
 > [!IMPORTANT]
 > [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) という Azure CLI コマンドはプレビュー段階です。
 
-Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用し、Azure CLI を使って Azure Database for PostgreSQL サーバーを作成する方法を示します。 `az postgres up` コマンドでは、サーバーの作成に加え、サンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これらの既定値は、開発プロセスを促進するために役立ちます。
+Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用し、Azure CLI を使って Azure Database for PostgreSQL サーバーを作成する方法を示します。 サーバーの作成に加え、`az postgres up` コマンドではサンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これらの既定値は、開発プロセスを促進するために役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,9 +61,9 @@ server-name | システム生成 | Azure Database for PostgreSQL サーバーを
 resource-group | システム生成 | 新しい Azure リソース グループ。
 sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コンピューティング世代}\_{仮想コア} という規則に従います。 既定値は、2 個の仮想コアを備えた General Purpose Gen5 サーバーです。 レベルの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
 backup-retention | 7 | バックアップが保持される期間。 単位は日数です。
-geo-redundant-backup | Disabled | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
+geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
 location | westus2 | サーバーの Azure の場所。
-ssl-enforcement | Disabled | このサーバーに対して ssl を有効にする必要があるかどうかどうか。
+ssl-enforcement | 無効 | このサーバーに対して TLS/SSL を有効にする必要があるかどうかどうか。
 storage-size | 5120 | サーバーのストレージ容量 (単位はメガバイト)。
 version | 10 | PostgreSQL のメジャー バージョン。
 admin-user | システム生成 | 管理者のユーザー名。
@@ -88,7 +88,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 [az postgres show-connection-string](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-show-connection-string) コマンドを使用して、これらの接続文字列をもう一度リストすることができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 以下のコマンドを使用して、クイック スタートで作成したすべてのリソースをクリーンアップします。 このコマンドによって、Azure Database for PostgreSQL サーバーとリソース グループが削除されます。
 
@@ -102,7 +102,7 @@ az postgres down --delete-group
 az postgres down
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)

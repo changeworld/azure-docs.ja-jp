@@ -1,25 +1,25 @@
 ---
-title: Translator Text API の Languages メソッド
-titlesuffix: Azure Cognitive Services
-description: Translator Text API の Languages メソッドを使用します。
+title: Translator の Languages メソッド
+titleSuffix: Azure Cognitive Services
+description: Languages メソッドでは、Translator の他の操作で現在サポートされている一連の言語が取得されます。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915766"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588600"
 ---
-# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
+# <a name="translator-30-languages"></a>Translator 3.0:Languages
 
-Translator Text API の他の操作で現在サポートされている一連の言語を取得します。 
+Translator の他の操作で現在サポートされている一連の言語を取得します。 
 
 ## <a name="request-url"></a>要求 URL
 
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 要求ヘッダーを次に示します。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>Accept-Language</td>
@@ -229,7 +229,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>ETag</td>
@@ -251,7 +251,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>304</td>
@@ -263,7 +263,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -275,16 +275,12 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
 
 ## <a name="examples"></a>例
 
 次の例では、テキスト翻訳でサポートされている言語を取得する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"
 ```
-
----

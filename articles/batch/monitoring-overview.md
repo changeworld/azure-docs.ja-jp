@@ -1,22 +1,14 @@
 ---
-title: Azure Batch の監視 | Microsoft Docs
+title: Azure Batch の監視
 description: Azure Batch の Azure 監視サービス、メトリック、診断ログ、その他の監視機能について説明します。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.workload: na
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: b0243b37f725fc977337b72998d610e9bda71a86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848031"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723529"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -26,22 +18,22 @@ Azure リソースの監視に使用できる Azure のコンポーネントと�
 
 ## <a name="subscription-level-monitoring"></a>サブスクリプション レベルの監視
 
-Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log)の運用イベント データが収集されます。
+Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)の運用イベント データが収集されます。
 
 具体的に Batch アカウントでは、アクティビティ ログによってアカウントの作成と削除やキー管理に関連するイベントが収集されます。
 
-アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]** > **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)を構成したりすることもできます。
+アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]**  >  **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)を構成したりすることもできます。
 
 ## <a name="batch-account-level-monitoring"></a>Batch アカウント レベルの監視
 
-[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と、必要に応じて[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
+[Azure Monitor](../azure-monitor/overview.md) の機能を使用して各 Batch アカウントを監視します。 Azure Monitor は、Batch アカウントのレベルをスコープとして、プール、ジョブ、タスクなどのリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と、必要に応じて[診断ログ](../azure-monitor/platform/platform-logs-overview.md)を収集します。 このデータを手動またはプログラムによって収集および利用して、Batch アカウント内のアクティビティを監視し、問題を診断します。 詳しくは、「[Batch ソリューションの診断の評価と監視のログ イベント](batch-diagnostics.md)」をご覧ください。
  
 > [!NOTE]
 > メトリックは、既定では追加の構成なしで Batch アカウントで利用でき、30 日間のローリング履歴があります。 Batch アカウントの診断ログを有効化する必要があり、診断ログ データの格納または処理には追加のコストが生じる可能性があります。 
 
 ## <a name="batch-resource-monitoring"></a>Batch リソースの監視
 
-Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 例: 
+Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 次に例を示します。
 
 * [状態ごとにタスクとコンピューティング ノードをカウントする](batch-get-resource-counts.md)
 * [効率的に Batch リソースを一覧表示するクエリを作成する](batch-efficient-list-queries.md)
@@ -66,7 +58,7 @@ Batch アプリケーションでは、Batch API を使用して、ジョブ、�
 * [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。 必要に応じて、Batch Explorer 内の VM パフォーマンス カウンターなどの [Application Insights データを表示](https://github.com/Azure/batch-insights)するように Batch ソリューションを構成します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * Batch での[診断ログ](batch-diagnostics.md)の詳細について学習します。

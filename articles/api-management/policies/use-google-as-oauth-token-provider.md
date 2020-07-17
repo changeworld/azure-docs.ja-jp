@@ -1,5 +1,6 @@
 ---
-title: Azure API Management ポリシーのサンプル - Google OAuth トークンを使用してアクセスを承認する | Microsoft Docs
+title: サンプルの API Management ポリシー - Google OAuth トークンを使用してアクセスを承認する
+titleSuffix: Azure API Management
 description: Azure API Management ポリシーのサンプル - Google を OAuth トークン プロバイダーとして使用して、エンドポイントへのアクセスを承認する方法を示します。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 430f9e57df163ad345f0740e5bd5beca6e892a4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d606d29d84cd5917c74efe188ae02627ad55d4ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869306"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75442368"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Google OAuth トークンを使用してアクセスを承認する
 
@@ -30,7 +30,7 @@ ms.locfileid: "52869306"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Simple Google OAuth validate-jwt.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

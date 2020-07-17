@@ -1,0 +1,185 @@
+- name: Azure Web アプリケーション ファイアウォールのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Web アプリケーション ファイアウォールとは
+      href: overview.md
+    - name: Application Gateway
+      items:
+        - name: Application Gateway上の Web アプリケーション ファイアウォール
+          href: ./ag/ag-overview.md
+        - name: 新機能
+          href: ./ag/whats-new.md
+    - name: フロントドア
+      items:
+        - name: Azure Front Door 上の Web アプリケーション ファイアウォール
+          href: ./afds/afds-overview.md
+    - name: Content Delivery Network
+      items:
+        - name: Azure CDN 上の Web アプリケーション ファイアウォール
+          href: ./cdn/cdn-overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Application Gateway
+      expanded: true
+      items:
+        - name: WAF v2 のデプロイ - ARM テンプレート
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
+- name: チュートリアル
+  items:
+    - name: Application Gateway
+      items:
+        - name: Web アプリケーション ファイアウォールの有効化
+          href: ./ag/application-gateway-web-application-firewall-portal.md
+    - name: フロントドア
+      items:
+        - name: WAF ポリシーの構成 - ポータル
+          href: ./afds/waf-front-door-create-portal.md
+    - name: Content Delivery Network
+      items:
+        - name: WAF ポリシーの構成 - ポータル
+          href: ./cdn/waf-cdn-create-portal.md
+- name: サンプル
+  items:
+    - name: Azure PowerShell
+      href: ./ag/powershell-samples.md
+    - name: Resource Manager テンプレート
+      href: ./ag/resource-manager-template-samples.md
+- name: 概念
+  items:
+    - name: Application Gateway
+      items:
+        - name: マネージド ルール
+          href: ./ag/application-gateway-crs-rulegroups-rules.md
+        - name: カスタム ルールの概要
+          href: ./ag/custom-waf-rules-overview.md
+        - name: Geomatch カスタム ルール
+          href: ./ag/geomatch-custom-rules.md
+        - name: 要求サイズ制限と除外リスト
+          href: ./ag/application-gateway-waf-configuration.md
+        - name: WAF ポリシーの概要
+          href: ./ag/policy-overview.md
+        - name: ボット保護の概要
+          href: ./ag/bot-protection-overview.md
+        - name: よく寄せられる質問
+          href: ./ag/application-gateway-waf-faq.md
+    - name: フロントドア
+      items:
+        - name: カスタム規則
+          href: ./afds/waf-front-door-custom-rules.md
+        - name: 除外リスト
+          href: ./afds/waf-front-door-exclusion.md
+        - name: ポリシー設定
+          href: ./afds/waf-front-door-policy-settings.md
+        - name: geo フィルタリング
+          href: ./afds/waf-front-door-geo-filtering.md
+        - name: よく寄せられる質問
+          href: ./afds/waf-faq.md
+- name: 操作方法ガイド
+  items:
+    - name: Application Gateway
+      items:
+        - name: WAF ポリシーを作成します。
+          href: ./ag/create-waf-policy-ag.md
+        - name: Web アプリケーション ファイアウォールを構成する
+          items:
+            - name: Azure PowerShell
+              href: ./ag/tutorial-restrict-web-traffic-powershell.md
+            - name: Azure CLI
+              href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: サイトごとのポリシー
+          href: ./ag/per-site-policies.md
+        - name: WAF ポリシーを移行する
+          href: ./ag/migrate-policy.md
+        - name: WAF ルールをカスタマイズする
+          items:
+            - name: Azure portal
+              href: ./ag/application-gateway-customize-waf-rules-portal.md
+            - name: Azure PowerShell
+              href: ./ag/application-gateway-customize-waf-rules-powershell.md
+            - name: Azure CLI
+              href: ./ag/application-gateway-customize-waf-rules-cli.md
+        - name: WAF v2 カスタム ルールの構成 - PowerShell
+          href: ./ag/configure-waf-custom-rules.md
+        - name: カスタム規則の例
+          href: ./ag/create-custom-waf-rules.md
+        - name: ボット保護
+          href: ./ag/bot-protection.md
+        - name: 既存の Application Gateway とのポリシーの関連付け
+          href: ./ag/associate-waf-policy-existing-gateway.md
+        - name: リソース ログ
+          href: ./ag/web-application-firewall-logs.md
+        - name: WAF のトラブルシューティング
+          href: ./ag/web-application-firewall-troubleshoot.md
+    - name: フロントドア
+      items:
+        - name: WAF ポリシーの構成 - PowerShell
+          href: ./afds/waf-front-door-custom-rules-powershell.md
+        - name: ボット保護の構成
+          href: ./afds/waf-front-door-policy-configure-bot-protection.md
+        - name: カスタム応答コードの構成
+          href: ./afds/waf-front-door-configure-custom-response-code.md
+        - name: IP 制限の構成
+          href: ./afds/waf-front-door-configure-ip-restriction.md
+        - name: レート制限の構成 - PowerShell
+          href: ./afds/waf-front-door-rate-limit-powershell.md
+        - name: geo フィルタリング WAF ポリシーの構成
+          href: ./afds/waf-front-door-tutorial-geo-filtering.md
+        - name: 監視とログ記録
+          href: ./afds/waf-front-door-monitor.md
+    - name: トラブルシューティング
+      items:
+        - name: Application Gateway
+          items:
+            - name: WAF のトラブルシューティング
+              href: ./ag/web-application-firewall-troubleshoot.md
+            - name: Log Analytics
+              href: ./ag/log-analytics.md
+- name: リファレンス
+  items:
+    - name: CRS ルール
+      href: ./ag/application-gateway-crs-rulegroups-rules.md
+    - name: Azure CLI
+      items:
+        - name: フロントドア
+          href: 'https://docs.microsoft.com/cli/azure/ext/front-door/network?view=azure-cli-latest'
+        - name: Application Gateway
+          href: 'https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest'
+        - name: CDN
+          href: 'https://docs.microsoft.com/cli/azure/cdn/waf?view=azure-cli-latest'
+    - name: Azure PowerShell
+      items:
+        - name: フロントドア
+          href: 'https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.3.0'
+        - name: Application Gateway
+          href: 'https://docs.microsoft.com/powershell/module/az.network/?view=azps-3.3.0#application_gateway'
+        - name: CDN
+          href: 'https://www.powershellgallery.com/packages/Az.Cdn/1.5.0-preview'
+    - name: REST API
+      items:
+        - name: フロントドア
+          href: 'https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies'
+        - name: Application Gateway
+          href: 'https://docs.microsoft.com/rest/api/virtualnetwork/webapplicationfirewallpolicies'
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+- name: リソース
+  items:
+    - name: テンプレートの作成
+      href: ../azure-resource-manager/templates/template-syntax.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/web-application-firewall/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

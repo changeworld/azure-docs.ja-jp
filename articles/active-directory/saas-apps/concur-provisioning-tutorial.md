@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205683"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60280486"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -79,25 +79,25 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 2. **[管理]** メニューの **[Web サービス]** をクリックします。
    
-    ![Concur tenant](./media/concur-provisioning-tutorial/IC721729.png "Concur tenant")
+    ![Concur テナント](./media/concur-provisioning-tutorial/IC721729.png "Concur テナント")
 
-3. 左側の **[Web サービス]** ウィンドウで、**[パートナー アプリケーションの有効化]** を選択します。
+3. 左側の **[Web サービス]** ウィンドウで、 **[パートナー アプリケーションの有効化]** を選択します。
    
-    ![Enable Partner Application](./media/concur-provisioning-tutorial/ic721730.png "Enable Partner Application")
+    ![パートナー アプリケーションの有効化](./media/concur-provisioning-tutorial/ic721730.png "[パートナー アプリケーションの有効化]")
 
-4. **[アプリケーションを有効にする]** ボックスの一覧で **[Azure Active Directory]** を選択し、**[有効にする]** をクリックします。
+4. **[アプリケーションを有効にする]** ボックスの一覧で **[Azure Active Directory]** を選択し、 **[有効にする]** をクリックします。
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. **[はい]** をクリックして、**[アクションの確認]** ダイアログを閉じます。
+5. **[はい]** をクリックして、 **[アクションの確認]** ダイアログを閉じます。
    
-    ![Confirm Action](./media/concur-provisioning-tutorial/ic721732.png "Confirm Action")
+    ![アクションの確認](./media/concur-provisioning-tutorial/ic721732.png "[アクションの確認]")
 
-6. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+6. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-7. シングル サインオンのために Concur を既に構成している場合は、検索フィールドで Concur のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Concur** を検索します。 検索結果から Concur を選択してアプリケーションの一覧に追加します。
+7. シングル サインオンのために Concur を既に構成している場合は、検索フィールドで Concur のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **Concur** を検索します。 検索結果から Concur を選択してアプリケーションの一覧に追加します。
 
-8. Concur のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+8. Concur のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 9. **[プロビジョニング モード]** を **[自動]** に設定します。 
  
@@ -105,7 +105,7 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「**ユーザー名**」と「**パスワード**」を入力します。
 
-11. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
+11. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
 
 12. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -115,11 +115,11 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 15. **[属性マッピング]** セクションで、Azure AD から Concur に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Concur のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 17. **[保存]** をクリックします。
 
-テスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Concur に同期されたことを確認します。
+これでテスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Concur に同期されたことを確認します。
 
 ## <a name="additional-resources"></a>その他のリソース
 

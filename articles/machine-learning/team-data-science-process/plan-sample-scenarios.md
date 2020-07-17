@@ -3,29 +3,25 @@ title: Azure Machine Learning のシナリオを特定する - Team Data Science
 description: Team Data Science Process での高度な予測分析の実行に適したシナリオを選択します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227207"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
 この記事では、[Team Data Science Process (TDSP)](overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。 TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。 ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
 
 最後のセクションに、データと目標に適したサンプル シナリオを選択するための **デシジョン ツリー** を示します。
-
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
 
 以下の各セクションに、サンプル シナリオを示します。 シナリオごとに、考えられるデータ サイエンスまたは高度な分析のフローと、サポートする Azure リソースの説明があります。
 
@@ -33,13 +29,13 @@ ms.locfileid: "57454954"
 > **次のすべてのシナリオについて、次を実行する必要があります。**
 > <br/>
 > 
-> * [ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
+> * [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)
 >   <br/>
 > * [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)
 > 
 > 
 
-## <a name="smalllocal"></a>シナリオ \#1:ローカル ファイルの小規模から中規模の表形式のデータセット
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>シナリオ \#1:ローカル ファイルの小規模から中規模の表形式のデータセット
 ![小規模から中規模のローカル ファイル][1]
 
 #### <a name="additional-azure-resources-none"></a>その他の Azure リソース:なし
@@ -47,25 +43,25 @@ ms.locfileid: "57454954"
 1. データセットをアップロードします。
 1. アップロードされたデータセットで始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="smalllocalprocess"></a>シナリオ \#2:処理が必要なローカル ファイルの小規模から中規模のデータセット
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>シナリオ \#2:処理が必要なローカル ファイルの小規模から中規模のデータセット
 ![処理中の小規模から中規模のローカル ファイル][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (IPython Notebook サーバー)
 1. IPython Notebook を実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
-1. IPython Notebook でデータの前処理とクリーニングを行い、Azure ストレージ コンテナーからデータにアクセスします。
+1. Azure Storage コンテナーにデータをアップロードします。
+1. IPython Notebook でデータの前処理とクリーニングを行い、Azure Storage コンテナーからデータにアクセスします。
 1. クリーニングされたデータを表形式に変換します。
 1. 変換されたデータを Azure BLOB に保存します。
 1. [Azure Machine Learning Studio](https://studio.azureml.net/)にサインインします。
 1. [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 1. 統合されたデータセットで始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="largelocal"></a>シナリオ \#3:ローカル ファイルの大規模データセット (Azure Blob を対象)
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>シナリオ \#3:ローカル ファイルの大規模データセット (Azure Blob を対象)
 ![大規模なローカル ファイル][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (IPython Notebook サーバー)
 1. IPython Notebook を実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
+1. Azure Storage コンテナーにデータをアップロードします。
 1. IPython Notebook でデータの前処理とクリーニングを行い、Azure BLOB からデータにアクセスします。
 1. 必要に応じて、クリーニングされたデータを表形式に変換します。
 1. データを探索し、必要に応じて機能を作成します。
@@ -75,13 +71,13 @@ ms.locfileid: "57454954"
 1. [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 1. データセットの取り込みから始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="smalllocaltodb"></a>シナリオ \#4:ローカル ファイルの小規模から中規模のデータセット (Azure 仮想マシンの SQL Server を対象)
+## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>シナリオ \#4:ローカル ファイルの小規模から中規模のデータセット (Azure 仮想マシンの SQL Server を対象)
 ![Azure の SQL DB への小規模から中規模のローカル ファイル][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
 1. SQL Server と IPython Notebook を実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
-1. IPython Notebook を使用して、Azure ストレージ コンテナーでデータの前処理とクリーニングを行います。
+1. Azure Storage コンテナーにデータをアップロードします。
+1. IPython Notebook を使用して、Azure Storage コンテナーでデータの前処理とクリーニングを行います。
 1. 必要に応じて、クリーニングされたデータを表形式に変換します。
 1. データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
 1. Azure VM で実行している SQL Server データベースにデータを読み込みます。
@@ -105,36 +101,32 @@ ms.locfileid: "57454954"
 1. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 1. データセットの取り込みから始まる Azure Machine Learning の実験フローを構築します。
 
-## <a name="largelocaltodb"></a>シナリオ \#5:ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>シナリオ \#5:ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)
 ![Azure の SQL DB への大規模なローカル ファイル][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
 1. SQL Server と IPython Notebook サーバーを実行する Azure 仮想マシンを作成します。
-1. Azure ストレージ コンテナーにデータをアップロードします。
+1. Azure Storage コンテナーにデータをアップロードします。
 1. (省略可能) データの前処理とクリーニングを行います。
    
-   a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
+    a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure BLOB からデータにアクセスします。
    
-       blobs.
+    b.  必要に応じて、クリーニングされたデータを表形式に変換します。
    
-   b.  必要に応じて、クリーニングされたデータを表形式に変換します。
-   
-   c.  データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
+    c.  データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
 1. Azure VM で実行している SQL Server データベースにデータを読み込みます。
    
-   a.  SQL Server VM にログインします。
+    a.  SQL Server VM にログインします。
    
-   b.  データが保存されていない場合は、Azure からダウンロードします。
+    b.  データをまだ保存していない場合は、データ ファイルを Azure Storage コンテナーからローカルの VM フォルダーにダウンロードします。
    
-       storage container to local-VM folder.
+    c.  SQL Server Management Studio を実行します。
    
-   c.  SQL Server Management Studio を実行します。
+    d.  データベースとターゲット テーブルを作成します。
    
-   d.  データベースとターゲット テーブルを作成します。
+    e.  いずれかの一括インポート方法を使用してデータを読み込みます。
    
-   e.  いずれかの一括インポート方法を使用してデータを読み込みます。
-   
-   f.  テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
+    f.  テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
    
    > [!NOTE]
    > 大きなサイズのデータの読み込みを高速化するために、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。 詳細については、「 [Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](parallel-load-sql-partitioned-tables.md)」をご覧ください。
@@ -146,7 +138,7 @@ ms.locfileid: "57454954"
 1. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 1. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
-## <a name="largedbtodb"></a>シナリオ \#6:オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>シナリオ \#6:オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
 ![Azure の SQL DB へのオンプレミスの大規模な SQL DB][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
@@ -157,12 +149,12 @@ ms.locfileid: "57454954"
    > オンプレミスのデータベースからすべてのデータを移動する場合、より速い方法は、完全なデータベースを Azure の SQL Server インスタンスに移動することです。 データのエクスポート、データベースの作成、ターゲット データベースへのデータの読み込み/インポートの手順を省略し、別の方法を続行します。
    > 
    > 
-1. ダンプ ファイルを Azure ストレージ コンテナーにアップロードします。
+1. ダンプ ファイルを Azure Storage コンテナーにアップロードします。
 1. Azure 仮想マシンで実行している SQL Server データベースにデータを読み込みます。
    
    a.  SQL Server VM にログインします。
    
-   b.  データ ファイルを Azure ストレージ コンテナーからローカルの VM フォルダーにダウンロードします。
+   b.  データ ファイルを Azure Storage コンテナーからローカルの VM フォルダーにダウンロードします。
    
    c.  SQL Server Management Studio を実行します。
    
@@ -186,15 +178,15 @@ ms.locfileid: "57454954"
 ![ローカル DB をデタッチし、Azure の SQL DB にアタッチする][7]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>その他の Azure リソース:Azure 仮想マシン (SQL Server/IPython Notebook サーバー)
-SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 これは、SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用して行います。
+SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。 SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用できます。
 
 1. ソースの場所にあるデータベースをデタッチします。 詳細については、「[データベースのデタッチ](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)」をご覧ください。
 1. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
-1. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。 詳細については、「[データベースのアタッチ](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)」をご覧ください。
+1. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。 詳細については、「 [Attach a Database](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)」を参照してください。
 
-[デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[デタッチとアタッチを使用してデータベースを移動する方法 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>シナリオ \#7:ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>シナリオ \#7:ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 ![ローカル ターゲット Hive のビッグ データ][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>その他の Azure リソース:Azure HDInsight Hadoop クラスターと Azure 仮想マシン (IPython Notebook サーバー)
@@ -238,8 +230,8 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 1. [データのインポート][import-data] モジュールを使用して、`Hive Queries` から直接データを読み取ります。 フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 1. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
-## <a name="decisiontree"></a>シナリオを選択するためのデシジョン ツリー
-- - -
+## <a name="decision-tree-for-scenario-selection"></a><a name="decisiontree"></a>シナリオを選択するためのデシジョン ツリー
+---
 次の図は、上記で説明したシナリオと、各シナリオを選択するための Advanced Analytics Process and Technology の選択肢をまとめたものです。 データ処理、探索、特徴エンジニアリング、およびサンプリングは、1 つ以上のメソッド/環境 (ソース、中間、またはターゲット環境) で発生する場合があり、必要に応じて繰り返し実行される可能性があります。 図は、考えられるフローの一部のみを示しており、すべてを網羅しているわけではありません。
 
 ![サンプル DS プロセスのチュートリアル シナリオ][8]

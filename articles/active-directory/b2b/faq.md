@@ -5,23 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/10/2019
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496303"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80050816"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
 Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関するよく寄せられる質問 (FAQ) は、新しいトピックを追加して定期的に更新されています。
+
+   > [!IMPORTANT]
+   > **2021 年 3 月 31 日以降**、Microsoft は、B2B コラボレーションのシナリオで管理されていない Azure AD アカウントとテナントを作成することによる、招待の引き換えをサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>B2B コラボレーションのゲスト ユーザー向けに、より直感的にするため、サインイン ページをカスタマイズすることはできますか。
 もちろんあります。 [この機能に関するブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)をご覧ください。 組織のサインイン ページをカスタマイズする方法の詳細については、「[サインイン ページとアクセス パネル ページに会社のブランドを追加する](../fundamentals/customize-branding.md)」をご覧ください。
@@ -42,13 +45,13 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 招待側組織が Multi-Factor Authentication を実行します。 招待側組織は、Multi-Factor Authentication を使用している B2B ユーザーに対する十分なライセンスがあることを確認する必要があります。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>パートナー組織で、既に Multi-Factor Authentication を設定している場合はどうなりますか。 パートナー組織の Multi-Factor Authentication を信頼でき、独自の Multi-Factor Authentication は使用しないのですか。
-この機能は今後のリリースで計画されています。機能が実装されたら、特定のパートナーを選択して、自社 (招待側組織) の多要素認証から除外できるようになります。
+この機能は、現時点ではサポートされていません。 組織のリソースへのアクセスで多要素認証が必要な場合、取引先組織に対する多要素認証を (招待側) 組織に登録する必要があります。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>招待の遅延は、どのように使用するのですか。
 組織で、B2B コラボレーション ユーザーを追加し、必要に応じてそれらのユーザーをアプリケーションにプロビジョニングして、招待を送信したいと考える場合があります。 B2B コラボレーションの招待 API を使用して、オンボード ワークフローをカスタマイズできます。
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧 (GAL) には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 「[グローバル アドレス一覧にゲスト オブジェクトを表示できますか?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)」をご覧ください
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧 (GAL) には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 「[グローバル アドレス一覧にゲスト オブジェクトを表示できますか?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)」をご覧ください
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>ゲスト ユーザーを制限付き管理者にできますか。
 そして、 詳細については、[ゲスト ユーザーのロールへの追加](add-guest-to-role.md)に関するページをご覧ください。
@@ -57,15 +60,21 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 B2B コラボレーション ユーザーは、制限付き管理者のロールが割り当てられない限り、Azure portal にアクセスする必要はありません。 ただし、制限付き管理者のロールを割り当てられている B2B コラボレーション ユーザーは portal にアクセスできます。 また、これらのいずれかの管理者ロールが割り当てられていないゲスト ユーザーがポータルにアクセスすると、ユーザーは、エクスペリエンスの特定の部分にアクセスできます。 ゲスト ユーザー ロールは、ディレクトリのアクセス許可の一部を持ちます。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
-はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
-ゲスト ユーザーの [Azure ポータル](https://portal.azure.com)へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
-1. **すべてのユーザー** グループをメンバーだけが含まれるように変更します。
-   ![UserType が [ゲスト] と等しくない [すべてのユーザー] グループを示すスクリーンショット](media/faq/modify-all-users-group.png)
-2. ゲスト ユーザーを含む動的グループを作成します。
-   ![新しい [すべてのゲスト ユーザー] グループを示すスクリーンショット](media/faq/group-with-guest-users.png)
-3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーをセットアップします。
-  
-   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+
+はい。 すべてのゲスト ユーザーと外部ユーザーの Azure portal へのアクセスをブロックする条件付きアクセス ポリシーを作成できます。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
+
+1. [Azure portal](https://portal.azure.com/) にセキュリティ管理者または条件付きアクセス管理者としてサインインします。
+2. Azure Portal で、 **[Azure Active Directory]** を選びます。 
+3. **[管理]** で、 **[セキュリティ]** を選択します。
+4. **[保護]** で、 **[条件付きアクセス]** を選択します。 **[新しいポリシー]** を選択します。
+5. **[新規]** ページの **[名前]** テキスト ボックスに、ポリシーの名前 (たとえば、"Block guests from accessing the portal" など) を入力します。
+6. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
+7. **[含める]** タブで、 **[ユーザーとグループの選択]** を選択し、 **[すべてのゲストおよび外部ユーザー (プレビュー)]** を選択します。
+9. **[完了]** を選択します。
+10. **[新規]** ページの **[割り当て]** セクションで、 **[クラウド アプリまたは操作]** を選択します。
+11. **[クラウド アプリまたは操作]** ページで、 **[アプリを選択]** を選択し、 **[選択]** を選択します。
+12. **[選択]** ページで **[Microsoft Azure Management]** を選択し、 **[選択]** を選択します。
+13. **[クラウド アプリまたは操作]** ページで、 **[完了]** を選択します。
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B コラボレーションは、Multi-Factor Authentication とコンシューマー電子メール アカウントをサポートしていますか。
 はい。 Azure AD B2B コラボレーションでは、Multi-Factor Authentication とコンシューマー電子メール アカウントのどちらもサポートされています。
@@ -73,9 +82,10 @@ B2B コラボレーション ユーザーは、制限付き管理者のロール
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Azure AD B2B コラボレーション ユーザーのパスワード リセットはサポートされていますか。
 Azure AD テナントがユーザーのホーム ディレクトリである場合、管理者は Azure portal から[ユーザーのパスワードをリセットする](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal)ことができます。 ただし、別の Azure AD ディレクトリまたは外部の ID プロバイダーによって管理されているアカウントでサインインしているゲスト ユーザーのパスワードを、直接リセットすることはできません。 パスワードをリセットできるのは、ゲスト ユーザーまたはユーザーのホーム ディレクトリの管理者だけです。 ゲスト ユーザーに対するパスワード リセットの動作の例をいくつか次に示します。
  
-* Microsoft アカウント (たとえば guestuser@live.com) でサインインしたゲスト ユーザーは、Microsoft アカウントのセルフサービスのパスワード リセット (SSPR) を使用して、自分のパスワードをリセットすることができます。 「[Microsoft アカウントのパスワードをリセットする方法](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)」をご覧ください。
+* Microsoft アカウント (たとえば guestuser@live.com) でサインインしたゲスト ユーザーは、Microsoft アカウントのセルフサービス パスワード リセット (SSPR) を使用して、自分のパスワードをリセットすることができます。 「[Microsoft アカウントのパスワードをリセットする方法](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)」をご覧ください。
 * Google アカウントまたはそれ以外の外部 ID プロバイダーでサインインしたゲスト ユーザーは、ID プロバイダーの SSPR 方法を使用して、自分のパスワードをリセットできます。 たとえば、Google アカウント guestuser@gmail.com のゲスト ユーザーは、「[パスワードを変更または再設定する](https://support.google.com/accounts/answer/41078)」の手順に従って自分のパスワードをリセットできます。
 * ID テナントが Just-In-Time (JIT) テナントまたは "バイラル" テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。
+
 * ゲスト ユーザーのホーム ディレクトリが Azure AD テナントの場合は、管理者がユーザーのパスワードをリセットできます。 たとえば、管理者がオンプレミスの Active Directory からユーザーを作成または同期し、UserType を Guest に設定したような場合です。 このユーザーは管理者のディレクトリに所属しているため、管理者は Azure portal からユーザーのパスワードをリセットできます。
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365 は、Azure AD B2B コラボレーションをオンラインでサポートしていますか。
@@ -91,7 +101,7 @@ Azure AD には、文字、パスワードの強度、およびアカウント �
 フェデレーション アカウントの場合、パスワード ポリシーは、オンプレミス テナントに適用されるポリシーとユーザーの Microsoft アカウント設定に依存します。
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>組織で、アプリケーションにテナント ユーザーとゲスト ユーザーに対して異なるエクスペリエンスを設定したいと考える場合があります。 これを行うための標準的なガイダンスはありますか。 ID プロバイダー要求の存在は、使用する正しいモデルですか。
-ゲスト ユーザーは、任意の ID プロバイダーを使用して認証できます。 詳細については、[B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページをご覧ください。 **UserType** プロパティを使用して、ユーザー エクスペリエンスを決定します。 **UserType 要求**は、現在トークンに含まれていません。 アプリケーションでは、Graph API を使用してディレクトリでユーザーのクエリを実行し、UserType を取得する必要があります。
+ゲスト ユーザーは、任意の ID プロバイダーを使用して認証できます。 詳細については、[B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページをご覧ください。 **UserType** プロパティを使用して、ユーザー エクスペリエンスを決定します。 **UserType 要求**は、現在トークンに含まれていません。 アプリケーションで Microsoft Graph API を使用して、ディレクトリでユーザーを照会して、UserType を取得する必要があります。
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>ソリューションを共有し、アイデアを提供するための B2B コラボレーション コミュニティにはどこからアクセスできますか。
 B2B コラボレーションを向上させるためのフィードバックは絶えず受け付けています。 ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関する意見を提供してください。 [マイクロソフト Tech コミュニティ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)のディスカッションにご参加ください。
@@ -111,7 +121,7 @@ B2B コラボレーションを向上させるためのフィードバックは�
 すべての Azure AD 統合型アプリケーションでは、Azure B2B ゲスト ユーザーをサポートできますが、ゲスト ユーザーを認証するにはテナントとして設定されたエンドポイントを使用する必要があります。 また、ゲスト ユーザーがアプリに対して認証を行うと発行される SAML トークン内の[要求をカスタマイズする](claims-mapping.md)ことも必要になる場合があります。 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>パートナーが Multi-Factor Authentication を使用していない場合に、B2B ゲスト ユーザーに Multi-Factor Authentication を強制できますか。
-はい。 詳細は、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」をご覧ください。
+はい。 詳細については、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。
 
 ### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>SharePoint では、外部ユーザーに対して "許可" または "拒否" リストを定義できます。 これを Azure で実行できますか。
 はい。 Azure AD B2B コラボレーションでは、許可リストと拒否リストをサポートしています。 
@@ -119,7 +129,7 @@ B2B コラボレーションを向上させるためのフィードバックは�
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Azure AD B2B を使用する必要があるライセンスは何ですか。
 組織で Azure AD B2B を使用する必要があるライセンスについては、「[Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス](licensing-guidance.md)」をご覧ください。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 

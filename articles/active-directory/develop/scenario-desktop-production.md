@@ -1,54 +1,50 @@
 ---
-title: Web API を呼び出すデスクトップ アプリ (運用環境への移行) - Microsoft ID プラットフォーム
-description: Web API を呼び出すデスクトップ アプリを構築する方法 (運用環境への移行) について説明します
+title: Web API を呼び出すデスクトップ アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca66a41f26c54bf04273682d14889a36b688c70
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080135"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80882881"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデスクトップ アプリ - 運用環境への移行
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出すデスクトップ アプリ:運用環境に移行する
 
-この記事では、アプリケーションをさらに改善し、運用環境に移行するための詳細を説明します。
+この記事では、Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について説明します。
 
-## <a name="handling-errors-in-desktop-applications"></a>デスクトップ アプリケーションでのエラー処理
+## <a name="handle-errors-in-desktop-applications"></a>デスクトップ アプリケーションでのエラー処理
 
-別のフローでは、(コード スニペットに示されているように) サイレント フローのエラーを処理する方法を説明しました。 また、対話が必要となるケース (増分同意と条件付きアクセス) があることも説明しました。
+別のフローでは、コード スニペットに示されているように、サイレント フローのエラーを処理する方法を説明しました。 また、増分同意や条件付きアクセスの場合などに、対話が必要となるケースがあることも説明しました。
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>複数のリソースでユーザーの同意を事前に取得する方法
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>複数のリソースでユーザーの同意を事前に取得する
 
 > [!NOTE]
-> 複数のリソースにおける同意の事前取得は、Microsoft ID プラットフォームでは機能しますが、Azure Active Directory (Azure AD) B2C では機能しません。 Azure AD B2C では、管理者の同意のみサポートされており、ユーザーの同意はサポートされていません。
+> 複数のリソースにおける同意の事前取得は、Microsoft ID プラットフォームでは機能しますが、Azure Active Directory (Azure AD) B2C では機能しません。 Azure AD B2C では、管理者による承認のみがサポートされており、ユーザーによる承認はサポートされていません。
 
-Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、複数のリソースのトークンを一度に取得することはできません。 そのため、`scopes` パラメーターには、1 つのリソースのスコープのみを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
+Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、複数のリソースのトークンを一度に取得することはできません。 `scopes` パラメーターには、1 つリソースのみのスコープを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
 
-たとえば、2 つのリソースがあり、それぞれに 2 つのスコープがある場合:
+たとえば、2 つのリソースがあり、それぞれに 2 つのスコープがあるとします。
 
-- `https://mytenant.onmicrosoft.com/customerapi` - `customer.read` と `customer.write` の 2 のスコープがあります
-- `https://mytenant.onmicrosoft.com/vendorapi` - `vendor.read` と `vendor.write` の 2 のスコープがあります
+- `https://mytenant.onmicrosoft.com/customerapi` のスコープは `customer.read` と `customer.write` です
+- `https://mytenant.onmicrosoft.com/vendorapi` のスコープは `vendor.read` と `vendor.write` です
 
-`extraScopesToConsent` パラメーターを持つ `.WithAdditionalPromptToConsent` 修飾子を使用する必要があります。
+この例では、`extraScopesToConsent` パラメーターを持つ `.WithAdditionalPromptToConsent` 修飾子を使用します。
 
 次に例を示します。
 
-```CSharp
+### <a name="in-msalnet"></a>MSAL.NET の場合
+
+```csharp
 string[] scopesForCustomerApi = new string[]
 {
   "https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -67,18 +63,48 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
+### <a name="in-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL の場合
+
+Objective-C:
+
+```objc
+NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                                @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
+
+NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                              @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
+interactiveParams.extraScopesToConsent = scopesForVendorApi;
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
+```
+
+Swift:
+
+```swift
+let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                            "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
+
+let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                          "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
+interactiveParameters.extraScopesToConsent = scopesForVendorApi
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
+```
+
 この呼び出しでは、最初の Web API のアクセス トークンを取得します。
 
-2 番目の Web API を呼び出す必要がある場合は、以下のように呼び出せます。
+2 番目の Web API を呼び出す必要がある場合は、`AcquireTokenSilent` API を呼び出します。
 
-```CSharp
+```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Microsoft 個人アカウントでは、アプリを実行するたびに再同意が必要
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Microsoft 個人アカウントではアプリを実行するたびに再同意が必要
 
-Microsoft 個人アカウントのユーザーの場合、承認のためのネイティブ クライアント (デスクトップ/モバイル アプリ) の呼び出しごとに同意のプロンプトが再表示されますが、これは意図的な動作です。 ネイティブ クライアントの ID は本質的に安全ではありません (これは、Microsoft ID プラットフォームとシークレットを交換して身元を証明する機密クライアント アプリケーションとは対照的です)。 Microsoft ID プラットフォームは、アプリケーションが承認されるたびにユーザーに同意を求めることで、コンシューマー サービスにおけるこのような非安全性を軽減することを選択しました。
+Microsoft 個人アカウントのユーザーの場合、承認のためのネイティブ クライアント (デスクトップまたはモバイル アプリ) の呼び出しごとに同意のプロンプトが再表示されますが、これは意図的な動作です。 ネイティブ クライアント ID は本質的に安全ではありません。これは、機密性の高いクライアント アプリケーション ID とは異なります。 機密性の高いクライアント アプリケーションは、その ID を証明するために、Microsoft ID プラットフォームとシークレットを交換します。 Microsoft ID プラットフォームは、アプリケーションが承認されるたびにユーザーに同意を求めることで、コンシューマー サービスにおけるこのような非安全性を軽減することを選択しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

@@ -1,42 +1,33 @@
 ---
-title: Windows Server 向け Azure Hybrid Benefit | Microsoft Docs
+title: Windows Server 向け Azure Hybrid Benefit
 description: Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
-author: xujing
-manager: jeconnoc
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
+author: xujing-ms
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
-ms.author: xujing-ms
-ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.author: xujing
+ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570370"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869562"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
 
-> [!Important]
-> 各 2 プロセッサ ライセンスまたは 16 コア ライセンスの各セットでは、最大 8 コアのインスタンスを 2 つ、または最大 16 コアのインスタンスを 1 つ利用できます。 Standard Edition のハイブリッド特典ライセンスは、オンプレミスまたは Azure 内のどちらかで 1 度のみ使用できます。 Datacenter Edition エディションの特典は、オンプレミスと Azure 内の両方で同時に使用することができます。
->
+各 2 プロセッサ ライセンスまたは 16 コア ライセンスの各セットでは、最大 8 コアのインスタンスを 2 つ、または最大 16 コアのインスタンスを 1 つ利用できます。 Standard Edition のハイブリッド特典ライセンスは、オンプレミスまたは Azure 内のどちらかで 1 度のみ使用できます。 Datacenter Edition エディションの特典は、オンプレミスと Azure 内の両方で同時に使用することができます。
 
-> [!Important]
-> SQL Server やサード パーティ製マーケットプレース ソフトウェアなどの追加のソフトウェアを搭載した VM を含め、Windows Server OS を実行するすべてのリージョンの任意の VM で Windows Server 向け Azure ハイブリッド特典の使用がサポートされるようになりました。 
->
+SQL Server やサード パーティ製マーケットプレース ソフトウェアなどの追加のソフトウェアを搭載した VM を含め、Windows Server OS を実行するすべてのリージョンの任意の VM で Windows Server 向け Azure ハイブリッド特典の使用がサポートされるようになりました。 
 
-> [!NOTE]
-> クラシック VM では、オンプレミスのカスタム イメージからの新規 VM のデプロイのみがサポートされています。 この記事でサポートされる機能を利用するには、最初にクラシック VM を Resource Manager モデルに移行する必要があります。
->
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+## <a name="classic-vms"></a>クラシック VM
+
+クラシック VM では、オンプレミスのカスタム イメージからの新規 VM のデプロイのみがサポートされています。 この記事でサポートされる機能を利用するには、最初にクラシック VM を Resource Manager モデルに移行する必要があります。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+ 
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit の使用方法
 Azure Hybrid Benefit で Windows 仮想マシンを使用する方法はいくつかあります。
@@ -196,10 +187,10 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 [仮想マシン スケール セットの変更](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)方法の詳細を確認し、スケール セットの更新方法をさらに調べることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure ハイブリッド特典でコストを削減する方法](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について詳しく読みます
 - [Azure ハイブリッド特典についてよく寄せられる質問](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)について詳しく読みます
 - [Windows Server 向け Azure ハイブリッド特典のライセンスの詳しいガイダンス](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)を確認します。
 - [Windows Server 向け Azure ハイブリッド特典と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を確認します
 - [マルチテナント ホスティング権限を使用した Azure 上の Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) について確認します
-- [Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を確認します
+- [Resource Manager テンプレートの使用方法](../../azure-resource-manager/management/overview.md)の詳細を確認します

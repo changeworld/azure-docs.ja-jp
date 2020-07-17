@@ -1,6 +1,6 @@
 ---
 title: 接続済みファクトリ ソリューションの FAQ - Azure | Microsoft Docs
-description: 接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
+description: この記事では、接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問に回答します。 GitHub リポジトリへのリンクも含まれています。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904755"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792379"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -76,7 +76,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 1. アクティブなコンテナーを確認するには、`docker ps` を実行します。
 1. すべてのシミュレーション コンテナーを停止するには、`./stopsimulation` を実行します。
 1. すべてのシミュレーション コンテナーを開始するには、次のようにします。
-    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 例: 
+    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 次に例を示します。
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -111,7 +111,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) または [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使うと、ソリューションが使っている IoT ハブに、どのデバイスが登録されているかを確認できます。 Device Explorer を使うには、デプロイ環境の IoT ハブ用の接続文字列が必要になります。 Azure CLI 向け IoT 拡張機能を使うには、IoT Hub の名前が必要です。
+[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) または [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使うと、ソリューションが使っている IoT ハブに、どのデバイスが登録されているかを確認できます。 Device Explorer を使うには、デプロイ環境の IoT ハブ用の接続文字列が必要になります。 Azure CLI 向け IoT 拡張機能を使うには、IoT Hub の名前が必要です。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>シミュレーション コンポーネントからログ データを取得するにはどうすればいいですか
 
@@ -125,7 +125,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>シミュレーションがクラウドにデータを送信していることを確認するにはどうすればいいですか
 
-[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) または [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
 
 発行元デバイスの 1 つから送信されるデータを検査します。
 
@@ -146,7 +146,7 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 接続済みファクトリの GitHub リポジトリにある `build.ps1` スクリプトを使ってデプロイする場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
 
-デプロイ後に、ソリューション アクセラレータに Azure Maps アカウント キーを追加することもできます。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリケーション設定]** セクションを探します。 **MapApiQueryKey** を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
+デプロイ後に、ソリューション アクセラレータに Azure Maps アカウント キーを追加することもできます。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、 **[アプリケーション設定]** セクションを探します。 **MapApiQueryKey** を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 設定を保存した後、 **[概要]** に移動して、App Service を再起動します。
 
 ### <a name="how-do-i-create-an-azure-maps-account"></a>Azure Maps アカウントを作成するにはどうすればいいですか
 
@@ -190,7 +190,7 @@ OPC UA 非対応デバイスから接続済みファクトリに利用統計情�
 
 1. 接続済みファクトリ App Service を再起動します。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 

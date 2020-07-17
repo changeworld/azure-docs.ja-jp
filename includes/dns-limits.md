@@ -1,20 +1,34 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: jroth
-ms.openlocfilehash: cab85410ec0cc0d63b27cd03daf6a398daeb4f68
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 2/14/2020
+ms.author: rohink
+ms.openlocfilehash: 3fbbb9d491eef202309c9e64f9a5a839a5d4516d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149951"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335066"
 ---
-| Resource | 既定の制限 |
-| --- | --- |
-| サブスクリプションあたりのゾーン数 |100 <sup>1</sup> |
-| ゾーンあたりのレコード セット数 |5,000 <sup>1</sup> |
-| レコード セットあたりのレコード数 |20 |
+**パブリック DNS ゾーン**
 
-<sup>1</sup>これらの制限値を引き上げる必要がある場合は、Azure サポートにお問い合わせください。
+| リソース | 制限 |
+| --- | --- |
+| サブスクリプションあたりのパブリック DNS ゾーン数 |250 <sup>1</sup> |
+| パブリック DNS ゾーンあたりのレコード セット数 |10,000 <sup>1</sup> |
+| パブリック DNS ゾーン内のレコード セットあたりのレコード数 |20 |
+| 1 つの Azure リソースのエイリアス レコードの数 |20|
+| サブスクリプションあたりのプライベート DNS ゾーン数 |1000|
+| プライベート DNS ゾーンあたりのレコード セット数 |25000|
+| プライベート DNS ゾーン用のレコード セットあたりのレコード数 |20|
+| プライベート DNS ゾーンあたりの仮想ネットワーク リンク数 |1000|
+| 自動登録が有効なプライベート DNS ゾーンあたりの仮想ネットワーク リンク数 |100|
+| 自動登録が有効な状態で仮想ネットワークがリンクできるプライベート DNS ゾーンの数 |1|
+| 仮想ネットワークがリンクできるプライベート DNS ゾーンの数 |1000|
+| 1 秒あたりに仮想マシンから Azure DNS リゾルバーに送信される DNS クエリの数 |500 <sup>2</sup> |
+| 仮想マシンごとのキューに登録された (保留中の応答) DNS クエリの最大数 |200 <sup>2</sup> |
+
+<sup>1</sup>これらの制限値を引き上げる必要がある場合は、Azure サポートにお問い合せください。
+
+<sup>2</sup>これらの制限は、仮想ネットワーク レベルではなく、個々の仮想マシンごとに適用されます。 これらの制限を超える DNS クエリは削除されます。

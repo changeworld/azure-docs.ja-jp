@@ -2,35 +2,35 @@
 title: データ サイエンス タスクを実行する - Team Data Science Process
 description: データ サイエンティストがバージョン コントロールされた追跡可能で協調的な方法でデータ サイエンス プロジェクトを実行する方法。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731463"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477155"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
-通常のデータ サイエンス タスクには、データの探索、モデリング、およびデプロイが含まれます。 この記事では、**インタラクティブなデータ探索、分析、レポート作成 (IDEAR)** と**自動モデリングおよびレポート作成 (AMAR)** のユーティリティを使用して、インタラクティブなデータ探索、データ分析、レポート作成、およびモデル作成などの複数のデータ サイエンス タスクを完了する方法を示します。 また、次のようなさまざまなツールキットやデータ プラットフォームを使用して運用環境にモデルをデプロイするための選択肢を示します。
+通常のデータ サイエンス タスクには、データの探索、モデリング、およびデプロイが含まれます。 この記事では、**インタラクティブなデータ探索、分析、レポート作成 (IDEAR)** と**自動モデリングおよびレポート作成 (AMAR)** のユーティリティを使用して、インタラクティブなデータ探索、データ分析、レポート作成、およびモデル作成などの複数のデータ サイエンス タスクを完了する方法を示します。 運用環境にモデルをデプロイするためのオプションには、次のものがあります。
 
-- [Azure Machine Learning](../service/index.yml)
+- [Azure Machine Learning](../index.yml)
 - [ML サービスを使用した SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1.<a name='DataQualityReportUtility-1'></a> 探索 
+## <a name="1--exploration"></a>1.<a name='DataQualityReportUtility-1'></a> 探索 
 
 データ サイエンティストは、Python で利用可能なライブラリとパッケージ (matplotlib など) の使用や、R (ggplot や lattice など) の使用など、さまざまな方法で探索およびレポート作成を実行できます。 データ サイエンティストは、特定のシナリオでのデータ探索のニーズに合うように、これらのコードをカスタマイズできます。 構造化データを処理する場合のニーズは、テキストやイメージなどの非構造化データの場合とは異なります。 
 
-Azure Machine Learning サービスなどの製品では、機能作成を含め、データ論争や探索のための[高度なデータ準備](../service/how-to-transform-data.md)も提供しています。 ユーザーは、最もニーズに合うツール、ライブラリ、およびパッケージを決定する必要があります。 
+Azure Machine Learning などの製品では、機能作成を含め、データ論争や探索のための[高度なデータ準備](../how-to-create-register-datasets.md)も提供しています。 ユーザーは、最もニーズに合うツール、ライブラリ、およびパッケージを決定する必要があります。 
 
 このフェーズの最後には、データ探索レポートが完成します。 レポートでは、モデリングに使用されるデータを総括したビューと、モデリングの手順を進めるうえでそのデータが適しているかどうかの査定を提供します。 以降のセクションで説明する半自動探索、モデリング、レポート作成のための Team Data Science Process (TDSP) ユーティリティでは、標準的なデータ探索やモデリング レポートも提供します。 
 
@@ -41,7 +41,7 @@ Azure Machine Learning サービスなどの製品では、機能作成を含め
 現時点では、ツールはメモリ内のデータ フレームでのみ機能します。 調査するデータ セットのパラメーターを指定するには YAML ファイルが必要です。 詳細については、[TDSP データ サイエンス ユーティリティの IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils) に関するページをご覧ください。
 
 
-## 2.<a name='ModelingUtility-2'></a> モデリング
+## <a name="2--modeling"></a>2.<a name='ModelingUtility-2'></a> モデリング
 
 さまざまな言語でモデルをトレーニングするための、多数のツールキットとパッケージがあります。 精度と待機時間に関するパフォーマンスの考慮事項が、対応するビジネスのユース ケースや生産シナリオを満たしていれば、データ サイエンティストがそれらのうち自分に適したものを自由に使用できる必要があります。
 
@@ -73,12 +73,12 @@ YAML ファイルを使用して以下を指定します。
 ### <a name="model-management"></a>モデル管理
 複数のモデルが構築されたら、一般的には、モデルを登録して管理するためのシステムが必要になります。 通常は、スクリプトまたは API とバックエンド データベースまたはバージョン管理システムを組み合わせる必要があります。 これらの管理タスクで検討できるいくつかの選択肢は、次のとおりです。
 
-1. [Azure Machine Learning - モデル管理サービス](../service/index.yml)
-2. [MIT からの ModelDB](https://mitdbg.github.io/modeldb/) 
+1. [Azure Machine Learning - モデル管理サービス](../index.yml)
+2. [MIT からの ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
 3. [モデル管理システムとしての SQL サーバー](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 手順 3.<a name='Deployment-3'></a> デプロイ
+## <a name="3--deployment"></a>3.<a name='Deployment-3'></a> デプロイ
 
 運用環境へのデプロイによって、モデルがビジネスのアクティブな役割を担うことが可能になります。 デプロイされたモデルからの予測は、ビジネス上の決定に使用できます。
 
@@ -86,7 +86,7 @@ YAML ファイルを使用して以下を指定します。
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 
-- [Azure Machine Learning サービスでのモデルのデプロイ](../service/how-to-deploy-and-where.md)
+- [Azure Machine Learning でのモデルのデプロイ](../how-to-deploy-and-where.md)
 - [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -98,7 +98,7 @@ YAML ファイルを使用して以下を指定します。
 **特定のシナリオ**のプロセスの全手順を示したチュートリアルで、他の例も入手できます。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。
 
 > [!NOTE]
-> Azure Machine Learning Studio を使用したデプロイについては、「[Azure Machine Learning Web サービスをデプロイする](../studio/publish-a-machine-learning-web-service.md)」をご覧ください。
+> Azure Machine Learning Studio を使用したデプロイについては、「[Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」をご覧ください。
 >
 >
 
@@ -106,7 +106,7 @@ YAML ファイルを使用して以下を指定します。
 複数のモデルが運用環境にある場合、[A/B テスト](https://en.wikipedia.org/wiki/A/B_testing)を実行してモデルのパフォーマンスを比較することが役立つ可能性があります。 
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Track progress of data science projects (データ サイエンス プロジェクトの進行状況の追跡)](track-progress.md)」に、データ サイエンティストがデータ サイエンス プロジェクトの進行状況を追跡できる方法が示されています。
 

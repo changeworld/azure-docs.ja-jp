@@ -1,19 +1,15 @@
 ---
-title: チュートリアル - 更新されたコンテナー イメージをリージョンの Azure アプリのデプロイにプッシュする
-description: 変更された Docker イメージを Geo レプリケートされた Azure コンテナー レジストリにプッシュした後、それらの変更が複数のリージョンで実行されている Web アプリに自動的にデプロイされたことを確認します。 3 部構成のシリーズの第 3 部。
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: チュートリアル - geo レプリケートされているレジストリに更新内容をプッシュする
+description: 更新された Docker イメージを geo レプリケーション Azure コンテナー レジストリにプッシュした後、それらの変更が複数のリージョンで実行されている Web アプリに自動的にデプロイされたことを確認します。 3 部構成のシリーズの第 3 部。
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256623"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74454695"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>チュートリアル:更新されたコンテナー イメージをリージョンの Web アプリのデプロイ用に geo レプリケーション コンテナー レジストリにプッシュする
 
@@ -103,7 +99,7 @@ v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186e
 
 イメージがレプリケートされている間、Azure Container Registry Webhook がトリガーされていることを確認できます。
 
-前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、**[SERVICES] \(サービス)** の **[Webhook]** を選択します。
+前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、 **[SERVICES] \(サービス)** の **[Webhook]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ Webhook][tutorial-portal-01]
 
@@ -129,7 +125,7 @@ Web ブラウザーで両方のリージョン Web アプリ デプロイに移�
 
 1 つの`docker push`で、両方地域で Web アプリの展開で実行されている web アプリケーションが自動的に更新されました。 Azure Container Registry は、各デプロイの一番近くに位置するデポジトリからコンテナー イメージを提供します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Web アプリケーション コンテナーの新しいバージョンを更新し、それを Geo レプリケートされたレジストリにプッシュしました。 Azure Container Registry の Webhook が Web Apps for Containers に更新を通知し、それが一番近いレジストリ レプリカからのローカル プルをトリガーしました。
 

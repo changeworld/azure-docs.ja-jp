@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620278"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73747649"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -51,11 +51,11 @@ SignalR サービスとアプリ サーバーを各リージョンに作成し�
 
 ### <a name="through-config"></a>config による方法
 
-環境変数/アプリの設定/web.cofig から `Azure:SignalR:ConnectionString` という名前の config エントリを通じて SignalR Service の接続文字列を設定する方法をご存知である必要があります。
+環境変数/アプリの設定/web.cofig から `Azure:SignalR:ConnectionString` という名前の config エントリで SignalR サービスの接続文字列を設定する方法をご存知のはずです。
 複数のエンドポイントがある場合は、複数の config エントリでそれらを設定してください。それぞれ次の形式で設定します。
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
 ここで、`<name>` はエンドポイントの名前であり、`<role>` はそのロール (プライマリまたはセカンダリ) です。
@@ -63,9 +63,9 @@ Azure:SignalR:Connection:<name>:<role>
 
 ### <a name="through-code"></a>コードによる方法
 
-どこか他の場所に接続文字列を保存したい場合は、コードからそれを読み取って、`AddAzureSignalR()` (ASP.NET Core の場合) または `MapAzureSignalR()` (ASP.NET の場合) を呼び出す際にパラメーターとして使用することもできます。
+どこか他の場所に接続文字列を保存したい場合は、コードからそれらを読み取って、`AddAzureSignalR()` (ASP.NET Core の場合) または `MapAzureSignalR()` (ASP.NET の場合) を呼び出す際にパラメーターとして使用することもできます。
 
-以下は、そのサンプル コードです。
+次にサンプル コードを示します。
 
 ASP.NET Core:
 
@@ -87,6 +87,11 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
         new ServiceEndpoint("<connection_string2>", EndpointType.Secondary, "region2"),
     };
 ```
+
+複数のプライマリまたはセカンダリ インスタンスを構成できます。 プライマリ インスタンスまたはセカンダリ インスタンスが複数ある場合、ネゴシエートは次の順序でエンドポイントを返します。
+
+1. 少なくとも 1 つのプライマリ インスタンスがオンラインになっている場合は、ランダムなオンラインのプライマリ インスタンスを返します。
+2. すべてのプライマリ インスタンスがダウンしている場合は、ランダムなオンラインのセカンダリ インスタンスを返します。
 
 ## <a name="failover-sequence-and-best-practice"></a>フェールオーバーのシーケンスとベスト プラクティス
 
@@ -126,7 +131,7 @@ SignalR サービスは両方のパターンに対応できます。主な違い
 また、SignalR 接続 (長時間接続) の性質上、障害とフェールオーバーが発生すると、クライアントでは接続の切断が生じます。
 そのようなケースはクライアント側で処理して、エンド ユーザーからは見えないようにする必要があります。 たとえば、接続が閉じられた後で再接続を行うことが考えられます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、SignalR サービスに回復性を持たせるためのアプリケーションの構成方法について説明しました。 SignalR サービスにおける接続のルーティングとサーバー/クライアント接続の詳細については、SignalR サービスの内部について説明した[こちらの記事](signalr-concept-internals.md)を参照してください。
 

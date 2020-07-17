@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric で一般的なシナリオを診断する | Microsoft Docs
-description: Azure Service Fabric で一般的なシナリオのトラブルシューティングを行う方法について説明します
-services: service-fabric
-documentationcenter: .net
-author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric 診断の一般的なシナリオ
+description: Azure Service Fabric アプリケーション内の一般的な監視と診断のシナリオのトラブルシューティングについて説明します。
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669284"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697688"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
@@ -32,7 +21,7 @@ ms.locfileid: "58669284"
 この記事のソリューションでは、次のツールを使用します。 これらを設定および構成しておくことをお勧めします。
 
 * [Service Fabric での Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
-* [クラスターでの Azure 診断の有効化](service-fabric-diagnostics-event-aggregation-wad.md)
+* [クラスターでの Azure Diagnostics の有効化](service-fabric-diagnostics-event-aggregation-wad.md)
 * [Log Analytics ワークスペースを設定する](service-fabric-diagnostics-oms-setup.md)
 * [パフォーマンス カウンターを追跡するための Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)
 
@@ -56,7 +45,7 @@ ms.locfileid: "58669284"
 1. 同じ Application Insights リソースで、例外ではなく "要求" でフィルターを行って、実行されたすべての要求を表示できます。
 2. Service Fabric Application Insights SDK を使用している場合、互いに接続されたサービスの視覚表現と、成功/失敗した要求の数を確認できます。 左側の [アプリケーション マップ] をクリックします。
 
-    ![AI のアプリ マップ ブレード](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI のアプリ マップ](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI の [アプリケーション マップ] ブレード](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI の [アプリケーション マップ]](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     アプリケーション マップの詳細については、[アプリケーション マップのドキュメント](../azure-monitor/app/app-map.md)をご覧ください。
 
@@ -141,9 +130,10 @@ ms.locfileid: "58669284"
 
 [Reliable Services](service-fabric-reliable-serviceremoting-diagnostics.md) と [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) に関するパフォーマンス カウンターの完全な一覧を確認するには、それぞれのリンクをご利用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [AI のアラートを設定して](../azure-monitor/app/alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
+* [一般的なコード パッケージのアクティブ化エラーを参照する](./service-fabric-diagnostics-code-package-errors.md)
+* [AI のアラートを設定して](/azure/azure-monitor/platform/alerts-log)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
 * 検出と診断に役立つ Azure Monitor ログの[アラート](../log-analytics/log-analytics-alerts.md)についてさらに学習します。
 * オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/platform/gateway.md)」を参照してください

@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 335a056a34412a7ed148613bfff59ecb30053e09
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190326"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76288933"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>メインフレーム コンピューティングを Azure に移行する
 
@@ -57,11 +57,11 @@ Azure Virtual Machines では、さまざまなサイズと種類のコンピュ
 
 現在、Azure Virtual Machines で提供されているサイズの範囲は 1 - 128 vCPU までです。 仮想マシン (VM) の種類は、特定のワークロードに最適化されています。 たとえば、次の一覧は、VM の種類 (この記事の時点) とその推奨される用途を示したものです。
 
-| Size     | 種類と説明                                                                 |
+| サイズ     | 種類と説明                                                                 |
 |----------|--------------------------------------------------------------------------------------|
 | D シリーズ | 64 個の vCPU と最大 3.5 GHz のクロック速度で、一般的な用途                           |
 | E シリーズ | 最大 64 個の vCPU によるメモリ最適化                                                 |
-| F シリーズ | 最大 64 個の vCPU と 3.7 GHz のクロック速度によるコンピューティング最適化                       |
+| F シリーズ | 最大 64 個の vCPUと 3.7 GHz のクロック速度によるコンピューティング最適化                       |
 | H シリーズ | ハイ パフォーマンス コンピューティング (HPC) アプリケーション用に最適化                          |
 | L シリーズ | NoSQL などのデータベースに支えられた高スループット アプリケーション用のストレージ最適化 |
 | M シリーズ | 最大 128 個の vCPU を備えた、最大のコンピューティングおよびメモリ最適化 VM                        |
@@ -112,7 +112,7 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 
 ![ディザスター リカバリーをサポートする高可用性のデプロイ](media/mainframe-compute-dr.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [メインフレーム移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Azure 仮想マシンでのメインフレーム リホスト](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
@@ -134,6 +134,5 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 
 ### <a name="more-migration-resources"></a>その他の移行リソース
 
-- [プラットフォーム近代化のための提携:Azure 上の IBM Db2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Azure 仮想データ センターのリフト アンド シフト ガイド](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

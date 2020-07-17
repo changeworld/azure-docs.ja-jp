@@ -1,19 +1,18 @@
 ---
 title: Azure Active Directory を使用して Microsoft AppSource と Azure Marketplace のリストを有効にする | Azure
 description: アプリとサービスの公開元のために、Azure Marketplace と AppSource で Azure Active Directory を使用して登録リストの種類を有効にします。
-services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: pabutler
 ms.service: marketplace
-ms.topic: article
-ms.date: 09/12/2018
-ms.author: qianw211
-ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938084"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160615"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
 
@@ -34,19 +33,19 @@ AppSource と Azure Marketplace 用のさまざまな[オプションとオフ�
 
 | **オファリング タイプ**    | **Azure AD の SSO が必要か?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | 連絡する | 試用版 | 体験版 | トランザクション |
-| 仮想マシン | 該当なし | いいえ  | いいえ  | いいえ  |
+|  | お問い合わせ | 試用版 | 体験版 | トランザクション |
+| 仮想マシン | 該当なし | いいえ | いいえ | いいえ |
 | Azure アプリ (ソリューション テンプレート)  | 該当なし | 該当なし | 該当なし | 該当なし |
-| マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ  |
-| SaaS  | いいえ  | 可能  | はい | はい |
-| Containers  | 該当なし | 該当なし | 該当なし | いいえ  |
-| コンサルティング サービス  | いいえ  | 該当なし | 該当なし | 該当なし |
+| マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ |
+| SaaS  | いいえ | はい | はい | はい |
+| Containers  | 該当なし | 該当なし | 該当なし | いいえ |
+| コンサルティング サービス  | いいえ | 該当なし | 該当なし | 該当なし |
 
 SaaS 技術要件に関する詳細については、「[SaaS アプリケーションのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)」を参照してください。
 
 ## <a name="azure-ad-integration"></a>Azure AD の統合
 
-- 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory]( https://aka.ms/aaddev) に関する記事をご覧ください。
+- 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory]( https://docs.microsoft.com/azure/active-directory/develop/) に関する記事をご覧ください。
 - Azure AD シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」をご覧ください。
 
 ## <a name="enable-a-trial-listing"></a>試用版の一覧を有効にする
@@ -86,7 +85,12 @@ Azure AD を使用して、次のアクションの 1 つをサポートしま�
 - 顧客ごとの "体験版" を開発する。
 - SSO を使用するマルチテナント サンプル デモ アプリを構築する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Marketplace に登録](https://azuremarketplace.microsoft.com/sell)したことを確認します。
-- [Cloud パートナー ポータルにサインイン](https://cloudpartner.azure.com/)して、オファーを作成または完成する。
+まだ行っていない場合は、 
+
+- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
+
+パートナー センターに登録するには、新しいプランの作成を開始するか、既存のものを操作します。
+
+- [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)して、プランを作成するか完成させます。

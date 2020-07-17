@@ -5,29 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151067"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74903108"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
-カスタム IPsec/IKE ポリシーは、Azure の **VpnGw1、VpnGw2、VpnGw3、Standard** および **HighPerformance** VPN ゲートウェイでサポートされています。 **Basic** SKU はサポート**されていません**。
+カスタム IPsec/IKE ポリシーは、Basic SKU を除くすべての Azure SKU でサポートされています。
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>1 つの接続に対してポリシーはいくつ指定できますか。
 ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
 
-### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>接続に対してポリシーを部分的に指定することはできますか  (IKE アルゴリズムのみ指定し、IPsec は指定しないなど)。
+### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>接続に対してポリシーを部分的に指定することはできますか (IKE アルゴリズムのみ指定し、IPsec は指定しないなど)。
 いいえ。IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>カスタム ポリシーでサポートされるアルゴリズムとキーの強度を教えてください。
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。 各フィールドについて、オプションを 1 つ選択する必要があります。
 
-| **IPsec/IKEv2**  | **オプション**                                                                   |
+| **IPsec/IKEv2**  | **[オプション]**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                             |
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                     |
@@ -42,7 +42,7 @@ ms.locfileid: "66151067"
 > [!IMPORTANT]
 > 1. DHGroup2048 および PFS2048 は、IKE および IPsec PFS の Diffie-Hellman グループ **14** と同じです。 完全なマッピングについては、[Diffie-Hellman グループ](#DH)に関するセクションを参照してください。
 > 2. GCMAES アルゴリズムでは、IPSec 暗号化と整合性の両方に同じ GCMAES アルゴリズムとキーの長さを指定する必要があります。
-> 3. Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます。
+> 3. Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます
 > 4. QM SA の有効期間は省略可能なパラメーターです。 指定されていない場合は、既定値の 27,000 秒 (7.5 時間) および 102,400,000 キロバイト (102 GB) が使用されます。
 > 5. UsePolicyBasedTrafficSelector は接続に関する省略可能なパラメーターです。 "UsePolicyBasedTrafficSelectors" については、次の FAQ 項目を参照してください。
 
@@ -67,7 +67,7 @@ SA の有効期間は、ローカルの指定のみとなります。一致し�
 
 詳細については、[複数のオンプレミスのポリシーベース VPN デバイスへの接続](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関する記事を参照してください。
 
-### <a name ="DH"></a>どの Diffie-Hellman グループがサポートされていますか。
+### <a name="which-diffie-hellman-groups-are-supported"></a><a name ="DH"></a>どの Diffie-Hellman グループがサポートされていますか。
 次の表に、IKE (DHGroup) と IPsec (PFSGroup) でサポートされている Diffie-Hellman グループを示します。
 
 | **Diffie-Hellman グループ**  | **DHGroup**              | **PFSGroup** | **キーの長さ** |
@@ -102,6 +102,18 @@ SA の有効期間は、ローカルの指定のみとなります。一致し�
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>ExpressRoute 接続でカスタム IPsec/IKE ポリシーは機能しますか。
 いいえ。 IPsec/IKE ポリシーは、Azure VPN ゲートウェイを介した VNet 間接続と S2S VPN 接続でのみ機能します。
+
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>プロトコルの種類 IKEv1 または IKEv2 で接続を作成するにはどうすればよいですか?
+IKEv1 接続は、Basic SKU を除く、VPN の種類が RouteBased のすべての SKU で作成できます。 接続の作成時に、接続プロトコルの種類として IKEv1 または IKEv2 を指定できます。 接続プロトコルの種類を指定しない場合は、IKEv2 が既定のオプションとして使用されます (該当する場合)。 詳細については、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?)のドキュメントを参照してください。 SKU の種類と IKEv1 または IKEv2 のサポートについては、[ポリシーベースの VPN デバイスへのゲートウェイの接続](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
+
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>IKEv1 と IKEv2 の接続間での転送は許可されていますか?
+はい。 IKEv1 と IKEv2 の接続間での転送はサポートされています。
+
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>VPN の種類が RouteBased の Basic SKU で IKEv1 のサイト間接続を利用できますか?
+いいえ。 Basic SKU は、これをサポートしていません。
+
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>接続の作成後に接続プロトコルの種類を変更できますか (IKEv1 から IKEv2 またはその逆)?
+いいえ。 接続が作成されたら、IKEv1 または IKEv2 プロトコルを変更することはできません。 削除し、必要なプロトコルの種類を使用して新しい接続を作成し直す必要があります。
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>IPsec の詳細な構成情報はどこで入手できますか。
 [S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーの構成](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページを参照してください

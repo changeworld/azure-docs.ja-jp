@@ -3,23 +3,23 @@ title: Azure CDN でのファイル圧縮によるパフォーマンスの向上
 description: Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: magattus
-ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096454"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81253766"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -56,7 +56,7 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
     ![CDN 圧縮の選択](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     圧縮のページが開きます。
-3. 圧縮を有効にするには、**[オン]** を選択します。
+3. 圧縮を有効にするには、 **[オン]** を選択します。
 
     ![CDN のファイル圧縮のオプション](./media/cdn-file-compression/cdn-compress-standard.png)
 4. 既定の MIME の種類を使用するか、MIME の種類を追加または削除して一覧を変更します。
@@ -69,19 +69,19 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
    > 現在、MIME の種類の既定一覧を変更することは、Microsoft の Azure CDN Standard でサポートされていません。
    > 
 
-5. 変更後、**[保存]** を選択します。
+5. 変更後、 **[保存]** を選択します。
 
 ### <a name="premium-cdn-profiles"></a>Premium CDN プロファイル
 > [!NOTE]
 > このセクションは、**Azure CDN Premium from Verizon** プロファイルだけに適用されます。
 > 
 
-1. CDN プロファイルのページで、**[管理]** を選択します。
+1. CDN プロファイルのページで、 **[管理]** を選択します。
 
     ![CDN の管理の選択](./media/cdn-file-compression/cdn-manage-btn.png)
 
     CDN 管理ポータルが開きます。
-2. **[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。 **[圧縮]** を選択します。
+2. **[HTTP ラージ]** タブ、 **[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。 **[圧縮]** を選択します。
 
     ![CDN 圧縮の選択](./media/cdn-file-compression/cdn-compress-select.png)
 
@@ -94,7 +94,7 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
    > 圧縮形式に圧縮を適用することは可能ですが、推奨されません。 たとえば、ZIP、MP3、MP4、JPG などの形式です。
    > 
 
-4. 変更後、**[更新]** を選択します。
+4. 変更後、 **[更新]** を選択します。
 
 ## <a name="compression-rules"></a>圧縮のルール
 
@@ -139,22 +139,22 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 次の表に、すべてのシナリオでの Azure CDN 圧縮動作を示します。
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>圧縮が無効であるか、ファイルの圧縮が実行不可能
-| クライアントから要求された形式 (Accept-Encoding ヘッダー経由) | キャッシュ ファイルの形式 | クライアントへの CDN の応答 | メモ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| クライアントから要求された形式 (Accept-Encoding ヘッダー経由) | キャッシュ ファイルの形式 | クライアントへの CDN の応答 | 注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
-| 圧縮 |圧縮 |圧縮 | |
-| 圧縮 |非圧縮 |非圧縮 | |
-| 圧縮 |キャッシュなし |圧縮または非圧縮 |配信元の応答に応じて、CDN が圧縮を実行するかどうかが決まります。 |
-| 非圧縮 |圧縮 |非圧縮 | |
+| Compressed |Compressed |Compressed | |
+| Compressed |非圧縮 |非圧縮 | |
+| Compressed |キャッシュなし |圧縮または非圧縮 |配信元の応答に応じて、CDN が圧縮を実行するかどうかが決まります。 |
+| 非圧縮 |Compressed |非圧縮 | |
 | 非圧縮 |非圧縮 |非圧縮 | |
 | 非圧縮 |キャッシュなし |非圧縮 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>圧縮が有効でファイルの圧縮が実行可能
-| クライアントから要求された形式 (Accept-Encoding ヘッダー経由) | キャッシュ ファイルの形式 | クライアントへの CDN の応答 | メモ |
+| クライアントから要求された形式 (Accept-Encoding ヘッダー経由) | キャッシュ ファイルの形式 | クライアントへの CDN の応答 | Notes |
 | --- | --- | --- | --- |
-| 圧縮 |圧縮 |圧縮 |CDN が、サポートされている形式間のトランスコードを実行します。 |
-| 圧縮 |非圧縮 |圧縮 |CDN が圧縮を実行します。 |
-| 圧縮 |キャッシュなし |圧縮 |配信元から非圧縮ファイルが返された場合、CDN が圧縮を実行します。 <br/>**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。 <br/>`Cache-Control: no-cache` ヘッダーがあるファイルは圧縮されません。 |
-| 非圧縮 |圧縮 |非圧縮 |CDN が展開を実行します。 |
+| Compressed |Compressed |Compressed |CDN が、サポートされている形式間のトランスコードを実行します。 |
+| Compressed |非圧縮 |Compressed |CDN が圧縮を実行します。 |
+| Compressed |キャッシュなし |Compressed |配信元から非圧縮ファイルが返された場合、CDN が圧縮を実行します。 <br/>**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。 <br/>`Cache-Control: no-cache` ヘッダーがあるファイルは圧縮されません。 |
+| 非圧縮 |Compressed |非圧縮 |CDN が展開を実行します。 |
 | 非圧縮 |非圧縮 |非圧縮 | |
 | 非圧縮 |キャッシュなし |非圧縮 | |
 

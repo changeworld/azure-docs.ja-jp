@@ -1,27 +1,20 @@
 ---
-title: Azure Application Insights のユーザー動作分析ツールをトラブルシューティングする
+title: ユーザー分析ツールをトラブルシューティングする - Azure Application Insights
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258780"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670918"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
-[Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか?  いくつかの答えを次に示します。
+[Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか? いくつかの答えを次に示します。
 
 ## <a name="counting-users"></a>ユーザーのカウント
 **ユーザー動作分析ツールでは、アプリにはユーザー/セッションが 1 つだけあることが示されていますが、私はアプリには複数のユーザー/セッションがあることを知っています。これらの正しくないカウントを修正するにはどうすればよいですか。**
@@ -51,10 +44,10 @@ Web アプリを監視している場合の最も簡単なソリューション�
 
 アプリによって送信されるカスタム イベント名が多すぎる場合は、コード内の名前を具体性の少ないものに変更します。 この場合も、URL やその他のページ単位の情報や動的情報をカスタム イベント名の中に直接配置するのは避けてください。 代わりに、これらの詳細を、`trackEvent` API を使用して、カスタム イベントのカスタム プロパティに移動します。 たとえば、`appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` の代わりに、`appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` のようにすることをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ユーザー動作分析ツールの概要](usage-overview.md)
 
-## <a name="get-help"></a>問い合わせ
-* [スタック オーバーフロー](https://stackoverflow.com/questions/tagged/ms-application-insights)
+## <a name="get-help"></a>ヘルプの参照
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

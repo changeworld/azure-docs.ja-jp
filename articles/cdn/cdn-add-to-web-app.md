@@ -3,28 +3,28 @@ title: チュートリアル - Azure App Service Web アプリへの Azure CDN �
 description: このチュートリアルでは、静的なファイルをキャッシュし、世界各地の顧客に対して地理的に近いサーバーから配信するため、Azure App Service Web アプリに Azure Content Delivery Network (CDN) を追加します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602819"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81254616"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル: Azure App Service Web アプリへの Azure CDN の追加
 
-このチュートリアルでは、[Azure App Service 内の Web アプリ](../app-service/overview.md)に [Azure Content Delivery Network (CDN)](cdn-overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
+このチュートリアルでは、[Azure App Service 内の Web アプリ](cdn-overview.md)に [Azure Content Delivery Network (CDN)](../app-service/overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
 
 以下に示したのは、これから扱うサンプルの静的 HTML サイトのホーム ページです。
 
@@ -64,21 +64,21 @@ ms.locfileid: "53602819"
 
 ![ポータルで App Service アプリを選択](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-**[App Service]** ページの **[設定]** セクションで、**[ネットワーク] の [アプリに Azure CDN を構成する]** を選択します。
+**[App Service]** ページの **[設定]** セクションで、 **[ネットワーク] の [アプリに Azure CDN を構成する]** を選択します。
 
 ![ポータルで CDN を選択](media/cdn-add-to-web-app/portal-select-cdn.png)
 
-**[Azure Content Delivery Network]** ページで、**[新しいエンドポイント]** の設定を以下の表に従って指定します。
+**[Azure Content Delivery Network]** ページで、 **[新しいエンドポイント]** の設定を以下の表に従って指定します。
 
 ![ポータルでプロファイルとエンドポイントを作成](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| Setting | 推奨値 | 説明 |
+| 設定 | 推奨値 | 説明 |
 | ------- | --------------- | ----------- |
 | **[CDN プロファイル]** | myCDNProfile | CDN プロファイルは、同じ価格レベルの CDN エンドポイントをまとめたものです。 |
 | **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](cdn-features.md)によって規定されます。 このチュートリアルでは *Standard Akamai* を使用します。 |
-| **[CDN エンドポイント名]** | azureedge.net ドメイン内で一意となる任意の名前 | キャッシュされたリソースには、*&lt;エンドポイント名&gt;*.azureedge.net ドメインでアクセスします。
+| **[CDN エンドポイント名]** | azureedge.net ドメイン内で一意となる任意の名前 | キャッシュされたリソースには、 *&lt;エンドポイント名&gt;* .azureedge.net ドメインでアクセスします。
 
-CDN プロファイルを作成するには、**[作成]** を選択します。
+CDN プロファイルを作成するには、 **[作成]** を選択します。
 
 Azure によってプロファイルとエンドポイントが作成されます。 **[エンドポイント]** の一覧に新しいエンドポイントが表示され、プロビジョニングされた時点で **[実行中]** 状態になります。
 
@@ -256,7 +256,7 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

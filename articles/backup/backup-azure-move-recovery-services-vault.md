@@ -1,27 +1,27 @@
 ---
-title: Recovery Services コンテナーを Azure サブスクリプションをまたいで移動するか、別のリソース グループに移動します。
-description: Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動するための手順。
-services: backup
-author: sogup
-manager: vijayts
-ms.service: backup
+title: Azure Backup Recovery Services コンテナーを移動する方法
+description: Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する方法の手順。
+ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: sogup
-ms.openlocfilehash: 8d5d6ed6c14927c57279cf500518f3b3a86d591d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681456"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597996"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
 この記事では、Azure Backup 用に構成された Recovery Services コンテナーを、Azure のサブスクリプションをまたいで移動するか、同じサブスクリプション内の別のリソース グループに移動する方法について説明します。 Azure portal または PowerShell を使用して、Recovery Services コンテナーを移動することができます。
 
-## <a name="supported-region"></a>サポート対象リージョン
+## <a name="supported-regions"></a>サポートされているリージョン
 
-Recovery Services コンテナーのリソースの移動は、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東南アジア、東アジア、米国中部、米国中北部、米国東部、米国東部 2、米国中南部、米国中西部、米国中西部 2、米国西部、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、西ヨーロッパ、南アフリカ北部、南アフリカ西部、英国南部、英国西部、アラブ首長国連邦中部、およびアラブ首長国連邦北部でサポートされています。
+Recovery Services コンテナーのリソースの移動がサポートされるのは、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東南アジア、東アジア、米国中部、米国中北部、米国東部、米国東部 2、米国中南部、米国中西部、米国中西部 2、米国西部、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、西ヨーロッパ、南アフリカ北部、南アフリカ西部、英国南部、および英国西部です。
+
+## <a name="unsupported-regions"></a>サポートされていないリージョン
+
+フランス中部、フランス南部、ドイツ北東部、ドイツ中部、US Gov アイオワ、中国北部、中国北部 2、中国東部、中国東部 2
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services コンテナーを移動するための前提条件
 
@@ -35,21 +35,20 @@ Recovery Services コンテナーのリソースの移動は、オーストラ�
 - VM をコンテナーと一緒に移動するかどうかに関係なく、VM はコンテナー内に保持されているバックアップ履歴から復元できます。
 - Azure Disk Encryption では、キー コンテナーと VM が同じ Azure リージョンおよびサブスクリプションに属している必要があります。
 - 仮想マシンをマネージド ディスクと一緒に移動するには、この[記事](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)を参照してください。
-- クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations)を参照してください。
+- クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)を参照してください。
 - コンテナーに対して定義されるバックアップ ポリシーは、コンテナーがサブスクリプションをまたいで移動しても、新しいリソース グループに移動しても保持されます。
-- Azure Files、Azure File Sync、または SQL を IaaS VM に含むコンテナーを、サブスクリプションおよびリソース グループをまたいで移動することはできません。
-- VM のバックアップ データがあるコンテナーをサブスクリプションをまたいで移動する場合、バックアップを継続するためには、お客様の VM を同じサブスクリプションに移動し、同じターゲット リソース グループを使用する必要があります。<br>
+- コンテナーを移動できるのは、Azure 仮想マシンがコンテナー内の唯一のバックアップ項目である場合のみです。
+- VM のバックアップ データがあるコンテナーをサブスクリプションをまたいで移動する場合、バックアップを継続するためには、お客様の VM を同じサブスクリプションに移動し、同じターゲット VM リソース グループ名 (以前のサブスクリプションと同じもの) を使用する必要があります。
 
 > [!NOTE]
->
-> **Azure Site Recovery** で使用するように構成された Recovery Services コンテナーは、まだ移動できません。 **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Site Recovery サービスに対するリソースの移動機能は、まだ使用できません。
-
+> Azure リージョン間で Azure Backup 用の Recovery Services コンテナーを移動することはできません。<br><br>
+> **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Azure Site Recovery 用のコンテナーを移動する場合は、[この記事](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)を参照して、コンテナーを手動で移動する方法を確認してください。
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Azure portal を使用して Recovery Services コンテナーを別のリソース グループに移動する
 
 Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
    ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -58,7 +57,7 @@ Recovery Services コンテナーとその関連リソースを別のリソー�
 
    ![[Essentials] 情報タブ](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. コンテナーの概要メニューで、**[リソース グループ]** の横にある **[変更]** をクリックして、**[リソースの移動]** ブレードを開きます。
+3. コンテナーの概要メニューで、 **[リソース グループ]** の横にある **[変更]** をクリックして、 **[リソースの移動]** ブレードを開きます。
 
    ![リソース グループを変更する](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
@@ -66,20 +65,19 @@ Recovery Services コンテナーとその関連リソースを別のリソー�
 
    ![サブスクリプションを移動する](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. ターゲット リソース グループを追加するには、**[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、**[新しいグループを作成する]** オプションをクリックします。
+5. ターゲット リソース グループを追加するには、 **[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、 **[新しいグループを作成する]** オプションをクリックします。
 
    ![リソースを作成する](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. リソース グループを追加した後、**[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]** というオプションを確認し、**[OK]** をクリックしてコンテナーの移動を完了します。
+6. リソース グループを追加した後、 **[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]** というオプションを確認し、 **[OK]** をクリックしてコンテナーの移動を完了します。
 
    ![確認メッセージ](./media/backup-azure-move-recovery-services/confirmation-message.png)
-
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Azure portal を使用して Recovery Services コンテナーを別のサブスクリプションに移動する
 
 Recovery Services コンテナーとその関連リソースを別のサブスクリプションに移動できます
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. Recovery Services コンテナーの一覧を開き、移動するコンテナーを選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
     ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -88,20 +86,20 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 
     ![[Essentials] 情報タブ](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. コンテナーの概要メニューで、**[サブスクリプション]** の横にある **[変更]** をクリックして、**[リソースの移動]** ブレードを開きます。
+3. コンテナーの概要メニューで、 **[サブスクリプション]** の横にある **[変更]** をクリックして、 **[リソースの移動]** ブレードを開きます。
 
    ![サブスクリプションを変更する](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. 移動するリソースを選択します。 ここで、**[すべて選択]** オプションを使用して、表示されているすべてのオプション リソースを選択することをお勧めします。
+4. 移動するリソースを選択します。 ここで、 **[すべて選択]** オプションを使用して、表示されているすべてのオプション リソースを選択することをお勧めします。
 
    ![リソースの移動](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. コンテナーを移動する先のターゲットのサブスクリプションを、**[サブスクリプション]** ドロップダウン リストから選択します。
-6. ターゲット リソース グループを追加するには、**[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、**[新しいグループを作成する]** オプションをクリックします。
+5. コンテナーを移動する先のターゲットのサブスクリプションを、 **[サブスクリプション]** ドロップダウン リストから選択します。
+6. ターゲット リソース グループを追加するには、 **[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、 **[新しいグループを作成する]** オプションをクリックします。
 
    ![サブスクリプションを追加する](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. **[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]** オプションをクリックして確認し、**[OK]** をクリックします。
+7. **[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]** オプションをクリックして確認し、 **[OK]** をクリックします。
 
 > [!NOTE]
 > クロス サブスクリプション バックアップ (RS コンテナーと保護対象の VM が別のサブスクリプションにある) シナリオは、サポートされていません。 また、ローカル冗長ストレージ (LRS) からグローバル冗長ストレージ (GRS) への (およびその逆の) ストレージ冗長オプションは、コンテナー移動操作中に変更できません。
@@ -112,7 +110,7 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 
 Recovery Services コンテナーを別のリソース グループに移動するには、`Move-AzureRMResource` コマンドレットを使用します。 `Move-AzureRMResource` ではリソース名とリソースの種類が必要です。 どちらも `Get-AzureRmRecoveryServicesVault` コマンドレットから取得できます。
 
-```
+```powershell
 $destinationRG = "<destinationResourceGroupName>"
 $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
@@ -120,7 +118,7 @@ Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $v
 
 リソースを他のサブスクリプションに移動するには、`-DestinationSubscriptionId` パラメーターを含めます。
 
-```
+```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
@@ -130,7 +128,7 @@ Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -D
 
 Recovery Services コンテナーを別のリソース グループに移動するには、次のコマンドレットを使用します。
 
-```
+```azurecli
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
@@ -138,12 +136,10 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 ## <a name="post-migration"></a>移行後の処理
 
-1. リソース グループのアクセス制御を設定および検証する必要があります。  
+1. リソース グループのアクセス制御を設定および検証します。  
 2. 移動の完了後のコンテナーに対して、バックアップのレポートと監視機能をもう一度構成する必要があります。 以前の構成は、移動操作中に失われます。
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 リソース グループとサブスクリプションの間でさまざまな種類のリソースを移動できます。
 

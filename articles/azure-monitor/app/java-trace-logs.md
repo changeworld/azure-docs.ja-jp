@@ -1,32 +1,58 @@
 ---
-title: Azure Application Insights を使用した Java トレース ログの探索 | Microsoft Docs
+title: Azure Application Insights で Java トレース ログを探索する
 description: Application Insights を使用して Log4J または Logback のトレースを検索します
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/18/2019
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884297"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77657216"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
 
-## <a name="install-the-java-sdk"></a>Java SDK をインストールする
+> [!TIP]
+> Application Insights インストルメンテーション キーは、アプリケーションに対して 1 回だけ設定する必要があります。 Java Spring のようなフレームワークを使用している場合は、アプリの構成の別の場所で既にキーを登録済みである可能性があります。
+
+## <a name="using-the-application-insights-java-agent"></a>Application Insights Java エージェントを使用する
+
+既定では、Application Insights Java エージェントは、`WARN` レベル以上で実行されたログを自動的にキャプチャします。
+
+`AI-Agent.xml` ファイルを使用して、キャプチャされるログのしきい値を変更できます。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging threshold="info"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+`AI-Agent.xml` ファイルを使用して、Java エージェントのログ キャプチャを無効にすることができます。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>別の方法として (Java エージェントは使用する代わりに)、次の手順に従うこともできます。
+
+### <a name="install-the-java-sdk"></a>Java SDK をインストールする
 
 [Application Insights SDK for Java][java] をまだインストールしていない場合は、インストールする手順に従います。
 
-## <a name="add-logging-libraries-to-your-project"></a>プロジェクトへのログ ライブラリの追加
+### <a name="add-logging-libraries-to-your-project"></a>プロジェクトへのログ ライブラリの追加
 *プロジェクトに適した方法を選択してください。*
 
 #### <a name="if-youre-using-maven"></a>Maven を使用している場合:
@@ -107,7 +133,7 @@ Application Insights Java SDK を手動でインストールするガイドラ�
 | Log4J v1.2 |[Log4J v1.2 アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>ログ フレームワークへのアペンダーの追加
+### <a name="add-the-appender-to-your-logging-framework"></a>ログ フレームワークへのアペンダーの追加
 トレースの取得を開始するには、適切なコード スニペットを Log4J または Logback の構成ファイルに追加します。 
 
 *Logback*
@@ -162,7 +188,7 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
 ![Application Insights ポータルで [検索] を開きます](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [診断検索][diagnostic]
 
 <!--Link references-->

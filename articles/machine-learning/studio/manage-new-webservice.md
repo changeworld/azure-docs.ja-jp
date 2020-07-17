@@ -1,23 +1,26 @@
 ---
 title: Web サービスを管理する
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838376"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217971"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Azure Machine Learning Studio Web サービス ポータルを使用して Web サービスを管理する
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
 
 Machine Learning Web サービス ポータルでは、次のことができます。
@@ -29,7 +32,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 * エンドポイントを追加、削除する (クラシック Web サービスのみ)。
 
 >[!NOTE]
->クラシック Web サービスは、[Machine Learning Studio](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
+>クラシック Web サービスは、[Machine Learning Studio (クラシック)](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>新しいリソース マネージャー ベースの Web サービスを管理するためのアクセス許可
 
@@ -39,7 +42,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 
 *Web サービスのデプロイに失敗しました。このアカウントには、ワークスペースを含む Azure サブスクリプションへの十分なアクセス権がありません。Web サービスを Azure にデプロイするには、同じアカウントをワークスペースに招待し、ワークスペースを含む Azure サブスクリプションへのアクセス権を付与する必要があります。*
 
-ワークスペースの作成方法について詳しくは、「[Azure Machine Learning Studio ワークスペースの作成と共有](create-workspace.md)」をご覧ください。
+ワークスペースを作成する方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)」を参照してください。
 
 アクセス許可の設定の詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
@@ -86,7 +89,7 @@ Web サービスをクリックしたときに、Web サービスの [クイッ�
 * **タイトル** Web サービスのタイトルを入力することができます。
 * **キー** プライマリとセカンダリの API キーをローテーションすることができます。
 * **ストレージ アカウント キー** Web サービスの変更に関連付けられているストレージ アカウントのキーを更新することができます。 
-* **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
+* **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio (クラシック) で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
 
 ### <a name="managing-billing-plans"></a>課金プランの管理
 Web サービスの [クイック スタート] ページで、 **[プラン]** メニュー オプションをクリックします。 特定の Web サービスに関連付けられているプランをクリックして、そのプランを管理することもできます。
@@ -108,7 +111,7 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 
 ## <a name="manage-classic-web-services"></a>クラシック Web サービスを管理する
 > [!NOTE]
-> このセクションの手順は、Azure Machine Learning Web サービス ポータルでのクラシック Web サービスの管理に関連しています。 Machine Learning Studio および Azure portal でのクラシック Web サービスの管理については、「[Azure Machine Learning Studio ワークスペースの管理](manage-workspace.md)」を参照してください。
+> このセクションの手順は、Azure Machine Learning Web サービス ポータルでのクラシック Web サービスの管理に関連しています。 Machine Learning Studio (クラシック) および Azure portal でのクラシック Web サービスの管理については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」を参照してください。
 > 
 > 
 
@@ -117,7 +120,7 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
 2. **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 
-クラシック Web サービスを管理するには、**[Classic Web Services (クラシック Web サービス)]** をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。
+クラシック Web サービスを管理するには、 **[Classic Web Services (クラシック Web サービス)]** をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。
 
 * Web サービスをクリックして、関連付けられているエンドポイントを表示する。
 * Web サービスを削除する。
@@ -151,6 +154,6 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 
 * **説明** Web サービスの説明を入力することができます。 [説明] は必須フィールドです。
 * **ログ記録** エンドポイントに関するエラー ログ記録を有効または無効にすることができます。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」をご覧ください。
-* **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
+* **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio (クラシック) で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
 
 

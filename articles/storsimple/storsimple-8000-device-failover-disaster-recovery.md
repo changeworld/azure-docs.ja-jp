@@ -1,5 +1,5 @@
 ---
-title: StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs
+title: StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 description: StorSimple デバイスを、そのデバイス自体、別の物理デバイス、またはクラウド アプライアンスにフェールオーバーする方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5dc4a98bf889d38c62c76364289c2d58c14d771e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 179bc5cdf982792f41e0dec209341f346959a31a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108480"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397516"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 
@@ -32,7 +32,7 @@ ms.locfileid: "23108480"
 ![[デバイス] ブレード](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
-## <a name="disaster-recovery-dr-and-device-failover"></a>障害復旧 (DR) とデバイスのフェールオーバー
+## <a name="disaster-recovery-dr-and-device-failover"></a>ディザスター リカバリー (DR) とデバイスのフェールオーバー
 
 ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 StorSimple はプライマリ デバイスを _ソース_ として使用し、関連付けられているクラウド データを別の _ターゲット_ デバイスに移動します。 このプロセスを *フェールオーバー*といいます。 次の図は、フェールオーバーのプロセスを示しています。
 
@@ -50,8 +50,8 @@ StorSimple 8000 シリーズでは、バックアップ ポリシーはバック
 
 *defaultPol* と *customPol* という 2 つのバックアップ ポリシーがあるとします。
 
-* *defaultPol*: 1 つのボリューム (*vol1*) が午後 10 時 30 分から毎日実行される。
-* *customPol*: 4 つのボリューム (*vol1*、*vol2*、*vol3*、*vol4*) が午後 10 時から毎日実行される。
+* *defaultPol*: 1 つのボリューム (*vol1*) が午後 10:30 から毎日実行されます。
+* *customPol*: 4 つのボリューム (*vol1*、*vol2*、*vol3*、*vol4*) が午後 10:00 から毎日実行されます。
 
 この場合 StorSimple は、クラッシュ整合性のために優先度を付けて、ボリューム数が多い *customPol* を使用します。 このポリシーの最新のバックアップを使用してデータが復元されます。 バックアップ ポリシーを作成して管理する方法の詳細については、「[Azure ポータルで StorSimple デバイス マネージャー サービスを使用してバックアップ ポリシーを管理する](storsimple-8000-manage-backup-policies-u2.md)」を参照してください。
 
@@ -112,7 +112,7 @@ A. DR が失敗した場合、もう一度試してみることをお勧めし�
 
 Q. **デバイスのフェールオーバーが進行中にデバイスを削除することはできますか?**
 
-A. DR の進行中にデバイスを削除することはできません。 DR の完了後にのみデバイスを削除できます。 デバイス フェールオーバー ジョブの進行状況は、**[ジョブ]** ブレードで監視できます。
+A. DR の進行中にデバイスを削除することはできません。 DR の完了後にのみデバイスを削除できます。 デバイス フェールオーバー ジョブの進行状況は、 **[ジョブ]** ブレードで監視できます。
 
 Q. **ソース デバイス上のローカル データを削除するために、ソース デバイスでガベージ コレクションが開始されるのはいつですか?**
 
@@ -120,7 +120,7 @@ A. デバイスが完全に削除された後でのみ、ソース デバイス�
 
 Q. **ソース デバイスのボリューム コンテナーに関連付けられた削除ジョブが失敗するとどうなりますか?**
 
-A.  削除ジョブが失敗した場合は、ボリューム コンテナーを手動で削除できます。 **[デバイス]** ブレードで、目的のソース デバイスを選択し、**[ボリューム コンテナー]** をクリックします。 フェールオーバーしたボリューム コンテナーを選択し、ブレード下部の **[削除]** をクリックします。 ソース デバイスで、フェールオーバーしたすべてのボリューム コンテナーを削除したら、フェールバックを開始できます。 詳細については、「[ボリューム コンテナーを削除する](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)」を参照してください。
+A.  削除ジョブが失敗した場合は、ボリューム コンテナーを手動で削除できます。 **[デバイス]** ブレードで、目的のソース デバイスを選択し、 **[ボリューム コンテナー]** をクリックします。 フェールオーバーしたボリューム コンテナーを選択し、ブレード下部の **[削除]** をクリックします。 ソース デバイスで、フェールオーバーしたすべてのボリューム コンテナーを削除したら、フェールバックを開始できます。 詳細については、「[ボリューム コンテナーを削除する](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)」を参照してください。
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>ビジネス継続性ディザスター リカバリー (BCDR)
 

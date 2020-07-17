@@ -1,32 +1,21 @@
 ---
-title: Azure で Service Fabric 上に .NET アプリを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に .NET アプリを作成する
 description: このチュートリアルでは、ASP.NET Core のフロントエンドとリライアブル サービスのステートフルなバックエンドを含むアプリケーションを作成し、クラスターにアプリケーションをデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/14/2019
-ms.author: aljo
+ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 097cb554523a9e75b265ca16e79769daf0a49b40
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665799"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75465478"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
 このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。  必要に応じて、このチュートリアルの[ビデオ ウォークスルー](https://channel9.msdn.com/Events/Connect/2017/E100)をご覧になることもできます。
 
-![アプリケーション ダイアグラム](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![AngularJS+ASP.NET API フロントエンド、Service Fabric のステートフル バックエンド サービスに接続](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 シリーズの第 1 部で学習する内容は次のとおりです。
 
@@ -47,7 +36,7 @@ ms.locfileid: "58665799"
 
 このチュートリアルを開始する前に
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.5 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019 のバージョン 15.5 以降](https://www.visualstudio.com/)をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API サービスをリライアブル サービスとして作成する
@@ -56,19 +45,19 @@ ms.locfileid: "58665799"
 
 1. Visual Studio を**管理者**として起動します。
 
-2. **[ファイル]**->**[新規]**->**[プロジェクト]** の順に選択してプロジェクトを作成します。
+2. **[ファイル]** -> **[新規]** -> **[プロジェクト]** の順に選択してプロジェクトを作成します。
 
-3. **[新しいプロジェクト]** ダイアログで、**[クラウド]、[Service Fabric アプリケーション]** の順に選択します。
+3. **[新しいプロジェクト]** ダイアログで、 **[クラウド]、[Service Fabric アプリケーション]** の順に選択します。
 
-4. アプリケーションに「**Voting**」という名前を付けて、**[OK]** をクリックします。
+4. アプリケーションに「**Voting**」という名前を付けて、 **[OK]** をクリックします。
 
    ![Visual Studio の [新しいプロジェクト] ダイアログ](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog.png)
 
-5. **[新しい Service Fabric サービス]** ページで、**[ステートレス ASP.NET Core]** を選択し、サービスに「**VotingWeb**」 という名前を付けて、**[OK]** をクリックします。
+5. **[新しい Service Fabric サービス]** ページで、 **[ステートレス ASP.NET Core]** を選択し、サービスに「**VotingWeb**」 という名前を付けて、 **[OK]** をクリックします。
    
    ![Choosing ASP.NET web service in the new service dialog](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png) 
 
-6. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 このチュートリアルでは、**[Web アプリケーション (モデル ビュー コントローラー)]** を選択し、**[OK]** をクリックします。
+6. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 このチュートリアルでは、 **[Web アプリケーション (モデル ビュー コントローラー)]** を選択し、 **[OK]** をクリックします。
    
    ![ASP.NET プロジェクトの種類を選択する](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
 
@@ -180,7 +169,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>_Layout.cshtml ファイルを更新する
+### <a name="update-the-_layoutcshtml-file"></a>_Layout.cshtml ファイルを更新する
 
 ASP.NET アプリの既定のレイアウトである **Views/Shared/_Layout.cshtml** を開きます。  その内容を次のように置き換え、変更を保存します。
 
@@ -263,7 +252,7 @@ internal static Uri GetVotingDataServiceName(ServiceContext context)
 
 ### <a name="add-the-votescontrollercs-file"></a>VotesController.cs ファイルを追加する
 
-投票アクションを定義するコントローラーを追加します。 **Controllers** フォルダーを右クリックし、**[追加] > [新しい項目] > [Visual C#] > [ASP.NET Core] > [クラス]** の順に選択します。 ファイルに「**VotesController.cs**」と名前を付け、**[追加]** をクリックします。  
+投票アクションを定義するコントローラーを追加します。 **Controllers** フォルダーを右クリックし、 **[追加] > [新しい項目] > [Visual C#] > [ASP.NET Core] > [クラス]** の順に選択します。 ファイルに「**VotesController.cs**」と名前を付け、 **[追加]** をクリックします。  
 
 *VotesController.cs* ファイルの内容を次のように置き換えて、変更を保存します。  後の「[VotesController.cs ファイルを更新する](#updatevotecontroller_anchor)」では、バックエンド サービスで投票データの読み取りと書き込みを行うように、このファイルを変更します。  ここでは、コントローラーから静的文字列データをビューに返します。
 
@@ -324,7 +313,7 @@ VotingWeb フロントエンド サービスが作成されると、Visual Studi
   </Resources>
 ```
 
-また、Voting プロジェクトの Application URL プロパティ値を更新し、アプリケーションをデバッグするときに正しいポートに対して Web ブラウザーが開くようにします。  ソリューション エクスプローラーで、**Voting** プロジェクトを選択し、**[アプリケーション URL]** プロパティを「**8080**」に更新します。
+また、Voting プロジェクトの Application URL プロパティ値を更新し、アプリケーションをデバッグするときに正しいポートに対して Web ブラウザーが開くようにします。  ソリューション エクスプローラーで、**Voting** プロジェクトを選択し、 **[アプリケーション URL]** プロパティを「**8080**」に更新します。
 
 ### <a name="deploy-and-run-the-voting-application-locally"></a>Voting アプリケーションをローカルにデプロイして実行する
 Voting アプリケーションを実行してデバッグできる状態になりました。 Visual Studio で、**F5** キーを押してアプリケーションをローカルの Service Fabric クラスターにデバッグ モードでデプロイします。 Visual Studio を**管理者**として開いていない場合、アプリケーションは失敗します。
@@ -346,13 +335,13 @@ Service Fabric では、Reliable Collection によってデータがサービス
 
 このチュートリアルでは、Reliable Collection にカウンター値を格納するサービスを作成します。
 
-1. ソリューション エクスプローラーで、Voting アプリケーション プロジェクトの **[サービス]** を右クリックし、**[追加] > [Service Fabric サービスの新規作成...]** の順に選択します。
+1. ソリューション エクスプローラーで、Voting アプリケーション プロジェクトの **[サービス]** を右クリックし、 **[追加] > [Service Fabric サービスの新規作成...]** の順に選択します。
     
-2. **[新しい Service Fabric サービス]** ダイアログ ボックスで、**[ステートフル ASP.NET Core]** を選択し、サービスに「**VotingData**」という名前を付けて、**[OK]** をクリックします。
+2. **[新しい Service Fabric サービス]** ダイアログ ボックスで、 **[ステートフル ASP.NET Core]** を選択し、サービスに「**VotingData**」という名前を付けて、 **[OK]** をクリックします。
 
     作成したサービス プロジェクトでは、2 つのサービスがアプリケーションに含まれます。 アプリケーションのビルドを続けながら、同じ方法でさらにサービスを追加することができます。 それぞれを個別にバージョン管理およびアップグレードできます。
 
-3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 このチュートリアルでは、**[API]** を選択します。
+3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。 このチュートリアルでは、 **[API]** を選択します。
 
     Visual Studio によって VotingData サービス プロジェクトが作成され、ソリューション エクスプローラーに表示されます。
 
@@ -360,7 +349,7 @@ Service Fabric では、Reliable Collection によってデータがサービス
 
 ### <a name="add-the-votedatacontrollercs-file"></a>VoteDataController.cs ファイルを追加する
 
-**VotingData** プロジェクトで **Controllers** フォルダーを右クリックし、**[追加] > [新しい項目] > [クラス]** の順に選択します。 ファイルに「**VoteDataController.cs**」と名前を付け、**[追加]** をクリックします。 ファイルの内容を次のように置き換え、変更を保存します。
+**VotingData** プロジェクトで **Controllers** フォルダーを右クリックし、 **[追加] > [新しい項目] > [クラス]** の順に選択します。 ファイルに「**VoteDataController.cs**」と名前を付け、 **[追加]** をクリックします。 ファイルの内容を次のように置き換え、変更を保存します。
 
 ```csharp
 namespace VotingData.Controllers
@@ -608,7 +597,7 @@ public class VotesController : Controller
 
 ## <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
-Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、信頼性の高いディクショナリを使ってバックエンド サービスにデータを保存します。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、**[アプリケーション デバッグ モード]** を変更してください。
+Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、信頼性の高いディクショナリを使ってバックエンド サービスにデータを保存します。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、 **[アプリケーション デバッグ モード]** を変更してください。
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
 
@@ -625,9 +614,9 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 
       ![投票フロントエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-   2. 最初に、バックエンド サービスの ReverseProxy の URL を構築します **(1)**。
-   3. 次に、HTTP PUT 要求を ReverseProxy に送信します **(2)**。
-   4. 最後に、バックエンド サービスからの応答をクライアントに返します **(3)**。
+   2. 最初に、バックエンド サービスの ReverseProxy の URL を構築します **(1)** 。
+   3. 次に、HTTP PUT 要求を ReverseProxy に送信します **(2)** 。
+   4. 最後に、バックエンド サービスからの応答をクライアントに返します **(3)** 。
 
 5. **F5** キーを押して続行します。
    1. 今度は、バックエンド サービスのブレークポイントに到達します。
@@ -636,12 +625,12 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 
    2. メソッド **(1)** の先頭行では、`StateManager` を使用して信頼性の高いディクショナリ (`counts`) を取得または追加します。
    3. 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
-   4. トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
+   4. トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)** 。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
 6. **F5** キーを押して続行します。
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

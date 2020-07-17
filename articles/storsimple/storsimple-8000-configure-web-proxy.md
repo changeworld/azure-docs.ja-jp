@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65204259"
 ---
-# <a name="configure-web-proxy-for-your-storsimple-device"></a> StorSimple デバイスの Web プロキシを構成する
+# <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple デバイスの Web プロキシを構成する
 
 ## <a name="overview"></a>概要
 
@@ -68,7 +68,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     既定では、TCP ポート番号 8080 が指定されています。
-4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。 [Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。 [NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。 既定の認証は NTLM です。 詳細については、[基本認証](https://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](https://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。 
+4. 認証の種類として、 **[NTLM]** 、 **[Basic]** 、または **[None]** を選択します。 [Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。 [NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。 既定の認証は NTLM です。 詳細については、[基本認証](https://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](https://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。 
    
    > [!IMPORTANT]
    > **StorSimple デバイス マネージャー サービスのデバイス監視チャートは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっていると正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
@@ -122,11 +122,11 @@ StorSimple 用 Windows PowerShell で次の手順を実行し、デバイスで 
 Web プロキシ設定は、Windows PowerShell インターフェイスを使用して構成します。ポータル内から変更することはできません。 ただし、構成済みの設定をポータルに表示できます。 次の手順を実行して、Web プロキシを表示します。
 
 #### <a name="to-view-web-proxy-settings"></a>Web プロキシ設定を表示するには
-1. **[StorSimple デバイス マネージャー サービス]、[デバイス]** の順に移動します。 デバイスを選択してクリックし、**[デバイス設定]、[ネットワーク]** の順に移動します。
+1. **[StorSimple デバイス マネージャー サービス]、[デバイス]** の順に移動します。 デバイスを選択してクリックし、 **[デバイス設定]、[ネットワーク]** の順に移動します。
 
     ![[ネットワーク] をクリックする](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
-2. **[ネットワーク設定]** ブレードで、**[Web プロキシ]** タイルをクリックします。
+2. **[ネットワーク設定]** ブレードで、 **[Web プロキシ]** タイルをクリックします。
 
     ![Web プロキシをクリックする](./media/storsimple-8000-configure-web-proxy/view-web-proxy-2.png)
 
@@ -143,7 +143,7 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |コマンドがパッシブ コントローラーから実行されていて、アクティブ コントローラーと通信することができません。 |アクティブ コントローラーでコマンドを実行します。 パッシブ コントローラーからコマンドを実行するには、接続をパッシブ コントローラーからアクティブ コントローラーに修正する必要があります。 この接続を確立できない場合、Microsoft サポートに問い合わせる必要があります。 |
 | 2. |0x800710dd - 操作識別子が無効です |StorSimple Cloud Appliance ではプロキシ設定はサポートされていません。 |StorSimple Cloud Appliance ではプロキシ設定はサポートされていません。 これらの設定は、StorSimple の物理デバイスでのみ構成できます。 |
-| 手順 3. |0x80070057 - 無効なパラメーター |プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。 |URI が正しい形式で指定されていません。 形式は `http://<IP address or FQDN of the web proxy server>:<TCP port number>` を使用してください。 |
+| 3. |0x80070057 - 無効なパラメーター |プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。 |URI が正しい形式で指定されていません。 形式は `http://<IP address or FQDN of the web proxy server>:<TCP port number>` を使用してください。 |
 | 4. |0x800706ba - RPC サーバーを利用できません |根本原因は、次のいずれかです。</br></br>クラスターが稼働していません。 </br></br>データパス サービスが実行されていません。</br></br>コマンドがパッシブ コントローラーから実行されていて、アクティブ コントローラーと通信することができません。 |Microsoft サポートに問い合わせて、クラスターが稼働していて、データパス サービスが実行されていることを確認します。</br></br>コマンドをアクティブ コントローラーから実行します。 パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。 この接続を確立できない場合、Microsoft サポートに問い合わせる必要があります。 |
 | 5. |0x800706be - RPC 呼び出しに失敗しました |クラスターはダウンしています。 |Microsoft サポートに問い合わせて、クラスターが稼働していることを確認してください。 |
 | 6. |0x8007138f - クラスター リソースが見つかりません |プラットフォーム サービス クラスター リソースが見つかりません。 これはインストールが適切でなかった場合に発生することがあります。 |デバイスを工場出荷時の既定値にリセットすることが必要になる場合があります。 プラットフォーム リソースの作成が必要になる場合があります。 Microsoft サポートに手順をお問い合わせください。 |

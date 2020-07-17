@@ -1,4 +1,5 @@
 - name: Speaker Recognition のドキュメント
+  href: Home.md
 - name: 概要
   items:
     - name: Speaker Recognition について
@@ -12,7 +13,7 @@
           items:
             - name: Android
               href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
-            - name: ' Windows'
+            - name: Windows
               href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
 - name: リソース
   items:

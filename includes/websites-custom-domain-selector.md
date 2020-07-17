@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 8dac6bd1c844085cb4af618c8329056784144c5a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6c93fa74961d9bcbe6da69daa0c99f88c31c015e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66136324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78944142"
 ---
 > [!div class="op_single_selector"]
 > * [ドメインを購入する](../articles/app-service/manage-custom-dns-buy-domain.md)
 > * [外部ドメインをマップする](../articles/app-service/app-service-web-tutorial-custom-domain.md)
-> * [Traffic Manager プロファイルにマップする](../articles/app-service/web-sites-traffic-manager-custom-domain-name.md)
+> * [Traffic Manager プロファイルにマップする](../articles/app-service/configure-domain-traffic-manager.md)
 > 
 > 
 

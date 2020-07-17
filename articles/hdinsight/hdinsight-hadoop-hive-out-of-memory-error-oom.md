@@ -3,18 +3,18 @@ title: Azure HDInsight における Hive メモリ不足エラーの解決
 description: HDInsight における Hive メモリ不足エラーを解決する方法について説明します。 ユーザーのシナリオは、多数の大きなテーブルに対するクエリです。
 keywords: メモリ不足エラー、OOM、Hive 設定
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2e7328b95aecc8e644d7b9e2ec407a62551fff79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 11/28/2019
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712791"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891090"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 
@@ -24,26 +24,28 @@ ms.locfileid: "64712791"
 
 ユーザーが次の Hive クエリを実行したとします。
 
-    SELECT
-        COUNT (T1.COLUMN1) as DisplayColumn1,
-        …
-        …
-        ….
-    FROM
-        TABLE1 T1,
-        TABLE2 T2,
-        TABLE3 T3,
-        TABLE5 T4,
-        TABLE6 T5,
-        TABLE7 T6
-    where (T1.KEY1 = T2.KEY1….
-        …
-        …
+```sql
+SELECT
+    COUNT (T1.COLUMN1) as DisplayColumn1,
+    …
+    …
+    ….
+FROM
+    TABLE1 T1,
+    TABLE2 T2,
+    TABLE3 T3,
+    TABLE5 T4,
+    TABLE6 T5,
+    TABLE7 T6
+where (T1.KEY1 = T2.KEY1….
+    …
+    …
+```
 
 このクエリの特徴:
 
 * T1 は、STRING 型の列が多数ある大きなテーブル TABLE1 のエイリアスです。
-* 他のテーブルはそれほど大きくありませんが、多数の列があります。
+* その他のテーブルはそれほど大きくはありませんが、多数の列があります。
 * すべてのテーブルは相互に結合されています。場合によっては、TABLE1 などのテーブルにある複数の列によって結合されています。
 
 この Hive クエリは、24 ノードの A3 HDInsight クラスターで完了までに 26 分かかりました。 ユーザーは、次の警告メッセージを確認しています。
@@ -79,12 +81,11 @@ Apache Tez 実行エンジンを使用したところ、 同じクエリの実�
 
 より大きな仮想マシン (D12 など) を使ってもエラーは解消されません。
 
-
 ## <a name="debug-the-out-of-memory-error"></a>メモリ不足エラーのデバッグ
 
 弊社サポート チームとエンジニアリング チームが共同で調査にあたったところ、メモリ不足エラーを引き起こしている問題の 1 つは、[Apache JIRA で説明されている既知の問題](https://issues.apache.org/jira/browse/HIVE-8306)であることを発見しました。
 
-    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesn't take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
+"hive.auto.convert.join.noconditionaltask = true の場合は noconditionaltask.size を確認し、マップ結合のテーブルサイズの合計が noconditionaltask.size よりも小さい場合、プランによってマップ結合が生成されます。ここで問題は、計算では異なるハッシュテーブル実装によって発生するオーバーヘッドを考慮しないため、その結果、入力サイズが nonconditionaltask のサイズより少しでも小さい場合、クエリは OOM をヒットします。
 
 hive-site.xml ファイルの **hive.auto.convert.join.noconditionaltask** が **true** に設定されていました。
 
@@ -100,16 +101,14 @@ hive-site.xml ファイルの **hive.auto.convert.join.noconditionaltask** が *
 </property>
 ```
 
-Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map Join にあると考えられます。 [HDInsight の Hadoop Yarn メモリ設定](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。 Tez コンテナー メモリについて説明した次の図を参照してください。
+Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map Join にあると考えられます。 [HDInsight の Hadoop Yarn メモリ設定](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。 Tez コンテナー メモリについて説明した次の図を参照してください。
 
-![Tez コンテナー メモリ図:Hive のメモリ不足エラー](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Tez コンテナー メモリ図: Hive のメモリ不足エラー](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
 ブログの投稿で提案したように、**hive.tez.container.size** と **hive.tez.java.opts** という 2 つのメモリ設定で、ヒープのコンテナー メモリを定義しています。 経験から判断すると、メモリ不足例外の原因は、コンテナー サイズが小さすぎることではありません。 Java ヒープ サイズ (hive.tez.java.opts) が小さすぎることが原因です。 そのため、メモリ不足エラーが発生する場合は、**hive.tez.java.opts** を増やしてみてください。 必要に応じて、 **hive.tez.container.size**も増やす必要があります。 **java.opts** 設定は、**container.size** の約 80% にすることをお勧めします。
 
 > [!NOTE]  
 > **hive.tez.java.opts** は、常に **hive.tez.container.size** よりも小さく設定する必要があります。
-> 
-> 
 
 D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,240 MB) のコンテナー サイズを使用し、80% を java.opts に割り当てることにしました。
 
@@ -118,6 +117,6 @@ D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,24
 
 この新しい設定では、クエリが 10 分間未満で正常に実行されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。 コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。 Hive クエリの最適化については、「[HDInsight の Apache Hadoop に対する Apache Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)」を参照してください。

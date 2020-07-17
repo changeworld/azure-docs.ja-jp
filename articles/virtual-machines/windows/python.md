@@ -1,26 +1,18 @@
 ---
-title: Python を使用して Azure で Windows VM を作成および管理する |Microsoft Docs
+title: Python を使用して Azure で Windows VM を作成および管理する
 description: Python を使って Azure で Windows VM を作成および管理する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326978"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82098070"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -39,15 +31,15 @@ ms.locfileid: "56326978"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[Python 開発]** を選び、**[インストール]** をクリックします。 概要では、**Python 3 64 ビット (3.6.0)** が自動的に選択されていることがわかります。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って Python ワークロードを追加できます。
-2. Visual Studio をインストールして起動した後、**[ファイル]** > **[新規]** > **[プロジェクト]** の順にクリックします。
-3. **[テンプレート]** > **[Python]** > **[Python アプリケーション]** の順にクリックし、プロジェクトの名前に「*myPythonProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
+1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[Python 開発]** を選び、 **[インストール]** をクリックします。 概要では、**Python 3 64 ビット (3.6.0)** が自動的に選択されていることがわかります。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って Python ワークロードを追加できます。
+2. Visual Studio をインストールして起動した後、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順にクリックします。
+3. **[テンプレート]**  >  **[Python]**  >  **[Python アプリケーション]** の順にクリックし、プロジェクトの名前に「*myPythonProject*」と入力して、プロジェクトの場所を選んだ後、 **[OK]** をクリックします。
 
 ## <a name="install-packages"></a>パッケージをインストールする
 
-1. ソリューション エクスプローラーで、*myPythonProject* の **[Python 環境]** を右クリックし、**[仮想環境の追加]** を選びます。
-2. [仮想環境の追加] 画面で、既定の名前 *env* をそのまま使い、ベース インタープリターとして *[Python 3.6 (64-bit)]\(Python 3.6 (64 ビット)\)* が選ばれていることを確認して、**[作成]** をクリックします。
-3. 作成した *env* 環境を右クリックして、**[Python パッケージのインストール]** をクリックし、検索ボックスに「*azure*」と入力して Enter キーを押します。
+1. ソリューション エクスプローラーで、*myPythonProject* の **[Python 環境]** を右クリックし、 **[仮想環境の追加]** を選びます。
+2. [仮想環境の追加] 画面で、既定の名前 *env* をそのまま使い、ベース インタープリターとして *[Python 3.6 (64-bit)]\(Python 3.6 (64 ビット)\)* が選ばれていることを確認して、 **[作成]** をクリックします。
+3. 作成した *env* 環境を右クリックして、 **[Python パッケージのインストール]** をクリックし、検索ボックスに「*azure*」と入力して Enter キーを押します。
 
 出力ウィンドウに、Azure パッケージが正常にインストールされたことが表示されます。 
 
@@ -111,22 +103,22 @@ Azure で Python SDK を使ってリソースを作成および管理するに�
 
 ```python
 resource_group_client = ResourceManagementClient(
-    credentials, 
+    credentials,
     SUBSCRIPTION_ID
 )
 network_client = NetworkManagementClient(
-    credentials, 
+    credentials,
     SUBSCRIPTION_ID
 )
 compute_client = ComputeManagementClient(
-    credentials, 
+    credentials,
     SUBSCRIPTION_ID
 )
 ```
 
 ### <a name="create-the-vm-and-supporting-resources"></a>VM とサポート リソースを作成する
 
-すべてのリソースは、[リソース グループ](../../azure-resource-manager/resource-group-overview.md)に含まれる必要があります。
+すべてのリソースは、[リソース グループ](../../azure-resource-manager/management/overview.md)に含まれる必要があります。
 
 1. リソース グループを作成するには、.py ファイルの変数の後に次の関数を追加します。
 
@@ -571,7 +563,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
     このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 アプリケーションが終了してから、すべてのリソースとリソース グループが削除されるまで、数分かかる場合があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - [Azure Python ライブラリ](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。

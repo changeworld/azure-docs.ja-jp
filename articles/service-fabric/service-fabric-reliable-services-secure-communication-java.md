@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric で Java を使ってサービス リモート処理通信をセキュリティで保護する | Microsoft Docs
+title: Java を使用したサービス リモート処理通信をセキュリティで保護する
 description: Azure Service Fabric クラスターで実行されている Java Reliable Services のサービス リモート処理ベースの通信をセキュリティで保護する方法について説明します。
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667003"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75609640"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Java サービスでのサービス リモート処理通信をセキュリティで保護する
 > [!div class="op_single_selector"]

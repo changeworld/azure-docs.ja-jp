@@ -2,24 +2,24 @@
 title: Azure Active Directory B2C のユーザー アクセスの管理 | Microsoft Docs
 description: Azure AD B2C を使用して、未成年者の識別、生年月日および国/地域のデータの収集、アプリケーションの利用規約への承諾の取得を行う方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: davidmu
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78184521"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
-この記事では、Azure Active Directory (Azure AD) B2C を使用してアプリケーションへのユーザー アクセスを管理する方法について説明します。 アプリケーションのアクセス管理には次のものが含まれます。
+この記事では、Azure Active Directory B2C (Azure AD B2C) を使用してアプリケーションへのユーザー アクセスを管理する方法について説明します。 アプリケーションのアクセス管理には次のものが含まれます。
 
 - 未成年者を識別し、アプリケーションへのユーザー アクセスを制御する。
 - 未成年者によるアプリケーションの使用について保護者の同意を求める。
@@ -30,7 +30,7 @@ ms.locfileid: "65228024"
 
 ## <a name="control-minor-access"></a>未成年者のアクセスを制御する
 
-アプリケーションおよび組織は、未成年者を対象としないアプリケーションとサービスを未成年者が使用しないようにすることができます。 または、未成年者を受け入れたうえで、保護者の同意を管理し、ビジネス ルールによる指示と法令による許可に従って、許容されるエクスペリエンスを提供することもできます。 
+アプリケーションおよび組織は、未成年者を対象としないアプリケーションとサービスを未成年者が使用しないようにすることができます。 または、未成年者を受け入れたうえで、保護者の同意を管理し、ビジネス ルールによる指示と法令による許可に従って、許容されるエクスペリエンスを提供することもできます。
 
 ユーザーが未成年者であると識別される場合に、Azure AD B2C のユーザー フローを次の 3 つのオプションのいずれかに設定できます。
 
@@ -46,21 +46,21 @@ ms.locfileid: "65228024"
 
 保護者の同意を得るためのユーザー フローの例を次に示します。
 
-1. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
+1. [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
 
-2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。 
+2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。
 
 3. Azure AD B2C は、ユーザーが普通にサインインできるサインインの手順を示し、**legalAgeGroupClassification = "minorWithParentalConsent"** を含むように設定されたトークンをアプリケーションに発行します。 アプリケーションは親のメール アドレスを収集し、親が成人であることを確認します。 そのためには、国内官庁での身元確認、ライセンス検証、クレジット カードでの証明などの信頼できるソースを使用します。 検証が成功した場合、アプリケーションは、Azure AD B2C ユーザー フローを使用して、未成年者にサインインするように求めるメッセージを表示します。 同意が拒否された場合 (たとえば、**legalAgeGroupClassification = "minorWithoutParentalConsent"** の場合)、Azure AD B2C は、同意プロセスを再開するためにアプリケーションに JSON トークンを返します (ログインではなく)。 必要に応じて、ユーザー フローをカスタマイズすることもできます。つまり、記録されている未成年者のメール アドレスまたは成人のメール アドレスに登録コードを送信することで、未成年者または成人が未成年者のアカウントへのアクセスを回復することができます。
 
 4. 同意を取り消すオプションがアプリケーションによって未成年者に提供されます。
 
-5. 未成年者または成人が同意を取り消すと、Azure AD Graph API を使用して、**consentProvidedForMinor** を **denied** に変更できます。 または、アプリケーションで、同意が取り消された未成年者を削除することも選択できます。 必要に応じて、認証された未成年者が (または保護者が未成年者のアカウントを使用して) 同意を取り消すことができるように、ユーザー フローをカスタマイズすることもできます。 Active Directory B2C では、**consentProvidedForMinor** を **denied** として記録します。
+5. 未成年者または成人が同意を取り消すと、Microsoft Graph API を使用して、**consentProvidedForMinor** を **denied** に変更できます。 または、アプリケーションで、同意が取り消された未成年者を削除することも選択できます。 必要に応じて、認証された未成年者が (または保護者が未成年者のアカウントを使用して) 同意を取り消すことができるように、ユーザー フローをカスタマイズすることもできます。 Active Directory B2C では、**consentProvidedForMinor** を **denied** として記録します。
 
-**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](active-directory-b2c-reference-custom-attr.md)に関するページをご覧ください。 Azure AD Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
+**legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](user-flow-custom-attributes.md)に関するページをご覧ください。 Microsoft Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>生年月日と国/地域のデータを収集する
 
-アプリケーションでは、Azure AD B2C を利用して、登録時にすべてのユーザーの生年月日 (DOB) と国/地域の情報を収集できます。 この情報がまだ存在しない場合、アプリケーションは次回の認証 (サインイン) プロセスでユーザーに要求することができます。 ユーザーは、DOB と国/地域の情報を入力しなければ操作を続行できません。 Azure AD B2C は、この情報を使用し、その国/地域の規制基準に従って、ユーザーを未成年者と見なすかどうかを判断します。 
+アプリケーションでは、Azure AD B2C を利用して、登録時にすべてのユーザーの生年月日 (DOB) と国/地域の情報を収集できます。 この情報がまだ存在しない場合、アプリケーションは次回の認証 (サインイン) プロセスでユーザーに要求することができます。 ユーザーは、DOB と国/地域の情報を入力しなければ操作を続行できません。 Azure AD B2C は、この情報を使用し、その国/地域の規制基準に従って、ユーザーを未成年者と見なすかどうかを判断します。
 
 ユーザー フローをカスタマイズすると、DOB と国/地域の情報を収集し、Azure AD B2C の要求変換を使用して **ageGroup** を決定し、ディレクトリに結果を保存 (または DOB と国/地域の情報を直接保存) することができます。
 
@@ -74,11 +74,11 @@ ms.locfileid: "65228024"
 
     b. 実際の生年月日と最小生年月日を比較します。 最小生年月日がユーザーの生年月日より前の場合、この計算は、年齢グループの計算結果として **Minor** を返します。
 
-3. **MinorNoConsentRequired** ノードが国の要素に存在する場合、**MinorNoConsentRequired** の値を使用して手順 2a. と 2b. を繰り返します。 最小生年月日がユーザーの生年月日より前の場合、2b. の出力によって **MinorNoConsentRequired** が返されます。 
+3. **MinorNoConsentRequired** ノードが国の要素に存在する場合、**MinorNoConsentRequired** の値を使用して手順 2a. と 2b. を繰り返します。 最小生年月日がユーザーの生年月日より前の場合、2b. の出力によって **MinorNoConsentRequired** が返されます。
 
 4. どちらの計算でも true が返されない場合、計算結果として **Adult** が返されます。
 
-アプリケーションが他の方法で確実に DOB または国/地域のデータを収集している場合、このアプリケーションでは Graph API を使用してこの情報によってユーザー レコードを更新できます。 例: 
+アプリケーションが他の方法で確実に DOB または国/地域のデータを収集している場合、このアプリケーションでは Graph API を使用してこの情報によってユーザー レコードを更新できます。 次に例を示します。
 
 - ユーザーが成人であることがわかっている場合は、ディレクトリ属性 **ageGroup** を **Adult** の値で更新します。
 - ユーザーが未成年者であることがわかっている場合は、ディレクトリ属性 **ageGroup** を **Minor** の値で更新し、必要に応じて **consentProvidedForMinor** を設定します。
@@ -112,11 +112,11 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 
 次の図は、推奨されるユーザー フローを示しています。
 
-![同意のユーザー フロー](./media/manage-user-access/user-flow.png) 
+![推奨される受け入れユーザー フローを示すフロー チャート図](./media/manage-user-access/user-flow.png)
 
 要求における DateTime ベースの利用規約の同意の例を、次に示します。
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetNewUserAgreeToTermsOfUseConsentDateTime" TransformationMethod="GetCurrentDateTime">
     <OutputClaims>
@@ -139,7 +139,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 
 要求における Version ベースの利用規約の同意の例を、次に示します。
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetEmptyTermsOfUseConsentVersionForNewUser" TransformationMethod="CreateStringClaim">
     <InputParameters>
@@ -170,9 +170,10 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="outputClaim" />
     </OutputClaims>
   </ClaimsTransformation>
-</ClaimsTransformations> 
+</ClaimsTransformations>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ユーザー データを削除およびエクスポートする方法については、[ユーザー データの管理](manage-user-data.md)に関するページを参照してください。
+- 利用規約のプロンプトを実装するカスタム ポリシーの例については、「[A B2C IEF Custom Policy - Sign Up and Sign In with 'Terms of Use' prompt (B2C IEF カスタム ポリシー - '利用規約' プロンプトを使ったサインアップおよびサインイン)](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou)」を参照してください。

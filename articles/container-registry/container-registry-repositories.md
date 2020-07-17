@@ -1,19 +1,14 @@
 ---
-title: Azure Portal の Azure Container Registry リポジトリ
-description: Azure Portal で Azure Container Registry リポジトリを表示する方法
-services: container-registry
-author: cristy
-manager: jeconnoc
-ms.service: container-registry
+title: Portal でリポジトリを表示する
+description: Azure portal を使用して、Docker コンテナー イメージとその他のサポートされているアーティファクトをホストする Azure Container Registry リポジトリを表示します。
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: cristyg
-ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768330"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74456295"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure Portal でコンテナー レジストリ リポジトリを表示する
 
@@ -21,9 +16,9 @@ Azure Container Registry を使用すると、リポジトリに Docker コン�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **コンテナー レジストリ**: コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
-* **Docker CLI**: [Docker][docker-install] をローカル コンピューターにインストールします。これで、Docker コマンド ライン インターフェイスを使用できるようになります。
-* **コンテナー イメージ**: コンテナー レジストリにイメージをプッシュします。 イメージのプッシュ方法とプル方法については、[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページを参照してください。
+* **コンテナー レジストリ**:コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+* **Docker CLI**:[Docker][docker-install] をローカル コンピューターにインストールします。これで、Docker コマンド ライン インターフェイスを使用できるようになります。
+* **コンテナー イメージ**:コンテナー レジストリにイメージをプッシュします。 イメージのプッシュ方法とプル方法については、[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページを参照してください。
 
 ## <a name="view-repositories-in-azure-portal"></a>Azure Portal でリポジトリを表示する
 
@@ -39,7 +34,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 リポジトリを表示するには:
 
-1. [Azure Portal][portal] にサインインします
+1. [Azure ポータル][portal]
 1. Nginx イメージをプッシュした **Azure Container Registry** を選択します
 1. **[リポジトリ]** を選択し、レジストリ内のイメージを含むリポジトリの一覧を表示します
 1. リポジトリを選択し、リポジトリ内のイメージ タグを表示します
@@ -48,7 +43,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 ![Portal でのリポジトリ](./media/container-registry-repositories/container-registry-repositories.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、ポータルでリポジトリを表示し、使用する方法の基本を学んだので、Azure Container Registry と [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) クラスターを使用してみてください。
 

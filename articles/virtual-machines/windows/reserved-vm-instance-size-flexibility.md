@@ -1,24 +1,20 @@
 ---
-title: 仮想マシン サイズの柔軟性 -Azure Reserved VM Instances | Microsoft Docs
+title: 仮想マシン サイズの柔軟性 - Azure Reserved VM Instances
 description: 予約 VM インスタンスを購入する際に適用されるサイズ シリーズについて説明します。
-services: virtual-machines-windows
-documentationcenter: ''
-author: yashar
-manager: bandersmsft
-editor: ''
-ms.service: virtual-machines-windows
-ms.devlang: na
+author: bandersmsft
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: yashar
-ms.openlocfilehash: 7d503d77d51c2abe06485ed33060653e47b00f53
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.date: 02/18/2020
+ms.reviewer: yashar
+ms.openlocfilehash: 8b322535fe7b0437c1d3644584fde71e219dcf47
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010499"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099922"
 ---
+# <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性
 [!INCLUDE [virtual-machines-common-reserved-vm-instance-size-flexibility](../../../includes/virtual-machines-common-reserved-vm-instance-size-flexibility.md)]
 

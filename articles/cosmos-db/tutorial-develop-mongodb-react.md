@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: ef245c2ef5da2b3dc9780e772a71e8ef896e1aff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959801"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "69614103"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 
@@ -69,7 +69,7 @@ ms.locfileid: "56959801"
 
 ## <a name="read-and-create-heroes-in-the-app"></a>アプリでのヒーローの読み取りと作成
 
-この動画では、Cosmos DB データベースにヒーローを作成したり、ヒーローを読み取ったりする方法のほか、Postman と React UI でそれらのメソッドをテストする方法について紹介します。 
+この動画では、Cosmos データベースにヒーローを作成したり、ヒーローを読み取ったりする方法のほか、Postman と React UI でそれらのメソッドをテストする方法について紹介します。 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
@@ -85,14 +85,14 @@ ms.locfileid: "56959801"
 
 > [!VIDEO https://www.youtube.com/embed/TcSm2ISfTu8]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリの使用を続けない場合は、以下の手順に従い、このチュートリアルで作成したすべてのリソースを Azure Portal で削除してください。 
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

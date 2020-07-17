@@ -1,21 +1,19 @@
 ---
-title: スキーマによる XML の検証 - Azure Logic Apps | Microsoft Docs
+title: スキーマによる XML の検証
 description: Enterprise Integration Pack を備えた Azure Logic Apps で XML ドキュメントを検証するスキーマを追加する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 02/06/2019
-ms.openlocfilehash: 3cca995b353b88cc481cbda68df4211a724f7f09
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727316"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75979373"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証する
 
@@ -33,7 +31,7 @@ ms.locfileid: "57727316"
   そのスキーマを統合アカウントに追加するには、統合アカウントからストレージ アカウントにリンクする方法があります。 
   このタスクを実行するには、以下が必要です。 
 
-  * スキーマ用の BLOB コンテナーを作成する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 [ストレージ アカウントの作成方法についてはこちら](../storage/common/storage-quickstart-create-account.md)を参照してください。 
+  * スキーマ用の BLOB コンテナーを作成する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 [ストレージ アカウントの作成方法についてはこちら](../storage/common/storage-account-create.md)を参照してください。 
 
   * スキーマを格納する BLOB コンテナー。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 
   後で統合アカウントにスキーマを追加するときに、コンテナーのコンテンツ URI が必要です。
@@ -62,11 +60,11 @@ ms.locfileid: "57727316"
 
    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[スキーマ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[スキーマ]** タイルを選択します。
 
    ![[スキーマ] を選択する](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-1. **[スキーマ]** ページが開いたら、**[追加]** を選択します。
+1. **[スキーマ]** ページが開いたら、 **[追加]** を選択します。
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
@@ -81,9 +79,9 @@ ms.locfileid: "57727316"
 
    ![小さいスキーマをアップロードする](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
 
-1. 準備ができたら、**[OK]** を選択します。
+1. 準備ができたら、 **[OK]** を選択します。
 
-   スキーマのアップロードが完了したら、**[スキーマ]** 一覧にスキーマが表示されます。
+   スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。
 
 <a name="larger-schema"></a>
 
@@ -99,11 +97,11 @@ ms.locfileid: "57727316"
 
 1. BLOB コンテナーのショートカット メニューから **[Set Public Access Level]\(パブリック アクセス レベルの設定\)** を選択します。
 
-   * BLOB コンテナーが少なくともパブリック アクセス権を持っている場合は、**[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持つコンテナーにアップロードする](#public-access)」の手順を実行します
+   * BLOB コンテナーが少なくともパブリック アクセス権を持っている場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持つコンテナーにアップロードする](#public-access)」の手順を実行します
 
      ![パブリック アクセス権](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * BLOB コンテナーがパブリック アクセス権を持っていない場合は、**[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持たないコンテナーにアップロードする](#public-access)」の手順を実行します
+   * BLOB コンテナーがパブリック アクセス権を持っていない場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持たないコンテナーにアップロードする](#public-access)」の手順を実行します
 
      ![パブリック アクセス権なし](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -120,12 +118,12 @@ ms.locfileid: "57727316"
    アセンブリの名前を入力します。 
    **[大きいファイル (2 MB 超)]** を選択します。 
 
-   **[スキーマ]** ボックスではなく、**[コンテンツ URI]** ボックスが表示されます。
+   **[スキーマ]** ボックスではなく、 **[コンテンツ URI]** ボックスが表示されます。
 
 1. **[コンテンツ URI]** ボックスに、スキーマの URL を貼り付けます。 
    スキーマの追加を完了します。
 
-スキーマのアップロードが完了したら、**[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
+スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
 
 <a name="no-public-access"></a>
 
@@ -137,16 +135,16 @@ ms.locfileid: "57727316"
 1. アップロードが完了したら、スキーマの共有アクセス署名 (SAS) を生成します。 
    スキーマのショートカット メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
-1. **[Shared Access Signature]** ウィンドウで **[Generate container-level shared access signature URI]\(コンテナーレベルの共有アクセス署名 URI の生成\)** > **[作成]** の順に選択します。 
-   SAS URL が生成されたら、**[URL]** に進み、**[コピー]** を選択します。
+1. **[Shared Access Signature]** ウィンドウで **[Generate container-level shared access signature URI]\(コンテナーレベルの共有アクセス署名 URI の生成\)**  >  **[作成]** の順に選択します。 
+   SAS URL が生成されたら、 **[URL]** に進み、 **[コピー]** を選択します。
 
 1. **[スキーマの追加]** ウィンドウが開いている Azure portal に戻ります。 **[大きいファイル]** を選択します。
 
-   **[スキーマ]** ボックスではなく、**[コンテンツ URI]** ボックスが表示されます。
+   **[スキーマ]** ボックスではなく、 **[コンテンツ URI]** ボックスが表示されます。
 
-1. **[コンテンツ URI]** ボックスに、前に生成した SAS を貼り付けます。 スキーマの追加を完了します。
+1. **[コンテンツ URI]** ボックスに、前に生成した SAS URI を貼り付けます。 スキーマの追加を完了します。
 
-スキーマのアップロードが完了したら、**[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
+スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
 
 ## <a name="edit-schemas"></a>スキーマを編集する
 
@@ -154,39 +152,39 @@ ms.locfileid: "57727316"
 
 1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、統合アカウントをまだ開いていない場合は検索して開きます。
 
-1. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 
+1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
    検索ボックスに「integration account」と入力します。 
    **[統合アカウント]** を選択します。
 
 1. スキーマを更新する統合アカウントを選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[スキーマ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[スキーマ]** タイルを選択します。
 
 1. **[スキーマ]** ページが開いたら、スキーマを選択します。 
-   まずスキーマをダウンロードして編集するには、**[ダウンロード]** を選択し、スキーマを保存します。
+   まずスキーマをダウンロードして編集するには、 **[ダウンロード]** を選択し、スキーマを保存します。
 
-1. 更新したスキーマをアップロードする準備ができたら、**[スキーマ]** ページで更新するスキーマを選択して **[更新]** を選択します。
+1. 更新したスキーマをアップロードする準備ができたら、 **[スキーマ]** ページで更新するスキーマを選択して **[更新]** を選択します。
 
 1. アップロードする更新済みスキーマを探して選択します。 
-   スキーマ ファイルのアップロードが完了したら、**[スキーマ]** 一覧に更新されたスキーマが表示されます。
+   スキーマ ファイルのアップロードが完了したら、 **[スキーマ]** 一覧に更新されたスキーマが表示されます。
 
 ## <a name="delete-schemas"></a>スキーマを削除する
 
 1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、統合アカウントをまだ開いていない場合は検索して開きます。
 
-1. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 
+1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
    検索ボックスに「integration account」と入力します。 
    **[統合アカウント]** を選択します。
 
 1. スキーマを削除する統合アカウントを選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、**[スキーマ]** タイルを選択します。
+1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[スキーマ]** タイルを選択します。
 
-1. **[スキーマ]** ページが開いたら、スキーマを選択し、**[削除]** を選択します。
+1. **[スキーマ]** ページが開いたら、スキーマを選択し、 **[削除]** を選択します。
 
-1. スキーマの削除を確定するには、**[はい]** を選択します。
+1. スキーマの削除を確定するには、 **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)
 * [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md)

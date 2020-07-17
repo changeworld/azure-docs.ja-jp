@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009040"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "68988202"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory 監視とは
 
@@ -46,7 +46,7 @@ Azure AD アクティビティ ログの監視設定を構成するには、ま�
 
     ![診断設定](./media/overview-monitoring/diagnostic-settings.png)
     
-* **[監査ログ]** または **[サインイン]** を選択し、**[設定のエクスポート]** を選択します。 
+* **[監査ログ]** または **[サインイン]** を選択し、 **[設定のエクスポート]** を選択します。 
 
     ![設定のエクスポート](./media/overview-monitoring/export-settings.png)
 
@@ -65,7 +65,7 @@ Azure AD アクティビティ ログの監視設定を構成するには、ま�
 
 Azure AD のアクティビティ ログ用の既製のビューをインストールして、サインインと監査イベントを含む一般的なシナリオを監視することもできます。 [Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](howto-install-use-log-analytics-views.md)方法を学習してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor でのアクティビティ ログ](concept-activity-logs-azure-monitor.md)
 * [ログをイベント ハブにストリーム配信する](tutorial-azure-monitor-stream-logs-to-event-hub.md)

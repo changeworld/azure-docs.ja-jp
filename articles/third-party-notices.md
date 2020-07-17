@@ -1,13 +1,17 @@
 ---
+title: 法的通知
+description: Azure ドキュメントの法的通知
+author: SyntaxC4
+ms.author: cfowler
 ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
-ms.openlocfilehash: 2b1fc99fe179187c6431d9a999628db76885e553
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789675"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72750423"
 ---
 # <a name="legal-notices"></a>法的通知
 

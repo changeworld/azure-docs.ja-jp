@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002789"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68883548"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Bing Visual Search API の言語と地域のサポート
 
@@ -34,7 +34,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 > - レシピ、ショッピング、画像を含むページなどの分析情報が使用できるのは en-US 市場のみです。
 
 
-## <a name="countries"></a>国
+## <a name="countriesregions"></a>国/リージョン
 
 |国/リージョン|コード|
 |-------|----|
@@ -51,7 +51,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |ドイツ|DE|
 |香港特別行政区|HK|
 |インド|IN|
-|インドネシア|ID|
+|インドネシア|id|
 |イタリア|IT|
 |日本|JP|
 |韓国|KR|
@@ -73,7 +73,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|米国|US|
+|アメリカ|US|
 
 
 ## <a name="markets"></a>市場
@@ -93,7 +93,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|繁体字中国語|zh-HK|
+|香港特別行政区|中国語 (繁体字)|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -114,8 +114,8 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|繁体字中国語|zh-TW|
+|台湾|中国語 (繁体字)|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|米国|英語|en-US|
-|米国|スペイン語|es-US|
+|アメリカ|英語|en-US|
+|アメリカ|スペイン語|es-US|

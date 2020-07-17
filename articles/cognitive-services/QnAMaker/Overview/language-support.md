@@ -1,113 +1,91 @@
 ---
 title: 言語サポート - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ナレッジ ベースの言語は、ソースから質問と回答を自動的に抽出する QnA Maker の機能、およびユーザー クエリに対して QnA Maker が提供する結果の関連性に影響します。 QnA Maker のナレッジ ベースでサポートされるカルチャと自然言語の一覧。 同じナレッジ ベースに複数の言語を混在させないでください。
+description: QnA Maker のナレッジ ベースでサポートされるカルチャと自然言語の一覧。 同じナレッジ ベースに複数の言語を混在させないでください。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/21/2019
-ms.author: tulasim
-ms.custom: seodec18
-ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.topic: reference
+ms.date: 09/24/2019
+ms.author: diberry
+ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922405"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79219009"
 ---
-# <a name="language-support-for-qna-maker"></a>QnA Maker の言語サポート
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker のリソースとナレッジ ベースに対する言語のサポート
 
-ナレッジ ベースの言語は、[ソース](../Concepts/data-sources-supported.md)から質問と回答を自動的に抽出する QnA Maker の機能、およびユーザー クエリに対して QnA Maker が提供する結果の関連性に影響します。
+サービスの言語は、リソースに最初のナレッジ ベースを作成するときに選択します。 そのリソースに追加するすべてのナレッジ ベースは、同じ言語である必要があります。 
 
-## <a name="auto-extraction"></a>自動抽出
-QnA Maker は任意の言語ページでの質問と回答の抽出をサポートしますが、QnA Maker は質問の識別にキーワードを使うため、抽出の有効性は次の言語の場合に非常に高くなります。
+言語により、ユーザー クエリに対する応答で QnA Maker によって提供される結果の関連性が決まります。
 
-|サポートされている言語| ロケール|
-|-----|----|
-|英語|en-*|
-|フランス語|fr-*|
-|イタリア語|it-*|
-|ドイツ語|de-*|
-|スペイン語|es-*|
+[言語選択の影響](../how-to/language-knowledge-base.md)の詳細について参照してください。
 
-## <a name="primary-language-detection"></a>第一言語検出
+## <a name="languages-supported"></a>サポートされている言語
 
-検出に使用される第一言語は、最初のドキュメントまたは URL が最初のナレッジ ベースに追加されるときに、QnA Maker リソースと、そのリソースに作成されるすべてのナレッジ ベースに設定されます。 言語は変更できません。 
+次の一覧では、QnA Maker のリソースに対してサポートされている言語を示します。 
 
-複数の言語をサポートする予定があるユーザーは、言語ごとに新しい QnA Maker リソースが必要です。 [言語ベースの QnA Maker ナレッジ ベースを作成](../how-to/language-knowledge-base.md)する方法をご覧ください。  
-
-第一言語を確認する手順は次のとおりです。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。  
-1. QnA Maker リソースの一部として作成された Azure Search リソースを検索して選択します。 Azure Search リソース名は QnA Maker リソースと同じ名前で始まり、種類は**検索サービス**です。 
-1. 検索リソースの **[概要]** ページで **[インデックス]** を選択します。 
-1. **[testkb]** インデックスを選択します。
-1. **[フィールド]** タブを選択します。 
-1. **[質問]** フィールドと **[回答]** フィールドの **[アナライザー]** 列を表示します。 
-
-
-## <a name="query-matching-and-relevance"></a>クエリの一致と関連性
-QnA Maker は、Azure Search の[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に依存して結果を提供します。 En-* 言語については、関連性が向上する特別な再ランキング機能を利用できます。
-
-Azure Search の機能はサポートされている言語に従いますが、QnA Maker には Azure Search の結果より上位に追加のランカーがあります。 このランカー モデルでは、en-* においてはいくつかの特別なセマンティックとワード ベースの機能を使用しますが、他の言語ではまだ使用できません。 これらの機能は QnA Maker ランカーの内部動作の一部であるため、使用できるようにはしません。 
-
-QnA Maker は、作成時に[ナレッジ ベースの言語を自動検出](#primary-language-detection)し、それに応じてアナライザーを設定します。 次の言語でナレッジ ベースを作成できます。 
-
-|サポートされている言語|
-|-----|
+|言語|
+|--|
 |アラビア語|
 |アルメニア語|
-ベンガル語|
+|ベンガル語|
 |バスク語|
-|ブルガリア語|
-|カタルニア語|
-|簡体字中国語|
+|Bulgarian|
+|カタロニア語|
+|簡体中国語|
 |繁体字中国語|
-|クロアチア語|
-|チェコ語|
-|デンマーク語|
-|オランダ語|
-|英語|
-|エストニア語|
-|フィンランド語|
-|フランス語|
+|Croatian|
+|Czech|
+|Danish|
+|Dutch|
+|English|
+|Estonian|
+|Finnish|
+|French|
 |ガリシア語|
-|ドイツ語|
-|ギリシャ語|
+|German|
+|Greek|
 |グジャラート語|
 |ヘブライ語|
 |ヒンディー語|
-|ハンガリー語|
+|Hungarian|
 |アイスランド語|
 |インドネシア語|
 |アイルランド語|
-|イタリア語|
-|日本語|
+|Italian|
+|Japanese|
 |カンナダ語|
-|韓国語|
-|ラトビア語|
-|リトアニア語|
+|Korean|
+|Latvian|
+|Lithuanian|
 |マラヤーラム語|
 |マレー語|
 |ノルウェー語|
-|ポーランド語|
-|ポルトガル語|
+|Polish|
+|Portuguese|
 |パンジャーブ語|
-|ルーマニア語|
-|ロシア語|
+|Romanian|
+|Russian|
 |セルビア語 (キリル)|
 |セルビア語 (ラテン)|
-|スロバキア語|
-|スロベニア語|
-|スペイン語|
-|スウェーデン語|
+|Slovak|
+|Slovenian|
+|Spanish|
+|Swedish|
 |タミル語|
 |テルグ語|
-|タイ語|
-|トルコ語|
+|Thai|
+|Turkish|
 |ウクライナ語|
-|ウルドゥー語|
+|ウルドゥ語|
 |ベトナム語|
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [言語の選択](../how-to/language-knowledge-base.md)

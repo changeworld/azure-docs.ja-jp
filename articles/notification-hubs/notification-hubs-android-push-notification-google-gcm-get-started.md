@@ -1,12 +1,12 @@
 ---
-title: Azure Notification Hubs と Google Cloud Messaging を使用して Android アプリにプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs と Google Cloud Messaging を使用して Android にプッシュ通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: android
 keywords: プッシュ通知,プッシュ通知,Android プッシュ通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 7e442d85303485ca8800d4bcb31a9afde06d0e69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232726"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595020"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する (非推奨)
 
@@ -41,7 +43,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 > [!IMPORTANT]
 > このトピックでは、Google Cloud Messaging (GCM) を使用したプッシュ通知について説明します。 Google の Firebase Cloud Messaging (FCM) を使用している場合は、 [Azure Notification Hubs と FCM を使用した Android へのプッシュ通知の送信](notification-hubs-android-push-notification-google-fcm-get-started.md)に関する記事を参照してください。
 
-このチュートリアルの完成したコードについては、GitHub の [こちら](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)からダウンロードできます。
+このチュートリアルの完成したコードについては、GitHub の [こちら](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)からダウンロードできます。
 
 このチュートリアルでは、次のアクションを実行します。
 
@@ -74,17 +76,17 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 これで、通知ハブが GCM と連動するように構成されました。接続文字列を使用して、プッシュ通知の受信と送信の両方にアプリを登録できます。
 
-## <a id="connecting-app"></a>通知ハブにアプリを接続する
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>通知ハブにアプリを接続する
 
 ### <a name="create-a-new-android-project"></a>新しい Android プロジェクトを作成する
 
 1. Android Studio で新しい Android Studio プロジェクトを開始する
 
    ![Android Studio - new project][13]
-2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 その後、 **[次へ]** をクリックします。
+2. **[Phone and Tablet (電話とタブレット)]** フォーム ファクターを選択し、サポートする **[Minimum SDK (最低限の SDK)]** を選択します。 続けて、 **[次へ]** をクリックします。
 
    ![Android Studio - project creation workflow][14]
-3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、**[Next (次へ)]** をクリックして、**[Finish (完了)]** をクリックします。
+3. メイン アクティビティに **[Empty Activity (空のアクティビティ)]** を選択し、 **[Next (次へ)]** をクリックして、 **[Finish (完了)]** をクリックします。
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 
@@ -110,7 +112,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>プロジェクトの AndroidManifest.xml を更新する
 
-1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を使用して、[登録トークンを取得する](https://developers.google.com/cloud-messaging/android/client#sample-register)ために使用されるインスタンス ID リスナー サービスをコード内に実装します。 このチュートリアルでは、クラスの名前は `MyInstanceIDService` です。
+1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を使用して、[登録トークンを取得する](https://developers.google.com/cloud-messaging/)ために使用されるインスタンス ID リスナー サービスをコード内に実装します。 このチュートリアルでは、クラスの名前は `MyInstanceIDService` です。
 
     次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 `<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
   
@@ -144,7 +146,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     ```
 4. 次の必要な GCM アクセス許可を `</application>` タグの下に追加します。 `<your package>` を `AndroidManifest.xml` ファイルの先頭に示されているパッケージ名に置き換えます。
 
-    これらのアクセス許可に関する詳細については、 [Android 用 GCM Client アプリの設定](https://developers.google.com/cloud-messaging/android/client#manifest)に関するページを参照してください。
+    これらのアクセス許可に関する詳細については、 [Android 用 GCM Client アプリの設定](https://developers.google.com/cloud-messaging/)に関するページを参照してください。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -158,7 +160,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 ### <a name="adding-code"></a>コードを追加する
 
-1. [Project (プロジェクト)] ビューで、**[app]** > **[src]** > **[main]** > **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、**[New (新規)]**、**[Java Class (Java クラス)]** の順にクリックします。 `NotificationSettings`という名前の新しいクラスを追加します。
+1. [Project (プロジェクト)] ビューで、 **[app]**  >  **[src]**  >  **[main]**  >  **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、 **[New (新規)]** 、 **[Java Class (Java クラス)]** の順にクリックします。 `NotificationSettings`という名前の新しいクラスを追加します。
 
     ![Android Studio - new Java class][6]
 
@@ -381,7 +383,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         });
     }
     ```
-10. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的に報告します。 activity_main.xml レイアウトでは、そのコントロールに次の ID を追加します。
+10. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 activity_main.xml レイアウトでは、そのコントロールに次の ID を追加します。
 
     ```xml
     android:id="@+id/text_hello"
@@ -447,7 +449,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
         }
     }
     ```
-14. Android Studio のメニュー バーで、**[Build (ビルド)]** > **[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、コードにエラーがないことを確認します。
+14. Android Studio のメニュー バーで、 **[Build (ビルド)]**  >  **[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、コードにエラーがないことを確認します。
 
 ## <a name="testing-your-app"></a>アプリケーションのテスト
 
@@ -468,8 +470,8 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 [Azure Portal] からプッシュ通知を送信することによって、それらの通知のアプリでの受信をテストできます。
 
-1. **[トラブルシューティング]** セクションで、**[テスト送信]** を選択します。
-2. **[プラットフォーム]** として、**[Android]** を選択します。
+1. **[トラブルシューティング]** セクションで、 **[テスト送信]** を選択します。
+2. **[プラットフォーム]** として、 **[Android]** を選択します。
 3. **[送信]** を選択してテスト通知を送信します。
 4. Android デバイスに通知メッセージが表示されることを確認します。
 
@@ -481,13 +483,13 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
 エミュレーターの内部でプッシュ通知をテストする場合は、エミュレーター イメージがアプリケーション用に選択した Google API レベルをサポートしていることを確認してください。 イメージがネイティブの Google API をサポートしていない場合は、最終的に **SERVICE\_NOT\_AVAILABLE** 例外を受け取ることになります。
 
-さらに、**[設定]** > **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認します。 アカウントを追加していないと、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外につながる可能性があります。
+さらに、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認します。 アカウントを追加していないと、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外につながる可能性があります。
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(省略可能) アプリから直接プッシュ通知を送信する
 
 通常は、バックエンド サーバーを使用して通知を送信します。 場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。 このセクションでは、 [Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)を使用してクライアントから通知を送信する方法を説明します。
 
-1. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [Project (プロジェクト)] ビューで **[app]**  >  **[src]**  >  **[main]**  >  **[res]**  >  **[layout]** の順に展開します。 `activity_main.xml` レイアウト ファイルを開き、 **[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。 次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。 このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
     ```xml
     <Button
@@ -508,7 +510,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. Android Studio の [Project (プロジェクト)] ビューで **[app]** > **[src]** > **[main]** > **[res]** > **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 ファイルの一番下の `</resources>` の直前に次の行を追加します。
+2. Android Studio の [Project (プロジェクト)] ビューで **[app]**  >  **[src]**  >  **[main]**  >  **[res]**  >  **[values]** の順に展開します。 `strings.xml` ファイルを開き、新しい `Button` コントロールと `EditText` コントロールで参照される文字列の値を追加します。 ファイルの一番下の `</resources>` の直前に次の行を追加します。
 
     ```xml
     <string name="send_button">Send Notification</string>
@@ -712,7 +714,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、バックエンドに登録されているすべての Android デバイスにブロードキャスト通知を送信しました。 特定の Android デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。  
 

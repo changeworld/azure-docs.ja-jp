@@ -1,4 +1,16 @@
-
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181862"
+---
 1. Android Studio でプロジェクトを開きます。
 
 2. Android Studio の **Project Explorer** で `ToDoActivity.java` ファイルを開き、次の import ステートメントを追加します。
@@ -60,7 +72,7 @@
 
     この呼び出しで、認証プロセスが開始されます。
 
-5. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動します。
+5. `authenticate();`onCreate**メソッド内の** の後の残りのコードを新しい **createTable** メソッドに移動します。
 
     ```java
     private void createTable() {
@@ -123,6 +135,6 @@
 9. **[Run (実行)]** メニューの **[Run app (アプリの実行)]** をクリックしてアプリを開始し、選択した ID プロバイダーでサインインします。
 
 > [!WARNING]
-> 記載されている URL スキームは、大文字と小文字が区別されます。 `{url_scheme_of_you_app}` のすべての出現箇所で大文字と小文字を同じように使用してください。
+> 説明されている URL スキームでは、大文字と小文字が区別されます。 `{url_scheme_of_you_app}` のすべての出現箇所で大文字と小文字を同じように使用してください。
 
 サインインに成功すると、アプリはエラーなしで実行されます。また、バックエンド サービスにクエリを実行したり、データを更新したりできるようになります。

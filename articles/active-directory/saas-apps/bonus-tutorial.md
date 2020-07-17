@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Bonusly の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Bonusly の統合 | Microsoft Docs'
 description: Azure Active Directory と Bonusly の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ffc2e8c186ce485f7df19b3f797aaa8982735f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65864161"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74232056"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル:Azure Active Directory と Bonusly の統合
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 
 このチュートリアルでは、Bonusly と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Bonusly と Azure AD の統合には、次の利点があります。
@@ -54,11 +54,11 @@ Azure AD への Bonusly の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Bonusly を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Bonusly の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Bonusly**」と入力し、結果ウィンドウで **Bonusly** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Bonusly**」と入力し、結果ウィンドウで **Bonusly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Bonusly](common/search-new-app.png)
 
@@ -90,15 +90,15 @@ Bonusly で Azure AD のシングル サインオンを構成してテストす�
 
 Bonusly で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Bonusly** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Bonusly** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Bonusly クライアント サポート チーム](https://bonus.ly/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、**[SAML 署名証明書]** ダイアログを開きます。
+5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
@@ -133,7 +133,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
 1. 別のブラウザー ウィンドウで、**Bonusly** テナントにサインインします。
 
-1. 上部のツール バーの **[Settings]\(設定\)** をクリックし、**[Integrations and apps]\(統合とアプリ\)** を選択します。
+1. 上部のツール バーの **[Settings]\(設定\)** をクリックし、 **[Integrations and apps]\(統合とアプリ\)** を選択します。
 
     ![Bonusly ソーシャル セクション](./media/bonus-tutorial/ic773686.png "Bonusly")
 1. **[Single Sign-On]** の **[SAML]** を選択します。
@@ -148,15 +148,15 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[IdP Issuer]\(IdP 発行者\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
     
-    d. Azure portal からコピーした **拇印** の値を、**[証明書の指紋]** ボックスに貼り付けます。
+    d. Azure Portal からコピーした**拇印**の値を、 **[Cert Fingerprint]\(証明書の指紋\)** ボックスに貼り付けます。
     
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -180,7 +180,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Bonusly へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Bonusly]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Bonusly]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -192,22 +192,22 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-bonusly-test-user"></a>Bonusly のテスト ユーザーの作成
 
 Azure AD ユーザーが Bonusly にサインインできるようにするには、そのユーザーを Bonusly にプロビジョニングする必要があります。 Bonusly の場合、プロビジョニングは手動で行います。
 
 > [!NOTE]
-> Bonusly から提供されている他の Bonusly ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
+> 他の Bonusly ユーザー アカウント作成ツールや、Bonusly から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 
 
 **ユーザー プロビジョニングを構成するには、次の手順に従います。**
 
@@ -215,23 +215,23 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 1. **[設定]** をクリックします。
 
-    ![設定](./media/bonus-tutorial/ic781041.png "Settings")
+    ![[設定]](./media/bonus-tutorial/ic781041.png "設定")
 
 1. **[Users and bonuses]** タブをクリックします。
 
-    ![Users and bonuses](./media/bonus-tutorial/ic781042.png "Users and bonuses")
+    ![[Users and bonuses]\(ユーザーとボーナス\)](./media/bonus-tutorial/ic781042.png "[Users and bonuses]")
 
 1. **[Manage Users]** をクリックします。
 
-    ![Manage Users](./media/bonus-tutorial/ic781043.png "Manage Users")
+    ![ユーザーの管理](./media/bonus-tutorial/ic781043.png "[Manage Users]")
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781044.png "Add User")
+    ![ユーザーの追加](./media/bonus-tutorial/ic781044.png "ユーザーの追加")
 
 1. **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "Add User")  
+    ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
@@ -239,7 +239,7 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
     c. **[メール]** ボックスに、ユーザーのメール (`brittasimon\@contoso.com` など) を入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
     > [!NOTE]
     > アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。  

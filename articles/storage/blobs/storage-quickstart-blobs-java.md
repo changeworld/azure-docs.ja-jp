@@ -1,215 +1,358 @@
 ---
-title: Java v7 用のクライアント ライブラリを使用して Azure Storage 内に BLOB を作成する方法 | Microsoft Docs
-description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Java v7 用の Azure Storage クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
-services: storage
+title: クイック スタート:Azure Blob Storage ライブラリ v12 - Java
+description: このクイックスタートでは、Java 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
-ms.date: 02/04/2019
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: f7cae5b3c7b0a7da6420674635ff9c3420a6436a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 01/27/2020
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: d30260f8718d061473dfa4b29b7c35e33b27390d
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154414"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871374"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Java v7 用のクライアント ライブラリを使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>クイック スタート:Java v12 SDK で BLOB を管理する
 
-この攻略ガイドでは、Java v7 用のクライアント ライブラリを使用して、Azure Blob Storage に対して、コンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法について説明します。
+このクイックスタートでは、Java を使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 ここでは、BLOB のアップロード、ダウンロード、一覧表示のほか、コンテナーの作成と削除を行います。
 
-> [!TIP]
-> Java 用の Azure Storage クライアント ライブラリの最新バージョンは v10 です。 可能であれば、クライアント ライブラリの最新バージョンを使用することをお勧めします。 V10 の使用を開始するには、「[クイック スタート: Java Storage SDK V10 を使用して BLOB をアップロード、ダウンロード、および一覧表示する](storage-quickstart-blobs-java-v10.md)」を参照してください。
+[API リファレンスのドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
+- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) バージョン 8 以降。
+- [Apache Maven](https://maven.apache.org/download.cgi)。
 
-また、[Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) で Azure ストレージ アカウントを作成します。 アカウントの作成については、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。
+> [!NOTE]
+> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Java v8 SDK で BLOB を管理する](storage-quickstart-blobs-java-legacy.md)」を参照してください。
 
-次の前提条件を満たしていることを確認します。
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-* Maven が統合された IDE をインストールする。
+## <a name="setting-up"></a>設定
 
-* または、Maven をインストールして、コマンド ラインから使用するように構成する。
+このセクションでは、Java 用 Azure Blob Storage クライアント ライブラリ v12 を操作するためのプロジェクトの準備について説明します。
 
-このガイドでは、"Eclipse IDE for Java Developers" 構成の [Eclipse](https://www.eclipse.org/downloads/) を使用します。
+### <a name="create-the-project"></a>プロジェクトを作成する
 
-## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
+*blob-quickstart-v12* という名前の Java アプリケーションを作成します。
 
-[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-java-quickstart)は基本的なコンソール アプリケーションです。  
+1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven コマンドを使用し、*blob-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドを入力して "Hello world!" を作成します。 Java プロジェクト。
 
-アプリケーションのコピーを開発環境にダウンロードするには、[git](https://git-scm.com/) を使います。 
+   ```console
+   mvn archetype:generate -DgroupId=com.blobs.quickstart \
+                          -DartifactId=blob-quickstart-v12 \
+                          -DarchetypeArtifactId=maven-archetype-quickstart \
+                          -DarchetypeVersion=1.4 \
+                          -DinteractiveMode=false
+   ```
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
+1. プロジェクトの生成からの出力は、次のようになります。
+
+    ```console
+    [INFO] Scanning for projects...
+    [INFO]
+    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+    [INFO] Building Maven Stub Project (No POM) 1
+    [INFO] --------------------------------[ pom ]---------------------------------
+    [INFO]
+    [INFO] >>> maven-archetype-plugin:3.1.2:generate (default-cli) > generate-sources @ standalone-pom >>>
+    [INFO]
+    [INFO] <<< maven-archetype-plugin:3.1.2:generate (default-cli) < generate-sources @ standalone-pom <<<
+    [INFO]
+    [INFO]
+    [INFO] --- maven-archetype-plugin:3.1.2:generate (default-cli) @ standalone-pom ---
+    [INFO] Generating project in Batch mode
+    [INFO] ----------------------------------------------------------------------------
+    [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
+    [INFO] ----------------------------------------------------------------------------
+    [INFO] Parameter: groupId, Value: com.blobs.quickstart
+    [INFO] Parameter: artifactId, Value: blob-quickstart-v12
+    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+    [INFO] Parameter: package, Value: com.blobs.quickstart
+    [INFO] Parameter: packageInPathFormat, Value: com/blobs/quickstart
+    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+    [INFO] Parameter: package, Value: com.blobs.quickstart
+    [INFO] Parameter: groupId, Value: com.blobs.quickstart
+    [INFO] Parameter: artifactId, Value: blob-quickstart-v12
+    [INFO] Project created from Archetype in dir: C:\QuickStarts\blob-quickstart-v12
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  7.056 s
+    [INFO] Finished at: 2019-10-23T11:09:21-07:00
+    [INFO] ------------------------------------------------------------------------
+        ```
+
+1. Switch to the newly created *blob-quickstart-v12* folder.
+
+   ```console
+   cd blob-quickstart-v12
+   ```
+
+1. *blob-quickstart-v12* ディレクトリ内に、*data* という別のディレクトリを作成します。 BLOB データ ファイルは、ここに作成され格納されます。
+
+    ```console
+    mkdir data
+    ```
+
+### <a name="install-the-package"></a>パッケージをインストールする
+
+テキスト エディターで *pom.xml* ファイルを開きます。 依存関係のグループに、次の dependency 要素を追加します。
+
+```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-storage-blob</artifactId>
+    <version>12.6.0</version>
+</dependency>
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 プロジェクトを開くには、Eclipse を起動し、ウェルカム画面を閉じます。 **[File]\(ファイル\)** を選択し、**[Open Projects from File System]\(ファイル システムからプロジェクトを開く\)** を選択します。 **[Detect and configure project natures]\(プロジェクトの特性を検出して構成\)** チェック ボックスがオンになっていることを確認します。 **[Directory]\(ディレクトリ\)** を選択して、複製したリポジトリの保存先に移動します。 複製したリポジトリ内で、**blobAzureApp** フォルダーを選択します。 Eclipse プロジェクトとして **blobAzureApp** プロジェクトが表示されることを確認し、**[Finish]\(完了\)** を選択します。
+### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
-プロジェクトのインポートが完了したら、(**src/main/java** 内の **blobQuickstart.blobAzureApp** に格納されている) **AzureApp.java** を開き、`storageConnectionString` 文字列内の `accountname` と `accountkey` を置き換えます。 そのうえでアプリケーションを実行します。 これらのタスクを完了するための具体的な手順については、以降のセクションで説明していきます。
+プロジェクト ディレクトリで次の操作を行います。
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]    
+1. */src/main/java/com/blobs/quickstart* ディレクトリに移動します
+1. 使用しているエディターで *App.java* ファイルを開きます
+1. `System.out.println("Hello world!");` ステートメントを削除します
+1. `import` ディレクティブを追加します
 
-## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
-    
-アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 **AzureApp.Java** ファイルを開きます。 `storageConnectionString` 変数を見つけて、前のセクションでコピーした接続文字列値を貼り付けます。 `storageConnectionString` 変数は次のコード例のようになります。
+コードは次のとおりです。
 
 ```java
-public static final String storageConnectionString =
-"DefaultEndpointsProtocol=https;" +
-"AccountName=<account-name>;" +
-"AccountKey=<account-key>";
+package com.blobs.quickstart;
+
+/**
+ * Azure blob storage v12 SDK quickstart
+ */
+import com.azure.storage.blob.*;
+import com.azure.storage.blob.models.*;
+import java.io.*;
+
+public class App
+{
+    public static void main( String[] args ) throws IOException
+    {
+    }
+}
 ```
 
-## <a name="run-the-sample"></a>サンプルを実行する
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-このサンプル アプリケーションは、既定のディレクトリ (Windows ユーザーの場合は *C:\Users\<user>\AppData\Local\Temp*) にテスト ファイルを作成して Blob Storage にアップロードし、コンテナー内の BLOB の一覧を取得してから、古いファイルと新しいファイルを比較できるように新しい名前でファイルをダウンロードします。 
+## <a name="object-model"></a>オブジェクト モデル
 
-コマンド ラインで Maven を使用してサンプルを実行します。 シェルを開き、複製されたディレクトリ内の **blobAzureApp** に移動します。 次に「`mvn compile exec:java`」と入力します。 
+Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
 
-次の例は、アプリケーションを Windows で実行した場合の出力を示しています。
+* ストレージ アカウント
+* ストレージ アカウント内のコンテナー
+* コンテナー内の BLOB
 
+次の図に、これらのリソースの関係を示します。
+
+![Blob Storage のアーキテクチャ図](./media/storage-blobs-introduction/blob1.png)
+
+これらのリソースとやり取りするには、以下の Java クラスを使用します。
+
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。 ストレージ アカウントでは、Blob service に対して最上位の名前空間が提供されます。
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html):`BlobServiceClientBuilder` クラスでは、`BlobServiceClient` オブジェクトの構成とインスタンス化を支援する fluent ビルダー API が提供されています。
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
+* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html):`BlobItem` クラスでは、`listBlobsFlat` の呼び出しから返された個々の BLOB が示されます。
+
+## <a name="code-examples"></a>コード例
+
+これらのコード例のスニペットは、Java 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
+
+* [接続文字列を取得する](#get-the-connection-string)
+* [コンテナーの作成](#create-a-container)
+* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
+* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
+* [BLOB をダウンロードする](#download-blobs)
+* [コンテナーの削除](#delete-a-container)
+
+### <a name="get-the-connection-string"></a>接続文字列を取得する
+
+以下のコードでは、「[ストレージ接続文字列の構成](#configure-your-storage-connection-string)」セクションで作成した環境変数から、ストレージ アカウントに対する接続文字列を取得します。
+
+このコードを `Main` メソッド内に追加します。
+
+```java
+System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
+
+// Retrieve the connection string for use with the application. The storage
+// connection string is stored in an environment variable on the machine
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable
+// is created after the application is launched in a console or with
+// Visual Studio, the shell or application needs to be closed and reloaded
+// to take the environment variable into account.
+String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 ```
-Azure Blob storage quick start sample
-Creating container: quickstartcontainer
-Creating a sample file at: C:\Users\<user>\AppData\Local\Temp\sampleFile514658495642546986.txt
-Uploading the sample file 
-URI of blob is: https://myexamplesacct.blob.core.windows.net/quickstartcontainer/sampleFile514658495642546986.txt
-The program has completed successfully.
-Press the 'Enter' key while in the console to delete the sample files, example container, and exit the application.
-
-Deleting the container
-Deleting the source, and downloaded files
-```
-
-続行する前に、既定のディレクトリ (Windows ユーザーの場合は *C:\Users\<user>\AppData\Local\Temp*) にファイルがあることを確認します。 コンソール ウィンドウから BLOB の URL をコピーしてブラウザーに貼り付け、Blob Storage のファイルの内容を表示します。 ディレクトリ内のサンプル ファイルと Blob Storage に格納されているコンテンツを比較すると、これらが同じであることがわかります。 
-
-  >[!NOTE]
-  >[Azure Storage Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。
-
-ファイルを確認した後、**Enter** キーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、**AzureApp.java** ファイルを開いてコードを確認します。 
-
-## <a name="understand-the-sample-code"></a>サンプル コードを理解する
-
-次に、サンプル コードを実行して、そのしくみを理解できるようにします。
-
-### <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
-
-最初に、Blob Storage にアクセスして管理するために使うオブジェクトへの参照を作成します。 これらのオブジェクトは、他のオブジェクトを基にして作成されます。各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
-
-* ストレージ アカウントを指す [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) オブジェクトのインスタンスを作成します。
-
-    **CloudStorageAccount** オブジェクトはストレージ アカウントの表現であり、これを使用してストレージ アカウントのプロパティをプログラムで設定してアクセスできます。 **CloudStorageAccount** オブジェクトを使用して、**CloudBlobClient** インスタンスを作成できます。これは Blob service へのアクセスで必要です。
-
-* ストレージ アカウントの [Blob service](/java/api/com.microsoft.azure.storage.blob._cloud_blob_client) を指す **CloudBlobClient** オブジェクトのインスタンスを作成します。
-
-    **CloudBlobClient** は Blob service へのアクセス ポイントを提供し、Blob Storage のプロパティをプログラムで設定してアクセスできるようにします。 **CloudBlobClient** オブジェクトを使用して、**CloudBlobContainer** インスタンスを作成できます。これはコンテナーを作成するために必要です。
-
-* アクセスしているコンテナーを表す [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container) オブジェクトのインスタンスを作成します。 コンテナーは、コンピューターでフォルダーを使ってファイルを整理するのと同じように、BLOB を整理するために使われます。    
-
-    **CloudBlobContainer** を作成した後は、関心がある特定の BLOB を指す [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) オブジェクトのインスタンスを作成して、アップロード、ダウンロード、コピー、その他の操作を実行できます。
-
-> [!IMPORTANT]
-> コンテナーの名前は小文字にする必要があります。 コンテナーの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
 ### <a name="create-a-container"></a>コンテナーを作成する
 
-このセクションでは、オブジェクトのインスタンスを作成し、新しいコンテナーを作成した後、BLOB をパブリックにして URL のみでアクセスできるように、コンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartcontainer** です。 
+新しいコンテナーの名前を決定します。 次のコードでは、確実に一意になるように、コンテナー名に UUID 値を追加します。
 
-この例では、サンプルを実行するたびに新しいコンテナーを作成したいので、[CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) を使います。 アプリケーション全体で同じコンテナーを使用する運用環境では、**CreateIfNotExists** を 1 回だけ呼び出すことをお勧めします。 または、コードから作成する必要がないように、前もってコンテナーを作成しておいてもかまいません。
+> [!IMPORTANT]
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-```java
-// Parse the connection string and create a blob client to interact with Blob storage
-storageAccount = CloudStorageAccount.parse(storageConnectionString);
-blobClient = storageAccount.createCloudBlobClient();
-container = blobClient.getContainerReference("quickstartcontainer");
+次に、[BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) クラスのインスタンスを作成し、[create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) メソッドを呼び出して、ストレージ アカウントに実際にコンテナーを作成します。
 
-// Create the container if it does not exist with public access.
-System.out.println("Creating container: " + container.getName());
-container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobRequestOptions(), new OperationContext());
-```
-
-### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
-
-ファイルをブロック BLOB にアップロードするには、ターゲット コンテナーの BLOB に対する参照を取得します。 BLOB の参照を取得した後は、[CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload) を使ってそれにデータをアップロードできます。 この操作により、BLOB がまだ存在しない場合は作成され、既に存在する場合は上書きされます。
-
-サンプル コードは、アップロードとダウンロードに使うローカル ファイルを作成し、アップロードするファイルを **source** として、BLOB の名前を **blob** に格納します。 次の例では、ファイルを **quickstartcontainer** という名前のコンテナーにアップロードします。
+`Main` メソッドの末尾に次のコードを追加します。
 
 ```java
-//Creating a sample file
-sourceFile = File.createTempFile("sampleFile", ".txt");
-System.out.println("Creating a sample file at: " + sourceFile.toString());
-Writer output = new BufferedWriter(new FileWriter(sourceFile));
-output.write("Hello Azure!");
-output.close();
+// Create a BlobServiceClient object which will be used to create a container client
+BlobServiceClient blobServiceClient = new BlobServiceClientBuilder().connectionString(connectStr).buildClient();
 
-//Getting a blob reference
-CloudBlockBlob blob = container.getBlockBlobReference(sourceFile.getName());
+//Create a unique name for the container
+String containerName = "quickstartblobs" + java.util.UUID.randomUUID();
 
-//Creating blob and uploading file to it
-System.out.println("Uploading the sample file ");
-blob.uploadFromFile(sourceFile.getAbsolutePath());
+// Create the container and return a container client object
+BlobContainerClient containerClient = blobServiceClient.createBlobContainer(containerName);
 ```
 
-Blob Storage で使用できる `upload` メソッドには、[upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext) などがあります。 たとえば、文字列に対しては、`Upload` メソッドではなく、`UploadText` メソッドを使用できます。 
+### <a name="upload-blobs-to-a-container"></a>コンテナーに BLOB をアップロードする
 
-ブロック BLOB は、あらゆる種類のテキスト ファイルまたはバイナリ ファイルに使うことができます。 ページ BLOB は、主に、IaaS VM のバックアップ用の VHD ファイルに使われます。 追加 BLOB は、ファイルに書き込んでからも情報を追加し続ける場合などの、ログ記録に使用します。 BLOB ストレージに格納されているほとんどのオブジェクトはブロック BLOB です。
+次のコード スニペット:
+
+1. ローカルの *data* ディレクトリにテキスト ファイルを作成します。
+1. 「[コンテナーを作成する](#create-a-container)」セクションでのコンテナー上で [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) メソッドを呼び出すことで、[BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) オブジェクトへの参照を取得します。
+1. [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成しますが、既に存在する場合は上書きしません。
+
+`Main` メソッドの末尾に次のコードを追加します。
+
+```java
+// Create a local file in the ./data/ directory for uploading and downloading
+String localPath = "./data/";
+String fileName = "quickstart" + java.util.UUID.randomUUID() + ".txt";
+File localFile = new File(localPath + fileName);
+
+// Write text to the file
+FileWriter writer = new FileWriter(localPath + fileName, true);
+writer.write("Hello, World!");
+writer.close();
+
+// Get a reference to a blob
+BlobClient blobClient = containerClient.getBlobClient(fileName);
+
+System.out.println("\nUploading to Blob storage as blob:\n\t" + blobClient.getBlobUrl());
+
+// Upload the blob
+blobClient.uploadFromFile(localPath + fileName);
+```
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内のファイルの一覧を取得するには、[CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs) を使います。 次のコードは、BLOB の一覧を取得し、ループ処理して、見つかった BLOB の URI を表示します。 コマンド ウィンドウから URI をコピーしてブラウザーに貼り付けることで、ファイルを表示できます。
+[listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) メソッドを呼び出して、コンテナー内の BLOB を一覧表示します。 この場合、コンテナーに BLOB が 1 つだけ追加されているので、一覧表示操作ではその 1 つの BLOB だけが返されます。
+
+`Main` メソッドの末尾に次のコードを追加します。
 
 ```java
-//Listing contents of container
-for (ListBlobItem blobItem : container.listBlobs()) {
-    System.out.println("URI of blob is: " + blobItem.getUri());
+System.out.println("\nListing blobs...");
+
+// List the blob(s) in the container.
+for (BlobItem blobItem : containerClient.listBlobs()) {
+    System.out.println("\t" + blobItem.getName());
 }
 ```
 
 ### <a name="download-blobs"></a>BLOB をダウンロードする
 
-ローカル ディスクに BLOB をダウンロードするには、[CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.downloadtofile) を使います。
+[downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードでは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOAD" というサフィックスを追加します。
 
-次のコードは、前のセクションでアップロードした BLOB をダウンロードし、ローカル ディスクで両方のファイルを見ることができるように、BLOB 名に "_DOWNLOADED" というサフィックスを追加します。 
-
-```java
-// Download blob. In most cases, you would have to retrieve the reference
-// to cloudBlockBlob here. However, we created that reference earlier, and 
-// haven't changed the blob we're interested in, so we can reuse it. 
-// Here we are creating a new file to download to. Alternatively you can also pass in the path as a string into downloadToFile method: blob.downloadToFile("/path/to/new/file").
-downloadedFile = new File(sourceFile.getParentFile(), "downloadedFile.txt");
-blob.downloadToFile(downloadedFile.getAbsolutePath());
-```
-
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-アップロードした BLOB が不要になった場合は、[CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists) を使ってコンテナー全体を削除できます。 このメソッドで、コンテナー内のファイルも削除されます。
+`Main` メソッドの末尾に次のコードを追加します。
 
 ```java
-try {
-if(container != null)
-    container.deleteIfExists();
-} catch (StorageException ex) {
-System.out.println(String.format("Service error. Http code: %d and error code: %s", ex.getHttpStatusCode(), ex.getErrorCode()));
-}
+// Download the blob to a local file
+// Append the string "DOWNLOAD" before the .txt extension so that you can see both files.
+String downloadFileName = fileName.replace(".txt", "DOWNLOAD.txt");
+File downloadedFile = new File(localPath + downloadFileName);
 
-System.out.println("Deleting the source, and downloaded files");
+System.out.println("\nDownloading blob to\n\t " + localPath + downloadFileName);
 
-if(downloadedFile != null)
-downloadedFile.deleteOnExit();
-        
-if(sourceFile != null)
-sourceFile.deleteOnExit();
+blobClient.downloadToFile(localPath + downloadFileName);
 ```
 
-## <a name="next-steps"></a>次の手順
+### <a name="delete-a-container"></a>コンテナーを削除する
 
-この記事では、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Java の使用方法の詳細については、GitHub のソース コード リポジトリを参照してください。
+次のコードでは、[delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) メソッドを使用して、コンテナー全体を削除することで、アプリによって作成されたリソースをクリーンアップします。 また、アプリによって作成されたローカル ファイルも削除します。
+
+アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`System.console().readLine()` を呼び出すことで、ユーザーの入力を一時停止します。 このとき、リソースが削除される前に、正しく作成されたことを確認できます。
+
+`Main` メソッドの末尾に次のコードを追加します。
+
+```java
+// Clean up
+System.out.println("\nPress the Enter key to begin clean up");
+System.console().readLine();
+
+System.out.println("Deleting blob container...");
+containerClient.delete();
+
+System.out.println("Deleting the local source and downloaded files...");
+localFile.delete();
+downloadedFile.delete();
+
+System.out.println("Done");
+```
+
+## <a name="run-the-code"></a>コードの実行
+
+このアプリでは、ローカル フォルダーにテスト ファイルが作成され、BLOB ストレージにアップロードされます。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。
+
+*pom.xml* ファイルが格納されているディレクトリに移動し、次の `mvn` コマンドを使用してプロジェクトをコンパイルします。
+
+```console
+mvn compile
+```
+
+次に、パッケージをビルドします。
+
+```console
+mvn package
+```
+
+次の `mvn` コマンドを実行して、アプリを実行します。
+
+```console
+mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
+```
+
+アプリの出力は、次の例のようになります。
+
+```output
+Azure Blob storage v12 - Java quickstart sample
+
+Uploading to Blob storage as blob:
+        https://mystorageacct.blob.core.windows.net/quickstartblobsf9aa68a5-260e-47e6-bea2-2dcfcfa1fd9a/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
+
+Listing blobs...
+        quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
+
+Downloading blob to
+        ./data/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65DOWNLOAD.txt
+
+Press the Enter key to begin clean up
+
+Deleting blob container...
+Deleting the local source and downloaded files...
+Done
+```
+
+クリーンアップ プロセスを開始する前に、*data* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
+
+ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
+
+## <a name="next-steps"></a>次のステップ
+
+このクイックスタートでは、Java を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明しました。
+
+BLOB ストレージのサンプル アプリを確認するには、以下に進んでください。
 
 > [!div class="nextstepaction"]
-> [Java 用の Microsoft Azure Storage SDK v10](https://github.com/azure/azure-storage-java) 
-> [Java API リファレンス](https://docs.microsoft.com/java/azure/)
-> [Java のコード サンプル](../common/storage-samples-java.md)
+> [Azure Blob Storage SDK v12 の Java サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+
+* 詳細については、「[Azure SDK for Java (Java 用の Azure SDK)](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)」を参照してください。
+* チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Java クラウド開発者向けの Azure](/azure/developer/java/)」を参照してください。

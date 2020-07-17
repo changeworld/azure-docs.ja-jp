@@ -1,38 +1,40 @@
 ---
-title: 'ルートベースの Azure VPN ゲートウェイを作成する: PowerShell | Microsoft Docs'
+title: Azure VPN Gateway:ルートベースのゲートウェイを作成する:PowerShell
 description: PowerShell を使用して、ルートベースの VPN Gateway をすばやく作成します
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8622de88b1edc7b0f5eb2571a55415837ad28dc7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416906"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77152960"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell を使用してルートベースの VPN ゲートウェイを作成します
 
 この記事では、PowerShell を使用して、ルートベースの Azure VPN ゲートウェイをすばやく作成する方法について説明します。 VPN ゲートウェイが使用されるのは、ご利用のオンプレミスのネットワークへの VPN 接続を作成するときです。 また、VNet への接続に VPN ゲートウェイを使用することもできます。
 
+## <a name="before-you-begin"></a>開始する前に
+
 この記事の手順では、VNet、サブネット、ゲートウェイ サブネット、およびルートベースの VPN ゲートウェイ (仮想ネットワーク ゲートウェイ) を作成します。 ゲートウェイの作成が完了すると、接続を作成できます。 これらの手順には、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループを作成します。 PowerShell をローカルで実行している場合は、昇格された特権で PowerShell コンソールを開き、`Connect-AzAccount` コマンドを使用して Azure に接続します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
-## <a name="vnet"></a>仮想ネットワークの作成
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>仮想ネットワークの作成
 
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、**EastUS** の場所に、**VNet1** という名前の仮想ネットワークを作成します。
 
@@ -60,7 +62,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>ゲートウェイ サブネットの追加
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>ゲートウェイ サブネットの追加
 
 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する予約済み IP アドレスが含まれます。 次の例を使用してゲートウェイ サブネットを追加します。
 
@@ -79,10 +81,10 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) コマンドレットを使用して仮想ネットワークのサブネット構成を設定します。
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>パブリック IP アドレスの要求
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>パブリック IP アドレスの要求
 
 VPN ゲートウェイには、動的に割り当てられるパブリック IP アドレスが必要です。 VPN ゲートウェイへの接続を作成するときは、これが、ユーザーが指定する IP アドレスです。 次の例を使用して、パブリック IP アドレスを要求します。
 
@@ -90,7 +92,7 @@ VPN ゲートウェイには、動的に割り当てられるパブリック IP 
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>ゲートウェイ IP アドレスの構成の作成
+## <a name="create-the-gateway-ip-address-configuration"></a><a name="GatewayIPConfig"></a>ゲートウェイ IP アドレスの構成の作成
 
 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 次の例を使用して、ゲートウェイの構成を作成します。
 
@@ -99,7 +101,7 @@ $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
-## <a name="CreateGateway"></a>VPN ゲートウェイの作成
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>VPN ゲートウェイの作成
 
 VPN ゲートウェイの作成には 45 分以上かかる場合があります。 ゲートウェイが完成したら、自分の仮想ネットワークと別の VNet の間の接続を作成できます。 または、自分の仮想ネットワークとオンプレミスの場所の間の接続を作成します。 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) コマンドレットを使用して VPN ゲートウェイを作成します。
 
@@ -109,7 +111,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>VPN ゲートウェイの表示
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>VPN ゲートウェイの表示
 
 [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) コマンドレットを使用して VPN ゲートウェイを表示できます。
 
@@ -162,7 +164,7 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>パブリック IP アドレスの表示
+## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>パブリック IP アドレスの表示
 
 VPN ゲートウェイのパブリック IP アドレスを表示するには、[Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) コマンドレットを使用します。
 
@@ -199,15 +201,15 @@ Sku                      : {
 IpTags                   : {}
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成したリソースが必要でなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。
+作成したリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用してリソース グループを削除します。 これでリソース グループとそれに含まれるすべてのリソースが削除されます。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ゲートウェイの作成が完了したら、自分の仮想ネットワークと別の VNet の間の接続を作成できます。 または、自分の仮想ネットワークとオンプレミスの場所の間の接続を作成します。
 

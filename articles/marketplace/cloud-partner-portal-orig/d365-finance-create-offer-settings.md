@@ -1,52 +1,23 @@
 ---
-title: オファー設定フォームに記入する方法 | Microsoft Docs
-description: 新しい Dynamics 365 Business Central アプリケーションのオファー設定フォームで値を指定する必要があるさまざまなフィールドについて説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: プラン設定フォームに入力する方法 | Azure Marketplace
+description: 'PC 記事へのリンクを提供する非推奨の記事。以前の記述: 「新しい Dynamics 365 Business Central アプリケーションのオファー設定フォームで値を指定する必要があるさまざまなフィールドについて説明します。」'
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a050a8cfdd67f662786fc0b9b7ed5451c88dccb1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 09/18/2019
+ms.author: dsindona
+ms.openlocfilehash: 16fa1d8b76f456ca340a93f0019628393dc6e787
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808439"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276072"
 ---
-<a name="how-to-fill-out-the-offer-settings-form"></a>プラン設定フォームに記入する方法
-=======================================
+# <a name="how-to-fill-out-the-offer-settings-form"></a>プラン設定フォームに記入する方法
 
-プラン設定フォームは、プランの設定を指定する基本的なフォームです。
-以下では必須フィールドについて説明します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 Business Central オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 Business Central オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)」を参照してください。
 
-### <a name="offer-id"></a>プラン ID
+## <a name="next-steps"></a>次のステップ
 
-`OfferId` は、発行元プロファイル内のオファーを表す一意識別子です。
-この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
-
-たとえば、パートナー "Contoso" がオファー ID "sample-Web App" を作成した場合、AppSource には次のように表示されます。
-
-&emsp; `https://appsource.microsoft.com/marketplace/apps/contoso.sample-Web App?tab=Overview`
-
-
-### <a name="publisher-id"></a>パブリッシャー ID
-
-このドロップダウンでは、このプランを発行するためのパブリッシャー プロファイルを選択することができます。 このフィールドは、プランの運用が開始されるとロックされます。
-
-
-### <a name="name"></a>Name
-
-これはアプリ/オファーの表示名であり、Microsoft の [AppSource](https://appsource.microsoft.com/) に表示されます。 最大で 50 文字の長さにできます。
-
-> [!NOTE]
-> 短い名前は、アプリ マニフェストで指定されている発行者名と同じである必要があります。
-
-**[保存]** をクリックしてここまでの作業を保存します。 次のステップでは、オファーの技術情報を追加します。
+新しい Dynamics 365 Business Central オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 Business Central オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)」の手順に従って、オファーを作成します。

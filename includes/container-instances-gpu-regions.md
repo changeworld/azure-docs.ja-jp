@@ -2,20 +2,20 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 03/01/2019
+ms.date: 10/17/2019
 ms.author: danlep
-ms.openlocfilehash: 48d25427d68f9da4cfe3f25b155f81d801e30fa2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7f5b6780fd330489a893354143dc866bf416c8e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75445804"
 ---
-### <a name="supported-regions"></a>サポートされているリージョン
+### <a name="region-availability"></a>利用可能なリージョン
 
-* 米国東部 
-* 米国西部 2 
-* 米国中南部 
-* 西ヨーロッパ 
-* 北ヨーロッパ
-* インド中部 
+| リージョン | OS | 使用可能な GPU SKU |
+| -------- | ---- | :-----------: |
+| 米国東部、西ヨーロッパ、米国西部 2 | Linux | K80、P100、V100 |
+| 東南アジア | Linux | P100、V100|
+| インド中部 | Linux | V100 |
+| 北ヨーロッパ | Linux | K80 |

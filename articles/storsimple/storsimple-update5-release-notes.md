@@ -1,25 +1,18 @@
 ---
-title: StorSimple 8000 シリーズ Update 5 リリース ノート | Microsoft Docs
+title: StorSimple 8000 シリーズ Update 5 リリース ノート
 description: StorSimple 8000 シリーズ Update 5 における新機能、問題、回避策について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 672757e82bcf645b705f46a9975e09c9dc5eef92
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518921"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76275165"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 シリーズ Update 5 リリース ノート
 
@@ -40,7 +33,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 Update 5 では、主に次の機能強化とバグ修正が行われています。
 
-* **StorSimple デバイス マネージャー サービスで認証するための Azure Active Directory (AAD) の使用** – Update 5 以降、StorSimple デバイス マネージャーサービスでの認証には Azure Active Directory が使用されています。 従来の認証機構は、2017 年 12 月で廃止される予定です。 すべてのユーザーは、ファイアウォール規則に新しい認証 URL を含める必要があります。 詳細については、[StorSimple デバイスのネットワーク要件に記載されている認証 URL ](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal)をご確認ください。
+* **StorSimple デバイス マネージャー サービスで認証するための Azure Active Directory (AAD) の使用** – Update 5 以降、StorSimple デバイス マネージャーサービスでの認証には Azure Active Directory が使用されています。 従来の認証機構は、2017 年 12 月で非推奨となる予定です。 すべてのユーザーは、ファイアウォール規則に新しい認証 URL を含める必要があります。 詳細については、[StorSimple デバイスのネットワーク要件に記載されている認証 URL ](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal)をご確認ください。
 
     認証 URL がファイアウォール規則に含まれていない場合、StorSimple デバイスがサービスで認証できなかったことを示す重要なアラートが、ユーザーに表示されます。 このアラートが表示されると、ユーザーは新しい認証 URL を含める必要があります。 詳細については、[StorSimple のネットワーク アラート](storsimple-8000-manage-alerts.md#networking-alerts)に関するページをご覧ください。
 
@@ -54,8 +47,8 @@ Update 5 では、主に次の機能強化とバグ修正が行われていま�
 | いいえ | 機能 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell のリモート処理 |以前のリリースでは、Windows PowerShell 経由で StorSimple Cloud Appliance へのリモート接続の確立を試行しているときに、ユーザーはエラーを受信しました。 このリリースでは、この問題の根本原因が特定され、問題が修正されました。 |いいえ |はい |
-| 2 |帯域幅テンプレート |以前のリリースでは、帯域幅のテンプレートに問題があり、デバイスでの構成よりも少ない帯域幅になっていました。 この問題は今回のリリースで解決されました。 |あり |あり |
-| 3 |フェールオーバー |以前のリリースでは、ボリューム数の多いデバイスが Update 4 を実行している別のデバイスに対してフェールオーバーした場合に、アクセス制御レコードを適用しようとすると、プロセスが失敗していました。 この問題は今回のリリースで修正されました。 |はい |あり |
+| 2 |帯域幅テンプレート |以前のリリースでは、帯域幅のテンプレートに問題があり、デバイスでの構成よりも少ない帯域幅になっていました。 この問題は今回のリリースで解決されました。 |はい |はい |
+| 3 |[フェールオーバー] |以前のリリースでは、ボリューム数の多いデバイスが Update 4 を実行している別のデバイスに対してフェールオーバーした場合に、アクセス制御レコードを適用しようとすると、プロセスが失敗していました。 この問題は今回のリリースで修正されました。 |はい |はい |
 
 
 

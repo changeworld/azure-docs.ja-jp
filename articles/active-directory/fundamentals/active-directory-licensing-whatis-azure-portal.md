@@ -3,23 +3,23 @@ title: グループベースのライセンスとは - Azure Active Directory | 
 description: Azure Active Directory のグループベースのライセンスについて、使用方法やベスト プラクティスなどを説明します。
 services: active-directory
 keywords: Azure AD のライセンス
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183154"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77561563"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -32,14 +32,14 @@ ms.locfileid: "58183154"
 ## <a name="licensing-requirements"></a>ライセンスの要件
 グループベースのライセンスを使用するには、次のいずれかのライセンスが必要です。
 
-- Azure AD Basic の有料または試用版のサブスクリプション
+- Azure AD Premium P1 以上の有料または試用版のサブスクリプション
 
-- Office 365 Enterprise E3 または Office 365 A3 以上の有料または試用版のエディション
+- Office 365 Enterprise E3、Office 365 A3、Office 365 GCC G3、Office 365 E3 for GCCH、Office 365 E3 for DOD 以上の有料または試用版のエディション
 
 ### <a name="required-number-of-licenses"></a>必要なライセンスの数
 ライセンスが割り当てられるすべてのグループについて、個々のメンバーに対するライセンスも必要です。 グループの各メンバーにライセンスを割り当てる必要はありませんが、すべてのメンバーが含まれる十分な数のライセンスが少なくとも必要です。 たとえば、テナントのライセンス グループの一部として 1,000 人の個別メンバーがいる場合、ライセンス契約を満たすには、少なくとも 1,000 ライセンスが必要です。
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 グループベースのライセンスの主な機能は次のとおりです。
 
@@ -61,7 +61,7 @@ ms.locfileid: "58183154"
 
 ご意見や機能に関するご要望がありましたら、[Azure AD 管理フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510)をご利用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 

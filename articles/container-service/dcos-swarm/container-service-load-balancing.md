@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターの負荷分散コンテナー
 description: Azure Container Service DC/OS クラスターの複数のコンテナーに負荷を分散します。
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148893"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78273375"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスター内のコンテナーで負荷分散する
 
@@ -45,9 +43,11 @@ Azure Container Service の DC/OS クラスターには、次に示す 2 つの�
 
 Marathon Load Balancer は、デプロイされたコンテナーに基づいて動的に自身を再構成します。 また、コンテナーまたはエージェントの喪失に対する回復力もあります。この問題が起きた場合、Apache Mesos は他の場所でコンテナーを再起動し、Marathon-LB はそれに対応します。
 
+[https://shell.azure.com](https://shell.azure.com) にアクセスし、お使いのブラウザーで Cloud Shell を開きます。
+
 パブリック エージェントのクラスターに Marathon Load Balancer をインストールする、次のコマンドを実行します。
 
-```azurecli-interactive
+```console
 dcos package install marathon-lb
 ```
 
@@ -99,7 +99,7 @@ az acs list --resource-group myResourceGroup --query "[0].agentPoolProfiles[0].f
 
 DC/OS の CLI を使用してアプリケーションを実行します。 既定では、Marathon はプライベート クラスターにアプリケーションをデプロイします。 つまり、上記のデプロイにはロード バランサーからしかアクセスできないことを意味します。これは通常望ましい動作です。
 
-```azurecli-interactive
+```console
 dcos marathon app add hello-web.json
 ```
 
@@ -113,7 +113,7 @@ dcos marathon app add hello-web.json
 
 別のポートを使用する場合は、使用したポート用のラウンド ロビン ルールとプローブをロード バランサーに追加する必要があります。 この操作は、[Azure CLI](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) で `azure network lb rule create` コマンドと `azure network lb probe create` コマンドを使用して行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Marathon と Azure のロード バランサーを使用した、次の操作を含む ACS の負荷分散について学習しました。
 

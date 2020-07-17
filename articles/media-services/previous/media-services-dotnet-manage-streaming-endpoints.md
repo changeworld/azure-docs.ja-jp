@@ -1,6 +1,6 @@
 ---
 title: .NET SDK を使用してストリーミング エンドポイントを管理する。 | Microsoft Docs
-description: この記事では、Azure ポータルを使ってストリーミング エンドポイントを管理する方法について説明します。
+description: この記事では、Azure portal を使ってストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0222450e1b85c255f2028adff750b9257f109be7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173789"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74901276"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK を使用してストリーミング エンドポイントを管理する  
 
@@ -143,7 +143,7 @@ namespace AMSStreamingEndpoint
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

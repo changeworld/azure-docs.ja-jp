@@ -1,18 +1,18 @@
 ---
 title: Azure Application Gateway のカスタム エラー ページを作成する
-description: この記事では、Application Gateway のカスタム エラー ページを作成する方法について示します。
+description: この記事では、Application Gateway のカスタム エラー ページを作成する方法について示します。 カスタム エラー ページでは、独自のブランディングとレイアウトを使用することができます。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: ff11f686287498fe12b31d15a630178bb12035ad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301606"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74129868"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway のカスタム エラー ページを作成する
 
@@ -57,7 +57,7 @@ Application Gateway では、既定のエラー ページを表示する代わ�
     > [!NOTE]
     > Azure portal からのグローバル レベル カスタム エラー ページの作成は、現在サポートされていません。
 
-4. 特定のエラー状態コード用の公的にアクセス可能な BLOB URL を指定し、**[保存]** をクリックします。 これで、カスタム エラー ページで Application Gateway が構成されます。
+4. 特定のエラー状態コード用の公的にアクセス可能な BLOB URL を指定し、 **[保存]** をクリックします。 これで、カスタム エラー ページで Application Gateway が構成されます。
 
    ![Application Gateway のエラー コード](media/custom-error/ag-error-codes.png)
 
@@ -73,6 +73,6 @@ Azure PowerShell を使用して、カスタム エラー ページを構成で�
 
 詳しくは、「[Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0)」および「[Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Application Gateway 診断の詳細については、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」を参照してください。

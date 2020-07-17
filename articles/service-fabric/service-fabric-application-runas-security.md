@@ -1,25 +1,14 @@
 ---
-title: システムおよびローカル セキュリティ アカウントのもとで Azure Service Fabric サービスを実行する | Microsoft Docs
+title: システムおよびローカル セキュリティ アカウントのもとでサービスを実行する
 description: システムおよびローカル セキュリティ アカウントのもとで Service Fabric アプリケーションを実行する方法について説明します。  サービスを安全に実行するために、セキュリティ プリンシパルを作成し、RunAs ポリシーを適用します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: aljo
-ms.openlocfilehash: 28cd1162d7cae2b3a16062bdf18a2971e1f05aad
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664439"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75610125"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>ローカル ユーザー アカウントまたはローカル システム アカウントとしてサービスを実行する
 Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 Service Fabric には、ローカル ユーザーまたはシステム アカウントでアプリケーションを実行する機能もあります。 サポートされているローカル システム アカウントの種類は、**LocalUser**、**NetworkService**、**LocalService**、**LocalSystem** です。  Windows スタンドアロン クラスターで Service Fabric を実行している場合は、[Active Directory ドメイン アカウント](service-fabric-run-service-as-ad-user-or-group.md)または[グループ管理サービス アカウント](service-fabric-run-service-as-gmsa.md)でサービスを実行することができます。
@@ -183,7 +172,7 @@ Azure Service Fabric を使用すると、別のユーザー アカウントを�
 ```
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)

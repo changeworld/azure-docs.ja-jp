@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用した多層 SharePoint アプリのディザスター リカバリー
 description: この記事では、Azure Site Recovery を使用して、多層 SharePoint のディザスター リカバリーを設定する方法を説明します。
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443489"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74706362"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
@@ -56,7 +56,7 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 
 ## <a name="site-recovery-support"></a>Site Recovery のサポート
 
-この記事の作成には、VMware 仮想マシンと Windows Server 2012 R2 Enterprise を使用しました。 SharePoint 2013 Enterprise Edition および SQL Server 2014 Enterprise Edition も使用しています。 Site Recovery レプリケーションはアプリケーションに依存しません。このため、ここで紹介している推奨事項は次のシナリオにも適用できます。
+Site Recovery はアプリケーションに依存しないため、サポートされるマシン上で実行されているすべてのバージョンの SharePoint で機能します。 この記事の作成には、VMware 仮想マシンと Windows Server 2012 R2 Enterprise を使用しました。 SharePoint 2013 Enterprise Edition および SQL Server 2014 Enterprise Edition も使用しています。
 
 ### <a name="source-and-target"></a>ソースとターゲット
 
@@ -67,13 +67,6 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 **物理サーバー** | はい | はい
 **Azure** | NA | はい
 
-### <a name="sharepoint-versions"></a>SharePoint のバージョン
-次の SharePoint Server のバージョンがサポートされています。
-
-* SharePoint Server 2013 Standard
-* SharePoint Server 2013 Enterprise
-* SharePoint Server 2016 Standard
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>留意事項
 
@@ -89,11 +82,11 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 
 * Active Directory と DNS の保護に関するガイダンスは、[Protect Active Directory and DNS](site-recovery-active-directory.md)ドキュメントを参照してください。
 
-* SQL Server 上で動作するデータベース層の保護に関するガイダンスは、[Protect SQL Server](site-recovery-active-directory.md) ドキュメントを参照してください。
+* SQL Server 上で動作するデータベース層の保護に関するガイダンスは、[Protect SQL Server](site-recovery-sql.md) ドキュメントを参照してください。
 
 ## <a name="networking-configuration"></a>ネットワーク構成
 
-### <a name="network-properties"></a>Network properties
+### <a name="network-properties"></a>ネットワークのプロパティ
 
 * アプリ層と Web 層の仮想マシンについては、仮想マシンがフェールオーバー後に適切な DR ネットワークにアタッチできるように、Azure ポータルでネットワーク設定を行います。
 
@@ -109,7 +102,7 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 インターネットに面しているサイトの場合は、Azure サブスクリプションで[[Priority] 型の Traffic Manager](../traffic-manager/traffic-manager-create-profile.md) プロファイルを作成します。 そして、次の方法で DNS と Traffic Managerプロファイル の設定をします。
 
 
-| **Where** | **ソース** | **ターゲット**|
+| **Where** | **ソース** | **移行先**|
 | --- | --- | --- |
 | パブリック DNS | SharePoint サイト用のパブリック DNS <br/><br/> 例: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | オンプレミス DNS | sharepointonprem.contoso.com | オンプレミスファーム上のパブリック IP |
@@ -196,7 +189,7 @@ Traffic Manager がフェールオーバー後に可用性ポストを自動的�
 
 AD および DNS に対するテスト フェールオーバーの実行に関するガイダンスは､ [Test failover considerations for AD and DNS](site-recovery-active-directory.md#test-failover-considerations) ドキュメントを参照してください｡
 
-SQL Always ON 可用性グループに対するテスト フェールオーバーの実行に関するガイダンスは､[Doing Test failover for SQL Server Always On](site-recovery-sql.md#steps-to-do-a-test-failover) ドキュメントを参照してください｡
+SQL Always ON 可用性グループのテスト フェールオーバーの実行に関するガイダンスについては､[Azure Site Recovery を使用したアプリケーションの DR の実行とテスト フェールオーバーの実行](site-recovery-sql.md#disaster-recovery-of-an-application) に関するドキュメントをご覧ください。
 
 ## <a name="doing-a-failover"></a>フェールオーバーの実行
 フェールオーバーの実行については､[このガイダンス](site-recovery-failover.md)に従ってください｡
@@ -206,5 +199,5 @@ SQL Always ON 可用性グループに対するテスト フェールオーバ�
 3.  [フェールオーバー] をクリックします。
 4.  フェールオーバー プロセスを開始する復旧ポイントを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Site Recovery を利用した他のアプリケーションのレプリケーションについては](site-recovery-workload.md)､他の場所でも説明しています｡

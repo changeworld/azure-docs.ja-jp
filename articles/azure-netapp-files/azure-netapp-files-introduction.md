@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65522990"
 ---
 # <a name="what-is-azure-netapp-files"></a>Azure NetApp Files とは
@@ -32,7 +32,7 @@ Azure NetApp Files サービスは、エンタープライズ クラスでハイ
 > [!IMPORTANT] 
 > このドキュメントで説明されているすべてのタスクでは、Azure NetApp Files サービスへのアクセス権が付与されている必要があります。 サービスへのアクセスをリクエストするには、[サービスにアクセスするための順番待ちリクエストの送信](azure-netapp-files-register.md#waitlist)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md) 
-* [クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する](azure-netapp-files-quickstart-set-up-account-create-volumes.md)
+* [クイック スタート: Azure NetApp Files を設定し、NFS ボリュームを作成する](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

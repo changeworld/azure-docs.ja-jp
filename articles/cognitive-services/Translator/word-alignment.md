@@ -1,22 +1,22 @@
 ---
-title: 単語アラインメント - Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Translator Text API から単語アラインメント情報を受信します。
+title: 単語アラインメント - Translator
+titleSuffix: Azure Cognitive Services
+description: アラインメント情報を受信するには、Translate メソッドを使用し、省略可能な includeAlignment パラメーターを含めます。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
+ms.date: 06/04/2019
+ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: cc795d6b164a97351ec8806c6b7c8bed0c0c1266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa43312e16b2c1777ab9a1f1668cc4ea9c9d18e4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793991"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588464"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>単語アラインメント情報を受信する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "59793991"
 ## <a name="alignment-information-format"></a>アラインメント情報の形式
 アライメントは、ソースのすべての単語について、次の形式の文字列値として返されます。 各単語の情報は、中国語のようなスペースで区切られない言語 (書記法) の場合を含め、スペースで区切られます。
 
-[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]\:[SourceTextEndIndex]–[TgtTextStartIndex]\:[TgtTextEndIndex]] *
 
 アラインメント文字列は、たとえば、"0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21" のようになります。
 

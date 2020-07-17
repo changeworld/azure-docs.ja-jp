@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services と PlayReady ライセンス テンプレート
+title: Azure Media Services v3 と Microsoft PlayReady ライセンス テンプレート
 description: このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。
 author: juliako
 manager: femila
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0ce0d40bfd9d41838573f6355ceffc17761111c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6b12dcee2303632c4ec2ccc3602348a4e17fcd05
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843355"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76705889"
 ---
-# <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 と PlayReady ライセンス テンプレート 
 
 Azure Media Services では、**Microsoft PlayReady** を使用してコンテンツを暗号化できます。 Media Services では、PlayReady ライセンスの配信サービスも提供しています。 PlayReady ライセンスの構成には、Media Services の API を使用できます。 プレーヤーが PlayReady の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
@@ -58,7 +58,7 @@ XML は、「[PlayReady ライセンス テンプレート XML スキーマ](#sc
     </PlayReadyLicenseResponseTemplate>
 
 
-## <a id="classes"></a>Media Services API を使用してライセンス テンプレートを構成する
+## <a name="use-media-services-apis-to-configure-license-templates"></a><a id="classes"></a>Media Services API を使用してライセンス テンプレートを構成する
 
 Media Services には、PlayReady ライセンス テンプレートを構成するために使用できる型が用意されています。 
 
@@ -88,7 +88,7 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 };
 ```
 
-## <a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
+## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
@@ -311,6 +311,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
     </xs:schema>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [DRM での保護](protect-with-drm.md)に関するページを参照してください。

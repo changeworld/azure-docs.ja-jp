@@ -1,34 +1,23 @@
 ---
-title: Azure Site Recovery サービスを使用して Azure IaaS VM を別の Azure リージョンに移動する | Microsoft Docs
-description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
-services: site-recovery
+title: Azure Site Recovery を使用して Azure VM を別のリージョンに移動する
+description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure VM を移動します。
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078008"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75498055"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
+# <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する
 
-Azure は顧客ベースと共に拡大しており、需要の増大に対応するため、新たにサポートされるリージョンが増えています。 また、サービス間の新しい機能も毎月追加されています。 既存の仮想マシン (VM) を別のリージョンや Availability Zones に移動して可用性を高めたい場合があります。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して Azure VM を別の Azure リージョンに移動する理由とその手順について概要を示します。 
 
-このチュートリアルでは、VM を移動することが望ましいさまざまなシナリオについて説明します。 また、高可用性を実現するためにターゲット リージョンでアーキテクチャを構成する方法についても説明します。 
-
-このチュートリアルでは、次の事項について説明します。
-
-> [!div class="checklist"]
-> 
-> * VM を移動する理由
-> * 一般的なアーキテクチャ
-> * VM をそのままターゲット リージョンに移動する
-> * VM を移動して可用性を高める
 
 ## <a name="reasons-to-move-azure-vms"></a>Azure VM を移動する理由
 
@@ -92,11 +81,11 @@ VM の移動には、次の手順が伴います。
 
      ![階層への単一インスタンスの VM のデプロイ](media/move-vm-overview/single-zone.png)
 
-* **各階層の VM を可用性セットにデプロイ**: Azure Site Recovery を使用して VM のレプリケーションを有効にすると、可用性セット内の VM を個別の Availability Zones に構成できます。 移動操作の完了後、可用性の SLA は 99.9% になります。
+* **各階層の VM を可用性セットにデプロイ**: Azure Site Recovery を使用して VM のレプリケーションを有効にすると、可用性セット内の VM を個別の Availability Zones に構成できます。 移動操作の完了後、可用性の SLA は 99.99% になります。
 
      ![可用性セットと Availability Zones への VM のデプロイ](media/move-vm-overview/aset-azone.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > 

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric でアクター ベースのサービスを作成する | Microsoft Docs
+title: Azure Service Fabric でアクターベースのサービスを作成する
 description: C# で Service Fabric Reliable Actors を使用して、最初のアクタベースのサービスを作成、デバッグ、およびデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/16/2018
+ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661090"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75466257"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -34,11 +25,11 @@ ms.locfileid: "58661090"
 
 ## <a name="create-a-new-project-in-visual-studio"></a>Visual Studio での新しいプロジェクトの作成
 
-Visual Studio 2015 以降を管理者として起動し、新しい **Service Fabric アプリケーション** プロジェクトを作成します。
+Visual Studio 2019 以降を管理者として起動し、新しい **Service Fabric アプリケーション** プロジェクトを作成します。
 
 ![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 
-次のダイアログ ボックスで、**[.NET Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
+次のダイアログ ボックスで、 **[.NET Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
 
 ![Service Fabric プロジェクトのテンプレート][5]
 
@@ -50,11 +41,11 @@ Visual Studio 2015 以降を管理者として起動し、新しい **Service Fa
 
 ソリューションには 3 つのプロジェクトが含まれています。
 
-* **アプリケーション プロジェクト (MyApplication)**。 このプロジェクトには、デプロイ用のすべてのサービスがまとめてパッケージ化されています。 アプリケーションを管理するための *ApplicationManifest.xml* と PowerShell スクリプトが含まれています。
+* **アプリケーション プロジェクト (MyApplication)** 。 このプロジェクトには、デプロイ用のすべてのサービスがまとめてパッケージ化されています。 アプリケーションを管理するための *ApplicationManifest.xml* と PowerShell スクリプトが含まれています。
 
-* **インターフェイス プロジェクト (HelloWorld.Interfaces)**。 このプロジェクトには、アクターのインターフェイス定義が含まれています。 アクター インターフェイスは、任意の名前の任意のプロジェクトで定義できます。  このインターフェイスは、アクター コントラクトを定義します。コントラクトは、アクター実装と、アクターを呼び出すクライアントによって共有されます。  クライアント プロジェクトがこれに依存する可能性があるため、通常は、アクター実装とは別のアセンブリで定義するのが妥当です。
+* **インターフェイス プロジェクト (HelloWorld.Interfaces)** 。 このプロジェクトには、アクターのインターフェイス定義が含まれています。 アクター インターフェイスは、任意の名前の任意のプロジェクトで定義できます。  このインターフェイスは、アクター コントラクトを定義します。コントラクトは、アクター実装と、アクターを呼び出すクライアントによって共有されます。  クライアント プロジェクトがこれに依存する可能性があるため、通常は、アクター実装とは別のアセンブリで定義するのが妥当です。
 
-* **アクター サービス プロジェクト (HelloWorld)**。 このプロジェクトは、アクターをホストする Service Fabric サービスを定義します。 これには、アクターの実装である *HelloWorld.cs* が含まれています。 アクター実装は、基本型 `Actor` から派生し、*MyActor.Interfaces* プロジェクトで定義されたインターフェイスを実装するクラスです。 またアクター クラスは、`ActorService` インスタンスおよび `ActorId` を受け取り、ベース `Actor` クラスに渡すコンストラクターを実装する必要があります。
+* **アクター サービス プロジェクト (HelloWorld)** 。 このプロジェクトは、アクターをホストする Service Fabric サービスを定義します。 これには、アクターの実装である *HelloWorld.cs* が含まれています。 アクター実装は、基本型 `Actor` から派生し、*MyActor.Interfaces* プロジェクトで定義されたインターフェイスを実装するクラスです。 またアクター クラスは、`ActorService` インスタンスおよび `ActorId` を受け取り、ベース `Actor` クラスに渡すコンストラクターを実装する必要があります。
     
     このプロジェクトには *Program.cs* も含まれています。これは、`ActorRuntime.RegisterActorAsync<T>()` を使用して、アクター クラスを Service Fabric ランタイムに登録します。 `HelloWorld` クラスは既に登録されています。 プロジェクトに追加された追加アクター実装も、`Main()` メソッドに登録する必要があります。
 
@@ -95,7 +86,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
 簡単なコンソール アプリケーションを作成して、アクター サービスを呼び出します。
 
-1. ソリューション エクスプローラーでソリューションを右クリックし、**[追加]** > **[新しいプロジェクト]** の順に選択します。
+1. ソリューション エクスプローラーでソリューションを右クリックし、 **[追加]**  >  **[新しいプロジェクト]** の順に選択します。
 
 2. **.NET Core** プロジェクト タイプで、**コンソール アプリ (.NET Core)** を選択します。  プロジェクトの名前として「*ActorClient*」と入力します。
     
@@ -104,11 +95,11 @@ internal class HelloWorld : Actor, IHelloWorld
     > [!NOTE]
     > コンソール アプリケーションは、Service Fabric でクライアントとして通常使用するアプリの種類ではありませんが、ローカル Service Fabric クラスターを使用したデバッグおよびテストの例として役に立ちます。
 
-3. コンソール アプリケーションは、インターフェイス プロジェクトおよびその他の依存関係との互換性を維持するために、64 ビット アプリケーションである必要があります。  ソリューション エクスプローラーで、**ActorClient** プロジェクトを右クリックし､**[プロパティ]** をクリックします｡  **[ビルド]** タブで、**[プラットフォーム ターゲット]** を **[x64]** に設定します。
+3. コンソール アプリケーションは、インターフェイス プロジェクトおよびその他の依存関係との互換性を維持するために、64 ビット アプリケーションである必要があります。  ソリューション エクスプローラーで、**ActorClient** プロジェクトを右クリックし､ **[プロパティ]** をクリックします｡  **[ビルド]** タブで、 **[プラットフォーム ターゲット]** を **[x64]** に設定します。
     
     ![プロパティをビルドする][8]
 
-4. クライアント プロジェクトには、信頼できるアクターの NuGet パッケージが必要です。  **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。  パッケージ マネージャー コンソールで、次のコマンドを入力します。
+4. クライアント プロジェクトには、信頼できるアクターの NuGet パッケージが必要です。  **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順にクリックします。  パッケージ マネージャー コンソールで、次のコマンドを入力します。
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
@@ -116,7 +107,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet パッケージとそのすべての依存関係が、ActorClient プロジェクトにインストールされます。
 
-5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、**[依存関係]** を右クリックし、**[参照の追加]** をクリックします。**[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、**[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  Click **OK**.
+5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]** をクリックします。
     
     ![[参照の追加] ダイアログ][7]
 
@@ -150,14 +141,14 @@ internal class HelloWorld : Actor, IHelloWorld
 
 ![Service Fabric デバッグ出力ウィンドウ][3]
 
-出力に "*アプリケーションの準備が整いました*" というテキストが含まれる場合は、ActorClient アプリケーションを使用してサービスをテストできます。  ソリューション エクスプローラーで、**ActorClient** プロジェクトを右クリックし､**[デバッグ]** > **[新しいインスタンスを開始]** の順にクリックします。  コマンド ライン アプリケーションには、アクター サービスからの出力が表示されます。
+出力に "*アプリケーションの準備が整いました*" というテキストが含まれる場合は、ActorClient アプリケーションを使用してサービスをテストできます。  ソリューション エクスプローラーで、**ActorClient** プロジェクトを右クリックし､ **[デバッグ]**  >  **[新しいインスタンスを開始]** の順にクリックします。  コマンド ライン アプリケーションには、アクター サービスからの出力が表示されます。
 
 ![アプリケーションの出力][9]
 
 > [!TIP]
 > Service Fabric Actors ランタイムは、 [アクター メソッドに関連する一部のイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)を出力します。 これらは、診断やパフォーマンスの監視に役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「[Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)」で詳細を参照してください。
 
 

@@ -1,27 +1,28 @@
 ---
-title: Linux 仮想マシンのイメージ ギャラリーとともに Azure Image Builder を使用する (プレビュー)
-description: Azure Image Builder と共有イメージ ギャラリーで Linux イメージを作成します。
+title: Linux VM のイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
+description: Azure Image Builder と共有イメージ ギャラリーで Linux VM イメージを作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: d29fa8700cb1f530cfe85f0bdf6852d75ec1613e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.subservice: imaging
+ms.reviewer: danis
+ms.openlocfilehash: 196f7b41a9d7eb5da1b2cf52a38917c34905d7bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508170"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791512"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>更新:Linux イメージを作成して共有イメージ ギャラリーに配布する 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 
-この記事では、Azure Image Builder を使用して[共有イメージ ギャラリー](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。
+この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) です。 
 
-イメージを共有イメージ ギャラリーに配布するために、テンプレートは [sharedImage](image-builder-json.md#distribute-sharedimage) をテンプレートの `distribute` セクションの値として使用します。
+イメージを共有イメージ ギャラリーに配布するため、テンプレートでは `distribute` セクションの値として [sharedImage](image-builder-json.md#distribute-sharedimage) が使われています。
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -60,7 +61,7 @@ az provider register -n Microsoft.Storage
 
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。
 
-プレビューの場合、Image Builder は、ソース マネージド イメージと同じリソース グループ内でのソースカスタム イメージの作成だけをサポートします。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
+プレビューの Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
 
 ```azurecli-interactive
 # Resource group name - we are using ibLinuxGalleryRG in this example
@@ -105,7 +106,9 @@ az role assignment create \
 
 ## <a name="create-an-image-definition-and-gallery"></a>イメージ定義およびギャラリーの作成
 
-イメージ ギャラリーを作成します。 
+共有イメージ ギャラリーで Image Builder を使用するには、既存のイメージ ギャラリーとイメージ定義が必要です。 Image Builder では、イメージ ギャラリーとイメージ定義は自動的には作成されません。
+
+使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 最初に、イメージ ギャラリーを作成します。
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +116,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-イメージ定義を作成します。
+次に、イメージ定義を作成します。
 
 ```azurecli-interactive
 az sig image-definition create \
@@ -200,7 +203,7 @@ SSH 接続が確立されるとすぐに、イメージが*当日のメッセー
 *******************************************************
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ここで同じイメージの新しいバージョンを作成するように、イメージ バージョンを再カスタマイズしてみる場合、次の手順をスキップして、[Azure Image Builder を使用した別のイメージ バージョンの作成](image-builder-gallery-update-image-version.md)に関するページに進みます。
 
@@ -257,6 +260,6 @@ az sig delete -r $sigName -g $sigResourceGroup
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[Azure 共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。

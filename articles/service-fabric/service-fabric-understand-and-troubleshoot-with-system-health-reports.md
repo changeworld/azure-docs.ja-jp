@@ -1,25 +1,16 @@
 ---
-title: システム正常性レポートを使用してトラブルシューティングを行う |Microsoft Docs
+title: システム正常性レポートを使用したトラブルシューティング
 description: Azure Service Fabric のコンポーネントによって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007459"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236559"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -36,7 +27,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 > 
 > 
 
-システム コンポーネント レポートはソース別に識別され、"**System.**" プレフィックスで 始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
+システム コンポーネント レポートはソース別に識別され、"**System.** " プレフィックスで プレフィックスは含まれません。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
 
 いくつかのシステム レポートを確認して、何がレポートのトリガーになっているかを理解し、レポートに表示された問題を修正する方法を学習しましょう。
 
@@ -57,7 +48,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **プロパティ**: **Neighborhood** で始まり、ノードの情報が含まれます。
 * **次のステップ**: ネットワーク コンピューターが消失した原因を調査します。 たとえば、クラスター ノード間の通信をチェックします。
 
-### <a name="rebuild"></a>再構築
+### <a name="rebuild"></a>[再構築]
 
 クラスター ノードに関する情報は、Failover Manager (FM) サービスによって管理されます。 FM がそのデータを失う (データの損失状態になる) と、クラスター ノードに関する情報が最新であることを FM は保証できなくなります。 その場合、システムが再構築処理へと移行し、System.FM は、その状態を再構築するために、クラスター内のすべてのノードからデータを収集します。 再構築処理は、ネットワークの問題やノードの問題によって途中で停止してしまうこともあります。 同じことは、Failover Manager Master (FMM) サービスでも起こる可能性があります。 FMM は、クラスターに含まれるすべての FM の所在を追跡するステートレスなシステム サービスです。 FMM のプライマリは常に、ID が最も 0 に近いノードです。 このノードがドロップした場合に再構築がトリガーされます。
 前述したいずれかの症状が起こると、**System.FM** または **System.FMM** から、エラー レポートを通じてその旨が警告されます。 再構築が停止するタイミングとしては、次の 2 つのフェーズが考えられます。
@@ -72,17 +63,37 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **プロパティ**: Rebuild。
 * **次のステップ**: ノード間のネットワーク接続を調査すると共に、正常性レポートの説明に記載されているノードがあれば、その特定のノードの状態を調査します。
 
-## <a name="node-system-health-reports"></a>ノード システム正常性レポート
-System.FMは Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。
+### <a name="seed-node-status"></a>シード ノードの状態
+一部のシード ノードが正常でない場合、**System.FM** はクラスター レベルの警告を報告します。 シード ノードは、基になるクラスターの可用性を維持するノードです。 特定の種類のネットワーク障害が発生しているときに、他のノードとのリースを確立し、タイブレーカーとして機能することで、クラスターが確実に稼働し続けるうえで役立ちます。 クラスターでシード ノードの大部分がダウンしていて、元に戻らない場合、クラスターは自動的にシャットダウンします。 
 
-### <a name="node-updown"></a>ノードを上/下に移動
-System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動が新規インスタンスとして報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
+ノードの状態が [ダウン]、[削除済み]、または [不明] の場合、シード ノードは正常ではありません。
+シード ノード状態の警告レポートには、すべての正常でないシード ノードが詳細情報と共に一覧表示されます。
+
+* **SourceID**: System.FM
+* **プロパティ**: SeedNodeStatus
+* **次のステップ**: この警告がクラスターに表示される場合は、次の修正手順に従います。Service Fabric バージョン 6.5 以降を実行しているクラスターの場合:Azure 上の Service Fabric クラスターでは、シード ノードが停止した後、Service Fabric は自動的にそれを非シード ノードに変更しようとします。 そうなるようにするには、プライマリ ノード タイプの非シード ノードの数が、ダウンしているシード ノードの数以上になるようにします。 そのために、必要に応じて、プライマリ ノード タイプにノードを追加します。
+クラスターの状態によっては、問題を解決するまでに時間がかかる場合があります。 これが完了すると、警告レポートは自動的にクリアされます。
+
+Service Fabric スタンドアロン クラスターでは、すべてのシード ノードが正常にならないと警告レポートをクリアできません。 シード ノードが正常でない理由に応じて、さまざまなアクションを実行する必要があります。シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、このシード ノードを[クラスターから削除する必要があります](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)。
+すべてのシード ノードが正常になると、警告レポートは自動的にクリアされます。
+
+6\.5 より前のバージョンの Service Fabric を実行しているクラスターの場合:この場合、警告レポートを手動でクリアする必要があります。 **レポートをクリアする前に、すべてのシード ノードが正常になったことをユーザーが確認する必要があります**: シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、そのシード ノードをクラスターから削除する必要があります。
+すべてのシード ノードが正常になったら、PowerShell から次のコマンドを使用して[警告レポートをクリア](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)します。
+
+```powershell
+PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
+
+## Node system health reports
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+
+### Node up/down
+System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
 
 * **SourceId**: System.FM
-* **プロパティ**: State。
-* **次のステップ**: ノードがアップグレードのために停止している場合は、アップグレード後に復帰する必要があります。 この例では、正常性状態が OK に切り替わる必要があります。 ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
+* **Property**: State.
+* **Next steps**: If the node is down for an upgrade, it should come back up after it's been upgraded. In this case, the health state should switch back to OK. If the node doesn't come back or it fails, the problem needs more investigation.
 
-ノードの稼動を表す正常性状態 OK の System.FM イベントの例を次に示します。
+The following example shows the System.FM event with a health state of OK for node up:
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
@@ -128,7 +139,7 @@ Service Fabric Load Balancer は、ノード容量違反を検出すると警告
 ## <a name="application-system-health-reports"></a>アプリケーション システム正常性レポート
 System.CM は Cluster Manager サービスを表し、アプリケーションに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.CM は、アプリケーションが作成または更新されたときに OK を報告します。 アプリケーションが削除されると、ストアからアプリケーションを削除できるように、正常性ストアに通知します。
 
 * **SourceId**: System.CM
@@ -161,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>サービス システム正常性レポート
 System.FM は Failover Manager サービスを表し、サービスに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.FM は、サービスが作成されると OK を報告します。 サービスが削除されたら、正常性ストアからエンティティを削除します。
 
 * **SourceId**: System.FM
@@ -203,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>パーティション システム正常性レポート
 System.FM は Failover Manager サービスを表し、サービス パーティションに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.FM は、パーティションが作成されており、正常な場合に、OK を報告します。 パーティションが削除されると、正常性ストアからエンティティを削除します。
 
 パーティションが最小レプリカ数を下回ると、エラーを報告します。 パーティションが最小レプリカ数を下回っていなくても、ターゲット レプリカ数を下回る場合は、警告を報告します。 パーティションがクォーラム損失の状態にあるとき、System.FM はエラーを報告します。
@@ -380,7 +391,7 @@ HealthEvents          :
 ## <a name="replica-system-health-reports"></a>レプリカ システム正常性レポート
 **System.RA**は、Reconfiguration Agent コンポーネントを表し、レプリカの状態を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.RA は、レプリカが作成されていると OK を報告します。
 
 * **SourceId**: System.RA
@@ -632,25 +643,25 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.Close** および **IStatefulServiceReplica.Abort**: 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 または、`ICommunicationListener.CloseAsync` あるいはオーバーライドされた `OnCloseAsync` がスタックしている場合にも生じます。
 
-- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)**: 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。
+- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)** : 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 このシナリオでは、レプリカを再起動することをお勧めします。
 
-- **IStatefulServiceReplica.ChangeRole(P)**: 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
+- **IStatefulServiceReplica.ChangeRole(P)** : 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
 
-**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 例: 
+**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 次に例を示します。
 
 - **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。 これに該当するかを確認するには、パーティションのレプリカのレプリカ状態を調べるか、スタック再構成の System.FM 正常性レポートを調べます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 問題があるレプリカの `LastAppliedReplicationSequenceNumber` 値は、プライマリの `CommittedSequenceNumber` 値の後ろにあります。
 
-- **IReplicator.BuildReplica(\<リモート ReplicaId>)**:この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
+- **IReplicator.BuildReplica(\<リモート ReplicaId>)** :この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
 
 ### <a name="replicator-system-health-reports"></a>レプリケーター システム正常性レポート
-**レプリケーション キュー満杯:**
+**レプリケーション キュー満杯:** 
 **System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。
 
 * **SourceId**: System.Replicator
 * **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**。
 * **次のステップ**: レポートがプライマリにある場合は、クラスター内のノード間の接続を確認します。 すべての接続が正常な場合は、1 つ以上のセカンダリが低速で、操作を適用するためのディスクの待ち時間が長い可能性があります。 レポートがセカンダリにある場合は、まずノードのディスク使用量とパフォーマンスを確認します。 次に、低速のノードからプライマリへの発信接続を確認します。
 
-**RemoteReplicatorConnectionStatus:**
+**RemoteReplicatorConnectionStatus:** 
 プライマリ レプリカの **System.Replicator** は、セカンダリ (リモート) レプリケーターへの接続が正常でない場合に警告を表示します。 レポートのメッセージにリモート レプリケーターのアドレスが表示されるため、間違った構成が渡されたかどうかや、レプリケーター間にネットワークの問題があるかどうかを簡単に確認できます。
 
 * **SourceId**: System.Replicator
@@ -674,7 +685,7 @@ HealthEvents          :
 名前付け操作に予想以上の時間がかかると、操作を実行するネーム サービス パーティションのプライマリ レプリカに関する警告のレポートでフラグが設定されます。 操作が正常に完了すると、警告はクリアされます。 操作がエラーで終了した場合は、正常性レポートにエラーの詳細が含まれます。
 
 * **SourceId**: System.NamingService
-* **プロパティ**: プレフィックス "**Duration_**" で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を示します。 たとえば、**fabric:/MyApp/MyService** という名前のサービスの作成に時間がかかる場合、プロパティは **Duration_AOCreateService.fabric:/MyApp/MyService** になります。 "AO" は、この名前と操作の名前付けパーティションの役割を指します。
+* **プロパティ**: プレフィックス "**Duration_** " で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を示します。 たとえば、**fabric:/MyApp/MyService** という名前のサービスの作成に時間がかかる場合、プロパティは **Duration_AOCreateService.fabric:/MyApp/MyService** になります。 "AO" は、この名前と操作の名前付けパーティションの役割を指します。
 * **次のステップ**: 名前付け操作に失敗した原因を確認します。 各操作の根本原因は異なる場合があります。 たとえば、削除サービスがスタックしている可能性があります。 サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、サービスがスタックすることがあります。
 
 サービスの作成操作の例を次に示します。 この操作には、構成された期間よりも長い時間がかかりました。 "AO" は再試行し、作業を "NO" に送信します。 "NO" は、タイムアウトにより最後の操作を完了しました。 この場合、同じレプリカが "AO" と "NO" の両方のロールでプライマリになります。
@@ -861,7 +872,7 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * **プロパティ**: **ResourceGovernance**。
 * **次のステップ**: この問題を解決するには、クラスター マニフェストを変更して使用可能なリソースの自動検出を有効にすることをお勧めします。 もう 1 つの方法として、これらのメトリックに対して適切なノード容量を指定してクラスター マニフェストを更新することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
 * [サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

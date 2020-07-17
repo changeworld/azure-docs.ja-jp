@@ -1,10 +1,10 @@
 ---
 title: 内部 Basic Load Balancer を作成する - Azure CLI
-titlesuffix: Azure Load Balancer
-description: Azure CLI を使用して内部ロード バランサーを作成する方法について説明します
+titleSuffix: Azure Load Balancer
+description: この記事では、Azure CLI を使用して内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
-ms.author: kumud
-ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122326"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457013"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "66122326"
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.28 以降のバージョンを実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -39,6 +39,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --name myResourceGroupILB \
     --location eastus
 ```
+
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、*myVnet* という名前の仮想ネットワークを作成します。*myResourceGroup* に、*mySubnet* という名前のサブネットを含めます。
@@ -50,6 +51,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --location eastus \
     --subnet-name mySubnet
 ```
+
 ## <a name="create-basic-load-balancer"></a>Basic Load Balancer を作成する
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
@@ -60,7 +62,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Basic Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド IP 構成と、プライベート IP アドレス **10.0.0.7 に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前の内部ロード バランサーを作成します。これには、**myFrontEnd** という名前のフロントエンド IP 構成と、プライベート IP アドレス **10.0.0.7 に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
 
 ```azurecli-interactive
   az network lb create \
@@ -71,7 +73,8 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --backend-pool-name myBackEndPool \
     --vnet-name myVnet \
     --subnet mySubnet      
-  ```
+```
+
 ### <a name="create-the-health-probe"></a>正常性プローブを作成する
 
 正常性プローブは、ネットワーク トラフィックを受信できるように、すべての仮想マシン インスタンスを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
@@ -130,7 +133,7 @@ done
 
 [az vm availabilityset create](/cli/azure/network/nic) を使用して、可用性セットを作成します。
 
- ```azurecli-interactive
+```azurecli-interactive
   az vm availability-set create \
     --resource-group myResourceGroupILB \
     --name myAvailabilitySet
@@ -180,11 +183,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 [az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。
 
- ```azurecli-interactive
+```azurecli-interactive
 for i in `seq 1 2`; do
   az vm create \
     --resource-group myResourceGroupILB \
@@ -196,6 +199,7 @@ for i in `seq 1 2`; do
     --custom-data cloud-init.txt
     done
 ```
+
 VM がデプロイされるまでに、数分かかる場合があります。
 
 ### <a name="create-a-vm-for-testing-the-load-balancer"></a>ロード バランサーをテストするために VM を作成する
@@ -221,17 +225,18 @@ VM がデプロイされるまでに、数分かかる場合があります。
   az network lb show \
     --name myLoadBalancer \
     --resource-group myResourceGroupILB
-``` 
+```
+
 ![ロード バランサーをテストする](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupILB
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、内部 Basic Load Balancer を作成し、それに VM をアタッチして、ロード バランサー トラフィック規則と正常性プローブを構成してから、ロード バランサーをテストしました。 ロード バランサーとその関連リソースの詳細を確認するには、ハウツー記事に進みます。

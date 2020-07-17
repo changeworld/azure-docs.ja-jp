@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181169"
 ---
 ## <a name="azure-backup"></a>Azure Backup
 
@@ -43,5 +43,5 @@ Azure Site Recovery を使えば、大きな自然災害や広範囲にわたる
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Windows 仮想マシンのバックアップに関するチュートリアル ([Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) 用または [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 用) に従って、Azure Backup を試してみてください。

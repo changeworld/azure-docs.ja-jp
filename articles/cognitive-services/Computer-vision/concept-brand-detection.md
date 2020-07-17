@@ -1,21 +1,21 @@
 ---
 title: ブランド検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したブランド/ロゴの検出に関連する概念。
+description: この記事では、特殊なオブジェクト検出モードである、Computer Vision API を使用したブランドやロゴの検出について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131732"
 ---
 # <a name="detect-popular-brands-in-images"></a>画像内の人気のブランドの検出
 
@@ -29,70 +29,52 @@ Computer Vision サービスは、与えられた画像の中にブランド ロ
 
 次の JSON 応答は、Computer Vision がサンプル画像からブランドを検出するときに返す内容を示しています。
 
-![Microsoft のラベルとロゴが印刷された灰色のスウェット シャツ](./Images/gray-shirt-logo.jpg)
-
-```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.706,
-         "rectangle":{
-            "x":470,
-            "y":862,
-            "w":338,
-            "h":327
-         }
-      }
-   ],
-   "requestId":"5fda6b40-3f60-4584-bf23-911a0042aa13",
-   "metadata":{
-      "width":2286,
-      "height":1715,
-      "format":"Jpeg"
-   }
-}
-```
-ブランド検出機能では、ロゴの画像と図案化されたブランド名が 2 つの別個のロゴとして検出されることがあります。
-
 ![Microsoft のラベルにロゴが印刷された赤いシャツ](./Images/red-shirt-logo.jpg)
 
 ```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.657,
-         "rectangle":{
-            "x":436,
-            "y":473,
-            "w":568,
-            "h":267
-         }
-      },
-      {
-         "name":"Microsoft",
-         "confidence":0.85,
-         "rectangle":{
-            "x":101,
-            "y":561,
-            "w":273,
-            "h":263
-         }
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":20,
+         "y":97,
+         "w":62,
+         "h":52
       }
-   ],
-   "requestId":"10dcd2d6-0cf6-4a5e-9733-dc2e4b08ac8d",
-   "metadata":{
-      "width":1286,
-      "height":1715,
-      "format":"Jpeg"
    }
-}
+]
+```
+
+ブランド検出機能では、ロゴの画像と図案化されたブランド名が 2 つの別個のロゴとして検出されることがあります。
+
+![Microsoft のラベルとロゴが印刷された灰色のスウェット シャツ](./Images/gray-shirt-logo.jpg)
+
+```json
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":106,
+         "w":55,
+         "h":46
+      }
+   },
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":86,
+         "w":202,
+         "h":63
+      }
+   }
+]
 ```
 
 ## <a name="use-the-api"></a>API の使用
 
 ブランド検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Brands` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"brands"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート:画像の分析 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
-* [クイック スタート:画像の分析 (REST API)](./quickstarts/csharp-analyze.md)
+* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

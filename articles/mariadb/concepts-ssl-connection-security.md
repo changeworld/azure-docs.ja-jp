@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB での SSL 接続
+title: SSL 接続 - Azure Database for MariaDB
 description: SSL 接続を適切に使用できるように、Azure Database for MariaDB と関連アプリケーションを構成するための情報
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 15bb28846b3409dd31bcdf8d42990facc94fd06d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 03/10/2020
+ms.openlocfilehash: 36532575645d135a7abe7239798b6f2abc4246f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "60332688"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79477070"
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での SSL 接続
 Azure Database for MariaDB では、Secure Sockets Layer (SSL) を使用して、データベース サーバーをクライアント アプリケーションに接続できます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -25,6 +25,6 @@ Azure portal や CLI を使用して新しい Azure Database for MariaDB サー�
 
 アプリケーションの開発時に SSL 接続を有効または無効にする方法については、[SSL の構成方法](howto-configure-ssl.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [サーバー ファイアウォール規則](concepts-firewall-rules.md)について説明します。
 - [SSL の構成](howto-configure-ssl.md)方法について説明します。

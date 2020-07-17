@@ -1,28 +1,26 @@
 ---
 author: amberbhargava
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: d3dfe51ce65aa24cf3d0a4d1fa4b6a9cd203b7e4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 58bf7c300d7f52807bd255da62bf1cc452883811
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66127104"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75779350"
 ---
 契約の種類を確認して、Microsoft 顧客契約の請求先アカウントへのアクセスがあるかどうかを判断します。
+ 
+1. [Azure portal](https://portal.azure.com) に移動して、課金アカウントへのアクセス権があるかどうかを確認します。 **[コストの管理と請求]** を検索して選択します。
 
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
-
-2. **[コストの管理と請求]** で検索します。
-
-   ![Azure portal の検索を表示するスクリーンショット](./media/billing-check-mca/billing-search-cost-management-billing.png)
-
-3. 1 つの請求先アカウントのみにアクセスできる場合は、左側から **[プロパティ]** を選択します。 請求先アカウントの種類が **Microsoft 顧客契約**の場合、Microsoft 顧客契約の請求先アカウントにアクセスできます。
-
-    ![[プロパティ] ページで Microsoft 顧客契約を示すスクリーンショット](./media/billing-check-mca/billing-mca-property.png)
-
-4. 複数の請求先アカウントへのアクセスがある場合は、請求先アカウント列で型を確認します。 請求先アカウントのいずれかの型が **Microsoft 顧客契約**である場合、Microsoft 顧客契約の請求先アカウントにアクセスできます。
-
-    ![請求先アカウントの一覧ページで Microsoft 顧客契約を示すスクリーンショット](./media/billing-check-mca/billing-mca-in-the-list.png)
+   ![Microsoft Azure portal で [コストの管理と請求] を検索する](./media/billing-check-mca/billing-search-cost-management-billing.png)
+ 
+2. 1 つの課金スコープのみにアクセスできる場合は、メニューから **[プロパティ]** を選択します。 請求先アカウントの種類が **Microsoft 顧客契約**の場合、Microsoft 顧客契約の請求先アカウントにアクセスできます。
+ 
+    ![Microsoft 顧客契約、課金アカウントの種類、プロパティ、Microsoft Azure portal](./media/billing-check-mca/billing-mca-property.png)
+ 
+3. アクセスできる課金スコープが複数ある場合は、課金アカウント列で種類を確認します。 任意のスコープの課金アカウントの種類が **Microsoft 顧客契約**である場合、Microsoft 顧客契約の課金アカウントにアクセスできます。
+ 
+    [![Microsoft 顧客契約、課金アカウントの種類、課金アカウント一覧、Microsoft Azure portal](./media/billing-check-mca/billing-mca-in-the-list.png)](./media/billing-check-mca/billing-mca-in-the-list-zoomed-in.png#lightbox)

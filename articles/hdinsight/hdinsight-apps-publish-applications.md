@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64685320"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/marketplace-publishers-guide.md)に関する記事を参照してください。
 
-HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)*" モデルを使用します。 BYOL シナリオでは、アプリ ユーザーに対するアプリケーションの使用許諾はアプリケーション提供者が行います。 また、アプリ ユーザーへの課金はアプリ ユーザーが作成した Azure リソース (HDInsight クラスターとクラスターの VM/ノードなど) についてのみ行われます。 現在、アプリケーションそのものに対する課金は Azure で発生しません。
+HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)* " モデルを使用します。 BYOL シナリオでは、アプリ ユーザーに対するアプリケーションの使用許諾はアプリケーション提供者が行います。 また、アプリ ユーザーへの課金はアプリ ユーザーが作成した Azure リソース (HDInsight クラスターとクラスターの VM/ノードなど) についてのみ行われます。 現在、アプリケーションそのものに対する課金は Azure で発生しません。
 
 詳しくは、次の HDInsight アプリケーションに関連する記事を参照してください。
 
@@ -87,16 +87,16 @@ HDInsight アプリケーションのインストールに必要なすべての�
 HDInsight アプリケーションを発行するには:
 
 1. [Azure 発行](https://publish.windowsazure.com/)にサインインします。
-2. 左側のメニューで、**[ソリューション テンプレート]** を選択します。
-3. タイトルを入力し、**[Create a new solution template]\(新しいソリューション テンプレートを作成する\)** を選択します。
-4. 組織をまだ登録していない場合は、**[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace/marketplace-publishers-guide.md)」を参照してください。
+2. 左側のメニューで、 **[ソリューション テンプレート]** を選択します。
+3. タイトルを入力し、 **[Create a new solution template]\(新しいソリューション テンプレートを作成する\)** を選択します。
+4. 組織をまだ登録していない場合は、 **[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace/marketplace-publishers-guide.md)」を参照してください。
 5. **[Define some Topologies to get Started]\(いくつかのトポロジを定義して開始する\)** を選択します。 ソリューション テンプレートは、作成したすべてのトポロジの「親」となります。 1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。 プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 
-6. トポロジ名を入力し、**[+]** を選択します。
-7. 新しいバージョンを入力し、**[+]** を選択します。
+6. トポロジ名を入力し、 **[+]** を選択します。
+7. 新しいバージョンを入力し、 **[+]** を選択します。
 8. アプリケーションのパッケージ化の際に、作成した .zip ファイルをアップロードします。  
 9. **[Request Certification]\(証明書の要求\)** を選択します。 Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * クラスターに [HDInsight アプリケーションをインストール](hdinsight-apps-install-applications.md)する方法を確認します。
 * [カスタム HDInsight アプリケーションをインストール](hdinsight-apps-install-custom-applications.md)し、未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
 * [Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)し、アプリケーションをさらに追加する方法について説明します。 

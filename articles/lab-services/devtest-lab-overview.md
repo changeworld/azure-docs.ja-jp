@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698658"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60561457"
 ---
 # <a name="about-azure-devtest-labs"></a>Azure DevTest Labs とは
 Azure DevTest Labs を使用すれば、チームの開発者は、承認を待つことなく、仮想マシン (VM) と PaaS リソースを効率的に自己管理できるようになります。
@@ -84,8 +84,8 @@ DevTest Labs を使用すると、開発者とテスト担当者は、事前に�
 ## <a name="integrate-with-your-existing-toolchain"></a>既存のツールチェーンと統合する
 事前に作成されたプラグインや API を使用して、好みの[継続的インテグレーション (CI) ツール](devtest-lab-integrate-ci-cd-vsts.md)、統合開発環境 (IDE)、自動リリース パイプラインから、開発やテストの環境を直接プロビジョニングできます。 包括的なコマンド ライン ツールを使用することもできます。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - DevTest Labs の詳細については、「[DevTest ラボの概念](devtest-lab-concepts.md)」を参照してください。
 - 詳細な手順については、「[チュートリアル:Azure DevTest Labs を使用してラボを設定する](tutorial-create-custom-lab.md)」を参照してください。

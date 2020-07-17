@@ -3,7 +3,7 @@
   items:
     - name: App Service 環境について
       href: intro.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 外部 ASE の作成
@@ -83,7 +83,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: クォータの情報
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
+      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: ベスト プラクティス
@@ -114,7 +114,7 @@
           href: ../troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
         - name: パフォーマンスに関する問題のトラブルシューティング
           href: ../troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-        - name: FAQ
+        - name: よく寄せられる質問
           items:
             - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
               href: ../faq-availability-performance-application-issues.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json

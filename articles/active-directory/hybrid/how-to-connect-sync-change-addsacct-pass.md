@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect 同期: AD DS アカウントのパスワードの変更 | Microsoft Docs'
+title: 'Azure AD Connect Sync: AD DS アカウント パスワードの変更 | Microsoft ドキュメント'
 description: このトピックのドキュメントでは、AD DS アカウントのパスワードが変更された後に、Azure AD Connect を更新する方法について説明します。
 services: active-directory
 keywords: AD DS アカウント、Active Directory アカウント、パスワード
@@ -18,18 +18,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196369"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60241585"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
 AD DS アカウントとは、Azure AD Connect でオンプレミスの Active Directory との通信に使用したユーザー アカウントを指します。 AD DS アカウントのパスワードを変更する場合は、新しいパスワードを使用して Azure AD Connect 同期サービスを更新する必要があります。 それ以外の場合、同期サービスではオンプレミスの Active Directory と正しく同期できなくなり、次のエラーが発生します。
 
 * Synchronization Service Manager で、オンプレミスの AD でのすべてのインポートまたはエクスポートの操作は、**no-start-credensials** エラーとなり、失敗します。
 
-* Windows イベント ビューアーで、アプリケーション イベント ログに、**イベント ID 6000** のエラーと「**資格情報が有効でないため、管理エージェント "contoso.com" は実行できませんでした。**」というメッセージが表示されます。
+* Windows イベント ビューアーで、アプリケーション イベント ログに、**イベント ID 6000** のエラーと「**資格情報が有効でないため、管理エージェント "contoso.com" は実行できませんでした。** 」というメッセージが表示されます。
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>AD DS アカウントの新しいパスワードで同期サービスを更新する方法
@@ -44,7 +44,7 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 
 4. **[アクション]** の **[プロパティ]** を選択します。
 
-5. ポップアップ ダイアログで、**[Connect to Active Directory Forest (Active Directory フォレストに接続)]** を選択します。
+5. ポップアップ ダイアログで、 **[Connect to Active Directory Forest] \(Active Directory フォレストに接続)** を選択します。
 
 6. AD DS アカウントの新しいパスワードを **[パスワード]** テキストボックスに入力します。
 
@@ -52,9 +52,9 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 
 8. Windows サービス コントロール マネージャーで Azure AD のConnect 同期サービスを再起動します。 これは、古いパスワードへの参照がメモリ キャッシュから削除されるようにするために行います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

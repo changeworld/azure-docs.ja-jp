@@ -1,7 +1,7 @@
 ---
 title: Video Indexer を利用できるリージョン - Azure
-titlesuffix: Azure Media Services
-description: この記事では、Video Indexer を利用できる Azure リージョンについて説明します。
+titleSuffix: Azure Media Services
+description: この記事では、Azure Media Services Video Indexer を使用できる Azure リージョンについて説明します。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,22 +10,22 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 404aaf91c0cb30df0a83353ef7397987ec3f8e80
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799427"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594952"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer が存在する Azure リージョン
 
 Video Indexer API には、呼び出しがルーティングされる Azure リージョンを設定する必要がある **location** パラメーターがあります。 これは、[Video Indexer が利用できる Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)にする必要があります。
 
-## <a name="locations"></a>Locations
+## <a name="locations"></a>場所
 
-**Azure** パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として *"trial"* を指定する必要があります。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、次の行を [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で実行できます。
+`location` パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として `"trial"` を指定する必要があります。 `trial` は、`location` パラメーターの既定値です。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、次の行を [Azure CLI](/cli/azure) で実行できます。
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -44,7 +44,7 @@ az account list-locations
     }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [API を使用して言語モデルをカスタマイズする](customize-language-model-with-api.md)
 - [API を使用してブランド モデルをカスタマイズする](customize-brands-model-with-api.md)

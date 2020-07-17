@@ -1,52 +1,46 @@
 ---
-title: HTTPS エンドポイント | Microsoft Docs
-description: HTTPS エンドポイントの潜在顧客管理を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: HTTPS エンドポイントを使用してリード管理を構成する | Azure Marketplace
+description: HTTP エンドポイントを使用して、Microsoft AppSource と Azure Marketplace のリードを処理する方法について説明します。
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.date: 04/21/2020
+ms.author: dsindona
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648352"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81770181"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 
-HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の潜在顧客を処理することができます。 これらの潜在顧客を顧客関係管理 (CRM) システムに書き込んだり、電子メールとして送信したりすることができます。 この記事では、[Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) オートメーション サービスを使用して潜在顧客管理を構成する方法について説明します。
+HTTP エンドポイントを使用して、Microsoft AppSource と Azure Marketplace のリードを処理できます。 これらのリードは、カスタマー リレーションシップ マネジメント (CRM) システムに書き込んだり、電子メール通知として送信したりすることができます。 この記事では、[Microsoft Power Automate](https://powerapps.microsoft.com/automate-processes/) オートメーション サービスを使用してリード管理を構成する方法について説明します。
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Microsoft Flow を使用してフローを作成する
+## <a name="create-a-flow-using-microsoft-power-automate"></a>Microsoft Power Automate を使用してフローを作成する
 
-1. [Flow](https://flow.microsoft.com/) の Web ページを開きます。 **[サインイン]** または **[無料でサインアップ]** を選択して、無料の Flow アカウントを作成します。
+1. [Power Automate](https://flow.microsoft.com/) Web ページを開きます。 **[サインイン]** または **[無料でサインアップ]** を選択して、無料の Flow アカウントを作成します。
 
-2. サインインし、メニュー バーの **[マイ フロー]** を選択します。
+1. サインインし、メニュー バーの **[マイ フロー]** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![マイ フロー](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![マイ フロー](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. **[+ 新規]** の下で、 **[+ Instant—from blank]\(インスタント - 一から作成\)** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![一から作成](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. **[一から作成]** を選択します。
+1. フローに名前を付け、次に、 **[このフローをトリガーする方法を選択します]** の下で **[HTTP 要求の受信時]** を選択します。
 
-    ![一から作成する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![HTTP 要求の受信トリガーを選択する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. **[一から作成]** を選択します。
+1. フロー ステップをクリックして展開します。
 
-    ![一から作成する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![フロー ステップを展開する](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. **[コネクタとトリガーを検索する]** フィールドに「要求」と入力して要求コネクタを検索します。
-6. **[トリガー]** で **[HTTP 要求の受信時]** を選択します 
-
-    ![HTTP 要求の受信トリガーを選択する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. 以下のいずれかの手順を使用して、**[要求本文の JSON スキーマ]** を構成します。
+1. 次のいずれかの方法を使用して、 **[要求本文の JSON スキーマ]** を構成します。
 
    - この記事の最後にある [JSON スキーマ](#json-schema)を **[要求本文の JSON スキーマ]** テキスト ボックスにコピーします。
    - **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。 **[サンプルの JSON ペイロードを入力するか、貼り付けます]** テキスト ボックスに [JSON の例](#json-example)を貼り付けます。 **[完了]** を選択してスキーマを作成します。
@@ -69,7 +63,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
     ![動的なコンテンツの追加](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
-5. 必要なフィールドをマップし、**[保存]** を選択してフローを保存します。
+5. 必要なフィールドをマップし、 **[保存]** を選択してフローを保存します。
 
 6. HTTP POST URL が要求に作成されます。 この URL をコピーし、HTTPS エンドポイントとして使用します。
 
@@ -79,7 +73,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
 1. **[+ New step (+ 新しいステップ)]** を選択します。
 2. **[アクションを選択してください]** で **[アクション]** を選択します。
-3. **[アクション]** で、**[電子メールの送信]** を選択します。
+3. **[アクション]** で、 **[電子メールの送信]** を選択します。
 
     ![電子メール アクションを作成する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
 
@@ -97,17 +91,18 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
    ![電子メール アクションを作成する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. **[保存]** を選択してフローを終了します。
+
 6. HTTP POST URL が要求に作成されます。 この URL をコピーし、HTTPS エンドポイントとして使用します。
 
     ![HTTP Post URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>潜在顧客を HTTPS エンドポイントに送信するようにオファーを構成する
 
-オファー用の潜在顧客管理情報を構成するときは、**[Lead Destination]\(潜在顧客の宛先\)** で **[HTTPS エンドポイント]** を選択し、前のステップでコピーした HTTP POST URL を貼り付けます。  
+オファー用の潜在顧客管理情報を構成するときは、 **[Lead Destination]\(潜在顧客の宛先\)** で **[HTTPS エンドポイント]** を選択し、前のステップでコピーした HTTP POST URL を貼り付けます。  
 
 ![動的なコンテンツの追加](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-潜在顧客が生成されると、Flow に送信されてから、構成した CRM システムまたメール アドレスにルーティングされます。
+リードが生成されると、それらのリードは Power Automate フローに送信され、構成した CRM システムまたはメール アドレスにルーティングされます。
 
 ## <a name="json-schema-and-example"></a>JSON スキーマと例
 
@@ -131,6 +126,10 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -172,26 +171,28 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 }
 ```
 
-次の JSON 例をコピーし、編集して、MS Flow でテストとして使用することができます。
+次の JSON の例をコピーして編集し、フローでテストとして使用できます。
 
 ### <a name="json-example"></a>JSON の例
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ Cloud パートナー ポータルで[潜在顧客](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)を構成していない場合は構成します。

@@ -1,479 +1,121 @@
 ---
-title: Azure Blockchain Service を使用してトランザクションを送信する
-description: Azure Blockchain Service を使用してスマート コントラクトをデプロイし、プライベート トランザクションを送信する方法に関するチュートリアルです。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+title: スマート コントラクトを作成、ビルド、デプロイするチュートリアル - Azure Blockchain Service
+description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイするチュートリアル
+ms.date: 04/22/2020
 ms.topic: tutorial
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.reviewer: caleteet
+ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777337"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82086659"
 ---
-# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>チュートリアル:Azure Blockchain Service を使用してトランザクションを送信する
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
 
-このチュートリアルでは、トランザクション ノードを作成し、コントラクトとトランザクションのプライバシーをテストします。  Truffle を使用してローカル開発環境を作成し、スマート コントラクトをデプロイして、プライベート トランザクションを送信します。
+このチュートリアルでは、Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して、Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイします。 また、開発キットを使用し、トランザクションを介してスマート コントラクト関数を実行します。
 
-学習内容は次のとおりです。
+Azure Blockchain Development Kit for Ethereum を使用して、以下のことを行います。
 
 > [!div class="checklist"]
-> * トランザクション ノードを追加する
-> * Truffle を使用してスマート コントラクトをデプロイする
-> * トランザクションを開始する
-> * トランザクションのプライバシーを検証する
+> * スマート コントラクトを作成する
+> * スマート コントラクトをデプロイする
+> * トランザクションを介してスマート コントラクト関数を実行する
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Create a blockchain member using the Azure portal (Azure portal を使用してブロックチェーン メンバーを作成する)](create-member.md)」を完了します
-* 「[Quickstart: Use Truffle to connect to a consortium network (クイックスタート: Truffle を使用してコンソーシアム ネットワークに接続する)](connect-truffle.md)」を完了します
-* Truffle では、[Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)、[Truffle](https://github.com/trufflesuite/truffle) など、いくつかのツールがインストールされている必要があります。
+* 「[Quickstart: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」が完了していること
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure Blockchain Development Kit for Ethereum 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js 10.15.x 以降](https://nodejs.org/download)
+* [Git 2.10.x 以降](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。python.exe をパスに追加します。 Azure Blockchain 開発キットでは、パス内に Python バージョン 2.7.15 が必要です。
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-    Windows 10 で迅速に設定するには、Unix Bash シェル ターミナル用の [Ubuntu on Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6) をインストールした後、[Truffle](https://github.com/trufflesuite/truffle) をインストールします。 Ubuntu on Windows のディストリビューションには、Node.js と Git が含まれています。
+Windows では、node-gyp モジュール用にインストール済みの C++ コンパイラが必要です。 MSBuild Tools を使用できます。
 
-* [Visual Studio Code](https://code.visualstudio.com/Download) をインストールします
-* [Visual Studio Code Solidity 拡張機能](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)をインストールします
+* Visual Studio 2017 がインストールされている場合は、`npm config set msvs_version 2017 -g` コマンドを使用して、MSBuild Tools を使用するように npm を構成します
+* Visual Studio 2019 がインストールされている場合は、npm に対して MSBuild Tools のパスを設定します。 たとえば、`npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"` のように指定します。
+* それ以外の場合は、"*管理者として実行された*" 管理者特権を持つコマンド シェルで `npm install --global windows-build-tools` を使用して、スタンドアロンの VS ビルド ツールをインストールします。
 
-## <a name="create-transaction-nodes"></a>トランザクション ノードを作成する
+node-gyp の詳細については、[GitHub の node-gyp のリポジトリ](https://github.com/nodejs/node-gyp)を参照してください。
 
-既定では、トランザクション ノードは 1 つあります。 ここではさらに 2 つ追加します。 ノードの 1 つは、プライベート トランザクションに参加します。 もう 1 つは、プライベート トランザクションには含まれません。
+## <a name="create-a-smart-contract"></a>スマート コントラクトを作成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 自分の Azure Blockchain メンバーに移動して、 **[Transaction nodes]\(トランザクション ノード\) > [追加]** を選択します。
-1. `alpha` という名前の新しいトランザクション ノードの設定を完了します。
+Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。 開始する前に、前提条件の「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了してください。 クイックスタートには、Ethereum 用 Azure Blockchain 開発キットのインストールと構成の手順が紹介されています。
 
-    ![トランザクション ノードを作成する](./media/send-transaction/create-node.png)
+1. VS Code コマンド パレットで、 **[Azure Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
+1. **[Create basic project]\(基本プロジェクトの作成\)** を選択します。
+1. `HelloBlockchain` という名前の新しいフォルダーを作成し、**新しいプロジェクトのパスを選択**します。
 
-    | Setting | 値 | 説明 |
-    |---------|-------|-------------|
-    | Name | `alpha` | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `alpha-mymanagedledger.blockchain.azure.com` 」のように入力します。 |
-    | パスワード | 強力なパスワード | パスワードは、基本認証でトランザクション ノードのエンドポイントにアクセスするために使われます。
+Azure Blockchain Development Kit によって、新しい Solidity プロジェクトが作成され初期化されます。 基本プロジェクトには、サンプルの **HelloBlockchain** スマート コントラクトと、ビルドして Azure Blockchain Service のコンソーシアム メンバーにデプロイするために必要なすべてのファイルが含まれています。 プロジェクトが作成されるまでに数分かかる場合があります。 Azure Blockchain の出力を選択すると、VS Code のターミナル パネルで進行状況を監視できます。
 
-1. **作成** を選択します。
+プロジェクト構造は、次の例のようになります。
 
-    新しいトランザクション ノードのプロビジョニングには、約 10 分かかります。
+   ![Solidity プロジェクト](./media/send-transaction/solidity-project.png)
 
-1. 手順 2 から 4 を繰り返し、`beta` という名前のトランザクション ノードを追加します。
+## <a name="build-a-smart-contract"></a>スマート コントラクトをビルドする
 
-ノードがプロビジョニングされている間に、チュートリアルを続行できます。 プロビジョニングが完了すると、3 つのトランザクション ノードが作成されます。
+スマート コントラクトは、プロジェクトの **contracts** ディレクトリに配置されます。 スマート コントラクトのコンパイルは、ブロックチェーンにデプロイする前に行います。 プロジェクト内のすべてのスマート コントラクトをコンパイルするには、 **[Build Contracts]\(コントラクトのビルド\)** コマンドを使用します。
 
-## <a name="open-truffle-project"></a>Truffle プロジェクトを開く
+1. VS Code エクスプローラーのサイドバーで、プロジェクトの **[contracts]** フォルダーを展開します。
+1. **HelloBlockchain.sol** を右クリックし、メニューの **[Build Contracts]\(コントラクトのビルド\)** を選択します。
 
-1. Bash シェル ターミナルを開きます。
-1. Truffle プロジェクト ディレクトリへのパスを、前提条件の「[Quickstart: Use Truffle to connect to a consortium network (クイックスタート: Truffle を使用してコンソーシアム ネットワークに接続する)](connect-truffle.md)」から変更します。 たとえば、次のように入力します。
+    ![[Build Contracts]\(コントラクトのビルド\) を選択する ](./media/send-transaction/build-contracts.png)
 
-    ```bash
-    cd truffledemo
-    ```
+Azure Blockchain Development Kit では、Truffle を使用してスマート コントラクトがコンパイルされます。
 
-1. Truffle の対話型開発コンソールを起動します。
+![Truffle コンパイラの出力](./media/send-transaction/compile-output.png)
 
-    ``` bash
-    truffle develop
-    ```
+## <a name="deploy-a-smart-contract"></a>スマート コントラクトをデプロイする
 
-    Truffle では、ローカルの開発用ブロックチェーンが作成されて、対話型コンソールが提供されます。
+Truffle では、移行スクリプトを使用して、コントラクトが Ethereum ネットワークにデプロイされます。 移行は、プロジェクトの **migrations** ディレクトリに配置されている JavaScript ファイルです。
 
-## <a name="connect-to-transaction-node"></a>トランザクション ノードに接続する
+1. スマート コントラクトをデプロイするには、**HelloBlockchain.sol** を右クリックし、メニューの **[Deploy Contracts]\(コントラクトのデプロイ\)** を選択します。
+1. コマンド パレットで Azure Blockchain コンソーシアム ネットワークを選択します。 プロジェクトを作成したときに、コンソーシアムのブロックチェーン ネットワークがプロジェクトの Truffle 構成ファイルに追加されました。
+1. **[Generate mnemonic]\(ニーモニックの生成\)** を選択します。 ファイル名を選択し、ニーモニック ファイルをプロジェクト フォルダーに保存します。 たとえば、「 `myblockchainmember.env` 」のように入力します。 ニーモニック ファイルは、ブロックチェーン メンバーの Ethereum 秘密キーを生成するために使用されます。
 
-Web3 を使って既定のトランザクション ノードに接続し、アカウントを作成します。 Web3 の接続文字列は、Azure portal から取得できます。
+Azure Blockchain Development Kit では、Truffle を使用して移行スクリプトが実行され、コントラクトがブロックチェーンにデプロイされます。
 
-1. Azure portal で既定のトランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [Sample code]\(サンプル コード\) > [Web3]** の順に選択します。
-1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** から JavaScript をコピーします ![Web3 サンプル コード](./media/send-transaction/web3-code.png)
+![正常にデプロイされたコントラクト](./media/send-transaction/deploy-contract.png)
 
-1. 既定のトランザクション ノードの Web3 JavaScript コードを、Truffle の対話型開発コンソールに貼り付けます。 そのコードでは、Azure Blockchain Service のトランザクション ノードに接続される Web3 オブジェクトが作成されます。
+## <a name="call-a-contract-function"></a>コントラクト関数を呼び出す
 
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
+**HelloBlockchain** コントラクトの **SendRequest** 関数は、**RequestMessage** 状態変数を変更するものです。 ブロックチェーン ネットワークの状態の変更は、トランザクションを介して行われます。 Azure Blockchain 開発キットのスマート コントラクト インタラクション ページを使用すると、トランザクションを介して **SendRequest** 関数を呼び出すことができます。
 
-    Web3 オブジェクトでメソッドを呼び出して、トランザクション ノードと対話することができます。
+1. スマート コントラクトを対話的に操作するには、**HelloBlockchain.sol** を右クリックし、メニューから **[Show Smart Contract Interaction Page]\(スマート コントラクト インタラクション ページの表示\)** を選択します。
 
-1. 既定のトランザクション ノードで新しいアカウントを作成します。 パスワード パラメーターは、独自の強力なパスワードに置き換えます。
+    ![メニューから [Show Smart Contract Interaction Page]\(スマート コントラクト インタラクション ページの表示\) を選択する](./media/send-transaction/contract-interaction.png)
 
-    ```bash
-    web3.eth.personal.newAccount("1@myStrongPassword");
-    ```
+1. インタラクション ページでは、デプロイされている契約のバージョンを選択したり、関数を呼び出したり、最新の状態を表示したり、メタデータを表示したりすることができます。
 
-    返されるアカウント アドレスと使用したパスワードを、次のセクションのために記録しておきます。
+    ![スマート コントラクト インタラクション ページの例](./media/send-transaction/interaction-page.png)
 
-1. Truffle 開発環境を終了します。
+1. スマート コントラクト関数を呼び出すには、コントラクト アクションを選択して必要な引数を渡します。 **[SendRequest]** コントラクト アクションを選択し、「**Hello, Blockchain!** 」と **requestMessage** パラメーターに入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
 
-    ```bash
-    .exit
-    ```
+    ![SendRequest アクションを実行する](./media/send-transaction/sendrequest-action.png)
 
-## <a name="configure-truffle-project"></a>Truffle プロジェクトを構成する
+トランザクションが処理されると、インタラクション セクションに状態の変化が反映されます。
 
-Truffle プロジェクトを構成するには、Azure portal からいくつかのトランザクション ノード情報が必要です。
+![コントラクトの状態が変化する](./media/send-transaction/contract-state.png)
 
-### <a name="transaction-node-public-key"></a>トランザクション ノードの公開キー
+SendRequest 関数によって **RequestMessage** フィールドと **State** フィールドが設定されています。 **RequestMessage** の最新の状態は、引数として渡した **Hello, Blockchain** です。 **[State]\(状態\)** フィールドの値は **[Request]\(要求\)** のままです。
 
-各トランザクション ノードには公開キーがあります。 公開キーを使用すると、ノードにプライベート トランザクションを送信できます。 既定のトランザクション ノードから *alpha* トランザクション ノードにトランザクションを送信するには、*alpha* トランザクション ノードの公開キーが必要です。
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-トランザクション ノードの一覧から、公開キーを取得できます。 チュートリアルでこの後使用するので、alpha ノードの公開キーをコピーして保存します。
-
-![トランザクション ノードの一覧](./media/send-transaction/node-list.png)
-
-### <a name="transaction-node-endpoint-addresses"></a>トランザクション ノードのエンドポイント アドレス
-
-1. Azure portal で各トランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [Connection strings]\(接続文字列\)** の順に選択します。
-1. 各トランザクション ノードの **HTTPS (アクセス キー 1)** からエンドポイント URL をコピーします。 エンドポイント アドレスは、チュートリアルの後半でスマート コントラクトの構成ファイルに必要になります。
-
-    ![トランザクションのエンドポイント アドレス](./media/send-transaction/endpoint.png)
-
-### <a name="edit-configuration-file"></a>構成ファイルを編集する
-
-1. Visual Studio Code を起動し、 **[ファイル] > [フォルダーを開く]** メニューを使用して、Truffle プロジェクト ディレクトリのフォルダーを開きます。
-1. Truffle 構成ファイル `truffle-config.js` を開きます。
-1. ファイルの内容を、次の構成情報に置き換えます。 エンドポイント アドレスとアカウント情報を含む変数を追加します。 山かっこのセクションは、前のセクションで収集した値に置き換えます。
-
-``` javascript
-var defaultnode = "<default transaction node connection string>";
-var alpha = "<alpha transaction node connection string>";
-var beta = "<beta transaction node connection string>";
-
-var myAccount = "<account address>";
-var myPassword = "<account password>";
-
-var Web3 = require("web3");
-```
-
-構成の **module.exports** セクションに構成コードを追加します。
-
-```javascript
-module.exports = {
-  networks: {
-    defaultnode: {
-      provider:(() =>  {
-      const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-
-      const web3 = new Web3(AzureBlockchainProvider);
-      web3.eth.personal.unlockAccount(myAccount, myPassword);
-
-      return AzureBlockchainProvider;
-      })(),
-
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0,
-      from: myAccount
-    },
-    alpha: {
-      provider: new Web3.providers.HttpProvider(alpha),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
-    },
-    beta: {
-      provider: new Web3.providers.HttpProvider(beta),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
-    }
-  }
-}
-```
-
-## <a name="create-smart-contract"></a>スマート コントラクトを作成する
-
-**contracts** フォルダーに、`SimpleStorage.sol` という名前の新しいファイルを作成します。 次のコードを追加します。
-
-```solidity
-pragma solidity >=0.4.21 <0.6.0;
-
-contract SimpleStorage {
-    string public storedData;
-
-    constructor(string memory initVal) public {
-        storedData = initVal;
-    }
-
-    function set(string memory x) public {
-        storedData = x;
-    }
-
-    function get() view public returns (string memory retVal) {
-        return storedData;
-    }
-}
-```
-
-**migrations** フォルダーに、`2_deploy_simplestorage.js` という名前の新しいファイルを作成します。 次のコードを追加します。
-
-```solidity
-var SimpleStorage = artifacts.require("SimpleStorage.sol");
-
-module.exports = function(deployer) {
-
-  // Pass 42 to the contract as the first constructor parameter
-  deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Account address>"})  
-};
-```
-
-山かっこ内の値を置き換えます。
-
-| 値 | 説明
-|-------|-------------
-| \<alpha node public key\> | alpha ノードの公開キー
-| \<Account address\> | 既定のトランザクション ノードで作成されたアカウント アドレス。
-
-この例では、**storeData** の初期値は 42 に設定されます。
-
-**privateFor** では、コントラクトを使用できるノードを定義します。 この例では、既定のトランザクション ノードのアカウントはプライベート トランザクションを **alpha** ノードにキャストできます。 すべてのプライベート トランザクション参加者に対して公開キーを追加する必要があります。 **privateFor:** と **from:** を含めないと、スマート コントラクト トランザクションはパブリックになり、すべてのコンソーシアム メンバーから見えるようになります。
-
-**[ファイル] > [すべて保存]** を選択して、すべてのファイルを保存します。
-
-## <a name="deploy-smart-contract"></a>スマート コントラクトをデプロイする
-
-Truffle を使用して、`SimpleStorage.sol` を既定のトランザクション ノード ネットワークにデプロイします。
-
-```bash
-truffle migrate --network defaultnode
-```
-
-Truffle では、**SimpleStorage** スマート コントラクトが最初にコンパイルされてからデプロイされます。
-
-出力例:
-
-```
-pat@DESKTOP:/mnt/c/truffledemo$ truffle migrate --network defaultnode
-
-2_deploy_simplestorage.js
-=========================
-
-   Deploying 'SimpleStorage'
-   -------------------------
-   > transaction hash:    0x3f695ff225e7d11a0239ffcaaab0d5f72adb545912693a77fbfc11c0dbe7ba72
-   > Blocks: 2            Seconds: 12
-   > contract address:    0x0b15c15C739c1F3C1e041ef70E0011e641C9D763
-   > account:             0x1a0B9683B449A8FcAd294A01E881c90c734735C3
-   > balance:             0
-   > gas used:            0
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:                   0 ETH
-
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0 ETH
-```
-
-## <a name="validate-contract-privacy"></a>コントラクトのプライバシーを検証する
-
-コントラクトのプライバシーのため、コントラクトの値のクエリは、**privateFor** で宣言したノードからのみ行うことができます。 この例では、アカウントがそのノードに存在するので、既定のトランザクション ノードのクエリを実行できます。 Truffle コンソールを使って、既定のトランザクション ノードに接続します。
-
-```bash
-truffle console --network defaultnode
-```
-
-コントラクト インスタンスの値を返すコマンドを実行します。
-
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
-
-既定のトランザクション ノードのクエリが成功した場合、値 42 が返されます。
-
-出力例:
-
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network defaultnode
-truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
-**alpha** ノードの公開キーを **privateFor** で宣言したので、**alpha** ノードのクエリを実行できます。 Truffle コンソールを使って、**alpha** ノードに接続します。
-
-```bash
-truffle console --network alpha
-```
-
-コントラクト インスタンスの値を返すコマンドを実行します。
-
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
-
-**alpha** ノードのクエリが成功した場合、値 42 が返されます。
-
-出力例:
-
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network alpha
-truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
-**beta** ノードの公開キーは **privateFor** で宣言しなかったので、コントラクトのプライバシーのため、**beta** ノードのクエリを実行することはできません。 Truffle コンソールを使って、**beta** ノードに接続します。
-
-```bash
-truffle console --network beta
-```
-
-コントラクト インスタンスの値を返すコマンドを実行します。
-
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
-
-コントラクトがプライベートであるため、**beta** ノードに対するクエリは失敗します。
-
-出力例:
-
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network beta
-truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-Thrown:
-Error: Returned values aren't valid, did it run Out of Gas?
-    at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-    at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-    at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-    at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
-## <a name="send-a-transaction"></a>トランザクションを開始する
-
-`sampletx.js`という名前でファイルを作成します。 それをプロジェクトのルートに保存します。
-
-このスクリプトでは、コントラクトの **storedData** 変数の値が 65 に設定されます。 新しいファイルにコードを追加します。
-
-```javascript
-var SimpleStorage = artifacts.require("SimpleStorage");
-
-module.exports = function(done) {
-  console.log("Getting deployed version of SimpleStorage...")
-  SimpleStorage.deployed().then(function(instance) {
-    console.log("Setting value to 65...");
-    return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Account address>"});
-  }).then(function(result) {
-    console.log("Transaction:", result.tx);
-    console.log("Finished!");
-    done();
-  }).catch(function(e) {
-    console.log(e);
-    done();
-  });
-};
-```
-
-山かっこ内の値を置き換えて、ファイルを保存します。
-
-| 値 | 説明
-|-------|-------------
-| \<alpha node public key\> | alpha ノードの公開キー
-| \<Account address\> | 既定のトランザクション ノードで作成されたアカウント アドレス。
-
-**privateFor** では、トランザクションを使用できるノードを定義します。 この例では、既定のトランザクション ノードのアカウントはプライベート トランザクションを **alpha** ノードにキャストできます。 すべてのプライベート トランザクション参加者に対して公開キーを追加する必要があります。
-
-Truffle を使い、既定のトランザクション ノードに対してスクリプトを実行します。
-
-```bash
-truffle exec sampletx.js --network defaultnode
-```
-
-コントラクト インスタンスの値を返すコマンドを実行します。
-
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
-
-トランザクションが成功した場合は、値 65 が返されます。
-
-出力例:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
-## <a name="validate-transaction-privacy"></a>トランザクションのプライバシーを検証する
-
-トランザクションのプライバシーのため、トランザクションを実行できるのは **privateFor** で宣言したノード上だけです。 この例では、**alpha** ノードの公開キーを **privateFor** で宣言したので、トランザクションを実行できます。 Truffle を使って、**alpha** ノードでトランザクションを実行します。
-
-```bash
-truffle exec sampletx.js --network alpha
-```
-
-コントラクト インスタンスの値を返すコマンドを実行します。
-
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
-
-トランザクションが成功した場合は、値 65 が返されます。
-
-出力例:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
-このチュートリアルでは、コントラクトとトランザクションのプライバシーを説明するため、2 つのトランザクション ノードを追加しました。 既定のノードを使って、プライベート スマート コントラクトをデプロイしました。 コントラクトの値のクエリを実行し、ブロックチェーンでトランザクションを実行して、プライバシーをテストしました。
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-必要なくなったら、Azure Blockchain Service で作成した `myResourceGroup` リソース グループを削除することによって、リソースを削除できます。
+必要なくなったら、前提条件の "*ブロックチェーン メンバーの作成*" に関するクイックスタートで作成した `myResourceGroup` リソース グループを削除することで、リソースを削除できます。
 
 リソース グループを削除するには:
 
 1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。
 1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
+このチュートリアルでは、Azure Blockchain Development Kit を使用してサンプル Solidity プロジェクトを作成しました。 スマート コントラクトをビルドしてデプロイし、Azure Blockchain Service 上でホストされているブロックチェーン コンソーシアム ネットワーク上のトランザクションを介して関数を呼び出しました。
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Service を使用してブロックチェーン アプリケーションを開発する](develop.md)

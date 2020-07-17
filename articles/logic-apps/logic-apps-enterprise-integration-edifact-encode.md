@@ -1,21 +1,19 @@
 ---
-title: EDIFACT メッセージをエンコードする - Azure Logic Apps | Microsoft Docs
+title: EDIFACT メッセージをエンコードする
 description: Enterprise Integration Pack を備えた Azure Logic Apps 向けの EDIFACT メッセージ エンコーダーを使用して、EDI の検証と XML の生成を行います
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
-ms.date: 01/27/2017
-ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/22/2020
+ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705549"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106527"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps の EDIFACT メッセージをエンコードする
 
@@ -32,6 +30,10 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 * 統合アカウントで既に定義されている [EDIFACT 契約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>EDIFACT メッセージをエンコードする
+
+> [!IMPORTANT]
+> EDIFACT コネクタでは、UTF-8 文字のみがサポートされます。
+> 出力に予期しない文字が含まれている場合は、EDIFACT メッセージで UTF-8 文字セットが使用されていることを確認します。
 
 1. [ロジック アプリを作成](quickstart-create-first-logic-app-workflow.md)します。
 
@@ -52,7 +54,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
+5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、 **[作成]** を選択します。
 
     ![integration account connection details](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -62,7 +64,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>契約名による Encode EDIFACT Message
 
-契約名で EDIFACT メッセージをエンコードすることを選択した場合は、**[EDIFACT 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
+契約名で EDIFACT メッセージをエンコードすることを選択した場合は、 **[EDIFACT 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
 
 ![EDIFACT 契約名とエンコードする XML メッセージの入力](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
@@ -93,6 +95,6 @@ Encode EDIFACT コネクタは次のタスクを実行します。
 ## <a name="view-swagger-file"></a>Swagger ファイルを表示する
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
-[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
+## <a name="next-steps"></a>次のステップ
+[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 

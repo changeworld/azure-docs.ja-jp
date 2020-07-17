@@ -1,207 +1,464 @@
 ---
-title: Azure Application Insights による OpenCensus Python のトレース | Microsoft Docs
-description: OpenCensus Python のトレースをローカル フォワーダーおよび Application Insights と接続する手順について説明します。
-services: application-insights
-keywords: ''
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 09/18/2018
-ms.service: application-insights
+title: Azure Monitor を使用して Python アプリを監視する (プレビュー) | Microsoft Docs
+description: OpenCensus Python を Azure Monitor に接続する手順について説明します
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+author: reyang
+ms.author: reyang
+ms.date: 10/11/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696185"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815725"
 ---
-# <a name="collect-distributed-traces-from-python-preview"></a>Python から分散トレースを収集する (プレビュー)
+# <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
-Application Insights は、[OpenCensus](https://opencensus.io) と Microsoft の新しい[ローカル フォワーダー](./../../azure-monitor/app/opencensus-local-forwarder.md)との統合により、Python アプリケーションの分散トレースをサポートするようになりました。 この記事では、OpenCensus for Python を設定し、トレース データを Application Insights に取得するプロセスについて順を追って説明します。
+Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、Python アプリケーションの分散トレース、メトリック収集、およびログ記録をサポートします。 この記事では、OpenCensus for Python を設定し、監視データを Azure Monitor に送信するプロセスについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションが必要です。
-- Python がインストールされている必要があります。この記事では [Python 3.7.0](https://www.python.org/downloads/) を使用していますが、以前のバージョンでも軽微な調整で使用できる可能性があります。
-- 手順に従って[ローカル フォワーダーを Windows サービスとしてインストールします](./../../azure-monitor/app/opencensus-local-forwarder.md)
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/) を使用していますが、以前のバージョンでも軽微な変更で使用できる可能性があります。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Azure Monitor で Application Insights のリソースを作成する
 
-## <a name="create-application-insights-resource"></a>Application Insights リソースを作成する
+まず、インストルメンテーション キー (ikey) を生成する Application Insights リソースを Azure Monitor で作成する必要があります。 次に、この ikey を使用して、Azure Monitor にテレメトリ データを送信する OpenCensus SDK を構成します。
 
-まず、インストルメンテーション キー (ikey) を生成する Application Insights リソースを作成する必要があります。 ikey を使用して、OpenCensus でインストルメント化されたアプリケーションから Application Insights に分散トレースを送信するようにローカル フォワーダーを構成します。   
+1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
-1. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。
+   ![Application Insights リソースを追加する](./media/opencensus-python/0001-create-resource.png)
 
-   ![Application Insights リソースの追加](./media/opencensus-python/0001-create-resource.png)
+1. 構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-   構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
-
-    | 設定        | 値           | 説明  |
+   | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | 全般 | 監視しているアプリの種類 |
-   | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
+   | **場所** | 米国東部 | お近くの場所か、アプリがホストされている場所の近く |
 
-2. **Create** をクリックしてください。
+1. **［作成］** を選択します
 
-## <a name="configure-local-forwarder"></a>ローカル フォワーダーを構成する
+## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Monitor 用の OpenCensus Python SDK を使用したインストルメント化
 
-1. **[概要]** > **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
+OpenCensus Azure Monitor エクスポーターをインストールします。
 
-   ![インストルメンテーション キーのスクリーンショット](./media/opencensus-python/0003-instrumentation-key.png)
+```console
+python -m pip install opencensus-ext-azure
+```
 
-2. `LocalForwarder.config` ファイルを編集し、インストルメンテーション キーを追加します。 [前提条件](./../../azure-monitor/app/opencensus-local-forwarder.md)の手順に従った場合、このファイルは `C:\LF-WindowsServiceHost` にあります。
+パッケージと統合の完全な一覧については、[OpenCensus パッケージ](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)に関するページを参照してください。
 
-    ```xml
-      <OpenCensusToApplicationInsights>
-        <!--
-          Instrumentation key to track telemetry to.
-          -->
-        <InstrumentationKey>{enter-instrumentation-key}</InstrumentationKey>
-      </OpenCensusToApplicationInsights>
-    
-      <!-- Describes aspects of processing Application Insights telemetry-->
-      <ApplicationInsights>
-        <LiveMetricsStreamInstrumentationKey>{enter-instrumentation-key}</LiveMetricsStreamInstrumentationKey>
-      </ApplicationInsights>
-    </LocalForwarderConfiguration>
-    ```
+> [!NOTE]
+> `python -m pip install opencensus-ext-azure` コマンドは、Python インストール用に `PATH` 環境変数が設定されていることを前提としています。 この変数を構成していない場合は、Python の実行可能ファイルの場所を示す完全なディレクトリ パスを指定する必要があります。 その結果次のようなコマンドになります。`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`
 
-3. アプリケーションの**ローカル フォワーダー** サービスを再開します。
+SDK では 3 つの Azure Monitor エクスポーターを使用して、さまざまな種類のテレメトリ (トレース、メトリック、ログ) を Azure Monitor に送信します。 これらのテレメトリの種類の詳細については、[データ プラットフォームの概要](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)に関するページを参照してください。 次の手順に従い、3 つのエクスポーターを使用してこれらのテレメトリの種類を送信します。
 
-## <a name="opencensus-python-package"></a>OpenCensus Python パッケージ
+## <a name="telemetry-type-mappings"></a>テレメトリの種類のマッピング
 
-1. コマンド ラインから pip または pipenv を使用して Python 用 Open Census パッケージをインストールします。
+次に、Azure Monitor に表示されるテレメトリの種類にマップされる OpenCensus のエクスポーターを示します。
+
+![OpenCensus から Azure Monitor へのテレメトリの種類のマッピングを示すスクリーンショット](./media/opencensus-python/0012-telemetry-types.png)
+
+### <a name="trace"></a>Trace
+
+> [!NOTE]
+> OpenCensus の `Trace` は[分散トレース](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)を表します。 `AzureExporter` によって `requests` および `dependency` テレメトリが Azure Monitor に送信されます。
+
+1. まずいくつかのトレース データをローカルで生成しましょう。 Python IDLE か任意のエディターで、次のコードを入力します。
 
     ```python
-    python -m pip install opencensus
-    # pip env install opencensus
-    ```
-
-    > [!NOTE]
-    > `python -m pip install opencensus` は、Python インストール用に PATH 環境変数が設定されていることを前提としています。 これを構成していない場合は、Python の実行可能ファイルの場所を示す完全なディレクトリ パスを指定する必要があります。その結果次のようなコマンドになります。`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus`
-
-2. まずいくつかのトレース データをローカルで生成しましょう。 Python IDLE か任意のエディターで、次のコードを入力します。
-
-    ```python
+    from opencensus.trace.samplers import ProbabilitySampler
     from opencensus.trace.tracer import Tracer
+
+    tracer = Tracer(sampler=ProbabilitySampler(1.0))
+
+    def valuePrompt():
+        with tracer.span(name="test") as span:
+            line = input("Enter a value: ")
+            print(line)
+
+    def main():
+        while True:
+            valuePrompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+2. このコードを実行すると、値を入力するように繰り返し求められます。 入力ごとに値はシェルに出力され、OpenCensus Python Module が `SpanData` の対応する部分を生成します。 OpenCensus プロジェクトでは、[複数範囲のツリーとしてトレース](https://opencensus.io/core-concepts/tracing/)が定義されます。
+    
+    ```
+    Enter a value: 4
+    4
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='15ac5123ac1f6847', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:22.805429Z', end_time='2019-06-27T18:21:44.933405Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
+    Enter a value: 25
+    25
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='2e512f846ba342de', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:44.933405Z', end_time='2019-06-27T18:21:46.156787Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
+    Enter a value: 100
+    100
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
+    ```
+
+3. 値の入力はデモとしても有用ですが、最終的には `SpanData` を Azure Monitor に送信するようにします。 接続文字列をエクスポーターに直接渡すか、環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING`で指定することができます。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+
+    ```python
+    from opencensus.ext.azure.trace_exporter import AzureExporter
+    from opencensus.trace.samplers import ProbabilitySampler
+    from opencensus.trace.tracer import Tracer
+    
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    tracer = Tracer(
+        exporter=AzureExporter(
+            connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
+        sampler=ProbabilitySampler(1.0),
+    )
+
+    def valuePrompt():
+        with tracer.span(name="test") as span:
+            line = input("Enter a value: ")
+            print(line)
+
+    def main():
+        while True:
+            valuePrompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+4. Python スクリプトを実行すると引き続き値を入力するように求められますが、値のみがシェルに出力されます。 作成された `SpanData` は Azure Monitor に送信されます。 送信されたスパン データは `dependencies` で確認できます。 送信要求の詳細については、OpenCensus Python の[依存関係](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)を参照してください。
+受信要求の詳細については、OpenCensus Python の[要求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)を参照してください。
+
+#### <a name="sampling"></a>サンプリング
+
+OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。
+
+#### <a name="trace-correlation"></a>トレースの相関付け
+
+トレース データにおけるテレメトリの相関付けの詳細については、OpenCensus Python の[テレメトリの相関付け](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)を参照してください。
+
+#### <a name="modify-telemetry"></a>テレメトリの変更
+
+追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
+
+### <a name="metrics"></a>メトリック
+
+1. まず、いくつかのローカル メトリック データを生成しましょう。 ユーザーが Enter キーを押した回数を追跡する単純なメトリックを作成します。
+
+    ```python
+    from datetime import datetime
+    from opencensus.stats import aggregation as aggregation_module
+    from opencensus.stats import measure as measure_module
+    from opencensus.stats import stats as stats_module
+    from opencensus.stats import view as view_module
+    from opencensus.tags import tag_map as tag_map_module
+
+    stats = stats_module.stats
+    view_manager = stats.view_manager
+    stats_recorder = stats.stats_recorder
+    
+    prompt_measure = measure_module.MeasureInt("prompts",
+                                               "number of prompts",
+                                               "prompts")
+    prompt_view = view_module.View("prompt view",
+                                   "number of prompts",
+                                   [],
+                                   prompt_measure,
+                                   aggregation_module.CountAggregation())
+    view_manager.register_view(prompt_view)
+    mmap = stats_recorder.new_measurement_map()
+    tmap = tag_map_module.TagMap()
+
+    def prompt():
+        input("Press enter.")
+        mmap.measure_int_put(prompt_measure, 1)
+        mmap.record(tmap)
+        metrics = list(mmap.measure_to_view_map.get_metrics(datetime.utcnow()))
+        print(metrics[0].time_series[0].points[0])
+
+    def main():
+        while True:
+            prompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+2. このコードを実行すると、Enter キーを押すように繰り返し求められます。 Enter キーが押された回数を追跡するメトリックが作成されます。 各エントリに対して値がインクリメントされ、メトリック情報がコンソールに表示されます。 この情報には、メトリックが更新されたときの現在の値と現在のタイムスタンプが含まれます。
+
+    ```
+    Press enter.
+    Point(value=ValueLong(5), timestamp=2019-10-09 20:58:04.930426)
+    Press enter.
+    Point(value=ValueLong(6), timestamp=2019-10-09 20:58:06.570167)
+    Press enter.
+    Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
+    ```
+
+3. 値の入力はデモとしても有用ですが、最終的にはメトリック データを Azure Monitor に送信するようにします。 接続文字列をエクスポーターに直接渡すか、環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING`で指定することができます。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+
+    ```python
+    from datetime import datetime
+    from opencensus.ext.azure import metrics_exporter
+    from opencensus.stats import aggregation as aggregation_module
+    from opencensus.stats import measure as measure_module
+    from opencensus.stats import stats as stats_module
+    from opencensus.stats import view as view_module
+    from opencensus.tags import tag_map as tag_map_module
+
+    stats = stats_module.stats
+    view_manager = stats.view_manager
+    stats_recorder = stats.stats_recorder
+    
+    prompt_measure = measure_module.MeasureInt("prompts",
+                                               "number of prompts",
+                                               "prompts")
+    prompt_view = view_module.View("prompt view",
+                                   "number of prompts",
+                                   [],
+                                   prompt_measure,
+                                   aggregation_module.CountAggregation())
+    view_manager.register_view(prompt_view)
+    mmap = stats_recorder.new_measurement_map()
+    tmap = tag_map_module.TagMap()
+
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    exporter = metrics_exporter.new_metrics_exporter(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+
+    view_manager.register_exporter(exporter)
+
+    def prompt():
+        input("Press enter.")
+        mmap.measure_int_put(prompt_measure, 1)
+        mmap.record(tmap)
+        metrics = list(mmap.measure_to_view_map.get_metrics(datetime.utcnow()))
+        print(metrics[0].time_series[0].points[0])
+
+    def main():
+        while True:
+            prompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+4. エクスポーターは、一定の間隔でメトリック データを Azure Monitor に送信します。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 データは `customMetrics` で確認できます。
+
+#### <a name="standard-metrics"></a>標準メトリック
+
+既定では、メトリック エクスポーターは、一連の標準メトリックを Azure Monitor に送信します。 これを無効にするには、メトリックス エクスポーターのコンストラクターで `enable_standard_metrics` フラグを `False` に設定します。
+
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
+現在送信されている標準メトリックの一覧を次に示します。
+
+- Available Memory (bytes) (使用可能なメモリ (バイト))
+- CPU Processor Time (percentage) (CPU プロセッサ時間 (%))
+- Incoming Request Rate (per second) (受信要求率 (1 秒あたり))
+- Incoming Request Average Execution Time (milliseconds) (受信要求の平均実行時間 (ミリ秒))
+- Outgoing Request Rate (per second) (送信要求率 (1 秒あたり))
+- Process CPU Usage (percentage) (プロセスの CPU 使用率 (%))
+- Process Private Bytes (bytes) (プロセスのプライベート バイト (バイト))
+
+これらのメトリックは `performanceCounters` で確認できます。 受信要求率は `customMetrics` 未満になります。 これらのパフォーマンス カウンターの詳細については、[パフォーマンス カウンター](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)に関するページを参照してください。
+
+#### <a name="modify-telemetry"></a>テレメトリの変更
+
+追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
+
+### <a name="logs"></a>ログ
+
+1. まず、いくつかのローカル ログ データを生成しましょう。
+
+    ```python
+    import logging
+
+    logger = logging.getLogger(__name__)
+
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+
+    def main():
+        while True:
+            valuePrompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+2.  コードにより、値の入力を継続的に求められます。 入力したすべての値に対してログ エントリが生成されます。
+
+    ```
+    Enter a value: 24
+    24
+    Enter a value: 55
+    55
+    Enter a value: 123
+    123
+    Enter a value: 90
+    90
+    ```
+
+3. 値の入力はデモとしても有用ですが、最終的にはログ データを Azure Monitor に送信するようにします。 接続文字列をエクスポーターに直接渡すか、環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING`で指定することができます。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
     
     def main():
         while True:
             valuePrompt()
     
-    def valuePrompt():
-        tracer = Tracer()
-        with tracer.span(name="test") as span:
-            line = input("Enter a value: ")
-            print(line)
-    
     if __name__ == "__main__":
         main()
-    
     ```
 
-3. このコードを実行すると、値を入力するように繰り返し求められます。 入力ごとに値はシェルに出力され、**SpanData** の対応する部分が OpenCensus Python Module によって生成されます。 OpenCensus プロジェクトでは、[_複数範囲のツリーとしてトレース_](https://opencensus.io/core-concepts/tracing/)が定義されます。
-    
-    ```python
-    Enter a value: 4
-    4
-    [SpanData(name='test', context=SpanContext(trace_id=1f07f062ac394c50925f2ae61e635e14, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='5c17a4ad6ba14299', parent_span_id=None, attributes={}, start_time='2018-09-15T20:42:15.847292Z', end_time='2018-09-15T20:42:17.615664Z', child_span_count=0, stack_trace=None, time_events=[], links=[], status=None, same_process_as_parent_span=None, span_kind=0)]
-    Enter a value: 25
-    25
-    [SpanData(name='test', context=SpanContext(trace_id=c71b4e88a22a495da61df52ce3eee3e1, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='51547c0af5f046eb', parent_span_id=None, attributes={}, start_time='2018-09-15T20:42:17.615664Z', end_time='2018-09-15T20:48:11.160314Z', child_span_count=0, stack_trace=None, time_events=[], links=[], status=None, same_process_as_parent_span=None, span_kind=0)]
-    Enter a value: 100
-    100
-    [SpanData(name='test', context=SpanContext(trace_id=b4cdcc9e6df44a8fbb6e8ddeccc1351c, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f2caacf7892744d1', parent_span_id=None, attributes={}, start_time='2018-09-15T20:48:11.175931Z', end_time='2018-09-15T20:48:12.629178Z', child_span_count=0, stack_trace=None, time_events=[], links=[], status=None, same_process_as_parent_span=None, span_kind=0)]
-    ```
+4. エクスポーターはログ データを Azure Monitor に送信します。 データは `traces` で確認できます。 
 
-4. これはデモの目的では役立ちますが、最終的には**ローカル フォワーダー サービス**で取得して Application Insights に送信できる方法で SpanData を送信したいと考えています。 前の手順のコードを次のように変更します。
+    > [!NOTE]
+    > このコンテキストでの `traces` は `Tracing` と同じではありません。 `traces` は、`AzureLogHandler` を利用するときに Azure Monitor に表示されるテレメトリの種類を表します。 `Tracing` は OpenCensus の概念を表し、[分散トレース](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)に関連します。
+
+5. ログ メッセージの書式を設定するには、組み込みの Python [ログ API](https://docs.python.org/3/library/logging.html#formatter-objects) で `formatters` を使用します。
 
     ```python
-    from opencensus.trace.tracer import Tracer
-    from opencensus.trace import config_integration
-    from opencensus.trace.exporters.ocagent import trace_exporter
-    from opencensus.trace import tracer as tracer_module
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
     
-    import os
+    logger = logging.getLogger(__name__)
     
-    def main():        
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
         while True:
             valuePrompt()
     
-    def valuePrompt():
-        export_LocalForwarder = trace_exporter.TraceExporter(
-        service_name=os.getenv('SERVICE_NAME', 'python-service'),
-        endpoint=os.getenv('OCAGENT_TRACE_EXPORTER_ENDPOINT'))
-        
-        tracer = Tracer(exporter=export_LocalForwarder)
-        with tracer.span(name="test") as span:
-            line = input("Enter a value: ")
-            print(line)
-    
     if __name__ == "__main__":
         main()
     ```
 
-5. 上記のモジュールを保存して実行しようとすると、`grpc` に対して `ModuleNotFoundError` を受け取る可能性があります。 この場合は、以下を実行して [grpcio package](https://pypi.org/project/grpcio/) をインストールします。
+6. また、*extra* キーワード引数内の自分のログ メッセージに、custom_dimensions フィールドを使用してカスタム プロパティを追加することもできます。 これらは、Azure Monitor に `customDimensions` のキーと値のペアとして表示されます。
+    > [!NOTE]
+    > この機能が動作するためには、custom_dimensions フィールドにディクショナリを渡す必要があります。 他の型の引数を渡すと、それらはロガーによって無視されます。
 
-    ```
-    python -m pip install grpcio
-    ```
-
-6. 上の手順から Python スクリプトを実行しても値を入力するように求められますが、今度は値のみがシェルに出力されています。
-
-7. **ローカル フォワーダー**がトレースを取得していることを確認するには、`LocalForwarder.config` ファイルを確認します。 [前提条件](https://docs.microsoft.com/azure/application-insights/local-forwarder)の手順に従った場合は、`C:\LF-WindowsServiceHost` にあります。
-
-    ログ ファイルの以下の画像では、追加した 2 つ目のスクリプトを実行する前に、エクスポーター `OpenCensus input BatchesReceived` は 0 だったことがわかります。 更新されたスクリプトの実行を開始すると、増分された `BatchesReceived` が入力した値の数に等しくなります。
+    ```python
+    import logging
     
-    ![新しい App Insights リソースのフォーム](./media/opencensus-python/0004-batches-received.png)
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure Portal で監視を開始する
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
 
-1. Azure portal で Application Insights の **[概要]** ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。 **[Live Metric Stream]\(ライブ メトリック ストリーム\)** を選択します。
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+    ```
 
-   ![ライブ メトリック ストリームが赤い枠線で書き込まれた概要ウィンドウのスクリーンショット](./media/opencensus-python/0005-overview-live-metrics-stream.png)
+#### <a name="sending-exceptions"></a>例外を送信する
 
-2. 2 つ目の Python スクリプトをもう一度実行し、値の入力を開始すると、ローカル フォワーダー サービスから Application Insights に送信されたライブ トレース データが表示されます。
+OpenCensus Python では、`exception` テレメトリの追跡と送信が自動的には行われません。 これらは、Python ログ ライブラリ経由の例外を使用し、`AzureLogHandler` を通じて送信されます。 通常のログと同様、カスタム プロパティを追加することができます。
 
-   ![パフォーマンス データが表示されたライブ メトリック ストリームのスクリーンショット](./media/opencensus-python/0006-stream.png)
+```python
+import logging
 
-3. **[概要]** ページに戻り、**[アプリケーション マップ]** を選択して、アプリケーション コンポーネント間の依存関係と呼び出しのタイミングを視覚的に表したレイアウトを表示します。
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    ![基本的なアプリケーション マップのスクリーンショット](./media/opencensus-python/0007-application-map.png)
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
 
-    1 つのメソッド呼び出しのみをトレースしていたため、このアプリケーション マップはあまり興味深い内容ではありません。 ただし、アプリケーション マップをスケーリングして、分散性がはるかに高いアプリケーションを視覚化することができます。
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
 
-   ![アプリケーション マップ](media/opencensus-python/application-map.png)
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
+例外は明示的にログする必要があるため、ハンドルされない例外をどのようにログするかはユーザーしだいです。 OpenCensus では、例外のテレメトリが明示的にログされている限り、それをユーザーがどのように行うかについて一切制限はありません。
 
-4. **[パフォーマンスの調査]** を選択して詳細なパフォーマンス分析を実行し、パフォーマンス低下の根本原因を判断します。
+#### <a name="sampling"></a>サンプリング
 
-    ![パフォーマンス ウィンドウのスクリーンショット](./media/opencensus-python/0008-performance.png)
+OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。
 
-5. **[サンプル]** を選択し、右側のウィンドウに表示されるいずれかのサンプルをクリックすると、エンドツーエンド トランザクションの詳細エクスペリエンスが起動します。 このサンプル アプリには単一のイベントのみが表示されますが、より複雑なアプリケーションでは、個々のイベントのコール スタックのレベルまでエンドツーエンドのトランザクションを探索できます。
+#### <a name="log-correlation"></a>ログの関連付け
 
-     ![エンドツーエンドのトランザクション インターフェイスのスクリーンショット](./media/opencensus-python/0009-end-to-end-transaction.png)
+トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)に関するページを参照してください。
 
-## <a name="opencensus-trace-for-python"></a>OpenCensus for Python のトレース
+#### <a name="modify-telemetry"></a>テレメトリの変更
 
-OpenCensus for Python をローカル フォワーダーおよび Application Insights と接続する手順の基本についてのみ説明しました。 公式の使用ガイダンスでは、次のようなより高度なトピックを扱っています。
+追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
 
-* [サンプラー](https://opencensus.io/api/python/trace/usage.html#samplers)
-* [Flask の統合](https://opencensus.io/api/python/trace/usage.html#flask)
-* [Django の統合](https://opencensus.io/api/python/trace/usage.html#django)
-* [MySQL の統合](https://opencensus.io/api/python/trace/usage.html#service-integration)
-* [PostgreSQL](https://opencensus.io/api/python/trace/usage.html#postgresql)
-  
-## <a name="next-steps"></a>次の手順
+## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 
-* [OpenCensus Python の使用ガイド](https://opencensus.io/api/python/trace/usage.html)
+アプリケーションから送信されたテレメトリ データは、 **[Logs(Analytics)]** (ログ (分析)) タブを使用して表示できます。
+
+![[Logs(Analytics)] (ログ (分析)) が赤い枠線で囲まれた概要ウィンドウのスクリーンショット](./media/opencensus-python/0010-logs-query.png)
+
+**[アクティブ]** の一覧で次のようにします。
+
+- Azure Monitor のトレース エクスポーターで送信されたテレメトリについては、`requests` の下に受信した要求が表示されます。 送信または処理中の要求は、`dependencies` の下に表示されます。
+- Azure Monitor メトリック エクスポーターを使用して送信されたテレメトリの場合、送信されたメトリックは `customMetrics` の下に表示されます。
+- Azure Monitor ログ エクスポーターを使用して送信されたテレメトリの場合、ログは `traces` の下に表示されます。 例外は `exceptions` の下に表示されます。
+
+クエリとログの使用方法の詳細については、「[Azure Monitor のログ](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)」を参照してください。
+
+## <a name="learn-more-about-opencensus-for-python"></a>OpenCensus for Python に関する詳細情報
+
+* [GitHub の OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
+* [カスタマイズ](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
+* [GitHub の Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [OpenCensus 統合](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure Monitor サンプル アプリケーション](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
+
+## <a name="next-steps"></a>次のステップ
+
+* [受信要求の追跡](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [発信中要求の追跡](./../../azure-monitor/app/opencensus-python-request.md)
 * [アプリケーション マップ](./../../azure-monitor/app/app-map.md)
 * [エンドツーエンドのパフォーマンスの監視](./../../azure-monitor/learn/tutorial-performance.md)
+
+### <a name="alerts"></a>警告
+
+* [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
+* [スマート診断](../../azure-monitor/app/proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。
+* [メトリック アラート](../../azure-monitor/platform/alerts-log.md): メトリックがしきい値を超えた場合に警告するようにアラートを設定 します。 メトリック アラートはカスタム メトリックで設定し、コード化してアプリに組み込むことができます。

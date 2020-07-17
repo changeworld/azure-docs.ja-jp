@@ -1,5 +1,5 @@
 ---
-title: B2B ユーザーとしてローカル パートナー アカウントをクラウドに同期する - Azure Active Directory | Microsoft Docs
+title: B2B ユーザーとしてローカル パートナー アカウントをクラウドに同期する - Azure AD
 description: Azure AD B2B コラボレーションと同じ資格情報を使用して、ローカルで管理されている外部パートナーにローカル リソースとクラウド リソースの両方へのアクセス権を付与します。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae75311ab61449f37ccea15a0bcb88fed80c3ed
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767353"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74272610"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
 
@@ -42,7 +42,7 @@ UserType 属性の同期を有効にする前に、まず、UserType 属性を�
 
 実装手順については、[UserType の同期の有効化](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)
 - [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](hybrid-cloud-to-on-premises.md)

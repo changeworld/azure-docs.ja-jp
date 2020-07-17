@@ -2,16 +2,17 @@
 title: 'Azure HDInsight: .NET サンプル'
 description: HDInsight SDK for .NET を使用した一般的なタスクの C# .NET サンプルは、GitHub でご覧いただけます。
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3e2cb0768701196515ace3f6ef0d475f8e3b0f79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/06/2019
+ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688106"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74951566"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET サンプル
 
@@ -26,13 +27,13 @@ ms.locfileid: "64688106"
 * クラスター作成タスクのサンプルへのリンク
 * その他の管理タスクのリファレンス コンテンツへのリンク
 
-[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)ことができます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
-
-## <a name="prerequisites"></a>前提条件
+[Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisite"></a>前提条件
+
+[Azure HDInsight SDK for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 

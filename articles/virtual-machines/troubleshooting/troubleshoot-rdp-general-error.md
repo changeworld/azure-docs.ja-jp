@@ -4,21 +4,20 @@ description: Azure 上の Windows VM に対する RDP 一般エラーのトラ�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100413"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71057996"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Azure VM での RDP 一般エラーのトラブルシューティング
 
@@ -180,7 +179,7 @@ RDP リスナーの構成が正しくありません。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
 3. ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 4. 復旧 VM へのリモート デスクトップ接続を開始します。
-5. 管理者特権のコマンド プロンプト セッション (**[管理者として実行]**) を開きます。 以下のスクリプトを実行します。 このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
+5. 管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開きます。 以下のスクリプトを実行します。 このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 

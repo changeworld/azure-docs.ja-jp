@@ -1,17 +1,17 @@
 ---
-title: Azure Site Recovery を使用した Azure VM フェールオーバー時に IP アドレスを保持する | Microsoft Docs
+title: Azure Site Recovery を使用して Azure VM フェールオーバー後に IP アドレスを保持する
 description: ディザスター リカバリーのために、Azure Site Recovery を使用して Azure VM をセカンダリ リージョンへフェールオーバーする際に、IP アドレスを保持する方法について説明します
 ms.service: site-recovery
 ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788873"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229035"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
@@ -132,7 +132,7 @@ A 社は、Azure ですべてのアプリを実行しています。
   - 東アジアでは、**Source VNet** 内の次の 3 つのサブネットにわたってワークロードを分割しています。
     - **サブネット 1**:10.1.1.0/24
     - **サブネット 2**:10.1.2.0/24
-    - **サブネット 3**:10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
+    - **サブネット 3**:アドレス空間 10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
       - セカンダリ (ターゲット) リージョンは Azure 東南アジアです。
   - 東南アジアには、**Source VNet** と同一の復旧用 VNet (**Recovery VNet**) があります。
 - 東アジアの VM は、Azure ExpressRoute またはサイト間 VPN で、オンプレミス データセンターに接続されています。
@@ -161,6 +161,6 @@ B 社は、サブネット レベルで分離されているアプリをフェ�
  - アプリの回復性のためには、B 社は各アプリを独自の専用 Azure VNet 内に配置する必要があります。
  - 各アプリが別個の VNet 内にあれば、B 社は分離されたアプリをフェールオーバーし、ソースの接続をターゲット リージョンにルーティングできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [復旧計画](site-recovery-create-recovery-plans.md)について学習します。

@@ -4,7 +4,7 @@ description: Azure 内の App Service Environment で内部ロード バラン�
 services: vpn-gateway
 documentationCenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: ad52d2b1df458d04a1ca9bd52a99bab38ddabef1
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308583"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668571"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを使用するアプリケーション ゲートウェイのホワイトリストにバックエンド サーバー証明書が登録されない
 
-この記事でトラブルシューティングを行う問題: Azure 内でエンド ツー エンド SSL を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。
+この記事でトラブルシューティングを行う問題: Azure 内でエンド ツー エンド TLS を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。Azure 内でエンド ツー エンド SSL を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。
 
 ## <a name="symptoms"></a>現象
 
@@ -68,7 +68,7 @@ HTTPS Web サイトにアクセスするときにホスト名を使用しない�
 
 - ILB の IP アドレスを使用する場合は、アプリケーション ゲートウェイの **[App Service 用に使用します]** オプションをクリアします。
 
-オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 SSL 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
+オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 TLS 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、TLS/SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

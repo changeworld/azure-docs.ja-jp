@@ -2,17 +2,14 @@
 title: 概念 - Azure Kubernetes サービス (AKS) におけるストレージ
 description: Azure Kubernetes Service (AKS) のストレージについて、ボリューム、永続ボリューム、ストレージ クラス、要求などを説明します。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243773"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77595996"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -33,8 +30,10 @@ Azure Kubernetes Service (AKS) で実行されるアプリケーションで、�
 
 データを格納して取得するための従来のボリュームは、Azure Storage を基盤とする Kubernetes リソースとして作成されます。 これらのデータ ボリュームを手動で作成してポッドに直接割り当てることも、Kubernetes で自動的に作成することもできます。 これらのデータ ボリュームには、Azure ディスクまたは Azure Files を使用できます。
 
-- "*Azure ディスク*" は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HHD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのノードでしか使用できません。 ストレージ ボリュームに複数のノードで同時にアクセスするためには、Azure Files を使用してください。
-- *Azure Files* は、Azure Storage アカウントによって支えられる SMB 3.0 共有をポッドにマウントするために使用できます。 Files では、複数のノードとポッドにまたがってデータを共有できます。 現在、Files で使用できるのは、標準 HDD に支えられている Azure Standard ストレージのみです。
+- "*Azure ディスク*" は、Kubernetes *DataDisk* リソースを作成するために使用できます。 ディスクは、高パフォーマンス SSD に支えられた Azure Premium ストレージ、または標準 HDD に支えられた Azure Standard ストレージを使用できます。 ほとんどの運用ワークロードと開発ワークロードでは Premium ストレージを使用してください。 Azure ディスクは *ReadWriteOnce* としてマウントされるため、1 つのポッドでしか使用できません。 複数のポッドから同時にアクセスできるストレージ ボリュームについては、Azure Files を使用します。
+- *Azure Files* は、Azure Storage アカウントによって支えられる SMB 3.0 共有をポッドにマウントするために使用できます。 Files では、複数のノードとポッドにまたがってデータを共有できます。 ファイルは、標準 HDD に支えられた Azure Standard ストレージ、または高パフォーマンス SSD に支えられた Azure Premium ストレージを使用できます。
+> [!NOTE] 
+> Azure Files では、Kubernetes 1.13 以降が実行される AKS クラスターでの Premium Storage がサポートされています。
 
 Kubernetes におけるボリュームは、情報を格納して取得するだけの従来のディスクとは異なります。 Kubernetes のボリュームは、コンテナーで使用するために、ポッドにデータを挿入する手段としても使用できます。 Kubernetes における、その他の一般的なボリュームの種類を次に示します。
 
@@ -58,7 +57,7 @@ Premium や Standard など異なる階層を定義するために、*StorageCla
 
 AKS では、次の 2 つの初期 StorageClasses が作成されます。
 
-- *default* - Azure Standard ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用したポッドが削除されるときに、ディスクが削除されるように指定します。
+- *default* - Azure Standard ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用した永続ボリュームが削除されるときに、ディスクが削除されるように指定します。
 - *managed-premium* - Azure Premium ストレージを使用してマネージド ディスクを作成します。 ここでも、解放ポリシーは、基礎となる Azure ディスクを使用したポッドが削除されるときに、ディスクが削除されるように指定します。
 
 永続ボリュームで StorageClass が指定されない場合は、既定の StorageClass が使用されます。 永続ボリュームを要求するときは、必要なストレージが使用されることに注意してください。 `kubectl` を使用して、その他のニーズのために StorageClass を作成できます。 次の例は、Premium マネージド ディスクを使用し、ポッドの削除時に基礎となる Azure ディスクを "*保持する*" ように指定します。
@@ -119,7 +118,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
@@ -130,7 +129,7 @@ Azure ディスクまたは Azure Files を使用する動的または静的ボ�
 - [Azure ディスクを使用した動的ボリュームの作成][aks-dynamic-disks]
 - [Azure Files を使用した動的ボリュームの作成][aks-dynamic-files]
 
-Kubernetes と AKS の中心概念に関する追加情報については、次の記事を参照してください。
+Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
 - [Kubernetes/AKS クラスターとワークロード][aks-concepts-clusters-workloads]
 - [Kubernetes/AKS の ID][aks-concepts-identity]

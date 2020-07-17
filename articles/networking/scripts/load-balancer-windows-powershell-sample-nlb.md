@@ -1,26 +1,23 @@
 ---
-title: Azure PowerShell スクリプト サンプル - 高可用性の VM への負荷分散トラフィック | Microsoft Docs
+title: HA のための VM へのトラフィックの負荷分散 - Azure PowerShell
 description: Azure PowerShell スクリプト サンプル - 高可用性の VM への負荷分散トラフィック
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 282a9d0b1ae5afb873d9f3736550dff52e16bc12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160529"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74067083"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>高可用性の VM への負荷分散トラフィック
 
@@ -66,7 +63,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

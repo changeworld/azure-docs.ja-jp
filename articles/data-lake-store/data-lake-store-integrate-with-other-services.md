@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 と他の Azure サービスを統合する | Microsoft Docs
-description: Azure Data Lake Storage Gen1 が他の Azure サービスと統合されるしくみを理解します
-documentationcenter: ''
-services: data-lake-store
+title: Data Lake Storage Gen1 とその他の Azure サービスの統合
+description: Azure Data Lake Storage Gen1 を他の Azure サービスと統合する方法を理解します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879305"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690543"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 と他の Azure サービスを統合する
 Azure Data Lake Storage Gen1 を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Storage Gen1 と統合できるサービスについてまとめてあります。
@@ -60,7 +54,7 @@ Power BI を使用して、Data Lake Storage Gen1 アカウントからデータ
 SSIS で Data Lake Storage Gen1 接続マネージャーを使用して、SSIS パッケージを Data Lake Storage Gen1 と接続することができます。 詳しくは、[SSIS での Data Lake Storage Gen1 の使用](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)に関するページをご覧ください。
 
 ## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Data Lake Storage Gen1 を SQL Data Warehouse と共に使用する
-PolyBase を使用して、Data Lake Storage Gen1 から SQL Data Warehouse にデータを読み込むことができます。 詳しくは、[SQL Data Warehouse での Data Lake Storage Gen1 の使用](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)に関する記事をご覧ください。
+PolyBase を使用して、Data Lake Storage Gen1 から SQL Data Warehouse にデータを読み込むことができます。 詳しくは、[SQL Data Warehouse での Data Lake Storage Gen1 の使用](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)に関する記事をご覧ください。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Data Lake Storage Gen1 を Azure Event Hubs と共に使用する
 Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs によって受信されたデータをアーカイブしてキャプチャできます。 詳しくは、[Azure Event Hubs での Data Lake Storage Gen1 の使用](data-lake-store-archive-eventhub-capture.md)に関する記事をご覧ください。

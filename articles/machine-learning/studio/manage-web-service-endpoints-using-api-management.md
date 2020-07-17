@@ -1,46 +1,49 @@
 ---
 title: API Management を使用して Web サービスを管理する
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852886"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80473457"
 ---
-# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio Web サービスを管理する
+# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>概要
-このガイドでは、API Management を使用して Azure Machine Learning Studio Web サービスを管理する方法について簡単に説明します。
+このガイドでは、API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する方法について簡単に説明します。
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management とは
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 [ここ](https://azure.microsoft.com/services/api-management/) をクリックして、Azure API Management の詳細についてご覧ください。 [ここ](/azure/api-management/import-and-publish) をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 詳細については、[API Management のサイト](https://azure.microsoft.com/services/api-management/)をご覧ください。 Azure API Management の使用を開始するには、[インポートと発行のガイド](/azure/api-management/import-and-publish)を参照してください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 このガイドを完了するには、以下が必要です。
 
-* Azure アカウント。 Azure アカウントを持っていない場合は、 [ここ](https://azure.microsoft.com/pricing/free-trial/) をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* AzureML アカウント。 AzureML アカウントを持っていない場合は、 [ここ](https://studio.azureml.net/) をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api_key。 [ここ](create-experiment.md) をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。 [ここ](publish-a-machine-learning-web-service.md) をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。 また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
+* Azure アカウント。
+* AzureML アカウント。
+* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api_key。 AzureML 実験の作成方法の詳細については、[Studio のクイックスタート](create-experiment.md)をご覧ください。 Studio (クラシック) の実験を Web サービスとしてデプロイする方法の詳細については、[Studio のデプロイ方法](deploy-a-machine-learning-web-service.md) で、AzureML 実験を Web サービスとしてデプロイする方法の詳細を参照してください。 また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
 ## <a name="create-an-api-management-instance"></a>API Management インスタンスの作成
 
 Azure Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[+ リソースの作成]** を選択します。
 3. 検索ボックスに「API management」と入力して "API Management" リソースを選択します。
 4. **Create** をクリックしてください。
 5. **[名前]** の値は、一意の URL を作成するために使用されます (この例では "demoazureml" を使用します)。
-6. サービス インスタンスの **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択します。
+6. サービス インスタンスの **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** を選択します。
 7. **[組織名]** の値を指定します (この例では "demoazureml" を使用します)。
 8. **[管理者のメール アドレス]** を入力します。API Management システムからの通知には、このメール アドレスが使用されます。
 9. **Create** をクリックしてください。
@@ -55,7 +58,7 @@ Azure Machine Learning Web サービスは、API Management インスタンス�
 
 API を作成するには、次の手順に従います。
 
-1. 先ほど作成したサービス インスタンスを Azure Portal で開きます。
+1. Azure portal で、先ほど作成したサービス インスタンスを開きます。
 2. 左側のナビゲーション ウィンドウで **[API]** を選択します。
 
    ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
@@ -66,16 +69,16 @@ API を作成するには、次の手順に従います。
 4. **Web API URL サフィックス**を入力します。 ユーザーがサービス インスタンスに要求を送信する際に使用する URL 末尾の構成要素になります (この例では "azureml-demo" を使用します)。
 5. **[Web API URL scheme]\(Web API の URL スキーム\)** に **[HTTPS]** を選択します。
 6. **[製品]** として **[スターター]** を選択します。
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 
 ## <a name="add-the-operations"></a>操作の追加
 
-操作を API に追加して構成するには、パブリッシャー ポータルを使用します。 発行者ポータルにアクセスするには、API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックし、**[API]**、**[操作]** の順に選択して、**[操作の追加]** をクリックします。
+操作を API に追加して構成するには、パブリッシャー ポータルを使用します。 発行者ポータルにアクセスするには、API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックし、 **[API]** 、 **[操作]** の順に選択して、 **[操作の追加]** をクリックします。
 
 ![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
-**[新しい操作]** ウィンドウが表示され、**[署名]** タブが既定で選択されます。
+**[新しい操作]** ウィンドウが表示され、 **[署名]** タブが既定で選択されます。
 
 ## <a name="add-rrs-operation"></a>RRS 操作の追加
 まず、AzureML RRS サービスの操作を作成します。
@@ -86,7 +89,7 @@ API を作成するには、次の手順に従います。
 
    ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+4. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
 5. **[保存]** を選択してこの操作を保存します。
 
    ![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
@@ -102,8 +105,8 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[POST]** を選択します。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Submit" を使用します)。
-5. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
-6. **[Save]** をクリックします。
+5. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
+6. **[保存]** をクリックします。
 
 ### <a name="start-a-batch-execution-job"></a>バッチ実行ジョブを送信する
 
@@ -111,8 +114,8 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[POST]** を選択します。
 3. **[HTTP 動詞]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Start" を使用します)。
-6. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
-7. **[Save]** をクリックします。
+6. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
+7. **[保存]** をクリックします。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>バッチ実行ジョブの状態または結果を取得する
 
@@ -120,8 +123,8 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[GET]** を選択します。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Status" を使用します)。
-6. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
-7. **[Save]** をクリックします。
+6. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
+7. **[保存]** をクリックします。
 
 ### <a name="delete-a-batch-execution-job"></a>バッチ実行ジョブの削除
 
@@ -129,8 +132,8 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[削除]** を選択します。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Delete" を使用します)。
-5. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
-6. **[Save]** をクリックします。
+5. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
+6. **[保存]** をクリックします。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>開発者ポータルから操作を呼び出す
 
@@ -140,7 +143,7 @@ API を作成するには、次の手順に従います。
 
    ![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-2. 上部のメニューで **[API]** をクリックし、**[AzureML Demo API]** をクリックして、利用できる操作を表示します。
+2. 上部のメニューで **[API]** をクリックし、 **[AzureML Demo API]** をクリックして、利用できる操作を表示します。
 
    ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
@@ -148,15 +151,15 @@ API を作成するには、次の手順に従います。
 
    ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、**[apiversion]** に「2.0」を、**[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、 **[apiversion]** に「2.0」を、 **[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<実際のサービス API キー\>*」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<実際のサービス API キー\>* 」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
    **[要求本文]** に「`{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`」と入力します。
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. **[Send]** をクリックします。
+5. **[送信]** をクリックします。
 
    ![[Send]](./media/manage-web-service-endpoints-using-api-management/send.png)
 
@@ -166,7 +169,7 @@ API を作成するには、次の手順に従います。
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>付録 A - シンプルな AzureML Web サービスを作成しテストする
 ### <a name="creating-the-experiment"></a>実験の作成
-シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 例: 
+シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 次に例を示します。
 
 | Text | ハッシュされたテキスト |
 | --- | --- |
@@ -176,11 +179,11 @@ API を作成するには、次の手順に従います。
 
 ![search-experiment-templates](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-名前を **SimpleFeatureHashingExperiment**に変更します。 **[保存されたデータセット]** を展開し、**[Amazon の書評]** を実験にドラッグします。
+名前を **SimpleFeatureHashingExperiment**に変更します。 **[保存されたデータセット]** を展開し、 **[Amazon の書評]** を実験にドラッグします。
 
 ![simple-feature-hashing-experiment](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-**[データ操作]** と **[操作]** を展開し、**[データセット内の列の選択]** を実験にドラッグします。 **[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
+**[データ操作]** と **[操作]** を展開し、 **[データセット内の列の選択]** を実験にドラッグします。 **[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
 
 ![書評データセット モジュールをプロジェクト列モジュールに接続する](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
@@ -188,7 +191,7 @@ API を作成するには、次の手順に従います。
 
 ![列名を使用して列を選択する](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
-**[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。 **[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
+**[テキスト分析]** を展開し、 **[特徴ハッシュ]** を実験にドラッグします。 **[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
 
 ![connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
@@ -201,7 +204,7 @@ API を作成するには、次の手順に従います。
 ![[実行]](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Web サービスの作成
-Web サービスを作成します。 **[Web サービス]** を展開し、**[入力]** を実験にドラッグします。 **[入力]** を **[特徴ハッシュ]** に接続します。 **[出力]** を実験にドラッグします。 **[出力]** を **[特徴ハッシュ]** に接続します。
+Web サービスを作成します。 **[Web サービス]** を展開し、 **[入力]** を実験にドラッグします。 **[入力]** を **[特徴ハッシュ]** に接続します。 **[出力]** を実験にドラッグします。 **[出力]** を **[特徴ハッシュ]** に接続します。
 
 ![output-to-feature-hashing](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
@@ -214,7 +217,7 @@ Web サービスを作成します。 **[Web サービス]** を展開し、**[�
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Web サービスをテストする
-AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python のインストール方法](../../python-how-to-install.md)」を参照)。
+AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「 [Python をインストールする方法](/azure/developer/python/azure-sdk-install)」をご覧ください)。
 
 次のサンプルのソースには、実験の**workspace**、**service**、**api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
 
@@ -245,9 +248,9 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
     import urllib2
     import json
-    workspace = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE WORKSPACE ID>"
-    service = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE SERVICE ID>"
-    api_key = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE API KEY>"
+    workspace = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE WORKSPACE ID>"
+    service = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE SERVICE ID>"
+    api_key = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE API KEY>"
     data = {
     "Inputs": {
         "input1": {
@@ -273,7 +276,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 #### <a name="test-bes-endpoint"></a>BES エンドポイントのテスト
 ダッシュボードの **[バッチ実行]** をクリックして、最下部までスクロールします。 C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。 また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。 最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
+このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。 また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。 最後に、 **[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
 
     import urllib2
     import json
@@ -301,7 +304,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
     except urllib2.HTTPError, error:
         printHttpError(error)
         return
-    with open(output_file, "w+") as f:
+    with open(output_file, "wb+") as f:
         f.write(response.read())
     print(resultsLabel + " have been written to the file " + output_file)
     return

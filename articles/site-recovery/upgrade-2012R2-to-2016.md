@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホストと SCVMM を Windows Server 2016 にアップグレードする
+title: Windows Server/System Center VMM 2012 R2 を Windows Server 2016-Azure Site Recovery にアップグレードする
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: b67290f72f762331a6d699fb79aef0c0d7f9fb65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853275"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73954415"
 ---
-# <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホスト、SCVMM 2012 R2 を Windows Server 2016 と SCVMM 2016 にアップグレードする
+# <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM を Windows Server/VMM 2016 にアップグレードする 
 
 この記事では、Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホストと SCVMM 2012 R2 を Windows Server 2016 と SCVMM 2016 にアップグレードする方法について説明します
 
@@ -42,10 +42,10 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 - System Center 2012 R2 の VMM を使用している場合は、 
 
-    - VMM でデータベース情報を確認します。**[VMM コンソール]** -> **[設定]** -> **[標準]** -> **[データベース接続]**
+    - VMM でデータベース情報を確認します。 **[VMM コンソール]**  ->  **[設定]**  ->  **[標準]**  ->  **[データベース接続]**
     - System Center Virtual Machine Manager エージェント サービスのために使用されているサービス アカウントを確認します
     - VMM データベースのバックアップがあることを確認します。
-    - 関係する SCVMM サーバーのデータベース名をメモします。 これは、**[VMM コンソール]** -> **[設定]** -> **[標準]** -> **[データベース接続]** の順に移動して行えます
+    - 関係する SCVMM サーバーのデータベース名をメモします。 これは、 **[VMM コンソール]**  ->  **[設定]**  ->  **[標準]**  ->  **[データベース接続]** の順に移動して行えます
     - 2012R2 のプライマリ VMM サーバーと復旧 VMM サーバーの両方の VMM ID をメモしておきます。 VMM ID は、レジストリ "HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup" で確認できます。
     - クラスターに追加する新しい SCVMM の名前が以前と同じであることを確認します。 
 
@@ -75,10 +75,10 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 1.  [コントロール パネル]、[プログラム]、[プログラムと機能]、[Microsoft Azure Site Recovery] の順に移動し、[アンインストール] をクリックして、ASR プロバイダーをアンインストールします
 2. [SCVMM のデータベースを保持し、オペレーティング システムをアップグレードします](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. **[プログラムの追加と削除]** で、**[VMM]** > **[アンインストール]** の順に選択します。 b. **[機能の削除]** を選択し、**[VMM 管理サーバー] と [VMM コンソール]** を選択します。 c. **[データベースのオプション]** で **[データベースの保持]** を選択します。 d. 概要を確認し、**[アンインストール]** をクリックします。
+3. **[プログラムの追加と削除]** で、 **[VMM]**  >  **[アンインストール]** の順に選択します。 b. **[機能の削除]** を選択し、 **[VMM 管理サーバー] と [VMM コンソール]** を選択します。 c. **[データベースのオプション]** で **[データベースの保持]** を選択します。 d. 概要を確認し、 **[アンインストール]** をクリックします。
 
 4. [VMM 2016 をインストールします](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. SCVMM を起動し、**[ファブリック]** タブで各ホストの状態を確認します。**[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。 
+5. SCVMM を起動し、 **[ファブリック]** タブで各ホストの状態を確認します。 **[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。 
 17. SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](https://aka.ms/downloaddra)をインストールします。
 16. クラスターの各ホストに最新の [Microsoft Azure Recovery Service (MARS) エージェント](https://aka.ms/latestmarsagent)をインストールします。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
 
@@ -96,7 +96,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 1.  [コントロール パネル]、[プログラム]、[プログラムと機能]、[Microsoft Azure Site Recovery] の順に移動し、[アンインストール] をクリックして、ASR プロバイダーをアンインストールします
 2. お客様が実行したいアップグレードのモードに応じて、[こちら](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)に記載されている手順に従います。
-3. SCVMM コンソールを起動し、**[ファブリック]** タブで各ホストの状態を確認します。**[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。
+3. SCVMM コンソールを起動し、 **[ファブリック]** タブで各ホストの状態を確認します。 **[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。
 4. SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](https://aka.ms/downloaddra)をインストールします。
 5. クラスターの各ホストで、最新の [Microsoft Azure Recovery Service (MARS) エージェント](https://aka.ms/latestmarsagent)に更新します。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
 
@@ -108,6 +108,6 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 3. *Update-VMVersion* を実行して、仮想マシンの VM バージョンを更新します。 
 4.  Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ホストのアップグレードが実行されたら、[テスト フェールオーバー](tutorial-dr-drill-azure.md)を実行して、レプリケーションの正常性とディザスター リカバリーの状態をテストできます。
 

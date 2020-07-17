@@ -1,26 +1,26 @@
 ---
-title: Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定 | Microsoft Docs
+title: Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバー
 description: Azure Traffic Manager を Azure CDN エンドポイントと共に設定する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d4f77a0fb9b8005729a6e9d35f254eb522b690e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167067"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259852"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 
@@ -44,11 +44,11 @@ Azure Traffic Manager プロファイルを作成し、CDN エンドポイント
 
 1. 「[Traffic Manager プロファイルの作成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)」の手順に従って、Azure Traffic Manager プロファイルを作成します。 
 
-    **[ルーティング方法]** で、**[優先度]** を選択します。
+    **[ルーティング方法]** で、 **[優先度]** を選択します。
 
 2. 「[Traffic Manager エンドポイントの追加](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)」の手順に従って、Traffic Manager プロファイルに CDN エンドポイントを追加します
 
-    **[Type]\(種類\)** で、**[外部エンドポイント]** を選択します。 **[優先度]** に数字を入力します。
+    **[Type]\(種類\)** で、 **[外部エンドポイント]** を選択します。 **[優先度]** に数字を入力します。
 
     たとえば、優先度が *1* の *cdndemo101akamai.azureedge.net* と優先度が *2* の *cdndemo101verizon.azureedge.net* を作成します。
 
@@ -62,13 +62,13 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
 
     a. 最初の CNAME エントリでは、カスタム ドメインを、cdnverify サブドメインを含めて CDN エンドポイントにマップします。 このエントリは、手順 2 で Traffic Manager に追加した CDN エンドポイントにカスタム ドメインを登録するために必要な手順です。
 
-      例:  
+      次に例を示します。 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. 2 番目の CNAME エントリでは、カスタム ドメインを、cdnverify サブドメインを含めずに CDN エンドポイントにマップします。 このエントリは、カスタム ドメインを Traffic Manager にマップします。 
 
-      例:  
+      次に例を示します。 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -80,10 +80,14 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
 2.  Azure CDN プロファイルから、最初の CDN エンドポイント (Akamai) を選択します。 **[カスタム ドメインの追加]** を選択して、「*cdndemo101.dustydogpetcare.online*」と入力します。 カスタム ドメインを検証するためのチェックマークが緑色で表示されていることを確認します。 
 
     Azure CDN は、*cdnverify* サブドメインを使用して DNS マッピングを検証し、この登録プロセスを完了します。 詳細については、「[CNAME DNS レコードを作成する](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)」を参照してください。 この手順により、Azure CDN がカスタム ドメインを認識し、要求に応答できるようになります。
+    
+    > [!NOTE]
+    > **Akamai プロファイルの Azure CDN** で TLS を有効にするには、cname でカスタム ドメインをエンドポイントに直接指定する必要があります。 TLS を有効にするための cdnverify はまだサポートされていません。 
+    >
 
 3.  カスタム ドメインのドメイン プロバイダーの Web サイトに戻り、作成した最初の DNS マッピングを更新して、カスタム ドメインが 2 番目の CDN エンドポイントにマップされるようにします。
                              
-    例:  
+    次に例を示します。 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
@@ -91,7 +95,7 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
  
 これらの手順を完了すると、フェールオーバー機能を備えたマルチ CDN サービスが Azure Traffic Manager で設定されます。 カスタム ドメインからテスト URL にアクセスできます。 機能をテストするには、プライマリ CDN エンドポイントを無効にして、要求がセカンダリ CDN エンドポイントに正しく渡されることを確認します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 他のルーティング方法 (地理的な方法など) を設定して、異なる CDN エンドポイント間で負荷を分散させることもできます。 詳細については、「[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)」を参照してください。
 
 

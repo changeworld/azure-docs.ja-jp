@@ -1,19 +1,14 @@
 ---
-title: ポータルから既存の割り当てを更新する方法
-description: Azure Blueprints でポータルから既存の割り当てを更新するためのメカニズムについて学習します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 10/25/2018
-ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c75bd8c3831bad0c8217f16315843cbe3824fe4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+title: ポータルから既存の割り当てを更新する
+description: Azure Blueprints でポータルから既存のブループリントの割り当てを更新する方法について説明します。
+ms.date: 04/15/2020
+ms.topic: how-to
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792506"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381786"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -21,7 +16,7 @@ ms.locfileid: "59792506"
 
 - [リソース ロック](../concepts/resource-locking.md)を追加または削除する
 - [動的パラメーター](../concepts/parameters.md#dynamic-parameters)の値を変更する
-- 割り当てを、ブループリントの新しい**公開済み**バージョンにアップグレードする
+- 割り当てを、ブループリントの新しい**発行済み**バージョンにアップグレードする
 
 ## <a name="updating-assignments"></a>割り当ての更新
 
@@ -29,19 +24,20 @@ ms.locfileid: "59792506"
 
 1. 左側のページから **[割り当てられたブループリント]** を選択します。
 
-1. ブループリントの一覧で、ブループリントの割り当てをクリックします。 **[割り当ての更新]** ボタンをクリックするか、ブループリントの割り当てを右クリックし、**[割り当ての更新]** を選択します。
+1. ブループリントの一覧で、ブループリントの割り当てをクリックします。 **[割り当ての更新]** ボタンをクリックするか、ブループリントの割り当てを右クリックし、 **[割り当ての更新]** を選択します。
 
-   ![既存のブループリントの割り当てを更新する方法](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="既存のブループリントの割り当てを更新する" border="false":::
 
-1. 元の割り当てからすべての値が事前入力された状態で、**[ブループリントの割り当て]** ページが読み込まれます。 **ブループリント定義のバージョン**、**ロック割り当て**状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、**[割り当て]** をクリックします。
+1. 元の割り当てからすべての値が事前入力された状態で、 **[ブループリントの割り当て]** ページが読み込まれます。
+   **ブループリント定義のバージョン**、**ロック割り当て**状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、 **[割り当て]** をクリックします。
 
 1. 更新された割り当ての詳細ページで、新しいステータスを確認します。 この例では、割り当てに**ロック**を追加しました。
 
-   ![既存のブルー プリント割り当て - 変更されたロック モードの更新](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="既存のブループリントの割り当てを更新した - 変更されたロック モード" border="false":::
 
 1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**マネージド リソース**のテーブルが更新されます。
 
-   ![ブルー プリント割り当ての割り当て操作](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="ブループリント割り当ての割り当て操作" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>割り当ての更新の規則
 
@@ -51,14 +47,15 @@ ms.locfileid: "59792506"
   - ロールまたはロールの割り当て先 (ユーザー、グループ、またはアプリ) が変更された場合は、新しいロールの割り当てが作成されます。 以前にデプロイされたロールの割り当ては、そのまま残ります。
 - ポリシーの割り当て
   - ポリシーの割り当てのパラメーターが変更された場合は、既存の割り当てが更新されます。
-  - ポリシーの割り当ての定義が変更されると、新しいポリシーの割り当てが作成されます。 以前にデプロイされたポリシーの割り当ては、そのまま残ります。
+  - ポリシーの割り当ての定義が変更されると、新しいポリシーの割り当てが作成されます。
+    以前にデプロイされたポリシーの割り当ては、そのまま残ります。
   - ポリシーの割り当てのアーティファクトがブループリントから削除された場合、デプロイ済みのポリシーの割り当てはそのまま残ります。
 - Azure Resource Manager のテンプレート
   - テンプレートは Resource Manager によって **PUT** として処理されます。 このアクションはリソースの種類ごとに異なるので、ブループリントによって実行された際のこのアクションの影響を判断するには、含まれる各リソースのドキュメントを参照してください。
 
 ## <a name="possible-errors-on-updating-assignments"></a>割り当ての更新時に考えられるエラー
 
-割り当てを更新する際に、実行時に障害を発生させるような変更を行ことがあります。 例としては、既にデプロイされているリソース グループの場所を変更する場合が挙げられます。 [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) によってサポートされている任意の変更を行うことができますが、変更によって Azure Resource Manager でエラーが発生する場合は、割り当てにおいても障害が発生します。
+割り当てを更新する際に、実行時に障害を発生させるような変更を行ことがあります。 例としては、既にデプロイされているリソース グループの場所を変更する場合が挙げられます。 [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) によってサポートされている任意の変更を行うことができますが、変更によって Azure Resource Manager でエラーが発生する場合は、割り当てにおいても障害が発生します。
 
 割り当てを更新できる回数に制限はありません。 エラーが発生した場合は、エラーを特定して、割り当てに対して別の更新を行います。  エラー シナリオの例を次に示します。
 
@@ -66,7 +63,7 @@ ms.locfileid: "59792506"
 - オブジェクトが既に存在している
 - 変更が Azure Resource Manager でサポートされていない
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。

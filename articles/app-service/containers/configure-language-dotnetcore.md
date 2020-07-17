@@ -1,24 +1,15 @@
 ---
-title: ASP.NET Core アプリを構成する - Azure App Service | Microsoft Docs
-description: Azure App Service で動作するように ASP.NET Core アプリを構成する方法について説明する
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Linux ASP.NET Core アプリを構成する
+description: アプリ用に事前構築済みの ASP.NET Core コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 08/13/2019
+ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78255906"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの Linux ASP.NET Core アプリを構成する
 
@@ -48,23 +39,62 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="access-environment-variables"></a>環境変数へのアクセス
+## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の ASP.NET パターンを使用して、それらにアクセスできます。
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
-```csharp
-include Microsoft.Extensions.Configuration;
-// retrieve App Service app setting
-System.Configuration.ConfigurationManager.AppSettings["MySetting"]
-// retrieve App Service connection string
-Configuration.GetConnectionString("MyDbConnection")
+1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+1. `dotnet restore` を実行して、NuGet の依存関係を復元します。
+1. `dotnet publish` を実行して、運用環境用のバイナリを構築します。
+1. `POST_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+
+`PRE_BUILD_COMMAND` および `POST_BUILD_COMMAND` は、既定では空の環境変数です。 ビルド前のコマンドを実行するには、`PRE_BUILD_COMMAND` を定義します。 ビルド後のコマンドを実行するには、`POST_BUILD_COMMAND` を定義します。
+
+次の例では、一連のコマンドに対して 2 つの変数をコンマ区切りで指定しています。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-App Service と *Web.config* で同じ名前のアプリ設定を構成した場合は、App Service の値が Web.config の値よりも優先されます。 Web.config の値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の製品内でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
+ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
+
+Linux 上で App Service によって ASP.NET Core アプリが実行およびビルドされる方法に関する詳細については、[Oryx ドキュメントの.NET Core アプリの検出およびビルド方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)に関するページを参照してください。
+
+## <a name="access-environment-variables"></a>環境変数へのアクセス
+
+App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 次に、標準の ASP.NET Core 依存関係の挿入パターンを使用して、任意のクラスでこれらにアクセスできます。
+
+```csharp
+using Microsoft.Extensions.Configuration;
+
+namespace SomeNamespace 
+{
+    public class SomeClass
+    {
+        private IConfiguration _configuration;
+    
+        public SomeClass(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+    
+        public SomeMethod()
+        {
+            // retrieve App Service app setting
+            var myAppSetting = _configuration["MySetting"];
+            // retrieve App Service connection string
+            var myConnString = _configuration.GetConnectionString("MyDbConnection");
+        }
+    }
+}
+```
+
+たとえば、App Service と *appsettings.json* で同じ名前のアプリ設定を構成した場合は、App Service の値が *appsettings.json* の値よりも優先されます。 ローカルの *appsettings.json* 値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の製品内でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
 
 ## <a name="get-detailed-exceptions-page"></a>例外の詳細ページを表示する
 
-Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページの代わりに汎用の **HTTP 500** エラーが表示されるか、「**要求の処理中にエラーが発生しました。**」 メッセージが表示されます。 App Service で例外の詳細ページを表示するには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行してアプリ設定 `ASPNETCORE_ENVIRONMENT` をアプリに追加します。
+Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページの代わりに汎用の **HTTP 500** エラーが表示されるか、「**要求の処理中にエラーが発生しました。** 」 メッセージが表示されます。 App Service で例外の詳細ページを表示するには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行してアプリ設定 `ASPNETCORE_ENVIRONMENT` をアプリに追加します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -124,7 +154,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>アプリ設定を使用
 
-<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> で、次の CLI コマンドを実行して App Service アプリにアプリ設定を追加します。 *\<app-name>*、*\<resource-group-name>*、および *\<project-name>* を適切な値で置き換えます。
+<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> で、次の CLI コマンドを実行して App Service アプリにアプリ設定を追加します。 *\<app-name>* 、 *\<resource-group-name>* 、および *\<project-name>* を適切な値で置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -138,7 +168,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="next-steps"></a>次の手順
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:ASP.NET Core アプリと SQL Database](tutorial-dotnetcore-sqldb-app.md)

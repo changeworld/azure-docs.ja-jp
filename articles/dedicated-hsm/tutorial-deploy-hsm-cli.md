@@ -3,24 +3,24 @@ title: 'チュートリアル: Azure CLI を使用して既存の仮想ネット
 description: CLI を使用して専用 HSM を既存の仮想ネットワークにデプロイする方法について示すチュートリアル
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 84beac4eca44a274eecc032e4816e3ff57aeafe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688412"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454314"
 ---
-# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル: CLI を使用して既存の仮想ネットワークに HSM をデプロイする
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル:CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
 Azure Dedicated HSM では、完全な管理制御と完全な管理責任が備わった、お客様専用の物理デバイスが提供されます。 物理デバイスを使用するので、確実に容量が効果的に管理されるよう、Microsoft がデバイスの割り当てを制御する必要があります。 そのため、Dedicated HSM サービスは通常、Azure サブスクリプション内でリソース プロビジョニング用には表示されません。 Dedicated HSM サービスへのアクセスを必要とする Azure のお客様は、まず、Microsoft アカウント担当者に連絡して、Dedicated HSM サービスへの登録を依頼しなければなりません。 このプロセスが正常に完了した場合にのみ、プロビジョニングが可能になります。 
 
@@ -144,7 +144,8 @@ az network vnet create \
 ```
 
 ```azurecli
---vnet-name myHSM-vnet \
+az network vnet create \
+  --vnet-name myHSM-vnet \
   --resource-group myRG \
   --name hsmsubnet \
   --address-prefixes 10.2.1.0/24 \
@@ -232,24 +233,13 @@ SSH を使用して HSM に接続されている場合、HSM が動作してい�
 
 ## <a name="delete-or-clean-up-resources"></a>リソースの削除またはクリーンアップ
 
-HSM デバイスだけでの作業を完了したら、それをリソースとして削除し、空きプールに戻すことができます。 これを行う際の明らかな問題は、デバイス上にあるお客様の機密データです。 お客様の機密データを削除するには、Gemalto クライアントを使用して、デバイスを出荷時の状態にリセットする必要があります。 SafeNet Network Luna 7 デバイスの Gemalto 管理者ガイドを参照して、以下のコマンドを順番に検討してください。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
-
+HSM デバイスだけでの作業を完了したら、それをリソースとして削除し、空きプールに戻すことができます。 これを行う際の明らかな問題は、デバイス上にあるお客様の機密データです。 デバイスを "ゼロにする" 最善の方法は、HSM 管理者パスワードを 3 回間違えることです (注: これはアプライアンス管理者ではなく、実際の HSM 管理者です)。 キー マテリアルを保護するための安全対策として、デバイスがゼロの状態になるまでは、そのデバイスを Azure リソースとして削除することはできません。
 
 > [!NOTE]
 > Gemalto デバイスの構成に問題がある場合は、[Gemalto カスタマー サポート](https://safenet.gemalto.com/technical-support/)に問い合わせる必要があります。
 
 
-このリソース グループ内のリソースでの作業が完了したら、次のコマンドでそれらをすべて削除できます。
+このリソース グループ内のすべてのリソースでの作業が完了したら、次のコマンドでそれらをすべて削除できます。
 
 ```azurecli
 az group deployment delete \
@@ -259,7 +249,7 @@ az group deployment delete \
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルの手順を完了した後、Dedicated HSM リソースがプロビジョニングされ、必要な HSM と、その HSM との通信を可能にするための追加のネットワーク コンポーネントを備えた仮想ネットワークが確立されます。  これで、お客様にとって望ましいデプロイ アーキテクチャに必要なリソースを追加し、このデプロイを補完できるようになりました。 お客様のデプロイの計画に役立つ詳細情報については、概念に関する各ドキュメントを参照してください。
 プライマリ リージョンの 2 つの HSM によってラック レベルの可用性に対処し、セカンダリ リージョンの 2 つの HSM によってリージョンの可用性に対処する設計をお勧めします。 このチュートリアルで使用されたテンプレート ファイルは、2 つの HSM のデプロイに土台として簡単に使用できますが、お客様の要件に合わせてパラメーターを変更する必要があります。
@@ -268,4 +258,4 @@ az group deployment delete \
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)

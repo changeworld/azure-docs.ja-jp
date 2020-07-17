@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f8b785b8eadd21f1f94cf82fe137d6f747e738
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365868"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>方法:Azure AD SAML トークン暗号化 (プレビュー) の構成
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>方法:Azure AD SAML トークン暗号化の構成
 
 > [!NOTE]
 > トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
@@ -60,7 +60,7 @@ Azure portal 内で、アプリケーション構成にパブリック証明書�
 
 1. **[Azure Active Directory] > [エンタープライズ アプリケーション]** ブレードに移動し、トークン暗号化を構成するアプリケーションを選択します。
 
-1. アプリケーションのページで、**[トークン暗号化]** を選択します。
+1. アプリケーションのページで、 **[トークン暗号化]** を選択します。
 
     ![Azure portal のトークン暗号化オプション](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
@@ -79,9 +79,9 @@ Azure portal 内で、アプリケーション構成にパブリック証明書�
 
 ### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Azure portal でトークン暗号化を非アクティブ化するには
 
-1. Azure portal で、**[Azure Active Directory] > [エンタープライズ アプリケーション]** に移動し、SAML トークン暗号化が有効化されたアプリケーションを選択します。
+1. Azure portal で、 **[Azure Active Directory] > [エンタープライズ アプリケーション]** に移動し、SAML トークン暗号化が有効化されたアプリケーションを選択します。
 
-1. アプリケーションのページで、**[トークン暗号化]** を選択し、証明書を検索した後、**[...]** オプションを選択してドロップダウン メニューを表示します。
+1. アプリケーションのページで、 **[トークン暗号化]** を選択し、証明書を検索した後、 **[...]** オプションを選択してドロップダウン メニューを表示します。
 
 1. **[トークン暗号化証明書の非アクティブ化]** を選択します。
 
@@ -89,7 +89,7 @@ Azure portal 内で、アプリケーション構成にパブリック証明書�
 
 暗号化証明書は、`encrypt` 使用タグを使用して Azure AD 内のアプリケーション オブジェクトに格納されます。 暗号化証明書は複数構成できます。トークンの暗号化用にアクティブ化された証明書は、`tokenEncryptionKeyID` 属性によって識別されます。
 
-Microsoft Graph API または PowerShell を使用してトークン暗号化を構成するには、アプリケーションのオブジェクト ID が必要になります。 この値はプログラムによって検索することもでき、Azure portal でアプリケーションの **[プロパティ]** に移動して、**[オブジェクト ID]** の値を見て確認することもできます。
+Microsoft Graph API または PowerShell を使用してトークン暗号化を構成するには、アプリケーションのオブジェクト ID が必要になります。 この値はプログラムによって検索することもでき、Azure portal でアプリケーションの **[プロパティ]** に移動して、 **[オブジェクト ID]** の値を見て確認することもできます。
 
 Graph、PowerShell、またはアプリケーション マニフェストを使用して keyCredential を構成する場合は、keyId に使用する GUID を生成する必要があります。
 
@@ -123,18 +123,15 @@ Graph、PowerShell、またはアプリケーション マニフェストを使�
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>PowerShell を使用してトークン暗号化を構成する
 
-この機能はまもなく提供される予定です。 
+1. 最新の Azure AD PowerShell モジュールを使用して、テナントに接続します。
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** コマンドを使用して、トークン暗号化設定を設定します。
 
     ```
-    Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials “<KeyCredentialsObject>”  -TokenEncryptionKeyId <keyID>
+    Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. 次のコマンドを使用して、トークン暗号化設定を読み取ります。
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
@@ -142,15 +139,13 @@ Graph、PowerShell、またはアプリケーション マニフェストを使�
     $app.TokenEncryptionKeyId
     ```
 
--->
-
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>アプリケーション マニフェストを使用してトークン暗号化を構成するには
 
-1. Azure portal から、**[Azure Active Directory] > [アプリの登録]** に移動します。
+1. Azure portal から、 **[Azure Active Directory] > [アプリの登録]** に移動します。
 
 1. ドロップダウン リストから **[すべてのアプリ]** 選択してすべてのアプリを表示し、構成するエンタープライズ アプリケーションを選択します。
 
-1. アプリケーションのページで、**[マニフェスト]** を選択して[アプリケーション マニフェスト](../develop/reference-app-manifest.md)を編集します。
+1. アプリケーションのページで、 **[マニフェスト]** を選択して[アプリケーション マニフェスト](../develop/reference-app-manifest.md)を編集します。
 
 1. `tokenEncryptionKeyId` 属性の値を設定します。
 
@@ -223,7 +218,7 @@ Graph、PowerShell、またはアプリケーション マニフェストを使�
     }  
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD で SAML プロトコルがどのように使用されるか](../develop/active-directory-saml-protocol-reference.md)を学習する
 * [Azure AD 内の SAML トークン](../develop/reference-saml-tokens.md)の形式、セキュリティ特性、および内容について学習する

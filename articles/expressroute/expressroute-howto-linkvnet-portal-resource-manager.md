@@ -1,19 +1,19 @@
 ---
-title: 仮想ネットワークを回線にリンクする - ExpressRoute:Azure portal | Microsoft Docs
+title: ExpressRoute:VNet を回線にリンクする:Azure portal
 description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079470"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233759"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "58079470"
 
 * アクティブな ExpressRoute 回線が必要です。
   * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-portal-resource-manager.md) し、接続プロバイダー経由で回線を有効にしてください。
-  * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](expressroute-howto-routing-portal-resource-manager.md) に関する記事を参照してください。
+  * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ピアリングとルーティングの手順については、「[ExpressRoute 回線のピアリングの作成と変更](expressroute-howto-routing-portal-resource-manager.md)」をご覧ください。
   * Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
   * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを作成](expressroute-howto-add-gateway-resource-manager.md)します。 ExpressRoute 用の仮想ネットワーク ゲートウェイは、VPN ではなく GatewayType 'ExpressRoute' を使用します。
 
@@ -52,15 +52,16 @@ ms.locfileid: "58079470"
 
 ### <a name="to-create-a-connection"></a>接続を作成するには
 
-1. ExpressRoute 回線と Azure プライベート ピアリングが正常に構成されていることを確認します。 指示に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、[ルーティングを構成](expressroute-howto-routing-arm.md)します。 ExpressRoute 回線は次の図のようになります。
+1. ExpressRoute 回線と Azure プライベート ピアリングが正常に構成されていることを確認します。 「[ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)」と「[ExpressRoute 回線のピアリングの作成と変更](expressroute-howto-routing-arm.md)」の手順に従います。 ExpressRoute 回線は次の図のようになります。
 
-   ![ExpressRoute 回線のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
-2. ExpressRoute 回線に仮想ネットワーク ゲートウェイをリンクする接続のプロビジョニングを開始できるようになりました。 **[接続]** > **[追加]** をクリックして **[接続の追加]** ページを開き、値を構成します。
+   [![ExpressRoute 回線のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "回線の表示")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
+2. ExpressRoute 回線に仮想ネットワーク ゲートウェイをリンクする接続のプロビジョニングを開始できるようになりました。 **[接続]**  >  **[追加]** をクリックして **[接続の追加]** ページを開き、値を構成します。
 
-   ![接続追加のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   [![接続追加のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "接続追加のスクリーンショット")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. 接続が正常に構成されると、接続オブジェクトにより、接続の情報が表示されます。
 
    ![接続オブジェクトのスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>VNet を回線に接続する - 異なるサブスクリプション
 
@@ -93,7 +94,7 @@ ms.locfileid: "58079470"
 > 接続ごとに別個の認可が必要です。
 >
 
-1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、**[保存]** をクリックします。
+1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、 **[保存]** をクリックします。
 
    ![[Authorizations]](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. 構成が保存されたら、**リソース ID** と**承認キー**をコピーします。
@@ -117,14 +118,14 @@ ms.locfileid: "58079470"
 
    ![接続の検索](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. **[接続の種類]** を [ExpressRoute] に設定します。
-4. [基本] ページで詳細を入力し、**[OK]** をクリックします。
+4. [基本] ページで詳細を入力し、 **[OK]** をクリックします。
 
    ![基本ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
-5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、**[承認の利用]** チェック ボックスをオンにします。
-6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 Click **OK**.
+5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、 **[承認の利用]** チェック ボックスをオンにします。
+6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 **[OK]** をクリックします。 **[ピア回線の URI]** は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
 
    ![[設定] ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
-7. **[概要]** ページの内容を確認し、**[OK]** をクリックします。
+7. **[概要]** ページの内容を確認し、 **[OK]** をクリックします。
 
 **接続の承認を解除するには**
 
@@ -134,5 +135,5 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 接続のページの **[削除]** アイコンを選ぶことにより、接続を削除して、ExpressRoute 回線への VNet のリンクを解除することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

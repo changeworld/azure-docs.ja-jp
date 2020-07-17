@@ -1,18 +1,18 @@
 ---
-title: Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
+title: ファイアウォール規則の管理 - Azure CLI - Azure Database for MySQL
 description: この記事では、Azure CLI コマンド ラインを使って Azure Database for MySQL ファイアウォール規則を作成し、管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 3/18/2020
+ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61458469"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80063510"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MySQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -27,11 +27,11 @@ ms.locfileid: "61458469"
 Azure CLI の **az mysql server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create**:Azure MySQL サーバーのファイアウォール規則を作成します。
-- **delete**:Azure MySQL サーバーのファイアウォール規則を削除します。
-- **list**:Azure MySQL サーバーのファイアウォール規則を一覧表示します。
-- **show**:Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
-- **update**:Azure MySQL サーバーのファイアウォール規則を更新します。
+- **create**: Azure MySQL サーバーのファイアウォール規則を作成します。
+- **delete**: Azure MySQL サーバーのファイアウォール規則を削除します。
+- **list**: Azure MySQL サーバーのファイアウォール規則を一覧表示します。
+- **show**: Azure MySQL サーバーのファイアウォール規則の詳細を表示します。
+- **update**: Azure MySQL サーバーのファイアウォール規則を更新します。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Azure にサインインして Azure Database for MySQL サーバーを一覧表示する
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。
@@ -118,7 +118,7 @@ az mysql server firewall-rule delete --resource-group myresourcegroup --server-n
 ```
 正常に完了すると、出力はありません。 失敗した場合は、エラー メッセージ テキストが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 詳細については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」を参照してください。
 - [Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-portal.md)
 - [Azure CLI を使用して仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-cli.md)して、サーバーへのアクセスのセキュリティ保護を強化します。

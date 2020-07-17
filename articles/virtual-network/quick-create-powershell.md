@@ -14,20 +14,20 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: a040f3895f710f4ebbdcd3f73568775a909aa64c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258272"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79290230"
 ---
-# <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート:PowerShell を使用して仮想ネットワークを作成する
+# <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート: PowerShell を使用して仮想ネットワークを作成する
 
 仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 このクイック スタートでは、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 次にインターネットから VM に接続し、仮想ネットワークを介してプライベートで通信します。
 
 Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 代わりに PowerShell をインストールしてローカルで使用する場合、このクイック スタートでは Azure PowerShell モジュール バージョン 1.0.0 以降を使用する必要があります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードの詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
@@ -155,7 +155,7 @@ mstsc /v:<publicIpAddress>
 
 1. *myVm1* のリモート デスクトップで、PowerShell を開きます。
 
-1. 「 `ping myVm2` 」を入力します。
+1. 「`ping myVm2`」と入力します。
 
     次のような内容が返されます。
 
@@ -177,7 +177,7 @@ mstsc /v:<publicIpAddress>
 1. 後の手順で *myVm2* に *myVm1* への ping を許可するには、次のコマンドを入力します。
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
     このコマンドを実行すると、Windows ファイアウォールを介して ICMP を受信できます。
@@ -209,7 +209,7 @@ mstsc /v:<publicIpAddress>
 
 1. *myVm2* へのリモート デスクトップ接続を閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 仮想ネットワークと VM を完了したら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
 
@@ -217,7 +217,7 @@ mstsc /v:<publicIpAddress>
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、その VM ともう 1 つの VM のプライベート通信を行いました。 仮想ネットワーク設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)に関する記事をご覧ください。
 

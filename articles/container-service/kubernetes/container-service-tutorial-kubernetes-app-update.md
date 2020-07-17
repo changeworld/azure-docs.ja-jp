@@ -1,25 +1,23 @@
 ---
 title: (非推奨) Azure Container Service チュートリアル - アプリケーションの更新
 description: Azure Container Service チュートリアル - アプリケーションの更新
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006253"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78274125"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを更新する
 
 > [!TIP]
-> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの更新](../../aks/tutorial-kubernetes-app-update.md)」を参照してください。
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新](../../aks/tutorial-kubernetes-app-update.md)」を参照してください。
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -55,7 +53,7 @@ vi azure-vote/azure-vote/config_file.cfg
 
 `VOTE1VALUE` と `VOTE2VALUE` の値を変更して、ファイルを保存します。
 
-```bash
+```plaintext
 # UI Configurations
 TITLE = 'Azure Voting App'
 VOTE1VALUE = 'Blue'
@@ -111,7 +109,7 @@ kubectl get pod
 
 出力:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-217588096-5w632    1/1       Running   0          10m
 azure-vote-front-233282510-b5pkz   1/1       Running   0          10m
@@ -122,25 +120,25 @@ azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 azure-vote-front イメージを複数のポッドで実行していない場合は、`azure-vote-front` のデプロイを拡張します。
 
 
-```azurecli-interactive
+```bash
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
 アプリケーションを更新するには、[kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
 
-```azurecli-interactive
+```bash
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
 デプロイを監視するには、[kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
 
-```azurecli-interactive
+```bash
 kubectl get pod
 ```
 
 出力:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2978095810-gq9g0   1/1       Running   0          5m
 azure-vote-front-1297194256-tpjlg   1/1       Running   0         1m
@@ -152,7 +150,7 @@ azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 
 `azure-vote-front` サービスの外部 IP アドレスを取得します。
 
-```azurecli-interactive
+```bash
 kubectl get service azure-vote-front
 ```
 
@@ -160,7 +158,7 @@ kubectl get service azure-vote-front
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、アプリケーションを更新し、この更新を Kubernetes クラスターにロールアウトしました。 次のタスクを完了しました。
 

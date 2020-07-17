@@ -1,47 +1,26 @@
 ---
-title: 'Azure Backup: REST API を使用してバックアップ ポリシーを作成する'
-description: REST API を使用してバックアップ ポリシー (スケジュールと保持期間) を管理します。
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
-ms.service: backup
+title: REST API を使用してバックアップ ポリシーを作成する
+description: この記事では、REST API を使用してバックアップ ポリシー (スケジュールとリテンション期間) を作成および管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289649"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76963854"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
 
-Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
+Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
 
-## <a name="backup-policy-essentials"></a>バックアップ ポリシーの基礎
-
-- バックアップ ポリシーはコンテナーごとに作成されます。
-- バックアップ ポリシーは次のワークロードのバックアップ用に作成できます
-  - Azure VM
-  - Azure VM 内の SQL
-  - Azure ファイル共有
-- ポリシーは、多くのリソースに割り当てることができます。 Azure VM のバックアップ ポリシーを使用して、多くの Azure VM を保護できます。
-- ポリシーは、2 つのコンポーネントで構成されています
-  - スケジュール: いつバックアップを作成するか
-  - 保持期間: どのくらいの期間、各バックアップを保持する必要があるか。
-- スケジュールでは、"毎日" または "毎週" の特定の時点として定義できます。
-- 保持期間は、"毎日"、"毎週"、"毎月"、"毎年" のバックアップ ポイントに対して定義できます。
-- "毎週" は週の特定の日、"毎月" は月の特定の日、"毎年" は年の特定の日に、バックアップを行うことを意味します。
-- "毎月"、"毎年" のバックアップ ポイントに対する保持期間は、"長期的な保持" と呼ばれます。
-- コンテナーを作成すると、"既定のポリシー" と呼ばれる Azure VM バックアップに対するポリシーも作成され、Azure VM のバックアップに使用できます。
+## <a name="create-or-update-a-policy"></a>ポリシーを作成または更新する
 
 Azure Backup ポリシーを作成または更新するには、次の *PUT* 操作を使用します。
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
 `{policyName}` と `{vaultName}` は URI で指定します。 その他の情報は要求本文で指定します。
@@ -50,12 +29,12 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 たとえば、Azure VM のバックアップに対するポリシーを作成する場合、要求本文のコンポーネントは次のとおりです。
 
-|Name  |必須  |type  |説明  |
+|名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
-|tags     |         | オブジェクト        |  リソース タグ       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
+|tags     |         | Object        |  リソース タグ       |
 
-要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。
+要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。
 
 ### <a name="example-request-body"></a>要求本文の例
 
@@ -152,16 +131,16 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 > [!IMPORTANT]
 > スケジュールと保持期間の日時形式では、DateTime のみがサポートされます。 Time 形式のみはサポートされません。
 
-## <a name="responses"></a>応答
+## <a name="responses"></a>Responses
 
 バックアップ ポリシーの作成/更新は、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 受理されました     |         |     承認済み    |
+|200 OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  [OK]       |
+|202 Accepted     |         |     承認済み    |
 
 ### <a name="example-responses"></a>応答の例
 
@@ -181,14 +160,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 その後は、場所ヘッダーまたは Azure-AsyncOperation ヘッダーを使用して簡単な *GET* コマンドで結果の操作を追跡します。
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 操作が完了すると、応答本文にポリシーの内容が含まれる 200 (OK) が返されます。
@@ -281,7 +260,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ポリシーを使用して項目が既に保護されている場合、ポリシーでの更新はすべて、そのようなすべての関連する項目に対する[保護の変更](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection)になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [保護されていない Azure VM の保護を有効にします](backup-azure-arm-userestapi-backupazurevms.md)。
 

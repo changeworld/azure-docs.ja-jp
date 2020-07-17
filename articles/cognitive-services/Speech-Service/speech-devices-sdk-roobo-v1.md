@@ -1,5 +1,5 @@
 ---
-title: Speech Devices SDK Roobo Smart Audio Dev Kit v1 - Speech Services
+title: Speech Devices SDK Roobo Smart Audio Dev Kit v1 - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech Devices SDK Roobo Smart Audio Dev Kit v1 の使用を開始するための前提条件と手順です。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c1a13a44d9db8ed029ce798f0bb34944a1a65a7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74815581"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>デバイス:Roobo Smart Audio Dev Kit
 
@@ -71,6 +71,6 @@ ms.locfileid: "65409052"
 
 Roobo には、すべてのオーディオをキャプチャし、メモリをフラッシュするツールが用意されています。 オーディオに関する問題のトラブルシューティングに役立ちます。 ツールのバージョンは、開発キットの構成ごとに提供されています。 [Roobo サイト](https://ddk.roobo.com/)でデバイスを選択し、ページの下部にある **[Roobo Tools]\(Roobo ツール\)** リンクを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Android サンプル アプリを実行する](speech-devices-sdk-android-quickstart.md)

@@ -1,29 +1,35 @@
 ---
-title: Azure Data Factory を使用して Google BigQuery からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Google BigQuery からデータをコピーする
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Google BigQuery からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: jingwang
-ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.custom: seo-lt-2019
+ms.date: 09/04/2019
+ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301358"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417315"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google BigQuery からデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Google BigQuery からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Google BigQuery コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 Google BigQuery から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -32,7 +38,7 @@ Data Factory では、接続を可能にする組み込みのドライバーが�
 >[!NOTE]
 >この Google BigQuery コネクタは、BigQuery API 上に構築されます。 BigQuery では着信要求の最大数を制限し、プロジェクトごとに適切なクォータを強制することに注意してください。[割り当てと制限 - API リクエスト](https://cloud.google.com/bigquery/quotas#api_requests)を参照してください。 アカウントに対してあまり多くの同時要求をトリガーしないようにしてください。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -46,8 +52,8 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 |:--- |:--- |:--- |
 | type | type プロパティは **GoogleBigQuery** に設定する必要があります。 | はい |
 | project | クエリ対象の既定の BigQuery プロジェクトのプロジェクト ID。  | はい |
-| additionalProjects | アクセス対象のパブリック BigQuery プロジェクトのプロジェクト ID のコンマ区切りリスト。  | いいえ  |
-| requestGoogleDriveScope | Google Drive へのアクセスを要求するかどうか。 Google Drive のアクセスを許可すると、BigQuery データと Google Drive のデータを結合するフェデレーション テーブルのサポートが有効になります。 既定値は **false** です。  | いいえ  |
+| additionalProjects | アクセス対象のパブリック BigQuery プロジェクトのプロジェクト ID のコンマ区切りリスト。  | いいえ |
+| requestGoogleDriveScope | Google Drive へのアクセスを要求するかどうか。 Google Drive のアクセスを許可すると、BigQuery データと Google Drive のデータを結合するフェデレーション テーブルのサポートが有効になります。 既定値は **false** です。  | いいえ |
 | authenticationType | 認証に使用される OAuth 2.0 認証メカニズム。 ServiceAuthentication はセルフホステッド統合ランタイムのみで使用できます。 <br/>使用可能な値は、**UserAuthentication** および **ServiceAuthentication** です。 これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | はい |
 
 ### <a name="using-user-authentication"></a>ユーザー認証の使用
@@ -56,9 +62,9 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| clientId | 更新トークンの生成に使用されるアプリケーションの ID。 | いいえ  |
-| clientSecret | 更新トークンの生成に使用されるアプリケーションのシークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| refreshToken | BigQuery へのアクセスを承認するために使用される、Google から取得した更新トークン。 取得方法については、「[Obtaining OAuth 2.0 access tokens](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)」(OAuth 2.0 アクセス トークンの取得) および[こちらのコミュニティ ブログ](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)をご覧ください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| clientId | 更新トークンの生成に使用されるアプリケーションの ID。 | いいえ |
+| clientSecret | 更新トークンの生成に使用されるアプリケーションのシークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| refreshToken | BigQuery へのアクセスを承認するために使用される、Google から取得した更新トークン。 取得方法については、「[Obtaining OAuth 2.0 access tokens](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)」(OAuth 2.0 アクセス トークンの取得) および[こちらのコミュニティ ブログ](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)をご覧ください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 
 **例:**
 
@@ -92,10 +98,10 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| email | ServiceAuthentication で使用されるサービス アカウントの電子メール ID。 これはセルフホステッド統合ランタイムのみで使用できます。  | いいえ  |
-| keyFilePath | サービス アカウントの電子メール アドレスを認証するために使用される .p12 キー ファイルへの完全なパス。 | いいえ  |
-| trustedCertPath | SSL 経由で接続するときにサーバーを検証するために使用する、信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド統合ランタイムで SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |
-| useSystemTrustStore | システムの信頼ストアと指定した .pem ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は **false** です。  | いいえ  |
+| email | ServiceAuthentication で使用されるサービス アカウントの電子メール ID。 これはセルフホステッド統合ランタイムのみで使用できます。  | いいえ |
+| keyFilePath | サービス アカウントの電子メール アドレスを認証するために使用される .p12 キー ファイルへの完全なパス。 | いいえ |
+| trustedCertPath | TLS 経由で接続するときにサーバーを検証するために使用される信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド統合ランタイムで TLS を使用している場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ |
+| useSystemTrustStore | システムの信頼ストアと指定した .pem ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は **false** です。  | いいえ |
 
 **例:**
 
@@ -128,7 +134,9 @@ Google BigQuery からデータをコピーするには、データセットの 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、次のように設定する必要があります:**GoogleBigQueryObject** | はい |
-| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+| dataset | Google BigQuery データセットの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| tableName | テーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`dataset` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -137,11 +145,12 @@ Google BigQuery からデータをコピーするには、データセットの 
     "name": "GoogleBigQueryDataset",
     "properties": {
         "type": "GoogleBigQueryObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -157,7 +166,7 @@ Google BigQuery からデータをコピーするには、コピー アクティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **GoogleBigQuerySource** に設定する必要があります。 | はい |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ (データセットの "tableName" が指定されている場合) |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -191,5 +200,9 @@ Google BigQuery からデータをコピーするには、コピー アクティ
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

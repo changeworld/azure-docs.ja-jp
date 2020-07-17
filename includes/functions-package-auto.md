@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 05/23/2018
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 9093733f4dedac8c95d1526e57abea9489c0138f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0276874f1f37533f7b5bd26be8e65204d9fbeb41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67608265"
 ---
 このバインドのサポートは、すべての開発環境で自動的に提供されます。 手動でパッケージをインストールしたり、拡張機能を登録したりする必要はありません。

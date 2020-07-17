@@ -1,26 +1,17 @@
 ---
-title: OpenBSD VM イメージの作成と Azure へのアップロード | Microsoft Docs
+title: OpenBSD イメージの作成とアップロード
 description: OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードして、Azure CLI で Azure 仮想マシンを作成する方法について説明します
-services: virtual-machines-linux
-documentationcenter: ''
-author: thomas1206
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
+author: gbowerman
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/24/2017
-ms.author: huishao
-ms.openlocfilehash: 2e580a94e568f201587c06efa827006386cd6bd9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.author: guybo
+ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005011"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066751"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD ディスクイメージの作成と Azure へのアップロード
 この記事では、OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure CLI で Azure の仮想マシン (VM) を作成することができます。
@@ -31,7 +22,7 @@ ms.locfileid: "60005011"
 
 * **Azure サブスクリプション**- アカウントをお持ちでない場合でも、数分でアカウントを作成できます。 MSDN サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。 それ以外の場合は、 [無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)方法に関するページをご覧ください。  
 * **Azure CLI** - [Azure CLI](/cli/azure/install-azure-cli) の最新版がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしていることを確認します。
-* **.vhd ファイルにインストールされている OpenBSD オペレーティング システム** - サポートされている OpenBSD オペレーティング システム ([6.2 バージョン AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) を仮想ハード ディスクにインストールしておきます。 .vhd ファイルを作成するツールはいくつかあります。 たとえば Hyper-V などの仮想化ソリューションを使用して .vhd ファイルを作成し、オペレーティング システムをインストールすることができます。 Hyper-V をインストールして使用する手順については、「 [Hyper-V をインストールして仮想マシンを作成する](https://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
+* **.vhd ファイルにインストールされている OpenBSD オペレーティング システム** - サポートされている OpenBSD オペレーティング システム ([6.6 バージョン AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) を仮想ハード ディスクにインストールしておきます。 .vhd ファイルを作成するツールはいくつかあります。 たとえば Hyper-V などの仮想化ソリューションを使用して .vhd ファイルを作成し、オペレーティング システムをインストールすることができます。 Hyper-V をインストールして使用する手順については、「 [Hyper-V をインストールして仮想マシンを作成する](https://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Azure の OpenBSD イメージを準備する
@@ -174,7 +165,7 @@ ssh azureuser@<ip address>
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 OpenBSD 6.1 の Hyper-V の対応に関して詳細をお知りになりたい場合は、[OpenBSD 6.1](https://www.openbsd.org/61.html) および [hyperv.4](https://man.openbsd.org/hyperv.4) をお読みください。
 
 マネージド ディスクから VM を作成する場合は、[az disk](/cli/azure/disk) をお読みください。 

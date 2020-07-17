@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Web UI を使用した Azure Kubernetes クラスターの管理
 description: Azure Container Service の Kubernetes Web UI を使用する
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996131"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371139"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes Web UI を使用する
 
@@ -31,8 +29,8 @@ ms.locfileid: "52996131"
 
 `az` ツールがインストールされていることを確認するには、次を実行します。
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。
@@ -40,13 +38,13 @@ $ az --version
 `kubectl` ツールがインストールされていることを確認するには、次を実行します。
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 `kubectl` をインストールしていない場合、次を実行できます。
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>概要
@@ -54,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>Web UI に接続する
 Kubernetes Web UI を起動するには、次を実行できます。
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 これにより、お使いのローカル コンピューターと Kubernetes Web UI を接続する Secure プロキシと対話するように構成された Web ブラウザーが開きます。
@@ -100,14 +98,14 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
 リソースが表示されない場合は、監視データが反映されるまで数分間待つことが必要になる場合があります。
 
-コンテナーのログを表示するには、**[ログの表示]** をクリックします。
+コンテナーのログを表示するには、 **[ログの表示]** をクリックします。
 
 ![Kubernetes のログ](./media/container-service-kubernetes-ui/logs.png)
 
 ### <a name="viewing-your-service"></a>サービスを表示する
 コンテナーを実行するほかにも、Kubernetes UI は外部 `Service` を作成しました。これにより、クラスターにあるコンテナーにトラフィックを運ぶロード バランサーがプロビジョニングされます。
 
-左側のナビゲーション ウィンドウで、**[サービス]** をクリックしてすべてのサービスを表示します (1 つだけあるはずです)。
+左側のナビゲーション ウィンドウで、 **[サービス]** をクリックしてすべてのサービスを表示します (1 つだけあるはずです)。
 
 ![Kubernetes サービス](./media/container-service-kubernetes-ui/service-deployed.png)
 
@@ -125,7 +123,7 @@ UI でオブジェクトを表示するだけではなく、Kubernetes API オ�
 
 ![Kubernetes 編集](./media/container-service-kubernetes-ui/edit.png)
 
-`spec.replicas` フィールドを `2` に編集し、**[更新]** をクリックします。
+`spec.replicas` フィールドを `2` に編集し、 **[更新]** をクリックします。
 
 これで、Pod のいずれかを削除することにより、レプリカの数を 2 つに下げます。
 

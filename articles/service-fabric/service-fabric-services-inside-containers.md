@@ -1,25 +1,15 @@
 ---
 title: Windows で Azure Service Fabric サービスをコンテナー化する
 description: Windows で Service Fabric Reliable Services と Reliable Actors サービスをコンテナー化する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
-ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: anmola
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079828"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75466190"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する
 
@@ -120,6 +110,16 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
    </Policies>
    ```
 
+> [!NOTE] 
+> 既定で、Service Fabric アプリケーションでは、アプリケーション固有の要求を受け入れるエンドポイントの形式で Service Fabric ランタイムにアクセスできます。 アプリケーションで信頼されていないコードがホストされている場合は、このアクセスを無効にすることを検討します。 詳細については、[Service Fabric でのセキュリティのベスト プラクティス](service-fabric-best-practices-security.md#platform-isolation)に関する記事を参照してください。 Service Fabric ランタイムへのアクセスを無効にするには、次のように、インポートしたサービス マニフェストに対応するアプリケーション マニフェストの Policies セクションに次の設定を追加します。
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
+
 10. このアプリケーションをテストするには、バージョン 5.7 以降を実行しているクラスターにデプロイする必要があります。 ラインタイム バージョンが 6.1 以前の場合は、このプレビュー機能を有効にするようにクラスター設定を編集および更新する必要があります。 この[記事](service-fabric-cluster-fabric-settings.md)の手順に従って、次のように設定を追加します。
     ```
       {
@@ -137,6 +137,6 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 
 以上の手順で、クラスターを実行しているコンテナー化された Service Fabric アプリケーションが作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric でのコンテナー](service-fabric-get-started-containers.md)の実行について確認します。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

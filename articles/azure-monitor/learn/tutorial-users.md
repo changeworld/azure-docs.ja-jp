@@ -1,21 +1,18 @@
 ---
 title: Azure Application Insights で顧客を理解する | Microsoft Docs
 description: Azure Application Insights を使用して、顧客がアプリケーションをどのように使用しているかを理解するためのチュートリアルです。
-keywords: ''
-services: application-insights
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601562"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77670357"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights を使用して顧客がアプリケーションをどのように使用しているかを理解する
 
@@ -163,7 +160,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 6.  **[ユーザーの追加]** をクリックして、ユーザー情報をグラフを追加します。  必要に応じてグラフの詳細を編集した後、 **[編集の完了]** をクリックして保存します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここでは、ユーザーを分析する方法を学習しました。次のチュートリアルに進んで、この情報をアプリケーションに関するその他の有用なデータと組み合わせるカスタム ダッシュ ボードの作成方法を学習してください。
 
 > [!div class="nextstepaction"]

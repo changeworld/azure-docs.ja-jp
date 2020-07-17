@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 2138eed9975abe804442c476d19b5b7229685362
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289191"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "72793119"
 ---
-# <a name="security-best-practices-for-internet-of-things-iot"></a>モノのインターネット (IoT) のセキュリティに関するベスト プラクティス
-
 モノのインターネット (IoT) インフラストラクチャを保護するには、緻密なセキュリティ戦略が必要です。 この戦略では、クラウドでのデータの保護、パブリック インターネット経由で転送しているときのデータの整合性の保護、およびデバイスの安全なプロビジョニングを実行する必要があります。 各レイヤーのセキュリティがインフラストラクチャ全体のセキュリティを構築します。
 
 ## <a name="secure-an-iot-infrastructure"></a>IoT インフラストラクチャの保護

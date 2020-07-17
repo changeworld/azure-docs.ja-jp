@@ -1,5 +1,5 @@
 ---
-title: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
+title: チュートリアル`:` マネージド ID を使用してアクセス キーで Azure Storage にアクセスする - Linux - Azure AD
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d53f625cec6aee980155711ddeb4d1e1761b91d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236158"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78273818"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -68,7 +68,7 @@ ms.locfileid: "66236158"
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します
 4. ページの右側で、 **[ロール]** を "ストレージ アカウント キー オペレーターのサービス ロール" に設定します。 
-5. 次のドロップダウンで、 **[アクセスの割り当て先]** を "仮想マシン" リソースに設定します。  
+5. 次のドロップダウンで、 **[アクセスの割り当て先]** を ［仮想マシン］ リソースに設定します。  
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を [すべてのリソース グループ] に設定します。  
 7. 最後に、 **[選択]** のドロップダウンで Linux 仮想マシンを選択し、 **[保存]** をクリックします。 
 
@@ -194,7 +194,7 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする方法について説明しました。  Azure Storage アクセス キーの詳細については、以下を参照してください。
 

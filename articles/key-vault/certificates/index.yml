@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: 証明書
+summary: Azure Key Vault を使用すると、Microsoft Azure アプリケーションとユーザーは、キーとシークレットの上に構築された証明書を格納して使用し、自動更新機能を追加することができます。
+metadata:
+  title: Azure Key Vault のドキュメント - 証明書
+  description: Azure Key Vault を使用すると、Microsoft Azure アプリケーションとユーザーは、キーとシークレットの上に構築された証明書を格納して使用し、自動更新機能を追加することができます。
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423532"
+landingContent:
+- title: 証明書
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault 証明書とは
+      url: about-certificates.md
+    - text: Key Vault 証明書の概要
+      url: certificate-scenarios.md
+    - text: 証明書の作成方法
+      url: create-certificate.md
+    - text: 証明書作成の監視と管理
+      url: create-certificate-scenarios.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: ポータル
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Key Vault に証明書をインポートする
+      url: tutorial-import-certificate.md
+- title: Key Vault の詳細
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault の概要
+      url: ../general/overview.md
+    - text: 基本的な概念
+      url: ../general/basic-concepts.md
+    - text: 論理的な削除の概要
+      url: ../general/overview-soft-delete.md
+    - text: セキュリティの概要
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Key Vault を使用してサーバー アプリでシークレットを管理する
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

@@ -10,21 +10,20 @@ ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486376"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231619"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
-  
+
 このセクションのテンプレートを使用して、開発者ポータルの API ページの内容をカスタマイズできます。  
   
 -   [API リスト](#APIList)  
@@ -42,12 +41,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="APIList"></a> API リスト  
+## <a name="api-list"></a><a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
   
- ![Developer Portal API List](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal Templates API List")  
+ ![開発者ポータルの API リスト](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開発者ポータル テンプレートの API リスト")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -88,7 +89,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`apis`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
@@ -112,10 +113,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Product"></a> 操作  
+## <a name="operation"></a><a name="Product"></a> Operation  
  **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
- ![Developer Portal Operation page](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer Portal templates Operation page")  
+ ![開発者ポータルの操作ページ](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開発者ポータル テンプレートの操作ページ")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -343,14 +344,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
-|`apiId`|文字列|現在の API の ID。|  
-|`apiName`|文字列|API の名前。|  
-|`apiDescription`|文字列|API の説明。|  
+|`apiId`|string|現在の API の ID。|  
+|`apiName`|string|API の名前。|  
+|`apiDescription`|string|API の説明。|  
 |`api`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
-|`sampleUrl`|文字列|現在の操作の URL。|  
+|`sampleUrl`|string|現在の操作の URL。|  
 |`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
 |`consoleUrl`|URI|**[試してみる]** ボタンの URI。|  
 |`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
@@ -642,10 +643,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="CodeSamples"></a> コード サンプル  
+## <a name="code-samples"></a><a name="CodeSamples"></a> コード サンプル  
  次のテンプレートを使用して、操作ページの個々のコード サンプルの本文をカスタマイズできます。  
   
- ![Developer Portal Templates Code samples](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal Templates Code samples")  
+ ![開発者ポータル テンプレートのコード サンプル](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開発者ポータル テンプレートのコード サンプル")  
   
 -   [Curl](#Curl)  
   
@@ -663,7 +664,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Curl  
+### <a name="curl"></a><a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
@@ -716,12 +717,12 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a> C#  
+### <a name="c"></a><a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```csharp  
 using System;  
 using System.Net.Http.Headers;  
 using System.Text;  
@@ -895,12 +896,12 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a> Java  
+### <a name="java"></a><a name="Stub"></a> Java  
  **DocumentationSamplesJava** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```java  
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
@@ -991,12 +992,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> JavaScript  
+### <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```html  
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -1080,12 +1081,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Objective C  
+### <a name="objective-c"></a><a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```objective-c  
 #import <Foundation/Foundation.h>  
   
 int main(int argc, const char * argv[])  
@@ -1192,12 +1193,12 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> PHP  
+### <a name="php"></a><a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```php  
 <?php  
 // This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
@@ -1282,12 +1283,12 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a> Python  
+### <a name="python"></a><a name="Python"></a> Python  
  **DocumentationSamplesPython** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```python  
 ########### Python 2.7 #############  
 import httplib, urllib, base64  
   
@@ -1363,7 +1364,7 @@ except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))  
   
 ####################################  
-```  
+```
   
 #### <a name="controls"></a>コントロール  
  コード サンプル テンプレートでは、[ページ コントロール](api-management-page-controls.md)は使用できません。  
@@ -1400,12 +1401,12 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a> Ruby  
+### <a name="ruby"></a><a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** テンプレートを使用して、操作ページのコード サンプル セクションのコード サンプルをカスタマイズできます。  
   
 #### <a name="default-template"></a>既定のテンプレート  
   
-```xml  
+```ruby  
 require 'net/http'  
   
 uri = URI('{{scheme}}://{{host}}{{path}}')  
@@ -1471,5 +1472,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

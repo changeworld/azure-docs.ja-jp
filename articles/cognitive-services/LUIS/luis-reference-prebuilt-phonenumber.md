@@ -1,6 +1,6 @@
 ---
-title: 電話番号の作成済みエンティティ
-titleSuffix: Azure
+title: 電話番号の作成済みエンティティ - LUIS
+titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での phonenumber 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
@@ -8,42 +8,72 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/07/2019
+ms.topic: reference
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 43d0b855c25ed10b074d99b247ee56dc2ba7769b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146192"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78270469"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの電話番号の事前構築済みエンティティ
-`phonenumber` エンティティは、国番号を含むさまざまな電話番号を抽出します。 このエンティティは既にトレーニングされているので、発話の例をアプリケーションに追加する必要はありません。 `phonenumber` エンティティは、`en-us` カルチャでのみサポートされます。 
+`phonenumber` エンティティは、国番号を含むさまざまな電話番号を抽出します。 このエンティティは既にトレーニングされているので、発話の例をアプリケーションに追加する必要はありません。 `phonenumber` エンティティは、`en-us` カルチャでのみサポートされます。
 
 ## <a name="types-of-a-phone-number"></a>電話番号のタイプ
 `Phonenumber` は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub リポジトリから管理されます
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>この事前構築済みエンティティのための解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+次のエンティティ オブジェクトがクエリに対して返されます。
+
+`my mobile is 1 (800) 642-7676`
+
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ]
+}
+```
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ],
+    "$instance": {
+
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 (800) 642-7676",
+                "startIndex": 13,
+                "length": 16,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
 次の例では、**builtin.phonenumber** エンティティの解決を示します。
 
 ```json
-{
-  "query": "my mobile is 1 (800) 642-7676",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8448457
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8448457
-    }
-  ],
-  "entities": [
+"entities": [
     {
         "entity": "1 (800) 642-7676",
         "type": "builtin.phonenumber",
@@ -54,69 +84,12 @@ ms.locfileid: "65146192"
             "value": "1 (800) 642-7676"
         }
     }
-  ]
-}
+]
 ```
+* * *
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+## <a name="next-steps"></a>次のステップ
 
-次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ]
-        }
-    }
-}
-```
-
-次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ],
-            "$instance": {
-                "phonenumber": [
-                    {
-                        "type": "builtin.phonenumber",
-                        "text": "1 (800) 642-7676",
-                        "startIndex": 13,
-                        "length": 16,
-                        "score": 1,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
-## <a name="next-steps"></a>次の手順
-
-[percentage](luis-reference-prebuilt-percentage.md)、[number](luis-reference-prebuilt-number.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 
+[percentage](luis-reference-prebuilt-percentage.md)、[number](luis-reference-prebuilt-number.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。

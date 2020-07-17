@@ -1,29 +1,21 @@
 ---
-title: アプリケーションの正常性拡張機能と Azure 仮想マシン スケール セットを使用する | Microsoft Docs
+title: アプリケーションの正常性拡張機能と Azure 仮想マシン スケール セットを使用する
 description: アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
+author: mimckitt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: mimckitt
+ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084397"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81273734"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>アプリケーションの正常性拡張機能と仮想マシン スケール セットの使用
-お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)などの[ローリング アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
+お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)などの[ローリング アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
 
 この記事では、アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
 
@@ -66,17 +58,17 @@ ms.locfileid: "58084397"
 | Name | 値/例 | データ型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | 文字列 |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 文字列 |
-| typeHandlerVersion | `1.0` | int |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
+| typeHandlerVersion | `1.0` | INT |
 
 ### <a name="settings"></a>設定
 
 | Name | 値/例 | データ型
 | ---- | ---- | ----
-| protocol | `http` または `tcp` | 文字列 |
-| port | プロトコルが `http` の場合は省略可能、プロトコルが `tcp` の場合は必須 | int |
-| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | 文字列 |
+| protocol | `http` または `tcp` | string |
+| port | プロトコルが `http` の場合は省略可能、プロトコルが `tcp` の場合は必須 | INT |
+| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | string |
 
 ## <a name="deploy-the-application-health-extension"></a>アプリケーションの正常性拡張機能をデプロイする
 次の例で詳しく示すように、アプリケーションの正常性拡張機能をお使いのスケール セットにデプロイする方法は複数あります。
@@ -149,20 +141,29 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 [az vmss 拡張機能セット](/cli/azure/vmss/extension#az-vmss-extension-set) を使用して、アプリケーションの正常性拡張機能をスケール セット モデルの定義に追加します。
 
-次の例は、Windows ベースのスケール セットのスケール セット モデルにアプリケーションの正常性拡張機能 を追加しています。
+次の例は、Linux ベースのスケール セットのスケール セット モデルにアプリケーションの正常性拡張機能を追加しています。
 
 ```azurecli-interactive
 az vmss extension set \
-  --name ApplicationHealthWindows \
+  --name ApplicationHealthLinux \
   --publisher Microsoft.ManagedServices \
   --version 1.0 \
   --resource-group <myVMScaleSetResourceGroup> \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
+extension.json ファイルの内容です。
+
+```json
+{
+  "protocol": "<protocol>",
+  "port": "<port>",
+  "requestPath": "</requestPath>"
+}
+```
 
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 
 ```Windows
@@ -175,5 +176,5 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 
 ログには、アプリケーションの正常性状態も定期的にキャプチャされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 仮想マシン スケール セットに[ご自身のアプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法を学習します。

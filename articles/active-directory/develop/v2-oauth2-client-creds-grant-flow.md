@@ -1,40 +1,31 @@
 ---
-title: Microsoft ID プラットフォームを使用して、セキュリティで保護されたリソースにユーザーの介入なしでアクセスする | Azure
+title: Microsoft ID プラットフォームの OAuth 2.0 クライアント資格情報フロー | Azure
 description: Microsoft ID プラットフォームで導入された OAuth 2.0 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: hpsin
 manager: CelesteDG
-editor: ''
-ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.author: ryanwi
+ms.date: 12/17/2019
+ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545091"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689782"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、 *"デーモン"* または *"サービス アカウント"* と呼ばれます。
 
-RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*"デーモン"* または *"サービス アカウント"* と呼ばれます。
+この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。 可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
-
-> [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure AD シナリオや機能をサポートしているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
 
 より一般的な *3 本足の OAuth* では、特定のユーザーに代わり、クライアント アプリケーションにリソースへのアクセス許可が付与されます。 通常、[同意](v2-permissions-and-consent.md)プロセス中に、アクセス許可はユーザーからアプリケーションに委任されます。 ただし、クライアント資格情報 (*two-legged OAuth*) フローでは、アクセス許可はアプリケーション自体に直接付与されます。 アプリがリソースにトークンを提示する場合、リソースでは、ユーザーではなくアプリ自体がアクション実行の承認を行います。
 
@@ -42,7 +33,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 全体的なクライアント資格情報フローは、次の図のようになります。 それぞれの手順については、この記事で後述します。
 
-![クライアントの資格情報フロー](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
+![クライアント資格情報フローを示す図](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>直接承認を取得する
 
@@ -63,7 +54,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 ### <a name="application-permissions"></a>アプリケーションのアクセス許可
 
-ACL を使用する代わりに、API を使用してアプリケーションのアクセス許可のセットを公開することができます。 アプリケーションのアクセス許可は、組織の管理者によってアプリケーションに付与され、その組織と従業員が所有するデータにアクセスする場合にのみ使用されます。 たとえば、Microsoft Graph は次の操作を行うアクセス許可を公開しています:
+ACL を使用する代わりに、API を使用して**アプリケーションのアクセス許可**のセットを公開することができます。 アプリケーションのアクセス許可は、組織の管理者によってアプリケーションに付与され、その組織と従業員が所有するデータにアクセスする場合にのみ使用されます。 たとえば、Microsoft Graph は次の操作を行うアクセス許可を公開しています:
 
 * すべてのメールボックスのメールの読み取り
 * すべてのメールボックスのメールの読み書き
@@ -74,10 +65,15 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 
 アプリケーションのアクセス許可をアプリで使用するには、以降のセクションで説明する手順に従います。
 
+
+> [!NOTE]
+> ユーザーとしてではなくアプリケーションとして認証する場合、"委任されたアクセス許可" (ユーザーによって付与されるスコープ) を使用することはできません。  "アプリケーションのアクセス許可" ("ロール" とも呼ばれる) を使用する必要があります。これは、アプリケーションの管理者によって (または、Web API による事前承認を介して) 付与されます。
+
+
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
 
 1. 新しい[アプリの登録 (プレビュー) エクスペリエンス](quickstart-register-app.md)によって、アプリを登録し、作成します。
-2. アプリの登録 (プレビュー) エクスペリエンスで、アプリケーションに移動します。 トークンを要求するには少なくとも 1 つのクライアント シークレットが必要なため、**[証明書とシークレット]** セクションに移動し、**新しいクライアント シークレット**を追加します。
+2. アプリの登録 (プレビュー) エクスペリエンスで、アプリケーションに移動します。 トークンを要求するには少なくとも 1 つのクライアント シークレットが必要なため、 **[証明書とシークレット]** セクションに移動し、**新しいクライアント シークレット**を追加します。
 3. **[API のアクセス許可]** セクションを見つけて、アプリに必要な **[アプリケーションのアクセス許可]** を追加します。
 4. アプリの登録を**保存**します。
 
@@ -92,9 +88,9 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 組織の管理者にアクセス許可を要求する準備ができたら、Microsoft ID プラットフォームの*管理者の同意エンドポイント*にユーザーをリダイレクトできます。
 
 > [!TIP]
-> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/adminconsent?
@@ -103,9 +99,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http://localhost/myapp/permissions
 ```
 
-```
-// Pro tip: Try pasting the following request in a browser.
-```
+Pro ヒント:ブラウザーで次の要求を貼り付けてみてください。
 
 ```
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
@@ -124,7 +118,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 管理者がアプリケーションにアクセス許可を承認すると、成功応答は次のようになります。
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
@@ -138,7 +132,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 管理者がアプリケーションにアクセス許可を承認しない場合、失敗した応答は次のようになります。
 
-```
+```HTTP
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
@@ -154,11 +148,11 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 アプリケーションに必要な承認を獲得後、API のアクセス トークンの取得を開始します。 クライアント資格情報の許可を使用してトークンを取得するには、次のように `/token` Microsoft ID プラットフォーム エンドポイントに POST 要求を送信します。
 
 > [!TIP]
-> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 
-```
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -169,8 +163,9 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+```Bash
+# Replace {tenant} with your tenant!
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | パラメーター | 条件 | 説明 |
@@ -183,7 +178,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 
-```
+```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
@@ -210,7 +205,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 成功応答は次のようになります。
 
-```
+```json
 {
   "token_type": "Bearer",
   "expires_in": 3599,
@@ -228,7 +223,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 エラーの場合の応答は次のようになります。
 
-```
+```json
 {
   "error": "invalid_scope",
   "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://foo.microsoft.com/.default is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
@@ -250,26 +245,20 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `trace_id` | 診断に役立つ、要求の一意の識別子。 |
 | `correlation_id` | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
-> [!NOTE]
-> アプリケーションが v2 トークンを受信できるようにするために、Microsoft Azure portal 内からアプリケーションのマニフェスト ファイルを更新できます。 属性 `accessTokenAcceptedVersion` を追加し、値を `"accessTokenAcceptedVersion": 2` として 2 に設定できます。 同じことについて詳しく理解するには、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference)に関する記事を確認してください。 既定では、アプリケーションは現在、v1 トークンを受信します。 これがアプリケーション/Web API マニフェスト内で定義されていない場合、マニフェスト内のこの属性に対する値は、既定で 1 に設定され、したがってアプリケーションは v1 トークンを受信します。  
-
-
 ## <a name="use-a-token"></a>トークンを使用する
 
 トークンを獲得したら、そのトークンを使用してリソースへの要求を作成します。 トークンの有効期限が切れたときは、`/token` エンドポイントへの要求を繰り返し、新しいアクセス トークンを取得します。
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-```
-// Pro tip: Try the following command! (Replace the token with your own.)
-```
+```bash
+# Pro tip: Try the following command! (Replace the token with your own.)
 
-```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>コード サンプルとその他のドキュメント

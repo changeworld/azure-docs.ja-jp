@@ -1,25 +1,24 @@
 ---
 title: '2 クラスのロジスティック回帰: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で 2 クラスのロジスティック回帰モジュールを使用し、2 つのみの結果を予測するのに使用できるロジスティック回帰モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で 2 クラスのロジスティック回帰モジュールを使用し、2 つのみの結果を予測するのに使用できるロジスティック回帰モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: aacaf6c64ef77d0e694f97e3675060eca33794ed
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027773"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137622"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 2 つのみの結果を予測するのに使用できるロジスティック回帰モデルを作成するには、このモジュールを使用します。 
 
@@ -37,16 +36,17 @@ ms.locfileid: "65027773"
 
 たとえば、[Voted] というラベル列であれば、その値には "Yes" と "No" が考えられます。 または、[Credit Risk] であれば、"High" と "Low" という値が考えられるでしょう。 
   
-1.  **2 クラスのロジスティック回帰**モジュールを実験に追加します。  
+1.  **2 クラスのロジスティック回帰**モジュールをパイプラインに追加します。  
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)**: モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールを使用することにより、最適なパラメーターを見つけることができます。 ある値の範囲を指定すると、トレーナーにより設定の複数の組み合わせに対して反復処理が行され、最適な結果を生み出す値の組み合わせが決定されます。
   
 3.  **[Optimization tolerance]\(最適化の許容範囲\)** に、モデルを最適化する際に使用するしきい値を指定します。 指定したしきい値をイテレーション間の改善が下回った場合に、アルゴリズムは解に収束したと見なされ、トレーニングが終了します。  
   
 4.  正則化パラメーター L1 と L2 に使用する値を **[L1 regularization weight]\(L1 正則化の重み\)** と **[L2 regularization weight]\(L2 正則化の重み\)** に入力します。 どちらも 0 以外の値にすることをおすすめします。  
-  
      "*正則化*" とは、極端な係数の値を備えるモデルにペナルティーを与えることによってオーバーフィットを防止する手法です。 正則化は、仮説の誤りに対し、係数値に関連付けられているペナルティを加算することによって機能します。 これにより、極端な係数の値を持った正確なモデルにはより大きなペナルティが与えられる一方、相対的に値が控えめで正確でないモデルに与えられるペナルティは小さくなります。  
   
      L1 正則化と L2 正則化とでは、効果と用途が異なります。  
@@ -68,24 +68,33 @@ ms.locfileid: "65027773"
   
      この最適化パラメーターによって、次のステップと方向の計算に使用されるメモリ量が制限されます。 指定するメモリ量を小さくすると、トレーニングにかかる時間は短縮されますが、正確さが低下します。  
   
-6.  **[Random number seed]\(乱数シード\)** に整数値を入力します。 同じ実験を複数回にわたって実行したときの結果に再現性を確保したい場合は、シード値を定義することが大切です。  
+6.  **[Random number seed]\(乱数シード\)** に整数値を入力します。 同じパイプラインを複数回にわたって実行したときの結果に再現性を確保したい場合は、シード値を定義することが大切です。  
   
   
-8. タグ付けされたデータセットを実験に追加し、いずれかの[トレーニング モジュール](module-reference.md)を接続します。  
+8. ラベル付けされたデータセットをパイプラインに追加し、モデルをトレーニングします。
+
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
   
-    -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   
-9. 実験を実行します。  
+    > [!NOTE]
+    > 
+    > パラメーター範囲を [[モデルのトレーニング]](train-model.md) に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[Parameter Range]\(パラメーター範囲\)** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一の値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。  
+  
+9. パイプラインを送信します。  
   
 ## <a name="results"></a>結果
 
 トレーニングの完了後:
-
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、**[Visualize]\(可視化\)** を選択します。   
+ 
   
 + 新しいデータについての予測を行うために、トレーニング済みのモデルと新しいデータを[モデルのスコア付け](./score-model.md)モジュールの入力として使用します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

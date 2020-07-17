@@ -1,29 +1,26 @@
 ---
-title: Azure オンデマンド メディア エンコーダーの概要と比較 | Microsoft Docs
-description: このトピックでは、Azure オンデマンド メディア エンコーダーの概要を説明し、エンコーダーを比較します。
+title: Azure オンデマンド メディア エンコーダーの概要 | Microsoft Docs
+description: Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。 この記事では、Azure オンデマンド メディア エンコーダーの概要を説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227047"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要と比較 
-
-## <a name="encoding-overview"></a>エンコードの概要
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要 
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
@@ -35,11 +32,11 @@ Media Services を使い始める場合、コーデックとファイル形式�
 
 Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはSmooth Streamingでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 ストリーミング エンドポイントの課金は、エンドポイントが**実行中**状態のときに発生します。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
-* [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
+* [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
 * [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。 また、このトピックではエンコーダーを比較します。
@@ -47,6 +44,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。 エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに 1 つ) を同時に実行できます。 詳細については、「 [エンコード ユニットの拡大/縮小](media-services-scale-media-processing-overview.md)」を参照してください。
 
 ## <a name="media-encoder-standard"></a>メディア エンコーダー スタンダード
+
 ### <a name="how-to-use"></a>使用方法
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
@@ -70,7 +68,7 @@ Media Encoder Standard は、 [ここ](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>オーバーレイを作成する
 詳細については、「 [オーバーレイを作成する](media-services-advanced-encoding-with-mes.md#overlay)」をご覧ください。
 
-### <a name="see-also"></a>関連項目
+### <a name="see-also"></a>参照
 [Media Services ブログ](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>メディア エンコーダー Premium ワークフロー
@@ -84,7 +82,6 @@ Media Encoder Standard は、 [ここ](https://go.microsoft.com/fwlink/?linkid=6
 
 ### <a name="known-issues"></a>既知の問題
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
-
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,25 +1,16 @@
 ---
-title: Microsoft Azure Service Fabric の サービスとコンテナーの自動スケーリング | Microsoft Docs
+title: Azure Service Fabric のサービスとコンテナーの自動スケーリング
 description: Azure Service Fabric では、サービスとコンテナー用の自動スケーリング ポリシーを設定できます。
-services: service-fabric
-documentationcenter: .net
 author: radicmilos
-manager: ''
-editor: nipuzovi
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281661"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793093"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -139,12 +130,15 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * "_最小インスタンス数_" は、スケーリングの下限を定義します。 サービスのパーティション数がこの制限に達すると、負荷に関係なくサービスはスケールインされなくなります。
 
 > [!WARNING] 
-> AddRemoveIncrementalNamedPartitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric によって、**通知や警告なしで**パーティションの追加または削除が行われます。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケール アップ操作では、新しいパーティションは空になり、スケール ダウン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
+> AddRemoveIncrementalNamedPartitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric によって、**通知や警告なしで**パーティションの追加または削除が行われます。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケールアウト操作では、新しいパーティションは空になり、スケールイン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
 
 ## <a name="setting-auto-scaling-policy"></a>自動スケーリング ポリシーの設定
 
 ### <a name="using-application-manifest"></a>アプリケーション マニフェストの使用
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
@@ -207,5 +201,5 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 実際の物理リソースを表す 2 つのメトリックがあります。 1 つは実際の CPU 使用量を表す servicefabric:/_CpuCores であり (0.5 はコアの半分を表します)、他方はメモリ使用量を MB 単位で表わす servicefabric:/_MemoryInMB です。
 ResourceMonitorService は、ユーザー サービスの CPU とメモリの使用量を追跡します。 このサービスは、潜在的な短時間持続するスパイクに対応するために、加重移動平均を適用します。 リソースの監視は、Windows ではコンテナー化されたアプリケーションとコンテナー化されていないアプリケーションの両方でサポートされ、Linux ではコンテナー化されたアプリケーションでサポートされます。 リソース ベースの自動スケーリングは、[占有プロセス モデル](service-fabric-hosting-model.md#exclusive-process-model)でアクティブ化されるサービスに対してのみ有効にできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。

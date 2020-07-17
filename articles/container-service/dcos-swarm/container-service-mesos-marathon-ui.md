@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Marathon UI を使用した Azure DC/OS クラスターの管理
 description: Marathon Web UI を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317614"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76277801"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(非推奨) Marathon Web UI による Azure Container Service DC/OS クラスターの管理
 
@@ -46,16 +44,16 @@ Marathon UI を表示するには、http:\//localhost/marathon に移動しま�
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
 ## <a name="deploy-a-docker-formatted-container"></a>Docker 形式のコンテナーのデプロイ
-Marathon を使用して新しいコンテナーをデプロイするには、**[Create Application (アプリケーションの作成)]** をクリックし、次の情報をフォームのタブに入力します。
+Marathon を使用して新しいコンテナーをデプロイするには、 **[Create Application (アプリケーションの作成)]** をクリックし、次の情報をフォームのタブに入力します。
 
 | フィールド | 値 |
 | --- | --- |
-| ID |nginx |
+| id |nginx |
 | メモリ | 32 |
 | Image |nginx |
 | ネットワーク |ブリッジ |
 | ホスト ポート |80 |
-| プロトコル |TCP |
+| Protocol |TCP |
 
 ![New Application UI--General](./media/container-service-mesos-marathon-ui/dcos4.png)
 
@@ -71,17 +69,17 @@ Marathon を使用して新しいコンテナーをデプロイするには、**
 
 ![New Application UI--port 80 example](./media/container-service-mesos-marathon-ui/dcos13.png)
 
-正常性チェックを有効にする場合は、**[Health Checks (正常性チェック)]** タブでパスを設定します。
+正常性チェックを有効にする場合は、 **[Health Checks (正常性チェック)]** タブでパスを設定します。
 
 ![[New Application (新しいアプリケーション)] の UI - [Health Checks (正常性チェック)]](./media/container-service-mesos-marathon-ui/dcos_healthcheck.png)
 
-DC/OS クラスターは、プライベート エージェントおよびパブリック エージェントのセットと共にデプロイされます。 クラスターがインターネットからアプリケーションにアクセスできるようにするには、アプリケーションをパブリック エージェントにデプロイする必要があります。 そのためには、新しいアプリケーション ウィザードの **[オプション]** タブを選択し、**[Accepted Resource Roles (承認されたリソース ロール)]** に「**slave_public**」と入力します。
+DC/OS クラスターは、プライベート エージェントおよびパブリック エージェントのセットと共にデプロイされます。 クラスターがインターネットからアプリケーションにアクセスできるようにするには、アプリケーションをパブリック エージェントにデプロイする必要があります。 そのためには、新しいアプリケーション ウィザードの **[オプション]** タブを選択し、 **[Accepted Resource Roles (承認されたリソース ロール)]** に「**slave_public**」と入力します。
 
-その後、**[Create Application (アプリケーションの作成)]** をクリックします。
+その後、 **[Create Application (アプリケーションの作成)]** をクリックします。
 
 ![New Application UI--public agent setting](./media/container-service-mesos-marathon-ui/dcos14.png)
 
-Marathon メイン ページに戻ると、コンテナーのデプロイの状態を確認できます。 最初は、状態が "**Deploying (デプロイ中)**" と表示されます。 デプロイが成功すると、その状態は "**Running (実行中)**" に変わります。
+Marathon メイン ページに戻ると、コンテナーのデプロイの状態を確認できます。 最初は、状態が "**Deploying (デプロイ中)** " と表示されます。 デプロイが成功すると、その状態は "**Running (実行中)** " に変わります。
 
 ![Marathon main page UI--container deployment status](./media/container-service-mesos-marathon-ui/dcos7.png)
 
@@ -89,7 +87,7 @@ DC/OS の Web UI (http:\//localhost/) に戻ると、タスク (この場合は 
 
 ![DC/OS web UI--task running on the cluster](./media/container-service-mesos-marathon-ui/dcos8.png)
 
-タスクが実行されているクラスター ノードを確認するには、**[Nodes (ノード)]** タブをクリックします。
+タスクが実行されているクラスター ノードを確認するには、 **[Nodes (ノード)]** タブをクリックします。
 
 ![DC/OS web UI--task cluster node](./media/container-service-mesos-marathon-ui/dcos9.png)
 
@@ -103,7 +101,7 @@ DC/OS の Web UI (http:\//localhost/) に戻ると、タスク (この場合は 
     ![インターネットから nginx へ](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [DC/OS と Marathon API の使用](container-service-mesos-marathon-rest.md)
 
 * Mesos と共に Azure Container Service を使用する方法の詳細

@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリの高度な集計 | Microsoft Docs
 description: Azure Monitor ログ クエリで使用できる、より高度な集計オプションの一部について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 08/16/2018
+ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269911"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77662180"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの高度な集計
 
@@ -38,6 +31,7 @@ Event
 | order by TimeGenerated desc
 | summarize makelist(EventID) by Computer
 ```
+
 |Computer|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085,704,704,701] |
@@ -54,6 +48,7 @@ Event
 | order by TimeGenerated desc
 | summarize makeset(EventID) by Computer
 ```
+
 |Computer|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085] |
@@ -71,12 +66,12 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Computer | 解決方法 | 
+| Computer | ソリューション | 
 |--------------|----------------------|
 | computer1 | "security"、"updates"、"changeTracking" |
 | computer2 | "security"、"updates" |
 | computer3 | "antiMalware"、"changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 `mvexpand` を使用すると、コンマ区切りリストではなく、次のようにそれぞれの値が個別の行に表示されます。
 
@@ -87,7 +82,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Computer | 解決方法 | 
+| Computer | ソリューション | 
 |--------------|----------------------|
 | computer1 | "security" |
 | computer1 | "updates" |
@@ -96,7 +91,7 @@ Heartbeat
 | computer2 | "updates" |
 | computer3 | "antiMalware" |
 | computer3 | "changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 
 次に、もう一度 `makelist` を使用して、項目をまとめてグループ化すると、今度はソリューションごとにコンピューターのリストを表示できます。
@@ -108,7 +103,8 @@ Heartbeat
 | mvexpand Solutions
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
-|解決方法 | list_Computer |
+
+|ソリューション | list_Computer |
 |--------------|----------------------|
 | "security" | ["computer1", "computer2"] |
 | "updates" | ["computer1", "computer2"] |
@@ -124,7 +120,8 @@ Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
-| Category | TimeGenerated | count_ |
+
+| カテゴリ | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接エージェント | 2017-06-06T17:00:00Z | 15 |
 | 直接エージェント | 2017-06-06T18:00:00Z | 60 |
@@ -140,7 +137,7 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Category | count_ | TimeGenerated |
+| カテゴリ | count_ | TimeGenerated |
 |---|---|---|
 | 直接エージェント | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | ... | ... | ... |
@@ -153,7 +150,8 @@ Heartbeat
 | mvexpand TimeGenerated, count_
 | project Category, TimeGenerated, count_
 ```
-| Category | TimeGenerated | count_ |
+
+| カテゴリ | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接エージェント | 2017-06-06T17:00:00Z | 15 |
 | 直接エージェント | 2017-06-06T18:00:00Z | 60 |
@@ -179,7 +177,7 @@ WindowsFirewall
 | where Computer in (ComputersNeedingUpdate)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 

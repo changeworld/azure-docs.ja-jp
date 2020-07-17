@@ -1,133 +1,160 @@
 ---
-title: Azure Backup による Azure VM のバックアップについてよく寄せられる質問
-description: Azure Backup による Azure VM のバックアップに関する一般的な質問への回答。
-services: backup
-author: sogup
-manager: vijayts
-ms.service: backup
+title: FAQ-Azure VM をバックアップする
+description: この記事では、Azure Backup サービスを使用した Azure VM のバックアップに関する一般的な質問への回答を示します。
+ms.reviewer: sogup
 ms.topic: conceptual
-ms.date: 03/22/2019
-ms.author: sogup
-ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/17/2019
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885266"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800653"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
 この記事では、[Azure Backup](backup-introduction-to-azure-backup.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
 
-
 ## <a name="backup"></a>バックアップ
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>作成時にバックアップの対象として有効にできるのは、どの VM イメージですか。
-VM を作成するとき、[サポートされているオペレーティング システム](backup-support-matrix-iaas.md#supported-backup-actions)を実行している VM に対してバックアップを有効にできます。
- 
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。 
+
+VM を作成するときに、[サポートされているオペレーティング システム](backup-support-matrix-iaas.md#supported-backup-actions)を実行している VM に対してバックアップを有効にできます。
+
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。
 
 いいえ。 バックアップのコストは VM のコストとは別です。 [Azure Backup の価格については、こちらを参照してください](https://azure.microsoft.com/pricing/details/backup/)。
- 
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>VM のバックアップを有効にするにはどのアクセス許可が必要ですか。 
 
-VM の共同作成者の場合は、VM でバックアップを有効にできます。 カスタム ロールを使用している場合、VM でバックアップを有効にするには、次のアクセス許可が必要です。 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>VM のバックアップを有効にするにはどのアクセス許可が必要ですか。
 
-- Microsoft.RecoveryServices/Vaults/write 
-- Microsoft.RecoveryServices/Vaults/read 
-- Microsoft.RecoveryServices/locations/* 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
- 
+VM の共同作成者の場合は、VM でバックアップを有効にできます。 カスタム ロールを使用している場合、VM でバックアップを有効にするには、次のアクセス許可が必要です。
+
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
+
 Recovery Services コンテナーと VM が異なるリソース グループに属している場合は、Recovery Services コンテナーのリソース グループへの書き込みアクセス許可があることを確認してください。  
 
-
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Azure Backup ではどのような Azure VM をバックアップできますか。
-
-サポートの詳細と制限については、[サポート マトリックス](backup-support-matrix-iaas.md)をご確認ください。
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>オンデマンド バックアップ ジョブのリテンション期間のスケジュールは、スケジュールされたバックアップと同じですか。
+
 いいえ。 オンデマンド バックアップ ジョブのリテンション期間を指定してください。 ポータルからトリガーした場合、既定では 30 日間保存されます。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>最近いくつかの VM で Azure Disk Encryption を有効にしました。 既存のバックアップは今後も正常に機能しますか。
+
 Azure Backup に Key Vault へのアクセス許可を付与してください。 [Azure Backup PowerShell](backup-azure-vms-automation.md) ドキュメントの**バックアップの有効化**に関するセクションの説明に従って、PowerShell でアクセス許可を指定します。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>VM ディスクをマネージド ディスクに移行しました。 既存のバックアップは今後も正常に機能しますか。
+
 はい。バックアップはシームレスに機能します。 何も再構成する必要はありません。
 
 ### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>バックアップ構成ウィザードに VM が表示されていません。なぜでしょうか。
+
 ウィザードにはコンテナーと同じリージョンで、まだバックアップされていない VM のみが表示されます。
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>VM がシャットダウンされています。 オンデマンドまたはスケジュールされたバックアップは機能しますか。
+
 はい。 マシンがシャットダウンされていても、バックアップは動作します。 復旧ポイントはクラッシュ整合としてマークされます。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>進行中のバックアップ ジョブを取り消すことはできますか。
-はい。 **スナップショット作成**状態のバックアップ ジョブは取り消すことができます。 スナップショットからのデータ転送が進行中である場合は、ジョブを取り消せません。
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Azure Backup サービスによって作成されたリソース グループ ( `AzureBackupRG_<geo>_<number>`) に対してロックを有効にしました。バックアップは引き続き動作しますか。
+はい。 **スナップショットの作成中**状態のバックアップ ジョブは取り消すことができます。 スナップショットからのデータ転送が進行中である場合は、ジョブを取り消せません。
+
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Backup サービスによって作成されたリソース グループ (例: `AzureBackupRG_<geo>_<number>`) に対するロックを有効にしました。 既存のバックアップは今後も正常に機能しますか。
+
 Azure Backup サービスによって作成されたリソース グループをロックする場合は、復元ポイントの最大限度が 18 であるため、バックアップは失敗し始めます。
 
-将来のバックアップを成功させるために、ユーザーはロックを解除しリソース グループからの復元ポイント コレクションをクリアする必要があります。その場合は[次の手順に従って](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)復元ポイント コレクションを削除します。
+今後のバックアップを成功させるために、ロックを解除し、そのリソース グループからの復元ポイント コレクションをクリアします。 復元ポイント コレクションをクリアするには、[こちらの手順に従います](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)。
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>バックアップ ポリシーでは夏時間 (DST) が考慮されますか。
-いいえ。 ローカル コンピューターの日時は、現在の夏時間が適用されたローカル時刻です。 スケジュールされているバックアップの時間は、DST のためにローカル タイムと異なる場合があります。
+### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
 
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Azure Backup によってバックアップされた VM には何台のデータ ディスクを接続できますか。
-Azure Backup では最大 16 台のディスクを搭載した VM をバックアップできます。 16 ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
-
-### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
-Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。 SSD マネージド ディスクは、Azure VM に対して新しい種類の永続ストレージを提供します。 SSD マネージド ディスクのサポートは、[インスタント リストア](backup-instant-restore-capability.md)で提供されています。
+はい、Azure Backup では、[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)がサポートされています。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
-WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。 WA 対応ディスクでの VM ディスク除外は、インスタント リストアにアップグレードされたサブスクリプションでのみサポートされます。
+
+WA 対応ディスクでスナップショットを作成することはできません。 ただし、Azure Backup サービスでは、WA 対応ディスクをバックアップから除外できます。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>書き込みアクセラレータ (WA) ディスク と SAP HANA がインストールされている VM があります。 バックアップするには、どうすればよいですか。
+
 Azure Backup では WA 対応ディスクをバックアップできませんが、バックアップから除外することはできます。 ただし、バックアップによってデータベース整合性が維持されなくなります。WA 対応ディスクの情報がバックアップされないためです。 オペレーティング システム ディスクのバックアップ、および WA 対応ではないディスクのバックアップが必要な場合は、この構成でディスクをバックアップできます。
 
-RPO が 15 分の SAP HANA バックアップに対するプライベート プレビューを実行中です。 このプレビューは同様の方法で SQL DB バックアップに組み込まれていて、backInt インターフェイスが、SAP HANA 認定のサード パーティ ソリューションに対して使用されています。 関心をお持ちの場合は、"**Azure VM での SAP HANA バックアップのプライベート プレビューへのサインアップ**" という件名で、`AskAzureBackupTeam@microsoft.com` 宛てにメールでご連絡ください。
+Azure Backup は、SAP HANA データベース用に RPO が 15 分のストリーミング バックアップ ソリューションを提供します。 これは、SAP による Backint 認定がされており、SAP HANA のネイティブ API を活用してネイティブ バックアップ サポートを提供します。 [Azure VM での SAP HANA データベースのバックアップ](https://docs.microsoft.com/azure/backup/sap-hana-db-about)について参照してください。
 
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>自分の VM バックアップ ポリシーで設定した、スケジュールされたバックアップ時刻からバックアップ開始時刻までの最大遅延時間はどれぐらいですか。
+
+スケジュールされたバックアップは、スケジュールされたバックアップ時刻から 2 時間以内にトリガーされます。 たとえば、100 個の VM のバックアップ開始時刻が午前 2 時にスケジュールされている場合は、遅くとも午前 4 時までに 100 個のすべての VM のバックアップ ジョブが進行中になります。 スケジュールされたバックアップが停電のために一時停止され、再開または再試行された場合は、バックアップがこのスケジュールされた 2 時間の枠外で開始される可能性があります。
+
+### <a name="what-is-the-minimum-allowed-retention-range-for-a-daily-backup-point"></a>毎日のバックアップ ポイントに許容される最小リテンション期間の範囲はどれぐらいですか。
+
+Azure Virtual Machine のバックアップ ポリシーでは、最小リテンション期間の範囲として 7 日から 9999 日までがサポートされています。 7 日間未満に設定された既存の VM バックアップ ポリシーを変更するには、7 日間という最小リテンション期間の範囲を満たすように更新する必要があります。
+
+### <a name="what-happens-if-i-change-the-case-of-the-name-of-my-vm-or-my-vm-resource-group"></a>VM または VM リソース グループの名前の大文字と小文字を変更するとどうなりますか。
+
+VM または VM リソース グループの大文字と小文字を変更しても、バックアップ項目の名前の大文字と小文字は変更されません。 ただし、これは Azure Backup の想定される動作です。 大文字と小文字の変更はバックアップ項目には反映されませんが、バックエンドで更新されます。
+
+### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>VM に接続されているディスクを選択的にバックアップまたは復元できますか。
+
+Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。
+
+現在、Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 ディスクを除外する機能を使用すると、VM の多数のデータ ディスクから 1 つまたは複数のデータ ディスクのバックアップを作成できます。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクのデータが含まれています。これにより、復元操作中に特定の復旧ポイントから復元されたディスクのサブセットを使用できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
+
+プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
 
 ## <a name="restore"></a>復元
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>ディスクのみを復元するか、VM 全体を復元するかは、どのように判断すればよいでしょうか。
+
 VM の復元は、Azure VM 用の簡易的な作成オプションと考えてください。 このオプションでは、ディスク名、そのディスクが使用するコンテナー、パブリック IP アドレス、およびネットワーク インターフェイス名が変更されます。 この変更では、VM 作成時の一意のリソースが維持されます。 VM は可用性セットには追加されません。
 
 ディスクの復元オプションは、次のような場合に使用できます。
-  * 作成された VM をカスタマイズする。 たとえば、サイズを変更します。
-  * バックアップ時に存在しなかった構成設定を追加する。
-  * 作成されたリソースの名前付け規則を制御する。
-  * VM を可用性セットに追加する。
-  * PowerShell またはテンプレートを使用して構成する必要があるその他の設定を追加する
+
+- 作成された VM をカスタマイズする。 たとえば、サイズを変更します。
+- バックアップ時に存在しなかった構成設定を追加する。
+- 作成されたリソースの名前付け規則を制御する。
+- VM を可用性セットに追加する。
+- PowerShell またはテンプレートを使用して構成する必要があるその他の設定を追加する
 
 ### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>マネージド ディスクへのアップグレード後に、アンマネージド VM ディスクのバックアップを復元できますか。
+
 はい。ディスクをアンマネージドからマネージドに移行する前に作成したバックアップを使用できます。
-- 既定では、VM 復元ジョブによって、アンマネージド VM が作成されます。
-- ただし、ディスクを復元して、それをマネージド VM の作成に使用することもできます。
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>VM がマネージド ディスクに移行されたときよりも前の復元ポイントにその VM を復元するには、どうすればよいですか。
-既定では、VM の復元ジョブでは、アンマネージド ディスクで VM が作成されます。 マネージド ディスクで VM を作成するには、次の手順に従います。
-1. [アンマネージド ディスクに復元します](tutorial-restore-disk.md#restore-a-vm-disk)。
-2. [復元したディスクをマネージド ディスクに変換します](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)。
-3. [マネージド ディスクで VM を作成します](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
+
+復元プロセスは同じままです。 復旧ポイントが VM にアンマネージド ディスクが存在していた時点のものである場合は、[ディスクをアンマネージドとして復元](tutorial-restore-disk.md#unmanaged-disks-restore)できます。 その時点で VM にマネージド ディスクが存在していた場合は、[ディスクをマネージド ディスクとして復元](tutorial-restore-disk.md#managed-disk-restore)できます。 その後、[これらのディスクから VM を作成](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)できます。
 
 PowerShell でこれを行う方法の詳細については、[こちら](backup-azure-vms-automation.md#restore-an-azure-vm)をご覧ください。
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>削除された VM を復元できますか。
-はい。 VM を削除しても、コンテナー内の対応するバックアップ項目に移動して、復旧ポイントから復元できます。
 
-### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>同じ可用性セットに VM を復元するには、どうすればよいですか。
+はい。 VM を削除しても、コンテナー内の対応するバックアップ項目に移動して、復元ポイントから復元できます。
+
+### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>同じ可用性セットに VM を復元するには、どうすればよいですか。
+
 マネージド ディスクの Azure VM については、マネージド ディスクとして復元しているときに、可用性セットへの復元オプションがテンプレートに提供されます。 このテンプレートには、**可用性セット**と呼ばれる入力パラメーターがあります。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>復元のパフォーマンスを高めるには、どうすればよいですか。
-復元のパフォーマンスを高めるために、[インスタント リストア](backup-instant-restore-capability.md)機能に移行しています。
+
+[インスタント リストア](backup-instant-restore-capability.md)機能は、迅速なバックアップと、スナップショットからの即時のリストアに役立ちます。
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>暗号化された VM のキー コンテナーの設定を変更するとどうなりますか。
+
+暗号化された VM のキー コンテナーの設定を変更した後も、バックアップは新しい詳細情報のセットで引き続き動作します。 ただし、変更前の復元ポイントからの復元後は、キー コンテナー内のシークレットを復元してから VM を作成する必要があります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)を参照してください。
+
+シークレットまたはキーのロールオーバーなどの操作では、この手順は必要ありません。復元後も同じ KeyVault を使用できます。
+
+### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできますか。
+
+はい。VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)を参照してください
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 
 ### <a name="what-happens-if-i-modify-a-backup-policy"></a>バックアップ ポリシーを変更した場合は、どのようになりますか。
+
 VM のバックアップは、変更されたポリシーまたは新しいポリシーのスケジュールおよびリテンション期間の設定を使用して実行されます。
 
 - リテンション期間が延長された場合、既存の復旧ポイントは、新しいポリシーに従ってマーキングおよび保持されます。
@@ -136,7 +163,28 @@ VM のバックアップは、変更されたポリシーまたは新しいポ�
 ### <a name="how-do-i-move-a-vm-backed-up-by-azure-backup-to-a-different-resource-group"></a>Azure Backup でバックアップされた VM を別のリソース グループに移動するには、どうすればよいですか。
 
 1. バックアップを一時的に停止し、バックアップ データを保持します。
-2. VM をターゲット リソース グループに移動します。
-3. バックアップを同じコンテナーまたは新しいコンテナーで再度有効にします。
+2. Azure Backup で構成された仮想マシンを移動するには、次の手順を実行します。
+
+   1. 仮想マシンの場所を探します。
+   2. 名前付けパターン `AzureBackupRG_<location of your VM>_1` を持つリソース グループを探します。 たとえば、*AzureBackupRG_westus2_1* となります
+   3. Azure portal で、 **[非表示の型の表示]** をオンにします。
+   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
+   5. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+   6. 削除操作が完了したら、仮想マシンを移動できます。
+
+3. VM をターゲット リソース グループに移動します。
+4. バックアップを再開します。
 
 VM は、移動操作の前に作成された使用可能な復元ポイントから復元できます。
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>VM を別のリソース グループに移動した後は、どのようになりますか。
+
+VM が別のリソース グループに移動されると、Azure Backup からは新しい VM であると認識されます。
+
+VM を新しいリソース グループに移動した後は、その VM を同じコンテナーで、または別のコンテナーで再度保護することができます。 Azure Backup から見るとこれは新しい VM であるため、別個に課金されます。
+
+古い VM の復元ポイントは、必要な場合は復元のために使用できるようになります。 このバックアップ データが不要な場合は、データの削除によって古い VM の保護を停止できます。
+
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>同じバックアップ ポリシーに関連付けることができる VM 数の上限はありますか。
+
+はい。ポータルから同じバックアップ ポリシーに関連付けることができる VM は最大 100 個です。 VM が 100 個を上回る場合、同じスケジュールまたは異なるスケジュールで複数のバックアップ ポリシーを作成することをお勧めします。

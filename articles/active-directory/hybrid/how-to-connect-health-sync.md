@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201824"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76897210"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -67,7 +68,7 @@ Azure AD Connect で既定の構成が使用されていない場合 (たとえ�
 Windows Server AD と Azure AD との間で Azure AD Connect を使って ID データを同期するときに発生する同期エラーについてのレポートは、この機能で入手できます。
 
 * このレポートには、同期クライアント (Azure AD Connect Version 1.1.281.0 以降) によって記録されたエラーが含まれます。
-* 同期エンジンにおける直近の同期操作で発生したエラーが対象となります  (Azure AD Connector の "エクスポート")。
+* 同期エンジンにおける直近の同期操作で発生したエラーが対象となります (Azure AD Connector の "エクスポート")。
 * レポートに最新のデータを取り込むには、Azure AD Connect Health の同期エージェントに、適切なエンド ポイントへの送信接続が必要です。
 * このレポートは、Azure AD Connect Health の同期エージェントによってアップロードされたデータを使用して **30 分ごとに更新**されます。その主な機能を示します。
 
@@ -80,7 +81,7 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 ### <a name="categorization-of-errors"></a>エラー カテゴリの分類
 レポートでは、既存の同期エラーが次のカテゴリで分類されます。
 
-| Category | 説明 |
+| カテゴリ | 説明 |
 | --- | --- |
 | 重複する属性 |Azure AD において本来テナントごとに一意であるべき属性 (proxyAddresses、UserPrincipalName など) の値に重複があるオブジェクトを Azure AD Connect が作成または更新しようとしたときに発生するエラー。 |
 | 一致しないデータ |あいまいな一致の処理で、同期エラーを引き起こしたオブジェクトの突き合わせに失敗したときのエラー。 |

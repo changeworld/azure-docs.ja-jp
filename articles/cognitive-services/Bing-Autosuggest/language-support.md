@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011009"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "60547338"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing Autosuggest API の言語と地域のサポート
 
@@ -64,7 +64,7 @@ Bing Autosuggest API でサポートされている言語を次に示します�
 | スウェーデン語     | `sv`          |
 | トルコ語     | `tr`          |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

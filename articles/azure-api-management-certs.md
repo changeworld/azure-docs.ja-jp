@@ -3,23 +3,19 @@ title: Azure サービス管理証明書のアップロード | Microsoft Docs
 description: Azure Portal のサービス管理証明書をアップロードする方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
+author: georgewallace
+manager: carmonm
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78329121"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイ モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
@@ -39,21 +35,21 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 管理証明書 (公開キーのみを含んだ .cer ファイル) を作成したら、それをポータルにアップロードできます。 ポータルで証明書が使用可能な場合は、対になる証明書 (秘密キー) を持つすべての人が、Management API を経由して接続し、サブスクリプションに関連付けられているリソースにアクセスすることができます。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. Azure サービスの一覧の下部にある **[すべてのサービス]** をクリックし、_[全般]_ サービス グループの **[サブスクリプション]** を選択します。
+2. Azure サービスの一覧の下部にある **[すべてのサービス]** をクリックし、 _[全般]_ サービス グループの **[サブスクリプション]** を選択します。
 
     ![サブスクリプション メニュー](./media/azure-api-management-certs/subscriptions_menu.png)
 
 3. 証明書を関連付ける正しいサブスクリプションが選択されていることを確認します。     
-4. 正しいサブスクリプションを選択したら、**[管理証明書]** で、_[設定]_ グループを押します。
+4. 正しいサブスクリプションを選択したら、 **[管理証明書]** で、 _[設定]_ グループを押します。
 
     ![設定](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
 5. **[アップロード]** ボタンを押します。
 
     ![[証明書] ページにアップロードします。](./media/azure-api-management-certs/certificates_page.png)
-6. ダイアログの情報を入力し、**[アップロード]** を押します。
+6. ダイアログの情報を入力し、 **[アップロード]** を押します。
 
     ![設定](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>次の手順
-サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](/azure/#pivot=sdkstools) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。
+## <a name="next-steps"></a>次のステップ
+サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイ モデル REST API](/azure/?pivot=sdkstools) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。

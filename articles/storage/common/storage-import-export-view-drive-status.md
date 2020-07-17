@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467749"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72821428"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 
@@ -76,8 +76,8 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 Azure Portal に掲載される状態に加え、REST API を使用してジョブの進行状況を追跡できます。 [List Jobs](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [WAImportExport ツールを設定する](storage-import-export-tool-how-to.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
-* [Azure Import Export REST API サンプル](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+* [Azure Import Export REST API サンプル](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

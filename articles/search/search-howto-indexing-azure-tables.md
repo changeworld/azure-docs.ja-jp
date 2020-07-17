@@ -1,38 +1,38 @@
 ---
-title: フルテキスト検索用に Azure Table Storage のコンテンツのインデックスを作成する - Azure Search
-description: Azure Table Storage に格納されているデータのインデックスを Azure Search インデクサーで作成する方法について説明します。
-ms.date: 05/02/2019
+title: Azure Table Storage のコンテンツを検索する
+titleSuffix: Azure Cognitive Search
+description: Azure Table Storage に格納されているデータのインデックスを Azure Cognitive Search インデクサーで作成する方法について説明します。
+manager: nitinme
 author: mgottein
-manager: cgronlun
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/04/2019
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024796"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74112999"
 ---
-# <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
-この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
+# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure Table Storage からテーブルにインデックスを作成する方法
+
+この記事では、Azure Cognitive Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
 
 ## <a name="set-up-azure-table-storage-indexing"></a>Azure Table Storage のインデックスを設定する
 
 次のリソースを使用して、Azure Table Storage のインデクサーを設定できます。
 
 * [Azure Portal](https://ms.portal.azure.com)
-* Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Search [.NET SDK](https://aka.ms/search-sdk)
+* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure Cognitive Search [.NET SDK](https://aka.ms/search-sdk)
 
 ここでは、REST API を使用したフローについて説明します。 
 
 ### <a name="step-1-create-a-datasource"></a>手順 1:データソースの作成
 
-データ ソースは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
+データ ソースは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Cognitive Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
 
 テーブルのインデックス作成では、次のプロパティがデータ ソースに必要です。
 
@@ -67,7 +67,7 @@ ms.locfileid: "65024796"
 
 次のいずれかの方法でテーブルに対して資格情報を指定できます。 
 
-- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` この接続文字列は、**ストレージ アカウント ブレード** > **[設定]** > **[キー]** と選択する (クラシック ストレージ アカウントの場合) か、**[設定]** > **[アクセス キー]** と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
+- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` この接続文字列は、**ストレージ アカウント ブレード** >  **[設定]**  >  **[キー]** と選択する (クラシック ストレージ アカウントの場合) か、 **[設定]**  >  **[アクセス キー]** と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
 - **ストレージ アカウントの共有アクセス署名の接続文字列**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共有アクセス署名には、コンテナー (この場合はテーブル) 上およびオブジェクト (テーブル行) にリストおよび読み取りアクセス許可が必要です。
 -  **テーブルの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共有アクセス署名には、テーブルに対するクエリ (読み取り) アクセス許可が必要です。
 
@@ -111,20 +111,22 @@ ms.locfileid: "65024796"
       "schedule" : { "interval" : "PT2H" }
     }
 
-このインデクサーは、2 時間ごとに実行されます  (スケジュール間隔は "PT2H"に設定されます)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
+このインデクサーは、2 時間ごとに実行されます (スケジュール間隔は "PT2H"に設定されます)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
 インデクサー作成 API の詳細については、[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)に関するページをご覧ください。
 
+インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+
 ## <a name="deal-with-different-field-names"></a>さまざまなフィールド名を操作する
-既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることがあります。 テーブルのプロパティ名は、フィールド マッピングを使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、「[データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
+既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることがあります。 テーブルのプロパティ名は、フィールド マッピングを使用して、検索インデックス内のフィールド名に対応付けることができます。 フィールド マッピングの詳細については、[データ ソースと検索インデックスの橋渡し役としての Azure Cognitive Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。
 
 ## <a name="handle-document-keys"></a>ドキュメント キーを処理する
-Azure Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です  (実際のところ、これは唯一の必須フィールドです)。
+Azure Cognitive Search では、ドキュメントがそのキーによって一意に識別されます。 それぞれの検索インデックスには、 `Edm.String`型のキー フィールドが 1 つだけ必要です。 キー フィールドは、インデックスに追加するドキュメントごとに必要です (実際のところ、これは唯一の必須フィールドです)。
 
-テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` です。
+テーブル行には複合キーがあるため、Azure Cognitive Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。 たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` です。
 
 > [!NOTE]
-> `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。 無効な文字を扱うには、 `base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用します。 これを行う場合は、Lookup などの API 呼び出しでドキュメント キーを渡す際に、必ず URL の安全な Base64 エンコードを使用する点にも注意してください。
+> `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。 無効な文字を扱うには、`base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用します。 これを行う場合は、Lookup などの API 呼び出しでドキュメント キーを渡す際に、必ず URL の安全な Base64 エンコードを使用する点にも注意してください。
 >
 >
 
@@ -148,7 +150,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
-既定では、Azure Search は `Timestamp >= HighWaterMarkValue` というクエリ フィルターを使用します。 Azure のテーブルの `Timestamp` フィールドにはセカンダリ インデックスがないため、この種類のクエリはフル テーブル スキャンを必要とし、規模の大きなテーブルでは速度が低下します。
+既定では、Azure Cognitive Search は `Timestamp >= HighWaterMarkValue` というクエリ フィルターを使用します。 Azure のテーブルの `Timestamp` フィールドにはセカンダリ インデックスがないため、この種類のクエリはフル テーブル スキャンを必要とし、規模の大きなテーブルでは速度が低下します。
 
 
 テーブルのインデックス作成のパフォーマンスを向上させる可能性のある 2 つの方法を紹介します。 どちらの方法もテーブルのパーティションを使用します。 
@@ -164,5 +166,5 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
     - この方法では、全インデックスの再作成をトリガーする必要がある場合は、インデクサーのリセットに加えてデータソース クエリをリセットする必要があります。 
 
 
-## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
+## <a name="help-us-make-azure-cognitive-search-better"></a>Azure Cognitive Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。

@@ -1,5 +1,5 @@
 ---
-title: Windows 用 Azure Monitor Dependency 仮想マシン拡張機能 | Microsoft Docs
+title: Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して Windows 仮想マシンに Azure Monitor Dependency Agent をデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -9,34 +9,29 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2cdde2f9dbba9676ba8a4d35ed6b79940668d684
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226915"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows 用 Azure Monitor Dependency 仮想マシン拡張機能
 
 Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent からデータが取得されます。 Windows 用 Azure VM Dependency Agent 仮想マシン拡張機能は、Microsoft が公開し、サポートを行っています。 この拡張機能によって、Azure 仮想マシンに Dependency Agent がインストールされます。 このドキュメントでは、Windows 用 Azure VM Dependency Agent 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-### <a name="operating-system"></a>オペレーティング システム
+## <a name="operating-system"></a>オペレーティング システム
 
 Windows 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs のデプロイに関する記事の「[サポートされているオペレーティング システム](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)」セクションに記載されたサポート対象オペレーティング システムに対して実行できます。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Azure Windows VM に対する Azure VM Dependency Agent 拡張機能のスキーマを示したものです。 
+次の JSON は、Azure Windows VM に対する Azure VM Dependency Agent 拡張機能のスキーマを示したものです。
 
 ```json
 {
@@ -85,9 +80,9 @@ Windows 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs �
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Azure VM Dependency Agent 拡張機能を実行できます。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Azure VM Dependency Agent 拡張機能を実行できます。
 
-仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることができます。 または、Resource Manager JSON テンプレートのルートまたは最上位に配置することができます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/templates/child-resource-name-type.md)に関する記事を参照してください。
 
 次の例では、Dependency Agent 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
@@ -110,7 +105,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 }
 ```
 
-拡張機能 JSON をテンプレートのルートに配置すると、リソース名には親仮想マシンへの参照が含まれて、種類は入れ子になっている構成を反映します。 
+拡張子 JSON をテンプレートのルートに配置すると、リソース名には親仮想マシンへの参照が含まれます。 種類には、入れ子にされた構成が反映されます。
 
 ```json
 {
@@ -132,7 +127,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzVMExtension` コマンドを使用して、Dependency Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。 
+`Set-AzVMExtension` コマンドを使用して、Dependency Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。
 
 ```powershell
 
@@ -147,9 +142,9 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
-拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell モジュールを使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure PowerShell モジュールを使用して次のコマンドを実行します。
+拡張機能のデプロイ状態に関するデータを取得するには、Azure portal または Azure PowerShell モジュールを使用します。 特定の VM での拡張機能のデプロイ状態を確認するには、Azure PowerShell モジュールを使用して次のコマンドを実行します。
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -163,4 +158,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>サポート
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

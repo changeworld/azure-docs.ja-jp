@@ -1,20 +1,20 @@
 ---
-title: Azure Compute - Linux Diagnostic Extension |Microsoft ドキュメント
+title: Azure Compute - Linux Diagnostic Extension
 description: Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
 services: virtual-machines-linux
-author: abhijeetgaiha
-manager: sankalpsoni
+author: axayjo
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: agaiha
-ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: akjosh
+ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997969"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289177"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -59,10 +59,10 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 ### <a name="sample-installation"></a>サンプル インストール
 
-最初の 3 行に適切なパラメーターを入力し、このスクリプトを root として実行します。
+実行前に、最初のセクションに変数の正しい値を入力します。
 
-```bash
-# Set your Azure VM diagnostic parameters correctly below
+```azurecli
+# Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -89,7 +89,35 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-サンプル構成の URL と内容は変更される可能性があります。 ポータル設定の JSON ファイルのコピーをダウンロードし、必要に応じてカスタマイズします。 作成するテンプレートやオートメーションは、その都度 URL をダウンロードするのではなく、独自のコピーを使用する必要があります。
+これらの例でダウンロードしたサンプル構成では、一連の標準データが収集され、それらがテーブル ストレージに送信されます。 サンプル構成の URL と内容は変更される可能性があります。 ほとんどの場合、毎回その URL をダウンロードするのではなく、ポータル設定 JSON ファイルのコピーをダウンロードし、ニーズに合わせてカスタマイズし、自分で作るテンプレートやオートメーションでは独自のバージョンの構成ファイルを使用するようにします。
+
+#### <a name="powershell-sample"></a>PowerShell のサンプル
+
+```powershell
+$storageAccountName = "yourStorageAccountName"
+$storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
+$vmName = "yourVMName"
+$VMresourceGroup = "yourVMResourceGroupName"
+
+# Get the VM object
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
+
+# Get the public settings template from GitHub and update the templated values for storage account and resource ID
+$publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
+$publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
+$publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
+
+# If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
+
+# Generate a SAS token for the agent to use to authenticate with the storage account
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+
+# Build the protected settings (storage account SAS token)
+$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
+
+# Finally install the extension with the settings built above
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
+```
 
 ### <a name="updating-the-extension-settings"></a>拡張機能の設定の更新
 
@@ -102,7 +130,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 > [!IMPORTANT]
 > この拡張機能では、構成の面で大幅な変更点が導入されます。 その変更点の 1 つは、拡張機能のセキュリティを向上させるために行われました。結果として、2.x との下位互換性を維持できなくなりました。 また、この拡張機能の Extension Publisher は、2.x バージョンのパブリッシャーとは異なります。
 >
-> 2.x からこの新しいバージョンの拡張機能に移行するには、 (古いパブリッシャー名で) 古い拡張機能をアンインストールしてから、バージョン 3 の拡張機能をインストールする必要があります。
+> 2\.x からこの新しいバージョンの拡張機能に移行するには、 (古いパブリッシャー名で) 古い拡張機能をアンインストールしてから、バージョン 3 の拡張機能をインストールする必要があります。
 
 推奨事項:
 
@@ -127,7 +155,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-Name | 値
+名前 | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
@@ -135,9 +163,7 @@ storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウ�
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
-
-> [!NOTE]
-> Azure 展開テンプレートを使用して拡張機能を展開する場合は、事前にストレージ アカウントと SAS トークンを作成し、テンプレートに渡す必要があります。 VM、ストレージ アカウントの展開と拡張機能の構成を、1 つのテンプレート内で行うことはできません。 現時点では、テンプレート内での SAS トークンの作成はサポートされていません。
+Resource Manager テンプレート内の SAS トークンを取得するには、 **listAccountSas** 関数を使用します。 テンプレートの例については、[List 関数の例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)を参照してください。
 
 必要な SAS トークンを Azure ポータルで簡単に構築できます。
 
@@ -195,11 +221,11 @@ Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob
 
 2018 年 1 月 1 日の深夜 0 時 (UTC) までに SAS を作成した場合、 sasURL 値は次のようになります。
 
-```url
+```https
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Event Hubs 用の SAS トークン生成の詳細については、[この Web ページ](../../event-hubs/event-hubs-authentication-and-security-model-overview.md)を参照してください。
+Event Hubs 用の SAS トークンでの情報の生成と取得の詳細については、[こちらの Web ページ](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)を参照してください。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob シンク
 
@@ -386,7 +412,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 
 要素 | 値
 ------- | -----
-namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
+namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://github.com/Microsoft/SCXcore)によって実装されます。
 query | 実行される OMI クエリ。
 table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。
@@ -485,7 +511,7 @@ TotalCollisions | 起動後にネットワーク ポートによって報告さ�
 
 "ファイルシステム" クラスのメトリックは、ファイル システムの使用状況に関する情報を提供します。 絶対値と割合の値は、(root ではなく) 通常のユーザーに表示されるように報告されます。
 
-カウンター | 意味
+counter | 意味
 ------- | -------
 FreeSpace | 使用可能なディスク領域 (バイト単位)
 UsedSpace | 使用済みディスク領域 (バイト単位)
@@ -500,7 +526,9 @@ ReadsPerSecond | 1 秒あたりの読み取り操作
 WritesPerSecond | 1 秒あたりの書き込み操作
 TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
-すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。
+すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。 
+
+**注**:JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>"ディスク" クラスの組み込みメトリック
 
@@ -602,8 +630,8 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 ```json
 {
   "StorageAccount": "yourdiagstgacct",
-  "sampleRateInSeconds": 15,
   "ladCfg": {
+    "sampleRateInSeconds": 15,
     "diagnosticMonitorConfiguration": {
       "performanceCounters": {
         "sinks": "MyMetricEventHub,MyJsonMetricsBlob",
@@ -695,7 +723,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 さらに、次の UI ツールを使用して、Azure Storage のデータにアクセスすることもできます。
 
 * Visual Studio のサーバー エクスプローラー。
-* [Microsoft Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
+* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 
@@ -703,7 +731,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 
 EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-what-is-event-hubs.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 収集するメトリックのメトリック アラートを [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) で作成します。
 * メトリックの[監視グラフ](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)を作成します。

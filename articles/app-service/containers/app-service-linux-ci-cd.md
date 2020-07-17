@@ -1,27 +1,19 @@
 ---
-title: Web App for Containers での継続的なデプロイ - Azure App Service | Microsoft Docs
-description: Web App for Containers で継続的なデプロイを設定する方法について説明します。
+title: カスタム Linux コンテナーへの CI/CD
+description: Azure App Service でカスタム Linux コンテナーへの継続的配置を設定する方法について説明します。 継続的配置は、Docker Hub と ACR でサポートされています。
 keywords: Azure App Service, Linux, Docker, acr, oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315534"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74687630"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 
@@ -31,10 +23,10 @@ ms.locfileid: "53315534"
 
 ![ACR Webhook のスクリーンショット](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ページの左側にある **[App Service]** オプションを選択します。
 3. 継続的デプロイを構成するアプリの名前を選択します。
-4. **[コンテナーの設定]** ページで、**[単一コンテナー]** を選択します
+4. **[コンテナーの設定]** ページで、 **[単一コンテナー]** を選択します
 5. **[Azure Container Registry]** を選択します
 6. **[継続的なデプロイ] > [オン]** を選択します
 7. **[保存]** を選択して、継続的デプロイを有効にします。
@@ -49,10 +41,10 @@ Container Registry で、[Webhooks] をクリックすると現在の Webhook �
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Docker Hub で継続的デプロイを有効にする (省略可能)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ページの左側にある **[App Service]** オプションを選択します。
 3. 継続的デプロイを構成するアプリの名前を選択します。
-4. **[コンテナーの設定]** ページで、**[単一コンテナー]** を選択します
+4. **[コンテナーの設定]** ページで、 **[単一コンテナー]** を選択します
 5. **[Docker Hub]** を選択します
 6. **[継続的なデプロイ] > [オン]** を選択します
 7. **[保存]** を選択して、継続的デプロイを有効にします。
@@ -61,7 +53,7 @@ Container Registry で、[Webhooks] をクリックすると現在の Webhook �
 
 Webhook URL をコピーします。 Docker Hub に対する Webhook を追加するには、<a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">Docker Hub に対する Webhook</a> の説明に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure App Service on Linux の概要](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)

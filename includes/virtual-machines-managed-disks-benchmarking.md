@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147905"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67673408"
 ---
 *キャッシュのウォームアップ*  
 ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
 
 > [!IMPORTANT]
->  VM を再起動するたびに、キャッシュをウォームアップしてからベンチマークを実行する必要があります。
+> VM を再起動するたびに、キャッシュをウォームアップしてからベンチマークを実行する必要があります。
 
 ## <a name="tools"></a>ツール
 
 ### <a name="iometer"></a>Iometer
 
-[Iometer ツールをダウンロード](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) します。
+[Iometer ツールをダウンロード](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) します。
 
 #### <a name="test-file"></a>テスト ファイル
 
@@ -40,7 +40,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
 
 #### <a name="maximum-iops-test-specifications"></a>最大 IOPS テストの仕様
 
- 最大 IOPS に達するように、小さな要求サイズを使用します。 8K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
+最大 IOPS に達するように、小さな要求サイズを使用します。 8K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
 
 | アクセス仕様 | 要求サイズ | ランダム % | 読み取り % |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
 
 #### <a name="maximum-throughput-test-specifications"></a>最大スループット テストの仕様
 
- 最大スループットに達するように、大きな要求サイズを使用します。 64 K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
+最大スループットに達するように、大きな要求サイズを使用します。 64 K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
 
 | アクセス仕様 | 要求サイズ | ランダム % | 読み取り % |
 | --- | --- | --- | --- |
@@ -58,7 +58,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
 
 #### <a name="run-the-iometer-test"></a>Iometer テストの実行
 
- 次の手順を実行して、キャッシュをウォームアップします。
+次の手順を実行して、キャッシュをウォームアップします。
 
 1. 次に示す値を使用して、2 つのアクセス仕様を作成します。
 
@@ -73,7 +73,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
    | キャッシュ ディスクの初期化 |CacheReads |RandomWrites\_1 MB |2 時間 |
 1. 次のパラメーターを使用して、キャッシュ ディスクのウォームアップの Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup]\(テストの設定\) タブでテストの [Run time]\(実行時間\) を 2 時間に設定します。
 
-   | シナリオ | ターゲット ボリューム | Name | 時間 |
+   | シナリオ | ターゲット ボリューム | Name | Duration |
    | --- | --- | --- | --- |
    | キャッシュ ディスクのウォームアップ |CacheReads |RandomReads\_1 MB |2 時間 |
 
@@ -81,7 +81,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
 
 | テスト シナリオ | ターゲット ボリューム | Name | 結果 |
 | --- | --- | --- | --- |
-| 最大 読み取り IOPS |CacheReads |RandomWrites\_8 K |50,000 IOPS  |
+| 最大 読み取り IOPS |CacheReads |RandomWrites\_8 K |50,000 IOPS |
 | 最大 書き込み IOPS |NoCacheWrites |RandomReads\_8 K |64,000 IOPS |
 | 最大 合計 IOPS |CacheReads |RandomWrites\_8 K |100,000 IOPS |
 | NoCacheWrites |RandomReads\_8 K | &nbsp; | &nbsp; |
@@ -116,7 +116,7 @@ apt-get install fio
 
 #### <a name="maximum-write-iops"></a>最大書き込み IOPS
 
- 最大書き込み IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fiowrite.ini" にします。
+最大書き込み IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fiowrite.ini" にします。
 
 ```ini
 [global]
@@ -157,7 +157,7 @@ sudo fio --runtime 30 fiowrite.ini
 
 #### <a name="maximum-read-iops"></a>最大読み取り IOPS
 
- 最大読み取り IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioread.ini" にします。
+最大読み取り IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioread.ini" にします。
 
 ```ini
 [global]
@@ -198,7 +198,7 @@ sudo fio --runtime 30 fioread.ini
 
 #### <a name="maximum-read-and-write-iops"></a>最大読み取り/書き込み IOPS
 
- 読み取りと書き込みの最大合計 IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioreadwrite.ini" にします。
+読み取りと書き込みの最大合計 IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioreadwrite.ini" にします。
 
 ```ini
 [global]
@@ -256,4 +256,4 @@ sudo fio --runtime 30 fioreadwrite.ini
 
 #### <a name="maximum-combined-throughput"></a>最大スループットの合計
 
- 読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。 ブロック サイズとして 64 KB、キューの深さとして 128 を使用します。
+読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。 ブロック サイズとして 64 KB、キューの深さとして 128 を使用します。

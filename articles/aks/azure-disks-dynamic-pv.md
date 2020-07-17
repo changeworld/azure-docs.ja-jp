@@ -1,31 +1,29 @@
 ---
-title: Azure Kubernetes Service (AKS) 上で複数のポッドのディスク ボリュームを動的に作成する
-description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッドで使用するための Azure ディスクを含む永続ボリュームを動的に作成する方法について説明します
+title: Azure ディスク ボリュームを動的に作成する
+titleSuffix: Azure Kubernetes Service
+description: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成する方法について説明する
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 735be71faecb9882b13f6f536d43715139d0f4db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071977"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208144"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
 永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 この記事では、Azure Kubernetes Service (AKS) クラスター内の単一のポッドによって使用するために Azure ディスクの永続ボリュームを動的に作成する方法を説明します。
 
 > [!NOTE]
-> Azure ディスクは、"*アクセス モード*" の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の単一のポッドに限られます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用します。
+> Azure ディスクは、"*アクセス モード*" の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の単一のポッドに限られます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用してください。
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -39,6 +37,8 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
     * Standard ストレージでは、HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard ディスクは、コスト効率が重視される、開発およびテストのワークロードに最適です。
 * *managed-premium* ストレージ クラスは、プレミアムな Azure ディスクをプロビジョニングします。
     * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、*managed-premium* クラスを選択します。
+    
+これらの既定のストレージ クラスでは、作成後のボリューム サイズを更新できません。 この機能を有効にするには、*allowVolumeExpansion: true* 行を既定のストレージ クラスのいずれかに追加するか、独自のカスタム ストレージ クラスを作成します。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
 
 事前作成されているストレージ クラスを確認するには、[kubectl get sc][kubectl-get] コマンドを使用します。 次の例は、AKS クラスター内で使用できる事前に作成されたストレージ クラスを示したものです。
 
@@ -51,7 +51,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 詳細については、「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 詳細については、[Managed Disks の価格とパフォーマンス][managed-disk-pricing-performance]に関するページを参照してください。
 
 ## <a name="create-a-persistent-volume-claim"></a>永続ボリューム要求の作成
 
@@ -76,7 +76,7 @@ spec:
 > [!TIP]
 > Standard ストレージを使用するディスクを作成するには、*managed-premium*ではなく、`storageClassName: default` を使用します。
 
-[kubectl apply][kubectl-apply] コマンドを使用して、*azure-premium.yaml*ファイルを指定することで、永続ボリューム要求を作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、*azure-premium.yaml* ファイルを指定することで、永続ボリューム要求を作成します。
 
 ```console
 $ kubectl apply -f azure-premium.yaml
@@ -86,7 +86,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、*azure-managed-disk* という名前の永続ボリューム要求を使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。
+永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、*azure-managed-disk* という名前の永続ボリューム要求を使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
 `azure-pvc-disk.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
@@ -194,7 +194,7 @@ az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pv
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-`azure-restored.yaml` という名前のポッド マニフェストを作成し、前の手順で取得したディスクの URI を指定します。 次の例では、*/mnt/azure* にボリュームとしてマウントされた復元ディスクを使用して、基本的な NGINX Web サーバーを作成します。
+`azure-restored.yaml` という名前のポッド マニフェストを作成し、前の手順で取得したディスクの URI を指定します。 次の例では、 */mnt/azure* にボリュームとしてマウントされた復元ディスクを使用して、基本的な NGINX Web サーバーを作成します。
 
 ```yaml
 kind: Pod
@@ -249,7 +249,7 @@ Volumes:
 [...]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 
@@ -279,3 +279,4 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
+[storage-class-concepts]: concepts-storage.md#storage-classes

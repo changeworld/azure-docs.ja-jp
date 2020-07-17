@@ -1,25 +1,19 @@
 ---
-title: Azure IaaS Windows VM ディスクについてよく寄せられる質問 (FAQ) | Microsoft Docs
+title: Azure IaaS Windows VM ディスクについてよく寄せられる質問
 description: Azure IaaS Windows VM ディスクと Premium ディスク (管理および非管理) についてよく寄せられる質問
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: tysonn
-ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 06/15/2017
+ms.workload: infrastructure
+ms.topic: conceptual
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 81cdb0273f64bd70fc77a6e61007290bdd4627c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1b03037d65597314d910a899d43b6f395b97438b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727449"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869663"
 ---
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

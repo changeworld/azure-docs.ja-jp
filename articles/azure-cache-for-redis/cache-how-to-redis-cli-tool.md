@@ -1,24 +1,17 @@
 ---
-title: Azure Cache for Redis で redis-cli を使用する方法 | Microsoft Docs
-description: Azure Cache for Redis で redis-clis を使用する方法を説明します。
-services: cache
-documentationcenter: ''
+title: Azure Cache for Redis で redis-cli を使用する方法
+description: クライアントとして Azure Cache for Redis とやり取りするためのコマンドラインツールとして *redis-cli.exe* を使用する方法について説明します。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2018
 ms.author: yegu
-ms.openlocfilehash: 318d02f5da816ae8fe2fe199b9c87b3748d5d1fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.service: cache
+ms.topic: conceptual
+ms.date: 03/22/2018
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66132997"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010768"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis で Redis コマンドライン ツールを使用する方法
 
@@ -45,9 +38,9 @@ Windows プラットフォームでこのツールを利用するには､[Redis
 
 ## <a name="enable-access-for-redis-cliexe"></a>redis-cli.exe に対するアクセスを有効化する
 
-Azure Cache for Redis は、既定で SSL ポート (6380) のみが有効化されています。 `redis-cli.exe` コマンドライン ツールは SSL をサポートしていません｡ SSL を使用するための構成上の選択肢は 2 通りあります｡
+Azure Cache for Redis は、既定で TLS ポート (6380) のみが有効化されています。 `redis-cli.exe` コマンドライン ツールは TLS をサポートしていません｡ SSL を使用するための構成上の選択肢は 2 通りあります｡
 
-1. [Enable the non-SSL port (6379)](cache-configure.md#access-ports) -  **アクセス キーがクリア テキスト形式で TCP を使って送信されるため､** この構成はお勧めしません｡ この変更を行うと､キャッシュに対するアクセスが危うくなる可能性があります｡ この構成を検討する唯一のシナリオは､テスト用 キャッシュにアクセスするだけの場合です｡
+1. [非 TLS ポート (6379) を有効にします](cache-configure.md#access-ports) -  **アクセス キーがクリア テキスト形式で TCP を使って送信されるため､この構成はお勧めしません**｡ この変更を行うと､キャッシュに対するアクセスが危うくなる可能性があります｡ この構成を検討する唯一のシナリオは､テスト用 キャッシュにアクセスするだけの場合です｡
 
 2. [stunnel](https://www.stunnel.org/downloads.html) ダウンロードして､インストールします｡
 
@@ -81,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel と redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-**安全度の低い**非 SSL ポート経由でテスト用キャッシュを使用する場合は､`redis-cli.exe` を実行して､*ホスト名*と*ぽーと*､*アクセス キー* (プライマリかセカンダリ) を指定することでテスト用キャッシュに接続できます｡
+**安全度の低い**非 TLS ポート経由でテスト用キャッシュを使用する場合は､`redis-cli.exe` を実行して､*ホスト名*と*ポート*､*アクセス キー* (プライマリかセカンダリ) を指定することでテスト用キャッシュに接続できます｡
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
@@ -92,7 +85,7 @@ redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Redis Console](cache-configure.md#redis-console) を使用してコマンドを発行する
 

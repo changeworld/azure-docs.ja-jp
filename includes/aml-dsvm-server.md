@@ -8,19 +8,19 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: 02ef0d6c7c8ddc7088938d9c8ea379e3b97f3045
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 03/05/2020
+ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158721"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79486008"
 ---
-1. [Azure Machine Learning service ワークスペースを作成する](../articles/machine-learning/service/setup-create-workspace.md)
+1. [Azure Machine Learning ワークスペースを作成](../articles/machine-learning/how-to-manage-workspace.md)します。
 
 1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
-    ```
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
@@ -32,9 +32,8 @@ ms.locfileid: "66158721"
 
     * 複製したディレクトリの [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) ノートブック内のコードを使用して新しいワークスペースを作成します。
 
-
 1. 複製したディレクトリから、Notebook サーバーを起動します。
-    
-    ```shell
+
+    ```bash
     jupyter notebook
     ```

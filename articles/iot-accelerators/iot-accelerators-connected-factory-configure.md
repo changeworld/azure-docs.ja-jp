@@ -1,6 +1,6 @@
 ---
 title: コネクテッド ファクトリ トポロジを構成する - Azure | Microsoft Docs
-description: コネクテッド ファクトリ ソリューション アクセラレータのトポロジの構成方法。
+description: この記事では、コネクテッド ファクトリ ソリューション アクセラレータおよびそのトポロジの構成方法について説明します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602275"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73820131"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
@@ -29,7 +29,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 * テスト ステーション
 * パッケージ化ステーション
 
-これらの OPC UA サーバーは OPC UA ノードを持ち、[OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) がこれらのノードの値をコネクテッド ファクトリに送信します。 次のトピックがあります。
+これらの OPC UA サーバーは OPC UA ノードを持ち、[OPC Publisher](overview-opc-publisher.md) がこれらのノードの値をコネクテッド ファクトリに送信します。 これには次のものが含まれます
 
 * 現在の電力消費量など、現在の動作状態。
 * 生産された製品数など、生産情報。
@@ -264,9 +264,9 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 
 このカテゴリのプロパティは、コネクテッド ファクトリ ダッシュボードの視覚的な外観を定義します。 たとえば、次のようになります。
 
-* Name
+* 名前
 * 説明
-* イメージ
+* Image
 * 場所
 * Units
 * Visible
@@ -282,7 +282,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 * 計算に含まれる OPC UA ノードの値。
 * テレメトリの値からの数値の計算方法。
 
-コネクテッド ファクトリは、 https://www.oeefoundation.org が発行した OEE 数式を使用します。
+コネクテッド ファクトリは、[http://www.oeefoundation.org](http://www.oeefoundation.org) が発行した OEE 数式を使用します。
 
 ステーションの OPC UA ノード オブジェクトは、OEE/KPI 計算で使用するためのタグ付けを有効にします。 **Relevance** プロパティは、OPC UA ノードの値を使用する必要がある OEE/KPI の数値を示します。 **OpCode** プロパティは、値を計算に含める方法を定義します。
 
@@ -307,7 +307,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 
   OPC UA サーバー内のノードの値を識別します。 プロパティの形式は、OPC UA 仕様で指定されているとおりにする必要があります。 取り込まれるメッセージでは、このプロパティは **NodeId** として送信されます。
 
-OPC Publisher を使用してテレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、[こちら](https://github.com/Azure/iot-edge-opc-publisher)の GitHub ページをご覧ください。
+テレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、「[OPC Publisher とは](overview-opc-publisher.md)」を参照してください。
 
 ## <a name="example-how-kpi1-is-calculated"></a>例:KPI1 の計算方法
 
@@ -334,10 +334,10 @@ OPC Publisher を使用してテレメトリ データをコネクテッド フ�
 * すべての値の平均。
 * 指定された期間における、すべての一意の **OpcUri** (**ApplicationUri**)、**NodeId** ペアの、すべての値の合計。
 
-**NumberOfManufactureredProducts** ノードの値の 1 つの特徴は、それが増加するのみであるということです。 その期間に製造された製品の数を計算するために、コネクテッド ファクトリは **OpCode** **SubMaxMin** を使用します。 この計算では、その期間の開始時に最小値を、その期間の終了時に最大値を取得します。
+**NumberOfManufactureredProducts** ノードの値の 1 つの特徴は、それが増加するのみであるということです。 その期間に製造された製品の数を計算するために、接続済みファクトリで **OpCode** **SubMaxMin** が使用されます。 この計算では、その期間の開始時に最小値を、その期間の終了時に最大値を取得します。
 
 構成内の **OpCode** によって計算ロジックが構成され、最大値と最小値の差の結果が計算されます。 これらの結果は、ボトムアップでルート (グローバル) レベルまで蓄積され、ダッシュボードに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-次は、[コネクテッド ファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-accelerators-connected-factory-gateway-deployment.md)方法について学習することをお勧めします。
+次は、[コネクテッド ファクトリ ソリューションをカスタマイズする](iot-accelerators-connected-factory-customize.md)方法について学習することをお勧めします。

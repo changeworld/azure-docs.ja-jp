@@ -1,6 +1,6 @@
 ---
 title: エンコード ユニットの追加によるメディア処理のスケール調整 - Azure | Microsoft Docs
-description: .NET を使用して、エンコード ユニットを追加する方法を説明します。
+description: この記事では、Azure Media Services .NET を使用してエンコード ユニットを追加する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;milangada;
-ms.openlocfilehash: 65b647a375ecbe70f7f29af5b09827f1c34dcd6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: milangada
+ms.openlocfilehash: 86fd923c121b9d46109529f75bc3d0d040f1a7a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183035"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74887290"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>.NET SDK を使用してエンコードを拡張する方法
 > [!div class="op_single_selector"]

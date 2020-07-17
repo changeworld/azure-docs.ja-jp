@@ -1,21 +1,21 @@
 ---
-title: Azure Database for MariaDB でのビジネス継続性の概要
-description: Azure Database for MariaDB でのビジネス継続性の概要。
+title: ビジネス継続性 - Azure Database for MariaDB
+description: Azure Database for MariaDB サービスを使用する場合のビジネス継続性 (ポイントインタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4c64f920bf56195ad53ac8acbf3f9199090f0a8b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 3/18/2020
+ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532393"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性の概要
+# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性を理解する
 
-この概要では、Azure Database for MariaDB に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
+この記事では、Azure Database for MariaDB に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>ビジネス継続性を提供するときに使用できる機能
 
@@ -48,7 +48,7 @@ Azure Database for MariaDB で提供されるビジネス継続性機能には�
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 自動バックアップについて詳しくは、[Azure Database for MariaDB でのバックアップ](concepts-backup.md)に関するページをご覧ください。
 - Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。

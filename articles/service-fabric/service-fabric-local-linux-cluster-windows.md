@@ -1,25 +1,16 @@
 ---
-title: Windows で Azure Service Fabric Linux クラスターを設定する | Microsoft Docs
+title: Windows で Azure Service Fabric Linux クラスターを設定する
 description: この記事では、Windows 開発用マシンで実行される Service Fabric Linux クラスターを設定する方法について説明します。 これは、クロス プラットフォーム開発で特に便利です。
-services: service-fabric
-documentationcenter: .net
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819737"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193328"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
@@ -54,7 +45,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
 2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -95,10 +86,10 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
     >
     >アプリケーションが特定のポートでリッスンしている場合は、追加の `-p` タグを使用してポートを指定する必要があります。 たとえば、アプリケーションがポート 8080 でリッスンしている場合は、次の `-p` タグを追加します。
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 少しするとクラスターが起動され、次のコマンドを使ってログを確認したり、ダッシュボードに切り替えてクラスターの正常性を確認したりすることができます ([http://localhost:19080](http://localhost:19080))。
+5. 少しするとクラスターが起動され、次のコマンドを使ってログを確認したり、ダッシュボードに切り替えてクラスターの正常性を確認したりすることができます (`http://localhost:19080`)。
 
     ```powershell 
     docker logs sftestcluster
@@ -119,9 +110,9 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
  
  Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
  
- * DNS サービスが実行されず、サポートされていない [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS サービスが実行されず、サポートされていない [Issue #132](https://github.com/Microsoft/service-fabric/issues/132)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) の概要
 * その他の [Java サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)を確認する
 

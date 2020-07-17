@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1e7587c60e180fb35e1a2bed735b053b6b0c388a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294600"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -42,47 +42,47 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
 1. アーティファクトまたは Resource Manager テンプレートの定義を含む GitHub リポジトリのホーム ページに移動します。
-2. **[複製またはダウンロード]** を選択します。
+2. **[Clone or download]\(複製またはダウンロード\)** を選択します。
 3. **[HTTPS clone URL]** ボタンをクリックして、URL をクリップボードにコピーします。 後で使用するために URL を保存します。
-4. GitHub の右上隅にあるプロファイル画像を選択し、**[Settings]** を選択します。
-5. **[Personal settings (個人設定)]** メニューの左側で、**[Personal access tokens (個人用アクセス トークン)]** を選択します。
-6. **[新しいトークンの生成]** を選択します。
-7. **[New personal access token]** ページで、**[Token description]** に説明を入力します。 **[Select scopes]** の既定の項目をそのまま使用し、**[Generate Token]** を選択します。
+4. GitHub の右上隅にあるプロファイル画像を選択し、 **[Settings]** を選択します。
+5. **[Personal settings]\(個人設定\)** メニューの左側で、 **[Personal access tokens]\(個人用アクセス トークン\)** を選択します。
+6. **[Generate new token]\(新しいトークンの生成\)** を選択します。
+7. **[New personal access token]** ページで、 **[Token description]** に説明を入力します。 **[Select scopes]** の既定の項目をそのまま使用し、 **[Generate Token]** を選択します。
 8. 生成されたトークンを保存します。 後でこのトークンを使用します。
 9. GitHub を閉じます。   
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Azure Repos のクローン URL と個人用アクセス トークンの取得
 
-1. チーム コレクションのホーム ページ (たとえば、 https://contoso-web-team.visualstudio.com)) に移動し、プロジェクトを選択します。
-2. プロジェクトのホーム ページで、 **[コード]** を選択します。
-3. クローン URL を表示するには、プロジェクト **[Code (コード)]** ページで、**[Clone (クローン)]** を選択します。
+1. チーム コレクションのホーム ページ (たとえば、`https://contoso-web-team.visualstudio.com`) に移動し、プロジェクトを選択します。
+2. プロジェクトのホーム ページで、 **[Code]\(コード\)** を選択します。
+3. クローン URL を表示するには、プロジェクト **[Code]\(コード\)** ページで、 **[Clone]\(クローン\)** を選択します。
 4. URL を保存します。 後でこの URL を使用します。
-5. 個人用アクセス トークンを作成するには、ユーザー アカウントのドロップダウン メニューで **[マイ プロファイル]** を選択します。
-6. プロファイル情報ページで、 **[セキュリティ]** を選択します。
-7. **[Security (セキュリティ)]** タブで **[Add (追加)]** を選択します。
-8. **[個人用アクセス トークンの作成]** ページで、次の操作を行います。
-   1. トークンの **説明** を入力します。
-   2. **[期限切れまでの日数]** の一覧で、**[180 日]** を選択します。
-   3. **[アカウント]** の一覧で、**[アクセス可能なすべてのアカウント]** を選択します。
-   4. **[すべてのスコープ]** を選択します。
-   5. **[トークンの作成]** を選択します。
-9. **[個人用アクセス トークン]** の一覧に新しいトークンが表示されます。 **[トークンのコピー]** を選択し、後ほど必要になるため、トークンの値を保存します。
+5. 個人用アクセス トークンを作成するには、ユーザー アカウントのドロップダウン メニューで **[My profile]\(マイ プロファイル\)** を選択します。
+6. プロファイル情報ページで、 **[Security]\(セキュリティ\)** を選択します。
+7. **[Security]\(セキュリティ\)** タブで **[Add]\(追加\)** を選択します。
+8. **[Create a personal access token]\(個人用アクセス トークンの作成\)** ページで、次の操作を行います。
+   1. トークンの **Description\(説明\)** を入力します。
+   2. **[Expires]\(期限切れまでの日数\)** の一覧で、 **[180 days]\(180 日\)** を選択します。
+   3. **[Accounts]\(アカウント\)** の一覧で、 **[All accessible accounts]\(アクセス可能なすべてのアカウント\)** を選択します。
+   4. **[Read Only]\(読み取り専用\)* オプションを選択します。
+   5. **[Create Token]\(トークンの作成\)** を選択します。
+9. **[Personal Access Tokens]\(個人用アクセス トークン\)** の一覧に新しいトークンが表示されます。 **[Copy Token]\(トークンのコピー\)** を選択し、後ほど必要になるため、トークンの値を保存します。
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。
 
 ## <a name="connect-your-lab-to-the-repository"></a>ラボのレポジトリへの接続
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[その他のサービス]** を選択し、サービスの一覧で **[DevTest Labs]** を選択します。
 3. ラボの一覧でラボを選択します。 
-4. **[Configuration and policies]\(構成とポリシー\)** > **[リポジトリ]** > **[+ 追加]** を選択します。
+4. **[Configuration and policies]\(構成とポリシー\)**  >  **[リポジトリ]**  >  **[+ 追加]** を選択します。
 
     ![リポジトリの追加ボタン](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 2 番目の **[レポジトリ]** ページで、以下の情報を指定します。
    1. **名前**。 リポジトリの名前を入力します。
-   2. **[Git クローン URL]**:  GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
-   3. **[ブランチ]**:  定義を取得するには、ブランチを入力します。
-   4. **[個人用アクセス トークン]**:  GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
-   5. **[フォルダー パス]**:  アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
+   2. **[Git クローン URL]** : GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
+   3. **[ブランチ]** : 定義を取得するには、ブランチを入力します。
+   4. **[個人用アクセス トークン]** : GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
+   5. **[フォルダー パス]** : アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
 
       ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. **[保存]** を選択します。
@@ -93,7 +93,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 プライベート Git レポジトリを作成したら、必要に応じて、次のどちらかまたは両方を実行できます。
 * [カスタム アーティファクト](devtest-lab-artifact-author.md)を格納します。 後でこれらのアーティファクトを使用して、新しい VM を作成できます。
 * [Resource Manager テンプレートを使用して、マルチ VM 環境と PaaS リソースを作成](devtest-lab-create-environment-from-arm.md)します。 その後、テンプレートをプライベート リポジトリに格納します。

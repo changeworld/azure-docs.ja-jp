@@ -1,18 +1,21 @@
 ---
-title: Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する方法
+title: デバイス SDK を使用して IoT Hub 接続と信頼できるメッセージングを管理する
 description: Azure IoT Hub device SDK を利用するとき、デバイスの接続とメッセージ処理を改善する方法について説明します。
 services: iot-hub
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: 9180c27e64f26c05e6e16007b74f9aa8a98bcfe5
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: c7c9371b76d8bd7b4afd3f54e30dcf652b8b33d4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608828"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656803"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する
 
@@ -26,13 +29,15 @@ ms.locfileid: "59608828"
 
 実装の詳細は、言語によって異なる場合があります。 詳しくは、API のドキュメントまたは特定の SDK をご覧ください。
 
-* [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
+* [C/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 
-* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
 * [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
+
+* [Python SDK](https://github.com/Azure/azure-iot-sdk-python) (信頼性はまだ実装されていません)
 
 ## <a name="designing-for-resiliency"></a>回復性の設計
 
@@ -68,7 +73,7 @@ device SDK は 3 つのレベルすべてでエラーを検出します。 OS �
 
 3. SDK が**回復不能なエラー**を識別すると、接続、送信、受信などの操作は停止されます。 SDK は、ユーザーに通知します。 回復不能なエラーの例としては、認証エラーや不正エンドポイント エラーなどがあります。
 
-4. SDK は、**回復可能なエラー**を識別すると、ユーザーが指定した再試行ポリシーに従って、定義されているタイムアウト時間が経過するまで、再試行します。  SDK では、**[指数関数的後退とゆらぎ]** の再試行ポリシーが既定で使用されることに注意してください。
+4. SDK は、**回復可能なエラー**を識別すると、ユーザーが指定した再試行ポリシーに従って、定義されているタイムアウト時間が経過するまで、再試行します。  SDK では、 **[指数関数的後退とゆらぎ]** の再試行ポリシーが既定で使用されることに注意してください。
 5. 定義されているタイムアウト時間が経過すると、SDK は接続や送信の再試行を停止します。 ユーザーに通知します。
 
 6. SDK によって、ユーザーはコールバックをアタッチし、接続ステータス変更を受信できます。
@@ -77,7 +82,7 @@ SDK では、3 つの再試行ポリシーが提供されています。
 
 * **指数関数的後退とゆらぎ**:この既定の再試行ポリシーでは、最初は積極的に、その後は最大遅延に達するまで時間経過と共に頻度を減らしながら、再試行が行われます。 このデザインは、[Azure アーキテクチャ センターの再試行に関するガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)に基づいています。 
 
-* **カスタム再試行**:SDK の一部の言語では、シナリオに適したカスタム再試行ポリシーを設計して、RetryPolicy に挿入することができます。 C SDK では、カスタム再試行を使用できません。
+* **カスタム再試行**:SDK の一部の言語では、シナリオに適したカスタム再試行ポリシーを設計して、RetryPolicy に挿入することができます。 C SDK ではカスタム再試行を利用できず、Python SDK でも現在サポートされていません。 Python SDK は必要に応じて再接続します。
 
 * **再試行なし**:再試行ポリシーを "再試行なし" に設定できます。再試行ロジックは無効になります。 接続が確立されていれば、SDK は一回の接続と一回のメッセージ送信を試行します。 このポリシーは通常、帯域幅またはコストが重要なシナリオで使用されます。 このオプションを選択すると、送信できなかったメッセージは失われ、回復できません。
 
@@ -85,10 +90,11 @@ SDK では、3 つの再試行ポリシーが提供されています。
 
    | SDK | SetRetryPolicy メソッド | ポリシー実装 | 実装ガイダンス |
    |-----|----------------------|--|--|
-   |  C/Python/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **既定**:[IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**カスタム:** 利用可能な [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies) を利用<BR>**再試行なし:**[IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/Python/iOS 実装](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
-   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **既定**:[ExponentialBackoffWithJitter class](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**カスタム:** [RetryPolicy インターフェイス](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)を実装<BR>**再試行なし:**[NoRetry クラス](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java 実装](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
-   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **既定**:[ExponentialBackoff クラス](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**カスタム:** [IRetryPolicy インターフェイス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet)を実装<BR>**再試行なし:**[NoRetry クラス](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C# 実装](https://github.com/Azure/azure-iot-sdk-csharp) | |
-   | ノード| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **既定**:[ExponentialBackoffWithJitter class](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**カスタム:** [RetryPolicy インターフェイス](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest)を実装<BR>**再試行なし:**[NoRetry クラス](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [ノード実装](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
+   |  C/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **既定**:[IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**カスタム:** 利用可能な [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies) を利用<BR>**再試行なし:** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/iOS の実装](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
+   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **既定**:[ExponentialBackoffWithJitter class](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**カスタム:** [RetryPolicy インターフェイス](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java)を実装<BR>**再試行なし:** [NoRetry クラス](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java 実装](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
+   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **既定**:[ExponentialBackoff クラス](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**カスタム:** [IRetryPolicy インターフェイス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet)を実装<BR>**再試行なし:** [NoRetry クラス](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C# 実装](https://github.com/Azure/azure-iot-sdk-csharp) | |
+   | Node| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **既定**:[ExponentialBackoffWithJitter class](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java) | [ノード実装](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
+   | Python| 現在、サポートされていません | 現在、サポートされていません | 現在、サポートされていません |
 
 以下は、このフローを示すコード サンプルです。
 
@@ -97,8 +103,8 @@ SDK では、3 つの再試行ポリシーが提供されています。
 次のコード サンプルでは、既定の再試行ポリシーを定義し、設定する方法を示しています。
 
    ```csharp
-   # define/set default retry policy
-   RetryPolicy retryPolicy = new ExponentialBackoff(int.MaxValue, TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(10), TimeSpan.FromMilliseconds(100));
+   // define/set default retry policy
+   IRetryPolicy retryPolicy = new ExponentialBackoff(int.MaxValue, TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(10), TimeSpan.FromMilliseconds(100));
    SetRetryPolicy(retryPolicy);
    ```
 
@@ -107,8 +113,8 @@ CPU の使用率が高くなるのを避けるため、コードがすぐに失�
 サービスが調整エラーで応答する場合は、再試行ポリシーが違っており、パブリック API からは変更できません。
 
    ```csharp
-   # throttled retry policy
-   RetryPolicy retryPolicy = new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(10), 
+   // throttled retry policy
+   IRetryPolicy retryPolicy = new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(10), 
      TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)); SetRetryPolicy(retryPolicy);
    ```
 
@@ -118,15 +124,17 @@ CPU の使用率が高くなるのを避けるため、コードがすぐに失�
 
 他の言語でのコード サンプルについては、次の実装ドキュメントを確認してください。 リポジトリには、再試行ポリシー API の使用方法を示すサンプルが含まれています。
 
-* [C/Python/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
+* [C/iOS SDK](https://github.com/azure/azure-iot-sdk-c)
 
-* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/requirements/retrypolicy.md)
+* [.NET SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/devdoc/retrypolicy.md)
 
 * [Java SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md)
 
 * [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-## <a name="next-steps"></a>次の手順
+* [Python SDK](https://github.com/Azure/azure-iot-sdk-python) (信頼性はまだ実装されていません)
+
+## <a name="next-steps"></a>次のステップ
 
 * [デバイス SDK とサービス SDK の使用](./iot-hub-devguide-sdks.md)
 

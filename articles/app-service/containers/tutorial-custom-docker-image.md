@@ -1,31 +1,23 @@
 ---
-title: Web App for Containers のカスタム イメージを作成する - Azure App Service | Microsoft Docs
-description: Web App for Containers のカスタム Docker イメージを使用する方法。
+title: チュートリアル:カスタム イメージをビルドして実行する
+description: Azure App Service で実行できるカスタム Linux イメージをビルドし、それを Azure コンテナー レジストリにデプロイし、App Service で実行する方法について説明します。
 keywords: Azure App Service, Web アプリ, Linux, Docker, コンテナー
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545604"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82085860"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
-[App Service](app-service-linux-intro.md) は、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートする組み込みの Docker イメージを Linux 上で提供します。 App Service では、Docker コンテナー テクノロジを使用して、組み込みイメージとカスタム イメージの両方をサービスとしてのプラットフォームとしてホストします。 このチュートリアルでは、カスタム イメージを作成し、App Service 内で実行する方法について学習します。 このパターンは、組み込みイメージに選択した言語が含まれない場合や、アプリケーションで組み込みイメージで提供されない特定の構成が必要となる場合に便利です。
+[App Service](app-service-linux-intro.md) は、PHP 7.3 や Node.js 10.14 などの特定のバージョンをサポートする組み込みの Docker イメージを Linux 上で提供します。 App Service では、Docker コンテナー テクノロジを使用して、組み込みイメージとカスタム イメージの両方をサービスとしてのプラットフォームとしてホストします。 このチュートリアルでは、カスタム イメージを作成し、App Service 内で実行する方法について学習します。 このパターンは、組み込みイメージに選択した言語が含まれない場合や、アプリケーションで組み込みイメージで提供されない特定の構成が必要となる場合に便利です。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -57,7 +49,7 @@ cd docker-django-webapp-linux
 
 ## <a name="build-the-image-from-the-docker-file"></a>Docker ファイルからイメージを作成する
 
-Git リポジトリで、_Dockerfile_ を確認してください。 このファイルには、アプリケーションの実行に必要な Python 環境が記述されています。 さらに、イメージはコンテナーとホスト間のセキュアな通信用に [SSH](https://www.ssh.com/ssh/protocol/) サーバーを設定します。
+Git リポジトリで、_Dockerfile_ を確認してください。 このファイルには、アプリケーションの実行に必要な Python 環境が記述されています。 さらに、イメージはコンテナーとホスト間のセキュアな通信用に [SSH](https://www.ssh.com/ssh/protocol/) サーバーを設定します。 _Dockerfile_ の最後の行 (`ENTRYPOINT ["init.sh"]`) は、`init.sh` を呼び出して、SSH サービスと Python サーバーを起動しています。
 
 ```Dockerfile
 FROM python:3.4
@@ -81,6 +73,8 @@ COPY init.sh /usr/local/bin/
     
 RUN chmod u+x /usr/local/bin/init.sh
 EXPOSE 8000 2222
+
+#service SSH start
 #CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 ENTRYPOINT ["init.sh"]
 ```
@@ -107,7 +101,7 @@ docker run -p 8000:8000 mydockerimage
 
 先ほど作成したイメージを使用するアプリを作成するには、Azure CLI コマンドを実行してリソース グループを作成し、そのイメージをプッシュし、それを実行する App Service プラン Web アプリを作成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -129,8 +123,8 @@ az acr credential show --name <azure-container-registry-name>
 
 出力には、2 つのパスワードがユーザー名と共に含まれています。
 
-```json
-<
+<pre>
+{
   "passwords": [
     {
       "name": "password",
@@ -141,9 +135,9 @@ az acr credential show --name <azure-container-registry-name>
       "value": "{password}"
     }
   ],
-  "username": "<registry-username>"
+  "username": "&lt;registry-username&gt;"
 }
-```
+</pre>
 
 ローカルのターミナル ウィンドウから、次の例に示すように `docker login` コマンドを使用して Azure Container Registry にサインインします。 *\<azure-container-registry-name>* と *\<registry-username>* を、自分のレジストリの値に置き換えます。 入力を求められたら、前の手順のいずれかのパスワードを入力します。
 
@@ -155,7 +149,7 @@ docker login <azure-container-registry-name>.azurecr.io --username <registry-use
 
 ### <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-Azure Container Registry のコンテナー イメージをタグ付けします。 例: 
+Azure Container Registry のコンテナー イメージをタグ付けします。 次に例を示します。
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -174,11 +168,11 @@ az acr repository list -n <azure-container-registry-name>
 
 次の出力が表示されます。
 
-```json
+<pre>
 [
   "mydockerimage"
 ]
-```
+</pre>
 
 ### <a name="create-app-service-plan"></a>Create App Service plan
 
@@ -186,7 +180,7 @@ az acr repository list -n <azure-container-registry-name>
 
 ### <a name="create-web-app"></a>Web アプリの作成
 
-Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ を一意のアプリ名に置き換え、_\<azure-container-registry-name>_ を自分のレジストリ名に置き換えます。
+Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ を一意のアプリ名に置き換え、 _\<azure-container-registry-name>_ を自分のレジストリ名に置き換えます。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -194,7 +188,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
-```json
+<pre>
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -202,16 +196,16 @@ Web アプリが作成されると、Azure CLI によって次の例のような
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Web アプリにレジストリの資格情報を構成する
 
-App Service でプライベート イメージをプルするには、レジストリとイメージに関する情報が必要です。 Cloud Shell で、[`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用してそれらを提供します。 *\<app-name>*、*\<azure-container-registry-name>*、_\<registry-username>_、および _\<password>_ を置き換えます。
+App Service でプライベート イメージをプルするには、レジストリとイメージに関する情報が必要です。 Cloud Shell で、[`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) コマンドを使用してそれらを提供します。 *\<app-name>* 、 *\<azure-container-registry-name>* 、 _\<registry-username>_ 、および _\<password>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -278,7 +272,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     > [!NOTE]
     > この構成では、コンテナーへの外部接続は許可されません。 SSH は Kudu/SCM サイトを通してのみ利用できます。 Kudu/SCM サイトは Azure アカウントにより認証されます。
 
-* この [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) では、[sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config file in the repository) を */etc/ssh/* ディレクトリにコピーしています。
+* この [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) では、リポジトリ内の [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーします。
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -292,20 +286,20 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 * この[エントリ スクリプト](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5)では、SSH サーバーを起動しています。
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>コンテナーへの SSH 接続 を開く
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+SSH 接続は Kudu サイトを通してのみ利用できます。Kudo サイトには `https://<app-name>.scm.azurewebsites.net` からアクセスできます。
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+接続するには、`https://<app-name>.scm.azurewebsites.net/webssh/host` に移動し、Azure アカウントでサインインします。
 
-You are then redirected to a page displaying an interactive console.
+その後、対話型コンソールを表示するページにリダイレクトされます。
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+特定のアプリケーションがコンテナーで実行されていることを確認できます。 コンテナーを検査し、実行中のプロセスを確認するには、プロンプトで `top` コマンドを発行します。
 
 ```bash
 top
@@ -332,7 +326,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

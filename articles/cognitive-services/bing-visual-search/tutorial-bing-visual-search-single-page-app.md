@@ -7,17 +7,17 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
-ms.date: 04/05/2019
+ms.topic: tutorial
+ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496558"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370098"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する
+# <a name="tutorial-create-a-visual-search-single-page-web-app"></a>チュートリアル:Visual Search のシングルページ Web アプリを作成する
 
 Bing Visual Search API は、画像に関する分析情報を返します。 画像をアップロードするか、画像の URL を指定することができます。 分析情報とは、視覚的に似ている画像、ショッピング ソース、その画像が含まれる Web ページなどです。 Bing Visual Search API によって返される分析情報は、Bing.com/images に表示される情報と似ています。
 
@@ -120,7 +120,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 新しい JavaScript コードと HTML 要素をすべて配置すると、検索結果が **find similar** リンクと共に表示されます。 このリンクをクリックすると、選択した画像に類似した画像が **[類似]** セクションに表示されます。 場合によっては、画像を表示するために **[類似]** セクションを展開する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする](tutorial-visual-search-crop-area-results.md)

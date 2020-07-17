@@ -1,24 +1,23 @@
 ---
 title: Azure Service Bus トピック フィルター | Microsoft Docs
-description: Azure Service Bus トピックのフィルター
+description: この記事では、どのメッセージをトピックから受信するかを、フィルターを指定することによってサブスクライバーが定義する方法について説明します。
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/26/2018
+ms.topic: conceptual
+ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741064"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125759"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -32,11 +31,22 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 -   *SQL フィルター* - **SqlFilter** には、受信メッセージのユーザー定義のプロパティとシステム プロパティに対して、ブローカーで評価される、SQL に似た条件式が入っています。 すべてのシステム プロパティの条件式にはプレフィックスとして `sys.` を付ける必要があります。 [フィルター条件の SQL 言語のサブセット](service-bus-messaging-sql-filter.md)は、プロパティ (`EXISTS`) や null 値 (`IS NULL`) の存在のテスト、論理 NOT/AND/OR、関係演算子、単純な数値を使った算術演算、および `LIKE` による単純なテキスト パターン マッチングを実行します。
 
--   *相関関係フィルター* - **CorrelationFilter** には、受信メッセージのユーザーおよびシステム プロパティの 1 つ以上と照合される条件セットが入っています。 一般的な使用方法は、**CorrelationId** プロパティの照合ですが、アプリケーションでは **ContentType**、**Label**、**MessageId**、**ReplyTo**、**ReplyToSessionId**、**SessionId**、**To**、および任意のユーザー定義プロパティに対して照合することもできます。 受信メッセージのプロパティ値が相関関係フィルターに指定された値と等しいときに、一致するものが存在すると判断されます。 文字列式の比較では大文字と小文字を区別します。 照合するプロパティを複数指定すると、フィルターでは論理 AND 条件として結合され、フィルターが一致するには、すべての条件が一致する必要があります。
+-   *相関関係フィルター* - **CorrelationFilter** には、受信メッセージのユーザーおよびシステム プロパティの 1 つ以上と照合される条件セットが入っています。 一般的な使用方法は **CorrelationId** プロパティの照合ですが、アプリケーションでは次のプロパティに対して照合することもできます。
+
+    - **ContentType**
+     - **Label**
+     - **MessageId**
+     - **ReplyTo**
+     - **ReplyToSessionId**
+     - **SessionId** 
+     - **To**
+     - 任意のユーザー定義プロパティ。 
+     
+     受信メッセージのプロパティ値が相関関係フィルターに指定された値と等しいときに、一致するものが存在すると判断されます。 文字列式の比較では大文字と小文字を区別します。 照合するプロパティを複数指定すると、フィルターでは論理 AND 条件として結合され、フィルターが一致するには、すべての条件が一致する必要があります。
 
 すべてのフィルターでは、メッセージのプロパティが評価されます。 フィルターは、メッセージの本文は評価できません。
 
-複雑なフィルター ルールでは、処理能力が必要になります。 特に、SQL フィルター ルールを使用すると、サブスクリプション、トピック、および名前空間レベルでメッセージのスループット全体が低下します。 可能な場合は、アプリケーションでは、SQL に似たフィルターではなく 処理効率が高く、スループットに与える影響が少ない、相関関係フィルターを選択してください。
+複雑なフィルター ルールでは、処理能力が必要になります。 特に、SQL フィルター ルールを使用すると、サブスクリプション、トピック、名前空間レベルでメッセージのスループット全体が低下します。 可能な場合は、アプリケーションでは、SQL に似たフィルターではなく、処理効率が高く、スループットに与える影響が少ない、相関関係フィルターを選択してください。
 
 ## <a name="actions"></a>Actions
 
@@ -52,10 +62,15 @@ SQL フィルター条件を使用すると、プロパティとその値を追�
 
 ルーティングでは、フィルターを使用して、予測可能な方法で複数のトピック サブスクリプションにメッセージを配布しますが、必ずしも排他的ではありません。 トピック フィルターは、[自動転送](service-bus-auto-forwarding.md)機能と組み合わせると、Azure リージョン内にメッセージを配布するための Service Bus 名前空間内での複雑なルーティング グラフの作成に使用することができます。 Azure Functions または Azure Logic Apps を Azure Service Bus 名前空間の間の仲介役として機能させることで、基幹業務アプリケーションに直接統合された複雑なグローバル トポロジを作成できます。
 
-## <a name="next-steps"></a>次の手順
 
-Service Bus メッセージングの詳細については、次のトピックをご覧ください。
+> [!NOTE]
+> 現在、Azure portal では、サブスクリプションのフィルター規則を指定することはできません。 サポートされている任意の SDK または Azure Resource Manager テンプレートを使用して、サブスクリプションの規則を定義できます。 
 
-* [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
-* [SQLFilter 構文](service-bus-messaging-sql-filter.md)
-* [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+## <a name="next-steps"></a>次のステップ
+次のサンプルを参照してください。 
+
+- [.NET - フィルターを使用した基本的な送信と受信のチュートリアル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
+- [.NET - トピック フィルター](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
+- [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
+
+

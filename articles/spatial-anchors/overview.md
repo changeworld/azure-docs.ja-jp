@@ -1,5 +1,5 @@
 ---
-title: Azure Spatial Anchors の概要 | Microsoft Docs
+title: Azure Spatial Anchors の概要
 description: Azure Spatial Anchors がクロスプラットフォーム対応の複合現実エクスペリエンスの開発にどのように役立つかについて説明します。
 author: craigktreasure
 manager: aliemami
@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60240471"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77657309"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors の概要
 
@@ -34,12 +34,18 @@ Azure Spatial Anchors へようこそ。 Azure Spatial Anchors は、空間を�
 
 Azure Spatial Anchors は、サポート対象のデバイス プラットフォーム用のマネージド サービスとクライアント SDK で構成されています。 以下のセクションで、Azure Spatial Anchors を使用するアプリのビルドの開始に関する情報を提供します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Spatial Anchors を使用して初めてのアプリを作成します。
 
 > [!div class="nextstepaction"]
-> [Unity](unity-overview.yml)
+> [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Unity (iOS)](quickstarts/get-started-unity-ios.md)
+
+> [!div class="nextstepaction"]
+> [Unity (Android)](quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)
@@ -49,3 +55,9 @@ Spatial Anchors を使用して初めてのアプリを作成します。
 
 > [!div class="nextstepaction"]
 > [HoloLens](quickstarts/get-started-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (Android)](quickstarts/get-started-xamarin-android.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (iOS)](quickstarts/get-started-xamarin-ios.md)

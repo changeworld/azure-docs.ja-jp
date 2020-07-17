@@ -1,22 +1,22 @@
 ---
 title: よく寄せられる質問 - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Custom Translator についてよく寄せられる質問とその回答を紹介します。
-author: rajdeep-in
-manager: christw
+description: この記事では、Azure Cognitive Services Custom Translator についてよく寄せられる質問とその回答を示します。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: d3e3d12e572c939fb2ddd5bc671aede434ca7d8a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0413c15c025e554ab8465736dfdb5607149c5ed2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760326"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588685"
 ---
-# <a name="frequently-asked-questions"></a>よく寄せられる質問
+# <a name="custom-translator-frequently-asked-questions"></a>カスタム翻訳ツールに関してよく寄せられる質問
 
 この記事では、[Custom Translator](https://portal.customtranslator.azure.ai) についてよく寄せられる質問とその回答を示します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "57760326"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>デプロイされたシステムにアクセスする方法を教えてください。
 
-デプロイされたシステムには、Microsoft Translator Text API V3 を介して CategoryID を指定することでアクセスできます。 Translator Text API の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイされたシステムには、Microsoft Translator V3 を介して CategoryID を指定することでアクセスできます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>データに文が既にアラインされている場合に、アラインと文の分割をスキップする方法を教えてください。
 

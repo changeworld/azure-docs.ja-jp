@@ -1,19 +1,18 @@
 ---
-title: REST API を使用して IoT Edge 上に Azure Stream Analytics 向けの CI/CD を実装する
+title: REST API を使用して Azure Stream Analytics on IoT Edge の CI/CD を行う
 description: REST API を使用して Azure Stream Analytics のための継続的インテグレーションと継続的なデプロイのパイプラインを実装する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 40beb620e037061b189762a51e3c29d0fd251b27
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268501"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292000"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API を使用して IoT Edge 上に Stream Analytics 向けの CI/CD を実装する
 
@@ -28,11 +27,11 @@ REST API は、Linux と Windows の両方から呼び出すことができま�
 Linux では、`Curl` または `Wget` コマンドを使用できます。
 
 ```bash
-curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” { <url> }   
+curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
 ```
 
 ```bash
-wget -q -O- --{ <method> }-data="<request body>”--header=Content-Type:application/json --auth-no-challenge --http-user="<Admin>" --http-password="<password>" <url>
+wget -q -O- --{ <method> } -data="<request body>" --header=Content-Type:application/json --auth-no-challenge --http-user="<Admin>" --http-password="<password>" <url>
 ```
  
 ### <a name="windows"></a>Windows
@@ -48,7 +47,7 @@ $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Content-Type", 'application/json') 
 $headers.Add("Authorization", $basicAuthValue) 
 $content = "<request body>" 
-$response = Invoke-RestMethod <url>-Method <method> -Body $content -Headers $Headers 
+$response = Invoke-RestMethod <url> -Method <method> -Body $content -Headers $Headers 
 echo $response 
 ```
  
@@ -58,12 +57,12 @@ Stream Analytics ジョブを作成するには、Stream Analytics API を使用
 
 |方法|要求 URL|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview|
+|PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
 **curl** を使用するコマンドの例:
 
 ```curl
-curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
+curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
 ``` 
  
 JSON での要求本文の例:
@@ -145,7 +144,7 @@ IoT Edge で Stream Analytics ジョブを発行するには、Edge Package Publ
 
 |方法|要求 URL|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview|
+|POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
 ジョブが正常に発行されるまで、この非同期操作からは状態 202 が返されます。 場所応答ヘッダーには、プロセスの状態を取得するために使用する URI が含まれます。 プロセスが実行されている間、場所ヘッダーの URI を呼び出すと 202 の状態が返されます。 プロセスが完了すると、場所ヘッダーの URI の呼び出しからは状態 200 が返されます。 
 
@@ -178,7 +177,7 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 { 
   edgePackageUrl : null 
   error : null 
-  manifest : "{"supportedPlatforms":[{"os":"linux","arch":"amd64","features":[]},{"os":"linux","arch":"arm","features":[]},{"os":"windows","arch":"amd64","features":[]}],"schemaVersion":"2","name":"{jobname}","version":"1.0.0.0","type":"docker","settings":{"image":"{imageurl}","createOptions":null},"endpoints":{"inputs":["],"outputs":["{outputnames}"]},"twin":{"contentType":"assignments","content":{"properties.desired":{"ASAJobInfo":"{asajobsasurl}","ASAJobResourceId":"{asajobresourceid}","ASAJobEtag":"{etag}",”PublishTimeStamp”:”{publishtimestamp}”}}}}" 
+  manifest : "{"supportedPlatforms":[{"os":"linux","arch":"amd64","features":[]},{"os":"linux","arch":"arm","features":[]},{"os":"windows","arch":"amd64","features":[]}],"schemaVersion":"2","name":"{jobname}","version":"1.0.0.0","type":"docker","settings":{"image":"{imageurl}","createOptions":null},"endpoints":{"inputs":["\],"outputs":["{outputnames}"]},"twin":{"contentType":"assignments","content":{"properties.desired":{"ASAJobInfo":"{asajobsasurl}","ASAJobResourceId":"{asajobresourceid}","ASAJobEtag":"{etag}","PublishTimeStamp":"{publishtimestamp}"}}}}" 
   status : "Succeeded" 
 } 
 ```
@@ -256,7 +255,7 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 配置マニフェストを構成した後は、デプロイに関する「[Azure CLI を使用して Azure IoT Edge モジュールをデプロイする](../iot-edge/how-to-deploy-modules-cli.md)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
  
 * [Azure Stream Analytics on IoT Edge](stream-analytics-edge.md)
 * [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

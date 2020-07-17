@@ -1,25 +1,26 @@
 ---
 title: サービス プリンシパルを使用して Azure Analysis Services タスクを自動化する | Microsoft Docs
-description: Azure Analysis Services タスクを自動化するためのサービス プリンシパルを作成する方法について説明します。
+description: Azure Analysis Services 管理タスクを自動化するためのサービス プリンシパルを作成する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231675"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
 サービス プリンシパルは、リソース/サービス レベルの無人操作を実行する目的でテナント内で作成する Azure Active Directory アプリケーション リソースです。 アプリケーション ID とパスワードまたは証明書が与えられた、独自の*ユーザー ID* です。 サービス プリンシパルには、割り当てられたロールとアクセス許可によって定義されるタスクを実行するために必要な権限のみが与えられます。 
 
 Analysis Services では、サービス プリンシパルは Azure Automation、PowerShell 無人モード、カスタム クライアント アプリケーション、Web アプリと共に使用し、共通タスクを自動化します。 たとえば、サーバーのプロビジョニング、モデルのデプロイ、データ更新、拡大縮小、一時停止/再開をすべて、サービス プリンシパルを利用することで自動化できます。 権限は、通常の Azure AD UPN アカウントとほぼ同じように、ロール メンバーシップを介してサービス プリンシパルに割り当てられます。
+
+Analysis Services では、サービス プリンシパルを使用してマネージド ID によって実行される操作もサポートされます。 詳細については、[Azure リソースのマネージド ID に関するページ](../active-directory/managed-identities-azure-resources/overview.md) と [Azure AD 認証をサポートする Azure サービスに関するページ](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)を参照してください。  
 
 ## <a name="create-service-principals"></a>サービス プリンシパルの作成
  
@@ -47,13 +48,37 @@ Analysis Services サーバー管理操作のためにサービス プリンシ�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Az.AnalysisServices](/powershell/module/az.analysisservices) モジュールによるリソース管理操作でサービス プリンシパルを使用するときは、`Connect-AzAccount` コマンドレットを使用します。 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) モジュールによるサーバー操作のためにサービス プリンシパルを使用するとき、`Add-AzAnalysisServicesAccount` コマンドレットを使用します。 
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Az.AnalysisServices モジュールの使用
+
+[Az.AnalysisServices](/powershell/module/az.analysisservices) モジュールによるリソース管理操作でサービス プリンシパルを使用するときは、`Connect-AzAccount` コマンドレットを使用します。 
+
+次の例では、appID とパスワードを使用してコントロール プレーンの操作を実行し、読み取り専用レプリカおよびスケールアップ/アウトに対する同期を行っています。
+
+```powershell
+Param (
+        [Parameter(Mandatory=$true)] [String] $AppId,
+        [Parameter(Mandatory=$true)] [String] $PlainPWord,
+        [Parameter(Mandatory=$true)] [String] $TenantId
+       )
+$PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
+$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
+
+# Connect using Az module
+Connect-AzAccount -Credential $Credential -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
+
+# Syncronize a database for query scale out
+Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/testsvr" -Database "testdb"
+
+# Scale up the server to an S1, set 2 read-only replicas, and remove the primary from the query pool. The new replicas will hydrate from the synchronized data.
+Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
+```
+
+#### <a name="using-sqlserver-module"></a>SQLServer モジュールの使用
 
 次の例では、appID とパスワードを使用し、モデル データベース更新操作を実行します。
 
 ```powershell
 Param (
-
         [Parameter(Mandatory=$true)] [String] $AppId,
         [Parameter(Mandatory=$true)] [String] $PlainPWord,
         [Parameter(Mandatory=$true)] [String] $TenantId
@@ -71,7 +96,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 次の例では、`appID` と `password` を使用し、モデル データベース更新操作を実行します。
 
-```C#
+```csharp
 string appId = "xxx";
 string authKey = "yyy";
 string connString = $"Provider=MSOLAP;Data Source=asazure://westus.asazure.windows.net/<servername>;User ID=app:{appId};Password={authKey};";
@@ -83,6 +108,6 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)   

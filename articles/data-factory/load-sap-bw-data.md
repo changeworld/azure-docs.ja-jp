@@ -1,24 +1,25 @@
 ---
-title: Azure Data Factory を使用した SAP Business Warehouse からのデータ読み込み | Microsoft Docs
+title: SAP Business Warehouse からデータを読み込む
 description: Azure Data Factory を使用して SAP Business Warehouse (BW) からデータをコピーする
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152412"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81415834"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory を使用して SAP Business Warehouse (BW) からオープン ハブ経由で Azure Data Lake Storage Gen2 にデータをコピーする方法を示します。 同様のプロセスを使用して、他の[サポートされるシンク データ ストア](copy-activity-overview.md#supported-data-stores-and-formats)にデータをコピーできます。
 
@@ -29,7 +30,7 @@ ms.locfileid: "66152412"
 
 - **Azure Data Factory**: ない場合は、手順に従って[データ ファクトリを作成](quickstart-create-data-factory-portal.md#create-a-data-factory)します。
 
-- **宛先の種類が "データベース テーブル"である SAP BW オープン ハブ宛先 (OHD)**: OHD を作成するには、または自分の OHD が Data Factory 統合用に正しく構成されていることを確認するには、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」セクションをご覧ください。
+- **宛先の種類が "データベース テーブル"である SAP BW オープン ハブ宛先 (OHD)** : OHD を作成するには、または自分の OHD が Data Factory 統合用に正しく構成されていることを確認するには、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」セクションをご覧ください。
 
 - **SAP BW ユーザーには次のアクセス許可が必要です**
 
@@ -40,7 +41,7 @@ ms.locfileid: "66152412"
 
   1. セルフホステッド統合ランタイム バージョン 3.13 以降をインストールして登録します。 (このプロセスについては、この記事の後半で説明します。)
 
-  2. [Microsoft .NET 3.0 用の 64 ビット SAP Connector](https://support.sap.com/en/product/connectors/msnet.html) をSAP の Web サイトからダウンロードし、それをセルフホステッド IR と同じコンピューターにインストールします。 次の図に示すように、インストールの間の **[Optional setup steps]\(省略可能なセットアップ手順\)** ダイアログ ボックスでは、**[Install Assemblies to GAC]\(アセンブリを GAC にインストールする\)** を必ず選択します。
+  2. [Microsoft .NET 3.0 用の 64 ビット SAP Connector](https://support.sap.com/en/product/connectors/msnet.html) をSAP の Web サイトからダウンロードし、それをセルフホステッド IR と同じコンピューターにインストールします。 次の図に示すように、インストールの間の **[Optional setup steps]\(省略可能なセットアップ手順\)** ダイアログ ボックスでは、 **[Install Assemblies to GAC]\(アセンブリを GAC にインストールする\)** を必ず選択します。
 
      ![SAP .NET Connector の設定ダイアログ ボックス](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -48,11 +49,11 @@ ms.locfileid: "66152412"
 
 Azure portal でデータ ファクトリに移動します。 **[作成と監視]** を選択して、別のタブで Data Factory の UI を開きます。
 
-1. **[Let's get started]\(始めましょう\)** ページで、**[データ コピー]** を選択してデータ コピー ツールを開きます。
+1. **[Let's get started]\(始めましょう\)** ページで、 **[データ コピー]** を選択してデータ コピー ツールを開きます。
 
-2. **[プロパティ]** ページで、**[タスク名]** を指定し、**[次へ]** を選択します。
+2. **[プロパティ]** ページで、 **[タスク名]** を指定し、 **[次へ]** を選択します。
 
-3. **[ソース データ ストア]** ページで、**[+ 新しい接続の作成]** を選択します。 コネクタ ギャラリーから **[SAP BW Open Hub]\(SAP BW オープン ハブ\)** を選択し、**[続行]** を選択します。 コネクタをフィルター処理するには、検索ボックスに「**SAP**」と入力します。
+3. **[ソース データ ストア]** ページで、 **[+ 新しい接続の作成]** を選択します。 コネクタ ギャラリーから **[SAP BW Open Hub]\(SAP BW オープン ハブ\)** を選択し、 **[続行]** を選択します。 コネクタをフィルター処理するには、検索ボックスに「**SAP**」と入力します。
 
 4. **[Specify SAP BW Open Hub connection]\(SAP BW オープン ハブ接続の指定\)** ページで、以下の手順に従って新しい接続を作成します。
 
@@ -60,48 +61,48 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** の一覧から、既存のセルフホステッド IR を選択します。 または、まだない場合は作成を選択します。
 
-      新しいセルフホステッド IR を作成するには、**[+ 新規]** を選択してから、**[Self-hosted]\(セルフホステッド\)** を選択します。 **[名前]** を入力してから、**[次へ]** を選択します。 **[高速セットアップ]** を選択して現在のコンピューターにインストールするか、提供される**手動セットアップ**の手順に従います。
+      新しいセルフホステッド IR を作成するには、 **[+ 新規]** を選択してから、 **[Self-hosted]\(セルフホステッド\)** を選択します。 **[名前]** を入力してから、 **[次へ]** を選択します。 **[高速セットアップ]** を選択して現在のコンピューターにインストールするか、提供される**手動セットアップ**の手順に従います。
 
       「[前提条件](#prerequisites)」で説明したように、セルフホステッド IR が実行されているのと同じコンピューターに、Microsoft .NET 3.0 用の SAP Connector がインストールされていることを確認します。
 
-   2. SAP BW の **[サーバー名]**、**[システム番号]**、**[クライアント ID]**、**[言語]** (**EN** 以外の場合)、**[ユーザー名]**、および **[パスワード]** を入力します。
+   2. SAP BW の **[サーバー名]** 、 **[システム番号]** 、 **[クライアント ID]** 、 **[言語]** (**EN** 以外の場合)、 **[ユーザー名]** 、および **[パスワード]** を入力します。
 
-   3. **[接続のテスト]** を選択して設定を検証し、**[完了]** を選択します。
+   3. **[接続のテスト]** を選択して設定を検証し、 **[完了]** を選択します。
 
    4. 新しい接続が作成されます。 **[次へ]** を選択します。
 
-5. **[Select Open Hub Destinations]\(オープン ハブ宛先の選択\)** ページで、SAP BW で利用できるオープン ハブ宛先を参照します。 データ コピー元の OHD を選択し、**[次へ]** を選択します。
+5. **[Select Open Hub Destinations]\(オープン ハブ宛先の選択\)** ページで、SAP BW で利用できるオープン ハブ宛先を参照します。 データ コピー元の OHD を選択し、 **[次へ]** を選択します。
 
    ![SAP BW オープン ハブ宛先の選択のテーブル](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
-6. 必要がある場合は、フィルターを指定します。 OHD に、1 つの要求 ID を使用した 1 回のデータ転送プロセス (DTP) 実行からのデータのみが含まれている場合、または DTP が確実に完了していてそのデータをコピーする場合は、**[Exclude Last Request]\(最後の要求を除外する\)** チェック ボックスをオフにします。
+6. 必要がある場合は、フィルターを指定します。 OHD に、1 つの要求 ID を使用した 1 回のデータ転送プロセス (DTP) 実行からのデータのみが含まれている場合、または DTP が確実に完了していてそのデータをコピーする場合は、 **[Exclude Last Request]\(最後の要求を除外する\)** チェック ボックスをオフにします。
 
-   これらの設定について詳しくは、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」をご覧ください。 **[検証]** を選択して、返されるデータを再確認します。 次に、**[次へ]** を選択します。
+   これらの設定について詳しくは、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」をご覧ください。 **[検証]** を選択して、返されるデータを再確認します。 **[次へ]** を選択します。
 
    ![SAP BW オープン ハブ フィルターの構成](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. **[Destination data store]\(コピー先データ ストア\)** ページで **[+ 新しい接続の作成]** > **[Azure Data Lake Storage Gen2]** > **[続行]** の順に選択します。
+7. **[Destination data store]\(コピー先データ ストア\)** ページで **[+ 新しい接続の作成]**  >  **[Azure Data Lake Storage Gen2]**  >  **[続行]** の順に選択します。
 
 8. **[Specify Azure Data Lake Storage connection]\(Azure Data Lake Storage 接続の指定\)** ページで、以下の手順に従って接続を作成します。
 
    ![ADLS Gen2 のリンクされたサービス ページを作成する](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. **[名前]** ドロップダウン リストから、Data Lake Storage Gen2 対応のアカウントを選択します。
-   2. **[完了]** を選択して、接続を作成します。 次に、**[次へ]** を選択します。
+   2. **[完了]** を選択して、接続を作成します。 **[次へ]** を選択します。
 
-9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromopenhub**」と入力します。 次に、**[次へ]** を選択します。
+9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromopenhub**」と入力します。 **[次へ]** を選択します。
 
    ![出力フォルダーの選択ページ](media/load-sap-bw-data/choose-output-folder.png)
 
-10. **[File format setting]\(ファイル形式設定\)** ページで、**[次へ]** を選択して、既定の設定を使用します。
+10. **[File format setting]\(ファイル形式設定\)** ページで、 **[次へ]** を選択して、既定の設定を使用します。
 
     ![シンク形式の指定ページ](media/load-sap-bw-data/specify-sink-format.png)
 
-11. **[Settings]\(設定\)** ページで、**[Performance settings]\(パフォーマンスの設定\)** を展開します。 **[Degree of copy parallelism]\(コピーの並列度\)** に値を入力し (5 など)、SAP BW から並列で読み込みます。 次に、**[次へ]** を選択します。
+11. **[Settings]\(設定\)** ページで、 **[Performance settings]\(パフォーマンスの設定\)** を展開します。 **[Degree of copy parallelism]\(コピーの並列度\)** に値を入力し (5 など)、SAP BW から並列で読み込みます。 **[次へ]** を選択します。
 
     ![コピー設定の構成](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **[Summary]\(概要\)** ページで設定を確認します。 次に、**[次へ]** を選択します。
+12. **[Summary]\(概要\)** ページで設定を確認します。 **[次へ]** を選択します。
 
 13. **[Deployment]\(デプロイ\)** ページで **[Monitor]\(監視\)** を選択してパイプラインを監視します。
 
@@ -111,21 +112,21 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
     ![パイプラインの監視ビュー](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[Actions]\(アクション\)** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** を選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 パイプラインの実行ビューに戻るには、上部の **[Pipelines]\(パイプライン\)** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
+15. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[Actions]\(アクション\)** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** を選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 パイプラインの実行ビューに戻るには、上部の **[Pipelines]\(パイプライン\)** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
     ![アクティビティ監視画面](media/load-sap-bw-data/activity-monitoring.png)
 
-16. 各コピー アクティビティの実行状況の詳細を監視するには、**[Details]\(詳細\)** リンク (アクティビティ監視ビューの **[Actions]\(アクション\)** の下にある眼鏡アイコン) を選択します。 使用可能な詳細には、ソースからシンクにコピーされたデータ量、データのスループット、実行ステップと期間、使用された構成が含まれます。
+16. 各コピー アクティビティの実行状況の詳細を監視するには、 **[Details]\(詳細\)** リンク (アクティビティ監視ビューの **[Actions]\(アクション\)** の下にある眼鏡アイコン) を選択します。 使用可能な詳細には、ソースからシンクにコピーされたデータ量、データのスループット、実行ステップと期間、使用された構成が含まれます。
 
     ![アクティビティの監視の詳細](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. **最大要求 ID** を表示するには、アクティビティ監視ビューに戻り、**[Actions]\(アクション\)** の **[Output]\(出力\)** を選択します。
+17. **最大要求 ID** を表示するには、アクティビティ監視ビューに戻り、 **[Actions]\(アクション\)** の **[Output]\(出力\)** を選択します。
 
     ![アクティビティ出力画面](media/load-sap-bw-data/activity-output.png)
 
     ![アクティビティ出力詳細ビュー](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>SAP BW オープン ハブからの増分コピーを行う
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>SAP BW オープン ハブからの増分コピー
 
 > [!TIP]
 > Data Factory の SAP BW オープン ハブ コネクタによる SAP BW からのデータの増分コピー方法については、[SAP BW オープン ハブ コネクタのデルタ抽出フロー](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow)に関する記事をご覧ください。 この記事は、基本的なコネクタ構成の理解にも役立ちます。
@@ -136,7 +137,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
 ![増分コピーのワークフローのフロー チャート](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-データ ファクトリの **[Let's get started]\(始めましょう\)** ページで、**[Create pipeline from template]\(テンプレートからパイプラインを作成\)** を選択して組み込みテンプレートを使用します。
+データ ファクトリの **[Let's get started]\(始めましょう\)** ページで、 **[Create pipeline from template]\(テンプレートからパイプラインを作成\)** を選択して組み込みテンプレートを使用します。
 
 1. **SAP BW** を検索して、**Incremental copy from SAP BW to Azure Data Lake Storage Gen2 (SAP BW から Azure Data Lake Storage Gen2 への増分コピー)** テンプレートを選択します。 このテンプレートでは、データが Azure Data Lake Storage Gen2 にコピーされます。 他のシンクの種類のコピーにも、同様のワークフローを使用できます。
 
@@ -156,17 +157,21 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
    - **SAPOpenHubDestinationName**: データのコピー元のオープン ハブ テーブル名を指定します。
 
-   - **ADLSGen2SinkPath**: データのコピー先の Azure Data Lake Storage Gen2 パスを指定します。 パスが存在しない場合、Data Factory のコピー アクティビティによって実行中にパスが作成されます。
+   - **Data_Destination_Container**:データのコピー先の Azure Data Lake Storage Gen2 コンテナーを指定します。 コンテナーが存在しない場合、Data Factory のコピー アクティビティによって実行中に作成されます。
+  
+   - **Data_Destination_Directory**:データのコピー先の Azure Data Lake Storage Gen2 コンテナーの下のフォルダー パスを指定します。 パスが存在しない場合、Data Factory のコピー アクティビティによって実行中にパスが作成されます。
+  
+   - **HighWatermarkBlobContainer**:高基準値を格納するコンテナーを指定します。
 
-   - **HighWatermarkBlobPath**: `container/path` など、高基準値を格納するパスを指定します。
+   - **HighWatermarkBlobDirectory**:高基準値を格納するコンテナーの下のフォルダー パスを指定します。
 
-   - **HighWatermarkBlobName**: `requestIdCache.txt` など、高基準値を格納する BLOB 名を指定します。 BLOB ストレージで、HighWatermarkBlobPath+HighWatermarkBlobName の対応するパスに移動します (例: *container/path/requestIdCache.txt*)。 コンテンツ 0 の BLOB を作成します。
+   - **HighWatermarkBlobName**: `requestIdCache.txt` など、高基準値を格納する BLOB 名を指定します。 BLOB ストレージで、HighWatermarkBlobContainer+HighWatermarkBlobDirectory+HighWatermarkBlobName の対応するパスに移動します (例: *container/path/requestIdCache.txt*)。 コンテンツ 0 の BLOB を作成します。
 
       ![BLOB コンテンツ](media/load-sap-bw-data/blob.png)
 
    - **LogicAppURL**: このテンプレートで、Azure Logic Apps を呼び出す WebActivity を使用して、BLOB ストレージに高基準値を設定します。 または、Azure SQL Database を使用してそれを格納できます。 ストアド プロシージャ アクティビティを使用して、値を更新します。
 
-      次の図で示すように、最初にロジック アプリを作成する必要があります。 次に、**[HTTP POST の URL]** に貼り付けます。
+      次の図で示すように、最初にロジック アプリを作成する必要があります。 次に、 **[HTTP POST の URL]** に貼り付けます。
 
       ![ロジック アプリの構成](media/load-sap-bw-data/logic-app-config.png)
 
@@ -185,11 +190,11 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
          }
          ```
 
-      3. **[BLOB の作成]** アクションを追加します。 **[フォルダー パス]** と **[BLOB 名]** には、前に **HighWatermarkBlobPath** および **HighWatermarkBlobName** で構成したものと同じ値を使用します。
+      3. **[BLOB の作成]** アクションを追加します。 **[フォルダー パス]** と **[BLOB 名]** には、前に *HighWatermarkBlobContainer+HighWatermarkBlobDirectory* および *HighWatermarkBlobName* で構成したものと同じ値を使用します。
 
-      4. **[保存]** を選択します。 その後、**[HTTP POST の URL]** の値をコピーして、Data Factory パイプラインで使用します。
+      4. **[保存]** を選択します。 その後、 **[HTTP POST の URL]** の値をコピーして、Data Factory パイプラインで使用します。
 
-4. Data Factory パイプライン パラメーターを指定した後、**[デバッグ]** > **[完了]** を選択し、実行を起動して構成を検証します。 または、**[すべて公開]** を選択して変更を公開し、**[トリガー]** を選択して実行します。
+4. Data Factory パイプライン パラメーターを指定した後、 **[デバッグ]**  >  **[完了]** を選択し、実行を起動して構成を検証します。 または、 **[公開]** を選択してすべての変更を公開し、 **[トリガーの追加]** を選択して実行します。
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW オープン ハブ宛先の構成
 
@@ -201,9 +206,9 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
 1. オープン ハブ宛先を作成します。 SAP トランザクション RSA1 に OHD を作成できます。これにより、必要な変換とデータ転送プロセスが自動的に作成されます。 次の設定を使用します。
 
-   - **[ObjectType]\(オブジェクトの種類\)**: 任意のオブジェクト型を使用できます。 ここでは、**InfoCube** を例として使用します。
-   - **[送信先の種類]**:**[Database Table]\(データベース テーブル\)** を選択します。
-   - **[Key of the Table]\(テーブルのキー\)**: **[Technical Key]\(テクニカル キー\)** を選択します。
+   - **[ObjectType]\(オブジェクトの種類\)** : 任意のオブジェクト型を使用できます。 ここでは、**InfoCube** を例として使用します。
+   - **[送信先の種類]** : **[Database Table]\(データベース テーブル\)** を選択します。
+   - **[Key of the Table]\(テーブルのキー\)** : **[Technical Key]\(テクニカル キー\)** を選択します。
    - **抽出**: **[Keep Data and Insert Records into Table]\(データを保持し、テーブルにレコードを挿入する\)** を選択します。
 
    ![SAP BW OHD 差分抽出の作成ダイアログ ボックス](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
@@ -266,7 +271,7 @@ SAP オープン ハブ宛先は、(2015 年以降のすべて SAP BW サポー�
 
     *No Data Transfer; Delta Status in Source: Fetched*
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SAP BW オープン ハブ コネクタのサポートについて学習します。
 

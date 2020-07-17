@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB における Azure Table Storage サポート
-description: Azure Cosmos DB Table API と Azure Storage Tables を連携させる方法について説明します。
+description: 同じテーブル データ モデルと操作を共有して Azure Cosmos DB Table API と Azure Storage Tables を連携させる方法について説明します
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/15/2017
-author: wmengmsft
-ms.author: wmeng
+ms.date: 12/02/2019
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: c7c9caad6c454b90a6d50932450922a03bbc1944
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 65cc378ab5b6fd7d2ed724f56a68bdf989ced48c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604160"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611723"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Azure Cosmos DB Table API と Azure Table Storage を使用した開発
 
-Azure Cosmos DB Table API と Azure Table Storage は同じテーブル データ モデルを共有しており、SDK を介して同じ create、delete、update、およびクエリ操作が公開されています。 
+Azure Cosmos DB Table API と Azure Table Storage は同じテーブル データ モデルを共有しており、SDK を介して同じ create、delete、update、およびクエリ操作が公開されています。
 
 [!INCLUDE [storage-table-cosmos-comparison](../../includes/storage-table-cosmos-comparison.md)]
 
@@ -34,16 +34,16 @@ Azure Cosmos DB Table API と Azure Table Storage は同じテーブル デー�
 * [Node.js SDK](table-sdk-nodejs.md): この Azure Storage SDK には、Table API を使用して Azure Cosmos DB アカウントに接続する機能があります。
 
 
-Table API の使用に関するその他の情報は、[Table API を使用した開発に関する FAQ](faq.md#table) の記事で入手できます。
+Table API の使用に関するその他の情報は、[Table API を使用した開発に関する FAQ](table-api-faq.md) の記事で入手できます。
 
 ## <a name="developing-with-azure-table-storage"></a>Azure Table Storage を使用した開発
 
 Azure Table Storage では以下の SDK を開発に使用できます。
 
 - [WindowsAzure.Storage .NET SDK](https://www.nuget.org/packages/WindowsAzure.Storage/)。 このライブラリでは、Storage Table service を使うことができます。
-- [Python SDK](table-sdk-python.md)。 Azure Cosmos DB Table SDK for Python も Storage Table service をサポートしています。
+- [Python SDK](https://github.com/Azure/azure-cosmos-table-python)。 Azure Cosmos DB Table SDK for Python では、Table Storage サービスがサポートされています (Azure Table Storage と Cosmos DB の Table API は同じ機能を共有しているため、また、SDK の開発作業を調整するために、この SDK を使用することをお勧めします)。
 - [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)。 この Azure Storage SDK は、Azure Table Storage を使用するためのクライアント ライブラリを Java で提供します。
-- [Node.js SDK](table-sdk-nodejs.md)。 この SDK は、Storage Table service を使用するための Node.js パッケージとブラウザー互換の JavaScript クライアント ライブラリを提供します。
+- [Node.js SDK](https://github.com/Azure/azure-storage-node)。 この SDK は、Storage Table service を使用するための Node.js パッケージとブラウザー互換の JavaScript クライアント ライブラリを提供します。
 - [AzureRmStorageTable PowerShell モジュール](https://www.powershellgallery.com/packages/AzureRmStorageTable)。 この PowerShell モジュールには、ストレージ テーブルを使用するためのコマンドレットがあります。
 - [C++ 用 Azure Storage クライアント ライブラリリ](https://github.com/Azure/azure-storage-cpp/)。 このライブラリでは、Azure Storage 用のアプリケーションを作成できます。
 - [Ruby 用 Azure Storage Table クライアント ライブラリ](https://github.com/azure/azure-storage-ruby/tree/master/table)。 このプロジェクトは、Azure Table Storage service に間単にアクセスできる Ruby パッケージを提供します。

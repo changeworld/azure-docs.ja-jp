@@ -6,21 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.localizationpriority: high
+ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407631"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873934"
 ---
+::: zone target="docs"
+
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk のシステム要件
 
 この記事では、Microsoft Azure Data Box Disk ソリューション、および Data Box Disk に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報は、Data Box Disk をデプロイする前によく確認し、デプロイ時やそれ以降の操作時にも、必要に応じて繰り返し参照することをお勧めします。
 
 システム要件には、ディスクに接続するクライアントでサポートされるプラットフォーム、サポートされるストレージ アカウント、およびストレージの種類が含まれます。
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="review-prerequisites"></a>前提条件を確認する
+
+1. 次を使用して Data Box Disk を注文済みであること。「[チュートリアル: Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」 ディスクと、ディスクごとに 1 つの接続ケーブルを受けとっていること。
+2. データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
+
+    - サポート対象のオペレーティング システムが実行されていること。
+    - その他の必須ソフトウェアがインストールされていること。
+
+::: zone-end
 
 ## <a name="supported-operating-systems-for-clients"></a>クライアントでサポートされるオペレーティング システム
 
@@ -29,18 +45,18 @@ Data Box Disk に接続するクライアント経由でディスクのロック
 | **オペレーティング システム** | **テスト済みのバージョン** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-| Windows |7、8、10 |
+| Windows (64 ビット) |7、8、10 |
 |Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04、16.04、18.04 <br> 8.11、9 <br> 7.0 <br> 6.5、6.9、7.0、7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Windows クライアントに必要なその他のソフトウェア
 
 Windows クライアントでは、次のものもインストールする必要があります。
 
-| **ソフトウェア**| **バージョン** |
+| **ソフトウェア**| **Version** |
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework |5.0|
+| Windows Management Framework |5.1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Linux クライアントに必要なその他のソフトウェア
@@ -61,12 +77,8 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 | **ストレージ アカウント** | **メモ** |
 | --- | --- |
 | クラシック | Standard |
-| 汎用  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
+| General Purpose  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
 | BLOB ストレージ アカウント | |
-
->[!NOTE]
-> Azure Data Lake Storage Gen 2 アカウントはサポートされていません。
-
 
 ## <a name="supported-storage-types-for-upload"></a>アップロード用にサポートされているストレージの種類
 
@@ -79,8 +91,11 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 | Azure Files  | |
 | Managed Disks | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>次のステップ
 
 * [Azure Data Box Disk をデプロイする](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

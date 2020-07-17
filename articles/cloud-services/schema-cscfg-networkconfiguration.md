@@ -1,24 +1,20 @@
 ---
 title: Azure Cloud Services NetworkConfiguration スキーマ | Microsoft Docs
+description: Virtual Network と DNS の値を指定する、サービス構成ファイルの NetworkConfiguration 要素の子要素について説明します。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
 caps.latest.revision: 28
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: ed071d1da30a598eef830b4485c246ffae09c950
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004116"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529290"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services Config NetworkConfiguration スキーマ
 
@@ -49,7 +45,7 @@ ms.locfileid: "39004116"
         <DnsServer name="<server-name>" IPAddress="<server-address>" />
       </DnsServers>
     </Dns>
-    <VirtualNetworkSite name="<site-name>"/>
+    <VirtualNetworkSite name="Group <RG-VNet> <VNet-name>"/>
     <AddressAssignments>
       <InstanceAddress roleName="<role-name>">
         <Subnets>
@@ -74,8 +70,8 @@ ms.locfileid: "39004116"
 | DnsServer | 省略可能。 DNS サーバーの設定を指定します。 仮想ネットワークを使用しない DNS サーバーの設定を指定できます。 DNS サーバーの名前は、`name` 属性の文字列で定義されます。 DNS サーバーの IP アドレスは、`IPAddress` 属性の文字列で定義されます。 IP アドレスは、有効な IPv4 アドレスである必要があります。|
 | VirtualNetworkSite | 省略可能。 クラウド サービスをデプロイする仮想ネットワーク サイトの名前を指定します。 この設定では、仮想ネットワーク サイトは作成されません。 お使いの仮想ネットワークのネットワーク ファイルに既に定義されているサイトを参照します。 クラウド サービスは 1 つの仮想ネットワークの 1 メンバーにのみなることができます。 この設定を指定しないと、クラウド サービスは仮想ネットワークにデプロイされません。 仮想ネットワークの名前は、`name` 属性の文字列で定義されます。|
 | InstanceAddress | 省略可能。 仮想ネットワーク内の 1 つのサブネットまたはサブネットのセットへのロールの関連付けを指定します。 ロール名をインスタンス アドレスに関連付ける場合、このロールに関連付けたいサブネットを指定できます。 `InstanceAddress` はサブネット要素を含んでいます。 この 1 つまたは複数のサブネットに関連付けられているロールの名前は、`roleName` 属性の文字列で定義されます。|
-| サブネット | 省略可能。 ネットワーク構成ファイル内のサブネット名に対応するサブネットを指定します。 サブネットの名前は、`name` 属性の文字列で定義されます。|
+| Subnet | 省略可能。 ネットワーク構成ファイル内のサブネット名に対応するサブネットを指定します。 サブネットの名前は、`name` 属性の文字列で定義されます。|
 | ReservedIP | 省略可能。 デプロイに関連付けられる予約済み IP アドレスを指定します。 予約済み IP アドレスの作成には、Create Reserved IP Address を使用する必要があります。 クラウド サービスの各々のデプロイは、1 つの予約済み IP アドレスに関連付けることができます。 予約済み IP アドレスの名前は、`name` 属性の文字列で定義されます。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Cloud Service (クラシック) 構成スキーマ](schema-cscfg-file.md)

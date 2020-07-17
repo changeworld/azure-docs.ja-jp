@@ -1,23 +1,17 @@
 ---
-title: PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する | Microsoft Docs
-description: Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成および使用します
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: PowerShell - Data Lake Storage Gen1 を使用する HDInsight クラスター - Azure
+description: Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を使用する Azure HDInsight クラスターを作成および使用します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b4e5fad65d2ad358bca6b5a2b87d4aa36b77e73
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161413"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692065"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する
 
@@ -45,7 +39,7 @@ PowerShell を使用して Data Lake Storage Gen1 を操作できるように HD
 
 * **Azure サブスクリプション**:[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 * **Azure PowerShell 1.0 以上**:[PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページをご覧ください。
-* **Windows ソフトウェア開発キット (SDK)**:Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/downloads)」をご覧ください。 SDK は、セキュリティ証明書の作成に使用します。
+* **Windows ソフトウェア開発キット (SDK)** :Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/downloads)」をご覧ください。 SDK は、セキュリティ証明書の作成に使用します。
 * **Azure Active Directory サービス プリンシパル**:このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
     >[!NOTE]
@@ -215,7 +209,7 @@ Azure Data Lake Storage Gen1 の Active Directory 認証を設定するには、
     コマンドレットが正常に完了すると、クラスターの詳細を一覧表示する出力が表示されます。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターでテスト ジョブを実行する
-HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、クラスターが Data Lake Storage Gen1 に確実にアクセスできるかどうかをテストできます。 これを行うには、Data Lake Storage Gen1 (*\<クラスターのルート>/example/data/sample.log*) に既にあるサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
+HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、クラスターが Data Lake Storage Gen1 に確実にアクセスできるかどうかをテストできます。 これを行うには、Data Lake Storage Gen1 ( *\<クラスターのルート>/example/data/sample.log*) に既にあるサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
 このセクションでは、作成した HDInsight Linux クラスターに Secure Shell (SSH) 接続し、サンプルの Hive クエリを実行します。
 

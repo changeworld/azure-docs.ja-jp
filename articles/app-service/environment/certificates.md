@@ -1,25 +1,18 @@
 ---
-title: 証明書と App Service Environment - Azure
-description: ASE における証明書に関連するさまざまなトピックについて説明します
-services: app-service
-documentationcenter: na
+title: 証明書のバインド
+description: App Service 環境の証明書に関連するさまざまなトピックについて説明します。 ASE の単一テナントアプリで証明書バインドがどのように機能するかについて説明します。
 author: ccompy
-manager: stefsch
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271897"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82128704"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
 
@@ -29,7 +22,7 @@ ASE は、シングル テナント システムです。 シングル テナン
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 証明書 
 
-外部 ASE を使用している場合、アプリには [appname].[asename].p.azurewebsites.net で到達します。 既定では、ILB ASE を含め、すべての ASE が、その形式に従った証明書で作成されます。 ILB ASE がある場合、アプリには ILB ASE の作成時に指定したドメイン名に基づいて到達します。 アプリが SSL をサポートするためには、証明書をアップロードする必要があります。 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な SSL 証明書を取得します。 
+外部 ASE を使用している場合、アプリには [appname].[asename].p.azurewebsites.net で到達します。 既定では、ILB ASE を含め、すべての ASE が、その形式に従った証明書で作成されます。 ILB ASE がある場合、アプリには ILB ASE の作成時に指定したドメイン名に基づいて到達します。 アプリが TLS をサポートするためには、証明書をアップロードする必要があります。 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な TLS/SSL 証明書を取得します。 
 
 ILB ASE で証明書を構成するには、次の 2 つのオプションがあります。  ILB ASE に既定のワイルドカード証明書を設定するか、ASE 内の個別の Web アプリに証明書を設定します。  どちらを選択した場合でも、次の証明書属性を適切に構成する必要があります。
 
@@ -55,7 +48,7 @@ ASE の作成と証明書のアップロードは、ポータルで 1 つのア�
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-
+自己署名証明書を作成するときは、サブジェクト名を CN={ASE_NAME_HERE}_InternalLoadBalancingASE の形式にする必要があります。
 
 ## <a name="application-certificates"></a>アプリケーション証明書 
 
@@ -65,7 +58,7 @@ ASE でホストされているアプリは、マルチテナント App Service 
 - IP ベースの SSL。外部 ASE でのみサポートされます。  ILB ASE は、IP ベースの SSL をサポートしていません。
 - KeyVault がホストされている証明書 
 
-これらの証明書のアップロードおよび管理の手順は、App Service SSL チュートリアル (https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) にあります。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
+これらの証明書をアップロードおよび管理する手順については、「[Azure App Service で TLS/SSL 証明書を追加する](../configure-ssl-certificate.md)」を参照してください。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
 
 ## <a name="tls-settings"></a>TLS の設定 
 
@@ -85,11 +78,13 @@ ASE 内のアプリに証明書をアップロードするには、次の手順�
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-証明書は、その設定を構成したアプリと同じ App Service プラン内のすべてのアプリで使用できます。 別の App Service プラン内のアプリに対してもその証明書を使用できるようにする必要がある場合は、その App Service プランでアプリ設定操作を繰り返す必要があります。 証明書が設定されていることを確認するには、Kudu コンソールに移動し、PowerShell デバッグ コンソールでコマンド dir \localmachine\root を発行します。 
+証明書は、その設定を構成したアプリと同じ App Service プラン内のすべてのアプリで使用できます。 別の App Service プラン内のアプリに対してもその証明書を使用できるようにする必要がある場合は、その App Service プランでアプリ設定操作を繰り返す必要があります。 証明書が設定されていることを確認するには、Kudu コンソールに移動し、PowerShell デバッグ コンソールで次のコマンドを発行します。
+
+    dir cert:\localmachine\root
 
 テストを実行するには、自己署名証明書を作成し、次の PowerShell を使用して *.cer* ファイルを生成します。 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
     $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText

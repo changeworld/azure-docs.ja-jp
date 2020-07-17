@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 40f5002e361653614c966dc43301afa83eb7b200
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768162"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050804"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -26,6 +26,9 @@ ms.locfileid: "65768162"
 招待側の組織のニーズに応じて、Azure AD B2B コラボレーション ユーザーは、以下のいずれかのアカウント状態になります。
 
 - 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、または "バイラル テナント" とも呼ばれます。
+
+   > [!IMPORTANT]
+   > **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 - 状態 2:Microsoft アカウントまたは他のアカウントに所属し、ホスト組織のゲスト ユーザーとして表されます。 この場合、ゲスト ユーザーは Microsoft アカウントまたはソーシャル アカウント (google.com など) でサインインします。 招待されたユーザーの ID は、招待に応じる際に招待側組織のディレクトリ内に Microsoft アカウントとして作成されます。
 
@@ -46,17 +49,17 @@ ms.locfileid: "65768162"
 
 ### <a name="after-invitation-redemption"></a>招待に応じた後
 
-ゲスト ユーザーが招待を受け入れると、**[ソース]** プロパティはゲスト ユーザーの ID プロバイダーに基づいて更新されます。
+ゲスト ユーザーが招待を受け入れると、 **[ソース]** プロパティはゲスト ユーザーの ID プロバイダーに基づいて更新されます。
 
-状態 1 のゲスト ユーザーの場合、**[ソース]** は **[外部の Azure Active Directory]** です。
+状態 1 のゲスト ユーザーの場合、 **[ソース]** は **[外部の Azure Active Directory]** です。
 
 ![オファーに応じた後の状態 1 のゲスト ユーザー](media/user-properties/after-redemption-state1.png)
 
-状態 2 のゲスト ユーザーの場合、**[ソース]** は **[Microsoft アカウント]** です。
+状態 2 のゲスト ユーザーの場合、 **[ソース]** は **[Microsoft アカウント]** です。
 
 ![オファーに応じた後の状態 2 のゲスト ユーザー](media/user-properties/after-redemption-state2.png)
 
-状態 3 と状態 4 のゲスト ユーザーの場合、次のセクションで説明するように、**[ソース]** プロパティは **[Azure Active Directory]** または **[Windows Server Active Directory]** に設定されます。
+状態 3 と状態 4 のゲスト ユーザーの場合、次のセクションで説明するように、 **[ソース]** プロパティは **[Azure Active Directory]** または **[Windows Server Active Directory]** に設定されます。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B コラボレーション ユーザーの主要なプロパティ
 ### <a name="usertype"></a>UserType
@@ -68,12 +71,12 @@ ms.locfileid: "65768162"
   > [!NOTE]
   > UserType は、ユーザーのサインイン方法、ユーザーのディレクトリ ロールなどとは関係ありません。 このプロパティは、単にユーザーとホスト組織との関係を示しており、組織はこのプロパティに基づくポリシーを強制できます。
 
-### <a name="source"></a>ソース
+### <a name="source"></a>source
 このプロパティは、ユーザーのサインイン方法を示します。
 
 - ユーザーが招待されました:このユーザーは招待されましたが、まだ招待に応じていません。
 
-- 外部 Active Directory:このユーザーは外部組織に所属し、他の組織に属している Azure AD アカウントを使用して認証を行います。 この種類のサインインは、状態 1 に対応しています。
+- 外部の Azure Active Directory:このユーザーは外部組織に所属し、他の組織に属している Azure AD アカウントを使用して認証を行います。 この種類のサインインは、状態 1 に対応しています。
 
 - Microsoft アカウント:このユーザーは Microsoft アカウントに所属し、Microsoft アカウントを使用して認証を行います。 この種類のサインインは、状態 2 に対応しています。
 
@@ -101,9 +104,9 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 ![ユーザー設定の [外部ユーザー] オプションを示すスクリーンショット](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?**」を参照してください。 
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?** 」を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 * [B2B コラボレーション ユーザーのトークン](user-token.md)

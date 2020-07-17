@@ -1,29 +1,24 @@
 ---
-title: Azure AD でサポートされているさまざまなトークンとクレームの種類について | Microsoft Docs
+title: Azure AD トークンと要求の種類
 description: Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド
 documentationcenter: na
 author: rwike77
 services: active-directory
 manager: CelesteDG
-editor: ''
-ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a18d0b5ebc9aef1f8fa03d6351e53e4df6d9931f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: b7ba4abd45fff8548c361f5e5ed44ef45fe32bbe
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602001"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883442"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML のトークン リファレンス
 
@@ -32,7 +27,7 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 ## <a name="claims-in-saml-tokens"></a>SAML トークンの要求
 
 > [!div class="mx-codeBreakAll"]
-> | Name | 同等の JWT 要求 | 説明 | 例 |
+> | 名前 | 同等の JWT 要求 | 説明 | 例 |
 > | --- | --- | --- | ------------|
 > |対象ユーザー | `aud` |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 認証のインスタント | |認証が行われた日時を記録します。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -44,12 +39,12 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 > |IssuedAt | `iat` |トークンが発行された時刻が格納されます。 このクレームは、トークンの鮮度を測定するためによく使用されます。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |発行者 | `iss` |トークンを構築して返す Security Token Service (STS) を識別します。 Azure AD が返すトークンでは、発行者は sts.windows.net です。 発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。 テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |姓 | `family_name` |Azure AD ユーザー オブジェクトで定義されたユーザーの姓や名字を示します。 | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Name | `unique_name` |トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
-> |オブジェクト ID | `oid` |Azure AD 内のオブジェクトの一意の識別子が含まれています。 この値は変更不可で、再割り当ても再利用もできません。 オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
+> |名前 | `unique_name` |トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Object ID | `oid` |Azure AD 内のオブジェクトの一意の識別子が含まれています。 この値は変更不可で、再割り当ても再利用もできません。 オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |ロール | `roles` |グループ メンバーシップを通じて直接的および間接的にサブジェクトに付与されており、ロールベースのアクセス制御を適用するために使用できるすべてのアプリケーション ロールを表します。 アプリケーション ロールは、アプリケーションごとに、アプリケーション マニフェストの `appRoles` プロパティを介して定義されます。 各アプリケーション ロールの `value` プロパティは、ロールの要求内に表示される値です。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |サブジェクト | `sub` |トークンが情報をアサートするプリンシパルを示します (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、安全に承認チェックができます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 <br> `SubjectConfirmation` は要求ではありません。 これは、トークンのサブジェクトの検証方法を示します。 `Bearer` は、トークンを所有していることでサブジェクトが確認されることを示します。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |テナント ID | `tid` |トークンを発行したディレクトリ テナントを識別する、変更不可で、再利用できない識別子です。 この値を使用すると、マルチ テナント アプリケーションのテナント固有のディレクトリ リソースにアクセスできます。 たとえば、この値を使用すると、Graph API への呼び出しでテナントを識別できます。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
-> |トークンの有効期間 | `nbf`、`exp` |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。 | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
+> |トークンの有効期間 | `nbf`, `exp` |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。 | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
 ## <a name="sample-saml-token"></a>サンプル SAML トークン
 
@@ -156,8 +151,9 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
     </t:RequestSecurityTokenResponse>
 
 ## <a name="related-content"></a>関連コンテンツ
-* Azure AD Graph API を使用したトークンの有効期間ポリシーの管理の詳細については、Azure AD Graph の[ポリシー操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)および[ポリシー エンティティ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)を参照してください。
-* PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](active-directory-configurable-token-lifetimes.md) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
-* [カスタムの要求と省略可能な要求](active-directory-optional-claims.md)をアプリケーションのトークンに追加します。
+
+* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[ポリシー リソース](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)に関するページをご覧ください。
+* PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
+* [カスタムの要求と省略可能な要求](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)をアプリケーションのトークンに追加します。
 * [SAML で シングル サインオン (SSO)](single-sign-on-saml-protocol.md) を使用します。
 * [Azure シングル サイン アウト SAML プロトコル](single-sign-out-saml-protocol.md) を使用します

@@ -1,19 +1,14 @@
 ---
-title: 'Azure Backup: PowerShell を使用して DPM ワークロードをバックアップする'
+title: PowerShell を使用して DPM ワークロードをバックアップする
 description: PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明
-services: backup
-author: kasinh
-manager: vvithal
-ms.service: backup
 ms.topic: conceptual
-ms.date: 1/23/2017
-ms.author: adigan
-ms.openlocfilehash: b16963265c971e604f03b51fd63f7fe411bab36e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2017
+ms.openlocfilehash: 73b6d07c9d74ab7f8af5d91e992bb1ae457f964c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127767"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848179"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -106,10 +101,9 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 ## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>DPM サーバーへの Microsoft Azure Backup エージェントのインストール
 
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](https://aka.ms/azurebackup_agent) または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、*C:\Downloads\* などの、簡単にアクセスできる場所に保存します。
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](https://aka.ms/azurebackup_agent) または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、`C:\Downloads\*` などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、 **DPM サーバー**の管理者特権の PowerShell コンソールで、次のコマンドを実行します。
 
@@ -119,13 +113,13 @@ MARSAgentInstaller.exe /q
 
 これにより、エージェントはすべて既定のオプションが指定されてインストールされます。 インストールは、バックグラウンドで数分かかります。 */nu* オプションを指定しない場合、インストールの最後に **[Windows Update]** ウィンドウが開き、更新プログラムが確認されます。
 
-エージェントが、インストールされているプログラムの一覧に表示されます。 インストールされているプログラムの一覧を表示するには、**[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
+エージェントが、インストールされているプログラムの一覧に表示されます。 インストールされているプログラムの一覧を表示するには、 **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
 
 ![インストールされているエージェント](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>インストール オプション
 
-コマンドラインで利用可能なすべてのオプションを表示するには、次のコマンドを使用します。
+コマンド ラインで使用できるすべてのオプションを表示するには、次のコマンドを使用します。
 
 ```powershell
 MARSAgentInstaller.exe /?
@@ -133,7 +127,7 @@ MARSAgentInstaller.exe /?
 
 利用可能なオプションは、次のとおりです。
 
-| オプション | 詳細 | 既定値 |
+| オプション | 詳細 | Default |
 | --- | --- | --- |
 | /q |サイレント インストール |- |
 | /p:"location" |Azure Backup エージェントのインストール フォルダーへのパス |C:\Program Files\Microsoft Azure Recovery Services Agent |
@@ -160,7 +154,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-DPM サーバーで [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを実行し、コンピューターをコンテナーに登録します。
+DPM サーバーで [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration) コマンドレットを実行し、コンピューターをコンテナーに登録します。
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -177,13 +171,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>初期構成の設定
 
-DPM サーバーが Recovery Services コンテナーに登録されると、既定のサブスクリプション設定で起動されます。 これらのサブスクリプションの設定には、ネットワーク、暗号化、ステージング領域が含まれます。 サブスクリプション設定を変更するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
+DPM サーバーが Recovery Services コンテナーに登録されると、既定のサブスクリプション設定で起動されます。 これらのサブスクリプションの設定には、ネットワーク、暗号化、ステージング領域が含まれます。 サブスクリプション設定を変更するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) コマンドレットを使用して取得する必要があります。
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-このローカル PowerShell オブジェクト ```$setting``` にすべての変更が行われ、[Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットを使用して保存するために、完全なオブジェクトが DPM および Azure Backup にコミットされます。 変更が保持されていることを確認するには、 ```–Commit``` フラグを使用します。 コミットしない限り、Azure Backup により設定が適用または使用されません。
+このローカル PowerShell オブジェクト ```$setting``` にすべての変更が行われ、[Set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) コマンドレットを使用して保存するために、完全なオブジェクトが DPM および Azure Backup にコミットされます。 変更が保持されていることを確認するには、 ```–Commit``` フラグを使用します。 コミットしない限り、Azure Backup により設定が適用または使用されません。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -191,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>ネットワーク
 
-インターネット上の Azure Backup サービスへの DPM コンピューターの接続にプロキシ サーバーを使用している場合、バックアップを正しく行うには、プロキシ サーバーの設定を指定する必要があります。 これを行うには、```-ProxyServer```、```-ProxyPort```、```-ProxyUsername```、および ```ProxyPassword``` パラメーターと [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットを使用します。 この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
+インターネット上の Azure Backup サービスへの DPM コンピューターの接続にプロキシ サーバーを使用している場合、バックアップを正しく行うには、プロキシ サーバーの設定を指定する必要があります。 これを行うには、```-ProxyServer```、```-ProxyPort```、```-ProxyUsername```、および ```ProxyPassword``` パラメーターと [Set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) コマンドレットを使用します。 この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -205,7 +199,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>ステージング領域の構成
 
-DPM サーバーで実行されている Microsoft Azure Backup エージェントには、クラウドから復元されるデータ用の一時的なストレージ (ローカル ステージング領域) が必要です。 [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットと ```-StagingAreaPath``` パラメーターを使用してステージング領域を構成します。
+DPM サーバーで実行されている Microsoft Azure Backup エージェントには、クラウドから復元されるデータ用の一時的なストレージ (ローカル ステージング領域) が必要です。 [Set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) コマンドレットと ```-StagingAreaPath``` パラメーターを使用してステージング領域を構成します。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
@@ -240,20 +234,20 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 このセクションでは、運用サーバーを DPM に追加し、ローカルの DPM 記憶域、Azure Backup の順にデータを保護します。 この例では、ファイルとフォルダーをバックアップする方法を示します。 このロジックは、DPM がサポートされたすべてのデータ ソースのバックアップに簡単に拡張して適用できます。 すべての DPM バックアップは、4 つの部分で保護グループ (PG) によって制御されます。
 
-1. **グループ メンバー** は、同じ保護グループ内で保護するすべての保護可能オブジェクト (DPM では *データソース* とも呼ばれます) の一覧です。 たとえば、運用 VM とテスト SQL Server データベースがそれぞれ異なるバックアップ要件を持つため、別々の PG で保護したいという場合があります。 運用サーバー上のデータソースをバックアップする前に、DPM エージェントがサーバーにインストールされており、DPM により管理されていることを確認する必要があります。 [DPM エージェントをインストールする](https://technet.microsoft.com/library/bb870935.aspx) 手順と、適切な DPM サーバーにリンクする手順に従います。
+1. **グループ メンバー** は、同じ保護グループ内で保護するすべての保護可能オブジェクト (DPM では *データソース* とも呼ばれます) の一覧です。 たとえば、運用 VM とテスト SQL Server データベースがそれぞれ異なるバックアップ要件を持つため、別々の PG で保護したいという場合があります。 運用サーバー上のデータソースをバックアップする前に、DPM エージェントがサーバーにインストールされており、DPM により管理されていることを確認する必要があります。 [DPM エージェントをインストールする](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 手順と、適切な DPM サーバーにリンクする手順に従います。
 2. **データ保護方法** では、目的のバックアップ場所 (テープ、ディスク、クラウドなど) を指定します。 この例では、ローカル ディスクとクラウドへのデータを保護します。
 3. **バックアップ スケジュール** は、バックアップを実行する必要があるタイミングと、DPM サーバーと運用サーバーの間でデータを同期すべき頻度を指定します。
 4. **保持スケジュール** は、Azure で回復ポイントを保持する期間を指定します。
 
 ### <a name="creating-a-protection-group"></a>保護グループの作成
 
-まず新しい PG を、 [New-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) コマンドレットを使用して作成します。
+まず新しい PG を、 [New-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) コマンドレットを使用して作成します。
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-前記のコマンドレットは、 *ProtectGroup01*という名前の保護グループを作成します。 既存の保護グループを後で変更して、バックアップを Azure クラウドに追加することもできます。 ただし、新しいか既存かを問わず保護グループに変更を加えるには、 *Get-DPMModifiableProtectionGroup* コマンドレットを使って [変更可能な](https://technet.microsoft.com/library/hh881713) オブジェクトのハンドルを取得する必要があります。
+前記のコマンドレットは、 *ProtectGroup01*という名前の保護グループを作成します。 既存の保護グループを後で変更して、バックアップを Azure クラウドに追加することもできます。 ただし、新しいか既存かを問わず保護グループに変更を加えるには、 *Get-DPMModifiableProtectionGroup* コマンドレットを使って [変更可能な](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) オブジェクトのハンドルを取得する必要があります。
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -268,16 +262,16 @@ $MPG = Get-ModifiableProtectionGroup $PG
 3. サーバー上のすべてのデータソースの一覧を取得します。
 4. 1 つ以上のデータソースの選択と保護グループへの追加
 
-DPM エージェントがインストールされており、DPM サーバーによって管理されるサーバーの一覧を、 [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) コマンドレットを使用して取得します。 この例では、フィルター処理をして *productionserver01* という名前を持つ PS のみをバックアップ用に構成します。
+DPM エージェントがインストールされており、DPM サーバーによって管理されるサーバーの一覧を、 [Get-DPMProductionServer](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) コマンドレットを使用して取得します。 この例では、フィルター処理をして *productionserver01* という名前を持つ PS のみをバックアップ用に構成します。
 
 ```powershell
-$server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains “productionserver01”}
+$server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-[Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\\* をフィルター処理します。 次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。 "*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
+[Get-DPMDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム `D:\` をフィルター処理します。 次に、このデータソースを [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) コマンドレットを使用して保護グループに追加します。 "*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
 
 ```powershell
-$DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains “D:\” }
+$DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
 
 Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 ```
@@ -286,7 +280,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 
 ### <a name="selecting-the-data-protection-method"></a>データ保護方法の選択
 
-データソースが保護グループに追加されたら、次の手順は、 [Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) コマンドレットを使用した保護方法の指定です。 この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。 また、 [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) コマンドレットに -Online フラグを付けて、保護対象のデータソースをクラウドに指定する必要があります。
+データソースが保護グループに追加されたら、次の手順は、 [Set-DPMProtectionType](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) コマンドレットを使用した保護方法の指定です。 この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。 また、 [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) コマンドレットに -Online フラグを付けて、保護対象のデータソースをクラウドに指定する必要があります。
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -295,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>保有期間の範囲設定
 
-[Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) コマンドレットを使用してバックアップ ポイントの保有期間を設定します。 バックアップ スケジュールが定義される前に保有期間を設定するのは不自然な操作に思えるかもしれませんが、 ```Set-DPMPolicyObjective``` コマンドレットでは、後で変更できる既定のバックアップ スケジュールが自動的に設定されます。 バックアップ スケジュールを設定した後で、保有ポリシーを設定することも常に可能です。
+[Set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) コマンドレットを使用してバックアップ ポイントの保有期間を設定します。 バックアップ スケジュールが定義される前に保有期間を設定するのは不自然な操作に思えるかもしれませんが、 ```Set-DPMPolicyObjective``` コマンドレットでは、後で変更できる既定のバックアップ スケジュールが自動的に設定されます。 バックアップ スケジュールを設定した後で、保有ポリシーを設定することも常に可能です。
 
 次の例では、コマンドレットはディスク バックアップ用の保有期間パラメーターを設定します。 ここではバックアップの保有期間は 10 日間で、運用サーバーと DPM サーバーの間でデータが 6 時間ごとに同期されます。 ```SynchronizationFrequencyMinutes``` ではバックアップ ポイントの作成頻度は定義されませんが、DPM サーバーへのデータのコピー頻度は定義されます。  この設定により、バックアップの肥大化を回避できます。
 
@@ -303,7 +297,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-Azure へのバックアップ (DPM ではオンライン バックアップの意味) では、リテンション期間の範囲は [Grandfather-Father-Son スキーム (GFS) を使用して長期間保有](backup-azure-backup-cloud-as-tape.md)用に構成できます。 つまり、日次、週次、月次、年次の保有期間ポリシーを組み合わせた保有ポリシーを定義できます。 この例では、必要な複雑な保有期間スキームを表す配列を作成し、 [Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) コマンドレットを使用して保有期間の範囲を構成します。
+Azure へのバックアップ (DPM ではオンライン バックアップの意味) では、リテンション期間の範囲は [Grandfather-Father-Son スキーム (GFS) を使用して長期間保有](backup-azure-backup-cloud-as-tape.md)用に構成できます。 つまり、日次、週次、月次、年次の保有期間ポリシーを組み合わせた保有ポリシーを定義できます。 この例では、必要な複雑な保有期間スキームを表す配列を作成し、 [Set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) コマンドレットを使用して保有期間の範囲を構成します。
 
 ```powershell
 $RRlist = @()
@@ -316,7 +310,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>バックアップ スケジュールの設定
 
-```Set-DPMPolicyObjective``` コマンドレットを使用して保護目標を指定する場合、DPM は既定のバックアップ スケジュールを自動的に設定します。 既定のスケジュールを変更するには、[Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) コマンドレットと、それに続いて [Set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) コマンドレットを使用します。
+```Set-DPMPolicyObjective``` コマンドレットを使用して保護目標を指定する場合、DPM は既定のバックアップ スケジュールを自動的に設定します。 既定のスケジュールを変更するには、[Get-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) コマンドレットと、それに続いて [Set-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) コマンドレットを使用します。
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -338,7 +332,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ### <a name="initial-backup"></a>初回バックアップ
 
-データソースを初めてバックアップする場合、DPM レプリカ ボリューム上に保護対象データソースの完全なコピーを作成する初期レプリカを、DPM により作成する必要があります。 このアクティビティは特定の期間スケジュール設定することも、[Set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) コマンドレットと ```-NOW``` パラメーターを使用して手動でトリガーすることもできます。
+データソースを初めてバックアップする場合、DPM レプリカ ボリューム上に保護対象データソースの完全なコピーを作成する初期レプリカを、DPM により作成する必要があります。 このアクティビティは特定の期間スケジュール設定することも、[Set-DPMReplicaCreationMethod](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) コマンドレットと ```-NOW``` パラメーターを使用して手動でトリガーすることもできます。
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -346,11 +340,11 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>DPM レプリカと回復ポイントのボリューム サイズの変更
 
-DPM レプリカ ボリュームとシャドウ コピー ボリュームのサイズは、次の例に示すように、[Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) コマンドレットを使用して変更することもできます。Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
+DPM レプリカ ボリュームとシャドウ コピー ボリュームのサイズは、次の例に示すように、[Set-DPMDatasourceDiskAllocation](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) コマンドレットを使用して変更することもできます。Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>保護グループに対する変更のコミット
 
-最後に、DPM が新しい保護グループの構成ごとにバックアップを実行する前に、変更をコミットする必要があります。 これを実行するには、 [Set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) コマンドレットを使用します。
+最後に、DPM が新しい保護グループの構成ごとにバックアップを実行する前に、変更をコミットする必要があります。 これを実行するには、 [Set-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) コマンドレットを使用します。
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
@@ -358,10 +352,10 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ## <a name="view-the-backup-points"></a>バックアップ ポイントの表示
 
-データソースのすべての回復ポイントの一覧を取得するには、 [Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。 この例の内容:
+データソースのすべての回復ポイントの一覧を取得するには、 [Get DPMRecoveryPoint](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) コマンドレットを使用します。 この例の内容:
 
 * 配列 ```$PG```
-*  ```$PG[0]```
+* ```$PG[0]```
 * データソースのすべての回復ポイントを取得します。
 
 ```powershell
@@ -376,12 +370,12 @@ $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 
 次の例では、バックアップ ポイントと回復対象を組み合わせて、Hyper-V 仮想マシンを Microsoft Azure Backup から復元する方法を示します。 この例には次が含まれています。
 
-* [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) コマンドレットを使用した回復オプションの作成。
+* [New-DPMRecoveryOption](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) コマンドレットを使用した回復オプションの作成。
 * ```Get-DPMRecoveryPoint``` コマンドレットを使用したバックアップ ポイントの配列の取得。
 * 復元元のバックアップ ポイントの選択。
 
 ```powershell
-$RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
+$RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation "C:\VMRecovery"
 
 $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
 $DS = Get-DPMDatasource -ProtectionGroup $PG[0]
@@ -392,6 +386,6 @@ Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -RecoveryOption $
 
 使用されているコマンドは、任意のデータソースの種類に合わせて簡単に拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Backup と DPM の詳細については、 [DPM バックアップの概要](backup-azure-dpm-introduction.md)

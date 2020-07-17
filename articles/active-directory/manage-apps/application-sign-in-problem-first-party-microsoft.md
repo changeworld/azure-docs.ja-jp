@@ -3,8 +3,8 @@ title: Microsoft アプリケーションへのサインインに関する問題
 description: Azure AD を使用したファースト パーティの Microsoft アプリケーション (Office 365 など) にサインインする際に直面する一般的な問題をトラブルシューティングする
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104150"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67108296"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
@@ -63,7 +63,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
   * ユーザーのアカウントがサインイン用に**有効になっている**ことを確認します。[ユーザーのアカウントの状態を確認する](#problems-with-the-users-account)
 
-  * ユーザーの**パスワードが期限切れになったり、忘れられたりしていない**ことを確認します。 [ユーザーのパスワードをリセットする](#reset-a-users-password)か、[セルフサービスのパスワード リセットを有効にします](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * ユーザーの**パスワードが期限切れになったり、忘れられたりしていない**ことを確認します。 [ユーザーのパスワードをリセットする](#reset-a-users-password)か、[セルフサービス パスワード リセットを有効にします](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
   * **多要素認証**がユーザー アクセスをブロックしていないことを確認します。 [ユーザーの多要素認証の状態を確認する](#check-a-users-multi-factor-authentication-status)か、[ユーザーの認証の連絡先情報を確認します](#check-a-users-authentication-contact-info)
 
@@ -101,7 +101,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 -   [ユーザーのパスワードをリセットする](#reset-a-users-password)
 
--   [セルフ サービスのパスワード リセットを有効にする](#enable-self-service-password-reset)
+-   [セルフサービス パスワード リセットを有効にする](#enable-self-service-password-reset)
 
 -   [ユーザーの多要素認証の状態を確認する](#check-a-users-multi-factor-authentication-status)
 
@@ -121,7 +121,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -139,7 +139,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -149,7 +149,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 7.  **[Profile]** をクリックします。
 
-8.  **[設定]** で、**[サインインのブロック]** が **[いいえ]** に設定されていることを確認します。
+8.  **[設定]** で、 **[サインインのブロック]** が **[いいえ]** に設定されていることを確認します。
 
 ### <a name="reset-a-users-password"></a>ユーザーのパスワードをリセットする
 
@@ -159,7 +159,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -175,9 +175,9 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 10. この新しいパスワードをユーザーに知らせます。ユーザーは次の Azure Active Directory サインイン時にこのパスワードを変更する必要があります。
 
-### <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
+### <a name="enable-self-service-password-reset"></a>セルフサービス パスワード リセットを有効にする
 
-セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順を実行します。
+セルフサービス パスワード リセットを有効にするには、次のデプロイ手順を実行します。
 
 -   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -191,7 +191,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -205,7 +205,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 9. ユーザーの一覧からユーザーを選択し、多要素認証を必要に応じて**有効**、**無効**、または**適用**します。
 
-   * **メモ**:ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
+   * **注**:ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
 
 ### <a name="check-a-users-authentication-contact-info"></a>ユーザーの認証の連絡先情報を確認する
 
@@ -215,7 +215,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -237,7 +237,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -255,7 +255,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -263,7 +263,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[ライセンス]** をクリックして、ユーザーに現在割り当てられているライセンスを確認します。
+7.  **[ライセンス]** をクリックして、ユーザーが現在割り当てられているライセンスを確認します。
 
 ### <a name="assign-a-user-a-license"></a>ユーザーにライセンスを割り当てる 
 
@@ -273,7 +273,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -313,7 +313,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -331,7 +331,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -351,7 +351,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -369,7 +369,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -394,7 +394,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -427,7 +427,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -438,19 +438,19 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 7. 特定の条件、割り当て、またはユーザーのアクセスをブロックしてしまう他の設定がないことを確認します。
 
    >[!NOTE]
-   >このポリシーを一時的に無効にしてサインインに影響していないことを確認できます。そのためには、**[ポリシーの有効化]** を **[いいえ]** に設定して **[保存]** ボタンをクリックします。
+   >このポリシーを一時的に無効にしてサインインに影響していないことを確認できます。そのためには、 **[ポリシーの有効化]** を **[いいえ]** に設定して **[保存]** ボタンをクリックします。
    >
    >
 
 ### <a name="check-a-specific-applications-conditional-access-policy"></a>特定のアプリケーションの条件付きアクセス ポリシーを確認する
 
-1 つのアプリケーションで現在構成されている条件付きアクセス ポリシーを確認または検証する方法
+1 つのアプリケーションで現在構成されている条件付きアクセス ポリシーを確認または検証するには:
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -459,7 +459,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 6.  対象のアプリケーション、またはユーザーがサインインしようとしているアプリケーションを、アプリケーション表示名またはアプリケーション ID で検索します。
 
      >[!NOTE]
-     >探しているアプリケーションが見つからない場合は、**[フィルター]** ボタンをクリックして、リストの範囲を**すべてのアプリケーション**に広げます。 もっと多くの列を表示したい場合は、**[列]** ボタンをクリックして、アプリケーションについてのその他の詳細を追加します。
+     >探しているアプリケーションが見つからない場合は、 **[フィルター]** ボタンをクリックして、リストの範囲を**すべてのアプリケーション**に広げます。 もっと多くの列を表示したい場合は、 **[列]** ボタンをクリックして、アプリケーションについてのその他の詳細を追加します。
      >
      >
 
@@ -470,7 +470,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 9.  特定の条件、割り当て、またはユーザーのアクセスをブロックしてしまう他の設定がないことを確認します。
 
      >[!NOTE]
-     >このポリシーを一時的に無効にしてサインインに影響していないことを確認できます。そのためには、**[ポリシーの有効化]** を **[いいえ]** に設定して **[保存]** ボタンをクリックします。
+     >このポリシーを一時的に無効にしてサインインに影響していないことを確認できます。そのためには、 **[ポリシーの有効化]** を **[いいえ]** に設定して **[保存]** ボタンをクリックします。
      >
      >
 
@@ -482,7 +482,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -490,7 +490,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 6.  検査の対象とするポリシーをクリックします。
 
-7.  ポリシーを無効にするには、**[ポリシーの有効化]** を **[いいえ]** に設定して **[保存]** ボタンをクリックします。
+7.  ポリシーを無効にするには、 **[ポリシーの有効化]** を **[いいえ]** に設定して **[保存]** ボタンをクリックします。
 
 ## <a name="problems-with-application-consent"></a>アプリケーションの承認に関する問題
 
@@ -512,22 +512,22 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>任意のアプリケーションで管理者レベルの同意操作を実行する
 
--   **V1 アプリケーション モデルを使用して開発されたアプリケーション**の場合のみ、アプリケーションのサインイン URL の末尾に “**?prompt=admin\_consent**” を追加して、この管理者レベルの同意を強制的に行わせることができます。
+-   **V1 アプリケーション モデルを使用して開発されたアプリケーション**の場合のみ、アプリケーションのサインイン URL の末尾に “ **?prompt=admin\_consent**” を追加して、この管理者レベルの同意を強制的に行わせることができます。
 
 -   **V2 アプリケーション モデルを使用して開発されたアプリケーション**の場合、[管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)の**アクセス許可をディレクトリ管理者から要求する**セクションの下の手順に従って、この管理者レベルの同意を強制的に行わせることができます。
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>シングルテナント アプリケーションで管理者レベルの同意を実行する
 
--   アクセス許可を要求する**シングルテナント アプリケーション** (自分の組織内で開発しているか所有しているアプリケーションなど) の場合、**管理者レベルの同意**操作をすべてのユーザーを代表して実行するには、グローバル管理者としてサインインし、**[アプリケーション レジストリ] -&gt; [すべてのアプリケーション] -&gt; [アプリの選択] -&gt; [必要なアクセス許可]** ウィンドウの上部にある **[アクセス許可の付与]** をクリックします。
+-   アクセス許可を要求する**シングルテナント アプリケーション** (自分の組織内で開発しているか所有しているアプリケーションなど) の場合、**管理者レベルの同意**操作をすべてのユーザーを代表して実行するには、グローバル管理者としてサインインし、 **[アプリケーション レジストリ] -&gt; [すべてのアプリケーション] -&gt; [アプリの選択] -&gt; [必要なアクセス許可]** ウィンドウの上部にある **[アクセス許可の付与]** をクリックします。
 
 -   **V1 または V2 アプリケーション モデルを使用して開発されたアプリケーション**の場合、[管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)の**アクセス許可をディレクトリ管理者から要求する**セクションの下の手順に従って、この管理者レベルの同意を強制的に行わせることができます。
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>マルチテナント アプリケーションで管理者レベルの同意を実行する
 
--   アクセス許可を要求する**マルチテナント アプリケーション** (サード パーティ、または Microsoft が開発するアプリケーションなど) の場合は、**管理者レベルの同意**操作を実行できます。 グローバル管理者としてサインインして、**[エンタープライズ アプリケーション] -&gt; [すべてのアプリケーション] -&gt; [アプリの選択] -&gt; [アクセス許可]** ウィンドウ (まもなく利用可能) の下の **[アクセス許可の付与]** をクリックします。
+-   アクセス許可を要求する**マルチテナント アプリケーション** (サード パーティ、または Microsoft が開発するアプリケーションなど) の場合は、**管理者レベルの同意**操作を実行できます。 グローバル管理者としてサインインして、 **[エンタープライズ アプリケーション] -&gt; [すべてのアプリケーション] -&gt; [アプリの選択] -&gt; [アクセス許可]** ウィンドウ (まもなく利用可能) の下の **[アクセス許可の付与]** をクリックします。
 
 -   [管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)の**アクセス許可をディレクトリ管理者から要求する** セクションの下の指示に従って、この管理者レベル同意を強制的に行わせることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 

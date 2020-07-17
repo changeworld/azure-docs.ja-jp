@@ -1,54 +1,38 @@
 ---
-title: Azure Active Directory B2C でリソース所有者のパスワード資格情報フローを構成する | Microsoft Docs
-description: Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する方法を説明します。
+title: カスタム ポリシーを使ってリソース所有者のパスワード資格情報フローを構成する
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 上で、カスタム ポリシーを使用して、リソース所有者のパスワード資格情報 (ROPC) フローを構成する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: davidmu
+ms.date: 05/12/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688858"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638575"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory (Azure AD) B2C では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
+Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
 
-ROPC フローでは次のオプションがサポートされています。
-
-- **ネイティブ クライアント** - ユーザー側のデバイスでコードが実行されると、認証の間にユーザー操作が発生します。
-- **パブリック クライアント フロー** - アプリケーションによって収集されたユーザーの資格情報のみが、API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
-- **新しい要求の追加** - 新しい要求を追加するために、ID トークンの内容を変更することができます。
-
-次のフローはサポートされていません。
-
-- **サーバー対サーバー** - ID 保護システムでは、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスが必要です。 サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。 サインインの失敗が多すぎる場合、ID 保護システムでは繰り返される IP アドレスが攻撃者として調査される可能性があります。
-- **シングル ページ アプリケーション** - 主に JavaScript で記述されたフロントエンド アプリケーションです。 多くの場合、アプリケーションは AngularJS、Ember.js、Durandal.js などのフレームワークを使用して記述されます。
-- **機密性の高いクライアント フロー** - アプリケーションのクライアント ID は検証されますが、アプリケーションのシークレットは検証されません。
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
+「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
-5. *ROPC_Auth_app* などのアプリケーションの名前を入力します。
-6. **[Web App/Web API]\(Web アプリ/Web API\)** に対して **[いいえ]** を選択し、次に **[Native client]\(ネイティブ クライアント\)** に対して **[はい]** を選択します。
-7. その他のすべての値はそのままにして、**[作成]** を選択します。
-8. 新しいアプリケーションを選択し、後で使用するためにアプリケーション ID を記録します。
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ##  <a name="create-a-resource-owner-policy"></a>リソース所有者のポリシーを作成する
 
@@ -88,7 +72,7 @@ ROPC フローでは次のオプションがサポートされています。
           <OutputClaim ClaimTypeReferenceId="sub" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    
+
       <ClaimsTransformation Id="AssertRefreshTokenIssuedLaterThanValidFromDate" TransformationMethod="AssertDateTimeIsGreaterThan">
         <InputClaims>
           <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
@@ -140,7 +124,7 @@ ROPC フローでは次のオプションがサポートされています。
     </TechnicalProfile>
     ```
 
-    **client_id** と **resource_id** の **DefaultValue** を、前提条件のチュートリアルで作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
+    **client_id** の **DefaultValue** を、前提条件のチュートリアルで作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。 **resource_id** の **DefaultValue** も、前提条件のチュートリアルで作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 
 5. 次の **ClaimsProvider** 要素とその技術プロファイルを、**ClaimsProviders** 要素に追加します。
 
@@ -233,7 +217,7 @@ ROPC フローでは次のオプションがサポートされています。
     </UserJourney>
     ```
 
-7. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+7. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 8. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 9. **[アップロード]** をクリックします。
 
@@ -245,7 +229,7 @@ ROPC フローでは次のオプションがサポートされています。
 2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値に変更します。 ポリシー ID がポリシーの名前になります。 たとえば、**B2C_1A_ROPC_Auth** などとします。
 3. **DefaultUserJourney** の **ReferenceId** 属性の値を `ResourceOwnerPasswordCredentials` に変更します。
 4. **OutputClaims** 要素を、次の要求だけを含むように変更します。
-    
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
@@ -254,22 +238,22 @@ ROPC フローでは次のオプションがサポートされています。
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
-6. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
+5. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
+6. **[ポリシーが存在する場合は上書きする]** を有効にし、*ROPC_Auth.xml* ファイルを参照して選択します。
 7. **[アップロード]** をクリックします。
 
 ## <a name="test-the-policy"></a>ポリシーをテストする
 
 お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ポリシーをデバッグします。 POST 要求の本文として以下の情報を使用し、次の例のような呼び出しを作成します。
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
+- `<tenant-name>`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| キー | 値 |
+| Key | 値 |
 | --- | ----- |
-| ユーザー名 | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |
@@ -284,8 +268,8 @@ ROPC フローでは次のオプションがサポートされています。
 実際の POST 要求は次の例のようになります。
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -307,12 +291,12 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 ここで示すような POST 呼び出しを作成します。 要求の本文として、次の表の情報を使用します。
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
+- `<tenant-name>`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| キー | 値 |
+| Key | 値 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -345,7 +329,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Azure AD B2C は、パブリック クライアント リソース所有者のパスワード認証情報に関する OAuth 2.0 標準を満たしており、ほとんどのクライアント SDK と互換性があります。 最新情報については、[最新のベスト プラクティスを実装する OAuth 2.0 と OpenID Connect のネイティブ App SDK](https://appauth.io/) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - このシナリオの完全な例については、「[Azure Active Directory B2C custom policy starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)」(Azure Active Directory B2C custom policy starter pack (Azure Active Directory B2C カスタム ポリシー スターター パック)) をご覧ください。
-- 「[トークンのリファレンス](active-directory-b2c-reference-tokens.md)」で、Azure Active Directory B2C によって使用されるトークンについてさらに理解してください。
+- 「[トークンのリファレンス](tokens-overview.md)」で、Azure Active Directory B2C によって使用されるトークンについてさらに理解してください。

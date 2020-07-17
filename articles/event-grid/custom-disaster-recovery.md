@@ -1,24 +1,26 @@
 ---
-title: Azure Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する | Microsoft Docs
-description: リージョン障害に対応して、Azure Event Grid を接続された状態に維持します。
+title: Azure Event Grid のカスタム トピック用のディザスター リカバリー
+description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863170"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76511520"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
-
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 
 このチュートリアルでは、Event Grid のカスタム トピック用のアクティブ/パッシブ フェールオーバー アーキテクチャを作成する方法を学習します。 お客様のトピックとサブスクリプションを 2 つのリージョンの間でミラーリングしておき、トピックの異常発生時にフェールオーバーを管理することで、フェールオーバーを実現します。 このチュートリアルのアーキテクチャでは、すべての新しいトラフィックがフェールオーバーされます。 この設定では、被害のあったリージョンがもう一度正常になるまで、既に送信中のイベントが復旧されないことを理解しておくのが重要です。
+
+> [!NOTE]
+> Event Grid は現在、サーバー側での自動 geo ディザスター リカバリー (GeoDR) をサポートしています。 フェールオーバー プロセスをさらに細かく制御したい場合には、クライアント側のディザスター リカバリー ロジックを実装することもできます。 自動 GeoDR の詳細については、「[Server-side geo disaster recovery in Azure Event Grid (Azure Event Grid 内のサーバー側 geo ディザスター リカバリー)](geo-disaster-recovery.md)」を参照してください。
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
@@ -44,15 +46,15 @@ ms.locfileid: "57863170"
 
 最初に、Event Grid トピックを 2 つ作成します。 これらのトピックは、お客様のプライマリとセカンダリとして機能します。 既定では、イベントはお客様のプライマリ トピック経由で流れます。 プライマリ リージョンでサービスが停止した場合、お客様のセカンダリに引き継がれます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 
-1. Azure のメイン メニューの左上隅で **[すべてのサービス]** を選択し、「**Event Grid**」を検索して、**[Event Grid トピック]** を選択します。
+1. Azure のメイン メニューの左上隅で **[すべてのサービス]** を選択し、「**Event Grid**」を検索して、 **[Event Grid トピック]** を選択します。
 
    ![[Event Grid トピック] メニュー](./media/custom-disaster-recovery/select-topics-menu.png)
 
     今後アクセスしやすいように、[Event Grid トピック] の横にある星を選択してこれをリソース メニューに追加します。
 
-1. [Event Grid トピック] メニューで、**[+ 追加]** を選択してプライマリ トピックを作成します。
+1. [Event Grid トピック] メニューで、 **[+ 追加]** を選択してプライマリ トピックを作成します。
 
    * トピックに論理名を付け、"-primary" をサフィックスとして追加し、追跡しやすくします。
    * このトピックのリージョンが、お客様のプライマリ リージョンになります。
@@ -91,7 +93,7 @@ ms.locfileid: "57863170"
 
 ### <a name="basic-client-side-implementation"></a>基本的なクライアント側の実装
 
-次のサンプル コードは、常にお客様のプライマリ トピックへの発行を最初に試行するシンプルな .NET 発行元です。 成功しなかった場合は、セカンダリ トピックにフェールオーバーされます。 どちらの場合でも、`https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` に対して GET を実行することで、他のトピックの正常性 API がチェックされます。 正常なトピックは、**/api/health** エンドポイントに対して GET が実行された場合に常に **200 OK** で応答します。
+次のサンプル コードは、常にお客様のプライマリ トピックへの発行を最初に試行するシンプルな .NET 発行元です。 成功しなかった場合は、セカンダリ トピックにフェールオーバーされます。 どちらの場合でも、`https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` に対して GET を実行することで、他のトピックの正常性 API がチェックされます。 正常なトピックは、 **/api/health** エンドポイントに対して GET が実行された場合に常に **200 OK** で応答します。
 
 ```csharp
 using System;
@@ -205,7 +207,7 @@ namespace EventGridFailoverPublisher
 
 同様に、お客様の特定のニーズに基づいてフェールバック ロジックを実装するとよいでしょう。 最も近いデータ センターに発行することが、待ち時間を短縮するうえで非常に重要である場合、フェールオーバーしたトピックの正常性 API を定期的にプローブできます。 再び正常になったら、最も近いデータ センターに安心してフェールバックできることがわかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [http エンドポイントでイベントを受信](./receive-events.md)する方法について学習する
 - [イベントをハイブリッド接続にルーティング](./custom-event-to-hybrid-connection.md)する方法を理解する

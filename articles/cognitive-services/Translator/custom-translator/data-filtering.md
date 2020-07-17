@@ -2,19 +2,19 @@
 title: データのフィルター処理 - カスタム トランスレーター
 titleSuffix: Azure Cognitive Services
 description: カスタム システムのトレーニングに使用するドキュメントを送信すると、トレーニングの準備をするための一連の処理とフィルター処理がそのドキュメントに対して行われます。
-author: v-pawal
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-jansko
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916112"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68595906"
 ---
 # <a name="data-filtering"></a>データのフィルタリング
 
@@ -56,6 +56,6 @@ ms.locfileid: "58916112"
 ## <a name="invalid-characters"></a>無効な文字
 カスタム トランスレーターでは、Unicode 文字 U+FFFD を含む文が削除されます。 文字 U+FFFD は、エンコード変換が失敗したことを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - カスタム トランスレーターで[モデルをトレーニング](how-to-train-model.md)します。

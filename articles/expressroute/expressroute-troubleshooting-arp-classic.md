@@ -1,19 +1,18 @@
 ---
-title: 'ARP テーブルの取得 - ExpressRoute のトラブルシューティング: クラシック:Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: ARP テーブル - トラブルシューティング: クラシック'
 description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します (クラシック デプロイ モデル)。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 01/30/2017
-ms.author: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: charwen
+ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439640"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80618631"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -157,7 +156,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 * マイクロソフト側に問題がある場合は、ピアリングの ARP テーブルが表示されません。
 * [Microsoft Azure のヘルプとサポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にサポート要求を申請してください。 レイヤー 2 の接続に問題がある旨をはっきりと伝えてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ExpressRoute 回線のレイヤー 3 の構成を検証します。
   * ルートのサマリーを取得して BGP セッションの状態を調べます。
   * ExpressRoute でアドバタイズされるプレフィックスをルート テーブルを取得して調べます。

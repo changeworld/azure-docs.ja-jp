@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight における Phoenix のパフォーマンス
-description: Phoenix のパフォーマンスを最適化するためのベスト プラクティス。
+description: Azure HDInsight クラスターの Apache Phoenix のパフォーマンスを最適化するためのベスト プラクティス
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690047"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75552646"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix のパフォーマンスに関するベスト プラクティス
 
@@ -33,14 +33,14 @@ Phoenix のテーブルで定義された主キーによって、基になる HB
 
 |rowkey|       address|   phone| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
-|  1,000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 ただし、頻繁に lastName でクエリを実行する場合、この主キーはあまり役に立たない可能性があります。各クエリで、すべての lastName の値を読み取るためのフル テーブル スキャンが必要になるためです。 代わりに、lastName、firstName、社会保障番号の列で主キーを定義できます。 この最後の列によって、父と息子などの、住所と名前が同じ 2 人を区別できます。
 
 |rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1,000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 この新しい主キーを使用して、Phoenix は次のような行キーを生成します。
@@ -52,13 +52,13 @@ Phoenix のテーブルで定義された主キーによって、基になる HB
 
 上記の最初の行では、rowkey のデータは次のように表されます。
 
-|rowkey|       key|   value| 
+|rowkey|       key|   value|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|phone |1-425-000-0002|  
 |  Dole-John-111|firstName |John|  
 |  Dole-John-111|lastName |Dole|  
-|  Dole-John-111|socialSecurityNum |111| 
+|  Dole-John-111|socialSecurityNum |111|
 
 これで、この rowkey に、データの重複コピーが格納されるようになります。 この値は、基になる HBase テーブルのすべてのセルに含まれるので、主キーに含める列のサイズと数はよく検討してください。
 
@@ -226,7 +226,7 @@ explain で表示されるプランの結果の項目に関する詳細な一覧
 
 これらのオプションの詳細については、[Apache Phoenix の文法](https://phoenix.apache.org/language/index.html#options)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Phoenix のチューニング ガイド](https://phoenix.apache.org/tuning_guide.html)
 * [セカンダリ インデックス](https://phoenix.apache.org/secondary_indexing.html)

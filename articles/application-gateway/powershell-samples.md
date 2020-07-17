@@ -1,33 +1,26 @@
 ---
-title: Azure Application Gateway PowerShell のサンプル | Microsoft Docs
-description: Azure Application Gateway PowerShell のサンプル
+title: Azure Application Gateway のための Azure PowerShell の例
+description: この記事には、さまざまな方法で構成された Azure Application Gateway をすばやくデプロイできる Azure PowerShell の例へのリンクがあります。
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/29/2018
+ms.topic: sample
+ms.date: 11/16/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 54505f108757fc67b07e44ef3b603bc353b9aec5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d45fd7bf88e6988b83a621eda2689c10356441a4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200656"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74129751"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>Azure Application Gateway PowerShell のサンプル
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure Application Gateway のための Azure PowerShell の例
 
-次の表には、アプリケーション ゲートウェイを作成する Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
+次の表には、Azure Application Gateway のための Azure PowerShell スクリプトの例へのリンクが含まれています。
 
 | | |
 |---|---|
 | [Web トラフィックを管理する](./scripts/create-vmss-powershell.md) | アプリケーション ゲートウェイとすべての関連リソースを作成します。|
 | [Web トラフィックを制限する](./scripts/create-vmss-waf-powershell.md) | OWASP 規則を使用してトラフィックを制限するアプリケーション ゲートウェイを作成します。|
+|[WAF v2 カスタム規則](scripts/waf-custom-rules-powershell.md)|カスタム規則を使用して Application Gateway の Web アプリケーション ファイアウォール v2 を作成します。
 | | |
-

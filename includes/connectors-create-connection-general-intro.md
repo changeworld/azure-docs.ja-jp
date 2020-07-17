@@ -1,18 +1,14 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: logic-apps
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 05/14/2018
+author: ecfan
 ms.author: estfan
-ms.custom: include file
-ms.openlocfilehash: 6594031aeccae4b9f0ea843e2d72cb01a67d492d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 09/18/2019
+ms.openlocfilehash: 0e2d63db1afd4bb169e5aeb1c202674808f081ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74786889"
 ---
-ロジック アプリがすべてのサービスにアクセスできるようにするには、事前にロジック アプリとサービスの間に "*接続*" を作成する必要があります。 この接続を事前に作成していない場合は、該当のサービスのトリガーまたはアクションをロジック アプリに追加するときに、接続情報の入力を求められます。 Logic Apps デザイナーでは、ロジック アプリから直接この接続を作成するための簡単な方法を提供しています。
+サービスに初めてアクセスするトリガーまたはアクションを使用すると、Logic Apps デザイナーはそのサービスへの*接続*を作成するよう要求します。 その後、必要な接続情報をデザイナー内のロジック アプリから直接提供できます。

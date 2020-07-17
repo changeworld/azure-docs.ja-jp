@@ -16,12 +16,12 @@ ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f397401581cc1bc947f1b19ce248c17fba26f4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160724"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67109541"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect:デバイス オプション
 
@@ -31,7 +31,7 @@ ms.locfileid: "56160724"
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>Azure AD Connect でデバイス オプションを構成する
 
-1.  Azure AD Connect を実行します。 **[追加のタスク]** ページで、**[デバイス オプションの構成]** を選びます。  **[次へ]** をクリックします。
+1.  Azure AD Connect を実行します。 **[追加のタスク]** ページで、 **[デバイス オプションの構成]** を選びます。  **[次へ]** をクリックします。
     ![デバイス オプションの構成](./media/how-to-connect-device-options/deviceoptions.png) 
 
     **[概要]** ページに詳細が表示されます。
@@ -43,7 +43,7 @@ ms.locfileid: "56160724"
 2.  Azure AD の資格情報を入力した後は、[デバイスのオプション] ページで実行する操作を選択できます。
     ![デバイスの操作](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ハイブリッド Azure AD の参加を構成する](../device-management-hybrid-azuread-joined-devices-setup.md)
 * [デバイス ライトバックを構成/無効化する](how-to-connect-device-writeback.md)

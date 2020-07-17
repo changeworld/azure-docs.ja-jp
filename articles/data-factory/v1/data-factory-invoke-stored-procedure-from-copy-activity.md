@@ -1,24 +1,23 @@
 ---
-title: Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し | Microsoft Docs
+title: Azure Data Factory のコピー アクティビティからストアド プロシージャを呼び出す
 description: Azure Data Factory のコピー アクティビティから、Azure SQL Database または SQL Server のストアド プロシージャを呼び出す方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 35e9347039a7b9939ab4d2719f9738429dec168c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016071"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74924099"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し
 > [!NOTE]
@@ -91,7 +90,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 )
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 完全な JSON の例については、次のコネクタに関する記事を参照してください。 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

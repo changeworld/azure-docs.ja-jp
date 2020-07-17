@@ -1,19 +1,14 @@
 ---
-title: GPU 対応 Azure コンテナー インスタンスをデプロイする
-description: GPU リソースで実行する Azure コンテナー インスタンスをデプロイする方法について説明します。
-services: container-instances
-author: dlepow
-manager: jeconnoc
-ms.service: container-instances
+title: GPU 対応コンテナー インスタンスをデプロイする
+description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
-ms.date: 04/17/2019
-ms.author: danlep
-ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 02/19/2020
+ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000659"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77525289"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -38,6 +33,9 @@ ms.locfileid: "60000659"
 
 ## <a name="about-gpu-resources"></a>GPU リソースについて
 
+> [!IMPORTANT]
+> GPU リソースは、要求時にのみ使用できます。 GPU リソースへのアクセスを要求するには、[Azure サポート要求][azure-support]を送信してください。
+
 ### <a name="count-and-sku"></a>カウントと SKU
 
 コンテナー インスタンスで GPU を使用するには、次の情報を使って *GPU リソース*を指定します。
@@ -47,9 +45,9 @@ ms.locfileid: "60000659"
 
   | SKU | VM ファミリ |
   | --- | --- |
-  | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [NC](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
@@ -118,7 +116,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Resource Manager テンプレートの例
 
-GPU リソースでコンテナー グループをデプロイするには、[Resource Manager テンプレート](container-instances-multi-container-group.md)を使用する方法もあります。 まず、`gpudeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) トレーニング ジョブを実行する V100 GPU を搭載したコンテナー インスタンスをデプロイします。 ワークロードを実行するには、リソース要求だけで十分です。
+GPU リソースでコンテナー グループをデプロイするには、[Resource Manager テンプレート](container-instances-multi-container-group.md)を使用する方法もあります。 まず、`gpudeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。 この例では、MNIST データセットに対して [TensorFlow](https://www.tensorflow.org/) トレーニング ジョブを実行する V100 GPU を搭載したコンテナー インスタンスをデプロイします。 ワークロードを実行するには、リソース要求だけで十分です。
 
 ```JSON
 {
@@ -209,9 +207,9 @@ Accuracy at step 990: 0.969
 Adding run metadata for 999
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-GPU のリソースの使用は高価になる可能性があるため、コンテナーが長期間にわたり予期せず実行されていることがないようにします。 Azure portal でコンテナーを監視するか、[az container show][az-container-show] コマンドを使用して、コンテナー グループの状態を確認します。 例: 
+GPU のリソースの使用は高価になる可能性があるため、コンテナーが長期間にわたり予期せず実行されていることがないようにします。 Azure portal でコンテナーを監視するか、[az container show][az-container-show] コマンドを使用して、コンテナー グループの状態を確認します。 次に例を示します。
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
@@ -224,7 +222,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用したコンテナー グループのデプロイについて学習します。
 * Azure での [GPU 最適化済み VM サイズ](../virtual-machines/linux/sizes-gpu.md)について学習します。
@@ -235,6 +233,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

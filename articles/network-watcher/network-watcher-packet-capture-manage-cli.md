@@ -3,9 +3,7 @@ title: Azure Network Watcher でパケット キャプチャを管理する - Az
 description: このページでは、Azure CLI を使って Network Watcher のパケット キャプチャ機能を管理する方法を説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e6b1d77d002b8c1ed32a4e7adbdd1a46cf65668
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687086"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382717"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLI を使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -45,7 +43,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 この記事では、次のリソースがあることを前提としています。
 
 - パケット キャプチャを作成するリージョン内の Network Watcher インスタンス
-- パケット キャプチャ拡張機能が有効になっている仮想マシン。
+- パケット キャプチャ拡張機能が有効になっている仮想マシン
 
 > [!IMPORTANT]
 > パケット キャプチャを仮想マシン上で実行するにはエージェントが必要です。 エージェントは、拡張機能としてインストールされます。 VM 拡張機能については、[仮想マシン拡張機能とその機能](../virtual-machines/windows/extensions-features.md)に関するページを参照してください。
@@ -54,26 +52,34 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 ### <a name="step-1"></a>手順 1
 
-ゲスト仮想マシンにパケット キャプチャ エージェントをインストールするには、`az vm extension set` コマンドレットを実行します。
+ゲスト仮想マシンにパケット キャプチャ エージェントをインストールするには、`az vm extension set` コマンドを実行します。
 
 Windows 仮想マシンの場合:
 
-```azurecli
+```azurecli-interactive
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentWindows --version 1.4
 ```
 
 Linux 仮想マシンの場合:
 
-```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+```azurecli-interactive
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>手順 2.
 
 エージェントがインストールされていることを確認するために、リソース グループと仮想マシン名を渡して `vm extension show` コマンドレットを実行します。 結果のリストを調べて、エージェントがインストールされていることを確認します。
 
-```azurecli
+Windows 仮想マシンの場合:
+
+```azurecli-interactive
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+```
+
+Linux 仮想マシンの場合:
+
+```azurecli-interactive
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
 以下のサンプルは、`az vm extension show` の実行に対する応答の例です。
@@ -104,29 +110,21 @@ az vm extension show --resource-group resourceGroupName --vm-name virtualMachine
 
 ### <a name="step-1"></a>手順 1
 
-次の手順では、Network Watcher インスタンスを取得します。 Network Watcher の名前は、手順 4 で `az network watcher show` コマンドレットに渡されます。
+ストレージ アカウントを取得します。 このストレージ アカウントは、パケット キャプチャ ファイルの格納に使用されます。
 
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
+```azurecli-interactive
+az storage account list
 ```
 
 ### <a name="step-2"></a>手順 2.
 
-ストレージ アカウントを取得します。 このストレージ アカウントは、パケット キャプチャ ファイルの格納に使用されます。
+この時点で、パケット キャプチャを作成する準備が整いました。この時点で、パケット キャプチャを作成する準備が整いました。  まず、構成するパラメーターを確認してみましょう。 フィルターは、パケットキャプチャによって格納されるデータを制限するために使用できるパラメーターです。 次の例では、いくつかのフィルターを使用してパケット キャプチャを設定します。  最初の 3 つのフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への発信 TCP トラフィックのみを収集します。  最後のフィルターは、UDP トラフィックのみを収集します。
 
-```azurecli
-azure storage account list
-```
-
-### <a name="step-3"></a>手順 3.
-
-フィルターを使用して、パケット キャプチャによって格納されるデータを制限できます。 次の例では、いくつかのフィルターを使用してパケット キャプチャを設定します。  最初の 3 つのフィルターは、ローカル IP 10.0.0.3 から宛先ポート 20、80、443 への発信 TCP トラフィックのみを収集します。  最後のフィルターは、UDP トラフィックのみを収集します。
-
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-次の例は、`az network watcher packet-capture create` コマンドレットを実行したときに予想される出力です。
+次の例は、`az network watcher packet-capture create` コマンドを実行したときに予想される出力です。
 
 ```json
 {
@@ -181,13 +179,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>パケット キャプチャを取得する
 
-`az network watcher packet-capture show-status` コマンドレットを実行して、現在実行中または完了したパケット キャプチャの状態を取得します。
+`az network watcher packet-capture show-status` コマンドを実行して、現在実行中または完了したパケット キャプチャの状態を取得します。
 
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-次の例は、`az network watcher packet-capture show-status` コマンドレットからの出力です。 次の例は、StopReason が TimeExceeded でキャプチャが Stopped となった場合の例です。 
+次の例は、`az network watcher packet-capture show-status` コマンドからの出力です。 次の例は、StopReason が TimeExceeded でキャプチャが Stopped となった場合の例です。
 
 ```
 {
@@ -206,9 +204,9 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>パケット キャプチャを停止する
 
-`az network watcher packet-capture stop` コマンドレットを実行することで、キャプチャ セッションが進行中の場合は停止します。
+`az network watcher packet-capture stop` コマンドを実行することで、キャプチャ セッションが進行中の場合は停止します。
 
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
@@ -217,7 +215,7 @@ az network watcher packet-capture stop --name packetCaptureName --location westc
 
 ## <a name="delete-a-packet-capture"></a>パケット キャプチャを削除する
 
-```azurecli
+```azurecli-interactive
 az network watcher packet-capture delete --name packetCaptureName --location westcentralus
 ```
 
@@ -234,7 +232,7 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 

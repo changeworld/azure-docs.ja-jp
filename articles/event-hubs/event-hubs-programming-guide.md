@@ -1,5 +1,5 @@
 ---
-title: プログラミング ガイド - Azure Event Hubs | Microsoft Docs
+title: .NET プログラミング ガイド - Azure Event Hubs （レガシー） | Microsoft Docs
 description: この記事では、Azure .NET SDK を使用して Azure Event Hubs 用のコードを記述する方法について説明します。
 services: event-hubs
 documentationcenter: na
@@ -7,25 +7,29 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236239"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
+# <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs の .NET プログラミング ガイド (レガシー Microsoft.Azure.EventHubs パッケージ)
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
+
+> [!WARNING]
+> このガイドは、以前の**Microsoft.Azure.EventHubs**パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
+
 
 ## <a name="event-publishers"></a>イベント発行元
 
 イベントは HTTP POST か AMQP 1.0 接続を使用して、イベント ハブに送信します。 何をいつ利用するかは、解決対象の具体的なシナリオによります。 AMQP 1.0 接続は Service Bus の仲介型接続として課金され、頻繁にメッセージ量が多くなり、低遅延の要件があるシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
-.NET のマネージド API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient][] クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
+.NET のマネージド API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient][] クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ (Properties)、イベントに関するヘッダー情報 (SystemProperties) が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 Event Hubs をサポートする .NET クラスが [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージ内に用意されています。 Visual Studio ソリューション エクスプローラーまたは Visual Studio の [パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)を使用してインストールできます。 これを行うには、 [パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) のウィンドウに次のコマンドを入力します。
 
 ```shell
@@ -58,7 +62,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="event-serialization"></a>イベントのシリアル化
 
-[EventData][] クラスには[オーバーロードされたコンストラクターが 2 つ](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)あります。これらのコンストラクターは、イベント データ のペイロードを表すさまざまなパラメーター、バイト配列、またはバイト配列を受け取ります。 JSON と共に [EventData][] を使用するときには、JSON でエンコードされた文字列のバイト配列を取得するのに **Encoding.UTF8.GetBytes()** を使用できます。 例: 
+[EventData][] クラスには[オーバーロードされたコンストラクターが 2 つ](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)あります。これらのコンストラクターは、イベント データ のペイロードを表すさまざまなパラメーター、バイト配列、またはバイト配列を受け取ります。 JSON と共に [EventData][] を使用するときには、JSON でエンコードされた文字列のバイト配列を取得するのに **Encoding.UTF8.GetBytes()** を使用できます。 次に例を示します。
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -70,6 +74,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>パーティション キー
+
+> [!NOTE]
+> パーティションをよく知らない場合は、[この記事](event-hubs-features.md#partitions)を参照してください。 
 
 イベント データを送信するときに、パーティション割り当てを生成するためにハッシュされる値を指定できます。 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) プロパティを使用して、パーティションを指定します。 ただし、パーティションを使用するという決定は、可用性と整合性のどちらを優先するかを選択することを意味します。 
 
@@ -107,7 +114,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 例: 
+イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 次に例を示します。
 
 > [!NOTE]
 > EventProcessorHost およびその関連クラスは **Microsoft.Azure.EventHubs.Processor** パッケージ内に用意されています。 [この記事](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)の手順に従うか、[パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウで `Install-Package Microsoft.Azure.EventHubs.Processor` コマンドを発行して、パッケージをご自分の Visual Studio プロジェクトに追加します。
@@ -137,11 +144,14 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 ## <a name="publisher-revocation"></a>発行元失効
 
-[EventProcessorHost][] の高度なランタイム機能に加え、Event Hubs は特定の発行元がイベント ハブにイベントを発行するのを防ぐ目的で発行元失効を有効にします。 このような機能は、発行元のトークンが侵害されたり、ソフトウェア更新によって不適切な動作が発生したりする場合に便利です。 そのような状況では、SAS トークンの一部である発行元 ID を利用してイベントの発行をブロックできます。
+イベント プロセッサ ホストの高度なランタイム機能に加え、Event Hubs サービスは特定の発行元がイベント ハブにイベントを送信するのを防ぐ目的で[発行元失効](/rest/api/eventhub/revoke-publisher)を有効にします。 このような機能は、発行元のトークンが侵害されたり、ソフトウェア更新によって不適切な動作が発生したりする場合に便利です。 そのような状況では、SAS トークンの一部である発行元 ID を利用してイベントの発行をブロックできます。
+
+> [!NOTE]
+> 現時点では、この機能 ([発行元失効](/rest/api/eventhub/revoke-publisher)) は REST API でのみサポートされています。
 
 発行元失効の詳細のほか、発行元として Event Hubs に送信する方法の詳細については、[Event Hubs の大規模で安全な発行](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)に関するサンプルを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 

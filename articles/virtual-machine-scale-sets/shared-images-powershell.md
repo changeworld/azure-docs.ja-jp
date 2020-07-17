@@ -1,27 +1,19 @@
 ---
-title: 共有 VM イメージを使用して Azure のスケール セットを作成する | Microsoft Docs
+title: 共有 VM イメージを使用して Azure のスケール セットを作成する
 description: Azure PowerShell を使用して Azure の仮想マシン スケール セットをデプロイするために使用する共有 VM イメージを作成する方法について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: axayjo
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/25/2019
-ms.author: akjosh; cynthn
-ms.custom: ''
-ms.openlocfilehash: ff8d94213e4e07b6597f6195126116a607c18bf7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.subservice: imaging
+ms.topic: how-to
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191691"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792787"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Azure PowerShell を使用した仮想マシン スケール セットの共有イメージの作成および使用
 
@@ -31,18 +23,11 @@ ms.locfileid: "65191691"
 
 ギャラリーは最上位リソースで、完全なロールベースのアクセス制御 (RBAC) が可能です。 イメージのバージョン管理もできるため、Azure リージョンの別のセットに各イメージのバージョンをレプリケートできます。 ギャラリーは、マネージド イメージでのみ機能します。 
 
-共有イメージ ギャラリー機能には、リソースの種類が複数あります。 それらを、この記事の中で使用または作成していきます。
+共有イメージ ギャラリー機能には、リソースの種類が複数あります。 
 
-| Resource | 説明|
-|----------|------------|
-| **マネージド イメージ** | これは、単独で使用することも、イメージ ギャラリーに**イメージ バージョン**を作成するために使用することもできる基本的なイメージです。 マネージド イメージは、一般化された VM から作成されます。 マネージド イメージは、複数の VM を作成する際に使用できる特別な種類の VHD で、共有イメージ バージョンを作成する際にも使用できるようになりました。 |
-| **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー**は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
-| **イメージ定義** | イメージはギャラリー内で定義され、内部で使用するためにイメージと要件に関する情報を伝達します。 この情報には、イメージが Windows または Linux のどちらか、リリース ノート、および最小と最大のメモリ要件が含まれます。 これは、イメージの種類の定義です。 |
-| **イメージ バージョン** | **イメージ バージョン**は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、**イメージ バージョン**を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -55,31 +40,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
-## <a name="create-a-scale-set-from-the-shared-image-version"></a>共有イメージ バージョンからスケール セットを作成する
-
-[New-AzVmss](/powershell/module/az.compute/new-azvmss) を使用して仮想マシン スケール セットを作成します。 次の例では、新しいイメージ バージョンから米国西部のデータセンターにスケール セットを作成します。 仮想ネットワーク用の Azure ネットワーク リソース、パブリック IP アドレス、およびロード バランサーが自動的に作成されます。 メッセージが表示されたら、スケール セット内の VM インスタンスに使用する自分の管理者資格情報を設定してください。
-
-```azurepowershell-interactive
-New-AzVmss `
-  -ResourceGroupName myVMSSRG `
-  -Location 'South Central US' `
-  -VMScaleSetName 'myScaleSet' `
-  -VirtualNetworkName 'myVnet' `
-  -SubnetName 'mySubnet'`
-  -PublicIpAddressName 'myPublicIPAddress' `
-  -LoadBalancerName 'myLoadBalancer' `
-  -UpgradePolicyMode 'Automatic' `
-  -ImageName $imageVersion.Id
-```
-
-すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
-
-[!INCLUDE [virtual-machines-common-gallery-list-ps](../../includes/virtual-machines-common-gallery-list-ps.md)]
-
-[!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 

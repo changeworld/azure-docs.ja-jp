@@ -1,20 +1,20 @@
 ---
-title: Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する - Azure
-description: Enterprise セキュリティ パッケージを使用して Azure HDInsight に HBase 用の Apache Ranger ポリシーを構成する方法について説明します。
-services: hdinsight
+title: Apache HBase および Enterprise セキュリティ パッケージ - Azure HDInsight
+description: チュートリアル - Enterprise セキュリティ パッケージを使用して Azure HDInsight に HBase 用の Apache Ranger ポリシーを構成する方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/04/2019
+ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117287"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73044643"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する (プレビュー)
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 
 Enterprise セキュリティ パッケージ (ESP) の Apache HBase クラスター用の Apache Ranger ポリシーを構成する方法について説明します。 ESP クラスターは、ユーザーがドメイン資格情報で認証できるドメインに接続されます。 このチュートリアルでは、HBase テーブル内の異なる列ファミリへのアクセスを制限する 2 つの Ranger ポリシーを作成します。
 
@@ -30,7 +30,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache HBase クラス�
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [Azure Portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインします。
 
 * [Enterprise セキュリティ パッケージで HDInsight HBase クラスター](apache-domain-joined-configure-using-azure-adds.md)を作成します。
 
@@ -86,9 +86,10 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 4. テーブルの内容を表示します。
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
-    ![HDInsight Hadoop HBase シェル](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase シェルの出力](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
 
@@ -96,11 +97,11 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 1. **Ranger 管理 UI** を開きます。 **[HBase]** の下の **[\<ClusterName>_hbase]** をクリックします。
 
-   ![Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. **[List of Policies]\(ポリシーの一覧\)** 画面に、このクラスター用に作成されたすべての Ranger ポリシーが表示されます。 構成済みポリシーが 1 つリストされる場合があります。 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします。
 
-    ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase ポリシーの一覧](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. **[Create Policy]\(ポリシーの作成\)** 画面で、次の値を入力します。
 
@@ -112,14 +113,14 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    |[HBase Column]\(HBase の列\)   |  * |
    |[Select Group]\(グループの選択\)  | |
    |ユーザーの選択  | sales_user1 |
-   |アクセス許可  | 読み取り |
+   |アクセス許可  | Read |
 
    トピック名には、次のワイルドカードを含めることができます。
 
    * `*` は、文字が 0 回以上出現することを示します。
    * `?` は、1 文字を示します。
 
-   ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![sales 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >**[ユーザーの選択]** にドメイン ユーザーが自動的に設定されない場合は、Ranger が Azure AD と同期されるまでしばらく待ってください。
@@ -136,9 +137,9 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    |[HBase Column]\(HBase の列\)   |  * |
    |[Select Group]\(グループの選択\)  | |
    |ユーザーの選択  | marketing_user1 |
-   |アクセス許可  | 読み取り |
+   |アクセス許可  | Read |
 
-   ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![marketing 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. **[Add]** をクリックしてポリシーを保存します。
 
@@ -146,7 +147,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 構成された Ranger ポリシーに基づいて、**sales_user1** は、`Name` と `Contact` の両方の列ファミリの列のすべてのデータを表示できます。 **marketing_user1** は、`Contact` 列ファミリのデータのみを表示できます。
 
-### <a name="access-data-as-salesuser1"></a>sales_user1 としてデータにアクセスする
+### <a name="access-data-as-sales_user1"></a>sales_user1 としてデータにアクセスする
 
 1. クラスターへの新しい SSH 接続を開きます。 次のコマンドを使用して、クラスターにサインインします。
 
@@ -188,7 +189,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>marketing_user1 としてデータにアクセスする
+### <a name="access-data-as-marketing_user1"></a>marketing_user1 としてデータにアクセスする
 
 1. クラスターへの新しい SSH 接続を開きます。 次のコマンドを使用して、**marketing_user1** としてサインインします。
 
@@ -202,14 +203,14 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    kinit marketing_user1
    ```
 
-2. HBase シェルを開き、`Customers` テーブルをスキャンします。
+1. HBase シェルを開き、`Customers` テーブルをスキャンします。
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. marketing ユーザーは `Contact` 列ファミリの 5 列のみを表示できることに注意してください。
+1. marketing ユーザーは `Contact` 列ファミリの 5 列のみを表示できることに注意してください。
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,21 +227,21 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
     2 row(s) in 0.0730 seconds
     ```
 
-9. Ranger UI から監査アクセス イベントを表示します。
+1. Ranger UI から監査アクセス イベントを表示します。
 
-   ![Ranger UI ポリシーの監査](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger UI ポリシーの監査](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 上部の**検索**ボックスに「**HDInsight**」と入力します。 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Apache HBase の使用](../hbase/apache-hbase-tutorial-get-started-linux.md)

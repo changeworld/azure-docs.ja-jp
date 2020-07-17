@@ -1,24 +1,24 @@
 ---
-title: Azure Maps を使った複数のルート | Microsoft Docs
-description: Azure Maps を使用してさまざまな移動モードのルートを検索します
-author: walsehgal
-ms.author: v-musehg
-ms.date: 03/07/2019
+title: チュートリアル:移動モード別に複数のルートを検索する |Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps を使用して、さまざまな移動モードでルートを検索する方法について説明します。
+author: philmea
+ms.author: philmea
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0d201baec253abee9ad8a998dd36968927a25a6
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: c7ed2421f468dfbb64c635683a7909b517105bc7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357599"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80333806"
 ---
-# <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
+# <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索します
 
-このチュートリアルでは、Azure Maps のアカウントとルート サービスを使って、目的地までのルートを移動モードの優先順に検索する方法について説明します。 マップには 2 つのルートを表示します (乗用車用とトラック用)。これらのルートは、高さ、重量、積み荷の危険性を理由に制限される場合があります。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、Azure Maps アカウントとルート サービスの使い方について説明します。 ルート サービスで、目的地までのルートを移動モードの優先順に検索することができます。 マップには 2 種類のルートを表示できます (乗用車用とトラック用)。 ルート サービスでは、車両の高さと重量、積み荷の危険性から生じる制限が加味されます。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * マップ コントロール API を使って新しい Web ページを作成する
@@ -27,8 +27,7 @@ ms.locfileid: "66357599"
 > * マップ上に複数のルートを表示する
 
 ## <a name="prerequisites"></a>前提条件
-
-先に進む前に、最初のチュートリアルの手順に従って [Azure Maps アカウントを作成](./tutorial-search-location.md#createaccount)し、[アカウントのサブスクリプション キーを取得](./tutorial-search-location.md#getkey)してください。
+先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順に従ってください。S1 価格レベルを選択します。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="create-a-new-map"></a>新しいマップの作成
 
@@ -50,7 +49,7 @@ ms.locfileid: "66357599"
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -118,7 +117,7 @@ ms.locfileid: "66357599"
 
 2. **MapTruckRoute.html** ファイルを保存し、ブラウザーでページを更新します。 マップと対話してロサンゼルスにズームインすると、道路が現在の交通データ付きで表示されます。
 
-   ![トラフィック マップの表示](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![マップ上にトラフィックを表示する](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 
@@ -159,7 +158,7 @@ ms.locfileid: "66357599"
     });
     ```
     
-    マップの `ready` イベントのハンドラーに、ルートの線および起点と終点を格納するためのデータ ソースが作成されます。 線レイヤーを作成してデータ ソースにアタッチすることで、ルートの線のレンダリング方法を定義します。 式を使って、線の幅と色をルートの線の特徴に関するプロパティから取得します。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが覆い隠されないようになります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。 
+    マップの `ready` イベントのハンドラーで、ルートの線および起点と終点を格納するためのデータ ソースが作成されます。 線レイヤーを作成してデータ ソースにアタッチすることで、ルートの線のレンダリング方法を定義します。 式を使って、線の幅と色をルートの線の特徴に関するプロパティから取得します。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが隠れなくなります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。 ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。 
     
 2. このチュートリアルでは、シアトルにある架空の会社 (Fabrikam) を起点とし、Microsoft のオフィスを終点に設定します。 マップの `ready` イベントのハンドラーに、次のコードを追加します。
 
@@ -193,7 +192,7 @@ ms.locfileid: "66357599"
 
     起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンの画像サイズ (ピクセル) を相殺するためにパディングを追加しています。
 
-4. ファイルを保存し、ブラウザーを更新してマップ上にピンを表示します。 マップの中心がシアトルに設定され、起点を示す丸い青色のピンと、終点を示す青色のピンが表示されます。
+4. ファイルを保存し、ブラウザーを更新してマップ上にピンを表示します。 マップの中心がシアトルに設定されます。 起点を示す丸い青色のピンと、終点を示す青色のピンが表示されます。
 
    ![起点と終点が表示されたマップ](./media/tutorial-prioritized-routes/pins-map.png)
 
@@ -201,7 +200,11 @@ ms.locfileid: "66357599"
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>トラベルのモードの優先順にルートを表示する
 
-このセクションでは、Maps のルート サービス API を使って、指定した起点から終点までの複数のルートを、移動のモードに基づいて検索する方法について説明します。 ルーティング サービスの API では、現在のトラフィック状況を考慮したうえで、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳細については、[ルートの道順の取得](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)に関するページを参照してください。 **マップを読み込む eventListener 内に**以下のコード ブロックをすべて追加し、マップが完全に読み込まれた後に、それらが読み込まれるようにする必要があります。
+ここでは、Maps のルート サービス API の使い方について説明します。 ルート API を使って、移動のモードに基づき、指定した始点から終点までの複数のルートを検索します。 ルート サービスによって、"*最速*"、"*最短*"、"*エコ*"、または "*スリリング*" なルートを計画する API が提供されます。 これらの API では、2 つの場所の間でルートを計画できるだけでなく、現在の交通状況も考慮されます。 
+
+ルート API では、Azure の膨大な履歴トラフィック データベースを使って、将来のルートを計画することもできます。 この API を使用すると、指定した日時のルート所要時間を予測できます。 詳細については、[ルートの道順の取得](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)に関するページを参照してください。 
+
+**マップを読み込む eventListener 内に**以下のコード ブロックをすべて追加し、マップが完全に読み込まれた後に、それらが読み込まれるようにする必要があります。
 
 1. GetMap 関数内に、次の JavaScript コードを追加します。
 
@@ -245,7 +248,7 @@ ms.locfileid: "66357599"
     });
     ```
 
-    上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 さらに、データ ソース内の他の行の前に確実にレンダリングされるように、インデックス 0 が追加されます。 トラックのルート計算は、えてして乗用車のルート計算よりも時間がかかるものであり、トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまうためです。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。
+    上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 インデックス 0 とすることで確実に、データ ソース内の他の線の前にレンダリングされます。 これは、トラックのルート計算が乗用車のルート計算よりも時間がかかることが多いためです。 トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまいます。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。
 
 3. 次の JavaScript コードを追加して、乗用車のルートを構築し、結果を表示します。
 
@@ -271,9 +274,9 @@ ms.locfileid: "66357599"
 
     ![Azure Route Service を使用した優先順のルート](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    トラックのルートは青色の太い線で、乗用車のルートは紫色の細い線で表示されます。 乗用車のルートは、I-90 経由でワシントン湖を渡っています。この道路は住宅地の下のトンネルを通過するため、危険廃棄物の積み荷が制限されています。 トラックのルートは、積み荷の種類を USHazmatClass2 に指定したので、別の高速道路を使って適切にルート指定されています。
+    トラックのルートは太い青色です。また、乗用車のルートは細い紫色です。 乗用車のルートは、I-90 経由でワシントン湖を渡っています。この道路は住宅地の下のトンネルを通過します。 このトンネルは住宅地に近いため、危険廃棄物の積み荷が制限されています。 トラックのルートは、積み荷の種類を USHazmatClass2 に指定したので、別の高速道路を使ってルート指定されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

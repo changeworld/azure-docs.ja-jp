@@ -1,21 +1,21 @@
 ---
 title: レビュー ツールの設定を構成する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator 用のチーム、タグ、コネクタ、ワークフロー、および資格情報を構成または取得するには、レビュー ツールを使用します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: pafarley
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756516"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79218853"
 ---
 # <a name="configure-the-review-tool"></a>レビュー ツールの構成
 
@@ -35,7 +35,7 @@ ms.locfileid: "58756516"
 
 ### <a name="create-a-subteam"></a>サブチームを作成する
 
-**[Subteams]\(サブチーム)** セクションに移動し、**[サブチームの追加]** をクリックします。 ダイアログにサブチーム名を入力し、**[保存]** をクリックします。
+**[Subteams]\(サブチーム)** セクションに移動し、 **[サブチームの追加]** をクリックします。 ダイアログにサブチーム名を入力し、 **[保存]** をクリックします。
 
 ![サブチーム名](images/1-Teams-2.PNG)
 
@@ -54,13 +54,13 @@ ms.locfileid: "58756516"
 ### <a name="assign-reviews-to-subteams"></a>サブチームにレビューを割り当てる
 
 サブチームを作成し、メンバーを割り当てたら、これらのサブチームへのコンテンツ [レビュー](../review-api.md#reviews)の割り当てを開始できます。 これは、サイトの **[レビュー]** タブから実行されます。
-サブチームにコンテンツを割り当てるには、右上隅にある省略記号をクリックし、**[Move to]\(移動先)** を選択してからサブチームを選択します。
+サブチームにコンテンツを割り当てるには、右上隅にある省略記号をクリックし、 **[Move to]\(移動先)** を選択してからサブチームを選択します。
 
 ![画像のレビューをサブチームに割り当てる](images/3-review-image-subteam-1.png)
 
 ### <a name="switch-between-subteams"></a>サブチーム間の切り替え
 
-複数のサブチームのメンバーである場合は、これらのサブチームを切り替えて、表示されるコンテンツ レビューを変更できます。 **[レビュー]** タブで、**[既定値]** というラベルの付いたドロップダウン メニューを選択し、**[Choose Subteam]\(サブチームの選択)** を選択します。 自分がメンバーになっているサブチームのコンテンツ レビューのみを表示できます。
+複数のサブチームのメンバーである場合は、これらのサブチームを切り替えて、表示されるコンテンツ レビューを変更できます。 **[レビュー]** タブで、 **[既定値]** というラベルの付いたドロップダウン メニューを選択し、 **[Choose Subteam]\(サブチームの選択)** を選択します。 自分がメンバーになっているサブチームのコンテンツ レビューのみを表示できます。
 
 ![サブチーム間の切り替え](images/3-review-image-subteam-2.png)
 
@@ -74,9 +74,9 @@ ms.locfileid: "58756516"
 
 新しいタグを作成するには、各フィールドに短いコード、名前、および説明を入力する必要があります。
 
-- **[Short code]\(短いコード)**: タグの 2 文字のコードを入力します。 例: **cb**。
-- **[名前]**:短く、わかりやすいタグ名をスペースなしの小文字で入力します。 例: **isbullying**。
-- **[説明]**: (省略可能) そのタグの対象とするコンテンツの種類の説明を入力します。 例:**ネットいじめの説明または例**。
+- **[Short code]\(短いコード)** : タグの 2 文字のコードを入力します。 例: **cb**。
+- **Name**:短く、わかりやすいタグ名をスペースなしの小文字で入力します。 例: **isbullying**。
+- **[説明]** : (省略可能) そのタグの対象とするコンテンツの種類の説明を入力します。 例:**ネットいじめの説明または例**。
 
 **[追加]** をクリックしてタグを追加し、タグの作成を完了したら **[保存]** をクリックします。
 
@@ -90,14 +90,14 @@ ms.locfileid: "58756516"
 
 **[コネクタ]** タブを使用すると、コンテンツ [ワークフロー](../review-api.md#workflows)の一部としてさまざまな方法でコンテンツを処理できるサービス固有のプラグインであるコネクタを管理できます。
 
-ワークフローを作成するときの既定のコネクタは、コンテンツを **adult** または **racy** としてマークしたり、不適切な表現を見つけたりできる Content Moderator コネクタです。 ただし、対応するサービスの資格情報を持っていれば、次に一覧表示されている他のコネクタを使用できます (たとえば、Face API コネクタを使用するには、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) サブスクリプション キーを取得する必要があります)。
+ワークフローを作成するときの既定のコネクタは、コンテンツを **adult** または **racy** としてマークしたり、不適切な表現を見つけたりできる Content Moderator コネクタです。 ただし、対応するサービスの資格情報を持っていれば、次に一覧表示されている他のコネクタを使用できます (たとえば、Face コネクタを使用するには、[Face](https://docs.microsoft.com/azure/cognitive-services/face/overview) サブスクリプション キーを取得する必要があります)。
 
 [レビュー ツール](./human-in-the-loop.md)には、次のコネクタが含まれています。
 
-- Emotion API
-- Face API
+- Emotion
+- Face
 - PhotoDNA Cloud Service
-- Text Analytics API
+- Text Analytics
 
 ### <a name="add-a-connector"></a>コネクタを追加する
 
@@ -121,23 +121,23 @@ ms.locfileid: "58756516"
 
 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)は、サインアップ時に Azure Content Moderator サービスの無料試用版キーを生成しますが、それを Azure アカウントの既存のキーを使用するように構成することもできます。 無料試用版キーには厳密な使用制限 ([料金と制限](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)) があるため、これは大規模なシナリオに推奨されます。
 
-Azure で [Content Moderator リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)を作成している場合は、Azure Portal でそのリソースに移動し、**[キー]** ブレードを選択します。 いずれかのキーをコピーします。
+Azure で [Content Moderator リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)を作成している場合は、Azure Portal でそのリソースに移動し、 **[キー]** ブレードを選択します。 いずれかのキーをコピーします。
 
 ![Azure portal での Content Moderator キー](images/credentials-azure-portal-keys.PNG)
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[資格情報]** タブで、**[Workflow Settings]\(ワークフロー設定)** ウィンドウに移動して **[編集]** を選択し、**[Ocp-Apim-Subscription-Key]** フィールドにキーを貼り付けます。 これで、モデレーション API を呼び出すワークフローは Azure 資格情報を使用します。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[資格情報]** タブで、 **[Workflow Settings]\(ワークフロー設定)** ウィンドウに移動して **[編集]** を選択し、 **[Ocp-Apim-Subscription-Key]** フィールドにキーを貼り付けます。 これで、モデレーション API を呼び出すワークフローは Azure 資格情報を使用します。
 
 > [!NOTE]
 > **[Workflow Settings]\(ワークフロー設定)** ウィンドウ内の他の 2 つのフィールドは、カスタム用語とカスタム イメージの一覧のためです。 これらの詳細については、[カスタム用語](../try-terms-list-api.md)または[カスタム イメージ](../try-image-list-api.md)のガイドを参照してください。
 
 ### <a name="use-your-azure-account-with-the-review-apis"></a>レビュー API で Azure アカウントを使用する
 
-レビュー API で Azure キーを使用するには、リソース ID を取得する必要があります。 Azure Portal で Content Moderator リソースに移動し、**[プロパティ]** ブレードを選択します。 [リソース ID] の値をコピーし、それをレビュー ツールの **[資格情報]** タブの **[Whitelisted Resource Id(s)]\(ホワイトリスト リソース ID)** フィールドに貼り付けます。
+レビュー API で Azure キーを使用するには、リソース ID を取得する必要があります。 Azure Portal で Content Moderator リソースに移動し、 **[プロパティ]** ブレードを選択します。 [リソース ID] の値をコピーし、それをレビュー ツールの **[資格情報]** タブの **[Whitelisted Resource Id(s)]\(ホワイトリスト リソース ID)** フィールドに貼り付けます。
 
 ![Azure portal での Content Moderator リソース ID](images/credentials-azure-portal-resourceid.PNG)
 
 両方の場所にサブスクリプション キーを入力した場合、レビュー ツール アカウントに付属する試用版キーは使用されなくなりますが、引き続き使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [レビュー ツールのクイック スタート](../quick-start.md)に従って、コンテンツ モデレーションのシナリオでレビュー ツールの使用を開始してください。

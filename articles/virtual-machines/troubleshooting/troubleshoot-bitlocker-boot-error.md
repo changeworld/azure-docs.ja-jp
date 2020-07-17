@@ -4,27 +4,27 @@ description: Azure VM での BitLocker ブート エラーをトラブルシュ�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 5ac40e3c98da613b53c06908bcde927cc2e81b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: has-adal-ref
+ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684758"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201339"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
  この記事では、Microsoft Azure で Windows 仮想マシン (VM) を開始するときに発生する可能性がある BitLocker エラーについて説明します。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>症状
 
@@ -48,7 +48,7 @@ ms.locfileid: "64684758"
 この方法で問題が解決しない場合は、次の手順で BEK ファイルを手動で復元します。
 
 1. バックアップとして、影響を受ける VM のシステム ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
-2. BitLocker によって暗号化されている[システム ディスクを復旧 VM にアタッチ](troubleshoot-recovery-disks-portal-windows.md)します。 これは、BitLocker で暗号化された VM でのみ利用可能なコマンドである[manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) を実行するために必要です。
+2. [復旧 VM にシステム ディスクを取り付ける](troubleshoot-recovery-disks-portal-windows.md)。 手順 7 で [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) コマンドを実行するには、復旧 VM で **[BitLocker ドライブ暗号化]** 機能を有効にする必要があります。
 
     マネージド ディスクをアタッチすると、エラー メッセージ "contains encryption settings and therefore cannot be used as a data disk” が表示される場合があります。 この状況では、次のスクリプトを実行して、ディスクのアタッチを再試行します。
 
@@ -83,7 +83,7 @@ ms.locfileid: "64684758"
     ```powershell
     $vmName = "myVM"
     $vault = "myKeyVault"
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
+    Get-AzKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
@@ -106,14 +106,14 @@ ms.locfileid: "64684758"
 
     **Content Type** の値が **Wrapped BEK** の場合は、「[Key Encryption Key (KEK) のシナリオ](#key-encryption-key-scenario)」に進んでください。
 
-    これで、ドライブ用の BEK ファイルの名前がわかったので、secret-file-name.BEK ファイルを作成して、BEK ファイル ドライブのロックを解除する必要があります。 
+    これで、ドライブ用の BEK ファイルの名前がわかったので、secret-file-name.BEK ファイルを作成して、BEK ファイル ドライブのロックを解除する必要があります。
 
 6.  BEK ファイルを復元ディスクにダウンロードします。 次のサンプルは、BEK ファイルを C:\BEK フォルダーに保存します。 スクリプトを実行する前に、`C:\BEK\` パスが存在することを確認します。
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK"
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $bek
+    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
@@ -127,19 +127,20 @@ ms.locfileid: "64684758"
     ```
     この例では、アタッチされた OS ディスクはドライブ F です。適切なドライブ文字を使用していることを確認してください。 
 
-    - BEK キーを使用してディスクのロックが正常に解除されれば、 BItLocker の問題は解決されたと考えることができます。 
+8. BEK キーを使用してディスクが正常にロック解除された後、そのディスクを復旧 VM からデタッチし、この新しい OS ディスクを使用して VM を再作成します。
 
-    - BEK キーを使用してもディスクのロックが解除されない場合は、次のコマンドを実行することで、保護の中断を使用して一時的に BitLocker をオフにすることができます。
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - システム ディスクを使用して VM を再構築する場合は、ドライブの暗号化を完全に解除する必要があります。 そのためには、次のコマンドを実行します。
+    > [!NOTE]
+    > ディスクの暗号化を使用している VM では、OS ディスクのスワップはサポートされません。
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  復旧 VM からディスクをデタッチし、影響を受ける VM にシステム ディスクとしてディスクを再アタッチします。 詳細については、「[OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う](troubleshoot-recovery-disks-windows.md)」を参照してください。
+9. それでも新しい VM が正常に起動しない場合は、ドライブのロックを解除した後、次のいずれかの手順を試してください。
+
+    - 保護を中断して、次のように実行して BitLocker を一時的に無効にします。
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - ドライブを完全に復号化します。 そのためには、次のコマンドを実行します。
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Key Encryption Key のシナリオ
 
@@ -184,6 +185,7 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -198,7 +200,7 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     ########################################################################################################################
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $secretName
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
     $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
     $jsonObject = @"
     {
@@ -208,7 +210,7 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     "@
 
     #Get KEK Url
-    $kekUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
+    $kekUrl = (Get-AzKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
     $unwrapKeyRequestUrl = $kekUrl+ "/unwrapkey?api-version=2015-06-01";
 
     #Call KeyVault REST API to Unwrap 
@@ -231,7 +233,7 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. パラメーターを設定します。 このスクリプトは、KEK シークレットを処理して BEK キーを作成した後、それを復旧 VM 上のローカル フォルダーに保存します。
+3. パラメーターを設定します。 このスクリプトは、KEK シークレットを処理して BEK キーを作成した後、それを復旧 VM 上のローカル フォルダーに保存します。 スクリプトの実行時にエラーが発生した場合は、「[スクリプトのトラブルシューティング](#script-troubleshooting)」セクションを参照してください。
 
 4. スクリプトが開始されると、次の出力が表示されます。
 
@@ -254,17 +256,38 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     ```
     この例では、アタッチされた OS ディスクはドライブ F です。適切なドライブ文字を使用していることを確認してください。 
 
-    - BEK キーを使用してディスクのロックが正常に解除されれば、 BItLocker の問題は解決されたと考えることができます。 
+6. BEK キーを使用してディスクが正常にロック解除された後、そのディスクを復旧 VM からデタッチし、この新しい OS ディスクを使用して VM を再作成します。 
 
-    - BEK キーを使用してもディスクのロックが解除されない場合は、次のコマンドを実行することで、保護の中断を使用して一時的に BitLocker をオフにすることができます。
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - システム ディスクを使用して VM を再構築する場合は、ドライブの暗号化を完全に解除する必要があります。 そのためには、次のコマンドを実行します。
+    > [!NOTE]
+    > ディスクの暗号化を使用している VM では、OS ディスクのスワップはサポートされません。
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. それでも新しい VM が正常に起動しない場合は、ドライブのロックを解除した後、次のいずれかの手順を試してください。
 
-6. 復旧 VM からディスクをデタッチし、影響を受ける VM にシステム ディスクとしてディスクを再アタッチします。 詳細については、「[OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う](troubleshoot-recovery-disks-windows.md)」を参照してください。
+    - 保護を中断して、次のコマンドを実行して BitLocker を一時的に無効にします。
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - ドライブを完全に復号化します。 そのためには、次のコマンドを実行します。
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>スクリプトのトラブルシューティング
+
+**エラー:Could not load file or assembly (ファイルまたはアセンブリを読み込めませんでした)**
+
+このエラーは、ADAL アセンブリのパスが間違っているために発生します。 AZ モジュールが現在のユーザーにのみインストールされている場合は、ADAL アセンブリは `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` に配置されます。
+
+`Az.Accounts` フォルダーを検索して正しいパスを検索することもできます。
+
+**エラー:Get-AzKeyVaultSecret or Get-AzKeyVaultSecret is not recognized as the name of a cmdlet (Get-AzKeyVaultSecret または Get-AzKeyVaultSecret はコマンドレットの名前として認識されません)**
+
+以前の AZ PowerShell モジュールを使用している場合、2 つのコマンドを `Get-AzureKeyVaultSecret` と `Get-AzureKeyVaultSecret` に変更する必要があります。
+
+**パラメーターのサンプル**
+
+| パラメーター  | 値のサンプル  |説明   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | キーを格納するキー コンテナーの名前 |
+|$kekName   |mykey   | VM の暗号化に使用されるキーの名前|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM キーのシークレットの名前|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |BEK ファイルの書き込みパス。|
+|$adTenant  |contoso.onmicrosoft.com   | キー コンテナーをホストする Azure Active Directory の FQDN または GUID |

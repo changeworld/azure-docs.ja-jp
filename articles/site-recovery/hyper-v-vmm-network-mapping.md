@@ -1,19 +1,18 @@
 ---
-title: Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にディザスター リカバリーするためのネットワーク マッピングについて | Microsoft Docs
+title: Site Recovery を使用した Hyper-V (VMM 使用) のネットワーク マッピングについて
 description: Azure Site Recovery を使用して、(VMM クラウドで管理されている) Hyper-V VM を Azure にディザスター リカバリーするためにネットワーク マッピングを設定する方法について説明します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 12/27/2018
+ms.topic: conceptual
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009972"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74082557"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM の Azure へのディザスター リカバリーのためにネットワーク マッピングを準備する
 
@@ -89,12 +88,12 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 これらの設定に基づき、次の表は、ターゲット VM ネットワークを選択する場合に使用可能な選択肢を示します。
 
-**選択肢** | **保護されたクラウド** | **保護するクラウド** | **使用可能なターゲット ネットワーク**
+**Select** | **保護されたクラウド** | **保護するクラウド** | **使用可能なターゲット ネットワーク**
 ---|---|---|---
-VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 使用可能
- | GoldCloud1 | GoldCloud2 | 使用可能
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 使用できません。
- | GoldCloud1 | GoldCloud2 | 使用可能
+VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 利用可能
+ | GoldCloud1 | GoldCloud2 | 利用可能
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 使用不可
+ | GoldCloud1 | GoldCloud2 | 利用可能
 
 
 ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、レプリカの仮想マシンは、フェールオーバー後にそのターゲット サブネットに接続されます。 ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
@@ -121,7 +120,7 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される。 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - セカンダリ VMM サイトへのフェールオーバー後の IP アドレス指定の詳細については、[こちら](hyper-v-vmm-networking.md)を参照してください。
 - Azure へのフェールオーバー後の IP アドレス指定について詳しくは、[こちら](concepts-on-premises-to-azure-networking.md)をご覧ください。

@@ -3,20 +3,20 @@ title: Spark で構築した機械学習モデルを運用化する - Team Data 
 description: Python を使用して、Azure Blob Storage (WASB) に保存されている学習モデルを読み込み、スコア付けする方法を説明します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524584"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76718550"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 
@@ -35,7 +35,7 @@ Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラス�
 ## <a name="prerequisites"></a>前提条件
 
 1. このチュートリアルを実行するには、Azure アカウントと、Spark 1.6 (または Spark 2.0) HDInsight クラスターが必要です。 これらの要件を満たすための方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 このトピックには、ここで使用する 2013 年 NYC タクシー データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法の説明も含まれています。 
-2. ここでスコア付けする機械学習モデルは、Spark 1.6 クラスターまたは Spark 2.0 ノートブックでの「[Spark を使用したデータ探索とモデリング](spark-data-exploration-modeling.md)」のチュートリアルでも作成できます。 
+2. ここでスコア付けする機械学習モデルは、Spark 1.6 クラスターまたは Spark 2.0 ノートブックでの「[Spark を使用したデータ探索とモデリング](spark-data-exploration-modeling.md)」のチュートリアルで作成します。 
 3. Spark 2.0 Notebook では、分類タスクに追加のデータセット (よく知られている 2011 ～ 2012 年の航空会社の定刻出発のデータセット) を使用します。 ノートブックの説明およびノートブックへのリンクは、ノートブックが含まれる GitHub リポジトリの [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 内にあります。 また、このページとリンク先のノートブックに記載しているコードは汎用性があり、どの Spark クラスターでも動作します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -43,7 +43,7 @@ Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラス�
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
-WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、*"wasb///"* で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
+WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、 *"wasb///"* で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>WASB のストレージの場所となるディレクトリ パスの設定
 モデルが保存されるのは、"wasb:///user/remoteuser/NYCTaxi/Models" です。 このパスが正しく設定されていない場合、スコア付けするモデルが読み込まれません。
@@ -104,7 +104,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>プリセットの Spark コンテキストと PySpark マジック
-Jupyter Notebook で提供される PySpark カーネルには、コンテキストがあらかじめ設定されています。 そのため、開発しているアプリケーションの操作を開始する前に Spark コンテキストまたは Hive コンテキストを明示的に設定する必要はありません。 これらのコンテキストは既定で利用できます。 各コンテキストは次のとおりです。
+Jupyter Notebook で提供される PySpark カーネルには、コンテキストがあらかじめ設定されています。 したがって、開発しているアプリケーションの操作を開始する前に Spark コンテキストまたは Hive コンテキストを明示的に設定する必要はありません。 これらのコンテキストは既定で利用できます。
 
 * sc: Spark 用 
 * sqlContext: Hive 用
@@ -120,7 +120,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>データの取り込みとクリーンなデータ フレームの作成
 このセクションでは、スコア付けするデータの取り込みに必要な一連のタスクを実行するコードを紹介します。 タクシーの乗車データと料金ファイル (.tsv ファイルとして保存されています) を結合した 0.1% サンプルを読み取り、データの形式を設定して、クリーンなデータ フレームを作成します。
 
-タクシーの乗車データと料金ファイルは、「[Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](hive-walkthrough.md)」で説明されている手順に基づいて結合されています。
+タクシーの乗車データと料金ファイルは、「 [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](hive-walkthrough.md) 」で説明されている手順に基づいて結合されています。
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -182,7 +182,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:46.37 秒
+上記のセルの実行に要した時間: 46.37 秒
 
 ## <a name="prepare-data-for-scoring-in-spark"></a>Spark でスコア付けを行うためのデータの準備
 このセクションでは、カテゴリの特徴のインデックスを作成し、エンコードし、スケーリングして、MLlib 監視学習アルゴリズムで分類と回帰分析に使用できるように準備する方法を説明します。
@@ -254,10 +254,10 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:5.37 秒
+上記のセルの実行に要した時間: 5.37 秒
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>モデルに入力する特徴配列を含む RDD オブジェクトの作成
-このセクションのコードでは、RDD オブジェクトとしてカテゴリ テキスト データのインデックスを作成し、それをワン ホット エンコーディングすることで、MLlib ロジスティック回帰モデルやツリーベース モデルのトレーニングおよびテストに使用できるようにする方法を示します。 インデックス付きデータは、 [Resilient Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) オブジェクトに格納されます。 これは、Spark における基本的な抽象化です。 RDD オブジェクトは、パーティション分割された変更できない要素のコレクションであり、Spark と平行して処理することができます。
+このセクションのコードでは、RDD オブジェクトとしてカテゴリ テキスト データのインデックスを作成し、それをワン ホット エンコーディングすることで、MLlib ロジスティック回帰モデルやツリーベース モデルのトレーニングおよびテストに使用できるようにする方法を示します。 インデックス付きデータは、 [Resilient Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) オブジェクトに格納されます。 RDD は、Spark における基本的な抽象化です。 RDD オブジェクトは、パーティション分割された変更できない要素のコレクションであり、Spark と平行して処理することができます。
 
 さらにここでは、確率的勾配降下 (SGD) による線形回帰に使用できるように、MLlib の `StandardScalar` を使ってデータをスケーリングする方法を示すコードも示しています。SGD はさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して、特徴を単価差異にスケーリングします。 この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 
 
@@ -328,7 +328,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:11.72 秒
+上記のセルの実行に要した時間: 11.72 秒
 
 ## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a>ロジスティック回帰モデルを利用したスコア付けと BLOB への出力の保存
 このセクションのコードでは、Azure Blob Storage に保存されているロジスティック回帰モデルを読み込み、それを使ってタクシーの乗車時にチップが支払われるかどうかを予測し、標準の分類メトリックを使ってスコア付けした後、結果を Blob Storage に保存してプロットする方法を示します。 スコア付けの結果は RDD オブジェクトに保存されます。 
@@ -359,7 +359,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:19.22 秒
+上記のセルの実行に要した時間: 19.22 秒
 
 ## <a name="score-a-linear-regression-model"></a>線形回帰モデルのスコア付け
 [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) により、確率的勾配降下 (SGD) を使用した線形回帰モデルをトレーニングすることで、チップの金額を予測するための最適化を行いました。 
@@ -392,7 +392,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:16.63 秒
+上記のセルの実行に要した時間: 16.63 秒
 
 ## <a name="score-classification-and-regression-random-forest-models"></a>分類と回帰のランダム フォレスト モデルのスコア付け
 このセクションのコードでは、Azure Blob Storage に保存されている分類と回帰のランダム フォレスト モデルを読み込み、標準の分類方法と回帰方法でそのパフォーマンスをスコア付けした後、結果を Blob Storage に保存する方法を示します。
@@ -438,14 +438,14 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:31.07 秒
+上記のセルの実行に要した時間: 31.07 秒
 
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>分類と回帰の勾配ブースティング ツリー モデルのスコア付け
 このセクションのコードでは、Azure Blob Storage から分類と回帰の勾配ブースティング ツリー モデルを読み込み、標準の分類方法と回帰方法でそのパフォーマンスをスコア付けした後、結果を Blob Storage に保存する方法を示します。 
 
-**spark.mllib** は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類と回帰のための GBT をサポートします。 
+**spark.mllib** は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類と回帰のための GBTS をサポートします。 
 
-[勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類の設定にも使用できます。
+[勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) は、複数のデシジョン ツリーをまとめたものです。 GBTS は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBTS によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 このアルゴリズムは、多クラス分類の設定にも使用できます。
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -488,7 +488,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-上記のセルの実行に要した時間:14.6 秒
+上記のセルの実行に要した時間: 14.6 秒
 
 ## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a>メモリ内のオブジェクトのクリーンアップとスコア付けファイルの場所の出力
     # UNPERSIST OBJECTS CACHED IN MEMORY
@@ -511,17 +511,17 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **出力:**
 
-logisticRegFileLoc:LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
+logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 
-linearRegFileLoc:LinearRegressionWithSGD_2016-05-0317_22_58.878949
+linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22_58.878949
 
-randomForestClassificationFileLoc:RandomForestClassification_2016-05-0317_23_15.939247.txt
+randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23_15.939247.txt
 
-randomForestRegFileLoc:RandomForestRegression_2016-05-0317_23_31.459140.txt
+randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23_31.459140.txt
 
-BoostedTreeClassificationFileLoc:GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
+BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
 
-BoostedTreeRegressionFileLoc:GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
+BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Web インターフェイス経由での Spark モデルの利用
 Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。 HDInsight Spark クラスターでは Livy が既定で有効になっています。 Livy の詳細については、[Livy を使用した Spark ジョブのリモート送信](../../hdinsight/spark/apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 
@@ -580,12 +580,12 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) を使用し、**Logic Apps デザイナー**で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。 
 
-* Azure Portal で、**[+ 新規]** -> **[Web + モバイル]** -> **[ロジック アプリ]** の順に選択して、新しいロジック アプリを作成します。 
+* Azure Portal で、 **[+ 新規]**  ->  **[Web + モバイル]**  ->  **[ロジック アプリ]** の順に選択して、新しいロジック アプリを作成します。 
 * ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
 * HTTP 操作を選択して、次の図に示すようにパラメーターを入力します。
 
 ![Logic Apps デザイナー](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>次の手順
-**クロス検証とハイパーパラメーター スイープ**:クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。
+## <a name="whats-next"></a>次の操作
+**クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md) 」をご覧ください。
 

@@ -1,30 +1,22 @@
 ---
-title: 静的 HTML Web アプリを作成する - Azure App Service | Microsoft Docs
-description: 静的 HTML のサンプル アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'クイック スタート: 静的 HTML Web アプリを作成する'
+description: Azure App Service に、初めての HTML の Hello World を数分でデプロイします。 デプロイには、App Service への数あるデプロイ方法の 1 つである Git を使用します。
+author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139380"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086064"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、基本的な HTML+CSS サイトを Azure App Service にデプロイする方法を示します。 このクイック スタートは [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、基本的な HTML+CSS サイトを Azure App Service にデプロイする方法を示します。 このクイック スタートは [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
 
 ![サンプル アプリのホーム ページ](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -50,14 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
-
-次の例で、<app_name> を一意のアプリ名に置き換えます。
+サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。 次の例で、<app_name> を一意のアプリ名に置き換えます。 静的コンテンツは `--html` フラグによって示されます。
 
 ```bash
 cd html-docs-hello-world
 
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 `az webapp up` コマンドは、次の処理を実行します。
@@ -72,19 +62,19 @@ az webapp up --location westeurope --name <app_name>
 
 このコマンドの実行には、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
 
-```json
+<pre>
 {
-  "app_url": "https://<app_name>.azurewebsites.net",
+  "app_url": "https://&lt;app_name&gt;.azurewebsites.net",
   "location": "westeurope",
-  "name": "<app_name>",
+  "name": "&lt;app_name&gt;",
   "os": "Windows",
   "resourcegroup": "appsvc_rg_Windows_westeurope",
   "serverfarm": "appsvc_asp_Windows_westeurope",
   "sku": "FREE",
-  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
-  < JSON data removed for brevity. >
+  "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 `resourceGroup` の値を書き留めておきます。 これは、「[リソースのクリーンアップ](#clean-up-resources)」セクションで必要になります。
 
@@ -109,7 +99,7 @@ Cloud Shell で、「`nano index.html`」と入力して nano テキスト エ�
 同じ `az webapp up` コマンドを使用して、アプリを再デプロイします。
 
 ```bash
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
@@ -118,9 +108,11 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+作成した Web アプリを管理するには、[Azure portal](https://portal.azure.com) で **[App Services]** を検索して選択します。 
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+![Azure portal で [App Services] を選択する](./media/app-service-web-get-started-html/portal0.png)
+
+**[App Services]** ページで、Azure アプリの名前を選択します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-html/portal1.png)
 
@@ -130,7 +122,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 左側のメニューは、アプリを構成するためのさまざまなページを示しています。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、リソース グループ内に Azure リソースを作成しました。 これらのリソースが将来必要になると想定していない場合、Cloud Shell で次のコマンドを実行して、リソース グループを削除します。 「[Web アプリを作成する](#create-a-web-app)」の手順で、リソース グループ名が自動的に生成されたことを思い出してください。
 
@@ -140,7 +132,7 @@ az group delete --name appsvc_rg_Windows_westeurope
 
 このコマンドの実行には、少し時間がかかる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)

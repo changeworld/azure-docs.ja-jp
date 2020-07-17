@@ -1,23 +1,22 @@
 ---
-title: Node.js から Queue Storage を使用する方法 - Azure Storage
+title: Node.js から Azure Queue storage を使用する - Azure Storage
 description: Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 サンプルは Node.js で記述されています。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: nodejs
-ms.topic: article
-ms.date: 12/08/2016
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/08/2016
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 01afe1ab7b9028f3f77d52f7d6f8ced27f6a79c7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142715"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060933"
 ---
-# <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue サービスを使用して Node.js でキューを作成および削除する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
@@ -328,8 +327,8 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ## <a name="next-steps"></a>次の手順
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* [Azure Storage チームのブログ][Azure Storage Team Blog]。
-* GitHub の [Azure Storage SDK for Node][Azure Storage SDK for Node] リポジトリ。
+* [Azure Storage チームのブログ][Azure Storage Team Blog]
+* GitHub の [Azure Storage SDK for Node][Azure Storage SDK for Node] リポジトリ
 
 
 

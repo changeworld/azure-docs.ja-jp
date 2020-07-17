@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Mozy Enterprise の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Mozy Enterprise の統合 | Microsoft Docs'
 description: Azure Active Directory と Mozy Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,20 +8,21 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 489b5e62-85c2-45c9-8766-326632d48114
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 964d7af92b087bd9905113a25513e2b2f7a3df17
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7d3b7f8982a24856818cbb6ce86060beac969fc2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922333"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74233510"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル:Azure Active Directory と Mozy Enterprise の統合
+# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 
 このチュートリアルでは、Mozy Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Mozy Enterprise と Azure AD の統合には、次の利点があります。
@@ -52,11 +53,11 @@ Azure AD への Mozy Enterprise の統合を構成するには、ギャラリー
 
 **ギャラリーから Mozy Enterprise を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +65,7 @@ Azure AD への Mozy Enterprise の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Mozy Enterprise**」と入力し、結果パネルで **[Mozy Enterprise]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Mozy Enterprise**」と入力し、結果パネルで **[Mozy Enterprise]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の Mozy Enterprise](common/search-new-app.png)
 
@@ -88,15 +89,15 @@ Mozy Enterprise で Azure AD のシングル サインオンを構成し、テ�
 
 Mozy Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Mozy Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Mozy Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,7 +110,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Mozy Enterprise クライアント サポート チーム](https://support.mozy.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -127,13 +128,13 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 1. 別の Web ブラウザーのウィンドウで、Mozy Enterprise の企業サイトに管理者としてログインします。
 
-2. **[構成]** セクションで、**[認証ポリシー]** をクリックします。
+2. **[構成]** セクションで、 **[認証ポリシー]** をクリックします。
    
-    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777314.png "認証ポリシー")
+    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777314.png "[認証ポリシー]")
 
 3. **[認証ポリシー]** セクションで、次の手順に従います。
    
-    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777315.png "認証ポリシー")
+    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777315.png "[認証ポリシー]")
    
     a. **[プロバイダー]** に **[ディレクトリ サービス]** を選択します。
    
@@ -155,7 +156,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -180,11 +181,11 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に Mozy Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Mozy Enterprise]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Mozy Enterprise]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[Mozy Enterprise]\(Mozy Enterprise\)** を選択します。
+2. アプリケーションの一覧で、 **[Mozy Enterprise]\(Mozy Enterprise\)** を選択します。
 
     ![アプリケーションの一覧の Mozy Enterprise のリンク](common/all-applications.png)
 
@@ -192,33 +193,33 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-mozy-enterprise-test-user"></a>Mozy Enterprise テスト ユーザーの作成
 
 Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。 Mozy Enterprise の場合、プロビジョニングは手動で行います。
 
 >[!NOTE]
->Mozy Enterprise から提供されている他の Mozy Enterprise ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の Mozy Enterprise ユーザー アカウント作成ツールや、Mozy Enterprise から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. お使いの **Mozy Enterprise** テナントにログインします。
 
-2. **[ユーザー]** をクリックして、**[新規ユーザーの追加]** をクリックします。
+2. **[ユーザー]** をクリックして、 **[新規ユーザーの追加]** をクリックします。
    
-    ![ユーザー](./media/mozy-enterprise-tutorial/ic777317.png "Users")
+    ![ユーザー](./media/mozy-enterprise-tutorial/ic777317.png "ユーザー")
    
     >[!NOTE]
-    >**[新規ユーザーの追加]** オプションは、**[認証ポリシー]** で **[Mozy]** が選択されている場合にのみ表示されます。 SAML 認証が構成されている場合、ユーザーはシングル サインオンでの初回ログイン時に自動的に追加されます。
+    >**[新規ユーザーの追加]** オプションは、 **[認証ポリシー]** で **[Mozy]** が選択されている場合にのみ表示されます。 SAML 認証が構成されている場合、ユーザーはシングル サインオンでの初回ログイン時に自動的に追加されます。
     
 3. 新しいユーザーのダイアログで、次の手順に従います。
    

@@ -1,35 +1,33 @@
 ---
-title: クイック スタート:テキスト読み上げ音声を表示する、Python - Speech Services
+title: テキスト読み上げ音声を一覧表示する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Python を使用してリージョン/エンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 一覧は JSON として返されます。音声の可用性はリージョンによって異なります。
+description: この記事では、Python を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 03/22/2019
-ms.author: erhopf
-ms.openlocfilehash: 66bda68b1313a7c172e273671bc3a03503d08e0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: how-to
+ms.date: 04/13/2020
+ms.author: trbye
+ms.openlocfilehash: b388c8d8b61e2fc638ae2bce5bc6d9eeb25ee0d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876582"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401009"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>クイック スタート:Python を使用してテキスト読み上げ音声の一覧を取得する
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Python を使用してテキスト読み上げ音声の一覧を取得する
 
-このクイック スタートでは、Python を使用してリージョン/エンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 一覧は JSON として返されます。音声の可用性はリージョンによって異なります。 サポートされているリージョンの一覧については、[リージョン](regions.md)に関するページをご覧ください。
+この記事では、Python を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。 サポートされているリージョンの一覧については、[リージョン](regions.md)に関するページをご覧ください。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Services リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
+この記事では、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech サービス リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは以下が必要です。
-
 * Python 2.7.x または 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Services 用の Azure サブスクリプション キー
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a>、または任意のテキスト エディター
+* Speech サービス用の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -59,9 +57,9 @@ class GetVoices(object):
 
 ## <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-このエンドポイントには認証のためのアクセス トークンが必要です。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、ご利用の Speech Services のサブスクリプション キーをアクセス トークンと交換します。
+このエンドポイントには認証のためのアクセス トークンが必要です。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、Speech サービスのサブスクリプション キーをアクセス トークンと交換します。
 
-このサンプルでは、ご利用の Speech Services のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
+このサンプルでは、ご利用の Speech サービスのサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
 
 このコードを `GetVoices` クラスにコピーします。
 
@@ -80,7 +78,7 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>要求を実行して応答を保存する
 
-ここでは要求を構築して、返された音声の一覧を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
+ここでは要求を構築して、返された音声の一覧を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech サービスのリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するページを参照してください。
 
 次に、要求に必要なヘッダーを追加します。 最後に、サービスに対して要求を実行します。 要求が成功し、状態コード 200 が返された場合、応答がファイルに書き込まれます。
 
@@ -98,7 +96,8 @@ def get_voices(self):
     if response.status_code == 200:
         with open('voices.json', 'wb') as voices:
             voices.write(response.content)
-            print("\nStatus code: " + str(response.status_code) + "\nvoices.json is ready to view.\n")
+            print("\nStatus code: " + str(response.status_code) +
+                  "\nvoices.json is ready to view.\n")
     else:
         print("\nStatus code: " + str(
             response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
@@ -124,11 +123,11 @@ if __name__ == "__main__":
 python get-voices.py
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Python のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)

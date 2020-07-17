@@ -3,23 +3,17 @@ title: クラウド サービスのライフサイクル イベントの処理 |
 description: .NET でクラウド サービスのロールのライフサイクル メソッドを使用する方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 39b30acd-57b9-48b7-a7c4-40ea3430e451
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: tagore
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798017"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652089"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET で Web または Worker ロールのライフサイクルをカスタマイズする
 worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。 Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用する必要があります。
@@ -29,7 +23,7 @@ worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azur
 
 **RoleEntryPoint**を拡張した場合、メソッドの次のような動作に注意する必要があります。
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッドと [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) メソッドは、ブール値を返します。したがって、これらのメソッドから **false** を返すこともできます。
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッドは、ブール値を返します。したがって、このメソッドから **false** を返すこともできます。
   
    コードが **false**を返した場合、ロール プロセスは指定したシャットダウン シーケンスを実行せずに突然終了します。 一般的には、**OnStart** メソッドから **false** は返さないようにしてください。
 * **RoleEntryPoint** メソッドのオーバーロード内でキャッチされなかった例外は、未処理の例外として扱われます。
@@ -80,6 +74,9 @@ public override bool OnStart()
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Web ロール用の ASP.NET ライフサイクル メソッドの実装
 Web ロールの初期化とシャットダウン シーケンスを管理するには、 **RoleEntryPoint** クラスで提供されるメソッドのほかに、ASP.NET のライフサイクル メソッドも使用できます。 これは既存の ASP.NET アプリケーションを Azure に移植する場合に、互換性の面で役立つことがあります。 ASP.NET のライフサイクル メソッドは、 **RoleEntryPoint** メソッドの内部から呼び出されます。 **Application\_Start** メソッドは、**RoleEntryPoint.OnStart** メソッドが終了した後に呼び出されます。 **Application\_End** メソッドは、**RoleEntryPoint.OnStop** メソッドが呼び出される前に呼び出されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
+
+
+
 

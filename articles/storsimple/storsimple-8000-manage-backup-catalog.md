@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076787"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60319673"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>StorSimple デバイス マネージャー サービスを使用してバックアップ カタログを管理する
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 次の手順に従って、バックアップ ポリシーのバックアップをすべて一覧表示します。
 
 #### <a name="to-list-backup-sets"></a>バックアップ セットを一覧表示するには
-1. StorSimple デバイス マネージャー サービスに移動し、**[バックアップ カタログ]** をクリックします。
+1. StorSimple デバイス マネージャー サービスに移動し、 **[バックアップ カタログ]** をクリックします。
 
 2. 次のように、選択内容をフィルター処理します。
    
@@ -65,7 +65,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 次の手順に従って、ボリュームやバックアップ ポリシー用のバックアップ セットを選択します。
 
 #### <a name="to-select-a-backup-set"></a>バックアップ セットを選択するには
-1. StorSimple デバイス マネージャー サービスに移動し、**[バックアップ カタログ]** をクリックします。
+1. StorSimple デバイス マネージャー サービスに移動し、 **[バックアップ カタログ]** をクリックします。
 2. 次のように、選択内容をフィルター処理します。
    
    1. 時間範囲を指定します。 
@@ -85,7 +85,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 関連付けられているデータを保持する必要がない場合は、バックアップを削除します。 バックアップ セットを削除するには次の手順を実行します。
 
 #### <a name="to-delete-a-backup-set"></a>バックアップ セットを削除するには
- StorSimple デバイス マネージャー サービスに移動し、**[バックアップ カタログ]** をクリックします。
+ StorSimple デバイス マネージャー サービスに移動し、 **[バックアップ カタログ]** をクリックします。
 1. 次のように、選択内容をフィルター処理します。
    
    1. 時間範囲を指定します。 
@@ -101,7 +101,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 
     ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-1. 確認を求められたら、表示された情報を確認して、**[削除]** をクリックします。 選択したバックアップが完全に削除されます。
+1. 確認を求められたら、表示された情報を確認して、 **[削除]** をクリックします。 選択したバックアップが完全に削除されます。
 
     ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
@@ -109,7 +109,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 
     ![[バックアップ カタログ] に移動](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [[バックアップ カタログ] ページを使用してバックアップ セットからデバイスを復元する方法](storsimple-8000-restore-from-backup-set-u2.md)。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
 

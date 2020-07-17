@@ -1,30 +1,22 @@
 ---
-title: Azure の Jupyter ノートブックでパッケージをインストールする
-description: Azure で実行している Jupyter ノートブック内から Python、R、F# パッケージをインストールする方法。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: Jupyter ノートブックでパッケージをインストールする - Azure Notebooks プレビュー
+description: Azure で実行している Jupyter ノートブック内から Python、R、F# パッケージをインストールする方法について説明します。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276883"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75646230"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>ノートブック内からパッケージをインストールする
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Azure Notebooks プレビュー内からパッケージをインストールする
 
 [プロジェクト レベルでノートブックの環境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)を構成できますが、個々のノートブック内から直接、パッケージをインストールすると便利な場合があります。
 
 ノートブックからインストールされたパッケージは、現在のサーバー セッションにのみ適用されます。 サーバーをシャットダウンすると、パッケージのインストールは保存されません。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -66,12 +58,22 @@ F# のパッケージは、コード セル内からパケット依存関係マ�
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
 ```
 
-## <a name="next-steps"></a>次の手順
+次に、パケット ジェネレーターを読み込みます。
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+ライブラリを開きます。
+```fsharp
+open MathNet.Numerics
+```
+
+## <a name="next-steps"></a>次のステップ
 
 - [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
 - [方法: スライド ショーの表示](present-jupyter-notebooks-slideshow.md)

@@ -2,18 +2,18 @@
 title: HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする - Azure
 description: デバッグと分析のために Linux ベースの HDInsight クラスターから Apache Hadoop サービスのヒープ ダンプを有効にします。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: a1b816656e019a214e8c0dc72b79575c49d99e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 01/02/2020
+ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719612"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75658799"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
@@ -21,10 +21,7 @@ ms.locfileid: "64719612"
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。
 
-> [!IMPORTANT]  
-> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
-## <a name="whichServices"></a>サービス
+## <a name="services"></a>サービス
 
 次のサービスのヒープ ダンプを有効にできます。
 
@@ -36,7 +33,7 @@ ms.locfileid: "64719612"
 
 HDInsight によって実行されるマップと削減のプロセスに対して、ヒープ ダンプを有効にすることもできます。
 
-## <a name="configuration"></a>ヒープ ダンプ構成について
+## <a name="understanding-heap-dump-configuration"></a>ヒープ ダンプ構成について
 
 ヒープ ダンプは、サービスの開始時にオプション (opts またはパラメーターとも呼ばれる) を JVM に渡すことによって有効になります。 ほとんどの [Apache Hadoop](https://hadoop.apache.org/) サービスでは、サービスを開始するのに使用されるシェル スクリプトを変更することで、これらのオプションを渡すことができます。
 
@@ -84,24 +81,19 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 サービスの構成を変更するには、次の手順を実行します。
 
-1. クラスターの Ambari Web UI を開きます。 URL は https://YOURCLUSTERNAME.azurehdinsight.net です。
-
-    メッセージが表示されたら、HTTP のアカウント名 (既定値: admin) とクラスターのパスワードを使用してサイトを認証します。
-
-   > [!NOTE]  
-   > Ambari によって、ユーザー名とパスワードの入力が 2 回求められる場合があります。 その場合は、同じアカウント名とパスワードを入力してください。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
 2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]** です。 中央の領域で、 **[Configs]** タブを選択します。
 
-    ![HDFS Configs タブが選択されている Ambari Web の画像](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
+    ![HDFS Configs タブが選択されている Ambari Web の画像](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 
 3. **[フィルター]** エントリに「**opts**」と入力します。 このテキストを含む項目のみが表示されます。
 
-    ![フィルター処理された一覧](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
+    ![Apache Ambari 構成のフィルター処理された一覧](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
 4. ヒープ ダンプを有効にするサービスの **\*\_OPTS** エントリを検索し、有効にするオプションを追加します。 次の図では、`-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` を **HADOOP\_NAMENODE\_OPTS** エントリに追加しました。
 
-    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![Apache Ambari の hadoop-namenode-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
    > マップまたは削減の子プロセスのヒープ ダンプが有効になっている場合は、**mapreduce.admin.map.child.java.opts** と **mapreduce.admin.reduce.child.java.opts** というフィールドを探します。
@@ -110,18 +102,17 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 5. 変更が適用されると、**再起動が必要**であることを示すアイコンが 1 つ以上のサービスの横に表示されます。
 
-    ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
+    ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
 
-6. 再起動が必要な各サービスを選択し、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 メンテナンス モードは、再起動したときに、このサービスからアラートが生成されないようにします。
+6. 再起動が必要な各サービスを選択し、 **[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 メンテナンス モードは、再起動したときに、このサービスからアラートが生成されないようにします。
 
-    ![[メンテナンス モードの有効化] メニュー](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
+    ![HDI の [メンテナンス モードの有効化] メニュー](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
 7. メンテナンス モードを有効にしたら、サービスの **[再起動]** ボタンを使用して **[すべてを再起動]** を選択します。
 
-    ![[すべて再起動] エントリ](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
+    ![Apache Ambari の [すべてを再起動] エントリ](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
    > **[再起動]** ボタンのエントリは、サービスによって異なる場合があります。
 
-8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。
-
+8. サービスが再開したら、 **[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。

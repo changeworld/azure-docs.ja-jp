@@ -1,28 +1,28 @@
 ---
-title: PIM で Azure リソース ロールの設定を構成する - Azure Active Directory | Microsoft Docs
+title: PIM で Azure リソース ロールの設定を構成する - Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールの設定を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: curtand
+manager: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
-ms.author: rolyon
+ms.date: 01/01/2020
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494869"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75638682"
 ---
-# <a name="configure-azure-resource-role-settings-in-pim"></a>PIM で Azure リソース ロールの設定を構成する
+# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
 Azure リソース ロールの設定を構成するときに、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で Azure リソース ロールの割り当てに適用される既定の設定を定義します。 次の手順を実行して、承認ワークフローを構成し、誰が要求を承認または拒否できるかを指定します。
 
@@ -30,68 +30,86 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 次の手順を実行して、Azure リソース ロールの設定を開きます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure リソース]** をクリックします。
+1. **[Azure リソース]** を選択します。
 
-1. サブスクリプションや管理グループなど、管理するリソースをクリックします。
+1. サブスクリプションや管理グループなど、管理するリソースを選択します。
 
-    ![管理する Azure リソースの一覧](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![管理できるリソースを一覧表示する [Azure リソース] ページ](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. **[ロールの設定]** をクリックします。
+1. **ロール設定**を選択します。
 
-    ![ロールの設定](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-1. 設定を構成するロールをクリックします。
+1. 設定を構成するロールを選択します。
 
-    ![ロールの設定の詳細](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. **[編集]** をクリックして [ロールの設定] ウィンドウを開きます。
+1. **[編集]** を選択して **[ロールの設定]** ペインを開きます。 最初のタブでは、Privileged Identity Management でロールのアクティブ化の構成を更新できます。
 
-    ![ロールの設定を編集する](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![[アクティブ化] タブが開かれている [Edit role settings]\(ロールの設定の編集\) ページ](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    各ロールの [ロールの設定] ウィンドウでは、複数の設定を構成できます。
+1. **[割り当て]** タブまたはページ下部の **[Next: Assignment]\(次へ: 割り当て)** ボタンを選択し、割り当ての設定タブを開きます。これらの設定は、Privileged Identity Management インターフェイス内で行われたロールの割り当てを制御します。
+
+    ![[ロールの設定] ページの [ロールの割り当て] タブ](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. **通知** タブまたはページの下部にある **Next:Activation\(次へ: アクティブ化** ボタンから、このロールの通知設定タブを表示します。 これらの設定は、このロールに関連するすべてのメール通知を制御します。
+
+    ![[ロールの設定] ページの [ロールの通知] タブ](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    [ロールの設定] ページの **[通知]** タブで、Privileged Identity Management によって、通知を受信するユーザーとユーザーが受信する通知をきめ細かく制御できます。
+
+    - **メールをオフにする**<br>特定のメールをオフにするには、既定の受信者のチェック ボックスをオフにし、追加の受信者をすべて削除します。  
+
+    - **指定したメール アドレスへのメールを制限する**<br>既定の受信者に送信されるメールをオフにするには、既定の受信者のチェック ボックスをオフにします。 その後に、追加の受信者として追加のメール アドレスを追加できます。 複数のメール アドレスを追加する場合は、セミコロン (;) で区切ります。
+
+    - **既定の受信者と追加の受信者の両方にメールを送信する**<br>既定の受信者と追加の受信者の両方にメールを送信するには、既定の受信者のチェック ボックスをオンにし、追加の受信者のメール アドレスを追加します。
+
+    - **重要なメールのみ**<br>メールの種類ごとに、重要なメールのみを受信するためのチェック ボックスをオンにすることができます。 つまり、Privileged Identity Management では、メールに即時の操作が必要な場合にのみ、構成された受信者に引き続きメールが送信されます。 たとえば、ユーザーにロールの割り当てを拡張するように求めるメールはトリガーされませんが、管理者に拡張の要求を承認するように求めるメールはトリガーされます。
+
+1. いつでも **[更新]** ボタンを選択して、ロールの設定を更新します。
 
 ## <a name="assignment-duration"></a>割り当て期間
 
-ロールの設定を構成するときに、各割り当ての種類 (対象とアクティブ) に 2 つの割り当て期間オプションから選択できます。 これらのオプションは、PIM でメンバーがロールに割り当てられるときの既定の最大期間になります。
+ロールの設定を構成するときに、各割り当ての種類 (対象とアクティブ) に 2 つの割り当て期間オプションから選択できます。 これらのオプションは、Privileged Identity Management でユーザーがロールに割り当てられるときの既定の最大期間になります。
 
 このような**資格のある**割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
-| **永続的な有資格割り当てを許可する** | リソース管理者は、永続的に資格のあるメンバーシップを割り当てることができます。 |
-| **資格のある割り当てが次の期間後に期限切れになる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のある割り当てを行うことができます。 |
+| **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
-| **永続的なアクティブ割り当てを許可する** | リソース管理者は、永続的にアクティブなメンバーシップを割り当てることができます。 |
-| **アクティブな割り当てが次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続するアクティブな割り当てを許可する** | リソース管理者は、永続的にアクティブな割り当てを行うことができます。 |
+| **アクティブ割り当ては次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
-> [!NOTE] 
-> リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､メンバーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
+> [!NOTE]
+> リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､ユーザーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
 
 ## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-PIM によって、2 つの異なるシナリオで、必要に応じて Azure Multi-factor Authentication (MFA) を強制できます。
+Privileged Identity Management では、2 つの異なるシナリオで、必要に応じて Azure Multi-factor Authentication を強制できます。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
 
-場合によっては、メンバーをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたメンバーにアクティブ化を要求する必要はありません。 このシナリオでは、メンバーは、ロールが割り当てられた時点からそのロールで既にアクティブであるため、自分のロールの割り当てを使用しているとき、PIM では MFA を強制できません。
+場合によっては、ユーザーまたはグループをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、**[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに MFA を強制することができます。
+割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
 
-ロールの資格を持つメンバーに対して、アクティブ化には MFA の実行を必須にすることができます。 このプロセスにより、アクティブ化を要求しているユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
+ロールの資格を持つユーザーに対して、アクティブ化する前に Azure Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
-資格のあるメンバーに対して、アクティブ化には MFA の実行を必須にするには、**[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
+アクティブ化には多要素認証の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 
-詳細については、[多要素認証 (MFA) と PIN](pim-how-to-require-mfa.md) に関するページを参照してください。
+詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
 
 ## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
 
@@ -99,7 +117,7 @@ PIM によって、2 つの異なるシナリオで、必要に応じて Azure M
 
 ## <a name="require-justification"></a>理由を必須にする
 
-アクティブな割り当てに対して、またはアクティブ化するときに、メンバーに理由の入力を必須にすることができます。 理由を必須にするには、**[アクティブな割り当てに理由が必要]** チェックボックスまたは **[アクティブ化に理由が必要]** チェックボックスをオンにします。
+ユーザーがアクティブ化するときに、業務上の正当な理由を入力するように要求できます。 理由を必須にするには、 **[アクティブな割り当てに理由が必要]** チェックボックスまたは **[アクティブ化に理由が必要]** チェックボックスをオンにします。
 
 ## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
@@ -107,17 +125,17 @@ PIM によって、2 つの異なるシナリオで、必要に応じて Azure M
 
 1. **[アクティブにするには承認が必要です]** チェックボックスをオンにします。
 
-1. **[承認者の選択]** をクリックして [メンバーまたはグループの選択] ウィンドウを開きます。
+1. **[承認者の選択]** を選択して **[メンバーまたはグループの選択]** ページを開きます。
 
-    ![メンバーまたはグループの選択](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![承認者を選択するための [ユーザーまたはグループの選択] ペイン](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 少なくとも 1 つのメンバーまたはグループを選択し、**[選択]** をクリックします。 任意の組み合わせのメンバーとグループを追加できます。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
+1. 少なくとも 1 つのユーザーまたはグループを選択し、 **[選択]** をクリックします。 任意の組み合わせのユーザーとグループを追加できます。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
 
     選択した承認者の一覧に選択内容が表示されます。
 
-1. すべてのロール設定を指定したら、**[更新]** をクリックして変更を保存します。
+1. すべてのロール設定を指定したら、 **[更新]** を選択して変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [PIM で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
-- [PIM で Azure リソース ロールに対するセキュリティの警告を構成する](pim-resource-roles-configure-alerts.md)
+- [Privileged Identity Management で Azure リソース ロールを割り当てる](pim-resource-roles-assign-roles.md)
+- [Privileged Identity Management で Azure リソース ロールに対するセキュリティ アラートを構成する](pim-resource-roles-configure-alerts.md)

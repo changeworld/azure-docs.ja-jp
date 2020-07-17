@@ -8,35 +8,45 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: a5d29e77f6ba10ed3069cb3f5a3c8089f49c237d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5afcc8e4524a0e8353766ba239d5ab9161b29d86
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140585"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67509097"
 ---
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで **[すべてのサービス]** を選択し、**[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星印 [`*`] を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **Notification Hubs** が **[お気に入り]** に追加された後、左側のメニューでそれを選択します。 
+1. [Azure portal](https://portal.azure.com) にサインインする
+
+1. 左側のメニューで **[すべてのサービス]** を選択し、 **[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加した後、左側のメニューでそれを選択します。
 
       ![Azure portal - Notification Hubs を選択する](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
-3. **[Notification Hubs]** ページで、ツール バーの **[追加]** を選択します。 
+
+1. **[Notification Hubs]** ページで、ツール バーの **[追加]** を選択します。
 
       ![Notification Hubs - [追加] ツール バー ボタン](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
-4. **[Notification Hub]** ページで、次の手順のようにします。 
-    1. 通知**ハブ**の**名前**を指定します。  
-    2. **名前空間**の **名前** を指定します。 名前空間には、少なくとも 1 つのハブが存在します。 
-    3. 通知ハブを作成する**場所**を選択します。 
-    4. 既存のリソース グループを選択するか、新しい**リソース グループ**の名前を入力します。
-    5. **作成** を選択します。 
+
+1. **[Notification Hub]** ページで、次の手順のようにします。
+
+    1. **[通知ハブ]** に名前を入力します。  
+
+    1. **[新しい名前空間の作成]** に名前を入力します。 名前空間には、少なくとも 1 つのハブが存在します。
+
+    1. **[場所]** ドロップダウン リスト ボックスで値を選択します。 この値には、ハブを作成する場所を指定します。
+
+    1. **[リソース グループ]** で既存のリソース グループを選択します。または、新しいリソース グループに名前を作成します。
+
+    1. **作成** を選択します。
 
         ![Azure Portal - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-4. **[通知]** (ベルのアイコン)、**[リソースに移動]** の順に選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択してもかまいません。 
+
+1. **[通知]** (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
 
       ![Azure Portal > [通知] > [リソースに移動]](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
-5. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらの接続文字列は、後でプッシュ通知を処理するために必要になります。
+
+1. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらは、後でプッシュ通知を処理するために必要になります。
 
       >[!IMPORTANT]
-      >DefaultFullSharedAccessSignature はアプリケーションで使用**しない**でください。 これはバックエンドのみで使用します。
+      >**DefaultFullSharedAccessSignature** ポリシーはアプリケーションで使用 "*しない*" でください。 これの使用が意図されているのはバックエンドだけです。
       >
 
       ![Azure Portal - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)

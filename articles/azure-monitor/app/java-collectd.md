@@ -1,23 +1,14 @@
 ---
 title: Linux での Java Web アプリ パフォーマンスの監視 | Microsoft Docs
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
-ms.author: mbullwin
-ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/14/2019
+ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011192"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81537527"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
@@ -37,7 +28,7 @@ ms.locfileid: "58011192"
 Linux サーバー コンピューターで、次の操作を行います。
 
 1. [collectd](https://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://aka.ms/aijavasdk)をダウンロードします。 バージョン番号をメモしておきます。
+2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)をダウンロードします。 バージョン番号をメモしておきます。
 3. プラグイン JAR を `/usr/share/collectd/java`にコピーします。
 4. `/etc/collectd/collectd.conf`を編集します:
    * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java) が有効になっていることを確認します。
@@ -91,7 +82,7 @@ Linux サーバー コンピューターで、次の操作を行います。
 [マニュアル](https://collectd.org/wiki/index.php/First_steps)に従って collectd を起動します。
 
 ## <a name="view-the-data-in-application-insights"></a>Application Insights でデータを表示する
-Application Insights のリソースで、[[メトリックス] および [グラフの追加]][metrics] を開き、[カスタム] カテゴリから表示したいメトリックを選択します。
+Application Insights のリソースで、[メトリックを開いてグラフを追加][metrics]し、[カスタム] カテゴリから表示するメトリックを選択します。
 
 既定では、メトリックは、メトリックの収集元のすべてのホスト コンピューターにわたって集計されます。 ホスト別のメトリックを表示するには、グラフの詳細ブレードで [グループ化] を有効にしてから、CollectD-Host でのグループ化を選択します。
 
@@ -103,7 +94,7 @@ Application Insights のリソースで、[[メトリックス] および [グ�
 * 構成ファイルを編集します。 
 * `<Plugin ApplicationInsightsWriter>`に次のようなディレクティブ行を追加します。
 
-| ディレクティブ | 効果 |
+| ディレクティブ | 結果 |
 | --- | --- |
 | `Exclude disk` |`disk` プラグインによって収集されたすべてのデータを除外します |
 | `Exclude disk:read,write` |`read` および `write` という名前のソースを `disk` プラグインから除外します。 |
@@ -137,6 +128,6 @@ Application Insights の Write プラグインは特定の Read プラグイン�
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 
 

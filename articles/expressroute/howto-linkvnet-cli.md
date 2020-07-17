@@ -1,19 +1,18 @@
 ---
-title: 'ExpressRoute 回線への仮想ネットワークのリンク: CLI:Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: VNet を回線にリンクする:CLI'
 description: この記事では、Resource Manager デプロイ モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: anzaman,cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 05/21/2019
+ms.author: cherylmc
+ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476136"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -86,7 +85,7 @@ az network express-route auth create --circuit-name MyCircuit -g ExpressRouteRes
 
 このコマンドレットの応答に、承認キーと状態が含まれます。
 
-```azurecli
+```output
 "authorizationKey": "0a7f3020-541f-4b4b-844a-5fb43472e3d7",
 "authorizationUseStatus": "Available",
 "etag": "W/\"010353d4-8955-4984-807a-585c21a22ae0\"",
@@ -124,7 +123,7 @@ az network express-route auth delete --circuit-name MyCircuit -g ExpressRouteRes
 
 回線ユーザーは、ピア ID と回線所有者が作成した承認キーを必要とします。 承認キーは GUID です。
 
-```azurecli
+```powershell
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
@@ -140,6 +139,34 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 ExpressRoute 回線を仮想ネットワークにリンクしている接続を削除することで、承認を解除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="modify-a-virtual-network-connection"></a>仮想ネットワーク接続を変更する
+仮想ネットワーク接続の特定のプロパティを更新することができます。 
+
+**接続の重みを更新するには**
+
+仮想ネットワークは、複数の ExpressRoute 回線に接続できます。 複数の ExpressRoute 回線から同じプレフィックスを受け取る場合があります。 このプレフィックスを宛先とするトラフィックをどの接続が送信するかを選択するには、接続の *RoutingWeight* を変更します。 *RoutingWeight* が最も高い接続でトラフィックが送信されます。
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
+```
+
+*RoutingWeight* の範囲は 0 ～ 32000 です。 既定値は 0 です。
+
+## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath を構成する 
+ExpressRoute 回線が [ExpressRoute Direct](expressroute-erdirect-about.md) 上にあり、仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ の場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効することができます。 FastPath を使用すると、オンプレミス ネットワークと仮想ネットワーク間における 1 秒あたりのパケット数や 1 秒あたりの接続数など、データ パスのパフォーマンスが向上します。 
+
+**新しい接続で FastPath を構成する**
+
+```azurecli
+az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
+```
+
+**既存の接続を更新して FastPath を有効にする**
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
+```
+
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

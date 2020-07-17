@@ -1,26 +1,17 @@
 ---
-title: FTP/S を使用してコンテンツをデプロイする - Azure App Service | Microsoft Docs
-description: FTP または FTPS を使用して Azure App Service にアプリをデプロイする方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: FTP/S を使用したコンテンツのデプロイ
+description: FTP または FTPS を使用して Azure App Service にアプリをデプロイする方法について説明します。 暗号化されていない FTP を無効にして Web サイトのセキュリティを強化します。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: cephalin;dariac
+ms.date: 09/18/2019
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858879"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532589"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -30,19 +21,25 @@ ms.locfileid: "57858879"
 
 ## <a name="open-ftp-dashboard"></a>FTP ダッシュボードを開く
 
-[Azure Portal](https://portal.azure.com) でアプリの[リソース ページ](../azure-resource-manager/manage-resources-portal.md#manage-resources)を開きます。
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。
 
-FTP ダッシュボードを開くには、**[デプロイ センター]** > **[FTP]** > **[ダッシュボード]** の順にクリックします。
+    ![App Services を検索します。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![FTP ダッシュボードを開く](./media/app-service-deploy-ftp/open-dashboard.png)
+2. デプロイする Web アプリを選択します。
+
+    ![アプリを選択します。](media/app-service-continuous-deployment/select-your-app.png)
+
+3. **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** を選択します。
+
+    ![FTP ダッシュボードを開く](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>FTP の接続情報を取得する
 
-FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エンドポイントとアプリの資格情報をコピーします。
+FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンドポイントとアプリの資格情報をコピーします。
 
 ![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、**[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
+アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
 
 > [!NOTE]
 > ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、次の形式のユーザー名が必要です。 
@@ -55,7 +52,7 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 ## <a name="deploy-files-to-azure"></a>ファイルを Azure にデプロイする
 
 1. FTP クライアント ([Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/)、[WinSCP](https://winscp.net/index.php) など) から、収集した接続情報を使用してアプリに接続します。
-2. ファイルとそれぞれのディレクトリ構造を、Azure の [**/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にコピーします。
+2. ファイルとそれぞれのディレクトリ構造を、Azure の [ **/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にコピーします。
 3. アプリの URL を参照して、アプリが正しく動作していることを確認します。 
 
 > [!NOTE] 
@@ -70,11 +67,11 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 
 ## <a name="enforce-ftps"></a>FTPS を強制する
 
-セキュリティを強化するには、FTP over SSL のみを許可する必要があります。 FTP デプロイを使用していない場合は、FTP と FTPS の両方を無効にすることもできます。
+セキュリティを強化するには、FTP over TLS/SSL のみを許可する必要があります。 FTP デプロイを使用していない場合は、FTP と FTPS の両方を無効にすることもできます。
 
-[Azure Portal](https://portal.azure.com) 上のアプリのリソース ページで、左側のナビゲーションの **[アプリの設定]** を選択します。
+[Azure portal](https://portal.azure.com) のご使用のアプリのリソース ページで、左側のナビゲーションの **[構成]**  >  **[全般設定]** を選択します。
 
-暗号化されていない FTP を無効にするには、**[FTPS only]\(FTPS のみ\)** を選択します。 FTP および FTPS の両方を完全に無効にするには、**[無効にする]** を選択します。 完了したら、**[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[SSL 設定]** ブレードに移動して TLS 1.2 以降を強制的に使用する必要があります。 TLS 1.0 と 1.1 は、**[FTPS のみ]** ではサポートされません。
+暗号化されていない FTP を無効にするには、 **[FTP state]\(FTP の状態\)** で **[FTPS のみ]** を選択します。 FTP と FTPS の両方を完全に無効にするには、 **[無効にする]** を選択します。 完了したら、 **[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[TLS/SSL 設定]** ブレードに移動して TLS 1.2 以降を適用する必要があります。 TLS 1.0 と 1.1 は、 **[FTPS のみ]** ではサポートされません。
 
 ![FTP/S の無効化](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -111,7 +108,7 @@ FTP デプロイのトラブルシューティングを行うための最初の�
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。
 Azure App Service では、アクティブ モードとパッシブ モードの両方を使用した接続がサポートされます。 お使いのデプロイ マシンは、通常、(オペレーティング システム内の、またはホーム ネットワークまたはビジネス ネットワークの一部として) ファイアウォールの内側にあるため、パッシブ モードをお勧めします。 [WinSCP ドキュメントに記載された使用例](https://winscp.net/docs/ui_login_connection)をご覧ください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 高度なデプロイ シナリオの詳細については、[Git を使用した Azure へのデプロイ](deploy-local-git.md)に関するページをご覧ください。 Azure への Git ベース デプロイでは、バージョン管理、パッケージの復元、MSBuild などが可能です。
 

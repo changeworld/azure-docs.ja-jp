@@ -1,10 +1,10 @@
 ---
-title: Azure Network Watcher との接続のトラブルシューティング - Azure CLI | Microsoft Docs
+title: 接続をトラブルシューティングする - Azure CLI
+titleSuffix: Azure Network Watcher
 description: Azure CLI を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 568d3fe774bd2ec810bd3aa386fb151518e6a581
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 842e58de8dbc06d3f045b0e9d0dc6b99e6b1e2fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720853"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76842888"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLI を使用した Azure Network Watcher との接続のトラブルシューティング
 
@@ -269,7 +269,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 

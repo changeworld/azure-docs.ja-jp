@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/15/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608896"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74560094"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -33,7 +33,7 @@ ms.locfileid: "59608896"
 ## <a name="prerequisites"></a>前提条件
 
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 従うべき手順を「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
+2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
     1. Service Bus **名前空間**を作成します。
     2. **接続文字列**を取得します。
     3. 名前空間の**トピック**を作成します。
@@ -51,8 +51,8 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
-1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** タブをクリックし、**[Microsoft Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して、**[Microsoft.Azure.ServiceBus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+1. 新しく作成したプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+2. **[参照]** タブをクリックし、 **[Microsoft Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して、 **[Microsoft.Azure.ServiceBus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
     ![Select a NuGet package][nuget-pkg]
 
@@ -75,16 +75,10 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     static ITopicClient topicClient;
     ``` 
 
-3. `Main()` の既定の内容を次のコード行に置き換えます。
+3. `Main()` メソッドを、次の手順で追加する SendmessagesAsync メソッドを使用して非同期的にメッセージを送信する**非同期の** `Main` メソッドに置き換えます。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-   
-4. `Main()` のすぐ後に、メッセージ送信メソッドを呼び出す次の非同期 `MainAsync()` メソッドを追加します。
-
-    ```csharp
-    static async Task MainAsync()
+    public static async Task Main(string[] args)
     {
         const int numberOfMessages = 10;
         topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
@@ -101,8 +95,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
         await topicClient.CloseAsync();
     }
     ```
-
-5. `MainAsync()` メソッドのすぐ後に、次の `SendMessagesAsync()` メソッドを追加します。`numberOfMessagesToSend` で指定された数 (現時点では 10 に設定) のメッセージを送信する処理が、このメソッドによって実行されます。
+5. `Main` メソッドのすぐ後に、次の `SendMessagesAsync()` メソッドを追加します。`numberOfMessagesToSend` で指定された数 (現時点では 10 に設定) のメッセージを送信する処理が、このメソッドによって実行されます。
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -146,25 +139,20 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
             const string TopicName = "<your_topic_name>";
             static ITopicClient topicClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
+            public static async Task Main(string[] args)
             {
                 const int numberOfMessages = 10;
                 topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
-
+    
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
-
+    
                 // Send messages.
                 await SendMessagesAsync(numberOfMessages);
-
+    
                 Console.ReadKey();
-
+    
                 await topicClient.CloseAsync();
             }
 
@@ -194,7 +182,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     }
     ```
 
-3. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでトピックの名前をクリックしてください。 トピックの **[要点]** 画面が表示されます。 ウィンドウの下部付近に表示されているサブスクリプション一覧で、サブスクリプションの **[メッセージ数]** の値が **10** になっていることがわかります。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 10 ずつ増えます (メッセージの取得については次のセクションで説明します)。 アプリからトピックにメッセージを追加するたびに、トピックの最新のサイズによって、**[要点]** ウィンドウの **[現在]** の値も増えている点に注目してください。
+3. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでトピックの名前をクリックしてください。 トピックの **[要点]** 画面が表示されます。 ウィンドウの下部付近に表示されているサブスクリプション一覧で、サブスクリプションの **[メッセージ数]** の値が **10** になっていることがわかります。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 10 ずつ増えます (メッセージの取得については次のセクションで説明します)。 アプリからトピックにメッセージを追加するたびに、トピックの最新のサイズによって、 **[要点]** ウィンドウの **[現在]** の値も増えている点に注目してください。
    
       ![メッセージ サイズ][topic-message]
 
@@ -222,17 +210,11 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. `Main()` の既定の内容を次のコード行に置き換えます。
+3. `Main()` メソッドを次の **async**`Main` メソッドに置き換えます。 これにより、次の手順で追加する `RegisterOnMessageHandlerAndReceiveMessages()` メソッドが呼び出されます。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-4. `Main()` のすぐ後に、`RegisterOnMessageHandlerAndReceiveMessages()` メソッドを呼び出す次の非同期 `MainAsync()` メソッドを追加します。
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
 
         Console.WriteLine("======================================================");
@@ -244,11 +226,10 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
         Console.ReadKey();
 
-        await subscriptionClient.CloseAsync();
+        await subscriptionClient.CloseAsync();    
     }
-    ```
-
-5. `MainAsync()` メソッドのすぐ後に、次のメソッドを追加します。これは、メッセージ ハンドラーを登録して送信側アプリケーションから送られたメッセージを受信するメソッドです。
+   ```
+5. `Main()` メソッドのすぐ後に、次のメソッドを追加します。これは、メッセージ ハンドラーを登録して送信側アプリケーションから送られたメッセージを受信するメソッドです。
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -322,25 +303,20 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
             const string SubscriptionName = "<your_subscription_name>";
             static ISubscriptionClient subscriptionClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
+            public static async Task Main(string[] args)
+            {    
                 subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
-
+        
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
                 Console.WriteLine("======================================================");
-
-                // Register subscription message handler and receive messages in a loop.
+        
+                // Register subscription message handler and receive messages in a loop
                 RegisterOnMessageHandlerAndReceiveMessages();
-
+        
                 Console.ReadKey();
-
-                await subscriptionClient.CloseAsync();
+        
+                await subscriptionClient.CloseAsync();    
             }
 
             static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -394,7 +370,10 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
 お疲れさまでした。 以上、トピックとサブスクリプションを作成し、10 個のメッセージを送信して、それらのメッセージを受信するまでの流れを、.NET Standard ライブラリを使って説明しました。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
+
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングのさらに高度な機能を紹介する、Service Bus の[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 

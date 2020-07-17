@@ -11,26 +11,26 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66164271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181255"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure ポータルから接続文字列を取得する
 [Azure Portal](https://portal.azure.com/) を使って、クライアント プログラムが Azure SQL Database と対話するために必要な接続文字列を取得します。
 
-1. **[すべてのサービス]** > **[SQL データベース]** の順にクリックします。
+1. **[すべてのサービス]**  >  **[SQL データベース]** の順にクリックします。
 
 2. **[SQL データベース]** ブレードの左上近辺にあるフィルター テキスト ボックスにデータベースの名前を入力します。
 
 3. お使いのデータベースの行を選びます。
 
-4. お使いのデータベースのブレードが表示されたら、画面を見やすくするために、**[最小化]** ボタンを選んで、参照とデータベースのフィルター処理に使ったブレードを折りたたみます。
+4. お使いのデータベースのブレードが表示されたら、画面を見やすくするために、 **[最小化]** ボタンを選んで、参照とデータベースのフィルター処理に使ったブレードを折りたたみます。
 
-5. お使いのデータベースのブレードで、**[データベース接続文字列の表示]** を選びます。
+5. お使いのデータベースのブレードで、 **[データベース接続文字列の表示]** を選びます。
 
-6. 適切な接続文字列をコピーします。 つまり、ADO.NET 接続ライブラリを使用する場合は、**[ADO.NET]** タブから適切な文字列をコピーします。
+6. 適切な接続文字列をコピーします。 つまり、ADO.NET 接続ライブラリを使用する場合は、 **[ADO.NET]** タブから適切な文字列をコピーします。
 
     ![データベース用の ADO 接続文字列をコピーする][20-CopyAdoConnectionString]
 

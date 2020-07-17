@@ -1,114 +1,141 @@
 ---
-title: 検索結果を操作する方法 - Azure Search
-description: Azure Search において、検索結果の構成と並べ替え、ドキュメント数の取得、および検索結果へのコンテンツ ナビゲーションの追加を行います。
+title: 検索結果の操作方法
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search において、検索結果の構成と並べ替え、ドキュメント数の取得、および検索結果へのコンテンツ ナビゲーションの追加を行います。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.devlang: ''
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 04/01/2020
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244798"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801775"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>Azure Search での検索結果の操作方法
-この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを実装する方法のガイダンスを提供します。 データまたは情報を検索結果に表示するためのページ関連オプションは、Azure Search サービスに送信される [検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)の要求によって指定します。 
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
-REST API では、要求には GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。 .NET SDK では、同等の API は[DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)です。
+この記事では、一致するドキュメントの合計数、ページ分割された結果、並べ替えられた結果、検索結果が強調表示された用語と共に返されるクエリ応答を取得する方法について説明します。
 
-複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、次でも見つけることができます: [ニューヨーク市のジョブ デモ アプリ](https://azjobsdemo.azurewebsites.net/)および [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)または .NET SDK での [DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)によって決定されます。
 
-> [!NOTE]
-> 有効な要求には、サービス URL とパスや HTTP 動詞、`api-version` などがあります。 簡潔にまとめ、改ページに関連する構文だけに焦点を当てられるように例の記載を省きました。 要求の構文について詳しくは、[Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice) に関する記事をご覧ください。
->
+## <a name="result-composition"></a>結果の構成
 
-## <a name="total-hits-and-page-counts"></a>合計ヒット数とページ数
-クエリから返される検索結果の合計数を表示し、それらの結果を一定の数ごとにページにまとめて返すことは、ほぼすべての検索ページでの基本機能です。
+検索ドキュメントは多数のフィールドで構成される可能性がありますが、一般に、結果セット内の各ドキュメントを表すために必要なものは数個しかありません。 クエリ要求で、応答にどのフィールドを表示するかを指定するには `$select=<field list>` を追加します。 あるフィールドを結果に含めるには、そのフィールドのインデックスに**取得可能**の属性が付けられている必要があります。 
 
-![][1]
+最適に機能するフィールドには、各ドキュメントを比較対照して区別することにより、ユーザーの側にクリックスルー応答を誘うための十分な情報を提供するフィールドが含まれます。 eコマース サイトでは、それは製品名、説明、ブランド、色、サイズ、価格、評価などである場合があります。 hotels-sample-index という組み込みのサンプルの場合、それは次の例のフィールドのようになります。
 
-Azure Search では、`$count`、`$top`、および `$skip` のパラメーターを使用すると、これらの値が返されます。 次の例では、"onlineCatalog" というインデックス上での合計ヒット数のサンプル要求が `@OData.count` として返されていることがわかります。
-
-        GET /indexes/onlineCatalog/docs?$count=true
-
-最初のページから 15 項目ずつにまとめられたドキュメントが取得され、合計ヒット数も表示されます。
-
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
-
-改ページの結果には `$top` と `$skip` の両方が必須です。 ここで `$top` は 1 回に返す項目数を、`$skip` はスキップする項目数をそれぞれ指定します。 次の例では、各ページに次の 15 項目が表示され、`$skip` パラメーターによって何項目ずつジャンプするかが指定されています。
-
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
-
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=15&$count=true
-
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
-
-## <a name="layout"></a>レイアウト
-検索結果ページでは、サムネイル画像、フィールドのサブセット、製品のフルページへのリンクを表示することができます。
-
- ![][2]
-
-Azure Search では、 `$select` と参照コマンドを使用してこれらを表示します。
-
-タイル化されたレイアウトになるようにフィールドのサブセットを返すには、次のように記述します。
-
-        GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
-
-イメージとメディア ファイルは直接検索できないため、Azure BLOB ストレージなどの別の記憶域プラットフォームに格納すると、コストを削減できます。 インデックスとドキュメントで、外部コンテンツの URL アドレスを格納するフィールドを定義します。 こうすることで、そのフィールドをイメージ リファレンスとして使用できます。 イメージへの URL はこのドキュメントに格納してください。
-
-**onClick** イベントで製品説明ページを取得するには、 [Lookup Document](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) を使用して、取得するドキュメントをキーに渡します。 キーのデータ型は `Edm.String`です。 この例でのデータでは *246810*です。 
-
-        GET /indexes/onlineCatalog/docs/246810
-
-## <a name="sort-by-relevance-rating-or-price"></a>関連性、評価、または価格による並べ替え
-並べ替え順の既定基準として関連性が設定されている場合が多いですが、ユーザーが既存の結果をすばやく再シャッフルして、別のランク付けで並べ替えられる選択肢があるのが一般的です。
-
- ![][3]
-
-Azure Search では、`"Sortable": true.` としてインデックス付けされたすべてのフィールドにおいて、並べ替えは `$orderby` 式に基づきます。`$orderby` 句は OData 式です。 構文について詳しくは、[filters 句と order-by 句のための OData 式の構文](query-odata-filter-orderby-syntax.md)に関する記事をご覧ください。
-
-関連性は、スコアリング プロファイルに深くかかわっています。 既定のスコアリングを使用すると、すべての結果がテキスト分析と統計情報に基づいて順に並べられます。このとき、検索用語との一致内容が多い、あるいは一致レベルが高いドキュメントに高いスコアが付けられます。
-
-別の並べ替え順序は通常、並べ替え順を生成するメソッドをコールバックする **onClick** イベントが関わっています。 たとえば次のようなページ要素を使用した場合を示します。
-
- ![][4]
-
-選択した並べ替えオプションを入力として使用でき、そのオプションに関連付けられた基準によって並べ替えたリストを返すメソッドが作成されます。
-
- ![][5]
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+    {  
+      "search": "sandy beaches",
+      "select": "HotelId, HotelName, Description, Rating, Address/City"
+      "count": true
+    }
+```
 
 > [!NOTE]
-> 既定のスコアリングは多くのシナリオに使用可能ですが、カスタムのスコアリング プロファイルに基づいた関連性を使用することをお勧めします。 カスタムのスコアリング プロファイルを使用すると、ユーザーのビジネスに有益な項目をブーストすることができます。 詳しくは、[スコアリング プロファイルの追加](index-add-scoring-profiles.md)に関する記事をご覧ください。 
-> 
-> 
+> 結果に画像ファイル (製品の写真やロゴなど) を含める場合、それらは Azure Cognitive Search の外部に格納しますが、画像の URL を参照するためのインデックス内のフィールドを検索ドキュメントに含めます。 結果内の画像をサポートするサンプル インデックスには、この[クイックスタート](search-create-app-portal.md)で紹介されている **realestate-sample-us** のデモや、[ニューヨーク市のジョブ デモ アプリ](https://aka.ms/azjobsdemo)が含まれます。
 
-## <a name="faceted-navigation"></a>ファセット ナビゲーション
-検索ナビゲーションは結果ページによく使用され、ページの端または上部に表示される場合が多いです。 Azure Search では、ファセット ナビゲーションを使用すると、定義済みのフィルターに基づいた自動検索ができます。 詳細については、「 [Azure Search のファセット ナビゲーション](search-faceted-navigation.md) 」を参照してください。
+## <a name="paging-results"></a>ページングの結果
 
-## <a name="filters-at-the-page-level"></a>ページ レベルでのフィルター
-ソリューションの設計に、特定種類のコンテンツ (たとえば、ページ上部に売り場リストを表示させるオンライン ショッピング用アプリケーション) 専用の検索ページが組み込まれている場合、**onClick** イベントと共に[フィルター式](search-filters.md)を挿入すると、あらかじめフィルター処理された状態でページが開きます。 
+既定では、検索エンジンは最初の 50 個の一致まで返します。順序は、クエリがフルテキスト検索である場合は検索スコアによって決定され、完全一致のクエリの場合は任意の順序で返されます。
 
-フィルターは、検索式が挿入されているかどうかにかかわらず送信できます。 たとえば、次の要求ではブランド名でフィルター処理され、それに一致するドキュメントのみが返されます。
+別の数の一致するドキュメントを返すには、クエリ要求に `$top` および `$skip` パラメーターを追加します。 このロジックを説明する一覧を次に示します。
 
-        GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
++ インデックス内の一致するドキュメントの合計数を取得するには、`$count=true` を追加します。
 
-`$filter`式の詳細については、「[ドキュメントの検索 (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
++ 15 個の一致するドキュメントの最初のセットに加え、合計の一致の数を返します: `GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-## <a name="see-also"></a>関連項目
-* [Azure Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice)
-* [インデックス操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-* [ドキュメントの操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [Azure Search のファセット ナビゲーション](search-faceted-navigation.md)
++ 2 番目のセットを返し、次の 15 個を取得するために最初の 15 個をスキップします: `$top=15&$skip=15`。 15 個の 3 番目のセットについて同じことを行います: `$top=15&$skip=30`
 
-<!--Image references-->
-[1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG
-[2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
-[3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
-[4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
+基になるインデックスが変更されている場合、ページ分割されたクエリの結果の安定性は保証されません。 ページングによって各ページの `$skip` の値が変更されますが、各クエリは独立しており、クエリ時にインデックス内に存在する (つまり、汎用データベースで見られるような結果のキャッシュやスナップショットは存在しない) ため、データの現在のビューに対して動作します。
+ 
+次の例は、重複がどのように発生するかを示しています。 4 つのドキュメントを含む次のインデックスがあるとします。
+
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+    { "id": "4", "rating": 1 }
+ 
+ここでは、結果を一度に 2 つ、評価の順序で返してもらいたいとします。 結果の最初のページを取得するために `$top=2&$skip=0&$orderby=rating desc` というクエリを実行すると、次の結果が生成されます。
+
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+ 
+このサービスでは、クエリ呼び出しの間に `{ "id": "5", "rating": 4 }` という 5 番目のドキュメントがインデックスに追加されたとします。  その後すぐに、2 ページ目をフェッチするために `$top=2&$skip=2&$orderby=rating desc` というクエリを実行すると、次の結果が得られます。
+
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+ 
+ドキュメント 2 が 2 回フェッチされることに注意してください。 これは、新しいドキュメント 5 の方が評価の値が大きいため、ドキュメント 2 の前に並べ替えられ、最初のページに割り当てられるためです。 この動作は予期されない可能性がありますが、検索エンジンの動作としては一般的なものです。
+
+## <a name="ordering-results"></a>結果の並べ替え
+
+フルテキスト検索クエリの場合、結果は、ドキュメント内の用語頻度と近接性に基づいて計算された検索スコアによって自動的にランク付けされます。ここで、検索用語に対するより多くの、またはより強力な一致を含むドキュメントにより高いスコアが割り当てられます。 
+
+検索スコアは、一般的な意味での関連性を伝達するため、同じ結果セット内の他のドキュメントと比べた場合の一致の強さが反映されています。 スコアは、必ずしもあるクエリから次のクエリへと一貫しているとは限らないため、クエリを操作していると、検索ドキュメントの順序付け方法における小さな不一致に気付くことがあります。 これが発生する理由については、次のいくつかの説明があります。
+
+| 原因 | 説明 |
+|-----------|-------------|
+| データのボラティリティ | ドキュメントを追加、変更、または削除すると、インデックス コンテンツは変動します。 インデックスの更新が徐々に処理されるに従って用語頻度は変化し、一致するドキュメントの検索スコアに影響を与えます。 |
+| 複数のレプリカ | 複数のレプリカを使用するサービスの場合、クエリは、各レプリカに対して並列に発行されます。 検索スコアを計算するために使用されるインデックス統計はレプリカごとに計算され、クエリ応答の中で結果がマージされ、順序付けられます。 レプリカのほとんどは互いのミラーですが、状態の小さな違いのために統計は異なる場合があります。 たとえば、あるレプリカで、他のレプリカからマージされた、その統計に寄与しているドキュメントが削除されることがあります。 通常、レプリカごとの統計の違いは、小さなインデックスの方がより顕著です。 |
+| 同一のスコア | 複数のドキュメントのスコアが同じである場合、それらはいずれも最初に表示される可能性があります。  |
+
+### <a name="consistent-ordering"></a>一貫した順序付け
+
+結果の順序付けが柔軟であるなら、一貫性がアプリケーションの要件である場合は、他のオプションを調査することもできます。 最も簡単なアプローチは、評価や日付などのフィールド値での並べ替えです。 評価や日付などの特定のフィールドで並べ替えるシナリオの場合は、**並べ替え可能**のインデックスが付けられた任意のフィールドに適用できる [`$orderby` 式](query-odata-filter-orderby-syntax.md)を明示的に定義できます。
+
+別のオプションとして、[カスタム スコアリング プロファイル](index-add-scoring-profiles.md)の使用があります。 スコアリング プロファイルを使用すると、検索結果内の項目のランク付けをより細かく制御できるため、特定のフィールドで見つかる一致を向上させることができます。 追加のスコアリング ロジックにより、各ドキュメントの検索スコアがさらに離れるため、レプリカ間のわずかな違いのオーバーライドに役立ちます。 このアプローチには[ランク付けアルゴリズム](index-ranking-similarity.md)をお勧めします。
+
+## <a name="hit-highlighting"></a>検索結果の強調表示
+
+検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関する記事で説明しています。 
+
+ヒットの強調表示を有効にするには、`highlight=[comma-delimited list of string fields]` を追加して、強調表示を使用するフィールドを指定します。 強調表示は、説明フィールドなど、一致が一目ではわかりにくい、長いコンテンツ フィールドに対して便利です。 **検索可能**として属性付けされたフィールド定義だけが、ヒットの強調表示に使用できます。
+
+既定では、Azure Cognitive Search によって、フィールドごとに最大 5 つの強調表示が返されます。 この数値を調整するには、フィールドに、ダッシュに続く整数を追加します。 たとえば、`highlight=Description-10` とすると、[説明] フィールドの一致するコンテンツに対して最大 10 個の強調表示が返されます。
+
+書式設定は、語句全体のクエリに適用されます。 書式設定の種類は、タグ `highlightPreTag` および `highlightPostTag` によって決定され、コードでは応答を処理します (たとえば、太字のフォントや黄色の背景を適用するなど)。
+
+次の例では、[説明] フィールド内で見つかった用語 "sandy"、"sand"、"beaches"、"beach" に強調表示のタグが付けられます。 エンジンのクエリ拡張をトリガーするクエリ (あいまい検索やワイルドカード検索など) では、検索結果の強調表示のサポートが制限されています。
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
+
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+    {  
+      "search": "sandy beaches",  
+      "highlight": "Description"
+    }
+```
+
+### <a name="new-behavior-starting-july-15"></a>新しい動作 (7 月15日以降)
+
+2020 年 7 月 15 日以降に作成されたサービスでは、異なる強調表示エクスペリエンスが提供されます。 この日付より前に作成されたサービスについては、強調表示の動作に変更はありません。 
+
+新しい動作では:
+
+* フル フレーズのクエリに一致する語句だけが返されるようになります。 クエリ "super bowl" では、次のような強調表示が返されます。
+
+    ```html
+    '<em>super bowl</em> is super awesome with a bowl of chips'
+    ```
+  用語 *bowl of chips*はフル フレーズと一致しないため、強調表示されていないことに注意してください。
+  
+* 強調表示用に返されるフラグメント サイズも指定できるようになります。 フラグメント サイズは文字数として指定します (最大 1000 文字)。
+
+ヒットの強調表示を実装するクライアント コードを記述する場合は、この変更点に注意してください。 まったく新しい検索サービスを作成しない限り、この変更の影響を受けることはありません。
+
+## <a name="next-steps"></a>次のステップ
+
+クライアントの検索ページをすばやく生成するには、次のオプションを検討してください。
+
++ [アプリケーション ジェネレーター](search-create-app-portal.md)。ポータルで、検索バー、ファセット ナビゲーション、画像を含む結果領域を備えた HTML ページを作成します。
++ [C# での最初のアプリの作成](tutorial-csharp-create-first-app.md)に関するページは、機能するクライアントを構築するチュートリアルです。 サンプル コードは、ページ分割されたクエリ、検索結果の強調表示、並べ替えを示しています。
+
+複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、次でも見つけることができます: [ニューヨーク市のジョブ デモ アプリ](https://aka.ms/azjobsdemo)、[ライブ デモ サイトを使用した JavaScript サンプル コード](https://github.com/liamca/azure-search-javascript-samples)、および [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。

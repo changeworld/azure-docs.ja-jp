@@ -1,44 +1,27 @@
 ---
-title: App Service on Linux の概要 - Azure | Microsoft Docs
-description: Azure App Service on Linux について説明します。
+title: 既定の Linux コンテナーでコードを実行する
+description: Azure App Service は、ビルド済みの Linux コンテナーでコードを実行できます。 Azure で Linux Web アプリケーションを実行する方法について説明します。
 keywords: Azure App Service, Linux, OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
-ms.author: msangapu;yili
-ms.custom: seodec18
-ms.openlocfilehash: 8d40b28103e24214ef00864b032266cc95889eff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: msangapu
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780330"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046412"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
-[Azure App Service](../overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 「[言語](#languages)」セクションに、現在サポートされているアプリケーション スタックの一覧を示します。
+[Azure App Service](../overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、フル マネージドのコンピューティング プラットフォームです。 顧客は App Service on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。
 
 ## <a name="languages"></a>Languages
 
-App Service on Linux では、開発者の生産性を向上させるために、多数の組み込みイメージがサポートされています。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、[独自の Docker イメージを作成](tutorial-custom-docker-image.md)して Web App for Containers にデプロイする方法があります。
-
-| 言語 | サポートされているバージョン |
-|---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1,10.10、10.14 |
-| Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |
-| PHP | 5.6、7.0、7.2 |
-| Python | 2.7、3.6、3.7 |
-| .NET Core | 1.0、1.1、2.0、2.1、2.2 |
-| Ruby | 2.3、2.4 |
+App Service on Linux では、開発者の生産性を向上させるために、多数の組み込みイメージがサポートされています。 以下の言語が含まれます。Node.js、Java (JRE 8 と JRE 11)、PHP、Python、.NET Core、および Ruby。 [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行して、最新の言語とサポートされているバージョンを表示します。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、[独自の Docker イメージを作成](tutorial-custom-docker-image.md)して Web App for Containers にデプロイする方法があります。
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -59,11 +42,11 @@ App Service on Linux では、開発者の生産性を向上させるために�
 * 基本コンソール
 * SSH
 
-## <a name="scaling"></a>スケーリング
+## <a name="scaling"></a>Scaling
 
 * [App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json)のレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
 
-## <a name="locations"></a>Locations
+## <a name="locations"></a>場所
 
 [Azure ステータス ダッシュボード](https://azure.microsoft.com/status)を確認します。
 
@@ -77,18 +60,18 @@ App Service on Linux は [Free、Basic、Standard、および Premium](https://a
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
-コンテナーから `stdout` および `stderr` をログ記録するには、 **[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
+> [!NOTE]
+> [Azure Monitoring (プレビュー)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) による新しい統合ログ機能があります。 
+>
+>
 
-![ログ記録の有効化][2]
-
-設定はすぐに有効になります。 App Service により設定の変更が検出され、自動的にコンテナーが再起動されます。
+アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。 コンテナーから `stdout` および `stderr` をログに記録するには、 **[App Service ログ]** で **[アプリケーションのログ記録]** を有効にする必要があります。 設定はすぐに有効になります。 App Service で変更が検出され、自動的にコンテナーが再起動されます。
 
 SCM サイトには、 **[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
 
 ![Kudu を使用した Docker のログの表示][1]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事では、さまざまな言語で記述した Web アプリを使用して App Service on Linux での作業を開始することができます。
 
@@ -108,7 +91,7 @@ App Service on Linux の詳細については、次のページを参照して�
 * [App Service でステージング環境を設定する](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Docker Hub の継続的なデプロイ](app-service-linux-ci-cd.md)
 
-質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
+質問や問題は、[フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)に投稿できます。
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

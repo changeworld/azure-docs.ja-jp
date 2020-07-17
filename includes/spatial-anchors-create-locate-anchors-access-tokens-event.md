@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: a673f02af9d92b7135e47961f13e0899a1f0e02f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110640"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67180874"
 ---
 アクセス トークンが設定されていない場合は、`TokenRequired` イベントを処理するか、デリゲート プロトコルに `tokenRequired` メソッドを実装する必要があります。
 

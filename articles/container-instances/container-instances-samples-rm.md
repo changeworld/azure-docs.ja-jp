@@ -1,18 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートのサンプル - Azure Container Instances
-description: Azure Container Instances のための Azure Resource Manager テンプレートのサンプル
-services: container-instances
-author: dlepow
-ms.service: container-instances
+title: Azure Resource Manager テンプレート サンプル
+description: さまざまな構成で Azure Container Instances をデプロイする Azure Resource Manager テンプレートのサンプルを見つける
 ms.topic: article
 ms.date: 03/07/2019
-ms.author: danlep
-ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006466"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75981647"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
@@ -38,7 +34,7 @@ ms.locfileid: "59006466"
 | **Azure リソース** ||
 | [Azure Storage アカウントおよび Azure Files 共有を作成する][az-files] | コンテナー インスタンスで Azure CLI を使用して、ストレージ アカウントと Azure Files 共有します。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 Resource Manager テンプレートを使用してリソースを配置するには、いくつかのオプションがあります。
 
@@ -63,8 +59,8 @@ Resource Manager テンプレートを使用してリソースを配置するに
 [vol-secret]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-secret
 
 <!-- LINKS - Internal -->
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
-[deploy-portal]: ../azure-resource-manager/resource-group-template-deploy-portal.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-rest]: ../azure-resource-manager/resource-group-template-deploy-rest.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md
+[deploy-portal]: ../azure-resource-manager/templates/deploy-portal.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-rest]: ../azure-resource-manager/templates/deploy-rest.md
 [ref]: /azure/templates/microsoft.containerinstance/containergroups

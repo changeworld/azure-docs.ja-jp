@@ -1,24 +1,22 @@
 ---
-title: kured を使用して Azure Kubernetes Service (AKS) の Linux ノードを更新および再起動する
+title: kured を使用した Linux ノードの再起動の処理
+titleSuffix: Azure Kubernetes Service
 description: kured を使用して Azure Kubernetes Service (AKS) の Linux ノードを更新し、自動的に再起動する方法について説明します
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 1702d9558e27452006a2f015fd3312ac19362871
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849867"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208076"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します
 
 クラスターを保護するために、AKS のノードにセキュリティ更新プログラムが自動的に適用されます。 これらの更新プログラムには、OS のセキュリティ修正プログラムやカーネルの更新プログラムが含まれています。 これらの更新プログラムの中には、プロセスを完了するためにノードの再起動が必要なものがあります。 AKS は、更新プロセスを完了するためにこれらの Linux ノードを自動的に再起動しません。
 
-(現在 AKS でプレビュー段階) の Windows サーバー ノードを最新に保つためのプロセスは少し異なります。 Windows Server ノードは、毎日の更新を受信しません。 代わりに、最新の Windows Server の基本イメージと修正プログラムを含む新しいノードをデプロイする AKS アップグレードを実行します。 Windows Server ノードを使用する AKS クラスターについては、「[AKS でのノード プールのアップグレード][nodepool-upgrade]」をご覧ください。
+Windows サーバー ノードを最新に保つためのプロセスは少し異なります。 Windows Server ノードは、毎日の更新を受信しません。 代わりに、最新の Windows Server の基本イメージと修正プログラムを含む新しいノードをデプロイする AKS アップグレードを実行します。 Windows Server ノードを使用する AKS クラスターについては、「[AKS でのノード プールのアップグレード][nodepool-upgrade]」をご覧ください。
 
 この記事では、オープンソースの [kured (KUbernetes REboot Daemon)][kured] を使用して、再起動が必要な Linux ノードを監視し、ポッドの実行やノード再起動プロセスのスケジュール変更を自動的に処理する方法について説明します。
 
@@ -27,7 +25,7 @@ ms.locfileid: "65849867"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -37,7 +35,7 @@ AKS クラスターでは、お客様の Kubernetes ノードが Azure 仮想マ
 
 ![kured を使用した AKS ノードの更新と再起動のプロセス](media/node-updates-kured/node-reboot-process.png)
 
-カーネルの更新プログラムなど、一部のセキュリティ更新プログラムでは、プロセスの最後にノードを再起動する必要があります。 再起動が必要な Linux ノードでは、*/var/run/reboot-required* という名前のファイルが作成されます。 この再起動プロセスは自動的には実行されません。
+カーネルの更新プログラムなど、一部のセキュリティ更新プログラムでは、プロセスの最後にノードを再起動する必要があります。 再起動が必要な Linux ノードでは、 */var/run/reboot-required* という名前のファイルが作成されます。 この再起動プロセスは自動的には実行されません。
 
 お客様独自のワークフローとプロセスを使用してノードの再起動を管理するか、`kured` を使用してプロセスを調整することができます。 `kured` を使用すると、クラスター内の各 Linux ノードでポッドを実行する [DaemonSet][DaemonSet] がデプロイされます。 DaemonSet 内のこれらのポッドによって */var/run/reboot-required* ファイルの存在が監視され、ノードの再起動プロセスが開始されます。
 
@@ -54,22 +52,33 @@ AKS には別途、クラスターを "*アップグレード*" するための�
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>AKS クラスターに kured をデプロイする
 
-`kured` DaemonSet をデプロイするには、その GitHub プロジェクト ページから次のサンプル YAML マニフェストを適用します。 このマニフェストによって、ロールおよびクラスター ロール、バインディング、サービス アカウントが作成された後、AKS クラスター 1.9 以降をサポートする `kured` バージョン 1.1.0 を使用して、DaemonSet がデプロイされます。
+`kured` DaemonSet をデプロイするには、次の公式 Kured Helm グラフをインストールします。 これによって、ロールおよびクラスター ロール、バインディング、サービス アカウントが作成された後、 `kured` を使用して、DaemonSet がデプロイされます。
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
-You can also configure additional parameters for `kured`, such as integration with Prometheus or Slack. For more information about additional configuration parameters, see the [kured installation docs][kured-install].
+# Update your local Helm chart repository cache
+helm repo update
 
-## Update cluster nodes
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
 
-By default, Linux nodes in AKS check for updates every evening. If you don't want to wait, you can manually perform an update to check that `kured` runs correctly. First, follow the steps to [SSH to one of your AKS nodes][aks-ssh]. Once you have an SSH connection to the Linux node, check for updates and apply them as follows:
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+```
+
+`kured` には、Prometheus や Slack との統合など、追加のパラメーターを構成することもできます。 追加の構成パラメーターの詳細については、[kured Helm グラフ][kured-install]をご参照ください。
+
+## <a name="update-cluster-nodes"></a>クラスター ノードを更新する
+
+既定では、AKS の Linux ノードによって更新プログラムの有無が毎晩チェックされます。 待ちたくない場合は、手動で更新を行うことで、`kured` が正常に実行されていることを確認できます。 まず、[お客様の AKS ノードのいずれかに SSH で接続][aks-ssh]する手順に従ってください。 Linux ノードに SSH で接続したら、次のように更新プログラムの有無をチェックして適用します。
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-ノードの再起動を必要とする更新プログラムが適用された場合、*/var/run/reboot-required* にファイルが書き込まれます。 既定では、再起動を必要とするノードの有無が `Kured` によって 60 分おきにチェックされます。
+ノードの再起動を必要とする更新プログラムが適用された場合、 */var/run/reboot-required* にファイルが書き込まれます。 既定では、再起動を必要とするノードの有無が `Kured` によって 60 分おきにチェックされます。
 
 ## <a name="monitor-and-review-reboot-process"></a>再起動プロセスを監視、確認する
 
@@ -90,7 +99,7 @@ aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4   
 aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、`kured` を使用し、セキュリティ更新プロセスの一環として Linux ノードを自動的に再起動する方法について説明しました。 最新バージョンの Kubernetes にアップグレードするために、[AKS クラスターをアップグレード][aks-upgrade]できます。
 
@@ -98,7 +107,7 @@ Windows Server ノードを使用する AKS クラスターについては、「
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

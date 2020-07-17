@@ -1,25 +1,17 @@
 ---
-title: BLOB パスを既定値から変更する | Microsoft Docs
+title: BLOB パスを既定値から変更する
 description: BLOB ファイル パス名を変更するように Azure 関数を設定する方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011636"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76270626"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 
@@ -35,7 +27,7 @@ Azure 関数を作成するには、次の手順を実行します。
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
-2. **[+ リソースの作成]** をクリックします。 **[検索]** ボックスに「**Function App**」と入力し、**Enter** キーを押します。 表示されるアプリの一覧で、**[Function App]** を選んでクリックします。
+2. **[+ リソースの作成]** をクリックします。 **[検索]** ボックスに「**Function App**」と入力し、**Enter** キーを押します。 表示されるアプリの一覧で、 **[Function App]** を選んでクリックします。
 
     ![検索ボックスに「Function App」と入力](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
@@ -46,9 +38,9 @@ Azure 関数を作成するには、次の手順を実行します。
 4. **[Function App]** 構成ブレードで、次の手順を実行します。
 
     1. 一意の **[アプリ名]** を指定します。
-    2. ドロップダウン リストから、**[サブスクリプション]** を選びます。 StorSimple Data Manager サービスに関連付けられているものと同じサブスクリプションを選ぶ必要があります。
+    2. ドロップダウン リストから、 **[サブスクリプション]** を選びます。 StorSimple Data Manager サービスに関連付けられているものと同じサブスクリプションを選ぶ必要があります。
     3. リソース グループの **[新規作成]** を選びます。
-    4. **[ホスティング プラン]** ドロップダウン リストで、**[従量課金プラン]** を選びます。
+    4. **[ホスティング プラン]** ドロップダウン リストで、 **[従量課金プラン]** を選びます。
     5. 関数を実行する場所を指定します。 StorSimple Data Manager サービスおよびジョブ定義に関連付けられたストレージ アカウントが存在するのと同じリージョンを選びます。
     6. 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 ストレージ アカウントは内部で関数に使用されます。
 
@@ -58,17 +50,17 @@ Azure 関数を作成するには、次の手順を実行します。
      
         ![作成された Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-5. **[関数]** を選び、**[+ 新しい関数]** をクリックします。
+5. **[関数]** を選び、 **[+ 新しい関数]** をクリックします。
 
     ![[+ 新しい関数] をクリックする](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 
-6. 言語として **[C#]** を選びます。 テンプレート タイルの配列で、**[QueueTrigger-CSharp]** タイルの **[C#]** を選びます。
+6. 言語として **[C#]** を選びます。 テンプレート タイルの配列で、 **[QueueTrigger-CSharp]** タイルの **[C#]** を選びます。
 
 7. **[Queue trigger]\(キュー トリガー\)** で次のようにします。
 
     1. 関数の **[名前]** を入力します。
     2. **[キュー名]** ボックスに、データ変換ジョブ定義の名前を入力します。
-    3. **[ストレージ アカウント接続]** で、**[新規]** をクリックします。 ストレージ アカウントの一覧から、ジョブ定義に関連付けられているアカウントを選びます。 接続名をメモします (強調表示されている部分)。 この名前は後で Azure 関数で必要になります。
+    3. **[ストレージ アカウント接続]** で、 **[新規]** をクリックします。 ストレージ アカウントの一覧から、ジョブ定義に関連付けられているアカウントを選びます。 接続名をメモします (強調表示されている部分)。 この名前は後で Azure 関数で必要になります。
 
         ![新しい C# 関数を作成する](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
@@ -217,12 +209,12 @@ Azure 関数を作成するには、次の手順を実行します。
         ```
 
     
-    4. **[Save]** をクリックします。
+    4. **[保存]** をクリックします。
 
         ![[ファイルの表示] リンク](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 Azure 関数が作成されました。 この関数は、データ変換ジョブによって新しい BLOB が生成されるたびにトリガーされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換する](storsimple-data-manager-ui.md)

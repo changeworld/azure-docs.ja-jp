@@ -1,22 +1,52 @@
 ---
-title: 'ルーティングを最適化する - ExpressRoute 回線: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: ルーティングを最適化する'
 description: このページでは、Microsoft とユーザー (企業) のネットワークとを接続する ExpressRoute 回線がユーザー側に複数存在する場合のルーティングを最適化する方法について詳しく説明します。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/11/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140933"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74080130"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。
+
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft ピアリングとパブリック ピアリングでのパスの選択
+Microsoft ピアリングまたはパブリック ピアリングを使用するときに、トラフィックが目的のパス (1 つ以上の ExpressRoute 回線がある場合) を確実に経由していること、およびインターネット交換 (IX) またはインターネット サービス プロバイダー (ISP) を経由したインターネットへのパスを確実に経由していることが重要です。 BGP では、最長プレフィックス一致 (LPM) を含むさまざまな要因に基づいて、最適なパス選択アルゴリズムが利用されます。 Microsoft ピアリングまたはパブリック ピアリングを介して Azure 宛てのトラフィックが ExpressRoute パスを確実に経由するようにするには、顧客が *Local Preference* 属性を実装して ExpressRoute でそのパスが常に優先されるようにする必要があります。 
+
+> [!NOTE]
+> 既定のローカル設定は、通常は 100 です。 ローカル設定が高いほど優先度が高くなります。 
+>
+>
+
+次のシナリオ例について考えてみます。
+
+![ExpressRoute ケース 1 の問題 - 顧客から Microsoft への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+
+上の例では、ExpressRoute パスを優先するには、次のように Local Preference を構成します。 
+
+**R1 の観点からの Cisco IOS-XE 構成:**
+
+    R1(config)#route-map prefer-ExR permit 10
+    R1(config-route-map)#set local-preference 150
+
+    R1(config)#router BGP 345
+    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+    R1(config-router)#neighbor 1.1.1.2 activate
+    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+
+**R1 の観点からの Junos 構成:**
+
+    user@R1# set protocols bgp group ibgp type internal
+    user@R1# set protocols bgp group ibgp local-preference 150
+
+
 
 ## <a name="suboptimal-routing-from-customer-to-microsoft"></a>顧客から Microsoft への準最適なルーティング
 では、具体的な例を用いてルーティングの問題を詳しく見ていきましょう。 米国のロサンゼルスとニューヨークにそれぞれ 1 つオフィスがあるとします。 2 つのオフィスは、ワイド エリア ネットワーク (WAN) に接続されています。WAN は、自社のバックボーン ネットワークでも、サービス プロバイダーの IP VPN でもかまいません。 また ExpressRoute 回線が 2 つ存在します。1 つは米国西部に、もう 1 つは米国東部にあり、それらも WAN に接続されています。 オフィスから Microsoft のネットワークには、明らかに 2 とおりの接続経路があります。 このとき米国西部と米国東部の両オフィスで Azure (Azure App Service など) をデプロイしているとします。 ユーザーの接続先として意図した Azure リージョンは当然、ロサンゼルスなら米国西部、ニューヨークなら米国東部です。それぞれのオフィスのユーザーが最適なパフォーマンスを享受できるよう最寄りの Azure サービスがアクセス先となるようにサービス管理者によってアドバタイズされています。 ところが、意図した結果が得られるのは米国東部のオフィスだけで、米国西部のオフィスでは思いどおりの結果が得られません。 問題の原因は、 Azure 米国東部 (23.100.0.0/16) のプレフィックスと Azure 米国西部 (13.100.0.0/16) のプレフィックスの両方が、それぞれの ExpressRoute 回線でアドバタイズされていることにあります。 どのプレフィックスがどのリージョンに属しているかがわからなければ、両者を区別して扱うことはできません。 どちらのプレフィックスも米国西部より米国東部の方が近いと WAN ネットワークで判断される可能性があり、その場合、両オフィスのユーザーが米国東部の ExpressRoute 回線にルーティングされます。 最終的にロサンゼルス オフィスでは、満足なパフォーマンスを享受できないユーザーが続出する結果となります。
@@ -44,7 +74,7 @@ ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数
 もう 1 つの解決策は、引き続き両方の ExpressRoute 回線で 2 つのプレフィックスをアドバタイズしたうえで、どのプレフィックスがどちらのオフィスに近いか、という手掛かりを Microsoft に知らせる方法です。 BGP の AS Path プリペンドがサポートされているため、プレフィックスの AS Path を構成することでルーティングを制御することができます。 この例では、172.2.0.0/31 の AS PATH を、米国東部では意図的に長くすることが考えられます。そうすることで、このプレフィックスに向かうトラフィックでは、米国西部の ExpressRoute 回線が優先されます (このプレフィックスに対する経路は米国西部の方が短いと Microsoft のネットワークが判断します)。 米国西部でも同様に、172.2.0.2/31 の AS PATH を意図的に長くし、米国東部の ExpressRoute 回線が優先されるようにします。 これで両方のオフィスのルーティングが最適化されます。 このように設計すれば、いずれかの ExpressRoute 回線で障害が発生しても、Exchange Online は、もう 1 つの ExpressRoute 回線および WAN を介して引き続き貴社オフィスに到達することができます。 
 
 > [!IMPORTANT]
-> Microsoft ピア設定では、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 Microsoft ピア設定のルーティングを制御するには、AS PATH にパブリック AS 番号を付加する必要があります。
+> プライベート AS 番号を使用してピアリングするとき、Microsoft ピア設定では、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 Microsoft ピア設定のルーティングを制御するには、パブリック AS とピアリングし、AS PATH にパブリック AS 番号を付加する必要があります。
 > 
 > 
 

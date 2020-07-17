@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする方法 | Microsoft Docs
+title: サインイン エラー レポートでのトラブルシューティング方法 | Microsoft Docs
 description: Azure Portal で Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68ad2a29dcaa53d219b679b9e0f24a50a6f576
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877059"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74008056"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法:Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 
 Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign-ins.md)では、次のように組織内のアプリケーションへのアクセスの管理に関する質問への回答を見つけることができます。
 
@@ -42,8 +42,8 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>サインイン レポートを使用したサインイン エラーのトラブルシューティング
 
 1. [Azure portal](https://portal.azure.com) に移動し、自分のディレクトリを選択します。
-2. **[Azure Active Directory]** を選択し、**[監視]** セクションの **[サインイン]** を選択します。 
-3. ユーザー名またはオブジェクト識別子、アプリケーション名または日付のいずれかで指定されたフィルターを使って、エラーを絞り込みます。 さらに、**[状態]** ドロップダウンから **[失敗]** を選択して、失敗したサインインのみを表示します。 
+2. **[Azure Active Directory]** を選択し、 **[監視]** セクションの **[サインイン]** を選択します。 
+3. ユーザー名またはオブジェクト識別子、アプリケーション名または日付のいずれかで指定されたフィルターを使って、エラーを絞り込みます。 さらに、 **[状態]** ドロップダウンから **[失敗]** を選択して、失敗したサインインのみを表示します。 
 
     ![結果のフィルター処理](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
@@ -59,9 +59,9 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
 7. [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
 
-8. 他のすべてが失敗した場合、または推奨されるアクションを行っても問題が解決しない場合は、**[トラブルシューティングおよびサポート]** タブの手順に従って、[サポート チケットをオープン](../fundamentals/active-directory-troubleshooting-support-howto.md)にしてください。 
+8. 他のすべてが失敗した場合、または推奨されるアクションを行っても問題が解決しない場合は、 **[トラブルシューティングおよびサポート]** タブの手順に従って、[サポート チケットをオープン](../fundamentals/active-directory-troubleshooting-support-howto.md)にしてください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)
 * [サインイン レポートの概要](concept-sign-ins.md)

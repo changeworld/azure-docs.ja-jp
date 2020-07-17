@@ -1,21 +1,21 @@
 ---
-title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
+title: ストレージ:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのストレージのベスト プラクティスについて説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691519"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436906"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
 この記事では、Azure HDInsight システムのデータ ストレージのための推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
 
@@ -29,7 +29,7 @@ HDInsight クラスターは Azure Storage 内の blob コンテナーを既定�
 
 作成プロセスで定義されたストレージ アカウントとそのそれぞれのキーは、クラスター ノードの `%HADOOP_HOME%/conf/core-site.xml` に格納されます。 これらは Ambari UI の HDFS の構成で「Custom core site (カスタム コア サイト)」セクションからもアクセスできます。 ストレージ アカウント キーは既定で暗号化されており、カスタムの復号スクリプトを使用してキーを復号化してから Hadoop デーモンに渡されます。 Hive、MapReduce、Hadoop ストリーミング、Pig などを含むジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。
 
-Azure Storage は、別の拠点に geo レプリケーションできます。 geo レプリケーションにより、災害発生時には別の拠点でデータを回復でき、データの冗長性が高まりますが、geo レプリケーションした別拠点へのフェールオーバーはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。 geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
+Azure Storage は、geo レプリケーションすることが可能です。 geo レプリケーションにより、災害発生時には別の拠点でデータを回復でき、データの冗長性が高まりますが、geo レプリケーションした別拠点へのフェールオーバーはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。 geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
 
 次の形式の 1 つを使用して、Azure Storage に格納されているデータにアクセスできます。
 
@@ -39,12 +39,11 @@ Azure Storage は、別の拠点に geo レプリケーションできます。 
 |`wasbs:///`|暗号化された通信を使用して既定のストレージにアクセスします。|
 |`wasb://<container-name>@<account-name>.blob.core.windows.net/`|既定以外のストレージ アカウントを使用して通信するときに使用します。 |
 
-
-[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/storage-scalability-targets.md)には、Azure ストレージ アカウントの現在の制限が記載されています。 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。
+[Standard ストレージ アカウントのスケーラビリティ ターゲット](../../storage/common/scalability-targets-standard-account.md)に関する記事には、Azure Storage アカウントの現在の制限が記載されています。 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。
 
 [Azure Storage Analytics](../../storage/storage-analytics.md)  はすべてのストレージ サービスのためのメトリックを提供し、Azure portal はメトリックを収集してグラフで視覚化するように構成できます。 ストレージ リソース メトリックのしきい値に達したときに通知するアラートを作成できます。
 
-Azure Storage では、[BLOB オブジェクトの論理的な削除](../../storage/blobs/storage-blob-soft-delete.md)が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
+Azure Storage では、[BLOB オブジェクトの論理的な削除](../../storage/blobs/storage-blob-soft-delete.md)が提供されており、アプリケーションまたは他のストレージ アカウント ユーザーによって誤って変更または削除された場合に、データを復旧できます。
 
 [blob スナップショット](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)を作成することができます。 スナップショットは、ある時点で作成された読み取り専用の BLOB で、BLOB をバックアップする手段を提供します。 作成されたスナップショットは、読み取り、コピー、削除はできますが、変更はできません。
 
@@ -53,7 +52,7 @@ Azure Storage では、[BLOB オブジェクトの論理的な削除](../../stor
 
 以下の方法を使用して、証明書を Java トラストストアにインポートできます。
 
-Azure Blob の ssl 証明書をファイルにダウンロードします
+Azure Blob の TLS/SSL 証明書をファイルにダウンロードします
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
@@ -74,7 +73,8 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 詳細については、次の記事を参照してください。
 
 - [Azure HDInsight クラスターで Azure Storage を使用する](../hdinsight-hadoop-use-blob-storage.md)
-- [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/storage-scalability-targets.md)
+- [Standard ストレージ アカウントのスケーラビリティ ターゲット](../../storage/common/scalability-targets-standard-account.md)
+- [Blob ストレージのスケーラビリティおよびパフォーマンス ターゲット](../../storage/blobs/scalability-targets.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../../storage/common/storage-performance-checklist.md)
 - [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Azure Portal でのストレージ アカウントの監視](../../storage/common/storage-monitor-storage-account.md)
@@ -92,7 +92,7 @@ Azure Data Lake Storage は、HDFS と POSIX スタイルのアクセス制御�
 
 Azure Data Lake Storage Gen2 は、最新のストレージ製品です。 Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage の第 1 世代からのコア機能を統合します。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
 
-ADLS Gen 2 は  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
+ADLS Gen 2 は  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
 
 Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、 [階層構造の名前空間](../../storage/data-lake-storage/namespace.md) を追加することです。 階層構造により、ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
 
@@ -110,7 +110,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 次の形式の 1 つを使用して、ADLS Gen2 に格納されているデータにアクセスできます。
 - `abfs:///`:クラスターの既定の Data Lake Storage にアクセスします。
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage を使用して通信するときに使用します。
+- `abfs://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage と通信するときに使用します。
 
 詳細については、次の記事を参照してください。
 
@@ -120,7 +120,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>オンプレミスの Hadoop クラスター構成内の Azure Storage キーをセキュリティ保護する
 
-Hadoop 構成ファイルに追加される Azure ストレージ キーは、オンプレミスの HDFS と Azure Blob ストレージの間の接続を確立します。 これらのキーは、Hadoop の資格情報プロバイダー フレームワークを使用して暗号化することで保護できます。 暗号化されると、それらを安全に格納してアクセスできます。
+Hadoop 構成ファイルに追加された Azure Storage キーは、オンプレミスの HDFS と Azure Blob Storage 間に接続を確立します。 これらのキーは、Hadoop の資格情報プロバイダー フレームワークを使用して暗号化することで保護できます。 暗号化されると、それらを安全に格納してアクセスできます。
 
 **資格情報をプロビジョニングするには:**
 
@@ -147,7 +147,7 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
-## <a name="restrict-azure-storage-data-access-using-sas"></a>SAS を使用して Azure Storage のデータ アクセスを制限する
+## <a name="restrict-azure-storage-data-access-using-sas"></a>SAS を使用して Azure Storage データ アクセスを制限する
 
 HDInsight には、既定の状態で、クラスターに関連付けられた Azure Storage アカウントのデータへのフル アクセス権があります。 blob コンテナーの Shared Access Signatures (SAS) を使用して、データへの読み取り専用アクセスをユーザーに提供するなど、データへのアクセスを制限できます。
 
@@ -173,41 +173,41 @@ HDInsight には、既定の状態で、クラスターに関連付けられた 
 
 6. **[キー]** と **[値]** フィールドに、次の値を使用します。
 
-    **[キー]**:`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **[値]**:上記の手順 4 で Python アプリケーションから返された SAS キー。
+    **[キー]** :`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **[値]** :上記の手順 4 で Python アプリケーションから返された SAS キー。
 
-7. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]** をクリックします。
+7. **[追加]** ボタンをクリックしてこのキーと値を保存し、 **[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
 
-8. Ambari Web UI で、左側の一覧から [HDFS] を選択して、右側の [サービス アクション] ドロップダウン リストから  **[すべて再起動]**  を選択します。 メッセージが表示されたら、 **[Confirm Restart All]\(すべての再起動の確認\)** を選択します。
+8. Ambari Web UI で、左側の一覧から [HDFS] を選択して、右側の [サービス アクション] ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、 **[Confirm Restart All]\(すべての再起動の確認\)** を選択します。
 
 9. この手順を MapReduce2 と YARN に対して繰り返します。
 
-Azure での SAS トークンの使用に関して 3 つの重要なことを覚えておく必要があります。
+Azure での SAS トークンの使用に関して、3 つの重要なことを覚えておく必要があります。
 
 1. 「READ + LIST」アクセス許可を持つ SAS トークンが作成されると、その SAS トークンを使用して Blob コンテナーにアクセスするユーザーは、データを「書き込みおよび削除」できません。 その SAS トークンを使用して Blob コンテナーにアクセスし、書き込みまたは削除の操作を試行すると、`"This request is not authorized to perform this operation"` のようなメッセージが表示されます。
 
-2. SAS トークンが、`READ + LIST + WRITE` のアクセス許可で生成された場合 (`DELETE` のみ制限する)、`hadoop fs -put` のようなコマンドは、最初に `\_COPYING\_` ファイルに記述し、後でファイルの名前を変更しようとします。 この HDFS 操作は、WASB の `copy+delete` にマップします。 `DELETE` アクセス許可が提供されていないため、「put」は失敗します。 `\_COPYING\_` 操作は、いくつかの同時実行制御を提供する Hadoop です。 現在、「書き込み」操作に影響を与えずに「削除」操作だけを制限する方法はありません。
+2. SAS トークンが、`READ + LIST + WRITE` のアクセス許可で生成された場合 (`DELETE` のみ制限する)、`hadoop fs -put` のようなコマンドは、最初に `\_COPYING\_` ファイルに記述し、後でファイルの名前を変更しようとします。 この HDFS 操作は、WASB の `copy+delete` にマップします。 `DELETE` アクセス許可が提供されなかったため、「プット」は失敗します。 `\_COPYING\_` 操作は、いくつかの同時実行制御を提供する Hadoop です。 現在、「書き込み」操作に影響を与えずに、「削除」操作だけを制限する方法はありません。
 
-3. 残念ながら、Hadoop の資格情報プロバイダーおよび復号化キー プロバイダー (ShellDecryptionKeyProvider) は、現在 SAS トークンと一緒に動作しないため、現在は可視性から保護できません。
+3. 残念ながら、Hadoop の資格情報プロバイダーおよび復号化キー プロバイダー (ShellDecryptionKeyProvider) は現在、SAS トークンと一緒に動作しないため、現時点では可視性から保護できません。
 
 「[Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する](../hdinsight-storage-sharedaccesssignature-permissions.md)」をご覧ください。
 
 ## <a name="use-data-encryption-and-replication"></a>データの暗号化およびレプリケーションを使用する
 
-Azure Storage に書き込まれるすべてのデータは、 [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して自動的に暗号化されます。 Azure ストレージ アカウント内のデータは、高可用性のため常にレプリケートされます。 ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。
+Azure Storage に書き込まれるすべてのデータは、 [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して自動的に暗号化されます。 Azure Storage アカウント内のデータは、高可用性のため常にレプリケートされます。 ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択できます。
 
 - [ローカル冗長ストレージ (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [ゾーン冗長ストレージ (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [geo 冗長ストレージ (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/storage-redundancy.md)
 
-Azure Data Lake Storage はローカル冗長ストレージ (LRS) を提供しますが、ディザスター リカバリー計画のニーズに合った頻度で、別のリージョン内の別の Data Lake Storage アカウントに重要なデータをコピーする必要もあります。  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、DistCp、[Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) など、データをコピーするさまざまな方法があります。 また、誤って削除されないように、Data Lake Storage アカウントのアクセス ポリシーを適用することをお勧めします。
+Azure Data Lake Storage はローカル冗長ストレージ (LRS) を提供しますが、ディザスター リカバリー計画のニーズに合った頻度で、別のリージョン内の別の Data Lake Storage アカウントに重要なデータをコピーする必要もあります。  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、[Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) など、データをコピーするさまざまな方法があります。 また、誤って削除されないように、Data Lake Storage アカウントのアクセス ポリシーを適用することをお勧めします。
 
 詳細については、次の記事を参照してください。
 
 - [Azure Storage のレプリケーション](../../storage/common/storage-redundancy.md)
 - [Azure Data Lake Storage (ADLS) 向けの障害ガイダンス](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>クラスターに Azure ストレージ アカウントを追加する
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>クラスターに Azure Storage アカウントを追加する
 
 HDInsight の作成プロセス時に、既定のファイル システムとして Azure Storage アカウントまたは Azure Data Lake Storage アカウントが選択されます。 クラスター作成プロセス時またはクラスターが作成された後に、この既定のストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションからストレージ アカウントをさらに追加することもできます。
 
@@ -218,11 +218,8 @@ HDInsight の作成プロセス時に、既定のファイル システムとし
 > [!Note]
 > 有効なユース ケースでは、 [Azure サポート](https://azure.microsoft.com/support/faq/)への要求を使用して Azure ストレージの制限を増やすことができます。
 
-詳細については、次の記事を参照してください。
-- [HDInsight にストレージ アカウントを追加する](../hdinsight-hadoop-add-storage.md)
+詳細については、「[HDInsight にストレージ アカウントを追加する](../hdinsight-hadoop-add-storage.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このシリーズの次の記事をお読みください。
-
-- [オンプレミスから Azure HDInsight Hadoop への移行のためのデータ移行のベスト プラクティス](apache-hadoop-on-premises-migration-best-practices-data-migration.md)
+このシリーズの次の記事をお読みください。[オンプレミスから Azure HDInsight Hadoop への移行のためのデータ移行のベスト プラクティス](apache-hadoop-on-premises-migration-best-practices-data-migration.md)。

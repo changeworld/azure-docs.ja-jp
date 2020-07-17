@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のサンプル コード | Microsoft Docs
 description: Azure Active Directory B2C のモバイル、デスクトップ、Web、およびシングルページ アプリケーションのコード サンプル。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
-ms.author: davidmu
-ms.date: 01/23/2018
+ms.author: mimart
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ba3994f49f1d73aad1a5cf8211063f41d224c3d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704081"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181160"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -29,7 +29,7 @@ ms.locfileid: "64704081"
 | [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | MSAL を使用して Azure Active Directory B2C 経由でユーザーを認証し、結果として得られたトークンで Web API にアクセスする方法を示す単純な Android アプリ。 |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | サード パーティのライブラリを使用して、Objective-C で iOS アプリケーションをビルドする方法を示すサンプル。このアプリケーションは、Azure AD B2C ID サービスに対して Microsoft ID ユーザーを認証します。 |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | サード パーティのライブラリを使用して、Android アプリケーションをビルドする方法を示すサンプル。このアプリケーションは、B2C ID サービスに対して Microsoft ID ユーザーを認証し、OAuth 2.0 アクセス トークンを使用して Web API を呼び出します。 |
-| [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Windows Desktop .NET (WPF) アプリケーションが Azure AD B2C を使用してユーザーのサインインを処理し、MSAL.NET を使用してアクセス トークンを取得して API を呼び出す方法を示すサンプル。 | 
+| [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Windows Desktop .NET (WPF) アプリケーションが Azure AD B2C を使用してユーザーのサインインを処理し、MSAL.NET を使用してアクセス トークンを取得して API を呼び出す方法を示すサンプル。 |
 | [xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | MSAL を使用して Azure Active Directory B2C 経由でユーザーを認証し、結果として得られたトークンで Web API にアクセスする方法を示す単純な Xamarin Forms アプリ。 |
 
 ## <a name="web-apps-and-apis"></a>Web アプリと API
@@ -39,12 +39,17 @@ ms.locfileid: "64704081"
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | Azure AD B2C を使用してセキュリティで保護された、.NET Web API を呼び出す .NET Web アプリケーション用の結合されたサンプル。 |
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Azure AD B2C を使用してユーザーのサインインを処理し、MSAL.NET を使用してアクセス トークンを取得して API を呼び出す ASP.NET Core Web アプリケーション。 |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | OpenID Connect を使用して、Web アプリケーションを Express ですばやく簡単にセットアップできるようにする Node.js アプリ。 |
-| [javascript-nodejs-webapp](https://github.com/AzureADQuickStarts/active-directory-b2c-javascript-nodejs-webapp) | OAuth2 プロトコルを使用して、REST API サービスをすばやく簡単にセットアップできるようにする node.js サーバー。 |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | passport.js を使用して Web API を保護し、B2C アクセス トークンを受け入れる方法を示す、Azure AD B2C 用の小さな node.js Web API。 |
+| [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Microsoft ID プラットフォームの B2C を Python Web アプリケーションに統合する方法を説明します。  |
 
 ## <a name="single-page-apps"></a>シングル ページ アプリ
 
 | サンプル | 説明 |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を利用して、Azure AD B2C によって行われます。 | 
-| [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | ASP.NET Web API バックエンドで実装されたシングルページ アプリ。このアプリは、Azure AD B2C を使用してユーザーのサインアップとサインインを処理し、OAuth 2.0 アクセス トークンを使用して Web API を呼び出します。 |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 |
+
+## <a name="saml-test-application"></a>SAML テスト アプリケーション
+
+| サンプル | 説明 |
+|--------| ----------- |
+| [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML ID プロバイダーとして動作するように構成された Azure AD B2C をテストするための SAML テスト アプリケーション。 |

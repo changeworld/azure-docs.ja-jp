@@ -1,25 +1,25 @@
 ---
 title: Azure Event Grid イベント スキーマ
-description: Azure Event Grid のイベントに対して用意されているプロパティについて説明します
+description: すべてのイベントに存在するプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470625"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82114005"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
 この記事では、すべてのイベントに存在するプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。 プロパティは、すべてのイベントに共通であり、発行元を問いません。 データ オブジェクトには、各発行元に固有のプロパティが含まれています。 システム トピックの場合、これらのプロパティは、リソース プロバイダー (Azure Storage や Azure Event Hubs など) に固有です。
 
-イベント ソースは、複数のイベント オブジェクトを含めることができる配列で Azure Event Grid にイベントを送信します。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 64 KB に制限されます。 イベントまたは配列がサイズ制限を超えた場合は、**[413 ペイロードが大きすぎます]** という応答を受信します。
+イベント ソースは、複数のイベント オブジェクトを含めることができる配列で Azure Event Grid にイベントを送信します。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 1 MB に制限されます。 イベントまたは配列がサイズ制限を超えた場合は、 **[413 ペイロードが大きすぎます]** という応答を受信します。 ただし、操作は 64 KB 単位で課金されます。 そのため、64 KB を超えるイベントでは、複数のイベントが発生したかのように操作の料金が発生します。 たとえば、130 KB のイベントでは、3 つの独立したイベントとして操作が課金されます。
 
 Event Grid は、1 つのイベントを含む配列でサブスクライバーにイベントを送信します。 この動作は、今後変更される可能性があります。
 
@@ -80,27 +80,29 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | type | 説明 |
-| -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| プロパティ | Type | 必須 | 説明 |
+| -------- | ---- | -------- | ----------- |
+| topic | string | いいえ。ただし、追加する場合は、Event Grid トピックの Azure Resource Manager ID と完全に一致させる必要があります。 追加しなかった場合は、Event Grid によってイベントに記録されます。 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | はい | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | はい | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | はい | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | はい | イベントの一意識別子。 |
+| data | object | いいえ | リソース プロバイダーに固有のイベント データ。 |
+| dataVersion | string | いいえ。ただし、空の値が記録されます。 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | 必須ではありませんが、追加する場合は、Event Grid スキーマの `metadataVersion` と完全に一致させる必要があります (現在は `1` のみ)。 追加しなかった場合は、Event Grid によってイベントに記録されます。 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 
 * [Azure サブスクリプション (管理操作)](event-schema-subscriptions.md)
-* [コンテナー レジストリ](event-schema-container-registry.md)
+* [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [リソース グループ (管理操作)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
 カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義された標準のイベントと同じフィールドを含める必要があります。
 
@@ -108,7 +110,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 件名に、何が起こったかに関するより詳細な情報が必要になる場合があります。 たとえば、コンテナーにファイルが追加された場合、**ストレージ アカウント** パブリッシャーは件名 `/blobServices/default/containers/<container-name>/blobs/<file>` を指定します。 サブスクライバーはパス `/blobServices/default/containers/testcontainer` でフィルター処理することにより、ストレージ アカウント内の他のコンテナーではなく、そのコンテナーのすべてのイベントを取得できます。 サブスクライバーはまた、テキスト ファイルのみを操作するために、サフィックス `.txt` でフィルター処理またはルーティングすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

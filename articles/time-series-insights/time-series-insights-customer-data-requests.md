@@ -1,20 +1,20 @@
 ---
-title: Azure Time Series Insights の顧客データ要求機能 | Microsoft Docs
-description: Azure Time Series Insights の顧客データ要求機能の概要です。
-author: ashannon7
-ms.author: anshan
+title: 顧客データ要求機能 - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights の顧客データ要求機能について説明します。
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 3578710bf066e7745215d8efacafd2cf6c005eac
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558551"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81640489"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -34,9 +34,9 @@ Azure Time Series Insights は、個人データを Time Series Insights の管�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-ただし、Portal を使用して顧客データを削除する前に、Azure Portal 内で Time Series Insights 環境からユーザーのアクセス ポリシーを削除する必要があります。 詳細については、「[Azure Portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)」を参照してください。
+ただし、Portal を使用して顧客データを削除する前に、Azure Portal 内で Time Series Insights 環境からユーザーのアクセス ポリシーを削除する必要があります。 詳細については、[Azure portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)方法に関するページを参照してください。
 
-REST API を使用して、アクセス ポリシーに対して削除操作を実行することもできます。 詳細については、「[Access Policies - Delete](https://docs.microsoft.com/rest/api/time-series-insights-management/accesspolicies/delete)」 (アクセス ポリシー - 削除) を参照してください。
+REST API を使用して、アクセス ポリシーに対して削除操作を実行することもできます。 詳細については、「[アクセス ポリシー - 削除](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete)」をお読みください。
 
 Time Series Insights は、Azure Portal のポリシー ブレードと統合されています。 Time Series Insights とポリシー ブレードの両方で、サービス内に格納されているユーザー データを表示、エクスポート、削除することができます。 Azure Portal のポリシー ブレード内で削除操作を実行すると、Time Series Insights 内のユーザー データが削除されます。 たとえば、ユーザーの個人クエリが保存されている場合、そのクエリは Time Series Insights エクスプローラーから完全に削除されます。 ユーザーの共有クエリが保存されている場合、クエリは保持されますが、ユーザー情報は完全に削除されます。 次のメモには、これらの作業の実行手順が含まれます。
 
@@ -46,9 +46,9 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-テナント管理者の場合、Azure Portal で Time Series Insights 環境内のデータ アクセス ポリシーを表示できます。 詳細については、「[Azure Portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)」を参照してください。
+テナント管理者の場合、Azure Portal で Time Series Insights 環境内のデータ アクセス ポリシーを表示できます。 詳細については、[Azure portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)方法に関するページを参照してください。
 
-指定された REST API の "環境で一覧表示" 操作を使用して、アクセス ポリシーに対してエクスポート操作を実行することもできます。 詳細については、「[Access Policies - List By Environment](https://docs.microsoft.com/rest/api/time-series-insights-management/accesspolicies/listbyenvironment)」 (アクセス ポリシー - 環境で一覧表示) を参照してください。
+指定された REST API の "環境で一覧表示" 操作を使用して、アクセス ポリシーに対してエクスポート操作を実行することもできます。 詳細については、「[アクセス ポリシー - 環境で一覧表示](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)」をお読みください。
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>Time Series Insights 内に格納されているデータを削除するには
 
@@ -56,12 +56,20 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 **データの表示とエクスポート**
 
-Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、**[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
+Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、 **[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
 
-詳細については、「[Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)」を参照してください。
+詳細については、「[Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)」をお読みください。
 
 **データの削除**
 
 現時点では、Time Series Insights でデータの細かい削除はサポートされていません。 ただし、Time Series Insights では、リテンション ポリシーを構成することで、Time Series Insights 内に格納されている顧客データを削除することができます。 削除要件をサポートするために、Time Series Insights 環境全体のリテンション期間を任意の日数に調整することができます。
 
-詳細については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
+詳細については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」をお読みください。
+
+## <a name="next-steps"></a>次のステップ
+
+* [Azure Time Series Insights 環境に対するデータ アクセスの許可](./time-series-insights-data-access.md)の詳細を確認します。
+
+* [Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)について確認してください。
+
+* [Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)について確認してください。

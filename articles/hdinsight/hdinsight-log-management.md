@@ -2,18 +2,18 @@
 title: HDInsight クラスターのログを管理する - Azure HDInsight
 description: HDInsight アクティビティ ログ ファイルの種類、サイズ、およびリテンション期間ポリシーを決定します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: hrasheed
-ms.openlocfilehash: b42eb51b510423ffc0d15ee3a646bca3d4392f7f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233571"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -23,13 +23,13 @@ HDInsight クラスターのログの管理には、クラスター環境のあ�
 
 HDInsight のログ管理の一般的な手順は次のとおりです。
 
-* ステップ 1: ログのリテンション期間ポリシーを決定する
-* ステップ 2: クラスター サービスのバージョンの構成ログを管理する
-* ステップ 3: クラスターのジョブ実行のログ ファイルを管理する
-* ステップ 4: ログ ボリュームのストレージ サイズとコストを予測する
-* ステップ 5: ログのアーカイブ ポリシーとプロセスを決定する
+* 手順 1:ログのリテンション期間ポリシーを決定する
+* 手順 2:クラスター サービスのバージョンの構成ログを管理する
+* 手順 3:クラスターのジョブ実行のログ ファイルを管理する
+* 手順 4:ログ ボリュームのストレージ サイズとコストを予測する
+* 手順 5:ログのアーカイブ ポリシーとプロセスを決定する
 
-## <a name="step-1-determine-log-retention-policies"></a>ステップ 1: ログのリテンション期間ポリシーを決定する
+## <a name="step-1-determine-log-retention-policies"></a>手順 1:ログのリテンション期間ポリシーを決定する
 
 HDInsight クラスターのログ管理戦略作成の最初のステップでは、ビジネス シナリオおよびジョブ実行履歴ストレージ要件に関する情報を収集します。
 
@@ -45,8 +45,8 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して HDInsight クラスターに関する情報を取得することもできます。
 
 ```azurecli
-    az hdinsight list --resource-group <ResourceGroup>
-    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
 また、PowerShell を使ってこの情報を表示できます。  詳細については、「[Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-powershell.md)」を参照してください。
@@ -69,35 +69,47 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 
 * ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://www.microsoft.com/download/details.aspx?id=42521)が提供されています。 また、Apache Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています (例: Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator)。
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>ステップ 2: クラスター サービスのバージョンを管理し、スクリプト アクション ログを表示する
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>手順 2:クラスター サービスのバージョンを管理し、ログを表示する
 
 一般的な HDInsight クラスターでは、複数のサービスとオープン ソース ソフトウェア パッケージ (Apache HBase、Apache Spark など) が使われます。 バイオインフォマティクスなどの一部のワークロードでは、ジョブ実行ログに加えてサービス構成ログ履歴の保持を求められる場合があります。
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Ambari UI でクラスターの構成設定を表示する
 
-Apache Ambari には Web UI と REST API が用意されており、HDInsight クラスターを簡単に管理、構成、監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選び、**[クラスター ダッシュボード]** リンク ページを開きます。  次に、**[HDInsight クラスター ダッシュボード]** ウィンドウを選んで、Ambari UI を開きます。  クラスター ログイン資格情報の入力を求められます。
+Apache Ambari には Web UI と REST API が用意されており、HDInsight クラスターを簡単に管理、構成、監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選び、 **[クラスター ダッシュボード]** リンク ページを開きます。  次に、 **[HDInsight クラスター ダッシュボード]** ウィンドウを選んで、Ambari UI を開きます。  クラスター ログイン資格情報の入力を求められます。
 
-サービス ビューの一覧を開くには、HDInsight の Azure Portal ページで **[Ambari Views]** ウィンドウを選びます。  この一覧は、インストールされているライブラリによって異なります。  たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。  Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。 Ambari UI のこのセクションに移動するには、**[Admin]\(管理\)** メニューを選んでから、**[Stacks and Versions]\(スタックとバージョン\)** を選びます。  サービスのバージョン情報を見るには、**[Versions]\(バージョン\)** タブを選びます。
+サービス ビューの一覧を開くには、HDInsight の Azure Portal ページで **[Ambari Views]** ウィンドウを選びます。  この一覧は、インストールされているライブラリによって異なります。  たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。  Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。 Ambari UI のこのセクションに移動するには、 **[Admin]\(管理\)** メニューを選んでから、 **[Stacks and Versions]\(スタックとバージョン\)** を選びます。  サービスのバージョン情報を見るには、 **[Versions]\(バージョン\)** タブを選びます。
 
-![スタックとバージョン](./media/hdinsight-log-management/stack-versions.png)
+![Apache Ambari の [Admin]\(管理\) の [Stacks and Versions]\(スタックとバージョン\)](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Ambari UI を使って、クラスターの特定のホスト (またはノード) で実行されている任意 (またはすべて) のサービスの構成をダウンロードできます。  **[Hosts]\(ホスト\)** メニューを選んでから、目的のホストのリンクを選びます。 ホストのページで、**[Host Actions]\(ホスト アクション\)** ボタンを選んでから、**[Download Client Configs]\(クライアント構成のダウンロード\)** を選びます。 
+Ambari UI を使って、クラスターの特定のホスト (またはノード) で実行されている任意 (またはすべて) のサービスの構成をダウンロードできます。  **[Hosts]\(ホスト\)** メニューを選んでから、目的のホストのリンクを選びます。 ホストのページで、 **[Host Actions]\(ホスト アクション\)** ボタンを選んでから、 **[Download Client Configs]\(クライアント構成のダウンロード\)** を選びます。
 
-![ホストのクライアント構成](./media/hdinsight-log-management/client-configs.png)
+![Apache Ambari のホスト クライアント構成のダウンロード](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>スクリプト アクション ログを表示する
 
 HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を使うと、手動または日時指定により、クラスターでスクリプトを実行できます。 たとえば、スクリプト アクションを使って、クラスターに追加ソフトウェアをインストールしたり、構成設定を既定値から変更したりできます。 スクリプト アクション ログでは、クラスターのセットアップ中に発生したエラーや、クラスターのパフォーマンスと可用性に影響を与える可能性のある構成設定の変更に関する洞察が得られます。  スクリプト アクションの状態を表示するには、Ambari UI の **[ops]\(操作\)** ボタンを選ぶか、既定のストレージ アカウントで状態ログにアクセスします。 ストレージ ログは、 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`にあります。
 
-## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>ステップ 3: クラスターのジョブ実行のログ ファイルを管理する
+### <a name="view-ambari-alerts-status-logs"></a>Ambari アラートの状態ログを表示する
 
-ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  ログ ファイルの例を次に示します。
+Apache Ambari は、アラートの状態の変更を `ambari-alerts.log` に書き込みます。 完全なパスは `/var/log/ambari-server/ambari-alerts.log` です。 ログのデバッグを有効にするには、`/etc/ambari-server/conf/log4j.properties.` のプロパティを変更します。その後、`# Log alert state changes` の下にあるエントリを次のように変更します。
 
-![HDInsight のログ ファイルの例](./media/hdinsight-troubleshoot-failed-cluster/logs.png)
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
+## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>手順 3:クラスターのジョブ実行のログ ファイルを管理する
+
+ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  次の画像は、ログ ファイルの例です。
+
+![HDInsight サンプル ログ ファイルのサンプル出力](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
-HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
+HDInsight では、クラスター ファイル システムと Azure Storage の両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure Storage のログ ファイルは、Azure Storage にアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
 Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
 
@@ -112,18 +124,18 @@ HDInsight によって生成されるコア ログ ファイルに加えて、YA
 YARN は、ワーカー ノード上のすべてのコンテナーのログを集計して、ワーカー ノードごとに 1 つの集計ログ ファイルとして保存します。 そのログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 アプリケーションで使われるワーカー ノードごとに 1 つのログ ファイルが存在します。 ログの集計は、HDInsight クラスター バージョン 3.0 以降では既定で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。
 
 ```
-    /app-logs/<user>/logs/<applicationId>
+/app-logs/<user>/logs/<applicationId>
 ```
 
-集計されたログは、コンテナーによってインデックスが作成される TFile バイナリ形式で書かれているので、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
+集計されたログは、コンテナーによってインデックスが作成されるバイナリ形式の TFile で書かれているため、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
 
 #### <a name="yarn-cli-tools"></a>YARN CLI ツール
 
 YARN CLI ツールを使用するには、まず SSH を使用して HDInsight クラスターに接続する必要があります。 これらのコマンドを実行するときは、`<applicationId>`、`<user-who-started-the-application>`、`<containerId>`、`<worker-node-address>` の各情報を指定します。 次のいずれかのコマンドを使って、これらのログをプレーンテキストとして表示できます。
 
 ```bash
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
 #### <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
@@ -132,23 +144,23 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 2. 左側のサービスの一覧で、[YARN] を選びます。
-3. [クイック リンク] ボックスの一覧で、クラスター ヘッド ノードのいずれかを選び、**[ResourceManager logs]\(ResourceManager ログ\)** を選びます。 YARN のログへのリンクの一覧が表示されます。
+3. [クイック リンク] ボックスの一覧で、クラスター ヘッド ノードのいずれかを選び、 **[ResourceManager logs]\(ResourceManager ログ\)** を選びます。 YARN のログへのリンクの一覧が表示されます。
 
-## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>ステップ 4: ログ ボリュームのストレージ サイズとコストを予測する
+## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>手順 4:ログ ボリュームのストレージ サイズとコストを予測する
 
 ここまでの手順を完了すると、HDInsight クラスターが生成するログ ファイルの種類とボリュームがわかっています。
 
 次に、一定の期間にわたって、重要なログ ストレージ場所のログ データのボリュームを分析します。 たとえば、30、60、90 日間にわたりボリュームや増加を分析します。  この情報をスプレッドシートに記録するか、Visual Studio、Azure Storage Explorer、Power Query for Excel などの他のツールを使います。 詳しくは、「[HDInsight ログの分析](hdinsight-debug-jobs.md)」をご覧ください。  
 
-重要なログのログ管理戦略を作成するのに十分な情報が手に入ります。  スプレッドシート (または選んだツール) を使って、ログ サイズの増加量と、ログ ストレージの Azure サービスのコストを予測します。  調べているログ セットのログ リテンション期間要件も検討します。  削除できるファイル (ある場合) および低コストの Azure ストレージに保持してアーカイブする必要のあるログを決定した後、将来のログ ストレージ コストを再予測できます。
+重要なログのログ管理戦略を作成するのに十分な情報が手に入ります。  スプレッドシート (または選んだツール) を使って、ログ サイズの増加量と、ログ ストレージの Azure サービスのコストを予測します。  調べているログ セットのログ リテンション期間要件も検討します。  削除できるファイル (ある場合) および低コストの Azure Storage に保持してアーカイブする必要のあるログを決定した後、将来のログ ストレージ コストを再予測できます。
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>ステップ 5: ログのアーカイブ ポリシーとプロセスを決定する
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>手順 5:ログのアーカイブ ポリシーとプロセスを決定する
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
-一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、**[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。 
+一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure portal で **[アクティビティ ログ]** リンクを選んで、Resource Manager ログのアーカイブを設定します。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
 
-![ログ ファイルのエクスポート](./media/hdinsight-log-management/archive.png)
+![Azure portal の [アクティビティ ログのエクスポート] (プレビュー)](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 代わりに、PowerShell でログをアーカイブするスクリプトを作成できます。  PowerShell スクリプトの例は、「[Archive Azure Automation logs to Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8)」(Azure Automation のログを Azure Blob Storage にアーカイブする) をご覧ください。
 
@@ -172,7 +184,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 すべてのノードから 1 つの場所にログを収集するには、データ フローを作成できます (Solr へのすべてのログ エントリの取り込みなど)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight の監視とログの方法](https://msdn.microsoft.com/library/dn749790.aspx)
 * [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)

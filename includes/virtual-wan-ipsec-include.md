@@ -5,17 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 05/28/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 90c6d40103bc9a20f7af28c76d0183f7a3fb04a9
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304566"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72168414"
 ---
-### <a name="initiator"></a>イニシエーター
+>[!NOTE]
+>既定のポリシーを使用する場合、Azure は IPsec トンネルの設定中に、イニシエーターとレスポンダーの両方として動作できます。 レスポンダーのみとしての Azure はサポートされていません。
+>
+
+### <a name="initiator"></a>Initiator
 
 次のセクションでは、Azure がトンネルのイニシエーターになっているときに、サポートされているポリシーの組み合わせを一覧表示します。
 

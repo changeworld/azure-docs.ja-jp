@@ -1,18 +1,18 @@
 ---
-title: ベスト プラクティスを実装するために Azure で Kubernetes デプロイを確認する
+title: デプロイのベスト プラクティスを確認する
+titleSuffix: Azure Kubernetes Service
 description: kube-advisor を使用して Azure Kubernetes Service のご自身のデプロイでベスト プラクティスの実装を確認する方法について説明します
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073774"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773798"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>クラスターでの Kubernetes のベスト プラクティスを確認する
 
@@ -34,7 +34,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 
-kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
+kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
 RBAC を使用していない場合は、次のようにコマンドを実行できます。
@@ -67,7 +67,7 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa
 
 RBAC が有効になっていないクラスターに対してツールを実行している場合、クリーンアップは不要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Kubernetes Service に関する問題のトラブルシューティング](troubleshooting.md)
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: 5b0816079cdccd8a75830764fc8b1ad8a4d1b95e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "58408453"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60780915"
 ---
 # <a name="azure-germany-developer-guide"></a>Azure Germany 開発者ガイド
 Azure Germany 環境は、Microsoft の他のネットワークから切り離された Microsoft Azure のインスタンスです。 このガイドには、アプリケーション開発者と管理者が、Azure の個別のリージョンで作業を行うために理解する必要がある相違点について説明します。
@@ -32,7 +32,7 @@ Microsoft では、開発者によるクラウド アプリケーションの作
 このガイドの情報では、これらの違いをまとめています。 これは、[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/ "Azure Germany") サイトと [Azure ドキュメント センター](https://azure.microsoft.com/documentation/)で提供されている情報を補完するものです。 
 
 公式の情報は、次のような他の場所にも記載されています。
-* [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure セキュリティ センター") 
+* [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure Trust Center") 
 * [Azure ブログ](https://azure.microsoft.com/blog/ "Azure ブログ")
 * [Azure Germany ブログ](https://blogs.msdn.microsoft.com/azuregermany/ "Azure Germany ブログ")
 

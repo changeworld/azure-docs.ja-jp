@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins の一般的なクエリのパターン |Microsoft Docs
-description: Azure Digital Twins Management API にクエリを実行する一般的なパターンについて説明します。
-author: dsk-2015
-manager: philmea
+title: 一般的なクエリのパターン - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins 管理 API に対するいくつかの一般的な API クエリ実行パターンについて説明します。
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 02/24/2020
+ms.openlocfilehash: 133c0e0dcc07afb85a0f3af9ae51d2207abac293
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77589115"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法
 
@@ -234,8 +234,8 @@ ms.locfileid: "54198645"
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Management API を使用して認証を行う方法については、[API を使用した認証](./security-authenticating-apis.md)に関するページを参照してください。
 
-すべての API エンドポイントを表示するには、[Digital Twins Swagger を使用する方法](./how-to-use-swagger.md)を参照してください。
+API エンドポイントの詳細については、[Digital Twins Swagger の使用方法](./how-to-use-swagger.md)に関するページをご覧ください。

@@ -3,23 +3,23 @@ title: Azure CDN を使用した大きなファイルのダウンロードの最
 description: この記事では、大きなファイルのダウンロードを最適化する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.author: allensu
+ms.openlocfilehash: 28b3c4faf62bcd9f9495810927ece03e2dadc1fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094022"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81260532"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
 
@@ -87,7 +87,7 @@ Complete Cache Fill は、サイズの大きな資産に対して最も有効的
 
     ![新しいエンドポイント](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. **[最適化対象]** ドロップダウン リストで、**[大容量ファイルのダウンロード]** を選択します。
+2. **[最適化対象]** ドロップダウン リストで、 **[大容量ファイルのダウンロード]** を選択します。
 
     ![大きなファイルの最適化を選択](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -130,7 +130,7 @@ CDN は受信したチャンクをすべてキャッシュします。 ファイ
 ファイルの最大サイズ | 150 GB 
 配信元サーバーの特性 | バイト範囲要求をサポートする必要があります 
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 この最適化を利用する場合は次のような点も考慮する必要があります。
 

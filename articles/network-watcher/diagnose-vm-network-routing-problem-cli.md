@@ -1,10 +1,10 @@
 ---
-title: 仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI | Microsoft Docs
+title: VM ネットワーク ルーティングの問題を診断する - Azure CLI
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure Network Watcher の次ホップ機能を使用して、仮想マシン ネットワークのルーティングの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688212"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382904"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 この記事の CLI コマンドは、Bash シェルで実行されることを想定して書式設定されています。
+Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件となります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 この記事の Azure CLI コマンドは、Bash シェルで実行されることを想定して書式設定されています。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM の作成には数分かかります。 VM が作成されて、CLI から出力が返されるまでは、次の手順に進まないでください。
+VM の作成には数分かかります。 VM が作成されて、Azure CLI から出力が返されるまでは、次の手順に進まないでください。
 
 ## <a name="test-network-communication"></a>ネットワーク通信をテストする
 
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-数秒後、**[nextHopType]** が **[インターネット]** であり、**[routeTableId]** が **[System Route]\(システム ルート\)** であることが出力からわかります。 この結果から、接続先に対して有効なルートが存在することがわかります。
+数秒後、 **[nextHopType]** が **[インターネット]** であり、 **[routeTableId]** が **[System Route]\(システム ルート\)** であることが出力からわかります。 この結果から、接続先に対して有効なルートが存在することがわかります。
 
 VM から 172.31.0.100 への送信通信をテストします。
 
@@ -99,7 +99,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-返される出力は、**[nextHopType]** が **[なし]** であり、**[routeTableId]** が **[System Route]\(システム ルート\)** であることを示しています。 この結果から、送信先への有効なシステム ルートはあるものの、接続先にトラフィックをルーティングする次ホップはないことがわかります。
+返される出力は、 **[nextHopType]** が **[なし]** であり、 **[routeTableId]** が **[System Route]\(システム ルート\)** であることを示しています。 この結果から、送信先への有効なシステム ルートはあるものの、接続先にトラフィックをルーティングする次ホップはないことがわかります。
 
 ## <a name="view-details-of-a-route"></a>ルートの詳細の表示
 
@@ -113,7 +113,7 @@ az network nic show-effective-route-table \
 
 返される出力には、次のテキストが含まれます。
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +133,7 @@ az network nic show-effective-route-table \
 
 ただし、172.31.0.100 への送信通信のテストに `az network watcher show-next-hop` コマンドを使用したときの結果は、次ホップの種類がないことを示しています。 返される出力には、次のテキストも含まれます。
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -149,9 +149,9 @@ az network nic show-effective-route-table \
 },
 ```
 
-`az network watcher nic show-effective-route-table` コマンドの出力でもわかるように、アドレス 172.31.0.100 を含む 172.16.0.0/12 プレフィックスへの既定のルートがあるにもかかわらず、**[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
+`az network watcher nic show-effective-route-table` コマンドの出力でもわかるように、アドレス 172.31.0.100 を含む 172.16.0.0/12 プレフィックスへの既定のルートがあるにもかかわらず、 **[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、[az group delete](/cli/azure/group#az-group-delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
@@ -159,7 +159,7 @@ az network nic show-effective-route-table \
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、VM を作成し、VM からのネットワークのルーティングを診断しました。 Azure では複数の既定のルートが作成されることを学習し、2 つの異なる送信先へのルーティングをテストしました。 詳細については、[Azure でのルーティング](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)と[カスタム ルートを作成する](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route)方法に関するページを参照してください。
 

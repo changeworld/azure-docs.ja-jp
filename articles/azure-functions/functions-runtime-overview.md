@@ -1,21 +1,16 @@
 ---
-title: Azure Functions ランタイムの概要 | Microsoft Docs
+title: Azure Functions ランタイム プレビューの概要
 description: Azure Functions ランタイム プレビューの概要
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546835"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74226625"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime の概要 (プレビュー)
 

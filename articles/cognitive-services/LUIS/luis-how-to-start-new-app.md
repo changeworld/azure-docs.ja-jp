@@ -1,6 +1,6 @@
 ---
-title: 新しいアプリの作成
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 新しいアプリの作成 - LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) Web ページで、アプリケーションを作成し、管理します。
 services: cognitive-services
 author: diberry
@@ -8,85 +8,73 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/07/2019
+ms.topic: conceptual
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148194"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585625"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
-LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
+LUIS アプリを作成するにはいくつかの方法があります。 LUIS ポータル内または LUIS オーサリング [API](developer-reference-resource.md) を使用して LUIS アプリを作成できます。
 
 ## <a name="using-the-luis-portal"></a>LUIS ポータルを使用する
-LUIS ポータルでは、新しいアプリをいくつかの方法で作成できます。
+
+ポータルでは、新しいアプリをいくつかの方法で作成できます。
 
 * 空のアプリから始めて、意図、発話、およびエンティティを作成する。
 * 空のアプリから始めて、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)を追加する。
-* 意図、発話、およびエンティティが既に格納されている JSON ファイルから LUIS アプリをインポートする。
+* 意図、発話、およびエンティティが既に格納されている `.lu` または `.json` ファイルから LUIS アプリをインポートする。
 
 ## <a name="using-the-authoring-apis"></a>オーサリング API を使用する
 オーサリング API を使用していくつかの方法で新しいアプリを作成できます。
 
-* 空のアプリから[始め](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)て、意図、発話、およびエンティティを作成する
-* 事前構築済みのドメインから[始め](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5)る  
+* [アプリケーションの追加](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) - 空のアプリから始めて、意図、発話、エンティティを作成する。
+* [構築済みアプリケーションの追加](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) - 意図、発話、エンティティなど、構築済みのドメインから始める。
 
 
 <a name="export-app"></a>
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
- 
+
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
-1. **[マイ アプリ]** ページで、**[新しいアプリの作成]** を選択します。
+1. **[マイ アプリ]** ページで、自分のサブスクリプション、作成リソース、 **[+ 作成]** の順に選択します。 無料試用版キーを使用している場合、[作成リソースの作成方法](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)について学習してください。
 
-    ![LUIS アプリの一覧](./media/luis-create-new-app/apps-list.png)
+    ![LUIS アプリの一覧](./media/create-app-in-portal.png)
 
 
-2. ダイアログ ボックスで、アプリケーションに "TravelAgent" という名前を付けます。
+1. ダイアログ ボックスに、`Pizza Tutorial` など、アプリケーションの名前を入力します。
 
-    ![[新しいアプリの作成] ダイアログ ボックス](./media/luis-create-new-app/create-app.png)
+    ![[新しいアプリの作成] ダイアログ ボックス](./media/create-pizza-tutorial-app-in-portal.png)
 
-3. アプリケーションのカルチャを選択 (TravelAgent アプリの場合は、英語を選択) し、**[完了]** を選択します。 
+1. アプリケーション カルチャを選択し、 **[完了]** を選択します。 説明と予測リソースは現時点では任意です。 ポータルの **[管理]** セクションでいつでも設定できます。
 
     > [!NOTE]
-    > カルチャは、アプリケーションを作成した後に変更できません。 
+    > カルチャは、アプリケーションを作成した後に変更できません。
 
-## <a name="import-an-app-from-file"></a>ファイルからアプリをインポートする
+    アプリが作成されると、LUIS ポータルに **[意図]** 一覧が表示されます。この一任には、自動的に作成された `None` 意図が含まれています。 これで空のアプリが作成されました。
 
-1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
-1. ポップアップ ダイアログで有効なアプリ JSON ファイルを選択し、**[完了]** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![None 意図が作成されており、サンプル発話のない意図リスト](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-### <a name="import-errors"></a>インポート エラー
+## <a name="other-actions-available"></a>利用できるアクションはありません
 
-次のエラーが発生する可能性があります。 
+コンテキスト ツール バーに他のアクションがあります。
 
-* その名前のアプリは既に存在します。 アプリを再インポートし、**オプション名**を新しい名前に設定します。 
+* アプリの名前の変更
+* `.lu` または `.json` を利用してファイルからインポートする
+* `.lu` ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown) の場合)、`.json`、`.zip` ([LUIS コンテナー](luis-container-howto.md)の場合) としてアプリをエクスポートする
+* コンテナー エンドポイント ログをインポートし、エンドポイント発話をレビューする
+* オフライン分析のためにエンドポイントログを `.csv` としてエクスポートする
+* アプリの削除
 
-## <a name="export-app-for-backup"></a>バックアップ用にアプリをエクスポートする
+## <a name="next-steps"></a>次のステップ
 
-1. **[マイ アプリ]** ページで **[エクスポート]** を選択します。
-1. **[JSON としてエクスポート]** を選択します。 アクティブなバージョンのアプリがブラウザーによってダウンロードされます。
-1. このファイルをバックアップ システムに追加して、モデルをアーカイブしてください。
-
-## <a name="export-app-for-containers"></a>コンテナーのアプリをエクスポートする
-
-1. **[マイ アプリ]** ページで **[エクスポート]** を選択します。
-1. **[Export as container]\(コンテナーとしてエクスポートする\)** を選択して、エクスポートする公開スロット (実稼働またはステージ) を選択します。
-1. [LUIS コンテナー](luis-container-howto.md)でこのファイルを使用します。 
-
-    LUIS コンテナーで使用するモデルとして、トレーニング済みではあるものの、まだ発行されていないモデルをエクスポートしたい場合は、**[バージョン]** ページに移動してそこからエクスポートしてください。 
-
-## <a name="delete-app"></a>アプリの削除
-
-1. **[マイ アプリ]** ページで、アプリの行の末尾にある 3 つのドット (...) を選択します。
-1. メニューで **[削除]** を選択します。
-1. 確認ウィンドウで **[OK]** を選択します。
-
-## <a name="next-steps"></a>次の手順
-
-アプリでの最初のタスクは、[意図の追加](luis-how-to-add-intents.md)です。
+アプリ デザインに意図検出が含まれている場合、[新しい意図を作成](luis-how-to-add-intents.md)し、サンプル発話を追加します。 アプリ デザインがデータ抽出のみの場合、None 意図にサンプル発話を追加し、[エンティティを作成](luis-how-to-add-example-utterances.md)し、そのエンティティでサンプル発話にラベルを付けます。

@@ -1,6 +1,6 @@
 ---
-title: リアルタイム イベントのデータの異常を視覚化する - Azure Event Hubs | Microsoft Docs
-description: チュートリアル - Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
+title: Azure Event Hubs - リアルタイム イベントでのデータの異常を視覚化する
+description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -8,17 +8,17 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 02/26/2019
-ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 01/15/2020
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123047"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77163179"
 ---
-# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
+# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
-Azure Event Hubs では、Azure Stream Analytics を使用して受信データをチェックし、異常を抜き出すことができます。抜き出した異常は Power BI で視覚化できます。 何千ものデバイスが常にリアルタイム データをイベント ハブに送信しており、合計すると 1 秒あたり数百万件のイベントが発生しているとします。 それだけの量のデータの異常やエラーを確認するにはどうすればよいのでしょうか。 たとえば、デバイスがクレジット カード トランザクションを送信していて、5 秒以内に複数の国で複数のトランザクションが発生していることをキャプチャする必要がある場合はどうすればよいでしょうか。 これは、誰かが盗んだクレジット カードを使って品物を購入するということが世界中で同時に起きた場合に発生することがあります。 
+Azure Event Hubs では、Azure Stream Analytics を使用して受信データをチェックし、異常を抜き出すことができます。抜き出した異常は Power BI で視覚化できます。 何千ものデバイスが常にリアルタイム データをイベント ハブに送信しており、合計すると 1 秒あたり数百万件のイベントが発生しているとします。 それだけの量のデータの異常やエラーを確認するにはどうすればよいのでしょうか。 たとえば、デバイスがクレジット カード トランザクションを送信していて、5 秒以内に複数の国/地域で複数のトランザクションが発生していることをキャプチャする必要がある場合はどうすればよいでしょうか。 これは、誰かが盗んだクレジット カードを使って品物を購入するということが世界中で同時に起きた場合に発生することがあります。 
 
 このチュートリアルでは、この例をシミュレートします。 クレジット カード トランザクションを作成してイベント ハブに送信するアプリケーションを実行します。 その後、Azure Stream Analytics を使用して、リアルタイムでデータ ストリームを読み取り、有効なトランザクションと無効なトランザクションを分離します。次に、Power BI を使用して、無効のタグが付けられたトランザクションを視覚的に特定します。
 
@@ -47,14 +47,14 @@ Azure Event Hubs では、Azure Stream Analytics を使用して受信データ�
 
 以降のセクションでは、これらの必要な手順を実行する方法について説明します。 CLI "*または*" PowerShell の指示に従って、次の手順を実行してください。
 
-1. [リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 
+1. [リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 
 
 2. Event Hubs 名前空間を作成します。 
 
 3. イベント ハブを作成します。
 
 > [!NOTE]
-> 各スクリプトには、このチュートリアルの後半で必要となる変数が設定されています。 これらには、リソース グループ名 ($resourceGroup)、Event Hubs 名前空間 (**$eventHubNamespace**)、イベント ハブ名 (**$eventHubName**) があります。 これらは、この記事の後半でドル記号 ($) のプレフィックスを付けて参照します。そのため、スクリプトで設定されていることを覚えて置いてください。
+> 各スクリプトには、このチュートリアルの後半で必要となる変数が設定されています。 これらには、リソース グループ名 ($resourceGroup)、Event Hubs 名前空間 ( **$eventHubNamespace**)、イベント ハブ名 ( **$eventHubName**) があります。 これらは、この記事の後半でドル記号 ($) のプレフィックスを付けて参照します。そのため、スクリプトで設定されていることを覚えて置いてください。
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>アプリを実行してテスト イベント データを生成する
 
-GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)には、テスト データを生成する [Anomaly Detector アプリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector)が含まれています。 これは、クレジット カード トランザクションをイベント ハブに書き込むことによってクレジット カードの使用をシミュレートします。異常のタグが付けられるように、複数の場所での同じクレジット カードの複数のトランザクションをときどき書き込みます。 このアプリを実行するには、次の手順を実行します。 
+GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)には、テスト データを生成する Anomaly Detector アプリが含まれています。 これは、クレジット カード トランザクションをイベント ハブに書き込むことによってクレジット カードの使用をシミュレートします。異常のタグが付けられるように、複数の場所での同じクレジット カードの複数のトランザクションをときどき書き込みます。 このアプリを実行するには、次の手順を実行します。 
 
 1. GitHub から [Azure Event Hubs のサンプル](https://github.com/Azure/azure-event-hubs/archive/master.zip)をダウンロードし、ローカルに解凍します。
+2. **\azure-event-hubs-master\samples\DotNet\\** フォルダーに移動します。 
+3. **Azure.Messaging.EventHubs\AnomalyDetector\\** フォルダーに切り替え、**AnomalyDetector.sln** をダブルクリックしてソリューションを Visual Studio で開きます。 
 
-2. \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ フォルダーに移動し、AnomalyDetector.sln をダブルクリックして Visual Studio でソリューションを開きます。 
-
+    以前の Microsoft.Azure.EventHubs パッケージを使用する旧バージョンのサンプルを使用するには、**Microsoft.Azure.EventHubs\AnomalyDetector** フォルダーからソリューションを開きます。 
 3. Program.cs を開き、**Event Hubs connection string** を、スクリプトの実行時に保存した接続文字列に置き換えます。 
-
 4. **Event Hub name** をイベント ハブ名に置き換えます。 F5 キーを押して、アプリケーションを実行します。 イベント ハブにイベントを送信し始め、1,000 件のイベントを送信するまで続けます。 データを取得するためにこのアプリを実行している必要がある場合がいくつかあります。 以降の手順では、そうした場合は適宜明記しています。
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics を設定する
@@ -172,17 +172,17 @@ GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hub
 
 ### <a name="create-the-stream-analytics-job"></a>Stream Analytics ジョブを作成する
 
-1. Azure Portal で、**[リソースの作成]** をクリックします。 検索ボックスに「**stream analytics**」と入力し、**Enter** キーを押します。 **[Stream Analytics ジョブ]** を選択します。 [Stream Analytics ジョブ] ウィンドウで **[作成]** をクリックします。 
+1. Azure Portal で、 **[リソースの作成]** をクリックします。 検索ボックスに「**stream analytics**」と入力し、**Enter** キーを押します。 **[Stream Analytics ジョブ]** を選択します。 [Stream Analytics ジョブ] ウィンドウで **[作成]** をクリックします。 
 
 2. ジョブの次の情報を入力します。
 
-   **[ジョブ名]**: 「**contosoEHjob**」を使用します。 このフィールドはジョブの名前で、グローバルに一意でなければなりません。
+   **ジョブ名**:「**contosoEHjob**」を使用します。 このフィールドはジョブの名前で、グローバルに一意でなければなりません。
 
    **サブスクリプション**:サブスクリプションを選択します。
 
-   **[リソース グループ]**: イベント ハブと同じリソース グループ (**ContosoResourcesEH**) を使用します。
+   **[リソース グループ]** :イベント ハブと同じリソース グループ (**ContosoResourcesEH**) を使用します。
 
-   **[場所]**: セットアップ スクリプトで使われるのと同じ場所 (**米国西部**) を使用します。
+   **[場所]** :セットアップ スクリプトで使われるのと同じ場所 (**米国西部**) を使用します。
 
    ![新しい Azure Stream Analytics ジョブを作成する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -199,37 +199,37 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
 1. **[ジョブ トポロジ]** で **[入力]** をクリックします。
 
-2. **[入力]** ウィンドウで、**[ストリーム入力の追加]** をクリックして [Event Hubs] を選択します。 表示される画面で、次のフィールドに入力します。
+2. **[入力]** ウィンドウで、 **[ストリーム入力の追加]** をクリックして [Event Hubs] を選択します。 表示される画面で、次のフィールドに入力します。
 
-   **[入力のエイリアス]**: 「**contosoinputs**」を使用します。 このフィールドは、データのクエリを定義するときに使用する入力ストリームの名前です。
+   **入力のエイリアス**:「**contosoinputs**」を使用します。 このフィールドは、データのクエリを定義するときに使用する入力ストリームの名前です。
 
    **サブスクリプション**:サブスクリプションを選択します。
 
-   **[Event Hubs 名前空間]**: Event Hubs 名前空間 ($**eventHubNamespace**) を選択します。 
+   **[Event Hubs 名前空間]** : Event Hubs 名前空間 ($**eventHubNamespace**) を選択します。 
 
-   **[イベント ハブ名]**: **[既存のものを使用]** をクリックし、イベント ハブ ($**eventHubName**) を選択します。
+   **[イベント ハブ名]** : **[既存のものを使用]** をクリックし、イベント ハブ ($**eventHubName**) を選択します。
 
-   **[イベント ハブ ポリシー名]**: **[RootManageSharedAccessKey]** を選択します。
+   **[イベント ハブ ポリシー名]** : **[RootManageSharedAccessKey]** を選択します。
 
-   **[イベント ハブ コンシューマー グループ]**: 既定のコンシューマー グループを使用するため、このフィールドは空白のままにします。
+   **[イベント ハブ コンシューマー グループ]** : 既定のコンシューマー グループを使用するため、このフィールドは空白のままにします。
 
    その他のフィールドについては、既定値を指定できます。
 
    ![Stream Analytics ジョブに入力ストリームを追加する方法を示すスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
 1. **[ジョブ トポロジ]** で **[出力]** をクリックします。 このフィールドは、データのクエリを定義するときに使用する出力ストリームの名前です。
 
-2. **[出力]** ウィンドウで **[追加]** をクリックし、**[Power BI]** を選びます。 表示される画面で、次のフィールドに入力します。
+2. **[出力]** ウィンドウで **[追加]** をクリックし、 **[Power BI]** を選びます。 表示される画面で、次のフィールドに入力します。
 
-   **[出力エイリアス]**: 「**contosooutputs**」を使用します。 このフィールドは、出力の一意のエイリアスです。 
+   **出力のエイリアス**:「**contosooutputs**」を使用します。 このフィールドは、出力の一意のエイリアスです。 
 
-   **[データセット名]**: 「**contosoehdataset**」を使用します。 このフィールドは、Power BI で使用するデータセットの名前です。 
+   **データセット名**:「**contosoehdataset**」を使用します。 このフィールドは、Power BI で使用するデータセットの名前です。 
 
-   **[テーブル名]**: 「**contosoehtable**」を使用します。 このフィールドは、Power BI で使用するテーブルの名前です。 
+   **テーブル名**:「**contosoehtable**」を使用します。 このフィールドは、Power BI で使用するテーブルの名前です。 
 
    その他のフィールドについては、既定値を指定できます。
 
@@ -239,7 +239,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
 4. その他のフィールドについては、既定値を指定できます。
 
-5. **[Save]** をクリックします。
+5. **[保存]** をクリックします。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリの構成
 
@@ -268,15 +268,15 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Stream Analytics ジョブのクエリのテスト 
 
 1. テストを設定して実行している間に、Anomaly Detector アプリを実行して、イベント ハブにデータを送信します。 
 
-2. [クエリ] ウィンドウで、**contosoinputs** 入力の横の点をクリックし、**[入力からのサンプル データ]** を選びます。
+2. [クエリ] ウィンドウで、**contosoinputs** 入力の横の点をクリックし、 **[入力からのサンプル データ]** を選びます。
 
-3. 3 分間分のデータを指定し、**[OK]** をクリックします。 データがサンプリングされたことが通知されるまで待ちます。
+3. 3 分間分のデータを指定し、 **[OK]** をクリックします。 データがサンプリングされたことが通知されるまで待ちます。
 
 4. **[テスト]** をクリックし、結果が得られることを確認します。 結果は、クエリの右下にあるウィンドウの **[結果]** セクションに表示されます。
 
@@ -284,7 +284,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
-Stream Analytics ジョブで、**[開始]**、**[今すぐ]**、**[開始]** の順にクリックします。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
+Stream Analytics ジョブで、 **[開始]** 、 **[今すぐ]** 、 **[開始]** の順にクリックします。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
 
 ## <a name="set-up-the-power-bi-visualizations"></a>Power BI の視覚化の設定
 
@@ -298,23 +298,23 @@ Stream Analytics ジョブで、**[開始]**、**[今すぐ]**、**[開始]** �
 
    Stream Analytics ジョブの出力を作成したときに指定したデータセット (**contosoehdataset**) が表示されます。 データセットが初めて表示されるまでに 5 から10 分かかる場合があります。
 
-5. **[ダッシュボード]** をクリックし、**[作成]** をクリックして、**[ダッシュボード]** を選択します。
+5. **[ダッシュボード]** をクリックし、 **[作成]** をクリックして、 **[ダッシュボード]** を選択します。
 
    ![[ダッシュボード] と [作成] ボタンのスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-dashboard.png)
 
-6. ダッシュボードの名前を指定し、**[作成]** をクリックします。 「**Credit Card Anomalies**」を使用します。
+6. ダッシュボードの名前を指定し、 **[作成]** をクリックします。 「**Credit Card Anomalies**」を使用します。
 
    ![ダッシュボード名を指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. [ダッシュボード] ページで **[タイルの追加]** をクリックします。**[リアルタイム データ]** セクションの **[カスタム ストリーミング データ]** を選択し、**[次へ]** をクリックします。
+7. [ダッシュボード] ページで **[タイルの追加]** をクリックします。 **[リアルタイム データ]** セクションの **[カスタム ストリーミング データ]** を選択し、 **[次へ]** をクリックします。
 
    ![タイルのソースを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
-8. データセット (**contosoehdataset**) を選択し、**[次へ]** をクリックします。
+8. データセット (**contosoehdataset**) を選択し、 **[次へ]** をクリックします。
 
    ![データセットを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. 視覚化タイプとして **[カード]** を選択します。 **[フィールド]** で、**[値の追加]** をクリックし、**[fraudulentuses]** を選択します。
+9. 視覚化タイプとして **[カード]** を選択します。 **[フィールド]** で、 **[値の追加]** をクリックし、 **[fraudulentuses]** を選択します。
 
    ![視覚化タイプとフィールドを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -331,29 +331,29 @@ Stream Analytics ジョブで、**[開始]**、**[今すぐ]**、**[開始]** �
     * **[タイルの追加]** をクリックします。
     * **[カスタム ストリーミング データ]** を選択します。 
     * **[次へ]** をクリックします。
-    * データセットを選択し、**[次へ]** をクリックします。 
+    * データセットを選択し、 **[次へ]** をクリックします。 
 
-12. **[視覚化タイプ]** で、**[折れ線グラフ]** を選択します。
+12. **[視覚化タイプ]** で、 **[折れ線グラフ]** を選択します。
 
-13. **[軸]** で、**[値の追加]** をクリックし、**[windowend]** を選択します。 
+13. **[軸]** で、 **[値の追加]** をクリックし、 **[windowend]** を選択します。 
 
-14. **[値]** で、**[値の追加]** をクリックし、**[fraudulentuses]** を選択します。
+14. **[値]** で、 **[値の追加]** をクリックし、 **[fraudulentuses]** を選択します。
 
 15. **[表示する時間枠]** で、過去 5 分間を選びます。 **[次へ]** をクリックします。
 
-16. タイトルに「**Show fraudulent uses over time**」を指定し、タイルのサブタイトルは空白のままにして、**[適用]** をクリックします。 ダッシュボードに戻ります。
+16. タイトルに「**Show fraudulent uses over time**」を指定し、タイルのサブタイトルは空白のままにして、 **[適用]** をクリックします。 ダッシュボードに戻ります。
 
 17. Anomaly Detector アプリを再度実行して、データをイベント ハブに送信します。 データが分析されると **[Fraudulent uses]** タイルに変化が現れ、折れ線グラフにデータが表示されます。 
 
     ![Power BI の結果を示すスクリーンショット](./media/event-hubs-tutorial-visualize-anomalies/power-bi-results.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成したすべてのリソースを削除する場合は、Power BI の視覚化データを削除してから、リソース グループを削除します。 リソース グループを削除すると、そのグループに含まれるすべてのリソースが削除されます。 この場合、イベント ハブ、Event Hubs 名前空間、Stream Analytics ジョブ、およびリソース グループ自体が削除されます。 
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Power BI の視覚エフェクトのリソースをクリーンアップする
 
-Power BI アカウントにログインします。 **[マイ ワークスペース]** に移動します。 ダッシュボード名の行にあるごみ箱アイコンをクリックします。 次に、**[データセット]** に移動し、ごみ箱アイコンをクリックしてデータセット (**contosoehdataset**) を削除します。
+Power BI アカウントにログインします。 **[マイ ワークスペース]** に移動します。 ダッシュボード名の行にあるごみ箱アイコンをクリックします。 次に、 **[データセット]** に移動し、ごみ箱アイコンをクリックしてデータセット (**contosoehdataset**) を削除します。
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Azure CLI を使用してリソースをクリーンアップする
 
@@ -371,7 +371,7 @@ az group delete --name $resourceGroup
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
@@ -384,6 +384,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 次の記事に進み、Azure Event Hubs について詳しく学習してください。
 
 > [!div class="nextstepaction"]
-> [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](event-hubs-dotnet-standard-getstarted-send.md)
+> [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](get-started-dotnet-standard-send-v2.md)
 
 [無料アカウントを作成]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の監視に関するベスト プラクティス | Microsoft Docs
-description: Service Fabric クラスターとアプリケーションの監視に関するベスト プラクティス。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric の監視に関するベスト プラクティス
+description: Azure Service Fabric を使用したクラスターとアプリケーションの監視のためのベスト プラクティスと設計上の考慮事項。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d90daaf18e5161053e00671b7667d05ec8e5db76
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: af03223e8b007cbd2a00d54c3076056cd110ecc9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242923"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75551818"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 
@@ -45,10 +36,10 @@ Linux クラスターの場合、Azure Monitor ログは Azure プラットフ�
 
 一般的に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内の予期しない正常性イベントを報告する個別のサービスを指します。 これは、1 つのサービスのパフォーマンスのみに基づくと検出されない可能性があるエラーを防ぐために役立ちます。 またウォッチドッグは、ユーザー操作を必要としない修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でストレージ内のログ ファイル クリーンアップを行うなどです。 サンプルのウォッチドッグ サービス実装については、「[Syslog 内の Service Fabric Linux クラスター イベント](https://github.com/Azure-Samples/service-fabric-watchdog-service)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * アプリケーションのインストルメント化の概要については、[アプリケーション レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-app.md)に関するページを参照してください。
-* アプリケーションの Application Insights を設定する手順については、「[Service Fabric での ASP.NET Core アプリケーションの監視と診断](service-fabric-tutorial-monitoring-aspnet.md)」をご覧ください。
+* アプリケーションの Application Insights を設定する手順をについては、「[Service Fabric での ASP.NET Core アプリケーションの監視と診断](service-fabric-tutorial-monitoring-aspnet.md)」をご覧ください。
 * Service Fabric が提供するプラットフォームおよびイベント監視の詳細については、[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)に関するページを参照してください。
 * Service Fabric との Azure Monitor ログを構成する: [クラスターに Azure Monitor ログを設定する](service-fabric-diagnostics-oms-setup.md)
 * コンテナーの監視用に Azure Monitor ログを設定する方法については、「[Azure Service Fabric での Windows コンテナーの監視と診断](service-fabric-tutorial-monitoring-wincontainers.md)」を参照してください。

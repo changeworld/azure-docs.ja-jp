@@ -1,23 +1,14 @@
 ---
 title: PowerShell を使用して Application Insights のアラートを設定する | Microsoft Docs
 description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.author: mbullwin
-ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130972"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77669847"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
@@ -38,7 +29,7 @@ ms.locfileid: "66130972"
 * [Microsoft Web Platform Installer (v5 以上)](https://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/overview)します。
 
 ```powershell
@@ -132,11 +123,11 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 | remoteDependencyFailed |[依存関係](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request、<br/>requestFailed |[サーバー要求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhooks
 [アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
-## <a name="see-also"></a>関連項目
-* [Application Insights を構成するスクリプト](powershell-script-create-resource.md)
+## <a name="see-also"></a>参照
+* [Application Insights を構成するスクリプト](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](powershell.md)
 * [Microsoft Azure Diagnostics の Application Insights への結合を自動化する](powershell-azure-diagnostics.md)
 * [アラートへの対応を自動化する](../../azure-monitor/platform/alerts-webhooks.md)

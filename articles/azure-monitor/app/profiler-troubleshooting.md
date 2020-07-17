@@ -1,33 +1,31 @@
 ---
-title: Application Insights Profiler に関する問題のトラブルシューティング | Microsoft Docs
+title: Azure Application Insights Profiler に関する問題のトラブルシューティング
 description: この記事では、Application Insights Profiler の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495398"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81640960"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
-## <a id="troubleshooting"></a>一般的なトラブルシューティング
+## <a name="active-issues"></a>アクティブな懸案事項
+
+* 現在は、Azure App Service で ASP.NET Core 3.x アプリケーションのプロファイリングがサポートされています。
+
+## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般的なトラブルシューティング
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profiler の実行中にアプリケーションへの要求がある場合しか、プロファイルがアップロードされない
 
-Azure Application Insights Profiler では、1 時間ごとに 2 分間だけプロファイリング データが収集されます。 また、**[Application Insights Profiler の構成]** ウィンドウで **[今すぐプロファイル]** ボタンを選択したときにも、データが収集されます。 ただし、プロファイリング データがアップロードされるのは、Profiler の実行中に発生した要求に添付できる場合のみです。 
+Azure Application Insights Profiler では、1 時間ごとに 2 分間だけプロファイリング データが収集されます。 また、 **[Application Insights Profiler の構成]** ウィンドウで **[今すぐプロファイル]** ボタンを選択したときにも、データが収集されます。 ただし、プロファイリング データがアップロードされるのは、Profiler の実行中に発生した要求に添付できる場合のみです。 
 
-Profiler では、トレース メッセージとカスタム イベントが Application Insights リソースに書き込まれます。 これらのイベントを使用して、Profiler がどのように実行されているかを確認できます。 Profiler が実行されていてトレースがキャプチャされているはずなのに、**[パフォーマンス]** ウィンドウに表示されない場合は、Profiler の実行状態を確認できます。
+Profiler では、トレース メッセージとカスタム イベントが Application Insights リソースに書き込まれます。 これらのイベントを使用して、Profiler がどのように実行されているかを確認できます。 Profiler が実行されていてトレースがキャプチャされているはずなのに、 **[パフォーマンス]** ウィンドウに表示されない場合は、Profiler の実行状態を確認できます。
 
 1. Profiler から Application Insights リソースに送信されたトレース メッセージとカスタム イベントを検索します。 次の検索文字列を使用すると、関連するデータを検索することができます。
 
@@ -51,8 +49,9 @@ Profiler では、トレース メッセージとカスタム イベントが Ap
 * Web アプリが ASP.NET Core アプリケーションの場合は、ASP.NET Core 2.0 以降が実行されている必要があります。
 * 表示しようとしているデータが 2 週間以上前のものである場合は、時間フィルターを絞り込んで、もう一度試します。 トレースは 7 日後に削除されます。
 * プロキシまたはファイアウォールが https://gateway.azureserviceprofiler.net へのアクセスをブロックしていないことを確認します。
+* Profiler は、Free または Shared App Service プランではサポートされていません。 これらのプランのいずれかを使用している場合は、Basic プランのいずれかにスケールアップすると、Profiler が動作を開始します。
 
-### <a id="double-counting"></a>並列スレッドの二重カウント
+### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>並列スレッドの二重カウント
 
 スタック ビューアーに表示される合計時間メトリックが、要求期間よりも長くなる場合があります。
 
@@ -88,13 +87,13 @@ Profiler を正常に動作させるためには:
 
       ![profiler-webjob-log]
 
-Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます。 
+Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます (serviceprofilerhelp@microsoft.com)。 
     
 ### <a name="manual-installation"></a>手動のインストール
 
 Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境で必要な場合は、更新プログラムを手動で適用できます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。 更新を手動で適用するには:
 
-1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、**[設定]** を開きます。
+1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、 **[設定]** を開きます。
 
 1. **.NET Framework バージョン**を **v4.6** に設定します。
 
@@ -111,7 +110,7 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 
 現在、同じサービス プランで実行されている最大 4 つの Azure Web アプリとデプロイ スロットで Profiler を有効にできます。 1 つの App Service プランで 4 つより多くの Web アプリが実行されている場合は、Profiler で *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException* がスローされる可能性があります。 Profiler は Web アプリごとに個別に実行され、アプリごとに Event Trace for Windows (ETW) セッションの開始が試みられます。 ただし、一度にアクティブにできる ETW セッションの数には制限があります。 Profiler WebJob では、報告されているアクティブなプロファイリング セッションが多すぎる場合は、一部の Web アプリが別のサービス プランに移動されます。
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>配置エラー:ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>配置エラー:ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 
 Profiler が有効になっている Web Apps リソースに Web アプリを再デプロイしている場合は、次のようなメッセージが表示されることがあります。
 
@@ -127,7 +126,7 @@ Profiler が有効になっている Web Apps リソースに Web アプリを�
 
 ### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Application Insights Profiler が実行されているかどうかを確認するにはどうすればよいですか。
 
-Profiler は、Web アプリ内の継続的な WebJob として実行されます。 Web アプリのリソースは、[Azure Portal](https://portal.azure.com) で開くことができます。 **[WebJobs]** ウィンドウで、**ApplicationInsightsProfiler** の状態を確認してください。 実行されていない場合は、**[ログ]** を開いて詳細情報を入手します。
+Profiler は、Web アプリ内の継続的な WebJob として実行されます。 Web アプリのリソースは、[Azure Portal](https://portal.azure.com) で開くことができます。 **[WebJobs]** ウィンドウで、**ApplicationInsightsProfiler** の状態を確認してください。 実行されていない場合は、 **[ログ]** を開いて詳細情報を入手します。
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure Diagnostics に関する問題のトラブルシューティング
 
@@ -167,6 +166,11 @@ Azure Diagnostics の構成に使用された設定を確認するには:
     アプリケーションが要求を受信している間に Profiler が実行された場合は、次のようなメッセージが表示されます。*Activity detected from iKey* (iKey からアクティビティが検出されました)。 
 
     トレースがアップロードされているときは、次のメッセージが表示されます。*Start to upload trace* (トレースのアップロードを開始します)。 
+
+
+## <a name="edit-network-proxy-or-firewall-rules"></a>ネットワーク プロキシまたはファイアウォール規則を編集する
+
+アプリケーションがプロキシまたはファイアウォールを介してインターネットに接続する場合は、アプリケーションが Application Insights Profiler サービスと通信できるように規則を編集する必要があります。 Application Insights Profiler によって使用される IP は、Azure Monitor サービス タグに含まれています。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

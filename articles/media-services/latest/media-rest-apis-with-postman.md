@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services REST API 呼び出し用の Postman の構成
-description: Media Services REST API 呼び出し用に Postman を構成する方法を説明します。
+title: Azure Media Services v3 REST API 呼び出し用に Postman を構成する
+description: この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように Postman を構成する方法を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: a2171ff8a4354a59ec2f790f9bf38b7a687419ca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543878"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75779639"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
 
 この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 この記事では、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
@@ -34,6 +34,9 @@ ms.locfileid: "59543878"
 
     ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
 
+> [!IMPORTANT]
+> [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
+
 ## <a name="download-postman-files"></a>Postman ファイルをダウンロードする
 
 Postman コレクションと環境ファイルを含む GitHub リポジトリを複製します。
@@ -44,15 +47,13 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ## <a name="configure-postman"></a>Postman を構成する
 
-このセクションでは、Postman を構成します。
-
 ### <a name="configure-the-environment"></a>環境の構成 
 
-1. **Postman** を開きます。
-2. 画面の右側で、**[Manage environment]/(環境の管理/)** オプションを選択します。
+1. **Postman** アプリを開きます。
+2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、**[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
@@ -77,7 +78,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 AMS v3 リソースの操作を開始する前に、サービス プリンシパル認証用の Azure AD トークンを取得して設定する必要があります。
 
-1. Postman の左側のウィンドウで、[Step 1:Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
+1. Postman アプリの左側のウィンドウで、[Step 1: Get AAD Auth token]\(手順 1: AAD 認証トークンを取得する\) を選択します。
 2. 次に、[Get Azure AD Token for Service Principal Authentication]\(\サービス プリンシパル認証のために Azure AD トークンを取得する) を選択します。
 3. **[送信]** をクリックします。
 
@@ -91,13 +92,18 @@ AMS v3 リソースの操作を開始する前に、サービス プリンシパ
 
     ![AAD トークンを取得する](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="troubleshooting"></a>トラブルシューティング 
+
+* アプリケーションが失敗し、"HTTP 504:ゲートウェイ タイムアウト" というエラーが表示される場合、Media Services アカウントに求められる場所以外の値に場所変数が明示的に設定されていることを確認します。 
+* "アカウントが見つかりません" というエラーが表示される場合、Media Services アカウントが入っている場所に本文の JSON メッセージの場所プロパティが設定されていることも確認します。 
+
 ## <a name="see-also"></a>関連項目
 
 - [Media Services アカウントにファイルをアップロードする - REST](upload-files-rest-how-to.md)
 - [Media Services を使用してフィルターを作成する - REST](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [REST を使用してファイルのストリーム配信を行う](stream-files-tutorial-with-rest.md)。  
 - [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST](stream-files-tutorial-with-rest.md)

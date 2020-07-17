@@ -1,24 +1,17 @@
 ---
 title: Azure Application Insights アプリのデータを表示する | Microsoft Docs
 description: Application Insights Connector ソリューションを使用すると、Application Insights でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.author: magoedte
-ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905700"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77665156"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -51,10 +44,10 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
-| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
-| [Azure Storage アカウント](collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
+| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
+| [Azure Storage アカウント](collect-azure-metrics-logs.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,8 +59,8 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
-3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[名前]** で、1 つまたは複数のアプリケーションを選択します。
-4. **[Save]** をクリックします。
+3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、 **[名前]** で、1 つまたは複数のアプリケーションを選択します。
+4. **[保存]** をクリックします。
 
 約 30 分でデータが使用可能となり、次の図のように、[Application Insights] タイルがデータで更新されます。
 
@@ -103,8 +96,8 @@ Application Insights Connector ソリューションを使用すると、[Applic
 | データ ボリューム: データを送信中のホスト | データを送信しているコンピューター ホストの数を示します。 コンピューター ホストと各ホストのレコード数も示されます。 数値をクリックすると、ログ検索 (<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code>) が実行されます。 <br><br> コンピューター名をクリックすると、ホストのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
 | 可用性: Web テストの結果 | Web テストの結果 (合格または不合格) を示すドーナツ グラフを表示します。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code>) が実行されます。 <br><br> 結果は、すべてのテストの合格数と不合格数を示します。 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 アプリケーション名をクリックすると、不合格だった Web テストの詳細を示すログ検索が表示されます。 |
 | サーバー要求: 1 時間あたりの要求の数 | さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での要求の受信数が多い上位 3 つのアプリケーションが表示されます。 要求を受信しているアプリケーションの一覧と、選択した期間中の要求の数も示されます。 <br><br>グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を示す詳細な折れ線グラフが表示されます。 <br><br> 一覧のアプリケーションをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、要求の一覧、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および要求応答コードの一覧が表示されます。   |
-| 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、失敗した要求の数、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
-| 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>) が実行され、例外、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
+| 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、失敗した要求の数、時間を追った失敗要求数のグラフ、要求の実行時間別の失敗要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
+| 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>) が実行され、例外の一覧、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>ログ検索で Application Insights のパースペクティブを表示する
 
@@ -128,7 +121,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ![Application Insights の [例外] ブレード](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-**Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
+**Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、 **[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、 **&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
@@ -142,7 +135,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 [Application Insights Connector] ブレードは、"*Azure portal を使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
 
-ピボットするには、各行の最後に表示される省略記号 (**…**) をクリックし、**[Application Insights で開く]** を選択します。
+ピボットするには、各行の最後に表示される省略記号 ( **…** ) をクリックし、 **[Application Insights で開く]** を選択します。
 
 >[!NOTE]
 >**[Application Insights で開く]** は Azure ポータルでは使用できません。
@@ -151,7 +144,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="sample-corrected-data"></a>サンプリング補正データ
 
-Application Insights では、"*[サンプリング補正](../../azure-monitor/app/sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
+Application Insights では、" *[サンプリング補正](../../azure-monitor/app/sampling.md)* " によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
 
 ログ検索クエリでのサンプリング補正の例を次に示します。
 
@@ -181,7 +174,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>一般的なフィールド
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 | --- | --- |
 | Type | ApplicationInsights |
 | ClientIP |   |
@@ -192,10 +185,10 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | クライアント デバイス |
 | ScreenResolution |   |
 | Continent | 要求元の大陸 |
-| Country | 要求元の国 |
+| Country | 要求元の国や地域 |
 | Province | 要求元の都道府県またはロケール |
 | City | 要求元の市町村 |
-| isSynthetic | 要求がユーザーによって作成されたか、自動化された方法で作成されたかを示します。 True = ユーザーが生成、false = 自動化された方法 |
+| isSynthetic | 要求がユーザーによって作成されたか、自動化された方法で作成されたかを示します。 true = 自動化された方法、false = ユーザーが生成 |
 | SamplingRate | ポータルに送信される、SDK によって生成されたテレメトリの割合。 範囲 0.0 ～ 100.0。 |
 | SampledCount | 100/(SamplingRate)。 例: 4 =&gt; 25% |
 | IsAuthenticated | ｔrue または false |
@@ -249,7 +242,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>要求に固有のフィールド
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 | --- | --- |
 | Type | ApplicationInsights |
 | TelemetryType | Request |
@@ -311,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、**[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
+このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、 **[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
 
 
 ![ベアラー トークン](media/app-insights-connector/bearer-token.png)
@@ -323,6 +316,6 @@ $ConnectionsJson = $Connections | ConvertTo-Json
 ApplicationInsights | summarize by ApplicationName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。

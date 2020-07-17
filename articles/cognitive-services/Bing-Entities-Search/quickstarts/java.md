@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Java を使用して Bing Entity Search REST API に検索要求を送信する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:Java を使用して REST API に検索要求を送信する - Bing Entity Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用すると、Java を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: e1799f2af89fd0498c11f3d695d84ccd93a9c857
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681932"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75384153"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>クイック スタート:Java を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -50,7 +50,7 @@ ms.locfileid: "59681932"
    import com.google.gson.JsonParser;
    ```
 
-2. 新しいクラスで、API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。
+2. 新しいクラスで、API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
    ```java
    public class EntitySearch {
@@ -215,10 +215,10 @@ ms.locfileid: "59681932"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

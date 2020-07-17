@@ -1,11 +1,10 @@
 ---
-title: Azure PowerShell のサンプル | Microsoft Docs
+title: Azure PowerShell のサンプル - ネットワーク
 description: Azure PowerShell のサンプル
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
+author: KumudD
+manager: mtillman
 tags: ''
 ms.assetid: ''
 ms.service: virtual-network
@@ -14,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
-ms.author: georgewallace
-ms.openlocfilehash: 0bca4fb6874bd265f0ae9faeb4219abeb4ffb6d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: ca6ac145db0536d3cf7e5bcc72a58d72101ab12a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036597"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81459119"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>ネットワークに関する Azure PowerShell のサンプル
 
@@ -35,6 +34,5 @@ ms.locfileid: "23036597"
 | [VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへの受信ネットワーク トラフィックは、HTTP および HTTPS に制限されます。 バックエンド サブネットからインターネットへの送信トラフィックは許可されません。 |
 |**負荷分散とトラフィックの方向**||
 | [高可用性を確保するための、VM へのトラフィックの負荷分散](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | 可用性が高く、負荷分散がされた構成で仮想マシンを複数作成します。 |
-| [VM 上の複数の Web サイトの負荷分散](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md?toc=%2fazure%2fnetworking%2ftoc.json) | Azure 可用性セットに接続され、Azure Load Balancer 経由でアクセス可能な、複数の IP 構成を持つ仮想マシンを 2 つ作成します。 |
 | [アプリケーションの高可用性を確保するための、複数リージョン間でのトラフィック転送](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  2 つの App Service プラン、2 つの Web アプリ、1 つの Traffic Manager プロファイル、および 2 つの Traffic Manager エンドポイントを作成します。 |
 | | |

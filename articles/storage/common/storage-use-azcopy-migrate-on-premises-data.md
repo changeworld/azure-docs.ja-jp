@@ -1,30 +1,24 @@
 ---
-title: チュートリアル:AzCopy を使用したオンプレミス データの Azure Storage への移行 | Microsoft Docs
+title: チュートリアル:AzCopy を使用してオンプレミスのデータを Azure Storage に移行する | Microsoft Docs
 description: このチュートリアルでは、AzCopy を使用して、BLOB、テーブル、およびファイルのコンテンツ間でデータを移行したり、データをコピーしたりすることができます。 ローカル ストレージから Azure Storage にデータを簡単に移行できます。
-services: storage
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/14/2017
+ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5c10edc4f11aad23801045011b67592b6cc537e4
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65912151"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74327516"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
 
 AzCopy は、単純なコマンドを使用して Azure Blob Storage、Azure Files、および Azure Table Storage との間でデータをコピーするためのコマンドライン ツールです。 コマンドは、最適なパフォーマンスが得られるように設計されています。 AzCopy を使用すると、ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。 AzCopy は、ローカル (オンプレミス) のデータをストレージ アカウントにコピーするために使用することができます。
 
-オペレーティング システムに適したバージョンの AzCopy をダウンロードします。
-
-* [AzCopy on Linux](storage-use-azcopy-linux.md) は、.NET Core Framework で構築されています。 その対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 
-* [AzCopy on Windows](storage-use-azcopy.md) は、.NET Framework で構築されています。 このバージョンには、Windows スタイルのコマンドライン オプションが用意されています。 
- 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
@@ -37,7 +31,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、AzCopy on [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) または [Windows](https://aka.ms/downloadazcopy) の最新バージョンをダウンロードしてください。
+このチュートリアルを完了するには、AzCopy の最新バージョンをダウンロードしてください。 [AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページを参照してください。
 
 Windows の場合、このチュートリアルでタスクをスケジュールするために使用する [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) が必要になります。 Linux ユーザーは、代わりに crontab コマンドを使用します。
 
@@ -45,82 +39,105 @@ Windows の場合、このチュートリアルでタスクをスケジュール
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-BLOB は常にコンテナーにアップロードする必要があるため、最初の手順はコンテナーを作成することです。 コンテナーは、BLOB のグループを整理するための方法として使用されます。コンピューターでファイルを整理するためのフォルダーと同様です。 
+BLOB は常にコンテナーにアップロードする必要があるため、最初の手順はコンテナーを作成することです。 コンテナーは、BLOB のグループを整理するための方法として使用されます。コンピューターでファイルを整理するためのフォルダーと同様です。
 
 コンテナーを作成するには、次の手順に従います。
 
 1. メイン ページで **[ストレージ アカウント]** ボタンを選択し、作成したストレージ アカウントを選択します。
-2. **[サービス]** で **[BLOB]** を選択し、**[コンテナー]** を選択します。 
+2. **[サービス]** で **[BLOB]** を選択し、 **[コンテナー]** を選択します。
 
    ![コンテナーを作成する](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 コンテナー名は文字または数字で始まる必要があります。 コンテナー名には、文字、数字、およびハイフン文字 (-) のみを使用できます。 BLOB とコンテナーの名前付けの詳細については、「[Naming and referencing containers, blobs, and metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」(コンテナー、BLOB、メタデータの名前付けと参照) を参照してください。
 
+## <a name="download-azcopy"></a>AzCopy をダウンロードする
+
+AzCopy V10 実行可能ファイルをダウンロードします。
+
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+
+AzCopy ファイルをコンピューターの任意の場所に配置します。 ファイルの場所をシステム パス変数に追加して、コンピューター上の任意のフォルダーからこの実行可能ファイルを参照できるようにします。
+
+## <a name="authenticate-with-azure-ad"></a>Azure AD による認証
+
+まず、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)」を参照してください。
+
+次に、コマンド プロンプトを開き、次のコマンドを入力して、Enter キーを押します。
+
+```azcopy
+azcopy login
+```
+
+このコマンドによって、認証コードと Web サイトの URL が返されます。 Web サイトを開き、コードを指定し、 **[次へ]** ボタンを選択します。
+
+![コンテナーを作成する](media/storage-use-azcopy-v10/azcopy-login.png)
+
+サインイン ウィンドウが表示されます。 そのウィンドウで、Azure アカウント資格情報を使用して、Azure アカウントにサインインします。 正常にサインインしたら、ブラウザー ウィンドウを閉じ、AzCopy の使用を開始できます。
+
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>フォルダーの内容を BLOB ストレージにアップロードする
 
-AzCopy を使用すると、フォルダー内のすべてのファイルを [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) または [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download) 上の Blob Storage にアップロードできます。 フォルダー内のすべての BLOB をアップロードするには、次の AzCopy コマンドを入力します。
+AzCopy を使用すると、フォルダー内のすべてのファイルを [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) または [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 上の Blob Storage にアップロードできます。 フォルダー内のすべての BLOB をアップロードするには、次の AzCopy コマンドを入力します。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+```AzCopy
+azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
+```
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://myaccount.blob.core.windows.net/mycontainer \
-        --dest-key <key> \
-        --recursive
+* `<local-folder-path>` プレースホルダーを、ファイルがあるフォルダーへのパスに置き換えます (例: `C:\myFolder` または `/mnt/myFolder`)。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
----
+* `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
 
-`<key>` と `key` をアカウント キーで置き換えてください。 Azure Portal でアカウント キーを取得するには、ストレージ アカウントの **[設定]** の **[アクセス キー]** を選択します。 キーを選択し、AzCopy コマンドに貼り付けます。 存在しない宛先コンテナーを指定すると、AzCopy によってコンテナーが作成され、そのコンテナーにファイルがアップロードされます。 データ ディレクトリへのソース パスを更新し、宛先 URL の **myaccount** をストレージ アカウント名で置き換えます。
-
-指定したディレクトリの内容を Blob Storage に再帰的にアップロードするには、`--recursive` (Linux) または `/S` (Windows) オプションを指定します。 これらのオプションのいずれかを使用して AzCopy を実行すると、すべてのサブフォルダーとサブフォルダー内のファイルもアップロードされます。
+指定したディレクトリの内容を BLOB ストレージに再帰的にアップロードするには、`--recursive` オプションを指定します。 このオプションを使用して AzCopy を実行すると、すべてのサブフォルダーとサブフォルダー内のファイルもアップロードされます。
 
 ## <a name="upload-modified-files-to-blob-storage"></a>変更されたファイルを Blob Storage にアップロードする
 
-AzCopy を使用して、最終更新時刻に基づいて[ファイルをアップロード](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#other-azcopy-features)することができます。 これを試すには、テストのためにソース ディレクトリ内のファイルを変更するか、または新しいファイルを作成します。 更新されたファイルまたは新しいファイルのみをアップロードするには、`--exclude-older` (Linux) または `/XO` (Windows) パラメーターを AzCopy コマンドに追加します。
+AzCopy を使用して、最終更新時刻に基づいてファイルをアップロードすることができます。 
 
-宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに `--exclude-older` と `--exclude-newer` (Linux) または `/XO` と `/XN` (Windows) の両方のパラメーターを指定します。 AzCopy は、タイムスタンプに基づいて、更新されたデータのみをアップロードします。
+これを試すには、テストのためにソース ディレクトリ内のファイルを変更するか、または新しいファイルを作成します。 次に、AzCopy の `sync` コマンドを使用します。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+```AzCopy
+azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
+```
 
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://myaccount.blob.core.windows.net/mycontainer \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+* `<local-folder-path>` プレースホルダーを、ファイルがあるフォルダーへのパスに置き換えます (例: `C:\myFolder` または `/mnt/myFolder`)。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
----
+* `<container-name>` プレースホルダーを、作成したコンテナーの名前に置き換えます。
+
+`sync` コマンドの詳細については、「[Synchronize files (ファイルの同期)](storage-use-azcopy-blobs.md#synchronize-files)」を参照してください。
 
 ## <a name="create-a-scheduled-task"></a>スケジュールされたタスクを作成する
 
 AzCopy コマンド スクリプトを実行するスケジュールされたタスクまたは cron ジョブを作成できます。 このスクリプトは、特定の時間間隔で新しいオンプレミス データを識別してクラウド ストレージにアップロードします。
 
-AzCopy コマンドをテキスト エディターにコピーします。 AzCopy コマンドのパラメーター値を適切な値に更新します。 ファイルを AzCopy 用に `script.sh` (Linux) または `script.bat` (Windows) として保存します。
+AzCopy コマンドをテキスト エディターにコピーします。 AzCopy コマンドのパラメーター値を適切な値に更新します。 ファイルを AzCopy 用に `script.sh` (Linux) または `script.bat` (Windows) として保存します。 
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+これらの例では、フォルダーの名前は `myFolder`、ストレージ アカウント名の名前は `mystorageaccount`、コンテナー名の名前は `mycontainer` であると想定しています。
 
-    azcopy --source /mnt/myfiles --destination https://myaccount.blob.core.windows.net/mycontainer --dest-key <key> --recursive --exclude-older --exclude-newer --verbose >> Path/to/logfolder/`date +\%Y\%m\%d\%H\%M\%S`-cron.log
+> [!NOTE]
+> Linux の例では SAS トークンが追加されます。 コマンドにそれを指定する必要があります。 AzCopy V10 の現在のバージョンでは、cron ジョブでの Azure AD 認証はサポートされていません。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="linux"></a>[Linux](#tab/linux)
 
-    cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
-    AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
+    azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+    azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
+
 ---
 
-AzCopy は、詳細オプション `--verbose` (Linux) または `/V` (Windows) で実行されます。 出力はログ ファイルにリダイレクトされます。
-
 このチュートリアルでは、Windows 上でスケジュールされたタスクを作成するために [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) を使用します。 Linux 上で cron ジョブを作成するには、[Crontab](http://crontab.org/) コマンドを使用します。
+
  **Schtasks** は、管理者がローカルまたはリモート コンピューター上でスケジュールされたタスクを作成、削除、クエリ、変更、実行、および終了することを可能にします。 **Cron** は、Linux および Unix ユーザーが [cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)を使用して、指定された日時にコマンドまたはスクリプトを実行することを可能にします。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
-Linux 上で cron ジョブを作成するには、端末で次のコマンドを入力します。
+Linux 上で cron ジョブを作成するには、ターミナルで次のコマンドを入力します。
 
 ```bash
 crontab -e
@@ -129,12 +146,14 @@ crontab -e
 
 コマンドの cron 式 `*/5 * * * *` は、シェル スクリプト `script.sh` を 5 分ごとに実行することを指定します。 スクリプトは、毎日、毎月、または毎年特定の時刻に実行するようにスケジュールすることができます。 ジョブの実行日時の設定の詳細については、[cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)に関するページを参照してください。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Windows 上でスケジュールされたタスクを作成するには、コマンド プロンプトまたは PowerShell で次のコマンドを入力します。
 
+この例では、スクリプトはコンピューターのルート ドライブにあると想定していますが、スクリプトは任意の場所に配置できます。
+
 ```cmd
-schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\Users\username\Documents\script.bat
+schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 ```
 
 このコマンドでは、次のパラメーターを使用しています。
@@ -147,17 +166,22 @@ Windows 上でスケジュールされたタスクを作成する方法の詳細
 
 ---
 
-スケジュールされたタスクまたは cron ジョブが正常に実行されることを確認するために、`myfolder` ディレクトリ内に新しいファイルを作成します。 新しいファイルがストレージ アカウントにアップロードされたことを確認するために、5 分間待ちます。 ログ ディレクトリに移動して、スケジュールされたタスクまたは cron ジョブの出力ログを確認します。
+スケジュールされたタスクまたは cron ジョブが正常に実行されることを確認するために、`myFolder` ディレクトリ内に新しいファイルを作成します。 新しいファイルがストレージ アカウントにアップロードされたことを確認するために、5 分間待ちます。 ログ ディレクトリに移動して、スケジュールされたタスクまたは cron ジョブの出力ログを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オンプレミスと Azure Storage との間でデータを移動する方法については、このリンクに従ってください。
 
-> [!div class="nextstepaction"]
-> [Azure Storage との間のデータの移動](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
+* [Azure Storage との間のデータの移動](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
 
-AzCopy 自体の詳細については、オペレーティング システムに応じて、次のいずれかの記事を選択します。
+AzCopy の詳細については、以下の記事を参照してください。
 
-> [!div class="nextstepaction"]
-> [AzCopy on Windows を使ったデータの転送](storage-use-azcopy.md)
-> [AzCopy on Linux を使用したデータの転送](storage-use-azcopy-linux.md)
+* [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+
+* [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+
+* [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
+
+* [AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)
+ 
+* [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)

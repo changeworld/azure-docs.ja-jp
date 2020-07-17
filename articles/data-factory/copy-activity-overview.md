@@ -1,47 +1,46 @@
 ---
-title: Azure Data Factory のコピー アクティビティ | Microsoft Docs
-description: サポートされるソース データ ストアからサポートされるシンク データ ストアにデータをコピーするために使用できる Azure Data Factory のコピー アクティビティについて説明します。
+title: Azure Data Factory のコピー アクティビティ
+description: Azure Data Factory のコピー アクティビティについて説明します。 サポートされているソース データ ストアからサポートされているシンク データ ストアにデータをコピーするために使用できます。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150861"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81414219"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
-## <a name="overview"></a>概要
-
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory のバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [現在のバージョン](copy-activity-overview.md)
 
-Azure Data Factory では、コピー アクティビティを使用して、オンプレミスにあるデータ ストアやクラウド内のデータ ストアの間でデータをコピーできます。 コピーされたデータをさらに変換して分析することができます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Azure Data Factory では、コピー アクティビティを使用して、オンプレミスにあるデータ ストアやクラウド内のデータ ストアの間でデータをコピーできます。 データをコピーした後は、他のアクティビティを使用してさらに変換および分析できます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
 ![コピー アクティビティの役割](media/copy-activity-overview/copy-activity.png)
 
-コピー アクティビティは、[統合ランタイム](concepts-integration-runtime.md)で実行されます。 異なるデータ コピーのシナリオでは、別の種類の統合ランタイムを利用できます。
+コピー アクティビティは、[統合ランタイム](concepts-integration-runtime.md)で実行されます。 さまざまなデータ コピーのシナリオで、さまざまな種類の統合ランタイムを使用できます。
 
-* どちらもパブリックにアクセス可能なデータ ストア間でデータをコピーする場合は、セキュリティ保護され、信頼性が高く、スケーラブルで、かつ[グローバルに使用可能な](concepts-integration-runtime.md#integration-runtime-location) **Azure 統合ランタイム**でコピー アクティビティを機能強化できます。
-* オンプレミスにあるデータ ストアや、アクセス制御が設定されたネットワーク (Azure Virtual Network など) 内のデータ ストアの間でデータをコピーする場合は、データ コピーを機能強化するために**自己ホスト型統合ランタイム**を設定する必要があります。
+* 任意の IP からインターネット経由でパブリックにアクセスできる 2 つのデータ ストア間でデータをコピーする場合は、コピー アクティビティに Azure 統合ランタイムを使用できます。 この統合ランタイムは、セキュリティで保護され、信頼性が高く、スケーラブルで、[グローバルに利用できます](concepts-integration-runtime.md#integration-runtime-location)。
+* オンプレミス、またはアクセス制御を使用するネットワーク (Azure 仮想ネットワークなど) に配置されているデータ ストアとの間でデータをコピーする場合は、セルフホステッド統合ランタイムを設定する必要があります。
 
-統合ランタイムを各ソースおよびシンク データ ストアに関連付ける必要があります。 コピー アクティビティが、[使用する IR を決定する](concepts-integration-runtime.md#determining-which-ir-to-use)方法について詳細を学習してください。
+統合ランタイムを各ソースおよびシンク データ ストアに関連付ける必要があります。 使用する統合ランタイムをコピー アクティビティで判別する方法の詳細については、「[使用する IR の判別](concepts-integration-runtime.md#determining-which-ir-to-use)」を参照してください。
 
-コピー アクティビティは、次の各段階を通して、ソースからシンクにデータをコピーします。 コピー アクティビティを実行するサービスが行う処理を次に示します。
+ソースからシンクにデータをコピーするために、コピー アクティビティを実行するサービスでは次の手順が実行されます。
 
 1. ソース データ ストアからデータを読み取る。
-2. シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピングなどを実行する。この操作は、入力データセット、出力データセット、およびコピー アクティビティの構成に基づいて実行されます。
+2. シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピングなどを実行する。 この操作は、入力データセット、出力データセット、およびコピー アクティビティの構成に基づいて実行されます。
 3. シンク/宛先データ ストアにデータを書き込む。
 
 ![コピー アクティビティの概要](media/copy-activity-overview/copy-activity-overview.png)
@@ -52,28 +51,28 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
 
-コピー アクティビティを使用すると、ファイル ベースの 2 つのデータ ストア間で**ファイルをそのままコピー**できます。その場合、データはシリアル化/逆シリアル化なしで効率的にコピーされます。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-また、コピー アクティビティでは、指定された形式**Text、JSON、Avro、ORC、Parquet**、およびコーデック **GZip、Deflate、BZip2、ZipDeflate** によるファイルの圧縮と解凍。 詳細については、「[サポートされているファイル形式と圧縮形式](supported-file-formats-and-compression-codecs.md)」を参照してください。
+コピー アクティビティを使用すると、ファイル ベースの 2 つのデータ ストア間でファイルをそのままコピーできます。その場合、データはシリアル化または逆シリアル化なしで効率的にコピーされます。 また、特定の形式のファイルを解析または生成することもできます。たとえば、次のような操作を実行できます。
 
-たとえば、次のようなコピー アクティビティを実行できます。
-
-* オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Storage Gen2 に Parquet 形式で書き込む。
-* オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
-* オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Storage Gen2 に書き込む。
-* Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
-* そのほか、シリアル化/逆シリアル化または圧縮/解凍が必要となるさまざまなケース。
+* オンプレミスの SQL Server データベースからデータをコピーし、Parquet 形式で Azure Data Lake Storage Gen2 に書き込む。
+* オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB ストレージに Avro 形式で書き込む。
+* オンプレミスのファイル システムから zip 形式のファイルをコピーし、その場で圧縮解除して、抽出されたファイルを Azure Data Lake Storage Gen2 に書き込む。
+* Azure BLOB ストレージから Gzip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
+* シリアル化/逆シリアル化または圧縮/展開を必要とする他の多くのアクティビティ。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-コピー アクティビティを実行するサービスは、「[統合ランタイムの場所](concepts-integration-runtime.md#integration-runtime-location)」に記載されているリージョンと場所でグローバルに使うことができます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンにおける Data Factory とデータ移動の提供状況については、[リージョン別のサービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
+コピー アクティビティが有効なサービスは、「[統合ランタイムの場所](concepts-integration-runtime.md#integration-runtime-location)」に記載されているリージョンと場所でグローバルに使うことができます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンで Data Factory とデータ移動を利用できるかどうかを確認するには、[リージョン別の製品](https://azure.microsoft.com/regions/#services)に関する記事を参照してください。
 
 ## <a name="configuration"></a>構成
 
-Azure Data Factory のコピー アクティビティを使用するには、次のことを行う必要があります。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-1. **ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。** 構成方法およびサポートされるプロパティについては、コネクタの記事の「リンクされたサービスのプロパティ」セクションを参照してください。 サポートされるコネクタの一覧は、「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」セクションで見つけることができます。
-2. **ソースとシンクのデータセットを作成します。** 構成方法およびサポートされるプロパティについては、ソースおよびシンク コネクタの記事の「データセットのプロパティ」セクションを参照してください。
+一般的に、Azure Data Factory でコピー アクティビティを使用するには、次のことを行う必要があります。
+
+1. **ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。** サポートされるコネクタの一覧については、この記事の「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」セクションを参照してください。 構成情報とサポートされるプロパティについては、コネクタの記事のリンクされたサービスのプロパティに関するセクションを参照してください。 
+2. **ソースとシンクのデータセットを作成します。** 構成情報とサポートされるプロパティについては、ソースとシンク コネクタの記事のデータセットのプロパティに関するセクションを参照してください。
 3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。
 
 ### <a name="syntax"></a>構文
@@ -126,136 +125,129 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 ]
 ```
 
-### <a name="syntax-details"></a>構文の詳細
+#### <a name="syntax-details"></a>構文の詳細
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティの type プロパティは**Copy** に設定する必要があります | はい |
-| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | はい |
-| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | はい |
-| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | はい |
-| source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | はい |
-| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | はい |
-| translator | ソースからシンクへの明示的な列マッピングを指定します。 既定のコピー動作が要求を満足できない場合に適用されます。<br/><br/>「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」で詳細を学習してください。 | いいえ  |
-| dataIntegrationUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。 以前はクラウド データ移動単位 (DMU) と呼ばれていました。 <br/><br/>詳しくは、[データ統合単位](copy-activity-performance.md#data-integration-units)に関するページをご覧ください。 | いいえ  |
-| parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/><br/>「[並列コピー](copy-activity-performance.md#parallel-copy)」で詳細を学習してください。 | いいえ  |
-| enableStaging<br/>stagingSettings | ソースからシンクに直接データをコピーするのではなく、中間データを BLOB ストレージにステージングすることを選択します。<br/><br/>役立つシナリオや構成の詳細を「[ステージング コピー](copy-activity-performance.md#staged-copy)」で学習してください。 | いいえ  |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| ソースからシンクにデータをコピーするときに互換性のない行を処理する方法を選択します。<br/><br/>「[フォールト トレランス](copy-activity-fault-tolerance.md)」で詳細を学習してください。 | いいえ  |
+| type | コピー アクティビティの場合は、`Copy` に設定します。 | はい |
+| inputs | ソース データを指すように作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | はい |
+| outputs | シンク データを指すように作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | はい |
+| typeProperties | コピー アクティビティを構成するプロパティを指定します。 | はい |
+| source | データを取得するためのコピー ソースの種類と対応するプロパティを指定します。<br/>詳細については、「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に記載されているコネクタの記事のコピー アクティビティのプロパティに関するセクションを参照してください。 | はい |
+| sink | データを書き込むためのコピー シンクの種類と対応するプロパティを指定します。<br/>詳細については、「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に記載されているコネクタの記事のコピー アクティビティのプロパティに関するセクションを参照してください。 | はい |
+| translator | ソースからシンクへの明示的な列マッピングを指定します。 このプロパティは、既定のコピー動作がニーズに合わない場合に適用されます。<br/>詳細については、「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」を参照してください。 | いいえ |
+| dataIntegrationUnits | [Azure 統合ランタイム](concepts-integration-runtime.md)がデータのコピーに使用する機能の量を表す単位を指定します。 これらの単位は、以前はクラウド データ移動単位 (DMU) と呼ばれていました。 <br/>詳細については、「[データ統合単位](copy-activity-performance-features.md#data-integration-units)」を参照してください。 | いいえ |
+| parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/>詳細については、「[並列コピー](copy-activity-performance-features.md#parallel-copy)」を参照してください。 | いいえ |
+| preserve | データのコピー中にメタデータ/ACL を保存するかどうかを指定します。 <br/>詳細については、[メタデータの保存](copy-activity-preserve-metadata.md)に関する記事を参照してください。 |いいえ |
+| enableStaging<br/>stagingSettings | ソースからシンクにデータを直接コピーするのではなく、BLOB ストレージに中間データをステージングするかどうかを指定します。<br/>役に立つシナリオと構成の詳細については、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。 | いいえ |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| ソースからシンクにデータをコピーするときに互換性のない行を処理する方法を選択します。<br/>詳細については、「[フォールト トレランス](copy-activity-fault-tolerance.md)」を参照してください。 | いいえ |
 
 ## <a name="monitoring"></a>監視
 
-Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI またはプログラムで、コピー アクティビティの実行を監視できます。 その後、お客様のシナリオのパフォーマンスと構成を、社内テストから得られたコピー アクティビティの[パフォーマンス リファレンス](copy-activity-performance.md#performance-reference)と比較できます。
+Azure Data Factory では、コピー アクティビティの実行を、視覚的に監視することも、プログラムによって監視することも可能です。 詳細については、「[コピー アクティビティを監視する](copy-activity-monitoring.md)」を参照してください。
 
-### <a name="monitor-visually"></a>視覚的な監視
+## <a name="incremental-copy"></a>増分コピー
 
-コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。
-
-![パイプラインの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-
-クリックして、このパイプライン実行のアクティビティ一覧を表示する **[アクション]** 列に、コピー アクティビティの入力、出力、エラー (コピー アクティビティの実行に失敗した場合) へのリンクと詳細が表示されます。
-
-![アクティビティの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
-
-**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。
-
->[!TIP]
->一部のシナリオでは、コピーの監視ページの上部に "**パフォーマンス チューニングに関するヒント**" も表示されます。これは、特定されたボトルネックを示しています。このヒントを参考にして、コピーのスループットを強化するために変更すべき点を把握することができます。詳しい情報と例については、[こちら](#performance-and-tuning)を参照してください。
-
-**例: Amazon S3 から Azure Data Lake Store へコピーする**
-![アクティビティ実行の詳細を監視する](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
-
-**例: ステージング コピーを使用して Azure SQL Database から Azure SQL Data Warehouse にコピーする**
-![アクティビティ実行の詳細を監視する](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
-
-### <a name="monitor-programmatically"></a>プログラムで監視する
-
-コピー アクティビティの実行の詳細とパフォーマンス特性は、コピー アクティビティの実行結果の [出力] セクションでも返されます。 以下は包括的な一覧です。コピー シナリオに該当するものだけを示しています。 アクティビティの実行を監視する方法は、[クイック スタートの監視セクション](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)で学習してください。
-
-| プロパティ名  | 説明 | 単位 |
-|:--- |:--- |:--- |
-| dataRead | ソースから読み取られたデータ サイズ | Int64 値 **(バイト数)** |
-| dataWritten | シンクに書き込まれたデータ サイズ | Int64 値 **(バイト数)** |
-| filesRead | ファイル ストレージからデータをコピーするときに、コピーされるファイルの数。 | Int64 値 (単位なし) |
-| filesWritten | ファイル ストレージにデータをコピーするときに、コピーされるファイルの数。 | Int64 値 (単位なし) |
-| rowsRead | ソースから読み取られる行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
-| rowsCopied | シンクにコピーされる行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
-| rowsSkipped | スキップされた互換性のない行の数。 この機能は、"enableSkipIncompatibleRow" を true に設定することによって有効にできます。 | Int64 値 (単位なし) |
-| throughput | データが転送される速度。 | 浮動小数点数 **(KB/秒)** |
-| copyDuration | コピーの持続期間。 | Int32 値 (秒数) |
-| sourcePeakConnections | コピー中にソース データ ストアで確立されたコンカレント接続のピーク数。 | Int32 値 |
-| sinkPeakConnections| コピー中にシンク データ ストアで確立されたコンカレント接続のピーク数。| Int32 値 |
-| sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | Boolean |
-| redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | Boolean |
-| hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | Boolean |
-| effectiveIntegrationRuntime | アクティビティの実行を機能強化するために、どの統合ランタイムが使用されるかを `<IR name> (<region if it's Azure IR>)` の形式で示します。 | Text (文字列) |
-| usedDataIntegrationUnits | コピーの間に有効なデータ統合単位。 | Int32 値 |
-| usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値|
-| redirectRowPath | "redirectIncompatibleRowSettings" で構成した、BLOB ストレージ内のスキップされた互換性のない行のログのパス。 下の例を参照してください。 | Text (文字列) |
-| executionDetails | コピー アクティビティが処理される際の段階の詳細、対応するステップ、期間、使用される構成など。このセクションは変更される場合があるため、解析はお勧めしません。 | Array |
-
-```json
-"output": {
-    "dataRead": 107280845500,
-    "dataWritten": 107280845500,
-    "filesRead": 10,
-    "filesWritten": 10,
-    "copyDuration": 224,
-    "throughput": 467707.344,
-    "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedDataIntegrationUnits": 32,
-    "usedParallelCopies": 8,
-    "executionDetails": [
-        {
-            "source": {
-                "type": "AmazonS3"
-            },
-            "sink": {
-                "type": "AzureDataLakeStore"
-            },
-            "status": "Succeeded",
-            "start": "2018-01-17T15:13:00.3515165Z",
-            "duration": 221,
-            "usedDataIntegrationUnits": 32,
-            "usedParallelCopies": 8,
-            "detailedDurations": {
-                "queuingDuration": 2,
-                "transferDuration": 219
-            }
-        }
-    ]
-}
-```
-
-## <a name="schema-and-data-type-mapping"></a>スキーマとデータ型のマッピング
-
-コピー アクティビティがソース データをシンクにマッピングする方法について説明している「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」を参照してください。
-
-## <a name="fault-tolerance"></a>フォールト トレランス
-
-既定では、コピー アクティビティはソースとシンクの間に互換性のないデータを検出した場合、データのコピーを停止して失敗を返します。 そのコピーを成功させるために、互換性のない行をスキップしてログに記録し、互換性があるデータのみをコピーするように明示的に構成できます。 詳細については、「[Copy Activity fault tolerance](copy-activity-fault-tolerance.md)」 (コピー アクティビティのフォールト トレランス) を参照してください。
+Data Factory を使用すると、ソース データ ストアからシンク データ ストアに差分データを増分コピーできます。 詳細については、[チュートリアルのデータの増分コピー](tutorial-incremental-copy-overview.md)に関する記事を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
+[コピー アクティビティの監視](copy-activity-monitoring.md)エクスペリエンスは、コピー パフォーマンスの統計をアクティビティの実行ごとに示します。 「[コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド](copy-activity-performance.md)」には、Azure Data Factory でのコピー アクティビティによるデータ移動のパフォーマンスに影響する主な要因が説明されています。 また、テスト時に観察されるパフォーマンス値の一覧が示され、コピー アクティビティのパフォーマンスを最適化する方法も説明されます。
 
-場合によっては、ADF でコピー アクティビティを実行すると、次の例に示されているように、[コピー アクティビティの監視ページ](#monitor-visually)の上部に "**パフォーマンス チューニングに関するヒント**" が直接表示されます。 これにより、特定のコピーの実行で特定されたボトルネックが提示されるだけでなく、コピーのスループットを向上させるために変更すべき点も示されます。 パフォーマンスのチューニングに関するヒントは、現在、Azure SQL Data Warehouse にデータをコピーするときは PolyBase を使用すること、データ ソース側のリソースがボトルネックである場合はAzure Cosmos DB の RU または Azure SQL DB の DTU を増やすこと、不要なステージング済みを削除することといった提案を示しています。パフォーマンスのチューニングのルールも、徐々に強化されていきます。
+## <a name="resume-from-last-failed-run"></a>前回失敗した実行から再開する
 
-**例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
+コピー アクティビティでは、ファイル ベースのストア間でバイナリ形式を使用してサイズの大きいファイルをそのままコピーする場合に、ソースからシンクへのフォルダー/ファイル階層を保持することを選択した場合 (Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する場合など)、前回失敗した実行からの再開をサポートします。 これは、次のファイルベース コネクタに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、および [SFTP](connector-sftp.md)。
 
-このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。
+コピー アクティビティの再開は、次の 2 つの方法で利用できます。
 
-![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+- **アクティビティ レベルの再試行:** コピー アクティビティに再試行回数を設定できます。 パイプラインの実行中に、このコピー アクティビティの実行が失敗した場合、次の自動再試行は最後の試行の失敗ポイントから開始されます。
+- **失敗したアクティビティから再実行する:** パイプラインの実行完了後、ADF UI 監視ビューまたはプログラムによって失敗したアクティビティから再実行をトリガーすることもできます。 失敗したアクティビティがコピー アクティビティの場合、パイプラインはそのアクティビティから再実行されるだけでなく、前の実行の失敗ポイントからも再開されます。
 
-## <a name="incremental-copy"></a>増分コピー
-Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。
+    ![コピーの再開](media/copy-activity-overview/resume-copy.png)
 
-## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
-Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンでは、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。
+いくつかの注意点があります。
 
-## <a name="next-steps"></a>次の手順
+- 再開は、ファイル レベルで行われます。 ファイルのコピー時にコピー アクティビティが失敗した場合、次回の実行時に、この特定のファイルが再コピーされます。
+- 再開が正常に機能するには、再実行の間でコピー アクティビティの設定を変更しないでください。
+- Amazon S3、Azure BLOB、Azure Data Lake Storage Gen2、および Google Cloud Storage からデータをコピーする場合、コピー アクティビティは任意の数のコピーされたファイルから再開できます。 ソースとしてのその他のファイル ベースのコネクタの場合、現在のコピー アクティビティは、限られた数のファイルからの再開をサポートしています。通常は 1 万単位の範囲であり、ファイル パスの長さによって異なります。この数を超えるファイルが再実行中に再コピーされます。
+
+バイナリ ファイル コピー以外の他のシナリオでは、コピー アクティビティの再実行は先頭から開始されます。
+
+## <a name="preserve-metadata-along-with-data"></a>データと共にメタデータを保存する
+
+ソースからシンクへデータをコピーするときに、データ レイクの移行のようなシナリオでは、コピー アクティビティを使用して、メタデータと ACL をデータと共に保存することも選択できます。 詳細については、[メタデータの保存](copy-activity-preserve-metadata.md)に関する記事を参照してください。
+
+## <a name="schema-and-data-type-mapping"></a>スキーマとデータ型のマッピング
+
+コピー アクティビティによってソース データがどのようにシンクにマップされるかについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+
+## <a name="add-additional-columns-during-copy"></a>コピー中に列を追加する
+
+ソース データ ストアからシンクにデータをコピーするだけでなく、シンクにコピーする追加データ列を追加するように構成することもできます。 次に例を示します。
+
+- ファイルベースのソースからコピーする場合は、相対ファイル パスを、データの取得元ファイルをトレースするための追加列として保存します。
+- ADF 式を含む列を追加して、パイプライン名/パイプライン ID などの ADF システム変数をアタッチするか、上流アクティビティの出力から他の動的な値を保存します。
+- 静的な値を持つ列を、下流の使用ニーズに応じて追加します。
+
+コピーアクティビティ ソース タブの構成は次のとおりです。 
+
+![コピー アクティビティで列を追加する](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
+
+>[!TIP]
+>この機能は、最新のデータセット モデルで動作します。 UI にこのオプションが表示されない場合は、新しいデータセットを作成してみてください。
+
+これをプログラムによって構成するには、コピー アクティビティ ソースに `additionalColumns` プロパティを追加します。
+
+| プロパティ | 説明 | 必須 |
+| --- | --- | --- |
+| additionalColumns | シンクにコピーするデータ列を追加します。<br><br>`additionalColumns` 配列の各オブジェクトは追加列を表します。 `name` は列名を定義します。また、`value` はその列のデータ値を示します。<br><br>使用できるデータ値:<br>-  **`$$FILEPATH`** -予約済み変数。データセットで指定されたフォルダー パスへのソース ファイルの相対パスが格納されることを示します。 ファイルベースのソースに適用されます。<br>- **式**<br>- **静的な値** | いいえ |
+
+**例:**
+
+```json
+"activities":[
+    {
+        "name": "CopyWithAdditionalColumns",
+        "type": "Copy",
+        "inputs": [...],
+        "outputs": [...],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>",
+                "additionalColumns": [
+                    {
+                        "name": "filePath",
+                        "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "pipelineName",
+                        "value": {
+                            "value": "@pipeline().Pipeline",
+                            "type": "Expression"
+                        }
+                    },
+                    {
+                        "name": "staticValue",
+                        "value": "sampleValue"
+                    }
+                ],
+                ...
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+## <a name="fault-tolerance"></a>フォールト トレランス
+
+既定では、ソース データ行がシンク データ行と互換性がない場合、コピー アクティビティでデータのコピーが停止され、エラーが返されます。 コピーを成功させるには、互換性のない行をスキップし、ログに記録し、互換性のあるデータのみをコピーするようにコピー アクティビティを構成します。 詳細については、[コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)に関する記事を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。
 
-- [Copy data from one location to another location in the same Azure Blob Storage (同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする)](quickstart-create-data-factory-dot-net.md)
-- [Copy data from Azure Blob Storage to Azure SQL Database (Azure Blob Storage から Azure SQL Database にデータをコピーする)](tutorial-copy-data-dot-net.md)
-- [Copy data from on-premises SQL Server to Azure (オンプレミスの SQL Server から Azure にデータをコピーする)](tutorial-hybrid-copy-powershell.md)
+- [ある場所から同じ Azure Blob Storage アカウントの別の場所にデータをコピーする](quickstart-create-data-factory-dot-net.md)
+- [Azure Blob Storage から Azure SQL Database にデータをコピーする](tutorial-copy-data-dot-net.md)
+- [オンプレミスの SQL Server データベースから Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)

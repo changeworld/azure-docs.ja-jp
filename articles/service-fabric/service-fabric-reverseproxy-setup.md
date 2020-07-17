@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric でのリバース プロキシの設定 | Microsoft Docs
-description: Service Fabric のリバース プロキシを設定して構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: na
+title: Azure Service Fabric でのリバース プロキシの設定
+description: Azure Service Fabric アプリケーションのリバース プロキシ サービスを設定して構成する方法について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 7f1b6f955dd3f59f6c17403b536cf99d666aab08
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: pepogors
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662060"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476672"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 
@@ -30,10 +20,10 @@ Azure portal には、新しい Service Fabric クラスターを作成すると
 
 [Azure portal を使用してクラスターを作成する](./service-fabric-cluster-creation-via-portal.md)ときにリバース プロキシを構成するには、以下のことを行ってください。
 
-1. **[ステップ 2:クラスター構成]** で、**[ノード タイプの構成]** の **[リバース プロキシを有効にする]** をオンにします。
+1. **[ステップ 2:クラスター構成]** で、 **[ノード タイプの構成]** の **[リバース プロキシを有効にする]** をオンにします。
 
    ![ポータルでリバース プロキシを有効にする](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (省略可能) セキュリティ保護されたリバース プロキシを構成するには、SSL 証明書を構成する必要があります。 **[ステップ 3:セキュリティ]** で、**[クラスターのセキュリティ設定の構成]** の **[構成の種類]** で **[カスタム]** を選択します。 その後、**[リバース プロキシの SSL 証明書]** で **[リバース プロキシの SSL 証明書を含める]** を選択し、証明書の詳細を入力します。
+2. (省略可能) セキュリティ保護されたリバース プロキシを構成するには、TLS/SSL 証明書を構成する必要があります。 **[ステップ 3:セキュリティ]** で、 **[クラスターのセキュリティ設定の構成]** の **[構成の種類]** で **[カスタム]** を選択します。 その後、 **[リバース プロキシの SSL 証明書]** で **[リバース プロキシの SSL 証明書を含める]** を選択し、証明書の詳細を入力します。
 
    ![ポータルでセキュリティ保護されたリバース プロキシを構成する](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -45,13 +35,13 @@ Azure のクラスターでは、Azure Resource Manager テンプレートを使
 
 新しいクラスターでは、[カスタム Resource Manager テンプレートを作成する](service-fabric-cluster-creation-via-arm.md)こと、またはサンプル テンプレートを使用することができます。 
 
-Azure クラスター用のセキュリティ保護されたリバース プロキシの構成に役立つ Resource Manager テンプレートのサンプルは、GitHub の[セキュリティ保護されたリバース プロキシのサンプル テンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample)のページにあります。 証明書によるセキュリティ保護されたリバース プロキシの構成と証明書のロールオーバーの処理の手順とそれに使用するテンプレートについては、README の「[Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」(セキュリティ保護されたクラスターで HTTPS リバース プロキシを構成する) をご覧ください。
+Azure クラスター用のセキュリティ保護されたリバース プロキシの構成に役立つ Resource Manager テンプレートのサンプルは、GitHub の[セキュリティ保護されたリバース プロキシのサンプル テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)のページにあります。 証明書によるセキュリティ保護されたリバース プロキシの構成と証明書のロールオーバーの処理の手順とそれに使用するテンプレートについては、README の「[Configure HTTPS Reverse Proxy in a secure cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)」(セキュリティ保護されたクラスターで HTTPS リバース プロキシを構成する) をご覧ください。
 
 既存のクラスターの場合、[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)、または [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) を使用して、クラスターのリソース グループの Resource Manager テンプレートをエクスポートすることができます。
 
 Resource Manager テンプレートを用意した後、次の手順でリバース プロキシを有効にできます。
 
-1. テンプレートの [Parameters セクション](../azure-resource-manager/resource-group-authoring-templates.md) で、リバース プロキシのポートを定義します。
+1. テンプレートの [Parameters セクション](../azure-resource-manager/templates/template-syntax.md) で、リバース プロキシのポートを定義します。
 
     ```json
     "SFReverseProxyPort": {
@@ -62,7 +52,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         }
     },
     ```
-2. [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の[リソースの種類セクション](../azure-resource-manager/resource-group-authoring-templates.md)で、nodeType オブジェクトごとにポートを指定します。
+2. [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) の[リソースの種類セクション](../azure-resource-manager/templates/template-syntax.md)で、nodeType オブジェクトごとにポートを指定します。
 
     ポートは、reverseProxyEndpointPort というパラメーター名で識別されます。
 
@@ -84,7 +74,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         ...
     }
     ```
-3. リバース プロキシのポートで SSL 証明書を構成するには、**Microsoft.ServiceFabric/clusters** の[リソースの種類セクション](../resource-group-authoring-templates.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
+3. リバース プロキシのポートで TLS/SSL 証明書を構成するには、**Microsoft.ServiceFabric/clusters** の[リソースの種類セクション](../resource-group-authoring-templates.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
 
     ```json
     {
@@ -253,10 +243,10 @@ Azure クラスターの外部からリバース プロキシのアドレス指�
 ### <a name="expose-the-reverse-proxy-using-azure-portal"></a>Azure portal を使用してリバース プロキシを公開する 
 
 1. Azure portal で、クラスターのリソース グループをクリックし、クラスターのロード バランサーをクリックします。
-2. リバース プロキシ ポートの正常性プローブを追加するには、ロード バランサー ウィンドウの左側のウィンドウで、**[設定]** の **[正常性プローブ]** をクリックします。 正常性プローブ ウィンドウの上部にある **[追加]** をクリックし、リバース プロキシ ポートの詳細を入力して、**[OK]** をクリックします。 既定のリバース プロキシ ポートは 19081 ですが、クラスター作成時に変更した場合を除きます。
+2. リバース プロキシ ポートの正常性プローブを追加するには、ロード バランサー ウィンドウの左側のウィンドウで、 **[設定]** の **[正常性プローブ]** をクリックします。 正常性プローブ ウィンドウの上部にある **[追加]** をクリックし、リバース プロキシ ポートの詳細を入力して、 **[OK]** をクリックします。 既定のリバース プロキシ ポートは 19081 ですが、クラスター作成時に変更した場合を除きます。
 
    ![リバース プロキシの正常性プローブを構成する](./media/service-fabric-reverseproxy-setup/lb-rp-probe.png)
-3. リバース プロキシ ポートを公開するための Load Balancer 規則を追加するには、ロード バランサー ウィンドウの左側のウィンドウで、**[設定]** の **[負荷分散規則]** をクリックします。 次に、負荷分散規則ウィンドウの上部にある **[追加]** をクリックして、リバース プロキシ ポートの詳細を入力します。 **[ポート]** の値はリバース プロキシを公開するポートに設定し、**[バックエンド ポート]** の値はリバース プロキシを有効にしたときに設定したポートに設定し、**[正常性プローブ]** の値は前の手順で構成した正常性プローブに設定します。 他のフィールドは適切に設定して、**[OK]** をクリックします。
+3. リバース プロキシ ポートを公開するための Load Balancer 規則を追加するには、ロード バランサー ウィンドウの左側のウィンドウで、 **[設定]** の **[負荷分散規則]** をクリックします。 次に、負荷分散規則ウィンドウの上部にある **[追加]** をクリックして、リバース プロキシ ポートの詳細を入力します。 **[ポート]** の値はリバース プロキシを公開するポートに設定し、 **[バックエンド ポート]** の値はリバース プロキシを有効にしたときに設定したポートに設定し、 **[正常性プローブ]** の値は前の手順で構成した正常性プローブに設定します。 他のフィールドは適切に設定して、 **[OK]** をクリックします。
 
    ![リバース プロキシのロード バランサー規則を構成する](./media/service-fabric-reverseproxy-setup/lb-rp-rule.png)
 
@@ -336,6 +326,6 @@ Azure クラスターのファブリックの設定の更新について詳し�
 
 リバース プロキシとサービスの間にセキュリティ保護された通信を確立するには、いくつかのファブリック設定を使います。 これらの設定について詳しくは、「[リバース プロキシを使用したセキュリティで保護されたサービスへの接続](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送の設定](service-fabric-reverseproxy-configure-secure-communication.md)
 * リバース プロキシの構成オプションについては、Service Fabric クラスターの設定のカスタマイズに関するページの「[ApplicationGateway/Http](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)」セクションをご覧ください。

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Veracode の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Veracode の統合 | Microsoft Docs
 description: Azure Active Directory と Veracode の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -13,172 +13,121 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 10/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 11f75f53adc9e8ce1dbf78ef7a7d58742b6bc839
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813410"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73043554"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veracode"></a>チュートリアル:Azure Active Directory と Veracode の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Veracode の統合
 
-このチュートリアルでは、Veracode と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Veracode と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Veracode と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Veracode を統合すると、次のことができます。
 
-* Veracode にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して自動的に Veracode にサインイン (シングル サインオン) するよう指定できます。
+* Veracode にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Veracode に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure Active Directory を使用したアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Veracode と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* Veracode でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Veracode でのシングル サインオン (SSO) が有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Veracode では、ID プロバイダーが開始する SSO のほか、Just In Time ユーザー プロビジョニングがサポートされます。
 
-* Veracode では、**IDP** によって開始される SSO がサポートされます
+## <a name="add-veracode-from-the-gallery"></a>ギャラリーからの Veracode の追加
 
-* Veracode では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+Azure AD への Veracode の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Veracode を追加します。
 
-## <a name="adding-veracode-from-the-gallery"></a>ギャラリーからの Veracode の追加
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「Veracode」と入力します。
+1. 結果のパネルから **Veracode** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-Azure AD への Veracode の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Veracode を追加する必要があります。
+## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>Veracode の Azure AD シングル サインオンの構成とテスト
 
-**ギャラリーから Veracode を追加するには、次の手順に従います。**
+**B.Simon** というテスト ユーザーを使用して、Veracode に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Veracode の関連ユーザーとの間にリンクを確立する必要があります。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+Veracode に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Veracode SSO の構成](#configure-veracode-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[Veracode テスト ユーザーの作成](#create-veracode-test-user)** - Veracode で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Veracode** アプリケーション統合ページで、 **[管理]** セクションを見つけます。 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンを選択して設定を編集します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+   ![鉛筆アイコンが強調表示された [SAML でシングル サインオンをセットアップします] のスクリーンショット](common/edit-urls.png)
 
-4. 検索ボックスに「**Veracode**」と入力し、結果ウィンドウで **Veracode** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 **[保存]** を選択します。
 
-     ![結果一覧の Veracode](common/search-new-app.png)
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけます。 **[ダウンロード]** を選択して証明書をダウンロードし、コンピューターに保存します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+    ![[ダウンロード] リンクが強調表示された [SAML 署名証明書] セクションのスクリーンショット](common/certificatebase64.png)
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Veracode で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Veracode 内の関連ユーザー間にリンク関係が確立されている必要があります。
+1. Veracode では、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-Veracode で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
+    ![[ユーザー属性とクレーム] セクションのスクリーンショット](common/default-attributes.png)
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Veracode シングル サインオンの構成](#configure-veracode-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Veracode テスト ユーザーの作成](#create-veracode-test-user)** - Veracode で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. Veracode は、いくつかの追加の属性が SAML 応答で返されることも予期しています。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-Veracode で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **Veracode** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
-
-    ![[Veracode のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
-
-5. Veracode アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
-
-    ![image](common/edit-attribute.png)
-
-6. その他に、Veracode アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
-
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | firstname |User.givenname |
     | lastname |User.surname |
     | email |User.mail |
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+1. **[Veracode のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-    ![image](common/new-save-attribute.png)
+    ![構成 URL が強調表示された [Veracode のセットアップ] セクションのスクリーンショット](common/copy-configuration-urls.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. **[名前空間]** は空白のままにします。
-
-    d. [ソース] として **[属性]** を選択します。
-
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-    f. **[OK]** をクリックします。
-
-    g. **[Save]** をクリックします。
-
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
-
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
-
-8. **[Veracode のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
-### <a name="configure-veracode-single-sign-on"></a>Veracode のシングル サインオンの構成
+## <a name="configure-veracode-sso"></a>Veracode の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、Veracode 企業サイトに管理者としてサインインします。
 
-2. 上部のメニューで、 **[設定]** 、 **[管理者]** の順にクリックします。
+1. 上部のメニューから **[設定]**  >  **[Admin] (管理)** を選択します。
    
-    ![Administration](./media/veracode-tutorial/ic802911.png "Administration")
+    ![[設定] アイコンと [管理] (Admin) が強調表示されている Veracode 管理のスクリーンショット](./media/veracode-tutorial/ic802911.png "管理")
 
-3. **[SAML]** タブをクリックします。
+1. **[SAML]** タブを選択します。
 
-4. **[組織の SAML 設定]** セクションで、次の手順に従います。
-   
-    ![Administration](./media/veracode-tutorial/ic802912.png "Administration")
-   
-    a.  **[Issuer]\(発行者\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
-    
-    b. Azure Portal からダウンロードした証明書をアップロードするには、 **[ファイルの選択]** をクリックします。
-   
-    c. **[自己登録を有効にする]** を選択します。
+1. **[組織の SAML 設定]** セクションで、次の手順に従います。
 
-1. **[自己登録の設定]** セクションで次の手順を実行し、 **[保存]** をクリックします。
-   
-    ![Administration](./media/veracode-tutorial/ic802913.png "Administration")
-   
-    a. **[新しいユーザーのアクティブ化]** として **[アクティブ化不要]** を選択します。
-   
-    b. **[ユーザー データの更新]** として **[優先 Veracode ユーザー データ]** を選択します。
-   
+    ![[組織の SAML 設定] セクションのスクリーンショット](./media/veracode-tutorial/ic802912.png "管理")
+
+    a.  **[Issuer] (発行者)** に、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
+
+    b. **[Assertion Signing Certificate] (アサーション署名証明書)** で、 **[ファイルの選択]** を選択して、Azure portal からダウンロードした証明書をアップロードします。
+
+    c. **[自己登録]** で、 **[自己登録を有効にする]** を選択します。
+
+1. **[自己登録の設定]** セクションで次の手順を実行し、 **[保存]** を選択します。
+
+    ![[自己登録の設定] セクションのスクリーンショット (さまざまなオプションが強調表示されています)](./media/veracode-tutorial/ic802913.png "管理")
+
+    a. **[新しいユーザーのアクティブ化]** で、 **[アクティブ化不要]** を選択します。
+
+    b. **[ユーザー データの更新]** で、 **[優先 Veracode ユーザー データ]** を選択します。
+
     c. **[SAML 属性の詳細]** では、以下を選択します。
       * **ユーザー ロール**
       * **ポリシー管理者**
@@ -191,74 +140,56 @@ Veracode で Azure AD シングル サインオンを構成するには、次の
       * **チームのメンバーシップ**
       * **既定のチーム**
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**  > **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+   1. **名前**には、`B.Simon`を入力します。  
+   1. **[ユーザー名]** に「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** を選び、表示された値を書き留めます。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Veracode へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Veracode へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Veracode]** を選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+1. アプリケーションの一覧で **[Veracode]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+   ![[ユーザーとグループ] が強調表示された [管理] セクションのスクリーンショット](common/users-groups-blade.png)
 
-2. アプリケーションの一覧で **[Veracode]** を選択します。
+1. **[ユーザーの追加]** を選択します。 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーションの一覧の Veracode リンク](common/all-applications.png)
+    ![[ユーザーの追加] が強調表示された [ユーザーとグループ] ページのスクリーンショット](common/add-assign-user.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、 **[ユーザー]** から **[B.Simon]** を選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
 ### <a name="create-veracode-test-user"></a>Veracode テスト ユーザーの作成
 
-Azure AD ユーザーが Veracode にログインできるようにするには、そのユーザーを Veracode にプロビジョニングする必要があります。 Veracode の場合、プロビジョニングは自動化されています。 アイテムを操作することはありません。 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
+Veracode にサインインするには、Azure AD ユーザーを Veracode にプロビジョニングする必要があります。 このタスクは自動化されているため、手動で何かを行う必要はありません。 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
 
 > [!NOTE]
 > Veracode から提供されている他の Veracode ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングすることもできます。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Veracode] タイルをクリックすると、SSO を設定した Veracode に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で **[Veracode]** を選択すると、SSO を設定した Veracode に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD で Veracode を試す](https://aad.portal.azure.com/)

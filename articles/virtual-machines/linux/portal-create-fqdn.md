@@ -1,27 +1,20 @@
 ---
-title: Azure Portal で Linux VM の FQDN を作成する | Microsoft Docs
+title: Azure portal で VM の FQDN を作成する
 description: Azure Portal で仮想マシンに基づいて、Resource Manager の完全修飾ドメイン名 (FQDN) を作成する方法を説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: 2cd6c249-a737-4a0a-b5ba-e1c09e551b30
-ms.service: virtual-machines-linux
-ms.devlang: na
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 54d1f77823b982ee8f49122c46b0a01cb27390f2
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: f51b9ecf8e300af6b1e3f11d8431de7a282ab342
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141988"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81759358"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM 用の Azure Portal での完全修飾ドメイン名の作成
 
@@ -34,8 +27,8 @@ ms.locfileid: "42141988"
 
 `ssh azureuser@mydns.westus.cloudapp.azure.com`など、この DNS 名を使用して、VM にリモートで接続できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、VM がパブリック IP と DNS 名を持つようになったため、nginx、MongoDB、Docker などの、共通のアプリケーション フレームワークやサービスをデプロイできるようになりました。
 
-Azure デプロイの構築に関するヒントについては、[Resource Manager の使用](../../azure-resource-manager/resource-group-overview.md)に関する記事から確認することもできます。
+Azure デプロイの構築に関するヒントについては、[Resource Manager の使用](../../azure-resource-manager/management/overview.md)に関する記事から確認することもできます。
 

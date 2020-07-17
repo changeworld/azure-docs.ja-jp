@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094489"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187264"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム ページを追加する
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI に新しいページを追加する方法について説明します。 この記事では、次の内容について説明します。
 
-- ローカル開発環境を準備する方法。
+- ローカルの開発環境を準備する方法。
 - Web UI に新しいページを追加する方法。
 
 その他のハウツーガイドでこのシナリオを拡張し、追加するページにさらに機能を追加します。
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-前のコマンドは、ローカルの [http://localhost:3000/dashboard](http://localhost:3000/dashboard) で UI を実行します。
+前のコマンドは、`http://localhost:3000/dashboard` のローカルで UI を実行します。
 
 Web UI のローカル インスタンスをソリューション アクセラレータのデプロイ済みインスタンスに接続していない場合、ダッシュボードにエラーが表示されます。 このようなエラーは、新しいページをテストする機能に影響しません。
 
@@ -154,17 +154,17 @@ Web UI のローカル インスタンスをソリューション アクセラ�
 
 1. **pcs** CLI を使用して、ソリューション アクセラレータの**基本**インスタンスをデプロイします。 デプロイの名前と仮想マシンに提供した資格情報をメモしておきます。 詳しくは、[CLI を使用したデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
-1. Azure portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 例: 
+1. Azure portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 次に例を示します。
 
-    ```sh
+    ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md)。
+    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/fundamentals/network-best-practices.md)。
 
-1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例: 
+1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 次に例を示します。
 
-    ```sh
+    ```azurecli
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
@@ -180,14 +180,14 @@ Web UI のローカル インスタンスをソリューション アクセラ�
 
 1. コマンドが完了し、Web サイトが起動したことを確認したら、仮想マシンから切断できます。
 
-1. [Remote Monitoring WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) リポジトリのローカル コピーで、**.env** ファイルを編集し、デプロイ済みのソリューションの URL を追加します。
+1. [Remote Monitoring WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) リポジトリのローカル コピーで、 **.env** ファイルを編集し、デプロイ済みのソリューションの URL を追加します。
 
     ```config
     NODE_PATH = src/
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のカスタマイズに役立つように使用できるリソースについて説明します。
 

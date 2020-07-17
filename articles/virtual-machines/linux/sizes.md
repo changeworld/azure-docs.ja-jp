@@ -1,48 +1,38 @@
 ---
-title: Azure での Linux VM のサイズ | Microsoft Docs
+title: Azure での Linux VM のサイズ
 description: Azure の Linux 仮想マシンで使用できるさまざまなサイズを一覧表示します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: da681171-f045-4c80-a5a9-d8bd47964673
-ms.service: virtual-machines-linux
-ms.devlang: na
+author: ju-shim
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/14/2018
-ms.author: jonbeck
-ms.openlocfilehash: 75333332c118e85bbe1ceb31b206360ce5ed3897
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/03/2020
+ms.author: jushiman
+ms.openlocfilehash: 246ab6551667f54e3ef4ec8f91573d9aaa98d64c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819214"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758399"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシンのサイズ
-この記事では、Linux アプリとワークロードの実行に使用できる Azure 仮想マシンに利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。 この記事は、 [Windows 仮想マシン](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。
 
+この記事では、Linux アプリとワークロードの実行に使用できる Azure 仮想マシンに利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。 この記事は、 [Windows 仮想マシン](../windows/sizes.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)にも利用できます。
 
-| type                     | サイズ           |    説明       |
-|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [汎用](sizes-general.md)          | B、Dsv3、Dv3、DSv2、Dv2、Av2、DC  | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
-| [コンピューティングの最適化](sizes-compute.md)        | Fsv2、Fs、F             | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
-| [メモリの最適化](sizes-memory.md)         | Esv3、Ev3、M、GS、G、DSv2、Dv2  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
-| [ストレージの最適化](sizes-storage.md)        | Lsv2、Ls                | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
-| [GPU](sizes-gpu.md)            | NV、NVv2、NC、NCv2、NCv3、ND、NDv2 (プレビュー)            | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。       |
-| [ハイ パフォーマンス コンピューティング](sizes-hpc.md) | H       | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
-
-
-<br>
+| Type | サイズ | 説明 |
+|------|-------|-------------|
+| [汎用](../sizes-general.md)   | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC、DCv2  | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
+| [コンピューティングの最適化](../sizes-compute.md) | Fsv2 | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。 |
+| [メモリの最適化](../sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Mv2、M、DSv2、Dv2 | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
+| [ストレージの最適化](../sizes-storage.md) | Lsv2 | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
+| [GPU](../sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 (プレビュー)、NV、NVv3、NVv4 | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。 |
+| [ハイ パフォーマンス コンピューティング](../sizes-hpc.md) | HB、HBv2、HC、H | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
 
 - さまざまなサイズの価格について詳しくは、「 [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)」を参照してください。 
 - 各 Azure リージョンで利用可能な VM サイズについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
 - Azure VM の一般的な制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。
-- [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
-
+- [Azure コンピューティング ユニット (ACU)](../acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
 ## <a name="rest-api"></a>REST API
 
@@ -54,22 +44,20 @@ VM サイズを照会するための REST API の使用については、以下�
 
 ## <a name="acu"></a>ACU
 
-[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+[Azure コンピューティング ユニット (ACU)](../acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
 ## <a name="benchmark-scores"></a>ベンチマーク スコア
 
 [CoreMark ベンチマーク スコア](compute-benchmark-scores.md)を使用して、Linux VM の処理性能について学習します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 利用可能な VM のサイズの種類について詳しく説明します。
-- [汎用](sizes-general.md)
-- [コンピューティングの最適化](sizes-compute.md)
-- [メモリの最適化](sizes-memory.md)
-- [ストレージの最適化](sizes-storage.md)
-- [GPU](sizes-gpu.md)
-- [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
-- A Standard、Dv1 (D1-4 および D11-14 v1)、および A8-A11 シリーズの[旧世代](sizes-previous-gen.md)に関するページを確認してください。
 
-
-
+- [汎用](../sizes-general.md)
+- [コンピューティングの最適化](../sizes-compute.md)
+- [メモリの最適化](../sizes-memory.md)
+- [ストレージの最適化](../sizes-storage.md)
+- [GPU](../sizes-gpu.md)
+- [ハイ パフォーマンス コンピューティング](../sizes-hpc.md)
+- A Standard、Dv1 (D1-4 および D11-14 v1)、および A8-A11 シリーズの[旧世代](../sizes-previous-gen.md)に関するページを確認してください。

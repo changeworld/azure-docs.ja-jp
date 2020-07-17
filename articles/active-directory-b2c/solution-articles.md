@@ -2,23 +2,23 @@
 title: Azure Active Directory B2C 向けのソリューションとトレーニング | Microsoft Docs
 description: この記事では、エンドツーエンド ビジネス ソリューションのための Azure Active Directory B2C を理解し、使用するために役立つソリューション/トレーニング情報へのリンクを提供します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
-ms.author: davidmu
+ms.author: mimart
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7b409cc80d2443b01d3025dd84348af18118d640
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78186728"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 向けのソリューションとトレーニング
 
-Azure Active Directory (Azure AD) B2C を使用すると、企業と顧客のつながりを支援するビジネス ソリューションを実装できます。 次のソリューション ガイド/トレーニングはダウンロード可能なドキュメントであり、これを利用するとソリューションを段階的に導入できます。
+Azure Active Directory B2C (Azure AD B2C) を使用すると、企業と顧客のつながりを支援するビジネス ソリューションを実装できます。 次のソリューション ガイド/トレーニングはダウンロード可能なドキュメントであり、これを利用するとソリューションを段階的に導入できます。
 
 | タイトル | 説明 |
 | ----- | ----------- |

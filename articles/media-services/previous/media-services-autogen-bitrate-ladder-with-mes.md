@@ -1,6 +1,6 @@
 ---
-title: Azure Media Encoder Standard を使用したビットレート ラダーの自動生成 | Microsoft Docs
-description: このトピックでは、Media Encoder Standard (MES) を使用して、入力解像度とビットレートに基づいてビットレート ラダーを自動生成する方法を説明します。 入力解像度とビットレートを超えることはありません。 たとえば、入力が 3Mbps で 720p の場合、出力は最高でも 720p のままになり、3Mbps よりも低い速度で開始されます。
+title: Media Encoder Standard を使用してビットレート ラダーを自動生成する - Azure | Microsoft Docs
+description: このトピックでは、Media Encoder Standard (MES) を使用して、入力解像度とビットレートに基づいてビットレート ラダーを自動生成する方法を説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: bbaf4d490fcebb4cd741a9b83ffc5d7e85699755
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991860"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74896017"
 ---
-#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Azure Media Encoder Standard を使用したビットレート ラダーの自動生成  
+#  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard を使用してビットレート ラダーを自動生成する  
 
 ## <a name="overview"></a>概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "57991860"
 
 ストリーミングするだけでなくプログレッシブ ダウンロードする MP4 ファイルを生成する目的のソース ビデオの場合は、エンコード タスク作成時に "コンテンツ アダプティブ マルチビット レート MP4" プリセットを使用します。 **コンテンツ アダプティブ マルチビット レート MP4** プリセットを使用する場合、MES エンコーダーでは、上記と同じエンコーディング ロジックが適用されますが、出力アセットにはオーディオとビデオインターリーブされた MP4 ファイルが含まれます。 これらの MP4 ファイル (たとえば、最高ビットレート バージョン) の 1 つを、プログレッシブ ダウンロード ファイルとして使用できます。
 
-## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -167,14 +167,14 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>出力
+## <a name="output"></a><a id="output"></a>出力
 
 このセクションでは、**アダプティブ ストリーミング** プリセットを使用してエンコードした結果として MES によって生成された出力レイヤーの 3 つの例を示します。 
 
 ### <a name="example-1"></a>例 1
 高さが "1080" でフレーム レートが "29.970" のソースからは、6 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +186,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-2"></a>例 2
 高さが "720" でフレーム レートが "23.970" のソースからは、5 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +197,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-3"></a>例 3
 高さが "360" でフレーム レートが "29.970" のソースからは、3 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -208,6 +208,6 @@ namespace AdaptiveStreamingMESPresest
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Media Services Encoding の概要](media-services-encode-asset.md)
 

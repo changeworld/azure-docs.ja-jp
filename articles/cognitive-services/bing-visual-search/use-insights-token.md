@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 4/05/2019
+ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493877"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67341719"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
@@ -64,7 +64,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ### <a name="c-prerequisites"></a>C# の前提条件
 
-- このコードを Windows 上で実行するには、任意のバージョンの [Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です。
+- このコードを Windows 上で実行するには、任意のバージョンの [Visual Studio 2019](https://www.visualstudio.com/downloads/) が必要です。
 - Azure サブスクリプション。 このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
@@ -434,7 +434,8 @@ function requestCallback(err, res, body) {
 # Run the following in a command console window
 # pip3 install requests
 
-import requests, json
+import requests
+import json
 
 BASE_URI = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch'
 
@@ -449,10 +450,11 @@ insightsToken = 'ccid_tmaGQ2eU*mid_D12339146CFEDF3D409CC7A66D2C98D0D71904D4*simi
 formData = '{"imageInfo":{"imageInsightsToken":"' + insightsToken + '"}}'
 
 
-file = {'knowledgeRequest' : (None, formData)}
+file = {'knowledgeRequest': (None, formData)}
+
 
 def main():
-    
+
     try:
         response = requests.post(BASE_URI, headers=HEADERS, files=file)
         response.raise_for_status()
@@ -467,13 +469,12 @@ def print_json(obj):
     print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
 
 
-
 # Main execution
 if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search API とは](overview.md)  

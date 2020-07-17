@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2be8455a3fb0a60cea056e9bda1f41b076dfec9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545037"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82136704"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -37,15 +38,20 @@ ms.locfileid: "59545037"
 | Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること | Azure AD Connect Health がデータを受信し、監視機能および分析機能を提供するためには、対象となるサーバーに Health エージェントがインストールおよび構成されている必要があります。 <br /><br />たとえば、AD FS インフラストラクチャからデータを入手するためには、AD FS サーバーと Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。 同様に、オンプレミス AD DS インフラストラクチャに関するデータを入手するためには、ドメイン コントローラーにエージェントがインストールされている必要があります。 <br /><br /> |
 | Azure サービスのエンドポイントに対する送信接続 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 [送信接続エンドポイント](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)に関するセクションをご覧ください。 |
 |IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。|
-| 送信トラフィックの SSL 検査がフィルタリングまたは無効化されていること | ネットワーク層で送信トラフィックの SSL 検査または SSL 終了が設定されている場合、エージェントの登録手順が失敗する可能性があります。 詳細については、[SSL 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
+| 送信トラフィックの TLS 検査のフィルタリングまたは無効化 | ネットワーク層で送信トラフィックの TLS 検査または TLS 終了が設定されている場合、エージェントの登録手順またはデータのアップロード操作が失敗する可能性があります。 詳細については、[TLS 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
 | エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。<br /><br /><li>TCP ポート 443</li><li>TCP ポート 5671</li> <br />ポート 5671 は最新バージョンのエージェントでは必要なくなったことに注意してください。 ポート 443 のみが必要なように、最新バージョンにアップグレードしてください。 詳細については、[ファイアウォール ポートの有効化](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)に関するページを参照してください。 |
-| IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー  例: https:\//sts.contoso.com</li> 詳細については、[IE の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 |
+| IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー 例: https:\//sts.contoso.com</li> 詳細については、[IE の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 ネットワーク内にプロキシがある場合は、以下の注意事項を参照してください。|
 | PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。 後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Management Framework を[更新](https://www.microsoft.com/download/details.aspx?id=40855)します。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
 |FIPS の無効化|FIPS は Azure AD Connect Health エージェントでサポートされていません。|
 
+
+> [!NOTE]
+> ロックダウンが頻繁で、非常に制限されている環境がある場合は、前述の許可されている IE セキュリティ強化の構成に記載されている URL に加えて、以下のサービス エンドポイントの一覧に記載されている URL をホワイトリストに追加する必要があります。 
+>
+
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure サービスのエンドポイントに対する送信接続
 
- エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、次の URL が既定でブロックされないことを確認します。 これらの URL のセキュリティ監視または検査を無効にしてはなりませんが、他のインターネット トラフィックと同様に許可します。 それらにより、Azure AD Connect Health サービス エンドポイントとの通信が許可されます。 詳細については、[送信接続の確認](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)に関するページを参照してください。
+ エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、次の URL が既定でブロックされないことを確認します。 これらの URL のセキュリティ監視または検査を無効にしてはなりませんが、他のインターネット トラフィックと同様に許可します。 それらにより、Azure AD Connect Health サービス エンドポイントとの通信が許可されます。 [Test-AzureADConnectHealthConnectivity を使用した送信接続のチェック](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service)方法に関する記事を参照してください。
 
 | ドメイン環境 | 必要な Azure サービス エンドポイント |
 | --- | --- |
@@ -110,7 +116,7 @@ Windows Server 2008 R2 サーバーでの手順:
 3. AD Health エージェントをインストールする前に、それぞれのサーバーに Windows PowerShell 4.0 をインストールします。 Windows PowerShell 4.0 をインストールするには:
    * 次のリンクを使用してオフライン インストーラーをダウンロードし、 [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=40779) をインストールします。
    * ([Windows の機能] から) PowerShell ISE をインストールします。
-   *  [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)
+   * [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)
    * Internet Explorer Version 10 以降をサーバーにインストールします。 (ヘルス サービスが、ユーザーの Azure Admin 資格情報を使用してユーザーを認証するために必須となります。)
 4. Windows Server 2008 R2 への Windows PowerShell 4.0 のインストールに関するさらに詳しい情報については、[こちら](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx)の wiki 記事を参照してください。
 
@@ -124,43 +130,43 @@ Windows Server 2008 R2 サーバーでの手順:
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Windows Server 2008 R2 で AD FS の監査を有効にするには
 
-1. **[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[ローカル セキュリティ ポリシー]** をクリックします。
-2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
-3. **[ローカル セキュリティの設定]** タブで、AD FS 2.0 サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
+1. **[スタート]** ボタンをクリックし、 **[プログラム]** 、 **[管理ツール]** の順にポイントして、 **[ローカル セキュリティ ポリシー]** をクリックします。
+2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、 **[セキュリティ監査の生成]** をダブルクリックします。
+3. **[ローカル セキュリティの設定]** タブで、AD FS 2.0 サービス アカウントが表示されていることを確認します。 表示されない場合は、 **[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、 **[OK]** をクリックします。
 4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
-6. **AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[AD FS 2.0 管理]** をクリックします。
-7. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
+6. **AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、 **[スタート]** ボタンをクリックし、 **[プログラム]** 、 **[管理ツール]** の順にポイントして、 **[AD FS 2.0 管理]** をクリックします。
+7. **操作**ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
 8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
 9. **[成功の監査]** チェック ボックスと **[失敗の監査]** チェック ボックスをオンにします。
-10. Click **OK**.
+10. **[OK]** をクリックします。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2 で AD FS の監査を有効にするには
 
-1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
-2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
-3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
+1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、 **[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
+2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、 **[セキュリティ監査の生成]** をダブルクリックします。
+3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、 **[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、 **[OK]** をクリックします。
 4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
-7. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
+7. **操作**ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
 8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
-9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、**[OK]** をクリックします。
+9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、 **[OK]** をクリックします。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Windows Server 2016 で AD FS の監査を有効にするには
 
-1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
-2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
-3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、**[OK]** をクリックします。
+1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、 **[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
+2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、 **[セキュリティ監査の生成]** をダブルクリックします。
+3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、 **[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、 **[OK]** をクリックします。
 4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
-7. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
+7. **操作**ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
 8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
-9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、**[OK]** をクリックします。 これは既定で有効になっています。
+9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、 **[OK]** をクリックします。 これは既定で有効になっています。
 10. PowerShell ウィンドウを開き、次のコマンドを実行します。```Set-AdfsProperties -AuditLevel Verbose```
 
 既定では "basic" 監査レベルが有効になっていることに注意してください。 詳細については、[Windows Server 2016 での AD FS 監査の強化](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server)に関する記事をご覧ください。
@@ -264,7 +270,7 @@ $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
 import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
  
-Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $myCreds
+Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 ```
 
@@ -313,7 +319,7 @@ HTTP プロキシを使用するように Azure AD Connect Health エージェ�
 
 > [!NOTE]
 > プロキシ設定を更新するには、すべての Azure AD Connect Health エージェント サービスを再起動する必要があります。 次のコマンドを実行します。<br />
-> Restart-Service AdHealth*
+> Restart-Service AzureADConnectHealth*
 >
 >
 

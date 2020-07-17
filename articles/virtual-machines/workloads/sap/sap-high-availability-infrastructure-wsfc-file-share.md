@@ -1,28 +1,27 @@
 ---
-title: Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP の高可用性向けの Azure インフラストラクチャの準備 | Microsoft Docs
+title: WSFC とファイル共有を使用した SAP ASCS および SCS HA 向けの Azure インフラストラクチャ | Microsoft Docs
 description: Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP の高可用性向けの Azure インフラストラクチャの準備
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409609"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201666"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -40,8 +39,8 @@ ms.locfileid: "65409609"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -204,7 +203,7 @@ ms.locfileid: "65409609"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -251,7 +250,7 @@ ms.locfileid: "65409609"
 
 Azure インフラストラクチャを準備するには、以下を完了します。
 
-* [アーキテクチャ テンプレート 1、2、および 3 向けのインフラストラクチャを準備します][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [アーキテクチャ テンプレート 1、2、3 向けのインフラストラクチャを準備します][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
 * [Azure 仮想ネットワークを作成します][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
 
@@ -274,7 +273,7 @@ Azure インフラストラクチャを準備するには、以下を完了し�
 
 ## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
 
-ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」(Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
+ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」 (Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
 
 
 ```powershell
@@ -319,13 +318,13 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 ### <a name="use-managed-disks"></a>マネージド ディスクの使用
 
-記憶域スペース ダイレクトと Azure Managed Disks を備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-managed-disks] から入手できます。
+記憶域スペース ダイレクトと Azure Managed Disks を備えたスケールアウト ファイル サーバーをデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-managed-disks] から入手できます。
 
 Managed Disks を使用することをお勧めします。
 
-![図 1:マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
+![図 1: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
 
-"_**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
+_**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
 
 このテンプレートで、次の操作を行います。
 1. **[VM 数]** ボックスに、最小数である「**2**」を入力します。
@@ -335,13 +334,13 @@ Managed Disks を使用することをお勧めします。
 
 ### <a name="use-unmanaged-disks"></a>非管理対象ディスクの使用
 
-記憶域スペース ダイレクトと Azure 非管理ディスクを備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-non-managed-disks] から入手できます。
+記憶域スペース ダイレクトと Azure 非管理ディスクを備えたスケールアウト ファイル サーバーをデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-non-managed-disks] から入手できます。
 
 ![図 2:マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
 
-"_**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
+_**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
 
-**[ストレージ アカウントの種類]** ボックスで、**[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
+**[ストレージ アカウントの種類]** ボックスで、 **[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
 
 ## <a name="adjust-cluster-timeout-settings"></a>クラスターのタイムアウトの設定を調整する
 
@@ -349,10 +348,10 @@ Windows スケールアウト ファイル サーバー クラスターのイン
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- RoutingHistoryLength = 30
+- RouteHistoryLength = 30
 
 これらの設定はお客様とテストしたものであり、適切な妥協が提供されます。 十分な回復性がある一方で、実際のエラー状態や VM の障害において十分に高速なフェールオーバーも提供されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP NetWeaver の高可用性をインストールする][sap-high-availability-installation-wsfc-file-share]

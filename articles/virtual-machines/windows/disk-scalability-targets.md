@@ -1,20 +1,18 @@
 ---
-title: Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標 - Microsoft Azure | Microsoft Docs
+title: Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標
 description: Windows を実行している VM に接続された仮想マシン ディスクのスケーラビリティおよびパフォーマンスの目標について説明します。
-services: virtual-machines-windows,storage
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: fed6b75833ea4283ef8f09ed4def3b083c388584
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224663"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標
 
@@ -33,6 +31,6 @@ ms.locfileid: "57770665"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)
+[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

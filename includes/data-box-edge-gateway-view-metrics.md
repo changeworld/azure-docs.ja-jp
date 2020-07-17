@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161346"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181626"
 ---
 メトリックも表示することで、デバイスのパフォーマンスを監視したり、場合によっては、デバイスの問題のトラブルシューティングを行ったりできます。
 
 選択したデバイス メトリックのグラフを作成するには、Azure portal 内で次の手順を実行します。
 
-1. ご利用のリソースの場合は、Azure portal 内で、**[監視] > [メトリック]** に移動し、**[メトリックの追加]** を選択します。
+1. ご利用のリソースの場合は、Azure portal 内で、 **[監視] > [メトリック]** に移動し、 **[メトリックの追加]** を選択します。
 
     ![メトリックを追加する](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
@@ -23,7 +23,7 @@ ms.locfileid: "66161346"
 
     ![現在のリソース](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    別のリソースを指定するには、そのリソースを選択します。 **[リソースの選択]** ブレードで、サブスクリプション、リソース グループ、リソースの種類、およびメトリックを表示する特定のリソースを選択し、**[適用]** を選択します。
+    別のリソースを指定するには、そのリソースを選択します。 **[リソースの選択]** ブレードで、サブスクリプション、リソース グループ、リソースの種類、およびメトリックを表示する特定のリソースを選択し、 **[適用]** を選択します。
 
     ![別のリソースを選択する](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 

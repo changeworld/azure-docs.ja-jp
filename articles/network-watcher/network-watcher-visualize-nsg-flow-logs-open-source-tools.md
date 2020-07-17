@@ -1,25 +1,23 @@
 ---
-title: Network Watcher と Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する | Microsoft Docs
+title: NSG フロー ログの視覚化 - Elastic Stack
+titleSuffix: Azure Network Watcher
 description: Network Watcher と Elastic Stack を使用して Azure のネットワーク セキュリティ グループ フロー ログを管理および分析します。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: e9b2dcad-4da4-4d6b-aee2-6d0afade0cb8
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.author: damendo
+ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099005"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76840640"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
@@ -205,7 +203,7 @@ sudo /etc/init.d/logstash start
 
 [ダッシュボード ファイル](https://aka.ms/networkwatchernsgflowlogdashboard)、[視覚化ファイル](https://aka.ms/networkwatchernsgflowlogvisualizations)、[保存された検索ファイル](https://aka.ms/networkwatchernsgflowlogsearch)をそれぞれダウンロードします。
 
-Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
+Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
 関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
 
@@ -243,7 +241,7 @@ Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存さ
 
 ネットワーク セキュリティ グループのフロー ログと Elastic Stack とを組み合わせることで、ネットワーク トラフィックを視覚化する強力でカスタマイズ可能な方法が実現します。 これらのダッシュボードによって、ネットワーク トラフィックに関する有用な情報を素早く取得して共有したり、潜在的な異常をフィルターして調査したりできます。 Kibana を使用して、これらのダッシュボードをカスタマイズし、セキュリティ、監査、およびコンプライアンスのニーズを満たすための特別な視覚化されたデータを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
 

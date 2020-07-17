@@ -7,16 +7,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603465"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215710"
 ---
-# <a name="what-is-azure-data-box"></a>Azure Data Box とは
+# <a name="what-is-azure-data-box"></a>Azure Data Box とは何ですか?
 
 Microsoft Azure Data Box クラウド ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイトのデータを Azure に送信できます。 独自の Data Box ストレージ デバイスを出荷することにより、セキュリティで保護されたデータ転送を高速化します。 各ストレージ デバイスは、最大で 80 TB のストレージ容量を使用でき、地域の運送業者を通じて皆さんのデータセンターに輸送されます。 デバイスは堅牢な筐体で保護され、転送中のデータはセキュリティで保護されます。
 
@@ -59,14 +59,14 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | 23 kg (50 lbs) 未満                |
-| Dimensions                                              | デバイス - 幅: 309.0 mm、高さ: 430.4 mm、奥行: 502.0 mm |            
+| Dimensions                                              | デバイス - 幅: 309.0 mm 高さ: 430.4 mm 奥行き: 502.0 mm |            
 | ラック スペース                                              | 寝かせてラックに配置した場合 7 U (ラック マウント不可)|
 | 必要なケーブル                                         | 電源ケーブル x 1 (同梱) <br> RJ45 ケーブル x 2 <br> SFP+ Twinax 銅線ケーブル x 2|
 | ストレージの容量                                        | 100 TB のデバイス (RAID 5 保護後の使用可能容量 80 TB)|
 | 電力定格                                            | 電源ユニットの定格は 700 W です。 <br> 通常は 375 W の電力が消費されます。|
 | ネットワーク インターフェイス                                      | 1 GbE インターフェイス x 2 - MGMT、DATA 3 <br> MGMT - 管理用、ユーザー構成不可、初期セットアップに使用 <br> DATA3 - データ用、ユーザー構成可能、既定で動的 <br> MGMT および DATA 3 は 10 GbE としても動作可能 <br> 10 GbE インターフェイス x 2 - DATA 1、DATA 2 <br> 両方ともデータ用、動的 (既定) または静的として構成可能 |
 | データ転送メディア                                     | RJ45、SFP+ 銅線 10 GbE イーサネット  |
-| セキュリティ                                                | 開封防止ネジを搭載した堅牢なデバイス筐体 <br> デバイスの下部に開封明示ステッカー|
+| Security                                                | 開封防止ネジを搭載した堅牢なデバイス筐体 <br> デバイスの下部に開封明示ステッカー|
 | データ転送速度                                      | 10 GbE ネットワーク インターフェイスで最大 1 日 80 TB 以上        |
 | 管理                                              | ローカル Web UI - 1 回限りの初期セットアップと構成 <br> Azure portal - 日常的なデバイスの管理        |
 
@@ -111,16 +111,12 @@ Data Box に含まれるコンポーネントを次に示します。
 
 Data Box は、サービスが展開されているリージョン、デバイスが出荷される国/リージョン、データの転送対象となる Azure ストレージ アカウントに基づいてデータを転送できます。 
 
-- **サービスの可用性** - このリリースでは、Data Box サービスは次のリージョンで利用できます。
-    - 米国のすべてのリージョン - 米国中西部、米国西部 2、米国西部、米国中南部、米国中部、米国中北部、米国東部、米国東部 2。
-    - 欧州連合 - 西ヨーロッパ、北ヨーロッパ。
-    - 英国 - 英国南部、英国西部。
-    - フランス - フランス中部、フランス南部。
+- **サービスの提供状況**: リージョン別の提供状況については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、サービスが使用可能なすべての Azure リージョンで利用できます。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box のシステム要件](data-box-system-requirements.md)を確認する。
 - [Data Box の制限事項](data-box-limits.md)を理解する。

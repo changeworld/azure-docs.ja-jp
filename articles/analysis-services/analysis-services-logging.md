@@ -1,35 +1,34 @@
 ---
 title: Azure Analysis Services の診断ログ | Microsoft Docs
-description: Azure Analysis Services の診断ログの設定について説明します。
+description: ログを設定して Azure Analysis Services サーバーを監視する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66142627"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701497"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 Azure Analysis Services は Azure Monitor と統合されています。 [Azure Monitor のリソース ログ](../azure-monitor/platform/platform-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
 
-![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/analysis-services-logging/aas-logging-overview.png)
+![Storage、Event Hubs、または Azure Monitor ログへのリソースのログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-logged"></a>ログに記録されるもの
 
-**[エンジン]**、**[サービス]**、および **[メトリック]** のカテゴリを選択できます。
+**[エンジン]** 、 **[サービス]** 、および **[メトリック]** のカテゴリを選択できます。
 
-### <a name="engine"></a>Engine
+### <a name="engine"></a>エンジン
 
-**[エンジン]** を選択すると、すべての [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
+**[エンジン]** を選択すると、すべての [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
 
 |XEvent カテゴリ |イベント名  |
 |---------|---------|
@@ -41,20 +40,20 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |進行状況レポート     |   Progress Report Current      |
 |クエリ     |  Query Begin       |
 |クエリ     |   Query End      |
-|command     |  Command Begin       |
-|command     |  Command End       |
-|エラーと警告     |   Error      |
+|コマンド     |  Command Begin       |
+|コマンド     |  Command End       |
+|エラーと警告     |   エラー      |
 |発見     |   Discover End      |
-|通知     |    通知     |
+|Notification     |    Notification     |
 |Session     |  Session Initialize       |
-|ロック    |  Deadlock       |
-|クエリの処理     |   VertiPaq SE Query Begin      |
-|クエリの処理     |   VertiPaq SE Query End      |
-|クエリの処理     |   VertiPaq SE Query Cache Match      |
-|クエリの処理     |   Direct Query Begin      |
-|クエリの処理     |  Direct Query End       |
+|Locks    |  Deadlock       |
+|クエリ処理     |   VertiPaq SE Query Begin      |
+|クエリ処理     |   VertiPaq SE Query End      |
+|クエリ処理     |   VertiPaq SE Query Cache Match      |
+|クエリ処理     |   Direct Query Begin      |
+|クエリ処理     |  Direct Query End       |
 
-### <a name="service"></a>Service
+### <a name="service"></a>サービス
 
 |操作の名前  |発生するタイミング  |
 |---------|---------|
@@ -67,41 +66,41 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ### <a name="all-metrics"></a>すべてのメトリック
 
-メトリックのカテゴリは、メトリックに表示されるのと同じ[サーバーのメトリック](analysis-services-monitor.md#server-metrics)をログ記録します。
+[メトリック] カテゴリでは、同じ[サーバー メトリック](analysis-services-monitor.md#server-metrics)が AzureMetrics テーブルに記録されます。 クエリの[スケールアウト](analysis-services-scale-out.md)を使用していて、読み取りレプリカごとにメトリックを分離する必要がある場合は、代わりに AzureDiagnostics テーブルを使用します。この **OperationName** は **LogMetric** と同じです。
 
 ## <a name="setup-diagnostics-logging"></a>診断ログのセットアップ
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) > サーバーで、左のナビゲーションから、**[診断ログ]** をクリックし、**[診断をオンにする]** をクリックします。
+1. [Azure portal](https://portal.azure.com) > サーバーで、左のナビゲーションにある **[診断設定]** をクリックし、 **[診断をオンにする]** をクリックします。
 
-    ![Azure Portal で Azure Cosmos DB の診断ログを有効にする](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
+    ![Azure portal で Azure Cosmos DB のリソースのログ記録を有効にする](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
 2. **[診断設定]** で、次のオプションを指定します。 
 
     * **名前**。 作成するログの名前を入力します。
 
-    * **[ストレージ アカウントへのアーカイブ]**。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
+    * **[ストレージ アカウントへのアーカイブ]** 。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 詳細については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
     * **Azure Monitor (Log Analytics ワークスペース) に送信します**。 このオプションを使用するには、既存のワークスペースを使用するか、またはポータルで[新しいワークスペース リソースを作成](../azure-monitor/learn/quick-create-workspace.md)します。 ログを表示する方法について詳しくは、この記事の「[Log Analytics ワークスペースでログを表示する](#view-logs-in-log-analytics-workspace)」をご覧ください。
 
-    * **エンジン**。 xEvents をログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **サービス**。 サービス レベル イベントをログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **メトリック**。 [メトリック](analysis-services-monitor.md#server-metrics)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **エンジン**。 xEvents をログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、リソース ログの保持期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **サービス**。 サービス レベル イベントをログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、リソース ログの保持期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **メトリック**。 [メトリック](analysis-services-monitor.md#server-metrics)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、リソース ログの保持期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
-3. **[Save]** をクリックします。
+3. **[保存]** をクリックします。
 
     "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure Diagnostics のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
 
-    今後、診断ログを保存する方法を変更する場合は、このページに戻って設定を変更できます。
+    今後、リソース ログを保存する方法を変更する場合は、このページに戻って設定を変更できます。
 
 ### <a name="powershell"></a>PowerShell
 
 興味を引く基本的なコマンドを次に示します。 PowerShell を使用してストレージ アカウントにログ記録をセットアップする詳細な手順が必要な場合は、この記事で後述するチュートリアルを参照してください。
 
-PowerShell を使用してメトリックと診断のロギングを有効にするには、次のコマンドを使用します。
+PowerShell を使用してメトリックとリソースのログ記録を有効にするには、次のコマンドを使用します。
 
-- ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
+- ストレージ アカウントでのリソース ログの保存を有効にするには、次のコマンドを使います。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -109,7 +108,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
    ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
 
-- Event Hubs への診断ログのストリーミングを有効にするには、次のコマンドを使用します。
+- イベント ハブへのリソース ログのストリーミングを有効にするには、次のコマンドを使います。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -121,7 +120,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
+- Log Analytics ワークスペースへのリソース ログの送信を有効にするには、次のコマンドを使用します。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -141,7 +140,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/platform/diagnostic-logs-stream-template.md)方法を学習します。 
+[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/platform/diagnostic-settings-template.md)方法を学習します。 
 
 ## <a name="manage-your-logs"></a>ログを管理する
 
@@ -161,27 +160,53 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 
 クエリ ビルダーで、**LogManagement** > **AzureDiagnostics** を展開します。 AzureDiagnostics には、エンジンとサービスのイベントが含まれています。 クエリが即座に作成されることに注目してください。 EventClass\_s フィールドには、オンプレミスのログ記録の xEvents を使用している場合にはなじみのある、xEvent 名が含まれています。 **[EventClass\_s]** またはイベント名のいずれかをクリックすると、Log Analytics ワークスペースでクエリの作成が続行されます。 後で再利用するため、クエリは必ず保存しておいてください。
 
-### <a name="example-query"></a>クエリの例
-このクエリでは、モデル データベースとサーバーに対する各クエリ終了/更新終了イベントの CPU が計算されて返されます。
+### <a name="example-queries"></a>クエリの例
+
+#### <a name="example-1"></a>例 1
+
+次のクエリでは、モデル データベースとサーバーの各クエリの終了/更新終了イベントの期間が返されます。 スケールアウトした場合、レプリカ番号は ServerName_s に含まれているので、結果はレプリカごとに分割されます。 RootActivityId_g によるグループ化で Azure Diagnostics REST API から取得される行数が減り、[Log Analytics のレート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関する記事で説明されている制限内に収めることができます。
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>例 2
+
+次のクエリでは、サーバーのメモリと QPU の消費量が返されます。 スケールアウトした場合、レプリカ番号は ServerName_s に含まれているので、結果はレプリカごとに分割されます。
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>例 3
+
+次のクエリでは、サーバーの Rows read/sec Analysis Services エンジン パフォーマンス カウンターが返されます。
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 使用できるクエリは数百あります。 クエリについて詳しくは、「[Azure Monitor ログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」をご覧ください。
 
@@ -244,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>ログの有効化
 
-ログ記録を有効にするために、Set-AzDiagnosticSetting コマンドレットを、新しいストレージ アカウント、サーバー アカウント、およびカテゴリの変数と組み合わせて使用します。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
+ログ記録を有効にするために、Set-AzDiagnosticSetting コマンドレットを、新しいストレージ アカウント、サーバー アカウント、およびカテゴリの変数と組み合わせて使用します。 次のコマンドを実行し、 **-Enabled** フラグを **$true** に設定します。
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -291,7 +316,7 @@ Tags                        :
 
 この出力を見れば、ログ記録がサーバーに対して有効になっていること、ストレージ アカウントに情報が保存されることを確認できます。
 
-古いログが自動的に削除されるように、ログのアイテム保持ポリシーを設定することもできます。 たとえば、**-RetentionEnabled** フラグを **$true** に設定し、**-RetentionInDays** パラメーターを **90** に設定したアイテム保持ポリシーを設定します。 90 日を経過したログは自動的に削除されます。
+古いログが自動的に削除されるように、ログのアイテム保持ポリシーを設定することもできます。 たとえば、 **-RetentionEnabled** フラグを **$true** に設定し、 **-RetentionInDays** パラメーターを **90** に設定したアイテム保持ポリシーを設定します。 90 日を経過したログは自動的に削除されます。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
@@ -299,8 +324,8 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
   -RetentionEnabled $true -RetentionInDays 90
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)についてさらに詳しく学習します。
+[Azure Monitor のリソースのログ記録](../azure-monitor/platform/platform-logs-overview.md)の詳細について確認します。
 
 PowerShell ヘルプの「[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。

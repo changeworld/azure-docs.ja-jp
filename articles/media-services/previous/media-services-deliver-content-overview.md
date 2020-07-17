@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526607"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476746"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 ストリーミング コンテンツまたはビデオ オン デマンド コンテンツを顧客に配信するときの目標は、さまざまなネットワーク条件にある多様なデバイスに高品質のビデオを配信することにあります。
@@ -55,7 +55,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 
 詳細については、「 [フィルターと動的マニフェスト](media-services-dynamic-manifest-overview.md)」を参照してください。
 
-## <a name="a-idlocatorslocators"></a><a id="locators"/>ロケーター
+## <a name="locators"></a><a id="locators"/>ロケーター
 コンテンツのストリーミングやダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を公開する必要があります。 ロケーターは、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 Media Services では、2 種類のロケーターがサポートされています。
 
 * OnDemandOrigin ロケーターは、 メディアのストリーミング (MPEG-DASH、HLS、Smooth Streaming など) やファイルのプログレッシブ ダウンロードに使用します。
@@ -82,12 +82,12 @@ Media Services を使用すると、資産にフィルターを定義できま�
 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれている資産の基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターのパスの値とマニフェスト ファイル (filename.ism) の名前を連結する必要があります。 その後、 **/Manifest** と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
 > [!NOTE]
-> SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 なお、現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
+> TLS 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 なお、現在のところ、AMS ではカスタム ドメインを使用した TLS はサポートされていません。  
 > 
 
-SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" が含まれます。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用する必要があります。
+TLS 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" が含まれます。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、TLS がサポートされません。 URL が旧形式である場合、TLS ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 TLS でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用する必要があります。
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>ストリーミング URL の形式
+## <a name="streaming-url-formats"></a><a id="URLs"/>ストリーミング URL の形式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 形式
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
@@ -118,12 +118,12 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
+### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
 既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。 ただし、一部のプレーヤーは、r タグをサポートしていません。 これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>プログレッシブ ダウンロード
 プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。 .ism* (ismv、isma、ismt、ismc) ファイルのプログレッシブ ダウンロードはできません。
@@ -155,7 +155,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 ## <a name="known-issues"></a>既知の問題
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>スムーズ ストリーミング マニフェスト バージョンへの変更
-2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または以前の Azure Media Encoder によって生成された資産は、ダイナミック パッケージを使用してストリーミングされていました。返される Smooth Streaming のマニフェストはバージョン 2.0 に対応します。 バージョン 2.0 では、フラグメントの継続期間では、いわゆる繰り返し ("r") タグを使用しません。 例: 
+2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または以前の Azure Media Encoder によって生成された資産は、ダイナミック パッケージを使用してストリーミングされていました。返される Smooth Streaming のマニフェストはバージョン 2.0 に対応します。 バージョン 2.0 では、フラグメントの継続期間では、いわゆる繰り返し ("r") タグを使用しません。 次に例を示します。
 
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
         </StreamIndex>
     </SmoothStreamingMedia>
 
-2016 年 7 月のサービス リリースでは、生成される Smooth Streaming のマニフェストがバージョン 2.2 に対応しており、フラグメントの継続期間で繰り返しタグを使用できます。 例: 
+2016 年 7 月のサービス リリースでは、生成される Smooth Streaming のマニフェストがバージョン 2.2 に対応しており、フラグメントの継続期間で繰り返しタグを使用できます。 次に例を示します。
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">

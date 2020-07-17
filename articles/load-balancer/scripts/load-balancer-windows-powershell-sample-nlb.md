@@ -1,25 +1,25 @@
 ---
-title: PowerShell の例 - 高可用性のために VM へのトラフィックを負荷分散する - Azure
-titlesuffix: Azure Load Balancer
+title: HA のための VM へのトラフィックの負荷分散 - Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: この Azure PowerShell スクリプトの例では、高可用性のために VM へのトラフィックを負荷分散する方法を示します
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 70752f9726ac78ec32d0735dfefe37675ae7be29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170661"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74075923"
 ---
-# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell スクリプトの例: 高可用性の VM への負荷分散トラフィック
+# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell スクリプトの例: 高可用性のために VM へのトラフィックを負荷分散する
 
 この Azure PowerShell スクリプトの例では、高可用性と負荷分散が設定された構成で、構成済みの複数の Windows 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、Azure 可用性セットに接続され、Azure Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。
 
@@ -63,7 +63,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

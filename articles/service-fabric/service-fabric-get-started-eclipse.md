@@ -1,31 +1,25 @@
 ---
-title: Eclipse 用の Azure Service Fabric プラグイン | Microsoft Docs
-description: Eclipse 用の Service Fabric プラグインの概要を紹介します。
-services: service-fabric
-documentationcenter: java
+title: Eclipse 用の Azure Service Fabric プラグイン
+description: Eclipse および Service Fabric で提供されているプラグインを使用した、Java の Azure Service Fabric の概要について説明します。
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c33ecce5610dbef0dce13aa95f04ae4f0620603b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666938"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193430"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
 
 > [!NOTE]
 > Eclipse プラグインは、現在、Windows でサポートされていません。 
+
+> [!IMPORTANT]
+> JDK 8 がシステムにインストールされ、Eclipse で選択されていることを確認してください。
 
 ## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>Eclipse で Service Fabric プラグインをインストールまたは更新する
 Service Fabric プラグインを Eclipse にインストールすることができます。 このプラグインを使用すると、Java サービスのビルドとデプロイの手順を簡素化できます。
@@ -36,11 +30,11 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 > Ubuntu では、パッケージ インストーラー (`apt` または `apt-get`) を使用するのではなく、Eclipse サイトから直接インストールすることをお勧めします。 そうすることで、Eclipse の最新バージョンを確実に入手することができます。 
 
 [Eclipse サイト](https://www.eclipse.org)から Eclipse Neon またはそれ以降をインストールします。  さらに、Buildship のバージョン 2.2.1 以降をインストールします (Service Fabric プラグインは旧バージョンの Buildship と互換性がありません)。
--   インストールされているコンポーネントのバージョンを確認するには、Eclipse で **[Help]\(ヘルプ\)** > **[About Eclipse]\(Eclipse について\)** > **[Installation Details]\(インストールの詳細\)** の順に移動します。
+-   インストールされているコンポーネントのバージョンを確認するには、Eclipse で **[Help]\(ヘルプ\)**  >  **[About Eclipse]\(Eclipse について\)**  >  **[Installation Details]\(インストールの詳細\)** の順に移動します。
 -   Buildship は、[Eclipse Buildship: Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
--   Eclipse の更新プログラムを確認してインストールするには、**[Help]\(ヘルプ\)** > **[Check for Updates]\(更新プログラムの確認\)** の順に移動します。
+-   Eclipse の更新プログラムを確認してインストールするには、 **[Help]\(ヘルプ\)**  >  **[Check for Updates]\(更新プログラムの確認\)** の順に移動します。
 
-Service Fabric プラグインをインストールするために、Eclipse で **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に移動します。
+Service Fabric プラグインをインストールするために、Eclipse で **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に移動します。
 1. **[Work with]\(作業対象\)** ボックスに、「https:\//dl.microsoft.com/eclipse」と入力します。
 2. **[追加]** をクリックします。
 
@@ -49,12 +43,12 @@ Service Fabric プラグインをインストールするために、Eclipse で
 4. インストール手順を完了し、マイクロソフト ソフトウェア ライセンス条項に同意します。
   
 Service Fabric プラグインが既にインストールされている場合は、最新バージョンをインストールしてください。 
-1. 使用できる更新プログラムを確認するには、**[Help]\(ヘルプ\)** > **[About Eclipse]\(Eclipse について\)** > **[Installation Details]\(インストールの詳細\)** の順に移動します。 
-2. インストールされているプラグインの一覧で Service Fabric を選択して、**[Update (更新)]** をクリックします。 使用できる更新プログラムがインストールされます。
-3. Service Fabric プラグインを更新したら、Gradle プロジェクトも更新します。  **build.gradle** を右クリックし、**[Refresh]\(最新の情報に更新\)** を選択します。
+1. 使用できる更新プログラムを確認するには、 **[Help]\(ヘルプ\)**  >  **[About Eclipse]\(Eclipse について\)**  >  **[Installation Details]\(インストールの詳細\)** の順に移動します。 
+2. インストールされているプラグインの一覧で Service Fabric を選択して、 **[Update (更新)]** をクリックします。 使用できる更新プログラムがインストールされます。
+3. Service Fabric プラグインを更新したら、Gradle プロジェクトも更新します。  **build.gradle** を右クリックし、 **[Refresh]\(最新の情報に更新\)** を選択します。
 
 > [!NOTE]
-> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (https:\//dl.microsoft.com/eclipse/azure/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
+> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、 **[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (https:\//dl.microsoft.com/eclipse/azure/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
 
 > [!NOTE]
 >Eclipse が Mac で意図したように動かない場合、またはスーパー ユーザーとして実行する必要がある場合は、**ECLIPSE_INSTALLATION_PATH** フォルダーの **Eclipse.app/Contents/MacOS** サブフォルダーに移動します。 `./eclipse` を実行して Eclipse を起動します。
@@ -62,23 +56,23 @@ Service Fabric プラグインが既にインストールされている場合�
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションの作成
 
-1.  Eclipse で、**[File]\(ファイル\)** > **[New]\(新規\)** > **[Other]\(その他\)** の順に移動します。 **Service Fabric プロジェクト**を選択して **[Next (次へ)]** をクリックします。
+1.  Eclipse で、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Other]\(その他\)** の順に移動します。 **Service Fabric プロジェクト**を選択して **[Next (次へ)]** をクリックします。
 
     ![新しい Service Fabric プロジェクトのページ 1][create-application/p1]
 
-2.  プロジェクトの名前を入力し、**[Next (次へ)]** をクリックします。
+2.  プロジェクトの名前を入力し、 **[Next (次へ)]** をクリックします。
 
     ![新しい Service Fabric プロジェクトのページ 2][create-application/p2]
 
-3.  テンプレートの一覧で **[サービス テンプレート]** を選択します。 サービス テンプレートの種類 (アクター、ステートレス、コンテナー、またはゲスト バイナリ) を選択して、**[Next (次へ)]** をクリックします。
+3.  テンプレートの一覧で **[サービス テンプレート]** を選択します。 サービス テンプレートの種類 (アクター、ステートレス、コンテナー、またはゲスト バイナリ) を選択して、 **[Next (次へ)]** をクリックします。
 
     ![新しい Service Fabric プロジェクトのページ 3][create-application/p3]
 
-4.  サービス名とサービスの詳細を入力して、**[Finish (完了)]** をクリックします。
+4.  サービス名とサービスの詳細を入力して、 **[Finish (完了)]** をクリックします。
 
     ![新しい Service Fabric プロジェクトのページ 4][create-application/p4]
 
-5. Service Fabric プロジェクトを初めて作成する場合、**[Open Associated Perspective (関連付けられている観点を開く)]** ダイアログ ボックスで **[Yes (はい)]** をクリックします。
+5. Service Fabric プロジェクトを初めて作成する場合、 **[Open Associated Perspective (関連付けられている観点を開く)]** ダイアログ ボックスで **[Yes (はい)]** をクリックします。
 
     ![新しい Service Fabric プロジェクトのページ 5][create-application/p5]
 
@@ -88,35 +82,35 @@ Service Fabric プラグインが既にインストールされている場合�
 
 ## <a name="build-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションの構築
 
-1.  新しい Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
+1.  新しい Service Fabric アプリケーションを右クリックして、 **[Service Fabric]** を選択します。
 
     ![[Service Fabric] の右クリック メニュー][publish/RightClick]
 
 2. コンテキスト メニューで、次のいずれかを選択します。
-    -   クリーニングなしでアプリケーションをビルドするには、**[Build Application (アプリケーションのビルド)]** をクリックします。
-    -   アプリケーションのクリーン ビルドを実行するには、**[Rebuild Application (アプリケーションのリビルド)]** をクリックします。
-    -   ビルド アーティファクトのアプリケーションをクリーンするには、**[Clean Application (アプリケーションのクリーン)]** をクリックします。
+    -   クリーニングなしでアプリケーションをビルドするには、 **[Build Application (アプリケーションのビルド)]** をクリックします。
+    -   アプリケーションのクリーン ビルドを実行するには、 **[Rebuild Application (アプリケーションのリビルド)]** をクリックします。
+    -   ビルド アーティファクトのアプリケーションをクリーンするには、 **[Clean Application (アプリケーションのクリーン)]** をクリックします。
      
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Eclipse を使用してローカル クラスターに Service Fabric アプリケーションをデプロイする
 
 Service Fabric アプリケーションを構築したら、以下の手順に従ってローカル クラスターにデプロイします。
 
 1. ローカル クラスターを起動していない場合は、[ローカル クラスターのセットアップ](./service-fabric-get-started-linux.md#set-up-a-local-cluster)に関する記事の説明に従ってローカル クラスターを起動し、実行されていることを確認します。
-2. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
+2. Service Fabric アプリケーションを右クリックして、 **[Service Fabric]** を選択します。
 
     ![[Service Fabric] の右クリック メニュー][publish/RightClick]
 
 3.  コンテキスト メニューから **[アプリケーションの展開]** をクリックします。
 4.  デプロイ操作の進捗状況は、コンソール ウィンドウから確認できます。
-5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウでローカル クラスターの Service Fabric Explorer を開きます [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
+5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウでローカル クラスターの Service Fabric Explorer を開きます (`http://localhost:19080/Explorer`)。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
 
 ローカル クラスターを使用する Eclipse でアプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。
 
-**[Publish Application]\(アプリケーションの発行)\** コマンドを使用してローカル クラスターにアプリケーションをデプロイすることもできます。
+**[Publish Application]\(アプリケーションの発行)** コマンドを使用してローカル クラスターにアプリケーションをデプロイすることもできます。
 
-1. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
-2. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
-3. **[Publish Application]\(アプリケーションの発行)\** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Local.json** を選択し、**[発行]** をクリックします。
+1. Service Fabric アプリケーションを右クリックして、 **[Service Fabric]** を選択します。
+2. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)** をクリックします。
+3. **[Publish Application]\(アプリケーションの発行)** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Local.json** を選択し、 **[発行]** をクリックします。
 
     ![ローカルの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/localjson.png)
 
@@ -153,9 +147,9 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
      }
      ```
 
-2. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
-3. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
-3. **[Publish Application]\(アプリケーションの発行)\** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Cloud.json** を選択し、**[発行]** をクリックします。
+2. Service Fabric アプリケーションを右クリックして、 **[Service Fabric]** を選択します。
+3. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)** をクリックします。
+3. **[Publish Application]\(アプリケーションの発行)** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Cloud.json** を選択し、 **[発行]** をクリックします。
 
     ![クラウドの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
@@ -171,14 +165,14 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
 Eclipse 実行構成を使用して Service Fabric アプリケーションをデプロイするという方法もあります。
 
-1. Eclipse で、**[Run (実行)]** > **[Run Configurations (構成の実行)]** の順に移動します。
+1. Eclipse で、 **[Run (実行)]**  >  **[Run Configurations (構成の実行)]** の順に移動します。
 2. **[Gradle Project (Gradle プロジェクト)]** で **[ServiceFabricDeployer]** 実行構成を選択します。
-3. 右側のウィンドウの **[引数]** タブで、**[ip]**、**[port]**、**[clientCert]**、および **[clientKey]** パラメーターがデプロイに適切に設定されていることを確認します。 既定では、パラメーターは、次のスクリーン ショットのように、ローカル クラスターにデプロイするよう設定されています。 アプリを Azure に発行するには、Azure クラスターのエンドポイントの詳細とセキュリティ資格情報を含めるようパラメーターを変更することができます。 詳細については、前のセクションの「[Eclipse を使用して Azure Service Fabric アプリケーションを発行する](#publish-your-service-fabric-application-to-azure-with-eclipse)」を参照してください。
+3. 右側のウィンドウの **[引数]** タブで、 **[ip]** 、 **[port]** 、 **[clientCert]** 、および **[clientKey]** パラメーターがデプロイに適切に設定されていることを確認します。 既定では、パラメーターは、次のスクリーン ショットのように、ローカル クラスターにデプロイするよう設定されています。 アプリを Azure に発行するには、Azure クラスターのエンドポイントの詳細とセキュリティ資格情報を含めるようパラメーターを変更することができます。 詳細については、前のセクションの「[Eclipse を使用して Azure Service Fabric アプリケーションを発行する](#publish-your-service-fabric-application-to-azure-with-eclipse)」を参照してください。
 
     ![ローカルの [実行構成] ダイアログ](./media/service-fabric-get-started-eclipse/run-config-local.png)
 
-5. **[作業ディレクトリ]** が、デプロイするアプリケーションを指していることを確認します。 アプリケーションを変更するには、**[Workspace (ワークスペース)]** ボタンをクリックし、目的のアプリケーションを選択します。
-6. **[Apply (適用)]** をクリックし、**[Run (実行)]** をクリックします。
+5. **[作業ディレクトリ]** が、デプロイするアプリケーションを指していることを確認します。 アプリケーションを変更するには、 **[Workspace (ワークスペース)]** ボタンをクリックし、目的のアプリケーションを選択します。
+6. **[Apply (適用)]** をクリックし、 **[Run (実行)]** をクリックします。
 
 すぐにアプリケーションのビルドとデプロイが行われます。 Service Fabric Explorer でデプロイの状態を監視できます。  
 
@@ -186,16 +180,16 @@ Eclipse 実行構成を使用して Service Fabric アプリケーションを�
 
 既存の Service Fabric アプリケーションに Service Fabric サービスを追加するには、次の手順を実行します。
 
-1.  サービスの追加先となるプロジェクトを右クリックし、**[Service Fabric]** をクリックします。
+1.  サービスの追加先となるプロジェクトを右クリックし、 **[Service Fabric]** をクリックします。
 
     ![Service Fabric のサービス追加のページ 1][add-service/p1]
 
 2.  **[Add Service Fabric Service (Service Fabric サービスの追加)]** をクリックし、一連の手順を完了してサービスをプロジェクトに追加します。
-3.  プロジェクトに追加するサービス テンプレートを選択して、**[Next (次へ)]** をクリックします。
+3.  プロジェクトに追加するサービス テンプレートを選択して、 **[Next (次へ)]** をクリックします。
 
     ![Service Fabric のサービス追加のページ 2][add-service/p2]
 
-4.  (必要に応じて他の詳細と共に) サービス名を入力し、**[Add Service (サービスの追加)]** ボタンをクリックします。  
+4.  (必要に応じて他の詳細と共に) サービス名を入力し、 **[Add Service (サービスの追加)]** ボタンをクリックします。  
 
     ![Service Fabric のサービス追加のページ 3][add-service/p3]
 
@@ -205,9 +199,9 @@ Eclipse 実行構成を使用して Service Fabric アプリケーションを�
 
 ## <a name="edit-manifest-versions-of-your-service-fabric-java-application"></a>Service Fabric Java アプリケーションのマニフェスト バージョンの編集
 
-マニフェスト バージョンを編集するには、プロジェクトを右クリックし、**[Service Fabric]** に移動して、メニューのドロップダウンから **[マニフェスト バージョンの編集]** を選択します。 ウィザードで、アプリケーション マニフェストとサービス マニフェストのバージョン、さらに **Code**、**Config**、**Data** パッケージのバージョンを更新することができます。
+マニフェスト バージョンを編集するには、プロジェクトを右クリックし、 **[Service Fabric]** に移動して、メニューのドロップダウンから **[マニフェスト バージョンの編集]** を選択します。 ウィザードで、アプリケーション マニフェストとサービス マニフェストのバージョン、さらに **Code**、**Config**、**Data** パッケージのバージョンを更新することができます。
 
-**[アプリケーションとサービスのバージョンを自動的に更新する]** チェック ボックスをオンにし、バージョンを更新すると、マニフェストのバージョンが自動的に更新されます。 たとえば、最初にこのチェック ボックスをオンにしたうえで、**Code** のバージョンを 0.0.0 から 0.0.1 に更新し、**[完了]** をクリックすると、サービス マニフェストのバージョンとアプリケーション マニフェストのバージョンが自動的に 0.0.1 に更新されます。
+**[アプリケーションとサービスのバージョンを自動的に更新する]** チェック ボックスをオンにし、バージョンを更新すると、マニフェストのバージョンが自動的に更新されます。 たとえば、最初にこのチェック ボックスをオンにしたうえで、**Code** のバージョンを 0.0.0 から 0.0.1 に更新し、 **[完了]** をクリックすると、サービス マニフェストのバージョンとアプリケーション マニフェストのバージョンが自動的に 0.0.1 に更新されます。
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Service Fabric Java アプリケーションのアップグレード
 
@@ -217,9 +211,9 @@ Eclipse 実行構成を使用して Service Fabric アプリケーションを�
 
 Eclipse を使用してアプリケーションをアップグレードするには、実行構成プロファイルの複製を作成します。 次に、この構成を使用して、必要に応じてアプリケーションをアップグレードします。
 
-1.  **[Run (実行)]** > **[Run Configurations (構成の実行)]** の順に移動します。 左側のウィンドウにある **[Gradle Project (Gradle プロジェクト)]** の左側の小さな矢印をクリックします。
-2.  **[ServiceFabricDeployer]** を右クリックし、**[Duplicate (複製)]** を選択します。 この構成に新しい名前を付けます (**ServiceFabricUpgrader** など)。
-3.  右側のパネルの **[Arguments (引数)]** タブで、**-Pconfig='deploy'** を **-Pconfig='upgrade'** に変更し、**[Apply (適用)]** をクリックします。
+1.  **[Run (実行)]**  >  **[Run Configurations (構成の実行)]** の順に移動します。 左側のウィンドウにある **[Gradle Project (Gradle プロジェクト)]** の左側の小さな矢印をクリックします。
+2.  **[ServiceFabricDeployer]** を右クリックし、 **[Duplicate (複製)]** を選択します。 この構成に新しい名前を付けます (**ServiceFabricUpgrader** など)。
+3.  右側のパネルの **[Arguments (引数)]** タブで、 **-Pconfig='deploy'** を **-Pconfig='upgrade'** に変更し、 **[Apply (適用)]** をクリックします。
 
 この手順を行うと、いつでもアプリケーションのアップグレードに使用できる実行構成プロファイルが作成されて保存されます。 これを使用すると、アプリケーション マニフェスト ファイルから、アプリケーションの種類の更新後の最新バージョンも取得されます。
 
@@ -228,7 +222,7 @@ Eclipse を使用してアプリケーションをアップグレードするに
 ## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>以前の Service Fabric Java アプリケーションを移行して Maven で使用する
 最近、Service Fabric Java ライブラリが Service Fabric Java SDK から Maven リポジトリに移行されました。 Eclipse を使って生成する新しいアプリケーションでは、(Maven で使用可能な) 最新のプロジェクトが生成されますが、(これまで Service Fabric Java SDK を使っていた) 既存の Service Fabric のステートレスまたはアクター Java アプリケーションは、Maven からの Service Fabric Java 依存関係を使うように更新することができます。 以前のアプリケーションを Maven で使用するには、[こちら](service-fabric-migrate-old-javaapp-to-use-maven.md)に記載した手順に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Java Reliable サービス アプリケーションを構築し、それをローカルおよび Azure にデプロイする手順の概要については、「[クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする](./service-fabric-quickstart-java-reliable-services.md)」を参照してください。
 - ローカル クラスター上の Java アプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。

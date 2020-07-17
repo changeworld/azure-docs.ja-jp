@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB を使用するアプリケーションのための適切な整合性レベルを選択する
+title: Azure Cosmos DB アプリの適切な整合性レベルを選択する
 description: Azure Cosmos DB でアプリケーションのための適切な整合性レベルを選択します。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b08f9a85b8c9f52724e2cd08eaf13eb1faae0977
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243561"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191755"
 ---
 # <a name="choose-the-right-consistency-level"></a>適切な整合性レベルの選択 
 
@@ -48,15 +48,15 @@ ms.locfileid: "66243561"
 
 * 整合性レベルを**有界整合性制約**に設定すると、Cosmos DB では、クライアントは遅延が陳腐化期間で限定されている、以前の書き込みの値を常に読み取ることを保証します。
 
-* 整合性レベルを**強力**に設定すると、陳腐化期間は 0 に相当し、クライアントは書き込み操作の最新のコミット値を読み取ることが保証されます。
+* 整合性レベルを**強固**に設定すると、陳腐化期間は 0 に相当し、クライアントは書き込み操作の最新のコミット値を読み取ることが保証されます。
 
-* 残りの 3 つの整合性レベルについては、陳腐化期間はワークロードに大きく依存します。 たとえば、データベースへの書き込み操作がない場合、**最終的**、**セッション**、または**一貫性のあるプレフィックス**の整合性レベルでの読み取り操作は、強力な整合性レベルの読み取り操作と同じ結果になることがあります。
+* 残りの 3 つの整合性レベルについては、陳腐化期間はワークロードに大きく依存します。 たとえば、データベースへの書き込み操作がない場合、**最終的**、**セッション**、または**一貫性のあるプレフィックス**の整合性レベルでの読み取り操作は、強固な整合性レベルの読み取り操作と同じ結果になることがあります。
 
-Azure Cosmos アカウントが、強力な整合性以外の任意の整合性レベルで構成されている場合、*確率論的有界整合性制約* (PBS) メトリックを調べることによって、ワークロードの厳密な整合性を持つ読み取りをクライアントが取得する確率を調べることができます。 このメトリックは、Azure portal で公開されます。詳しくは、「[確率的有界整合性制約 (PBS) メトリックを監視する](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)」をご覧ください。
+Azure Cosmos アカウントが、強固な整合性以外の任意の整合性レベルで構成されている場合、*確率論的有界整合性制約* (PBS) メトリックを調べることによって、ワークロードの厳密な整合性を持つ読み取りをクライアントが取得する確率を調べることができます。 このメトリックは、Azure portal で公開されます。詳しくは、「[確率的有界整合性制約 (PBS) メトリックを監視する](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)」をご覧ください。
 
 確率論的有界整合性制約は、最終的な整合性が、どれほど最終的であるかを示します。 このメトリックでは、Azure Cosmos アカウントで現在構成されている整合性レベルより強力な整合性をどのくらいの頻度で得られるかについての分析情報が提供されます。 つまり、書き込みと読み取りのリージョンの組み合わせに対して厳密な整合性の読み取りを取得する確率 (ミリ秒で測定) を表示できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事で、整合性レベルについての詳細を参照してください。
 

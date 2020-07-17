@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522359"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68932689"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。 
@@ -28,7 +28,7 @@ LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regi
 オーサリング API ルートは、前は **prog** ルートが使用されていましたが、**api** ルートを使用するように変更されました。
 
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/**prog**/apps|
 |2|/luis/**api**/v2.0/apps|
@@ -107,17 +107,17 @@ v2 エンドポイントの成功応答:
 ## <a name="key-management-no-longer-in-api"></a>API でのキー管理が不要
 サブスクリプション エンドポイント キー API は非推奨であり、410 GONE を返します。
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、**[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。 
+Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、 **[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。 
 
 ## <a name="new-versioning-route"></a>新しいバージョン管理ルート
 v2 モデルは、[バージョン](luis-how-to-manage-versions.md)に含まれています。 バージョン名は、ルートの 10 文字です。 既定のバージョンは "0.1" です。
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities|
 |2|/luis/**api**/v2.0/apps/{appId}/**versions**/{versionId}/entities|
@@ -136,7 +136,7 @@ LUIS メタデータを返す API のいくつかが新しい名前に変更さ�
 ## <a name="sample-renamed-to-suggest"></a>"sample" から "suggest" への名前変更
 LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endpoint-utterances.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは **[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)** と呼ばれます。
 
-| version | ルート |
+| version | ルート (route) |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities/{entityId}/**sample**|
 |1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**sample**|
@@ -152,13 +152,13 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 |/luis/api/v2.0/apps/customprebuiltdomains  |get、post|
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
-## <a name="importing-1x-app-into-2x"></a>1.x アプリから 2.x へのインポート
+## <a name="importing-1x-app-into-2x"></a>1\.x アプリから 2.x へのインポート
 エクスポートされた 1.x アプリの JSON には、[LUIS][LUIS] 2.0 にインポートする前に変更しなければならない領域があります。 
 
 ### <a name="prebuilt-entities"></a>事前構築済みのエンティティ 
 [事前構築済みのエンティティ](luis-prebuilt-entities.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-reference-prebuilt-datetimev2.md) の使用も含まれます。 
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>アクション
 アクション プロパティが有効ではなくなりました。 これは空にする必要があります 
 
 ### <a name="labeled-utterances"></a>ラベル付きの発話
@@ -167,7 +167,7 @@ V1 のラベル付きの発話では、単語またはフレーズの先頭と�
 ## <a name="common-reasons-for-http-response-status-codes"></a>HTTP 応答状態コードの一般的な理由
 [LUIS API の応答コード](luis-reference-response-codes.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 v2 API のドキュメントを使用して、LUIS [エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)および[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に対する既存の REST 呼び出しを更新します。 
 

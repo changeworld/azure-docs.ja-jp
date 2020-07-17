@@ -2,18 +2,18 @@
 title: Azure Windows VM でスクリプトを実行する
 description: このトピックは、Windows 仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
-ms.service: automation
-author: georgewallace
-ms.author: gwallace
+ms.service: virtual-machines
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/02/2018
-ms.topic: article
+ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ec34ff874eae9bbdd53470f135bcf0c182d5daed
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983340"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099769"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Windows VM でスクリプトを実行する
 
@@ -64,7 +64,7 @@ ms.locfileid: "55983340"
 * ローカル ユーザー アカウントを使用してマシンにログインします。
 * マシンのネットワークやオペレーティング システムの状態に関係なく、仮想マシンへのアクセスが必要なときに役立ちます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 お使いの VM 内でスクリプトやコマンドを実行できるさまざまな機能について確認します。
 

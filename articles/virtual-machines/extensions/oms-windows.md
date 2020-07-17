@@ -1,41 +1,53 @@
 ---
-title: Windows 用の Azure Monitor 仮想マシン拡張機能 | Microsoft Docs
+title: Windows 用の Log Analytics 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Windows 仮想マシンに Log Analytics エージェントをデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/29/2019
-ms.author: roiyz
-ms.openlocfilehash: 2287a0c39a82509e21ff35d8c3786cf1c85b1b24
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 01/30/2020
+ms.author: akjosh
+ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142875"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530990"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Windows 用の Azure Monitor 仮想マシン拡張機能
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
-Azure Monitor ログでは、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Azure Monitor 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+Azure Monitor ログでは、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用の Log Analytics エージェント拡張機能は、次のバージョンの Windows オペレーティング システムをサポートします。
+サポートされる Windows オペレーティング システムの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)に関する記事を参照してください。
 
-- Windows Server 2019
-- Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
+### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
+次の表は、Windows Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 
+
+| Log Analytics Windows Agent バンドルのバージョン | Log Analytics Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
+|--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>SHA-2 コード署名サポートを追加</li><li>VM 拡張機能のインストールと管理を改善</li><li>Azure Arc for Servers 統合のバグを解決</li><li>カスタマー サポート用の組み込みのトラブルシューティング ツールを追加</li><li>追加の Azure Government リージョンのサポートを追加</li> |
+| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |
+| 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> MaxExpressionDepth を 10000 に引き上げ </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> プロキシ接続時に既定の資格情報を無効にする機能を追加 (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH のサポート) </li></ul>|
+| 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>軽微な安定化の修正 </li></ul> |
+| 10.19.10006 | 該当なし | 2018 年 12 月 | <ul><li> 軽微な安定化の修正 </li></ul> | 
+| 8.0.11136 | 該当なし | 2018 年 9 月 |  <ul><li> VM の移動時にリソース ID の変更を検出するサポートを追加しました </li><li> 非拡張インストールを使用するときにリソース ID を報告するためのサポートを追加しました </li></ul>| 
+| 8.0.11103 | 該当なし |  2018 年 4 月 | |
+| 8.0.11081 | 1.0.11081 | 2017 年 11 月 | | 
+| 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
+| 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
+
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -73,7 +85,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 ```
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -84,6 +96,9 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 
 \* Log Analytics API では、workspaceId は consumerId という名称になります。
 
+> [!NOTE]
+> その他のプロパティについては、Azure の「[Windows コンピューターを Azure Monitor に接続する](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)」を参照してください。
+
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)にあります。 
@@ -91,9 +106,9 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 >[!NOTE]
 >このテンプレートでは、複数のワークスペースに報告するようにエージェントを構成する場合に複数のワークスペース ID とワークスペース キーを指定することはサポートされていません。 複数のワークスペースに報告するようにエージェントを構成するには、「[ワークスペースの追加または削除](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)」を参照してください。  
 
-仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/templates/child-resource-name-type.md)に関する記事を参照してください。 
 
-次の例では、Azure Monitor 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
+次の例では、Log Analytics 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
 
 ```json
@@ -154,7 +169,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

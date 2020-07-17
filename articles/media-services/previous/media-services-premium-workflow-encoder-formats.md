@@ -12,19 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: 25f32750b612bb66f23eb19c378f7935689f3a73
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232787"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
 
 > [!NOTE]
-> プレミアム エンコーダーに関するご質問は、電子メールで mepd@microsoft.com までお送りください。
-> 
 > このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。 
 
 このドキュメントには、以前のパブリック プレビュー バージョンの **メディア エンコーダー プレミアム ワークフロー** でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
@@ -35,7 +34,7 @@ ms.locfileid: "58258617"
 
 **メディア エンコーダー プレミアム ワークフロー** では、 [この](#closed_captioning) セクションで説明されているクローズド キャプションがサポートされています。 
 
-## <a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>メディア エンコーダー プレミアム ワークフローの入力の形式とコーデック
 
 次のセクションに、このメディア プロセッサの入力としてサポートされたコーデックとファイル形式の一覧を示します。
 
@@ -72,7 +71,7 @@ ms.locfileid: "58258617"
 * Windows Media オーディオ
 * WAV/PCM
 
-## <a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>メディア エンコーダー プレミアム ワークフローの出力の形式とコーデック
 
 次のセクションに、このメディア プロセッサからの出力としてサポートされたコーデックとファイル形式の一覧を示します。
 
@@ -99,8 +98,6 @@ ms.locfileid: "58258617"
 * JPEG サムネール作成
 * HEVC (8 ビットおよび 10 ビットの H.265、メインおよびメイン 10 プロファイル)
 
-  HDR 10 のサポートは特定のシナリオでのみ提供されています。詳細については、mepd@microsoft.com にお問い合わせください
-
 
 ### <a name="output-audio-codecs"></a>出力オーディオ コーデック
 
@@ -115,7 +112,7 @@ ms.locfileid: "58258617"
 >[!NOTE]
 >Dolby® Digital (AC3) にエンコードする場合、出力は、ISO MP4 ファイルにのみ書き込むことができます。
 
-## <a id="closed_captioning"></a>クローズド キャプションのサポート
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>クローズド キャプションのサポート
 
 取り込み側時は、 **メディア エンコーダー プレミアム ワークフロー** で次がサポートされます。
 
@@ -140,6 +137,9 @@ ms.locfileid: "58258617"
 
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。 
 
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

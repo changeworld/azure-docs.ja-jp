@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489658"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73162585"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -295,7 +295,7 @@ OUTPUT @rs1
 ### <a name="keep-state-between-udf-invocations"></a>各 UDF 呼び出しの間で状態を維持する
 U-SQL の C# プログラミング オブジェクトは、コードビハインドのグローバル変数を使えば、対話機能を備えたさらに高度なものにすることができます。 ここでは、ビジネスの場でのユース ケース シナリオを見てみましょう。
 
-大規模な組織ではさまざまなアプリケーション  (Microsoft Dynamics CRM、PowerBI など) が採用されており、ユーザーはそれらを切り替えながら使います。 このため、顧客企業ではユーザーがどのような状況でアプリケーションを切り替えているかや、使用状況の傾向などについて、テレメトリ分析を実施したいという要望が生じる場合があります。 ビジネスの目標は、アプリケーションの使用状況を最適化することにあります。 そのためには、さまざまなアプリケーションや特定のサインオン ルーチンを組み合わせることも必要になる可能性があります。
+大規模な組織ではさまざまなアプリケーション (Microsoft Dynamics CRM、PowerBI など) が採用されており、ユーザーはそれらを切り替えながら使います。 このため、顧客企業ではユーザーがどのような状況でアプリケーションを切り替えているかや、使用状況の傾向などについて、テレメトリ分析を実施したいという要望が生じる場合があります。 ビジネスの目標は、アプリケーションの使用状況を最適化することにあります。 そのためには、さまざまなアプリケーションや特定のサインオン ルーチンを組み合わせることも必要になる可能性があります。
 
 この目標を達成するには、セッション ID と、前回発生したセッションとの間のラグ タイム (時間差) を決める必要があります。
 
@@ -533,7 +533,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **シリアル化**: 指定されたルートのオブジェクトまたはオブジェクトのグラフをシリアル化し、指定されたストリームに送ります。
 
-`MyType` instance: 型のインスタンスです。  
+`MyType` インスタンス: 型のインスタンスです。  
 `IColumnWriter` writer / `IColumnReader` reader: 基になる列ストリームです。  
 `ISerializationContext` context: シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
 
@@ -945,11 +945,11 @@ public class GuidAggregate : IAggregate<string, string, string>
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: Accumulate の 1 つ目のパラメーター
+* T1: Accumulate の 2 つ目のパラメーター
 * T2:Accumulate の 2 つ目のパラメーター
 * TResult: Terminate の戻り値の型
 
-例: 
+次に例を示します。
 
 ```
 public class GuidAggregate : IAggregate<string, int, int>
@@ -1067,11 +1067,11 @@ UDO は通常、U-SQL スクリプトの以下の U-SQL ステートメントの
 ## <a name="use-user-defined-extractors"></a>ユーザー定義エクストラクターを使用する
 U-SQL では、EXTRACT ステートメントを使って外部データをインポートできます。 EXTRACT ステートメントでは、組み込みの UDO エクストラクターを使用できます。  
 
-* *Extractors.Text()*: エンコードがさまざまに異なる区切りテキスト ファイルからの抽出に対応します。
+* *Extractors.Text()* : エンコードがさまざまに異なる区切りテキスト ファイルからの抽出に対応します。
 
-* *Extractors.Csv()*: エンコードがさまざまに異なるコンマ区切り値 (CSV) ファイルからの抽出に対応します。
+* *Extractors.Csv()* : エンコードがさまざまに異なるコンマ区切り値 (CSV) ファイルからの抽出に対応します。
 
-* *Extractors.Tsv()*: エンコードがさまざまに異なるタブ区切り値 (TSV) ファイルからの抽出に対応します。
+* *Extractors.Tsv()* : エンコードがさまざまに異なるタブ区切り値 (TSV) ファイルからの抽出に対応します。
 
 カスタム エクストラクターを開発すると便利なことがあります。 具体的には、データのインポート中に以下のいずれかのタスクが必要な場合に便利です。
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>ユーザー定義アウトプッターを使用する
 ユーザー定義アウトプッターは、U-SQL の組み込み機能を拡張するもう 1 つの U-SQL UDO です。 エクストラクターと同じく、アウトプッターも組み込みのものがいくつか用意されています。
 
-* *Outputters.Text()*: エンコードがさまざまに異なる区切りテキスト ファイルにデータを書き込みます。
-* *Outputters.Csv()*: エンコードがさまざまに異なるコンマ区切り値 (CSV) ファイルにデータを書き込みます。
-* *Outputters.Tsv()*: エンコードがさまざまに異なるタブ区切り値 (TSV) ファイルにデータを書き込みます。
+* *Outputters.Text()* : エンコードがさまざまに異なる区切りテキスト ファイルにデータを書き込みます。
+* *Outputters.Csv()* : エンコードがさまざまに異なるコンマ区切り値 (CSV) ファイルにデータを書き込みます。
+* *Outputters.Tsv()* : エンコードがさまざまに異なるタブ区切り値 (TSV) ファイルにデータを書き込みます。
 
 カスタム アウトプッターでは、独自に定義した形式でデータを書き込むことができます。 これは、以下のタスクに役に立つ場合があります。
 
@@ -1788,13 +1788,13 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ユーザー定義アプライヤーは、アプライヤー オブジェクトの新しいインスタンスとして呼び出すことができます。
 
 ```
-CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+CROSS APPLY new MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
 また、ラッパー ファクトリ メソッドを呼び出すことによって呼び出すこともできます。
 
 ```csharp
-    CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+    CROSS APPLY MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
 ## <a name="use-user-defined-combiners"></a>ユーザー定義コンバイナーを使用する

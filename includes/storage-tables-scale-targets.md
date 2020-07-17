@@ -2,20 +2,29 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 03/09/2020
 ms.author: tamram
-ms.openlocfilehash: a8b4e3038bfa6a2e937de91804159e340ed13224
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114767"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78941044"
 ---
-| Resource | ターゲット |
+次の表では、Table Storage の容量、スケーラビリティ、パフォーマンスについて説明しています。
+
+| リソース | 移行先 |
 |----------|---------------|
+| Azure のストレージ アカウントのテーブルの数 | ストレージ アカウントの容量のみによる制限 |
+| テーブルのパーティションの数 | ストレージ アカウントの容量のみによる制限 |
+| パーティション内のエンティティの数 | ストレージ アカウントの容量のみによる制限 |
 | 1 つのテーブルの最大サイズ | 500 TiB |
-| テーブル エンティティの最大サイズ | 1 MiB |
-| テーブル エンティティの最大プロパティ数 | 255。次の 3 つのシステム プロパティが含まれます。PartitionKey、RowKey、Timestamp |
+| 単一のエンティティの最大サイズ (すべてのプロパティを含む) | 1 MiB |
+| テーブル エンティティの最大プロパティ数 | 255 (**PartitionKey**、**RowKey**、および **Timestamp** の 3 つのシステム プロパティも含む) |
+| エンティティ内の個々のプロパティの最大合計サイズ | プロパティの型によって異なります。 詳細については、「[Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」の「**プロパティの型**」を参照してください。 |
+| **PartitionKey** のサイズ | 最大 1 KiB の文字列 |
+| **RowKey**のサイズ | 最大 1 KiB の文字列 |
+| エンティティ グループ トランザクションのサイズ | トランザクションには最大で 100 個のエンティティを含めることができ、ペイロードは 4 MiB 未満にする必要があります。 エンティティ グループのトランザクションには、エンティティへの更新を 1 回だけ含めることができます。 |
 | テーブルあたりの保存されるアクセス ポリシーの最大数 | 5 |
 | ストレージ アカウントあたりの最大要求レート | 毎秒 20,000 トランザクション (エンティティ サイズは 1 KiB を想定) |
 | 1 つのテーブル パーティションのターゲット スループット (1 KiB のエンティティ) | 毎秒最大 2,000 エンティティ |

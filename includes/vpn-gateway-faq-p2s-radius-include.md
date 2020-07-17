@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 857d29f407c9939143fbb8263be40dadb040efdc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147103"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75751511"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -50,3 +50,7 @@ RADIUS による証明書認証では、認証要求が実際に証明書の検�
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>RADIUS 認証は、IKEv2 と SSTP VPN の両方で機能しますか。
 
 はい、RADIUS 認証は、IKEv2 と SSTP VPN の両方でサポートされています。 
+
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>RADIUS 認証は、OpenVPN クライアントで機能しますか。
+
+OpenVPN プロトコルでは、PowerShell を介してのみ、RADIUS 認証がサポートされます。

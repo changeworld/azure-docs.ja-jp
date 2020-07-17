@@ -1,32 +1,26 @@
 ---
-title: クラシックから Azure Resource Manager への IaaS リソースの移行計画 | Microsoft Docs
+title: クラシックから Azure Resource Manager への移行の計画
 description: クラシックから Azure Resource Manager への IaaS リソースの移行計画
-services: virtual-machines-windows
-documentationcenter: ''
-author: singhkays
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
+author: tanmaygore
+manager: vashan
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 10ae2e1a85d5250e4da836c6f57e3619befd9330
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112519"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865927"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
-Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
 
-> [!NOTE]
-> 以下のガイダンスは、Azure Customer Advisory チームとクラウド ソリューション アーキテクトが大規模な環境を移行する際にお客様と協力して作成したものです。 このドキュメントは、新しい成功のパターンが明らかになった時点で更新される予定です。そのため、新しい推奨事項が追加されていないかどうかをときどき確認してください。
+> [!IMPORTANT]
+> 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨についての[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)について確認してください。
+
+Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
 
 移行の工程には 4 つの一般的なフェーズがあります。<br>
 
@@ -92,7 +86,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 
-- **ExpressRoute 回線と VPN** -  現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
+- **ExpressRoute 回線と VPN** - 現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
 
 - **VM 拡張機能** - 仮想マシン拡張機能は、実行中の VM を移行する際の最も大きな障害の 1 つとなる可能性があります。 VM 拡張機能の修復には 1 ～ 2 日かかる可能性があるため、それに応じた計画を行ってください。  動作中の VM の VM 拡張機能の状態を報告するには、Azure エージェントを稼働させておく必要があります。 実行中の VM について不適切な状態が返された場合は、移行が停止します。 移行を可能にするためにエージェント自体が正常に動作している必要はありませんが、VM に拡張機能が存在する場合は、移行を進めるために、動作中のエージェントと送信インターネット接続 (DNS を使用) の両方が必要になります。
   - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo バージョン 1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。
@@ -114,9 +108,9 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 - **可用性セット** - Azure Resource Manager に移行する仮想ネットワーク (vNet) では、クラシック デプロイメント (クラウド サービス) に含まれている VM がすべて 1 つの可用性セットに属しているか、または VM がどの可用性セットにも属していません。 クラウド サービスに複数の可用性セットがある場合は、Azure Resource Manager との互換性がなく、移行が停止します。  また、1 つの可用性セットに複数の VM を含めることはできず、1 つの可用性セットに複数の VM が含まれることもありません。 この問題を解決するには、クラウド サービスを修復または再シャッフルする必要があります。  この処理には時間がかかる可能性があるため、状況に応じた計画を行ってください。
 
-- **Web/ワーカー ロール デプロイメント** - Web およびワーカー ロールを含む Cloud Services を Azure Resource Manager に移行することはできません。 移行を開始するには、最初に Web/worker ロールを仮想ネットワークから削除する必要があります。  一般的な解決策として、ExpressRoute 回線にもリンクされている別のクラシック仮想ネットワークに Web/worker ロール インスタンスを移動するか、コードを新しい PaaS App Services (このドキュメントでは説明しません) に移行します。 前者の再デプロイの場合は、新しいクラシック仮想ネットワークを作成し、Web/worker ロールをその新しい仮想ネットワークに移動/再デプロイして、移動元の仮想ネットワークからデプロイメントを削除します。 コードの変更が不要な方法。 新しい[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)機能を使用すると、Web/worker ロールを含むクラシック仮想ネットワークと、Azure リージョン内の他の仮想ネットワーク (移行対象の仮想ネットワークなど) をピアリングできます (**ピアリングした仮想ネットワークは移行できないため、仮想ネットワークの移行の完了後**)。そのため、同じ機能を提供しても、パフォーマンスが失われたり、待ち時間や帯域幅のペナルティが発生したりすることはありません。 [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)の追加により、Web/worker ロールのデプロイメントを簡単に移行できるようになりました。また、Azure Resource Manager への移行がブロックされることもありません。
+- **Web/ワーカー ロール デプロイメント** - Web およびワーカー ロールを含む Cloud Services を Azure Resource Manager に移行することはできません。 Web のコンテンツと worker ロールを移行するには、コードそのものを新しい PaaS App Service に移行する必要があります (この点については、このドキュメントの範囲を超えます)。 Web ロールと worker ロールをそのまま残しつつ、クラシック VM を Resource Manager デプロイ モデルに移行したい場合は、Web ロールまたは worker ロールを仮想ネットワークから最初に削除したうえで、移行を開始する必要があります。  一般的な解決策として、ExpressRoute 回線にもリンクされている別のクラシック仮想ネットワークに Web ロール インスタンスと worker ロール インスタンスを移動します。 前者の再デプロイの場合は、新しいクラシック仮想ネットワークを作成し、Web ロールと worker ロールをその新しい仮想ネットワークに移動または再デプロイして、移動元の仮想ネットワークからデプロイメントを削除します。 コードの変更が不要な方法。 新しい[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)機能を使用すると、Web/worker ロールを含むクラシック仮想ネットワークと、Azure リージョン内の他の仮想ネットワーク (移行対象の仮想ネットワークなど) をピアリングできます (**ピアリングした仮想ネットワークは移行できないため、仮想ネットワークの移行の完了後**)。そのため、同じ機能を提供しても、パフォーマンスが失われたり、待ち時間や帯域幅のペナルティが発生したりすることはありません。 [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)の追加により、Web/worker ロールのデプロイメントを簡単に移行できるようになりました。また、Azure Resource Manager への移行がブロックされることもありません。
 
-- **Azure Resource Manager のクォータ** - Azure リージョンには、クラシックと Azure Resource Manager の両方に個別のクォータ/制限があります。 移行シナリオにおいて新しいハードウェアを使用していない "*(クラシックの既存の VM を Azure Resource Manager に交換した)*" としても、移行の開始前には、十分な容量を持つ Azure Resource Manager のクォータが必要です。 問題となる主要な制限を以下に示します。  制限を引き上げるためのサポート チケットを開いてください。
+- **Azure Resource Manager のクォータ** - Azure リージョンには、クラシックと Azure Resource Manager の両方に個別のクォータ/制限があります。 移行シナリオにおいて新しいハードウェアを使用していない " *(クラシックの既存の VM を Azure Resource Manager に交換した)* " としても、移行の開始前には、十分な容量を持つ Azure Resource Manager のクォータが必要です。 問題となる主要な制限を以下に示します。  制限を引き上げるためのサポート チケットを開いてください。
 
     > [!NOTE]
     > 移行対象の現在の環境と同じリージョンでは、これらの制限を引き上げる必要があります。
@@ -131,8 +125,8 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - ルート テーブル
 
     最新バージョンの Azure PowerShell で次のコマンドを使用すると、現在の Azure Resource Manager のクォータを確認できます。
-    
-    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
+
 
     **コンピューティング** *(コア、可用性セット)*
 
@@ -191,7 +185,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技術的な考慮事項とトレードオフ
 
-これで、Azure Resource Manager への移行が完了し、プラットフォームを最大限に活用できます。  その他のメリットについては、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+これで、Azure Resource Manager への移行が完了し、プラットフォームを最大限に活用できます。  その他のメリットについては、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
 
 また、以下の点を考慮してください。
 
@@ -204,9 +198,9 @@ Azure Resource Manager には多くの優れた機能が用意されています
 Azure Resource Manager で有効にするサービスを、目的を持って選択してください。  多くのお客様は、Azure 環境について、以下のような魅力的な機能を活用しています。
 
 - [ロールベースのアクセス制御](../../role-based-access-control/overview.md)。
-- [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md#template-deployment)。
-- [タグ](../../azure-resource-manager/resource-group-using-tags.md)。
-- [アクティビティ コントロール](../../azure-resource-manager/resource-group-audit.md)
+- [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)。
+- [タグ](../../azure-resource-manager/management/tag-resources.md)。
+- [アクティビティ コントロール](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure のポリシー](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題
@@ -214,7 +208,7 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 このクラシックから Azure Resource Manager への移行を開始した理由を思い出してください。  そもそものビジネス上の理由は何でしたか。 また、ビジネス上の目的を達成しましたか。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

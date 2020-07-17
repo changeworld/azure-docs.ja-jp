@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111692"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181608"
 ---
 ## <a name="download-the-source-code"></a>ソース コードをダウンロードする
 
@@ -62,7 +62,7 @@ git submodule foreach git pull origin master
      また、このスクリプトは、プレフィックス **PCS** を持つ一連の環境変数をローカル コンピューターに追加します。 これらの環境変数では、リモート監視で Azure Key Vault リソースから読み取れるようにするための詳細が提供されます。 リモート監視では、この Key Vault リソースからその構成値が読み取られます。
 
      > [!TIP]
-     > また、このスクリプトは、完了すると、**\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに環境変数を保存します。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
+     > また、このスクリプトは、完了すると、 **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに環境変数を保存します。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
 
 1. コマンドライン環境を終了します。
 

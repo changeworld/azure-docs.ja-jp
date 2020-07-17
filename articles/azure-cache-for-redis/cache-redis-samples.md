@@ -1,25 +1,17 @@
 ---
-title: Azure Cache for Redis のサンプル | Microsoft Docs
-description: Azure Cache for Redis の使用方法について説明します
-services: cache
-documentationcenter: ''
+title: Azure Cache for Redis のサンプル
+description: コード サンプル (キャッシュへの接続、キャッシュに対するデータの読み取りと書き込み、ASP.NET Azure Cache for Redis プロバイダー) での Azure Cache for Redis の使用方法について説明します。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: multiple
-ms.topic: article
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 73c771ab18d1cc2944298818c1cab90eb2f277ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.service: cache
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238404"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75433399"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis のサンプル
 このトピックでは、キャッシュへの接続、キャッシュに対するデータの読み取りと書き込み、ASP.NET の Azure Cache for Redis プロバイダーの使用などのシナリオを対象とする、Azure Cache for Redis のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
@@ -69,4 +61,3 @@ ms.locfileid: "56238404"
 
 ## <a name="bandwidth-monitor"></a>帯域幅モニター
 「 [帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) 」サンプルでは、クライアントで使用されている帯域幅を監視できます。 帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
-

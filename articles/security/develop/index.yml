@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: 安全な開発に関するドキュメント
+summary: Microsoft のサンプル アプリ、ベスト プラクティス、ガイダンスを使用して、セキュリティで保護されたアプリケーションを Azure で開発してデプロイする方法について説明します。
+metadata:
+  title: Microsoft Azure での安全な開発に関するドキュメント
+  description: サンプル アプリ、ベスト プラクティス、ガイダンスを使用して、セキュリティで保護されたアプリケーションを Azure で開発する方法について説明します。
+  services: security
+  ms.service: security
+  ms.subservice: develop
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 6ca73686874b1a90d5374d7d6326c4f121d928f9
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "78970014"
+landingContent:
+- title: 安全なサンプル アプリの開発
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Linux コンテナー内の Web アプリ
+      url: secure-web-app.md
+    - text: Web アプリと Azure Active Directory
+      url: secure-aad-app.md
+    - text: ペイメント カード業界
+      url: secure-pci-web-app.md
+- title: はじめに
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全な開発のベスト プラクティス
+      url: secure-dev-overview.md
+    - text: 設計フェーズ
+      url: secure-design.md
+    - text: 開発フェーズ
+      url: secure-develop.md
+    - text: デプロイ フェーズ
+      url: secure-deploy.md
+- title: セキュリティで保護された開発に分析ツールを追加する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ コードの分析
+      url: security-code-analysis-overview.md
+    - text: 脅威モデリング
+      url: threat-modeling-tool.md
+- title: スキルアップする
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 上位 5 つのセキュリティ アイテム
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: Azure でクラウド アプリケーションをセキュリティで保護する
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

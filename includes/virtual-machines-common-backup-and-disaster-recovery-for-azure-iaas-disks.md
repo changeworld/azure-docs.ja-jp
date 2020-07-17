@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64732668"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77179112"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
-
 この記事では、Azure の IaaS 仮想マシン (VM) とディスクのバックアップおよびディザスター リカバリー (DR) を計画する方法について説明します。 このドキュメントでは、マネージド ディスクと非管理対象ディスクの両方について説明しています。
 
 最初に Azure プラットフォームに組み込まれているフォールト トレランス機能について説明します。この機能は、局所的な障害に対する保護となります。 次に、組み込みの機能では完全にはカバーされない障害のシナリオについて説明します。 また、別のバックアップと DR の考慮事項を適用できるワークロード シナリオの例を複数紹介します。 そして、IaaS のディスクの DR に対して考えられる解決策を検討します。
@@ -63,15 +61,15 @@ IaaS ワークロードを障害から保護するには、回復を可能にす
 
 DR の考慮事項には、次の側面が含まれます。
 
-- 高可用性:大幅なダウンタイムなしに、正常な状態で実行を継続するアプリケーションの能力です。 "*正常な状態*" とは、アプリケーションが応答し、ユーザーがアプリケーションに接続して対話できるという意味です。 特定のミッション クリティカルなアプリケーションとデータベースは、プラットフォームに障害が発生した場合でも、常に使用可能であることが求められます。 これらのワークロードについては、データだけでなく、アプリケーションの冗長性を計画する必要があります。
+- 高可用性: 大幅なダウンタイムなしに、正常な状態で実行を継続するアプリケーションの能力です。 "*正常な状態*" とは、アプリケーションが応答し、ユーザーがアプリケーションに接続して対話できるという意味です。 特定のミッション クリティカルなアプリケーションとデータベースは、プラットフォームに障害が発生した場合でも、常に使用可能であることが求められます。 これらのワークロードについては、データだけでなく、アプリケーションの冗長性を計画する必要があります。
 
-- データの持続性:主な検討事項が、災害が発生した場合にも確実にデータを保持することである場合もあります。 そのため、別のサイトでデータをバックアップする必要があるかもしれません。 このようなワークロードの場合、アプリケーションの完全な冗長性の必要はなく、ディスクの定期的なバックアップのみが必要となります。
+- データの持続性: 主な検討事項が、災害が発生した場合にも確実にデータを保持することである場合もあります。 そのため、別のサイトでデータをバックアップする必要があるかもしれません。 このようなワークロードの場合、アプリケーションの完全な冗長性の必要はなく、ディスクの定期的なバックアップのみが必要となります。
 
 ## <a name="backup-and-dr-scenarios"></a>バックアップと DR シナリオ
 
 アプリケーション ワークロードのシナリオの一般的ないくつかの例と、ディザスター リカバリー計画に関する検討事項について考えてみましょう。
 
-### <a name="scenario-1-major-database-solutions"></a>シナリオ 1:大規模なデータベースのソリューション
+### <a name="scenario-1-major-database-solutions"></a>シナリオ 1: 大規模なデータベースのソリューション
 
 高可用性をサポートできる SQL Server または Oracle のような実稼働データベース サーバーについて考えてみます。 重要な実稼働アプリケーションとユーザーは、このデータベースに依存しています。 このシステムのディザスター リカバリー計画は、次の要件をサポートする必要があります。
 
@@ -82,21 +80,21 @@ DR の考慮事項には、次の側面が含まれます。
 
 MongoDB のような NoSQL データベースでは、冗長性を実現するために[レプリカ](https://docs.mongodb.com/manual/replication/)もサポートされています。 高可用性向けのレプリカが使用されます。
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>シナリオ 2:冗長 VM のクラスター
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>シナリオ 2: 冗長 VM のクラスター
 
 冗長性と負荷分散を提供する VM クラスターによって処理されるワークロードを検討します。 一例として、リージョンにデプロイされた Cassandra クラスターがあります。 このタイプのアーキテクチャは、リージョン内で高レベルの冗長性を既に提供しています。 ただし、リージョン レベルの障害からワークロードを保護するには、クラスターを 2 つのリージョンに分散させるか、別のリージョンに定期的なバックアップを実行することを検討する必要があります。
 
-### <a name="scenario-3-iaas-application-workload"></a>シナリオ 3:IaaS アプリケーション ワークロード
+### <a name="scenario-3-iaas-application-workload"></a>シナリオ 3: IaaS アプリケーション ワークロード
 
 IaaS アプリケーション ワークロードを見てみましょう。 たとえば、Azure VM で実行されている一般的な実稼働ワークロードが考えられます。 あるサイトのコンテンツと他のリソースを保持している Web サーバーまたはファイル サーバーが考えられます。 また、データ、リソース、アプリケーション状態などを VM ディスクに格納し、VM 上で実行されるカスタムビルドのビジネス アプリケーションかもしれません。 この場合は、定期的なバックアップを確実に行うことが重要です。 バックアップの頻度は、VM のワークロードの特性に基づいている必要があります。 たとえば、アプリケーションが毎日実行されてデータを変更している場合は、1 時間ごとにバックアップをとる必要があります。
 
 別の例は、他のソースからデータをプルして集計レポートを生成するレポート サーバーです。 この VM やディスクが失われると、レポートが失われることがあります。 ただし、レポート プロセスを再実行し、出力を再生成できる場合があります。 その場合は、レポート サーバーが災害に遭っても、実際にはデータは失われません。 その結果、レポート サーバー上のデータの部分的な消失に対しては、耐性が高くなります。 その場合は、バックアップの頻度を下げることが、コスト削減の方法の 1 つになります。
 
-### <a name="scenario-4-iaas-application-data-issues"></a>シナリオ 4:IaaS アプリケーション データの問題
+### <a name="scenario-4-iaas-application-data-issues"></a>シナリオ 4: IaaS アプリケーション データの問題
 
 IaaS アプリケーション データの問題も別の可能性として存在します。 価格情報などの重要な商用データを計算し、保守し、提供するアプリケーションについて考えます。 新しいバージョンのアプリケーションには、価格を誤って計算するソフトウェア バグがあり、プラットフォームによって提供される既存の商用データが破損しました。 ここでの最善策は、アプリケーションとデータを以前のバージョンに戻すことです。 これを可能にするには、定期的にシステムのバックアップをとります。
 
-## <a name="disaster-recovery-solution-azure-backup"></a>ディザスター リカバリー ソリューション:Azure Backup 
+## <a name="disaster-recovery-solution-azure-backup"></a>ディザスター リカバリー ソリューション: Azure Backup 
 
 [Azure Backup](https://azure.microsoft.com/services/backup/) はバックアップとディザスター リカバリーに使用され、[マネージド ディスク](../articles/virtual-machines/windows/managed-disks-overview.md)やアンマネージド ディスクと連携します。 時間ベースのバックアップ、VM の簡易復元、バックアップの保持ポリシーを使用して、バックアップ ジョブを作成することができます。
 
@@ -105,7 +103,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 アンマネージド ディスクについては、IaaS ディスクの場合はローカル冗長ストレージ タイプを使用できますが、Recovery Services コンテナーの場合は、Azure Backup を geo 冗長ストレージ オプションで有効にしてください。
 
 > [!NOTE]
-> 非管理対象ディスクに対して [geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)または[読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) オプションを使用する場合は、バックアップと DR の整合性スナップショットが必要です。 [Azure Backup](https://azure.microsoft.com/services/backup/) または[整合性スナップショット](#alternative-solution-consistent-snapshots)を使用します。
+> 非管理対象ディスクに対して [geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)または[読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy.md) オプションを使用する場合は、バックアップと DR の整合性スナップショットが必要です。 [Azure Backup](https://azure.microsoft.com/services/backup/) または[整合性スナップショット](#alternative-solution-consistent-snapshots)を使用します。
 
  DR に使用可能なソリューションの概要を次の表に示します。
 
@@ -115,7 +113,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 | マネージド ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | 非管理対象ローカル冗長ストレージ ディスク | ローカル ([ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | 非管理対象 geo 冗長ストレージ ディスク | リージョン間 ([geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
-| 非管理対象読み取りアクセス geo 冗長ストレージ ディスク | リージョン間 ([読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
+| 非管理対象読み取りアクセス geo 冗長ストレージ ディスク | リージョン間 ([読み取りアクセス geo 冗長ストレージ](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[整合性スナップショット](#alternative-solution-consistent-snapshots) |
 
 高可用性は、可用性セット内のマネージド ディスクを Azure Backup と共に使用することで最もよく対応できます。 非管理対象ディスクを使用する場合は、DR 用 Azure Backup を使用できます。 Azure Backup を使用できない場合、後のセクションで説明するように、[整合性スナップショット](#alternative-solution-consistent-snapshots)を利用することがバックアップと DR の代替ソリューションとなります。
 
@@ -130,7 +128,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 
 [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) では、Azure Recovery Services コンテナーに Windows または Linux を実行する VM をバックアップできます。 業務に不可欠なデータのバックアップと復元は、その生成元となるアプリケーションの実行中にバックアップを行う必要があるため、簡単ではありません。 
 
-この課題に対処するために、Azure Backup は、Microsoft のワークロードに対してアプリケーション整合性バックアップを提供します。 ボリューム シャドウ サービスを使用して、データがストレージに正しく書き込まれるようにします。 Linux にはボリューム シャドウ サービスに相当する機能がないため、Linux VM についてはファイル整合バックアップのみが可能です。
+この課題に対処するために、Azure Backup は、Microsoft のワークロードに対してアプリケーション整合性バックアップを提供します。 ボリューム シャドウ サービスを使用して、データがストレージに正しく書き込まれるようにします。 Linux には Windows のボリューム シャドウ サービスに相当する機能がないため、Linux VM では、既定のバックアップ整合性モードはファイル整合バックアップです。 Linux マシンについては、「[Azure Linux VM のアプリケーション整合性バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)」を参照してください。
 
 ![Azure Backup のフロー][1]
 
@@ -146,15 +144,13 @@ Azure Backup がスケジュールされた時刻にバックアップ ジョブ
 
     a. [Azure Portal](https://portal.azure.com/) を使用して、**すべてのリソース**を参照し、「**Recovery Services コンテナー**」を検索します。
 
-    b. **Recovery Services コンテナー** メニューで、**[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
+    b. **Recovery Services コンテナー** メニューで、 **[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
 
-1.  新しく作成されたコンテナーのストレージ レプリケーションを確認します。 **[Recovery Services コンテナー]** でコンテナーにアクセスし、**[設定]**  >  **[構成のバックアップ]** に移動します。 **[geo 冗長ストレージ]** オプションが既定で選択されていることを確認します。 このオプションを選択すると、コンテナーがセカンダリ データセンターに自動的にレプリケートされます。 たとえば、米国西部のコンテナーは、米国東部に自動的にレプリケートされます。
+1.  新しく作成されたコンテナーのストレージ レプリケーションを確認します。 **[Recovery Services コンテナー]** でコンテナーにアクセスし、 **[プロパティ]**  >  **[バックアップ構成]**  >  **[更新]** に移動します。 **[geo 冗長ストレージ]** オプションが既定で選択されていることを確認します。 このオプションを選択すると、コンテナーがセカンダリ データセンターに自動的にレプリケートされます。 たとえば、米国西部のコンテナーは、米国東部に自動的にレプリケートされます。
 
 1.  バックアップ ポリシーを構成し、同じ UI から VM を選択します。
 
 1.  Backup エージェントが VM にインストールされていることを確認します。 VM が Azure ギャラリー イメージを使用して作成されている場合、Backup エージェントは既にインストールされています。 それ以外の場合は (つまりカスタム イメージを使用する場合)、[仮想マシンに VM エージェントをインストールする](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent)手順を使用します。
-
-1.  バックアップ サービスが動作するために、ネットワーク接続が VM によって許可されていることを確認します。 [ネットワーク接続](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)に関する手順に従ってください。
 
 1.  上記の手順を完了すると、バックアップ ポリシーで指定されているとおり、バックアップが定期的に実行されます。 必要に応じて、Azure Portal のコンテナー ダッシュボードから、最初のバックアップを手動でトリガーできます。
 
@@ -172,7 +168,7 @@ VM を修復またはリビルドする必要がある場合は、コンテナ�
 
 また、[復元されたディスクからの新しい VM の作成](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)には、PowerShell を使用できます。
 
-## <a name="alternative-solution-consistent-snapshots"></a>代替のソリューション:整合性スナップショット
+## <a name="alternative-solution-consistent-snapshots"></a>代替のソリューション: 整合性スナップショット
 
 Azure Backup を使用できない場合は、スナップショットを使用して、独自のバックアップ メカニズムを実装できます。 VM で使用されるすべてのディスクの整合性スナップショットを作成し、そのスナップショットを別のリージョンにレプリケートする方法は複雑です。 このため、Azure では、バックアップ サービスの使用はカスタム ソリューションの構築よりも良いオプションであると考えています。
 
@@ -248,7 +244,7 @@ VM で実行されている SQL Server には、SQL Server データベースを
 
 選択したバックアップ オプションに応じて、ユーザーがデータと構成の両方のバックアップを処理する必要があるか、バックアップ サービスがすべてを処理します。
 
-## <a name="appendix-understanding-the-impact-of-data-redundancy"></a>付録:データの冗長性の影響を理解する
+## <a name="appendix-understanding-the-impact-of-data-redundancy"></a>付録: データの冗長性の影響を理解する
 
 Azure のストレージ アカウントについては、ディザスター リカバリーに関して考慮すべき 3 種類のデータの冗長性があります。すなわち、ローカル冗長、geo 冗長、読み取りアクセスを伴う geo 冗長です。 
 

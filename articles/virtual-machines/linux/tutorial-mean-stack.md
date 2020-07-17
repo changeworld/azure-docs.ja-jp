@@ -1,27 +1,26 @@
 ---
-title: チュートリアル - Azure の Linux 仮想マシンに MEAN スタックを作成する | Microsoft Docs
+title: チュートリアル - Azure の Linux 仮想マシンに MEAN スタックを作成する
 description: このチュートリアルでは、Azure 内の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66155312"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154323"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
@@ -35,7 +34,7 @@ ms.locfileid: "66155312"
 > * AngularJS によるルートへのアクセス
 > * アプリケーションの実行
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+このチュートリアルでは、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -328,7 +327,7 @@ sudo apt-get install -y nodejs
 
     ![書籍のレコード](media/tutorial-mean/meanstack-init.png)
 
-3. テキストボックスにデータを入力して、**[追加]** をクリックします。 例: 
+3. テキストボックスにデータを入力して、 **[追加]** をクリックします。 次に例を示します。
 
     ![書籍のレコードの追加](media/tutorial-mean/meanstack-add.png)
 
@@ -338,9 +337,9 @@ sudo apt-get install -y nodejs
 
 5. **[削除]** をクリックして、データベースから書籍のレコードを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Linux VM で MEAN スタックを使用して、書籍のレコードの記録をつける Web アプリケーションを作成しました。 以下の方法について学習しました。
+このチュートリアルでは、Linux VM で MEAN スタックを使用して、書籍のレコードの記録をつける Web アプリケーションを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Linux VM の作成
@@ -350,7 +349,7 @@ sudo apt-get install -y nodejs
 > * AngularJS によるルートへのアクセス
 > * アプリケーションの実行
 
-SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
+TLS 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
+> [TLS による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)

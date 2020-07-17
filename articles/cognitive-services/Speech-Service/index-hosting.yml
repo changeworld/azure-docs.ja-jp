@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: ドキュメントのホスト
+summary: Speech サービス コンテナーは、音声テキスト変換とテキスト読み上げの両方のシナリオで使用でき、標準モデルまたはカスタマイズしたモデルが含まれます。
+metadata:
+  title: ホスティングのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/23/2020
+  ms.author: trbye
+  ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "81401508"
+landingContent:
+- title: ホスティングについて
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Speech コンテナーをインストールおよび実行する
+      url: speech-container-howto.md
+    - text: Speech コンテナーと Kubernetes および Helm
+      url: speech-container-howto-on-premises.md
+    - text: Azure Container Instances 上の Speech コンテナー
+      url: deploy-speech-on-container-instances.md
+- title: 作成して構成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Speech リソースを作成する
+      url: get-started.md#new-resource
+    - text: Speech コンテナーを構成する
+      url: speech-container-configuration.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポートされているリージョン
+      url: regions.md
+    - text: ソブリン クラウド
+      url: sovereign-clouds.md
+    - text: コンテナーの FAQ
+      url: speech-container-faq.md

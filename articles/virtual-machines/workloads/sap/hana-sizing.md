@@ -3,23 +3,22 @@ title: SAP HANA on Azure (L インスタンス) のサイズ変更 | Microsoft D
 description: SAP HANA on Azure (L インスタンス) のサイズ変更。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0d72a9ef592579b21d082111ab8ad00f8995de2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44031040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77616904"
 ---
 # <a name="sizing"></a>サイズ変更
 
@@ -35,5 +34,5 @@ ms.locfileid: "44031040"
 
 データ量の増加に伴って、HANA のメモリ要件が増加します。 将来的に必要になるメモリ容量を予測できるように、現在のメモリ使用量に注意してください。 メモリ要件に基づいて、いずれかの HANA L インスタンス SKU に要求をマップできます。
 
-**次のステップ**
+**次の手順**
 - [オンボードの要件](hana-onboarding-requirements.md)を参照してください

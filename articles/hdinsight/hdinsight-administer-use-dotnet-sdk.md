@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36a77d49b507d3d0158d1b4b492d0141350de50f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724135"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240634"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 
@@ -108,11 +108,8 @@ namespace HDInsightManagement
 
 このプログラムを実行すると、プロンプトが表示されます。  プロンプトを表示しない場合は、「 [非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
 
-## <a name="create-clusters"></a>クラスターの作成
 
-[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-
-## <a name="list-clusters"></a>クラスターの一覧表示
+## <a name="list-clusters"></a>クラスターを一覧表示する
 
 次のコード スニペットは、クラスターと一部のプロパティを一覧表示します。
 
@@ -178,7 +175,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
     
 
-    ```cli
+    ```console
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
@@ -257,10 +254,6 @@ foreach (var key in results.Configuration.Keys)
 
 [.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。
 
-**Apache Pig ジョブを送信するには**
-
-[.NET SDK を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関するページを参照してください。
-
 **Apache Sqoop ジョブを送信するには**
 
 [HDInsight での Apache Sqoop の使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)に関するページを参照してください。
@@ -273,7 +266,7 @@ foreach (var key in results.Configuration.Keys)
 
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [HDInsight .NET SDK リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)

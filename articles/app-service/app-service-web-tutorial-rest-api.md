@@ -1,30 +1,21 @@
 ---
-title: CORS を使用して RESTful API をホストする - Azure App Service | Microsoft Docs
-description: Azure App Service で CORS サポートを使用して RESTful API をホストする方法について説明します。
-services: app-service\api
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
+title: チュートリアル:CORS を使用して RESTful API をホストする
+description: Azure App Service で CORS サポートを使用して RESTful API をホストする方法について説明します。 App Service は、フロントエンド Web アプリとバックエンド API の両方をホストできます。
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/21/2018
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/28/2020
+ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138595"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559781"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、RESTful API 用の[クロスオリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) の組み込みサポートがあります。 このチュートリアルでは、CORS サポートを使用して ASP.NET Core API アプリを App Service にデプロイする方法について説明します。 コマンドライン ツールを使用してアプリを構成し、Git を使用してアプリをデプロイします。 
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、RESTful API 用の[クロスオリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) の組み込みサポートがあります。 このチュートリアルでは、CORS サポートを使用して ASP.NET Core API アプリを App Service にデプロイする方法について説明します。 コマンドライン ツールを使用してアプリを構成し、Git を使用してアプリをデプロイします。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -41,8 +32,8 @@ ms.locfileid: "66138595"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Git をインストールします](https://git-scm.com/)。
-* [.NET Core のインストール](https://www.microsoft.com/net/core/)。
+* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">最新の .NET Core 3.1 SDK をインストールする</a>
 
 ## <a name="create-local-aspnet-core-app"></a>ローカル ASP.NET Core アプリの作成
 
@@ -72,7 +63,7 @@ dotnet run
 
 ブラウザーで `http://localhost:5000/swagger` に移動して、Swagger UI を起動します。
 
-![ローカルで実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/local-run.png)
+![ローカルで実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
 `http://localhost:5000/api/todo` に移動して、ToDo JSON 項目の一覧を確認します。
 
@@ -90,7 +81,7 @@ dotnet run
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -106,37 +97,38 @@ dotnet run
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+<pre>
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
+Total 83 (delta 26), reused 0 (delta 0)
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
+remote: Preparing deployment for commit id '509236e13d'.
 remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Project file path: .\TodoApi.csproj
+remote: Generating deployment script for ASP.NET MSBuild16 App
 remote: Generated deployment script files
 remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
 remote: .
 remote: .
 remote: .
 remote: Finished successfully.
 remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
-```
+</pre>
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 ブラウザーで `http://<app_name>.azurewebsites.net/swagger` に移動して、Swagger UI を起動します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
 `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` に移動して、デプロイされた API の _swagger.json_ を確認します。
 
@@ -158,9 +150,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 dotnet run
 ```
 
-`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl` + `Shift` + `i`)、**[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
+`http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl`+`Shift`+`i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
 
-![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/cors-error.png)
+![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
 ブラウザー アプリ (`http://localhost:5000`) とリモート リソース (`http://<app_name>.azurewebsites.net`) の間でドメインが一致しておらず、App Service の API が `Access-Control-Allow-Origin` ヘッダーを送信していないため、ブラウザー アプリでのクロスドメイン コンテンツの読み込みが、ブラウザーによって妨げられています。
 
@@ -168,10 +160,10 @@ dotnet run
 
 ### <a name="enable-cors"></a>CORS を有効にする 
 
-Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;appname>_ プレースホルダーを置き換えます。
+Cloud Shell で [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;app-name>_ プレースホルダーを置換します。
 
 ```azurecli-interactive
-az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
+az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
 ```
 
 `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) で 2 つ以上のクライアント URL を設定できます。 また、`"['*']"` を使用して、すべてのクライアント URL を有効にすることもできます。
@@ -183,7 +175,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 `http://localhost:5000` でブラウザー アプリを更新します。 **[Console]\(コンソール\)** ウィンドウのエラー メッセージは消えており、デプロイされた API からのデータを確認して操作できます。 これで、ローカルで実行されているブラウザー アプリへの CORS がリモート API でサポートされました。 
 
-![ブラウザー クライアントでの CORS の成功](./media/app-service-web-tutorial-rest-api/cors-success.png)
+![ブラウザー クライアントでの CORS の成功](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-success.png)
 
 おめでとうございます。CORS サポートを使用して Azure App Service の API が実行されています。
 
@@ -199,7 +191,7 @@ App Service CORS ではなく独自の CORS ユーティリティを使用して
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 
@@ -211,4 +203,4 @@ App Service CORS ではなく独自の CORS ユーティリティを使用して
 次のチュートリアルに進み、ユーザーを認証および承認する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル:エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)

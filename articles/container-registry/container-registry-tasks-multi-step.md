@@ -1,18 +1,14 @@
 ---
-title: Azure Container Registry マルチ ステップ タスクによってイメージのビルド、テスト、および修正プログラムの適用を自動化する
-description: Azure Container Registry の ACR タスクの機能である、マルチ ステップ タスクの概要。これは、クラウド上でコンテナー イメージのビルド、テスト、および修正プログラムの適用を行うためのタスク ベースのワークフローを提供するものです。
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: イメージのビルド、テスト、修正プログラムの適用を行うための複数ステップのタスク
+description: Azure Container Registry の ACR タスクの機能である、複数ステップのタスクの概要。これは、クラウドでコンテナー イメージのビルド、テスト、修正プログラムの適用を行うためのタスク ベースのワークフローを提供するものです。
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: danlep
-ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78399702"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する
 
@@ -54,36 +50,36 @@ ACR タスクのマルチ ステップ タスクは、YAML ファイル内で一
 次のスニペットでは、これらのタスクのステップの種類を組み合わせる方法を示しています。 マルチ ステップ タスクは、次のような YAML ファイルを使用して、Dockerfile から 1 つのイメージを構築してレジストリにプッシュするのと同じように単純にすることができます。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 複雑なものでは、次の架空のマルチ ステップ定義のように、ビルド、テスト、helm によるパッケージ化、および helm によるデプロイを実行するためのステップを含めることができます (コンテナー レジストリと Helm リポジトリの構成は示されていません)。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
-さまざまなシナリオ用の完全なマルチ ステップ タスクの YAML ファイルと Dockerfile については、[タスクの例][task-examples]を参照してください。
+さまざまなシナリオ用のマルチ ステップ タスクの YAML ファイルと Dockerfile については、[タスクの例](container-registry-tasks-samples.md)を参照してください。
 
 ## <a name="run-a-sample-task"></a>サンプル タスクを実行する
 
@@ -99,8 +95,11 @@ az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.co
 
 タスクを実行すると、出力には、YAML ファイルで定義されている各ステップの進行状況が表示されるはずです。 次の出力では、ステップは `acb_step_0` および `acb_step_1` として表示されています。
 
-```console
-$ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```azurecli
+az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```
+
+```output
 Sending context to registry: myregistry...
 Queued a run with ID: yd14
 Waiting for an agent...
@@ -149,12 +148,12 @@ Run ID: yd14 was successful after 19s
 
 Git でのコミット時または基本イメージの更新時のビルド自動化に関する詳細については、チュートリアル記事の「[イメージのビルドを自動化する](container-registry-tutorial-build-task.md)」と「[基本イメージ更新ビルド](container-registry-tutorial-base-image-update.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 マルチ ステップ タスクのリファレンスと例は以下に用意されています。
 
 * [タスクのリファレンス](container-registry-tasks-reference-yaml.md) - タスク ステップの種類、プロパティ、使い方。
-* [タスクの例][task-examples] - 簡単なものから複雑なものまで、いくつかのシナリオに向けた `task.yaml` ファイルの例。
+* [タスクの例](container-registry-tasks-samples.md) - 簡単なものから複雑なものまで、いくつかのシナリオに向けた `task.yaml` および Docker ファイルの例。
 * [コマンド リポジトリ](https://github.com/AzureCR/cmd) - ACR のタスクのコマンドとしてのコンテナーのコレクション。
 
 <!-- IMAGES -->

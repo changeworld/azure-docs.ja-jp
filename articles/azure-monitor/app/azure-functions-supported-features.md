@@ -1,33 +1,30 @@
 ---
-title: Azure Application Insights - Azure Functions でサポートされる機能 |Microsoft Docs
+title: Azure Application Insights - Azure Functions でサポートされる機能
 description: Azure Functions でサポートされる Application Insights の機能
-services: application-insights
-documentationcenter: .net
-author: MS-TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 10/05/2018
-ms.reviewer: mbullwin
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.date: 4/23/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496063"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77655652"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
-Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](https://github.com/Azure/Azure-Functions/wiki/App-Insights)については、Azure Functions のガイドを確認してください。
+Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](../../azure-functions/functions-monitoring.md)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)については、Azure Functions のガイドを確認してください。
 
-## <a name="supported-features"></a>サポートされる機能
+Functions ランタイム バージョンの詳細については、[こちら](../../azure-functions/functions-versions.md)をご覧ください。
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
+Application Insights の互換性のあるバージョンの詳細については、「[依存関係](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)」を参照してください。
+
+## <a name="supported-features"></a>サポートされている機能
+
+| Azure Functions                       | V1                | V2 および V3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **自動収集の対象**        |                 |                   |               
 | &bull; 要求                     | はい             | はい               | 
@@ -49,7 +46,7 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &bull; ServiceBus                     |                   | はい               | 
 | &bull; EventHub                       |                   | はい               | 
 | | | | 
-| **構成可能**                      |                   |                   |           
+| **構成可否**                      |                   |                   |           
 | &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
 
 

@@ -4,20 +4,21 @@ description: Azure IoT Edge では、証明書を使用して、デバイス、�
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 09/13/2018
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.custom: mqtt
+ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232228"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733159"
 ---
-# <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 証明書の使用方法の詳細
+# <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge での証明書の使用方法について理解する
 
-IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デバイスで、接続先の [IoT Edge ハブ](iot-edge-runtime.md#iot-edge-hub) ランタイム モジュールの ID と正当性を検証するために使用されます。 これらの検証によって、ランタイム、モジュール、および IoT デバイス間で TLS (トランスポート層セキュリティ) によるセキュアな接続が実現します。 IoT Hub 自体と同様に、IoT Edge では、IoT ダウンストリーム (リーフ) デバイスおよび IoT Edge モジュールからの、暗号化されたセキュアな接続が必要になります。 セキュアな TLS 接続を確立するために、IoT Edge ハブ モジュールでは、接続するクライアントにサーバー証明書のチェーンを提示して、それらのクライアントで ID を検証します。
+IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デバイスで、[IoT Edge ハブ](iot-edge-runtime.md#iot-edge-hub) ランタイム モジュールの ID と正当性を検証するために使用されます。 これらの検証によって、ランタイム、モジュール、および IoT デバイス間で TLS (トランスポート層セキュリティ) によるセキュアな接続が実現します。 IoT Hub 自体と同様に、IoT Edge では、IoT ダウンストリーム (リーフ) デバイスおよび IoT Edge モジュールからの、暗号化されたセキュアな接続が必要になります。 セキュアな TLS 接続を確立するために、IoT Edge ハブ モジュールでは、接続するクライアントにサーバー証明書のチェーンを提示して、それらのクライアントで ID を検証します。
 
 この記事では、IoT Edge 証明書が運用、開発、およびテストのシナリオでどのように動作可能であるかについて説明します。 スクリプトが異なる (Powershell と bash) 場合でも、Linux と Windows での概念は同じです。
 
@@ -51,7 +52,7 @@ IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デ
 
 ### <a name="device-ca-certificate"></a>デバイス CA 証明書
 
-デバイス CA 証明書は、プロセスの最後の中間 CA 証明書から生成され、この証明書で署名されます。 この証明書は、IoT Edge デバイス自体 (可能であれば、ハードウェア セキュリティ モジュール (HSM) などの安全なストレージ) にインストールされます。 さらに、デバイス CA 証明書は IoT Edge デバイスを一意に識別します。 IoT Edge の場合、デバイス CA 証明書は他の証明書を発行することができます。 たとえば、デバイス CA 証明書は、[Azure IoT Device Provisioning Service](../iot-dps/about-iot-dps.md) に対してデバイスを認証するために使用されるリーフ デバイス証明書を発行します。
+デバイス CA 証明書は、プロセスの最後の中間 CA 証明書から生成され、この証明書で署名されます。 この証明書は、IoT Edge デバイス自体 (可能であれば、ハードウェア セキュリティ モジュール (HSM) などの安全なストレージ) にインストールされます。 さらに、デバイス CA 証明書は IoT Edge デバイスを一意に識別します。 デバイス CA 証明書は、他の証明書に署名できます。
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge ワークロード CA
 
@@ -59,7 +60,7 @@ IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デ
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge ハブ サーバー証明書
 
-IoT Edge ハブ サーバー証明書は、IoT Edge で必要な TLS 接続の確立時に、ID 確認のためにリーフ デバイスとモジュールに提示される実際の証明書です。 この証明書は、ルート CA 証明書への証明書を生成するために使用される署名証明書チェーン全体を表します。リーフ IoT デバイスは必ず、これを信頼している必要があります。 IoT Edge セキュリティ マネージャーによって生成されるときに、この IoT Edge ハブ証明書の共通名 (CN) は、小文字に変換されてから、config.yaml ファイルの 'hostname' プロパティに設定されます。 これは、IoT Edge で混乱を招く一般的な要因になっています。
+IoT Edge ハブ サーバー証明書は、IoT Edge で必要な TLS 接続の確立時に、ID 確認のためにリーフ デバイスとモジュールに提示される実際の証明書です。 この証明書は、ルート CA 証明書への証明書を生成するために使用される署名証明書チェーン全体を表します。リーフ IoT デバイスは必ず、これを信頼している必要があります。 IoT Edge セキュリティ マネージャーによって生成されるときに、この IoT Edge ハブ証明書の共通名 (CN) は、小文字に変換されてから、config.yaml ファイルの 'hostname' プロパティに設定されます。 この構成は、IoT Edge で混乱を招く一般的な要因になっています。
 
 ## <a name="production-implications"></a>運用環境への影響
 
@@ -78,29 +79,7 @@ IoT Edge ハブ サーバー証明書は、IoT Edge で必要な TLS 接続の�
 
 ## <a name="devtest-implications"></a>Dev/Test の影響
 
-Dev/Test のシナリオを簡素化するために、Microsoft では、透過的ゲートウェイのシナリオで IoT Edge に適した非運用環境の証明書を生成するための、一連の[便利なスクリプト](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を提供しています。 スクリプトの機能の例については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」をご覧ください。
-
-これらのスクリプトによって、この記事で説明した証明書チェーン構造に沿った証明書が生成されます。 次のコマンドで "ルート CA 証明書" および単一の "中間 CA 証明書" を生成します。
-
-```bash
-./certGen.sh create_root_and_intermediate 
-```
-
-```Powershell
-New-CACertsCertChain rsa 
-```
-
-同様に、次のコマンドは、"デバイス CA 証明書" を生成します。
-
-```bash
-./certGen.sh create_edge_device_certificate "<gateway device name>"
-```
-
-```Powershell
-New-CACertsEdgeDevice "<gateway device name>"
-```
-
-* これらのスクリプトに渡される**\<ゲートウェイ デバイス名\>** は、config.yaml の "hostname" パラメーターと同じにしては**いけません**。 ユーザーが両方の場所で同じ名前を使用して IoT Edge を設定した場合に名前の競合を避けるため、スクリプトは**\<ゲートウェイ デバイス名\>** に ".ca" という文字列を追加することで問題を回避します。 ただし、ベスト プラクティスは、同じ名前の使用を避けることです。
+Dev/Test のシナリオを簡素化するために、Microsoft では、透過的ゲートウェイのシナリオで IoT Edge に適した非運用環境の証明書を生成するための、一連の[便利なスクリプト](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を提供しています。 スクリプトの動作の例については、[「IoT Edge デバイスの機能テスト用のデモ証明書を作成する 」](how-to-create-test-certificates.md) を参照してください。
 
 >[!Tip]
 > IoT Edge 経由で IoT デバイス SDK を使用するデバイス IoT の "リーフ" デバイスとアプリケーションに接続するには、デバイスの接続文字列の末尾にオプションの GatewayHostName パラメーターを追加する必要があります。 Edge Hub サーバー証明書が生成されるときは、config.yaml からの小文字バージョンのホスト名に基づくため、名前が一致して TLS 証明書の検証を通過するように、GatewayHostName パラメーターを小文字で入力する必要があります。
@@ -116,11 +95,11 @@ New-CACertsEdgeDevice "<gateway device name>"
 | ルート CA 証明書         | Azure IoT Hub の CA 証明書テストのみ                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
 | 中間 CA 証明書 | Azure IoT Hub の中間証明書テストのみ                                                                 |
-| デバイス CA 証明書       | iotgateway.ca ("iotgateway" は、< ゲートウェイ ホスト名> として、便利なスクリプトに渡されました)      |
+| デバイス CA 証明書       | iotgateway.ca ("iotgateway" は、< ゲートウェイ ホスト名> として、便利なスクリプトに渡されました)   |
 | ワークロード CA 証明書     | iotedge のワークロード CA                                                                                       |
-| IoT Edge ハブ サーバー証明書 | iotedgegw.local (config.yaml からの 'hostname' と一致する)                                                |
+| IoT Edge ハブ サーバー証明書 | iotedgegw.local (config.yaml からの 'hostname' と一致する)                                            |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure IoT Edge モジュールについて](iot-edge-modules.md)
 

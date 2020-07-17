@@ -1,20 +1,15 @@
 ---
-title: Azure Service Fabric Mesh に関してよく寄せられる質問 | Microsoft Docs
+title: Azure Service Fabric Mesh に関する一般的な質問
 description: Azure Service Fabric Mesh に関してよく寄せられる質問と答えについて説明します。
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
-ms.author: chackdan
+ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78252503"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
 
@@ -49,10 +44,13 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 そのようになった場合は、Azure CLI で `az mesh app show` コマンドを実行することで、システムがシャットダウンしたことを確認できます。 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` が返されるかどうかをチェックします 
 
-例:  
+次に例を示します。 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -86,7 +84,6 @@ Windows Fall Creators Update (バージョン 1709) のコンピューターで�
 Windows 10 April 2018 Update (バージョン 1803) のコンピューターで開発を行っている場合は、Windows バージョン 1709 または Windows バージョン 1803 の Docker イメージを使用できます。
 
 サービスをデプロイするために、次のコンテナー OS イメージを使用できます:
-
 - Windows - windowsservercore と nanoserver
     - Windows Server 1709
     - Windows Server 1803
@@ -110,7 +107,7 @@ Windows 10 April 2018 Update (バージョン 1803) のコンピューターで�
 
 - Windows Fall Creators Update (バージョン 1709) 以降をベース コンテナー イメージとして使用します。
 - サービス名だけでは機能しない場合は、完全修飾名を試してください:ServiceName.ApplicationName。
-- サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 例: 
+- サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 次に例を示します。
 
 ```Dockerfile
 EXPOSE 80
@@ -128,7 +125,7 @@ Windows 10 で Service Fabric 開発クラスターを実行するときに発�
 
 ### <a name="networking"></a>ネットワーク
 
-ローカル コンピューターでアプリを使用または実行中に ServiceFabric ネットワーク NAT が消失する場合があります。 これが発生したかどうかを診断するには、コマンド プロンプトから 
+ローカル コンピューターでアプリを使用または実行中に ServiceFabric ネットワーク NAT が消失する場合があります。 これが発生したかどうかを診断するには、コマンド プロンプトから
 
 `docker network ls` を実行し、`servicefabric_nat` が表示されているかどうか確認します。  されていない場合、次のコマンドを実行します: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
@@ -170,6 +167,6 @@ IP アドレスがすぐに利用可能にならない既知の問題があり�
 
 これはバグであり、修正プログラムが実装されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric Mesh の詳細については、[概要](service-fabric-mesh-overview.md)ページをお読みください。

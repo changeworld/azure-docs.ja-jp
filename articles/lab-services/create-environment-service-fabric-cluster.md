@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs で Service Fabric クラスターがある環境を作成する | Microsoft Docs
+title: Azure DevTest Labs で Service Fabric クラスター環境を作成する
 description: 自己完結型 Service Fabric クラスターがある環境を作成し、そのクラスターをスケジュールを使用して開始および停止する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 9848f197800c391285c4065685b910685f0ac64b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319067"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76170335"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs で Service Fabric クラスターがある環境を作成する
 この記事では、Azure DevTest Labs で自己完結型 Service Fabric クラスターがある環境を作成する方法について説明します。 
@@ -34,7 +34,7 @@ Service Fabric クラスターは、DevTest Labs の環境を使用して作成�
 2. 次の手順に従って、自分のサブスクリプションに Service Fabric プロバイダーが登録されていることを確認します。
     1. 左側のナビゲーション メニューで **[サブスクリプション]** を選択し、自分の**サブスクリプション**を選択します。
     2. **[サブスクリプション]** ページで、左側のメニューの **[設定]** セクションから **[リソース プロバイダー]** を選択します。 
-    3. **Microsoft.ServiecFabric** が登録されていない場合は、**[登録]** を選択します。 
+    3. **Microsoft.ServiecFabric** が登録されていない場合は、 **[登録]** を選択します。 
 3. ラボの**DevTest Lab**ページで、ツール バーの **+ 追加** を選びます。 
     
     ![ツール バーの [追加] ボタン](./media/create-environment-service-fabric-cluster/add-button.png)
@@ -43,7 +43,7 @@ Service Fabric クラスターは、DevTest Labs の環境を使用して作成�
     ![一覧から [Service Fabric Lab クラスター] を選択](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. **[設定の構成]** ページで、次の手順に従います。 
     1. 自分のクラスター**環境**の **[名前]** を指定します。 これは、その中に Service Fabric クラスターが作成される Azure 上のリソース グループの名前です。 
-    2. クラスターの仮想マシンの**オペレーティング システム (OS)** を選択します。 既定値は **Windows** です。
+    2. クラスターの仮想マシンの**オペレーティング システム (OS)** を選択します。 既定値は**Windows** です。
     3. クラスターの**管理者**の名前を指定します。 
     4. 管理者の**パスワード**を指定します。 
     5. **[証明書]** には、証明書の情報を Base64 でエンコードされた文字列として入力します。 証明書ファイルを作成するには、次の手順を実行します。
@@ -87,7 +87,7 @@ DevTest ラボ ページ自体、または DevTest Labs によって提供され
     ![Service Fabric クラスター ページの [開始] コマンドと [停止] コマンド](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
 
 ## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>自動開始と自動シャットダウンのスケジュールを構成する
-Service Fabric クラスターは、スケジュールに従って開始または停止することもできます。 このエクスペリエンスは、ラボの仮想マシンに対するエクスペリエンスに似ています。 コストを削減するために、既定では、ラボで作成されるすべてのクラスターは、ラボの[シャットダウン ポリシー](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown)に定義された時刻に自動的にシャットダウンされます。 クラスターをシャットダウンするかどうかを指定する、またはクラスターのシャットダウン時刻を指定することで上書きできます。 
+Service Fabric クラスターは、スケジュールに従って開始または停止することもできます。 このエクスペリエンスは、ラボの仮想マシンに対するエクスペリエンスに似ています。 コストを削減するために、既定では、ラボで作成されるすべてのクラスターは、ラボの[シャットダウン ポリシー](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)に定義された時刻に自動的にシャットダウンされます。 クラスターをシャットダウンするかどうかを指定する、またはクラスターのシャットダウン時刻を指定することで上書きできます。 
 
 ![自動開始と自動シャットダウンを実行する既存のスケジュール](./media/create-environment-service-fabric-cluster/existing-schedules.png)
 
@@ -104,7 +104,7 @@ Service Fabric クラスターは、スケジュールに従って開始また�
 シャットダウンの設定を変更するには、次の手順を実行します。
 
 1. 左側のメニューの **[自動シャットダウン]** を選択します。 
-2. このページで、**[有効化]** で **[オフ]** を選択することで、自動シャットダウンをオプトアウトできます。 
+2. このページで、 **[有効化]** で **[オフ]** を選択することで、自動シャットダウンをオプトアウトできます。 
 3. **[有効化]** で **[オン]** を選択した場合は、次の手順に従います。
     1. シャットダウンする**時刻**を指定します。
     2. 時刻の**タイムゾーン**を指定します。 
@@ -117,7 +117,7 @@ Service Fabric クラスターは、スケジュールに従って開始また�
 ## <a name="to-view-nodes-in-the-service-fabric-cluster"></a>Service Fabric クラスター内のノードを表示する
 前の手順で表示した Service Fabric クラスター ページは、DevTest Labs ページ固有のものです。 クラスター内のノードは表示されません。 クラスターの詳細を表示するには、次の手順を実行します。
 
-1. ラボの **DevTest ラボ** ページで、**[マイ仮想マシン]** セクションのツリー ビューから**リソース グループ**を選択します。
+1. ラボの **DevTest ラボ** ページで、 **[マイ仮想マシン]** セクションのツリー ビューから**リソース グループ**を選択します。
 
     ![リソース グループの選択](./media/create-environment-service-fabric-cluster/select-resource-group.png)
 2. **リソース グループ** ページで、一覧のリソース グループ内のすべてのリソースを表示します。 一覧から自分の **Service Fabric クラスター** を選択します。 
@@ -127,7 +127,7 @@ Service Fabric クラスターは、スケジュールに従って開始また�
 
     ![Service Fabric クラスターのホーム ページ](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 環境の詳細については、次の記事を参照してください。 
 
 - [Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する](devtest-lab-create-environment-from-arm.md)

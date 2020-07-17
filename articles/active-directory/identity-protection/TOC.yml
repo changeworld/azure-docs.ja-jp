@@ -3,76 +3,60 @@
 - name: 概要
   items:
     - name: Azure AD Identity Protection とは
-      href: overview.md
-- name: クイック スタート
-  items:
-    - name: セッションのリスクが検出されたときにアクセスをブロックする
-      href: quickstart-sign-in-risk-policy.md
+      href: overview-identity-protection.md
 - name: 概念
   expanded: false
   items:
-    - name: 脆弱性とは
-      href: vulnerabilities.md
-    - name: 通知とは
-      href: notifications.md
+    - name: セキュリティの概要
+      href: concept-identity-protection-security-overview.md
+    - name: リスクとは
+      href: concept-identity-protection-risks.md
+    - name: Identity Protection ポリシー
+      href: concept-identity-protection-policies.md
     - name: サインイン エクスペリエンスとは
-      href: flows.md
-- name: ハウツー ガイド
+      href: concept-identity-protection-user-experience.md
+    - name: Identity Protection と B2B ユーザー
+      href: concept-identity-protection-b2b.md
+- name: 操作方法ガイド
   expanded: true
   items:
-    - name: Identity Protection
+    - name: 通知の構成
+      href: howto-identity-protection-configure-notifications.md
+    - name: ポリシーの構成
       items:
-        - name: Azure AD Identity Protection の有効化
-          href: enable.md
         - name: MFA 登録ポリシーを構成する
-          href: howto-mfa-policy.md
-        - name: サインイン リスク ポリシーを構成する
-          href: howto-sign-in-risk-policy.md
-        - name: ユーザー リスク ポリシーを構成する
-          href: howto-user-risk-policy.md
-        - name: アクティブなリスク イベントを閉じる
-          href: howto-close-active-risk-events.md
-        - name: ユーザーのブロックを解除する
-          href: howto-unblock-user.md
-        - name: リスク イベントをシミュレートする
-          href: playbook.md
-        - name: FAQ
-          href: faqs.md
-    - name: Identity Protection (更新版)
-      items:
-        - name: 概要
-          href: overview-v2.md
-        - name: セキュリティの概要
-          href: security-overview.md
-        - name: 危険なユーザーとサインインの調査
-          href: howto-investigate-risky-users-signins.md
-        - name: リスク イベントに関するフィードバックの提供
-          href: howto-provide-risk-event-feedback.md
+          href: howto-identity-protection-configure-mfa-policy.md
         - name: リスク ポリシーの構成
-          href: howto-configure-risk-policies.md
-        - name: 検出精度の向上
-          href: howto-improve-detection-accuracy.md
-        - name: FAQ と既知の問題
-          href: known-issues.md
+          href: howto-identity-protection-configure-risk-policies.md
+    - name: リスク検出をシミュレートする
+      href: howto-identity-protection-simulate-risk.md
+    - name: 調査と修復
+      items:
+        - name: リスクの調査
+          href: howto-identity-protection-investigate-risk.md
+        - name: リスク検出の修正とブロック解除
+          href: howto-identity-protection-remediate-unblock.md
+        - name: Microsoft Graph API を使用する
+          href: howto-identity-protection-graph-api.md
+    - name: リスク検出に関するフィードバックの提供
+      href: howto-identity-protection-risk-feedback.md
+    - name: FAQ
+      href: troubleshooting-identity-protection-faq.md
 - name: リファレンス
   items:
-    - name: Microsoft Graph API を使用する
-      href: graph-get-started.md
-    - name: リスク イベント
-      href: risk-events-reference.md
     - name: 用語集
-      href: glossary.md
+      href: reference-identity-protection-glossary.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

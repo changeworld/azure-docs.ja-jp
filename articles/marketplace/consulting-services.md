@@ -2,24 +2,18 @@
 title: Azure Marketplace および AppSource コンサルティング サービス
 description: この記事では、Azure Marketplace での新しいコンサルティング サービス プランの適格性条件と公開要件について説明します。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
-author: yijenj
-manager: nuno costa
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
+author: qianw211
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 10/29/2018
-ms.author: yijenj
-ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 02/27/2020
+ms.author: dsindona
+ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078763"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281580"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
 Azure Marketplace および AppSource のコンサルティング サービスは、お客様とサービスを結ぶという目標を Microsoft パートナーに提供し、Azure の使用と業務目標を支援して拡張します。 
@@ -31,24 +25,26 @@ Azure Marketplace および AppSource では、Microsoft のシステム イン�
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketplace と AppSource Storefront のコンサルティング サービス
 マーケットプレースのネットショップは、対象ユーザーや Microsoft のクラウド製品に合わせて作られており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップでは、公開への投資を最大限に活かすための特別な公開オプションが提供されています。 これらのオプションを以下の表にまとめています。
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**対象ユーザー**   |**IT プロフェッショナルとクラウド開発者**|**ビジネス ユーザー/基幹業務の意思決定者**|
-|ソリューションの関連性     |Azure 用または Azure 上に構築されたテクノロジ アプリ|D365、Power BI、O365、Azure を活用/拡張するビジネス アプリ  (アドインまたはアドオンの完成したアプリ)|
-|公開オプション     |問い合わせ、試用版、取引、コンサルティング サービス|問い合わせ、試用版、コンサルティング サービス|
+|ソリューションの関連性     |Azure 用または Azure 上に構築されたテクノロジ アプリ|D365、Power BI、O365、Azure を活用/拡張するビジネス アプリ (アドインまたはアドオンの完成したアプリ)|
+|公開オプション     |問い合わせ、試用版、取引、Azure 向けサービス|問い合わせ、試用版、Dynamics 365 および Power BI 向けサービス|
 |製品エクスペリエンス      |Microsoft Azure 管理ポータル|Dynamics 365、Office 365、Office クライアント アプリ| 
-|その他      |Azure Stack 経由のオンプレミス公開|Dynamics と Power BI 向けのコンサルティング サービス|
+|その他      |Azure Stack 経由のオンプレミス公開、Azure 向けコンサルティング サービス、Azure 向けマネージド サービス|Dynamics と Power BI 向けのコンサルティング サービス|
 
-Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プランは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を参照してください。 
+Microsoft Dynamics 365、Power Apps、Power BI に基づくコンサルティング サービス プランは、Microsoft AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)を参照してください。
+
+Microsoft Azure に基づくコンサルティング サービスおよびマネージド サービス オファーは、Azure Marketplace に掲載される資格があります。 詳細については、[Azure コンサルティング サービスの発行](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)および[Azure Marketplace へのマネージド サービス オファーの発行](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)に関する記事を参照してください。
 
 > [!Note]
-> Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 * * AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または PowerApps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
+> Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 ** AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または Power Apps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
 > 
 > 
 > [!TIP]
 > Azure Marketplace ネットショップに公開するには、Microsoft Cloud パートナー ポータルの [Primary Product] (基本製品) ドロップダウン メニューから [Azure] を選択します。 AppSource に公開する場合は、Microsoft Cloud パートナー ポータルの [Primary Product] (基本製品) ドロップダウン メニューから [Dynamics 365]、[Power BI]、または [Power Apps] を選択します。
 
-## <a name="eligible-partners-and-supported-countries"></a>対象となるパートナーとサポートされる国
+## <a name="eligible-partners-and-supported-countriesregions"></a>対象となるパートナーとサポートされる国/地域
 
 パートナーは、当該サービス分野において **Silver または Gold コンピテンシー**を持っている必要があります。 
 
@@ -65,29 +61,34 @@ Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プラ�
 
 |主な製品 |適格性の要件 |
 |---------|---------|
-| Dynamics 365 for Customer Engagement    |   Silver または Gold の[クラウド カスタマー リレーションシップ マネジメント](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) コンピテンシー。    | 
-|Dynamics 365 for Finance and Operations (Enterprise Edition)  |  Silver または Gold の[エンタープライズ リソース プラニング](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) コンピテンシーと、過去 12 か月間でのクラウド運用の収益 25,000 米ドル以上。       |
-|Dynamics 365 for Finance and Operations (Business Edition)  |  [クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/cloud-solution-provider) または[デジタル指名パートナー (DPOR) ](https://partner.microsoft.com/membership/digital-partner-of-record)として 1 人以上の顧客にサービスを提供している。      |
-|Power BI、Power BI カスタム ビジュアル | [ソリューション パートナーの条件](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)を満たしている。|
-|PowerApps | 公開済みの[パートナー ショーケース](https://appsource.microsoft.com/partners) ソリューションを備える。
+| Dynamics 365 Sales <br> Dynamics 365 Marketing <br> Dynamics 365 Customer Service <br> Dynamics 365 Field Service <br> Dynamics 365 Human Resources |   [Cloud Business Applications コンピテンシー](https://partner.microsoft.com/membership/cloud-business-applications-competency)の Customer Engagement オプションで Gold 認定または Silver 認定を取得している必要があります。    | 
+| Dynamics 365 Finance <br> Dynamics 365 Supply Chain Management <br> Dynamics 365 Commerce <br> Dynamics 365 Human Resources <br> Dynamics 365 Project Service Automation |  [Cloud Business Applications コンピテンシー](https://partner.microsoft.com/membership/cloud-business-applications-competency)の Unified Operations オプションで Gold 認定または Silver 認定を取得している必要があります。       |
+| Dynamics 365 Customer Insights | [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) の実稼動環境への導入実績 (少なくとも 5 つのメジャーと 5 つのセグメントを含む) が少なくとも 1 件必要です。 |
+| Dynamics 365 Business Central | [Enterprise Resource Planning コンピテンシー](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)で Gold 認定または Silver 認定を取得していること、また、少なくとも 3 社の Business Central ユーザーのクラウド ソリューション プロバイダーであることが必要です。 <br> <br> OR <br> <br> [AppSource で Business Central アプリケーション](https://appsource.microsoft.com/)を公開した経験が必要です。 |
+| Power BI | [Power BI パートナー ショーケース](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)に掲載されている必要があります。|
+|Power Apps | [Power Apps Partnership Program](https://aka.ms/PowerAppsPartner) の Advanced Benefits の対象になっている必要があります。 |
+
+その他のリソースとサポート:
+
+1. [Microsoft Cloud Enablement Desk](https://aka.ms/CEDnominate) <br> Cloud Enablement Desk Guided Experience Partner Nomination フォームは、MPN の特典を明確に伝え、コンピテンシー獲得のためのガイドとしての役割を果たすクラウド プログラム スペシャリストを指名するものです。  
+2. Power BI ショーケースに掲載されるためにはどうすればよいか? <br> まず掲載リクエストを送信します。[パートナーになる方法](https://powerbi.microsoft.com/become-a-partner/)に関するページを参照してください。
 
 <b>詳細については、[Microsoft Partner Network を通じたコンピテンシー](https://partner.microsoft.com/membership/competencies)に関するページをご覧ください。</b>
- 
 
-**SI パートナーは、次の 18 か国でコンサルティングサービス プランを提供できます**
+**SI パートナーは、次の 21 の国と地域でコンサルティングサービス プランを提供できます**
 
-|対象の国 |   |   |   |
+|   |   |   |   |
 |---------|----------|----------|----------|
-|オーストラリア |フランス  |     メキシコ          |スペイン       |
-|ベルギー   |ドイツ |     オランダ     |スウェーデン       |
-|カナダ    |インド   |     ニュージーランド     |イギリス  |
-|デンマーク   |イタリア   |     ノルウェー          |米国 |
-|フィンランド   |日本   |     ポーランド          
+| オーストラリア | ベルギー | カナダ | デンマーク |
+| フィンランド  | フランス | ドイツ  | インド   |
+| イタリア    | 日本  |  メキシコ  |  オランダ  |
+|  ニュージーランド  |  ノルウェー  |  ポーランド  | 南アフリカ |
+|  スペイン  | スウェーデン  | スイス  |  アメリカ  |
+| イギリス  |
 
-コンサルティング サービスは、一部のリージョンで提供が開始されます。 最初の提供開始は、米国、カナダ、英国、オーストラリアです。 他の国のカタログは、ある程度の数の魅力的なサービス プランがパートナーから提出されて、Microsoft がそれを承認した後に開始されます。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource のコンサルティング サービスに登録する方法
-最初に、マーケットプレースにご自身の企業情報を[登録](https://azuremarketplace.microsoft.com/sell/signup)します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照することができます。 
+最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照することができます。 
 
 **登録後の流れ** 1 - 3 営業日で、Cloud パートナー ポータル (CPP) のログイン情報が記載されたウェルカム メールがオンボーディング チームから届きます。 [Cloud パートナー ポータル](https://cloudpartner.azure.com)は、パブリッシャーが掲載情報および提出物を提出するプラン掲載ポータルです。 
 
@@ -124,7 +125,7 @@ Azure Marketplace および AppSource へのコンサルティングサービス
 3. **送信**:手順に記載されている必要な情報を提供します。 すべてのコンテンツとサポート資料は、英語で送信する必要があります。 
 4. **レビュー**:Microsoft のマーケティング チームと編集チームが、パートナーの提出物を確認し、読みやすさ、文法、効果が最適になるようにします。 
 5. **ステージング**:パートナーが確認できるように、提出物がステージングされます。 
-6. **公開**:ステージングされたコンテンツに関してパートナーと Microsoft が満足した場合、パートナーのプランはマーケットプレースに掲載できる状態になります。 掲載の公開日は、プランで指定されている国によって異なります。 選択した国のカタログが Azure Marketplace または AppSource で既に公開されている場合は、数時間以内に一覧が掲載されます。 それ以外の場合は、カタログが公開されるとすぐに掲載されます。
+6. **公開**:ステージングされたコンテンツに関してパートナーと Microsoft が満足した場合、パートナーのプランはマーケットプレースに掲載できる状態になります。 掲載の公開日は、プランで指定されている国/地域によって異なります。 選択した国/地域のカタログが Azure Marketplace または AppSource で既に公開されている場合は、数時間以内に一覧が掲載されます。 それ以外の場合は、カタログが公開されるとすぐに掲載されます。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>オファーの掲載とコンテンツのレビュー基準
 プランは、次の 5 種類のサービスのいずれかでなければなりません (複数を掲載できます)。 
@@ -143,7 +144,7 @@ Azure Marketplace および AppSource へのコンサルティングサービス
 
 タイトル フィールドは 50 文字以内に制限されており、プランの期間とサービスの種類を送信して、検索エンジンを最大限に最適化する必要があります。 次の形式にする必要があります。名前: 期間の種類
 
-次に例を示します。
+例 :
 
 
 |サンプル タイトル  |正しい形式  |
@@ -164,7 +165,7 @@ Azure Marketplace および AppSource へのコンサルティングサービス
 |**概念実証**    |    お客様が契約の結果として期待できる、エンジニアリングの変化、技術的成果物、その他の成果物について明確にします     | プラン概要を検索エンジン最適化の上位キーワードで最適化します        |
 |**ワークショップ**    |   選択されたプランの期間に応じて、日ごと、週ごと、月ごとの詳細な議題を含めます。 ワークショップでの学習の目標やその他の成果を明確にします     |   プラン概要を検索エンジン最適化の上位キーワードで最適化します      |
 
-Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
+Cloud パートナー ポータルでは、[Markdown](/contribute/markdown-reference) を使ってリスティングの書式を追加することができます。 Markdown とは、リスティングに統一感をもたせるのに便利な軽量マークアップ言語です。 
 
 **サンプルの Markdown ノート**
 * コピー ブロックの最初と最後に * を追加します。斜体にする場合、スペースは入れません (例: *content*)
@@ -173,10 +174,10 @@ Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com
 * ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>見出しのスペース (例: ###(スペース)議題/成果物)
 * 見出しの後の改行
 * ** = 太字 
-* * プランの概要を斜体にします
+* \* プランの概要を斜体にします
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、 
 

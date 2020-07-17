@@ -1,35 +1,35 @@
 ---
 title: メタデータと GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
+description: QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/16/2019
-ms.author: tulasim
-ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.topic: conceptual
+ms.date: 03/31/2020
+ms.author: diberry
+ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683604"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659551"
 ---
-# <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使ってナレッジの回答を取得する
+# <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
-ユーザーの質問に対して予測される回答を取得するには、GenerateAnswer API を使用します。 ナレッジ ベースを公開するときに、この API を使用するために、ここに示した情報が公開ページ上に表示されます。 また、メタデータ タグに基づいて回答をフィルター処理するように API を構成し、テスト クエリ文字列パラメーターを使用してエンドポイントからナレッジ ベースをテストすることも可能です。
+ユーザーの質問に対して予測される回答を取得するには、GenerateAnswer API を使用します。 ナレッジ ベースを公開するときに、 **[公開]** ページにこの API を使用する方法に関する情報が表示されます。 また、メタデータ タグに基づいて回答をフィルター処理するように API を構成し、テスト クエリ文字列パラメーターを使用してエンドポイントからナレッジ ベースをテストすることも可能です。
 
-QnA Maker では、キーと値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
+QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
 
 <a name="qna-entity"></a>
 
-## <a name="storing-questions-and-answers-with-a-qna-entity"></a>QnA エンティティを使用して質問と回答を保存する
+## <a name="store-questions-and-answers-with-a-qna-entity"></a>QnA エンティティを使用して質問と回答を保存する
 
-まず、QnA Maker での質問/回答データの格納方法を理解することが重要です。 QnA エンティティを次の図に示します。
+まず、QnA Maker での質問と回答のデータの格納方法を理解することが重要です。 QnA エンティティを次の図に示します。
 
-![QnA エンティティ](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
+![QnA エンティティのイラスト](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
 
 QnA エンティティにはそれぞれ一意の永続 ID があります。 ID を使用して、特定の QnA エンティティを更新することができます。
 
@@ -37,21 +37,21 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>GenerateAnswer API を使用して回答の予測を取得する
 
-ボットやアプリケーションで GenerateAnswer API を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問/回答のセットから最も一致するものを取得します。
+ボットやアプリケーションで [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のセットから最も一致するものを取得します。
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する 
+## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する
 
-ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
+ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
 
 エンドポイントの詳細を取得するには、次のようにします。
 1. [https://www.qnamaker.ai](https://www.qnamaker.ai) にサインインします。
-1. **[My knowledge bases]\(マイ ナレッジ ベース\)** で、ご利用のナレッジ ベースの **[コードの表示]** をクリックします。
-    ![マイ ナレッジ ベース](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+1. **[My knowledge bases]** (マイ ナレッジ ベース) で、ご利用のナレッジ ベースの **[コードの表示]** をクリックします。
+    ![ナレッジ ベースのスクリーンショット](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. GenerateAnswer エンドポイントの詳細を取得します。
 
-    ![エンドポイントの詳細](../media/qnamaker-how-to-metadata-usage/view-code.png)
+    ![エンドポイントの詳細のスクリーンショット](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
 エンドポイントの詳細は、ナレッジ ベースの **[設定]** タブから取得することもできます。
 
@@ -59,32 +59,21 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer 要求の構成
 
-HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/csharp.md)を参照してください。
+HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base)を参照してください。
 
-**要求 URL** は、次のような形式になります。 
+POST 要求では以下を使用します。
+
+* 必須の [URI パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* セキュリティを確保するために必須のヘッダー プロパティ (`Authorization`)
+* 必須の[本文プロパティ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)
+
+GenerateAnswer の URL は次の形式になります。
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP 要求プロパティ|Name|Type|目的|
-|--|--|--|--|
-|URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
-|URL ルート パラメーター|QnAMaker エンドポイントのホスト|string|Azure サブスクリプションにデプロイされているエンドポイントのホスト名。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 |
-|ヘッダー|Content-Type|string|API に送信される本文のメディアの種類。 既定値: `` |
-|ヘッダー|Authorization|string|エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
-|Post 本文|JSON オブジェクト|JSON|設定が付与されている質問|
-
-
-JSON の本文には、次のようないくつかの設定があります。
-
-|JSON 本文のプロパティ|必須|Type|目的|
-|--|--|--|--|
-|`question`|必須|string|ナレッジ ベースに送信されるユーザーの質問。|
-|`top`|省略可能|integer|出力を含めるランク付けされた結果の数。 既定値は 1 です。|
-|`userId`|省略可能|string|ユーザーを識別する一意の ID。 この ID はチャット ログに記録されます。|
-|`isTest`|省略可能|ブール値|true に設定した場合、公開されたインデックスではなく、`testkb` 検索インデックスから結果が返されます。|
-|`strictFilters`|省略可能|string|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。 応答にメタデータ フィルターを適用しないよう指定するには、`none` を使用します。 |
+文字列 `EndpointKey` の値と末尾のスペースを含めて、HTTP ヘッダー プロパティ `Authorization` を必ず設定してください。エンドポイント キーは、 **[設定]** ページで確認できます。
 
 JSON 本文の例は、次のようになります。
 
@@ -93,6 +82,8 @@ JSON 本文の例は、次のようになります。
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
+    "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -102,29 +93,21 @@ JSON 本文の例は、次のようになります。
 }
 ```
 
+[rankerType](../concepts/best-practices.md#choosing-ranker-type) の詳細について確認してください。
+
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
+
 <a name="generateanswer-response"></a>
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer の応答プロパティ
 
-成功した応答は、ステータス 200 と JSON 応答を返します。 
-
-|回答のプロパティ (スコア順)|目的|
-|--|--|
-|スコア|0 から 100 のランキング スコア。|
-|Id|回答に割り当てられた一意の ID。|
-|questions|ユーザーによって提供された質問。|
-|応答して|質問への答え。|
-|source|ナレッジ ベースで抽出または保存された回答のソースの名前。|
-|metadata|回答に関連付けられたメタデータ。|
-|metadata.name|メタデータの名前。 (文字列。最大長: 100。必須)|
-|metadata.value:メタデータの値。 (文字列。最大長: 100。必須)|
-
+[応答](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)は、回答と会話の次のターン (使用可能な場合) を表示するために必要なすべての情報を含む JSON オブジェクトです。
 
 ```json
 {
     "answers": [
         {
-            "score": 28.54820341616869,
+            "score": 38.54820341616869,
             "Id": 20,
             "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
             "source": "Custom Editorial",
@@ -142,21 +125,60 @@ JSON 本文の例は、次のようになります。
 }
 ```
 
+以前の JSON では、スコアが 38.5% の回答で応答しました。
+
+## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
+
+Bot Framework では、[getAnswer API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
+
+```csharp
+using Microsoft.Bot.Builder.AI.QnA;
+var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
+var qnaOptions = new QnAMakerOptions();
+
+metadata.Name = Constants.MetadataName.Intent;
+metadata.Value = topIntent;
+qnaOptions.StrictFilters = new Microsoft.Bot.Builder.AI.QnA.Metadata[] { metadata };
+qnaOptions.Top = Constants.DefaultTop;
+qnaOptions.ScoreThreshold = 0.3F;
+var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
+```
+
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
+
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js のボットで QnA Maker を使用する
+
+Bot Framework では、[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) を使用して QnA Maker のプロパティへのアクセスを提供します。
+
+```javascript
+const { QnAMaker } = require('botbuilder-ai');
+this.qnaMaker = new QnAMaker(endpoint);
+
+// Default QnAMakerOptions
+var qnaMakerOptions = {
+    ScoreThreshold: 0.30,
+    Top: 3
+};
+var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
+```
+
+以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
+
 <a name="metadata-example"></a>
 
-## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>メタデータを使用してカスタム メタデータ タグによる回答のフィルター処理を行う
+## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>メタデータを使用してカスタム メタデータ タグによる回答のフィルター処理を行う
 
-メタデータを追加すると、これらのメタデータ タグによって回答をフィルター処理できます。 次の FAQ データがあるとします。 メタデータ アイコンをクリックして、メタデータをナレッジ ベースに追加します。
+メタデータを追加すると、これらのメタデータ タグによって回答をフィルター処理できます。 **[表示のオプション]** メニューからメタデータ列を追加します。 メタデータ **+** アイコンを選択してメタデータ ペアを追加して、メタデータをナレッジ ベースに追加します。 このペアは、1 つのキーと 1 つの値で構成されます。
 
-![メタデータの追加](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
+![メタデータの追加のスクリーンショット](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
 <a name="filter-results-with-strictfilters-for-metadata-tags"></a>
 
 ## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>メタデータ タグの strictFilters を使用して結果をフィルター処理する
 
-ユーザーの質問が "When does this hotel close?" (このホテルはいつ閉まりますか?) であるとします。 これには、"Paradise" というレストランがいつ閉まるかという意味が含まれます。
+ユーザーの質問が "When does this hotel close?" (このホテルはいつ閉まりますか?) であるとします。これには、"Paradise" というレストランがいつ閉まるかという意味が含まれます。
 
-"Paradise" レストランに関する結果のみが必要であるため、次のように、メタデータ "Restaurant Name" に対する GenerateAnswer 呼び出しでフィルターを設定することができます。
+"Paradise" レストランに関する結果のみが必要であるため、メタデータ "Restaurant Name" に対する GenerateAnswer 呼び出しでフィルターを設定することができます。 次の例はこのことを示します。
 
 ```json
 {
@@ -170,11 +192,11 @@ JSON 本文の例は、次のようになります。
 }
 ```
 
-<name="keep-context"></a>
+<a name="keep-context"></a>
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>質問と回答の結果を使用して会話のコンテキストを維持する
 
-GenerateAnswer への応答には、一致した質問/回答セットの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。 
+GenerateAnswer への応答には、一致した質問と回答のセットの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。
 
 ```json
 {
@@ -202,9 +224,36 @@ GenerateAnswer への応答には、一致した質問/回答セットの対応�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="match-questions-only-by-text"></a>テキストによる質問のみの一致
 
-[発行] ページでは、[Postman](../Quickstarts/get-answer-from-kb-using-postman.md) と [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) を使用して回答を生成するための情報も指定できます。 
+既定では、QnA Maker は質問と回答を検索します。 質問のみを検索して、回答を生成する場合、GenerateAnswer 要求の POST 本文で `RankerType=QuestionOnly` を使用します。
+
+`isTest=false` を使用して公開済みの KB を検索することも、`isTest=true` を使用してテスト KB を検索することもできます。
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
+}
+```
+
+## <a name="common-http-errors"></a>一般的な HTTP エラー
+
+|コード|説明|
+|:--|--|
+|2xx|Success|
+|400|"要求のパラメーターが正しくない" とは、必須パラメーターが見つからない、形式が正しくない、または大きすぎることを意味します|
+|400|"要求の本文が正しくない" とは、JSON が見つからない、形式が正しくない、または大きすぎることを意味します|
+|401|無効なキー|
+|403|禁止されています - アカウントに適切なアクセス許可がありません|
+|404|KB が存在しません|
+|410|この API は非推奨であり、現在は利用できません|
+
+## <a name="next-steps"></a>次のステップ
+
+**[発行]** ページでは、Postman または cURL を使用して[回答を生成する](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)ための情報も提供されます。
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの作成](./create-knowledge-base.md)
+> [ナレッジ ベースに関する分析結果の取得](../how-to/get-analytics-knowledge-base.md)

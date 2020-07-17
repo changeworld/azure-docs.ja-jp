@@ -1,28 +1,18 @@
 ---
-title: Visual Studio で Azure Servic Fabric アプリケーションを管理する | Microsoft Docs
+title: Visual Studio でのアプリケーションの管理
 description: Visual Studio を利用し、Azure Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4744858869e10094389be58ddd3960cb8cc2773a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664847"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75614334"
 ---
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
+# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Service Fabric アプリケーションの記述と管理が簡単にするための Visual Studio の利用
 Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。 [開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
 
 ## <a name="deploy-your-service-fabric-application"></a>Service Fabric アプリケーションのデプロイ
@@ -34,7 +24,7 @@ Azure Service Fabric アプリケーションとサービスを Visual Studio �
 4. 実行している任意のアプリケーション インスタンスの削除
 5. アプリケーション インスタンスの作成
 
-Visual Studio で、**[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。
+Visual Studio で、 **[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。
 
 ### <a name="application-debug-mode"></a>アプリケーション デバッグ モード
 Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
@@ -71,7 +61,7 @@ Visual Studio には、**アプリケーション デバッグ モード**とい
 アプリケーションとそのサービスをクラスターにデプロイするには、アプリケーション パッケージを作成する必要があります。  パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。  Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。  **[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。
 
 ## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Cloud Explorer を使用したアプリケーションとアプリケーションの種類の削除
-Visual Studio 内から Cloud Explorer を使用して、基本的なクラスター管理操作を実行できます。Cloud Explorer は、**[表示]** メニューから起動できます。 たとえば、ローカルやリモートのクラスターで、アプリケーションを削除したり、アプリケーションの種類のプロビジョニングを解除できます。
+Visual Studio 内から Cloud Explorer を使用して、基本的なクラスター管理操作を実行できます。Cloud Explorer は、 **[表示]** メニューから起動できます。 たとえば、ローカルやリモートのクラスターで、アプリケーションを削除したり、アプリケーションの種類のプロビジョニングを解除できます。
 
 ![アプリケーションの削除][removeapplication]
 
@@ -81,7 +71,7 @@ Visual Studio 内から Cloud Explorer を使用して、基本的なクラス�
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
 * [Service Fabric アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)
 * [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)

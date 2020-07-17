@@ -1,41 +1,51 @@
 ---
-title: Azure portal でデータを問い合わせるための Search エクスプローラー ツール - Azure Search
-description: Azure Search で Search エクスプローラーなどの Azure portal ツールを使用して、インデックスのクエリを実行します。 検索用語や、高度な構文を含む完全修飾の検索文字列を入力します。
-manager: cgronlun
+title: Azure portal の Search エクスプローラー クエリ ツール
+titleSuffix: Azure Cognitive Search
+description: この Azure portal クイックスタートでは、Search エクスプローラーを使用して、クエリ構文を学習したり、クエリ式をテストしたり、検索ドキュメントを検査したりします。 Search エクスプローラーは、Azure Cognitive Search のインデックスにクエリを実行します。
+manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 392699182859a090c13304f63d28a78b95a65ec7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 03/27/2020
+ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024019"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369663"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search でデータを問い合わせるための Search エクスプローラー 
+# <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
 
-この記事では、Azure Portal で **Search エクスプローラー**を使用して、既存の Azure Search インデックスのクエリを実行する方法について説明します。 Search エクスプローラーを使用すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ文字列を送信できます。 
+**Search エクスプローラー**は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいは新しい内容の存在を確認することによるインデックス更新の結果の確認が簡単になります。
 
-   ![ポータルの [Search エクスプローラー] コマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルの [Search エクスプローラー] コマンド")
+このクイックスタートでは、**realestate-us-sample-index** を使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
 
+## <a name="prerequisites"></a>前提条件
 
-作業を開始する際にガイドが必要な場合は、「[Search エクスプローラーの起動方法](#start-search-explorer)」を参照してください。
++ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
-## <a name="basic-search-strings"></a>基本的な検索文字列
++ このクイックスタートでは、**realestate-us-sample-index** が使用されます。 組み込みのサンプル データ ソースからインデックスを生成するには、[**データのインポート**](search-import-data-portal.md) ウィザードをステップ実行します。
 
-以下の例では、組み込みの不動産サンプル インデックスを前提としています。 このインデックスの作成については、「[クイック スタート: Azure portal でのインポート、インデックス付け、クエリに関するクイック スタート](search-get-started-portal.md)を参照してください。
+## <a name="start-search-explorer"></a>Search エクスプローラーの起動
 
-### <a name="example-1---empty-search"></a>例 1 - 空の検索
+1. [Azure portal](https://portal.azure.com) で、ダッシュボードから検索サービス ページを開くか、または[自分のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 
-まずは内容を見るために、語句を指定せずに **[検索]** をクリックして空の検索を実行します。 空の検索は最初のクエリとして役に立ちます。ドキュメント全体が返されるので、ドキュメントの構成を確認できるからです。 空の検索では検索順位がなく、ドキュメントが任意の順序で返されます (すべてのドキュメントで `"@search.score": 1`)。 既定では、50 個のドキュメントが検索要求で返されます。
+1. コマンド バーから Search エクスプローラーを開きます。
+
+   ![ポータルでの Search エクスプローラーのコマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルでの Search エクスプローラーのコマンド")
+
+    または、開かれたインデックスで組み込みの **[Search エクスプローラー]** タブを使用します。
+
+   ![[Search エクスプローラー] タブ](./media/search-explorer/search-explorer-tab.png "[Search エクスプローラー] タブ")
+
+## <a name="unspecified-query"></a>指定されていないクエリ
+
+最初に内容を見るために、用語を指定せずに **[検索]** をクリックすることによって空の検索を実行します。 空の検索は最初のクエリとして役に立ちます。ドキュメント全体が返されるので、ドキュメントの構成を確認できるからです。 空の検索では検索順位がなく、ドキュメントが任意の順序で返されます (すべてのドキュメントで `"@search.score": 1`)。 既定では、50 個のドキュメントが検索要求で返されます。
 
 空の検索に相当する構文は `*` または `search=*` です。
-
-   ```Input
+   
+   ```http
    search=*
    ```
 
@@ -43,11 +53,13 @@ ms.locfileid: "65024019"
    
    ![空のクエリの例](./media/search-explorer/search-explorer-example-empty.png "非修飾または空のクエリの例")
 
-### <a name="example-2---free-text-search"></a>例 2 - フリー テキスト検索
+## <a name="free-text-search"></a>フリー テキスト検索
 
-自由形式のクエリは、演算子の有無に関係なく、カスタム アプリから Azure Search に送信されるユーザー定義のクエリをシミュレートするのに便利です。 クエリ語句または式を指定すると検索順位が機能することに注目してください。 次にフリー テキスト検索の例を示します。
+自由形式のクエリは、演算子の有無に関係なく、カスタム アプリから Azure Cognitive Search に送信されるユーザー定義のクエリをシミュレートするのに便利です。 一致をスキャンされるのは、インデックス定義で**検索可能**の属性が付けられたフィールドだけです。 
 
-   ```Input
+検索語やクエリ式などの検索条件を指定すると、検索順位が機能するようになることに注意してください。 次にフリー テキスト検索の例を示します。
+
+   ```http
    Seattle apartment "Lake Washington" miele OR thermador appliance
    ```
 
@@ -55,24 +67,25 @@ ms.locfileid: "65024019"
 
    CTRL + F キーを使用して、関心のある特定の語句を結果内で検索できます。
 
-   ![フリー テキスト クエリの例](./media/search-explorer/search-explorer-example-freetext.png "フリー テキスト クエリの例")
+   ![フリー テキストのクエリの例](./media/search-explorer/search-explorer-example-freetext.png "フリー テキストのクエリの例")
 
-### <a name="example-3---count-of-matching-documents"></a>例 3 - 一致するドキュメントのカウント 
+## <a name="count-of-matching-documents"></a>一致するドキュメントのカウント 
 
-**$count** を追加して、インデックスで見つかった一致の数を取得します。 空の検索では、カウントはインデックス内のドキュメントの合計数です。 修飾された検索では、これはクエリ入力と一致するドキュメントの数です。
+インデックスで見つかった一致の数を取得するには、 **$count=true** を追加します。 空の検索では、カウントはインデックス内のドキュメントの合計数です。 修飾された検索では、これはクエリ入力と一致するドキュメントの数です。
 
-   ```Input1
+   ```http
    $count=true
    ```
+
    **結果**
 
-   ![ドキュメントのカウントの例](./media/search-explorer/search-explorer-example-count.png "インデックス内の一致するドキュメントのカウント")
+   ![ドキュメントの数の例](./media/search-explorer/search-explorer-example-count.png "インデックス内の一致するドキュメントの数")
 
-### <a name="example-4---restrict-fields-in-search-results"></a>例 4 - 検索結果のフィールドを制限する
+## <a name="limit-fields-in-search-results"></a>検索結果内のフィールドを制限する
 
-**Search エクスプローラー**で出力を読みやすくするために、**$select** を追加して、明示的に指定されたフィールドに結果を制限します。 検索文字列と **$count=true** を維持するには、引数の前に **&** を付けます。 
+**Search エクスプローラー**の出力を読みやすくするために明示的に指定されたフィールドに結果を制限するには、[ **$select**](search-query-odata-select.md) を追加します。 検索文字列と **$count=true** を維持するには、引数の前に **&** を付けます。 
 
-   ```Input
+   ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
    ```
 
@@ -80,53 +93,49 @@ ms.locfileid: "65024019"
 
    ![フィールドの制限の例](./media/search-explorer/search-explorer-example-selectfield.png "検索結果のフィールドの制限")
 
-### <a name="example-5---return-next-batch-of-results"></a>例 5 - 結果の次のバッチを返す
+## <a name="return-next-batch-of-results"></a>結果の次のバッチを返す
 
-Azure Search は、検索順位に基づいて上位 50 の一致を返します。 一致するドキュメントの次のセットを取得するには、「**$top=100,&$skip=50**」を追加して、結果セットを 100 個のドキュメントに増やし (既定値は 50、最大は 1,000)、最初の 50 個のドキュメントをスキップします。 順位付けされた結果を取得するには、クエリ語句や式など、検索条件を指定する必要があることを思い出してください。 取得する検索結果が低位になるほど検索スコアが減少することに注目してください。
+Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を返します。 一致するドキュメントの次のセットを取得するには、「 **$top=100,&$skip=50**」を追加して、結果セットを 100 個のドキュメントに増やし (既定値は 50、最大は 1,000)、最初の 50 個のドキュメントをスキップします。 順位付けされた結果を取得するには、クエリ語句や式など、検索条件を指定する必要があることを思い出してください。 取得する検索結果が低位になるほど検索スコアが減少することに注目してください。
 
-   ```Input
-   search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100,&$skip=50
+   ```http
+   search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
    ```
 
    **結果**
 
-   ![バッチ検索結果](./media/search-explorer/search-explorer-example-topskip.png "検索結果の次のバッチを返す")
+   ![バッチ検索の結果](./media/search-explorer/search-explorer-example-topskip.png "結果の次のバッチを返す")
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>フィルター式 (より大きい、より小さい、等しい)
 
-フリー テキスト検索ではなく正確な条件を指定したい場合は **$filter** パラメーターを使用します。 この例では、`search=seattle condo&$filter=beds gt 3&$count=true` を使用して 3 より大きいベッドルームを検索します。
+正確な条件を指定するには、フリー テキスト検索ではなく [ **$filter**](search-query-odata-filter.md) パラメーターを使用します。 このフィールドには、インデックスで**フィルター可能**の属性が付けられている必要があります。 この例では、3 より大きいベッドルームを検索します。
+
+   ```http
+   search=seattle condo&$filter=beds gt 3&$count=true
+   ```
+   
+   **結果**
 
    ![フィルター式](./media/search-explorer/search-explorer-example-filter.png "条件によるフィルター")
 
 ## <a name="order-by-expressions"></a>orderby 式
 
-**$orderby** を追加して、検索スコアに加えて別のフィールドを基準に結果を並べ替えます。 これをテストするために使用できる式の例は、`search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc` です。
+検索スコアに加えて別のフィールドで結果を並べ替えるには、[ **$orderby**](search-query-odata-orderby.md) を追加します。 このフィールドには、インデックスで**並べ替え可能**の属性が付けられている必要があります。 これをテストするために使用できる式の例:
 
-   ![orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順序の変更")
+   ```http
+   search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc
+   ```
+   
+   **結果**
+
+   ![Orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順の変更")
 
 **$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 
 <a name="start-search-explorer"></a>
 
-## <a name="how-to-start-search-explorer"></a>Search エクスプローラーの起動方法
+## <a name="takeaways"></a>重要なポイント
 
-1. [Azure portal](https://portal.azure.com) でダッシュボードから検索サービス ページを開くか、サービスの一覧で[ご自分のサービスを見つけ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)ます。
-
-2. サービスの概要ページで、**[Search エクスプローラー]** をクリックします。
-
-   ![ポータルの [Search エクスプローラー] コマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルの [Search エクスプローラー] コマンド")
-
-3. クエリを実行するインデックスを選択します。
-
-   ![クエリを実行するインデックスの選択](./media/search-explorer/search-explorer-changeindex-se2.png "インデックスの選択")
-
-4. 必要に応じて、API バージョンを設定します。 既定では現在一般提供されている API バージョンが選択されますが、使用したい構文がバージョン固有である場合はプレビューまたは以前の API を選択できます。
-
-5. インデックスと API バージョンを選択したら、検索語句または完全修飾クエリ式を検索バーに入力し、**[検索]** をクリックして実行します。
-
-   ![検索語句の入力と [検索] のクリック](./media/search-explorer/search-explorer-query-string-example.png "検索語句の入力と [検索] のクリック")
-
-**Search エクスプローラー**での検索のヒント:
+このクイックスタートでは、**Search エクスプローラー**を使用して、REST API でインデックスにクエリを実行しました。
 
 + 結果は詳細な JSON ドキュメントとして返されます。そのため、ドキュメントの構成と内容を完全に確認できます。 例で示されているように、クエリ式を使用して、返されるフィールドを制限できます。
 
@@ -134,14 +143,19 @@ Azure Search は、検索順位に基づいて上位 50 の一致を返します
 
 + 商用 Web ブラウザーで入力することがあるような自由形式のクエリは、エンドユーザーのエクスペリエンスをテストするのに便利です。 たとえば、組み込みの不動産サンプル インデックスがあるとしたら、「Seattle apartments lake washington」と入力できます。そして、CTRL + F キーを使用して検索結果内で語句を見つけることができます。 
 
-+ クエリ式とフィルター式は、Azure Search でサポートされている構文で明記される必要があります。 既定値は[単純な構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
++ クエリ式とフィルター式は、Azure Cognitive Search でサポートされている構文で表されます。 既定値は[単純な構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-## <a name="next-steps"></a>次の手順
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-クエリ構文のその他の情報や例については、次のリソースを参照してください。
+ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 
- + [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
- + [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
- + [Lucene クエリ例](search-query-lucene-examples.md) 
- + [OData フィルター式の構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) 
+無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
+
+## <a name="next-steps"></a>次のステップ
+
+クエリ構造やクエリ構文について学習するには、Postman または同等のツールを使用して、API のさらに多くの部分を利用するクエリ式を作成してください。 [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) は、学習や調査に特に役立ちます。
+
+> [!div class="nextstepaction"]
+> [Postman で基本的なクエリを作成する](search-query-simple-examples.md)

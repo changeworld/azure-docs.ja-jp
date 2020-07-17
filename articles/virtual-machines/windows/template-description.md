@@ -1,26 +1,18 @@
 ---
 title: Azure Resource Manager テンプレートの仮想マシン | Microsoft Azure
 description: Azure Resource Manager テンプレートで仮想マシン リソースがどのように定義されるかについて説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327767"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100534"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -28,7 +20,7 @@ ms.locfileid: "56327767"
 
 VM リソースを含め、[ギャラリーにはテンプレート](https://azure.microsoft.com/documentation/templates/?term=VM)が多数あります。 テンプレートに含めることができるすべての要素をここで説明するわけではありません。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 次の例では、指定された数の VM を作成するためのテンプレートの典型的なリソース セクションを示しています。
 
@@ -152,11 +144,11 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 >
 >
 
-## <a name="api-version"></a>API バージョン
+## <a name="api-version"></a>API Version
 
 テンプレートを使用してリソースをデプロイする際に、使用する API のバージョンを指定する必要があります。 この例では、次の apiVersion 要素を使用して仮想マシン リソースを示しています。
 
-```
+```json
 "apiVersion": "2016-04-30-preview",
 ```
 
@@ -173,7 +165,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 [パラメーター](../../resource-group-authoring-templates.md)を使用すると、テンプレートの実行時にテンプレートに値を指定することが簡単になります。 この例では、次の parameters セクションが使用されています。
 
-```        
+```json
 "parameters": {
   "adminUsername": { "type": "string" },
   "adminPassword": { "type": "securestring" },
@@ -185,7 +177,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 [変数](../../resource-group-authoring-templates.md)を使用すると、テンプレート全体で繰り返し使用される値や時間の経過と共に変化する可能性がある値を、テンプレートで簡単に設定できます。 この例では、次の variables セクションが使用されています。
 
-```
+```json
 "variables": { 
   "storageName": "mystore1",
   "accountid": "[concat('/subscriptions/', subscription().subscriptionId, 
@@ -222,7 +214,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 アプリケーションに複数の仮想マシンが必要な場合は、テンプレートの copy 要素を使用できます。 この省略可能な要素は、パラメーターとして指定した数の VM が作成されるまでループされます。
 
-```
+```json
 "copy": {
   "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
@@ -231,7 +223,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 また、この例では、リソースのいくつかの値を指定する際にループ インデックスが使用されていることにも注意してください。 たとえば、インスタンス数として 3 を入力した場合、オペレーティング システム ディスクの名前は、myOSDisk1、myOSDisk2、myOSDisk3 となります。
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -246,7 +238,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 テンプレート内の 1 つのリソースに対してループを作成すると、他のリソースの作成時や他のリソースへのアクセス時にそのループを使用する必要が生じる可能性があることに注意してください。 たとえば、複数の VM では同じネットワーク インターフェイスを使用できないため、テンプレートでループして 3 つの VM を作成する場合は、3 つのネットワーク インターフェイスもループによって作成しなければなりません。 VM にネットワーク インターフェイスを割り当てる際は、それらを識別するためにループ インデックスが使用されます。
 
-```
+```json
 "networkInterfaces": [ { 
   "id": "[resourceId('Microsoft.Network/networkInterfaces',
     concat('myNIC', copyindex()))]" 
@@ -257,7 +249,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 ほとんどのリソースは、正常に動作するために他のリソースに依存しています。 仮想マシンは仮想ネットワークに関連付ける必要があり、そのためにはネットワーク インターフェイスが必要です。 [dependsOn](../../resource-group-define-dependencies.md) 要素は、VM が作成される前にネットワーク インターフェイスを使用できるようするために使用されます。
 
-```
+```json
 "dependsOn": [
   "[concat('Microsoft.Network/networkInterfaces/', 'myNIC', copyindex())]" 
 ],
@@ -267,7 +259,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 依存関係が必要かどうかは、どのように判断するのでしょうか。 テンプレートで設定した値を確認してください。 仮想マシン リソース定義内の要素が、同じテンプレートでデプロイされる他のリソースを指している場合は、依存関係が必要です。 たとえば、このサンプルの仮想マシンは、次のようにネットワーク プロファイルを定義しています。
 
-```
+```json
 "networkProfile": { 
   "networkInterfaces": [ { 
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
@@ -282,8 +274,8 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
-- [サイズ](sizes.md)
-- [名前](/azure/architecture/best-practices/naming-conventions)と資格情報
+- [size](sizes.md)
+- [名前](/azure/architecture/best-practices/resource-naming)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
 - [ネットワーク インターフェイス](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - ブート診断
@@ -296,7 +288,7 @@ Azure では、vhd ファイルは[ディスクまたはイメージ](managed-di
 
 VM を作成する場合は、どのオペレーティング システムを使用するかを決める必要があります。 新しい VM のオペレーティング システムを定義するには、imageReference 要素を使用します。 次の例では、Windows Server オペレーティング システムの定義を示しています。
 
-```
+```json
 "imageReference": { 
   "publisher": "MicrosoftWindowsServer", 
   "offer": "WindowsServer", 
@@ -307,7 +299,7 @@ VM を作成する場合は、どのオペレーティング システムを使�
 
 Linux オペレーティング システムを作成する場合は、次の定義を使用できます。
 
-```
+```json
 "imageReference": {
   "publisher": "Canonical",
   "offer": "UbuntuServer",
@@ -318,7 +310,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 オペレーティング システム ディスクの構成設定は、osDisk 要素で割り当てられます。 この例では、キャッシュ モードが **ReadWrite** に設定された新しいマネージド ディスクを定義し、ディスクが[プラットフォーム イメージ](cli-ps-findimage.md)から作成されるようにします。
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -330,7 +322,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 既存のディスクから仮想マシンを作成する場合は、imageReference 要素と osProfile 要素を削除し、次のディスク設定を定義します。
 
-```
+```json
 "osDisk": { 
   "osType": "Windows",
   "managedDisk": { 
@@ -345,7 +337,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 管理イメージから仮想マシンを作成する場合は、imageReference 要素を変更し、次のディスク設定を定義します。
 
-```
+```json
 "storageProfile": { 
   "imageReference": {
     "id": "[resourceId('Microsoft.Compute/images', 'myImage')]"
@@ -363,7 +355,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つのマネージド データ ディスクが追加されます。
 
-```
+```json
 "dataDisks": [
   {
     "name": "[concat('myDataDisk', copyindex())]",
@@ -375,11 +367,11 @@ Linux オペレーティング システムを作成する場合は、次の定�
 ],
 ```
 
-## <a name="extensions"></a>Extensions
+## <a name="extensions"></a>拡張機能
 
 [拡張機能](extensions-features.md)は個別のリソースですが、VM に密接に関係しています。 拡張機能は、VM の子リソース、または個別のリソースとして追加できます。 次の例は、VM に追加される[診断の拡張機能](extensions-diagnostics-template.md)を示しています。
 
-```
+```json
 { 
   "name": "Microsoft.Insights.VMDiagnosticsSettings", 
   "type": "extensions", 
@@ -414,7 +406,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 VM にインストールできる拡張機能は多数ありますが、最も便利なのは、おそらく[カスタム スクリプト拡張機能](extensions-customscript.md)でしょう。 次の例では、start.ps1 という名前の PowerShell スクリプトが、各 VM で起動時に実行されます。
 
-```
+```json
 {
   "name": "MyCustomScriptExtension",
   "type": "extensions",

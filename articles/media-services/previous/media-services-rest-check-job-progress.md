@@ -1,6 +1,6 @@
 ---
 title: REST API によるジョブの進行状況のチェック方法 | Microsoft Docs
-description: ジョブの進行状況を追跡する方法について説明します。
+description: この記事では、Azure Media Services v2 REST API を使用してジョブの進行状況をチェックする方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: cac8622c95ca2cb08ef412ac7117caac0c52ca56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869503"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76773613"
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 
@@ -42,7 +42,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 応答:

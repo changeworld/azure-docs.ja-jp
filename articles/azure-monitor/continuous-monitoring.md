@@ -1,23 +1,17 @@
 ---
 title: Azure Monitor を使用した継続的監視 | Microsoft Docs
 description: Azure Monitor を使用してワークフロー全体にわたって継続的監視を有効にする手順について詳しく説明します。
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
-ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 10/12/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 10/12/2018
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994018"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797599"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -34,7 +28,7 @@ ms.locfileid: "55994018"
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 - [お客様の DevOps リリース パイプラインに継続的監視](../azure-monitor/app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
 - [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../azure-monitor/learn/quick-monitor-portal.md) 向け、[Java](../azure-monitor/learn/java-quick-start.md) 向け、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../azure-monitor/learn/quick-monitor-portal.md) 向け、[Java](../azure-monitor/app/java-get-started.md) 向け、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 
@@ -80,7 +74,7 @@ ms.locfileid: "55994018"
 お客様の開発担当者と運用担当者が同じテレメトリとツールにアクセスできるようにすると、彼らがお客様の環境全体のパターンを確認して、お客様の平均検出時間 (MTTD) と平均復元時間 (MTTR) を最小限に抑えることができるようになります。
 
 - お客様の組織内のさまざまな役割のために、一般的なメトリックとログに基づく[カスタム ダッシュボード](../azure-monitor/learn/tutorial-app-dashboards.md)を準備します。 すべての Azure リソースからのデータをダッシュボードでまとめることができます。
-- 開発担当者と運用担当者の間で知識を共有できるように[ブック](../azure-monitor/app/usage-workbooks.md)を準備します。 これらは、メトリック グラフやログ クエリが含まれた動的レポートとして準備される場合があります。また、基本的な問題に対処するカスタマー サポートや運用担当者を支援するために開発者によって作成されたトラブルシューティング ガイドとして準備される場合もあります。
+- 開発担当者と運用担当者の間で知識を共有できるように[ブック](../azure-monitor/platform/workbooks-overview.md)を準備します。 これらは、メトリック グラフやログ クエリが含まれた動的レポートとして準備される場合があります。また、基本的な問題に対処するカスタマー サポートや運用担当者を支援するために開発者によって作成されたトラブルシューティング ガイドとして準備される場合もあります。
 
 ## <a name="continuously-optimize"></a>継続的に最適化する
  監視は、Build-Measure-Learn (構築-測定-学習) という一般的な方針に含まれている基本的要素の 1 つです。これによると、お客様の KPI とユーザー行動のメトリックを継続的に追跡し、計画の繰り返しを通じてそれらを最適化することを目指すことが推奨されます。 Azure Monitor は、お客様のビジネスに関連するメトリックとログを収集したり、必要に応じて新しいデータ ポイントを次回のデプロイに追加したりするのに役に立ちます。
@@ -89,7 +83,7 @@ ms.locfileid: "55994018"
 - [影響分析](../azure-monitor/app/usage-impact.md)を使用して、重要な KPI を高めるためにどの分野に注力すべきかの優先度付けを行います。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor](overview.md) のさまざまなコンポーネントについて確認する。
 - お客様のリリース パイプラインに[継続的監視を追加](../azure-monitor/app/continuous-monitoring.md)する。

@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 752c43604349a2361a8f5b26cd6d0bce7b516bc0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: a7290e46a0c5e228689dd1f1a0dc7f9a1182ad60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149766"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74789652"
 ---
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
 * [MailChimp](https://www.MailChimp.com/) アカウント 
 
 ロジック アプリで MailChimp アカウントを使用するには、MailChimp アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 

@@ -1,41 +1,31 @@
 ---
-title: REST API を使用してブループリントを作成する
-description: Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 02/04/2019
+title: クイック スタート:REST API を使用してブループリントを作成する
+description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
+ms.date: 02/26/2020
 ms.topic: quickstart
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ec84e8396ad65aa01f73414b971f27bc95396e2f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799206"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745092"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
 ブループリントの作成方法と割り当て方法について説明します。Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能かつ短時間でデプロイできる構成を開発するための共通パターンを、ブループリントを通じて定義することができます。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
 
-> [!div class="checklist"]
-> - 新しいブループリントを作成し、サポートされているさまざまな成果物を追加する
-> - まだ**下書き**の既存のブループリントを変更する
-> - 割り当ての準備が完了しているブループリントに**発行済み**とマークを付ける
-> - ブループリントを既存のサブスクリプションに割り当てる
-> - 割り当てられたブループリントの状態と進行状況を確認する
-> - サブスクリプションに割り当てられているブループリントを削除する
+## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+- `Microsoft.Blueprint` リソースプロバイダーを登録します。 手順については、「[リソースプロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="getting-started-with-rest-api"></a>REST API で作業を開始する
 
 REST API に慣れていない場合は、最初に「[Azure REST API Reference](/rest/api/azure/)」(Azure REST API リファレンス) を読んで、REST API の基本を理解してください (具体的には要求 URI と要求の本文)。 この記事では、これらの概念を使用して Azure Blueprint を操作する方法を説明しており、それらの実践的な知識を前提としています。 [ARMClient](https://github.com/projectkudu/ARMClient) などのツールは認可を自動的に処理できるので、初めての方にお勧めします。
 
-Blueprints の仕様については、[Azure Blueprints REST API](/rest/api/blueprints/) に関するページを参照してください。
+Azure Blueprints の仕様については、[Azure Blueprints REST API](/rest/api/blueprints/) に関するページを参照してください。
 
 ### <a name="rest-api-and-powershell"></a>REST API と PowerShell
 
@@ -54,7 +44,7 @@ $authHeader = @{
 }
 
 # Invoke the REST API
-$restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-version=2016-06-01'
+$restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-version=2020-01-01'
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
@@ -400,7 +390,8 @@ REST API を使用してブループリントを発行した後は、それを�
 
    - ユーザー割り当てマネージド ID
 
-     ブループリントの割り当てでは、[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用することもできます。 この場合、要求本文の **identity** 部分が次のように変わります。  `{yourRG}` と `{userIdentity}` は、それぞれ実際のリソース グループの名前とユーザー割り当てマネージド ID の名前に置き換えてください。
+     ブループリントの割り当てでは、[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用することもできます。
+     この場合、要求本文の **identity** 部分が次のように変わります。 `{yourRG}` と `{userIdentity}` は、それぞれ実際のリソース グループの名前とユーザー割り当てマネージド ID の名前に置き換えてください。
 
      ```json
      "identity": {
@@ -415,9 +406,11 @@ REST API を使用してブループリントを発行した後は、それを�
      **ユーザー割り当てマネージド ID** は、ブループリントを割り当てるユーザーにアクセス許可があれば、どのサブスクリプションおよびどのリソース グループに属していてもかまいません。
 
      > [!IMPORTANT]
-     > ブループリントでは、ユーザー割り当てマネージド ID が管理されません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
+     > Azure Blueprints は、ユーザー割り当てのマネージド ID を管理しません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
 
-## <a name="unassign-a-blueprint"></a>ブループリントを割り当て解除する
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+### <a name="unassign-a-blueprint"></a>ブループリントを割り当て解除する
 
 ブループリントは、サブスクリプションから削除することができます。 多くの場合、アーティファクトのリソースが不要になったときは削除するようにします。 ブループリントを削除しても、そのブループリントの一部として割り当てられている成果物は後に残されます。 ブループリントの割り当てを削除するには、次の REST API 操作を使用します。
 
@@ -427,7 +420,7 @@ REST API を使用してブループリントを発行した後は、それを�
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>ブループリントを削除する
+### <a name="delete-a-blueprint"></a>ブループリントを削除する
 
 ブループリント自体を削除するには、次の REST API 操作を使用します。
 
@@ -437,11 +430,9 @@ REST API を使用してブループリントを発行した後は、それを�
   DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [ブループリントのライフサイクル](./concepts/lifecycle.md)を参照する。
-- [静的および動的パラメーター](./concepts/parameters.md)の使用方法を理解する。
-- [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する。
-- [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる。
-- [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する。
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する。
+このクイックスタートでは、REST API を使用して、ブループリントを作成、割り当て、削除しました。 Azure Blueprints の詳細については、ブループリントのライフサイクルに関する記事に進んでください。
+
+> [!div class="nextstepaction"]
+> [ブループリントのライフサイクルについて学習する](./concepts/lifecycle.md)

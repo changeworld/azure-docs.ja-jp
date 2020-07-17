@@ -4,22 +4,21 @@ description: VM の再起動につながる可能性のある一連のイベン�
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433163"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919415"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -31,10 +30,7 @@ Azure で実行中のアプリケーションを VM の再起動とダウンタ�
 
 このレベルの冗長性をアプリケーションに提供するには、2 台以上の VM を可用性セットにグループ化することをお勧めします。 このような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの VM が利用可能となり、99.95% の [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/) が満たされます。
 
-可用性セットの詳細については、次の記事を参照してください。
-
-- [VM の可用性の管理](../windows/manage-availability.md)
-- [VM の可用性の構成](../windows/classic/configure-availability.md)
+可用性セットの詳細については、[VM の可用性の管理](../windows/manage-availability.md)に関する記事を参照してください。
 
 ## <a name="resource-health-information"></a>Resource Health の情報
 
@@ -42,7 +38,7 @@ Azure Resource Health は個々の Azure リソースの正常性を明らかに
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>VM の再起動の原因となる可能性がある操作とイベント
 
-### <a name="planned-maintenance"></a>計画済みのメンテナンス
+### <a name="planned-maintenance"></a>Azure の計画メンテナンス
 
 Microsoft Azure は、世界各地で定期的に更新を行い、VM の基盤となるホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 これらの更新の多くは、VM やクラウド サービスに影響を及ぼさずに実行されます (メモリ保護更新など)。
 
@@ -68,7 +64,7 @@ Microsoft Azure のこのクラスの更新では、実行中の VM に関して
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>ユーザーが開始した再起動/シャットダウン操作
 
-再起動を Azure Portal、Azure PowerShell、コマンド ライン インターフェイス、または Reset API から実行した場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)でそのイベントを見つけることができます。
+再起動を Azure portal、Azure PowerShell、コマンド ライン インターフェイス、または REST API から実行した場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)でそのイベントを見つけることができます。
 
 VM のオペレーティング システムから操作を実行した場合は、システム ログでそのイベントを見つけることができます。
 
@@ -119,7 +115,7 @@ Azure の VM は、オペレーティング システムの仮想ディスクと
 
 **制限を超える IO**
 
-1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります  (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 詳細については、「[Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)」(最適なストレージ パフォーマンスのための Azure Virtual Machines の構成) を参照してください。
+1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 詳細については、「[Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)」(最適なストレージ パフォーマンスのための Azure Virtual Machines の構成) を参照してください。
 
 ### <a name="other-incidents"></a>その他のインシデント
 

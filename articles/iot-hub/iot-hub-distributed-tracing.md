@@ -1,6 +1,6 @@
 ---
 title: 分散トレース (プレビュー) を使用して IoT メッセージに関連付け ID を追加する
-description: ''
+description: 分散トレース機能を使用して、ソリューションで使用される Azure サービス全体の IoT メッセージをトレースする方法について説明します。
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501378"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732573"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -28,7 +31,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 - デバイスから IoT Hub およびルーティング エンドポイントまでのメッセージ フローと待ち時間を測定および把握できます。
 - ご使用の IoT ソリューション内の Azure 以外のサービスに対して分散トレースをどのように実装するか、検討を開始できます。
 
-この記事では、分散トレースが組み込まれた [C 用 Azure IoT device SDK](./iot-hub-device-sdk-c-intro.md) を使用します。 分散トレースのサポートは、他の SDK では現在進行中です。
+この記事では、分散トレースが組み込まれた [C 用 Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。 分散トレースのサポートは、他の SDK では現在進行中です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +41,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
   - **東南アジア**
   - **米国西部 2**
 
-- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](./quickstart-send-telemetry-c.md)に関するページを完了していることを確認してください。
+- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](quickstart-send-telemetry-c.md)に関するページを完了していることを確認してください。
 
 - IoT Hub にデバイスを登録し (各クイックスタートで使用可能な手順)、接続文字列をメモします。
 
@@ -50,17 +53,17 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 1. [Azure portal](https://portal.azure.com/) で、IoT Hub に移動します。
 
-1. IoT Hub の左側のウィンドウで、下にスクロールして **[監視]** セクションを表示し、**[診断設定]** をクリックします。
+1. IoT Hub の左側のウィンドウで、下にスクロールして **[監視]** セクションを表示し、 **[診断設定]** をクリックします。
 
-1. 診断設定が有効になっていない場合は、**[診断を有効にする]** をクリックします。 診断設定が既に有効になっている場合、**[診断設定の追加]** をクリックします。
+1. 診断設定が有効になっていない場合は、 **[診断を有効にする]** をクリックします。 診断設定が既に有効になっている場合、 **[診断設定の追加]** をクリックします。
 
 1. **[名前]** フィールドに、新しい診断設定の名前を入力します。 たとえば、**DistributedTracingSettings** などです。
 
 1. ログの送信先を決定するために、次のオプションを 1 つ以上選択します。
 
-    - **[ストレージ アカウントへのアーカイブ]**:ログ情報を格納するようにストレージ アカウントを構成します。
-    - **[イベント ハブへのストリーム]**:ログ情報を格納するようにイベント ハブを構成します。
-    - **[Log Analytics への送信]**:ログ情報を格納するようにログ分析ワークスペースを構成します。
+    - **[ストレージ アカウントへのアーカイブ]** :ログ情報を格納するようにストレージ アカウントを構成します。
+    - **[イベント ハブへのストリーム]** :ログ情報を格納するようにイベント ハブを構成します。
+    - **[Log Analytics への送信]** :ログ情報を格納するようにログ分析ワークスペースを構成します。
 
 1. **[ログ]** セクションで、ログ情報が必要な操作を選択します。
 
@@ -88,22 +91,23 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="clone-the-source-code-and-initialize"></a>ソース コードを複製し、初期化する
 
-1. Visual Studio 2015 または 2017 用の ["C++ によるデスクトップ開発" ワークロード](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017)をインストールします。
+1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
 
 1. [CMake](https://cmake.org/) をインストールします。 コマンド プロンプトから `cmake -version` と入力して、これが `PATH` に含まれていることを確認してください。
 
-1. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+1. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、最新リリースの [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub リポジトリを複製します。
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     この操作は、完了するまでに数分かかります。
 
-1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。
+1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 `azure-iot-sdk-c` ディレクトリから次のコマンドを実行します。
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..
@@ -128,6 +132,9 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
     ```
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>送信テレメトリ サンプルを編集して分散トレースを有効にする
+
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">GitHub でのサンプルの入手</a>
 
 1. エディターを使用して、`azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` ソース ファイルを開きます。
 
@@ -187,19 +194,19 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 ### <a name="update-using-the-portal"></a>ポータルを使用して更新する
 
-1. [Azure portal](https://portal.azure.com/) でご使用の IoT Hub に移動し、**[IoT デバイス]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) でご使用の IoT Hub に移動し、 **[IoT デバイス]** をクリックします。
 
 1. ご使用のデバイスをクリックします。
 
-1. **[Enable distributed tracing (preview)]\(分散トレース (プレビュー) を有効にする\)** を探し、**[有効にする]** を選択します。
+1. **[Enable distributed tracing (preview)]\(分散トレース (プレビュー) を有効にする\)** を探し、 **[有効にする]** を選択します。
 
     ![Azure portal で分散トレースを有効にする](./media/iot-hub-distributed-tracing/azure-portal.png)
 
 1. 0% と 100% の間で **[サンプリング レート]** を選択します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
-1. しばらく待ってから、**[更新]** をクリックします。デバイスによって正常に認識されると、チェックマークの付いた同期アイコンが表示されます。
+1. しばらく待ってから、 **[更新]** をクリックします。デバイスによって正常に認識されると、チェックマークの付いた同期アイコンが表示されます。
 
 1. テレメトリ メッセージ アプリのコンソール ウィンドウに戻ります。 アプリケーション プロパティの `tracestate` で送信されるメッセージを確認できます。
 
@@ -207,17 +214,17 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 1. (省略可能) サンプリング レートを別の値に変更して、アプリケーション プロパティに `tracestate` が含まれるメッセージの頻度の変化を監視します。
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>VS Code 用 Azure IoT Hub Toolkit を使用して更新する
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>VS Code 用 Azure IoT Hub を使用して更新する
 
-1. VS Code をインストールし、[ここ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)から VS Code 用 Azure IoT Hub Toolkit の最新バージョンをインストールします。
+1. VS Code をインストールし、[ここ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)から VS Code 用 Azure IoT Hub の最新バージョンをインストールします。
 
 1. VS Code を開き、[IoT Hub 接続文字列を設定](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)します。
 
-1. デバイスを展開し、**[Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー)\)** を探します。 その下で、サブ ノードの **[Update Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー) の更新\)** をクリックします。
+1. デバイスを展開し、 **[Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー)\)** を探します。 その下で、サブ ノードの **[Update Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー) の更新\)** をクリックします。
 
-    ![Azure IoT Hub Toolkit で分散トレースを有効にする](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Azure IoT Hub 拡張機能で分散トレースを有効にする](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. ポップアップ ウィンドウで、**[有効]** を選択し、Enter キーを押してサンプリング レートとして 100 を確定します。
+1. ポップアップ ウィンドウで、 **[有効]** を選択し、Enter キーを押してサンプリング レートとして 100 を確定します。
 
     ![サンプリング モードを更新する](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
@@ -242,8 +249,8 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 | 要素名 | 必須 | Type | 説明 |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | はい | 整数 | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
-| `sampling_rate` | はい | 整数 | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |
+| `sampling_mode` | はい | Integer | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
+| `sampling_rate` | はい | Integer | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |
 
 ## <a name="query-and-visualize"></a>クエリと視覚化を実行する
 
@@ -251,7 +258,7 @@ IoT Hub によって記録されたすべてのトレースを表示するには
 
 ### <a name="query-using-log-analytics"></a>Log Analytics を使用してクエリを実行する
 
-[診断ログで Log Analytics](../azure-monitor/platform/diagnostic-logs-stream-log-store.md) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
+[診断ログで Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
 
 ```Kusto
 // All distributed traces 
@@ -263,11 +270,11 @@ AzureDiagnostics
 
 Log Analytics で表示されるログの例
 
-| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Properties |
+| TimeGenerated | OperationName | カテゴリ | Level | CorrelationId | DurationMs | Properties |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
+| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informational | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
 各種ログの詳細については、[Azure IoT Hub の診断ログ](iot-hub-monitor-resource-health.md#distributed-tracing-preview)に関するページを参照してください。
 
@@ -276,7 +283,7 @@ Log Analytics で表示されるログの例
 IoT メッセージのフローを可視化するために、アプリケーション マップのサンプル アプリを設定します。 サンプル アプリでは、Azure Function と Event Hub を使用して[アプリケーション マップ](../application-insights/app-insights-app-map.md)に分散トレース ログが送信されます。
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Github でのサンプルの入手</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GitHub でのサンプルの入手</a>
 
 次の図は、3 つのルーティング エンドポイントがあるアプリケーション マップの分散トレースを示しています。
 
@@ -304,8 +311,8 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 1. IoT デバイスによって、IoT Hub にメッセージが送信されます。
 1. メッセージが IoT Hub ゲートウェイに到着します。
 1. IoT Hub は、メッセージ アプリケーション プロパティで `tracestate` を探し、それが正しい形式であるかどうか確認します。
-1. 正しい場合、IoT Hub は `trace-id` と `span-id` を生成し、それらをカテゴリ `DiagnosticIoTHubD2C` の Azure Monitor 診断ログに記録します。
-1. メッセージの処理が終了すると、IoT Hub は別の `span-id` を生成し、既存の `trace-id` とともにそれをカテゴリ `DiagnosticIoTHubIngress` に記録します。
+1. そうである場合、IoT Hub によって、メッセージのグローバルに一意の `trace-id` ("ホップ" の場合は `span-id`) が生成され、それらが `DiagnosticIoTHubD2C` の操作で Azure Monitor 診断ログに記録されます。
+1. メッセージの処理が終了すると、IoT Hub によって別の `span-id` が生成され、`DiagnosticIoTHubIngress` の操作で既存の `trace-id` とともにそれが記録されます。
 1. メッセージに対してルーティングが有効になっている場合、IoT Hub はそれをカスタム エンドポイントに書き込み、同じ `trace-id` を持つ別の `span-id` をカテゴリ `DiagnosticIoTHubEgress` に記録します。
 1. 上記の手順は、生成されたメッセージごとに繰り返されます。
 
@@ -316,7 +323,7 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 - cloud-to-device のツイン機能は、[IoT Hub の基本層](iot-hub-scaling.md#basic-and-standard-tiers)では使用できません。 ただし、IoT Hub は、適切に構成されたトレース コンテキスト ヘッダーを認識した場合には、Azure Monitor にログを記録します。
 - 効率的な操作を確実にするために、IoT Hub は、分散トレースの一部として発生する可能性のあるログ記録のレートにスロットルを適用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - マイクロサービスの一般的な分散トレース パターンについて詳しくは、[マイクロサービス アーキテクチャ パターン: 分散トレース](https://microservices.io/patterns/observability/distributed-tracing.html)に関するページを参照してください。
 - 分散トレース設定を多数のデバイスに適用するための構成を設定するには、「[多数の IoT デバイスの構成と監視](iot-hub-auto-device-config.md)」を参照してください。

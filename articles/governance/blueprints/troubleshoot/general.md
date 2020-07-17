@@ -1,23 +1,18 @@
 ---
 title: 一般的なエラーのトラブルシューティング
-description: ブループリントの作成、割り当て、および削除で発生する問題を解決する方法について説明します
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 12/11/2018
+description: ポリシー違反やブループリント パラメーター関数などの、ブループリントを作成、割り当て、および削除するときの問題をトラブルシューティングする方法について説明します。
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789619"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76157085"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
-ブループリントを作成したり、割り当てたりするとき、エラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
+ブループリントの作成、割り当て、または削除を行うときに、エラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
 
 ## <a name="finding-error-details"></a>エラー詳細の検索
 
@@ -27,7 +22,7 @@ ms.locfileid: "59789619"
 
 1. 左側のページから **[割り当てられたブループリント]** を選択し、検索ボックスを使用してブループリントの割り当てをフィルター処理し、失敗した割り当てを検索します。 **[プロビジョニング状態]** 列で割り当て表を並べ替え、失敗した割り当てをまとめて表示することもできます。
 
-1. 状態が _[失敗]_ のブループリントを左クリックするか、**[割り当ての詳細を表示する]** を右クリックして選択します。
+1. 状態が _[失敗]_ のブループリントを左クリックするか、 **[割り当ての詳細を表示する]** を右クリックして選択します。
 
 1. ブループリント割り当てページの一番上に、割り当ての失敗を警告する赤いバナーが表示されます。 バナー内のどこでも良いのでクリックすると、詳細が表示されます。
 
@@ -35,7 +30,7 @@ ms.locfileid: "59789619"
 
 ## <a name="general-errors"></a>一般エラー
 
-### <a name="policy-violation"></a>シナリオ:ポリシー違反
+### <a name="scenario-policy-violation"></a><a name="policy-violation"></a>シナリオ:ポリシー違反
 
 #### <a name="issue"></a>問題
 
@@ -52,7 +47,7 @@ ms.locfileid: "59789619"
 
 ブルー プリントを変更して、エラーの詳細に含まれているポリシーと競合しないようにします。 変更できない場合、代替として、ブループリントがポリシーと競合しないようにポリシー割り当てのスコープを変更するという選択肢があります。
 
-### <a name="escape-function-parameter"></a>シナリオ:ブループリント パラメーターが関数である
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>シナリオ:ブループリント パラメーターが関数である
 
 #### <a name="issue"></a>問題
 
@@ -64,9 +59,25 @@ ms.locfileid: "59789619"
 
 #### <a name="resolution"></a>解決策
 
-関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。 詳細については、[テンプレート ファイル構造に関する記事の構文](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)に関するセクションを参照してください。
+関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="delete-errors"></a>削除エラー
+
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>シナリオ:割り当て削除のタイムアウト
+
+#### <a name="issue"></a>問題
+
+ブループリント割り当ての削除が完了していません。
+
+#### <a name="cause"></a>原因
+
+ブループリント割り当ては、削除されると、最終状態以外の状態のままになることがあります。 この状態は、ブループリント割り当てによって作成されたリソースが、まだ削除を保留しているか、Azure Blueprints に状態コードを返していない場合に発生します。
+
+#### <a name="resolution"></a>解決策
+
+最終状態以外の状態のブループリント割り当ては、"_6 時間_" のタイムアウト後に**失敗**として自動的にマークされます。 タイムアウトによってブループリント割り当ての状態が調整されたら、削除を再試行できます。
+
+## <a name="next-steps"></a>次のステップ
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 

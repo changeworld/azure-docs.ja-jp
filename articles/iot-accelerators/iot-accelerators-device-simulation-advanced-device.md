@@ -6,15 +6,18 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286127"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683824"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -34,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
 
-次に、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの **[起動]** をクリックします。
+次に、**Azure での IoT デバイス シミュレーションのデプロイと実行**に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの [[起動]](quickstart-device-simulation-deploy.md) をクリックします。
 
 ## <a name="device-models"></a>デバイス モデル
 
@@ -56,7 +59,7 @@ JSON のデバイス定義ファイルと一連の JavaScript ファイルを使
 各デバイス定義ファイルには、次の情報を含む、シミュレートされたデバイス モデルの詳細が含まれています。
 
 * デバイス モデル名: 文字列。
-* プロトコル:AMQP | MQTT | HTTP。
+* プロトコル: AMQP | MQTT | HTTP。
 * デバイスの初期状態。
 * デバイス状態の更新頻度。
 * デバイス状態を更新するために使用する JavaScript ファイル。
@@ -169,7 +172,7 @@ IoT デバイスは、さまざまなプロトコルを使用して接続でき�
 
 ### <a name="supported-methods"></a>サポートされるメソッド
 
-シミュレートされたデバイスはメソッド呼び出しに対応できます。その場合、何らかのロジックが実行され、何らかの応答が提供されます。 シミュレーションと同様、メソッド ロジックは JavaScript ファイルに格納され、デバイス状態を操作できます。 例: 
+シミュレートされたデバイスはメソッド呼び出しに対応できます。その場合、何らかのロジックが実行され、何らかの応答が提供されます。 シミュレーションと同様、メソッド ロジックは JavaScript ファイルに格納され、デバイス状態を操作できます。 次に例を示します。
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +262,7 @@ JavaScript ファイルには、次の 2 つのパラメーターを受け入れ
     * **deviceModel**。 たとえば、**Elevator** です。
 * 前の呼び出しで関数によって返された値である、**state** オブジェクト。 このデバイス状態はシミュレーション サービスによって維持され、テレメトリ メッセージを生成するために使用されます。
 
-**main** 関数では新しいデバイスの状態が返されます。 例: 
+**main** 関数では新しいデバイスの状態が返されます。 次に例を示します。
 
 ```JavaScript
 function main(context, state) {
@@ -494,7 +497,7 @@ function main(context, state) {
 
 高度なデバイス モデルをデプロイするには、ファイルをデバイス シミュレーション インスタンスにアップロードします。
 
-メニュー バーで **[デバイス モデル]** を選択します。 **[デバイス モデル]** ページに、デバイス シミュレーションのこのインスタンスで利用可能なデバイス モデルがリストされます。
+メニュー バーで **[Device models]\(デバイス モデル\)** を選択します。 **[デバイス モデル]** ページに、デバイス シミュレーションのこのインスタンスで利用可能なデバイス モデルがリストされます。
 
 ![デバイス モデル](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
@@ -504,16 +507,16 @@ function main(context, state) {
 
 **[詳細]** をクリックして、高度なデバイス モデルのタブを開きます。
 
-![[詳細] タブ](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![[詳細設定] タブ](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
 **[参照]** をクリックし、作成した JSON および JavaScript ファイルを選択します。 必ず、3 つのファイルをすべて選択してください。 ファイルのいずれか 1 つが欠落している場合、検証は失敗します。
 
 ![ファイルを参照する](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-ファイルが検証に合格した場合は、**[保存]** をクリックします。これで、デバイス モデルをシミュレーションで使用する準備が整います。 それ以外の場合は、エラーを修正して、ファイルを再アップロードします。
+ファイルが検証に合格した場合は、 **[保存]** をクリックします。これで、デバイス モデルをシミュレーションで使用する準備が整います。 それ以外の場合は、エラーを修正して、ファイルを再アップロードします。
 
 ![保存](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)方法を確認できます。

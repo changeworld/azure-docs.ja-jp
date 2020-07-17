@@ -1,26 +1,27 @@
 ---
-title: Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する - Azure Storage | Microsoft Docs
-description: Azure Blob と Queue storage は、Azure リソースのマネージド ID を使用して Azure Active Directory 認証をサポートします。 Azure リソースのマネージド ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他においてで実行されているアプリケーションから blob およびキューへのアクセスを認証することができます。
+title: マネージド ID を使用してデータへのアクセスを認証する
+titleSuffix: Azure Storage
+description: Azure リソースのマネージド ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他で実行されているアプリケーションからの BLOB とキュー データへのアクセスを認証する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 04/21/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4245c44ceaf907512187d7db4a9d6f087a855f70
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f3bac0d47a53da1ec4d1fa08b5f0933f5f65dc56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228351"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する
+# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
 Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースのマネージド ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
 
-この記事では、マネージド ID を使用して Azure VM から BLOB またはキュー データへのアクセスを認証する方法について示します。 
+この記事では、Azure リソースにマネージド ID を使用して Azure VM から Blob またはキュー データへのアクセスを認証する方法について示します。 また、開発環境でコードをテストする方法についても説明します。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 上のマネージド ID を有効にする
 
@@ -30,107 +31,137 @@ Azure リソースのマネージド ID を使用して VM から BLOB および
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager テンプレート](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager クライアント ライブラリ](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-an-azure-ad-managed-identity"></a>Azure AD のマネージド ID にアクセス許可を付与する
+マネージド ID の詳細については、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
-お使いの Azure Storage アプリケーションでマネージド ID からの BLOB または Queue サービスへの要求を認証するには、最初にそのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 BLOB とキュー データへのアクセス許可を含む RBAC ロールは、Azure Storage によって定義されます。 RBAC ロールがマネージド ID に割り当てられている場合は、適切なスコープで BLOB またはキュー データへのこれらのアクセス許可がそのマネージド ID に付与されます。 
+## <a name="authenticate-with-the-azure-identity-library"></a>Azure ID ライブラリを使用した認証
 
-RBAC ロールの割り当てに関する詳細については、次のいずれかの記事をご覧ください。
+Azure ID クライアント ライブラリでは、[Azure SDK](https://github.com/Azure/azure-sdk) に対する Azure AD トークン認証のサポートが提供されています。 .NET、Java、Python、および JavaScript 用の最新バージョンの Azure Storage クライアント ライブラリは、Azure ID ライブラリと統合され、Azure Storage 要求を承認するための OAuth 2.0 トークンを取得するための簡単で安全な手段を提供します。
 
-- [Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-portal.md)
-- [RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-cli.md)
-- [RBAC と PowerShell を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-powershell.md)
+Azure ID クライアント ライブラリの利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、同じコードを使用して認証できることです。 .NET 対応の Azure ID クライアント ライブラリでは、セキュリティ プリンシパルが認証されます。 コードが Azure 上で実行されている場合、セキュリティ プリンシパルは Azure リソースに対するマネージド ID です。 開発環境では、マネージド ID が存在しないため、クライアント ライブラリはテスト目的でユーザーまたはサービス プリンシパルのいずれかを認証します。
 
-## <a name="authorize-with-a-managed-identity-access-token"></a>マネージド ID アクセス トークンを使用して認証する
+認証後、Azure ID クライアント ライブラリでは、トークン資格情報を取得します。 このトークン資格情報は、Azure Storage に対して操作を実行するために作成するサービス クライアント オブジェクトにカプセル化されます。 このライブラリは、適切なトークン資格情報を取得することにより、これをユーザーに代わってシームレスに処理します。
 
-マネージド ID を使用して BLOB および Queue storage に対する要求を承認するには、アプリケーションまたはスクリプトで OAuth トークンを取得する必要があります。 .NET 向けの [Microsoft Azure App Authentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) クライアント ライブラリ (プレビュー) は、コードからのトークンの取得と更新のプロセスを簡略化します。
+.NET 用 Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。 Azure ID クライアント ライブラリのリファレンス ドキュメントについては、「[Azure.Identity 名前空間](/dotnet/api/azure.identity)」を参照してください。
 
-App Authentication クライアント ライブラリは、自動的に認証を管理します。 このライブラリは、ローカルでの開発中に開発者の資格情報を使用して認証を行います。 ローカルでの開発中に開発者の資格情報を使用するという方法は、Azure AD 資格情報を作成したり、開発者間で資格情報を共有したりする必要がないため、セキュリティの面で有利です。 その後、ソリューションを Azure にデプロイすると、このライブラリは、自動的にアプリケーションの資格情報を使用するように切り替わります。
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>データにアクセスするためのロールベースのアクセス制御 (RBAC) ロールを割り当てる
 
-Azure Storage アプリケーションで App Authentication ライブラリを使用するには、[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) から最新のプレビュー パッケージと、[.NET 用の Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンをインストールします。 次の **using** ステートメントをコードに追加します。
+Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob またはキュー データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」にある「**アクセス権に RBAC ロールを割り当てる**」というタイトルのセクションを参照してください。
 
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Auth;
+### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
+
+開発環境でコードを実行している場合は、認証が自動的に処理されるか、使用しているツールに応じてブラウザー ログインが必要になることがあります。 たとえば、Microsoft Visual Studio では、アクティブな Azure AD ユーザー アカウントが自動的に認証に使用されるように、シングル サインオン (SSO) がサポートされています。 SSO の詳細については、[アプリケーションへのシングル サインオン](../../active-directory/manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
+
+他の開発ツールでは、Web ブラウザー経由でログインするように求められる場合があります。
+
+### <a name="authenticate-a-service-principal-in-the-development-environment"></a>開発環境でサービス プリンシパルを認証する
+
+開発環境で Web ブラウザーによるシングル サインオンまたはログインがサポートされていない場合は、サービス プリンシパルを使用して開発環境から認証を受けることができます。
+
+#### <a name="create-the-service-principal"></a>サービス プリンシパルを作成する
+
+Azure CLI を使用してサービス プリンシパルを作成し、RBAC ロールを割り当てるには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを呼び出します。 新しいサービス プリンシパルに割り当てる Azure Storage データ アクセス ロールを指定します。 さらに、ロール割り当て用のスコープを指定します。 Azure Storage 用に提供されている組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+
+サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
+
+次の例では、Azure CLI を使用して新しいサービス プリンシパルを作成し、**ストレージ BLOB データ閲覧者ロール**をアカウント スコープで割り当てています。
+
+```azurecli-interactive
+az ad sp create-for-rbac \
+    --name <service-principal> \
+    --role "Storage Blob Data Reader" \
+    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-App Authentication ライブラリにより **AzureServiceTokenProvider** クラスが提供されます。 このクラスのインスタンスは、トークンを取得して有効期限が切れる前にトークンを更新するコールバックに渡すことができます。
+`az ad sp create-for-rbac` コマンドによって、サービス プリンシパルのプロパティの一覧が JSON 形式で返されます。 これらの値をコピーして、次の手順で必要な環境変数を作成するために使用できるようにします。
 
-次の例は、トークンを取得して、それを使用して新しい BLOB を作成し、同じトークンを使用して BLOB を読み取ります。
-
-```csharp
-const string blobName = "https://storagesamples.blob.core.windows.net/sample-container/blob1.txt";
-
-// Get the initial access token and the interval at which to refresh it.
-AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-var tokenAndFrequency = TokenRenewerAsync(azureServiceTokenProvider, 
-                                            CancellationToken.None).GetAwaiter().GetResult();
-
-// Create storage credentials using the initial token, and connect the callback function 
-// to renew the token just before it expires
-TokenCredential tokenCredential = new TokenCredential(tokenAndFrequency.Token, 
-                                                        TokenRenewerAsync,
-                                                        azureServiceTokenProvider, 
-                                                        tokenAndFrequency.Frequency.Value);
-
-StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
-
-// Create a blob using the storage credentials.
-CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName), 
-                                            storageCredentials);
-
-// Upload text to the blob.
-blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
-
-// Continue to make requests against Azure Storage. 
-// The token is automatically refreshed as needed in the background.
-do
+```json
 {
-    // Read blob contents
-    Console.WriteLine("Time accessed: {0} Blob Content: {1}", 
-                        DateTimeOffset.UtcNow, 
-                        blob.DownloadTextAsync().Result);
-
-    // Sleep for ten seconds, then read the contents of the blob again.
-    Thread.Sleep(TimeSpan.FromSeconds(10));
-} while (true);
-```
-
-コールバック メソッドは、トークンの有効期限を確認して、必要に応じて更新します。
-
-```csharp
-private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, CancellationToken cancellationToken)
-{
-    // Specify the resource ID for requesting Azure AD tokens for Azure Storage.
-    const string StorageResource = "https://storage.azure.com/";  
-
-    // Use the same token provider to request a new token.
-    var authResult = await ((AzureServiceTokenProvider)state).GetAuthenticationResultAsync(StorageResource);
-
-    // Renew the token 5 minutes before it expires.
-    var next = (authResult.ExpiresOn - DateTimeOffset.UtcNow) - TimeSpan.FromMinutes(5);
-    if (next.Ticks < 0)
-    {
-        next = default(TimeSpan);
-        Console.WriteLine("Renewing token...");
-    }
-
-    // Return the new token and the next refresh time.
-    return new NewTokenAndFrequency(authResult.AccessToken, next);
+    "appId": "generated-app-ID",
+    "displayName": "service-principal-name",
+    "name": "http://service-principal-uri",
+    "password": "generated-password",
+    "tenant": "tenant-ID"
 }
 ```
 
-App Authentication ライブラリに関する詳細については、「[.NET を使用した Azure Key Vault に対するサービス間認証](../../key-vault/service-to-service-authentication.md)」を参照してください。 
+> [!IMPORTANT]
+> RBAC ロールの割り当ての反映には数分かかることがあります。
 
-アクセス トークンを取得する方法についてさらに学習するには、「[アクセストークンを取得するために Azure VM 上の Azure リソースのマネージド ID を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください。
+#### <a name="set-environment-variables"></a>環境変数の設定
+
+Azure ID クライアント ライブラリでは、実行時に 3 つの環境変数から値を読み取って、サービス プリンシパルが認証されます。 次の表で、各環境変数に設定する値について説明します。
+
+|環境変数|値
+|-|-
+|`AZURE_CLIENT_ID`|サービス プリンシパル用のアプリ ID
+|`AZURE_TENANT_ID`|サービス プリンシパルの Azure AD テナント ID
+|`AZURE_CLIENT_SECRET`|サービス プリンシパル用に生成されたパスワード
+
+> [!IMPORTANT]
+> 環境変数を設定したら、コンソール ウィンドウを閉じて再度開きます。 Visual Studio または他の開発環境を使用している場合は、新しい環境変数を登録するために開発環境の再起動が必要である可能性があります。
+
+詳細については、[ポータルでの Azure アプリ用の ID 作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
+
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
+
+## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB の作成
+
+Azure ID と Azure Storage クライアント ライブラリを使用するために、次の `using` ディレクティブをコードに追加します。
+
+```csharp
+using Azure;
+using Azure.Identity;
+using Azure.Storage.Blobs;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+```
+
+Azure Storage への要求を承認するためにコード上で使用できるトークン資格情報を取得するには、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) クラスのインスタンスを作成します。 次のコード例では、認証済みのトークン資格情報を取得し、それを使用してサービス クライアント オブジェクトを作成した後、サービス クライアントを使用して新しい Blob をアップロードする方法を示します。
+
+```csharp
+async static Task CreateBlockBlobAsync(string accountName, string containerName, string blobName)
+{
+    // Construct the blob container endpoint from the arguments.
+    string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+                                                accountName,
+                                                containerName);
+
+    // Get a credential and create a client object for the blob container.
+    BlobContainerClient containerClient = new BlobContainerClient(new Uri(containerEndpoint),
+                                                                    new DefaultAzureCredential());
+
+    try
+    {
+        // Create the container if it does not exist.
+        await containerClient.CreateIfNotExistsAsync();
+
+        // Upload text to a new block blob.
+        string blobContents = "This is a block blob.";
+        byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+        using (MemoryStream stream = new MemoryStream(byteArray))
+        {
+            await containerClient.UploadBlobAsync(blobName, stream);
+        }
+    }
+    catch (RequestFailedException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
+}
+```
 
 > [!NOTE]
 > Azure AD を使用して BLOB またはキュー データに対する要求を承認するには、それらの要求に HTTPS を使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure Storage の RBAC ロールについては、[RBAC を使用したストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
-- ストレージ アプリケーション内からコンテナーやキューへのアクセスを承認する方法については、[ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)方法に関するページを参照してください。
-- Azure AD 資格情報を使用して Azure CLI と PowerShell のコマンドを実行する方法については、「[Azure AD ID を使用し、CLI または PowerShell で BLOB とキューのデータにアクセスする](storage-auth-aad-script.md)」を参照してください。
+- [RBAC を使用してストレージ データへのアクセス権を管理する](storage-auth-aad-rbac.md)。
+- [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)。
+- [Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする](authorize-active-directory-powershell.md)。

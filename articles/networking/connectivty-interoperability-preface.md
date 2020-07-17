@@ -1,5 +1,5 @@
 ---
-title: 'Azure バックエンド接続機能の相互運用性: テスト セットアップ | Microsoft Docs'
+title: 'Azure での相互運用性: テスト セットアップ | Microsoft Docs'
 description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの相互運用性を分析する際に使用できるテスト セットアップについて説明します。
 documentationcenter: na
 services: networking
@@ -10,26 +10,26 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771567"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518185"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure バックエンド接続機能の相互運用性: テストの設定
+# <a name="interoperability-in-azure--test-setup"></a>Azure での相互運用性: テストの設定
 
 この記事では、Azure のネットワーク サービスがコントロール プレーン レベルとデータ プレーン レベルでどのように相互運用されるかを分析するために使用できる、テスト セットアップについて説明します。 Azure のネットワーク コンポーネントについて簡単に見てみましょう。
 
--   **Azure ExpressRoute**: Azure ExpressRoute でプライベート ピアリングを使用すると、ご利用の Azure 仮想ネットワーク デプロイにオンプレミス ネットワーク内のプライベート IP 空間を直接接続することができます。 ExpressRoute は、より帯域幅の広いプライベート接続を実現するのに役立ちます。 ExpressRoute 接続は、多くの ExpressRoute エコ パートナーから SLA 付きで提供されています。 ExpressRoute とその構成方法について詳しくは、「[ExpressRoute の概要][ExpressRoute]」をご覧ください。
--   **サイト間 VPN**: Azure VPN Gateway をサイト間 VPN として使用すると、オンプレミス ネットワークをインターネットまたは ExpressRoute 経由で Azure に安全に接続することができます。 サイト間 VPN を Azure に接続するように構成する方法については、[VPN Gateway の構成][VPN]に関する記事をご覧ください。
--   **VNet ピアリング**: 仮想ネットワーク (VNet) ピアリングを使用すると、Azure Virtual Network 内の VNet 間の接続を確立できます。 VNet ピアリングについて詳しくは、[VNet ピアリングに関するチュートリアル][VNet]をご覧ください。
+-   **Azure ExpressRoute**: Azure ExpressRoute でプライベート ピアリングを使用すると、ご利用の Azure 仮想ネットワーク デプロイにオンプレミス ネットワーク内のプライベート IP 空間を直接接続することができます。 ExpressRoute は、より帯域幅の広いプライベート接続を実現するのに役立ちます。 ExpressRoute 接続は、多くの ExpressRoute エコ パートナーから SLA 付きで提供されています。 ExpressRoute とその構成方法の詳細については、「[ExpressRoute の概要][ExpressRoute]」を参照してください。
+-   **サイト間 VPN**: Azure VPN Gateway をサイト間 VPN として使用すると、オンプレミス ネットワークをインターネットまたは ExpressRoute 経由で Azure に安全に接続することができます。 サイト間 VPN を Azure に接続するように構成する方法については、「[VPN ゲートウェイの構成][VPN]」を参照してください。
+-   **VNet ピアリング**: 仮想ネットワーク (VNet) ピアリングを使用すると、Azure Virtual Network 内の VNet 間の接続を確立できます。 VNet ピアリングの詳細については、[VNet ピアリングに関するチュートリアル][VNet]を参照してください。
 
 ## <a name="test-setup"></a>テストの設定
 
 次の図は、テスト セットアップを示したものです。
 
-[![1]][1]
+![1][1]
 
 テスト セットアップの中心となるのは、Azure Region 1 のハブ VNet です。 ハブ VNet は、次の方法で各種ネットワークに接続されています。
 
@@ -39,11 +39,11 @@ ms.locfileid: "57771567"
 -   ハブ VNet は、別の ExpressRoute プライベート ピアリングを使用して、オンプレミスの Location 2 ネットワークに接続されます。 以降、この記事では、この 2 つ目の ExpressRoute 回線を ExpressRoute 2 と呼びます。
 -   また、ハブ VNet とオンプレミスの Location 1 ネットワークは、どちらも ExpressRoute 1 によって Azure Region 2 のリモート VNet に接続されています。
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続を組み合わせる
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続の併用
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
-ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet の間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリング上のサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
+ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet の間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリングでのサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
 
 Microsoft ピアリングを使用するサイト間 VPN 構成に伴う主な制限はスループットです。 IPsec トンネル上では、VPN ゲートウェイの容量によりスループットが制限されます。 VPN ゲートウェイのスループットは、ExpressRoute のスループットよりも低くなります。 このシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のすべてのトラフィックにはプライベート ピアリングを使用すると、ExpressRoute の帯域幅使用率の最適化に役立ちます。
 
@@ -67,18 +67,18 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-テスト トポロジの[構成の詳細][Configuration]について学習する。
+テスト トポロジの[構成の詳細][Configuration]を確認します。
 
-テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューについて学習する。
+テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューを確認します。
 
-テスト セットアップの[データ プレーン分析][Data-Analysis]および Azure ネットワーク監視機能のビューについて学習する。
+テスト セットアップの[データ プレーン分析][Data-Analysis]および Azure ネットワーク監視機能のビューについて確認します。
 
-次のテーマについては、「[ExpressRoute の FAQ][ExR-FAQ]」を参照してください。
+「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
 -   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
 -   ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数について学習する。
--   ExpressRoute のスケールの上限に関するその他の情報について学習する。
+-   ExpressRoute のその他のスケールの制限について学習する。
 
 
 <!--Image References-->

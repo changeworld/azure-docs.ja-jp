@@ -3,23 +3,22 @@ title: Azure Security Center の推奨事項を使用してセキュリティを
 description: " セキュリティ ポリシーと Azure Security Center の推奨事項を使用して、セキュリティ攻撃を軽減する方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 08/22/2019
+ms.author: memildin
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967975"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77603286"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
@@ -48,33 +47,33 @@ Jeff はクラウド ワークロード所有者で、 Contoso のセキュリ�
 Jeff は、以下のタスクを実行します。
 
 - Security Center によって提供されるセキュリティに関する推奨事項を管理する
-- セキュリティに関する推奨事項を評価し、適用するか無視するか判断する
+- セキュリティに関する推奨事項を評価し、推奨事項を適用するか無視するか判断する
 - セキュリティに関する推奨事項を適用する
 
 ### <a name="remediate-threats-using-recommendations"></a>推奨事項を使用して脅威を修復する
 Jeff は、毎日の監視アクティビティの一環として、Azure にサインインし、Security Center を開きます。 
 
-1. Jeff は、自分のワークロードのサブスクリプションを選択します。
+1. Jeff は、ワークロードのサブスクリプションを選択します。
 
-2. Jeff は、**セキュリティ スコア**を確認し、サブスクリプションがどれほど保護されているか全体像を把握します。彼のスコアは 548 と表示されます。
+2. Jeff は、**セキュリティ スコア** を確認し、サブスクリプションがどれほど保護されているか全体像を把握します。スコアが 548 であることを確認します。
 
-3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、[セキュリティ スコアの影響](security-center-secure-score.md)がどれほど改善されるかに注目しながら推奨事項について処理を始めます。
+3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、 [セキュリティ スコアの影響](security-center-secure-score.md)がどれほど改善されるかに注目しながらレコメンデーションについて処理を始めます。
 
-4. Jeff はたくさんの VM やサーバーに接続しているため、**[計算とアプリ]** にターゲットを絞ることにします。
+4. Jeff はたくさんの VM やサーバーに接続しているため、 **[計算とアプリ]** にターゲットを絞ることにします。
 
-5. Jeff が **[計算とアプリ]** をクリックすると、推奨事項の一覧が表示されます。セキュリティ スコアへの影響に照らしてそれらを処理します。
+5. Jeff が **[計算とアプリ]** をクリックすると、レコメンデーションのリストが表示されます。セキュリティ スコアへの影響に照らしてそれらを処理します。
 
-6. Jeff にはインターネットに接続された VM がたくさんあり、それらのポートが公開されているため、攻撃者によってサーバーが制御されてしまうのではないかと心配しています。 それで、[security-center-just-in-time.md] (**Just-In-Time VM アクセス**) を使用することを選びます。
+6. Jeff にはインターネットに接続された VM がたくさんあり、それらのポートが公開されているため、攻撃者によってサーバーが制御されてしまうのではないかと心配しています。 そこで Jeff は [**Just-In-Time VM アクセス**](security-center-just-in-time.md)の使用を選択します。
 
-Jeff は、高優先度と中優先度の推奨事項を確認し、実装について判断します。 各推奨事項について、どのリソースが影響を受けるか、セキュリティ スコアの影響はどれほどか、各推奨事項が何を意味するか、そして各問題を軽減するための修復手順について理解するため、Security Center によって提供される詳細情報に注目します。
+Jeff は、高優先度と中優先度の推奨事項を確認し、実装について判断します。 各レコメンデーションについて、どのリソースが影響を受けるか、セキュリティ スコアの影響はどれほどか、各レコメンデーションが何を意味するか、そして各問題を軽減するための修復手順について解釈するため、Security Center によって提供される詳細情報に注目します。
 
 ## <a name="conclusion"></a>まとめ
-Security Center の推奨事項を監視することにより、攻撃が行われる前にセキュリティの脆弱性を排除できます。 推奨事項を修復すると、セキュリティ スコアとワークロードのセキュリティ体制が向上します。 Security Center は自動的に、デプロイした新しいリソースを検出し、それらをセキュリティ ポリシーに照らし合わせて評価し、それらを保護するための新しい推奨事項を提供します。
+Security Center の推奨事項を監視することにより、攻撃が行われる前にセキュリティの脆弱性を排除できます。 レコメンデーションを修復すると、セキュリティ スコアとワークロードのセキュリティ体制が向上します。 Security Center は自動的に、デプロイした新しいリソースを検出し、それらをセキュリティ ポリシーに照らし合わせて評価し、それらを保護するための新しい推奨事項を提供します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 時間が経ってもリソースを保護し続けられるように、Security Center の推奨事項を定期的にチェックできる、適切な監視プロセスが備わっていることを確かめます。
 
-このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。 攻撃を受ける前にインシデント対応計画を策定する方法については、[インシデント対応シナリオ](security-center-incident-response.md)を参照してください。
+このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。
 
-[インシデント対応](security-center-incident-response.md)で脅威に対応する方法を確認してください。
+[セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)を行うことで、脅威に対応する方法を確認します。

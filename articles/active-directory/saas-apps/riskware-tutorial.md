@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Riskware の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Riskware の統合 | Microsoft Docs'
 description: Azure Active Directory と Riskware の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 08db463c92e4ee34819f446c3827ed8dfddc02d7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903938"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "72027107"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル:Azure Active Directory と Riskware の統合
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル: Azure Active Directory と Riskware の統合
 
 このチュートリアルでは、Riskware と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Riskware と Azure AD の統合には、次の利点があります。
@@ -114,7 +114,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
     | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します: 
+    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します:
     
     | 環境| URL パターン|
     |--|--|
@@ -170,7 +170,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
 
     g. **[XML Identity Tag Name]\(XML ID タグ名\)** ボックスに、SAML 応答内の一意の識別子を含む属性を入力します (例: NameID)。
 
-    h. Azure portal からダウンロードした **メタデータ Xml**  をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[Certificate]\(証明書\)** ボックスに貼り付けます
+    h. Azure Portal からダウンロードした**メタデータ Xml** をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[証明書]\(Certificate\)** ボックスに貼り付けます
 
     i. **[Consumer URL]\(コンシューマー URL\)** ボックスに、サポート チームから入手した**応答 URL** の値を貼り付けます。
 
@@ -183,7 +183,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
 
     l. **[Use SAML Request]\(SAML 要求を使用する\)** チェックボックスをオンにします。
 
-    m. **[Save]** をクリックします。
+    m. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -282,7 +282,7 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 
     c. **[Employee]\(従業員\)** セクションで、 **[Employee Status]\(従業員のステータス\)** を選択します (例: [Casual]\(カジュアル\))。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

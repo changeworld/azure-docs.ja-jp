@@ -1,22 +1,16 @@
 ---
 title: Azure Functions の Event Grid のローカル デバッグ
 description: Event Grid イベントによってトリガーされる Azure 関数をローカルでデバッグする方法について説明します
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: Azure 関数、関数、サーバーレス アーキテクチャ
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 96d88fafd6824ed85f1d91bab59374b3490a55b2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736500"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74227064"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ
 
@@ -30,9 +24,9 @@ ms.locfileid: "56736500"
 
 ## <a name="create-a-new-function"></a>新しい関数を作成する
 
-Visual Studio で関数アプリを開き、ソリューション エクスプローラーでプロジェクト名を右クリックし、**[追加] > [新しい Azure 関数]** の順にクリックします。
+Visual Studio で関数アプリを開き、ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[追加] > [新しい Azure 関数]** の順にクリックします。
 
-*[新しい Azure 関数]* ウィンドウで、**[Event Grid トリガー]** 選択し、**[OK]** をクリックします。
+*[新しい Azure 関数]* ウィンドウで、 **[Event Grid トリガー]** 選択し、 **[OK]** をクリックします。
 
 ![新しい関数の作成](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
@@ -64,15 +58,15 @@ ngrok http -host-header=localhost 7071
 
 ## <a name="add-a-storage-event"></a>ストレージ イベントを追加する
 
-Azure portal を開き、ストレージ アカウントに移動し、**[イベント]** オプションをクリックします。
+Azure portal を開き、ストレージ アカウントに移動し、 **[イベント]** オプションをクリックします。
 
 ![ストレージ アカウント イベントを追加する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-*[イベント]* ウィンドウで、**[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、*[エンドポイントの種類]* ドロップダウンを選択し、**[Webhook]** を選択します。
+*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[Webhook]** を選択します。
 
 ![サブスクリプションの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
-エンドポイントの種類が構成されたら、**[エンドポイントを選択する]** をクリックしてエンドポイント値を構成します。
+エンドポイントの種類が構成されたら、 **[エンドポイントを選択する]** をクリックしてエンドポイント値を構成します。
 
 ![エンドポイントの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
@@ -82,7 +76,7 @@ Azure portal を開き、ストレージ アカウントに移動し、**[イベ
 
 ![エンドポイントの選択](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-適切な値を入力したら、**[選択内容の確認]** をクリックします。
+適切な値を入力したら、 **[選択内容の確認]** をクリックします。
 
 > [!IMPORTANT]
 > *ngrok* を起動するたびに、HTTPS URL が再生成され、値が変更されます。 そのため、*ngrok* を使用して Azure に関数を公開するたびに、新しいイベント サブスクリプションを作成する必要があります。
@@ -94,7 +88,7 @@ Azure portal を開き、ストレージ アカウントに移動し、**[イベ
 [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を開いて、ストレージ アカウントに接続します。 
 
 - **BLOB コンテナー**を展開します 
-- 右クリックし、**[BLOB コンテナーの作成]** を選択します。
+- 右クリックし、 **[BLOB コンテナーの作成]** を選択します。
 - コンテナーに **test** という名前を付けます
 - *test* コンテナーを選択します
 - **[アップロード]** ボタンをクリックします
@@ -107,11 +101,11 @@ Azure portal を開き、ストレージ アカウントに移動し、**[イベ
 
 ![ngrok を起動する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースをクリーンアップするには、ストレージ アカウント内の **test** コンテナーを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)
 - [Azure Functions の Event Grid トリガー](./functions-bindings-event-grid.md)

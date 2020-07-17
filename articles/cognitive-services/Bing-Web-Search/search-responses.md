@@ -1,26 +1,26 @@
 ---
 title: Bing Web Search API の応答の構造と答えの種類
 titleSuffix: Azure Cognitive Services
-description: Bing Web Search API で使用される回答の種類と応答について説明します。
+description: Bing Web Search に検索要求を送信すると、応答本文で `SearchResponse` オブジェクトが返されます。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232894"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74110617"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
-Bing Web Search に検索要求を送信すると、応答本文で [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) オブジェクトが返されます。 このオブジェクトには、クエリとの関連性が高いと Bing が判断した各回答に対応するフィールドが含まれています。 次の例は、Bing からすべての回答が返された場合の応答オブジェクトを示しています。
+Bing Web Search に検索要求を送信すると、応答本文で [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) オブジェクトが返されます。 このオブジェクトには、クエリとの関連性が高いと Bing が判断した各回答に対応するフィールドが含まれています。 次の例は、Bing からすべての回答が返された場合の応答オブジェクトを示しています。
 
 ```json
 {
@@ -38,11 +38,13 @@ Bing Web Search に検索要求を送信すると、応答本文で [`SearchResp
 }, ...
 ```
 
-Bing Web Search から返されるのは、回答のサブセットであるのが一般的です。 たとえば、検索語が *sailing dinghies* であれば、応答には `webPages`、`images`、`rankingResponse` が含まれると考えられます。 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) を使って Web ページを除外した場合を除けば、応答には必ず回答として `webpages` と `rankingResponse` が含まれます。
+Bing Web Search から返されるのは、回答のサブセットであるのが一般的です。 たとえば、検索語が *sailing dinghies* であれば、応答には `webPages`、`images`、`rankingResponse` が含まれると考えられます。 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) を使って Web ページを除外した場合を除けば、応答には必ず回答として `webpages` と `rankingResponse` が含まれます。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>webPages 回答
 
-[webPages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) の回答には、クエリとの関連性が高いと Bing Web Search によって判断された Web ページへのリンクのリストが格納されます。 このリストに含まれる各 [Webpage](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) には、ページの名前、URL、表示 URL、コンテンツの簡単な説明、Bing でそのコンテンツが見つかった日付が含まれます。
+[webPages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) の回答には、クエリとの関連性が高いと Bing Web Search によって判断された Web ページへのリンクのリストが格納されます。 このリストに含まれる各 [Webpage](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) には、ページの名前、URL、表示 URL、コンテンツの簡単な説明、Bing でそのコンテンツが見つかった日付が含まれます。
 
 ```json
 {
@@ -65,7 +67,7 @@ The following shows an example of how you might display the webpage in a search 
 
 ## <a name="images-answer"></a>イメージの応答
 
-[images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連の画像が格納されます。 このリスト内の各 [image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) には、その URL、サイズ、大きさ、エンコード形式が含まれています。 image オブジェクトには、画像のサムネイルの URL やサムネイルの大きさも含まれています。
+[images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連の画像が格納されます。 このリスト内の各 [image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) には、その URL、サイズ、大きさ、エンコード形式が含まれています。 image オブジェクトには、画像のサムネイルの URL やサムネイルの大きさも含まれています。
 
 ```json
 {
@@ -109,7 +111,7 @@ images 回答と image について詳しくは、[Image Search API](../bing-ima
 
 ## <a name="related-searches-answer"></a>relatedSearches 回答
 
-[relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse-relatedsearches) 回答には、他のユーザーによって実行された関連クエリの中で最もポピュラーなもののリストが格納されます。 リスト内の各 [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query_obj) には、クエリ文字列 (`text`) のほか、検索語句を強調表示するための文字を含んだクエリ文字列 (`displayText`)、そのクエリに対する Bing の検索結果ページへの URL (`webSearchUrl`) が含まれています。
+[relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) 回答には、他のユーザーによって実行された関連クエリの中で最もポピュラーなもののリストが格納されます。 リスト内の各 [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) には、クエリ文字列 (`text`) のほか、検索語句を強調表示するための文字を含んだクエリ文字列 (`displayText`)、そのクエリに対する Bing の検索結果ページへの URL (`webSearchUrl`) が含まれています。
 
 ```json
 {
@@ -121,7 +123,7 @@ images 回答と image について詳しくは、[Image Search API](../bing-ima
 
 関連クエリに対する Bing の検索結果ページにユーザーを誘導するハイパーリンクを作成するには、`displayText` クエリ文字列と `webSearchUrl` URL を使用します。 独自の Web Search API クエリの中で `text` クエリ文字列を使用し、独自にその結果を表示することもできます。
 
-`displayText` で検索結果を強調表示するためのマーカーの使い方については、[検索結果の強調表示](./hit-highlighting.md)に関するページを参照してください。
+`displayText` で検索結果を強調表示するためのマーカーの使い方については、[検索結果の強調表示](../bing-web-search/hit-highlighting.md)に関するページを参照してください。
 
 次に示したのは、Bing.com での関連するクエリの使用例です。
 
@@ -129,7 +131,7 @@ images 回答と image について詳しくは、[Image Search API](../bing-ima
 
 ## <a name="videos-answer"></a>videos 回答
 
-[videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連の動画が格納されます。 このリスト内の各 [video](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) には、動画の URL、再生時間、大きさ、エンコード形式が含まれています。 video オブジェクトには、動画のサムネイルの URL やサムネイルの大きさも含まれています。
+[videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連の動画が格納されます。 このリスト内の各 [video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) には、動画の URL、再生時間、大きさ、エンコード形式が含まれています。 video オブジェクトには、動画のサムネイルの URL やサムネイルの大きさも含まれています。
 
 ```json
 {
@@ -183,7 +185,7 @@ videos 回答と video について詳しくは、[Video Search API](../bing-vid
 
 ## <a name="news-answer"></a>news 回答
 
-[news](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連のニュース記事が格納されます。 このリスト内の各 [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) には、その記事の名前や説明、さらに、ホストの Web サイト上の記事への URL が含まれています。 記事に画像が含まれている場合、このオブジェクトには、その画像のサムネイルが含まれます。
+[news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連のニュース記事が格納されます。 このリスト内の各 [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) には、その記事の名前や説明、さらに、ホストの Web サイト上の記事への URL が含まれています。 記事に画像が含まれている場合、このオブジェクトには、その画像のサムネイルが含まれます。
 
 ```json
 {
@@ -218,9 +220,9 @@ news 回答と newsarticle について詳しくは、[News Search API](../bing-
 
 ## <a name="computation-answer"></a>computation 回答
 
-ユーザーが数式または単位変換クエリを入力した場合、応答には [Computation](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#computation) 回答が格納されます。 `computation` 回答には、正規化された式とその結果が格納されます。
+ユーザーが数式または単位変換クエリを入力した場合、応答には [Computation](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) 回答が格納されます。 `computation` 回答には、正規化された式とその結果が格納されます。
 
-単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)*" や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)*" といったクエリが考えられます。
+単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)* " や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
 
 次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)*" に対する `computation` 回答です。
 
@@ -288,31 +290,31 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数式には、次の記号を含めることができます。
 
-|シンボル|説明|
+|Symbol|説明|
 |------------|-----------------|
 |+|加算|
 |-|減算|
 |/|除算|
 |*|乗算|
-|^|累乗|
+|^|Power|
 |!|階乗|
 |。|Decimal|
 |()|優先順位のグループ化|
-|[]|関数|
+|[]|Function|
 
 数式には、次の定数を含めることができます。
 
-|シンボル|説明|
+|Symbol|説明|
 |------------|-----------------|
 |Pi|3.14159...|
-|Degree|i|
-|度|虚数|
+|i|i|
+|i|虚数|
 |e|自然対数の底 (2.71828...)|
 |GoldenRatio|黄金比 (1.61803...)|
 
 数式には、次の関数を含めることができます。
 
-|シンボル|説明|
+|Symbol|説明|
 |------------|-----------------|
 |並べ替え|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角関数 (引数はラジアン単位)|
@@ -326,11 +328,11 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 ## <a name="timezone-answer"></a>timeZone 回答
 
-ユーザーが時刻または日付のクエリを入力した場合、応答には [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) 回答が格納されます。 この回答は、暗黙的なクエリと明示的なクエリをサポートします。 "*What time is it? (何時?)*" など暗黙的なクエリは、ユーザーの位置情報に基づくローカル時刻を返します。 "*What time is it in Seattle? (シアトルでは何時?)*" など明示的なクエリは、ワシントン州シアトルのローカル時刻を返します。
+ユーザーが時刻または日付のクエリを入力した場合、応答には [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 回答が格納されます。 この回答は、暗黙的なクエリと明示的なクエリをサポートします。 "*What time is it? (何時?)* " など暗黙的なクエリは、ユーザーの位置情報に基づくローカル時刻を返します。 "*What time is it in Seattle? (シアトルでは何時?)* " など明示的なクエリは、ワシントン州シアトルのローカル時刻を返します。
 
 `timeZone` 回答からは、場所の名前、指定された場所における現在の UTC 日時、UTC オフセットが得られます。 その場所の境界が複数のタイム ゾーンにまたがっている場合、回答には、その境界内のすべてのタイム ゾーンにおける現在の UTC 日時が格納されます。 たとえばフロリダ州は 2 つのタイム ゾーンにまたがっているため、回答には、両方のタイム ゾーンのローカル日時が格納されます。  
 
-クエリで州または国の時刻を要求した場合、Bing は、その場所の地理的境界内に含まれる主要都市を判断し、それを `primaryCityTime` フィールドに格納して返します。 その境界が複数のタイム ゾーンにまたがっている場合、残りのタイム ゾーンは `otherCityTimes` フィールドで返されます。
+クエリで州または国/地域の時刻を要求した場合、Bing は、その場所の地理的境界内に含まれる主要都市を判断し、それを `primaryCityTime` フィールドに格納して返します。 その境界が複数のタイム ゾーンにまたがっている場合、残りのタイム ゾーンは `otherCityTimes` フィールドで返されます。
 
 次に示したのは、`timeZone` 回答を返すクエリの例です。
 
@@ -417,7 +419,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion 回答
 
-検索の対象がユーザーの意図と異なる可能性があると Bing が判断した場合、応答には [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#spellsuggestions) オブジェクトが含まれます。 たとえばユーザーが「*carlos pen*」を検索した場合、Bing は (過去に他のユーザーが行った *carlos pen* の検索に基づき) ユーザーが本当に検索したいのは Carlos Pena であると判断します。 スペル応答の例を次に示します。
+検索の対象がユーザーの意図と異なる可能性があると Bing が判断した場合、応答には [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) オブジェクトが含まれます。 たとえばユーザーが「*carlos pen*」を検索した場合、Bing は (過去に他のユーザーが行った *carlos pen* の検索に基づき) ユーザーが本当に検索したいのは Carlos Pena であると判断します。 スペル応答の例を次に示します。
 
 ```json
 "spellSuggestions": {
@@ -428,10 +430,6 @@ Query: What time is it in the U.S.
     }]
 }, ...
 ```
-
-Bing による修正候補の例を次に示します。
-
-![Bing による修正候補の例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
 ## <a name="response-headers"></a>応答ヘッダー
 
@@ -447,9 +445,9 @@ Bing Web Search API からの応答には、以下のヘッダーが含まれる
 
 ただし、JavaScript から Bing Web Search API を呼び出すときに、ブラウザーの組み込みのセキュリティ機能 (CORS) によっては、これらのヘッダーの値にアクセスできないことがあります。
 
-ヘッダーにアクセスするために、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用可能にする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+ヘッダーにアクセスするために、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
-CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-web-search-single-page-app.md)がオプションのクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 次に、コマンド プロンプトで次のコマンドを入力します。
+CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-web-search-single-page-app.md)が省略可能なクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
     npm install -g cors-proxy-server
 
@@ -461,7 +459,7 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
     cors-proxy-server
 
-チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
 ## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
 
@@ -475,10 +473,10 @@ Bing による修正候補の例を次に示します。
 
 ![Bing による修正候補の例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 * [要求のスロットル](throttling-requests.md)に関するドキュメントをご覧ください。  
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
-* [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+* [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

@@ -1,6 +1,6 @@
 ---
-title: .NET Framework を使用してイベントを送受信する - Azure Event Hubs | Microsoft Docs
-description: この記事では、Azure Event Hubs にイベントを送信する .NET Framework アプリケーションを作成するためのチュートリアルを提供します。
+title: Azure Event Hubs - .NET Framework を使用してイベントを送受信する
+description: クイック スタート:この記事では、Azure Event Hubs にイベントを送信する .NET Framework アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 04/15/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 097605a81e263ba558c616bd9f0d1ac38092f86e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692927"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216050"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>.NET Framework を使用して Azure Event Hubs との間でイベントを送受信する
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>クイック スタート:.NET Framework を使用して Azure Event Hubs との間でイベントを送受信する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
 このチュートリアルでは、C# で .NET Framework コンソール アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -30,7 +30,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-- [Microsoft Visual Studio 2017 以上](https://visualstudio.com)。
+- [Microsoft Visual Studio 2019](https://visualstudio.com)。
 - **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**イベント ハブ名前空間用の接続文字列**を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの中で、その接続文字列が後で必要になります。
 
 ## <a name="send-events"></a>送信イベント 
@@ -44,7 +44,7 @@ Visual Studio で、 **コンソール アプリケーション** プロジェ�
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-1. ソリューション エクスプローラーで **[Sender]** プロジェクトを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。 
+1. ソリューション エクスプローラーで **[Sender]** プロジェクトを右クリックし、 **[ソリューションの NuGet パッケージの管理]** をクリックします。 
 2. **[参照]** タブをクリックして、`WindowsAzure.ServiceBus` を検索します。 **[インストール]** をクリックして、使用条件に同意します。 
    
     ![Service Bus NuGet パッケージのインストール](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
@@ -115,7 +115,7 @@ Visual Studio で、**コンソール アプリケーション** プロジェク
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-1. ソリューション エクスプローラーで **[Receiver]** プロジェクトを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
+1. ソリューション エクスプローラーで **[Receiver]** プロジェクトを右クリックし、 **[ソリューションの NuGet パッケージの管理]** をクリックします。
 2. **[参照]** タブをクリックして、`Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索します。 **[インストール]** をクリックして、使用条件に同意します。
    
     ![Event Processor Host NuGet パッケージの検索](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
@@ -124,7 +124,7 @@ Visual Studio で、**コンソール アプリケーション** プロジェク
 
 ### <a name="implement-the-ieventprocessor-interface"></a>IEventProcessor インターフェイスの実装
 
-1. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。 新しいクラスの名前として「**SimpleEventProcessor**」と入力し、**[追加]** をクリックしてクラスを作成します。
+1. **[Receiver]** プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順にクリックします。 新しいクラスの名前として「**SimpleEventProcessor**」と入力し、 **[追加]** をクリックしてクラスを作成します。
    
     ![SimpleEventProcessor クラスの追加](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. SimpleEventProcessor.cs ファイルの先頭に次のステートメントを追加します。
@@ -214,7 +214,7 @@ Visual Studio で、**コンソール アプリケーション** プロジェク
     
 3. プログラムを実行し、エラーがないことを確認します。
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

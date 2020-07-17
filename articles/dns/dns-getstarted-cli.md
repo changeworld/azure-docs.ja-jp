@@ -1,26 +1,27 @@
 ---
-title: クイック スタート - Azure CLI を使用して Azure DNS ゾーンとレコードを作成する
+title: クイック スタート:Azure DNS ゾーンとレコードを作成する - Azure CLI
+titleSuffix: Azure DNS
 description: クイック スタート - Azure DNS で DNS ゾーンとレコードを作成する方法について説明します。 これは、Azure CLI を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohink
+ms.openlocfilehash: e6904c013cf2ed897bdc7c8b32f04fe500fc31d9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111332"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76937193"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>クイック スタート: Azure CLI を使用して Azure DNS ゾーンとレコードを作成する
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure DNS ゾーンとレコードを作成する
 
 この記事では、Windows、Mac、Linux で使用できる Azure CLI を使用して、最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、[Azure portal](dns-getstarted-portal.md) または [Azure PowerShell](dns-getstarted-powershell.md) を使用して実行することもできます。
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 ここでは、その手順について説明します。
 
-Azure DNS では、プライベート DNS ゾーンもサポートされるようになりました (現在はパブリック プレビュー段階です)。 プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。 プライベート DNS ゾーンを作成する例については、[CLI で Azure DNS プライベート ゾーンを使用するための基礎](./private-dns-getstarted-cli.md)に関するページを参照してください。
+Azure DNS は、プライベート DNS ゾーンもサポートします。 プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。 プライベート DNS ゾーンを作成する例については、[CLI で Azure DNS プライベート ゾーンを使用するための基礎](./private-dns-getstarted-cli.md)に関するページを参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -82,7 +83,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例: 
+   次に例を示します。
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -102,7 +103,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
 az group delete --name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、Azure CLI を使用して最初の DNS ゾーンとレコードを作成できました。カスタム ドメインで Web アプリのレコードを作成できます。
 

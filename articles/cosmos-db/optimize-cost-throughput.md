@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB でスループット コストを最適化する
 description: この記事では、Azure Cosmos DB に格納されているデータのスループット コストを最適化する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 02/07/2020
+ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967306"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501466"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -29,7 +29,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 プロビジョニング済みスループットの戦略の決定に関するガイドラインを次に示します。
 
-**次の場合は、(コンテナーのセットを含む) Azure Cosmos DB データベースでのスループットのプロビジョニングを検討します**
+**次の場合は、(コンテナーのセットを含む) Azure Cosmos データベースでのスループットのプロビジョニングを検討します**
 
 1. 数十個の Azure Cosmos コンテナーがあり、それらの一部または全部の間でスループットを共有したい場合。 
 
@@ -55,17 +55,17 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 |API|**共有**スループットの場合の構成対象 |**専用**スループットの場合の構成対象 |
 |----|----|----|
-|SQL API|Database|コンテナー|
-|Azure Cosmos DB の MongoDB 用 API|Database|コレクション|
+|SQL API|データベース|コンテナー|
+|Azure Cosmos DB の MongoDB 用 API|データベース|コレクション|
 |Cassandra API|キースペース|テーブル|
-|Gremlin API|データベース アカウント|Graph|
+|Gremlin API|データベース アカウント|グラフ|
 |テーブル API|データベース アカウント|テーブル|
 
 異なるレベルでスループットをプロビジョニングすることにより、ワークロードの特性に基づいてコストを最適化できます。 前に説明したように、プログラムを使用していつでも、個々のコンテナーについて、またはコンテナーのセットで集合的に、プロビジョニング済みスループットを増やしたり減らしたりできます。 ワークロードの変化に応じてスループットを弾力的にスケーリングすることで、支払いは構成したスループットに対するものだけで済みます。 コンテナーまたはコンテナーのセットが複数のリージョンに分散されている場合、そのコンテナーまたはコンテナーのセットで構成するスループットがすべてのリージョンで使用可能になることが保証されます。
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>要求のレート制限で最適化する
 
-待ち時間が重要ではないワークロードの場合は、プロビジョニングするスループットを少なくし、実際のスループットがプロビジョニング済みスループットを超えたときはアプリケーションでレート制限を処理することができます。 サーバーはいち早く RequestRateTooLarge (HTTP 状態コード 429) で要求を終了させ、要求を再試行するまでにユーザーが待機しなければならない時間 (ミリ秒) を示す `x-ms-retry-after-ms` ヘッダーを返します。 
+待ち時間が重要ではないワークロードの場合は、プロビジョニングするスループットを少なくし、実際のスループットがプロビジョニング済みスループットを超えたときはアプリケーションでレート制限を処理することができます。 サーバーはいち早く `RequestRateTooLarge` (HTTP 状態コード 429) で要求を終了させ、要求を再試行するまでにユーザーが待機しなければならない時間 (ミリ秒) を示す `x-ms-retry-after-ms` ヘッダーを返します。 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 ネイティブ SDK (.NET/.NET Core、Java、Node.js、Python) ではこの応答が暗黙的にキャッチされて、サーバーが指定した retry-after ヘッダーを優先して要求が再試行されます。 アカウントに複数のクライアントが同時アクセスしている状況でなければ、次回の再試行は成功します。
 
-累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `DocumentClientException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む DocumentClientException が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
+累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `RequestRateTooLargeException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む `RequestRateTooLargeException` が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) は 3 に設定されているので、このケースでは、コレクションの予約済みスループットを超えることによって要求操作がレート制限された場合、要求操作では 3 回再試行してからアプリケーションに例外がスローされます。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) は 60 に設定されているので、このケースでは、最初の要求からの累積再試行待機時間 (秒数) が 60 秒を超えると、例外がスローされます。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) が 3 に設定されます。そのため、ここでは、コンテナーに予約されているスループットを超過し、要求操作がレート制限される場合、その要求操作は 3 回まで再試行し、成功しなければアプリケーションに例外をスローします。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) が 60 に設定されています。そのため、ここでは、最初の要求後、累積再試行時間 (秒) が 60 秒を超過すると、例外がスローされます。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 
@@ -125,7 +123,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>弾力的にオンデマンドでスループットをスケーリングする 
 
-プロビジョニングされたスループットに対して課金されるので、プロビジョニング済みスループットをニーズと一致させることが、未使用のスループットに課金されるのを防ぐのに役立ちます。 必要に応じていつでも、プロビジョニング済みスループットをスケールアップまたはスケールダウンできます。  
+プロビジョニングされたスループットに対して課金されるので、プロビジョニング済みスループットをニーズと一致させることが、未使用のスループットに課金されるのを防ぐのに役立ちます。 必要に応じていつでも、プロビジョニング済みスループットをスケールアップまたはスケールダウンできます。 スループットのニーズを正確に予測できる場合は、Azure Functions とタイマー トリガーを使用し、[スケジュールに従ってスループットを増減する](scale-on-schedule.md)ことができます。 
 
 * RU の消費量と、レート制限された要求の割合を監視することで、日または週を通してプロビジョニング済みスループットを一定に保つ必要がないことがわかる場合があります。 夜間や週末は、受け取るトラフィックが減ることがあります。 Azure portal または Azure Cosmos DB のネイティブ SDK や REST API を使用すると、いつでもプロビジョニング済みスループットをスケーリングできます。 Azure Cosmos DB の REST API では、コンテナーのパフォーマンス レベルをプログラムで更新するためのエンドポイントが提供されており、時間帯や曜日に応じてコードから簡単にスループットを調整できます。 操作はダウンタイムなしで実行され、通常は 1 分未満で有効になります。 
 
@@ -157,7 +155,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 1. コンテナーやデータベースに大幅にオーバー プロビジョニングされたスループットがある場合は、プロビジョニングされた RU と消費された RU を確認して、ワークロードを微調整する必要があります。  
 
-2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](online-backup-and-restore.md)に関する記事をご覧ください。 
+2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。 
 
 3. 操作とその RU コストを取得するもう 1 つの方法は、Azure Monitor ログを有効にすることで、操作/継続時間と要求の料金の明細が提供されます。 Azure Cosmos DB では、すべての操作に対して要求の料金が提供されるので、すべての操作の料金を応答から保存して、分析に使用できます。 
 
@@ -175,13 +173,13 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 10. Azure Cosmos DB の予約容量を利用すると、3 年間最大 65% という大幅な割引を受けることができます。 Azure Cosmos DB の予約容量モデルは、一定期間に必要な要求ユニットに対する前払いのコミットメントです。 割引は、要求ユニットの使用期間が長いほど、割引額が大きくなるように、階層化されています。 これらの割引は、すぐに適用されます。 プロビジョニングされた値を超えて使用された RU は、予約容量ではないコストに基づいて課金されます。 詳しくは、[Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関する記事をご覧ください。 プロビジョニング済みスループットのコストをさらに下げるには、予約容量の購入を検討してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
 * [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
-* [Azure Cosmos DB の請求書を理解する方法](understand-your-bill.md)について確認する
-* [ストレージ コストの最適化](optimize-cost-storage.md)について確認する
+* [Azure Cosmos DB の課金内容の確認](understand-your-bill.md)の詳細について学習します
+* [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
 * [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します

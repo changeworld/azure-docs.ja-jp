@@ -1,23 +1,15 @@
 ---
-title: Azure Application Insights .NET SDK でカスタム操作を追跡する | Microsoft Docs
+title: Azure Application Insights .NET SDK でカスタム操作を追跡する
 description: Azure Application Insights .NET SDK でカスタム操作を追跡する
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/30/2017
+ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995542"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690859"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -34,7 +26,7 @@ Application Insights SDK は、受信 HTTP 要求および依存関係にある�
 ## <a name="overview"></a>概要
 操作は、アプリケーションによって実行される処理の 1 つの論理部分です。 操作には、名前、開始時刻、継続時間、および実行コンテキストがあります (ユーザー名、プロパティ、結果など)。 操作 A が 操作 B によって開始された場合は、操作 B が A の親として設定されます。1 つの操作は、親を 1 つだけ持つことができますが、複数の子操作を持つことができます。 操作とテレメトリの関連付けの詳細については、「[Application Insights におけるテレメトリの相関付け](correlation.md)」を参照してください。
 
-Application Insights .NET SDK では、操作は、抽象クラス [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) とその子孫である [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) と [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) によって表されます。
+Application Insights .NET SDK では、操作は、抽象クラス [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) とその子孫である [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) と [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) によって表されます。
 
 ## <a name="incoming-operations-tracking"></a>受信操作の追跡 
 Application Insights Web SDK は、IIS パイプラインで実行される ASP.NET アプリケーションとすべての ASP.NET Core アプリケーションを対象に、HTTP 要求を自動的に収集します。 それ以外のプラットフォームとフレームワークについては、コミュニティによってサポートされるソリューションが存在します。 ただし、標準のソリューションとコミュニティによってサポートされるソリューションの対象外であるアプリケーションについては、独自にインストルメント化することができます。
@@ -46,12 +38,15 @@ Application Insights Web SDK は、IIS パイプラインで実行される ASP.
 簡潔に言うと、このタスクとは、`RequestTelemetry` を作成して既知のプロパティを設定することです。 操作が完了したら、このテレメトリを追跡します。 次の例は、このタスクを示しています。
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Owin 自己ホスト型アプリにおける HTTP 要求
-この例では、トレース コンテキストは、[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に従って反映されます。 ここに記載されているヘッダーが受信されることを予期してください。
+この例では、トレース コンテキストは、[関連付け用の HTTP プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に従って反映されます。 ここに記載されているヘッダーが受信されることを予期してください。
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
 {
-    private readonly TelemetryClient telemetryClient = new TelemetryClient(TelemetryConfiguration.Active);
+    // you may create a new TelemetryConfiguration instance, reuse one you already have
+    // or fetch the instance created by Application Insights SDK.
+    private readonly TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+    private readonly TelemetryClient telemetryClient = new TelemetryClient(telemetryConfiguration);
     
     public ApplicationInsightsMiddleware(OwinMiddleware next) : base(next) {}
 
@@ -122,7 +117,10 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 この関連付け用の HTTP プロトコルも、`Correlation-Context` ヘッダーを宣言しますが、 ここでは、簡潔にするために省略されています。
 
 ## <a name="queue-instrumentation"></a>キューのインストルメンテーション
-関連付けの詳細を HTTP 要求で渡す[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)はありますが、各キュー プロトコルで、同じ詳細をキュー メッセージに沿って渡す方法を定義する必要があります。 一部のキュー プロトコル (AMQP など) は、追加のメタデータを渡すことを許可しています。また、コンテキストをメッセージ ペイロードにエンコードする必要があるキュー プロトコルもあります (Azure Storage Queue など)。
+[W3C トレース コンテキスト](https://www.w3.org/TR/trace-context/)と関連付けの詳細を HTTP 要求で渡す[関連付け用の HTTP プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)はありますが、各キュー プロトコルで、同じ詳細をキュー メッセージに沿って渡す方法を定義する必要があります。 一部のキュー プロトコル (AMQP など) は、追加のメタデータを渡すことを許可しています。また、コンテキストをメッセージ ペイロードにエンコードする必要があるキュー プロトコルもあります (Azure Storage Queue など)。
+
+> [!NOTE]
+> * **クロスコンポーネントのトレースはキューではまだサポートされていません**。HTTP を使用すると、プロデューサーとコンシューマーが、異なる Application Insights リソースにテレメトリを送信する場合、トランザクションの診断エクスペリエンスとアプリケーション マップでトランザクションが表示され、エンドツーエンドでマップされます。 キューの場合、これはまだサポートされていません。 
 
 ### <a name="service-bus-queue"></a>Service Bus キュー
 Application Insights は、新しい [Microsoft Azure ServiceBus Client for .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) バージョン 3.0.0 以降で Service Bus Messaging の呼び出しを追跡します。
@@ -139,7 +137,8 @@ public async Task Enqueue(string payload)
     // StartOperation is a helper method that initializes the telemetry item
     // and allows correlation of this operation with its parent and children.
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queueName);
-    operation.Telemetry.Type = "Queue";
+    
+    operation.Telemetry.Type = "Azure Service Bus";
     operation.Telemetry.Data = "Enqueue " + queueName;
 
     var message = new BrokeredMessage(payload);
@@ -176,7 +175,7 @@ public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
     // It might also make sense to get the name from the message.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
 
     var rootId = message.Properties["RootId"].ToString();
     var parentId = message.Properties["ParentId"].ToString();
@@ -207,20 +206,7 @@ public async Task Process(BrokeredMessage message)
 [Azure Storage キュー](../../storage/queues/storage-dotnet-how-to-use-queues.md)の操作を追跡し、プロデューサー、コンシューマー、Azure Storage 間でテレメトリを相互に関連付ける例を次に示します。 
 
 Storage キューには HTTP API があります。 キューに対するすべての呼び出しは、Application Insights の HTTP 要求の依存関係コレクターによって追跡されます。
-`Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` が `applicationInsights.config` に含まれていることを確認してください。 ない場合は、[Application Insights SDK におけるフィルター処理と前処理](../../azure-monitor/app/api-filtering-sampling.md)に関する記事に従って、プログラムによって追加してください。
-
-ApplicationInsights を手動で構成する場合は、次のように `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` を作成して初期化する必要があります。
- 
-```csharp
-DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
-
-// You can prevent correlation header injection to some domains by adding it to the excluded list.
-// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on the Storage service side.
-module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
-module.Initialize(TelemetryConfiguration.Active);
-
-// Do not forget to dispose of the module during application shutdown.
-```
+ASP.NET および ASP.NET Core アプリケーションでは既定で構成されます。他の種類のアプリケーションでの構成については、[コンソール アプリケーションに関するドキュメント](../../azure-monitor/app/console.md)を参照してください。
 
 Application Insights の操作 ID を Storage の要求 ID に関連付けることもできます。 Storage の要求クライアントとサーバーの要求 ID の設定および取得方法については、「[Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)」を参照してください。
 
@@ -229,8 +215,8 @@ Storage キューは HTTP API をサポートしているため、キューを�
 
 この例は、`Enqueue` 操作を追跡する方法を示しています。 次のようにすることができます。
 
- - **再試行を関連付ける (存在する場合)**:すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
- - **Storage ログを関連付ける (存在する場合に必要に応じて)**:Storage ログは Application Insights のテレメトリに関連付けられます。
+ - **再試行を関連付ける (存在する場合)** :すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
+ - **Storage ログを関連付ける (存在する場合に必要に応じて)** :Storage ログは Application Insights のテレメトリに関連付けられます。
 
 `Enqueue` 操作は、親操作 (受信 HTTP 要求など) の子です。 HTTP の依存関係呼び出しは、`Enqueue` 操作の子であり、受信要求の孫でもあります。
 
@@ -238,7 +224,7 @@ Storage キューは HTTP API をサポートしているため、キューを�
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
-    operation.Telemetry.Type = "Queue";
+    operation.Telemetry.Type = "Azure queue";
     operation.Telemetry.Data = "Enqueue " + queue.Name;
 
     // MessagePayload represents your custom message and also serializes correlation identifiers into payload.
@@ -284,51 +270,30 @@ public async Task Enqueue(CloudQueue queue, string message)
 #### <a name="dequeue"></a>Dequeue
 `Enqueue` と同様、Storage キューに対する実際の HTTP 要求は Application Insights によって自動的に追跡されます。 ただし、`Enqueue` 操作の発生源は親のコンテキスト (受信要求のコンテキストなど) であると推測できます。 そのような操作 (および HTTP 部分) は、Application Insights SDK によって自動的に親要求や同じスコープ内で報告される他のテレメトリと相互に関連付けられます。
 
-`Dequeue` 操作は注意が必要です。 Application Insights SDK は、自動的に HTTP 要求を追跡します。 ただし、メッセージを解析するまでは、関連付けのコンテキストは不明です。 メッセージを取得するための HTTP 要求を他のテレメトリに関連付けることは不可能です。
-
-多くの場合、他の追跡と同じように、HTTP 要求をキューに関連付けると有用である可能性があります。 これを行う方法を次の例に示します。
+`Dequeue` 操作は注意が必要です。 Application Insights SDK は、自動的に HTTP 要求を追跡します。 ただし、メッセージを解析するまでは、関連付けのコンテキストは不明です。 特に複数のメッセージが受信される場合、メッセージを取得するための HTTP 要求を他のテレメトリに関連付けることはできません。
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
-    var telemetry = new DependencyTelemetry
-    {
-        Type = "Queue",
-        Name = "Dequeue " + queue.Name
-    };
-
-    telemetry.Start();
-
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>("dequeue " + queue.Name);
+    operation.Telemetry.Type = "Azure queue";
+    operation.Telemetry.Data = "Dequeue " + queue.Name;
+    
     try
     {
         var message = await queue.GetMessageAsync();
-
-        if (message != null)
-        {
-            var payload = JsonConvert.DeserializeObject<MessagePayload>(message.AsString);
-
-            // If there is a message, we want to correlate the Dequeue operation with processing.
-            // However, we will only know what correlation ID to use after we get it from the message,
-            // so we will report telemetry after we know the IDs.
-            telemetry.Context.Operation.Id = payload.RootId;
-            telemetry.Context.Operation.ParentId = payload.ParentId;
-
-            // Delete the message.
-            return payload;
-        }
     }
     catch (StorageException e)
     {
-        telemetry.Properties.Add("AzureServiceRequestID", e.RequestInformation.ServiceRequestID);
-        telemetry.Success = false;
-        telemetry.ResultCode = e.RequestInformation.HttpStatusCode.ToString();
+        operation.telemetry.Properties.Add("AzureServiceRequestID", e.RequestInformation.ServiceRequestID);
+        operation.telemetry.Success = false;
+        operation.telemetry.ResultCode = e.RequestInformation.HttpStatusCode.ToString();
         telemetryClient.TrackException(e);
     }
     finally
     {
         // Update status code and success as appropriate.
-        telemetry.Stop();
-        telemetryClient.Track(telemetry);
+        telemetryClient.StopOperation(operation);
     }
 
     return null;
@@ -343,7 +308,8 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
-    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "Dequeue " + queueName };
+    RequestTelemetry requestTelemetry = new RequestTelemetry { Name = "process " + queueName };
+    
     // It might also make sense to get the name from the message.
     requestTelemetry.Context.Operation.Id = message.RootId;
     requestTelemetry.Context.Operation.ParentId = message.ParentId;
@@ -378,8 +344,15 @@ public async Task Process(MessagePayload message)
 - `Activity` を停止します。
 - `Start/StopOperation` を使用するか、`Track` テレメトリを直接呼び出します。
 
+### <a name="dependency-types"></a>依存関係の種類
+
+Application Insights では、依存関係の種類を使用して UI エクスペリエンスがカスタマイズされます。 キューの場合、[トランザクションの診断エクスペリエンス](/azure/azure-monitor/app/transaction-diagnostics)を向上させる次の種類の `DependencyTelemetry` が認識されます。
+- Azure Storage キューの `Azure queue`
+- Azure Event Hubs の`Azure Event Hubs`
+- Azure Service Bus の `Azure Service Bus`
+
 ### <a name="batch-processing"></a>バッチ処理
-一部のキューでは、1 つの要求で複数のメッセージをデキューできます。 このようなメッセージの処理には依存関係はなく、異なる論理操作に属していると推測されます。 この場合、`Dequeue` 操作を特定のメッセージ処理に関連付けることはできません。
+一部のキューでは、1 つの要求で複数のメッセージをデキューできます。 このようなメッセージの処理には依存関係はなく、異なる論理操作に属していると推測されます。 `Dequeue` 操作を処理対象の特定のメッセージに関連付けることはできません。
 
 各メッセージは、独自の非同期制御フローの中で処理する必要があります。 詳細については、「[出力方向の依存関係の追跡](#outgoing-dependencies-tracking)」セクションを参照してください。
 
@@ -495,10 +468,18 @@ public async Task RunAllTasks()
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>ApplicationInsights 操作と System.Diagnostics.Activity
+`System.Diagnostics.Activity` は、分散トレース コンテキストを表し、プロセスの内部および外部でコンテキストを作成および伝達し、テレメトリ項目を関連付けるために、フレームワークおよびライブラリで使用されます。 アクティビティは、`System.Diagnostics.DiagnosticSource` と連携します。これは、興味深いイベント (受信または送信要求、例外など) について通知するフレームワーク/ライブラリ間の通知メカニズムです。
+
+アクティビティは Application Insights で非常に重要であり、自動依存関係と要求コレクションは `DiagnosticSource` イベントと共にそれらに大きく依存します。 アプリケーションでアクティビティを作成する場合、Application Insights テレメトリが作成される結果にはなりません。 Application Insights は、アクティビティをテレメトリに変換するために、DiagnosticSource イベントを受信し、イベントの名前とペイロードを把握している必要があります。
+
+各 Application Insights 操作 (要求または依存関係) には `Activity` が含まれます。`StartOperation` が呼び出されるときに、その下にアクティビティが作成されます。 `StartOperation` は、要求または依存関係テレメトリを追跡し、すべてが関連付けられていることを確認する推奨の方法です。
+
+## <a name="next-steps"></a>次のステップ
 
 - Application Insights における[テレメトリの相関付け](correlation.md)について基本的な知識を身に付けます。
+- 相関データで[トランザクションの診断エクスペリエンス](../../azure-monitor/app/transaction-diagnostics.md)と[アプリケーション マップ](../../azure-monitor/app/app-map.md)がどのように機能するかを確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
 - カスタムの[イベントとメトリック](../../azure-monitor/app/api-custom-events-metrics.md)を Application Insights にレポートします。
 - コンテキスト プロパティ コレクションの標準的な[構成](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
-- テレメトリを相互に関連付ける方法を [System.Diagnostics.Activity ユーザー ガイド](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)で確認します。
+- テレメトリを相互に関連付ける方法を [System.Diagnostics.Activity ユーザー ガイド](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)で確認します。

@@ -1,6 +1,6 @@
 ---
-title: Service Bus トピックの使用方法 (PHP) | Microsoft Docs
-description: Azure 上の PHP で Service Bus トピックを使用する方法について説明します。
+title: PHP で Azure Service Bus トピックを使用する方法
+description: このチュートリアルでは、PHP アプリケーションから Azure Service Bus のトピックとサブスクリプションを使用する方法について説明します。
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,21 +11,21 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1ce9c5ddb08f3e81a0f0050048a8afef24e4c625
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607536"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76760676"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>クイック スタート:PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。 紹介するシナリオは次のとおりです。
+この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) を利用しています。 紹介するシナリオは次のとおりです。
 
 - キュー、トピック、およびサブスクリプションを作成する 
 - サブスクリプション フィルターを作成する 
@@ -34,14 +34,14 @@ ms.locfileid: "59607536"
 - トピックとサブスクリプションを削除する
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 「[Quickstart:Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md)」(クイック スタート: Azure portal を使用して Service Bus トピックとその中に含まれるサブスクリプションを作成する) の手順に従って、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
 
     > [!NOTE]
     > このクイック スタートでは、**PHP** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
 > [!NOTE]
 > PHP のインストールでは、[OpenSSL 拡張機能](https://php.net/openssl)をインストールして有効にしておく必要もあります。
@@ -51,7 +51,23 @@ Microsoft Azure Blob service にアクセスする PHP アプリケーション�
 この記事では、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできるサービス機能の使用方法について説明します。
 
 ## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+
+### <a name="install-via-composer"></a>Composer 経由でインストールする
+1. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
+3. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus API を使用するには、以下の手順を実行します。
@@ -67,7 +83,7 @@ Service Bus API を使用するには、以下の手順を実行します。
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
@@ -236,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-Service Bus トピックに送信されるメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage] オブジェクトには、一連の標準的なプロパティとメソッドだけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。 次の例は以前に作成した `mytopic` トピックに 5 つのテスト メッセージを送信する方法を示しています。 `setProperty` メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。 `MessageNumber` プロパティの値がメッセージごとに異なります (「[サブスクリプションを作成する](#create-a-subscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。
+Service Bus トピックに送信されたメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage] オブジェクトには、一連の標準的なプロパティとメソッドだけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。 次の例は以前に作成した `mytopic` トピックに 5 つのテスト メッセージを送信する方法を示しています。 `setProperty` メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。 `MessageNumber` プロパティの値がメッセージごとに異なります (「[サブスクリプションを作成する](#create-a-subscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -252,7 +268,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは 2 つの異なるモードで受信できます。[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) です。 **PeekLock** が既定値です。
@@ -344,8 +360,11 @@ catch(ServiceException $e){
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
 
-## <a name="next-steps"></a>次の手順
-詳細は、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]を参照してください｡
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
+
+## <a name="next-steps"></a>次のステップ
+詳細は、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]に関するページを参照してください。
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

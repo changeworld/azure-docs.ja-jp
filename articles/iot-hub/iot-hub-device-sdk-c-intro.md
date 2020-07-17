@@ -1,19 +1,22 @@
 ---
 title: C 用 Azure IoT device SDK | Microsoft Docs
 description: C 用 Azure IoT device SDK を使用し、IoT Hub と通信するデバイス アプリを作成する方法について説明します。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 08/25/2017
-ms.author: yizhon
-ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/17/2019
+ms.author: robinsh
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992347"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629356"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -73,7 +76,7 @@ C 用 Azure IoT device SDK のサンプルを実行する前に、Azure サブ�
 
 IoT ハブの管理に役立つオープン ソース ツールがいくつかあります。
 
-* [デバイス エクスプローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)と呼ばれる Windows アプリケーション。
+* [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) という Windows アプリケーション。
 
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) と呼ばれるクロスプラットフォームの Visual Studio Code 拡張機能。
 
@@ -85,23 +88,23 @@ IoT ハブの管理に役立つオープン ソース ツールがいくつか�
 
 デバイス エクスプローラー ツールに慣れていない方のために、次の手順で、デバイス エクスプローラー ツールを使用してデバイスを追加し、デバイスの接続文字列を取得する方法について説明します。
 
-1. デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)」を参照してください。
+1. デバイス エクスプローラー ツールをインストールするには、「[How to use Device Explorer for IoT Hub devices (IoT Hub デバイス向けにデバイス エクスプローラーを使用する方法)](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/)」を参照してください。
 
 1. プログラムを実行すると、次のインターフェイスが表示されます。
 
    ![Device Explorer ツインのスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-1. **IoT Hub の接続文字列**を最初のフィールドに入力し、**[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。 
+1. **IoT Hub の接続文字列**を最初のフィールドに入力し、 **[更新]** をクリックします。 この手順により、IoT Hub と通信できるようにツールが構成されます。 
 
-**接続文字列**は、**[IoT Hub サービス]** > **[設定]** > **[共有アクセス ポリシー]** > **[iothubowner]** で確認できます。
+**接続文字列**は、 **[IoT Hub サービス]**  >  **[設定]**  >  **[共有アクセス ポリシー]**  >  **[iothubowner]** で確認できます。
 
-1. IoT Hub の接続文字列を構成したら、**[管理]** タブをクリックします。
+1. IoT Hub の接続文字列を構成したら、 **[管理]** タブをクリックします。
 
    ![Device Explorer ツイン/管理のスクリーンショット](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 このタブで、IoT Hub に登録されたデバイスを管理します。
 
-1. **[作成]** をクリックしてデバイスを作成します。 ダイアログが、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。 **デバイス ID** を入力し、**[作成]** をクリックします。
+1. **[作成]** をクリックしてデバイスを作成します。 ダイアログが、一連のキー (プライマリおよびセカンダリ) が入力された状態で表示されます。 **デバイス ID** を入力し、 **[作成]** をクリックします。
 
    ![デバイス作成のスクリーンショット](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
@@ -126,7 +129,7 @@ static const char* connectionString = "[device connection string]";
   ![Visual Studio のソリューション エクスプローラー](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> このプロジェクトを Visual Studio 2017 で開く場合は、画面の表示を受け入れてプロジェクトのターゲットを最新バージョンに変更します。
+> Visual Studio で、プロジェクトのターゲットを最新バージョンに変更することを要求するプロンプトが表示された場合は、そのプロンプトを受け入れてください。
 
 このソリューションには単一のプロジェクトが含まれています。 このソリューションには 4 つの NuGet パッケージがインストールされています。
 
@@ -217,7 +220,7 @@ do
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
     EVENT_INSTANCE* eventInstance = (EVENT_INSTANCE*)userContextCallback;
-    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
     /* Some device specific action code goes here... */
     callbackCounter++;
     IoTHubMessage_Destroy(eventInstance->messageHandle);
@@ -339,7 +342,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
   ![mqtt サンプルの Visual Studio ソリューション](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> このプロジェクトを Visual Studio 2017 で開く場合は、画面の表示を受け入れてプロジェクトのターゲットを最新バージョンに変更します。
+> Visual Studio で、プロジェクトのターゲットを最新バージョンに変更することを要求するプロンプトが表示された場合は、そのプロンプトを受け入れてください。
 
 前のサンプルと同様、このソリューションにも、いくつかの NuGet パッケージが含まれています。
 
@@ -475,7 +478,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 
     (void)printf("Message Id: %u Received.\r\n", messageTrackingId);
 
-    (void)printf("Result Call Back Called! Result is: %s \r\n", ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Result Call Back Called! Result is: %s \r\n", MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 ```
 

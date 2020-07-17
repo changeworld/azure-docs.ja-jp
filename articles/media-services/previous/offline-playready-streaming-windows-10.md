@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 974062b06c58ee23a001066a70a08675e2e94e48
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 001d408eaa7ce637bd7cc1f1183dd8748cddf539
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008122"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189524"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング  
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [Version 2](offline-playready-streaming-windows-10.md)
 
@@ -39,20 +39,20 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 
 このセクションでは、オフライン モードでの再生に関する背景情報をいくつか示します。特に、必要な理由を説明します。
 
-* 一部の国では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題は、ネットワークを使えるかどうかではなく、ネットワーク帯域幅の制限です。 OTT/OVP プロバイダーは、オフライン モードのサポートを求めています。
+* 一部の国/地域では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題は、ネットワークを使えるかどうかではなく、ネットワーク帯域幅の制限です。 OTT/OVP プロバイダーは、オフライン モードのサポートを求めています。
 * Netflix の 2016 年第 3 四半期株主会議で公表されたように、コンテンツのダウンロードは、"よく求められる機能" であり、"検討の余地がある" と Netflix CEO の Reed Hastings 氏は述べています。
-* コンテンツ プロバイダーによっては、国境を超えた DRM ライセンス配信を許可しないことがあります。 ユーザーが海外旅行する必要があり、そこでもコンテンツを見たい場合は、オフライン ダウンロードが必要です。
+* コンテンツ プロバイダーによっては、国/地域の境を超えた DRM ライセンス配信を許可しないことがあります。 ユーザーが海外旅行する必要があり、そこでもコンテンツを見たい場合は、オフライン ダウンロードが必要です。
  
 オフライン モードの実装においては、以下のような課題に直面します。
 
 * 多くのプレーヤーやエンコーダー ツールで MP4 がサポートされていますが、MP4 コンテナーと DRM の間にはバインディングがありません。
 * 長期的には、CENC を使用する CFF が主流となります。 ただし現在では、ツール/プレーヤーのサポート エコシステムがまだありません。 今すぐにでもソリューションが必要なのです。
  
-そのアイデアは、次のようなものです。H264/AAC によるスムーズ ストリーミング ([PIFF](https://go.microsoft.com/?linkid=9682897)) ファイル形式には、PlayReady (AES-128 CTR) とのバインディングがあります。 個々のスムーズ ストリーミング .ismv ファイル (オーディオはビデオ内に多重化されていると想定) 自体は fMP4 であり、再生に使用できます。 スムーズ ストリーミング コンテンツが PlayReady 暗号化を受けると、各 .ismv ファイルは、PlayReady で保護された、断片化された MP4 になります。 好みのビットレートの .ismv ファイルを選択し、ダウンロードのためにその名前を .mp4 に変更できます。
+そのアイデアは、次のようなものです。H264/AAC によるスムーズ ストリーミング ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) ファイル形式には、PlayReady (AES-128 CTR) とのバインディングがあります。 個々のスムーズ ストリーミング .ismv ファイル (オーディオはビデオ内に多重化されていると想定) 自体は fMP4 であり、再生に使用できます。 スムーズ ストリーミング コンテンツが PlayReady 暗号化を受けると、各 .ismv ファイルは、PlayReady で保護された、断片化された MP4 になります。 好みのビットレートの .ismv ファイルを選択し、ダウンロードのためにその名前を .mp4 に変更できます。
 
 プログレッシブ ダウンロード用の、PlayReady で保護された MP4 をホストするためのオプションが 2 つあります。
 
-* プログレッシブ ダウンロードのために、この MP4 を同じコンテナー/メディア サービス資産に配置し、Azure Media Services ストリーミング エンドポイントを利用できます。
+* プログレッシブ ダウンロードのために、この MP4 を同じコンテナー/メディア サービスアセットに配置し、Azure Media Services ストリーミング エンドポイントを利用できます。
 * Azure Storage からの直接プログレッシブ ダウンロードのために SAS ロケーターを使用し、Azure Media Services をバイパスできます。
  
 2 種類の PlayReady ライセンス配信を使用できます。
@@ -60,17 +60,17 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 * Azure Media Services の PlayReady ライセンス配信サービス。
 * 任意の場所でホストされる PlayReady ライセンス サーバー。
 
-以下に、2 セットのテスト用資産を示します。1 つ目は AMS で PlayReady ライセンス配信を使用しており、2 つ目は Azure VM でホストされた PlayReady ライセンス サーバーを使用しています。
+以下に、2 セットのテスト用アセットを示します。1 つ目は AMS で PlayReady ライセンス配信を使用しており、2 つ目は Azure VM でホストされた PlayReady ライセンス サーバーを使用しています。
 
-資産 1:
+アセット 1:
 
 * プログレッシブ ダウンロードの URL: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* PlayReady LA_URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
-資産 2:
+アセット 2:
 
 * プログレッシブ ダウンロードの URL: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (オンプレミス): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA_URL (オンプレミス): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 再生テストには、Windows 10 でユニバーサル Windows アプリケーションを使用しました。 [Windows 10 のユニバーサル サンプル](https://github.com/Microsoft/Windows-universal-samples)のセクションには、[アダプティブ ストリーミングのサンプル](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)という名前の基本的なプレーヤーのサンプルがあります。 必要なのは、ダウンロードしたビデオを選択し、アダプティブ ストリーミング ソースではなくソースとして使用するためのコードを追加することだけです。 変更は、ボタン クリックのイベント ハンドラー内です。
 
@@ -126,6 +126,10 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * PlayReady ライセンス配信は、Azure Media Services または他の場所から行えます。
 * 準備されたスムーズ ストリーミング コンテンツは、引き続き DASH からオンライン ストリーミングに使用することも、PlayReady を使用して DRM としてスムーズ ストリーミングに使用することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
+## <a name="next-steps"></a>次のステップ
 
 [DRM システムのハイブリッド設計](hybrid-design-drm-sybsystem.md)

@@ -1,23 +1,15 @@
 ---
 title: Azure Application Insights のトランザクションの診断 | Microsoft Docs
 description: Application Insights のエンド ツー エンドのトランザクションの診断
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619834"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671139"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -80,7 +72,7 @@ Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** �
 
 ![Profiler の統合](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 *グラフに 1 つのコンポーネントしか表示されず、その他のコンポーネントは外部依存関係として表示されるのみで、これらのコンポーネント間で発生したことの詳細が表示されません。*
 
@@ -102,4 +94,4 @@ Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** �
 
 *関連項目のクエリのほとんどが、新しいエクスペリエンスからなくなっているのはなぜですか?*
 
-これは設計によるものです。 コンポーネント全体に渡って、関連項目はすべて左側 (上部と下部セクション) から既に利用可能です。 新しいエクスペリエンスの左側で扱われない関連項目が 2 つあります。このイベントの 5 分前後からのすべてのテレメトリと、ユーザー タイムラインです。
+これは仕様です。 コンポーネント全体に渡って、関連項目はすべて左側 (上部と下部セクション) から既に利用可能です。 新しいエクスペリエンスの左側で扱われない関連項目が 2 つあります。このイベントの 5 分前後からのすべてのテレメトリと、ユーザー タイムラインです。

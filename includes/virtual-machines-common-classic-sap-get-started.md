@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264367"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181108"
 ---
 ## <a name="planning-and-implementation"></a>計画と導入
 タイトル: Azure Virtual Machines への SAP NetWeaver の導入 – 計画/導入ガイド
@@ -20,7 +20,7 @@ ms.locfileid: "51264367"
 
 [このガイドを今すぐダウンロードする](https://go.microsoft.com/fwlink/?LinkId=397963)
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 タイトル: Azure Virtual Machines への SAP NetWeaver の導入 – デプロイ ガイド
 
 概要: SAP NetWeaver ソフトウェアを Azure 内の仮想マシンにデプロイする手順について説明します。 このホワイト ペーパーでは、Azure Monitoring Extensions for SAP の有効化に重点を置きつつ (Azure Monitoring Extensions for SAP で発生する問題のトラブルシューティングに関する推奨事項など)、3 つのデプロイ シナリオを中心に説明しています。 既に計画/導入ガイドを読んでいることを前提としています。

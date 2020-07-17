@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2018
 ms.author: ralfwi
 ms.openlocfilehash: 932f9457cc5d33063714ae9c9678174a8b64d156
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60684767"
 ---
 # <a name="azure-germany-iot-services"></a>Azure Germany IoT サービス
@@ -63,7 +63,7 @@ Azure Germany での Azure IoT Suite のホーム ページは、グローバル
 1. **[+ 新規]** をクリックし、**Bing Maps API for Enterprise** を検索して、画面の指示に従うことで、グローバル Azure portal で Bing Maps API を作成します。
 2. グローバル Azure portal から Bing Maps API for Enterprise キーを取得します。 
     1. グローバル Azure portal で、Bing Maps API for Enterprise が含まれるリソース グループを参照します。
-    2. **[すべての設定]** > **[キーの管理]** の順にクリックします。 
+    2. **[すべての設定]**  >  **[キーの管理]** の順にクリックします。 
     3. 次の 2 つのキーが表示されます: MasterKey と QueryKey です。 QueryKey の値をコピーします。
 3. [GitHub の Azure-IoT-Remote-Monitoring リポジトリ](https://github.com/Azure/azure-iot-remote-monitoring)から最新のコードをプルダウンします。
 4. `/docs/` リポジトリ フォルダーにあるコマンドライン デプロイ ガイダンスに従って、ご利用の環境でクラウドのデプロイを実行します。 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8e5876c9141a3eb85593b12f45b0bde4c7984adf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68881299"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Search API v5 から v7 へのアップグレード
 
@@ -56,7 +56,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Disabled|InsufficientAuthorization.AuthorizationDisabled
+無効|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -73,16 +73,16 @@ Blocked|InvalidRequest.Blocked
 
 ## <a name="non-breaking-changes"></a>非破壊的変更  
 
-### <a name="headers"></a>headers
+### <a name="headers"></a>ヘッダー
 
-- オプションの [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) 要求ヘッダーが追加されました。 既定では、Bing はキャッシュされたコンテンツがある場合にそれを返します。 キャッシュされたコンテンツを Bing が返さないようにするには、Pragma ヘッダーを no-cache に設定します (例: Pragma: no-cache)。
+- オプションの [Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) 要求ヘッダーが追加されました。 既定では、Bing はキャッシュされたコンテンツがある場合にそれを返します。 キャッシュされたコンテンツを Bing が返さないようにするには、Pragma ヘッダーを no-cache に設定します (例: Pragma: no-cache)。
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) クエリ パラメーターが追加されました。 応答に含める回答の数を指定するには、このパラメーターを使用します。 回答は、ランキングに基づいて選択されます。 たとえば、このパラメーターを 3 に設定すると、上位の 3 つの回答が応答に含まれます。  
+- [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) クエリ パラメーターが追加されました。 応答に含める回答の数を指定するには、このパラメーターを使用します。 回答は、ランキングに基づいて選択されます。 たとえば、このパラメーターを 3 に設定すると、上位の 3 つの回答が応答に含まれます。  
 
-- [promote](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) クエリ パラメーターが追加されました。 ランキングに関係なく 1 つ以上の回答タイプを明示的に含めるには、このパラメーターを `answerCount` と共に使用します。 たとえば、ビデオと画像を応答に昇格させるには、promote を *videos,images* に設定します。 昇格させる回答の一覧は、`answerCount` の制限にはカウントされません。 たとえば、`answerCount` が 2、`promote` が *videos,images* に設定されている場合、応答には Web ページ、ニュース、ビデオ、および画像が含まれます。
+- [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) クエリ パラメーターが追加されました。 ランキングに関係なく 1 つ以上の回答タイプを明示的に含めるには、このパラメーターを `answerCount` と共に使用します。 たとえば、ビデオと画像を応答に昇格させるには、promote を *videos,images* に設定します。 昇格させる回答の一覧は、`answerCount` の制限にはカウントされません。 たとえば、`answerCount` が 2、`promote` が *videos,images* に設定されている場合、応答には Web ページ、ニュース、ビデオ、および画像が含まれます。
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `someResultsRemoved` フィールドが [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) オブジェクトに追加されました。 このフィールドには、応答において Web 回答のいくつかの結果が除外されているかどうかを示すブール値が含まれています。  
+- `someResultsRemoved` フィールドが [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) オブジェクトに追加されました。 このフィールドには、応答において Web 回答のいくつかの結果が除外されているかどうかを示すブール値が含まれています。  

@@ -1,19 +1,20 @@
 ---
-title: Node.js MongoDB アプリを Azure Cosmos DB に接続する
+title: クイック スタート:Node.js MongoDB アプリを Azure Cosmos DB に接続する
 description: このクイック スタートは、Node.js で記述された既存の MongoDB アプリを Azure Cosmos DB に接続する方法を示します。
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.openlocfilehash: 3f6eca30379eb8890695df946f1d7e697cb3f7d7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 3a6a20b4f92a7e78f7ed82210bb46d8bf1081628
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979061"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659183"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
@@ -23,29 +24,18 @@ ms.locfileid: "65979061"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
+このクイックスタートでは、Azure Cloud Shell と、GitHub からクローンした MEAN (MongoDB、Express、Angular、Node.js) アプリを使用して、Azure Cosmos DB for Mongo DB API アカウントを作成、管理します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
-このクイック スタートでは、Node.js で記述された既存の MongoDB アプリを使用する方法と、MongoDB クライアントをサポートする Cosmos データベースにこのアプリを接続する方法を説明します。 言い換えると、Cosmos データベースへのデータの格納は、アプリケーションでは意識されません。
-
-操作を完了すると、MEAN アプリケーション (MongoDB、Express、Angular、および Node.js) が [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) で実行されます。 
-
-![Azure App Service で実行されている MEAN.js アプリ](./media/create-mongodb-nodejs/meanjs-in-azure.png)
-
+## <a name="prerequisites"></a>前提条件
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。 [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) を使用することもできます。接続文字列には、`.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` を使用してください。
+- [Node.js](https://nodejs.org/) とその実用的な知識。
+- [Git](https://git-scm.com/downloads).
+- [Azure CLI 2.0 以上](/cli/azure/install-azure-cli) (Azure Cloud Shell を使用したくない場合)。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
-
-## <a name="prerequisites"></a>前提条件 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
-
-`npm` コマンドと `git` コマンドを実行するには、Azure CLI に加えて、[Node.js](https://nodejs.org/) と [Git](https://www.git-scm.com/downloads) がローカルにインストールされていることが必要です。
-
-Node.js の実用的な知識が必要です。 このクイック スタートは、一般的な Node.js アプリケーションの開発を支援するためのものではありません。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -54,7 +44,7 @@ Node.js の実用的な知識が必要です。 このクイック スタート�
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
@@ -71,6 +61,8 @@ Node.js の実用的な知識が必要です。 このクイック スタート�
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
+Node.js で記述されたこの MongoDB アプリは、Azure Cosmos DB データベースに接続します。Azure Cosmos DB データベースは、MongoDB クライアントをサポートします。 言い換えると、Azure Cosmos DB データベースへのデータの格納は、アプリケーションでは意識されません。
+
 必要なパッケージをインストールし、アプリケーションを起動します。
 
 ```bash
@@ -80,9 +72,11 @@ npm start
 ```
 アプリケーションは、MongoDB ソースに接続しようとして失敗しますが、そのまま続けてください。出力結果から "[MongoError: connect ECONNREFUSED 127.0.0.1:27017]" が返されたらアプリケーションを終了します。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Install Azure CLI] のインストールに関するページを参照してください。 
+
+インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
 
 ```azurecli
 az login 
@@ -92,15 +86,15 @@ az login
 
 インストールされた Azure CLI を使用する場合は、`az` コマンドを実行して、`cosmosdb` コンポーネントが既にインストールされているかどうかを調べます。 `cosmosdb` が基本コマンドの一覧にある場合は、次のコマンドに進みます。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
 
-`cosmosdb` が基本コマンドの一覧にない場合は、[Azure CLI]( /cli/azure/install-azure-cli) を再インストールします。
+`cosmosdb` が基本コマンドの一覧にない場合は、[Azure CLI](/cli/azure/install-azure-cli) を再インストールします。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az-group-create) で[リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
-Azure Cloud Shell を使用する場合は、**[試してみる]** をクリックし、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
+Azure Cloud Shell を使用する場合は、 **[試してみる]** を選択し、画面のプロンプトに従ってログインしてから、コマンドをコマンド プロンプトにコピーします。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -157,7 +151,7 @@ DB/databaseAccounts/<cosmosdb-name>",
 
 ## <a name="connect-your-nodejs-application-to-the-database"></a>データベースに Node.js アプリケーションを接続する
 
-この手順では、MEAN.js サンプル アプリケーションを、先ほど作成した Cosmos データベースに接続します。 
+この手順では、MEAN.js サンプル アプリケーションを、先ほど作成した Azure Cosmos DB データベース アカウントに接続します。 
 
 <a name="devconfig"></a>
 ## <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
@@ -178,10 +172,10 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>キーを取得する
 
-Cosmos データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) コマンドを使用して、プライマリ キーを取得します。
+Cosmos データベースに接続するには、データベース キーが必要です。 [az cosmosdb keys list](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) コマンドを使用して、プライマリ キーを取得します。
 
 ```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
 Azure CLI によって次の例のような情報が出力されます。 
@@ -204,7 +198,7 @@ npm start
 
 開発環境が稼働したことを通知するコンソール メッセージが表示されます。 
 
-ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[Sign Up (サインアップ)]** をクリックし、ダミー ユーザーを 2 人作成します。 
+ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[Sign Up]** を選択し、ダミー ユーザーを 2 つ作成します。 
 
 MEAN.js サンプル アプリケーションでは、ユーザー データをデータベースに格納します。 操作が成功し、MEAN.js が作成されたユーザーに自動的にサインインすれば、Azure Cosmos DB 接続は機能しています。 
 
@@ -216,7 +210,7 @@ Cosmos データベースの格納データは、Azure portal で表示したり
 
 前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure Portal](https://portal.azure.com) にログインします。
 
-上部の検索ボックスに、「Azure Cosmos DB」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、[データ エクスプローラー] をクリックします。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
+上部の検索ボックスに、「**Azure Cosmos DB**」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、 **[データ エクスプローラー]** を選択します。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
 ![Azure Portal でのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
@@ -236,7 +230,7 @@ MEAN.js リポジトリにある `config/env/production.js` を開きます。
 ```
 
 > [!NOTE] 
-> [Cosmos DB では SSL が必須](connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは重要です。 
+> Cosmos DB の要件上、`ssl=true` オプションは重要です。 詳細については、「[接続文字列の要件](connect-mongodb-account.md#connection-string-requirements)」を参照してください。
 >
 >
 
@@ -246,13 +240,13 @@ MEAN.js リポジトリにある `config/env/production.js` を開きます。
 git add .
 git commit -m "configured MongoDB connection string"
 ```
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Cosmos アカウントを作成し、コレクションを作成して、コンソール アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
+このクイックスタートでは、Azure Cloud Shell を使用して Azure Cosmos DB MongoDB API アカウントを作成し、MEAN.js アプリを作成、実行してそのアカウントにユーザーを追加する方法について説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

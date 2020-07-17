@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
-ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245745"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74951481"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -81,9 +81,9 @@ Cloud Shell に含まれている `SqlServer` モジュールには、PowerShell
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>進行状況バーを表示した後に大きなギャップができる
 
-ユーザーが進行状況バーを表示するアクション (`Azure:` ドライブ内にある状態でのタブ補完など) を実行した場合は、カーソルが正しく設定されていないために、前に進行状況バーがあった場所にギャップが現れることがあります。
+ユーザーが進行状況バーを表示するアクション (`Azure:` ドライブ内にある状態でのタブ補完など) を実行した場合は、カーソルが正しく設定されていないために、前に進行状況バーがあった場所に隙間が現れることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Cloud Shell のトラブルシューティング](troubleshooting.md) <br>
 [Bash のクイックスタート](quickstart.md) <br>

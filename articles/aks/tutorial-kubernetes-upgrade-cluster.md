@@ -2,18 +2,15 @@
 title: Kubernetes on Azure のチュートリアル - クラスターのアップグレード
 description: この Azure Kubernetes Service (AKS) のチュートリアルでは、既存の AKS クラスターを最新の使用可能な Kubernetes バージョンにアップグレードする方法を学習します。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: twhitney
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 09e3fab67486b4677c5848d81fb39a68e511b6ac
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 22aad0e601c600e582cbea0cea82dd67a20a2c06
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305208"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392673"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
@@ -40,15 +37,15 @@ ms.locfileid: "66305208"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-次の例では、現在のバージョンが *1.9.11* であることがわかります。また、 *[Upgrades]* 列からは利用可能なアップグレードのバージョンがわかります。
+次の例では、現在のバージョンが *1.14.8* であることがわかります。また、 *[Upgrades]* 列からは利用可能なアップグレードのバージョンがわかります。
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
-## <a name="upgrade-a-cluster"></a>クラスターをアップグレードする
+## <a name="upgrade-a-cluster"></a>クラスターのアップグレード
 
 実行中のアプリケーションの中断を最小限に抑えるために、AKS ノードは慎重に切断およびドレインされます。 このプロセスでは、以下の手順が行われます。
 
@@ -58,16 +55,16 @@ default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
 1. 新しいノードの準備が整い、クラスターに参加すると、Kubernetes スケジューラによってそのノードでポッドの実行が開始されます。
 1. 古いノードが削除され、クラスター内の次のノードが切断およびドレイン プロセスを開始します。
 
-[az aks upgrade][] コマンドを使用して、AKS クラスターをアップグレードします。 次の例では、クラスターを Kubernetes バージョン *1.10.9* にアップグレードします。
+[az aks upgrade][] コマンドを使用して、AKS クラスターをアップグレードします。 次の例では、クラスターを Kubernetes バージョン *1.14.6* にアップグレードします。
 
 > [!NOTE]
-> 一度に 1 つのマイナー バージョンのみをアップグレードできます。 たとえば、*1.9.11* から *1.10.9* にアップグレードすることはできますが、*1.9.6* から *1.11.x* に直接アップグレードすることはできません。 *1.9.11* から *1.11.x* にアップグレードするには、まず *1.9.11* から *1.10.x* にアップグレードします。その後、*1.10.x* から *1.11.x* にもう一度アップグレードします。
+> 一度に 1 つのマイナー バージョンのみをアップグレードできます。 たとえば、*1.14.x* から *1.15.x* にアップグレードすることはできますが、*1.14.x* から *1.16.x* に直接アップグレードすることはできません。 *1.14.x* から *1.16.x* にアップグレードするには、まず *1.14.x* から *1.15.x* にアップグレードします。その後、*1.15.x* から *1.16.x* にもう一度アップグレードします。
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-次に示したのは、その出力例の抜粋です。*kubernetesVersion* が *1.10.9* としてレポートされていることがわかります。
+次に示したのは、その出力例の抜粋です。*kubernetesVersion* が *1.15.5* としてレポートされていることがわかります。
 
 ```json
 {
@@ -85,7 +82,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.9",
+  "kubernetesVersion": "1.15.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,12 +97,12 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-次の出力例は、AKS クラスターで *KubernetesVersion 1.10.9* が実行されていることを示しています。
+次の出力例は、AKS クラスターで *KubernetesVersion 1.15.5* が実行されていることを示しています。
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
@@ -117,11 +114,11 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。
+> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。 マネージド ID を使用した場合、その ID はプラットフォームによって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、AKS クラスター内の Kubernetes をアップグレードしました。 以下の方法について学習しました。
+このチュートリアルでは、AKS クラスター内の Kubernetes をアップグレードしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * 現在の使用可能な Kubernetes バージョンを識別する

@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/15/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f6fd4039614dbd7c1a2b2c6ba8403502a6420fe3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4842c55b2b1fd23f4d6b7996ccf02e7141504836
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159372"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73495745"
 ---
-現在の SKU (VpnGw1、VpnGw2、VPNGW3) について、ゲートウェイ SKU のサイズを変更して、より強力なものにアップグレードする場合は、`Resize-AzVirtualNetworkGateway` PowerShell コマンドレットを使用できます。 このコマンドレットを使用してゲートウェイ SKU のサイズをダウングレードすることもできます。 Basic ゲートウェイ SKU を使用している場合は、[代わりに以下の手順を使用](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize)して、ゲートウェイのサイズを変更します。
+`Resize-AzVirtualNetworkGateway` PowerShell コマンドレットを使用して、Generation1 または Generation2 SKU をアップグレードまたはダウングレードできます (Basic SKU を除くすべての VpnGw SKU のサイズを変更できます)。 Basic ゲートウェイ SKU を使用している場合は、[代わりに以下の手順を使用](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize)して、ゲートウェイのサイズを変更します。
 
 次の PowerShell サンプルでは、ゲートウェイ SKU のサイズを VpnGw2 に変更しています。
 

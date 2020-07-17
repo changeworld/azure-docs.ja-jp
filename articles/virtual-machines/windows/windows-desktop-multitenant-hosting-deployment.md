@@ -1,25 +1,18 @@
 ---
 title: マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法
 description: Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: xujing
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569979"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101554"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
@@ -108,7 +101,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Azure AD への参加に関する追加情報
 >[!NOTE]
->Azure では、ビルトイン Administrator アカウントですべての Windows VM をプロビジョニングしますが、このアカウントは AAD への参加に使用できません。 たとえば、*[設定] > [アカウント] > [職場または学校にアクセスする] > [+ 接続]* は機能しません。 手動で Azure AD に参加するには、2 つ目の Administrator アカウントを作成し、そのアカウントでログオンする必要があります。 また、プロビジョニング パッケージを使用して Azure AD を構成することもできます。詳細については、「*次のステップ*」セクションのリンクをご使用ください。
+>Azure では、ビルトイン Administrator アカウントですべての Windows VM をプロビジョニングしますが、このアカウントは AAD への参加に使用できません。 たとえば、 *[設定] > [アカウント] > [職場または学校にアクセスする] > [+ 接続]* は機能しません。 手動で Azure AD に参加するには、2 つ目の Administrator アカウントを作成し、そのアカウントでログオンする必要があります。 また、プロビジョニング パッケージを使用して Azure AD を構成することもできます。詳細については、「*次のステップ*」セクションのリンクをご使用ください。
 >
 >
 

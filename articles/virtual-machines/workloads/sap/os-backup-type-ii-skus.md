@@ -4,31 +4,34 @@ description: SAP HANA on Azure (L インスタンス) Type II SKU のオペレ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c5c74fe13bad99528486be69089df5f477457
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436342"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77616876"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus"></a>Type II SKU の OS のバックアップと復元
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>リビジョン 3 スタンプの Type II SKU の OS バックアップと復元
 
-このドキュメントでは、HANA L インスタンスの **Type II SKU** のオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明します。 
+このドキュメントでは、リビジョン 3 の HANA L インスタンスの **Type II SKU** に対してオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明します。 
+
+>[!Important]
+> **この記事は、リビジョン 4 HANA L インスタンス スタンプでの Type II SKU のデプロイには適用されません。** リビジョン 4 HANA L インスタンス スタンプにデプロイされている Type II HANA L インスタンス ユニットのブート LUN は、Type I SKU が既にリビジョン 3 スタンプにあるため、ストレージ スナップショットを使用してバックアップできます。
+
 
 >[!NOTE]
 >OS バックアップ スクリプトは、サーバーにプレインストールされている ReaR ソフトウェアを使用します。  
 
-Microsoft サービス管理チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システムのファイル レベル バックアップを実行する 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
+Microsoft `Service Management` チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システムの背後でファイル システム レベルのバックアップを実行する 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
 ```
 #crontab –l
 ```
@@ -38,7 +41,7 @@ Microsoft サービス管理チームによるプロビジョニングが完了�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>手動バックアップを実行する方法
 
-オペレーティング システムのファイル システム バックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
+OS ファイル システムのバックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
 
 ```
 #rear -v mkbackup
@@ -83,7 +86,7 @@ Relax-and-Recover (ReaR) パッケージは、HANA L インスタンスの **Typ
 ```
 #yum install rear -y
 ```
-ReaR ツールを構成するには、*/etc/rear/local.conf* ファイルの **OUTPUT_URL** パラメーターと **BACKUP_URL** パラメーターを更新する必要があります。
+ReaR ツールを構成するには、 */etc/rear/local.conf* ファイルの **OUTPUT_URL** パラメーターと **BACKUP_URL** パラメーターを更新する必要があります。
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso

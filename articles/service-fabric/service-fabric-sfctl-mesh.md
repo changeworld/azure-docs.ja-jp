@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh | Microsoft Docs
-description: Azure Service Fabric CLI- sfctl mesh のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI - sfctl mesh
+description: Azure Service Fabric のコマンド ライン インターフェイス、sfctl について説明します。 Service Fabric Mesh のアプリケーションを管理するためのコマンドの一覧が含まれます。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 4901630509eb60cb1bbe88a46b51277af244c8f8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 40d0f70b0dabdc02434fa662663a2fd105431f0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670729"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76905897"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Azure Service Fabric Mesh アプリケーションを削除および管理します。
@@ -39,6 +30,6 @@ Azure Service Fabric Mesh アプリケーションを削除および管理しま
 | [volume](service-fabric-sfctl-mesh-volume.md) | ボリューム リソースを取得および削除します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

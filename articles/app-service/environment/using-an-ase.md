@@ -1,175 +1,257 @@
 ---
-title: Azure App Service Environment の使用 - Azure
-description: Azure App Service Environment でアプリを作成、発行、スケールする方法
-services: app-service
-documentationcenter: na
+title: App Service Environment の使用および管理
+description: App Service Environment でアプリを作成、発行、スケーリングする方法について説明します。 この記事では、すべての一般的なタスクを紹介します。
 author: ccompy
-manager: stefsch
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678090"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586130"
 ---
-# <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
+# <a name="use-an-app-service-environment"></a>App Service 環境の使用
 
-## <a name="overview"></a>概要 ##
+App Service Environment (ASE) は、ユーザーの Azure Virtual Network インスタンス内のサブネットに Azure App Service をデプロイしたものです。 ASE は次の要素で構成されます。
 
-Azure App Service Environment は、ユーザーの Azure 仮想ネットワーク内のサブネットに Azure App Service をデプロイしたものです。 構成は次のとおりです。
+- **フロントエンド:** HTTP または HTTPS が App Service Environment で終了する場所です
+- **ワーカー**:アプリのホストとなるリソースです
+- **データベース**:環境を定義する情報が格納されます
+- **ストレージ**: 顧客によって発行されたアプリのホストとして使用されます
 
-- **フロントエンド:** App Service Environment (ASE) で HTTP または HTTPS が終了する場所です。
-- **ワーカー**:アプリのホストとなるリソースです。
-- **データベース**:環境を定義する情報が格納されます。
-- **ストレージ**:ユーザーによって発行されたアプリのホストとして使用されます。
+アプリ アクセスに対して外部または内部仮想 IP (VIP) を使用して ASE をデプロイできます。 外部 VIP を使用したデプロイは、*外部 ASE* と呼ばれます。 内部 VIP を使用したデプロイは、内部ロード バランサー (ILB) を使用するので、*ILB ASE* と呼ばれます。 ILB ASE の詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する][MakeILBASE]」を参照してください。
 
-> [!NOTE]
-> App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、[App Service Environment v1 の構成][ConfigureASEv1]に関するページを参照してください。 この記事の残りの部分では、ASEv2 について説明します。
->
->
+## <a name="create-an-app-in-an-ase"></a>ASE 内にアプリを作成する
 
-ASE は (ASEv1 と ASEv2 のどちらも)、アプリ アクセスに外部 VIP を使用したデプロイと内部 VIP を使用したデプロイが可能です。 外部 VIP を使用したデプロイは、外部 ASE と呼ばれます。 内部 VIP を使用したデプロイは、内部ロード バランサー (ILB) を使用するので、ILB ASE と呼ばれます。 ILB ASE の詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
-
-## <a name="create-an-app-in-an-ase"></a>ASE 内にアプリを作成する ##
-
-ASE でアプリを作成する方法は通常の作成方法とほとんど同じですが、いくつか違いがあります。 新しい App Service プランを作成する場合は、次の点が異なります。
+ASE でアプリを作成する方法は通常のアプリの作成方法とほとんど同じですが、いくつか違いがあります。 新しい App Service プランを作成する場合は、次の点が異なります。
 
 - アプリのデプロイ先の場所として地理的な場所ではなく ASE を選択します。
-- ASE で作成する App Service プランはすべて、"分離" 価格レベルに属している必要があります。
+- ASE で作成する App Service プランはすべて、Isolated の価格レベルでのみ使用できます。
 
-ASE をご利用でない場合は、[App Service Environment の作成][MakeExternalASE]に関するページの手順に従って作成できます。
+ASE をご利用でない場合は、「[外部 App Service Environment の作成][MakeExternalASE]」の手順に従って作成できます。
 
 ASE 内にアプリを作成するには:
 
-1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
+1. **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web アプリ]** を選択します。
 
-2. アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
+1. アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
     ![アプリ名の選択][1]
 
 1. サブスクリプションを選択します。
 
-1. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
+1. 新しいリソース グループの名前を指定するか、 **[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
 
-1. OS を選択します。 
-
-    * ASE での Linux アプリのホストは新しいプレビュー機能です。そのため、実稼働ワークロードが現在実行されている ASE に Linux アプリを追加しないようお勧めします。 
-    * ASE に Linux アプリを追加することは、ASE もプレビュー モードになることを意味します。 
+1. OS を選択します。
 
 1. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
 
-    a. **[新規作成]** を選択します。
+    a. Azure portal の左側のメニューで、 **[リソースの作成] > [Web アプリ]** を選択します。
 
-    b. App Service プランの名前を入力します。
+    b. サブスクリプションを選択します。
 
-    c. **[場所]** ボックスの一覧から該当する ASE を選択します。 ASE での Linux アプリのホスティングが有効なのは、現時点で、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 
+    c. リソース グループを選択または作成します。
 
-    d. **[分離]** 価格レベルを選択します。 **[選択]** を選択します。
+    d. Web アプリの名前を入力します。
 
-    e. **[OK]** を選択します。
-    
+    e. **[コード]** または **[Docker コンテナー]** を選択します。
+
+    f. ランタイム スタックを選択します。
+
+    g. **Linux** か **Windows** を選択します。 
+
+    h. **[リージョン]** ドロップダウン リストから該当する ASE を選択します。 
+
+    i. 新しい App Service プランを選択または作成します。 新しい App Service プランを作成する場合は、適切な **Isolated** SKU サイズを選択します。
+
     ![[分離] 価格レベル][2]
 
     > [!NOTE]
-    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。
     >
 
-2. **作成** を選択します。
+1. **[確認および作成]** を選択し、情報が正しいことを確認して、 **[作成]** を選択します。
 
-## <a name="how-scale-works"></a>スケールのしくみ ##
+## <a name="how-scale-works"></a>スケールのしくみ
 
-すべての App Service アプリは、App Service プランで実行されます。 対象環境に App Service プランが存在し、App Service プランにアプリが存在するコンテナー モデルになっています。 アプリをスケールするときは、App Service プランをスケールすることになります。そうすることによって同じプラン内のすべてのアプリがスケールされます。
+すべての App Service アプリは、App Service プランで実行されます。 App Service 環境に App Service プランが存在し、App Service プランにアプリが存在します。 アプリをスケールするときは、App Service プラン、および同じプラン内のすべてのアプリをスケールすることになります。
 
-ASEv2 では、App Service プランをスケールすると、必要なインフラストラクチャが自動的に追加されます。 インフラストラクチャが追加されるまでの間、スケール操作に時間差が生じます。 ASEv1 の場合は、App Service プランを作成したりスケールアウトしたりする前に、必要なインフラストラクチャをあらかじめ追加しておく必要があります。 
+App Service プランをスケールすると、必要なインフラストラクチャが自動的に追加されます。 インフラストラクチャが追加されるまでの間、スケール操作に時間差が生じます。 複数のスケール操作を順番に実行すると、最初のインフラストラクチャ スケール要求が処理され、他のものはキューに入れられます。 最初のスケール操作が終了すると、他のインフラストラクチャ要求はすべて一緒に動作します。 インフラストラクチャを追加すると、App Service プランが適切に割り当てられます。 新しい App Service プランを作成すること自体が、追加のハードウェアが必要となるため、スケール操作になります。
 
-マルチテナントの App Service では、通常スケーリングが即座に実行されます。スケールアウトへの対応としてすぐに利用できるリソースのプールが存在するためです。 ASE にはそのようなバッファーが存在せず、リソースは必要に応じて割り当てられます。
+マルチテナントの App Service では、スケーリングが即座に行われます。それへの対応としてすぐに利用できるリソースのプールが存在するためです。 ASE にはそのようなバッファーが存在せず、リソースは必要に応じて割り当てられます。
 
-ASE では、最大 100 インスタンスまでスケールアップすることができます。 この 100 インスタンスは、すべて 1 つの App Service プランに含めることも、複数の App Service プランに分散させることもできます。
+ASE では、App Service プランを最大 100 インスタンスまでスケールアップできます。 ASE には、その ASE 内のすべての App Service プランにわたって合計で最大 201 のインスタンスを設定できます。
 
-## <a name="ip-addresses"></a>IP アドレス ##
+## <a name="ip-addresses"></a>IP アドレス
 
-App Service には、アプリに専用の IP アドレスを割り当てる機能があります。 [既存のカスタム SSL 証明書の Azure App Service へのバインド][ConfigureSSL]に関する記事で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ただし、ASE の場合は重要な例外があります。 ILB ASE では IP ベースの SSL に使用する追加の IP アドレスを追加することはできません。
+App Service では、アプリに専用の IP アドレスを割り当てることができます。 「[Azure App Service の TLS/SSL 証明書を購入して構成する][ConfigureSSL]」で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ILB ASE では、IP ベースの SSL に使用する IP アドレスをさらに追加することはできません。
 
-ASEv1 では、使用する IP アドレスを事前にリソースとして割り当てておく必要があります。 ASEv2 では、マルチテナントの App Service の場合と同様、アプリの IP アドレスを使用します。 ASEv2 には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに利用できる IP アドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるまでに、どうしても時間差が発生するので、IP アドレスを立て続けに追加することはできません。
+外部 ASE では、マルチテナントの App Service の場合と同じ方法で、アプリに IP ベースの SSL を構成できます。 ASE には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに使用できるアドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるには、時間の遅延が必要です。 この遅延により、IP アドレスが続けざまに追加されることを回避できます。
 
-## <a name="front-end-scaling"></a>フロント エンドのスケーリング ##
+## <a name="front-end-scaling"></a>フロント エンドのスケーリング
 
-ASEv2 では、App Service プランをスケールアウトすると、そのために必要なワーカーが自動的に追加されます。 各 ASE は 2 つのフロント エンドで作成されます。 さらに、フロント エンドは App Service プラン内の 15 インスタンスにつき 1 つの割合で自動的にスケールアウトされます。 たとえば、15 個のインスタンスが存在する場合、フロント エンド数は 3 つになります。 同様に、30 インスタンスまでスケールした場合は、フロント エンド数は 4 つです。
+App Service プランをスケールアウトすると、それをサポートする worker が自動的に追加されます。 各 ASE は 2 つのフロント エンドで作成されます。 フロント エンドは、15 の App Service プラン インスタンスのセットごとに 1 つのフロント エンドの割合で、自動的にスケールアウトされます。 たとえば、それぞれ 5 つのインスタンスを持つ App Service プランが 3 つある場合、合計 15 のインスタンスと 3 つのフロント エンドになります。 合計 30 インスタンスまでスケーリングすると、4 つのフロント エンドになります。 スケールアウトのたびにこのパターンが繰り返されます。
 
-ほとんどのシナリオで、この数のフロント エンドがあれば十分ですが、 より高速にスケールアウトすることもできます。 最小で 5 インスタンスにつき 1 フロント エンドの割合でスケールアウトするよう変更することができますが、 スケールアウト率の変更には料金がかかります。 詳細については、[Azure App Service の価格][Pricing]に関するページを参照してください。
+既定で割り当てられるフロント エンドの数は、中程度の負荷に適しています。 最小で 5 インスタンスにつき 1 フロント エンドの割合になるよう比率を下げることができますが、 フロント エンドのサイズを変更することもできます。 既定では、単一コアです。 Azure portal では、代わりに 2 つまたは 4 つのコアにサイズを変更できます。
 
-フロント エンド リソースは、ASE の HTTP/HTTPS エンドポイントです。 既定のフロント エンド構成では、各フロント エンドのメモリ使用量が常時 60% 程度となります。 顧客のワークロードがフロント エンドで実行されることはありません。 スケールに関して重要となるフロント エンドの要素は CPU で、これは主に HTTPS トラフィックによって決まります。
+この比率やフロント エンドのサイズの変更には料金がかかります。 詳細については、「[App Service の価格][Pricing]」を参照してください。 ASE の負荷容量を改善する場合は、まず 2 つのコア フロント エンドにスケーリングしてからスケール率を調整することで、さらに改善できます。 フロント エンドのコア サイズの変更は、ASE のアップグレードが発生するため、通常の業務時間外に実行する必要があります。
 
-## <a name="app-access"></a>アプリのアクセス ##
+フロント エンド リソースは、ASE の HTTP/HTTPS エンドポイントです。 既定のフロント エンド構成では、各フロント エンドのメモリ使用量が常時 60% 程度となります。 フロントエンドをスケーリングする主な理由は CPU 使用率で、これは主に HTTPS トラフィックによって決まります。
 
-外部 ASE では、アプリを作成するときに使用されるドメインはマルチテナント App Service とは異なり、 ASE の名前を含みます。 外部 ASE の作成について詳しくは、[App Service Environment の作成][MakeExternalASE]に関するページを参照してください。 外部 ASE のドメイン名は、たとえば *.&lt;asename&gt;.p.azurewebsites.net* という形式になります。 たとえば、実際の ASE の名前が _external-ase_ で、その ASE でホストするアプリの名前が _contoso_ である場合、そのアプリには次の URL でアクセスすることになります。
+## <a name="app-access"></a>アプリのアクセス
+
+外部 ASE では、アプリの作成に使用されるドメイン サフィックスは *.&lt;asename&gt;.p.azurewebsites.net* です。 実際の ASE の名前が _external-ase_ で、その ASE でホストするアプリの名前が _contoso_ である場合、それには次の URL でアクセスすることになります。
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-contoso.scm.external-ase.p.azurewebsites.net は、Kudu コンソールにアクセスするとき、または Web 配置でアプリを発行するときに使用する URL です。 Kudu コンソールについては、[Azure App Service の Kudu コンソール][Kudu]に関するページを参照してください。 Kudu コンソールを使用すると、デバッグやファイルのアップロード、ファイルの編集など、さまざまな作業を Web UI で行うことができます。
+外部 ASE の作成方法については、[App Service Environment の作成][MakeExternalASE]に関する記事を参照してください。
 
-ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の作成方法について詳しくは、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。 ドメイン名として _ilb-ase.info_ を指定した場合、その ASE 内のアプリには、その指定したドメインをアプリの作成時に使用します。 たとえば _contoso_ という名前のアプリの URL は次のようになります。
+ILB ASE では、アプリの作成に使用されるドメイン サフィックスは *.&lt;asename&gt;.appserviceenvironment.net* です。 実際の ASE の名前が _ilb-ase_ で、その ASE でホストするアプリの名前が _contoso_ である場合、それには次の URL でアクセスすることになります。
 
-- contoso.ilb-ase.info
-- contoso.scm.ilb-ase.info
+- contoso.ilb-ase.appserviceenvironment.net
+- contoso.scm.ilb-ase.appserviceenvironment.net
 
-## <a name="publishing"></a>発行 ##
+ILB ASE の作成方法については、[ILB ASE の作成と使用][MakeILBASE]に関する記事を参照してください。
 
-マルチテナントの App Service と同様、ASE では次の発行方法を利用できます。
+SCM URL は、Kudu コンソールにアクセスしたり、Web デプロイを使用してアプリを発行したりするために使用されます。 Kudu コンソールの詳細については、「[Azure App Service の Kudu コンソール][Kudu]」を参照してください。 Kudu コンソールを使用すると、デバッグやファイルのアップロード、ファイルの編集など、さまざまな作業を Web UI で行うことができます。
 
-- Web デプロイ。
-- FTP。
-- 継続的インテグレーション。
-- Kudu コンソールでのドラッグ アンド ドロップ。
-- IDE (Visual Studio、Eclipse、Intellij IDEA など)。
+### <a name="dns-configuration"></a>DNS の構成 
 
-外部 ASE では、これらの発行オプションの動作はすべて同じです。 詳細については、[Azure App Service へのデプロイ][AppDeploy]に関するページを参照してください。 
+外部 ASE を使用する場合、ASE で作成されたアプリは Azure DNS で登録されます。 ILB ASE を使う場合は、独自の DNS を管理する必要があります。 
 
-発行方法に大きな違いがあるのは ILB ASE です。 ILB ASE では、発行エンドポイントは ILB を介してしか利用できません。 ILB は、仮想ネットワークの ASE サブネット内のプライベート IP 上に存在します。 ILB へのネットワーク アクセスができなければ、その ASE にアプリを発行することができません。 [ILB ASE の作成と使用][MakeILBASE]に関するページで述べられているように、システム内にアプリ用の DNS を構成する必要があります。 SCM のエンドポイントも対象となります。 これらが適切に定義されてないと発行できません。 ご利用の IDE から直接発行するためには、ILB へのネットワーク アクセスが IDE にも必要です。
+ILB ASE で DNS を構成するには、次の操作を行ってください。
 
-既定では、インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 Azure devops でこの問題を回避するには、セルフホステッド リリース エージェントを内部ネットワーク内にインストールして、ILB にアクセスできるようにします。 プル モデルを使用した CI システム (Dropbox など) を使用することもできます。
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
 
-ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 これはアプリの発行プロファイルのほか、アプリのポータル ブレード (**[概要]** > **[要点]**、**[プロパティ]** など) で確認することができます。 
+ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、*contoso.net* という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、 *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* でのみ使用できます。 
 
-## <a name="pricing"></a>価格 ##
+*.&lt;asename&gt;.appserviceenvironment.net* という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで *.contoso.com* を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
-"**分離**" という価格 SKU は ASEv2 専用として作成されました。 ASEv2 でホストされるすべての App Service プランは、"分離" 価格 SKU に属します。 Isolated App Service プランのリージョンは地域によって異なる場合があります。 
+## <a name="publishing"></a>発行
 
-App Service プランの料金に加え、ASE そのものの固定料金がかかります。 固定料金は ASE のサイズによって変わることはありません。App Service プラン インスタンス 15 個ごとに追加フロント エンド 1 という既定スケール率で、ASE インフラストラクチャの料金が発生します。  
+マルチテナントの App Service と同様、ASE では次の方法を使用して発行できます。
 
-15 個の App Service プラン インスタンスごとに 1 フロント エンドという既定スケール率が十分でない場合は、フロント エンドが追加されるペースまたはフロント エンドのサイズを調整できます。  スケール率またはサイズを調整した場合は、既定では追加されないフロント エンド コアの料金が発生します。  
+- Web デプロイ
+- FTP
+- 継続的インテグレーション (CI)
+- Kudu コンソールでのドラッグ アンド ドロップ
+- IDE (Visual Studio、Eclipse、IntelliJ IDEA など)
+
+外部 ASE では、これらの発行オプションの動作はすべて同じです。 詳細については、[Azure App Service へのデプロイ][AppDeploy]に関するページを参照してください。
+
+ILB ASE では、発行エンドポイントは ILB を介してのみ利用できます。 ILB は、仮想ネットワークの ASE サブネット内のプライベート IP 上に存在します。 ILB へのネットワーク アクセスができなければ、その ASE にアプリを発行することはできません。 [ILB ASE の作成と使用][MakeILBASE]に関するページで説明されているように、システム内にアプリ用の DNS を構成する必要があります。 SCM のエンドポイントもこの要件の対象となります。 これらのエンドポイントが適切に定義されていないと、発行を行うことができません。 ご利用の IDE から直接発行するには、ILB へのネットワーク アクセスが IDE にも必要です。
+
+追加の変更なしには、インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスできないためです。 ILB ASE を含む仮想ネットワークにセルフホステッド リリース エージェントをインストールすることで、Azure DevOps から ILB ASE への発行を有効にすることができます。 プル モデルを使用した CI システム (Dropbox など) を使用することもできます。
+
+ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 これはアプリの発行プロファイルのほか、アプリのポータル ウィンドウ ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) で確認することができます。
+
+## <a name="storage"></a>ストレージ
+
+ASE には、ASE 内のすべてのアプリ用に 1 TB のストレージがあります。 Isolated 価格 SKU の App Service プランには、既定で 250 GB の制限があります。 5 つ以上の App Service プランがある場合は、ASE の上限である 1 TB を超えないように注意してください。 1 つの App Service プランで 250 GB の制限を超える必要がある場合は、サポートに問い合わせて、App Service プランの制限を最大 1 TB に調整してください。 プランの制限を調整しても、ASE 内のすべての App Service プランで 1 TB の制限が適用されます。
+
+## <a name="logging"></a>ログ記録
+
+ASE を Azure Monitor と統合して、ASE に関するログを Azure Storage、Azure Event Hubs、または Log Analytics に送信できます。 現在、次の項目がログに記録されます。
+
+| 状況 | Message |
+|---------|----------|
+| ASE is unhealthy (ASE が異常です) | The specified ASE is unhealthy due to an invalid virtual network configuration. (無効な仮想ネットワーク構成が原因で、指定された ASE が異常です。) The ASE will be suspended if the unhealthy state continues. (異常な状態が続くと、ASE は中断されます。) Ensure the guidelines defined here are followed (ここで定義されているガイドラインに従っていることを確認してください): https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE subnet is almost out of space (ASE サブネットの領域が不足しています) | The specified ASE is in a subnet that is almost out of space. (指定された ASE は、空き領域がほとんどないサブネット内にあります。) There are {0} remaining addresses. (残りのアドレスは {0} 個です。) Once these addresses are exhausted, the ASE will not be able to scale (これらのアドレスが枯渇すると、ASE はスケーリングできなくなります)  |
+| ASE is approaching total instance limit (ASE で、インスタンスの合計数の上限に近づいています) | The specified ASE is approaching the total instance limit of the ASE. (指定された ASE で、ASE のインスタンスの合計数の上限に近づいています) It currently contains {0} App Service Plan instances of a maximum 201 instances. (現在、最大インスタンス数 201 のうち、{0} 個の App Service プラン インスタンスが含まれています。) |
+| ASE is unable to reach a dependency (ASE は依存関係に到達できません) | The specified ASE is not able to reach {0}. (指定された ASE は {0} に到達できません。)  Ensure the guidelines defined here are followed (ここで定義されているガイドラインに従っていることを確認してください): https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE is suspended (ASE は中断されています) | The specified ASE is suspended. (指定された ASE は中断されています。) The ASE suspension may be due to an account shortfall or an invalid virtual network configuration. (ASE の中断は、アカウントの不足または無効な仮想ネットワーク構成が原因である可能性があります。) Resolve the root cause and resume the ASE to continue serving traffic (根本原因を解決し、ASE を再開してトラフィックの処理を続行してください) |
+| ASE upgrade has started (ASE のアップグレードが開始されました) | A platform upgrade to the specified ASE has begun. (指定された ASE へのプラットフォームのアップグレードが開始されました。) Expect delays in scaling operations (スケーリング操作で遅延が発生することが予想されます) |
+| ASE upgrade has completed (ASE のアップグレードが完了しました) | A platform upgrade to the specified ASE has finished (指定された ASE へのプラットフォームのアップグレードが完了しました) |
+| Scale operations have started (スケール操作が開始されました) | An App Service plan ({0}) has begun scaling. (App Service プラン ({0}) でスケーリングが開始されました。) Desired state: (必要な状態:){1} I{2} workers (ワーカー)
+| Scale operations have completed (スケール操作が完了しました) | An App Service plan ({0}) has finished scaling. (App Service プラン ({0}) でスケーリングが完了しました。) Current state: (現在の状態:){1} I{2} workers (ワーカー) |
+| Scale operations have failed (スケール操作が失敗しました) | An App Service plan ({0}) has failed to scale. (App Service プラン ({0}) でスケーリングに失敗しました。) Current state: (現在の状態:){1} I{2} workers (ワーカー) |
+
+ASE でログ記録を有効にするには、次のようにします。
+
+1. ポータルで **[診断設定]** に移動します。
+1. **[診断設定の追加]** を選択します。
+1. ログ統合の名前を指定します。
+1. 目的のログの保存先を選択して構成します。
+1. **[AppServiceEnvironmentPlatformLogs]** を選択します。
+
+![ASE 診断ログの設定][4]
+
+Log Analytics と統合している場合は、ASE ポータルから **[ログ]** を選択し、**AppServiceEnvironmentPlatformLogs** に対するクエリを作成することでログを表示できます。 ログは、ASE にトリガーされるイベントがある場合にのみ出力されます。 このようなイベントが ASE にない場合、ログはありません。 Log Analytics ワークスペースでログの例をすばやく確認するには、ASE で App Service プランのいずれかを使用してスケール操作を実行します。 その後、**AppServiceEnvironmentPlatformLogs** に対してクエリを実行し、これらのログを確認できます。 
+
+**アラートの作成**
+
+ログに対してアラートを作成するには、「[Azure Monitor を使用したログ アラートの作成、表示、管理][logalerts]」の手順に従います。 概要:
+
+* ASE ポータルで [アラート] ページを開く
+* **[新しいアラート ルール]** を選択する
+* Log Analytics ワークスペースになるリソースを選択する
+* カスタムログ検索で条件を設定し、「AppServiceEnvironmentPlatformLogs |」のようなクエリを使用します。ここで、ResultDescription には「has begun scaling」または任意のものを指定します。 適切なしきい値を設定します。 
+* 適宜、アクション グループを追加するか作成します。 アクション グループでは、電子メールや SMS メッセージの送信など、アラートへの応答を定義します
+* アラートに名前を付けて保存します。
+
+## <a name="upgrade-preference"></a>アップグレードの優先順位
+
+複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 ASE **HostingEnvironment Resource Manager** オブジェクト内で、**upgradePreference** の値を設定できます。 **upgradePreference** の設定は、テンプレート、ARMClient、または https://resources.azure.com を使用して構成できます。 指定可能な 3 つの値は次のとおりです。
+
+- **なし**: Azure では、特定のバッチなしに ASE がアップグレードされます。 この値は既定値です。
+- **Early**:ASE は App Service アップグレードの前半でアップグレードされます。
+- **Late**:ASE は App Service アップグレードの後半でアップグレードされます。
+
+https://resources.azure.com を使用している場合は、次の手順に従って **upgradePreferences** 値を設定します。
+
+1. resources.azure.com にアクセスし、お使いの Azure アカウントでサインインします。
+1. サブスクリプション\/\[サブスクリプション名\]\/resourceGroups\/\[リソースグループ名\]\/プロバイダー\/Microsoft.Web\/hostingEnvironments\/\[ASE 名\]とリソースを移動します。
+1. 上部にある **[読み取り/書き込み]** を選択します。
+1. **[編集]** を選択します。
+1. **upgradePreference** を 3 つの値のいずれかに設定します。
+1. **[Patch]\(パッチ\)** を選択します。
+
+![リソース azure com の表示][5]
+
+**upgradePreferences** 機能は、複数の ASE がある場合に非常に便利です。"Early" の ASE が "Late" の ASE よりも先にアップグレードされるためです。 複数の ASE がある場合は、開発およびテストの ASE を "Early" に、実稼働の ASE を "Late" に設定します。
+
+## <a name="pricing"></a>価格
+
+*Isolated* という価格 SKU は、ASE でのみ使用されます。 ASE でホストされるすべての App Service プランは、Isolated 価格 SKU に属します。 App Service プランの分離率は地域によって異なる場合があります。
+
+App Service プランの料金に加え、ASE そのものの固定料金がかかります。 定額料金は ASE のサイズによって変わることはありません。 App Service プラン インスタンス 15 個ごとに追加フロント エンド 1 という既定スケール率で、ASE インフラストラクチャの料金が発生します。
+
+15 個の App Service プラン インスタンスごとに 1 フロント エンドという既定スケール率が十分でない場合は、フロント エンドが追加される比率またはフロント エンドのサイズを調整できます。 スケール率またはサイズを調整した場合は、既定では追加されないフロント エンド コアの料金が発生します。
 
 たとえば、スケール率を調整して 10 にした場合、App Service プラン内の 10 インスタンスにつきフロント エンドが 1 つ追加されます。 固定料金で対応されるスケール率は、15 インスタンスにつき 1 フロント エンドです。 スケール率が 10 の場合、App Service プランの 10 インスタンスに対して追加される 3 つ目のフロント エンドの料金が追加でかかります。 インスタンス数が 15 になっても、フロント エンドは自動的に追加されるので追加料金は必要ありません。
 
-フロント エンドのサイズを 2 コアに調整して、スケール率を調整しなかった場合、追加のコアの料金が発生します。  ASE は 2 つのフロント エンドで作成されています。このため、自動スケーリングしきい値を下回っていても、フロント エンドのサイズを 2 コアに拡張した場合は、追加の 2 つのコアの料金を支払うことになります。
+フロント エンドのサイズを 2 コアに調整して、比率を調整しなかった場合、追加のコアの料金が発生します。 ASE は 2 つのフロント エンドで作成されています。このため、自動スケーリングしきい値を下回っていても、フロント エンドのサイズを 2 コアに拡張した場合は、追加の 2 つのコアの料金を支払うことになります。
 
-詳細については、[Azure App Service の価格][Pricing]に関するページを参照してください。
+詳細については、「[App Service の価格][Pricing]」を参照してください。
 
-## <a name="delete-an-ase"></a>ASE の削除 ##
+## <a name="delete-an-ase"></a>ASE の削除
 
-ASE を削除するには、次の手順に従います。 
+ASE を削除するには、次の手順に従います。
 
-1. **[App Service Environment]** ブレードの上部にある **[削除]** を使用します。 
+1. **[App Service Environment]** ウィンドウの上部にある **[削除]** を選択します。
 
-1. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。 
+1. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。
 
     ![ASE の削除][3]
+
+1. **[OK]** を選択します。
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png
 [2]: ./media/using_an_app_service_environment/usingase-pricingtiers.png
 [3]: ./media/using_an_app_service_environment/usingase-delete.png
-
+[4]: ./media/using_an_app_service_environment/usingase-logsetup.png
+[4]: ./media/using_an_app_service_environment/usingase-logs.png
+[5]: ./media/using_an_app_service_environment/usingase-upgradepref.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -184,9 +266,10 @@ ASE を削除するには、次の手順に従います。
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

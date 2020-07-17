@@ -1,77 +1,142 @@
 ---
-title: Azure Data Factory Data Flow の結合変換
-description: Azure Data Factory Data Flow の結合変換
+title: マッピング データ フローの結合変換
+description: Azure Data Factory マッピング データ フローの結合変換を使用して 2 つのデータ ソースのデータを結合する
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.custom: seo-lt-2019
+ms.date: 01/02/2020
+ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540042"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233425"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Mapping Data Flow の結合変換
+# <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-データ フロー内の 2 つのテーブルのデータを結合するには、結合を使用します。 左側のリレーションシップになる変換をクリックし、ツールボックスから結合変換を追加します。 結合変換の内部で、右側のリレーションシップになる別のデータ ストリームをデータ フローから選択します。
-
-![結合変換](media/data-flow/join.png "結合")
+マッピング データ フローで 2 つのソースまたはストリームのデータを結合するには、結合変換を使用します。 出力ストリームには、結合条件に基づいて一致と判定された、両ソースのすべての列が含まれます。 
 
 ## <a name="join-types"></a>結合の種類
 
-結合変換では、結合の種類を選択する必要があります。
+現在、マッピング データ フローでは、5 種類の結合がサポートされています。
 
 ### <a name="inner-join"></a>内部結合
 
-内部結合では、両方のテーブルから列の条件に一致する行だけがパスされます。
+内部結合では、両方のテーブルで値が一致する行のみが出力されます。
 
 ### <a name="left-outer"></a>左外部結合
 
-結合条件を満たしていない左側ストリームのすべての行がパスされ、もう一方のテーブルからの出力列と、内部結合によって返されるすべての行が NULL に設定されます。
+左外部結合では、左側ストリームのすべての行と、右側ストリームで一致するレコードが返されます。 左側ストリームの行に一致するものがない場合、右側ストリームの出力列は NULL に設定されます。 出力は、内部結合で返される行と、左側ストリームの一致のない行になります。
+
+> [!NOTE]
+> データ フローによって使用される Spark エンジンは、結合条件でデカルト積が生成されることがあるという理由で、失敗する場合があります。 これが発生する場合は、カスタム クロス結合に切り替えて結合条件を手動で入力することができます。 これによりデータ フローのパフォーマンスが低下する場合があります。これは、実行エンジンが、リレーションシップの両側からすべての行を計算し、行をフィルター処理する必要があるためです。
 
 ### <a name="right-outer"></a>右外部結合
 
-結合条件を満たしていない右側ストリームのすべての行がパスされ、もう一方のテーブルに対応する出力列と、内部結合によって返されるすべての行が NULL に設定されます。
+右外部結合では、右側ストリームのすべての行と、左側ストリームで一致するレコードが返されます。 右側ストリームの行に一致するものがない場合、左側ストリームの出力列は NULL に設定されます。 出力は、内部結合で返される行と、右側ストリームの一致のない行になります。
 
 ### <a name="full-outer"></a>完全外部結合
 
-完全外部結合では、両側からすべての列と行が取り出され、もう一方のテーブルに存在しない列に対しては NULL 値が設定されます。
+完全外部結合では、両方の側のすべての列と行が、一致しない列には NULL 値を使用して出力されます。
 
-### <a name="cross-join"></a>クロス結合
+### <a name="custom-cross-join"></a>カスタム クロス結合
 
-式を使用して 2 つのストリームを外積するよう指定します。 これを使用して、カスタム結合条件を作成できます。
+クロス結合では、条件に基づいて 2 つのストリームのクロス積が出力されます。 同等性以外の条件を使用する場合は、クロス結合条件にカスタム式を指定します。 出力ストリームは、結合条件を満たすすべての行になります。
 
-## <a name="specify-join-conditions"></a>結合条件を指定する
+この結合の種類は、非等結合および ```OR``` 条件に使用できます。
 
-左結合の条件は、結合の左側に接続されているデータ ストリームからのものです。 右結合の条件は、結合の下部に接続されている 2 つ目のデータ ストリームで、別のストリームへの直接のコネクタまたは別のストリームへの参照のいずれかになります。
+完全なデカルト積を明示的に生成する場合は、結合の前に 2 つの独立したストリームの派生列変換を使用して、一致する合成キーを作成します。 たとえば、```SyntheticKey``` と呼ばれる各ストリームで派生列に新しい列を作成し、それを ```1``` と等しい値に設定します。 次に、```a.SyntheticKey == b.SyntheticKey``` をカスタム結合式として使用します。
 
-少なくとも 1 (1..n) 個の結合条件を入力する必要があります。 これらには、直接参照されるフィールド、ドロップダウン メニューから選択するフィールド、または式を指定できます。
+> [!NOTE]
+> カスタム クロス結合で、左右のリレーションシップの各側に少なくとも 1 つの列が含まれていることを確認してください。 各側の列ではなく、静的な値を使用してクロス結合を実行すると、データセット全体が完全にスキャンされるため、データフローのパフォーマンスが低下します。
 
-## <a name="join-performance-optimizations"></a>結合のパフォーマンスの最適化
+## <a name="configuration"></a>構成
 
-SSIS などのツールのマージ結合とは異なり、ADF Data Flow の結合は強制的なマージ結合操作ではありません。 そのため、最初に結合キーを並べ替える必要がありません。 結合操作は、Spark での最適な結合操作に基づき、Spark でDatabricks を使用して行われます。ブロードキャスト/マップ側の結合:
+1. **[右側ストリーム]** ドロップダウンで、結合するデータ ストリームを選択します。
+1. 目的の**結合の種類**を選択します
+1. 結合条件で照合に使用するキー列を選択します。 既定では、データフローは、1 つの列について各ストリームでの同等性を検索します。 計算値で比較するには、列のドロップダウン上にマウス ポインターを移動し、 **[計算列]** を選択します。
+
+![結合変換](media/data-flow/join.png "Join")
+
+## <a name="optimizing-join-performance"></a>結合のパフォーマンスの最適化
+
+SSIS などのツールでのマージ結合とは異なり、結合変換は強制的なマージ結合操作ではありません。 結合キーを並べ替える必要はありません。 結合操作は、Spark の最適な結合操作 (ブロードキャスト結合またはマップ側の結合) に基づいて行われます。
 
 ![結合変換の最適化](media/data-flow/joinoptimize.png "結合の最適化")
 
-データセットが Databricks ワーカー ノードのメモリに収まる場合、結合のパフォーマンスは自動的に最適化されます。 結合操作でデータのパーティション分割を指定して、各ワーカーのメモリにより適したデータセットを作成することもできます。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには、 **[固定]** を選択します。
+
+**[オフ]** オプションを使用してブロードキャストを無効にすることは、結合でタイムアウト エラーが発生する場合を除いて推奨されません。
 
 ## <a name="self-join"></a>自己結合
 
-選択変換を使って既存のストリームをエイリアス化することで、ADF Data Flow で自己結合の条件を作成できます。 まず、ストリームから "新しい分岐" を作成します。次に、元のストリーム全体をエイリアス化するために選択を追加します。
+1 つのデータ ストリームを自己結合させるには、選択変換を使用して既存のストリームをエイリアス化します。 変換の横にあるプラス記号アイコンをクリックして **[新しいブランチ]** を選択し、新しいブランチを作成します。 選択変換を追加して、元のストリームをエイリアス化します。 結合変換を追加し、元のストリームを**左側ストリーム**、選択変換を**右側ストリーム**として選択します。
 
 ![自己結合](media/data-flow/selfjoin.png "自己結合")
 
-上の図では、先頭に選択変換があります。 これは、元のストリームを "OrigSourceBatting" にエイリアス化しています。 下部の強調表示されている結合変換で、この選択エイリアス ストリームを右側の結合として使用して、内部結合の右側と左側の両方で同じキーを参照できるようになっていることがわかります。
+## <a name="testing-join-conditions"></a>結合条件のテスト
 
-## <a name="composite-and-custom-keys"></a>複合キーおよびカスタム キー
+デバッグ モードでデータ プレビューを使用して結合変換のテストを行う場合は、小さな既知のデータ セットを使用してください。 大きなデータセットから行をサンプリングすると、テストでどの行とキーが読み取られるのかを予測できなくなります。 結果が確定的なものとならず、結合条件で一致するものが返されなくなる可能性があります。
 
-カスタム キーや複合キーは、結合変換内でその場で構築できます。 リレーションシップの各行の横にあるプラス記号 (+) を使用して、結合列の行を追加します。 または、その場で結合値を求める式ビルダーで新しいキー値を計算します。
+## <a name="data-flow-script"></a>データ フローのスクリプト
 
-## <a name="next-steps"></a>次の手順
+### <a name="syntax"></a>構文
 
-データの結合後は、[新しい列を作成](data-flow-derived-column.md)したり、[ご自分のデータを宛先データ ストアにシンク](data-flow-sink.md)したりできます。
+```
+<leftStream>, <rightStream>
+    join(
+        <conditionalExpression>,
+        joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
+    ) ~> <joinTransformationName>
+```
+
+### <a name="inner-join-example"></a>内部結合の例
+
+以下の例は、左側ストリーム `TripData` と右側ストリーム `TripFare` を受け取る `JoinMatchedData` という名前の結合変換です。  結合条件の式は `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` です。この式では、各ストリームの `hack_license` 列、`medallion` 列、`vendor_id` 列、および `pickup_datetime` 列が一致する場合に true が返されます。 `joinType` は `'inner'` です。 左側ストリームでのみブロードキャストを有効にするため、`broadcast` の値を `'left'` に設定しています。
+
+Data Factory UX では、この変換は次の図のようになります。
+
+![結合の例](media/data-flow/join-script1.png "結合の例")
+
+この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
+
+```
+TripData, TripFare
+    join(
+        hack_license == { hack_license}
+        && TripData@medallion == TripFare@medallion
+        && vendor_id == { vendor_id}
+        && pickup_datetime == { pickup_datetime},
+        joinType:'inner',
+        broadcast: 'left'
+    )~> JoinMatchedData
+```
+
+### <a name="custom-cross-join-example"></a>カスタム クロス結合の例
+
+以下の例は、左側ストリーム `LeftStream` と右側ストリーム `RightStream` を受け取る `JoiningColumns` という名前の結合変換です。 この変換は 2 つのストリームを取り込んで、列 `leftstreamcolumn` が列 `rightstreamcolumn` よりも大きいすべての行を結合します。 `joinType` は `cross` です。 ブロードキャストが有効になっていません。`broadcast` の値は `'none'` です。
+
+Data Factory UX では、この変換は次の図のようになります。
+
+![結合の例](media/data-flow/join-script2.png "結合の例")
+
+この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
+
+```
+LeftStream, RightStream
+    join(
+        leftstreamcolumn > rightstreamcolumn,
+        joinType:'cross',
+        broadcast: 'none'
+    )~> JoiningColumns
+```
+
+## <a name="next-steps"></a>次のステップ
+
+データの結合後は、[派生列の作成](data-flow-derived-column.md)や、配布先データ ストアへのデータの[シンク](data-flow-sink.md)を行います。

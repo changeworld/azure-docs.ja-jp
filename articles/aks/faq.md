@@ -1,87 +1,89 @@
 ---
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
-services: container-service
-author: iainfoulds
-manager: jeconnoc
-ms.service: container-service
-ms.topic: article
-ms.date: 04/25/2019
-ms.author: iainfou
-ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.topic: conceptual
+ms.date: 05/04/2020
+ms.openlocfilehash: adcc135c713c6db49c5a1e53f41b6d6c13f6bac2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508176"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787891"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
 この記事では、Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 
-## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>現在、Azure Kubernetes Service (AKS) は、どの Azure リージョンで提供されますか?
+## <a name="which-azure-regions-currently-provide-aks"></a>現在はどの Azure リージョンで AKS が提供されていますか?
 
 利用可能なリージョンの完全な一覧については、[AKS の利用可能なリージョン][aks-regions]に関するページを参照してください。
 
-## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
+## <a name="can-i-spread-an-aks-cluster-across-regions"></a>AKS クラスターを複数のリージョンに広げることはできますか?
 
-はい、自動スケールは、Kubernetes 1.10 以降、[Kubernetes autoscaler][auto-scaler] 経由で使用できます。 クラスターの自動スケーラーを構成して使用する方法の詳細については、[AKS のクラスター自動スケーラー][aks-cluster-autoscale]に関するページを参照してください。
+いいえ。 AKS クラスターはリージョン リソースであり、複数のリージョンに広げることはできません。 複数のリージョンを含むアーキテクチャを作成する方法については、[ビジネス継続性とディザスター リカバリーのベストプラクティス][bcdr-bestpractices]に関する記事を参照してください。
 
-## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>AKS では Kubernetes のロールベースのアクセス制御 (RBAC) がサポートされますか?
+## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>AKS クラスターを複数の可用性ゾーンに広げることはできますか?
 
-はい、Azure CLI を使用してクラスターが作成されるときに、Kubernetes RBAC は既定で有効になっています。 RBAC は、Azure Portal またはテンプレートを使用して作成されたクラスターに対して、有効化できます。
+はい。 [可用性ゾーンをサポートしているリージョン][az-regions]内の 1 つ以上の[可用性ゾーン][availability-zones]に AKS クラスターをデプロイできます。
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>既存の仮想ネットワークに AKS をデプロイできますか?
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API サーバーにアクセスできるユーザーを制限できますか?
 
-はい、[高度なネットワーク機能][aks-advanced-networking]を使用して、既存の仮想ネットワークに AKS クラスターをデプロイできます。
+はい。 API サーバーへのアクセスを制限するためのオプションは 2 つあります。
 
-## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>仮想ネットワーク内でのみアクセスできるように Kubernetes API サーバーを制限できますか?
+- API サーバーのパブリック エンドポイントを維持するが、信頼できる IP 範囲へのアクセスを制限する場合は、[API サーバーの承認済み IP 範囲][api-server-authorized-ip-ranges]を使用します。
+- API サーバーへのアクセスを仮想ネットワーク内から "*のみ*" に制限する場合は、[プライベート クラスター][private-clusters]を使用します。
 
-現時点ではありません。 Kubernetes API サーバーは、パブリックの完全修飾ドメイン名 (FQDN) として公開されます。 クラスターへのアクセスは、[Kubernetes のロールベースのアクセス制御 (RBAC) と Azure Active Directory (AAD)][aks-rbac-aad] を使って制御できます。
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>1 つのクラスター内で、異なる VM サイズを設定できますか?
+
+はい。[複数のノード プール][multi-node-pools]を作成することにより、AKS クラスターで異なる仮想マシン サイズを使用できます。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS エージェント ノードにセキュリティ更新プログラムは適用されますか?
 
-はい、Azure では、セキュリティ更新プログラムが夜間スケジュールでクラスター内のノードに自動的に適用されます。 ただし、必要に応じてノードが再起動されることを確認する必要があります。 ノードの再起動の実行にはいくつかのオプションがあります。
+Azure では、セキュリティ更新プログラムが夜間スケジュールでご利用のクラスター内の Linux ノードに自動的に適用されます。 ただし、必要な場合は、それらの Linux ノードが確実に再起動されるようにする必要があります。 ノードを再起動するにはいくつかのオプションがあります。
 
 - Azure Portal または Azure CLI から手動で行います。
-- AKS クラスターをアップグレードします。 クラスターは自動的に [cordon および drain ノード][cordon-drain]をアップグレードして、最新の Ubuntu イメージを備えた各ノードのバックアップと、新しいパッチ バージョンまたは Kubernetes のマイナー バージョンを取得します。 詳細については、「[AKS クラスターのアップグレード][aks-upgrade]」を参照してください。
-- Kubernetes 用のオープン ソースの再起動デーモンである [Kured](https://github.com/weaveworks/kured) を使用します。 Kured は [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 OS の再起動は、クラスター アップグレードと同じ [cordon および drain プロセス][cordon-drain]を使用するクラスターで管理されます。
+- AKS クラスターをアップグレードします。 クラスターでは、[cordon ノードと drain ノード][cordon-drain]が自動的にアップグレードされてから、最新の Ubuntu イメージと、新しいパッチ バージョンまたは Kubernetes のマイナー バージョンで、新しいノードがオンラインにされます。 詳細については、「[AKS クラスターのアップグレード][aks-upgrade]」を参照してください。
+- Kubernetes 用のオープン ソースの再起動デーモンである [Kured](https://github.com/weaveworks/kured) を使用します。 Kured は [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) として実行され、再起動が必要であることを示すファイルの存在が各ノードで監視されます。 クラスター全体で、クラスターのアップグレードと同じ [cordon および drain プロセス][cordon-drain]によって OS の再起動が管理されます。
 
-Kured の使用について詳しくは、[AKS 上のノードへのセキュリティおよびカーネルの更新プログラムの適用][node-updates-kured]に関する記事をご覧ください。
+Kured の使用の詳細については、[AKS 上のノードへのセキュリティおよびカーネルの更新プログラムの適用][node-updates-kured]に関する記事を参照してください。
+
+### <a name="windows-server-nodes"></a>Windows Server ノード
+
+Windows Server ノードでは、Windows Update が自動的に実行され、最新の更新プログラムが適用されることはありません。 Windows Update のリリース サイクルと独自の検証プロセス前後の定期的スケジュールで、AKS クラスター内のクラスターと Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
-各 AKS デプロイは、2 つのリソース グループにまたがります。
+AKS は、仮想マシン スケール セット、仮想ネットワーク、マネージド ディスクなど、さまざまな Azure インフラストラクチャ リソースに基づいて構築されています。 これにより、AKS によって提供されるマネージド Kubernetes 環境内で、Azure プラットフォームのコア機能の多くを活用できます。 たとえば、ほとんどの種類の Azure 仮想マシンは AKS で直接使用できます。また Azure Reservations を使用して、それらのリソースに対する割引を自動的に受け取ることができます。
 
-- 1 つは自分が作成したリソース グループで、Kubernetes サービス リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のような 2 つ目のリソース グループをデプロイ時に自動的に作成します。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
-- *MC_myResourceGroup_myAKSCluster_eastus* などのこの 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 この別個のリソース グループは、リソースのクリーンアップを簡略化するために作成されます。
+このアーキテクチャを有効にするため、各 AKS デプロイは、2 つのリソース グループにまたがっています。
 
-ストレージ アカウントや予約済みパブリック IP アドレスなど、AKS クラスターで使用するリソースを作成する場合は、自動的に生成されたリソース グループにそれらを配置します。
+1. 最初のリソース グループを作成します。 このグループには、Kubernetes サービスのリソースのみが含まれます。 AKS リソース プロバイダーにより、デプロイの間に 2 番目のリソース グループが自動的に作成されます。 2 番目のリソース グループの例は、*MC_myResourceGroup_myAKSCluster_eastus* です。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
+1. *ノード リソース グループ*と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS は、クラスターが削除されるたびにノード リソースを自動的に削除するため、クラスターのライフサイクルを共有するリソースにのみ使用する必要があります。
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>AKS インフラストラクチャ リソース グループに独自の名前を指定できますか?
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS ノード リソース グループに独自の名前を指定できますか?
 
-はい。 既定では、AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のようなセカンダリ リソース グループをデプロイ時に自動的に作成します。 企業ポリシーに準拠するために、この管理対象クラスター (*MC_*) リソース グループに独自の名前を指定できます。
+はい。 既定では、AKS によってノード リソース グループに *MC_resourcegroupname_clustername_location* という名前が設定されますが、独自の名前を指定することもできます。
 
-独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、*--node-resource-group* パラメーターを使用して、リソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
+独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、 *--node-resource-group* パラメーターを使用してリソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
 
-* このリソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
-* クラスターが作成されるときにのみ、カスタムのリソース グループ名を指定できます。
+* セカンダリ リソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
+* カスタム リソース グループの名前を指定できるのは、クラスターを作成するときだけです。
 
-次のシナリオはサポートされていません。
+ノード リソース グループを使うときは、次のことができないので注意してください。
 
-* *MC_* グループに既存のリソース グループを指定することはできません。
-* *MC_* リソース グループに異なるサブスクリプションを指定することはできません。
-* クラスターが作成された後で、*MC_* リソース グループ名を変更することはできません。
-* *MC_* リソース グループ内の管理対象リソースに名前を指定することはできません。
-* *MC_* リソース グループ内の管理対象リソースのタグを変更したり、削除したりすることはできません (追加情報については、次のセクションを参照してください)。
+* ノード リソース グループに対して既存のリソース グループを指定すること。
+* ノード リソース グループに対して異なるサブスクリプションを指定すること。
+* クラスターが作成された後で、ノード リソース グループ名を変更すること。
+* ノード リソース グループ内の管理対象リソースに名前を指定すること。
+* ノード リソース グループ内の管理対象リソースのタグを変更または削除すること。 (詳しくは、次のセクションで追加の情報を参照してください。)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>MC_* リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>ノード リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
-*MC_** リソース グループのリソースの Azure で作成されたタグやその他のプロパティを変更または削除すると、スケーリングやアップグレードのエラーなど、予期しない結果につながる可能性があります。 ビジネス ユニットやコスト センターの割り当てなどの目的で、追加のカスタム タグを作成および変更することができます。 AKS クラスター内の *MC_** でリソースを変更すると、サービス レベル目標 (SLO) が中断されます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか。](#does-aks-offer-a-service-level-agreement)」を参照してください。
+ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS では、カスタム タグを作成および変更できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 AKS クラスター内のノード リソース グループの下にあるリソースを変更すると、サービス レベル目標 (SLO) が中断されます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 
-AKS では、次の[アドミッション コントローラー][admission-controllers]をサポートします。
+AKS では、以下の[アドミッション コントローラー][admission-controllers]がサポートされています。
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -91,53 +93,128 @@ AKS では、次の[アドミッション コントローラー][admission-contr
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
-- *DenyEscalatingExec*
-- *AlwaysPullImages*
 
-現時点では、AKS でアドミッション コントローラーの一覧を修正することはできません。
+現在は、AKS でアドミッション コントローラーの一覧を変更することはできません。
+
+## <a name="can-i-use-admission-controller-webhooks-on-aks"></a>AKS でアドミッション コントローラー Webhook を使用できますか?
+
+はい、AKS でアドミッション コントローラー Webhook を使用できます。 **control-plane ラベル**でマークされた内部 AKS 名前空間を除外することをお勧めします。 たとえば、以下を Webhook 構成に追加します。
+
+```
+namespaceSelector:
+    matchExpressions:
+    - key: control-plane
+      operator: DoesNotExist
+```
+
+## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>アドミッション コントローラー Webhook は kube-system と内部 AKS 名前空間に影響しますか?
+
+システムの安定性を保護し、カスタムのアドミッション コントローラーが kube-system の内部サービスに影響を与えないようにするために、名前空間 AKS には **Admissions Enforcer** があります。これにより、kube-system と AKS の内部名前空間が自動的に除外されます。 このサービスにより、カスタムのアドミッション コントローラーは、kube-system で実行されているサービスに影響しなくなります。
+
+カスタムのアドミッション webhook の対象にする必要のある kube-system (推奨されません) に、何かをデプロイするための重要なユースケースがある場合は、次のラベルまたは注釈を追加して、Admissions Enforcer によってそれが無視されるようにすることができます。
+
+ラベル: ```"admissions.enforcer/disabled": "true"``` または注釈: ```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 
-AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[Kubernetes プロジェクト用の Azure Key Vault FlexVolume][keyvault-flexvolume] を使用して、Kubernetes ポッドから KeyVault シークレットへの直接統合を行うことはできます。
+AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[Kubernetes プロジェクト用の Azure Key Vault FlexVolume][keyvault-flexvolume] を使用して、Kubernetes ポッドから Key Vault のシークレットに直接統合することはできます。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-Windows Server コンテナーを実行するには、Windows Server ベースのノードを実行する必要があります。 Windows Server ベースのノードは、現時点では、AKS では使用できません。 ただし、Virtual Kubelet を使用して、Azure Container Instances で Windows コンテナーをスケジュールし、それらを AKS クラスターの一部として管理できます。 詳細については、[AKS での Virtual Kubelet の使用][virtual-kubelet]に関する記事を参照してください。
+はい、Windows Server コンテナーは AKS で利用できます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールでの AKS クラスターの作成][aks-windows-cli]に関するページを参照してください。
 
-## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか。
+Windows Server によるノード プールのサポートには、Kubernetes プロジェクトの上流の Windows Server の一部であるいくつかの制限が含まれます。 これらの制限の詳細については、[AKS での Windows Server コンテナーの制限事項][aks-windows-limitations]に関するページを参照してください。
 
-サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、AKS では、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか?
 
-## <a name="why-can-i-not-set-maxpods-below-30"></a>`maxPods` を 30 未満に設定できないのはなぜですか?
+サービス レベル アグリーメント (SLA) では、プロバイダーは、公開されたサービス レベルが満たされない場合に、サービスの費用を顧客に払い戻すことに同意します。 AKS は無料であり、払い戻す費用がないため、AKS には正式な SLA はありません。 ただし、AKS では、Kubernetes API サーバーの 99.5 パーセント以上の可用性を維持できるようにしています。
 
-AKS では、Azure CLI および Azure Resource Manager テンプレートによるクラスター作成時の `maxPods` 値の設定をサポートしています。 ただし、次に示すように Kubenet と Azure CNI の両方に対し、*最小値* (作成時に検証される) があります。
+Kubernetes コントロール プレーンのアップタイムを意味する AKS サービスの可用性と、Azure Virtual Machines 上で実行されている特定のワークロードの可用性の違いを把握することが重要です。 コントロール プレーンの準備ができていない場合はコントロール プレーンを使用できない場合がありますが、Azure VM 上で実行されているクラスターのワークロードは引き続き機能します。 すべての Azure VM は、財務 SLA でサポートされる有料リソースです。 Azure VM の SLA と、[可用性ゾーン][availability-zones]などの機能を使用して可用性を向上させる方法の[詳細についてはこちら](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)を参照してください。
 
-| ネットワーク | 最小値 | 最大値 |
-| -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>自分の AKS エージェント ノードに Azure の予約割引を適用できますか?
 
-AKS はマネージド サービスであるため、クラスターの一部としてデプロイして管理するアドオンとポッドを提供しています。 以前はユーザーが、マネージド ポッドの実行に必要な値よりも小さい値 `maxPods` (30 など) を設定できましたが、現在 AKS では ((maxPods または (maxPods * vm_count)) > マネージド アドオン ポッドの最小値によって、ポッドの最小数が計算されるようになりました。
+AKS エージェント ノードは、標準の Azure 仮想マシンとして課金されます。したがって、AKS で使用している VM サイズに対して [Azure の予約][reservation-discounts]を購入している場合、それらの割引が自動的に適用されます。
 
-ユーザーは、最小の `maxPods` 検証をオーバーライドできません。
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Azure テナント間でクラスターを移動/移行することはできますか?
+
+`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](https://docs.microsoft.com/azure/aks/update-credentials)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)。
+
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>サブスクリプション間でクラスターを移動/移行することはできますか?
+
+サブスクリプション間でのクラスターの移動は現在サポートされていません。
+
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS クラスターを現在の Azure サブスクリプションから別のサブスクリプションへ移動することはできますか? 
+
+Azure サブスクリプション間での AKS クラスターおよびそれに関連付けられているリソースの移動はサポートされていません。
+
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>クラスターの削除に時間がかかるのはなぜですか? 
+
+ほとんどのクラスターはユーザーの要求に応じて削除されます。場合によっては、特に顧客が独自のリソース グループを持ち込んでいたり、リソース グループ間のタスクの削除を行っている場合に、さらに時間がかかったり、失敗することがあります。 削除に関する問題が発生した場合は、リソース グループをロックしていないこと、リソース グループ外のリソースのリソース グループとの関連付けが解除されていることなどを再確認してください。
+
+## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>'NodeLost' または 'Unknown' の状態のポッドまたはデプロイがある場合でも、クラスターをアップグレードできますか?
+
+可能ですが、AKS ではお勧めしていません。 アップグレードは、クラスターの状態がわかっており正常な場合に実行することが理想的です。
+
+## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>異常な状態のノードやシャットダウンしているノードを 1 つ以上含むクラスターがある場合に、アップグレードを実行できますか?
+
+できません。エラー状態や、それ以外にクラスターから取り除かれているノードはすべて、アップグレード前に削除/除去してください。
+
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>クラスターの削除を実行しましたが、`[Errno 11001] getaddrinfo failed` のエラーが表示されます 
+
+最も一般的な原因は、まだ使用中でクラスターに関連付けられている 1 つ以上のネットワーク セキュリティ グループ (NSG) をユーザーが保持していることです。  これらのグループを取り除いてから、もう一度削除を試してください。
+
+## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>アップグレードを実行しましたが、ポッドがクラッシュ ループの状態になりました。準備プローブが失敗していますか?
+
+サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)と [AKS の資格情報の更新](https://docs.microsoft.com/azure/aks/update-credentials)に関するページを参照してください。
+
+## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。 
+
+サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)と [AKS の資格情報の更新](https://docs.microsoft.com/azure/aks/update-credentials)に関するページを参照してください。
+
+## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>仮想マシン スケール セット API を使用して手動でスケーリングできますか?
+
+いいえ、仮想マシン スケール セット API を使用したスケール操作はサポートされていません。 AKS API (`az aks scale`) を使用してください。
+
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>仮想マシン スケール セットを使用して、0 ノードに手動でスケーリングできますか?
+
+いいえ、仮想マシン スケール セット API を使用したスケール操作はサポートされていません。
+
+## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>すべての VM を停止したり、その割り当てを解除したりできますか?
+
+AKS には、このような構成に耐え、そこから復旧するための回復性メカニズムがありますが、これは推奨する構成ではありません。
+
+## <a name="can-i-use-custom-vm-extensions"></a>カスタム VM 拡張機能を使用できますか?
+
+マネージド サービスである AKS はなく、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントなどをインストールするには、 Kubernetes の API およびメカニズムを活用してください。 たとえば、必要なコンポーネントをインストールするには、DaemonSet を活用します。
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
-[virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
+[aks-cluster-autoscaler]: cluster-autoscaler.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[aks-windows-cli]: windows-container-cli.md
+[aks-windows-limitations]: windows-node-limitations.md
+[reservation-discounts]:../cost-management-billing/reservations/save-compute-costs-reservations.md
+[api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
+[multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
+[private-clusters]: ./private-clusters.md
+[bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
+[availability-zones]: ./availability-zones.md
+[az-regions]: ../availability-zones/az-region.md
 
 <!-- LINKS - external -->
-
+[aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948

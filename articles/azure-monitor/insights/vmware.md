@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor の VMware Monitoring ソリューション | Microsoft Docs
 description: VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2018
-ms.author: magoedte
-ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77664781"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -47,24 +40,24 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
    ![syslog のフロー](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>syslog の収集の構成
-1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法について詳しくは、「[Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.0 以降での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[詳細設定]** > **[Syslog]** に移動します。
+1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法について詳しくは、「[Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.0 以降での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]**  >  **[ソフトウェア]**  >  **[詳細設定]**  >  **[Syslog]** に移動します。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. *Syslog.global.logHost* フィールドに、Linux サーバーとポート番号 *1514* を追加します。 たとえば、`tcp://hostname:1514` や `tcp://123.456.789.101:1514` のようにします。
-1. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[セキュリティ プロファイル]** > **[ファイアウォール]** をクリックし、**[プロパティ]** を開きます。  
+1. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]**  >  **[ソフトウェア]**  >  **[セキュリティ プロファイル]**  >  **[ファイアウォール]** をクリックし、 **[プロパティ]** を開きます。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. vSphere コンソールを調べて、syslog が正しく設定されていることを確認します。 ESXI ホストで、ポート **1514** が構成されていることを確認します。
 1. Linux 用 Log Analytics エージェントをダウンロードし、Linux サーバーにインストールします。 詳細については、[Linux 用の Log Analytics エージェントのドキュメント](https://github.com/Microsoft/OMS-Agent-for-Linux)をご覧ください。
-1. Linux 用 Log Analytics エージェントをインストールしたら、/etc/opt/microsoft/omsagent/sysconf/omsagent.d ディレクトリに移動して vmware_esxi.conf ファイルを /etc/opt/microsoft/omsagent/conf/omsagent.d ディレクトリにコピーし、ファイルの所有者/グループとアクセス許可を変更します。 例: 
+1. Linux 用 Log Analytics エージェントをインストールしたら、/etc/opt/microsoft/omsagent/sysconf/omsagent.d ディレクトリに移動して vmware_esxi.conf ファイルを /etc/opt/microsoft/omsagent/conf/omsagent.d ディレクトリにコピーし、ファイルの所有者/グループとアクセス許可を変更します。 次に例を示します。
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. `sudo /opt/microsoft/omsagent/bin/service_control restart` を実行して Linux 用 Log Analytics エージェントを再起動します。
-1. ESXi ホストで `nc` コマンドを使用して、Linux サーバーと ESXi ホスト間の接続をテストします。 例: 
+1. ESXi ホストで `nc` コマンドを使用して、Linux サーバーと ESXi ホスト間の接続をテストします。 次に例を示します。
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -134,7 +127,7 @@ Log Analytics ワークスペースに VMware のタイルが表示されます�
 #### <a name="find-esxi-host-events"></a>ESXi ホストのイベントの検索
 1 台の ESXi ホストで、そのプロセスに基づいて複数のログが生成されます。 VMware の監視ソリューションは、それらを一元化してイベント数を集計します。 この一元化されたビューを利用して、環境内のイベント数の多い ESXi ホストや、最も頻繁に発生しているイベントを把握できます。
 
-![event](./media/vmware/events.png)
+![イベント](./media/vmware/events.png)
 
 いずれかの ESXi ホストまたはイベント タイプをクリックすると、さらに詳しい情報を表示できます。
 
@@ -158,7 +151,7 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 
 
 #### <a name="save-queries"></a>クエリの保存
-ログ クエリの保存は Azure Monitor の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、**[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](../learn/tutorial-logs-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。
+ログ クエリの保存は Azure Monitor の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、 **[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](../learn/tutorial-logs-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
@@ -203,7 +196,7 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 
      d. このファイルがない場合や、ユーザーおよびグループ設定に問題がある場合は、[Linux サーバーを準備](#prepare-a-linux-server)して、修正措置を講じます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Log Analytics の[ログ クエリ](../log-query/log-query-overview.md)を使用して、VMware ホストの詳細データを表示します。
 * VMware ホストのデータを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
 * VMware ホストの特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。

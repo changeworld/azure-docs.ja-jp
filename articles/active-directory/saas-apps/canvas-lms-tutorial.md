@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7556e93e6e7b7e9bdb1f19f5a6e5b3c15c7b910
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900634"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74232045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -53,11 +54,11 @@ Canvas の Azure AD への統合を構成するには、Canvas をギャラリ�
 
 **ギャラリーから Canvas を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Canvas の Azure AD への統合を構成するには、Canvas をギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Canvas**」と入力し、結果ウィンドウで **Canvas** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Canvas**」と入力し、結果ウィンドウで **Canvas** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Canvas](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
 
 Canvas で Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **[Canvas]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[Canvas]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +113,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Canvas クライアント サポート チーム](https://community.canvaslms.com/community/help)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、**[SAML 署名証明書]** ダイアログを開きます。
+5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
@@ -136,15 +137,15 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
 2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
 
-    ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+    ![キャンバス](./media/canvas-lms-tutorial/ic775990.png "キャンバス")
 
-3. 左側のナビゲーション ウィンドウで **[認証]** を選択し、**[新しい SAML 構成を追加]** をクリックします。
+3. 左側のナビゲーション ウィンドウで **[認証]** を選択し、 **[新しい SAML 構成を追加]** をクリックします。
 
-    ![Authentication](./media/canvas-lms-tutorial/ic775991.png "Authentication")
+    ![認証](./media/canvas-lms-tutorial/ic775991.png "認証")
 
 4. [現在の統合] ページで、次の手順を実行します。
 
-    ![Current Integration](./media/canvas-lms-tutorial/ic775992.png "Current Integration")
+    ![現在の統合](./media/canvas-lms-tutorial/ic775992.png "現在の統合")
 
     a. **[IdP Entity ID]\(IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -156,9 +157,9 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
-    f. **[ログイン属性]** の一覧で、**[NameID]** を選択します。
+    f. **[ログイン属性]** の一覧で、 **[NameID]** を選択します。
 
-    g. **[識別子の形式]** の一覧で、**[emailAddress]** を選択します。
+    g. **[識別子の形式]** の一覧で、 **[emailAddress]** を選択します。
 
     h. **[認証設定の保存]** をクリックします。
 
@@ -166,7 +167,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -191,11 +192,11 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
 このセクションでは、Canvas へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Canvas]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Canvas]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[Canvas]** を選択します。
+2. アプリケーションの一覧で、 **[Canvas]** を選択します。
 
     ![アプリケーションの一覧の Canvas のリンク](common/all-applications.png)
 
@@ -203,15 +204,15 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-canvas-test-user"></a>Canvas のテスト ユーザーの作成
 
@@ -223,19 +224,19 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
 2. **[コース] \> [管理アカウント] \> [Microsoft]** の順にクリックします。
 
-   ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+   ![キャンバス](./media/canvas-lms-tutorial/ic775990.png "キャンバス")
 
 3. **[ユーザー]** をクリックします。
 
-   ![ユーザー](./media/canvas-lms-tutorial/ic775995.png "Users")
+   ![ユーザー](./media/canvas-lms-tutorial/ic775995.png "ユーザー")
 
 4. **[新しいユーザーの追加]** をクリックします。
 
-   ![ユーザー](./media/canvas-lms-tutorial/ic775996.png "Users")
+   ![ユーザー](./media/canvas-lms-tutorial/ic775996.png "ユーザー")
 
 5. [新しいユーザーの追加] ダイアログ ページで、次の手順を実行します。
 
-   ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "Add User")
+   ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "ユーザーの追加")
 
    a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
@@ -248,7 +249,7 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
    e. **[ユーザーの追加]** をクリックします。
 
 > [!NOTE]
-> Canvas から提供されている他の Canvas ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Canvas ユーザー アカウント作成ツールや、Canvas から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

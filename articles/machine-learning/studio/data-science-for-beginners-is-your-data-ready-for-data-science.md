@@ -1,21 +1,21 @@
 ---
 title: データの評価
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8eb9c5a182c17815d4efcf171cc99b1e9f5bc89e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370348"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930167"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
@@ -100,8 +100,8 @@ ms.locfileid: "58370348"
 
 関連性があり、連続していて、正確で、かつ十分なデータがあれば、ある程度高品質なデータ サイエンスを実行するために必要なすべての材料が揃っています。
 
-Microsoft Azure Machine Learning Studio の "*初心者向けデータ サイエンス*" の他の 4 つのビデオも必ずご覧ください。
+Microsoft Azure Machine Learning Studio (クラシック) の*初心者向けデータ サイエンス*にある他の 4 つのビデオも必ず確認してください。
 
-## <a name="next-steps"></a>次の手順
-* [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>次のステップ
+* [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)

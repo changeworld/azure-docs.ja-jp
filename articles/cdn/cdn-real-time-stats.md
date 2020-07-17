@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: c7989340-1172-4315-acbb-186ba34dd52a
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916565"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67593491"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのリアルタイム統計情報
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -84,13 +84,13 @@ HTTP 状態コードの一覧は、グラフの上に直接表示されます。
 
 特定の状態コードについて記録されたデータを一時的に非表示にすることもできます。  グラフのすぐ下にある凡例から、非表示にする状態コードをクリックします。 状態コードはすぐにグラフから消えます。 その状態コードをもう一度クリックすると、再び表示されます。
 
-## <a name="connections"></a>Connections
+## <a name="connections"></a>接続
 ![Connections graph](./media/cdn-real-time-stats/cdn-connections.png)
 
 このグラフは、エッジ サーバーとの間で確立された接続の数を示しています。 資産に対する要求が CDN を通過するたびに接続が確立されます。
 
 ## <a name="next-steps"></a>次の手順
-*  [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)
-*  [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-*  [使用量パターン](cdn-analyze-usage-patterns.md)
+* [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)
+* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+* [使用量パターン](cdn-analyze-usage-patterns.md)
 

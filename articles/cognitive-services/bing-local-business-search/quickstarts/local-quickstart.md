@@ -1,20 +1,21 @@
 ---
-title: クイック スタート - C# で Bing Local Business Search API にクエリを送信する | Microsoft Docs
+title: クイックスタート - C# で Bing Local Business Search を使用して API にクエリを送信する
 titleSuffix: Azure Cognitive Services
-description: この記事を使って、C# での Bing Local Business Search API の使用を開始します。
+description: このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 91ff4c8e6f8487a2b0e5849f881e0cdb9c10385f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 03/24/2020
+ms.author: aahi
+ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763802"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475599"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
@@ -24,7 +25,7 @@ ms.locfileid: "57763802"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
@@ -33,7 +34,7 @@ ms.locfileid: "57763802"
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"restaurant in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -59,7 +60,7 @@ Bing Local Business Search API では、Bing 検索エンジンからのロー�
 3. accessKey 値を、ご利用のサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -207,7 +208,7 @@ namespace localSearch
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)
 - [Local Business Search (Node.js) のクイック スタート](local-search-node-quickstart.md)
 - [Local Business Search (Python) のクイック スタート](local-search-python-quickstart.md)

@@ -4,28 +4,25 @@ description: Azure VM でリモート デスクトップの接続が頻繁に切
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 7fecf8c5fdafb64f7922054dd2bb9755b0dec031
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77918225"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM でリモート デスクトップの接続が頻繁に切れる
 
 この記事では、リモート デスクトップ プロトコル (RDP) を使用した Azure 仮想マシン (VM) への接続が頻繁に切れる問題のトラブルシューティングの方法を説明します。
 
-> [!NOTE] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
 ## <a name="symptom"></a>症状
 
@@ -92,11 +89,11 @@ ms.locfileid: "55881343"
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. OS ディスクを復旧 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3. 接続した OS ディスクで、**\windows\system32\config** フォルダーに移動します。 ロールバックが必要な場合に備えて、このフォルダーのすべてのファイルをバックアップとしてコピーします。
+3. 接続した OS ディスクで、 **\windows\system32\config** フォルダーに移動します。 ロールバックが必要な場合に備えて、このフォルダーのすべてのファイルをバックアップとしてコピーします。
 4. レジストリ エディター (regedit.exe) を起動します。
-5. **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、**[ファイル]** > **[ハイブの読み込み]** を選択します。
-6. 接続した OS ディスクで、**\windows\system32\config\SYSTEM** フォルダーを参照します。 ハイブの名前として、「**BROKENSYSTEM**」と入力します。 **HKEY_LOCAL_MACHINE** キーの下に、新しいレジストリ ハイブが表示されます。 次に、**HKEY_LOCAL_MACHINE** キーの下のソフトウェア ハイブ **\windows\system32\config\SOFTWARE** を読み込みます。 ハイブ ソフトウェアの名前として、「**BROKENSYSTEM**」と入力します。 
-7. 管理者特権でのコマンド プロンプト ウィンドウを開いて (**[管理者として実行]**)、残りの手順のコマンドを実行して RDP 構成をリセットします。 
+5. **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、 **[ファイル]**  >  **[ハイブの読み込み]** を選択します。
+6. 接続した OS ディスクで、 **\windows\system32\config\SYSTEM** フォルダーを参照します。 ハイブの名前として、「**BROKENSYSTEM**」と入力します。 **HKEY_LOCAL_MACHINE** キーの下に、新しいレジストリ ハイブが表示されます。 次に、**HKEY_LOCAL_MACHINE** キーの下のソフトウェア ハイブ **\windows\system32\config\SOFTWARE** を読み込みます。 ハイブ ソフトウェアの名前として、「**BROKENSYSTEM**」と入力します。 
+7. 管理者特権でのコマンド プロンプト ウィンドウを開いて ( **[管理者として実行]** )、残りの手順のコマンドを実行して RDP 構成をリセットします。 
 8. サーバーとクライアント間の通信がネイティブの RDP 暗号化を使用するように、RDP セキュリティ レイヤーを 0 まで下げます。
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
@@ -152,7 +149,7 @@ ms.locfileid: "55881343"
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. RDP セッションのアイドル時間のコントロールを設定します。   REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
+16. RDP セッションのアイドル時間のコントロールを設定します。REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 

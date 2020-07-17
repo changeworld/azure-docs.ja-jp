@@ -1,24 +1,17 @@
 ---
 title: 管理ソリューションのビュー | Microsoft Docs
 description: '管理ソリューションには、通常データを視覚化する 1 つまたは複数のビューが含まれています。  この記事では、ビュー デザイナーで作成したビューをエクスポートし、管理ソリューションに含める方法について説明します。 '
-services: monitoring
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 01/16/2018
+ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77663047"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理ソリューションのビュー (プレビュー)
 > [!NOTE]
@@ -93,11 +86,11 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
  次の表では、レガシ ワークスペースとアップグレードされたワークスペースでのビューに対する Log Analytics API のバージョンを指定します。 
 
-| ワークスペースのバージョン | API バージョン | Query |
+| ワークスペースのバージョン | API バージョン | クエリ |
 |:---|:---|:---|
-| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例:Type=Event EventLevelName=error  |
-| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例:Type=Event EventLevelName=error<br>変換後:Event &#124; where EventLevelName == "Error"  |
-| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例:Event &#124; where EventLevelName == "Error"  |
+| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例: Type=Event EventLevelName = Error  |
+| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例: Type=Event EventLevelName = Error<br>変換後: Event &#124; where EventLevelName == "Error"  |
+| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例: Event &#124; where EventLevelName == "Error"  |
 
 
 ## <a name="add-the-view-details"></a>ビューの詳細を追加する
@@ -186,6 +179,6 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [管理ソリューション](solutions-creating.md)の作成についての詳細を参照する。
 * [Automation Runbook を管理ソリューションに](solutions-resources-automation.md)含める。

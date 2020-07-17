@@ -1,21 +1,21 @@
 ---
-title: ヒューマン ラベル付け文字起こしのガイドライン - Speech Services
-titlesuffix: Azure Cognitive Services
-description: 認識の正確性の問題、特に単語が削除されたり誤って置き換えられたりする問題を改善したい場合は、音声データと共にヒューマン ラベル付け文字起こしを使用することがあります。 ヒューマン ラベル付け文字起こしとは これは簡単で、音声ファイルを逐語的に書き写したもののことです。
+title: ヒューマン ラベル付け文字起こしのガイドライン - Speech Service
+titleSuffix: Azure Cognitive Services
+description: 単語が削除されたり、誤って置き換えられたりする場合など、音声認識の精度を向上させるには、音声データと共にヒューマン ラベル付け文字起こしを使用します。 ヒューマン ラベル付け文字起こしとは、音声ファイルを逐語的に文字起こしたものです。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025697"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74806064"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 
@@ -29,8 +29,8 @@ ms.locfileid: "65025697"
 
 次に例をいくつか示します。
 
-| 使用を避ける文字 | 代替 | メモ |
-|---------------------|--------------|-------|
+| 使用を避ける文字 | Substitution | Notes |
+| ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | 開始と終了の引用符が、適切な ASCII 文字に置き換えられています。 |
 | John’s day | John's day | アポストロフィが、適切な ASCII 文字に置き換えられています。 |
 | it was good—no, it was great! | it was good--no, it was great! | em ダッシュが、2 つのハイフンに置き換えられています。 |
@@ -39,88 +39,88 @@ ms.locfileid: "65025697"
 
 テキストの正規化とは、モデルをトレーニングするときに使用する一定の形式に単語を変換することです。 一部の正規化規則はテキストに自動的に適用されますが、ヒューマン ラベル付け文字起こしデータを準備する場合は、以下のガイドラインに従うことをお勧めします。
 
-* 略語は、略さない単語で書き表します。
-* 非標準の数値文字列は、単語で書き表します (会計用語など)。
-* アルファベット以外の文字や、英数字が混在する語句は、発音どおりの文字で書き表します。
-* 単語として発音される略語は、編集しません ("radar"、"laser"、"RAM"、"NATO" など)。
-* 個々の文字として発音される略語は、各文字をスペースで区切って書き表します。
+- 略語は、略さない単語で書き表します。
+- 非標準の数値文字列は、単語で書き表します (会計用語など)。
+- アルファベット以外の文字や、英数字が混在する語句は、発音どおりの文字で書き表します。
+- 単語として発音される略語は、編集しません ("radar"、"laser"、"RAM"、"NATO" など)。
+- 個々の文字として発音される略語は、各文字をスペースで区切って書き表します。
 
 次に、文字起こしに対して行う必要がある正規化の例をいくつか示します。
 
-| 元のテキスト | 正規化後のテキスト |
-|---------------|--------------------------|
-| Dr.Bruce Banner | Doctor Bruce Banner |
-| James Bond, 007 | James Bond, double oh seven |
-| Ke$ha | Kesha |
-| How long is the 2x4 | How long is the two by four |
+| 元のテキスト               | 正規化後のテキスト              |
+| --------------------------- | ------------------------------------- |
+| Dr.Bruce Banner            | Doctor Bruce Banner                   |
+| James Bond, 007             | James Bond, double oh seven           |
+| Ke$ha                       | Kesha                                 |
+| How long is the 2x4         | How long is the two by four           |
 | The meeting goes from 1-3pm | The meeting goes from one to three pm |
-| My blood type is O+ | My blood type is O positive |
-| Water is H20 | Water is H 2 O |
-| Play OU812 by Van Halen | Play O U 8 1 2 by Van Halen |
-| UTF-8 with BOM | U T F 8 with BOM |
+| My blood type is O+         | My blood type is O positive           |
+| Water is H20                | Water is H 2 O                        |
+| Play OU812 by Van Halen     | Play O U 8 1 2 by Van Halen           |
+| UTF-8 with BOM              | U T F 8 with BOM                      |
 
 次の正規化規則は、文字起こしに自動的に適用されます。
 
-* 小文字を使用します。
-* 単語内のアポストロフィを除く、すべての句読点を削除します。
-* 金額などの数値を、単語および発音形式に展開します。
+- 小文字を使用します。
+- 単語内のアポストロフィを除く、すべての句読点を削除します。
+- 金額などの数値を、単語および発音形式に展開します。
 
 次に、文字起こしに対して自動的に行われる正規化の例をいくつか示します。
 
-| 元のテキスト | 正規化後のテキスト |
-|---------------|--------------------------|
-| "Holy cow!" said Batman. | holy cow said batman |
+| 元のテキスト                          | 正規化後のテキスト          |
+| -------------------------------------- | --------------------------------- |
+| "Holy cow!" said Batman.               | holy cow said batman              |
 | "What?" said Batman's sidekick, Robin. | what said batman's sidekick robin |
-| Go get -em! | go get em |
-| I'm double-jointed | i’m double jointed |
-| 104 Elm Street | one oh four Elm street |
-| Tune to 102.7 | tune to one oh two seven |
-| Pi is about 3.14 | pi is about three point one four |
-It costs $3.14| it costs three fourteen |
+| Go get -em!                            | go get em                         |
+| I'm double-jointed                     | i’m double jointed                |
+| 104 Elm Street                         | one oh four Elm street            |
+| Tune to 102.7                          | tune to one oh two point seven    |
+| Pi is about 3.14                       | pi is about three point one four  |
+| It costs \$3.14                        | it costs three fourteen           |
 
-## <a name="mandarin-chinese-zh-cn"></a>標準中国語 (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>標準中国語 (zh-CN)
 
 標準中国語音声のヒューマン ラベル付け文字起こしは、バイト順マーカー付きの UTF-8 でエンコードする必要があります。 半角句読点文字の使用は避けます。 これらの文字は、ワード プロセッシング プログラムでデータを準備するときや、Web ページからデータを収集するときに誤って含まれる可能性があります。 これらの文字が存在する場合は、必ず適切な全角代替文字に置き換えてください。
 
 次に例をいくつか示します。
 
-| 使用を避ける文字 | 代替 | メモ |
-|---------------------|--------------|-------|
+| 使用を避ける文字 | Substitution   | Notes |
+| ------------------- | -------------- | ----- |
 | "你好" | "你好" | 開始と終了の引用符が、適切な文字に置き換えられています。 |
-| 需要什么帮助? | 需要什么帮助？ | 疑問符が、適切な文字に置き換えられています。 |
+| 需要什么帮助? | 需要什么帮助？| 疑問符が、適切な文字に置き換えられています。 |
 
 ### <a name="text-normalization-for-mandarin-chinese"></a>標準中国語用のテキスト正規化
 
 テキストの正規化とは、モデルをトレーニングするときに使用する一定の形式に単語を変換することです。 一部の正規化規則はテキストに自動的に適用されますが、ヒューマン ラベル付け文字起こしデータを準備する場合は、以下のガイドラインに従うことをお勧めします。
 
-* 略語は、略さない単語で書き表します。
-* 数値文字列は読み上げ形式で書き出す
+- 略語は、略さない単語で書き表します。
+- 数値文字列は読み上げ形式で書き出す
 
 次に、文字起こしに対して行う必要がある正規化の例をいくつか示します。
 
 | 元のテキスト | 正規化後のテキスト |
-|---------------|--------------------------|
-| 我今年21 | 我今年二十一 |
-| 3号楼504 | 三号 楼 五 零 四 |
+| ------------- | ------------------------ |
+| 我今年 21 | 我今年二十一 |
+| 3 号楼 504 | 三号 楼 五 零 四 |
 
 次の正規化規則は、文字起こしに自動的に適用されます。
 
-* すべての句読点を削除します
-* 数字を発音形式に展開します
-* 全角文字を半角文字に変換します
-* すべての英単語に大文字を使用する
+- すべての句読点を削除します
+- 数字を発音形式に展開します
+- 全角文字を半角文字に変換します
+- すべての英単語に大文字を使用する
 
 次に、文字起こしに対して自動的に行われる正規化の例をいくつか示します。
 
 | 元のテキスト | 正規化後のテキスト |
-|---------------|--------------------------|
+| ------------- | ------------------------ |
 | 3.1415 | 三 点 一 四 一 五 |
-| ￥3.5 | 三 元 五 角 |
-| w f y z |W F Y Z |
-| 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
+| ￥ 3.5 | 三 元 五 角 |
+| w f y z | W F Y Z |
+| 1992 年 8 月 8 日 | 一 九 九 二 年 八 月 八 日 |
 | 你吃饭了吗? | 你 吃饭 了 吗 |
-| 下午5:00的航班 | 下午 五点 的 航班 |
-| 我今年21岁 | 我 今年 二十 一 岁 |
+| 下午 5:00 的航班 | 下午 五点 的 航班 |
+| 我今年 21 岁 | 我 今年 二十 一 岁 |
 
 ## <a name="german-de-de-and-other-languages"></a>ドイツ語 (de-DE) およびその他の言語
 
@@ -130,42 +130,42 @@ It costs $3.14| it costs three fourteen |
 
 テキストの正規化とは、モデルをトレーニングするときに使用する一定の形式に単語を変換することです。 一部の正規化規則はテキストに自動的に適用されますが、ヒューマン ラベル付け文字起こしデータを準備する場合は、以下のガイドラインに従うことをお勧めします。
 
-*   小数点は、"." ではなく "," にします。
-*   時間と分の区切り記号は、"." ではなく ":" にします (例: 12:00 Uhr)。
-*   "ca." などの省略形は 置き換えられません。 完全な発音形式を使用することをお勧めします。
-*   4 つの主要な算術演算子 (+、-、\*、/) は削除されます。 これらを記述形式 ("plus"、"minus"、"mal"、"geteilt") に置き換えることをお勧めします。
-*   比較演算子 (=、<、および >) は削除されます。 比較演算子は "gleich"、"kleiner als"、"grösser als" で置換することをお勧めします。
-*   3/4 などの分数は、記述形式で表記します (例: 3/4 ではなく、"drei viertel" を使用)。
-*   "€" 記号は、"Euro" という記述形式に置き換えます。
+- 小数点は、"." ではなく "," にします。
+- 時間と分の区切り記号は、"." ではなく ":" にします (例: 12:00 Uhr)。
+- "ca." などの省略形は 置き換えられません。 完全な発音形式を使用することをお勧めします。
+- 4 つの主要な算術演算子 (+、-、\*、/) は削除されます。 これらを記述形式 ("plus"、"minus"、"mal"、"geteilt") に置き換えることをお勧めします。
+- 比較演算子 (=、<、および >) は削除されます。 比較演算子は "gleich"、"kleiner als"、"grösser als" で置換することをお勧めします。
+- 3/4 などの分数は、記述形式で表記します (例: 3/4 ではなく、"drei viertel" を使用)。
+- "€" 記号は、"Euro" という記述形式に置き換えます。
 
 次に、文字起こしに対して行う必要がある正規化の例をいくつか示します。
 
-| 元のテキスト | ユーザー正規化後のテキスト | システム正規化後のテキスト |
-|---------------|-------------------------------|---------------------------------|
-| Es ist 12.23 Uhr | Es ist 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf |
-| 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier |
+| 元のテキスト    | ユーザー正規化後のテキスト | システム正規化後のテキスト       |
+| ---------------- | ----------------------------- | ------------------------------------- |
+| Es ist 12.23 Uhr | Es ist 12:23 Uhr              | es ist zwölf uhr drei und zwanzig uhr |
+| {12.45}          | {12,45}                       | zwölf komma vier fünf                 |
+| 2 + 3 - 4        | 2 plus 3 minus 4              | zwei plus drei minus vier             |
 
 次の正規化規則は、文字起こしに自動的に適用されます。
 
-* すべてのテキストで小文字を使用します。
-* 各種引用符を含むすべての句読点を削除します ("test"、'test'、"test„、«test» は許可される)。
-* いずれかの特殊文字 (¢ ¤ ¥ ¦ § © ª ¬ ® ° ± ² µ × ÿ Ø¬¬) を含む行を破棄します。
-* 金額 (ドルまたはユーロ) などの数字を発音形式に展開します。
-* a、o、および u に対してだけ、ウムラウトを許可します。 それ以外は "th" に置き換えられるか、破棄されます。
+- すべてのテキストで小文字を使用します。
+- 各種引用符を含むすべての句読点を削除します ("test"、'test'、"test„、«test» は許可される)。
+- いずれかの特殊文字 (¢ ¤ ¥ ¦ § © ª ¬ ® ° ± ² µ × ÿ Ø¬¬) を含む行を破棄します。
+- 金額 (ドルまたはユーロ) などの数字を発音形式に展開します。
+- a、o、および u に対してだけ、ウムラウトを許可します。 それ以外は "th" に置き換えられるか、破棄されます。
 
 次に、文字起こしに対して自動的に行われる正規化の例をいくつか示します。
 
-| 元のテキスト | 正規化後のテキスト |
-|---------------|--------------------------|
-| Frankfurter Ring | frankfurter ring |
-| ¡Eine Frage! | eine frage |
-| wir, haben | wir haben |
+| 元のテキスト    | 正規化後のテキスト |
+| ---------------- | ------------------------ |
+| Frankfurter Ring | frankfurter ring         |
+| ¡Eine Frage!     | eine frage               |
+| wir, haben       | wir haben                |
 
 ## <a name="next-steps"></a>次の手順
 
-* [データを準備してテストする](how-to-custom-speech-test-data.md)
-* [データを調査する](how-to-custom-speech-inspect-data.md)
-* [データを評価する](how-to-custom-speech-evaluate-data.md)
-* [モデルをトレーニングする](how-to-custom-speech-train-model.md)
-* [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
+- [データを準備してテストする](how-to-custom-speech-test-data.md)
+- [データを検査する](how-to-custom-speech-inspect-data.md)
+- [データを評価する](how-to-custom-speech-evaluate-data.md)
+- [モデルをトレーニングする](how-to-custom-speech-train-model.md)
+- [モデルをデプロイする](how-to-custom-speech-deploy-model.md)

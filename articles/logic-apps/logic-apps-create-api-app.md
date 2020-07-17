@@ -1,31 +1,27 @@
 ---
-title: Azure Logic Apps の Web API と REST API の作成 | Microsoft Docs
+title: Azure Logic Apps の Web API と REST API の作成
 description: Azure Logic Apps でシステム統合のために API、サービス、またはシステムを呼び出す Web API と REST API を作成します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233027"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
-Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../connectors/apis-list.md)をロジック アプリ ワークフローで利用できますが、コネクタとして利用できない API、システム、サービスを呼び出したい場合があります。 ロジック アプリで使用するアクションとトリガーを提供する独自の API を作成できます。 ロジック アプリのワークフローから呼び出すことができる独自の API は、次のような理由で作成する場合もあります。
+Azure Logic Apps が提供する[数百個の組み込みコネクタ](../connectors/apis-list.md)をロジック アプリ ワークフローで利用できますが、コネクタとして利用できない API、システム、サービスを呼び出したい場合があります。 ロジック アプリで使用するアクションとトリガーを提供する独自の API を作成できます。 ロジック アプリのワークフローから呼び出すことができる独自の API は、次のような理由で作成する場合もあります。
 
 * 現行システム統合やデータ統合のワークフローを拡張する。
 * 仕事または個人的な作業の管理にサービスを利用する顧客を支援する。
 * サービスが届く範囲を拡大する。サービスを見つけやすくする。サービスの用途を拡大する。
 
-基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
+基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Python、Node.js など、任意の言語を利用できます。 [Azure App Service](../app-service/overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
 
 カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
 
@@ -36,7 +32,7 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 > 
 > * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
 > * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.JS](../app-service/app-service-web-get-started-nodejs.md)
+> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
@@ -45,7 +41,7 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>カスタム API とカスタム コネクタの違い
 
-カスタム API と[カスタム コネクタ](../logic-apps/custom-connector-overview.md)は、プラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 また、これらの API とコネクタは HTTP エンドポイント経由で通信する REST API であるため、カスタム API とコネクタの構築には、.NET、Java、Node.js など、任意の言語を利用できます。
+カスタム API と[カスタム コネクタ](../logic-apps/custom-connector-overview.md)は、プラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 また、これらの API とコネクタは HTTP エンドポイント経由で通信する REST API であるため、カスタム API とコネクタの構築には、.NET、Java、Python、Node.js など、任意の言語を利用できます。
 
 カスタム API を使用すると、コネクタではない API を呼び出すことができ、HTTP + Swagger、Azure API Management、または App Services で呼び出せるエンドポイントを提供できます。 カスタム コネクタはカスタム API と同じように動作しますが、次の属性も備えています。
 
@@ -53,7 +49,7 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 * Logic Apps デザイナーで Microsoft が管理するコネクタに並んでアイコンと共に表示されます。
 * ロジック アプリがデプロイされているリージョンで同じ Azure Active Directory テナントと Azure サブスクリプションを所有しているコネクタの作成者とロジック アプリ ユーザーのみが利用できます。
 
-また、登録されたコネクタの Microsoft 認定を申請することもできます。 このプロセスは、登録されたコネクタが一般的な使用基準を満たしていることを確認し、Microsoft Flow および Microsoft PowerApps のユーザーがそれらのコネクタを利用できるようにします。
+また、登録されたコネクタの Microsoft 認定を申請することもできます。 このプロセスは、登録されたコネクタが一般的な使用基準を満たしていることを確認し、Power Automate および Microsoft Power Apps のユーザーがそれらのコネクタを利用できるようにします。
 
 カスタム コネクタの詳細については、次のトピックを参照してください 
 
@@ -106,7 +102,7 @@ API が従う手順を API の観点から説明すると次のようになり�
    
    * *必須*:ロジック アプリ エンジンが API のジョブの状態を確認できる URL の絶対パスを指定する `location` ヘッダー
 
-   * *省略可能*: 待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
+   * *省略可能*:待機時間を秒単位で指定する `retry-after` ヘッダー。この時間が経過しないとエンジンは `location` URL にジョブの状態を確認できません。 
 
      既定では、エンジンは 20 秒ごとに確認します。 別の時間間隔を指定するには、`retry-after` ヘッダーと次のポーリングまでの秒数を追加します。
 
@@ -175,7 +171,7 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 | 要求に `triggerState` が含まれていますか? | API 応答 | 
 | -------------------------------- | -------------| 
-| いいえ  | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
+| いいえ | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
 | はい | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 | 
 ||| 
 
@@ -210,9 +206,9 @@ webhook トリガーはこのトピックの前半で説明した [webhook ア�
 > [!TIP]
 > webhook パターンのサンプルについては、[ここ](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)で GitHub の webhook トリガー コントローラー サンプルを参照してください。
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>ロジック アプリからの API の呼び出しのセキュリティ保護
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>ロジック アプリからの API の呼び出しのセキュリティを強化する
 
-カスタム API を作成した後、ロジック アプリから安全に呼び出すことができるように API の認証を設定します。 [ロジック アプリからカスタム API の呼び出しをセキュリティで保護する方法](../logic-apps/logic-apps-custom-api-authentication.md)について確認してください。
+カスタム API を作成した後、ロジック アプリから安全に呼び出すことができるように API の認証を設定します。 [ロジック アプリからのカスタム API の呼び出しのセキュリティを強化する方法](../logic-apps/logic-apps-custom-api-authentication.md)について説明します。
 
 ## <a name="deploy-and-call-your-apis"></a>API をデプロイして呼び出す
 
@@ -222,7 +218,7 @@ webhook トリガーはこのトピックの前半で説明した [webhook ア�
 
 カスタム API を Azure の他の Logic Apps ユーザーが使用できるようにするには、セキュリティを追加したうえで Logic Apps コネクタとして登録する必要があります。 詳細については、「[Custom connectors overview (カスタム コネクタの概要)](../logic-apps/custom-connector-overview.md)」を参照してください。 
 
-Logic Apps、Microsoft Flow、および Microsoft PowerApps のすべてのユーザーがカスタム API を使用できるようにするには、セキュリティを追加したうえで API を Logic Apps コネクタとして登録し、[Microsoft Azure 認定プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)にコネクタを申請する必要があります。 
+Logic Apps、Power Automate、および Microsoft Power Apps のすべてのユーザーがカスタム API を使用できるようにするには、セキュリティを追加したうえで API を Logic Apps コネクタとして登録し、[Microsoft Azure 認定プログラム](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)にコネクタを申請する必要があります。 
 
 ## <a name="get-support"></a>サポートを受ける
 
@@ -232,7 +228,7 @@ Logic Apps、Microsoft Flow、および Microsoft PowerApps のすべてのユ�
 
 * [Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [エラーと例外を処理する](../logic-apps/logic-apps-exception-handling.md)
 * [HTTP エンドポイントでロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Rally Software の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Rally Software の統合 | Microsoft Docs'
 description: Azure Active Directory と Rally Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 800b6307504632be5b584dd645f74c6b48962d20
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: de84d03c3e0e433dbe7bc24c47b1766b32ad7bc4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903048"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67093168"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル:Azure Active Directory と Rally Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル: Azure Active Directory と Rally Software の統合
 
 このチュートリアルでは、Rally Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Rally Software と Azure AD の統合には、次の利点があります。
@@ -53,11 +53,11 @@ Azure AD への Rally Software の統合を構成するには、ギャラリー�
 
 **ギャラリーから Rally Software を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Rally Software の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Rally Software**」と入力し、結果ウィンドウで **Rally Software** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Rally Software**」と入力し、結果ウィンドウで **Rally Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Rally Software](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
 
 Rally Software で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Rally Software** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Rally Software** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Rally Software で Azure AD シングル サインオンを構成するには、
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Rally Software クライアント サポート チーム](https://help.rallydev.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -130,17 +130,17 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
 1. **Rally Software** テナントにログインします。
 
-2. 上部にあるツールバーの **[Setup]** をクリックし、**[Subscription]** を選択します。
+2. 上部にあるツールバーの **[Setup]** をクリックし、 **[Subscription]** を選択します。
    
-    ![Subscription](./media/rally-software-tutorial/ic769531.png "Subscription")
+    ![サブスクリプション](./media/rally-software-tutorial/ic769531.png "サブスクリプション")
 
 3. **[アクション]** ボタンをクリックします。 ツールバーの上部の右側にある **[サブスクリプションの編集]** を選択します。
 
-4. **[Subscription]** ダイアログ ページで次の手順に従った後、**[Save & Close]** をクリックします。
+4. **[Subscription]** ダイアログ ページで次の手順に従った後、 **[Save & Close]** をクリックします。
    
-    ![Authentication](./media/rally-software-tutorial/ic769542.png "Authentication")
+    ![認証](./media/rally-software-tutorial/ic769542.png "認証")
    
-    a. Authentication のドロップダウン リストから、**[Rally or SSO authentication]** を選択します。
+    a. Authentication のドロップダウン リストから、 **[Rally or SSO authentication]** を選択します。
 
     b. **[Identity provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。 
 
@@ -150,7 +150,7 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -174,7 +174,7 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Britta Simon に Rally Software へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Rally Software]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Rally Software]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -186,15 +186,15 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-rally-software-test-user"></a>Rally Software テスト ユーザーの作成
 
@@ -204,15 +204,15 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
 1. Rally Software テナントにサインインします。
 
-2. **[Setup] \> [USERS]** に移動し、**[+ Add New]** をクリックします。
+2. **[Setup] \> [USERS]** に移動し、 **[+ Add New]** をクリックします。
    
-    ![ユーザー](./media/rally-software-tutorial/ic781039.png "Users")
+    ![ユーザー](./media/rally-software-tutorial/ic781039.png "ユーザー")
 
 3. New User テキストボックスに名前を入力し、 **[Add with Details]** をクリックします。
 
 4. **[Create User]** セクションで、次の手順に従います。
    
-    ![Create User](./media/rally-software-tutorial/ic781040.png "Create User")
+    ![ユーザーの作成](./media/rally-software-tutorial/ic781040.png "[Create User]")
 
     a. **[User Name]\(ユーザー名\)** ボックスに、ユーザーの氏名 (**BrittSimon** など) を入力します。
    

@@ -1,17 +1,14 @@
 ---
 title: Azure Resource Health でサポートされるリソースの種類 |Microsoft Docs
 description: Azure Resource Health でサポートされるリソースの種類
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620752"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816100"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -26,7 +23,12 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>API Management サービスが実行しているか</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+|実行されるチェック|
+|---|
+|<ul><li>Batch アカウントが稼働しているか</li><li>この Batch アカウントのプール クォータを超過しているか</li></ul>|
+
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |実行されるチェック|
 |---|
 |<ul><li>すべてのキャッシュ ノードが稼働しているか</li><li>データセンターからキャッシュにアクセスできるか</li><li>キャッシュが接続の最大数に達しているか</li><li> キャッシュが使用可能なメモリを使い果たしているか </li><li>キャッシュで多数のページ フォールトが発生しているか</li><li>キャッシュに大きな負荷がかかっているか</li></ul>|
@@ -39,17 +41,22 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |実行されるチェック|
 |---|
-|<ul><li>ホスト サーバーが稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li></ul>|
+|<ul><li>ホスト サーバーが稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |実行されるチェック|
 |---|
 |<ul><li>データセンターからアカウントにアクセスできるか</li><li>Cognitive Services リソース プロバイダーを利用できるか</li><li>Cognitive Services が適切な地域で利用できるか</li><li>リソースのメタデータを保持しているストレージ アカウントで読み取り操作を実行できるか</li><li>API 呼び出しのクォータに達しているか</li><li>API 呼び出しの読み取り制限に達しているか</li></ul>|
 
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|実行されるチェック|
+|---|
+|<ul><li>ホストが稼働しているか</li><li>ホストのハードウェアの機能が低下しているかどうか?</li><li>ホストの割り当てが解除されているかどうか?</li><li>ホストのハードウェア サービスが異なるハードウェアに復旧しているかどうか?</li></ul>|
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |実行されるチェック|
 |---|
-|<ul><li>この仮想マシンをホストするサーバーは稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li></ul>|
+|<ul><li>この仮想マシンをホストするサーバーは稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |実行されるチェック|
@@ -71,6 +78,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>データベース移行サービスのプロビジョニングに失敗したか</li><li>非アクティブであることまたはユーザー要求が原因でデータベース移行サービスが停止したか</li></ul>|
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+|実行されるチェック|
+|---|
+|<ul><li>Data Share アカウントが稼働しているか</li><li>Data Share をホストしているクラスターを利用できるか</li></ul>|
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |実行されるチェック|
@@ -112,6 +124,16 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>Azure KeyVault プラットフォームの問題が原因でキー コンテナーへの要求が失敗するか</li><li>顧客によって行われた要求が多すぎるためにキー コンテナーへの要求がスロットルされているか</li></ul>|
 
+## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
+|実行されるチェック|
+|---|
+|<ul><li>Web サービスが稼働しているか</li></ul>|
+
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
+|実行されるチェック|
+|---|
+|<ul><li>メディア サービスが稼働しているか</li></ul>|
+
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |実行されるチェック|
 |---|
@@ -122,7 +144,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>VPN トンネルが接続されているか</li><li>接続に構成の競合があるか</li><li>事前共有キーは正しく構成されているか</li><li>VPN でオンプレミスのデバイスにアクセスできるか</li><li>IPSec/IKE セキュリティ ポリシーに不一致があるか</li><li>S2S VPN 接続が正しくプロビジョニングされているか、障害が発生した状態にあるか</li><li>VNET-to-VNET 接続が正しくプロビジョニングされているか、障害が発生した状態にあるか</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |実行されるチェック|
 |---|
 |<ul><li>ExpressRoute 回線は正常か</li></ul>|
@@ -131,6 +153,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>Front Door バックエンドが正常性プローブに対してエラーを返しているか</li><li>構成変更が遅延しているか</li></ul>|
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
+|実行されるチェック|
+|---|
+|<ul><li>負荷分散エンドポイントを利用できるか</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |実行されるチェック|
@@ -167,10 +194,20 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>ユーザーによって生成された Service Bus エラーをお客様が経験しているか</li><li>Service Bus 名前空間のアップグレードが原因で、ユーザーが一時的なエラーの増加を経験しているか</li></ul>|
 
-## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
 |実行されるチェック|
 |---|
-|<ul><li> データベースにログインしたことがあるか</li></ul>|
+|<ul><li>Service Fabric クラスターは稼働しているか</li><li>Service Fabric クラスターは、Azure Resource Manager を使用して管理できるか</li></ul>|
+
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
+|実行されるチェック|
+|---|
+|<ul><li>データベースが稼働しているか</li></ul>|
+
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.SQL/servers/databases
+|実行されるチェック|
+|---|
+|<ul><li>データベースにログインしたことがあるか</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |実行されるチェック|
@@ -192,7 +229,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>ホスト サーバーが稼働しているか</li><li>インターネット インフォメーション サーバーが実行されているか</li><li>ロード バランサーが実行されているか</li><li>データセンターから Web アプリにアクセスできるか</li><li>サイト コンテンツをホストしているストレージ アカウントを利用できるか</li></ul>|
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 -  [Azure Service Health ダッシュボードの概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
 -  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
 - アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関するページを参照してください。 

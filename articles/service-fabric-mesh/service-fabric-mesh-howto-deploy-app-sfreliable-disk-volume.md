@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric Mesh アプリケーション内で高可用な Service Fabric Reliable Disk Volume を使用する | Microsoft Docs
+title: Service Fabric Mesh を使用する Service Fabric Reliable Disk Volume
 description: Azure CLI を使用して、Service Fabric Reliable Disk ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147490"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75497954"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで高可用な Service Fabric Reliable Disk ベースのボリュームをマウントする 
 コンテナー アプリで状態を保持する一般的な方法は、Azure File Storage などのリモート ストレージ、または Azure Cosmos DB などのデータベースを使用することです。 これにより、リモート ストアに対する読み取りおよび書き込みのネットワーク待機時間が大幅に増えます。
@@ -45,7 +36,7 @@ az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 アプリケーションのデプロイ先となるリソース グループを作成します。 次のコマンドは、米国東部の場所に `myResourceGroup` という名前のリソース グループを作成します。 次のコマンドでリソース グループ名を変更する場合は、以降のすべてのコマンドでも忘れずに変更してください。
 
@@ -90,7 +81,7 @@ Azure で使用しなくなったリソースは頻繁に削除してくださ�
 az group delete --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) 上の Service Fabric Reliable Volume Disk サンプル アプリケーションを確認します。
 - Service Fabric リソース モデルの詳細については、[Service Fabric Mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。

@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147700"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181611"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -37,7 +37,7 @@ ms.locfileid: "66147700"
 * ソリューションの **[デバイス]** ページからトリガーされたアクションに応答する。
 * ソリューションの **[デバイス]** ページから送信された構成変更に応答する。
 
-このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -47,7 +47,7 @@ ms.locfileid: "66147700"
 
 このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)ソリューション アクセラレータのインスタンスにデータを送信します。 リモート監視ソリューション アクセラレータを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring solution accelerator (リモート監視ソリューション アクセラレータをデプロイする)](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)」を参照してください
 
-リモート監視ソリューションのデプロイ プロセスが完了したら、**[起動]** をクリックしてブラウザーでソリューション ダッシュボードを開きます。
+リモート監視ソリューションのデプロイ プロセスが完了したら、 **[起動]** をクリックしてブラウザーでソリューション ダッシュボードを開きます。
 
 ![ソリューション ダッシュボード](media/iot-suite-selector-connecting/dashboard.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "66147700"
 
 デバイスをリモート監視ソリューションに追加するには、ソリューションの **[デバイス エクスプローラー]** ページで次の手順を実行します。
 
-1. **[+ 新規デバイス]** を選択し、**[デバイスの種類]** で **[実際]** を選択します。
+1. **[+ 新規デバイス]** を選択し、 **[デバイスの種類]** で **[実際]** を選択します。
 
     ![実デバイスの追加](media/iot-suite-selector-connecting/devicesprovision.png)
 

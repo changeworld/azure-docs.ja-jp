@@ -1,10 +1,10 @@
 ---
-title: IPv6 を使用してインターネットに接続するロード バランサーを作成する - PowerShell
-titlesuffix: Azure Load Balancer
+title: IPv6 を使用してインターネットに接続するロード バランサーを作成する - Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: e4bc889df008283f05be5f820b66415cd38c1595
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149268"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629475"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーの作成を開始する
 
@@ -28,6 +28,8 @@ ms.locfileid: "66149268"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
+>[!NOTE] 
+>この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください 
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -53,13 +55,13 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成します。
 
-* フロントエンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
-* バックエンド アドレス プール - ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
+* フロントエンド IP 構成: 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
+* バックエンド アドレス プール: ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
 * 負荷分散規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内のポートにマッピングする規則が含まれます。
 * 受信 NAT 規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングする規則が含まれます。
 * プローブ - バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
 
-詳細については、「 [Azure Resource Manager によるロード バランサーのサポート](load-balancer-arm.md)」を参照してください。
+詳細については、[Azure Load Balancer コンポーネント](./components.md)に関するページを参照してください。
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Resource Manager を使用するための PowerShell をセットアップ
 
@@ -230,10 +232,4 @@ VM の作成に関する詳細については、「 [リソース マネージ�
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>次の手順
 
-[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
-
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
-
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

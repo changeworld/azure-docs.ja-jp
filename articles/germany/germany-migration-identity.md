@@ -10,11 +10,11 @@ ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 07ecaa564f2fda21967ab6f0c30c06fa876e4171
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699194"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60780819"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>ID リソースをグローバル Azure に移行する
 
@@ -134,7 +134,7 @@ $_.ObjectId | Format-Table}
 Azure AD Connect は、オンプレミス Active Directory インスタンスと Azure Active Directory (Azure AD) 間で ID データを同期するツールです。 Azure AD Connect の現在のバージョンは、Azure Germany とグローバル Azure の両方で機能します。 Azure AD Connect は、一度に 1 つだけの Azure AD インスタンスに同期できます。 Azure Germany とグローバル Azure に同時に同期する場合は、これらのオプションを検討してください。
 
 - Azure AD Connect の 2 つ目のインスタンスに追加のサーバーを使用します。 同じサーバーで Azure AD Connect の複数のインスタンスを使用することはできません。
-- ユーザーの新しいサインイン名を定義します。 サインイン名のドメイン部分 (**\@** の後) は環境ごとに異なる必要があります。
+- ユーザーの新しいサインイン名を定義します。 サインイン名のドメイン部分 ( **\@** の後) は環境ごとに異なる必要があります。
 - 逆方向 (Azure AD からオンプレミスの Active Directory へ) にも同期する場合、明確な "真実のソース" を定義します。
 
 既に Azure AD Connect を使用して、Azure Germany 間で同期している場合は、手動で作成したすべてのユーザーを移行してください。 次の PowerShell コマンドレットでは、Azure AD Connect を使用して同期されないすべてのユーザーが一覧表示されます。
@@ -154,7 +154,7 @@ Get-AzureADUser -All $true |Where-Object {$_.DirSyncEnabled -ne "True"}
 多要素認証が有効になっているか、または適用対象にされているユーザー アカウントの一覧を取得するには:
 
 1. Azure ポータルにサインインします。
-1. **[ユーザー]** > **[すべてのユーザー]** > **[Multi-Factor Authentication]** の順に選択します。
+1. **[ユーザー]**  >  **[すべてのユーザー]**  >  **[Multi-Factor Authentication]** の順に選択します。
 1. 多要素認証サービス ページにリダイレクトされたら、適切なフィルターを設定して、ユーザーの一覧を取得します。
 
 詳細:

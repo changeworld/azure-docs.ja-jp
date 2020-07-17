@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: IoT Edge の Event Grid のドキュメント
+summary: IoT Edge で Event Grid を使用して、エッジ デバイスで生成された関連イベントにほぼリアルタイムで対応する方法について説明します。
+metadata:
+  title: IoT Edge の Event Grid のドキュメント
+  description: IoT Edge で Event Grid を使用して、エッジ デバイスで生成された関連イベントにほぼリアルタイムで対応する方法について説明します。
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "72991615"
+landingContent:
+- title: IoT Edge の Event Grid について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: IoT Edge の Event Grid とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Event Grid の概念
+      url: concepts.md
+    - text: イベント スキーマ
+      url: event-schemas.md
+    - text: 出力のバッチ処理
+      url: delivery-output-batching.md
+    - text: 高度なフィルター処理
+      url: advanced-filtering.md
+    - text: 配信と再試行
+      url: delivery-retry.md
+- title: シナリオ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: イベントをローカルで発行してサブスクライブする
+      url: pub-sub-events-webhook-local.md
+    - text: イベントをクラウド内に発行してサブスクライブする
+      url: pub-sub-events-webhook-cloud.md
+    - text: イベントを Azure Event Grid に転送する
+      url: forward-events-event-grid-cloud.md
+    - text: イベントを Azure IoT Hub に転送する
+      url: forward-events-event-grid-cloud.md
+    - text: Azure Blob Storage のイベントにローカルで対応する
+      url: react-blob-storage-events-locally.md
+- title: Security
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティと認証
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: クライアント認証の構成
+      url: configure-client-auth.md
+    - text: Webhook サブスクライバー認証の構成
+      url: configure-webhook-subscriber-auth.md
+    - text: ID 認証の構成
+      url: configure-identity-auth.md

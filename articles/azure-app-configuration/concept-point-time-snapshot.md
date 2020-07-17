@@ -1,38 +1,61 @@
 ---
-title: Azure App Configuration のポイントインタイム スナップショット | Microsoft Docs
-description: Azure App Configuration におけるポイントインタイム スナップショットの動作の概要
+title: ポイントインタイムからキーと値のペアを取得する
+titleSuffix: Azure App Configuration
+description: Azure App Configuration でポイントインタイム スナップショットを使用して古いキーと値のペアを取得します
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 83770e8c5f415670855b5cf2502d02c4d6919440
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.topic: conceptual
+ms.date: 02/20/2020
+ms.openlocfilehash: 1e2a4f7a7bc5db1b6a49f085821f7fa2bde54229
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998075"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77523661"
 ---
 # <a name="point-in-time-snapshot"></a>ポイントインタイム スナップショット
 
-Azure App Configuration は、新しいキーと値のペアが作成されたときとその後変更されたときの正確な時間を記録しています。 これらのレコードは、キー/値の変化の完全なタイムラインを形成します。 アプリ構成ストアは、あらゆるキー/値の履歴を再構築して、過去から現在に至るまでの任意の時点の値を再現することができます。 この機能により、過去にさかのぼって以前のキー/値を取得することができます。 たとえば、以前の構成を復旧してアプリケーションをロールバックするために、直近のデプロイより前の昨日の構成設定を取得できます。
+Azure App Configuration では、キーと値のペアに対する変更のレコードが保持されます。 このレコードからは、キーと値の変更のタイムラインが得られます。 キーと値の履歴を再構築し、過去 7 日間以内のある時点の古い値を取得できます。 この機能を使用すると、"過去にさかのぼって" 以前のキーと値を取得することができます。 たとえば、アプリケーションを以前の構成にロールバックするために、直近のデプロイの前に使用されていた構成設定を回復することができます。
 
 ## <a name="key-value-retrieval"></a>キー/値の取得
 
-過去のキー/値を取得するには、そのスナップショットが作成された日時を REST API 呼び出しの HTTP ヘッダーに指定します。 例: 
+過去のキーと値の取得には Azure PowerShell を使用できます。  必要な値を取得するために適切なパラメーターを追加して `az appconfig revision list` を使用します。  ストア名 (`--name {app-config-store-name}`) を指定するか、接続文字列 (`--connection-string {your-connection-string}`) を使用するかして、Azure App Configuration インスタンスを指定します。 特定のポイントインタイム (`--datetime`) を指定し、返される項目の最大数 (`--top`) を指定して、出力を制限します。
 
-        GET /kv HTTP/1.1
-        Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-現在、App Configuration では 7 日分の変更履歴が保持されます。
+キーと値に対する変更のレコードをすべて取得します。
 
-## <a name="next-steps"></a>次の手順
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name}.
+```
+
+キーが `environment` でラベルが `test` と `prod` の変更のレコードをすべて取得します。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --key environment --label test,prod
+```
+
+階層的キー スペース `environment:prod` 内の変更のレコードをすべて取得します。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --key environment:prod:* 
+```
+
+特定のポイントインタイムのキー `color` に対する変更のレコードをすべて取得します。
+
+```azurepowershell
+az appconfig revision list --connection-string {your-app-config-connection-string} --key color --datetime "2019-05-01T11:24:12Z" 
+```
+
+自分のキーと値に対する最近 10 件の変更のレコードを取得し、`key`、`label`、`last-modified` タイム スタンプの値だけを返します。
+
+```azurepowershell
+az appconfig revision list --name {your-app-config-store-name} --top 10 --fields key,label,last-modified
+```
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web アプリの作成](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)  

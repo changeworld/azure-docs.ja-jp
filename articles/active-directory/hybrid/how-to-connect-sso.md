@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:シームレス シングル サインオン | Microsoft Docs
+title: 'Azure AD Connect: シームレス シングル サインオン | Microsoft Docs'
 description: このトピックでは、Azure Active Directory (Azure AD) シームレス シングル サインオンについて説明します。この機能により、企業ネットワーク内の企業のデスクトップ ユーザーに真のシングル サインオンを提供できます。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c34d8de3dfd06540dd50542ab19da0c1d9b1567
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079743"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77483756"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -36,13 +36,13 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 ![シームレス シングル サインオン](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->シームレス SSO では、ユーザーのデバイスを**ドメイン参加済み**にする必要がありますが、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)にする必要はありません。
+>シームレス SSO では、ユーザーのデバイスが**ドメインに参加している**ことのみが必要ですが、[Azure AD 参加済み](../devices/concept-azure-ad-join.md)デバイスまたは[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスでは使用されません。 Azure AD 参加済みおよびハイブリッド Azure AD 参加済みでの SSO は、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)に基づいて機能します。
 
 ## <a name="key-benefits"></a>主な利点
 
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスとクラウドベースの両方のアプリケーションに自動的にサインインします。
-  - ユーザーはパスワードを繰り返し入力する必要はありません。
+  - ユーザーは、パスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
   - [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)の、どちらのクラウド認証方法でも機能します。
@@ -63,7 +63,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|はい\*|いいえ |はい|はい\*\*\*|該当なし
+|Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
 |Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
@@ -78,12 +78,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 \*\*\*[追加の構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要
 
 >[!NOTE]
->Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../active-directory-azureadjoin-overview.md) を使用することをお勧めします。
+>Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../devices/concept-azure-ad-join.md) を使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [**クイック スタート**](how-to-connect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
-- [**デプロイ計画**](https://aka.ms/AuthenticationDeploymentPlan) - 詳細なデプロイ計画です。
+- [**デプロイ計画**](https://aka.ms/deploymentplans/sso) - 詳細なデプロイ計画です。
 - [**技術的な詳細**](how-to-connect-sso-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](how-to-connect-sso-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](tshoot-connect-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。

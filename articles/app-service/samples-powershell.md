@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell のサンプル - App Service | Microsoft Docs
-description: Azure PowerShell のサンプル - App Service
-services: app-service
-documentationcenter: app-service
-author: syntaxc4
-manager: erikre
-editor: ggailey777
+title: PowerShell のサンプル
+description: App Service の一般的なシナリオをピックアップした Azure PowerShell サンプルをご覧いただけます。 App Service のデプロイまたは管理タスクを自動化する方法について説明します。
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: app-service
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: app-service
 ms.date: 03/08/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 69fd27785e5fc16a79fc23728b6d1e50a0a7b834
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632859"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532427"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service の PowerShell サンプル
 
@@ -37,7 +27,7 @@ ms.locfileid: "53632859"
 | [アプリを作成してステージング環境にコードをデプロイする](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | コードの変更をステージングするためのデプロイ スロットを備える App Service アプリを作成します。 |
 |**アプリケーションの構成**||
 | [アプリにカスタム ドメインをマップする](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名をマップします。 |
-| [カスタム SSL 証明書をアプリにバインドする](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の SSL 証明書をバインドします。 |
+| [カスタム TLS/SSL 証明書をアプリにバインドする](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の TLS/SSL 証明書をバインドします。 |
 |**アプリのスケール**||
 | [アプリを手動でスケーリングする](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、2 つのインスタンス間でスケーリングします。 |
 | [高可用性アーキテクチャを使用して世界規模でアプリをスケーリングする](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 2 つの異なる地理的リージョンに 2 つの App Service アプリを作成し、Azure Traffic Manager を使用して、1 つのエンドポイントを介してそれらを利用できるようにします。 |

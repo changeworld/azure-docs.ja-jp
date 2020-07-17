@@ -1,11 +1,10 @@
 ---
-title: Azure CLI のサンプル スクリプト - DSC を使用した IIS がインストールされた Windows Server 2016 の作成 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - DSC を使用した IIS がインストールされた Windows Server 2016 の作成
 description: Azure CLI のサンプル スクリプト - DSC を使用した IIS がインストールされた Windows Server 2016 の作成
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 3c818a7459a54b01cfdaa7315aff8e4194d3849c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ac0c895f471a6d201c51e2c75ba938dc3b15c3a8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670681"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459561"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>DSC を使用して、IIS で VM を作成する
 
@@ -55,7 +54,7 @@ az group delete --name myResourceGroup --yes
 | [az vm open-port](https://docs.microsoft.com/cli/azure/vm) | 受信トラフィックを許可するネットワーク セキュリティ グループ規則を作成します。 このサンプルでは、HTTP トラフィック用にポート 80 を開きます。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

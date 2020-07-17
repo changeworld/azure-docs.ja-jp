@@ -1,11 +1,10 @@
 ---
-title: Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成 | Microsoft Docs
+title: Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成
 description: Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 0afdcef546d53c2caf13828576338c47e03c4fc9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2cf571d0c965e308ef18cdc1be1eb9fc5797e782
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894827"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459493"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>仮想マシン間のネットワーク トラフィックのセキュリティ保護
 
@@ -57,7 +56,7 @@ az group delete --name myResourceGroup --yes
 | [az network nsg rule list](https://docs.microsoft.com/cli/azure/network/nsg/rule) | ネットワーク セキュリティ グループ規則に関する情報を返します。 このサンプルでは、後でスクリプト内で使用するために規則名を変数に格納しています。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

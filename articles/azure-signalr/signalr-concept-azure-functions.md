@@ -1,25 +1,28 @@
 ---
-title: Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
-description: サーバーレス アプリケーションでの Azure SignalR Service の使用の概要。
+title: リアルタイム アプリを構築する - Azure Functions と Azure SignalR Service
+description: 例に従って、Azure SignalR Service でリアルタイム サーバーレス Web アプリケーションを開発する方法について説明します。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556324"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74157611"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
 
 Azure SignalR サービスと Azure Functions はどちらもインフラストラクチャを管理するのではなく、アプリケーションの構築に専念できる非常にスケーラブルなフル マネージド サービスであるため、2 つのサービスを併用して[サーバーレス](https://azure.microsoft.com/solutions/serverless/)環境でリアルタイム通信を提供するのが一般的です。
 
+> [!NOTE]
+> 対話型のチュートリアル「[Azure Functions と SignalR Service を使って、Web アプリケーションの自動更新を有効にする](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)」で、SignalR と Azure Functions を一緒に使用する方法を学習します。
+
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Azure サービスとのリアルタイム通信の統合
 
-Azure Functions では、クラウド内でイベントが発生するたびにトリガーするコードを、JavaScript、C#、Java などの[いくつかの言語](../azure-functions/supported-languages.md)で記述できます。 これらのイベントの例は次のとおりです。
+Azure Functions では、クラウド内でイベントが発生するたびにトリガーするコードを、JavaScript、Python、C#、Java などの[いくつかの言語](../azure-functions/supported-languages.md)で記述できます。 これらのイベントの例は次のとおりです。
 
 * HTTP と webhook の要求
 * 定期的なタイマー
@@ -59,13 +62,14 @@ SignalR サービスのバインドを使用する方法の例として、Azure 
 
 SignalR サービスでは、すべてのクライアントや、単一のユーザーに属しているなどのクライアントのサブセットにのみメッセージをブロードキャストすることができます。 Azure Functions 向けの SignalR サービスのバインドは、App Service 認証と組み合わせることで、Azure Active Directory、Facebook、Twitter などのプロバイダーでユーザーを認証できます。 これらの認証されたユーザーにメッセージを直接送信できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、SignalR サービスと Azure Functions を使用して、さまざまなサーバーレス リアルタイム メッセージング シナリオを有効にする方法についての概要を把握しました。
 
-Azure Functions とSignalR Service を一緒に使用する方法の完全な詳細については、次のガイドを参照してください。
+Azure Functions とSignalR Service を一緒に使用する方法の完全な詳細については、以下のリソースにアクセスしてください。
 
 * [SignalR Service を使用した Azure Functions の開発と構成](signalr-concept-serverless-development-config.md)
+* [Azure Functions と SignalR Service を使って、Web アプリケーションの自動更新を有効にする](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 詳細については、これらのいずれかのクイック スタートを参照してください。
 

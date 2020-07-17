@@ -3,9 +3,7 @@ title: Azure Network Watcher のインスタンスの作成 | Microsoft Docs
 description: Azure リージョンで Network Watcher を有効にする方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681572"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77191187"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -51,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>ポータルで Network Watcher を作成する
 
-**[すべてのサービス]** > **[ネットワーク]** > **[Network Watcher]** の順に移動します。 Network Watcher を有効にするすべてのサブスクリプションを選択できます。 このアクションにより、利用可能なすべてのリージョンに Network Watcher が作成されます。
+**[すべてのサービス]**  >  **[ネットワーク]**  >  **[Network Watcher]** の順に移動します。 Network Watcher を有効にするすべてのサブスクリプションを選択できます。 このアクションにより、利用可能なすべてのリージョンに Network Watcher が作成されます。
 
 ![Network Watcher の作成](./media/network-watcher-create/figure1.png)
 
@@ -103,16 +101,34 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="delete-a-network-watcher-in-the-portal"></a>ポータル上で Network Watcher を削除する
+
+**[すべてのサービス]**  >  **[ネットワーク]**  >  **[Network Watcher]** の順に移動します。
+
+まだ選択されていない場合は、[概要] タブを選択します。 ドロップダウンを使用して、Network Watcher を無効にするサブスクリプションを選択します。
+矢印をクリックして、選択したサブスクリプションに対するリージョンの一覧を展開します。 いずれの場合でも、右側にある 3 つの点を使用してコンテキスト メニューにアクセスします。
+無効化を開始するには、[Network Watcher の無効化] をクリックします。 この手順を確定するように求められます。 [はい] をクリックして続行します。
+ポータル上で、すべてのサブスクリプションにおいてリージョンごとに個別にこれを行う必要があります。
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>PowerShell を使用して Network Watcher を削除する
+
+Network Watcher のインスタンスを削除するには、次の例を実行します。
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+```
+
+## <a name="next-steps"></a>次のステップ
 
 これで Network Watcher のインスタンスが作成できました。利用可能な機能については、以下をご覧ください。
 
 * [トポロジ](network-watcher-topology-overview.md)
 * [パケット キャプチャ](network-watcher-packet-capture-overview.md)
-* [IP フロー検証](network-watcher-ip-flow-verify-overview.md)
+* [IP flow verify](network-watcher-ip-flow-verify-overview.md)
 * [次ホップ](network-watcher-next-hop-overview.md)
 * [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 * [NSG フロー ログの記録](network-watcher-nsg-flow-logging-overview.md)
 * [Virtual Network Gateway のトラブルシューティング](network-watcher-troubleshoot-overview.md)
-
-Network Watcher インスタンスが作成されたら、仮想マシン内でのパケット キャプチャを有効にすることができます。 方法については、[アラートでトリガーされるパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関する記事をご覧ください

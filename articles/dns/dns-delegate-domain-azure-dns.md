@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - Azure DNS でドメインとサブドメインをホストする
-description: このチュートリアルでは、Azure DNS を構成して DNS ゾーンをホストする方法を示します。
+title: チュートリアル:ドメインとサブドメインをホストする - Azure DNS
+description: この記事では、Azure DNS を構成して DNS ゾーンをホストする方法について説明します。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779778"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222789"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>チュートリアル:Azure DNS でドメインをホストする
 
@@ -40,25 +40,25 @@ Azure DNS 内でホストすることができ、テストに使用できるド�
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure ポータルにサインインします。
-1. 左上で、**[リソースの作成]** > **[ネットワーキング]** > **[DNS ゾーン]** の順に選択し、**[DNS ゾーンの作成]** ページを開きます。
+1. DNS ゾーンを作成するには [Azure portal](https://portal.azure.com/) に移動します。 **[DNS ゾーン]** を検索して選択します。
 
    ![[DNS ゾーン]](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. **[DNS ゾーンの作成]** ページで次の値を入力してから、**[作成]** を選択します。
+1. **[DNS ゾーンの作成]** を選択します。
+1. **[DNS ゾーンの作成]** ページで次の値を入力してから、 **[作成]** を選択します。
 
-   | **設定** | **値** | **詳細** |
+   | **設定** | **Value** | **詳細** |
    |---|---|---|
-   |**Name**|[ドメイン名] |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
+   |**名前**|ドメイン名 |購入したドメイン名。 このチュートリアルでは、例として contoso.net を使用します。|
    |**サブスクリプション**|<該当するサブスクリプション>|ゾーンの作成先となるサブスクリプションを選択します。|
-   |**リソース グループ**|**[新規作成]**: contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。<br>リソース グループの場所は、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。|
+   |**リソース グループ**|**[新規作成]** : contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。<br>リソース グループの場所は、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。|
    |**場所**|米国東部||
 
 ## <a name="retrieve-name-servers"></a>ネーム サーバーの取得
 
 DNS ゾーンを Azure DNS に委任するには、ゾーンのネーム サーバーを把握する必要があります。 Azure DNS は、ゾーンが作成されるたびに、プールからネーム サーバーを割り当てます。
 
-1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** を選択します。 **[すべてのリソース]** ページで DNS ゾーンを選択します。 選択したサブスクリプションに既存のリソースがいくつかある場合は、**[名前でフィルター]** ボックスに自身のドメイン名を入力すると、アプリケーション ゲートウェイに簡単にアクセスできます。 
+1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** を選択します。 **[すべてのリソース]** ページで DNS ゾーンを選択します。 選択したサブスクリプションに既存のリソースがいくつかある場合は、 **[名前でフィルター]** ボックスに自身のドメイン名を入力すると、アプリケーション ゲートウェイに簡単にアクセスできます。 
 
 1. [DNS ゾーン] ページでネーム サーバーを取得します。 この例では、ゾーン contoso.net に、ネーム サーバー *ns1-01.azure-dns.com*、*ns2-01.azure-dns.net*、*ns3-01.azure-dns.org*、*ns4-01.azure-dns.info* が割り当てられています。
 
@@ -107,13 +107,13 @@ Azure DNS ネーム サーバーを指定する必要はありません。 委�
    default TTL = 300 (5 mins)
    ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、**contosoRG** リソース グループをそのまま保持できます。 それ以外の場合は、**contosoRG** リソース グループを削除してこのチュートリアルで作成したリソースを削除します。
 
-- **contosoRG** リソース グループを選択し、**[リソース グループの削除]** を選択します。 
+- **contosoRG** リソース グループを選択し、 **[リソース グループの削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ドメインの DNS ゾーンを作成し、それを Azure DNS に委任しました。 Azure DNS と Web アプリについて詳しくは、Web アプリのチュートリアルに進んでください。
 

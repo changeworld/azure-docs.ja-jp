@@ -1,6 +1,6 @@
 ---
-title: Service Bus キューの使用方法 (PHP) | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは PHP で記述されています。
+title: PHP で Azure Service Bus キューを使用する方法
+description: このチュートリアルでは、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 55eee839e24db2ad96eb635adc488e9a119c5907
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501197"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76760693"
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>クイック スタート:PHP で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 このチュートリアルでは、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 
@@ -35,10 +35,10 @@ ms.locfileid: "59501197"
 
         > [!NOTE]
         > このチュートリアルでは、PHP を使用して Service Bus 名前空間で**キュー**を作成します。 
-3. [Azure SDK for PHP](../php-download-sdk.md)
+3. [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Microsoft Azure SDK for PHP ](../php-download-sdk.md)のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Microsoft Azure SDK for PHP ](https://github.com/Azure/azure-sdk-for-php)のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
 > [!NOTE]
 > PHP のインストールでは、[OpenSSL 拡張機能](https://php.net/openssl)をインストールして有効にしておく必要もあります。
@@ -223,8 +223,11 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 メッセージが処理された後、`deleteMessage` 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上*の処理と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加することをお勧めします。 通常、この問題はメッセージの `getMessageId` メソッドを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-## <a name="next-steps"></a>次の手順
-これで、Service Bus キューの基本を学習できました。詳しくは、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]に関する記事をご覧ください。
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
+
+## <a name="next-steps"></a>次のステップ
+これで、Service Bus キューの基本を学習できました。詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Queues, topics, and subscriptions]」をご覧ください。
 
 詳しくは、[PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)もご覧ください。
 

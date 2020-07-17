@@ -1,26 +1,17 @@
 ---
-title: Linux Azure VM のバックアップ オプションの概要 | Microsoft Docs
+title: Linux VM のバックアップ オプションの概要
 description: Linux Azure 仮想マシンのバックアップ オプションの概要について説明します。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 67278c4f258fc8d437804e3637877f07089cab34
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: feb7a60fbdcd48c21126b9108cf85cf54917e330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833406"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "78969304"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンのバックアップと復元のオプション
 

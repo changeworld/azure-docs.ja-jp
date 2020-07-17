@@ -1,6 +1,6 @@
 ---
-title: Azure MQTT クライアント ライブラリを使用して MQTT サーバーにメッセージを送信する | Microsoft Docs
-description: クライアントとして DevKit を使用して、MQTT サーバーにメッセージを送信します
+title: Azure MQTT クライアント ライブラリを使用して MQTT サーバーにメッセージを送信する
+description: MQTT クライアント ライブラリを使用して MQTT ブローカーにメッセージを送信する方法について説明します。 MXChip Iot DevKit を MQTT クライアントとして構成する方法についても学習します。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.custom: mqtt
+ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552012"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733490"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 
@@ -45,10 +46,10 @@ ms.locfileid: "57552012"
 
 ## <a name="open-the-mqttclient-sample"></a>MQTTClient サンプルを開く
 
-左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [MQTT]** を参照して、**[MQTTClient]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
+左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [MQTT]** を参照して、 **[MQTTClient]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
 > [!NOTE]
-> コマンド パレットから例を開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
+> コマンド パレットから例を開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>DevKit に対する Arduino スケッチのビルドとアップロード
 
@@ -57,7 +58,7 @@ ms.locfileid: "57552012"
 ![device-upload](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> "エラー:AZ3166:不明なパッケージ" というエラー メッセージが表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[IoT DevKit FAQ の「Development (開発)」セクション](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を参照してください。
+> エラー メッセージ "エラー: AZ3166: 不明なパッケージ" が表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[IoT DevKit FAQ の「Development (開発)」セクション](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を参照してください。
 
 ## <a name="test-the-project"></a>プロジェクトのテスト
 
@@ -80,14 +81,14 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [シェイク、シェイクしてツイート](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、MXChip Iot DevKit を MQTT クライアントとして構成し、MQTT クライアント ライブラリを使用して MQTT ブローカーにメッセージを送信する方法を説明しました。推奨される次の手順は、以下のとおりです。
 
 * [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](/azure/iot-central/core/howto-connect-devkit)

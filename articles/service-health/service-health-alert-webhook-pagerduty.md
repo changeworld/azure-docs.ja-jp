@@ -1,19 +1,16 @@
 ---
-title: PagerDuty で Azure サービス正常性アラートを構成する | Microsoft Docs
+title: PagerDuty で Azure サービス正常性アラートを送信する
 description: PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
-ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: conceptual
+ms.date: 06/10/2019
+ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77654071"
 ---
-# <a name="configure-service-health-alerts-with-pagerduty"></a>PagerDuty でサービス正常性アラートを構成する
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>PagerDuty で webhook を使用して Azure サービス正常性アラートを構成する
 
 この記事では、webhook を使用して PagerDuty 経由で Azure サービス正常性通知を設定する方法について説明します。 [PagerDuty](https://www.pagerduty.com/) のカスタムの Microsoft Azure 統合型を使用すると、新規または既存の PagerDuty サービスにサービス正常性アラートを簡単に追加できます。
 
@@ -28,15 +25,15 @@ ms.locfileid: "55883051"
 
 1.  **[Integration Settings]** で、次のように選択します。
 
-    a. **[Integration Type]\(統合の種類\)**:Microsoft Azure
+    a. **[Integration Type]\(統合の種類\)** :Microsoft Azure
 
-    b. **[Integration Name]\(統合の種類\)**:\<名前\>
+    b. **[Integration Name]\(統合の種類\)** :\<名前\>
 
     ![PagerDuty に表示された [Integration Settings]](./media/webhook-alerts/pagerduty-integration-settings.png)
 
-1.  その他の必須フィールドに入力し、**[Add]** を選択します。
+1.  その他の必須フィールドに入力し、 **[Add]** を選択します。
 
-1.  この新しい統合を開き、**[Integration URL]** をコピーして保存します。
+1.  この新しい統合を開き、 **[Integration URL]** をコピーして保存します。
 
     ![PagerDuty に表示された [Integration URL]](./media/webhook-alerts/pagerduty-integration-url.png)
 
@@ -46,7 +43,7 @@ ms.locfileid: "55883051"
 
 1. **[アクション]** の一覧で以下を定義します。
 
-    a. **[アクションの種類]:***webhook*
+    a. **[アクションの種類]:** *webhook*
 
     b. **[詳細]:** 先ほど保存した PagerDuty の **Integration URL**。
 
@@ -55,7 +52,7 @@ ms.locfileid: "55883051"
 1. 完了したら **[保存]** を選択して、アラートを作成します。
 
 ### <a name="for-an-existing-action-group"></a>既存のアクション グループの場合:
-1. [Azure Portal](https://portal.azure.com/) で、**[モニター]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[モニター]** を選択します。
 
 1. **[設定]** セクションで **[アクション グループ]** を選択します。
 
@@ -63,7 +60,7 @@ ms.locfileid: "55883051"
 
 1. **[アクション]** の一覧に以下を追加します。
 
-    a. **[アクションの種類]:***webhook*
+    a. **[アクションの種類]:** *webhook*
 
     b. **[詳細]:** 先ほど保存した PagerDuty の **Integration URL**。
 
@@ -87,7 +84,7 @@ ms.locfileid: "55883051"
 
 1. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。

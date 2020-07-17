@@ -1,27 +1,21 @@
 ---
-title: マネージド ディスクを使用するために Azure Resource Manager のスケール セット テンプレートを変換する | Microsoft Docs
-description: スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換します。
+title: スケール セット テンプレートを変換してマネージド ディスクを使用する
+description: Azure Resource Manager 仮想マシン スケール セットのテンプレートをマネージド ディスク スケール セットのテンプレートに変換します。
 keywords: 仮想マシン スケール セット
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: disks
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 85f8694a017c8de94d987c244994a24ad0929441
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339877"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124892"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換する
 
@@ -143,7 +137,7 @@ Resource Manager テンプレートを基にマネージド ディスクを使�
 スケール セットでデータ ディスクを使用する方法の詳細については、[この記事](./virtual-machine-scale-sets-attached-disks.md)を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スケール セットを使用した Resource Manager テンプレートの例については、[Azure クイック スタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
 
 全般的な情報については、 [スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。

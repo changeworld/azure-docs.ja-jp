@@ -1,5 +1,5 @@
 - name: Bing Spell Check API のドキュメント
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概要
   items:
     - name: Bing Spell Check API とは
@@ -7,7 +7,7 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: REST API
       expanded: true
@@ -32,7 +32,7 @@
   items:
     - name: スペル チェック Web アプリの構築
       href: tutorials/spellcheck.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: v5 から v7 へのアップグレード
       href: bing-spell-check-upgrade-guide-v5-to-v7.md
@@ -57,21 +57,22 @@
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/spellcheck?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-spellcheck/?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/spellcheck?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-java-stable'
     - name: 使用と表示の要件
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
 - name: リソース
   items:
     - name: Bing Spell Check API 用の分析
-      href: bing-spell-check-stats.md
-    - name: 言語とリージョンのサポート
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
+    - name: 言語のサポート
       href: language-support.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
@@ -86,4 +87,4 @@
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
     - name: コンプライアンス
-      href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy/'
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

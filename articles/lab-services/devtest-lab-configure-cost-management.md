@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs で、ラボの月間推定コスト傾向を表示する | Microsoft Docs
-description: Azure DevTest Labs の月間推定コスト傾向グラフについて説明します。
+title: Azure DevTest Labs で、ラボの月間推定コスト傾向を表示する
+description: この記事では、Azure DevTest Labs のラボのコスト (月間推定コスト傾向グラフ) を追跡する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2e4fe55fac5edf73e16df05bd38cc2712a94377d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517268"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76721729"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに関連付けられているコストを追跡する
 この記事では、ラボのコストを追跡する方法について説明します。 ラボの現在のカレンダー月の推定コスト傾向を表示する方法を紹介します。 また、ラボのリソースごとの過去 1 か月間のコストを表示する方法も紹介します。
@@ -29,17 +29,17 @@ ms.locfileid: "58517268"
 
 月間推定コスト傾向グラフを表示するには、次の手順に従います: 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧でラボを選択します。  
 4. 左側のメニューで **[構成とポリシー]** を選択します。  
-4. 左側のメニューの **[コスト管理]** セクションで、**[コスト傾向]** を選択します。 次のスクリーン ショットはコスト グラフの例を示しています。 
+4. 左側のメニューの **[コスト管理]** セクションで、 **[コスト傾向]** を選択します。 次のスクリーン ショットはコスト グラフの例を示しています。 
    
     ![コスト グラフ](./media/devtest-lab-configure-cost-management/graph.png)
 
     **[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストです。 **[予測コスト]** は現在のカレンダー月全体の推定コストで、過去 5 日間のラボのコストを使用して計算されます。
 
-    コストの金額の端数は切り上げられます。 例:  
+    コストの金額の端数は切り上げられます。 次に例を示します。 
 
    * 5.01 は切り上げて 6 になります。 
    * 5.50 は切り上げて 6 になります。
@@ -49,7 +49,7 @@ ms.locfileid: "58517268"
 
      コスト計算には次のものは含まれて*いません*。
 
-   * CSP サブスクリプションと Dreamspark サブスクリプションは現在サポートされません。Azure DevTest Labs は、[Azure 課金 API](../billing/billing-usage-rate-card-overview.md) を使用してラボ コストを計算しますが、CSP サブスクリプションも Dreamspark サブスクリプションもサポートしていないためです。
+   * CSP サブスクリプションと Dreamspark サブスクリプションは現在サポートされません。Azure DevTest Labs は、[Azure 課金 API](../cost-management-billing/manage/usage-rate-card-overview.md) を使用してラボ コストを計算しますが、CSP サブスクリプションも Dreamspark サブスクリプションもサポートしていないためです。
    * プラン料金。 現時点では、Microsoft または Microsoft パートナーと交渉したオファー料金 (サブスクリプションの下に表示される金額) は使用できません。 従量課金制の料金のみが使用されます。
    * 税金
    * 割引
@@ -72,7 +72,7 @@ DevTest Labs を使用して支出目標を設定することで、コストの�
    - レポートされるしきい値を有効にするか無効にするかを選択します。指定した**目標コスト**の最大 125% まで、25% 刻みで増やして設定できます。
       - **通知**: しきい値に達すると、指定した webhook URL により通知されます。
       - **グラフ上のプロット**: しきい値に達すると、「月間推定コスト傾向グラフを表示する」での説明のとおり、結果がコスト傾向グラフ上にプロットされ、確認できるようになります。
-   - しきい値に達したときに**通知**されるように選択した場合、webhook の URL を指定する必要があります。 [コストの統合] 領域で、**[ここをクリックして統合を追加します]** をクリックします。 [通知の構成] ウィンドウで **webhook の URL** を入力し、**[OK]** を選択します。
+   - しきい値に達したときに**通知**されるように選択した場合、webhook の URL を指定する必要があります。 [コストの統合] 領域で、 **[ここをクリックして統合を追加します]** をクリックします。 [通知の構成] ウィンドウで **webhook の URL** を入力し、 **[OK]** を選択します。
 
        ![[通知の構成] ウィンドウ](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
@@ -85,19 +85,19 @@ DevTest Labs を使用して支出目標を設定することで、コストの�
 ## <a name="view-cost-by-resource"></a>リソースごとのコストを表示する 
 ラボの月間コスト傾向機能では、現在のカレンダー月に費やした金額を表示できます。 また、過去 7 日間の支出に基づいて、月末までの支出の予測も表示されます。 早い段階でラボでの支出がしきい値に達する理由を理解するには、**リソースごとの**過去 1 か月間のコストをテーブルに表示する、**リソースごとのコスト**機能を使用します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. 左側のメニューで **[構成とポリシー]** を選択します。
-5. 左側のメニューの **[コスト管理]** セクションで、**[リソースごとのコスト]** を選択します。 ラボに関連付けられている各リソースに関連するコストが表示されます。 
+5. 左側のメニューの **[コスト管理]** セクションで、 **[リソースごとのコスト]** を選択します。 ラボに関連付けられている各リソースに関連するコストが表示されます。 
 
     ![リソースごとのコスト](./media/devtest-lab-configure-cost-management/cost-by-resource.png)
 
 この機能では、ラボの支出を削減する措置を講じるために、最もコストのかかるリソースを簡単に特定することができます。 たとえば、VM のコストは VM のサイズに基づいています。 VM のサイズが大きいほど、コストが大きくなります。 VM のサイズと所有者を簡単に確認できるので、VM 所有者に問い合わせて、このような VM サイズが必要な理由と、サイズを小さくできるかどうかを確認することができます。
 
-[自動シャットダウン ポリシー](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown)は、特定の時間帯にラボの VM をシャットダウンしてコストを削減するのに役立ちます。 しかし、ラボ ユーザーはシャットダウン ポリシーを適用外にしていることがあり、この場合、VM の実行コストが増加します。 テーブルで VM を選択すると、自動シャットダウン ポリシーの適用外になっているかどうかを確認できます。 適用外になっている場合は、VM 所有者に問い合わせて、VM がポリシーの適用外になっている理由を確認することができます。
+[自動シャットダウン ポリシー](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)は、特定の時間帯にラボの VM をシャットダウンしてコストを削減するのに役立ちます。 しかし、ラボ ユーザーはシャットダウン ポリシーを適用外にしていることがあり、この場合、VM の実行コストが増加します。 テーブルで VM を選択すると、自動シャットダウン ポリシーの適用外になっているかどうかを確認できます。 適用外になっている場合は、VM 所有者に問い合わせて、VM がポリシーの適用外になっている理由を確認することができます。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次に試す操作をいくつか以下に示します。
 
 * [ラボ ポリシーを定義する](devtest-lab-set-lab-policy.md) - ラボとその VM の使用方法を制御するために使用されるさまざまなポリシーを設定する方法を確認します。 

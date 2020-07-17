@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos DB SDK を使用してストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出す方法
+title: Azure Cosmos DB SDK でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する
 description: Azure Cosmos DB SDK を使用してストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出す方法について説明します
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/21/2019
-ms.author: mjbrown
-ms.openlocfilehash: b25d65b07420c5be53d952c6f81de5116dc9ec7d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.topic: conceptual
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 2e870e6cbc16fd98d8fccb5bbe3ac5d8be634cf2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978926"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982311"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
 Azure Cosmos DB の SQL API は、JavaScript で記述されたストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) の登録および呼び出しをサポートします。 SQL API [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](sql-api-sdk-node.md)、[Node.js](sql-api-sdk-node.md)、または [Python](sql-api-sdk-python.md) SDK を使用して、ストアド プロシージャを登録および起動できます。 ストアド プロシージャ、トリガー、およびユーザー定義関数を定義したら、それらを読み込み、データ エクスプローラーを使用して [Azure portal](https://portal.azure.com/) で表示できます。
 
-## <a id="stored-procedures"></a>ストアド プロシージャの実行方法
+## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>ストアド プロシージャの実行方法
 
 ストアド プロシージャは JavaScript を使用して記述されます。 これらは Azure Cosmos コンテナー内部で作成、更新、読み取り、クエリの実行、および削除できます。 Azure Cosmos DB でストアド プロシージャを記述する方法の詳細については、[Azure Cosmos DB でストアド プロシージャを記述する方法](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)に関する記事を参照してください。
 
@@ -26,9 +26,9 @@ Azure Cosmos DB の SQL API は、JavaScript で記述されたストアド プ�
 > [!NOTE]
 > パーティション分割されたコンテナーの場合、ストアド プロシージャを実行するとき、要求オプションにパーティション キー値を指定する必要があります。 ストアド プロシージャは常に 1 つのパーティション キーに範囲設定されます。 別のパーティション キー値を持つ項目は、ストアド プロシージャから認識できません。 このことはトリガーにも該当します。
 
-### <a name="stored-procedures---net-sdk"></a>ストアド プロシージャ - .NET SDK
+### <a name="stored-procedures---net-sdk-v2"></a>ストアド プロシージャ - .NET SDK V2
 
-次の例は、.NET SDK を使用してストアド プロシージャを登録する方法を示しています。
+次の例は、.NET SDK V2 を使用してストアド プロシージャを登録する方法を示しています。
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-次のコードは、 .NET SDK を使用してストアド プロシージャを呼び出す方法を示しています。
+次のコードは、 .NET SDK V2 を使用してストアド プロシージャを呼び出す方法を示しています。
 
 ```csharp
 dynamic newItem = new
@@ -56,7 +56,34 @@ dynamic newItem = new
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
-var id = result.Response;
+```
+
+### <a name="stored-procedures---net-sdk-v3"></a>ストアド プロシージャ - .NET SDK V3
+
+次の例は、.NET SDK V3 を使用してストアド プロシージャを登録する方法を示しています。
+
+```csharp
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+{
+    Id = "spCreateToDoItem",
+    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+});
+```
+
+次のコードは、 .NET SDK V3 を使用してストアド プロシージャを呼び出す方法を示しています。
+
+```csharp
+dynamic[] newItems = new dynamic[]
+{
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    }
+};
+
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>ストアド プロシージャ - Java SDK
@@ -105,6 +132,7 @@ asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArg
         successfulCompletionLatch.countDown();
         System.out.println(storedProcedureResponse.getActivityId());
     }, error -> {
+        successfulCompletionLatch.countDown();
         System.err.println("an error occurred while executing the stored procedure: actual cause: "
                 + error.getMessage());
     });
@@ -119,7 +147,7 @@ successfulCompletionLatch.await();
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-await container.storedProcedures.create({
+await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
 });
@@ -136,7 +164,7 @@ const newItem = [{
 }];
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
+const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
 ### <a name="stored-procedures---python-sdk"></a>ストアド プロシージャ - Python SDK
@@ -148,9 +176,9 @@ with open('../js/spCreateToDoItem.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-            'id': 'spCreateToDoItem',
-            'serverScript': file_contents,
-        }
+    'id': 'spCreateToDoItem',
+    'serverScript': file_contents,
+}
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 ```
 
@@ -167,7 +195,7 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a id="pre-triggers"></a>プリトリガーの実行方法
+## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>プリトリガーの実行方法
 
 次の例では、Azure Cosmos DB SDK を使用してプリトリガーを登録および呼び出す方法を示します。 ソースについては、[プリトリガーの例](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers)に関する記事を参照してください。このプリトリガーは `trgPreValidateToDoItemTimestamp.js` として保存されています。
 
@@ -176,9 +204,9 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 > [!NOTE]
 > トリガーの名前が List として渡される場合でも、操作ごとにトリガーを 1 つだけ実行することができます。
 
-### <a name="pre-triggers---net-sdk"></a>プリトリガー - .NET SDK
+### <a name="pre-triggers---net-sdk-v2"></a>プリトリガー - .NET SDK V2
 
-次のコードは、.NET SDK を使用してプリトリガーを登録する方法を示しています。
+次のコードは、.NET SDK V2 を使用してプリトリガーを登録する方法を示しています。
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -193,7 +221,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-次のコードは、.NET SDK を使用してプリトリガーを呼び出す方法を示しています。
+次のコードは、.NET SDK V2 を使用してプリトリガーを呼び出す方法を示しています。
 
 ```csharp
 dynamic newItem = new
@@ -207,6 +235,34 @@ dynamic newItem = new
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new List<string> { "trgPreValidateToDoItemTimestamp" } };
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
+```
+
+### <a name="pre-triggers---net-sdk-v3"></a>プリトリガー - .NET SDK V3
+
+次のコードは、.NET SDK V3 を使用してプリトリガーを登録する方法を示しています。
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPreValidateToDoItemTimestamp",
+    Body = File.ReadAllText("@..\js\trgPreValidateToDoItemTimestamp.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+});
+```
+
+次のコードは、.NET SDK V3 を使用してプリトリガーを呼び出す方法を示しています。
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
 ### <a name="pre-triggers---java-sdk"></a>プリトリガー - Java SDK
@@ -279,11 +335,11 @@ with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPreValidateToDoItemTimestamp',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Pre,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPreValidateToDoItemTimestamp',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Pre,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
@@ -291,17 +347,19 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'category': 'Personal', 'name': 'Groceries', 'description':'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, { 'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+item = {'category': 'Personal', 'name': 'Groceries',
+        'description': 'Pick up strawberries', 'isComplete': False}
+client.CreateItem(container_link, item, {
+                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a id="post-triggers"></a>ポストトリガーの実行方法
+## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>ポストトリガーの実行方法
 
 次の例では、Azure Cosmos DB SDK を使用してポストトリガーを登録する方法を示します。 ソースについては、[ポストトリガーの例](how-to-write-stored-procedures-triggers-udfs.md#post-triggers)に関する記事を参照してください。このポストトリガーは `trgPostUpdateMetadata.js` として保存されています。
 
-### <a name="post-triggers---net-sdk"></a>ポストトリガー - .NET SDK
+### <a name="post-triggers---net-sdk-v2"></a>ポストトリガー - .NET SDK V2
 
-次のコードは、.NET SDK を使用してポストトリガーを登録する方法を示しています。
+次のコードは、.NET SDK V2 を使用してポストトリガーを登録する方法を示しています。
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -316,7 +374,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-次のコードは、.NET SDK を使用してポストトリガーを呼び出す方法を示しています。
+次のコードは、.NET SDK V2 を使用してポストトリガーを呼び出す方法を示しています。
 
 ```csharp
 var newItem = { 
@@ -325,9 +383,35 @@ var newItem = {
     albums: ["Hellujah", "Rotators", "Spinning Top"]
 };
 
-var options = { postTriggerInclude: "trgPostUpdateMetadata" };
+RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
+```
+
+### <a name="post-triggers---net-sdk-v3"></a>ポストトリガー - .NET SDK V3
+
+次のコードは、.NET SDK V3 を使用してポストトリガーを登録する方法を示しています。
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPostUpdateMetadata",
+    Body = File.ReadAllText(@"..\js\trgPostUpdateMetadata.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Post
+});
+```
+
+次のコードは、.NET SDK V3 を使用してポストトリガーを呼び出す方法を示しています。
+
+```csharp
+var newItem = { 
+    name: "artist_profile_1023",
+    artist: "The Band",
+    albums: ["Hellujah", "Rotators", "Spinning Top"]
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
 ### <a name="post-triggers---java-sdk"></a>ポストトリガー - Java SDK
@@ -398,11 +482,11 @@ with open('../js/trgPostUpdateMetadata.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPostUpdateMetadata',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Post,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPostUpdateMetadata',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Post,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
@@ -410,24 +494,26 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'name': 'artist_profile_1023', 'artist': 'The Band', 'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, { 'postTriggerInclude': 'trgPostUpdateMetadata'})
+item = {'name': 'artist_profile_1023', 'artist': 'The Band',
+        'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
+client.CreateItem(container_link, item, {
+                  'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
-## <a id="udfs"></a>ユーザー定義関数を操作する方法
+## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数を操作する方法
 
 次の例では、Azure Cosmos DB SDK を使用して、ユーザー定義関数を登録する方法を示します。 ソースについては、[ユーザー定義関数の例](how-to-write-stored-procedures-triggers-udfs.md#udfs)に関する記事を参照してください。このポストトリガーは `udfTax.js` として保存されています。
 
-### <a name="user-defined-functions---net-sdk"></a>ユーザー定義関数 - .NET SDK
+### <a name="user-defined-functions---net-sdk-v2"></a>ユーザー定義関数 - .NET SDK V2
 
-次のコードは、.NET SDK を使用してユーザー定義関数を登録する方法を示しています。
+次のコードは、.NET SDK V2 を使用してユーザー定義関数を登録する方法を示しています。
 
 ```csharp
 string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
-    Body = File.ReadAllText($@"..\js\{udfId}.js"),
+    Body = File.ReadAllText($@"..\js\{udfId}.js")
 };
 
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -435,7 +521,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-次のコードは、.NET SDK を使用してユーザー定義関数を呼び出す方法を示しています。
+次のコードは、.NET SDK V2 を使用してユーザー定義関数を呼び出す方法を示しています。
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -444,6 +530,32 @@ var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM I
 foreach (var result in results)
 {
     //iterate over results
+}
+```
+
+### <a name="user-defined-functions---net-sdk-v3"></a>ユーザー定義関数 - .NET SDK V3
+
+次のコードは、.NET SDK V3 を使用してユーザー定義関数を登録する方法を示しています。
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
+{
+    Id = "Tax",
+    Body = File.ReadAllText(@"..\js\Tax.js")
+});
+```
+
+次のコードは、.NET SDK V3 を使用してユーザー定義関数を呼び出す方法を示しています。
+
+```csharp
+var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
+while (iterator.HasMoreResults)
+{
+    var results = await iterator.ReadNextAsync();
+    foreach (var result in results)
+    {
+        //iterate over results
+    }
 }
 ```
 
@@ -514,9 +626,9 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'Tax',
-            'serverScript': file_contents,
-        }
+    'id': 'Tax',
+    'serverScript': file_contents,
+}
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
@@ -524,10 +636,11 @@ udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
+results = list(client.QueryItems(
+    container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述または作成する方法および概念について説明します。
 

@@ -1,26 +1,25 @@
 ---
-title: Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能 | Microsoft Docs
+title: Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Network Watcher Agent をデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: mimckitt
+ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798778"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81255755"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -36,7 +35,7 @@ ms.locfileid: "59798778"
 
 Network Watcher Agent 拡張機能は、次の Linux ディストリビューションで構成できます。
 
-| ディストリビューション | バージョン |
+| Distribution | Version |
 |---|---|
 | Ubuntu | 12 以降 |
 | Debian | 7、8 |
@@ -89,9 +88,11 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートを使って
 
 ## <a name="azure-classic-cli-deployment"></a>Azure クラシック CLI でのデプロイ
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 次の例では、従来のデプロイ モデルを使用してデプロイされた既存の VM に Network Watcher Agent VM 拡張機能をデプロイします。
 
-```azurecli
+```console
 azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
@@ -109,18 +110,6 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 ### <a name="troubleshooting"></a>トラブルシューティング
 
 Azure Portal または Azure CLI を使用して、拡張機能のデプロイ状態に関するデータを取得できます。
-
-次の例は、Azure クラシック CLI で従来のデプロイ モデルを使用してデプロイされた VM に対する拡張機能のデプロイ状態を示しています。
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
 
 次の例は、Azure CLI で Resource Manager を使用してデプロイされた VM の NetworkWatcherAgentLinux に対する拡張機能のデプロイ状態を示しています。
 

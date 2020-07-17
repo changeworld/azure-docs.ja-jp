@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と TurboRater の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と TurboRater の統合 | Microsoft Docs'
 description: Azure Active Directory と TurboRater の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956678"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67088273"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-turborater"></a>チュートリアル:Azure Active Directory と TurboRater の統合
+# <a name="tutorial-azure-active-directory-integration-with-turborater"></a>チュートリアル: Azure Active Directory と TurboRater の統合
 
 このチュートリアルでは、TurboRater と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -51,7 +51,7 @@ TurboRater では、IDP によって開始されるシングル サインオン 
 
 Azure AD への TurboRater の統合を構成するには、Azure Marketplace からマネージド SaaS アプリの一覧に TurboRater を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com?azure-portal=true) にサインインします。
+1. [Azure portal](https://portal.azure.com?azure-portal=true) にサインインする
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 
     ![[Azure Active Directory] オプション](common/select-azuread.png)

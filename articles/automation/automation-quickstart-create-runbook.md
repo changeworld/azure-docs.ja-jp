@@ -2,19 +2,16 @@
 title: Azure クイックスタート - Azure Automation Runbook を作成する | Microsoft Docs
 description: Azure Automation Runbook の作成方法について説明します
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 02/05/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2f6dcbba8da314798b2e8de12a9fc5bf55f67a4a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750275"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537000"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
@@ -24,9 +21,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-https://portal.azure.com で Azure にサインインします
+https://portal.azure.com で Azure にサインインします。
 
-## <a name="create-runbook"></a>Runbook を作成する
+## <a name="create-the-runbook"></a>Runbook の作成
 
 まず Runbook を作成します。 このクイックスタートで作成されるサンプル Runbook は、既定で `Hello World` を出力します。
 
@@ -34,18 +31,18 @@ https://portal.azure.com で Azure にサインインします
 
 1. **[プロセス オートメーション]** の **[Runbook]** をクリックします。 Runbook の一覧が表示されます。
 
-1. 一覧の上部にある **[Runbook の追加]** ボタンをクリックします。 **[Runbook の追加]** ページで **[簡易作成]** を選択します。
+1. リストの一番上にある **[Runbook の作成]** をクリックします。
 
-1. Runbook の **[名前]** に「Hello-World」と入力し、**[Runbook の種類]** に **[PowerShell]** を選択します。 **Create** をクリックしてください。
+1. **[名前]** フィールドに Runbook の名前として「`Hello-World`」を入力し、 **[Runbook の種類]** フィールドで **[PowerShell]** を選択します。 
 
    ![このページに Automation Runbook に関する情報を入力します](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Runbook が作成され、**[PowerShell Runbook の編集]** ページが開きます。
+1. **Create** をクリックしてください。 Runbook が作成され、[PowerShell Runbook の編集] ページが開きます。
 
     ![Runbook エディターで PowerShell スクリプトを作成する](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. 以下のコードを編集ウィンドウに入力するか貼り付けます。 その結果、既定値が "World" の Name というオプションの入力パラメーターが作成され、その入力値を使用する文字列が出力されます。
-   
+1. 以下のコードを編集ウィンドウに入力するか貼り付けます。 その結果、既定値が `World` の `Name` というオプションの入力パラメーターが作成され、その入力値を使用する文字列が出力されます。
+
    ```powershell-interactive
    param
    (
@@ -64,15 +61,15 @@ https://portal.azure.com で Azure にサインインします
 
 Runbook が作成されたら、Runbook をテストして動作することを確認します。
 
-1. **[テスト ウィンドウ]** をクリックして、**[テスト]** ページを開きます。
+1. **[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。
 
-1. **[名前]** の値を入力し、**[開始]** をクリックします。 テスト ジョブが開始され、ジョブの状態と出力が表示されます。
+1. **[名前]** の値を入力し、 **[開始]** をクリックします。 テスト ジョブが開始され、ジョブの状態と出力が表示されます。
 
     ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. 右上の **[X]** をクリックして、**[テスト]** ページを閉じます。 表示されるポップアップで **[OK]** を選択します。
+1. 右上の **[X]** をクリックして、[テスト] ペインを閉じます。 表示されるポップアップで **[OK]** を選択します。
 
-1. **[PowerShell Runbook の編集]** ページで **[発行]** をクリックして、アカウントの Runbook の公式バージョンとして Runbook を発行します。
+1. [PowerShell Runbook の編集] ページで **[発行]** をクリックして、アカウントの Runbook の公式バージョンとして Runbook を発行します。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
 
@@ -80,26 +77,25 @@ Runbook が作成されたら、Runbook をテストして動作することを�
 
 Runbook が公開されると、概要ページが表示されます。
 
-1. Runbook の概要ページで、**[開始]** をクリックしてこの Runbook の **[Runbook の開始]** 構成ページを開きます。
+1. Runbook の概要ページで、 **[開始]** をクリックしてこの Runbook の [Runbook の開始] 構成ページを開きます。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
-1. 既定値が使用されるように **[名前]** を空白のままにして、**[OK]** をクリックします。 Runbook ジョブが送信され、ジョブ ページが表示されます。
+1. 既定値が使用されるように **[名前]** を空白のままにして、 **[OK]** をクリックします。 Runbook ジョブが送信され、ジョブ ページが表示されます。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. **[ジョブの状態]** が **[実行中]** または **[完了]** に変わったら、**[出力]** をクリックして **[出力]** ウィンドウを開き、Runbook の出力を確認します。
+1. [ジョブの状態] が `Running` または `Completed` に変わったら、 **[出力]** をクリックして [出力] ペインを開き、Runbook の出力を確認します。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、Runbook を削除します。 削除するには、Runbook 一覧で Runbook を選択し、**[削除]** をクリックします。
+不要になったら、Runbook を削除します。 削除するには、Runbook 一覧で Runbook を選択し、 **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Runbook を作成、編集、テスト、および公開し、Runbook ジョブを開始しました。 Automation Runbook の詳細については、Automation で作成および使用できるさまざまな Runbook の種類に関する記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Automation の方法 - Runbook の種類](./automation-runbook-types.md)
-

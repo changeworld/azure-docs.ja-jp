@@ -1,26 +1,18 @@
 ---
-title: Azure での Linux VM 用の SSH キー ペアの作成と使用 | Microsoft Docs
+title: Azure 内に Linux VM 用の SSH キー ペアを作成して使用する
 description: Azure 内に Linux VM 用の SSH 公開キーと秘密キーのペアを作成し、認証プロセスのセキュリティを向上させる方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 34ae9482-da3e-4b2d-9d0d-9d672aa42498
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: d442d09c8c8ded3aa50faf74e28c8d95ded24a5e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300202"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78969052"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -39,10 +31,10 @@ Windows コンピューター上で、SSH キーを生成して使用するそ�
 
 `ssh-keygen` コマンドを使用して、SSH 公開キーと秘密キーのファイルを生成します。 既定では、これらのファイルは ~/.ssh ディレクトリに作成されます。 秘密キー ファイルにアクセスするには、別の場所、および任意のパスワード (*パスフレーズ*) を指定できます。 同じ名前の SSH キー ペアが指定された場所にある場合、それらのファイルは上書きされます。
 
-次のコマンドでは、RSA 暗号化と 2048 ビット長を使用して SSH キー ペアが作成されます。
+次のコマンドでは、RSA 暗号化と 4096 ビット長を使用して SSH キー ペアが作成されます。
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 [Azure CLI](/cli/azure) を使用して [az vm create](/cli/azure/vm#az-vm-create) コマンドで VM を作成する場合は、必要に応じて `--generate-ssh-keys` オプションを使用して、SSH 公開キー ファイルと秘密キー ファイルを生成できます。 `--ssh-dest-key-path` オプションで指定されない限り、キー ファイルは ~/.ssh ディレクトリに格納されます。 `--generate-ssh-keys` オプションでは、既存のキー ファイルを上書きすることはありません。代わりにエラーを返します。 次のコマンドで、*VMname* と *RGname* を独自の値に置き換えます。
@@ -71,13 +63,16 @@ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを **pbcopy** にパイプすることができます。 Linux と同様に、**xclip** などのプログラムに公開キー ファイルをパイプすることができます。
+公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを `pbcopy` にパイプすることができます。 Linux と同様に、`xclip` などのプログラムに公開キー ファイルをパイプすることができます。
 
-キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-value` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドで、*VMname*、*RGname*、*keyFile* を独自の値に置き換えます。
+キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドで、*VMname*、*RGname*、*keyFile* を独自の値に置き換えます。
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-value @keyFile
+az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
 ```
+
+VM で複数の SSH キーを使用する場合は、この `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` のように、スペース区切りの一覧で入力できます。
+
 
 ## <a name="ssh-into-your-vm"></a>VM への SSH 接続
 
@@ -91,7 +86,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 VM が Just-In-Time アクセス ポリシーを使用している場合、VM に接続するにはアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * SSH キー ペアを操作する詳細については、[SSH キー ペアを作成して管理する詳細な手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 

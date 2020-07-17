@@ -1,10 +1,10 @@
 ---
 title: Linux VM の DHCPv6 の構成
-titlesuffix: Azure Load Balancer
-description: Linux VM の DHCPv6 の構成方法について説明します。
+titleSuffix: Azure Load Balancer
+description: この記事では、Linux VM の DHCPv6 の構成方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
-ms.author: kumud
-ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.author: allensu
+ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369634"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74225320"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の構成
 
@@ -42,8 +42,8 @@ Azure Marketplace の一部の Linux 仮想マシン イメージでは、動的
 
 2. eth0 インターフェースのネットワーク構成を、次のように編集します。
 
-   * **Ubuntu 12.04 および 14.04** では、*/etc/network/interfaces.d/eth0.cfg* ファイルを編集します。 
-   * **Ubuntu 16.04** では、*/etc/network/interfaces.d/50-cloud-init.cfg* ファイルを編集します。
+   * **Ubuntu 12.04 および 14.04** では、 */etc/network/interfaces.d/eth0.cfg* ファイルを編集します。 
+   * **Ubuntu 16.04** では、 */etc/network/interfaces.d/50-cloud-init.cfg* ファイルを編集します。
 
          iface eth0 inet6 auto
              up sleep 5
@@ -56,7 +56,7 @@ Azure Marketplace の一部の Linux 仮想マシン イメージでは、動的
     ```
 Ubuntu 17.10 以降、既定のネットワーク構成メカニズムは [NETPLAN]( https://netplan.io) です。  インストール/インスタンス化時に、NETPLAN は、/{lib,etc,run}/netplan/*.yaml の場所にある YAML 構成ファイルからネットワーク構成を読み取ります。
 
-構成の各イーサネット インターフェイスに *dhcp6:true* ステートメントを含めてください。  例: 
+構成の各イーサネット インターフェイスに *dhcp6:true* ステートメントを含めてください。  次に例を示します。
   
         network:
           version: 2

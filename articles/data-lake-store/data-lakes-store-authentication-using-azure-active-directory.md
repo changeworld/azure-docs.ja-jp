@@ -1,22 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 で Azure Active Directory を使用して認証する方法について説明します
-services: data-lake-store
-documentationcenter: ''
+title: 認証 ‐ Data Lake Storage Gen1 で Azure AD を使用する
+description: Azure Data Lake Storage Gen1 で Azure Active Directory を使用して認証する方法について説明します。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884637"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692282"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証
 
@@ -37,7 +32,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 |右の項目とともに以下の認証オプションを使用                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
-|エンドユーザー (MFA なし\*\*)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(非推奨)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
+|エンドユーザー (MFA なし\*\*)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)** (非推奨)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |エンドユーザー (MFA あり)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
 |サービス間 (クライアント キーを使用)         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |サービス間 (クライアント証明書を使用) |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
@@ -47,7 +42,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 Azure Active Directory を認証に使用する方法の詳細については、「[Azure AD の認証シナリオ](../active-directory/develop/authentication-scenarios.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 * [サービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)

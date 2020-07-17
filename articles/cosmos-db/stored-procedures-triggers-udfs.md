@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する
+title: Azure Cosmos DB でストアドプロシージャ、トリガー、UDF を操作する
 description: この記事では、Azure Cosmos DB のストアド プロシージャ、トリガー、ユーザー定義関数などの概念について説明します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965703"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509671"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
 
@@ -37,7 +37,7 @@ JavaScript でストアド プロシージャ、トリガー、ユーザー定�
 * **カブセル化**: ストアド プロシージャを使用して、ロジックを 1 か所にグループ化できます。 カプセル化により、データの上に抽象化レイヤーが追加されるため、データとは独立してアプリケーションを進化させることができます。 データにスキーマがなく、アプリケーションに直接ロジックを追加することを管理する必要がない場合に、この抽象化のレイヤーが役に立ちます。 この抽象化により、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。
 
 > [!TIP]
-> ストアド プロシージャは、負荷の高い書き込み操作に最適です。 ストアド プロシージャを使用する場所を決定する際に、書き込み可能な最大量をカプセル化するように最適化します。 一般的に、ストアド プロシージャは、大量の読み取り操作を行うのに最も効率的な手段ではありません。そのため、クライアントに返すために大量の読み取りを行うバッチ処理でストアド プロシージャを使用しても、期待どおりのメリットは得られません。
+> ストアド プロシージャは、書き込みが多く、パーティション キー値によるトランザクションが必要な操作に最適です。 ストアド プロシージャを使用するかどうかを決定する際に、書き込み可能な最大量をカプセル化するように最適化します。 一般的に、ストアド プロシージャは、大量の読み取り操作を行うのに最も効率的な手段ではありません。そのため、クライアントに返すために大量の読み取りまたはクエリを行うバッチ処理でストアド プロシージャを使用しても、期待どおりのメリットは得られません。 最適なパフォーマンスを実現するには、Cosmos SDK を使用して、これらの読み取りが多い操作をクライアント側で実行する必要があります。 
 
 ## <a name="transactions"></a>トランザクション
 
@@ -55,7 +55,7 @@ Azure Cosmos DB では、JavaScript ランタイムはデータベース エン�
 
 ### <a name="scope-of-a-transaction"></a>トランザクションのスコープ
 
-ストアド プロシージャが Azure Cosmos コンテナーと関連付けられている場合、ストアド プロシージャは論理パーティション キーのトランザクション スコープで実行されます。 各ストアド プロシージャの実行には、トランザクションのスコープに対応した論理パーティション キー値を含める必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事を参照してください。
+ストアド プロシージャは Azure Cosmos コンテナーに関連付けられており、ストアド プロシージャの実行は論理パーティション キーにスコープが設定されています。 ストアド プロシージャには、トランザクションのスコープの論理パーティションが定義されている論理パーティション キー値を、実行時に含める必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事を参照してください。
 
 ### <a name="commit-and-rollback"></a>コミットとロールバック
 
@@ -64,6 +64,9 @@ Azure Cosmos DB では、JavaScript ランタイムはデータベース エン�
 ### <a name="data-consistency"></a>データの一貫性
 
 ストアド プロシージャとトリガーは、常に Azure Cosmos コンテナーのプライマリ レプリカ上で実行されます。 この機能により、ストアド プロシージャからの読み取りで[強固な一貫性](consistency-levels-tradeoffs.md)が保証されます。 ユーザー定義関数を使用したクエリはプライマリ レプリカまたは任意のセカンダリ レプリカ上で実行できます。 ストアド プロシージャとトリガーは、トランザクションの書き込みをサポートすることを目的としています。一方で、読み取り専用のロジックは、としてアプリケーション側のロジックとして実装するのが最適です。また [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md) を使用するクエリは、データベース スループットを飽和状態にするのに役立ちます。 
+
+> [!TIP]
+> ストアド プロシージャまたはトリガー内で実行されるクエリからは、同じスクリプトのトランザクションによって行われた項目の変更を確認できない場合があります。 このステートメントは、SQL クエリ (`getContent().getCollection.queryDocuments()` など) だけでなく、統合言語クエリ (`getContext().getCollection().filter()`など) にも適用されます。
 
 ## <a name="bounded-execution"></a>制限された実行
 
@@ -75,25 +78,28 @@ JavaScript 関数は、[プロビジョニングされているスループッ�
 
 ## <a name="triggers"></a>トリガー
 
-このセクションでは、以下の 2 つのタイプのトリガーについて説明します。
+Azure Cosmos DB では 2 種類のトリガーがサポートされます。
 
 ### <a name="pre-triggers"></a>プリトリガー
 
-Azure Cosmos DB には、Azure Cosmos DB 項目で操作を実行することによって呼び出されるトリガーが用意されています。 たとえば、項目を作成するときにプリトリガーを指定できます。 この場合、プリトリガーは、項目が作成される前に実行されます。 プリトリガーは入力パラメーターを持つことができません。 必要に応じて、要求オブジェクトを使用して、元の要求からのドキュメント本文を更新できます。 トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 トリガーが `TriggerOperation.Create` によって作成される場合、置換操作でのこのトリガーの使用は許可されません。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
+Azure Cosmos DB には、Azure Cosmos 項目に対して操作を実行することによって起動できるトリガーが用意されています。 たとえば、項目を作成するときにプリトリガーを指定できます。 この場合、プリトリガーは、項目が作成される前に実行されます。 プリトリガーは入力パラメーターを持つことができません。 必要に応じて、要求オブジェクトを使用して、元の要求からのドキュメント本文を更新できます。 トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 トリガーが `TriggerOperation.Create` によって作成される場合、置換操作でのこのトリガーの使用は許可されません。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
 
 ### <a name="post-triggers"></a>ポストトリガー
 
-プリトリガーと同様に、ポストトリガーは、Azure Cosmos DB 項目の操作に関連付けられ、入力パラメーターを必要としません。 ポストトリガーは、操作が完了した *後に* 実行され、クライアントに送信される応答メッセージにアクセスします。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
+プリトリガーと同様に、ポストトリガーも Azure Cosmos 項目に対する操作に関連付けられており、入力パラメーターは必要ありません。 ポストトリガーは、操作が完了した *後に* 実行され、クライアントに送信される応答メッセージにアクセスします。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
 
-## <a id="udfs"></a>ユーザー定義関数
+> [!NOTE]
+> 登録されたトリガーは、対応する操作 (作成/削除/置換/更新) が発生しても自動的には実行されません。 これらの操作を実行するときに明示的に呼び出す必要があります。 詳細については、[トリガーの実行方法](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)に関する記事を参照してください。
 
-ユーザー定義関数 (UDF) は、SQL API クエリ言語の構文を拡張してカスタム ビジネス ロジックを簡単に実装するために使用します。 これらは、クエリ内でのみ呼び出すことができます。 UDF は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF はセカンダリ レプリカで実行できます。 例については、「[ユーザー定義関数を記述する方法](how-to-write-stored-procedures-triggers-udfs.md#udfs)」の記事を参照してください。
+## <a name="user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数
 
-## <a id="jsqueryapi"></a>JavaScript 統合言語クエリ API
+[ユーザー定義関数](sql-query-udfs.md) (UDF) は、SQL API クエリ言語の構文を拡張してカスタム ビジネス ロジックを簡単に実装するために使用します。 これらは、クエリ内でのみ呼び出すことができます。 UDF は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF はセカンダリ レプリカで実行できます。 例については、「[ユーザー定義関数を記述する方法](how-to-write-stored-procedures-triggers-udfs.md#udfs)」の記事を参照してください。
+
+## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript 統合言語クエリ API
 
 SQL API クエリ構文でクエリを発行するほか、[サーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server) では、SQL の知識がなくても、JavaScript インターフェイスを使用してクエリを実行できます。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラミングできます。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB 内で効率的に実行されます。 JavaScript クエリ API サポートの詳細については、[JavaScript 言語統合クエリ API の操作](javascript-query-api.md)に関する記事を参照してください。 たとえば、[Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法](how-to-write-javascript-query-api.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB のストアド プロシージャ、トリガー、およびユーザー定義関数の記述方法および使用方法については、以下の記事を参照してください。
 

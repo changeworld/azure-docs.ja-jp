@@ -1,6 +1,6 @@
 ---
 title: Video Indexer で人物モデルをカスタマイズする - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、Video Indexer の人物モデルと、そのカスタマイズ方法の概要を示します。
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c74b913fc3ac35039d914fc97c9c438d2e4a3069
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3fabba98cb137975da749411ca9accb5a951742d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799442"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73838291"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>Video Indexer で人物モデルをカスタマイズする
 

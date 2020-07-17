@@ -1,20 +1,16 @@
 ---
 title: Azure Resource Graph の概要
-description: Azure Resource Graph サービスによってリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 05/06/2019
+description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
+ms.date: 03/02/2020
 ms.topic: overview
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162076"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381528"
 ---
-# <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
+# <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
 Azure Resource Graph は Azure 内のサービスであり、Azure Resource Management を拡張するよう設計されています。環境を効果的に管理できるように、特定のセットのサブスクリプションにわたって大規模にクエリを実行する機能を備えた、高効率および高性能のリソース探索を提供します。 これらのクエリでは、次の機能を提供します。
 
@@ -27,13 +23,15 @@ Azure Resource Graph は Azure 内のサービスであり、Azure Resource Mana
 
 > [!NOTE]
 > Azure Resource Graph は、Azure portal の検索バー、新しい "すべてのリソース" 参照エクスペリエンス、Azure Policy の[変更履歴](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> の "_差分表示_" を強化します。大規模な環境を管理するお客様をサポートするために設計されています。
+> の "_差分表示_" を強化します。 大規模な環境を管理するお客様をサポートするために設計されています。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph が Azure Resource Manager をどのように補完するか
 
 Azure Resource Manager では現在、基本的なリソース フィールドに対するクエリがサポートされています。具体的には、リソース名、ID、種類、リソース グループ、サブスクリプション、および場所です。 Resource Manager には、一度に 1 つのリソースについて詳細なプロパティを得るために個別のリソース プロバイダーを呼び出す機能も用意されています。
 
-Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/complete-mode-deletion.md)に関する表で "**はい**" を探してください。
+Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類の一覧については、[テーブルとリソースの種類のリファレンス](./reference/supported-tables-resources.md)に関するページを確認してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
 
 Azure Resource Graph では、次のことができます。
 
@@ -45,11 +43,14 @@ Azure Resource Graph では、次のことができます。
 Azure リソースが更新されると、Resource Manager から Resource Graph に変更の通知が届きます。
 その後、Resource Graph によってそのデータベースが更新されます。 Resource Graph では、定期的な "_フル スキャン_" も行われます。 このスキャンにより、通知が届かなかった場合、またはリソースが Resource Manager の外部で更新されたときにも、Resource Graph が最新の状態に維持されます。
 
+> [!NOTE]
+> Resource Graph では、各リソースプロバイダーの最新の非プレビュー API に対して `GET` を使用して、プロパティと値を収集します。 その結果、想定されるプロパティを取得できない場合があります。 場合によっては、使用される API バージョンがオーバーライドされ、最新のプロパティまたは広く使用されているプロパティが結果に提供されます。 ご使用の環境での完全な一覧については、[各リソースの種類の API バージョンを表示する](./samples/advanced.md#apiversion)方法に関するサンプルを参照してください。
+
 ## <a name="the-query-language"></a>クエリ言語
 
 これで Azure Resource Graph についてはよく理解したので、クエリを作成する方法に進みましょう。
 
-Azure Resource Graph のクエリ言語が Azure Data Explorer で使用される [Kusto クエリ言語](../../data-explorer/data-explorer-overview.md)に基づくことを理解することが重要です。
+Azure Resource Graph のクエリ言語が Azure Data Explorer で使用される [Kusto クエリ言語](/azure/data-explorer/data-explorer-overview)に基づくことを理解することが重要です。
 
 最初に、Azure Resource Graph と共に使用することができる操作および機能の詳細については、[Resource Graph のクエリ言語](./concepts/query-language.md)を参照してください。
 リソースをブラウズするためには、[リソースを探索する](./concepts/explore-resources.md)を参照してください。
@@ -61,6 +62,9 @@ Resource Graph を使用するためには、最低限、照会したいリソ�
 > [!NOTE]
 > Resource Graph では、プリンシパルがログイン中に利用できるサブスクリプションが使用されます。 アクティブなセッション中に追加された新しいサブスクリプションのリソースを表示するには、プリンシパルがコンテキストを更新する必要があります。 ログアウトしてから再度ログインすると、このアクションが自動的に実行されます。
 
+Azure CLI と Azure PowerShell はユーザーがアクセスできるサブスクリプションを使用します。 REST API を直接使用すると、サブスクリプションの一覧がユーザーごとに提供されます。 一覧内のいずれかのサブスクリプションにユーザーがアクセスできる場合は、ユーザーがアクセス権を持っているサブスクリプションに対するクエリ結果が返されます。 この動作は、[Resource Groups - 一覧](/rest/api/resources/resourcegroups/list)を呼び出す場合と同じです \- アクセス権を持っているリソース グループが取得されますが、この結果が部分的である可能性は示されません。
+ユーザーに適切な権限があるサブスクリプションがサブスクリプション一覧にない場合の応答は、_403_ (禁止) です。
+
 ## <a name="throttling"></a>Throttling
 
 無料サービスとして、すべてのお客様に最適なエクスペリエンスと応答時間が提供されるよう、Resource Graph へのクエリはスロットルされます。 お客様の組織が大規模かつ頻繁なクエリに Resource Graph API を使用したい場合、[Resource Graph ポータル ページ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)からポータルの "フィードバック" を使用してください。
@@ -71,15 +75,20 @@ Resource Graph では、ユーザー レベルでクエリのスロットルが�
 - `x-ms-user-quota-remaining` (int):ユーザーの残りリソース クォータ。 この値はクエリ カウントにマップされます。
 - `x-ms-user-quota-resets-after` (hh:mm:ss):ユーザーのクォータ消費量がリセットされるまでの期間
 
-詳細については、「[Resource Manager の要求のスロットル](../../azure-resource-manager/resource-manager-request-limits.md)」を参照してください。
+詳細については、[調整された要求に関するガイダンス](./concepts/guidance-for-throttled-requests.md)のページを参照してください。
 
 ## <a name="running-your-first-query"></a>最初のクエリを送信する
 
-Resource Graph は、Azure CLI、Azure PowerShell、および Azure SDK for .NET をサポートします。 どの言語も、クエリの構造は同じです。 [Azure CLI ](first-query-azurecli.md#add-the-resource-graph-extension)および[ Azure PowerShell ](first-query-powershell.md#add-the-resource-graph-module)において、Resource Graph を有効にする方法について説明します。
+Azure Resource Graph エクスプローラーは Azure portal に組み込まれており、Resource Graph クエリを Azure portal 内から直接実行できます。 その結果を動的なグラフとしてピン留めすれば、ポータルのワークフローから動的な情報をリアルタイムで得ることができます。 詳細については、[Azure Resource Graph エクスプローラーを使った初めてのクエリ](first-query-portal.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for .NET などをサポートします。 どの言語も、クエリの構造は同じです。 以下、Resource Graph を有効にする方法を手段ごとに示します。
 
+- [Azure portal および Resource Graph エクスプローラー](first-query-portal.md) 
+- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
 - [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
 - [Azure PowerShell](first-query-powershell.md) を使用して最初のクエリを実行します。
-- [初歩的なクエリ](./samples/starter.md)から開始します。
-- [高度なクエリ](./samples/advanced.md)について理解を深めます。

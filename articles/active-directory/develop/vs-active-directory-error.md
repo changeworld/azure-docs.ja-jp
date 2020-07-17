@@ -1,30 +1,27 @@
 ---
-title: Azure Active Directory の接続済みサービスでエラーを診断する方法
+title: Azure AD の接続済みサービスでエラーを診断する (Visual Studio)
 description: Active Directory の接続済みサービスで、サポートされていない認証の種類が検出された
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6f151251d76965cf1bc86216eac15a08f1adbc6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679110"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80886094"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
-Azure Active Director 接続済みサービスが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。
+Azure Active Director 接続済みサービスを使って以前の認証コードが検出されたときに、互換性のない認証の種類が検出されました。
 
-プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを構築する必要があります。  このエラーが発生したときに、以前の認証コードがない場合は、再構築して、もう一度やり直してください。
+プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを再構築する必要があります。 このエラーが発生したときに、以前の認証コードがない場合は、再構築して、もう一度やり直してください。
 
 ## <a name="project-types"></a>プロジェクトの種類
 
@@ -51,11 +48,11 @@ MVC プロジェクトの場合、接続済みサービスは、以前にサー�
 
 最後に、接続済みサービスは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。 このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。 接続済みサービスは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
 
-* Windows 認証
+* [Windows 認証]
 * 個々のユーザー アカウント
 * 組織アカウント
 
-MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `web.config` ファイルで `authentication` 要素を探します。
+MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `authentication` ファイルで `web.config` 要素を探します。
 
 ```xml
 <configuration>
@@ -65,7 +62,7 @@ MVC プロジェクトで Windows 認証を検出するために、接続済み�
 </configuration>
 ```
 
-Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `.csproj` ファイルで `IISExpressWindowsAuthentication` 要素を探します。
+Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `IISExpressWindowsAuthentication` ファイルで `.csproj` 要素を探します。
 
 ```xml
 <Project>

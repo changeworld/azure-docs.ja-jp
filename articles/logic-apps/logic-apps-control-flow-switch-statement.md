@@ -1,20 +1,17 @@
 ---
-title: switch ステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+title: switch ステートメントをワークフローに追加する
 description: Azure Logic Apps の特定の値に基づいてワークフロー アクションを制御する switch ステートメントを作成する方法です
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232445"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74793236"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps の特定の値に基づいてワークフロー アクションを実行する switch ステートメントを作成する
 
@@ -43,9 +40,9 @@ ms.locfileid: "50232445"
 
 ## <a name="add-switch-statement"></a>switch ステートメントを追加する
 
-1. この例では、サンプル ワークフローの末尾に switch ステートメントを追加します。 最後の手順の後ろで、**[新しいステップ]** を選択します。
+1. この例では、サンプル ワークフローの末尾に switch ステートメントを追加します。 最後の手順の後ろで、 **[新しいステップ]** を選択します。
 
-   ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
+   ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「switch」と入力します。 **[スイッチ - 制御]** アクションを選択します。
 
@@ -60,24 +57,24 @@ ms.locfileid: "50232445"
 
    !["SelectedOption" を選択する](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. 承認者が `Approve` または `Reject` を選択したケースを処理するために、**[ケース]** と **[既定]** の間にもう 1 つのケースを追加します。 
+1. 承認者が `Approve` または `Reject` を選択したケースを処理するために、 **[ケース]** と **[既定]** の間にもう 1 つのケースを追加します。 
 
    ![別のケースを追加する](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
 1. 次のアクションを対応するケースに追加します。
 
-   | ケース番号 | **SelectedOption** | Action |
+   | ケース番号 | **SelectedOption** | アクション |
    |--------|--------------------|--------|
    | ケース 1 | **Approve** | 承認者が **[Approve]** を選択した場合のみ、RSS 項目の詳細を送信するために Outlook **[Send an email]\(電子メールの送信\)** アクションを追加します。 |
    | ケース 2 | **Reject** | RSS 項目が拒否されたことを他の承認者に通知するために、Outlook **[Send an email]\(電子メールの送信\)** アクションを追加します。 |
-   | 既定値 | なし | 対処不要です。 この例では、**[SelectedOption]\(SelectedOption\)** に 2 つしかオプションがないため、**[既定]** ケースは空です。 |
+   | Default | なし | 対処不要です。 この例では、 **[SelectedOption]\(SelectedOption\)** に 2 つしかオプションがないため、 **[既定]** ケースは空です。 |
    |||
 
    ![完了した switch ステートメント](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
-1. ロジック アプリを保存し、 
+1. ロジック アプリを保存します。 
 
-   この例を手動でテストするには、ロジック アプリが新しい RSS 項目を見つけて承認の電子メールを送信するまで、**[実行]** を選択します。 
+   この例を手動でテストするには、ロジック アプリが新しい RSS 項目を見つけて承認の電子メールを送信するまで、 **[実行]** を選択します。 
    **[Approve]** を選択して結果を確認します。
 
 ## <a name="json-definition"></a>JSON の定義
@@ -127,7 +124,7 @@ switch ステートメントを使用してロジック アプリを作成しま
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [ステップを実行して繰り返す (ループ)](../logic-apps/logic-apps-control-flow-loops.md)

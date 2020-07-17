@@ -1,145 +1,171 @@
 ---
-title: Azure Migrate でマシンの依存関係を使用してマシンをグループ化する | Microsoft Docs
-description: Azure Migrate サービスでマシンの依存関係を使用してアセスメントを作成する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: af47678b19209936aed86c132a8a3f400c3a7e8f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+title: Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する
+description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
+ms.topic: how-to
+ms.date: 2/24/2020
+ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795034"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996892"
 ---
-# <a name="group-machines-using-machine-dependency-mapping"></a>マシンの依存関係マッピングを使用したマシンのグループ化
+# <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
-この記事では、[Azure Migrate](migrate-overview.md) でのアセスメントのために、マシンの依存関係を視覚化してマシンのグループを作成する方法について説明します。 アセスメントを実行する前に、マシンの依存関係を照合して信頼度レベルの高い VM のグループを評価する場合、通常はこの方法を使用します。 依存関係の視覚化により、Azure への移行を効率よく計画できます。 こうすることで、Azure に移行する際に、何も残すことがなく、突然障害が発生することもなくなります。 同時に移行する必要のある、相互依存しているシステムをすべて検出し、稼働中のシステムがまだユーザーにサービス提供しているのか、あるいは移行せず使用中止する対象となるのかを特定することができます。
+この記事では、Azure Migrate:Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
+
+## <a name="before-you-start"></a>開始する前に
+
+- エージェントベースの依存関係の分析について[理解します](concepts-dependency-visualization.md#agent-based-analysis)。
+- [VMware VM](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)、[物理サーバー](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)、[Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements) のエージェントベースの依存関係の視覚化を設定するための前提条件とサポート要件を確認します。
+- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- プロジェクトを既に作成している場合は、Azure Migrate Server:Assessment ツールを[追加](how-to-assess.md)済みであることを確認します。
+- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware](how-to-set-up-appliance-vmware.md)、[Hyper-V](how-to-set-up-appliance-hyper-v.md)、または[物理サーバー](how-to-set-up-appliance-physical.md)用のアプライアンスを設定する方法を理解します。 このアプライアンスにより、オンプレミスのマシンが検出され、Azure Migrate:Server Assessment にメタデータとパフォーマンス データが送信されます。
+- 依存関係の視覚化を利用するには、[Log Analytics ワークスペース](../azure-monitor/platform/manage-access.md)を Azure Migrate プロジェクトに関連付けます。
+    - Azure Migrate アプライアンスを設定して Azure Migrate プロジェクトでマシンが検出された後にのみ、ワークスペースをアタッチできます。
+    - ワークスペースが、Azure Migrate プロジェクトを含むサブスクリプション内にあることを確認します。
+    - ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。
+    - ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)リージョンに存在する必要があります。
+    - 新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けることができます。
+    - ワークスペースのアタッチは、マシンの依存関係の視覚化を初めて設定したときに行います。 Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
+    - Log Analytics では、Azure Migrate に関連付けられたワークスペースは、移行プロジェクト キーとプロジェクト名のタグが付けられます。
+
+## <a name="associate-a-workspace"></a>ワークスペースを関連付ける
+
+1. 評価対象のマシンを検出したら、 **[サーバー]**  > **Azure Migrate:Server Assessment** で、 **[概要]** をクリックします。  
+2. **Azure Migrate:Server Assessment** で、 **[Essentials]** をクリックします。
+3. **[OMS ワークスペース]** で、 **[構成が必要]** をクリックします。
+
+     ![Log Analytics ワークスペースを構成する](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
+
+4. **[OMS ワークスペースの構成]** で、新しいワークスペースを作成するか、または既存のものを使用するかを指定します。
+    - 移行プロジェクト サブスクリプションのすべてのワークスペースから、既存のワークスペースを選択できます。
+    - ワークスペースを関連付けるには、ワークスペースに対する閲覧者アクセス権が必要です。
+5. 新しいワークスペースを作成する場合は、その場所を選択します。
+
+    ![新しいワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
+
+
+## <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
+
+分析する各マシンにエージェントをインストールします。
 
 > [!NOTE]
-> 依存関係可視化機能は、Azure Government では使用できません。
+> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合ガイダンスに[従ってください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。
 
-## <a name="prepare-for-dependency-visualization"></a>依存関係視覚化を準備する
-Azure Migrate では、マシンの依存関係を視覚化できるように Azure Monitor ログで Service Map ソリューションを活用します。
+1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
+2. 依存関係の視覚化を利用して分析する各マシンについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。
+3. **[依存関係]** ページで、Windows 用または Linux 用の MMA と依存関係エージェントをダウンロードします。
+4. **[MMA エージェントの構成]\(Configure MMA agent\)** で、ワークスペース ID とキーをコピーします。 これらは、MMA エージェントをインストールするときに必要です。
 
-### <a name="associate-a-log-analytics-workspace"></a>Log Analytics ワークスペースを関連付ける
-依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。 Migrate プロジェクトが作成されている同じサブスクリプションのみにワークステーションを作成する、またはアタッチすることができます。
+    ![エージェントをインストールする](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
-- プロジェクトに Log Analytics ワークスペースをアタッチするには、**[概要]** からプロジェクトの **[基本]** セクションに移動し、**[構成が必要]** をクリックします
 
-    ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
+## <a name="install-the-mma"></a>MMA をインストールする
 
-- ワークスペースを関連付けるときに、新しいワークスペースを作成するか、既存のワークスペースをアタッチするかを選択できます。
-  - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
-  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるのは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)リージョンで作成されたワークスペースのみであることに注意してください。 ワークスペースをアタッチできるようにするには、ワークスペースへの "読み取り" アクセスがあることを確認してください。
+分析する Windows または Linux の各マシンに MMA をインストールします。
 
-> [!NOTE]
-> Migration プロジェクトに関連付けられているワークスペースは変更できません。
-
-### <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
-ワークステーションを構成したら、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[Log Analytics ゲートウェイ](../azure-monitor/platform/gateway.md)をダウンロードしてインストールする必要があります。
-
-1. **[概要]** で **[管理]** > **[マシン]** をクリックし、必要なマシンを選択します。
-2. **[依存関係]** 列で、**[エージェントのインストール]** をクリックします。
-3. **[依存関係]** ページで、評価する各 VM に Microsoft Monitoring Agent (MMA) と依存関係エージェントをダウンロードしてインストールします。
-4. ワークスペース ID とキーをコピーします。 これらは、MMA をオンプレミスのマシンにインストールするときに必要になります。
-
-> [!NOTE]
-> エージェントのインストールを自動化するには、System Center Configuration Manager などの任意のデプロイ ツールを使用するか、または Azure Migrate 用のエージェント デプロイ ソリューションを持つマイクロソフト パートナー ツールの [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) を使用します。
-
-### <a name="install-the-mma"></a>MMA をインストールする
-
-#### <a name="install-the-agent-on-a-windows-machine"></a>Windows マシンにエージェントをインストールする
+### <a name="install-mma-on-a-windows-machine"></a>Windows マシンに MMA をインストールする
 
 Windows マシンにエージェントをインストールするには、次の手順に従います。
 
 1. ダウンロードしたエージェントをダブルクリックします。
-2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
-3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、**[次へ]** をクリックします。
-4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。
+2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、 **[同意する]** をクリックしてライセンスに同意します。
+3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、 **[次へ]** をクリックします。
+4. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
-エージェントは、コマンド ラインからインストールするか、System Center Configuration Manager などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
+エージェントは、コマンド ラインからインストールするか、Configuration Manager または [Intigua](https://www.intigua.com/intigua-for-azure-migration) などの自動化された方法を使用してインストールすることができます。
+- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)のページを参照してください。
+- この[スクリプト](https://go.microsoft.com/fwlink/?linkid=2104394)を使用して、MMA エージェントをインストールすることもできます。
+- MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)をご覧ください。
 
-#### <a name="install-the-agent-on-a-linux-machine"></a>Linux マシンにエージェントをインストールする
+### <a name="install-mma-on-a-linux-machine"></a>Linux マシンに MMA をインストールする
 
-Linux マシンにエージェントをインストールするには、次の手順に従います。
+Linux マシンに MMA をインストールするには、以下を実行します。
 
 1. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
 2. --install 引数を使用してバンドルをインストールします。
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)をご覧ください。
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems)をご覧ください。 
 
-#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>SCOM によって監視されているマシンにエージェントをインストールする
+## <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
-System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は、SCOM MMA を利用して必要な依存関係データを収集する SCOM と統合されています。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、依存関係エージェントをインストールする必要がある点に注意してください。
-
-
-### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
 2. Linux マシンに依存関係エージェントをインストールするには、次のコマンドを使用してルートとしてインストールします。
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples)をご覧ください。
+- 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems)をご覧ください。
 
-スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)をご覧ください。
+
+## <a name="create-a-group-using-dependency-visualization"></a>依存関係の視覚化を使用してグループを作成する
+
+ここで評価用のグループを作成します。 
 
 
-## <a name="create-a-group"></a>グループの作成
+> [!NOTE]
+> 依存関係を視覚化するグループには、10 個を超えるマシンを含めないでください。 マシンが 10 台を超える場合は、小さいグループに分割します。
 
-1. エージェントをインストールしたら、ポータルに移動し、**[管理]** > **[マシン]** をクリックします。
-2. エージェントをインストールしたマシンを検索します。
-3. マシンの **[依存関係]** 列に **[依存関係の表示]** と表示されます。 この列をクリックすると、マシンの依存関係が表示されます。
-4. マシンの依存関係マップには次の詳細情報が表示されます。
-    - マシンに対する受信 (クライアント) と送信 (サーバー) の TCP 接続
-        - MMA と依存関係エージェントがインストールされていない依存マシンは、ポート番号によってグループ化されます。
-        - MMA と依存関係エージェントがインストールされている依存マシンは、別のボックスに表示されます。
-    - マシンで実行しているプロセス。各マシンのボックスを展開してプロセスを表示できます。
-    - 各マシンの完全修飾ドメイン名、オペレーティング システム、MAC アドレスなどのプロパティ。各マシンのボックスをクリックして、これらの詳細を表示できます。
+1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
+2. **[依存関係]** 列で、確認するマシンごとに **[依存関係の表示]** をクリックします。
+3. 依存関係マップでは、以下を確認できます。
+    - マシンとの間の受信 (クライアント) と送信 (サーバー) の TCP 接続。
+    - 依存関係エージェントがインストールされていない依存するマシンは、ポート番号でグループ化されます。
+    - 依存関係エージェントがインストールされている依存するマシンは、別のボックスとして表示されます。
+    - マシン内で実行されているプロセス。 各マシンのボックスを展開すると、プロセスが表示されます。
+    - マシンのプロパティ (FQDN、オペレーティング システム、MAC アドレスなど)。 各マシンのボックスをクリックすると、詳細が表示されます。
 
-      ![マシンの依存関係の表示](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
+4. 時間範囲のラベルで期間をクリックすると、さまざまな期間の依存関係を表示できます。
+    - 既定では、範囲は 1 時間です。 
+    - 時間の範囲を変更することも、開始日と終了日および期間を指定することもできます。
+    - 時間の範囲は最大 1 時間です。 それより長い範囲が必要な場合は、Azure Monitor を使って、長い期間に対して依存データのクエリを実行します。
 
-4. 時間範囲のラベルで期間をクリックすると、さまざまな期間の依存関係を表示できます。 既定では、範囲は 1 時間です。 時間の範囲を変更することも、開始日と終了日および期間を指定することもできます。
+5. 一緒にグループ化する依存するマシンを特定したら、マップ上で Ctrl キーを押しながらクリックして複数のマシンを選択し、 **[Group machines]\(マシンのグループ化\)** をクリックします。
+6. グループ名を指定します。
+7. 依存するマシンが Azure Migrate によって検出されていることを確認します。
 
-   > [!NOTE]
-   >    現在、依存関係の視覚化 UI は、1 時間を超える時間の範囲の選択をサポートしていません。 長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)には、Azure Monitor ログを使用してください。
+    - 依存するマシンが Azure Migrate:Server Assessment によって検出されない場合は、それをグループに追加することはできません。
+    - マシンを追加するには、検出をもう一度実行して、マシンが検出されることを確認します。
 
-5. グループ化する依存関係のあるマシンを特定したら、マップ上で Ctrl キーを押しながらクリックして複数のマシンを選択し、**[グループ マシン]** をクリックします。
-6. グループ名を指定します。 依存するマシンが Azure Migrate によって検出されていることを確認します。
-
-    > [!NOTE]
-    > 依存するマシンが Azure Migrate によって検出されない場合は、マシンをグループに追加できません。 そのようなマシンをグループに追加するには、vCenter Server で正しい範囲に対して検出プロセスを再び実行して、マシンが Azure Migrate によって検出されることを確認する必要があります。  
-
-7. このグループの評価を作成する場合は、グループの新しい評価を作成するためのチェックボックスをオンにします。
+8. このグループの評価を作成する場合は、グループの新しい評価を作成するためのチェックボックスをオンにします。
 8. **[OK]** をクリックしてグループを保存します。
 
-グループが作成されたら、グループのすべてのマシンにエージェントをインストールし、グループ全体の依存関係を視覚化してグループを絞り込むことをお勧めします。
+グループを作成した後は、グループ内のすべてのマシンにエージェントをインストールし、グループ全体の依存関係を視覚化することをお勧めします。
 
-## <a name="query-dependency-data-from-azure-monitor-logs"></a>Azure Monitor ログから依存関係データにクエリを実行する
+## <a name="query-dependency-data-in-azure-monitor"></a>Azure Monitor で依存関係データのクエリを実行する
 
-Service Map によってキャプチャされた依存関係データは、Azure Migrate プロジェクトに関連付けられている Log Analytics ワークスペースでのクエリに使用できます。 Azure Monitor ログ内でクエリを実行する Service Map データ テーブルの[詳細を参照してください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)。 
+Azure Migrate プロジェクトに関連付けられた Log Analytics ワークスペースで、Service Map によってキャプチャされた依存関係データのクエリを実行できます。 Log Analytics は、Azure Monitor ログ クエリの記述と実行に使用されます。
 
-Kusto クエリを実行するには:
+- Log Analytics で Service Map データを検索する[方法の詳細情報](../azure-monitor/insights/service-map.md#log-analytics-records)を確認します。
+- [Log Analytics](../azure-monitor/log-query/get-started-portal.md) でのクエリの記述の[概要を確認](../azure-monitor/log-query/get-started-queries.md)します。
 
-1. エージェントをインストールしたら、ポータルに移動し、**[概要]** をクリックします。
-2. **[概要]** で、プロジェクトの **[基本]** セクションに移動し、**[OMS ワークスペース]** の横にあるワークスペース名をクリックします。
-3. Log Analytics ワークスペース ページで **[全般]** > 、**[ログ]** の順にクリックします。
-4. Azure Monitor ログを使用して依存関係データを収集するためのクエリを作成します。 次のセクションでサンプル クエリを見つけます。
-5. [実行] をクリックしてクエリを実行します。 
+次のようにして依存関係データのクエリを実行します。
 
-Kusto クエリの作成方法の[詳細を参照してください](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。 
+1. エージェントをインストールしたら、ポータルに移動し、 **[概要]** をクリックします。
+2. **Azure Migrate:Server Assessment** で、 **[概要]** をクリックします。 下矢印をクリックして **[要点]\(Essentials\)** を展開します。
+3. **[OMS ワークスペース]** で、ワークスペース名をクリックします。
+3. Log Analytics ワークスペース ページで、 **[全般]** 、 **[ログ]** の順にクリックします。
+4. クエリを作成し、 **[実行]** をクリックします。
 
-### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor ログのサンプル クエリ
+### <a name="sample-queries"></a>サンプル クエリ
 
-依存関係データを抽出するために使用できるサンプル クエリは次のとおりです。 クエリを変更して、目的のデータ ポイントを抽出できます。 依存関係データ レコード内のフィールドの完全なリストは、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)で入手できます。 その他のサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
+以下に、依存関係データを抽出するために使用できるサンプル クエリをいくつか示します。
 
-#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>一連のマシンの受信接続を集計する
+- クエリを変更して、目的のデータ ポイントを抽出できます。
+- 依存関係データ レコードの完全な一覧を[確認](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)します。
+- 追加のサンプル クエリを[確認](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)します。
 
-接続メトリック用のテーブル内のレコード (VMConnection) は、個々の物理ネットワーク接続を表していないことに注意してください。 複数の物理ネットワーク接続は、論理接続にグループ化されます。 物理ネットワーク接続データがどのように VMConnection 内の単一の論理レコードに集約されるかについては、[詳細を確認](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)してください。 
+#### <a name="sample-review-inbound-connections"></a>サンプル:受信接続を確認する
+
+一連の VM の受信接続を確認します。
+
+- 接続メトリック用のテーブル (VMConnection) 内にあるレコードは、個々の物理ネットワーク接続を表すものではありません。
+- 複数の物理ネットワーク接続は、論理接続にグループ化されます。
+- 物理ネットワーク接続データが VMConnection 内でどのように集約されるかについての[詳細情報](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)を確認してください。
 
 ```
 // the machines of interest
@@ -147,15 +173,17 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>一連のマシン間での受信接続で送受信されたデータの量を集計する
+#### <a name="sample-summarize-sent-and-received-data"></a>サンプル:送受信したデータを集計する
+
+このサンプルは、一連のマシン間での受信接続で送受信されたデータの量を集計します。
 
 ```
 // the machines of interest
@@ -163,16 +191,16 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)、よく寄せられる質問を確認します。
-- グループの依存関係を視覚化してグループを絞り込む[方法を確認](how-to-create-group-dependencies.md)をします。
-- 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。
+グループの[評価を作成](how-to-create-assessment.md)します。
+
+

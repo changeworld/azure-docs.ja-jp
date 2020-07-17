@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 05/22/2019
+ms.topic: article
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150455"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75438626"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -53,7 +53,7 @@ A. Data Box の原容量は 100 TB であり、使用可能な容量は 80 TB �
 A.  Data Box を利用できる国や地域については、「[利用可能なリージョン](data-box-overview.md#region-availability)」をご覧ください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. Data Box では、どのリージョンでデータを保存できますか?
-A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国でサポートされています。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
+A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国、日本、オーストラリア、およびカナダでサポートされています。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. Data Box に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box に関して何か問題が発生した場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)にお問い合わせください。
@@ -141,7 +141,7 @@ A. Azure portal では、Data Box の注文に移動し、**概要**に移動で
 A.  Data Box では、80 TB のストレージ容量を使用できます。 データ サイズが 40 TB から 80 TB の場合、1 台の Data Box デバイスを使用できます。 500 TB までのより大きなデータ サイズの場合、複数の Data Box デバイスを注文できます。 データ サイズが 500 TB を超える場合は、Data Box Heavy にサインアップしてください。  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>Q. Data Box でサポートされるブロック BLOB とページ BLOB の最大サイズを教えてください。 
-A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/common/storage-scalability-targets.md)」をご覧ください。 
+A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)」を参照してください。
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>Q. 移動中のデータのセキュリティは、どのようにして確保されているのですか? 
 A. 移動中に Data Box が確実に保護されるように、いくつかのセキュリティ機能が実装されています。 これらの中には、開封明示シール、ハードウェアとソフトウェアの改ざん検出、デバイスのロック解除パスワードなどがあります。 詳細については、「[Azure Data Box のセキュリティとデータ保護](data-box-security.md)」を参照してください。
@@ -159,7 +159,7 @@ A.  コピー処理は、次の方法で高速化できます。
 - データ コピーのストリームを複数使用する。 たとえば、Robocopy でマルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。
 - 複数のセッションを使用する。
 - ネットワーク共有 (ネットワーク速度によって制限される可能性のある場所) 経由でコピーする代わりに、Data Box が接続されているコンピューターにデータがローカルに存在していることを確認してください。
-- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop FIO ツール](https://bluestop.org/fio/)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。
+- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop FIO ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -170,7 +170,7 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. Data Box で複数のストレージ アカウントを使用することはできますか?
-A.  はい。 Data Box では、最大 10 件のストレージ アカウント、汎用、クラシック、または BLOB ストレージがサポートされています。 ホット BLOB とクール BLOB の両方がサポートされています。 GA リリース段階では、Azure パブリック クラウドにおいて、米国の全地域、西ヨーロッパ、北ヨーロッパ、フランス、英国でのストレージ アカウントがサポートされています。
+A.  はい。 Data Box では、最大 10 件のストレージ アカウント、汎用、クラシック、または BLOB ストレージがサポートされています。 ホット BLOB とクール BLOB の両方がサポートされています。 
 
 
 ## <a name="ship-device"></a>デバイスの配送
@@ -180,11 +180,25 @@ A.  はい。 Data Box では、最大 10 件のストレージ アカウント�
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Q. 自分のデバイスが届けられましたが、破損しているようです。 どうすればよいですか。
 A. デバイスが到着時に破損していたり、改ざんの兆候がある場合は、デバイスを使用しないでください。 [Microsoft サポートに連絡して](data-box-disk-contact-microsoft-support.md)、早急にデバイスを返却してください。 デバイスを交換する場合は、新しい Data Box の注文を作成することもできます。 この場合、交換用のデバイスには請求されません。
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>Q. 自身の運送業者を使って Data Box を配送できますか?
-A. Data Box サービスでは、Microsoft が Azure データセンターとの間の配送を扱います。 自身の運送業者を使用する場合は、Azure インポート/エクスポート サービスを使用できます。 詳細については、「[Azure インポート/エクスポート サービスの概要](../storage/common/storage-import-export-service.md)」を参照してください。
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. Data Box の注文を自分で受け取ることはできますか? 自分で選択した運送業者を利用して Data Box を返送できますか?
+A. はい。 また、Microsoft では、US Gov リージョンでのみ、自己管理型の発送に対応しています。 Data Box を注文するときに、自己管理型の発送オプションを選択できます。 Data Box デバイスを受け取るには、次の手順のようにします。
+    
+1. 発注後、注文が処理されて Data Box が準備されます。 受け取りの準備ができたことを知らせるメールが届きます。 
+2. 注文を受け取る準備ができたら、Azure portal 上で対象の注文に移動し、 **[概要]** ブレードに移動します。 
+3. Azure portal にコードを含む通知が表示されます。 [Azure Data Box オペレーション チーム](mailto:adbops@microsoft.com)にメールを送信し、コードを知らせます。 チームから場所と受け取り日時が連絡されます。 電子メールの通知を受信した後、5 営業日以内にチームに電話する必要があります。
+
+データのコピーが完了したら、次の手順に従ってデバイスを返送します。
+
+1. データのコピーがエラーなしで完了したら、 **[配送の準備]** を実行します。 準備が完了すると、デバイスのローカル Web UI にコードが表示されます。 そのコードをコピーして保存します。
+2. デバイスの電源をオフにして、接続ケーブルを取り外します。
+3. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+4. [Azure Data Box オペレーション チーム](mailto:adbops@microsoft.com)にメールを送信し、前に保存したコードを知らせます。 いつどこにデバイスを持ち込むかについての情報が提供されます。
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. Data Box デバイスは配送中に国境を越えますか?
-A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。
+A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。 これは、Data Box デバイスと Data Box Heavy デバイスの両方に適用されます。
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Q. 米国東部で Data Box を注文しましたが、受け取ったデバイスは米国西部にある場所から出荷されていました。 デバイスはどこに戻す必要がありますか?
+A. お客様のため、できるだけ早い Data Box デバイスの入手を試みています。 お客様のストレージ アカウントの場所に最も近いデータセンターから出荷することを優先していますが、デバイスは、使用可能な在庫がある、あらゆる Azure データセンターから発送されます。 Data Box は配送先住所ラベルに表示されたものと同じ出荷場所に返す必要があります。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. E インク表示が返品ラベルを示していません。 どうすればよいですか。
 A. E インク表示が返品ラベルを示していない場合は、次の手順を実行します。
@@ -250,7 +264,7 @@ A.  運送業者の追跡ログは、Data Box の注文履歴に取り込まれ�
 A.  いいえ。 現在のところ、Azure データセンターでは、顧客または UPS 以外の運送業者からの Data Box の配送を受け付けていません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box のシステム要件](data-box-system-requirements.md)を確認する。
 - [Data Box の制限事項](data-box-limits.md)を理解する。

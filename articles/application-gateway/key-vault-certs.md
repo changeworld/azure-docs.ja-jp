@@ -1,56 +1,77 @@
 ---
-title: Key Vault 証明書での SSL 終了
-description: HTTPS が有効なリスナーにアタッチされているサーバー証明書の Key Vault と Azure Application Gateway を統合する方法について説明します。
+title: Azure Key Vault 証明書を使用した TLS 終端
+description: HTTPS 対応リスナーにアタッチされているサーバー証明書の Key Vault と Azure Application Gateway を統合する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 37707d56caabf0ae8b0020eb8714245a27501ea6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696492"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743708"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>Key Vault 証明書での SSL 終了
+# <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 証明書を使用した TLS 終端
 
-[Azure Key Vault](../key-vault/key-vault-whatis.md) はプラットフォームで管理されるシークレット ストアです。シークレット、キー、SSL 証明書を保護するために使用できます。 Application Gateway では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) をサポートします。 このサポートは、Application Gateway の v2 SKU に制限されます。
+[Azure Key Vault](../key-vault/general/overview.md) はプラットフォームマネージド シークレット ストアです。シークレット、キー、TLS または SSL 証明書を保護するために使用できます。 Azure Application Gateway では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 このサポートは、Application Gateway の v2 SKU に制限されます。
 
-> [!IMPORTANT]
-> Application Gateway と Key Vault の統合は、現在パブリック プレビューの段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+Key Vault 統合では、TLS または SSL 終端に次の 2 つのモデルが用意されています。
 
-このパブリック プレビューでの SSL 終了には次の 2 つのモデルがあります。
+- リスナーにアタッチされている TLS または SSL 証明書を明示的に指定できます。 このモデルは、TLS 終端のために TLS または SSL 証明書を Application Gateway に渡す従来の方法を示しています。
+- HTTPS 対応リスナーの作成時に、必要に応じて、既存の Key Vault 証明書またはシークレットへの参照を指定できます。
 
-- リスナーにアタッチされている SSL 証明書を明示的に提供できます。 これは、SSL 終了のために SSL 証明書を Application Gateway に渡す従来のモデルです。
-- HTTPS が有効なリスナーの作成時に、必要に応じて、既存の Key Vault 証明書またはシークレットへの参照を指定できます。
+Application Gateway と Key Vault の統合には、次のようにさまざまな利点があります。
 
-Key Vault の統合には、次のような多くのメリットがあります。
+- セキュリティの強化 (TLS または SSL 証明書がアプリケーション開発チームによって直接処理されないため)。 統合により、別のセキュリティ チームが以下のこと実行できます。
+  * アプリケーション ゲートウェイを設定する。
+  * アプリケーション ゲートウェイのライフ サイクルを制御する。
+  * ご使用のキー コンテナーに格納されている証明書にアクセスする権限を特定のアプリケーション ゲートウェイに付与する。
+- ご使用のキー コンテナーに既存の証明書をインポートできます。 また、任意の信頼できる Key Vault パートナーと共に Key Vault API を使用して、新しい証明書を作成したり管理したりできます。
+- ご使用のキー コンテナーに格納されている証明書を自動更新できます。
 
-- セキュリティの強化 (SSL 証明書がアプリケーション開発チームによって直接処理されないため)。 Key Vault との統合により、別のセキュリティ チームが、プロビジョニング、ライフサイクルの制御、Key Vault に保存されている証明書にアクセスする Application Gateway を選択するための適切なアクセス権の付与を行うことができます。
-- Key Vault への既存の証明書のインポートや、任意の信頼できる Key Vault パートナーによる Key Vault API を使用した新しい証明書の作成と管理に対するサポート。
-- Key Vault に保存されている証明書の自動更新のサポート。
+Application Gateway で現在サポートされているのは、ソフトウェアで検証された証明書のみです。 ハードウェア セキュリティ モジュール (HSM) で検証された証明書はサポートされません。 Key Vault 証明書を使用するように Application Gateway を構成すると、そのインスタンスによって Key Vault から証明書が取得され、TLS 終端のためにその証明書がローカルにインストールされます。 また、インスタンスは Key Vault を 24 時間間隔でポーリングし、証明書の更新バージョン (存在する場合) を取得します。 更新された証明書が検出されると、HTTPS リスナーに現在関連付けられている TLS または SSL 証明書が自動的にローテーションされます。
 
-Application Gateway で現在サポートされているのは、ソフトウェアで検証された証明書のみです。 ハードウェア セキュリティ モジュール (HSM) で検証された証明書はサポートされません。 Key Vault 証明書を使用するように Application Gateway を構成すると、そのインスタンスは Key Vault から証明書を取得し、SSL 終了のためにその証明書をローカルにインストールします。 また、インスタンスは Key Vault を 24 時間間隔で定期的にポーリングし、証明書の更新されたバージョン (存在する場合) を取得します。 更新された証明書が検出されると、HTTPS リスナーに現在関連付けられている SSL 証明書が自動的にローテーションされます。
+> [!NOTE]
+> Azure portal では、シークレットではなく KeyVault 証明書のみがサポートされます。 Application Gateway は引き続き KeyVault からのシークレットの参照をサポートしていますが、PowerShell、CLI、API、ARM テンプレートなどの非ポータル リソースを通じてのみとなります。 
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-integration-works"></a>統合のしくみ
 
-Key Vault との統合には、3 つの手順の構成プロセスが必要です。
+Application Gateway と Key Vault との統合には、3 つの手順の構成プロセスが必要です。
 
 1. **ユーザー割り当てマネージド ID を作成する**
 
-   Application Gateway がユーザーに代わって Key Vault から証明書を取得するために使用する、ユーザー割り当てマネージド ID を作成するか、既存の ID を使用する必要があります。 詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。 この手順により、ID を作成するために使用されるサブスクリプションによって信頼される Azure AD テナントに、新しい ID が作成されます。
-1. **Key Vault を構成する**
+   Application Gateway がユーザーに代わって Key Vault から証明書を取得するために使用する、ユーザー割り当てマネージド ID を作成するか、既存の ID を使用します。 詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。 この手順では、Azure Active Directory テナントに新しい ID を作成します。 この ID は、ID を作成するために使用されたサブスクリプションによって信頼されます。
 
-   次に、Application Gateway を介して実行中のアプリケーションが使用する Key Vault に、証明書をインポートするか新規作成する必要があります。 この手順では、パスワードのない Base 64 でエンコードされた PFX ファイルとして保存されている Key Vault シークレットを使用することもできます。 Key Vault では証明書の種類のオブジェクトに自動更新機能を使用できるため、証明書の種類を使用することを推奨します。 証明書またはシークレットを作成したら、Key Vault でアクセス ポリシーを定義し、その ID がシークレットをフェッチするためのアクセスを*取得*できるようにする必要があります。
+1. **キー コンテナーの構成**
 
-1. **Application Gateway を構成する**
+   次に、既存の証明書をインポートするか、キー コンテナーで新しい証明書を作成します。 証明書は、アプリケーション ゲートウェイを介して実行されるアプリケーションによって使用されます。 この手順では、Base-64 でエンコードされたパスワードレスの PFX ファイルとして格納されているキー コンテナー シークレットを使用することもできます。 キー コンテナーでは証明書型のオブジェクトに自動更新機能を使用できるため、証明書型を使用することをお勧めします。 証明書またはシークレットを作成したら、キー コンテナーでアクセス ポリシーを定義し、その ID にシークレットの "*取得*" アクセス権が付与されるようにする必要があります。
+   
+   > [!NOTE]
+   > Azure CLI または PowerShell を使用して ARM テンプレート経由で、あるいは Azure portal からデプロイされた Azure アプリケーション経由でアプリケーション ゲートウェイをデプロイする場合、SSL 証明書は Base-64 でエンコードされた PFX ファイルとしてキー コンテナーに格納されます。 「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)」の手順を実行する必要があります。 
+   >
+   > 特に、`enabledForTemplateDeployment` を `true` に設定することが重要です。 証明書は、パスワードレスとすることも、パスワードを設定することもできます。 パスワードが設定された証明書の場合、次の例では、アプリ ゲートウェイの ARM テンプレート構成に対する `properties` の `sslCertificates` エントリの構成を示します。 `appGatewaySSLCertificateData` と `appGatewaySSLCertificatePassword` の値は、「[動的 ID でのシークレットの参照](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)」セクションで説明されているように、キー コンテナーから検索されます。 参照がどのように行われるかを確認するには、`parameters('secretName')` から後方に参照をたどります。 証明書がパスワードレスである場合は、`password` エントリを省略します。
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
-   前の 2 つの手順が完了したら、ユーザー割り当てマネージド ID を使用するように Application Gateway をプロビジョニングするか、既存の Application Gateway を変更することができます。 また、Key Vault の証明書またはシークレットの ID の完全な URI をポイントするように、HTTP リスナーの SSL 証明書を構成できます。
+1. **アプリケーション ゲートウェイの構成**
 
-![Key Vault 証明書](media/key-vault-certs/ag-kv.png)
+   前の 2 つの手順を完了したら、ユーザー割り当てマネージド ID を使用するようにプリケーション ゲートウェイを設定するか、既存のアプリケーション ゲートウェイを変更することができます。 また、キー コンテナーの証明書またはシークレットの ID の完全な URI をポイントするように、HTTP リスナーの TLS または SSL 証明書を構成します。
 
-## <a name="next-steps"></a>次の手順
+   ![キー コンテナー証明書](media/key-vault-certs/ag-kv.png)
 
-[Azure PowerShell で Key Vault 証明書を使用して SSL 終了を構成する](configure-keyvault-ps.md)
+## <a name="next-steps"></a>次のステップ
+
+[Azure PowerShell で Key Vault 証明書を使用して TLS 終端を構成する](configure-keyvault-ps.md)

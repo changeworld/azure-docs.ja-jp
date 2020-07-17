@@ -4,21 +4,21 @@ description: Azure VM 上でローカルの Linux パスワードをリセット
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83751538efe4f3d3af5928caa04b265b6c867442
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226915"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71153571"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Azure VM 上でローカルの Linux パスワードをリセットする方法
 
@@ -30,11 +30,14 @@ VM にログインすることができず、使用したパスワードが正�
 
 ## <a name="manual-password-reset-procedure"></a>パスワードの手動リセットの手順
 
-1.  VM を削除し、アタッチされているディスクを維持します。
+> [!NOTE]
+> 次の手順は、アンマネージド ディスクを使用する VM には適用されません。
 
-2.  OS ドライブをデータ ディスクとして、同じ場所の別のテンポラル VM にアタッチします。
+1. 影響のあった VM の OS ディスクのスナップショットを取得し、スナップショットからディスクを作成して、トラブルシューティング用 VM にディスクをアタッチします。 詳細については、[Azure portal を使用した OS ディスクの復旧 VM へのアタッチによる Windows VM のトラブルシューティング](troubleshoot-recovery-disks-portal-linux.md)に関するページを参照してください。
 
-3.  テンポラル VM 上で次の SSH コマンドを実行して、スーパーユーザーになります。
+2. リモート デスクトップを使用してトラブルシューティング用 VM に接続します。
+
+3.  トラブルシューティング用 VM 上で次の SSH コマンドを実行して、スーパーユーザーになります。
 
     ```bash
     sudo su
@@ -98,11 +101,11 @@ VM にログインすることができず、使用したパスワードが正�
     umount /tempmount
     ```
 
-11. 管理ポータルからディスクをデタッチします。
+11. Azure portal で、トラブルシューティング VM からディスクの接続を切断します。
 
-12. VM を再作成します。
+12. [影響を受けている VM の OS ディスクを変更します](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [OS ディスクを別の Azure VM にアタッチして Azure VM のトラブルシューティングを行う](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 

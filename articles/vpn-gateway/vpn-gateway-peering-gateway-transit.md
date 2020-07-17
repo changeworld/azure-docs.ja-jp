@@ -1,26 +1,20 @@
 ---
-title: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する:Azure Resource Manager | Microsoft Docs
+title: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 description: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成します。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492347"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798938"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 
@@ -37,9 +31,14 @@ ms.locfileid: "59492347"
 1. 2 つの仮想ネットワークの両方が Resource Manager デプロイ モデルを使用している
 2. スポーク仮想ネットワークがクラシックであり、ゲートウェイを含むハブ仮想ネットワークが Resource Manager である
 
+
+>[!NOTE]
+> Windows VPN クライアントがある状態でネットワークのトポロジに変更を加えた場合は、変更をそのクライアントに適用するために、Windows クライアント用の VPN クライアント パッケージをダウンロードしてもう一度インストールする必要があります。
+>
+
 ## <a name="requirements"></a>必要条件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 このドキュメントの例では、次のリソースを作成する必要があります。
 
@@ -54,7 +53,7 @@ ms.locfileid: "59492347"
 2. [デプロイ モデルが同じ仮想ネットワークのピアリングを作成する](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [デプロイ モデルが異なる仮想ネットワークのピアリングを作成する](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>アクセス許可
+## <a name="permissions"></a><a name="permissions"></a>アクセス許可
 
 仮想ネットワーク ピアリングの作成に使用するアカウントは、必要なロールまたはアクセス許可を持っている必要があります。 次の例では、Hub-RM と Spoke-Classic という名前の 2 つの仮想ネットワークをピアリングする場合、各仮想ネットワークに対して次のロールまたはアクセス許可を持っている必要があります。
     
@@ -63,7 +62,7 @@ ms.locfileid: "59492347"
 |Hub-RM|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |クラシック|[Classic Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
 |Spoke-Classic|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-||クラシック|[従来のネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
+||クラシック|[Classic Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
 
@@ -159,7 +158,7 @@ Add-AzVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 運用環境で使用する仮想ネットワーク ピアリングを作成する前に、[仮想ネットワーク ピアリングの制約と動作](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)と[仮想ネットワーク ピアリングの設定](../virtual-network/virtual-network-manage-peering.md#create-a-peering)を確認します。
-* 仮想ネットワーク ピアリングとゲートウェイ転送を使用する[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)する方法を確認します。
+* 仮想ネットワーク ピアリングとゲートウェイ転送を使用する[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)する方法を確認します。

@@ -1,25 +1,24 @@
 ---
-title: Azure IoT Hub Device Provisioning Service (.NET) を使用してデバイスをプロビジョニングする | Microsoft Docs
-description: Azure IoT Hub Device Provisioning Service (.NET) を使用して、1 つの IoT ハブにデバイスをプロビジョニングします
+title: チュートリアル - Azure IoT Hub Device Provisioning Service (.NET) を使用してデバイスをプロビジョニングする
+description: このチュートリアルでは、Azure IoT Hub Device Provisioning Service (DPS) と .NET を使用して 1 つの IoT ハブにデバイスをプロビジョニングする方法を説明します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 6e1681e4eca923e8e4ce541570b4ed4b3ba9d567
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834408"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74976776"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル:Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
-前のチュートリアルでは、Device Provisioning Service に接続するデバイスを設定する方法を説明しました。 このチュートリアルでは、このサービスで "**_個別の登録_**" と "**_登録グループ_**" の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
+前のチュートリアルでは、Device Provisioning Service に接続するデバイスを設定する方法を説明しました。 このチュートリアルでは、このサービスで " **_個別の登録_** " と " **_登録グループ_** " の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > * デバイスを登録する
@@ -30,7 +29,7 @@ ms.locfileid: "65834408"
 
 以降の手順に進む前に、チュートリアル「[Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定](./tutorial-set-up-device.md)」の説明に従って、デバイスと "*ハードウェア セキュリティ モジュール*" を構成してください。
 
-* Visual Studio
+* Visual Studio
 
 > [!NOTE]
 > Visual Studio は必須ではありません。 [.NET](https://www.microsoft.com/net) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  
@@ -52,17 +51,17 @@ ms.locfileid: "65834408"
 
 デバイスを Device Provisioning Service に登録するには、次の 2 つの方法があります。
 
-- **Individual Enrollments\(個別登録\)**: Device Provisioning Service に登録できる 1 つのデバイスのエントリを表します。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別登録を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
+- **Individual Enrollments\(個別登録\)** : Device Provisioning Service に登録できる 1 つのデバイスのエントリを表します。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別登録を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
 
-- **Enrollment Groups\(登録グループ\)**: これは、特定の構成証明メカニズムを共有するデバイスのグループを表します。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。 登録グループは X.509 のみであり、すべてが X.509 証明書チェーンで署名証明書を共有します。
+- **Enrollment Groups\(登録グループ\)** : これは、特定の構成証明メカニズムを共有するデバイスのグループを表します。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。 登録グループは X.509 のみであり、すべてが X.509 証明書チェーンで署名証明書を共有します。
 
 ### <a name="enroll-the-device-using-individual-enrollments"></a>個別登録を使用してデバイスを登録する
 
 1. Visual Studio で**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# コンソール アプリケーション プロジェクトを作成します。 プロジェクトに **DeviceProvisioning** という名前を付けます。
     
-1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、**[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージがダウンロードおよびインストールされ、パッケージへの参照とパッケージの依存関係が追加されます。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、 **[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージがダウンロードおよびインストールされ、パッケージへの参照とパッケージの依存関係が追加されます。
 
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
@@ -121,16 +120,16 @@ ms.locfileid: "65834408"
         SetRegistrationDataAsync().GetAwaiter().GetResult();
             
         Console.WriteLine("Done, hit enter to exit.");
-        Console.ReadLine();
     }
     catch (Exception ex)
     {
         Console.WriteLine();
         Console.WriteLine("Error in sample: {0}", ex.Message);
     }
+    Console.ReadLine();
     ```
         
-1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[DeviceProvisioning]** プロジェクトを選択します。  
+1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 **[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[DeviceProvisioning]** プロジェクトを選択します。  
 
 1. .NET デバイス アプリ **DeviceProvisiong** を実行します。 これによって、デバイスのプロビジョニングがセットアップされます。 
 
@@ -240,7 +239,7 @@ ms.locfileid: "65834408"
 
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]

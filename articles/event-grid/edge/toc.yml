@@ -1,0 +1,68 @@
+- name: IoT Edge の Event Grid のドキュメント
+  href: index.yml
+- name: Azure Event Grid のドキュメントに切り替える
+  href: ../overview.md
+- name: 概要
+  items:
+    - name: IoT Edge の Event Grid とは
+      href: overview.md
+- name: チュートリアル
+  items:
+    - name: イベントをローカルで発行してサブスクライブする
+      href: pub-sub-events-webhook-local.md
+    - name: イベントをクラウド内に発行してサブスクライブする
+      href: pub-sub-events-webhook-cloud.md
+    - name: イベントを Azure Event Grid に転送する
+      href: forward-events-event-grid-cloud.md
+    - name: イベントを Azure IoT Hub に転送する
+      href: forward-events-iothub.md
+    - name: Blob Storage のイベントにローカルで対応する
+      href: react-blob-storage-events-locally.md
+- name: サンプル
+  href: 'https://github.com/Azure/event-grid-iot-edge'
+- name: 概念
+  items:
+    - name: Event Grid の概念
+      href: concepts.md
+    - name: イベント ハンドラーと送信先
+      href: event-handlers.md
+    - name: セキュリティと認証
+      href: security-authentication.md
+    - name: イベント スキーマ
+      href: event-schemas.md
+    - name: 配信と再試行
+      href: delivery-retry.md
+    - name: 出力のバッチ処理
+      href: delivery-output-batching.md
+    - name: 高度なフィルター処理
+      href: advanced-filtering.md
+- name: 操作方法ガイド
+  items:
+    - name: 状態を保持する
+      items:
+        - name: Linux
+          href: persist-state-linux.md
+        - name: Windows
+          href: persist-state-windows.md
+    - name: トピックとサブスクリプションの監視
+      href: monitor-topics-subscriptions.md
+    - name: API プロトコルの構成
+      href: configure-api-protocol.md
+    - name: クライアント認証の構成
+      href: configure-client-auth.md
+    - name: Webhook サブスクライバー認証の構成
+      href: configure-webhook-subscriber-auth.md
+    - name: ID 認証の構成
+      href: configure-identity-auth.md
+    - name: '[トラブルシューティング]'
+      href: troubleshoot.md
+- name: リファレンス
+  items:
+    - name: REST API
+      href: api.md
+    - name: Event Grid の構成
+      href: configure-event-grid.md
+    - name: モジュール ツインの構成スキーマ
+      href: twin-json.md
+    - name: リリース ノート
+      href: release-notes.md

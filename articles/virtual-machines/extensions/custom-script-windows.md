@@ -1,21 +1,21 @@
 ---
-title: Windows の Azure カスタム スクリプト拡張機能 | Microsoft Docs
+title: Windows 向けの Azure カスタム スクリプト拡張機能
 description: カスタム スクリプト拡張機能を使用して Windows VM の構成タスクを自動化します。
 services: virtual-machines-windows
 manager: carmonm
-author: georgewallace
+author: bobbytreed
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
-ms.author: gwallace
-ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.author: robreed
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408287"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478151"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -55,6 +55,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 * スクリプトが実行されている場合は、Azure Portal または CLI には拡張機能の状態が「移行中」とのみ表示されます。 実行中のスクリプトのステータスをより高い頻度で更新するには、独自のソリューションを作成する必要があります。
 * カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Curl* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用することができます。
 * スクリプトまたはコマンドで使用している既定以外のディレクトリの場所に注意し、この状況を処理するロジックを用意してください。
+* カスタム スクリプト拡張機能は LocalSystem アカウントで実行されます
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -68,7 +69,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -80,7 +81,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -91,28 +92,36 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
 
 > [!NOTE]
+> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは**できません**
+
+> [!NOTE]
 > 1 つの時点で VM にインストールできる拡張機能のバージョンは 1 つだけです。同じ VM は失敗するので、同じ Resource Manager テンプレートにはカスタム スクリプトを 2 回指定します。
+
+> [!NOTE]
+> このスキーマは、VirtualMachine リソース内で、またはスタンドアロン リソースとして使用できます。 この拡張機能が ARM テンプレートでスタンドアロン リソースとして使用される場合、リソースの名前は "virtualMachineName/extensionName" という形式である必要があります。
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | string |
 | type | CustomScriptExtension | string |
-| typeHandlerVersion | 1.9 | int |
+| typeHandlerVersion | 1.10 | INT |
 | fileUris (例) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
-| timestamp (例:) | 123456789 | 32 ビットの整数 |
+| timestamp (例:) | 123456789 | 32-bit integer |
 | commandToExecute (例) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
 | storageAccountName (例) | examplestorageacct | string |
 | storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (例) | { } or { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } or { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON オブジェクト |
 
 >[!NOTE]
 >これらのプロパティ名では大文字と小文字が区別されます。 展開の問題を回避するには、次のような名前を使います。
@@ -123,7 +132,10 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
-* `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー。
+* `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー
+* `managedIdentity`: (省略可能、json オブジェクト) ファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  * `clientId`: (省略可能、文字列) マネージド ID のクライアント ID
+  * `objectId`: (省略可能、文字列) マネージド ID のオブジェクト ID
 
 パブリックまたはプロテクトのいずれかの設定に、次の値を設定することができます。拡張機能では、パブリックおよびプロテクトの両方の設定に以下の値が設定された場合、構成が拒否されます。
 
@@ -133,11 +145,53 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 
 パブリック設定は、スクリプトを実行する仮想マシンにクリア テキストで送信されます。  保護された設定は、Azure と VM のみが知っているキーを使用して暗号化されます。 設定は、送信時に VM に保存されます。つまり、設定が暗号化されていた場合は、VM 上に暗号化された状態で保存されます。 暗号化された値を復号化するために使用する証明書は、VM に格納され、実行時の設定 (必要な場合) の暗号化を解除するためにも使用されます。
 
+####  <a name="property-managedidentity"></a>プロパティ: managedIdentity
+> [!NOTE]
+> このプロパティは、保護された設定でのみ指定する**必要があります**。
+
+CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ベースの RBAC がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
+
+この機能を使用するには、ユーザーが、[システムによって割り当てられたか](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)または[ユーザーが割り当てた](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+
+ターゲット VM/VMSS でシステムによって割り当てられた ID を使用するには、"managedidentity" フィールドを空の JSON オブジェクトに設定します。 
+
+> 例:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+ターゲット VM/VMSS でユーザーが割り当てた ID を使用するには、"managedidentity" フィールドを、マネージド ID のクライアント ID またはオブジェクト ID で構成します。
+
+> 例 :
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> managedIdentity プロパティ を storageAccountName プロパティまたは storageAccountKey プロパティと組み合わせて使用することは**できません**
+
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、デプロイ時にカスタム スクリプト拡張機能を実行できます。 次のサンプルでは、カスタム スクリプト拡張機能を使用する方法を示します。
 
-* [チュートリアル: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Deploy Two Tier Application on Windows and Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows) (Windows と Azure SQL DB に 2 層アプリケーションをデプロイする)
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
@@ -177,7 +231,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -195,7 +249,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
@@ -216,18 +270,23 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+
+カスタム スクリプト拡張機能をスケール セットにデプロイするには、「[Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)」を参照してください。
 
 ## <a name="classic-vms"></a>クラシック VM
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 クラシック VM でカスタム スクリプト拡張機能をデプロイするには、Azure portal または Classic Azure PowerShell コマンドレットを使用できます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 クラシック VM リソースに移動します。 **[設定]** で **[拡張機能]** を選択します。
 
 **[+ 追加]** をクリックし、リソースの一覧で **[カスタム スクリプト拡張機能]** を選択します。
 
-**[拡張機能のインストール]** ページでローカル PowerShell ファイルを選択し、引数が必要であればそれを入力し、**[OK]** をクリックします。
+**[拡張機能のインストール]** ページでローカル PowerShell ファイルを選択し、引数が必要であればそれを入力し、 **[OK]** をクリックします。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -273,7 +332,7 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 
 `commandToExecute` コマンドを実行すると、拡張機能によってこのディレクトリ (例: `...\Downloads\2`) が現在の作業ディレクトリとして設定されます。 この処理により、`fileURIs` プロパティを使用してダウンロードされたファイルを見つけるときに相対パスを使用できます。 例については、下記の表を参照してください。
 
-絶対ダウンロード パスは経時的に変わる可能性があるため、可能であれば、`commandToExecute` の文字列では相対スクリプト/ファイル パスを使用することをお勧めします。 例: 
+絶対ダウンロード パスは経時的に変わる可能性があるため、可能であれば、`commandToExecute` の文字列では相対スクリプト/ファイル パスを使用することをお勧めします。 次に例を示します。
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

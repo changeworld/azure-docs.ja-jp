@@ -1,22 +1,22 @@
 ---
-title: Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する
+title: クエリ統計コレクションを最適化する - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する方法について説明します
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7425ee7916fd71625f336a7af35f6481d1ed2474
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: f467f01118470eb51f7decf3bd6457917c566723
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068955"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74770171"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する
 この記事では、Azure Database for PostgreSQL サーバーのクエリ統計コレクションの最適化方法について説明します。
 
-## <a name="use-pgstatsstatements"></a>pg_stats_statements の使用
+## <a name="use-pg_stats_statements"></a>pg_stats_statements の使用
 **pg_stat_statements** は、Azure Database for PostgreSQL で既定で有効になる PostgreSQL 拡張機能です。 この拡張機能では、サーバーで実行されるすべての SQL ステートメントの実行統計を追跡する手段が提供されます。 このモジュールでは、すべてのクエリの実行がフックされるため、些細とは言えないパフォーマンス コストが発生します。 **pg_stat_statements** を有効にすると、ディスク上のファイルにクエリ テキストが強制的に書き込まれます。
 
 クエリ テキストが長い独自のクエリを使用する場合、または **pg_stat_statements** を積極的に監視しない場合、パフォーマンスを最大化するために **pg_stat_statements** を無効にします。 これを行うには、設定を `pg_stat_statements.track = NONE` に変更します。
@@ -34,7 +34,7 @@ ms.locfileid: "65068955"
 ## <a name="use-the-query-store"></a>クエリ ストアの使用 
 Azure Database for PostgreSQL の[クエリ ストア](concepts-query-store.md)機能では、クエリ統計を追跡するより効果的な方法が提供されます。 *pg_stats_statements* を使用する代わりに、この機能を使用することをお勧めします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用して、`pg_stat_statements.track = NONE` を設定することを検討します。
 
 詳細については、次を参照してください。 

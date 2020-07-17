@@ -1,18 +1,18 @@
 ---
-title: ExpressRoute 回線の作成と変更:Azure CLI | Microsoft Docs
+title: ExpressRoute 回線の作成と変更:Azure CLI
 description: この記事では、CLI を使った ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法を示します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 11/13/2019
+ms.author: cherylmc
+ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476153"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -23,22 +23,23 @@ ms.locfileid: "59524890"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager テンプレート](expressroute-howto-circuit-resource-manager-template.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>開始する前に
 
 * 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
-## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
 構成を始めるには、Azure アカウントにサインインします。 CloudShell の "試用版" を使用している場合は、自動的にサインインします。 接続については、次の例を参照してください。
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -64,7 +65,7 @@ az network express-route list-service-providers
 
 応答は次の例のようになります。
 
-```azurecli
+```output
 [
   {
     "bandwidthsOffered": [
@@ -117,18 +118,18 @@ az network express-route list-service-providers
 
 応答をチェックして、ご利用の接続プロバイダーがリストにあるかどうかを確認します。 以下の項目は、回線を作成する際に必要になるため、書き留めておいてください。
 
-* Name
+* 名前
 * PeeringLocations
 * BandwidthsOffered
 
 これで、ExpressRoute 回線を作成する準備が整いました。
 
-### <a name="3-create-an-expressroute-circuit"></a>手順 3.ExpressRoute 回線の作成
+### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
-> 
-> 
+>
+>
 
 リソース グループがまだない場合は、ExpressRoute 回線を作成する前に、作成しておく必要があります。 リソース グループを作成するには、次のコマンドを実行します。
 
@@ -136,12 +137,12 @@ az network express-route list-service-providers
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。 別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。 
+以下の例では、Silicon Valley の Equinix を通じて 200 Mbps の ExpressRoute 回線を作成する方法を示します。 別のプロバイダーと設定を使用する場合は、要求を実行するときにその情報に置き換えてください。
 
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
-* SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。 標準 SKU を取得する場合は [Standard] を、Premium アドオンの場合は [Premium] を指定できます。
-* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は "Metereddata"、無制限データ プランの場合は "Unlimiteddata" を指定できます。 課金の種類は "Metereddata" から "Unlimiteddata" に変更できますが、"Unlimiteddata" から "Metereddata" に変更することはできません。
+* SKU 層 によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 "*Local*"、"*Standard*" または "*Premium*" を指定できます。
+* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
 
 
 ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 以下に、新しいサービス キーの要求の例を示します。
@@ -162,7 +163,7 @@ az network express-route list
 
 サービス キーは、応答の *ServiceKey* フィールドに一覧表示されます。
 
-```azurecli
+```output
 "allowClassicOperations": false,
 "authorizations": [],
 "circuitProvisioningState": "Enabled",
@@ -203,21 +204,21 @@ az network express-route list -h
 
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
@@ -232,7 +233,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 応答は次の例のようになります。
 
-```azurecli
+```output
 "allowClassicOperations": false,
 "authorizations": [],
 "circuitProvisioningState": "Enabled",
@@ -267,19 +268,19 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 > [!IMPORTANT]
 > 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成して管理します。
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.ExpressRoute 回線への仮想ネットワークのリンク
 
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 [ExpressRoute 回線への仮想ネットワークのリンク](howto-linkvnet-cli.md)に関する記事を参照してください。
 
-## <a name="modify"></a>ExpressRoute 回線の変更
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>ExpressRoute 回線の変更
 
 ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 次の変更は、ダウンタイムなしで行うことができます。
 
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にすることができます。
-* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やすことができます。 ただし、回線の帯域幅のダウングレードはサポートされていません。 
+* ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やすことができます。 ただし、回線の帯域幅のダウングレードはサポートされていません。
 * 課金プランを従量制課金データから無制限データに変更することができます。 ただし、無制限データから従量制課金データへの課金プランの変更はサポートされていません。
 * *従来の操作の許可*を有効または無効にできます。
 
@@ -299,8 +300,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 > [!IMPORTANT]
 > 標準回線で許可されるリソースより多くのリソースを使用する場合、この操作は失敗することがあります。
-> 
-> 
+>
+>
 
 ExpressRoute Premium アドオンを無効にする前に、次の条件を把握しておいてください。
 
@@ -344,7 +345,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
-## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
 ExpressRoute 回線のプロビジョニングを解除して削除する場合は必ず、次の条件を把握しておいてください。
 
@@ -358,7 +359,7 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 回線を作成したら、次の作業を必ず実行します。
 

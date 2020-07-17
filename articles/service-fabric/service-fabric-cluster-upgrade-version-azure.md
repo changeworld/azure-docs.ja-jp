@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric クラスターのアップグレード | Microsoft Docs
+title: クラスターの Azure Service Fabric のバージョンをアップグレードする
 description: Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。 アップグレードを実行しているときに、どのようなことが起きるでしょうか?
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 234bff5049babf0c4b1d036b40201720b2736228
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661634"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789602"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>クラスターの Service Fabric バージョンをアップグレードする
 
@@ -119,10 +108,10 @@ Output:
                 }
 ```
 
-## <a name="next-steps"></a>次の手順
-*  [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-*  [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
-*  [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+## <a name="next-steps"></a>次のステップ
+* [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)
+* [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

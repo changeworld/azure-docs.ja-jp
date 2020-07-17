@@ -1,6 +1,6 @@
 ---
 title: IoT Device Provisioning Service におけるセキュリティ エンドポイント | Microsoft Docs
-description: 概念 - バックエンド アプリの IoT Device Provisioning Service へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。
+description: 概念 - バックエンド アプリの IoT Device Provisioning Service (DPS) へのアクセスを制御する方法。 セキュリティ トークンについての情報が含まれています。
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495432"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237523"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -24,7 +24,7 @@ ms.locfileid: "59495432"
 * プロビジョニング サービスへのアクセス用にバックエンド アプリに付与できるアクセス許可の種類。
 * アクセス許可の確認に使用する認証プロセスとトークン。
 
-### <a name="when-to-use"></a>いつ使用するか
+### <a name="when-to-use"></a>使用する場合
 
 プロビジョニング サービスのエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、サービスに送信するすべてのメッセージと共に、バックエンド アプリにはセキュリティ資格情報が格納されているトークンを含める必要があります。
 
@@ -32,14 +32,14 @@ ms.locfileid: "59495432"
 
 次の方法で[アクセス許可](#device-provisioning-service-permissions)を付与できます。
 
-* **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure Portal][lnk-management-portal] で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムで定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
+* **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal][lnk-management-portal] 上で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムから定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
 
-* **provisioningserviceowner**:すべてのアクセス許可を持つポリシー。
+* **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
 
 > [!NOTE]
 > 詳細については、[権限](#device-provisioning-service-permissions)に関する項目をご覧ください。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Azure IoT Hub Device Provisioning Service では、共有アクセス ポリシーに対してトークンを確認することにより、エンドポイントへのアクセスを許可します。 対称キーなどのセキュリティの資格情報がネットワーク上で送信されることはありません。
 
@@ -61,7 +61,7 @@ SharedAccessSignature sr =
 
 ## <a name="security-tokens"></a>セキュリティ トークン
 
-Device Provisioning Service では、サービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT Device Provisioning Service SDK][lnk-sdks] を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 このようなシナリオには、HTTP のサーフェスの直接使用が含まれます。
+Device Provisioning Service では、サービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT Device Provisioning Service SDK][lnk-sdks] を使用すると、特別な構成を行うことなく自動的にトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 このようなシナリオには、HTTP のサーフェスの直接使用が含まれます。
 
 ### <a name="security-token-structure"></a>セキュリティ トークンの構造
 
@@ -177,7 +177,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 次の表は、IoT Device Provisioning Service へのアクセス制御に使用できるアクセス許可の一覧です。
 
-| アクセス許可 | メモ |
+| 権限 | メモ |
 | --- | --- |
 | **ServiceConfig** |サービス構成を変更するためのアクセス権を付与します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **EnrollmentRead** |デバイスの登録および登録グループの読み取りアクセスを許可します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
@@ -190,5 +190,5 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 [img-add-shared-access-policy]: ./media/how-to-control-access/how-to-add-shared-access-policy.PNG
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
-[lnk-azure-resource-manager]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/

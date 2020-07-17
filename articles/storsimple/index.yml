@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: StorSimple のドキュメント
+summary: オンプレミスのデバイスと Azure クラウド ストレージの間のストレージ タスクを管理する統合ストレージ ソリューション、Azure StorSimple の使用方法について説明します。
+metadata:
+  title: StorSimple のドキュメント
+  description: オンプレミスのデバイスと Azure クラウド ストレージの間のストレージ タスクを管理する統合ストレージ ソリューション、Azure StorSimple の使用方法について説明します。
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540308"
+landingContent:
+- title: StorSimple について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: StorSimple を Azure File Sync および Data Box Edge と比較する
+      url: storsimple-8000-choose-storage-solution.md
+- title: StorSimple Virtual Array
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: StorSimple Virtual Array とは
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: 要件を確認する
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000 シリーズ
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: StorSimple 8000 シリーズとは
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: 要件を確認する
+      url: storsimple-8000-system-requirements.md
+- title: StorSimple Data Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: StorSimple Data Manager とは
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: Azure portal での管理
+      url: storsimple-data-manager-ui.md
+- title: クラウド ソリューション プロバイダー プログラム向け StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: クラウド ソリューション プロバイダー プログラム向け StorSimple とは
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: 配置
+      url: storsimple-partner-csp-deploy.md

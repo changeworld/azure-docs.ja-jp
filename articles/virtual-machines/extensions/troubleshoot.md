@@ -1,26 +1,25 @@
 ---
-title: Windows VM 拡張機能のエラーのトラブルシューティング | Microsoft Docs
+title: Windows VM 拡張機能のエラーのトラブルシューティング
 description: Azure Windows VM 拡張機能のエラーのトラブルシューティングについて説明します
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: cf53df30dfccb76a6f33621038ba7f031a69f6de
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979695"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74073653"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -62,7 +61,7 @@ Azure PowerShell:
 ## <a name="troubleshooting-extension-failures"></a>拡張機能のエラーのトラブルシューティング
 ### <a name="rerun-the-extension-on-the-vm"></a>VM での拡張機能の再実行
 VM でカスタム スクリプト拡張機能を使用してスクリプトを実行している場合、VM は正常に作成されたがスクリプトは失敗するというエラーが発生することがあります。 このような状況でこのエラーから回復するためにお勧めする方法は、拡張機能を削除してもう一度テンプレートを実行することです。
-注:将来は、この機能が強化され、拡張機能をアンインストールする必要はなくなります。
+注: 将来的には、拡張機能のアンインストールが不要になるように機能強化が行われるる予定です。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Azure Powershell から拡張機能を削除する
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"

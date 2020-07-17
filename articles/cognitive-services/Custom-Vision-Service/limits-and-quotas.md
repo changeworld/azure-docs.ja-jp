@@ -1,7 +1,7 @@
 ---
 title: 制限とクォータ - Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Custom Vision Service の制限とクォータについて説明します。
+titleSuffix: Azure Cognitive Services
+description: この記事では、Custom Vision Service に対する異なる種類のライセンス キー、および制限とクォータについて説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 85abc4a50710629d3485d05115698e59a93fc96e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79081779"
 ---
 # <a name="limits-and-quotas"></a>制限とクォータ
 
@@ -37,5 +37,13 @@ Custom Vision Service にはキーの層が 2 つあります。 Azure portal �
 |[予測](https://go.microsoft.com/fwlink/?linkid=865445)操作、ストレージなし (秒あたりトランザクション)|2|20|
 |[TrainProject](https://go.microsoft.com/fwlink/?linkid=865446) (秒あたり API 呼び出し)|2|10|
 |[その他の API 呼び出し](https://go.microsoft.com/fwlink/?linkid=865446) (秒あたりトランザクション)|10|10|
+|許容される画像の種類|jpg、png、bmp、gif|jpg、png、bmp、gif|
+|画像の高さ/幅 (ピクセル単位) の最小値|256 (注を参照)|256 (注を参照)|
+|画像の高さ/幅 (ピクセル単位) の最大値|無制限|無制限|
 |最大画像サイズ (トレーニング画像アップロード) |6 MB|6 MB|
 |最大画像サイズ (予測)|4 MB|4 MB|
+|物体検出のトレーニング画像あたりの最大領域|300|300|
+|分類画像あたりの最大タグ数|100|100|
+
+> [!NOTE]
+> 256 ピクセルより小さい画像は受け入れられますが、アップスケールされます。

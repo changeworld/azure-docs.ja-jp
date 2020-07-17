@@ -1,10 +1,10 @@
 ---
-title: Azure Linux VM へのアクセスのリセット | Microsoft Docs
+title: Azure Linux VM へのアクセスのリセット
 description: VMAccess 拡張機能と Azure CLI を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: roiyz
-ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: akjosh
+ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731310"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226819"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>VMAccess 拡張機能と Azure CLI を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 ## <a name="overview"></a>概要
@@ -36,13 +36,13 @@ Linux VM 上のディスクがエラーを示しています。 何らかの理�
 
 VMAccess 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
 
-| ディストリビューション | Version |
+| Distribution | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、12.04 LTS |
 | Debian | Debian 7.9+、8.2+ |
 | Red Hat | RHEL 6.7+、7.1+ |
 | Oracle Linux | 6.4+、7.0+ |
-| SUSE | 11、12 |
+| Suse | 11、12 |
 | openSUSE | openSUSE Leap 42.2 + |
 | CentOS | CentOS 6.3+、7.0+ |
 | CoreOS | 494.4.0+ |
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **注:**`az vm user update` コマンドは、VM 上の管理者ユーザーの `~/.ssh/authorized_keys` ファイルに新しい公開キー テキストを追加します。 これにより、既存の SSH キーが置き換えられたり、削除されたりすることはありません。 これにより、デプロイ時や VMAccess 拡張機能での以降の更新時に設定された以前のキーが削除されることはありません。
+> **注:** `az vm user update` コマンドは、VM 上の管理者ユーザーの `~/.ssh/authorized_keys` ファイルに新しい公開キー テキストを追加します。 これにより、既存の SSH キーが置き換えられたり、削除されたりすることはありません。 これにより、デプロイ時や VMAccess 拡張機能での以降の更新時に設定された以前のキーが削除されることはありません。
 
 ## <a name="reset-password"></a>[パスワードのリセット]
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` のパスワードをリセットします。

@@ -2,17 +2,17 @@
 title: ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 description: Azure DNS エイリアス レコードを使用して、ゾーンの頂点で負荷分散された Web アプリをホストします
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 11/3/2018
-ms.author: victorh
-ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/10/2019
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086328"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76937362"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
@@ -30,11 +30,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 テスト対象の Azure DNS でホストできる利用可能なドメイン名が必要です。 このドメインに対するフル コントロールが必要となります。 フル コントロールには、このドメインのネーム サーバー (NS) レコードを設定する権限が含まれます。
 
-Azure DNS 内でドメインをホストする手順については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
+Azure DNS にドメインをホストする手順については、「[チュートリアル: Azure DNS にドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
 
 このチュートリアルで使用するドメインの例は contoso.com ですが、独自のドメイン名を使用してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 この記事で使用するすべてのリソースを保持するリソース グループを作成します。
 
@@ -45,82 +45,97 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 
 |Name  |オペレーティング システム  |Location  |価格レベル  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|米国東部|Dev/Test D1-Shared|
-|ASP-02     |Windows|米国中央部|Dev/Test D1-Shared|
+|ASP-01     |Windows|East US|Dev/Test D1-Shared|
+|ASP-02     |Windows|米国中部|Dev/Test D1-Shared|
 
 ## <a name="create-app-services"></a>App Services を作成する
 
 App Service プランごとに 1 つずつ、2 つの Web アプリを作成します。
 
-1. Azure portal ページの左上隅にある **[リソースの作成]** をクリックします。
+1. Azure portal ページの左上隅にある **[リソースの作成]** を選択します。
 2. 検索バーに「**Web app**」と入力し、Enter キーを押します。
-3. **[Web App]** をクリックします。
-4. **Create** をクリックしてください。
+3. **Web アプリ**を選択します。
+4. **作成** を選択します。
 5. 既定値のままにし、次の表を使用して 2 つの Web アプリを構成します。
 
-   |Name<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |App Service プラン/場所
-   |---------|---------|---------|
-   |App-01|既存のものを使用します<br>リソース グループを選択します|ASP-01(米国東部)|
-   |App-02|既存のものを使用します<br>リソース グループを選択します|ASP-02(米国中部)|
+   |Name<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |ランタイム スタック|リージョン|App Service プラン/場所
+   |---------|---------|-|-|-------|
+   |App-01|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|East US|ASP-01(D1)|
+   |App-02|既存のものを使用します<br>リソース グループを選択します|.NET Core 2.2|米国中部|ASP-02(D1)|
 
 ### <a name="gather-some-details"></a>詳細情報を収集する
 
-アプリの IP アドレスとホスト名を書き留めておく必要があります。
+Web アプリの IP アドレスとホスト名を書き留めておく必要があります。
 
-1. リソース グループを開き、最初のアプリをクリックします (この例では **App-01**)。
-2. 左側の列で、**[プロパティ]** をクリックします。
-3. **[URL]** のアドレスと、**[送信 IP アドレス]** で一覧の最初の IP アドレスを書き留めます。 この情報は、後で Traffic Manager エンドポイントを構成するときに使います。
+1. リソース グループを開き、最初の Web アプリを選択します (この例では **App-01**)。
+2. 左側の列で、 **[プロパティ]** を選択します。
+3. **[URL]** のアドレスと、 **[送信 IP アドレス]** で一覧の最初の IP アドレスを書き留めます。 この情報は、後で Traffic Manager エンドポイントを構成するときに使います。
 4. **App-02** についても同じようにします。
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
 リソース グループで Traffic Manager プロファイルを作成します。 既定値を使用し、trafficmanager.net 名前空間内で一意の名前を入力します。
 
-Traffic Manager プロファイルの作成方法の詳細については、[Web アプリケーションに高可用性を実現する Traffic Manager プロファイルの作成に関するクイック スタート](../traffic-manager/quickstart-create-traffic-manager-profile.md)を参照してください。
+Traffic Manager プロファイルの作成については、「[クイック スタート: Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成](../traffic-manager/quickstart-create-traffic-manager-profile.md)」をご覧ください。
 
 ### <a name="create-endpoints"></a>エンドポイントを作成する
 
 これで、2 つの Web アプリに対するエンドポイントを作成できます。
 
-1. リソース グループを開き、Traffic Manager プロファイルをクリックします。
-2. 左側の列で、**[エンドポイント]** をクリックします。
-3. **[追加]** をクリックします。
+1. リソース グループを開き、Traffic Manager プロファイルを選択します。
+2. 左側の列で、 **[エンドポイント]** を選択します。
+3. **[追加]** を選択します。
 4. 次の表を使用して、エンドポイントを構成します。
 
-   |type  |Name  |ターゲット  |Location  |カスタム ヘッダーの設定|
+   |種類  |Name  |移行先  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
-   |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|米国東部|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
-   |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中央部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
+   |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
+   |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS ゾーンの作成
 
-既存の DNS ゾーンをテスト用に使用することも、新しいゾーンを作成することもできます。 Azure で新しい DNS ゾーンを作成して委任する方法については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
+既存の DNS ゾーンをテスト用に使用することも、新しいゾーンを作成することもできます。 Azure で新しい DNS ゾーンを作成して委任する方法については、「[チュートリアル: Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」をご覧ください。
 
-### <a name="add-the-alias-record-set"></a>エイリアス レコード セットを追加する
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>カスタム　ドメイン検証用の TXT レコードを追加する
 
-DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリアス レコードを追加できます。
+Web アプリにカスタム ホスト名を追加すると、ドメインを検証するための特定の TXT レコードが検索されます。
 
-1. リソース グループを開き、DNS ゾーンをクリックします。
-2. **[レコード セット]** をクリックします。
+1. リソース グループを開き、DNS ゾーンを選択します。
+2. **[レコード セット]** を選択します。
+3. 次の表を使用して、レコード セットを追加します。 値には、前に記録した実際の Web アプリ URL を使用します。
+
+   |Name  |種類  |値|
+   |---------|---------|-|
+   |@     |TXT|App-01.azurewebsites.net|
+
+
+## <a name="add-a-custom-domain"></a>カスタム ドメインの追加
+
+両方の Web アプリのカスタム ドメインを追加します。
+
+1. リソース グループを開き、最初の Web アプリを選択します。
+2. 左側の列で、 **[カスタム ドメイン]** を選択します。
+3. **[カスタム ドメイン]** で、 **[カスタム ドメインの追加]** を選択します。
+4. **[カスタム ドメイン]** で、カスタム ドメイン名を入力します。 たとえば、contoso.com です。
+5. **[検証]** を選択します。
+
+   ドメインは検証に合格し、 **[ホスト名の利用可否]** と **[ドメイン所有権]** の横に緑のチェック マークが表示される必要があります。
+5. **[カスタム ドメインの追加]** を選択します。
+6. **[サイトに割り当てられるホスト名]** で新しいホスト名を確認するには、ブラウザーの表示を更新します。 ページを更新しても、すぐに変更が表示されないことがあります。
+7. 2 番目の Web アプリでこの手順を繰り返します。
+
+## <a name="add-the-alias-record-set"></a>エイリアス レコード セットを追加する
+
+ここで、ゾーンの頂点に対するエイリアス レコードを追加します。
+
+1. リソース グループを開き、DNS ゾーンを選択します。
+2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。
 
-   |Name  |type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
+   |Name  |種類  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
    |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 
-## <a name="add-custom-hostnames"></a>カスタム ホスト名を追加する
-
-両方の Web アプリにカスタム ホスト名を追加します。
-
-1. リソース グループを開き、最初の Web アプリをクリックします。
-2. 左側の列で、**[カスタム ドメイン]** をクリックします。
-3. **[ホスト名の追加]** をクリックします。
-4. [ホスト名] にドメイン名を入力します。 たとえば、contoso.com です。
-
-   ドメインは検証に合格し、**[ホスト名の利用可否]** と **[ドメイン所有権]** の横に緑のチェック マークが表示される必要があります。
-5. **[ホスト名の追加]** をクリックします。
-6. **[サイトに割り当てられるホスト名]** で新しいホスト名を確認するには、ブラウザーの表示を更新します。 ページを更新しても、すぐに変更が表示されないことがあります。
-7. 2 番目の Web アプリでこの手順を繰り返します。
 
 ## <a name="test-your-web-apps"></a>Web アプリをテストする
 
@@ -137,10 +152,12 @@ DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリ�
 9. Web ブラウザーを閉じて、数分待ちます。
 10. Web ブラウザーを起動し、ドメインを参照します。 既定の Web アプリ ページが再び表示されるはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エイリアス レコードの詳細については、次の記事を参照してください。
 
-- [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
-- [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
+- [チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
+- [チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
 - [DNS に関する FAQ](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+
+アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。

@@ -5,30 +5,42 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/30/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119250"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82784114"
 ---
-次の表は、一般提供 (GA) の機能を使用できるサポート対象リージョンの一覧です。
+### <a name="azure-regions-within-a-geopolitical-region"></a>地理的リージョン内の Azure リージョン
+
+Virtual WAN は、以下のリージョンで使用できます。
 
 |地理的リージョン | Azure Azure リージョン|
 |---|---|
-|北米 | 米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |
-|南アメリカ |ブラジル南部 |
-| ヨーロッパ | フランス中部、フランス南部、北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |
-| アジア | 東アジア、東南アジア |
-| 日本  | 西日本、東日本 |
-| オーストラリア | オーストラリア東部、オーストラリア南東部 | 
 | オーストラリア政府 | オーストラリア中部、オーストラリア中部 2 |
+| ヨーロッパ | フランス中部、フランス南部、ドイツ北部、ドイツ中西部、北ヨーロッパ、ノルウェー東部、スイス北部、スイス西部、西ヨーロッパ、英国西部、英国南部 |
+| 北米 | 米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |
+| アジア | 東アジア、東南アジア |
 | インド | インド西部、インド中部、インド南部 |
-| 韓国 | 韓国中部、韓国南部 |
+| 日本  | 西日本、東日本 |
+| オセアニア | オーストラリア東部、オーストラリア南東部 |
 | 南アフリカ | 南アフリカ北部、南アフリカ西部 |
+| 南アメリカ |ブラジル南部 |
+| 韓国 | 韓国中部、韓国南部 |
+| UAE | アラブ首長国連邦北部、アラブ首長国連邦中部 |
 
-* ExpressRoute については、[Virtual WAN と ExpressRoute (プレビュー)](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register) に関する記事を参照してください。
-* ポイント対サイトについては、[Virtual WAN とポイント対サイト (プレビュー)](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register) に関する記事を参照してください。
+
+
+### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>各国のクラウドの Azure リージョンと地理的境界
+
+Virtual WAN は、以下のリージョンで使用できます。
+
+|地理的リージョン | Azure Azure リージョン|
+|---|---|
+| 米国政府のクラウド | 米国政府アリゾナ、US Gov アイオワ、米国政府テキサス、米国政府バージニア、US DoD 中部、US DoD 東部 |
+| 中国東部 | 中国東部 2|
+| 中国北部 | 中国北部 2 |

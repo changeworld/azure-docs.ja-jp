@@ -1,6 +1,6 @@
 ---
 title: 回帰モデルで回答を予測する
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 9165e51d07cf97756408c7f73720931abe067bb2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371752"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930235"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
-## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4:初心者向けデータ サイエンス シリーズ
+## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4: 初心者向けデータ サイエンス シリーズ
 初心者向けデータ サイエン ビデオ 4 では、単純な回帰モデルを作成してダイヤモンドの価格を予測する方法について説明します。 ターゲット データを使用して回帰モデルを引き出します。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
@@ -33,17 +33,17 @@ ms.locfileid: "58371752"
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-* ビデオ 3:[データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-* ビデオ 4:単純なモデルで回答を予測する
-* ビデオ 5:[他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* ビデオ 3: [データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* ビデオ 4: 単純なモデルで回答を予測する
+* ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>トランスクリプト:単純なモデルで回答を予測する
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>トランスクリプト: 単純なモデルで回答を予測する
 "初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。 ここでは、単純なモデルを作成して予測を行います。
 
 *"モデル"* とは、データについての単純化されたストーリーです。 何が言いたいかを説明します。
 
 ## <a name="collect-relevant-accurate-connected-enough-data"></a>関連性があり、正確で、連続している、十分なデータを収集する
-私がダイヤモンドを購入しようとしているとします。 1.35 カラットのダイヤモンドが付いた祖母の指輪があり、その料金を知りたいと思っています。 メモ帳とペンを持って宝石店に行き、ケース内のすべてのダイヤモンドの価格と重さ (カラット単位) を書き留めます。 最初のダイヤモンドは、1.01 カラットで 7,366 ドルです。
+私がダイヤモンドを購入しようとしているとします。 1\.35 カラットのダイヤモンドが付いた祖母の指輪があり、その料金を知りたいと思っています。 メモ帳とペンを持って宝石店に行き、ケース内のすべてのダイヤモンドの価格と重さ (カラット単位) を書き留めます。 最初のダイヤモンドは、1.01 カラットで 7,366 ドルです。
 
 店内の他のすべてのダイヤモンドに対してこれを行います。
 
@@ -97,7 +97,7 @@ ms.locfileid: "58371752"
 ![モデル上で回答を見つける](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>信頼区間を作成する
-この予測がどの程度の精度なのかという疑問を抱くのは当然です。 1.35 カラットのダイヤモンドが 10,000 ドルに非常に近いのか、はるかに高いのか (または安いのか) を知っておくと便利です。 この答えを出すには、ほとんどの点を囲むように回帰直線の周りに枠を描画してみましょう。 この枠は "*信頼区間*" と呼ばれます。「価格はこの枠内に収まる」ということをかなりの自信を持って言うことができます。その理由は、過去のほとんどの価格がその中に収まっているからです。 1.35 カラットの直線が枠の上端および下端と交差する点から水平な直線を 2 本描画できます。
+この予測がどの程度の精度なのかという疑問を抱くのは当然です。 1\.35 カラットのダイヤモンドが 10,000 ドルに非常に近いのか、はるかに高いのか (または安いのか) を知っておくと便利です。 この答えを出すには、ほとんどの点を囲むように回帰直線の周りに枠を描画してみましょう。 この枠は "*信頼区間*" と呼ばれます。「価格はこの枠内に収まる」ということをかなりの自信を持って言うことができます。その理由は、過去のほとんどの価格がその中に収まっているからです。 1\.35 カラットの直線が枠の上端および下端と交差する点から水平な直線を 2 本描画できます。
 
 !["信頼区間"](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -124,8 +124,8 @@ ms.locfileid: "58371752"
 
 ここでは、線形回帰を実行する方法について説明し、データを使用して予測しました。
 
-Microsoft Azure Machine Learning Studio の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
+Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## <a name="next-steps"></a>次の手順
-* [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>次のステップ
+* [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の複数リージョン デプロイにかかるコストを最適化する
 description: この記事では、Azure Cosmos DB の複数リージョン デプロイのコストを管理する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 478714f48782adb138f1ed803d53c81ec48f2efd
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 07/31/2019
+ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967278"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72753315"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 
@@ -31,13 +31,13 @@ ms.locfileid: "65967278"
 
 米国西部にコンテナーがあり、今月は 10,000 RU/秒のスループットでプロビジョニングされ、1 TB のデータが格納されているとします。 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) を追加し、それぞれのストレージとスループットが同じであるとき、グローバルに分散されたお客様のアプリから 4 つすべてのリージョンのコンテナーに書き込めるようにしたいとしましょう。 月の請求書の合計金額は次のとおりです (1 か月を 31 日とした場合)。
 
-|**項目**|**使用量 (月単位)**|**レート**|**月額料金**|
+|**項目**|**使用量 (月単位)**|**料金**|**毎月のコスト**|
 |----|----|----|----|
 |米国西部のコンテナーのスループット料金 (複数の書き込みリージョン) |10,000 RU/秒 * 24 * 31 |100 RU/秒で 1 時間あたり $0.016 |$1,190.40 |
 |追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のスループット料金 (複数の書き込みリージョン) |(3 + 1) * 10,000 RU/秒 * 24 * 31 |100 RU/秒で 1 時間あたり $0.016 |$4,761.60 |
-|米国西部のコンテナーのストレージ料金 |100 GB |$0.25/GB |$25 |
-|追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のストレージ料金 |3 * 1 TB |$0.25/GB |$75 |
-|**合計**|||**$6,052** |
+|米国西部のコンテナーのストレージ料金 |1 TB (または 1,024 GB) |$0.25/GB |$256 |
+|追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のストレージ料金 |3 * 1 TB (または 3,072 GB) |$0.25/GB |$768 |
+|**合計**|||**$6,976** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>リージョン単位でスループット利用率を向上させる
 
@@ -49,7 +49,7 @@ ms.locfileid: "65967278"
 
 3. お客様のリージョンのアクティビティを監視すれば、オンデマンドでリージョンを追加したり削除したりして、読み取りと書き込みのスループットをスケーリングすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 
@@ -58,5 +58,5 @@ ms.locfileid: "65967278"
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリのコストの最適化](optimize-cost-queries.md)について確認する
+* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
 

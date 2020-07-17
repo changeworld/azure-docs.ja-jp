@@ -2,17 +2,14 @@
 title: オペレーターのベスト プラクティス - Kubernetes Services (AKS) でのコンテナー イメージの管理
 description: Azure Kubernetes Service (AKS) でコンテナー イメージを管理およびセキュリティで保護する方法に関するクラスター オペレーターのベスト プラクティス
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77594747"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
@@ -22,10 +19,11 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 > [!div class="checklist"]
 > * イメージの脆弱性をスキャンして修復する
-> * デジタル署名済みのコンテナー イメージを提供する信頼できるレジストリを使用する
 > * 基本イメージが更新されたら、コンテナー イメージを自動的にトリガーおよび再デプロイする
 
 [クラスター セキュリティ][best-practices-cluster-security]および[ポッド セキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
+
+また、コンテナーをスキャンして脆弱性を検出するのを支援するために、[Security Center のコンテナーのセキュリティ][security-center-containers]も使用できます。  また、イメージおよびレジストリを脆弱性から保護できるようにするために、Security Center と [Azure Container Registry の統合][security-center-acr]もあります。
 
 ## <a name="secure-the-images-and-run-time"></a>イメージおよびランタイムをセキュリティで保護する
 
@@ -37,16 +35,6 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 実際の例では、継続的統合と継続的デプロイ (CI/CD) パイプラインを使用して、イメージのスキャン、検証、およびデプロイを自動化することができます。 Azure Container Registry には、これらの脆弱性スキャン機能が含まれます。
 
-## <a name="use-a-trusted-registry"></a>信頼できるレジストリを使用する
-
-**ベスト プラクティス ガイダンス** - ポッドおよびデプロイで使用できるイメージ レジストリを制限します。 使用可能なイメージを検証および制御する場所である、信頼できるレジストリのみを許可します。
-
-セキュリティ強化のために、アプリケーション コードにデジタル署名できるのと同様に、コンテナー イメージにもデジタル署名できます。 その後、AKS に対して、署名済みのイメージのみをデプロイすることを許可します。 このプロセスでは、脆弱性チェックに合格しただけでなく、デジタル署名済みの信頼できるイメージのみをプルするように、AKS を制限することで、セキュリティがさらに強化されます。 また、コンテナー イメージが改ざんされたり、まったく同じ名前のイメージに置き換わったりしていないことを確認します。
-
-デジタル署名済みのコンテナー イメージを提供する信頼できるレジストリは、環境内に複雑さをもたらすものの、特定のポリシーや規制コンプライアンスで必要となる場合があります。 Azure Container Registry では、信頼できるレジストリおよび署名済みのイメージの使用をサポートしています。
-
-デジタル署名済みのイメージの詳細については、「[Azure Container Registry におけるコンテンツの信頼][acr-content-trust]」を参照してください。
-
 ## <a name="automatically-build-new-images-on-base-image-update"></a>基本イメージの更新時に新しいイメージを自動的にビルドする
 
 **ベスト プラクティス ガイダンス** - アプリケーション イメージに基本イメージを使用する際には、基本イメージの更新時にオートメーションを使用して新しいイメージをビルドします。 通常、これらの基本イメージにはセキュリティ修正プログラムが含まれているので、すべてのダウンストリーム アプリケーション コンテナー イメージを更新します。
@@ -55,14 +43,13 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 また、Azure Container Registry タスクは、基本イメージの更新時にコンテナー イメージを自動的に更新できます。 この機能を使用すると、少数の基本イメージをビルドし、バグおよびセキュリティ修正プログラムを使用して、それらを定期的に更新続けることができます。
 
-基本イメージの更新の詳細については、「[Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]」(Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する) を参照してください。
+基本イメージの更新の詳細については、「[Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]」 (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、コンテナーをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
-* [Automate image builds on base image update with Azure Container Registry タスク (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する)][acr-base-image-update]
-* [Azure Container Registry におけるコンテンツの信頼][acr-content-trust]
+* [Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update] (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する)
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts
@@ -72,5 +59,6 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
-[acr-content-trust]: ../container-registry/container-registry-content-trust.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
+[security-center-containers]: /azure/security-center/container-security
+[security-center-acr]: /azure/security-center/azure-container-registry-integration

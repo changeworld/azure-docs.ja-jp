@@ -1,62 +1,64 @@
 ---
-title: Azure Alerts でのログ アラートのための webhook アクション | Microsoft Docs
-description: この記事では、ログ分析ワークスペースまたは Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
-author: msvijayn
+title: Azure アラートでのログ アラートに対する Webhook アクション
+description: この記事では、Log Analytics ワークスペースまたは Application Insights を使用してログ アラート ルールを作成する方法、アラートでデータが HTTP Webhook としてプッシュされる方法、および可能なさまざまなカスタマイズの詳細について説明します。
+author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.author: vinagara
+ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799305"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77667705"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
-[Azure でログ アラートを作成する](alerts-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
+[Azure でログ アラートを作成する](alerts-log.md)ときは、[アクション グループを使用して構成](action-groups.md)し、1 つ以上のアクションを実行することができます。 この記事では、使用できるさまざまな Webhook アクションについて説明し、JSON ベースのカスタム Webhook の構成方法を示します。
 
+> [!NOTE]
+> また、Webhook の統合に[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。 共通アラート スキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードを実現できることです。共通アラート スキーマでは、ログ アラートのカスタム JSON オプションが優先されないことに注意してください。 アラート ルール レベルで行ったカスタマイズに関係なく共通のアラート スキーマ ペイロードが選択されている場合は、これに従います。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook アクション
 
-Webhook アクションは、1 つの HTTP POST 要求を使用して外部のプロセスを呼び出すことができます。  呼び出されるサービスは、Webhook をサポートし、受信したペイロードの使用方法を決定できる必要があります。    
+Webhook アクションでは、1 つの HTTP POST 要求を使用して外部のプロセスを呼び出すことができます。 呼び出されるサービスでは、Webhook がサポートされ、受信したペイロードの使用方法が決定される必要があります。
 
 webhook アクションには、次の表に示すプロパティが必要です。
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Webhook URL |Webhook の URL。 |
-| Custom JSON payload (カスタム JSON ペイロード) |アラート作成中にこのオプションを選択するときに、webhook と共に送信するカスタム ペイロード。 詳細については、[ログ アラートの管理](alerts-log.md)に関するページをご覧ください。 |
+| **Webhook URL** |Webhook の URL。 |
+| **Custom JSON payload (カスタム JSON ペイロード)** |アラート作成中にこのオプションが選択されたときに、Webhook と共に送信するカスタム ペイロード。 詳しくは、[ログ アラートの管理](alerts-log.md)に関するページをご覧ください。|
 
 > [!NOTE]
-> ログ アラートの *[webhook 用のカスタム JSON ペイロードを含む]* オプションの横にある [View Webhook]\(Webhook の表示\) をクリックすると、指定されたカスタマイズ用のサンプル Webhook ペイロードが表示されます。 この呼び出しには、ログ アラートに使用される実際のデータや JSON スキーマの表現は含まれません。 
+> ログ アラートの **[webhook 用のカスタム Json ペイロードを含む]** オプションの横にある **[View Webhook]\(Webhook の表示\)** ボタンをクリックすると、指定されたカスタマイズ用のサンプル Webhook ペイロードが表示されます。 実際のデータは含まれませんが、ログ アラートに使用される JSON スキーマの見本です。 
 
-Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。  既定では、ペイロードには次の表に示す値が格納されます。このペイロードは、独自のカスタム ペイロードに置き換えることができます。  その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めることができます。
+Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。 既定では、ペイロードには次の表に示す値が格納されます。 このペイロードは、独自のカスタム ペイロードに置き換えることができます。 その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めます。
 
 
 | パラメーター | 変数 | 説明 |
 |:--- |:--- |:--- |
-| AlertRuleName |#alertrulename |アラート ルールの名前。 |
-| Severity |#severity |起動されたログ アラートに設定されている重大度。 |
-| AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
-| AlertThresholdValue |#thresholdvalue |アラート ルールのしきい値。 |
-| LinkToSearchResults |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
-| ResultCount |#searchresultcount |検索結果に含まれるレコードの数。 |
-| Search Interval End time |#searchintervalendtimeutc |UTC でのクエリの終了時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 |
-| Search Interval |#searchinterval |アラート ルールの時間枠。フォーマットは HH:mm:ss です。 |
-| Search Interval StartTime |#searchintervalstarttimeutc |UTC でのクエリの開始時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 
-| SearchQuery |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
-| SearchResults |"IncludeSearchResults": true|クエリで JSON テーブルとして返されるレコード。上限は最初の 1,000 レコード。"IncludeSearchResults":true がカスタム JSON webhook 定義に最上位レベルのプロパティとして追加されている場合。 |
-| WorkspaceID |#workspaceid |Log Analytics ワークスペースの ID |
-| アプリケーション ID |#applicationid |Application Insight アプリの ID。 |
-| サブスクリプション ID |#subscriptionid |Application Insights で使用する Azure サブスクリプションの ID。 
+| *AlertRuleName* |#alertrulename |アラート ルールの名前。 |
+| *Severity* |#severity |起動されたログ アラートに設定されている重大度。 |
+| *AlertThresholdOperator* |#thresholdoperator |より大きい、またはより小さいを使用する、アラート ルールのしきい値演算子。 |
+| *AlertThresholdValue* |#thresholdvalue |アラート ルールのしきい値。 |
+| *LinkToSearchResults* |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
+| *ResultCount* |#searchresultcount |検索結果に含まれるレコードの数。 |
+| *Search Interval End time* |#searchintervalendtimeutc |UTC でのクエリの終了時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 |
+| *Search Interval* |#searchinterval |アラート ルールの時間枠。フォーマットは HH:mm:ss です。 |
+| *Search Interval StartTime* |#searchintervalstarttimeutc |UTC でのクエリの開始時刻。フォーマットは mm/dd/yyyy HH:mm:ss AM/PM です。 
+| *SearchQuery* |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
+| *SearchResults* |"IncludeSearchResults": true|クエリで JSON テーブルとして返されるレコード。上限は最初の 1,000 レコード。"IncludeSearchResults":true がカスタム JSON webhook 定義に最上位レベルのプロパティとして追加されている場合。 |
+| *Alert Type*| #alerttype | 構成されたログ アラート ルールの種類であり、[メトリック測定](alerts-unified-log.md#metric-measurement-alert-rules)または[結果の数](alerts-unified-log.md#number-of-results-alert-rules)。|
+| *WorkspaceID* |#workspaceid |Log Analytics ワークスペースの ID |
+| *アプリケーション ID* |#applicationid |Application Insights アプリの ID。 |
+| *サブスクリプション ID* |#subscriptionid |使用された Azure サブスクリプションの ID。 
 
 > [!NOTE]
-> Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると、アラートで指定されたリンクは "*開きません*"。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](/rest/api/loganalytics/) を使用して結果をプログラミングで取得したりできます。 
+> *LinkToSearchResults* では、Analytics セクションに表示するため、URL で *SearchQuery*、*Search Interval StartTime*、*Search Interval EndTime* などのパラメーターが Azure portal に渡されます。 Azure portal には、約 2,000 文字の URI サイズ制限があります。 パラメーター値が制限を超えている場合、ポータルではアラートで提供されたリンクが "*開かれません*"。 手動で詳細を入力し、Analytics ポータルで結果を表示できます。 または、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](/rest/api/loganalytics/) を使って、プログラムで結果を取得できます。 
 
-たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。  この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
+たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。 この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 
 ```json
 
@@ -76,18 +78,28 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 カスタム ペイロードに検索結果を含めるには、**IncudeSearchResults** が JSON ペイロードの最上位レベルのプロパティとして設定されていることを確認します。 
 
 ## <a name="sample-payloads"></a>サンプル ペイロード
-このセクションでは、ペイロードが標準の場合やカスタムの場合など、ログ アラートの webhook のサンプル ペイロードを紹介します。
+このセクションでは、ログ アラートの Webhook のサンプル ペイロードを示します。 サンプル ペイロードには、ペイロードが標準の場合とカスタムの場合の例が含まれます。
 
-### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 webhook 
-以下のサンプルはどちらも、2 つの列と 2 つの行のみで構成されたダミー ペイロードを示しています。
+### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 Webhook 
+以下のサンプルではどちらも、2 つの列と 2 つの行のみで構成されるダミー ペイロードが示されています。
 
-#### <a name="log-alert-for-azure-log-analytics"></a>Azure Log Analytics のログ アラート
-以下は、ログ分析ベースのアラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook アクションのサンプル ペイロードです。
+#### <a name="log-alert-for-log-analytics"></a>Log Analytics のログ アラート
+次のサンプル ペイロードは、Log Analytics に基づくアラートに使用される、"*カスタム JSON オプションが含まれていない*" 標準 Webhook アクションに対するものです。
 
 ```json
 {
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": "log alert rule",
+    "Severity": "Warning",
     "SearchResult":
         {
         "tables":[
@@ -105,31 +117,34 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "Warning"
+    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+    "AlertType": "Metric measurement"
  }
  ```
 
 > [!NOTE]
-> Log Analytics でログ アラートの [API 設定](alerts-log-api-switch.md)を切り替えていた場合、[重要度] フィールドの値が変化することがあります。
+> Log Analytics でログ アラートに対する [API 設定](alerts-log-api-switch.md)を切り替えていた場合、"Severity" フィールドの値が変化することがあります。
 
 
-#### <a name="log-alert-for-azure-application-insights"></a>Azure Application Insights のログ アラート
-以下は、Application Insights ベースのログ アラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook のサンプル ペイロードです。
+#### <a name="log-alert-for-application-insights"></a>Application Insights のログ アラート
+次のサンプル ペイロードは、Application Insights に基づくアラートに使用されるときの、"*カスタム JSON オプションが含まれていない*" 標準 Webhook に対するものです。
     
 ```json
 {
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"requests | where resultCode == \"500\"",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": null,
+    "Severity": "3",
     "SearchResult":
         {
         "tables":[
@@ -147,22 +162,14 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
+    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+    "AlertType": "Number of results"
     }
 }
 ```
 
 #### <a name="log-alert-with-custom-json-payload"></a>カスタム JSON ペイロードを使用したログ アラート
-たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、次のように入力します。 
+たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、以下を使用できます。 
 
 ```json
     {
@@ -171,12 +178,12 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     }
 ```
 
-以下は、どのログ アラートでも使用できるカスタム webhook アクションのサンプル ペイロードです。
+以下は、どのログ アラートでも使用できるカスタム Webhook アクションのサンプル ペイロードです。
     
 ```json
     {
     "alertname":"AcmeRule","IncludeSearchResults":true,
-    "SearchResult":
+    "SearchResults":
         {
         "tables":[
                     {"name":"PrimaryResult","columns":
@@ -197,10 +204,10 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 ```
 
 
-## <a name="next-steps"></a>次の手順
-- [Azure アラートのログ アラート](alerts-unified-log.md)について学習します。
-- [Azure のログ アラートの管理](alerts-log.md)について理解します
-- [Azure でのアクション グループ](action-groups.md)の作成および管理
+## <a name="next-steps"></a>次のステップ
+- [Azure アラートでのログ アラート](alerts-unified-log.md)について学習します。
+- [Azure でログ アラートを管理する](alerts-log.md)方法を理解します。
+- [Azure でアクション グループ](action-groups.md)を作成および管理します。
 - [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
 - [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します 
 

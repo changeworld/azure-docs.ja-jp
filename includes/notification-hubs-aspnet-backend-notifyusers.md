@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156784"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77192590"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -39,23 +39,23 @@ ms.locfileid: "66156784"
 
 2. **[サーバー エクスプローラー]** を選択し、Azure アカウントにサインインします。 アカウントの Web サイト リソースを作成するには、サインインする必要があります。
 
-3. Visual Studio で Visual Studio ソリューションを右クリックし、**[追加]** をポイントして、**[新しいプロジェクト]** をクリックします。
-4. **[Visual C#]** を展開し、**[Web]** を選択して **[ASP.NET Web アプリケーション]** をクリックします。
+3. Visual Studio で Visual Studio ソリューションを右クリックし、 **[追加]** をポイントして、 **[新しいプロジェクト]** をクリックします。
+4. **[Visual C#]** を展開し、 **[Web]** を選択して **[ASP.NET Web アプリケーション]** をクリックします。
 
-5. **[名前]** ボックスに「**AppBackend**」と入力し、**[OK]** を選択します。
+5. **[名前]** ボックスに「**AppBackend**」と入力し、 **[OK]** を選択します。
 
     ![[新しいプロジェクト] ウィンドウ][B1]
 
-6. **[新しい ASP.NET プロジェクト]** ウィンドウで、**[Web API]** チェック ボックスをオンにし、**[OK]** を選択します。
+6. **[新しい ASP.NET プロジェクト]** ウィンドウで、 **[Web API]** チェック ボックスをオンにし、 **[OK]** を選択します。
 
     ![[新しい ASP.NET プロジェクト] ウィンドウ][B2]
 
-7. **[Microsoft Azure Web App の構成]** ウィンドウで、サブスクリプションを選択し、**[App Service プラン]** の一覧で次のいずれかの操作を実行します。
+7. **[Microsoft Azure Web App の構成]** ウィンドウで、サブスクリプションを選択し、 **[App Service プラン]** の一覧で次のいずれかの操作を実行します。
 
     * 作成済みの App Service プランを選択します。
     * **[新しい App Service プランの作成]** を選択し、App Service プランを作成します。
 
-   このチュートリアルではデータベースは必要ありません。 App Service プランを選択したら、**[OK]** を選択して、プロジェクトを作成します。
+   このチュートリアルではデータベースは必要ありません。 App Service プランを選択したら、 **[OK]** を選択して、プロジェクトを作成します。
 
     ![[Microsoft Azure Web App の構成] ウィンドウ][B5]
 
@@ -65,8 +65,8 @@ ms.locfileid: "66156784"
 
 このセクションでは、新しいバックエンドに対して **AuthenticationTestHandler** という名前の新しいメッセージ ハンドラー クラスを作成します。 このクラスは [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) から派生し、メッセージ ハンドラーとして追加されるため、バックエンドに送信されるすべての要求を処理できます。
 
-1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順に選択します。
-2. 新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** を選択して、クラスを生成します。 説明を簡単にするために、このクラスでは、*基本認証*を使用してユーザーを認証します。 実際のアプリでは、任意の認証スキームを使用できます。
+1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
+2. 新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、 **[追加]** を選択して、クラスを生成します。 説明を簡単にするために、このクラスでは、*基本認証*を使用してユーザーを認証します。 実際のアプリでは、任意の認証スキームを使用できます。
 3. AuthenticationTestHandler.cs に次の `using` ステートメントを追加します。
 
     ```csharp
@@ -108,7 +108,7 @@ ms.locfileid: "66156784"
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ ms.locfileid: "66156784"
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;
@@ -152,15 +152,15 @@ ms.locfileid: "66156784"
 
 このセクションでは、Notification Hubs のクライアント ライブラリを使用して、通知用にユーザーとデバイスを登録する要求を処理する新しいコントローラーを WebAPI バックエンドに追加します。 コントローラーでは、`AuthenticationTestHandler` で認証され、HttpContext に添付されたユーザーのユーザー タグを追加します。 タグは、`"username:<actual username>"` という形式の文字列になります。
 
-1. ソリューション エクスプローラーで **AppBackend** プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. ソリューション エクスプローラーで **AppBackend** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
 2. 左側のウィンドウにある **[オンライン]** を選択し、**[検索]** ボックスに「**Microsoft.Azure.NotificationHubs**」と入力します。
 
-3. 結果の一覧で、**[Microsoft Azure Notification Hubs]** を選択してから、**[インストール]** を選択します。 インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
+3. 結果の一覧で、 **[Microsoft Azure Notification Hubs]** を選択してから、 **[インストール]** を選択します。 インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
-    この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用して Azure Notification Hubs SDK に参照が追加されます。
+    この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用して Azure Notification Hubs SDK に参照が追加されます。
 
-4. 通知の送信に使用する通知ハブとの接続を表す新しいクラス ファイルを作成します。 ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。 新しいクラスに「**Notifications.cs**」という名前を付け、**[追加]** を選択して、クラスを生成します。
+4. 通知の送信に使用する通知ハブとの接続を表す新しいクラス ファイルを作成します。 ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。 新しいクラスに「**Notifications.cs**」という名前を付け、 **[追加]** を選択して、クラスを生成します。
 
     ![[新しい項目の追加] ウィンドウ][B6]
 
@@ -170,7 +170,7 @@ ms.locfileid: "66156784"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. `Notifications` クラス定義を以下のコードに置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure Portal](http://portal.azure.com)で確認できます) に置き換えます。
+6. `Notifications` クラス定義を以下のコードに置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure Portal](https://portal.azure.com)で確認できます) に置き換えます。
 
     ```csharp
     public class Notifications
@@ -185,13 +185,16 @@ ms.locfileid: "66156784"
         }
     }
     ```
-7. 次に、**RegisterController** という名前の新しいコントローラーを作成します。 ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順に選択します。
+    > [!IMPORTANT]
+    > 先に進む前に、ハブの**名前**と **DefaultFullSharedAccessSignature** を入力します。 
+    
+7. 次に、**RegisterController** という名前の新しいコントローラーを作成します。 ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
-8. **[Web API 2 コントローラー - 空]**、**[追加]** の順に選択します。
+8. **[Web API 2 コントローラー - 空]** 、 **[追加]** の順に選択します。
 
     ![[スキャフォールディングの追加] ウィンドウ][B7]
 
-9. **[コントローラー名]** ボックスに「**RegisterController**」と入力して、新しいクラスに名前を付け、**[追加]** を選択します。
+9. **[コントローラー名]** ボックスに「**RegisterController**」と入力して、新しいクラスに名前を付け、 **[追加]** を選択します。
 
     ![[コントローラーの追加] ウィンドウ][B8]
 
@@ -387,7 +390,7 @@ ms.locfileid: "66156784"
 
     ![[Microsoft Azure App Service] タイル][B15]
 
-3. **[App Service の作成]** ウィンドウで、Azure アカウントを選択します。 **[変更の種類]** > **[Web アプリ]** の順に選択します。 既定の **Web アプリ名**をそのまま保持し、**[サブスクリプション]**、**[リソース グループ]**、**[App Service プラン]** の順に選択します。
+3. **[App Service の作成]** ウィンドウで、Azure アカウントを選択します。 **[変更の種類]**  >  **[Web アプリ]** の順に選択します。 既定の **Web アプリ名**をそのまま保持し、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[App Service プラン]** の順に選択します。
 
 4. **作成** を選択します。
 

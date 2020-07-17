@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid メッセージ配信の監視
-description: Azure Event Grid メッセージの配信を監視する方法について説明します。
+description: この記事では、Azure portal を使用して、Azure Event Grid メッセージの配信状態を確認する方法について説明します。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464818"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76722137"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 
@@ -29,22 +29,22 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 トピックの場合、メトリックは次のようになります。
 
-* **[発行成功]**: イベントは正常にトピックに送信され、2xx 応答で処理されました。
-* **[発行失敗]**: イベントはトピックに送信されましたが、エラー コードにより拒否されました。
-* **[一致しない]**: イベントはトピックに正常に発行されましたが、イベント サブスクリプションと一致しませんでした。 イベントは破棄されました。
+* **[発行成功]** : イベントは正常にトピックに送信され、2xx 応答で処理されました。
+* **[発行失敗]** : イベントはトピックに送信されましたが、エラー コードにより拒否されました。
+* **[一致しない]** : イベントはトピックに正常に発行されましたが、イベント サブスクリプションと一致しませんでした。 イベントは破棄されました。
 
 サブスクリプションの場合、メトリックは次のようになります。
 
-* **[配信成功]**: イベントは正常にサブスクリプションのエンドポイントに配信され、2xx 応答を受信しました。
-* **[配信失敗]**: イベントはサブスクリプションのエンドポイントに送信されましたが、4xx または 5xx 応答を受信しました。
-* **[期限切れのイベント]**: イベントは配信されず、すべての再試行が送信済みになりました。 イベントは破棄されました。
-* **[一致するイベント]**: トピックにあるイベントがイベント サブスクリプションと一致しました。
+* **[配信成功]** : イベントは正常にサブスクリプションのエンドポイントに配信され、2xx 応答を受信しました。
+* **[配信失敗]** : イベントはサブスクリプションのエンドポイントに送信されましたが、4xx または 5xx 応答を受信しました。
+* **[Expired Events]\(イベントの有効期限切れ\)** : イベントは配信されず、すべての再試行が送信済みになりました。 イベントは破棄されました。
+* **[Matched Events]\(イベント照合済み\)** : トピックのイベントがイベント サブスクリプションと一致しました。
 
 ## <a name="event-subscription-status"></a>イベント サブスクリプションの状態
 
 イベント サブスクリプションのメトリックを表示するには、サブスクリプションの種類または特定のリソースのサブスクリプションによって検索できます。
 
-イベント サブスクリプションの種類による検索は、**[すべてのサービス]** を選択します。
+イベント サブスクリプションの種類による検索は、 **[すべてのサービス]** を選択します。
 
 ![[すべてのサービス] を選択する](./media/monitor-event-delivery/all-services.png)
 
@@ -76,7 +76,13 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 ![イベント メトリックの表示](./media/monitor-event-delivery/custom-topic-metrics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="set-alerts"></a>アラートの設定
+
+アラートは、カスタム トピックやイベント ドメインのトピックおよびドメイン レベルのメトリックに設定できます。 [概要] ブレードで、アラート ルールを表示、管理、および作成するために、左側にある **[アラート]** を選択します。 [Azure Monitor アラートの詳細情報](../azure-monitor/platform/alerts-overview.md)
+
+![イベント メトリックの表示](./media/monitor-event-delivery/select-alerts.png)
+
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

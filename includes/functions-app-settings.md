@@ -1,20 +1,18 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: functions
 author: ggailey777
-manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a8ef570674e2abea3337e5278810d583c7b721a6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1d47e8e29f6114c601d86f73bf3c34023ffe9c40
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131313"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76279469"
 ---
 関数アプリの設定は、いくつかの方法で追加、更新、削除できます。
 

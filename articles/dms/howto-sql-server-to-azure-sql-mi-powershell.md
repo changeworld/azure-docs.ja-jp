@@ -1,24 +1,26 @@
 ---
-title: Database Migration Service および PowerShell を使用して SQL Server を Azure SQL Database Managed Instance に移行する | Microsoft Docs
-description: Azure PowerShell を使用してオンプレミスの SQL Server から Azure SQL DB Managed Instance に移行する方法について説明します。
+title: PowerShell:SQL Server から SQL マネージド インスタンスに移行する
+titleSuffix: Azure Database Migration Service
+description: Azure PowerShell と Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database マネージド インスタンスに移行する方法について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: d83410efd26f8c2078d3abdb01d061db0b83d33d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233719"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77650726"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL Database マネージド インスタンスに移行する
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Database マネージド インスタンスに移行する
+
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2005 以上のオンプレミス インスタンスに復元された **Adventureworks2016** データベースを Azure SQL Database マネージド インスタンスに移行します。 Microsoft Azure PowerShell で `Az.DataMigration` モジュールを使用すると、データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database マネージド インスタンスに移行できます。
 
 この記事では、次のことについて説明します。
@@ -44,7 +46,7 @@ ms.locfileid: "65233719"
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 * Azure SQL Database マネージド インスタンス。 [Azure SQL Database マネージド インスタンスの作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)に関する記事の詳細に従って、Azure SQL Database マネージド インスタンスを作成できます。
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールする。
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミス ソース サーバーへのサイト間接続を Azure Database Migration Service に提供する、Azure Resource Manager デプロイ モデルを使用して作成された Azure 仮想ネットワーク (VNet)。
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミス ソース サーバーへのサイト間接続を Azure Database Migration Service に提供する、Azure Resource Manager デプロイ モデルを使用して作成された Microsoft Azure 仮想ネットワーク。
 * [SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事で説明されているように、Data Migration Assistant を使用してオンプレミスのデータベースおよびスキーマの移行の評価を完了していること。
 * `Az.DataMigration` モジュール (バージョン 0.7.2 以降) を PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールする。
 * ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可が含まれていることを確認する。
@@ -57,7 +59,7 @@ ms.locfileid: "65233719"
 
 PowerShell を使用して Azure サブスクリプションにサインインします。 詳細については、「[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
@@ -236,7 +238,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 * **ログインを選択する**。 次の例に示すように、移行するログインの一覧を作成します。
 
     ```powershell
-    $selectedLogins = @(“user1”, “user2”)
+    $selectedLogins = @("user1", "user2")
     ```
 
     > [!IMPORTANT]
@@ -376,15 +378,15 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
     ```powershell
     if (($CheckTask.ProjectTask.Properties.State -eq "Running") -or ($CheckTask.ProjectTask.Properties.State -eq "Queued"))
     {
-      write-host "migration task running"
+      Write-Host "migration task running"
     }
-    Else if($CheckTask.ProjectTask.Properties.State -eq "Succeeded")
+    else if($CheckTask.ProjectTask.Properties.State -eq "Succeeded")
     { 
-      write-host "Migration task is completed Successfully"
+      Write-Host "Migration task is completed Successfully"
     }
-    Else if($CheckTask.ProjectTask.Properties.State -eq "Failed" -or $CheckTask.ProjectTask.Properties.State -eq "FailedInputValidation"  -or $CheckTask.ProjectTask.Properties.State -eq "Faulted")
+    else if($CheckTask.ProjectTask.Properties.State -eq "Failed" -or $CheckTask.ProjectTask.Properties.State -eq "FailedInputValidation" -or $CheckTask.ProjectTask.Properties.State -eq "Faulted")
     { 
-      write-host “Migration Task Failed”
+      Write-Host "Migration Task Failed"
     }
     ```
 
@@ -417,6 +419,6 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 追加の移行シナリオ (ソースとターゲットのペア) については、Microsoft の[データベース移行ガイド](https://datamigration.microsoft.com/)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」の記事で、Azure Database Migration Service の詳細を確認します。

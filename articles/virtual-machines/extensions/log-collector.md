@@ -1,10 +1,10 @@
 ---
-title: AzureLogCollector VM 拡張機能 | Microsoft Docs
+title: AzureLogCollector VM 拡張機能
 description: すべてのログ ファイルを収集し Azure Storage 内で一か所に集める AzureLogCollector VM 拡張機能について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: squillace
-manager: jeconnoc
+author: mimckitt
+manager: vashan
 editor: ''
 ms.assetid: aa033a65-8eb8-4cae-9f91-0f80cbb55ae4
 ms.service: virtual-machines-windows
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2016
-ms.author: rasquill
-ms.openlocfilehash: 846fe04146aeba389355b23141cc23e7990d3aa1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: mimckitt
+ms.openlocfilehash: 51e4fc4640d6fe1512c96fd6d0c400279056f777
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944734"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81273275"
 ---
 # <a name="azurelogcollector-extension"></a>AzureLogCollector 拡張機能
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]

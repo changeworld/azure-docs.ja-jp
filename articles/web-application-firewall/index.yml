@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Web アプリケーション ファイアウォールのドキュメント
+summary: Web アプリケーション ファイアウォール (WAF) では、一般的な悪用や脆弱性から Web アプリケーションを一元的に保護します。 WAF は Azure Application Gateway にデプロイすることも、Azure Front Door Service にデプロイすることもできます。
+metadata:
+  title: Web アプリケーション ファイアウォールのドキュメント
+  description: Application Gateway や Front Door と共にデプロイできる Web アプリケーション ファイアウォールについて説明します
+  services: web-application-firewall
+  ms.service: web-application-firewall
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/27/2020
+  ms.openlocfilehash: 023755687ccee87a3e08cb3a089ad56f196bcbff
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81536558"
+landingContent:
+- title: 概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Web アプリケーション ファイアウォールとは
+      url: overview.md
+    - text: Application Gateway上の Web アプリケーション ファイアウォール
+      url: ./ag/ag-overview.md
+    - text: Front Door 上の Web アプリケーション ファイアウォール
+      url: ./afds/afds-overview.md
+    - text: Azure CDN 上の Web アプリケーション ファイアウォール
+      url: ./cdn/cdn-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Application Gateway上の Web アプリケーション ファイアウォール
+      url: ./ag/application-gateway-web-application-firewall-portal.md
+    - text: Front Door 上の Web アプリケーション ファイアウォール
+      url: ./afds/waf-front-door-create-portal.md
+    - text: Azure CDN での WAF ポリシー
+      url: ./cdn/waf-cdn-create-portal.md
+- title: Application Gateway での WAF 規則の管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Application Gateway で Web アプリケーション ファイアウォール規則をカスタマイズする
+      url: ./ag/application-gateway-customize-waf-rules-portal.md
+  - linkListType: overview
+    links:
+    - text: Web アプリケーション ファイアウォールの CRS 規則グループと規則
+      url: ./ag/application-gateway-crs-rulegroups-rules.md
+- title: Front Door での WAF の構成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ボット保護の構成
+      url: ./afds/waf-front-door-policy-configure-bot-protection.md
+    - text: カスタム応答を構成する
+      url: ./afds/waf-front-door-configure-custom-response-code.md

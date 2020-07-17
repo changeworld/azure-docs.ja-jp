@@ -1,6 +1,6 @@
 ---
-title: Ruby で Azure Service Bus キューを使用する方法 | Microsoft Docs
-description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
+title: Ruby で Azure Service Bus キューを使用する方法
+description: このチュートリアルでは、Ruby アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786049"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76760591"
 ---
-# <a name="how-to-use-service-bus-queues-with-ruby"></a>Ruby で Service Bus キューを使用する方法
+# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>クイック スタート:Ruby で Service Bus キューを使用する方法
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
@@ -97,7 +97,10 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 メッセージが処理された後、`delete_queue_message()` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、このプロセスは "*1 回以上の処理*" と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの `message_id` プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
+
+## <a name="next-steps"></a>次のステップ
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)の概要。

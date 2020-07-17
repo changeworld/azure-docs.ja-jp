@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターでの Vamp によるカナリア リリース
 description: Vamp を使用してサービスをカナリア リリースし、Azure Container Service DC/OS クラスターでスマート トラフィック フィルタリングを適用する方法を説明します。
-services: container-service
 author: gggina
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311219"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734826"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -58,7 +56,7 @@ DC/OS クラスターが実行されたので、DC/OS UI (http:\//localhost:80) 
 
 Vamp では、メトリックの収集と集計に Elasticsearch が必要です。 [magneticio Docker イメージ](https://hub.docker.com/r/magneticio/elastic/)を使用して、互換性のある Vamp Elasticsearch スタックをデプロイできます。
 
-1. DC/OS UI で、**[サービス]** に移動し、**[サービスのデプロイ]** をクリックします。
+1. DC/OS UI で、 **[サービス]** に移動し、 **[サービスのデプロイ]** をクリックします。
 
 2. **[Deploy New Service]\(新しいサービスのデプロイ\)** ポップアップから **[JSON モード]** を選択します。
 
@@ -103,16 +101,16 @@ Vamp では、メトリックの収集と集計に Elasticsearch が必要です
 
 Elasticsearch が**実行中**として報告されたら、Vamp DC/OS ユニバース パッケージを追加できます。 
 
-1. **[ユニバース]** に移動し、**[vamp]** を検索します。 
+1. **[ユニバース]** に移動し、 **[vamp]** を検索します。 
    ![DC/OS ユニバースでの Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
-2. vamp パッケージの横の **[インストール]** をクリックし、**[Advanced Installation]\(高度なインストール\)** を選択します。
+2. vamp パッケージの横の **[インストール]** をクリックし、 **[Advanced Installation]\(高度なインストール\)** を選択します。
 
 3. 下へスクロールし、次の elasticsearch-url を入力します: `http://elasticsearch.marathon.mesos:9200`。 
 
    ![Elasticsearch URL の入力](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
-4. **[確認後にインストールする]** をクリックし、**[インストール]** をクリックしてデプロイを開始します。  
+4. **[確認後にインストールする]** をクリックし、 **[インストール]** をクリックしてデプロイを開始します。  
 
    DC/OS により、必要なすべての Vamp コンポーネントがデプロイされます。 進捗状況は **[サービス]** ページで追跡できます。
   
@@ -129,9 +127,9 @@ Elasticsearch が**実行中**として報告されたら、Vamp DC/OS ユニバ
 
 Vamp が稼働状態になったので、ブループリントからサービスをデプロイします。 
 
-最も単純な形式では、[Vamp ブループリント](https://vamp.io/documentation/using-vamp/blueprints/)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
+最も単純な形式では、[Vamp ブループリント](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)は、デプロイするエンドポイント (ゲートウェイ)、クラスター、およびサービスを説明します。 Vamp はクラスターを使用して、カナリア リリースまたは A/B テスト用に同じサービスのさまざまなバリアントを論理グループにグループ化します。  
 
-このシナリオでは、[**sava**](https://github.com/magneticio/sava) と呼ばれるサンプルのモノリシック アプリケーション (バージョン 1.0) を使用します。 モノリシックは、Docker コンテナーにパッケージ化されます。このコンテナーは magneticio/sava:1.0.0 の下のDocker Hub にあります。 通常、アプリケーションはポート 8080 で実行されますが、ここではポート 9050 に公開します。 シンプルなブループリントを使用して、Vamp を使ってアプリをデプロイします。
+このシナリオでは、[**sava**](https://github.com/magneticio/sava-product) と呼ばれるサンプルのモノリシック アプリケーション (バージョン 1.0) を使用します。 モノリシックは、Docker コンテナーにパッケージ化されます。このコンテナーは magneticio/sava:1.0.0 の下のDocker Hub にあります。 通常、アプリケーションはポート 8080 で実行されますが、ここではポート 9050 に公開します。 シンプルなブループリントを使用して、Vamp を使ってアプリをデプロイします。
 
 1. **[デプロイ]** に移動します。
 
@@ -145,7 +143,6 @@ Vamp が稼働状態になったので、ブループリントからサービス
     9050: sava_cluster/webport      # stable endpoint
    clusters:
     sava_cluster:               # cluster to create
-     services:
         -
           breed:
             name: sava:1.0.0        # service variant name
@@ -154,7 +151,7 @@ Vamp が稼働状態になったので、ブループリントからサービス
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. **[Save]** をクリックします。 Vamp により、デプロイが初期化されます。
+4. **[保存]** をクリックします。 Vamp により、デプロイが初期化されます。
 
 デプロイが **[デプロイ]** ページに一覧表示されます。 その状態を監視するデプロイをクリックします。
 
@@ -162,7 +159,7 @@ Vamp が稼働状態になったので、ブループリントからサービス
 
 ![Vamp UI での sava サービス](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
 
-2 つのゲートウェイが作成されます。これらは、**[ゲートウェイ]** ページで確認できます。
+2 つのゲートウェイが作成されます。これらは、 **[ゲートウェイ]** ページで確認できます。
 
 * 実行中のサービスにアクセスするための安定したエンドポイント (ポート 9050) 
 * Vamp によって管理された内部ゲートウェイ (このゲートウェイについて詳しくは後の手順を参照)。 
@@ -198,7 +195,7 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
 
 新しい sava 1.1 サービスを実行中のデプロイとマージするには、次の手順を実行します。
 
-1. Vamp UI で、**[Blueprints]\(ブループリント\)** をクリックします。
+1. Vamp UI で、 **[Blueprints]\(ブループリント\)** をクリックします。
 
 2. **[追加]** をクリックし、次のブループリント YAML を貼り付けます。このブループリントは、既存のクラスター (sava_cluster) 内にデプロイする新しいサービス バリアント (sava:1.1.0) を説明します。
 
@@ -206,7 +203,6 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
    name: sava:1.1.0      # blueprint name
    clusters:
     sava_cluster:       # cluster to update
-      services:
         -
           breed:
             name: sava:1.1.0    # service variant name
@@ -215,13 +211,13 @@ Azure ポータルを使用してこれらのタスクを完了する詳細な�
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. **[Save]** をクリックします。 ブループリントが格納され、**[ブループリント]** ページに一覧表示されます。
+3. **[保存]** をクリックします。 ブループリントが格納され、 **[ブループリント]** ページに一覧表示されます。
 
-4. sava:1.1 ブループリントでアクション メニューを開き、**[Merge to]\(マージ先\)** をクリックします。
+4. sava:1.1 ブループリントでアクション メニューを開き、 **[Merge to]\(マージ先\)** をクリックします。
 
    ![Vamp UI - ブループリント](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
-5. **[sava]** デプロイを選択し、**[Merge]\(マージ)\** をクリックします。
+5. **[sava]** デプロイを選択し、 **[Merge]\(マージ)\** をクリックします。
 
    ![Vamp UI - ブループリントをデプロイにマージ](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
@@ -237,9 +233,9 @@ Vamp により、ブループリントに説明された新しい sava:1.1.0 サ
 
 両バージョンの sava を同じクラスターにデプロイし、**重み**スライダー動かして、これらの sava 間のトラフィックの配分を調整します。
 
-1. **[重み]** の横の ![[Vamp UI - edit]\(Vamp UI - 編集\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) をクリックします。
+1. ![[重み]](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) の横の **[Vamp UI - edit]\(Vamp UI - 編集\)** をクリックします。
 
-2. 重みの配分を 50%/50% に設定し、**[保存]** をクリックします。
+2. 重みの配分を 50%/50% に設定し、 **[保存]** をクリックします。
 
    ![Vamp UI - ゲートウェイの重みスライダー](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
@@ -274,7 +270,7 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 
    ![Vamp UI - ゲートウェイへの条件の適用](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. 最後に、ゲートウェイの重みを調整して、残りのすべてのトラフィック (すべての非 Firefox ユーザー) を新しい sava:1.1.0 に送信します。 **[重み]** の横の ![[Vamp UI - edit]\(Vamp UI - 編集\)](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) をクリックして、100% がルート sava/sava_cluster/sava:1.1.0/webport に送信されるように重みの配分を設定します。
+5. 最後に、ゲートウェイの重みを調整して、残りのすべてのトラフィック (すべての非 Firefox ユーザー) を新しい sava:1.1.0 に送信します。 ![[重み]](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) の横の **[Vamp UI - edit]\(Vamp UI - 編集\)** をクリックして、100% がルート sava/sava_cluster/sava:1.1.0/webport に送信されるように重みの配分を設定します。
 
    これで、条件によってフィルターされないすべてのトラフィックが、新しい sava:1.1.0 に送信されます。
 
@@ -289,11 +285,11 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 また、次のような Vamp の強力な機能の一部を紹介しました。新しいサービス バリアントを実行中のデプロイにマージし、それを段階的に導入した後、トラフィックをフィルター処理して既知の非互換性を解決しました。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* Vamp アクションの管理について詳しくは、「[Vamp REST API](https://vamp.io/documentation/api/api-reference/)」を参照してください。
+* Vamp アクションの管理について詳しくは、「[Vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events)」を参照してください。
 
-* Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)として実行します。
+* Node.js で Vamp 自動スクリプトを構築し、[Vamp ワークフロー](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)として実行します。
 
-* その他の [VAMP チュートリアル](https://vamp.io/documentation/tutorials/)もご覧ください。
+* その他の [VAMP チュートリアル](https://docs.vamp.io/tutorials/)もご覧ください。
 

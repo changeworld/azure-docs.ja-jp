@@ -1,54 +1,45 @@
 ---
-title: Microsoft ID プラットフォームでサポートされる認証プロトコルについて学習する | Azure
+title: OAuth 2.0 プロトコルと OpenID Connect プロトコル - Microsoft ID プラットフォーム | Azure
 description: Microsoft ID プラットフォームのエンドポイントでサポートされている OAuth 2.0 および OpenID Connect プロトコルのガイドです。
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: hpsin
 manager: CelesteDG
-editor: ''
-ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/11/2019
-ms.author: ryanwi
+ms.topic: conceptual
+ms.date: 04/13/2020
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546111"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690265"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Microsoft ID プラットフォームのプロトコル
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームにおける OAuth 2.0 プロトコルと OpenID Connect プロトコル
 
 業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用した Identity-as-a-Service (サービスとしての ID) としての Microsoft ID プラットフォームのエンドポイント。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 ここでは、Microsoft のオープンソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティの[オープンソース ライブラリ](reference-v2-libraries.md)を使用する場合に役立つ情報を紹介します。
-
-> [!NOTE]
-> Microsoft ID プラットフォーム エンドポイントでは、Azure AD のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](active-directory-v2-limitations.md)に関するページを参照してください。
 
 ## <a name="the-basics"></a>基本
 
 OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
-![OAuth 2.0 Roles](./media/active-directory-v2-flows/protocols-roles.svg)
+![OAuth 2.0 ロールを示す図](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * **承認サーバー**は、Microsoft ID プラットフォーム エンドポイントとして、ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。 承認サーバーは、ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、承認サーバーによって安全に処理されます。
 * **リソース所有者** とは通常、エンド ユーザーを指します。 データを所有し、そのデータ (またはリソース) へのアクセスをサード パーティに許可する権限を持つ当事者です。
 * **OAuth クライアント**は、皆さんが開発するアプリです。対応するアプリケーション ID で識別されます。 通常は、OAuth クライアントがエンド ユーザーと情報をやり取りし、承認サーバーにトークンを要求します。 クライアントには、リソース所有者がリソースへのアクセス権を付与する必要があります。
 * **リソース サーバー**は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。リソースへのアクセスを許可するためにベアラー アクセス トークンが使用されます。
 
-## <a name="app-registration"></a>アプリケーションの登録
+## <a name="app-registration"></a>アプリの登録
 
 個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、[Azure portal](https://aka.ms/appregistrations) の**アプリの登録** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
-* **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
+* 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI** (オプション)
 * その他シナリオに応じた値。
 
 詳細については、 [アプリの登録](quickstart-register-app.md)方法を参照してください。
@@ -74,7 +65,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 これらのエンドポイントと対話する方法について学習するには、「[プロトコル](#protocols)」セクションで特定のアプリの種類を選択し、リンクから詳細情報にアクセスしてください。
 
 > [!TIP]
-> Azure AD に登録されたアプリはいずれも、個人用アカウントにサインインしなくても、Microsoft ID プラットフォーム エンドポイントを使用できます。  アプリケーションを作成し直さなくても、このようにして既存のアプリケーションを Microsoft ID プラットフォームと [MSAL](reference-v2-libraries.md) に移行することができます。  
+> Azure AD に登録されたアプリはいずれも、個人用アカウントにサインインしなくても、Microsoft ID プラットフォーム エンドポイントを使用できます。  アプリケーションを作成し直さなくても、このようにして既存のアプリケーションを Microsoft ID プラットフォームと [MSAL](reference-v2-libraries.md) に移行することができます。
 
 ## <a name="tokens"></a>トークン
 

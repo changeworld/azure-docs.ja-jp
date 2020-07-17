@@ -5,21 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/18/2018
+ms.date: 04/16/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 092b5696b97b73344a01af8103b24a01010f7a55
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 32f972b177e004612856db91e790c5c2781a2b44
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114537"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536440"
 ---
 次の制限は、Azure Resource Manager と Azure Storage を使用して管理操作を実行しているときにのみ適用されます。
 
-| Resource | 既定の制限 |
+| リソース | 制限 |
 | --- | --- |
 | Storage アカウント管理操作数 (読み取り) |5 分あたり 800 |
-| Storage アカウント管理操作数 (書き込み) |1 時間あたり 200 |
+| Storage アカウント管理操作数 (書き込み) |1 秒あたり 10 または 1 時間あたり 1,200 |
 | Storage アカウント管理操作数 (リスト) |5 分あたり 100 |
-

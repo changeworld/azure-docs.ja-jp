@@ -1,25 +1,21 @@
 ---
-title: Azure Cloud Shell の Bash のクイックスタート | Microsoft Docs
-description: Cloud Shell の Bash のクイックスタート
-services: ''
-documentationcenter: ''
+title: Azure Cloud Shell のクイックスタート - Bash
+description: Azure Cloud Shell でブラウザーで Bash コマンド ラインを使用する方法について説明します。
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: b8f96de7214a46c9e38182c141343a46c0e28139
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882091"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79458071"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -56,7 +52,7 @@ az account set --subscription 'my-subscription-name'
 > [!TIP]
 > 設定したサブスクリプションは、`/home/<user>/.azure/azureProfile.json` を使って今後のセッション用に記憶されます。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 "MyRG" という名前の新しいリソース グループを WestUS に作成します。
 ```azurecli-interactive
 az group create --location westus --name MyRG
@@ -89,7 +85,7 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 
 ## <a name="cleaning-up"></a>クリーンアップしています 
 1. SSH セッションを終了します。
-   ```azurecli-interactive
+   ```
    exit
    ```
 
@@ -98,7 +94,7 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
    az group delete -n MyRG
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
 [Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

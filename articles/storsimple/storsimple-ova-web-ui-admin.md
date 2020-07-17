@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 989e7b697f9b527df549fb32be18edd1d3c8d224
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228163"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Web UI を使用した StorSimple Virtual Array の管理
 ![セットアップ プロセス フロー](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -40,7 +40,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 サービス データ暗号化キーを紛失し、取得する必要がある場合は、サービスに登録されているデバイスのローカル Web UI で次の手順を実行します。
 
 #### <a name="to-get-the-service-data-encryption-key"></a>サービス データ暗号化キーを取得するには
-1. ローカル Web UI に接続します。 **[構成]** > **[クラウド設定]** に移動します。
+1. ローカル Web UI に接続します。 **[構成]**  >  **[クラウド設定]** に移動します。
 2. ページの下部にある **[サービス データ暗号化キーの取得]** をクリックします。 キーが表示されます。 このキーをコピーして保存します。
    
     ![サービス データ暗号化キーの取得 1](./media/storsimple-ova-web-ui-admin/image27.png)
@@ -49,7 +49,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 ローカル Web UI を使用してデバイスを構成する際に、エラーが発生する場合があります。 このようなエラーの診断とトラブルシューティングを行うには、診断テストを実行します。
 
 #### <a name="to-run-the-diagnostic-tests"></a>診断テストを実行するには
-1. ローカル Web UI で、**[トラブルシューティング]** > **[診断テスト]** に移動します。
+1. ローカル Web UI で、 **[トラブルシューティング]**  >  **[診断テスト]** に移動します。
    
     ![診断の実行 1](./media/storsimple-ova-web-ui-admin/image29.png)
 2. ページの下部にある **[診断テストの実行]** をクリックします。 これにより、ネットワーク、デバイス、Web プロキシ、時刻、またはクラウドの設定で発生する可能性のある問題を診断するためのテストが開始されます。 デバイスでテストを実行中であることが通知されます。
@@ -61,7 +61,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 ログ パッケージは、Microsoft サポートがデバイスの問題のトラブルシューティングを行う際に役立つすべての関連ログで構成されます。 このリリースでは、ログ パッケージはローカル Web UI を使用して生成できます。
 
 #### <a name="to-generate-the-log-package"></a>ログ パッケージを生成するには
-1. ローカル Web UI で、**[トラブルシューティング]** > **[システム ログ]** に移動します。
+1. ローカル Web UI で、 **[トラブルシューティング]**  >  **[システム ログ]** に移動します。
    
     ![ログ パッケージの生成 1](./media/storsimple-ova-web-ui-admin/image31.png)
 2. ページの下部にある **[ログ パッケージの作成]** をクリックします。 システム ログのパッケージが作成されます。 作成には数分かかります。
@@ -80,11 +80,11 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 ローカル Web UI を使用して、仮想デバイスをシャットダウンおよび再起動できます。 再起動する前に、ホストのボリュームや共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。 これにより、データの破損の可能性を最小限にします。 
 
 #### <a name="to-shut-down-your-virtual-device"></a>仮想デバイスをシャットダウンするには
-1. ローカル Web UI で、**[メンテナンス]** > **[電源設定]** に移動します。
+1. ローカル Web UI で、 **[メンテナンス]**  >  **[電源設定]** に移動します。
 2. ページの下部にある **[シャット ダウン]** をクリックします。
    
     ![デバイスのシャットダウン 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. デバイスをシャットダウンすると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)に移動します。
+3. デバイスをシャットダウンすると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)。
    
     ![デバイスのシャットダウンの警告](./media/storsimple-ova-web-ui-admin/image37.png)
    
@@ -95,11 +95,11 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
     デバイスがシャットダウンされます。 デバイスを起動する場合は、Hyper-V マネージャーを使用してこれを実行する必要があります。
 
 #### <a name="to-restart-your-virtual-device"></a>仮想デバイスを再起動するには
-1. ローカル Web UI で、**[メンテナンス]** > **[電源設定]** に移動します。
+1. ローカル Web UI で、 **[メンテナンス]**  >  **[電源設定]** に移動します。
 2. ページの下部にある **[再起動]** をクリックします。
    
     ![デバイスの再起動](./media/storsimple-ova-web-ui-admin/image36.png)
-3. デバイスを再起動すると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)に移動します。
+3. デバイスを再起動すると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)。
    
     ![再起動の警告](./media/storsimple-ova-web-ui-admin/image37.png)
    

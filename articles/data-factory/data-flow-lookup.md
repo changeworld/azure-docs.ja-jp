@@ -1,45 +1,95 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の参照変換
-description: Azure Data Factory の Mapping Data Flow の参照変換
+title: マッピング データ フローでの参照変換
+description: マッピング データ フローで参照変換を使用して、別のソースからデータを参照します。
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: seo-lt-2019
+ms.date: 03/23/2020
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788005"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594323"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory の Mapping Data Flow の参照変換
+# <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-参照を使用して、別のソースの参照データをデータ フローに追加します。 参照変換では、参照テーブルをポイントし、キー フィールドが一致する定義済みのソースが必要です。
+参照変換を使用して、データ フロー ストリーム内の別のソースからデータを参照します。 参照変換では、一致したデータの列がソース データに追加されます。
+
+参照変換は、左外部結合と似ています。 プライマリ ストリームのすべての行が出力ストリームに存在し、それに参照ストリームからの列が追加されます。 
+
+## <a name="configuration"></a>構成
 
 ![参照変換](media/data-flow/lookup1.png "参照")
 
-受信するストリームのフィールドと参照元のフィールドの間で一致させるキー フィールドを選択します。 データ フロー デザイン キャンバスで、参照の右側として使用する新しいソースを先に作成しておく必要があります。
+**[Primary stream]\(プライマリ ストリーム\):** データの受信ストリーム。 このストリームは、結合の左側に相当します。
 
-一致が見つかると、参照元から結果の行と列がデータ フローに追加されます。 データ フローの最後でシンクに書き込む、関心のあるフィールドを選択できます。
+**[Lookup stream]\(参照ストリーム\):** プライマリ ストリームに追加されるデータ。 どのデータが追加されるかは、参照条件によって決まります。 このストリームは、結合の右側に相当します。
 
-## <a name="optimizations"></a>最適化
+**[Match multiple rows]\(複数の行の一致\):** 有効にすると、プライマリ ストリームに複数の一致がある行で、複数の行が返されます。 それ以外の場合は、[Match on]\(一致対象\) 条件に基づいて 1 行だけが返されます。
 
-Data Factory では、データ フローがスケールアウト Spark 環境で実行されます。 データセットがワーカー ノードのメモリ領域に収まる場合、参照のパフォーマンスを最適化することができます。
+**[Match on]\(一致対象\):** [Match multiple rows]\(複数の行の一致\) が選択されていない場合にのみ表示されます。 任意の行、最初の一致、または最後の一致のいずれと一致するかを選択します。 実行が最も速いので、任意の行をお勧めします。 最初の行または最後の行を選択する場合は、並べ替え条件を指定する必要があります。
+
+**[Lookup conditions]\(参照条件\):** 一致対象の列を選択します。 等値条件が満たされた場合、行は一致と見なされます。 [データ フロー式言語](data-flow-expression-functions.md)を使用して値を抽出するには、ポイントして [Computed column]\(計算列\) を選択します。
+
+参照変換では、等値一致のみがサポートされています。 "より大きい" などの他の演算子を含むように参照式をカスタマイズするには、[結合変換のクロス結合](data-flow-join.md#custom-cross-join)を使用することをお勧めします。 クロス結合を使用すると、実行時に発生する可能性のあるデカルト積エラーを回避できます。
+
+両方のストリームのすべての列が、出力データに含まれます。 重複する列または不要な列を削除するには、参照変換の後に[選択変換](data-flow-select.md)を追加します。 シンク変換で列を削除したり、名前を変更したりすることもできます。
+
+## <a name="analyzing-matched-rows"></a>一致した行の分析
+
+参照変換の後で、`isMatch()` 関数を使用して、参照が個々の行と一致したかどうかを確認できます。
+
+![参照パターン](media/data-flow/lookup111.png "参照パターン")
+
+このパターンの例は、条件分割変換を使用して `isMatch()` 関数で分割する場合です。 上記の例では、一致する行が上のストリームを進み、一致しない行は ```NoMatch``` ストリームを進みます。
+
+## <a name="testing-lookup-conditions"></a>参照条件のテスト
+
+デバッグ モードでデータ プレビューを使用して参照変換のテストを行う場合は、小さな既知のデータ セットを使用してください。 大きなデータセットから行をサンプリングすると、テストでどの行とキーが読み取られるのかを予測できなくなります。 結果が確定的なものとならず、結合条件で一致するものが返されなくなる可能性があります。
+
+## <a name="broadcast-optimization"></a>ブロードキャストの最適化
 
 ![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
 
-### <a name="broadcast-join"></a>ブロードキャスト結合
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには、 **[固定]** を選択します。
 
-参照リレーションシップの左側または右側からデータセット全体をメモリにプッシュするよう ADF に要求するには、左側または右側のブロードキャスト結合を選択します。
+**[オフ]** オプションを使用してブロードキャストを無効にすることは、結合でタイムアウト エラーが発生する場合を除いて推奨されません。
 
-### <a name="data-partitioning"></a>データのパーティション分割
+## <a name="data-flow-script"></a>データ フローのスクリプト
 
-参照変換の [最適化] タブの [Set Partitioning]\(パーティションの設定\) を選択し、データのパーティション分割を指定することで、ワーカーごとにメモリに収めることができるデータのまとまりを作成することもできます。
+### <a name="syntax"></a>構文
 
-## <a name="next-steps"></a>次の手順
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>例
 
-[結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換は、ADF Mapping Data Flow で同様のタスクを実行します。 引き続き、これらの変換について見ていきましょう。
+![参照変換](media/data-flow/lookup-dsl-example.png "参照")
+
+次のコード スニペットには、上記の参照構成に対するデータ フロー スクリプトが含まれています。
+
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'auto')~> LookupKeys
+```
+## 
+次のステップ
+
+* [結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換はどちらも、複数のストリーム入力を受け取ります
+* ```isMatch()``` と共に[条件分割変換](data-flow-conditional-split.md)を使用して、一致する値と一致しない値に行を分割します

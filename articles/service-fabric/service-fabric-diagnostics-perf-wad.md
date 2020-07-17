@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric - Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視 | Microsoft Docs
+title: Windows Azure Diagnostics を使用したパフォーマンスの監視
 description: Windows Azure Diagnostics を使用して、Azure Service Fabric クラスターのパフォーマンス カウンターを収集します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110299"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75609912"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視
 
@@ -192,9 +183,6 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
 ....
 ```
 
- >[!NOTE]
- >`*` を使用して、名前が類似したパフォーマンス カウンターのグループを指定することができますが、シンクを経由して (Application Insights に) カウンターを送信する際は、それぞれが個別に宣言されている必要があります。 
-
 1. 収集が必要なパフォーマンス カウンターを適切に追加したら、クラスター リソースをアップグレードして、これらの変更を実行中のクラスターに反映させる必要があります。 変更した `template.json` を保存して、PowerShell を開きます。 `New-AzResourceGroupDeployment` を使用すると、クラスターをアップグレードできます。 呼び出しは、リソース グループ、更新したテンプレート ファイル、パラメーター ファイルの名前を必要とし、更新したリソースに適切な変更を加えるよう求めます。 自分のアカウントでサインインし、適切なサブスクリプションがあれば、次のコマンドを使用してアップグレードを実行します。
 
     ```sh
@@ -203,7 +191,7 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
 
 1. アップグレードのロールアウトが完了したら (初めてのデプロイかどうか、およびリソース グループのサイズに応じて、15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。 [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * クラスターのその他のパフォーマンス カウンターを収集します。 収集が必要なカウンターの一覧については、「[パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)」を参照してください。
 * [Windows VM と Azure Resource Manager テンプレートで監視と診断を利用](../virtual-machines/windows/extensions-diagnostics-template.md)して、`WadCfg` にさらに変更を加えます (診断データを送信する追加のストレージ アカウントの構成など)。
 * [WadCfg ビルダー](https://azure.github.io/azure-diagnostics-tools/config-builder/)にアクセスして最初からテンプレートを構築し、構文が正しいことを確認します (https://azure.github.io/azure-diagnostics-tools/config-builder/) で最初からテンプレートを構築し、構文が正しいことを確認します)。

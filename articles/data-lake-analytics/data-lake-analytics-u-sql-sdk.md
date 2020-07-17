@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake U-SQL SDK を使用して U-SQL ジョブをローカルで実行およびテストする
+title: U-SQL ジョブをローカルに実行する - Azure Data Lake U-SQL SDK
 description: U-SQL ジョブを、ローカル ワークステーションでコマンド ラインとプログラミング インターフェイスを使用して実行およびテストする方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089966"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71309694"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
 
@@ -118,7 +118,7 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 
     このディレクトリを指す **SCOPE_CPP_SDK** という新しい環境変数を定義します。 または、フォルダーを他の場所にコピーし、**SCOPE_CPP_SDK** をそのフォルダーとして指定します。
 
-    コマンド ラインを使用している場合は、環境変数を設定するだけでなく、**-CppSDK** 引数を指定できます。 この引数により、既定の CppSDK 環境変数が上書きされます。
+    コマンド ラインを使用している場合は、環境変数を設定するだけでなく、 **-CppSDK** 引数を指定できます。 この引数により、既定の CppSDK 環境変数が上書きされます。
 
 - **LOCALRUN_DATAROOT** 環境変数を設定します。
 
@@ -332,39 +332,39 @@ LocalRunHelper.exe は、U-SQL のローカル コンパイルや実行などの
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|パラメーター|type|説明|
+|パラメーター|Type|説明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|出力メッセージ用。コンソールで使用するには null に設定します|
 
-**プロパティ**
+**Properties**
 
-|プロパティ|type|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
-|AlgebraPath|文字列|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
-|CodeBehindReferences|文字列|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
-|CppSdkDir|文字列|CppSDK ディレクトリ|
-|CurrentDir|文字列|現在のディレクトリ|
-|DataRoot|文字列|データ ルート パス|
-|DebuggerMailPath|文字列|デバッガーのメール スロットのパス|
-|GenerateUdoRedirect|bool|アセンブリ読み込みリダイレクトのオーバーライド構成を生成するかどうかを示します|
-|HasCodeBehind|bool|スクリプトに分離コードがあるかどうか|
-|InputDir|文字列|入力データ用のディレクトリ|
-|MessagePath|文字列|メッセージ ダンプ ファイルのパス|
-|OutputDir|文字列|出力データ用のディレクトリ|
-|Parallelism|int|代数を実行する並列処理|
-|ParentPid|int|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
-|ResultPath|文字列|結果ダンプ ファイルのパス|
-|RuntimeDir|文字列|ランタイム ディレクトリ|
-|ScriptPath|文字列|スクリプトの検出場所|
-|Shallow|bool|簡易コンパイルかどうか|
-|TempDir|文字列|一時ディレクトリ|
-|UseDataBase|文字列|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
-|WorkDir|文字列|任意の作業ディレクトリ|
+|AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
+|CodeBehindReferences|string|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
+|CppSdkDir|string|CppSDK ディレクトリ|
+|CurrentDir|string|現在のディレクトリ|
+|DataRoot|string|データ ルート パス|
+|DebuggerMailPath|string|デバッガーのメール スロットのパス|
+|GenerateUdoRedirect|[bool]|アセンブリ読み込みリダイレクトのオーバーライド構成を生成するかどうかを示します|
+|HasCodeBehind|[bool]|スクリプトに分離コードがあるかどうか|
+|InputDir|string|入力データ用のディレクトリ|
+|MessagePath|string|メッセージ ダンプ ファイルのパス|
+|OutputDir|string|出力データ用のディレクトリ|
+|Parallelism|INT|代数を実行する並列処理|
+|ParentPid|INT|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
+|ResultPath|string|結果ダンプ ファイルのパス|
+|RuntimeDir|string|ランタイム ディレクトリ|
+|ScriptPath|string|スクリプトの検出場所|
+|Shallow|[bool]|簡易コンパイルかどうか|
+|TempDir|string|Temp ディレクトリ|
+|UseDataBase|string|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
+|WorkDir|string|任意の作業ディレクトリ|
 
 
-**メソッド**
+**方法**
 
-|方法|説明|戻り値|パラメーター|
+|Method|説明|戻り値|パラメーター|
 |------|-----------|------|---------|
 |public bool DoCompile()|U-SQL スクリプトをコンパイルします|成功時に True| |
 |public bool DoExec()|コンパイル結果を実行します|成功時に True| |
@@ -383,7 +383,7 @@ E_CSC_SYSTEM_INTERNAL:内部エラーです。 ファイルを読み込めない
 - NugetPackage\build\runtime\ 内のすべての依存関係ファイルがプロジェクトの作業ディレクトリにコピーされていることを確認します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 * 診断情報のログについては、「[Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)」を参照してください。

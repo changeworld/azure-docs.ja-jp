@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/19/2018
+ms.date: 02/29/2020
 ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12370d54500dbc1fcd6f812206fdfea3e5298112
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78968721"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 
-アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。 この簡単なアンケート (https://aka.ms/AppsMigrationFeedback)) を行って、アプリを Azure AD に移行した体験についてフィードバック (移行の妨げ、ツール/ガイダンスの必要性、オンプレミスの IDP を保持する理由など) を集めます。 
+アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。 この簡単なアンケート (https://aka.ms/AppsMigrationFeedback) ) を行って、アプリを Azure AD に移行した体験についてフィードバック (移行の妨げ、ツール/ガイダンスの必要性、オンプレミスの IDP を保持する理由など) を集めます。 
 
-| Resource  | 説明  |
+| リソース  | 説明  |
 |:-----------|:-------------|
 |[Migrating your apps to Azure AD](https://aka.ms/migrateapps/whitepaper) (アプリの Azure AD への移行) | このホワイト ペーパーは、移行のメリットを示し、4 つのおおまかなフェーズ (検出、分類、移行、および継続的な管理) を経て移行するための計画を立案する方法について説明します。 プロセスの考え方とプロジェクトを実行しやすいピースに分割する方法について案内します。 ドキュメント全体に、作業中に役立つ重要なリソースへのリンクがあります。 |
 |[Solution guide: Migrating apps from Active Directory Federation Services (AD FS) to Azure AD](https://aka.ms/migrateapps/adfssolutionguide) (ソリューション ガイド: Active Directory フェデレーション サービス (AD FS) から Azure AD へのアプリの移行) | このソリューション ガイドでは、移行ホワイト ペーパーで概要が説明されているアプリケーション移行プロジェクトの 4 つのフェーズの計画と実行について説明します。 このガイドでは、アプリケーションを Azure Directory Federated Services (AD FS) から Azure AD に移行するための具体的な目標に対してこれらのフェーズを適用する方法について説明します。|

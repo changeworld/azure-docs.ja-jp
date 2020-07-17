@@ -13,28 +13,26 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: cc74bfe9bf9e5f33b7cf05ebb19b44ab8b3bea43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231327"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする
-Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) または [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-features.md#throughput-units)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
+Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した Gen 1 または Gen 2 の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
 
 Event Hubs Capture を利用すると、リアルタイムおよびバッチベースのパイプラインを同じストリームで処理できます。 すなわち、変化するニーズに合わせて拡大可能なソリューションを構築できます。 将来のリアルタイム処理を視野に入れてバッチベースのシステムを構築している場合も、既存のリアルタイム ソリューションに効率的なコールド パスを追加したいと考えている場合も、Event Hubs Capture ならストリーミング データの操作が容易です。
 
-> [!NOTE]
-> 現在、Event Hubs Capture 機能では、Azure Data Lake Store の Gen 1 のみをサポートしています。Gen 2 はサポートしていません。 
 
 ## <a name="how-event-hubs-capture-works"></a>Event Hubs Capture の仕組み
 
-Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs でのスケーリングの鍵となるのは、[パーティション分割されたコンシューマー モデル](event-hubs-features.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
+Event Hubs は分散ログに似た、テレメトリの受信のための持続的バッファーです。 Event Hubs でのスケーリングの鍵となるのは、[パーティション分割されたコンシューマー モデル](event-hubs-scalability.md#partitions)です。 各パーティションは独立したデータのセグメントであり、個別に使用されます。 このデータは、構成可能なリテンション期間に基づいて、所定のタイミングで破棄されます。 そのため、特定のイベント ハブが "いっぱい" になることはありません。
 
-Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー、または Azure Data Lake Store アカウントを指定することができます。 これらのアカウントのリージョンは、イベント ハブと同じであっても、別のリージョンであってもかまわないため、Event Hubs Capture 機能の柔軟性がさらに高まります。
+Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー、または Azure Data Lake Storage アカウントを指定することができます。 これらのアカウントのリージョンは、イベント ハブと同じであっても、別のリージョンであってもかまわないため、Event Hubs Capture 機能の柔軟性がさらに高まります。
 
 キャプチャされたデータは [Apache Avro][Apache Avro] 形式で書き込まれます。これはコンパクトで高速なバイナリ形式で、インライン スキーマを備えた便利なデータ構造になっています。 この形式は Hadoop エコシステム、Stream Analytics、Azure Data Factory で幅広く使用されています。 Avro の操作の詳細は、この記事の後半に記載してあります。
 
@@ -52,9 +50,11 @@ Event Hubs Capture では、キャプチャを制御するウィンドウを設�
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
 
+Azure Storage Blob が一時的に利用できなくなった場合、Event Hubs Capture では、イベント ハブで構成されたデータ保持期間の間、データが保持され、ストレージ アカウントが再び利用可能になったら、データがバックフィルされます。
+
 ### <a name="scaling-to-throughput-units"></a>スループット単位へのスケーリング
 
-Event Hubs のトラフィックは [スループット単位](event-hubs-features.md#throughput-units)で制御されます。 受信の場合、1 スループット単位は最大 1 MB/秒または 1,000 イベント/秒となり、送信の場合はその倍となります。 Standard Event Hubs を 1 ～ 20 のスループット単位で構成でき、クォータの引き上げの [Support request][support request] でさらに購入することもできます。 購入済みのスループット単位を超えた使用分については、調整されます。 Event Hubs Capture は内部 Event Hubs ストレージからデータを直接コピーするため、スループット単位のエグレス クォータを回避でき、他の処理リーダー (Stream Analytics や Spark など) のためにエグレスを節約できます。
+Event Hubs のトラフィックは [スループット単位](event-hubs-scalability.md#throughput-units)で制御されます。 受信の場合、1 スループット単位は最大 1 MB/秒または 1,000 イベント/秒となり、送信の場合はその倍となります。 Standard Event Hubs は、1 から 20 のスループット ユニットで構成できます。クォータの引き上げの[サポート リクエスト][support request] によってさらに購入することもできます。 購入済みのスループット単位を超えた使用分については、調整されます。 Event Hubs Capture は内部 Event Hubs ストレージからデータを直接コピーするため、スループット単位のエグレス クォータを回避でき、他の処理リーダー (Stream Analytics や Spark など) のためにエグレスを節約できます。
 
 構成されると、Event Hubs Capture は最初のイベント送信時に自動的に実行され、そのまま実行を継続します。 ダウンストリーム処理で処理が行われていることを把握しやすいように、Event Hubs はデータがないときは空のファイルを書き込みます。 このプロセスにより、バッチ プロセッサに提供可能な、予測しやすいパターンとマーカーが得られます。
 
@@ -68,7 +68,7 @@ Event Hubs のトラフィックは [スループット単位](event-hubs-featur
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>キャプチャしたファイルの確認と Avro の操作
 
-Event Hubs Capture では、構成された時間枠で指定された Avro 形式のファイルが作成されます。 これらのファイルは、[Azure Storage エクスプローラー][Azure Storage Explorer]などの任意のツールを使用して確認できます。 また、ローカルにダウンロードして操作することができます。
+Event Hubs Capture では、構成された時間枠で指定された Avro 形式のファイルが作成されます。 これらのファイルは、 [Azure ストレージ エクスプローラー][Azure Storage Explorer]などの任意のツールを使用して確認できます。 また、ローカルにダウンロードして操作することができます。
 
 Event Hubs Capture によって生成されたファイルには、次の Avro スキーマがあります。
 
@@ -78,7 +78,7 @@ Avro ファイルを調べるには、Apache の [Avro Tools][Avro Tools] jar �
 
 ### <a name="use-apache-drill"></a>Apache Drill を使用する
 
-[Apache Drill][Apache Drill] は、任意の場所にある構造化および半構造化データにクエリを実行できる、"ビッグ データ探索のためのオープンソースの SQL クエリ エンジン" です。 このエンジンは、スタンドアロン ノードとして、またはパフォーマンスを向上させるために巨大なクラスターとして実行できます。
+[Apache Drill][Apache Drill] は、任意の場所にある構造化および半構造化データのクエリを実行できる、"ビッグ データ探索のためのオープンソースの SQL クエリ エンジン" です。 このエンジンは、スタンドアロン ノードとして、またはパフォーマンスを向上させるために巨大なクラスターとして実行できます。
 
 Azure Blob Storage へのネイティブ サポートを使用できるため、Avro ファイル内のデータにクエリを実行することが容易になります。次のドキュメントを参照してください。
 
@@ -94,17 +94,18 @@ https://github.com/yorek/apache-drill-azure-blob
 
 ### <a name="use-apache-spark"></a>Apache Spark を使用する
 
-[Apache Spark][Apache Spark] は、"大規模なデータ処理のための統合された分析エンジン" です。 さまざまな言語 (SQL を含む) がサポートされ、Azure Blob Storage に容易にアクセスできます。 Azure で Apache Spark を実行するには次の 2 つのオプションがあり、どちらも Azure Blob Storage への容易なアクセスが提供されます。
+[Apache Spark][Apache Spark] は、"大規模なデータ処理のための統合された分析エンジン" です。 さまざまな言語 (SQL を含む) がサポートされ、Azure Blob Storage に容易にアクセスできます。 Azure で Apache Spark を実行するにはいくつかのオプションがあり、いずれも Azure Blob Storage への容易なアクセスを提供します。
 
-- [HDInsight: Azure Storage 内のファイルの指定][HDInsight: Address files in Azure storage]
-- [Azure Databricks: Azure Blob storage][Azure Databricks: Azure Blob Storage]
+- [HDInsight: Azure Storage 内のファイルのアドレス指定][HDInsight: Address files in Azure storage]
+- [Azure Databricks: Azure Blob Storage][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>Avro ツールを使用する
 
-[Avro ツール][Avro Tools]は、jar パッケージとして使用できます。 この jar ファイルをダウンロードしたら、次のコマンドを実行することによって、特定の Avro ファイルのスキーマを表示できます。
+[Avro ツール][Avro Tools]は、jar パッケージとして入手できます。 この jar ファイルをダウンロードしたら、次のコマンドを実行することによって、特定の Avro ファイルのスキーマを表示できます。
 
 ```shell
-java -jar avro-tools-1.8.2.jar getschema <name of capture file>
+java -jar avro-tools-1.9.1.jar getschema <name of capture file>
 ```
 
 このコマンドによって次の情報が返されます。
@@ -136,18 +137,20 @@ Apache Avro には、[Java][Java] と [Python][Python] 向けの完全な入門�
 
 Event Hubs Capture の料金は、スループット単位と同様に時間単位で測定されます。 料金は、その名前空間で購入されたスループット単位の数に正比例します。 スループット単位が増減すると、Event Hubs Capture の測定もそれに応じたパフォーマンスを提供するために調整されます。 測定は連携して行われます。 料金の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」をご覧ください。 
 
+エグレス クォータは別途請求されるため、Capture では消費されません。 
+
 ## <a name="integration-with-event-grid"></a>Event Grid との統合 
 
 Event Hubs 名前空間をソースとして Azure Event Grid サブスクリプションを作成できます。 以下のチュートリアルでは、イベント ハブをソースとして、また Azure Functions アプリをシンクとして使用して、Event Grid サブスクリプションを作成する方法を示します。[Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する](store-captured-data-data-warehouse.md)
 
-## <a name="next-steps"></a>次の手順
-
+## <a name="next-steps"></a>次のステップ
 Event Hubs Capture は Azure にデータを取得する最も簡単な方法です。 Azure Data Lake、Azure Data Factory、Azure HDInsight を利用することで、使い慣れたツールとプラットフォームを使用して、必要なスケールでバッチ処理やその他の分析を実行できます。
 
-Event Hubs の詳細については、次のリンク先を参照してください:
+Azure portal および Azure Resource Manager テンプレートを使用してこの機能を有効にする方法を学習してください。
 
-* [イベントの送受信の概要](event-hubs-dotnet-framework-getstarted-send.md)
-* [Event Hubs の概要][Event Hubs overview]
+- [Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)
+- [Azure Resource Manager テンプレートを使用した Event Hubs Capture の有効化](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+
 
 [Apache Avro]: https://avro.apache.org/
 [Apache Drill]: https://drill.apache.org/
@@ -155,11 +158,11 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www-us.apache.org/dist/avro/avro-1.8.2/java/avro-tools-1.8.2.jar
+[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.2.jar
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
+[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
 [大規模なストリーミング: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

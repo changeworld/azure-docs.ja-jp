@@ -1,21 +1,14 @@
 ---
 title: Azure Functions でサポートされている言語
 description: どの言語がサポートされているか (GA) と、どの言語が試験段階またはプレビューの段階であるかを説明します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 08/02/2018
-ms.author: glenga
-ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: conceptual
+ms.date: 11/27/2019
+ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148814"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74942258"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 
@@ -29,9 +22,9 @@ ms.locfileid: "65148814"
 * **プレビュー** - まだサポートされていませんが、今後 GA 状態に達すると想定されています。
 * **試験段階** - サポートされておらず、今後廃止される可能性があります。最終的にプレビューまたは GA 状態になる保証はありません。
 
-## <a name="languages-in-runtime-1x-and-2x"></a>ランタイム 1.x および 2.x の言語
+## <a name="languages-by-runtime-version"></a>言語 (ランタイム バージョン別) 
 
-[2 つのバージョンの Azure Functions ランタイム](functions-versions.md)を利用できます。 次の表は、各ランタイム バージョンでどの言語がサポートされているかを示しています。
+[3 つのバージョンの Azure Functions ランタイム](functions-versions.md)を利用できます。 次の表は、各ランタイム バージョンでどの言語がサポートされているかを示しています。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -41,27 +34,20 @@ ms.locfileid: "65148814"
 
 信頼性が大切である場合には、試験段階の機能は使用しないでください。それらの言語には公式なサポートがありません。 実験段階の言語で発生した問題については、サポート ケースを開かないでください。 
 
-バージョン 2.x ランタイムでは、試験段階の言語はサポートされていません。 新しい言語のサポートは、運用環境でその言語をサポートできる場合にのみ追加されます。 
+以降のバージョンのランタイムでは、試験段階の言語はサポートされません。 新しい言語のサポートは、運用環境でその言語をサポートできる場合にのみ追加されます。 
 
 ### <a name="language-extensibility"></a>言語拡張
 
-2.x ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 2.x ランタイムの JavaScript および Java 言語は、この拡張機能で構築されています。
+2\.x 以降、ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 2\.x ランタイムの JavaScript および Java 言語は、この拡張機能で構築されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Functions で GA またはプレビューであるいずれかの言語を使用する方法の詳細については、以下のリソースを参照してください。
+サポートされている言語で関数を開発する方法の詳細については、次のリソースを参照してください。
 
-> [!div class="nextstepaction"]
-> [C#](functions-reference-csharp.md)
-
-> [!div class="nextstepaction"]
-> [F#](functions-reference-fsharp.md)
-
-> [!div class="nextstepaction"]
-> [JavaScript](functions-reference-node.md)
-
-> [!div class="nextstepaction"]
-> [Java](functions-reference-java.md)
-
-> [!div class="nextstepaction"]
-> [Python](functions-reference-python.md)
++ [C# クラス ライブラリ開発者向けリファレンス](functions-dotnet-class-library.md)
++ [C# 開発者向けリファレンス](functions-reference-csharp.md)
++ [Java 開発者用リファレンス](functions-reference-java.md)
++ [JavaScript 開発者向けリファレンス](functions-reference-node.md)
++ [PowerShell 開発者向けリファレンス](functions-reference-powershell.md)
++ [Python 開発者向けリファレンス](functions-reference-python.md)
++ [TypeScript 開発者向けリファレンス](functions-reference-node.md#typescript)

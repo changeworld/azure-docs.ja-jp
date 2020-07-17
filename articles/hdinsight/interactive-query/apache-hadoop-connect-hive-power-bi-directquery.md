@@ -1,21 +1,21 @@
 ---
-title: Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する
+title: Azure HDInsight の Power BI で対話型クエリの Hive データを参照する
 description: Microsoft Power BI を使用して、Azure HDInsight からの対話型クエリの Hive データを視覚化する方法
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/25/2018
-ms.openlocfilehash: fb4e16c8be5344c5b9947758b6a09845b470196d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/17/2019
+ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367994"
 ---
-# <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Azure HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する
+# <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する
 
 この記事では、Microsoft Power BI を Azure HDInsight 対話型クエリ クラスターに接続し、直接クエリを使用して Apache Hive データを視覚化する方法について説明します。 与えられた例では、`hivesampletable` Hive テーブルから Power BI にデータを読み込みます。 `hivesampletable` Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
 
@@ -26,8 +26,8 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight クラスター**。 このクラスターは、Apache Hive を含む HDInsight クラスターか、新しくリリースされた対話型クエリ クラスターのいずれかです。 クラスターの作成については、「[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**。 [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) からコピーをダウンロードできます。
+* **HDInsight クラスター**。 このクラスターは、Apache Hive を含む HDInsight クラスターか、新しくリリースされた対話型クエリ クラスターのいずれかです。 クラスターの作成については、「[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) からコピーをダウンロードできます。
 
 ## <a name="load-data-from-hdinsight"></a>HDInsight からデータを読み込む
 
@@ -35,27 +35,27 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
 1. Power BI Desktop を起動します。
 
-2. メニュー バーから、**[ホーム]** > **[データの取得]** > **[その他...]** に移動します。
+2. メニュー バーから、 **[ホーム]**  >  **[データの取得]**  >  **[その他...]** に移動します。
 
-    ![HDInsight Power BI でデータを開く](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    ![HDInsight Power BI のその他のデータ取得](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
 3. **[データの取得]** ウィンドウで、検索ボックスに「**hdinsight**」と入力します。  
 
-4. 検索結果から **[HDInsight 対話型クエリ]** を選択し、**[接続]** を選択します。  **[HDInsight 対話型クエリ]** が表示されない場合、Power BI Desktop を最新バージョンに更新する必要があります。
+4. 検索結果から **[HDInsight 対話型クエリ]** を選択し、 **[接続]** を選択します。  **[HDInsight 対話型クエリ]** が表示されない場合、Power BI Desktop を最新バージョンに更新する必要があります。
 
-5. **[続行]** を選択して、**[サード パーティのサービスに接続中]** ダイアログを閉じます。
+5. **[続行]** を選択して、 **[サード パーティのサービスに接続中]** ダイアログを閉じます。
 
 6. **[HDInsight 対話型クエリ]** ウィンドウで、次の情報を入力して **[OK]** を選択します。
 
     |プロパティ | 値 |
     |---|---|
     |サーバー |クラスターの名前 (*myiqcluster.azurehdinsight.net* など) を入力します。|
-    |Database |この記事では **[既定]** を入力します。|
-    |データ接続モード |この記事では、**[DirectQuery]** を選択します。|
+    |データベース |この記事では **[既定]** を入力します。|
+    |データ接続モード |この記事では、 **[DirectQuery]** を選択します。|
 
     ![HDInsight 対話型クエリ Power BI DirectQuery 接続](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. HTTP 資格情報を入力して、**[接続]** を選択します。 既定のユーザー名は **admin** です。
+7. HTTP 資格情報を入力して、 **[接続]** を選択します。 既定のユーザー名は **admin** です。
 
 8. 左側のウィンドウの **[ナビゲーター]** ウィンドウから、**hivesampletale** を選択します。
 
@@ -75,7 +75,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
 3. 地図を広げます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Microsoft Power BI を使用して HDInsight からデータを視覚化する方法について学習しました。  データ視覚化の詳細については、次の記事を参照してください。
 
 * [Azure HDInsight 上の Microsoft Power BI で ODBC を使用して Apache Hive データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)。 

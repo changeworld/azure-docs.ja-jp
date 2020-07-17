@@ -1,25 +1,18 @@
 ---
-title: Dynamics CRM | Microsoft Docs
+title: Dynamics CRM | Azure Marketplace
 description: Dynamics CRM の潜在顧客管理を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a1398d172a5c578ec3c0f16627eadd1da3fd1e45
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.author: dsindona
+ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437619"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416317"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Dynamics CRM Online の潜在顧客管理を構成する
 
@@ -62,27 +55,27 @@ ms.locfileid: "58437619"
 
 1.  [Azure portal](https://portal.azure.com/) にサインインし、[Azure Active Directory サービス] を選択します。
 
-2.  **[プロパティ]** を選択し、**[ディレクトリ ID]** をコピーします。Cloud パートナー ポータルで使用する必要があるテナント アカウントはこれによって識別されます。
+2.  **[プロパティ]** を選択し、 **[ディレクトリ ID]** をコピーします。Cloud パートナー ポータルで使用する必要があるテナント アカウントはこれによって識別されます。
 
     ![ディレクトリ ID を取得する](./media/cloud-partner-portal-lead-management-instructions-dynamics/directoryid.png)
 
-3.  **[アプリの登録]** を選択し、**[新しいアプリケーションの登録]** を選択します。
+3.  **[アプリの登録]** を選択し、 **[新しいアプリケーションの登録]** を選択します。
 4.  アプリケーションの名前を入力します。
-5.  [種類] では、**[Web アプリ/API]** を選択します。
+5.  [種類] では、 **[Web アプリ/API]** を選択します。
 6.  URL を指定します。 このフィールドは潜在顧客では必要ありませんが、アプリケーションを作成するために必要です。
-7. **作成**を選択します。
-8.  これでアプリケーションが登録されたので、**[プロパティ]** を選択し、**[アプリケーション ID のコピー]** を選択します。この接続情報は、Cloud パートナー ポータルで使用します。
-9.  [プロパティ] で、アプリケーションを [マルチテナント] として設定し、**[保存]** を選択します。
+7. **［作成］** を選択します
+8.  これでアプリケーションが登録されたので、 **[プロパティ]** を選択し、 **[アプリケーション ID のコピー]** を選択します。この接続情報は、Cloud パートナー ポータルで使用します。
+9.  [プロパティ] で、アプリケーションを [マルチテナント] として設定し、 **[保存]** を選択します。
 
 10. **[キー]** を選択し、[期間] に *[無期限]* が設定された新しいキーを作成します。 **[保存]** を選択してキーを作成します。 
-11. [キー] メニューで、**[キー値のコピー]** を選択します。 Cloud パートナー ポータルで必要になるため、この値のコピーを保存しておきます。
+11. [キー] メニューで、 **[キー値のコピー]** を選択します。 Cloud パートナー ポータルで必要になるため、この値のコピーを保存しておきます。
     
     ![Dynamics の登録済みキー](./media/cloud-partner-portal-lead-management-instructions-dynamics/registerkeys.png)
     
-12. **[必要なアクセス許可]** を選択し、**[追加]** を選択します。 
+12. **[必要なアクセス許可]** を選択し、 **[追加]** を選択します。 
 13. 新しい API として **[Dynamics CRM Online]** を選択し、"*組織ユーザーとして CRM Online にアクセスする*" ためのアクセス許可をチェックします。
 
-14. Dynamics CRM で、[ユーザー] に移動し、[有効になっているユーザー] ドロップダウンを選択し、**[アプリケーション ユーザー]** に切り替えます。
+14. Dynamics CRM で、[ユーザー] に移動し、[有効になっているユーザー] ドロップダウンを選択し、 **[アプリケーション ユーザー]** に切り替えます。
     
     ![アプリケーション ユーザー](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuserfirst.PNG)
 
@@ -129,14 +122,14 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
     
     ![セキュリティの設定](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline6.png)
 
-3.  **ユーザーのアクセス許可**で作成したユーザーを選択し、**[ユーザー ロールの管理]** を選択します。 **Microsoft Marketplace Lead Writer** をオンにして、ロールを割り当てます。
+3.  **ユーザーのアクセス許可**で作成したユーザーを選択し、 **[ユーザー ロールの管理]** を選択します。 **Microsoft Marketplace Lead Writer** をオンにして、ロールを割り当てます。
 
     ![ユーザー ロールを割り当てる](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline7.png)\
 
     >[!NOTE]
     >このロールは、インポートしたソリューションによって作成され、潜在顧客を書き込み、互換性確保のためにソリューションのバージョンを追跡するためだけのアクセス許可を持っています。
 
-4.  [セキュリティ]で、**[セキュリティ ロール]** を選択し、Microsoft Marketplace Lead Writer のロールを見つけます。
+4.  [セキュリティ]で、 **[セキュリティ ロール]** を選択し、Microsoft Marketplace Lead Writer のロールを見つけます。
     
     ![Lead Writer のセキュリティを構成する](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline10.jpg)\
 
@@ -146,7 +139,7 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
 
 ## <a name="wrap-up"></a>まとめ
 
-生成されたアカウント情報を Cloud パートナー ポータルに追加することで、潜在顧客を管理するための Dynamics CRM の構成を終了します。 例: 
+生成されたアカウント情報を Cloud パートナー ポータルに追加することで、潜在顧客を管理するための Dynamics CRM の構成を終了します。 次に例を示します。
 
--   **Azure Active Directory** - **アプリケーション ID** (例: *23456052-aaaa-bbbb-8662-1234df56788f*)、**ディレクトリ ID** (例: *12345678-8af1-4asf-1234-12234d01db47*)、および**アプリケーション キー** (例: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*)。
--   **Office 365** - **URL** (例: *https://contoso.crm4.dynamics.com*)、**ユーザー名** (例: *contoso\@contoso.onmicrosoft.com*)、および**パスワード** (例: *P\@ssw0rd*)。
+-   **Azure Active Directory** - **アプリケーション ID** (例: *23456052-aaaa-bbbb-8662-1234df56788f*)、**ディレクトリ ID** (例: *12345678-8af1-4asf-1234-12234d01db47*)、および**アプリケーション キー** (例: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* )。
+-   **Office 365** - **URL** (例: **`https://contoso.crm4.dynamics.com`** )、**ユーザー名** (例: **`contoso\@contoso.onmicrosoft.com`** )、**パスワード** (例: *P\@ssw0rd*)。

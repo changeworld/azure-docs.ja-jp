@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Container Service チュートリアル - ACR の準備
 description: Azure Container Service チュートリアル - ACR の準備
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657401"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78399787"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(非推奨) Azure Container Registry をデプロイして使用する
 
@@ -42,7 +40,7 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
@@ -76,7 +74,7 @@ docker images
 
 出力:
 
-```bash
+```output
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
@@ -105,7 +103,7 @@ docker images
 
 出力:
 
-```bash
+```output
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
 mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
@@ -135,7 +133,7 @@ az acr repository list --name <acrName> --output table
 
 出力:
 
-```azurecli
+```output
 Result
 ----------------
 azure-vote-front
@@ -149,7 +147,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 出力:
 
-```azurecli
+```output
 Result
 --------
 v1
@@ -157,7 +155,7 @@ v1
 
 チュートリアル完了時には、コンテナー イメージがプライベートの Azure Container Registry インスタンスに格納されています。 このイメージは、以降のチュートリアルで、ACR から Kubernetes クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ACS Kubernetes クラスターで使用するための Azure Container Registry が準備されました。 次の手順を完了しました。
 

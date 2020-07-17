@@ -1,25 +1,25 @@
 ---
-title: Microsoft Azure Data Box ローカルWeb UI 管理 | データ内の Microsoft Docs
-description: ローカル Web UI を使用して Data Box デバイスを管理する方法について説明します
+title: ローカル Web UI を使用した Azure Data Box/Azure Data Box Heavy の管理
+description: ローカル Web UI を使用して Data Box および Data Box Heavy デバイスを管理する方法について説明します
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 02/01/2019
+ms.topic: article
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404044"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77560186"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box"></a>ローカル Web UI を使用して Data Box を管理する
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
-この記事では、Data Box で実行できる一部の構成と管理タスクについて説明します。 Data Box の管理は、Azure portal UI またはデバイスのローカル Web UI から行うことができます。 この記事では、ローカル Web UI を使用して実行できるタスクについて説明します。
+この記事では、Data Box および Data Box Heavy デバイスで実行できる一部の構成と管理タスクについて説明します。 Data Box および Data Box Heavy デバイスの管理は、Azure portal UI およびデバイスのローカル Web UI を介して行えます。 この記事では、ローカル Web UI を使用して実行できるタスクについて説明します。
 
-Data Box のローカル Web UI は、デバイスの初期構成に使用されます。 ローカル Web UI を使用して、Data Box のシャットダウンまたは再起動、診断テストの実行、ソフトウェアの更新、コピー ログの表示、および Microsoft サポートのログ パッケージの生成を行うこともできます。
+Data Box および Data Box Heavy のローカル Web UI は、デバイスの初期構成に使用されます。 ローカル Web UI を使用して、デバイスのシャットダウンまたは再起動、診断テストの実行、ソフトウェアの更新、コピー ログの表示、および Microsoft サポートのログ パッケージの生成を行うこともできます。 2 つの独立したノードを備えた Data Box Heavy デバイスでは、デバイスの各ノードに対応する 2 つの別個のローカル Web UI にアクセスできます。
 
 この記事には次のチュートリアルが含まれています。
 
@@ -27,13 +27,13 @@ Data Box のローカル Web UI は、デバイスの初期構成に使用され
 - デバイスのシャットダウンと再起動
 - BOM またはマニフェスト ファイルのダウンロード
 - デバイスの使用可能な容量の表示
-- チェックサム検証のスキップ 
+- チェックサム検証のスキップ
 
 ## <a name="generate-support-package"></a>サポート パッケージの生成
 
-デバイスの問題が発生した場合は、システム ログからサポート パッケージを作成できます。 Microsoft サポートでは、このパッケージを使用して問題のトラブルシューティングを行います。 サポート パッケージを作成するには、次の手順を実行します。
+デバイスの問題が発生した場合は、システム ログからサポート パッケージを作成できます。 Microsoft サポートでは、このパッケージを使用して問題のトラブルシューティングを行います。 サポート パッケージを生成するには、次の手順を実行します。
 
-1. ローカル Web UI で、**[サポートにお問い合わせ]** に移動し、**[サポート パッケージの作成]** をクリックします。
+1. ローカル Web UI で、 **[サポートにお問い合わせ]** に移動し、 **[サポート パッケージの作成]** をクリックします。
 
     ![サポート パッケージの作成 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -41,7 +41,7 @@ Data Box のローカル Web UI は、デバイスの初期構成に使用され
 
     ![サポート パッケージの作成 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. サポート パッケージの作成が完了したら、**[サポート パッケージのダウンロード]** をクリックします。 
+3. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** をクリックします。 
 
     ![サポート パッケージの作成 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
@@ -52,16 +52,16 @@ Data Box のローカル Web UI は、デバイスの初期構成に使用され
 
 ## <a name="shut-down-or-restart-your-device"></a>デバイスのシャットダウンと再起動
 
-ローカル Web UI を使用して、Data Box をシャットダウンまたは再起動できます。 再起動する前に、ホストの共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。 これにより、データ破損の可能性を最小限に抑えられます。 デバイスをシャットダウンするときに、データのコピーが進行中でないことを確認してください。
+ローカル Web UI を使用して、デバイスをシャットダウンしたり再起動したりできます。 再起動する前に、ホストの共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。 これにより、データ破損の可能性を最小限に抑えられます。 デバイスをシャットダウンするときに、データのコピーが進行中でないことを確認してください。
 
-Data Box をシャットダウンするには、次の手順を実行します。
+デバイスをシャットダウンするには、次の手順を実行します。
 
-1. ローカル Web UI で、**[シャット ダウンまたは再起動]** に移動します。
+1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
 2. **[シャットダウン]** をクリックします。
 
     ![Data Box のシャット ダウン 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. 確認を求められたら、**[OK]** をクリックして続行します。
+3. 確認を求められたら、 **[OK]** をクリックして続行します。
 
     ![Data Box のシャット ダウン 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -69,22 +69,22 @@ Data Box をシャットダウンするには、次の手順を実行します�
 
 Data Box を再起動するには、次の手順を実行します。
 
-1. ローカル Web UI で、**[シャット ダウンまたは再起動]** に移動します。
+1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
 2. **[Restart (再開)]** をクリックします。
 
     ![Data Box の再起動 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 確認を求められたら、**[OK]** をクリックして続行します。
+3. 確認を求められたら、 **[OK]** をクリックして続行します。
 
    デバイスは、シャットダウンしてから再起動します。
 
 ## <a name="download-bom-or-manifest-files"></a>BOM またはマニフェスト ファイルのダウンロード
 
-部品表 (BOM) またはマニフェスト ファイルには、Data Box にコピーされるファイルの一覧が含まれています。 これらのファイルは、発送する Data Box を準備するときに生成されます。
+部品表 (BOM) またはマニフェスト ファイルには、Data Box または Data Box Heavy にコピーされるファイルの一覧が含まれています。 これらのファイルは、発送するデバイスを準備するときに生成されます。
 
-開始する前に、Data Box の**発送準備**手順が完了していることを確認します。 次の手順に従って、BOM またはマニフェスト ファイルをダウンロードします。
+開始する前に、ご自分のデバイスの**発送準備**手順が完了していることを確認します。 次の手順に従って、BOM またはマニフェスト ファイルをダウンロードします。
 
-1. Data Box のローカル Web UI に移動します。 Data Box の発送準備が完了したことが表示されます。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
+1. ご自分のデバイスのローカル Web UI に移動します。 デバイスの発送準備が完了したことが表示されます。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
 
     ![デバイスの発送準備完了](media/data-box-portal-admin/ready-to-ship.png)
 
@@ -109,6 +109,9 @@ Data Box を再起動するには、次の手順を実行します。
     |mydbmdrg2_MDisk-BOM.txt     |マネージド ディスク         |SMB/NFS         |
 
 この一覧を使用して、Data Box が Azure データセンターに返送された後に Azure Storage アカウントにアップロードされたファイルを確認します。 マニフェスト ファイルの例を次に示します。
+
+> [!NOTE]
+> Data Box Heavy では、デバイス上の 2 つのノードに対応して、ファイル (BOM ファイル) の一覧が 2 組あります。
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -150,32 +153,31 @@ Data Box を再起動するには、次の手順を実行します。
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-このファイルには、Data Box にコピーされたすべてのファイルの一覧が含まれています。 このファイルの *crc64* 値は、対応するファイルに対して生成されたチェックサムに関連付けられています。
+このファイルには、Data Box または Data Box Heavy にコピーされたすべてのファイルの一覧が含まれています。 このファイルの *crc64* 値は、対応するファイルに対して生成されたチェックサムに関連付けられています。
 
 ## <a name="view-available-capacity-of-the-device"></a>デバイスの使用可能な容量の表示
 
-デバイス ダッシュボードを使用して、デバイスの使用可能な容量と使用済み容量を表示できます。 
+デバイス ダッシュボードを使用して、デバイスの使用可能な容量と使用済み容量を表示できます。
 
-1. ローカル Web UI で、**[ダッシュボードの表示]** に移動します。
+1. ローカル Web UI で、 **[ダッシュボードの表示]** に移動します。
 2. **[接続とコピー]** の下に、デバイスの空き容量と使用済み容量が表示されます。
 
     ![使用可能な容量の表示](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
-
 ## <a name="skip-checksum-validation"></a>チェックサム検証のスキップ
 
-既定では、発送の準備をするときにデータのチェックサムが生成されます。 特定のまれなケースにおいて、データ型 (小さいファイル サイズ) によっては、パフォーマンスが低下することがあります。 このような場合は、チェックサムをスキップできます。 
+既定では、発送の準備をするときにデータのチェックサムが生成されます。 特定のまれなケースにおいて、データ型 (小さいファイル サイズ) によっては、パフォーマンスが低下することがあります。 このような場合は、チェックサムをスキップできます。
 
 パフォーマンスに重大な影響がない限り、チェックサムを無効にしないことを強くお勧めします。
 
-1. デバイスのローカル Web UI の右上隅にある [設定] に移動します。
+1. デバイスのローカル Web UI の右上隅にある **[設定]** に移動します。
 
     ![チェックサムを無効にする](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. **[無効]** をクリックしてチェックサム検証を無効にします
 3. **[Apply]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure portal から Data Box を管理する](data-box-portal-admin.md)方法について説明します。
+- [Azure portal を使用して Data Box と Data Box Heavy を管理する](data-box-portal-admin.md)方法について学習します。
 

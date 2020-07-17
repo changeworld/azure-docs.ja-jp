@@ -10,18 +10,18 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 16efb97569aabbea28065b03e9944d6881c39eee
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886827"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "66390160"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing Spell Check API でサポートされる言語と地域のサポート
 
 Bing Spell Check API では次の言語がサポートされています (`spell` モードのみ)。
 
-`en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
+`en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
 
 | 言語    | 言語コード |
 |:----------- |:-------------:|
@@ -66,7 +66,7 @@ Bing Spell Check API では次の言語がサポートされています (`spell
 | スウェーデン語     | `sv`          |
 | トルコ語     | `tr`          |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
 - [Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

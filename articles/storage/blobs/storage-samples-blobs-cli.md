@@ -1,19 +1,18 @@
 ---
 title: BLOB Storage の Azure CLI サンプル | Microsoft Docs
 description: Azure Blob Storage を使用する場合の Azure CLI サンプル
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: sample
-ms.date: 06/13/2017
 ms.author: mhopkins
-ms.openlocfilehash: 76018cd0945feef0158484f2b9442cfa946ef119
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 06/13/2017
+ms.service: storage
+ms.subservice: blobs
+ms.topic: sample
+ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154053"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68721942"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure CLI サンプル
 

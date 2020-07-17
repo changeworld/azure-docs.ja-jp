@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 563849d3875ed0156d81770f58340633d90d515b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161262"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181628"
 ---
 ここでは、書き込むことのできる Azure オブジェクトのサイズを示します。 アップロードするすべてのファイルがこれらの制限に準拠していることを確認してください。
 
 | Azure オブジェクトの種類 | アップロードの制限                                             |
 |-------------------|-----------------------------------------------------------|
-| ブロック BLOB        | 4.75 TB 以下                                                 |
+| ブロック BLOB        | 4\.75 TB 以下                                                 |
 | ページ BLOB         | 1 TB (テラバイト) <br> ページ BLOB 形式でアップロードするファイルには 512 バイトをアライン (整数倍) する必要があります。そうでないと、アップロードが失敗します。 <br> VHD と VHDX には 512 バイトがアラインされます。 |
 | Azure Files         | 1 TB (テラバイト) <br> ページ BLOB 形式でアップロードするファイルには 512 バイトをアライン (整数倍) する必要があります。そうでないと、アップロードが失敗します。 <br> VHD と VHDX には 512 バイトがアラインされます。 |
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Files のデプロイ方法 | Microsoft Docs
 description: Azure Files をデプロイする方法を開始から終了まで説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77598784"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -27,7 +26,7 @@ ms.locfileid: "66237730"
 - ストレージ アカウントに、目的のクォータで Azure ファイル共有を作成していること。 ファイル共有の詳しい作成手順については、[ファイル共有の作成](storage-how-to-create-file-share.md)に関するページを参照してください。
 
 ## <a name="transfer-data-into-azure-files"></a>Azure Files へのデータ転送
-新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#data-transfer-method)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します
+新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#migration)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します
 
 ### <a name="azure-file-sync"></a>Azure File Sync
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -64,7 +63,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    1 つのストレージ アカウントを使用して複数の共有を指定する場合があります。 詳細については[データセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file)を参照してください。
+    1 つのストレージ アカウントを使用して複数の共有を指定する場合があります。 詳細については[データセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 5. ドライブセット CSV ファイルを作成します。 ドライブセット CSV ファイルには、オンプレミスのエクスポート エージェントが使用可能なディスクが一覧表示されます。 たとえば、次のドライブセット CSV ファイルでは、オンプレミスのエクスポート ジョブで使用される `X:`、`Y:`、および `Z:` ドライブが一覧表示されます。
 
@@ -75,7 +74,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    詳細については[ドライブセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file)を参照してください。
+    詳細については[ドライブセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 6. [WAImportExport ツール](https://www.microsoft.com/download/details.aspx?id=55280)を使用して、1 台以上のハード ドライブにデータをコピーします。
 
@@ -129,7 +128,7 @@ AzCopy は、最高のパフォーマンスの単純なコマンドを使って 
 > [!Note]  
 > Azure ファイル共有をマウントするには、パスワードとしてストレージ アカウント キーを使用する必要があります。したがって、信頼できる環境でのみマウントすることをお勧めします。 
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 複数の PC で mount コマンドを実行するために PowerShell を使用できます。 次の例では、`$computers` は手動で入力しますが、マウントするコンピューターの一覧は自動で生成できます。 たとえば、Active Directory からの結果によって、この変数を設定できます。
 
 ```powershell
@@ -148,7 +147,7 @@ do
 done
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
 - [Azure Files のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure Files のトラブルシューティング - Linux](storage-troubleshoot-linux-file-connection-problems.md)

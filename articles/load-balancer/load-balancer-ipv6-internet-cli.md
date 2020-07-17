@@ -1,10 +1,10 @@
 ---
 title: IPv6 のパブリック ロード バランサーを作成する - Azure CLI
-titlesuffix: Azure Load Balancer
-description: Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する方法について説明します。
+titleSuffix: Azure Load Balancer
+description: このラーニング パスでは、Azure CLI を使用して IPv6 のパブリック ロードバランサーの作成を開始します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,16 +13,18 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.author: allensu
+ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142021"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76045417"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
+>[!NOTE] 
+>この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。 IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨される標準です。 [Azure VNET Powershell の IPv6 のデプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください 
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、ロード バランサーは、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -46,11 +48,11 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成します。
 
-* **フロントエンド IP 構成**:受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
-* **バックエンド アドレス プール**:ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
-* **負荷分散規則**:ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
-* **受信 NAT 規則**:ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
-* **プローブ**:バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
+* **フロントエンド IP 構成**: 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
+* **バックエンド アドレス プール**: ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
+* **負荷分散規則**: ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
+* **受信 NAT 規則**: ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
+* **プローブ**: バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
 
 ## <a name="set-up-azure-cli"></a>Azure CLI をセットアップする
 
@@ -296,8 +298,4 @@ VM を作成するには、ストレージ アカウントが必要です。 負
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>次の手順
 
-[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)  
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)  
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

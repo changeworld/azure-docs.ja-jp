@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory のデータのコピー ツール | Microsoft Docs
+title: Azure Data Factory のデータのコピー ツール
 description: Azure Data Factory の UI にあるデータのコピー ツールについて説明します
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101756"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81414080"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Azure Data Factory のデータのコピー ツールを使うと、通常はエンド ツー エンドのデータ統合シナリオの最初の手順である、Data Lake へのデータの取り込みプロセスが容易になり、最適化されます。  時間が短縮され、Azure Data Factory を使って初めてデータ ソースからデータを取り込むときに特に効果があります。 このツールには次のような利点があります。
 
 - Azure Data Factory のデータのコピー ツールを使うときに、リンクされたサービス、データセット、パイプライン、アクティビティ、トリガーの Data Factory での定義を理解している必要はありません。 
@@ -78,7 +80,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ![データベース内のデータのフィルター処理](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Azure Blob フォルダー内のデータのフィルター処理
-フォルダー パスに変数を使って、フォルダーからデータをコピーできます。 サポートされている変数は、**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}** です。 例: inputfolder/{year}/{month}/{day}。 
+フォルダー パスに変数を使って、フォルダーからデータをコピーできます。 サポートされている変数は、 **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** です。 例: inputfolder/{year}/{month}/{day}。 
 
 次の形式の入力フォルダーがあるとします。 
 
@@ -89,13 +91,13 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ...
 ```
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、**[選択]** をクリックします。 テキスト ボックスに 2016/03/01/02 と表示されます。 
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに 2016/03/01/02 と表示されます。 
 
-次に、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+次に、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![ファイルまたはフォルダーのフィルター処理](./media/copy-data-tool/filter-file-or-folder.png)
 
-データのコピー ツールでは、式、関数、システム変数でパラメーターを生成し、パイプラインを作成するときにそれを使って {year}、{month}、{day}、{hour}、{minute} を表すことができます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関する記事をご覧ください。
+データのコピー ツールでは、式、関数、システム変数でパラメーターを生成し、パイプラインを作成するときにそれを使って {year}、{month}、{day}、{hour}、{minute} を表すことができます。
 
 ## <a name="scheduling-options"></a>スケジュール オプション
 コピー操作は 1 回だけ実行することも、スケジュールに従って (毎時、毎日など) 実行することもできます。 これらのオプションは、オンプレミス、クラウド、ローカル デスクトップといった異なる環境のコネクタに使うことができます。 
@@ -105,7 +107,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ![スケジュール オプション](./media/copy-data-tool/scheduling-options.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データのコピー ツールを使う以下のチュートリアルを試してください。
 
 - [クイック スタート: データのコピー ツールを使用してデータ ファクトリを作成する](quickstart-create-data-factory-copy-data-tool.md)

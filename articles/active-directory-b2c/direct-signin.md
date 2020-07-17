@@ -2,30 +2,30 @@
 title: Azure Active Directory B2C を使用した直接サインインの設定 | Microsoft Docs
 description: サインイン名を事前入力するか、ソーシャル ID プロバイダーに直接リダイレクトする方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/18/2018
-ms.author: davidmu
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 308fb8ea7f3429ce61b0872da9b1c10648b3f44b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a02ad3ea43ae9d91489417bc314e3c23d54a958
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78188768"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用した直接サインインの設定
 
-Azure Active Directory (AD) B2C を使用してアプリケーションのサインインを設定する場合、サインイン名を事前入力することも、Facebook、LinkedIn、Microsoft アカウントなどの特定のソーシャル ID プロバイダーに直接サインインすることもできます。 
+Azure Active Directory (AD) B2C を使用してアプリケーションのサインインを設定する場合、サインイン名を事前入力することも、Facebook、LinkedIn、Microsoft アカウントなどの特定のソーシャル ID プロバイダーに直接サインインすることもできます。
 
 ## <a name="prepopulate-the-sign-in-name"></a>サインイン名を事前入力する
 
 サインインのユーザー体験中に、証明書利用者アプリケーションが特定のユーザーまたはドメイン名をターゲットとする可能性があります。 ユーザーをターゲット設定する場合、アプリケーションでは、承認要求で、ユーザー サインイン名と共に `login_hint` クエリ パラメーターを指定できます。 Azure AD B2C によってサインイン名が自動的に入力され、ユーザーはパスワードを指定する必要のみあります。
 
-![ログイン ヒントの使用](./media/direct-signin/login-hint.png) 
+![URL 内の login_hint クエリ パラメーターが強調表示されているサインアップ サインイン ページ](./media/direct-signin/login-hint.png)
 
 ユーザーはサインイン テキストボックスの値を変更できます。
 
@@ -49,9 +49,9 @@ Azure Active Directory (AD) B2C を使用してアプリケーションのサイ
 
 Facebook、LinkedIn、Google などのソーシャル アカウントを含むようにアプリケーションのサインイン プロセスを構成した場合は、`domain_hint` パラメーターを指定できます。 このクエリ パラメーターは、サインインに使用する必要があるソーシャル ID プロバイダーに関するヒントを Azure AD B2C に提供します。 たとえば、アプリケーションで `domain_hint=facebook.com` を指定した場合、サインインは Facebook のサインイン ページに直接移動します。
 
-![ドメインのヒントの使用](./media/direct-signin/domain-hint.png) 
+![URL 内の domain_hint クエリ パラメーターが強調表示されているサインアップ サインイン ページ](./media/direct-signin/domain-hint.png)
 
-カスタム ポリシーを使用している場合は、任意の `<ClaimsProvider>` の `<Domain>domain name</Domain>` XML 要素を使用してドメイン名を構成できます。 
+カスタム ポリシーを使用している場合は、任意の `<ClaimsProvider>` の `<Domain>domain name</Domain>` XML 要素を使用してドメイン名を構成できます。
 
 ```xml
 <ClaimsProvider>

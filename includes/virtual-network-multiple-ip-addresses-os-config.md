@@ -5,33 +5,33 @@ services: virtual-network
 author: jimdial
 ms.service: virtual-network
 ms.topic: include
-ms.date: 04/09/2018
-ms.author: jdial
+ms.date: 05/10/2019
+ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124615"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76159338"
 ---
-## <a name="os-config"></a>VM オペレーティング システムに IP アドレスを追加する
+## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>VM オペレーティング システムに IP アドレスを追加する
 
 複数のプライベート IP アドレスを構成して作成した VM に接続し、サインインします。 VM に追加したプライベート IP アドレスは、プライマリも含め、すべて手動で追加する必要があります。 お使いの VM オペレーティング システムに応じて手順を実行します。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 1. コマンド プロンプトで、「 *ipconfig /all*」と入力します。  *プライマリ* の IP アドレス (DHCP 経由) のみを表示できます。
-2. コマンド プロンプトで「*ncpa.cpl*」と入力して、**[ネットワーク接続]** ウィンドウを開きます。
-3. 適切なアダプターのプロパティを開きます: **[ローカル エリア接続]**。
+2. コマンド プロンプトで「*ncpa.cpl*」と入力して、 **[ネットワーク接続]** ウィンドウを開きます。
+3. 適切なアダプターの **[ローカル エリア接続]** のプロパティを開きます。
 4. インターネット プロトコル バージョン 4 (IPv4) をダブルクリックします。
 5. **[次の IP アドレスを使う]** を選択して、次の値を入力します。
 
-    * **IP アドレス**: "*プライマリ*" のプライベート IP アドレスを入力します
-    * **[サブネット マスク]**: 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
-    * **[デフォルト ゲートウェイ]**: サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
+    * **IP アドレス**: *プライマリ* のプライベート IP アドレスを入力します。
+    * **サブネット マスク**: 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
+    * **デフォルト ゲートウェイ**: サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
     * **[次の DNS サーバーのアドレスを使う]** を選択して、次の値を入力します。
-        * **[優先 DNS サーバー]**: 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。
+        * **[優先 DNS サーバー]** : 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。
     * **[詳細]** ボタンを選択して、他の IP アドレスを追加します。 前の手順で Azure ネットワーク インターフェイスに追加した、各セカンダリ プライベート IP アドレスを、Azure ネットワーク インターフェイスに割り当てられたプライマリ IP アドレスが割り当てられている Windows ネットワーク インターフェイスに追加します。
 
         仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。 オペレーティング システム内で IP アドレスを手動で設定する場合は、Azure [ネットワーク インターフェイス](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであることを確認してください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。 オペレーティング システム内で Azure パブリック IP アドレスを割り当てないでください。
@@ -51,7 +51,70 @@ ping -S 10.0.0.5 hotmail.com
 >[!NOTE]
 >セカンダリ IP 構成でインターネットに ping を実行できるのは、その構成にパブリック IP アドレスが関連付けられている場合だけです。 プライマリ IP 構成では、インターネットに ping を実行するためにパブリック IP アドレスは必要ありません。
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
+
+Linux ディストリビューションの最新ドキュメントを調べることをお勧めします。 
+
+1. ターミナル ウィンドウを開きます。
+2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーでない場合は、次のコマンドを入力します。
+
+   ```bash
+   sudo -i
+   ```
+
+3. ネットワーク インターフェイスの構成ファイルを更新します (‘eth0’ と仮定)。
+
+   * DHCP の既存の行アイテムを保持します。 プライマリ IP アドレスが以前と同じ構成のまま維持されます。
+   * 次のコマンドを使用して、追加の静的 IP アドレスの構成を追加します。
+
+     ```bash
+     cd /etc/network/interfaces.d/
+     ls
+     ```
+
+     .cfg ファイルが表示されます。
+4. ファイル を開きます。 ファイルの末尾に次の行が表示されます。
+
+   ```bash
+   auto eth0
+   iface eth0 inet dhcp
+   ```
+
+5. このファイルの行の最後に、次の行を追加します。
+
+   ```bash
+   iface eth0 inet static
+   address <your private IP address here>
+   netmask <your subnet mask>
+   ```
+
+6. 次のコマンドを使用して、ファイルの内容を保存します。
+
+   ```bash
+   :wq
+   ```
+
+7. 次のコマンドを使用して、ネットワーク インターフェイスをリセットします。
+
+   ```bash
+   sudo ifdown eth0 && sudo ifup eth0
+   ```
+
+   > [!IMPORTANT]
+   > リモート接続を使用する場合は、同じ行で ifdown と ifup の両方を実行します。
+   >
+
+8. 次のコマンドを使用して、IP アドレスがネットワーク インターフェイスに追加されたことを確認します。
+
+   ```bash
+   ip addr list eth0
+   ```
+
+   追加した IP アドレスが、リストの一部として表示されます。
+
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+
+OS ネットワーク管理のために、Ubuntu 18.04 以降が `netplan` に変更されました。 Linux ディストリビューションの最新ドキュメントを調べることをお勧めします。 
 
 1. ターミナル ウィンドウを開きます。
 2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーでない場合は、次のコマンドを入力します。
@@ -60,47 +123,43 @@ ping -S 10.0.0.5 hotmail.com
     sudo -i
     ```
 
-3. ネットワーク インターフェイスの構成ファイルを更新します (‘eth0’ と仮定)。
-
-   * DHCP の既存の行アイテムを保持します。 プライマリ IP アドレスが以前と同じ構成のまま維持されます。
-   * 次のコマンドを使用して、追加の静的 IP アドレスの構成を追加します。
-
-       ```bash
-       cd /etc/network/interfaces.d/
-       ls
-       ```
-
-     .cfg ファイルが表示されます。
-4. ファイル を開きます。 ファイルの末尾に次の行が表示されます。
+3. 2 番目のインターフェイス用のファイルを作成し、テキスト エディターでファイルを開きます。
 
     ```bash
-    auto eth0
-    iface eth0 inet dhcp
+    vi /etc/netplan/60-static.yaml
     ```
 
-5. このファイルの行の最後に、次の行を追加します。
+4. 次の行をファイルに追加し、`10.0.0.6/24` を実際の IP/ネットマスクに置き換えます。
 
     ```bash
-    iface eth0 inet static
-    address <your private IP address here>
-    netmask <your subnet mask>
+    network:
+        version: 2
+        ethernets:
+            eth0:
+                addresses:
+                    - 10.0.0.6/24
     ```
 
-6. 次のコマンドを使用して、ファイルの内容を保存します。
+5. 次のコマンドを使用して、ファイルの内容を保存します。
 
     ```bash
     :wq
     ```
 
-7. 次のコマンドを使用して、ネットワーク インターフェイスをリセットします。
+6. [netplan try](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) を使用して変更をテストし、構文を確認します。
 
     ```bash
-    sudo ifdown eth0 && sudo ifup eth0
+    netplan try
     ```
 
-    > [!IMPORTANT]
-    > リモート接続を使用する場合は、同じ行で ifdown と ifup の両方を実行します。
-    >
+> [!NOTE]
+> `netplan try` は変更を一時的に適用し、120 秒後に変更をロールバックします。 接続が切断された場合は、120 秒待ってから再接続してください。 その時点で、変更はロールバックされています。
+
+7. `netplan try` に問題がないと仮定し、構成変更を適用します。
+
+    ```bash
+    netplan apply
+    ```
 
 8. 次のコマンドを使用して、IP アドレスがネットワーク インターフェイスに追加されたことを確認します。
 
@@ -108,8 +167,25 @@ ping -S 10.0.0.5 hotmail.com
     ip addr list eth0
     ```
 
-    追加した IP アドレスが、リストの一部として表示されます。
+    追加した IP アドレスが、リストの一部として表示されます。 例:
 
+    ```bash
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+        valid_lft forever preferred_lft forever
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+        link/ether 00:0d:3a:8c:14:a5 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.0.6/24 brd 10.0.0.255 scope global eth0
+        valid_lft forever preferred_lft forever
+        inet 10.0.0.4/24 brd 10.0.0.255 scope global secondary eth0
+        valid_lft forever preferred_lft forever
+        inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
+        valid_lft forever preferred_lft forever
+    ```
+    
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat、CentOS、その他)
 
 1. ターミナル ウィンドウを開きます。

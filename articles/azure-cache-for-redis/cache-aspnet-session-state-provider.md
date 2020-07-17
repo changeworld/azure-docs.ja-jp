@@ -1,25 +1,17 @@
 ---
-title: Cache の ASP.NET セッション状態プロバイダー | Microsoft Docs
-description: Azure Cache for Redis を使用して ASP.NET セッション状態を格納する方法を説明します。
-services: cache
-documentationcenter: na
+title: Cache ASP.NET セッション状態プロバイダー
+description: Azure Cache for Redis を使用してメモリ内に ASP.NET セッション状態を格納する方法を説明します。
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
-ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-ms.date: 05/01/2017
 ms.author: yegu
-ms.openlocfilehash: 7333fa51da1cd5bbd9175d56571ec1d17cbbe33f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.service: cache
+ms.topic: conceptual
+ms.date: 05/01/2017
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203925"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010904"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 
@@ -29,7 +21,7 @@ Azure Cache for Redis には、セッション状態プロバイダーが用意�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>ASP.NET セッション状態をキャッシュに格納する
 
-Visual Studio で Azure Cache for Redis Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+Visual Studio で Azure Cache for Redis Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、 **[ツール]** メニューで **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順にクリックします。
 
 [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
     
@@ -39,7 +31,7 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 ```
 
 > [!IMPORTANT]
-> Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。 2.0.1 以降への移行は重大な変更です。詳しくは、「[v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」(v2.0.0 の重大な変更の詳細) をご覧ください。 この記事の更新時点での、このパッケージの最新バージョンは 2.2.3 です。
+> Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。 2\.0.1 以降への移行は重大な変更です。詳しくは、「[v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」(v2.0.0 の重大な変更の詳細) をご覧ください。 この記事の更新時点での、このパッケージの最新バージョンは 2.2.3 です。
 > 
 > 
 
@@ -90,10 +82,10 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。 キャッシュのプロパティにアクセスする方法については、「[Configure Azure Cache for Redis settings (Azure Cache for Redis の設定を構成する)](cache-configure.md#configure-azure-cache-for-redis-settings)」を参照してください。
 
 * **host** : キャッシュ エンドポイントを指定します。
-* **port** : SSL の設定に応じて、非 SSL ポートまたは SSL ポートを使用します。
+* **port**: TLS の設定に応じて、非 TLS/SSL ポートまたは TLS/SSL ポートを使用します。
 * **accessKey** : キャッシュのプライマリ キーまたはセカンダリ キーを使用します。
-* **ssl** : キャッシュとクライアント間の通信を SSL で保護する場合は true、保護しない場合は false を指定します。 必ず適切なポートを指定してください。
-  * 既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 SSL ポートを使用するには、この設定に true を指定します。 非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
+* **ssl**: キャッシュとクライアント間の通信を TLS で保護する場合は true、保護しない場合は false を指定します。 必ず適切なポートを指定してください。
+  * 既定では、新しいキャッシュに対して非 TLS ポートは無効になっています。 TLS ポートを使用するには、この設定に true を指定します。 非 TLS ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
 * **throwOnError**: 失敗時に例外がスローされるようにする場合は true、操作の失敗時にエラー メッセージが表示されないようにする場合は false を指定します。 静的 Microsoft.Web.Redis.RedisSessionStateProvider.LastException プロパティをチェックすることでエラーを確認できます。 既定値は true です。
 * **retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。 最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。 この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。 操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。 既定値は 0 です。これは再試行されないことを意味します。
 * **databaseId** : キャッシュ出力データに使用するデータベースを指定します。 指定されていない場合は、既定値の 0 が使用されます。
@@ -134,6 +126,11 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 
 セッション状態とその他のベスト プラクティスの詳細については、 [Web 開発に関するベスト プラクティス (Azure を使用した実際のクラウド アプリケーションの構築)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="third-party-session-state-providers"></a>サードパーティのセッション状態プロバイダー
+
+* [NCache](https://www.alachisoft.com/ncache/session-index.html)
+* [Apache ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
+
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。

@@ -4,16 +4,16 @@ description: この記事では、Azure CLI を使用して、Web トラフィ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.date: 5/20/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c0954d1010a6cf5ef6f8edab1470588df9fba559
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955529"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68688174"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループは、`az group create` を使用して作成します。
 
@@ -70,12 +70,14 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>URL マップを含んだアプリ ゲートウェイを作成する
 
-`az network application-gateway create` を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。
+`az network application-gateway create` を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 アプリケーション ゲートウェイは、"*myAGSubnet*" と "*myAGPublicIPAddress*" に割り当てられます。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -85,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -180,7 +182,7 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-vm-scale-sets"></a>VM スケール セットを作成する
+## <a name="create-virtual-machine-scale-sets"></a>仮想マシン スケール セットの作成
 
 この記事では、作成した 3 つのバックエンド プールをサポートする 3 つの仮想マシン スケール セットを作成します。 *myvmss1*、*myvmss2*、および *myvmss3* という名前のスケール セットを作成します。 各スケール セットには、NGINX をインストールする 2 つの仮想マシン インスタンスが含まれています。
 
@@ -246,22 +248,22 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-URL を http://&lt;ip-address&gt;:8080/images/test.html に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+URL を http://&lt;IP アドレス&gt;:8080/images/test.html に変更し、&lt;IP アドレス&gt; を使用している IP アドレスに置き換えると、次の例のように表示されるはずです。
 
 ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-URL を http://&lt;ip-address&gt;:8080/video/test.html に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+URL を http://&lt;IP アドレス&gt;:8080/video/test.html に変更し、&lt;IP アドレス&gt; を使用している IP アドレスに置き換えると、次の例のように表示されるはずです。
 
 ![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する](./tutorial-url-redirect-cli.md)
+[URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する](./tutorial-url-redirect-cli.md)

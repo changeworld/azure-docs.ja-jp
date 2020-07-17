@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 10/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 1d7175d000eebd3f68665e7f097bbe3f68025bc8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148919"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72302789"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
 
@@ -40,17 +40,20 @@ ms.locfileid: "60148919"
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>既存のラボのタグを管理する手順
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
-1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
+1. 必要に応じて、 **[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 お使いのラボは、 **[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります。
 1. ラボの一覧から、タグを追加して管理するラボを選択します。
-1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。
+1. ラボの **[概要]** で、 **[Configuration and policies]\(構成とポリシー\)** を選択します。
 
     ![[Configuration and policies]\(構成とポリシー\) ボタン](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. 左側の **[管理]** で、**[タグ]** を選択します。
-1. このラボ用の新しいタグを作成するには、**名前**/**値**ペアを入力し、**[保存]** を選択します。 一覧から既存のタグを選択すると、そのタグに関連付けられているリソースの表示や管理もできます。
+1. 左側の **[管理]** で、 **[タグ]** を選択します。
+1. このラボ用の新しいタグを作成するには、**名前**/**値**ペアを入力し、 **[保存]** を選択します。 一覧から既存のタグを選択すると、そのタグに関連付けられているリソースの表示や管理もできます。
 
     ![タグの管理](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
+
+> [!NOTE]
+> ラボ レベルで作成されたタグは、ラボによってサブスクリプションで起動されたすべての課金対象リソースを通過します。 たとえば、ラボ レベルのタグは、ラボ VM の基になるコンピューティング VM に送られます。コスト管理のコンテキストでタグを使用できます。 ラボ レベルのタグは、コスト管理のタグ フィルターに表示されます。
 
 ## <a name="understanding-limitations-to-tags"></a>タグの制限事項について
 
@@ -64,6 +67,6 @@ ms.locfileid: "60148919"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 定義するポリシーには、すべてのリソースが特定のタグに値が指定されていることが必要になる場合があります。 詳細については、[ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)に関するページをご覧ください。
-* [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を検索します。
+* [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を調べてください。

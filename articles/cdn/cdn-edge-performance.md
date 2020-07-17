@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320077"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67593898"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -117,7 +117,7 @@ ms.locfileid: "54320077"
 | フィールド | 説明 |
 | --- | --- |
 | 転送速度 |コンテンツが CDN から要求者に転送されたときの平均速度を示します。 |
-| duration |アセットを要求者 (Web ブラウザーなど) に配信するまでにかかった平均時間をミリ秒単位で示します。 |
+| Duration |アセットを要求者 (Web ブラウザーなど) に配信するまでにかかった平均時間をミリ秒単位で示します。 |
 | 圧縮された要求の率 |CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に圧縮された形式で配信されたヒットの割合を示します。 |
 | 4xx エラー率 |4xx 状態コードを生成したヒットの割合を示します。 |
 | 5xx エラー率 |5xx 状態コードを生成したヒットの割合を示します。 |
@@ -134,7 +134,7 @@ ms.locfileid: "54320077"
 | セキュリティで保護されたヒット |CDN コンテンツの HTTPS 要求の数を示します。 |
 | セキュリティで保護された出力バイト数 |CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に配信された HTTPS トラフィックの量をバイト単位で示します。 |
 
-## <a name="reports"></a>レポート
+## <a name="reports"></a>Reports
 このモジュールの各レポートには、帯域幅やトラフィック使用状況に関するさまざまな種類のメトリック (HTTP 状態コード、キャッシュの状態コード、要求 URL など) のグラフと統計情報が含まれています。 この情報は、コンテンツがクライアントにどのように提供されているかを詳しく調査し、CDN の動作を調整してデータ配信パフォーマンスを向上させるために使用することができます。
 
 ### <a name="accessing-the-edge-performance-reports"></a>エッジ パフォーマンス レポートへのアクセス
@@ -183,7 +183,7 @@ ms.locfileid: "54320077"
 | 502 エラー |502 Bad Gateway 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。 502 Bad Gateway 応答コードは、サーバーと HTTP プロキシの間で HTTP プロトコル エラーが起きたときに発生します。 CDN の場合、502 Bad Gateway 応答コードは、通常、顧客の配信元サーバーがエッジ サーバーに無効な応答を返す場合に発生します。 応答は、解析できない場合、または不完全な場合に無効になります。 |
 | 5xx エラー |500 の範囲の応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。  502 Bad Gateway および 504 Gateway Timeout 応答コードは、このレポートから除外されます。 |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)

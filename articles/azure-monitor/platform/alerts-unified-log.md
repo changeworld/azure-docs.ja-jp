@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor でのログ アラート
 description: Azure アラートに関して指定した分析クエリ条件が満たされたときに、電子メール、通知、Web サイト URL (webhook)の呼び出し、またはオートメーションをトリガーします。
-author: msvijayn
-services: monitoring
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
-ms.date: 2/20/2019
-ms.author: vinagara
+ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 194fba3296359f5f7d29a37425a938fe08f1332b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77665223"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
@@ -33,20 +31,20 @@ ms.locfileid: "56452884"
 
 - **ログ クエリ**:  警告ルールが実行されるたびに実行されるクエリ。  このクエリによって返されるレコードを使用して、アラートをトリガーするかどうかが決まります。 特定の Log Analytics ワークスペースまたは Application Insights アプリに対して分析クエリを実行できます。ユーザーがすべてのリソースに対するアクセス権とクエリ権を所有していることを条件として、[複数の Log Analytics と Application Insights のリソース](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)を対象にすることもできます。 
     > [!IMPORTANT]
-    > ログ アラートでは、セキュリティ上の理由により、[関数](../log-query/functions.md)の使用はサポート**されません**。 また、[リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)は、Application Insights 用のログ アラートと、[scheduledQueryRules API を使用するように構成された Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) 用のログ アラートでのみサポートされます。
+    > [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)は、Application Insights 用のログ アラートと、[scheduledQueryRules API を使用するように構成された Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) 用のログ アラートでのみサポートされます。
 
     ログ アラートで使用できない分析コマンドと組み合わせがあります。詳細については、「[Azure Monitor でのログ アラートのクエリ](../../azure-monitor/platform/alerts-log-query.md)」を参照してください。
 
 - **期間**。  クエリの時間範囲を指定します。 クエリでは、現在の時刻に先立つ指定の時間範囲の間に作成されたレコードだけを返します。 期間では、ログ クエリ用にフェッチされるデータを制限して不正使用を防いだり、ログ クエリで使用されている時間コマンド (ago など) を回避することができます。 <br>*たとえば、期間が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが、ログ クエリの実行用に返されます。ログ クエリで「ago (7d)」などの時間コマンドが使用されている場合、そのログ クエリは午後 12 時 15 分から午後 1 時 15 分までの間のデータのみを対象に実行されます。つまり、過去 60 分間についてのみデータが存在し、ログ クエリで指定された 7 日間についてはデータが存在しないかのように動作します。*
 
-- **[頻度]**:   クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、期間の値以下にする必要があります。  この値が期間の値よりも大きい場合、レコードを見落とすおそれがあります。<br>*たとえば、期間が 30 分、頻度が 60 分であるとします。クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。*
+- **[頻度]** :  クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、期間の値以下にする必要があります。  この値が期間の値よりも大きい場合、レコードを見落とすおそれがあります。<br>*たとえば、期間が 30 分、頻度が 60 分であるとします。クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。*
 
-- **しきい値**:   ログ検索の結果を評価し、アラートの生成が必要であるかどうかを判定するための値です。  しきい値は、ログ検索アラート ルールの種類によって異なります。
+- **しきい値**:  ログ検索の結果を評価し、アラートの生成が必要であるかどうかを判定するための値です。  しきい値は、ログ検索アラート ルールの種類によって異なります。
 
 ログ検索ルールには、[Azure Monitor ログ](../../azure-monitor/learn/tutorial-viewdata.md)用と [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 用のいずれについても、2 つの種類があります。 どちらについても、後のセクションで詳しく説明します。
 
-- **[結果の数](#number-of-results-alert-rules)**。 ログ検索によって返されるレコードの数が指定された数を超えた場合に、アラートが 1 回生成されます。
-- **[メトリック測定](#metric-measurement-alert-rules)**。  ログ検索の結果の値が指定されたしきい値を超えた場合に、オブジェクトごとにアラートが生成されます。
+- **[結果の数](#number-of-results-alert-rules)** 。 ログ検索によって返されるレコードの数が指定された数を超えた場合に、アラートが 1 回生成されます。
+- **[メトリック測定](#metric-measurement-alert-rules)** 。  ログ検索の結果の値が指定されたしきい値を超えた場合に、オブジェクトごとにアラートが生成されます。
 
 この 2 種類のアラート ルールの違いは次のとおりです。
 
@@ -76,11 +74,11 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 ### <a name="metric-measurement-alert-rules"></a>メトリック測定のアラート ルール
 
-**メトリック測定**のアラート ルールでは、クエリの対象となったオブジェクトが分析され、特定の値が指定されたしきい値を上回っているオブジェクトについて、それぞれ別個にアラートが生成されます。  **結果の数**のアラート ルールとは、以下の点が明確に異なります。
+**メトリック測定**のアラート ルールでは、クエリの対象となったオブジェクトが分析され、特定の値が指定されたしきい値と指定されたトリガー条件を上回っているオブジェクトについて、それぞれ別個にアラートが生成されます。 **結果の数**のアラート ルールと異なり、**メトリック測定**のアラート ルールは分析結果が時系列を提供するときに機能します。 **結果の数**のアラート ルールとは、以下の点が明確に異なります。
 
 - **集計関数**: 実行する計算と、集計の対象になる可能性がある数値フィールドを決める要素です。  たとえば、**count()** であれば、クエリで指定したレコードの件数が返されます。**avg(CounterValue)** であれば、一定期間内の CounterValue フィールドの平均値が返されます。 クエリの集計関数は、AggregatedValue という名前で指定して呼び出し、数値を指定する必要があります。 
 
-- **グループ フィールド**: このフィールドのインスタンスごとに値を集計したレコードが作成されます。警告は、それぞれのインスタンスについて生成されます。  たとえば、コンピューターごとにアラートを生成する場合には、**by Computer** を使用します。 アラート クエリ内に複数のグループ フィールドが指定されている場合は、**[Aggregate On]\(集計\)** (metricColumn) パラメーターを使用して結果を並べ替えるために使用するフィールドを指定できます
+- **グループ フィールド**: このフィールドのインスタンスごとに値を集計したレコードが作成されます。警告は、それぞれのインスタンスについて生成されます。  たとえば、コンピューターごとにアラートを生成する場合には、**by Computer** を使用します。 アラート クエリ内に複数のグループ フィールドが指定されている場合は、 **[Aggregate On]\(集計\)** (metricColumn) パラメーターを使用して結果を並べ替えるために使用するフィールドを指定できます
 
     > [!NOTE]
     > *[Aggregate On]\(集計\)* (metricColumn) オプションは、Application Insights 用のメトリック測定タイプのログ アラートと、[scheduledQueryRules API を使用するように構成された Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) 用のログ アラートでのみ使用できます。
@@ -123,20 +121,29 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 ![サンプル クエリの結果](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
 この例では、3 台の各コンピューターが 5 分のビンで示されています。つまり、平均的なプロセッサ使用率が 5 分単位で計算されています。 srv01 は、1:25 のビンでしきい値 90 に 1 回だけ抵触しています。 比較すると、srv02 はしきい値 90 に 1:10、1:15、および 1:25 のビンで抵触しており、srv03 はしきい値 90 に 1:10、1:15、1:20、および 1:30 のビンで抵触しています。
-合計違反回数 (3 回以上) に基づいてトリガーするようにアラートが構成されているので、条件を満たしているのは srv02 と srv03 のみです。 複数の時間ビンにわたって srv02 と srv03 の 2 台がしきい値 (90 %) に 2 回抵触しています。このため、この 2 台について個別にアラートが生成されます。*[アラートをトリガーする基準]* パラメーターが *[Continuous breaches]\(継続的な違反\)* オプション用に構成されている場合は、srv03 に対して**のみ**アラートが発生します。これは、1:10 から 1:20 までの 3 つの連続する時間ビンで srv03 がしきい値に抵触しているためです。 srv02 は 1:10 から 1:15 までの 2 つの連続する時間ビンでしきい値に抵触しているため、**該当しません**。
+合計違反回数 (3 回以上) に基づいてトリガーするようにアラートが構成されているので、条件を満たしているのは srv02 と srv03 のみです。 複数の時間ビンにわたって srv02 と srv03 の 2 台がしきい値 (90 %) に 2 回抵触しています。このため、この 2 台について個別にアラートが生成されます。 *[アラートをトリガーする基準]* パラメーターが *[Continuous breaches]\(継続的な違反\)* オプション用に構成されている場合は、srv03 に対して**のみ**アラートが発生します。これは、1:10 から 1:20 までの 3 つの連続する時間ビンで srv03 がしきい値に抵触しているためです。 srv02 は 1:10 から 1:15 までの 2 つの連続する時間ビンでしきい値に抵触しているため、**該当しません**。
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>ログ検索アラート ルール - 起動と状態
 
-ログ検索アラート ルールは、使用されている構成およびカスタム分析クエリに従って、ユーザーが指定したロジックで動作します。 アラート ルールがトリガーされる正確な条件や理由のロジックは、分析クエリにカプセル化されているため、ログ アラート ルールごとに異なる場合があります。 ログ検索アラート ルールのしきい値の条件に達したり超えたりした場合でも、Azure アラートには、ログ結果内部の特定の具体的な根本原因に関する情報が多くありません。 このため、ログ アラートはステートレスと呼ばれ、ログ検索結果が、"*結果の数*" タイプまたは "*メトリック測定*" タイプの条件のとしてログ アラートで指定されたしきい値を超えるたびに発生します。 また、指定されたカスタム分析クエリの結果がアラート条件を満たす限り、ログ アラート ルールはトリガされ続けます。その際、アラートが毎回解決されるとは限りません。 監視失敗の正確な根本原因のロジックは、ユーザーが提供する分析クエリ内でマスクされます。このため、しきい値に達していないログ検索結果が問題の解決を示しているかどうかを最終的に推論する手段は Azure アラートにはありません。
+ログ検索アラート ルールは、クエリに組み込むロジックでのみ動作します。 アラート システムには、システムの状態、意図、またはクエリによって暗示される根本原因に関するコンテキストは他に何もありません。 そのため、ログ アラートはステートレスと呼ばれます。 それらが実行されるたびに、条件が "TRUE" または "FALSE" として評価されます。  以前に発生したかどうかに関係なく、アラート条件の評価が "TRUE" になるたびに、アラートは発生します。    
 
-[結果の数タイプのログ アラートの例](#example-of-number-of-records-type-log-alert)で指定された構成に従って、*Contoso-Log-Alert* というログ アラート ルールがあるとします。 
-- 午後 1 時 05分に、Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 0 個のレコードが生成されました。これはしきい値を下回っているため、アラートは発生しません。 
-- 次のイテレーションである午後 1 時 10 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 5 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](../../azure-monitor/platform/action-groups.md)が直後にトリガーされました。 
-- 午後 1 時 15 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 2 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](../../azure-monitor/platform/action-groups.md)が直後にトリガーされました。
-- 次のイテレーションである午後 1 時 20 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により再度 0 個のレコードが提供されました。これはしきい値を下回っているため、アラートは発生しません。
+実際の例を使って、アクションの動作を見てみましょう。 *Contoso-Log-Alert* というログ アラート ルールがあるとします。これは、["結果の数" タイプのログ アラートについて提供された例](#example-of-number-of-records-type-log-alert)に示すように構成されています。 条件は、ログ内で結果コード 500 を検索するように設計されたカスタム アラート クエリです。 ログ内で結果コード 500 が複数見つかった場合、アラートの条件は true になります。 
 
-ただし、上にあげたケースでは、午後 1 時 15 分の時点で、Azure アラートでは、1 時 10 分に見られた問題の根本原因が継続しているかどうか、また新たな障害が発生しているかどうかが判断できません。ユーザーが提供したクエリで前のレコードが考慮されている可能性もあるためですが、Azure アラートでは認識できません。 このため慎重を期して、Contoso-Log-Alert が午後 1 時 15 分に実行されるときに、構成済みの[アクション グループ](../../azure-monitor/platform/action-groups.md)が再びトリガーされます。 午後 1 時 20 分にはレコードがありませんが、Azure アラートでは、レコードの原因が解決されたかどうかを確信できません。このため、Azure アラート ダッシュボードでは Contoso-Log-Alert が "解決済み" に変更されませんし、アラートの解決を示す通知も送信されません。
+以下のそれぞれの間隔で、Azure アラート システムによって *Contoso-Log-Alert* に関する条件が評価されます。
 
+
+| Time    | ログ検索クエリによって返されるレコード数 | ログ条件の評価 | 結果 
+| ------- | ----------| ----------| ------- 
+| 午後 1:05 | 0 個のレコード | 0 は 0 より大きくないため、FALSE です |  アラートは発生しません。 アクションは呼び出されません。
+| 午後 1:10 | 2 個のレコード | 2 は 0 より大きいため、TRUE です  | アラートが発生し、アクション グループが呼び出されます。 アラート状態はアクティブです。
+| 午後 1:15 | 5 個のレコード | 5 は 0 より大きいため TRUE です  | アラートが発生し、アクション グループが呼び出されます。 アラート状態はアクティブです。
+| 午後 1:20 | 0 個のレコード | 0 は 0 より大きくないため、FALSE です |  アラートは発生しません。 アクションは呼び出されません。 アラートの状態は "アクティブ" のままです。
+
+例として前のケースを使用します。
+
+午後 1 時 15 分、Azure アラートは、1 時 10 分に発生した根本的な問題が持続しているかどうかの判断、およびレコードがまったく新しい障害なのかそれとも午後 1 時 10 分に発生した古い障害の繰り返しなのかの判断を行うことができません。 ユーザーによって指定されたクエリは、以前のレコードを考慮している場合もあればそうでない場合もあり、システムでは認識されません。 Azure アラート システムは慎重を期して作成されており、午後 1 時 15 分にアラートとそれに関連するアクションが再び発生します。 
+
+午後 1 時 20 分、結果コード 500 に関して表示されるレコードがゼロである場合、Azure アラートでは、午後 1 時 10 分と 1 時 15 分に表示された結果コード 500 の原因が現在解決されているのかを確認できません。 エラー 500 の問題が同じ理由で再発するかどうかは不明です。 したがって、Azure Alert ダッシュボードで *Contoso-Log-Alert*  は **[解決済み]** に変更されず、また、アラートが解決されたことを示す通知は送信されません。 分析クエリに埋め込まれたロジックの正確な条件または理由を理解しているご自分だけが、必要に応じて[アラートを解決済みとしてマーク](alerts-managing-alert-states.md)できます。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>ログ アラートの価格と課金
 
@@ -145,7 +152,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 - Application Insights のログ アラートが正しいアラート名でリソース グループとアラート プロパティと共に表示されます
 - [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して作成されている場合、Log Analytics のログ アラートは、正しいアラート名でリソース グループとアラート プロパティと共に表示されます
 
-[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) には、Log Analytics の保存した検索条件の一部としてアラート アクションとスケジュールがあり、適切な [Azure リソース](../../azure-resource-manager/resource-group-overview.md)ではありません。 そのため、[新しい API への切り替え](../../azure-monitor/platform/alerts-log-api-switch.md)を**行わないで** Azure portal を使用して、または[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) を使用して、Log Analytics に対して作成されたこのような従来のログ アラートに対する課金を有効にするため、非表示の擬似アラート ルールが Azure での課金用に `microsoft.insights/scheduledqueryrules` に作成されます。 課金用に `microsoft.insights/scheduledqueryrules` に作成された非表示の擬似アラート ルールは、リソース グループおよびアラートのプロパティと共に `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` と表示されます。
+[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) には、Log Analytics の保存した検索条件の一部としてアラート アクションとスケジュールがあり、適切な [Azure リソース](../../azure-resource-manager/management/overview.md)ではありません。 そのため、[新しい API への切り替え](../../azure-monitor/platform/alerts-log-api-switch.md)を**行わないで** Azure portal を使用して、または[従来の Log Analytics API](../../azure-monitor/platform/api-alerts.md) を使用して、Log Analytics に対して作成されたこのような従来のログ アラートに対する課金を有効にするため、非表示の擬似アラート ルールが Azure での課金用に `microsoft.insights/scheduledqueryrules` に作成されます。 課金用に `microsoft.insights/scheduledqueryrules` に作成された非表示の擬似アラート ルールは、リソース グループおよびアラートのプロパティと共に `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` と表示されます。
 
 > [!NOTE]
 > `<, >, %, &, \, ?, /` のような無効な文字が存在する場合、非表示の擬似アラート ルールの名前および Azure の課金では `_` に置き換えられます。
@@ -155,7 +162,9 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 - ユーザーは、[Log Analytics ワークスペースでのアラート ルールの API 基本設定を切り替え](../../azure-monitor/platform/alerts-log-api-switch.md)て、アラート ルールまたは監視を失うことなく、Azure Resource Manager に準拠している [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に移動できます。 それにより、課金のために非表示の擬似アラート ルールを作成する必要はなくなります。
 - ユーザーが API の基本設定を切り替えたくない場合は、[従来の Log Analytics API](api-alerts.md) を使用して元のスケジュールとアラートのアクションを**削除**するか、または [Azure portal で元のログ アラート ルール](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)を削除する必要があります
 
-## <a name="next-steps"></a>次の手順
+さらに、[従来の Log Analytics API](api-alerts.md) を使用してアラート ルールの課金用に作成された非表示の scheduleQueryRules リソースについては、PUTのような変更操作はすべて失敗します。 `microsoft.insights/scheduledqueryrules` タイプの疑似ルールは、[従来の Log Analytics API](api-alerts.md) を使用して作成されたアラート ルールに課金するためのものだからです。 アラート ルールのあらゆる変更は、[従来の Log Analytics API](api-alerts.md) を使用して行う必要があります。または、[scheduleQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を代わりに使用するように、ユーザーが[アラート ルールの API 基本設定を切り替える](../../azure-monitor/platform/alerts-log-api-switch.md)ことができます。
+
+## <a name="next-steps"></a>次のステップ
 
 * [Azure でのログ アラートの作成](../../azure-monitor/platform/alerts-log.md)について学習します。
 * [Azure のログ アラートの Webhook](alerts-log-webhook.md) について理解する。

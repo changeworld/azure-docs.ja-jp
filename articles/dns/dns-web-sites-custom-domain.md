@@ -2,19 +2,19 @@
 title: チュートリアル - Web アプリのカスタム Azure DNS レコードの作成
 description: このチュートリアルでは、Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成します。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: d2cb0ef904935d1736c23aeaf23030da99e41a71
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: rohink
+ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665952"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76939092"
 ---
-# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル:カスタム ドメインにおける Web アプリの DNS レコードの作成 
+# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
 Azure DNS を構成して、Web アプリ用にカスタム ドメインをホストすることができます。 たとえば、Azure Web アプリを作成し、www\.contoso.com または contoso.com を完全修飾ドメイン名 (FQDN) として使用してユーザーがアクセスできるようにすることができます。
 
@@ -41,7 +41,7 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +63,7 @@ A レコードは、名前をその IP アドレスに対応付けるために�
 
 ### <a name="get-the-ipv4-address"></a>IPv4 アドレスの取得
 
-Azure portal の App Services ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。 
+Azure portal の App Services ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。 
 
 ![[カスタム ドメイン] メニュー](../app-service/./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -175,16 +175,16 @@ set-AzWebApp `
 > [!NOTE]
 > 必ず、`http://` プレフィックスを含めます。そうしないと、ブラウザーが URL の予測を試みることがあります。
 
-両方の URL で同じページが表示されます。 例: 
+両方の URL で同じページが表示されます。 次に例を示します。
 
 ![Contoso アプリ サービス](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成したリソースが不要になったら、**myresourcegroup** リソース グループを削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure DNS プライベート ゾーンを作成する方法について学習します。
 

@@ -1,34 +1,35 @@
 ---
-title: Azure CLI を使用した Azure HDInsight での Apache Spark クラスターの作成
+title: クイック スタート:Azure CLI を使用した Apache Spark クラスター - Azure HDInsight
 description: このクイック スタートでは、Azure CLI を使って、Azure HDInsight に Apache Spark クラスターを作成する方法を示します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 05/09/2019
-ms.author: hrasheed
-ms.openlocfilehash: b9478ca8e1b31c1761e063a6789e96043f9a2c68
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.date: 02/03/2020
+ms.openlocfilehash: 02113988c76dd2565c7109c2ac18c3d1287189db
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556815"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891120"
 ---
-# <a name="create-an-apache-spark-cluster-in-azure-hdinsight-with-azure-cli"></a>Azure CLI を使用した Azure HDInsight での Apache Spark クラスターの作成
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
-このクイックスタートでは、Azure CLI を使って Azure HDInsight に Apache Spark クラスターを作成する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 [Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
+このクイックスタートでは、Azure コマンド ライン インターフェイス (CLI) を使って Azure HDInsight に Apache Spark クラスターを作成する方法を説明します。 Azure HDInsight は、全範囲に対応した、オープンソースのエンタープライズ向けマネージド分析サービスです。 HDInsight の Apache Spark フレームワークにより、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 Azure CLI は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+複数のクラスターを一緒に使用している場合は、仮想ネットワークを作成する必要があります。また、Spark クラスターを使用している場合は、Hive Warehouse Connector を使用することもできます。 詳細については、「[Azure HDInsight 用の仮想ネットワークを計画する](../hdinsight-plan-virtual-network-deployment.md)」と「[Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する](../interactive-query/apache-hive-warehouse-connector.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI。 Azure CLI をインストールしていない場合、手順については [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関する記事をご覧ください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (Azure Cloud Shell を使用したくない場合)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark クラスターの作成
 
-1. Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択するだけです。 それ以外の場合は、下のコマンドを入力します。
+1. Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、次のコード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login
@@ -103,16 +104,16 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
@@ -139,9 +140,9 @@ az group delete \
     --name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure CLI を使って Azure HDInsight に Apache Spark クラスターを作成する方法を説明しました。  HDInsight Spark クラスターを使用してサンプル データに対話型のクエリを実行する方法については、次のチュートリアルに進みます。
+このクイックスタートでは、Azure CLI を使って Azure HDInsight に Apache Spark クラスターを作成する方法を説明しました。  HDInsight クラスターを使用してサンプル データに対話型のクエリを実行する方法については、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
 > [Apache Spark への対話型クエリの実行](./apache-spark-load-data-run-query.md)

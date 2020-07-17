@@ -1,51 +1,63 @@
 ---
-title: Azure Data Factory で Databricks を使用してデータを変換する | Microsoft Docs
+title: Azure Databricks による変換
 description: Azure Data Factory で Databricks ノートブックを使用することにより、ソリューション テンプレートを使用してデータを変換する方法について説明します。
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+ms.reviewer: douglasl
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/10/2018
-ms.author: abnarain
-ms.reviewer: douglasl
-ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.custom: seo-lt-2019
+ms.date: 03/03/2020
+ms.openlocfilehash: 3d55e37078d7bbbcd84684f43ef12810ef01e10e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630805"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627757"
 ---
-# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Azure Data Factory で Databricks を使用してデータを変換する
+# <a name="transformation-with-azure-databricks"></a>Azure Databricks による変換
 
-このチュートリアルでは、Data Factory の**ルックアップ**、**コピー**、および **Databricks ノートブック** アクティビティが含まれる、エンド ツー エンドのパイプラインを作成します。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
--   **ルックアップ**または GetMetadata アクティビティは、コピーおよび分析ジョブをトリガーする前に、ソース データセットをダウンストリームで使用できる状態にするために使用されます。
+このチュートリアルでは、Azure Data Factory の**検証**、**データ コピー**、および**ノートブック** アクティビティが含まれる、エンド ツー エンドのパイプラインを作成します。
 
--   **コピー アクティビティ**では、ソース ファイル/データセットがシンク ストレージにコピーされます。 Spark でデータセットを直接使用できるように、シンク ストレージは Databricks ノートブックに DBFS としてマウントされています。
+- **検証**は、コピーおよび分析ジョブをトリガーする前に、ソース データセットがダウンストリームで使用できる状態にします。
 
--   **Databricks ノートブック アクティビティ**では、データセットを変換する Databricks ノートブックがトリガーされて、処理済みのフォルダー/SQL DW に追加されます。
+- **データ コピー**は、ソース データセットを Azure Databricks ノートブックに DBFS としてマウントされているシンク ストレージにコピーします。 このようにして、データセットを Spark で直接使用することができます。
 
-このテンプレートを簡潔にするため、テンプレートではスケジュールされたトリガーは作成されません。 必要に応じて追加できます。
+- **ノートブック**によって、データセットを変換する Databricks ノートブックがトリガーされます。 また、処理されたフォルダーまたは Azure SQL Data Warehouse にデータセットを追加します。
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+わかりやすくするために、このチュートリアルのテンプレートではスケジュールされたトリガーを作成しません。 必要に応じて、1 つを追加できます。
+
+![パイプラインの図](media/solution-template-Databricks-notebook/pipeline-example.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-1.  **BLOB ストレージ アカウント**と、**シンク** として使用される `sinkdata` という名前のコンテナーを作成します。 **ストレージ アカウントの名前**、**コンテナーの名前**、および**アクセス キー**を記録しておきます。後で、テンプレートにおいてこれらを参照します。
+- シンクとして使用するための `sinkdata` という名前のコンテナーを持つ Azure Blob ストレージ アカウント。
 
-2.  **Azure Databricks ワークスペース**があることを確認します。または、新しく作成します。
+  ストレージ アカウント名、コンテナー名、アクセス キーをメモしておきます。 これらの値は、後でテンプレートの中で必要になります。
 
-1.  **ETL 用のノートブックをインポート**します。 以下の Transformations ノートブックを Databricks ワークスペースにインポートします。 (以下と同じ場所でなくてもかまいませんが、後でわかるように選択したパスを憶えておいてください。)URL フィールドに次の URL を入力して、そこからノートブックをインポートします: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`。 **[インポート]** を選択します。
+- Azure Databricks ワークスペース。
 
-    ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
+## <a name="import-a-notebook-for-transformation"></a>変換するノートブックをインポートする
 
-    ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)  
+**変換**ノートブックを Databricks ワークスペースにインポートするには、次のようにします。
 
-1.  それでは、**Transformations** ノートブックを実際の**ストレージ接続情報** (名前とアクセス キー) で更新しましょう。 上でインポートしたノートブックの **command 5** に移動し、それを次のコード スニペットで置き換えます。置き換える前に、強調表示されている値を変更しておきます。 このアカウントが先ほど作成したものと同じストレージ アカウントであり、`sinkdata` コンテナーが含まれることを確認します。
+1. Azure Databricks ワークスペースにサインインし、 **[インポート]** を選択します。
+       ![ワークスペースをインポートするメニュー コマンド ](media/solution-template-Databricks-notebook/import-notebook.png)ワークスペース パスは、表示されているものとは異なる場合がありますが、後で使用できるように注意してください。
+1. **インポート元:URL** を選択します。 テキスト ボックスに、「`https://adflabstaging1.blob.core.windows.net/share/Transformations.html`」と入力します。
+
+   ![ノートブックをインポートするための選択](media/solution-template-Databricks-notebook/import-from-url.png)
+
+1. それでは、 **[変換]** ノートブックを実際のストレージ接続情報で更新しましょう。
+
+   インポートしたノートブックで、次のコード スニペットに示すように**コマンド 5** にアクセスします。
+
+   - `<storage name>` と `<access key>` を実際のストレージ接続情報に置き換えます。
+   - `sinkdata` コンテナーでストレージ アカウントを使用します。
 
     ```python
     # Supply storageName and accessKey values  
@@ -69,88 +81,105 @@ ms.locfileid: "58630805"
       print e \# Otherwise print the whole stack trace.  
     ```
 
-1.  Data Factory で Databricks にアクセスするための **Databricks アクセス トークン**を生成します。 後で Databricks のリンクされたサービスを作成するときに使用するので、**アクセス トークンを保存します**。トークンは、"dapi32db32cbb4w6eee18b7d87e45exxxxxx" のような値です。
+1. Data Factory で Databricks にアクセスするための **Databricks アクセス トークン**を生成します。
+   1. Databricks ワークスペースで、右上にあるユーザー プロファイル アイコンを選択します。
+   1. **[ユーザー設定]** を選択します。
+    ![ユーザー設定のメニュー コマンド](media/solution-template-Databricks-notebook/user-setting.png)
+   1. **[アクセス トークン]** タブの **[新しいトークンの生成]** を選択します。
+   1. **[Generate] \(生成)** を選択します。
 
-    ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
+    ![[生成] ボタン](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-    ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
+   Databricks のリンクされたサービスの作成に後で使用するために*アクセス トークンを保存します。* アクセス トークンは、`dapi32db32cbb4w6eee18b7d87e45exxxxxx` のようになります。
 
-## <a name="create-linked-services-and-datasets"></a>リンクされたサービスとデータセットを作成する
+## <a name="how-to-use-this-template"></a>このテンプレートの使用方法
 
-1.  Data Factory UI で *[Connections Linked services + new]\(接続リンクされたサービス + 新規\)* に移動して、新しい**リンクされたサービス**を作成します
+1. **Azure Databricks による変換**テンプレートに移動し、次の接続用の新しいリンクされたサービスを作成します。
 
-    1.  **ソース** – ソース データへのアクセス用。 このサンプルのソース ファイルが含まれるパブリック BLOB ストレージを使用できます。
+   ![接続の設定](media/solution-template-Databricks-notebook/connections-preview.png)
 
-        **Blob Storage** を選択し、以下の **SAS URI** を使用して、ソース ストレージに接続します (読み取り専用アクセス)。
+    - **ソース BLOB 接続** - ソース データにアクセスするため。
 
-        `https://storagewithdata.blob.core.windows.net/?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-12-31T21:40:53Z&st=2018-10-24T13:40:53Z&spr=https&sig=K8nRio7c4xMLnUV0wWVAmqr5H4P3JDwBaG9HCevI7kU%3D`
+       この演習では、ソース ファイルが格納されているパブリック BLOB ストレージを使用できます。 構成については、次のスクリーンショットを参照してください。 次の **[SAS URL]** を使用して、ソース ストレージに接続します (読み取り専用アクセス)。
 
-        ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
+       `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-    1.  **シンク** – データ コピー先用。
+        ![認証方法と SAS URL の選択](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
-        シンクのリンクされたサービスで、前提条件 1 で作成したストレージを選択します。
+    - **コピー先 BLOB 接続** – コピーしたデータの保管先。
 
-        ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
+       **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、シンク ストレージ BLOB を選択します。
 
-    1.  **Databricks** – Databricks クラスターへの接続用。
+       ![新しいリンクされたサービスとしてのシンク ストレージ BLOB](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
-        前提条件 2.c で生成したアクセス キーを使用して、Databricks のリンクされたサービスを作成します。 "*対話型クラスター*" がある場合は、それを選択してもかまいません。 (この例では、*[New job cluster]\(新しいジョブ クラスター\)* オプションを使用します。)
+    - **Azure Databricks** - Databricks クラスターに接続する。
 
-        ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
+        前に生成したアクセス キーを使用して、Databricks にリンクされたサービスを作成します。 ある場合は、*対話型クラスター*を選択することもできます。 この例では、 **[New job cluster]\(新しいジョブ クラスター\)** オプションを使用します。
 
-2.  **データセット**を作成します
+        ![クラスターに接続するための選択](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-    1.  ソース データがあるかどうかを確認するために、"**sourceAvailability_Dataset**" を作成します
+1. **[このテンプレートを使用]** を選択します。 作成されたパイプラインが表示されます。
 
-    ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
+    ![パイプラインを作成する](media/solution-template-Databricks-notebook/new-pipeline.png)
 
-    1.  **ソース データセット** – ソース データのコピー用 (バイナリ コピーを使用)
+## <a name="pipeline-introduction-and-configuration"></a>パイプラインの概要と構成
 
-    ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
+新しいパイプラインのほとんどの設定は、既定値で自動的に構成されています。 パイプラインの構成を確認し、必要に応じて変更します。
 
-    1.  **シンク データセット** – シンク/コピー先の場所へのコピー用
+1. **[検証]** アクティビティの **[Availability flag]\(可用性フラグ\)** で、ソース **データセット**の値が、先ほど作成した `SourceAvailabilityDataset` に設定されていることを確認します。
 
-        1.  リンクされたサービス - 1.b で作成した "sinkBlob_LS" を選択します
+   ![ソース データセットの値](media/solution-template-Databricks-notebook/validation-settings.png)
 
-        2.  ファイル パス - "sinkdata/staged_sink"
+1. **データ コピー** アクティビティの **[file-to-blob]** で、 **[ソース]** タブと **[シンク]** タブを確認します。 必要に応じて設定を変更します。
 
-        ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
+   - **[ソース]![ タブ** ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-## <a name="create-activities"></a>アクティビティを作成する
+   - **[シンク]** タブ ![シンク タブ](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1.  ソース使用可能性チェックを行うためのルックアップ アクティビティ "**Availability flag**" を作成します (ルックアップまたは GetMetadata を使用できます)。 2.a で作成した "sourceAvailability_Dataset" を選択します。
+1. **ノートブック** アクティビティの**変換**で、必要に応じてパスと設定を確認し、更新します。
 
-    ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
+   **Databricks のリンクされたサービス**には、前の手順の値が事前に設定されます。次に例を示します。![Databricks のリンクされたサービスで入力されている値](media/solution-template-Databricks-notebook/notebook-activity.png)
 
-1.  ソースからシンクにデータセットをコピーするためのコピー アクティビティ "**file-to-blob**" を作成します。 この場合、データはバイナリ ファイルです。 コピー アクティビティのソースとシンクの構成については、以下のスクリーンショットを参照してください。
+   **ノートブック**設定を確認するには、次のようにします。
+  
+    1. **[設定]** タブを選択します。**ノートブック パス**については、既定のパスが正しいことを確認します。 正しいノートブック パスを参照して、選択する必要がある場合があります。
 
-    ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
+       ![ノートブック パス](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-    ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
+    1. **[基本パラメーター]** セレクターを展開し、パラメーターが次のスクリーンショットに示されている内容と一致していることを確認します。 これらのパラメーターは Data Factory から Databricks ノートブックに渡されます。
 
-1.  **パイプラインのパラメーター**を定義します
+       ![基本パラメーター](media/solution-template-Databricks-notebook/base-parameters.png)
 
-    ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
+1. **パイプラインのパラメーター**が、次のスクリーンショットに示されている内容と一致していることを確認します。![パイプラインのパラメーター](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
-1.  **Databricks アクティビティ**を作成します
+1. データセットに接続します。
 
-    前のステップで作成したリンクされたサービスを選択します。
+   - **SourceAvailabilityDataset** - ソース データが使用可能であることを確認します。
 
-    ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
+     ![SourceAvailabilityDataset のリンクされたサービスとファイル パスの選択](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
-    **設定**を構成します。 スクリーンショットで示されているように **[Base Parameters]\(基本パラメーター\)** を作成し、Data Factory から Databricks ノートブックに渡されるパラメーターを作成します。 **前提条件 2** でアップロードした**正しいノートブック パス**を参照して**選択**します。
+   - **SourceFilesDataset** - ソース データにアクセスします。
 
-    ![17](media/solution-template-Databricks-notebook/Databricks-tutorial-image17.png)
+       ![SourceFilesDataset のリンクされたサービスとファイル パスの選択](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
-1.  **パイプラインを実行します**。 より詳細な Spark のログについては、Databricks のログへのリンクを検索できます。
+   - **DestinationFilesDataset** - シンクのターゲットの場所にデータをコピーします。 次の値を使用します。
 
-    ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
+     - **リンクされたサービス** - `sinkBlob_LS`前のステップで作成済み。
 
-    ストレージ エクスプローラーを使用してデータ ファイルを確認することもできます。 (Data Factory のパイプラインの実行と関連付けるため、この例では Data Factory からのパイプライン実行 ID を出力フォルダーに追加しています。 このようにすると、各実行で生成されたファイルに戻って追跡できます。)
+     - **ファイル パス** - `sinkdata/staged_sink`。
 
-![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
+       ![DestinationFilesDataset のリンクされたサービスとファイル パスの選択](media/solution-template-Databricks-notebook/destination-dataset.png)
 
-## <a name="next-steps"></a>次の手順
+1. **[デバッグ]** を選択してパイプラインを実行します。 より詳細な Spark のログについては、Databricks のログへのリンクを検索できます。
+
+    ![出力から Databricks ログへのリンク](media/solution-template-Databricks-notebook/pipeline-run-output.png)
+
+    Azure Storage Explorer を使用してデータ ファイルを確認することもできます。
+
+    > [!NOTE]
+    > Data Factory のパイプラインの実行と関連付けるため、この例では Data Factory からのパイプライン実行 ID を出力フォルダーに追加しています。 これにより、実行ごとに生成されたファイルを追跡することができます。
+    > ![追加されたパイプラインの実行 ID](media/solution-template-Databricks-notebook/verify-data-files.png)
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory の概要](introduction.md)

@@ -1,30 +1,23 @@
 ---
-title: GDPR コンプライアンス | Microsoft Docs
+title: GDPR コンプライアンス | Azure Marketplace
 description: Cloud パートナー ポータルと GDPR。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 4e6f5095081f0549bc127b9b6949908a64214aee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dsindona
+ms.openlocfilehash: f09bc60a59ff2a6e21d0cdae1917a1faed072ea4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857812"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280288"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud パートナー ポータルの GDPR コンプライアンス
 ====================================
 
-[一般データ保護規則 (GDPR)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm) は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とするルールです。
+[一般データ保護規則 (GDPR)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とするルールです。
 
 Cloud パートナー ポータルには、顧客データの処理と、そのデータを保護するために使用するセキュリティ対策に関する詳細情報が提供されています。 この情報には、製品内エクスペリエンスを通してアクセスできます。
 
@@ -33,7 +26,7 @@ Cloud パートナー ポータルには、顧客データの処理と、その�
 
 Cloud パートナー ポータルでは、[ユーザー] タブですべてのデータにアクセスできます。そこで個人データを特定できます。 ユーザーを追加または削除する方法については、こちらの[ドキュメント](./cloud-partner-portal-manage-users.md)を参照してください。
 
-<a name="manage"></a>管理
+<a name="manage"></a>管理する
 ------
 
 [ユーザー] タブでユーザー アカウントの [削除] を押して、個人データを管理できます。**所有者**と**共同作成者**のロールがあり、個々の特定のユーザーに割り当てることができます。両方とも割り当て、コピー、更新、削除することができます。

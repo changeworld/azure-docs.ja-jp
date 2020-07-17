@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog でのデータ ソースの登録
 description: この記事では、Azure Data Catalog でデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002988"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68736318"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに
@@ -79,5 +77,5 @@ Data Catalog データ ソース登録ツールを使用して、登録された
 ## <a name="summary"></a>まとめ
 構造メタデータと記述メタデータがデータ ソースからカタログ サービスにコピーされるため、Data Catalog でデータ ソースを登録すると、データ ソースの検出と把握が容易になります。 データ ソースを登録すると、Data Catalog ポータルを使用してデータ ソースの注釈付け、管理、および検出ができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ソースの登録の詳細については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。

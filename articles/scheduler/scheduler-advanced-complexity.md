@@ -1,26 +1,27 @@
 ---
-title: 高度なジョブ スケジュールと繰り返しを構築する - Azure Scheduler
+title: 高度なジョブ スケジュールと繰り返しを構築する
 description: Azure Scheduler でジョブの高度なスケジュールと繰り返しを作成する方法について説明します
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78898601"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler でジョブの高度なスケジュールと繰り返しを構築する
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps を代わりにお試しください](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 [Azure Scheduler](../scheduler/scheduler-intro.md) ジョブでは、スケジュールが核となって、Scheduler サービスでジョブを実行するタイミングと方法が決定されます。 Scheduler を使うと、1 回限りのスケジュールと定期的なスケジュールをジョブに対して複数設定することができます。 1 回限りのスケジュールは、指定された時刻に 1 回だけ実行されます。基本的には、これらは 1 回だけ実行される定期的なスケジュールです。 定期的なスケジュールは、指定された頻度で実行されます。 この柔軟性を活かし、さまざまなビジネス シナリオで Scheduler を使用することができます。その例を次に示します。
 
@@ -65,13 +66,13 @@ ms.locfileid: "57860620"
 
 | 要素 | 必須 | 説明 | 
 |---------|----------|-------------|
-| **startTime** | いいえ  | ジョブがいつ基本スケジュールで開始されるかを指定する、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の DateTime 文字列値。 <p>複雑なスケジュールでは、**startTime** になるとすぐにジョブが開始されます。 | 
-| **recurrence** | いいえ  | ジョブが実行されるときの繰り返しの規則。 **recurrence** オブジェクトでは、**frequency**、**interval**、**schedule**、**count**、**endTime** の各要素がサポートされます。 <p>**recurrence** 要素を使用する場合は、**frequency** 要素も使用する必要があります。**recurrence** の他の要素は省略可能です。 |
-| **frequency** | はい (**recurrence** を使用する場合) | 実行間の時間単位。次の値がサポートされます。"Minute"、"Hour"、"Day"、"Week"、"Month"、および "Year" | 
-| **interval** | いいえ  | **frequency** に基づいて実行間の時間単位の数を決定する正の整数。 <p>たとえば、**interval** が 10 で **frequency** が "Week" の場合、ジョブは 10 週間おきに繰り返されます。 <p>各 frequency の最大 interval 数は次のとおりです。 <p>- 18 か月 <br>- 78 週 <br>- 548 日 <br>- 時間と分については、範囲は 1 <= <*interval*> <= 1,000 です。 | 
-| **schedule** | いいえ  | 指定した分、時間、曜日、および月の日にちに基づいて、recurrence に対する変更を定義します | 
-| **count** | いいえ  | ジョブが終了するまでの実行回数を指定する正の整数。 <p>たとえば、日単位のジョブの **count** を 7 に設定し、開始日を月曜日に設定した場合、ジョブの実行は日曜日に終了します。 開始日が既に過去の日付である場合、最初の実行は作成時刻から計算されます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
-| **endTime** | いいえ  | ジョブの実行をいつ終了するかを示す、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の Date または DateTime 文字列値。 **endTime** には、過去の値を設定することができます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 |
+| **startTime** | いいえ | ジョブがいつ基本スケジュールで開始されるかを指定する、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の DateTime 文字列値。 <p>複雑なスケジュールでは、**startTime** になるとすぐにジョブが開始されます。 | 
+| **recurrence** | いいえ | ジョブが実行されるときの繰り返しの規則。 **recurrence** オブジェクトでは、**frequency**、**interval**、**schedule**、**count**、**endTime** の各要素がサポートされます。 <p>**recurrence** 要素を使用する場合は、**frequency** 要素も使用する必要があります。**recurrence** の他の要素は省略可能です。 |
+| **frequency** | はい (**recurrence** を使用する場合) | 実行間の時間単位。サポートされる値は、"Minute"、"Hour"、"Day"、"Week"、"Month"、および "Year" です | 
+| **interval** | いいえ | **frequency** に基づいて実行間の時間単位の数を決定する正の整数。 <p>たとえば、**interval** が 10 で **frequency** が "Week" の場合、ジョブは 10 週間おきに繰り返されます。 <p>各 frequency の最大 interval 数は次のとおりです。 <p>- 18 か月 <br>- 78 週 <br>- 548 日 <br>- 時間と分については、範囲は 1 <= <*interval*> <= 1,000 です。 | 
+| **schedule** | いいえ | 指定した分、時間、曜日、および月の日にちに基づいて、recurrence に対する変更を定義します | 
+| **count** | いいえ | ジョブが終了するまでの実行回数を指定する正の整数。 <p>たとえば、日単位のジョブの **count** を 7 に設定し、開始日を月曜日に設定した場合、ジョブの実行は日曜日に終了します。 開始日が既に過去の日付である場合、最初の実行は作成時刻から計算されます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
+| **endTime** | いいえ | ジョブの実行をいつ終了するかを示す、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の Date または DateTime 文字列値。 **endTime** には、過去の値を設定することができます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 |
 |||| 
 
 たとえば、次の JSON スキーマには、ジョブの基本スケジュールと繰り返しが記述されています。 
@@ -164,10 +165,10 @@ schedule の要素を次の表に詳しく示します。
 | **分** |ジョブを実行する時刻 (分)。 |整数の配列。 |
 | **hours** |ジョブを実行する時刻 (時)。 |整数の配列。 |
 | **weekDays** |ジョブを実行する曜日。 週単位の頻度だけを指定できます。 |次の値の配列 (配列の最大サイズは 7)。<br />- "Monday"<br />- "Tuesday"<br />- "Wednesday"<br />- "Thursday"<br />- "Friday"<br />- "Saturday"<br />- "Sunday"<br /><br />大文字/小文字は区別されません。 |
-| **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |**monthlyOccurrences** オブジェクトの配列:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** は、ジョブを実行する曜日です。 たとえば、*{Sunday}* は、月の毎週日曜日という意味です。 必須。<br /><br />**occurrence** は、月の第何週目に実行するかを表します。 たとえば、*{Sunday, -1}* は月の最終日曜日という意味です。 省略可能。 |
+| **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |**monthlyOccurrences** オブジェクトの配列:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** は、ジョブを実行する曜日です。 たとえば、 *{Sunday}* は、月の毎週日曜日という意味です。 必須。<br /><br />**occurrence** は、月の第何週目に実行するかを表します。 たとえば、 *{Sunday, -1}* は月の最終日曜日という意味です。 省略可能。 |
 | **monthDays** |ジョブが実行される月の日にち。 月単位の頻度だけを指定できます。 |次の値の配列。<br />- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値|
 
-## <a name="examples-recurrence-schedules"></a>次に例を示します。繰り返しのスケジュール
+## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
 
 次の例に、さまざまな繰り返しのスケジュールを示します。 この例では、schedule オブジェクトとそのサブ要素に注目します。
 
@@ -207,8 +208,9 @@ schedule の要素を次の表に詳しく示します。
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |月の最後の金曜日に 15 分ごとに実行されます。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
 * [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
+* [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 * [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)

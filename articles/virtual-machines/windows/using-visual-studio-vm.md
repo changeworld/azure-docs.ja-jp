@@ -1,43 +1,40 @@
 ---
-title: Azure 仮想マシンでの Visual Studio の使用| Microsoft Docs
+title: Azure 仮想マシンでの Visual Studio の使用
 description: Azure 仮想マシンでの Visual Studio の使用。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: cathysull
 manager: cathys
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.date: 04/02/2019
-ms.author: phillee
+ms.topic: conceptual
+ms.date: 04/23/2020
+ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884875"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652678"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
-事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1) で入手できます。
+事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) で入手できます。
 
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
+
+> [!NOTE]
+> 一部のサブスクリプションでは、Windows 10 イメージをデプロイすることはできません。 詳細については、「[Azure で Windows クライアントを開発/テスト シナリオに使用する](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)」を参照してください。
 
 ## <a name="what-configurations-and-versions-are-available"></a>どんな構成とバージョンを使用できますか。
 最新のメジャー バージョン (Visual Studio 2019、Visual Studio 2017、Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。  リリースされたメジャー バージョンごとに、最初に Web にリリースされたバージョン (RTW: Released To Web) と最新の更新バージョンが表示されます。  これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
 
-| リリース バージョン                                              | エディション                     |     製品バージョン      |
-|:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|     Visual Studio 2019:RTW                                  |    Enterprise、Community     |      バージョン 16.0.0      |
-| Visual Studio 2017:最新 (バージョン 15.9)                    |    Enterprise、Community     |      バージョン 15.9.10     |
-|         Visual Studio 2017:RTW                              |    Enterprise、Community     |      バージョン 15.0.22     |
-|   Visual Studio 2015:最新 (Update 3)                      |    Enterprise、Community     |  Version 14.0.25431.01   |
-|         Visual Studio 2015:RTW                              |             なし             | (サービスの有効期限切れ)  |
+| リリース バージョン                                                                                                                                                | エディション              | 製品バージョン   |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
+| [Visual Studio 2019: 最新 (バージョン 16.5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | バージョン 16.5.4    |
+| Visual Studio 2019:RTW                         | Enterprise | バージョン 16.0.13    |
+| Visual Studio 2017:最新 (バージョン 15.9)           | Enterprise、Community | バージョン 15.9.22   |
+| Visual Studio 2017:RTW                             | Enterprise、Community | バージョン 15.0.28  |
+| Visual Studio 2015:最新 (Update 3)               | Enterprise、Community | Version 14.0.25431.01 |
 
 > [!NOTE]
 > Microsoft サービス ポリシーに従って、最初にリリースされた Visual Studio 2015 のバージョン (RTW) のサービスは、期限切れになりました。 Visual Studio 2015 Update 3 は、Visual Studio 2015 製品ラインに提供されているそれ以外のバージョンだけです。
@@ -97,7 +94,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 
 簡単な概要:システム準備ツール (Sysprep) を使用し、実行中の VM をシャットダウンした後、Microsoft Azure portal の UI を使用して、VM をイメージとしてキャプチャ *(図 1)* します。 Azure は、選択したストレージ アカウントのイメージを格納した `.vhd` ファイルを保存します。 その後、サブスクリプションのリソース一覧に、新しいイメージがイメージ リソースとして表示されます。
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(図 1) Azure portal の UI を使用してイメージをキャプチャする*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(図 1) Azure portal の UI を使用してイメージをキャプチャする*</center>
 
 詳しくは、「[Azure で一般化された VM の管理対象イメージを作成する](/azure/virtual-machines/windows/capture-image-resource)」をご覧ください。
 
@@ -109,7 +106,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 
 また、開発タスクや使用するテクノロジによっては、より大規模な環境が必要になる場合があります (多様な開発構成や複数のマシン構成が必要になるなど)。 Azure DevTest Labs を使用すれば、"ゴールデン イメージ" の作成を自動化するための _"レシピ"_ を作成できます。 また、DevTest Labs では、チームで実行する VM のポリシーを管理することもできます。 DevTest Labs の詳細については、「[開発者のための Azure DevTest Labs の使用](/azure/devtest-lab/devtest-lab-developer-lab)」が最適な資料です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 事前構成済みの Visual Studio イメージについて確認したので、次の手順では新しい VM を作成します。
 
 * [Azure Portal を使用した VM の作成](quick-create-portal.md)

@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブをプログラムで監視および管理する
 description: この記事では、REST API、Azure SDK、または PowerShell を介して作成された Stream Analytics ジョブをプログラムで監視する方法について詳しく説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563848"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75431665"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
 
@@ -24,7 +22,7 @@ ms.locfileid: "59563848"
 
 このプロセスを開始する前に、以下の前提条件を満たしている必要があります。
 
-* Visual Studio 2017 または 2015
+* Visual Studio 2019 または 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール
 * 監視を有効にする必要がある、既存の Stream Analytics ジョブ
 
@@ -178,5 +176,5 @@ ms.locfileid: "59563848"
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

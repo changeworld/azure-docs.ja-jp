@@ -1,21 +1,21 @@
 ---
 title: Bing News Search API でニュースを検索する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 通常のニュース、トレンドのトピック、ヘッドラインの検索クエリを送信する方法について説明します。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 01/11/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218925"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Bing News Search API でニュースを検索する
 
@@ -27,7 +27,7 @@ Bing News Search API は主に、関連するニュース記事を検索して�
 
 ユーザーが検索語句を入力するための検索ボックスを用意する場合は、[Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) を使用することでエクスペリエンスが向上します。 この API は、検索語句をユーザーが入力している最中に、その一部分に基づいてクエリ文字列の候補を返します。
 
-ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「*sailing dinghies*」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「*sailing dinghies*」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
 
 ## <a name="get-general-news"></a>通常のニュースを取得する
 
@@ -51,7 +51,7 @@ Host: api.cognitive.microsoft.com
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-前のクエリに対する応答を次に示します。 Bing Search APIs の[利用と表示の要件](../useanddisplayrequirements.md)上、それぞれのニュース記事は、応答で返された順に表示する必要があります。 記事にクラスター化されている記事が含まれる場合、関連する記事が存在することを示し、要求された時点でそれらを表示する必要があります。
+前のクエリに対する応答を次の JSON サンプルに示します。 Bing Search APIs の[利用と表示の要件](../useanddisplayrequirements.md)上、それぞれのニュース記事は、応答で返された順に表示する必要があります。 記事にクラスター化されている記事が含まれる場合、関連する記事が存在することを示し、要求された時点でそれらを表示する必要があります。
 
 ```json
 {
@@ -99,15 +99,15 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies
 }
 ```
 
-[news](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連のニュース記事が格納されます。 表示できる記事の数の見積もりは、`totalEstimatedMatches` フィールドに格納されます。 記事のページングの詳細については、「[ニュースのページング](../paging-news.md)」を参照してください。
+[news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連のニュース記事が格納されます。 表示できる記事の数の見積もりは、`totalEstimatedMatches` フィールドに格納されます。 記事のページングの詳細については、「[ニュースのページング](../paging-news.md)」を参照してください。
 
-このリスト内の各 [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle) には、その記事の名前や説明、さらに、ホストの Web サイト上の記事への URL が含まれています。 記事に画像が含まれている場合、このオブジェクトには、その画像のサムネイルが含まれます。 ホストのサイト上にあるニュース記事にユーザーを誘導するハイパーリンクを作成するには、`name` と `url` を使用します。 記事に画像が含まれる場合は、`url` を使用して画像もクリックできるようにします。 必ず `provider` を使用して記事の帰属を示すようにしてください。
+このリスト内の各 [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) には、その記事の名前や説明、さらに、ホストの Web サイト上の記事への URL が含まれています。 記事に画像が含まれている場合、このオブジェクトには、その画像のサムネイルが含まれます。 ホストのサイト上にあるニュース記事にユーザーを誘導するハイパーリンクを作成するには、`name` と `url` を使用します。 記事に画像が含まれる場合は、`url` を使用して画像もクリックできるようにします。 必ず `provider` を使用して記事の帰属を示すようにしてください。
 
 Bing がニュース記事のカテゴリを決定できる場合、記事に `category` フィールドが含まれます。
 
 ## <a name="get-todays-top-news"></a>今日のトップ ニュースを取得する
 
-今日のトップ ニュース記事を取得するには、`q` を設定しない点を除き、通常のニュースを取得するのと同じ要求を行います。
+今日のトップ ニュース記事を入手するには、`q` パラメーターを設定せずに、以前と同じ通常のニュース要求を送信します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-トップ ニュースを取得する際の応答は、通常のニュースを取得する場合とほとんど同じです。 ただし、結果の数は決まっているので、`news` 応答に `totalEstimatedMatches` フィールドは含まれません。 トップ ニュース記事の数は、ニュース サイクルによって異なる場合があります。 必ず `provider` を使用して記事の帰属を示すようにしてください。
+トップ ニュースを取得する際の応答は、通常のニュースを取得する場合とほとんど同じです。 ただし、結果の数は決まっているので、`news` 応答に `totalEstimatedMatches` フィールドは含まれません。 トップ ニュース記事の数は、ニュース サイクルによって異なる場合があります。 必ず `provider` フィールドを使用して、記事の帰属を示すようにしてください。
 
 ## <a name="get-news-by-category"></a>カテゴリ別のニュースを取得する
 
@@ -135,7 +135,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-[category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターを使用して、取得する記事のカテゴリを指定します。 指定可能なニュース カテゴリの一覧は、「[News Categories by Market (マーケット別ニュース カテゴリ)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market)」を参照してください。
+[category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) クエリ パラメーターを使用して、取得する記事のカテゴリを指定します。 指定可能なニュース カテゴリの一覧は、「[News Categories by Market (マーケット別ニュース カテゴリ)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market)」を参照してください。
 
 カテゴリ別にニュースを取得する際の応答は、通常のニュースの取得とほとんど同じです。 ただし、記事はすべて指定したカテゴリのものです。
 
@@ -153,11 +153,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-[category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターは含めないでください。
+[category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) クエリ パラメーターは含めないでください。
 
 ヘッドライン ニュースを取得する際の応答は、今日のトップ ニュースを取得する場合と同じです。 記事がヘッドライン記事である場合、`headline` フィールドが **true** に設定されます。
 
-既定では、応答には最大 12 個のヘッドライン記事が含まれます。 返されるヘッドライン記事の数を変更するには、[headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount) クエリ パラメーターを指定します。 応答には、ニュースのカテゴリ 1 つにつき最大 4 つの非ヘッドライン記事も含まれます。
+既定では、応答には最大 12 個のヘッドライン記事が含まれます。 返されるヘッドライン記事の数を変更するには、[headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) クエリ パラメーターを指定します。 応答には、ニュースのカテゴリ 1 つにつき最大 4 つの非ヘッドライン記事も含まれます。
 
 応答では、クラスターは 1 つの記事としてカウントされます。 クラスターには複数の記事が含まれる可能性があるため、12 を超えるヘッドライン記事や、1 つのカテゴリにつき 4 つを超える非ヘッドライン記事が応答に含まれる場合があります。
 
@@ -223,7 +223,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-news"></a>関連ニュースの取得
 
-ニュース記事に関連する他の記事がある場合、ニュース記事に [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles) フィールドが含まれる場合があります。 次に、クラスター化された記事を含む記事を示します。
+ニュース記事に関連する他の記事がある場合、ニュース記事に [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) フィールドが含まれる場合があります。 次に、クラスター化された記事を含む記事を示します。
 
 ```json
     {
@@ -261,7 +261,7 @@ Host: api.cognitive.microsoft.com
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing News Search の結果をページングする方法](../paging-news.md)

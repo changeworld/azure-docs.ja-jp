@@ -1,6 +1,6 @@
 - name: 概要
   items:
-    - name: 作業開始
+    - name: はじめに
       href: get-started.md
     - name: 認定
       href: sap-certifications.md
@@ -24,7 +24,9 @@
           href: hana-data-tiering-extension-nodes.md
         - name: 運用モデルと責任
           href: hana-operations-model.md
-    - name: アーキテクチャ
+        - name: 互換性のあるオペレーティング システム
+          href: os-compatibility-matrix-hana-large-instance.md
+    - name: Architecture
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -50,7 +52,7 @@
           href: hana-installation.md
         - name: HANA のインストールの例
           href: hana-example-installation.md
-    - name: 高可用性と障害復旧
+    - name: 高可用性とディザスター リカバリー
       items:
         - name: オプションと考慮事項
           href: hana-overview-high-availability-disaster-recovery.md
@@ -74,18 +76,24 @@
           href: ha-setup-with-stonith.md
         - name: Type II SKU 向けの OS バックアップ
           href: os-backup-type-ii-skus.md
+        - name: HANA Large Instances の Kdump を有効にする
+          href: hana-large-instance-enable-kdump.md
         - name: HANA Large Instances 向けの OS アップグレード
           href: os-upgrade-hana-large-instance.md
         - name: SUSE Linux 用 SMT サーバーの設定
           href: hana-setup-smt.md
+        - name: HLI から Azure VM への移行
+          href: hana-large-instance-virtual-machine-migration.md
 - name: Azure Virtual Machines 上の SAP HANA
   items:
-    - name: 単一インスタンスの SAP HANA のインストール
+    - name: Azure VM への SAP HANA のインストール
       href: hana-get-started.md
     - name: S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド
       href: cal-s4h.md
     - name: Azure における SAP HANA インフラストラクチャの構成と運用
       href: hana-vm-operations.md
+    - name: SAP HANA Azure 仮想マシンのストレージ構成
+      href: hana-vm-operations-storage.md
     - name: Azure Virtual Machines での SAP HANA の可用性
       items:
         - name: SAP HANA on Azure の可用性の概要
@@ -100,18 +108,25 @@
           href: sap-hana-high-availability-rhel.md
         - name: SLES での SAP HANA スケールアウトと Pacemaker のトラブルシューティング
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+        - name: SLES で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
+          href: sap-hana-scale-out-standby-netapp-files-suse.md
+        - name: RHEL で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
+          href: sap-hana-scale-out-standby-netapp-files-rhel.md
     - name: SAP HANA のバックアップの概要
       href: sap-hana-backup-guide.md
     - name: SAP HANA のファイル レベルのバックアップ
       href: sap-hana-backup-file-level.md
-    - name: SAP HANA のストレージ スナップショット バックアップ
-      href: sap-hana-backup-storage-snapshots.md
 - name: Azure Virtual Machines 上の SAP NetWeaver と SAP Business One
   items:
     - name: SAP ワークロードの計画とデプロイ チェックリスト
       href: sap-deployment-checklist.md
     - name: Azure での SAP NetWeaver の計画と実装
       href: planning-guide.md
+      items:
+        - name: Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
+          href: sap-planning-supported-configurations.md
+        - name: Azure デプロイでサポートされている SAP ソフトウェア
+          href: sap-supported-product-on-azure.md
     - name: SAP NetWeaver のデプロイ ガイド
       href: deployment-guide.md
     - name: SAP ワークロード向け DBMS デプロイ ガイド
@@ -126,6 +141,8 @@
           href: dbms_guide_ibm.md
         - name: SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
           href: dbms-guide-ha-ibm.md
+        - name: Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
           href: dbms_guide_sapase.md
         - name: Azure 上の SAP MaxDB、liveCache、コンテンツ サーバーのデプロイ
@@ -160,12 +177,16 @@
               href: sap-high-availability-guide-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA
               href: sap-high-availability-guide-wsfc-file-share.md
+            - name: Azure NetApp Files (SMB) を使用した Windows での SAP NetWeaver の HA
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: (A)SCS インスタンス用の SUSE Linux の HA
               href: high-availability-guide-suse.md
             - name: Azure NetApp Files を使用した (A)SCS インスタンス用の SUSE Linux の HA
               href: high-availability-guide-suse-netapp-files.md
             - name: (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
               href: high-availability-guide-rhel.md
+            - name: Azure NetApp Files を使用した (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Azure インフラストラクチャの準備
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
@@ -180,26 +201,38 @@
               href: high-availability-guide-suse-pacemaker.md
             - name: RHEL における Pacemaker
               href: high-availability-guide-rhel-pacemaker.md
+            - name: SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した VM のパブリック エンドポイント接続
+              href: high-availability-guide-standard-load-balancer-outbound-connections.md
         - name: SAP のインストール
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
               href: sap-high-availability-installation-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
               href: sap-high-availability-installation-wsfc-file-share.md
+            - name: Azure NetApp Files (SMB) を使用した Windows での SAP NetWeaver の HA
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: (A)SCS インスタンス用の NFS を使用した SUSE Linux
               href: high-availability-guide-suse.md
             - name: Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した SUSE Linux
               href: high-availability-guide-suse-netapp-files.md
             - name: Red Hat Enterprise Linux での SAP NetWeaver の高可用性
               href: high-availability-guide-rhel.md
+            - name: Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した Red Hat Enterprise Linux
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP マルチ SID
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+            - name: (A)SCS インスタンス用の Pacemaker マルチ SID を使用した SLES
+              href: high-availability-guide-suse-multi-sid.md
+            - name: A(SCS) インスタンス用の Pacemaker マルチ SID を使用した RHEL
+              href: high-availability-guide-rhel-multi-sid.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+    - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
+      href: sap-proximity-placement-scenarios.md
 - name: AAD SAP ID 統合およびシングル サインオン
   items:
     - name: SAP Cloud との統合

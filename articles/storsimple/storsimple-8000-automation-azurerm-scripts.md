@@ -1,25 +1,17 @@
 ---
-title: Azure Resource Manager スクリプトを使用して StorSimple デバイスを管理する | Microsoft Docs
+title: AzureRM PowerShell スクリプトを使用して StorSimple デバイスを管理する
 description: Azure Resource Manager スクリプトを使用して StorSimple ジョブを自動化する方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443182"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77471960"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -77,7 +69,7 @@ Azure PowerShell の使用方法の詳細については、「[Azure PowerShell 
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](https://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、_.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
+2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](https://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、 _.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
 
     次のコマンドを実行して、スクリプトをダウンロードし、前に作成した同じフォルダーに格納することもできます。
     
@@ -174,6 +166,6 @@ PS C:\Scripts\StorSimpleSDKTools>
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)。

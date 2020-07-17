@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
-ms.date: 04/05/2019
-ms.openlocfilehash: 87c86ddeaa24693d393d250e1dc699b9a15ea84b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 08/01/2019
+ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60861259"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68736993"
 ---
 # <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
 
@@ -68,9 +68,9 @@ Data Catalog の機能の詳細については、以下のページを参照し�
 * [ビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
 * [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Data Catalog の使用を開始するには: 
 
-* [クイック スタート:Azure データ カタログを作成する](data-catalog-get-started.md)
+* [クイック スタート: Azure データ カタログを作成する](data-catalog-get-started.md)
 * [Azure Data Catalog を開く](https://www.azuredatacatalog.com)

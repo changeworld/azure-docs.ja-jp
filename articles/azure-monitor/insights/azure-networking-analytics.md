@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor の Azure Networking Analytics ソリューション | Microsoft Docs
 description: Azure Monitor の Azure Networking Analytics ソリューションを使用すると、Azure ネットワーク セキュリティ グループのログと Azure Application Gateway のログをレビューできます。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 244df90a9db2a2b0d5f6ca6e1874bce94fc7f5bf
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 06/21/2018
+ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234575"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -51,7 +44,7 @@ Azure Monitor には、ネットワークを監視することを目的とした
 
 診断を有効にし、Application Gateway とネットワーク セキュリティ グループのいずれかまたは両方に対応するソリューションを有効にすることができます。
 
-ソリューションをインストールしたものの特定のリソース タイプの診断ログを有効にしなかった場合、そのリソースに対応するダッシュボードのブレードは空白になり、エラー メッセージが表示されます。
+特定のリソースの種類に対する診断リソース ログを有効にせずにソリューションをインストールした場合、そのリソースに対するダッシュボード ブレードは空白になり、エラー メッセージが表示されます。
 
 > [!NOTE]
 > 2017 年 1 月、Application Gateway とネットワーク セキュリティ グループから Log Analytics ワークスペースへのログ送信をサポートする方法が変更になりました。 **Azure Networking Analytics (非推奨)** ソリューションが表示される場合は、「[旧バージョンの Networking Analytics ソリューションからの移行](#migrating-from-the-old-networking-analytics-solution)」を参照して手順に従ってください。
@@ -98,7 +91,7 @@ Azure Application Gateway 分析ソリューションのインストールと構
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
    ![Azure Application Gateway リソースの画像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
+4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
 5. *[Log Analytics への送信]* チェックボックスをオンにします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
 7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをオンにます。
@@ -106,7 +99,7 @@ Azure Application Gateway 分析ソリューションのインストールと構
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell を使用した Azure ネットワーク診断を有効にする
 
-次の PowerShell スクリプトは、Application Gateway の診断ログを有効にする方法の例を示しています。
+次の PowerShell スクリプトは、アプリケーション ゲートウェイに対するリソース ログを有効にする方法の例を示しています。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -147,7 +140,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 > [Traffic Analytics](../../network-watcher/traffic-analytics.md)によって機能が置き換えられたので、ネットワーク セキュリティ グループ分析ソリューションは、コミュニティ サポートに移動します。
 > - ソリューションは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/)で利用可能になっており、まもなく Azure Marketplace では利用できなくなります。
 > - ソリューションを自身のワークスペースに既に追加している既存のお客様については、変更せずに機能し続けます。
-> - Microsoft は、診断設定を使用して、ワークスペースへの NSG 診断ログの送信をサポートし続けます。
+> - Microsoft は引き続き、診断設定を使用したワークスペースへの NSG リソース ログの送信をサポートします。
 
 ネットワーク セキュリティ グループに関しては、次のログがサポートされます。
 
@@ -169,7 +162,7 @@ Azure Networking Analytics ソリューションのインストールと構成�
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
    ![Azure ネットワーク セキュリティ グループのリソースの画像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
-4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
+4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
 5. *[Send to Log Analytics]* (Log Analytics に送信) のチェックボックスをクリックします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
 7. 収集するログの種類ごとに **[ログ]** の下のチェックボックスをクリックします。
@@ -177,7 +170,7 @@ Azure Networking Analytics ソリューションのインストールと構成�
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell を使用した Azure ネットワーク診断を有効にする
 
-次の PowerShell スクリプトは、ネットワーク セキュリティ グループの診断ログを有効にする方法の例を示しています。
+次の PowerShell スクリプトは、ネットワーク セキュリティ グループに対するリソース ログを有効にする方法の例を示しています。
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -215,14 +208,14 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 1. [Azure Application Gateway から Azure Monitor に診断が直接送信されるように構成します。](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Azure ネットワーク セキュリティ グループから Azure Monitor に診断が直接送信されるように構成します。](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. [ソリューション ギャラリーからの Azure Monitor ソリューションの追加](solutions.md)に関する記事で説明されている手順に従って、*Azure Application Gateway Analytics* ソリューションと *Azure Network Security Group Analytics* ソリューションを有効にします。
+2. *ソリューション ギャラリーからの Azure Monitor ソリューションの追加*に関する記事で説明されている手順に従って、*Azure Application Gateway Analytics* ソリューションと [Azure Network Security Group Analytics](solutions.md) ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
    + 型を AzureDiagnostics にします。 ResourceType を使用して、Azure ネットワーク ログをフィルター処理できます。
 
-     | 代替のデータ型は次のとおりです。 | 次のコマンドを使用します。 |
+     | 次の表記の代わりに、 | 次のコマンドを使用します。 |
      | --- | --- |
-     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
-     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; where ResourceType=="NETWORKSECURITYGROUPS" |
 
    + 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。
@@ -235,5 +228,5 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 ## <a name="troubleshooting"></a>トラブルシューティング
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure 診断データを表示します。

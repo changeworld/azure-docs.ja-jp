@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Azure Analysis Services のドキュメント
+summary: クラウド内で Analysis Services を使用してデータ モデリングを設定する方法について説明します。 ドキュメントでは、表形式データ モデルを使用してエンタープライズ BI ソリューションを作成する方法を紹介します。
+metadata:
+  title: Azure Analysis Services のドキュメント | Microsoft Docs
+  description: Azure Analysis Services は、完全に管理されたサービスとしてのプラットフォーム (PaaS) であり、エンタープライズ レベルのデータ モデルをクラウドで提供します。
+  ms.service: analysis-services
+  ms.topic: landing-page
+  ms.collection: 
+  author: minewiskan
+  ms.author: owend
+  manager: mtillman
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 8c0d92cc7f50ec72b33d86335291580a477db056
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "78273667"
+landingContent:
+- title: Azure Analysis Services について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Analysis Services とは
+      url: analysis-services-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サーバーの作成 - ポータル
+      url: analysis-services-create-server.md
+    - text: サーバーの作成 - PowerShell
+      url: analysis-services-create-powershell.md
+    - text: サーバーのファイアウォールの構成 - ポータル
+      url: analysis-services-qs-firewall.md
+- title: 理解
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 認証とユーザーのアクセス許可
+      url: analysis-services-manage-users.md
+    - text: サービス プリンシパルによる自動化
+      url: analysis-services-service-principal.md
+    - text: オンプレミス データ ソースへの接続
+      url: analysis-services-gateway.md
+- title: 管理と接続
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: サーバー管理者とユーザー ロールを構成する
+      url: tutorials/analysis-services-tutorial-roles.md
+    - text: ポータルからサンプル モデルを追加する
+      url: analysis-services-create-sample-model.md
+    - text: Power BI Desktop を使用して接続する
+      url: tutorials/analysis-services-tutorial-pbid.md
+- title: スクリプトと API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell
+      url: /azure/analysis-services/analysis-services-powershell
+    - text: REST API
+      url: /rest/api/analysisservices/
+    - text: Tabular Model Scripting Language (TMSL)
+      url: /analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference

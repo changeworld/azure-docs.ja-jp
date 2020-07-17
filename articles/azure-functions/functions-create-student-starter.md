@@ -1,27 +1,21 @@
 ---
-title: Azure for Students Starter を使用して関数を作成する | Microsoft Docs
+title: Azure for Students Starter を使用して関数を作成する
 description: Azure for Student Starter サブスクリプション内から Azure 関数を作成する方法について説明します
-Customer intent: As a student, I want to be able to create a HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
-services: functions
-documentationcenter: na
+Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
-manager: ggailey777
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 860fedb13e84054e8ba264116be4e452445b7e9b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143095"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80756458"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 
-このチュートリアルでは、Azure for Students Starter サブスクリプションに hello world HTTP 関数を作成します。 このサブスクリプションの種類の Azure Functions で使用できるものについても説明します。
+このチュートリアルでは、Azure for Students Starter サブスクリプションに "hello world" HTTP 関数を作成します。 このサブスクリプションの種類の Azure Functions で使用できるものについても説明します。
 
 Microsoft *Azure for Students Starter* では、開発に必要な Azure 製品のクラウドでの使用を、無料で開始できます。 [このオファーの詳細についてはこちらを参照してください。](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -39,9 +33,9 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 Function App を使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 
+関数の実行をホストするための Function App が存在する必要があります。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-1. Azure Portal の左上隅にある **[新規]** ボタンを選択し、**[コンピューティング]** > **[Function App]** を選択します。
+1. Azure portal の左上隅にある **[リソースの作成]** ボタンを選択します。 次に、 **[Compute]**  >  **[Function App]** を選択します。
 
     ![Azure ポータルでの関数アプリの作成](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -49,14 +43,14 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
     <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
 
-    | Setting      | 推奨値  | 説明                                        |
+    | 設定      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 | 
-    | **[リソース グループ](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
    | **[App Service プラン/場所](./functions-scale.md)** | 新規 | 関数アプリのデプロイ先リージョン、リソースの密度を制御するホスティング プラン。 同じプランにデプロイされた複数の関数アプリは、すべて同じ単一の無料インスタンスを共有します。 これは Student Starter プランの制限です。 ホスティング オプションの詳細については、[こちら](./functions-scale.md)を参照してください。|
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
-    |**[Application Insights](./functions-monitoring.md)**| Enabled | Application Insights は、関数アプリのログを保存および分析するために使用されます。 Application Insights をサポートする場所を選択した場合は、既定で有効になります。 手動で近くのリージョンを選択して Application Insights をデプロイすることで、Application Insights を任意の関数に対して有効にすることができます。 Application Insights を使用しない場合、ライブ ストリーミング ログを確認できません。
+    |**[Application Insights](./functions-monitoring.md)**| 有効 | Application Insights は、関数アプリのログを保存および分析するために使用されます。 Application Insights をサポートする場所を選択した場合は、既定で有効になります。 手動で近くのリージョンを選択して Application Insights をデプロイすることで、Application Insights を任意の関数に対して有効にすることができます。 Application Insights を使用しない場合、ライブ ストリーミング ログを確認できません。
 
 3. 別の場所を選択するには、上の **[App Service プラン/場所]** を選択します。
 
@@ -78,13 +72,13 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 次に、新しい Function App で関数を作成します。
 
-## <a name="create-function"></a>HTTP によってトリガーされる関数の作成
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP によってトリガーされる関数の作成
 
-1. 新しい関数アプリを展開し、**[関数]** の横にある **[+]** ボタン、**[ポータル内]**、**[続行]** の順に選択します。
+1. 新しい関数アプリを展開し、 **[関数]+ の横にある** [ **]** ボタン、 **[ポータル内]** 、 **[続行]** の順に選択します。
 
     ![Functions のクイック スタート: プラットフォームを選択する。](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
-1. **[webhook + API]** を選択し、**[作成]** を選択します。
+1. **[webhook + API]** を選択し、 **[作成]** を選択します。
 
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-student-starter/function-app-quickstart-node-webhook.png)
 
@@ -94,7 +88,7 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、**[既定値 (関数キー)]** を選択して、**[コピー]** をクリックします。 
+1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、 **[既定値 (関数キー)]** を選択して、 **[コピー]** をクリックします。 
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-student-starter/function-app-develop-tab-testing.png)
 
@@ -110,27 +104,27 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
    ![Azure Portal の関数ログ ビューアー。](./media/functions-create-student-starter/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Azure for Students Starter でサポートされる機能
 
-Azure for Student Starter では、Azure Functions ランタイムのほとんどの機能にアクセスできますが、主に以下のような制限がいくつかあります。
+Azure for Students Starter では、Azure Functions ランタイムのほとんどの機能にアクセスできますが、主に以下のような制限がいくつかあります。
 
 * HTTP トリガーは、サポートされている唯一のトリガーの種類です。
     * すべての入力バインディングとすべての出力バインディングがサポートされています。 [詳細な一覧についてはこちらを参照してください。](functions-triggers-bindings.md)
 * サポートされている言語: 
     * C# (.NET Core 2)
-    * Javascript (Node.js 8 および 10)
+    * JavaScript (Node.js 8 および 10)
     * F# (.NET Core 2)
     * [上位プランでサポートされている言語については、こちらを参照してください](supported-languages.md)
 * サポートされているオペレーティング システムは Windows のみです。
 * スケールは、1 日に最大 60 分間実行される [1 つの無料レベル インスタンス](https://azure.microsoft.com/pricing/details/app-service/windows/)に制限されています。 HTTP トラフィックが受信されると、サーバーレスでインスタンスが 0 から 1 に自動的にスケールされますが、さらにスケールされることはありません。
-* [2.x ランタイム](functions-versions.md)のみがサポートされています。
+* サポートされるのは、Functions ランタイムの[バージョン 2.x 以降](functions-versions.md)のみです。
 * すべての開発者ツールは編集および公開関数に対してサポートされています。 これには、VS Code、Visual Studio、Azure CLI、および Azure portal が含まれます。 ポータル以外のものを使用する場合は、まずポータルでアプリを作成してから、そのアプリを好みのツールのデプロイ対象として選択する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP によってトリガーされる単純な関数を含む Function App を作成しました。 これで、ローカル ツール、その他の言語、監視、統合を探索できるようになりました。
 

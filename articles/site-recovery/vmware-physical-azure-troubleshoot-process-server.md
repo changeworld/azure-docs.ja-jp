@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 04/29/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969372"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228819"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "65969372"
 **ベスト プラクティス** | **詳細**
 --- |---
 **使用方法** | 構成サーバーとスタンドアロン プロセス サーバーは、意図された目的のためにのみ使用するようにします。 マシン上では他には何も実行しないでください。
-**IP アドレス** | プロセス サーバーで静的 IPv4 アドレスが使用され、NAT は構成されていないことを確認します。
+**IP アドレス (IP address)** | プロセス サーバーで静的 IPv4 アドレスが使用され、NAT は構成されていないことを確認します。
 **メモリと CPU の使用率の制御** |CPU とメモリの使用率は、70% 以下とします。
 **空き領域の確保** | 空き領域とは、プロセス サーバー上のキャッシュ ディスク領域を指します。 レプリケーション データは、Azure にアップロードされる前にキャッシュに格納されます。<br/><br/> 空き領域は 25% 以上を維持してください。 20% を下回ると、プロセス サーバーに関連付けられているレプリケートされたマシン用にレプリケーションが調整されます。
 
@@ -49,17 +49,17 @@ ms.locfileid: "65969372"
 
 多くの正常性アラートがプロセス サーバーによって生成されます。 これらのアラートと推奨されるアクションを、次の表にまとめて示します。
 
-**アラートの種類** | **Error** | **トラブルシューティング**
+**アラートの種類** | **Error** | **[トラブルシューティング]**
 --- | --- | --- 
 ![Healthy][green] | なし  | プロセス サーバーは接続されており、正常な状態です。
 ![警告][yellow] | 指定されたサービスが実行されていません。 | 1.サービスが実行されていることを確認します。<br/> 2.サービスが期待どおりに実行されている場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![警告][yellow]  | 過去 15 分間の CPU 使用率が 80% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>手順 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![重大][red] |  過去 15 分間の CPU 使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>手順 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
-![警告][yellow] | 過去 15 分間のメモリ使用率が 80% を超えています。 |  1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>手順 3.警告に関連付けられているすべての手順に従います。<br/> 4.問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![重大][red] | 過去 15 分間のメモリ使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/> 2.警告に関連付けられているすべての手順に従います。<br/> 3. 問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーションの問題用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
-![警告][yellow] | 過去 15 分間のキャッシュ フォルダーの空き領域が 30% 未満です。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>2.プロセス サーバーを使用している VM の数が[ガイドライン](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認します。<br/> 手順 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
-![重大][red] |  過去 15 分間の空き領域が 25% 未満です。 | 1.この問題の警告に関連付けられている手順に従います。<br/> 2. 下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 手順 3.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
-![重大][red] | プロセス サーバーからのハートビートが 15 分以上ありません。 tmansvs サービスが構成サーバーと通信していません。 | 1) プロセス サーバーが稼働していることを確認します。<br/> 2.tmassvc がプロセス サーバー上で実行されていることを確認します。<br/> 手順 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
+![警告][yellow]  | 過去 15 分間の CPU 使用率が 80% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
+![Critical][red] |  過去 15 分間の CPU 使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
+![警告][yellow] | 過去 15 分間のメモリ使用率が 80% を超えています。 |  1.新しいマシンを追加しないでください。<br/>2.プロセス サーバーを使用している VM の数が[定義済みの上限](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認し、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>3.警告に関連付けられているすべての手順に従います。<br/> 4.問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
+![Critical][red] | 過去 15 分間のメモリ使用率が 95% を超えています。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/> 2.警告に関連付けられているすべての手順に従います。<br/> 3. 問題が解決しない場合は、下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 4.問題が解決しない場合は、VMware/物理サーバーのレプリケーションの問題用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
+![警告][yellow] | 過去 15 分間のキャッシュ フォルダーの空き領域が 30% 未満です。 | 1.新しいマシンを追加しないでください。また、[追加のプロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定することを検討します。<br/>2.プロセス サーバーを使用している VM の数が[ガイドライン](site-recovery-plan-capacity-vmware.md#capacity-considerations)を超えていないことを確認します。<br/> 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
+![Critical][red] |  過去 15 分間の空き領域が 25% 未満です。 | 1.この問題の警告に関連付けられている手順に従います。<br/> 2. 下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。<br/> 3.問題が解決しない場合は、VMware/物理サーバーのレプリケーション用に [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) を実行します。
+![Critical][red] | プロセス サーバーからのハートビートが 15 分以上ありません。 tmansvs サービスが構成サーバーと通信していません。 | 1) プロセス サーバーが稼働していることを確認します。<br/> 2.tmassvc がプロセス サーバー上で実行されていることを確認します。<br/> 3.下の[接続とレプリケーションの問題のトラブルシューティングを行う](#check-connectivity-and-replication)ための手順に従います。
 
 
 ![テーブル キー](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
@@ -71,7 +71,7 @@ ms.locfileid: "65969372"
 
 Microsoft Azure Recovery Services エージェント (obengine) 以外のすべてのサービスについて、StartType が **[自動]** または **[自動 (遅延開始)]** に設定されていることを確認します。
  
-**Deployment** | **実行中のサービス**
+**デプロイ** | **実行中のサービス**
 --- | ---
 **構成サーバー上のプロセス サーバー** | ProcessServer、ProcessServerMonitor、cxprocessserver、InMage PushInstall、Log Upload Service (LogUpload)、InMage Scout Application Service、Microsoft Azure Recovery Services Agent (obengine)、InMage Scout VX Agent-Sentinel/Outpost (svagents)、tmansvc、World Wide Web Publishing Service (W3SVC)、MySQL、Microsoft Azure Site Recovery Service (dra)
 **スタンドアロン サーバーとして実行中のプロセス サーバー** | ProcessServer、ProcessServerMonitor、cxprocessserver、InMage PushInstall、Log Upload Service (LogUpload)、InMage Scout Application Service、Microsoft Azure Recovery Services Agent (obengine)、InMage Scout VX Agent-Sentinel/Outpost (svagents)、tmansvc
@@ -113,7 +113,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 3. 接続が成功したかどうかを確認します。
 
 
-**接続** | **詳細** | **アクション**
+**接続** | **詳細** | **操作**
 --- | --- | ---
 **成功** | Telnet により空の画面が表示されます。プロセス サーバーは到達可能です。 | これ以上必要な操作はありません。
 **失敗** | 接続できません | 受信ポート 9443 がプロセス サーバーで許可されていることを確認します。 たとえば、境界ネットワークまたはスクリーン サブネットがある場合です。 接続を再度確認します。
@@ -162,13 +162,13 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>ステップ 8:プロセス サーバーによりデータがプッシュされているかの確認
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>手順 8:プロセス サーバーによりデータがプッシュされているかの確認
 
 プロセス サーバーにより、データが Azure にアクティブにプッシュされているかどうかを確認します。
 
   1. プロセス サーバー上で、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。
   2. **[パフォーマンス]** タブ > **[リソース モニターを開く]** の順に選択します。
-  3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。**[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\)** の下で、cbengine.exe により大量の vNotolume データがアクティブに送信されているかどうかを確認します。
+  3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。 **[ネットワーク活動のプロセス]** で、cbengine.exe により大量のデータがアクティブに送信されているかどうかを確認します。
 
        ![ネットワーク活動を処理中のボリューム](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
@@ -176,7 +176,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>手順 9:プロセス サーバーの Azure Blob Storage への接続の確認
 
-1. リソース モニターで、**[cbengine.exe]** を選択します。
+1. リソース モニターで、 **[cbengine.exe]** を選択します。
 2. **[TCP 接続]** の下で、プロセス サーバーから Azure Storage への接続があるかどうかを確認します。
 
   ![cbengine.exe と Azure Blob Storage の URL 間の接続](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
@@ -185,7 +185,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 プロセス サーバーから Azure Blob Storage の URL への接続が存在しない場合は、サービスが実行されているかを確認します。
 
-1. コントロール パネルで、**[サービス]** をクリックします。
+1. コントロール パネルで、 **[サービス]** をクリックします。
 2. 次のサービスが実行中であることを確認します。
 
     - cxprocessserver
@@ -199,7 +199,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>手順 10: プロセス サーバーの Azure パブリック IP アドレスへの接続の確認
 
-1. プロセス サーバーで、**%programfiles%\Microsoft Azure Recovery Services Agent\Temp** から最新の CBEngineCurr.errlog ファイルを開きます。
+1. プロセス サーバーで、 **%programfiles%\Microsoft Azure Recovery Services Agent\Temp** から最新の CBEngineCurr.errlog ファイルを開きます。
 2. このファイル内で、**443** または **connection attempt failed** という文字列を検索します。
 
   ![Temp フォルダー内のエラー ログ](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
@@ -235,7 +235,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
     a) **Microsoft Azure Backup** を検索します。
 
-    b) **Microsoft Azure Backup** を開き、**[アクション]** > **[プロパティの変更]** の順に選択します。
+    b) **Microsoft Azure Backup** を開き、 **[アクション]**  >  **[プロパティの変更]** の順に選択します。
 
     c) **[プロキシの構成]** タブで、プロキシのアドレスはレジストリ設定に表示されるプロキシのアドレスと同じでなければなりません。 同じでない場合は、同じアドレスに変更してください。
 
@@ -244,7 +244,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 プロセス サーバーと Azure 間の帯域幅を増やし、問題がまだ発生するかどうかを確認します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらにサポートが必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。 
 

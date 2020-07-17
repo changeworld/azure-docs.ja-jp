@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid スキーマへのカスタム フィールドのマップ
-description: カスタム スキーマを Azure Event Grid スキーマに変換する方法について説明します。
+description: この記事では、イベント データが Event Grid スキーマと一致しない場合にカスタム スキーマを Azure Event Grid スキーマに変換する方法について説明します。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181318"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76721661"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
@@ -205,7 +205,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 元のフィールドが配信されていることに注目してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

@@ -1,83 +1,45 @@
 ---
 title: Azure Cosmos DB でデータベース アカウントを管理する方法について
-description: Azure Cosmos DB でデータベース アカウントを管理する方法について
+description: Azure portal、PowerShell、CLI、Azure Resource Manager テンプレートを使用して、Azure Cosmos DB リソースを管理する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
+ms.topic: conceptual
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 07d177987db1dea261520e8ee2543d871d552acb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240889"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745026"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
 この記事では、Azure portal、Azure PowerShell、Azure CLI、Azure Resource Manager テンプレートを使用し、Azure Cosmos アカウントでさまざまなタスクを管理する方法を紹介します。
 
-## <a name="create-an-account"></a>アカウントの作成
+## <a name="create-an-account"></a>アカウントを作成する
 
-### <a id="create-database-account-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure Portal
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a id="create-database-account-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
-```azurecli-interactive
-# Create an account
-$resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname' # must be lower case.
+[Azure CLI を使用した Azure Cosmos DB アカウントの作成](manage-with-cli.md#create-an-azure-cosmos-db-account)に関する記事を参照してください。
 
-az cosmosdb create \
-   --name $accountName \
-   --resource-group $resourceGroupName \
-   --kind GlobalDocumentDB \
-   --default-consistency-level Session \
-   --locations WestUS=0 EastUS=1 \
-   --enable-multiple-write-locations true
-```
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
-### <a id="create-database-account-via-ps"></a>Azure PowerShell
-```azurepowershell-interactive
-# Create an Azure Cosmos Account for Core (SQL) API
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
+[PowerShell を使用した Azure Cosmos DB アカウントの作成](manage-with-powershell.md#create-account)に関する記事を参照してください。
 
-$locations = @(
-    @{ "locationName"="West US"; "failoverPriority"=0 },
-    @{ "locationName"="East US"; "failoverPriority"=1 }
-)
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager テンプレート
 
-$consistencyPolicy = @{
-    "defaultConsistencyLevel"="BoundedStaleness";
-    "maxIntervalInSeconds"=300;
-    "maxStalenessPrefix"=100000
-}
-
-$CosmosDBProperties = @{
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-```
-
-### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager テンプレート
-
-この Azure Resource Manager テンプレートでは、2 つのリージョンと、選択した整合性レベル、自動フェールオーバー、マルチマスターを使用して構成された、サポート対象の任意の API に対して Azure Cosmos DB アカウントが作成されます。 このテンプレートをデプロイするには、[Azure Cosmos DB アカウントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)に関する readme ページで [Deploy to Azure]\(Azure に配置する\) をクリックします。
+[Azure Resource Manager テンプレートを使用した Azure Cosmos DB アカウントの作成](manage-sql-with-resource-manager.md)に関する記事を参照してください。
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除
 
-### <a id="add-remove-regions-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 1. お使いの Azure Cosmos アカウントに移動して、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
@@ -93,114 +55,33 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 複数リージョン書き込みモードでは、少なくとも 1 つのリージョンがあれば、どのリージョンも追加または削除できます。
 
-### <a id="add-remove-regions-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
-```azurecli-interactive
-$resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname'
+[Azure CLI を使用したリージョンの追加または削除](manage-with-cli.md#add-or-remove-regions)に関する記事を参照してください。
 
-# Create an account with 1 region
-az cosmosdb create --name $accountName --resource-group $resourceGroupName --locations westus=0
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-# Add a region
-az cosmosdb update --name $accountName --resource-group $resourceGroupName --locations westus=0 eastus=1
+[PowerShell を使用したリージョンの追加または削除](manage-with-powershell.md#update-account)に関する記事を参照してください。
 
-# Remove a region
-az cosmosdb update --name $accountName --resource-group $resourceGroupName --locations westus=0
-```
+## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>複数の書き込みリージョンの構成
 
-### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-```azurepowershell-interactive
-# Create an account with 1 region
-$resourceGroupName = "myResourceGroup"
-$location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
-
-$locations = @( @{ "locationName"="West US"; "failoverPriority"=0 } )
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
-$CosmosDBProperties = @{
-    "databaseAccountOfferType"="Standard";
-    "locations"=$locations;
-    "consistencyPolicy"=$consistencyPolicy
-}
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Location $location `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-
-# Add a region
-$account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
-
-$locations = @( 
-    @{ "locationName"="West US"; "failoverPriority"=0 },
-    @{ "locationName"="East Us"; "failoverPriority"=1 } 
-)
-
-$account.Properties.locations = $locations
-$CosmosDBProperties = $account.Properties
-
-Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-
-# Azure Resource Manager does not wait on the resource update
-Write-Host "Confirm region added before continuing..."
-
-# Remove a region
-$account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
-
-$locations = @( @{ "locationName"="West US"; "failoverPriority"=0 } )
-
-$account.Properties.locations = $locations
-$CosmosDBProperties = $account.Properties
-
-Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-```
-
-## <a id="configure-multiple-write-regions"></a>複数の書き込みリージョンの構成
-
-### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
-
-**[データをグローバルにレプリケートする]** タブを開き、 **[有効]** を選択して複数リージョンの書き込みを有効にします。 複数リージョンの書き込みを有効にすると、アカウントで現在用意されているすべての読み取りリージョンが読み書きリージョンになります。 
-
-> [!NOTE]
-> 複数リージョンの書き込みを有効にした後、無効にすることはできません。 
+**[データをグローバルにレプリケートする]** タブを開き、 **[有効]** を選択して複数リージョンの書き込みを有効にします。 複数リージョンの書き込みを有効にすると、アカウントで現在用意されているすべての読み取りリージョンが読み書きリージョンになります。
 
 ![Azure Cosmos アカウントのマルチマスター構成のスクリーンショット](./media/how-to-manage-database-account/single-to-multi-master.png)
 
-この機能に関して他に質問がございましたら、askcosmosdb@microsoft.com エイリアスにご連絡ください。 
+### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
+[Azure CLI を使用した複数書き込みリージョンの有効化](manage-with-cli.md#enable-multiple-write-regions)に関する記事を参照してください。
 
-```azurecli-interactive
-$resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname'
-az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-multiple-write-locations true
-```
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
+[PowerShell を使用した複数書き込みリージョンの有効化](manage-with-powershell.md#multi-master)に関する記事を参照してください。
 
-```azurepowershell-interactive
-# Update an Azure Cosmos Account from single to multi-master
+### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager テンプレート
 
-$account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
-
-$account.Properties.enableMultipleWriteLocations = "true"
-$CosmosDBProperties = $account.Properties
-
-Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-```
-
-### <a id="configure-multiple-write-regions-arm"></a>Resource Manager テンプレート
-
-アカウントと設定 `enableMultipleWriteLocations: true` の作成に使用された Resource Manager テンプレートをデプロイすることで、アカウントをシングルマスターからマルチマスターに移行できます。 次の Azure Resource Manager テンプレートは飾りのない最小限のテンプレートであり、SQL API 用に Azure Cosmos DB アカウントをデプロイし、1 つのリージョンとマルチマスターを有効にします。
+アカウントと設定 `enableMultipleWriteLocations: true` の作成に使用された Resource Manager テンプレートをデプロイすることで、アカウントをシングルマスターからマルチマスターに移行できます。 次の Azure Resource Manager テンプレートは、2 つのリージョンと複数の書き込み場所を有効にして、SQL API 用の Azure Cosmos アカウントをデプロイする最小限のテンプレートです。
 
 ```json
 {
@@ -213,6 +94,18 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
         "location": {
             "type": "String",
             "defaultValue": "[resourceGroup().location]"
+        },
+        "primaryRegion":{
+            "type":"string",
+            "metadata": {
+                "description": "The primary replica region for the Cosmos DB account."
+            }
+        },
+        "secondaryRegion":{
+            "type":"string",
+            "metadata": {
+              "description": "The secondary replica region for the Cosmos DB account."
+          }
         }
     },
     "resources": [
@@ -220,16 +113,23 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2015-04-08",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {
                 "databaseAccountOfferType": "Standard",
                 "consistencyPolicy": { "defaultConsistencyLevel": "Session" },
-                "locations": [
+                "locations":
+                [
                     {
-                        "locationName": "[parameters('location')]",
-                        "failoverPriority": 0
+                        "locationName": "[parameters('primaryRegion')]",
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
+                    },
+                    {
+                        "locationName": "[parameters('secondaryRegion')]",
+                        "failoverPriority": 1,
+                        "isZoneRedundant": false
                     }
                 ],
                 "enableMultipleWriteLocations": true
@@ -239,13 +139,13 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 }
 ```
 
-## <a id="automatic-failover"></a>Azure Cosmos DB アカウントでの自動フェールオーバーの有効化
+## <a name="enable-automatic-failover-for-your-azure-cosmos-account"></a><a id="automatic-failover"></a>Azure Cosmos アカウントでの自動フェールオーバーの有効化
 
 自動フェールオーバーを選択すると、あるリージョンが利用できなくなったとき、フェールオーバーの優先順位が最も高いリージョンに Azure Cosmos DB がフェールオーバーされます。ユーザー側の操作は必要ありません。 自動フェールオーバーが有効になっているとき、リージョン優先順位を変更できます。 自動フェールオーバーを有効にするには、アカウントに 2 つ以上のリージョンを用意する必要があります。
 
-### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Azure Cosmos DB アカウントで、 **[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントで、 **[データをグローバルにレプリケートする]** ウィンドウを開きます。
 
 2. ウィンドウの上部で、 **[自動フェールオーバー]** を選択します。
 
@@ -257,33 +157,13 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
    ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="enable-automatic-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
-```azurecli-interactive
-# Enable automatic failover on an existing account
-$resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname'
+[Azure CLI を使用した自動フェールオーバーの有効化](manage-with-cli.md#enable-automatic-failover)に関する記事を参照してください。
 
-az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-automatic-failover true
-```
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-### <a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
-
-```azurepowershell-interactive
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-
-$account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName
-
-$account.Properties.enableAutomaticFailover="true";
-$CosmosDBProperties = $account.Properties;
-
-Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-```
+[PowerShell を使用した自動フェールオーバーの有効化](manage-with-powershell.md#enable-automatic-failover)に関する記事を参照してください。
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Azure Cosmos アカウントでのフェールオーバーの優先度の設定
 
@@ -292,7 +172,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 > [!IMPORTANT]
 > アカウントに自動フェールオーバーを構成しているとき、書き込みリージョン (フェールオーバーの優先順位がゼロ) は変更できません。 書き込みリージョンを変更するには、自動フェールオーバーを無効にし、手動フェールオーバーを実行する必要があります。
 
-### <a id="set-failover-priorities-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure Portal
 
 1. お使いの Azure Cosmos アカウントで、 **[データをグローバルにレプリケートする]** ウィンドウを開きます。
 
@@ -308,35 +188,15 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
    ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="set-failover-priorities-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-```azurecli-interactive
-# Assume region order is initially eastus=0 westus=1 southeastasia=2 on account creation
-$resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname'
+[Azure CLI を使用したフェールオーバー優先度の設定](manage-with-cli.md#set-failover-priority)に関する記事を参照してください。
 
-az cosmosdb failover-priority-change --name $accountName --resource-group $resourceGroupName --failover-policies eastus=0 southeastasia=1 westus=2
-```
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
+[PowerShell を使用したフェールオーバー優先度の設定](manage-with-powershell.md#modify-failover-priority)に関する記事を参照してください。
 
-```azurepowershell-interactive
-# Assume account currently has regions with priority: West US = 0, East US = 1, Southeast Asia = 2
-$resourceGroupName = "myResourceGroup"
-$accountName = "myaccountname"
-
-$failoverPolicies = @(
-    @{ "locationName"="West US"; "failoverPriority"=0 },
-    @{ "locationName"="Southeast Asia"; "failoverPriority"=1 },
-    @{ "locationName"="East US"; "failoverPriority"=2 }
-)
-
-Invoke-AzResourceAction -Action failoverPriorityChange `
-    -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
-    -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
-```
-
-## <a id="manual-failover"></a>Azure Cosmos アカウントで手動フェールオーバーを実行する
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Azure Cosmos アカウントで手動フェールオーバーを実行する
 
 > [!IMPORTANT]
 > この操作を成功させるには、Azure Cosmos アカウントに手動フェールオーバーを構成する必要があります。
@@ -344,9 +204,9 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 手動フェールオーバーを実行するプロセスには、アカウントの書き込みリージョン (フェールオーバーの優先順位 = 0) をそのアカウントに構成されている別のリージョンに変更することが含まれます。
 
 > [!NOTE]
-> マルチマスター アカウントは手動でフェールオーバーできません。 Azure Cosmos DB SDK を使用するアプリケーションの場合、SDK はリージョンが利用できなくなったときにそれを検出し、SDK でマルチホーミング API を使用している場合、最も近くにあるリージョンに自動的にリダイレクトします。
+> マルチマスター アカウントは手動でフェールオーバーできません。 Azure Cosmos SDK を使用するアプリケーションの場合、SDK はリージョンが利用できなくなったときにそれを検出し、SDK でマルチホーミング API を使用している場合、最も近くにあるリージョンに自動的にリダイレクトします。
 
-### <a id="enable-manual-failover-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure Portal
 
 1. お使いの Azure Cosmos アカウントに移動して、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
@@ -360,43 +220,15 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 
    ![手動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/manual-failover.png)
 
-### <a id="enable-manual-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
-```azurecli-interactive
-# Assume account currently has regions with priority: eastus=0 westus=1
-# Change the priority order to trigger a failover of the write region
-$resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname'
+[Azure CLI を使用した手動フェールオーバーのトリガー](manage-with-cli.md#trigger-manual-failover)に関する記事を参照してください。
 
-az cosmosdb update --name $accountName --resource-group $resourceGroupName --locations westus=0 eastus=1
-```
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
+[PowerShell を使用した手動フェールオーバーのトリガー](manage-with-powershell.md#trigger-manual-failover)に関する記事を参照してください。
 
-```azurepowershell-interactive
-# Assume account currently has regions with priority: West US = 0, East US = 1
-# Change the priority order to trigger a failover of the write region
-$resourceGroupName = "myResourceGroup"
-$accountName = "myaccountname"
-
-$account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName
-
-$locations = @(
-    @{ "locationName"="East US"; "failoverPriority"=0 },
-    @{ "locationName"="West US"; "failoverPriority"=1 }
-)
-
-$account.Properties.locations=$locations;
-$CosmosDBProperties = $account.Properties;
-
-Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PropertyObject $CosmosDBProperties
-```
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos アカウント、データベース、コンテナーの管理方法に関する詳細と例については、次の記事をお読みください。
 

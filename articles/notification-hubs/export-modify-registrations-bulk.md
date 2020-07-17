@@ -2,22 +2,24 @@
 title: Azure Notification Hubs の登録情報を一括でエクスポートおよびインポートする | Microsoft Docs
 description: Notification Hubs の一括サポートを使用して、通知ハブで多数の操作を実行したり、すべての登録情報をエクスポートしたりする方法について説明します。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575303"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71212401"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs の登録情報を一括でエクスポートおよびインポートする
 シナリオによっては、通知ハブで多数の登録情報を作成または変更する必要があります。 このようなシナリオとして、バッチ計算の後でタグを更新する場合や、Notification Hubs を使用できるように既存のプッシュ実装を移行する場合などがあります。
@@ -29,7 +31,7 @@ ms.locfileid: "64575303"
 
 ## <a name="import"></a>[インポート]
 
-### <a name="set-up"></a>セットアップ
+### <a name="set-up"></a>設定
 ここでは、次のエンティティがあることを前提としています。
 
 - プロビジョニングされた通知ハブ。
@@ -259,7 +261,7 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="export"></a>エクスポート
+## <a name="export"></a>[エクスポート]
 登録情報のエクスポートは、インポートと似ていますが、次の点が異なります。
 
 - 出力 URL のみが必要です。
@@ -285,7 +287,7 @@ while(true){
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 登録について詳しくは、次の記事を参照してください。
 
 - [登録管理](notification-hubs-push-notification-registration-management.md)

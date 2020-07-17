@@ -1,26 +1,26 @@
 ---
-title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリー時のオンプレミスへのフェールバックのトラブルシューティング | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするときのフェールバックと再保護の問題をトラブルシューティングする方法について説明します。
-author: vDonGlover
-manager: JarrettRenshaw
+title: Azure Site Recovery で VMware vCenter の検出エラーをトラブルシューティングする
+description: この記事では、Azure Site Recovery で VMware vCenter の検出エラーをトラブルシューティングする方法について説明します。
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: v-doglov
-ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540807"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74091253"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>vCenter の検出エラーのトラブルシューティング
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server の検出エラーをトラブルシューティングする
 
 この記事は、VMware vCenter の検出のエラーが原因で発生する問題を解決する上で役立ちます。
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>maxSnapShots プロパティの数値以外の値
 
-9.20 より前のバージョンでは、VM の `snapshot.maxSnapShots` プロパティの数値以外の値を取得するときに vCenter が切断されます。
+9\.20 より前のバージョンでは、VM の `snapshot.maxSnapShots` プロパティの数値以外の値を取得するときに vCenter が切断されます。
 
 この問題は、エラー ID 95126 によって識別されます。
 
@@ -46,8 +46,8 @@ vCenter の検出では、システム ユーザーによって構成された�
 
 この問題が発生すると、次のような状況になります。
 
-- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーからエラーが返される:(503) Server Unavailable
-- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーからエラーが返される:リモート サーバーに接続できません。
+- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーがエラー(503) Server Unavailable
+- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーがエラーリモート サーバーに接続できません。
 - vCenter/ESXi サーバーに接続できない。
 
 この問題を解決するには:
@@ -77,6 +77,6 @@ DRA プロキシ構成の場合
 
 4. DRA プロバイダー サービスを再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [VMware VM のディザスター リカバリー用の構成サーバーを管理する](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

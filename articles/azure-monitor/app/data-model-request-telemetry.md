@@ -1,23 +1,15 @@
 ---
-title: Azure Application Insights Telemetry のデータ モデル - 要求テレメトリ | Microsoft Docs
+title: 要求テレメトリ用のデータ モデル - Azure Application Insights
 description: 要求テレメトリ用の Application Insights データ モデル
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884122"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671904"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ:Application Insights データ モデル
 
@@ -25,7 +17,7 @@ ms.locfileid: "57884122"
 
 要求テレメトリは、カスタムの `properties` と `measurements` を使用する標準的な機能拡張モデルをサポートします。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名前
 
 要求の名前は、要求を処理するために使用されたコード パスを表します。 小さなカーディナリティの値を使用すると、要求をより適切にグループ化できます。 HTTP 要求では、これは、実際の `id` 値ではなく、`GET /values/{id}`のような HTTP メソッドとURL パス テンプレートを表します。
 
@@ -33,25 +25,25 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 最大長:1024 文字
 
-## <a name="id"></a>ID
+## <a name="id"></a>id
 
 要求呼び出しインスタンスの識別子。 要求とその他のテレメトリ項目を相関付けるために使用されます。 ID はグローバルに一意である必要があります。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
 
 最大長:128 文字
 
-## <a name="url"></a>Url
+## <a name="url"></a>url
 
 すべてのクエリ文字列パラメーター付きの要求 URL。
 
 最大長:2048 文字
 
-## <a name="source"></a>ソース
+## <a name="source"></a>source
 
 要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
 
 最大長:1024 文字
 
-## <a name="duration"></a>duration
+## <a name="duration"></a>Duration
 
 `DD.HH:MM:SS.MMMMMM` 形式の要求時間。 正の `1000` 日未満の値にする必要があります。 要求テレメトリは開始と終了によって操作を表すため、このフィールドは必須です。
 
@@ -79,7 +71,7 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム要求テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。

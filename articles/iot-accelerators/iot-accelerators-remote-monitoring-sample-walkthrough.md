@@ -1,6 +1,6 @@
 ---
 title: リモート監視ソリューション アクセラレータの概要 - Azure | Microsoft Docs
-description: リモート監視ソリューション アクセラレータの概要。
+description: この記事では、リモート監視ソリューションのしくみについて理解しやすいように、その主な構成要素のいくつかについて概要を提供します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: af09ea39f373d518d5600e3fa46adc378fd9236d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176138"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546313"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
 
@@ -126,9 +126,6 @@ ASA ジョブは、Time Series Insights に接続されたデバイスからの�
 
 [Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) は、ソリューション アクセラレータに接続されたデバイスからのテレメトリを格納します。 また、ソリューション Web UI でのデバイス テレメトリの視覚化とクエリを実行することもできます。
 
-> [!NOTE]
-> Azure China クラウドでは、現在、Time Series Insights はご利用になれません。 Azure China クラウドでの新しいリモート監視ソリューション アクセラレータのデプロイでは、すべてのストレージに Cosmos DB を使用します。
-
 ### <a name="configuration-microservice"></a>構成マイクロサービス
 
 [構成マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)は、ソリューション アクセラレータでのデバイス グループ、ソリューション設定、およびユーザー設定に対する CRUD 操作に RESTful エンドポイントを提供します。 これはストレージ アダプター マイクロサービスと連携して、構成データを保持します。
@@ -160,7 +157,7 @@ ASA ジョブは、Time Series Insights に接続されたデバイスからの�
 
 構成マイクロサービスは、ユーザー インターフェイスで構成設定を保存および取得できるようにします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソース コードと開発者のマニュアルを参照する場合は、次の 2 つの GitHub リポジトリのいずれかを参照してください。
 

@@ -1,5 +1,5 @@
 ---
-title: アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない | Microsoft Docs
+title: アプリケーション プロキシ アプリ用として動作するコネクタ グループが見つからない
 description: Azure AD アプリケーション プロキシを使用したアプリケーション用のコネクタ グループ内に動作するコネクタがない場合に発生する可能性のある問題に対処します
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f829b8e8a4bc08b43d3c30a6333771ccd4e26e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 96ab0d1b3bbab9c97c04da4f918f3aaa2f1d07e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783622"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74275618"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない
 
@@ -46,7 +46,7 @@ ms.locfileid: "65783622"
 
    ![Azure portal でのコネクタ グループの選択](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-これらの各オプションの詳細については、以下の対応するセクションを参照してください。 これらの手順では、コネクタ管理ページから操作を開始していることを前提としています。 上記のエラー メッセージが表示される場合は、警告メッセージをクリックすることで、このページにアクセスできます。 **Azure Active Directory** にアクセスし、**[エンタープライズ アプリケーション]**、**[アプリケーション プロキシ]** の順にクリックしても、このページにアクセスできます。
+これらの各オプションの詳細については、以下の対応するセクションを参照してください。 これらの手順では、コネクタ管理ページから操作を開始していることを前提としています。 上記のエラー メッセージが表示される場合は、警告メッセージをクリックすることで、このページにアクセスできます。 **Azure Active Directory** にアクセスし、 **[エンタープライズ アプリケーション]** 、 **[アプリケーション プロキシ]** の順にクリックしても、このページにアクセスできます。
 
    ![Azure portal でのコネクタ グループの管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "65783622"
    
 ## <a name="move-an-active-connector"></a>アクティブなコネクタを移動する
 
-グループに属し、ターゲットのバックエンド アプリケーションにアクセスできるアクティブなコネクタがある場合は、割り当てられているグループにそのコネクタを移動できます。 移動するには、コネクタをクリックします。 [コネクタ グループ] フィールドで、ドロップダウンを使用して正しいグループを選択し、[保存] をクリックします。
+グループに属し、ターゲットのバックエンド アプリケーションにアクセスできるアクティブなコネクタがある場合は、割り当てられているグループにそのコネクタを移動できます。 それを行うには、コネクタをクリックします。 [コネクタ グループ] フィールドで、ドロップダウンを使用して正しいグループを選択し、[保存] をクリックします。
 
 ## <a name="resolve-an-inactive-connector"></a>アクティブではないコネクタを解決する
 
@@ -68,7 +68,7 @@ ms.locfileid: "65783622"
 
 この問題の調査方法の詳細については、ポートのトラブルシューティングに関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
 
 

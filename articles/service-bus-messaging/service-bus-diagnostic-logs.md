@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus 診断ログ | Microsoft Docs
-description: Service Bus の診断ログを設定する方法について説明します。
+description: この記事では、Azure Service Bus で使用可能なすべての操作と診断ログの概要について説明します。
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -13,68 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216341"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618727"
 ---
-# <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
+# <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus の診断ログを有効にする
 
-Azure Service Bus の 2 種類のログを表示できます。
-* **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)**。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+Azure Service Bus 名前空間の使用を開始するとき、名前空間がいつ、どのように作成、削除、またはアクセスされるかを監視したい場合があります。 この記事では、使用可能なすべての操作と診断ログの概要について説明します。
 
-## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
-
-既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
-
-1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
-
-    ![ブレードで診断ログに移動する](./media/service-bus-diagnostic-logs/image1.png)
-
-2. 監視するリソースをクリックします。  
-
-3.  **[診断を有効にする]** をクリックします。
-
-    ![診断ログを有効にする](./media/service-bus-diagnostic-logs/image2.png)
-
-4.  **[状態]** で、**[オン]** をクリックします。
-
-    ![診断ログの状態を変更する](./media/service-bus-diagnostic-logs/image3.png)
-
-5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Monitor ログなど)。
-
-6.  新しい診断設定を保存します。
-
-新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
-
-診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
-
-## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
-
-すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下のセクションで説明している形式を使用する文字列フィールドがあります。
+Azure Service Bus は現在、Azure Service Bus 名前空間上で実行される "*管理操作*" をキャプチャするアクティビティと操作のログをサポートしています。 具体的には、これらのログは操作の種類 (キューの作成、使用リソース、操作の状態など) をキャプチャします。
 
 ## <a name="operational-logs-schema"></a>操作ログのスキーマ
 
-**OperationalLogs** カテゴリのログは、Service Bus の操作中に起きていることをキャプチャします。 具体的には、これらのログは操作の種類 (キューの作成、使用リソース、操作の状態など) をキャプチャします。
+すべてのログは、以下の 2 つの場所に JavaScript Object Notation (JSON) 形式で格納されます。
+
+- **AzureActivity**:Azure portal 内で、または Azure Resource Manager テンプレートのデプロイを使用して、名前空間に対して実行された操作とアクションのログを表示します。
+- **AzureDiagnostics**:API を使用して、または言語 SDK 上の管理クライアントを使用して、名前空間に対して実行された操作とアクションのログを表示します。
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
-------- | -------
-ActivityId | 内部 ID。追跡目的で使用されます
-EventName | 操作の名前           
-resourceId | Azure Resource Manager リソース ID
-SubscriptionId | サブスクリプション ID
-EventTimeString | 操作時間
-EventProperties | 操作プロパティ
-Status | 操作の状態
-Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)
-category | OperationalLogs
+| 名前 | 説明 |
+| ------- | ------- |
+| ActivityId | 指定されたアクティビティを識別するために使用される内部 ID |
+| EventName | 操作の名前 |
+| ResourceId | Azure Resource Manager リソース ID |
+| SubscriptionId | サブスクリプション ID |
+| EventTimeString | 操作時間 |
+| EventProperties | 操作プロパティ |
+| Status | 操作の状態 |
+| Caller | 操作の呼び出し元 (Azure portal または管理クライアント) |
+| カテゴリ | OperationalLogs |
 
 操作ログの JSON 文字列の例を次に示します。
 
@@ -92,9 +65,59 @@ category | OperationalLogs
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="events-and-operations-captured-in-operational-logs"></a>操作ログでキャプチャされるイベントと操作
 
-Service Bus の詳細については、次のリンクを参照してください。
+操作ログでは、Azure Service Bus 名前空間上で実行されるすべての管理操作がキャプチャされます。 Azure Service Bus 上では大量のデータ操作が実行されるため、データ操作はキャプチャされません。
+
+> [!NOTE]
+> データ操作をより適切に追跡できるように、クライアント側のトレースを使用することをお勧めします。
+
+操作ログでは、以下の管理操作がキャプチャされます。 
+
+| Scope | Operation|
+|-------| -------- |
+| 名前空間 | <ul> <li> 名前空間の作成</li> <li> 名前空間の更新 </li> <li> 名前空間の削除 </li> <li> 名前空間 SharedAccess ポリシーの更新 </li> </ul> | 
+| キュー | <ul> <li> キューの作成</li> <li> キューの更新</li> <li> キューの削除 </li> <li> キューの削除 (自動削除) </li> </ul> | 
+| トピック | <ul> <li> トピックの作成 </li> <li> トピックの更新 </li> <li> トピックの削除 </li> <li> トピックの削除 (自動削除) </li> </ul> |
+| サブスクリプション | <ul> <li> サブスクリプションの作成 </li> <li> サブスクリプションの更新 </li> <li> サブスクリプションの削除 </li> <li> サブスクリプションの削除 (自動削除) </li> </ul> |
+
+> [!NOTE]
+> 現在、*読み取り*操作は操作ログで追跡されません。
+
+## <a name="enable-operational-logs"></a>操作ログを有効にする
+
+操作ログは、既定では無効になっています。 診断ログを有効にするには、次の手順を実行します。
+
+1. [Azure portal](https://portal.azure.com) で、Azure Service Bus 名前空間に移動した後、 **[監視]** で **[診断設定]** を選択します。
+
+   ![[診断設定] リンク](./media/service-bus-diagnostic-logs/image1.png)
+
+1. **[診断設定]** ウィンドウで、 **[診断設定を追加する]** を選択します。  
+
+   ![[診断設定を追加する] リンク](./media/service-bus-diagnostic-logs/image2.png)
+
+1. 次の手順に従って、診断設定を構成します。
+
+   a. **[名前]** ボックスに、診断設定の名前を入力します。  
+
+   b. 診断ログの送信先として、以下の 3 つのいずれかを選択します。  
+   - **[ストレージ アカウントへのアーカイブ]** を選択する場合は、診断ログが格納されるストレージ アカウントを構成する必要があります。  
+   - **[イベント ハブへのストリーム]** を選択する場合は、診断ログのストリーム先のイベント ハブを構成する必要があります。
+   - **[Log Analytics への送信]** を選択する場合は、診断の送信先の Log Analytics のインスタンスを指定する必要があります。  
+
+   c. **[OperationalLogs]** チェック ボックスをオンにします。
+
+    ![[診断設定] ウィンドウ](./media/service-bus-diagnostic-logs/image3.png)
+
+1. **[保存]** を選択します。
+
+新しい設定は、10 分ほどで有効になります。 構成されたアーカイブ ターゲットの **[診断ログ]** ペインにログが表示されます。
+
+診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+Service Bus の詳細を確認するには、以下を参照してください。
 
 * [Service Bus の概要](service-bus-messaging-overview.md)
 * [Service Bus の使用](service-bus-dotnet-get-started-with-queues.md)

@@ -1,25 +1,14 @@
 ---
-title: 既存のアプリを Azure Service Fabric クラスターに迅速にデプロイする
+title: 既存のアプリをクラスターに迅速にデプロイする
 description: Visual Studio を使用して、Azure Service Fabric クラスターで既存の Node.js アプリケーションをホストします。
-services: service-fabric
-documentationcenter: nodejs
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: 63630f5c4799e9272601f431671abc78ec86a238
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669012"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75614844"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -27,7 +16,7 @@ ms.locfileid: "58669012"
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、 [開発環境がセットアップ](service-fabric-get-started.md)されていることを確認してください。 これには、Service Fabric SDK と Visual Studio 2017 または 2015 のインストールが必要です。
+作業を開始する前に、 [開発環境がセットアップ](service-fabric-get-started.md)されていることを確認してください。 これには、Service Fabric SDK と Visual Studio 2019 または 2015 のインストールが含まれます。
 
 また、デプロイ用の Node.js アプリケーションも用意しておく必要があります。 このクイックスタートでは、[こちら][download-sample]でダウンロードできる単純な Node.js Web サイトを使用します。 次の手順でプロジェクトを作成した後、このファイルを `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\` フォルダーに抽出します。
 
@@ -37,22 +26,22 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 Visual Studio を**管理者**として起動します。
 
-`CTRL` + `SHIFT` + `N` キーを押して、プロジェクトを作成します。
+`CTRL`+`SHIFT`+`N` キーを押して、プロジェクトを作成します。
 
-**[新しいプロジェクト]** ダイアログで、**[クラウド]、[Service Fabric アプリケーション]** の順に選択します。
+**[新しいプロジェクト]** ダイアログで、 **[クラウド]、[Service Fabric アプリケーション]** の順に選択します。
 
-アプリケーションに **MyGuestApp** という名前を付けて、**[OK]** をクリックします。
+アプリケーションに **MyGuestApp** という名前を付けて、 **[OK]** をクリックします。
 
 >[!IMPORTANT]
->Node.js では、Windows のパスの上限である 260 文字を超過しやすいため、 プロジェクト自体に短いパスを使用してください (例: **c:\code\svc1**)。 Windows 10 では、**[こちらの手順](https://stackoverflow.com/a/41687101/1664231)** に従い、必要に応じて長いファイル パスを有効にすることができます。
+>Node.js では、Windows のパスの上限である 260 文字を超過しやすいため、 プロジェクト自体に短いパスを使用してください (例: **c:\code\svc1**)。 Windows 10 では、 **[こちらの手順](https://stackoverflow.com/a/41687101/1664231)** に従い、必要に応じて長いファイル パスを有効にすることができます。
    
 ![Visual Studio の [新しいプロジェクト] ダイアログ][new-project]
 
-次のダイアログで、任意の種類の Service Fabric サービスを作成できます。 このクイックスタートでは、**[ゲストの実行可能ファイル]** を選択します。
+次のダイアログで、任意の種類の Service Fabric サービスを作成できます。 このクイックスタートでは、 **[ゲストの実行可能ファイル]** を選択します。
 
 サービスに **MyGuestService** という名前を付けて、右側のオプションを次の値に設定します。
 
-| Setting                   | 値 |
+| 設定                   | 値 |
 | ------------------------- | ------ |
 | コード パッケージ フォルダー       | _&lt;Node.js アプリが含まれているフォルダー&gt;_ |
 | コード パッケージの動作     | フォルダーの内容をプロジェクトにコピーする |
@@ -66,7 +55,7 @@ Visual Studio を**管理者**として起動します。
 
 Visual Studio によって、アプリケーション プロジェクトとアクター サービス プロジェクトが作成され、ソリューション エクスプローラーに表示されます。
 
-アプリケーション プロジェクト (**MyGuestApp**) には直接コードが含まれません。 代わりに、一連のサービス プロジェクトが参照されます。 さらに、アプリケーション プロジェクトには、他に次の 3 つの種類のコンテンツが含まれます。
+アプリケーション プロジェクト (**MyGuestApp**) にはコードが直接には含まれていません。 このプロジェクトは、一連のサービス プロジェクトを参照します。 また、次の 3 つの他の種類のコンテンツも含まれています。
 
 * **発行プロファイル**  
 さまざまな環境に合わせてツールの基本設定を管理するために使用します。
@@ -83,7 +72,7 @@ Visual Studio によって、アプリケーション プロジェクトとア�
 
 デプロイするサンプル Node.js アプリではポート **80** を使用するため、そのポートが公開されている必要があることを Service Fabric に指定する必要があります。
 
-プロジェクトの **ServiceManifest.xml** ファイルを開きます。 マニフェストの下部に、エントリが既に定義されている `<Resources> \ <Endpoints>` があります。 このエントリを変更して `Port`、`Protocol`、`Type` を追加します。 
+プロジェクトの **ServiceManifest.xml** ファイルを開きます。 マニフェストの下部に、エントリが既に定義された `<Resources> \ <Endpoints>` があります。 このエントリを変更して `Port`、`Protocol`、`Type` を追加します。 
 
 ```xml
   <Resources>
@@ -98,7 +87,7 @@ Visual Studio によって、アプリケーション プロジェクトとア�
 
 ## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
-**F5** キーを押してプロジェクトを実行すると、プロジェクトはローカル クラスターにデプロイされます。 ただし、ここでは代わりに Azure にデプロイします。
+**F5** を押してプロジェクトを実行すると、これはローカル クラスターにデプロイされます。 ただし、ここでは代わりに Azure にデプロイします。
 
 プロジェクトを右クリックして **[発行]** を選択すると、Azure に発行するためのダイアログが開きます。
 
@@ -108,7 +97,7 @@ Visual Studio によって、アプリケーション プロジェクトとア�
 
 前もって選択していない場合は、デプロイ先の Azure アカウントを選択します。 まだアカウントを持っていない場合は、[サインアップ][create-account]してください。
 
-**[接続のエンドポイント]** で、デプロイ先の Service Fabric クラスターを選択します。 クラスターがない場合は、**[&lt;新しいクラスターの作成&gt;]** を選択します。これで、Web ブラウザーのウィンドウで Azure Portal が開きます。 詳細については、[ポータルでのクラスターの作成](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)に関するページを参照してください。 
+**[接続のエンドポイント]** で、デプロイ先の Service Fabric クラスターを選択します。 それがない場合は、 **&lt;[新しいクラスターの作成...]&gt;** を選択します。それにより、Azure Portal に Web ブラウザー ウィンドウが開かれます。 詳細については、[ポータルでのクラスターの作成](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)に関するページを参照してください。 
 
 Service Fabric クラスターを作成する際に、必ず **[カスタム エンドポイント]** を **80** に設定するようにしてください。
 
@@ -134,9 +123,9 @@ Service Fabric クラスターを作成する際に、必ず **[カスタム エ
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
-このクイックスタートで作成したリソースについて料金が発生するため、すべてのリソースを忘れずに削除してください。
+このクイック スタートで作成したリソースには課金されるため、それらのリソースをすべて忘れずに削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)の詳細を確認します。
 
 <!-- Image References -->

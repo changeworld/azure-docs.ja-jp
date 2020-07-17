@@ -1,27 +1,21 @@
 ---
 title: Azure Application Insights - 依存関係の自動収集 | Microsoft Docs
 description: Application Insights では、依存関係が自動的に収集されて視覚化されます。
-services: application-insights
-documentationcenter: .net
-author: nikmd23
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: reference
+author: nikmd23
+ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.author: nimolnar
-ms.openlocfilehash: 832f927f81b57fd16c202b855d8f1dbe0617ad56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77665818"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
-以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 通信ライブラリ、ストレージ クライアント、ログ ライブラリ、メトリック ライブラリに対する発信のほか、アプリケーション フレームワークやサーバーに対する着信で構成されています。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューと [[トランザクション診断]](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
+以下に示したのは、アプリケーションのコードに別途変更を加えなくても、現時点で依存関係として自動的に検出することができる依存関係呼び出しの一覧です。 これらの依存関係は、Application Insights の [[アプリケーション マップ]](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューと [[トランザクション診断]](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) ビューで視覚化されます。 必要な依存関係が以下の一覧にない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
 
 ## <a name="net"></a>.NET
 
@@ -38,11 +32,6 @@ ms.locfileid: "65149890"
 | [ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>ストレージ クライアント</b>|  |
 | ADO.NET | 4.5 以降 |
-| <b>ログ ライブラリ</b> |  |
-| ILogger | 1.1 以降 |
-| System.Diagnostics.Trace | 4.5 以降 |
-| [nLog](https://www.nuget.org/packages/NLog/) | 4.4.12 以降 |
-| [log4net](https://www.nuget.org/packages/log4net/) | 2.0.8 以降 (NetStandard 1.3)、2.0.6 以降 (.NET 4.5 以降) |
 
 ## <a name="java"></a>Java
 | アプリケーション サーバー | バージョン |
@@ -93,10 +82,11 @@ ms.locfileid: "65149890"
 | ------------------------|----------|
 | [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | All |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [.NET](../../azure-monitor/app/asp-net-dependencies.md) のカスタム依存関係追跡を設定します。
 - [Java](../../azure-monitor/app/java-agent.md) のカスタム依存関係追跡を設定します。
+- [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md) のカスタム依存関係追跡を設定します。
 - [カスタム依存関係テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
 - Application Insights の型とデータ モデルについては、[データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照してください。
 - Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。

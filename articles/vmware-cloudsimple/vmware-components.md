@@ -1,19 +1,20 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - プライベート クラウド VMware コンポーネント
+title: プライベート クラウド VMware コンポーネント
+titleSuffix: Azure VMware Solution by CloudSimple
 description: VMware コンポーネントをプライベート クラウド上にインストールする方法について説明します。
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157949"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235787"
 ---
 # <a name="private-cloud-vmware-components"></a>プライベート クラウド VMware コンポーネント
 
@@ -28,30 +29,30 @@ ms.locfileid: "65157949"
 
 プライベート クラウド VMware スタックをデプロイするときに使用するソフトウェア バージョンを次に示します。
 
-| コンポーネント | バージョン | ライセンス付きのバージョン |
+| コンポーネント | Version | ライセンス付きのバージョン |
 |-----------|---------|------------------|
-| ESXi | 6.7U1 | Enterprise Plus |
-| vCenter | 6.7U1 | vCenter Standard |
+| ESXi | 6.7U2 | Enterprise Plus |
+| vCenter | 6.7U2 | vCenter Standard |
 | vSAN | 6.7 | Enterprise |
-| NSX Data Center | 2.3 | 詳細 |
+| NSX Data Center | 2.4.1 | 詳細設定 |
 
 ## <a name="esxi"></a>ESXi
 
-プライベート クラウドを作成するときは、購入した CloudSimple ノード上に VMware ESXi をインストールします。  ESXi は、ワークロード仮想マシン (VM) をデプロイするためのハイパーバイザーです。  ノードは、プライベート クラウド上のハイパー コンバージド インフラストラクチャ (コンピューティングおよびストレージ) です。  これらのノードは、プライベート クラウド上で vSphere クラスターを構成する一部となります。  各ノードでは、4 つの物理ネットワーク インターフェイスがアンダーレイ ネットワークに接続されています。  2 つの物理ネットワーク インターフェイスを使用して、vCenter 上の **vSphere 分散スイッチ (VDS)** と、**NSX マネージド仮想分散スイッチ (N-VDS)** が作成されます。  高可用性を実現するため、ネットワーク インターフェイスは、アクティブ/アクティブ モードで構成されます。
+VMware ESXi は、プライベート クラウドを作成するときに、プロビジョニングされた CloudSimple ノード上にインストールされます。  ESXi は、ワークロード仮想マシン (VM) をデプロイするためのハイパーバイザーです。  ノードは、プライベート クラウド上のハイパー コンバージド インフラストラクチャ (コンピューティングおよびストレージ) です。  これらのノードは、プライベート クラウド上で vSphere クラスターを構成する一部となります。  各ノードでは、4 つの物理ネットワーク インターフェイスがアンダーレイ ネットワークに接続されています。  2 つの物理ネットワーク インターフェイスを使用して、vCenter 上の **vSphere 分散スイッチ (VDS)** と、**NSX マネージド仮想分散スイッチ (N-VDS)** が作成されます。  高可用性を実現するため、ネットワーク インターフェイスは、アクティブ/アクティブ モードで構成されます。
 
 VMware ESXi の詳細を確認してください。
 
 ## <a name="vcenter-server-appliance"></a>vCenter サーバー アプライアンス
 
-vCenter サーバー アプライアンス (VCSA) は、CloudSimple による VMware ソリューションで、認証、管理、およびオーケストレーションの各機能を提供します。 プライベート クラウドを作成するときは、Platform Services Controller (PSC) が組み込まれた VCSA をデプロイします。  VCSA は、プライベート クラウドをデプロイするときに作成した vSphere クラスター上にデプロイします。  各プライベート クラウドには、専用の VCSA があります。  プライベート クラウドを拡張すると、プライベート クラウド上の VCSA にノードが追加されます。
+vCenter サーバー アプライアンス (VCSA) は、VMware Solution by CloudSimple で、認証、管理、およびオーケストレーションの各機能を提供します。 プライベート クラウドを作成するときは、Platform Services Controller (PSC) が組み込まれた VCSA をデプロイします。  VCSA は、プライベート クラウドをデプロイするときに作成した vSphere クラスター上にデプロイします。  各プライベート クラウドには、専用の VCSA があります。  プライベート クラウドを拡張すると、プライベート クラウド上の VCSA にノードが追加されます。
 
 ### <a name="vcenter-single-sign-on"></a>vCenter シングル サインオン
 
-VCSA に組み込まれた Platform Services Controller は、**vCenter シングル サインオン ドメイン**に関連付けられています。  ドメイン名は、**cloudsimple.local** です。  vCenter にアクセスするために既定のユーザー **CloudOwner@cloudsimple.com** が作成されます。  vCenter 用のオンプレミス/Azure Active Directory [ID ソース](https://docs.azure.cloudsimple.com/set-vcenter-identity/)を追加できます。
+VCSA に組み込まれた Platform Services Controller は、**vCenter シングル サインオン ドメイン**に関連付けられています。  ドメイン名は、**cloudsimple.local** です。  vCenter にアクセスするために既定のユーザー **CloudOwner@cloudsimple.com** が作成されます。  vCenter 用のオンプレミス/Azure Active Directory [ID ソース](set-vcenter-identity.md)を追加できます。
 
 ## <a name="vsan-storage"></a>vSAN ストレージ
 
-プライベート クラウドは、完全に構成されたオール フラッシュ vSAN ストレージを使用して、クラスター ローカルで作成されます。  vSAN データストアを含む vSphere クラスターを作成するには、同じ SKU のノードが 3 つ以上必要です。  vSAN データストア上では、重複除去と圧縮が既定で有効になっています。  vSphere クラスターの各ノード上には、2 つのディスク グループが作成されます。 各ディスク グループには、1 つのキャッシュ ディスクと 3 つのキャパシティ ディスクが含まれています。
+プライベート クラウドは、完全に構成されたオール フラッシュ vSAN ストレージを使用して、クラスター ローカルで作成されます。  vSAN データストアを含む vSphere クラスターを作成するには、同じ SKU のノードが 3 つ以上必要です。  既定では、vSAN データストア上では重複除去と圧縮が有効になっています。  vSphere クラスターの各ノード上には、2 つのディスク グループが作成されます。 各ディスク グループには、1 つのキャッシュ ディスクと 3 つのキャパシティ ディスクが含まれています。
 
 既定の vSAN ストレージ ポリシーが vSphere クラスター上に作成され、vSAN データストアに適用されます。  必要なサービス レベルを保証するため、このポリシーでは、VM ストレージ オブジェクトをデータ ストア内でプロビジョニングおよび割り当てする方法が決定されます。  ストレージ ポリシーでは、**許容エラー (FTT)** と **エラー許容メソッド**が定義されます。  新規のストレージ ポリシーを作成して VM に適用することが可能です。 SLA を維持するため、vSAN データストア上では、25% のキャパシティを予備として確保しておく必要があります。  
 
@@ -85,11 +86,11 @@ ESXi ホストは、プライベート クラウドの高可用性を保証す�
 
 ### <a name="vsphere-cluster-limits"></a>vSphere クラスターの制限
 
-| Resource | 制限 |
+| リソース | 制限 |
 |----------|-------|
 | プライベート クラウドを作成するためのノードの最小数 (最初の vSphere クラスター) | 3 |
 | プライベート クラウド上の vSphere クラスター内のノードの最大数 | 16 |
-| プライベート クラウド内のノードの最大数 | 64 |
+| プライベート クラウド内の最大ノード数 | 64 |
 | プライベート クラウド内の vSphere クラスターの最大数 | 21 |
 | 新しい vSphere クラスター上のノードの最小数 | 3 |
 
@@ -116,6 +117,6 @@ CloudSimple は、VMware から重要なセキュリティ パッチが利用で
 
 CloudSimple は、VMware ソフトウェア コンポーネントに四半期ごとのメンテナンス更新を提供します。 新しいメジャー バージョンの VMware ソフトウェアが利用できるようになると、CloudSimple は顧客と連携し、アップグレードに適したメンテナンス期間を調整します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [CloudSimple のメンテナンスと更新](cloudsimple-maintenance-updates.md)

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033419"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60893402"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark を使用して Azure Cosmos DB の Cassandra API テーブルからデータを読み取る
 
@@ -136,7 +136,7 @@ spark
 select * from books_vw where book_pub_year > 1891
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Spark からの Azure Cosmos DB Cassandra API の操作に関するその他の記事を以下に示します。
  

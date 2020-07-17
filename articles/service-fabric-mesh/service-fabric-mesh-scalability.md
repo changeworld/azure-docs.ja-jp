@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric Mesh アプリのスケーラビリティ | Microsoft Docs
-description: Azure Service Fabric Mesh のサービスの拡大縮小について説明します。
-services: service-fabric-mesh
-keywords: ''
+title: Azure Service Fabric Mesh アプリのスケーラビリティ
+description: Service Fabric Mesh にアプリケーションをデプロイすることの利点の 1 つは、手動でも自動スケールのポリシーを使用した場合でも、サービスを簡単にスケーリングできることです。
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 1688cac35ea9de43bac529a4994bd4ea55eb0ab7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229531"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションの拡大縮小
 
@@ -22,12 +18,12 @@ Service Fabric Mesh にアプリケーションをデプロイすることの主
 
 ## <a name="manual-scaling-instances"></a>インスタンスの手動拡大縮小
 
-アプリケーション リソースのデプロイ テンプレートでは、各サービスに *replicaCount* プロパティが与えられます。このプロパティを利用し、そのサービスをデプロイする回数を設定できます。 1 つのアプリケーションは、まとめてデプロイされ、管理される複数サービスで構成できます。各サービスに一意の *replicaCount* 番号が与えられます。 サービス レプリカの数をスケーリングするために、スケーリングするサービスごとにデプロイ テンプレートまたはパラメーター ファイルの *replicaCount* 値を変更できます。 その後、アプリケーションをアップグレードします。
+アプリケーション リソースのデプロイ テンプレートでは、各サービスに *replicaCount* プロパティが与えられます。このプロパティを利用し、そのサービスをデプロイする回数を設定できます。 1 つのアプリケーションは、まとめてデプロイされ、管理される複数サービスで構成できます。各サービスに一意の *replicaCount* 番号が与えられます。 サービス レプリカの数をスケーリングするために、スケーリングするサービスごとにデプロイ テンプレートまたはパラメーター ファイルの *replicaCount* 値を変更できます。 次に、アプリケーションをアップグレードします。
 
 インスタンスを手動で拡大縮小する例については、「[サービスを手動でスケールイン/スケールアウトする](service-fabric-mesh-tutorial-template-scale-services.md)」を参照してください。
 
 ## <a name="autoscaling-service-instances"></a>サービス インスタンスの自動拡大縮小
-自動拡大縮小は Service Fabric の追加機能であり、サービス インスタンスの数を動的に拡大縮小します (水平方向の拡大縮小)。 自動拡大縮小は融通性に優れ、CPU またはメモリの使用率に基づいてサービス インスタンスをプロビジョニングしたり、削除したりできます。  自動拡大縮小では、ワークロードに適した数のサービス インスタンスを実行したり、コストに合わせて最適化したりできます。
+自動拡大縮小は Service Fabric の追加機能であり、サービス インスタンスの数を動的に拡大縮小します (水平方向の拡大縮小)。 自動スケーリングは弾力性に優れ、CPU またはメモリの使用率に基づいてサービス インスタンスをプロビジョニングしたり、削除したりできます。  自動拡大縮小では、ワークロードに適した数のサービス インスタンスを実行したり、コストに合わせて最適化したりできます。
 
 自動拡大縮小ポリシーは、サービス リソース ファイルでサービス別に定義されます。 それぞれのスケーリング ポリシーは、2 つの部分で構成されます。
 
@@ -37,6 +33,6 @@ Service Fabric Mesh にアプリケーションをデプロイすることの主
 
 サービスに自動拡大縮小ポリシーを設定する方法については、[サービスの自動拡大縮小](service-fabric-mesh-howto-auto-scale-services.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション モデルについては、[Service Fabric のリソース](service-fabric-mesh-service-fabric-resources.md)に関する記事を参照してください。

@@ -1,24 +1,17 @@
 ---
 title: Azure Log Analytics Linux エージェントのトラブルシューティング | Microsoft Docs
 description: Azure Monitor の Linux 用 Log Analytics エージェントに関する最も一般的な問題の現象、原因、および解決策について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: magoedte
-ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+author: bwren
+ms.author: bwren
+ms.date: 11/21/2019
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884178"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520736"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -43,7 +36,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
 ## <a name="important-configuration-files"></a>重要な構成ファイル
 
- Category | ファイルの場所
+ カテゴリ | ファイルの場所
  ----- | -----
  syslog | `/etc/syslog-ng/syslog-ng.conf` または `/etc/rsyslog.conf` または `/etc/rsyslog.d/95-omsagent.conf`
  パフォーマンス、Nagios、Zabbix、Log Analytics の出力および汎用エージェント | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
@@ -51,7 +44,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
  >[!NOTE]
  >Azure portal でワークスペースに対する [Log Analytics の [詳細設定] の [データ] メニュー](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)からコレクションを構成した場合、パフォーマンス カウンターおよび Syslog に関する構成ファイルの編集が上書きされます。 すべてのエージェントの構成を無効にするには、Log Analytics の **[詳細設定]** でコレクションを無効にします。1 つのエージェントの場合は、次を実行します。  
-> `sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable`
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>インストール エラー コード
 
@@ -83,7 +76,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 | --- | --- |
 | 2 | omsadmin スクリプトに提供されたオプションが無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
 | 3 | omsadmin スクリプトに提供された構成が無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
-| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](log-analytics-agent.md#network-firewall-requirements)を参照してください。 |
+| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](log-analytics-agent.md#firewall-requirements)を参照してください。 |
 | 5 | Azure Monitor から受信された 403 HTTP エラー。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 6 | Azure Monitor から受信された 200 以外の HTTP エラー。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 7 | Azure Monitor に接続できません。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
@@ -117,7 +110,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
 デバッグ ログを使用すると、バッチ処理された Azure Monitor へのアップロードを、種類、データ項目の数、および送信にかかった時間で区切って表示できます。
 
-*"デバッグを有効にしたログの例"*:
+*"デバッグを有効にしたログの例"* :
 
 ```
 Success sending oms.nagios x 1 in 0.14s
@@ -153,7 +146,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 </match>
 ```
 
-## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>問題: プロキシ経由で Azure Monitor に接続できない
+## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>問題点:プロキシ経由で Azure Monitor に接続できない
 
 ### <a name="probable-causes"></a>考えられる原因
 * オンボード中に指定されたプロキシが正しくありません
@@ -164,16 +157,10 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. 「[プロキシ設定を更新する](agent-manage.md#update-proxy-settings)」セクションを参照して、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
-* 次の Azure Monitor エンドポイントがホワイトリストに登録されていることを再確認します。
 
-    |エージェントのリソース| Port | Direction |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | ポート 443| 受信および送信 |  
-    |*.oms.opinsights.azure.com | ポート 443| 受信および送信 |  
-    |*.blob.core.windows.net | ポート 443| 受信および送信 |  
-    |*.azure-automation.net | ポート 443| 受信および送信 | 
+3. Azure Monitor の[ネットワーク ファイアウォール要件](log-analytics-agent.md#firewall-requirements)の一覧で示されているエンドポイントが許可リストに正しく追加されていることを再確認します。 Azure Automation を使用する場合に必要なネットワーク構成手順も、上記のリンクで示されています。
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題: オンボードしようとすると 403 エラーが発生する
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題点:オンボードしようとすると 403 エラーが発生する
 
 ### <a name="probable-causes"></a>考えられる原因
 * Linux サーバーの日付と時刻が正しくありません 
@@ -185,10 +172,37 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 2. 最新バージョンの Linux 用 Log Analytics エージェントをインストールしたことを確認します。  最新バージョンでは、時間の差によってオンボードが失敗する場合に通知するようになりました。
 3. この記事の前述のインストール手順に従って、正しいワークスペース ID とワークスペース キーを使用して再オンボードします。
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題: オンボードの直後にログ ファイルに 500 および 404 エラーが表示される
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題点:オンボードの直後にログ ファイルに 500 および 404 エラーが表示される
 これは、Linux データを Log Analytics ワークスペースに最初にアップロードするときに発生する既知の問題です。 送信されているデータやサービス エクスペリエンスには影響しません。
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題: Azure portal にデータが表示されない
+
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>問題点:omiagent が 100% の CPU を使用している
+
+### <a name="probable-causes"></a>考えられる原因
+nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) の回帰によって、重大なパフォーマンス上の問題が発生しました。これは、Redhat/Centos 7.x のディストリビューションで多く発生しています。 この問題の詳細については、次のドキュメントを参照してください。バグ [1667121 の libcurl のパフォーマンス低下](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)に関するページを参照してください。
+
+パフォーマンスに関連したバグは常に発生するわけではなく、再現するのは非常に困難です。 omiagent でそのような問題が発生する場合は、スクリプト omiHighCPUDiagnostics.sh を使用してください。これは、特定のしきい値を超えると、omiagent のスタック トレースを収集します。
+
+1. スクリプトのダウンロード <br/>
+`wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
+
+2. 30% の CPU しきい値で 24 時間診断を実行します <br/>
+`bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
+
+3. コールスタックが omiagent_trace ファイルにダンプされます。多くの Curl および NSS の関数呼び出しがある場合は、以下の解決手順を実行してください。
+
+### <a name="resolution-step-by-step"></a>解決 (段階的)
+
+1. nss-pem パッケージを [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) にアップグレードします。 <br/>
+`sudo yum upgrade nss-pem`
+
+2. nss-pem がアップグレードに使用できない場合 (多くの場合、Centos で発生する) 場合は、curl を 7.29.0-46 にダウングレードします。 誤って "yum update" を実行すると、curl は 7.29.0-51 にアップグレードされ、問題が再度発生します。 <br/>
+`sudo yum downgrade curl libcurl`
+
+3. OMI を再起動します。 <br/>
+`sudo scxadmin -restart`
+
+## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題点:Azure portal にデータが表示されない
 
 ### <a name="probable-causes"></a>考えられる原因
 
@@ -206,7 +220,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
     >この問題は、エージェント バージョン 1.1.0-28 以降で修正されます。
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>問題: 転送された Syslog メッセージが表示されない 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>問題点:転送された Syslog メッセージが表示されない 
 
 ### <a name="probable-causes"></a>考えられる原因
 * Linux サーバーに適用された構成で、送信されたファシリティやログ レベルの収集が許可されていません
@@ -220,7 +234,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 * `logger` コマンドを使用して、Log Analytics に対する Syslog メッセージをシミュレートします
   * `logger -p local0.err "This is my test message"`
 
-## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>問題: omsagent ログ ファイルで既に使用されている Errno アドレスを受け取る
+## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>問題点:omsagent ログ ファイルで既に使用されている Errno アドレスを受け取る
 omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` が表示される場合。
 
 ### <a name="probable-causes"></a>考えられる原因
@@ -241,7 +255,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 3. omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart` を再起動します。
 4. syslog サービスを開始しなおします。
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>問題: 消去オプションを使用して omsagent をアンインストールできない
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>問題点:消去オプションを使用して omsagent をアンインストールできない
 
 ### <a name="probable-causes"></a>考えられる原因
 
@@ -252,7 +266,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 1. Linux Diagnostic Extension (LAD) をアンインストールします。
 2. Linux Diagnostic Extension のファイルが `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` および `/var/opt/microsoft/omsagent/LAD/` に存在する場合は、それらを削除します。
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>問題: Nagios データが表示されない 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>問題点:Nagios データが表示されない 
 
 ### <a name="probable-causes"></a>考えられる原因
 * omsagent のユーザーが、Nagios ログ ファイルの読み取りアクセス許可を持っていません
@@ -275,7 +289,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>問題: Linux データが表示されない 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>問題点:Linux データが表示されない 
 
 ### <a name="probable-causes"></a>考えられる原因
 * Azure Monitor へのオンボードに失敗しました
@@ -284,7 +298,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Linux 用 Log Analytics エージェント パッケージによってインストールされたものより新しいバージョンの OMI パッケージに手動でアップグレードされました
 * DSC リソースにより、"*クラスが見つからない*" というエラーが `omsconfig.log` ログ ファイルに記録されています
 * Log Analytics エージェントのデータがバックアップされています
-* DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。*" `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
+* DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
 
 ### <a name="resolution"></a>解決策
 1. auditd パッケージのようなすべての依存関係をインストールします。
@@ -345,7 +359,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
     sudo service crond start
     ```
 
-## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>問題: Syslog または Linux のパフォーマンス カウンターに対してポータルからコレクションを構成すると、設定が適用されない
+## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>問題点:Syslog または Linux のパフォーマンス カウンターに対してポータルからコレクションを構成すると、設定が適用されない
 
 ### <a name="probable-causes"></a>考えられる原因
 * Linux 用 Log Analytics エージェントで最新の構成が選択されていません
@@ -359,7 +373,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 
   2. コマンド `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` を実行して、`omsconfig` エージェントが Azure Monitor と通信できることを確認します。 このコマンドは、エージェントがサービスから受け取った構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています。 このコマンドが失敗する場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'` コマンドを実行します。 このコマンドは、omsconfig エージェントに強制的に Azure Monitor と通信して最新の構成を取得させます。
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>問題: カスタム ログ データが表示されない 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>問題点:カスタム ログ データが表示されない 
 
 ### <a name="probable-causes"></a>考えられる原因
 * Azure Monitor へのオンボードに失敗しました。
@@ -376,16 +390,16 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
   1. omsadmin.sh コマンド ラインの[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)を使用して再オンボードします。
   2. Azure portal の **[詳細設定]** で、設定 **[Apply the following configuration to my Linux Servers]\(次の構成を Linux サーバーに適用する\)** が有効になっていることを確認します。  
 
-2. コマンド `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` を実行して、`omsconfig` エージェントが Azure Monitor と通信できることを確認します。  このコマンドは、エージェントがサービスから受け取った構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています。 このコマンドが失敗する場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py` コマンドを実行します。 このコマンドは、omsconfig エージェントに強制的に Azure Monitor と通信して最新の構成を取得させます。
+2. コマンド `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` を実行して、`omsconfig` エージェントが Azure Monitor と通信できることを確認します。  このコマンドは、エージェントがサービスから受け取った構成を返します。この構成には、Syslog 設定、Linux のパフォーマンス カウンター、カスタム ログなどが含まれています。 このコマンドが失敗する場合は、`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'` コマンドを実行します。 このコマンドは、omsconfig エージェントに強制的に Azure Monitor と通信して最新の構成を取得させます。
 
 **背景:** 特権ユーザー `root` として実行される Linux 用 Log Analytics エージェントの代わりに、エージェントは `omsagent` ユーザーとして実行されます。 ほとんどの場合、特定のファイルを読み取るためには、明示的なアクセス許可をユーザーに付与する必要があります。 `omsagent` ユーザーにアクセス許可を付与するには、次のコマンドを実行します。
 
 1. `sudo usermod -a -G <GROUPNAME> <USERNAME>` で、`omsagent` ユーザーを特定のグループに追加します
 2. `sudo chmod -R ugo+rx <FILE DIRECTORY>` で、必要なファイルへの汎用の読み取りアクセス許可を付与します
 
-1.1.0-217 より前のバージョンの Linux 用 Log Analytics エージェントには、競合状態に関する既知の問題があります。 最新のエージェントに更新した後、次のコマンドを実行して、出力プラグインの最新バージョンを取得します。`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
+1\.1.0-217 より前のバージョンの Linux 用 Log Analytics エージェントには、競合状態に関する既知の問題があります。 最新のエージェントに更新した後、次のコマンドを実行して、出力プラグインの最新バージョンを取得します。`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
 
-## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>問題: 新しいワークスペースに再オンボードしようとしている
+## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>問題点:新しいワークスペースに再オンボードしようとしている
 エージェントを新しいワークスペースに再オンボードするときは、再オンボードの前に、Log Analytics エージェントの構成をクリーンアップする必要があります。 エージェントから古い構成をクリーンアップするには、`--purge` でシェル バンドルを実行します
 
 ```
@@ -413,7 +427,7 @@ sudo sh ./onboard_agent.sh --purge
 * 数分待つと、プロビジョニングの状態が**プロビジョニング成功**に変わります。
 
 
-## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>問題: Log Analytics エージェントがオンデマンドでアップグレードする
+## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>問題点:Log Analytics エージェントがオンデマンドでアップグレードする
 
 ### <a name="probable-causes"></a>考えられる原因
 

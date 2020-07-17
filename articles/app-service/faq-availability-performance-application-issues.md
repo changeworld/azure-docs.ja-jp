@@ -1,27 +1,20 @@
 ---
-title: アプリケーションのパフォーマンスに関する FAQ - Azure App Service | Microsoft Docs
-description: Azure App Service の Web アプリ機能での可用性、パフォーマンス、およびアプリケーションの問題に関するよくあるご質問への回答を得ます。
-services: app-service\web
-documentationcenter: ''
+title: アプリケーションのパフォーマンスに関する FAQ
+description: Azure App Service の可用性、パフォーマンス、およびアプリケーションの問題に関するよくあるご質問への回答を得ます。
 author: genlin
-manager: cshepard
-editor: ''
+manager: dcscontentpm
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955753"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159985"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -53,8 +46,8 @@ PowerShell コマンドレットを使用すると、App Service Web アプリ�
 
 Web アプリのイベント ログを表示するには:
 
-1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
-2. メニューで、**[デバッグ コンソール]** > **[CMD]** を選択します。
+1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
+2. メニューで、 **[デバッグ コンソール]**  >  **[CMD]** を選択します。
 3. **LogFiles** フォルダーを選択します。
 4. イベント ログを表示するには、**eventlog.xml** の横にある鉛筆アイコンを選択します。
 5. ログをダウンロードするには、PowerShell コマンドレット `Save-AzureWebSiteLog -Name webappname` を実行します。
@@ -63,10 +56,10 @@ Web アプリのイベント ログを表示するには:
 
 Web アプリのユーザーモードのメモリ ダンプをキャプチャするには:
 
-1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
+1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
 2. **[プロセス エクスプローラー]** メニューを選択します。
 3. **[w3wp.exe]** プロセスまたは [WebJob] プロセスを右クリックします。
-4. **[Download Memory Dump] \(メモリ ダンプのダウンロード)** > **[Full Dump] \(完全ダンプ)** を選択します。
+4. **[Download Memory Dump] \(メモリ ダンプのダウンロード)**  >  **[Full Dump] \(完全ダンプ)** を選択します。
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Web アプリのプロセス レベルの情報を表示するにはどうすればよいですか?
 
@@ -74,9 +67,9 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 
 *   Azure Portal で次の操作を行います。
     1. Web アプリの **[プロセス エクスプローラー]** を開きます。
-    2. 詳細を表示するには、**[w3wp.exe]** プロセスを選択します。
+    2. 詳細を表示するには、 **[w3wp.exe]** プロセスを選択します。
 *   Kudu コンソールで次の操作を行います。
-    1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
+    1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
     2. **[プロセス エクスプローラー]** メニューを選択します。
     3. **[w3wp.exe]** プロセスの **[プロパティ]** を選択します。
 
@@ -92,27 +85,28 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>各種 App Service プランのクォータと制限に関する詳細情報はどこで得られますか?
 
-クォータと制限については、「[App Service の制限](../azure-subscription-service-limits.md#app-service-limits)」を参照してください。 
+クォータと制限については、「[App Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)」を参照してください。 
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>アイドル時間の後の最初の要求の応答時間を短縮するにはどうすればよいですか?
 
-既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 このようにして、システムはリソースを節約できます。 欠点は、Web アプリが読み込まれて応答の処理を開始できるようにするために、Web アプリがアンロードされた後の最初の要求への応答が長くなることです。 [基本] および [標準] サービス プランでは、アプリを常に読み込まれた状態にするために、**[常時接続]** 設定をオンにすることができます。 これにより、アプリがアイドル状態になった後の読み込み時間が長くなることはなくなります。 **[常時接続]** 設定を変更するには:
+既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 このようにして、システムはリソースを節約できます。 欠点は、Web アプリが読み込まれて応答の処理を開始できるようにするために、Web アプリがアンロードされた後の最初の要求への応答が長くなることです。 [基本] および [標準] サービス プランでは、アプリを常に読み込まれた状態にするために、 **[常時接続]** 設定をオンにすることができます。 これにより、アプリがアイドル状態になった後の読み込み時間が長くなることはなくなります。 **[常時接続]** 設定を変更するには:
 
 1. Azure Portal で、Web アプリに移動します。
-2. **[アプリケーションの設定]** を選択します。
-3. **[常時接続]** の **[On] \(オン)** を選択します。
+2. **[構成]** を選択します。
+3. **[全般設定]** を選択します。
+4. **[常時接続]** の **[On] \(オン)** を選択します。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>失敗した要求トレースをオンにするにはどうすればよいですか?
 
 失敗した要求トレースをオンにするには:
 
 1. Azure Portal で、Web アプリに移動します。
-3. **[すべての設定]** > **[診断ログ]** を選択します。
+3. **[すべての設定]**  >  **[診断ログ]** を選択します。
 4. **[失敗した要求トレース]** の **[On] \(オン)** を選択します。
 5. **[保存]** を選択します。
 6. Web アプリ ブレードで **[ツール]** を選択します。
 7. **[Visual Studio Online]** を選択します。
-8. 設定が **[On] \(オン)** でない場合は、**[On] \(オン)** を選択します。
+8. 設定が **[On] \(オン)** でない場合は、 **[On] \(オン)** を選択します。
 9. **[Go] \(移動)** を選択します。
 10. **Web.config** を選択します。
 11. system.webServer で、この構成を追加します (特定の URL をキャプチャする場合)。
@@ -148,8 +142,8 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
     </tracing>
     ```
 13. 失敗した要求トレースをダウンロードするには、[ポータル](https://portal.azure.com)で Web サイトに移動します。
-15. **[ツール]** > **[Kudu]** > **[Go] \(移動)** を選択します。
-18. メニューで、**[デバッグ コンソール]** > **[CMD]** を選択します。
+15. **[ツール]**  >  **[Kudu]**  >  **[Go] \(移動)** を選択します。
+18. メニューで、 **[デバッグ コンソール]**  >  **[CMD]** を選択します。
 19. **LogFiles** フォルダーを選択してから、**W3SVC** で始まる名前を持つフォルダーを選択します。
 20. XML ファイルを表示するには、鉛筆アイコンを選択します。
 
@@ -165,9 +159,9 @@ Web worker ロールで使用可能な追加のメモリを利用できるよう
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>230 秒後に要求がタイムアウトになるのはなぜですか?
 
-Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure Web ジョブを使用することをお勧めします。 Azure Web アプリは Web ジョブを呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 Web ジョブを使用するための複数の方法 (キューやトリガーなど) から選択できます。
+Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure WebJobs を使用することをお勧めします。 Azure Web アプリは WebJobs を呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 WebJobs を使用するための複数の方法 (キューやトリガーなど) から選択できます。
 
-Web ジョブは、バックグラウンド処理用に設計されています。 Web ジョブでは、バックグラウンド処理を必要なだけ実行できます。 Web ジョブの詳細については、「[Web ジョブでのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
+WebJobs は、バックグラウンド処理用に設計されています。 WebJobs では、バックグラウンド処理を必要なだけ実行できます。 WebJobs の詳細については、「[WebJobs でのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>App Service でホストされている ASP.NET Core アプリケーションが応答を停止する場合があります。 この問題を解決するにはどうすればよいですか?
 

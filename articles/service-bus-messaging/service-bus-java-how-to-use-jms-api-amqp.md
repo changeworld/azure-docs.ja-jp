@@ -1,10 +1,9 @@
 ---
-title: Java JMS Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Docs
+title: Java Message Service API と Azure Service Bus で AMQP を使用する
 description: Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法。
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
@@ -12,24 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885555"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77371259"
 ---
-# <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service (JMS) を使用する
+この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Azure Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Azure Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-amqp-dotnet.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
 
-Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
-
-この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-amqp-dotnet.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+Azure Service Bus での AMQP 1.0 のサポートにより、ブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
 ## <a name="get-started-with-service-bus"></a>Service Bus の概要
-このガイドは、**basicqueue** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル](https://portal.azure.com)を使用して[名前空間とキュー](service-bus-create-namespace-portal.md)を作成できます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+このガイドでは、`basicqueue` という名前のキューが含まれる Service Bus 名前空間が既にあることを前提とします。 まだない場合は、[Azure portal](https://portal.azure.com) を使用して[名前空間とキューを作成する](service-bus-create-namespace-portal.md)ことができます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 > [!NOTE]
 > パーティション分割されたキューおよびトピックも AMQP をサポートします。 詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](service-bus-partitioned-queues-and-topics-amqp-overview.md)」を参照してください。
@@ -51,7 +51,7 @@ Service Bus を使用する JMS アプリケーションをビルドおよび実
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java Naming and Directory Interface (JNDI)
 JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名と物理名が関連付けられます。 JNDI を使用した名前解決には 2 種類の JMS オブジェクトが使用されます。ConnectionFactory と Destination です。 JNDI で使用されるプロバイダー モデルでは、さまざまなディレクトリ サービスに接続して、名前解決のタスクを処理できます。 Apache Qpid JMS AMQP 1.0 ライブラリには、次の形式のプロパティ ファイルを使用して構成されるシンプルなプロパティ ファイル ベースの JNDI Provider が付属しています。
 
-```
+```TEXT
 # servicebus.properties - sample JNDI configuration
 
 # Register a ConnectionFactory in JNDI using the form:
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>JNDI コンテキストのセットアップと ConnectionFactory の構成
 
-参照されている **ConnectionString** は、[Azure Portal](https://portal.azure.com) の **[プライマリ接続文字列]** の下の '共有アクセス ポリシー' で使用可能な接続文字列です
+参照されている **ConnectionString** は、[Azure portal](https://portal.azure.com) の [共有アクセス ポリシー] の **[プライマリ接続文字列]** で使用可能な接続文字列です
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
@@ -301,7 +301,7 @@ public class JmsQueueQuickstart {
 共有アクセス ポリシーから**接続文字列**を渡してアプリケーションを実行します。
 以下は、アプリケーションの実行によるフォームの出力です。
 
-```
+```Output
 > mvn clean package
 >java -jar ./target/jmsqueuequickstart-1.0.0-jar-with-dependencies.jar -c "<CONNECTION_STRING>"
 
@@ -333,7 +333,7 @@ Closing queue client.
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP の disposition と Service Bus 操作のマッピング
 AMQP の disposition が Service Bus 操作にどのように変換されるかを次に示します。
 
-```
+```Output
 ACCEPTED = 1; -> Complete()
 REJECTED = 2; -> DeadLetter()
 RELEASED = 3; (just unlock the message in service bus, will then get redelivered)
@@ -346,9 +346,9 @@ Java Message Service (JMS) API を通じて Azure Service Bus のトピックと
 
 Azure Service Bus トピックは、Azure Resource Management インターフェイス、Azure コマンド ライン ツール、または Azure portal を通じて管理される、名前の付いた、共有の、永続的サブスクリプションにメッセージをルーティングします。 各サブスクリプションでは、最大 2000 の選択ルールを使用できます。各ルールではフィルター条件を使用できるほか、SQL フィルターについては、メタデータ変換アクションも使用できます。 フィルター条件が一致するごとに、サブスクリプション内にコピーされる入力メッセージが選択されます。  
 
-サブスクリプションからのメッセージ受信は、キューからのメッセージ受信と同じです。 各サブスクリプションには配信不能キューが関連付けられ、別のキューやトピックにメッセージを自動的に転送することもできます。 
+サブスクリプションからのメッセージ受信は、キューからのメッセージ受信と同じです。 各サブスクリプションには配信不能キューが関連付けられ、別のキューやトピックにメッセージを自動的に転送することができます。 
 
-JMS トピックでは、非永続的および永続的サブスクライバーをクライアントが動的に作成できます。これらのサブスクライバーでは、メッセージ セレクターを使用してメッセージをフィルター処理することもできます。 これらの非共有エンティティは、Service Bus ではサポートされていません。 ただし、Service Bus の SQL フィルター ルール構文は、JMS でサポートされているメッセージ セレクター構文とよく似ています。 
+JMS トピックでは、非永続的および永続的サブスクライバーをクライアントが動的に作成できます。これらのサブスクライバーでは、メッセージ セレクターを使用してメッセージをフィルター処理することもできます。 これらの非共有エンティティは、Service Bus ではサポートされていません。 ただし、Service Bus の SQL フィルター ルール構文は、JMS でサポートされているメッセージ セレクター構文と似ています。 
 
 JMS トピックのパブリッシャー側は (この例で示すように) Service Bus と互換性がありますが、動的サブスクライバーについては互換性がありません。 次のトポロジ関連 JMS API は、Service Bus ではサポートされていません。 
 
@@ -358,7 +358,7 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 * **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は 1 つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
 * 揮発性トピック サブスクリプションは現在サポートされていません。
 * **MessageSelectors** は現在サポートされていません。
-* トランザクション セッションと分散トランザクションはサポートされません。
+* 分散トランザクションはサポートされません (ただし、トランザクション セッションはサポートされます)。
 
 さらに、Azure Service Bus では、データ プレーンからコントロール プレーンが分離されるため、JMS の動的トポロジ関数のいくつかがサポートされていません。
 
@@ -374,13 +374,14 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 | createBrowser               | サポートされていません。 Service Bus API の Peek() 機能を使用してください                         |
 | createQueue                 | management API/tools/portal 経由でキューを作成します                                           | 
 | createTemporaryQueue        | *AutoDeleteOnIdle* に有効期間を設定して、management API/tools/portal 経由でキューを作成します |
+| receiveNoWait               | Service Bus SDK によって提供される receive() メソッドを使用し、非常に短いタイムアウトまたはゼロ タイムアウトを指定します |
 
 ## <a name="summary"></a>まとめ
 このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
 
 Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。 Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
 * [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)

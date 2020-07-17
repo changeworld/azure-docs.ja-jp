@@ -1,21 +1,21 @@
 ---
 title: レビュー ツールの概念の説明 - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: AI と目視レビューを組み合わせたモデレート作業を調整する Web サイトである Content Moderator レビュー ツールについて説明します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.date: 03/15/2019
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.author: sajagtap
-ms.openlocfilehash: b7ec997fd3e9bfe294050893d80fd57a96a47aae
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: pafarley
+ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755873"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76169500"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
 
@@ -31,7 +31,7 @@ Azure Content Moderator は機械学習によるコンテンツ モデレーシ�
 - モデレーション API の結果が出力されたときに目視[レビュー](../review-api.md#reviews)が作成されるよう自動化する。
 - コンテンツ カテゴリまたはエクスペリエンス レベルによって編成された複数のレビュー チームにコンテンツ レビューを割り当てまたはエスカレートする。
 - 既定またはカスタムのロジック フィルター ([ワークフロー](../review-api.md#workflows)) を使用することで、コードを記述せずに、コンテンツを並べ替えたり、追跡したりする。
-- [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API シリーズに加えて、Microsoft PhotoDNA、Text Analytics、および Face の各 API を利用してコンテンツを処理する。
+- [コネクタ](./configure.md#connectors)を使用することで、Content Moderator API に加えて、Microsoft PhotoDNA、Text Analytics、および Face の各サービスを利用してコンテンツを処理する。
 - 任意の API またはビジネス プロセスのワークフローを作成するための独自のコネクタを作成する。
 - コンテンツ モデレーション プロセスの主要なパフォーマンス メトリックを取得します。
 
@@ -43,10 +43,10 @@ Azure Content Moderator は機械学習によるコンテンツ モデレーシ�
 
 ## <a name="review-tool-credentials"></a>レビュー ツールの資格情報
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にサインアップすると、ご使用のアカウントの Azure リージョンの選択を求められます。 これは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)により、Azure Content Moderator サービスの無料試用版キーが生成されるためです。REST 呼び出しまたはクライアント SDK からいずれかのサービスにアクセスする場合に、このキーが必要になります。 ご自分のキーと API エンドポイント URL を確認するには、**[設定]** > **[資格情報]** を選択します。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にサインアップすると、ご使用のアカウントの Azure リージョンの選択を求められます。 これは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)により、Azure Content Moderator サービスの無料試用版キーが生成されるためです。REST 呼び出しまたはクライアント SDK からいずれかのサービスにアクセスする場合に、このキーが必要になります。 ご自分のキーと API エンドポイント URL を確認するには、 **[設定]**  >  **[資格情報]** を選択します。
 
 ![Content Moderator 資格情報](images/settings-6-credentials.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 レビュー ツールのリソースにアクセスしたり、設定を変更したりする方法については、「[レビュー ツールの構成](./configure.md)」を参照してください。

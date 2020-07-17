@@ -1,22 +1,21 @@
 ---
-title: チュートリアル:Azure HDInsight の Apache Hive を使用して抽出、変換、読み込み (ETL) 操作を実行する
+title: チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 description: このチュートリアルでは、生の CSV データセットからデータを抽出し、Azure HDInsight の Apache Hive を使用してデータを変換した後、Sqoop を使用して変換済みデータを Azure SQL Database に読み込む方法について説明します。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: be7ce4d96b7c1bd17853447448f06070637c7855
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939190"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74327575"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
 このチュートリアルでは、ETL (データの抽出、変換、読み込み) 操作を実行します。 生の CSV データ ファイルを取得して Azure HDInsight クラスターにインポートした後、Apache Hive を使用して変換し、Apache Sqoop を使用して Azure SQL データベースに読み込みます。
 
@@ -45,16 +44,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * **Secure Shell (SSH) クライアント**:詳細については、[SSH を使用した HDInsight (Hadoop) への接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-> [!IMPORTANT]
-> この記事の手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、Azure HDInsight バージョン 3.4 以降で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 
 1. [米国運輸省研究・革新技術庁/運輸統計局](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)のページに移動します。
 
 2. このページで、次の値を選択します。
 
-   | Name | 値 |
+   | 名前 | Value |
    | --- | --- |
    | Filter Year |2013 |
    | Filter Period |January |
@@ -96,26 +92,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    このコマンドにより **.csv** ファイルが抽出されます。
 
-4. 次のコマンドを使用して、Data Lake Storage Gen2 ファイル システムを作成します。
+4. 次のコマンドを使用して、Data Lake Storage Gen2 コンテナーを作成します。
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   `<file-system-name>` プレースホルダーを、ファイル システムに付ける名前に置き換えます。
+   `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
    `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
 5. 次のコマンドを使用して、ディレクトリを作成します。
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. 次のコマンドを使用して *.csv* ファイルをディレクトリにコピーします。
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    ファイル名にスペースや特殊文字が含まれる場合は、ファイル名を引用符で囲んでください。
@@ -132,7 +128,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
    nano flightdelays.hql
    ```
 
-2. 次のテキストに変更を加えます。`<file-system-name>` と `<storage-account-name>` のプレースホルダーを実際のファイル システムとストレージ アカウントの名前に置き換えてください。 マウスの右ボタンをクリックしたまま Shift キーを押して、そのテキストを nano コンソールにコピーして貼り付けます。
+2. 次のテキストに変更を加えます。`<container-name>` と `<storage-account-name>` のプレースホルダーを実際のコンテナーとストレージ アカウントの名前に置き換えてください。 マウスの右ボタンをクリックしたまま Shift キーを押して、そのテキストを nano コンソールにコピーして貼り付けます。
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -164,14 +160,14 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -222,7 +218,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
     GROUP BY origin_city_name;
     ```
 
-   このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
+   このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
 
 7. Beeline を終了するには、プロンプトで「 `!quit` 」と入力します。
 
@@ -238,9 +234,9 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 4. 使用するデータベースの名前でフィルター処理します。 サーバー名は **[サーバー名]** 列に表示されます。
 
-    ![Azure SQL サーバーの詳細を取得](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL サーバーの詳細を取得")
+    ![Azure SQL サーバーの詳細を取得する](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL サーバーの詳細を取得する")
 
-    SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](http://www.freetds.org/) を使用します。
+    SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](https://www.freetds.org/) を使用します。
 
 5. FreeTDS をインストールするには、クラスターへの SSH 接続から次のコマンドを使用します。
 
@@ -304,7 +300,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 ## <a name="export-and-load-the-data"></a>データのエクスポートと読み込み
 
-これまでのセクションで、変換済みデータを `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` という場所にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。
+これまでのセクションで、変換済みデータを `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` という場所にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。
 
 1. 次のコマンドを使用して、Sqoop が SQL データベースを認識できることを確認します。
 
@@ -317,7 +313,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 2. 次のコマンドを使って、**hivesampletable** テーブルから **delays** テーブルにデータをエクスポートします。
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    Sqoop は **delays** テーブルを含むデータベースに接続して、`/tutorials/flightdelays/output` ディレクトリから **delays** テーブルにデータをエクスポートします。
@@ -339,11 +335,11 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 5. 「`exit`」と入力して、tsql ユーティリティを終了します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで使用されるすべてのリソースは、既存のものです。 クリーンアップは必要ありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight でのデータ操作の詳細については、次の記事を参照してください。
 

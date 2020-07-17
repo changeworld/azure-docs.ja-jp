@@ -1,19 +1,19 @@
 ---
-title: Azure Maps でサポートされているマップ スタイル | Microsoft Docs
-description: Azure Maps でサポートされているマップ スタイル
-author: walsehgal
-ms.author: v-musehg
+title: サポートされているマップ スタイル | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps でサポートされているさまざまなマップ レンダリング スタイルについて学習します。
+author: philmea
+ms.author: philmea
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334037"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps は、次に説明するように、いくつかの異なる組み込みマップ スタイルをサポートしています。
@@ -21,68 +21,96 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 ## <a name="road"></a>道路
 **道路**マップは標準マップであり、道路、自然および人工の地物、それらの地物のラベルが表示されます。
 
-![道路](./media/supported-map-styles/road.png)
+![道路マップ スタイル](./media/supported-map-styles/road.png)
 
 **該当する API:**
 * [マップ画像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* JS マップ コントロール
+* Web SDK マップ コントロール
 * Android マップ コントロール
+
+## <a name="blank-and-blank_accessible"></a>blank と blank_accessible
+
+**blank** と **blank_accessible** のマップ スタイルでは、データを視覚化する空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、**blank_accessible** スタイルでは、マップの場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
+
+> [!Note]
+> Web SDK では、マップの DIV 要素の CSS `background-color` スタイルを設定することによって、マップの背景色を変更できます。
+
+**該当する API:**
+* Web SDK マップ コントロール
 
 ## <a name="satellite"></a>衛星 
 **衛星**スタイルは、衛星画像と航空映像の組み合わせです。
 
-![衛星](./media/supported-map-styles/satellite.png)
+![衛星タイル マップ スタイル](./media/supported-map-styles/satellite.png)
 
 **該当する API:**
 * [衛星タイル](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* JS マップ コントロール
+* Web SDK マップ コントロール
 * Android マップ コントロール
 
-## <a name="satelliteroadlabels"></a>satellite_road_labels
+## <a name="satellite_road_labels"></a>satellite_road_labels
 このマップ スタイルは、衛星画像と航空映像の上に道路とラベルが重ねて表示されたハイブリッドです。
 
-![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
+![satellite_road_labels マップ スタイル](./media/supported-map-styles/satellite-road-labels.png)
 
 **該当する API:**
-* JS マップ コントロール
+* Web SDK マップ コントロール
 * Android マップ コントロール
 
-## <a name="grayscaledark"></a>grayscale_dark
+## <a name="grayscale_dark"></a>grayscale_dark
 **グレースケール ダーク**は、道路マップ スタイルの濃いバージョンです。
 
-![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+![gray_scale マップ スタイル](./media/supported-map-styles/grayscale-dark.png)
 
 **該当する API:**
-* JS マップ コントロール 
+* [マップ画像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Web SDK マップ コントロール 
 * Android マップ コントロール
 
 
-## <a name="grayscalelight"></a>grayscale_light
+## <a name="grayscale_light"></a>grayscale_light
 **グレースケール ライト**は、道路マップ スタイルの薄いバージョンです。
 
-![グレースケール ライト](./media/supported-map-styles/grayscale_light.png)
+![グレースケール ライト マップ スタイル](./media/supported-map-styles/grayscale-light.png)
 
 **該当する API:**
-* JS マップ コントロール
+* Web SDK マップ コントロール
 * Android マップ コントロール
 
 
 ## <a name="night"></a>night
 **night** は、道路マップ スタイルの色の濃いバージョンで、道路と記号が色付きです。
 
-![night](./media/supported-map-styles/night.png)
+![ナイト マップ スタイル](./media/supported-map-styles/night.png)
 
 **該当する API:**
-* JS マップ コントロール
+* Web SDK マップ コントロール
 * Android マップ コントロール
 
-## <a name="roadshadedrelief"></a>road_shaded_relief
+## <a name="road_shaded_relief"></a>road_shaded_relief
 **道路の影付きレリーフ**は、地球の輪郭で完成する、Azure Maps の主要スタイルです。
 
-![影付きレリーフ](./media/supported-map-styles/shaded-relief.png)
+![影付きレリーフ マップ スタイル](./media/supported-map-styles/shaded-relief.png)
 
 **該当する API:**
 * [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* JS マップ コントロール
+* Web SDK マップ コントロール
 * Android マップ コントロール
+
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** は、他のスタイルと比較してコントラストが強いダーク マップ スタイルです。
+
+![コントラストの強いダーク マップ スタイル](./media/supported-map-styles/high-contrast-dark.png)
+
+**該当する API:**
+* Web SDK マップ コントロール
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Maps でマップ スタイルを設定する方法について説明します。
+
+> [!div class="nextstepaction"]
+> [マップ スタイルを選択する](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

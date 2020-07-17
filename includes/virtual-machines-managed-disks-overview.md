@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 91e9d3a99224c09ecfb5cc3b477a71a7f7bfed7a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0eaac5aac94c536fda58d7d004a54df51219f7cd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199237"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147764"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -33,15 +33,33 @@ ms.locfileid: "65199237"
 
 ### <a name="integration-with-availability-zones"></a>Availability Zones との統合
 
-マネージド ディスクでは [Availability Zones](../articles/availability-zones/az-overview.md) をサポートします。これは高可用性を備えたサービスであり、アプリケーションをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
+マネージド ディスクでは [Availability Zones](../articles/availability-zones/az-overview.md) がサポートされています。これは高可用性を備えたサービスであり、アプリケーションをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
 
 ### <a name="azure-backup-support"></a>Azure Backup のサポート
 
-リージョン全体の災害から保護するために、[Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) を使用し、時間ベースのバックアップとバックアップ保存ポリシーを指定してバックアップ ジョブを作成できます。 こうすることで、簡単な VM の復元を任意で実行できます。 現在、Azure Backup では、最大 4 テビバイト (TiB) のディスク サイズがサポートされています。 詳細については、[マネージド ディスクを使用する VM での Azure Backup の使用](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページを参照してください。
+リージョン全体の災害から保護するために、[Azure Backup](../articles/backup/backup-overview.md) を使用し、時間ベースのバックアップとバックアップ保存ポリシーを指定してバックアップ ジョブを作成できます。 こうすることで、VM またはマネージド ディスクの復元を任意で実行できます。 現在、Azure Backup では、最大 32 テビバイト (TiB) のディスク サイズがサポートされています。 Azure VM バックアップ サポートについて[詳しく確認します](../articles/backup/backup-support-matrix-iaas.md)。
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーがマネージド ディスクをストレージ アカウントにコピーすることが望ましくない場合は、そのマネージド ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+
+### <a name="upload-your-vhd"></a>お使いの VHD をアップロードする
+
+ 直接アップロードを使用して、お使いの VHD を Azure マネージド ディスクに簡単に転送できます。 以前は、ストレージ アカウントへのデータのステージングを含む複雑なプロセスを実行する必要がありました。 現在、手順は少なくなっています。 オンプレミスの VM の Azure へのアップロードや大規模なマネージド ディスクへのアップロードはもっと簡単になり、バックアップと復元のプロセスが簡素化されています。 また、VM へのアタッチなしで、マネージド ディスクに直接データをアップロードできることでコストが削減されます。 直接アップロードを使用して、最大 32 TiB の VHD をアップロードできます。
+
+ VHD を Azure に転送する方法については、[CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) または [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) の記事を参照してください。
+
+## <a name="encryption"></a>暗号化
+
+マネージド ディスクには、2 種類の暗号化が用意されています。 1 つ目は、ストレージ サービスによって実行されるサーバー側暗号化 (SSE) です。 2 つ目は、OS と VM 用データ ディスクで有効にできる Azure Disk Encryption (ADE) です。
+
+### <a name="server-side-encryption"></a>サーバー側暗号化
+
+[Azure サーバー側暗号化](../articles/virtual-machines/windows/disk-encryption.md)は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 サーバー側暗号化は、マネージド ディスクを使用できるすべてのリージョンのすべてのマネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 キーの管理を Azure に任せることができます (プラットフォーム マネージド キー)。自分でキーを管理することもできます (カスタマー マネージド キー)。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+
+Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用される OS とデータ ディスクを暗号化できます。 この暗号化にはマネージド ディスクが含まれます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 暗号化プロセスは Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。 詳細については、[IaaS VM のための Azure Disk Encryption](../articles/security/azure-security-disk-encryption-overview.md) に関するページを参照してください。
 
 ## <a name="disk-roles"></a>ディスク ロール
 
@@ -55,22 +73,24 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="os-disk"></a>OS ディスク
 
-どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 その OS ディスクには、VM の作成時に選択された OS がプリインストールされています。
+どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 その OS ディスクには、VM の作成時に選択された OS がプリインストールされています。 このディスクにはブートボリュームが含まれています。
 
 このディスクの最大容量は 2,048 GiB です。
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 Azure Linux VM の一時ディスクは既定で /dev/sdb です。Windows VM の一時ディスクは既定で E: です。 VM の標準の再起動が正常に実行されている間、一時ディスクのデータは保持されます。
+すべての VM には一時ディスクがありますが、これはマネージド ディスクではありません。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) イベント中、または [VM の再デプロイ](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時に失われる可能性があります。 Azure Linux VM の一時ディスクは既定で /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 VM の標準の再起動が正常に実行されている間、一時ディスクのデータは保持されます。
 
 ## <a name="managed-disk-snapshots"></a>マネージド ディスクのスナップショット
 
-マネージド ディスクのスナップショットはマネージド ディスクの読み取り専用のフル コピーであり、デフォルトで Standard マネージド ディスクとして保存されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 これらは使用済みサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。  
+マネージド ディスクのスナップショットは、マネージド ディスクの読み取り専用のクラッシュ整合性の完全なコピーであり、既定で Standard マネージド ディスクとして格納されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 
+
+スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日**の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
 
 マネージド ディスクでスナップショットを作成する方法の詳細については、次のリソースを参照してください。
 
-* [Windows のスナップショットを使用してマネージド ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Linux のスナップショットを使用してマネージド ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Windows でマネージド ディスクのスナップショットを作成する](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Linux でマネージド ディスクのスナップショットを作成する](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>イメージ
 
@@ -89,6 +109,24 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 スナップショットは、含まれているディスク以外のディスクを認識していません。 このため、ストライピングなど、複数のディスクの調整が必要なシナリオで使用するには問題があります。 スナップショットには相互に調整する機能が必要ですが、これは現在サポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="disk-allocation-and-performance"></a>ディスクの割り当てとパフォーマンス
 
-ディスクの種類に関する記事で、Azure が提供する個々のディスクの種類と、ニーズに適した種類を確認します。
+次の図は、3 レベルのプロビジョニング システムを使用して、ディスクの帯域幅と IOPS がリアルタイムに割り当てられていることを示しています。
+
+![帯域幅と IOPS 割り当てを示す 3 レベルのプロビジョニング システム](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+
+第 1 レベルのプロビジョニングでは、ディスクごとの IOPS と帯域幅の割り当てを設定します。  第 2 レベルでは、コンピューティング サーバーで SSD プロビジョニングが実装されます。これは、キャッシュ (読み取り/書き込み、読み取り専用) が有効なディスクと、ローカル ディスクと一時ディスクを含む、サーバーの SSD に格納されているデータに対してのみ適用されます。 最後に、第 3 レベルとして VM ネットワークがプロビジョニングされます。これは、コンピューティング ホストで Azure Storage のバックエンドに送信されるすべての I/O に対して適用されます。 このスキームでは、VM でのローカル SSD の使用方法、アタッチされているディスクの数、およびアタッチされているディスクのパフォーマンスやキャッシュの種類といったさまざまな要素によって、VM のパフォーマンスが決まります。
+
+これらの制限の例として、Standard_DS1v1 の VM では、SSD とネットワーク レベルの制限により、キャッシュの設定が有効か無効かにかかわらず、P30 のディスクの 5,000 IOPS を達成することはできません。
+
+![Standard_DS1v1 の割り当ての例](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+
+Azure では、ディスク トラフィックに優先順位が付けられたネットワーク チャネルを使用します。これにより、他の低優先度のネットワーク トラフィックより優先されます。 これは、ネットワークの競合が発生した場合に、ディスクで予想されるパフォーマンスを保持するのに役立ちます。 同様に、Azure Storage では、自動負荷分散により、リソースの競合やその他の問題がバックグラウンドで処理されます。 Azure Storage では、ディスクを作成するときに必要なリソースを割り当て、トラフィック レベルを処理するためにリソースのプロアクティブおよびリアクティブな分散を適用します。 これにより、ディスクで確実に予想される IOPS とスループット ターゲットを維持できるようになります。 必要に応じて、VM レベルとディスク レベルのメトリックを使用して、パフォーマンスと設定のアラートを追跡できます。
+
+目的のパフォーマンスを実現できるように、VM とディスクの構成を最適化するため、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+マネージド ディスクについて詳しく解説した次のビデオをご覧ください: 「[マネージド ディスクを使用した Azure VM の回復性向上](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)」。
+
+ディスクの種類に関する記事で、Azure が提供する個々のディスクの種類と、ニーズに適した種類について学習し、パフォーマンス ターゲットについて学習します。

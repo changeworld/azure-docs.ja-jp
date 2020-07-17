@@ -1,22 +1,22 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: functions
 author: ggailey777
-manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d79d1bd5ec244ad4399a02c349e2504516d06ccd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80116989"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) の構成設定。
+
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -38,17 +38,65 @@ ms.locfileid: "66131673"
     "eventGridKeySettingName":  "EventGridKey",
     "eventGridPublishRetryCount": 3,
     "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Pending", "Failed", "Terminated"]
+    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
   }
 }
 ```
 
+### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
+
+```json
+{
+ "extensions": {
+  "durableTask": {
+    "hubName": "MyTaskHub",
+    "storageProvider": {
+      "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
+      "trackingStoreConnectionStringName": "TrackingStorage",
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
+    },
+    "tracing": {
+      "traceInputsAndOutputs": false,
+      "traceReplayEvents": false,
+    },
+    "notifications": {
+      "eventGrid": {
+        "topicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+        "keySettingName": "EventGridKey",
+        "publishRetryCount": 3,
+        "publishRetryInterval": "00:00:30",
+        "publishEventTypes": [
+          "Started",
+          "Pending",
+          "Failed",
+          "Terminated"
+        ]
+      }
+    },
+    "maxConcurrentActivityFunctions": 10,
+    "maxConcurrentOrchestratorFunctions": 10,
+    "extendedSessionsEnabled": false,
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
+  }
+  }
+}
+
+```
+
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)に関するページをご覧ください。
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
 |controlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|
+|controlQueueBufferThreshold|256|一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
 |partitionCount |4|コントロール キューのパーティション数。 1 から 16 までの正の整数を使用できます。|
 |controlQueueVisibilityTimeout |5 分|デキューされたコントロール キュー メッセージの表示タイムアウト。|
 |workItemQueueVisibilityTimeout |5 分|デキューされた作業項目キュー メッセージの表示タイムアウト。|
@@ -65,5 +113,6 @@ ms.locfileid: "66131673"
 |eventGridPublishRetryCount|0|Event Grid トピックへの発行が失敗した場合に再試行する回数。|
 |eventGridPublishRetryInterval|5 分|Event Grid の発行を再試行する間隔 (*hh:mm:ss* 形式)。|
 |eventGridPublishEventTypes||Event Grid に発行するイベントの種類の一覧。 指定されていない場合は、すべてのイベントの種類が発行されます。 指定できる値は、`Started`、`Completed`、`Failed`、`Terminated` です。|
+|useGracefulShutdown|false|(プレビュー) 正常なシャットダウンを有効にして、ホストのシャットダウンでインプロセス関数の実行が失敗する可能性を減らします。|
 
 これらの設定の多くはパフォーマンスの最適化を目的としています。 詳細については、[パフォーマンスとスケール](../articles/azure-functions/durable-functions-perf-and-scale.md)に関するページをご覧ください。

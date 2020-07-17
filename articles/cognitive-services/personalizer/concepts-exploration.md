@@ -3,19 +3,19 @@ title: 探索 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: 探索により、Personalizer は、ユーザー動作が変更しても良好な結果を提供し続けることができます。 探索設定の選択は、モデルを改善するために、探索に使用するユーザー操作の比率に関するビジネス上の意思決定です。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/13/2019
-ms.author: edjez
-ms.openlocfilehash: 0e11dd962f4cc1ff9b1938b309a1b405dbf20232
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.topic: conceptual
+ms.date: 10/23/2019
+ms.author: diberry
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73490820"
 ---
 # <a name="exploration-and-exploitation"></a>探索とエクスプロイト
 
@@ -25,22 +25,15 @@ Personalizer は Rank 呼び出しを受信すると、次のどちらかの Rew
 * 現在の機械学習モデルに基づいて最も可能性の高いユーザー動作を照合するためにエクスプロイトを使用する。
 * ランクで最も可能性が高いアクションを照合しない検索を使用する。
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 Personalizer は現在、*epsilon greedy* と呼ばれる検索アルゴリズムを使用しています。 
 
 ## <a name="choosing-an-exploration-setting"></a>探索設定の選択
 
-Azure portal の Personalizer 用 **[設定]** ページで、探索に使用するトラフィックの割合を構成します。 この設定は、探索を実行する Rank 呼び出しの割合を決定します。 
+Azure portal の Personalizer 用の **[構成]** ページで、探索に使用するトラフィックの割合を構成します。 この設定は、探索を実行する Rank 呼び出しの割合を決定します。 
 
 Personalizer は、Rank 呼び出しごとに、この確率で探索するかエクスプロイトするかを判断します。 これは、特定のユーザー ID の取り扱いをロックする一部の A/B フレームワークにおける動作とは異なります。
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>探索設定の選択のベストプラクティス
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 探索設定の選択は、モデルを改善するために、探索に使用するユーザー操作の比率に関するビジネス上の意思決定です。 
 
@@ -50,6 +43,6 @@ Personalizer は、Rank 呼び出しごとに、この確率で探索するか�
 
 Personalizer が探索しているかエクスプロイトしているかに基づいてアプリケーションの動作を変更しないことが重要です。 これは、最終的には潜在的なパフォーマンスを低下させる学習バイアスを招きます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [強化学習](concepts-reinforcement-learning.md) 

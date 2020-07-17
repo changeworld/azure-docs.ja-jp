@@ -1,29 +1,31 @@
 ---
-title: Net# によるカスタム ニューラル ネットワークの作成
-titleSuffix: Azure Machine Learning Studio
-description: Net# ニューラル ネットワーク仕様言語の構文ガイド。 Azure Machine Learning Studio でカスタム ニューラル ネットワーク モデルを作成する方法について説明します。
+title: Net# カスタム ニューラル ネットワーク
+titleSuffix: ML Studio (classic) - Azure
+description: Net# ニューラル ネットワーク仕様言語の構文ガイド。 Azure Machine Learning Studio (クラシック) でカスタム ニューラル ネットワーク モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218244"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Net# は、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑なニューラル ネットワーク アーキテクチャを定義するために使用される、Microsoft が開発した言語です。 複雑な構造体を使用して、イメージ、ビデオ、オーディオなどのデータに関する学習を強化できます。
 
 次のコンテキストで Net # アーキテクチャの仕様をご利用いただけます。
 
-+ Microsoft Azure Machine Learning Studio のすべてのニューラル ネットワーク モジュール:[多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft Azure Machine Learning Studio (クラシック) のすべてのニューラル ネットワーク モジュール:[多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
 + Microsoft ML Server のニューラル ネットワーク関数: R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
@@ -56,7 +58,7 @@ Net# では、さまざまな種類の結合バンドルがサポートされて
 
 ## <a name="supported-customizations"></a>サポートされるカスタマイズ
 
-Azure Machine Learning Studio で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
+Azure Machine Learning Studio (クラシック) で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
 
 + 隠れ層を作成し、各層のノード数を管理する。
 + 層間の結合方法を指定する。
@@ -89,17 +91,17 @@ Azure Machine Learning Studio で作成するニューラル ネットワーク 
 
 `Const X = 28;`
 
-2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 例: 
+2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 次に例を示します。
 
 `Const { X = 28; Y = 4; }`
 
-それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 例: 
+それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 次に例を示します。
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>層の宣言
 
-層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 例: 
+層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 次に例を示します。
 
 ```Net#
 input Data auto;

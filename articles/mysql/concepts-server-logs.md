@@ -1,38 +1,25 @@
 ---
-title: Azure Database for MySQL のサーバー ログ
-description: Azure Database for MySQL で利用できるログと、さまざまなログ記録レベルを有効にするため利用可能なパラメーターについて説明します。
+title: 低速クエリ ログ - Azure Database for MySQL
+description: Azure Database for MySQL で利用できる低速クエリ ログと、さまざまなログ記録レベルを有効にするため利用可能なパラメーターについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.date: 4/13/2020
+ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417771"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271983"
 ---
-# <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバー ログ
-Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。 
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
+Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
 
 MySQL の低速クエリ ログの詳細については、MySQL のリファレンス マニュアルの[低速クエリ ログに関するセクション](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
-## <a name="access-server-logs"></a>サーバー ログへのアクセス
-Azure Portal と Azure CLI を使用して、Azure Database for MySQL のサーバー ログを一覧表示およびダウンロードできます。
-
-Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。 **[監視]** の見出しの下の、**[サーバー ログ]** ページを選択します。
-
-Azure CLI の詳細については、「[Configure and access server logs using Azure CLI (Azure CLI を使用したサーバー ログの構成とアクセス)](howto-configure-server-logs-in-cli.md)」を参照してください。
-
-## <a name="log-retention"></a>ログのリテンション期間
-ログは、作成日から最大 7 日間使用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。 
-
-ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
-
-
-## <a name="configure-logging"></a>ログの構成 
-既定では、低速クエリ ログは無効です。 有効にするには、slow_query_log をオンに設定します。
+## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する 
+既定では、低速クエリ ログは無効です。 有効にするには、`slow_query_log` を ON に設定します。 これは、Azure portal または Azure CLI を使用して有効にすることができます。 
 
 調整できるその他のパラメーターは次のとおりです。
 
@@ -40,14 +27,31 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 - **log_slow_admin_statements**: オンの場合は、slow_query_log に書き込まれるステートメントに、ALTER_TABLE や ANALYZE_TABLE などの管理ステートメントが含まれます。
 - **log_queries_not_using_indexes**: インデックスを使用していないクエリを slow_query_log に記録するかどうかを決定します。
 - **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
+- **log_output**: "File" の場合、ローカル サーバー ストレージと Azure Monitor 診断ログの両方に低速クエリ ログの書き込みが許可されます。 "None" の場合、低速クエリ ログは Azure Monitor 診断ログのみに書き込まれます。 
+
+> [!IMPORTANT]
+> テーブルにインデックスが作成されていない場合は、`log_queries_not_using_indexes` と `log_throttle_queries_not_using_indexes` パラメーターを ON に設定すると、インデックスが設定されていないそれらのテーブルに対して実行されるすべてのクエリが低速クエリ ログに書き込まれるため、MySQL のパフォーマンスに影響する可能性があります。<br><br>
+> 低速クエリのログ記録を長時間にわたって行う場合は、`log_output` を "None" に設定することをお勧めします。 "File" に設定すると、これらのログはローカル サーバー ストレージに書き込まれ、MySQL のパフォーマンスに影響を与える可能性があります。 
 
 低速クエリ ログのパラメーターの完全な説明については、MySQL の[低速クエリ ログのドキュメント](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
-## <a name="diagnostic-logs"></a>診断ログ
-Azure Database for MySQL は、Azure Monitor の診断ログと統合されます。 MySQL サーバーで低速クエリ ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/diagnostic-logs-overview.md)の操作方法のセクションを参照してください。
+## <a name="access-slow-query-logs"></a>低速クエリ ログにアクセスする
+Azure Database for MySQL の低速クエリ ログにアクセスするには、ローカル サーバー ストレージまたは Azure Monitor 診断ログの 2 つのオプションがあります。 これは `log_output` パラメーターを使用して設定します。
 
-> [!IMPORTANT]
-> サーバー ログに対するこの診断機能は、General Purpose 価格レベルとメモリ最適化[価格レベル](concepts-pricing-tiers.md)でのみ使用できます。
+ローカル サーバー ストレージの場合は、Azure portal または Azure CLI を使用して、低速クエリ ログを一覧表示およびダウンロードできます。 Azure portal で、Azure portal 内のご使用のサーバーに移動します。 **[監視]** の見出しの下の、 **[サーバー ログ]** ページを選択します。 Azure CLI の詳細については、[Azure CLI を使用した低速クエリ ログの構成とアクセス](howto-configure-server-logs-in-cli.md)に関するページを参照してください。 
+
+Azure Monitor 診断ログを使用すると、低速クエリ ログを Azure Monitor ログ (Log Analytics)、Azure Storage、または Event Hubs にパイプすることができます。 詳細については、[以下](concepts-server-logs.md#diagnostic-logs)を参照してください。
+
+## <a name="local-server-storage-log-retention"></a>ローカル サーバー ストレージ ログの保持期間
+サーバーのローカル ストレージにログを記録する場合、ログは作成から最大 7 日間利用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。
+
+ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
+
+> [!Note]
+> 上記のログ保持期間は、Azure Monitor 診断ログを使用してパイプ処理されたログには適用されません。 出力先のデータ シンク (Azure Storage など) の保持期間を変更することが できます。
+
+## <a name="diagnostic-logs"></a>診断ログ
+Azure Database for MySQL は、Azure Monitor の診断ログと統合されます。 MySQL サーバーで低速クエリ ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)の操作方法のセクションを参照してください。
 
 次の表は、各ログの内容を説明しています。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
 
@@ -67,8 +71,8 @@ Azure Database for MySQL は、Azure Monitor の診断ログと統合されま�
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | サーバーの名前 |
 | `start_time_t` [UTC] | クエリの開始時刻 |
-| `query_time_s` | クエリの実行にかかった合計時間 |
-| `lock_time_s` | クエリがロックされていた合計時間 |
+| `query_time_s` | クエリの実行にかかった合計時間 (秒) |
+| `lock_time_s` | クエリのロックにかかった合計時間 (秒) |
 | `user_host_s` | ユーザー名 |
 | `rows_sent_s` | 送信された行の数 |
 | `rows_examined_s` | 検査された行の数 |
@@ -79,5 +83,64 @@ Azure Database for MySQL は、Azure Monitor の診断ログと統合されま�
 | `thread_id_s` | スレッド ID |
 | `\_ResourceId` | リソース URI |
 
+> [!Note]
+> `sql_text` の場合、2048 文字を超えたログは切り捨てられます。
+
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを分析する
+
+低速クエリ ログが診断ログによって Azure Monitor ログにパイプされたら、低速クエリの詳細な分析を実行できます。 使用を開始する際に役立つサンプル クエリを以下にいくつか示します。 以下を、お使いのサーバー名で更新してください。
+
+- 特定のサーバーで 10 秒を超えるクエリ
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```
+
+- 特定のサーバーの長いクエリの上位 5 つを一覧表示する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | order by query_time_d desc
+    | take 5
+    ```
+
+- 低速クエリを、特定のサーバーのクエリ時間の最小値、最大値、平均値、および標準偏差で要約する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
+    ```
+
+- 特定のサーバーの低速クエリの分布をグラフ化する
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- 診断ログが有効になっているすべての MySQL サーバーで 10 秒以上のクエリを表示する
+
+    ```Kusto
+    AzureDiagnostics
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```    
+    
 ## <a name="next-steps"></a>次の手順
-- [Azure CLI からサーバー ログを構成しアクセスする方法](howto-configure-server-logs-in-cli.md)
+- [Azure portal から低速クエリ ログを構成する方法](howto-configure-server-logs-in-portal.md)
+- [Azure CLI から低速クエリ ログを構成する方法](howto-configure-server-logs-in-cli.md)

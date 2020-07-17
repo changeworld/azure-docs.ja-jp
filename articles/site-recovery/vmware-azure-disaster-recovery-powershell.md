@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery で PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery で PowerShell を使用して VMware のディザスター リカバリーを設定する
 description: Azure Site Recovery で PowerShell を使用して VMware VM のディザスター リカバリーのために Azure へのレプリケーションとフェールオーバーを設定する方法を説明します。
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.date: 04/08/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228923"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "66170049"
 > - コンテナー内のサーバー登録を検証する。
 > - レプリケーション ポリシーなど、レプリケーションを設定する。 vCenter サーバーを追加して VM を検出する。
 > - vCenter サーバーを追加して検出する
-> - レプリケーション データを保持するストレージ アカウントを作成し、VM をレプリケートする。
+> - レプリケーション ログまたはデータを保持するストレージ アカウントを作成し、VM をレプリケートする。
 > - フェールオーバーを実行する。 仮想マシンをレプリケートするためのフェールオーバーの設定を構成し、設定を実行する。
 
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Set-ASRVaultContext コマンドレットを使って、コンテナーのコンテキストを設定します。 コンテキストを設定した後、PowerShell セッションでのそれ以降の Azure Site Recovery 操作は、選んだコンテナーのコンテキストで実行されます。
 
 > [!TIP]
-> Azure Site Recovery PowerShell モジュール (Az.RecoveryServices モジュール) のほとんどのコマンドレットには、使いやすいエイリアスがあります。 このモジュールのコマンドレットの形式は *\<操作>-**AzRecoveryServicesAsr**\<オブジェクト>* であり、これに対応するエイリアスの形式は *\<操作>-**ASR**\<オブジェクト>* です。 この記事では、読みやすさを考えてコマンドレットのエイリアスを使います。
+> Azure Site Recovery PowerShell モジュール (Az.RecoveryServices モジュール) のほとんどのコマンドレットには、使いやすいエイリアスがあります。 このモジュールのコマンドレットの形式は *\<操作>-**AzRecoveryServicesAsr**\<オブジェクト>* であり、これに対応するエイリアスの形式は *\<操作>-**ASR**\<オブジェクト>* です。 使いやすくするために、コマンドレットのエイリアスを置き換えることができます。
 
 次の例では、$vault 変数に設定されているコンテナーの詳細を使って、PowerShell セッションに対するコンテナーのコンテキストを指定しています。
 
@@ -118,7 +118,7 @@ Set-ASRVaultContext コマンドレットを使って、コンテナーのコン
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットを使用してコンテナー コンテキストを設定することもできます。 コンテナー登録キー ファイルが -path パラメーターとして置かれているパスを Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットに指定します。 例: 
+Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットを使用してコンテナー コンテキストを設定することもできます。 コンテナー登録キー ファイルが -path パラメーターとして置かれているパスを Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットに指定します。 次に例を示します。
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -138,7 +138,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
 
    ```azurepowershell
    # Verify that the Configuration server is successfully registered to the vault
-   $ASRFabrics = Get-ASRFabric
+   $ASRFabrics = Get-AzRecoveryServicesAsrFabric
    $ASRFabrics.count
    ```
    ```
@@ -201,7 +201,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
 1. 指定したプロパティを持つ Azure に VMware 仮想マシンをレプリケートするための、*ReplicationPolicy* という名前のレプリケーション ポリシーを作成します。
 
    ```azurepowershell
-   $Job_PolicyCreate = New-ASRPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
+   $Job_PolicyCreate = New-AzRecoveryServicesAsrPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
 
    # Track Job status to check for completion
    while (($Job_PolicyCreate.State -eq "InProgress") -or ($Job_PolicyCreate.State -eq "NotStarted")){
@@ -235,7 +235,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
 2. Azure からオンプレミスの VMware サイトへのフェールバックに使うレプリケーション ポリシーを作成します。
 
    ```azurepowershell
-   $Job_FailbackPolicyCreate = New-ASRPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
+   $Job_FailbackPolicyCreate = New-AzRecoveryServicesAsrPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
    ```
 
    *$Job_FailbackPolicyCreate* のジョブの詳細を使って、操作の完了を追跡します。
@@ -244,15 +244,15 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
 
    ```azurepowershell
    #Get the protection container corresponding to the Configuration Server
-   $ProtectionContainer = Get-ASRProtectionContainer -Fabric $ASRFabrics[0]
+   $ProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $ASRFabrics[0]
 
    #Get the replication policies to map by name.
-   $ReplicationPolicy = Get-ASRPolicy -Name "ReplicationPolicy"
-   $FailbackReplicationPolicy = Get-ASRPolicy -Name "ReplicationPolicy-Failback"
+   $ReplicationPolicy = Get-AzRecoveryServicesAsrPolicy -Name "ReplicationPolicy"
+   $FailbackReplicationPolicy = Get-AzRecoveryServicesAsrPolicy -Name "ReplicationPolicy-Failback"
 
    # Associate the replication policies to the protection container corresponding to the Configuration Server.
 
-   $Job_AssociatePolicy = New-ASRProtectionContainerMapping -Name "PolicyAssociation1" -PrimaryProtectionContainer $ProtectionContainer -Policy $ReplicationPolicy
+   $Job_AssociatePolicy = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "PolicyAssociation1" -PrimaryProtectionContainer $ProtectionContainer -Policy $ReplicationPolicy
 
    # Check the job status
    while (($Job_AssociatePolicy.State -eq "InProgress") -or ($Job_AssociatePolicy.State -eq "NotStarted")){
@@ -266,7 +266,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
       Configuration server acts as both the Primary protection container and the recovery protection
       container
    #>
-    $Job_AssociateFailbackPolicy = New-ASRProtectionContainerMapping -Name "FailbackPolicyAssociation" -PrimaryProtectionContainer $ProtectionContainer -RecoveryProtectionContainer $ProtectionContainer -Policy $FailbackReplicationPolicy
+    $Job_AssociateFailbackPolicy = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "FailbackPolicyAssociation" -PrimaryProtectionContainer $ProtectionContainer -RecoveryProtectionContainer $ProtectionContainer -Policy $FailbackReplicationPolicy
 
    # Check the job status
    while (($Job_AssociateFailbackPolicy.State -eq "InProgress") -or ($Job_AssociateFailbackPolicy.State -eq "NotStarted")){
@@ -279,12 +279,12 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>vCenter サーバーを追加して VM を検出する
 
-IP アドレスまたはホスト名で vCenter サーバーを追加します。 **-port** パラメーターは vCenter サーバー上の接続先ポート、**-Name** パラメーターは vCenter サーバーに使用するフレンドリ名、**-Account** パラメーターは vCenter サーバーによって管理される仮想マシンの検出に使う構成サーバー上のアカウント ハンドルを指定します。
+IP アドレスまたはホスト名で vCenter サーバーを追加します。 **-port** パラメーターは vCenter サーバー上の接続先ポート、 **-Name** パラメーターは vCenter サーバーに使用するフレンドリ名、 **-Account** パラメーターは vCenter サーバーによって管理される仮想マシンの検出に使う構成サーバー上のアカウント ハンドルを指定します。
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
 
-$Job_AddvCenterServer = New-ASRvCenter -Fabric $ASRFabrics[0] -Name "MyvCenterServer" -IpOrHostName "10.150.24.63" -Account $AccountHandles[0] -Port 443
+$Job_AddvCenterServer = New-AzRecoveryServicesAsrvCenter -Fabric $ASRFabrics[0] -Name "MyvCenterServer" -IpOrHostName "10.150.24.63" -Account $AccountHandles[0] -Port 443
 
 #Wait for the job to complete and ensure it completed successfully
 
@@ -316,7 +316,9 @@ Errors           : {}
 
 ## <a name="create-storage-accounts-for-replication"></a>レプリケーションのストレージ アカウントを作成する
 
-このステップでは、レプリケーションに使われるストレージ アカウントが作成されます。 これらのストレージ アカウントは、後で仮想マシンのレプリケートに使われます。 コンテナーと同じ Azure リージョンにストレージ アカウントが作成されることを確認します。 既存のストレージ アカウントをレプリケーションに使う場合は、このステップを省略できます。
+**マネージド ディスクに書き込むには、[Powershell Az.RecoveryServices モジュール 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 以降を使用します。** 必要なのは、ログ ストレージ アカウントの作成のみです。 このアカウントは、一時ログの格納にのみ使用されるため、標準のアカウントの種類と LRS 冗長性を使用することを推奨します。 コンテナーと同じ Azure リージョンにストレージ アカウントが作成されることを確認します。
+
+2\.0.0 より以前のバージョンの Az.RecoveryServices モジュールを使用する場合は、次の手順を使用してストレージ アカウントを作成します。 これらのストレージ アカウントは、後で仮想マシンのレプリケートに使われます。 コンテナーと同じ Azure リージョンにストレージ アカウントが作成されることを確認します。 既存のストレージ アカウントをレプリケーションに使う場合は、このステップを省略できます。
 
 > [!NOTE]
 > オンプレミスの仮想マシンを Premium Storage アカウントにレプリケートするときは、追加の Standard Storage アカウント (ログ ストレージ アカウント) を指定する必要があります。 ログ ストレージ アカウントは、Premium Storage ターゲットでログを適用できるようになるまでの中間ストアとして、レプリケーション ログを保持します。
@@ -338,7 +340,8 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 検出された仮想マシンを保護するには、以下の詳細が必要です。
 
 * レプリケートする保護可能項目。
-* 仮想マシンのレプリケート先のストレージ アカウント。 さらに、Premium Storage アカウントに仮想マシンを保護するには、ログ ストレージが必要です。
+* 仮想マシンをレプリケートするストレージ アカウント (ストレージ アカウントにレプリケートする場合のみ)。 
+* Premium ストレージ アカウントまたはマネージド ディスクに仮想マシンを保護するには、ログ ストレージが必要です。
 * レプリケーションに使われるプロセス サーバー。 利用可能なプロセス サーバーの一覧が取得されて、***$ProcessServers[0]*** *(ScaleOut-ProcessServer)* 変数および ***$ProcessServers[1]*** *(ConfigurationServer)* 変数に格納されています。
 * マシンにモビリティ サービス ソフトウェアをプッシュ インストールするために使うアカウント。 利用可能なアカウントの一覧が取得されて、***$AccountHandles*** 変数に格納されています。
 * レプリケーションに使われるレプリケーション ポリシーの保護コンテナー マッピング。
@@ -350,8 +353,8 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 
 |仮想マシン  |プロセス サーバー        |ストレージ アカウント              |ログ ストレージ アカウント  |ポリシー           |モビリティ サービス インストール用アカウント|ターゲット リソース グループ  | ターゲット仮想ネットワーク  |ターゲット サブネット  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
-|CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| 該当なし                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM1       |ConfigurationServer   |該当なし| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 |CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| 該当なし                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
@@ -364,26 +367,30 @@ $ResourceGroup = Get-AzResourceGroup -Name "VMwareToAzureDrPs"
 $RecoveryVnet = Get-AzVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg" 
 
 #Get the protection container mapping for replication policy named ReplicationPolicy
-$PolicyMap  = Get-ASRProtectionContainerMapping -ProtectionContainer $ProtectionContainer | where PolicyFriendlyName -eq "ReplicationPolicy"
-
-#Get the protectable item corresponding to the virtual machine Win2K12VM1
-$VM1 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"
-
-# Enable replication for virtual machine Win2K12VM1
-# The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $PremiumStorageAccount.Id -LogStorageAccountId $LogStorageAccount.Id -ProcessServer $ProcessServers[0] -Account $AccountHandles[1] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+$PolicyMap  = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $ProtectionContainer | where PolicyFriendlyName -eq "ReplicationPolicy"
 
 #Get the protectable item corresponding to the virtual machine CentOSVM1
-$VM2 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
+$VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
-# Enable replication for virtual machine CentOSVM1
-$Job_EnableReplication2 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM2 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
+# The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+# Alternatively, if the virtual machine CentOSVM1 has CMK enabled disks, enable replication using Az module 3.3.0 onwards as below
+# $diskID is the Disk Encryption Set ID to be used for all replica managed disks and target managed disks in the target region
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId -DiskEncryptionSetId $diskId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+#Get the protectable item corresponding to the virtual machine Win2K12VM1
+$VM2 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"
+
+# Enable replication for virtual machine Win2K12VM1
+$Job_EnableReplication2 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM2 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $PremiumStorageAccount.Id -LogStorageAccountId $LogStorageAccount.Id -ProcessServer $ProcessServers[0] -Account $AccountHandles[1] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine CentOSVM2
-$VM3 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM2"
+$VM3 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM2"
 
 # Enable replication for virtual machine CentOSVM2
-$Job_EnableReplication3 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM3 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+$Job_EnableReplication3 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM3 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 ```
 
@@ -392,7 +399,7 @@ $Job_EnableReplication3 = New-ASRReplicationProtectedItem -VMwareToAzure -Protec
 Get-ASRReplicationProtectedItem コマンドレットを使って、仮想マシンのレプリケーションの状態と正常性を確認することができます。
 
 ```azurepowershell
-Get-ASRReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
+Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 ```
 FriendlyName ProtectionState                 ReplicationHealth
@@ -415,9 +422,9 @@ Win2K12VM1   Protected                       Normal
 この例では、フェールオーバー時に仮想マシン *Win2K12VM1* に対して作成される仮想マシンの VM サイズを更新し、フェールオーバー時に仮想マシンがマネージド ディスクを使うことを指定します。
 
 ```azurepowershell
-$ReplicatedVM1 = Get-ASRReplicationProtectedItem -FriendlyName "Win2K12VM1" -ProtectionContainer $ProtectionContainer
+$ReplicatedVM1 = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "Win2K12VM1" -ProtectionContainer $ProtectionContainer
 
-Set-ASRReplicationProtectedItem -InputObject $ReplicatedVM1 -Size "Standard_DS11" -UseManagedDisk True
+Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $ReplicatedVM1 -Size "Standard_DS11" -UseManagedDisk True
 ```
 ```
 Name             : cafa459c-44a7-45b0-9de9-3d925b0e7db9
@@ -450,14 +457,14 @@ Errors           : {}
    TestFailovervnet = Get-AzVirtualNetwork -Name "V2TestNetwork" -ResourceGroupName "asrrg" 
 
    #Start the test failover operation
-   $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
+   $TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. テスト フェールオーバー ジョブが正常に完了すると、名前に "*-Test*" というサフィックスが付いた仮想マシン (この例では Win2K12VM1-Test) が、Azure に作成されます。
+2. テスト フェールオーバー ジョブが正常に完了すると、名前に " *-Test*" というサフィックスが付いた仮想マシン (この例では Win2K12VM1-Test) が、Azure に作成されます。
 3. テスト フェールオーバーが行われた仮想マシンに接続して、テスト フェールオーバーを検証できるようになります。
 4. Start-ASRTestFailoverCleanupJob コマンドレットを使って、テスト フェールオーバーをクリーンアップします。 この操作により、テスト フェールオーバー操作の一部として作成された仮想マシンが削除されます。
 
    ```azurepowershell
-   $Job_TFOCleanup = Start-ASRTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1
+   $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1
    ```
 
 ## <a name="fail-over-to-azure"></a>Azure にフェールオーバーする
@@ -467,7 +474,7 @@ Errors           : {}
 1. フェールオーバーに使用することができる復旧ポイントの一覧を取得します。
    ```azurepowershell
    # Get the list of available recovery points for Win2K12VM1
-   $RecoveryPoints = Get-ASRRecoveryPoint -ReplicationProtectedItem $ReplicatedVM1
+   $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicatedVM1
    "{0} {1}" -f $RecoveryPoints[0].RecoveryPointType, $RecoveryPoints[0].RecoveryPointTime
    ```
    ```
@@ -476,7 +483,7 @@ Errors           : {}
    ```azurepowershell
 
    #Start the failover job
-   $Job_Failover = Start-ASRUnplannedFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[0]
+   $Job_Failover = Start-AzRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[0]
    do {
            $Job_Failover = Get-ASRJob -Job $Job_Failover;
            sleep 60;
@@ -489,5 +496,5 @@ Errors           : {}
 
 2. フェールオーバーが正常に完了すると、フェールオーバー操作をコミットし、Azure からオンプレミスの VMware サイトへのレプリケーションの反転を設定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Site Recovery PowerShell リファレンス](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)を使用して、他のタスクを自動化する方法について学びます。

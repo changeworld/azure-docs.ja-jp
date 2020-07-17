@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 87e6c096c0ff0e58e8acebc13a62e44ea7d65c61
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181234"
 ---
 StorSimple Cloud Appliance を使用する際は、セキュリティに関する次の考慮事項に留意してください。
 

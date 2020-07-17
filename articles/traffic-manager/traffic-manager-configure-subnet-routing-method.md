@@ -1,9 +1,9 @@
 ---
-title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する
+title: サブネットのトラフィック ルーティングを構成する - Azure Traffic Manager
 description: この記事では、特定のサブネットからのトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rohink
+ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001334"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76938751"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -47,25 +47,25 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 このセクションでは、2 台の VM (*myEndpointVMEastUS* と *myEndpointVMWEurope*) を、Azure リージョンの**米国東部**と**西ヨーロッパ**に作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
-2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]**  >  を選択し、 **[コンピューティング]**  >  **[Windows Server 2016 VM]** を選択します。
+2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
     |Name|myIISVMEastUS|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |リソース グループ| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |Resource group| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
     |Location| **[米国東部]** を選択します。|
     |||
 
 4. **[サイズの選択]** で、VM サイズを選択します。
-5. **[設定]** に次の値を選択し、**[OK]** を選択します。
+5. **[設定]** に次の値を選択し、 **[OK]** を選択します。
     
-    |Setting|値|
+    |設定|値|
     |---|---|
-    |仮想ネットワーク| **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet1*」と入力し、サブネットとして「*mySubnet*」と入力します。|
-    |ネットワーク セキュリティ グループ|**[基本]** を選択し、**[パブリック受信ポートを選択]** ドロップダウンから **[HTTP]** と **[RDP]** を選択します。 |
+    |仮想ネットワーク| **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの作成]** で **[名前]** に「*myVNet1*」と入力し、サブネットとして「*mySubnet*」と入力します。|
+    |ネットワーク セキュリティ グループ|**[基本]** を選択し、 **[パブリック受信ポートを選択]** ドロップダウンから **[HTTP]** と **[RDP]** を選択します。 |
     |ブート診断|**[無効]** を選択します。|
     |||
 
@@ -73,12 +73,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 7. 次のように値を変更して、手順 1 から 6 を繰り返します。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
-    |リソース グループ | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
+    |Resource group | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
     |Location|西ヨーロッパ|
     |VM 名 | myIISVMWEurope|
-    |仮想ネットワーク | **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet2*」と入力し、サブネットとして「*mySubnet*」と入力します。|
+    |仮想ネットワーク | **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの作成]** で **[名前]** に「*myVNet2*」と入力し、サブネットとして「*mySubnet*」と入力します。|
     |||
 
 8. VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。
@@ -90,11 +90,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 このセクションでは、2 台の VM (*myIISVMEastUS*  & *myIISVMWEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* をクリックします。
-2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。
-3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
+2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、 **[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、 **[その他]** 、 **[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
 4. **[OK]** を選択します。
-5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
-6. サーバーのデスクトップで、**[Windows 管理ツール]**>**[サーバー マネージャー]** の順に移動します。
+5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、 **[はい]** または **[続行]** を選択して接続処理を続行します。
+6. サーバーのデスクトップで、 **[Windows 管理ツール]** > **[サーバー マネージャー]** の順に移動します。
 7. *myIISVMEastUS* で Windows PowerShell を起動し、次のコマンドを使用して IIS サーバーのインストールと既定の htm ファイルの更新を行います。
     ```powershell-interactive
     # Install IIS
@@ -125,32 +125,32 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 Traffic Manager は、サービス エンドポイントの DNS 名に基づいてユーザー トラフィックをルーティングします。 このセクションでは、IIS サーバー *myIISVMEastUS* と *myIISVMWEurope* の DNS 名を構成します。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* を選択します。
-2. **[概要]** ページで、**[DNS 名]** の下の **[構成]** を選択します。
-3. **[構成]** ページで、[DNS 名ラベル] の下に一意の名前を追加した後、**[保存]** を選択します。
+2. **[概要]** ページで、 **[DNS 名]** の下の **[構成]** を選択します。
+3. **[構成]** ページで、[DNS 名ラベル] の下に一意の名前を追加した後、 **[保存]** を選択します。
 4. *myResourceGroupTM1* リソース グループにある *myIISVMWEurope* という名前の VM に対して、手順 1 から 3 を繰り返します。
 
 ### <a name="create-test-vms"></a>テスト VM を作成する
 
 このセクションでは、VM (*mVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
-2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]**  >  を選択し、 **[コンピューティング]**  >  **[Windows Server 2016 VM]** を選択します。
+2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
     |Name|myVMEastUS|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |リソース グループ| **[既存]** を選択し、*[myResourceGroupTM1]* を選択します。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |Resource group| **[既存]** を選択し、 *[myResourceGroupTM1]* を選択します。|
     |||
 
 4. **[サイズの選択]** で、VM サイズを選択します。
-5. **[設定]** に次の値を選択し、**[OK]** を選択します。
+5. **[設定]** に次の値を選択し、 **[OK]** を選択します。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
-    |仮想ネットワーク| **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet3*」と入力し、サブネットとして「*mySubnet3*」と入力します。|
-    |ネットワーク セキュリティ グループ|**[基本]** を選択し、**[パブリック受信ポートを選択]** ドロップダウンから **[HTTP]** と **[RDP]** を選択します。 |
+    |仮想ネットワーク| **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの作成]** で **[名前]** に「*myVNet3*」と入力し、サブネットとして「*mySubnet3*」と入力します。|
+    |ネットワーク セキュリティ グループ|**[基本]** を選択し、 **[パブリック受信ポートを選択]** ドロップダウンから **[HTTP]** と **[RDP]** を選択します。 |
     |ブート診断|**[無効]** を選択します。|
     |||
 
@@ -158,11 +158,11 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 7. 次のように値を変更して、手順 1 から 5 を繰り返します。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
     |VM 名 | *myVMWEurope*|
-    |リソース グループ | **[既存]** を選択し、「*myResourceGroupTM2*」と入力します。|
-    |仮想ネットワーク | **[仮想ネットワーク]** を選択し、**[仮想ネットワークの作成]** で **[名前]** に「*myVNet4*」と入力し、サブネットとして「*mySubnet4*」と入力します。|
+    |Resource group | **[既存]** を選択し、「*myResourceGroupTM2*」と入力します。|
+    |仮想ネットワーク | **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの作成]** で **[名前]** に「*myVNet4*」と入力し、サブネットとして「*mySubnet4*」と入力します。|
     |||
 
 8. VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。
@@ -170,15 +170,15 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 要求の送信元 IP アドレスに基づいて特定のエンドポイントを返すことができる Traffic Manager プロファイルを作成します。
 
-1. 画面の左上で、**[リソースの作成]** > **[ネットワーク]** > **[Traffic Manager プロファイル]** > **[作成]** の順に選択します。
-2. **[Traffic Manager プロファイルの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
+1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順に選択します。
+2. **[Traffic Manager プロファイルの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[サブネット]** ルーティング方式を選択します。                                       |
     | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
+    | Resource group          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
     | |                              |
     |
 
@@ -189,19 +189,19 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *myIISVMEastUS* & *myIISVMWEurope* を追加します。
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索し、表示された結果からそのプロファイルを選択します。
-2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、**[追加]** をクリックします。
-3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
+2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、 **[追加]** をクリックします。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
-    | type                    | Azure エンドポイント                                   |
+    | 種類                    | Azure エンドポイント                                   |
     | Name           | myTestWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myTestWebSiteEndpoint* に転送されます。    |
 
 4. 手順 2. と 3. を繰り返して、*myIISVMWEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWEurope-ip* 用の *myProductionEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *myVMWestEurope* の IP アドレスを追加します。 このテスト VM からのすべてのユーザー クエリは、エンドポイント *myProductionWebsiteEndpoint* にルーティングされます。
-5. 両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
+5. 両方のエンドポイントは、追加が完了すると、 **[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
     ![Traffic Manager エンドポイントの追加](./media/traffic-manager-subnet-routing-method/customize-endpoint-with-subnet-routing-eastus.png)
 
@@ -227,10 +227,10 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 このセクションでは、Traffic Manager が動作していることを確認します。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *[myResourceGroupTM1]* リソース グループにある *[myVMEastUS]* をクリックします。
-2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。
-3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
+2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、 **[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、 **[その他]** 、 **[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
 4. **[OK]** を選択します。
-5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
+5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、 **[はい]** または **[続行]** を選択して接続処理を続行します。
 1. VM *myVMEastUS* の Web ブラウザーで、Traffic Manager プロファイルの DNS 名を入力して、Web サイトを表示します。 VM *myVMEastUS* の IP アドレスはエンドポイント *myIISVMEastUS* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMEastUS* が起動されます。
 
    ![Traffic Manager プロファイルのテスト](./media/traffic-manager-subnet-routing-method/test-traffic-manager.png)
@@ -238,9 +238,9 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 2. 次に、手順 1 から 5 を使用して**西ヨーロッパ**にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *myVMWestEurope* の IP アドレスはエンドポイント *myIISVMEastUS* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMWEurope* が起動されます。
 
 ## <a name="delete-the-traffic-manager-profile"></a>Traffic Manager プロファイルの削除
-不要になったら、リソース グループ (**ResourceGroupTM1** と **ResourceGroupTM2**) を削除します。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、**[削除]** を選択します。
+不要になったら、リソース グループ (**ResourceGroupTM1** と **ResourceGroupTM2**) を削除します。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
 - [優先順位によるルーティング方法](traffic-manager-configure-priority-routing-method.md)について学習します。

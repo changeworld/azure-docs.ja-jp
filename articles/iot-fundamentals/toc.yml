@@ -1,18 +1,24 @@
 - name: Azure モノのインターネット (IoT)
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: はじめに
       href: iot-introduction.md
+    - name: 適切な IoT ソリューションの選択
+      href: iot-solution-options.md
     - name: Azure IoT のサービスとテクノロジ
       href: iot-services-and-technologies.md
-- name: セキュリティ
+    - name: サポート オプションとヘルプ オプション
+      href: iot-support-help.md
+- name: Security
   items:
-    - name: セキュリティのアーキテクチャ
-      href: iot-security-architecture.md
-    - name: セキュリティのベスト プラクティス
-      href: iot-security-best-practices.md
-    - name: セキュリティで保護されたデプロイ
-      href: iot-security-deployment.md
+    - name: Recommendations
+      href: security-recommendations.md
     - name: 徹底的なセキュリティ
       href: iot-security-ground-up.md
+    - name: セキュリティの運用方法
+      href: iot-security-best-practices.md
+    - name: セキュリティのアーキテクチャ
+      href: iot-security-architecture.md
+    - name: セキュリティで保護されたデプロイ
+      href: iot-security-deployment.md

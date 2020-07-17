@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59a52fa1b67d37abfc79fd5738d70afb8aecf670
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177225"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60382924"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager のメタバース検索
 
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
-[metaverse search (メタバース検索)] タブは、データ関連の問題のトラブルシューティングに役立ちます。 上半分では、属性の組み合わせに基づいたクエリを作成できます。 目的のクエリが作成できたら、 **[検索]** をクリックします。 結果は、下部のグリッドに表示されます。 **[Column Settings]**(列の設定) を使用して、表示する列を選択できます。
+[metaverse search (メタバース検索)] タブは、データ関連の問題のトラブルシューティングに役立ちます。 上半分では、属性の組み合わせに基づいたクエリを作成できます。 目的のクエリが作成できたら、 **[検索]** をクリックします。 結果は、下部のグリッドに表示されます。 **[Column Settings]** (列の設定) を使用して、表示する列を選択できます。
 
 検索結果では、オブジェクトを選択してから **[Properties]** (プロパティ) を選択すると [メタバース オブジェクトのプロパティ](tshoot-connect-object-not-syncing.md#metaverse-object-properties)を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

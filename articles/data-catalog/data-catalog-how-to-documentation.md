@@ -1,21 +1,20 @@
 ---
 title: Azure Data Catalog でデータ ソースを文書化する方法
 description: この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 9049e0b25db37f296e27476fbb93418d13c4dcc1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005280"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68950186"
 ---
-# <a name="document-data-sources"></a>データ ソースの文書化
+# <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースを文書化する方法
+
 ## <a name="introduction"></a>はじめに
 **Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、 *理解*、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。
 
@@ -25,7 +24,7 @@ ms.locfileid: "60005280"
 
 単純な注釈であればタグと説明で十分です。 しかし、データ ソースの用途や業務上のシナリオをデータの利用者が理解しやすいよう、データ ソースについて熟知している担当者が包括的かつ詳細な文書を提供することもできます。 データ ソースの文書化は簡単です。 データ資産またはコンテナーを選択し、 **[ドキュメント]** を選択するだけです。
 
-![](media/data-catalog-documentation/data-catalog-documentation.png)
+![Data Catalog の [ドキュメント] タブ](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>データ資産の文書化
 **Azure Data Catalog** における文書化の利点は、データ カタログをコンテンツのリポジトリとして、既にあるデータ資産を網羅した概要を作成できることです。 ユーザーは、コンテナーやテーブルが表す詳細なコンテンツを広範囲に探ることができます。 既に別のコンテンツ リポジトリ (SharePoint やファイル共有など) にコンテンツがある場合、その既存のコンテンツを参照する、資産ドキュメントのリンクを追加することができます。 この機能によって、既存のドキュメントが発見されやすくなります。
@@ -33,15 +32,14 @@ ms.locfileid: "60005280"
 > [!NOTE]
 > 文書化の内容そのものは、検索インデックスに追加されません。
 >
->
 
-![](media/data-catalog-documentation/data-catalog-documentation2.png)
+![[ドキュメント] タブと Web リンクへのハイパーリンク](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 データ資産コンテナーの特徴や価値を記述しただけのものから、コンテナー内のテーブルのスキーマを詳細に記述したものまで、文書化にはさまざまなレベルがあります。 文書化のレベルは、ビジネス ニーズに応じて決めることが大切です。 ただしデータ資産の文書化には、良い点と悪い点があるのが普通です。
 
-* コンテナーのみを文書化:すべてのコンテンツが一元化されていますが、ユーザーが情報に基づいて判断する際に必要な詳細が欠けている可能性もあります。
-* テーブルのみを文書化:対象のオブジェクトに固有のコンテンツとなりますが、ドキュメントが複数の場所に分散されます。
-* コンテナーとテーブルを文書化:最も包括的な手法ですが、ドキュメントのメンテナンスの手間が増える可能性があります。
+* コンテナーのみを文書化: すべてのコンテンツが一元化されますが、しかるべき情報に基づく判断の拠り所となる細かなデータが得られない可能性もあります。
+* テーブルのみを文書化: 対象のオブジェクトに固有のコンテンツとなりますが、ドキュメントが複数の場所に分散されます。
+* コンテナーとテーブルを文書化: 最も包括的な手法ですが、ドキュメントのメンテナンスの手間が増える可能性があります。
 
 ## <a name="summary"></a>まとめ
 **Azure Data Catalog** でデータ ソースを文書化することにより、ニーズに応じた詳細度でデータ資産の概要を作成できます。  既存のコンテンツ リポジトリに保存されているコンテンツは、リンクを使って関連付けることで、既にある文書やデータ資産を一元化することができます。 ユーザーは適切なデータ資産を発見したうえで、ドキュメント全体を余さず利用することができます。

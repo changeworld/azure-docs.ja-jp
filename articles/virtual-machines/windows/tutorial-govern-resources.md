@@ -1,33 +1,25 @@
 ---
-title: チュートリアル - Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
+title: チュートリアル - PowerShell を使用して仮想マシンを管理する
 description: このチュートリアルでは、Azure PowerShell を使用して、RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: tfitzmac
-manager: jeconnoc
-editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9be421e85d41586c18bee15cd748539e3910021b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164621"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100364"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
@@ -83,7 +75,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-既存のポリシー定義が表示されます。 ポリシーの種類は、**[BuiltIn] (ビルトイン)** または **[カスタム]** のどちらかです。 この中から、割り当てる条件を記述している定義を探します。 この記事では、次のようなポリシーを割り当てます。
+既存のポリシー定義が表示されます。 ポリシーの種類は、 **[BuiltIn] (ビルトイン)** または **[カスタム]** のどちらかです。 この中から、割り当てる条件を記述している定義を探します。 この記事では、次のようなポリシーを割り当てます。
 
 * すべてのリソースの場所を制限する。
 * 仮想マシンの SKU を制限する。
@@ -141,7 +133,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 ## <a name="lock-resources"></a>リソースのロック
 
-[リソースのロック](../../azure-resource-manager/resource-group-lock-resources.md)は、組織内のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 ロールベースのアクセス制御とは異なり、リソースのロックはすべてのユーザーとロールに制限を適用します。 ロック レベルは *CanNotDelete* または *ReadOnly* に設定できます。
+[リソースのロック](../../azure-resource-manager/management/lock-resources.md)は、組織内のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 ロールベースのアクセス制御とは異なり、リソースのロックはすべてのユーザーとロールに制限を適用します。 ロック レベルは *CanNotDelete* または *ReadOnly* に設定できます。
 
 仮想マシンとネットワーク セキュリティ グループをロックするには、[New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) コマンドを使用します。
 
@@ -171,7 +163,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="tag-resources"></a>リソースへのタグ付け
 
-Azure リソースに[タグ](../../azure-resource-manager/resource-group-using-tags.md)を適用すると、カテゴリ別に論理的に整理できます。 各タグは名前と値で構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。
+Azure リソースに[タグ](../../azure-resource-manager/management/tag-resources.md)を適用すると、カテゴリ別に論理的に整理できます。 各タグは名前と値で構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
@@ -205,7 +197,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 [!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを削除するには、[Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) コマンドを使用します。
 
@@ -226,9 +218,9 @@ Remove-AzResourceLock -LockName LockNSG `
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法について学習しました。
+このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * ロールにユーザーを割り当てる
@@ -236,8 +228,8 @@ Remove-AzResourceGroup -Name myResourceGroup
 > * 重要なリソースをロックで保護する
 > * 課金と管理のためにリソースにタグを付ける
 
-次のチュートリアルに進み、仮想マシンの高可用性について学習してください。
+次のチュートリアルに進み、Linux 仮想マシン上の変更を特定したりパッケージの更新プログラムを管理したりする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [仮想マシンの監視](tutorial-monitoring.md)
+> [仮想マシンの管理](tutorial-config-management.md)
 

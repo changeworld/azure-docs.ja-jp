@@ -16,25 +16,25 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65781092"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>アプリケーション リストに予期しないアプリケーションがある
 
-この記事は、**[エンタープライズ アプリケーション]** の **[All Applications (すべてのアプリケーション)]** リストにアプリケーションが表示される方法を理解するのに役立ちます。 
+この記事は、 **[エンタープライズ アプリケーション]** の **[All Applications (すべてのアプリケーション)]** リストにアプリケーションが表示される方法を理解するのに役立ちます。 
 
 ## <a name="how-to-see-all-applications-in-your-tenant"></a>テナントのすべてのアプリケーションを表示する方法
 
-テナントのすべてのアプリケーションを表示するには、**[フィルター]** コントロールを使用して、**[All Applications (すべてのアプリケーション)]** リストに **[All Applications (すべてのアプリケーション)]** を表示します。 次の手順に従います。
+テナントのすべてのアプリケーションを表示するには、 **[フィルター]** コントロールを使用して、 **[All Applications (すべてのアプリケーション)]** リストに **[All Applications (すべてのアプリケーション)]** を表示します。 次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -42,11 +42,11 @@ ms.locfileid: "65781092"
 
 6.  **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールをクリックして使用します。
 
-7.  **[フィルター]** ウィンドウで、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+7.  **[フィルター]** ウィンドウで、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>特定のアプリケーションがすべてのアプリケーション リストに表示される理由
 
-**[All Applications (すべてのアプリケーション)]** にフィルターすると、**[All Applications**  **List (すべてのアプリケーション リスト)]** に、テナントのすべてのサービス プリンシパル オブジェクトが表示されます。 サービス プリンシパル オブジェクトは、さまざまな方法でこのリストに表示できます。
+**[すべてのアプリケーション]** にフィルターすると、 **[すべてのアプリケーションの** **一覧]** に、テナントのすべてのサービス プリンシパル オブジェクトが表示されます。 サービス プリンシパル オブジェクトは、さまざまな方法でこのリストに表示できます。
 
 1. アプリケーション ギャラリーから、次のようなアプリケーションを追加する場合:
 
@@ -58,7 +58,7 @@ ms.locfileid: "65781092"
 
    4. **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 必要な Web リンク、またはユーザー名とパスワードのフィールドを表示するアプリケーションは、SAML または OpenID Connect プロトコルをサポートするか、シングル サインオンのために Azure AD と統合する SCIM をサポートします。
 
-2. Azure Active Directory と統合されたサードパーティー製アプリケーションにサインアップまたはサインインする場合。<sup> </sup> 一例として、[Smartsheet](https://app.smartsheet.com/b/home) または [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) があります。
+2. Azure Active Directory と統合されたサードパーティー製アプリケーションにサインアップまたはサインインする場合。<sup></sup> 一例として、[Smartsheet](https://app.smartsheet.com/b/home) または [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) があります。
 
 3. [Microsoft Office 365](https://products.office.com/) などのファースト パーティーのアプリケーションにサインアップするか、ユーザーやグループのライセンスを追加する場合
 
@@ -94,13 +94,13 @@ ms.locfileid: "65781092"
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[All Applications (すべてのアプリケーション)]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. 削除するアプリケーションを選択します。
 
@@ -116,13 +116,13 @@ ms.locfileid: "65781092"
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
 5.  **[ユーザー設定]** をクリックします。
 
-6.  **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、**[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
+6.  **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、 **[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

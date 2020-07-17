@@ -1,23 +1,17 @@
 ---
-title: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
-description: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する方法についてのチュートリアル。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/14/2019
+title: ブロックチェーン アプリケーションを作成する - Azure Blockchain Workbench
+description: Azure Blockchain Workbench プレビュー用ブロックチェーン アプリケーションを作成する方法についてのチュートリアル。
+ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 92a37133d84833c43fff5b1a6c31e003ef53f7de
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619757"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74324818"
 ---
-# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench 用ブロックチェーン アプリケーションを作成する
 
 Azure Blockchain Workbench を使用すると、構成とスマート コントラクト コードで定義されたマルチパーティ ワークフローを表すブロックチェーン アプリケーションを作成できます。
 
@@ -39,9 +33,10 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 
 ## <a name="hello-blockchain"></a>ブロックチェーンの基本
 
-ここでは、要求元が要求を送信し、レスポンダーが要求に対する応答を送信する基本的なアプリケーションを構築します。 たとえば、「こんにちは、調子はどうですか?」という要求に対し、「最高です!」という応答を返すことができます。 要求と応答の両方が、基になるブロックチェーンに記録されます。 
+ここでは、要求元が要求を送信し、レスポンダーが要求に対する応答を送信する基本的なアプリケーションを構築します。
+たとえば、「こんにちは、調子はどうですか?」という要求に対し、「最高です!」という応答を返すことができます。 要求と応答の両方が、基になるブロックチェーンに記録されます。
 
-アプリケーション ファイルを作成する手順に従うか、[サンプルを GitHub からダウンロード](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain)できます。 
+アプリケーション ファイルを作成する手順に従うか、[サンプルを GitHub からダウンロード](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain)できます。
 
 ## <a name="configuration-file"></a>構成ファイル
 
@@ -215,7 +210,7 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 
 ### <a name="workflows"></a>Workflows
 
-ワークフローでは、コントラクトのステージとアクションを 1 つ以上定義します。 要求 - 応答シナリオの場合、ワークフローの最初のステージ (状態) では、要求元 (ロール) がアクション (遷移) を実行して、要求を送信します (関数)。 次のステージ (状態) では、レスポンダー (ロール) がアクション (遷移) を実行して、応答を送信します (関数)。 アプリケーションのワークフローには、コントラクトのフローを記述するために必要なプロパティ、関数、および状態を含めることができます。 
+ワークフローでは、コントラクトのステージとアクションを 1 つ以上定義します。 要求 - 応答シナリオの場合、ワークフローの最初のステージ (状態) では、要求元 (ロール) がアクション (遷移) を実行して、要求を送信します (関数)。 次のステージ (状態) では、レスポンダー (ロール) がアクション (遷移) を実行して、応答を送信します (関数)。 アプリケーションのワークフローには、コントラクトのフローを記述するために必要なプロパティ、関数、および状態を含めることができます。
 
 構成ファイルの内容の詳細については、「[Azure Blockchain Workbench configuration reference (Azure Blockchain Workbench の構成リファレンス)](configuration.md)」を参照してください。
 
@@ -229,24 +224,23 @@ Solidity のスマート コントラクトは、オブジェクト指向言語�
 
 ### <a name="version-pragma"></a>バージョン プラグマ
 
-ベスト プラクティスとして、ターゲットとする Solidity のバージョンを指定します。 バージョンを指定しておくと、将来の Solidity バージョンとの非互換性を回避するのに役立ちます。 
+ベスト プラクティスとして、ターゲットとする Solidity のバージョンを指定します。 バージョンを指定しておくと、将来の Solidity バージョンとの非互換性を回避するのに役立ちます。
 
 `HelloBlockchain.sol` スマート コントラクト コード ファイルの先頭に次のバージョン プラグマを追加します。
 
-
-  ``` solidity
-  pragma solidity ^0.4.20;
-  ```
+``` solidity
+pragma solidity >=0.4.25 <0.6.0;
+```
 
 ### <a name="configuration-and-smart-contract-code-relationship"></a>構成とスマート コントラクト コードの関係
 
-Blockchain Workbench では、構成ファイルとスマート コントラクト コード ファイルを使用してブロックチェーン アプリケーションを作成します。 構成の定義内容とスマート コントラクトのコードとの間には関係があります。 アプリケーションを作成するには、コントラクトの詳細、関数、パラメーター、および型が一致する必要があります。 Blockchain Workbench では、アプリケーションを作成する前にファイルを検証します。 
+Blockchain Workbench では、構成ファイルとスマート コントラクト コード ファイルを使用してブロックチェーン アプリケーションを作成します。 構成の定義内容とスマート コントラクトのコードとの間には関係があります。 アプリケーションを作成するには、コントラクトの詳細、関数、パラメーター、および型が一致する必要があります。 Blockchain Workbench では、アプリケーションを作成する前にファイルを検証します。
 
 ### <a name="contract"></a>コントラクト
 
 `HelloBlockchain.sol` スマート コントラクト コード ファイルに **contract** ヘッダーを追加します。
 
-```
+``` solidity
 contract HelloBlockchain {
 ```
 
@@ -254,17 +248,17 @@ contract HelloBlockchain {
 
 状態変数は、各コントラクト インスタンスの状態の値を格納します。 コントラクトの状態変数は、構成ファイルで定義されているワークフローのプロパティと一致する必要があります。
 
-`HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトに状態変数を追加します。 
+`HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトに状態変数を追加します。
 
-```
+``` solidity
     //Set of States
     enum StateType { Request, Respond}
-    
+
     //List of properties
     StateType public  State;
     address public  Requestor;
     address public  Responder;
-    
+
     string public RequestMessage;
     string public ResponseMessage;
 ```
@@ -275,11 +269,11 @@ contract HelloBlockchain {
 
 コンストラクター関数では、コントラクトを作成する前に実行するビジネス ロジックを記述します。 たとえば、状態変数を開始値で初期化します。
 
-`HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトにコンストラクター関数を追加します。 
+`HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトにコンストラクター関数を追加します。
 
-```
+``` solidity
     // constructor function
-    constructor(string message) public
+    constructor(string memory message) public
     {
         Requestor = msg.sender;
         RequestMessage = message;
@@ -287,28 +281,29 @@ contract HelloBlockchain {
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>関数
 
 関数とは、コントラクト内のビジネス ロジックの実行可能ユニットです。 関数の必要なパラメーターは、構成ファイルで関数パラメーターとして定義します。 パラメーターの数、順序、型は両方のファイルで一致する必要があります。 関数は、構成ファイルで Blockchain Workbench ワークフローの遷移に関連付けます。 遷移とは、コントラクトで定められるとおりアプリケーションのワークフローの次のステージに進むために実行されるアクションです。
 
 関数で実行するビジネス ロジックを記述します。 たとえば、状態変数の値を変更します。
 
-1. `HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトに次の関数を追加します。 
+1. `HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトに次の関数を追加します。
 
-    ```
+    ``` solidity
         // call this function to send a request
-        function SendRequest(string requestMessage) public
+        function SendRequest(string memory requestMessage) public
         {
             if (Requestor != msg.sender)
             {
                 revert();
             }
+    
             RequestMessage = requestMessage;
             State = StateType.Request;
         }
     
         // call this function to send a response
-        function SendResponse(string responseMessage) public
+        function SendResponse(string memory responseMessage) public
         {
             Responder = msg.sender;
     
@@ -326,32 +321,32 @@ Blockchain Workbench にブロックチェーン アプリケーションを追�
 
 1. Web ブラウザーで、Blockchain Workbench の Web アドレスに移動します。 たとえば、`https://{workbench URL}.azurewebsites.net/` です。Web アプリケーションは、Blockchain Workbench をデプロイすると作成されます。 Blockchain Workbench の Web アドレスを調べる方法については、「[Blockchain Workbench Web URL (Blockchain Workbench の Web URL)](deploy.md#blockchain-workbench-web-url)」を参照してください。
 2. [Blockchain Workbench 管理者](manage-users.md#manage-blockchain-workbench-administrators)としてサインインします。
-3. **[アプリケーション]** > **[新規]** の順に選択します。 **[新しいアプリケーション]** ウィンドウが表示されます。
-4. **[Upload the contract configuration]\(コントラクトの構成のアップロード\)** > **[参照]** の順に選択して、作成した **HelloBlockchain.json** 構成ファイルを探します。 構成ファイルは自動的に検証されます。 **[表示]** リンクを選択すると、検証エラーが表示されます。 アプリケーションをデプロイする前に検証エラーを修正してください。
-5. **[Upload the contract code]\(コントラスト コードのアップロード\)** > **[参照]** の順に選択して、**HelloBlockchain.sol** スマート コントラクト コード ファイルを探します。 コード ファイルは自動的に検証されます。 **[表示]** リンクを選択すると、検証エラーが表示されます。 アプリケーションをデプロイする前に検証エラーを修正してください。
+3. **[アプリケーション]**  >  **[新規]** の順に選択します。 **[新しいアプリケーション]** ウィンドウが表示されます。
+4. **[Upload the contract configuration]\(コントラクトの構成のアップロード\)**  >  **[参照]** の順に選択して、作成した **HelloBlockchain.json** 構成ファイルを探します。 構成ファイルは自動的に検証されます。 **[表示]** リンクを選択すると、検証エラーが表示されます。 アプリケーションをデプロイする前に検証エラーを修正してください。
+5. **[Upload the contract code]\(コントラスト コードのアップロード\)**  >  **[参照]** の順に選択して、**HelloBlockchain.sol** スマート コントラクト コード ファイルを探します。 コード ファイルは自動的に検証されます。 **[表示]** リンクを選択すると、検証エラーが表示されます。 アプリケーションをデプロイする前に検証エラーを修正してください。
 6. **[デプロイ]** を選択して、構成とスマート コントラクト ファイルに基づいてブロックチェーン アプリケーションを作成します。
 
 ブロックチェーン アプリケーションのデプロイには数分かかります。 デプロイが完了すると、新しいアプリケーションが **[アプリケーション]** に表示されます。 
 
 > [!NOTE]
-> また、[Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) を使用してブロックチェーン アプリケーションを作成することもできます。 
+> また、[Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) を使用してブロックチェーン アプリケーションを作成することもできます。
 
 ## <a name="add-blockchain-application-members"></a>ブロックチェーン アプリケーション メンバーの追加
 
 コントラクトを開始し、アクションを実行するアプリケーション メンバーをアプリケーションに追加します。 アプリケーション メンバーを追加するには、[Blockchain Workbench 管理者](manage-users.md#manage-blockchain-workbench-administrators)である必要があります。
 
-1. **[アプリケーション]** > **[Hello, Blockchain!]** の順に選択します。
+1. **[アプリケーション]**  >  **[Hello, Blockchain!]** の順に選択します。
 2. アプリケーションに関連付けられているメンバーの数がページの右上隅に表示されます。 新しいアプリケーションの場合、メンバーの数はゼロです。
 3. ページの右上隅にある **[メンバー]** リンクを選択します。 アプリケーションの現在のメンバーが一覧表示されます。
-4. メンバーシップ一覧で、**[メンバーの追加]** を選択します。
+4. メンバーシップ一覧で、 **[メンバーの追加]** を選択します。
 5. 追加するメンバーの名前を選択するか、入力します。 Blockchain Workbench テナントに存在する Azure AD ユーザーのみが一覧に表示されます。 ユーザーが見つからない場合は、[Azure AD ユーザーを追加する](manage-users.md#add-azure-ad-users)必要があります。
 6. メンバーの**ロール**を選択します。 最初のメンバーのロールには **[要求元]** を選択します。
-7. **[追加]** を選択して、関連するロールを持つメンバーをアプリケーションに追加します。
+7. **[追加]** を選択して、メンバーとそのロールをアプリケーションに追加します。
 8. 別のメンバーを **[レスポンダー]** ロールとしてアプリケーションに追加します。
 
 Blockchain Workbench でのユーザー管理の詳細については、[Azure Blockchain Workbench でのユーザーの管理](manage-users.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、基本的な要求と応答のアプリケーションを作成しました。 アプリケーションを使用する方法については、次のハウツー記事に進みます。
 

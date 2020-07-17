@@ -1,43 +1,44 @@
 ---
-title: 分類子を構築する - Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
+title: 'クイックスタート: 分類器を構築する - Custom Vision Service'
+titleSuffix: Azure Cognitive Services
+description: このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: conceptual
-ms.date: 04/03/2019
-ms.author: anroth
-ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: quickstart
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 56bdaa324420bf274e7cda8ac1c6506e4bc9ad21
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051476"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81404054"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子を構築する方法
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
 
-画像分類のために Custom Vision Service を使用するには、最初に分類子モデルを構築する必要があります。 このガイドでは、Custom Vision Web サイトを通して分類子を構築する方法について説明します。
+このクイックスタートでは、Custom Vision Web サイトをとおして分類器を構築する方法について説明します。 分類器モデルを構築すると、画像分類のために Custom Vision Service を使用できます。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 有効な Azure サブスクリプション。 無料で[アカウントを作成](https://azure.microsoft.com/free/)できます。
 - 分類子のトレーニングに使用する画像のセット。 画像の選択に関するヒントについては、以下を参照してください。
 
-
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal で Custom Vision リソースを作成する
-Custom Vision サービスを使用するには、[Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Training リソースと Prediction リソースを作成する必要があります。 ここでは、Training リソースと Prediction リソースの両方を作成します。 
+
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、__[サインイン]__ を選択します。 Azure portal にサインインしたのと同じアカウントでサインインします。
+Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、 __[サインイン]__ を選択します。 Azure portal にサインインしたのと同じアカウントでサインインします。
 
 ![サインイン ページの画像](./media/browser-home.png)
 
 
-1. 最初のプロジェクトを作成するには、**[新しいプロジェクト]** を選択します。 **[新しいプロジェクトの作成]** ダイアログ ボックスが表示されます。
+1. 最初のプロジェクトを作成するには、 **[新しいプロジェクト]** を選択します。 **[新しいプロジェクトの作成]** ダイアログ ボックスが表示されます。
 
     ![[新しいプロジェクト] ダイアログ ボックスには、名前、説明、およびドメインのフィールドがあります。](./media/getting-started-build-a-classifier/new-project.png)
 
@@ -58,25 +59,11 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     |__小売__|ショッピング カタログやショッピング Web サイトで見られる画像に最適化されています。 ドレス、ズボン、シャツを分類するときに高い精度が必要な場合に、このドメインを使用します。|
     |__コンパクト ドメイン__| モバイル デバイスでのリアルタイムの分類の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
-1. 最後に、__[プロジェクトの作成]__ を選択します。
+1. 最後に、 __[プロジェクトの作成]__ を選択します。
 
 ## <a name="choose-training-images"></a>トレーニング画像を選択する
 
-最低でも、初期トレーニング セットで、タグごとに少なくとも 30 の画像を使用することをお勧めします。 トレーニングを行ったら、追加の画像をいくつか収集し、モデルをテストすることもお勧めします。
-
-モデルを効果的にトレーニングするには、視覚的に多様性のある画像を使用します。 以下の点で変化に富んだ画像を選択してください。
-* カメラのアングル
-* 照明
-* background
-* 見た目のスタイル
-* 個人またはグループになっている被写体
-* size
-* type
-
-さらに、すべてのトレーニング画像が以下の条件を満たしていることを確認します。
-* .jpg、.png、または .bmp 形式である
-* サイズが 6 MB 未満 (予測用画像は 4 MB)
-* 最短の辺が 256 ピクセル以上。これより短い画像は Custom Vision Service によって自動的にスケール アップされます
+[!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
@@ -87,11 +74,11 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     ![[Add Images]\(画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/getting-started-build-a-classifier/add-images01.png)
 
 
-1. タグを作成するには、__マイ タグ__ フィールドにテキストを入力し、Enter キーを押します。 タグが既に存在する場合は、ドロップダウン メニューに表示されます。 マルチラベル プロジェクトでは画像に複数のタグを追加できますが、マルチクラス プロジェクトで追加できるのは 1 つだけです。 画像のアップロードを終えるには、__[数字] 個のファイルのアップロード__ ボタンを使用します。 
+1. タグを作成するには、__マイ タグ__ フィールドにテキストを入力し、Enter キーを押します。 タグが既に存在する場合は、ドロップダウン メニューに表示されます。 マルチラベル プロジェクトでは画像に複数のタグを追加できますが、マルチクラス プロジェクトで追加できるのは 1 つだけです。 画像のアップロードを終えるには、 __[数字] 個のファイルのアップロード__ ボタンを使用します。 
 
     ![タグの画像とアップロード ページ](./media/getting-started-build-a-classifier/add-images03.png)
 
-1. 画像がアップロードし終わったら、__[完了]__ を選択します。
+1. 画像がアップロードし終わったら、 __[完了]__ を選択します。
 
     ![進行状況バーには完了したすべてのタスクが表示されます。](./media/getting-started-build-a-classifier/add-images04.png)
 
@@ -99,11 +86,11 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="train-the-classifier"></a>分類子をトレーニングする
 
-分類子をトレーニングするには、**[トレーニング]** ボタンを選択します。 分類子は、現在の画像をすべて使用し、各タグの視覚的特性を識別するモデルを作成します。
+分類子をトレーニングするには、 **[トレーニング]** ボタンを選択します。 分類子は、現在の画像をすべて使用し、各タグの視覚的特性を識別するモデルを作成します。
 
 ![Web ページのヘッダー ツールバーの右上にあるトレーニングのボタン](./media/getting-started-build-a-classifier/train01.png)
 
-トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、**[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
+トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、 **[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
 
 ![メイン セクションにトレーニング ダイアログが表示されたブラウザー ウィンドウ](./media/getting-started-build-a-classifier/train02.png)
 
@@ -118,17 +105,18 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ### <a name="probability-threshold"></a>確率しきい値
 
-**[パフォーマンス]** タブの左ウィンドウにある **確率しきい値** スライダーに注目してください。これは、精度と再現率を計算するときに正しいと見なされる、予測される確率のしきい値です。
-
-高い確率しきい値を指定した予測呼び出しの解釈は、再現率を犠牲にして高い精度で結果を返す傾向があります (見つかった分類は正しいが、多くは見つからない)。低い確率しきい値は、その逆を行います (実際の分類のほとんどが見つかるが、そのセット内には誤検知がある)。 これを念頭に置いて、プロジェクトの具体的な必要に応じて確率しきい値を設定する必要があります。 その後、クライアント側でモデルから予測結果を受け取るときには、フィルターとして同じ確率しきい値の値を使用する必要があります。
+[!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 
-分類子をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
+分類子をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。また、 **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
-## <a name="next-steps"></a>次の手順
+トレーニング済みのモデルにプログラムでアクセスする方法については、「[Prediction API でモデルを使用する](./use-prediction-api.md)」を参照してください。
 
-このガイドでは、Custom Vision Web サイトを使用して、イメージ分類モデルを作成し、トレーニングする方法について説明しました。 次に、モデルを改善するための反復的プロセスについて、より多くの情報を入手してください。
+## <a name="next-steps"></a>次のステップ
 
-[モデルのテストと再トレーニング](test-your-model.md)
+このクイックスタートでは、Custom Vision Web サイトを使用して、画像分類モデルを作成し、トレーニングする方法について説明しました。 次に、モデルを改善するための反復的プロセスについて、より多くの情報を入手してください。
+
+> [!div class="nextstepaction"]
+> [モデルのテストと再トレーニング](test-your-model.md)
 

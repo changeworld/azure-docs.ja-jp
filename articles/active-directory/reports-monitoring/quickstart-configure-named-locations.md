@@ -16,17 +16,17 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b21c4727e7679c25dc2574a6506f8d3932aec2
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434791"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74014350"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory でネームド ロケーションを構成する
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート: Azure Active Directory でネームド ロケーションを構成する
 
 ネームド ロケーションを使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
-- [リスク イベント](concept-risk-events.md)で誤判定を検出する。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。   
+- [リスク検出](concept-risk-events.md)で誤判定を検出する。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。   
 - [場所ベースの条件付きアクセス](../conditional-access/location-condition.md)を構成する。
 
 このクイック スタートでは、環境内でネームド ロケーションを構成する方法について説明します。
@@ -41,13 +41,13 @@ ms.locfileid: "58434791"
 
 ## <a name="configure-named-locations"></a>ネームド ロケーションの構成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-2. 左側のウィンドウで、**[Azure Active Directory]** を選択し、**[セキュリティ]** セクションから **[条件付きアクセス]** を選択します。
+2. 左側のウィンドウで、 **[Azure Active Directory]** を選択し、 **[セキュリティ]** セクションから **[条件付きアクセス]** を選択します。
 
     ![[条件付きアクセス] タブ](./media/quickstart-configure-named-locations/entrypoint.png)
 
-3. **[条件付きアクセス]** ページで **[ネームド ロケーション]** を選択し、**[新しい場所]** を選択します。
+3. **[条件付きアクセス]** ページで **[ネームド ロケーション]** を選択し、 **[新しい場所]** を選択します。
 
     ![ネームド ロケーション](./media/quickstart-configure-named-locations/namedlocation.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "58434791"
     
      ![[新規] ブレード](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
 

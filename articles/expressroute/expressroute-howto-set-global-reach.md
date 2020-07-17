@@ -1,5 +1,5 @@
 ---
-title: 'Global Reach を構成する - ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: Global Reach を構成する'
 description: この記事では、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082026"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656741"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach を構成する
 
@@ -30,7 +29,7 @@ ms.locfileid: "58082026"
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -39,7 +38,7 @@ ms.locfileid: "58082026"
 1. 構成を開始するには、Azure アカウントにサインインし、使用するサブスクリプションを選択します。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. 使用する ExpressRoute 回線を特定します。 任意の 2 つの ExpressRoute 回線間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 
+2. 使用する ExpressRoute 回線を特定します。 任意の 2 つの ExpressRoute 回線のプライベート ピアリング間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国や地域に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 
 
    * サブスクリプションが両方の回線を所有している場合は、以降のセクションで構成を実行するために、どちらかの回線を選択できます。
    * 2 つの回線が異なる Azure サブスクリプションに含まれている場合は、1 つの Azure サブスクリプションからの承認が必要です。 その後、もう一方の Azure サブスクリプションで構成コマンドを実行するときに承認キーを渡します。
@@ -125,7 +124,7 @@ Get 操作を実行して状態を確認できます。
 
 前の操作が完了すると、ExpressRoute 回線を経由したオンプレミス ネットワーク間の接続は存在しなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 1. [ExpressRoute Global Reach について詳しく学習する](expressroute-global-reach.md)
 2. [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)
 3. [ExpressRoute 回線を Azure 仮想ネットワークにリンクする](expressroute-howto-linkvnet-arm.md)

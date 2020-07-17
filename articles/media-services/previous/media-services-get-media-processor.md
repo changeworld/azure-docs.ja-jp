@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189040"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "61463844"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法:メディア プロセッサ インスタンスを取得する
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "58189040"
 
 ## <a name="get-media-processor"></a>メディア プロセッサの取得
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、**_context** という名前のモジュール レベルの変数の使用を前提にしてサーバー コンテキストを参照しています。これは、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するセクションで説明されています。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、 **_context** という名前のモジュール レベルの変数の使用を前提にしてサーバー コンテキストを参照しています。これは、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するセクションで説明されています。
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

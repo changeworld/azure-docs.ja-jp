@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) 内の kubeconfig へのアクセスを制限する
 description: クラスターの管理者とクラスターのユーザーを対象に Kubernetes 構成ファイル (kubeconfig) に対するアクセスを制御する方法を紹介します。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 141aacc71d129bb45dc53774af876d5b07b7fc86
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 01/28/2020
+ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229647"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 
@@ -22,34 +19,40 @@ ms.locfileid: "60004280"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-この記事では、Azure CLI バージョン 2.0.53 以降も実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+この記事ではまた、Azure CLI バージョン 2.0.65 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="available-cluster-roles-permissions"></a>利用可能なクラスター ロールのアクセス許可
 
-`kubectl` ツールを使って AKS クラスターを操作するときは、クラスターの接続情報が定義された構成ファイルを使用します。 この構成ファイルは通常、*~/.kube/config* にあります。この *kubeconfig* ファイルでは、複数のクラスターを定義できます。 クラスターを切り替えるときは、[kubectl config use-context][kubectl-config-use-context] コマンドを使用します。
+`kubectl` ツールを使って AKS クラスターを操作するときは、クラスターの接続情報が定義された構成ファイルを使用します。 この構成ファイルは通常、 *~/.kube/config* にあります。この *kubeconfig* ファイルでは、複数のクラスターを定義できます。 クラスターを切り替えるときは、[kubectl config use-context][kubectl-config-use-context] コマンドを使用します。
 
 [az aks get-credentials][az-aks-get-credentials] コマンドを実行すると、任意の AKS クラスターのアクセス資格情報を取得し、*kubeconfig* ファイルにマージすることができます。 このような資格情報に対するアクセスは、Azure のロールベースのアクセス制御 (RBAC) により制御できます。 Azure の RBAC ロールを使えば、*kubeconfig* ファイルを取得できる人物と、その人物がその時点にクラスター内で保有するアクセス許可を定義できます。
 
 あらかじめ用意されているロールは 2 つあります。
 
 * **Azure Kubernetes Service クラスター管理者ロール**  
-    * *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター管理者の資格情報を一覧表示][api-cluster-admin]するものです。
-    * *clusterAdmin* ロール用の *kubeconfig* をダウンロードできます。
+  * *Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター管理者の資格情報を一覧表示][api-cluster-admin]するものです。
+  * *clusterAdmin* ロール用の *kubeconfig* をダウンロードできます。
 * **Azure Kubernetes Service クラスター ユーザー ロール**
-    * *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター ユーザーの資格情報を一覧表示][api-cluster-user]するものです。
-    * *clusterUser* ロール用の *kubeconfig* をダウンロードできます。
+  * *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 呼び出しにアクセスできます。 この API 呼び出しは、[クラスター ユーザーの資格情報を一覧表示][api-cluster-user]するものです。
+  * *clusterUser* ロール用の *kubeconfig* をダウンロードできます。
 
-## <a name="assign-role-permissions-to-a-user"></a>ロールのアクセス許可をユーザーに割り当てる
+これらの RBAC ロールは、Azure Active Directory (AD) のユーザーまたはグループに適用できます。
 
-Azure のロールのいずれかをユーザーに割り当てるには、AKS クラスターのリソース ID と、割り当て先のユーザー アカウントの ID を取得する必要があります。 次の例に示したコマンドでは、次の処理が行われます。
+> [注意] Azure AD を使用するクラスターでは、*clusterUser* ロールのユーザーには空の *kubeconfig* ファイルがあり、これによってログインを求められます。 ログインすると、ユーザーは、Azure AD のユーザーまたはグループの設定に基づいてアクセスできます。 *clusterAdmin* ロールのユーザーは管理者アクセス権を持ちます。
+>
+> Azure AD を使用していないクラスターは、*clusterAdmin* ロールのみを使用します。
+
+## <a name="assign-role-permissions-to-a-user-or-group"></a>ロールのアクセス許可をユーザーまたはグループに割り当てる
+
+使用可能なロールのいずれかを割り当てるには、AKS クラスターのリソース ID と、Azure AD ユーザー アカウントまたはグループの ID を取得する必要があります。 次のコマンド例は以下のように機能します。
 
 * [az aks show][az-aks-show] コマンドを使用して、*myResourceGroup* リソース グループに存在する *myAKSCluster* という名前のクラスターのリソース ID を取得する。 必要に応じて、独自のクラスター名とリソース グループ名を指定してください。
-* [az account show][az-account-show] と [az ad user show][az-ad-user-show] の 2 つのコマンドを使用して、ユーザー ID を取得する。
+* [az account show][az-account-show] と [az ad user show][az-ad-user-show] コマンドを使用してユーザー ID を取得する。
 * 最後に、[az role assignment create][az-role-assignment-create] コマンドを使用してロールを割り当てる。
 
-次の例は、"*Azure Kubernetes Service クラスター管理者ロール*" を割り当てるものです。
+次の例では、"*Azure Kubernetes Service クラスター管理者ロール*" を個々のユーザー アカウントに割り当てます。
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -57,7 +60,7 @@ AKS_CLUSTER=$(az aks show --resource-group myResourceGroup --name myAKSCluster -
 
 # Get the account credentials for the logged in user
 ACCOUNT_UPN=$(az account show --query user.name -o tsv)
-ACCOUNT_ID=$(az ad user show --upn-or-object-id $ACCOUNT_UPN --query objectId -o tsv)
+ACCOUNT_ID=$(az ad user show --id $ACCOUNT_UPN --query objectId -o tsv)
 
 # Assign the 'Cluster Admin' role to the user
 az role assignment create \
@@ -65,6 +68,9 @@ az role assignment create \
     --scope $AKS_CLUSTER \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
+
+> [!TIP]
+> Azure AD グループにアクセス許可を割り当てる場合は、*ユーザー*ではなく、*グループ*のオブジェクト ID を使用して、上の例で示した `--assignee` パラメーターを更新してください。 グループのオブジェクト ID を取得するには、[az ad group show][az-ad-group-show] コマンドを使用します。 次の例は、*appdev* という名前の Azure AD グループのオブジェクト ID を取得します。`az ad group show --group appdev --query objectId -o tsv`
 
 この割り当ては、必要に応じて "*クラスター ユーザー ロール*" に変更することもできます。
 
@@ -120,13 +126,13 @@ users:
 
 ## <a name="remove-role-permissions"></a>ロールのアクセス許可を削除する
 
-ロールの割り当てを削除するには、[az role assignment delete][az-role-assignment-delete] コマンドを使用します。 アカウント ID とクラスターのリソース ID は、前に示したコマンドで取得したものを指定してください。
+ロールの割り当てを削除するには、[az role assignment delete][az-role-assignment-delete] コマンドを使用します。 前に示したコマンドで取得したアカウント ID とクラスターのリソース ID を指定します。 ユーザーではなくグループにロールを割り当てた場合は、`--assignee` パラメーターに対して、アカウント オブジェクト ID ではなく、適切なグループ オブジェクト ID を指定します。
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS クラスターにアクセスする際のセキュリティを強化するために、[Azure Active Directory 認証を統合][aad-integration]します。
 
@@ -148,3 +154,4 @@ AKS クラスターにアクセスする際のセキュリティを強化する�
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
 [aad-integration]: azure-ad-integration.md
+[az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show

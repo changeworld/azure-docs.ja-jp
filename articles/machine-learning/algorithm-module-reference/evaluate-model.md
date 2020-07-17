@@ -1,83 +1,58 @@
 ---
 title: Evaluate Model (モデルの評価):モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Evaluate Model (モデルの評価) モジュールを使用して、トレーニング済みモデルの正確性を測定する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Evaluate Model (モデルの評価) モジュールを使用して、トレーニング済みモデルの正確性を測定する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 40a8247c22da1f7a057e222565ffb2ec4c6b7fb3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/24/2020
+ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027717"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129840"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
-この記事では、Azure Machine Learning service に使用されるビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、トレーニング済みモデルの正確性を測定します。 モデルから生成されたスコアを含むデータセットを指定すると、**Evaluate Model (モデルの評価)** モジュールが業界標準の一連の評価メトリックを計算します。
   
  **Evaluate Model (モデルの評価)** で返されるメトリックは、評価するモデルの種類によって異なります。  
   
 -   **分類モデル**    
--   **回帰モデル**    
-
+-   **回帰モデル**  
+-   **クラスター モデル**  
 
 
 > [!TIP]
 > モデルの評価に慣れていない場合は、EdX の[機械学習コース](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/)の一部である、Stephen Elston 博士によるビデオ シリーズをお勧めします。 
 
 
-**Evaluate Model (モデルの評価)** モジュールを使用するには、3 つの方法があります。
+## <a name="how-to-use-evaluate-model"></a>モデルの評価の使用方法
+1. [Score Model (モデルのスコア付け)](./score-model.md) の **Scored dataset\(スコア付けされたデータセット\)** 出力を **Evaluate Model (モデルの評価)** の左の入力ポートに接続します。 
 
-+ トレーニング データのスコアを生成し、これらのスコアに基づいてモデルを評価する
-+ モデルでスコアを生成するが、これらのスコアを予約済みのテスト セットでのスコアと比較する
-+ 同じデータ セットを使用して、2 つの異なるが関連するモデルのスコアを比較する
+2. [オプション] 2 つ目のモデルの[Score Model (モデルのスコア付け)](./score-model.md)モジュールの**Scored dataset\(スコア付けされたデータセット\)** 出力を **Evaluate Model (モデルの評価)** の**右側**の入力に接続します。 同じデータで 2 つの異なるモデルの結果を簡単に比較できます。 2 つの入力アルゴリズムは、同じアルゴリズムの種類である必要があります。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
 
-## <a name="use-the-training-data"></a>トレーニング データを使用する
+    > [!NOTE]
+    > アルゴリズムの種類は、"2 クラス分類"、"多クラス分類"、"回帰"、"機械学習アルゴリズム" の "クラスタリング" を指します。 
 
-モデルを評価するには、入力列とスコアのセットを含むデータセットを接続する必要があります。  他に使用できるデータがない場合は、ご自分の元のデータセットを使用できます。
-
-1. [Score Model (モデルのスコア付け)](./score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. **Evaluate Model (モデルの評価)** モジュールをクリックして、実験を実行して評価スコアを生成します。
-
-## <a name="use-testing-data"></a>テスト データを使用する
-
-機械学習における一般的なシナリオは、[Split (分割)](./split-data.md) モジュール、または [Partition and Sample (パーティションとサンプル)](./partition-and-sample.md) モジュールを使用して、元のデータ セットをトレーニングとテストのデータセットに分離することです。 
-
-1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. テスト データを含むデータの分割モジュールの出力を、**Evaluate Model (モデルの評価)** の右側の入力に接続します。
-2. **Evaluate Model (モデルの評価)** モジュールをクリックして、**[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
-
-## <a name="compare-scores-from-two-models"></a>2 つのモデルのスコアを比較する
-
-スコアの 2 番目のセットを **Evaluate Model (モデルの評価)** に接続することもできます。  スコアは、既知の結果または同じデータの異なるモデルからの一連の結果を使用する共有評価セットである場合があります。
-
-この機能は、同じデータで 2 つの異なるモデルの結果を簡単に比較できるので便利です。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
-
-1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
-2. 2 つ目のモデルのモデルのスコア付けモジュールの出力を **Evaluate Model (モデルの評価)** の右側の入力に接続します。
-3. **Evaluate Model (モデルの評価)** を右クリックして、**[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
+3. パイプラインを送信して評価スコアを生成します。
 
 ## <a name="results"></a>結果
 
-**Evaluate Model (モデルの評価)** の実行後、モジュールを右クリックして **[Evaluation results]\(評価結果\)** を選択し、結果を表示します。 次のようにすることができます。
-
-+ 他のツールでの分析を簡単にするため、データセットとして結果を保存する
-+ インターフェイスで視覚化を生成する
+**Evaluate Model (モデルの評価)** の実行後、モジュールを右クリックして **[Visualize Evaluation results]\(評価結果の視覚化\)** を選択し、結果を表示します。
 
 データセットを **Evaluate Model (モデルの評価)** の両方の入力に接続すると、結果には両方のデータのセットまたは両方のモデルのメトリックが含まれます。
 左側のポートに接続されているモデルまたはデータがレポートの先頭に表示され、その後にデータセットのメトリック、または右側のポートに接続されているモデルが表示されます。  
 
 たとえば、次の図は、同じデータで異なるパラメーターを使用して構築された 2 つのクラスタリング モデルからの結果の比較を表しています。  
 
-![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
 これはクラスタリング モデルであるため、評価結果は 2 つの回帰モデルからのスコアを比較した場合、または 2 つの分類モデルを比較した場合とは異なります。 ただし、全体的な表示は同じです。 
 
@@ -85,12 +60,13 @@ ms.locfileid: "65027717"
 
 このセクションでは、**Evaluate Model (モデルの評価)** で使用するためにサポートされているモデルの特定の種類に対して返されるメトリックについて説明します。
 
-+ [分類モデル](#bkmk_classification)
-+ [回帰モデル](#bkmk_regression)
++ [分類モデル](#metrics-for-classification-models)
++ [回帰モデル](#metrics-for-regression-models)
++ [クラスター モデル](#metrics-for-clustering-models)
 
-###  <a name="bkmk_classification"></a> 分類モデルのメトリック
+### <a name="metrics-for-classification-models"></a>分類モデルのメトリック
 
-分類モデルを評価するときに、次のメトリックが報告されます。 モデルを比較すると、評価のために選択したメトリックによってモデルが順位付けされます。  
+分類モデルを評価するときに、次のメトリックが報告されます。
   
 -   **Accuracy (正確性)** は、分類モデルの利点をケース全体に対する真の結果の割合として測定します。  
   
@@ -106,11 +82,11 @@ ms.locfileid: "65027717"
   
 - **Training log loss (トレーニング ログ損失)** は、ランダムな予測に対する分類子の利点を表す 1 つのスコアです。 ログ損失は、モデルがラベル内の既知の値 (グラウンド トゥルース) に出力する確率を比較することによって、モデルの不確実性を測定します。 モデル全体のログ損失を最小限にすることが目標です。
 
-##  <a name="bkmk_regression"></a> 回帰モデルのメトリック
+### <a name="metrics-for-regression-models"></a>回帰モデルのメトリック
  
-回帰モデルに対して返されるメトリックは通常、エラーの量を見積もるために設計されています。  観察された値と予測された値の差が小さい場合は、モデルがデータとうまく適合しているとみなされます。 ただし、残差のパターン (任意の 1 つの予測ポイントとそれに対応する実際の値の差) を調べることで、モデル内の潜在的なバイアスに関して多くのことがわかります。  
+回帰モデルに対して返されるメトリックは、エラーの量を見積もるように設計されています。  観察された値と予測された値の差が小さい場合は、モデルがデータとうまく適合しているとみなされます。 ただし、残差のパターン (任意の 1 つの予測ポイントとそれに対応する実際の値の差) を調べることで、モデル内の潜在的なバイアスに関して多くのことがわかります。  
   
- 回帰モデルを評価するために次のメトリックが報告されます。 モデルを比較するときに、評価のために選択したメトリックによってモデルが順位付けされます。  
+ 回帰モデルを評価するために次のメトリックが報告されます。
   
 - **Mean absolute error (MAE) (平均絶対誤差 (MAE))** は、予測が実際の結果とどのくらい近いかを測定します。そのため、スコアは低いほど良好です。  
   
@@ -120,11 +96,35 @@ ms.locfileid: "65027717"
   
 - **Relative squared error (RSE) (相対二乗誤差 (RSE))** は、予測された値の二乗誤差の合計を、実際の値の二乗誤差の合計で除算することで、同様に正規化します。  
   
-- **Mean Zero One Error (MZOE) (ゼロワン誤差平均 (MZOE))** は、予測が正しかったかどうかを示します。  つまり、`x!=y` のときは `ZeroOneLoss(x,y) = 1` で、それ以外の場合は `0` です。
+
   
 - **Coefficient of determination (決定係数)** (大抵は R<sup>2</sup> と呼ばれます) は、モデルの予測能力を 0 から 1 の値で表します。 ゼロはモデルがランダム (何も説明しない) であることを意味し、1 は完全一致があることを意味します。 ただし、R<sup>2</sup> 値の解釈には注意が必要です。低い値はまったく正常で、高い値は疑わしい場合があります。
+
+###  <a name="metrics-for-clustering-models"></a>クラスター モデルのメトリック
+
+クラスター モデルは、多くの点で分類モデルと回帰モデルと大きく異なるため、[モデルの評価](evaluate-model.md)ではクラスター モデルに対して別の統計セットも返されます。  
+  
+ クラスター モデルに対して返される統計には、各クラスターに割り当てられたデータ ポイントの数、クラスター間の間隔、各クラスター内でのデータ ポイントの集中度合いが示されます。  
+  
+ クラスター モデルの統計は、クラスターごとの統計を含む追加の行と共に、データセット全体で平均化されます。  
+  
+クラスター モデルを評価するために、次のメトリックが報告されます。
+    
+-   列 **Average Distance to Other Center (その他の中心への平均距離)** のスコアは、クラスター内の各ポイントが他のすべてのクラスターの重心に平均でどれだけ近いかを表します。   
+
+-   列 **Average Distance to Cluster Center (クラスターの中心への平均距離)** のスコアは、クラスター内のすべてのポイントからそのクラスターの重心までの近さを表します。  
+  
+-   **Number of Points (ポイントの数)** 列には、各クラスターに割り当てられたデータ ポイントの数と、クラスター内のデータ ポイントの総数が示されます。  
+  
+     クラスターに割り当てられたデータ ポイントの数が、使用可能なデータ ポイントの総数よりも少ない場合は、データ ポイントがクラスターに割り当てられなかったことを意味します。  
+  
+-   **Maximal Distance to Cluster Center (クラスターの中心までの最大距離)** の列のスコアは、各ポイントとそのポイントのクラスターの重心との距離の合計を表します。  
+  
+     この数が大きい場合は、クラスターが広範囲に分散していることを意味する可能性があります。 クラスターの分散を特定するには、この統計を **Average Distance to Cluster Center (クラスターの中心への平均距離)** と共に確認する必要があります。   
+
+-   結果の各セクションの下部にある **Combined Evaluation (結合した評価)** スコアには、その特定のモデルで作成されたクラスターの平均スコアが一覧表示されます。  
   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

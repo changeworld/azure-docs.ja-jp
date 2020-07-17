@@ -1,10 +1,10 @@
 ---
 title: Azure VM でゲスト OS ファイアウォールを無効にする |Microsoft Docs
-description: ''
+description: VM へのトラフィックの一部または全部がゲスト オペレーティング システムのファイアウォールによってフィルター処理される状況を回避し、トラブルシューティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820027"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774334"
 ---
-# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にします
+# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にする
 
 この記事では、ゲスト オペレーティング システムのファイアウォールが仮想マシン (VM) に部分的または完全なトラフィックをフィルター処理していると疑われる場合に参照事項を提供します。 これは、RDP 接続の失敗の原因となった、ファイアウォールに意図的に変更が加えられた場合に発生することがあります。
 
 ## <a name="solution"></a>解決策
 
-この記事で説明されているプロセスは、ファイアウォール規則を正しく設定する方法という、実際の問題の修正に集中できるように、回避策として使用することを意図しています。 Windows ファイアウォール コンポーネントを有効にする、It\rquote s マイクロソフトのベスト プラクティスです。 ファイアウォール規則の \cf3 を構成する方法は、必要な VM that\rquote s へのアクセスのレベルによって異なります。
+この記事で説明されているプロセスは、ファイアウォール規則を正しく設定する方法という、実際の問題の修正に集中できるように、回避策として使用することを意図しています。 Windows ファイアウォール コンポーネントを有効にすることは、Microsoft のベスト プラクティスです。 ファイアウォール規則を構成する方法は、必要な VM へのアクセス レベルによって異なります。
 
 ### <a name="online-solutions"></a>オンライン ソリューション 
 
@@ -49,7 +49,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   ただし、ポリシーが再び適用されるとすぐに、リモート セッションからサインアウトされます。 この問題を根本的に修正するには、このコンピューターに適用されるポリシーを変更します。
@@ -92,7 +92,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 1.  トラブルシューティング用の VM では、レジストリ エディターを起動し、**ファイル** > **ネットワーク レジストリへの接続**に移動します。
 
-2.   *ターゲット マシン*\SYSTEM 分岐を開き、次の値を指定します：
+2.  "*ターゲット マシン*"\SYSTEM 分岐を開き、次の値を指定します。
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 3.  サービスを再起動します。 リモート レジストリを使用して行うことはできないため、サービス コンソールの削除を行う必要があります。
 
-4.  [ **Services.msc**]のインスタンスを開きます。
+4.  **Services.msc** のインスタンスを開きます。
 
 5.  **[サービス(ローカル)]** をクリックします。
 
 6.  **[Connect to another computer]\(別のコンピューターに接続\)** を選択します。
 
-7.  問題VMの **プライベート IP アドレス (DIP)** を入力します。
+7.  問題の VM の**プライベート IP アドレス (DIP)** を入力します。
 
 8.  ローカルのファイアウォール ポリシーを再起動します。
 
@@ -148,7 +148,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'

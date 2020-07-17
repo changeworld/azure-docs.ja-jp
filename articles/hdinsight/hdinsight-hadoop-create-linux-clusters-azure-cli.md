@@ -1,128 +1,177 @@
 ---
-title: Azure クラシック CLI を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
-description: クロスプラットフォームの Azure クラシック CLI を使用して HDInsight クラスターを作成する方法について説明します。
+title: Azure CLI を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
+description: クロス プラットフォーム Azure CLI を使用して Azure HDInsight クラスターを作成する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: 21985b009694dc5a21c65d4c9dc9536cf6c01a0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 02/03/2020
+ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727084"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994179"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight クラスターを作成する
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-このドキュメントの手順では、Azure クラシック CLI を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
-
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-
-## <a name="prerequisites"></a>前提条件
+このドキュメントの手順では、Azure CLI を使用した HDInsight 3.6 クラスターの作成を順を追って説明します。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* **Azure クラシック CLI**。 このドキュメントの手順は、Azure クラシック CLI バージョン 0.10.14 で最後にテストされました。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
+Azure CLI。 Azure CLI をインストールしていない場合、手順については「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
-「[Azure コマンド ライン インターフェイスからの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」に記載されている手順に従い、**login** メソッドを使用してサブスクリプションに接続します。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
-PowerShell または Bash などのコマンド ラインから、次の手順を実行してください。
+1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
 
-1. 次のコマンドを使用して、Azure サブスクリプションに対して認証します。
+    ```azurecli-interactive
+    az login
 
-        azure login
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
-    名前とパスワードを入力するように求められます。 複数の Azure サブスクリプションがある場合は、`azure account set <subscriptionname>` を使用して、クラシック CLI コマンドが使用するサブスクリプションを設定します。
+2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) を参照してください。
 
-2. 次のコマンドで Azure リソース マネージャー モードに切り替えます。
+    |パラメーター | 説明 |
+    |---|---|
+    |`--workernode-count`| クラスター内のワーカー ノードの数。 この記事では、`--workernode-count` に渡される値として変数 `clusterSizeInNodes` を使用します。 |
+    |`--version`| HDInsight クラスターのバージョン。 この記事では、`--version` に渡される値として変数 `clusterVersion` を使用します。 関連項目:[サポートされる HDInsight のバージョン](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
+    |`--type`| hadoop、interactivehive、hbase、kafka、storm、spark、rserver、mlservices などの HDInsight クラスターの種類。  この記事では、`--type` に渡される値として変数 `clusterType` を使用します。 関連項目:[クラスターの種類と構成](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。|
+    |`--component-version`|さまざまな Hadoop コンポーネントのバージョン。バージョンは 'component=version' の形式でスペースで区切られます。 この記事では、`--component-version` に渡される値として変数 `componentVersion` を使用します。 関連項目:[Hadoop コンポーネント](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)。|
 
-        azure config mode arm
+    `RESOURCEGROUPNAME`、`LOCATION`、`CLUSTERNAME`、`STORAGEACCOUNTNAME`、および `PASSWORD` を目的の値に置き換えます。 必要に応じて、他の変数の値を変更します。 続いて CLI コマンドを入力します。
 
-3. リソース グループを作成します。 このリソース グループには、HDInsight クラスターおよび関連するストレージ アカウントが含まれます。
+    ```azurecli-interactive
+    export resourceGroupName=RESOURCEGROUPNAME
+    export location=LOCATION
+    export clusterName=CLUSTERNAME
+    export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
+    export httpCredential='PASSWORD'
+    export sshCredentials='PASSWORD'
 
-        azure group create groupname location
+    export AZURE_STORAGE_CONTAINER=$clusterName
+    export clusterSizeInNodes=1
+    export clusterVersion=3.6
+    export clusterType=hadoop
+    export componentVersion=Hadoop=2.7
+    ```
 
-    * `groupname` には、グループの一意の名前を指定します。
+3. 次のコマンドを入力して、[リソース グループを作成します](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)。
 
-    * `location` には、グループの作成先となる地理的領域を指定します。
+    ```azurecli-interactive
+    az group create \
+        --location $location \
+        --name $resourceGroupName
+    ```
 
-       グループの作成先として有効な場所は、`azure location list` コマンドで一覧表示できます。`Name` 列に表示されるいずれかの場所を使用してください。
+    グループの作成先として有効な場所は、`az account list-locations` コマンドで一覧表示できます。`name` 値に表示されるいずれかの場所を使用してください。
 
-4. ストレージ アカウントを作成します。 このストレージ アカウントは、HDInsight クラスターの既定のストレージとして使用されます。
+4. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。
 
-        azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
+    ```azurecli-interactive
+    # Note: kind BlobStorage is not available as the default storage account.
+    az storage account create \
+        --name $AZURE_STORAGE_ACCOUNT \
+        --resource-group $resourceGroupName \
+        --https-only true \
+        --kind StorageV2 \
+        --location $location \
+        --sku Standard_LRS
+    ```
 
-    * `groupname` には、前の手順で作成したグループの名前を指定します。
+5. 次のコマンドを入力して、[Azure ストレージ アカウントからプライマリ キーを抽出し](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)、それを変数に保存します。
 
-    * `location` には、前の手順で使用した場所を指定します。
+    ```azurecli-interactive
+    export AZURE_STORAGE_KEY=$(az storage account keys list \
+        --account-name $AZURE_STORAGE_ACCOUNT \
+        --resource-group $resourceGroupName \
+        --query [0].value -o tsv)
+    ```
 
-    * `storagename` には、ストレージ アカウントの一意の名前を指定します。
+6. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)。
 
-        > [!NOTE]  
-        > このコマンドのパラメーターの詳細については、「`azure storage account create -h`」と入力してコマンドのヘルプを表示してください。
+    ```azurecli-interactive
+    az storage container create \
+        --name $AZURE_STORAGE_CONTAINER \
+        --account-key $AZURE_STORAGE_KEY \
+        --account-name $AZURE_STORAGE_ACCOUNT
+    ```
 
-5. ストレージ アカウントにアクセスするためのキーを取得します。
+7. 次のコマンドを入力して、[HDInsight クラスターを作成します](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
 
-        azure storage account keys list -g groupname storagename
+    ```azurecli-interactive
+    az hdinsight create \
+        --name $clusterName \
+        --resource-group $resourceGroupName \
+        --type $clusterType \
+        --component-version $componentVersion \
+        --http-password $httpCredential \
+        --http-user admin \
+        --location $location \
+        --workernode-count $clusterSizeInNodes \
+        --ssh-password $sshCredentials \
+        --ssh-user sshuser \
+        --storage-account $AZURE_STORAGE_ACCOUNT \
+        --storage-account-key $AZURE_STORAGE_KEY \
+        --storage-container $AZURE_STORAGE_CONTAINER \
+        --version $clusterVersion
+    ```
 
-    * `groupname` には、リソース グループ名を指定します。
-    * `storagename` には、ストレージ アカウントの名前を指定します。
+    > [!IMPORTANT]  
+    > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
 
-      返されたデータで、`key1` の `key` の値を保存します。
+    クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
 
-6. HDInsight クラスターを作成します。
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
+記事を完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
-    * `groupname` には、リソース グループ名を指定します。
+次のコマンドのすべてまたは一部を入力して、リソースを削除します。
 
-    * `Hadoop` には、作成するクラスターの種類を指定します。 たとえば、`Hadoop`、`HBase`、`Kafka`、`Spark`、`Storm` などです。
+```azurecli-interactive
+# Remove cluster
+az hdinsight delete \
+    --name $clusterName \
+    --resource-group $resourceGroupName
 
-      > [!IMPORTANT]  
-      > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
+# Remove storage container
+az storage container delete \
+    --account-name $AZURE_STORAGE_ACCOUNT \
+    --name $AZURE_STORAGE_CONTAINER
 
-    * `location` には、前の手順で使用した場所を指定します。
+# Remove storage account
+az storage account delete \
+    --name $AZURE_STORAGE_ACCOUNT \
+    --resource-group $resourceGroupName
 
-    * `storagename` には、ストレージ アカウント名を指定します。
-
-    * `storagekey` には、前の手順で取得したキーを指定します。
-
-    * `--defaultStorageContainer` パラメーターには、クラスターに使用している名前と同じ名前を指定します。
-
-    * `admin` と `httppassword` には、HTTPS を使用してクラスターにアクセスするときに使用する名前とパスワードを指定します。
-
-    * `sshuser` と `sshuserpassword` には、SSH を使用してクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
-
-      > [!IMPORTANT]  
-      > この例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成後にスケーリング操作を実行することによって、ワーカー ノードの数を変更することもできます。 32 個を超えるワーカー ノードの使用を予定している場合は、コアが 8 個以上で RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。 ヘッド ノード サイズは、クラスターの作成中に `--headNodeSize` パラメーターを使用して設定できます。
-      >
-      > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
-      
-      クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
+# Remove resource group
+az group delete \
+    --name $resourceGroupName
+```
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](./hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-クラシック CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
+Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase クラスター

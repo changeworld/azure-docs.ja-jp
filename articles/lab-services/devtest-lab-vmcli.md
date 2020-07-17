@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する | Microsoft Docs
+title: Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 description: Azure DevTest Labs を使って Azure CLI で仮想マシンを作成して管理する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 48a30ef86cdb10b540ffe1231294542ccff87255
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795938"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76167063"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 このクイック スタートでは、ラボで開発用コンピューターを作成、起動、接続、更新、およびクリーンアップする方法について説明します。 
@@ -41,7 +41,7 @@ az account set --subscription 11111111-1111-1111-1111-111111111111
 次のコマンドでは、Azure Marketplace から Windows ベースのイメージが作成されます。 イメージの名前は、Azure portal を使って仮想マシンを作成するときに表示されるものと同じです。 
 
 ```azurecli
-az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3’ --admin-username 'AdminUser' --admin-password 'Password1!'
+az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
 次のコマンドでは、ラボで使用可能なカスタム イメージに基づいて仮想マシンが作成されます。
@@ -123,15 +123,31 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-ラボで使用できるアーティファクトを一覧表示します。
-```azurecli
-az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
+### <a name="list-artifacts-available-in-the-lab"></a>ラボで使用できるアーティファクトの一覧を表示する
+
+ラボ内の VM で使用可能な成果物の一覧を表示するには、次のコマンドを実行します。
+
+**Cloud Shell - PowerShell**: $expand で $ の前にバッククォート (\`) が使用されていることに注意してください (つまり `$expand)。
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
+
+**Cloud Shell - Bash**: コマンドで $ の前にスラッシュ (\\) 文字が使用されていることに注意してください。 
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
+```
+
+サンプル出力: 
+
 ```json
-{
-  "artifactId": "/subscriptions/abcdeftgh1213123/resourceGroups/lisalab123RG822645/providers/Microsoft.DevTestLab/labs/lisalab123/artifactSources/public repo/artifacts/linux-install-nodejs",
-  "status": "Succeeded"
-}
+[
+  {
+    "artifactId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DevTestLab/labs/<lab name>/artifactSources/public repo/artifacts/windows-7zip",
+    "status": "Succeeded"
+  }
+]
 ```
 
 ## <a name="stop-and-delete-the-virtual-machine"></a>仮想マシンを停止して削除する    
@@ -146,5 +162,5 @@ VM を削除します。
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のコンテンツをご覧ください: [Azure DevTest Labs に関する Azure CLI のドキュメント](/cli/azure/lab?view=azure-cli-latest)。 

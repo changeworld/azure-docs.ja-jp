@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: bf8038b7171053b75eeb9aed88bff4246e65a8a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228207"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>StorSimple デバイス マネージャー サービスを使用してジョブを表示および管理する (Update 3 以降)
 
@@ -39,7 +39,7 @@ ms.locfileid: "23108190"
   
 * **名前** – スケジュールされたバックアップ、手動バックアップ、バックアップの復元、ボリュームの複製、ボリューム コンテナーのフェールオーバー、ローカル固定ボリュームの作成、ボリュームの変更、更新プログラムのインストール、サポート ログの収集、またはクラウド アプリの作成。
 * **状態** - 実行中、完了、取り消し済み、失敗、取り消し中、またはエラーありで完了。
-* **エンティティ** - ジョブは、ボリューム、バックアップ ポリシー、デバイスに関連付けられます。 たとえば、複製ジョブはボリュームに関連付けられますが、スケジュール済みのバックアップ ジョブはバックアップ ポリシーに関連付けられます。 デバイス ジョブは、障害復旧 (DR) または復元操作の結果として作成されます。
+* **エンティティ** - ジョブは、ボリューム、バックアップ ポリシー、デバイスに関連付けられます。 たとえば、複製ジョブはボリュームに関連付けられますが、スケジュール済みのバックアップ ジョブはバックアップ ポリシーに関連付けられます。 デバイス ジョブは、ディザスター リカバリー (DR) または復元操作の結果として作成されます。
 * **デバイス** - ジョブが開始されたデバイスの名前。
 * **開始日** - ジョブが開始された日時。
 * **期間** – ジョブを完了するために必要な時間。
@@ -55,7 +55,7 @@ ms.locfileid: "23108190"
 任意のジョブの詳細を表示するには、以下の手順を実行します。
 
 #### <a name="to-view-job-details"></a>ジョブの詳細を表示するには
-1. StorSimple デバイス マネージャー サービスに移動し、**[ジョブ]** をクリックします。
+1. StorSimple デバイス マネージャー サービスに移動し、 **[ジョブ]** をクリックします。
 
 2. **[ジョブ]** ブレードで適切なフィルターを使用してクエリを実行し、関心のあるジョブを表示します。 完了済み、実行中、または取り消し済みのジョブを検索できます。
 
@@ -79,7 +79,7 @@ ms.locfileid: "23108190"
 ### <a name="to-cancel-a-job"></a>ジョブを取り消すには
 1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、取り消しを行う実行中のジョブを表示します。 該当するジョブを選択します。
 
-2. 選択したジョブを右クリックしてコンテキスト メニューを呼び出し、**[キャンセル]** をクリックします。
+2. 選択したジョブを右クリックしてコンテキスト メニューを呼び出し、 **[キャンセル]** をクリックします。
 
     ![Job details](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
@@ -87,5 +87,5 @@ ms.locfileid: "23108190"
 
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple バックアップ ポリシーの管理方法](storsimple-8000-manage-backup-policies-u2.md)。
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)。
+* [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
 

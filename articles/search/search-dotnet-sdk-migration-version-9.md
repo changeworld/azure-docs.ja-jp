@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 9 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 9 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Search .NET SDK バージョン 9 にコードを移行します。 新機能と必要なコード変更について説明します。
+manager: nitinme
 author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: f540bc304920073bcd823adcf6c9dd47cb2cf93b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/04/2019
+ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157905"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72793021"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
+# <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
 
 バージョン 7.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 9 を使用するようにアプリケーションをアップグレードできます。
 
@@ -29,7 +28,7 @@ ms.locfileid: "65157905"
 Azure Search .NET SDK のバージョン 9 には、以前のバージョンからの変更が多く含まれています。 これらの一部は大きな変更ですが、コードに対する変更はごくわずかです。 新しいバージョンの SDK を使用するようにコードを変更する方法については、「 [アップグレードの手順](#UpgradeSteps) 」を参照してください。
 
 > [!NOTE]
-> 4.0-preview 以前のバージョンを使用している場合は、まずバージョン 5 にアップグレードしてから、バージョン 9 にアップグレードする必要があります。 手順については、「[Azure Search .NET SDK バージョン 5 へのアップグレード](search-dotnet-sdk-migration-version-5.md)」をご覧ください。
+> 4\.0-preview 以前のバージョンを使用している場合は、まずバージョン 5 にアップグレードしてから、バージョン 9 にアップグレードする必要があります。 手順については、「[Azure Search .NET SDK バージョン 5 へのアップグレード](search-dotnet-sdk-migration-version-5.md)」をご覧ください。
 >
 > Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
 
@@ -38,7 +37,7 @@ Azure Search .NET SDK のバージョン 9 には、以前のバージョンか�
 ## <a name="whats-new-in-version-9"></a>バージョン 9 の新機能
 Azure Search .NET SDK のバージョン 9 は、Azure Search REST API の最新の一般提供バージョン (2019-05-06) を対象としています。 これにより、次のような Azure Search の新機能を .NET アプリケーションから使用することが可能になります。
 
-* [Cognitive Search](cognitive-search-concept-intro.md) は Azure Search の AI 機能であり、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックス内で検索しやすくするために使用されます。
+* [AI エンリッチメント](cognitive-search-concept-intro.md)では、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックスで検索しやすくします。
 * [複合型](search-howto-complex-data-types.md)のサポートにより、Azure Search インデックス内の入れ子になったほとんどすべての JSON 構造をモデル化できます。
 * [オートコンプリート](search-autocomplete-tutorial.md)には、自動検索候補の動作を実装するための**サジェスト** API の代替手段が用意されています。 オートコンプリートは、ユーザーが現在入力している単語または語句を "完成" させます。
 * [JsonLines 解析モード](search-howto-index-json-blobs.md)。Azure BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。
@@ -70,7 +69,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 > [!NOTE]
 > 以下の変更の一覧はすべてを網羅しているわけではありません。 変更によっては、ビルド エラーが発生しない可能性がありますが、以前のバージョンの Azure Search .NET SDK アセンブリに依存するアセンブリとのバイナリの互換性が失われるために技術的に重大になります。 こうした変更は、以下には含まれません。 バージョン 9 にアップグレードするときに、バイナリ互換性の問題を回避するために、アプリケーションを再構築してください。
 
-### <a name="making-properties-immutable"></a>不変になったプロパティ
+### <a name="immutable-properties"></a>不変のプロパティ
 
 いくつかのモデル クラスのパブリック プロパティが変更できなくなりました。 テスト用にこれらのクラスのカスタム インスタンスを作成する必要がある場合は、新しいパラメーター化されたコンストラクターを使用できます。
 
@@ -103,7 +102,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 `Field` のパラメーターなしのコンストラクターは `internal` になりました。 今後、すべての `Field` に、構築時に明示的な名前とデータ型が必要になります。
 
-### <a name="simplification-of-batch-and-results-types"></a>バッチおよび結果の種類の簡略化
+### <a name="simplified-batch-and-results-types"></a>バッチおよび結果の種類の簡略化
 
 バージョン 7.0-preview 以前では、ドキュメントのグループをカプセル化するさまざまなクラスが並列クラス階層に構成されていました。
 
@@ -118,7 +117,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 バージョン 8.0-preview 以降では、基底クラスと非ジェネリック形式の派生クラスはすべて削除されています。 動的に型指定されたシナリオでは、`IndexBatch<Document>`、`DocumentSearchResult<Document>` などを使用できます。
  
-### <a name="removal-of-extensibleenum"></a>ExtensibleEnum の削除
+### <a name="removed-extensibleenum"></a>削除された ExtensibleEnum
 
 `ExtensibleEnum` 基底クラスは削除されました。 ここから派生したすべてのクラスは、`AnalyzerName`、`DataType`、および `DataSourceType` などの構造体になります。 その `Create` メソッドも削除されています。 これらの型は文字列から暗黙的に変換可能なため、`Create` に対する呼び出しを削除するだけで済みます。 これによりコンパイラ エラーが発生した場合は、キャストにより変換演算子を明示的に呼び出すことができます。 たとえば、次のようなコードを変更できます。
 
@@ -150,9 +149,9 @@ var index = new Index()
 
 これらの型の省略可能な値を保持するプロパティは null 許容型として明示的に型指定されているため、引き続き省略可能です。
 
-### <a name="removal-of-facetresults-and-hithighlights"></a>FacetResults と HitHighlights の削除
+### <a name="removed-facetresults-and-hithighlights"></a>削除された FacetResults と HitHighlights
 
-`FacetResults` および `HitHighlights` クラスが削除されました。 ファセットの結果は `IDictionary<string, IList<FacetResult>>` として型指定され、`IDictionary<string, IList<string>>` として強調表示されます。 この変更によるビルド エラーを解決する簡単な方法として、削除された型を使用する各ファイルの上部に `using` エイリアスを追加します。 例: 
+`FacetResults` および `HitHighlights` クラスが削除されました。 ファセットの結果は `IDictionary<string, IList<FacetResult>>` として型指定され、`IDictionary<string, IList<string>>` として強調表示されます。 この変更によるビルド エラーを解決する簡単な方法として、削除された型を使用する各ファイルの上部に `using` エイリアスを追加します。 次に例を示します。
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;

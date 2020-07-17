@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics でのデータ主導型デバッグ
 description: この記事では、Azure Portal のジョブ ダイアグラムとメトリックを使って、Azure Stream Analytics ジョブのトラブルシューティングを行う方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526823"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426073"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>ジョブ ダイアグラムを使用したデータ主導型デバッグ
 
@@ -30,7 +28,7 @@ Stream Analytics ジョブの使用中に、Azure Portal の **[サポート + �
 
 ![メトリック付きのジョブ ダイアグラム - 基本的なジョブ](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Azure Event Hubs の入力をパーティション単位で確認するには、**[...]** を選択します。 コンテキスト メニューが表示されます。 入力を集合体として確認することもできます。
+Azure Event Hubs の入力をパーティション単位で確認するには、 **[...]** を選択します。 コンテキスト メニューが表示されます。 入力を集合体として確認することもできます。
 
 ![メトリック付きのジョブ ダイアグラム - パーティションの展開](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
@@ -48,7 +46,7 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
 
 ## <a name="troubleshoot-by-using-metrics"></a>メトリックを使用したトラブルシューティング
 
-**QueryLastProcessedTime** メトリックは、特定のステップでデータが受信された時間を示します。 トポロジを確認することで、出力プロセッサからさかのぼって、どのステップでデータが受信されていないかを参照できます。 あるステップでデータが受信されていなかった場合、その直前のクエリ ステップに移動します。 前のクエリ ステップに時間枠があるかどうかを確認し、データが出力されるのに十分な時間が経過したかどうかを確認します  (時間枠は 1 時間単位となります)。
+**QueryLastProcessedTime** メトリックは、特定のステップでデータが受信された時間を示します。 トポロジを確認することで、出力プロセッサからさかのぼって、どのステップでデータが受信されていないかを参照できます。 あるステップでデータが受信されていなかった場合、その直前のクエリ ステップに移動します。 前のクエリ ステップに時間枠があるかどうかを確認し、データが出力されるのに十分な時間が経過したかどうかを確認します (時間枠は 1 時間単位となります)。
  
 前のクエリ ステップが入力プロセッサである場合、入力メトリックを使用して、以下の目的の質問に答えるために役立てます。 これらは、ジョブが入力ソースからデータを取得しているかどうかを判断するうえで役に立ちます。 クエリがパーティション分割されている場合は、各パーティションを調べます。
  
@@ -80,12 +78,12 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
 *   **Input Events Backlogged (Total)** では、Event Hubs と Azure IoT Hub の入力用に読み取る必要がある追加のメッセージの数がわかります。 この数値が 0 より大きい場合は、データの取得後すぐに、ジョブがデータを処理できないことを意味します。 この場合、必要に応じて、ストリーミング ユニット数を増やしたり、ジョブを並列処理できるようにしたりします。 この処理の詳細については、[クエリの並列化に関するページ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)を参照してください。 
 
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

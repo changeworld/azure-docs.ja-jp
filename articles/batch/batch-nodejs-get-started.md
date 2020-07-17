@@ -1,22 +1,15 @@
 ---
-title: チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する | Microsoft Docs
+title: チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
-services: batch
-author: shwetams
-manager: jeconnoc
 ms.assetid: ''
-ms.service: batch
-ms.devlang: nodejs
 ms.topic: conceptual
-ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: shwetams
-ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772176"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116861"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
@@ -67,7 +60,7 @@ Node.js 向け Azure Batch SDK をインストールするには、npm install �
 
 ### <a name="step-2-create-an-azure-batch-account"></a>手順 2:Azure Batch アカウントを作成する
 
-[Azure Portal](batch-account-create-portal.md) またはコマンド ライン ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) から作成できます。
+[Azure Portal](batch-account-create-portal.md) またはコマンド ライン ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) から作成できます。
 
 以下で紹介するのは、Azure CLI からアカウントを 1 つ作成するためのコマンドです。
 
@@ -279,7 +272,7 @@ Linux ノードの場合には通常、実際のタスクの実行前に前提�
 
 準備タスクは、Azure Batch ジョブの送信中に指定します。 準備タスクの構成パラメーターは以下のとおりです。
 
-* **ID**:準備タスクの一意の識別子
+* **[ID]** :準備タスクの一意の識別子
 * **commandLine**:タスクの実行可能ファイルを実行するためのコマンド ライン
 * **resourceFiles**:このタスクを実行するためにダウンロードが必要なファイルの詳細を指定したオブジェクトの配列。  オプションは以下のとおりです。
     - blobSource:ファイルの SAS の URI
@@ -351,7 +344,7 @@ var container_list = ["con1","con2","con3","con4"]
 
 ポータルでは、タスクとジョブの状態の詳細を確認できます。 このほか、Azure Node SDK の list 関数や get 関数も使用できます。 詳細については、ドキュメント ([リンク](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - このサービスを初めて扱う場合は、 [Azure Batch 機能の概要](batch-api-basics.md) に関する記事を確認することをお勧めします。
 - Batch API の詳細については、[Batch Node.js のリファレンス](/javascript/api/overview/azure/batch)を参照してください。

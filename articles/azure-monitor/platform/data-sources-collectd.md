@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor での CollectD からのデータの収集 | Microsoft Docs
 description: CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Azure Monitor での CollectD からのデータの収集に関する情報を提供します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.author: magoedte
-ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794440"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186426"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -69,6 +62,8 @@ CollectD 構成では、既定の `write_http` プラグインを使用して、
       type filter_collectd
     </filter>
 
+> [!NOTE]
+> CollectD は、既定では、10 秒[間隔](https://collectd.org/wiki/index.php/Interval)で値を読み取るように設定されています。 これは Azure Monitor ログに送信されるデータの量に直接影響するため、監視要件と関連するコストと Azure Monitor ログの使用率の適切なバランスを取るために、CollectD 構成内でこの間隔を調整することが必要になる場合があります。
 
 ## <a name="versions-supported"></a>サポートされているバージョン
 - Azure Monitor は現在、CollectD バージョン 4.8 以降をサポートしています。
@@ -95,7 +90,7 @@ Azure Monitor での CollectD データの収集を構成するための基本�
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >5.5 より前の CollectD バージョンでは、上に示すように `oms.conf` 内のタグを変更する必要があります。
+    >5\.5 より前の CollectD バージョンでは、上に示すように `oms.conf` 内のタグを変更する必要があります。
     >
 
 2. collectd.conf を目的のワークスペースの omsagent 構成ディレクトリにコピーします。
@@ -105,7 +100,8 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 
 3. 次のコマンドを使用して、CollectD と Linux 用 Log Analytics エージェントを再起動します。
 
-    sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
+        sudo service collectd restart
+        sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD メトリックから Azure Monitor スキーマへの変換
 既に Linux 用 Log Analytics エージェントによって収集されたインフラストラクチャ メトリックと、CollectD によって収集された新しいメトリックの間で使い慣れたモデルを維持するために、次のスキーマ マッピングが使用されます。
@@ -114,13 +110,13 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 |:--|:--|
 | `host` | Computer |
 | `plugin` | なし |
-| `plugin_instance` | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName="*_Total*" |
+| `plugin_instance` | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName=" *_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>**type_instance** が *null* である場合、CounterName=**blank** |
 | `dsnames[]` | CounterName |
 | `dstypes` | なし |
 | `values[]` | CounterValue |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * [カスタム フィールド](custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。

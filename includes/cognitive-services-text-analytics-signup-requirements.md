@@ -4,12 +4,15 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/20/2018
-ms.openlocfilehash: e66f6fb7c823c0c267747ed5774aada438b490ce
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6d53d3d6e115742b7b91d9c7e5888ba2cc0478f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68697197"
 ---
-Text Analytics API が利用できる [Cognitive Services API サブスクリプション](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を所有している必要があります。 サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。 先に進む前に、アカウントをアクティブ化した後に提供される Text Analytics のサブスクリプション キーが必要となります。
+Text Analytics リソースのキーとエンドポイント。 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md) または [Azure CLI](../articles/cognitive-services/cognitive-services-apis-create-account-cli.md) を使用して、ローカル コンピューター上に Text Analytics のリソースを作成します。 次のこともできます。
 
+* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services/#lang)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。
+
+* お使いのリソースを [Azure portal](https://portal.azure.com/) で表示する

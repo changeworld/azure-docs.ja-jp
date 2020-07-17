@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098061"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76931002"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>ユーザー プライバシーと Azure Active Directory パススルー認証
 
@@ -73,7 +73,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>認証エージェント トレース ログ ファイルを削除する
 
-<strong>%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\< の内容を定期的に確認して、48 時間ごとにこのフォルダーの内容を削除する必要があります。 
+**%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace** の内容を定期的に確認して、48 時間ごとにこのフォルダーの内容を削除する必要があります。 
 
 >[!IMPORTANT]
 >認証エージェント サービスが実行中の場合は、フォルダー内の現在のログ ファイルを削除できません。 サービスを停止してから、再試行してください。 ユーザーのサインイン エラーを回避するには、[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)に対応するパススルー認証を既に構成している必要があります。
@@ -91,20 +91,20 @@ Foreach ($file in $files) {
 このスクリプトを 48 時間ごとに実行するようにスケジュールするには、次の手順に従います。
 
 1.  拡張子が ".PS1" のファイルにスクリプトを保存します。
-2.  **コントロール パネル**を開き、**[システムとセキュリティ]** をクリックします。
-3.  **[管理ツール]** で、**[タスクのスケジュール]** をクリックします。
-4.  **タスク スケジューラ**で、**[Task Schedule Library]\(タスク スケジュール ライブラリ\)** を右クリックし、**[基本タスクの作成...]** をクリックします
-5.  新しいタスクの名前を入力し、**[次へ]** をクリックします。
-6.  **タスク トリガー**として **[毎日]** を選択し、**[次へ]** をクリックします。
-7.  繰り返しを [2 日] に設定し、**[次へ]** をクリックします。
-8.  アクションとして **[プログラムを起動する]** を選択し、**[次へ]** をクリックします。
-9.  プログラム/スクリプトのボックスに「**PowerShell**」と入力し、**[引数の追加 (オプション)]** というラベルの付いたボックスに、先ほど作成したスクリプトへの完全なパスを入力して、**[次へ]** をクリックします。
-10. 次の画面に、作成しようとしているタスクの概要が表示されます。 値を確認し、**[完了]** をクリックしてタスクを作成します。
+2.  **コントロール パネル**を開き、 **[システムとセキュリティ]** をクリックします。
+3.  **[管理ツール]** で、 **[タスクのスケジュール]** をクリックします。
+4.  **タスク スケジューラ**で、 **[Task Schedule Library]\(タスク スケジュール ライブラリ\)** を右クリックし、 **[基本タスクの作成...]** をクリックします
+5.  新しいタスクの名前を入力し、 **[次へ]** をクリックします。
+6.  **タスク トリガー**として **[毎日]** を選択し、 **[次へ]** をクリックします。
+7.  繰り返しを [2 日] に設定し、 **[次へ]** をクリックします。
+8.  アクションとして **[プログラムを起動する]** を選択し、 **[次へ]** をクリックします。
+9.  プログラム/スクリプトのボックスに「**PowerShell**」と入力し、 **[引数の追加 (オプション)]** というラベルの付いたボックスに、先ほど作成したスクリプトへの完全なパスを入力して、 **[次へ]** をクリックします。
+10. 次の画面に、作成しようとしているタスクの概要が表示されます。 値を確認し、 **[完了]** をクリックしてタスクを作成します。
  
 ### <a name="note-about-domain-controller-logs"></a>ドメイン コントローラー ログに関する注意事項
 
 監査ログが有効になっている場合、この製品では、お使いのドメイン コント ローラーのセキュリティ ログを生成できます。 監査ポリシーの構成に関する詳細については、[こちらの記事](https://technet.microsoft.com/library/dd277403.aspx)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [セキュリティ センターで Microsoft のプライバシー ポリシーを確認する](https://www.microsoft.com/trustcenter)
 * [**トラブルシューティング**](tshoot-connect-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。

@@ -1,18 +1,18 @@
 ---
 title: Seller Insights の概要
 description: Cloud パートナー ポータルの Seller Insights 機能の概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: dsindona
+ms.openlocfilehash: b86c2c8b8d0e44adffa0411799b9be01b9f54a9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285352"
 ---
 <a name="getting-started-with-seller-insights"></a>Seller Insights の概要
 ====================================
@@ -57,7 +57,7 @@ Cloud パートナー ポータルでは、Azure と VS Marketplace の顧客と
 <a name="finding-more-help"></a>関連情報
 -----------------
 
-- [Seller Insights 定義](./si-insights-definitions-v4.md) - メトリックとデータの定義を確認できます
+- [Seller Insights の定義](./si-insights-definitions-v4.md) - メトリックとデータの定義を確認できます
 
 - [Seller Insights の概要](./si-getting-started.md) - Seller Insights の機能の紹介。
 

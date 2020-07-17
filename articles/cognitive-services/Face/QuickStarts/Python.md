@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure REST API と Python を使用して画像から顔を検出する
+title: 'クイック スタート: Azure REST API と Python を使用して画像内の顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の顔を検出します。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3df6c34420369effe11ae5a7ec58eba595ffa471
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957009"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81403217"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート: Face REST API と Python を使用して画像内の顔を検出する
 
 このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の人の顔を検出します。 このスクリプトでは、顔を囲むフレームを描き、画像の上に性別と年齢の情報をスーパーインポーズします。
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. テキスト エディターに次のコードをコピーします。
 1. 必要に応じて、コードに次の変更を加えます。
     1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
-    1. 必要に応じて、`face_api_url` 値を、サブスクリプション キーを取得した Azure リージョンの Face API リソースのエンドポイント URL に置き換えます。
+    1. `face_api_url` の値を編集して、お使いの Face API リソースのエンドポイント URL を含めます。
     1. 必要に応じて、`image_url` 値を、分析したい別の画像の URL に置き換えます。
 1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `detect-face.py` 」のように入力します。
 1. コマンド プロンプト ウィンドウを開きます。
@@ -53,22 +53,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 import requests
 import json
 
+# set to your own subscription key value
 subscription_key = None
 assert subscription_key
 
-face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+# replace <My Endpoint String> with the string from your endpoint URL
+face_api_url = 'https://<My Endpoint String>.com/face/v1.0/detect'
 
 image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
 
-headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
-    
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+
 params = {
     'returnFaceId': 'true',
     'returnFaceLandmarks': 'false',
     'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
 }
 
-response = requests.post(face_api_url, params=params, headers=headers, json={"url": image_url})
+response = requests.post(face_api_url, params=params,
+                         headers=headers, json={"url": image_url})
 print(json.dumps(response.json()))
 ```
 
@@ -255,7 +258,7 @@ print(json.dumps(response.json()))
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この後は、サポートされているシナリオについて、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 

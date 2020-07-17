@@ -1,13 +1,10 @@
 ---
-title: Azure CLI スクリプト サンプル - 2 つの仮想ネットワークのピアリング | Microsoft Docs
+title: 2 つの仮想ネットワークのピアリング - Azure CLI のスクリプト サンプル
 description: Azure CLI スクリプト サンプル - 2 つの仮想ネットワークのピアリング。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 82f4f06cd4e615df38f2251be9aef9e8578b9df4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726787"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74083839"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>2 つの仮想ネットワークのピアリングのスクリプト サンプル
 
@@ -54,7 +51,7 @@ az group delete --name myResourceGroup --yes
 | [az network vnet peering create](/cli/azure/network/vnet/peering) | 2 つの仮想ネットワーク間のピアリングを作成します。  |
 | [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

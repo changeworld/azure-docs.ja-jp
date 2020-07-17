@@ -1,6 +1,6 @@
 ---
 title: PowerShell で Azure Service Bus リソースを管理する | Microsoft ドキュメント
-description: PowerShell モジュールで Service Bus リソースを作成し、管理する
+description: この記事では Azure PowerShell モジュールを使用して、Service Bus のエンティティ (名前空間、キュー、トピック、サブスクリプション) を作成および管理する方法について説明します。
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8605e269f09e4fedf7a61817a3634e75081593ca
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359135"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890250"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 
@@ -33,11 +33,11 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 開始する前に、次の前提条件を満たす必要があります。
 
-* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
+* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページを参照してください。
 * Azure PowerShell を搭載するコンピューター 手順については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/get-started-azureps)」をご覧ください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 最初の手順では、PowerShell を使用して、Azure アカウントと Azure サブスクリプションにログインします。 [「Get started with Azure PowerShell cmdlets (Azure PowerShell コマンドレットの概要)」](/powershell/azure/get-started-azureps)の手順に従って、Azure アカウントにログインし、Azure サブスクリプションのリソースを取得し、アクセスします。
 
@@ -162,7 +162,7 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 [Service Bus PowerShell モジュール](/powershell/module/az.servicebus) を使用してトピックやサブスクリプションなどの他のエンティティをプロビジョニングできます。 これらのコマンドレットは、前のセクションで説明したキュー作成コマンドレットに構文的に似ています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Service Bus Manager PowerShell モジュールの全ドキュメントを[ここ](/powershell/module/az.servicebus)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
 - Azure Resource Manager テンプレートの使用の詳細については、「[Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する](service-bus-resource-manager-overview.md)」の記事を参照してください。
@@ -170,8 +170,8 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 これ以外の Service Bus エンティティを管理する方法については、次のブログ投稿で説明されています。
 
-* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

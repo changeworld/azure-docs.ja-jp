@@ -1,25 +1,14 @@
 ---
 title: クラスターの Azure Load Balancer 規則の作成
 description: Azure Service Fabric クラスターのポートを開くように Azure Load Balancer を構成します。
-services: service-fabric
-documentationcenter: na
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66147466"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77025386"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 
@@ -71,7 +60,7 @@ Azure CLI コマンドには、いくつかのパラメーターがあります�
 
 
 >[!NOTE]
->Azure CLI を使用してロード バランサーを作成する方法の詳細については、[Azure CLI を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)に関するページを参照してください。
+>Azure CLI を使用してロード バランサーを作成する方法の詳細については、[Azure CLI を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)に関するページを参照してください。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -107,8 +96,8 @@ $lb | Set-AzLoadBalancer
 `New-AzLoadBalancerRuleConfig` コマンドでは、`-FrontendPort` はロード バランサーが外部接続用に公開するポートを表し、`-BackendPort` は Service Fabric アプリがリッスンするポートを表します。
 
 >[!NOTE]
->PowerShell を使用してロード バランサーを作成する方法の詳細については、[PowerShell を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-ps.md)に関するページを参照してください。
+>PowerShell を使用してロード バランサーを作成する方法の詳細については、[PowerShell を使用したロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[サービス ファブリック .rvice-fabric-patterns-networking.md でのネットワーキング](service-fabric-patterns-networking.md)の詳細を確認します。
+[Service Fabric でのネットワーク](service-fabric-patterns-networking.md)の詳細について確認する。

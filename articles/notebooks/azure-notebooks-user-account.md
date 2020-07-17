@@ -1,32 +1,24 @@
 ---
-title: Azure Notebooks へのサインイン
+title: Azure Notebooks プレビューにサインインする
 description: Microsoft アカウントまたは職場/学校アカウントを使用して、Azure Notebook のユーザー アカウント構成します。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608012"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75646298"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks のユーザー アカウント
+# <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks プレビューのユーザー アカウント
 
 Azure Notebooks は、ユーザー アカウントでサインインしてもしなくても使用できます。
 
 - サインインししない場合は、Notebooks を実行できますが、プロジェクトの一部として Notebooks やデータ ファイルを保持することはできません。 たとえば、Azure Notebooks へのリンクを受信するユーザーは、サインインをしなくても Notebooks を利用できます。
 - サインインすると、Azure Notebooks はそのアカウントで利用するすべてのプロジェクトを保持します。 サインイン ユーザーには、他のユーザーと自分のプロジェクトや Notebooks を共有できるユーザー ID も付与されます。
-  - Azure Notebooks を使用するアカウントが Azure サブスクリプションにも関連付けられている場合、さらに強力なサーバー上で Notebooks を実行したり、プライベートの Notebooks を作成したり、個々のユーザーに Notebooks へのアクセス許可を付与したりできる追加のメリットがあります。
+- Azure Notebooks を使用するアカウントが Azure サブスクリプションにも関連付けられている場合、さらに強力なサーバー上で Notebooks を実行したり、プライベートの Notebooks を作成したり、個々のユーザーに Notebooks へのアクセス許可を付与したりできる追加のメリットがあります。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks にサインインするには、Microsoft アカウントまたは「職場または学校」アカウントのいずれかが必要です。 Notebook ページの右上隅にある**サインイン** コマンドを選択すると、アカウントの入力が求められます。
 
@@ -43,7 +35,7 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 ![新しい Microsoft アカウントを作成するためのコマンド](media/accounts/create-new-microsoft-account.png)
 
 > [!Note]
-> 既にアカウントが関連付けられている電子メール アドレスで新しいアカウントを作成しようとすると、「職場または学校のメール アドレスではここにサインアップできません。Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください」というメッセージが表示される場合があります。 Use a personal email, such as Gmail or Yahoo!, or get a new Outlook email." その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
+> 既にアカウントが関連付けられているメール アドレスで新しいアカウントを作成しようとすると、"職場または学校のメール アドレスではここにサインアップできません。 Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください" というメッセージが表示される場合があります。 その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
 
 お子様が使用しているアカウントは、Azure Notebooks へのアクセスは既定でブロックされます。 お子様が使用しているアカウントでサインインすると、次のエラーが表示されます。
 
@@ -52,8 +44,8 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 アクセスを有効にするには、親は次の手順を実行する必要があります。
 
 1. `https://account.live.com/mk` にアクセスし、親のアカウントでサインインします。
-1. 該当するお子様のセクションで、**[このお子様によるサードパーティ製アプリへのアクセスを管理する]** を選択します。
-1. 次のページで、**[アクセスの有効化]** を選択します。
+1. 該当するお子様のセクションで、 **[このお子様によるサードパーティ製アプリへのアクセスを管理する]** を選択します。
+1. 次のページで、 **[アクセスの有効化]** を選択します。
 1. 次回にお子様のアカウントを使用して Azure Notebooks にログインするときに、表示されるアクセス許可プロンプトで **[はい]** を選択します。
 
 > [!Warning]
@@ -65,13 +57,13 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 
 職場または学校のアカウントで Azure Notebooks にサインインするには、管理者の同意が必要となる場合があります。Azure Notebooks はアカウントの電子メール アドレスやユーザーのブラウザー情報などの情報を収集または使用する (ただし公開はしない) からです (ブラウザーのデータは、一般的な用途に応じて機能を最適化するために使用されます)。
 
-組織アカウントの管理者は、ユーザーが個別に同意することが制限されている場合には、ユーザーに代わって同意する必要があります。 この場合、ユーザーには、「ユーザーは、このアプリケーションにアクセスできません」: 
+組織アカウントの管理者は、ユーザーが個別に同意することが制限されている場合には、ユーザーに代わって同意する必要があります。 この場合、ユーザーには、「ユーザーは、このアプリケーションにアクセスできません」:
 
 ![「ユーザーは、このアプリケーションにアクセスできません」というメッセージが職場または学校のアカウントを使用する場合に表示されます。](media/accounts/consent-permissions-denied.png)
 
 管理者として同意するには、[管理者の同意ページ](https://notebooks.azure.com/account/adminConsent)を使用します。そのページにはプロセスについての説明があります。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 > [!div class="nextstepaction"]
 > [プロファイルとユーザー ID の編集](azure-notebooks-user-profile.md)

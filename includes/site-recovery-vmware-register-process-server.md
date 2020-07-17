@@ -2,21 +2,35 @@
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: e18d0a6a01a86f844edc213fc95003cf4f4b46c9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67534653"
 ---
-* リモート デスクトップ接続を使用して、プロセス サーバー仮想マシンに接続します。
-* デスクトップにあるショートカットをクリックして、cspsconfigtool.exe を起動できます  (プロセス サーバーに初めてログインする場合、このツールは自動的に起動します)。
-  - 構成サーバーの完全修飾名 (FQDN) または IP アドレス。
-  - 構成サーバーがリッスンするポート。 値は 443 にする必要があります。
-  - 構成サーバーに接続するための接続パスフレーズ。
-  - このプロセス サーバー用に構成したデータ転送ポート。 環境で別のポート番号に変更していない限り、既定値のままにします。
+1. プロセス サーバーを実行しているマシンへのリモート デスクトップ接続を確立します。 
+2. cspsconfigtool.exe を実行して、Azure Site Recovery プロセス サーバー構成ツールを開始します。
+    - このツールは、プロセス サーバーに初めてサインインしたときに自動的に起動します。
+    - 自動的に開かれない場合は、デスクトップ上のそのショートカットをクリックしてください。
 
+3. **[Configuration Server FQDN Or IP]\(構成サーバーの FQDN または IP\)** に、プロセス サーバーの登録に使用する構成サーバーの名前または IP アドレスを指定します。
+4. **[Configuration Server Port]\(構成サーバーのポート\)** に 443 が指定されていることを確認します。 これは、構成サーバーが要求をリッスンするポートです。
+5. **[Connection Passphrase]\(接続パスフレーズ\)** に、構成サーバーを設定するときに指定したパスフレーズを指定します。 パスフレーズを見つけるには:
+    -  構成サーバーで、Site Recovery のインストール フォルダー * *\home\svssystems\bin\** に移動します。
+    ```
+    cd %ProgramData%\ASR\home\svsystems\bin
+    ```
+    - 次のコマンドを実行して現在のパスフレーズを出力します。
+    ```
+    genpassphrase.exe -n
+    ```
+
+6. **[Data Transfer Port]\(データ転送ポート\)** は、カスタム ポートを指定した場合を除き、既定値のままにします。
+
+7. **[保存]** をクリックして設定を保存し、プロセス サーバーを登録します。
+
+    
     ![プロセス サーバーの登録](./media/site-recovery-vmware-register-process-server/register-ps.png)
-* [保存] をクリックして構成を保存し、プロセス サーバーを登録します。

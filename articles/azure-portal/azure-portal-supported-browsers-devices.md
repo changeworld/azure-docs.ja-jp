@@ -1,6 +1,6 @@
 ---
 title: Azure Portal でサポートされるブラウザーとデバイス | Microsoft Docs
-description: Azure ポータルを利用できるブラウザーとデバイスについて説明します。
+description: すべての最新のデバイス上で、最新のブラウザー バージョンで Azure portal を使用できます。 この記事を参照して、お使いのブラウザーがサポートされていることを確認してください。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,19 +12,21 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 1595d744fbfda47a9db9ff27de09cd53c6f73ece
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576396"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754193"
 ---
 # <a name="supported-devices"></a>サポートされているデバイス
 
-[Azure portal](https://portal.azure.com) は Web ベースのコンソールで、最新のすべてのデスクトップおよびタブレット デバイスのブラウザーで動作します。 モバイル デバイスから Azure リソースを管理する必要がある場合は、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) をお試しください。 iOS と Android でご利用可能です。
+[Azure portal](https://portal.azure.com) は Web ベースのコンソールで、最新のすべてのデスクトップおよびタブレット デバイスのブラウザーで動作します。 ポータルを使用するには、ブラウザーで JavaScript が有効になっている必要があります。
+
+モバイル デバイスから Azure リソースを管理する必要がある場合は、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) をお試しください。 iOS と Android でご利用可能です。
 
 ## <a name="recommended-browsers"></a>推奨されるブラウザー
 

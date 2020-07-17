@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard でビデオをトリミングする方法 - Azure | Microsoft Docs
-description: この記事では、Media Encoder Standard でビデオをトリミングする方法について説明します。
+description: トリミングは、ビデオ フレーム内で四角形のウィンドウを選択して、そのウィンドウ内のピクセルだけをエンコードするプロセスです。 この記事では、Media Encoder Standard を使ってビデオをトリミングする方法について説明します。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: anilmur;juliako;
-ms.openlocfilehash: 9a81050fca935f688f2ff58cb04a148bf676f04b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176652"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74887766"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard を使用してビデオをトリミングする  
 

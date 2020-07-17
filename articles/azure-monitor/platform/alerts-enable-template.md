@@ -1,33 +1,30 @@
 ---
-title: Azure での Resource Manager テンプレートを使ったクラシック メトリック アラートの作成
+title: Resource Manager テンプレート - メトリック アラートを作成する
 description: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。
-author: johnkemnetz
-services: azure-monitor
-ms.service: azure-monitor
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
-ms.author: johnkem
-ms.subservice: metrics
-ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.date: 03/09/2020
+ms.subservice: alerts
+ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433035"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114424"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
-この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
-
-> [!NOTE]
+> [!WARNING]
 > 
-> この記事では、Resource Manager テンプレートを使用した**クラシック メトリック アラート**の作成方法について説明します。 テンプレートを使用して[新しいメトリック アラート](../../azure-monitor/platform/alerts-metric-near-real-time.md)を作成する方法を探している場合、[この資料](alerts-metric-create-templates.md)で詳細を提供します。
+> この記事では、Resource Manager テンプレートを使用した**クラシック メトリック アラート**の作成方法について説明します。 クラシック アラートは 2019 年 8 月に廃止され、2020 年 6 月に完全に非推奨となるように設定されています。 新しいクラシック アラートをパブリック Azure で作成することはできません。 一部の Azure リージョンのバージョンでは引き続きこのオプションを使用できる場合がありますが、可能な限り、テンプレートを使用して[新しいメトリック アラート](../../azure-monitor/platform/alerts-metric-near-real-time.md)を作成することをお勧めします。 詳細については、[この記事](alerts-metric-create-templates.md)を参照してください。
 >
 
+この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して Azure クラシック メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
 
 基本的な手順は次のとおりです。
 
 1. アラートの作成方法が記述された JSON ファイルとしてテンプレートを作成します。
-2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../../azure-resource-manager/resource-group-template-deploy.md)します。
+2. [任意のデプロイ方法を使用してテンプレートをデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)します。
 
 ここでは、Resource Manager テンプレートを作成して 1 つのアラートを作成する方法を説明してから、他のリソースを作成しながらアラートを作成する方法を説明します。
 
@@ -403,6 +400,6 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 
 ## <a name="next-steps"></a>次の手順
 * [アラートの詳細を確認します](alerts-overview.md)
-* [診断の設定を追加](../../azure-monitor/platform/diagnostic-logs-stream-template.md) します
+* [診断の設定を追加](../../azure-monitor/platform/diagnostic-settings-template.md) します
 * JSON の構文とプロパティについては、[Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) テンプレート リファレンスをご覧ください。
 

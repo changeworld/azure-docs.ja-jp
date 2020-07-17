@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: REST API を使用して Recovery Services コンテナーを作成する'
-description: REST API を使用して Azure VM Backup のバックアップ操作と復元操作を管理します
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
-ms.service: backup
+title: REST API を使用して Recovery Services コンテナーを作成する
+description: この記事では、REST API を使用して Azure VM Backup のバックアップ操作と復元操作を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734336"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74173415"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 
@@ -36,7 +30,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | 要求ヘッダー   | 説明 |
 |------------------|-----------------|
 | *Content-Type:*  | 必須。 `application/json` を設定します。 |
-| *Authorization:* | 必須。 有効な `Bearer` [ アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |
+| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
 
 要求の作成方法の詳細については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
 
@@ -44,7 +38,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-|Name  |必須  |type  |説明  |
+|名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  省略可能な eTag       |
 |location     |  true       |String         |   リソースの場所      |
@@ -68,14 +62,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-## <a name="responses"></a>応答
+## <a name="responses"></a>Responses
 
 Recovery Services コンテナーの作成または更新操作には、2 種類の成功応答があります。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |   [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成日時      |
+|200 OK     |   [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | [OK]        |
+|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成済み      |
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 
@@ -98,7 +92,7 @@ REST API の応答の詳細については、「[Process the response message](/
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [このコンテナーに Azure VM をバックアップするためのバックアップ ポリシーを作成します](backup-azure-arm-userestapi-createorupdatepolicy.md)。
 

@@ -3,19 +3,36 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: functions
 author: ggailey777
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
-ms.date: 09/21/2018
+ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f1b53c53b1e5fb089eb9b8a9b816b11a1eea126d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044511"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75564775"
 ---
-ローカルで関数を開発するときは、ターミナルまたはコマンド プロンプトから Azure Functions Core Tools を使って、必要な拡張機能をインストールできます。
+## <a name="register-extensions"></a>拡張機能を登録する
+
+HTTP およびタイマートリガーを除き、ランタイム バージョン 2.x およびそれ以降の関数バインディングは、拡張パッケージとして実装されます。 Azure Functions ランタイム バージョン 2.x 以降では、関数で使用するバインディングの型に対応した拡張機能を明示的に登録する必要があります。 この例外は HTTP バインドとタイマー トリガーで、これらは拡張機能を必要としません。
+
+バインド拡張機能を個別にインストールするか、host.json プロジェクト ファイルに拡張機能のバンドルの参照を追加することができます。 拡張機能のバンドルを使用すると、複数のバインディングの種類を使用するときに、パッケージの互換性の問題が発生する可能性をなくします。 これはバインド拡張機能を登録する際に推奨される方法です。 また、拡張機能のバンドルにより、.NET Core 2.x SDK をインストールする必要もなくなります。 
+
+### <a name="extension-bundles"></a>拡張機能のバンドル
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+詳細については、「[Azure Functions バインド拡張機能を登録する](../articles/azure-functions/functions-bindings-register.md#extension-bundles)」を参照してください。 function.json ファイルへのバインドを追加する前に、host.json に拡張機能のバンドルを追加する必要があります。
+
+### <a name="register-individual-extensions"></a>個々の拡張機能を登録する
+
+バンドル内にない拡張機能をインストールする必要がある場合は、特定のバインド用の個々の拡張機能パッケージを手動で登録できます。 
+
+> [!NOTE]
+> `func extensions install` を使用して拡張機能を手動で登録するには、.NET Core 2.x SDK がインストールされている必要があります。
 
 関数に必要なすべてのバインドを含むように *function.json* ファイルを更新した後、プロジェクト フォルダーで以下のコマンドを実行します。
 
@@ -24,11 +41,3 @@ func extensions install
 ```
 
 コマンドは、*function.json* ファイルを読み取って必要なパッケージを確認して、パッケージをインストールして、拡張プロジェクトを再構築します。 現在のバージョンで新しいバインドが追加されますが、既存のバインドは更新されません。 新しいバージョンをインストールするときに、`--force` オプションを使用して既存のバインドを最新バージョンに更新します。
-
-特定のバージョンのパッケージをインストールする場合、または *function.json* ファイルを編集する前にパッケージをインストールする場合は、次の例のように `func extensions install` コマンドと共にパッケージ名を指定します。
-
-```bash
-func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
-
-`<target_version>` をパッケージの特定のバージョン (`3.0.0-beta5`など) に置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。

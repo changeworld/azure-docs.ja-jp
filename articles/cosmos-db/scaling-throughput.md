@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB でのスループットのスケーリング
-description: この記事では、Azure Cosmos DB がスループットを弾力的にスケーリングする方法について説明します
-author: dharmas-cosmos
+description: この記事では、Azure Cosmos DB で、Azure Cosmos アカウントがプロビジョニングされている異なるリージョン間でスループットをスケーリングする方法について説明します。
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: f930b5c478cc880952b4559be4c6647b260efcf2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243486"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74873507"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>プロビジョニングされたスループットのグローバルなスケーリング 
 
@@ -36,7 +36,7 @@ Cosmos コンテナーに *'R'* 個の RU が構成され、Cosmos アカウン�
 
 選択した[整合性モデル](consistency-levels.md)もスループットに影響します。 整合性レベルが比較的緩やかな場合 (*セッション*、*一貫性のあるプレフィックス*、*最終的*など)、比較的強固な場合 (*有界整合性制約*や*厳密*など) と比べ、ほぼ 2 倍の読み取りスループットを得ることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のステップでは、コンテナーまたはデータベースのスループットを構成する方法を学習できます。
 

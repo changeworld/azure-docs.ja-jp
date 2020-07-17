@@ -1,5 +1,5 @@
 ---
-title: Node.js でリモート監視するために Raspberry Pi をプロビジョニング - Azure | Microsoft Docs
+title: リモート監視ソリューションに Raspberry Pi を接続する - Node.js - Azure | Microsoft Docs
 description: Node.js で記述されたアプリケーションを使用して、Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する方法について説明します。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,13 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 20d50ac4ac4a1919077ebe67bb529e2dc5abf187
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: mqtt
+ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109748"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683944"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (Node.js)
 
@@ -45,7 +46,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 まだインストールしていない場合は、Raspberry Pi に Node.js 4.0.0 以上をインストールします。 次の手順では、Node.js v6 を Raspberry Pi にインストールする方法を示します。
 
-1. `ssh` を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
+1. `ssh` を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)の [SSH (Secure Shell)](https://www.raspberrypi.org/) のセクションを参照してください。
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 
@@ -86,7 +87,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     cd remotemonitoring
     ```
 
-1. サンプル アプリケーションを完成させるために必要なパッケージをダウンロードしてインストールするには、次のコマンドを実行します。
+1. 次のコマンドを実行して、サンプル アプリケーションを完成させるために必要なパッケージをダウンロードしてインストールします。
 
     ```sh
     npm install async azure-iot-device azure-iot-device-mqtt

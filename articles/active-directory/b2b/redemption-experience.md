@@ -1,66 +1,113 @@
 ---
-title: B2B コラボレーションの招待の利用 - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーションの招待の利用 - Azure AD
 description: プライバシー条件への同意など、エンド ユーザー向けの Azure AD B2B コラボレーションの招待の利用エクスペリエンスについて説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
+ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d00808295d39247729f6e843ac59ad7b23407148
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785412"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585897"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
-Azure Active Directory (Azure AD) B2B コラボレーションを介してパートナー組織のユーザーと共同作業するために、共有アプリケーションにアクセスできるようにゲスト ユーザーを招待することができます。 ゲスト ユーザーがユーザー インターフェイスを介してディレクトリに追加された後、または PowerShell を介して招待された後、ゲスト ユーザーは、[プライバシー条件](#privacy-policy-agreement)に同意する初回の同意プロセスを実行する必要があります。 このプロセスは、次のいずれかの方法で実行されます。
+この記事では、ゲスト ユーザーがリソースにアクセスできる方法と実行する同意プロセスについて説明します。 招待メールをゲストに送信する場合、その招待には、ゲストがアプリまたはポータルにアクセスするために利用できるリンクを含めます。 招待メールは、ゲストがリソースにアクセスできる方法の 1 つにすぎません。 別の方法として、ゲストをディレクトリに追加し、共有したいポータルまたはアプリへの直接リンクを提供することができます。 使用する方法に関係なく、ゲストには初回の同意プロセスが示されます。 このプロセスにより、ゲストは確実にプライバシー条項に同意し、設定された[利用規約](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou)を承諾することになります。
 
-- ゲストの招待元が共有アプリへの直接リンクを送信します。 招待された人はリンクをクリックしてサインインし、プライバシー条件に同意し、共有リソースにシームレスにアクセスします  (その後もゲスト ユーザーには利用 URL が記載された招待メールが送信されますが、特別な場合を除き、招待メールを使用する必要はありません)。  
-- ゲスト ユーザーは招待メールを受信し、利用 URL をクリックします。 初回のサインインの一環として、プライバシー条件に同意するように求められます。
+ゲスト ユーザーをディレクトリに追加すると、そのゲスト ユーザーのアカウントは同意状態 (PowerShell で表示可能) になります。これは、最初は **PendingAcceptance** に設定されます。 ゲストが招待を受け入れ、プライバシー ポリシーと利用規約に同意するまで、この設定は維持されます。 その後、同意の状態が**承認済み**に変わり、同意ページはゲストに表示されなくなります。
 
-## <a name="redemption-through-a-direct-link"></a>直接リンクによる利用
-
-ゲストの招待元は、[共有アプリの直接リンク](../manage-apps/end-user-experiences.md#direct-sign-on-links)を送信してゲスト ユーザーを招待できます。 ゲスト ユーザーの場合、利用エクスペリエンスは共有されたアプリにサインインする場合と同じくらい簡単です。 アプリのリンクをクリックし、プライバシー条件を確認して同意すると、アプリにシームレスにアクセスすることができます。 ほとんどの場合、ゲスト ユーザーは招待メールの利用 URL をクリックする必要はなくなります。
-
-ゲスト ユーザーをユーザー インターフェイスを介して招待した場合、または PowerShell の招待エクスペリエンスの一環として招待メールを送信する場合、招待されたユーザーには引き続き招待メールが送信されます。 このメールは次のように特別な場合に便利です。
-
-- ユーザーが Azure AD アカウントまたは Microsoft アカウント (MSA) を持っていない場合。 この場合、ユーザーはリンクをクリックする前に MSA を作成する必要があります。または、招待メールの利用 URL を使用することができます。 利用プロセスでは、自動的にユーザーには MSA を作成するように求められます。
-- 連絡先オブジェクト (Outlook の連絡先オブジェクトなど) と競合するため、招待されたユーザー オブジェクトにメール アドレスを持っていないことがあります。 この場合、ユーザーは招待メールの利用 URL をクリックする必要があります。
-- ユーザーは、招待されたメール アドレスの別名でサインインすることができます  (エイリアスは、メール アカウントに関連付けられた追加のメール アドレスです)。この場合、ユーザーは招待メールの利用 URL をクリックする必要があります。
-
-このような特殊なケースが組織にとって重要な場合は、引き続き招待メールを送信する方法を使用してユーザーを招待することをお勧めします。 また、ユーザーがこのような特殊なケースのいずれにも該当しない場合でも、招待メールの URL をクリックしてアクセスできます。
+   > [!IMPORTANT]
+   > **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ## <a name="redemption-through-the-invitation-email"></a>招待メールによる利用
 
-招待メールを送信する方法で招待された場合、招待メールを介して招待を利用することもできます。 招待されたユーザーは、メールの利用 URL をクリックし、プライバシー条件を確認して同意することができます。 このプロセスについては、ここで詳しく説明します。
+[Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) を使用してディレクトリにゲスト ユーザーを追加すると、そのプロセスで招待メールがゲストに送信されます。 ゲスト ユーザーをディレクトリに追加するために [PowerShell を使用する](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)際に、招待メールを送信するように選択することもできます。 以下は、メールのリンクを利用する場合のゲストのエクスペリエンスの説明です。
 
-1.  招待された後、招待された人は **Microsoft Invitations** から送信されたメールで招待を受け取ります。
-2.  招待された人はメールの **[はじめに]** を選択します。
-3.  招待された人が Azure AD アカウントまたは MSA を持っていない場合は、MSA を作成するよう求められます。
-4.  招待された人は、**[Review permissions]\(アクセス許可の確認\)** 画面にリダイレクトされます。この画面で、招待元の組織のプライバシーに関する声明を確認し、条件に同意することができます。
+1. ゲストは、**Microsoft Invitations** から送信される[招待メール](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements)を受け取ります。
+2. ゲストは、電子メールで **[招待の承諾]** を選択します。
+3. ゲストは、自分の資格情報を使用してディレクトリにサインインします。 ゲストがディレクトリにフェデレーションできるアカウントを持っておらず、[電子メール ワンタイム パスコード (OTP)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) 機能が有効になっていない場合、ゲストは個人用 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) または [Azure AD セルフサービス アカウント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)を作成するように求められます。 詳細については、「[招待の引き換えフロー](#invitation-redemption-flow)」を参照してください。
+4. ゲストには、以下に説明されている[同意エクスペリエンス](#consent-experience-for-the-guest)が示されます。
 
-## <a name="privacy-policy-agreement"></a>プライバシー ポリシー契約
+## <a name="redemption-through-a-direct-link"></a>直接リンクによる利用
 
-ゲスト ユーザーがサインインし、初めてパートナー組織のリソースにアクセスすると、**[Review permissions]\(アクセス許可の確認\)** 画面が表示されます。 この画面では、招待元の組織のプライバシーに関する声明を確認することができます。 継続するには、招待元の組織のプライバシー ポリシーに従って情報を使用することに同意する必要があります。
+招待メールの代わりに、アプリまたはポータルへの直接リンクをゲストに提供することができます。 まず、[Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) または [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) を介して、ゲスト ユーザーをディレクトリに追加する必要があります。 その後、直接サインオン リンクを含む、[ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)のいずれかを使用できます。 ゲストには、招待メールではなく直接リンクを使用する際にも、初回の同意エクスペリエンスが示されます。
 
-![アクセス パネルのユーザー設定のスクリーンショット](media/redemption-experience/ConsentScreen.png) 
+> [!IMPORTANT]
+> 直接リンクはテナントに固有である必要があります。 つまり、共有アプリが配置されている、テナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれている必要があります。 https://myapps.microsoft.com のような一般的な URL では、認証のためにホーム テナントにリダイレクトされるため、ゲスト向けには機能しません。 テナント コンテキストを含む直接リンクの例をいくつか以下に示します。
+ > - アプリ アクセス パネル: https://myapps.microsoft.com/?tenantid=&lt;テナント ID&gt; 
+ > - 確認済みドメインのアプリ アクセス パネル: https://myapps.microsoft.com/&lt;確認済みドメイン&gt;
+ > - Azure portal: https://portal.azure.com/&lt;テナント ID&gt;
+ > - 個々のアプリ: [直接サインオン リンク](../manage-apps/end-user-experiences.md#direct-sign-on-links)の使用方法を参照してください
 
-テナント管理者として組織のプライバシー ステートメントにリンクする方法については、[Azure Active Directory に組織のプライバシー情報を追加する方法](https://aka.ms/adprivacystatement)に関するページを参照してください。
+直接リンク経由の招待メールが推奨されるケースがいくつかあります。 このような特殊なケースが組織にとって重要な場合は、引き続き招待メールを送信する方法を使用してユーザーを招待することをお勧めします。
+ - ユーザーが Azure AD、MSA、あるいはフェデレーション組織のメール アカウントを持っていません。 ワンタイム パスコード機能を使用していない場合は、ゲストは、MSA の作成手順が示される招待メールを利用する必要があります。
+ - 連絡先オブジェクト (Outlook の連絡先オブジェクトなど) と競合するため、招待されたユーザー オブジェクトにメール アドレスを持っていないことがあります。 この場合、ユーザーは招待メールの利用 URL をクリックする必要があります。
+ - ユーザーは、招待されたメール アドレスの別名でサインインすることができます (エイリアスは、メール アカウントに関連付けられた追加のメール アドレスです)。この場合、ユーザーは招待メールの利用 URL をクリックする必要があります。
 
-## <a name="terms-of-use"></a>使用条件
+## <a name="invitation-redemption-flow"></a>招待の引き換えフロー
 
-ゲスト ユーザーには、初回利用プロセス中、Azure AD Terms of Use 機能を使用して利用規約を提示することができます。 この機能には、Azure Active Directory の **[管理]** > **[組織の関係]** > **[利用規約]** または **[セキュリティ]** > **[条件付きアクセス]** > **[利用規約]** からアクセスできます。 詳細については、[Azure AD Terms of Use 機能](../conditional-access/terms-of-use.md)に関するページを参照してください。
+ユーザーが[招待メール](invitation-email-elements.md)の **[招待の承諾]** リンクをクリックすると、Azure AD では下の画像のように、引き換えフローに基づいて招待が自動的に引き換えられます。
 
-![新しい利用規約を示すスクリーンショット](media/redemption-experience/organizational-relationships-terms-of-use.png) 
+![引き換えフローを図解したスクリーンショット](media/redemption-experience/invitation-redemption-flow.png)
 
-## <a name="next-steps"></a>次の手順
+"**ユーザーのユーザー プリンシパル名 (UPN) が既存の Azure AD と個人用 MSA アカウントの両方と一致する場合、ユーザーは引き換えるアカウントを選択するように求められます。* "
+
+1. Azure AD ではユーザー基準の検出が実行され、[既存の Azure AD テナント](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b#easily-add-guest-users-in-the-azure-ad-portal)にユーザーが存在するかどうかが判断されます。
+
+2. 管理者が[直接フェデレーション](https://docs.microsoft.com/azure/active-directory/b2b/direct-federation)を有効にしている場合、Azure AD では、構成されている SAML/WS-Fed ID プロバイダーのドメインにユーザーのドメイン サフィックスが一致するかどうかが確認され、事前に構成されている ID プロバイダーにユーザーがリダイレクトされます。
+
+3. 管理者が [Google フェデレーション](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)を有効にしている場合、Azure AD では、ユーザーのドメイン サフィックスが gmail.com か googlemail.com であるかどうかが確認され、ユーザーが Google にリダイレクトされます。
+
+4. 引き換えプロセスでは、ユーザーに個人用の [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) が既に与えられているかどうかが確認されます。
+
+5. ユーザーの**ホーム ディレクトリ**が確認されると、ユーザーはサインインするため、それに対応する ID プロバイダーの元に送られます。  
+
+6. 手順 1 から 4 によって招待したユーザーのホーム ディレクトリを見つけられない場合、Azure AD によって、招待元のテナントがゲスト用の[電子メール ワンタイム パスコード (OTP)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) を有効にしているかどうかが判断されます。
+
+7. [ゲスト用の電子メール ワンタイム パスコードが有効になっている](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode#when-does-a-guest-user-get-a-one-time-passcode)場合、招待メール経由でパスコードがユーザーに送信されます。 ユーザーはこのパスコードを取得し、Azure AD サインイン ページで入力します。
+
+8. ゲスト用の電子メール ワンタイム パスコードが無効になっている場合、Azure AD によって、ドメイン サフィックスがチェックされ、コンシューマー アカウントに属しているかどうかが判断されます。 該当する場合、ユーザーは、個人用 [Microsoft アカウント](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)を作成するように求められます。 該当しない場合、[Azure AD セルフサービス アカウント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)を作成するように求められます。
+
+9. Azure AD では、メールへのアクセスを確認することで、[Azure AD セルフサービス アカウント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)の作成が試行されます。 アカウントの確認は、コードをメールに送信し、ユーザーにそのコードを取得させ、Azure AD に送信させることで行われます。 ただし、招待されたユーザーのテナントがフェデレーションされているか、または招待されたユーザーのテナントで AllowEmailVerifiedUsers フィールドが false に設定されている場合、ユーザーは引き換えを完了できず、フローは結果的にエラーになります。 詳細については、「[Azure Active Directory B2B コラボレーションのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/b2b/troubleshoot#the-user-that-i-invited-is-receiving-an-error-during-redemption)」を参照してください。
+
+10. ユーザーは、個人用 [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) を作成するように求められます。
+
+11. 該当する ID プロバイダーに対して認証を行った後、[同意エクスペリエンス](https://docs.microsoft.com/azure/active-directory/b2b/redemption-experience#consent-experience-for-the-guest)を完了するため、ユーザーは Azure AD にリダイレクトされます。  
+
+テナント化されたアプリケーションのリンク経由で引き換える Just-In-Time (JIT) 引き換えについては、手順 8 から 10 までを利用できません。 ユーザーが手順 6 に到達したとき、電子メール ワンタイム パスコード機能が有効になっていない場合、ユーザーはエラー メッセージを取得し、招待を引き換えることができません。 このエラーを防ぐには、管理者が[電子メール ワンタイム パスコードを有効にする](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode#when-does-a-guest-user-get-a-one-time-passcode)か、ユーザーが招待リンクを確実にクリックするようにします。
+
+## <a name="consent-experience-for-the-guest"></a>ゲストの同意エクスペリエンス
+
+ゲストがサインインし、初めてパートナー組織のリソースにアクセスすると、以下のページが示されます。 
+
+1. ゲストは、招待元の組織のプライバシーに関する声明について説明されている **[アクセス許可の確認]** ページを確認します。 ユーザーは、操作を続行するために、招待元の組織のプライバシー ポリシーに従って情報を使用することに**同意する**必要があります。
+
+   ![[アクセス許可の確認] ページのスクリーンショット](media/redemption-experience/review-permissions.png) 
+
+   > [!NOTE]
+   > テナント管理者として組織のプライバシー ステートメントにリンクする方法については、[Azure Active Directory に組織のプライバシー情報を追加する方法](https://aka.ms/adprivacystatement)に関するページを参照してください。
+
+2. 利用規約が構成されている場合、ゲストはその利用規約を開き、確認してから、 **[同意]** を選択します。 
+
+   ![新しい利用規約を示すスクリーンショット](media/redemption-experience/terms-of-use-accept.png) 
+
+   **[外部 ID]**  >  **[使用条件]** で[使用条件](../governance/active-directory-tou.md)を構成できます。
+
+3. 特に指定されていない限り、ゲストはアプリ アクセス パネルにリダイレクトされます。そこには、ゲストがアクセスできるアプリケーションがリスト表示されています。
+
+   ![アプリ アクセス パネルを示すスクリーンショット](media/redemption-experience/myapps.png) 
+
+ディレクトリでは、ゲストの **[招待が受け入れられました]** の値が **[はい]** に変わります。 MSA が作成された場合、ゲストの **[ソース]** には **Microsoft アカウント**が示されます。 ゲスト ユーザー アカウントのプロパティの詳細については、[Azure AD B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページを参照してください。 
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 - [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)

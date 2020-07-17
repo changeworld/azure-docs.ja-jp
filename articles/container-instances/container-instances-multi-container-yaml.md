@@ -1,18 +1,14 @@
 ---
-title: チュートリアル - Azure Container Instances に複数コンテナー グループをデプロイする - YAML
+title: チュートリアル - 複数コンテナー グループをデプロイする - YAML
 description: このチュートリアルでは、複数のコンテナーを含むコンテナー グループを YAML ファイルと Azure CLI を使用して Azure Container Instances にデプロイする方法を説明します。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
-ms.openlocfilehash: a0a91ece4f219cf822673cd457c064c326b89478
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c029a9c605548b828c96fa741e12a43930ec4b01
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149076"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653508"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
@@ -23,7 +19,7 @@ ms.locfileid: "66149076"
 
 Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 つ目のアタッチされたプロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
-このチュートリアルでは、Azure CLI を使用して YAML ファイルをデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順を実行します。 YAML ファイルは、インスタンスの設定を指定するための簡潔な形式を提供します。 学習内容は次のとおりです。
+このチュートリアルでは、Azure CLI を使用して [YAML ファイル](container-instances-reference-yaml.md)をデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順に従います。 YAML ファイルは、インスタンスの設定を指定するための簡潔な形式を提供します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * YAML ファイルを構成する
@@ -77,9 +73,9 @@ properties:
     type: Public
     ports:
     - protocol: tcp
-      port: '80'
+      port: 80
     - protocol: tcp
-      port: '8080'
+      port: 8080
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
@@ -170,9 +166,9 @@ Connection: keep-alive
 
 このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、`200 OK` 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、YAML ファイルを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、YAML ファイルを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * マルチコンテナー グループ用の YAML ファイルを構成する

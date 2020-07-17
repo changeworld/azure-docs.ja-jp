@@ -1,19 +1,19 @@
 ---
 title: Azure で OPC Twin クラウドの依存関係をデプロイする方法 | Microsoft Docs
-description: OPC Twin Azure 依存関係をデプロイする方法です。
+description: この記事では、ローカル開発とデバッグに必要な OPC Twin Azure 依存関係をデプロイする方法について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491988"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73824094"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
 
@@ -21,7 +21,7 @@ ms.locfileid: "59491988"
 
 ## <a name="deploy-azure-platform-services"></a>Azure Platform サービスをデプロイする
 
-1. PowerShell および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0) 拡張機能がインストールされていることを確認します。  コマンド プロンプトまたはターミナルを開き、次を実行します。
+1. PowerShell および [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 拡張機能がインストールされていることを確認します。  コマンド プロンプトまたはターミナルを開き、次を実行します。
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
@@ -44,13 +44,13 @@ ms.locfileid: "59491988"
 
 ### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) の登録
 
-デプロイ スクリプトでは、Azure Active Directory への AAD アプリケーションの登録が試みられます。  選択した AAD テナントに対する権限によっては、これが失敗する可能性があります。   3 つのオプションがあります。
+デプロイ スクリプトでは、Azure Active Directory への AAD アプリケーションの登録が試みられます。  選択した AAD テナントに対する権限によっては、これが失敗する可能性があります。   次の 3 つのオプションがあります。
 
 1. テナントの一覧から AAD テナントを選択した場合は、スクリプトを再起動して別のものを一覧から選択します。
 2. または、プライベート AAD テナントをデプロイし、スクリプトを再起動して、それを使用することを選択します。
 3. 認証なしで続行します。  これはローカル環境でマイクロサービスを実行しているために許されることであり、運用環境では行わないでください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 既存プロジェクトへの OPC Twin サービスのデプロイが正常に済んだので、次の手順が推奨されます。
 

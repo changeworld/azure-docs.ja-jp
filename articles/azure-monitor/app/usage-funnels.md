@@ -1,24 +1,17 @@
 ---
 title: Azure Application Insights のファネル
 description: ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.date: 07/17/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076282"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797826"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているか把握する
 
@@ -29,12 +22,12 @@ ms.locfileid: "54076282"
 
 この事業主がファネルを作成するために行う手順は、次のとおりです。
 
-1. Application Insights のファネル ツールで、**[新規]** を選択します。
-1. **[時間の範囲]** ドロップダウン メニューから、**[90 日以内]** を選択します。 **[私のじょうご]** または **[共有じょうご]** を選択します。
-1. **[手順 1]** ドロップダウン リストから、**[インデックス]** を選択します。 
-1. **[手順 2]** リストから、**[顧客]** を選択します。
-1. **[手順 3]** リストから、**[作成]** を選択します。
-1. ファネルに名前を付けて、**[保存]** をクリックします。
+1. Application Insights のファネル ツールで、 **[新規]** を選択します。
+1. **[時間の範囲]** ドロップダウン メニューから、 **[90 日以内]** を選択します。 **[私のじょうご]** または **[共有じょうご]** を選択します。
+1. **[手順 1]** ドロップダウン リストから、 **[インデックス]** を選択します。 
+1. **[手順 2]** リストから、 **[顧客]** を選択します。
+1. **[手順 3]** リストから、 **[作成]** を選択します。
+1. ファネルに名前を付けて、 **[保存]** をクリックします。
 
 以下のスクリーンショットは、ファネル ツールによって生成されるデータの種類の例を示しています。 Fabrikam の事業主は、過去 90 日間に、ホーム ページを閲覧した顧客の 54.3 パーセントが顧客チケットを作成したことを確認できます。 2,700 人の顧客がホーム ページからインデックスを訪れたことも分かります。 これは更新に関する問題を示唆している可能性があります。
 
@@ -49,11 +42,11 @@ ms.locfileid: "54076282"
 4. コンバージョン履歴のグラフによって、過去 90 日間のコンバージョン レートが表示されます。 
 5. ユーザー ツールにアクセスすることで、ユーザーの理解を深めます。 各ステップでフィルターを使用できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
   * [利用状況の概要](usage-overview.md)
   * [ユーザー、セッション、およびイベント](usage-segmentation.md)
   * [保持](usage-retention.md)
-  * [ブック](../../azure-monitor/app/usage-workbooks.md)
+  * [ブック](../../azure-monitor/platform/workbooks-overview.md)
   * [ユーザー コンテキストの追加](usage-send-user-context.md)
   * [Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )
 

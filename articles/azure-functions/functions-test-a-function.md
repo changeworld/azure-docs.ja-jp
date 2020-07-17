@@ -1,22 +1,16 @@
 ---
 title: Azure Functions のテスト
 description: Visual Studio の C# 関数と VS Code の JavaScript 関数の自動化テストを作成する
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, テスト
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473327"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75768879"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -44,7 +38,7 @@ ms.locfileid: "65473327"
 2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して *HttpTrigger* という名前を付けます。
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して *TimerTrigger* という名前を付けます。
 4. Visual Studio で **[ファイル] > [新規作成] > [プロジェクト] > [Visual C#] > [.NET Core] > [xUnit テスト プロジェクト]** の順にクリックして [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)し、*Functions.Test* という名前を付けます。 
-5. Nuget を使用して、テスト アプリ [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) からの参照を追加します
+5. NuGet を使用して、テスト アプリから [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します
 6. [*Functions.Test* アプリから *Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
 
 ### <a name="create-test-classes"></a>テスト クラスの作成
@@ -53,9 +47,9 @@ ms.locfileid: "65473327"
 
 各関数は、[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) のインスタンスを取得して、メッセージ ログを処理します。 テストによっては、メッセージをログに記録しないことも、ログの実装方法に対する懸念がないこともあります。 その他のテストは、テストを渡すかどうかを判断するために、ログに記録されたメッセージを評価する必要があります。
 
-`ListLogger` クラスは、`ILogger` インターフェイスを実装するためのもので、テスト中に評価するメッセージの内部リストに保持されます。
+`ListLogger` クラスは、`ILogger` インターフェイスを実装し、テスト中に評価するメッセージの内部リストを保持します。
 
-*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
+*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using System;
@@ -73,7 +67,7 @@ namespace Functions.Tests
 }
 ```
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -119,7 +113,7 @@ namespace Functions.Tests
 
 `Logs` コレクションは `List<string>` のインスタンスであり、コンストラクターで初期化されます。
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**LoggerTypes.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**LoggerTypes.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 namespace Functions.Tests
@@ -133,7 +127,7 @@ namespace Functions.Tests
 ```
 この列挙型は、テストで使用されるロガーの種類を指定します。 
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**TestFactory.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**TestFactory.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -204,7 +198,7 @@ namespace Functions.Tests
 
 - **CreateLogger**:このメソッドは、ロガーの種類に応じて、テストに使用されるロガー クラスを返します。 `ListLogger` は、テストで評価に使用できるログ記録されたメッセージを追跡します。
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**FunctionsTests.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**FunctionsTests.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -221,7 +215,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal("Hello, Bill", response.Value);
         }
 
@@ -230,7 +224,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal($"Hello, {queryStringValue}", response.Value);
         }
 
@@ -257,13 +251,13 @@ namespace Functions.Tests
 
 ### <a name="run-tests"></a>テストの実行
 
-テストを実行するには、**テスト エクスプローラー**に移動し、**[すべて実行]** の順にクリックします。
+テストを実行するには、**テスト エクスプローラー**に移動し、 **[すべて実行]** の順にクリックします。
 
 ![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>テストのデバッグ
 
-テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、**[実行] > [前回の実行をデバッグする]** の順にクリックします。
+テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、 **[実行] > [前回の実行をデバッグする]** の順にクリックします。
 
 ## <a name="javascript-in-vs-code"></a>VS Code での JavaScript
 
@@ -310,9 +304,10 @@ module.exports = {
     IsPastDue: false
 };
 ```
-このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。
 
-次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://code.visualstudio.com/tutorials/functions-extension/getting-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。 テスト ハーネスは結果をテストするために関数を直接呼び出すだけなので、ここでは NCRONTAB 式などのタイマー構成は必要ありません。
+
+次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](/azure/javascript/tutorial-vscode-serverless-node-01)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 
 ```javascript
 const httpFunction = require('./index');
@@ -364,7 +359,8 @@ npm test
   "type": "node",
   "request": "launch",
   "name": "Jest Tests",
-  "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+  "disableOptimisticBPs": true,
+  "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
   "args": [
       "-i"
   ],
@@ -374,7 +370,7 @@ npm test
 
 次に、テストにブレークポイントを設定し、**F5** を押します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関数に対する自動テストを記述する方法を習得したので、以下のリソースに進みます。
 - [HTTP によってトリガーされない関数を手動で実行する](./functions-manually-run-non-http.md)

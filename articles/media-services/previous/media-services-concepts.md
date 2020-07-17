@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services の概念 | Microsoft Docs
-description: このトピックでは、Azure Media Services の概念の概要を説明します。
+description: この記事では、Microsoft Azure Media Services の概念の概要を説明し、その他の記事へのリンクを提供します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681557"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160224"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念 
 
@@ -27,7 +27,7 @@ ms.locfileid: "64681557"
 
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
-## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>資産とストレージ
+## <a name="assets-and-storage"></a><a id="assets"/>資産とストレージ
 ### <a name="assets"></a>アセット
 [アセット](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルがアセットにアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
@@ -68,14 +68,14 @@ Media Services によって生成された BLOB コンテナーの内容を変�
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
 ### <a name="blob-container"></a>BLOB コンテナー
-BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB コンテナーは、アクセス制御のための境界点として Media Services で使用され、Shared Access Signature (SAS) ロケーターとして資産上で使用されます。 Azure Storage アカウントに含めることができる BLOB コンテナー数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
+BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB コンテナーは、アクセス制御のための境界点として Media Services で使用され、Shared Access Signature (SAS) ロケーターとして資産上で使用されます。 Azure Storage アカウントに含めることができる BLOB コンテナー数は無制限です。 コンテナーには、BLOB を無制限に格納できます。
 
 >[!NOTE]
 > Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 > 
 > 
 
-### <a name="a-idlocatorslocators"></a><a id="locators"/>ロケーター
+### <a name="locators"></a><a id="locators"/>ロケーター
 [ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
 Media Services では、2 種類のロケーターがサポートされています。メディアをストリーミングしたり (MPEG DASH、HLS、Smooth Streaming など)、メディアを徐々にダウンロードしたりするために使用される OnDemandOrigin ロケーター、およびメディア ファイルを Azure ストレージとの間でアップロードまたはダウンロードするために使用される SAS URL ロケーター。 
@@ -91,7 +91,7 @@ Azure のストレージにアクセスする場合には必ず、ストレー�
 
 ジョブには、実行する処理に関するメタデータが含まれます。 ジョブ内の複数の [タスク](https://docs.microsoft.com/rest/api/media/operations/task)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。 ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。 この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
-## <a id="encoding"></a>エンコード
+## <a name="encoding"></a><a id="encoding"></a>エンコード
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
 Media Services を使い始める場合、コーデックとファイル形式の違いを理解することが重要です。
@@ -111,7 +111,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 ## <a name="live-streaming"></a>ライブ ストリーミング
 Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision、および Tricaster エンコーダー。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Live Encoder、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision エンコーダー。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 * シングル ビットレートのストリーム (RTMP または Smooth Streaming (Fragmented MP4) のいずれかの形式) は、Media Services でのライブ エンコードの実行が有効になっているチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 ### <a name="channel"></a>チャネル
@@ -160,7 +160,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 - [PlayReady/Widevine による保護](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>配信
-### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>ダイナミック パッケージ
+### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>ダイナミック パッケージ
 Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
@@ -190,21 +190,21 @@ Media Services におけるコンテンツ配信ワークフローの手順の 1
 >[!NOTE]
 >プログレッシブ ダウンロードで使用したい場合は、暗号化された資産の暗号化を解除する必要があります。
 
-ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、資産への基本パスが提供されます。 それに MP4 ファイルの名前を付加する必要があります。 例: 
+ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、資産への基本パスが提供されます。 それに MP4 ファイルの名前を付加する必要があります。 次に例を示します。
 
-http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 ### <a name="streaming-urls"></a>ストリーミング URL
 コンテンツをクライアントにストリーミングします。 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれているアセットの基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターの Path の値とマニフェスト (filename.ism) ファイルの名前を連結する必要があります。 その後、/Manifest と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
-SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
+TLS 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した TLS はサポートされていません。  
 
 >[!NOTE]
->SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
+>TLS 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、TLS がサポートされません。 URL が旧形式である場合、TLS ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 TLS でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
 
 次の一覧では、さまざまなストリーミング形式について説明し、例を示します。
 
-* Smooth Streaming
+* スムーズ ストリーミング
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
 
@@ -227,6 +227,10 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

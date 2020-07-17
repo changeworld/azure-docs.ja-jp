@@ -5,21 +5,16 @@ services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: ''
-ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244680"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68359591"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
 OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
@@ -72,5 +67,5 @@ foreach($subscription in Get-AzureSubscription) {
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
 ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。 サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。

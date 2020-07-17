@@ -1,19 +1,18 @@
 ---
 title: Azure Files の共有スナップショットの概要 | Microsoft Docs
 description: 共有スナップショットは、Azure Files 共有の読み取り専用バージョンであり、共有をバックアップする手段として特定の時点で取得されます。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235816"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176143"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -38,7 +37,7 @@ REST API と SMB の両方を使用して、共有のスナップショットを
 
 共有スナップショット機能は、ファイル共有レベルで提供されます。 取得は、個々のファイルを復元できるように個々のファイル レベルで提供されます。 SMB、REST API、ポータル、クライアント ライブラリ、または PowerShell/CLI ツールを使用して完全なファイル共有を復元できます。
 
-ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http://storagesample.core.file.windows.net/myshare の場合、共有スナップショットの URI は次のようになります。
+ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http:\//storagesample.core.file.windows.net/myshare の場合、共有スナップショット URI は次のようになります。
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -72,7 +71,7 @@ Azure Files で現在許可されている共有スナップショットの最�
 
 共有スナップショットはコピー後もそのまま残りますが、ベース ファイル共有は、共有スナップショットで使用可能だったデータのコピーで上書きされます。 復元されたファイルはすべて「変更されたコンテンツ」としてカウントされます。
 
-共有スナップショット内のファイルを別の名前でコピー先にコピーできます。 結果として得られるコピー先ファイルは書き込み可能なファイルであり、共有スナップショットではありません。
+共有スナップショット内のファイルを別の名前で別のコピー先にコピーできます。 結果として得られるコピー先ファイルは書き込み可能なファイルであり、共有スナップショットではありません。 この場合、ベース ファイル共有はそのまま残ります。
 
 コピー先ファイルをコピーで上書きしても、元のコピー先ファイルに関連付けられた共有スナップショットは元の状態のままになります。
 
@@ -83,7 +82,7 @@ Azure でインフラストラクチャを実行するときには、可能な�
 
 共有スナップショットは、ファイル レベルの保護のみを提供します。 共有スナップショットでは、タイプミスによるファイル共有またはストレージ アカウントの削除を防ぐことはできません。 ストレージ アカウントを誤って削除しないようにするために、ストレージ アカウントまたはリソース グループをロックできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 次のツールで共有スナップショットを操作する方法:
     - [PowerShell](storage-how-to-use-files-powershell.md)
     - [CLI](storage-how-to-use-files-cli.md)

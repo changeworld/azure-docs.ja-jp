@@ -1,74 +1,94 @@
 ---
-title: テンプレートを使用して Azure Firewall をデプロイする
-description: テンプレートを使用して Azure Firewall をデプロイする
+title: クイック スタート:可用性ゾーンを使用して Azure Firewall を作成する - Resource Manager テンプレート
+description: テンプレートを使用して Azure Firewall をデプロイします。 仮想ネットワークには、3 つのサブネットを含む 1 つの VNet があります。 ジャンプ ボックスおよびサーバーとして、2 つの Windows Server 仮想マシンをデプロイします。
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
-ms.topic: article
-ms.date: 12/01/2018
+ms.topic: quickstart
+ms.custom: subject-armqs
+ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66115684"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683713"
 ---
-# <a name="deploy-azure-firewall-using-a-template"></a>テンプレートを使用して Azure Firewall をデプロイする
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - Resource Manager テンプレート
 
-[[Create AzureFirewall]\(AzureFirewall の作成\) サンドボックス セットアップ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox)では、ファイアウォールを使用してテスト ネットワーク環境が作成されます。 ネットワークには、次の 3 つのサブネットを含む 1 つの仮想ネットワーク (VNet) があります。*AzureFirewallSubnet*、*ServersSubnet*、*JumpboxSubnet*。 *ServersSubnet* と *JumpboxSubnet* には、それぞれ 1 つの 2 コア Windows Server 仮想マシンがあります。
+このクイックスタートでは、Resource Manager テンプレートを使用して、3 つの可用性ゾーンに Azure Firewall をデプロイします。 
 
-ファイアウォールは、*AzureFirewallSubnet* サブネット内にあり、*www.microsoft.com* へのアクセスを許可する単一のルールを含むアプリケーション ルール コレクションを備えています。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+このテンプレートでは、ファイアウォールを使用したテスト ネットワーク環境を作成します。 ネットワークには、次の 3 つのサブネットを含む 1 つの仮想ネットワーク (VNet) があります。*AzureFirewallSubnet*、*ServersSubnet*、*JumpboxSubnet*。 *ServersSubnet* と *JumpboxSubnet* には、それぞれ 1 つの 2 コア Windows Server 仮想マシンがあります。
+
+ファイアウォールは、*AzureFirewallSubnet* サブネット内にあり、`www.microsoft.com` へのアクセスを許可する単一のルールを含むアプリケーション ルール コレクションを備えています。
 
 ユーザー定義のルートは、ファイアウォール規則が適用されるファイアウォールを経由する *ServersSubnet* サブネットからのネットワーク トラフィックを指します。
 
 Azure Firewall の詳細については、[Azure portal を使用した Azure Firewall のデプロイと構成](tutorial-firewall-deploy-portal.md)に関するページを参照してください。
 
+## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="use-the-template-to-deploy-azure-firewall"></a>テンプレートを使用して Azure Firewall をデプロイする
+## <a name="create-an-azure-firewall-with-availability-zones"></a>可用性ゾーンを使用して Azure Firewall を作成する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+このテンプレートは、可用性ゾーンを使用して Azure Firewall を作成すると共に、Azure Firewall をサポートするために必要なリソースも作成します。
 
-**テンプレートを使用して Azure Firewall をインストールしてデプロイするには:** 
+### <a name="review-the-template"></a>テンプレートを確認する
 
-1. [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) でテンプレートにアクセスします。
-   
-1. 概要を読み、デプロイする準備ができたら、**[Azure へのデプロイ]** を選択します。
-   
-1. 必要に応じて、Azure portal にサインインします。 
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)からのものです。
 
-1. ポータルの **[Create a sandbox setup of AzureFirewall]\(AzureFirewall のサンド ボックス設定の作成\)** ページで、次の値を入力または選択します。
-   
-   - **リソース グループ**: **[新規作成]** を選択して、リソース グループの名前を入力し、**[OK]** を選択します。 
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
+
+このテンプレートには、次の複数の Azure リソースが定義されています。
+
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
+
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
+
+Azure への Resource Manager テンプレートのデプロイ:
+
+1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートは、Azure Firewall、ネットワーク インフラストラクチャ、2 つの仮想マシンを作成します。
+
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
+2. ポータルの **[Create a sandbox setup of Azure Firewall with Zones]\(ゾーンを使用した Azure Firewall のサンドボックス設定の作成\)** ページで、次の値を入力または選択します。
+   - **[リソース グループ]** : **[新規作成]** を選択して、リソース グループの名前を入力し、 **[OK]** を選択します。 
    - **仮想ネットワーク名**: 新しい VNet の名前を入力します。 
    - **管理ユーザー名**: 管理者ユーザー アカウントのユーザー名を入力します。
    - **管理パスワード**: 管理者パスワードを入力します。 
-   
-1. 使用条件を読み、**[上記の使用条件に同意する]** をオンにします。
-   
-1. **[購入]** を選択します。
-   
-   リソースの作成には数分かかります。 
-   
-1. ファイアウォールを使用して作成されたリソースを探索します。 
+
+3. 使用条件を読み、 **[上記の使用条件に同意する]** をオンにして、 **[購入]** を選択します。 このデプロイの完了には、10 分以上かかる場合があります。
+
+## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
+
+ファイアウォールを使用して作成されたリソースを探索します。
 
 テンプレートにあるファイアウォールの JSON の構文とプロパティに関する詳細については、[Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)に関する記事を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-リソースが必要なくなった場合は、PowerShell コマンド [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループ、ファイアウォール、およびすべての関連リソースを削除できます。 *MyResourceGroup* という名前のリソース グループを削除するには、次を実行します。 
+リソースが必要なくなった場合は、PowerShell コマンド `Remove-AzResourceGroup` を実行して、リソース グループ、ファイアウォール、およびすべての関連リソースを削除できます。 *MyResourceGroup* という名前のリソース グループを削除するには、次を実行します。 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
-引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールをまだ削除しないでください。 
 
-## <a name="next-steps"></a>次の手順
+引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールを削除しないでください。 
+
+## <a name="next-steps"></a>次のステップ
 
 次に、Azure Firewall のログを監視することができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](tutorial-diagnostics.md)

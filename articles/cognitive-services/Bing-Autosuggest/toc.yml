@@ -1,5 +1,5 @@
 - name: Bing Autosuggest のドキュメント
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概要
   items:
     - name: Bing Autosuggest とは
@@ -7,26 +7,32 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API のクイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+    - name: REST API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: クライアント ライブラリ
+      items:
+        - name: Bing Autosuggest クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: 単一ページの Web アプリ
       href: tutorials/autosuggest.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: v5 から v7 へのアップグレード
       href: bing-autosuggest-upgrade-guide-v5-to-v7.md
@@ -47,9 +53,11 @@
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest'
     - name: 使用と表示の要件
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
@@ -71,9 +79,10 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: 試してみる
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: 言語とリージョンのサポート
+    - name: 言語のサポート
       href: language-support.md
     - name: Bing Autosuggest API 用の分析
-      href: bing-autosuggest-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

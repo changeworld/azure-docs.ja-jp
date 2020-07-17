@@ -6,12 +6,13 @@ author: vhorne
 ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7c30e0aa0ae9735f5d08e1a2c4d6e6d36d778e27
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.topic: conceptual
+ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410242"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73831836"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -54,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最初に、ファイアウォールをデプロイするために必要なリソースを含めるリソース グループを作成します。 次に、VNet、サブネット、およびテスト サーバーを作成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 このリソース グループには、デプロイのためのすべてのリソースが含まれます。
 
@@ -66,15 +67,14 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 
 この仮想ネットワークには次の 3 つのサブネットが含まれています。
 
+> [!NOTE]
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+
 ```azurepowershell
-$FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/24
+$FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
 $Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
-
-> [!NOTE]
-> AzureFirewallSubnet サブネットの最小サイズは /26 です。
-
 次に、仮想ネットワークを作成します。
 
 ```azurepowershell
@@ -241,14 +241,14 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   www.google.com の要求は成功し、www.microsoft.com の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
+   `www.google.com` 要求は成功し、`www.microsoft.com` 要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 
 * 構成された外部 DNS サーバーを使用して DNS 名を解決できます。
 * 1 つの許可された FQDN は参照できますが、それ以外は参照できません。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
@@ -256,6 +256,6 @@ $NIC | Set-AzNetworkInterface
 Remove-AzResourceGroup -Name Test-FW-RG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

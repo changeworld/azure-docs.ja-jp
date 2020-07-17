@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: b6eb0eb97c3e172bf6099b9f16d9784c48a602fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119002"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181304"
 ---
 > [!div class="op_single_selector"]
 > * [ODBC](../articles/hdinsight/hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)

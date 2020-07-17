@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 04cfdd1f96f83898710b6f292116f0afddc8df96
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237231"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79096820"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 
 
@@ -29,7 +29,7 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
 2. **[すべてのリソース]** から、自分の Azure Cosmos DB アカウントを見つけて移動し、キーを選択して、**プライマリ接続文字列**をコピーします。  
 
-3. https://cosmos.azure.com/ にアクセスし、接続文字列を貼り付けて、 **[接続]** を選択します。 接続文字列を使用すると、時間制限なく Azure Cosmos DB エクスプローラーにアクセスできます。  
+3. [https://cosmos.azure.com/](https://cosmos.azure.com/ ) にアクセスし、接続文字列を貼り付けて、 **[接続]** を選択します。 接続文字列を使用すると、時間制限なく Azure Cosmos DB エクスプローラーにアクセスできます。  
 
    自分の Azure Cosmos DB アカウントへの一時的なアクセスを他のユーザーに提供するには、読み取り/書き込みアクセス URL および読み取りアクセス URL を使用ます。 
 
@@ -47,7 +47,9 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
 現在、一時的な読み取り/書き込みまたは読み取りアクセスの共有を可能にする **[全画面表示で開く]** エクスペリエンスは、Azure Cosmos DB Gremlin と Table API アカウントではまだサポートされていません。 ただし、Azure Cosmos DB エクスプローラーに接続文字列を渡すことによって、Gremlin と Table API アカウントを表示することができます。 
 
-## <a name="next-steps"></a>次の手順
+現在、UUID を含むドキュメントの表示はデータ エクスプローラーではサポートされていません。 これは、コレクションの読み込みには影響せず、個々のドキュメントまたはこれらのドキュメントを含むクエリの表示にのみ影響します。 これらのドキュメントを表示および管理するには、これらのドキュメントを作成するために最初に使用したツールを引き続き使用する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB エクスプローラーでのデータの管理方法を学んだので、次の段階に進みましょう。
 
 * SQL 構文を使用して[クエリ](sql-api-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](stored-procedures-triggers-udfs.md)を実行します。 

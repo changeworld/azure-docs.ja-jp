@@ -1,18 +1,19 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 48cd41d432c5969fc4128b055ca61fc86a57bdd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149658"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74789454"
 ---
-### <a name="prerequisites"></a>前提条件
-* [OneDrive](http://OneDrive.com) アカウント 
+## <a name="prerequisites"></a>前提条件
+
+* [OneDrive](https://OneDrive.com) アカウント 
 
 ロジック アプリで OneDrive for Business アカウントを使用するには、OneDrive for Business アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
 

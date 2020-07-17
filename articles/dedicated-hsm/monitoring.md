@@ -2,8 +2,8 @@
 title: 監視オプション - Azure 専用 HSM | Microsoft Docs
 description: Azure 専用 HSM の監視オプションと監視責任の概要です
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 76a50c483b9246e3e2f9df97d5287f3e2fbd9897
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104620"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "70881419"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure Dedicated HSM の監視
 
@@ -36,7 +36,7 @@ Azure Dedicated HSM サービスでは、完全な管理制御と管理責任が
 Dedicated HSM サービスの価値提案は、お客様が、特にクラウド配信デバイスであることを考慮して、デバイスを制御できることです。 この制御の結果として、デバイスの正常性を監視および管理する責任があります。 Gemalto SafeNet デバイスには、SNMP および Syslog 実装のガイダンスが付属しています。 Dedicated HSM サービスのお客様には、Microsoft モニター アカウントがアクティブのままであってもこれを使用することをお勧めします。また、Microsoft モニター アカウントを無効にしている場合は必須と考えてください。
 いずれの手法を使用する場合でも、お客様は問題を特定し、Microsoft のサポートに連絡して適切な修正作業を始めることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 どのようなデバイスでも、プロビジョニングやアプリケーションの設計、アプリケーションのデプロイ前に、高可用性やセキュリティなど、サービスのすべての主要概念を十分に理解しておくことをお勧めします。 その他の概念レベルのトピックを次に示します。
 

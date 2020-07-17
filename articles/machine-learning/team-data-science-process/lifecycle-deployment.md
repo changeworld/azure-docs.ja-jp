@@ -3,20 +3,20 @@ title: Team Data Science Process ライフサイクルのデプロイ ステー�
 description: データ サイエンス プロジェクトのデプロイ ステージの目標、タスク、成果物
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452517"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76720488"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのデプロイ ステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "55452517"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -39,7 +39,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す主な課題に取り組みます。
 
-**モデルの運用化**:モデルとパイプラインを、アプリケーションで利用できるように運用環境または運用環境に似た環境にデプロイします。
+**モデルの運用化**: モデルとパイプラインを、アプリケーションで利用できるように運用環境または運用環境に似た環境にデプロイします。
 
 ### <a name="operationalize-a-model"></a>モデルの運用化
 うまく機能する一連のモデルが得られたら、他のアプリケーションから利用できるように、それらのモデルを運用できるようにします。 予測は、ビジネス要件に応じてリアルタイムまたはバッチ処理で行われます。 モデルをデプロイするには、オープン API インターフェイスを使用してそれらを公開します。 インターフェイスを使用して、以下のさまざまなアプリケーションでモデルを簡単に使用できるようにすることができます。
@@ -50,7 +50,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
    * 基幹業務アプリケーション 
    * バックエンド アプリケーション 
 
-Azure Machine Learning Web サービスによるモデルの運用化の例については、「[Azure Machine Learning Web サービスをデプロイする](../studio/publish-a-machine-learning-web-service.md)」を参照してください。 ベスト プラクティスは、デプロイする運用モデルとデータ パイプラインにテレメトリと監視を組み込むことです。 これは、その後のシステム状態のレポートとトラブルシューティングに役立ちます。  
+Azure Machine Learning Web サービスによるモデルの運用化の例については、「[Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」を参照してください。 ベスト プラクティスは、デプロイする運用モデルとデータ パイプラインにテレメトリと監視を組み込むことです。 これは、その後のシステム状態のレポートとトラブルシューティングに役立ちます。  
 
 ## <a name="artifacts"></a>アーティファクト
 
@@ -59,16 +59,16 @@ Azure Machine Learning Web サービスによるモデルの運用化の例に�
 * 最終的なソリューション アーキテクチャ ドキュメント
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
+特定のシナリオのプロセスでのすべての手順を示す完全なチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
 Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」を参照してください。

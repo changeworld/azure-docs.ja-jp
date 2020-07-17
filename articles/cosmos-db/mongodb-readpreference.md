@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API を使用して MongoDB 読み取り設定を使用する
+title: Azure Cosmos DB の MongoDB 用 API を使用して読み取り設定を使用する
 description: Azure Cosmos DB の MongoDB 用 API を使用して MongoDB 読み取り設定を使用する方法について説明します
 author: sivethe
 ms.author: sivethe
@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 02/26/2019
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036462"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409997"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法について説明します
 
@@ -86,7 +86,7 @@ MongoDB プロトコルには、クライアントが使用できる以下の読
 一般的なシナリオに基づいて、次の設定を使用することをお勧めします。
 
 1. **待ち時間の短い読み取り**が必要な場合は、**NEAREST** 読み取り設定モードを使用します。 この設定では、読み取り操作で、最も近い使用可能リージョンが利用されます。 最も近いリージョンが WRITE リージョンである場合、これらの操作はそのリージョンを対象にすることに注意してください。
-2. **高可用性と読み取りの Geo 分散**が必要な場合 (待ち時間は制約でない場合) は、**SECONDARY PREFERRED** 読み取り設定モードを使用します。 この設定では、読み取り操作で、使用可能な READ リージョンが利用されます。 使用可能な READ リージョンがない場合、要求は WRITE リージョンに送られます。
+2. **高可用性と読み取りの geo ディストリビューション**が必要な (待ち時間が制約でない) 場合は、**PRIMARY PREFERRED** または **SECONDARY PREFERRED** 読み取り設定モードを使用します。 この設定では、読み取り操作がそれぞれ、使用可能な WRITE または READ リージョンに転送されます。 そのリージョンを使用できない場合は、読み取り設定の動作に従って、要求は次の使用可能なリージョンに転送されます。
 
 サンプル アプリケーションの次のスニペットは、NodeJS で NEAREST 読み取り設定を構成する方法を示しています。
 
@@ -161,14 +161,14 @@ MongoDB プロトコルでは、読み取り設定モードの他に、タグを
 
 この記事では、Azure Cosmos DB の MongoDB 用 API で読み取り設定を使用して、読み取り操作をグローバルに配布する方法について説明しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリの使用を続けない場合は、以下の手順に従い、この記事で作成したすべてのリソースを Azure Portal で削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
 * [Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する](tutorial-global-distribution-mongodb.md)

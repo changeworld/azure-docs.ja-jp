@@ -4,22 +4,21 @@ description: SAP HANA on Azure (L インスタンス) でのディザスター �
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822546"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70101258"
 ---
 # <a name="disaster-recovery-principles"></a>ディザスター リカバリーの原則
 
@@ -105,6 +104,6 @@ HANA L インスタンスでは、さまざまな Azure リージョンの HANA 
 
 フェールオーバーが発生した場合、最新のストレージ スナップショットではなく、古いストレージ スナップショットへの復元を選択することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[ディザスター リカバリーのフェールオーバー手順](hana-failover-procedure.md)」を参照してください。

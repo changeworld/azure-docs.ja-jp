@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と BambooHR の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と BambooHR の統合 | Microsoft Docs'
 description: Azure Active Directory と BambooHR の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a054274da0c83fa5f079e05a1c648c1fc693fd7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900329"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73157748"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル:Azure Active Directory と BambooHR の統合
+# <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル: Azure Active Directory と BambooHR の統合
 
 このチュートリアルでは、BambooHR と Azure Active Directory (Azure AD) を統合する方法について説明します。
 BambooHR と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ BambooHR の Azure AD への統合を構成するには、BambooHR をギャラ�
 
 **ギャラリーから BambooHR を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ BambooHR の Azure AD への統合を構成するには、BambooHR をギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**BambooHR**」と入力し、結果パネルで **[BambooHR]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**BambooHR**」と入力し、結果パネルで **[BambooHR]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の BambooHR](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ BambooHR で Azure AD のシングル サインオンを構成およびテスト
 
 BambooHR を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **BambooHR** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **BambooHR** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +113,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
     > [!NOTE]
     > **サインオン URL** は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 値を取得するには、[BambooHR クライアント サポート チーム](https://www.bamboohr.com/contact.php)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -132,7 +133,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
 2. ホーム ページで、次の操作を行います。
    
-    ![BambooHR シングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "シングル サインオン")   
+    ![BambooHR のシングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "[Single Sign-On]")   
 
     a. **[アプリ]** を選択します。
    
@@ -142,7 +143,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
 3. **[SAML シングル サインオン]** ウィンドウで、次の手順を実行します。
    
-    ![[SAML シングル サインオン] ウィンドウ](./media/bamboo-hr-tutorial/IC796692.png "[SAML シングル サインオン]")
+    ![SAML のシングル サインオン ページ](./media/bamboo-hr-tutorial/IC796692.png "SAML シングル サインオン")
    
     a. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、手順 6. で Azure portal からコピーした**ログイン URL** を貼り付けます。
       
@@ -154,7 +155,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -179,7 +180,7 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
 このセクションでは、BambooHR へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[BambooHR]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[BambooHR]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -191,15 +192,15 @@ BambooHR を使用して Azure AD のシングル サインオンを構成する
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-bamboohr-test-user"></a>BambooHR テスト ユーザーの作成
 
@@ -209,11 +210,11 @@ Azure AD ユーザーで BambooHR にサインインできるようにするに�
 
 2. 上部のツールバーで **[Settings]\(設定\)** を選択します。
    
-    ![[Settings]\(設定\) ボタン](./media/bamboo-hr-tutorial/IC796694.png "[Settings]\(設定\)")
+    ![[設定] ボタン](./media/bamboo-hr-tutorial/IC796694.png "設定")
 
 3. **[概要]** を選択します。
 
-4. 左側のウィンドウで **[Security]\(セキュリティ\)** > **[Users]\(ユーザー\)** を選択します。
+4. 左側のウィンドウで **[Security]\(セキュリティ\)**  >  **[Users]\(ユーザー\)** を選択します。
 
 5. 設定しようとしている有効な Azure AD アカウントのユーザー名、パスワード、メール アドレスを入力します。
 

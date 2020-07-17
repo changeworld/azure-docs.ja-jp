@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-author: snehithm
-ms.author: snmuvva
-ms.date: 9/18/2018
+ms.date: 03/17/2020
 ms.topic: conceptual
-ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342985"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397972"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -20,7 +17,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
-メトリックのアラート ルールを定義するには、監視対象のターゲット リソース、メトリック名、条件タイプ (静的または動的)、および条件 (演算子としきい値/秘密度) と、アラート ルールが発生したときにトリガーされるアクション グループを指定します。 条件タイプは、しきい値の決定方法に影響を与えます。 [動的しきい値の条件タイプと秘密度のオプションの詳細については、こちらをご覧ください](alerts-dynamic-thresholds.md)。
+メトリックのアラート ルールを定義するには、監視対象のターゲット リソース、メトリック名、条件タイプ (静的または動的)、および条件 (演算子としきい値/秘密度) と、アラート ルールが発生したときにトリガーされるアクション グループを指定します。 条件タイプは、しきい値の決定方法に影響を与えます。 [動的しきい値の条件の種類と秘密度のオプションの詳細については、こちらをご覧ください](alerts-dynamic-thresholds.md)。
 
 ### <a name="alert-rule-with-static-condition-type"></a>静的条件タイプのアラート ルール
 
@@ -29,13 +26,15 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされる累計時間は Min, Max, Avg, Total です): 平均
+- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされている集計時間には Min、Max、Avg、Total、Count があります):Average
 - 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
-- 演算子: より大きい
+- 演算子:より大きい
 - しきい値: 70
 
 アラート ルールの作成時から、モニターは 1 分ごとに実行し、直近 5 分間のメトリック値を調べ、それらの値の平均値が 70 を超えるかどうかをチェックします。 条件が満たされている場合、つまり直近 5 分間の平均 CPU が 70 を超えている場合、アラート ルールによりアクティブ通知が生成されます。 アラート ルールに関連付けられているアクション グループで、電子メールまたは web フック アクションを構成した場合、両方でアクティブ通知を受け取ります。
+
+1 つのルールに複数の条件を使用している場合、そのルールは条件を "and" で結合します。  つまり、アラートのすべての条件が true と評価されたときにアラートが発生し、条件のいずれかが true ではなくなったときに解決します。 この種類のアラートの and の例は、"CPU が 90% を超過" かつ "キューの長さが 300 項目を超過" である場合のアラートなどです。 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>動的条件タイプのアラート ルール
 
@@ -44,10 +43,10 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 動的
-- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされる累計時間は Min, Max, Avg, Total です): 平均
+- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされている集計時間には Min、Max、Avg、Total、Count があります):Average
 - 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
-- 演算子: より大きい
+- 演算子:より大きい
 - 秘密度: Medium
 - ルックバック期間: 4
 - 違反数: 4
@@ -62,7 +61,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 
 後続のチェックで "myVM" の使用率がしきい値を超えている場合、アラート ルールは、条件が解決されるまで再実行されません。
 
-しばらくして、"myVM" の使用率が標準 (しきい値未満) に戻った場合、動作は次のようになります。 アラート ルールでは、その条件をさらに 2 回監視してから、解決済みの通知を送信します。 アラート ルールは、条件が変動している場合のノイズを減らすため、3 つの連続する期間にアラート条件が検出されない場合に、解決済み/非アクティブ化済みのメッセージを送信します。
+しばらくすると、"myVM" の使用率が標準 (しきい値未満) に戻ります。 アラート ルールでは、その条件をさらに 2 回監視してから、解決済みの通知を送信します。 アラート ルールは、条件が変動している場合のノイズを減らすため、3 つの連続する期間にアラート条件が検出されない場合に、解決済み/非アクティブ化済みのメッセージを送信します。
 
 解決済みの通知が Web フックまたは電子メールで送信されると、Azure portal でのアラート インスタンスの状態 (監視状態と呼ばれる) も解決済みに設定されます。
 
@@ -77,10 +76,10 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - 条件タイプ: 静的
 - Dimensions
   - Instance = InstanceName1, InstanceName2
-- 累計時間: 平均
+- 累計時間: Average
 - 期間: 直近 5 分間
 - 頻度: 1 分
-- 演算子: GreaterThan
+- 演算子:GreaterThan
 - しきい値: 70
 
 前に示したように、このルールは、直近 5 分間の平均 CPU 使用率が 70% を超えているかどうかを監視します。 ただし、同じルールによって web サイトを実行している 2 つのインスタンスを監視できます。 各インスタンスは個別に監視され、個別に通知が受領されます。
@@ -92,10 +91,10 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - 条件タイプ: 静的
 - Dimensions
   - インスタンス = *
-- 累計時間: 平均
+- 累計時間: Average
 - 期間: 直近 5 分間
 - 頻度: 1 分
-- 演算子: GreaterThan
+- 演算子:GreaterThan
 - しきい値: 70
 
 このルールは、このインスタンスのすべての値を自動的に監視します。つまり、 インスタンスが生成されるたびにメトリックのアラート ルールを変更しなくても、それを監視できます。
@@ -109,10 +108,10 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - 条件タイプ: 動的
 - Dimensions
   - インスタンス = *
-- 累計時間: 平均
+- 累計時間: Average
 - 期間: 直近 5 分間
 - 頻度: 1 分
-- 演算子: GreaterThan
+- 演算子:GreaterThan
 - 秘密度: Medium
 - ルックバック期間: 1
 - 違反数: 1
@@ -123,15 +122,28 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
-ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor はプレビューで 1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 現在、この機能は仮想マシンでのみサポートされています。 また、1 つのメトリック アラートが 1 つの Azure リージョン内のリソースを監視することもできます。
+ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor では、同じ Azure リージョンに存在するリソースに対して、メトリック警告ルールが 1 つの (同じ種類の) 複数のリソースの監視をサポートしています。 
 
-1 つのメトリック アラートでの監視範囲は、次の 3 つのいずれかの方法で指定することができます。
+この機能は現在、次の Azure クラウドにおける次のサービスのプラットフォーム メトリック (カスタム メトリックではありません) でサポートされています。
 
-- サブスクリプション内の 1 つの Azure リージョン内の仮想マシンのリストとして
+| サービス | パブリック Azure | Government | 中国 |
+|:--------|:--------|:--------|:--------|
+| 仮想マシン  | **はい** | いいえ | いいえ |
+| SQL Server データベース | **はい** | **はい** | いいえ |
+| SQL Server エラスティック プール | **はい** | **はい** | いいえ |
+| Data Box Edge のデバイス | **はい** | **はい** | いいえ |
+
+1 つのメトリック警告ルールで監視の範囲を指定するには、次の 3 つの方法があります。 たとえば、仮想マシンではスコープを次のように指定できます。  
+
+- サブスクリプション内の 1 つの Azure リージョン内の仮想マシンのリスト
 - サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
 
-複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 仮想マシンごとに個別の通知が届きます。
+複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 監視対象のリソースごとに個別の通知が届きます。
+
+> [!NOTE]
+>
+> 複数のリソースを監視するメトリック アラート ルールの場合、許可される条件は 1 つだけです。
 
 ## <a name="typical-latency"></a>一般的な待機時間
 
@@ -141,43 +153,8 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 サポートされているリソースの種類の完全な一覧については、こちらの[記事](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
 
-現在クラシック メトリック アラートを使用していて、使用しているすべてのリソースの種類がメトリック アラートでサポートされるかどうかを確認する場合のために、次の表に、クラシック メトリック アラートでサポートされているリソースの種類と、これらが現在のメトリック アラートでサポートされているかどうかを示します。
 
-|クラシック メトリック アラートでサポートされているリソースの種類 | メトリック アラートでサポートされている |
-|-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | はい |
-| Microsoft.Batch/batchAccounts| はい|
-|Microsoft.Cache/redis| はい |
-|Microsoft.ClassicCompute/virtualMachines | いいえ  |
-|Microsoft.ClassicCompute/domainNames/slots/roles | いいえ |
-|Microsoft.CognitiveServices/accounts | いいえ  |
-|Microsoft.Compute/virtualMachines | はい|
-|Microsoft.Compute/virtualMachineScaleSets| はい|
-|Microsoft.ClassicStorage/storageAccounts| いいえ  |
-|Microsoft.DataFactory/datafactories | はい|
-|Microsoft.DBforMySQL/servers| はい|
-|Microsoft.DBforPostgreSQL/servers| はい|
-|Microsoft.Devices/IotHubs | いいえ |
-|Microsoft.DocumentDB/databaseAccounts| はい|
-|Microsoft.EventHub/namespaces | はい|
-|Microsoft.Logic/workflows | はい|
-|Microsoft.Network/loadBalancers |はい|
-|Microsoft.Network/publicIPAddresses| はい|
-|Microsoft.Network/applicationGateways| はい|
-|Microsoft.Network/expressRouteCircuits| はい|
-|Microsoft.Network/trafficManagerProfiles | はい|
-|Microsoft.Search/searchServices | はい|
-|Microsoft.ServiceBus/namespaces| はい |
-|Microsoft.Storage/storageAccounts | はい|
-|Microsoft.StreamAnalytics/streamingjobs| はい|
-|Microsoft.TimeSeriesInsights/environments | はい|
-|Microsoft. Web/serverfarms | はい |
-|Microsoft. Web/sites (関数を除く) | はい|
-|Microsoft. Web/hostingEnvironments/multiRolePools | いいえ |
-|Microsoft. Web/hostingEnvironments/workerPools| いいえ  |
-|Microsoft.SQL/Servers | いいえ  |
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure でメトリック アラートを作成、表示、管理する方法を学習する](alerts-metric.md)
 - [Azure Resource Manager のテンプレートを使ってメトリック アラートを配置する方法を学習する](../../azure-monitor/platform/alerts-metric-create-templates.md)

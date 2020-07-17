@@ -1,26 +1,18 @@
 ---
-title: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成するためのチュートリアル | Microsoft Docs
-description: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成する方法について説明します
-services: cache
-documentationcenter: ''
+title: チュートリアル:Web アプリを作成する (キャッシュ アサイド) - Azure Cache for Redis
+description: キャッシュ アサイド パターンを使用する Web アプリを Azure Cache for Redis で作成する方法について説明します。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
+ms.author: yegu
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873031"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75411952"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
 
@@ -41,7 +33,7 @@ ms.locfileid: "65873031"
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
 * このチュートリアルは、[Azure Cache for Redis 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事の続きです。 クイックスタートを完了していない場合は、先に完了してください。
-* 以下のワークロードを指定して、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
+* 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
     * ASP.NET および Web の開発
     * Azure 開発
     * SQL Server Express LocalDB または [SQL Server 2017 Express エディション](https://www.microsoft.com/sql-server/sql-server-editions-express)を使用する .NET デスクトップ開発
@@ -630,7 +622,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
     ```
     この行は、`ViewBag.Msg` の値を表示します。これには、現在の操作に関する状態レポートが含まれています。 `ViewBag.Msg` は、前の手順のいずれかのアクション リンクをクリックしたときに設定されます。
 
-    ![Status message](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
+    ![ステータス メッセージ](./media/cache-web-app-cache-aside-leaderboard/cache-status-message.png)
 
 1. **F6** キーを押して、プロジェクトをビルドします。
 
@@ -671,7 +663,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+   | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
    | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
    | **場所** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |
@@ -699,7 +691,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
 1. Visual Studio で **ContosoTeamStats** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-    ![[発行]](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![発行](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. クイックスタートで作成した発行プロファイルと同じものを使用するには、 **[発行]** をクリックします。
 
@@ -723,12 +715,12 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
 いくつかのアクションをクリックし、各種のソースからデータを取得してみてください。 それぞれの方法で、データベースとキャッシュからデータを取得するのにかかる時間の違いをよく観察してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。 すべてのリソースは同じリソース グループに含まれているため、リソース グループを削除するという 1 つの操作で、それらをまとめて削除できます。 このトピックの手順では、*TestResources* という名前のリソース グループを使用しました。
 
 > [!IMPORTANT]
-> 削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホスティングするリソースを、維持したいリソースが含まれている既存のリソース グループ内に作成した場合は、該当するブレードから各リソースを個別に削除できます。
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホスティングするリソースを、維持したいリソースが含まれている既存のリソース グループ内に作成した場合は、該当するブレードから各リソースを個別に削除できます。
 >
 
 1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
@@ -741,7 +733,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
     しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis のスケーリング方法](./cache-how-to-scale.md)

@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Azure SQL Edge (プレビュー) のドキュメント
+summary: Azure SQL Edge は、IoT およびエッジのデプロイ向けに最適化されたリレーショナル データベース エンジンです。
+metadata:
+  title: Azure SQL Edge (プレビュー) のドキュメント
+  meta.description: Learn how to use Azure SQL Edge (Preview).
+  services: sql-database-edge
+  ms.service: sql-database-edge
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
+  ms.date: 05/19/2020
+  ms.openlocfilehash: a2e26d4bfbec3a139987e2a7a0fe21c429c740a5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593139"
+landingContent:
+- title: SQL Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Edge とは
+      url: overview.md
+  - linkListType: deploy
+    links:
+    - text: SQL Edge をデプロイする
+      url: deploy-portal.md
+- title: データの同期
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SQL Edge データと Azure Data Factory を同期する
+      url: tutorial-sync-data-factory.md
+    - text: SQL Edge データと SQL Database を同期する
+      url: tutorial-sync-data-sync.md
+- title: データ ストリーミング
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データ ストリーミング
+      url: stream-data.md
+    - text: カタログ ビューのストリーミング
+      url: streaming-catalog-views.md
+- title: 機械学習
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 機械学習と人工知能
+      url: onnx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL Edge に ONNX をデプロイする
+      url: deploy-onnx.md

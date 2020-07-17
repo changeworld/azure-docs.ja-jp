@@ -1,277 +1,229 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Speech Services のドキュメント
+### YamlMime:Hub
+title: Speech Service のドキュメント
+summary: 音声認識、音声合成、リアルタイムのトランザクションの取得、会話の文字起こし、ボットへの音声の統合を行います。
+brand: azure
 metadata:
-  title: Speech Services のドキュメント - チュートリアル、クイック スタート、API リファレンス
+  title: Speech Service のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
-  description: Speech Services により、開発者はアプリケーションに強力な音声認識機能を簡単に追加できます。 例として、音声コマンド制御とダイアログ、自然な言葉での会話、文字起こしやディクテーション、音声翻訳があります。
   services: cognitive-services
-  author: nitinme
-  manager: cgronlun
-  layout: LandingPage
-  ms.service: cognitive-services
-  ms.subservice: speech-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/06/2018
-  ms.author: erhopf
-  ms.custom: seodec18
-abstract:
-  description: Speech SDK または REST API と共に使用します。
-sections:
+  description: 音声認識、音声合成、リアルタイムのトランザクションの取得、会話の文字起こし、ボットへの音声の統合を行います。
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 03/24/2020
+  ms.author: trbye
+  ms.openlocfilehash: 87190c5cab772e4b8dc04672066e575b10c14533
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800776"
+highlightedContent:
+  items:
+  - title: 音声サービスとは
+    itemType: overview
+    url: overview.md
+  - title: Speech SDK について
+    itemType: overview
+    url: speech-sdk.md
+  - title: Speech SDK リリース ノート
+    itemType: whats-new
+    url: releasenotes.md
+  - title: 音声サービスの言語サポート
+    itemType: reference
+    url: language-support.md
+conceptualContent:
+  items:
+  - title: 音声テキスト変換
+    links:
+    - itemType: quickstart
+      text: マイクから音声を認識する
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: オーディオ ファイルから音声を認識する
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: how-to-guide
+      text: 音声認識の基礎
+      url: speech-to-text-basics.md
+    footerLink:
+      text: 詳細
+      url: index-speech-to-text.yml
+  - title: テキスト読み上げ
+    links:
+    - itemType: quickstart
+      text: スピーカーに音声を合成する
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: オーディオ ファイルに音声を合成する
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: how-to-guide
+      text: 音声合成の基本
+      url: text-to-speech-basics.md
+    footerLink:
+      text: 詳細
+      url: index-text-to-speech.yml
+  - title: 音声翻訳
+    links:
+    - itemType: quickstart
+      text: 音声テキスト変換の翻訳
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: 音声を複数の言語に翻訳する
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: how-to-guide
+      text: 音声翻訳の基本
+      url: speech-translation-basics.md
+    footerLink:
+      text: 詳細
+      url: index-speech-translation.yml
+  - title: 意図認識
+    links:
+    - itemType: quickstart
+      text: 音声、意図、エンティティを認識する
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: LUIS と C# を使用して音声から意図を認識する
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Language Understanding (LUIS) ポータル
+      url: https://www.luis.ai
+    footerLink:
+      text: 詳細
+      url: index-intent-recognition.yml
+  - title: 会話のシナリオ
+    links:
+    - itemType: overview
+      text: 会話の文字起こし (会議) について
+      url: conversation-transcription.md
+    - itemType: overview
+      text: マルチデバイスの会話 (会議) について
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: コール センターの文字起こし
+      url: call-center-transcription.md
+    footerLink:
+      text: 詳細
+      url: index-conversation-scenarios.yml
+  - title: 音声アシスタント
+    links:
+    - itemType: overview
+      text: 音声アシスタントについて
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: カスタム コマンドを使用して音声アシスタントを作成する
+      url: custom-commands.md
+    - itemType: get-started
+      text: Bot Framework を使用して音声アシスタントを作成する
+      url: direct-line-speech.md
+    footerLink:
+      text: 詳細
+      url: index-voice-assistants.yml
+  - title: Speaker Recognition
+    links:
+    - itemType: how-to-guide
+      text: Speaker Recognition について
+      url: ../Speaker-recognition/Home.md
+    - itemType: how-to-guide
+      text: Speaker Recognition API リファレンス
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
+  - title: ツール
+    links:
+    - itemType: overview
+      text: Speech CLI について (コードなしのコマンド ライン ツール)
+      url: spx-overview.md
+    - itemType: how-to-guide
+      text: Speech CLI の基本 (インストールと例)
+      url: spx-basics.md
+    - itemType: overview
+      text: Speech Studio について (カスタマイズ)
+      url: https://speech.microsoft.com
+  - title: Hosting
+    links:
+    - itemType: how-to-guide
+      text: 音声サービス コンテナー
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: Kubernetes と音声サービス コンテナー
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: Azure Container Instances 上の音声サービス コンテナー
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: 詳細
+      url: index-hosting.yml
+  - title: デバイス
+    links:
+    - itemType: overview
+      text: Speech Devices SDK について
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: Speech Devices SDK を取得する
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: Speech Devices SDK を使用する
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: 詳細
+      url: index-devices.yml
+  - title: 移行
+    links:
+    - itemType: how-to-guide
+      text: Bing Speech から移行する
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: Translator Speech API から移行する
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: ソフトウェア開発キット (SDK)
+  summary: Speech SDK をお好きなプログラミング言語で使い始めましょう。
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Objective-C と Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
   - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/speech-service/overview
-            html: <p>Azure Speech Services について説明します。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Speech Service とは
-          - href: /azure/cognitive-services/speech-service/get-started
-            html: <p>無料試用版にサインアップ</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Speech Services にサインアップ
-          - href: /azure/cognitive-services/speech-service/speech-devices-sdk
-            html: <p>音声認識ハードウェア リファレンスについて説明します。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Speech Devices SDK
-  - title: はじめに
-    items:
-      - type: paragraph
-        text: |
-          Speech SDK を使うと、アプリに次をはじめとする機能を追加できます&colon;。 
-          <div class="row"><div class="column"><ul>
-          <li><b><a href="speech-to-text.md">音声テキスト変換</a></b> (音声認識/SR)</li>
-          <li><b><a href="speech-devices-sdk-create-kws.md">カスタム ウェイクワード</a></b> (キーワード認識/KWS)</li>
-          <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">意図</a></b></li>
-          <li><b><a href="speech-translation.md">翻訳</a></b></li>
-          <li><b><a href="speech-container-howto.md">オンプレミスのコンテナー</a></b></li></ul></div><div class="column"><ul>
-          <li><b><a href="text-to-speech.md">テキスト読み上げ</a></b> (TTS)</li>
-          <li><b><a href="conversation-transcription-service.md">会話の文字起こし</a></b> (CTS)</li>
-          <li><b><a href="how-to-phrase-lists.md">フレーズ リストのパーソナル化</a>/<a href="how-to-custom-speech.md">音声のカスタム調整</a></b></li>
-          <li><b><a href="voice-first-virtual-assistants.md">音声優先仮想アシスタント</a></b></li>
-          <li><b><a href="call-center-transcription.md">コール センターの文字起こし</a></b></li></ul></div></div>
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 矢印リンクを選択すると、SDK をダウンロード、インストール、使用する方法について確認できます。 <img src="media/index/link.jpg" height="15" width="15"></img>。<br/>すべての矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> は、既定で音声テキスト変換のクイックスタートがリンク先になっています。 そこから、テキスト読み上げや音声優先仮想アシスタントなどの他のクイックスタート (<a href="scenario-availability.md">利用可能な場合のみ</a>) を選択できます。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/uwp.jpg
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_cplusplus.svg
-          - image:
-              src: media/index/logo_netcore.svg
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_unity.svg'
-          - image:
-              src: media/index/logo_java.jpg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_objc.jpg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_js.svg
-          - image:
-              src: media/index/logo_rest.svg
-        rows:
-          - title: Windows 10 (x64)
-            values:
-              - href: quickstart-csharp-uwp
-              - href: quickstart-csharp-windows
-              - href: quickstart-cpp-windows
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: quickstart-csharp-unity
-              - href: quickstart-java-jre
-              - href: quickstart-python
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Windows 10 (x86)
-            values:
-              - href: quickstart-csharp-uwp
-              - href: quickstart-csharp-windows
-              - href: quickstart-cpp-windows
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: quickstart-csharp-unity
-              - href: null
-              - href: quickstart-python
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Windows UWP (ARM32/64)
-            values:
-              - href: quickstart-csharp-uwp
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-csharp-unity
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Linux (x64)
-            values:
-              - href: null
-              - href: null
-              - href: quickstart-cpp-linux
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: null
-              - href: quickstart-java-jre
-              - href: quickstart-python
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Linux (x86)
-            values:
-              - href: null
-              - href: null
-              - href: quickstart-cpp-linux
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Android (ARM32/64)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-csharp-unity
-              - href: quickstart-java-android
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Android (x86/x64)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-csharp-unity
-              - href: quickstart-java-android
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: iOS (ARM64)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-objectivec-ios
-              - href: null
-              - href: null
-          - title: macOS (x64)
-            values:
-              - href: null
-              - href: null
-              - href: quickstart-cpp-macos
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: null
-              - href: quickstart-java-jre
-              - href: quickstart-python
-              - href: quickstart-objective-c-macos
-              - href: quickstart-js-node
-              - href: null
-          - title: Devices SDK (ARM32)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: speech-devices-sdk
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: ブラウザー
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-js-browser
-          - title: REST
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: rest-apis
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Speech Service を使用してアプリケーションを開発する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="speech-to-text-sample.md">音声テキスト変換 (SR)</a><br/>
-          - html: <a href="intent.md">意図認識</a><br/>
-          - html: <a href="translation.md">翻訳</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">テキスト読み上げ</a><br/>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: GitHub で Speech Service のサンプルを入手します。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Speech SDK のサンプル</a><br/>'
-          - html: '<a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">Device SDK のサンプル</a><br/>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: SDK リファレンス
-            html: |
-              <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET、および Unity)</a></p>
-              <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
-              <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
-              <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
-              <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
-              <p><a href="https://aka.ms/csspeech/javascriptref">JavaScript API</a></p>
-          - title: REST API
-            html: |
-              <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST API</a></p>
-          - title: PowerShell
-            html: |
-              <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-          - title: CLI
-            html: |
-              <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+    - title: REST API
+      links:
+      - text: 音声テキスト変換
+        url: rest-speech-to-text.md
+      - text: バッチ文字起こし
+        url: batch-transcription.md
+      - text: テキスト読み上げ
+        url: rest-text-to-speech.md
+      - text: 会話の文字起こし
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: リソース
+      links:
+      - text: 価格
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: リージョン
+        url: regions.md
+      - text: 学習する
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: サポート
+      links:
+      - text: サポートとヘルプ
+        url: support.md
+      - text: GitHub のイシュー
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: Stack Overflow
+        url: https://aka.ms/SOspeechquestions
+      - text: UserVoice
+        url: https://cognitive.uservoice.com/forums/912208-speech-service

@@ -1,6 +1,6 @@
 ---
-title: API HTTP 応答コード
-titleSuffix: Azure
+title: API の HTTP 応答コード - LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS のオーサリング API とエンドポイント API からどのような HTTP 応答コードが返されるかを理解します
 services: cognitive-services
 author: diberry
@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: f6742bf64ce26e6cce93dfcdfd06756f3c340d9e
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78270250"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>一般的な API 応答コードとその意味
 
-[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API と[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API は HTTP 応答コードを返します。 応答メッセージには、要求に固有の情報が含まれていますが、HTTP 応答の状態コードは全般的なものです。 
+[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API と[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API は HTTP 応答コードを返します。 応答メッセージには、要求に固有の情報が含まれていますが、HTTP 応答の状態コードは全般的なものです。
 
 ## <a name="common-status-codes"></a>一般的な状態コード
 次の表に、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API と[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API の最も一般的な HTTP 応答状態コードの一部を示します。
@@ -40,6 +40,6 @@ ms.locfileid: "65522981"
 |414|エンドポイント|クエリが最大文字数の制限を超えています|
 |429|オーサリング、エンドポイント|レート制限を超過しています (要求数/秒)|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * REST API の[作成](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)と[エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)のドキュメント

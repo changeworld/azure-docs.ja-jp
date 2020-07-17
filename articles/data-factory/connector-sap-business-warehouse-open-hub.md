@@ -1,35 +1,44 @@
 ---
-title: Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする | Microsoft Docs
+title: オープン ハブを介して SAP Business Warehouse からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) から、サポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
-ms.author: jingwang
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seo-lt-2019
+ms.date: 03/24/2020
+ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103912"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81418084"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
+>[!TIP]
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスを参照してください。
+
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+オープン ハブ コネクタ経由のこの SAP Business Warehouse は、次のアクティビティでサポートされています。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 SAP Business Warehouse のデータは、オープン ハブを介して、サポートされている任意のシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この SAP Business Warehouse オープン ハブ コネクタは以下をサポートします。
 
-- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)**。
+- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)** 。
 - オープン ハブ宛先の、DSO、InfoCube、MultiProvider、DataSource などがその下にある可能性があるローカル テーブルを介したデータのコピー。
 - 基本認証を使用したデータのコピー。
 - アプリケーション サーバーへの接続。
@@ -82,7 +91,7 @@ ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能�
 
 - SAP オープン ハブ宛先の種類は、[Technical Key] (テクニカル キー) オプションをオンにして、**データベース テーブル**として作成します。  また、必須ではありませんが、[Deleting Data from Table] (テーブルからデータを削除する) はオンにしないままにすることをお勧めします。 DTP を利用して (直接実行するか、既存のプロセス チェーンに統合する)、選択したソース オブジェクト (キューブなど) のデータをオープン ハブ宛先テーブルに取り込みます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 > [!TIP]
 >
@@ -134,7 +143,7 @@ SAP Business Warehouse オープン ハブのリンクされたサービスで�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Salesforce データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、SAP BW オープン ハブ データセットでサポートされるプロパティの一覧を示します。
 
 SAP BW オープン ハブとの間でデータをコピーするには、データセットの type プロパティを **SapOpenHubTable** に設定します。 次のプロパティがサポートされています。
 
@@ -142,11 +151,8 @@ SAP BW オープン ハブとの間でデータをコピーするには、デー
 |:--- |:--- |:--- |
 | type | type プロパティは **SapOpenHubTable** に設定する必要があります。  | はい |
 | openHubDestinationName | データのコピー元になるオープン ハブ宛先の名前。 | はい |
-| excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
-| baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値**より大きい**データのみが取得されます。  | いいえ  |
 
->[!TIP]
->オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。
+データセットに `excludeLastRequest` と `baseRequestId` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
 
 **例:**
 
@@ -155,12 +161,13 @@ SAP BW オープン ハブとの間でデータをコピーするには、デー
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -172,7 +179,18 @@ SAP BW オープン ハブとの間でデータをコピーするには、デー
 
 ### <a name="sap-bw-open-hub-as-source"></a>ソースとしての SAP BW オープン ハブ
 
-SAP BW オープン ハブからデータをコピーするには、コピー アクティビティのソースの種類を **SapOpenHubSource** に設定します。 一方、コピー アクティビティの**ソース** セクションで必要とされる、種類固有のその他のプロパティはありません。
+SAP BW Open Hub からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのソースの **type** プロパティは **SapOpenHubSource** に設定する必要があります | はい |
+| excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
+| baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値**より大きい**データのみが取得されます。  | いいえ |
+
+>[!TIP]
+>オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。
+
+データ読み込みを高速化するために、コピー アクティビティに [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) を設定して、SAP BW オープン ハブから並行してデータを読み込むことができます。 たとえば、`parallelCopies` を 4 に設定すると、Data Factory では同時に 4 つの RFC 呼び出しが実行され、各 RFC 呼び出しは、DTP 要求 ID とパッケージ ID でパーティション分割された SAP BW オープン ハブ テーブルからデータの一部を取得します。 これは、一意の DTP 要求 ID + パッケージ ID の数値が `parallelCopies` の値よりも大きい場合に適用されます。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 **例:**
 
@@ -195,11 +213,13 @@ SAP BW オープン ハブからデータをコピーするには、コピー �
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]
@@ -220,5 +240,15 @@ SAP BW オープン ハブからデータをコピーするときには、以下
 | N (Numc) | String |
 | X (Binary および Raw) | String |
 
-## <a name="next-steps"></a>次の手順
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
+
+**現象:** SAP BW on HANA を実行しているとき、ADF コピー アクティビティ (100万行) を使用してもデータのサブセットしかコピーされない場合、考えられる原因は、DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを有効にしていることです。この場合、ADF ではデータの最初のバッチだけを取得できます。
+
+**解決策:** DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを無効にして、データを再処理してから、コピー アクティビティをもう一度実行してみてください。
+
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

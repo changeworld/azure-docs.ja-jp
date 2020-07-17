@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337002"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628659"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -45,11 +45,11 @@ Event Hubs 名前空間は一意のスコープ コンテナーを提供しま�
 
 AMQP 1.0、Kafka 1.0 (以降)、または HTTPS 経由でイベントを発行できます。 Event Hubs は、.NET クライアントからイベント ハブへのイベント発行で使用できる[クライアント ライブラリとクラス](event-hubs-dotnet-framework-api-overview.md)を提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](https://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントまたはバッチのどちらであるかには関係なく、単一パブリケーション (イベント データ インスタンス) には 1 MB の制限があります。 このしきい値より大きいイベントを発行すると、エラーが発生します。 発行元にとっては、イベント ハブ内のパーティションを意識せずに、次のセクションで説明する "*パーティション キー*" のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
 
-AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の SSL オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
+AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の TLS オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 一致しないと、エラーが発生します。
+Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 そうでない場合、エラーが発生します。
 
 ### <a name="publisher-policy"></a>発行元ポリシー
 
@@ -65,31 +65,9 @@ Event Hubs では、 *発行元ポリシー*を介してイベント プロデ�
 
 [Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナーまたは Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
-## <a name="partitions"></a>パーティション
+## <a name="partitions"></a>メジャー グループ
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Event Hubs は、パーティション化されたコンシューマー パターンを使用してメッセージ ストリーミングを実現します。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。
-
-パーティションは、イベント ハブで保持される順序付けされた一連のイベントです。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 パーティションは "コミット ログ" として考えることができます。
-
-![Event Hubs](./media/event-hubs-features/partition.png)
-
-Event Hubs は構成されたリテンション期間にわたりデータを保持します。この期間は、イベント ハブのすべてのパーティションに適用されます。 イベントの有効期限は時間で設定されます。イベントを明示的に削除することはできません。 パーティションは独立していて、それぞれ独自のデータ シーケンスを含んでいるため、多くの場合、拡大するペースは異なります。
-
-![Event Hubs](./media/event-hubs-features/multiple_partitions.png)
-
-パーティションの数は作成時に 2 ～ 32 の間で指定する必要があります。 パーティションの数は変更できないため、設定については長期的な規模で検討する必要があります。 パーティションはデータ編成メカニズムであり、コンシューマー アプリケーションで必要とされるダウンストリーム並列処理に関連します。 イベント ハブでのパーティションの数は、予想される同時接続のリーダー数に直接関連します。 Event Hubs チームに連絡すれば、パーティションの数を 32 より大きくすることができます。
-
-パーティションは識別可能であり、パーティションに直接送信できますが、パーティションに直接送信することはお勧めしません。 その代わり、「[イベント発行元](#event-publishers)」と「容量」のセクションで紹介する、より高いレベルの構造を使用できます。 
-
-パーティションには一連のイベント データが格納されます。イベント データには、イベント本文、ユーザー定義のプロパティ バッグ、メタデータ (パーティションでのオフセットやストリーム シーケンスでの番号など) が含まれます。
-
-パーティションの詳細および可用性と信頼性のトレードオフについては、「[Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md#partition-key)」と「[Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)」をご覧ください。
-
-### <a name="partition-key"></a>パーティション キー
-
-[パーティション キー](event-hubs-programming-guide.md#partition-key)を使用すると、データ編成を目的として受信イベント データを特定のパーティションにマップすることができます。 パーティション キーは、送信者によって指定され、イベント ハブに渡される値です。 これは、パーティション割り当てを作成する静的なハッシュ関数で処理されます。 イベントを発行するときにパーティション キーを指定しないと、ラウンド ロビン割り当てが使用されます。
-
-イベント発行元は、そのパーティション キーのみを認識し、イベントの発行先となるパーティションは認識しません。 このようにキーとパーティションを分離することにより、送信者はダウンストリーム処理について余分な情報を把握しなくてもよくなります。 デバイスごとまたはユーザーの一意の ID は適切なパーティション キーになりますが、地理的条件などのその他の属性を使用して関連するイベントを 1 つのパーティションにまとめることもできます。
 
 ## <a name="sas-tokens"></a>SAS トークン
 
@@ -131,6 +109,13 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 リーダーがパーティションから切断し、その後再び接続すると、該当するコンシューマー グループ内の該当するパーティションの最後のリーダーによって最後に送信されたチェックポイントから読み取りが開始されます。 リーダーは接続の際に、このオフセットをイベント ハブに渡して、読み取りを開始する場所を指定します。 このように、チェックポイント処理を使用することで、ダウンストリーム アプリケーションごとにイベントに "完了" のマークを付けると共に、異なるコンピューター上で実行中のリーダー間でフェールオーバーが発生した場合に回復性をもたらすことができます。 このチェックポイント処理で、より小さなオフセットを指定すると、古いデータに戻ることができます。 このメカニズムにより、チェックポイント処理ではフェールオーバーの回復性とイベント ストリームの再生の両方を実現できます。
 
+> [!NOTE]
+> Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
+
 ### <a name="common-consumer-tasks"></a>一般的なコンシューマー タスク
 
 すべての Event Hubs コンシューマーは、AMQP 1.0 セッション (状態に対応する双方向の通信チャネル) を介して接続します。 各パーティションには、パーティションによって分離されたイベントの転送を容易にする AMQP 1.0 セッションがあります。
@@ -146,48 +131,24 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 イベント データ:
 * Offset
 * Sequence number
-* 本文
+* Body
 * ユーザー プロパティ
 * システム プロパティ
 
 ユーザーはオフセットを管理する必要があります。
 
-## <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
-
-Event Hubs によるスケーリングに影響する 2 つの要素があります。
-*   スループット ユニット
-*   パーティション
-
-### <a name="throughput-units"></a>スループット ユニット
-
-Event Hubs のスループット容量は、"*スループット ユニット*" によって制御されます。 スループット ユニットとは、購入済みの容量ユニットのことです。 1 つのスループットでは次が可能です。
-
-* イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
-* エグレス: 1 秒あたり最大で 2 MB または 4,096 イベント
-
-購入済みのスループット ユニットの容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット ユニットの容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット ユニットの数を確認してください。 スループット ユニットは、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット ユニットを管理することもできます。
-
-スループット ユニットは事前に購入し、1 時間ごとに課金されます。 スループット ユニットを購入すると、少なくとも 1 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット ユニットを購入でき、その名前空間内のすべてのイベント ハブで共有されます。
-
-### <a name="partitions"></a>パーティション
-
-パーティションにより、ダウン ストリーム処理用にスケールできます。 Event Hubs がパーティションによって提供するパーティション分割されたコンシューマー モデルのため、イベントの処理中に同時にスケール アウトできます。 Event Hubs には、最大 32 個のパーティションを指定できます。
-
-最適なスケールを実現するために、スループット ユニットとパーティションのバランスを 1:1 に保つことをお勧めします。 単一のパーティションには、最大で 1 つのスループット ユニットのイングレスとエグレスが保証されます。 パーティションでより高いスループットを実現することもできますが、パフォーマンスは保証されません。 このため、イベント ハブのパーティションの数は、スループット ユニットの数以上にすることを強くお勧めします。
-
-合計スループットを必要に応じて計画するとして、必要なスループット ユニットの数と最小数のパーティションはわかりますが、パーティションはいくつ必要でしょうか。 実現したいダウンストリーム並列処理だけでなく、将来のスループットのニーズに基づいて、パーティションの数を選択します。 Event Hubs 内にあるパーティションの数に対して料金はかかりません。
-
-Event Hubs の価格の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 
 Event Hubs の詳細については、次のリンクを参照してください。
 
-* [Event Hubs の使用に関するチュートリアル][Event Hubs tutorial]
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs サンプル][]
 
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [Event Hubs サンプル]: https://github.com/Azure/azure-event-hubs/tree/master/samples

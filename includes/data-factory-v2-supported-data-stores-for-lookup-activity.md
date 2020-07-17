@@ -5,17 +5,17 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 498a4471d1ba6803d68e0b497c7c8352f19ff743
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153460"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75440469"
 ---
-| Category | データ ストア |
+| カテゴリ | データ ストア |
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
@@ -27,20 +27,20 @@ ms.locfileid: "66153460"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |
-| &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
-| **データベース** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
+| **[データベース]** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
-| &nbsp; |[Drill (プレビュー)](../articles/data-factory/connector-drill.md) |
+| &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
 | &nbsp; |[Greenplum](../articles/data-factory/connector-greenplum.md) |
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |
-| &nbsp; |[Apache Impala (プレビュー)](../articles/data-factory/connector-impala.md) |
-| &nbsp; |[Informix](../articles/data-factory/connector-odbc.md#ibm-informix-source) 
+| &nbsp; |[Apache Impala](../articles/data-factory/connector-impala.md) |
+| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) 
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |
-| &nbsp; |[Microsoft Access](../articles/data-factory/connector-odbc.md#microsoft-access-source) |
+| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
@@ -50,6 +50,7 @@ ms.locfileid: "66153460"
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
 | &nbsp; |[MDX を介した SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
+| &nbsp; |[SAP テーブル](../articles/data-factory/connector-sap-table.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -57,7 +58,7 @@ ms.locfileid: "66153460"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (プレビュー)](../articles/data-factory/connector-couchbase.md) |
-| **ファイル** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **[最近使ったファイル]** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[ファイル システム](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
@@ -66,15 +67,15 @@ ms.locfileid: "66153460"
 | **汎用プロトコル** |[汎用 HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[汎用 OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[汎用 ODBC](../articles/data-factory/connector-odbc.md) |
-| **サービスとアプリ** |[Amazon Marketplace Web Service (プレビュー)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
-| &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
+| **サービスとアプリ** |[Amazon Marketplace Web Service](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
+| &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Concur (プレビュー)](../articles/data-factory/connector-concur.md) |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Dynamics AX (プレビュー)](../articles/data-factory/connector-dynamics-ax.md) |
+| &nbsp; |[Dynamics AX](../articles/data-factory/connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Google AdWords (プレビュー)](../articles/data-factory/connector-google-adwords.md) |
+| &nbsp; |[Google AdWords](../articles/data-factory/connector-google-adwords.md) |
 | &nbsp; |[HubSpot (プレビュー)](../articles/data-factory/connector-hubspot.md) |
-| &nbsp; |[Jira (プレビュー)](../articles/data-factory/connector-jira.md) |
+| &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento (プレビュー)](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo (プレビュー)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (プレビュー)](../articles/data-factory/connector-oracle-eloqua.md) |
@@ -83,15 +84,15 @@ ms.locfileid: "66153460"
 | &nbsp; |[Paypal (プレビュー)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (プレビュー)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
-| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |
-| &nbsp; |[Salesforce Marketing Cloud (プレビュー)](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
+| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |
+| &nbsp; |[Salesforce Marketing Cloud](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |
 | &nbsp; |[Shopify (プレビュー)](../articles/data-factory/connector-shopify.md) |
 | &nbsp; |[Square (プレビュー)](../articles/data-factory/connector-square.md) |
 | &nbsp; |[Web テーブル (HTML テーブル)](../articles/data-factory/connector-web-table.md) 
-| &nbsp; |[Xero (プレビュー)](../articles/data-factory/connector-xero.md) |
+| &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |
 | &nbsp; |[Zoho (プレビュー)](../articles/data-factory/connector-zoho.md) |
 
 > [!NOTE]

@@ -1,30 +1,23 @@
 ---
-title: Azure Application Insights Java SDK で Micrometer を使用する方法 | Microsoft Docs
-description: 'Application Insights Spring Boot アプリケーションと非 Spring Boot アプリケーションで Micrometer を使用するステップ バイ ステップ ガイドです。 '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Java SDK で Micrometer を使用する方法
+description: Application Insights Spring Boot アプリケーションと非 Spring Boot アプリケーションで Micrometer を使用するステップ バイ ステップ ガイドです。
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 11/01/2018
+ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259604"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670068"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
 Micrometer のアプリケーション監視では、JVM ベースのアプリケーション コードのメトリックが測定され、好みの監視システムにデータをエクスポートできます。 この記事では、Spring Boot アプリケーションと非 Spring Boot アプリケーションの両方に対して Application Insights で Micrometer を使用する方法を説明します。
 
 ## <a name="using-spring-boot-15x"></a>Spring Boot 1.5x の使用
 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。 
-* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 1.1.0-BETA 以降
+* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 以降
 * Micrometer Azure Registry 1.1.0 以降
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 以降 (これは、Spring フレームワーク内の自動構成コードをバックポートします)。
 * [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
@@ -37,7 +30,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
-        <version>1.1.0-BETA</version>
+        <version>2.5.0</version>
     </dependency>
 
     <dependency>
@@ -64,7 +57,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。
 
 * Application Insights Spring-boot-starter 2.1.2 以降
-* Azure-spring-boot-metrics-starters 2.0.7 以降  
+* Azure-spring-boot-metrics-starters 2.0.7 以降
 * [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
 
 手順:
@@ -87,9 +80,9 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 既定のメトリック:
 
 *    Tomcat、JVM、Logback メトリック、Log4J メトリック、アップタイム メトリック、プロセッサ メトリック、FileDescriptorMetrics 用に自動構成されるメトリック。
-*    たとえば、netflix hystrix がクラス パス上に存在する場合は、それらのメトリックも取得されます。 
+*    たとえば、Netflix Hystrix がクラス パス上に存在する場合は、それらのメトリックも取得されます。 
 *    それぞれの Bean を追加することで、次のメトリックを使用できます。 
-        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcaseCache、Jcache)     
+        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcastCache、JCache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -121,10 +114,8 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>非 Spring Boot Web アプリケーションで Micrometer を使用する
 
 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。
- 
-* [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) 以降
-* [Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) 以降
-* [Web フィルターの登録](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+
+* Application Insights Web Auto 2.5.0 以降
 * Micrometer Azure Registry 1.1.0 以降
 * [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
 
@@ -141,14 +132,41 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
         
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>applicationinsights-web</artifactId>
-            <version>2.2.0</version>
-        </dependency
+            <artifactId>applicationinsights-web-auto</artifactId>
+            <version>2.5.0</version>
+        </dependency>
      ```
 
-2. Application Insights.xml をリソース フォルダーに置きます
+2. リソース フォルダーに `ApplicationInsights.xml` ファイルを置く:
 
-    Servlet クラスのサンプル (タイマー メトリックを出力):
+    ```XML
+    <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+    
+       <!-- The key from the portal: -->
+       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+    
+       <!-- HTTP request component (not required for bare API) -->
+       <TelemetryModules>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+       </TelemetryModules>
+    
+       <!-- Events correlation (not required for bare API) -->
+       <!-- These initializers add context data to each event -->
+       <TelemetryInitializers>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+       </TelemetryInitializers>
+    
+    </ApplicationInsights>
+    ```
+
+3. Servlet クラスのサンプル (タイマー メトリックを出力):
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +205,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     
     ```
 
-      構成クラスのサンプル:
+4. 構成クラスのサンプル:
 
     ```Java
          @WebListener
@@ -250,7 +268,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     New GuavaCacheMetrics().bind(registry);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* Micrometer の詳細については、公式の [Micrometer ドキュメント](https://micrometer.io/docs)をご覧ください。
-* Azure での Spring については、公式の [Azure の Spring ドキュメント](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)をご覧ください。
+* Micrometer の詳細については、公式の [Micrometer ドキュメント](https://micrometer.io/docs)を参照してください。
+* Azure での Spring については、公式の [Azure の Spring ドキュメント](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)を参照してください。

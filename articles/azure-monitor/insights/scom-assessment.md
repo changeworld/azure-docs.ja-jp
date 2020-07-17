@@ -1,24 +1,17 @@
 ---
-title: Azure Log Analytics で System Center Operations Manager 環境を最適化する | Microsoft Docs
+title: Azure Monitor を使用して System Center Operations Manager を評価する
 description: System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.author: magoedte
-ms.openlocfilehash: 27b55af74a713c51655891df8c852ff44cd3744a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621772"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055423"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -32,7 +25,7 @@ System Center Operations Manager Health Check ソリューションを使用す�
 
 組織にとって最も重要な対象領域を選択し、リスクのない正常な環境の実行に向けた進行状況を追跡できます。
 
-ソリューションを追加し、評価が実行されると、インフラストラクチャの **[System Center Operations Manager Health Check]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[System Center Operations Manager Health Check]** ダッシュボードの情報を使用する方法について説明します。ここでは、Operations Manager 環境を確認し、推奨された解決方法を実行できます。
+ソリューションを追加し、評価が実行されると、インフラストラクチャの **[System Center Operations Manager Health Check]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、 **[System Center Operations Manager Health Check]** ダッシュボードの情報を使用する方法について説明します。ここでは、Operations Manager 環境を確認し、推奨された解決方法を実行できます。
 
 ![System Center Operations Manager ソリューションのタイル](./media/scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
@@ -40,7 +33,7 @@ System Center Operations Manager Health Check ソリューションを使用す�
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 
-このソリューションは、Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager、および Microsoft System Center Operations Manager 1807 で動作します。
+このソリューションは、Microsoft System Center 2012 Operations Manager Service Pack 1、Microsoft System Center 2012 R2 Operations Manager、Microsoft System Center 2016 Operations Manager、Microsoft System Center 2016 Operations Manager、および Microsoft System Center Operations Manager 1807 で動作します。 サポートされているバージョンの .NET Framework 4.6.2 を各管理サーバーにインストールする必要があります。
 
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
@@ -83,19 +76,19 @@ Log Analytics は、ワークロード用の管理パックを基に付加価値
 * 評価する管理グループの Operation Manager 管理者ロール
 * アカウントに SQL sysadmin 権限がない場合は、[スクリプト](#sql-script-to-grant-granular-permissions-to-the-run-as-account)を実行して、Operations Manager データベースの 1 つまたはすべてをホストする各 SQL Server インスタンスにアカウントに細かいアクセス許可を付与します。
 
-1. Operations Manager コンソールで、**[管理]** ナビゲーション ボタンを選択します。
-2. **[実行アカウントの構成]** で、**[アカウント]** をクリックします。
+1. Operations Manager コンソールで、 **[管理]** ナビゲーション ボタンを選択します。
+2. **[実行アカウントの構成]** で、 **[アカウント]** をクリックします。
 3. **[実行アカウントの作成]** ウィザードの **[はじめに]** ページで **[次へ]** をクリックします。
 4. **[全般プロパティ]** ページの **[実行アカウントの種類]** リストで **[Windows]** を選択します。
-5. **[表示名]** テキスト ボックスに表示名を入力し、**[説明]** ボックス (省略可能) に説明を入力し、**[次へ]** をクリックします。
-6. **[配布セキュリティ]** ページで、**[高いセキュリティ]** を選択します。
+5. **[表示名]** テキスト ボックスに表示名を入力し、 **[説明]** ボックス (省略可能) に説明を入力し、 **[次へ]** をクリックします。
+6. **[配布セキュリティ]** ページで、 **[高いセキュリティ]** を選択します。
 7. **Create** をクリックしてください。  
 
 以上の手順で実行アカウントが作成されます。次は管理グループで管理サーバーをターゲットにして、定義済みの実行プロファイルと関連付け、ワークフローが資格情報を使用して実行されるようにします。  
 
 1. 結果ウィンドウの **[実行アカウントの構成]** の **[アカウント]** で、前述の手順で作成したアカウントをダブルクリックします。
-2. **[配布]** タブで、**[選択したコンピューター]** ボックスの **[追加]** をクリックし、管理サーバーを追加してアカウントを配布します。  **[OK]** をクリックして変更を保存します。
-3. **[実行アカウントの構成]** で、**[プロファイル]** をクリックします。
+2. **[配布]** タブで、 **[選択したコンピューター]** ボックスの **[追加]** をクリックし、管理サーバーを追加してアカウントを配布します。  **[OK]** をクリックして変更を保存します。
+3. **[実行アカウントの構成]** で、 **[プロファイル]** をクリックします。
 4. "*SCOM Assessment プロファイル*" を検索します。
 5. プロファイル名は、*Microsoft System Center Operations Manager Health Check Run As Profile* になります。
 6. 右クリックしてそのプロパティを更新し、前述の手順で作成した実行アカウントを追加します。
@@ -160,7 +153,7 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 1. Operations Manager Operations コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、*Microsoft System Center Operations Manager Run Health Check Rule* を検索します。
 2. 検索結果で、"*タイプ:管理サーバー*" というテキストが含まれているルールを選択します。
-3. ルールを右クリックし、**[オーバーライド]** > **[クラス "管理サーバー" の特定のオブジェクト]** の順にクリックします。
+3. ルールを右クリックし、 **[オーバーライド]**  >  **[クラス "管理サーバー" の特定のManagement Server]\(クラス "管理サーバー" のすべてのオブジェクト\)** の順にクリックします。
 4.  利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。  前述の手順で実行アカウントを関連付けるために構成したものと同じ管理サーバーを選択する必要があります。
 5.  **[Enabled (有効)]** パラメーター値の [オーバーライド値] を **[True]** に変更します。<br><br> ![パラメーターのオーバーライド](./media/scom-assessment/rule.png)
 
@@ -172,7 +165,7 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 1. Operations Manager コンソールの **[作成]** ワークスペースの **[ルール]** セクションで、ルール *Microsoft System Center Operations Manager Run Health Check Rule* を検索します。
 2. 検索結果で、"*タイプ:管理サーバー*" というテキストが含まれているルールを選択します。
-3. ルールを右クリックし、**[Override the Rule]\(ルールをオーバーライドする\)** > **[For all objects of class:Management Server]\(クラス "管理サーバー" のすべてのオブジェクト\)** の順にクリックします。
+3. ルールを右クリックし、 **[Override the Rule]\(ルールをオーバーライドする\)**  >  **[For all objects of class:Management Server]\(クラス "管理サーバー" のすべてのオブジェクト\)** の順にクリックします。
 4. **[間隔]** パラメーター値を目的の間隔値に変更します。 次の例では、値を 1,440 分 (1 日) に設定しています。<br><br> ![間隔パラメーター](./media/scom-assessment/interval.png)<br>  
 
     1,440 分未満の値を設定した場合、ルールは 1 日間隔で実行されます。 この例では、ルールは、間隔値を無視して 1 日の頻度で実行されます。
@@ -217,7 +210,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
-3. Log Analytics サブスクリプション ウィンドウでワークスペースを選択し、**[ワークスペースの概要]** メニュー項目をクリックします。  
+3. Log Analytics サブスクリプション ウィンドウでワークスペースを選択し、 **[ワークスペースの概要]** メニュー項目をクリックします。  
 4. **[概要]** ページの **[System Center Operations Manager Health Check]** タイルをクリックします。
 5. **[System Center Operations Manager Health Check]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![対象領域](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
@@ -228,7 +221,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>無視する推奨事項を識別するには
-1. Azure portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** メニュー項目をクリックします。
+1. Azure portal の選択したワークスペースの Log Analytics ワークスペース ページで、 **[ログ検索]** メニュー項目をクリックします。
 2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
     ```
@@ -269,7 +262,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Health Check ソリューションについてよく寄せられる質問 (FAQ)
 
-*Log Analytics ワークスペースに Health Check ソリューションを追加しました。推奨事項が表示されません。なぜ表示されないのですか?*" ソリューションを追加したら、次の手順に従って Log Analytics のダッシュ ボードに推奨事項を表示します。  
+*Log Analytics ワークスペースに Health Check ソリューションを追加しました。推奨事項が表示されません。なぜ表示されないのですか?* " ソリューションを追加したら、次の手順に従って Log Analytics のダッシュ ボードに推奨事項を表示します。  
 
 - [System Center Operations Manager Health Check で使用する実行アカウントを設定します](#operations-manager-run-as-accounts-for-log-analytics)  
 - [System Center Operations Manager Health Check ルールを構成します](#configure-the-health-check-rule)
@@ -281,15 +274,15 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 *データ収集を行うプロセスの名前は何ですか?* AdvisorAssessment.exe です。
 
-"*AdvisorAssessment.exe プロセスはどこで実行されますか。*" AdvisorAssessment.exe は、正常性チェック ルールが有効になっている管理サーバーの HealthService プロセスで実行されます。 そのプロセスを使用して、リモート データ コレクションを通じて環境全体の検出が実現します。
+"*AdvisorAssessment.exe プロセスはどこで実行されますか。* " AdvisorAssessment.exe は、正常性チェック ルールが有効になっている管理サーバーの HealthService プロセスで実行されます。 そのプロセスを使用して、リモート データ コレクションを通じて環境全体の検出が実現します。
 
-"*データの収集にはどれくらいの時間がかかりますか。*" サーバー上でのデータ収集には約 1 時間かかります。 多数の Operations Manager インスタンスまたはデータベースが存在する環境では、それよりも長く時間がかかる場合があります。
+"*データの収集にはどれくらいの時間がかかりますか。* " サーバー上でのデータ収集には約 1 時間かかります。 多数の Operations Manager インスタンスまたはデータベースが存在する環境では、それよりも長く時間がかかる場合があります。
 
-"*評価の間隔を 1,440 分未満に設定するとどうなりますか。*" 評価は、最大で 1 日に 1 回実行するように事前構成されています。 間隔値を 1,440 分未満の値にオーバーライドすると、1,440 分が評価の間隔値として使用されます。
+"*評価の間隔を 1,440 分未満に設定するとどうなりますか。* " 評価は、最大で 1 日に 1 回実行するように事前構成されています。 間隔値を 1,440 分未満の値にオーバーライドすると、1,440 分が評価の間隔値として使用されます。
 
 *前提条件に障害が発生しているかどうかを調べる方法はありますか?* 正常性チェックを実行したのに結果が表示されない場合は、チェックの前提条件のいくつかが失敗している可能性があります。 ログ検索で `Operation Solution=SCOMAssessment` と `SCOMAssessmentRecommendation FocusArea=Prerequisites` のクエリを実行すると、失敗した前提条件を確認できます。
 
-*前提条件のエラーにメッセージ `Failed to connect to the SQL Instance (….).` が含まれています。どのような問題が発生していますか。*" データを収集するプロセスである AdvisorAssessment.exe は、管理サーバーの HealthService プロセスで実行されます。 このプロセスは、正常性チェックの一環として Operations Manager データベースが存在する SQL Server への接続を試みます。 このエラーは、ファイアウォール規則によって SQL Server インスタンスへの接続がブロックされた場合に発生することがあります。
+*前提条件のエラーにメッセージ `Failed to connect to the SQL Instance (….).` が含まれています。どのような問題が発生していますか。* " データを収集するプロセスである AdvisorAssessment.exe は、管理サーバーの HealthService プロセスで実行されます。 このプロセスは、正常性チェックの一環として Operations Manager データベースが存在する SQL Server への接続を試みます。 このエラーは、ファイアウォール規則によって SQL Server インスタンスへの接続がブロックされた場合に発生することがあります。
 
 *どのような種類のデータが収集されますか?* 次の種類のデータが収集されます。- WMI データ - レジストリ データ - EventLog データ - Operations Manager データ (Windows PowerShell、SQL クエリ、およびファイル情報コレクターを通じて)。
 
@@ -300,6 +293,6 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 *推奨事項を無視する方法はありますか?* はい。「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログの検索](../../azure-monitor/log-query/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。

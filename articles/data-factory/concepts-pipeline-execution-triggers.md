@@ -1,34 +1,36 @@
 ---
-title: Azure Data Factory でのパイプラインの実行とトリガー| Microsoft Docs
+title: Azure Data Factory でのパイプラインの実行とトリガー
 description: この記事では、オンデマンドで、またはトリガーを作成して、Azure Data Factory でパイプラインを実行する方法に関する情報を提供します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.author: shlo
-ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66155220"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562204"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
-> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
+
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください: "]
 > * [Version 1](v1/data-factory-scheduling-and-execution.md)
 > * [現在のバージョン](concepts-pipeline-execution-triggers.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory の "_パイプライン実行_" により、パイプラインの実行のインスタンスが定義されます。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 この場合、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 実行 ID は、特定のパイプライン実行を一意に定義する GUID です。
 
 パイプライン実行は、通常、パイプラインで定義したパラメーターに引数を渡してインスタンス化されます。 パイプラインを実行するには、手動で行う方法と "_トリガー_" を使用する方法があります。 この記事では、パイプラインを実行する両方の方法の詳細について説明します。
 
 ## <a name="manual-execution-on-demand"></a>手動での実行 (オンデマンド)
+
 パイプラインの手動での実行は、"_オンデマンド_" 実行とも呼ばれます。
 
 たとえば、**copyPipeline** という名前の基本的なパイプラインを実行するとします。 このパイプラインは、Azure Blob Storage のソース フォルダーから、同じストレージ内のコピー先フォルダーにコピーするアクティビティを伴う 1 つの単純なパイプラインです。 次の JSON 定義は、このサンプル パイプラインを示します。
@@ -84,6 +86,7 @@ Azure Data Factory の "_パイプライン実行_" により、パイプライ�
 - Python SDK
 
 ### <a name="rest-api"></a>REST API
+
 次のサンプル コマンドは、REST API を使用してパイプラインを手動で実行する方法を示します。
 
 ```
@@ -123,6 +126,7 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPi
 サンプルの詳細については、[Azure PowerShell を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-powershell.md)に関する記事を参照してください。
 
 ### <a name="net-sdk"></a>.NET SDK
+
 次のサンプル呼び出しは、.NET SDK を使用してパイプラインを手動で実行する方法を示します。
 
 ```csharp
@@ -132,9 +136,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 サンプルの詳細については、[.NET SDK を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-dot-net.md)に関する記事を参照してください。
 
 > [!NOTE]
-> .NET SDK を使用すると、Azure Functions や独自の Web サービスなどから Data Factory パイプラインを呼び出すことができます。
+> .NET SDK を使用すると、Azure Functions や Web サービスなどから Data Factory パイプラインを呼び出すことができます。
 
-<h2 id="triggers">トリガー実行</h2>
+## <a name="trigger-execution"></a>トリガー実行
+
 トリガーは、パイプラインの実行を開始するためのもう 1 つの方法です。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現時点で、Data Factory では次の 3 種類のトリガーがサポートされています。
 
 - スケジュール トリガー:実時間のスケジュールによってパイプラインを起動するトリガー。
@@ -143,8 +148,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 - イベントベースのトリガー:イベントに応答するトリガー。
 
-パイプラインとトリガーには多対多の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガー定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストを参照します。 プロパティ定義には、パイプライン パラメーターの値が含まれています。
-
+パイプラインとトリガーには多対多の関係があります (タンブリング ウィンドウ トリガーを除く)。複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガー定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストを参照します。 プロパティ定義には、パイプライン パラメーターの値が含まれています。
 ### <a name="basic-trigger-definition"></a>基本的なトリガー定義
 
 ```json
@@ -245,45 +249,45 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ```json
 {
-    "properties": {
-        "name": "MyTrigger",
-        "type": "ScheduleTrigger",
-        "typeProperties": {
-            "recurrence": {
-                "frequency": "Hour",
-                "interval": 1,
-                "startTime": "2017-11-01T09:00:00-08:00",
-                "endTime": "2017-11-02T22:00:00-08:00"
-            }
+  "properties": {
+    "name": "MyTrigger",
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+        "startTime": "2017-11-01T09:00:00-08:00",
+        "endTime": "2017-11-02T22:00:00-08:00"
+      }
+    },
+    "pipelines": [{
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToBlobPipeline"
         },
-        "pipelines": [{
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "SQLServerToBlobPipeline"
-                },
-                "parameters": {}
-            },
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "SQLServerToAzureSQLPipeline"
-                },
-                "parameters": {}
-            }
-        ]
-    }
+        "parameters": {}
+      },
+      {
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToAzureSQLPipeline"
+        },
+        "parameters": {}
+      }
+    ]
+  }
 }
 ```
 
 ### <a name="schema-defaults-limits-and-examples"></a>スキーマの既定値、制限、例
 
-| JSON プロパティ | Type | 必須 | Default value | 有効な値 | 例 |
+| JSON プロパティ | Type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | string | はい | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | number | いいえ  | 1 | 1 から 1,000 | `"interval":10` |
+| **interval** | number | いいえ | 1 | 1 から 1,000 | `"interval":10` |
 | **endTime** | string | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | object | いいえ | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
 次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。
@@ -322,6 +326,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
 
 タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
+
+> [!NOTE]
+> タンブリング ウィンドウ トリガーの実行では、"*トリガーされたパイプラインの実行が完了するまで待機します*"。 実行状態には、トリガーされたパイプラインの実行の状態が反映されます。 たとえば、トリガーされたパイプラインの実行が取り消された場合、対応するタンブリング ウィンドウ トリガーの実行が取り消し済みとマークされます。 これは、パイプラインの実行が開始されている限り成功としてマークされる、スケジュール トリガーの "ファイア アンド フォーゲット" ビヘイビアーとは異なります。
 
 ## <a name="event-based-trigger"></a>イベントベースのトリガー
 
@@ -377,9 +384,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **システム変数** | **WindowStart** および **WindowEnd** システム変数の使用がサポートされます。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | サポートされていません。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のチュートリアルを参照してください。
 
-- [クイック スタート:.NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
+- [クイック スタート: .NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
 - [スケジュール トリガーの作成](how-to-create-schedule-trigger.md)
 - [タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)

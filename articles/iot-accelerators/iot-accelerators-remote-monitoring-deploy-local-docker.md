@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションのローカルでのデプロイ - Docker - Azure | Microsoft Docs
+title: リモート監視ソリューションをローカルでデプロイする - Docker - Azure | Microsoft Docs
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Docker を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967549"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73888831"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の IDE で実行する場合は、「[Deploy the Remote Monitoring solution accelerator locally - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)」を参照してください。
 
@@ -27,7 +27,7 @@ ms.locfileid: "65967549"
 
 リモート監視ソリューション アクセラレータによって使用される Azure サービスをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ### <a name="machine-setup"></a>コンピューターのセットアップ
 
@@ -92,7 +92,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
-1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
+1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンをクリックします。 次に、 **[開始]** をクリックしてジョブをすぐに開始します。
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
@@ -104,6 +104,6 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 
 Docker イメージを削除し、ローカル コンピューター上の領域を解放するには、`docker-compose down --rmi all` コマンドを使用します。 また、GitHub からソース コードを複製するときに作成されたリモート監視リポジトリのローカル コピーを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](quickstart-remote-monitoring-deploy.md)することです。

@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーション コードと PowerShell サンプル - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーション コードと PowerShell サンプル - Azure AD
 description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79352c2c82cae8fe77ef6313d74e60432c710ec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fcf6e7a4fb5e76dddba6162bbabfdc5abc806a20
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812500"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610617"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B コラボレーション コードと PowerShell サンプル
 
@@ -25,8 +25,8 @@ ms.locfileid: "65812500"
 .CSV ファイルに格納した電子メール アドレスを使用して、外部ユーザーを組織に一括で招待することができます。
 
 1. .CSV ファイルを準備します。新しい CSV ファイルを作成して、invitations.csv という名前を付けます。 この例では、ファイルは、C:\data に保存され、次の情報が格納されています。
-  
-   Name                  |  InvitedUserEmailAddress
+
+   名前                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B 招待者     | b2binvitee@gmail.com
    Outlook B2B 招待者   | b2binvitee@outlook.com
@@ -55,8 +55,8 @@ ms.locfileid: "65812500"
 - 招待されるユーザーの表示名の付記
 - CC へのメッセージの送信、またはすべての電子メール メッセージの送信の停止
 
-## <a name="code-sample"></a>サンプル コード
-ここでは、招待 API を "アプリのみ" モードで呼び出して、B2B ユーザーを招待するリソースの使用 URL を取得する方法を示しています。 目的は、カスタム招待メールを送信することです。 電子メールは HTTP クライアントで構成できるので、メールの外見をカスタマイズし、Graph API を通じて送信することができます。
+## <a name="code-sample"></a>コード サンプル
+ここでは、招待 API を "アプリのみ" モードで呼び出して、B2B ユーザーを招待するリソースの使用 URL を取得する方法を示しています。 目的は、カスタム招待メールを送信することです。 電子メールは HTTP クライアントで構成できるので、メールの外観をカスタマイズし、Microsoft Graph API を通じて送信することができます。
 
 ```csharp
 namespace SampleInviteApp
@@ -70,47 +70,47 @@ namespace SampleInviteApp
     class Program
     {
         /// <summary>
-        /// Microsoft graph resource.
+        /// Microsoft Graph resource.
         /// </summary>
         static readonly string GraphResource = "https://graph.microsoft.com";
- 
+
         /// <summary>
-        /// Microsoft graph invite endpoint.
+        /// Microsoft Graph invite endpoint.
         /// </summary>
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
- 
+
         /// <summary>
         ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.microsoftonline.com";
- 
+
         /// <summary>
         /// This is the tenantid of the tenant you want to invite users to.
         /// </summary>
         private static readonly string TenantID = "";
- 
+
         /// <summary>
         /// This is the application id of the application that is registered in the above tenant.
         /// The required scopes are available in the below link.
         /// https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/invitation_post
         /// </summary>
         private static readonly string TestAppClientId = "";
- 
+
         /// <summary>
         /// Client secret of the application.
         /// </summary>
         private static readonly string TestAppClientSecret = @"";
- 
+
         /// <summary>
         /// This is the email address of the user you want to invite.
         /// </summary>
         private static readonly string InvitedUserEmailAddress = @"";
- 
+
         /// <summary>
         /// This is the display name of the user you want to invite.
         /// </summary>
         private static readonly string InvitedUserDisplayName = @"";
- 
+
         /// <summary>
         /// Main method.
         /// </summary>
@@ -120,7 +120,7 @@ namespace SampleInviteApp
             Invitation invitation = CreateInvitation();
             SendInvitation(invitation);
         }
- 
+
         /// <summary>
         /// Create the invitation object.
         /// </summary>
@@ -135,7 +135,7 @@ namespace SampleInviteApp
             invitation.SendInvitationMessage = true;
             return invitation;
         }
- 
+
         /// <summary>
         /// Send the guest user invite request.
         /// </summary>
@@ -143,17 +143,17 @@ namespace SampleInviteApp
         private static void SendInvitation(Invitation invitation)
         {
             string accessToken = GetAccessToken();
- 
+
             HttpClient httpClient = GetHttpClient(accessToken);
- 
-            // Make the invite call. 
+
+            // Make the invite call.
             HttpContent content = new StringContent(JsonConvert.SerializeObject(invitation));
             content.Headers.Add("ContentType", "application/json");
             var postResponse = httpClient.PostAsync(InviteEndPoint, content).Result;
             string serverResponse = postResponse.Content.ReadAsStringAsync().Result;
             Console.WriteLine(serverResponse);
         }
- 
+
         /// <summary>
         /// Get the HTTP client.
         /// </summary>
@@ -171,16 +171,16 @@ namespace SampleInviteApp
                 httpClient.DefaultRequestHeaders.GetValues("client-request-id").Single());
             return httpClient;
         }
- 
+
         /// <summary>
-        /// Get the access token for our application to talk to microsoft graph.
+        /// Get the access token for our application to talk to Microsoft Graph.
         /// </summary>
-        /// <returns>Returns the access token for our application to talk to microsoft graph.</returns>
+        /// <returns>Returns the access token for our application to talk to Microsoft Graph.</returns>
         private static string GetAccessToken()
         {
             string accessToken = null;
- 
-            // Get the access token for our application to talk to microsoft graph.
+
+            // Get the access token for our application to talk to Microsoft Graph.
             try
             {
                 AuthenticationContext testAuthContext =
@@ -195,10 +195,10 @@ namespace SampleInviteApp
                 Console.WriteLine("An exception was thrown while fetching the token: {0}.", ex);
                 throw;
             }
- 
+
             return accessToken;
         }
- 
+
         /// <summary>
         /// Invitation class.
         /// </summary>
@@ -208,17 +208,17 @@ namespace SampleInviteApp
             /// Gets or sets display name.
             /// </summary>
             public string InvitedUserDisplayName { get; set; }
- 
+
             /// <summary>
             /// Gets or sets display name.
             /// </summary>
             public string InvitedUserEmailAddress { get; set; }
- 
+
             /// <summary>
             /// Gets or sets a value indicating whether Invitation Manager should send the email to InvitedUser.
             /// </summary>
             public bool SendInvitationMessage { get; set; }
- 
+
             /// <summary>
             /// Gets or sets invitation redirect URL
             /// </summary>
@@ -229,7 +229,6 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
-

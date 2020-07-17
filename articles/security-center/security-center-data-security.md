@@ -3,9 +3,8 @@ title: Azure Security Center のデータ セキュリティ | Microsoft Docs
 description: このドキュメントでは、Azure Security Center でデータがどのように管理および保護されているかについて説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: memildin
+ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65234073"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435862"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -40,7 +39,7 @@ Azure Security Center は、セキュリティ状態の可視化、脆弱性の�
 
 **データ アクセス**:セキュリティに関する推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイル、プロセス作成イベント、VM ディスク スナップショット、アーティファクトなど) に Microsoft の担当者がアクセスする場合があります。これらの情報には、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。 Microsoft は、[Microsoft オンライン サービスの使用条件とプライバシーに関する声明](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりすることはないと記載されています。 ユーザーに Azure サービスを提供するため、およびそれに準じた目的のためにだけ、顧客データを使用します。 顧客データに対するすべての権限は、お客様が保持します。
 
-**データの使用**:Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)で説明されている誓約に従います。
+**データの使用**:Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)で説明されている誓約に従います。
 
 ## <a name="data-location"></a>データの場所
 
@@ -72,8 +71,8 @@ Azure Security Center は、クラッシュ ダンプ ファイルの一時的�
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>仮想マシンからのデータ収集の管理
 
-Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Microsoft Monitoring Agent をプロビジョニングします。
-Microsoft Monitoring Agent は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Microsoft Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また Microsoft Monitoring Agent によって、ワークスペースにクラッシュ ダンプ ファイルがコピーされるほか、プロセス作成イベントとコマンド ラインの監査が有効となります。
+Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Log Analytics エージェントをプロビジョニングします。
+Log Analytics エージェントは、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Log Analytics エージェントは、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また Log Analytics エージェントによって、ワークスペースにクラッシュ ダンプ ファイルがコピーされるほか、プロセス作成イベントとコマンド ラインの監査が有効となります。
 
 Azure Security Center Free を使用している場合は、セキュリティ ポリシーで仮想マシンからのデータ収集を無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。 データ収集が無効になっていても、VM ディスクのスナップショットとアーティファクトの収集は引き続き有効になります。
 
@@ -81,7 +80,7 @@ Azure Security Center Free を使用している場合は、セキュリティ �
 
 Security Center に関連したデータは、以下に示した各種のデータ ストリームから使用できます。
 
-* **Azure アクティビティ**: セキュリティに関するあらゆる警告、承認された Security Center の[ジャスト イン タイム](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)要求、[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)によって生成されたあらゆる警告が対象となります。
+* **Azure アクティビティ**: セキュリティに関するあらゆるアラート、承認された Security Center の [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 要求、[適応型アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)によって生成されたあらゆるアラート。
 * **Azure Monitor ログ**: セキュリティに関するあらゆるアラート。
 
 
@@ -95,5 +94,4 @@ Security Center に関連したデータは、以下に示した各種のデー�
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

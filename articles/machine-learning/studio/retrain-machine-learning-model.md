@@ -1,27 +1,29 @@
 ---
-title: Web サービスの再トレーニングとデプロイ
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
+title: Web サービスの再トレーニング
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 395a231fcf43378a51e22427254abb196a46081e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217930"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
-再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-この記事では、予測 Web サービスが既にデプロイされていることを前提としています。 予測 Web サービスをまだ用意していない場合は、[Studio Web サービスをデプロイする方法に関するこちらの記事](publish-a-machine-learning-web-service.md)を参照してください。
+再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio (クラシック) で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
+
+この記事では、予測 Web サービスが既にデプロイされていることを前提としています。 予測 Web サービスをまだ用意していない場合は、[Studio (クラシック) Web サービスをデプロイする方法に関するこちらの記事](deploy-a-machine-learning-web-service.md)を参照してください。
 
 次の手順に従って、機械学習の新しい Web サービスを再トレーニングし、デプロイします。
 
@@ -39,7 +41,7 @@ ms.locfileid: "64709008"
 
 1. **[Web Service Input]\(Web サービス入力\)** モジュールをユーザーのデータ入力に接続します。 通常は、入力データが最初のトレーニング データと同じ方法で処理されるようにします。
 1. **[Web Service Output]\(Web サービス出力\)** モジュールを **[Train Model]\(モデルのトレーニング\)** の出力に接続します。
-1. **[Evaluate Model]\(モデルの評価\)** モジュールがある場合は、**[Web Service Output]\(Web サービス出力\)** モジュールを接続して評価結果を出力することができます。
+1. **[Evaluate Model]\(モデルの評価\)** モジュールがある場合は、 **[Web Service Output]\(Web サービス出力\)** モジュールを接続して評価結果を出力することができます。
 1. 実験を実行します。
 
     実験を実行した後のワークフローは、次の画像のようになります。
@@ -59,7 +61,7 @@ ms.locfileid: "64709008"
 
 次の手順を実行して、再トレーニング API を呼び出します。
 
-1. Visual Studio で、C# コンソール アプリケーションを作成します:**[新規]** > **[プロジェクト]** > **[Visual C#]** > **[Windows Classic Desktop]** > **[コンソール アプリ (.NET Framework)]**
+1. Visual Studio で C# コンソール アプリケーションを作成します ( **[新規作成]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]**  >  **[コンソール アプリ (.NET Framework)]** )。
 1. Machine Learning Web サービス ポータルにサインインします。
 1. 使用する Web サービスをクリックします。
 1. **[Consume (使用)]** をクリックします。
@@ -85,11 +87,11 @@ ms.locfileid: "64709008"
 BES サンプル コードは、ファイルをローカル ドライブ ("C:\temp\CensusInput.csv" など) から Azure Storage にアップロードして処理し、その結果を Azure Storage に書き込みます。
 
 1. Azure portal にサインインする
-1. 左側のナビゲーションで **[その他のサービス]** をクリックし、**[ストレージ アカウント]** を探して選択します。
+1. 左側のナビゲーションで **[その他のサービス]** をクリックし、 **[ストレージ アカウント]** を探して選択します。
 1. ストレージ アカウントの一覧から、再トレーニング済みのモデルを格納するいずれかのアカウントを選択します。
 1. 左側のナビゲーションで **[アクセス キー]** をクリックします。
 1. **プライマリ アクセス キー**をコピーして保存します。
-1. 左側のナビゲーションで **[コンテナー]** をクリックします。
+1. 左側のナビゲーション列で、 **[BLOB]** をクリックします。
 1. 既存のコンテナーを選択するか、コンテナーを新規作成して、名前を保存します。
 
 *StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
@@ -188,7 +190,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
     Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Web サービスの管理または複数の実験の実行の追跡を行う方法については、次の記事を参照してください。
 

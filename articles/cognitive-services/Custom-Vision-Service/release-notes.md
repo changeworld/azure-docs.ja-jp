@@ -1,6 +1,7 @@
 ---
 title: リリース ノート - Custom Vision Service
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
+description: Custom Vision チームから新しいリリースに関する最新情報を入手します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,20 +10,38 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785727"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73647571"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
+
+## <a name="may-2-2019-and-may-10-2019"></a>2019 年 5 月 2 日と 2019 年 5 月 10 日
+
+- バグ修正とバックエンドの機能強化
+
+## <a name="may-23-2019"></a>2019 年 5 月 23 日
+
+- Azure サブスクリプションに関連するポータル UX のエクスペリエンスを向上し、Azure ディレクトリを簡単に選択できるようにしました。
+
+## <a name="april-18-2019"></a>2019 年 4 月 18 日 
+
+- Vision AI Dev Kit 用のオブジェクトの検出のエクスポートを追加しました。
+- プロジェクト検索などの UI の調整。
+
+## <a name="april-3-2019"></a>2019 年 4 月 3 日
+
+- イメージごとの境界ボックス数の制限が 200 に増えました。 
+- TensorFlow にエクスポートされたモデルの大幅なパフォーマンスの更新を含むバグ修正。 
 
 ## <a name="march-26-2019"></a>2019 年 3 月 26 日
 
 - Custom Vision Service が Azure で一般提供されました。
 - 特に高度な処理が必要になるデータセットや詳細に設定された分類でのパフォーマンスを高めるための新しい機械学習バックエンドを備えた、高度なトレーニング機能が追加されました。 高度なトレーニングにより、トレーニングのコンピューティング時間予算を指定でき、Custom Vision によって、経験に基づいて最適なトレーニングと拡張設定が特定されます。 クイック イテレーションについては、引き続き既存の高速トレーニングを使用することができます。
-- 3.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 作業の開始方法の例については、[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、[Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、[Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、[Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)、または [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) のドキュメントのクイックスタートを参照してください。
+- 3\.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 作業の開始方法の例については、[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、[Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、[Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、[Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)、または [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) のドキュメントのクイックスタートを参照してください。
 - "既定のイテレーション" が 3.0 API の発行/発行取り消しで置き換えられました。
 - 新しいモデルのエクスポート ターゲットが追加されました。 Raspberry Pi 3 の ARM をサポートするために、Dockerfile のエクスポートがアップグレードされました。 [Vision AI Dev Kit](https://visionaidevkit.com/) にエクスポートのサポートが追加されました。
 - S0 レベルのプロジェクトあたりのタグの制限を 500 に増やしました。 S0 レベルのプロジェクトあたりのイメージの制限を 100,000 に増やしました。

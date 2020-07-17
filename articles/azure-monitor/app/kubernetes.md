@@ -1,21 +1,18 @@
 ---
-title: Azure Monitor - Kubernetes でホストされたアプリのゼロ インストルメンテーション アプリケーション監視 | Microsoft Docs
-description: Kubernetes でホストされたアプリのゼロ インストルメンテーション アプリケーション監視は、Istio と呼ばれるサービス メッシュ テクノロジを利用することにより、Kubernetes クラスターで実行されているポッドとの間で送受信される要求に関する Application Insights テレメトリを収集できるようにする監視ソリューションです。
-services: application-insights
-author: tokaplan
-manager: carmonm
-ms.service: application-insights
+title: Application Insights を使用して Azure Kubernetes Service (AKS) またはその他の Kubernetes でホストされたアプリケーション - Azure Monitor | Microsoft Docs
+description: Azure Monitor では、Kubernetes クラスター上でサービス メッシュ技術である Istio を利用して、Kubernetes でホストされているアプリケーションに対してアプリケーションの監視を提供しています。 これにより、クラスター内で実行されるポッドでの受信および送信要求に関する Application Insights テレメトリを収集できます。
 ms.topic: conceptual
-ms.date: 04/25/2019
+author: tokaplan
 ms.author: alkaplan
-ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 04/25/2019
+ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132347"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Kubernetes でホストされたアプリのゼロ インストルメンテーション アプリケーション監視
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視
 
 > [!IMPORTANT]
 > 現在この機能はパブリック プレビュー版です。
@@ -25,7 +22,7 @@ ms.locfileid: "65408205"
 現在、Azure Monitor では、Kubernetes クラスターでのサービス メッシュ技術を利用して、Kubernetes でホストされているアプリに対する標準のアプリケーション監視が提供されています。 既定の Application Insight は、依存関係をモデル化するための[アプリケーション マップ](../../azure-monitor/app/app-map.md)、リアルタイムの監視のための [Live Metrics Stream](../../azure-monitor/app/live-stream.md)、[既定のダッシュボード](../../azure-monitor/app/overview-dashboard.md)での強力な視覚化、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)、[Workbooks](../../azure-monitor/app/usage-workbooks.md) などの機能を備えています。 この機能は、選択した Kubernetes 名前空間内のすべての Kubernetes ワークロードでパフォーマンスのボトルネックや障害のホットスポットをユーザーが特定するのに役立ちます。 Istio などのテクノロジでの既存のサービス メッシュへの投資を利用することにより、Azure Monitor では、アプリケーションのコードを変更することなく、自動的にインストルメント化されたアプリ監視を実現できます。
 
 > [!NOTE]
-> これは、Kubernetes でアプリケーションの監視を実行するさまざまな方法の 1 つです。 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.md) を使用することで、サービス メッシュの必要なしに、Kubernetes でホストされているアプリをインストルメント化することもできます。 SDK でアプリケーションをインストルメント化することなく Kubernetes を監視するには、以下の方法を使用できます。
+> これは、Kubernetes でアプリケーションの監視を実行するさまざまな方法の 1 つです。 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) を使用することで、サービス メッシュの必要なしに、Kubernetes でホストされているアプリをインストルメント化することもできます。 SDK でアプリケーションをインストルメント化することなく Kubernetes を監視するには、以下の方法を使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +59,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 ```
 
 > [!NOTE]
-> サービス メッシュによってデータはワイヤからリフトオフされるので、暗号化されたトラフィックをインターセプトすることはできません。 クラスターから出ないトラフィックの場合は、暗号化されていないプロトコル (HTTP など) を使用します。 暗号化する必要がある外部トラフィックの場合は、イングレス コントローラーで [SSL 終了を設定する](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)ことを検討します。
+> サービス メッシュによってデータはワイヤからリフトオフされるので、暗号化されたトラフィックをインターセプトすることはできません。 クラスターから出ないトラフィックの場合は、暗号化されていないプロトコル (HTTP など) を使用します。 暗号化する必要がある外部トラフィックの場合は、イングレス コントローラーで [TLS 終了を設定する](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)ことを検討します。
 
 サービス メッシュの外部で実行されているアプリケーションには影響ありません。
 
@@ -78,7 +75,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 3. *application-insights-istio-mixer-adapter-deployment.yaml* を編集します
     - *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* 環境変数の値を編集し、テレメトリを含むように、Azure portal での Application Insights リソースのインストルメンテーション キーを追加します。
     - 必要な場合は、*ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* 環境変数の値を編集し、監視を有効にする名前空間のコンマ区切りのリストを追加します。 すべての名前空間を監視する場合は空白のままにします。
-4. 以下を実行して、*src/kubernetes/* の下にある "*すべての*" YAML ファイルを適用します (まだ、*/src/kubernetes/* の内部にいる必要があります)。
+4. 以下を実行して、*src/kubernetes/* の下にある "*すべての*" YAML ファイルを適用します (まだ、 */src/kubernetes/* の内部にいる必要があります)。
 
    ```console
    kubectl apply -f .
@@ -130,7 +127,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
    ```
    エラーを探します (特に、*applicationinsightsadapter* アダプターとの通信に関連するもの)。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 このプロジェクトの進行状況に関する最新情報については、[Istio Mixer 用 Application Insights アダプター プロジェクトの GitHub](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq) をご覧ください。
 
@@ -143,6 +140,6 @@ kubectl delete -f <filename.yaml>
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor とコンテナーの連携方法について詳しくは、「[コンテナーに対する Azure Monitor の概要](../../azure-monitor/insights/container-insights-overview.md)」をご覧ください

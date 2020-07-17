@@ -1,29 +1,46 @@
 ---
-title: Azure Database for MariaDB でサポートされているバージョン
-description: Azure Database for MariaDB でサポートされているバージョンについて説明します。
+title: サポートされているバージョン - Azure Database for MariaDB
+description: Azure Database for MariaDB サービスでサポートされている MariaDB サーバーのバージョンについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 69330e9d5a05fbcc892889f70a04f5eb4a4a2fb9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 03/18/2020
+ms.openlocfilehash: 361ba17532d27a7020be1b6874993da999f48604
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60935553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527709"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>サポートされている Azure Database for MariaDB サーバーのバージョン
-Azure Database for MariaDB は、InnoDB エンジンを使用して、オープン ソースの [MariaDB Server](https://downloads.mariadb.org/) から開発されました。 Azure Database for MariaDB では現在、次のバージョンがサポートされています。
 
-## <a name="mariadb-version-10217"></a>MariaDB Version 10.2.17
-MariaDB 10.2.17 の機能強化と修正については、[MariaDB のドキュメント](https://downloads.mariadb.org/mariadb/10.2.17/)を参照してください。
+Azure Database for MariaDB は、InnoDB エンジンを使用して、オープン ソースの [MariaDB Server](https://downloads.mariadb.org/) から開発されました。
+
+MariaDB では、X.Y.Z の名前付けスキームが使用されます。 X はメジャー バージョン、Y はマイナー バージョン、Z はパッチ バージョンです。
 
 > [!NOTE]
-> サービスでは、接続をサーバー インスタンスにリダイレクトするためにゲートウェイが使用されます。 接続が確立すると、MySQL クライアントには、MariaDB サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MariaDB のバージョンが表示されます。 MariaDB サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。
+> サービスでは、接続をサーバー インスタンスにリダイレクトするためにゲートウェイが使用されます。 接続が確立すると、MySQL クライアントには、MariaDB サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MariaDB のバージョンが表示されます。 MariaDB サーバー インスタンスのバージョンを判断するには、`SELECT VERSION();` コマンドを使用します。
+
+Azure Database for MariaDB では現在、次のバージョンがサポートされています。
+
+## <a name="mariadb-version-102"></a>MariaDB バージョン 10.2
+
+パッチ バージョン:10.2.25
+
+このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/)を参照してください。
+
+## <a name="mariadb-version-103"></a>MariaDB バージョン 10.3
+
+パッチ バージョン:10.3.16
+
+このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/)を参照してください。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
-このサービスでは、マイナー バージョンの更新プログラムの適用が自動管理されます。
+サービスはパッチの更新プログラムのアップグレードを自動的に管理します。 たとえば、10.2.21 から 10.2.23 などです。  
 
-## <a name="next-steps"></a>次の手順
-**サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください
+現在は、マイナー バージョンとメジャー バージョンのアップグレードはサポートされていません。 たとえば、MariaDB 10.2 から MariaDB 10.3 へのアップグレードはサポートされていません。 10.2 から 10.3 にアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](./howto-migrate-dump-restore.md)します。
+
+## <a name="next-steps"></a>次のステップ
+
+- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください。

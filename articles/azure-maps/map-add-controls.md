@@ -1,77 +1,129 @@
 ---
-title: Azure Maps にマップ コントロールを追加する | Microsoft Docs
-description: Azure Maps でズーム コントロール、ピッチ コントロール、回転コントロール、およびスタイルの選択ツールをマップに追加する方法。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 10/08/2018
+title: マップにコントロールを追加する | Microsoft Azure Maps
+description: Microsoft Azure Maps でズーム コントロール、ピッチ コントロール、回転コントロール、およびスタイルの選択ツールをマップに追加する方法。
+author: philmea
+ms.author: philmea
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334561"
 ---
-# <a name="add-map-controls-to-azure-maps"></a>Azure Maps にマップ コントロールを追加する
+# <a name="add-controls-to-a-map"></a>マップにコントロールを追加する
 
-この記事では、マップにマップ コントロールを追加する方法について説明します。 すべてのコントロールと[スタイルの選択ツール](https://docs.microsoft.com/azure/azure-maps/choose-map-style)を備えたマップを作成する方法についても学習します。
+この記事では、マップにコントロールを追加する方法について説明します。 すべてのコントロールと[スタイル選択機能](https://docs.microsoft.com/azure/azure-maps/choose-map-style)を備えたマップを作成する方法についても説明します。
 
 ## <a name="add-zoom-control"></a>ズーム コントロールを追加する
+
+ズーム コントロールは、マップを拡大または縮小するためのボタンを追加します。次のコード サンプルでは、[ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) クラスのインスタンスを作成して、マップの右下隅に追加します。
+
+```javascript
+//Construct a zoom control and add it to the map.
+map.controls.add(new atlas.control.ZoomControl(), {
+    position: 'bottom-right'
+});
+```
+
+上記の機能の完全な実行コード サンプルを以下に示します。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='ズーム コントロールの追加' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/WKOQyN/'>Adding a zoom control (ズーム コントロールの追加)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
-
-ズーム コントロールは、マップをズームイン/ズームアウトする機能を追加します。 2 番目のコード ブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ズーム コントロールはマップ **イベント リスナー**内にあります。
-
 ## <a name="add-pitch-control"></a>ピッチ コントロールを追加する
+
+ピッチ コントロールでは、水平線を基準としてマップを傾けるためのボタンを追加します。 次のコード サンプルでは、[PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) クラスのインスタンスを作成します。 PitchControl がマップの右上隅に追加されます。
+
+```javascript
+//Construct a pitch control and add it to the map.
+map.controls.add(new atlas.control.PitchControl(), {
+    position: 'top-right'
+});
+```
+
+上記の機能の完全な実行コード サンプルを以下に示します。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='ピッチ コントロールの追加' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Adding a pitch control (ピッチ コントロールの追加)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
-
-ピッチ コントロールは、マップのピッチを変更する機能を追加します。 コードの 2 番目のブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ピッチ コントロールはマップ **イベント リスナー**内にあります。
-
 ## <a name="add-compass-control"></a>コンパス コントロールを追加する
+
+コンパス コントロールは、マップを回転するためのボタンを追加します。 次のコード サンプルでは、[Compass Control](/javascript/api/azure-maps-control/atlas.control.compasscontrol) クラスのインスタンスを作成し、マップの左下隅に追加します。
+
+```javascript
+//Construct a compass control and add it to the map.
+map.controls.add(new atlas.control.Compass(), {
+    position: 'bottom-left'
+});
+```
+
+上記の機能の完全な実行コード サンプルを以下に示します。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='回転コントロールの追加' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Adding a rotate control (回転コントロールの追加)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
-
-コードの 2 番目のブロックでは、atlas [Compass Control](/javascript/api/azure-maps-control/atlas.control.compasscontrol) を使用してコンパス コントロール オブジェクトを作成しています。 さらに、マップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用して、コンパス コントロールをマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、コンパス コントロールはマップ **イベント リスナー**内にあります。
-
 ## <a name="a-map-with-all-controls"></a>すべてのコントロールを含むマップ
+
+開発を簡略化するため、複数のコントロールを 1 つの配列に格納し、すべてを一度にマップに追加して、マップの同じ領域に配置することができます。 以下ではこの方法を使用して、標準のナビゲーション コントロールをマップに追加しています。
+
+```javascript
+map.controls.add([
+    new atlas.control.ZoomControl(),
+    new atlas.control.CompassControl(),
+    new atlas.control.PitchControl(),
+    new atlas.control.StyleControl()
+], {
+    position: "top-right"
+});
+```
+
+次のコード サンプルでは、ズーム コントロール、コンパス コントロール、ピッチ コントロール、およびスタイルの選択ツール コントロールをマップの右上隅に追加しています。 どのように自動的にスタックされるかに注目してください。 スクリプト内のコントロール オブジェクトの順序により、マップに表示される順序が決まります。 マップ上のコントロールの順序を変更するために、配列内でコントロールの順序を変更できます。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='すべてのコントロールを含むマップ' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map with all the controls (すべてのコントロールを含むマップ)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
+スタイルの選択ツール コントロールは、[StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) クラスによって定義されます。 スタイルの選択ツール コントロールの使用方法の詳細については、[マップ スタイルの選択](choose-map-style.md)に関する記事を参照してください。
 
-2 番目のコード ブロックでは、atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) を使用してコンパス コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
+## <a name="customize-controls"></a>コントロールをカスタマイズする
 
-コードの 3 番目のブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
+コントロールをカスタマイズするためのさまざまなオプションをテストするツールを次に示します。
 
-4 番目のコード ブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
+<br/>
 
-コードの最後のブロックでは、atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) を使用してスタイルの選択オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 コントロール オブジェクトはすべて、マップが完全に読み込まれた後に読み込まれるようにするため、マップ **イベント リスナー**内に追加されます。
+<iframe height="700" style="width: 100%;" scrolling="no" title="ナビゲーション コントロールのオプション" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>Navigation control options (ナビゲーション コントロールのオプション)</a>」Pen を表示します。
+</iframe>
 
-スクリプト内のコントロール オブジェクトの順序により、マップに表示される順序が決まります。 マップ上のコントロールの順序を変更するには、スクリプト内の順序を変更できます。
+カスタマイズされたナビゲーション コントロールを作成する場合は、`atlas.Control` クラスから拡張するクラスを作成するか、HTML 要素を作成してマップの div の上に配置します。 この UI コントロールで、マップを移動するためのマップの `setCamera` 関数を呼び出します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [コンパス コントロール](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
 
 > [!div class="nextstepaction"]
-> [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
+> [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
+
+> [!div class="nextstepaction"]
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 
+
+> [!div class="nextstepaction"]
+> [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
 
 完全なコードについては、次の記事を参照してください。
 
@@ -80,3 +132,13 @@ ms.locfileid: "58260144"
 
 > [!div class="nextstepaction"]
 > [ポップアップを追加する](./map-add-popup.md)
+
+> [!div class="nextstepaction"]
+> [線レイヤーを追加する](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [多角形レイヤーを追加する](map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [バブル レイヤーを追加する](map-add-bubble-layer.md)
+

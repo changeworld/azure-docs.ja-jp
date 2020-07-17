@@ -1,27 +1,26 @@
 ---
-title: Azure Data Factory を使用した DB2 からのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して DB2 からデータを移動する
 description: Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータを移動する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311530"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74931782"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-db2.md)
 
@@ -60,11 +59,11 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 > - DB2 for i (AS400):標準ユーザーの代わりにパワー ユーザーにコレクションを作成してもらったうえで、コピー アクティビティを実行します。 コレクションを作成するには、`create collection <username>` コマンドを使用します。
 > - DB2 for z/OS または LUW:高い権限があるアカウント (パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を付与されたパワー ユーザーまたは管理者) を使用して、コピー アクティビティを 1 回実行します。 するとコピー時に必要なパッケージが自動作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールと API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。 
-- Azure Portal、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
+- Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -84,10 +83,10 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |はい |
 | **server** |DB2 サーバーの名前です。 |はい |
 | **database** |DB2 データベースの名前です。 |はい |
-| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ  |
+| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ |
 | **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 指定できる値は、Anonymous、Basic、および Windows です。 |はい |
-| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ  |
-| **password** |ユーザー アカウントのパスワードです。 |いいえ  |
+| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ |
+| **password** |ユーザー アカウントのパスワードです。 |いいえ |
 | **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -106,13 +105,13 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
+| **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: `"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 query ステートメントでは、プロパティ名を "" (二重引用符) で囲んでください。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON の使用例:DB2 から Azure Blob Storage にデータをコピーする
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 この例で紹介しているのは、DB2 データベースから Blob Storage にデータをコピーする方法ですが、 Azure Data Factory コピー アクティビティを使用すると、[サポートされている各種データ ストア シンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)にデータをコピーすることができます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 この例で紹介しているのは、DB2 データベースから Blob Storage にデータをコピーする方法ですが、 Azure Data Factory コピー アクティビティを使用すると、[サポートされている各種データ ストア シンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)にデータをコピーすることができます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -309,17 +308,17 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | DB2 データベース型 | .NET Framework 型 |
 | --- | --- |
 | SmallInt |Int16 |
-| 整数 |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeric |Decimal |
+| 数値 |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
-| Timestamp |Datetime |
+| Timestamp |DateTime |
 | xml |Byte[] |
 | Char |String |
 | VarChar |String |
@@ -335,17 +334,17 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | BLOB |Byte[] |
 | DbClob |String |
 | SmallInt |Int16 |
-| 整数 |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeric |Decimal |
+| 数値 |Decimal |
 | Date |DateTime |
 | Time |TimeSpan |
-| Timestamp |Datetime |
+| Timestamp |DateTime |
 | xml |Byte[] |
 | Char |String |
 

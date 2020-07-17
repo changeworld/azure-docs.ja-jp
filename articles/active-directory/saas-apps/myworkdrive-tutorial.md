@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 61173d21c52d061f0d02ab02eb2f1083507983c2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991669"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478870"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>チュートリアル:MyWorkDrive と Azure Active Directory の統合
 
@@ -27,13 +28,13 @@ ms.locfileid: "65991669"
 
 * MyWorkDrive にアクセスする Azure AD ユーザーを制御します。
 * ユーザーが自分の Azure AD アカウントを使用して MyWorkDrive に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-開始するには、次のものが必要です。
+開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
 * MyWorkDrive でのシングル サインオン (SSO) が有効なサブスクリプション。
@@ -47,11 +48,11 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Azure AD への MyWorkDrive の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MyWorkDrive を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**MyWorkDrive**」と入力します。
-1. 結果ウィンドウで **[MyWorkDrive]** を選択し、アプリケーションを追加します。 アプリがテナントに追加される間、数秒待ちます。
+1. 結果ウィンドウで **[MyWorkDrive]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -64,11 +65,11 @@ MyWorkDrive で Azure AD SSO を構成してテストするには、次の構成
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[MyWorkDrive テスト ユーザーの作成](#create-myworkdrive-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを MyWorkDrive で作成します。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうか確認します。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **MyWorkDrive** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
@@ -91,7 +92,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
     > 
     > サインオン URL: `https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > これらの値に対して独自のホスト名と SSL 証明書を設定する方法がわからない場合は、[MyWorkDrive サポート チーム](mailto:support@myworkdrive.com)にお問い合わせください。
+    > これらの値に対して独自のホスト名と TLS/SSL 証明書を設定する方法がわからない場合は、[MyWorkDrive サポート チーム](mailto:support@myworkdrive.com)にお問い合わせください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をクリップボードにコピーします。
 
@@ -99,9 +100,17 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 ### <a name="configure-myworkdrive-sso"></a>MyWorkDrive の SSO を構成する
 
-1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として MyWorkDrive にサインインします。
+1. MyWorkDrive 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-2. MyWorkDrive サーバー上の管理パネルで、 **[ENTERPRISE]\(エンタープライズ\)** をクリックし、次の手順を実行します。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Setup MyWorkDrive]\(MyWorkDrive のセットアップ\)** をクリックすると、MyWorkDrive アプリケーションに移動します。 そこから、管理者の資格情報を入力して MyWorkDrive にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 4 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. MyWorkDrive を手動で設定する場合、別の Web ブラウザー ウィンドウで、セキュリティ管理者として MyWorkDrive にサインインします。
+
+1. MyWorkDrive サーバー上の管理パネルで、 **[ENTERPRISE]\(エンタープライズ\)** をクリックし、次の手順を実行します。
 
     ![管理](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
@@ -122,7 +131,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順に従います。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`Britta Simon`」と入力します。  
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
@@ -143,7 +152,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-myworkdrive-test-user"></a>MyWorkDrive テスト ユーザーの作成

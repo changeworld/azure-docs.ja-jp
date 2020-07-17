@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4bda20d9ce06f756913e6dfb3e980399ac7e0a6
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565451"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>チュートリアル:Azure Active Directory と RStudio Connect の統合
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 RStudio Connect と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* RStudio Connect でのシングル サインオンが有効なサブスクリプション
+* RStudio Connect。 [45 日間無料評価版](https://www.rstudio.com/products/connect/)があります。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -56,11 +56,11 @@ Azure AD への RStudio Connect の統合を構成するには、ギャラリー
 
 **ギャラリーから RStudio Connect を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -68,7 +68,7 @@ Azure AD への RStudio Connect の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**RStudio Connect**」と入力し、結果パネルで **[RStudio Connect]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**RStudio Connect**」と入力し、結果パネルで **[RStudio Connect]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの RStudio Connect](common/search-new-app.png)
 
@@ -92,36 +92,36 @@ RStudio Connect で Azure AD のシングル サインオンを構成してテ�
 
 RStudio Connect で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **RStudio Connect** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **RStudio Connect** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。`<example.com>` は、お使いの RStudio Connect のサーバー アドレスおよびポートに置き換えてください。
 
     ![[RStudio Connect のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://connect.<example>.com/__login__/saml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<example.com>/__login__/saml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://connect.<example>.com/__login__/saml/acs` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<example.com>/__login__/saml/acs` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[RStudio Connect のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://connect.<example>.com/` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<example.com>/` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[RStudio Connect クライアント サポート チーム](mailto:support@rstudio.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 それらは、RStudio Connect のサーバー アドレス (上記例の `https://example.com`) から判別されます。 問題がある場合は、[RStudio Connect のサポート チーム](mailto:support@rstudio.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. RStudio Connect アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングをご自分の SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 RStudio Connect アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+6. RStudio Connect アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングをご自分の SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 RStudio Connect アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -131,13 +131,42 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio Connect のシングル サインオンの構成
 
-**RStudio Connect** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [RStudio Connect サポート チーム](mailto:support@rstudio.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**RStudio Connect** でシングル サインオンを構成するには、上記で使用された **[アプリのフェデレーション メタデータ URL]** と **[サーバー アドレス]** を使用する必要があります。 これは、`/etc/rstudio-connect.rstudio-connect.gcfg` にある RStudio Connect 構成ファイルで実行されます。
+
+これは、構成ファイルの例です。
+
+```
+[Server]
+SenderEmail =
+
+; Important! The user-facing URL of your RStudio Connect server.
+Address = 
+
+[Http]
+Listen = :3939
+
+[Authentication]
+Provider = saml
+
+[SAML]
+Logging = true
+
+; Important! The URL where your IdP hosts the SAML metadata or the path to a local copy of it placed in the RStudio Connect server.
+IdPMetaData = 
+
+IdPAttributeProfile = azure
+SSOInitiated = IdPAndSP
+```
+
+**サーバー アドレス**を `Server.Address` 値に格納し、**アプリのフェデレーション メタデータ URL** を `SAML.IdPMetaData` 値に格納します。 このサンプル構成では、暗号化されていない HTTP 接続を使用しますが、Azure AD では暗号化された HTTPS 接続を使用する必要があることに注意してください。 RStudio Connect の前面に[リバース プロキシ](https://docs.rstudio.com/connect/admin/proxy/)を使用するか、RStudio Connect を構成して [HTTPS を直接使用](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)することができます。 
+
+構成に問題がある場合は、「[RStudio Connect Admin Guide](https://docs.rstudio.com/connect/admin/authentication/saml/)」をお読みいただくか、ヘルプについてのメールを [RStudio のサポート チーム](mailto:support@rstudio.com)まで送信してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -161,7 +190,7 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に RStudio Connect へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[RStudio Connect]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[RStudio Connect]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -173,15 +202,15 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-rstudio-connect-test-user"></a>RStudio Connect のテスト ユーザーの作成
 

@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: willzhan
+ms.reviewer: kilroyh;yanmf;juliako
+ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894361"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77162992"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
 
@@ -121,7 +122,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 | --- | --- |
 | 1 対 1 |最も簡単なケースです。 最も細かい制御を提供します。 ただし、一般に、ライセンス配信コストは最も高くなります。 保護された資産ごとに少なくとも 1 つのライセンス要求が必要です。 |
 | 1 対多 |複数の資産に対して同じコンテンツ キーを使用できます。 たとえば、ジャンルやジャンルのサブセット (つまり Movie Gene) などの論理グループのすべての資産が、1 つのコンテンツ キーを使用します。 |
-| 多対 1 |各資産に複数のコンテンツ キーが必要です。 <br/><br/>たとえば、マルチ DRM の動的 CENC 保護を MPEG-DASH に対して適用し、動的 AES-128 暗号化を HLS に対して適用する必要がある場合、2 つのコンテンツ キーが必要です。 各コンテンツ キーに固有の ContentKeyType が必要です  (動的 CENC 保護に使われるコンテンツ キーには ContentKeyType.CommonEncryption を使い、 動的 AES-128 暗号化に使われるコンテンツ キーには ContentKeyType.EnvelopeEncryption を使います)。<br/><br/>もう 1 つの例として、DASH コンテンツの CENC 保護では、理論上は、あるコンテンツ キーを使ってビデオ ストリームを保護し、別のコンテンツ キーでオーディオ ストリームを保護できます。 |
+| 多対 1 |各資産に複数のコンテンツ キーが必要です。 <br/><br/>たとえば、マルチ DRM の動的 CENC 保護を MPEG-DASH に対して適用し、動的 AES-128 暗号化を HLS に対して適用する必要がある場合、2 つのコンテンツ キーが必要です。 各コンテンツ キーに固有の ContentKeyType が必要です (動的 CENC 保護に使われるコンテンツ キーには ContentKeyType.CommonEncryption を使い、 動的 AES-128 暗号化に使われるコンテンツ キーには ContentKeyType.EnvelopeEncryption を使います)。<br/><br/>もう 1 つの例として、DASH コンテンツの CENC 保護では、理論上は、あるコンテンツ キーを使ってビデオ ストリームを保護し、別のコンテンツ キーでオーディオ ストリームを保護できます。 |
 | 多対多 |前の 2 つのシナリオの組み合わせです。 コンテンツ キーの 1 つのセットが、同じ資産グループの複数の資産のそれぞれに使われます。 |
 
 考慮すべきもう 1 つの重要な要素は、永続的ライセンスと非永続的ライセンスの使用です。
@@ -214,10 +215,10 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
     | **DRM** | **ブラウザー** | **権利のあるユーザーの結果** | **権利のないユーザーの結果** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |不合格 |
-    | **Widevine** |Chrome、Firefox、Opera |合格 |不合格 |
-    | **FairPlay** |macOS 上の Safari      |合格 |不合格 |
-    | **AES-128** |最新のブラウザー  |合格 |不合格 |
+    | **PlayReady** |Windows 10 の Microsoft Edge または Internet Explorer 11 |合格 |失敗 |
+    | **Widevine** |Chrome、Firefox、Opera |合格 |失敗 |
+    | **FairPlay** |macOS 上の Safari      |合格 |失敗 |
+    | **AES-128** |最新のブラウザー  |合格 |失敗 |
 
 ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする方法については、「[Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)」をご覧ください。
 
@@ -225,7 +226,7 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 
 Azure AD に関する情報:
 
-* 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」をご覧ください。
+* 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md)」をご覧ください。
 * 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
@@ -312,9 +313,9 @@ Azure AD が JWT を生成した後、プレイヤーが検証のために Media
 キーはいつでもロールオーバーされる可能性があるため、フェデレーション メタデータ ドキュメントでは常に複数の有効な公開キーを使用できます。 Media Services のライセンス配信は、ドキュメントで指定されているどのキーでも使うことができます。 これは、1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるためです。
 
 ### <a name="where-is-the-access-token"></a>アクセス トークンの場所
-Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../../active-directory/develop/web-api.md)」を参照)。
+Web アプリが API アプリを呼び出す場合の認証フローは次のようになります (「[アプリケーション ID と OAuth 2.0 クライアント資格情報付与](../../active-directory/azuread-dev/web-api.md)」を参照)。
 
-* ユーザーが Web アプリケーションで Azure AD にサインインします。 詳しくは、「[Web ブラウザー対 Web アプリケーション](../../active-directory/develop/web-app.md)」をご覧ください。
+* ユーザーが Web アプリケーションで Azure AD にサインインします。 詳しくは、「[Web ブラウザー対 Web アプリケーション](../../active-directory/azuread-dev/web-app.md)」をご覧ください。
 * Azure AD 認証エンドポイントは、承認コードを付けてクライアント アプリケーションにユーザー エージェントをリダイレクトします。 ユーザー エージェントは、クライアント アプリケーションのリダイレクト URI に承認コードを返します。
 * Web アプリケーションは、Web API に対して認証し、目的のリソースを取得できるように、アクセス トークンを取得する必要があります。 Web アプリケーションは、Azure AD のトークン エンドポイントに要求を送信して、資格情報、クライアント ID、Web API のアプリケーション ID の URI を提供します。 Web アプリケーションは、承認コードを示してユーザーが同意したことを証明します。
 * Azure AD がアプリケーションを認証し、Web API の呼び出しに使う JWT アクセス トークンを返します。
@@ -362,7 +363,7 @@ Azure AD によって発行された JWT は、ポインター リソースへ�
 
 カスタム STS を使うときは、2 つの変更を行う必要があります。
 
-* 資産のライセンス配信サービスを構成するときに、Azure AD からの現在のキーではなく、カスタム STS での検証に使うセキュリティ キーを指定する必要があります  (詳細は後述)。 
+* 資産のライセンス配信サービスを構成するときに、Azure AD からの現在のキーではなく、カスタム STS での検証に使うセキュリティ キーを指定する必要があります (詳細は後述)。 
 * JTW トークンが生成されるときに、現在の Azure AD での X 509 証明書の秘密キーではなく、セキュリティ キーを指定します。
 
 セキュリティ キーには次の 2 種類があります。
@@ -397,7 +398,7 @@ Azure AD によって発行された JWT は、ポインター リソースへ�
 
 Azure AD は Microsoft アカウント ドメインを信頼するので、次のどのドメインのアカウントでもカスタム Azure AD テナントに追加し、そのアカウントを使ってサインインできます。
 
-| **ドメイン名** | **ドメイン** |
+| **ドメイン名** | **[ドメイン]** |
 | --- | --- |
 | **カスタム Azure AD テナント ドメイン** |somename.onmicrosoft.com |
 | **企業ドメイン** |microsoft.com |
@@ -462,11 +463,16 @@ Widevine では、保護されたビデオのスクリーン キャプチャが�
 どちらの場合も、ユーザー認証は同じです。 Azure AD によって行われます。 唯一の違いは、JWT が Azure AD ではなくカスタム STS によって発行されることです。 動的 CENC 保護を構成するときは、ライセンス配信サービスの制限で JWT の種類として対称キーまたは非対称キーが指定されます。
 
 ## <a name="summary"></a>まとめ
+
 このドキュメントでは、トークン認証によるマルチ ネイティブ DRM およびアクセス制御を使用する CENC、Azure を使用したその設計と実装、Media Services、Media Player について説明しました。
 
 * DRM/CENC サブシステムのすべての必要なコンポーネントを含む参照設計を示しました。
 * Azure、Media Services、Media Player での参照実装を示しました。
 * 設計と実装に直接関係するいくつかのトピックについても説明しました。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

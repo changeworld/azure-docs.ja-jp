@@ -1,18 +1,18 @@
 ---
-title: P2S RADIUS 接続の VPN クライアント構成ファイルを作成してインストールする:PowerShell:Azure | Microsoft Docs
+title: Azure VPN Gateway:VPN クライアント構成ファイルを作成してインストールする - P2S RADIUS 接続
 description: RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69517d69a26364cf1cc950d7aaa849522decacf1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66115385"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732739"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
@@ -38,19 +38,18 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 
 この記事のセクションを使用するには、最初に使用する認証の種類 (ユーザー名/パスワード、証明書、またはその他の認証の種類) を決定します。 各セクションに、Windows、Mac OS X、Linux 向けの手順があります (現時点では、利用できる手順は限られています)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="adeap"></a>ユーザー名/パスワード認証
+## <a name="usernamepassword-authentication"></a><a name="adeap"></a>ユーザー名/パスワード認証
 
 ユーザー名/パスワード認証を構成して、Active Directory を使用するか、または使用しないようにできます。 いずれかのシナリオで、接続するすべてのユーザーに、RADIUS を使用して認証できるユーザー名とパスワードの資格情報があることを確認します。
 
 ユーザー名/パスワード認証を構成する場合、EAP-MSCHAPv2 のユーザー名/パスワード認証プロトコルの構成のみを作成できます。 コマンドでは、`-AuthenticationMethod` は `EapMSChapv2` です。
 
-### <a name="usernamefiles"></a> 1.VPN クライアント構成ファイルの生成
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1.VPN クライアント構成ファイルの生成
 
 Azure portal または Azure PowerShell を使用して VPN クライアント構成ファイルを生成することができます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. 仮想ネットワーク ゲートウェイに移動します。
 2. **[ポイント対サイトの構成]** をクリックします。
@@ -81,7 +80,7 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
-### <a name="setupusername"></a> 2.VPN クライアントの構成
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2.VPN クライアントの構成
 
 次の VPN クライアントを構成できます。
 
@@ -89,17 +88,17 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 * [Mac (OS X)](#admaccli)
 * [strongSwan を使用する Linux](#adlinuxcli)
  
-#### <a name="adwincli"></a>Windows VPN クライアント設定
+#### <a name="windows-vpn-client-setup"></a><a name="adwincli"></a>Windows VPN クライアント設定
 
 バージョンがクライアントのアーキテクチャと一致する限り、各 Windows クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、[FAQ](vpn-gateway-vpn-faq.md#P2S) を参照してください。
 
 証明書認証用にネイティブ Windows VPN クライアントを構成するには、次の手順を実行してください。
 
 1. Windows コンピューターのアーキテクチャに対応する VPN クライアント構成ファイルを選択します。 64 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupAmd64** インストーラー パッケージを選択します。 32 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupX86** インストーラー パッケージを選択します。 
-2. パッケージをインストールするには、ダブルクリックします。 SmartScreen ポップアップが表示されたら、**[詳細]** > **[実行]** の順に選択します。
-3. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** を選択します。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。 
+2. パッケージをインストールするには、ダブルクリックします。 SmartScreen ポップアップが表示されたら、 **[詳細]**  >  **[実行]** の順に選択します。
+3. クライアント コンピューターで **[ネットワークの設定]** に移動し、 **[VPN]** を選択します。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。 
 
-#### <a name="admaccli"></a>Mac (OS X) VPN クライアント設定
+#### <a name="mac-os-x-vpn-client-setup"></a><a name="admaccli"></a>Mac (OS X) VPN クライアント設定
 
 1. **VpnClientSetup mobileconfig** ファイルを選択し、各ユーザーに送信します。 電子メールや別の方法を使用できます。
 
@@ -115,14 +114,14 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
       <key>ServerAddresses</key>
         <array>
             <string>10.0.0.132</string>
-        <array>
+        </array>
       <key>SupplementalMatchDomains</key>
         <array>
             <string>TestDomain.com</string>
         </array>
     </dict> 
    ```
-4. プロファイルをダブルクリックしてインストールし、**[続ける]** を選択します。 プロファイル名は、仮想ネットワークの名前と同じです。
+4. プロファイルをダブルクリックしてインストールし、 **[続ける]** を選択します。 プロファイル名は、仮想ネットワークの名前と同じです。
 
    ![インストール メッセージ](./media/point-to-site-vpn-client-configuration-radius/adinstall.png)
 5. **[続ける]** を選択してプロファイルの送信者を信頼し、インストールを続行します。
@@ -134,10 +133,10 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 7. コンピューターにプロファイルをインストールするために必要な特権のユーザー名とパスワードを入力します。 **[OK]** を選択します。
 
    ![プロファイルのインストールのためのユーザー名とパスワード ボックス](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
-8. プロファイルのインストールが完了すると、**[プロファイル]** ダイアログ ボックスに表示されます。 このダイアログ ボックスは、後で **[システム環境設定]** から開くこともできます。
+8. プロファイルのインストールが完了すると、 **[プロファイル]** ダイアログ ボックスに表示されます。 このダイアログ ボックスは、後で **[システム環境設定]** から開くこともできます。
 
    !["プロファイル" ダイアログ ボックス](./media/point-to-site-vpn-client-configuration-radius/adsystempref.png)
-9. VPN 接続にアクセスするには、**[システム環境設定]** から **[ネットワーク]** ダイアログ ボックスを開きます。
+9. VPN 接続にアクセスするには、 **[システム環境設定]** から **[ネットワーク]** ダイアログ ボックスを開きます。
 
    ![システム環境設定のアイコン](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
 10. VPN 接続は、**IkeV2-VPN** として表示されます。 この名前は、**mobileconfig** ファイルを更新することで変更できます。
@@ -146,38 +145,38 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 11. **[認証設定]** を選択します。 一覧で **[ユーザー名]** を選択し、資格情報を入力します。 以前に資格情報を入力した場合は、一覧で **[ユーザー名]** が自動的に選択され、ユーザー名とパスワードがあらかじめ入力されています。 **[OK]** を選択して設定を保存します。
 
     ![[認証設定]](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
-12. **[ネットワーク]** ダイアログ ボックスに戻り、**[適用]** を選択して、変更を保存します。 接続を開始するには、**[接続]** を選択します。
+12. **[ネットワーク]** ダイアログ ボックスに戻り、 **[適用]** を選択して、変更を保存します。 接続を開始するには、 **[接続]** を選択します。
 
-#### <a name="adlinuxcli"></a>strongSwan を使用した Linux VPN クライアントの設定
+#### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>strongSwan を使用した Linux VPN クライアントの設定
 
 次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 実際の画面は、使用している Linux と strongSwan のバージョンによって異なる場合があります。
 
-1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 `libcharon-extra-plugins` に関連するエラーが発生する場合、これを `strongswan-plugin-eap-mschapv2` に置き換えます。
+1. **[ターミナル]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 `libcharon-extra-plugins` に関連するエラーが発生する場合、これを `strongswan-plugin-eap-mschapv2` に置き換えます。
 
    ```Terminal
    sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
    ```
-2. **ネットワーク マネージャー** アイコン (上矢印/下矢印) を選択して、**[接続の編集]** を選択します。
+2. **ネットワーク マネージャー** アイコン (上矢印/下矢印) を選択して、 **[接続の編集]** を選択します。
 
    ![ネットワーク マネージャーでの "接続の編集" の選択](./media/point-to-site-vpn-client-configuration-radius/EditConnection.png)
 3. **[追加]** ボタンを選択して、新しい接続を作成します。
 
    ![接続の "追加" ボタン](./media/point-to-site-vpn-client-configuration-radius/AddConnection.png)
-4. ドロップダウン メニューから **[IPsec/IKEv2 (strongswan)]** を選択して、**[作成]** を選択します。 この手順で使用する接続の名前を変更できます。
+4. ドロップダウン メニューから **[IPsec/IKEv2 (strongswan)]** を選択して、 **[作成]** を選択します。 この手順で使用する接続の名前を変更できます。
 
    ![接続の種類の選択](./media/point-to-site-vpn-client-configuration-radius/AddIKEv2.png)
 5. ダウンロード クライアント構成ファイルの **Generic** フォルダーから **VpnSettings.xml** ファイルを開きます。 `VpnServer` というタグを探して、その `azuregateway` で始まり `.cloudapp.net` で終わる名前をコピーします。
 
    ![VpnSettings.xml ファイルの内容](./media/point-to-site-vpn-client-configuration-radius/VpnSettings.png)
-6. この名前を、**[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、**[証明書]** フィールドの最後のフォルダー アイコンを選択して、**Generic** フォルダーに移動し、**VpnServerRoot** ファイルを選択します。
-7. 接続の **[クライアント]** セクションで、**[認証]** に対して **[EAP]** を選び、ユーザー名とパスワードを入力します。 この情報を保存するには、右側のロック アイコンを選択する必要がある場合があります。 次に、**[保存]** を選択します。
+6. この名前を、 **[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、 **[証明書]** フィールドの最後のフォルダー アイコンを選択して、**Generic** フォルダーに移動し、**VpnServerRoot** ファイルを選択します。
+7. 接続の **[クライアント]** セクションで、 **[認証]** に対して **[EAP]** を選び、ユーザー名とパスワードを入力します。 この情報を保存するには、右側のロック アイコンを選択する必要がある場合があります。 次に、 **[保存]** を選択します。
 
    ![接続設定の編集](./media/point-to-site-vpn-client-configuration-radius/editconnectionsettings.png)
-8. **ネットワーク マネージャー** アイコン (上矢印/下矢印) を選択して、**[VPN 接続]** にマウス ポインターを合わせます。 作成した VPN 接続が表示されます。 接続を開始するには、これを選択します。
+8. **ネットワーク マネージャー** アイコン (上矢印/下矢印) を選択して、 **[VPN 接続]** にマウス ポインターを合わせます。 作成した VPN 接続が表示されます。 接続を開始するには、これを選択します。
 
    ![ネットワーク マネージャーでの "VPN Radius" 接続](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
-## <a name="certeap"></a>証明書認証
+## <a name="certificate-authentication"></a><a name="certeap"></a>証明書認証
  
 EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クライアント構成ファイルを作成できます。 通常、企業が発行した証明書を使用して、VPN のユーザーを認証します。 接続するすべてのユーザーのデバイスに証明書がインストールされていることと、その証明書が RADIUS サーバーで検証できることを確認します。
 
@@ -191,7 +190,7 @@ EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クラ�
 
 `-ClientRootCert` は、ルート証明書を含む .cer ファイルです。 これは、省略可能なパラメーターです。 接続元にするデバイスがクライアント証明書を 1 つしか持っていない場合は、このパラメーターを指定する必要はありません。
 
-### <a name="certfiles"></a>1.VPN クライアント構成ファイルの生成
+### <a name="1-generate-vpn-client-configuration-files"></a><a name="certfiles"></a>1.VPN クライアント構成ファイルの生成
 
 証明書認証で使用する VPN クライアント構成ファイルを生成します。 VPN クライアント構成ファイルの生成には、次のコマンドを使用します。
  
@@ -212,7 +211,7 @@ New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -Authen
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
-### <a name="setupusername"></a> 2.VPN クライアントの構成
+### <a name="2-configure-vpn-clients"></a><a name="setupusername"></a> 2.VPN クライアントの構成
 
 次の VPN クライアントを構成できます。
 
@@ -220,13 +219,13 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 * [Mac (OS X)](#certmaccli)
 * Linux (サポート対象、まだ記事の手順はありません)
 
-#### <a name="certwincli"></a>Windows VPN クライアント設定
+#### <a name="windows-vpn-client-setup"></a><a name="certwincli"></a>Windows VPN クライアント設定
 
-1. 構成パッケージを選択し、クライアント デバイスにインストールします。 64 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupAmd64** インストーラー パッケージを選択します。 32 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupX86** インストーラー パッケージを選択します。 SmartScreen ポップアップが表示されたら、**[詳細]** > **[実行]** の順に選択します。 パッケージを保存して、他のクライアント コンピューターにインストールすることもできます。
+1. 構成パッケージを選択し、クライアント デバイスにインストールします。 64 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupAmd64** インストーラー パッケージを選択します。 32 ビットのプロセッサ アーキテクチャの場合は、**VpnClientSetupX86** インストーラー パッケージを選択します。 SmartScreen ポップアップが表示されたら、 **[詳細]**  >  **[実行]** の順に選択します。 パッケージを保存して、他のクライアント コンピューターにインストールすることもできます。
 2. 各クライアントには、認証のためにクライアント証明書が必要です。 クライアント証明書をインストールします。 クライアント証明書については、[ポイント対サイトのクライアント証明書](vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。 生成された証明書をインストールするには、「[Install a certificate on Windows clients](point-to-site-how-to-vpn-client-install-azure-cert.md)」 (Windows クライアントに証明書をインストールする) を参照してください。
-3. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** を選択します。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。
+3. クライアント コンピューターで **[ネットワークの設定]** に移動し、 **[VPN]** を選択します。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。
 
-#### <a name="certmaccli"></a>Mac (OS X) VPN クライアント設定
+#### <a name="mac-os-x-vpn-client-setup"></a><a name="certmaccli"></a>Mac (OS X) VPN クライアント設定
 
 Azure 仮想ネットワークに接続するすべての Mac デバイスごとに、個別のプロファイルを作成する必要があります。 これは、これらのデバイスでは、認証用のユーザー証明書をプロファイルで指定する必要があるためです。 **Generic** フォルダーには、プロファイルの作成に必要な情報がすべて揃っています。
 
@@ -236,7 +235,7 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
 
 証明書認証用に Mac 上でネイティブ VPN クライアントを構成するには、次の手順を実行してください。
 
-1. **VpnServerRoot** および **RadiusServerRoot** ルート証明書を Mac にインポートします。 各ファイルを Mac にコピーし、ダブルクリックして、**[追加]** を選択します。
+1. **VpnServerRoot** および **RadiusServerRoot** ルート証明書を Mac にインポートします。 各ファイルを Mac にコピーし、ダブルクリックして、 **[追加]** を選択します。
 
    ![VpnServerRoot 証明書の追加](./media/point-to-site-vpn-client-configuration-radius/addcert.png)
 
@@ -244,27 +243,27 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
 2. 各クライアントには、認証のためにクライアント証明書が必要です。 クライアント デバイスにクライアント証明書をインストールします。
 3. **[ネットワーク環境設定]** の下で **[ネットワーク]** ダイアログ ボックスを開きます。 **[+]** を選択して、Azure 仮想ネットワークへの P2S 接続用に、新しい VPN クライアント接続プロファイルを作成します。
 
-   **[インターフェイス]** の値は **VPN**、**[VPN タイプ]** の値は **IKEv2** です。 **[サービス名]** ボックスにプロファイルの名前を指定し、**[作成]** を選択して VPN クライアント接続プロファイルを作成します。
+   **[インターフェイス]** の値は **VPN**、 **[VPN タイプ]** の値は **IKEv2** です。 **[サービス名]** ボックスにプロファイルの名前を指定し、 **[作成]** を選択して VPN クライアント接続プロファイルを作成します。
 
    ![インターフェイスおよびサービス名の情報](./media/point-to-site-vpn-client-configuration-radius/network.png)
 4. **Generic** フォルダーの **VpnSettings.xml** ファイルから、**VpnServer** タグの値をコピーします。 この値を、プロファイルの **[サーバー アドレス]** ボックスと **[リモート ID]** ボックスに貼り付けます。 **[ローカル ID]** ボックスを空白のままにします。
 
    ![サーバー情報](./media/point-to-site-vpn-client-configuration-radius/servertag.png)
-5. **[認証設定]** を選択し、**[証明書]** を選択します。 
+5. **[認証設定]** を選択し、 **[証明書]** を選択します。 
 
    ![[認証設定]](./media/point-to-site-vpn-client-configuration-radius/certoption.png)
 6. **[選択]** をクリックして、認証に使用する証明書を選択します。
 
    ![認証用の証明書の選択](./media/point-to-site-vpn-client-configuration-radius/certificate.png)
-7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、**[続ける]** を選択します。
+7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、 **[続ける]** を選択します。
 
    !["ID の選択" 一覧](./media/point-to-site-vpn-client-configuration-radius/identity.png)
-8. **[ローカル ID]** ボックスに、(手順 6 の) 証明書の名前を指定します。 この例では、**ikev2Client.com** です。 次に、**[適用]** ボタンを選択して変更を保存します。
+8. **[ローカル ID]** ボックスに、(手順 6 の) 証明書の名前を指定します。 この例では、**ikev2Client.com** です。 次に、 **[適用]** ボタンを選択して変更を保存します。
 
    !["ローカル ID" ボックス](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
-9. **[ネットワーク]** ダイアログ ボックスで、**[適用]** を選択して、すべての変更を保存します。 次に、**[接続]** を選択して、Azure 仮想ネットワークへの P2S 接続を開始します。
+9. **[ネットワーク]** ダイアログ ボックスで、 **[適用]** を選択して、すべての変更を保存します。 次に、 **[接続]** を選択して、Azure 仮想ネットワークへの P2S 接続を開始します。
 
-## <a name="otherauth"></a>他の認証の種類またはプロトコルを使用する
+## <a name="working-with-other-authentication-types-or-protocols"></a><a name="otherauth"></a>他の認証の種類またはプロトコルを使用する
 
 別の認証の種類 (OTP など) を使用するか、別の認証プロトコル (EAP-MSCHAPv2 の代わりに PEAP-MSCHAPv2 など) を使用するには、独自の VPN クライアント構成プロファイルを作成する必要があります。 プロファイルを作成するには、仮想ネットワーク ゲートウェイの IP アドレス、トンネルの種類、分割トンネルのルートなどの情報が必要です。 この情報は、次の手順を実行することで取得できます。
 
@@ -280,7 +279,7 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
    
    **GenericDevice** フォルダーには、**VpnServerRoot** という .cer ファイルも含まれています。 このファイルには、P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。 Azure 仮想ネットワークに接続するすべてのデバイスに、証明書をインストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [P2S 構成を完了する](point-to-site-how-to-radius-ps.md)ための記事に戻ります。
 

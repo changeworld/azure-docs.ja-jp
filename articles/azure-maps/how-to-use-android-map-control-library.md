@@ -1,51 +1,53 @@
 ---
-title: Azure Maps で Android マップ コントロールを使用する方法 | Microsoft Docs
-description: Azure Maps の Android マップ コントロール。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/12/2019
+title: Android マップ コントロールの概要 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Android SDK を使用した Android マップ コントロールの概要を説明します。
+author: philmea
+ms.author: philmea
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010669"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648220"
 ---
-# <a name="how-to-use-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用する方法
+# <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
-Azure Maps Android SDK は、Android 用のベクター マップ ライブラリです。 この記事では、Azure Maps Android SDK のインストール、マップの読み込み、マップでのピンの配置のプロセスについて説明します。
+Azure Maps Android SDK は、Android 用のベクター マップ ライブラリです。 この記事では、Azure Maps Android SDK のインストールおよびマップの読み込みのプロセスを説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成する](how-to-manage-account-keys.md)必要があります。
+この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-account-with-azure-maps)し、アカウントの[主キーを取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)する必要があります。
+
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 ### <a name="download-android-studio"></a>Android Studio をダウンロードする
 
-Azure Maps Android SDK をインストールするには、Android Studio をダウンロードし、空のアクティビティを含むプロジェクトを作成する必要があります。 Google から無料で [Android Studio をダウンロードする](https://developer.android.com/studio/)ことができます。 
+Azure Maps Android SDK をインストールする前に、Android Studio をダウンロードして、空のアクティビティを含むプロジェクトを作成します。 Google から無料で [Android Studio をダウンロードする](https://developer.android.com/studio/)ことができます。 
 
 ## <a name="create-a-project-in-android-studio"></a>Android Studio でプロジェクトを作成する
 
-まず、空のアクティビティを含む新しいプロジェクトを作成する必要があります。 Android Studio プロジェクトを作成するには、次の手順を完了します。
+まず、空のアクティビティを含む新しいプロジェクトを作成します。 Android Studio プロジェクトを作成するには、次の手順を完了します。
 
-1. **[Choose your project]\(プロジェクトの選択\)** で、**[Phone and Tablet]\(電話およびタブレット\)** を選択します。 このフォーム ファクターでアプリケーションが実行されます。
-2. **[Phone and Tablet]\(電話およびタブレット\)** タブで、**[Empty Activity]\(空のアクティビティ\)**、**[次へ]** の順に選択します。
+1. **[Choose your project]\(プロジェクトの選択\)** で、 **[Phone and Tablet]\(電話およびタブレット\)** を選択します。 このフォーム ファクターでアプリケーションが実行されます。
+2. **[Phone and Tablet]\(電話およびタブレット\)** タブで、 **[Empty Activity]\(空のアクティビティ\)** 、 **[次へ]** の順に選択します。
 3. **[Configure your project]\(プロジェクトの構成\)** で、最小限の SDK として `API 21: Android 5.0.0 (Lollipop)` を選択します。 これは Azure Maps Android SDK でサポートされる最も古いバージョンです。
-4. 既定値の `Activity Name` と `Layout Name` を受け入れ、**[完了]** を選択します。
+4. 既定値の `Activity Name` と `Layout Name` を受け入れ、 **[完了]** を選択します。
 
 Android Studio のインストールと新しいプロジェクトの作成の詳細については、[Android Studio のドキュメント](https://developer.android.com/studio/intro/)を参照してください。
 
-![プロジェクトの作成](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Android Studio でプロジェクトを作成する ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>仮想デバイスを設定する
 
-Android Studio を使用すると、コンピューター上で仮想 Android デバイスを設定できます。 このようにすると、開発中のアプリケーションのテストに役立つ場合があります。 仮想デバイスを設定するには、プロジェクト画面の右上隅にある Android 仮想デバイス (AVD) アイコンを選び、**[仮想デバイスの作成]** を選択します。 ツールバーで **[ツール]** > **[Android]** > **[AVD マネージャー]** の順に選択して、AVD マネージャーに移動することもできます。 **[Phones]\(電話\)** カテゴリで **[Nexus 5X]**、**[次へ]** の順に選択します。
+Android Studio を使用すると、コンピューター上で仮想 Android デバイスを設定できます。 このようにすると、開発中のアプリケーションのテストに役立つ場合があります。 仮想デバイスを設定するには、プロジェクト画面の右上隅にある Android 仮想デバイス (AVD) アイコンを選び、 **[仮想デバイスの作成]** を選択します。 ツールバーで **[ツール]**  >  **[Android]**  >  **[AVD マネージャー]** の順に選択して、AVD マネージャーに移動することもできます。 **[Phones]\(電話\)** カテゴリで **[Nexus 5X]** 、 **[次へ]** の順に選択します。
 
 AVD の設定の詳細については、[Android Studio のドキュメント](https://developer.android.com/studio/run/managing-avds)を参照してください。
 
@@ -55,7 +57,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
 アプリケーションのビルドの次の手順は、Azure Maps Android SDK をインストールすることです。 SDK をインストールするには、以下の手順を完了します。
 
-1. **build.gradle** ファイルの**リポジトリ** ブロックである **all projects** に以下のコードを追加します。
+1. 最上位の **build.gradle** ファイルを開き、次のコードを**すべてのプロジェクト**の**リポジトリ** ブロック セクションに追加します。
 
     ```
     maven {
@@ -64,8 +66,10 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     ```
 
 2. **app/build.gradle** を更新し、以下のコードを追加します。
+    
+    1. プロジェクトの **minSdkVersion** が API 21 以降であることを確認します。
 
-    1. Android ブロックに以下のコードを追加します。
+    2. Android セクションに、次のコードを追加します。
 
         ```
         compileOptions {
@@ -73,24 +77,14 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. 依存関係ブロックを更新し、以下のコードを追加します。
+    3. 依存関係のブロックを更新し、最新の Azure Maps Android SDK の新しい実装の依存関係の行を追加します。
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.1"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
-
-3. **AndroidManifest.xml** ファイルに以下の XML を追加して、アクセス許可を設定します。
-
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <manifest>
-        ...
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        ...
-    </manifest>
-    ```
-
-4. 次のような XML になるように、**res** > **layout** > **activity_main.xml** を編集します。
+    
+    4. ツール バーの **[ファイル]** に移動し、 **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** をクリックします。
+3. メイン アクティビティにマップ フラグメントを追加します (res \> layout \> activity\_main.xml)。
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -105,21 +99,36 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:mapcontrol_cameraTargetLat="47.64"
-            app:mapcontrol_cameraTargetLng="-122.33"
-            app:mapcontrol_cameraZoom="12"
             />
-
     </FrameLayout>
     ```
 
-5. **MainActivity.java** を編集して、マップ ビュー アクティビティ クラスを作成します。 編集後は、以下のクラスのようになります。
+4. **MainActivity.java** ファイルで、以下の操作を行う必要があります。
+    
+    * Azure Maps SDK の imports を追加する
+    * Azure Maps の認証情報を設定する
+    * **onCreate** メソッドでマップ コントロールのインスタンスを取得する
 
+    `setSubscriptionKey` または `setAadProperties` メソッドを使用して `AzureMaps` クラスにグローバルに認証情報を設定すると、すべてのビューで認証情報を追加する必要がなくなります。 
+
+    マップ コントロールには、Android の OpenGL ライフサイクルを管理するための独自のライフサイクル メソッドが含まれています。 これらのライフサイクル メソッドは、それが含まれているアクティビティから直接呼び出す必要があります。 アプリでマップ コントロールのライフサイクル メソッドを正しく呼び出すためには、マップ コントロールを含むアクティビティで次のライフサイクル メソッドをオーバーライドする必要があります。 また、それぞれのマップ コントロール メソッドを呼び出す必要があります。 
+
+    * onCreate(Bundle) 
+    * onStart() 
+    * onResume() 
+    * onPause() 
+    * onStop() 
+    * onDestroy() 
+    * onSaveInstanceState(Bundle) 
+    * onLowMemory() 
+
+    **MainActivity.java** ファイルを次のように編集します。
+    
     ```java
     package com.example.myapplication;
 
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
+    import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
@@ -129,7 +138,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     public class MainActivity extends AppCompatActivity {
         
         static {
-            AzureMaps.setSubscriptionKey("{subscription-key}");
+            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
 
         MapControl mapControl;
@@ -142,13 +151,24 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-
+    
+            //Wait until the map resources are ready.
+            mapControl.onReady(map -> {
+                //Add your post map load code here.
+    
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
             mapControl.onResume();
+        }
+
+        @Override
+        protected void onStart(){
+            super.onStart();
+            mapControl.onStart();
         }
 
         @Override
@@ -180,9 +200,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
         }
-
     }
-
     ```
 
 ## <a name="import-classes"></a>クラスをインポートする
@@ -197,97 +215,91 @@ Alt + Enter (Mac の場合は Option + Return) を選択して、これらのク
 
 Android Studio でアプリケーションをビルドするには、数秒かかります。 ビルドが完了した後、エミュレートされた Android デバイスでアプリケーションをテストできます。 次のようなマップが表示されます。
 
-![Android のマップ](./media/how-to-use-android-map-control-library/android-map.png)
+<center>
 
-## <a name="add-a-marker-to-the-map"></a>マップにマーカーを追加する
+![Android アプリケーションでの Azure Maps](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-マップにマーカーを追加するには、`MainActivity.java` に `mapView.getMapAsync()` 関数を追加します。 最終的な `MainActivity.java` コードは、次のようになります。
+## <a name="localizing-the-map"></a>マップのローカライズ
 
-```java
-package com.example.myapplication;
+Azure Maps Android SDK には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 次のコードは、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定する方法を示しています。 
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.Point;
-import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-import com.microsoft.azure.maps.mapcontrol.MapControl;
-import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-public class MainActivity extends AppCompatActivity {
-    
-    static{
-            AzureMaps.setSubscriptionKey("{subscription-key}");
-        }
+最初のオプションでは、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用して、言語とビューの地域情報を `AzureMaps` クラスに渡します。 これにより、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域ビューが設定されます。
 
-    MapControl mapControl;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+```Java
+static {
+    //Set your Azure Maps Key.
+    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
 
-        mapControl = findViewById(R.id.mapcontrol);
+    //Set the language to be used by Azure Maps.
+    AzureMaps.setLanguage("fr-FR");
 
-        mapControl.onCreate(savedInstanceState);
-
-        mapControl.getMapAsync(map -> {
-            DataSource dataSource = new DataSource();
-            dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-
-            SymbolLayer symbolLayer = new SymbolLayer(dataSource);
-            symbolLayer.setOptions(iconImage("my-icon"));
-
-            map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            map.sources.add(dataSource);
-            map.layers.add(symbolLayer);
-        });
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapControl.onStart();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapControl.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapControl.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapControl.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapControl.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapControl.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapControl.onSaveInstanceState(outState);
-    }
+    //Set the regional view to be used by Azure Maps.
+    AzureMaps.setView("auto");
 }
 ```
 
-アプリケーションをもう一度実行します。 次のように、マップにマーカーが表示されます。
+2 つ目のオプションでは、言語とビュー情報をマップ コントロール XML に渡します。
 
-![Android のマップ ピン](./media/how-to-use-android-map-control-library/android-map-pin.png)
+```XML
+<com.microsoft.azure.maps.mapcontrol.MapControl
+    android:id="@+id/myMap"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:mapcontrol_language="fr-FR"
+    app:mapcontrol_view="auto"
+    />
+```
+
+3 つ目のオプションでは、マップの `setStyle` メソッドを使用して、マップの言語と地域ビューをプログラムで設定します。 これは、マップの言語と地域ビューを変更するときにいつでも実行できます。
+
+```Java
+mapControl.onReady(map -> {
+    map.setStyle(StyleOptions.language("fr-FR"));
+    map.setStyle(StyleOptions.view("auto"));
+});
+```
+
+言語が "fr-FR" に設定され、地域ビューが "auto" に設定されている Azure Maps の例を次に示します。
+
+<center>
+
+![Azure Maps、ラベルをフランス語で表示するマップ イメージ](./media/how-to-use-android-map-control-library/android-localization.png)
+</center>
+
+サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
+
+## <a name="navigating-the-map"></a>マップ内を移動する
+
+マップをズーム、パン、回転、およびピッチ調整する方法は複数存在します。 以下では、マップ内を移動するときのさまざまな方法をすべて詳しく説明します。
+
+**マップをズームする**
+
+- 2 本の指でマップをタッチし、指でつまむようにすると縮小し、指を広げると拡大します。
+- マップをダブルタップし、1 レベル分拡大します。
+- 2本の指でダブルタップし、マップを 1 レベル分縮小します。
+- 2 回タップします。2 回目のタップで指をマップに置いたままにして、上にドラッグすると拡大し、下にドラッグすると縮小します。
+
+**マップをパンする**
+
+- マップをタッチし、任意の方向にドラッグします。
+
+**マップを回転する**
+
+- 2 本の指でマップをタッチし、回転します。
+
+**マップのピッチを調整する**
+
+- 2 本の指でマップをタッチして、上または下にドラッグします。
+
+## <a name="next-steps"></a>次のステップ
+
+マップにオーバーレイ データを追加する方法を確認します。
+
+> [!div class="nextstepaction"]
+> [Android マップへのシンボル レイヤーの追加](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Android マップへの図形の追加](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Android マップでのマップ スタイルの変更](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

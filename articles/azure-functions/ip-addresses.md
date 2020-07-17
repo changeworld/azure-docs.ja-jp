@@ -1,20 +1,14 @@
 ---
 title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: glenga
-ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849481"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80656784"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -31,12 +25,12 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 各関数アプリには、1 つの着信 IP アドレスがあります。 この IP アドレスを確認するには、次のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 関数アプリに移動します。
 3. **[プラットフォーム機能]** を選択します。
-4. **[プロパティ]** を選択すると、**[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
+4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
 
-## <a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 
 各関数アプリには、使用可能な一連の送信 IP アドレスがあります。 関数からバックエンド データベースなどへの送信接続では、使用可能な送信 IP アドレスの 1 つが送信元 IP アドレスとして使用されます。 指定された接続でどの IP アドレスが使用されるかを事前に知ることはできません。 このため、バックエンド サービスでは、関数アプリのすべての送信 IP アドレスに対してファイアウォールを開く必要があります。
 
@@ -86,15 +80,15 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
  このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、[[ダウンロード センター] ページ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)の **[詳細]** セクションを展開してください。
 
-## <a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 
 次の操作を行うと、着信 IP アドレスが変更される**ことがあります**。
 
 - 関数アプリを削除した後、別のリソース グループ内で再作成する。
 - リソース グループとリージョンの組み合わせに含まれる最後の関数アプリを削除した後、再作成する。
-- [証明書の更新](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)時などに SSL バインドを削除する。
+- [証明書の更新](../app-service/configure-ssl-certificate.md#renew-certificate)時などに TLS バインドを削除する。
 
-関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
 
 ## <a name="outbound-ip-address-changes"></a>送信 IP アドレスの変更
 
@@ -103,7 +97,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 着信 IP アドレスが変更される可能性のあるアクションを実行する。
 * App Service プランの価格レベルを変更する。 すべての価格レベルについて、アプリで使用可能なすべての送信 IP アドレスのリストが `possibleOutboundIPAddresses` プロパティに含まれています。 「[IP アドレスを見つける](#find-outbound-ip-addresses)」を参照してください。
 
-関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、送信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、送信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
 
 送信 IP アドレスを意図的に変更するには、次のようにします。
 
@@ -121,10 +115,10 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
-4. App Service プランの階層は、**[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、**[Isolated]** です。
+4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
  
 別の方法として、[Cloud Shell](../cloud-shell/quickstart.md) を使用することもできます。
 
@@ -134,6 +128,6 @@ az webapp show --resource-group <group_name> --name <app_name> --query sku --out
 
 App Service 環境 `sku` は `Isolated` です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 多くの場合、IP が変更されるのは、関数アプリのスケールが変更されるためです。 [関数アプリのスケーリングの詳細](functions-scale.md)を参照してください。

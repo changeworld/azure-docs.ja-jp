@@ -1,27 +1,26 @@
 ---
-title: Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
+title: Windows VM の従来のメトリックを Azure Monitor メトリック データベースに送信する
 description: Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77655818"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor メトリック データベースに送信する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) ("WAD" または "診断" と呼ばれる) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
 
-この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
+この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック データベースに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
 
 この場所にこれらを格納することで、プラットフォーム メトリックに対して実行するのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。 これまで、診断拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。 
 
@@ -29,11 +28,13 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションで、[サービス管理者または共同管理者](../../billing/billing-add-change-azure-subscription-administrator.md)である必要があります。 
+- Azure サブスクリプションで、[サービス管理者または共同管理者](../../cost-management-billing/manage/add-change-subscription-administrator.md)である必要があります。 
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります。 
+- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります 
 
 - [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+
+- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>クラシック仮想マシンおよびストレージ アカウントを作成する
 
@@ -189,18 +190,18 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
 
 1.  左側のメニューで **[モニター]** を選択します。
 
-1.  **[モニター]** ブレードで、**[メトリック]** を選択します。
+1.  **[モニター]** ブレードで、 **[メトリック]** を選択します。
 
     ![メトリックを移動する](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
 1. リソースのドロップダウン メニューで、お使いのクラシック VM を選択します。
 
-1. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。
+1. 名前空間のドロップダウン メニューで、 **[azure.vm.windows.guest]** を選択します。
 
-1. メトリックのドロップダウン メニューで、**[Memory\Committed Bytes in Use]** を選択します。
+1. メトリックのドロップダウン メニューで、 **[Memory\Committed Bytes in Use]** を選択します。
    ![メトリックをプロットする](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
 

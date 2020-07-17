@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric を使用した正常性のレポートとチェック | Microsoft Docs
+title: Azure Service Fabric を使用した正常性のレポートとチェック
 description: サービス コードから正常性レポートを送信し、Azure Service Fabric に用意されている正常性監視ツールを使用してサービスの正常性をチェックする方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: mfussell
-editor: ''
-ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821680"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75464643"
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
@@ -37,7 +28,7 @@ ms.locfileid: "56821680"
 ## <a name="prerequisites"></a>前提条件
 以下のものがインストールされている必要があります。
 
-* Visual Studio 2015 または Visual Studio 2017
+* Visual Studio 2015 または Visual Studio 2019
 * Service Fabric SDK
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>セキュリティで保護されたローカル開発クラスターを作成するには
@@ -65,7 +56,7 @@ ms.locfileid: "56821680"
 Visual Studio の Service Fabric プロジェクト テンプレートには、サンプル コードが含まれています。 次の手順では、サービス コードからカスタム正常性イベントをレポートする方法を説明します。 このようなレポートは、Service Fabric に用意されている正常性監視用の標準ツール (Service Fabric Explorer、Azure Portal の正常性ビュー、PowerShell など) に自動的に表示されます。
 
 1. Visual Studio で前に作成したアプリケーションを再度開くか、Visual Studio テンプレートの **ステートフル サービス** を使用して新しいアプリケーションを作成します。
-1. Stateful1.cs ファイルを開き、`RunAsync` メソッドの `myDictionary.TryGetValueAsync` 呼び出しを見つけます。 カウンターの現在の値を保持している `result` がこのメソッドにより返されることがわかります。これは、このアプリケーションのキー ロジックが実行回数を保持するためです。 これが実際のアプリケーションであり、結果がないとエラーになる場合は、そのイベントにフラグを設定します。
+1. Stateful1.cs ファイルを開き、`RunAsync` メソッドの `myDictionary.TryGetValueAsync` 呼び出しを見つけます。 カウンターの現在の値を保持している `result` がこのメソッドにより返されることがわかります。これは、このアプリケーションのキー ロジックが実行回数を保持するためです。 このアプリケーションが実際のアプリケーションであり、結果がないとエラーになる場合は、そのイベントにフラグを設定します。
 1. 結果がなくてエラーになるときに正常性イベントを報告するには、さらに次の手順を実行します。
    
     a. `System.Fabric.Health` 名前空間を Stateful1.cs ファイルに追加します。
@@ -94,7 +85,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-1. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護`FabricClient`されていない場合は、次の手順に示すように、](service-fabric-cluster-security.md) を利用して正常性をレポートすることもできます。  
+1. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護](service-fabric-cluster-security.md) されていない場合は、次の手順に示すように、`FabricClient` を利用して正常性をレポートすることもできます。  
    
     a. `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
    
@@ -124,7 +115,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
     }
     ```
    このコードでは、`RunAsync` が実行されるたびに正常性レポートが実行されます。 変更後、 **F5** を押し、アプリケーションを実行します。
-1. アプリケーションの実行後、Service Fabric Explorer を開いて、アプリケーションの正常性をチェックします。 今度は、Service Fabric Explorer に、アプリケーションが異常であることが表示されます。 これは、先に追加したコードからレポートされたエラーが原因です。
+1. アプリケーションの実行後、Service Fabric Explorer を開いて、アプリケーションの正常性をチェックします。 今度は、Service Fabric Explorer に、アプリケーションが異常であることが表示されます。 アプリケーションは、異常として表示されます。これは、前に追加したコードからレポートされたエラーが原因です。
    
     ![Unhealthy application in Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
 1. Service Fabric Explorer のツリー ビューでプライマリ レプリカを選択すると、 **正常性状態** にエラーが示されていることもわかります。 Service Fabric Explorer には、コードで `HealthInformation` パラメーターに追加した正常性レポートの詳細も表示されます。 同じ正常性レポートを、PowerShell でも、Azure Portal でも見ることができます。
@@ -148,7 +139,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
 * [サービスの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
 * [アプリケーションの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)

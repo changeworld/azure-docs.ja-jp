@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server でのファイアウォール規則
-description: この記事では、Azure Database for PostgreSQL - Single Server のファイアウォール規則について説明します。
+title: ファイアウォール規則 - Azure Database for PostgreSQL - Single Server
+description: この記事では、ファイアウォール規則を使用して Azure Database for PostgreSQL - Single Server に接続する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 40a675fbefe9743f5de1f9766cf33ae7dba9e5a7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 01/15/2020
+ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073582"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76157272"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのファイアウォール規則
 Azure Database for PostgreSQL サーバーのファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -32,35 +32,43 @@ Azure Database for PostgreSQL サーバーのファイアウォールは、ど�
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
 
 ## <a name="connecting-from-azure"></a>Azure からの接続
-Azure のアプリケーションが Azure Database for PostgreSQL サーバーに接続できるようにするには、Azure 接続を有効にする必要があります。 たとえば、Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションをホストしたり、Azure Data Factory データ管理ゲートウェイから接続したりするためです。 ファイアウォール規則でこれらの接続を有効にするために、リソースが同じ仮想ネットワーク (VNet) またはリソース グループに存在する必要はありません。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これらの種類の接続を有効にするには、いくつかの方法があります。 開始アドレスと終了アドレスが 0.0.0.0 であるファイアウォール設定は、これらの接続が許可されていることを示します。 あるいは、ポータルの **[接続のセキュリティ]** ウィンドウから **[Azure サービスへのアクセスを許可]** オプションを **[オン]** に設定し、**[保存]** をクリックすることもできます。 接続試行が許可されていない場合、この要求は Azure Database for PostgreSQL サーバーに到達しません。
+任意のアプリケーションまたはサービスの発信 IP アドレスを見つけ、これらの個々の IP アドレスまたは範囲へのアクセスを明示的に許可することをお勧めします。 たとえば、Azure App Service の発信 IP アドレスを見つけることも、仮想マシンまたはその他のリソースに関連付けられているパブリック IP を使用することもできます (サービス エンドポイントを介した仮想マシンのプライベート IP との接続の詳細については、以下を参照してください)。 
+
+ご使用の Azure サービスに対して固定の発信 IP アドレスが使用できない場合は、すべての Azure データセンターの IP アドレスからの接続を有効にすることを検討できます。 この設定は、Azure portal から **[接続のセキュリティ]** ウィンドウで、 **[Azure サービスへのアクセス許可]** オプションを **[オン]** にし、 **[保存]** を押すことで設定できます。 Azure CLI からは、ファイアウォール規則の設定で開始アドレスと終了アドレスを 0.0.0.0 にすることで同じことができます。 接続試行が許可されていない場合、この要求は Azure Database for PostgreSQL サーバーに到達しません。
 
 > [!IMPORTANT]
-> このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> **[Azure サービスへのアクセス許可]** オプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 > 
 
 ![ポータルで [Azure サービスへのアクセスを許可] を構成する](media/concepts-firewall-rules/allow-azure-services.png)
+
+### <a name="connecting-from-a-vnet"></a>VNet からの接続
+VNet から Azure Database for PostgreSQL サーバーに安全に接続するには、[VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)の使用を検討してください。 
 
 ## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
 ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。
 「[Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-manage-firewall-using-cli.md)」も参照してください
 
-## <a name="troubleshooting-the-database-server-firewall"></a>データベース サーバー ファイアウォールのトラブルシューティング
+## <a name="troubleshooting-firewall-issues"></a>ファイアウォールの問題のトラブルシューティング
 Microsoft Azure Database for PostgreSQL サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
 
 * **許可一覧に変更が反映されない:** Azure Database for PostgreSQL サーバーのファイアウォール構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
 
 * **ログインが許可されない、または正しくないパスワードが使用された:** Azure Database for PostgreSQL サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure Database for PostgreSQL サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、サーバーへの接続を試行する機会をクライアントに提供するだけです。そのため、各クライアントは、必要なセキュリティ資格情報を提供する必要があります。
 
-たとえば、JDBC クライアントを使用すると、次のエラーが表示されることがあります。
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:FATAL: password authentication failed for user "yourusername"
+   たとえば、JDBC クライアントを使用すると、次のエラーが表示されることがあります。
+   > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:FATAL: password authentication failed for user "yourusername"
 
 * **動的 IP アドレス:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
 
-* Azure Database for PostgreSQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、その IP アドレス範囲を追加してください。
+   * Azure Database for PostgreSQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、その IP アドレス範囲を追加してください。
 
-* 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
+   * 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
 
-## <a name="next-steps"></a>次の手順
+* **サーバーの IP がパブリックのように見える:** Azure Database for PostgreSQL サーバーへの接続は、パブリックにアクセス可能な Azure ゲートウェイ経由でルーティングされます。 しかし、実際のサーバー IP は、ファイアウォールによって保護されています。 詳細については、[接続アーキテクチャに関する記事](concepts-connectivity-architecture.md)をご覧ください。 
+
+## <a name="next-steps"></a>次のステップ
 サーバー レベルおよびデータベース レベルのファイアウォール規則の作成については、次の記事をご覧ください。
 * [Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-manage-firewall-using-portal.md)
 * [Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-manage-firewall-using-cli.md)
+- [Azure Database for PostgreSQL の VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)

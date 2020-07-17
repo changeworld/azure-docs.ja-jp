@@ -2,23 +2,17 @@
 title: Azure Cloud Services とは| Microsoft Docs
 description: Azure Cloud Services について説明します。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: tgore03
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603829"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75386852"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
@@ -29,11 +23,11 @@ Azure Cloud Services は、[サービスとしてのプラットフォーム](ht
 
 Azure Cloud Services ロールには、次の 2 種類があります。 2 つの唯一の違いは、VM でロールがホストされる方法です。
 
-* **Web ロール**:IIS を使用して自動的にアプリをデプロイおよびホストします。
+* **Web ロール**: IIS を使用して自動的にアプリをデプロイおよびホストします。
 
-* **worker ロール**:IIS を使用せず、アプリをスタンドアロンで実行します。
+* **worker ロール**: IIS を使用せず、アプリをスタンドアロンで実行します。
 
-たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
+たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
 
 上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Azure Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale-portal.md)します。
 
@@ -49,11 +43,14 @@ Azure Cloud Services は監視も提供します。 Virtual Machines と同様�
 
 PaaS という Azure Cloud Services の本質には、他の含意もあります。 最も重要なことの 1 つは、このテクノロジを基盤に構築されるアプリケーションは、Web または Worker ロール インスタンスでエラーが発生したときに正しく実行するように記述することが必要です。 これを実現するには、Azure Cloud Services のアプリケーションがそれ自体の VM のファイル システムで状態を維持してはなりません。 Virtual Machines で作成された VM と異なり、Azure Cloud Services VM への書き込みは永続的ではありません。 Virtual Machines のデータ ディスクのようなものはありません。 Azure Cloud Services アプリケーションはすべての状態を Azure SQL Database、BLOB、テーブルか、その他の外部ストレージに明示的に書き込む必要があります。 この方法でアプリケーションを構築すると、スケーリングしやすく、耐障害性が備わります。この 2 つは Azure Cloud Services の重要なゴールです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [.NET でクラウド サービス アプリケーションを作成する](cloud-services-dotnet-get-started.md) 
 * [nodejs でクラウド サービス アプリケーションを作成する](cloud-services-nodejs-develop-deploy-app.md) 
 * [php でクラウド サービス アプリケーションを作成する](../cloud-services-php-create-web-role.md) 
 * [Python でのクラウド サービス アプリの作成](cloud-services-python-ptvs.md)
+
+
+
 
 
 

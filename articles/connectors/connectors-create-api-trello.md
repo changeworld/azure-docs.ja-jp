@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から Trello に接続する | Microsoft Docs
+title: Azure Logic Apps から Trello に接続する
 description: Azure Logic Apps を使用して、Trello プロジェクトのリスト、ボード、およびカードの監視と管理を行うタスクとワークフローを自動化します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 5c4fcb9b4fea1a4d982b5cf665564599d371b7cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229334"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789139"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps を使用して Trello の監視と管理を行う
 
@@ -32,7 +28,7 @@ Trello アカウントから応答を取得し、その出力を他のアクシ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * Trello アカウントとユーザー資格情報
 
@@ -52,12 +48,12 @@ Trello アカウントから応答を取得し、その出力を他のアクシ�
 
    または
 
-   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
    検索ボックスに、フィルターとして「trello」と入力します。 
    アクションの一覧で、目的のアクションを選択します。
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. Trello へのサインインを求められたら、ロジック アプリのアクセスを承認し、サインインします。
 
@@ -72,6 +68,6 @@ Trello アカウントから応答を取得し、その出力を他のアクシ�
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

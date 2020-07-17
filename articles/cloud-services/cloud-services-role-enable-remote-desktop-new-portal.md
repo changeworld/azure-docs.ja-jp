@@ -1,25 +1,20 @@
 ---
-title: Azure Cloud Services のロールでのリモート デスクトップ接続の有効化 | Microsoft Docs
+title: ポータルを使用してロールのリモート デスクトップを有効にする
+titleSuffix: Azure Cloud Services
 description: Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
-manager: timlt
-editor: ''
-ms.assetid: 73ea1d64-1529-4d72-b58e-f6c10499e6bb
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: 0c36dc5fb6b2754fc93a02e29d8d8ae74df36da7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963276"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225927"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 
@@ -36,7 +31,7 @@ ms.locfileid: "65963276"
 
 Azure Portal では、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能の方法を使用します。 クラウド サービスの **[リモート デスクトップ]** 設定では、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
 
-1. **[クラウド サービス]** をクリックし、クラウド サービスの名前を選択して、**[リモート デスクトップ]** を選択します。
+1. **[クラウド サービス]** をクリックし、クラウド サービスの名前を選択して、 **[リモート デスクトップ]** を選択します。
 
     ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
@@ -49,21 +44,21 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
    > [!WARNING]
    > 初めてリモート デスクトップを有効にして **[OK]** (チェックマーク) を選択したときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
 
-4. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
+4. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、 **[すべて]** をクリックします。
 
-5. 構成の更新が完了したら、**[保存]** を選択します。 ロール インスタンスが接続を受信する準備が完了するまで数分間かかります。
+5. 構成の更新が完了したら、 **[保存]** を選択します。 ロール インスタンスが接続を受信する準備が完了するまで数分間かかります。
 
 ## <a name="remote-into-role-instances"></a>ロール インスタンスへのリモート接続
 
 ロールに対してリモート デスクトップが有効になったら、Azure Portal から直接接続を開始できます。
 
-1. **[インスタンス]** をクリックして、**[インスタンス]** 設定を開きます。
+1. **[インスタンス]** をクリックして、 **[インスタンス]** 設定を開きます。
 2. リモート デスクトップが構成されたロール インスタンスを選択します。
 3. **[接続]** をクリックしてロール インスタンス用の RDP ファイルをダウンロードします。
 
     ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
-4. **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
+4. **[開く]** 、 **[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
 
 >[!NOTE]
 > クラウド サービスが NSG の背後にある場合は、ポート **3389** と **20000** でのトラフィックを許可するルールを作成する必要があることがあります。  リモート デスクトップではポート **3389** を使用します。  クラウド サービス インスタンスは負荷分散されるため、接続先のインスタンスを直接制御することはできません。  *RemoteForwarder* および *RemoteAccess* エージェントは、RDP トラフィックを管理し、クライアントが RDP クッキーを送信して接続先の個々のインスタンスを指定できるようにします。  *RemoteForwarder* および *RemoteAccess* エージェントではポート **20000*** を開く必要があります。NSG がある場合、ブロックされる可能性があります。

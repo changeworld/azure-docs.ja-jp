@@ -1,17 +1,16 @@
 ---
-title: Azure Monitor を使用してクラシック メトリック アラートを作成、表示、管理する
+title: Azure Monitor を使用してクラシック メトリック アラートを作成して管理する
 description: Azure portal、CLI、または PowerShell を使用して、クラシック メトリック アラート ルールを作成、表示、管理する方法について説明します。
-author: snehithm
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
-ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129748"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114581"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する
 
@@ -21,7 +20,7 @@ Azure Monitor のクラシック メトリック アラートには、メトリ�
 
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 
-2. **[監視]** セクションで、**[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。 **[アラート (クラシック)]** が見つからない場合は、**[アラート]** または **[アラート ルール]** 内で見つかることがあります。
+2. **[監視]** セクションで、 **[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。 **[アラート (クラシック)]** が見つからない場合は、 **[アラート]** または **[アラート ルール]** 内で見つかることがあります。
 
     ![監視](media/alerts-classic-portal/AlertRulesButton.png)
 
@@ -33,9 +32,9 @@ Azure Monitor のクラシック メトリック アラートには、メトリ�
 
 5. 監視する **[メトリック]** を選択します。 次に、メトリックの **[条件]** と **[しきい値]** を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として "直近 5 分" を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間継続して 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間継続して 80% を下回ったときにトリガーされます。 CPU のメトリック測定は、1 分ごとに発生します。
 
-6. アラートが発生したときに管理者と共同管理者に電子メール通知が送信されるようにするには、**[メールの所有者]** を選択します。
+6. アラートが発生したときに管理者と共同管理者に電子メール通知が送信されるようにするには、 **[メールの所有者]** を選択します。
 
-7. アラートが発生したときに、他の電子メール アドレスにも通知を送信する場合は、**[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数のメール アドレスは、*email\@contoso.com;email2\@contoso.com* のようにセミコロンで区切ります。
+7. アラートが発生したときに、他の電子メール アドレスにも通知を送信する場合は、 **[追加する管理者の電子メール]** フィールドにそのアドレスを入力します。 複数のメール アドレスは、*email\@contoso.com;email2\@contoso.com* のようにセミコロンで区切ります。
 
 8. **[webhook]** フィールドに、アラートが発生したときに呼び出す webhook の有効な URI を入力します。
 
@@ -129,7 +128,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 8. クラシック アラート ルールは、PowerShell で作成できなくなっています。 アラート ルールを作成するには、新しい "[Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule)" コマンドを使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する](../../azure-monitor/platform/alerts-enable-template.md)。
 - [Webhook を使用してクラシック メトリック アラートが Azure 以外のシステムに通知するように設定する](../../azure-monitor/platform/alerts-webhooks.md)。

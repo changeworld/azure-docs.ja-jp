@@ -1,23 +1,22 @@
 ---
-title: シミュレートされた X.509 デバイスを Java と登録グループを使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
-description: Azure チュートリアル - シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングします。
+title: チュートリアル - シミュレートされた X.509 デバイスを Java と登録グループを使用して Azure IoT Hub にプロビジョニングする
+description: このチュートリアルでは、シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service (DPS) 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングします。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/04/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 8e926c3ff7c3d7abc9467291e9b1de77781f664e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805055"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74976810"
 ---
-# <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>チュートリアル:シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
 以下の手順では、Windows OS を実行する開発マシン上で X.509 デバイスをシミュレートすると共に、コード サンプルを使って、そのシミュレートされたデバイスを Device Provisioning Service および IoT Hub に登録グループを使って接続する方法について説明します。 
 
@@ -47,7 +46,7 @@ ms.locfileid: "56805055"
         1. **[証明書の追加]** に次の情報を入力します。
             - 一意の証明書名を入力します。
             - 作成した **_RootCA.pem_** ファイルを選択します。
-            - 作業が完了したら、**[保存]** をクリックします。
+            - 作業が完了したら、 **[保存]** をクリックします。
 
            ![証明書を追加する](./media/tutorial-group-enrollments/add-certificate.png)
 
@@ -93,7 +92,7 @@ ms.locfileid: "56805055"
 
     1. テキスト エディターで、中間署名証明書ファイルを開きます。 `PUBLIC_KEY_CERTIFICATE_STRING` 値を中間署名証明書の値で更新します。
 
-        Bash シェルを使用してデバイス証明書を生成した場合は、*./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、*./Intermediate1.pem* が中間証明書ファイルになります。
+        Bash シェルを使用してデバイス証明書を生成した場合は、 *./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、 *./Intermediate1.pem* が中間証明書ファイルになります。
 
         ```java
         private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -111,7 +110,7 @@ ms.locfileid: "56805055"
                 "-----END CERTIFICATE-----\n";
         ```
 
-    1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、**[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
+    1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、 **[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
 
         ```java
         private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
@@ -150,7 +149,7 @@ ms.locfileid: "56805055"
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、"_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
+1. Device Provisioning Service の概要ブレードで、 **[概要]** を選択し、"_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
 
     ![サービス情報](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -203,7 +202,7 @@ ms.locfileid: "56805055"
 
 1. 中間証明書の `leafPrivateKey` のすぐ下に、新しい変数を追加します。 この新しい変数に、`intermediateKey` という名前を付けます。 それに、中間署名証明書の値を設定します。
 
-    Bash シェルを使用してデバイス証明書を生成した場合は、*./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、*./Intermediate1.pem* が中間証明書ファイルになります。
+    Bash シェルを使用してデバイス証明書を生成した場合は、 *./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、 *./Intermediate1.pem* が中間証明書ファイルになります。
 
     ```java
     private static final String intermediateKey = "-----BEGIN CERTIFICATE-----\n" +
@@ -242,21 +241,21 @@ ms.locfileid: "56805055"
 
     ![成功した登録](./media/tutorial-group-enrollments/registration.png)
 
-1. ポータルで、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、**[Device Explorer]** ブレードを開きます。 シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が**有効**な "*状態*" として **[Device Explorer]** ブレードに表示されます。 サンプル デバイス アプリケーションを実行する前に既にブレードが開いていた場合は、必要に応じて一番上にある **[最新の情報に更新]** ボタンをクリックしてください。 
+1. ポータルで、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、 **[Device Explorer]** ブレードを開きます。 シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が**有効**な "*状態*" として **[Device Explorer]** ブレードに表示されます。 サンプル デバイス アプリケーションを実行する前に既にブレードが開いていた場合は、必要に応じて一番上にある **[最新の情報に更新]** ボタンをクリックしてください。 
 
     ![IoT ハブに登録されたデバイス](./media/tutorial-group-enrollments/hub-registration.png) 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続きデバイス クライアント サンプルを使用する場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されているデバイス クライアント サンプルの出力ウィンドウを閉じます。
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** ブレードを開き、**[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
+1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** ブレードを開き、 **[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 ハブの **[IoT Devices]\(IoT デバイス\)** ブレードを開き、このクイックスタートで登録したデバイスの "*デバイス ID*" を選択し、一番上の **[削除]** ボタンをクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、シミュレートされた X.509 デバイスを Windows コンピューター上に作成し、Azure IoT Hub Device Provisioning Service と登録グループを使用して IoT Hub にプロビジョニングしました。 X.509 デバイスの詳細については、引き続きデバイスの概念に進んでください。 
 

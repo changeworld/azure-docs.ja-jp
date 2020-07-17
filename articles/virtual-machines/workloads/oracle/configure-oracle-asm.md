@@ -3,24 +3,23 @@ title: Azure Linux 仮想マシンで Oracle ASM をセットアップする | M
 description: Azure 環境で Oracle ASM をすばやく稼動させます。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
-manager: jeconnoc
+author: BorisB2015
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: borisb
+ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154411"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676894"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -34,13 +33,11 @@ Azure 仮想マシンは、完全に構成可能で柔軟なコンピューテ�
 > * ASM により管理される Oracle DB を作成する
 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 ## <a name="prepare-the-environment"></a>環境の準備
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
@@ -50,7 +47,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>VM の作成
 
-Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
+Oracle データベース イメージに基づいて仮想マシンを作成した上で、Oracle ASM を使用できるように構成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
 
 次の例では、myVM という名前の VM が作成されます。サイズは Standard_DS2_v2 で、50 GB のデータ ディスクが 4 つ装着されます。 これらがキーの既定の場所にまだ存在しない場合、SSH キーも作成されます。  特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
@@ -65,7 +62,7 @@ Oracle データベース イメージに基づいて仮想マシンを作成し
 
 VM を作成すると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` の値をメモします。 このアドレスは、VM へのアクセスに使用します。
 
-   ```azurecli
+   ```output
    {
      "fqdns": "",
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -82,7 +79,7 @@ VM を作成すると、Azure CLI によって次の例のような情報が表�
 
 VM との SSH セッションを作成し、追加の設定を構成するには、次のコマンドを使用します。 IP アドレスを、VM の `publicIpAddress` 値に置き換えます。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
@@ -164,7 +161,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
    このコマンドの出力は次のようになります。回答するべきプロンプトで停止します。
 
-    ```bash
+    ```output
    Configuring the Oracle ASM library driver.
 
    This will configure the on-boot properties of the Oracle ASM library
@@ -181,13 +178,14 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    ```
 
 2. ディスク構成を表示します。
+
    ```bash
    cat /proc/partitions
    ```
 
    このコマンドの出力は、次のようなディスクの一覧になります。
 
-   ```bash
+   ```output
    8       16   14680064 sdb
    8       17   14678976 sdb1
    8        0   52428800 sda
@@ -212,9 +210,9 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    fdisk /dev/sdc
    ```
    
-   上の回答を利用した場合、fdisk コマンドの出力は次のようになります。
+   上の回答を利用した場合、`fdisk` コマンドの出力は次のようになります。
 
-   ```bash
+   ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
    Building a new DOS disklabel with disk identifier 0xf865c6ca.
    Changes will remain in memory only, until you decide to write them.
@@ -248,7 +246,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    Syncing disks.
    ```
 
-4. 前述の fdisk コマンドを `/dev/sdd`、`/dev/sde`、`/dev/sdf` に対して繰り返します。
+4. 前述の `fdisk` コマンドを `/dev/sdd`、`/dev/sde`、`/dev/sdf` に対して繰り返します。
 
 5. ディスク構成を確認します。
 
@@ -258,7 +256,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
    コマンドの出力は次のようになります。
 
-   ```bash
+   ```output
    major minor  #blocks  name
 
      8       16   14680064 sdb
@@ -285,8 +283,8 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    ```
 
    コマンドの出力は次のようになります。
-   
-   ```bash
+
+   ```output
    Checking if ASM is loaded: no
    Checking if /dev/oracleasm is mounted: no
    Initializing the Oracle ASMLib driver:                     [  OK  ]
@@ -300,11 +298,11 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    service oracleasm createdisk DATA /dev/sdd1 
    service oracleasm createdisk DATA1 /dev/sde1 
    service oracleasm createdisk FRA /dev/sdf1
-   ```    
+   ```
 
    コマンドの出力は次のようになります。
 
-   ```bash
+   ```output
    Marking disk "ASMSP" as an ASM disk:                       [  OK  ]
    Marking disk "DATA" as an ASM disk:                        [  OK  ]
    Marking disk "DATA1" as an ASM disk:                       [  OK  ]
@@ -315,18 +313,18 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
    ```bash
    service oracleasm listdisks
-   ```   
+   ```
 
    コマンドの出力には、次のような Oracle ASM ディスクが一覧表示されます。
 
-   ```bash
+   ```output
     ASMSP
     DATA
     DATA1
     FRA
    ```
 
-9. ルート、Oracle、および grid ユーザーのパスワードを変更します  インストールの後の段階で使用するため、**新しいパスワードをメモしておきます**。
+9. ルート、Oracle、および grid ユーザーのパスワードを変更します インストールの後の段階で使用するため、**新しいパスワードをメモしておきます**。
 
    ```bash
    passwd oracle 
@@ -373,8 +371,8 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    sudo chown grid:oinstall linuxamd64_12102_grid_2of2.zip
    ```
 
-4. .zip ファイルを解凍します  (Linux のファイル解凍ツールがまだインストールされていない場合はインストールします)。
-   
+4. .zip ファイルを解凍します (Linux のファイル解凍ツールがまだインストールされていない場合はインストールします)。
+
    ```bash
    sudo yum install unzip
    sudo unzip linuxamd64_12102_grid_1of2.zip
@@ -382,7 +380,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    ```
 
 5. アクセス許可を変更します。
-   
+
    ```bash
    sudo chown -R grid:oinstall /opt/grid
    ```
@@ -393,7 +391,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
-   
+
    `ResourceDisk.SwapSizeMB` を検索し、値を **8192** に変更します。 `insert` を押して挿入モードに入り、値として **8192** を入力し、`esc` を押してコマンド モードに戻ります。 変更を書き込み、ファイルを終了するには、`:wq` を入力し、`enter` を押します。
    
    > [!NOTE]
@@ -429,15 +427,15 @@ Oracle ASM を構成するとき、インストールと構成を完了するた
    > キーには、`ssh-rsa` という文字列を含める必要があります。 また、キーの内容は 1 行のテキストである必要があります。
    >  
 
-6. クライアント システムで、PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[Auth]\(認証\)** の順に移動します。**[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
+6. クライアント システムで、PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、 **[Connection]\(接続\)**  >  **[SSH]**  >  **[Auth]\(認証\)** の順に移動します。 **[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
 
    ![SSH 認証オプションのスクリーン ショット](./media/oracle-asm/setprivatekey.png)
 
-7. **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[X11]** の順に移動します。 **[Enable X11 forwarding]\(X11 転送を有効にする\)** チェック ボックスをオンにします。
+7. **[Category]\(カテゴリ\)** ウィンドウで、 **[Connection]\(接続\)**  >  **[SSH]**  >  **[X11]** の順に移動します。 **[Enable X11 forwarding]\(X11 転送を有効にする\)** チェック ボックスをオンにします。
 
    ![SSH X11 転送オプションのスクリーンショット](./media/oracle-asm/enablex11.png)
 
-8. **[Category]\(カテゴリ\)** ウィンドウで、**[Session]\(セッション\)** に移動します。 ホスト名ダイアログ ボックスに Oracle ASM VM `<publicIPaddress>` を入力し、新しい `Saved Session` 名を入力し、`Save` をクリックします。  保存後、`open` をクリックし、Oracle ASM VM に接続します。  初めて接続するとき、リモート システムはレジストリにキャッシュされないと警告されます。 `yes` をクリックして追加し、続行します。
+8. **[Category]\(カテゴリ\)** ウィンドウで、 **[Session]\(セッション\)** に移動します。 ホスト名ダイアログ ボックスに Oracle ASM VM `<publicIPaddress>` を入力し、新しい `Saved Session` 名を入力し、`Save` をクリックします。  保存後、`open` をクリックし、Oracle ASM VM に接続します。  初めて接続するとき、リモート システムはレジストリにキャッシュされないと警告されます。 `yes` をクリックして追加し、続行します。
 
    ![PuTTY セッション オプションのスクリーン ショット](./media/oracle-asm/puttysession.png)
 
@@ -455,22 +453,22 @@ Oracle Grid Infrastructure をインストールするには、次の手順を�
    ./runInstaller
    ```
 
-   Oracle Grid Infrastructure 12c Release 1 のインストーラーが開きます  (インストーラーが起動するまでに数分かかる場合があります)。
+   Oracle Grid Infrastructure 12c Release 1 のインストーラーが開きます (インストーラーが起動するまでに数分かかる場合があります)。
 
-2. **[インストール オプションの選択]** ページで、**[スタンドアロン サーバー用に Oracle Grid Infrastructure をインストールおよび構成]** を選択します。
+2. **[インストール オプションの選択]** ページで、 **[スタンドアロン サーバー用に Oracle Grid Infrastructure をインストールおよび構成]** を選択します。
 
    ![インストーラーの [インストール オプションの選択] ページのスクリーンショット](./media/oracle-asm/install01.png)
 
-3. **[製品言語の選択]** ページで、**[英語]** や他の使用する言語が選択されていることを確認します。  [`next`] をクリックします。
+3. **[製品言語の選択]** ページで、 **[英語]** や他の使用する言語が選択されていることを確認します。  [`next`] をクリックします。
 
 4. **[ASM ディスク グループの作成]** ページで、次の手順を実行します。
    - ディスク グループの名前を入力します。
-   - **[冗長性]** で、**[外部]** を選択します。
-   - **[割当て単位サイズ]** で、**[4]** を選択します。
+   - **[冗長性]** で、 **[外部]** を選択します。
+   - **[割当て単位サイズ]** で、 **[4]** を選択します。
    - **[ディスクの追加]** で、**ORCLASMSP** を選択します。
    - [`next`] をクリックします。
 
-5. **[ASM パスワードの指定]** ページで、**[これらのアカウントごとに、同じパスワードを使用]** を選択し、パスワードを入力します。
+5. **[ASM パスワードの指定]** ページで、 **[これらのアカウントごとに、同じパスワードを使用]** を選択し、パスワードを入力します。
 
    ![インストーラーの [ASM パスワードの指定] ページのスクリーンショット](./media/oracle-asm/install04.png)
 
@@ -484,11 +482,11 @@ Oracle Grid Infrastructure をインストールするには、次の手順を�
 
    ![インストーラーの [インベントリの作成] ページのスクリーンショット](./media/oracle-asm/install08.png)
 
-10. **[root スクリプトの実行構成]** ページで、**[構成スクリプトを自動的に実行]** チェック ボックスをオンにします。 次に、**[root ユーザーの資格証明を使用]** オプションを選択し、root ユーザーのパスワードを入力します。
+10. **[root スクリプトの実行構成]** ページで、 **[構成スクリプトを自動的に実行]** チェック ボックスをオンにします。 次に、 **[root ユーザーの資格証明を使用]** オプションを選択し、root ユーザーのパスワードを入力します。
 
     ![インストーラーの [root スクリプトの実行構成] ページのスクリーンショット](./media/oracle-asm/install09.png)
 
-11. 現在の設定が失敗し、**[Perform Prerequisite Checks]\(前提条件チェックの実行\)** ページにエラーが表示されます。 これは予想される現象です。 [`Fix & Check Again`] を選択します。
+11. 現在の設定が失敗し、 **[Perform Prerequisite Checks]\(前提条件チェックの実行\)** ページにエラーが表示されます。 これは予想される現象です。 [`Fix & Check Again`] を選択します。
 
 12. **[Fixup Script]\(修正スクリプト\)** ダイアログ ボックスで、`OK` をクリックします。
 
@@ -519,7 +517,7 @@ Oracle ASM インストールをセットアップするには、次の手順を
 
    - ディスク グループ名として「**DATA**」を入力します。
    - **[メンバー ディスクの選択]** で、**ORCL_DATA** と **ORCL_DATA1** を選択します。
-   - **[割当て単位サイズ]** で、**[4]** を選択します。
+   - **[割当て単位サイズ]** で、 **[4]** を選択します。
    - `ok` をクリックし、ディスク グループを作成します。
    - `ok` をクリックし、確認ウィンドウを閉じます。
 
@@ -530,9 +528,9 @@ Oracle ASM インストールをセットアップするには、次の手順を
 5. **[ディスク グループの作成]** ダイアログ ボックスで、次の作業を行います。
 
    - ディスク グループ名として「**FRA**」を入力します。
-   - **[冗長性]** で、**[External (none)]\(外部 (なし)\)** を選択します。
+   - **[冗長性]** で、 **[External (none)]\(外部 (なし)\)** を選択します。
    - **[メンバー ディスクの選択]** で、**ORCL_FRA** を選択します。
-   - **[割当て単位サイズ]** で、**[4]** を選択します。
+   - **[割当て単位サイズ]** で、 **[4]** を選択します。
    - `ok` をクリックし、ディスク グループを作成します。
    - `ok` をクリックし、確認ウィンドウを閉じます。
 
@@ -553,6 +551,7 @@ Oracle データベース ソフトウェアは既に Azure Marketplace イメ�
    cd /u01/app/oracle/product/12.1.0/dbhome_1/bin
    ./dbca
    ```
+
    Database Configuration Assistant が開きます。
 
 2. **[データベース操作]** ページで、`Create Database` をクリックします。
@@ -560,7 +559,7 @@ Oracle データベース ソフトウェアは既に Azure Marketplace イメ�
 3. **[作成モード]** ページで、次の手順を実行します。
 
    - データベースの名前を入力します。
-   - **[記憶域のタイプ]** に、**[Automatic Storage Management (ASM)]\(自動ストレージ管理 (ASM)\)** が選択されていることを確認します。
+   - **[記憶域のタイプ]** に、 **[Automatic Storage Management (ASM)]\(自動ストレージ管理 (ASM)\)** が選択されていることを確認します。
    - **[データベース ファイルの場所]** には、ASM により提案された既定の場所を使用します。
    - **[高速リカバリ領域]** には、ASM により提案された既定の場所を使用します。
    - **[管理パスワード]** と **[パスワードの確認]** に入力します。
@@ -571,7 +570,7 @@ Oracle データベース ソフトウェアは既に Azure Marketplace イメ�
 
    ![[サマリー] ページのスクリーンショット](./media/oracle-asm/createdb03.png)
 
-5. データベースが作成されました。 **[完了]** ページには、追加アカウントのロックを解除し、このデータベースを使用したり、パスワードを変更したりするためのオプションがあります。 オプションを利用する場合、**[パスワード管理]** を選択します。利用しない場合、`close` をクリックします。
+5. データベースが作成されました。 **[完了]** ページには、追加アカウントのロックを解除し、このデータベースを使用したり、パスワードを変更したりするためのオプションがあります。 オプションを利用する場合、 **[パスワード管理]** を選択します。利用しない場合、`close` をクリックします。
 
 ## <a name="delete-the-vm"></a>VM の削除
 
@@ -581,7 +580,7 @@ Azure Marketplace の Oracle DB イメージ上でOracle Automated Storage Manag
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [チュートリアル:Oracle DataGuard の構成](configure-oracle-dataguard.md)
 

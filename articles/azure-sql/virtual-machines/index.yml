@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: Azure VM 上の SQL Server のドキュメント
+summary: Windows と Linux 両方の Azure 仮想マシンにインストールされている SQL Server の概念、クイックスタート、チュートリアル、サンプルを紹介します。
+metadata:
+  title: Azure VM 上の SQL Server のドキュメント
+  description: Windows と Linux 両方の Azure 仮想マシンにインストールされている SQL Server に関するドキュメントを紹介します。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: a02a76e3d0080e731643ff82162aafdf3b783423
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023774"
+landingContent:
+- title: Azure VM 上の SQL Server
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Windows SQL VM の作成 (ポータル)
+      url: windows/sql-vm-create-portal-quickstart.md
+    - text: Windows SQL VM の作成 (PowerShell)
+      url: windows/sql-vm-create-powershell-quickstart.md
+    - text: Linux SQL VM の作成 (ポータル)
+      url: linux/sql-vm-create-portal-quickstart.md
+  - linkListType: overview
+    links:
+    - text: 新機能
+      url: windows/doc-changes-updates-release-notes.md?
+    - text: SQL Server on Windows VM とは
+      url: windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: SQL Server on Linux VM とは
+      url: linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+    - text: SQL Server からの移行
+      url: windows/migrate-to-vm-from-sql-server.md
+    - text: セキュリティに関する考慮事項
+      url: windows/security-considerations-best-practices.md
+    - text: パフォーマンスに関するガイドライン
+      url: windows/performance-guidelines-best-practices.md
+    - text: 価格のガイダンス
+      url: windows/pricing-guidance.md
+- title: 管理する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Server IaaS Agent 拡張機能
+      url: windows/sql-server-iaas-agent-extension-automate-management.md
+    - text: Azure portal を使用した管理
+      url: windows/manage-sql-vm-portal.md
+    - text: SQL VM リソースプロバイダーに登録する
+      url: windows/sql-vm-resource-provider-register.md
+    - text: 自動修正
+      url: windows/automated-patching.md
+    - text: ライセンスの種類を変更する
+      url: windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+    - text: SQL Server のエディションの変更
+      url: windows/change-sql-server-edition.md
+    - text: 新しいリージョンへの移動
+      url: windows/move-sql-vm-different-region.md
+    - text: Azure Key Vault との統合
+      url: windows/azure-key-vault-integration-configure.md
+- title: ビジネス継続性
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 高可用性とディザスター リカバリー
+      url: windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: バックアップと復元
+      url: windows/backup-restore.md
+    - text: 可用性グループ
+      url: windows/availability-group-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 可用性グループ (Az CLI)
+      url: windows/availability-group-az-cli-configure.md
+    - text: クラスターを使用しない可用性グループ
+      url: windows/availability-group-clusterless-workgroup-configure.md
+    - text: FCI (記憶域スペース ダイレクト)
+      url: windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+    - text: FCI (Premium ファイル共有)
+      url: windows/failover-cluster-instance-premium-file-share-manually-configure.md
+  - linkListType: tutorial
+    links:
+    - text: 可用性グループ (手動)
+      url: windows/availability-group-manually-configure-prerequisites-tutorial.md
+    - text: Stonith 可用性グループ (RHEL)
+      url: linux/rhel-high-availability-stonith-tutorial.md
+    - text: 可用性グループ リスナー (RHEL)
+      url: linux/rhel-high-availability-listener-tutorial.md
+- title: リファレンス
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 学習用 SQL リソース
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Resource Manager テンプレートのサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 移行ガイド
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/

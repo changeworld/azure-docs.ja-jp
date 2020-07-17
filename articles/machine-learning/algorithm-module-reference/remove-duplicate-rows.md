@@ -1,25 +1,24 @@
 ---
 title: '重複する行の削除: モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の Remove Duplicate Rows (重複する行の削除) モジュールを使用して、データセットから重複の可能性があるものを削除する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の Remove Duplicate Rows (重複する行の削除) モジュールを使用して、データセットから重複の可能性があるものを削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: dce90d911085c1f7330a2e0952bb9576c1d765fa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: 490d3305abcbcd906a0f727d736db8cab7e4287e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456023"
 ---
 # <a name="remove-duplicate-rows-module"></a>Remove Duplicate Rows (重複する行の削除) モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用して、データセットから重複の可能性があるものを削除します。
 
@@ -27,11 +26,11 @@ ms.locfileid: "65027779"
 
 | PatientID | Initials| 性別|Age|受付|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Jan|
-|2| F.A.M.| M| 53| Jan|
-|3| F.A.M.| M| 24| Jan|
-|3| F.M.| M| 24| Feb|
-|4| F.M.| M| 23| Feb|
+|1|F.M.| M| 53| 1 月|
+|2| F.A.M.| M| 53| 1 月|
+|3| F.A.M.| M| 24| 1 月|
+|3| F.M.| M| 24| 2 月|
+|4| F.M.| M| 23| 2 月|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| (NaN)| |
@@ -52,31 +51,31 @@ ms.locfileid: "65027779"
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Remove Duplicate Rows の使用方法
 
-1. 実験にモジュールを追加します。 **Remove Duplicate Rows (重複行の削除)** モジュールは、**[データ変換]**、**[操作]** にあります。  
+1. パイプラインにモジュールを追加します。 **Remove Duplicate Rows (重複行の削除)** モジュールは、 **[データ変換]** 、 **[操作]** にあります。  
 
 2. 重複する行をチェックするデータセットを接続します。
 
-3. **[プロパティ]** ウィンドウの **[Key column selection filter expression]\(キー列の選択フィルター式\)** で、**[Launch column selector]\(列セレクターの起動\)** をクリックして、重複の識別に使用する列を選択します。
+3. **[プロパティ]** ウィンドウの **[Key column selection filter expression]\(キー列の選択フィルター式\)** で、 **[Launch column selector]\(列セレクターの起動\)** をクリックして、重複の識別に使用する列を選択します。
 
-    このコンテキストで、**キー**は一意の識別子を意味しません。 列セレクターを使用して選択したすべての列が、**キー列**として指定されます。 選択さしなかったすべての列は、非キー列と見なされます。 キーとして選択した列の組み合わせによって、レコードの一意性が決定されます  (これを、複数の等価結合を使用する SQL ステートメントであると考えてください)。
+    このコンテキストで、**キー**は一意の識別子を意味しません。 列セレクターを使用して選択したすべての列が、**キー列**として指定されます。 選択さしなかったすべての列は、非キー列と見なされます。 キーとして選択した列の組み合わせによって、レコードの一意性が決定されます (これを、複数の等価結合を使用する SQL ステートメントであると考えてください)。
 
-    次に例を示します。
+    例 :
 
     + "ID が一意であることを確認したい": ID 列のみを選択します。
     + "名、姓、および ID の組み合わせが一意であることを確認したい": 3 つの列すべてを選択します。
 
-4. 重複が見つかったときに返す行を指定するには、**[Retain first duplicate row]\(最初の重複行を保持\)** チェック ボックスをオンにします。
+4. 重複が見つかったときに返す行を指定するには、 **[Retain first duplicate row]\(最初の重複行を保持\)** チェック ボックスをオンにします。
 
     + オンにすると、最初の行が返され、他の行は破棄されます。 
     + このオプションをオフにした場合は、最後の重複する行が結果で保持され、他の行は破棄されます。 
 
-5. 実験を実行します。
+5. パイプラインを送信します。
 
-6. 結果を確認するには、モジュールを右クリックし、**[Results dataset]\(結果のデータセット\)** を選択してから **[可視化]** をクリックします。 
+6. 結果を確認するには、モジュールを右クリックし、 **[可視化]** を選択します。 
 
 > [!TIP]
 > 結果を解釈するのが難しい場合、またはいくつかの列を考慮から除外したい場合は、[Select Columns in Dataset (データセット内の列の選択)](./select-columns-in-dataset.md) モジュールを使用して列を削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

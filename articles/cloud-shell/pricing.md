@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
 ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244980"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "60199416"
 ---
 # <a name="pricing"></a>価格
 Cloud Shell の Bash および Cloud Shell の PowerShell には、以下の情報が適用されます。

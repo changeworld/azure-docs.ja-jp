@@ -1,6 +1,6 @@
 ---
-title: Service Bus キューの使用方法 (Node.js) | Microsoft Docs
-description: Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。
+title: Node.js で azure-sb パッケージを使用して Azure Service Bus キューを使用する
+description: azure-sb パッケージを使用して Azure Service Bus キューとの間でメッセージを送受信する Node.js アプリケーションを作成する方法を学習します。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,25 +11,28 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 7ee3939c1a1b450f2458267ab0b70e3924a4869b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500840"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78330602"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs"></a>Node.js で Service Bus キューを使用する方法
+# <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>クイック スタート:Azure の Service Bus キューを Node.js および azure-sb パッケージで使用する
+このチュートリアルでは、[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージを使用して、Node.js アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 サンプルは JavaScript で記述されます。このサンプルでは、azure-sb パッケージを内部で使用する Node.js [Azure モジュール](https://www.npmjs.com/package/azure)が使用されます。
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-このチュートリアルでは、Node.js アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 サンプルは JavaScript で記述され、Node.js Azure モジュールを利用しています。 
+> [!IMPORTANT]
+> [azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されています。 より高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用される新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) を使用すると、高速なエクスペリエンスが得られます。 
+> 
+> 新しいパッケージの詳細を知るには、[Service Bus キューを Node.js と @azure/service-bus パッケージで使用する方法](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)に関する記事を参照してください。または、[azure](https://www.npmjs.com/package/azure) パッケージの使用方法についてさらに読み進めてください。
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
+- Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+- 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
     1. Service Bus **キュー**の**概要**をお読みください。 
     2. Service Bus **名前空間**を作成します。 
     3. **接続文字列**を取得します。 
@@ -39,14 +42,14 @@ ms.locfileid: "59500840"
  
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Create and deploy a Node.js application to an Azure Website]」または「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用) をご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Create and deploy a Node.js application to an Azure Website]」または「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用) を参照してください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Azure Service Bus を使用するには、Node.js Azure パッケージをダウンロードして使用します。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 1. **Windows PowerShell for Node.js** コマンド ウィンドウを使用して、サンプル アプリケーションを作成した **c:\\node\\sbqueues\\WebRole1** フォルダーに移動します。
-2. コマンド ウィンドウに「**npm install azure**」と入力すると、次のような出力が生成されます。
+2. コマンド ウィンドウに「**npm install azure**」と入力すると、次の例のような出力が生成されます。
 
     ```
     azure@0.7.5 node_modules\azure
@@ -61,7 +64,7 @@ Azure Service Bus を使用するには、Node.js Azure パッケージをダウ
         ├── xml2js@0.2.7 (sax@0.5.2)
         └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
     ```
-3. 手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。 このフォルダーで **azure** パッケージを検索します。このパッケージには、Service Bus キューにアクセスするために必要なライブラリが含まれています。
+3. 手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。 そのフォルダーで **azure** パッケージを検索します。この中には、Service Bus キューにアクセスするために必要なライブラリが含まれています。
 
 ### <a name="import-the-module"></a>モジュールのインポート
 メモ帳などのテキスト エディターを使用して、アプリケーションの **server.js** ファイルの先頭に次の内容を追加します。
@@ -73,7 +76,7 @@ var azure = require('azure');
 ### <a name="set-up-an-azure-service-bus-connection"></a>Azure Service Bus 接続の設定
 Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 `AZURE_SERVICEBUS_CONNECTION_STRING` を読み取ります。 この環境変数が設定されていない場合は、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの [Azure Portal][Azure portal] で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
+Azure Web サイトの [Azure portal][Azure portal] で環境変数を設定する例については、「[ストレージを使用する Node.js Web アプリケーション][Node.js Web Application with Storage]」をご覧ください。
 
 ## <a name="create-a-queue"></a>キューを作成する
 Service Bus キューは、**ServiceBusService** オブジェクトを使用して操作できます。 次のコードでは、**ServiceBusService** オブジェクトを作成します。 **server.js** ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
@@ -147,14 +150,14 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのキューで保持されるメッセージ数には上限がありませんが、1 つのキューで保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 ## <a name="receive-messages-from-a-queue"></a>キューからメッセージを受信する
 キューからメッセージを受信するには、**ServiceBusService** オブジェクトの `receiveQueueMessage` メソッドを使用します。 既定では、メッセージは読み取られるときにキューから削除されますが、省略可能な `isPeekLock` パラメーターを **true** に設定することによって、キューからメッセージを削除せずに、メッセージを読み取って (ピークして) ロックできます。
 
-受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+受信操作の過程で行われるメッセージの読み取りと削除の既定動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 この動作を理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-`isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、`deleteMessage` メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。 `deleteMessage` メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
+`isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージの紛失が許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、`deleteMessage` メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。 `deleteMessage` メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
 
 次の例は `receiveQueueMessage` を使用してメッセージを受信し、処理する方法を示しています。 この例では、最初にメッセージを受信して削除し、次に **true** に設定した `isPeekLock` を使用してメッセージを受信した後、`deleteMessage` を使用してメッセージを削除します。
 
@@ -177,13 +180,16 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
-Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの `unlockMessage` メソッドを呼び出すことができます。 このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
+Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。 受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**ServiceBusService** オブジェクトの `unlockMessage` メソッドを呼び出すことができます。 これにより、Service Bus によってキュー内のメッセージはロックが解除され、再度受信できる状態になります。受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
-キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
+キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合、Service Bus によってメッセージは自動的にロック解除され、再度受信できる状態になります。
 
-メッセージが処理された後、`deleteMessage` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 一般的に、この動作は *1 回以上の処理* と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 通常、この問題はメッセージの **MessageId** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
+メッセージが処理された後、`deleteMessage` メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。 この方法は一般に *1 回以上の処理*と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。 重複処理が許されないシナリオの場合は、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。 それは通常、メッセージの **MessageId** プロパティを使用して対処します。これは配信が試行された後も同じ値を保持します。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
+
+## <a name="next-steps"></a>次のステップ
 キューの詳細については、次のリソースを参照してください。
 
 * [キュー、トピック、サブスクリプション][Queues, topics, and subscriptions]

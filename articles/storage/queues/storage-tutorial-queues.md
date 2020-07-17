@@ -1,20 +1,19 @@
 ---
 title: チュートリアル - Azure ストレージ キューの使用 - Azure Storage
 description: Azure Queue サービスを使用して、キューの作成のほか、メッセージの挿入、取得、削除を行う方法のチュートリアル。
-services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 04/24/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
-ms.date: 04/24/2019
-ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.reviewer: cbrooks
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797532"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75968194"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>チュートリアル:Azure ストレージ キューの操作
 
@@ -25,7 +24,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 > [!div class="checklist"]
 >
 > - Azure のストレージ アカウントの作成
-> - アプリケーションの作成
+> - アプリを作成する
 > - 非同期コードのサポートを追加する
 > - キューを作成する
 > - キューにメッセージを挿入する
@@ -42,9 +41,9 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-まず、Azure ストレージ アカウントを作成します。 ストレージ アカウント作成の詳細な手順が必要な場合、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)」というクイック スタートをご覧ください。
+まず、Azure ストレージ アカウントを作成します。 ストレージ アカウント作成の詳細な手順が必要な場合、「[ストレージ アカウントの作成](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)」というクイック スタートをご覧ください。
 
-## <a name="create-the-app"></a>アプリケーションの作成
+## <a name="create-the-app"></a>アプリを作成する
 
 **QueueApp** という名前の .NET Core アプリケーションを作成します。 わかりやすくするために、このアプリではメッセージの送受信ともキューを介して行います。
 
@@ -227,6 +226,14 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
    ```
 
 2. ファイルを保存します。
+
+メッセージは、UTF-8 エンコードの XML 要求に格納できる形式でなければならず、最大 64 KB のサイズまで許容されます。 メッセージにバイナリ データが含まれている場合は、メッセージを Base64 でエンコードすることをお勧めします。
+
+既定では、メッセージの最大 Time to Live は 7 日に設定されます。 メッセージの有効期限には、任意の正の数値を指定できます。 有効期限のないメッセージを追加するには、**AddMessageAsync** への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
+
+```csharp
+await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
+```
 
 ## <a name="dequeue-messages"></a>メッセージをデキューする
 
@@ -496,7 +503,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

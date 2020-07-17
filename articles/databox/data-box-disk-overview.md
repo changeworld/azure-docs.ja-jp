@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 05/15/2019
+ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 194f2b80e9cbf3a69fef6ce382e6755934f1d5bd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787446"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215730"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -82,21 +82,21 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 | 1 注文あたりのストレージ容量                              | 40 TB (使用可能な容量は最大 35 TB)|
 | ディスク ストレージ容量                                   | 8 TB (使用可能な容量は最大 7 TB)|
 | データ インターフェイス                                          | USB   |
-| セキュリティ                                                | BitLocker とセキュリティ保護された更新を使用して事前に暗号化 <br> パスキーでディスクを保護 <br> データを常に暗号化  |
+| Security                                                | BitLocker とセキュリティ保護された更新を使用して事前に暗号化 <br> パスキーでディスクを保護 <br> データを常に暗号化  |
 | データ転送速度                                      | ファイル サイズに応じて最大 430 MBps      |
-|管理                                               | Azure ポータル |
+|管理                                               | Azure portal |
 
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-リージョン別の提供状況については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。
+リージョン別の提供状況については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box Disk は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
 
 
 ## <a name="pricing"></a>価格
 
 価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/databox/disk/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Disk の要件](data-box-disk-system-requirements.md)を確認する。
 - [Data Box Disk の制限事項](data-box-disk-limits.md)を理解する。

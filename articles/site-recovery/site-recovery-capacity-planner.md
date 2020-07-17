@@ -1,24 +1,23 @@
 ---
-title: Azure Site Recovery を使用する Hyper-V ディザスター リカバリーの容量を計画する | Microsoft Docs
+title: Azure Site Recovery を使用する Hyper-V ディザスター リカバリーの容量を計画する
 description: この記事を使用して、Azure Site Recovery サービスによるディザスター リカバリーを設定するときに容量を見積もります。
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976717"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73936043"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 
-[Azure へのデプロイを行う Azure Site Recovery Deployment Planner for Hyper-V](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になりました。 これは従来のツールに代わるものです。 デプロイの計画には新しいツールを使用します。
-このツールでは次の指標が提供されます。
+Hyper-V から Azure へのデプロイ用の [Azure Site Recovery Deployment Planner] (site-recovery-hyper-v-deployment-planner.md) によって、次のものが提供されます。
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価
 * ネットワーク帯域幅ニーズ対 RPO の評価
@@ -48,7 +47,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 2. **[Select a planner type]\(プランナーの種類を選択する\)** リスト ボックスから **[Quick Planner]\(クイック プランナー\)** を選択します。
 
-   ![作業開始](./media/site-recovery-capacity-planner/getting-started.png)
+   ![はじめに](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. **Capacity Planner** ワークシートに、必要な情報を入力します。 以下のスクリーンショットの赤の丸が付いているすべてのフィールドに入力します。
 
@@ -66,17 +65,17 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 4. ソース環境の値を入力した後には、以下などが出力されます。
 
-   * **[Bandwidth required for delta replication (in Megabits/sec)]\(差分レプリケーションに必要な帯域幅 (MB/秒)\)**:1 日の平均データ変更率に基づいてデルタ レプリケーションのネットワーク帯域幅が計算されます。
-   * **[Bandwidth required for initial replication (in Megabits/sec)]\(初期レプリケーションに必要な帯域幅 (MB/秒)\)**:入力した初回レプリケーションの値に基づいて初回レプリケーションのネットワーク帯域幅が計算されます。
-   * **[Storage required (in GBs)]\(必要なストレージ (GB)\)**:Azure で必要なストレージの合計です。
-   * **[Total IOPS on Standard Storage]\(Standard Storage の IOPS 合計\)**:Standard ストレージ アカウントの合計での IOPS が 8K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
-   * **[Number of Standard storage accounts required]\(必要な Standard Storage アカウントの数\)**:VM を保護するために必要な Standard Storage アカウントの合計数。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20,000 IOPS まで対応できます。 また、ディスクごとでは最大 500 IOPS まで対応できます。
-   * **[Number of Blob disks required]\(必要な BLOB ディスクの数\)**:Azure ストレージに作成されるディスクの数。
-   * **[Number of premium accounts required]\(必要な Premium Storage アカウントの数\)**:VM を保護するために必要な Premium Storage アカウントの合計数。 IOPS が多い (20,000 を超える) ソース VM には、Premium Storage アカウントが必要です。 Premium Storage アカウントでは、最大 80,000 IOPS に対応できます。
-   * **[Total IOPS on Premium Storage]\(Premium Storage の IOPS 合計\)**:Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
-   * **[Number of Configuration Servers required]\(必要な構成サーバーの数\)**:デプロイに必要な構成サーバーの数を示します。
-   * **[Number of additional Process Servers required]\(必要なその他のプロセス サーバーの数\)**:既定で構成サーバーで実行しているプロセス サーバーの他に、追加のプロセス サーバーが必要かどうかを示します。
-   * **[100% additional storage on the Source]\(ソースでの 100% 追加ストレージ\)**:ソースの場所に追加ストレージが必要かどうかを示します。
+   * **[Bandwidth required for delta replication (in Megabits/sec)]\(差分レプリケーションに必要な帯域幅 (MB/秒)\)** :1 日の平均データ変更率に基づいてデルタ レプリケーションのネットワーク帯域幅が計算されます。
+   * **[Bandwidth required for initial replication (in Megabits/sec)]\(初期レプリケーションに必要な帯域幅 (MB/秒)\)** :入力した初回レプリケーションの値に基づいて初回レプリケーションのネットワーク帯域幅が計算されます。
+   * **[Storage required (in GBs)]\(必要なストレージ (GB)\)** :Azure で必要なストレージの合計です。
+   * **[Total IOPS on Standard Storage]\(Standard Storage の IOPS 合計\)** :Standard ストレージ アカウントの合計での IOPS が 8K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Standard の Azure VM にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Number of Standard storage accounts required]\(必要な Standard Storage アカウントの数\)** :VM を保護するために必要な Standard Storage アカウントの合計数。 Standard Storage アカウントの場合は、Standard Storage のすべての VM で最大 20,000 IOPS まで対応できます。 また、ディスクごとでは最大 500 IOPS まで対応できます。
+   * **[Number of Blob disks required]\(必要な BLOB ディスクの数\)** :Azure ストレージに作成されるディスクの数。
+   * **[Number of premium accounts required]\(必要な Premium Storage アカウントの数\)** :VM を保護するために必要な Premium Storage アカウントの合計数。 IOPS が多い (20,000 を超える) ソース VM には、Premium Storage アカウントが必要です。 Premium Storage アカウントでは、最大 80,000 IOPS に対応できます。
+   * **[Total IOPS on Premium Storage]\(Premium Storage の IOPS 合計\)** :Premium Storage アカウントの合計での IOPS が 256K の単位サイズで計算されます。 Quick Planner の場合は、この数値はすべてのソース VM ディスクおよび 1 日のデータ変更率に基づいて計算されます。 Detailed Planner の場合、この数値は、Premium の Azure VM (DS および GS シリーズ) にマップされている VM 数の合計およびそれらの VM でのデータ変更率に基づいて計算されます。
+   * **[Number of Configuration Servers required]\(必要な構成サーバーの数\)** :デプロイに必要な構成サーバーの数を示します。
+   * **[Number of additional Process Servers required]\(必要なその他のプロセス サーバーの数\)** :既定で構成サーバーで実行しているプロセス サーバーの他に、追加のプロセス サーバーが必要かどうかを示します。
+   * **[100% additional storage on the Source]\(ソースでの 100% 追加ストレージ\)** :ソースの場所に追加ストレージが必要かどうかを示します。
 
       ![出力](./media/site-recovery-capacity-planner/output.png)
 
@@ -104,7 +103,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
    g. **[Daily data change rate (%)]\(日次データ変化率 (%)\)** には、ソース サーバーの 1 日のデータ変更率を指定します。
 
-   h. **[Mapping Azure VM size]\(マッピングする Azure VM サイズ\)** には、マップする Azure VM のサイズを入力します。 これを手動で行わない場合は、**[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択します。 手動で設定を入力した後、**[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択すると、手動で入力した設定が上書きされることがあります。 計算プロセスによって、最も一致する Azure VM のサイズが自動的に特定されます。
+   h. **[Mapping Azure VM size]\(マッピングする Azure VM サイズ\)** には、マップする Azure VM のサイズを入力します。 これを手動で行わない場合は、 **[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択します。 手動で設定を入力した後、 **[Compute IaaS VMs]\(IaaS VM を計算する\)** を選択すると、手動で入力した設定が上書きされることがあります。 計算プロセスによって、最も一致する Azure VM のサイズが自動的に特定されます。
 
    ![Workload Qualification ワークシート](./media/site-recovery-capacity-planner/workload-qualification.png)
 
@@ -138,14 +137,14 @@ AA から AE の列が出力され、各 VM の情報が示されます。
     > Standard Storage および Premium Storage の IOPS は、ディスク レベルではなく VM レベルで計算されます。 Standard VM はディスクあたり最大 500 IOPS を処理できます。 ディスクの IOPS が 500 より大きい場合は、Premium Storage が必要になります。 ディスクの IOPS が 500 を超えても VM ディスクの合計の IOPS がサポートされる Standard の Azure VM の制限内にある場合、プランナーは DS または GS シリーズではなく Standard VM を選択します (Azure VM の制限は、VM サイズ、ディスク数、アダプター数、CPU、メモリです)。適切な DS または GS シリーズ VM を使用して Azure サイズ セルのマッピングを手動で更新する必要があります。
 
 
-すべての情報を入力したら、**[Submit data to the planner tool]\(データをプランナー ツールに送信\)** を選択して、Capacity Planner を開きます。 ワークロードが保護対象かどうかは強調表示によって示されます。
+すべての情報を入力したら、 **[Submit data to the planner tool]\(データをプランナー ツールに送信\)** を選択して、Capacity Planner を開きます。 ワークロードが保護対象かどうかは強調表示によって示されます。
 
 ### <a name="submit-data-in-capacity-planner"></a>Capacity Planner でのデータの送信
 1. **Capacity Planner** ワークシートを開くと、指定した設定に基づいてデータが入力されます。 **[Infra inputs source]\(Infra 入力ソース\)** セルに "Workload" という語が表示され、この入力が **Workload Qualification** ワークシートのものであることを示します。
 
-2. 変更する場合、**Workload Qualification** ワークシートを変更する必要があります。 その後、**[Submit data to the planner tool]\(データをプランナー ツールに送信\)** をもう一度選択します。
+2. 変更する場合、**Workload Qualification** ワークシートを変更する必要があります。 その後、 **[Submit data to the planner tool]\(データをプランナー ツールに送信\)** をもう一度選択します。
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Capacity Planner ツールを[実行する方法について説明します](site-recovery-capacity-planning-for-hyper-v-replication.md)。

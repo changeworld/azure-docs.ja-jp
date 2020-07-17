@@ -1,28 +1,19 @@
 ---
 title: Azure Application Insights をさらに活用する | Microsoft Docs
 description: Application Insights の利用開始後に使用できる機能の概要を示します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7ec10a2d-c669-448d-8d45-b486ee32c8db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/03/2017
-ms.author: mbullwin
-ms.openlocfilehash: 7e62efb0b64b0b882b36126af4a1f9d520d92475
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3c4a9a736f34d4f7dbfeb004d0837f1f2efa55dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77666026"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Application Insights からのテレメトリの追加
 [Application Insights を ASP.NET コードに追加](../../azure-monitor/app/asp-net.md)した後、さらに多くのテレメトリを取得するためにできることがいくつかあります。 
 
-| [操作] | 取得内容|
+| アクション | 取得内容|
 |---|---|
 |(IIS サーバー) 各サーバー コンピューターに [Status Monitor をインストール](https://go.microsoft.com/fwlink/?LinkId=506648)する。<br/>(Azure Web アプリ) Web アプリの Azure コントロール パネルで Application Insights ブレードを開く。| [**パフォーマンス カウンター**](../../azure-monitor/app/performance-counters.md)<br/>[**例外**](asp-net-exceptions.md) - 詳細なスタック トレース<br/>[**依存関係**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[Web ページに JavaScript のスニペットを追加する](../../azure-monitor/app/javascript.md)|[ページのパフォーマンス](../../azure-monitor/app/usage-overview.md)、ブラウザーの例外、AJAX のパフォーマンス。 カスタム クライアント側テレメトリ。|

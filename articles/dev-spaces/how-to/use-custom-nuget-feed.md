@@ -1,69 +1,74 @@
 ---
-title: Azure Dev Spaces でのカスタム NuGet フィードの使用方法
-titleSuffix: Azure Dev Spaces
+title: カスタム NuGet フィードを使用する
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: johnsta
-ms.author: johnsta
-ms.date: 05/11/2018
+author: zr-msft
+ms.author: zarhoads
+ms.date: 07/17/2019
 ms.topic: conceptual
 description: カスタム NuGet フィードを使用して、Azure Dev Space 内の NuGet パッケージにアクセスし、使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-manager: ghogen
-ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+manager: gwallace
+ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772468"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74325728"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure Dev Space でのカスタム NuGet フィードの使用
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces にカスタム NuGet フィードを使用する
 
-NuGet フィードは、パッケージ ソースをプロジェクトに取り込むための便利な方法を提供します。 Docker コンテナーで依存関係を正しくインストールするためには、Azure Dev Spaces がこのフィードにアクセスできる必要があります。
+NuGet フィードは、パッケージ ソースをプロジェクトに取り込むための便利な方法を提供します。 Docker コンテナーで依存関係を正しくインストールするためには、Azure Dev Spaces がこのフィードにアクセスする必要があります。
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet フィードのセットアップ
 
-NuGet フィードをセットアップするには:
-1. `PackageReference` ノード下の `*.csproj` ファイルで[パッケージ参照](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)を追加します。
+`PackageReference` ノード下の `*.csproj` ファイルで、依存関係の[パッケージ参照](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)を追加します。 次に例を示します。
 
-   ```xml
-   <ItemGroup>
-       <!-- ... -->
-       <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
-       <!-- ... -->
-   </ItemGroup>
-   ```
+```xml
+<ItemGroup>
+    <!-- ... -->
+    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
+    <!-- ... -->
+</ItemGroup>
+```
 
-2. プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成します。
-     * `packageSources` セクションを使用して NuGet フィードの場所を参照します。 重要:NuGet フィードはパブリックからアクセスできる必要があります。
-     * `packageSourceCredentials` セクションを使用して、ユーザー名とパスワードの資格情報を構成します。 
+プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成し、NuGet フィードに対する `packageSources` および `packageSourceCredentials` セクションを設定します。 `packageSources` セクションにはフィード URL が含まれ、これは AKS クラスターからアクセスが可能である必要があります。 `packageSourceCredentials` は、フィードにアクセスするための資格情報です。 次に例を示します。
 
-   ```xml
-   <packageSources>
-       <add key="Contoso" value="https://contoso.com/packages/" />
-   </packageSources>
+```xml
+<packageSources>
+    <add key="Contoso" value="https://contoso.com/packages/" />
+</packageSources>
 
-   <packageSourceCredentials>
-       <Contoso>
-           <add key="Username" value="user@contoso.com" />
-           <add key="ClearTextPassword" value="33f!!lloppa" />
-       </Contoso>
-   </packageSourceCredentials>
-   ```
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="ClearTextPassword" value="33f!!lloppa" />
+    </Contoso>
+</packageSourceCredentials>
+```
 
-3. ソース コード管理を使用している場合:
-    - 資格情報をソース リポジトリに誤ってコミットしないように、`.gitignore` ファイルで `NuGet.Config` を参照します。
-    - `azds.yaml` ファイルをプロジェクトで開き、`build` セクションを探して次のスニペットを挿入することで、`NuGet.Config` ファイルが確実に Azure に同期され、コンテナー イメージのビルド プロセス中にこのファイルが使用されるようにします。 (既定では、Azure Dev Spaces は `.gitignore` および `.dockerignore` 規則に一致するファイルを同期しません。)
+Dockerfile を更新して、`NuGet.Config` ファイルをイメージにコピーします。 次に例を示します。
 
-        ```yaml
-        build:
-        useGitIgnore: true
-        ignore:
-        - “!NuGet.Config”
-        ```
+```console
+COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
+```
+
+> [!TIP]
+> Windows では、`NuGet.Config`、`Nuget.Config`、および `nuget.config` はすべて有効なファイル名として機能します。 Linux では、`NuGet.Config` のみがこのファイルの有効なファイル名です。 Azure Dev Spaces では Docker と Linux が使用されるため、このファイルには `NuGet.Config` という名前を付ける必要があります。 名前は手動で、または `dotnet restore --configfile nuget.config` を実行して修正できます。
 
 
-## <a name="next-steps"></a>次の手順
+Git を使用している場合は、NuGet フィードの資格情報をバージョン コントロールに入れないでください。 プロジェクトの `.gitignore` に `NuGet.Config` を追加して、`NuGet.Config` ファイルがバージョン コントロールに追加されないようにします。 Azure Dev Spaces では、コンテナー イメージのビルド プロセス中にこのファイルが必要になりますが、既定では、同期中に `.gitignore` および `.dockerignore` で定義された規則に従います。 既定の動作を変更し、`NuGet.Config` ファイルの同期を Azure Dev Spaces に許可するには、次のように `azds.yaml` ファイルを更新します。
 
-上記の手順が完了したら、次に `azds up` を実行したとき (あるいは、VSCode または Visual Studio で `F5` にヒットしたとき) に、Azure Dev Spaces が `NuGet.Config` ファイルを Azure に同期します。このファイルはその後、パッケージの依存関係をコンテナーにインストールするために `dotnet restore` によって利用されます。
+```yaml
+build:
+useGitIgnore: true
+ignore:
+- "!NuGet.Config"
+```
 
+Git を使用していない場合は、この手順を省略できます。
+
+Visual Studio Code または Visual Studio で次に `azds up` を実行または `F5` にヒットしたとき、Azure Dev Spaces は `NuGet.Config` ファイルを同期し、それを使用してパッケージの依存関係をインストールします。
+
+## <a name="next-steps"></a>次のステップ
+
+[NuGet とそのしくみ](https://docs.microsoft.com/nuget/what-is-nuget)について学びます。

@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145807"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181138"
 ---
 ## <a name="update-resources"></a>リソースの更新
 
@@ -66,7 +66,7 @@ Update-AzGalleryImageVersion `
 ```
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソースを削除するときは、入れ子になったリソース (イメージ バージョン) の最後の項目から始める必要があります。 バージョンを削除したら、イメージ定義を削除できます。 ギャラリーに含まれるすべてのリソースを削除するまで、ギャラリーを削除することはできません。
 

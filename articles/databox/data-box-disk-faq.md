@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 04/08/2019
+ms.topic: conceptual
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258778"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77918939"
 ---
-# <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
 Microsoft Azure Data Box Disk クラウド ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイトのデータを Azure に送信できます。 この FAQ では、Azure portal での Data Box Disk の使用に関して多く寄せられる質問とその回答を紹介しています。 
 
@@ -56,6 +56,9 @@ A.  Data Box Disk が現在使用できる場所については、「[利用可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
 A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>Q. Data Box Disk は配送中に国境を越えますか?
+A. Data Box Disk は宛先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもディスクを配送できます。
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)てください。
 
@@ -65,7 +68,7 @@ A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft �
 A.  いいえ。 データのサイズとディスクの在庫に応じて、8 TB のディスク (最大 5 台) が発送されます。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Q. Data Box Disk のロックを解除する方法を教えてください。 
-A.  Azure portal で、対象の Data Box Disk の注文に移動し、**[デバイスの詳細]** に移動します。 パスキーをコピーします。 お使いのオペレーティング システム用の Data Box Disk ロック解除ツールを Azure portal からダウンロードして抽出します。 ディスクにコピーするデータがあるコンピューターでツールを実行します。 パスキーを指定すると、ディスクのロックが解除されます。 ロック解除に使用するパスキーは、すべてのディスクで共通です。 
+A.  Azure portal で、対象の Data Box Disk の注文に移動し、 **[デバイスの詳細]** に移動します。 パスキーをコピーします。 お使いのオペレーティング システム用の Data Box Disk ロック解除ツールを Azure portal からダウンロードして抽出します。 ディスクにコピーするデータがあるコンピューターでツールを実行します。 パスキーを指定すると、ディスクのロックが解除されます。 ロック解除に使用するパスキーは、すべてのディスクで共通です。 
 
 詳細な手順については、[Windows クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)または [Linux クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)に関するページを参照してください。
 
@@ -84,7 +87,25 @@ A. はい。 同じホスト コンピューターに複数の Data Box Disk を
 A.  Data Box Disk の注文の状態は、Azure portal で追跡できます。 注文を作成する際に、通知メールを指定するように求められます。 指定した場合は、注文の状態が変化するたびにメールで通知されます。 [通知メールの構成](data-box-portal-ui-admin.md#edit-notification-details)方法に関するページを参照してください。
 
 ### <a name="q-how-do-i-return-the-disks"></a>Q. ディスクの返送方法を教えてください。 
-A.  Microsoft からの発送パッケージには、Data Box Disk と共に配送先住所ラベルが同梱されています。 このラベルを梱包箱に貼り付けて、封をしたパッケージを集荷場所に持ち込んでください。 ラベルを破損または紛失した場合は、**[概要] > [出荷ラベルをダウンロード]** に移動して、新しい返送ラベルをダウンロードしてください。
+A.  Microsoft からの発送パッケージには、Data Box Disk と共に配送先住所ラベルが同梱されています。 このラベルを梱包箱に貼り付けて、封をしたパッケージを集荷場所に持ち込んでください。 ラベルを破損または紛失した場合は、 **[概要] > [出荷ラベルをダウンロード]** に移動して、新しい返送ラベルをダウンロードしてください。
+
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Data Box Disk の注文を自分で受け取ることはできますか? 自分が選んだ配送業者を使ってディスクを返送できますか?
+A. はい。 また、Microsoft では、US Gov リージョンでのみ、自己管理型の発送に対応しています。 Data Box Disk を注文するときに、自己管理型の発送オプションを選択できます。 注文した Data Box Disk を受け取るには、次の手順を行います。
+    
+1. 発注後、注文が処理されてディスクが準備されます。 受け取りの準備ができたことを知らせるメールが届きます。 
+2. 注文を受け取る準備ができたら、Azure portal 上で対象の注文に移動し、 **[概要]** ブレードに移動します。 
+3. Azure portal にコードを含む通知が表示されます。 [Azure Data Box オペレーション チーム](mailto:adbops@microsoft.com)にメールを送信し、コードを知らせます。 チームから場所と受け取り日時が連絡されます。 電子メールの通知を受信した後、5 営業日以内にチームに電話する必要があります。
+
+データのコピーと検証が完了したら、次の手順に従ってディスクを返送します。
+
+1. データの検証が完了したら、ディスクの接続を解除します。 接続ケーブルを取り外してください。
+2. すべてのディスクと接続ケーブルをエアー クッションで包んで梱包箱に詰めます。 アクセサリが不足している場合は、料金がかかることがあります。
+
+    - 最初の配送時に使われていた梱包を再利用してください。 ディスクはエアー クッションでしっかりと包んで梱包することをお勧めします。
+    - 箱内の物があまり動かないように、すき間が少なくなるようにしてください。
+3. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 コードを含む通知が表示されます。
+4. そのコードを使用して [Azure Data Box オペレーション チーム](mailto:adbops@microsoft.com)にメールを送信し、コードを知らせます。 いつどこにディスクを持ち込むかについての情報が提供されます。
+
 
 ## <a name="migrate-data"></a>データの移行
 
@@ -92,7 +113,7 @@ A.  Microsoft からの発送パッケージには、Data Box Disk と共に配�
 A.  Data Box Disk ソリューションのディスク数は最大 5 台で、使用可能な最大容量は 35 TB です。 ディスク自体は 8 TB (7 TB を使用可能) です。
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>Q. Data Box Disk でサポートされるブロック BLOB とページ BLOB の最大サイズを教えてください。 
-A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/common/storage-scalability-targets.md)」をご覧ください。
+A.  最大サイズは Azure Storage の上限によって左右されます。 最大ブロック BLOB は約 4.768 TiB、ページ BLOB の最大サイズは 8 TiB です。 詳細については、「[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)」を参照してください。
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>Q. Data Box Disk のデータ転送速度を教えてください。
 A. USB 3.0 で接続したディスクでテストしたところ、ディスクのパフォーマンスは最大 430 MB/s でした。 実際の数値は、使用するファイルのサイズによって異なります。 ファイルのサイズが小さい場合は、パフォーマンスが低下する可能性があります。
@@ -110,7 +131,7 @@ A.  コピー処理は、次の方法で高速化できます。
 - 複数のセッションを使用する。
 - ネットワーク共有経由でコピーすることは避け (ネットワーク速度によって制限される可能性があるため)、ディスクが接続されているコンピューターのローカルにデータを置くようにします。
 - コピー処理全体を通して USB 3.0 以降を使用する。 [USBView ツール](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)をダウンロードします。このツールを使って、コンピューターに接続されている USB コントローラーと USB デバイスを特定してください。
-- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop FIO ツール](https://bluestop.org/fio/)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。
+- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop FIO ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>Q. コピー元のデータに小さいファイル (数キロバイトまたは数メガバイト) が含まれている場合に、データの転送速度を高める方法を教えてください。
 A.  コピー処理は、次の方法で高速化できます。
@@ -168,7 +189,7 @@ A. はい。 データは Azure にアップロードされましたが、指定
  - Azure Files は *databoxdisk-invalid-af-* で始まるブロック BLOB コンテナーに移動されます。
  - マネージド ディスクは *databoxdisk-invalid-md-* で始まるブロック BLOB コンテナーに移動されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box Disk のシステム要件](data-box-disk-system-requirements.md)を確認する。
 - [Data Box Disk の制限事項](data-box-disk-limits.md)を理解する。

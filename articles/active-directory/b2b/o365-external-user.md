@@ -1,5 +1,5 @@
 ---
-title: Office 365 の外部共有と B2B コラボレーション - Azure Active Directory | Microsoft Docs
+title: Office 365 の外部共有と B2B コラボレーション - Azure AD
 description: O365 および Azure Active Directory B2B コラボレーションを使用する外部パートナーとのリソースの共有について説明します。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28277f61885b574026b19305bef143f09e0ec69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785225"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74272270"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 の外部共有と Azure Active Directory B2B コラボレーション
 
@@ -32,7 +32,7 @@ OneDrive/SharePoint Online には、独自の招待マネージャーがあり�
 
 - Azure AD B2B コラボレーションで招待されたユーザーは、OneDrive/SharePoint Online 共有の各ダイアログ ボックスで選択できます。 OneDrive/SharePoint Online で招待されたユーザーも、招待に応じた後は、Azure AD に表示されます。
 
-- ライセンスの要件が異なります。 Azure AD の有料ライセンスごとに、最大 5 人のゲスト ユーザーに対して、有料の Azure AD 機能へのアクセスを許可できます。 ライセンスについて詳しくは、[Azure AD B2B のライセンスに関する記事](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)と、[SharePoint Online の外部共有の概要に関する記事の「外部ユーザーとは」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-is-an-external-user)をご覧ください。
+- ライセンスの要件が異なります。 Azure AD の有料ライセンスごとに、最大 5 人のゲスト ユーザーに対して、有料の Azure AD 機能へのアクセスを許可できます。 ライセンスについて詳しくは、[Azure AD B2B のライセンスに関する記事](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)と、[SharePoint Online の外部共有の概要に関する記事の「外部ユーザーとは」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share)をご覧ください。
 
 OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共有を管理するには、OneDrive/SharePoint Online の外部共有の設定を **[Allow sharing only with the external users that already exist in your organization's directory]\(既にディレクトリに存在する外部ユーザーのみに共有を許可する\)** に設定します。 ユーザーは外部の共有サイトに移動し、管理者が追加した外部コラボレーターを選択できます。 管理者は、B2B コラボレーションの招待 API を通じて、外部コラボレーターを追加できます。
 
@@ -43,7 +43,7 @@ OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共
 
 この機能は、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この機能は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 * [B2B コラボレーション ユーザーのロールへの追加](add-guest-to-role.md)

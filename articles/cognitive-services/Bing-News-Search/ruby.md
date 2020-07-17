@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Ruby を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:Ruby と Bing News Search REST API を使用してニュース検索を実行する
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Ruby を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9ed658c6613d270ab3de67a8800263d677d70bac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867020"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448546"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>クイック スタート:Ruby と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -30,8 +30,6 @@ ms.locfileid: "55867020"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
 1. 次のパッケージをコード ファイルにインポートします。
@@ -42,7 +40,7 @@ ms.locfileid: "55867020"
     require 'json'
     ```
 
-2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、および検索語句の変数を作成します。
+2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、および検索語句の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```ruby
     accessKey = "enter key here"
@@ -176,7 +174,7 @@ puts JSON::pretty_generate(JSON(response.body))
 ```
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページのアプリを作成する](tutorial-bing-news-search-single-page-app.md)

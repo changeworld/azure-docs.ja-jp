@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric で構成ファイルをパラメーター化する | Microsoft Docs
-description: Service Fabric で構成ファイルをパラメーター化する方法を学習します。
-documentationcenter: .net
+title: Azure Service Fabric で構成ファイルをパラメーター化する
+description: 複数の環境を管理する際に役立つ手法である、Service Fabric で構成ファイルをパラメーター化する方法について説明します。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524516"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75644632"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法
 
@@ -45,7 +38,7 @@ ms.locfileid: "59524516"
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. ApplicationManifest.xml ファイルの `ServiceManifestImport` セクションに `ConfigOverride` 要素を追加し、構成パッケージ、セクション、およびパラメーターを参照します。
+1. ApplicationManifest.xml ファイルの `ServiceManifestImport` セクションに `ConfigOverrides` と `ConfigOverride` 要素を追加し、構成パッケージ、セクション、およびパラメーターを参照します。
 
    ```xml
     <ConfigOverrides>
@@ -64,5 +57,5 @@ ms.locfileid: "59524516"
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Visual Studio で使用可能なその他のアプリケーション管理機能については、 [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)に関する記事をご覧ください。

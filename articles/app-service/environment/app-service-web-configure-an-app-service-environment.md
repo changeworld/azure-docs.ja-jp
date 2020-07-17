@@ -1,26 +1,18 @@
 ---
-title: App Service Environment v1 を構成する方法 - Azure
-description: App Service Environment v1 の構成、管理、および監視
-services: app-service
-documentationcenter: ''
+title: ASE v1 の構成
+description: App Service Environment v1 の構成、管理、および監視 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723214"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74687255"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
 
@@ -32,7 +24,7 @@ ms.locfileid: "53723214"
 大まかに言えば、Azure App Service Environment は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
 * App Service Environment ホステッド サービスで実行されるコンピューティング リソース
-* Storage
+* ストレージ
 * データベース
 * V1 (クラシック) または V2 (Resource Manager) Azure Virtual Network (VNet) 
 * App Service Environment ホステッド サービスが実行されるサブネット
@@ -71,9 +63,9 @@ ms.locfileid: "53723214"
 
 **自動スケール**:コンピューティング リソースの使用を管理するのに役立つ手段の 1 つが自動スケールです。 自動スケールは、フロント エンド プールに対して実行することも、ワーカー プールに対して実行することもできます。 いずれかのプール タイプのインスタンス数を午前中は増やし、夜間は減らすといったことが可能です。 また、ワーカー プールから利用できるワーカー数が特定のしきい値を下回ったときにインスタンスを追加することもできます。
 
-コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケールの詳細については、[App Service 環境で自動スケールを構成する方法][ASEAutoscale]に関するページを参照してください。
+コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケーリングの詳細については、[App Service 環境で自動スケーリングを構成する方法][ASEAutoscale]に関するページを参照してください。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 各 ASE には、500 GB の記憶域が構成されています。 この領域は、ASE 内のすべてのアプリケーションに使用されます。 この記憶域は ASE の一部であり、ユーザーの記憶域を使用するように切り替えることはできません。 仮想ネットワーク ルーティングまたはセキュリティを調整する場合も、Azure Storage へのアクセスを許可する必要があります。そうしないと、ASE が機能しません。
 
 ### <a name="database"></a>データベース
@@ -133,13 +125,13 @@ ASE では、App Service プランはすべて、App Service 専用のプラン�
 ### <a name="settings"></a>設定
 ASE ブレードには **[設定]** セクションがあり、そこにいくつかの重要な機能が用意されています。
 
-**[設定]** > **[プロパティ]**:ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]** が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
+**[設定]**  >  **[プロパティ]** :ASE ブレードを選択すると、 **[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]** が表示されます。 プロパティには多数の項目があり、 **[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
 
 ![Settings blade and Properties][4]
 
-**[設定]** > **[IP アドレス]**:ASE に IP SSL (Secure Sockets Layer) アプリを作成する場合は、IP SSL アドレスが必要です。 このアドレスを取得するためには、割り当てが可能な独自の IP SSL アドレスが ASE に必要となります。 ASE の作成時に、この目的で使用できる IP SSL アドレスが 1 つ用意されますが、追加することもできます。 「[App Service の価格][AppServicePricing]」の「SSL 接続」セクションに記載されているとおり、追加の IP SSL アドレスは課金対象です。 追加の価格は、IP SSL の価格です。
+**[設定]**  >  **[IP アドレス]** :ASE に IP SSL (Secure Sockets Layer) アプリを作成する場合は、IP SSL アドレスが必要です。 このアドレスを取得するためには、割り当てが可能な独自の IP SSL アドレスが ASE に必要となります。 ASE の作成時に、この目的で使用できる IP SSL アドレスが 1 つ用意されますが、追加することもできます。 「[App Service の価格][AppServicePricing]」の「SSL 接続」セクションに記載されているとおり、追加の IP SSL アドレスは課金対象です。 追加の価格は、IP SSL の価格です。
 
-**[設定]** > **[フロントエンド プール]** / **[ワーカー プール]**:各リソース プール ブレードでは、そのリソース プールに関する情報のみを確認できます。また、そのリソース プールのスケールを完全に制御できます。  
+**[設定]**  >  **[フロントエンド プール]**  /  **[ワーカー プール]** :各リソース プール ブレードでは、そのリソース プールに関する情報のみを確認できます。また、そのリソース プールのスケールを完全に制御できます。  
 
 各リソース プールの基本ブレードには、そのリソース プールのメトリックを使用したグラフが表示されます。 ASE ブレードのグラフと同様に、グラフにアクセスし、必要に応じてアラートを設定することができます。 特定のリソース プールに関する ASE ブレードからアラートを設定する操作は、リソース プールからアラートを設定する操作と同じです。 ワーカー プールの **[設定]** ブレードから、そのワーカー プールで実行されているアプリまたは App Service プランすべての一覧にアクセスできます。
 
@@ -162,7 +154,7 @@ ASE ブレードでスケール操作を使用するには、目的の数まで�
 
 ![Scale UI][6]
 
-特定のリソース プールで手動または自動スケール機能を使用するには、**[設定]** に移動し、必要に応じて  > **[フロントエンド プール]** /  または **[ワーカー プール]** に移動して、変更するプールを開きます。 次に、変更するプールを開きます。 **[設定]** > 、**[スケールアウト]** の順に移動するか、**[設定]**、 > **[スケールアップ]** の順に移動します。 **[スケールアウト]** ブレードでは、インスタンスの数を制御できます。 **[スケールアップ]** では、リソース サイズを制御できます。  
+特定のリソース プールで手動または自動スケール機能を使用するには、 **[設定]** に移動し、必要に応じて  >  **[フロントエンド プール]**  /  または **[ワーカー プール]** に移動して、変更するプールを開きます。 次に、変更するプールを開きます。 **[設定]**  > 、 **[スケールアウト]** の順に移動するか、 **[設定]** 、 >  **[スケールアップ]** の順に移動します。 **[スケールアウト]** ブレードでは、インスタンスの数を制御できます。 **[スケールアップ]** では、リソース サイズを制御できます。  
 
 ![Scale settings UI][7]
 
@@ -192,7 +184,7 @@ App Service 環境を削除する必要がある場合は、単に [App Service 
 
 ![Delete an App Service Environment UI][9]  
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、 [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

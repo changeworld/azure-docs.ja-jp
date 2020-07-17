@@ -1,26 +1,18 @@
 ---
-title: App Service 環境を使用した geo 分散スケール - Azure
+title: Geo 分散スケール
 description: Traffic Manager および App Service 環境による geo 分散を使用してアプリを水平方向にスケールする方法について説明します。
-services: app-service
-documentationcenter: ''
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188324"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74688814"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service 環境を使用した geo 分散スケール
 ## <a name="overview"></a>概要
@@ -47,7 +39,7 @@ App Service 環境は、水平方向のスケールアウトに最適なプラ�
 分散アプリケーションのフットプリントを構築する前に、いくつかの情報を前もって用意しておくと作業がスムーズになります。
 
 * **アプリのカスタム ドメイン:** 顧客がアプリへのアクセスに使用するカスタム ドメイン名が必要です。  サンプル アプリでは、カスタム ドメイン名は `www.scalableasedemo.com` です。
-* **Traffic Manager ドメイン:**[Azure Traffic Manager プロファイル][AzureTrafficManagerProfile]の作成時に、ドメイン名を選択する必要があります。  この名前は、Traffic Manager が管理するドメイン エントリを登録する際に、 *trafficmanager.net* サフィックスと組み合わされます。  サンプル アプリでは、選択される名前は *scalable-ase-demo*です。  そのため、Traffic Manager で管理される完全なドメイン名は、 *scalable-ase-demo.trafficmanager.net*になります。
+* **Traffic Manager ドメイン:** [Azure Traffic Manager プロファイル][AzureTrafficManagerProfile]の作成時に、ドメイン名を選択する必要があります。  この名前は、Traffic Manager が管理するドメイン エントリを登録する際に、 *trafficmanager.net* サフィックスと組み合わされます。  サンプル アプリでは、選択される名前は *scalable-ase-demo*です。  そのため、Traffic Manager で管理される完全なドメイン名は、 *scalable-ase-demo.trafficmanager.net*になります。
 * **アプリ フットプリントのスケーリングに関する戦略:** アプリケーションのフットプリントは単一リージョン内の複数の App Service Environment に分散されるのか、  複数のリージョンなのか、  両方のアプローチの最適な組み合わせなのか。  この決定は、顧客のトラフィックが発生する場所に加えて、アプリをサポートするバックエンド インフラストラクチャの他の要素のスケーラビリティに関する期待事項に基づく必要があります。  たとえば、完全にステートレスなアプリケーションでは、各 Azure リージョンで複数の App Service Environment を組み合わせ、さらに複数の Azure リージョンにデプロイされた App Service Environment を掛け合わせることで、大規模なスケーリングを実施できます。  選択できるパブリック Azure リージョンは 15 以上あるため、顧客はスケーラビリティのきわめて高いアプリケーション フットプリントを世界規模で構築できます。  この記事のサンプル アプリでは、単一の Azure リージョン (米国中南部) に 3 つの App Service 環境が作成されています。
 * **App Service Environment の名前付け規則:** 各 App Service Environment には一意の名前が必要です。  1 つや 2 つではなく数の多い App Service 環境では、各 App Service 環境を識別しやすい命名規則があると便利です。  サンプル アプリでは、シンプルな命名規則が使用されています。  3 つの App Service Environment の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
 * **アプリの名前付け規則**:アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。  App Service 環境のあまり知られていない便利な特長の 1 つですが、同じアプリ名を複数の App Service 環境で使用できます。  App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。  たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。ただし、サンプル アプリでは、各アプリ インスタンスにも一意の名前を設定しています。  使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。

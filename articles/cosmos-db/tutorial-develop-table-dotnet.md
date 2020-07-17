@@ -1,19 +1,19 @@
 ---
-title: .NET Standard SDK を使用した Azure Cosmos DB Table API の概要
-description: Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
-author: wmengmsft
-ms.author: wmeng
+title: .NET Standard SDK を使用した Azure Cosmos DB Table API
+description: Azure Cosmos DB Table API アカウントに構造化データを格納して照会する方法について説明します
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 05/20/2019
-ms.openlocfilehash: dc29cc6d3cc2a07214fb638a10039a4c3ea2d92b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 12/03/2019
+ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953627"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222049"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 
@@ -23,7 +23,7 @@ ms.locfileid: "65953627"
 
 Azure Cosmos DB Table API または Azure Table Storage を使用すると、NoSQL の構造化データをクラウドに格納し、スキーマレスのデザインでキー/属性ストアを実現できます。 Azure Cosmos DB Table API と Table Storage にはスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に適応させることができます。 Azure Cosmos DB Table API または Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、サービスに必要なその他の種類のメタデータなど、柔軟なデータセットを格納できます。 
 
-このチュートリアルでは、Azure Cosmo DB Table API と Azure Table Storage のシナリオで [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)を使用する方を紹介したサンプルについて説明します。 Azure サービス専用の接続を使用する必要があります。 テーブルの作成、データの挿入/更新、データの照会、テーブルの削除の方法を示した C# の例を使用して、これらのシナリオを考察しています。
+このチュートリアルでは、Azure Cosmos DB Table API と Azure Table Storage のシナリオで [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)を使用する方法を紹介したサンプルについて説明します。 Azure サービス専用の接続を使用する必要があります。 テーブルの作成、データの挿入や更新、データの照会、テーブルの削除の方法を示した C# の例を使用して、これらのシナリオを考察しています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,9 +41,9 @@ Azure Cosmos DB Table API または Azure Table Storage を使用すると、NoS
 
 ## <a name="create-a-net-console-project"></a>.NET コンソール プロジェクトを作成する
 
-Visual Studio で、新しい .NET コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2019 でコンソール アプリケーションを作成する方法を説明します。 Azure クラウド サービス、Azure Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure Cosmos DB Table ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
+Visual Studio で、新しい .NET コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2019 でコンソール アプリケーションを作成する方法を説明します。 Azure クラウド サービスまたは Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure Cosmos DB Table ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
-1. **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
+1. **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 
 1. **[コンソール アプリ (.NET Core)]** を選択し、 **[次へ]** を選択します。
 
@@ -59,7 +59,7 @@ NuGet パッケージを取得するには、次の手順に従います。
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-1. `Microsoft.Azure.Cosmos.Table`、`Microsoft.Extensions.Configuration`、`Microsoft.Extensions.Configuration.Json`、`Microsoft.Extensions.Configuration.Binder` をオンラインで検索し、 **[インストール]** を選択して Microsoft Azure Cosmos DB Table ライブラリをインストールします。
+1. [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)、[`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration)、[`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)、[`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) をオンラインで検索し、 **[インストール]** を選択して Microsoft Azure Cosmos DB Table ライブラリをインストールします。
 
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 
@@ -71,7 +71,7 @@ NuGet パッケージを取得するには、次の手順に従います。
    
 1. 接続文字列を構成するには、Visual Studio から対象のプロジェクト **[CosmosTableSamples]** を右クリックします。
 
-1. **[追加]** を選択し、 **[新しい項目]** を選択します。 ファイルの種類を **[TypeScript JSON 構成ファイル]** として新しいファイル **Settings.json** を作成します。 
+1. **[追加]** 、 **[新しい項目]** を順に選択します。 ファイルの種類を **[TypeScript JSON 構成ファイル]** として新しいファイル **Settings.json** を作成します。 
 
 1. Settings.json ファイル内のコードを次のコードに置き換え、実際のプライマリ接続文字列を割り当てます。
 
@@ -106,13 +106,23 @@ NuGet パッケージを取得するには、次の手順に従います。
 
 ## <a name="parse-and-validate-the-connection-details"></a>接続の詳細を解析して検証する 
 
-1. 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、 **[Common.cs]** という名前のクラスを追加します。 このクラス内に、接続の詳細を検証してテーブルを作成するコードを記述します。
+1. 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**Common.cs** という名前のクラスを追加します。 このクラス内に、接続の詳細を検証してテーブルを作成するコードを記述します。
 
-1. 以下のように、`CreateStorageAccountFromConnectionString` というメソッドを定義します。 このメソッドは、接続文字列の詳細を解析し、"Settings.json" ファイルに入力されているアカウント名とアカウント キーの詳細が有効であることを確認するものです。 
+1. 以下のように、`CreateStorageAccountFromConnectionString` というメソッドを定義します。 このメソッドは、接続文字列の詳細を解析し、"Settings.json" ファイルに入力されているアカウント名とアカウント キーの詳細が有効であることを検証するものです。 
 
-   ```csharp
-   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+ ```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.Documents;
+
+    public class Common
     {
+        public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+        {
             CloudStorageAccount storageAccount;
             try
             {
@@ -132,6 +142,8 @@ NuGet パッケージを取得するには、次の手順に従います。
 
             return storageAccount;
         }
+    }
+}
    ```
 
 
@@ -168,6 +180,12 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 }
 ```
 
+"503 service unavailable exception" (503 サービス利用不可の例外) エラーが表示される場合は、接続モードに必要なポートがファイアウォールによってブロックされている可能性があります。 この問題を解決するには、次のコードに示すように、必要なポートを開くか、ゲートウェイ モード接続を使用します。
+
+```csharp
+tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
+```
+
 ## <a name="define-the-entity"></a>エンティティを定義する 
 
 エンティティは、[TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) から派生するカスタム クラスを使用して C# オブジェクトにマップされます。 エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。
@@ -202,39 +220,39 @@ namespace CosmosTableSamples.Model
 
 次のコード例では、エンティティ オブジェクトを作成して、それをテーブルに追加します。 エンティティの挿入とマージには、[TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラス内の InsertOrMerge メソッドが使用されます。 その操作は、[CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) メソッドを呼び出すことによって実行されます。 
 
-対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、 **[SamplesUtils.cs]** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
+対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**SamplesUtils.cs** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
 
 ```csharp
-public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
-    {
-      if (entity == null)
-    {
-       throw new ArgumentNullException("entity");
-    }
-    try
-    {
-       // Create the InsertOrReplace table operation
-       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+ {
+     if (entity == null)
+     {
+         throw new ArgumentNullException("entity");
+     }
+     try
+     {
+         // Create the InsertOrReplace table operation
+         TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
 
-       // Execute the operation.
-       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
-       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
-        
-        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-        if (result.RequestCharge.HasValue)
-          {
-            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
-          }
+         // Execute the operation.
+         TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+         CustomerEntity insertedCustomer = result.Result as CustomerEntity;
 
-        return insertedCustomer;
-        }
-        catch (StorageException e)
-        {
-          Console.WriteLine(e.Message);
-          Console.ReadLine();
-          throw;
-        }
-    }
+         // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure Cosmos DB
+         if (result.RequestCharge.HasValue)
+         {
+             Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+         }
+
+         return insertedCustomer;
+     }
+     catch (StorageException e)
+     {
+         Console.WriteLine(e.Message);
+         Console.ReadLine();
+         throw;
+     }
+ }
 ```
 
 ### <a name="get-an-entity-from-a-partition"></a>パーティションからエンティティを取得する
@@ -306,7 +324,7 @@ public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity dele
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>サンプル データに対して CRUD 操作を実行する
 
-テーブルの作成、エンティティの挿入、エンティティのマージを行うための各メソッドを定義したら、それらのメソッドをサンプル データに対して実行します。 そのためには、対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**BasicSamples.cs** という名前のクラスを追加して、そこに以下のコードを追加してください。 このコードによってテーブルが作成されてエンティティが追加されます。 プロジェクトの最後にエンティティとテーブルを削除したい場合は、次のコードの `table.DeleteIfExistsAsync()` メソッドと `SamplesUtils.DeleteEntityAsync(table, customer)` メソッドのコメントを解除してください。
+テーブルの作成、エンティティの挿入やマージを行うための各メソッドを定義したら、それらのメソッドをサンプル データに対して実行します。 そのためには、対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**BasicSamples.cs** という名前のクラスを追加して、そこに以下のコードを追加してください。 このコードによってテーブルが作成されて、そこにエンティティが追加されます。 プロジェクトの最後にエンティティとテーブルを削除したい場合は、次のコードの `table.DeleteIfExistsAsync()` および `SamplesUtils.DeleteEntityAsync(table, customer)` メソッドのコメントを解除してください。
 
 ```csharp
 using System;
@@ -379,6 +397,29 @@ namespace CosmosTableSamples
 
 ## <a name="run-the-project"></a>プロジェクトを実行する
 
+対象のプロジェクトである **[CosmosTableSamples]** を選択します。 **Program.cs** という名前のクラスを開き、プロジェクトの実行時に BasicSamples を呼び出すために、次のコードを追加します。
+
+```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Azure Cosmos Table Samples");
+            BasicSamples basicSamples = new BasicSamples();
+            basicSamples.RunSamples().Wait();
+           
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit");
+            Console.Read();
+        }
+    }
+}
+```
+
 ここでソリューションをビルドし、F5 キーを押してプロジェクトを実行します。 プロジェクトを実行すると、コマンド プロンプトに次の出力内容が表示されます。
 
 ![コマンド プロンプトからの出力](./media/tutorial-develop-table-standard/output-from-sample.png)
@@ -396,7 +437,7 @@ namespace CosmosTableSamples
 
 ![ポータルでの結果](./media/tutorial-develop-table-standard/results-in-portal.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルに進んで、Azure Cosmos DB Table API アカウントにデータを移行する方法を学びましょう。 
 

@@ -1,22 +1,22 @@
 ---
-title: コンテナーの構成
-titlesuffix: Face - Azure Cognitive Services
-description: コンテナーの構成設定。
+title: コンテナーの構成 - Face
+titleSuffix: Azure Cognitive Services
+description: Face コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 必須とオプションの両方の設定があります。
 services: cognitive-services
-author: diberry
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677784"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80878427"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -51,9 +51,9 @@ ms.locfileid: "59677784"
 
 エンドポイント URI には、忘れずに _Face_ ルーティングを追加してください。その例を次に示します。 
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](face-how-to-install-containers.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
 <!-- specific to face only -->
 
@@ -61,7 +61,7 @@ ms.locfileid: "59677784"
 
 `CloudAI` セクションの構成設定では、ご利用のコンテナーに固有のオプションが提供されます。 `CloudAI` セクションの Face コンテナーでは、次の設定とオブジェクトがサポートされます
 
-| Name | データ型 | 説明 |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
 | `Storage` | Object | Face コンテナーで使用されるストレージ シナリオ。 `Storage` オブジェクトのストレージ シナリオと関連する設定の詳細については、「[ストレージ シナリオの設定](#storage-scenario-settings)」を参照してください |
 
@@ -80,7 +80,7 @@ Face コンテナーには、格納される内容に応じて、BLOB、キャ�
 
 ストレージ シナリオと関連する構成設定は、`CloudAI` 構成セクションの下の、`Storage` オブジェクトで管理されます。 `Storage` オブジェクトでは、次の構成設定を使用できます。
 
-| Name | データ型 | 説明 |
+| 名前 | データ型 | 説明 |
 |------|-----------|-------------|
 | `StorageScenario` | String | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
 | `ConnectionStringOfAzureStorage` | String | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
@@ -122,7 +122,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](face-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| Name | データ型 | 説明 |
+|省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Face コンテナーでは、これは使用されません。|
 |省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -134,12 +134,14 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 * **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 * **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
-{_<引数名>_} はお客様独自の値に置き換えてください。
+{ _<引数名>_ } はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{BILLING_KEY} | Cognitive Services リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | リージョンと face ルーティングを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+| **{API_KEY}** | Azure `Face` の [キー] ページの `Face` リソースのエンドポイント キー。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Face` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](face-how-to-install-containers.md#gathering-required-parameters)に関するページを参照してください。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
@@ -155,8 +157,8 @@ Face コンテナーでは、トレーニングやサービスのデータを格
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>ログの例 
@@ -164,10 +166,10 @@ Face コンテナーでは、トレーニングやサービスのデータを格
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストール方法と実行方法](face-how-to-install-containers.md)を確認する。

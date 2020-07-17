@@ -1,20 +1,17 @@
 ---
-title: 並列分岐を作成または結合する - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps のワークフローに対して並列分岐を作成または結合する方法です
+title: ワークフローのアクションに対して並列分岐を作成または結合する
+description: Azure Logic Apps の独立したワークフロー アクションに対して、並列実行の分岐を作成またはマージする方法について説明します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232245"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75453430"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションに対して並列分岐を作成または結合する
 
@@ -44,7 +41,7 @@ ms.locfileid: "54232245"
 
 1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. 並列分岐を追加するステップにポインターを移動します。 表示される**プラス**記号 (**+**) を選択し、**[並列分岐の追加]** を選択します。 
+1. 並列分岐を追加するステップにポインターを移動します。 表示される**プラス**記号 ( **+** ) を選択し、 **[並列分岐の追加]** を選択します。 
 
    ![並列分岐を追加する](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -56,7 +53,7 @@ ms.locfileid: "54232245"
 
    ![目的のアクションを探して選択する](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. 各並列分岐に必要なステップを追加します。 分岐に別のアクションを追加するには、順次アクションを追加するアクションの下にポインターを移動します。 表示される**プラス**(**+**) 記号を選択し、**[アクションの追加]** を選択します。
+1. 各並列分岐に必要なステップを追加します。 分岐に別のアクションを追加するには、順次アクションを追加するアクションの下にポインターを移動します。 表示される**プラス**( **+** ) 記号を選択し、 **[アクションの追加]** を選択します。
 
    ![並列分岐に順次アクションを追加する](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -189,7 +186,7 @@ ms.locfileid: "54232245"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)

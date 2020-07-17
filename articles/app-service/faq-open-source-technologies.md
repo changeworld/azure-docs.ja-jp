@@ -1,27 +1,20 @@
 ---
-title: オープン ソース テクノロジに関する FAQ - Azure App Service | Microsoft Docs
-description: Azure App Service の Web Apps 機能のオープン ソース テクノロジに関するよく寄せられる質問への回答を掲載しています。
-services: app-service\web
-documentationcenter: ''
+title: オープンソース テクノロジに関する FAQ
+description: Azure App Service のオープン ソース テクノロジに関する FAQ への回答をご覧ください。
 author: genlin
-manager: cshepard
-editor: ''
+manager: dcscontentpm
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082944"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159968"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -33,11 +26,11 @@ ms.locfileid: "58082944"
 
 PHP ログを有効にするには、次の手順を実行します。
 
-1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
-2. 上部のメニューから、**[デバッグ コンソール]** > **[CMD]** の順に選択します。
+1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
+2. 上部のメニューから、 **[デバッグ コンソール]**  >  **[CMD]** の順に選択します。
 3. **Site** フォルダーを選択します。
 4. **wwwroot** フォルダーを選択します。
-5. **+** アイコンをクリックして、**[新しいファイル]** を選択します。
+5. **+** アイコンをクリックして、 **[新しいファイル]** を選択します。
 6. **.user.ini** というファイル名を設定します。
 7. **. user.ini** の横にある鉛筆のアイコンを選択します。
 8. ファイルで、コード `log_errors=on` を追加します。
@@ -59,11 +52,11 @@ PHP ログを有効にするには、次の手順を実行します。
 
 Node.js アプリケーションのバージョンを変更するために、次のオプションのいずれかを使用できます。
 
-* Azure ポータルで、**[アプリ設定]** を使用します。
+* Azure ポータルで、 **[アプリ設定]** を使用します。
   1. Azure Portal で、Web アプリに移動します。
-  2. **[設定]** ブレードで、**[アプリケーション設定]** を選択します。
+  2. **[設定]** ブレードで、 **[アプリケーション設定]** を選択します。
   3. **[アプリ設定]** で、キーとして WEBSITE_NODE_DEFAULT_VERSION を含め、値として希望する Node.js のバージョンを指定できます。
-  4. [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net)に移動します。
+  4. **Kudu コンソール** (`https://*yourwebsitename*.scm.azurewebsites.net`) に移動します。
   5. Node.js バージョンを確認するには、次のコマンドを入力します。  
      ```
      node -v
@@ -98,7 +91,7 @@ debug.log ファイルまたは php_errors.log ファイルにエラーが表示
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>App Service にホストされている Node.js アプリをデバッグする方法は?
 
-1.  [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)に移動します。
+1.  **Kudu コンソール** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`) に移動します。
 2.  アプリケーション ログ フォルダー (D:\home\LogFiles\Application) に移動します。
 3.  logging_errors.txt ファイルの内容を確認します。
 
@@ -145,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. app/lib フォルダーから sqljdbc*.jar ファイルを削除します。
 2. カスタム Tomcat または Azure Marketplace の Tomcat Web サーバーを使用している場合は、Tomcat lib フォルダーにこの .jar ファイルをコピーします。
-3. Azure ポータルから Java を有効にしている場合 (**[Java 1.8]** > **[Tomcat サーバー]** の順に選択)、アプリに並列のフォルダーに sqljdbc.* jar ファイルをコピーします。 次に、web.config ファイルに次のクラスパスの設定を追加します。
+3. Azure ポータルから Java を有効にしている場合 ( **[Java 1.8]**  >  **[Tomcat サーバー]** の順に選択)、アプリに並列のフォルダーに sqljdbc.* jar ファイルをコピーします。 次に、web.config ファイルに次のクラスパスの設定を追加します。
 
     ```xml
     <httpPlatform>
@@ -188,24 +181,24 @@ App Service には組み込みの電子メール機能はありません。 ア�
 
 Azure に最近移行した場合は、WordPress が古いドメイン URL にリダイレクトする可能性があります。 これは、MySQL データベースの設定が原因です。
 
-WordPress Buddy + は、データベースで直接リダイレクト URL の更新に使用できる、Azure サイトの拡張機能です。 WordPress Buddy + の使用に関する詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)に関するページを参照してください。
+WordPress Buddy + は、データベースで直接リダイレクト URL の更新に使用できる、Azure サイトの拡張機能です。 WordPress Buddy + の使用に関する詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページを参照してください。
 
 また、SQL クエリや PHPMyAdmin を使用してリダイレクト URL を手動で更新する場合、[WordPress: 間違った URL へのリダイレクト](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)に関するページを参照してください。
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>WordPress のサインイン パスワードを変更する方法を教えてください?
 
-WordPress のサインイン パスワードを忘れた場合、WordPress Buddy + を使用して更新できます。 パスワードをリセットするには、WordPress Buddy + Azure サイト拡張機能をインストールし、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)に関するページに記載されている手順を実行します。
+WordPress のサインイン パスワードを忘れた場合、WordPress Buddy + を使用して更新できます。 パスワードをリセットするには、WordPress Buddy + Azure サイト拡張機能をインストールし、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページに記載されている手順を実行します。
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>WordPress にサインインできません。 解決するにはどうすればよいですか?
 
-プラグインを最近インストールした後に WordPress からロックアウトされた場合、そのプラグインに欠陥がある可能性があります。 WordPress Buddy + は、WordPress のプラグインを無効化できる Azure のサイトの拡張機能です。 詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)に関するページを参照してください。
+プラグインを最近インストールした後に WordPress からロックアウトされた場合、そのプラグインに欠陥がある可能性があります。 WordPress Buddy + は、WordPress のプラグインを無効化できる Azure のサイトの拡張機能です。 詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページを参照してください。
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>WordPress データベースを移行する方法は?
 
 WordPress Web サイトに接続されている MySQL データベースを移行する方法は複数あります。
 
 * 開発者 : [コマンド プロンプトまたは PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) を使用
-* 開発者以外 : [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) を使用
+* 開発者以外 : [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) を使用
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>WordPress をより安全にする方法を教えてください?
 

@@ -1,25 +1,21 @@
 ---
 title: Node.js Express アプリをビルドして Azure Cloud Services にデプロイする
+titleSuffix: Azure Cloud Services
 description: Node.js で Express.js アプリケーションをビルドして、Azure Cloud Services にデプロイします
 services: cloud-services
 documentationcenter: nodejs
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 24f8e7ef-e90d-4554-9b1e-a9b31d5824e5
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: jeconnoc
-ms.openlocfilehash: b212eaffb977846d40270a5f2abc76192aee4c0d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550652"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75360754"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Express を使用して Node.js Web アプリケーションをビルドし、Azure Cloud Services にデプロイする
 
@@ -35,7 +31,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
 "expressapp" という名前の新しいクラウド サービス プロジェクトを作成するには、次の手順を実行します。
 
-1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、 **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
    
     ![Azure PowerShell アイコン](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 2. **c:\\node** ディレクトリに移動し、次のコマンドを入力して **expressapp** という名前の新しいソリューションと **WebRole1** という名前の Web ロールを作成します。
@@ -118,11 +114,14 @@ Azure PowerShell ウィンドウで、 **Publish-AzureServiceProject** コマン
 
 ![Express ページを表示している Web ブラウザー。 URL は、ページが Azure でホストされていることを示している。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-## <a name="next-steps"></a>次の手順
-詳細については、 [Node.js デベロッパー センター](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)を参照してください。
+## <a name="next-steps"></a>次のステップ
+詳細については、 [Node.js デベロッパー センター](https://docs.microsoft.com/azure/javascript/)を参照してください。
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

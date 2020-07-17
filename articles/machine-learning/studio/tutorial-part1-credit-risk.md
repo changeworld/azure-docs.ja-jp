@@ -1,7 +1,7 @@
 ---
 title: チュートリアル 1:信用リスクの予測
-titleSuffix: Azure Machine Learning Studio
-description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
+titleSuffix: ML Studio (classic) - Azure
+description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
 ms.author: sgilley
@@ -10,64 +10,65 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949793"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204258"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
 
-このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio で簡単なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズの第 1 部**です。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズの第 1 部**です。
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションには、Azure Machine Learning Studio と Machine Learning Web サービスを使用します。  
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Azure Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。  
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
 チュートリアルのこのパートでは、次のことを行います。 
  
 > [!div class="checklist"]
-> * Machine Learning Studio ワークスペースの作成
+> * Machine Learning Studio (クラシック) ワークスペースを作成する
 > * 既存のデータのアップロード
 > * 実験の作成
 
 その後、この実験を使用して[モデルをトレーニング (第 2部)](tutorial-part2-credit-risk-train.md) し、[それらをデプロイ (第 3 部)](tutorial-part3-credit-risk-deploy.md) することができます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、これまでに少なくとも 1 回は Machine Learning Studio を使用したことがあり、機械学習の概念をある程度理解していることを前提としています。 いずれにしても専門家ではないことを想定しています。
+このチュートリアルでは、これまでに少なくとも 1 回は Machine Learning Studio (クラシック) を使用したことがあり、機械学習の概念をある程度理解していることを前提としています。 いずれにしても専門家ではないことを想定しています。
 
-**Azure Machine Learning Studio** をまだ使用したことがない場合は、[Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する](create-experiment.md)クイック スタートから始めることをお勧めします。 そのクイック スタートでは、Machine Learning Studio を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。
+**Azure Machine Learning Studio (クラシック)** をまだ使用したことがない場合は、[Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する](create-experiment.md)クイック スタートから始めることをお勧めします。 そのクイック スタートでは、Machine Learning Studio (クラシック) を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。
 
 
 > [!TIP] 
-> [Azure AI Gallery](https://gallery.azure.ai) には、このチュートリアルで開発する実験の作業コピーがあります。 「 **[Tutorial - Predict credit risk (チュートリアル - 信用リスクの予測)](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** 」にアクセスし、 **[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI Gallery](https://gallery.azure.ai) には、このチュートリアルで開発する実験の作業コピーがあります。 「 **[チュートリアル - 信用リスクの予測](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** 」にアクセスし、 **[Studio で開く]** をクリックして Machine Learning Studio (クラシック) ワークスペースに実験のコピーをダウンロードしてください。
 > 
 
 
-## <a name="create-a-machine-learning-studio-workspace"></a>Machine Learning Studio ワークスペースの作成
+## <a name="create-a-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (クラシック) ワークスペースを作成する
 
-Machine Learning Studio を使用するには、Microsoft Azure Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
+Machine Learning Studio (クラシック) を使用するには、Microsoft Azure Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
 
-ワークスペースを作成するには、「[Azure Machine Learning Studio ワークスペースの作成と共有](create-workspace.md)」を参照してください。
+ワークスペースを作成するには、「[Azure Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)」を参照してください。
 
-ワークスペースが作成された後、Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) を開きます。 ワークスペースが複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
+ワークスペースが作成された後、Machine Learning Studio (クラシック) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) を開きます。 ワークスペースが複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
 
-![Studio でのワークスペースの選択](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Studio (クラシック) でのワークスペースの選択](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> 自分がワークスペースの所有者になっている場合は、自分以外のユーザーをワークスペースに招待することで、作業中の実験を共有することができます。 これは、Machine Learning Studio の **[設定]** ページから実行でき、 必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
+> 自分がワークスペースの所有者になっている場合は、自分以外のユーザーをワークスペースに招待することで、作業中の実験を共有することができます。 これは、Machine Learning Studio (クラシック) の **[設定]** ページから実行できます。 必要な情報は各ユーザーの Microsoft アカウントまたは組織アカウントだけです。
 > 
 > **[設定]** ページで **[ユーザー]** をクリックします。次に、ウィンドウの下部にある **[INVITE MORE USERS]** をクリックします。
 > 
 
-## <a name="upload"></a>既存のデータのアップロード
+## <a name="upload-existing-data"></a><a name="upload"></a>既存のデータのアップロード
 
 信用リスクの予測モデルを作成するには、トレーニングとその後のモデルのテストに使用できるデータが必要です。 このチュートリアルでは、UC Irvine Machine Learning Repository の "UCI Statlog (German Credit Data) Data Set" (UCI Statlog (ドイツの信用貸付データ) データ セット) を使用します。 詳細についてはこちらを参照してください:  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
@@ -96,7 +97,7 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 ### <a name="convert-the-dataset-format"></a>データセットの形式の変換
 
-元のデータセットは、空白で区切られた形式を使用しています。 Machine Learning Studio で使用するにはコンマ区切り値 (CSV) ファイルの方が適しているため、空白をコンマに置き換えてデータセットを変換します。  
+元のデータセットは、空白で区切られた形式を使用しています。 Machine Learning Studio (クラシック) で使用するにはコンマ区切り値 (CSV) ファイルの方が適しているため、空白をコンマに置き換えてデータセットを変換します。  
 
 このデータを変換する方法は多数存在します。 1 つは、次の Windows PowerShell コマンドを使用する方法です。   
 
@@ -108,11 +109,11 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 いずれの場合も、コンマ区切りに変換されたデータが、**german.csv** という名前のファイルに作成されます。このファイルは実験で使用できます。
 
-### <a name="upload-the-dataset-to-machine-learning-studio"></a>Machine Learning Studio にデータセットをアップロードする
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) にデータセットをアップロードする
 
-データを CSV 形式に変換したら、それを Machine Learning Studio にアップロードする必要があります。 
+データを CSV 形式に変換したら、それを Machine Learning Studio (クラシック) にアップロードする必要があります。 
 
-1. Machine Learning Studio のホーム ページ ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 
+1. Machine Learning Studio (クラシック) のホーム ページ ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 
 
 2. ウィンドウの左上隅にある ![[メニュー]](./media/tutorial-part1-credit-risk/menu.png) をクリックします。 **[Azure Machine Learning]** をクリックし、 **[Studio]** を選択してサインインします。
 
@@ -138,17 +139,17 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 これにより、データは、実験で使用できるデータセット モジュールにアップロードされます。
 
-Studio にアップロードしたデータセットは、Studio ウィンドウの左側にある **[データセット]** タブをクリックすることで管理できます。
+Studio (クラシック) にアップロードしたデータセットは、Studio (クラシック) ウィンドウの左側にある **[データセット]** タブをクリックすることで管理できます。
 
 ![データセットの管理](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-その他の種類のデータを実験にインポートする方法の詳細については、[Azure Machine Learning Studio へのトレーニング データのトレーニング データのインポート](import-data.md)に関するページを参照してください。
+その他の種類のデータの実験へのインポートの詳細については、[Azure Machine Learning Studio (クラシック) へのトレーニング データのインポート](import-data.md)に関するページを参照してください。
 
 ## <a name="create-an-experiment"></a>実験の作成
 
-このチュートリアルでの次の手順では、アップロードしたデータセットを使用する実験を Machine Learning Studio で作成します。  
+このチュートリアルでの次の手順では、アップロードしたデータセットを使用する実験を Machine Learning Studio (クラシック) で作成します。  
 
-1. Studio で、ウィンドウの下部にある **[+新規]** をクリックします。
+1. Studio (クラシック) で、ウィンドウの下部にある **[+新規]** をクリックします。
 1. **[実験]** を選択して、[空の実験] を選択します。 
 
     ![新しい実験を作成する](./media/tutorial-part1-credit-risk/create-new-experiment.png)
@@ -174,15 +175,15 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、 **[視覚化]** を選択します。  
 
-データ ファイルには列見出しがないため、ため、Studio では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
+データ ファイルには列見出しがないため、Studio (クラシック) では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
 
-列見出しを追加するには、[メタデータの編集][edit-metadata]モジュールを使用します。
+[メタデータの編集][edit-metadata]モジュールを使用して、列見出しを追加できます。
 
 [メタデータの編集][edit-metadata]モジュールを使用して、データセットに関連付けられたメタデータを変更します。 この場合は、それを使用して、列見出しによりわかりやすい名前を付けます。 
 
-[メタデータの編集][edit-metadata]を使用するには、まず変更する列 (このケースではすべての列) を指定します。次に、それらの列に対して実行するアクション (このケースでは列見出しの変更) を指定します。
+[メタデータの編集][edit-metadata]を使用するには、まず変更する列 (ここではすべての列) を指定します。次に、それらの列に対して実行するアクション (このケースでは列見出しの変更) を指定します。
 
-1. モジュール パレットの **[検索]** ボックスに「メタデータ」と入力します。 モジュールの一覧に[メタデータの編集][edit-metadata]が表示されます。
+1. モジュール パレットの **[検索]** ボックスに「メタデータ」と入力します。 モジュールの一覧に、[メタデータの編集][edit-metadata]が表示されます。
 
 1. [メタデータの編集][edit-metadata]モジュールをクリックしてキャンバスにドラッグし、先ほど追加したデータセットの下にドロップします。
 
@@ -230,7 +231,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 モデルのトレーニング用とテスト用にデータが必要です。
 そのため、実験の次の手順では、データセットを 2 つの別々のデータセットに分割します。1 つはモデルのトレーニング用、もう 1 つはテスト用です。
 
-これには、[データの分割][split]モジュールを使用します。  
+これを行うには、[データの分割][split]モジュールを使用します。  
 
 1. [データの分割][split]モジュールを見つけてキャンバスにドラッグし、[メタデータの編集][edit-metadata]モジュールに接続します。
 
@@ -249,7 +250,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 この重複は、R コードを使用して実行できます。  
 
-1. [R スクリプトの実行][execute-r-script]モジュールを見つけて、実験キャンバスにドラッグします。 
+1. [R スクリプトの実行][execute-r-script]モジュールを見つけ、実験キャンバスにドラッグします。 
 
 1. [データの分割][split]モジュールの左側の出力ポートを [R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポート ("Dataset1") に接続します。
 
@@ -265,13 +266,13 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
     ![R スクリプトの実行モジュール内の R スクリプト](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-[データの分割][split]モジュールの各出力について同様の重複操作を設定する必要があります。これによって、トレーニング データとテスト データのコスト調整が等しくなります。 これを実行する最も簡単方法は、作成したばかりの [R スクリプトの実行][execute-r-script]モジュールを複製して、[データの分割][split]モジュールのもう 1 つの出力ポートに接続することです。
+[データの分割][split]モジュールの各出力について同様の重複操作を設定する必要があります。これによって、トレーニング データとテスト データのコスト調整が等しくなります。 これを実行する最も簡単方法は、作成したばかりの [R スクリプトの実行][execute-r-script]モジュールを複製して、データの[分割モジュール][split]のもう 1 つの出力ポートに接続することです。
 
 1. [R スクリプトの実行][execute-r-script]モジュールを右クリックし、 **[コピー]** を選択します。
 
 1. 実験キャンバスを右クリックして **[貼り付け]** を選択します。
 
-1. 新しいモジュールを適切な位置にドラッグし、[データの分割][split]モジュールの右側の出力ポートを、この新しい [ R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポートに接続します。 
+1. 新しいモジュールを適切な位置にドラッグし、[データの分割][split]モジュールの右側の出力ポートを、この新しい [R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポートに接続します。 
 
 1. キャンバスの下部で、 **[実行]** をクリックします。 
 
@@ -287,16 +288,16 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 実験での R スクリプトの使用に関する詳細については、「[R を使用した実験の拡張](extend-your-experiment-with-r.md)」をご覧ください。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を完了しました。 
  
 > [!div class="checklist"]
-> * Machine Learning Studio ワークスペースの作成
+> * Machine Learning Studio (クラシック) ワークスペースを作成する
 > * ワークスペースへの既存のデータのアップロード
 > * 実験の作成
 

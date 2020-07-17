@@ -1,30 +1,21 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh code-package-log | Microsoft Docs
-description: Azure Service Fabric CLI- sfctl mesh code-package-log のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI- sfctl mesh code-package-log
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 指定したコード パッケージのログを取得するためのコマンドの一覧が含まれています。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: e7bc8491071946eaa2e322517e5d36d681a49130
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661073"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76906050"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 特定のサービス レプリカの指定されたコード パッケージのコンテナーのログを取得します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
 |command|説明|
 | --- | --- |
@@ -49,13 +40,13 @@ ms.locfileid: "58661073"
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

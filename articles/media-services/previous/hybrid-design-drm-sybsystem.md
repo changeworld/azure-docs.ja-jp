@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;juliako
-ms.openlocfilehash: 5c86a49cd9dc26f724de12ed2e5e77e645e4ab53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: willzhan
+ms.reviewer: juliako
+ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886713"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159405"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM サブシステムのハイブリッド設計 
 
@@ -96,35 +97,39 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 
 |**コンテンツ ホスティングおよび配信元**|**DRM 暗号化**|**DRM ライセンス配信**|**コンテンツ キーの構成**|**資産配信ポリシーを構成する**|**サンプル**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|あり|あり|サンプル 1|
-|AMS|AMS|サード パーティ|あり|あり|サンプル 2|
-|AMS|サード パーティ|AMS|あり|いいえ|サンプル 3|
+|AMS|AMS|AMS|はい|はい|サンプル 1|
+|AMS|AMS|サード パーティ|はい|はい|サンプル 2|
+|AMS|サード パーティ|AMS|はい|いいえ|サンプル 3|
 |AMS|サード パーティ|外部|いいえ|いいえ|サンプル 4|
-|サード パーティ|サード パーティ|AMS|あり|いいえ|    
+|サード パーティ|サード パーティ|AMS|はい|いいえ|    
 
 サンプルでは、PlayReady 保護は、DASH とスムーズ ストリーミングの両方に対して機能します。 下記のビデオ URL は、スムーズ ストリーミング URL です。 対応する DASH URL を取得するには、"(format=mpd-time-csf)" を追加するだけです。 [Azure のメディア テスト プレーヤー](https://aka.ms/amtest)を使って、ブラウザーでテストすることもできます。 どのテクノロジでも、使用するストリーミング プロトコルを構成できます。 Windows 10 の IE11 および Microsoft Edge が EME を通じて PlayReady をサポートします。 詳細については、[テスト ツールの詳細](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/)に関するページをご覧ください。
 
 ### <a name="sample-1"></a>サンプル 1
 
-* ソース (ベース) URL: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady LA_URL (DASH & smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine LA_URL (DASH): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
-* FairPlay LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
+* ソース (ベース) URL: `https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady LA_URL (DASH & smooth): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Widevine LA_URL (DASH): `https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay LA_URL (HLS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>サンプル 2
 
 * ソース (ベース) URL: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL (DASH & smooth): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* PlayReady LA_URL (DASH & smooth): `http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>サンプル 3
 
 * ソース URL: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (DASH & smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* PlayReady LA_URL (DASH & smooth): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>サンプル 4
 
 * ソース URL: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (DASH & smooth): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* PlayReady LA_URL (DASH & smooth): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="summary"></a>まとめ
 

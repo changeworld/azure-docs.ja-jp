@@ -1,15 +1,18 @@
-- name: Analysis Services のドキュメント
-  href: index.md
+- name: Azure Analysis Services のドキュメント
+  href: index.yml
 - name: 概要
   items:
-    - name: Analysis Services とは
+    - name: Azure Analysis Services とは
       href: analysis-services-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: サーバーの作成 - ポータル
       href: analysis-services-create-server.md
     - name: サーバーの作成 - PowerShell
       href: analysis-services-create-powershell.md
+    - name: サーバーの作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: サーバーのファイアウォールの構成 - ポータル
       href: analysis-services-qs-firewall.md
 - name: チュートリアル
@@ -29,15 +32,19 @@
     - name: クライアント ライブラリ
       href: analysis-services-data-providers.md
     - name: 互換性レベル
-      href: analysis-services-compat-level.md
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
     - name: オンプレミス データ ソースへの接続
       href: analysis-services-gateway.md
     - name: サーバーへの接続
       href: analysis-services-connect.md
     - name: 高可用性
       href: analysis-services-bcdr.md
+    - name: 長時間の操作
+      href: analysis-services-long-operations.md
     - name: サポートされるデータ ソース
       href: analysis-services-datasource.md
+    - name: ネットワーク接続に関する FAQ
+      href: analysis-services-network-faq.md
 - name: 操作方法
   items:
     - name: サーバー
@@ -66,7 +73,9 @@
           href: analysis-services-addservprinc-admins.md
     - name: モデル
       items:
-        - name: Visual Studio からのデプロイ (SSDT)
+        - name: テーブル モデリング
+          href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
+        - name: Visual Studio からのデプロイ
           href: analysis-services-deploy.md
         - name: REST API を使用した更新
           href: analysis-services-async-refresh.md
@@ -74,13 +83,13 @@
           href: analysis-services-refresh-logic-app.md
         - name: Azure Automation を使用した更新
           href: analysis-services-refresh-azure-automation.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: データベース ユーザーの管理
           href: analysis-services-database-users.md
         - name: サーバー管理者の管理
           href: analysis-services-server-admins.md
-    - name: 接続
+    - name: 接続する
       items:
         - name: Excel を使用した接続
           href: analysis-services-connect-excel.md
@@ -97,13 +106,13 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.analysisservices/servers
     - name: DAX
-      href: 'https://msdn.microsoft.com/library/gg413422.aspx'
+      href: 'https://docs.microsoft.com/dax/data-analysis-expressions-dax-reference'
     - name: Power Query M
-      href: 'https://msdn.microsoft.com/library/mt211003.aspx'
+      href: 'https://docs.microsoft.com/powerquery-m/power-query-m-reference'
     - name: Tabular Model Scripting Language (TMSL)
       href: 'https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference'
     - name: 表形式オブジェクト モデル (TOM)
-      href: 'https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
+      href: 'https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
     - name: リソースとオブジェクトの制限
       href: analysis-services-capacity-limits.md
 - name: リソース
@@ -112,8 +121,8 @@
       href: analysis-services-samples.md
     - name: Analysis Services チーム ブログ
       href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Azure Analysis Services フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices'
+    - name: Azure Analysis Services に関する Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Azure の状態
@@ -124,7 +133,7 @@
       href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-analysis-services'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest'

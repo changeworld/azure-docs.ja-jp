@@ -1,29 +1,26 @@
 ---
 title: Azure Firewall の脅威インテリジェンスベースのフィルター処理
-description: Azure Firewall の脅威インテリジェンスのフィルター処理について説明します。
+description: ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: c291dbe9c1eb37e68174a2353e296a376c7d0896
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730535"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74168679"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理 - パブリック プレビュー
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall の脅威インテリジェンスベースのフィルター処理
 
 ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/en-us/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
 
 ![ファイアウォールの脅威インテリジェンス](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> 脅威インテリジェンス ベースのフィルター処理は、現在パブリック プレビュー段階であり、プレビューのサービス レベル契約が付属します。 特定の機能はサポート対象ではなく、機能が制限されることがあります。  詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
-
-脅威インテリジェンスベースのフィルター処理を有効にすると、NAT ルール、ネットワーク ルール、またはアプリケーション ルールの前に、関連付けられているルールが処理されます。 プレビュー中は、信頼度の高いレコードのみが含まれます。
+脅威インテリジェンスベースのフィルター処理が有効になっている場合は、NAT ルール、ネットワーク ルール、またはアプリケーション ルールの前に、関連付けられているルールが処理されます。
 
 ルールがトリガーされるときのアラートのみを記録するかどうかと、アラートおよび拒否モードを選択できます。
 
@@ -53,7 +50,7 @@ ms.locfileid: "57730535"
 
 - **テスト受信** - DNAT ルールがファイアウォールで構成されている場合、受信トラフィックにアラートが表示されることを想定できます。 これは、特定のソースのみが DNAT ルールで許可されている場合でも該当し、それ以外の場合はトラフィックが拒否されます。 Azure Firewall では、既知のすべてのポート スキャナーでアラートが発行されるわけではありません。悪意のあるアクティビティにも参加していることが知られているスキャナーのみです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Firewall Log Analytics のサンプル](log-analytics-samples.md)を参照する
 - [Azure Firewall のデプロイおよび構成](tutorial-firewall-deploy-portal.md)方法について説明する

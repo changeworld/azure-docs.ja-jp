@@ -1,20 +1,21 @@
 ---
 title: クイック スタート:Ink Recognizer REST API および Node.js を使用したデジタル インクの認識
-description: Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
+titleSuffix: Azure Cognitive Services
+description: このクイックスタートでは、Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
-ms.date: 05/02/2019
+ms.topic: quickstart
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 651474fd538123e760022ac59efbbaf0b9b83d70
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519673"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448142"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>クイック スタート:Ink Recognizer REST API および JavaScript を使用したデジタル インクの認識
 
@@ -33,8 +34,9 @@ ms.locfileid: "65519673"
 - Web ブラウザー
 - このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json) にあります。
 
+### <a name="create-an-ink-recognizer-resource"></a>Ink Recognizer リソースを作成する
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+[!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>新しいアプリケーションを作成する
 
@@ -108,11 +110,10 @@ ms.locfileid: "65519673"
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
-        // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
-        var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
+        // Your endpoint can be found in the Azure portal. For example: "https://<your-custom-subdomain>.cognitiveservices.azure.com";
+        var SERVER_ADDRESS = process.env["INK_RECOGNITION_ENDPOINT"];
         var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
-        // Replace the subscriptionKey string value with your valid subscription key.
-        var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
+        var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
     2. `XMLHttpRequest` オブジェクトの戻り関数を作成します。 この関数では、成功した要求からの API 応答を解析し、アプリケーションでそれを表示します。 
@@ -154,19 +155,20 @@ ms.locfileid: "65519673"
         xhttp.setRequestHeader("content-type", "application/json");
         xhttp.send(JSON.stringify(sampleJson));
         };
+        ```
 
-## Run the application and view the response
+## <a name="run-the-application-and-view-the-response"></a>アプリケーションを実行し、応答を表示する
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+このアプリケーションは Web ブラウザー内で実行できます。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json) でも確認できます。
 
-## Next steps
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [REST API reference](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-To see how the Ink Recognition API works in a digital inking app, take a look at the following sample applications on GitHub:
-* [C# and Universal Windows Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C# and Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Javascript web-browser app](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Java and Android mobile app](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Swift and iOS mobile app](https://go.microsoft.com/fwlink/?linkid=2089805)
+デジタル インキング アプリで Ink Recognition API がどのように動作するかを確認するには、GitHub 上の次のサンプル アプリケーションを参照してください。
+* [C# およびユニバーサル Windows プラットフォーム (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# および Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [JavaScript Web ブラウザー アプリ](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Java および Android モバイル アプリ](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift および iOS モバイル アプリ](https://go.microsoft.com/fwlink/?linkid=2089805)

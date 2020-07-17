@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor の Syslog メッセージの収集と分析 | Microsoft Docs
 description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と作成されるレコードの詳細について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 03/22/2019
-ms.author: magoedte
-ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234315"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
@@ -54,11 +47,11 @@ Linux 用 Log Analytics エージェントは、構成で指定されている�
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure Portal での Syslog の構成
 [[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)で Syslog を構成します。 この構成は、各 Linux エージェントの構成ファイルに配信されます。
 
-新しいファシリティを追加するには、その名前を入力して、 **+** で Syslog を構成します。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
+新しい機能を追加するには、まず **[下の構成をコンピューターに適用する]** オプションを選択し、その名前を入力して、 **[+]** をクリックします。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
 
 ![Configure Syslog](media/data-sources-syslog/configure.png)
 
-既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 各 Linux エージェントで Syslog を手動で構成する場合は、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスをオフにします。
+既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 各 Linux エージェントで Syslog を手動で構成する場合は、 *[下の構成をコンピューターに適用する]* チェック ボックスをオフにします。
 
 ### <a name="configure-syslog-on-linux-agent"></a>Linux エージェントでの Syslog の構成
 [Linux クライアントに Log Analytics エージェントがインストールされている](../../azure-monitor/learn/quick-collect-linux-computer.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。 このファイルを修正して、構成を変更することができます。 クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
@@ -95,7 +88,7 @@ rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあり
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-syslog-ng の構成ファイルは、**/etc/syslog-ng/syslog-ng.conf** にあります。  既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
+syslog-ng の構成ファイルは、 **/etc/syslog-ng/syslog-ng.conf** にあります。  既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
 
     #
     # Warnings (except iptables) in one file:
@@ -215,14 +208,14 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 ## <a name="log-queries-with-syslog-records"></a>Syslog レコードのログ クエリ
 次の表は、Syslog レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:--- |:--- |
 | syslog |すべての Syslog です。 |
 | Syslog &#124; where SeverityLevel == "error" |重大度がエラーであるすべての Syslog レコードです。 |
 | Syslog &#124; summarize AggregatedValue = count() by Computer |コンピューターごとの Syslog レコードの数です。 |
 | Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ログ クエリ](../../azure-monitor/log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * [カスタム フィールド](../../azure-monitor/platform/custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 * [Linux エージェントを構成](../../azure-monitor/learn/quick-collect-linux-computer.md) して、他の種類のデータを収集します。

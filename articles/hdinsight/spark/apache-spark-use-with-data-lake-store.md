@@ -1,37 +1,36 @@
 ---
-title: Azure Data Lake Storage Gen1 で Apache Spark を使用してデータを分析する
-description: Spark ジョブを実行して、Azure Data Lake Storage Gen1 に格納されているデータを分析します
+title: HDInsight Apache Spark を使用して Azure Data Lake Storage Gen1 を分析する
+description: Apache Spark ジョブを実行して、Azure Data Lake Storage Gen1 に格納されているデータを分析する
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.openlocfilehash: 688b87fcc0ec18e0bf5924470d521c44229ae421
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/13/2019
+ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682888"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73818161"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
-このチュートリアルでは、HDInsight Spark クラスターで利用できる [Jupyter Notebook](https://jupyter.org/) を使用して、Data Lake Storage アカウントからデータを読み取るジョブを実行します。
+この記事では、HDInsight Spark クラスターで利用できる [Jupyter Notebook](https://jupyter.org/) を使用して、Data Lake Storage アカウントからデータを読み取るジョブを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Data Lake Storage Gen1 アカウント。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](../../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 [HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順に従います。
 
-    
 ## <a name="prepare-the-data"></a>データを準備する
 
 > [!NOTE]  
 > Data Lake Storage を既定のストレージとして使用する HDInsight クラスターを作成した場合は、この手順を行う必要はありません。 クラスター作成処理で、クラスター作成中に指定する Data Lake Storage アカウントにいくつかのサンプル データが追加されるためです。 スキップして、「Data Lake Storage で HDInsight Spark クラスターを使用する」のセクションに進みます。
 
-Data Lake Storage を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Storage アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](https://aka.ms/downloadadlcopy) を使用できます。 リンク先からツールをダウンロードしてインストールします。
+Data Lake Storage を追加ストレージとして使用し、Azure Storage Blob を既定のストレージとして使用する HDInsight クラスターを作成した場合は、まず、いくつかのサンプル データを Data Lake Storage アカウントにコピーする必要があります。 HDInsight クラスターに関連付けられている Azure Storage Blob のサンプル データを使用することができます。 この操作には、 [ADLCopy ツール](https://www.microsoft.com/download/details.aspx?id=50358) を使用できます。 リンク先からツールをダウンロードしてインストールします。
 
 1. コマンド プロンプトを開き、AdlCopy がインストールされているディレクトリ (通常は `%HOMEPATH%\Documents\adlcopy`) に移動します。
 
@@ -57,18 +56,18 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1 で HDInsight Spark クラスターを使用する
 
-1. [Azure portal](https://portal.azure.com/) のスタート画面で Apache Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
+1. [Azure portal](https://portal.azure.com/) のスタート画面で Apache Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]**  >  **[HDInsight クラスター]** でクラスターに移動することもできます。
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+2. Spark クラスター ブレードで、 **[クイック リンク]** をクリックし、 **[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]  
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
+3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook の作成](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook の作成")
+    ![新しい Jupyter Notebook を作成します](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成します")
 
 4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter**キーを押します。
 
@@ -120,12 +119,12 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
      他の視覚化でも結果を表示できます。 たとえば、ある出力の領域グラフは次のようになります。
 
-     ![クエリ結果の領域グラフ](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "クエリ結果の領域グラフ")
+     ![クエリ結果の領域グラフ](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "クエリ結果の領域グラフ")
 
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [スタンドアロン Scala アプリケーションを作成して、Apache Spark クラスターで実行する](apache-spark-create-standalone-application.md)
 * [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)

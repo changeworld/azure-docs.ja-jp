@@ -1,26 +1,17 @@
 ---
-title: Azure の制約付き vCPU のサイズ | Microsoft Docs
+title: 制約付き vCPU サイズ
 description: 制約付き vCPU 数に対応する VM サイズを示します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: jonbeck7
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 03/09/2018
-ms.author: jonbeck
-ms.openlocfilehash: ec2ee8fa9c374b5870cfcfd325925322c49aa0ca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mimckitt
+ms.openlocfilehash: 70e6d043b3ad033e1a43c566e5d1da49a1447c6b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718735"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81273564"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>制約付き vCPU 対応の VM サイズ
 
@@ -35,6 +26,6 @@ ms.locfileid: "38718735"
 - [GPU](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 

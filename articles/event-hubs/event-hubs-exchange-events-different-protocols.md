@@ -1,9 +1,9 @@
 ---
-title: さまざまなプロトコルを使用するアプリ間でイベントを交換する - Azure Event Hubs| Microsoft Docs
+title: Azure Event Hubs - さまざまなプロトコルを使用してイベントを交換する
 description: この記事では、さまざまなプロトコル (AMQP、Apache Kafka、および HTTPS) を使用するコンシューマーとプロデューサーが、Azure Event Hubs の使用時にイベントを交換する方法を示しています。
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: femila
 manager: ''
 ms.service: event-hubs
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 12/20/2019
+ms.author: femila
+ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453985"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372210"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>さまざまなプロトコルを使用するコンシューマーとプロデューサー間でイベントを交換する: AMQP、Kafka、HTTPS
 Azure Event Hubs は、コンシューマーとプロデューサー用に 3 つのプロトコルをサポートしています: AMQP、Kafka、HTTPS です。 これらのプロトコルのそれぞれにメッセージの独自の表示方法があるため、当然、次のような疑問が生じます。アプリケーションがあるプロトコルでイベント ハブにイベントを送信し、それを別のプロトコルで使用する場合、イベントがコンシューマーに表示されるときにイベントのさまざまな部分や値はどのように見えるのでしょうか。 この記事では、プロデューサーとコンシューマーの両方で、イベント内の値がコンシューマー側アプリケーションによって正しく解釈されるようにするためのベスト プラクティスについて説明します。
@@ -338,11 +338,11 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 }
 ```
 
-## <a name="next-steps"></a>次の手順
-この記事では、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を紹介しました。 Event Hubs と Kafka 用 Event Hubs の詳細については、次の記事を参照してください。  
+## <a name="next-steps"></a>次のステップ
+この記事では、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介しました。 Event Hubs と Kafka 用 Event Hubs の詳細については、次の記事を参照してください。  
 
 * [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
 * [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
 * [GitHub で Kafka 用 Event Hubs の他のサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
-* [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
-* [ネイティブの Kafka アプリケーション](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md)、または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する。
+* [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
+* [ネイティブの Kafka アプリケーション](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md)、または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Event Hubs にストリーム配信する方法について確認する

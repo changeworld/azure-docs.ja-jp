@@ -1,71 +1,70 @@
 ---
-title: Azure portal での Azure Database for PostgreSQL - Single Server のサーバー ログの構成とアクセス
-description: この記事では、Azure portal から Azure Database for PostgreSQL - Single Server のサーバー ログの構成方法とアクセス方法について説明します。
+title: ログを管理する - Azure portal - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure Portal for PostgreSQL - Single Server の Azure Database でサーバーログ（.logファイル）を構成してアクセスする方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067447"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74763693"
 ---
-# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Azure portal での Azure Database for PostgreSQL - Single Server ログの構成とアクセス
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure portal からの Azure Database for PostgreSQL - Single Server ログの構成とアクセス
 
 Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-logs.md)の構成、一覧表示、およびダウンロードができます。
 
 ## <a name="prerequisites"></a>前提条件
-このハウツー ガイドの手順を実行するには、以下が必要です。
-- [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)
+この記事の手順では、[Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)が必要です。
 
 ## <a name="configure-logging"></a>ログの構成
 クエリ ログとエラー ログへのアクセスを構成します。 
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. Azure Database for PostgreSQL サーバーを選択します。
 
-3. サイドバーの **[監視]** セクションの下で、**[サーバー ログ]** を選択します。 
+3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 
 
-   ![[サーバー ログ] を選択し、[... ここをクリックしてください] を選択](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   ![[サーバー ログ] オプションのスクリーンショット](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. サーバー パラメーターを表示するには、見出しの **[ログを有効にし、ログ パラメーターを構成するには、ここをクリックしてください]** を選択します。
+4. サーバー パラメーターを表示するには、 **[ログを有効にし、ログ パラメーターを構成するには、ここをクリックしてください]** を選択します。
 
 5. 調整する必要のあるパラメーターを変更します。 このセッションで行ったすべての変更が紫色で強調表示されます。
 
-   パラメーターを変更すると、**[保存]** をクリックできます。 または変更を **[破棄]** することができます。 
+   パラメーターを変更した後、 **[保存]** を選択します。 または、変更を破棄することができます。 
 
-   ![変更を保存または破棄するパラメーターの長いリスト](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   ![サーバー パラメーターのオプションのスクリーンショット](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. ログのリストに戻るには、**[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
+**[サーバー パラメーター]** ページを閉じると、ログの一覧に戻ることができます。
 
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
-ログ記録が開始されると、使用可能なログのリストを表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードすることができます。 
+ログ記録が開始された後、使用可能なログの一覧を表示したり、個々のログ ファイルをダウンロードしたりすることができます。 
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 
 2. Azure Database for PostgreSQL サーバーを選択します。
 
-3. サイドバーの **[監視]** セクションの下で、**[サーバー ログ]** を選択します。 ページには、次のようにログ ファイルのリストが表示されます。
+3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 ページに、ログ ファイルの一覧が表示されます。
 
-   ![サーバー ログ リスト](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   ![ログの一覧が強調して示されている [サーバーログ] ページのスクリーンショット](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > ログの名前付け規則は、**postgresql-yyyy-mm-dd_hh0000.log** です。 ファイル名に使用される日時は、ログが発行された時間です。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。
+   > ログの名前付け規則は、**postgresql-yyyy-mm-dd_hh0000.log** です。 ファイル名に使用されている日時は、ログが発行された日時です。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。
 
-4. 必要に応じて、**検索ボックス**を使用して、日付/時刻に基づいて特定のログをすばやく絞り込みます。 検索はログの名前に対して行われます。
+4. 必要に応じて、検索ボックスを使用して、日付と時刻に基づいて特定のログをすばやく絞り込みます。 検索はログの名前に対して行われます。
 
-   ![ログ名の検索例](./media/howto-configure-server-logs-in-portal/5-search.png)
+   ![検索ボックスと結果が強調表示されている [サーバーログ] ページのスクリーンショット](./media/howto-configure-server-logs-in-portal/5-search.png)
 
-5. 図に示されているように、表の行内の各ログ ファイルの横にある**ダウンロード** ボタン (下向き矢印のアイコン) を使用して、個々のログ ファイルをダウンロードします。
+5. 個々のログ ファイルをダウンロードするには、表の行で各ログ ファイルの横にある下向き矢印アイコンを選択します。
 
-   ![ダウンロード アイコンをクリック](./media/howto-configure-server-logs-in-portal/6-download.png)
+   ![下矢印アイコンが強調して示されている [サーバーログ] ページのスクリーンショット](./media/howto-configure-server-logs-in-portal/6-download.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [CLI のアクセス サーバー ログ](howto-configure-server-logs-using-cli.md)に関するページを参照して、プログラムでログをダウンロードする方法について学習します。
-- Azure DB for PostgreSQL の[サーバー ログ](concepts-server-logs.md)の詳細について学習します。 
+- Azure Database for PostgreSQL の[サーバー ログ](concepts-server-logs.md)の詳細について学習します。 
 - パラメーターの定義と PostgreSQL のログ記録の詳細については、「[Error Reporting and Logging](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)」(エラー レポートとログ記録) の PostgreSQL のドキュメントを参照してください。
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins でマルチテナント アプリケーションを有効にする | Microsoft Docs
+title: マルチテナント アプリケーションを有効にする - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins のマルチテナント Azure Active Directory アプリケーションを構成する方法。
-author: mavoge
+ms.author: alinast
+author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/03/2019
-ms.author: mavoge
-ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.date: 01/17/2020
+ms.openlocfilehash: 6e1321e01d8d12974a2704f4478b02a26c14142f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119970"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76264935"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする
 
@@ -54,23 +54,19 @@ Azure Digital Twins でソリューションを構築する開発者は、単一
 
 - **CUSTOMER** の Azure Active Directory テナント管理者は、[Azure portal](https://portal.azure.com) で以下の手順を実行します。
 
-  1. **[サブスクリプション]** を開きます。
+  1. 上部の Azure の検索フィールドで **[サブスクリプション]** を検索します。 **[サブスクリプション]** を選択します。
   1. **DEVELOPER** のアプリケーションで使用する Azure Active Directory テナントがあるサブスクリプションを選択します。
 
-     ![Azure Active Directory のサブスクリプション][1]
+     [![Azure Active Directory のサブスクリプション](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. **[リソース プロバイダー]** を選択します。
   1. **Microsoft.IoTSpaces** を検索します。
   1. **[登録]** を選択します。
 
-     ![Azure Active Directory リソース プロバイダー][2]
+     [![Azure Active Directory リソース プロバイダー](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins でユーザー定義関数を使用する方法の詳細については、[Azure Digital Twins のユーザー定義関数の作成方法](./how-to-user-defined-functions.md)に関するページを参照してください。
 
 - ロールベースのアクセス制御を使用して、ロールの割り当てによってアプリケーションのセキュリティ保護を強化する方法については、[Azure Digital Twins のロールベースのアクセス制御の作成および管理方法](./security-create-manage-role-assignments.md)に関するページを参照してください。
-
-<!-- Images -->
-[1]: media/multitenant/ad-subscriptions.png
-[2]: media/multitenant/ad-resource-providers.png

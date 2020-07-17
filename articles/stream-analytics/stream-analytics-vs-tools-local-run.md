@@ -1,24 +1,22 @@
 ---
 title: Visual Studio で Azure Stream Analytics クエリをローカルでテストする
 description: この記事では、Visual Studio の Azure Stream Analytics ツールを使ってクエリをローカルでテストする方法について説明します。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: cc4372a8a8a8f39bf4f77f637b459c5281b8852d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299527"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76834911"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Visual Studio で Stream Analytics クエリをローカルでテストする
 
-Visual Studio の Azure Stream Analytics ツールを使用して、Stream Analytics ジョブをサンプル データを使ってローカルでテストすることができます。
+Visual Studio の Azure Stream Analytics ツールを使用して、Stream Analytics ジョブをサンプル データまたは[ライブ データ](stream-analytics-live-data-local-testing.md)を使ってローカルでテストすることができます。 
 
 この[クイック スタート](stream-analytics-quick-create-vs.md)を使用して、Visual Studio を使用して Stream Analytics ジョブを作成する方法を学習します。
 
@@ -34,7 +32,7 @@ Azure Stream Analytics プロジェクトで **[Script.asaql]** をダブルク�
    
 ![ローカル入力の追加](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-ポップアップ ウィンドウで、ローカル パスからサンプル データを選択し、**[保存]** を選択します。
+ポップアップ ウィンドウで、ローカル パスからサンプル データを選択し、 **[保存]** を選択します。
    
 ![ローカル入力の追加](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
@@ -42,7 +40,7 @@ Azure Stream Analytics プロジェクトで **[Script.asaql]** をダブルク�
    
 ![ローカル入力フォルダー ファイル リスト](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-クエリ エディターで、**[ローカルで実行]** をクリックします。 または F5 キーを押します。
+クエリ エディターで、 **[ローカルで実行]** をクリックします。 または F5 キーを押します。
    
 ![[ローカルで実行]](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
@@ -60,11 +58,11 @@ Azure Stream Analytics プロジェクトで **[Script.asaql]** をダブルク�
    
 
 ### <a name="sample-input"></a>サンプル入力
-入力ソースからローカル ファイルへの入力データのサンプルを収集することもできます。 入力構成ファイルを右クリックし、**[サンプル データ]** を選択します。 
+入力ソースからローカル ファイルへの入力データのサンプルを収集することもできます。 入力構成ファイルを右クリックし、 **[サンプル データ]** を選択します。 
 
 ![サンプル データ](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-Event Hubs または IoT Hub からのデータ ストリーミングのみをサンプリングできます。 他の入力ソースはサポートされていません。 ポップアップ ダイアログ ボックスで、サンプル データを保存するローカル パスを入力し、**[サンプル]** を選択します。
+Event Hubs または IoT Hub からのデータ ストリーミングのみをサンプリングできます。 他の入力ソースはサポートされていません。 ポップアップ ダイアログ ボックスで、サンプル データを保存するローカル パスを入力し、 **[サンプル]** を選択します。
 
 ![サンプル データ構成](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
@@ -72,9 +70,10 @@ Event Hubs または IoT Hub からのデータ ストリーミングのみを�
 
 ![サンプル データ出力](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)
 * [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
+* [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)
+* [Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)
 * [チュートリアル: Azure DevOps を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics ツールで継続的に統合および開発する](stream-analytics-tools-for-visual-studio-cicd.md)

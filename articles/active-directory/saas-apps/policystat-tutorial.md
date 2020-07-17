@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と PolicyStat の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と PolicyStat の統合 | Microsoft Docs'
 description: Azure Active Directory と PolicyStat の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 98ab9904f8afc5c74d9f043b0964bc56b49670cc
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904556"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68943439"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
+# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル: Azure Active Directory と PolicyStat の統合
 
 このチュートリアルでは、PolicyStat と Azure Active Directory (Azure AD) を統合する方法について説明します。
 PolicyStat と Azure AD の統合には、次の利点があります。
@@ -55,11 +55,11 @@ Azure AD への PolicyStat の統合を構成するには、ギャラリーか�
 
 **ギャラリーから PolicyStat を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への PolicyStat の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**PolicyStat**」と入力し、結果ウィンドウで **PolicyStat** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**PolicyStat**」と入力し、結果ウィンドウで **PolicyStat** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の PolicyStat](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ PolicyStat で Azure AD のシングル サインオンを構成してテスト�
 
 PolicyStat で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **PolicyStat** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **PolicyStat** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -114,11 +114,11 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PolicyStat クライアント サポート チーム](http://www.policystat.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-5. PolicyStat アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+5. PolicyStat アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -144,7 +144,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
     
     f. **[パラメーター 1]** の一覧から、その行に対して表示される値を入力します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[PolicyStat の設定]** セクションで、要件どおりの適切な URL をコピーします。
 
@@ -162,15 +162,15 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 2. **[Admin]** タブをクリックし、左側のナビゲーション ウィンドウの **[Single Sign-On Configuration]** をクリックします。
    
-    ![管理者メニュー](./media/policystat-tutorial/ic808633.png "管理者メニュー")
+    ![[Administrator Menu]\(管理者メニュー\)](./media/policystat-tutorial/ic808633.png "管理者メニュー")
 
-3. **[Setup]** セクションで、**[Enable Single Sign-on Integration]** を選択します。
+3. **[Setup]** セクションで、 **[Enable Single Sign-on Integration]** を選択します。
    
-    ![シングル サインオンの構成](./media/policystat-tutorial/ic808634.png "シングル サインオンの構成")
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808634.png "[Single Sign-On Configuration]")
 
-4. **[Configure Attributes]** をクリックし、**[Configure Attributes]** セクションで次の手順に従います。
+4. **[Configure Attributes]** をクリックし、 **[Configure Attributes]** セクションで次の手順に従います。
    
-    ![シングル サインオンの構成](./media/policystat-tutorial/ic808635.png "シングル サインオンの構成")
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808635.png "[Single Sign-On Configuration]")
    
     a. **[Username Attribute]** ボックスに、「**uid**」と入力します。
 
@@ -182,11 +182,11 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
     e. **[変更を保存]** をクリックします。
 
-5. **[Your IDP Metadata]** をクリックし、**[Your IDP Metadata]** セクションで次の手順に従います。
+5. **[Your IDP Metadata]** をクリックし、 **[Your IDP Metadata]** セクションで次の手順に従います。
    
-    ![シングル サインオンの構成](./media/policystat-tutorial/ic808636.png "シングル サインオンの構成")
+    ![[Single Sign-On Configuration]\(シングル サインオン構成\)](./media/policystat-tutorial/ic808636.png "[Single Sign-On Configuration]")
    
-    a. ダウンロードしたメタデータ ファイルの内容をコピーし、**[Your Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに貼り付けます。
+    a. ダウンロードしたメタデータ ファイルの内容をコピーし、 **[Your Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** テキスト ボックスに貼り付けます。
 
     b. **[変更を保存]** をクリックします。
 
@@ -194,7 +194,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -218,7 +218,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に PolicyStat へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[PolicyStat]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[PolicyStat]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -236,9 +236,9 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-policystat-test-user"></a>PolicyStat テスト ユーザーの作成
 

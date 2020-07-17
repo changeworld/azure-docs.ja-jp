@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Analytics の U-SQL ユーザー定義演算子 (UDO) の開発
+title: U-SQL ユーザー定義演算子の開発 - Azure Data Lake Analytics
 description: Azure Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496148"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71316539"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
 このアーティクルでは、U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。
@@ -22,8 +22,8 @@ ms.locfileid: "59496148"
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>U-SQL でのユーザー定義演算子の定義と使用
 **U-SQL ジョブを作成して送信するには**
 
-1. Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]、[ U-SQL プロジェクト]** の順に選択します。
-2. Click **OK**. Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
+1. Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]、[ U-SQL プロジェクト]** の順に選択します。
+2. **[OK]** をクリックします。 Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
 3. **ソリューション エクスプローラー**で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
 4. 以下のコードをファイルに貼り付けます。
 
@@ -112,17 +112,17 @@ ms.locfileid: "59496148"
             TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
 7. Data Lake Analytics アカウント、データベース、スキーマを指定します。
-8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
-9. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
+8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[スクリプトのビルド]** をクリックします。
+9. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[スクリプトの送信]** をクリックします。
 10. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
 11. **[送信]** をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
-12. 最新のジョブの状態を表示して、画面を更新するには、**[更新]** ボタンをクリックします。
+12. 最新のジョブの状態を表示して、画面を更新するには、 **[更新]** ボタンをクリックします。
 
 **出力を表示するには**
 
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開し、既定のストレージを右クリックしてから **[エクスプローラー]** をクリックします。
+1. **サーバー エクスプローラー**で、 **[Azure]** 、 **[Data Lake Analytics]** 、Data Lake Analytics アカウント、 **[ストレージ アカウント]** の順に展開し、既定のストレージを右クリックしてから **[エクスプローラー]** をクリックします。
 2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv**をダブルクリックします。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [ユーザー コードによる U-SQL 式の拡張](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)

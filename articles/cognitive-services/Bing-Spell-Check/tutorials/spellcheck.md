@@ -1,23 +1,23 @@
 ---
-title: チュートリアル:Bing Spell Check API を使用してスペル チェックの結果を取得する
-titlesuffix: Azure Cognitive Services
-description: Bing Spell Check の使用方法を示します。
+title: 'チュートリアル: Bing Spell Check API を使用してスペル チェックの結果を取得する'
+titleSuffix: Azure Cognitive Services
+description: Bing Spell Check API にクエリを送信して結果を表示する Web ページを作成するには、このチュートリアルを使用します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 02/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 0a7b8637ae3ca7342a04f6bf3f8a808539d980eb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886164"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "78943106"
 ---
-# <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル:Web ページのスペル チェック クライアントを構築する
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル: Web ページのスペル チェック クライアントを構築する
 
 このチュートリアルでは、ユーザーが Bing Spell Check API にクエリを実行できる Web ページを作成します。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html) で入手できます。
 
@@ -29,7 +29,7 @@ ms.locfileid: "56886164"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 お持ちでない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)してください。
+このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 所有していない場合は、Azure portal で [Bing Spell Check リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)を使用することもできます。
 
 ## <a name="create-a-new-web-page"></a>新しい Web ページを作成する
 
@@ -66,7 +66,7 @@ HTML ヘッダー情報を追加し、スクリプトのセクションを次の
 
 ## <a name="getsubscriptionkey-function"></a>getSubscriptionKey 関数
 
-GetSubscriptionKey 関数は、Bing Spell Check API キーを返します。 ローカル ストレージ (つまり cookie) から取得するか、必要な場合はユーザーに入力を求めます。
+GetSubscriptionKey 関数は、Bing Spell Check API キーを返します。 ローカル ストレージ (つまり Cookie) から取得するか、必要な場合はユーザーに入力を求めます。
 
 GetSubscriptionKey 関数を開始し、Cookie 名を次のように宣言します。
 
@@ -76,7 +76,7 @@ getSubscriptionKey = function() {
     var COOKIE = "bing-spell-check-api-key";   // name used to store API key in key/value storage
 ```
 
-findCookie ヘルパー関数は、指定された cookie の値を返します。cookie が見つからない場合は、空の文字列を返します。
+findCookie ヘルパー関数は、指定された Cookie の値を返します。Cookie が見つからない場合は、空の文字列を返します。
 
 ```html
     function findCookie(name) {
@@ -106,7 +106,7 @@ GetSubscriptionKeyCookie ヘルパー関数は、Bing Spell Check API キーの�
     }
 ```
 
-GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie を参照することによって、Bing Spell Check API キーの取得を試みます。 cookie が見つからない場合は、ユーザーにキーの値を要求します。 その後、そのキーの値を返します。
+GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie を参照することによって、Bing Spell Check API キーの取得を試みます。 Cookie が見つからない場合は、ユーザーにキーの値を要求します。 その後、そのキーの値を返します。
 
 ```html
     function getSubscriptionKeyLocalStorage() {
@@ -118,7 +118,7 @@ GetSubscriptionKeyLocalStorage ヘルパー関数は、まず適切な cookie �
     }
 ```
 
-getSubscriptionKey ヘルパー関数は、**invalidate**という 1 つのパラメーターを使用します。 **invalidate** が **true** の場合、getSubscriptionKey は、Bing Spell Check API キーが含まれている cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は、Bing Spell Check API キーの値を返します。
+getSubscriptionKey ヘルパー関数は、**invalidate** という 1 つのパラメーターを受け取ります。 **invalidate** が **true** の場合、getSubscriptionKey は、Bing Spell Check API キーが含まれている cookie を削除します。 **invalidate** が **false** の場合、getSubscriptionKey は、Bing Spell Check API キーの値を返します。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -319,7 +319,7 @@ Bing ロゴを表示します。
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [使用と表示の要件](../UseAndDisplayRequirements.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c0c1b9c1e9afc84e9702f6c1897d372a017be868
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629888"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403425"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート:REST API と Java を使用して画像内の顔を検出する
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - 任意の Java IDE。
 
 ## <a name="create-the-java-project"></a>Java プロジェクトを作成する
@@ -65,7 +65,9 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>必須フィールドを追加する
 
-**Main** クラスを次のコードに置き換えます。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 また、`imageWithFaces` 値は、別の画像ファイルのパスに設定することもできます。
+**Main** クラスを次のコードに置き換えます。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なエンドポイント文字列を含むように変更する必要があります。 また、`imageWithFaces` 値は、別の画像ファイルのパスに設定することもできます。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 `faceAttributes` フィールドは、簡単に言えば、特定の種類の属性を列挙したものです。 検出された顔について、どの情報を取得するかを指定します。
 
@@ -74,15 +76,8 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // NOTE: You must use the same region in your REST call as you used to
-    // obtain your subscription keys. For example, if you obtained your
-    // subscription keys from westus, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
     private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+        "https://<My Endpoint String>.com/face/v1.0/detect";
 
     private static final String imageWithFaces =
         "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
@@ -157,9 +152,9 @@ public class Main {
 }
 ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
-コードをコンパイルして実行します。 実行に成功した場合、応答として顔データが、読みやすい JSON 形式でコンソール ウィンドウに表示されます。 例: 
+コードをコンパイルして実行します。 実行に成功した場合、応答として顔データが、読みやすい JSON 形式でコンソール ウィンドウに表示されます。 次に例を示します。
 
 ```json
 [{
@@ -251,9 +246,9 @@ public class Main {
 }]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、REST 呼び出しと Azure Face API を使って画像から顔を検出し、その属性を返す単純な Java コンソール アプリケーションを作成しました。 この後は、この機能を Android アプリケーションで応用する方法について見てみましょう。
+このクイックスタートでは、Azure Face API への REST 呼び出しを使って画像内の顔を検出し、その属性を返す単純な Java コンソール アプリケーションを作成しました。 この後は、この機能を Android アプリケーションで応用する方法について見てみましょう。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:顔を検出してフレームに収める Android アプリの作成](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

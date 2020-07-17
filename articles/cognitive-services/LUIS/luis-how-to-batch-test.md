@@ -1,6 +1,6 @@
 ---
-title: バッチ テスト
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: バッチ テストの実行方法 - LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) バッチ テスト セットを使用して、不適切な意図とエンティティを含む発話を見つけます。
 services: cognitive-services
 author: diberry
@@ -8,33 +8,35 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/29/2019
+ms.topic: conceptual
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521218"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73904351"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
  バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 バッチ テストに使用されるデータ セットには、予測ランタイム エンドポイントから受信した意図または発話内の発話の例が含まれていてはいけません。 
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 <a name="batch-testing"></a>
 
 ## <a name="import-a-dataset-file-for-batch-testing"></a>バッチ テスト用のデータセット ファイルのインポート
 
-1. 上部のバーで **[テスト]** を選択し、**[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
+1. 上部のバーで **[テスト]** を選択し、 **[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
 
     ![バッチ テストのリンク](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象の *1,000 個以下の*発話を含む、正しい [JSON 形式](luis-concept-batch-test.md#batch-file-format)を持つ JSON ファイルを見つけます。
+2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象の [1,000 個以下の](luis-concept-batch-test.md#batch-file-format)発話を含む、正しい *JSON 形式*を持つ JSON ファイルを見つけます。
 
     インポート エラーは、ブラウザーの上部にある赤い通知バーで報告されます。 インポートでエラーが発生した場合、データセットは作成されません。 詳細については、[一般的なエラー](luis-concept-batch-test.md#common-errors-importing-a-batch)に関するトピックをご覧ください。
 
-3. **[データセット名]** フィールドに、データセット ファイルの名前を入力します。 データセット ファイルには、"*ラベル付きの意図*" および "*エンティティ*" を含む**発話の配列**が含まれています。 [バッチ ファイルの例](luis-concept-batch-test.md#batch-file-format)で構文を確認します。 
+3. **[データセット名]** フィールドに、データセット ファイルの名前を入力します。 データセット ファイルには、"**ラベル付きの意図**" および "*エンティティ*" を含む*発話の配列*が含まれています。 [バッチ ファイルの例](luis-concept-batch-test.md#batch-file-format)で構文を確認します。 
 
 4. **[完了]** を選択します。 データセット ファイルが追加されます。
 
@@ -52,7 +54,7 @@ ms.locfileid: "59521218"
 
 ダウンロード可能なデータセットは、バッチ テスト用にアップロードされたファイルと同じです。
 
-|状態|意味|
+|State|意味|
 |--|--|
 |![テストの成功を示す緑色の丸いアイコン](./media/luis-how-to-batch-test/batch-test-result-green.png)|すべての発話が成功しました。|
 |![テストの失敗を示す赤い x アイコン](./media/luis-how-to-batch-test/batch-test-result-red.png)|1 つ以上の発話の意図が予測と一致しませんでした。|
@@ -62,7 +64,7 @@ ms.locfileid: "59521218"
 
 ## <a name="view-batch-test-results"></a>バッチ テストの結果の表示 
 
-バッチ テストの結果を確認するには、**[See results]\(結果の表示\)** を選択します。
+バッチ テストの結果を確認するには、 **[See results]\(結果の表示\)** を選択します。
 
 ![バッチ テストの結果](./media/luis-how-to-batch-test/run-test-results.png)
 
@@ -98,7 +100,7 @@ ms.locfileid: "59521218"
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリのパフォーマンスを向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 

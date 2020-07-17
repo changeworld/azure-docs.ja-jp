@@ -1,20 +1,19 @@
 ---
-title: Azure Data Lake Storage アカウントで複数の HDInsight クラスターを使用する - Azure
+title: 複数の HDInsight クラスターと 1 つの Azure Data Lake Storage アカウント
 description: 1 つの Data Lake Storage アカウントで複数の HDInsight クラスターを使用する方法を学習する
-keywords: hdinsight ストレージ,hdfs,構造化データ,非構造化データ, Data Lake Store
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: b580890b1663aa6ce742443e927e4d760585d4ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700284"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75495750"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage アカウントで複数の HDInsight クラスターを使用する
 
@@ -23,16 +22,15 @@ Data Lake Storage は、無制限のストレージをサポートしている�
 
 この記事では、複数の**アクティブな** HDInsight クラスターにわたって使用できる 1 つの、および共有された Data Lake Storage アカウントを設定するための Data Lake Storage 管理者への推奨事項を示します。 これらの推奨事項は、共有された Data Lake Storage アカウント上の複数のセキュリティ保護された、およびセキュリティ保護されていない Apache Hadoop クラスターのホスティングに適用されます。
 
-
 ## <a name="data-lake-storage-file-and-folder-level-acls"></a>Data Lake Storage のファイルおよびフォルダー レベルの ACL
 
 この記事の残りの部分では、Azure Data Lake Storage でのファイルおよびフォルダー レベルの ACL の十分な知識があることを前提にしています。これについては、「[Azure Data Lake Storage でのアクセス制御](../data-lake-store/data-lake-store-access-control.md)」で詳細に説明されています。
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>複数の HDInsight クラスターのための Data Lake Storage のセットアップ
-Data Lake Storage アカウントで複数の HDInsight クラスターを使用するための推奨事項を説明するために、2 つのレベルのフォルダー階層を取り上げてみましょう。 **/clusters/finance** というフォルダー構造を持つ Data Lake Storage アカウントがあるとします。 この構造では、財務組織に必要なすべてのクラスターが保存先として /clusters/finance を使用できます。 将来、別の組織 (たとえば、マーケティング) が同じ Data Lake Storage アカウントを使用して HDInsight クラスターを作成しようとする場合は、/clusters/marketing を作成できます。 今のところは、**/clusters/finance** だけを使用しましょう。
 
-このフォルダー構造を HDInsight クラスターが効率的に使用できるようにするには、次の表に示すように、Data Lake Storage 管理者が適切なアクセス許可を割り当てる必要があります。 表に示されているアクセス許可は既定の ACL ではなく、アクセス ACL に対応します。 
+Data Lake Storage アカウントで複数の HDInsight クラスターを使用するための推奨事項を説明するために、2 つのレベルのフォルダー階層を取り上げてみましょう。 **/clusters/finance** というフォルダー構造を持つ Data Lake Storage アカウントがあるとします。 この構造では、財務組織に必要なすべてのクラスターが保存先として /clusters/finance を使用できます。 将来、別の組織 (たとえば、マーケティング) が同じ Data Lake Storage アカウントを使用して HDInsight クラスターを作成しようとする場合は、/clusters/marketing を作成できます。 今のところは、 **/clusters/finance** だけを使用しましょう。
 
+このフォルダー構造を HDInsight クラスターが効率的に使用できるようにするには、次の表に示すように、Data Lake Storage 管理者が適切なアクセス許可を割り当てる必要があります。 表に示されているアクセス許可は既定の ACL ではなく、アクセス ACL に対応します。
 
 |Folder  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
 |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -50,16 +48,14 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 いくつかの考慮すべき重要な点。
 
-- クラスターに対してストレージ アカウントを使用する**前に**、2 つのレベルのフォルダー構造 (**/clusters/finance/**) が Data Lake Storage 管理者によって適切なアクセス許可で作成およびプロビジョニングされている必要があります。 この構造は、クラスターの作成中に自動的に作成されるわけではありません。
-- 上の例では、**/clusters/finance** の所有グループを **FINGRP** として設定し、FINGRP にルートから始まるフォルダー階層全体への **r-x** アクセス権を許可することを推奨しています。 これにより、FINGRP のメンバーはルートから始まるフォルダー構造内を移動できることが保証されます。
+- クラスターに対してストレージ アカウントを使用する**前に**、2 つのレベルのフォルダー構造 ( **/clusters/finance/** ) が Data Lake Storage 管理者によって適切なアクセス許可で作成およびプロビジョニングされている必要があります。 この構造は、クラスターの作成中に自動的に作成されるわけではありません。
+- 上の例では、 **/clusters/finance** の所有グループを **FINGRP** として設定し、FINGRP にルートから始まるフォルダー階層全体への **r-x** アクセス権を許可することを推奨しています。 これにより、FINGRP のメンバーはルートから始まるフォルダー構造内を移動できることが保証されます。
 - 別の AAD サービス プリンシパルが **/clusters/finance** の下にクラスターを作成できる場合は、スティッキー ビット (**finance** フォルダーに設定されている場合) により、あるサービス プリンシパルによって作成されたフォルダーを他のサービス プリンシパルは削除できないことが保証されます。
 - フォルダー構造とアクセス許可が適切に設定されていると、HDInsight クラスターの作成プロセスによってクラスター固有の保存場所が **/clusters/finance/** の下に作成されます。 たとえば、fincluster01 という名前を持つクラスターのストレージは **/clusters/finance/fincluster01** になります。 次の表に、HDInsight クラスターによって作成されたフォルダーの所有権とアクセス許可を示します。
 
     |Folder  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |サービス プリンシパル |FINGRP  |- |-  |-   |-  | 
-   
-
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |サービス プリンシパル |FINGRP  |- |-  |-   |-  |
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>ジョブ入力および出力データの推奨事項
 
@@ -87,10 +83,11 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 以前にリンクされた YARN JIRA に示されているように、パブリック リソースのローカライズ中に、ローカライザーはリモート ファイル システムに対するアクセス許可をチェックすることによって、要求されたすべてのリソースが実際にパブリックであることを検証します。 その条件に適合しない LocalResource はすべて、ローカライズに対して拒否されます。 アクセス許可のチェックには、"その他" のファイルへの読み取りアクセス権が含まれます。 Azure Data Lake はルート フォルダー レベルにある "その他" へのすべてのアクセスを拒否するため、Azure Data Lake 上に HDInsight クラスターをホストしている場合、そのままではこのシナリオは機能しません。
 
-#### <a name="workaround"></a>対処法
-階層を通して (たとえば、上の表に示すように **/**、**/clusters**、および **/clusters/finance** にある) **その他**に対して読み取り/実行のアクセス許可を設定します。
+#### <a name="workaround"></a>回避策
+
+階層を通して (たとえば、上の表に示すように **/** 、 **/clusters**、および **/clusters/finance** にある) **その他**に対して読み取り/実行のアクセス許可を設定します。
 
 ## <a name="see-also"></a>関連項目
 
-* [クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](hdinsight-hadoop-use-data-lake-storage-gen2.md)

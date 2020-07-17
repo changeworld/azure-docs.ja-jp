@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute Global Reach を構成する: Azure CLI | Microsoft Docs'
+title: 'Azure ExpressRoute: ExpressRoute Global Reach を構成する: CLI'
 description: この記事では、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a39cf4e09a70ca2b1225d699c84abf0e7f1d2eab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476408"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する
 
@@ -48,13 +47,13 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>構成のために ExpressRoute 回線を特定する
 
-任意の 2 つの ExpressRoute 回線間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 サブスクリプションで両方の回線を所有している場合は、この記事の後半で説明されているように、どちらかの回線を選択して構成を実行できます。 2 つの回線が異なる Azure サブスクリプションにある場合、一方の Azure サブスクリプションで構成コマンドを実行するときに、もう一方の Azure サブスクリプションからの承認が必要であり、承認キーを渡す必要があります。
+任意の 2 つの ExpressRoute サーキットが、サポートされている国/地域内にあり、異なるピアリング場所で作成されていれば、それらの間で ExpressRoute Global Reach を有効にできます。 サブスクリプションで両方の回線を所有している場合は、この記事の後半で説明されているように、どちらかの回線を選択して構成を実行できます。 2 つの回線が異なる Azure サブスクリプションにある場合、一方の Azure サブスクリプションで構成コマンドを実行するときに、もう一方の Azure サブスクリプションからの承認が必要であり、承認キーを渡す必要があります。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>オンプレミス ネットワーク間の接続を有効にする
 
 接続を有効にするためにコマンドを実行する場合、パラメーターの値に次の要件があることに注意してください。
 
-* *peer-circuit* は、完全なリソース ID にする必要があります。 例: 
+* *peer-circuit* は、完全なリソース ID にする必要があります。 次に例を示します。
 
   > /subscriptions/{自分のサブスクリプション ID}/resourceGroups/{自分のリソース グループ}/providers/Microsoft.Network/expressRouteCircuits/{自分の回線名}
 
@@ -68,7 +67,7 @@ az network express-route peering connection create -g <ResourceGroupName> --circ
 
 CLI 出力は次のようになります。
 
-```azurecli
+```output
 {
   "addressPrefix": "<__.__.__.__/29>",
   "authorizationKey": null,
@@ -104,7 +103,7 @@ CLI 出力は次のようになります。
 
    CLI 出力は次のようになります。
 
-   ```azurecli
+   ```output
    {
      "authorizationKey": "<authorizationKey>",
      "authorizationUseStatus": "Available",
@@ -149,7 +148,7 @@ az network express-route peering connection delete -g <ResourceGroupName> --circ
 
 この操作が完了すると、ExpressRoute 回線を経由したオンプレミスのネットワーク間の接続は存在しなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute Global Reach について詳しく学習する](expressroute-global-reach.md)
 * [ExpressRoute 接続を確認する](expressroute-troubleshooting-expressroute-overview.md)

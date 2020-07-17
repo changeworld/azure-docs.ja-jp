@@ -1,21 +1,21 @@
 ---
-title: クイック スタート:Bing Spell Check REST API と Ruby を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+title: クイック スタート:REST API と Ruby を使用してスペルをチェックする - Bing Spell Check
+titleSuffix: Azure Cognitive Services
+description: このクイックスタートで、Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: d488923f38a9c65cb117b4535b50bb9fdff2dbfc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888850"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448432"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>クイック スタート:Bing Spell Check REST API と Ruby を使用してスペルをチェックする
 
@@ -32,13 +32,13 @@ ms.locfileid: "56888850"
 
 1. 普段使用しているエディターまたは IDE で新しい Ruby ファイルを作成し、次の要件を追加します。 
 
-    ```javascript
+    ```ruby
     require 'net/http'
     require 'uri'
     require 'json'
     ```
 
-2. サブスクリプション キー、エンドポイントの URL、パスの変数を作成します。 該当する市場に `mkt=` パラメーターを、`proof` proof モードに `&mode` を追加して要求のパラメーターを作成します。
+2. サブスクリプション キー、エンドポイントの URL、パスの変数を作成します。 該当する市場に `mkt=` パラメーターを、`proof` proof モードに `&mode` を追加して要求のパラメーターを作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -82,6 +82,16 @@ ms.locfileid: "56888850"
     puts result
     ```
 
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。
+
+コマンド ラインを使用している場合は、次のコマンドを使用してアプリケーションを実行します。
+
+```bash
+ruby <FILE_NAME>.rb
+```
+
 ## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
@@ -124,10 +134,10 @@ ms.locfileid: "56888850"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

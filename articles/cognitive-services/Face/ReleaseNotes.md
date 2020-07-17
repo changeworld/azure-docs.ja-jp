@@ -1,25 +1,35 @@
 ---
-title: リリース ノート - Face API サービス
+title: リリース ノート - Face サービス
 titleSuffix: Azure Cognitive Services
-description: Face API サービスのリリース ノートには、さまざまなバージョンのリリース変更履歴が含まれています。
+description: Face サービスのリリース ノートには、さまざまなバージョンのリリース変更履歴が含まれています。
 services: cognitive-services
 author: yluiu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 767c9dec373a2bda806d75d602b194edde98c6b5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544552"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76165870"
 ---
-# <a name="face-api-release-notes"></a>Face API リリース ノート
+# <a name="face-release-notes"></a>Face のリリース ノート
 
-この記事は、Face API Service バージョン 1.0 に関連します。
+この記事は、Face サービス バージョン 1.0 に関するものです。
+
+### <a name="release-changes-in-june-2019"></a>2019 年 6 月のリリース変更
+
+* 小さい顔、横顔、隠れた顔、ぼやけた顔の精度を向上させた新しい顔検出モデルを追加しました。 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)、[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) で、`detectionModel` パラメーターに新しい顔検出モデル名 `detection_02` を指定して使用してください。 詳細については、[検出モデルの指定方法](Face-API-How-to-Topics/specify-detection-model.md)に関するページを参照してください。
+
+### <a name="release-changes-in-april-2019"></a>2019 年 4 月のリリース変更
+
+* `age` と `headPose` 属性の全体的な精度の向上。 `headPose` 属性も、`pitch` 値で更新されます。 これらの属性を、[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes`パラメーターの `returnFaceAttributes` パラメーターに指定して使用します。 
+
+* [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)、および [LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) の速度が向上しました。
 
 ### <a name="release-changes-in-march-2019"></a>2019 年 3 月のリリース変更
 
@@ -35,7 +45,7 @@ ms.locfileid: "59544552"
 
 ### <a name="release-changes-in-may-2018"></a>2018 年 5 月のリリース変更
 
-* `gender` 属性が大幅に改善され、`age`、`glasses`、`facialHair`、`hair`、`makeup` 属性も改善されました。 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` パラメーターをとおしてそれらを使用します。 
+* `gender` 属性が大幅に改善され、`age`、`glasses`、`facialHair`、`hair`、`makeup` 属性も改善されました。 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` パラメーターを通じてそれらを使用します。 
 
 * [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)、[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) で入力画像ファイルのサイズ上限が 4 MB から 6 MB に増えました。
 
@@ -43,7 +53,7 @@ ms.locfileid: "59544552"
 
 * 100 万規模のコンテナーを追加しました ([LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) と [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d))。 詳細は「[How to use the large-scale feature](Face-API-How-to-Topics/how-to-use-large-scale.md)」 (大規模な機能を使用する方法) にあります。
 
-* [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) `maxNumOfCandidatesReturned` パラメーターを [1, 5] から [1, 100] に増やしました。指定しなければ、10 です。
+* [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) `maxNumOfCandidatesReturned` パラメーターを [1, 5] から [1, 100] に増やしました。既定値は 10 です。
 
 ### <a name="release-changes-in-may-2017"></a>2017 年 5 月のリリース変更
 

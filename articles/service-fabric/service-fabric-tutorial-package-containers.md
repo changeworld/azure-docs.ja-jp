@@ -1,29 +1,19 @@
 ---
-title: Azure での Service Fabric アプリとしてのコンテナーのパッケージ化とデプロイ | Microsoft Docs
+title: コンテナーをパッケージ化してデプロイする
 description: このチュートリアルでは、Yeoman を使用して Azure Service Fabric アプリケーションの定義を作成し、アプリケーションをパッケージ化する方法について説明します。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/31/2019
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dbd0445f4167485172a2b98cec3bb2b2a47ac20
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668417"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78252747"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル:Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル: Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、テンプレート ジェネレーター ツール (Yeoman) を使用して、Service Fabric アプリケーションの定義を作成します。 このアプリケーションを使用して、コンテナーを Service Fabric にデプロイすることもできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -111,7 +101,7 @@ Yeoman を使用して作成したアプリケーションに別のコンテナ�
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。 たとえば、*./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
+このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。 たとえば、 *./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
 
 ```bash
 $ ls
@@ -122,9 +112,9 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 Service Fabric が Azure Container Registry からコンテナー イメージをプルするには、**ApplicationManifest.xml** に資格情報を入力する必要があります。
 
-ACR インスタンスへログインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
+ACR インスタンスにサインインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -132,7 +122,7 @@ az acr login --name <acrName>
 
 次に、以下のコマンドを実行して、コンテナー レジストリのパスワードを取得します。 このパスワードは、Service Fabric が ACR で認証を行い、コンテナー イメージをプルするために使用します。
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -209,7 +199,7 @@ Service Fabric がこの DNS 名をバックエンド サービスに割り当�
 
 フロントエンド サービスは環境変数を読み取り、Redis インスタンスの DNS 名を認識します。 この環境変数は、Docker イメージの生成に使用された Dockerfile で既に定義されており、ここでは操作を実行する必要はありません。
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 
@@ -405,7 +395,7 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
  </ServiceManifest>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Yeoman を使用して、複数のコンテナーを Service Fabric アプリケーションにパッケージ化しました。 その後、アプリケーションがデプロイされ、Service Fabric クラスターで実行されました。 次の手順を完了しました。
 

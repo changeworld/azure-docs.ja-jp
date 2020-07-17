@@ -1,19 +1,19 @@
 ---
 title: リモート監視内の電子メール アクション - Azure | Microsoft Docs
 description: この攻略ガイドでは、新規または既存の電子ルールにメール アクションを追加する方法について説明します。
-author: asdonald
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466920"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74168368"
 ---
 # <a name="add-an-email-action"></a>電子メール アクションを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "65466920"
 
 1. 変更する既存のルールの横にあるチェック ボックスをクリックし、上部にある **[編集]** をクリックします。 編集可能な **[ルール]** パネルが表示されます。
 
-1. **[アクション]** セクションで、**[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
+1. **[アクション]** セクションで、 **[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
 
 1. 最初にソリューション アクセラレータで電子メール アクションを有効にするときは、[Outlook にサインイン](#outlook)する必要があります。
 
@@ -61,9 +61,9 @@ ms.locfileid: "65466920"
 
     ![[ルール] ページ](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. [「create a rule」 (ルールを作成する) セクション](iot-accelerators-remote-monitoring-automate.md#create-a-rule)の手順を実行します。 [「create an advanced rule」 (高度なルールを作成する)](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) セクションの手順を、**[重大度レベル]** を設定するところまで実行します。 **[適用]** はまだクリックしないでください。
+1. [「create a rule」 (ルールを作成する) セクション](iot-accelerators-remote-monitoring-automate.md#create-a-rule)の手順を実行します。 [「create an advanced rule」 (高度なルールを作成する)](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) セクションの手順を、 **[重大度レベル]** を設定するところまで実行します。 **[適用]** はまだクリックしないでください。
 
-1. **[アクション]** セクションで、**[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
+1. **[アクション]** セクションで、 **[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
 
 1. 最初にソリューション アクセラレータで電子メール アクションを有効にするときは、[Outlook にサインイン](#outlook)する必要があります。
 
@@ -81,7 +81,7 @@ ms.locfileid: "65466920"
 
 以上で電子メール アクションを含むルールが有効になります。 アクションがトリガーされるたびに、新しい電子メールが受信者に送信されます。
 
-## Outlook にサインインする<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Outlook にサインインする<a name="outlook"></a>
 
 最初にソリューション アクセラレータで電子メール アクションを有効にするときは、Outlook にサインインする必要があります。 このアクションにより、電子メール通知を送信する電子メール アカウントがセットアップされます。
 
@@ -92,7 +92,7 @@ ms.locfileid: "65466920"
 
 サブスクリプション内の**共同作成者**ロールのいずれかのユーザーがソリューション アクセラレータをデプロイした場合は、アプリケーションに十分な権限がなく、Web UI を通じて電子メール アクションをセットアップおよび検証できません。
 
-作業を始める前に、ソリューション アクセラレータから電子メール通知を送信するために使用される Outlook アカウントを作成します。
+作業を始める前に、ソリューション アクセラレータから電子メール通知を送信する際に使用される Outlook アカウントを作成します。
 
 次の手順は、電子メール アクションを手動でセットアップおよび検証する方法を示しています。
 
@@ -132,13 +132,13 @@ ms.locfileid: "65466920"
 
 1. **[承認]** をクリックします。 サインインするように求められます。 サインインに使用するアカウントは、アプリケーションで電子メール通知を送信する際に使用する電子メール アドレスでなければなりません。
 
-1. **[Save]** をクリックします。 ソリューション アクセラレータに戻り、ページを更新します。
+1. **[保存]** をクリックします。 ソリューション アクセラレータに戻り、ページを更新します。
 
 1. 電子メール通知が正常に構成されると、次のメッセージが表示されます。
 
    ![Outlook へのサインインが成功](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## 電子メールの HTML をカスタマイズする<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>電子メールの HTML をカスタマイズする<a name="htmledit"></a>
 
 リモート監視ソリューション アクセラレータには、アクション電子メール用のすぐに使用できる基本的な HTML テンプレートが用意されています。 電子メール テンプレートでは、電子メール アクション設定からの値が使用されます。 電子メールの例を次に示します。
 
@@ -170,7 +170,7 @@ ms.locfileid: "65466920"
 
 ![平均の計算](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、リモート監視ソリューション内で電子メール アクションを新規または既存のルールに追加する方法を説明しました。 また、メッセージの書式を定義する HTML の編集方法も説明しました。
 

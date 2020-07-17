@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric アクターのライフサイクルの概要 | Microsoft Docs
+title: Azure Service Fabric アクターのライフサイクルの概要
 description: Service Fabric 高信頼アクターのライフ サイクル、ガベージ コレクション、およびアクターとその状態の手動による削除について説明します。
-services: service-fabric
-documentationcenter: .net
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660988"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229267"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -94,7 +85,7 @@ public class Program
     }
 }
 ```
-各アクティブ アクターについて、アクター ランタイムはアクターがアイドル (つまり、未使用) 状態だった時間を追跡します。 アクター ランタイムは、`ScanIntervalInSeconds` ごとにアクターをそれぞれチェックして、ガベージ コレクションが可能かどうかを確認し、`IdleTimeoutInSeconds` の間アイドル状態だった場合はアクターを収集します。
+各アクティブ アクターについて、アクター ランタイムはアクターがアイドル (つまり、未使用) 状態だった時間を追跡します。 アクター ランタイムは、`ScanIntervalInSeconds` ごとにアクターをそれぞれチェックして、ガベージ コレクションおよびマークが可能かどうかを確認し、`IdleTimeoutInSeconds` の間アイドル状態だった場合はアクターを収集します。
 
 アクターが使用されるたびに、そのアイドル時間は 0 にリセットされます。 その後、アクターをガベージ コレクトできるのは、再び `IdleTimeoutInSeconds`の間アイドル状態のままになった場合のみです。 アクター インターフェイス メソッドまたはアクター アラーム コールバックが実行された場合、アクターが使用されていると見なされることを思い出してください。 タイマー コールバックが実行された場合、アクターは使用されていると見なされ **ません** 。
 
@@ -116,7 +107,7 @@ public class Program
 ## <a name="manually-deleting-actors-and-their-state"></a>アクターとその状態を手動で削除する
 非アクティブ化されたアクターのガベージ コレクションではアクター オブジェクトのみがクリーンアップされ、アクターの状態マネージャーに格納されているデータは削除されません。 アクターが再アクティブ化されると、そのデータは状態マネージャーを介して再び利用可能になります。 状態マネージャーにデータを格納したアクターが非アクティブ化され、その後も再アクティブ化されなかった場合は、そのデータをクリーンアップする必要が生じる場合があります。  アクターを削除する方法の例については、「[アクターとその状態の削除](service-fabric-reliable-actors-delete-actors.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)

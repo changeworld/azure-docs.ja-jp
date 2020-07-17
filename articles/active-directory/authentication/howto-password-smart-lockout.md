@@ -1,22 +1,22 @@
 ---
-title: Azure AD のスマート ロックアウトを使用してブルート フォース攻撃を防止する - Azure Active Directory
+title: スマート ロックアウトを使用した攻撃の防止 - Azure Active Directory
 description: Azure Active Directory のスマート ロックアウトを使用すると、パスワードを推測するブルート フォース攻撃から組織を守れます
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 01/31/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370192"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652579"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -29,9 +29,11 @@ ms.locfileid: "58370192"
  > [!NOTE]
  > 認証はクラウドではなくオンプレミスで行われるため、パススルー認証を有効にしているお客様はハッシュ追跡機能を利用できません。
 
-スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイでは、[AD FS エクストラネット ロックアウトとエクストラネット スマート ロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)を使用して同様の効果を実現できます。
 
-スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセス権を取得できないよう試みます。  
+スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
+
+スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセスを確実に阻止するよう試みます。  
 
 * 各 Azure Active Directory データ センターでは、ロックアウトが個別に追跡されます。 ユーザーが各データ センターにアクセスする場合、そのユーザーの試行回数は (threshold_limit * datacenter_count) になります。
 * スマート ロックアウトでは、悪意のあるアクターと正規ユーザーを区別するために、既知の場所と未知の場所を使用します。 未知の場所と既知の場所の両方に、個別のロックアウト カウンターが設定されます。
@@ -41,10 +43,12 @@ ms.locfileid: "58370192"
 [パススルー認証](../hybrid/how-to-connect-pta.md)を使用する場合は、以下を確認してください。
 
 * Azure AD のロックアウトしきい値が、Active Directory アカウント ロックアウトしきい値より**小さい**。 Active Directory アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 - 3 倍長くなるように値を設定します。 
-* Azure AD のロックアウト期間 **(秒単位)** が、Active Directory のロックアウト カウンターのリセットの期間 **(分単位)** より **長い**。
+* Azure AD のロックアウト期間は、Active Directory のロックアウト カウンターのリセットの期間より長い期間を設定する必要があります。 AD の期間は分単位で設定しますが、Azure AD の期間は秒単位で設定することに注意してください。 
+
+たとえば、Azure AD のカウンターが AD よりも高くなるようにしたい場合は、オンプレミス AD が 1 分 (60 秒) に設定されていても、Azure AD は 120 秒 (2 分) になります。
 
 > [!IMPORTANT]
-> 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。
+> 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。 ただし、ユーザーは信頼されたデバイスまたは場所から、セルフサービス パスワード リセット (SSPR) を使用してロックを解除できます。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>オンプレミス アカウントのロックアウト ポリシーを検証する
 
@@ -52,18 +56,19 @@ ms.locfileid: "58370192"
 
 1. グループ ポリシー管理ツールを開きます。
 2. 組織のアカウント ロックアウト ポリシーを含む、グループ ポリシー (例: **デフォルト ドメイン ポリシー)** を編集します。
-3. **[コンピューターの構成]** > **[ポリシー]** > **[Windows 設定]** > **[セキュリティ設定]** > **[アカウント ポリシー]** > **[アカウント ロックアウト ポリシー]** の順に移動します。
+3. **[コンピューターの構成]**  >  **[ポリシー]**  >  **[Windows 設定]**  >  **[セキュリティ設定]**  >  **[アカウント ポリシー]**  >  **[アカウント ロックアウト ポリシー]** の順に移動します。
 4. **[アカウント ロックアウトのしきい値]** と **[ロックアウト カウンターのリセット]** の値を確認します。
 
 ![オンプレミス Active Directory アカウント ロックアウト ポリシーを変更する](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD スマート ロックアウトの値を管理する
 
-組織の要件によっては、スマート ロックアウトの値をカスタマイズする必要があります。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+組織の要件によっては、スマート ロックアウトの値をカスタマイズする必要があります。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]** の順にクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[認証方法]**  >  **[パスワード保護]** を選択します。
 1. 何回サインインに失敗したらアカウントがロックアウトされるかを基に **[ロックアウトのしきい値]** を設定します。 既定値は 10 です。
 1. **[Lockout duration in seconds]\(秒単位のロックアウト期間\)** で、各ロックアウトの長さを秒単位で設定します。 既定値は 60 秒 (1 分) です。
 
@@ -78,7 +83,7 @@ ms.locfileid: "58370192"
 
 **ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。**
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD を使用して、組織内の不適切なパスワードの使用を禁止する方法について説明します。](howto-password-ban-bad.md)
-* [ユーザーが自分でアカウントのロックを解除できるよう、セルフ サービスのパスワード リセット機能を構成します。](quickstart-sspr.md)
+* [ユーザーが自分でアカウントのロックを解除できるよう、セルフサービス パスワード リセット機能を構成します。](quickstart-sspr.md)

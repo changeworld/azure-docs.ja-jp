@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Showpad の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Showpad の統合 | Microsoft Docs'
 description: Azure Active Directory と Showpad の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 90a9fec3dc5b7252a0eb9d4120336db168148583
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 6c9235efe75c5ed16de01d950dcbec9746fbfa10
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902190"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67090792"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-showpad"></a>チュートリアル:Azure Active Directory と Showpad の統合
+# <a name="tutorial-azure-active-directory-integration-with-showpad"></a>チュートリアル: Azure Active Directory と Showpad の統合
 
 このチュートリアルでは、Showpad と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Showpad と Azure AD の統合には、次の利点があります。

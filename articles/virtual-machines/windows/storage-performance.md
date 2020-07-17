@@ -1,22 +1,19 @@
 ---
-title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する - ストレージ | Microsoft Docs
+title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する - ストレージ
 description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法を紹介します。
-services: virtual-machines-windows
-author: laurenhughes
-manager: jeconnoc
+author: sasha-melamed
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: f84e81a5a9e9c9cf6f477adefa0869d776f7dd71
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013076"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652606"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
 
@@ -24,7 +21,7 @@ Lsv2 シリーズの仮想マシンは、幅広いアプリケーションや業
 
 Lsv2 シリーズの仮想マシン (VM) の設計は、AMD EPYC™ 7551 プロセッサを最大限活用し、プロセッサ、メモリ、NVMe デバイス、VM の間で最善のパフォーマンスを実現できるようになっています。 Lsv2 シリーズの VM は、ハードウェアのパフォーマンス最大化だけでなく、Windows および Linux オペレーティング システムでハードウェアとソフトウェアを使ってパフォーマンスを改善したいというニーズにも対応できる設計になっています。
 
-ソフトウェアとハードウェアのチューニングを経て、2018 年 12 月初旬には Azure Marketplace に [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview) の最適化済みバージョンをリリースしました。これは、Lsv2 シリーズ VM 内の NVMe デバイスに最大のパフォーマンスを実現するものです。
+ソフトウェアとハードウェアのチューニングを経て、2018 年 12 月初旬には Azure Marketplace に [Windows Server 2019 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing) の最適化済みバージョンをリリースしました。これは、Lsv2 シリーズ VM 内の NVMe デバイスに最大のパフォーマンスを実現するものです。
 
 この記事では、ワークロードとアプリケーションで VM の設計に応じた最大限のパフォーマンスを実現するためのヒントと推奨事項を紹介します。 このページに掲載した情報は、最適化済みの Lsv2 イメージが Azure Marketplace に追加されるのに応じて随時更新していく予定です。
 
@@ -97,6 +94,6 @@ Lsv2 VM にある 1.92 TB NVMe ディスク上のローカル ストレージは
 * **Windows Server 2019 のポーリング設定を調整できますか?**  
    ポーリング設定をユーザーが調整することはできません。
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](sizes-storage.md) の仕様を確認してください。

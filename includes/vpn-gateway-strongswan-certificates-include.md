@@ -5,41 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/16/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6f9065786879749eee6187e93283f4c026b7fff
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "70961616"
 ---
-以下の手順では、次のコンピューターの構成を使用しました。
-
-  | | |
-  |---|---|
-  |Computer| Ubuntu Server 16.04<br>ID_LIKE=debian<br>PRETTY_NAME="Ubuntu 16.04.4 LTS"<br>VERSION_ID="16.04" |
-  |依存関係| strongSwan |
-
-#### <a name="1-install-strongswan"></a>1.strongSwan のインストール
-
-次のコマンドを使用して、必要な strongSwan 構成をインストールします。
-
-```
-apt-get install strongswan-ikev2 strongswan-plugin-eap-tls
-```
-
-```
-apt-get install libstrongswan-standard-plugins
-```
-
-```
-apt-get install strongswan-pki
-```
-
-#### <a name="2-generate-keys-and-certificate"></a>2.キーと証明書を生成する
-
 キーと証明書を生成します。
 
   ```
@@ -47,7 +22,7 @@ apt-get install strongswan-pki
   ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
   ```
 
-CA 証明書 を base64 形式で印刷します。 これは Azure でサポートされている形式です。 P2S 構成の一環として、後にこれを Azure にアップロードすることになります。
+CA 証明書 を base64 形式で印刷します。 これは Azure でサポートされている形式です。 この証明書は、[P2S 構成手順](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)の一部として Azure にアップロードします。
 
   ```
   openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo

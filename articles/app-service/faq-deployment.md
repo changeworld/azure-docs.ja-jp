@@ -1,27 +1,20 @@
 ---
 title: デプロイに関する FAQ - Azure App Service | Microsoft Docs
 description: Azure App Service の Web Apps 機能のデプロイに関するよくあるご質問への回答を掲載しています。
-services: app-service\web
-documentationcenter: ''
 author: genlin
-manager: cshepard
-editor: ''
+manager: dcscontentpm
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d7fd41657394e006957392f37ec1a258b33c8c6
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413881"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74671686"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 
@@ -38,9 +31,9 @@ Web アプリのコードを発行する方法はいくつかあります。
 
 詳細については、[App Service へのアプリのデプロイ](deploy-local-git.md)に関するページをご覧ください。
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Visual Studio からデプロイしようとするとエラー メッセージが表示されます。 解決するにはどうすればよいですか?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Visual Studio からデプロイしようとするとエラー メッセージが表示されます。 このエラーを解決するにはどうすればよいですか?
 
-次のメッセージが表示される場合、古いバージョンの SDK を使用している可能性があります。"リソース グループ '<リソース グループ名>' のリソース '<リソース名>' の配置の際にエラーが発生しました: MissingRegistrationForLocation: サブスクリプションが場所 '米国中部' のリソースの種類 'コンポーネント' に登録されていません。 この場所にアクセスできるようにするには、このプロバイダーに再登録してください。」 
+次のメッセージが表示される場合、古いバージョンの SDK を使用している可能性があります。「リソース グループ 'リソース グループ名' のリソース 'リソース名' の配置の際にエラーが発生しました: 。MissingRegistrationForLocation: サブスクリプションが場所 '米国中部' のリソースの種類 'コンポーネント' に登録されていません。 この場所にアクセスできるようにするには、このプロバイダーに再登録してください。" 
 
 このエラーを解決するには、[最新の SDK](https://azure.microsoft.com/downloads/) にアップグレードしてください。 このメッセージが表示され、かつ最新の SDK を使用している場合は、サポート リクエストを送信してください。
 
@@ -63,13 +56,13 @@ App Service アプリのファイル構造については、[Azure でのファ�
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>App Service の Web アプリの継続的デプロイを設定するにはどうすればよいですか。
 
-継続的デプロイは、Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的配置](deploy-continuous-deployment.md)に関するチュートリアルで継続的配置の設定方法を説明しているので、お役立てください。
+継続的デプロイは、Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的デプロイ](deploy-continuous-deployment.md)に関するチュートリアルで継続的デプロイの設定方法を説明しているので、お役立てください。
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>GitHub や Bitbucket からの継続的デプロイに関する問題をトラブルシューティングするにはどうすればよいですか。
 
 GitHub や Bitbucket からの継続的デプロイに関する問題の調査については、「[Investigating continuous deployment (継続的デプロイの調査)](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)」をご覧ください。
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>自分のサイトに FTP できず、コードを発行できません。 解決するにはどうすればよいですか?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>自分のサイトに FTP できず、コードを発行できません。 この問題を解決するにはどうすればよいですか?
 
 FTP の問題を解決するには、次のことを行います。
 
@@ -80,7 +73,7 @@ FTP の問題を解決するには、次のことを行います。
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>App Service にコードを発行するにはどうすればよいですか。
 
-Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、**[展開]** の **[クイック スタート]** を選択します。
+Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、 **[展開]** の **[クイック スタート]** を選択します。
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>App Service へのデプロイ後にアプリが再起動することがありますが、これはなぜですか。
 

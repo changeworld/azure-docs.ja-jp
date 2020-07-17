@@ -1,25 +1,24 @@
 ---
 title: 2 クラス ブースト デシジョン ツリーモジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で 2 クラス ブースト デシジョン ツリー モジュールを使用し、ブースト デシジョン ツリー アルゴリズムに基づく機械学習モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で 2 クラス ブースト デシジョン ツリー モジュールを使用し、ブースト デシジョン ツリー アルゴリズムに基づく機械学習モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 09ea530cac5bdbd62208f134177e5ceaccb545e2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027623"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137656"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>2 クラス ブースト デシジョン ツリー モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 ブースト デシジョン ツリー アルゴリズムに基づく機械学習モデルを作成するには、このモジュールを使用します。 
 
@@ -33,12 +32,13 @@ ms.locfileid: "65027623"
 
 このタイプのモデルは、"[モデルのトレーニング](././train-model.md)" を使用してトレーニングできます。 
 
-1.  Azure Machine Learning で、**ブースト デシジョン ツリー** モジュールを実験に追加します。
+1.  Azure Machine Learning で、**ブースト デシジョン ツリー** モジュールをパイプラインに追加します。
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
   
-    + **[Single Parameter]\(単一パラメーター\)**: モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
+    + **Single Parameter (単一パラメーター)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。
   
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからない場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールを使用することにより、最適なパラメーターを見つけることができます。 ある値の範囲を指定すると、トレーナーが設定の複数の組み合わせに対して反復処理を行い、最適な結果を生み出す値の組み合わせを決定します。
   
 3.  ツリーに作成できる終端ノード (リーフ) の最大数を **[Maximum number of leaves per tree]\(ツリーあたりの最大リーフ数\)** に指定します。
   
@@ -61,19 +61,28 @@ ms.locfileid: "65027623"
      ランダム シードは、既定では 0 に設定されます。これは、初期シード値がシステム クロックから取得されることを意味します。  ランダム シードを使用して連続実行すると、都度異なる結果を得ることができます。
   
 
-9. モデルをトレーニングします。
+9. モデルをトレーニングする: 
+
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
   
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](./train-model.md) モジュールを接続します。  
+    + **[トレーナー モードの作成]** を **[パラメーター範囲]** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   
+    > [!NOTE]
+    > 
+    > パラメーター範囲を[モデルのトレーニング](train-model.md)に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[パラメーター範囲]** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。  
    
 ## <a name="results"></a>結果
 
-モデルのトレーニングが完了したら、[モデルのトレーニング](./train-model.md)の出力を右クリックして結果を表示します。
+トレーニングの完了後:
 
-+ それぞれのイテレーションで作成されたツリーを表示するには、**[Visualize]\(可視化\)** を選択します。 
-+ 分割をドリルダウンして各ノードのルールを表示するには、各ツリーをクリックします。
++ トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
++ このモデルをスコアリングに使用するには、**モデルのスコア付け**モジュールをパイプラインに追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

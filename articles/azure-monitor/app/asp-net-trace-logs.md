@@ -1,45 +1,36 @@
 ---
 title: Application Insights の .NET トレース ログを調べる
 description: Trace、NLog、または Log4Net で生成されたログを検索します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.author: mbullwin
-ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234791"
 ---
-# <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core のトレース ログを調べる
+# <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
-ASP.NET/ASP.NET Core アプリケーションの診断トレース ログを ILogger、NLog、log4Net、または System.Diagnostics.Trace から [Azure Application Insights][start] に送信します。 その後、探索して検索できます。 これらのログはアプリケーションからの他のログ ファイルと結合されます。したがって、各ユーザー要求に関連付けられているトレースを特定し、それらを他のイベントや例外レポートに関連付けることができます。
+ASP.NET または ASP.NET Core アプリケーションの診断トレース ログを ILogger、NLog、log4Net、または System.Diagnostics.Trace から [Azure Application Insights][start] に送信します。 Python アプリケーションの場合は、Azure Monitor 用の OpenCensus Python の AzureLogHandler を使用して、診断トレース ログを送信します。 その後、探索して検索できます。 これらのログはアプリケーションからの他のログ ファイルと結合されます。したがって、各ユーザー要求に関連付けられているトレースを特定し、それらを他のイベントや例外レポートに関連付けることができます。
 
 > [!NOTE]
-> ログ キャプチャ モジュールは必要ですか。 これは、サード パーティ製のロガーの場合に便利なアダプターです。 しかし、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、単に [**Application Insights TrackTrace()**](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を直接呼び出すことを検討してください。
+> ログ キャプチャ モジュールは必要ですか。 これは、サード パーティ製のロガーの場合に便利なアダプターです。 しかし、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、単に [**Application Insights TrackTrace()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を直接呼び出すことを検討してください。
 >
 >
 ## <a name="install-logging-on-your-app"></a>アプリにログ記録フレームワークをインストールする
 プロジェクトで選択したログ記録フレームワークをインストールします。これにより、app.config または web.config にエントリが追加されます。
 
 ```XML
-    <configuration>
-      <system.diagnostics>
-    <trace autoflush="true" indentsize="0">
+ <configuration>
+  <system.diagnostics>
+    <trace>
       <listeners>
         <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
       </listeners>
     </trace>
   </system.diagnostics>
-   </configuration>
+</configuration>
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>ログを収集するよう Application Insights を構成する
@@ -48,13 +39,13 @@ ASP.NET/ASP.NET Core アプリケーションの診断トレース ログを ILo
 または、ソリューション エクスプローラーでプロジェクトを右クリックし、**Application Insights を構成**します。 **[トレース コレクションの構成]** オプションを選択します。
 
 > [!NOTE]
-> Application Insights のメニューやログ コレクターのオプションが表示されない場合は、  [トラブルシューティング](#troubleshooting)をお試しください。
+> Application Insights のメニューやログ コレクターのオプションが表示されない場合は、 [トラブルシューティング](#troubleshooting)をお試しください。
 
 ## <a name="manual-installation"></a>手動のインストール
 Application Insights インストーラーでサポートされていない種類のプロジェクト (Windows デスクトップ プロジェクトなど) の場合は、手動でインストールします。
 
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。
-2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 3. "Application Insights" を検索します。
 4. 次のいずれかのパッケージを選択します。
 
@@ -140,26 +131,43 @@ Application Insights にトレースとして送信される Event Tracing for W
 ## <a name="use-the-trace-api-directly"></a>トレース API を直接使用する
 Application Insights トレース API を直接呼び出すことができます。 ログ記録のアダプターはこの API を使用します。
 
-例: 
+次に例を示します。
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。
 
-メッセージに重大度レベルを追加することもできます。 また、他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレース セットをフィルター処理したり、検索したりすることができます。 例: 
+メッセージに重大度レベルを追加することもできます。 また、他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレース セットをフィルター処理したり、検索したりすることができます。 次に例を示します。
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-特定のデータベースに関連する特定の重大度レベルのすべてのメッセージを、[[検索]][diagnostic] で簡単にフィルター処理できます。
+これにより、特定のデータベースに関連する、特定の重大度レベルのメッセージすべてを、[[検索]][diagnostic] で簡単に抽出できます。
+
+## <a name="azureloghandler-for-opencensus-python"></a>OpenCensus Python の AzureLogHandler
+Azure Monitor ログ ハンドラーを使用すると、Python ログを Azure Monitor にエクスポートできます。
+
+Azure Monitor 用の [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) を使用してアプリケーションをインストルメント化します。
+
+この例では、警告レベルのログを Azure Monitor に送信する方法を示します。
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+logger = logging.getLogger(__name__)
+logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=<your-instrumentation_key-here>'))
+logger.warning('Hello, World!')
+```
 
 ## <a name="explore-your-logs"></a>ログを調査する
 アプリをデバッグ モードで実行するか、ライブでデプロイします。
 
-[Application Insights ポータル][portal]内のアプリの概要ウィンドウで、[[検索]][diagnostic] を選択します。
+[Application Insights ポータル][portal]にあるアプリの概要ウィンドウで、[[検索]][diagnostic] を選択します。
 
 たとえば、次の操作ができます。
 
@@ -177,32 +185,32 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 [Java ログ アダプター](../../azure-monitor/app/java-trace-logs.md)を使用します。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>プロジェクトのコンテキスト メニューに Application Insights のオプションがありません
-* 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]** > **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、**[オンライン]** タブを開いてインストールします。
+* 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]**  >  **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、 **[オンライン]** タブを開いてインストールします。
 * これは、Developer Analytics Tools でサポートされていない種類のプロジェクトの可能性があります。 [手動でインストール](#manual-installation)してください。
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>構成ツールにログ アダプターのオプションがありません
 * まず、ログ記録フレームワークをインストールします。
 * System.Diagnostics.Trace を使用している場合は、[*web.config* で構成済み](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)であることを確認します。
-* 最新バージョンの Application Insights があることを確認します。 Visual Studio で、**[ツール]** > **[拡張機能と更新プログラム]** の順に移動し、**[更新]** タブを開きます。そこに **Developer Analytics Tools** がある場合は、それを選択して更新します。
+* 最新バージョンの Application Insights があることを確認します。 Visual Studio で、 **[ツール]**  >  **[拡張機能と更新プログラム]** の順に移動し、 **[更新]** タブを開きます。そこに **Developer Analytics Tools** がある場合は、それを選択して更新します。
 
-### <a name="emptykey"></a>"インストルメンテーション キーは空にできません" というエラーメッセージが表示されました
-Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。 ソリューション エクスプローラーで、*ApplicationInsights.config* を右クリックし、**[Application Insights の更新]** を選択します。 Azure にサインインし、Application Insights リソースを作成するか、既存のものを再利用することを求めるメッセージが表示されます。 これで問題は修正されます。
+### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"インストルメンテーション キーは空にできません" というエラーメッセージが表示されました
+Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。 ソリューション エクスプローラーで、*ApplicationInsights.config* を右クリックし、 **[Application Insights の更新]** を選択します。 Azure にサインインし、Application Insights リソースを作成するか、既存のものを再利用することを求めるメッセージが表示されます。 これで問題は修正されます。
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>診断検索にトレースが表示されますが、他のイベントがありません
 すべてのイベントと要求がパイプラインを通過するまでしばらく時間がかかることがあります。
 
-### <a name="limits"></a>保持されるデータの量はどのくらいですか
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
 いくつかの要因が、保持されるデータの量に影響します。 詳細については、顧客イベント メトリック ページの「[制限](../../azure-monitor/app/api-custom-events-metrics.md#limits)」セクションを参照してください。
 
 ### <a name="i-dont-see-some-log-entries-that-i-expected"></a>予期していたいくつかのログ エントリが表示されません
 アプリケーションで膨大な量のデータが送信され、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一部のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../azure-monitor/app/sampling.md)
 
-## <a name="add"></a>次のステップ
+## <a name="next-steps"></a><a name="add"></a>次のステップ
 
-* [ASP.NET ][exceptions]のエラーと例外を診断する
+* [ASP.NET のエラーと例外を診断する][exceptions]
 * [検索についてさらに学習する][diagnostic]
 * [可用性と応答性のテストを設定する][availability]
-* [Troubleshooting][qna]
+* [トラブルシューティング][qna]
 
 <!--Link references-->
 

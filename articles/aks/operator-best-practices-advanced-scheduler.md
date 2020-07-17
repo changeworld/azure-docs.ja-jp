@@ -1,18 +1,16 @@
 ---
-title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の高度なスケジューラ機能
+title: スケジューラの機能に関するベスト プラクティス
+titleSuffix: Azure Kubernetes Service
 description: テイントと容認、ノード セレクターとアフィニティ、ポッド間アフィニティと非アフィニティなど、Azure Kubernetes Service (AKS) の高度なスケジューラ機能の使用に関する、クラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074199"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81617519"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -31,7 +29,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際は、多く�
 
 AKS クラスターを作成するときは、GPU のサポートや多数の強力な CPU を備えたノードをデプロイできます。 このようなノードは、機械学習 (ML) や人工知能 (AI) などの大規模なデータ処理ワークロードによく使用されます。 通常、この種のハードウェアはデプロイするのが高価なノード リソースなので、これらのノードでスケジュールできるワークロードを制限します。 代わりに、クラスターの一部のノードをイングレス サービスの実行専用にして、他のワークロードを防ぐこともできます。
 
-さまざまなノードに対するこのサポートは、複数のノード プールを使用して提供されます。 AKS クラスターでは、1 つ以上のノード プールが提供されます。 AKS での複数のノード プールのサポートは現在プレビュー段階です。
+さまざまなノードに対するこのサポートは、複数のノード プールを使用して提供されます。 AKS クラスターでは、1 つ以上のノード プールが提供されます。
 
 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
 
@@ -75,22 +73,22 @@ spec:
 
 テイントと容認について詳しくは、[テイントと容認の適用][k8s-taints-tolerations]に関する記事をご覧ください。
 
-AKS での複数のノード プールの使用方法について詳しくは、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
+AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS でのテイントと容認の動作
 
 AKS でノード プールをアップグレードすると、テイントと容認は新しいノードに適用されるときに、次のように設定されたパターンに従います。
 
-- **仮想マシン スケールのサポートがない既定のクラスター**
-  - 2 つのノード クラスター *node1* と *node2* があると仮定します。 アップグレードすると、追加ノード (*node3*) が作成されます。
+- **仮想マシン スケール セットを使用する既定のクラスター**
+  - 2 つのノード クラスター *node1* と *node2* があると仮定します。 ノード プールをアップグレードします。
+  - 2 つの追加ノード *node3* と *node4* が作成されて、それぞれにテイントが渡されます。
+  - 元の *node1* と *node2* は削除されます。
+
+- **仮想マシン スケール セットのサポートがないクラスター**
+  - ここでも、2 つのノード クラスター *node1* と *node2* があると仮定します。 アップグレードすると、追加ノード (*node3*) が作成されます。
   - *node1* のテイントが *node3* に適用されて、次に *node1* が削除されます。
   - 別の新規ノードが作成されます (前の *node1* が削除されたため、名前は *node1* になります)、そして *node2* のテイントが新しい *node1* に適用されます。 次に、*node2* が削除されます。
   - 要するに、*node1* が *node3* になり、*node2* が *node1* になります。
-
-- **仮想マシン スケール セットを使用するクラスター** (現在、AKS でプレビュー段階)
-  - ここでも、2 つのノード クラスター *node1* と *node2* があると仮定します。 ノード プールをアップグレードします。
-  - 2 つの追加ノード *node3* と *node4* が作成されて、それぞれにテイントが渡されます。
-  - 元の *node1* と *node2* は削除されます。
 
 AKS でノード プールをスケーリングするとき、テイントと容認は設計により持ち越されません。
 
@@ -130,13 +128,13 @@ spec:
 
 これらのスケジューラ オプションを使用するときは、アプリケーションの開発者および所有者と協力して、ポッドの仕様を正しく定義できるようにします。
 
-ノード セレクターの使用について詳しくは、「[Assigning Pods to Nodes][k8s-node-selector]」(ノードへのポッドの割り当て) をご覧ください。
+ノード セレクターの使用について詳しくは、「[Assigning Pods to Nodes][k8s-node-selector]」 (ノードへのポッドの割り当て) をご覧ください。
 
 ### <a name="node-affinity"></a>ノード アフィニティ
 
 ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 "*ノード アフィニティ*" を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、"*必須*" として指定できます。 または、一致することが "*望ましい*" けれども、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
 
-次の例では、ノード アフィニティを *requiredDuringSchedulingIgnoredDuringExecution* に設定しています。 このアフィニティでは、一致するラベルを持つノードを使用することが要求されます。 使用できるノードがない場合、ポッドはスケジュールの継続を待機する必要があります。 別のノードでポッドをスケジュールできるようにするには、代わりに値を *preferredDuringScheduledIgnoreDuringExecution* に設定します。
+次の例では、ノード アフィニティを *requiredDuringSchedulingIgnoredDuringExecution* に設定しています。 このアフィニティでは、一致するラベルを持つノードを使用することが要求されます。 使用できるノードがない場合、ポッドはスケジュールの継続を待機する必要があります。 別のノードでポッドをスケジュールできるようにするには、代わりに値を *preferredDuringSchedulingIgnoreDuringExecution* に設定します。
 
 ```yaml
 kind: Pod
@@ -157,16 +155,16 @@ spec:
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: hardware
-          operator: In
-          values: highmem
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: hardware
+            operator: In
+            values: highmem
 ```
 
 設定の *IgnoredDuringExecution* の部分は、ノードのラベルが変更された場合でも、ポッドをノードから削除してはならないことを示します。 Kubernetes スケジューラでは、新しくスケジュールされるポッドに対してのみ更新されたノード ラベルが使用され、ノードで既にスケジュールされているポッドには使用されません。
 
-詳しくは、「[Affinity and anti-affinity][k8s-affinity]」(アフィニティと非アフィニティ) をご覧ください。
+詳しくは、「[Affinity and anti-affinity][k8s-affinity]」 (アフィニティと非アフィニティ) をご覧ください。
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>ポッド間アフィニティと非アフィニティ
 
@@ -179,15 +177,15 @@ Kubernetes スケジューラでワークロードを論理的に分離する最
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-この例のデプロイは、ノード セレクターまたはノード アフィニティを使用する場合より複雑です。 デプロイでは、Kubernetes スケジューラによるノードでのポッドのスケジュール方法を制御でき、リソースを論理的に分離できます。 Azure Cache for Redis キャッシュを使用するこの Web アプリケーションの完全な例については、[同じノードへのポッドの併置][k8s-pod-affinity]に関する記事をご覧ください。
+この例のデプロイは、ノード セレクターまたはノード アフィニティを使用する場合より複雑です。 デプロイでは、Kubernetes スケジューラによるノードでのポッドのスケジュール方法を制御でき、リソースを論理的に分離できます。 Azure Cache for Redis を使用するこの Web アプリケーションの完全な例については、[同じノードへのポッドの併置][k8s-pod-affinity]に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Kubernetes の高度なスケジューラ機能に注目しました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 
-* [マルチ テナント方式とクラスター分離][aks-best-practices-scheduler]
+* [マルチ テナントとクラスター分離][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの基本的な機能][aks-best-practices-scheduler]
-* [認証と承認][aks-best-practices-identity]
+* [認証と権限承認][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

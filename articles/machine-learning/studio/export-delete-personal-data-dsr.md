@@ -1,43 +1,45 @@
 ---
 title: ご自分のデータのエクスポートと削除
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio によって格納された製品内データは、Azure Portal を使用して、および認証された REST API を介してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスすることができます。 この記事では、その方法について説明します。
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal 経由のほか、認証済み REST API 経由でもエクスポートおよび削除できます。 テレメトリ データには、Azure Privacy Portal を介してアクセスすることができます。 この記事では、その方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c380d10d0c68794ec3810cea25341d68bb41400d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850532"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227227"
 ---
-# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Azure Machine Learning Studio から製品内ユーザー データをエクスポートおよび削除する
+# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) から製品内ユーザー データをエクスポートおよび削除する
 
-Azure Machine Learning Studio によって格納された製品内データは、Azure Portal、Studio インターフェイス、PowerShell、および認証された REST API を使用して削除またはエクスポートすることができます。 この記事では、その方法について説明します。 
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-テレメトリ データには、Azure Privacy Portal を介してアクセスすることができます。 
+Azure Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal、Studio (クラシック) インターフェイス、PowerShell、および認証済み REST API を使用して削除またはエクスポートできます。 この記事では、その方法について説明します。 
+
+テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-kinds-of-user-data-does-studio-collect"></a>Studio ではどのような種類のユーザー データが収集されますか?
+## <a name="what-kinds-of-user-data-does-studio-classic-collect"></a>Studio (クラシック) で収集されるユーザー データの種類
 
 このサービスの対象となるユーザー データは、ワークスペースへのアクセス権限およびユーザーとサービスとの対話のテレメトリ レコードへのアクセス権限を持つユーザーに関する情報で構成されます。
 
-Machine Learning Studio には、次に示す 2 種類のユーザー データがあります。
+Machine Learning Studio (クラシック) には、次の 2 種類のユーザー データがあります。
 - **個人用アカウントのデータ:** アカウントに関連付けられたアカウント ID と電子メール アドレス。
 - **顧客データ:** 分析のためにアップロードしたデータ。
 
-## <a name="studio-account-types-and-how-data-is-stored"></a>Studio アカウントの種類とデータの格納方法
+## <a name="studio-classic-account-types-and-how-data-is-stored"></a>Studio (クラシック) アカウントの種類とデータの格納方法
 
-Machine Learning Studio には 3 種類のアカウントがあります。 所有しているアカウントの種類によって、データの格納方法と、データの削除またはエクスポートの方法が決まります。
+Machine Learning Studio (クラシック) には 3 種類のアカウントがあります。 所有しているアカウントの種類によって、データの格納方法と、データの削除またはエクスポートの方法が決まります。
 
 - **ゲスト ワークスペース**は、無料の匿名アカウントです。 電子メール アドレスやパスワードなどの資格情報を指定することなく、サインアップします。
     -  ゲスト ワークスペースの有効期限が切れると、データは削除されます。
@@ -53,25 +55,25 @@ Machine Learning Studio には 3 種類のアカウントがあります。 所�
     - UI、REST API、または PowerShell パッケージを介して個人データおよび顧客データをエクスポートすることができます。
     - Azure Portal でデータを削除できます。
 
-## <a name="delete"></a>Studio でワークスペース データを削除する 
+## <a name="delete-workspace-data-in-studio-classic"></a><a name="delete"></a>Studio (クラシック) でワークスペース データを削除する 
 
 ### <a name="delete-individual-assets"></a>個々の資産を削除する
 
 ユーザーはワークスペース内の資産を削除できます。それには該当する資産を選択し、[削除] ボタンを選択します。
 
-![Machine Learning Studio 内の資産を削除する](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
+![Machine Learning Studio (クラシック) で資産を削除する](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
 ### <a name="delete-an-entire-workspace"></a>ワークスペース全体を削除する
 
 ユーザーはまた、ワークスペース全体を削除することもできます。
-- 有料のワークスペース:Azure portal を使用して削除します。
-- 無料のワークスペース:**[設定]** ウィンドウの [削除] ボタンを使用します。
+- 有料ワークスペース: Azure Portal を介して削除します。
+- 無料のワークスペース: **[設定]** ウィンドウの [削除] ボタンを使用します。
 
-![Machine Learning Studio で無料のワークスペースを削除する](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
+![Machine Learning Studio (クラシック) で無料のワークスペースを削除する](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
-## <a name="export-studio-data-with-powershell"></a>PowerShell を使用して Studio データをエクスポートする
-PowerShell では、コマンドを使用して Azure Machine Learning Studio から、すべての情報をポータブル形式にエクスポートできます。 詳細については、「[Azure Machine Learning Studio 用 PowerShell モジュール](powershell-module.md)」を参照してください。
+## <a name="export-studio-classic-data-with-powershell"></a>PowerShell を使用して Studio (クラシック) データをエクスポートする
+PowerShell では、コマンドを使用して Azure Machine Learning Studio (クラシック) から、すべての情報をポータブル形式にエクスポートできます。 詳細については、[Azure Machine Learning Studio (クラシック) 用の PowerShell モジュール](powershell-module.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Web サービスおよび契約プランの課金を説明するドキュメントについては、[Azure Machine Learning Studio REST API リファレンス](https://docs.microsoft.com/rest/api/machinelearning/)に関するページを参照してください。 
+Web サービスや契約プランの課金が説明されているドキュメントについては、[Azure Machine Learning Studio (クラシック) REST API リファレンス](https://docs.microsoft.com/rest/api/machinelearning/)に関するページを参照してください。 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f711d0dbc2df2a5ab102b520fb0d166a459383c1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568585"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684458"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage のコンプライアンス認証
 
@@ -64,7 +64,6 @@ ms.locfileid: "55568585"
 * [MAS + ABS (シンガポール)](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510 (オランダ)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS IG Toolkit (英国)](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
 * [共有された評価](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)
@@ -93,6 +92,6 @@ ms.locfileid: "55568585"
 * [TRUCS (中国)](https://www.trustcenter.cn/compliance/default.html#TCS)
 * [英国 G-Cloud](https://www.microsoft.com/trustcenter/compliance/uk-g-cloud)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Microsoft Azure および Azure Storage は、コンプライアンス認証を先導し続けています。最新の対象範囲と詳細については、[Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx) で確認することができます。

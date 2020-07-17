@@ -1,28 +1,24 @@
 ---
-title: 特定のプラン API を取得する | Microsoft Docs
+title: 特定のプランの取得 API | Azure Marketplace
 description: API によって、発行元の名前空間内で指定のプランが取得されます。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: f2182ed2377a392f55af2c1f723be325bd518349
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808269"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255918"
 ---
 <a name="retrieve-a-specific-offer"></a>特定のプランを取得する
 =========================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 発行元の名前空間内で指定のプランが取得されます。  
 
@@ -49,19 +45,19 @@ ms.locfileid: "48808269"
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | String        |
 | offerId     | プランを一意に識別する GUID。                                                 | String        |
-| version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | 整数       |
+| version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | Integer       |
 | slotId      | プランが取得されるスロット。次のいずれかになります。      <br/>  - `Draft` (既定) の場合、現在ドラフトの状態にあるプランが取得されます。  <br/>  -  `Preview` の場合、現在プレビューの状態にあるプランが取得されます。     <br/>  -  `Production` の場合、現在運用の状態にあるプランが取得されます。          |      enum |
-| api-version | API の最新バージョン                                                                    | 日付          |
+| api-version | API の最新バージョン                                                                    | Date          |
 |  |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**          |   **値**            |
+|  **名前**          |   **Value**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
-|  Authorization     | `Bearer YOUR_TOKEN`    |
+|  承認     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
 
@@ -177,12 +173,12 @@ ms.locfileid: "48808269"
 
 |  **名前**       |   **説明**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  offerTypeId    | プランの種類を識別します                                                                                                    |
+|  offerTypeId    | オファーの種類を示します                                                                                                    |
 |  publisherId    | 発行元の一意の識別子。                                                                                              |
-|  status         | プランの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                                  |
-|  ID             | プランを一意に識別する GUID                                                                                         |
-|  version        | プランの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。    |
-|  定義     | ワークロードの実際の定義                                                                                               |
+|  status         | オファーの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                                  |
+|  Id             | プランを一意に識別する GUID                                                                                         |
+|  version        | オファーの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。    |
+|  definition     | ワークロードの実際の定義                                                                                               |
 |  changedTime    | プランが最後に修正されたときの UTC 日時                                                                                   |
 |  |  |
 
@@ -191,7 +187,7 @@ ms.locfileid: "48808269"
 
 | **コード**  | **説明**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` - 要求が正常に処理され、発行元のすべてのプランがクライアントに返されました。               |
+|  200      | `OK` - 要求が正常に処理され、発行元のすべてのオファーがクライアントに返されました。               |
 |  400      | `Bad/Malformed request` - エラーの応答本文にさらに情報が含まれている場合があります。                                                 |
 |  403      | `Forbidden` - クライアントは、指定の名前空間にアクセスできません。                                                        |
 |  404      | `Not found` - 指定のエンティティが存在しません。 クライアントでは、発行元 ID、プラン ID、バージョン (指定されている場合) の確認が求められます。      |

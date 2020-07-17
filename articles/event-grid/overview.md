@@ -1,20 +1,20 @@
 ---
-title: アプリケーション イベントを公開およびサブスクライブする - Azure Event Grid
+title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 75ee828c659aba895f65d0cf14070966428a1d19
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578409"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682521"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -22,7 +22,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。
 
-現在、Azure Event Grid はすべてのパブリック リージョンで使用できます。 まだ、Azure Germany、Azure China 21Vianet、Azure Government クラウドでは使用できません。
+Azure Event Grid は、すべてのリージョンの複数の障害ドメインに、および可用性ゾーン (それらをサポートするリージョン内の) にネイティブに分散させることによって、可用性を最大化するようにデプロイされます。 Event Grid でサポートされているリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)」を参照してください。
 
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 
 
@@ -32,31 +32,35 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 ## <a name="event-sources"></a>イベント ソース
 
-各ソースの機能の完全な詳細のほか、関連記事については、[イベント ソース](event-sources.md)に関する記事を参照してください。 現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
+現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
 
-* [Azure サブスクリプション (管理操作)](event-sources.md#azure-subscriptions)
-* [コンテナー レジストリ](event-sources.md#container-registry)
-* [カスタム トピック](event-sources.md#custom-topics)
-* [Event Hubs](event-sources.md#event-hubs)
-* [IoT Hub](event-sources.md#iot-hub)
-* [Media Services](event-sources.md#media-services)
-* [リソース グループ (管理操作)](event-sources.md#resource-groups)
-* [Service Bus](event-sources.md#service-bus)
-* [Storage Blob](event-sources.md#storage)
-* [Azure Maps](event-sources.md#maps)
+- [Azure App Configuration](event-schema-app-configuration.md)
+- [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Container Registry](event-schema-container-registry.md)
+- [Azure Event Hubs](event-schema-event-hubs.md)
+- [Azure IoT Hub](event-schema-iot-hub.md)
+- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure Maps](event-schema-azure-maps.md)
+- [Azure Media Services](event-schema-media-services.md)
+- [Azure リソース グループ](event-schema-resource-groups.md)
+- [Azure Service Bus](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure サブスクリプション](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 
 各ハンドラーの機能の完全な詳細のほか、関連記事については、[イベント ハンドラー](event-handlers.md)に関する記事を参照してください。 現在、次の Azure サービスは Event Grid からのイベントの処理をサポートしています。 
 
-* [Azure Automation](event-handlers.md#azure-automation)
-* [Azure Functions](event-handlers.md#azure-functions)
-* [Event Hubs](event-handlers.md#event-hubs)
-* [VNet](event-handlers.md#hybrid-connections)
-* [Logic Apps](event-handlers.md#logic-apps)
-* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Queue Storage](event-handlers.md#queue-storage)
-* [WebHooks](event-handlers.md#webhooks)
+* [Azure Automation](handler-webhooks.md#azure-automation)
+* [Azure Functions](handler-functions.md)
+* [Event Hubs](handler-event-hubs.md)
+* [ハイブリッド接続のリレー](handler-relay-hybrid-connections.md)
+* [Logic Apps](handler-webhooks.md#logic-apps)
+* [Power Automate (旧称 Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Service Bus](handler-service-bus.md)
+* [Queue Storage](handler-storage-queues.md)
+* [WebHooks](handler-webhooks.md)
 
 ## <a name="concepts"></a>概念
 
@@ -111,7 +115,7 @@ Event Grid はお客様のアプリを他のサービスにつなげます。 �
 
 Azure Event Grid では、イベントごとに課金される価格モデルを使用しているため、使用した分だけお支払いいただきます。 毎月の最初の 100,000 操作は無料です。 操作は、イベント イングレス、サブスクリプション配信の試行、管理呼び出し、サブジェクト サフィックスによるフィルター処理と定義されます。 詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/event-grid/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Storage Blob のイベントをルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Event Grid を使用して Storage Blob のイベントに応答します。

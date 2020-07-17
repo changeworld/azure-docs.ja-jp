@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub メッセージ ルーティングでのクエリ | Microsoft Docs
-description: 開発者ガイド - Azure IoT Hub でのメッセージ ルーティングのクエリ構文。
+description: メッセージに高度なクエリを適用して重要なデータを取得するために使用できる IoT Hub メッセージ ルーティング クエリ言語について説明します。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744843"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233203"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -51,22 +50,23 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
 
-| プロパティ | type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
-| contentType | 文字列 | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
-| contentEncoding | 文字列 | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
-| iothub-connection-device-id | 文字列 | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
-| iothub-enqueuedtime | 文字列 | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
+| contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
+| contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
+| iothub-connection-device-id | string | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
+| iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
+| iothub-interface-name | string | この値はユーザーによって設定され、テレメトリ メッセージを実装するデジタル ツイン インターフェイスの名前を表します。 クエリを実行するには、`$interfaceName` を使用します。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 |
 
 [IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 **contentType**、**contentEncoding**、**enqueuedTime** に加えて、**connectionDeviceId** と **connectionModuleId** に対してもクエリを実行できます。
 
 ### <a name="application-properties"></a>Application properties
 
-アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略できます。  
+アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略可能です。  
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 例:  
+メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 次に例を示します。 
 
 システム プロパティ contentEncoding に基づいてクエリを実行するには 
 
@@ -86,9 +86,9 @@ processingPath = 'hot'
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-サポートされている演算子と関数の完全な一覧については、[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)に関するページを参照してください。
+サポートされている演算子と関数の完全な一覧については、「[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)」を参照してください。
 
-## <a name="message-routing-query-based-on-message-body"></a>メッセージ本文に基づいたメッセージ ルーティング クエリ 
+## <a name="message-routing-query-based-on-message-body"></a>メッセージ本文に基づいたメッセージ ルーティング クエリ
 
 メッセージ本文に基づいてクエリを実行するには、メッセージが UTF-8、UTF-16、UTF-32 のいずれかでエンコードされた JSON である必要があります。 システム プロパティで、`contentType` は `application/JSON` に、`contentEncoding` はサポートされているいずれかの UTF エンコードに設定する必要があります。 これらのプロパティが指定されていないと、IoT Hub でクエリ式がメッセージ本文に基づいて評価されません。 
 
@@ -141,6 +141,10 @@ deviceClient.sendEvent(message, (err, res) => {
 });
 ```
 
+> [!NOTE] 
+> これは、JavaScript の本文のエンコードを処理する方法を示しています。 C# のサンプルを確認するには、[Azure IoT C# のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Visual Studio ソリューション *SimulatedDevice* の Program.cs ファイルは、メッセージをエンコードして IoT Hub に送信する方法を示しています。 これは、[メッセージ ルーティングのチュートリアル](tutorial-routing.md)で説明されているように、メッセージ ルーティングのテストに使用されているものと同じサンプルです。 Program.cs の末尾には、エンコードされたファイルの 1 つを読み込んでデコードし、読み取ることができるように ASCII 形式で書き戻すメソッドもあります。 
+
+
 ### <a name="query-expressions"></a>クエリ式
 
 メッセージ本文に基づくクエリには、前に `$body` を付ける必要があります。 クエリ式では、本文の参照、本文配列の参照、または複数の本文の参照を使用できます。 さらにクエリ式では、本文の参照を、メッセージ システム プロパティおよびメッセージ アプリケーション プロパティの参照と組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。 
@@ -163,7 +167,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>デバイス ツインに基づいたメッセージ ルーティング クエリ 
 
-メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインに基づいたクエリ実行はサポートされていないことに注意してください。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
+メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインでのクエリ実行もサポートされています。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
 
 ```JSON
 {
@@ -196,7 +200,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ本文に基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
+メッセージ ツインに基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 これは、デバイス ツインとモジュール ツインの両方に適用されます。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -210,7 +214,9 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
-## <a name="next-steps"></a>次の手順
+ペイロードまたはプロパティ名にピリオドが含まれている本文またはデバイス ツインのルーティング クエリはサポートされていません。
+
+## <a name="next-steps"></a>次のステップ
 
 * [メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について確認する。
 * [メッセージ ルーティングのチュートリアル](tutorial-routing.md)を試す。

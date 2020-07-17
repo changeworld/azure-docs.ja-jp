@@ -1,20 +1,20 @@
 ---
-title: Azure メッセージングの比較 - Event Grid、Event Hubs、Service Bus
+title: Azure メッセージング サービスの比較
 description: Azure Event Grid、Event Hubs、および Service Bus の 3 つの Azure メッセージング サービスについて説明します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
+ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540807"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76122204"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
@@ -44,7 +44,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 ## <a name="comparison-of-services"></a>サービスの比較
 
-| Service | 目的 | type | いつ使用するか |
+| サービス | 目的 | 種類 | 使用する場合 |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 (個別) | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング (シリーズ) | テレメトリと分散データ ストリーミング |
@@ -96,9 +96,9 @@ Service Bus はブローカー メッセージング システムです。 使�
 
 ![データ ストリーミングの概要](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。 
-
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。 
+- [Azure での非同期メッセージングのオプション](/azure/architecture/guide/technology-choices/messaging)
 - [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data (イベント、データ ポイント、メッセージ - データに適した Azure メッセージング サービスの選択)](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)
 - [Storage キューと Service Bus キューの比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - Event Grid の概要については、[Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関するページを参照してください。

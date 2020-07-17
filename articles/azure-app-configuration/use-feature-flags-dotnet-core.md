@@ -1,9 +1,9 @@
 ---
 title: .NET Core アプリでの機能フラグの使用に関するチュートリアル |Microsoft Docs
-description: このチュートリアルでは、.NET Core アプリに機能フラグを実装する方法について説明します
+description: このチュートリアルでは、.NET Core アプリで機能フラグを実装する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: maiye
 editor: ''
 ms.assetid: ''
@@ -12,30 +12,34 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413670"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473440"
 ---
-# <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>チュートリアル:.NET Core アプリ内で機能フラグを使用する
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
-.NET Core 機能管理ライブラリでは、.NET または ASP.NET Core アプリケーションで機能フラグを実装するための慣用的なサポートが提供されます。 それらにより、機能フラグをより宣言的にコードに追加できるため、機能フラグ用のすべての `if` ステートメントを手動で記述する必要がなくなります。 それらは、機能フラグのライフ サイクルをバックグラウンドで管理します (たとえば、フラグの状態を更新およびキャッシュしたり、要求の呼び出し中にフラグの状態が不変であることを保証したりします)。 さらに、ASP.NET Core ライブラリには、MVC コントローラー アクション、ビュー、ルート、およびミドルウェアを含む、すぐに使用できる統合が用意されています。
+.NET Core 機能管理ライブラリでは、.NET または ASP.NET Core アプリケーションで機能フラグを実装するための慣用的なサポートが提供されます。 これらのライブラリにより、機能フラグを宣言的にコードに追加できるため、それらに対するすべての `if` ステートメントを手動で記述する必要がなくなります。
 
-「[ASP.NET Core アプリに機能フラグを追加する ](./quickstart-feature-flag-aspnet-core.md)」クイック スタートでは、ASP.NET Core アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、これらの詳細について説明します。 完全なリファレンスについては、[ASP.NET Core の機能管理に関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2091410)をご覧ください。
+機能管理ライブラリは、バックグラウンドで機能フラグのライフサイクルも管理します。 たとえば、ライブラリは、フラグの状態を更新およびキャッシュしたり、要求の呼び出し中にフラグの状態が不変であることを保証したりします。 さらに、ASP.NET Core ライブラリには、MVC コントローラー アクション、ビュー、ルート、およびミドルウェアを含む、すぐに使用できる統合が用意されています。
 
-このチュートリアルでは、以下の内容を学習します。
+「[クイック スタート: ASP.NET Core アプリに機能フラグを追加する](./quickstart-feature-flag-aspnet-core.md)」では、ASP.NET Core アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、それらの方法についてより詳細に説明します。 完全なリファレンスについては、[ASP.NET Core の機能管理に関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2091410)をご覧ください。
+
+このチュートリアルでは、次の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリケーションの主要部分に機能フラグを追加して、機能の可用性を制御します。
-> * App Configuration を使用して機能フラグを管理する場合は、App Configuration と統合します。
+> * 機能フラグを管理するのに App Configuration を使用する場合は、それと統合します。
 
-## <a name="setup"></a>セットアップ
+## <a name="set-up-feature-management"></a>機能管理を設定する
 
-.NET Core 機能マネージャー `IFeatureManager` は、フレームワークのネイティブ構成システムから機能フラグを取得します。 その結果、.NET Core がサポートする任意の構成ソース (ローカルの *appsettings.json* ファイルや環境変数など) を使用して、アプリケーションの機能フラグを定義できます。 機能マネージャーは、.NET Core の依存関係の挿入に依存します。 機能管理サービスは、標準の規則を使用して登録できます。
+.NET Core 機能マネージャーを利用するには、`Microsoft.FeatureManagement` NuGet パッケージへの参照を追加します。
+    
+.NET Core 機能マネージャー `IFeatureManager` は、フレームワークのネイティブ構成システムから機能フラグを取得します。 その結果、.NET Core がサポートする任意の構成ソース (ローカルの *appsettings.json* ファイルや環境変数など) を使用して、アプリケーションの機能フラグを定義できます。 `IFeatureManager` は、.NET Core の依存関係の挿入に依存します。 機能管理サービスは、標準の規則を使用して登録できます。
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -49,7 +53,7 @@ public class Startup
 }
 ```
 
-機能マネージャーは、既定では .NET Core 構成データの "FeatureManagement" セクションから機能フラグを取得します。 次の例では、代わりに "MyFeatureFlags" という別のセクションから読み取るように指示しています。
+機能マネージャーは、既定では .NET Core 構成データの `"FeatureManagement"` セクションから機能フラグを取得します。 次の例では、代わりに `"MyFeatureFlags"` という別のセクションから読み取るように機能マネージャーに指示しています。
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -66,7 +70,7 @@ public class Startup
 }
 ```
 
-機能フラグでフィルターを使用する場合は、追加のライブラリを含めて、それを登録する必要があります。 次の例は、**"PercentageFilter"** という組み込みの機能フィルターを使用する方法を示しています。
+機能フラグでフィルターを使用する場合は、追加のライブラリを含めて、それを登録する必要があります。 次の例は、`PercentageFilter` という組み込み機能フィルターを使用する方法を示しています。
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -82,44 +86,60 @@ public class Startup
 }
 ```
 
-効果的に操作するには、機能フラグをアプリケーションの外部で保持し、それらを個別に管理する必要があります。 そうすることで、フラグの状態をいつでも変更して、アプリケーションにその変更をすぐに反映させることができます。 App Configuration は、専用のポータル UI を使用してすべての機能フラグを整理および制御するための一元的な場所を提供し、.NET Core クライアント ライブラリを使用して直接アプリケーションにフラグを配信します。 App Configuration に ASP.NET Core アプリケーションを接続する最も簡単な方法は、構成プロバイダー `Microsoft.Extensions.Configuration.AzureAppConfiguration` を使用することです。 コードでこの NuGet パッケージを使用するには、以下を *Program.cs* ファイルに追加します。
+機能フラグはアプリケーションの外部で保持し、別々に管理することをお勧めします。 そうすることで、フラグの状態をいつでも変更して、アプリケーションにその変更をすぐに反映させることができます。 App Configuration は、専用のポータル UI を介してすべての機能フラグを一元的に整理および制御するための場所を提供します。 また、App Configuration は、その .NET Core クライアント ライブラリを介してお使いのアプリケーションに直接フラグを配信します。
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+App Configuration に ASP.NET Core アプリケーションを接続する最も簡単な方法は、構成プロバイダー `Microsoft.Azure.AppConfiguration.AspNetCore` を使用することです。 NuGet パッケージを使用するには次の手順に従います。
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+1. *Program.cs* ファイルを開いて、次のコードを追加します。
 
-機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能マネージャーは 30 秒ごとに機能フラグの値を更新します。 上記の `options.UseFeatureFlags()` 呼び出しでは、別のポーリング間隔を使用できます。
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. *Startup.cs* を開き、`Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できるようにします。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能フラグの値は 30 秒間キャッシュされるため、ミドルウェアで要求が受け取られるときにトリガーされる更新操作では、キャッシュされた値の有効期限が切れるまで、値は更新されません。 次のコードは、`options.UseFeatureFlags()` 呼び出しでキャッシュの有効期間またはポーリング間隔を 5 分に変更する方法を示しています。
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(5);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```
 
 ## <a name="feature-flag-declaration"></a>機能フラグの宣言
 
-各機能フラグには 2 つの部分があります。1 つは名前で、もう 1 つは、機能の状態が "*オン*" である (つまり、その値が `True` である) かどうかの評価に使用される 1 つ以上のフィルターの一覧です。 フィルターは、機能をオンにする必要がある対象のユース ケースを定義します。 機能フラグに複数のフィルターがある場合、フィルターのいずれかがその機能を有効にする必要があると判断するまで、フィルターの一覧が順番に走査されます。 この時点で、機能フラグは "*オン*" と見なされ、残りのフィルターの結果はすべてスキップされます。 どのフィルターも機能を有効にすることを示していない場合、機能フラグは "*オフ*" になります。
+各機能フラグには 2 つの部分があります。1 つは名前で、もう 1 つは、機能の状態が "*オン*" である (つまり、その値が `True` である) かどうかの評価に使用される 1 つ以上のフィルターの一覧です。 フィルターは、機能をオンにするタイミングに関するユース ケースを定義します。
 
-機能マネージャーは、*appsettings.json* を機能フラグの構成ソースとしてサポートしています。 次の例は、json ファイルでの機能フラグの設定方法を示しています。
+機能フラグに複数のフィルターがある場合は、フィルターのいずれかが、機能を有効にする必要があると判断するまで、フィルター一覧が順番に走査されます。 その時点で、機能フラグが "*オン*" になり、残りのフィルターの結果はすべてスキップされます。 どのフィルターも、機能を有効にする必要があると示していない場合、機能フラグは "*オフ*" になります。
+
+機能マネージャーは、*appsettings.json* を機能フラグの構成ソースとしてサポートしています。 次の例は、JSON ファイルでの機能フラグの設定方法を示しています。
 
 ```JSON
 "FeatureManagement": {
-    "FeatureX": true, // Feature flag set to on
-    "FeatureY": false, // Feature flag set to off
+    "FeatureA": true, // Feature flag set to on
+    "FeatureB": false, // Feature flag set to off
     "FeatureC": {
         "EnabledFor": [
             {
@@ -133,15 +153,15 @@ config.AddAzureAppConfiguration(options => {
 }
 ```
 
-慣例により、この json ドキュメントの `FeatureManagement` セクションが機能フラグの設定に使用されます。 上記の例は、*EnabledFor* プロパティで定義されたフィルターを持つ 3 つの機能フラグを示しています。
+慣例により、この JSON ドキュメントの `FeatureManagement` セクションが機能フラグの設定に使用されます。 前述の例は、`EnabledFor` プロパティにフィルターが定義されている 3 つの機能フラグを示しています。
 
-* **FeatureA** は "*オン*" です。
-* **FeatureB** は "*オフ*" です。
-* **FeatureC** は、*Percentage* という名前のフィルターを *Parameters* プロパティとともに指定しています。 *Percentage* は、構成可能なフィルターの例であり、**FeatureC** フラグが "*オン*" になる確率を 50% に指定します。
+* `FeatureA` は "*オン*" です。
+* `FeatureB` は "*オフ*" です。
+* `FeatureC` は、`Parameters` プロパティとともに `Percentage` という名前のフィルターを指定します。 `Percentage` は、構成可能なフィルターです。 この例で、`Percentage` は、`FeatureC` フラグが "*オン*" になる確率を 50% に指定しています。
 
-## <a name="referencing"></a>参照
+## <a name="feature-flag-references"></a>機能フラグの参照
 
-必須ではありませんが、機能フラグは、コードで簡単に参照できるように `enum` 変数として定義してください。
+コードで機能フラグを容易に参照できるように、それらを `enum` 変数として定義する必要があります。
 
 ```csharp
 public enum MyFeatureFlags
@@ -152,14 +172,14 @@ public enum MyFeatureFlags
 }
 ```
 
-## <a name="feature-flag-check"></a>機能フラグのチェック
+## <a name="feature-flag-checks"></a>機能フラグのチェック
 
-機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックし、該当する場合は、含まれるアクションを実行します。
+機能管理の基本的なパターンでは、最初に機能フラグが "*オン*" に設定されているかどうかをチェックします。 そうなっている場合は、機能マネージャーが、機能に含まれているアクションを実行します。 次に例を示します。
 
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -181,33 +201,33 @@ public class HomeController : Controller
 }
 ```
 
-## <a name="controller-action"></a>コントローラー アクション
+## <a name="controller-actions"></a>コントローラー アクション
 
-MVC コントローラーでは、`Feature` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、そのコントローラーに含まれるアクションを実行するには、*FeatureA* が "*オン*" になっている必要があります。
+MVC コントローラーでは、`FeatureGate` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
     ...
 }
 ```
 
-次の `Index` アクションを実行するには、*FeatureA* が "*オン*" になっている必要があります。
+次の `Index` アクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
     return View();
 }
 ```
 
-制御する機能フラグが "*オフ*" であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている `IDisabledFeatureHandler` が呼び出されます。 既定の `IDisabledFeatureHandler` は、応答本文なしで 404 状態コードをクライアントに返します。
+制御する機能フラグが "*オフ*" であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている `IDisabledFeaturesHandler` インターフェイスが呼び出されます。 既定の `IDisabledFeaturesHandler` インターフェイスは、応答本文なしで 404 状態コードをクライアントに返します。
 
-## <a name="view"></a>表示
+## <a name="mvc-views"></a>MVC ビュー
 
-MVC ビューでは、`<feature>` タグを使用して、機能フラグが有効か無効かに基づいてコンテンツをレンダリングできます。
+MVC ビューでは、`<feature>` タグを使用して、機能フラグが有効かどうかに基づいてコンテンツをレンダリングできます。
 
 ```html
 <feature name="FeatureA">
@@ -215,9 +235,28 @@ MVC ビューでは、`<feature>` タグを使用して、機能フラグが有�
 </feature>
 ```
 
-## <a name="mvc-filter"></a>MVC フィルター
+要件が満たされていないときに代替コンテンツを表示するには、`negate` 属性を使用できます。
 
-MVC フィルターは、機能フラグの状態に基づいてアクティブになるように設定できます。 以下は、`SomeMvcFilter` という名前の MVC フィルターを追加します。 このフィルターは、*FeatureA* が有効になっている場合のみ、MVC パイプライン内でトリガーされます。
+```html
+<feature name="FeatureA" negate="true">
+    <p>This will be shown if 'FeatureA' is disabled.</p>
+</feature>
+```
+
+一覧内のいずれかまたはすべての機能が有効になっている場合は、機能 `<feature>` タグを使用してコンテンツを表示することもできます。
+
+```html
+<feature name="FeatureA, FeatureB" requirement="All">
+    <p>This can only be seen if 'FeatureA' and 'FeatureB' are enabled.</p>
+</feature>
+<feature name="FeatureA, FeatureB" requirement="Any">
+    <p>This can be seen if 'FeatureA', 'FeatureB', or both are enabled.</p>
+</feature>
+```
+
+## <a name="mvc-filters"></a>MVC フィルター
+
+MVC フィルターは、機能フラグの状態に基づいてアクティブになるように設定できます。 以下のコードは、`SomeMvcFilter` という名前の MVC フィルターを追加します。 このフィルターは、`FeatureA` が有効になっている場合のみ、MVC パイプライン内でトリガーされます。 この機能は `IAsyncActionFilter` に制限されます。 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -232,25 +271,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="route"></a>ルート
-
-ルートは、機能フラグに基づいて動的に公開することができます。 以下は、*FeatureA* が有効になっている場合にのみ、`Beta` を既定のコントローラーとして設定するルートを追加します。
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
-```
-
 ## <a name="middleware"></a>ミドルウェア
 
-機能フラグを使用して、アプリケーションの分岐とミドルウェアを条件付きで追加できます。 以下は、*FeatureA* が有効になっている場合にのみ、要求パイプラインにミドルウェア コンポーネントを挿入します。
+機能フラグを使用して、アプリケーションの分岐とミドルウェアを条件付きで追加することもできます。 以下のコードは、`FeatureA` が有効になっている場合にのみ、要求パイプラインにミドルウェア コンポーネントを挿入します。
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));
 ```
 
-以下は、機能フラグに基づいてアプリケーション全体を分岐させる、より汎用的な機能を構築します。
+以下のコードは、機能フラグに基づいてアプリケーション全体を分岐させる、より汎用的な機能を構築します。
 
 ```csharp
 app.UseForFeature(featureName, appBuilder => {
@@ -258,10 +287,10 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、`Microsoft.FeatureManagement` ライブラリを使用して ASP.NET Core アプリケーションに機能フラグを実装する方法を説明しました。 ASP.NET Core と App Configuration での機能管理サポートの詳細については、次のリソースをご覧ください。
+このチュートリアルでは、`Microsoft.FeatureManagement` ライブラリを使用して ASP.NET Core アプリケーションで機能フラグを実装する方法を説明しました。 ASP.NET Core と App Configuration での機能管理サポートの詳細については、次のリソースをご覧ください。
 
-* [ASP.NET Core の機能フラグのサンプル コード]()
-* [Microsoft.FeatureManagement のドキュメント]()
+* [ASP.NET Core の機能フラグのサンプル コード](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Microsoft.FeatureManagement のドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [機能フラグを管理する](./manage-feature-flags.md)

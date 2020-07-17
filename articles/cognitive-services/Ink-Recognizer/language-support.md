@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: text-analytics
+ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 98962182da86fceb0b6fcc8540422f93bc0058f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025755"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67721743"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Ink Recognizer API の言語と地域のサポート
 
@@ -29,7 +29,7 @@ ms.locfileid: "65025755"
 | アルバニア語                                   |     `sq-AL`     |
 | バスク語                                     |     `eu-ES`     |
 | ボスニア語 (ラテン)                            | `bs-Latn-BA`    |
-| カタルニア語                                    |     `ca-ES`     |
+| カタロニア語                                    |     `ca-ES`     |
 | 中国語 (簡体字、中国)                |     `zh-CN`     |
 | 中国語 (繁体字、台湾)              |     `zh-TW`     |
 | クロアチア語 (クロアチア)                         |     `hr-HR`     |
@@ -89,7 +89,7 @@ ms.locfileid: "65025755"
 | コサ語                                      |     `xh-ZA`     |
 | ズールー語                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Ink Recognizer API とは](overview.md)
 * [Ink Recognizer API にデジタル インク ストロークを送信する](concepts/send-ink-data.md)

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005409"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "61445422"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 0.5 をインストールする
 
@@ -61,7 +61,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 0.5 については、「**4021576**」を入力して、**[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 0.5 については、「**4021576**」を入力して、 **[検索]** をクリックします。
    
     **StorSimple Virtual Array Update 0.5**など、修正プログラムの一覧が表示されます。
    
@@ -69,14 +69,14 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 4. **[Download]** をクリックします。 
 
-5. ダウンロードする 2 つのファイル、*.msu* と *.cab* ファイルが表示されます。 各ファイルをフォルダーにダウンロードします。 デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
+5. ダウンロードする 2 つのファイル、 *.msu* と *.cab* ファイルが表示されます。 各ファイルをフォルダーにダウンロードします。 デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
 
 6. ファイルが置かれているフォルダーを開きます。
     ![パッケージ内のファイル](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     次のものがあります。
     -  Microsoft 更新プログラムのスタンドアロン パッケージ ファイル `WindowsTH-KB3011067-x64`。 このファイルは、デバイス ソフトウェアを更新するために使用されます。
-    - Geneva Monitoring Agent パッケージ ファイル `GenevaMonitoringAgentPackageInstaller`。 このファイルはを監視および診断サービス (MDS) エージェントを更新するために使用されます。 cab ファイルをダブルクリックします。 .msi が表示されます。 ファイルを選択し、右クリックしてファイルの **[抽出]** を選択します。 エージェントを更新するには、_.msi_ ファイルを使用します。
+    - Geneva Monitoring Agent パッケージ ファイル `GenevaMonitoringAgentPackageInstaller`。 このファイルはを監視および診断サービス (MDS) エージェントを更新するために使用されます。 cab ファイルをダブルクリックします。 .msi が表示されます。 ファイルを選択し、右クリックしてファイルの **[抽出]** を選択します。 エージェントを更新するには、 _.msi_ ファイルを使用します。
 
         ![MDS のエージェントの更新プログラム ファイルを抽出する](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
@@ -90,11 +90,11 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをインストールするには
 
-1. ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。
+1. ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -106,18 +106,18 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 0.5 では **10.0.0.0.0.10290.0** です。
+5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 0.5 では **10.0.0.0.0.10290.0** です。
    
    > [!NOTE]
    > ローカル Web UI と Azure Portal では、ソフトウェアのバージョンの表示方法が少し異なります。 たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10290** と表示され、Azure Portal では **10.0.10290.0** と表示されます。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
-6. 次の手順では、MDS エージェントを更新します。 **[ソフトウェア更新]** ページで、**[ファイル パスの更新]** に移動して、`GenevaMonitoringAgentPackageInstaller.msi` ファイルを参照します。 手順 2 - 4 を繰り返します。 仮想アレイを再起動したら、ローカル Web UI にサインインします。
+6. 次の手順では、MDS エージェントを更新します。 **[ソフトウェア更新]** ページで、 **[ファイル パスの更新]** に移動して、`GenevaMonitoringAgentPackageInstaller.msi` ファイルを参照します。 手順 2 - 4 を繰り返します。 仮想アレイを再起動したら、ローカル Web UI にサインインします。
 
 これで更新が完成しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

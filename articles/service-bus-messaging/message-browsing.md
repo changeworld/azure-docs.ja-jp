@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus のメッセージの読み取り | Microsoft Docs
-description: Service Bus メッセージの読み取りとピーク
+title: Azure Service Bus - メッセージの参照
+description: Service Bus メッセージを参照してピークすると、Azure Service Bus クライアントは、キューまたはサブスクリプションに存在するすべてのメッセージを列挙できます。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855943"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77539367"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 
@@ -34,7 +34,7 @@ Service Bus クライアントは、メッセージを読み取るか、ピー�
 
 ## <a name="peek-apis"></a>Peek API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) および [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) メソッドはすべての .NET および Java クライアント ライブラリおよびすべての受信オブジェクトのメソッド、**MessageReceiver**、**MessageSession**、**QueueClient**、および **SubscriptionClient** に存在します。 ピークは、すべてのキュー、サブスクリプション、およびそれらに対応する配信不能キューに動作します。
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) および [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) メソッドはすべての .NET および Java クライアント ライブラリおよびすべての受信オブジェクトのメソッド、**MessageReceiver**、**MessageSession**。 ピークは、すべてのキュー、サブスクリプション、およびそれらに対応する配信不能キューに動作します。
 
 繰り返し呼び出されると、Peek メソッドは、最小から最大のシーケンス番号の順序で、キューまたはサブスクリプションのログ内に存在するすべてのメッセージを列挙します。 これは、メッセージがエンキューされる順序であり、メッセージが最終的に取得される順序ではありません。
 
@@ -42,7 +42,7 @@ Service Bus クライアントは、メッセージを読み取るか、ピー�
 
 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を使用してメソッドのオーバー ロードをシードを設定して開始し、パラメーターなしでメソッドのオーバーロードを呼び出してさらに列挙することもできます。 **PeekBatch** 関数も同様に機能しますが、一度にすべてのメッセージ セットを取得します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

@@ -2,24 +2,17 @@
 title: Cloud Services ロール構成の XPath チート シート |Microsoft Docs
 description: クラウド サービス ロール構成で設定を環境変数として公開するために使用できるさまざまな XPath 設定。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
+author: tgore03
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: tagore
+ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798761"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75386087"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath で環境変数としてロール構成設定を公開する
 クラウド サービス worker ロールまたは Web ロールのサービス定義ファイルで、ランタイム構成値を環境変数として公開できます。 次の XPath 値がサポートされています (これは API 値に対応します)。
@@ -162,10 +155,13 @@ ms.locfileid: "59798761"
 </WorkerRole>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルの詳細を理解します。
 
 [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) パッケージを作成します。
 
 ロールの [リモート デスクトップ](cloud-services-role-enable-remote-desktop-new-portal.md) を有効にします。
+
+
+
 

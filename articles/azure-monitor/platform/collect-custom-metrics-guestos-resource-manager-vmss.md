@@ -1,19 +1,18 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
+title: テンプレートを使用して Azure Monitor で Windows スケール セットのメトリックを収集する
 description: Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129630"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125776"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -23,7 +22,7 @@ Azure Monitor [Microsoft Azure Diagnostics (WAD) 拡張機能](diagnostics-exten
 
 この記事では、Windows 仮想マシン スケール セット用のゲスト OS のパフォーマンス メトリックを Azure Monitor データ ストアに送信するプロセスについて説明します。 Microsoft Azure Diagnostics 拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。 これまで、Microsoft Azure Diagnostics 拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。  
 
-Resource Manager テンプレートを初めて利用する場合は、[テンプレートのデプロイ](../../azure-resource-manager/resource-group-overview.md)とその構造および構文についてご確認ください。  
+Resource Manager テンプレートを初めて利用する場合は、[テンプレートのデプロイ](../../azure-resource-manager/management/overview.md)とその構造および構文についてご確認ください。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,6 +30,7 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 - [Azure PowerShell](/powershell/azure) がインストールされている必要があります。[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 
 
+- お使いの VM リソースが、[カスタム メトリックをサポートするリージョン](metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する 
 Azure Diagnostics 拡張機能では、**データ シンク**と呼ばれる機能を使って、メトリックとログをさまざまな場所にルーティングします。 次の手順では、Resource Manager テンプレートと PowerShell を使用して、新しい Azure Monitor データ シンクを使って VM をデプロイする方法を説明します。 
@@ -49,7 +49,7 @@ Azure Diagnostics 拡張機能では、**データ シンク**と呼ばれる機
  
 - デプロイする **vmSKU** を設定します。 Standard_D2_v3 をお勧めします。 
 - 仮想マシン スケール セットに使用する **windowsOSVersion** を指定します。 2016-Datacenter をお勧めします。 
-- **vmssName** プロパティを使用して、デプロイする仮想マシン スケール セット リソースに名前を付けます  (**VMSS-WAD-TEST** など)。    
+- **vmssName** プロパティを使用して、デプロイする仮想マシン スケール セット リソースに名前を付けます (**VMSS-WAD-TEST** など)。    
 - **instanceCount** プロパティを使用して、仮想マシン スケール セットで実行する VM の数を指定します。
 - 仮想マシン スケール セットの **adminUsername** と **adminPassword** について値を入力します。 これらのパラメーターはスケール セット内の VM へのリモート アクセスに使用されます。 お使いの VM がハイジャックされないように、このテンプレートのパラメーターは使用**しないでください**。 ボットは、インターネット上にあるパブリック GitHub リポジトリのユーザー名やパスワードをスキャンします。 多くの場合、このようなボットは、これらの既定値を使用して VM をテストします。 
 
@@ -252,12 +252,12 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
    ```
 
    > [!NOTE]  
-   > 必ず、カスタム メトリックに対して有効になっている Azure リージョンを使用してください。 必ず、[カスタム メトリックに対して有効になっている Azure リージョン](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions)を使用してください。
+   > 必ず、カスタム メトリックに対して有効になっている Azure リージョンを使用してください。 必ず、[カスタム メトリックに対して有効になっている Azure リージョン](./metrics-custom-overview.md#supported-regions)を使用してください。
  
 1. 次のコマンドを実行して、VM をデプロイします。  
 
    > [!NOTE]  
-   > 既存のスケール セットを更新する場合は、**-Mode Incremental** をコマンドの末尾に追加します。 
+   > 既存のスケール セットを更新する場合は、 **-Mode Incremental** をコマンドの末尾に追加します。 
  
    ```powershell
    New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
@@ -271,11 +271,11 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 ## <a name="chart-your-metrics"></a>メトリックをグラフ化する 
 
-1. Azure ポータルにサインインします。 
+1. Azure portal にサインインします。 
 
 1. 左側のメニューで **[モニター]** を選択します。 
 
-1. **[モニター]** ページで、**[メトリック]** を選択します。 
+1. **[モニター]** ページで、 **[メトリック]** を選択します。 
 
    ![[モニター] - [メトリック] ページ](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 
@@ -283,15 +283,15 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 1. リソースのドロップダウン メニューで、作成した仮想マシン スケール セットを選択します。  
 
-1. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。 
+1. 名前空間のドロップダウン メニューで、 **[azure.vm.windows.guest]** を選択します。 
 
-1. メトリックのドロップダウン メニューで、**[Memory\%Committed Bytes in Use]** を選択します。  
+1. メトリックのドロップダウン メニューで、 **[Memory\%Committed Bytes in Use]** を選択します。  
 
 その後、このメトリックのディメンションを使用して、特定の VM に対してこのメトリックをグラフ化するか、スケール セット内の各 VM をプロットできます。 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
 
 

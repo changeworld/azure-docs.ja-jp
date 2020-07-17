@@ -1,11 +1,11 @@
 ---
-title: Azure Notification Hubs と Google Cloud Messaging を使用して特定の Android デバイスにプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs と Google Cloud Messaging を使用して特定の Android デバイスに通知を送信する | Microsoft Docs
 description: Notification Hubs を使用し、Azure Notification Hubs と Google Cloud Messaging を使用して特定の Android デバイスにプッシュ通知を送信する方法について説明します。
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: af08d3ca6eaa95663b0bb669f6dc82a13df5ab39
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233115"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127300"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して特定の Android デバイスにプッシュ通知を送信する (非推奨)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>チュートリアル:Google Cloud Messaging (非推奨) を使用して特定の Android デバイスにプッシュ通知を送信する
 
 > [!WARNING]
 > 2018 年 4 月 10 日に、Google は Google Cloud Messaging (GCM) を非推奨としました。 GCM サーバーおよびクライアント API は非推奨となり、早ければ 2019 年 5 月 29日に削除されます。 詳しくは、[GCM and FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq) を参照してください。
@@ -45,7 +47,7 @@ ms.locfileid: "65233115"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する][get-started]」で作成したアプリに基づいて作成されています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する][get-started]」を完了してください。
+このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する][get-started]」で作成された Android アプリケーションを更新します。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する][get-started]」で作成された Android アプリケーションを更新します。
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -321,7 +323,7 @@ ms.locfileid: "65233115"
 
     ![テクノロジのニュース通知](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、カテゴリに登録している特定の Android デバイスにブロードキャスト通知を送信しました。 特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

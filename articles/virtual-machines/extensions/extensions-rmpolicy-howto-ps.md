@@ -1,32 +1,32 @@
 ---
-title: Azure Policy を使用して VM 拡張機能のインストールを制限する | Microsoft Docs
+title: Azure Policy を使用して VM 拡張機能のインストールを制限する
 description: Azure Policy を使用して拡張機能の展開を制限できます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: b86429c90f436007116a45c6dbab443d6cc889e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341659"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188554"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 
-自分の Windows VM で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、PowerShell を使用して Azure ポリシーを作成すると、リソース グループ内で VM の拡張機能を制限できます。 
+自分の Windows VM で特定の拡張機能が使用またはインストールされないようにする必要がある場合は、PowerShell を使用して Azure Policy 定義を作成すると、リソース グループ内で VM の拡張機能を制限できます。 
 
 このチュートリアルでは、Cloud Shell で Azure PowerShell を使用します。このバージョンは常に更新され最新になっています。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>規則ファイルを作成する
 
@@ -165,5 +165,5 @@ Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
 Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページをご覧ください。

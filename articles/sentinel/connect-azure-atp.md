@@ -1,55 +1,60 @@
 ---
-title: Azure Sentinel プレビューに Azure ATP データを接続する | Microsoft Docs
+title: Azure Sentinel に Azure ATP データを接続する | Microsoft Docs
 description: Azure Sentinel に Azure ATP データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: 5bf3cc44-ecda-4c78-8a63-31ab42f43605
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: f0d86a62c59df5bebd34137d0903fcaa7014573d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 12/30/2019
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204269"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77588588"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを接続する
 
 > [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
+> Azure Sentinel の Azure Advanced Threat Protection データ コネクタは、現在パブリック プレビューです。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 シングル クリックで、[Azure Advanced Threat Protection](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) から Azure Sentinel にログをストリーミングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
-- Azure ATP のプライベート プレビューのお客様であること
+- Azure ATP のプレビューのお客様であることと、Azure ATP と Microsoft Cloud App Security の統合を有効にすること。 詳細については、「[Azure Advanced Protection の統合](https://docs.microsoft.com/cloud-app-security/aatp-integration)」を参照してください。
 
 ## <a name="connect-to-azure-atp"></a>Azure ATP への接続
 
-Azure ATP プライベート プレビューのバージョンが、[ネットワーク上で有効になっていること](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1) を確認します。
+Azure ATP のプレビュー バージョンが、[ネットワーク上で有効になっていること](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1) を確認します。
 Azure ATP がデプロイされていて、データを取り込んでいる場合、不審なアラートの Azure Sentinel へのストリーミングは簡単に実行できます。 アラートが Azure Sentinel へのストリーミングを開始するには、最大で 24 時間かかる場合があります。
 
 
+1. Azure ATP を Azure Sentinel に接続するには、まず Azure ATP と Microsoft Cloud App Security の統合を有効にする必要があります。 この方法の詳細については、「[Azure Advanced Threat Protection の統合](https://docs.microsoft.com/cloud-app-security/aatp-integration)」を参照してください。
 
-1. Azure Sentinel で **[データ コネクタ]** を選択し、**[Azure ATP]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure Advanced Threat Protection (プレビュー)]** タイルをクリックします。
 
-2. **[接続]** をクリックします。
+1. Azure ATP のアラートによって Azure Sentinel で自動的にインシデントが生成されるようにするかどうかを選択できます。 **[Create incidents]\(インシデントの作成\)** で **[有効化]** を選択して、接続されたセキュリティ サービスで生成されたアラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 次に、 **[分析]** でこのルールを編集してから、 **[Active rules]\(アクティブなルール\)** を選択します。
 
-6. Azure ATP アラートで Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
+1. **[接続]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Azure Advanced Threat Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+1. Azure ATP アラートで Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
+
+> [!NOTE]
+> アラートが 30 KB より大きい場合、Azure Sentinel はアラートの [エンティティ] フィールドの表示を停止します。
+
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Azure Advanced Threat Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 

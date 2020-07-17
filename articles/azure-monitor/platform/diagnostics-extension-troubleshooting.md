@@ -1,29 +1,27 @@
 ---
 title: Azure Diagnostics 拡張機能のトラブルシューティング
 description: Azure Virtual Machines、Service Fabric、または Cloud Services で Azure Diagnostics を使うときの問題をトラブルシューティングします。
-services: azure-monitor
-author: rboucher
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.author: robb
-ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234271"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
 
 ## <a name="logical-components"></a>論理コンポーネント
-**診断プラグイン ランチャー (DiagnosticsPluginLauncher.exe)**:Azure Diagnostics 拡張機能を起動します。 エントリ ポイント プロセスとして機能します。
+**診断プラグイン ランチャー (DiagnosticsPluginLauncher.exe)** :Azure Diagnostics 拡張機能を起動します。 エントリ ポイント プロセスとして機能します。
 
-**診断プラグイン (DiagnosticsPlugin.exe)**:監視エージェントの有効期間を構成、起動、管理します。 ランチャーによって起動されるメイン プロセスです。
+**診断プラグイン (DiagnosticsPlugin.exe)** :監視エージェントの有効期間を構成、起動、管理します。 ランチャーによって起動されるメイン プロセスです。
 
-**監視エージェント (MonAgent\*.exe プロセス)**:診断データを監視、収集、転送します。  
+**監視エージェント (MonAgent\*.exe プロセス)** :診断データを監視、収集、転送します。  
 
 ## <a name="logartifact-paths"></a>ログ/アーティファクトのパス
 以下は、いくつかの重要なログとアーティファクトのパスです。 以下の文章では、この情報を参照します。
@@ -52,13 +50,13 @@ ms.locfileid: "65471779"
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>メトリック データが Azure ポータルに表示されない
-Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでこのデータが表示できない場合、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認してください。
+Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでのデータの表示に問題がある場合は、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルを調べて、対応するメトリック レコードがそこにあるかどうかを確認し、[リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft.Insights を確実に登録します。
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
-リソース ID が間違っている場合は、**診断構成****、** > **メトリック** > **ResourceId** で、リソース ID が正しく設定されているかどうかを確認します。
+リソース ID が間違っている場合は、**診断** **構成** > **メトリック** > **ResourceId** をチェックして、リソース ID が正しく設定されているかどうかを確認します。
 
-特定のメトリックのデータがない場合は、**[診断構成]** > 、**[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+特定のメトリックのデータがない場合は、 **[診断構成]**  > 、 **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -127,7 +125,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 - **トレース ログ**:VM にリモート アクセスし、アプリの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 https://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「トレース ログが見つからない場合 (詳細)」をご覧ください。
 
-- **ETW トレース**:VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
+- **ETW トレース**:VM にリモート アクセスし、PerfView をインストールします。  PerfView で、 **[ファイル]**  >  **[ユーザー コマンド]**  >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
 
 - **イベント ログ**:VM にリモート アクセスします。 `Event Viewer` を開き、イベントが存在することを確認します。
 
@@ -209,15 +207,15 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 | Event | テーブル名 |
 | --- | --- |
-| provider=”prov1” &lt;Event id=”1” /&gt; |WADEvent+MD5(“prov1”)+”1” |
-| provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
-| provider=”prov1” &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
-| provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt; |WADdest2 |
+| provider="prov1" &lt;Event id="1" /&gt; |WADEvent+MD5("prov1")+"1" |
+| provider="prov1" &lt;Event id="2" eventDestination="dest1" /&gt; |WADdest1 |
+| provider="prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
+| provider="prov2" &lt;DefaultEvents eventDestination="dest2" /&gt; |WADdest2 |
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>診断拡張機能の構成を確認する方法
-拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](http://resources.azure.com) に移動し、Azure Diagnostics 拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
+拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](https://resources.azure.com) に移動し、Azure Diagnostics 拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
 
 または、マシンにリモート デスクトップ接続し、Azure 診断構成ファイルを確認します。詳細は、ログ アーティファクト パス セクションにあります。
 
@@ -232,7 +230,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 | 終了コード | 説明 |
 | --- | --- |
-| 0 |成功。 |
+| 0 |正常終了しました。 |
 | -1 |一般的なエラー。 |
 | -2 |rcf ファイルを読み込めませんでした。<p>この内部エラーは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生します。 |
 | -3 |診断構成ファイルを読み込めませんでした。<p><p>解決方法:構成ファイルがスキーマ検証を渡さないことが原因です。 スキーマに準拠する構成ファイルを使用してください。 |
@@ -290,13 +288,13 @@ Windows Azure Diagnostics 拡張機能は .NET 4.5 framework 以降にランタ�
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
 
-**対応策:**.NET 4.5 以降をマシンにインストールします。
+**対応策:** .NET 4.5 以降をマシンにインストールします。
 
 **2.パフォーマンス カウンターのデータがストレージでは使用できるが、ポータルに表示されない**
 
 既定では、仮想マシンのポータルに特定のパフォーマンス カウンターが表示されます。 パフォーマンス カウンターは表示されないが、データが生成されていることはわかっている (データがストレージで使用できるため) 場合、以下を確認してください。
 
-- ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。 **対応策**:システム アカウント用に、マシンの言語を英語に変更します。 **[コントロール パネル]** > **[地域と言語]** > **[管理]** > **[設定のコピー]** の順に選択します。 次に、**[ようこそ画面とシステム アカウント]** の選択を解除し、カスタム言語がシステム アカウントに適用されないようにします。
+- ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。 **対応策**:システム アカウント用に、マシンの言語を英語に変更します。 **[コントロール パネル]**  >  **[地域と言語]**  >  **[管理]**  >  **[設定のコピー]** の順に選択します。 次に、 **[ようこそ画面とシステム アカウント]** の選択を解除し、カスタム言語がシステム アカウントに適用されないようにします。
 
-- パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、パフォーマンス カウンターが Azure Storage シンクに送られるときに、構成済みのカウンターと収集されたカウンターをポータルが関連付けることができなくなります。 **対応策**:ワイルドカードを使用でき、ポータルで (\*) を展開できることを確認するために、パフォーマンス カウンターを ["Azure Monitor" シンク](diagnostics-extension-schema.md#diagnostics-extension-111)にルーティングします。
+- パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、パフォーマンス カウンターが Azure Storage シンクに送られるときに、構成済みのカウンターと収集されたカウンターをポータルが関連付けることができなくなります。 **対応策**:ワイルドカードを使用でき、ポータルで (\*) を展開できることを確認するために、ご自分のパフォーマンス カウンターを Azure Monitor シンクにルーティングします。
 

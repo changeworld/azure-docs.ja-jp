@@ -8,10 +8,12 @@
   items:
     - name: Azure アプリケーションの高可用性
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: リージョンと Availability Zones
+      href: az-overview.md
     - name: 可用性ゾーンのドキュメント
       items:
-        - name: 可用性ゾーンとは
-          href: az-overview.md
+        - name: 可用性ゾーンをサポートしているリージョン
+          href: az-region.md
         - name: 仮想マシン
           items:
             - name: CLI を使用して可用性ゾーン内に Linux VM を作成する
@@ -23,7 +25,7 @@
         - name: マネージド ディスク
           items:
             - name: CLI を使用して可用性ゾーン内にマネージド ディスクを追加する
-              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
             - name: PowerShell を使用して可用性ゾーン内にマネージド ディスクを追加する
               href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
         - name: 仮想マシン スケール セット
@@ -33,7 +35,7 @@
         - name: Load Balancer
           items:
             - name: Load Balancer とは
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Load Balancer Standard と Availability Zones
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: ゾーン冗長パブリック Standard Load Balancer を作成する
@@ -61,18 +63,18 @@
           items:
             - name: SQL Database での可用性ゾーン
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Storage
+        - name: ストレージ
           items:
             - name: ゾーン冗長ストレージ
               href: ../storage/common/storage-redundancy-zrs.md
         - name: Event Hubs
           items:
             - name: Event Hubs の geo ディザスター リカバリー
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
         - name: Service Bus
           items:
             - name: Service Bus の geo ディザスター リカバリー
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
         - name: VPN Gateway
           items:
             - name: ゾーン冗長仮想ネットワーク ゲートウェイの作成
@@ -81,6 +83,14 @@
           items:
             - name: ゾーン冗長仮想ネットワーク ゲートウェイの作成
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: ID
+          items:
+            - name: Azure Active Directory Domain Services インスタンスの作成
+              href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Edge Zone のドキュメント
+      items:
+        - name: Edge Zone とは
+          href: ../networking/edge-zones-overview.md
 - name: ディザスター リカバリー
   items:
     - name: Azure Site Recovery を使用する

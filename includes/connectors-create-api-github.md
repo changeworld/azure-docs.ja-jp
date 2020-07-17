@@ -1,19 +1,15 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: logic-apps
-author: MandiOhlinger
 ms.service: logic-apps
 ms.topic: include
+author: ecfan
+ms.author: estfan
 ms.date: 03/02/2018
-ms.author: mandia
-ms.custom: include file
-ms.openlocfilehash: 11280e1678f52ede928cb2a85ea83add222e15fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1aabc1b33722c571c6519b6620fb62211a44c2e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149223"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74789746"
 ---
 1. [Azure Portal](https://portal.azure.com) で、空のロジック アプリを作成します。 
 
@@ -26,7 +22,7 @@ ms.locfileid: "66149223"
    > [!NOTE]
    > すべてのロジック アプリ ワークフローが、トリガーによって開始する必要があります。 アクションを選択できるのは、使用しているロジック ワークフローが既にトリガーによって開始されているときだけです。 
 
-4. 以前に接続を作成していない場合は、**[サインイン]** を選択し、メッセージが表示されたら GitHub の資格情報を入力します。  
+4. 以前に接続を作成していない場合は、 **[サインイン]** を選択し、メッセージが表示されたら GitHub の資格情報を入力します。  
 
    ![GitHub の資格情報でサインイン](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 

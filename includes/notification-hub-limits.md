@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: spelluru
 ms.openlocfilehash: 6efcd46b174d34670a01bb7d5c440559bf0f116a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181565"
 ---
 | レベル              | 無料         | Basic    | Standard   |
 | ------------------ | ------------ | ---------- | ---------- |

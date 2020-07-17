@@ -4,16 +4,16 @@ description: Azure Portal 内にある Azure Functions の概要に関するヘ�
 services: functions
 author: sewatson
 manager: lwelicki
-ms.service: functions
+ms.service: azure-functions
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: cc37fbe218dd94da865e61e4b4275a7171fdbe7a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ece125cbbaf13062bc7c5e8b313784b4d52c726
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64708121"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67605200"
 ---
 # <a name="azure-functions-documentation"></a>Azure Functions のドキュメント
 
@@ -26,7 +26,7 @@ Azure Functions は、インフラストラクチャを明示的にプロビジ�
 - [Azure Portal](/azure/azure-functions/functions-create-first-azure-function)
 - [Azure CLI](/azure/azure-functions/functions-create-first-azure-function-azure-cli)
 
-## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
+## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
 Azure Functions を構築して管理する方法について説明します。
 

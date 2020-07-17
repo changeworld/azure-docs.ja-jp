@@ -1,18 +1,17 @@
 ---
-title: Azure Database for MariaDB への接続に関する問題のトラブルシューティング |Microsoft Docs
-description: Azure Database for MariaDB への接続に関する問題のトラブルシューティング方法について説明します。
-keywords: mariadb 接続,接続文字列,接続の問題,一時的なエラー,接続エラー
-author: jan-eng
-ms.author: janeng
+title: 接続に関する問題のトラブルシューティング - Azure Database for MariaDB
+description: 再試行が必要な一時的なエラー、ファイアウォールの問題、障害など、Azure Database for MariaDB への接続に関する問題をトラブルシューティングする方法について説明します。
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: f5c5a980a99bac3bf02eaaf9c072861ca753d449
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: troubleshooting
+ms.date: 3/18/2020
+ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860450"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101452"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Azure Database for MariaDB への接続に関する問題のトラブルシューティング
 
@@ -57,6 +56,6 @@ ms.locfileid: "57860450"
 3. 接続文字列およびその他の接続設定を確認します。 「[Azure Database for MariaDB にアプリケーションを接続する方法](howto-connection-string.md)」を参照してください。
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧する手順について「[Azure Database for MariaDB でのビジネス継続性の概要](concepts-business-continuity.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for MariaDB の一時的な接続エラーに対処する](concepts-connectivity.md)

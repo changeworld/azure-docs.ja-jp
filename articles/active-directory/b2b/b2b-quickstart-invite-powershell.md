@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - PowerShell を使用してゲスト ユーザーを追加する - Azure Active Directory | Microsoft Docs
+title: クイック スタート:PowerShell を使用してゲスト ユーザーを追加する - Azure AD
 description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5325529acb66735db0c27c0f5bdfca819e8ec4d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812299"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216010"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート:PowerShell を使用してゲスト ユーザーを追加する
 
@@ -75,10 +75,10 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-an-invitation"></a>招待状を送信する
 
-1. テスト用の電子メール アカウントに招待状を送信するには、次の PowerShell コマンドを実行します (**"Sanda"** と **sanda\@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
+1. テスト用の電子メール アカウントに招待状を送信するには、次の PowerShell コマンドを実行します ( **"Sanda"** と **sanda\@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. このコマンドは、指定した電子メール アドレスに招待状を送信します。 出力をチェックします。出力は次のようになります。
 
@@ -95,17 +95,17 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
    ![ゲスト ユーザーが追加されたことを示す PowerShell の出力](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、ディレクトリ内のテスト用のユーザー アカウントを削除できます。 ユーザー アカウントを削除するには、次のコマンドを使用します。
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
-次に例を示します。`Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
+例: `Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、PowerShell を使用して、1 人のゲスト ユーザーを招待してディレクトリに追加しました。 次に、PowerShell を使用して、一括でゲスト ユーザーを招待する方法について説明します。
 
 > [!div class="nextstepaction"]

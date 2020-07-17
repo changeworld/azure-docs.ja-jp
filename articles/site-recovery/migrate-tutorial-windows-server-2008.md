@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery を使用してオンプレミスの Windows Server 2008 サーバーを Azure に移行する | Microsoft Docs
+title: Azure Site Recovery を使用して Windows Server 2008 サーバーを Azure に移行する
 description: この記事では、Azure Site Recovery を使用して、オンプレミスの Windows Server 2008 マシンを Azure に移行する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.date: 03/18/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5de6ba8ab64797da24039718ca7f2c0b88d1d33d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881343"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73936134"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
@@ -29,6 +28,9 @@ ms.locfileid: "58881343"
 > * Azure にフェールオーバーして、移行を完了する
 
 「制限事項と既知の問題」セクションでは、いくつかの制限事項と、Windows Server 2008 マシンを Azure に移行する際に発生する可能性がある既知の問題の回避策を一覧に示しています。 
+
+> [!NOTE]
+> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細については、こちらを参照してください](../migrate/migrate-services-overview.md)。
 
 
 ## <a name="supported-operating-systems-and-environments"></a>サポートされているオペレーティング システムと環境
@@ -48,11 +50,11 @@ ms.locfileid: "58881343"
 
 開始する前に、[VMware と物理サーバーの移行](vmware-azure-architecture.md)や [Hyper-V 仮想マシンの移行](hyper-v-azure-architecture.md)のための Azure Site Recovery アーキテクチャを確認することをお勧めします。 
 
-Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper-V を移行するには、[オンプレミス マシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)チュートリアルの手順に従います。
+Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper-V 仮想マシンを移行するには、[オンプレミス マシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)チュートリアルの手順に従います。
 
 このチュートリアルの手順以外の部分では、オンプレミス VMware 仮想マシンと Windows Server 2008 または 2008 R2 を実行している物理サーバーを移行する方法を説明しています。
 > [!TIP]
-> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください。
+> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください
 
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
@@ -80,7 +82,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
   >
 
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 次のタスクを実行して、Azure サブスクリプションおよびオンプレミス VMware/物理環境を準備します。
 
@@ -91,15 +93,15 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[リソースの作成]** > **[管理ツール]** > **[Backup and Site Recovery]** の順にクリックします。
+2. **[リソースの作成]**  >  **[管理ツール]**  >  **[バックアップおよびサイトの回復]** の順にクリックします。
 3. **[名前]** に、フレンドリ名 **W2K8-migration** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 4. リソース グループ **w2k8migrate** を作成します。
 5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
-6. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]**、**[作成]** の順にクリックします。
+6. ダッシュボードからコンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]** 、 **[作成]** の順にクリックします。
 
    ![新しいコンテナー](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
-新しいコンテナーは、**[ダッシュボード]** の **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに追加されます。
+新しいコンテナーは、 **[ダッシュボード]** の **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに追加されます。
 
 
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>移行対象のオンプレミス環境を準備する
@@ -111,23 +113,23 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
 ターゲット リソースを選択して確認します。
 
-1. **[インフラストラクチャの準備]** > **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
+1. **[インフラストラクチャの準備]**  >  **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
 2. Resource Manager デプロイ モデルを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
 
-1. 新しいレプリケーション ポリシーを作成するには、**[Site Recovery インフラストラクチャ]** > **[レプリケーション ポリシー]** > **[+ レプリケーション ポリシー]** の順にクリックします。
+1. 新しいレプリケーション ポリシーを作成するには、 **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]**  >  **[+ レプリケーション ポリシー]** の順にクリックします。
 2. **[レプリケーション ポリシーの作成]** で、ポリシー名を指定します。
 3. **[RPO しきい値]** で、復旧ポイントの目標 (RPO) の上限を指定します。 レプリケーション RPO がこの制限を超えると、アラートが生成されます。
 4. **[復旧ポイントの保持期間]** で、各復旧ポイントのリテンション期間の長さ (時間単位) を指定します。 レプリケートされたサーバーは、この期間内の任意の時点に復旧できます。 Premium Storage にレプリケートされたマシンでは最大 24 時間のリテンション期間がサポートされ、Standard Storage の場合は 72 時間です。
-5. **[アプリ整合性スナップショットの頻度]** で、**[オフ]** を指定します。 **[OK]** をクリックしてポリシーを作成します。
+5. **[アプリ整合性スナップショットの頻度]** で、 **[オフ]** を指定します。 **[OK]** をクリックしてポリシーを作成します。
 
 このポリシーは自動的に構成サーバーに関連付けられます。
 
 > [!WARNING]
-> レプリケーション ポリシーのアプリ整合性スナップショットの頻度の設定で、**[オフ]** を指定していることを確認してください。 Windows Server 2008 を実行しているサーバーのレプリケート時は、クラッシュ整合性復旧ポイントだけがサポートされます。 アプリ整合性スナップショットの頻度にその他の値を指定すると、アプリケーション整合性復旧ポイントの不足が原因で、サーバーのレプリケーションの正常性が致命的な状態に変わり、エラーのアラートが発生します。
+> レプリケーション ポリシーのアプリ整合性スナップショットの頻度の設定で、 **[オフ]** を指定していることを確認してください。 Windows Server 2008 を実行しているサーバーのレプリケート時は、クラッシュ整合性復旧ポイントだけがサポートされます。 アプリ整合性スナップショットの頻度にその他の値を指定すると、アプリケーション整合性復旧ポイントの不足が原因で、サーバーのレプリケーションの正常性が致命的な状態に変わり、エラーのアラートが発生します。
 
    ![レプリケーション ポリシーの作成](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
@@ -152,11 +154,11 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 移行するマシンのフェールオーバーを実行します。
 
-1. **[設定]** > **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
-2. **[フェールオーバー]** で、フェールオーバーする**復旧ポイント**を選択します。 最新の復旧ポイントを選択します。
+1. **[設定]**  >  **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
+2. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。 最新の復旧ポイントを選択します。
 3. **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 Site Recovery は、フェールオーバーを開始する前にサーバーをシャットダウンしようとします。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
 4. 想定どおりに Azure VM が Azure に表示されることを確認します。
-5. **[レプリケートされたアイテム]** でサーバーを右クリックし、**[移行の完了]** を選択します。 次の処理が実行されます。
+5. **[レプリケートされたアイテム]** でサーバーを右クリックし、 **[移行の完了]** を選択します。 次の処理が実行されます。
 
     - 移行プロセスが終了し、サーバーのレプリケーションが停止して、そのサーバーでの Site Recovery の課金が停止します。
     - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。

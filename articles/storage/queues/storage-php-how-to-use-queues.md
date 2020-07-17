@@ -1,28 +1,26 @@
 ---
 title: PHP から Queue Storage を使用する方法 - Azure Storage
 description: Azure Queue ストレージを使用して、キューの作成と削除のほか、メッセージの挿入、取得、削除を行う方法を説明します。 サンプルは PHP で記述されています。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: php
-ms.topic: article
-ms.date: 01/11/2018
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 01/11/2018
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 4ff54f9ca20c101de55bec2c7acf914c17bd7709
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 692c943e48c08771b5f1c60b66412270081cf0e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951199"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72302960"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP から Queue ストレージを使用する方法
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>概要
 このガイドでは、Azure Queue Storage サービスを使用して、一般的なシナリオを実行する方法について説明します。 サンプルは、[PHP 用の Azure Storage クライアント ライブラリ][download]のクラスを使用して記述されます。 キュー メッセージの挿入、ピーク、取得、削除のシナリオ、キューの作成と削除のシナリオについて説明します。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -30,12 +28,15 @@ ms.locfileid: "65951199"
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Azure Queue Storage にアクセスする PHP アプリケーションを作成するための要件は、コード内から [PHP 用の Azure Storage クライアント ライブラリ][download]のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-このガイドで使用する Queue Storage サービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト内で実行されるコードで呼び出すこともできます。
+Azure Queue storage にアクセスする PHP アプリケーションを作成するための要件は、コード内から [PHP 用の Azure Storage クライアント ライブラリ][download]のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
+
+このガイドで使用する Queue Storage サービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web アプリケーション内で実行されるコードで呼び出すこともできます。
 
 ## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
+
 ### <a name="install-via-composer"></a>Composer 経由でインストールする
+
 1. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
    
     ```json
@@ -55,6 +56,7 @@ Azure Queue Storage にアクセスする PHP アプリケーションを作成�
 または、GitHub で [Azure Storage PHP Client Library][download] に移動し、ソース コードを複製します。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>キュー ストレージにアクセスするようにアプリケーションを構成する
+
 Azure キュー ストレージで API を使用するには次が必要になります。
 
 1. [require_once] ステートメントを使ってオートローダー ファイルを参照する
@@ -70,6 +72,7 @@ use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 次の例では、常に `require_once` ステートメントが表示されますが、例の実行に必要なクラスのみが参照されます。
 
 ## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
+
 Azure キュー ストレージ クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 キュー サービスの接続文字列の形式は次のとおりです。
 
 ライブ サービスにアクセスする場合:
@@ -100,6 +103,7 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 ```
 
 ## <a name="create-a-queue"></a>キューを作成する
+
 **QueueRestProxy** オブジェクトの **createQueue** メソッドを使ってキューを作成できます。 キューの作成時にキューのオプションを設定できますが、この設定は必須ではありません (次の例では、キューのメタデータを設定する方法を示しています)。
 
 ```php
@@ -139,6 +143,7 @@ catch(ServiceException $e){
 > 
 
 ## <a name="add-a-message-to-a-queue"></a>メッセージをキューに追加する
+
 メッセージをキューに追加するには、**QueueRestProxy->createMessage** を使います。 このメソッドにはキュー名、メッセージ テキスト、メッセージ オプション (省略可能) を渡します。
 
 ```php
@@ -168,6 +173,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="peek-at-the-next-message"></a>次のメッセージをピークする
+
 **QueueRestProxy->peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。 既定では、**peekMessage** メソッドによって 1 つのメッセージが返されますが、その数は **PeekMessagesOptions->setNumberOfMessages** メソッドを使って変更できます。
 
 ```php
@@ -216,6 +222,7 @@ else{
 ```
 
 ## <a name="de-queue-the-next-message"></a>次のメッセージをデキューする
+
 コードでは、2 つの手順でキューからメッセージを削除します。 まず、**QueueRestProxy->listMessages** を呼び出すことです。このメソッドから返されたメッセージは、このキューからメッセージを読み取る他のコードからは参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 (メッセージがこの時間内に削除されない場合、このキューで再び参照できるようになります)。キューからのメッセージの削除を完了するには、**QueueRestProxy->deleteMessage** を呼び出す必要があります。 2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
 ```php
@@ -257,6 +264,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>キューに配置されたメッセージの内容を変更する
+
 **QueueRestProxy->updateMessage** を呼び出すことで、キュー内のメッセージの内容をインプレースで変更できます。 メッセージが作業タスクを表している場合は、この機能を使用して、作業タスクの状態を更新できます。 次のコードでは、キュー メッセージを新しい内容に更新し、表示タイムアウトを設定して、60 秒延長します。 これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。 この方法を使用すると、キュー メッセージに対する複数の手順から成るワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。 通常は、さらに再試行回数を保持し、メッセージの再試行回数が *n* 回を超えた場合はメッセージを削除するようにします。 こうすることで、処理するたびにアプリケーション エラーをトリガーするメッセージから保護されます。
 
 ```php
@@ -302,6 +310,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="additional-options-for-de-queuing-messages"></a>メッセージのデキュー用の追加オプション
+
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。 1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。 2 つ目の方法では、コードで各メッセージを完全に処理できるように、表示タイムアウトの設定を長くまたは短くすることができます。 次のコード例では、 **getMessages** メソッドを使用して、1 回の呼び出しで 16 個のメッセージを取得します。 その後、 **for** ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 ```php
@@ -352,6 +361,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="get-queue-length"></a>キューの長さを取得する
+
 キュー内のメッセージの概数を取得できます。 **QueueRestProxy->getQueueMetadata** メソッドを使って、キューのメタデータを返すように Queue サービスに要求します。 返されたオブジェクトの **getApproximateMessageCount** メソッドを呼び出して、キュー内のメッセージの数を取得します。 キュー サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、これらの値は概数にすぎません。
 
 ```php
@@ -383,6 +393,7 @@ echo $approx_msg_count;
 ```
 
 ## <a name="delete-a-queue"></a>キューを削除する
+
 キューとキューに含まれているすべてのメッセージを削除するには、**QueueRestProxy->deleteQueue** メソッドを呼び出します。
 
 ```php
@@ -410,7 +421,8 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 これで、Azure キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先をご覧ください。
 
 * [Azure Storage PHP クライアント ライブラリの API リファレンス](https://azure.github.io/azure-storage-php/)を参照してください。
@@ -422,4 +434,3 @@ catch(ServiceException $e){
 [require_once]: https://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 [composer-phar]: https://getcomposer.org/composer.phar
-

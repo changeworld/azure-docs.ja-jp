@@ -1,23 +1,23 @@
 ---
-title: Azure での逆引き DNS の概要 | Microsoft Docs
-description: 逆引き DNS の動作および Azure での使い方について説明します
+title: Azure での逆引き DNS の概要 - Azure DNS
+description: このラーニング パスでは、逆引き DNS のしくみと Azure での使用方法についての学習を始めます
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
+manager: KumuD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: rohink
+ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534397"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76932306"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>逆引き DNS と Azure でのサポートの概要
 
@@ -107,7 +107,7 @@ IPv4 と IPv6 の両方で、Azure DNS を使って、[逆引き参照ゾーン�
 
 **Azure サービスに割り当てられた IP アドレスの逆引き DNS レコードを構成する。** Azure を使うと、[Azure サービスに割り当てられた IP アドレスの逆引き参照を構成する](dns-reverse-dns-for-azure-services.md)ことができます。  この逆引き参照は、対応する ARPA ゾーン内の PTR レコードとして Azure によって構成されます。  これらの ARPA ゾーンは、Azure によって使われるすべての IP 範囲に対応しており、Microsoft によってホストされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>

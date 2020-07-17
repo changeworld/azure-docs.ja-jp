@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway のセッション アフィニティに関する問題のトラブルシューティング
+title: セッション アフィニティに関する問題のトラブルシューティング
+titleSuffix: Azure Application Gateway
 description: この記事では、Azure Application Gateway のセッション アフィニティに関する問題のトラブルシューティング方法について説明します
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683156"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202538"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
@@ -39,7 +40,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 1. [Azure Portal](https://portal.azure.com/) にログオンします。
 
-2. **左のナビゲーション** ウィンドウで、**[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードでアプリケーション ゲートウェイ名をクリックします。 選択したサブスクリプションに既存のリソースが複数ある場合は、**[名前でフィルター]** ボックスにアプリケーション ゲートウェイ名を入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
+2. **左のナビゲーション** ウィンドウで、 **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードでアプリケーション ゲートウェイ名をクリックします。 選択したサブスクリプションに既存のリソースが複数ある場合は、 **[名前でフィルター]** ボックスにアプリケーション ゲートウェイ名を入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
 
 3. **[設定]** の下で **[HTTP 設定]** タブを選択します。
 
@@ -53,7 +54,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 次の方法のいずれかを使用して、「**backendHttpSettingsCollection**」の下で「**CookieBasedAffinity**」の値が *[有効]* に設定されているかどうかも調べられます。
 
-- PowerShell で [Get-AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) を実行する
+- PowerShell で [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) を実行する
 - Azure Resource Manager テンプレートを使用して、JSON ファイルを調べる
 
 ```
@@ -66,7 +67,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 アプリケーション ゲートウェイは、Cookie を使用することによってのみ、セッション ベースのアフィニティを実行できます。
 
-#### <a name="workaround"></a>対処法
+#### <a name="workaround"></a>回避策
 
 アプリケーションが Cookie ベースのアフィニティを処理できない場合は、外部または内部の Azure Load Balancer やその他のサード パーティのソリューションを使用する必要があります。
 
@@ -74,19 +75,19 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 #### <a name="symptom"></a>症状
 
-Cookie ベースのアフィニティ設定を有効にしており、Internet Explorer で短い名前の URL (たとえば [http://website](http://website/)) を使用して Application Gateway にアクセスすると、要求がまだバックエンド サーバー間でバウンスしています。
+Cookie ベースのアフィニティ設定を有効にしており、Internet Explorer で短い名前の URL (たとえば `http://website`) を使用して Application Gateway にアクセスすると、要求がまだバックエンド サーバー間でバウンスしています。
 
 この問題を特定するには、次の手順に従います。
 
 1. Application Gateway の背後にあるアプリケーション (この例では Fiddle を使用しています) に接続している「クライアント」で、Web デバッガー トレースを行います。
-    **ヒント**: Fiddler を使用する方法がわからない場合は、下部にある **[I want to collect network traffic and analyze it using web debugger]**(ネットワーク トラフィックを収集し、Web デバッガーを使用して分析する) オプションをオンにします。
+    **ヒント**: Fiddler を使用する方法がわからない場合は、下部にある **[I want to collect network traffic and analyze it using web debugger]** (ネットワーク トラフィックを収集し、Web デバッガーを使用して分析する) オプションをオンにします。
 
-2. セッション ログを調べて分析し、クライアントから提供された Cookie に ARRAffinity 詳細があるかどうかを判断します。 Cookie セット内に「**ARRAffinity=** *ARRAffinityValue*」などの ARRAffinity 詳細が見つからない場合、クライアントが、Application Gateway によって提供される ARRA Cookie で応答していないことを意味します。
-    例: 
+2. セッション ログを調べて分析し、クライアントから提供された Cookie に ARRAffinity 詳細があるかどうかを判断します。 Cookie セット内に "**ARRAffinity=** *ARRAffinityValue*" などの ARRAffinity 詳細が見つからない場合、クライアントが、Application Gateway によって提供される ARRA Cookie で応答していないことを意味します。
+    次に例を示します。
 
     ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
+    ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 アプリケーションは、応答を取得するまで、要求ごとに Cookie を設定しようとし続けます。
 
@@ -96,7 +97,7 @@ Internet Explorer や他のブラウザーが、短縮名 URL で Cookie を格�
 
 #### <a name="resolution"></a>解決策
 
-この問題を解決するには、FQDN を使用して Application Gateway にアクセスする必要があります。 たとえば、[http://website.com](https://website.com/) または [http://appgw.website.com](http://appgw.website.com/) を使用します。
+この問題を解決するには、FQDN を使用して Application Gateway にアクセスする必要があります。 たとえば、[http://website.com](https://website.com/) または [http://appgw.website.com](http://website.com/) を使用します。
 
 ## <a name="additional-logs-to-troubleshoot"></a>トラブルシューティングのためのその他のログ
 
@@ -112,7 +113,7 @@ Azure Portal を使用したログの有効化
 
    Application Gateway では、次の 3 つのログを使用できます。アクセス ログ、パフォーマンス ログ、ファイアウォール ログ
 
-2. データの収集を開始するには、**[診断を有効にする]** をクリックします。
+2. データの収集を開始するには、 **[診断を有効にする]** をクリックします。
 
    ![troubleshoot-session-affinity-issues-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
@@ -120,7 +121,7 @@ Azure Portal を使用したログの有効化
 
    ![troubleshoot-session-affinity-issues-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. 設定を確認し、**[保存]** をクリックします。
+4. 設定を確認し、 **[保存]** をクリックします。
 
    ![troubleshoot-session-affinity-issues-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
@@ -130,7 +131,7 @@ Azure Portal を使用したログの有効化
 
    ![troubleshoot-session-affinity-issues-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. 右側で、**[ログのカテゴリ]** の下のドロップダウン リストから「**ApplicationGatewayAccessLog**」を選択します。  
+2. 右側で、 **[ログのカテゴリ]** の下のドロップダウン リストから「**ApplicationGatewayAccessLog**」を選択します。  
 
    ![troubleshoot-session-affinity-issues-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
@@ -144,7 +145,7 @@ Azure Portal を使用したログの有効化
 - **ClientPort** – これは、接続しているクライアントからの、要求のソース ポートです。
 - **RequestQuery** – これは、要求が受信される宛先サーバーを示します。
 - **Server-Routed**:要求が送信されるバックエンド プールのインスタンス。
-- **X-AzureApplicationGateway-LOG-ID**:要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 例: X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
+- **X-AzureApplicationGateway-LOG-ID**:要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 次に例を示します。X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 
   - **SERVER-STATUS**:Application Gateway がバックエンドから受信した HTTP 応答コード。
 
@@ -167,44 +168,44 @@ Fiddler などの Web デバッグ ツールは、インターネットとテス
 
 2. セットアップ実行可能ファイルを右クリックし、管理者として実行しインストールします。
 
-            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
+    ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Fiddler を開くと、Fiddler はトラフィックのキャプチャを自動的に開始します (左下にある [キャプチャ] に注目してください)。 F12 キーを押して、トラフィックのキャプチャを開始または停止します。
 
-        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
+    ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. ほとんどの場合、関心があるのは復号化された HTTPS トラフィックであるので、**[ツール]** > **[Fiddler オプション]** の順に選択し、**[Decrypt HTTPS traffic]**(HTTPS トラフィックの復号化) チェックボックスをオンにして、HTTPS 復号化を有効にすることができます。
+4. ほとんどの場合、関心があるのは復号化された HTTPS トラフィックであるので、 **[ツール]**  >  **[Fiddler オプション]** の順に選択し、 **[Decrypt HTTPS traffic]** (HTTPS トラフィックの復号化) チェックボックスをオンにして、HTTPS 復号化を有効にすることができます。
 
-        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
+    ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
-5. 次のスクリーンショットに従って、**[X]**(アイコン) > **[すべて削除]** をクリックすることにより、問題を再現する前に、関連付けられていない以前のセッションを削除できます。 
+5. 次のスクリーンショットに従って、 **[X]** (アイコン) > **[すべて削除]** をクリックすることにより、問題を再現する前に、関連付けられていない以前のセッションを削除できます。 
 
-        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
+    ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. 問題を再現したら、**[ファイル]** > **[保存]** > **[すべてのセッション]** の順に選択することによりレビュー用のファイルを保存します。 
+6. 問題を再現したら、 **[ファイル]**  >  **[保存]**  >  **[すべてのセッション]** の順に選択することによりレビュー用のファイルを保存します。 
 
-        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
+    ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. セッション ログを確認および分析して、問題を特定します。
 
     次に例を示します。
 
-- **例 A:** 要求がクライアントから送信され、Application Gateway のパブリック IP アドレスに到達したことを示すセッション ログを探し、このログをクリックして詳細を表示します。  右側の下部のボックスのデータは、Application Gateway がクライアントに返しているものです。 [RAW] タブを選択し、クライアントが "**Set-Cookie: ARRAffinity=** *ARRAffinityValue*" を受信しているかどうか判断します。 Cookie がない場合は、セッション アフィニティが設定されていないか、Application Gateway が Cookie をクライアントに適用していません。
+- **例 A:** 要求がクライアントから送信され、Application Gateway のパブリック IP アドレスに到達したことを示すセッション ログを探し、このログをクリックして詳細を表示します。  右側の下部のボックスのデータは、Application Gateway がクライアントに返しているものです。 [RAW] タブを選択し、クライアントが "**Set-Cookie: ARRAffinity=** *ARRAffinityValue*" を受信しているかどうかを判断します。 Cookie がない場合は、セッション アフィニティが設定されていないか、Application Gateway が Cookie をクライアントに適用していません。
 
    > [!NOTE]
    > この ARRAffinity 値は cookie-id であり、Application Gateway がクライアントに対して特定のバックエンド サーバーに送信されるように設定する値です。
 
-    ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **例 B:** 前のセッション ログが続く次のセッション ログは、Application Gateway に応答するクライアントであり、ARRAAFFINITY を設定しました。 ARRAffinity cookie-id が一致した場合、パケットは、以前に使用されていたものと同じバックエンド サーバーに送信されます。 HTTP 通信の次の数行を調べて、クライアントの ARRAffinity Cookie が変更されているかどうかを確認します。
 
-    ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
+   ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > 同じ通信セッションの場合、Cookie は変更しないでください。 右側にある上部のチェック ボックスをオンにして、[Cookies] タブを選択して、クライアントが Cookie を使用し Application Gateway に送信しているかどうかを確認します。 そうでない場合、クライアントのブラウザーは会話で Cookie を保持しておらず使用していません。 クライアントは嘘をつくことがあります。
 
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 前の手順で問題を解決できない場合は、 [サポート チケット](https://azure.microsoft.com/support/options/)を開きます。

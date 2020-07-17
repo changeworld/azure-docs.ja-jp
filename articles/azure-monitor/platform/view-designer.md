@@ -1,34 +1,28 @@
 ---
 title: Azure Monitor でログ データを分析するビューを作成する | Microsoft Docs
 description: Azure Monitor のビュー デザイナーを使用すると、Azure portal に表示されるカスタム ビューを作成し、Log Analytics ワークスペースのデータをさまざまな方法で視覚化することができます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/22/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 02/10/2019
+ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286569"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77658491"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> Azure Monitor のビューは段階的に廃止され、追加機能を提供する[ブック](workbooks-overview.md)に置き換えられています。 既存のビューをブックに変換する方法の詳細については、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](view-designer-conversion-overview.md)」を参照してください。
 
 ビュー デザイナーの詳細については、次を参照してください。
 
-* [タイルのリファレンス](view-designer-tiles.md):カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
-* [視覚化パーツのリファレンス](view-designer-parts.md):カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドを提供します。
+* [タイルのリファレンス](view-designer-tiles.md): カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
+* [視覚化パーツのリファレンス](view-designer-parts.md): カスタム ビューで使用可能な視覚化パーツの設定へのリファレンス ガイドを提供します。
 
 
 ## <a name="concepts"></a>概念
@@ -38,14 +32,14 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 
 ビュー デザイナーで作成するビューには、次の表で説明する要素が含まれます。
 
-| パーツ | 説明 |
+| 要素 | 説明 |
 |:--- |:--- |
 | タイル | Azure Monitor **[概要]** ページに表示されます。 各タイルには、それが表しているカスタム ビューの視覚的な概要が表示されます。 各タイルの種類では、レコードのさまざまな視覚化が提供されます。 カスタム ビューを表示するにはタイルを選択します。 |
 | カスタム ビュー | タイルを選択すると表示されます。 各ビューには、1 つまたは複数の視覚化パーツが含まれます。 |
 | 視覚化パーツ | 1 つまたは複数の[ログ クエリ](../log-query/log-query-overview.md)に基づく Log Analytics ワークスペース内のデータの視覚化を表します。 ほとんどのパーツには、概要レベルの視覚化を提供するヘッダーと、上位の結果を表示する一覧が含まれています。 各パーツの種類では、Log Analytics ワークスペース内のレコードのさまざまな視覚化が提供されます。 パーツの要素を選択すると、ログ クエリが実行されて、詳細なレコードが提供されます。 |
 
 ## <a name="required-permissions"></a>必要なアクセス許可
-ビューの作成または編集には、少なくとも Log Analytics ワークスペースの[共同作成者レベルのアクセス許可](manage-access.md#manage-accounts-and-users)が必要です。 このアクセス許可がないと、[ビュー デザイナー] オプションがメニューに表示されません。
+ビューの作成または編集には、少なくとも Log Analytics ワークスペースの[共同作成者レベルのアクセス許可](manage-access.md#manage-access-using-azure-permissions)が必要です。 このアクセス許可がないと、[ビュー デザイナー] オプションがメニューに表示されません。
 
 
 ## <a name="work-with-an-existing-view"></a>既存のビューの使用
@@ -59,7 +53,7 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 |:--|:--|
 | 更新   | 最新データで表示を更新します。 | 
 | ログ      | ログ クエリを使用してデータを分析するための [Log Analytics](../log-query/portals.md) が開きます。 |
-| Edit       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
+| [編集]       | ビュー デザイナーでビューを開き、内容と構成を編集します。  |
 | 複製      | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 | 期間 | ビューに含まれるデータの日付と時間範囲のフィルターを設定します。 この日付範囲は、ビューのクエリで設定されたすべての日付範囲の前に適用されます。  |
 | +          | ビューに定義されるカスタム フィルターを定義します。 |
@@ -75,21 +69,21 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 新しいビューの作成または既存のビューの編集には、ビュー デザイナーを使います。 
 
 ビュー デザイナーには、3 つのウィンドがあります。 
-* **デザイン**:作成または編集しているカスタム ビューが表示されます。 
-* **コントロール**:**デザイン** ウィンドウに追加するタイルとパーツが含まれています。 
-* **プロパティ**:タイルまたは選択したパーツのプロパティが表示されます。
+* **デザイン**: 作成または編集しているカスタム ビューが表示されます。 
+* **コントロール**: **デザイン** ウィンドウに追加するタイルとパーツが含まれています。 
+* **プロパティ**: タイルまたは選択したパーツのプロパティが表示されます。
 
 ![ビュー デザイナー](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>ビューのタイルを構成する
 カスタム ビューは、タイルを 1 つだけ持つことができます。 現在のタイルを表示したり、別のタイルを選択したりするには、**コントロール** ウィンドウで**タイル**のタブを選択します。 **プロパティ** ウィンドウには、現在のタイルのプロパティが表示されます。 
 
-[タイルのリファレンス](view-designer-tiles.md)に関するページの情報に従ってタイルのプロパティを構成し、**[適用]** をクリックして変更を保存します。
+[タイルのリファレンス](view-designer-tiles.md)に関するページの情報に従ってタイルのプロパティを構成し、 **[適用]** をクリックして変更を保存します。
 
 ### <a name="configure-the-visualization-parts"></a>視覚化パーツを構成する
-ビューには、任意の数の視覚化パーツを含めることができます。 ビューにパーツを追加するには、**[ビュー]** タブを選択し、視覚化パーツを選択します。 **プロパティ** ウィンドウに、選択したパーツのプロパティが表示されます。 
+ビューには、任意の数の視覚化パーツを含めることができます。 ビューにパーツを追加するには、 **[ビュー]** タブを選択し、視覚化パーツを選択します。 **プロパティ** ウィンドウに、選択したパーツのプロパティが表示されます。 
 
-[視覚化パーツのリファレンス](view-designer-parts.md)に関するページの情報に従ってビューのプロパティを構成し、**[適用]** をクリックして変更を保存します。
+[視覚化パーツのリファレンス](view-designer-parts.md)に関するページの情報に従ってビューのプロパティを構成し、 **[適用]** をクリックして変更を保存します。
 
 ビューに含まれる視覚化パーツは 1 行だけです。 既存のパーツを新しい場所にドラッグして、配置を変更できます。
 
@@ -106,10 +100,10 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 | 保存        | 変更を保存し、ビューを閉じます。 |
 | Cancel      | 変更を破棄し、ビューを閉じます。 |
 | ビューの削除 | ビューを削除します。 |
-| エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
+| [エクスポート]      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
 | [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [タイル](view-designer-tiles.md)をカスタム ビューに追加します。
 * カスタム ビューに[視覚化パーツ](view-designer-parts.md)を追加します。

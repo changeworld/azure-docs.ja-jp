@@ -1,25 +1,19 @@
 ---
-title: GRUB とシングル ユーザー モード用の Azure シリアル コンソール | Microsoft Docs
+title: GRUB とシングルユーザーモード用の Azure シリアル コンソール
 description: Azure 仮想マシンでの GRUB 用シリアル コンソールの使用。
 services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111890"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758509"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB は、GRand Unified Bootloader の略です。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
@@ -121,7 +115,7 @@ Ubuntu イメージの場合、root のパスワードは必要ありません�
 ### <a name="grub-access-in-ubuntu"></a>Ubuntu での GRUB アクセス
 GRUB にアクセスするには、VM の起動中に Enter キーを長押しします。 
 
-既定では、Ubuntu イメージは GRUB 画面に自動的に表示されません。 これは、以下の手順で変更できます。
+既定では、Ubuntu イメージは GRUB 画面に自動的に表示されません。 これは、以下の手順を使用して変更できます。
 1. お好みのテキスト エディターで `/etc/default/grub.d/50-cloudimg-settings.cfg` を開きます
 1. `GRUB_TIMEOUT` 値を 0 以外の値に変更します
 1. お好みのテキスト エディターで `/etc/default/grub` を開きます
@@ -183,7 +177,7 @@ Oracle Linux には GRUB が付属しており、すぐに使用できます。 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux でのシングル ユーザー モード
 Oracle Linux でシングル ユーザー モードを有効にするには、前述の RHEL の手順を実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console.md)を参照してください。
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)のためにシリアル コンソールを使用する
 * シリアル コンソールは、[Windows](../windows/serial-console.md) VM でも使用可能

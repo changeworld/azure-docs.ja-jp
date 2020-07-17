@@ -4,7 +4,7 @@
   items:
     - name: Azure Batch とは
       href: batch-technical-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Batch ジョブの実行 - CLI
@@ -15,6 +15,9 @@
       href: quick-run-dotnet.md
     - name: Batch ジョブの実行 - Python
       href: quick-run-python.md
+    - name: Batch アカウントを作成する - ARM テンプレート
+      href: quick-create-template.md
+      displayName: Resource Manager
 - name: チュートリアル
   items:
     - name: ファイルの並列処理 - .NET
@@ -27,6 +30,10 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: 並列 R シミュレーション
       href: tutorial-r-doazureparallel.md
+    - name: Batch と Functions を使用した OCR
+      href: tutorial-batch-functions.md
+    - name: Data Factory を使用した Python スクリプト
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -37,36 +44,77 @@
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 開発者向け機能
-      href: batch-api-basics.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+    - name: Batch サービスのワークフローとリソース
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch アカウント
+          displayName: storage account
+          href: accounts.md
+        - name: ノードとプール
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: ジョブとタスク
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: ファイルとディレクトリ
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API とツール
       href: batch-apis-tools.md
+    - name: エラー処理と検出
+      href: error-handling.md
+    - name: ベスト プラクティス
+      href: best-practices.md
     - name: クォータと制限
       href: batch-quota-limit.md
     - name: サポートされる VM のサイズ
       href: batch-pool-vm-sizes.md
-    - name: 高可用性と障害復旧
+    - name: 高可用性とディザスター リカバリー
       href: high-availability-disaster-recovery.md
     - name: タスク ランタイム環境変数
       href: batch-compute-node-environment-variables.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Batch アカウントの管理
       items:
+        - name: アカウントの管理
+          href: batch-manage-account-basics.md
         - name: ポータルで Batch アカウントを管理する
           href: batch-account-create-portal.md
         - name: Batch Management .NET で Batch アカウントを管理する
           href: batch-management-dotnet.md
+        - name: コスト分析と予算
+          href: budget.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD
           href: batch-aad-auth.md
         - name: Batch Management での Azure AD
           href: batch-aad-auth-management.md
-    - name: アプリケーション パッケージの作成
+        - name: Batch で Key Vault に安全にアクセスする
+          href: credential-access-key-vault.md
+        - name: Batch での証明書の使用
+          href: batch-certificates.md
+    - name: アプリケーション パッケージの使用
       href: batch-application-packages.md
+    - name: ファイルとアプリケーションをプール ノードにコピーする
+      items:
+        - name: プール ノードへのアプリケーションとデータのコピー
+          href: batch-applications-to-pool-nodes.md
+        - name: アプリケーション パッケージの使用
+          href: batch-application-packages.md
+        - name: リソース ファイルを作成する
+          href: resource-files.md
     - name: プールの作成と管理
       items:
         - name: 自動スケール コンピューティング ノード
@@ -75,10 +123,14 @@
           href: batch-pool-vm-sizes.md
         - name: コンピューティング ノードへのアクセスを構成する
           href: pool-endpoint-configuration.md
-        - name: カスタム イメージを使用してプールを作成する
+        - name: Shared Image Gallery を使用してプールを作成する
+          href: batch-sig-images.md
+        - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
+        - name: 仮想ファイル システムをマウントする
+          href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする
           href: pool-file-shares.md
         - name: RDMA または GPU インスタンスを使用する
@@ -103,8 +155,10 @@
           href: batch-user-accounts.md
         - name: 多数のタスクを送信する
           href: large-number-tasks.md
-    - name: リソース ファイルを作成する
-      href: resource-files.md
+        - name: 効率のためにジョブのスケジュールを設定する
+          href: batch-job-schedule.md
+        - name: ジョブとタスクのエラーを確認する
+          href: batch-job-task-error-checking.md
     - name: ジョブとタスク出力を保持する
       href: batch-task-output.md
       items:
@@ -134,32 +188,32 @@
               href: batch-cli-templates.md
     - name: Batch Node.js SDK の使用
       href: batch-nodejs-get-started.md
-- name: ワークロードの実行
-  items:
-    - name: MPI ジョブ
-      href: batch-mpi.md
-    - name: コンテナー ワークロード
-      href: batch-docker-container-workloads.md
-    - name: 表示
+    - name: ワークロードの実行
       items:
-        - name: Azure を使用したレンダリング
-          href: batch-rendering-service.md
-        - name: VM イメージのレンダリング
-          href: batch-rendering-applications.md
-        - name: Batch レンダリングの機能
-          href: batch-rendering-functionality.md
-        - name: Batch レンダリングの使用
-          href: batch-rendering-using.md
-        - name: レンダー マネージャーの使用
-          href: batch-rendering-render-managers.md
-        - name: レンダリング アプリケーション参照
-          href: batch-rendering-application-reference.md
-        - name: ストレージとデータの移動
-          href: batch-rendering-storage-data-movement.md
-        - name: レンダリング アーキテクチャ
-          href: batch-rendering-architectures.md
-    - name: Batch と Data Factory を使用したデータ処理
-      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
+        - name: MPI ジョブ
+          href: batch-mpi.md
+        - name: コンテナー ワークロード
+          href: batch-docker-container-workloads.md
+        - name: 表示
+          items:
+            - name: Azure を使用したレンダリング
+              href: batch-rendering-service.md
+            - name: VM イメージのレンダリング
+              href: batch-rendering-applications.md
+            - name: Batch レンダリングの機能
+              href: batch-rendering-functionality.md
+            - name: Batch レンダリングの使用
+              href: batch-rendering-using.md
+            - name: レンダー マネージャーの使用
+              href: batch-rendering-render-managers.md
+            - name: レンダリング アプリケーション参照
+              href: batch-rendering-application-reference.md
+            - name: ストレージとデータの移動
+              href: batch-rendering-storage-data-movement.md
+            - name: レンダリング アーキテクチャ
+              href: batch-rendering-architectures.md
+        - name: Batch と Data Factory を使用したデータ処理
+          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -203,10 +257,14 @@
           href: batch-task-fail-event.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: Batch コミュニティ
       href: 'https://github.com/Azure/Batch'
+    - name: Batch のフィードバック
+      href: 'https://feedback.azure.com/forums/269742-batch'
+    - name: Batch に関する Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
@@ -221,7 +279,7 @@
       href: /azure/templates/microsoft.batch/batchaccounts
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-batch'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b5d9deacdd4266da30f17c95b6e575a652d2f76
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155860"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73182243"
 ---
 ここでは、次の操作を行います。
 
@@ -25,7 +25,7 @@ ms.locfileid: "66155860"
 4. `aspnet_regiis -pdf connectionStrings` を使用して、web.config ファイルの暗号化を解除します。
 5. 暗号化が解除された web.config ファイルで、 `connectionStrings` ノードの下に、SQL Server インスタンスの接続文字列とコンテンツ データベース名を追加します。 次の例を参照してください。
    
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
+    `<add name="RBSMaintainerConnectionWSSContent" connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
 6. `aspnet_regiis –pef connectionStrings` を使用して、web.config ファイルを再び暗号化します。 
 7. web.config の名前を Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config に変更します。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "66155860"
        `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
-2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、一時的にごみ箱を無効にします。 この操作を実行すると、関連するすべてのサイト コレクションのごみ箱も空になります。 そのためには、**[サーバーの全体管理]** -> **[アプリケーション管理]** -> **[Web アプリケーション (Web アプリケーションの管理)]** -> **[SharePoint - 80]** -> **[アプリケーションの全般設定]** の順にクリックします。 **[ごみ箱の状態]** を **[オフ]** に設定します。
+2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、一時的にごみ箱を無効にします。 この操作を実行すると、関連するすべてのサイト コレクションのごみ箱も空になります。 そのためには、 **[サーバーの全体管理]**  ->  **[アプリケーション管理]**  ->  **[Web アプリケーション (Web アプリケーションの管理)]**  ->  **[SharePoint - 80]**  ->  **[アプリケーションの全般設定]** の順にクリックします。 **[ごみ箱の状態]** を **[オフ]** に設定します。
    
     ![[Web アプリケーションの全般設定]](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -61,5 +61,5 @@ ms.locfileid: "66155860"
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、ごみ箱を再び有効にします。 そのためには、**[サーバーの全体管理]** -> **[アプリケーション管理]** -> **[Web アプリケーション (Web アプリケーションの管理)]** -> **[SharePoint - 80]** -> **[アプリケーションの全般設定]** の順にクリックします。 [ごみ箱の状態] を **[オン]** に設定します。
+2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、ごみ箱を再び有効にします。 そのためには、 **[サーバーの全体管理]**  ->  **[アプリケーション管理]**  ->  **[Web アプリケーション (Web アプリケーションの管理)]**  ->  **[SharePoint - 80]**  ->  **[アプリケーションの全般設定]** の順にクリックします。 [ごみ箱の状態] を **[オン]** に設定します。
 

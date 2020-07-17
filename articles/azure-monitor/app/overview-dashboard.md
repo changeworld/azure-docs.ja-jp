@@ -1,23 +1,14 @@
 ---
 title: Azure Application Insights の概要ダッシュボード | Microsoft Docs
 description: Azure の Application Insights と概要ダッシュボードの機能を使用してアプリケーションを監視します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.author: mbullwin
-ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 06/03/2019
+ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77669898"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -33,9 +24,9 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 時間範囲の選択が、簡単な 1 クリックのインターフェイスに簡素化されました。
 
-![時間範囲](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
+![時間の範囲](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、**[調査]** ヘッダーの下の **[失敗]** を選択します。
+全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、 **[調査]** ヘッダーの下の **[失敗]** を選択します。
 
 ![エラー](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -60,9 +51,12 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 ![[概要] ボタン](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="troubleshooting"></a>トラブルシューティング
+
+**[タイル設定の構成]** を選択し、31 日を超えるカスタムの時間範囲を設定した場合、既定のデータ保有期間が 90 日であっても、ダッシュボードには 31 日を超えるデータは表示されません。 現時点では、この動作の回避策はありません。
+
+## <a name="next-steps"></a>次のステップ
 
 - [ファネル](../../azure-monitor/app/usage-funnels.md)
 - [保持](../../azure-monitor/app/usage-retention.md)
 - [ユーザー フロー](../../azure-monitor/app/usage-flows.md)
-- [ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)

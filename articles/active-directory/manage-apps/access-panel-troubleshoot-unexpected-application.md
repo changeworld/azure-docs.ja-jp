@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784410"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>アクセス パネルにアプリケーションが表示される方法
@@ -50,7 +50,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -62,7 +62,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 8. ユーザーがアプリケーションに割り当てられているかどうかを確認します。
 
-   * アプリケーションからユーザーを削除する場合は、ユーザーの**行をクリック**し、**[削除]** を選択します。
+   * アプリケーションからユーザーを削除する場合は、ユーザーの**行をクリック**し、 **[削除]** を選択します。
 
 ### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>ユーザーがアプリケーションに関連するライセンスを付与されているかどうかを確認する
 
@@ -72,7 +72,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -100,7 +100,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -120,7 +120,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -153,5 +153,5 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

@@ -1,85 +1,59 @@
 ---
 title: Personalizer のしくみ - Personalizer
-titleSuffix: Azure Cognitive Services
-description: Personalizer は、機械学習を使用して、コンテキスト内で使用するアクションを発見します。 各学習ループには、Rank 呼び出しと Reward 呼び出しを介して送信したデータについてのみトレーニングされたモデルがあります。 すべての学習ループは、互いに完全に独立しています。
-author: edjez
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 6b2237f27fba5eaf952932cd6592052649400b96
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+description: Personalizer の "_ループ_" は、機械学習を使用して、コンテンツの最上位のアクションを予測するモデルを構築します。 このモデルは、Rank と Reward の呼び出しを使用して送信したデータでのみトレーニングされます。
+ms.topic: conceptual
+ms.date: 02/18/2020
+ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025495"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77623745"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
 
-Personalizer は、機械学習を使用して、コンテキスト内で使用するアクションを発見します。 各学習ループには、**Rank** 呼び出しと **Reward** 呼び出しを介して送信したデータについてのみトレーニングされたモデルがあります。 すべての学習ループは、互いに完全に独立しています。 パーソナル化したいアプリケーションの各部分または動作の学習ループを作成します。
+Personalizer のリソースである "_学習ループ_" は、機械学習を使用して、コンテンツの最上位のアクションを予測するモデルを構築します。 このモデルは、**Rank** と **Reward** の呼び出しを使用して送信したデータでのみトレーニングされます。 すべてのループは、互いに完全に独立しています。
 
-ループごとに、現在のコンテキストに基づいて次のものと一緒に **Rank API を呼び出します**。
+## <a name="rank-and-reward-apis-impact-the-model"></a>Rank および Reward の API はモデルに影響を与える
 
-* 使用できるアクションのリスト: 最上位のアクションを選択するコンテンツ項目。
-* [コンテキストの特徴](concepts-features.md)のリスト: ユーザー、コンテンツ、コンテキストなどのコンテキストに関連するデータ。
-
-**Rank** API では、次のいずれかを使用することを決定できます。
+"_特徴のあるアクション_" と "_コンテキストの特徴_" を Rank API に送信します。 **Rank** API では、次のいずれかを使用することを決定できます。
 
 * "_活用_": 過去のデータに基づいて最善のアクションを決定するための現在のモデル。
-* "_探索_": 最上位のアクションではなく、別のアクションを選択します。
+* "_探索_": 最上位のアクションではなく、別のアクションを選択します。 Azure portal で Personalizer リソースに対して[このパーセンテージを構成](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt)します。
 
-**Reward** API: 
+報酬スコアを判別し、そのスコアを Reward API に送信します。 **Reward** API:
 
 * 各 Rank 呼び出しの特徴と報酬スコアを記録することによってモデルをトレーニングするためのデータを収集します。
-* そのデータを使用して、"_学習ポリシー_" に指定された設定に基づいてモデルを更新します。
+* そのデータを使用して、"_学習ポリシー_" に指定された構成に基づいてモデルを更新します。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="your-system-calling-personalizer"></a>Personalizer を呼び出すシステム
 
 次の図は、Rank と Reward の呼び出しを呼び出すアーキテクチャの流れを示しています。
 
 ![代替テキスト](./media/how-personalizer-works/personalization-how-it-works.png "パーソナル化のしくみ")
 
-1. Personalizer は、内部 AI モデルを使用して、アクションの順位を決定します。
-1. このサービスは、現在のモデルを活用するか、モデルの新しい選択肢を探索するかを決定します。  
-1. 順位付けの結果は EventHub に送信されます。
-1. Personalizer が報酬を受け取ると、その報酬が EventHub に送信されます。 
-1. 順位と報酬が関連付けられます。
-1. AI モデルが、相関関係の結果に基づいて更新されます。
-1. 推論エンジンが、新しいモデルで更新されます。 
+1. "_特徴のあるアクション_" と "_コンテキストの特徴_" を Rank API に送信します。
+
+    * Personalizer は、現在のモデルを活用するか、またはモデルの新しい選択肢を探索するかを決定します。
+    * 順位付けの結果は EventHub に送信されます。
+1. 最上位のランクが、"_報酬アクション ID_" としてシステムに返されます。
+    システムはそのコンテンツを表示し、独自のビジネス ルールに基づいて報酬スコアを決定します。
+1. システムは学習ループに報酬スコアを返します。
+    * Personalizer が報酬を受け取ると、その報酬が EventHub に送信されます。
+    * 順位と報酬が関連付けられます。
+    * AI モデルが、相関関係の結果に基づいて更新されます。
+    * 推論エンジンが、新しいモデルで更新されます。
+
+## <a name="personalizer-retrains-your-model"></a>Personalizer はモデルを再トレーニングする
+
+Personalizer は、Azure portal 内の Personalizer リソースの**モデルの更新頻度**設定に基づいて、モデルを再トレーニングします。
+
+Personalizer は、Azure portal 内の Personalizer リソースに対する**データ保持**設定の日数に基づいて、現在保持されているすべてのデータを使用します。
 
 ## <a name="research-behind-personalizer"></a>Personalizer の背後にある研究
 
 Personalizer は、論文、研究活動、および現在進行中の Microsoft Research の探索分野を含む、[強化学習](concepts-reinforcement-learning.md)分野の最先端の科学および研究に基づいています。
 
-## <a name="terminology"></a>用語集
+## <a name="next-steps"></a>次のステップ
 
-* **学習ループ**: 学習ループは、パーソナル化によるメリットが得られるアプリケーションのあらゆる部分に対して作成できます。 パーソナル化するエクスペリエンスが複数ある場合は、それぞれにループを作成します。 
-
-* **Actions**:アクションは、商品やプロモーションなど、選択対象のコンテンツ項目です。 Personalizer は、Rank API を介して、"_報酬アクション_" と呼ばれる、ユーザーに表示する最上位のアクションを選択します。 各アクションは、順位付けの要求と共に送信される特徴を備えることができます。
-
-* **コンテキスト**:より正確な順位を提供するために、コンテキストに関する情報を提供します。次に例を示します。
-    * ユーザー。
-    * ユーザーが使用しているデバイス。 
-    * 現在の時刻。
-    * 現在の状況に関するその他のデータ。
-    * ユーザーまたはコンテキストに関する履歴データ。
-
-    特定のアプリケーションにおいて異なるコンテキスト情報がある場合があります。 
-
-* **[特徴](concepts-features.md)**: コンテンツ項目またはユーザー コンテキストに関する情報のユニット。
-
-* **報酬**: Rank API に応答してユーザーから返されたアクションの尺度 (0 から 1 のスコア)。 0 から 1 の値は、その選択がパーソナル化のビジネス目標の達成にどのように役立ったかに基づいて、ビジネス ロジックによって設定されます。 
-
-* **探索**: Personalizer サービスは、最善のアクションを返す代わりに、ユーザーに対して別のアクションを選択するときに探索を行っています。 Personalizer サービスは、ドリフトや停滞を回避し、探索することで進行中のユーザーの動作に適応できます。 
-
-* **実験期間**: そのイベントに対して Rank 呼び出しが行われた時点からの、Personalizer サービスが報酬を待つ時間の長さ。
-
-* **非アクティブなイベント**: 非アクティブなイベントとは、Rank が呼び出されたときにクライアント アプリケーションによる決定によりユーザーに結果が表示されるかどうかが不明なイベントを表します。 非アクティブなイベントを使用すると、パーソナル化の結果を作成して保存した後、機械学習モデルに影響を与えることなくそれらを破棄することを決定できます。
-
-* **モデル**:Personalizer モデルは、ユーザーの動作に関して学習したすべてのデータを取得し、Rank と Reward の呼び出しに送信した引数と学習ポリシーで決定されたトレーニング動作の組み合わせからトレーニング データを取得します。 
-
-## <a name="next-steps"></a>次の手順
-
-[Personalizer を使用できる場所](where-can-you-use-personalizer.md)について理解します。
+Personalizer の[主要なシナリオ](where-can-you-use-personalizer.md)について学習します

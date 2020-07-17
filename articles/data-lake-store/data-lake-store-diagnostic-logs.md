@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877960"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60878714"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -31,13 +31,13 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの診断ログを有効にする
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
 2. Data Lake Storage Gen1 アカウントを開き、Data Lake Storage Gen1 アカウント ブレードから **[診断設定]** をクリックします。
-3. **[診断設定]** ブレードで、**[診断を有効にする]** をクリックします。
+3. **[診断設定]** ブレードで、 **[診断を有効にする]** をクリックします。
 
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "診断ログの有効化")
+    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Traffic Manager で診断ログを有効にする")
 
 3. **[診断設定]** ブレードで、診断ログの構成を次のように変更します。
    
-    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "診断ログの有効化")
+    ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Traffic Manager で診断ログを有効にする")
    
    * **[名前]** には、診断ログ構成の値を入力します。
    * さまざまな方法でデータを格納および処理することができます。
@@ -50,7 +50,7 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
-   * **[Save]** をクリックします。
+   * **[保存]** をクリックします。
 
 診断設定を有効にしたら、 **[診断ログ]** タブでログを確認できます。
 
@@ -61,7 +61,7 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
 * データが格納されている Azure Storage アカウントから
 
 ### <a name="using-the-data-lake-storage-gen1-settings-view"></a>Data Lake Storage Gen1 の [設定] ビューの使用
-1. Data Lake Storage Gen1 アカウントの **[設定]** ブレードから、**[診断ログ]** をクリックします。
+1. Data Lake Storage Gen1 アカウントの **[設定]** ブレードから、 **[診断ログ]** をクリックします。
    
     ![診断ログを表示する](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "診断ログを表示する") 
 2. **[診断ログ]** ブレードには、**監査ログ**と**要求ログ**によって分類されたログが表示されます。
@@ -73,13 +73,13 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure Storage アカウントから
 1. ログ記録用に Data Lake Storage Gen1 に関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
+    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログを表示する")
    
    * コンテナー **insights-logs-audit** には、監査ログが含まれます。
    * コンテナー **insights-logs-requests** には、要求ログが含まれます。
 2. これらのコンテナー内で、ログは次の構造の下に格納されます。
    
-    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログの表示")
+    ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログを表示する")
    
     たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
@@ -113,7 +113,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -126,11 +126,11 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
 | Path |String |操作が実行されたパス |
-| RequestContentLength |int |HTTP 要求のコンテンツの長さ |
+| RequestContentLength |INT |HTTP 要求のコンテンツの長さ |
 | ClientRequestId |String |この要求を一意に識別する ID |
 | StartTime |String |サーバーが要求を受信した時刻 |
 | EndTime |String |サーバーが応答を送信した時間 |
@@ -160,7 +160,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -173,7 +173,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | StreamName |String |操作が実行されたパス |
 

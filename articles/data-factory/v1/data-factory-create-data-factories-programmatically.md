@@ -1,24 +1,22 @@
 ---
-title: Azure .NET SDK を使用したデータ パイプラインの作成 | Microsoft Docs
+title: Azure .NET SDK を使用してデータ パイプラインを作成する
 description: Data Factory SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486973"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74931328"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
@@ -112,13 +110,13 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 
 1. Visual Studio 2012/2013/2015 を使用して、C# .NET コンソール アプリケーションを作成します。
    1. **Visual Studio** 2012/2013/2015 を起動します。
-   2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
-   3. **[テンプレート]** を展開し、**[Visual C#]** を選択します。 このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。
+   2. **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。
+   3. **[テンプレート]** を展開し、 **[Visual C#]** を選択します。 このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。
    4. 右側にあるプロジェクトの種類の一覧から **[コンソール アプリケーション]** を選択します。
    5. [名前] に「 **DataFactoryAPITestApp** 」と入力します。
    6. [場所] で **[C:\ADFGetStarted]** を選択します。
    7. **[OK]** をクリックしてプロジェクトを作成します。
-2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
+2. **[ツール]** をクリックし、 **[NuGet パッケージ マネージャー]** をポイントして、 **[パッケージ マネージャー コンソール]** をクリックします。
 3. **パッケージ マネージャー コンソール**で、次の手順を実行します。
    1. 次のコマンドを実行して、Data Factory パッケージをインストールします: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. 次のコマンドを実行して、Azure Active Directory パッケージをインストールします (コードで Active Directory API を使用します): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -139,7 +137,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
         </appSettings>
     </configuration>
     ```
-5. App.Config ファイルで、**&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;**、**&lt;tenant ID&gt;** の値を実際の値に置き換えます。
+5. App.Config ファイルで、 **&lt;Application ID&gt;** 、 **&lt;Password&gt;** 、 **&lt;Subscription ID&gt;** 、 **&lt;tenant ID&gt;** の値を実際の値に置き換えます。
 6. 次の **using** ステートメントをプロジェクト内の **Program.cs** ファイルに追加します。
 
     ```csharp
@@ -447,18 +445,18 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     }
     ```
 
-15. ソリューション エクスプローラーで、**DataFactoryAPITestApp** プロジェクトを展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。 `System.Configuration` アセンブリのチェック ボックスをオンにし、 **[OK]** をクリックします。
-15. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
+15. ソリューション エクスプローラーで、**DataFactoryAPITestApp** プロジェクトを展開し、 **[参照]** を右クリックして **[参照の追加]** をクリックします。 `System.Configuration` アセンブリのチェック ボックスをオンにし、 **[OK]** をクリックします。
+15. コンソール アプリケーションをビルドします。 メニューから **[ビルド]** をクリックし、 **[ソリューションのビルド]** をクリックします。
 16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。 存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. メニューの **[デバッグ]** -> **[デバッグの開始]** の順にクリックして、サンプルを実行します。 **[Getting run details of a data slice (データ スライスの実行の詳細を取得中)]** が表示されている場合は、数分待機して、**Enter** を押します。
+17. メニューの **[デバッグ]**  ->  **[デバッグの開始]** の順にクリックして、サンプルを実行します。 **[Getting run details of a data slice (データ スライスの実行の詳細を取得中)]** が表示されている場合は、数分待機して、**Enter** を押します。
 18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
     * リンクされたサービス: **AzureStorageLinkedService**
-    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**。
+    * データセット: **DatasetBlobSource** と **DatasetBlobDestination**
     * パイプライン: **PipelineBlobSample**
 19. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
@@ -501,7 +499,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Blob Storage から Azure SQL データベースにデータをコピーする .NET SDK を使用してパイプラインを作成するには、次の例を確認してください。 
 
 - [Blob Storage から SQL Database にデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-dotnet-api.md)

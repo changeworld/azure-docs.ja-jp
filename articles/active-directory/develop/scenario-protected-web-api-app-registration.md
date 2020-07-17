@@ -1,88 +1,155 @@
 ---
-title: 保護されている Web API - アプリの登録 | Azure
-description: 保護されている Web API をビルドする方法とアプリを登録するために必要な情報について学習します。
+title: 保護された Web API のアプリの登録 | Azure
+titleSuffix: Microsoft identity platform
+description: 保護されている Web API をビルドする方法と、アプリを登録するために必要な情報について学習します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d8c8fcf84cd008957fcdb7cd14c4a07d9f3643
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080105"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81868837"
 ---
-# <a name="protected-web-api---app-registration"></a>保護されている Web API - アプリの登録
+# <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
-この記事では、保護されている Web API でのアプリの登録の詳細について説明します。
+この記事では、保護された Web API のアプリ登録の詳細について説明します。
 
-「[クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する (プレビュー)](quickstart-register-app.md)」で、アプリケーションを登録する方法の一般的な手順を参照してください。
+アプリを登録するための一般的な手順については、「[クイックスタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)」を参照してください。
 
 ## <a name="accepted-token-version"></a>承認済みトークンのバージョン
 
-Microsoft ID プラットフォームのエンドポイントでは、2 種類のトークン (v1.0 トークンと v2.0 トークン) を発行できます。 [アクセス トークン](access-tokens.md)に関するページで、これらのトークンの詳細を学習できます。 承認済みトークンのバージョンは、アプリケーションの作成時に選択した **[サポートされているアカウントの種類]** によって異なります。
+Microsoft ID プラットフォームのエンドポイントでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
-- **[サポートされているアカウントの種類]** の値が **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** の場合、承認済みトークンのバージョンは v2.0 にあります。
-- それ以外の場合は、承認済みトークンのバージョンは v2.0 になります。
+承認済みトークンのバージョンは、アプリケーションの作成時に選択した **[サポートされているアカウントの種類]** の値によって異なります。
 
-アプリケーションを作成したら、次の手順に従って、承認済みトークンのバージョンを変更できます。
+- **[サポートされているアカウントの種類]** の値が **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** の場合、承認済みトークンのバージョンは v2.0 です。
+- それ以外の場合、承認済みトークンのバージョンは v1.0 です。
 
-1. Azure portal では、自分のアプリを選択して、アプリ用の**マニフェスト**を選択します。
-2. マニフェストで、**"accessTokenAcceptedVersion"** を検索して、その値が **2** であることを確認します。 このプロパティによって、Azure AD では Web API で v2.0 トークンを承認することが認識されます。 それが **null 値**の場合は、承認済みトークン バージョンは v1.0 になります。
-3. **[保存]** を選択します。
+アプリケーションを作成した後、これらの手順に従って、承認済みトークンのバージョンを決定または変更できます。
+
+1. Azure portal で、アプリを選択して、 **[マニフェスト]** を選択します。
+1. マニフェストで **accessTokenAcceptedVersion** プロパティを見つけます。 プロパティの既定値は 2 です。
+1. その値により、Web API で受け入れられるトークンのバージョンが Azure Active Directory (Azure AD) に対して指定されます。
+    - 値が 2 の場合、Web API では v2.0 トークンが受け入れられます。
+    - 値が **null** の場合、Web API では v1.0 トークンが受け入れられます。
+1. トークンのバージョンを変更した場合は、 **[保存]** を選択します。
 
 > [!NOTE]
-> Web API によって、承認するトークン バージョン (v1.0 または v2.0) を決定できます。 クライアントから Microsoft ID プラットフォーム v2.0 エンドポイントを使用して、Web API 用のトークンが要求されるときに、Web API で承認されるバージョンを識別するトークンを取得します。
+> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォーム (v2.0) エンドポイントに Web API 用のトークンを要求すると、クライアントは Web API によって受け入れられるトークンのバージョンを示すトークンを受け取ります。
 
 ## <a name="no-redirect-uri"></a>リダイレクト URI なし
 
-ユーザーが対話形式でサインインすることがないため、Web API によってリダイレクト URI を登録する必要がありません。
+ユーザーが対話形式でサインインすることがないため、Web API ではリダイレクト URI を登録する必要がありません。
 
-## <a name="expose-an-api"></a>API の公開
+## <a name="exposed-api"></a>公開される API
 
-Web API に固有の別の設定は、公開されている API と公開されているスコープです。
+Web API に固有の他の設定は、公開されている API と公開されているスコープです。
 
-### <a name="resource-uri-and-scopes"></a>リソース URI とスコープ
+### <a name="application-id-uri-and-scopes"></a>アプリケーション ID の URI とスコープ
 
-通常、スコープはフォーム `resourceURI/scopeName` です。 Microsoft Graph の場合、スコープには `User.Read` などのショートカットがありますが、この文字列は単に `https://graph.microsoft.com/user.read` 用のショートカットです。
+通常、スコープの形式は `resourceURI/scopeName` です。 Microsoft Graph の場合、スコープにはショートカットがあります。 たとえば、`User.Read` は `https://graph.microsoft.com/user.read` のショートカットです。
 
 アプリの登録時に、次のパラメーターを定義する必要があります。
 
-- 1 つのリソース URI - 既定では、アプリケーションの登録ポータルでは、`api://{clientId}` を使用することをお勧めします。 このリソース URI は一意ですが、人間が判読できるものではありません。 これを変更することはできませんが、一意であることを確認してください。
+- リソース URI
 - 1 つまたは複数のスコープ
+- 1 つまたは複数のアプリ ロール
 
-お客様のアプリケーションを使用するエンド ユーザーに表示される同意画面には、スコープも表示されます。 そのため、スコープが説明される、対応する文字列を指定する必要があります。
+既定では、アプリケーションの登録ポータルでは、リソース URI `api://{clientId}` を使用することをお勧めします。 この URI は一意ですが、人間が判読できるものではありません。 URI を変更する場合は、新しい値が一意になるようにしてください。
 
-- エンド ユーザーによって表示
-- 管理者の同意を許可できるテナント管理者によって表示
+クライアント アプリケーションに対して、スコープは Web API に対する "*委任されたアクセス許可*" として表示され、アプリ ロールは "*アプリケーション アクセス許可*" として表示されます。
 
-### <a name="how-to-expose-the-api"></a>API を公開する方法
+スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定する必要があります。
+
+- ユーザーに表示される場合。
+- 管理者の同意を許可できる、テナント管理者に表示される場合。
+
+### <a name="exposing-delegated-permissions-scopes"></a>委任されたアクセス許可 (スコープ) の公開
 
 1. アプリケーションの登録で **[API の公開]** を選択します。
-   1. **[Scope の追加]** を選択します。
-   1. **[保存して続行]** を選択して、提案されたアプリケーション ID URI (api://{clientId}) を受け入れます。
-   1. 次のパラメーターを入力します。
-      - **[スコープ名]** には、`access_as_user` を使用します。
-      - **[同意できるユーザー]** に、**[管理者とユーザー]** オプションが選択されていることを確認します。
-      - **[管理者の同意の表示名]** には、「`Access TodoListService as a user`」と入力します。
-      - **[管理者の同意の説明]** には、「`Accesses the TodoListService Web API as a user`」と入力します。
-      - **[ユーザーの同意の表示名]** には、「`Access TodoListService as a user`」と入力します。
-      - **[ユーザーの同意の説明]** には、「`Accesses the TodoListService Web API as a user`」と入力します。
-      - **[状態]** は **[有効]** に設定されたままにします。
-      - **[スコープの追加]** を選択します。
+1. **[Scope の追加]** を選択します。
+1. メッセージが表示されたら、 **[保存して続行]** を選択し、提案されたアプリケーション ID URI (`api://{clientId}`) を受け入れます。
+1. 次の値を指定します。
+    - **[スコープ名]** を選択し、「**access_as_user**」と入力します。
+    - **[同意できるユーザー]** を選択し、 **[管理者とユーザー]** が選択されていることを確認します。
+    - **[管理者の同意の表示名]** を選択し、「**Access TodoListService as a user**」と入力します。
+    - **[管理者の同意の説明]** を選択し、「**Accesses the TodoListService web API as a user**」と入力します。
+    - **[ユーザーの同意の表示名]** を選択し、「**Access TodoListService as a user**」と入力します。
+    - **[ユーザーの同意の説明]** を選択し、「**Accesses the TodoListService web API as a user**」と入力します。
+    - **[状態]** の値は、 **[有効]** に設定されたままにします。
+ 1. **[スコープの追加]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>デーモン アプリで Web API が呼び出される場合
+
+このセクションでは、デーモン アプリで安全に呼び出せるように保護された Web API を登録する方法を説明します。
+
+- デーモン アプリはユーザーと対話しないため、"*アプリケーションのアクセス許可*" のみを宣言して公開します。 委任されたアクセス許可は意味がありません。
+- テナント管理者は、API のアプリケーションのアクセス許可のいずれかにアクセスするために登録されているアプリケーションに対してのみ Web API トークンを発行するように、Azure AD に要求できます。
+
+#### <a name="exposing-application-permissions-app-roles"></a>アプリケーションのアクセス許可 (アプリ ロール) の公開
+
+アプリケーションのアクセス許可を公開するには、マニフェストを編集する必要があります。
+
+1. ご利用のアプリケーションのアプリケーション登録の場合は、 **[マニフェスト]** を選択します。
+1. マニフェストを編集するには、`appRoles` の設定を見つけて、アプリケーション ロールを追加します。 ロールの定義は、次のサンプル JSON ブロックで提供されています。
+1. `allowedMemberTypes` は `"Application"` のみが設定されたままにします。
+1. `id` が一意の GUID であることを確認します。
+1. `displayName` と `value` にスペースが含まれていないことを確認します。
+1. マニフェストを保存します。
+
+次の例では、`appRoles` の内容を示します。`id` の値には、任意の一意の GUID を指定できます。
+
+```json
+"appRoles": [
+    {
+    "allowedMemberTypes": [ "Application" ],
+    "description": "Accesses the TodoListService-Cert as an application.",
+    "displayName": "access_as_application",
+    "id": "ccf784a6-fd0c-45f2-9c08-2f9d162a0628",
+    "isEnabled": true,
+    "lang": null,
+    "origin": "Application",
+    "value": "access_as_application"
+    }
+],
+```
+
+#### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Azure AD で、許可されたクライアントのみに Web API のトークンが発行されることを確認する
+
+Web API によってアプリ ロールが確認されます  ソフトウェア開発者は、このロールにより、アプリケーションのアクセス許可を公開します。 また、テナント管理者が API アクセスを承認するアプリに対してのみ API トークンを発行するように、Azure AD を構成することもできます。
+
+この強化されたセキュリティを追加するには、次のようにします。
+
+1. アプリの登録でアプリの **[概要]** ページに移動します。
+1. **[ローカル ディレクトリでのマネージド アプリケーション]** で、アプリの名前のリンクを選択します。 この選択項目のラベルは、切り詰められている可能性があります。 たとえば、 **[ローカル ディレクトリでの...]** と表示されている場合があります。
+
+   > [!NOTE]
+   >
+   > このリンクを選択すると、 **[Enterprise Application Overview]\(エンタープライズ アプリケーションの概要\)** ページに移動します。 このページには、アプリケーションを作成したテナントでのアプリケーションのサービス プリンシパルが関連付けられています。 ブラウザーの [戻る] ボタンを使用して、アプリの登録ページに移動することができます。
+
+1. エンタープライズ アプリケーション ページの **[管理]** セクションで、 **[プロパティ]** ページを選択します。
+1. Azure AD で特定のクライアントのみからの Web API へのアクセスを許可する場合は、 **[ユーザーの割り当てが必要ですか?]** を **[はい]** に設定します。
+
+   > [!IMPORTANT]
+   >
+   > **[ユーザーの割り当てが必要ですか?]** を **[はい]** に設定すると、クライアントが Web API のアクセス トークンを要求したときに、Azure AD によって、クライアントのアプリ ロールの割り当てが確認されます。 クライアントがどのアプリ ロールにも割り当てられていない場合、Azure AD によって次のエラー メッセージが返されます: "invalid_client: AADSTS501051: アプリケーション \<アプリケーション名\> は \<Web API\> のロールに割り当てられていません"。
+   >
+   > **[ユーザーの割り当てが必要ですか?]** を **[いいえ]** のままにした場合、クライアントが Web API のアクセス トークンを要求したときに、Azure AD ではアプリ ロールの割り当てが確認されません。 すべてのデーモン クライアント (つまり、クライアントの資格情報フローを使用するすべてのクライアント) では、その対象ユーザーを指定するだけで、API のアクセス トークンを取得できます。 すべてのアプリケーションで、そのアクセス許可を要求しなくても、API にアクセスできます。
+   >
+   > ただし、前のセクションで説明したように、Web API では常に、アプリケーションに (テナント管理者によって承認される) 適切なロールがあることを検証できます。API では、アクセス トークンにロール要求があり、この要求の値が正しいことを確認することで、この検証を行います  前の JSON サンプルでは、値は `access_as_application` です。
+
+1. **[保存]** を選択します。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [アプリのコード構成](scenario-protected-web-api-app-configuration.md)
+> [アプリ コードの構成](scenario-protected-web-api-app-configuration.md)

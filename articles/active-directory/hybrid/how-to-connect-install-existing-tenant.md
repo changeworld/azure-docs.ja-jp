@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:Azure AD が既にある場合 | Microsoft Docs
+title: 'Azure AD Connect: Azure AD が既にある場合 | Microsoft Docs'
 description: このトピックでは、既存の Azure AD テナントがある場合の Connect の使い方を説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168360"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71336819"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect:既存のテナントがある場合
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: 既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
 
 ## <a name="the-basics"></a>基本
@@ -59,10 +59,20 @@ Connect を新しくインストールする場合、完全一致とあいまい
 ### <a name="other-objects-than-users"></a>ユーザー以外のオブジェクト
 メールが有効なグループと連絡先については、proxyAddresses に基づいてあいまい一致を利用できます。 ユーザーについてのみ、(PowerShell を使用して) sourceAnchor/immutableID の更新のみを実行できます。このため、完全一致は適用されません。 メールが有効になっていないグループについては、あいまい一致も完全一致もサポートされていません。
 
+### <a name="admin-role-considerations"></a>管理者ロールに関する考慮事項
+信頼されていないオンプレミス ユーザーが任意の管理者ロールを持つクラウド ユーザーと一致しないようにするために Azure AD Connect では、オンプレミス ユーザー オブジェクトは管理者ロールを持つオブジェクトには一致しません。 これは既定です。 この振る舞いを回避するには、次の操作を行います。
+
+1.  クラウドのみのユーザー オブジェクトからディレクトリ ロールを削除します。
+2.  失敗したユーザー同期の試行がある場合は、クラウド内の検疫されたオブジェクトの物理的な削除を行います。
+3.  同期をトリガーします。
+4.  一致が発生した後は、クラウド内のユーザー オブジェクトにオプションでディレクトリ ロールを追加します。
+
+
+
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Azure AD のデータによる新しいオンプレミスの Active Directory の作成
 お客様によっては、最初はクラウドのみのソリューションと Azure AD を使用しており、オンプレミスの AD はないものの、 後になってオンプレミスのリソースが必要になり、Azure AD のデータに基づいてオンプレミスの AD を構築しなければならなくなるケースもあります。 Azure AD Connect ではこのシナリオに対応できません。 オンプレミスでユーザーは作成されませんし、オンプレミスのパスワードを Azure AD と同じものに設定する機能はありません。
 
 オンプレミスの AD の追加を計画する理由が LOB (基幹業務アプリ) への対応のみである場合は、[Azure AD Domain Services](../../active-directory-domain-services/index.yml) の使用を検討した方がよいと思われます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

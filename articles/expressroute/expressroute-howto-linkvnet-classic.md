@@ -1,19 +1,18 @@
 ---
-title: 'ExpressRoute 回線への仮想ネットワークのリンク: PowerShell: クラシック: Azure | Microsoft Docs'
+title: 'Azure ExpressRoute: VNet を回線にリンクする: クラシック'
 description: このドキュメントでは、クラシック デプロイ モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
-documentationcenter: na
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 21676ff329613f792d6570713f044bb7440e58d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045369"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74930033"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (クラシック) を使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -35,8 +34,6 @@ ms.locfileid: "59045369"
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
@@ -48,40 +45,7 @@ ms.locfileid: "59045369"
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>最新の PowerShell コマンドレットをダウンロードする
 
-最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。 次の例を使用する場合は、コマンドレットの新しいバージョンがリリースされると、バージョン番号 (この例では、5.1.1) が変わることに注意してください。
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Azure PowerShell に関するより詳細な情報が必要な場合は、[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関するページで、お使いのコンピューターを構成して Azure PowerShell モジュールを使用する方法のステップ バイ ステップのガイダンスを参照してください。
-
-### <a name="sign-in"></a>サインイン
-
-Azure アカウントにサインインするには、次の例を使用します。
-
-1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. アカウントのサブスクリプションを確認します。
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>同じサブスクリプション内の仮想ネットワークを回線に接続する
 次のコマンドレットを使用して、ExpressRoute 回線に仮想ネットワークをリンクすることができます。 コマンドレットを実行する前に、仮想ネットワーク ゲートウェイが作成されており、リンクの準備ができていることを確認してください。
@@ -237,6 +201,6 @@ New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –Vnet
 New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

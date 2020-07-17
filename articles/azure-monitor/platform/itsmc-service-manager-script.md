@@ -1,24 +1,17 @@
 ---
-title: Azure の IT Service Management Connector に接続する自動スクリプトを使用して Service Manager Web アプリを作成する | Microsoft Docs
+title: Service Management Connector 用の Web アプリを作成する
 description: Azure の IT Service Management Connector に接続する自動スクリプトを使用して Service Manager Web アプリを作成し、ITSM 作業項目を一元的に監視および管理します。
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: 64769ebb1bd9a5fb0f051cc6eca4e59cd41fccc9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 01/23/2018
+ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054851"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 
@@ -28,7 +21,7 @@ ms.locfileid: "59785229"
 
 - Azure サブスクリプションの詳細
 - リソース グループ名
-- Location
+- 場所
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名、パスワード)
 - Web アプリのサイト名のプレフィックス
 - ServiceBus 名前空間。
@@ -121,7 +114,7 @@ Write-Host "Requirement check complete!!"
 
 $errorActionPreference = "Stop"
 
-$templateUri = "https://raw.githubusercontent.com/SystemCenterServiceManager/SMOMSConnector/master/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/Azure/SMOMSConnector/master/azuredeploy.json"
 
 if(!$siteNamePrefix)
 {
@@ -152,8 +145,8 @@ do
     $rand = Get-Random -Maximum 32000
 
     $siteName = $siteNamePrefix + $rand
-
-    $resource = Find-AzResource -ResourceNameContains $siteName -ResourceType Microsoft.Web/sites
+    
+    $resource = Get-AzResource -Name $siteName -ResourceType Microsoft.Web/sites
 
 }while($resource)
 
@@ -192,9 +185,9 @@ Write-Output "Web App Deployed successfully!!"
 
 Add-Type -AssemblyName System.Web
 
-$clientSecret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+$secret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+$clientSecret = $secret | ConvertTo-SecureString -AsPlainText -Force
 
-$clientSecret = $clientSecret | ConvertTo-SecureString -AsPlainText -Force
 
 try
 {
@@ -234,11 +227,13 @@ try
     ForEach ($item in $appSettingList) {
         $appSettings[$item.Name] = $item.Value
     }
+
     $appSettings['ida:Tenant'] = $tenant
     $appSettings['ida:Audience'] = $azureSite
     $appSettings['ida:ServerName'] = $serverName
     $appSettings['ida:Domain'] = $domain
     $appSettings['ida:Username'] = $userName
+    $appSettings['ida:WhitelistedClientId'] = $clientId
 
     $connStrings = @{}
     $kvp = @{"Type"="Custom"; "Value"=$password}
@@ -284,7 +279,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }   
 }
 
-$resource = Find-AzResource -ResourceNameContains $serviceName -ResourceType Microsoft.Relay/namespaces
+$resource = Get-AzResource -Name $serviceName -ResourceType Microsoft.Relay/namespaces
 
 if(!$resource)
 {
@@ -314,13 +309,11 @@ Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
 Write-Host "Client Id:"  $clientId
-Write-Host "Client Secret:"  $clientSecret
+Write-Host "Client Secret:"  $secret
 Write-Host "URI:"  $azureSite
 if(!$err)
 {
     Write-Host "ServiceBus Namespace:"  $serviceName  
-}
-
-```
-## <a name="next-steps"></a>次の手順
-[ハイブリッド接続の構成](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)。
+}```
+## Next steps
+[Configure the Hybrid connection](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).

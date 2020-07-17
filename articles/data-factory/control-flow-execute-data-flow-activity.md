@@ -1,26 +1,26 @@
 ---
-title: Azure Data Factory でのデータ フローの実行アクティビティ | Microsoft Docs
+title: Data Flow アクティビティ
 description: データ ファクトリ パイプラインの内側からデータ フローを実行する方法。
 services: data-factory
 documentationcenter: ''
 author: kromerm
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 04/30/2020
+ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236678"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735387"
 ---
-# <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フローの実行アクティビティ
-データ フローの実行アクティビティを使用して、パイプライン デバッグ (サンドボックス) 実行とパイプライン トリガー実行で ADF データ フローを実行します。
+# <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+データ フロー アクティビティを使用して、Mapping Data Flow を介してデータを変換および移動します。 データ フローを初めて扱う場合は、[Mapping Data Flow の概要](concepts-data-flow-overview.md)に関するページを参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -30,12 +30,23 @@ ms.locfileid: "65236678"
     "type": "ExecuteDataFlow",
     "typeProperties": {
       "dataflow": {
-         "referenceName": "dataflow1",
+         "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
       },
-        "compute": {
-          "computeType": "General",
-          "coreCount": 8,
+      "compute": {
+         "coreCount": 8,
+         "computeType": "General"
+      },
+      "staging": {
+          "linkedService": {
+              "referenceName": "MyStagingLinkedService",
+              "type": "LinkedServiceReference"
+          },
+          "folderPath": "my-container/my-folder"
+      },
+      "integrationRuntime": {
+          "referenceName": "MyDataFlowIntegrationRuntime",
+          "type": "IntegrationRuntimeReference"
       }
 }
 
@@ -43,51 +54,115 @@ ms.locfileid: "65236678"
 
 ## <a name="type-properties"></a>型のプロパティ
 
-* ```dataflow``` は、実行するデータ フロー エンティティの名前です。
-* ```compute``` は、Spark 実行環境を示します。
-* ```coreCount``` は、データ フローのこのアクティビティの実行に割り当てるコア数です。
+プロパティ | 説明 | 使用できる値 | 必須
+-------- | ----------- | -------------- | --------
+dataflow | 実行されているデータ フローへの参照 | DataFlowReference | はい
+integrationRuntime | データ フローが実行されているコンピューティング環境です。 指定されていない場合は、自動解決 Azure 統合ランタイムが使用されます。 リージョン自動解決の統合ランタイムのみがサポートされています。 | IntegrationRuntimeReference | いいえ
+compute.coreCount | Spark クラスター内で使用されるコアの数です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | 8、16、32、48、80、144、272 | いいえ
+compute.computeType | Spark クラスター内で使用されるコンピューティングの種類です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | "General"、"ComputeOptimized"、"MemoryOptimized" | いいえ
+staging.linkedService | SQL DW ソースまたはシンクを使用している場合は、PolyBase ステージングに使用するストレージ アカウント | LinkedServiceReference | データ フローが SQL DW に対して読み取りまたは書き込みを行う場合のみ
+staging.folderPath | SQL DW ソースまたはシンクを使用している場合は、PolyBase ステージングに使用する BLOB ストレージ アカウント内のフォルダー パス | String | データ フローが SQL DW に対して読み取りまたは書き込みを行う場合のみ
 
 ![データ フローの実行](media/data-flow/activity-data-flow.png "データ フローの実行")
 
-### <a name="run-on"></a>Run on (実行先)
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>実行時、データ フロー コンピューティングのサイズを動的に設定する
 
-データ フローのこの実行のコンピューティング環境を選択します。 既定では、Azure Auto-Resolve Default Integration Runtime が選択されています。 この選択肢では、データ ファクトリと同じリージョンの Spark 環境でデータ フローが実行されます。 コンピューティングの種類がジョブ クラスターになるため、コンピューティング環境の起動に数分かかります。
+Core Count プロパティと Compute Type プロパティは、実行時に入ってくるソース データのサイズに合わせて調整されるよう、動的に設定できます。 ソース データセット データのサイズを見つける目的で、Lookup や Get Metadata など、パイプライン アクティビティを使用します。 次に、Data Flow アクティビティ プロパティで Add Dynamic Content を使用します。
 
-### <a name="debugging-pipelines-with-data-flows"></a>データ フローを使用したパイプラインのデバッグ
+![動的データ フロー](media/data-flow/dyna1.png "動的データ フロー")
+
+[この短い動画チュートリアルでこの手法について説明しています](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+
+### <a name="data-flow-integration-runtime"></a>データ フロー統合ランタイム
+
+データ フロー アクティビティの実行に使用する統合ランタイムを選択します。 Data Factory では、4 つのワーカー コアを持ち、有効期限 (TTL) のない自動解決 Azure 統合ランタイムが既定で使用されます。 この IR は汎用目的のコンピューティングの種類で、ご使用のファクトリと同じリージョンで実行します。 データ フロー アクティビティを実行するための特定のリージョン、コンピューティングの種類、コア数、および TTL を定義する、独自の Azure 統合ランタイムを作成できます。 現時点では、データ フロー アクティビティでは、リージョン自動解決の統合ランタイムのみがサポートされています。
+
+パイプライン実行の場合、クラスターはジョブ クラスターであり、実行が開始されるまでに数分かかります。 TTL が指定されていない場合は、すべてのパイプライン実行でこのスタートアップ時間が必要になります。 TTL を指定した場合、前回の実行後に指定された時間だけウォーム クラスター プールがアクティブのままになるため、スタートアップ時間が短縮されます。 たとえば、TTL が 60 分の場合、そのデータ フローを 1 時間に 1 回実行すると、クラスター プールはアクティブのままになります。 詳細については、[Azure 統合ランタイム](concepts-integration-runtime.md)に関するページを参照してください。
+
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
+
+> [!IMPORTANT]
+> データ フロー アクティビティでの Integration Runtime の選択は、お使いのパイプラインの*トリガー済みの実行*のみに適用されます。 データ フローを使用したパイプラインのデバッグは、デバッグ セッションで指定されたクラスターで実行されます。
+
+### <a name="polybase"></a>PolyBase
+
+Azure SQL Data Warehouse をシンクまたはソースとして使用する場合は、PolyBase バッチ読み込み用のステージングの場所を選択する必要があります。 PolyBase を使用すると、データを行ごとに読み込む代わりに一括してバッチ読み込みを行うことができます。 PolyBase を実行すると、SQL DW への読み込み時間が大幅に短縮されます。
+
+## <a name="parameterizing-data-flows"></a>データ フローをパラメーター化する
+
+### <a name="parameterized-datasets"></a>パラメーター化されたデータセット
+
+データ フローでパラメーター化されたデータセットを使用する場合は、 **[設定]** タブでパラメーター値を設定します。
+
+![データ フローの実行パラメーター](media/data-flow/params.png "パラメーター")
+
+### <a name="parameterized-data-flows"></a>パラメーター化されたデータ フロー
+
+データ フローがパラメーター化されている場合は、 **[パラメーター]** タブでデータ フロー パラメーターの動的な値を設定します。ADF パイプラインの式言語またはデータ フローの式言語のいずれかを使用して、動的またはリテラルのパラメーター値を割り当てることができます。 詳しくは、[データ フロー パラメーター](parameters-data-flow.md)に関するページを参照してください。
+
+### <a name="parameterized-compute-properties"></a>パラメーター化されたコンピューティングのプロパティ
+
+コア カウントまたはコンピューティングの種類は、自動解決 Azure 統合ランタイムを使用し、かつ compute.coreCount と compute.computeType の値を指定する場合にパラメーター化が可能です。
+
+![データ フローの実行パラメーターの例](media/data-flow/parameterize-compute.png "パラメーターの例")
+
+## <a name="pipeline-debug-of-data-flow-activity"></a>データ フロー アクティビティのパイプライン デバッグ
+
+データ フロー アクティビティを使用してデバッグ パイプラインを実行するには、上部バーにある **[Data Flow Debug]\(データ フロー デバッグ\)** スライダーを使用して、データ フロー デバッグ モードをオンに切り替える必要があります。 デバッグ モードでは、アクティブな Spark クラスターに対してデータ フローを実行できます。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
 ![デバッグ ボタン](media/data-flow/debugbutton.png "デバッグ ボタン")
 
-データ フロー デバッグでは、ウォーミングされたクラスターを利用して、パイプライン デバッグ実行でデータ フローを対話形式でテストします。 パイプライン内でデータ フローをテストするには、パイプライン デバッグ オプションを使用します。
+デバッグ パイプラインは、データ フロー アクティビティ設定で指定された統合ランタイム環境ではなく、アクティブなデバッグ クラスターに対して実行されます。 デバッグ モードを開始するときに、デバッグ コンピューティング環境を選択できます。
 
-### <a name="run-on"></a>Run on (実行先)
+## <a name="monitoring-the-data-flow-activity"></a>データ フロー アクティビティを監視する
 
-これは、データ フロー アクティビティの実行に使用する統合ランタイムを定義する必須フィールドです。 既定では、Data Factory は既定の自動解決 Azure 統合ランタイムを使用します。 ただし、データ フロー アクティビティを実行するための特定のリージョン、コンピューティングの種類、コア数、および TTL を定義する、独自の Azure 統合ランタイムを作成できます。
+データ フロー アクティビティには、パーティション分割、ステージ時間、およびデータ系列の情報を表示できる特別な監視エクスペリエンスがあります。 **[アクション]** の下にある眼鏡アイコンを使用して、[監視] ウィンドウを開きます。 詳しくは、[データ フローの監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
 
-データ フローの実行の既定の設定は、一般コンピューティングの 8 コアで、TTL は 60 分です。
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>後続のアクティビティでデータ フロー アクティビティの結果を使用する
 
-### <a name="staging-area"></a>ステージング領域
+データ フロー アクティビティは、各シンクに書き込まれた行の数と各ソースから読み取られた行に関するメトリックを出力します。 これらの結果は、アクティビティの実行結果の `output` セクションに返されます。 返されるメトリックは、以下の JSON の形式です。
 
-データを Azure Data Warehouse にシンクする場合は、Polybase バッチ読み込み用のステージングの場所を選択する必要があります。
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
 
-## <a name="parameterized-datasets"></a>パラメーター化されたデータセット
+たとえば、'dataflowActivity' という名前のアクティビティで、'sink1' という名前のシンクに書き込まれた行の数を取得するには、`@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` を使用します。
 
-パラメーター化されたデータセットを使用する場合は、パラメーター値を必ず設定します。
+このシンクで使用されていた、'source1' という名前のソースから読み取られた行の数を取得するには、`@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` を使用します。
 
-![データ フローの実行のパラメーター](media/data-flow/params.png "パラメーター")
+> [!NOTE]
+> シンクに書き込まれた行が 0 の場合は、メトリックに表示されません。 存在を確認するには、`contains` 関数を使用します。 たとえば、`contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` は、sink1 に行が書き込まれたかどうかを確認します。
 
-### <a name="debugging-parameterized-data-flows"></a>パラメーター化されたデータ フローのデバッグ
+## <a name="next-steps"></a>次のステップ
 
-パラメーター化されたデータセットを使用するデータ フローは、データ フローの実行アクティビティを使用してパイプライン デバッグ実行からのみデバッグできます。 現時点では、ADF Data Flow での対話型デバッグ セッションは、パラメーター化されたデータセットでは機能しません。 パイプラインの実行とデバッグ実行では、パラメーターが使用されます。
-
-設計時に完全なメタデータ列の伝達を利用できるように、静的データセットを使用してデータ フローを構築することをお勧めします。 その後、データ フロー パイプラインを運用化するときに、静的データセットを動的パラメーター化データセットに置き換えます。
-
-## <a name="next-steps"></a>次の手順
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+Data Factory でサポートされている制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)
 - [Until アクティビティ](control-flow-until-activity.md)

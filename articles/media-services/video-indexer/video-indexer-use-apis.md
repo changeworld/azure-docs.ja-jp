@@ -1,27 +1,27 @@
 ---
-title: Video Indexer API の使用 - Azure
-titlesuffix: Azure Media Services
-description: この記事では、Video Indexer API 基本的な使用方法について説明します。
+title: Video Indexer API の使用
+titleSuffix: Azure Media Services
+description: この記事では、Azure Media Services Video Indexer API の使用を開始する方法について説明します。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: ce04e19022a9902c228079e866c192985694134c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799245"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774361"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
-Video Indexer は、Microsoft が提供するさまざまなオーディオおよびビデオの人工知能 (AI) テクノロジが 1 つに統合されたサービスです。このサービスを利用すると、開発がより簡単になります。 API は、開発者がクラウド プラットフォームの規模、世界的な展開、可用性、信頼性を気にすることなく、Media AI テクノロジの使用に集中できるように設計されています。 この API を使用すると、ファイルをアップロードし、詳細なビデオの分析情報を取得し、アプリケーションに埋め込む分析情報とプレーヤー ウィジェットの URL を取得するなどのタスクを実行できます。
+Video Indexer は、Microsoft が提供するさまざまなオーディオおよびビデオの人工知能 (AI) テクノロジが 1 つに統合されたサービスです。このサービスを利用すると、開発がより簡単になります。 API は、開発者がクラウド プラットフォームの規模、世界的な展開、可用性、信頼性を気にすることなく、Media AI テクノロジの使用に集中できるように設計されています。 この API を使用して、ファイルをアップロードしたり、ビデオの詳細な分析情報を取得したり、埋め込み可能な分析情報ウィジェットやプレーヤー ウィジェットの URL を取得したりできます。
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer を使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。
 
 この記事では、開発者が [Video Indexer API](https://api-portal.videoindexer.ai/) を利用する方法について説明します。
 
@@ -29,38 +29,38 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 1. [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)にサインインします。
     
-    ![サインイン](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![Video Indexer 開発者ポータルにサインインする](./media/video-indexer-use-apis/video-indexer-api01.png)
 
    > [!Important]
    > * Video Indexer へのサインアップ時と同じプロバイダーを使用する必要があります。
    > * 個人用の Google アカウントと Microsoft (Outlook/Live) アカウントは試用アカウントにのみ使用できます。 Azure に接続するアカウントには、Azure AD が必要です。
-   > * 1 つの電子メール アドレスで有効にすることができるアカウントは 1 つのみです。 ユーザーが user@gmail.com を使用して LinkedIn にサインインした後に、user@gmail.com を使用して Google にサインインしようとすると、ユーザーは既に存在しているというエラー ページが表示されます。
+   > * 1 つのメール アドレスで有効にすることができるアカウントは 1 つのみです。 ユーザーが user@gmail.com を使用して LinkedIn にサインインし、後から user@gmail.com を使用して Google にサインインしようとすると、ユーザーは既に存在しているというエラー ページが表示されます。
 
 2. サブスクライブします。
 
-    [[製品]](https://api-portal.videoindexer.ai/products) タブを選択します。次に、[承認] を選択し、サブスクライブします。 
+    [[製品]](https://api-portal.videoindexer.ai/products) タブを選択します。次に、[承認] を選択し、サブスクライブします。
     
-    ![サインアップ](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Video Indexer 開発者ポータルの [製品] タブ](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
     > 新しいユーザーは自動的に Authorization にサブスクライブされます。
     
-    サブスクライブすると、サブスクリプション、プライマリ キー、セカンダリ キーが表示されます。 キーは保護する必要があります。 キーはサーバー コードでのみ使用してください。 クライアント側 (.js、.html など) では使用できないようにします。
+    サブスクライブすると、サブスクリプション、プライマリ キー、セカンダリ キーを確認できます。 キーは保護する必要があります。 キーはサーバー コードでのみ使用してください。 クライアント側 (.js、.html など) では使用できないようにします。
 
-    ![サインアップ](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Video Indexer 開発者ポータルでのサブスクリプションとキー](./media/video-indexer-use-apis/video-indexer-api03.png)
 
 > [!TIP]
 > Video Indexer ユーザーは、単一のサブスクリプション キーを使用して複数の Video Indexer アカウントに接続することができます。 さらに、それらの Video Indexer アカウントを異なる Media Services アカウントにリンクさせることができます。
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>Authorization API を使用してアクセス トークンを取得する
 
-Authorization API にサブスクライブすると、アクセス トークンを取得できるようになります。 これらのアクセス トークンは、Operations API の認証を受けるために使用されます。 
+Authorization API にサブスクライブしたら、アクセス トークンを取得できます。 これらのアクセス トークンは、Operations API の認証を受けるために使用されます。
 
 Operations API の各呼び出しは、呼び出しの承認スコープと一致するアクセス トークンに関連付けられている必要があります。
 
-- ユーザー レベル - ユーザー レベルのアクセス トークンを使用すると、**ユーザー** レベルに対して操作を実行できます。 たとえば、関連付けられたアカウントの取得などです。
-- アカウント レベル - アカウント レベルのアクセス トークンを使用すると、**アカウント** レベルまたは**ビデオ** レベルに対して操作を実行できます。 たとえば、動画のアップロード、すべてのビデオの一覧表示、動画の分析情報の取得などです。
-- ビデオ レベル - ビデオ レベルのアクセス トークンを使用すると、特定の**ビデオ**に対して操作を実行できます。 たとえば、ビデオの分析情報、キャプションのダウンロード、ウィジェットの取得などです。 
+- ユーザー レベル:ユーザー レベルのアクセス トークンを使用すると、**ユーザー** レベルに対して操作を実行できます。 たとえば、関連付けられたアカウントの取得などです。
+- アカウント レベル:アカウント レベルのアクセス トークンを使用すると、**アカウント** レベルまたは**ビデオ** レベルに対して操作を実行できます。 たとえば、ビデオのアップロード、すべてのビデオの一覧表示、ビデオの分析情報の取得などです。
+- ビデオ レベル:ビデオ レベルのアクセス トークンを使用すると、特定の**ビデオ**に対して操作を実行できます。 たとえば、ビデオの分析情報、キャプションのダウンロード、ウィジェットの取得などです。
 
 **allowEdit=true/false** を指定することで、これらのトークンを読み取り専用にするか編集を許可するかを制御できます。
 
@@ -69,10 +69,10 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 わかりやすくするために、ユーザー トークンを最初に取得せずに、**Authorization** API の **GetAccounts** を使用してアカウントを取得することができます。 有効なトークンを持つアカウントの取得を要求することもできます。これで、アカウント トークンを取得する追加の呼び出しをスキップすることができます。
 
 アクセス トークンの有効期間は 1 時間です。 Operations API を使用する前に、アクセス トークンが有効であることを確認してください。 期限切れの場合は、もう一度 Authorization API を呼び出して新しいアクセス トークンを取得します。
- 
+
 これで API との統合を開始する準備が整いました。 [各 Video Indexer REST API の詳細な説明](https://api-portal.videoindexer.ai/)を参照してください。
 
-## <a name="account-id"></a>Account ID 
+## <a name="account-id"></a>Account ID
 
 アカウント ID パラメーターは、すべての操作 API 呼び出しに必要です。 アカウント ID は、次のいずれかの方法で取得できる GUID です。
 
@@ -82,15 +82,15 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
     2. **[設定]** ページを表示します。
     3. アカウント ID をコピーします。
 
-        ![Account ID](./media/video-indexer-use-apis/account-id.png)
+        ![Video Indexer の設定とアカウント ID](./media/video-indexer-use-apis/account-id.png)
 
 * **Video Indexer 開発者ポータル**を使用して、プログラムからアカウント ID を取得します。
 
-    [Get accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API を使用します。
-    
+    [Get account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API を使用します。
+
     > [!TIP]
     > `generateAccessTokens=true` を定義することで、アカウントのアクセス トークンを生成できます。
-    
+
 * アカウントのプレーヤー ページの URL からアカウント ID を取得します。
 
     ビデオを見ると、`accounts` セクションの後と `videos` セクションの前に ID が表示されます。
@@ -103,20 +103,20 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 
 このセクションでは、Video Indexer API を使用する際の推奨事項をいくつか示します。
 
-- ビデオをアップロードする予定がある場合は、ファイルをパブリック ネットワークの場所 (OneDrive など) に配置することをお勧めします。 ビデオのリンクを取得し、アップロード ファイルのパラメーターとしてその URL を指定します。 
+- ビデオをアップロードする予定がある場合は、ファイルをパブリック ネットワークの場所 (OneDrive など) に配置することをお勧めします。 ビデオのリンクを取得し、アップロード ファイルのパラメーターとしてその URL を指定します。
 
-    Video Indexer に指定する URL は、メディア (オーディオまたはビデオ) ファイルを指している必要があります。 OneDrive で生成されるリンクは、ファイルを含む HTML ページの場合があります。 URL をブラウザーに貼り付けると、簡単に確認できます。ファイルのダウンロードが開始された場合は、適切な URL である可能性があります。 ブラウザーに何かが描画される場合は、ファイルへのリンクではなく HTML ページへのリンクである可能性があります。
-    
+    Video Indexer に指定する URL は、メディア (オーディオまたはビデオ) ファイルを指している必要があります。 OneDrive で生成されるリンクは、ファイルを含む HTML ページの場合があります。 URL をブラウザーに貼り付けると、簡単に確認できます。ファイルのダウンロードが開始された場合は、おそらく適切な URL です。 ブラウザーに何かが描画される場合は、おそらく、ファイルではなく HTML ページへのリンクです。
+
 - 指定されたビデオのビデオ分析情報を取得する API を呼び出すと、応答コンテンツとして詳細な JSON 出力を取得できます。 [返される JSON の詳細については、こちらのトピックを参照してください](video-indexer-output-json-v2.md)。
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
 次の C# コード スニペットは、すべての Video Indexer API の使用方法を示しています。
 
 ```csharp
 var apiUrl = "https://api.videoindexer.ai";
 var accountId = "..."; 
-var location = "westus2";
+var location = "westus2"; // replace with the account's location, or with “trial” if this is a trial account
 var apiKey = "..."; 
 
 System.Net.ServicePointManager.SecurityProtocol = System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;
@@ -142,9 +142,9 @@ var videoUrl = "VIDEO_URL"; // replace with the video URL
 // as an alternative to specifying video URL, you can upload a file.
 // remove the videoUrl parameter from the query string below and add the following lines:
   //FileStream video =File.OpenRead(Globals.VIDEOFILE_PATH);
-  //byte[] buffer =newbyte[video.Length];
+  //byte[] buffer = new byte[video.Length];
   //video.Read(buffer, 0, buffer.Length);
-  //content.Add(newByteArrayContent(buffer));
+  //content.Add(new ByteArrayContent(buffer));
 
 var uploadRequestResult = client.PostAsync($"{apiUrl}/{location}/Accounts/{accountId}/Videos?accessToken={accountAccessToken}&name=some_name&description=some_description&privacy=private&partition=some_partition&videoUrl={videoUrl}", content).Result;
 var uploadResult = uploadRequestResult.Content.ReadAsStringAsync().Result;
@@ -154,7 +154,7 @@ var videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
 Debug.WriteLine("Uploaded");
 Debug.WriteLine("Video ID: " + videoId);           
 
-// obtain video access token            
+// obtain video access token
 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
 var videoTokenRequestResult = client.GetAsync($"{apiUrl}/auth/{location}/Accounts/{accountId}/Videos/{videoId}/AccessToken?allowEdit=true").Result;
 var videoAccessToken = videoTokenRequestResult.Content.ReadAsStringAsync().Result.Replace("\"", "");
@@ -212,7 +212,8 @@ Debug.WriteLine(playerWidgetLink);
 - [Video Indexer の概要](video-indexer-overview.md)
 - [リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[出力 JSON の詳細を調べる](video-indexer-output-json-v2.md)
+- [出力 JSON の詳細を調べる](video-indexer-output-json-v2.md)
+- こちらの[サンプル コード](https://github.com/Azure-Samples/media-services-video-indexer)をご覧ください。動画のアップロードとインデックス作成という重要な作業が説明されます。 このコードからは、API の基本機能の使い方がよくわかります。 必ずインライン コメントを読み、ベスト プラクティスに関する助言を確認してください。
 

@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell スクリプト: Azure Lab Services で許可される VM のサイズを設定する | Microsoft Docs'
-description: この PowerShell スクリプトは、Azure Lab Services で許可される VM のサイズを設定します。
+description: この記事には、Azure Lab Services で許可される仮想マシン (VM) のサイズを設定するサンプル PowerShell スクリプトが含まれています。
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0c82e304d3e3d8df1206c7c05883399b74229af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b3dbee7d0ac928c4f18f25348e714aba9c1cd13
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160549"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100772"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>PowerShell を使用して Azure Lab Services で許可される VM のサイズを設定する
 
@@ -45,7 +45,7 @@ ms.locfileid: "66160549"
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | リソースを変更します。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

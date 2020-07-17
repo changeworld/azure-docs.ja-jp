@@ -6,14 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: amqp
+ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66166206"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732442"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -42,7 +43,7 @@ Azure Monitor が監視する特定のメトリックとイベントの詳細に
 
 Azure Monitor を使用すると、IoT Hub で発生するさまざまな操作を追跡できます。 各カテゴリには、そのカテゴリ内のイベントの報告方法を定義するスキーマがあります。
 
-#### <a name="connections"></a>Connections
+#### <a name="connections"></a>接続
 
 接続カテゴリは、エラーだけでなく、IoT Hub に対するデバイスの接続と切断イベントも追跡します。 このカテゴリは、承認されていない接続の試行を識別したり、デバイスへの接続を失ったときに警告したりするのに役立ちます。
 
@@ -118,7 +119,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 }
 ```
 
-#### <a name="routes"></a>Routes
+#### <a name="routes"></a>ルート
 
 メッセージ ルーティング カテゴリは、メッセージ ルート評価および IoT Hub によって認識されるエンドポイント正常性において発生するエラーを追跡します。 このカテゴリには、以下のようなイベントが含まれます。
 
@@ -343,7 +344,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | 整数 | device-to-cloud メッセージのサイズ (バイト単位) |
 | **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
@@ -377,7 +378,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | String | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
 | **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
@@ -409,11 +410,59 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | ルーティング エンドポイントの名前 |
 | **endpointType** | String | ルーティング エンドポイントの種類 |
 | **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、IoT Hub のイングレス メッセージ トレースです |
+
+#### <a name="configurations"></a>構成
+
+IoT Hub 構成ログでは、自動デバイス管理機能セットのイベントとエラーが追跡されます。
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-24T17:21:52Z",
+             "resourceId": "Resource Id",
+             "operationName": "ReadManyConfigurations",
+             "category": "Configurations",
+             "resultType": "",
+             "resultDescription": "",
+             "level": "Information",
+             "durationMs": "17",
+             "properties": "{\"configurationId\":\"\",\"sdkVersion\":\"2018-06-30\",\"messageSize\":\"0\",\"statusCode\":null}",
+             "location": "southcentralus"
+         }
+    ]
+}
+```
+
+### <a name="device-streams-preview"></a>デバイス ストリーム (プレビュー)
+
+デバイス ストリーム カテゴリでは、個々のデバイスに送信される要求 - 応答のインタラクションが追跡されます。
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-19T11:12:04Z",
+             "resourceId": "Resource Id",
+             "operationName": "invoke",
+             "category": "DeviceStreams",
+             "resultType": "",
+             "resultDescription": "",    
+             "level": "Information",
+             "durationMs": "74",
+             "properties": "{\"deviceId\":\"myDevice\",\"moduleId\":\"myModule\",\"sdkVersion\":\"2019-05-01-preview\",\"requestSize\":\"3\",\"responseSize\":\"5\",\"statusCode\":null,\"requestName\":\"myRequest\",\"direction\":\"c2d\"}",
+             "location": "Central US"
+         }
+    ]
+}
+```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Azure Event Hubs からのログの読み取り
 
@@ -492,15 +541,15 @@ Azure IoT Hub では、リージョン レベルでの正常性が示されま�
 
 IoT Hub の正常性を確認するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
-2. **[Service Health]\(サービス正常性\)** > **[リソース正常性]** に移動します。
+2. **[Service Health]\(サービス正常性\)**  >  **[リソース正常性]** に移動します。
 
 3. ドロップダウン ボックスから、サブスクリプションを選択し、リソースの種類として **[IoT ハブ]** を選択します。
 
 正常性データを解釈する方法の詳細については、「[Azure Resource Health の概要](../service-health/resource-health-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [IoT Hub メトリックの理解](iot-hub-metrics.md)
 * [Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

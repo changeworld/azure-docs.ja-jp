@@ -1,35 +1,35 @@
 ---
 title: Python UDF と Apache Hive と Apache Pig - Azure HDInsight
 description: HDInsight (Azure の Apache Hadoop テクノロジ スタック) 上の Apache Hive と Apache Pig から Python ユーザー定義関数 (UDF) を使用する方法について説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702222"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74148395"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
 Azure HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する方法について説明します。
 
-## <a name="python"></a>HDInsight の Python
+## <a name="python-on-hdinsight"></a><a name="python"></a>HDInsight の Python
 
 Python2.7 は HDInsight 3.0 以降に既定でインストールされます。 Python のこのバージョンではストリーム処理に Apache Hive を使うことができます。 ストリーム処理では、Hive と UDF の間のデータの受け渡しに、STDOUT と STDIN を使います。
 
-HDInsight には、Java で記述された Python 実装である Jython も付属しています。 Jython は、Java 仮想マシン上で直接実行し、ストリームを使いません。 Jython は、Pig で Python を使うときに推奨される Python インタープリターです。
+HDInsight には、Java で記述された Python 実装である Jython も付属しています。 Jython は Java 仮想マシン上で直接実行され、ストリーミングは使われません。 Jython は、Pig で Python を使うときに推奨される Python インタープリターです。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ wasbs:// または abfss:// になります。「[安全な転送](../../storage/common/storage-require-secure-transfer.md)」も参照してください。
+* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は wasbs:// になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 * **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
 * 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
 
@@ -37,6 +37,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 > この記事で使用されたストレージ アカウントは[安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっている Azure Storage なので、`wasbs` がこの記事全体で使用されています。
 
 ## <a name="storage-configuration"></a>ストレージの構成
+
 使用しているストレージ アカウントの種類が `Storage (general purpose v1)` または `StorageV2 (general purpose v2)` の場合、アクションは必要ありません。  この記事のプロセスにより、少なくとも `/tezstaging` に対する出力が生成されます。  既定の Hadoop 構成では、サービス `HDFS` の `core-site.xml` 内の `fs.azure.page.blob.dir` 構成変数に `/tezstaging` が含まれます。  この構成により、ディレクトリに対する出力がページ BLOB となります。これは、ストレージ アカウントの種類 `BlobStorage` ではサポートされていません。  この記事で `BlobStorage` を使用するには、`/tezstaging` を `fs.azure.page.blob.dir` 構成変数から削除します。  構成は [Ambari UI](../hdinsight-hadoop-manage-ambari.md) からアクセスすることができます。  そうしないと、`Page blob is not supported for this account type.` というエラー メッセージが表示されます。
 
 > [!WARNING]  
@@ -51,7 +52,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 > * `scp` を使って、クラウド シェルから HDInsight にファイルをアップロードします。
 > * クラウド シェルから `ssh` を使って HDInsight に接続し、例を実行します。
 
-## <a name="hivepython"></a>Apache Hive UDF
+## <a name="apache-hive-udf"></a><a name="hivepython"></a>Apache Hive UDF
 
 Python は、HiveQL の `TRANSFORM` ステートメントを通じて Hive から UDF として使うことができます。 たとえば、次の HiveQL は、クラスターの既定の Azure Storage アカウントに格納されている `hiveudf.py` ファイルを呼び出します。
 
@@ -73,7 +74,7 @@ ORDER BY clientid LIMIT 50;
 
 <a name="streamingpy"></a>
 
-### <a name="create-file"></a>ファイルを作成する
+### <a name="create-file"></a>[ファイルの作成]
 
 開発環境で、`hiveudf.py` という名前のテキスト ファイルを作成します。 このファイルの内容として、以下のコードを使用します。
 
@@ -105,6 +106,7 @@ while True:
 スクリプトの出力は、`devicemake` と `devicemodel` の入力値を連結したものであり、連結後の値のハッシュです。
 
 ### <a name="upload-file-shell"></a>ファイルをアップロードする (シェル)
+
 以下のコマンドでは、`sshuser` を実際のユーザー名と置き換えます (異なる場合)。  `mycluster` を実際のクラスター名に置き換えます。  作業ディレクトリにファイルがあることを確認します。
 
 1. `scp` を使用して HDInsight クラスターにファイルをコピーします。 次のコマンドを編集して入力します。
@@ -162,9 +164,6 @@ while True:
 
 ### <a name="upload-file-powershell"></a>ファイルをアップロードする (PowerShell)
 
-> [!IMPORTANT]  
-> [安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっていると、これらの PowerShell スクリプトは機能しません。  シェル コマンドを使用するか、安全な転送を無効にしてください。
-
 PowerShell を使って、Hive クエリをリモートで実行することもできます。 作業ディレクトリに `hiveudf.py` があることを確認します。  `hiveudf.py` スクリプトを使う Hive クエリを実行するには、次の PowerShell スクリプトを使います。
 
 ```PowerShell
@@ -175,6 +174,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Revise file path as needed
 $pathToStreamingFile = ".\hiveudf.py"
@@ -205,9 +207,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > ファイルをアップロードする方法の詳細については、「[HDInsight で Apache Hadoop ジョブのデータをアップロードする](../hdinsight-upload-data.md)」ドキュメントを参照してください。
 
-
 #### <a name="use-hive-udf"></a>Hive UDF を使用する
-
 
 ```PowerShell
 # Script should stop on failures
@@ -220,6 +220,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Get cluster info
 $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
@@ -284,8 +287,7 @@ Get-AzHDInsightJobOutput `
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-
-## <a name="pigpython"></a>Apache Pig UDF
+## <a name="apache-pig-udf"></a><a name="pigpython"></a>Apache Pig UDF
 
 `GENERATE` ステートメントを使って、Pig から Python スクリプトを UDF として使うことができます。 スクリプトは Jython または C Python を使用して実行できます。
 
@@ -316,7 +318,7 @@ DUMP DETAILS;
 3. 次に、`LOG` のレコードを反復処理し、`GENERATE` を使って、`myfuncs` として読み込まれた Python/Jython スクリプトに含まれる `create_structure` メソッドを呼び出します。 `LINE` を使って、現在のレコードを関数に渡します。
 4. 最後に、`DUMP` コマンドを使って出力が STDOUT にダンプされます。 このコマンドは、操作完了後に結果を表示します。
 
-### <a name="create-file"></a>ファイルを作成する
+### <a name="create-file"></a>[ファイルの作成]
 
 開発環境で、`pigudf.py` という名前のテキスト ファイルを作成します。 このファイルの内容として、以下のコードを使用します。
 
@@ -325,6 +327,7 @@ DUMP DETAILS;
 ```python
 # Uncomment the following if using C Python
 #from pig_util import outputSchema
+
 
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
 def create_structure(input):
@@ -354,8 +357,6 @@ Pig Latin の例では、入力の一貫したスキーマがないため、`LIN
 
 Pig に返された時点のデータは、`@outputSchema` ステートメントで定義されている一貫したスキーマになっています。
 
-
-
 ### <a name="upload-file-shell"></a>ファイルをアップロードする (シェル)
 
 以下のコマンドでは、`sshuser` を実際のユーザー名と置き換えます (異なる場合)。  `mycluster` を実際のクラスター名に置き換えます。  作業ディレクトリにファイルがあることを確認します。
@@ -378,7 +379,6 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-
 ### <a name="use-pig-udf-shell"></a>Pig UDF を使用する (シェル)
 
 1. pig に接続するには、開いている SSH セッションから次のコマンドを使用します。
@@ -391,7 +391,7 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
 
    ```pig
    Register wasbs:///pigudf.py using jython as myfuncs;
-   LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+   LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
    DUMP DETAILS;
@@ -431,11 +431,7 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
 
     このジョブが完了すると、以前に Jython を使用してスクリプトを実行したときと同じ出力が表示されます。
 
-
 ### <a name="upload-file-powershell"></a>ファイルをアップロードする (PowerShell)
-
-> [!IMPORTANT]  
-> [安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっていると、これらの PowerShell スクリプトは機能しません。  シェル コマンドを使用するか、安全な転送を無効にしてください。
 
 PowerShell を使って、Hive クエリをリモートで実行することもできます。 作業ディレクトリに `pigudf.py` があることを確認します。  `pigudf.py` スクリプトを使う Hive クエリを実行するには、次の PowerShell スクリプトを使います。
 
@@ -447,6 +443,9 @@ if(-not($sub))
 {
     Connect-AzAccount
 }
+
+# If you have multiple subscriptions, set the one to use
+# Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
 
 # Revise file path as needed
 $pathToJythonFile = ".\pigudf.py"
@@ -556,7 +555,7 @@ Get-AzHDInsightJobOutput `
     ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
     ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting"></a><a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="errors-when-running-jobs"></a>ジョブ実行時のエラー
 
@@ -583,12 +582,11 @@ Hive ジョブを実行しているときに、次のテキストようなエラ
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 既定で提供されない Python モジュールを読み込む必要がある場合は、[モジュールを Azure HDInsight にデプロイする方法](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)に関するブログ記事をご覧ください。
 
 Pig と Hive を使用する他の方法と、MapReduce の使用方法については、次のドキュメントをご覧ください。
 
 * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)

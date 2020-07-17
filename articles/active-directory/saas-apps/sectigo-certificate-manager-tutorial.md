@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 15-04-2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573e06f0dd57b92f7621ecf77039159a64249f18
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786504"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67588230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>チュートリアル:Azure Active Directory と Sectigo Certificate Manager の統合
 
@@ -48,14 +48,14 @@ Sectigo Certificate Manager と Azure AD の統合を構成するには、次の
 
 Sectigo Certificate Manager では、次の機能がサポートされます。
 
-* **SP によって開始されるシングル サインオン**
+* **SP が起点となるシングル サインオン**
 * **IDP が起点となるシングル サインオン**
 
 ## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Azure portal で Sectigo Certificate Manager を追加する
 
 Sectigo Certificate Manager と Azure AD を統合するには、マネージド SaaS アプリの一覧に Sectigo Certificate Manager を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 
@@ -132,7 +132,7 @@ Sectigo Certificate Manager による Azure AD のシングル サインオン�
 
 1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択します。 要件に基づいてダウンロード オプションを選択します。 お使いのコンピューターに証明書ファイルを保存します。
 
-    ![証明書 (Base64) のダウンロード オプション](common/certificatebase64.png)
+    ![証明書 (Base64) ダウンロード オプション](common/certificatebase64.png)
 
 1. **[Sectigo Certificate Manager のセットアップ]** セクションで、要件に従って以下の URL をコピーします。
 
@@ -166,7 +166,7 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
@@ -192,7 +192,7 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに関連するロールを選択します。 **[選択]** を選択します。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
 
 1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 
@@ -206,7 +206,7 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 シングル サインオンをセットアップした後、マイ アプリ ポータルで **[Sectigo Certificate Manager]** を選択すると、Sectigo Certificate Manager に自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。
 

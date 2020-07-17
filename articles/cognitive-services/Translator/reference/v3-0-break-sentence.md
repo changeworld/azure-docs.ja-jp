@@ -1,23 +1,23 @@
 ---
-title: Translator Text API の BreakSentence メソッド
-titlesuffix: Azure Cognitive Services
-description: Translator Text API の BreakSentence メソッドを使用します。
+title: Translator の BreakSentence メソッド
+titleSuffix: Azure Cognitive Services
+description: Translator の BreakSentence メソッドでは、文章内で文の境界の位置が識別されます。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: de11d493c1a42b67aeab6502f719bcee1adc6e99
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.date: 01/21/2020
+ms.author: swmachan
+ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578208"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588634"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
+# <a name="translator-30-breaksentence"></a>Translator 3.0:BreakSentence
 
 文章内で文の境界の位置を識別します。
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-<table width="100%">
-  <th width="20%">Query parameter (クエリ パラメーター)</th>
-  <th>説明</th>
-  <tr>
-    <td>api-version</td>
-    <td>"*必須のクエリ パラメーター*" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>"*省略可能なクエリ パラメーター*" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。</td>
-  </tr>
-  <tr>
-    <td>script</td>
-    <td>"*省略可能なクエリ パラメーター*" です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。</td>
-  </tr>
-</table> 
+| クエリ パラメーター | 説明 |
+| -------| ----------- |
+| api-version <img width=200/>   | "**必須のクエリ パラメーター**" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。 |
+| language | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。 |
+| script    | "**省略可能なクエリ パラメーター**" です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。  | 
 
 要求ヘッダーには次のものがあります。
 
-<table width="100%">
-  <th width="20%">headers</th>
-  <th>説明</th>
-  <tr>
-    <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
-  </tr>
-</table> 
+| ヘッダー | 説明 |
+| ------- | ----------- |
+| 認証ヘッダー <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
+| Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
+| Content-Length    | "**必須の要求ヘッダー**" です。<br/>要求本文の長さです。  | 
+| X-ClientTraceId   | **オプション**。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。  | 
 
 ## <a name="request-body"></a>要求本文
 
@@ -109,7 +84,7 @@ JSON 応答の例を次に示します。
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -121,7 +96,7 @@ JSON 応答の例を次に示します。
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>X-RequestId</td>
@@ -138,7 +113,7 @@ JSON 応答の例を次に示します。
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>400</td>
@@ -154,7 +129,7 @@ JSON 応答の例を次に示します。
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -166,17 +141,13 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
 
 ## <a name="examples"></a>例
 
 次の例では、1 つの文に対する文の境界を取得する方法を示します。 文の言語は、サービスによって自動的に検出されます。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-
----
 

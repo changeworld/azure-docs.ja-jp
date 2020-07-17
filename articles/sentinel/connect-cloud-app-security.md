@@ -1,52 +1,63 @@
 ---
-title: Azure Sentinel Preview に Cloud App Security データを接続する | Microsoft Docs
+title: Azure Sentinel に Cloud App Security データを接続する | Microsoft Docs
 description: Azure Sentinel に Cloud App Security データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: cd9e5e27-fdd4-4717-8924-be4c1c430f23
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: a418bb318654752eaf48ffbdd05b80cabb487ece
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 03/24/2020
+ms.author: yelevin
+ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65207547"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422142"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) から Azure Sentinel にシングル クリックでログをストリーミングできます。 この接続により、Cloud App Security からのアラートを Azure Sentinel にストリーミングすることができます。 
+
+[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) のコネクタにより、アラートと [Cloud Discovery のログ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)を MCAS から Azure Sentinel にストリーミングできます。 これにより、クラウド アプリの可視化が可能になり、サイバー脅威を特定して対処するための高度な分析とデータの移動の制御を実行できるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 全体管理者またはセキュリティ管理者のアクセス許可を持つユーザー
+- ユーザーには、ワークスペースに対する読み取りと書き込みのアクセス許可が必要です。
+- ユーザーには、ワークスペースのテナントに対するグローバル管理者またはセキュリティ管理者のアクセス許可が必要です。
+- Cloud Discovery のログを Azure Sentinel にストリーミングするには、[Microsoft Cloud App Security 内で Azure Sentinel を SIEM として有効にします](https://aka.ms/AzureSentinelMCAS)。
 
+> [!IMPORTANT]
+> Cloud Discovery ログの取り込みは、現在パブリック プレビューの段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+ 
 ## <a name="connect-to-cloud-app-security"></a>Cloud App Security に接続する
 
 Cloud App Security が既にある場合は、[ネットワークで有効](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)になっていることを確認します。
 Cloud App Security がデプロイされていてデータを取り込んでいる場合は、アラート データを Azure Sentinel に簡単にストリーミングすることができます。
 
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Cloud App Security]** タイルをクリックします。
+1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[Microsoft Cloud App Security]** タイルをクリックし、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
 
-2. **[接続]** をクリックします。
+1. Azure Sentinel にストリーミングするログを選択します。 **[アラート]** と **[Cloud Discovery ログ]** (プレビュー) を選択できます。 
 
-3. Cloud App Security アラートで Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
+1. **[変更の適用]** をクリックします。
 
+1. Cloud App Security のアラートに Log Analytics 内の関連スキーマを使用するには、クエリ ウィンドウで「`SecurityAlert`」と入力します。 Cloud Discovery ログのスキーマの場合は、「`McasShadowItReporting`」と入力します。
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Microsoft Cloud App Security を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+> [!NOTE]
+> Cloud Discovery は、クラウド アプリへのユーザーの接続の基になるデータを集計することで、傾向を検出し、特定します。
+>
+> Cloud Discovery データは日単位で集計されるため、最大 24 時間分の最新データが Azure Sentinel には反映されないことに注意してください。 低レベルの調査でより最近のデータが必要な場合は、生データが存在するソース アプライアンスまたはサービスで直接行う必要があります。
+
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Microsoft Cloud App Security を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [組み込み](tutorial-detect-threats.md)または[カスタム](tutorial-detect-threats-custom.md)のルールを使用して、Azure Sentinel で脅威の検出を開始する。

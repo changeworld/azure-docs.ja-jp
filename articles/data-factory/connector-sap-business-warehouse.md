@@ -1,32 +1,41 @@
 ---
-title: Azure Data Factory を使用して SAP BW からデータをコピーする | Microsoft Docs
+title: SAP BW からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP Business Warehouse からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/07/2018
-ms.author: jingwang
-ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.custom: seo-lt-2019
+ms.date: 09/04/2019
+ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022291"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418067"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [現在のバージョン](connector-sap-business-warehouse.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP Business Warehouse (BW) からデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
+>[!TIP]
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスを参照してください。
+
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この SAP Business Warehouse コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 SAP Business Warehouse のデータを、サポートされる任意のシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -48,7 +57,7 @@ SAP Business Warehouse のデータを、サポートされる任意のシンク
 >- NetWeaver RFC SDK から抽出された依存関係のライブラリはすべて、%windir%\system32 フォルダーにあります。 通常、ここには icudt34.dll、icuin34.dll、icuuc34.dll、libicudecnumber.dll、librfc32.dll、libsapucum.dll、sapcrypto.dll、sapcryto_old.dll、sapnwrfc.dll が含まれています。
 >- 必要なポートは、セルフホステッド IR マシン上で有効にされた SAP サーバーに接続するために使用されます。通常、これらはポート 3300 と 3201 です。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -95,9 +104,9 @@ SAP Business Warehouse (BW) のリンクされたサービスでは、次のプ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、SAP BW データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、SAP BW データセット でサポートされるプロパティの一覧を示します。
 
-SAP BW からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 しかるに、RelationalTable 型の SAP BW データセットに対して、サポートされている型固有のプロパティはありません。
+SAP BW からデータをコピーするには、データセットの type プロパティを **SapBwCube** に設定します。 しかるに、RelationalTable 型の SAP BW データセットに対して、サポートされている型固有のプロパティはありません。
 
 **例:**
 
@@ -105,15 +114,18 @@ SAP BW からデータをコピーするには、データセットの type プ�
 {
     "name": "SAPBWDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapBwCube",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+`RelationalTable` 型のデータセットを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
@@ -121,11 +133,11 @@ SAP BW からデータをコピーするには、データセットの type プ�
 
 ### <a name="sap-bw-as-source"></a>ソースとしての SAP BW
 
-SAP BW からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+SAP BW からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapBwSource** | はい |
 | query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | はい |
 
 **例:**
@@ -149,7 +161,7 @@ SAP BW からデータをコピーするには、コピー アクティビティ
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapBwSource",
                 "query": "<MDX query for SAP BW>"
             },
             "sink": {
@@ -159,6 +171,8 @@ SAP BW からデータをコピーするには、コピー アクティビティ
     }
 ]
 ```
+
+`RelationalSource` 型のソースを使用していた場合は現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW のデータ型マッピング
 
@@ -190,5 +204,10 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 | TIMS | String |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

@@ -10,16 +10,15 @@ ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540841"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226579"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management の問題テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -31,12 +30,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> 問題リスト  
+##  <a name="issue-list"></a><a name="IssueList"></a> 問題リスト  
  **問題リスト** テンプレートを使用すると、開発者ポータルで問題リスト ページの本文をカスタマイズすることができます。  
   
- ![Issue List Developer Portal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM Issue List Developer Portal")  
+ ![問題リスト開発者ポータル](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 問題リスト開発者ポータル")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -97,13 +98,13 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
-|`Issues`|[問題](api-management-template-data-model-reference.md#Issue)エンティティのコレクション。|現在のユーザーに表示される問題。|  
+|`Issues`|[Issue](api-management-template-data-model-reference.md#Issue)エンティティのコレクション。|現在のユーザーに表示される問題。|  
 |`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
-|`IsAuthenticated`|ブール値|現在のユーザーが開発者ポータルにサインインしているかどうか。|  
-|`CanReportIssues`|ブール値|問題を報告する権限が現在のユーザーにあるかどうか。|  
-|`Search`|文字列|このプロパティは非推奨です。使用しないでください。|  
+|`IsAuthenticated`|boolean|現在のユーザーが開発者ポータルにサインインしているかどうか。|  
+|`CanReportIssues`|boolean|問題を報告する権限が現在のユーザーにあるかどうか。|  
+|`Search`|string|このプロパティは非推奨です。使用しないでください。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -136,5 +137,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

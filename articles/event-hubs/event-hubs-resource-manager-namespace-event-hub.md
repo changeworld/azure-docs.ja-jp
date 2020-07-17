@@ -1,192 +1,111 @@
 ---
-title: コンシューマー グループを含むイベント ハブを作成する - Azure Event Hubs | Microsoft Docs
-description: イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
+title: クイック スタート:コンシューマー グループを含むイベント ハブを作成する - Azure Event Hubs
+description: クイック スタート:イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
 ms.service: event-hubs
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/16/2018
-ms.author: shvija
-ms.openlocfilehash: d5dc65dc225d11a996d9b9d3c329151a17321fb6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 02/11/2020
+ms.author: spelluru
+ms.custom: subject-armqs
+ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678243"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79528083"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
-Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
+# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
 
-このクイック スタートでは、Azure Resource Manager テンプレートを使ってイベント ハブを作成します。 Azure Resource Manager テンプレートを使用して、イベント ハブとコンシューマー グループをそれぞれ 1 つずつ含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) タイプの名前空間を作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング][Authoring Azure Resource Manager templates]に関する記事をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.EventHub resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。 このクイック スタートでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用してイベント ハブを作成します。 Azure Resource Manager テンプレートをデプロイして、イベント ハブを 1 つ含む [Event Hubs](event-hubs-what-is-event-hubs.md) 型の名前空間を作成します。
 
-> [!NOTE]
-> 完全なテンプレートについては、GitHub の[イベント ハブとコンシューマー グループを作成するためのテンプレート][Event Hub and consumer group template]を参照してください。 このテンプレートでは、イベント ハブの名前空間とイベント ハブだけでなく、コンシューマー グループも作成しました。 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Event Hubs" を検索してください。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[なし] :
 
-このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+## <a name="create-an-event-hub"></a>イベント ハブの作成
 
-**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)します。
+### <a name="review-the-template"></a>テンプレートを確認する
 
-**Azure CLI** を使用して Resource Manager テンプレートをデプロイするには、[Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)からのものです。
 
-## <a name="create-the-resource-manager-template-json"></a>Resource Manager テンプレート JSON を作成する
-以下の内容の MyEventHub.json という名前の JSON ファイルを作成してフォルダー (例:C:\EventHubsQuickstarts\ResourceManagerTemplate) に保存します。
+:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "eventhub-namespace-name": {
-            "type": "String"
-        },
-        "eventhub_name": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.EventHub/namespaces",
-            "sku": {
-                "name": "Standard",
-                "tier": "Standard",
-                "capacity": 1
-            },
-            "name": "[parameters('eventhub-namespace-name')]",
-            "apiVersion": "2017-04-01",
-            "location": "East US",
-            "tags": {},
-            "scale": null,
-            "properties": {
-                "isAutoInflateEnabled": false,
-                "maximumThroughputUnits": 0
-            },
-            "dependsOn": []
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs",
-            "name": "[concat(parameters('eventhub-namespace-name'), '/', parameters('eventhub_name'))]",
-            "apiVersion": "2017-04-01",
-            "location": "East US",
-            "scale": null,
-            "properties": {
-                "messageRetentionInDays": 7,
-                "partitionCount": 1,
-                "status": "Active"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub-namespace-name'))]"
-            ]
-        }
-    ]
-}
-```
+テンプレートに定義されているリソースは次のとおりです。
 
-## <a name="create-the-parameters-json"></a>パラメーター JSON を作成する
-Azure Resource Manager テンプレートのパラメーターを含む MyEventHub-Parameters.json という名前の JSON ファイルを作成します。 
+- [**Microsoft.EventHub/namespaces**](/azure/templates/microsoft.eventhub/namespaces)
+- [**Microsoft.EventHub/namespaces/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-        "eventhub-namespace-name": {
-            "value": "<specify a name for the event hub namespace>"
-        },
-        "eventhub_name": {
-            "value": "<Specify a name for the event hub in the namespace>"
-        }
-  }
-}
-```
+テンプレートのその他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)」をご覧ください。
 
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
+テンプレートをデプロイするには、次の手順に従います。
 
-## <a name="use-azure-powershell-to-deploy-the-template"></a>Azure PowerShell を使用してテンプレートをデプロイする
+1. 次のコード ブロックの **[試してみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
 
-### <a name="sign-in-to-azure"></a>Azure へのサインイン
-1. Azure PowerShell を起動します。
+   ```azurepowershell-interactive
+   $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+   $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+   $resourceGroupName = "${projectName}rg"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json"
 
-2. 次のコマンドを実行して、Azure にサインインします。
+   New-AzResourceGroup -Name $resourceGroupName -Location $location
+   New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName
 
-   ```azurepowershell
-   Login-AzAccount
-   ```
-3. 次のコマンドを発行して、現在のサブスクリプション コンテキストを設定します。
-
-   ```azurepowershell
-   Select-AzSubscription -SubscriptionName "<YourSubscriptionName>" 
+   Write-Host "Press [ENTER] to continue ..."
    ```
 
-### <a name="provision-resources"></a>リソースをプロビジョニングする
-Azure PowerShell を使用してリソースをデプロイ/プロビジョニングするには、C:\EventHubsQuickStart\ARM\ フォルダーに切り替え、次のコマンドを実行します。
+   イベント ハブが作成されるまでしばらく時間がかかります。
 
-> [!IMPORTANT]
-> これらのコマンドを実行する前に、$resourceGroupName の値として Azure リソース グループの名前を指定します。 
+1. **[コピー]** を選択し、PowerShell スクリプトがコピーされます。
+1. シェル コンソールを右クリックし、 **[貼り付け]** を選択します。
 
-```azurepowershell
-$resourceGroupName = "<Specify a name for the Azure resource group>"
+## <a name="verify-the-deployment"></a>デプロイを検証する
 
-# Create an Azure resource group
-New-AzResourceGroup $resourceGroupName -location 'East US'
+デプロイを検証するには、[Azure portal](https://portal.azure.com) からリソース グループを開くか、次の Azure PowerShell スクリプトを使用します。  Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。
 
-# Deploy the Resource Manager template. Specify the names of deployment itself, resource group, JSON file for the template, JSON file for parameters
-New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+$namespaceName = "${projectName}ns"
+
+Get-AzEventHub -ResourceGroupName $resourceGroupName -Namespace $namespaceName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="use-azure-cli-to-deploy-the-template"></a>Azure CLI を使用してテンプレートをデプロイする
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。
 
-Cloud Shell でコマンドを実行している場合、次の手順は必要ありません。 ローカルで CLI を実行している場合、次の手順を実行して Azure にサインインし、現在のサブスクリプションを設定します。
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
 
-次のコマンドを実行して、Azure にサインインします。
+Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
-```azurecli
-az login
+Write-Host "Press [ENTER] to continue ..."
 ```
 
-現在のサブスクリプションのコンテキストを設定します。 `MyAzureSub` は、使用する Azure サブスクリプションの名前に置き換えてください。
+## <a name="next-steps"></a>次のステップ
 
-```azurecli
-az account set --subscription <Name of your Azure subscription>
-``` 
+この記事では、Event Hubs 名前空間を作成し、その名前空間にイベント ハブを作成しました。 イベント ハブとの間でイベントを送信または受信するためのステップ バイ ステップの手順については、以下の**イベントの送受信**のチュートリアルを参照してください。
 
-### <a name="provision-resources"></a>リソースをプロビジョニングする
-Azure CLI を使用してリソースをデプロイするには、C:\EventHubsQuickStart\ARM\ フォルダーに移動し、次のコマンドを実行します。
-
-> [!IMPORTANT]
-> az group create コマンドで Azure リソース グループの名前を指定します 。
-
-```azurecli
-# Create an Azure resource group
-az group create --name <YourResourceGroupName> --location eastus
-
-# # Deploy the Resource Manager template. Specify the names of resource group, deployment, JSON file for the template, JSON file for parameters
-az group deployment create --name <Specify a name for the deployment> --resource-group <YourResourceGroupName> --template-file MyEventHub.json --parameters @MyEventHub-Parameters.json
-```
-
-お疲れさまでした。 Azure Resource Manager テンプレートを使用して Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成しました。
-
-## <a name="next-steps"></a>次の手順
-
-この記事では、Event Hubs 名前空間を作成し、サンプル アプリケーションを使用してイベント ハブからイベントを送受信しました。 イベント ハブに対してイベントを送信または受信するためのステップ バイ ステップの手順については、**イベントの送受信**チュートリアルをご覧ください。 
-
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)
@@ -196,7 +115,7 @@ az group deployment create --name <Specify a name for the deployment> --resource
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png
 [5]: ./media/event-hubs-quickstart-powershell/metrics.png
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md

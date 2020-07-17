@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の状態の管理 | Microsoft Docs
-description: Service Fabric Reliable Actors の状態のアクセス、保存、および削除の方法を説明します。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric の状態の管理
+description: Azure Service Fabric Reliable Actors の状態のアクセス、保存、削除と、アプリケーションを設計するときの考慮事項について説明します。
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664728"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645635"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors の状態のアクセス、保存、および削除
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) は、ロジックと状態の両方をカプセル化し、状態を確実に維持できるシングル スレッド オブジェクトです。 各アクター インスタンスは、独自の[状態マネージャー](service-fabric-reliable-actors-state-management.md)を持ちます。これは、辞書のようなデータ構造で、キーと値のペアを確実に格納します。 状態マネージャーは、状態プロバイダーのラッパーです。 [永続化設定](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)の使用に関係なく、データの格納に使用できます。
@@ -324,7 +315,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Reliable Actors に格納される状態は、ディスクに書き込まれて、高可用性のためにレプリケートされる前に、シリアル化される必要があります。 [Actor 型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)についてさらに学習してください。
 

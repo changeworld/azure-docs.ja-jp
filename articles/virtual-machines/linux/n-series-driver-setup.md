@@ -1,33 +1,25 @@
 ---
-title: Linux 用 Azure N シリーズ GPU ドライバーのセットアップ | Microsoft Docs
+title: Linux 用 Azure N シリーズ GPU ドライバーのセットアップ
 description: Azure で Linux を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法を説明します。
 services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
+author: vikancha
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: vikancha
+ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788124"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779351"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
-Linux を実行する Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA GPU ドライバーをインストールする必要があります。 [NVIDIA GPU ドライバー拡張機能](../extensions/hpccompute-gpu-linux.md)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure CLI や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるディストリビューションおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](../extensions/hpccompute-gpu-linux.md)を参照してください。
+NVIDIA GPU を動力源とする Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA GPU ドライバーをインストールする必要があります。 [NVIDIA GPU ドライバー拡張機能](../extensions/hpccompute-gpu-linux.md)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure CLI や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるディストリビューションおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](../extensions/hpccompute-gpu-linux.md)を参照してください。
 
-GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるディストリビューション、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
+NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるディストリビューション、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
 
 N シリーズ VM の仕様、ストレージの容量、およびディスクの詳細については、「[GPU Linux VM のサイズ](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 
 
@@ -158,7 +150,7 @@ GPU デバイスの状態を照会するには、VM に SSH 接続し、ドラ�
 
 ## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
-RDMA ネットワーク接続は、同じ可用性セット内にデプロイまたは VM スケール セット内の単一の配置グループにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
+RDMA ネットワーク接続は、同じ可用性セット内にデプロイまたは仮想マシン (VM) スケール セット内の単一の配置グループにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
 
 ### <a name="distributions"></a>ディストリビューション
 
@@ -170,9 +162,9 @@ N シリーズ VM で RDMA 接続をサポートする Azure Marketplace で、�
 
 * **CentOS ベースの 7.4 HPC** - RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
 
-## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>NV または NVv2 シリーズの VM に GRID ドライバーをインストールする
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>NV または NVv3 シリーズの VM に GRID ドライバーをインストールする
 
-NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
+NV シリーズまたは NVv3 シリーズの VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -187,9 +179,11 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 
    sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
-3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
+   sudo apt-get install build-essential ubuntu-desktop -y
+   
+   sudo apt-get install linux-azure -y
+   ```
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau
@@ -214,7 +208,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、 **[はい]** を選択します。
 
 7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
 
@@ -226,8 +220,15 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE
    ```
-9. VM を再起動して、インストールの確認に進みます。
+   
+9. 存在する場合、`/etc/nvidia/gridd.conf` から次を削除します。
+ 
+   ```
+   FeatureType=0
+   ```
+10. VM を再起動して、インストールの確認に進みます。
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS または Red Hat Enterprise Linux 
@@ -242,9 +243,11 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
    sudo yum install dkms
+   
+   sudo yum install hyperv-daemons
    ```
 
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau
@@ -278,7 +281,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、 **[はい]** を選択します。
 
 7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
   
@@ -290,8 +293,15 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE 
    ```
-9. VM を再起動して、インストールの確認に進みます。
+9. 存在する場合、`/etc/nvidia/gridd.conf` から次を削除します。
+ 
+   ```
+   FeatureType=0
+   ```
+10. VM を再起動して、インストールの確認に進みます。
+
 
 ### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 
@@ -345,7 +355,8 @@ fi
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * カードを照会する必要があるときにコマンドがより高速に出力されるように、`nvidia-smi` を使って永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
+* NVIDIA CUDA ドライバーを最新バージョンに更新して、RDMA 接続が動作しなくなっていることが判明した場合は、[RDMA ドライバーを再インストールして](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)、その接続を再確立してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * NVIDIA ドライバーがインストールされている Linux VM のイメージをキャプチャするには、「[Linux 仮想マシンを一般化してキャプチャする方法](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。

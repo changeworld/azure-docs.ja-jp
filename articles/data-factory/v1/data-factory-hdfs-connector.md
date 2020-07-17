@@ -1,27 +1,26 @@
 ---
-title: オンプレミスの HDFS からデータを移動する | Microsoft Docs
+title: オンプレミスの HDFS からデータを移動する
 description: Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ae5b3b9016af0d35e40d66d527e51230e0f11ce
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7652ab72fb972230d98913c2d7e2601737982532
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527219"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74924342"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-hdfs-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-hdfs.md)
 
@@ -45,10 +44,10 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 ゲートウェイは同じオンプレミスのマシンまたは Azure VM に HDFS としてインストールできますが、別個のマシンおよびAzure IaaS VM にゲートウェイをインストールすることをお勧めします。 ゲートウェイを別のコンピューターにインストールすることで、リソースの競合が減少し、パフォーマンスが向上します。 別のマシンにゲートウェイをインストールすると、そのマシンが HDFS を持つマシンにアクセスできるようになります。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、HDSF ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -73,7 +72,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
-| encryptedCredential |アクセス資格情報の [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 出力。 |いいえ  |
+| encryptedCredential |アクセス資格情報の [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 出力。 |いいえ |
 
 ### <a name="using-anonymous-authentication"></a>匿名認証を使用する
 
@@ -121,10 +120,10 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのパス。 例: `myfolder`<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例: folder\subfolder には、folder\\\\subfolder を指定し、d:\samplefolder には、d:\\\\samplefolder を指定します。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ  |
-| partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例: 1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ  |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ  |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
+| partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 例: 1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 > [!NOTE]
 > fileName と fileFilter は、同時に使用することができません。
@@ -171,7 +170,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ  |
+| recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ |
 
 ## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」に関する記事を参照してください。
@@ -179,7 +178,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 ## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON の使用例:オンプレミスの HDFS から Azure BLOB へのデータのコピー
 このサンプルは、オンプレミスの HDFS から Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
-この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、HDFS から Azure Blob Storage にデータをコピーするためのパイプラインを作成できます。
+この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) で、この定義を使用して、HDFS から Azure Blob Storage にデータをコピーするためのパイプラインを作成できます。
 
 1. [OnPremisesHdfs](#linked-service-properties)型のリンクされたサービス。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
@@ -351,10 +350,10 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS コネクタでの Kerberos 認証の使用
 HDFS コネクタで Kerberos 認証を使用するようにオンプレミス環境を設定するためのオプションは 2 つあります。 ニーズに適した方法を選択できます。
-* オプション 1:[ゲートウェイ マシンを Kerberos 領域に参加させる](#kerberos-join-realm)
+* オプション 1: [ゲートウェイ マシンを Kerberos 領域に参加させる](#kerberos-join-realm)
 * オプション 2:[Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>オプション 1: ゲートウェイ マシンを Kerberos 領域に参加させる
+### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>オプション 1: ゲートウェイ マシンを Kerberos 領域に参加させる
 
 #### <a name="requirement"></a>要件:
 
@@ -364,16 +363,16 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **ゲートウェイ コンピューターで以下を実行します。**
 
-1.  **Ksetup** ユーティリティを実行して、Kerberos の KDC サーバーと領域を構成します。
+1.  **Ksetup** ユーティリティを実行して、Kerberos KDC サーバーと領域を構成します。
 
-    Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 必要に応じて、*REALM.COM* を独自の領域に置き換えます。
+    Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 *REALM.COM* は、必要に応じて実際の領域に置き換えます。
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
     これら 2 つのコマンドを実行した後、コンピューターを**再起動**します。
 
-2.  **Ksetup** コマンドを使用して、構成を確認します。 出力は次のようになります。
+2.  **Ksetup** コマンドを実行して構成を確認します。 出力は次のようになります。
 
             C:> Ksetup
             default realm = REALM.COM (external)
@@ -384,20 +383,20 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 * Kerberos プリンシパル名とパスワードによる **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
 
-### <a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
 
 #### <a name="requirement"></a>要件:
 *   ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
-*   ドメイン コントローラーの設定を更新できるアクセス許可が必要です。
+*   ドメイン コントローラーの設定を更新するアクセス許可が必要です。
 
 #### <a name="how-to-configure"></a>構成方法:
 
 > [!NOTE]
-> 必要に応じて、次のチュートリアルの REALM.COM と AD.COM を独自の領域とドメイン コントローラーに置き換えてください。
+> 次のチュートリアルの REALM.COM と AD.COM を、必要に応じて実際の領域とドメイン コントローラーに置き換えます。
 
 **KDC サーバーで以下を実行します。**
 
-1. **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定では、この構成は **/etc/krb5.conf** に置かれています。
+1. **krb5.conf** ファイルの KDC 構成を編集して、KDC が次の構成テンプレートを参照している Windows ドメインを信頼するようにします。 既定で、この構成は **/etc/krb5.conf** にあります。
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -443,7 +442,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **ドメイン コントローラーで、以下を実行します。**
 
-1.  次の **Ksetup** コマンドを実行して、領域エントリを追加します。
+1.  次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
@@ -468,11 +467,11 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
-    1. 管理ツールを起動し、 **[Active Directory ユーザーとコンピュータ]** を選択します。
+    1. 管理ツールを起動し、**Active Directory ユーザーとコンピュータを選択します**。
 
     2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
 
-    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **[名前のマッピング]** を表示し、 **[Kerberos 名]** タブをクリックします。
+    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **名前のマッピング**を表示し、**Kerberos 名** タブをクリックします。
 
     4. 領域からプリンシパルを追加します。
 
@@ -480,7 +479,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **ゲートウェイ コンピューターで以下を実行します。**
 
-* 次の **Ksetup** コマンドを実行して、領域エントリを追加します。
+* 次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM

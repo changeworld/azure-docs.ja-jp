@@ -10,24 +10,27 @@ ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 540e9804d2ee84c050531f5287d4c4b8922ae999
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26128751"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73176794"
 ---
 # <a name="developer-portal-templates"></a>開発者ポータル テンプレート
 
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
   
-テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。  
+テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。  
 
-##  <a name="DeveloperPortalTemplates"></a> 開発者ポータル テンプレート  
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> 開発者ポータル テンプレート  
   
 -   [API](api-management-api-templates.md)  
     -   [API リスト](api-management-api-templates.md#APIList)  
@@ -43,10 +46,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [成果物](api-management-product-templates.md)  
     -   [製品リスト](api-management-product-templates.md#ProductList)  
-    -   [成果物](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product)  
 -   [アプリケーション](api-management-application-templates.md)  
     -   [アプリケーション リスト](api-management-application-templates.md#ProductList)  
-    -   [アプリケーション](api-management-application-templates.md#Application)  
+    -   [Application](api-management-application-templates.md#Application)  
 -   [問題](api-management-issue-templates.md)  
     -   [問題リスト](api-management-issue-templates.md#IssueList)  
 -   [ユーザー プロファイル](api-management-user-profile-templates.md)  

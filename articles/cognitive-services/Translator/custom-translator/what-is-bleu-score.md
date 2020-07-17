@@ -1,20 +1,20 @@
 ---
 title: BLEU スコアとは - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: BLEU は、同じ原文の自動翻訳と 1 つまたは複数の人間が作成した参考翻訳との違いの測定単位です。 BLEU アルゴリズムでは、自動翻訳の連続するフレーズと、参考翻訳に含まれる連続するフレーズとが比較され、一致数がカウントされ、重み付けされた形式で表示されます。
-author: rajdeep-in
-manager: christw
+description: BLEU は、同じ原文の機械翻訳と人間が作成した参考翻訳との違いの測定単位です。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: v-rada
-ms.openlocfilehash: 8d249d29841466c40c0fd96df92cccecdce2dc62
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: swmachan
+ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73647369"
 ---
 # <a name="what-is-a-bleu-score"></a>BLEU スコアとは
 

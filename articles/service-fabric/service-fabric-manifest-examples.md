@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric コンテナー アプリケーション マニフェストの例 | Microsoft Docs
+title: Azure Service Fabric アプリケーション マニフェストの例
 description: Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664694"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75451639"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric のアプリケーションとサービス マニフェストの例
 このセクションでは、アプリケーションとサービス マニフェストの例を示します。 これらの例は、重要なシナリオを示すことを意図しているわけではなく、利用可能なさまざまな設定とその使用方法を示します。 
@@ -40,7 +31,7 @@ ms.locfileid: "58664694"
 |[データ パッケージを宣言する](service-fabric-application-and-service-manifests.md)|[VotingData サービス マニフェスト](service-fabric-manifest-example-reliable-services-app.md#votingdata-service-manifest)|
 |[環境変数をオーバーライドする](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[コンテナー ポートからホストへのマッピングを構成する](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)| [コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
-|[コンテナー レジストリ認証を構成する](service-fabric-get-started-containers.md#configure-container-registry-authentication)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
+|[コンテナー レジストリ認証を構成する](service-fabric-get-started-containers.md#configure-container-repository-authentication)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[分離モードを設定する](service-fabric-get-started-containers.md#configure-isolation-mode)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[OS ビルド固有のコンテナー イメージを指定する](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)|[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[環境変数を設定する](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[コンテナー FrontEndService サービス マニフェスト](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)、[コンテナー BackEndService サービス マニフェスト](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|

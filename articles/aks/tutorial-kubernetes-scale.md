@@ -2,18 +2,15 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: twhitney
+ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304438"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128993"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -34,7 +31,7 @@ ms.locfileid: "66304438"
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
-前のチュートリアルで Azure Vote フロントエンドと Redis インスタンスをデプロイしたときに、レプリカを 1 つ作成しました。 クラスターに存在するポッドの数と状態を確認するには、次のように [kubectl get][kubectl-get]コマンドを使用します。
+前のチュートリアルで Azure Vote フロントエンドと Redis インスタンスをデプロイしたときに、レプリカを 1 つ作成しました。 ご利用のクラスターに存在するポッドの数と状態を確認するには、次のように [kubectl get][kubectl-get] コマンドを使用します。
 
 ```console
 kubectl get pods
@@ -54,10 +51,10 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-AKS によって新たにポッドが作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、追加したポッドがクラスターで利用できる状態になります。
+AKS によって追加のポッドが作成されていることを確認するために、もう一度 [kubectl get pods][kubectl-get] を実行します。 しばらくすると、追加したポッドがクラスターで利用できる状態になります。
 
 ```console
-$ kubectl get pods
+kubectl get pods
 
                                     READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
@@ -73,15 +70,16 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。 [Metrics Server][metrics-server] は、Kubernetes にリソース使用率を提供するために使用され、AKS クラスター バージョン 1.10 以降に自動的にデプロイされます。 AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
-AKS クラスターが *1.10* 未満の場合は、Metrics Server をインストールします。そうでない場合は、この手順をスキップします。 インストールするには、`metrics-server` GitHub リポジトリを複製し、サンプル リソース定義をインストールします。 これらの YAML 定義の内容を表示する場合は、[Metrics Server for Kuberenetes 1.8+][metrics-server-github] を参照してください。
-
-```console
-git clone https://github.com/kubernetes-incubator/metrics-server.git
-kubectl create -f metrics-server/deploy/1.8+/
-```
+> [!NOTE]
+> AKS クラスターが *1.10* 未満の場合、Metrics Server は自動的にインストールされません。 Metrics Server のインストール マニフェストは、Metrics Server リリースの `components.yaml` 資産として入手できます。つまり、URL を使用してインストールすることが可能です。 これらの YAML 定義の詳細については、Readme の「[デプロイ][metrics-server-github]」セクションを参照してください。
+> 
+> インストール例: 
+> ```console
+> kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+> ```
 
 オートスケーラーを使用するには、ポッド内のすべてのコンテナーで CPU の要求と制限が定義されている必要があります。 `azure-vote-front` のデプロイでは、フロントエンド コンテナーによって既に 0.25 CPU が要求されています。上限は 0.5 CPU です。 これらのリソース要求と制限は、次のスニペットの例に示されているように定義されています。
 
@@ -93,16 +91,53 @@ resources:
      cpu: 500m
 ```
 
-次の例では、[kubectl autoscale][kubectl-autoscale] コマンドを使って、*azure-vote-front* のデプロイのポッド数を自動スケーリングします。 CPU 使用率が 50% を超えると、自動スケーラーはポッドを最大 *10* インスタンスまで増やします。 その後、少なくとも *3* インスタンスがデプロイ用に定義されます。
+次の例では、[kubectl autoscale][kubectl-autoscale] コマンドを使って、*azure-vote-front* のデプロイのポッド数を自動スケーリングします。 すべてのポッドの平均 CPU 使用率が、要求された使用率の 50% を超えると、自動スケーラーはポッドを最大 *10* インスタンスまで増やします。 その後、少なくとも *3* インスタンスがデプロイ用に定義されます。
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
+または、マニフェスト ファイルを作成して、オートスケーラーの動作とリソースの制限を定義することもできます。 `azure-vote-hpa.yaml` という名前のマニフェスト ファイルの例を次に示します。
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-back-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-back
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-front-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-front
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+```
+
+`kubectl apply` を使用して、`azure-vote-hpa.yaml` マニフェスト ファイルに定義されているオートスケーラーを適用します。
+
+```
+kubectl apply -f azure-vote-hpa.yaml
+```
+
 自動スケーラーの状態を見るには、次のように `kubectl get hpa` コマンドを使用します。
 
 ```
-$ kubectl get hpa
+kubectl get hpa
 
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
@@ -112,7 +147,7 @@ Azure Vote アプリの負荷が最低になって数分が経過すると、ポ
 
 ## <a name="manually-scale-aks-nodes"></a>AKS ノードの手動スケーリング
 
-前のチュートリアルでコマンドを使って Kubernetes クラスターを作成した場合、そのクラスターには 1 つのノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、ノードの数を手動で調整できます。
+前のチュートリアルでコマンドを使って Kubernetes クラスターを作成した場合、そのクラスターには 2 つのノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、ノードの数を手動で調整できます。
 
 次の例では、*myAKSCluster* という名前の Kubernetes クラスターのノードの数を 3 に増やしています。 コマンドが完了するまでに数分かかります。
 
@@ -138,9 +173,9 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
   }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Kubernetes クラスターの異なるスケーリング機能を使いました。 以下の方法について学習しました。
+このチュートリアルでは、Kubernetes クラスターの異なるスケーリング機能を使いました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * アプリケーションを実行する Kubernetes ポッドを手動でスケーリングする
@@ -157,8 +192,8 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
-[metrics-server]: https://v1-12.docs.kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
+[metrics-server-github]: https://github.com/kubernetes-sigs/metrics-server/blob/master/README.md#deployment
+[metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/#metrics-server
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

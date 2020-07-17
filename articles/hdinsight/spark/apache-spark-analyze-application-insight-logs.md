@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.openlocfilehash: 45cbb26eb74dd78bf46a6b148a32a7762bb31fbc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696873"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75435236"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
 
@@ -27,9 +27,6 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 * Linux ベースの HDInsight クラスターの作成に慣れていること。 詳細については、[HDInsight 上の Apache Spark の作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
-  > [!IMPORTANT]  
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
 * Web ブラウザー。
 
 このドキュメントの作成およびテストでは次のリソースを使用しました。
@@ -42,13 +39,13 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 以下の図に、この例のサービス アーキテクチャを示します。
 
-![データが Application Insights から BLOB ストレージに流れ、HDInsight 上の Spark で処理される様子を示した図](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![Application Insights から Blob Storage を経て Spark に流れるデータ](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure Storage
 
 Application Insights は、BLOB にテレメトリ情報を連続してエクスポートするように構成できます。 こうすることで、HDInsight が BLOB に格納されたデータを読み取ることができます。 ただし、守る必要のある要件がいくつかあります。
 
-* **[場所]**:ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
+* **場所**: ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
 
     > [!WARNING]  
     > HDInsight 以外の場所でストレージ アカウントを使用することはできません。
@@ -63,21 +60,19 @@ Application Insights には、BLOB にエクスポートされるテレメトリ
 
 ## <a name="export-telemetry-data"></a>テレメトリ データをエクスポートする
 
-[連続エクスポートの構成](../../azure-monitor/app/export-telemetry.md) に関する記事の手順に従って、Azure Storage BLOB へテレメトリ情報をエクスポートするように Application Insights を構成します。
+[連続エクスポートの構成](../../azure-monitor/app/export-telemetry.md)に関するページにある手順に従って、テレメトリ情報を Azure Storage BLOB にエクスポートするように Application Insights を構成します。
 
 ## <a name="configure-hdinsight-to-access-the-data"></a>データにアクセスするように HDInsight を構成する
 
-HDInsight クラスターを作成する場合は、クラスターの作成中にストレージ アカウントを追加します。
+HDInsight クラスターを作成している場合は、クラスターの作成中にストレージ アカウントを追加します。
 
 既存のクラスターに Azure ストレージ アカウントを追加する方法については、[ストレージ アカウントの追加](../hdinsight-hadoop-add-storage.md)に関するドキュメントをご覧ください。
 
 ## <a name="analyze-the-data-pyspark"></a>データの分析: PySpark
 
-1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[クイック リンク]** セクションで **[クラスター ダッシュボード]** を選択してから、[クラスター ダッシュボード] セクションで **[Jupyter Notebook]** を選択します。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
 
-    ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
-
-2. Jupyter のページの右上隅にある **[New]** をクリックし、**[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
+2. Jupyter のページの右上隅にある **[New]** をクリックし、 **[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
 
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 
@@ -96,24 +91,25 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure ストレージ アカウントの名前と Application Insights データを含む BLOB コンテナーの名前に置き換えます。
+
+5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure Storage アカウント名と Application Insights データを含む BLOB コンテナー名に置き換えます。
 
    ```python
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     **Shift + Enter** キーを押してこのセルを実行します。 次のような結果が表示されます。
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    返された wasb パスが、Application Insights のテレメトリ データの場所です。 返された wasb パスを使用するようにセルの `hdfs dfs -ls` 行を変更し、**Shift + Enter** キーを押してセルをもう一度実行します。 今回は、テレメトリ データを含むディレクトリが結果に表示されます。
+    返された wasbs パスは、Application Insights テレメトリ データの場所です。 セル内の `hdfs dfs -ls` 行を返された wasbs パスを使用するように変更してから、**Shift + Enter** キーを使用してそのセルを再度実行します。 今回は、テレメトリ データを含むディレクトリが結果に表示されます。
 
    > [!NOTE]  
-   > このセクションの残りの手順では、`wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 ディレクトリ構造は異なる場合があります。
+   > このセクションの残りの手順では、`wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 ディレクトリ構造は異なる場合があります。
 
-6. 隣のセルに次のコードを入力します。`WASB_PATH` は、前の手順のパスに置き換えてください。
+6. 次のセルに、次のコードを入力します。`WASB_PATH` を前の手順のパスに置き換えます。
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -189,6 +185,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. 次のコードを使用して、データフレームを一時テーブルとして登録し、データに対してクエリを実行します。
 
    ```python
@@ -197,7 +194,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
    df.show()
    ```
 
-    このクエリでは、context.location.city が null ではない上位 20 レコードの都市情報が返されます。
+    このクエリは、context.location.city が null でない上位 20 レコードの都市情報を返します。
 
    > [!NOTE]  
    > context 構造は Application Insights で記録されるすべてのテレメトリに存在していますが、 お使いのログでは city 要素が設定されていない場合があります。 スキーマを使用して、ログのデータが含まれるクエリ可能な他の要素を特定してください。
@@ -216,10 +213,10 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 ## <a name="analyze-the-data-scala"></a>データの分析: Scala
 
-1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[クイック リンク]** セクションで **[クラスター ダッシュボード]** を選択してから、[クラスター ダッシュボード] セクションで **[Jupyter Notebook]** を選択します。
+1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
 
-    ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、**[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
+2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、 **[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
+
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 
    ```scala
@@ -237,24 +234,25 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure ストレージ アカウントの名前と Application Insights ログを含む BLOB コンテナーの名前に置き換えます。
+
+5. 最初のセルの下に新しいセルが作成されます。 この新しいセルに次のテキストを入力します。 `CONTAINER` と `STORAGEACCOUNT` を、Azure Storage アカウント名と Application Insights ログを含む BLOB コンテナー名に置き換えます。
 
    ```scala
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     **Shift + Enter** キーを押してこのセルを実行します。 次のような結果が表示されます。
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    返された wasb パスが、Application Insights のテレメトリ データの場所です。 返された wasb パスを使用するようにセルの `hdfs dfs -ls` 行を変更し、**Shift + Enter** キーを押してセルをもう一度実行します。 今回は、テレメトリ データを含むディレクトリが結果に表示されます。
+    返された wasbs パスは、Application Insights テレメトリ データの場所です。 セル内の `hdfs dfs -ls` 行を返された wasbs パスを使用するように変更してから、**Shift + Enter** キーを使用してそのセルを再度実行します。 今回は、テレメトリ データを含むディレクトリが結果に表示されます。
 
    > [!NOTE]  
-   > このセクションの残りの手順では、`wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 テレメトリ データが Web アプリのものでない場合、このディレクトリは存在しない可能性があります。
+   > このセクションの残りの手順では、`wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 テレメトリ データが Web アプリのものでない場合、このディレクトリは存在しない可能性があります。
 
-6. 隣のセルに次のコードを入力します。`WASB\_PATH` は、前の手順のパスに置き換えてください。
+6. 次のセルに、次のコードを入力します。`WASB\_PATH` を前の手順のパスに置き換えます。
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -337,15 +335,13 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
    ```scala
    jsonData.registerTempTable("requests")
-   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city isn't null limit 10").show()
    ```
 
-    このクエリでは、context.location.city が null ではない上位 20 レコードの都市情報が返されます。
+    このクエリは、context.location.city が null でない上位 20 レコードの都市情報を返します。
 
    > [!NOTE]  
    > context 構造は Application Insights で記録されるすべてのテレメトリに存在していますが、 お使いのログでは city 要素が設定されていない場合があります。 スキーマを使用して、ログのデータが含まれるクエリ可能な他の要素を特定してください。
-   >
-   >
 
     このクエリでは、次のテキストのような情報が返されます。
 
@@ -359,13 +355,13 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
         ...
         +---------+
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Apache Spark を使用して Azure のデータやサービスを操作するその他の例については、次のドキュメントを参照してください。
 
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 Spark アプリケーションを作成および実行する方法については、次のドキュメントを参照してください。

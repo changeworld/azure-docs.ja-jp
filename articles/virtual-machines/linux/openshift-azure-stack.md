@@ -1,26 +1,20 @@
 ---
-title: Azure Stack に OpenShift をデプロイする | Microsoft Docs
+title: OpenShift を Azure Stack にデプロイする
 description: Azure Stack に OpenShift をデプロイします。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: joraio
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 91b37753ae80596612eda9d3ccd34858691e35ad
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446947"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758238"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack で OpenShift Container Platform または OKD をデプロイする
 
@@ -67,9 +61,9 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 - OpenShift クラスターの詳細 - ホスト ファイル (deployOpenShift.sh) 経由で変更済み
 - RHEL イメージ参照 (azuredeploy.json 内の変数)
 
-Azure CLI を使用したデプロイの手順については、[OpenShift Container Platform](./openshift-container-platform.md) に関するセクションまたは [OKD](./openshift-okd.md) に関するセクションの該当セクションに従ってください。
+Azure CLI を使用したデプロイの手順については、[OpenShift Container Platform](./openshift-container-platform-3x.md) に関するセクションまたは [OKD](./openshift-okd.md) に関するセクションの該当セクションに従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [デプロイ後タスク](./openshift-post-deployment.md)
-- [Azure での OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
+- [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
+- [Azure での OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

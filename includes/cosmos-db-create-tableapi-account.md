@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
-ms.openlocfilehash: b9c585e460dd2ed650de2b3a90b33c1d30eec43e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0747862158462089fa2696823ad6659259cc5c09
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120740"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "72818616"
 ---
-Azure Cosmos DB Table API アカウントの作成手順については、[Table API アカウントの作成](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)に関するセクションを参照してください。
+Azure Cosmos DB Table API アカウントの作成手順については、「[データベース アカウントの作成](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)」を参照してください。

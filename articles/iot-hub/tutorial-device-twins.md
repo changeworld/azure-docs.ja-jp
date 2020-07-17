@@ -1,28 +1,26 @@
 ---
 title: Azure IoT Hub のデバイス状態を同期する | Microsoft Docs
-description: デバイス ツインを使用してデバイスと IoT ハブ間の状態を同期する
+description: デバイス ツインを使用してクラウドからデバイスを構成し、デバイスから状態およびコンプライアンス データを受信する方法について説明します。
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/18/2019
-ms.custom: mvc
-ms.openlocfilehash: 85f1c051f13484ea8e14a6ae8402067b613fe2bc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.date: 06/21/2019
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597534"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81767813"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
-# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>チュートリアル:バックエンド サービスからデバイスを構成する
+# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>チュートリアル: バックエンド サービスからデバイスを構成する
 
 場合によっては、デバイスからテレメトリを受信するだけでなく、バックエンド サービスからデバイスを構成する必要があります。 デバイスに必要な構成を送信するときに、それらのデバイスから状態とコンプライアンスの更新を受信したい場合もあります。 たとえば、デバイスの目標動作温度範囲を設定する場合や、デバイスからファームウェアのバージョン情報を収集する場合などです。
 
@@ -39,7 +37,7 @@ ms.locfileid: "65597534"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +51,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+
+ポート 8883 がファイアウォールで開放されていることを確認してください。 このチュートリアルのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -66,7 +66,7 @@ hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed:
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
@@ -75,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -244,7 +244,7 @@ node ServiceClient.js "{your service connection string}"
 
 ![バックエンド アプリケーション](./media/tutorial-device-twins/BackEnd2.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルを実行する場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
 
@@ -257,7 +257,7 @@ IoT ハブが必要でなくなった場合は、ポータルを使用して IoT
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、デバイスと IoT ハブ間の状態情報を同期する方法について説明しました。 デバイス ツインを使用してファームウェアの更新プロセスを実装する方法については、次のチュートリアルに進んでください。
 

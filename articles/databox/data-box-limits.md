@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 2e1ed8df490343e569f9466fd56458f652dafaf6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 13d5bce46883ea4ddca91d7222f68a19ba65c21c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229799"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限
 
@@ -25,7 +25,8 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 
 ## <a name="data-box-limits"></a>Data Box の制限
 
-- xv@ Data Box は、最大で 5 億個のファイルを格納できます。
+- Data Box は、最大で 5 億個のファイルを格納できます。
+- Data Box は、クラウドで最大 512 個のコンテナーまたは共有をサポートしています。 ユーザー共有内の最上位レベルのディレクトリは、クラウド内のコンテナーまたは Azure ファイル共有になります。 
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 

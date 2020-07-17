@@ -1,25 +1,15 @@
 ---
-title: 完了したジョブやタスクから結果やログをデータ ストアに保持する - Azure Batch | Microsoft Docs
+title: ジョブやタスクからの出力をデータ ストアに保存する - Azure Batch
 description: Batch タスクやジョブから出力データを保持するさまざまなオプションについて説明します。 データは、Azure Storage、または別のデータ ストアに保持することができます。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
-ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc579cd372616563b61e5ba04fe32612f3efb1c7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3a0c8f7517e88bf4e5476c7bad98d167ce760a9a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541249"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82116419"
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 
@@ -51,17 +41,17 @@ Batch サービス API を使用してタスク出力を保持することの詳
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリの使用
 
-Batch では、Azure Storage 内でのタスク出力ファイルの名前付けについて、任意選択の規則セットが定義されています。 これらの規則については、[Batch ファイル規則の標準に関するページ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)を参照してください。 ファイル規則の標準では、特定の出力ファイルについて Azure Storage 内での保存先コンテナーと BLOB パスの名前を決める際に、ジョブとタスクの名前を基にします。
+Batch では、Azure Storage 内でのタスク出力ファイルの名前付けについて、任意選択の規則セットが定義されています。 これらの規則については、[Batch ファイル規則の標準に関するページ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)を参照してください。 ファイル規則の標準では、特定の出力ファイルについて Azure Storage 内での保存先コンテナーと BLOB パスの名前を決める際に、ジョブとタスクの名前を基にします。
 
 出力データ ファイルの名前付けでファイル規則の標準を採用するかどうかは、開発者が自分で決めることができます。 また、保存先コンテナーや BLOB の名前を、自分で自由に付けることもできます。 出力ファイルの名前付けにファイル規則の標準を使用した場合は、[Azure Portal][portal] で出力ファイルを表示できます。
 
-C# と .NET で Batch ソリューションを作成している開発者は、[.NET 用のファイル規則ライブラリ][nuget_package]を使用し、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)に従って、タスクのデータを Azure Storage アカウントに保持することができます。 ファイル規則ライブラリでは、出力ファイルの Azure Storage への移動や、移動先のコンテナーと BLOB の名前付けが、よく知られた方法で処理されます。
+C# と .NET で Batch ソリューションを作成している開発者は、[.NET 用のファイル規則ライブラリ][nuget_package]を使用し、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)に従って、タスクのデータを Azure Storage アカウントに保持することができます。 ファイル規則ライブラリでは、出力ファイルの Azure Storage への移動や、移動先のコンテナーと BLOB の名前付けが、よく知られた方法で処理されます。
 
 .NET 用のファイル規則ライブラリを使用してタスク出力を保持することの詳細については、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を参照してください。
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>Batch ファイル規則の標準を実装する
 
-.NET 以外の言語を使用している場合は、開発者が自分のアプリケーション内で [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)を実装することができます。
+.NET 以外の言語を使用している場合は、開発者が自分のアプリケーション内で [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)を実装することができます。
 
 実証済みの名前付けスキームを使用する必要がある場合、または Azure Portal でタスク出力を表示する必要がある場合は、ファイル規則の名前付け標準を自分で実装することもできます。
 
@@ -77,15 +67,15 @@ C# と .NET で Batch ソリューションを作成している開発者は、[
 
 Batch ソリューションを設計する際は、ジョブとタスクの出力に関連する次の事項を考慮してください。
 
-- **コンピューティング ノードの有効期間**:コンピューティング ノードは多くの場合、一時的なものです (特に自動スケールが有効なプールの場合)。 ノード上で実行されているタスクの出力は、そのノードが存在している間のみ、かつ開発者がタスクに設定したファイルのリテンション期間内にのみ使用可能です。 タスクの生成する出力がタスクの完了後に必要になる可能性がある場合、タスクは、Azure Storage などの持続性のあるストアに出力ファイルをアップロードする必要があります。
+- **コンピューティング ノードの有効期間**: コンピューティング ノードは多くの場合、一時的なものです (特に自動スケールが有効なプールの場合)。 ノード上で実行されているタスクの出力は、そのノードが存在している間のみ、かつ開発者がタスクに設定したファイルのリテンション期間内にのみ使用可能です。 タスクの生成する出力がタスクの完了後に必要になる可能性がある場合、タスクは、Azure Storage などの持続性のあるストアに出力ファイルをアップロードする必要があります。
 
-- **出力の格納**:タスク出力のデータ ストアとして Azure Storage をお勧めしますが、持続性のある記憶域であれば他のものでも使用できます。 Azure Storage へのタスクの出力の書き込みは、Batch サービス API に統合されています。 別の形式の持続ストレージを使用する場合は、タスク出力を保持するためのアプリケーション ロジックを開発者が自分で作成する必要があります。
+- **出力の格納**: タスク出力のデータ ストアとして Azure Storage をお勧めしますが、持続性のある記憶域であれば他のものでも使用できます。 Azure Storage へのタスクの出力の書き込みは、Batch サービス API に統合されています。 別の形式の持続ストレージを使用する場合は、タスク出力を保持するためのアプリケーション ロジックを開発者が自分で作成する必要があります。
 
-- **出力の取得**:タスク出力は、プール内のコンピューティング ノードから直接取得するか、タスク出力を保持した場合は Azure Storage や別のデータ ストアから取得することができます。 タスクの出力をコンピューティング ノードから直接取得するには、ファイル名とノード上の出力場所が必要です。 タスク出力を Azure Storage に保持する場合は、Azure Storage SDK を使用して出力ファイルをダウンロードするために、Azure Storage 内のファイルへの完全なパスが必要になります。
+- **出力の取得**: タスク出力は、プール内のコンピューティング ノードから直接取得するか、タスク出力を保持した場合は Azure Storage や別のデータ ストアから取得することができます。 タスクの出力をコンピューティング ノードから直接取得するには、ファイル名とノード上の出力場所が必要です。 タスク出力を Azure Storage に保持する場合は、Azure Storage SDK を使用して出力ファイルをダウンロードするために、Azure Storage 内のファイルへの完全なパスが必要になります。
 
-- **出力の表示**:Azure portal で Batch のタスクに移動し、**[ノード上のファイル]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。 繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。 Azure Storage に保持したタスク出力を表示するには、Azure Portal を使用するか、[Azure Storage エクスプローラー][storage_explorer]などの Azure Storage クライアント アプリケーションを使用することができます。 Azure Storage 内の出力データを Portal または別のツールで表示するには、ファイルの場所を知っていて、その場所に直接移動できる必要があります。
+- **出力の表示**: Azure Portal で Batch のタスクに移動し、 **[ノード上のファイル]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。 繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。 Azure Storage に保持したタスク出力を表示するには、Azure portal を使用するか、[Azure Storage Explorer][storage_explorer] などの Azure Storage クライアント アプリケーションを使用することができます。 Azure Storage 内の出力データを Portal または別のツールで表示するには、ファイルの場所を知っていて、その場所に直接移動できる必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Batch サービス API の新機能を使用してタスクのデータを保持する方法について、「[Batch サービス API を使用してタスクのデータを Azure Storage に保持する](batch-task-output-files.md)」を読む。
 - .NET 用の Batch ファイル規則ライブラリを使用してタスク出力を保持することについて、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を読む。

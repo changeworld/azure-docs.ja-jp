@@ -3,23 +3,22 @@ title: SAP HANA on Azure (L インスタンス) のデータ階層化と拡張�
 description: SAP HANA on Azure (L インスタンス) のデータ階層化と拡張ノード。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87c2cb3e373b76685fca09eb0cfeefdc9216df77
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44031051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77617159"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA のデータ階層化と拡張ノードの使用
 
@@ -35,5 +34,5 @@ HANA L インスタンスを使用すると、FAQ および SAP ブログ ドキ
 
 メモリに対してデータ ボリュームが大きいほど、求めるウォーム データがディスク ストレージに保存されている可能性が高くなります。
 
-**次のステップ**
+**次の手順**
 - [Azure の SAP HANA (L インスタンス) アーキテクチャ](hana-architecture.md)を参照してください

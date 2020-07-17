@@ -7,18 +7,21 @@
     - name: メッセージング サービスの比較
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Service Bus キュー
       items:
         - name: Service Bus キューを作成する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
+            - name: ARM テンプレート
+              displayName: Resource Manager
+              href: service-bus-resource-manager-namespace-queue.md
         - name: メッセージを送受信する
           items:
             - name: .NET
@@ -26,11 +29,7 @@
             - name: Java
               href: service-bus-java-how-to-use-queues.md
             - name: Node.js
-              items:
-                - name: azure/service-bus パッケージ
-                  href: service-bus-nodejs-how-to-use-queues-new-package.md
-                - name: azure-sb パッケージ
-                  href: service-bus-nodejs-how-to-use-queues.md
+              href: service-bus-nodejs-how-to-use-queues-new-package.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
             - name: Python
@@ -40,7 +39,11 @@
     - name: Service Bus トピックとサブスクリプション
       items:
         - name: トピックとサブスクリプションを作成する
-          href: service-bus-quickstart-topics-subscriptions-portal.md
+          items:
+            - name: Azure portal
+              href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: ARM テンプレート
+              href: service-bus-resource-manager-namespace-topic.md
         - name: メッセージの発行とサブスクライブ
           items:
             - name: .NET
@@ -48,11 +51,7 @@
             - name: Java
               href: service-bus-java-how-to-use-topics-subscriptions.md
             - name: Node.js
-              items:
-                - name: azure/service-bus パッケージ
-                  href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
-                - name: azure-sb パッケージ
-                  href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
             - name: Python
@@ -67,16 +66,17 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: インベントリを更新する - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Event Grid を使用したイベントへの応答
+      href: service-bus-to-event-grid-integration-example.md
 - name: サンプル
   items:
     - name: Service Bus サンプル
       href: service-bus-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Azure リソースのマネージド ID
-      href: service-bus-managed-service-identity.md
-    - name: ロールベースのアクセス制御 (プレビュー)
-      href: service-bus-role-based-access-control.md
     - name: Premium メッセージング
       href: service-bus-premium-messaging.md
     - name: Azure キューと Service Bus キューを比較する
@@ -89,10 +89,33 @@
       href: service-bus-async-messaging.md
     - name: 故障と障害の扱い
       href: service-bus-outages-disasters.md
-    - name: Azure の一般的なセキュリティ属性
-      href: service-bus-messaging-security-attributes.md
-- name: ハウツー ガイド
+    - name: Throttling
+      href: service-bus-throttling.md
+    - name: Security
+      items:
+        - name: 認証と権限承認
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Shared Access Signature の使用
+              items:
+                - name: ACS から SAS への移行
+                  href: service-bus-migrate-acs-sas.md
+                - name: Shared Access Signature による認証
+                  href: service-bus-sas.md
+            - name: Azure Active Directory を使用する
+              items:
+                - name: Azure リソースのマネージド ID を使用した認証
+                  href: service-bus-managed-service-identity.md
+                - name: アプリケーションからの認証
+                  href: authenticate-application.md
+        - name: 組み込みのセキュリティ制御
+          href: service-bus-messaging-security-controls.md
+        - name: ネットワークのセキュリティ
+          href: network-security.md
+- name: 操作方法ガイド
   items:
+    - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
+      href: deprecate-service-bus-management.md
     - name: 名前空間の作成
       href: service-bus-create-namespace-portal.md
     - name: 開発
@@ -111,15 +134,6 @@
               href: message-expiration.md
             - name: Azure Event Grid を使用したメッセージの処理
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure Event Grid の例
-              href: service-bus-to-event-grid-integration-example.md
-        - name: 認証と権限承認
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: ACS から SAS への移行
-              href: service-bus-migrate-acs-sas.md
-            - name: Shared Access Signature による認証
-              href: service-bus-sas.md
         - name: トピック フィルターとアクション
           href: topic-filters.md
         - name: Standard 名前空間から Premium 名前空間への移行
@@ -134,7 +148,7 @@
               href: service-bus-amqp-overview.md
             - name: .NET
               href: service-bus-amqp-dotnet.md
-            - name: Java Message Service と AMQP
+            - name: Java Message Service (JMS) と AMQP
               href: service-bus-java-how-to-use-jms-api-amqp.md
             - name: AMQP プロトコル ガイド
               href: service-bus-amqp-protocol-guide.md
@@ -144,10 +158,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: 高度な機能
           items:
-            - name: ファイアウォールの使用
-              href: service-bus-ip-filtering.md
-            - name: 仮想ネットワーク サービス エンドポイント
-              href: service-bus-service-endpoints.md
             - name: 配達不能キュー
               href: service-bus-dead-letter-queues.md
             - name: メッセージのプリフェッチ
@@ -168,37 +178,53 @@
           href: service-bus-end-to-end-tracing.md
         - name: 多層 Service Bus アプリケーションを構築する
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: Java Enterprise Edition アプリケーションを Azure に移行する
-          href: migrate-java-apps-wild-fly.md
-    - name: 管理
+        - name: キューからのメッセージの送受信 (レガシ azure-sb)
+          href: service-bus-nodejs-how-to-use-queues.md
+        - name: メッセージの発行とサブスクライブ (レガシ azure-sb)
+          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: 管理する
       items:
+        - name: メッセージング ユニットを自動的に更新する
+          href: automate-update-messaging-units.md
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
           href: service-bus-manage-with-ps.md
         - name: Azure Monitor による Service Bus の監視
           href: service-bus-metrics-azure-monitor.md
         - name: Service Bus 管理ライブラリ
           href: service-bus-management-libraries.md
-        - name: 診断ログ
+        - name: リソース ログ
           href: service-bus-diagnostic-logs.md
         - name: メッセージ エンティティの一時停止と再アクティブ化
           href: entity-suspend.md
-        - name: Azure リソース マネージャー テンプレートの使用
+        - name: Service Bus Explorer を使用して Service Bus に対するデータ操作を実行する
+          href: explorer.md
+        - name: ARM テンプレートの使用
           href: service-bus-resource-manager-overview.md
           items:
             - name: 名前空間の作成
               href: service-bus-resource-manager-namespace.md
-            - name: 名前空間とキューの作成
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: トピックとサブスクリプションを含んだ名前空間の作成
-              href: service-bus-resource-manager-namespace-topic.md
             - name: 名前空間とキューの承認規則の作成
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: トピック、サブスクリプション、ルールを含んだ名前空間の作成
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: セキュリティで保護
+      items:
+        - name: ファイアウォールの構成
+          href: service-bus-ip-filtering.md
+        - name: 仮想ネットワーク サービス エンドポイントの構成
+          href: service-bus-service-endpoints.md
+        - name: プライベート エンドポイントの構成
+          href: private-link-service.md
+        - name: 顧客管理キーの構成
+          href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:
-        - name: 例外
+        - name: トラブルシューティング ガイド
+          href: service-bus-troubleshooting-guide.md
+        - name: メッセージングの例外
           href: service-bus-messaging-exceptions.md
+        - name: Resource Manager の例外
+          href: service-bus-resource-manager-exceptions.md
 - name: リファレンス
   items:
     - name: .NET
@@ -233,7 +259,7 @@
       href: service-bus-messaging-sql-rule-action.md
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: service-bus-faq.md
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-service-bus
@@ -241,8 +267,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: ブログ
       href: 'https://blogs.msdn.microsoft.com/servicebus/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-bus.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 料金計算ツール
@@ -253,7 +279,7 @@
       href: 'https://github.com/paolosalvatori/ServiceBusExplorer'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=service-bus'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azureservicebus'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-bus'

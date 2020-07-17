@@ -1,27 +1,23 @@
 ---
-title: Azure Marketplace での仮想マシンのオファー | Microsoft Docs
+title: Azure Marketplace での仮想マシンのオファー
 description: Azure Marketplace で VM オファーを発行するプロセスの概要です。
-services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
 ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: bbe757ccd1d6a37cbcf04f3ecd6dd088ef1ff211
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.author: dsindona
+ms.openlocfilehash: b857cf8b7485beb884adf77d99f82d965f55a0ad
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353022"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82142796"
 ---
 # <a name="virtual-machine-offer"></a>仮想マシンのオファー
+
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)」の手順に従って、移行されたオファーを管理します。
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
@@ -49,6 +45,6 @@ ms.locfileid: "54353022"
  
 4. オファーを認定して発行する - オファーと技術資産が完成したら、オファーを送信できます。 この送信により、発行プロセスが開始されます。このプロセスでは、ソリューションがテスト、検証、認定された後、マーケットプレースで "ライブ状態" になります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの手順を検討する前に、Microsoft Azure Marketplace への VM の発行に関する[技術要件とビジネス要件](./cpp-prerequisites.md)を満たしている必要があります。 

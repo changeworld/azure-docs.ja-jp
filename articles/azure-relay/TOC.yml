@@ -1,0 +1,103 @@
+- name: Azure Relay のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: リレーとは
+      href: relay-what-is-it.md
+- name: チュートリアル
+  items:
+    - name: ハイブリッド接続
+      items:
+        - name: メッセージの送受信 - .NET WebSocket
+          href: relay-hybrid-connections-dotnet-get-started.md
+        - name: メッセージの送受信 - .NET HTTP
+          href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+        - name: メッセージの送受信 - Node WebSocket
+          href: relay-hybrid-connections-node-get-started.md
+        - name: メッセージの送受信 - Node HTTP
+          href: relay-hybrid-connections-http-requests-node-get-started.md
+    - name: Windows Communication Foundation (WCF)
+      items:
+        - name: オンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
+          href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+        - name: オンプレミスの WCF サービスをネットワーク外部の WCF クライアントに公開する
+          href: service-bus-relay-tutorial.md
+        - name: オンプレミスの WCF REST サービスをネットワーク外部のクライアントに公開する
+          href: service-bus-relay-rest-tutorial.md
+- name: サンプル
+  items:
+    - name: ハイブリッド接続
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
+    - name: WCF リレー
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
+- name: 概念
+  items:
+    - name: Security
+      items:
+        - name: 認証と権限承認
+          href: relay-authentication-and-authorization.md
+        - name: 組み込みのセキュリティ制御
+          href: service-bus-relay-security-controls.md
+        - name: ネットワークのセキュリティ
+          href: network-security.md
+    - name: ハイブリッド接続のプロトコル
+      href: relay-hybrid-connections-protocol.md
+- name: 操作方法
+  items:
+    - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
+    - name: 計画と設計
+      items:
+        - name: ACS から SAS への移行
+          href: relay-migrate-acs-sas.md
+    - name: 開発
+      items:
+        - name: 名前空間の作成
+          href: relay-create-namespace-portal.md
+        - name: 利用可能な API
+          href: relay-api-overview.md
+          items:
+            - name: .NET
+              href: relay-hybrid-connections-dotnet-api-overview.md
+            - name: Node
+              href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: セキュリティで保護
+      items:
+        - name: IP ファイアウォールの構成 (プレビュー)
+          href: ip-firewall-virtual-networks.md
+        - name: プライベート エンドポイントの構成 (プレビュー)
+          href: private-link-service.md
+    - name: 管理および監視
+      items:
+        - name: Azure 監視による Azure Relay の監視
+          href: relay-metrics-azure-monitor.md
+        - name: 診断ログの設定
+          href: diagnostic-logs.md
+- name: リファレンス
+  items:
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.Relay
+          href: /dotnet/api/microsoft.azure.relay
+        - name: Microsoft.ServiceBus
+          href: /dotnet/api/Microsoft.ServiceBus
+    - name: 例外
+      href: relay-exceptions.md
+    - name: ポートの設定
+      href: relay-port-settings.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: よく寄せられる質問
+      href: relay-faq.md
+    - name: ブログ
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サンプル
+      href: 'https://github.com/azure/azure-relay/tree/master/samples'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:ビデオとトランスクリプトを .NET でモデレートする - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルは、マシン支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションをビルドする方法を理解するうえで役立ちます。
 services: cognitive-services
 author: PatrickFarley
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522079"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404234"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
-このチュートリアルでは、マシン支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションを構築する方法を学習します。
+このチュートリアルでは、マシン支援型のモデレーションと人間によるレビューとを統合した完全なビデオとトランスクリプトのモデレーション ソリューションを構築する方法を学習します。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -37,22 +37,22 @@ ms.locfileid: "58522079"
 - [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、カスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](Review-Tool-User-Guide/tags.md)に関する記事をご覧ください。
 
     ![ビデオ モデレーションのカスタム タグのスクリーンショット](images/video-tutorial-custom-tags.png)
-- サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) ガイドをご覧ください。
+- サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) に関するガイドを参照してください。
 - [ビデオ レビュー コンソール アプリケーション](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)を GitHub からダウンロードします。
 
 ## <a name="enter-credentials"></a>資格情報を入力する
 
 `App.config` ファイルを編集して、Active Directory テナントの名前、サービス エンドポイント、およびサブスクリプション キー (`#####` で示されます) を追加します。 次の情報が必要です。
 
-    |キー|説明|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
-    |`ClientSecret`|Azure Media Services のサブスクリプション キー|
-    |`ClientId`|Azure Media Services のクライアント ID|
-    |`AzureAdTenantName`|組織を表す Active Directory テナント名|
-    |`ContentModeratorReviewApiSubscriptionKey`|Content Moderator レビュー API のサブスクリプション キー|
-    |`ContentModeratorApiEndpoint`|Content Moderator API のエンドポイント|
-    |`ContentModeratorTeamId`|Content Moderator のチーム ID|
+|Key|説明|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
+|`ClientSecret`|Azure Media Services のサブスクリプション キー|
+|`ClientId`|Azure Media Services のクライアント ID|
+|`AzureAdTenantName`|組織を表す Active Directory テナント名|
+|`ContentModeratorReviewApiSubscriptionKey`|Content Moderator レビュー API のサブスクリプション キー|
+|`ContentModeratorApiEndpoint`|Content Moderator API のエンドポイント|
+|`ContentModeratorTeamId`|Content Moderator のチーム ID|
 
 ## <a name="examine-the-main-code"></a>メイン コードを確認する
 
@@ -60,7 +60,7 @@ ms.locfileid: "58522079"
 
 ### <a name="methods-of-program-class"></a>Program クラスのメソッド
 
-|方法|説明|
+|Method|説明|
 |-|-|
 |`Main`|コマンド ラインを解析し、ユーザー入力を収集し、処理を開始します。|
 |`ProcessVideo`|圧縮、アップロード、モデレーションを行って、ビデオ レビューを作成します。|
@@ -82,7 +82,7 @@ ms.locfileid: "58522079"
 コマンド ライン引数が指定されていない場合、`Main()` は `GetUserInputs()` を呼び出します。 このメソッドは、1 つのビデオ ファイルへのパスの入力と、テキスト トランスクリプトを生成するかどうかを指定するようにユーザーに要求します。
 
 > [!NOTE]
-> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize メソッドと ProcessVideo メソッド
 
@@ -121,7 +121,7 @@ ms.locfileid: "58522079"
 
 [!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
-このコードは、次の手順を実行します。
+このコードでは、次の手順を実行します。
 
 - `App.config` 内の構成に必要なデータがすべて含まれていることを確認する
 - `ffmpeg` バイナリが存在することを確認する
@@ -223,9 +223,9 @@ ms.locfileid: "58522079"
 `GenerateVTT` フラグが設定されると、ビデオの音声のトランスクリプトも生成されます。
 
 > [!NOTE]
-> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>人間参加型レビューを作成する
+## <a name="create-a-human-review"></a>人間のレビューを作成する
 
 モデレーション プロセスは、ビデオからキー フレームの一覧を、オーディオ トラックのトランスクリプトと共に返します。 次の手順は、Content Moderator レビュー ツールでの人間のモデレーター用のレビューの作成です。 `Program.cs` 内の `ProcessVideo()` メソッドに戻ると、`CreateVideoReviewInContentModerator()` メソッドへの呼び出しがあることがわかります。 このメソッドは、次に示すように、`VideoReviewAPI.cs` 内の `videoReviewApi` クラス内にあります。
 
@@ -357,7 +357,7 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ビデオ コンテンツ (トランスクリプト コンテンツを含む) をモデレートするアプリケーションを設定し、レビュー ツールでレビューを作成しました。 次は、ビデオのモデレーションについてもっと詳しく学習しましょう。
 

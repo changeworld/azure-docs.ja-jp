@@ -1,27 +1,27 @@
 ---
-title: Translator Text API V3.0 リファレンス
-titlesuffix: Azure Cognitive Services
-description: Translator Text API V3.0 のリファレンス ドキュメント。
+title: Translator V3.0 リファレンス
+titleSuffix: Azure Cognitive Services
+description: Translator V3.0 のリファレンス ドキュメント。 Translator のバージョン 3 には、最新の JSON ベースの Web API が用意されています。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 4/17/2020
+ms.author: swmachan
+ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918809"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592272"
 ---
-# <a name="translator-text-api-v30"></a>Translator Text API v3.0
+# <a name="translator-v30"></a>Translator v3.0
 
 ## <a name="whats-new"></a>新機能
 
-Translator Text API のバージョン 3 には、最新の JSON ベースの Web API が用意されています。 既存の機能をより少ない操作に統合することによって、使いやすさとパフォーマンスが向上しています。また、新機能が用意されています。
+Translator のバージョン 3 には、最新の JSON ベースの Web API が用意されています。 既存の機能をより少ない操作に統合することによって、使いやすさとパフォーマンスが向上しています。また、新機能が用意されています。
 
  * ある言語のテキストを、ある書記体系から別の書記体系に変換する音訳。
  * 1 つの要求での複数言語への翻訳。
@@ -31,49 +31,105 @@ Translator Text API のバージョン 3 には、最新の JSON ベースの We
 
 ## <a name="base-urls"></a>ベース URL
 
-Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、6 つの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
+Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、10 の [Azure 地域](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
 
-* **アメリカ合衆国:** 米国西部 2 および米国中西部 
-* **アジア太平洋:** 東南アジアおよび韓国南部
+* **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2 
+* **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
 * **ヨーロッパ:** 北ヨーロッパおよび西ヨーロッパ
 
-Microsoft Translator Text API への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、そのリージョン以外に要求がルーティングされます。
+Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 
-要求を特定のデータセンターに強制的に処理させるには、API 要求内のグローバル エンドポイントを目的のリージョンのエンドポイントに変更します。
+要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的のリージョンのエンドポイントに変更します。
 
-|説明|リージョン|ベース URL|
+|説明|Azure 地域|ベース URL|
 |:--|:--|:--|
-|Azure|グローバル|  api.cognitive.microsofttranslator.com|
-|Azure|北米|   api-nam.cognitive.microsofttranslator.com|
+|Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
+|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
+## <a name="authentication"></a>認証
 
-## <a name="authentication"></a>Authentication
+Azure Cognitive Services の Translator または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。 
 
-Microsoft Cognitive Services の Translator Text API または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。 
+お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表は、それぞれの使用方法を示しています。
 
-お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表で、それぞれの使用方法を説明します。
-
-|headers|説明|
+|ヘッダー|説明|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
 |Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
-|Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービス サブスクリプションで、マルチサービスの秘密鍵を渡す場合に使用します*"。<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
+|Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービスとリージョン トランスレータ― リソースと共に使用します。* "<br/>値は、マルチサービスまたはリージョン トランスレーター リソースのリージョンです。 グローバル トランスレーター リソースを使用する場合、この値は省略可能です。|
 
 ###  <a name="secret-key"></a>秘密鍵
-1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 単に、`Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。
+1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。
 
-### <a name="authorization-token"></a>承認トークン
+#### <a name="authenticating-with-a-global-resource"></a>グローバル リソースを使用した認証
+
+[グローバル トランスレーター リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を使用する場合は、Translator を呼び出すために 1 つのヘッダーを含める必要があります。
+
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、Translator に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+
+グローバル トランスレーター リソースを使用する Translator を呼び出す要求の例を次に示します。
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>リージョン リソースを使用した認証
+
+[リージョン トラスレーター リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を使用する場合。
+Translator を呼び出すために必要なヘッダーが 2 つあります。
+
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、Translator に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Region| 値は、トランスレータ― リソースのリージョンです。 |
+
+リージョン トランスレーター リソースを使用する Translator を呼び出す要求の例を次に示します。
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>マルチサービス リソースを使用した認証
+
+Cognitive Service のマルチサービス リソースを使用する場合。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
+
+マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 Translator を呼び出すために必要なヘッダーが 2 つあります。
+
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、マルチサービス リソースの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Region| 値は、マルチサービス リソースのリージョンです。 |
+
+マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
+
+使用可能なリージョンは、`australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`、`southafricanorth` です。
+
+クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
+
+### <a name="authenticating-with-an-access-token"></a>アクセス トークンを使用した認証
 または、お客様の秘密鍵をアクセス トークンと交換する方法もあります。 このトークンをそれぞれの要求に `Authorization` ヘッダーとして含めます。 承認トークンを取得するには、次の URL に `POST` 要求を送信します。
 
-| 環境     | 承認サービスの URL                                |
+| リソースの種類     | 承認サービスの URL                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| グローバル          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| リージョンまたはマルチサービス | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 指定の秘密鍵でトークンを取得する要求の例を次に示します。
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
 
@@ -83,40 +139,46 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 
 要求が成功すると、応答本文内にプレーン テキストとしてエンコードされたアクセス トークンが返されます。 有効なトークンは、Authorization 内のベアラー トークンとして Translator サービスに渡されます。
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-認証トークンは 10 分間有効です。 Translator API に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator API に要求を行う場合は、一定間隔 (例: 8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
+認証トークンは 10 分間有効です。 Translator に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator に要求を行う場合は、一定間隔 (たとえば、8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
 
-### <a name="multi-service-subscription"></a>マルチサービスのサブスクリプション
+## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-最後の認証オプションは、Cognitive Services のマルチサービス サブスクリプションを使用する方法です。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
+限られたリージョン (`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`CentralUSEUAP`、`global`) で Virtual Network の機能を使用してトランスレータ― サービスを利用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
 
-マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 1 つ目で秘密鍵を渡し、2 つ目でお客様のサブスクリプションに関連付けられているリージョンを指定します。 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+この機能を有効にした後、カスタム エンドポイントを使用して Translator を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 
-マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
+[トランスレータ― リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を作成した後、カスタム エンドポイントを見つけることができます。
 
-利用可能なリージョンは `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2` です。
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、Translator に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Region| 値は、トランスレータ― リソースのリージョンです。 リソースが `global` の場合、この値は省略可能です。|
 
-クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
+カスタム エンドポイントを使用する Translator を呼び出す要求の例を次に示します。
 
-ベアラー トークンを使用する場合は、リージョンのエンドポイント (`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`) からトークンを取得する必要があります。
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
-
-## <a name="errors"></a>Errors
+## <a name="errors"></a>エラー
 
 標準的なエラー応答は、`error` という名前の名前/値ペアを含む JSON オブジェクトです。 値は、以下のプロパティを含む JSON オブジェクトでもあります。
 
   * `code`:サーバー定義のエラー コード。
-
   * `message`:エラーを人間が読み取ることができる表現にした文字列。
 
 たとえば、無料試用版のサブスクリプションを使用したユーザーは、無料クォータがなくなると、次のエラーを受け取ります。
 
-```
+```json
 {
   "error": {
     "code":403001,
@@ -136,7 +198,7 @@ Authorization: Bearer <Base64-access_token>
 | 400005| 入力テキストが見つからないか無効です｡|
 | 400006| 言語とスクリプトの組み合わせが無効です｡|
 | 400018| ソース スクリプト指定子 ("From script") が見つからないか無効です｡|
-| 400019| サポートされていない言語が指定されています｡|
+| 400019| サポートされていない言語の 1 つが指定されています｡|
 | 400020| 一連の入力テキストに無効な要素があります｡|
 | 400021| API バージョン パラメーターが見つからないか無効です｡|
 | 400023| 無効な言語ペアが指定されています｡|
@@ -144,7 +206,7 @@ Authorization: Bearer <Base64-access_token>
 | 400036| ターゲット言語 ("To" フィールド) が見つからないか無効です｡|
 | 400042| 無効なオプション ("Options" フィールド) が指定されています｡|
 | 400043| クライアント トレース ID (ClientTraceId フィールドか X-ClientTranceId ヘッダー) が見つからないか無効です｡|
-| 400050| 入力テキストが長すぎます。|
+| 400050| 入力テキストが長すぎます。 「[要求の制限](../request-limits.md)」を参照してください。|
 | 400064| "translation" パラメーターが見つからないか無効です｡|
 | 400070| ターゲット スクリプトの個数 (ToScript パラメーター) がターゲット言語 (To パラメーター) の個数と一致しません｡|
 | 400071| TextType に対する値が無効です。|
@@ -152,16 +214,36 @@ Authorization: Bearer <Base64-access_token>
 | 400073| スクリプト パラメーターが無効です｡|
 | 400074| 要求の本体が有効な JSON ではありません｡|
 | 400075| 言語ペアとカテゴリの組み合わせが無効です｡|
-| 400077| 要求の最大サイズを超えています。|
+| 400077| 要求の最大サイズを超えています。 「[要求の制限](../request-limits.md)」を参照してください。|
 | 400079| from 言語と to 言語間の翻訳に要求されたカスタム システムは存在しません｡|
+| 400080| 音訳は言語またはスクリプトに対してサポートされていません。|
 | 401000| 資格情報が見つからないか無効なため、要求は許可されません｡|
-| 401015| ｢指定された資格情報は Speech API に対するものです｡ この要求には､Text API に対する資格情報が必要です｡ Translator Text API のサブスクリプションを使用してください｡｣|
+| 401015| ｢指定された資格情報は Speech API に対するものです｡ この要求には､Text API に対する資格情報が必要です｡ Translator にサブスクリプションを使用してください。」|
 | 403000| この操作は許可されていません｡|
 | 403001| サブスクリプションが無料クォータを超えているため､この操作は許可されていません｡|
 | 405000| 要求リソースに対してこの要求メソッドを使用することはできません｡|
-| 408001| 要求されたカスタムの翻訳システムはまだ使用できません。 少し待ってからもう一度お試しください。|
+| 408001| 要求された翻訳システムを準備しています。 少し待ってからもう一度お試しください。|
+| 408002| 受信ストリームの待機中に要求がタイムアウトになりました。 サーバーが待機するように設定された時間以内に、クライアントは要求を生成しませんでした。 クライアントは、それ以降いつでも変更せずに要求を繰り返すことができます。|
 | 415000| Content-Type Content-type ヘッダーが見つからないか無効です。|
-| 429000､429001､429002| クライアントから送信されている要求が多すぎるため､サーバーによって要求が拒否されました｡ スロットリングを回避するため､要求の頻度を減らしてください｡|
+| 429000､429001､429002| クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。|
 | 500000| 予期しないエラーが発生しました。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 | 503000| サービスが一時的に利用できません。 もう一度試してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 
+## <a name="metrics"></a>メトリック 
+メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)に関するページを参照してください。
+
+![トランスレーター メトリック](../media/translatormetrics.png)
+
+次の表に、使用可能なメトリックと、それらを翻訳の API 呼び出しの監視に使用する方法についての説明を示します。
+
+| メトリック | 説明 |
+|:----|:-----|
+| TotalCalls| API 呼び出しの合計数|
+| TotalTokenCalls| 認証トークンを使用した、トークン サービスを介した API 呼び出しの合計数。|
+| SuccessfulCalls| 成功した呼び出しの数。|
+| TotalErrors| エラー応答を含む呼び出しの数。|
+| BlockedCalls| レートまたはクォータの制限を超えた呼び出しの回数。|
+| ServerErrors| サーバー内部エラー (5XX) が発生した呼び出しの数。|
+| ClientErrors| クライアント側エラー (4XX) が発生した呼び出しの数。|
+| Latency| 要求を完了するまでの時間 (ミリ秒単位)。|
+| CharactersTranslated| 受信テキスト要求の合計文字数。|

@@ -1,5 +1,5 @@
 ---
-title: テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する - Azure | Microsoft Docs
+title: テナント制限を使用して SaaS アプリへのアクセスを管理する - Azure AD
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824379"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680141"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -30,21 +30,21 @@ ms.locfileid: "65824379"
 
 テナント制限では、組織はユーザーがアクセスを許可されているテナントの一覧を指定できます。 Azure AD は、これらの許可されているテナントへのアクセスだけを許可します。
 
-この記事では Office 365 のテナント制限に重点を置いていますが、この機能は、Azure AD でのシングル サインオンに先進認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Office 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/) をご覧ください。
+この記事では Office 365 のテナント制限に重点を置いていますが、この機能は、Azure AD でのシングル サインオンに先進認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Office 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) をご覧ください。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 全体的なソリューションは、次のコンポーネントで構成されます。
 
 1. **Azure AD**:`Restrict-Access-To-Tenants: <permitted tenant list>` が存在する場合、Azure AD は、許可されているテナントのセキュリティ トークンのみを発行します。
 
-2. **オンプレミスのプロキシ サーバー インフラストラクチャ**: このインフラストラクチャは、Secure Sockets Layer (SSL) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
+2. **オンプレミスのプロキシ サーバー インフラストラクチャ**: このインフラストラクチャは、トランスポート層セキュリティ (TLS) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
 
 3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Office 365 アプリケーションは現在、テナント制限をサポートしています。
 
 4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Office 365 クラウド サービスを構成する必要があります。 Office 365 による最新の認証のサポートに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
 
-次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、SSL 検査は Office 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
+次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Office 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
 
 ![テナント制限のトラフィック フロー - 図](./media/tenant-restrictions/traffic-flow.png)
 
@@ -62,9 +62,9 @@ ms.locfileid: "65824379"
 
 #### <a name="prerequisites"></a>前提条件
 
-- プロキシは、SSL インターセプト、HTTP ヘッダーの挿入、FQDN/URL を使用した送信先のフィルター処理を実行できる必要があります。
+- プロキシは、TLS インターセプト、HTTP ヘッダーの挿入、FQDN/URL を使用した送信先のフィルター処理を実行できる必要があります。
 
-- クライアントは、SSL 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部[公開キー インフラストラクチャ (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) からの証明書が使用されている場合は、内部発行のルート証明機関証明書を信頼する必要があります。
+- クライアントは、TLS 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部[公開キー インフラストラクチャ (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) からの証明書が使用されている場合は、内部発行のルート証明機関証明書を信頼する必要があります。
 
 - この機能は Office 365 サブスクリプションに含まれていますが、テナント制限を使用して他の SaaS アプリへのアクセスを制御する場合は、Azure AD Premium 1 ライセンスが必要です。
 
@@ -79,7 +79,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各受
 - *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは  `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  
 
 > [!TIP]
-> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、**[Azure Active Directory]** を選択して、**[プロパティ]** を選択します。
+> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。
 
 ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入できないようにするために、受信要求に *Restrict-Access-To-Tenants* ヘッダーが既に存在する場合、プロキシはそのヘッダーを置き換える必要があります。
 
@@ -99,24 +99,27 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター** ダッシュボードが表示されます。
 
-2. 左ウィンドウで、**[Azure Active Directory]** を選択します。 [Azure Active Directory] 概要ページが表示されます。
+2. 左ウィンドウで、 **[Azure Active Directory]** を選択します。 [Azure Active Directory] 概要ページが表示されます。
 
-3. **[その他の機能]** 見出しで、**[テナント制限]** を選択します。
+3. **[その他の機能]** 見出しで、 **[テナント制限]** を選択します。
 
 Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーのためにブロックされたサインイン (使用された ID やターゲット ディレクトリ ID を含む) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
+
+> [!NOTE]
+> Restricted-Access-Context テナント以外のテナントに属するユーザーがサインインする場合、ターゲット ディレクトリ ID などの限られた情報がレポートに含まれる可能性があります。 この場合、名前やユーザー プリンシパル名などのユーザー識別情報はマスクされ、他のテナントのユーザー データは保護されます。
 
 Azure Portal の他のレポートと同様に、フィルターを使用してレポートの範囲を指定できます。 特定の時間間隔、ユーザー、アプリケーション、クライアント、または状態についてフィルター処理できます。 **[列]** ボタンを選択すると、次のフィールドの任意の組み合わせでデータを表示することを選択できます。
 
 - **User**
 - **Application**
 - **状態**
-- **日付**
+- **Date**
 - **日付 (UTC)** (UTC は 協定世界時)
 - **MFA 認証方法** (多要素認証方法)
 - **MFA 認証の詳細** (多要素認証の詳細)
 - **MFA の結果**
 - **IP アドレス**
-- **クライアント**
+- **Client**
 - **ユーザー名**
 - **場所**
 - **ターゲット テナント ID**
@@ -150,7 +153,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
 
 3. カスタム ルールを使用して、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の各ヘッダーを挿入するように Fiddler を構成します。
 
-   1. Fiddler Web Debugger ツールで、**[Rules]** メニューを選択し、**[Customize Rules…]** を選択して CustomRules ファイルを開きます。
+   1. Fiddler Web Debugger ツールで、 **[Rules]** メニューを選択し、 **[Customize Rules…]** を選択して CustomRules ファイルを開きます。
 
    2. `OnBeforeRequest` 関数の先頭に次の行を追加します。 \<tenant domain\> をテナントに登録されているドメイン (`contoso.onmicrosoft.com` など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。
 
@@ -166,13 +169,13 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
       }
       ```
 
-      複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例: 
+      複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 次に例を示します。
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. CustomRules ファイルを保存して閉じます。
 
-Fiddler を構成したら、**[File]** メニューに移動し、**[Capture Traffic]** を選択することでトラフィックをキャプチャできます。
+Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture Traffic]** を選択することでトラフィックをキャプチャできます。
 
 ### <a name="staged-rollout-of-proxy-settings"></a>プロキシ設定の段階的なロールアウト
 
@@ -183,7 +186,7 @@ Fiddler を構成したら、**[File]** メニューに移動し、**[Capture Tr
 
 具体的な詳細については、ご使用のプロキシ サーバーのドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Office 365 の最新の認証の更新](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)について確認する
 - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)を確認する

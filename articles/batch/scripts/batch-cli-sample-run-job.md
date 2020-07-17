@@ -1,27 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch ジョブの実行 | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Batch でのジョブの実行
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: tysonn
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI のサンプル スクリプト - Batch ジョブを実行する
+description: このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: 4ddcc2541bd31c887c17e549209270c60d735351
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/12/2019
+ms.openlocfilehash: ce3c06b4631095df54371ca2417dc45d493a437d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127367"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681828"
 ---
-# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI の例:Azure Batch でのジョブとタスクの実行
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI の例: Azure Batch でのジョブとタスクの実行
 
 このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。 
 
@@ -58,6 +47,6 @@ az group delete --name myResourceGroup
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az-batch-task-show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

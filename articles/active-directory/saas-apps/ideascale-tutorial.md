@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と IdeaScale の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と IdeaScale の統合 | Microsoft Docs'
 description: Azure Active Directory と IdeaScale の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88d181c2e761679d7f52208b2086404411bc2012
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898174"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74227561"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル:Azure Active Directory と IdeaScale の統合
+# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル: Azure Active Directory と IdeaScale の統合
 
 このチュートリアルでは、IdeaScale と Azure Active Directory (Azure AD) を統合する方法について説明します。
 IdeaScale と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ Azure AD への IdeaScale の統合を構成するには、ギャラリーから
 
 **ギャラリーから IdeaScale を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Azure AD への IdeaScale の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**IdeaScale**」と入力し、結果パネルで **[IdeaScale]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**IdeaScale**」と入力し、結果パネルで **[IdeaScale]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の IdeaScale](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ IdeaScale で Azure AD のシングル サインオンを構成してテスト�
 
 IdeaScale で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **IdeaScale** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **IdeaScale** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -117,7 +118,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[IdeaScale クライアント サポート チーム](https://support.ideascale.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -137,23 +138,23 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 2. **[コミュニティの設定]** に移動します。
 
-    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
+    ![[コミュニティの設定]](./media/ideascale-tutorial/ic790847.png "[コミュニティの設定]")
 
 3. **[セキュリティ] \> [シングル サインオン設定]** の順にクリックします。
 
-    ![Single Signon Settings](./media/ideascale-tutorial/ic790848.png "Single Signon Settings")
+    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790848.png "[シングル サインオンの設定]")
 
 4. **[シングル サインオンのタイプ]** で **[SAML 2.0]** を選択します。
 
-    ![Single Signon Type](./media/ideascale-tutorial/ic790849.png "Single Signon Type")
+    ![[シングル サインオンのタイプ]](./media/ideascale-tutorial/ic790849.png "シングル サインオンのタイプ")
 
 5. **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。
 
-    ![Single Signon Settings](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
+    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790850.png "[シングル サインオンの設定]")
 
     a. **[SAML IdP Entity ID]\(SAML IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    b. Azure portal からダウンロードしたメタデータ ファイルをメモ帳で開き、内容をコピーして、**[SAML IdP Metadata]\(SAML IdP メタデータ\)** テキストボックスに貼り付けます。
+    b. Azure portal からダウンロードしたメタデータ ファイルをメモ帳で開き、内容をコピーして、 **[SAML IdP Metadata]\(SAML IdP メタデータ\)** テキストボックスに貼り付けます。
 
     c. **[Logout Success URL]\(ログアウト成功 URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
@@ -163,7 +164,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -188,7 +189,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に IdeaScale へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[IdeaScale]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[IdeaScale]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -200,15 +201,15 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-ideascale-test-user"></a>IdeaScale のテスト ユーザーの作成
 
@@ -220,17 +221,17 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
 2. **[コミュニティの設定]** に移動します。
 
-    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
+    ![[コミュニティの設定]](./media/ideascale-tutorial/ic790847.png "[コミュニティの設定]")
 
 3. **[基本設定] \> [メンバ管理]** の順にクリックします。
 
 4. **[Add Member]** をクリックします。
 
-    ![Member Management](./media/ideascale-tutorial/ic790852.png "Member Management")
+    ![[メンバー管理]](./media/ideascale-tutorial/ic790852.png "メンバ管理")
 
 5. [新しいメンバーの追加] セクションで、次の手順を実行します。
 
-    ![Add New Member](./media/ideascale-tutorial/ic790853.png "Add New Member")
+    ![[新しいメンバーの追加]](./media/ideascale-tutorial/ic790853.png "新しいメンバーの追加")
 
     a. **[電子メール アドレス]** ボックスに、プロビジョニングする有効な Azure AD アカウントのメール アドレスを入力します。
 
@@ -240,7 +241,7 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
     > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
 > [!NOTE]
-> IdeaScale から提供されている他の IdeaScale ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の IdeaScale ユーザー アカウント作成ツールや、IdeaScale から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

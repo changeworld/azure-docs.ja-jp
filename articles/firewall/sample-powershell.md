@@ -1,22 +1,19 @@
 ---
 title: Azure Firewall サンプル
-description: Azure Firewall PowerShell サンプル
+description: この記事には、Azure ファイアウォールを作成する Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 services: firewall
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2018
+ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5e5887d70e9bf4d37fee0f81e654d1bac427d051
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 5e4fab3d632bca6eb62f1233f681a3611d7ccddf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992448"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74168725"
 ---
 # <a name="azure-firewall-powershell-samples"></a>Azure Firewall PowerShell サンプル
 

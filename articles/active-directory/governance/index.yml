@@ -1,56 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Identity Governance のドキュメント
+### YamlMime:Landing
+title: Azure Active Directory Identity Governance のドキュメント
+summary: Azure Active Directory (Azure AD) Identity Governance を使用すると、社員の生産性を維持しながら、重要な資産へのアクセスを保護、監視、監査できます。
 metadata:
-  document_id: null
-  title: Azure Active Directory Identity Governance のドキュメント | Microsoft Docs
-  description: ID ライフサイクルとアクセス ライフサイクルのガバナンスのほか、従業員とパートナーにわたる安全な管理について説明します。
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  author: msaburnley
+  description: 社員の生産性を維持しながら、重要な資産へのアクセスを保護、監視、監査する方法について説明します。
+  manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 09/14/2019
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 04/18/2019
-  ms.author: rolyon
-abstract:
-  description: Azure Active Directory (Azure AD) Identity Governance を利用すれば、組織は ID ライフサイクルとアクセス ライフサイクルのガバナンスを実現できるほか、従業員とパートナーにわたって安全な管理を実現できます。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: 'リソースへのアクセスを管理する (1:17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: Identity Governance
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">Identity Governance とは</a>
-  - title: エンタイトルメント管理 (プレビュー)
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/entitlement-management-overview">Azure AD エンタイトルメント管理とは</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-first">チュートリアル - 最初のアクセス パッケージを作成する</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-edit">既存のアクセス パッケージを編集して管理する</a>
-  - title: アクセス レビュー
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">Azure AD アクセス レビューとは</a>
-          - html: <a href="/azure/active-directory/governance/create-access-review">グループまたはアプリのアクセス レビューを作成する</a>
-          - html: <a href="/azure/active-directory/governance/perform-access-review">グループまたはアプリのアクセスをレビューする</a>
-  - title: 使用条件
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">利用規約を必須にする</a>
+  services: active-directory
+  ms.openlocfilehash: 98b634b7aba20fc79e2bae15a5786aae4d1a0bd1
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "73173060"
+landingContent:
+- title: Identity Governance について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD Identity Governance とは
+      url: identity-governance-overview.md
+  - linkListType: video
+    links:
+    - text: リソースへのアクセスを管理する
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: グループ、アプリ、およびサイトへのアクセスのライフサイクルを管理する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD エンタイトルメント管理とは
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ユーザーが必要なアクセスを要求できるようにするための、最初のアクセス パッケージを作成する
+      url: entitlement-management-access-package-first.md
+  - linkListType: concept
+    links:
+    - text: 委任とロール
+      url: entitlement-management-delegate.md
+- title: グループ、アプリ、特権ロールへのアクセスの再認定
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD アクセス レビューとは
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: アクセス レビューを作成して、ユーザーが過剰なアクセスを保持しないようにする
+      url: create-access-review.md
+    - text: グループまたはアプリのアクセスをレビューする
+      url: perform-access-review.md
+- title: ユーザーを特権ロールに適合するようにする
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD Privileged Identity Management とは
+      url: ../privileged-identity-management/pim-configure.md
+- title: ユーザーに免責事項を表示する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アプリを使用するときに使用条件に同意することをユーザーに要求する
+      url: ../conditional-access/terms-of-use.md

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services イベントへの対応 | Microsoft Docs
-description: Media Services イベントをサブスクライブするには、Azure Event Grid を使います。
+description: この記事では、Azure Event Grid を使用して Media Services イベントをサブスクライブする方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850906"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74887886"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid イベントの処理
 
@@ -39,6 +39,10 @@ Media Services イベントを処理するアプリケーションは、いく�
 * わからないフィールドは無視します。  この手法に従うと、将来追加されるかもしれない新しい機能に弾力的に対応できます。
 * イベントを特定のイベントに制限するには、"subject" プレフィックスとサフィックスの一致を使用します。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> イベントには、Event Grid の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) が適用されます。 API を使用してイベント通知を取得する場合は、イベントの使用方法の例 ([.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) 用または [Java SDK](https://github.com/Azure-Samples/media-services-v3-java) 用) を参照してください。
 
-[ジョブ状態イベントを取得する](job-state-events-cli-how-to.md)
+## <a name="next-steps"></a>次のステップ
+
+* [イベントの監視 - ポータル](monitor-events-portal-how-to.md)
+* [イベントの監視 - CLI](job-state-events-cli-how-to.md)

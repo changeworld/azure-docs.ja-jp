@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB でのストレージ コストを最適化する
 description: この記事では、Azure Cosmos DB に格納されているデータのストレージ コストを管理する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 71f1f8896126728277ba6f0bf2c0ded1b2a608b7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967246"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72754945"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのストレージ コストを最適化する
 
-Azure Cosmos DB では、無制限のストレージとスループットを提供します。 Azure Cosmos コンテナーまたはデータベース上でプロビジョニング/構成する必要のあるスループットとは異なり、ストレージは使用料に基づいて課金されます。 使用する論理ストレージに対してのみ課金され、ストレージを事前に予約する必要はありません。 ストレージは、Azure Cosmos DB コンテナーに対して追加または削除したデータに基づいて、自動的にスケール アップ/ダウンします。
+Azure Cosmos DB では、無制限のストレージとスループットを提供します。 Azure Cosmos コンテナーまたはデータベース上でプロビジョニング/構成する必要のあるスループットとは異なり、ストレージは使用料に基づいて課金されます。 使用する論理ストレージに対してのみ課金され、ストレージを事前に予約する必要はありません。 ストレージは、Azure Cosmos コンテナーに対して追加または削除したデータに基づいて、自動的にスケール アップ/ダウンします。
 
 ## <a name="storage-cost"></a>Storage コスト
 
@@ -50,7 +50,7 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
 Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 

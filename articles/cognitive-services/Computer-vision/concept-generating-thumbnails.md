@@ -1,5 +1,5 @@
 ---
-title: サムネイルの生成 - Computer Vision
+title: スマート トリミングされたサムネイル - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用するイメージ サムネイルの生成に関する概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68945228"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
 
@@ -48,6 +48,6 @@ Computer Vision のサムネイル生成アルゴリズムは次のように動�
 |![白い花と緑の背景](./Images/flower.png) | ![Vision Analyze 花のサムネイル](./Images/flower_thumbnail.png) |
 |![共同住宅の屋上にいる女性](./Images/woman_roof.png) | ![共同住宅の屋上にいる女性のサムネイル](./Images/woman_roof_thumbnail.png) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [イメージへのタグ付け](concept-tagging-images.md)および[イメージの分類](concept-categorizing-images.md)について確認します。

@@ -1,21 +1,21 @@
 ---
 title: レビュー ツールを利用してコンテンツ レビューを使用する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: レビュー ツールで、モデレート担当者が Web ポータル内の画像をレビューできる方法を説明します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: pafarley
+ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758482"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73044128"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
 
@@ -27,8 +27,8 @@ ms.locfileid: "58758482"
 
 ## <a name="image-reviews"></a>画像のレビュー
 
-1. [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動し、**[Try]\(試す\)** タブを選択して、レビューするいくつかの画像をアップロードします。
-1. アップロードされた画像の処理が完了したら、**[レビュー]** タブに移動し、**[画像]** を選択します。
+1. [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動し、 **[Try]\(試す\)** タブを選択して、レビューするいくつかの画像をアップロードします。
+1. アップロードされた画像の処理が完了したら、 **[レビュー]** タブに移動し、 **[画像]** を選択します。
 
     ![Review Image オプションが強調表示されたレビュー ツールを示す Chrome ブラウザー](images/review-images-1.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "58758482"
 
     ![レビュー用のタグが付いた画像とレビュー ツールが表示された Chrome ブラウザー](images/review-images-2.png)
 
-1. 画像の詳細を表示するには、サムネイル内の省略記号をクリックし、**[詳細の表示]** をクリックします。 **[移動先]** オプションを使用して、サブチームに画像を割り当てることができます (サブチームの詳細については、[チーム](./configure.md#manage-team-and-subteams)に関するセクションを参照してください)。
+1. 画像の詳細を表示するには、サムネイル内の省略記号をクリックし、 **[詳細の表示]** をクリックします。 **[移動先]** オプションを使用して、サブチームに画像を割り当てることができます (サブチームの詳細については、[チーム](./configure.md#manage-team-and-subteams)に関するセクションを参照してください)。
 
     ![[詳細の表示] オプションが強調表示された画像](images/review-images-3.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "58758482"
 
     ![別のウィンドウにモデレーションの詳細が一覧表示された画像](images/review-images-4.png)
 
-1. タグの割り当てをレビューし、必要に応じて更新したら、**[次へ]** をクリックしてレビューを送信します。 送信後、約 5 秒間は **[前へ]** をクリックして前の画面に戻り、画像をもう一度レビューできます。 その後、画像は送信キューになくなり、**[前へ]** ボタンは使用できなくなります。
+1. タグの割り当てをレビューし、必要に応じて更新したら、 **[次へ]** をクリックしてレビューを送信します。 送信後、約 5 秒間は **[前へ]** をクリックして前の画面に戻り、画像をもう一度レビューできます。 その後、画像は送信キューになくなり、 **[前へ]** ボタンは使用できなくなります。
 
 ## <a name="text-reviews"></a>テキストのレビュー
 
@@ -54,6 +54,6 @@ ms.locfileid: "58758482"
 
 ![Chrome ブラウザー ウィンドウにフラグが付けられたテキストが表示されたレビュー ツールのスクリーンショット](../images/reviewresults_text.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-review.md)または [.NET SDK ガイド](../moderation-reviews-quickstart-dotnet.md)を参照して、プログラムによってレビューを作成する方法について学習してください。
+このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-review.md)または [.NET SDK のクイックスタート](../dotnet-sdk-quickstart.md)を参照して、プログラムによってレビューを作成する方法について学習してください。

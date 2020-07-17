@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: has-adal-ref
+ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180757"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612947"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
@@ -21,26 +22,26 @@ ms.locfileid: "58180757"
 
 ## <a name="default-settings"></a>既定の設定
 
-リモート監視ソリューションの初めてのデプロイでは、2 つのロールが含まれます (**管理**と**読み取り専用**)。
+リモート監視ソリューションの初めてのデプロイでは、**管理**と**読み取り専用**という 2 つのロールが含まれます。
 
 **管理**ロールのすべてのユーザーには、以下のアクセス許可を含む、ソリューションへのフル アクセス権があります。 **読み取り専用**ロールのユーザーには、ソリューションを表示するアクセス権のみがあります。
 
-| アクセス許可            | [Admin] | 読み取り専用 |
+| 権限            | [Admin] | [読み取り専用] |
 |----------------       |-------|-----------|
 | ソリューションの表示         | はい   | はい       |
-| アラームの更新         | はい   | いいえ         |
-| アラームの削除         | はい   | いいえ         |
-| デバイスの作成        | はい   | いいえ         |
-| デバイスの更新        | はい   | いいえ         |
-| デバイスの削除        | はい   | いいえ         |
-| デバイス グループの作成  | はい   | いいえ         |
-| デバイス グループの更新  | はい   | いいえ         |
-| デバイス グループの削除  | はい   | いいえ         |
-| 規則の作成          | はい   | いいえ         |
-| 規則の更新          | はい   | いいえ         |
-| 規則の削除          | はい   | いいえ         |
-| ジョブの作成           | はい   | いいえ         |
-| SIM 管理の更新 | はい   | いいえ         |
+| アラームの更新         | はい   | いいえ        |
+| アラームの削除         | はい   | いいえ        |
+| デバイスの作成        | はい   | いいえ        |
+| デバイスの更新        | はい   | いいえ        |
+| デバイスの削除        | はい   | いいえ        |
+| デバイス グループの作成  | はい   | いいえ        |
+| デバイス グループの更新  | はい   | いいえ        |
+| デバイス グループの削除  | はい   | いいえ        |
+| 規則の作成          | はい   | いいえ        |
+| 規則の更新          | はい   | いいえ        |
+| 規則の削除          | はい   | いいえ        |
+| ジョブを作成する           | はい   | いいえ        |
+| SIM 管理の更新 | はい   | いいえ        |
 
 既定では、ソリューションをデプロイしたユーザーに**管理者**ロールが自動的に割り当てられ、そのユーザーが Azure Active Directory アプリケーション所有者になります。 アプリケーション所有者は、Azure Portal から他のユーザーにロールを割り当てることができます。 別のユーザーがソリューションのロールを割り当てられるようにする場合は、Azure Portal でそのユーザーをアプリケーション所有者として設定する必要があります。
 
@@ -51,25 +52,25 @@ ms.locfileid: "58180757"
 
 Azure Active Directory アプリケーション所有者は、Azure Portal を使用して、リモート監視ソリューションからロールに対してユーザーを追加または削除することができます。 次の手順では、リモート監視ソリューションのデプロイ時に作成された [Azure Active Directory エンタープライズ アプリケーション](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)を使用しています。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 使用する[ディレクトリにユーザーが存在している](../active-directory/fundamentals/add-users-azure-active-directory.md)ことを確認します。 使用するディレクトリは、[Microsoft Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators) サイトにサインインしたときに選択したディレクトリです。 [ページ](https://www.azureiotsolutions.com/Accelerators)の右上隅にディレクトリ名が表示されています。
 
-1. Azure Portal で、ソリューション用の**エンタープライズ アプリケーション**を見つけます。 そこで、**[アプリケーションの種類]** を **[すべてのアプリケーション]** に設定して一覧をフィルター処理します。 アプリケーション名でアプリケーションを検索します。 アプリケーション名は、リモート監視ソリューションの名前です。 次のスクリーンショットでは、ソリューションとアプリケーションの表示名は **contoso rm4** です。
+1. Azure Portal で、ソリューション用の**エンタープライズ アプリケーション**を見つけます。 そこで、 **[アプリケーションの種類]** を **[すべてのアプリケーション]** に設定して一覧をフィルター処理します。 アプリケーション名でアプリケーションを検索します。 アプリケーション名は、リモート監視ソリューションの名前です。 次のスクリーンショットでは、ソリューションとアプリケーションの表示名は **contoso rm4** です。
 
     ![エンタープライズ アプリケーション](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
-1. アプリケーションをクリックし、**[所有者]** をクリックして、自分がアプリケーションの所有者であることを確認します。 次のスクリーンショットでは、**Contoso admin** が **contoso rm4** アプリケーションの所有者です。
+1. アプリケーションをクリックし、 **[所有者]** をクリックして、自分がアプリケーションの所有者であることを確認します。 次のスクリーンショットでは、**Contoso admin** が **contoso rm4** アプリケーションの所有者です。
 
     ![所有者](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     自分が所有者でない場合は、一覧に追加してもらうように既存の所有者に頼む必要があります。 所有者だけが、**管理者**や**読み取り専用**などのアプリケーション ロールを他のユーザーに割り当てることができます。
 
-1. アプリケーションのロールに割り当てられているユーザーの一覧を表示するには、**[ユーザーとグループ]** をクリックします。
+1. アプリケーションのロールに割り当てられているユーザーの一覧を表示するには、 **[ユーザーとグループ]** をクリックします。
 
-1. ユーザーを追加するには、**[+ ユーザーの追加]** をクリックします。次に、**[ユーザーとグループ、選択なし]** をクリックし、ディレクトリからユーザーを選択します。
+1. ユーザーを追加するには、 **[+ ユーザーの追加]** をクリックします。次に、 **[ユーザーとグループ、選択なし]** をクリックし、ディレクトリからユーザーを選択します。
 
-1. ロールにユーザーを割り当てるには、**[ロールの選択、選択なし]** をクリックし、ユーザーに対して**管理者**または**読み取り専用**ロールのいずれかを選択します。 **[選択]** をクリックし、**[割り当て]** をクリックします。
+1. ロールにユーザーを割り当てるには、 **[ロールの選択、選択なし]** をクリックし、ユーザーに対して**管理者**または**読み取り専用**ロールのいずれかを選択します。 **[選択]** をクリックし、 **[割り当て]** をクリックします。
 
     ![Select role](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
@@ -91,11 +92,11 @@ Azure Active Directory アプリケーション所有者は、Azure Portal を�
 
 1. Azure Portal で、ソリューション用の**アプリの登録**を見つけます。 アプリケーション名は、リモート監視ソリューションの名前です。 次のスクリーンショットでは、ソリューションとアプリケーションの表示名は **contoso rm4** です。
 
-    ![アプリの登録](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![アプリの登録](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
-1. アプリケーションを選択し、**[マニフェスト]** をクリックします。 アプリケーションに対して定義された 2 つの既存の[アプリ ロール](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)を確認できます。
+1. アプリケーションを選択し、 **[マニフェスト]** をクリックします。 アプリケーションに対して定義された 2 つの既存の[アプリ ロール](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)を確認できます。
 
-    ![マニフェストの表示](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![マニフェストの表示](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. 次のスニペットに示すように、マニフェストを編集して、**ManageDevices** という名前のロールを追加します。 新しいロールの ID として GUID などの一意の文字列が必要です。 [オンライン GUID ジェネレーター](https://www.guidgenerator.com/)などのサービスを使用して、新しい GUID を生成できます。
 
@@ -212,7 +213,7 @@ Authorization: Bearer <JWT Token from ADAL>
 }
 ```
 
-[Web UI](https://github.com/Azure/pcs-remote-monitoring-webui/) の [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) から抜粋した次のスニペットは、アクセス許可が宣言によって適用される方法を示しています。
+[Web UI](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) の [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/) から抜粋した次のスニペットは、アクセス許可が宣言によって適用される方法を示しています。
 
 ```json
 <FlyoutContent>
@@ -230,7 +231,7 @@ Authorization: Bearer <JWT Token from ADAL>
 
 マイクロサービスは、承認されていない API 要求を防止するために、アクセス許可もチェックします。 マイクロサービスは、API 要求を受信したときに、JWT トークンのデコードと検証を行って、ユーザーのロールに関連付けられているユーザー ID とアクセス許可を取得します。
 
-[IoTHub Manager マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)内の [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) ファイルから抜粋した次のスニペットは、アクセス許可の適用方法を示しています。
+[IoTHub Manager マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs)内の [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) ファイルから抜粋した次のスニペットは、アクセス許可の適用方法を示しています。
 
 ```csharp
 [HttpDelete("{id}")]
@@ -241,7 +242,7 @@ public async Task DeleteAsync(string id)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータで役割に基づくアクセス コントロールがどのように実装されるかを説明しました。
 

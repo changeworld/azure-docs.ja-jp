@@ -1,19 +1,19 @@
 ---
-title: C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: C++ と NDK でアンカーを作成および配置する
 description: C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7ed948bc0bbb109f2fef247beefb55a9c38fb677
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237390"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74270277"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -39,7 +39,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 - 「[Azure Spatial Anchors の概要](../overview.md)」を読んでいる。
 - [5 分間のクイック スタート](../index.yml)のいずれかを完了している。
 - C++ と <a href="https://developer.android.com/ndk/" target="_blank">Android ネイティブ開発キット</a>についての基本的な知識。
-- <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7 についての基本的な知識。
+- <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> についての基本的な知識。
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

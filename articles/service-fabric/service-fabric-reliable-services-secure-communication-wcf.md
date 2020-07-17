@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の Web ベースのサービス通信をセキュリティで保護する | Microsoft Docs
+title: WCF ベースのサービスの通信をセキュリティで保護する
 description: Azure Service Fabric クラスターで実行されている Reliable Services の Web ベースの通信をセキュリティで保護する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: 26d34f0473dec5e0767041df400b84887a0d1778
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: pepogors
+ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664830"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75614164"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>サービスの WCF ベースの通信をセキュリティで保護する
 セキュリティは、通信の最も重要な側面の 1 つです。 Reliable Services アプリケーション フレームワークに最初から用意されている通信スタックとツールを利用してセキュリティを確保することができます。 この記事では、サービスのリモート処理を使用しているときに、セキュリティを向上させる方法について説明します。

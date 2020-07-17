@@ -1,28 +1,27 @@
 ---
-title: Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する | Microsoft Docs
+title: SAP システムの "高可用性" を実現するために Azure VM 再起動を利用する | Microsoft Docs
 description: Azure インフラストラクチャの VM 再起動を利用して SAP アプリケーションの "高可用性" を実現します
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009369"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77623821"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
@@ -35,8 +34,8 @@ ms.locfileid: "58009369"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -205,13 +204,13 @@ ms.locfileid: "58009369"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 > このセクションは次に適用されます。
 >
-> ![ Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
 >
 
 Windows Server フェールオーバー クラスタリング (WSFC) や Linux の Pacemaker などの機能 (現在 SUSE Linux Enterprise Server [SLES] 12 以降でのみサポート) を使用しない場合は、Azure の VM 再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
@@ -229,7 +228,7 @@ Azure マネージド ディスクは、それらが接続されている仮想�
 
 Azure インフラストラクチャの高可用性とストレージ アカウントを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
-![Azure インフラストラクチャ高可用性を利用して SAP アプリケーションの高可用性を実現する][planning-guide-figure-2900]
+![Azure インフラストラクチャの高可用性を利用して SAP アプリケーションの "高可用性" を実現する][planning-guide-figure-2900]
 
 Azure インフラストラクチャの高可用性とマネージド ディスクを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
@@ -280,8 +279,7 @@ VM 内に 1 つの SAP アプリケーション サーバー インスタンス�
 
   * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop) (Unix サーバーの開始/停止に伴う SAP の開始/停止)
   * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm) (SAP NetWeaver 管理エージェントの開始と停止)
-  * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html) (HANA データベースの自動開始を有効にする方法)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 完全な SAP NetWeaver アプリケーション対応の高可用性の詳細については、「[Azure IaaS での SAP アプリケーションの高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]」をご覧ください。

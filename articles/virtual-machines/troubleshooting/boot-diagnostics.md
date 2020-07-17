@@ -3,19 +3,19 @@ title: Azure での VM のブート診断 | Microsoft Docs
 description: Azure 内の仮想マシンに対する 2 つのデバッグ機能の概要
 services: virtual-machines
 author: Deland-Han
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fe2427d008b49daa6222ca981994f0dc2fbea355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476588"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>ブート診断を使用して、Azure 内の仮想マシンをトラブルシューティングする方法
 
@@ -47,7 +47,7 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
 
 次の手順は、Resource Manager デプロイ モデルを使用して作成された Azure 仮想マシン向けです。
 
-**[管理]** タブの **[監視]** セクションで、**[ブート診断]** がオンになっていることを確認します。 **[診断ストレージ アカウント]** ドロップダウン リストから、診断ファイルの配置先となるストレージ アカウントを選択します。
+**[管理]** タブの **[監視]** セクションで、 **[ブート診断]** がオンになっていることを確認します。 **[診断ストレージ アカウント]** ドロップダウン リストから、診断ファイルの配置先となるストレージ アカウントを選択します。
  
 ![VM を作成する](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
@@ -79,15 +79,15 @@ Azure Resource Manager テンプレートからデプロイする場合は、ご
 }
 ```
 
-テンプレートを使用したリソースのデプロイの詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。
+テンプレートを使用したリソースのデプロイの詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>既存の仮想マシンでブート診断を有効にする 
 
 既存の仮想マシンでブート診断を有効にするには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、仮想マシンを選択します。
-2. **[サポート + トラブルシューティング]** セクションで **[ブート診断]** を選択し、**[設定]** タブを選択します。
-3. **[ブート診断]** 設定で、状態を **[オン]** に変更し、**[ストレージ アカウント]** ドロップダウン リストからストレージ アカウントを選択します。 
+2. **[サポート + トラブルシューティング]** セクションで **[ブート診断]** を選択し、 **[設定]** タブを選択します。
+3. **[ブート診断]** 設定で、状態を **[オン]** に変更し、 **[ストレージ アカウント]** ドロップダウン リストからストレージ アカウントを選択します。 
 4. 変更を保存します。
 
     ![既存の VM の更新](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

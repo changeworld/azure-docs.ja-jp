@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric - Azure Monitor ログを使用したパフォーマンスの監視 | Microsoft Docs
+title: Azure Monitor ログを使用したパフォーマンスの監視
 description: Azure Service Fabric クラスターのコンテナーとパフォーマンス カウンターを監視するように Log Analytics Agent を設定する方法を説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366747"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Monitor ログを使用したパフォーマンスの監視
 
@@ -42,17 +33,17 @@ Log Analytics エージェントをクラスターに追加する最も良い方
 
 3. Windows クラスターを構築する場合は **[Windows サーバー]** を、Linux クラスターを作成する場合は **[Linux サーバー]** をクリックします。 このページには、`workspace ID` と `workspace key` (ポータルでは、主キーとして表示) が表示されます。 次の手順では、両方が必要です。
 
-4. Cloud Shell で `vmss extension set` API を使用して、クラスターに Log Analytics エージェントをインストールするコマンドを実行します。
+4. `vmss extension set` API を使用して、クラスターに Log Analytics エージェントをインストールするコマンドを実行します。
 
     Windows クラスターの場合
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     Linux クラスターの場合
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -62,13 +53,13 @@ Log Analytics エージェントをクラスターに追加する最も良い方
 
 5. 15 分以内にお使いのノードに正常にエージェントが追加されます。 `az vmss extension list` API を使用するとエージェントが追加されたことを確認できます。
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Resource Manager テンプレートを使用してエージェントを追加する
 
-Azure Log Analytics ワークスペースをデプロイし、ご利用の各ノードにエージェントを追加する Resource Manager テンプレートのサンプルは、[Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) または [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) で使用できます。
+Azure Log Analytics ワークスペースをデプロイし、ご利用の各ノードにエージェントを追加する Resource Manager テンプレートのサンプルは、[Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) または [Linux](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) で使用できます。
 
 このテンプレートをダウンロードして、ニーズに最適なクラスターをデプロイするように変更することができます。
 
@@ -82,9 +73,9 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 3. **[詳細設定]** をクリックします。
 
-4. **[データ]** をクリックし、**[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
+4. **[データ]** をクリックし、 **[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
 
-5. **[保存]** をクリックし、**[OK]** をクリックします。
+5. **[保存]** をクリックし、 **[OK]** をクリックします。
 
 6. [詳細設定] ブレードを閉じます。
 
@@ -98,7 +89,7 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 ![Log Analytics パフォーマンス カウンターのクエリ](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように Log Analytics エージェントを構成する場合は、「[データ ソースの構成](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)」を確認してください。
 * Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する

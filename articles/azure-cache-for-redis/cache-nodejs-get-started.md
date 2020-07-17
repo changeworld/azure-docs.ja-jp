@@ -1,49 +1,30 @@
 ---
-title: 'クイック スタート: Node.js で Azure Cache for Redis を使用する方法 | Microsoft Docs'
+title: クイック スタート:Node.js で Azure Cache for Redis を使用する
 description: このクイック スタートでは、Node.js と node_redis で Azure Cache for Redis を使用する方法について説明します。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: 06fddc95-8029-4a8d-83f5-ebd5016891d9
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 88703581c507b79c1b10e0f8741c99e64d204a7e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238098"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010870"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート: Node.js で Azure Cache for Redis を使用する方法
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート:Node.js で Azure Cache for Redis を使用する
 
-
-
-Azure Cache for Redis を使用すると、Microsoft によって管理されている、セキュリティで保護された専用の Azure Cache for Redis にアクセスできます。 キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
-
-このトピックでは、Node.js を使用して Cache for Redis を使用する方法を示します。 
-
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
-
-![完了したキャッシュ アプリ](./media/cache-nodejs-get-started/cache-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Node.js アプリに組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
-[node_redis](https://github.com/mranney/node_redis) をインストールします。
 
-    npm install redis
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [node_redis](https://github.com/mranney/node_redis)。これは `npm install redis` コマンドでインストールできます。 
 
-このチュートリアルでは、[node_redis](https://github.com/mranney/node_redis) を使用します。 他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](https://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
-
+他の Node.js クライアントを使用する例については、 [Node.js Redis クライアント](https://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -58,10 +39,9 @@ set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-
 ## <a name="connect-to-the-cache"></a>キャッシュに接続する
 
-[node_redis](https://github.com/mranney/node_redis) の最新のビルドでは、SSL を使用した Azure Cache for Redis への接続をサポートしています。 次の例では、SSL エンドポイント 6380 を使用して Azure Cache for Redis に接続する方法を示しています。 
+[node_redis](https://github.com/mranney/node_redis) の最新のビルドでは、TLS を使用した Azure Cache for Redis への接続をサポートしています。 次の例では、TLS エンドポイント 6380 を使用して Azure Cache for Redis に接続する方法を示しています。 
 
 ```js
 var redis = require("redis");
@@ -75,7 +55,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 
 ## <a name="create-a-new-nodejs-app"></a>新しい Node.js アプリを作成する
 
-*redistest.js* という名前の新しいスクリプト ファイルを作成します。
+*redistest.js* という名前の新しいスクリプト ファイルを作成します。 `npm install redis bluebird` コマンドを使用して、必要なパッケージをインストールします。
 
 次の例の JavaScript をファイルに追加します。 このコードでは、キャッシュ ホスト名とキー環境変数を使用して Azure Cache for Redis のインスタンスに接続する方法を示しています。 コードでは、キャッシュ内の文字列値の格納および取得も行います。 `PING` および `CLIENT LIST` コマンドも実行されます。 Redis と [node_redis](https://github.com/mranney/node_redis) クライアントを使用する他の例については、[https://redis.js.org/](https://redis.js.org/) を参照してください。
 
@@ -83,12 +63,13 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
 async function testCache() {
 
-    // Connect to the Azure Cache for Redis over the SSL port using the key.
+    // Connect to the Azure Cache for Redis over the TLS port using the key.
     var cacheConnection = redis.createClient(6380, process.env.REDISCACHEHOSTNAME, 
         {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
         
@@ -126,10 +107,9 @@ node redistest.js
 
 次の例では、`Message` キーは、前に Azure portal の Redis コンソールを使って設定されたキャッシュ値を持っていたことがわかります。 アプリは、そのキャッシュ値を更新しました。 また、アプリは `PING` および `CLIENT LIST` コマンドも実行しました。
 
-![完了したキャッシュ アプリ](./media/cache-nodejs-get-started/cache-app-complete.png)
+![完了した Redis Cache キャッシュ アプリ](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -139,24 +119,19 @@ node redistest.js
 > いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
 >
 
-[Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+[Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** テキスト ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
-![削除](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
+![Azure リソース グループを削除する](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Node.js アプリケーションから Azure Cache for Redis を使用する方法を説明しました。 ASP.NET Web アプリと Azure Cache for Redis を使用するには、次のクイック スタートに進みます。
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis を使用する ASP.NET Web アプリを作成する](./cache-web-app-howto.md)
-
-
-

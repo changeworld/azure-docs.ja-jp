@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 8dea36f92b034f8c6cdb6875634848d37f4c6606
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109880"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60580600"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 StorSimple Virtual Array を非アクティブ化する場合は、デバイスとそれに対応する StorSimple デバイス マネージャー サービスの接続を切断します。 このチュートリアルでは、次の方法について説明します。
 
@@ -46,13 +46,13 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 #### <a name="to-deactivate-the-device"></a>デバイスを非アクティブ化するには
 
-1. サービスで、**[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、非アクティブ化するデバイスをクリックして選択します。
+1. サービスで、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、非アクティブ化するデバイスをクリックして選択します。
    
     ![非アクティブ化するデバイスの選択](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
 2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで **[詳細]** をクリックし、一覧から **[非アクティブ化]** を選択します。
    
     ![[非アクティブ化] をクリック](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. **[非アクティブ化]** ブレードでデバイス名を入力し、**[非アクティブ化]** をクリックします。 
+3. **[非アクティブ化]** ブレードでデバイス名を入力し、 **[非アクティブ化]** をクリックします。 
    
     ![非アクティブ化の確定](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
@@ -73,11 +73,11 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 #### <a name="to-delete-the-device"></a>デバイスを削除するには
 
-1. StorSimple デバイス マネージャーで、**[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。
-2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで、**[詳細]**、**[削除]** の順にクリックします。
+1. StorSimple デバイス マネージャーで、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。
+2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで、 **[詳細]** 、 **[削除]** の順にクリックします。
    
    ![削除するデバイスの選択](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. **[削除]** ブレードで、削除を確定するデバイスの名前を入力し、**[削除]** をクリックします。 デバイスを削除しても、デバイスに関連付けられているクラウド データは削除されません。 
+3. **[削除]** ブレードで、削除を確定するデバイスの名前を入力し、 **[削除]** をクリックします。 デバイスを削除しても、デバイスに関連付けられているクラウド データは削除されません。 
    
    ![削除の確定](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
 4. 削除が開始されます。この処理は数分かかります。
@@ -88,7 +88,7 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 ## <a name="next-steps"></a>次のステップ
 
-* フェールオーバーの方法については、[StorSimple Virtual Array のフェールオーバーと障害復旧](storsimple-virtual-array-failover-dr.md)に関するページをご覧ください。
+* フェールオーバーの方法については、[StorSimple Virtual Array のフェールオーバーとディザスター リカバリー](storsimple-virtual-array-failover-dr.md)に関するページをご覧ください。
 
 * StorSimple デバイス マネージャー サービスを使用する方法の詳細については、[StorSimple デバイス マネージャー サービスを使用した StorSimple Virtual Array の管理](storsimple-virtual-array-manager-service-administration.md)に関するページをご覧ください。 
 

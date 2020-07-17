@@ -1,26 +1,25 @@
 ---
-title: Azure Load Balancer の複数フロントエンド
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer の複数フロントエンドの概要
+title: 複数のフロントエンド - Azure Load Balancer
+description: このラーニングパスでは、Azure Load Balancer の複数のフロントエンドの概要をまず確認します。
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
-ms.author: chkuhtz
-ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.date: 08/07/2019
+ms.author: allensu
+ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163431"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75771259"
 ---
-# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数フロントエンド
+# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
 Azure Load Balancer は、複数のポート、複数の IP アドレス、またはその両方のサービスの負荷を分散できます。 パブリックおよび内部ロード バランサーの定義を使用して、一連の VM のフローの負荷を分散できます。
 
@@ -30,7 +29,7 @@ Azure Load Balancer を定義するときに、フロントエンドおよびバ
 
 次の表に、フロントエンド構成の例をいくつか示します。
 
-| フロントエンド | IP アドレス | protocol | ポート |
+| フロントエンド | IP アドレス | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -54,7 +53,7 @@ Azure Load Balancer を使用すると、同じロード バランサーの構�
 
 このシナリオでは、フロントエンドが次のように構成されています。
 
-| フロントエンド | IP アドレス | protocol | ポート |
+| フロントエンド | IP アドレス | protocol | port |
 | --- | --- | --- | --- |
 | ![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -65,12 +64,12 @@ DIP は受信フローの宛先です。 バックエンド プールで、各 V
 
 | ルール | フロントエンドのマッピング | バックエンド プールへ |
 | --- | --- | --- |
-| 1 |![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  DIP2:81 |
+| 1 |![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81、 ![バックエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Azure Load Balancer の完全なマッピングは次のようになりました。
 
-| ルール | フロントエンド IP アドレス | protocol | ポート | 変換先 | ポート |
+| ルール | フロントエンド IP アドレス | protocol | port | 宛先 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![緑の規則](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP の IP アドレス |80 |
 | ![紫の規則](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP の IP アドレス |81 |
@@ -99,12 +98,32 @@ Azure Load Balancer は、使用する規則タイプに関係なく、フロン
 * フロントエンド 1: フロントエンド 1 の IP アドレスで構成されているゲスト OS 内のループバック インターフェイス
 * フロントエンド 2: フロントエンド 2 の IP アドレスで構成されているゲスト OS 内のループバック インターフェイス
 
+バックエンドプール内の各 VM に対して、Windows コマンドプロンプトで次のコマンドを実行します。
+
+VM 上のインターフェイス名の一覧を取得するには、次のコマンドを入力します。
+
+    netsh interface show interface 
+
+VM NIC (Azure マネージド) には、次のコマンドを入力します。
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+   (interfacename の部分をこのインターフェイスの名前に置き換えてください)
+
+追加した各ループバック インターフェイスに対して、次のコマンドを繰り返します。
+
+    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+   (interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
+     
+    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+   (interfacename の部分をこのループバック インターフェイスの名前に置き換えてください)
+
 > [!IMPORTANT]
 > ループバック インターフェイスの構成については、ゲスト OS 内で実行されます。 この構成は Azure で実行および管理されていません。 この構成なしでは、規則は機能しません。 正常性プローブの定義は、DSR フロントエンドを表すループバック インターフェイスではなく VM の DIP を使用します。 したがって、お使いのサービスでは、DSR フロントエンドを表すループバック インターフェイスで提供されているサービスの状態を反映する、DIP ポートのプローブ応答を提供する必要があります。
 
+
 前のシナリオと同じフロントエンド構成であると仮定します。
 
-| フロントエンド | IP アドレス | protocol | ポート |
+| フロントエンド | IP アドレス | protocol | port |
 | --- | --- | --- | --- |
 | ![緑のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫のフロントエンド](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -118,7 +137,7 @@ Azure Load Balancer は、使用する規則タイプに関係なく、フロン
 
 次の表は、ロード バランサーの完全なマッピングを示します。
 
-| ルール | フロントエンド IP アドレス | protocol | ポート | 変換先 | ポート |
+| ルール | フロントエンド IP アドレス | protocol | port | 宛先 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![緑の規則](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |フロントエンドと同じ (65.52.0.1) |フロントエンドと同じ (80) |
 | ![紫の規則](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |フロントエンドと同じ (65.52.0.2) |フロントエンドと同じ (80) |
@@ -132,10 +151,10 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 ## <a name="limitations"></a>制限事項
 
 * 複数フロントエンドの構成は、IaaS VM でのみサポートされます。
-* Floating IP 規則の場合、ご利用のアプリケーションでは送信フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure の SNAT が送信フローを書き換えることができないため、フローが失敗します。
+* Floating IP 規則の場合、ご利用のアプリケーションではアウトバウンド SNAT フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure のアウトバウンド SNAT がアウトバウンド フローを書き換えることができないため、フローが失敗します。  [アウトバウンドのシナリオ](load-balancer-outbound-connections.md)を確認してください。
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-subscription-service-limits.md#networking-limits) 」を参照してください。
+* サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) 」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[送信接続](load-balancer-outbound-connections.md)」を参照して、送信接続の動作への複数のフロントエンドの影響を理解します。

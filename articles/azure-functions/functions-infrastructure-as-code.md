@@ -1,50 +1,39 @@
 ---
-title: Azure Functions の関数アプリのリソース デプロイを自動化 | Microsoft Docs
+title: 関数アプリ リソースの Azure へのデプロイを自動化する
 description: 関数アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。
-services: Functions
-documtationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, 関数, サーバーレス アーキテクチャ, コードとしてのインフラストラクチャ, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
-ms.service: azure-functions
-ms.server: functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: glenga
-ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270905"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382520"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
 Azure Resource Manager テンプレートを使用して、関数アプリをデプロイできます。 この記事では、これを行う際に必要なリソースとパラメーターについて説明します。 関数アプリの[トリガーとバインド](functions-triggers-bindings.md)によっては、追加のリソースのデプロイが必要になる可能性があります。
 
-テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)」を参照してください。
 
 サンプル テンプレートについては、以下を参照してください。
 - [従量課金プランの関数アプリ]
 - [Azure App Service プランの関数アプリ]
 
-> [!NOTE]
-> Azure Functions のホスティング用の Premium プランは現在、プレビュー段階です。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。
-
 ## <a name="required-resources"></a>必要なリソース
 
 Azure Functions のデプロイは通常、次のリソースで構成されています。
 
-| Resource                                                                           | 要件 | 構文とプロパティの参照                                                         |   |
+| リソース                                                                           | 要件 | 構文とプロパティの参照                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
 | 関数アプリ                                                                     | 必須    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
 | [Azure Storage](../storage/index.yml) アカウント                                   | 必須    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md) コンポーネント | 省略可能    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | [ホスティング プラン](./functions-scale.md)                                             | 省略可能<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1</sup>ホスティング プランは、[Premium プラン](./functions-premium-plan.md) (プレビュー段階) または [App Service プラン](../app-service/overview-hosting-plans.md)で関数アプリを実行することを選択する場合にのみ必要です。
+<sup>1</sup>ホスティング プランは、[Premium プラン](./functions-premium-plan.md) または [App Service プラン](../app-service/overview-hosting-plans.md)で関数アプリを実行することを選択する場合にのみ必要です。
 
 > [!TIP]
 > 必須ではありませんが、Application Insights をアプリ用に構成することを強くお勧めします。
@@ -52,24 +41,24 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 <a name="storage"></a>
 ### <a name="storage-account"></a>ストレージ アカウント
 
-関数アプリには、Azure ストレージ アカウントが必要です。 必要なのは BLOB、テーブル、キュー、およびファイルをサポートする汎用アカウントです。 詳細については、[Azure Functions ストレージ アカウント要件](functions-create-function-app-portal.md#storage-account-requirements)に関するページをご覧ください。
+関数アプリには、Azure ストレージ アカウントが必要です。 必要なのは BLOB、テーブル、キュー、およびファイルをサポートする汎用アカウントです。 詳細については、[Azure Functions ストレージ アカウント要件](storage-considerations.md#storage-account-requirements)に関するページをご覧ください。
 
 ```json
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2018-07-01",
+    "apiVersion": "2019-04-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
-    "properties": {
-        "accountType": "[parameters('storageAccountType')]"
+    "sku": {
+        "name": "[parameters('storageAccountType')]"
     }
 }
 ```
 
 さらに、`AzureWebJobsStorage` プロパティを、サイト構成でアプリ設定として指定する必要があります。 関数アプリで監視に Application Insights を使用していない場合は、`AzureWebJobsDashboard` もアプリ設定として指定する必要があります。
 
-`AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure テーブル ストレージにログを記録し、ポータルの **[監視]** タブをオンにします。
+`AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure Table Storage にログを記録し、ポータルの **[監視]** タブをオンにします。
 
 こうしたプロパティは、`siteConfig` オブジェクトの `appSettings` コレクションで指定します。
 
@@ -102,7 +91,7 @@ Application Insights は、関数アプリを監視するために推奨され�
             },
             "properties": {
                 "Application_Type": "web",
-                "ApplicationId": "[variables('functionAppName')]"
+                "ApplicationId": "[variables('appInsightsName')]"
             }
         },
 ```
@@ -122,8 +111,8 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 ホスティング プランの定義はさまざまあり、次のいずれかを指定できます。
 * [従量課金プラン](#consumption) (既定)
-* [Premium プラン](#premium) (プレビュー段階)
-* [[App Service プラン]](#app-service-plan)
+* [Premium プラン](#premium)
+* [App Service プラン](#app-service-plan)
 
 ### <a name="function-app"></a>関数アプリ
 
@@ -140,6 +129,7 @@ Application Insights は、関数アプリを監視するために推奨され�
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -149,9 +139,9 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 | 設定名                 | 説明                                                                               | 値の例                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Functions ランタイムの内部キューイングのためのストレージ アカウントへの接続文字列 | 「[ストレージ アカウント](#storage)」を参照       |
+| AzureWebJobsStorage          | Functions ランタイムが内部キューイングのために使用するストレージ アカウントへの接続文字列 | 「[ストレージ アカウント](#storage)」を参照       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions ランタイムのバージョン                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | このアプリ内の関数で使用される言語スタック                                   | `dotnet`、`node`、`java`、または `python` |
+| FUNCTIONS_WORKER_RUNTIME     | このアプリ内の関数で使用される言語スタック                                   | `dotnet`、`node`、`java`、`python`、または `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | `node` 言語スタックを使用している場合にのみ必要、使用するバージョンを指定します              | `10.14.1`                             |
 
 これらのプロパティは、`siteConfig` プロパティ内の `appSettings` コレクションで指定されます。
@@ -185,7 +175,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 
 ## <a name="deploy-on-consumption-plan"></a>従量課金プランでデプロイする
 
-従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールダウンします。 アイドル状態の VM に対して支払う必要はなく、事前に容量を予約する必要もありません。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md#consumption-plan)」を参照してください。
+従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 アイドル状態の VM に対して支払う必要はなく、事前に容量を予約する必要もありません。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md#consumption-plan)」を参照してください。
 
 Azure Resource Manager テンプレートのサンプルについては、[従量課金プランの関数アプリ]に関するページをご覧ください。
 
@@ -196,16 +186,22 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 従量課金プランは、特殊なタイプの "serverfarm" リソースです。 Windows では、`computeMode` および `sku` プロパティに `Dynamic` 値を使用して指定できます。
 
 ```json
-{
-    "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "computeMode": "Dynamic",
-        "sku": "Dynamic"
-    }
+{  
+   "type":"Microsoft.Web/serverfarms",
+   "apiVersion":"2016-09-01",
+   "name":"[variables('hostingPlanName')]",
+   "location":"[resourceGroup().location]",
+   "properties":{  
+      "name":"[variables('hostingPlanName')]",
+      "computeMode":"Dynamic"
+   },
+   "sku":{  
+      "name":"Y1",
+      "tier":"Dynamic",
+      "size":"Y1",
+      "family":"Y",
+      "capacity":0
+   }
 }
 ```
 
@@ -216,7 +212,7 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` の 2 つの追加の設定が必要です。 このプロパティによって、関数アプリ コードと構成が格納されているストレージ アカウントとファイル パスが構成されます。
 
@@ -309,21 +305,29 @@ Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定さ
 
 ## <a name="deploy-on-premium-plan"></a>Premium プランでデプロイする
 
-Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン (プレビュー)](./functions-premium-plan.md)」を参照してください。
+Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン](./functions-premium-plan.md)」を参照してください。
 
 ### <a name="create-a-premium-plan"></a>Premium プランを作成する
 
-Premium プランは、特殊なタイプの "serverfarm" リソースです。 これは、`sku` プロパティ値に `EP1`、`EP2`、`EP3` のいずれかを使用して指定できます。
+Premium プランは、特殊なタイプの "serverfarm" リソースです。 これは、`sku` [説明オブジェクト](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)の `Name` プロパティ値に `EP1`、`EP2`、または `EP3` のいずれかを使用することで指定できます。
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```
@@ -378,7 +382,7 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
 ```
 
 
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>App Service プランでデプロイする
 
@@ -393,15 +397,15 @@ App Service プランは、"serverfarm" リソースによって定義されま�
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
@@ -411,21 +415,21 @@ Linux でアプリを実行するには、`kind` を `Linux` に設定するこ�
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "kind": "Linux",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-### <a name="create-a-function-app"></a>Function App を作成する 
+### <a name="create-a-function-app"></a>Function App を作成する
 
 App Service プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。
 
@@ -470,7 +474,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 | スタック            | 値の例                                         |
 |------------------|-------------------------------------------------------|
-| Python (プレビュー) | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
+| Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
 | .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
 
@@ -573,7 +577,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 関数アプリには、アプリ設定オプション、ソース管理オプションなど、デプロイで使用できる子リソースが多数含まれます。 **sourcecontrols** 子リソースを削除して、別の[デプロイ オプション](functions-continuous-deployment.md)を代わりに使用することもできます。
 
 > [!IMPORTANT]
-> Azure Resource Manager を使用して、アプリケーションを適切にデプロイするには、リソースが Azure でどのようにデプロイされているかを理解することが重要です。 次の例では、**siteConfig** を使用して最上位レベル構成が適用されます。 この構成は、情報を Functions ランタイムとデプロイ エンジンに提供するため、最上位レベルで設定することが重要です。 **sourcecontrols/web** 子リソースが適用される前に、最上位の情報が必要です。 この設定は、子レベルの **config/appSettings** リソースで構成することもできますが、場合によっては、関数アプリを、**config/appSettings** が適用される "*前*" にデプロイする必要があります。 たとえば、[Logic Apps](../logic-apps/index.yml) で関数を使用している場合、関数は他のリソースと依存関係にあります。
+> Azure Resource Manager を使用して、アプリケーションを適切にデプロイするには、リソースが Azure でどのようにデプロイされているかを理解することが重要です。 次の例では、**siteConfig** を使用して最上位レベル構成が適用されます。 この構成は、情報を Functions ランタイムとデプロイ エンジンに提供するため、最上位レベルで設定することが重要です。 **sourcecontrols/web** 子リソースが適用される前に、最上位の情報が必要です。 これらの設定は、子レベルの **config/appSettings** リソースで構成できますが、場合によっては、関数アプリを、**config/appSettings** が適用される "*前*" にデプロイする必要があります。 たとえば、[Logic Apps](../logic-apps/index.yml) で関数を使用している場合、関数は他のリソースと依存関係にあります。
 
 ```json
 {
@@ -643,10 +647,10 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 次のいずれかの方法を使用して、テンプレートをデプロイできます。
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
 
@@ -664,13 +668,34 @@ HTML を使用する例を次に示します。
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
 
-## <a name="next-steps"></a>次の手順
+### <a name="deploy-using-powershell"></a>PowerShell を使用したデプロイ
+
+次の PowerShell コマンドを実行すると、リソース グループが作成され、必要なリソースを使って関数アプリを作成するテンプレートがデプロイされます。 ローカルで実行するには、[Azure PowerShell](/powershell/azure/install-az-ps) がインストールされている必要があります。 [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) を実行してサインインします。
+
+```powershell
+# Register Resource Providers if they're not already registered
+Register-AzResourceProvider -ProviderNamespace "microsoft.web"
+Register-AzResourceProvider -ProviderNamespace "microsoft.storage"
+
+# Create a resource group for the function app
+New-AzResourceGroup -Name "MyResourceGroup" -Location 'West Europe'
+
+# Create the parameters for the file, which for this template is the function app name.
+$TemplateParams = @{"appName" = "<function-app-name>"}
+
+# Deploy the template
+New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
+```
+
+このデプロイをテストするには、従量課金プランで Windows 上に関数アプリを作成する[このようなテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)を使用できます。 `<function-app-name>` は、関数アプリの一意の名前に置き換えてください。
+
+## <a name="next-steps"></a>次のステップ
 
 Azure Functions を開発および構成する方法について学習します。
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* [Azure 関数アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* Azure Functions アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
+* [初めての Azure Functions の作成](functions-create-first-azure-function.md)
 
 <!-- LINKS -->
 

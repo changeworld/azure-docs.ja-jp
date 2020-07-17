@@ -4,16 +4,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a2858ac73838b50c21a76db5860675171a306192
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66168208"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76989088"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
-このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server から Azure BLOB ストレージにデータをコピーするコンポーネントです。 
+このセクションでは、セルフホステッド統合ランタイムを作成し、SQL Server データベースがあるオンプレミスのマシンに関連付けます。 セルフホステッド統合ランタイムは、マシンの SQL Server から Azure SQL データベースにデータをコピーするコンポーネントです。 
 
 1. 統合ランタイムの名前に使用する変数を作成します。 一意の名前を使用し、その名前をメモしておきます。 このチュートリアルの後の方で、それを使用します。 
 
@@ -29,12 +29,12 @@ ms.locfileid: "66168208"
    出力例を次に示します。
 
    ```json
-    Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
+    Name              : <Integration Runtime name>
     Type              : SelfHosted
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : onpremdf0914
-    Name              : myonpremirsp0914
-    Description       :
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
+    Description       : 
+    Id                : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DataFactory/factories/<DataFactoryName>/integrationruntimes/ADFTutorialIR
     ```
   
 3. 作成された統合ランタイムの状態を取得するために、次のコマンドを実行します。 **[状態]** プロパティの値が **[NeedRegistration]** に設定されていることを確認します。 
@@ -45,21 +45,25 @@ ms.locfileid: "66168208"
 
    出力例を次に示します。
 
-   ```json
-   Nodes                     : {}
-   CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption :
-   Version                   :
+   ```json  
+   State                     : NeedRegistration
+   Version                   : 
+   CreateTime                : 9/24/2019 6:00:00 AM
+   AutoUpdate                : On
+   ScheduledUpdateDate       : 
+   UpdateDelayOffset         : 
+   LocalTimeZoneOffset       : 
+   InternalChannelEncryption : 
    Capabilities              : {}
-   ScheduledUpdateDate       :
-   UpdateDelayOffset         :
-   LocalTimeZoneOffset       :
-   AutoUpdate                :
-   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+   ServiceUrls               : {eu.frontend.clouddatahub.net}
+   Nodes                     : {}
+   Links                     : {}
+   Name                      : ADFTutorialIR
+   Type                      : SelfHosted
    ResourceGroupName         : <ResourceGroup name>
    DataFactoryName           : <DataFactory name>
-   Name                      : <Integration Runtime name>
-   State                     : NeedRegistration
+   Description               : 
+   Id                        : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroup name>/providers/Microsoft.DataFactory/factories/<DataFactory name>/integrationruntimes/<Integration Runtime name>
    ```
 
 4. 次のコマンドを実行して、クラウドの Azure Data Factory サービスにセルフホステッド統合ランタイムを登録するために使用される認証キーを取得します。 
@@ -72,47 +76,38 @@ ms.locfileid: "66168208"
 
    ```json
    {
-       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
-       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+    "AuthKey1": "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+    "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
    }
    ```    
 
 5. 次の手順でマシンにインストールするセルフホステッド統合ランタイムを登録するために使用するいずれかのキーをコピーします (二重引用符は除外します)。  
 
-## <a name="install-the-integration-runtime"></a>統合ランタイムのインストール
-1. 既にマシンに統合ランタイムがインストールされている場合は、**[プログラムの追加と削除]** を使用してそれをアンインストールします。 
+## <a name="install-the-integration-runtime-tool"></a>統合ランタイム ツールをインストールする
+
+1. 既にマシンに統合ランタイムがインストールされている場合は、 **[プログラムの追加と削除]** を使用してそれをアンインストールします。 
 
 2. セルフホステッド統合ランタイムをローカルの Windows マシンに[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)します。 インストールを実行します。
 
 3. **[Welcome to Microsoft Integration Runtime Setup]\(Microsoft Integration Runtime セットアップへようこそ\)** ページで **[次へ]** を選択します。
 
-4. **[使用許諾契約書]** ページで使用条件とライセンス契約に同意し、**[次へ]** を選択します。
+4. **[使用許諾契約書]** ページで使用条件とライセンス契約に同意し、 **[次へ]** を選択します。
 
 5. **[インストール先フォルダー]** ページで **[次へ]** を選択します。
 
 6. **[Ready to install Microsoft Integration Runtime]\(Microsoft Integration Runtime のインストール準備完了\)** ページで **[インストール]** を選択します。
 
-7. 構成中のコンピューターが、使用されていないときはスリープ状態または休止状態に移行する旨の警告メッセージが表示された場合は、**[OK]** を選択します。
+7. **[Completed the Microsoft Integration Runtime Setup]\(Microsoft Integration Runtime セットアップの完了\)** ページで **[完了]** を選択します。
 
-8. **[電源オプション]** ページが表示される場合は、それを閉じて、セットアップ ページに移動します。
-
-9. **[Completed the Microsoft Integration Runtime Setup]\(Microsoft Integration Runtime セットアップの完了\)** ページで **[完了]** を選択します。
-
-10. **[統合ランタイム (セルフホステッド) の登録]** ページで、前のセクションで保存したキーを貼り付け、**[登録]** を選択します。 
+8. **[統合ランタイム (セルフホステッド) の登録]** ページで、前のセクションで保存したキーを貼り付け、 **[登録]** を選択します。 
 
     ![統合ランタイムの登録](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-11. セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
+9. **[新しい統合ランタイム (セルフホステッド) ノード]** ページで **[完了]** を選択します。 
+
+10. セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
 
     ![正常に登録](media/data-factory-create-install-integration-runtime/registered-successfully.png)
-
-12. **[新しい統合ランタイム (セルフホステッド) ノード]** ページで **[次へ]** を選択します。 
-
-    ![[新しい統合ランタイム ノード] ページ](media/data-factory-create-install-integration-runtime/new-integration-runtime-node-page.png)
-
-13. **[イントラネット通信チャネル]** ページで **[スキップ]** を選択します。 複数ノードの統合ランタイム環境では、イントラノード通信に使用する TLS/SSL 証明書を選択します。 
-
-    ![[イントラネット通信チャネル] ページ](media/data-factory-create-install-integration-runtime/intranet-communication-channel-page.png)
 
 14. **[統合ランタイム (セルフホステッド) の登録]** ページで **[構成マネージャーの起動]** を選択します。
 
@@ -124,7 +119,7 @@ ms.locfileid: "66168208"
 
     ![[診断] タブ](media/data-factory-create-install-integration-runtime/config-manager-diagnostics-tab.png)   
 
-    a. **[構成マネージャー]** ページで、**[診断]** タブに移動します。
+    a. **[構成マネージャー]** ページで、 **[診断]** タブに移動します。
 
     b. [データ ソースの種類] として **[SqlServer]** を選択します。
 
@@ -136,10 +131,9 @@ ms.locfileid: "66168208"
 
     f. ユーザー名を入力します。
 
-    g. 入力されたユーザー名のパスワードを入力します。
+    g. ユーザー名に関連付けられているパスワードを入力します。
 
-    h. 統合ランタイムから SQL Server に接続できることを確認するために、**[テスト]** を選択します。 接続が成功すると、緑色のチェック マークが表示されます。 接続が失敗した場合は、エラー メッセージが表示されます。 問題を修正し、統合ランタイムから SQL Server に接続できるようにします。    
+    h. 統合ランタイムから SQL Server に接続できることを確認するために、 **[テスト]** を選択します。 接続が成功すると、緑色のチェック マークが表示されます。 接続が失敗した場合は、エラー メッセージが表示されます。 問題を修正し、統合ランタイムから SQL Server に接続できるようにします。    
 
     > [!NOTE]
-    > 認証の種類、サーバー、データベース、ユーザー、およびパスワードの値をメモしておきます。 このチュートリアルの後の方で使用します。 
-    
+    > 認証の種類、サーバー、データベース、ユーザー、およびパスワードの値をメモしておきます。 このチュートリアルの後の方で使用します。

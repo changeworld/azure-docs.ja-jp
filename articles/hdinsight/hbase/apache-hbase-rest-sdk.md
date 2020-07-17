@@ -2,22 +2,22 @@
 title: HBase .NET SDK の使用 - Azure HDInsight
 description: HBase .NET SDK を使用して、テーブルの作成と削除、およびデータの読み取りと書き込みを行います。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: 707869880c5df619def2d707264b59e22e03c521
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720304"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74806662"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
-[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[Apache Hive クエリと、HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
+[Apache HBase](apache-hbase-overview.md) では主に 2 つの方法でデータを操作できます。[1 つは Apache Hive クエリ、もう 1 つは HBase の RESTful API への呼び出し](apache-hbase-tutorial-get-started-linux.md)です。 `curl` コマンドまたは同様のユーティリティを使用すると、REST API を直接操作できます。
 
 C# および .NET アプリケーションの場合、[.NET 用 Microsoft HBase REST クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.HBase.Client/)は、HBase REST API 上にクライアント ライブラリを提供します。
 
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-この新しいテーブルには、2 つの列ファミリ t1 と t2 が含まれます。 列ファミリは異なる HFiles に個別に保存されているため、頻繁にクエリが実行されるデータの列ファミリは別にしておくと効果的です。 次の「[データを挿入する](#insert-data)」の例では、t1 列のファミリに列が追加されます。
+この新しいテーブルには、2 列のファミリ (t1 と t2) が含まれます。 列ファミリは異なる HFiles に個別に保存されているため、頻繁にクエリが実行されるデータの列ファミリは別にしておくと効果的です。 次の「[データを挿入する](#insert-data)」の例では、t1 列のファミリに列が追加されます。
 
 ## <a name="delete-a-table"></a>テーブルを削除する
 
@@ -68,7 +68,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 await client.DeleteTableAsync("RestSDKTable");
 ```
 
-## <a name="insert-data"></a>データを挿入する
+## <a name="insert-data"></a>データの挿入
 
 データを挿入するには、一意の行キーを行識別子として指定します。 すべてのデータが `byte[]` 配列に格納されます。 `title`、`director`、および `release_date` 列は最も頻繁にアクセスされるため、次のコードで、これらの列を定義し、t1 列ファミリに追加します。 `description` と `tagline` 列は、t2 列ファミリに追加されます。 データは、必要に応じて、列ファミリにパーティション分割できます。
 
@@ -112,9 +112,9 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase では [Cloud BigTable](https://cloud.google.com/bigtable/) が実装されるため、データ形式は次のようになります。
+HBase では [Cloud BigTable](https://cloud.google.com/bigtable/) が実装されるため、データ形式は次のようなイメージになります。
 
-![クラスター ユーザー ロールを付与されたユーザー](./media/apache-hbase-rest-sdk/table.png)
+![Apache HBase のサンプル データ出力](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>データの選択
 
@@ -185,7 +185,7 @@ finally
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight で Apache HBase の例を使用する](apache-hbase-tutorial-get-started-linux.md)
 * [Apache HBase での Twitter センチメントのリアルタイム分析](../hdinsight-hbase-analyze-twitter-sentiment.md)によりエンド ツー エンド アプリケーションを構築する

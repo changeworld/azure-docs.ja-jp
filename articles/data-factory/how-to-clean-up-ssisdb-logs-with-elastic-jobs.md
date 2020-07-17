@@ -1,25 +1,25 @@
 ---
-title: Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする | Microsoft Docs
+title: Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 description: この記事では、SSISDB のログをクリーンアップするためのストアド プロシージャを Azure エラスティック データベース ジョブを使ってトリガーする方法について説明します。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 02952c3baea5d9089061b10f2429be57a9322398
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57430919"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81606174"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、SQL Server Integration Services のカタログ データベース `SSISDB` のログをクリーンアップするストアド プロシージャを、Azure エラスティック データベース ジョブを使ってトリガーする方法について説明します。
 
@@ -262,7 +262,7 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure-SSIS Integration Runtime に関連した管理タスクと監視タスクについては、次の記事を参照してください。 Azure-SSIS IR は、Azure SQL Database の SSISDB に格納される SSIS パッケージのランタイム エンジンです。
 

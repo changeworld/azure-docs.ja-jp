@@ -1,26 +1,19 @@
 ---
-title: Azure CLI スクリプトの例 - Azure Cache for Redis のホスト名、ポート、およびキーを取得する | Microsoft Docs
-description: Azure CLI スクリプトの例 - Azure Cache for Redis インスタンスのホスト名、ポート、およびキーを取得する
-services: cache
-documentationcenter: ''
+title: ホスト名、ポート、およびキーを取得する - Azure Cache for Redis - Azure CLI
+description: この Azure CLI コード サンプルでは、Azure Cache for Redis インスタンスのホスト名、ポート、およびキーを取得する方法を示します。
 author: yegu-ms
-manager: jhubbard
-editor: ''
+ms.author: yegu
 tags: azure-service-management
-ms.assetid: 761eb24e-2ba7-418d-8fc3-431153e69a90
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: ff410db561879089c4c1f20acb7cb349f0484fda
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233831"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75411295"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Azure Cache for Redis のホスト名、ポート、およびキーを取得する
 
@@ -43,7 +36,7 @@ ms.locfileid: "56233831"
 | [az redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスのアクセス キーを取得します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure ストレージ エクスプローラーを使用して Azure DevTest Labs に VHD ファイルをアップロードする | Microsoft Docs
+title: ストレージ エクスプローラーを使用して Azure DevTest Labs に VHD ファイルをアップロードする
 description: Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521727"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76170367"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 
@@ -35,7 +35,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 1. Azure Portal を使用して、ラボのストレージ アカウントを取得します。
 
-    1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+    1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
     
     1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
     
@@ -43,13 +43,13 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
     
     1. ラボのブレードで、 **[構成]** を選択します。 
     
-    1. ラボの **[構成]** ブレードで、**[カスタム イメージ (VHD)]** を選択します。
+    1. ラボの **[構成]** ブレードで、 **[カスタム イメージ (VHD)]** を選択します。
     
-    1. **[カスタム イメージ]** ブレードで、**[+追加]** を選択します。 
+    1. **[カスタム イメージ]** ブレードで、 **[+追加]** を選択します。 
     
-    1. **[カスタム イメージ]** ブレードで、**[VHD]** を選択します。
+    1. **[カスタム イメージ]** ブレードで、 **[VHD]** を選択します。
     
-    1. **[VHD]** ブレードで、**[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
+    1. **[VHD]** ブレードで、 **[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
     
         ![PowerShell を使用した VHD のアップロード][0]
     
@@ -67,7 +67,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
  
     1. ストレージ エクスプローラーを開きます。
     
-    1. ストレージ エクスプローラーで、**[Azure アカウントの設定]** を選択します。 
+    1. ストレージ エクスプローラーで、 **[Azure アカウントの設定]** を選択します。 
     
         ![[Azure アカウントの設定]][1]
     
@@ -75,7 +75,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
     
         ![[アカウントの追加]][2]
     
-    1. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
+    1. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられた Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、 **[適用]** を選択します ( **[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
     
         ![Azure サブスクリプションの選択][3]
     
@@ -87,9 +87,9 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
     1. ストレージ エクスプローラーの左側のウィンドウで、ラボを所有している Azure サブスクリプションのノードを見つけて展開します。
     
-    1. サブスクリプションのノードで、**[ストレージ アカウント]** を展開します。
+    1. サブスクリプションのノードで、 **[ストレージ アカウント]** を展開します。
 
-    1. ラボの [ストレージ アカウント] ノードを展開して、**[BLOB コンテナー]**、**[ファイル共有]** **[キュー]**、および **[テーブル]** の各ノードを表示します。
+    1. ラボの [ストレージ アカウント] ノードを展開して、 **[BLOB コンテナー]** 、 **[ファイル共有]** **[キュー]** 、および **[テーブル]** の各ノードを表示します。
     
     1. **[BLOB コンテナー]** ノードを展開します。
     
@@ -99,11 +99,11 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 1. ストレージ エクスプローラーを使用して、VHD ファイルをアップロードします。
 
-    1. ストレージ エクスプローラーの右側のウィンドウに、ラボのストレージ アカウントの **uploads** BLOB コンテナー内の BLOB が一覧表示されます。 BLOB エディター ツールバーで、**[アップロード]** を選択します。 
+    1. ストレージ エクスプローラーの右側のウィンドウに、ラボのストレージ アカウントの **uploads** BLOB コンテナー内の BLOB が一覧表示されます。 BLOB エディター ツールバーで、 **[アップロード]** を選択します。 
         
         ![[アップロード] ボタン][6]
     
-    1. **[アップロード]** ドロップダウン メニューから、**[ファイルのアップロード...]** を選択します。
+    1. **[アップロード]** ドロップダウン メニューから、 **[ファイルのアップロード...]** を選択します。
     
     1. **[ファイルのアップロード]** ダイアログで、省略記号を選択します。
         
@@ -111,7 +111,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
     1. **[アップロードするファイルの選択]** ダイアログで、目的の VHD ファイルを参照して選択してから **[開く]** を選択します。
     
-    1. **[ファイルのアップロード]** ダイアログに戻ったら、**[BLOB の種類]** を **[ページ BLOB]** に変更します。
+    1. **[ファイルのアップロード]** ダイアログに戻ったら、 **[BLOB の種類]** を **[ページ BLOB]** に変更します。
     
     1. **[アップロード]** を選択します。
 
@@ -121,7 +121,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
         ![ファイルのアップロードの状態][10]  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Portal を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-template.md)
 - [PowerShell を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

@@ -1,26 +1,24 @@
 ---
 title: C++ - Azure からオブジェクト (BLOB) ストレージを使用する方法 | Microsoft Docs
 description: Azure BLOB (オブジェクト) ストレージを使用して、非構造化データをクラウドに格納します。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 03/21/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 03/21/2018
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 519190b6aeb313f25eddd717bce1a72148c8c518
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: conceptual
+ms.openlocfilehash: 0a9015e33f5456efeac7f7c887995ac4a69f0259
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148445"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75941804"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 
 このガイドでは、Azure Blob Storage を使用して一般的なシナリオを実行する方法について説明します。 BLOB のアップロード、一覧表示、ダウンロード、および削除方法を示す例を紹介します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。   
 
-Blob Storage の詳細については、「[Azure Blob Storage の概要](storage-blobs-introduction.md)」を参照してください。
+Blob Storage の詳細については、「[Azure Blob Storage の概要](storage-blobs-introduction.md)」をご覧ください。
 
 > [!NOTE]
 > このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。 Microsoft では、[NuGet](https://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) 経由で使用できる C++ 用のストレージ クライアント ライブラリの最新バージョンを使用することをお勧めします。
@@ -34,10 +32,14 @@ Blob Storage の詳細については、「[Azure Blob Storage の概要](storag
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用できます。
 
-* **Linux:**[C++ 用 Azure Storage クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。  
-* **Windows:** Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。  
-  
-     Install-Package wastorage
+* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README:Linux での開始](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)に関するページで示されている手順のようにします。
+* **Windows:** Windows では、依存関係マネージャーとして [vcpkg](https://github.com/microsoft/vcpkg) を使用します。 [クイックスタート](https://github.com/microsoft/vcpkg#quick-start)に従って vcpkg を初期化してください。 そのうえで、次のコマンドを使用してライブラリをインストールします。
+
+```powershell
+.\vcpkg.exe install azure-storage-cpp
+```
+
+ソース コードをビルドして NuGet にエクスポートする方法については、[README](https://github.com/Azure/azure-storage-cpp#download--install) ファイルを参照してください。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>BLOB ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API を使用して BLOB にアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
@@ -64,11 +66,11 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Azure ストレージ エミュレーターを起動するには、**[スタート]** ボタンをクリックするか、**Windows** キーを押します。 「**Azure ストレージ エミュレーター**」と入力し、アプリケーションの一覧から **[Microsoft Azure ストレージ エミュレーター]** を選択します。  
+Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、**Windows** キーを押します。 「**Azure ストレージ エミュレーター**」と入力し、アプリケーションの一覧から **[Microsoft Azure ストレージ エミュレーター]** を選択します。  
 
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。  
 
-## <a name="retrieve-your-connection-string"></a>接続文字列の取得
+## <a name="retrieve-your-storage-account"></a>ストレージ アカウントを取得する
 **cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。 ストレージ接続文字列からストレージ アカウント情報を取得するには、 **parse** メソッド使用します。  
 
 ```cpp
@@ -253,7 +255,7 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、BLOB ストレージの基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。  
 
 * [C++ から Queue ストレージを使用する方法](../storage-c-plus-plus-how-to-use-queues.md)

@@ -1,5 +1,5 @@
 ---
-title: 'トラブルシューティング: Azure Active Directory アクティビティ ログにデータが見つからない | Microsoft Docs'
+title: 'トラブルシューティング: アクティビティ ログにデータが見つからない | Microsoft Docs'
 description: Azure Active Directory アクティビティ ログにデータが見つからない問題の解決策を提供します。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b25c09b140102c0788a939c48f48300242fc6ee
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437239"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74014284"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング:Azure Active Directory アクティビティ ログにデータが見つからない 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング: Azure Active Directory アクティビティ ログにデータが見つからない 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Azure portal での最近の操作の監査ログが見つかりません
 
@@ -32,7 +32,7 @@ ms.locfileid: "58437239"
 
 Azure Portal でいくつかの操作を実行したので、`Activity logs > Audit Logs` ブレードでこれらの操作の監査ログが表示されるはずですが、見つかりません。
 
- ![レポート](./media/troubleshoot-missing-audit-data/01.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>原因
 
@@ -53,7 +53,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 最近 Azure portal にサインインしたので `Activity logs > Sign-ins` ブレードにこれらの操作のサインイン ログが表示されるはずですが、見つかりません。
 
- ![レポート](./media/troubleshoot-missing-audit-data/02.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>原因
 
@@ -74,7 +74,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 Azure portal で 30 日より前のサインイン データおよび監査データを表示できません。 なぜですか? 
 
- ![レポート](./media/troubleshoot-missing-audit-data/03.png)
+ ![レポーティング](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>原因
 
@@ -82,8 +82,8 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 | レポート           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
-| ディレクトリ監査  | &nbsp; |   7 日     | 30 日             | 30 日             |
-| サインイン アクティビティ | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
+| 監査ログ  | &nbsp; |   7 日     | 30 日             | 30 日             |
+| サインイン | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
 
 詳細については、「[Azure Active Directory レポートのアイテム保持ポリシー](reference-reports-data-retention.md)」を参照してください。  
 
@@ -91,7 +91,7 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 30 日を超えてデータを保持するには、2 つの方法があります。 [Azure AD レポート API](concept-reporting-api.md) を使用してデータをプログラムで取得し、データベースに保存することができます。 また、監査ログを Splunk や SumoLogic などのサード パーティの SIEM システムに統合することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD のレポートの保持](reference-reports-data-retention.md)。
 * [Azure Active Directory レポートの待ち時間](reference-reports-latencies.md)。

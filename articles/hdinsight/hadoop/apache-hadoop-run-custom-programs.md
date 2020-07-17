@@ -1,19 +1,19 @@
 ---
 title: カスタムの MapReduce プログラムの実行 - Azure HDInsight
-description: HDInsight でカスタムの MapReduce プログラムを実行するタイミングと方法。
+description: Azure HDInsight クラスター上でカスタムの Apache MapReduce プログラムを実行するタイミングと方法。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2017
-ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713087"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645023"
 ---
 # <a name="run-custom-mapreduce-programs"></a>カスタムの MapReduce プログラムを呼び出す
 
@@ -50,19 +50,19 @@ HDInsight で処理する場合のほとんどのシナリオでは、Pig や Hi
 
 1. MapReduce プログラムを開発、コンパイル、テストしたあとに、`scp` コマンドを使用して jar ファイルをヘッドノードにアップロードします。
 
-    ```bash
-    scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    **USERNAME** を、使用するクラスターの SSH ユーザー アカウントに置き換えます。 **CLUSTERNAME** をクラスター名に置き換えます。 SSH アカウントをセキュリティ保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
+    CLUSTERNAME をクラスター名に置き換えます。 SSH アカウントをセキュリティ保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
 
-2. [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) を使用してクラスターに接続します。
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-    ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. SSH セッションから、YARN を介して MapReduce プログラムを実行します。
+1. SSH セッションから、YARN を介して MapReduce プログラムを実行します。
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
@@ -70,7 +70,7 @@ HDInsight で処理する場合のほとんどのシナリオでは、Pig や Hi
 
     このコマンドにより、MapReduce ジョブが YARN に送信されます。 入力ファイルは `/example/data/sample.log`、出力ディレクトリは `/example/data/logoutput` です。 この入力ファイルとすべての出力ファイルは、クラスターの既定のストレージに格納されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する](apache-hadoop-develop-deploy-java-mapreduce-linux.md)

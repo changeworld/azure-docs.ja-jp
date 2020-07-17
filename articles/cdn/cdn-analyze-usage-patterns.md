@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 5a0d9018-8bdb-48ff-84df-23648ebcf763
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162072"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67594154"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon からのコア レポート
 
@@ -44,16 +44,16 @@ Verizon プロファイルの管理ポータルから Verizon コア レポー�
    
     ![CDN management portal - Core Reports menu](./media/cdn-reports/cdn-core-reports.png)
 
-3. レポートごとに、**[日付範囲]** の一覧から日付範囲を選択します。 定義済みの日付範囲 (**[今日]** や **[今週]** など) を選択するか、**[カスタム]** を選択し、カレンダー アイコンをクリックして日付範囲を手動で入力できます。 
+3. レポートごとに、 **[日付範囲]** の一覧から日付範囲を選択します。 定義済みの日付範囲 ( **[今日]** や **[今週]** など) を選択するか、 **[カスタム]** を選択し、カレンダー アイコンをクリックして日付範囲を手動で入力できます。 
 
-4. 日付範囲を選択したら、**[Go]\(適用\)** をクリックして、レポートを生成します。 
+4. 日付範囲を選択したら、 **[Go]\(適用\)** をクリックして、レポートを生成します。 
 
-4. データを Excel 形式でエクスポートする必要がある場合は、**[Go]\(適用\)** ボタンの上にある Excel アイコンをクリックします。
+4. データを Excel 形式でエクスポートする必要がある場合は、 **[Go]\(適用\)** ボタンの上にある Excel アイコンをクリックします。
 
 ## <a name="bandwidth"></a>帯域幅
 帯域幅レポートは、特定の期間での HTTP および HTTPS の CDN 帯域幅の使用量を示すグラフやデータ テーブルで構成されます (Mbps 単位)。 すべてのPOP または特定の POP での帯域幅の使用量を表示できます。 このレポートでは、POP でのトラフィックの急増や分布を表示できます。
 
-**[エッジ ノード]** の一覧から、**[All Edge Nodes]\(すべてのエッジ ノード\)** を選択して、すべてのノードのトラフックを確認するか、特定のリージョンを選択します。
+**[エッジ ノード]** の一覧から、 **[All Edge Nodes]\(すべてのエッジ ノード\)** を選択して、すべてのノードのトラフックを確認するか、特定のリージョンを選択します。
 
 レポートは、5 分ごとに更新されます。
 
@@ -62,7 +62,7 @@ Verizon プロファイルの管理ポータルから Verizon コア レポー�
 ## <a name="data-transferred"></a>転送されたデータ
 このレポートは、特定の期間における HTTP および HTTPS の CDN トラフィックの使用量を示すグラフやデータ テーブルで構成されます (GB 単位)。 すべての POP または特定の POP でのトラフィックの使用量を表示できます。 このレポートでは、POP のトラフィックの急増や分布を表示できます。
 
-**[エッジ ノード]** の一覧から、**[All Edge Nodes]\(すべてのエッジ ノード\)** を選択して、すべてのノードのトラフックを確認するか、特定のリージョンを選択します。
+**[エッジ ノード]** の一覧から、 **[All Edge Nodes]\(すべてのエッジ ノード\)** を選択して、すべてのノードのトラフックを確認するか、特定のリージョンを選択します。
 
 レポートは、5 分ごとに更新されます。
 
@@ -119,7 +119,7 @@ Verizon プロファイルの管理ポータルから Verizon コア レポー�
 
 次の情報は提供されません。
 
-* 国のフィルタリング オプションによって拒否された要求。
+* 国/地域のフィルタリング オプションによって拒否された要求。
 * キャッシュできないことがヘッダーで示された資産の要求。 たとえば、`Cache-Control: private`、`Cache-Control: no-cache`、または `Pragma: no-cache` ヘッダーでは資産をキャッシュできません。
 * 部分的にキャッシュされた内容のバイト範囲要求。
 

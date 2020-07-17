@@ -1,26 +1,17 @@
 ---
-title: Azure での Debian Linux VHD の準備 | Microsoft Docs
-description: Azure 内にデプロイする Debian VHD イメージの作成方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: szarkos
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
+title: Debian Linux VHD を準備する
+description: Azure で VM をデプロイするために Debian VHD イメージを作成する方法について説明します。
+author: gbowerman
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
-ms.author: szark
-ms.openlocfilehash: 6ef0a9f6efbf5f8398ba242150b2eb6102875f7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: guybo
+ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066712"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 ## <a name="prerequisites"></a>前提条件
@@ -107,6 +98,6 @@ ms.locfileid: "58000328"
 
 10. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。 .vhd ファイルを Azure に初めてアップロードする場合は、「[Create a Linux VM from a custom disk (カスタム ディスクから Linux VM を作成する)](upload-vhd.md#option-1-upload-a-vhd)」を参照してください。
 

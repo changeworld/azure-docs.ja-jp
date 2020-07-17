@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976020"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75891513"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 
@@ -45,7 +47,7 @@ StorSimple デバイス マネージャー サービスは、Microsoft Azure で
 
 StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/fundamentals/sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
-StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## <a name="storsimple-device-protection"></a>StorSimple デバイスの保護
 
@@ -183,7 +185,7 @@ StorSimple デバイスは、データの保存先をその使用頻度に応じ
 
 ## <a name="protect-data-via-storage-accounts"></a>ストレージ アカウントによるデータの保護
 
-ストレージ アカウントは、各 Microsoft Azure サブスクリプションにつき 1 つまたは複数作成できます  (Azure クラウドに保存されたデータを扱うための一意の名前空間が、ストレージ アカウントによって確保されます)。ストレージ アカウントへのアクセスは、各ストレージ アカウントに関連付けられたサブスクリプションとアクセス キーによって制御されます。
+ストレージ アカウントは、各 Microsoft Azure サブスクリプションにつき 1 つまたは複数作成できます (Azure クラウドに保存されたデータを扱うための一意の名前空間が、ストレージ アカウントによって確保されます)。ストレージ アカウントへのアクセスは、各ストレージ アカウントに関連付けられたサブスクリプションとアクセス キーによって制御されます。
 
 ストレージ アカウントを作成すると、512 ビットのストレージ アクセス キーが 2 つ、Microsoft Azure によって生成されます。StorSimple デバイスがストレージ アカウントにアクセスするときの認証にそのうちの 1 つが使用されます。 生成されたキーのうち、実際に使用されるのは 1 つだけであることに注意してください。 もう 1 つは、キーの定期的なローテーションを見越して、あらかじめ作成されるものです。 キーのローテーションは、2 つ目のキーをアクティブにしたうえで 1 つ目のキーを削除することによって行います。 その後、次回のローテーションで使う新しいキーを作成できます。 セキュリティ上の理由から、多くのデータ センターでキーのローテーションが義務化されています。
 
@@ -221,34 +223,34 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 セキュリティと Microsoft Azure StorSimple に関するいくつかの質問と回答を以下に示します。
 
-**Q:**  サービスが侵害されました。 次に何をすべきですか。
+**質問:** サービスが侵害されました。 次に何をすべきですか。
 
 **A:** サービス データ暗号化キーと、データの階層化に使用されているストレージ アカウントのストレージ アカウント キーを直ちに変更してください。 手順については、次をご覧ください。
 
 * [サービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [ストレージ アカウントのキー ローテーション](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**Q:**  新しい StorSimple デバイスがあるのですが、サービス登録キーを求められました。 どうすれば入手できますか。
+**質問:** 新しい StorSimple デバイスがあるのですが、サービス登録キーを求められました。 どうすれば入手できますか。
 
 **A:** このキーは StorSimple デバイス マネジャー サービスを最初に作成したときに作成されています。 StorSimple デバイス マネジャー サービスを使用してデバイスに接続するときに、サービスのクイック スタート ページを使用してサービス登録キーの表示や再生成を実行できます。 新しいサービス登録キーを生成しても、既存の登録済みデバイスには影響ありません。 手順については、次をご覧ください。
 
-* [サービス登録キーの表示または再生成](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
+* [サービス登録キーの表示または再生成](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
-**Q:**  自分のサービス データ暗号化キーを紛失しました。 どうすればよいですか。
+**質問:** 自分のサービス データ暗号化キーを紛失しました。 どうすればよいですか。
 
 **A:** Microsoft サポートにお問い合わせください。 デバイスのサポート セッションにログインし、キーを取得できるようにサポートします (少なくとも 1 台のデバイスがオンラインである必要があります)。 サービス データ暗号化キーを取得したらすぐに変更し、お客様だけが新しいキーを認識するようにする必要があります。 手順については、次をご覧ください。
 
 * [サービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**Q:**  デバイスにサービス データ暗号化キーの変更を承認しましたが、キー変更プロセスが開始されませんでした。 どうすればよいですか。
+**質問:** デバイスにサービス データ暗号化キーの変更を承認しましたが、キー変更プロセスが開始されませんでした。 どうすればよいですか。
 
 **A:** タイムアウトした場合、サービス データ暗号化キーの変更を再度デバイスに承認してから、もう一度プロセスを開始する必要があります。
 
-**Q:**   サービス データ暗号化キーを変更しましたが、4 時間以内に他のデバイスを更新できませんでした。 再度開始する必要はありますか。
+**質問:** サービス データ暗号化キーを変更しましたが、4 時間以内に他のデバイスを更新できませんでした。 再度開始する必要はありますか。
 
 **A:** 4 時間という期間が適用されるのは、変更の開始についてのみです。 承認された StorSimple デバイスに対する更新プロセスが開始された後は、すべてのデバイスが更新されるまで承認は有効です。
 
-**Q:**   StorSimple の管理者が退職しました。 どうすればよいですか。
+**質問:** StorSimple の管理者が退職しました。 どうすればよいですか。
 
 **A:** StorSimple デバイスにアクセスするためのパスワードを変更するかリセットし、サービス データ暗号化キーを変更して、承認されていない人員に新しい情報が決してわからないようにします。 手順については、次をご覧ください。
 
@@ -256,34 +258,34 @@ StorSimple ソリューションに保存されるデータとソリューショ
 * [サービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [StorSimple デバイスの CHAP を構成する](storsimple-8000-configure-chap.md)
 
-**Q:**  StorSimple デバイスに接続しているホストに StorSimple Snapshot Manager のパスワードを指定する必要がありますが、パスワードを利用できません。 どうすればよいですか。
+**質問:** StorSimple デバイスに接続しているホストに StorSimple Snapshot Manager のパスワードを指定する必要がありますが、パスワードを利用できません。 どうすればよいですか。
 
 **A:** パスワードを忘れた場合は、新しいパスワードを作成する必要があります。 その後、既存のすべてのユーザーに対して、パスワードが変更されたので新しいパスワードを使用するようにクライアントを更新する必要があることを通知します。 手順については、次をご覧ください。
 
 * [StorSimple Snapshot Manager のパスワードの変更](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 * [デバイスの認証](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**Q:**  StorSimple 用 Windows PowerShell にリモート アクセスするための証明書がデバイス上で変更されました。 リモート アクセス クライアントを更新するにはどうすればよいですか。
+**質問:** StorSimple 用 Windows PowerShell にリモート アクセスするための証明書がデバイス上で変更されました。 リモート アクセス クライアントを更新するにはどうすればよいですか。
 
 **A:** 新しい証明書を StorSimple デバイス マネージャー サービスからダウンロードできます。その後、ご利用のリモート アクセス クライアントの証明書ストアに新しい証明書をインストールしてください。 手順については、次をご覧ください。
 
 * [Import-Certificate コマンドレット](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**Q:**  StorSimple デバイス マネージャー サービスのセキュリティが侵害されてもデータは保護されますか。
+**質問:** StorSimple デバイス マネージャー サービスのセキュリティが侵害されてもデータは保護されますか。
 
 **A:** サービス構成データを Web ブラウザーで表示する場合、ご利用の公開キーで常に暗号化されます。 サービスには秘密キーへのアクセスがないため、データを表示することはできません。 StorSimple デバイス マネージャー サービスが侵害されても、StorSimple デバイス マネージャー サービスに格納されたキーは存在しないため、影響はありません。
 
-**Q:**  だれかがデータ暗号化証明書にアクセスできた場合、データが漏えいする可能性はありますか。
+**質問:** だれかがデータ暗号化証明書にアクセスできた場合、データが漏えいする可能性はありますか。
 
 **A:** Microsoft Azure では、お客様のデータ暗号化キー (.pfx ファイル) が暗号化された形式で格納されます。 .pfx ファイルは暗号化されており、StorSimple サービスには .pfx ファイルの暗号化を解除するためのサービス データ暗号化キーがないため、.pfx ファイルにアクセスできても、機密データが漏えいすることはありません。
 
-**Q:**  政府機関がマイクロソフトに対して私のデータを要求した場合はどうなりますか。
+**質問:** 政府機関がマイクロソフトに対して私のデータを要求した場合はどうなりますか。
 
 **A:** サービス上のすべてのデータは暗号化されており、秘密キーはデバイスに保管されているため、政府機関はお客様に対してデータを要求する必要があります。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple デバイスをデプロイする](storsimple-8000-deployment-walkthrough-u2.md)
 

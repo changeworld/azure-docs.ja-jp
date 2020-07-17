@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/03/2019
 ms.author: aschhab
 ms.openlocfilehash: 85d24a9e7c753ec5dba80c4f259dd3fb51d9c14b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58909987"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60402787"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure Service Bus での AMQP エラー
 この記事では、Azure Service Bus で AMQP を使用しているときに受け取るエラーの一部を示します。 それらはすべてサービスの標準的な動作です。 接続/リンクで送信/受信の呼び出しを行うことで、それらを回避できます。接続/リンクが自動的に再作成されます。
@@ -45,7 +45,7 @@ Error{condition=amqp:connection:forced, description='The connection was inactive
 Error{condition=amqp:connection:forced, description='The connection was inactive for more than the allowed 60000 milliseconds and is closed by container 'LinkTracker'. TrackingId:0000000000000000000000000000000000000_G21, SystemTracker:gateway5, Timestamp:2019-03-06T18:41:51', info=null}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AMQP と Service Bus の詳細については、次のリンクを参照してください。
 

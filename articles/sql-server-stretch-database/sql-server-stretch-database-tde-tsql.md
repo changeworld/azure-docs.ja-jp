@@ -1,5 +1,5 @@
 ---
-title: Stretch Database TSQL に対する Transparent Data Encryption の有効化 - Azure | Microsoft Docs
+title: Stretch Database に対する Transparent Data Encryption の有効化 (T-SQL)
 description: Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -13,12 +13,13 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002869"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74033952"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Azure (Transact-SQL) での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ ms.locfileid: "66002869"
 
 Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
 
-TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、Azure サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。 TDE の一般的な説明については、「 [透過的なデータ暗号化 (TDE)]」を参照してください。
+TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、Azure サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 TDE の一般的な説明については、「[透過的なデータ暗号化 (TDE)]」を参照してください。
 
 ## <a name="enabling-encryption"></a>暗号化の有効化
 Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を有効にするには、次の操作を行います。

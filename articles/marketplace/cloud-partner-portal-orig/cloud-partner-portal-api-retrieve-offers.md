@@ -1,38 +1,33 @@
 ---
-title: オファーの取得 API | Microsoft Docs
+title: オファーの取得 API | Azure Marketplace
 description: この API は、パブリッシャーの名前空間に含まれるオファーを要約した一覧を取得します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: 0413bc71c113bf1eef9f761dbeed4c0d0afe735c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591552"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255959"
 ---
 <a name="retrieve-offers"></a>オファーを取得する
 ===============
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更が導入されています。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 パブリッシャーの名前空間に含まれるオファーを要約した一覧を取得します。
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-| **Name**         |  **説明**                         |  **データの種類** |
+| **名前**         |  **説明**                         |  **データの種類** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | パブリッシャー ID。たとえば、`contoso` |   String    |
 |  api-version     | API の最新バージョン                    |    Date        |
@@ -42,10 +37,10 @@ ms.locfileid: "56591552"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**        |         **値**       |
+|  **名前**        |         **Value**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
-|  Authorization   | `Bearer YOUR_TOKEN`     |
+|  承認   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
 
@@ -73,14 +68,14 @@ ms.locfileid: "56591552"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **Name**       |       **説明**                                                                                                  |
+|  **名前**       |       **説明**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | オファーの種類を示します                                                                                           |
 |  publisherId    | パブリッシャーを一意に示す ID                                                                      |
 |  status         | オファーの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                         |
 |  id             | パブリッシャーの名前空間内のオファーを一意に示す GUID。                                                    |
 |  version        | オファーの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。 |
-|  定義     | ワークロードの実際の定義の要約ビューが含まれます。 詳細な定義を取得するには、[Retrieve specific offer](./cloud-partner-portal-api-retrieve-specific-offer.md) API を使用します。 |
+|  definition     | ワークロードの実際の定義の要約ビューが含まれます。 詳細な定義を取得するには、[Retrieve specific offer](./cloud-partner-portal-api-retrieve-specific-offer.md) API を使用します。 |
 |  changedTime    | オファーが最後に変更されたときの UTC 日時                                                                              |
 |  |  |
 
@@ -98,7 +93,7 @@ ms.locfileid: "56591552"
 
 ### <a name="offer-status"></a>オファーの状態
 
-|  **Name**                    | **説明**                                  |
+|  **名前**                    | **説明**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | オファーは発行されていません。                  |
 |  NotStarted                  | 新しいオファーですが、開始されていません。                 |

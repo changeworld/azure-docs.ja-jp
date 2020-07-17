@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777093"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68335931"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure バックエンド接続機能の相互運用性: テスト構成の詳細
 
@@ -23,11 +23,11 @@ ms.locfileid: "57777093"
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet ピアリングを使用したスポーク VNet 接続
 
-次の図は、スポーク仮想ネットワーク (VNet) の Azure Virtual Network ピアリングの詳細を示したものです。 2 つの VNet 間のピアリングを設定する方法については、[VNet ピアリングの管理][VNet-Config]に関する記事をご覧ください。 スポーク VNet で、ハブ VNet に接続されたゲートウェイを使用する場合は､**[リモート ゲートウェイを使用する]** を選択します。
+次の図は、スポーク仮想ネットワーク (VNet) の Azure Virtual Network ピアリングの詳細を示したものです。 2 つの VNet 間のピアリングを設定する方法については、[VNet ピアリングの管理][VNet-Config]に関する記事をご覧ください。 スポーク VNet で、ハブ VNet に接続されたゲートウェイを使用する場合は､ **[リモート ゲートウェイを使用する]** を選択します。
 
 [![1]][1]
 
-次の図は､ハブ VNet の VNet ピアリングの詳細を示したものです。 スポーク VNet でハブ VNet のゲートウェイを使用する場合は､**[リモート ゲートウェイを使用する]** を選択します。
+次の図は､ハブ VNet の VNet ピアリングの詳細を示したものです。 ハブ VNet で、スポーク VNet でのハブのゲートウェイの使用を許可するには、 **[ゲートウェイ転送を許可する]** を選択します。
 
 [![2]][2]
 
@@ -166,7 +166,7 @@ ExpressRoute 1 では､ハブ VNet とオンプレミスの Location 1 の両�
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
-ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet の間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリング上のサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
+ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet の間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリングでのサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
 
 Microsoft ピアリングを使用するサイト間 VPN 構成に伴う主な制限はスループットです。 IPsec トンネル上では、VPN ゲートウェイの容量によりスループットが制限されます。 VPN ゲートウェイのスループットは、ExpressRoute のスループットよりも低くなります。 このシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のすべてのトラフィックにはプライベート ピアリングを使用すると、ExpressRoute の帯域幅使用率の最適化に役立ちます。
 
@@ -190,13 +190,13 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューについて学習する。
+テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューを確認します。
 
-テスト セットアップの[データ プレーン分析][Data-Analysis]および Azure ネットワーク監視機能のビューについて見てみましょう。
+テスト セットアップの[データ プレーン分析][Data-Analysis]と Azure ネットワーク監視機能のビューを確認します。
 
-次のテーマについては、「[ExpressRoute の FAQ][ExR-FAQ]」を参照してください。
+「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
 -   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
 -   ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数について学習する。
 -   ExpressRoute のその他のスケールの制限について学習する。

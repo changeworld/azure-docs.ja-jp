@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Boxcryptor の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Boxcryptor の統合 | Microsoft Docs'
 description: Azure Active Directory と Boxcryptor の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: c46aa523-b58c-4a95-a800-db2e5e01c542
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 1017eb02783e2d0d970804fc1a20fd2bdb525637
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987970"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73158792"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル:Azure Active Directory と Boxcryptor の統合
+# <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル: Azure Active Directory と Boxcryptor の統合
 
 このチュートリアルでは、Boxcryptor と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Boxcryptor と Azure AD の統合には、次の利点があります。

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 06853edd-e8da-4ad2-a4e6-5555d592cee5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a14b251df0bedbcd27ab4e9bf1abe9a27ad50d6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f497955b698d7ca390b40686e94d553a7cd5c948
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950918"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
 
@@ -121,6 +122,8 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
 2. **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[Settings]\(設定\)** を選択します。
 
+    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure0.png)
+
     ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. [Single Sign-On (SSO) Provider]\(シングル サインオン (SSO) プロバイダー\) で **[Microsoft]** を選択します。
@@ -194,7 +197,9 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として ClickUp Productivity Platform テナントにサインオンします。
 
-2. **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[Users]\(ユーザー\)** を選択します。
+2. **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[People]\(ユーザー\)** を選択します。
+   
+    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/user1.png)
 

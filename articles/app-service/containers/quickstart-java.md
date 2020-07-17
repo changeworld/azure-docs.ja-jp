@@ -1,36 +1,29 @@
 ---
-title: Linux での Java Web アプリの作成 - Azure App Service
-description: このクイック スタートでは、Azure App Service on Linux で、初めての Java の Hello World を数分でデプロイします。
+title: クイック スタート:Linux Java アプリを作成する
+description: App Service で Linux コンテナーに初めての Java アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 keywords: Azure, App Service, Web アプリ, Linux, Java, Maven, クイック スタート
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 7c6d5034335a455d24b1f22919b672e2ead2810d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510855"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732900"
 ---
-# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>クイック スタート:App Service on Linux で Java アプリを作成する
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure App Service 用の Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルを Linux オペレーティング システムにデプロイする方法を示します。
+
 > [!NOTE]
 >
-> IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)で類似するドキュメントを確認してください。
+> IntelliJ、Eclipse、VS Code のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイックスタート](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)、[Azure Toolkit for Eclipse のクイックスタート](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)、または [VS Code のクイックスタート](https://code.visualstudio.com/docs/java/java-webapp)で類似するドキュメントを確認してください。
 >
-![Azure で実行されるサンプル アプリ](media/quickstart-java/java-hello-world-in-browser.png)
+![Azure App Service で実行されているサンプル アプリ](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,71 +34,79 @@ ms.locfileid: "65510855"
 Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しいアプリを作成します。
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+```
+次に、作業ディレクトリをプロジェクト フォルダーに変更します。
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Maven プラグインを構成する
 
-Maven からデプロイするには、Cloud Shell でコード エディターを使用して `helloworld` ディレクトリ内のプロジェクト `pom.xml` ファイルを開きます。 
+Azure App Service へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
 
-```bash
-code pom.xml
+```azurecli
+az login
 ```
 
-次に、`pom.xml` ファイルの `<build>` 要素内に次のプラグイン定義を追加します。
+次に、デプロイを構成し、コマンド プロンプトで maven コマンドを実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、**y** キーを押して構成を完了します。 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
+```
+サンプル プロセスは次のようになります。
 
-```xml
-<plugins>
-    <!--*************************************************-->
-    <!-- Deploy to Tomcat in App Service Linux           -->
-    <!--*************************************************-->
-    <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.4</version>
-        <configuration>
-            <!-- Specify v2 schema -->
-            <schemaVersion>v2</schemaVersion>
-            <!-- App information -->
-            <subscriptionId>${SUBSCRIPTION_ID}</subscriptionId>
-            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-            <appName>${WEBAPP_NAME}</appName>
-            <region>${REGION}</region>
-   
-            <!-- Java Runtime Stack for App on Linux-->
-            <runtime>
-                <os>linux</os>
-                <javaVersion>jre8</javaVersion>
-                <webContainer>tomcat 8.5</webContainer>
-            </runtime> 
-            <deployment>
-                <resources>
-                    <resource>
-                        <directory>${project.basedir}/target</directory>
-                        <includes>
-                            <include>*.war</include>
-                        </includes>
-                    </resource>
-                </resources>
-            </deployment>
-        </configuration>
-    </plugin>
-</plugins>
-```    
+```cmd
+~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< example.demo:helloworld >-----------------------
+[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
+[WARNING] The plugin may not work if you change the os of an existing webapp.
+Define value for OS(Default: Linux):
+1. linux [*]
+2. windows
+3. docker
+Enter index to use:
+Define value for javaVersion(Default: jre8):
+1. Java 11
+2. Java 8 [*]
+Enter index to use:
+Define value for runtimeStack(Default: TOMCAT 8.5):
+1. TOMCAT 9.0
+2. TOMCAT 8.5 [*]
+Enter index to use:
+Please confirm webapp properties
+AppName : helloworld-1558400876966
+ResourceGroup : helloworld-1558400876966-rg
+Region : westeurope
+PricingTier : Premium_P1V2
+OS : Linux
+RuntimeStack : TOMCAT 8.5-jre8
+Deploy to slot : false
+Confirm (Y/N)? : Y
+```
 
-
-> [!NOTE] 
+> [!NOTE]
 > この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
 
+もう一度 `pom.xml` に移動してプラグイン構成が更新されていることを確認します。必要に応じて、pom ファイルで App Service の他の構成を直接変更できます。その一般的なものを次に示します。
 
-プラグイン構成で、次のプレースホルダーを更新します。
+ プロパティ | 必須 | 説明 | Version
+---|---|---|---
+`<schemaVersion>` | false | 構成スキーマのバージョンを指定します。 サポートされる値は `v1`、`v2` です。 | 1.5.2
+`<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
+`<appName>` | true | Web アプリの名前。 | 0.1.0 以降
+`<region>` | true | Web アプリがホストされるリージョンを指定します。既定値は **westeurope** です。 すべての有効なリージョンについては、「[サポートされているリージョン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)」を参照してください。 | 0.1.0 以降
+`<pricingTier>` | false | Web アプリの価格レベル。 既定値は **P1V2** です。| 0.1.0 以降
+`<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
+`<deployment>` | true | デプロイ構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
 
-| プレースホルダー | 説明 |
-| ----------- | ----------- |
-| `SUBSCRIPTION_ID` | アプリをデプロイするサブスクリプションの一意の ID。 既定のサブスクリプションの ID は、Cloud Shell または CLI から `az account show` コマンドを使用して調べることができます。 使用可能なすべてのサブスクリプションを調べるには、`az account list` コマンドを使用します。|
-| `RESOURCEGROUP_NAME` | その中にアプリを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すれば、そのアプリに関連付けられているすべてのリソースが削除されます。 この値を一意の新しいリソース グループ名 (たとえば、*TestResources*) で更新します。 このリソース グループ名を使用して、後のセクションですべての Azure リソースをクリーンアップします。 |
-| `WEBAPP_NAME` | Azure にデプロイされると、このアプリ名はアプリのホスト名の一部になります (WEBAPP_NAME.azurewebsites.net)。 この値を、Java アプリをホストする新しい App Service アプリの一意の名前 (たとえば、*contoso*) で更新します。 |
-| `REGION` | アプリがホストされている Azure リージョン (たとえば、`westus2`)。 リージョンの一覧は、`az account list-locations` コマンドを使用して Cloud Shell または CLI から取得できます。 |
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
@@ -117,16 +118,33 @@ mvn package azure-webapp:deploy
 
 デプロイが完了したら、Web ブラウザーで次の URL を使用して、デプロイされたアプリケーションを参照します (たとえば、`http://<webapp>.azurewebsites.net`)。 
 
-![Azure で実行されるサンプル アプリ](media/quickstart-java/java-hello-world-in-browser-curl.png)
+![Azure App Service で実行されているサンプル アプリ](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 **お疲れさまでした。** App Service on Linux に初めての Java アプリをデプロイしました。
 
-[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
 
-## <a name="next-steps"></a>次の手順
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+前の手順では、リソース グループ内に Azure リソースを作成しました。 今後これらのリソースが必要になることが予想されない場合は、ポータルからリソース グループを削除するか、Cloud Shell で次のコマンドを実行します。
+
+```azurecli-interactive
+az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
+```
+
+このコマンドの実行には、少し時間がかかる場合があります。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Java Enterprise アプリと PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
+> [Java を使用して Azure SQL データベースに接続する](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure DB for MySQL に接続する](/azure/mysql/connect-java)
+
+> [!div class="nextstepaction"]
+> [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
 > [Java アプリを構成する](configure-custom-container.md)
@@ -136,3 +154,6 @@ mvn package azure-webapp:deploy
 
 > [!div class="nextstepaction"]
 > [その他の Java 開発者向けの Azure リソース](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [Azure 用の Maven プラグインの詳細はこちら](https://github.com/microsoft/azure-maven-plugins)

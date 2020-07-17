@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files に登録する | Microsoft Docs
-description: Azure NetApp Files サービスに加入するためのリクエストを送信する方法について説明します。
+description: Azure NetApp Files に使用して使用する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,25 +12,39 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2018
+ms.date: 05/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 86c016a5dbcc0d78378e59bc6b3606ddf2c54f64
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122337"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234111"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
-Azure NetApp Files を使用する前には、Azure NetApp Files サービスに加入するためのリクエストを送信する必要があります。  加入後、サービスを使用するための登録を行います。
 
-## <a name="request-to-enroll-in-the-service"></a>サービスに加入するためのリクエスト
-パブリック プレビュー プログラムに参加していて、Microsoft.NetApp リソース プロバイダーにアクセスするためのホワイトリストに登録されている必要があります。 パブリック プレビュー プログラムへの参加の詳細については、[Azure NetApp Files パブリック プレビューのサインアップ ページ](https://aka.ms/nfspublicpreview)をご覧ください。 
+> [!IMPORTANT] 
+> Azure NetApp Files リソース プロバイダーを登録する前に、Azure NetApp Files チームから、サービスへのアクセスが付与されていることを確認できるメールが必ず送信されます。 
 
+この記事では、Azure NetApp Files に登録してサービスの使用を開始する方法について説明します。
 
-## <a name="register-the-netapp-resource-provider"></a>NetApp リソース プロバイダーの登録
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
 
-サービスを使用するには、Azure NetApp Files 用に Azure リソース プロバイダーを登録する必要があります。 
+1. [Azure NetApp Files の順番待ち送信ページ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)から、Azure NetApp Files サービスにアクセスするための順番待ちリクエストを送信します。 
+
+    順番待ちにサインアップしても、すぐにサービスにアクセスできるとは限りません。 
+
+2. Azure NetApp Files チームからの正式な確認メールを待ってから他のタスクを続けてください。 
+
+## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>NetApp リソース プロバイダーを登録する
+
+サービスを使用するには、Azure NetApp Files 用に Azure リソース プロバイダーを登録する必要があります。
+
+> [!NOTE] 
+> サービスのアクセスが許可されていなくても、NetApp リソース プロバイダーは正常に登録できます。 ただし、アクセスの承認がないと、NetApp アカウントまたはその他の Azure NetApp Files リソースを作成する Azure portal または API 要求は、次のエラーで拒否されます。  
+>
+> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
+
 
 1. Azure portal で、右上隅にある Azure Cloud Shell アイコンをクリックします。
 
@@ -46,10 +60,12 @@ Azure NetApp Files を使用する前には、Azure NetApp Files サービスに
 
    コマンドの出力は次のようになります。
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/publicPreviewADC",  
-       "name": "Microsoft.NetApp/publicPreviewADC" 
+       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+       "name": "Microsoft.NetApp/ANFGA" 
        
    `<SubID>` がお客様のサブスクリプション ID です。
+
+    機能名 `Microsoft.NetApp/ANFGA` が表示されない場合は、サービスにアクセスできません。 この手順で止めてください。 続行する前に、「[サービスにアクセスするための順番待ちリクエストを送信する](#waitlist)」の指示に従ってください。 
 
 4. Azure Cloud Shell コンソールで次のコマンドを入力して、Azure リソース プロバイダーを登録します。 
     
@@ -71,13 +87,13 @@ Azure NetApp Files を使用する前には、Azure NetApp Files サービスに
 
    `<SubID>` がお客様のサブスクリプション ID です。  `state` パラメーターの値は `Registered` を示しています。
 
-6. Azure portal で、**[サブスクリプション]** ブレードをクリックします。
+6. Azure portal で、 **[サブスクリプション]** ブレードをクリックします。
 7. [サブスクリプション] ブレードで、お客様のサブスクリプション ID をクリックします。 
-8. サブスクリプションの設定で、**[リソース プロバイダー]** をクリックして、Microsoft.NetApp プロバイダーの状態が Registered であることを確認します。 
+8. サブスクリプションの設定で、 **[リソース プロバイダー]** をクリックして、Microsoft.NetApp プロバイダーの状態が Registered であることを確認します。 
 
       ![登録済みの Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ
 
 [NetApp アカウントを作成する](azure-netapp-files-create-netapp-account.md)

@@ -1,6 +1,7 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して PostgreSQL の Azure Database for PostgreSQL へのオンライン移行を実行する | Microsoft Docs
-description: Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
+title: チュートリアル:Azure CLI を介してオンラインで PostgreSQL を Azure Database for PostgreSQL に移行する
+titleSuffix: Azure Database Migration Service
+description: CLI を介して、Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -8,22 +9,23 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 04/11/2020
+ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415699"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113883"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>チュートリアル:Azure CLI を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの PostgreSQL インスタンスから [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを PostgreSQL 9.6 のオンプレミス インスタンスから Azure Database for PostgreSQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
+>
 > * pg_dump ユーティリティを使用してサンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
 > * Azure Database Migration Service を使用して移行プロジェクトを作成する。
@@ -31,7 +33,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 > * 移行を監視する。
 
 > [!NOTE]
-> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 移行プロセス中のデータの盗難を防ぐために、ディスクは暗号化します。
 
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
@@ -42,34 +44,32 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 * [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
 
-    また、オンプレミスの PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、PostgreSQL 9.5.11.5 は Azure Database for PostgreSQL 9.5.11 にのみ移行でき、 バージョン 9.6.7 には移行できません。
+    また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 にのみ移行できますが、Azure Database for PostgreSQL 9.5 には移行できません。
+
+* [Azure Database for PostgreSQL のインスタンスを作成](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)するか、[Azure Database for PostgreSQL - Hyperscale (Citus) サーバーを作成](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)します。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
-    > PostgreSQL バージョン 10 では、現在、バージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。
-
-* [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
-
-    > [!NOTE]
-    > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    >
     > * ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
     > * ストレージ エンドポイント
     > * サービス バス エンドポイント
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-* VNet のネットワーク セキュリティ グループ (NSG) 規則によって Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソース PostgreSQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 です。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* Azure Database for PostgreSQL のサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
+* Azure Database for PostgreSQL のサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * CLI を呼び出すには、次の 2 つの方法があります。
 
-    * Azure Portal の右上隅にある [Cloud Shell] ボタンを選択します。
+  * Azure portal の右上隅にある [Cloud Shell] ボタンを選択します。
 
        ![Azure Portal の [Cloud Shell] ボタン](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
+  * CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
 
        CLI をダウンロードするには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」の記事の手順に従ってください。 この記事には、CLI 2.0 をサポートするプラットフォームも一覧表示されています。
 
@@ -77,9 +77,9 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 * postgresql.config ファイルで論理レプリケーションを有効にし、次のパラメーターを設定します。
 
-    * wal_level = **logical**
-    * max_replication_slots = [スロットの数]、 **5 スロット**に設定することをお勧めします
-    * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、**10 タスク**に設定することをお勧めします
+  * wal_level = **logical**
+  * max_replication_slots = [スロットの数]、**5 スロット**に設定することをお勧めします
+  * max_wal_senders = [同時実行タスク数] - max_wal_senders パラメーターでは同時に実行できるタスクの数を設定します、**10 タスク**に設定することをお勧めします
 
 ## <a name="migrate-the-sample-schema"></a>サンプル スキーマを移行する
 
@@ -100,7 +100,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 2. ターゲット環境に空のデータベース (Azure Database for PostgreSQL) を作成します。
 
-    データベースの接続と作成の詳細については、「[Azure Portal で Azure Database for PostgreSQL サーバーを作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)」の記事を参照してください。
+    データベースの接続および作成方法の詳細については、「[Azure portal で Azure Database for PostgreSQL サーバーを作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)」または「[Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)」を参照してください。
 
 3. スキーマ ダンプ ファイルを復元して作成したターゲット データベースに、スキーマをインポートします。
 
@@ -108,15 +108,14 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    例: 
+    次に例を示します。
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
     ```
 
 4. スキーマに外部キーが含まれている場合、移行の初回の読み込みと継続的同期は失敗します。 PgAdmin または psql で次のスクリプトを実行して、ドロップ外部キー スクリプトを抽出し、同期先 (Azure Database for PostgreSQL) に外部キースクリプトを追加します。
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +140,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     クエリの結果内の外部キー削除 (2 列目) を実行します。
 
@@ -160,7 +159,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 1. dms の同期の拡張機能をインストールします。
    * 次のコマンドを実行して Azure にサインインします。
-       ```
+       ```azurecli
        az login
        ```
 
@@ -168,45 +167,48 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * dms の拡張機能を追加します。
        * 使用可能な拡張機能を一覧表示するには、次のコマンドを実行します。
 
-           ```
+           ```azurecli
            az extension list-available –otable
            ```
 
        * 拡張機能をインストールするには、次のコマンドを実行します。
 
-           ```
+           ```azurecli
            az extension add –n dms-preview
            ```
 
    * dms の拡張機能が正しくインストールされていることを確認するには、次のコマンドを実行します。
 
-       ```
+       ```azurecli
        az extension list -otable
        ```
        次の出力が表示されます。
 
-       ```
+       ```output
        ExtensionType    Name
        ---------------  ------
        whl              dms
        ```
 
+      > [!IMPORTANT]
+      > 拡張機能のバージョンが 0.11.0 より上であることを確認します。
+
    * DMS でサポートされているすべてのコマンドを表示するには、次のコマンドを実行します。
 
-       ```
+       ```azurecli
        az dms -h
        ```
 
    * 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、DMS サービスのインスタンスのプロビジョニングに使用するサブスクリプションを設定します。
 
-        ```
+        ```azurecli
        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
 2. 次のコマンドを実行して、DMS のインスタンスをプロビジョニングします。
 
-   ```
-   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   ```azurecli
+   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
    たとえば、次の設定でサービスを作成するには、下記のコマンドを実行します。
@@ -216,27 +218,27 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * リソース グループ名:PostgresDemo
    * DMS サービス名:PostgresCLI
 
-   ```
-   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
+   ```azurecli
+   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
    DMS サービスのインスタンスを作成するには、約 10 ～ 12 分かかります。
 
 3. DMS エージェントの IP アドレスを特定して Postgres pg_hba.conf ファイルに追加できるようにするには、次のコマンドを実行します。
 
-    ```
+    ```azurecli
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    例: 
+    次に例を示します。
 
-    ```
+    ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     次のアドレスのような結果が表示されます。 
 
-    ```
+    ```output
     [
       "172.16.136.18"
     ]
@@ -254,7 +256,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 5. 次に、以下のコマンドを実行して、PostgreSQL の移行プロジェクトを作成します。
     
-    ```
+    ```azurecli
     az dms project create -l <location> -g <ResourceGroupName> --service-name <yourServiceName> --source-platform PostgreSQL --target-platform AzureDbforPostgreSQL -n <newProjectName>
     ```
 
@@ -267,8 +269,8 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * ソース プラットフォーム:PostgreSQL
    * ターゲット プラットフォーム:AzureDbForPostgreSql
 
-     ```
-     az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
+     ```azurecli
+     az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
      ```
 
 6. 次の手順を使用して PostgreSQL 移行タスクを作成します。
@@ -277,7 +279,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * オプションの完全な一覧を表示するには、次のコマンドを実行します。
 
-       ```
+       ```azurecli
        az dms project task create -h
        ```
 
@@ -285,7 +287,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
        PostgreSQL の接続に対する接続 JSON オブジェクトの形式。
         
-       ```
+       ```json
        {
                    "userName": "user name",    // if this is missing or null, you will be prompted
                    "password": null,           // if this is missing or null (highly recommended) you will
@@ -299,7 +301,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * json オブジェクトを一覧表示するデータベース オプションの json ファイルもあります。 PostgreSQL の場合、データベース オプションの JSON オブジェクトの形式は次のとおりです。
 
-       ```
+       ```json
        [
            {
                "name": "source database",
@@ -311,7 +313,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * メモ帳で json ファイルを作成し、次のコマンドをコピーしてこのファイルに貼り付け、C:\DMS\source.json にこのファイルを保存します。
 
-        ```
+        ```json
        {
                    "userName": "postgres",    
                    "password": null,           
@@ -324,7 +326,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * target.json という別のファイルを作成し、C:\DMS\target.json として保存します。 次のコマンドを含めます。
 
-       ```
+       ```json
        {
                "userName": " dms@builddemotarget",    
                "password": null,           
@@ -336,7 +338,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * 移行するデータベースとしてインベントリを一覧表示する、データベース オプションの json ファイルを作成します。
 
-       ``` 
+       ```json
        [
            {
                "name": "dvdrental",
@@ -347,7 +349,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * 次のコマンドを実行します。このコマンドは、接続元、接続先、および DB オプションの json ファイルを取り込みます。
 
-       ``` 
+       ```azurecli
        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
        ```
 
@@ -355,19 +357,19 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 7. タスクの進行状況を表示するには、次のコマンドを実行します。
 
-   ```
+   ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
-   または
+   OR
 
-    ```
+    ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
 
 8. 展開の出力から migrationState をクエリすることもできます。
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
@@ -375,7 +377,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 出力ファイルには、移行の進行状況を示すいくつかのパラメーターがあります。 たとえば、次の出力ファイルを参照してください。
 
-    ```
+  ```output
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -450,7 +452,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>一括移行タスク
 
@@ -470,19 +472,19 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 1. 次のコマンドを使用して、データベースの一括移行タスクを実行します。
 
-    ```
+    ```azurecli
     az dms project task cutover -h
     ```
 
-    例: 
+    次に例を示します。
 
-    ```
-    az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --database-name Inventory
+    ```azurecli
+    az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
     ```
 
 2. 一括移行の進行状況を監視するには、次のコマンドを実行します。
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
@@ -497,32 +499,32 @@ DMS タスク、プロジェクト、またはサービスをキャンセルま�
 
 1. 実行中のタスクをキャンセルするには、次のコマンドを使用します。
 
-    ```
+    ```azurecli
     az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
      ```
 
 2. 実行中のタスクを削除するには、次のコマンドを使用します。
-    ```
+    ```azurecli
     az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
 3. 実行中のプロジェクトをキャンセルするには、次のコマンドを使用します。
-     ```
+     ```azurecli
     az dms project task cancel -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
      ```
 
 4. 実行中のプロジェクトを削除するには、次のコマンドを使用します。
-    ```
+    ```azurecli
     az dms project task delete -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
     ```
 
 5. DMS サービスを削除するには、次のコマンドを使用します。
 
-     ```
+     ```azurecli
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Database for PostgreSQL へのオンライン移行の実行時の既知の問題と制限事項については、[Azure Database for PostgreSQL のオンライン移行に伴う既知の問題と回避策](known-issues-azure-postgresql-online.md)に関する記事を参照してください。
 * Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。

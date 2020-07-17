@@ -1,26 +1,27 @@
 ---
-title: Azure Speech Services による音声翻訳
-titlesuffix: Azure Cognitive Services
-description: Speech Services を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。
+title: Speech Service による音声翻訳
+titleSuffix: Azure Cognitive Services
+description: Speech Service を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f51288da6af3580ba7592950cde4f17d7adad529
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052618"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
-Azure Speech Services の音声翻訳では、オーディオ ストリームをリアルタイムに処理し、複数言語の音声間翻訳や音声テキスト翻訳を実行することができます。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+Speech Service の音声翻訳では、オーディオ ストリームをリアルタイムに処理し、複数言語の音声間翻訳や音声テキスト翻訳を実行することができます。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
 
 Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラル機械翻訳 (NMT) という 2 つのアプローチによって強化されています。 SMT では、高度な統計分析を使用して、いくつかの単語の文脈から考えられる最善の翻訳が推定されます。 NMT では、ニューラル ネットワークを使用して、文全体のコンテキストを踏まえた、正確で自然な翻訳が提供されます。
 
@@ -30,11 +31,11 @@ Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラ
 
 Speech SDK および REST API を通じて使用可能な機能を以下に示します。
 
-| ユース ケース | SDK | REST |
+| 使用事例 | SDK | REST |
 |----------|-----|------|
-| 認識結果を使用した音声テキスト翻訳。 | はい | いいえ  |
-| 音声間翻訳。 | はい | いいえ  |
-| 中間認識と翻訳結果。 | はい | いいえ  |
+| 認識結果を使用した音声テキスト翻訳。 | はい | いいえ |
+| 音声間翻訳。 | はい | いいえ |
+| 中間認識と翻訳結果。 | はい | いいえ |
 
 ## <a name="get-started-with-speech-translation"></a>音声翻訳を使ってみる
 
@@ -42,11 +43,11 @@ Speech SDK および REST API を通じて使用可能な機能を以下に示�
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](quickstart-translate-speech-dotnetcore-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、.NET Framework](quickstart-translate-speech-dotnetframework-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、UWP](quickstart-translate-speech-uwp.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-translate-speech-cpp-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [Java](quickstart-translate-speech-java-jre.md) |  Windows | [Browse](https://aka.ms/csspeech/javaref) |
+| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [[参照]](https://aka.ms/csspeech/cppref)|
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [[参照]](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -56,12 +57,9 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="migration-guides"></a>移行ガイド
 
-> [!WARNING]
-> Translator Speech は、2019 年 10 月 15 日に使用停止になる予定です。
+アプリケーション、ツール、または製品で [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
 
-アプリケーション、ツール、または製品で Translator Speech をご使用の方に向けて、Speech Services への移行に役立つガイドを作成しました。
-
-* [Translator Speech API から Speech Services に移行する](how-to-migrate-from-translator-speech-api.md)
+* [Translator Speech API から Speech Service に移行する](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
@@ -71,7 +69,7 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 * [REST API: テキスト読み上げ](rest-text-to-speech.md)
 * [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 * [Speech SDK を取得する](speech-sdk.md)

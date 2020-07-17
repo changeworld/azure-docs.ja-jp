@@ -1,25 +1,19 @@
 ---
-title: Azure で Windows VM を監視する | Microsoft Docs
-description: Azure での Windows 仮想マシンの監視オプションについて説明します。
-services: virtual-machines-windows
-documentationcenter: ''
+title: VM を監視する
+description: Azure での仮想マシンの監視オプションについて説明します。
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 05ebb362a8d6de78605493569ce313c044373104
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 58546c84daa28a76de0429bf6c93bd421011b513
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790800"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81865630"
 ---
 # <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure で仮想マシンを監視する方法
 

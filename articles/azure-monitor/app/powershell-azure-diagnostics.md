@@ -1,29 +1,18 @@
 ---
 title: Azure での PowerShell を使用した Application Insights の設定 | Microsoft Docs
-description: Application Insights にパイプするための Azure Diagnostics の構成を自動化します。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+description: Application Insights にデータをパイプするための Azure Diagnostics の構成を自動化します。
 ms.topic: conceptual
-ms.date: 11/17/2015
-ms.author: mbullwin
-ms.openlocfilehash: 3c0decaa89b4ecc503157a32fcb1e5b4d249ccfb
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 08/06/2019
+ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77669805"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>PowerShell を使用して Azure Cloud Services 向けの Application Insights を設定する
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) に [Azure 診断を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
+[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) に [Azure Diagnostics を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 
 ## <a name="azure-template"></a>Azure テンプレート
 Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。
@@ -49,7 +38,7 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 * `myWebAppName` - Web アプリの ID
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Cloud Service のデプロイの一環としての診断拡張機能の有効化
-`New-AzureDeployment` コマンドレットの `ExtensionConfiguration` パラメーターは、診断構成の配列を受け取ります。 この情報は、 `New-AzureServiceDiagnosticsExtensionConfig` コマンドレットを使用して作成できます。 例: 
+`New-AzureDeployment` コマンドレットの `ExtensionConfiguration` パラメーターは、診断構成の配列を受け取ります。 この情報は、 `New-AzureServiceDiagnosticsExtensionConfig` コマンドレットを使用して作成できます。 次に例を示します。
 
 ```ps
 
@@ -136,8 +125,8 @@ Role パラメーターを指定しないで `Set-AzureServiceDiagnosticsExtensi
 ```
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Application Insights で Azure Cloud Services アプリを監視する](../../azure-monitor/app/cloudservices.md)
-* [Azure 診断を Application Insights に送信する](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+* [Azure Diagnostics を Application Insights に送信する](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [アラートの構成を自動化する](powershell-alerts.md)
 

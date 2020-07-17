@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services コミュニティの概要 | Microsoft Docs
+title: Azure Media Services v3 コミュニティ概要
 description: この Azure Media Services コミュニティに関するページでは、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710170"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828501"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 コミュニティ  
 
 この Azure Media Services コミュニティに関するページでは、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法について説明します。
 
@@ -40,25 +40,12 @@ ms.locfileid: "64710170"
 
 現在、Media Services チームの主要なコミュニティ フォーラムは MSDN です。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 また同チームでは、Stack Overflow に "azure-media-services" タグで投稿された質問をモニタリングしています。
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>チームへのお問い合わせ
-
-Azure Media Services の主要なサポート メール アドレスは **amshelp\@microsoft.com** です。
-
-次の表は、機能のサブチームの電子メール アドレス一覧です。
-
-| 機能 | Email |
-| --- | --- |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure Media Explorer |amse@microsoft.com |
-| ワークフロー デザイナー |mepd@microsoft.com |
-| ファイル ストリーミングとパッケージング |amslived@microsoft.com |
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Media Services の概要](media-services-overview.md)

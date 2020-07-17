@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784842"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729160"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub の価格情報
 
@@ -23,10 +26,10 @@ ms.locfileid: "59784842"
 
 ## <a name="charges-per-operation"></a>操作ごとの料金
 
-| Operation | 課金情報 | 
+| 操作 | 課金情報 | 
 | --------- | ------------------- |
 | ID レジストリの操作 <br/> (作成、取得、一覧表示、更新、削除) | 課金されません。 |
-| デバイスからクラウドへのメッセージ | 正常に送信されたメッセージは、IoT Hub に入った時点で 4 KB のチャンク単位で課金されます  (たとえば、6 KB のメッセージは 2 メッセージとして課金されます)。 |
+| デバイスからクラウドへのメッセージ | 正常に送信されたメッセージは、IoT Hub に入った時点で 4 KB のチャンク単位で課金されます (たとえば、6 KB のメッセージは 2 メッセージとして課金されます)。 |
 | クラウドからデバイスへのメッセージ | 正常に送信されたメッセージは 4 KB のチャンク単位で課金されます (たとえば、6 KB のメッセージは 2 メッセージとして課金されます)。 |
 | ファイルのアップロード | Azure ストレージへのファイル転送は、IoT Hub では課金されません。 ファイル転送の開始と完了のメッセージは、従量課金メッセージとして 4 KB 単位で課金されます。 たとえば、10 MB のファイルを転送するには、Azure Storage コストのほかに 2 メッセージとして課金されます。 |
 | ダイレクト メソッド | 成功したメソッド要求は 4 KB のチャンク単位で課金され、応答は追加メッセージとして 4 KB のチャンク単位で課金されます。 デバイスの接続解除要求は、メッセージとして 4 KB のチャンク単位で課金されます。 たとえば、4 KB の本文があり、デバイスからは本文のない応答が返されるメソッドの場合、2 メッセージとして課金されます。 6 KB の本文があり、デバイスから 1 KB の応答が返されるメソッドの場合、要求の 2 メッセージ分と応答の 1 メッセージ分課金されます。 |

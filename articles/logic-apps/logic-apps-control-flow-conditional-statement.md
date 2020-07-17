@@ -1,20 +1,17 @@
 ---
-title: 条件付きステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+title: 条件付きステートメントをワークフローに追加する
 description: Azure Logic Apps のワークフロー内のアクションを制御する条件を作成する方法です
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230337"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74793255"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
@@ -39,13 +36,13 @@ ms.locfileid: "50230337"
 
 1. 必要な場所に条件を追加します。 
 
-   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。 例: 
+   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。 次に例を示します。
 
    ![ステップの間にアクションを追加する](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
    ワークフローの末尾に条件を追加するときは、ロジック アプリの一番下で **[新しいステップ]** > **[アクションの追加]** を選択します。
 
-1. 検索ボックスに、フィルターとして「条件」と入力します。 アクション **[条件 - 制御]** を選択します
+1. 検索ボックスに、フィルターとして「条件」と入力します。 このアクションを選択: **[条件] - (コントロール)**
 
    ![条件を追加する](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
@@ -62,24 +59,24 @@ ms.locfileid: "50230337"
    この例では、 **[次の値を含む]** を選択します。 
 
    1. 右のボックスに、条件として値またはフィールドを指定します。 
-   この例では、**Microsoft** の文字列を指定します。
+   この例では、次の文字列を指定します。**Microsoft**
 
    完成した条件を次に示します。
 
    ![完成した条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   条件に別の行を追加するには、**[追加]** > **[行の追加]** を選択します。 
-   サブ条件のグループを追加するには、**[追加]** > **[グループの追加]** を選択します。 
-   既存の行をグループ化するには、グループ化する行のチェック ボックスをオンにし、いずれかの行の省略記号 [...] ボタンを選択して、**[Make group]\(グループにする\)** を選択します。
+   条件に別の行を追加するには、 **[追加]**  >  **[行の追加]** を選択します。 
+   サブ条件のグループを追加するには、 **[追加]**  >  **[グループの追加]** を選択します。 
+   既存の行をグループ化するには、グループ化する行のチェック ボックスをオンにし、いずれかの行の省略記号 [...] ボタンを選択して、 **[Make group]\(グループにする\)** を選択します。
 
-1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例: 
+1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 次に例を示します。
 
    ![[If true]\(true の場合\) パスと [If false]\(false の場合\) パスを使用した条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
    > 既存のアクションを **[If true]\(true の場合\)** パスと **[If false]\(false の場合\)** パスにドラッグできます。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 これで、このロジック アプリは、RSS フィードの新しい項目が条件を満たす場合のみメールを送信します。
 
@@ -116,7 +113,7 @@ ms.locfileid: "50230337"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [ステップを実行して繰り返す (ループ)](../logic-apps/logic-apps-control-flow-loops.md)

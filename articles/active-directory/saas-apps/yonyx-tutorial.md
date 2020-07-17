@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Yonyx Interactive Guides の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Yonyx Interactive Guides の統合 | Microsoft Docs'
 description: Azure Active Directory と Yonyx Interactive Guides の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 0cc94141d683f626d0654e2067135569710de330
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b2a22beb1c88e30ce0c88a0f57ec71bbdc45ece8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896034"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086442"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>チュートリアル:Azure Active Directory と Yonyx Interactive Guides の統合
+# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>チュートリアル: Azure Active Directory と Yonyx Interactive Guides の統合
 
 このチュートリアルでは、Yonyx Interactive Guides と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Yonyx Interactive Guides と Azure AD の統合には、次の利点があります。

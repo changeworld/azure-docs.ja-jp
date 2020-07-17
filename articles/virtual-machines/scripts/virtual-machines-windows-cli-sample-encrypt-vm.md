@@ -1,11 +1,10 @@
 ---
-title: Azure CLI のサンプル スクリプト - Windows VM の暗号化 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - Windows VM の暗号化
 description: Azure CLI のサンプル スクリプト - Windows VM の暗号化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: bfa6eb8264bf64ad63542640b71d5abe13c7bfb5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 857bddaad32ea98635f5fbd2f8202975fb033b70
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732602"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459442"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Azure における Windows 仮想マシンの暗号化
 
@@ -46,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、Azure Key Vault、サービス プリンシパル、仮想マシン、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | セキュリティで保護されたデータ (暗号化キーなど) を格納する Azure Key Vault を作成します。 |
@@ -58,7 +57,7 @@ az group delete --name myResourceGroup
 | [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | VM の暗号化処理の状態を表示します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

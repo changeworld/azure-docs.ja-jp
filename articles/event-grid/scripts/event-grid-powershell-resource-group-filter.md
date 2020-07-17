@@ -1,22 +1,22 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - リソース グループのサブスクライブとリソースでのフィルタリング | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - リソース グループのサブスクライブとリソースでのフィルタリング
+title: Azure PowerShell - リソース グループのサブスクライブ
+description: この記事では、リソース グループの Event Grid イベントをサブスクライブして、特定のリソースをフィルターで抽出する方法を示したサンプル Azure PowerShell スクリプトを紹介しています。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: 069762659560d1eb60ecf28267ecfa0e80a7f6e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 5d41bfec5978d1baf38eaf1608f50375170d9929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117118"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76720607"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>PowerShell を使用したリソース グループのイベントのサブスクライブとリソースのフィルタリング
 
@@ -46,7 +46,7 @@ ms.locfileid: "66117118"
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid のサブスクリプションを作成する。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * マネージド アプリケーションの概要については、「[Azure マネージド アプリケーションの概要](../overview.md)」を参照してください。
 * PowerShell について詳しくは、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/get-started-azureps)をご覧ください。

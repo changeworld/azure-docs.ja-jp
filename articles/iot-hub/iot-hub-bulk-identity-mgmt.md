@@ -1,32 +1,34 @@
 ---
 title: Azure IoT Hub デバイス ID のインポートとエクスポート | Microsoft Docs
-description: Azure IoT service SDK を使用して ID レジストリに対して一括操作を実行し、デバイス ID をインポートおよびエクスポートする方法。 インポート操作を実行すると、デバイス ID を一括で作成、更新、および削除できます。
+description: Azure IoT service SDK を使用して ID ジストリに対して一括操作を実行し、デバイス ID のインポートとエクスポートを行う方法について説明します。 インポート操作を実行すると、デバイス ID を一括で作成、更新、および削除できます。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/03/2017
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049974"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371581"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 
-各 IoT ハブには、デバイスごとのリソースをサービス内に作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。
+各 IoT ハブには、デバイスごとのリソースをサービス内に作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。 実際に動作する C# のサンプルを見て、ハブを別のリージョンで複製するときにこの機能を使用する方法を学習するには、[IoT Hub を複製する方法](iot-hub-how-to-clone.md)に関するページを参照してください。
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub は最近、いくつかのリージョンにおいて仮想ネットワークのサポートを追加しました。 この機能により、インポート操作とエクスポート操作がセキュリティで保護され、認証のためのキーを渡す必要がなくなります。  初期の時点で仮想ネットワークのサポートが利用できるのは、次のリージョンのみです。*米国西部 2*、*米国東部*、および*米国中南部*。 仮想ネットワークのサポートおよび実装のための API 呼び出しの詳細については、「[仮想ネットワークのための IoT Hub サポート](virtual-network-support.md)」を参照してください。
 
 インポートおよびエクスポート操作は、IoT Hub に対する一括サービス操作を実行するのを可能にする "*ジョブ*" のコンテキストで行われます。
 
 **RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
 
-このトピックでは、**RegistryManager** クラスと**ジョブ** システムを使用して、デバイスの一括インポートおよびエクスポートを IoT Hub の ID レジストリとの間で実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳しくは、[Provisioning Service のドキュメント](/azure/iot-dps)をご覧ください。
+このトピックでは、**RegistryManager** クラスと**ジョブ** システムを使用して、IoT Hub の ID レジストリとの間でデバイスの一括インポートおよびエクスポートを実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳しくは、[Provisioning Service のドキュメント](/azure/iot-dps)をご覧ください。
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>ジョブとは
 
@@ -85,9 +87,17 @@ while(true)
 }
 ```
 
+> [!NOTE]
+> ストレージアカウントに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファーストパーティーのエクセプション](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT hub を対象に利用可能)。
+
+
+## <a name="device-importexport-job-limits"></a>デバイスのインポート ジョブまたはエクスポート ジョブの制限
+
+すべての IoT Hub のレベルにわたり、一度に 1 つのアクティブなデバイスのインポート ジョブまたはエクスポート ジョブしか実行できません。 また、IoT Hub では、ジョブ操作の速度に対する制限もあります。 詳細については、「[参照 - IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)」をご覧ください。
+
 ## <a name="export-devices"></a>デバイスのエクスポート
 
-**ExportDevicesAsync** メソッドでは、[Shared Access Signature](../storage/common/storage-security-guide.md#data-plane-security) を使用して IoT Hub ID レジストリ全体を [Azure Storage](../storage/index.yml) BLOB コンテナーにエクスポートすることができます。
+**ExportDevicesAsync** メソッドでは、Shared Access Signature (SAS) を使用して IoT ハブの ID レジストリ全体を Azure Storage BLOB コンテナーにエクスポートすることができます。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。
 
 このメソッドでは、制御対象の BLOB コンテナーにデバイス情報のバックアップを確実に作成することができます。
 
@@ -255,11 +265,11 @@ JobProperties importJob =
 
 | importMode | 説明 |
 | --- | --- |
-| **createOrUpdate** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
-| **create** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
+| **createOrUpdate** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別個に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
+| **create** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別個に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **update** |指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値に関係なく、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
 | **updateIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
-| **createOrUpdateIfMatchETag** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、 **ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
+| **createOrUpdateIfMatchETag** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、 **ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別個に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **delete** |指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値に関係なく削除されます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
 | **deleteIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値が一致した場合に限り削除されます。 該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>ETag 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
 
@@ -390,7 +400,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>コンテナーの SAS URI の取得
 
-次のコード サンプルでは、BLOB コンテナーに対する読み取り、書き込み、および削除アクセス許可を使用して [SAS URI](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) を生成する方法を示します。
+次のコード サンプルでは、BLOB コンテナーに対する読み取り、書き込み、および削除アクセス許可を使用して [SAS URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md) を生成する方法を示します。
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -415,12 +425,16 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
+この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 ハブ間でデバイスを移動する方法など、こうした操作の多くは、[IoT Hub を複製する方法に関するページの「IoT Hub に登録されているデバイスを管理する」セクション](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)で使用されています。 
+
+複製に関する記事には、実際に動作するサンプルが含まれています。このページの IoT C# サンプルにあります: [C# の Azure IoT サンプル](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)。プロジェクトは ImportExportDevicesSample です。 サンプルをダウンロードし、試してみることができます。[IoT Hub を複製する方法](iot-hub-how-to-clone.md)に関する記事に手順が記載されています。
+
+Azure IoT Hub の管理の詳細については、次の記事をご覧ください。
 
 * [IoT Hub メトリック](iot-hub-metrics.md)
-* [操作の監視](iot-hub-operations-monitoring.md)
+* [IoT Hub ログ](iot-hub-monitor-resource-health.md)
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 

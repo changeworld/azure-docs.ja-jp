@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.openlocfilehash: e58a8cd286e4d416dd5f4e6d3fddedf1897fed1c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 07/23/2019
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954156"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982125"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
 
@@ -19,7 +19,7 @@ ms.locfileid: "65954156"
 
 Azure Cosmos DB は、待機時間の短縮、スループットのエラスティックなスケーラビリティ、データの一貫性を保つための明確に定義されたセマンティクス、および高可用性を確保するように設計された、グローバル分散データベース サービスです。 つまり、世界のどの場所でも高速な応答時間を保証すること、常にオンラインであること、スループットとストレージのスケーラビリティが無制限でエラスティックなことがアプリケーションに求められる場合は、Azure Cosmos DB を使用してアプリケーションを構築してください。
 
-お客様は、そのデータベースを構成してグローバルに分散し、Azure リージョンのどこからでも利用できるようにできます。 待機時間を短縮するには、データをユーザーの所在地の近くに配置してください。 どのリージョンを選択するかは、アプリケーションのグローバル リーチと、ユーザーの所在地によって決まります。 Cosmos DB では、Cosmos アカウントに関連付けられている全リージョンに対して透過的にデータがレプリケートされます。 グローバルに分散された Azure Cosmos データベースとコンテナーの単一のシステム イメージが利用できるようになっており、アプリケーションからは、読み取りと書き込みをローカルに実行することができます。 
+お客様は、データベースをいくつかの Azure リージョンにグローバルに分散して利用できるように構成することができます。 待機時間を短縮するには、データをユーザーの所在地の近くに配置してください。 どのリージョンを選択するかは、アプリケーションのグローバル リーチと、ユーザーの所在地によって決まります。 Cosmos DB では、Cosmos アカウントに関連付けられている全リージョンに対して透過的にデータがレプリケートされます。 グローバルに分散された Azure Cosmos データベースとコンテナーの単一のシステム イメージが利用できるようになっており、アプリケーションからは、読み取りと書き込みをローカルに実行することができます。 
 
 Azure Cosmos DB に関してご利用のアカウントに関連付けられるリージョンは、いつでも追加したり削除したりすることができます。 リージョンの追加や削除のために、アプリケーションを一時停止したり再デプロイしたりする必要はありません。 サービスでネイティブに提供されるマルチホーム機能により、高い可用性が常に維持されます。
 
@@ -41,11 +41,11 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 
 **リージョン障害時にビジネス継続性を維持する。** Azure Cosmos DB では、リージョン障害時の[自動フェールオーバー](how-to-manage-database-account.md#automatic-failover)がサポートされています。 リージョン障害時にも、Azure Cosmos DB では、その待機時間、可用性、一貫性、スループットの SLA が引き続き維持されます。 アプリケーション全体で高い可用性を確保できるように、Cosmos DB には、リージョン障害をシミュレートするための手動フェールオーバー API が用意されています。 この API を使用することで、日常的なビジネス継続性の訓練を実施することができます。
 
-**読み取りおよび書き込みのスループットのグローバルなスケーリング。** すべてのリージョンを書き込み可能にして、読み取りと書き込みを世界規模でエラスティックにスケーリングできます。 Azure Cosmos のデータベースまたはコンテナーに対してアプリケーションで構成したスループットが、Azure Cosmos アカウントに関連付けられているすべてのリージョンで実現されることが保証されます。 プロビジョニング スループットは、[金銭的な補償を伴う SLA](https://aka.ms/acdbsla) によって保証されます。
+**読み取りおよび書き込みのスループットのグローバルなスケーリング。** すべてのリージョンを書き込み可能にして、読み取りと書き込みを世界規模でエラスティックにスケーリングできます。 Azure Cosmos のデータベースまたはコンテナーに対してアプリケーションで構成したスループットが、Azure Cosmos アカウントに関連付けられているすべてのリージョンで実現されることが保証されます。 プロビジョニング スループットは、[金銭的な補償を伴う SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) によって保証されます。
 
 **明確に定義された複数の一貫性モデルの中から選択する。** Azure Cosmos DB のレプリケーション プロトコルでは、明確に定義された、実際的かつ直感的な 5 つの一貫性モデルが提供されています。 各モデルには、一貫性とパフォーマンスのトレードオフがあります。 これらの一貫性モデルを使用することで、グローバル分散アプリケーションを容易に構築することができます。
 
-## <a id="Next Steps"></a>次のステップ
+## <a name="next-steps"></a><a id="Next Steps"></a>次のステップ
 
 以下の記事でグローバル分散の詳細についてご覧ください。
 
@@ -54,3 +54,8 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 * [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [SQL API アカウント用のカスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
+* [Cosmos DB でのプログラミング可能な整合性モデル](consistency-levels.md)
+* [アプリケーションのための適切な整合性レベルを選択する](consistency-levels-choosing.md)
+* [Azure Cosmos DB API における整合性レベル](consistency-levels-across-apis.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
+

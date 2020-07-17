@@ -1,49 +1,53 @@
 ---
-title: Azure Active Directory でエンタープライズ アプリの名前またはロゴを変更する | Microsoft Docs
+title: Azure AD で エンタープライズ アプリケーションの名前またはロゴを変更する
 description: Azure Active Directory でカスタム エンタープライズ アプリケーションの名前またはロゴを変更する方法
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2017
-ms.author: celested
+ms.date: 04/05/2019
+ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62578fe037dc1c9672bd0a4cf28500c658344c53
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182920"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79138503"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリの名前またはロゴを変更する
-Azure Active Directory (Azure AD) で、カスタム エンタープライズ アプリの名前またはロゴを簡単に変更できます。 これらを変更するには、適切なアクセス許可が必要であり、カスタム アプリの作成者である必要があります。
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Azure Active Directory でカスタム エンタープライズ アプリケーションの名前またはロゴを変更する
 
-## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>エンタープライズ アプリケーションの名前またはロゴを変更する方法
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-3. **[Azure Active Directory - \*directoryname\*]** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、**[エンタープライズ アプリケーション]** を選択します。
+Azure Active Directory (Azure AD) で、カスタム エンタープライズ アプリの名前またはロゴを簡単に変更できます。 これらを変更するには、適切なアクセス許可が必要であり、カスタム アプリケーションの作成者である必要があります。
 
-    ![エンタープライズ アプリケーションを開く](./media/change-name-or-logo-portal/open-enterprise-apps.png)
-4. **[エンタープライズ アプリケーション]** ウィンドウで、**[すべてのアプリケーション]** を選択します。 管理できるアプリケーションの一覧が表示されます。
-5. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ウィンドウで、アプリを選択します。
-6. [***appname***] ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、**[プロパティ]** を選択します。
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>エンタープライズ アプリケーションの名前またはロゴを変更する方法
 
-    ![[プロパティ] を選択する](./media/change-name-or-logo-portal/select-app.png)
-7. [***appname*** - **プロパティ**] ウィンドウで、新しいロゴとして使用するファイルを参照するか、アプリ名を編集します。またはこの両方を行います。
+1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)に、ディレクトリの全体管理者のアカウントでサインインします。 **Azure Active Directory 管理センター**のページが表示されます。
+2. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 エンタープライズ アプリケーションの一覧が表示されます。
+3. アプリケーションを選択します。 アプリケーションの概要ページが表示されます。
+4. アプリケーションの概要ウィンドウの **[管理]** 見出しで、 **[プロパティ]** を選択します。 **[プロパティ]** ページが表示されます。
+5. 名前を変更する場合は、 **[名前]** ボックスを選択し、新しい名前を入力して **Enter** キーを押します。
+6. ロゴを変更する場合、 **[ロゴ]** フィールドで、アプリケーションの現在のロゴ画像の下にある **[ファイルを選択]** ボックスの横のフォルダー アイコンを選択します。
 
-    ![アプリケーションのロゴまたは名前プロパティを変更する](./media/change-name-or-logo-portal/change-logo.png)
-8. **[保存]** をクリックします。
+   ![[プロパティ] を選択する](./media/change-name-or-logo-portal/change-logo.png)
 
-## <a name="next-steps"></a>次の手順
-* [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
+   または、ロゴを変更しない場合、手順 8 に移動します。
+7. ファイル ピッカーで、新しいロゴに指定したいファイルを選択します。 現在のロゴ画像の下にあるボックスにファイル名が表示されます。
+
+   > [!NOTE]
+   > Azure で指定できるロゴ画像は PNG ファイルで、幅、高さ、ファイル サイズに制限があります。 カスタム ロゴは、サイズが正確に 215 &times; 215 ピクセルであり、形式が PNG である必要があります。 アプリケーション ロゴには透明度のない単色の背景を使用して、ユーザーが最も見やすくなるように表示することをお勧めします。
+8. **[保存]** を選択します。 新しいロゴを選択した場合、 **[ロゴ]** フィールドの画像が新しいロゴ ファイルに変化します。
+
+## <a name="next-steps"></a>次のステップ
+
+* [クイック スタート: Azure Active Directory で組織のグループとメンバーを表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
 * [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](remove-user-or-group-access-portal.md)
 * [エンタープライズ アプリケーションのユーザー サインインを無効にする](disable-user-sign-in-portal.md)

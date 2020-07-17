@@ -1,20 +1,21 @@
 ---
 title: テキストのモデレート - Content Moderator
-description: 混入が考えられる不要なテキスト、PII、および条件のカスタム一覧に対して、テキストのモデレートを使用します。
+titleSuffix: Azure Cognitive Services
+description: 考えられる不要なテキスト、個人データ、および条件のカスタム一覧に対してテキストのモデレートを使用します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: pafarley
+ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757754"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274012"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
@@ -29,7 +30,7 @@ Content Moderator のコンピューター支援型のテキスト モデレー�
 - 個人データ
 - 自動修正済みテキスト
 - 元のテキスト
-- 言語
+- Language
 
 ## <a name="profanity"></a>不適切な表現
 
@@ -57,13 +58,13 @@ JSON の次の抽出箇所は、出力例を示しています。
     "Classification": {
         "ReviewRecommended": true,
         "Category1": {
-            "Score": 1.5113095059859916E-06
+              "Score": 1.5113095059859916E-06
             },
         "Category2": {
-            "Score": 0.12747249007225037
+              "Score": 0.12747249007225037
             },
         "Category3": {
-            "Score": 0.98799997568130493
+              "Score": 0.98799997568130493
         }
     }
 
@@ -77,62 +78,50 @@ JSON の次の抽出箇所は、出力例を示しています。
 
 ## <a name="personal-data"></a>個人データ
 
-PII 機能は、この情報の潜在的な存在を検出します。
+個人データ機能は、この情報の潜在的な存在を検出します。
 
 - 電子メール アドレス
 - 米国の住所
 - IP アドレス
 - 米国の電話番号
-- 英国の電話番号
-- 社会保障番号 (SSN)
 
 次の例は、サンプルの応答を示しています。
 
-    "PII": {
-        "Email": [{
-            "Detected": "abcdef@abcd.com",
-            "SubType": "Regular",
-            "Text": "abcdef@abcd.com",
-            "Index": 32
-            }],
-        "IPA": [{
-            "SubType": "IPV4",
-            "Text": "255.255.255.255",
-            "Index": 72
-            }],
-        "Phone": [{
-            "CountryCode": "US",
-            "Text": "6657789887",
-            "Index": 56
-            }, {
-            "CountryCode": "US",
-            "Text": "870 608 4000",
-            "Index": 212
-            }, {
-            "CountryCode": "UK",
-            "Text": "+44 870 608 4000",
-            "Index": 208
-            }, {
-            "CountryCode": "UK",
-            "Text": "0344 800 2400",
-            "Index": 228
-            }, {
-            "CountryCode": "UK",
-            "Text": "0800 820 3300",
-            "Index": 245
-            }],
-        "Address": [{
-            "Text": "1 Microsoft Way, Redmond, WA 98052",
-            "Index": 89
-            }],
-        "SSN": [{
-            "Text": "999999999",
-            "Index": 56
-            }, {
-            "Text": "999-99-9999",
-            "Index": 267
-            }]
-        }
+```json
+"pii":{
+  "email":[
+      {
+        "detected":"abcdef@abcd.com",
+        "sub_type":"Regular",
+        "text":"abcdef@abcd.com",
+        "index":32
+      }
+  ],
+  "ssn":[
+
+  ],
+  "ipa":[
+      {
+        "sub_type":"IPV4",
+        "text":"255.255.255.255",
+        "index":72
+      }
+  ],
+  "phone":[
+      {
+        "country_code":"US",
+        "text":"6657789887",
+        "index":56
+      }
+  ],
+  "address":[
+      {
+        "text":"1 Microsoft Way, Redmond, WA 98052",
+        "index":89
+      }
+  ]
+}
+```
 
 ## <a name="auto-correction"></a>自動修正
 
@@ -164,6 +153,6 @@ PII 機能は、この情報の潜在的な存在を検出します。
 
 Content Moderator は、[用語一覧の API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) にカスタム用語一覧を管理する操作を提供します。 [用語一覧の API コンソール](try-terms-list-api.md) を起動して、REST API コード サンプルを使用してください。 また、Visual Studio および C# に精通している場合は、[用語一覧に関する .NET のクイックスタート](term-lists-quickstart-dotnet.md)を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[用語一覧の API コンソール](try-text-api.md)を試験運用して、REST API コード サンプルを使用してください。 また、Visual Studio と C# に精通している場合は、[テキスト モデレーションの .NET クイック スタート](text-moderation-quickstart-dotnet.md)も確認してください。
+[用語一覧の API コンソール](try-text-api.md)を試験運用して、REST API コード サンプルを使用してください。 また、Visual Studio と C# に精通している場合は、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)のテキスト モデレーションのセクションも確認してください。

@@ -1,18 +1,18 @@
 ---
-title: Azure Kubernetes Service (AKS) のポッドで使用する目的で NFS (Network File System) Ubuntu Server を作成する
+title: NFS Ubuntu Linux Server ボリュームを作成する
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) のポッドで使用するための NFS Ubuntu Linux Server ボリュームを手動で作成する方法について説明します
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 55eb5b0b98a4097d2f300bacabbfef3b0a32b27b
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468446"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803468"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS (Network File System) Linux Server ボリュームを手動で作成し、Azure Kubernetes Service (AKS) と共に使用する
 コンテナー間のデータ共有はしばしば、コンテナーを基盤とするサービスやアプリケーションで必要となります。 一般的に、外部の永続ボリューム上の同じ情報にさまざまなポットでアクセスする必要があります。    
@@ -21,13 +21,13 @@ Azure Files という選択肢がありますが、永続的共有ストレー�
 この記事では、Ubuntu 仮想マシンで NFS Server を作成する方法について説明します。 この共有ファイル システムへの AKS コンテナー アクセスを与える方法についても説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要であれば、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 AKS クラスターは、NFS Server と同じか、対等の仮想ネットワークに置く必要があります。 クラスターは既存の VNET に作成する必要があります。この VNET は、VM と同じ VNET でもかまいません。
 
-既存の VNET で構成する手順については、「[creating AKS Cluster in existing VNET][aks-virtual-network]」 (既存の VNET で AKS クラスターを作成する) と「[connecting virtual networks with VNET peering][peer-virtual-networks]」 (VNET ピアリングで仮想ネットワークを接続する) というドキュメントで説明しています
+既存の VNET で構成する手順については、[既存の VNET 内での AKS クラスターの作成][aks-virtual-network]および [VNET ピアリングによる仮想ネットワーク間の接続][peer-virtual-networks]に関するドキュメントで説明しています
 
-また、Ubuntu Linux 仮想マシン (18.04 LTS など) を作成しているものとします。 設定とサイズは自分の好みに合わせることができます。また、Azure 経由でデプロイできます。 Linux のクイック スタートについては、「[Linux VM 管理][linux-create]」を参照してください。
+また、Ubuntu Linux 仮想マシン (18.04 LTS など) を作成しているものとします。 設定とサイズは自分の好みに合わせることができます。また、Azure 経由でデプロイできます。 Linux のクイック スタートについては、[Linux VM の管理][linux-create]に関する記事を参照してください。
 
 AKS クラスターを最初にデプロイする場合、Azure によって、Ubuntu マシンのデプロイ時、仮想ネットワーク フィールドが自動的に入力され、同じ VNET 内で稼働します。 ただし、代わりに対等なネットワークを使用する場合、上記のドキュメントを参照してください。
 
@@ -93,12 +93,13 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS クラスターを NFS サーバーに接続する
-永続ボリュームとボリュームへのアクセス方法を指定する永続ボリューム要求をプロビジョニングすることで、NFS Server をクラスターに接続できます。  
-同じまたは対等の仮想ネットワークにある 2 つのサービスを接続する必要があります。 同じ VNET でクラスターを設定する方法は、「[creating AKS Cluster in existing VNET][aks-virtual-network]」 (既存の VNET で AKS クラスターを作成する) にあります。
+永続ボリュームとボリュームへのアクセス方法を指定する永続ボリューム要求をプロビジョニングすることで、NFS Server をクラスターに接続できます。
+
+同じまたは対等の仮想ネットワークにある 2 つのサービスを接続する必要があります。 同じ VNET でクラスターを設定する方法は、[既存の VNET 内での AKS クラスターの作成][aks-virtual-network]に関する記事を参照してください
 
 同じ仮想ネットワーク (または、対等な仮想ネットワーク) に置かれている場合、AKS クラスターで永続ボリュームと永続ボリューム要求をプロジェクトする必要があります。 その後、コンテナーでは、NFS ドライブをそのローカル ディレクトリにマウントできます。
 
-次は、永続ボリュームの kubernetes 定義の例です (この定義では、クラスターと VM が同じ VNET にあるものとしています)。
+次は、永続ボリュームの Kubernetes 定義の例です (この定義では、クラスターと VM が同じ VNET にあるものとしています)。
 
 ```yaml
 apiVersion: v1
@@ -154,7 +155,7 @@ ls -l
 完全なチュートリアルが必要であれば、あるいは NFS Server セットアップのデバッグでサポートが必要な場合、次の詳しいチュートリアルをご覧ください。
   - [NFS チュートリアル][nfs-tutorial]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
 

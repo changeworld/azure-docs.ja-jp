@@ -1,37 +1,27 @@
 ---
-title: Shaper コグニティブ検索スキル - Azure Search
-description: 非構造化データからメタデータと構造化された情報を抽出し、Azure Search エンリッチメント パイプライン内で複合型としてシェイプします。
-services: search
-manager: pablocas
+title: Shaper コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: 非構造化データからメタデータと構造化された情報を抽出し、Azure Cognitive Search の AI エンリッチメント パイプライン内で複合型としてシェイプします。
+manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023718"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75754118"
 ---
-#   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
+# <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
 **Shaper** スキルは、複数の入力を、エンリッチメント パイプラインの後の部分で参照できる[複合型](search-howto-complex-data-types.md)に統合します。 **Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つの構造体にする、市と県を組み合わせて 1 つの構造体にする、名前と誕生日を組み合わせて 1 つの構造体にする、などの操作を行って一意の ID を確立することが挙げられます。
 
-API のバージョンによって、実現できるシェイプの深さが決まります。 
+さらに、[シナリオ 3](#nested-complex-types) で示されている **Shaper** スキルにより、オプションの "*sourceContext*" プロパティが入力に追加されます。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
 
-| API バージョン | シェイプの動作 | 
-|-------------|-------------------|
-| REST API の 2019-05-06-Preview バージョン (.NET SDK はサポートされていません) | 複合オブジェクト、複数のレベル、1 つの **Shaper** スキル定義内 |
-| 2019-05-06** (一般提供)、2017-11-11-Preview| 複合オブジェクト、1 レベルの深さ。 複数レベルのシェイプでは、いくつかの Shaper ステップを連鎖させる必要があります|
-
-[シナリオ 3](#nested-complex-types)に示されたプレビューの **Shaper**。省略可能な新しい *sourceContext* プロパティを入力に追加します。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
-
-すべての API バージョンにおいて、応答内では、出力名は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
+出力の名前は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
 
 > [!NOTE]
 > **Shaper** スキルは Cognitive Services API にバインドされていないため、使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する**無料**リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
@@ -41,7 +31,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>シナリオ 1: 複合型
 
-*analyzedText* という名前の構造を作成し、それに 2 つのメンバーがあって、それぞれが *text* と *sentiment* という名前だとします。 Azure Search インデックス内では、マルチパートの検索可能フィールドは*複合型*と呼ばれ、通常は、それにマップする対応した複合構造をソース データが備えている場合に作成されます。
+*analyzedText* という名前の構造を作成し、それに 2 つのメンバーがあって、それぞれが *text* と *sentiment* という名前だとします。 インデックス内では、マルチパートの検索可能フィールドは*複合型*と呼ばれ、通常は、それにマップする対応した複合構造をソース データが備えている場合に作成されます。
 
 ただし、複合型を作成するための別の方法として、**Shaper** スキルを利用することもできます。 このスキルをスキルセットに含めることで、スキルセット処理中のメモリ内操作において、入れ子になった構造を持つデータ シェイプを出力できます。その後、それをインデックス内の複合型にマップできます。 
 
@@ -119,7 +109,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-output"></a>スキルの出力
 
-**Shaper** スキルにより、*text* と *sentiment* の要素が組み合わせられている *analyzedText* という名前の新しい要素が生成されます。 この出力は、インデックス スキーマに準拠します。 Azure Search インデックスにインポートされ、インデックスが作成されます。
+**Shaper** スキルにより、*text* と *sentiment* の要素が組み合わせられている *analyzedText* という名前の新しい要素が生成されます。 この出力は、インデックス スキーマに準拠します。 Azure Cognitive Search のインデックスにインポートされ、インデックスが作成されます。
 
 ```json
 {
@@ -195,9 +185,6 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>シナリオ 3: 入れ子になったコンテキストからの入力統合
 
-> [!NOTE]
-> api-version=2019-05-06-Preview でサポートされている入れ子構造は、[ナレッジ ストア](knowledge-store-concept-intro.md)または Azure Search インデックス内で使用できます。
-
 本の、タイトル、章、コンテンツがあり、そのコンテンツ上でエンティティ認識とキー フレーズを実行できることを想定してください。その場合、さまざまなスキルからの結果を統合して、章の名前、エンティティ、およびキーフレーズを備えた 1 つのシェイプにまとめる必要があります。
 
 このシナリオの **Shaper** スキルの定義は、次の例のようになります。
@@ -237,7 +224,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>スキルの出力
-この場合、**Shaper** では複合型を作成します。 この構造体はメモリ内に存在します。 ナレッジ ストアに保存する場合は、ストレージの特性を定義しているスキルセット内にプロジェクションを作成する必要があります。
+この場合、**Shaper** では複合型を作成します。 この構造体はメモリ内に存在します。 [ナレッジ ストア](knowledge-store-concept-intro.md)に保存する場合は、ストレージの特性が定義されているスキルセット内にプロジェクションを作成する必要があります。
 
 ```json
 {
@@ -261,8 +248,8 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [複合型を使用する方法](search-howto-complex-data-types.md)
-+ [ナレッジ ストアの概要](knowledge-store-concept-intro.md)
-+ [ナレッジ ストアの使用を開始する方法](knowledge-store-howto.md)
++ [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md)
++ [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)

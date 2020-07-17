@@ -1,20 +1,21 @@
 ---
 title: Video Indexer の分析情報の表示と編集
 titlesuffix: Azure Media Services
-description: このトピックでは、Video Indexer の分析情報を表示および編集する方法を示します。
+description: この記事では、Azure Media Services Video Indexer の分析情報を表示および編集する方法について説明します。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892791"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74892670"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer の分析情報の表示と編集
 
@@ -34,9 +35,9 @@ ms.locfileid: "58892791"
 
     プレーヤーと分析情報は同期されます。 たとえば、キーワードやトランスクリプトの行をクリックすると、ビデオのその場面がプレーヤーで表示されます。 アプリケーション内で、プレーヤー/分析情報の表示と同期を実現できます。 詳細については、[アプリケーションへの Azure Indexer ウィジェットの埋め込み](video-indexer-embed-widgets.md)に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[他のビデオに基づいて独自の Video Indexer 分析情報を作成する方法を学習します](video-indexer-create-new.md)。
+[ビデオの詳細な分析情報を使用する](use-editor-create-project.md)
 
 ## <a name="see-also"></a>関連項目
 

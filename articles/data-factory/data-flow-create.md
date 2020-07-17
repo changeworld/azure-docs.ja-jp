@@ -1,35 +1,36 @@
 ---
-title: Azure Data Factory の Mapping Data Flow を作成する
+title: マッピング データ フローを作成する
 description: Azure Data Factory のマッピング データ フローを作成する方法
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cd1342ae5912a9a91f1bd8d1bdacecdb5a2bbdb0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235655"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81416525"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory のデータ フローを作成する
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ADF の Mapping Data Flow は、コーディングなしでデータを大規模に変換する方法を提供します。 データ フロー デザイナーで一連の変換を構築することで、データ変換ジョブを設計できます。 任意の数のソースの変換から始め、その後にデータ変換手順を実行します。 次に、データ フローをシンクで完了して、結果を宛先に書き込みます。
 
 Azure portal で新しい V2 データ ファクトリを作成することから始めます。 新しいファクトリを作成したら、[作成者と監視] タイルをクリックして、Data Factory UI を起動します。
 
-![Data Flow オプション](media/data-flow/v2portal.png "データフローの作成")
+![データ フローのオプション](media/data-flow/v2portal.png "データ フロー作成")
 
 Data Factory UI が表示されたら、サンプル データ フローを使用できます。 サンプルは、ADF テンプレート ギャラリーから入手できます。 ADF で、"テンプレートからパイプライン" を作成し、テンプレート ギャラリーから [データ フロー] カテゴリを選択します。
 
-![Data Flow オプション](media/data-flow/template.png "データフローの作成")
+![データ フローのオプション](media/data-flow/template.png "データ フロー作成")
 
 Azure Blob ストレージ アカウント情報の入力を求められます。
 
-![Data Flow オプション](media/data-flow/template2.png "データ フローの作成 2")
+![データ フローのオプション](media/data-flow/template2.png "データ フロー作成 2")
 
 [これらのサンプルで使用されるデータはこちらで見つけることができます](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata)。 サンプル データをダウンロードし、Azure Blob ストレージ アカウントにファイルを格納して、サンプルを実行できるようにします。
 
@@ -37,8 +38,8 @@ Azure Blob ストレージ アカウント情報の入力を求められます�
 
 ADF UI で、[+] ボタン (リソースの作成) を使用して、データ フローを作成します。
 
-![Data Flow オプション](media/data-flow/newresource.png "新しいリソース")
+![データ フローのオプション](media/data-flow/newresource.png "新しいリソース")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ソース変換](data-flow-source.md)を使用してデータ変換の構築を開始します。

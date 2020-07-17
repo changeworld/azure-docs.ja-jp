@@ -1,25 +1,19 @@
 ---
 title: Azure Blockchain Workbench アーキテクチャ
-description: Azure Blockchain Workbench アーキテクチャとそのコンポーネントの概要。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 8dc8304e97ff66356a8874a146231f0042e5f509
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+description: Azure Blockchain Workbench Preview アーキテクチャとそのコンポーネントの概要。
+ms.date: 09/05/2019
+ms.topic: conceptual
+ms.reviewer: brendal
+ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510140"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74324894"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
 
-Azure Blockchain Workbench では、複数の Azure コンポーネントを使用したソリューションを提供することで、ブロックチェーン アプリケーションの開発を簡単にします。 Blockchain Workbench は、Azure Marketplace のソリューション テンプレートを使用してデプロイできます。 このテンプレートを使用すると、ブロックチェーン スタック、クライアント アプリケーションの種類、IoT 統合のサポートなど、デプロイするモジュールやコンポーネントを選択できます。 デプロイが完了すると、Blockchain Workbench によって Web アプリ、iOS アプリ、Android アプリへのアクセスが提供されます。
+Azure Blockchain Workbench Preview では、複数の Azure コンポーネントを使用したソリューションを提供することで、ブロックチェーン アプリケーションの開発を簡単にします。 Blockchain Workbench は、Azure Marketplace のソリューション テンプレートを使用してデプロイできます。 このテンプレートを使用すると、ブロックチェーン スタック、クライアント アプリケーションの種類、IoT 統合のサポートなど、デプロイするモジュールやコンポーネントを選択できます。 デプロイが完了すると、Blockchain Workbench によって Web アプリ、iOS アプリ、Android アプリへのアクセスが提供されます。
 
 ![Blockchain Workbench アーキテクチャ](./media/architecture/architecture.png)
 
@@ -45,7 +39,7 @@ Web アプリケーションでは、承認されたユーザーが Administrato
 * 独自のスマート コントラクトをアップロードしてデプロイします。
 * 特定のロールのコンテキストにおけるスマート コントラクトへのアクセス権をユーザーに割り当てます。
 
-詳細については、[GitHub で Azure Blockchain Workbench のサンプル クライアント アプリケーション](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client)を参照してください。
+詳細については、[GitHub で Azure Blockchain Workbench のサンプル クライアント アプリケーション](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)を参照してください。
 
 ## <a name="gateway-service-api"></a>ゲートウェイ サービス API
 
@@ -119,7 +113,7 @@ Workbench には、Application Insights および Azure Monitor を使用した�
 
 Azure Monitor は、ブロックチェーン ネットワークの正常性に関する情報を提供します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench のデプロイ](../../blockchain-workbench/blockchain-workbench-deploy.md)

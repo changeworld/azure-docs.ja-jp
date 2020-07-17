@@ -1,25 +1,18 @@
 ---
-title: 体験版とは | Microsoft Docs
+title: 体験版とは | Azure Marketplace
 description: Marketplace 体験版機能の説明
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: pbutlerm
-manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0bdff77a4be6a28e2799d4f481492d2c7ba6bda0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: dsindona
+ms.openlocfilehash: bdfadf359195464c4024b28c5e597c571305481a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278231"
 ---
 <a name="what-is-test-drive"></a>体験版とは
 ===================
@@ -53,8 +46,8 @@ ms.locfileid: "57457427"
 
 アプリケーションがどれだけ複雑であるかにかかわらず、Microsoft 体験版によって顧客は製品を実際に使ってみることができます。 現在、使用している製品、シナリオ、マーケットプレースの種類に基づいて、3 つの異なる種類の体験版を提供しています。
 
-- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**: Azure Resource Manager 体験版は、発行元によって構築されるソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレートです。 このシナリオに適合する製品は、Azure リソースのみを使用する製品です。
-- **[ロジック アプリ](./logic-app-test-drive.md)**: ロジック アプリ体験版は、あらゆる複雑なソリューション アーキテクチャに対応するように意図されたデプロイ テンプレートです。 すべての Dynamics アプリケーションやカスタム製品には、この種類の体験版を使用する必要があります。
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Azure Resource Manager 体験版は、発行元によって構築されるソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレートです。 このシナリオに適合する製品は、Azure リソースのみを使用する製品です。
+- **[ロジック アプリ](./logic-app-test-drive.md)** : ロジック アプリ体験版は、あらゆる複雑なソリューション アーキテクチャに対応するように意図されたデプロイ テンプレートです。 すべての Dynamics アプリケーションやカスタム製品には、この種類の体験版を使用する必要があります。
 - **Power BI**: Power BI 体験版は、単なる、カスタム ビルドされたダッシュボードへの埋め込みリンクです。 インタラクティブな Power BI の視覚化のデモンストレーションだけを行う製品には、この種類の体験版を使用する必要があります。
     ここで必要なことは、埋め込み Power BI の URL をアップロードすることだけです。
 
@@ -65,7 +58,7 @@ ms.locfileid: "57457427"
 
 これは、体験版用に構成を設定した後、各体験版は、顧客の要求に応じてオンデマンドでデプロイされるマネージド インスタンスになるからです。 体験版インスタンスが割り当てられると、体験版は、設定された分量の時間を使用でき、その後、別の顧客のための余地を作成するために削除されます。
 
-<a name="next-steps"></a>次の手順
+<a name="next-steps"></a>次のステップ
 ----------
 
 体験版についてすべて理解したので、発行する特定の種類の体験版にアクセスし、必要なフィールドに関するすべてを学習します。
@@ -73,4 +66,4 @@ ms.locfileid: "57457427"
 - **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**
 - **[ロジック アプリ](./logic-app-test-drive.md)**
 
-さらに質問がある場合やトラブルシューティングに関するアドバイスが必要な場合、あるいは体験版をより成功させたい場合は、「[FAQ, Troubleshooting, & Best Practices (FAQ、トラブルシューティング、およびベスト プラクティス)](./marketing-and-best-practices.md)」をご覧ください。
+さらに質問がある場合やトラブルシューティングに関するアドバイスが必要な場合、あるいは体験版をより成功させたい場合は、「[FAQ, Troubleshooting, & Best Practices](./marketing-and-best-practices.md)」(FAQ、トラブルシューティング、およびベスト プラクティス) をご覧ください。

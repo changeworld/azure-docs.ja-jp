@@ -1,28 +1,24 @@
 ---
-title: Azure Active Directory 同意フレームワーク
+title: Azure AD の同意フレームワーク
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory の同意フレームワークと、それを使用してマルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できるしくみについて説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93adedc5c1343df1eee05b653b60cfd7e810044c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540420"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611366"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 
@@ -32,7 +28,7 @@ Azure Active Directory (Azure AD) の同意フレームワークを使用する�
 
 Azure AD の同意フレームワークは、OAuth 2.0 と、public クライアントまたは confidential クライアントを使用した OAuth 2.0 のさまざまなフロー (Authorization Code Grant や Client Credentials Grant など) を基盤としています。 Azure AD では OAuth 2.0 を採用することによって、スマートフォン、タブレット、サーバーなどにインストールされるアプリケーションから Web アプリケーションに至るまで、多種多様なクライアント アプリケーションの作成と、そのアプリケーションが必要なリソースにアクセスすることを可能にしています。
 
-OAuth 2.0 の認可付与を採用している同意フレームワークの使い方の詳細については、[OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](v1-protocols-oauth-code.md)に関するページと、「[Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。 Microsoft Graph を使って Office 365 に対するアクセスの承認を得る方法の詳細については、[Microsoft Graph によるアプリ認証](https://developer.microsoft.com/graph/docs/authorization/auth_overview)に関するページを参照してください。
+OAuth 2.0 の認可付与を採用している同意フレームワークの使い方の詳細については、[OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](v2-oauth2-auth-code-flow.md)に関するページと、「[Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。 Microsoft Graph を使って Office 365 に対するアクセスの承認を得る方法の詳細については、[Microsoft Graph によるアプリ認証](https://developer.microsoft.com/graph/docs/authorization/auth_overview)に関するページを参照してください。
 
 ## <a name="consent-experience---an-example"></a>同意エクスペリエンス - 例
 
@@ -40,34 +36,33 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
 
 1. 何らかのリソース/API にアクセスするために一定のアクセス許可を要求する必要がある Web クライアント アプリケーションがあると仮定しましょう。 構成方法については次のセクションで詳しく説明するとして、ここで重要なのは、構成時に Azure Portal を使用してアクセス許可の要求を宣言するという点です。 この設定は他の構成設定と同じく、アプリケーションを Azure AD に登録する作業の一環として行います。
 
-    ![他のアプリケーションに対するアクセス許可](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![他のアプリケーションに対するアクセス許可](./media/consent-framework/permissions.png)
 
 1. 現在、アプリケーションの更新が終わって、アプリケーションが実行中になり、これからユーザーが初めてアプリケーションを使用するところだとします。 アプリケーションではまず、Azure AD の `/authorize` エンドポイントから認証コードを取得する必要があります。 取得した認証コードは、後でアクセス トークンと更新トークンの取得に使用します。
 
 1. ユーザーの認証がまだであれば、Azure AD の `/authorize` エンドポイントによりユーザーのサインイン画面が表示されます。
 
-    ![ユーザーまたは管理者による Azure AD へのサインイン](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![ユーザーまたは管理者による Azure AD へのサインイン](./media/consent-framework/usersignin.png)
 
 1. ユーザーのサインインが終わると、そのユーザーに対して同意ページを表示する必要があるかどうかが Azure AD により判定されます。 表示の要否の判定基準は、ユーザー (またはそのユーザーが所属する組織の管理者) がアプリケーションに既に同意を与えているかどうかです。 同意がまだであれば、Azure AD からユーザーに対して同意を求めるメッセージと、アプリケーションが機能するうえで必要なアクセス許可が表示されます。 同意ダイアログに表示されるアクセス許可は、Azure portal の **[委任されたアクセス許可]** で選択したものと同じになります。
 
-    ![ユーザーの同意エクスペリエンス](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![同意ダイアログに表示されるアクセス許可の例を示します](./media/consent-framework/consent.png)
 
-1. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローについて詳しくは、[Web API のアプリの種類](web-api.md)に関する記事をご覧ください。
+1. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローの詳細については、[OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)に関するページを参照してください。
 
 1. 管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、そのテナントのユーザーには同意ダイアログが表示されなくなります。この同意は、管理者ロールが与えられたユーザーが [Azure portal](https://portal.azure.com) で行うことができます。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
     **委任されたアプリケーションのアクセス許可に同意する**
 
-   1. アプリケーションの **[設定]** ページに移動します。
-   1. **[必要なアクセス許可]** を選択します。
-   1. **[アクセス許可の付与]** ボタンをクリックします。
+   1. アプリケーションの **[API アクセス許可]** ページに移動します。
+   1. **[管理者の同意の付与]** ボタンをクリックします。
 
-      ![明示的な管理者の同意としてアクセス許可を付与する](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![明示的な管理者の同意としてアクセス許可を付与する](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > 現時点では、ADAL.js を使用するシングルページ アプリ (SPA) では、**[アクセス許可の付与]** ボタンを使用して明示的に同意を付与する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。
+   > 現時点では、ADAL.js を使用するシングルページ アプリ (SPA) では、 **[アクセス許可の付与]** ボタンを使用して明示的に同意を付与する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリをマルチテナント アプリに変換する方法](howto-convert-app-to-be-multi-tenant.md)に関する記事をご覧ください。
 * 詳細については、[認証コードの付与フロー中に、OAuth 2.0 プロトコル層で同意がどのようにサポートされるか、学習してください。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)

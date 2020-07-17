@@ -1,26 +1,25 @@
 ---
 title: Linear regression (線形回帰):モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Linear Regression (線形回帰) モジュールを使用して、実験で使用するために線形回帰モデルを作成する方法について学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で線形回帰モジュールを使用して、パイプラインで使用するために線形回帰モデルを作成する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 040f726a703d34a95bae7d5b7cdd766655c62a4e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027835"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137457"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
-この記事では、Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
-このモジュールを使用して、実験で使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
+このモジュールを使用して、パイプラインで使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
 
 このモデルを使用して線形回帰 モデルを定義し、ラベル付けされたデータセットを使用してモデルをトレーニングします。 その後、トレーニング済みのモデルは、予測に使用できます。
 
@@ -52,68 +51,67 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 このモジュールでは、次の異なるオプションと共に、回帰モデルを調整するために 2 つのメソッドをサポートします。
 
-+ [オンライン勾配降下を使用して回帰モデルを作成する](#bkmk_GradientDescent)
++ [通常の最小二乗法を使用して回帰モデルを調整する](#create-a-regression-model-using-ordinary-least-squares)
+
+    小さなデータセットには、通常の最小二乗法を選択するのが最適です。 これによって、Excel に同様の結果が適用されます。
+    
++ [オンライン勾配降下を使用して回帰モデルを作成する](#create-a-regression-model-using-online-gradient-descent)
 
     勾配降下は、より複雑、または変数の数を指定されたトレーニング データが少なすぎるモデルに対して優れた損失関数です。
 
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>通常の最小二乗法を使用して回帰モデルを作成する
 
+1. インターフェイスから**Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
-+ [通常の最小二乗法を使用して回帰モデルを調整する](#bkmk_OrdinaryLeastSquares)
+    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分のパイプラインにドラッグします。
 
-    小さなデータセットには、通常の最小二乗法を選択するのが最適です。 これによって、Excel に同様の結果が適用されます。
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>通常の最小二乗法を使用して回帰モデルを作成する
-
-1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールを実験に追加します。
-
-    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、**[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分の実験にドラッグします。
-
-2. **[プロパティ]** ウィンドウの **[Solution method]\(ソリューション メソッド\)** ドロップダウン リストで、**[Ordinary Least Squares]\(通常の最小二乗法\)** を選択します。 このオプションでは、回帰直線を見つけるために使用する計算メソッドを指定します。
+2. **[プロパティ]** ウィンドウの **[Solution method]\(ソリューション メソッド\)** ドロップダウン リストで、 **[Ordinary Least Squares]\(通常の最小二乗法\)** を選択します。 このオプションでは、回帰直線を見つけるために使用する計算メソッドを指定します。
 
 3. **[L2 regularization weight]\(L2 正規化の重み\)** に、L2 正規化に対する重みとして使用する値を入力します。 オーバーフィットを避けるために、ゼロ以外の値を使用することをお勧めします。
 
-     正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」を参照してください。
+     正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」
 
-4. 切片の用語を表示する場合、**[Include intercept term]\(切片の用語を含める\)** オプションを選択します。
+4. 切片の用語を表示する場合、 **[Include intercept term]\(切片の用語を含める\)** オプションを選択します。
 
     回帰式を確認する必要がない場合、このオプションの選択を解除します。
 
 5. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。
 
-    同じ実験におけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。 それ以外の場合、既定はシステム クロックからの値を使用します。
+    同じパイプラインにおけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。 それ以外の場合、既定はシステム クロックからの値を使用します。
 
 
-7. [Train Model (モデルのトレーニング)](./train-model.md) モジュールを自分の実験に追加して、ラベル付けされたデータセットに接続します。
+7. [Train Model (モデルのトレーニング)](./train-model.md) モジュールを自分のパイプラインに追加して、ラベル付けされたデータセットに接続します。
 
-8. 実験を実行します。
+8. パイプラインを送信します。
 
-## <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
+### <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
 
-トレーニングの完了後、次の作業を行います。
+トレーニングの完了後:
 
-+ モデルのパラメーターを表示するには、トレーナーの出力を右クリックして、**[Visualize]\(可視化\)** を選択します。
 
 + 予測するには、新しい値のデータセットと共に、トレーニング済みのモデルを [Score Model (モデルのスコア付け) ](./score-model.md)モジュールに接続します。 
 
 
-## <a name="bkmk_GradientDescent"></a>オンライン勾配降下を使用して回帰モデルを作成する
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>オンライン勾配降下を使用して回帰モデルを作成する
 
-1. インターフェイスから **Linear Regression Model (線形回帰モデル)** モジュールを実験に追加します。
+1. インターフェイスから**Linear Regression Model (線形回帰モデル)** モジュールをパイプラインに追加します。
 
-    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、**[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分の実験にドラッグします。
+    **[Machine Learning]** カテゴリでこのモジュールを見つけることができます。 **[Initialize Model]\(モデルの初期化\)** を展開し、 **[Regression]\(回帰\)** を展開して、**Linear Regression Model (線形回帰モデル)** モジュールを自分のパイプラインにドラッグします
 
-2. **[プロパティ]** ウィンドウの **[Solution method]\(ソリューション メソッド\)** ドロップダウン リストで、回帰直線を見つけるために使用する計算メソッドとして、**[Online Gradient Descent]\(オンライン勾配降下\)** を選びます。
+2. **[プロパティ]** ウィンドウの **[Solution method]\(ソリューション メソッド\)** ドロップダウン リストで、回帰直線を見つけるために使用する計算メソッドとして、 **[Online Gradient Descent]\(オンライン勾配降下\)** を選びます。
 
 3. **[Create trainer mode]\(トレーナー モードの作成\)** では、定義済みのパラメーターのセットでモデルをトレーニングするかどうか、またはパラメーターの一括処理を使用することでモデルを最適化する必要があるかどうかを示します。
 
-    + **Single Parameter (単一パラメーター)**: 線形回帰ネットワークの構成方法が既にわかっている場合は、特定の値のセットを引数として渡すことができます。
+    + **Single Parameter (単一パラメーター)** : 線形回帰ネットワークの構成方法が既にわかっている場合は、特定の値のセットを引数として渡すことができます。
+    
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
 
    
 4. **[Learning rate]\(学習速度\)** では、確率勾配降下オプティマイザーに初期学習速度を指定します。
 
 5. **[Number of training epochs]\(トレーニング エポックの数\)** には、アルゴリズムが例を通して繰り返す必要がある回数を示す値を入力します。 少数の例を含むデータセットでは、この数値は収束に達するために大きくなります。
 
-6. **Normalize features (フィーチャーの正規化)**: モデルをトレーニングするために使用された数値データを既に正規化している場合、このオプションの選択を解除できます。 既定では、モジュールによって、0 と 1 の間の範囲へのすべての数値入力が正規化されます。
+6. **Normalize features (フィーチャーの正規化)** : モデルをトレーニングするために使用された数値データを既に正規化している場合、このオプションの選択を解除できます。 既定では、モジュールによって、0 と 1 の間の範囲へのすべての数値入力が正規化されます。
 
     > [!NOTE]
     > 
@@ -121,27 +119,37 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 7. **[L2 regularization weight]\(L2 正規化の重み\)** に、L2 正規化に対する重みとして使用する値を入力します。 オーバーフィットを避けるために、ゼロ以外の値を使用することをお勧めします。
 
-    正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」を参照してください。
+    正規化がモデルの調整にどのように影響するかの詳細については、「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」
 
 
-9. イテレーションが進むときに学習速度を下げる必要がある場合、**[Decrease learning rate]\(学習速度の低下\)** のオプションを選択します。  
+9. イテレーションが進むときに学習速度を下げる必要がある場合、 **[Decrease learning rate]\(学習速度の低下\)** のオプションを選択します。  
 
-10. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。 同じ実験におけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。
+10. **[Random number seed]\(乱数シード\)** には、必要に応じて、モデルによって使用される乱数ジェネレーターにシードを設定する値を入力できます。 同じパイプラインにおけるさまざまな実行を超えて同じ結果を保持する必要がある場合、シード値を使用すると便利です。
 
 
-12. ラベル付けされたデータセットと、トレーニング モジュールの 1 つを追加します。
+12. モデルをトレーニングします。
 
-    統合パラメーターの一括処理を使用していない場合、[Train Model (モデルのトレーニング)](train-model.md) モジュールを使用します。
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
+  
+    > [!NOTE]
+    > 
+    > パラメーター範囲を [[モデルのトレーニング]](train-model.md) に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[Parameter Range]\(パラメーター範囲\)** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一の値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。
 
-13. 実験を実行します。
+13. パイプラインを送信します。
 
-## <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
+### <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
 
-トレーニングの完了後、次の作業を行います。
+トレーニングの完了後:
 
 + 予測するには、新しい入力データと一緒に、トレーニング済みのモデルを [Score Model (モデルのスコア付け)](./score-model.md) モジュールに接続します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

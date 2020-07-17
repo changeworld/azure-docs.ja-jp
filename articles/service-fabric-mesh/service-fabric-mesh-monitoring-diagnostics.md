@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric Mesh アプリケーションの監視と診断 | Microsoft Docs
+title: Azure Service Fabric Mesh アプリでの監視と診断
 description: Azure 上の Service Fabric Mesh にあるアプリケーションの監視および診断について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: srrengar
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/22/2018
+ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358311"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75498150"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric Mesh の監視と診断は、主に次の 3 種類の診断データに分類されます。
@@ -40,7 +31,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> "az mesh service-replica" コマンドを使用して、レプリカ名を取得できます。 レプリカ名は、0 から増分する数字です。*
+> "az mesh service-replica" コマンドを使用して、レプリカ名を取得できます。 レプリカ名は、0 から増分する整数です。
 
 この動作が、投票アプリケーションの VotingWeb.Code コンテナーからのログにどのように記録されるかを次に示します。
 
@@ -48,6 +39,83 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
-## <a name="next-steps"></a>次の手順
-Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
-- [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)
+## <a name="container-metrics"></a>コンテナー メトリック 
+
+Mesh 環境は、コンテナーのパフォーマンスを示す、いくつかのメトリックを公開します。 Azure portal および Azure Monitor の CLI を介して、次のメトリックを使用できます。
+
+| メトリック | 説明 | Units|
+|----|----|----|
+| CpuUtilization | ActualCpu/AllocatedCpu (パーセンテージ) | % |
+| MemoryUtilization | ActualMem/AllocatedMem (パーセンテージ) | % |
+| AllocatedCpu | Azure Resource Manager テンプレートに基づいて割り当てられる CPU | ミリコア |
+| AllocatedMemory | Azure Resource Manager テンプレートに基づいて割り当てられるメモリ | MB |
+| ActualCpu | CPU 使用率 | ミリコア |
+| ActualMemory | メモリ使用量 | MB |
+| ContainerStatus | 0 - 無効:コンテナーの状態が不明です <br> 1 - 保留中:コンテナーは開始するように設定されています <br> 2 - 開始中:コンテナーは開始中です <br> 3 - 開始済み:コンテナーは正常に開始されました <br> 4 - 停止中:コンテナーは停止中です <br> 5 - 停止済み:コンテナーは正常に停止しました | 該当なし |
+| ApplicationStatus | 0 - 不明:状態を取得できません <br> 1 - 準備完了:アプリケーションは正常に実行中です <br> 2 - アップグレード中:アップグレードが進行中です <br> 3 - 作成中:アプリケーションを作成中です <br> 4 - 削除中:アプリケーションを削除中です <br> 5 - 失敗:アプリケーションのデプロイに失敗しました | 該当なし |
+| ServiceStatus | 0 - 無効:サービスには現在、正常性状態がありません <br> 1 - OK:サービスは正常な状態です  <br> 2 - 警告:調査が必要な問題が生じている可能性があります <br> 3 - エラー:調査が必要な問題があります <br> 4 - 不明:状態を取得できません | 該当なし |
+| ServiceReplicaStatus | 0 - 無効:レプリカには現在、正常性状態がありません <br> 1 - OK:サービスは正常な状態です  <br> 2 - 警告:調査が必要な問題が生じている可能性があります <br> 3 - エラー:調査が必要な問題があります <br> 4 - 不明:状態を取得できません | 該当なし | 
+| RestartCount | コンテナーの再起動の回数 | 該当なし |
+
+> [!NOTE]
+> ServiceStatus と ServiceReplicaStatus の値は、Service Fabric の [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) と同じです。 
+
+各メトリックは、異なるディメンションで使用可能であるため、異なるレベルでの集計を表示できます。 ディメンションの現在の一覧は次のとおりです。
+
+* ApplicationName
+* ServiceName
+* ServiceReplicaName
+* CodePackageName
+
+> [!NOTE]
+> CodePackageName ディメンションは Linux アプリケーションでは使用できません。 
+
+各ディメンションは、[Service Fabric アプリケーション モデル](service-fabric-mesh-service-fabric-resources.md#applications-and-services)の異なるコンポーネントに対応します
+
+### <a name="azure-monitor-cli"></a>Azure Monitor の CLI
+
+コマンドの完全な一覧が [Azure Monitor CLI のドキュメント](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)にありますが、いくつかの役立つ例を以下に示します 
+
+それぞれの例で、リソース ID は次のパターンに従います
+
+`"/subscriptions/<your sub ID>/resourcegroups/<your RG>/providers/Microsoft.ServiceFabricMesh/applications/<your App name>"`
+
+
+* アプリケーション内のコンテナーの CPU 使用率
+
+```cli
+    az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
+```
+* 各サービス レプリカのメモリ使用量
+```cli
+    az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
+``` 
+
+* 1 時間の時間枠で各コンテナーを再起動します 
+```cli
+    az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
+``` 
+
+* "VotingWeb" という名前のサービス全体における、1 時間の時間枠での平均 CPU 使用率
+```cli
+    az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
+``` 
+
+### <a name="metrics-explorer"></a>メトリックス エクスプローラー
+
+メトリックス エクスプローラーは、Mesh アプリケーションのすべてのメトリックを視覚化できる、ポータル内のブレードです。 このブレードには、ポータル内のアプリケーションのページと Azure Monitor ブレードでアクセスできます。後者は、Azure Monitor をサポートするすべての Azure リソースのメトリックを表示するために使用できます。 
+
+![メトリックス エクスプローラー](./media/service-fabric-mesh-monitoring-diagnostics/metricsexplorer.png)
+
+
+<!--
+### Container Insights
+
+In addition to the metrics explorer, we also have a dashboard available out of the box that shows sample metrics over time under the Insights blade in the application's page in the portal. 
+
+![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
+-->
+
+## <a name="next-steps"></a>次のステップ
+* Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
+* Azure Monitor メトリック コマンドの詳細については、[Azure Monitor CLI のドキュメント](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)をご確認ください。

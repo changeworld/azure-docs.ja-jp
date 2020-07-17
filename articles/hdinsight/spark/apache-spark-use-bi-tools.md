@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル:Azure HDInsight での Power BI を使用した Apache Spark データの分析 '
-description: Microsoft Power BI を使用して HDInsight クラスターに格納されている Apache Spark データを視覚化する
+title: チュートリアル:Power BI を使用して Azure HDInsight の Apache Spark データを分析する
+description: チュートリアル - Microsoft Power BI を使用して、HDInsight クラスターに格納されている Apache Spark データを視覚化する
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/16/2019
-ms.openlocfilehash: bf70abd2b3119a97af5ad1d4c56274f8e575fd3e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.custom: hdinsightactive,mvc,seoapr2020
+ms.date: 04/21/2020
+ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860961"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82195113"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル:HDInsight での Power BI を使用した Apache Spark データの分析
 
-このチュートリアルでは、[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) で Apache Spark クラスター内のデータを視覚化する方法を学習します。
+このチュートリアルでは、Microsoft Power BI を使用して Azure HDInsight で Apache Spark クラスター内のデータを視覚化する方法を学習します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     出力は次のようになります。
 
-    ![Spark でのテーブルの表示](./media/apache-spark-use-bi-tools/show-tables.png)
+    ![Spark でのテーブルの表示](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
 
     このチュートリアルを開始する前に Notebook を閉じると、`hvactemptable` はクリーンアップされるため、出力に含まれません。  BI ツールからアクセスできるのは、metastore に保存された Hive テーブル (**isTemporary** 列に **False** と表示される) のみです。 このチュートリアルでは、作成した **hvac** テーブルに接続します。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     出力は次のようになります。
 
-    ![Spark での hvac テーブルの行の表示](./media/apache-spark-use-bi-tools/select-limit.png)
+    ![Spark での hvac テーブルの行の表示](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
 
 3. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンしてリソースを解放します。
 
@@ -70,9 +70,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop でレポートを作成する
 
 Spark を操作する最初のステップでは、Power BI Desktop のクラスターに接続し、クラスターからデータを読み込み、そのデータを基に基本的な視覚エフェクトを作成します。
-
-> [!NOTE]  
-> この記事で説明するコネクタは、現在プレビューの段階です。 お客様のフィードバックを [Power BI コミュニティ](https://community.powerbi.com/) サイトや [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) を通じてお寄せください。
 
 1. Power BI Desktop を開きます。 起動のスプラッシュ画面が開いていれば閉じます。
 
@@ -104,82 +101,83 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
     2. **[BuildingID]** フィールドを**軸**にドラッグし、 **[ActualTemp]** と **[TargetTemp]** の各フィールドを**値**にドラッグします。
 
-        ![Apache Spark BI を使用して Spark データ視覚化を作成](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Apache Spark BI を使用して Spark データ視覚化を作成")
+        ![値の列を追加](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "値の列を追加")
 
         図は次のようになります。
 
-        ![Apache Spark BI を使用して Spark データ視覚化を作成](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Apache Spark BI を使用して Spark データ視覚化を作成")
+        ![面グラフの合計](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "面グラフの合計")
 
         既定では、**ActualTemp** および **TargetTemp** の合計が表示されます。 [視覚化] ウィンドウ内の **ActualTemp** と **TragetTemp** の横にある下矢印を選択すると、 **[合計]** が選択されていることを確認できます。
 
     3. [視覚化] ウィンドウ内の **ActualTemp** と **TragetTemp** の横にある下矢印を選択し、 **[平均]** を選択して、各ビルの実際の温度と目標温度の平均を取得します。
 
-        ![Apache Spark BI を使用して Spark データ視覚化を作成](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Apache Spark BI を使用して Spark データ視覚化を作成")
+        ![値の平均](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "値の平均")
 
         次のスクリーンショットのようにデータが視覚化されます。 グラフの上にカーソルを移動すると、関連データを含むツール ヒントが表示されます。
 
-        ![Apache Spark BI を使用して Spark データ視覚化を作成](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Apache Spark BI を使用して Spark データ視覚化を作成")
+        ![面グラフ](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "面グラフ")
 
 9. **[ファイル]**  >  **[保存]** に移動し、ファイルの名前 `BuildingTemperature` を入力して **[保存]** を選択します。
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>Power BI サービスにレポートを発行する (省略可能)
 
-Power BI サービスを使用すると、組織全体でレポートとダッシュボードを共有できます。 このセクションでは、まずデータセットとレポートを発行します。 次に、このレポートをダッシュボードにピン留めします。 通常、ダッシュボードは、レポート内のデータのサブセットにフォーカスするために使用します。レポート内にある視覚エフェクトは 1 つのみですが、それでも手順を実行するのに役立ちます。
+Power BI サービスを使用すると、組織全体でレポートとダッシュボードを共有できます。 このセクションでは、まずデータセットとレポートを発行します。 次に、このレポートをダッシュボードにピン留めします。 通常、ダッシュボードは、レポート内のデータのサブセットにフォーカスするために使用します。 レポート内にある視覚エフェクトは 1 つのみですが、それでも手順を実行するのに役立ちます。
 
 1. Power BI Desktop を開きます。
-2. **[ホーム]** タブで **[発行]** をクリックします。
 
-    ![Power BI Desktop から発行](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Power BI Desktop から発行")
+1. **[ホーム]** タブで **[発行]** を選択します。
 
-2. データセットを発行してレポートするワークスペースを選択して、 **[選択]** をクリックします。 次の図では、既定値の **[マイ ワークスペース]** が選択されています。
+    ![Power BI Desktop から発行する](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Power BI Desktop から発行する")
 
-    ![データセットを発行してレポートするワークスペースを選択する](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースを選択する") 
+1. データセットを発行してレポートするワークスペースを選択して、 **[選択]** をクリックします。 次の図では、既定値の **[マイ ワークスペース]** が選択されています。
 
-3. 発行に成功したら、 **[Open 'BuildingTemperature.pbix' in Power BI]\('BuildingTemperature.pbix' を Power BI で開く\)** をクリックします。
+    ![データセットを発行してレポートするワークスペースの選択](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースの選択")
 
-    ![発行の成功、クリックして資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "発行の成功、クリックして資格情報を入力") 
+1. 発行に成功したら、 **[Open 'BuildingTemperature.pbix' in Power BI]\('BuildingTemperature.pbix' を Power BI で開く\)** を選択します。
 
-4. Power BI サービスで、 **[資格情報を入力する]** をクリックします。
+    ![発行の成功、クリックして資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "発行の成功、クリックして資格情報を入力")
 
-    ![Power BI サービスで資格情報を入力する](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Power BI サービスで資格情報を入力する")
+1. Power BI サービスで、 **[資格情報を入力する]** を選択します。
 
-5. **[資格情報を編集]** をクリックします。
+    ![Power BI サービスで資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Power BI サービスで資格情報を入力")
 
-    ![Power BI サービスで資格情報を編集する](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Power BI サービスで資格情報を編集する")
+1. **[資格情報を編集]** を選択します。
 
-6. HDInsight のログイン アカウント情報を入力し、 **[サインイン]** をクリックします。 既定のアカウント名は *admin* です。
+    ![Power BI サービスで資格情報を編集](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Power BI サービスで資格情報を編集")
+
+1. HDInsight のログイン アカウント情報を入力し、 **[サインイン]** を選択します。 既定のアカウント名は *admin* です。
 
     ![Spark クラスターへのサインイン](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Spark クラスターへのサインイン")
 
-7. 左ウィンドウ枠で **[ワークスペース]**  >  **[マイ ワークスペース]**  >  **[レポート]** の順に移動して、 **[BuildingTemperature]** をクリックします。
+1. 左ペインで **[ワークスペース]**  >  **[マイ ワークスペース]**  >  **[レポート]** の順に移動して、 **[BuildingTemperature]** を選択します。
 
-    ![左ウィンドウ枠の [レポート] に表示されるレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左ウィンドウ枠の [レポート] に表示されるレポート")
+    ![左側のペインのレポートの下に一覧表示されたレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左側のペインのレポートの下に一覧表示されたレポート")
 
     左ウィンドウ枠の **[データセット]** にも **[BuildingTemperature]** が表示されます。
 
-    これで、Power BI Desktop で作成したビジュアルが Power BI サービスで使用できるようになりました。 
+    これで、Power BI Desktop で作成したビジュアルが Power BI サービスで使用できるようになりました。
 
-8. 視覚エフェクトにカーソルを合わせ、右上隅のピン アイコンをクリックします。
+1. 視覚エフェクトにカーソルを合わせ、右上隅のピン アイコンを選択します。
 
     ![Power BI サービスのレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI サービスのレポート")
 
-9. [新しいダッシュボード] を選択して、名前 `Building temperature` を入力し、 **[ピン留め]** をクリックします。
+1. [新しいダッシュボード] を選択して、名前 `Building temperature` を入力し、 **[ピン留め]** を選択します。
 
-    ![新しいダッシュボードにピン留めする](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "新しいダッシュボードにピン留めする")
+    ![新しいダッシュボードにピン留め](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "新しいダッシュボードにピン留め")
 
-10. レポートで、 **[ダッシュボードへ移動]** をクリックします。 
+1. レポートで、 **[ダッシュボードへ移動]** を選択します。
 
 ビジュアルはダッシュボードにピン留めされます。他のビジュアルをレポートに追加して、同じダッシュボードにピン留めすることもできます。 レポートとダッシュボードの詳細については、「[Power BI のレポート](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)」のほか、[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)に関する記事を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) で Apache Spark クラスター内のデータを視覚化する方法を学習しました。 次の記事に進んで、Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。
+このチュートリアルでは、Microsoft Power BI を使用して Azure HDInsight で Apache Spark クラスター内のデータを視覚化する方法を学習しました。 次の記事に進み、Machine Learning アプリケーションを作成できることを確認します。
 
 > [!div class="nextstepaction"]
-> [Apache Spark ストリーミング ジョブを実行する](apache-spark-eventhub-streaming.md)
+> [Machine Learning アプリケーションの作成](./apache-spark-ipython-notebook-machine-learning.md)

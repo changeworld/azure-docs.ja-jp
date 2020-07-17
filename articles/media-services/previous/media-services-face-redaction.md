@@ -1,6 +1,6 @@
 ---
 title: Azure Media Analytics で顔を編集する | Microsoft Docs
-description: このトピックでは、Azure Media Analytics で顔を編集する方法を示します。
+description: Azure Media Redactor は、クラウドでスケーラブルな顔編集を提供する Azure Media Analytics メディア プロセッサです。 この記事では、Azure Media Analytics で顔を編集する方法を示します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;
-ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: juliako
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188256"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74900299"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する 
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ ms.locfileid: "58188256"
 ### <a name="combined-mode"></a>結合モード
 手作業なしで、自動的に修正された mp4 が生成されます。
 
-| 段階 | ファイル名 | メモ |
+| 段階 | ファイル名 | Notes |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ |
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -49,7 +49,7 @@ ms.locfileid: "58188256"
 ### <a name="analyze-mode"></a>分析モード
 2 パス ワークフローの **分析** パスでは、ビデオ入力を受け取り、顔の位置の JSON ファイルと、検出された顔それぞれの jpg イメージを生成します。
 
-| 段階 | ファイル名 | メモ |
+| 段階 | ファイル名 | Notes |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ |
 | 入力 config |ジョブ構成プリセット |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -114,7 +114,7 @@ ms.locfileid: "58188256"
 
 Analyze パスからの出力は、元のビデオを含みません。 ビデオは、編集モードのタスクの入力資産にアップロードし、プライマリ ファイルとして選択する必要があります。
 
-| 段階 | ファイル名 | メモ |
+| 段階 | ファイル名 | Notes |
 | --- | --- | --- |
 | 入力資産 |foo.bar |WMV、MPV、MP4 形式のビデオ 手順 1 と同じビデオです。 |
 | 入力資産 |foo_annotations.json |フェーズ 1 からの注釈メタデータ ファイルで、変更可能です。 |
@@ -157,13 +157,13 @@ foo_IDList.txt の例
 
 ![高](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>ボックス
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![ボックス](./media/media-services-face-redaction/blur4.png)
 
-#### <a name="black"></a>黒
+#### <a name="black"></a>Black
 
-![黒](./media/media-services-face-redaction/blur5.png)
+![Black](./media/media-services-face-redaction/blur5.png)
 
 ## <a name="elements-of-the-output-json-file"></a>出力 JSON ファイルの要素
 
@@ -363,7 +363,7 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

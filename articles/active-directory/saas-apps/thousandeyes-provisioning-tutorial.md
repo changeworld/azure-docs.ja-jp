@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:ThousandEyes を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: チュートリアル:ThousandEyes のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを ThousandEyes に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8325737a62bba71364c02a234636999b0b1b9c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d87cffce636146eac3e557670ffc4fb2fc34ae38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964138"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77062882"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -60,11 +60,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Azure AD で ThousandEyes への自動ユーザー アカウント プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために ThousandEyes を既に構成している場合は、検索フィールドで ThousandEyes のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **ThousandEyes** を検索します。 検索結果から ThousandEyes を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために ThousandEyes を既に構成している場合は、検索フィールドで ThousandEyes のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **ThousandEyes** を検索します。 検索結果から ThousandEyes を選択してアプリケーションの一覧に追加します。
 
-3. ThousandEyes のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. ThousandEyes のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -74,29 +74,29 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
-6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が ThousandEyes アプリに接続できることを確認します。 接続できない場合は、使用中の ThousandEyes アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
+6. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が ThousandEyes アプリに接続できることを確認します。 接続できない場合は、使用中の ThousandEyes アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 
-8. **[Save]** をクリックします。
+8. **[保存]** をクリックします。
 
 9. [マッピング] セクションの **[Synchronize Azure Active Directory Users to ThousandEyes]\(Azure Active Directory ユーザーを ThousandEyes に同期する\)** を選びます。
 
 10. **[属性マッピング]** セクションで、Azure AD から ThousandEyes に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で ThousandEyes のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. ThousandEyes に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. ThousandEyes に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-12. **[Save]** をクリックします。
+12. **[保存]** をクリックします。
 
 これにより、[ユーザーとグループ] セクションで ThousandEyes に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

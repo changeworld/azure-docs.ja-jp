@@ -1,19 +1,18 @@
 ---
-title: Azure IoT Edge のモジュール
+title: Azure Marketplace の IoT Edge モジュール
 description: Azure Marketplace でアプリとサービスのパブリッシャー用の IoT Edge モジュールが提供されています。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
 author: qianw211
-manager: pabutler
 ms.service: marketplace
-ms.topic: article
-ms.date: 09/22/2018
-ms.author: qianw211
-ms.openlocfilehash: 9f4ad704de83e5971b5bc10083aefeec5d28374b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937849"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684339"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -59,7 +58,7 @@ Microsoft Azure Marketplace の契約とポリシーのすべてのご契約条�
 
 IoT Edge モジュールを Azure Marketplace で発行するには、次の前提条件を満たす必要があります。
 
-- Cloud パートナー ポータル (CPP) へのアクセス 詳細については、 [Azure Marketplace と AppSource の発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)を参照してください。
+- パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)を参照してください。
 - Azure Container registry で IoT Edge モジュールをホストします。 
 - IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください： 
     - タイトル
@@ -72,21 +71,19 @@ IoT Edge モジュールを Azure Marketplace で発行するには、次の前�
 
 **技術的な要件**
 
-Azure Marketplace で認定および発行されるためには、IoT Edge モジュールの主要な技術面の要件の詳細は、「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)」を参照してください。  
+Azure Marketplace で認定および発行されるためには、IoT Edge モジュールの主要な技術面の要件の詳細は、「[IoT Edge モジュールの技術アセットの準備](./partner-center-portal/create-iot-edge-module-asset.md)」を参照してください。
 
 ## <a name="documentation-and-resources"></a>ドキュメントおよびリソース
 
-[IoT Edge モジュール プランの作成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – クラウド発行ポータルで新しい IoT Edge モジュールを発行するための手順を説明します。
+[IoT Edge モジュール オファーの作成](./partner-center-portal/azure-iot-edge-module-creation.md) -- パートナー センターで新しい IoT Edge モジュール オファーを発行するための手順を説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、
 
-- [Microsoft Partner Network に登録する](https://partner.microsoft.com/membership)
-- [Microsoft アカウント](https://account.microsoft.com/account/)を作成する (Azure Marketplace 取引オファーに必要です。他のユーザーには推奨)。
-- [Marketplace 登録フォーム](https://azuremarketplace.microsoft.com/sell/signup)を送信する
+- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 
-登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
+パートナー センターに登録し、新しいオファーの作成か既存のオファーの使用を開始するには、
 
-- [Cloud パートナー ポータルにサインイン](https://cloudpartner.azure.com/)して、オファーを作成または完成する。
-- IoT Edge オファーを発行する方法の詳細については、「[IoT Edge モジュール オファー発行の概要](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts)」を参照してください。
+- [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
+- IoT Edge オファーを発行する方法の詳細については、[IoT Edge モジュール オファーを作成する](./partner-center-portal/azure-iot-edge-module-creation.md)方法に関するページを参照してください。

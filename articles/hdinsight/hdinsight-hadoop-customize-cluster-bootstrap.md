@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.custom: hdinsightactive
+ms.date: 04/01/2020
+ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203718"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529346"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
-ブートストラップ スクリプトを使用すると、Azure HDInsight のコンポーネントをプログラムでインストールおよび構成できます。 
+ブートストラップ スクリプトを使用すると、Azure HDInsight のコンポーネントをプログラムでインストールおよび構成できます。
 
 HDInsight クラスターの作成時に構成ファイル設定を指定する方法は、次の 3 つです。
 
@@ -48,7 +48,7 @@ HDInsight クラスターの作成時に構成ファイル設定を指定する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* PowerShell を使用する場合は、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
@@ -57,10 +57,9 @@ HDInsight クラスターの作成時に構成ファイル設定を指定する�
 > [!IMPORTANT]  
 > [Add-Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) と共にパラメーター `Spark2Defaults` を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
 
-
 ```powershell
 # hive-site.xml configuration
-$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
+$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90s" }
 
 $config = New-AzHDInsightClusterConfig `
     | Set-AzHDInsightDefaultStorage `
@@ -86,17 +85,10 @@ New-AzHDInsightCluster `
 
 **接続を確認するには:**
 
-1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. 左側のメニューから、**[HDInsight クラスター]** をクリックします。 表示されない場合は、最初に **[すべてのサービス]** をクリックします。
-3. PowerShell スクリプトを使用して作成したクラスターをクリックします。
-4. ブレードの上部から **[ダッシュボード]** をクリックし、Ambari UI を開きます。
-5. 左側のメニューで **[Hive]** をクリックします。
-6. **[HiveServer2]** を **[概要]** からクリックします。
-7. **[Configs]** タブをクリックします。
-8. 左側のメニューで **[Hive]** をクリックします。
-9. **[詳細]** タブをクリックします。
-10. 下にスクロールして、 **[Advanced hive-site]** を展開します。
-11. セクションの **hive.metastore.client.socket.timeout** を検索します。
+1. `https://CLUSTERNAME.azurehdinsight.net/` に移動します。`CLUSTERNAME` はクラスターの名前です。
+1. 左側のメニューから **[Hive]**  >  **[Configs]\(構成\)**  >  **[Advanced]\(詳細\)** に移動します。
+1. **[Advanced hive-site]\(詳細な Hive サイト\)** を展開します。
+1. **hive.metastore.client.socket.timeout** を探し、値が **90s** であることを確認します。
 
 他の構成ファイルのカスタマイズのサンプルを次に示します。
 
@@ -115,9 +107,11 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ```
 
 ## <a name="use-net-sdk"></a>.NET SDK の使用
-「 [.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap)」をご覧ください。
+
+「[Azure HDInsight SDK for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)」を参照してください。
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
+
 Resource Manager テンプレートでは、ブートストラップを使用できます。
 
 ```json
@@ -130,47 +124,45 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 }
 ```
 
-![HDInsight Hadoop を使用し、クラスターのブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop でクラスター ブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+
+定期的にイベント ログをストレージからクリーンアップするように spark2-defaults の構成を切り替える Resource Manager テンプレート スニペットの例を次に示します。  
+
+```json
+"configurations": {
+    "spark2-defaults": {
+        "spark.history.fs.cleaner.enabled": "true",
+        "spark.history.fs.cleaner.interval": "7d",
+        "spark.history.fs.cleaner.maxAge": "90d"
+    }
+}
+```
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight での Apache Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
-* [HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]
-* [HDInsight クラスターで Apache Spark をインストールして使用する][hdinsight-install-spark]
+
+* [HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
+* [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)
+* [HDInsight クラスターで Apache Spark をインストールして使用する](spark/apache-spark-jupyter-spark-sql-use-portal.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)。
 
-[hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-write-script]: hdinsight-hadoop-script-actions-linux.md
-[hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
-
-## <a name="appendix-powershell-sample"></a>付録:PowerShell のサンプル
+## <a name="appendix-powershell-sample"></a>付録: PowerShell のサンプル
 
 この PowerShell スクリプトでは、HDInsight クラスターを作成し、Hive の設定をカスタマイズします。 必ず `$nameToken`、`$httpPassword`、および `$sshPassword` の値を入力してください。
-
-> [!IMPORTANT]  
-> ストレージ アカウントで[安全な転送](../storage/common/storage-require-secure-transfer.md)が有効になっている場合、`DefaultStorageAccount` および `DefaultStorageContainer` の値は [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) から返されません。
-
-> [!WARNING]  
-> ストレージ アカウントの種類 `BlobStorage` は、HDInsight クラスターには使用できません。
-
 
 ```powershell
 ####################################
 # Set these variables
 ####################################
 #region - used for creating Azure service names
-$nameToken = "<ENTER AN ALIAS>" 
+$nameToken = "<ENTER AN ALIAS>"
 #endregion
 
 #region - cluster user accounts
 $httpUserName = "admin"  #HDInsight cluster username
-$httpPassword = '<ENTER A PASSWORD>' 
+$httpPassword = '<ENTER A PASSWORD>'
 
 $sshUserName = "sshuser" #HDInsight ssh user name
-$sshPassword = '<ENTER A PASSWORD>' 
+$sshPassword = '<ENTER A PASSWORD>'
 #endregion
 
 ####################################
@@ -222,6 +214,8 @@ New-AzStorageAccount `
     -Kind StorageV2 `
     -EnableHttpsTrafficOnly 1
 
+# Note: Storage account kind BlobStorage cannot be used as primary storage.
+
 $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
                                 -Name $defaultStorageAccountName)[0].Value
@@ -237,7 +231,7 @@ New-AzStorageContainer `
 ####################################
 # Create a configuration object
 ####################################
-$hiveConfigValues = @{"hive.metastore.client.socket.timeout"="90"}
+$hiveConfigValues = @{"hive.metastore.client.socket.timeout"="90s"}
 
 $config = New-AzHDInsightClusterConfig `
     | Set-AzHDInsightDefaultStorage `

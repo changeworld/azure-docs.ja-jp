@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor を使用して Azure Active Directory のログを SumoLogic にストリーミングする | Microsoft Docs
+title: Azure Monitor を使用してログを SumoLogic にストリーミングする | Microsoft Docs
 description: Azure Monitor を使用して Azure Active Directory のログを SumoLogic と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ccf9cd550b3848be841f193f4ab8a6094cf671d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6cdfc4e393ca7bf4bcbd523b4fad72690d5f2744
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008944"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74014381"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを SumoLogic と統合する方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "60008944"
 
    ![ダッシュボード](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)

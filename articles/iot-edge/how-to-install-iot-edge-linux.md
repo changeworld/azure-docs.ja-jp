@@ -1,53 +1,61 @@
 ---
 title: Linux 上への Azure IoT Edge のインストール | Microsoft Docs
-description: Ubuntu を実行している Linux AMD64 デバイス上に Azure IoT Edge をインストールする手順
+description: Ubuntu または Raspbian を実行している Linux AMD64 デバイス上に Azure IoT Edge をインストールする手順
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 02/21/2020
 ms.author: kgremban
-ms.custom: seodec18
-ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fb86ee9ce956917f8da44146e58a4775e0ba639f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535903"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Linux に Azure IoT Edge ランタイムをインストールする (x64)
+# <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
-Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。
+Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。 詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
-詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
-
-この記事では、Ubuntu Linux x64 (Intel/AMD) IoT Edge デバイスに Azure IoT Edge ランタイムをインストールする手順を示します。 サポートされている AMD64 オペレーティング システムの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
+この記事では、X64、ARM32、または ARM64 Linux デバイス上に Azure IoT Edge ランタイムをインストールする手順について説明します。 Ubuntu Server 16.04、Ubuntu Server 18.04、および Raspbian Stretch 用のインストール パッケージが提供されています。 サポートされている Linux オペレーティング システムおよびアーキテクチャの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
 
 > [!NOTE]
 > Linux ソフトウェア リポジトリ内のパッケージは、各パッケージ (/usr/share/doc/*パッケージ名*) 内にあるライセンス条項の対象となります。 パッケージを使用する前に、ライセンス条項をお読みください。 インストールし、パッケージを使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、パッケージを使用しないでください。
 
-## <a name="register-microsoft-key-and-software-repository-feed"></a>Microsoft キーとソフトウェア リポジトリ フィードを登録する
+## <a name="install-the-latest-runtime-version"></a>最新のランタイム バージョンをインストールする
+
+以下のセクションを使用して、最新バージョンの Azure IoT Edge ランタイムをデバイスにインストールします。
+
+>[!NOTE]
+>ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。
+
+### <a name="register-microsoft-key-and-software-repository-feed"></a>Microsoft キーとソフトウェア リポジトリ フィードを登録する
 
 IoT Edge ランタイムをインストールできるようにデバイスを準備します。
 
+リポジトリ構成をインストールします。 デバイスのオペレーティング システムに対応する **16.04** または **18.04** コマンドを選択します。
 
-リポジトリ構成をインストールします。 Ubuntu のリリースに適した **16.04** または **18.04** コード スニペットのどちらかを選択します。
+* **Ubuntu Server 16.04**:
 
-> [!NOTE]
-> 使用しているバージョンの Ubuntu の正しいコード ボックスからコード スニペットを選択するようにしてください。
-
-* **Ubuntu 16.04** の場合:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Ubuntu 18.04** の場合:
+* **Ubuntu Server 18.04**:
+
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
-   
+
+* **Raspbian Stretch**:
+
+   ```bash
+   curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
 生成された一覧をコピーします。
 
    ```bash
@@ -61,11 +69,11 @@ Microsoft GPG 公開キーをインストールする
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
 
-## <a name="install-the-container-runtime"></a>コンテナー ランタイムをインストールする
+### <a name="install-the-container-runtime"></a>コンテナー ランタイムをインストールする
 
-Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー ランタイムに依存します。 実稼働環境シナリオでは、以下の [Moby ベース](https://mobyproject.org/) エンジンを使用することをお勧めします。 これは、Azure IoT Edge で公式にサポートされている唯一のコンテナー エンジンです。 Docker CE/EE コンテナー イメージは、Moby ランタイムと互換性があります。
+Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー ランタイムに依存します。 実稼働環境シナリオでは、以下の [Moby ベース](https://mobyproject.org/) エンジンを使用することをお勧めします。 Moby エンジンは、Azure IoT Edge で公式にサポートされている唯一のコンテナー エンジンです。 Docker CE/EE コンテナー イメージは、Moby ランタイムと互換性があります。
 
-apt update を実行します。
+デバイスのパッケージ リストを更新します。
 
    ```bash
    sudo apt-get update
@@ -83,13 +91,15 @@ Moby コマンドライン インターフェイス (CLI) をインストール�
    sudo apt-get install moby-cli
    ```
 
-## <a name="install-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンのインストール
+Moby コンテナー ランタイムをインストールするときにエラーが発生した場合は、この記事の後半にある「[Linux カーネルを確認して Moby の互換性を確保する](#verify-your-linux-kernel-for-moby-compatibility)」の手順に従ってください。
+
+### <a name="install-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンのインストール
 
 **IoT Edge セキュリティ デーモン**によって、IoT Edge デバイス上にセキュリティ標準が提供されて維持されます。 デーモンは起動のたびに開始され、IoT Edge ランタイムの残りの部分を開始することでデバイスをブートストラップします。
 
-このインストール コマンドでは、**iothsmlib** の標準バージョンもインストールされます (まだ存在しない場合)。
+このインストール コマンドでは、**libiothsm** の標準バージョンもインストールされます (まだ存在しない場合)。
 
-apt update を実行します。
+デバイスのパッケージ リストを更新します。
 
    ```bash
    sudo apt-get update
@@ -101,7 +111,55 @@ apt update を実行します。
    sudo apt-get install iotedge
    ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンの構成
+IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 「[セキュリティ デーモンを構成する](#configure-the-security-daemon)」セクションの手順に従って、デバイスのプロビジョニングを完了します。
+
+## <a name="install-a-specific-runtime-version"></a>特定のランタイム バージョンをインストールする
+
+最新バージョンを使用する代わりに、特定のバージョンの Moby と Azure IoT Edge ランタイムをインストールする場合は、IoT Edge GitHub リポジトリからコンポーネント ファイルを直接ターゲットにすることができます。 次の手順に従って、すべての IoT Edge コンポーネントをデバイスに取得します。Moby エンジンと CLI、libiothsm、IoT Edge セキュリティ デーモンの順に取得します。 特定のランタイム バージョンに変更しない場合は、次のセクションの「[セキュリティ デーモンを構成する](#configure-the-security-daemon)」に進んでください。
+
+1. [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に移動し、対象とするリリース バージョンを見つけます。
+
+2. そのバージョンの **[Assets]** セクションを展開します。
+
+3. どのリリースでも、Moby エンジンの更新プログラムがある場合とない場合があります。 **moby-engine** および **moby-cli** で始まるファイルが表示されている場合は、以下のコマンドを使用して、それらのコンポーネントを更新します。 Moby ファイルが表示されない場合は、最新バージョンが見つかるまで古いリリース資産を順番に調べます。
+
+   1. IoT Edge デバイスのアーキテクチャに対応する **moby-engine** ファイルを見つけます。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
+
+   2. コピーしたリンクを次のコマンドで使用して、そのバージョンの Moby エンジンをインストールします。
+
+      ```bash
+      curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
+      ```
+
+   3. IoT Edge デバイスのアーキテクチャに対応する **moby-cli** ファイルを見つけます。 Moby CLI はオプション コンポーネントですが、開発時に役立つことがあります。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
+
+   4. コピーしたリンクを次のコマンドで使用して、そのバージョンの Moby CLI をインストールします。
+
+      ```bash
+      curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
+      ```
+
+4. 各リリースには、IoT Edge セキュリティ デーモンと hsmlib の新しいファイルが必要です。 以下のコマンドを使用して、これらのコンポーネントを更新します。
+
+   1. IoT Edge デバイスのアーキテクチャに対応する **libiothsm-std** ファイルを見つけます。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
+
+   2. コピーしたリンクを次のコマンドで使用して、そのバージョンの hsmlib をインストールします。
+
+      ```bash
+      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+      ```
+
+   3. IoT Edge デバイスのアーキテクチャに対応する **iotedge** ファイルを見つけます。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
+
+   4. コピーしたリンクを次のコマンドで使用して、そのバージョンの IoT Edge セキュリティ デーモンをインストールします。
+
+      ```bash
+      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+      ```
+
+IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 次のセクションの手順に従って、デバイスのプロビジョニングを完了します。
+
+## <a name="configure-the-security-daemon"></a>セキュリティ デーモンを構成する
 
 IoT Edge ランタイムを構成して、物理デバイスを Azure IoT ハブに存在するデバイス ID にリンクします。
 
@@ -111,7 +169,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 ### <a name="option-1-manual-provisioning"></a>オプション 1: 手動プロビジョニング
 
-デバイスを手動でプロビジョニングするには、[デバイス接続文字列](how-to-register-device-portal.md)をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
+デバイスを手動でプロビジョニングするには、[デバイス接続文字列](how-to-register-device.md#register-in-the-azure-portal)をデバイスに提供する必要があります。この文字列は、新しいデバイスを IoT ハブに登録することで作成できます。
 
 構成ファイルを開きます。
 
@@ -119,19 +177,16 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 sudo nano /etc/iotedge/config.yaml
 ```
 
-ファイルのプロビジョニング セクションを見つけます。 **manual** プロビジョニング モードのコメントを解除し、dps プロビジョニング モードがコメントアウトされていることを確認します。**device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。
+ファイルのプロビジョニング構成を見つけ、**Manual provisioning configuration** (手動プロビジョニングの構成) セクションをコメント解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。 他のプロビジョニング セクションがすべてコメント アウトされていることを確認します。**provisioning:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
 
-   ```yaml
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # provisioning:
-   #   source: "dps"
-   #   global_endpoint: "https://global.azure-devices-provisioning.net"
-   #   scope_id: "{scope_id}"
-   #   registration_id: "{registration_id}"
-   ```
+```yml
+# Manual provisioning configuration
+provisioning:
+  source: "manual"
+  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```
+
+クリップボードの内容を Nano に貼り付けるには、`Shift+Right Click` キーまたは `Shift+Insert` キーを押します。
 
 ファイルを保存して閉じます。
 
@@ -143,9 +198,15 @@ sudo nano /etc/iotedge/config.yaml
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>オプション 2: 自動プロビジョニング
+### <a name="option-2-automatic-provisioning"></a>オプション 2:自動プロビジョニング
 
-デバイスを自動的にプロビジョニングするには、[Device Provisioning Service を設定し、デバイス登録 ID を取得](how-to-auto-provision-simulated-device-linux.md)します。 自動プロビジョニングは、トラステッド プラットフォーム モジュール (TPM) チップが搭載されているデバイスでのみ機能します。 たとえば、Raspberry Pi デバイスには、既定で TPM が搭載されていません。
+IoT Edge デバイスは、[Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml) を使用して自動的にプロビジョニングできます。 現在 IoT Edge では、自動プロビジョニングに 2 つの構成証明メカニズムをサポートしていますが、お使いのハードウェアの要件によってはご自分の選択が制限される場合があります。 たとえば、Raspberry Pi デバイスには、既定でトラステッド プラットフォーム モジュール (TPM) チップが搭載されていません。 詳細については、次の記事を参照してください。
+
+* [Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイスを作成し、プロビジョニングする](how-to-auto-provision-simulated-device-linux.md)
+* [X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)
+* [対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-symmetric-keys.md)
+
+これらの記事では、DPS で登録を設定し、構成証明用の適切な証明書またはキーを生成する手順について説明しています。 プロビジョニング情報は、選択した構成証明メカニズムに関係なく、お使いの IoT Edge デバイスの IoT Edge 構成ファイルに追加されます。
 
 構成ファイルを開きます。
 
@@ -153,23 +214,53 @@ sudo systemctl restart iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-ファイルのプロビジョニング セクションを見つけます。 **dps** プロビジョニング モードのコメントを解除し、手動セクションをコメントアウトします。 **scope_id** と **registration_id** の値を、IoT Hub Device Provisioning Service と TPM を搭載した IoT Edge デバイスの値で更新します。
+ファイルのプロビジョニング構成を見つけ、構成証明メカニズムに適したセクションをコメント解除します。 他のプロビジョニング セクションがすべてコメント アウトされていることを確認します。**provisioning:** の行の先頭には空白文字を入れず、入れ子の項目には 2 つの空白でインデントする必要があります。 **scope_id** の値は、お使いの IoT Hub Device Provisioning Service インスタンスの値で更新し、構成証明のフィールドには適切な値を指定します。
 
-   ```yaml
-   # provisioning:
-   #   source: "manual"
-   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   provisioning:
-     source: "dps"
-     global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "{scope_id}"
-     registration_id: "{registration_id}"
-   ```
+TPM の構成証明:
 
-ファイルを保存して閉じます。
+```yml
+# DPS TPM provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "tpm"
+    registration_id: "<REGISTRATION_ID>"
+```
 
-   `CTRL + X`、`Y`、`Enter`
+X.509 の構成証明:
+
+```yml
+# DPS X.509 provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "x509"
+#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+```
+
+対称キーの構成証明:
+
+```yml
+# DPS symmetric key provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "symmetric_key"
+    registration_id: "<REGISTRATION_ID>"
+    symmetric_key: "<SYMMETRIC_KEY>"
+```
+
+クリップボードの内容を Nano に貼り付けるには、`Shift+Right Click` キーまたは `Shift+Insert` キーを押します。
+
+ファイルを保存して閉じます。 `CTRL + X`、`Y`、`Enter`
 
 構成ファイルにプロビジョニング情報を入力した後、デーモンを再起動します。
 
@@ -181,31 +272,53 @@ sudo systemctl restart iotedge
 
 前のセクションで**手動構成**手順を使用した場合、IoT Edge ランタイムがデバイス上で正常にプロビジョニングおよび実行されている必要があります。 **自動構成**手順を使用した場合は、ランタイムが IoT ハブにデバイスを登録できるように、追加の手順を完了する必要があります。 次の手順については、「[Linux 仮想マシンでのシミュレートされた TPM IoT Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)」をご覧ください。
 
-以下を使用して、IoT Edge デーモンの状態を確認できます。
+以下により、IoT Edge デーモンの状態を確認できます。
 
 ```bash
 systemctl status iotedge
 ```
 
-以下を使用して、デーモンのログを確認します。
+デーモンのログを調べます:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-また、以下を使用して、実行中のモジュールを一覧表示します。
+最も一般的な構成およびネットワーク エラーの自動チェックを実行します。
+
+```bash
+sudo iotedge check
+```
+
+最初のモジュールをデバイス上の IoT Edge にデプロイするまで、 **$edgeHub** システム モジュールはデバイスに展開されません。 その結果、自動チェックからは `Edge Hub can bind to ports on host` 接続チェックのエラーが返されます。 このエラーは、モジュールをデバイスに展開した後に発生した場合でなければ、無視できます。
+
+最後に、実行中のモジュールを一覧表示します。
 
 ```bash
 sudo iotedge list
 ```
 
-## <a name="tips-and-suggestions"></a>ヒントと検索候補
+デバイスに IoT Edge をインストールした後、実行されているモジュールは **edgeAgent** だけです。 最初のデプロイを作成した後は、その他のシステム モジュール **$edgeHub** もデバイスで起動します。 詳細については、[IoT Edge モジュールのデプロイ](how-to-deploy-modules-portal.md)に関する記事を参照してください。
+
+## <a name="tips-and-troubleshooting"></a>ヒントとトラブルシューティング
 
 `iotedge` コマンドの実行には、昇格された特権が必要です。 ランタイムをインストールしたら、マシンからサインアウトした後サインインし直して、自動的にアクセス許可を更新します。 それまでは、すべての `iotedge` コマンドの前に **sudo** を使用します。
 
 リソースに制約のあるデバイスでは、[トラブルシューティング ガイド](troubleshoot.md)に示されているように、*OptimizeForPerformance* 環境変数を *false* に設定することを強くお勧めします。
 
 ネットワークにプロキシ サーバーがある場合は、「[Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md)」(プロキシ サーバー経由で通信するように IoT Edge デバイスを構成する) の手順に従ってください。
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Linux カーネルを確認して Moby の互換性を確保する
+
+組み込みデバイスの多くの製造元が、カスタム Linux カーネルを含むデバイス イメージを提供しています。これらのカーネルには、コンテナー ランタイムの互換性を確保するために必要な機能がありません。 推奨される Moby コンテナー ランタイムのインストール中に問題が発生した場合は、デバイスで次のコマンドを実行し、公式の [Moby GitHub リポジトリ](https://github.com/moby/moby)にある [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) スクリプトを使って Linux カーネル構成のトラブルシューティングを行うことができます。 デバイスで次のコマンドを実行して、カーネル構成を確認します。
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+このコマンドにより、Moby ランタイムで使用されるカーネルの機能の状態が含まれた詳細な出力が提供されます。 カーネルと Moby ランタイムの完全な互換性を確保するには、`Generally Necessary` と `Network Drivers` の下のすべての項目が有効になっていることを確認します。  欠けている機能を特定したら、カーネルをソースから再構築し、カーネルの適切な .config に含める関連モジュールを選択することで、それらを有効にします。同様に、`defconfig` や `menuconfig` などのカーネル構成ジェネレーターを使用している場合は、それぞれの機能を見つけて有効にし、ご自分のカーネルを適宜再構築します。  新たに変更されたカーネルを展開したら、check-config スクリプトをもう一度実行して、必要なすべての機能が正常に有効になっていることを確認します。
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
 
@@ -217,7 +330,7 @@ IoT Edge ランタイムを削除します。
 sudo apt-get remove --purge iotedge
 ```
 
-IoT Edge ランタイムが削除されると、作成したコンテナーは停止されますが、デバイスには依然として残っています。 すべてのコンテナーを表示して、どのコンテナーが残っているかを確認します。
+IoT Edge ランタイムが削除されると、作成したコンテナーは停止されますが、デバイスには残っています。 すべてのコンテナーを表示して、どのコンテナーが残っているかを確認します。
 
 ```bash
 sudo docker ps -a
@@ -236,7 +349,7 @@ sudo apt-get remove --purge moby-cli
 sudo apt-get remove --purge moby-engine
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)できます。
 

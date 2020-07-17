@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305066"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70390175"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -61,26 +61,43 @@ ms.locfileid: "66305066"
 * キー - フィルター処理のために使用するイベント データ内のフィールド。 キーとして数値、ブール値、または文字列を指定できます。
 * 値 - キーと比較する 1 つ以上の値。
 
-高度なフィルターを使用する場合の JSON 構文を次に示します。
+複数の値を使用した単一のフィルターを指定する場合、**OR** 操作が実行されます。そのため、キー フィールドの値はそれらの値のいずれかである必要があります。 たとえば次のようになります。
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
-    },
-    {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
-### <a name="operator"></a>Operator
+複数の異なるフィルターを指定する場合、**AND** 操作が実行されます。そのため、各フィルターの条件が満たされる必要があります。 たとえば次のようになります。 
+
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
+    },
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+### <a name="operator"></a>演算子
 
 数値に対して使用できる演算子は次のとおりです。
 
@@ -91,7 +108,7 @@ ms.locfileid: "66305066"
 * NumberIn
 * NumberNotIn
 
-ブール値に対して使用できる演算子は BoolEquals です。
+ブール値に対して使用できる演算子は、BoolEquals です。
 
 文字列に対して使用できる演算子は次のとおりです。
 
@@ -103,11 +120,11 @@ ms.locfileid: "66305066"
 
 すべての文字列比較で、大文字と小文字が区別されます。
 
-### <a name="key"></a>キー
+### <a name="key"></a>Key
 
 Event Grid スキーマ内のイベントの場合、キーには次の値を使用します。
 
-* Id
+* id
 * トピック
 * サブジェクト
 * EventType
@@ -117,7 +134,7 @@ Event Grid スキーマ内のイベントの場合、キーには次の値を使
 Cloud Events スキーマのイベントの場合は、キーの次の値を使用します。
 
 * EventId
-* ソース
+* source
 * EventType
 * EventTypeVersion
 * イベント データ (Data.key1 など)
@@ -130,7 +147,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 
 * number
 * string
-* ブール値
+* boolean
 * array
 
 ### <a name="limitations"></a>制限事項
@@ -143,7 +160,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 
 複数のフィルターで同じキーを使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * PowerShell および Azure CLI を使用したイベント フィルター処理については、[Event Grid でのイベントのフィルター処理](how-to-filter-events.md)に関するページを参照してください。
 * Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける | Microsoft Docs
+title: Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 description: この記事では、Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントの順序付けと記録を行って、最新の接続状態を管理する方法について説明します
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015264"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726198"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -24,21 +24,21 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)ことができます。
 
-* アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](../cosmos-db/create-sql-api-dotnet.md#create-an-azure-cosmos-db-account)」の手順を参照してください。
+* アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](../cosmos-db/create-sql-api-java.md#create-a-database-account)」の手順を参照してください。
 
-* データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-dotnet.md#add-a-database-and-a-collection)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
+* データベース内のコレクション。 「[コレクションの追加](../cosmos-db/create-sql-api-java.md#add-a-container)」の手順を参照してください。 コレクションを作成するときに、パーティション キーに `/id` を使用します。
 
 * Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。
 
-## <a name="create-a-stored-procedure"></a>ストアド プロシージャを作成する
+## <a name="create-a-stored-procedure"></a>ストアド プロシージャの作成
 
 最初に、ストアド プロシージャを作成します。このストアド プロシージャで、受信イベントのシーケンス番号を比較し、デバイスごとに最新のイベントをデータベースに記録するロジックを実行するように設定します。
 
-1. Cosmos DB SQL API で、**[データ エクスプローラー]** > **[アイテム]** > **[新しいストアド プロシージャ]** を選択します。
+1. Cosmos DB SQL API で、 **[データ エクスプローラー]**  >  **[アイテム]**  >  **[新しいストアド プロシージャ]** を選択します。
 
    ![ストアド プロシージャを作成する](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. ストアド プロシージャ ID の **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
+2. ストアド プロシージャ ID に **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -137,7 +137,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 ### <a name="create-a-logic-app-resource"></a>ロジック アプリ リソースを作成する
 
-1. [Azure portal](https://portal.azure.com)で、**[+リソースの作成]**、**[統合]**、**[ロジック アプリ]** の順に選択します。
+1. [Azure portal](https://portal.azure.com)で、 **[+リソースの作成]** 、 **[統合]** 、 **[ロジック アプリ]** の順に選択します。
 
    ![ロジック アプリを作成する](./media/iot-hub-how-to-order-connection-state-events/select-logic-app.png)
 
@@ -150,7 +150,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
    これで、ロジック アプリの Azure リソースが作成されました。 Azure によってロジック アプリがデプロイされたら、すばやく開始できるように Logic Apps デザイナーによって一般的なパターンのテンプレートが表示されます。
 
    > [!NOTE]
-   > ロジック アプリを見つけて再度開くには、**[リソース グループ]** を選択し、このハウツー記事で使用しているリソース グループを選択します。 次に、新しいロジック アプリを選択します。 これにより、ロジック アプリ デザイナーが開きます。
+   > ロジック アプリを見つけて再度開くには、 **[リソース グループ]** を選択し、このハウツー記事で使用しているリソース グループを選択します。 次に、新しいロジック アプリを選択します。 これにより、ロジック アプリ デザイナーが開きます。
 
 4. ロジック アプリ デザイナーで、一般的なトリガーが表示されるまで右にスクロールします。 **[テンプレート]** の下で **[空のロジック アプリ]** を選択すると、ロジック アプリを最初から作成できます。
 
@@ -168,7 +168,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    ![サンプルのペイロードを使用してスキーマを生成する](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
 
-4. 次のサンプル JSON コードをテキスト ボックスに貼り付けて、**[完了]** を選びます。
+4. 次のサンプル JSON コードをテキスト ボックスに貼り付けて、 **[完了]** を選びます。
 
    ```json
    [{
@@ -200,7 +200,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 ロジック アプリのワークフロー内では、条件は特定の条件を満たした後に特定のアクションを実行するのに役立ちます。 条件が満たされると、目的の動作を定義することができます。 このチュートリアルでは、eventType がデバイス接続とデバイス切断のどちらであるかを調べる条件を設定します。 アクションでは、データベース内のストアド プロシージャを実行します。
 
-1. **[+ 新しいステップ]**、 **[ビルトイン]** の順に選択し、**[条件]** を見つけて選択します。 **[値の選択]** をクリックすると、動的コンテンツ (選択可能なフィールド) を表示するボックスがポップアップ表示されます。 次のようにフィールドに入力し、デバイス接続イベントとデバイス切断イベントのみを対象にこのアクションが実行されるようにします。
+1. **[+ 新しいステップ]** 、 **[ビルトイン]** の順に選択し、 **[条件]** を見つけて選択します。 **[値の選択]** をクリックすると、動的コンテンツ (選択可能なフィールド) を表示するボックスがポップアップ表示されます。 次のようにフィールドに入力し、デバイス接続イベントとデバイス切断イベントのみを対象にこのアクションが実行されるようにします。
 
    * 値の選択: **eventType** -- このフィールドをクリックすると表示される動的コンテンツ内のフィールドから、この値を選択します。
    * [次の値に等しい] を **[次の文字で終了する]** に変更します。
@@ -208,35 +208,35 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
      ![条件を入力する](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
-2. **[true の場合]** ダイアログで、**[アクションの追加]** をクリックします。
+2. **[true の場合]** ダイアログで、 **[アクションの追加]** をクリックします。
   
    ![true の場合のアクションを追加する](./media/iot-hub-how-to-order-connection-state-events/action-if-true.png)
 
-3. Cosmos DB を検索し、**[Azure Cosmos DB - ストアド プロシージャの実行]** を選択します
+3. Cosmos DB を検索し、 **[Azure Cosmos DB - ストアド プロシージャの実行]** を選択します
 
    ![CosmosDB を検索する](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-search.png)
 
-4. **[接続名]** に「**cosmosdb-connection**」と入力し、テーブルでエントリを選択して、**[作成]** を選択します。 **[ストアド プロシージャの実行]** パネルが表示されます。 フィールドに次の値を入力します。
+4. **[接続名]** に「**cosmosdb-connection**」と入力し、テーブルでエントリを選択して、 **[作成]** を選択します。 **[ストアド プロシージャの実行]** パネルが表示されます。 フィールドに次の値を入力します。
 
    **データベース ID**:ToDoList
 
-   **コレクション ID**:項目
+   **コレクション ID**:アイテム
 
    **Sproc ID**:LatestDeviceConnectionState
 
-5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、**[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックっします。これにより、パーティション キー値のフィールドとストアド プロシージャーのパラメーターのフィールドが追加されます。
+5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、 **[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックします。これにより、パーティション キー値のフィールドとストアド プロシージャのパラメーターのフィールドが追加されます。
 
    ![ロジック アプリのアクションを設定する](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
-6. 次に示すように、パーティション キー値とパラメーターを入力します。 以下で示されているように、かっこと二重引用符を入力してください。 ここで使用できる有効な値を取得するために、**[動的なコンテンツの追加]** をクリックしなければならない場合があります。
+6. 次に示すように、パーティション キー値とパラメーターを入力します。 以下で示されているように、かっこと二重引用符を入力してください。 ここで使用できる有効な値を取得するために、 **[動的なコンテンツの追加]** をクリックしなければならない場合があります。
 
    ![ロジック アプリのアクションを設定する](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. **[For Each]** と表示されているウィンドウの上部の **[以前の手順から出力を選択]** で、**[本文]** が選択されていることを確認します。
+7. **[For Each]** と表示されているウィンドウの上部の **[以前の手順から出力を選択]** で、 **[本文]** が選択されていることを確認します。
 
    ![ロジック アプリ for-each の入力](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
-8. ロジック アプリを保存し、
+8. ロジック アプリを保存します。
 
 ### <a name="copy-the-http-url"></a>HTTP の URL をコピーする
 
@@ -264,15 +264,15 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
    ![新しいイベント サブスクリプションを作成する](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. **[イベント サブスクリプションの詳細]** を入力します。わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。
+4. **[イベント サブスクリプションの詳細]** を入力します。わかりやすい名前を指定し、 **[イベント グリッド スキーマ]** を選択します。
 
-5. **[イベントの種類]** フィールドに入力します。 **[すべてのイベントの種類を購読します]** をオフにして、メニューから **[Device Connected]\(デバイスの接続\)** と **[Device Disconnected]\(デバイスの切断\)** を選択します。
+5. **[イベントの種類]** フィールドに入力します。 ドロップダウン リストで、 **[Device Connected]\(デバイスの接続\)** および **[Device Disconnected]\(デバイスの切断\)** のみをメニューから選択します。 画面の他の場所をクリックしてリストを閉じ、選択内容を保存します。
 
    ![検索するイベントの種類を設定する](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
 6. **[エンドポイントの詳細]** で、 [エンドポイントのタイプ] として **[web hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
-   ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. これで、フォームは次の例のようになります。
 
@@ -286,7 +286,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 ### <a name="register-a-device-in-iot-hub"></a>IoT Hub にデバイスを登録する
 
-1. IoT Hub から、**[IoT Devices]\(IoT デバイス\)** を選びます。
+1. IoT Hub から、 **[IoT Devices]\(IoT デバイス\)** を選びます。
 
 2. ウィンドの上部にある **[+ 追加]** を選択します。
 
@@ -302,11 +302,9 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
    ![デバイスの接続文字列](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>Raspberry Pi シミュレーターを起動する
 
-1. Raspberry Pi Web シミュレーターを使用してデバイス接続をシミュレートしましょう。
+Raspberry Pi Web シミュレーターを使用してデバイス接続をシミュレートしましょう。
 
 [Raspberry Pi シミュレーターの起動](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
@@ -336,9 +334,9 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
+[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルでは、Azure サブスクリプションで料金が発生するリソースを使いました。 チュートリアルを試してテストを完了したら、残しておきたくないリソースを無効にするか削除します。
 
@@ -346,7 +344,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 1. ロジック アプリに移動します。
 
-2. **[概要]** ブレードで、**[削除]** または **[無効]** を選びます。
+2. **[概要]** ブレードで、 **[削除]** または **[無効]** を選びます。
 
     各サブスクリプションで使うことができる無料 IoT Hub は 1 つです。 このチュートリアル用に無料のハブを作成した場合は、課金されないように削除する必要はありません。
 
@@ -362,9 +360,9 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 7. **[削除]** を選択します。
 
-Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、**[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account)するための詳細な手順を参照してください。
+Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、 **[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account)するための詳細な手順を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)方法を確認します
 

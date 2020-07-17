@@ -1,10 +1,10 @@
 ---
-title: Azure Notification Hubs の安全なプッシュ
+title: Windows 用の Azure Notification Hubs の安全なプッシュ
 description: Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。 コード サンプルは .NET API を使用して C# で記述されています。
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475681"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75530733"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs から通知を安全にプッシュする
 
@@ -57,12 +59,12 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 1. **NotifyUserWindowsPhone** プロジェクトで、次のコードを App.xaml.cs に追加して、プッシュ バックグラウンド タスクを登録します。 `OnLaunched()` メソッドの最後に次のコード行を追加します。
 
-    ```c#
+    ```csharp
     RegisterBackgroundTask();
     ```
 2. 引き続き App.xaml.cs で、 `OnLaunched()` の直後に次のコードを追加します。
 
-    ```c#
+    ```csharp
     private async void RegisterBackgroundTask()
     {
         if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
@@ -79,7 +81,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
     ```
 3. App.xaml.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
-    ```c#
+    ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
@@ -89,11 +91,11 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 次の手順では、プッシュ バックグラウンド コンポーネントを作成します。
 
-1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、**Solution SecurePush**) を右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
-2. **[ストア アプリ]** を展開し、**[Windows Phone アプリ]**、**[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。 プロジェクトの名前として「**PushBackgroundComponent**」と入力し、**[OK]** をクリックしてプロジェクトを作成します。
+1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、**Solution SecurePush**) を右クリックし、 **[追加]** 、 **[新しいプロジェクト]** の順にクリックします。
+2. **[ストア アプリ]** を展開し、 **[Windows Phone アプリ]** 、 **[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。 プロジェクトの名前として「**PushBackgroundComponent**」と入力し、 **[OK]** をクリックしてプロジェクトを作成します。
 
     ![][12]
-3. ソリューション エクスプローラーで、**PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。 新しいクラスに `PushBackgroundTask.cs` という名前を付けます。 **[追加]** をクリックしてクラスを生成します。
+3. ソリューション エクスプローラーで、**PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順にクリックします。 新しいクラスに `PushBackgroundTask.cs` という名前を付けます。 **[追加]** をクリックしてクラスを生成します。
 4. `PushBackgroundComponent` 名前空間定義の内容全体を次のコードで置き換えます。プレースホルダー `{back-end endpoint}` をバックエンドのデプロイ時に取得したバックエンド エンドポイントで置き換えます。
 
     ```csharp
@@ -140,14 +142,14 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
             }
         }
     ```
-5. ソリューション エクスプローラーで **PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+5. ソリューション エクスプローラーで **PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 6. 左側で、 **[オンライン]** をクリックします。
 7. **[検索]** ボックスに、「**Http Client**」と入力します。
-8. 結果の一覧で、**[Microsoft HTTP Client Libraries]**、**[インストール]** の順にクリックします。 インストールを完了します。
+8. 結果の一覧で、 **[Microsoft HTTP Client Libraries]** 、 **[インストール]** の順にクリックします。 インストールを完了します。
 9. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。 **Json.NET** パッケージをインストールし、NuGet パッケージ マネージャーのウィンドウを閉じます。
 10. `PushBackgroundTask.cs` ファイルの先頭に、次の `using` ステートメントを追加します。
 
-    ```c#
+    ```csharp
     using Windows.ApplicationModel.Background;
     using Windows.Networking.PushNotifications;
     using System.Net.Http;
@@ -157,13 +159,13 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、**[参照の追加]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、**[OK]** をクリックします。
-12. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[Package.appxmanifest]** をダブルクリックします。 **[通知]** で、**[トースト対応]** を **[はい]** に設定します。
+11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、 **[参照の追加]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、 **[OK]** をクリックします。
+12. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[Package.appxmanifest]** をダブルクリックします。 **[通知]** で、 **[トースト対応]** を **[はい]** に設定します。
 
     ![][3]
-13. 引き続き **Package.appxmanifest** で、上部の **[宣言]** メニューをクリックします。 **[使用可能な宣言]** ボックスで、**[バックグラウンド タスク]**、**[追加]** の順にクリックします。
-14. **Package.appxmanifest** で、**[プロパティ]** の **[プッシュ通知]** チェック ボックスをオンにします。
-15. **Package.appxmanifest** で、**[アプリ設定]** の **[エントリ ポイント]** フィールドに「**PushBackgroundComponent.PushBackgroundTask**」と入力します。
+13. 引き続き **Package.appxmanifest** で、上部の **[宣言]** メニューをクリックします。 **[使用可能な宣言]** ボックスで、 **[バックグラウンド タスク]** 、 **[追加]** の順にクリックします。
+14. **Package.appxmanifest** で、 **[プロパティ]** の **[プッシュ通知]** チェック ボックスをオンにします。
+15. **Package.appxmanifest** で、 **[アプリ設定]** の **[エントリ ポイント]** フィールドに「**PushBackgroundComponent.PushBackgroundTask**」と入力します。
 
     ![][13]
 16. **[ファイル]** メニューの **[すべて保存]** をクリックします。
@@ -175,7 +177,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 1. Visual Studio で、 **AppBackend** Web API アプリケーションを実行します。 ASP.NET Web ページが表示されます。
 2. Visual Studio で、 **NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone アプリケーションを実行します。 Windows Phone エミュレーターが自動的に起動し、アプリケーションを読み込みます。
 3. **NotifyUserWindowsPhone** アプリケーションの UI で、ユーザー名とパスワードを入力します。 文字列は任意ですが、値は同じである必要があります。
-4. **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。 次に、 **[プッシュを送信する]** をクリックします。
+4. **NotifyUserWindowsPhone** アプリケーションの UI で、 **[ログインして登録]** をクリックします。 次に、 **[プッシュを送信する]** をクリックします。
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

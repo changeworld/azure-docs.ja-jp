@@ -1,35 +1,26 @@
 ---
-title: 接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する | Microsoft Docs
+title: 接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 description: Azure PowerShell を使用して、接続されていない Azure 管理ディスクおよび非管理対象ディスク (VHD/ページ BLOB) を見つけて削除する方法。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f4cd419e06ba44b16d24f36e937002dce5196622
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cac192186c91259a5573dc27442137729816991a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726048"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869612"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 この機能は、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを見つけて削除し、不要なコストを削減する方法を示します。
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>マネージド ディスク:接続されていないディスクの検索と削除
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>マネージド ディスク: 接続されていないディスクを見つけて削除する
 
-次のスクリプトは、**ManagedBy** プロパティの値を調べることにより、接続されていない[マネージド ディスク](managed-disks-overview.md)を探します。 マネージド ディスクが VM に接続しているとき、**ManagedBy** プロパティには VM のリソース ID が含まれます。 マネージド ディスクが接続されていないとき、**ManagedBy** プロパティは null です。 スクリプトは Azure サブスクリプションのすべてのマネージド ディスクを調べます。 **ManagedBy** プロパティに null が設定されたマネージド ディスクをスクリプトが見つけると、そのディスクは接続されていないと判断します。
+次のスクリプトは、[ManagedBy](managed-disks-overview.md) プロパティの値を調べることにより、接続されていない**マネージド ディスク**を探します。 マネージド ディスクが VM に接続しているとき、**ManagedBy** プロパティには VM のリソース ID が含まれます。 マネージド ディスクが接続されていないとき、**ManagedBy** プロパティは null です。 スクリプトは Azure サブスクリプションのすべてのマネージド ディスクを調べます。 **ManagedBy** プロパティに null が設定されたマネージド ディスクをスクリプトが見つけると、そのディスクは接続されていないと判断します。
 
 >[!IMPORTANT]
 >最初は、**deleteUnattachedDisks** 変数を 0 に設定してスクリプトを実行します。 この操作は、接続されていないすべてのマネージド ディスクを検索して表示します。
@@ -56,9 +47,9 @@ foreach ($md in $managedDisks) {
  }
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>アンマネージド ディスク:接続されていないディスクの検索と削除
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>非管理対象ディスク: 接続されていないディスクを見つけて削除する
 
-非管理対象ディスクは、[Azure Storage アカウント](../../storage/common/storage-create-storage-account.md)で[ページ BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) として格納された VHD ファイルです。 次のスクリプトは、**LeaseStatus** プロパティの値を調べて、接続されていない非管理対象ディスク (ページ BLOB) を探します。 非管理対象ディスクが VM に接続されているとき、**LeaseStatus** プロパティは **Locked** に設定されています。 非管理対象ディスクが接続されていないとき、**LeaseStatus** プロパティは **Unlocked** に設定されています。 このスクリプトは、Azure サブスクリプションのすべての Azure ストレージ アカウントの非管理対象ディスクを調べます。 **LeaseStatus** プロパティに **Unlocked** が設定された非管理対象ディスクをスクリプトが見つけると、そのディスクが接続されていないと判断します。
+非管理対象ディスクは、[Azure Storage アカウント](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs)で[ページ BLOB](../../storage/common/storage-create-storage-account.md) として格納された VHD ファイルです。 次のスクリプトは、**LeaseStatus** プロパティの値を調べて、接続されていない非管理対象ディスク (ページ BLOB) を探します。 非管理対象ディスクが VM に接続されているとき、**LeaseStatus** プロパティは **Locked** に設定されています。 非管理対象ディスクが接続されていないとき、**LeaseStatus** プロパティは **Unlocked** に設定されています。 このスクリプトは、Azure サブスクリプションのすべての Azure ストレージ アカウントの非管理対象ディスクを調べます。 **LeaseStatus** プロパティに **Unlocked** が設定された非管理対象ディスクをスクリプトが見つけると、そのディスクが接続されていないと判断します。
 
 >[!IMPORTANT]
 >最初は、**deleteUnattachedVHDs** 変数を 0 に設定してスクリプトを実行します。 この操作は、接続されていないすべての非管理対象 VHD を検索して表示します。
@@ -94,6 +85,6 @@ foreach($storageAccount in $storageAccounts){
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[ストレージ アカウントの削除](../../storage/common/storage-create-storage-account.md)に関するページと、「[Identify Orphaned Disks Using PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)」(PowerShell を使用した孤立したディスクの特定) をご覧ください。

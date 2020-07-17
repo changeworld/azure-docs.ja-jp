@@ -4,21 +4,21 @@ description: 調整エラー、Azure コンピューティングでの再試行�
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: vashan, rajraj, changov
-ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: changov
+ms.reviewer: vashan, rajraj
+ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233765"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76045364"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API の調整エラーのトラブルシューティング 
 
@@ -26,7 +26,7 @@ Azure コンピューティング要求は、サービスの全体的なパフ�
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager による調整とリソース プロバイダーによる調整  
 
-Azure への入口として、Azure Resource Manager は、認証と最初の検証を行って、すべての受信 API 要求を調整します。 Azure Resource Manager の呼び出しレート制限と、関連する診断応答 HTTP ヘッダーについては[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits)を参照してください。
+Azure への入口として、Azure Resource Manager は、認証と最初の検証を行って、すべての受信 API 要求を調整します。 Azure Resource Manager の呼び出しレート制限と、関連する診断応答 HTTP ヘッダーについては[こちら](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)を参照してください。
  
 Azure API クライアントで調整エラーが取得された場合、HTTP ステータスは "429 要求が多すぎます" になります。 要求の調整が Azure Resource Manager に行われているか CRP などの基になるリソース プロバイダーによって行われているかを判断するには、GET 要求の `x-ms-ratelimit-remaining-subscription-reads` と GET 以外の要求の `x-ms-ratelimit-remaining-subscription-writes` 応答ヘッダーを調べます。 残りの呼び出し回数が 0 に近づいていれば、Azure Resource Manager によって定義されているサブスクリプションの一般的な呼び出し制限に達しています。 すべてのサブスクリプション クライアントによるアクティビティがまとめてカウントされます。 それ以外の場合、調整はターゲット リソース プロバイダー (要求 URL の `/providers/<RP>` セグメントによってアドレス指定されているもの) によって行なわれています。 
 
@@ -98,6 +98,6 @@ API 呼び出しの統計情報は、サブスクリプションのクライア�
 - クライアント コードで Azure の特定の場所にある VM、ディスク、およびスナップショットが必要な場合は、サブスクリプションのすべての VM をクエリした後でクライアント側で場所によってフィルター処理する代わりに、場所ベースの形式のクエリを使用します。`GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` は、コンピューティング リソース プロバイダーに対して、リージョン エンドポイントのクエリを実行します。 
 -   特定の VM または仮想マシン スケール セットで API リソースの作成または更新を実行する場合は、(`provisioningState` に基づく) リソース URL そのものをポーリングするよりも、返された非同期操作の完了を追跡するほうがはるかに効率が良くなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure での他のサービスの再試行に関するガイダンスの詳細については、「[特定のサービスの再試行ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)」を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: オンプレミス サイトへのフェールバックのために Linux マスター ターゲット サーバーをインストールする | Microsoft Docs
+title: Azure Site Recovery を使用して Linux VM のフェールバック用にマスター ターゲット サーバーをインストールする
 description: Azure Site Recovery を使用して、VMware VM の Azure へのディザスター リカバリー中に、オンプレミス サイトへのフェールバック用に Linux マスター ターゲット サーバーを設定する方法について説明します。
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099054"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73954374"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -83,25 +83,25 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
 1. **[No]\(いいえ\)** (既定のオプション) を選択し、**Enter** キーを押します。
 
      ![キーボードを構成する](./media/vmware-azure-install-linux-master-target/image5.png)
-1. キーボードの製造国として **[English (US)]\(英語 (米国)\)** を選択し、**Enter** キーを押します。
+1. キーボードの製造国/地域として **[English (US)]\(英語 (米国)\)** を選択し、**Enter** キーを押します。
 
 1. キーボード レイアウトとして **[English (US)]\(英語 (米国)\)** を選択し、**Enter** キーを押します。
 
-1. **[Hostname]\(ホスト名\)** ボックスにサーバーのホスト名を入力し、**[Continue]\(続行\)** を選択します。
+1. **[Hostname]\(ホスト名\)** ボックスにサーバーのホスト名を入力し、 **[Continue]\(続行\)** を選択します。
 
-1. ユーザー アカウントを作成するには、ユーザー名を入力し、**[Continue]\(続行\)** を選択します。
+1. ユーザー アカウントを作成するには、ユーザー名を入力し、 **[Continue]\(続行\)** を選択します。
 
       ![ユーザー アカウントの作成](./media/vmware-azure-install-linux-master-target/image9.png)
 
-1. 新しいユーザー アカウントのパスワードを入力し、**[Continue]\(続行\)** を選択します。
+1. 新しいユーザー アカウントのパスワードを入力し、 **[Continue]\(続行\)** を選択します。
 
-1.  新しいユーザーのパスワードを確認入力し、**[Continue]\(続行\)** を選択します。
+1.  新しいユーザーのパスワードを確認入力し、 **[Continue]\(続行\)** を選択します。
 
     ![パスワードを確認入力する](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  ホーム ディレクトリを暗号化するための次の選択で、**[No]\(いいえ\)** (既定のオプション) を選択し、**Enter** キーを押します。
+1.  ホーム ディレクトリを暗号化するための次の選択で、 **[No]\(いいえ\)** (既定のオプション) を選択し、**Enter** キーを押します。
 
-1. 表示されているタイム ゾーンが正しい場合は **[Yes]\(はい\)** (既定のオプション) を選択し、**Enter** キーを押します。 タイム ゾーンを修正するには、**[No]\(いいえ\)** を選択します。
+1. 表示されているタイム ゾーンが正しい場合は **[Yes]\(はい\)** (既定のオプション) を選択し、**Enter** キーを押します。 タイム ゾーンを修正するには、 **[No]\(いいえ\)** を選択します。
 
 1. パーティション分割方法オプションから **[Guided - Use entire disk]\(ガイド付き - ディスク全体を使用する\)** を選択し、**Enter** キーを押します。
 
@@ -115,7 +115,7 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
 
     ![既定のオプションを選択する](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  既定のオプションを選択し、**[Continue]\(続行\)** を選択し、**Enter** キーを押します。
+1.  既定のオプションを選択し、 **[Continue]\(続行\)** を選択し、**Enter** キーを押します。
      
      ![アップグレードの管理方法を選択する](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
@@ -126,7 +126,7 @@ Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、シス
     > [!WARNING]
     > Azure サイト リカバリー マスター ターゲット サーバーには特定バージョンの Ubuntu が必要なので、仮想マシンのカーネル アップグレードを無効にする必要があります。 有効になっていると、定期的なアップグレードでマスター ターゲット サーバーが正しく機能しなくなります。 **[No automatic updates]\(自動更新しない\)** オプションを選択する必要があります。
 
-1.  既定のオプションを選択します。 openSSH を SSH 接続に使いたい場合は、**[OpenSSH server]\(OpenSSH サーバー\)** オプションを選択し、**[Continue]\(続行\)** を選択します。
+1.  既定のオプションを選択します。 openSSH を SSH 接続に使いたい場合は、 **[OpenSSH server]\(OpenSSH サーバー\)** オプションを選択し、 **[Continue]\(続行\)** を選択します。
 
     ![ソフトウェアを選択する](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
@@ -156,11 +156,11 @@ Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するに
 
 1. 仮想マシンをシャットダウンします。
 
-2. 左ウィンドウで仮想マシンのエントリを右クリックし、**[Edit Settings]\(設定の編集\)** を選択します。
+2. 左ウィンドウで仮想マシンのエントリを右クリックし、 **[Edit Settings]\(設定の編集\)** を選択します。
 
 3. **[Options]\(オプション\)** タブをクリックします。
 
-4. 左ウィンドウで **[Advanced]\(詳細\)** > **[General]\(全般\)** を選択し、画面の右下にある **[Configuration Parameters]\(構成パラメーター\)** ボタンを選択します。
+4. 左ウィンドウで **[Advanced]\(詳細\)**  >  **[General]\(全般\)** を選択し、画面の右下にある **[Configuration Parameters]\(構成パラメーター\)** ボタンを選択します。
 
     ![構成パラメーターを開く](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -170,9 +170,9 @@ Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するに
 
    - その値が存在していて **False** に設定されている場合、**True** に値を変更します (値の大文字小文字は区別されません)。
 
-   - その値が存在していて **True** に設定されている場合は、**[Cancel]\(キャンセル\)** をクリックします。
+   - その値が存在していて **True** に設定されている場合は、 **[Cancel]\(キャンセル\)** をクリックします。
 
-   - そのような値が存在しない場合、**[Add Row]\(行の追加\)** をクリックします。
+   - そのような値が存在しない場合、 **[Add Row]\(行の追加\)** をクリックします。
 
    - 名前列に **disk.EnableUUID** を追加し、値を **TRUE** に設定します。
 
@@ -214,12 +214,11 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 ### <a name="apply-custom-configuration-changes"></a>カスタム構成変更を適用する
 
-カスタム構成変更を適用するには、次の手順を使用します。
-
+カスタム構成変更を適用するには、ルート ユーザーとして次の手順を使用します。
 
 1. 次のコマンドを実行して、バイナリを解凍します。
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![実行するコマンドのスクリーンショット](./media/vmware-azure-install-linux-master-target/image16.png)
 
@@ -245,7 +244,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
     ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/<リテンション ディスクのマルチパス ID>**
+3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/\<リテンション ディスクのマルチパス ID>**
     
     ![ファイル システム](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -262,9 +261,9 @@ Linux を使用してこれをダウンロードするには、次のように�
     
     **Insert** キーを押してファイルの編集を開始します。 新しい行を作成し、次のテキストを挿入します。 前述のコマンドでハイライトされているマルチパス ID に基づいてディスクのマルチパス ID を編集します。
 
-    **/dev/mapper/<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
+    **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
-    **Esc** キーを押して「**:wq**」(write and quit) と入力し、エディター ウィンドウを閉じます。
+    **Esc** キーを押して「 **:wq**」(write and quit) と入力し、エディター ウィンドウを閉じます。
 
 ### <a name="install-the-master-target"></a>マスター ターゲットをインストールする
 
@@ -301,7 +300,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 #### <a name="install-the-master-target-by-using-interactive-installation"></a>対話型インストールによりマスター ターゲットをインストールする
 
-1. 次のコマンドを実行してマスター ターゲットをインストールします。 エージェント ロールの場合は、**[マスター ターゲット]** を選択します。
+1. 次のコマンドを実行してマスター ターゲットをインストールします。 エージェント ロールの場合は、 **[マスター ターゲット]** を選択します。
 
     ```
     ./install
@@ -336,7 +335,7 @@ VMware ツールまたは open-vm-tools は、データストアを検出でき�
 
 ### <a name="upgrade-the-master-target-server"></a>マスター ターゲット サーバーをアップグレードする
 
-インストーラーを実行します。 マスター ターゲットにエージェントがインストールされていることが自動的に検出されます。 アップグレードするには、**[Y]** を選択します。セットアップが完了した後、次のコマンドを使用して、インストールされているマスター ターゲットのバージョンを確認します。
+インストーラーを実行します。 マスター ターゲットにエージェントがインストールされていることが自動的に検出されます。 アップグレードするには、 **[Y]** を選択します。セットアップが完了した後、次のコマンドを使用して、インストールされているマスター ターゲットのバージョンを確認します。
 
 `cat /usr/local/.vx_version`
 
@@ -354,7 +353,7 @@ VMware ツールまたは open-vm-tools は、データストアを検出でき�
     * ONBOOT=yes
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 マスター ターゲットのインストールと登録が完了したら、そのマスター ターゲットが **[Site Recovery インフラストラクチャ]** にある **[マスター ターゲット]** セクションの構成サーバーの概要の下に表示されることを確認できます。
 
 [再保護](vmware-azure-reprotect.md)とフェールバックの作業に進んでください。

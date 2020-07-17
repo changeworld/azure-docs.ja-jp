@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス | Microsoft Docs
-description: Service Fabric のクラスターとアプリケーションの管理に関するベスト プラクティスです。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス
+description: Azure Service Fabric を使用してクラスター、アプリ、およびサービスを管理するためのベスト プラクティスと設計上の考慮事項。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/24/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231368"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75551779"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス
 
-Azure Service Fabric のアプリケーションとクラスターを問題なく管理するには、運用環境の信頼性を最適化するために実行することを強くお勧めする操作があります。このドキュメントで定義されている操作を実行し、[Azure サンプルの Service Fabric クラスター テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)のいずれかを選択して運用ソリューションの設計を始めるか、既存のテンプレートを変更してこれらのプラクティスを組み込んでください。
+この記事では、Azure Service Fabric のアプリケーションとクラスターの管理に関するベスト プラクティスへのリンクを提供します。 運用環境の信頼性を最適化するために、これらのプラクティスを実装することを強くお勧めします。 [Service Fabric クラスター テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)のいずれかを使用して運用環境のソリューションの設計を開始するか、または既存のテンプレートを更新してこれらのプラクティスを組み込みます。
 
-## <a name="security"></a>セキュリティ 
+## <a name="security"></a>Security
 
 * [セキュリティに関するベスト プラクティス](service-fabric-best-practices-security.md)
 
@@ -52,11 +43,11 @@ Azure Service Fabric のアプリケーションとクラスターを問題な�
 
 ## <a name="checklist"></a>チェック リスト
 
-上記のすべてのセクションを完了した後、運用環境の準備状況チェックリストのすべてのベスト プラクティスを統合したことを確認します。
+前のセクションで推奨されたプラクティスを実装した後は、運用環境の準備状況チェックリストのすべてのベスト プラクティスを統合したことを確認します。
 * [Azure Service Fabric の運用環境の準備状況チェックリスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)
-* トラブルシューティング:[Service Fabric のトラブルシューティング ガイド](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Service Fabric のトラブルシューティング:[トラブルシューティング ガイド](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

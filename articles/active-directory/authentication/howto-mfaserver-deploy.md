@@ -1,22 +1,22 @@
 ---
-title: Azure Multi-Factor Authentication Server の概要 | Azure Active Directory
+title: Azure MFA サーバーの概要 - Azure Active Directory
 description: オンプレミスで Azure MFA Server を使い始めるための詳細な手順
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956585"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653120"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -24,12 +24,12 @@ ms.locfileid: "65956585"
 
 ![オンプレミスの MFA Server の概要](./media/howto-mfaserver-deploy/server2.png)</center>
 
-オンプレミスの Multi-Factor Authentication Server を使用することに決めました。次に進みましょう。 このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーのセットアップについて説明します。 MFA サーバーを既にインストールしており、アップグレードを検討している場合、「[Upgrade to the latest Azure Multi-Factor Authentication Server (最新の Azure Multi-factor Authentication Server へのアップグレード)](howto-mfaserver-deploy-upgrade.md)」を参照してください。 Web サービスをインストールする方法については、[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
+このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーのセットアップについて説明します。 MFA サーバーを既にインストールしており、アップグレードを検討している場合、「[Upgrade to the latest Azure Multi-Factor Authentication Server (最新の Azure Multi-factor Authentication Server へのアップグレード)](howto-mfaserver-deploy-upgrade.md)」を参照してください。 Web サービスをインストールする方法については、[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
+
+> [!IMPORTANT]
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="plan-your-deployment"></a>デプロイを計画する
-
-> [!WARNING]
-> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
 
 Azure Multi-Factor Authentication Server をダウンロードする前に、負荷と高可用性の要件の内容について検討してください。 デプロイの方法と場所を決める際にこの情報を使用します。
 
@@ -93,14 +93,11 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 
 ## <a name="download-the-mfa-server"></a>MFA Server のダウンロード
 
-> [!WARNING]
-> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
-
 Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]** > **[MFA Server]** を選択します。
-3. **[サーバーの設定]** を選択します。
+2. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[MFA]** の順に選択します。
+3. **[Manager MFA Server]\(MFA サーバーの管理\)** で、 **[サーバーの設定]** を選択します。
 4. **[ダウンロード]** をクリックし、ダウンロード ページの手順に従ってインストーラーを保存します。 
 
    ![Azure portal から MFA Server をダウンロードする](./media/howto-mfaserver-deploy/downloadportal.png)
@@ -112,13 +109,16 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 サーバーをダウンロードできたので、インストールと構成を行うことができます。 インストール先のサーバーが、計画セクションに記載されている要件を満たすようにしてください。
 
 1. 実行可能ファイルをダブルクリックします。
-2. [インストール フォルダーの選択] 画面で、フォルダーが正しいことを確認し、**[次へ]** をクリックします。
-3. インストールが完了したら、**[Finish (終了)]** をクリックします。 構成ウィザードが起動します。
-4. 構成ウィザードの [ようこそ] 画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。 ウィザードを閉じると、サーバーが起動します。
+2. [インストール フォルダーの選択] 画面で、フォルダーが正しいことを確認し、 **[次へ]** をクリックします。
+3. インストールが完了したら、 **[Finish (終了)]** をクリックします。 構成ウィザードが起動します。
+4. 構成ウィザードの [ようこそ] 画面で、 **[認証構成ウィザードの使用をスキップする]** をオンにし、 **[次へ]** をクリックします。 ウィザードを閉じると、サーバーが起動します。
 
    ![認証構成ウィザードの使用をスキップする](./media/howto-mfaserver-deploy/skip2.png)
 
-5. サーバーをダウンロードしたページに戻り、**[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]** をクリックします。
+5. サーバーをダウンロードしたページに戻り、 **[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]** をクリックします。
+
+> [!NOTE]
+> Azure portal でアクティブ化資格情報を生成できるのは、全体管理者のみです。
 
 ## <a name="send-users-an-email"></a>ユーザーへの電子メールの送信
 
@@ -130,7 +130,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
 ### <a name="configure-email-and-email-templates"></a>電子メールと電子メール テンプレートの構成
 
-左側の電子メール アイコンをクリックして、これらの電子メールの送信設定をセットアップできます。 このページにメール サーバーの SMTP 情報を入力し、**[ユーザーへ電子メールを送信する]** チェック ボックスをオンにすると電子メールを送信できます。
+左側の電子メール アイコンをクリックして、これらの電子メールの送信設定をセットアップできます。 このページにメール サーバーの SMTP 情報を入力し、 **[ユーザーへ電子メールを送信する]** チェック ボックスをオンにすると電子メールを送信できます。
 
 ![MFA Server の電子メールの構成](./media/howto-mfaserver-deploy/email1.png)
 
@@ -147,7 +147,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 1. Azure MFA Server の左側で **[ユーザー]** を選択します。
 2. 下部で **[Active Directory からインポート]** を選択します。
 3. 個々のユーザーを検索したり、AD ディレクトリでユーザーを含む OU を検索したりできるようになります。 ここではユーザー OU を指定します。
-4. 右側のすべてのユーザーを強調表示し、**[インポート]** をクリックします。 成功したことを通知するポップアップが表示されます。 インポート ウィンドウを閉じます。
+4. 右側のすべてのユーザーを強調表示し、 **[インポート]** をクリックします。 成功したことを通知するポップアップが表示されます。 インポート ウィンドウを閉じます。
 
    ![Active Directory からの MFA Server ユーザーのインポート](./media/howto-mfaserver-deploy/import2.png)
 
@@ -156,7 +156,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 1. Azure MFA Server の左側で **[ディレクトリの統合]** を選択します。
 2. **[同期]** タブに移動します。
 3. 一番下の **[追加]** をクリックします。
-4. 表示された **[同期項目の追加]** ボックスで、この同期タスクのドメイン、OU (**または**セキュリティ グループ)、設定、認証方法の既定値、言語の既定値を選択し、**[追加]** をクリックします。
+4. 表示された **[同期項目の追加]** ボックスで、この同期タスクのドメイン、OU (**または**セキュリティ グループ)、設定、認証方法の既定値、言語の既定値を選択し、 **[追加]** をクリックします。
 5. **[Active Directory との同期を有効にする]** チェック ボックスをオンにし、1 分から 24 時間の範囲で **[同期間隔]** を選択します。
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure Multi-Factor Authentication サーバーでのユーザー データの処理方法
@@ -199,7 +199,7 @@ Azure MFA Server をバックアップするには、**PhoneFactor.pfdata** フ�
 
 MFA Server バージョン 8.x 以降にアップグレードした後またはこのバージョンをインストールした後は、組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - セルフ サービス アクセス用の[ユーザー ポータル](howto-mfaserver-deploy-userportal.md)のセットアップと構成。
 - [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)、[RADIUS 認証](howto-mfaserver-dir-radius.md)、または [LDAP 認証](howto-mfaserver-dir-ldap.md)を使用した Azure MFA サーバーのセットアップと構成。

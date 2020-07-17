@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991440"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985934"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -37,7 +37,7 @@ AMS は、世界中の複数のデータセンターで動作しています。 
 
 Azure Media Services を使用するには、次が必要です。
 
-* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com)を参照してください。
+* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com)」を参照してください。
 * Azure Media Services アカウントを作成します。 詳細については、[アカウントの作成](media-services-portal-create-account.md)に関するページを参照してください。
 * コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中**状態である必要があります。
 
@@ -104,7 +104,7 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
     SAS ロケーターを使用する場合、コンテンツは Azure BLOB ストレージからダウンロードされます。 この場合、開始状態のストリーミング エンドポイントは必要ありません。
 4. コンテンツを徐々にダウンロードします。
 
-## <a id="live_scenarios"></a>ライブ ストリーミング イベントの配信 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>ライブ ストリーミング イベントの配信 
 
 1. さまざまなライブ ストリーミング プロトコル (RTMP や Smooth Streaming など) を使用してライブ コンテンツを取り込みます。
 2. (省略可) ストリームをアダプティブ ビットレート ストリームにエンコードします。
@@ -137,13 +137,13 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 
 ## <a name="consuming-content"></a>コンテンツの使用
 
-Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。 次のトピックには、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できる、SDK とプレーヤー フレームワークへのリンクがあります。 詳細については、「[ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)」を参照してください。
+Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。 
 
 ## <a name="enabling-azure-cdn"></a>Azure CDN を有効にする
 
 Media Services では、Azure CDN との統合をサポートしています。 Azure CDN を有効にする方法については、「 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
-## <a id="scaling"></a>Media Services アカウントのスケーリング
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Media Services アカウントのスケーリング
 
 AMS のお客様は、AMS アカウントのストリーミング エンドポイント、メディア処理、ストレージをスケーリングできます。
 
@@ -161,7 +161,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
     詳細については、[メディア処理のスケーリング](media-services-portal-scale-media-processing.md)に関するページを参照してください。
 * ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。 各ストレージ アカウントの上限は 500 TB (テラバイト) です。 既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。 詳細については、[ストレージ アカウントの管理](meda-services-managing-multiple-storage-accounts.md)に関するページを参照してください。
 
-## <a id="availability"></a> データ センターにおける Media Services 機能の可用性
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> データ センターにおける Media Services 機能の可用性
 
 このセクションでは、データ センターにおける Media Services 機能の可用性について詳しく説明します。
 
@@ -169,7 +169,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
 
 #### <a name="availability"></a>可用性
 
-データ センターで Media Services が使用可能かどうかを確認するには、 https://azure.microsoft.com/status/ にアクセスして、「メディア」テーブルまでスクロールします。
+特定のデータセンターで Media Services が使用可能かどうかを判定するには、「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)」を使用してください。
 
 ### <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
@@ -177,10 +177,10 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|Name|Status|データ センター
+|名前|Status|データ センター
 |---|---|---|
-|Standard|一般公開|All|
-|Premium|一般公開|All|
+|Standard|GA|All|
+|Premium|GA|All|
 
 ### <a name="live-encoding"></a>ライブ エンコード
 
@@ -196,25 +196,26 @@ AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフ
 
 |メディア プロセッサ名|Status|データ センター
 |---|---|---|
-|メディア エンコーダー スタンダード|一般公開|All|
-|メディア エンコーダー Premium ワークフロー|一般公開|中国を除くすべて|
+|メディア エンコーダー スタンダード|GA|All|
+|メディア エンコーダー Premium ワークフロー|GA|中国を除くすべて|
 
 ### <a name="analytics-media-processors"></a>Analytics メディア プロセッサ
 
 Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+
+> [!NOTE]
+> 一部の分析メディア プロセッサはインベントリから削除されます。 提供終了日については、[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
 #### <a name="availability"></a>可用性
 
 |メディア プロセッサ名|Status|データ センター
 |---|---|---|
 |Azure Media Face Detector|プレビュー|All|
-|Azure Media Indexer|一般公開|All|
+|Azure Media Indexer|GA|All|
 |Azure Media Motion Detector|プレビュー|All|
 |Azure Media OCR|プレビュー|All|
-|Azure Media Redactor|プレビュー|All|
-|Azure Media Stabilizer|プレビュー|All|
+|Azure Media Redactor|GA|All|
 |Azure Media Video Thumbnails|プレビュー|All|
-|Azure Media Indexer 2|プレビュー|中国および連邦政府リージョンを除くすべて|
 
 ### <a name="protection"></a>保護
 
@@ -224,11 +225,11 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 |暗号化|Status|データ センター|
 |---|---|---| 
-|Storage|一般公開|All|
-|AES-128 キー|一般公開|All|
-|FairPlay|一般公開|All|
-|PlayReady|一般公開|All|
-|Widevine|一般公開|ドイツ、連邦政府、中国を除くすべて
+|ストレージ|GA|All|
+|AES-128 キー|GA|All|
+|FairPlay|GA|All|
+|PlayReady|GA|All|
+|Widevine|GA|ドイツ、連邦政府、中国を除くすべて
 
 ### <a name="reserved-units-rus"></a>予約ユニット (RU)
 
@@ -250,11 +251,15 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 |RU の種類の名前|Status|データ センター
 |---|---|---|
-|S1|一般公開|All|
-|S2|一般公開|ブラジル南部とインド西部を除くすべて|
-|S3|一般公開|インド西部を除くすべて|
+|S1|GA|All|
+|S2|GA|ブラジル南部とインド西部を除くすべて|
+|S3|GA|インド西部を除くすべて|
 
-## <a name="next-steps"></a>次の手順
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
+## <a name="next-steps"></a>次のステップ
 
 Media Services のラーニング パスを確認します。
 

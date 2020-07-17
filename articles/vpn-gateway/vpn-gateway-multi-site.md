@@ -1,26 +1,19 @@
 ---
-title: 'VPN Gateway と PowerShell を使用して仮想ネットワークを複数のサイトに接続する: Classic | Microsoft Docs'
+title: 'VPN Gateway を使用して VNet を複数のサイトに接続する: クラシック'
 description: VPN Gateway を使用して複数のローカルのオンプレミスのサイトをクラシック仮想ネットワークに接続します。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-service-management
-ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 77f8b7094c96e507eef1d360a26240627bc0e350
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994020"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77198099"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 
@@ -62,10 +55,13 @@ ms.locfileid: "57994020"
 
 * 各オンプレミスのロケーションと互換性のある VPN ハードウェア 「[Virtual Network に使用する VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照して、使用するデバイスが互換性のあるものであることを確認してください。
 * 各 VPN デバイスの外部接続用パブリック IPv4 IP アドレス。 IP アドレスを NAT の内側に割り当てることはできません。 これが要件です。
-* Azure PowerShell コマンドレットの最新版をインストールする必要があります。 必ずサービス管理 (SM) バージョンと Resource Manager バージョンをインストールしてください。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。
 * VPN ハードウェアの構成に詳しい作業者 そのため、VPN デバイスの構成に精通している必要があり、そうでなければ精通している人と一緒に作業を行ってください。
 * 仮想ネットワークに使用する予定の IP アドレス範囲 (まだ 1 つも作成していない場合)。
 * 接続する各ローカル ネットワークの IP アドレス範囲。 接続しようとしている各ローカル ネットワーク サイトの IP アドレス範囲が重複しないように確認する必要があります。 そうしないと、構成をアップロードする際に、ポータルまたは REST API によって拒否されます。<br>例えば、2 つのローカル ネットワーク サイトの両方が IP アドレス範囲 10.2.3.0/24 を含んでおり、送信先アドレスが 10.2.3.3 のパッケージを持っている場合、アドレス範囲が重複しているため、Azure はパッケージを送ろうとしているのがどちらのサイトなのかわかりません。 ルーティングの問題を避けるため、Azure は重複した範囲を持つ構成ファイルをアップロードすることを許可しません。
+
+### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1.サイト間 VPN を作成する
 動的ルーティング ゲートウェイを持つサイト間 VPN が既に存在する場合は、 [仮想ネットワーク構成設定のエクスポート](#export)に進んでください。 まだ作成していない場合は、以下の作業を行います。
@@ -78,14 +74,27 @@ ms.locfileid: "57994020"
 1. 次の手順を使用してサイト間仮想ネットワークを作成します: [サイト間 VPN 接続を持つ仮想ネットワークの作成](vpn-gateway-site-to-site-create.md)。  
 2. 次の手順により動的ルーティング ゲートウェイを構成します: [VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)。 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
-## <a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
+
+昇格された権利で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
+
+```powershell
+azure config mode asm
+```
+
+アカウントに接続します。 接続については、次の例を参考にしてください。
+
+```powershell
+Add-AzureAccount
+```
+
 次のコマンドを実行して、Azure のネットワーク構成ファイルをエクスポートします。 必要に応じて、ファイルの場所を変更して別の場所にエクスポートすることもできます。
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-## <a name="3-open-the-network-configuration-file"></a>手順 3.ネットワーク構成ファイルを開く
+## <a name="3-open-the-network-configuration-file"></a>3.ネットワーク構成ファイルを開く
 前のステップでダウンロードしたネットワーク構成ファイルを開きます。 任意の xml エディターを使用してください。 ファイルは次のようになります。
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
@@ -163,7 +172,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ## <a name="6-download-keys"></a>6.キーをダウンロードする
 新しいトンネルが追加されたら、PowerShell コマンドレット 'Get-AzureVNetGatewayKey' を使用して、IPsec/IKE 事前共有キーを各トンネル用に取得します。
 
-例: 
+次に例を示します。
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
@@ -207,6 +216,6 @@ Get-AzureVnetConnection -VNetName VNET1
     OperationStatus           : Succeeded
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VPN Gateway について詳しくは、「 [VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。

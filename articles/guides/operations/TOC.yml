@@ -2,7 +2,7 @@
   items:
     - name: Azure の概要
       href: azure-operations-guide.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: Virtual Machines
           items:
@@ -14,14 +14,14 @@
           items:
             - name: Azure ポータルを使用した仮想ネットワークの作成
               href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-        - name: セキュリティ
+        - name: Security
           items:
             - name: ロールの割り当てを使用したリソースの管理
               href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
         - name: Azure Stack
           items:
             - name: Azure Stack デプロイの概要
-              href: ../../azure-stack/azure-stack-deploy-overview.md
+              href: /azure-stack/asdk/asdk-download
         - name: Azure Backup
           items:
             - name: Azure portal での VM のバックアップ
@@ -39,7 +39,7 @@
             - name: Linux VM の作成と管理
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Jenkins CI/CD パイプライン
-              href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: VM の負荷分散
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Azure リソース マネージャーのテンプレートの作成
@@ -60,4 +60,4 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Microsoft Azure ポータルの概要
           href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
-    - name: 参照
+    - name: References

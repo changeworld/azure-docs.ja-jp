@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus メッセージング エンティティの自動転送 |Microsoft Docs
-description: Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法。
+title: Azure Service Bus メッセージング エンティティの自動転送
+description: この記事では、Azure Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593388"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76761051"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
@@ -47,6 +47,12 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 Alice が休暇中の場合、ERP トピックではなく、個人用のキューがいっぱいになります。 このシナリオでは、1 人の営業担当者がメッセージをまったく受信しないため、すべての ERP トピックがクォータに達しません。
 
+> [!NOTE]
+> 自動転送が設定されると、**転送元と転送先、両方**の AutoDeleteOnIdle の値は自動的にデータ型の最大値に設定されます。
+> 
+>   - 転送元側では、自動転送は受信操作として行われます。 このため、自動転送設定がある転送元は、実際には "アイドル" になることがありません。
+>   - 転送先側では、これは常に宛先がメッセージの転送先となるように実行されます。
+
 ## <a name="autoforwarding-considerations"></a>自動転送に関する考慮事項
 
 転送先エンティティに蓄積されたメッセージが多すぎてクォータを超過した場合や、転送先エンティティが無効な場合、ソース エンティティは転送先に領域ができるまで (またはエンティティが再度有効になるまで)、[配信不能キュー](service-bus-dead-letter-queues.md)にメッセージを追加します。 これらのメッセージは、配信不能キューに残り続けるので、配信不能キューで明示的に受信して処理する必要があります。
@@ -57,7 +63,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 
 別のキューまたはトピックにチェーンされているサブスクリプションを作成するには、サブスクリプションの作成者は、転送元エンティティと転送先エンティティの両方に対する**管理**アクセス許可が必要です。 転送元トピックにメッセージを送信する場合は、転送元トピックに対する**送信**アクセス許可のみが必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 自動転送についての詳細は、次のリファレンス トピックを参照してください。
 
@@ -68,7 +74,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 Service Bus のパフォーマンスの向上について詳しくは、以下をご覧ください。 
 
 * [Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
-* [パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]
+* [パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

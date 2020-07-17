@@ -1,21 +1,15 @@
 ---
 title: Azure Blockchain Workbench でのアプリケーションの使用
-description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法に関するチュートリアル。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 04/15/2019
+description: Azure Blockchain Workbench プレビューでのアプリケーション コントラクトの使用方法に関するチュートリアル。
+ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578852"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74324052"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
 
@@ -46,11 +40,11 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 1. Blockchain Workbench のアプリケーション セクションで、作成するコントラクトを含んだアプリケーション タイルを選択します。 アクティブなコントラクトの一覧が表示されます。
 
-2. 新しい契約を作成するには、**[新しいコントラクト]** を選択します。
+2. 新しい契約を作成するには、 **[新しいコントラクト]** を選択します。
 
     ![[新しいコントラクト] ボタン](./media/use/contract-list.png)
 
-3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **作成** を選択します。
+3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **［作成］** を選択します
 
     ![[新しいコントラクト] ウィンドウ](./media/use/new-contract.png)
 
@@ -71,10 +65,10 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
     |---------|---------|
     | Status | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
     | 詳細 | コントラクトの現在の値です |
-    | Action | 直近のアクションに関する詳細です |
+    | アクション | 直近のアクションに関する詳細です |
     | アクティビティ | コントラクトのトランザクション履歴です |
     
-3. **[アクション]** セクションで、**[アクションの実行]** を選択します。
+3. **[アクション]** セクションで、 **[アクションの実行]** を選択します。
 
 4. コントラクトの現在の状態に関する詳細がウィンに表示されます。 ドロップダウン リストから、実行するアクションを選択します。 
 
@@ -87,7 +81,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 7. **[アクションの実行]** を選択し、アクションを実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)

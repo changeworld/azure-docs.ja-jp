@@ -1,26 +1,24 @@
 ---
-title: Linux で Java Web アプリを構築する - Azure App Service
-description: Azure App Service on Linux と Azure Cosmos DB を使用して Spring Boot Java Web アプリを構築、デプロイ、およびスケーリングします。
+title: チュートリアル:MongoDB を使用する Linux Java アプリ
+description: Azure で実行されている MongoDB (Cosmos DB) に接続して、データ駆動型 Linux Java アプリを Azure App Service で動作させる方法について説明します。
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18
-ms.openlocfilehash: 069bc213695de813ad6b878db54f38a909efd1df
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 0b65e8f470b36ab1642e9144e081253a577dabc3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956039"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202504"
 ---
-# <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>チュートリアル:Spring と Azure Cosmos DB を使用して Java Web アプリを構築する
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
 このチュートリアルでは、Azure で Java Web アプリを構築、構成、デプロイ、およびスケーリングするプロセスを、順を追って説明します。 完了すると、[Azure App Service on Linux](/azure/app-service/containers) で実行中の [Azure Cosmos DB](/azure/cosmos-db) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
 
-![Azure App Service で実行される Java アプリ](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Azure Cosmos DB にデータを格納する Spring Boot アプリケーション](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -167,15 +165,15 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-アプリが開始されたら、リンク [http://localhost:8080/](http://localhost:8080/) を使用して Spring TODO アプリにローカルでアクセスできます。
+アプリが開始されたら、リンク `http://localhost:8080/` を使用して Spring TODO アプリにローカルでアクセスできます。
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Spring TODO アプリにローカルでアクセスする](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 TODO アプリケーションを開始したというメッセージではなく、例外が表示される場合は、前の手順の `bash` スクリプトによって環境変数が正しくエクスポートされたかを確認し、値が、作成した Azure Cosmos DB データベースに対して正しいことを確認してください。
 
 ## <a name="configure-azure-deployment"></a>Azure デプロイを構成する
 
-`initial/spring-boot-todo` ディレクトリ内の `pom.xml` ファイルを開き、次に示す [Azure App Service 用の Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)の構成を追加します。
+`initial/spring-boot-todo` ディレクトリ内の `pom.xml` ファイルを開き、次に示す [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) の構成を追加します。
 
 ```xml    
 <plugins> 
@@ -186,24 +184,38 @@ TODO アプリケーションを開始したというメッセージではなく
        
     <plugin>
         <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-webapp-maven-plugin</artifactId>
-            <version>1.4.0</version>
-            <configuration>
-            <deploymentType>jar</deploymentType>
-            
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.9.0</version>
+        <configuration>
+            <schemaVersion>v2</schemaVersion>
+
             <!-- Web App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
-            
+
             <!-- Java Runtime Stack for Web App on Linux-->
-            <linuxRuntime>jre8</linuxRuntime>
-            
+            <runtime>
+                 <os>linux</os>
+                 <javaVersion>jre8</javaVersion>
+                 <webContainer>jre8</webContainer>
+             </runtime>
+             <deployment>
+                 <resources>
+                 <resource>
+                     <directory>${project.basedir}/target</directory>
+                     <includes>
+                     <include>*.jar</include>
+                     </includes>
+                 </resource>
+                 </resources>
+             </deployment>
+
             <appSettings>
                 <property>
                     <name>COSMOSDB_URI</name>
                     <value>${COSMOSDB_URI}</value>
-                </property>
+                </property> 
                 <property>
                     <name>COSMOSDB_KEY</name>
                     <value>${COSMOSDB_KEY}</value>
@@ -217,9 +229,9 @@ TODO アプリケーションを開始したというメッセージではなく
                     <value>-Dserver.port=80</value>
                 </property>
             </appSettings>
-            
+
         </configuration>
-    </plugin>            
+    </plugin>           
     ...
 </plugins>
 ```
@@ -238,19 +250,22 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.4.0:deploy (default-cli) @ spring-todo-app ---
-[INFO] Authenticate with Azure CLI 2.0
+[INFO] --- azure-webapp-maven-plugin:1.9.0:deploy (default-cli) @ spring-todo-app ---
 [INFO] Target Web App doesn't exist. Creating a new one...
 [INFO] Creating App Service Plan 'ServicePlanb6ba8178-5bbb-49e7'...
 [INFO] Successfully created App Service Plan.
 [INFO] Successfully created Web App.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7
 [INFO] Trying to deploy artifact to spring-todo-app...
+[INFO] Renaming /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7/spring-todo-app-2.0-SNAPSHOT.jar to app.jar
+[INFO] Deploying the zip package spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7718326714198381983.zip...
 [INFO] Successfully deployed the artifact to https://spring-todo-app.azurewebsites.net
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time: 02:19 min
-[INFO] Finished at: 2018-10-28T15:32:03-07:00
+[INFO] Finished at: 2019-11-06T15:32:03-07:00
 [INFO] Final Memory: 50M/574M
 [INFO] ------------------------------------------------------------------------
 ```
@@ -263,7 +278,7 @@ open https://spring-todo-app.azurewebsites.net
 
 アドレス バーにリモート URL が表示されて、実行されているアプリが表示されるはずです。
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![リモート URL で実行中の Spring Boot アプリケーション](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
@@ -280,7 +295,7 @@ az appservice plan update --number-of-workers 2 \
    --resource-group <your-azure-group-name>
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、Cloud Shell で次のコマンドを実行して削除することができます。 
   
@@ -290,7 +305,7 @@ az group delete --name <your-azure-group-name>
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Java 開発者向けの Azure](/java/azure/)
 [Spring Boot](https://spring.io/projects/spring-boot)、[Cosmos DB 用の Spring データ](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)、[Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction)、および [App Service Linux](app-service-linux-intro.md)。

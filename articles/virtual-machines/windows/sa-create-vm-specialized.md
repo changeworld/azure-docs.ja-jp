@@ -1,27 +1,20 @@
 ---
-title: Azure で特殊化したディスクから VM を作成する | Microsoft Docs
+title: Azure で特殊化されたディスクから VM を作成する
 description: Resource Manager デプロイ モデルで、特殊化された非管理ディスクを接続して新しい VM を作成します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: storage-accounts
+ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086804"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099650"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 
@@ -31,10 +24,10 @@ Powershell を使用して、OS ディスクとして特殊化された非管理
 * [VHD をアップロードする](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
 * [既存の Azure VM の VHD をコピーする](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1:特殊化された VHD をアップロードする
+## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1: 特殊化された VHD をアップロードする
 
 Hyper-V などのオンプレミスの仮想化ツールを使用して作成された特殊化された VM、または別のクラウドからエクスポートされた VM から VHD をアップロードできます。
 
@@ -113,13 +106,13 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 ### <a name="before-you-begin"></a>開始する前に
 次のことを確認してください。
 
-* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[すべてのサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、作成できます。 
+* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する ( **[すべてのサービス]** 、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、作成できます。 
 * [AzCopy ツール](../../storage/common/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
 
 ### <a name="deallocate-the-vm"></a>VM の割り当てを解除する
 VM の割り当てを解除して、コピーする VHD を解放します。 
 
-* **ポータル**:**[仮想マシン]** > **[myVM]** > [停止] の順にクリックします。
+* **ポータル**: **[仮想マシン]**  >  **[myVM]** > [停止] の順にクリックします。
 * **Powershell**:[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM を停止 (割り当て解除) します。
 
 ```powershell
@@ -133,7 +126,7 @@ Azure Portal で VM の **[状態]** が **[停止済み]** から **[停止済�
 
 Azure Portal または Azure PowerShell を使用して URL を取得できます。
 
-* **ポータル**:**>****[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
+* **ポータル**: **>** **[すべてのサービス]**  >  **[ストレージ アカウント]**  >  *[ストレージ アカウント]*  >  **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
 * **Powershell**:[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
 
 ```powershell
@@ -143,7 +136,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>ストレージ アクセス キーを取得する
 コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
 
-* **ポータル**:**[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
+* **ポータル**: **[すべてのサービス]**  >  **[ストレージ アカウント]**  >  *[ストレージ アカウント]*  >  **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
 * **Powershell**:[Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。
 
 ```powershell
@@ -155,7 +148,7 @@ AzCopy を使用して、ストレージ アカウント間でファイルをコ
 
 AzCopy を使用するには、ローカル コンピューターでコマンド ウィンドウを開き、AzCopy がインストールされているフォルダーに移動します。 これは、*C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy* のようになります。 
 
-コンテナー内のすべてのファイルをコピーするには、**/S** スイッチを使用します。 OS VHD とすべてのデータ ディスクが同じコンテナーにある場合は、これを使用してそれらをコピーできます。 この例では、**mysourcestorageaccount** ストレージ アカウントのコンテナー **mysourcecontainer** 内にあるすべてのファイルを、**mydestinationstorageaccount** ストレージ アカウントのコンテナー **mydestinationcontainer** にコピーする方法を示します。 ストレージ アカウントとコンテナーの名前は、実際の名前に置き換えてください。 `<sourceStorageAccountKey1>` と `<destinationStorageAccountKey1>` は、実際のキーに置き換えてください。
+コンテナー内のすべてのファイルをコピーするには、 **/S** スイッチを使用します。 OS VHD とすべてのデータ ディスクが同じコンテナーにある場合は、これを使用してそれらをコピーできます。 この例では、**mysourcestorageaccount** ストレージ アカウントのコンテナー **mysourcecontainer** 内にあるすべてのファイルを、**mydestinationstorageaccount** ストレージ アカウントのコンテナー **mydestinationcontainer** にコピーする方法を示します。 ストレージ アカウントとコンテナーの名前は、実際の名前に置き換えてください。 `<sourceStorageAccountKey1>` と `<destinationStorageAccountKey1>` は、実際のキーに置き換えてください。
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -307,13 +300,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 作成の確認
-新しく作成された VM は、[Azure Portal](https://portal.azure.com)の **[すべてのサービス]** の >  **[仮想マシン]**、または次の PowerShell コマンドで確認できます。
+新しく作成された VM は、[Azure Portal](https://portal.azure.com)の **[すべてのサービス]** の >  **[仮想マシン]** 、または次の PowerShell コマンドで確認できます。
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
 

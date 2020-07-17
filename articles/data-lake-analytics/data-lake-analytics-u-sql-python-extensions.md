@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: b2179f9d81a2dad877c8ae58471f7440eb9edbe7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050993"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60813408"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で Python コードを使用した U-SQL スクリプトの拡張
 
@@ -23,8 +23,8 @@ ms.locfileid: "43050993"
 始める前に、Azure Data Lake Analytics アカウントに Python 拡張機能がインストールされていることを確認します。
 
 * Azure Portal で Data Lake Analytics アカウントに移動します
-* 左側のメニューで、**[作業の開始]** の **[サンプル スクリプト]** をクリックします
-* **[U-SQL Extensions をインストールする]** をクリックし、**[OK]** をクリックします
+* 左側のメニューで、 **[作業の開始]** の **[サンプル スクリプト]** をクリックします
+* **[U-SQL Extensions をインストールする]** をクリックし、 **[OK]** をクリックします
 
 ## <a name="overview"></a>概要 
 
@@ -100,8 +100,8 @@ Python 3.5.1 (Windows 用にコンパイル) のみサポートされていま�
 ### <a name="input-and-output-size-limitations"></a>入力と出力のサイズ制限
 各頂点には、割り当てられたメモリ量に制限があります。 現在、AU の制限は 6 GB です。 入力と出力の DataFrame は Python コード内のメモリに存在する必要があるため、入力と出力の合計サイズは 6 GB を超えることはできません。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-* [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+* [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
 * [Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)

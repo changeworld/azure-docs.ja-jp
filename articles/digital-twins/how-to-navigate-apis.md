@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins API の移動 | Microsoft Docs
+title: API のナビゲーション - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins 管理 API にクエリを実行する一般的なパターンについて説明します。
-author: dsk-2015
-manager: philmea
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 02/24/2020
+ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231375"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Twins 管理 API の使用方法
 
@@ -66,7 +66,7 @@ Digital Twins API では、以下のパラメーターを使用して、空間�
    - 相対レベル *-1* は、指定されたスペースの親のスペースと同じレベルのスペースを表します。
 
 - **traverse**:指定したスペース ID から、次の値で指定するいずれかの方向に走査できます。
-   - **なし**:このデフォルト値では、指定したスペース ID でフィルター処理します。
+   - **なし**: このデフォルト値では、指定したスペース ID でフィルター処理します。
    - **Down**:指定したスペース ID とその子孫でフィルター処理します。 
    - **Up**:指定したスペース ID とその先祖でフィルター処理します。 
    - **Span**:指定したスペース ID と同じレベルで空間グラフの水平方向の部分をフィルター処理します。 **minRelative** または **maxRelative** のいずれかを true に設定する必要があります。 
@@ -88,6 +88,7 @@ Digital Twins API では、以下のパラメーターを使用して、空間�
 
 
 ## <a name="odata-support"></a>OData のサポート
+
 /spaces の GET 呼び出しなど、コレクションを返す API のほとんどは、一般的な [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) システム クエリ オプションの次のサブセットをサポートします。  
 
 * **$filter**
@@ -95,22 +96,24 @@ Digital Twins API では、以下のパラメーターを使用して、空間�
 * **$top**
 * **$skip** - コレクション全体を表示する場合、1 回の呼び出しで 1 つのセットとしてコレクションを要求し、その後アプリケーション内でページングを実行してください。 
 
-$count、$expand、$search などの他のクエリ オプションはサポートされていないことに注意してください。
+> [!NOTE]
+> 一部の OData オプション (クエリ オプション **$count**、 **$expand**、 **$search** など) は、現在サポートされていません。
 
 ### <a name="examples"></a>例
 
-次の一覧は、OData のシステム クエリ オプションを使用したクエリのいくつかの例を示しています。
+次の一覧は、有効な OData 構文を含むいくつかのクエリを示しています。
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
-- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
-- `YOUR_MANAGEMENT_API_URL/propertykeys?$filter=Scope ne ‘Spaces’`
-- `YOUR_MANAGEMENT_API_URL/resources?$filter=Size gt ‘M’`
-- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
-- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
+- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,'space')`
+- `YOUR_MANAGEMENT_API_URL/devices?$filter=TypeId eq 2`
+- `YOUR_MANAGEMENT_API_URL/resources?$filter=StatusId ne 1`
+- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
+- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
+API のいくつかの一般的なクエリ パターンについては、「[一般的なタスクについて Azure Digital Twins API をクエリする方法](./how-to-query-common-apis.md)」を参照してください。
 
-API のいくつかの一般的なクエリ パターンについては、「[一般的なタスクについて Azure Digital Twins API をクエリする方法](how-to-query-common-apis.md)」を参照してください。
+API エンドポイントの詳細については、[Digital Twins Swagger の使用方法](./how-to-use-swagger.md)に関するページをご覧ください。
 
-
+Odata 構文と使用できる比較演算子を確認するには、[Azure Cognitive Search の OData 比較演算子](../search/search-query-odata-comparison-operators.md)に関する記事をご覧ください。

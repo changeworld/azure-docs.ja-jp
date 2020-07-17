@@ -1,26 +1,19 @@
 ---
-title: Java を使用した Azure 仮想マシンの作成および管理 | Microsoft Docs
+title: Java を使用した Azure 仮想マシンの作成および管理
 description: Java と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 816233368c2274e34d2acdd712aed270a5e3bfa5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010896"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870024"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -131,10 +124,10 @@ ms.locfileid: "58010896"
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
-    **&lt;subscription-id&gt;** をサブスクリプション ID に、**&lt;application-id&gt;** を Active Directory アプリケーション ID に、**&lt;authentication-key&gt;** をアプリケーション キーに、**&lt;tenant-id&gt;** をテナント識別子に置き換えます。
+    **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
 
 2. ファイルを保存します。
 3. シェルの AZURE_AUTH_LOCATION という名前の環境変数に、認証ファイルへの完全なパスを設定します。
@@ -189,7 +182,7 @@ ms.locfileid: "58010896"
 
 ### <a name="create-the-resource-group"></a>リソース グループの作成
 
-すべてのリソースは、[リソース グループ](../../azure-resource-manager/resource-group-overview.md)に含まれる必要があります。
+すべてのリソースは、[リソース グループ](../../azure-resource-manager/management/overview.md)に含まれる必要があります。
 
 アプリケーションに値を指定し、リソース グループを作成するには、次のコードを main メソッドの try ブロックに追加します。
 
@@ -471,6 +464,6 @@ Azure で使用されるリソースに対して課金されるため、不要�
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure の Java ライブラリ](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。
 

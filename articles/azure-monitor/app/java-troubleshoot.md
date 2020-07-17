@@ -1,23 +1,14 @@
 ---
 title: Java Web プロジェクトでの Application Insights のトラブルシューティング
 description: トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/14/2018
-ms.author: mbullwin
-ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/14/2019
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995590"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77657182"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -27,7 +18,7 @@ ms.locfileid: "57995590"
 
 * 依存 `<version>` 要素にワイルドカード文字を含むパターン (例:(Maven) `<version>[2.0,)</version>`、または (Gradle) `version:'2.0.+'`) を使用している場合、代わりに特定のバージョン (`2.0.1` など) を指定してみてください。 最新のバージョンの [リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java/releases) を参照してください。
 
-## <a name="no-data"></a>データが表示されない
+## <a name="no-data"></a>データなし
 **Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。**
 
 * 少し待ってから、[最新の情報に更新] をクリックします。 グラフは周期的に自動で更新されますが、手動で更新することもできます。 更新間隔は、グラフの時間範囲によって異なります。
@@ -35,7 +26,7 @@ ms.locfileid: "57995590"
 * この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことをご確認ください。
 * ファイアウォールで、dc.services.visualstudio.com への送信トラフィック用に TCP ポート 80 と 443 を開くことが必要な場合があります。 最新のバージョンの [ファイアウォール例外の一覧に関する記事](../../azure-monitor/app/ip-addresses.md)
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。 アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
-* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへのログを有効にし、AI:INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。
+* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへの[ログを有効にし](#debug-data-from-the-sdk)、AI:INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。 
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
 * 構成ファイルが見つからない場合、出力メッセージを確認して構成ファイルの検索範囲を確かめ、ApplicationInsights.xml がこれらの検索場所のいずれかに存在していることを確認します。 通例、構成ファイルは Application Insights SDK の JAR ファイルの近くに見つかります。 たとえば、Tomcat の場合は WEB-INF/classes フォルダーがこれに相当します。 開発時に、Web プロジェクトのリソース フォルダーに ApplicationInsights.xml を配置できます。
 * SDK の既知の問題については、[GitHub の問題に関するページ](https://github.com/Microsoft/ApplicationInsights-Java/issues)を参照してください。
@@ -48,7 +39,7 @@ ms.locfileid: "57995590"
 * 正しい AI リソースを見ていますか? アプリケーションの iKey を、テレメトリが必要なリソースに一致させてください。 これらが同じである必要があります。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>予期しているデータがすべて表示されません
-* [使用量と推定コスト] ページを開き、[サンプリング](../../azure-monitor/app/sampling.md)が動作中かどうかを確認します  (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。
+* [使用量と推定コスト] ページを開き、[サンプリング](../../azure-monitor/app/sampling.md)が動作中かどうかを確認します (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。
 * SDK サンプリングを有効にしていますか? 有効にしている場合、該当するすべての型について、指定したレートでデータがサンプリングされます。
 * 古いバージョンの Java SDK を実行していませんか? バージョン 2.0.1 以降に、ローカル ドライブでのデータ永続化だけでなく、ネットワークやバックエンドの断続的障害に対処できるように、フォールト トレランスのメカニズムを導入しました。
 * テレメトリが過度になるという理由から、調整を行っていますか? 情報のログ記録を有効にしている場合は、"アプリが調整されました" というログ メッセージが表示されます。 現在の制限は、32,000 テレメトリ項目/秒です。
@@ -57,7 +48,6 @@ ms.locfileid: "57995590"
 * [Java エージェントの構成](java-agent.md)に関するページに従って、Java エージェントを構成しましたか?
 * Java エージェント jar ファイルと AI Agent.xml ファイルの両方が同じフォルダーに配置されていることを確認してください。
 * 自動収集しようとしている依存関係が、自動収集でサポートされていることを確認します。 現在、MySQL、MsSQL、Oracle DB、Azure Cache for Redis の依存関係の収集のみがサポートされています。
-* JDK 1.7 または 1.8 を使用していませんか? 現在 JDK 9 の依存関係の収集はサポートされていません。
 
 ## <a name="no-usage-data"></a>使用状況データがない
 **要求と応答時間についてのデータは表示されますが、ページ ビュー、ブラウザー、またはユーザーについてのデータが表示されません。**
@@ -80,7 +70,7 @@ ms.locfileid: "57995590"
     config.setTrackingIsDisabled(true);
 ```
 
-**または**
+**Or**
 
 プロジェクトのリソース フォルダーにある ApplicationInsights.xml を更新します。 ルート ノードの下に次の内容を追加します。
 
@@ -95,7 +85,7 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 **自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?**
 
 * [新しいリソースのインストルメンテーション キーを取得します。][java]
-* Eclipse の Azure Toolkit を使用してプロジェクトに Application Insights を追加した場合、Web プロジェクトを右クリックし、**[Azure]**、**[Configure Application Insights]** の順に選択して、キーを変更します。
+* Eclipse の Azure Toolkit を使用してプロジェクトに Application Insights を追加した場合、Web プロジェクトを右クリックし、 **[Azure]** 、 **[Configure Application Insights]** の順に選択して、キーを変更します。
 * インストルメンテーション キーを環境変数として構成していた場合は、新しい iKey で環境変数の値を更新してください。
 * それ以外の場合は、プロジェクトのリソース フォルダーにある ApplicationInsights.xml 内のキーを更新します。
 
@@ -110,7 +100,7 @@ API の仕組みの詳細を取得するには、ApplicationInsights.xml 構成�
 ファイルに出力するようにロガーに指示することもできます。
 
 ```XML
-  <SDKLogger type="FILE">
+  <SDKLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
@@ -127,16 +117,38 @@ azure.application-insights.logger.base-folder-path=C:/agent/AISDK
 azure.application-insights.logger.level=trace
 ```
 
+または標準エラーに出力します。
+
+```yaml
+azure.application-insights.logger.type=console
+azure.application-insights.logger.level=trace
+```
+
 ### <a name="java-agent"></a>Java エージェント
 
 JVM エージェントのログ記録を有効にするには、[AI-Agent.xml ファイル](java-agent.md)を更新します。
 
 ```xml
-<AgentLogger type="FILE">
+<AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
 </AgentLogger>
+```
+
+### <a name="java-command-line-properties"></a>Java コマンド ラインのプロパティ
+_バージョン 2.4.0 以降_
+
+構成ファイルを変更せずに、コマンド ライン オプションを使用してログを有効にするには、次のコマンドを実行します。
+
+```
+java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
+```
+
+または標準エラーに出力します。
+
+```
+java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 ```
 
 ## <a name="the-azure-start-screen"></a>Azure のスタート画面
@@ -158,7 +170,7 @@ JVM エージェントのログ記録を有効にするには、[AI-Agent.xml �
 ## <a name="data-retention"></a>データの保持
 **ポータルでのデータ保持期間はどのくらいですか?セキュリティで保護されていますか?**
 
-[データの保持とプライバシー][data]に関するページを参照してください。
+[データ保持とプライバシー][data]に関するページを参照してください。
 
 ## <a name="debug-logging"></a>デバッグ ログ
 Application Insights では `org.apache.http` が使用されます。 これは、名前空間 `com.microsoft.applicationinsights.core.dependencies.http` の下の Application Insights のコアの jar ファイル内に再配置されます。 これにより、Application Insights では、同じ `org.apache.http` のさまざまなバージョンが 1 つのコード ベースに存在するシナリオに対処できます。
@@ -167,7 +179,7 @@ Application Insights では `org.apache.http` が使用されます。 これは
 >アプリですべての名前空間についてデバッグ レベルのログ記録を有効にすると、名前が `com.microsoft.applicationinsights.core.dependencies.http` に変更された `org.apache.http` を含むすべての実行中のモジュールによってこれが適用されます。 ログ呼び出しは Apache のライブラリによって行われるため、Application Insights では、これらの呼び出しにフィルタリングを適用できません。 デバッグ レベルのログ記録では多量のログ データが生成されるため、実稼働インスタンスにはお勧めしません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **Java サーバー アプリ用に Application Insights を設定しました。他には何ができるか教えてください。**
 
 * [Web ページの可用性の監視][availability]
@@ -176,7 +188,7 @@ Application Insights では `org.apache.http` が使用されます。 これは
 * [アプリの使用状況を追跡するためのコードを記述する][track]
 * [診断ログのキャプチャ][javalogs]
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [GitHub に関する問題を報告する](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

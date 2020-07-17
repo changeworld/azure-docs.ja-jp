@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 シリーズ物理アプライアンスへの StorSimple のフェールオーバー、ディザスター リカバリー |Microsoft Docs
+title: 別の StorSimple 8000 デバイスへのフェールオーバー、ディザスター リカバリー
 description: StorSimple 8000 シリーズ物理デバイスを別の物理デバイスにフェールオーバーする方法を説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f3ac9545a341fc24ca12c9f2547805d6956cd98a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e4e890ab5491e46ffe5ea0e1c168d168f9cc729
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108270"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77468611"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 シリーズ物理デバイスにフェールオーバーする
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、災害発生時に、StorSimple 8000 シリーズ物理デバイスを別の StorSimple 物理デバイスにフェールオーバーするために必要な手順について説明します。 StorSimple は、デバイス フェール オーバー機能を使用して、データセンター内のソース物理デバイスから別の物理デバイスにデータを移行します。 このチュートリアルのガイダンスは、ソフトウェア バージョン Update 3 以降を実行している StorSimple 8000 シリーズ物理デバイスに適用されます。
+このチュートリアルでは、災害発生時に、StorSimple 8000 シリーズ物理デバイスを別の StorSimple 物理デバイスにフェールオーバーするために必要な手順について説明します。 StorSimple は、デバイス フェールオーバー機能を使用して、データセンター内のソース物理デバイスから別の物理デバイスにデータを移行します。 このチュートリアルのガイダンスは、ソフトウェア バージョン Update 3 以降を実行している StorSimple 8000 シリーズ物理デバイスに適用されます。
 
 デバイスのフェールオーバーと災害から復旧するための使用方法の詳細については、「[Failover and disaster recovery for StorSimple 8000 series devices](storsimple-8000-device-failover-disaster-recovery.md)」(StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー) を参照してください。
 
@@ -43,11 +43,11 @@ StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオ�
 
 ターゲットの物理デバイスにデバイスを復元するには、次の手順を実行します。
 
-1. フェールオーバーするボリューム コンテナーにクラウド スナップショットが関連付けられていることを確認します。 詳しくは、「[Use StorSimple Device Manager service to create backups](storsimple-8000-manage-backup-policies-u2.md)」(StorSimple デバイス マネージャー サービスを使用してバックアップを作成する) を参照してください。
-2. StorSimple デバイス マネージャーに移動し、**[デバイス]** をクリックします。 **[デバイス]** ブレードで、サービスに接続されているデバイスの一覧に移動します。
+1. フェールオーバーするボリューム コンテナーにクラウド スナップショットが関連付けられていることを確認します。 詳細については、「[Use StorSimple Device Manager service to create backups](storsimple-8000-manage-backup-policies-u2.md)」(StorSimple デバイス マネージャー サービスを使用してバックアップを作成する) を参照してください。
+2. StorSimple デバイス マネージャーに移動し、 **[デバイス]** をクリックします。 **[デバイス]** ブレードで、サービスに接続されているデバイスの一覧に移動します。
     ![デバイスの選択](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 3. ソース デバイスを選択し、クリックします。 ソース デバイスには、フェールオーバーするボリューム コンテナーがあります。 **[設定]、[ボリューム コンテナー]** の順に移動します。
-4. 別のデバイスにフェールオーバーするボリューム コンテナーを選択します。 ボリューム コンテナーをクリックし、このコンテナー内のボリュームの一覧を表示します。 ボリュームを選択して右クリックし、**[オフラインにする]** をクリックしてボリュームをオフラインにします。 ボリューム コンテナーのすべてのボリュームでこのプロセスを繰り返します。
+4. 別のデバイスにフェールオーバーするボリューム コンテナーを選択します。 ボリューム コンテナーをクリックし、このコンテナー内のボリュームの一覧を表示します。 ボリュームを選択して右クリックし、 **[オフラインにする]** をクリックしてボリュームをオフラインにします。 ボリューム コンテナーのすべてのボリュームでこのプロセスを繰り返します。
 5. 別のデバイスにフェールオーバーするすべてのボリューム コンテナーで前の手順を繰り返します。
 6. **[デバイス]** ブレードに戻ります。 コマンド バーで **[フェールオーバー]** をクリックします。
     ![[フェールオーバー]](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev2.png) をクリックします。
@@ -61,7 +61,7 @@ StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオ�
 
         ![ターゲット デバイスの選択](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. 最後に、**[概要]** ですべてのフェールオーバー設定を見直します。 設定を確認し多後で、選択されたボリューム コンテナーのボリュームがオフラインであることを示すチェック ボックスをオンにします。 **[OK]** をクリックします。
+   3. 最後に、 **[概要]** ですべてのフェールオーバー設定を見直します。 設定を確認し多後で、選択されたボリューム コンテナーのボリュームがオフラインであることを示すチェック ボックスをオンにします。 **[OK]** をクリックします。
 
        ![フェールオーバー設定を確認する](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   

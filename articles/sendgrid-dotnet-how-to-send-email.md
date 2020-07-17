@@ -3,8 +3,8 @@ title: SendGrid 電子メール サービスの使用方法 (.NET) | Microsoft D
 description: Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。 コード サンプルは C# で記述され、.NET API を使用しています。
 services: ''
 documentationcenter: .net
-author: thinkingserious
-manager: erikre
+author: georgewallace
+ms.author: gwallace
 editor: ''
 ms.assetid: 21bf4028-9046-476b-9799-3d3082a0f84c
 ms.service: multiple
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: dx@sendgrid.com
-ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: dx@sendgrid.com
+ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062212"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
-このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは C\# で記述され、.NET Standard 1.3 をサポートしています。 紹介するシナリオは、電子メールの作成、電子メールの送信、添付ファイルの追加、さまざまな電子メールおよび追跡設定の有効化です。 SendGrid と電子メールの送信の詳細については、「[次のステップ][Next steps]」を参照してください。
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは C\# で記述され、.NET Standard 1.3 をサポートしています。 紹介するシナリオは、電子メールの作成、電子メールの送信、添付ファイルの追加、さまざまな電子メールおよび追跡設定の有効化です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ][Next steps] 」を参照してください。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid 電子メール サービスとは
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な用途は次のとおりです。
@@ -43,16 +43,16 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 [SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid) は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。 NuGet は Microsoft Visual Studio 2015 以降に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
 
 > [!NOTE]
-> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[https://www.nuget.org](https://www.nuget.org)にアクセスして、**[Install NuGet]** をクリックしてください。
+> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[https://www.nuget.org](https://www.nuget.org)にアクセスして、 **[Install NuGet]** をクリックしてください。
 >
 >
 
 アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
-1. **[新しいプロジェクト]** をクリックし、**[テンプレート]** を選択します。
+1. **[新しいプロジェクト]** をクリックし、 **[テンプレート]** を選択します。
 
    ![新しいプロジェクトを作成する][create-new-project]
-2. **[ソリューション エクスプローラー]** で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2. **[ソリューション エクスプローラー]** で、 **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
    ![SendGrid NuGet パッケージ][SendGrid-NuGet-package]
 3. 「**SendGrid**」を検索し、検索結果の一覧から **SendGrid** を選択します。
@@ -93,14 +93,14 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
     msg.AddContent(MimeType.Text, "Hello World plain text!");
     msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
-**SendGrid** 型でサポートされるすべてのプロパティとメソッドの詳細については、GitHub の [sendgrid-csharp][sendgrid-csharp] に関するページを参照してください。
+**SendGrid** 型でサポートされるすべてのプロパティとメソッドの詳細については、GitHub の [sendgrid-csharp に関するページ][sendgrid-csharp] を参照してください。
 
 ## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
-電子メール メッセージを作成した後で、SendGrid の API を使用してメッセージを送信することができます。 または、[.NET の組み込みライブラリ][NET-library]を使用する方法もあります。
+電子メール メッセージを作成した後で、SendGrid の API を使用してメッセージを送信することができます。 または、[.NET の組み込みライブラリ][NET-library] を使用する方法もあります。
 
 電子メールを送信するには、SendGrid API キーを指定する必要があります。 API キーを構成する方法の詳細については、SendGrid の API キーの[ドキュメント][documentation]を参照してください。
 
-これらの資格情報は、Azure Portal で [アプリケーションの設定] をクリックし、アプリケーションの設定にキーと値のペアを追加することによって保存できます。
+これらの資格情報は、アプリ設定で [アプリケーションの設定] をクリックし、キーと値のペアを追加することによって Azure portal 経由で格納できます。
 
  ![Azure app settings][azure_app_settings]
 
@@ -250,7 +250,7 @@ SendGrid では、電子メール設定と追跡設定を使用することで�
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法:その他の SendGrid サービスを使用する
 SendGrid のいくつかの API と webhook を使用して、Azure アプリケーション内でその他の機能を利用することができます。 詳細については、[SendGrid API のリファレンス][SendGrid API documentation]を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * SendGrid C\# ライブラリ レポート: [sendgrid-csharp][sendgrid-csharp]

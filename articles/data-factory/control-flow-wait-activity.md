@@ -1,26 +1,28 @@
 ---
-title: Azure Data Factory の Wait アクティビティ | Microsoft Docs
+title: Azure Data Factory の Wait アクティビティ
 description: Wait アクティビティは、指定した期間にわたってパイプラインの実行を停止します。
 services: data-factory
 documentationcenter: ''
-author: shlo
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: shlo
-ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807815"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81417914"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory での wait アクティビティの実行
 パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 ## <a name="syntax"></a>構文
 
@@ -49,7 +51,7 @@ waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時
 > このセクションでは、パイプラインを実行するための JSON の定義とサンプル PowerShell コマンドを紹介しています。 Azure PowerShell と JSON 定義を使用して Data Factory パイプラインを作成するための詳細な手順が記載されているチュートリアルについては、[Azure PowerShell を使用したデータ ファクトリの作成に関するチュートリアル](quickstart-create-data-factory-powershell.md)を参照してください。
 
 ### <a name="pipeline-with-wait-activity"></a>Wait アクティビティを含むパイプライン
-この例では、パイプラインに 2 つのアクティビティ **Until** および **Wait** が含まれています。 Wait アクティビティは、1 秒間待つように構成されています。 パイプラインは、実行の間の待ち時間が 1 秒に設定されたループ内で Web アクティビティを実行します。 
+この例では、パイプラインに **Until** および **Wait** という 2 つのアクティビティが含まれています。 Wait アクティビティは、1 秒間待つように構成されています。 パイプラインは、実行の間の待ち時間が 1 秒に設定されたループ内で Web アクティビティを実行します。 
 
 ```json
 {
@@ -99,13 +101,13 @@ waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)
 - [Until アクティビティ](control-flow-until-activity.md)

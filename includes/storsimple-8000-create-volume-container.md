@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 467af776af95cf035121250fdcadd2fee65d9805
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66118131"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181220"
 ---
 #### <a name="to-create-a-volume-container"></a>ボリューム コンテナーを作成するには
-1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択してクリックます。 
+1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択してクリックます。 
 
     ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer1.png)
 
-2. デバイス ダッシュボードで、**[+ ボリューム コンテナーの追加]** をクリックします。
+2. デバイス ダッシュボードで、 **[+ ボリューム コンテナーの追加]** をクリックします。
 
     ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
@@ -27,7 +27,7 @@ ms.locfileid: "66118131"
    3. **[クラウド ストレージの暗号化を有効にする]** を選択して、デバイス からクラウドに送信されるデータの暗号化を有効にします。
    4. 8 ～ 32 文字の **[クラウド ストレージ暗号化キー]** を指定し、確定します。 このキーは、デバイス が暗号化されたデータにアクセスするために使用されます。
    5. このボリューム コンテナーに関連付ける **[ストレージ アカウント]** を選択します。 既存のストレージ アカウントか、サービス作成時に生成される既定のアカウントを選択できます。 **[新規追加]** オプションを使用して、このサービス サブスクリプションにリンクしないストレージ アカウントを指定することもできます。
-   6. 利用可能な帯域幅をすべて使用する場合は、**[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。 このオプションを **[カスタム]** に設定して帯域幅の制御を利用し、1 ～ 1,000 Mbps の範囲の値を指定することもできます。
+   6. 利用可能な帯域幅をすべて使用する場合は、 **[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。 このオプションを **[カスタム]** に設定して帯域幅の制御を利用し、1 ～ 1,000 Mbps の範囲の値を指定することもできます。
       帯域幅の使用状況に関する情報がある場合は、 **[帯域幅テンプレートの選択]** を指定して、スケジュールに基づいて帯域幅を割り当てることもできます。 詳細な手順については、[帯域幅テンプレートの追加](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)に関する記事をご覧ください。
 
       ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の混乱テストとフェールオーバー テストを作成する | Microsoft Docs
+title: Azure Service Fabric の混乱テストとフェールオーバー テストを作成する
 description: Service Fabric の混乱テストとフェールオーバー テストのシナリオを利用し、障害を誘導し、サービスの信頼性を検証します。
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051291"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75465538"
 ---
 # <a name="testability-scenarios"></a>Testability のシナリオ
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。 高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。
@@ -132,6 +123,8 @@ class Test
 ```
 
 PowerShell
+
+Service Fabric Powershell モジュールでは、2 とおりの方法で混乱シナリオを開始できます。 `Invoke-ServiceFabricChaosTestScenario` はクライアントベースであり、テストの途中でクライアント コンピューターがシャットダウンされた場合、それ以上のエラーは発生しません。 また、コンピューターのシャットダウン時にテストの実行を維持するための一連のコマンドがあります。 `Start-ServiceFabricChaos` では、FaultAnalysisService という名称の、信頼性の高いステートフル サービスが使用され、TimeToRun が起動するまでエラーが引き続き表示されます。 `Stop-ServiceFabricChaos` を使用し、シナリオを手動で停止できます。また、`Get-ServiceFabricChaosReport` でレポートが取得されます。 詳細については、「[Azure Service Fabric Powershell リファレンス](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)」と「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」を参照してください。
 
 ```powershell
 $connection = "localhost:19000"

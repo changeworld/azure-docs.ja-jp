@@ -1,27 +1,19 @@
 ---
-title: Azure Cache for Redis の geo レプリケーションの構成方法 | Microsoft Docs
+title: Azure Cache for Redis の geo レプリケーションの設定方法 | Microsoft Docs
 description: 地理的リージョンに関係なく Azure Cache for Redis インスタンスをレプリケートする方法を説明します。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 4254175955c3560c7bd0fdd08c6b60c318238b76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991574"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74129418"
 ---
-# <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの構成方法
+# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの設定方法
 
 geo レプリケーションには、レベルが Premium である Azure Cache for Redis の 2 つのインスタンスをリンクするメカニズムが用意されています。 1 つのキャッシュはプライマリ リンク キャッシュとして、もう一方のキャッシュはセカンダリ リンク キャッシュとして選択されます。 セカンダリ リンク キャッシュは読み取り専用になり、プライマリ キャッシュに書き込まれたデータがセカンダリ リンク キャッシュにレプリケートされます。 この機能は、Azure リージョン間でキャッシュをレプリケートする際に使用できます。 この記事では、Premium レベルの Azure Cache for Redis インスタンスの geo レプリケーションを構成するためのガイドを提供します。
 
@@ -56,11 +48,11 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
 ## <a name="add-a-geo-replication-link"></a>geo レプリケーション リンクの追加
 
-1. geo レプリケーションのために 2 つのキャッシュをリンクするには、まずプライマリ リンク キャッシュにするキャッシュのリソース メニューの **[geo レプリケーション]** をクリックします。 次に、**[geo レプリケーション]** ブレードの **[キャッシュ レプリケーション リンクの追加]** をクリックします。
+1. geo レプリケーションのために 2 つのキャッシュをリンクするには、まずプライマリ リンク キャッシュにするキャッシュのリソース メニューの **[geo レプリケーション]** をクリックします。 次に、 **[geo レプリケーション]** ブレードの **[キャッシュ レプリケーション リンクの追加]** をクリックします。
 
     ![リンクの追加](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. **[互換性のあるキャッシュ]** の一覧で目的のセカンダリ キャッシュの名前をクリックします。 そのセカンダリ キャッシュが一覧に表示されていない場合は、セカンダリ キャッシュの [geo レプリケーションの前提条件](#geo-replication-prerequisites)が満たされていることを確認します。 キャッシュをリージョンでフィルター処理するには、マップ内のリージョンをクリックして、**[互換性のあるキャッシュ]** の一覧にあるキャッシュのみを表示します。
+2. **[互換性のあるキャッシュ]** の一覧で目的のセカンダリ キャッシュの名前をクリックします。 そのセカンダリ キャッシュが一覧に表示されていない場合は、セカンダリ キャッシュの [geo レプリケーションの前提条件](#geo-replication-prerequisites)が満たされていることを確認します。 キャッシュをリージョンでフィルター処理するには、マップ内のリージョンをクリックして、 **[互換性のあるキャッシュ]** の一覧にあるキャッシュのみを表示します。
 
     ![geo レプリケーションの互換性のあるキャッシュ](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
@@ -80,7 +72,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    レプリケーション プロセスが完了すると、**[リンクの状態]** が「**成功**」に変わります。
+    レプリケーション プロセスが完了すると、 **[リンクの状態]** が「**成功**」に変わります。
 
     ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -88,7 +80,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
 ## <a name="remove-a-geo-replication-link"></a>geo レプリケーション リンクの削除
 
-1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、**[geo レプリケーション]** ブレードで **[Unlink caches]\(キャッシュのリンク解除\)** をクリックします。
+1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、 **[geo レプリケーション]** ブレードで **[Unlink caches]\(キャッシュのリンク解除\)** をクリックします。
     
     ![[Unlink caches]\(キャッシュのリンク解除\)](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
@@ -190,6 +182,6 @@ geo レプリケートされたキャッシュでは、Azure リージョン間�
 
 顧客始動のフェールオーバーを開始するには、まずキャッシュをリンク解除します。 次に、(以前にリンクされた) セカンダリ キャッシュの接続エンドポイントを使用するように Redis クライアントを変更します。 2 つのキャッシュがリンク解除されると、セカンダリ キャッシュが再び通常の読み取り/書き込みキャッシュになり、Redis クライアントから直接要求を受け付けます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Cache for Redis Premium レベル](cache-premium-tier-intro.md)の詳細を確認します。

@@ -9,11 +9,11 @@ ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66138223"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67181654"
 ---
 コンテナーとの直接 SSH セッションを開くには、アプリが実行されている必要があります。
 

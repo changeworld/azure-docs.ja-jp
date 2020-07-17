@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory レポートに Azure Monitor ブックを使用する | Microsoft Docs
+title: レポート用の Azure Monitor ブック | Microsoft Docs
 description: Azure Active Directory レポートに Azure Monitor ブックを使用する方法について説明します。
 services: active-directory
 author: MarkusVi
@@ -11,17 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406592"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799366"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
+
+> [!IMPORTANT]
+> このブック内の基になるクエリを最適化するには、[編集] をクリックし、[設定] アイコンをクリックして、これらのクエリを実行するワークスペースを選択してください。 Workbooks は、既定では、Azure AD ログをルーティングしているすべてのワークスペースを選択します。 
 
 以下を行いたいですか?
 
@@ -31,11 +34,21 @@ ms.locfileid: "65406592"
 
 - レガシ認証を使用して環境にサインインしているユーザーを知りたい。 [レガシ認証をブロック](../conditional-access/block-legacy-authentication.md)することで、テナントの保護を向上させることができます。
 
-こうした疑問の解決を支援するために、Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。 
+- テナント内の条件付きアクセス ポリシーの影響を理解する必要がありますか。
+
+- サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートを確認する機能が必要ですか。
+
+- ポリシーの影響をデバイスのプラットフォーム、デバイスの状態、クライアント アプリ、サインイン リスク、場所、アプリケーションなどの条件ごとにコンテキスト化できるように、条件ごとのブックの詳細をより深く理解することに関心がありますか。
+
+- サインイン ログのクエリ、アクセスを付与または拒否されたユーザーの数や、リソースへのアクセス時に条件付きアクセス ポリシーをバイパスしたユーザーの数についてのブック レポートに関するより深い分析情報を取得したいですか。
+
+- こうした疑問の解決を支援するために、Azure Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。
+
+
 
 この記事の内容は次のとおりです。
 
-- [Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)方法に精通していることを前提としています。
+- [Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)方法に精通していることを前提としています。
 
 - Monitor ブックを使用して、条件付きアクセス ポリシーの影響を把握したり、サインイン エラーをトラブルシューティングしたり、レガシ認証を識別したりする方法について説明します。
  
@@ -45,30 +58,40 @@ ms.locfileid: "65406592"
 
 Monitor ブックを使用するためには、次のものが必要となります。
 
-- プレミアム (P1 または P2) ライセンスがある Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)をご覧ください。
+- プレミアム (P1 または P2) ライセンスがある Azure Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)をご覧ください。
 
 - [Log Analytics ワークスペース。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+
+- Log Analytics ワークスペースへの[アクセス](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
+- Azure Active Directory の次のロール (Azure Active Directory ポータルで Log Analytics にアクセスする場合)
+    - セキュリティ管理者
+    - セキュリティ閲覧者
+    - レポート閲覧者
+    - 全体管理者
+
+## <a name="roles"></a>ロール
+ブックを管理するには、次のいずれかのロールが割り当てられ、さらに[基の Log Analytics ワークスペースにアクセスできる](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)必要があります。
+-   全体管理者
+-   セキュリティ管理者
+-   セキュリティ閲覧者
+-   レポート閲覧者
+-   アプリケーション管理者
 
 ## <a name="workbook-access"></a>ブックへのアクセス 
 
 ブックにアクセスするには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択します。
+1. **[Azure Active Directory]**  >  **[監視]**  >  **[Workbooks] (ブック)** に移動します。 
 
-3. **[監視]** セクションで **[Insights]** を選択します。 
+1. レポートまたはテンプレートを選択するか、ツール バーで **[Open]\(開く\)** を選択します。 
 
-    ![[Insights] を選択する](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. レポートまたはテンプレートを選択するか、ツール バーで **[Open]\(開く\)** を選択します。 
-
-    ![[Open]\(開く\) を選択する](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![Azure AD で Azure Monitor ブックを見つける](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>サインインの分析
 
-サインインの分析ブックにアクセスするには、**[使用状況]** セクションで **[サインイン]** を選択します。 
+サインインの分析ブックにアクセスするには、 **[使用状況]** セクションで **[サインイン]** を選択します。 
 
 このブックには次のサインインの傾向が示されます。
 
@@ -78,11 +101,11 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 - 保留中のユーザー アクション
 
-- 失敗
+- 障害
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -93,7 +116,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 次のカテゴリ別の内訳が傾向ごとに得られます。
 
-- Location
+- 場所
 
     ![場所ごとのサインイン](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -105,7 +128,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 ## <a name="sign-ins-using-legacy-authentication"></a>レガシ認証を使用したサインイン 
 
 
-[レガシ認証](../conditional-access/block-legacy-authentication.md)を使用したサインインのブックにアクセスするには、**[使用状況]** セクションで **[レガシ認証を使用したサインイン]** を選択します。 
+[レガシ認証](../conditional-access/block-legacy-authentication.md)を使用したサインインのブックにアクセスするには、 **[使用状況]** セクションで **[レガシ認証を使用したサインイン]** を選択します。 
 
 このブックには次のサインインの傾向が示されます。
 
@@ -116,7 +139,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -136,11 +159,11 @@ Monitor ブックを使用するためには、次のものが必要となりま
 ## <a name="sign-ins-by-conditional-access"></a>条件付きアクセスでのサインイン 
 
 
-[条件付きアクセス ポリシー](../conditional-access/overview.md)でのサインインのブックにアクセスするには、**[条件付きアクセス]** セクションで **[条件付きアクセスでのサインイン]** を選択します。 
+[条件付きアクセス ポリシー](../conditional-access/overview.md)によるサインインに関するブックにアクセスするには、 **[条件付きアクセス]** セクションで **[Sign-ins by Conditional Access]\(条件付きアクセスでのサインイン\)** を選択します。 
 
 このブックには、無効化されたサインインの傾向が示されます。それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -154,7 +177,43 @@ Monitor ブックを使用するためには、次のものが必要となりま
 ![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>分析情報への条件付きアクセス
 
+### <a name="overview"></a>概要
+
+Workbooks には、IT 管理者がそのテナント内の条件付きアクセス ポリシーの影響を監視するために役立つサインイン ログのクエリが含まれています。 アクセスを付与または拒否されたユーザーの数に関して報告する機能があります。 ブックには、サインインの時点での各ユーザーの属性に基づいて条件付きアクセス ポリシーをバイパスしたユーザーの数に関する分析情報が含まれています。 ポリシーの影響をデバイスのプラットフォーム、デバイスの状態、クライアント アプリ、サインイン リスク、場所、アプリケーションなどの条件ごとにコンテキスト化できるように、これには条件ごとの詳細が含まれています。
+
+### <a name="instructions"></a>Instructions 
+分析情報への条件付きアクセスに関するブックにアクセスするには、[条件付きアクセス] セクションで **[分析情報への条件付きアクセス]** ブックを選択します。 このブックには、テナント内の各条件付きアクセス ポリシーの予測される影響が表示されます。 ドロップダウン リストから 1 つ以上の条件付きアクセス ポリシーを選択し、次のフィルターを適用してブックの範囲を絞り込みます。 
+
+- **[時間の範囲]**
+
+- **User**
+
+- **Apps (アプリ)**
+
+- **[Data View] (データ ビュー)**
+
+![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+
+
+[影響の概要] には、選択されたポリシーが特定の結果をもたらしたユーザーまたはサインインの数が表示されます。 [合計] は、選択されたポリシーが、選択された [時間の範囲] で評価されたユーザーまたはサインインの数です。 タイルをクリックすると、ブック内のデータがその結果の種類でフィルター処理されます。 
+
+![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+
+このブックにはまた、次の 6 つの各条件で分類された、選択されたポリシーの影響も表示されます。 
+- **[デバイスの状態]**
+- **[デバイスのプラットフォーム]**
+- **[クライアント アプリ]**
+- **[サインイン リスク]**
+- **場所**
+- **アプリケーション**
+
+![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+ブックで選択されたパラメーターでフィルター処理された個々のサインインを調査することもできます。 サインインの頻度で並べ替えられた個々のユーザーを検索し、対応するサインイン イベントを表示します。 
+
+![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 
@@ -162,7 +221,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 ## <a name="sign-ins-by-grant-controls"></a>許可コントロールによるサインイン
 
-[許可コントロール](../conditional-access/controls.md)別サインインのブックにアクセスするには、**[条件付きアクセス]** セクションで **[許可コントロール別のサインイン]** を選択します。 
+[制御の許可](../conditional-access/controls.md)によるサインインに関するブックにアクセスするには、 **[条件付きアクセス]** セクションで **[Sign-ins by Grant Controls]\(制御の許可でのサインイン\)** を選択します。 
 
 このブックには次の無効化されたサインインの傾向が示されます。
 
@@ -177,7 +236,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -202,7 +261,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 - レガシ認証 
 
 
-データの条件付きアクセスによるサインインにアクセスするには、**[トラブルシューティング]** セクションで **[レガシ認証を使用したサインイン]** を選択します。 
+条件付きアクセスのデータでサインインにアクセスするには、 **[トラブルシューティング]** セクションで **[Sign-ins using Legacy Authentication]\(レガシ認証を使用したサインイン\)** を選択します。 
 
 このブックには次のサインインの傾向が示されます。
 
@@ -212,12 +271,12 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 - 保留中のアクション
 
-- 失敗
+- 障害
 
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -241,6 +300,6 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
+[Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)

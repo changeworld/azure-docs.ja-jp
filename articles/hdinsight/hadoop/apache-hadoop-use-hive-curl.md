@@ -1,19 +1,19 @@
 ---
 title: HDInsight 上で Curl を使用して Apache Hadoop Hive を使用する - Azure
-description: Curl を使用して Apache Pig ジョブを HDInsight にリモートで送信する方法について説明します。
+description: Curl を使用して Apache Pig ジョブを Azure HDInsight にリモートで送信する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: e020cbc9c18db2142ee7f52cdac22a3518683fce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 01/06/2020
+ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695816"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298752"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 
@@ -23,51 +23,66 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 
 ## <a name="prerequisites"></a>前提条件
 
-* バージョン 3.4 以上の HDInsight クラスターでの Linux ベースの Hadoop。
+* HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-  > [!IMPORTANT]  
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+* REST クライアント。 このドキュメントでは、Windows PowerShell の [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) と [Bash](https://docs.microsoft.com/windows/wsl/install-win10) の [Curl](https://curl.haxx.se/) を使用します。
 
-* REST クライアント。 このドキュメントでは、Windows PowerShell と [Curl](https://curl.haxx.se/) の例を使用します。
+* Bash を使用する場合は、コマンド ライン JSON プロセッサである jq も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
-    > [!NOTE]  
-    > Azure PowerShell は、HDInsight 上の Hive を操作するための専用のコマンドレットを提供します。 詳細については、[Azure PowerShell を使用した Apache Hive の実行](apache-hadoop-use-hive-powershell.md)に関するドキュメントをご覧ください。
+## <a name="base-uri-for-rest-api"></a>Rest API のベース URI
 
-また、このドキュメントでは、Windows PowerShell と [Jq](https://stedolan.github.io/jq/) を使用して、REST 要求から返された JSON データを処理します。
+HDInsight の REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` は実際のクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別**されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
 
-## <a id="curl"></a>Hive クエリを実行する
+## <a name="authentication"></a>認証
 
-> [!NOTE]  
-> cURL、または WebHCat を用いたその他 REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。
->
-> REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+cURL、または WebHCat を用いたその他 REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
-1. このドキュメントのスクリプトで使用されるクラスター ログインを設定するには、次のいずれかのコマンドを使用します。
+### <a name="setup-preserve-credentials"></a>セットアップ (資格情報の保存)
+
+各例で再入力しなくて済むように、資格情報を保存します。  クラスター名は別の手順で保存します。
+
+**A.Bash**  
+`PASSWORD` を実際のパスワードに置き換えて、次のスクリプトを編集します。  その後、コマンドを入力します。
+
+```bash
+export password='PASSWORD'
+```  
+
+**B.PowerShell** 以下のコードを実行し、ポップアップ ウィンドウで資格情報を入力します。
+
+```powershell
+$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
+```
+
+### <a name="identify-correctly-cased-cluster-name"></a>大文字と小文字が正しく区別されたクラスター名を確認する
+
+クラスターの作成方法によっては、クラスター名の実際の大文字小文字の区別が予想と異なる場合があります。  ここの手順では、実際の大文字小文字の区別を示し、後のすべての例のために、それを変数に格納します。
+
+次のスクリプトを編集して、`CLUSTERNAME` を実際のクラスター名に置き換えます。 その後、コマンドを入力します。 (FQDN のクラスター名は大文字と小文字が区別されません。)
+
+```bash
+export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
+echo $clusterName
+```  
+
+```powershell
+# Identify properly cased cluster name
+$resp = Invoke-WebRequest -Uri "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" `
+    -Credential $creds -UseBasicParsing
+$clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
+
+# Show cluster name
+$clusterName
+```
+
+## <a name="run-a-hive-query"></a>Hive クエリを実行する
+
+1. HDInsight クラスターに接続できることを確認するには、次のいずれかのコマンドを使用します。
 
     ```bash
-    read -p "Enter your cluster login account name: " LOGIN
+    curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/status
     ```
 
-    ```powershell
-    $creds = Get-Credential -UserName admin -Message "Enter the cluster login name and password"
-    ```
-
-2. クラスター名を設定するには、次のいずれかのコマンドを使用します。
-
-    ```bash
-    read -p "Enter the HDInsight cluster name: " CLUSTERNAME
-    ```
-
-    ```powershell
-    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-    ```
-
-3. HDInsight クラスターに接続できることを確認するには、次のいずれかのコマンドを使用します。
-
-    ```bash
-    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status
-    ```
-    
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/status" `
        -Credential $creds `
@@ -86,10 +101,10 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
     * `-u` - 要求の認証に使用するユーザー名とパスワード。
     * `-G` - この要求が GET 操作であることを示します。
 
-   URL の最初の部分 `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` は、すべての要求で同じです。 パス `/status` は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 次のコマンドを使用して、Hive のバージョンを要求することもできます。
+1. URL の最初の部分 `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` は、すべての要求で同じです。 パス `/status` は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
     ```bash
-    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
     ```
 
     ```powershell
@@ -102,18 +117,18 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
     この要求では、次のような応答が返されます。
 
     ```json
-        {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
+    {"module":"hive","version":"1.2.1000.2.6.5.3008-11"}
     ```
 
-4. 次のコマンドを使用して、 **log4jLogs** という名前のテーブルを作成します。
+1. 次のコマンドを使用して、 **log4jLogs** という名前のテーブルを作成します。
 
     ```bash
-    JOBID=`curl -s -u $LOGIN -d user.name=$LOGIN -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/hive | jq .id`
-    echo $JOBID
+    jobid=$(curl -s -u admin:$password -d user.name=admin -d execute="DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$clusterName.azurehdinsight.net/templeton/v1/hive | jq -r .id)
+    echo $jobid
     ```
 
     ```powershell
-    $reqParams = @{"user.name"="admin";"execute"="set hive.execution.engine=tez;DROP TABLE log4jLogs;CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED BY ' ' STORED AS TEXTFILE LOCATION '/example/data/;SELECT t4 AS sev,COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;";"statusdir"="/example/rest"}
+    $reqParams = @{"user.name"="admin";"execute"="DROP TABLE log4jLogs;CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED BY ' ' STORED AS TEXTFILE LOCATION '/example/data/;SELECT t4 AS sev,COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;";"statusdir"="/example/rest"}
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/hive" `
        -Credential $creds `
        -Body $reqParams `
@@ -130,8 +145,8 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
      * `statusdir` - このジョブの状態が書き込まれるディレクトリ。
 
    これらのステートメントは次のアクションを実行します。
-   
-   * `DROP TABLE` - テーブルが既に存在する場合は削除されます。
+
+   * `DROP TABLE` - テーブルが既に存在する場合、そのテーブルは削除されます。
    * `CREATE EXTERNAL TABLE` - 新しい "外部" テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
      > [!NOTE]  
@@ -140,7 +155,7 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
    * `ROW FORMAT` - データがどのように書式設定されるか。 各ログのフィールドは、スペースで区切られています。
-   * `STORED AS TEXTFILE LOCATION` - データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
+   * `STORED AS TEXTFILE LOCATION` - データが格納されている場所 (example/data ディレクトリ) と、それがテキストとして格納されていること。
    * `SELECT` - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
 
      > [!NOTE]  
@@ -148,10 +163,10 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 
       このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
 
-5. ジョブのステータスを確認するには、次のコマンドを使用します。
+1. ジョブのステータスを確認するには、次のコマンドを使用します。
 
     ```bash
-    curl -G -u $LOGIN -d user.name=$LOGIN https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/$JOBID | jq .status.state
+    curl -u admin:$password -d user.name=admin -G https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobid | jq .status.state
     ```
 
     ```powershell
@@ -168,43 +183,15 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 
     ジョブが完了している場合、ステータスは **SUCCEEDED** です。
 
-6. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/rest` です。 このアドレスは、クラスターの既定ストレージに `example/curl` ディレクトリの出力を格納します。
+1. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/rest` です。 このアドレスは、クラスターの既定ストレージに `example/curl` ディレクトリの出力を格納します。
 
-    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)に関するページを参照してください。
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/storage-azure-cli)に関するページを参照してください。
 
-## <a id="nextsteps"></a>次のステップ
-
-HDInsight での Hive に関する全般的な情報
-
-* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+## <a name="next-steps"></a>次のステップ
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 このドキュメントで使用されている REST API の詳細については、「[WebHCat リファレンス](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)」に関するドキュメントをご覧ください。
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-
-
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-
-
-
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-

@@ -6,59 +6,80 @@ keywords: エンコード;エンコーダー;メディア
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 01/17/2019
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317325"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641803"
 ---
-# <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
+# <a name="tested-on-premises-live-streaming-encoders"></a>テスト済みのオンプレミス ライブ ストリーミング エンコーダー
 
 Azure Media Services では、[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents) (チャネル) は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 ライブ イベントは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーは、パススルー チャネルに単一ビットレートのストリームを送信できます。 この構成は、クライアントへのアダプティブ ビットレート ストリーミングができないため推奨されません。
+* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーの場合は、シングルビットレートのストリームではなく、マルチビットレートのストリームをパススルー ライブ イベントに送信して、クライアントへのアダプティブ ビットレート ストリーミングを可能にすることをお勧めします。 
 
-  > [!NOTE]
+    パススルー ライブ イベントにマルチビットレートのストリームを使用している場合は、再生側での予期しない動作を避けるために、異なるビットレートでのビデオの GOP サイズおよびビデオ フラグメントを同期する必要があります。
+
+  > [!TIP]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
-
+ 
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効な Live Event にシングル ビットレート ストリームが送信されます。RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが Live Event で実行されます。
 
+この記事では、テスト済みのオンプレミス ライブ ストリーミング エンコーダーについて説明します。 オンプレミス ライブ エンコーダーを確認する方法については、[オンプレミス エンコーダーの確認](become-on-premises-encoder-partner.md)に関するページを参照してください。
+
 Media Services でのライブ エンコードの詳細については、[Media Services v3 でのライブ ストリーミング](live-streaming-overview.md)に関するページをご覧ください。
+
+## <a name="encoder-requirements"></a>エンコーダーの要件
+
+HTTPS または RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 
 ## <a name="live-encoders-that-output-rtmp"></a>RTMP を出力するライブ エンコーダー
 
 Media Services では、RTMP を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `rtmp://` または `rtmps://` です。
 
+RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 1935 と 1936 が開いていることを確認します。<br/><br/>
+RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 2935 と 2936 が開いていることを確認します。
+
 > [!NOTE]
-> RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 1935 と 1936 が開いていることを確認します。
+> RTMPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 
 - Adobe Flash Media Live Encoder 3.2
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- Elemental Live (バージョン 2.14.15 以降)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1 以降
-- Telestream Wirecast S
+- Telestream Wirecast (TLS 1.2 の要件によりバージョン 13.0.2 以降)
+- Telestream Wirecast S (RTMP のみがサポートされています)
 - Teradek Slice 756
-- TriCaster 8000
-- Tricaster Mini HD-4
 - VMIX
 - xStream
+- [Ffmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 および Hero 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>フラグメント化 MP4 を出力するライブ エンコーダー
 
 Media Services では、マルチビットレートのスムーズ ストリーミング (フラグメント化 MP4) を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `http://` または `https://` です。
 
+> [!NOTE]
+> HTTPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Elemental Live (TLS 1.2 の要件により 2.14.15 以降)
+- Envivio 4Caster C4 Gen III 
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live と Hero 4K (UHD/HEVC)
+- [Ffmpeg](https://www.ffmpeg.org)
+
+> [!TIP]
+>  複数の言語でライブ イベント (たとえば、英語のオーディオ トラックやスペイン語のオーディオ トラックなど) をストリーミングする場合は、パススルー ライブ イベントにライブ フィードを送信するように構成された Media Excel ライブ エンコーダーを利用して、これを実現できます。
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>オンプレミス ライブ エンコーダーの設定を構成する
 
@@ -75,57 +96,18 @@ Media Services では、マルチビットレートのスムーズ ストリー�
 - ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 - プッシュの開始後にエンコーダーの構成を変更すると、イベントに悪影響を与えます。 構成を変更すると、イベントが不安定になる可能性があります。 
 - 十分な時間をかけてイベントを設定してください。 高スケールのイベントの場合、イベントの 1 時間前に設定を開始することをお勧めします。
+- H.264 ビデオと AAC オーディオ コーデックの出力を使用します。
+- ビデオの品質全般にキー フレームまたは GOP のテンポラル アラインメントが確実にあるようにします。
+- ビデオの品質ごとに一意のストリーム名があることを確認してください。
+- 最適なアダプティブ ビットレート パフォーマンスを得るには、高レベルの CBR エンコードを使用することをお勧めします。
 
-## <a name="becoming-an-on-premises-encoder-partner"></a>オンプレミス エンコーダー パートナーになる
+> [!IMPORTANT]
+> クラウドにフラグメントをアップロードするときに、マシン (CPU、メモリなど) の物理状態を監視するには、CPU と IO の操作が必要です。 エンコーダーの設定を変更する場合は、変更を有効にするためにチャネルまたはライブ イベントを確実にリセットします。
 
-Media Services は、Azure Media Services オンプレミス エンコーダー パートナーとして企業のお客様にエンコーダーを推奨することで、製品の販売を促進します。 オンプレミス エンコーダー パートナーになるには、オンプレミス エンコーダーと Media Services との互換性を確認する必要があります。 これを行うには、次の検証を実行します。
-
-### <a name="pass-through-live-event-verification"></a>パススルー Live Event 検証
-
-1. Media Services アカウントで、**ストリーミング エンドポイント**が実行されていることを確認します。 
-2. **パススルー** Live Event を作成し、起動します。 <br/> 詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
-3. 取り込み URL を取得し、URL を使用してマルチビットレート ライブ ストリームを Media Services に送信するようにオンプレミス エンコーダーを構成します。
-4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
-5. 新しい**資産**オブジェクトを作成します。
-6. **ライブ出力**を作成し、作成した資産の名前を使用します。
-7. 組み込みの**ストリーミング ポリシー** タイプで**ストリーミング ロケーター**を作成します。
-8. 使用する URL を返すためのパスを**ストリーミング ロケーター**に列挙します。
-9. ストリーミングする**ストリーミング エンドポイント**のホスト名を取得します。
-10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
-11. ライブ エンコーダーを約 10 分間実行します。
-12. ライブ イベントを停止します。 
-13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルで目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
-14. 資産 ID、ライブ アーカイブの公開済みストリーミング URL、およびライブ エンコーダーから使用されている設定とバージョンを記録します。
-15. 各サンプルの作成後に、Live Event の状態をリセットします。
-16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号、キャプション、または異なるエンコード速度を使用します)。
-
-### <a name="live-encoding-live-event-verification"></a>ライブ エンコード Live Event 検証
-
-1. Media Services アカウントで、**ストリーミング エンドポイント**が実行されていることを確認します。 
-2. **ライブ エンコード** Live Event を作成し、起動します。 <br/> 詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
-3. 取り込み URL を取得し、シングルビットレート ライブ ストリームを Media Services にプッシュするようにエンコーダーを構成します。
-4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
-5. 新しい**資産**オブジェクトを作成します。
-6. **ライブ出力**を作成し、作成した資産の名前を使用します。
-7. 組み込みの**ストリーミング ポリシー** タイプで**ストリーミング ロケーター**を作成します。
-8. 使用する URL を返すためのパスを**ストリーミング ロケーター**に列挙します。
-9. ストリーミングする**ストリーミング エンドポイント**のホスト名を取得します。
-10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
-11. ライブ エンコーダーを約 10 分間実行します。
-12. ライブ イベントを停止します。
-13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルについて目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
-14. 資産 ID、ライブ アーカイブの公開済みストリーミング URL、およびライブ エンコーダーから使用されている設定とバージョンを記録します。
-15. 各サンプルの作成後に、Live Event の状態をリセットします。
-16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号、キャプション、または異なるエンコード速度を使用します)。
-
-### <a name="longevity-verification"></a>持続時間の検証
-
-[パススルー ライブ イベント検証](#pass-through-live-event-verification)と同じ手順に従います。ただし、手順 11 を除きます。 <br/>10 分ではなく、1 週間以上ライブ エンコーダーを実行します。 再生に目に見える異常がないことを確認するため、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用して、時折ライブ ストリーミング (またはアーカイブされた資産) を監視します。
-
-### <a name="email-your-recorded-settings"></a>記録した設定をメールで送信する
-
-最後に、すべての自己検証チェックに成功したことを知らせる通知として、amsstreaming@microsoft.com 宛の電子メールで記録した設定とライブ アーカイブ パラメーターを Azure Media Services に送信します。 また、すべてのフォローアップに関する自分の連絡先情報を含めます。 このプロセスに関して質問がある場合は、Azure Media Services チームに問い合わせることができます。
-
-## <a name="next-steps"></a>次の手順
+## <a name="see-also"></a>関連項目
 
 [Media Services v3 を使用したライブ ストリーミング](live-streaming-overview.md)
+
+## <a name="next-steps"></a>次のステップ
+
+[エンコーダーを確認する方法](become-on-premises-encoder-partner.md)

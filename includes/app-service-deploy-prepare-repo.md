@@ -5,15 +5,15 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 7ec4028c319749b6a3da019e1d320d3937e9c4b2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: add0d392f39ab476c6d75f704d5b2e2e0faaa77c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66133173"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67836762"
 ---
 ## <a name="prepare-your-repository"></a>リポジトリを準備する
 
@@ -21,20 +21,19 @@ Azure App Service Kudu ビルド サーバーから自動ビルドを取得す�
 
 | ランタイム | ルート ディレクトリのファイル |
 |-|-|
-| ASP.NET (Windows のみ) | _*.sln_、_*.csproj_、または _default.aspx_ |
+| ASP.NET (Windows のみ) | _*.sln_、 _*.csproj_、または _default.aspx_ |
 | ASP.NET Core | _*.sln_ または _*.csproj_ |
 | PHP | _index.php_ |
 | Ruby (Linux のみ) | _Gemfile_ |
 | Node.js | _server.js_、_app.js_、またはスタート スクリプトを含む _package.json_ |
 | Python | _\*.py_、_requirements.txt_、または _runtime.txt_ |
 | HTML | _default.htm_、_default.html_、_default.asp_、_index.htm_、_index.html_、または _iisstart.htm_ |
-| WebJobs | _App\_Data/jobs/continuous_ (継続的 WebJobs の場合) または _App\_Data/jobs/triggered_ (トリガーされた WebJobs の場合) 配下の _\<job_name>/run.\<extension>_。 詳細については、[Kudu WebJobs のドキュメント](https://github.com/projectkudu/kudu/wiki/WebJobs)をご覧ください。 |
-| Functions | [Azure Functions の継続的なデプロイ](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment)に関するページをご覧ください。 |
+| WebJobs | _App\<Data/jobs/continuous\< (継続的 WebJobs の場合) または_ App_Data/jobs/triggered\_ (トリガーされた WebJobs の場合) 配下の_ _job_name>/run.\_extension>_ 。 詳細については、[Kudu WebJobs のドキュメント](https://github.com/projectkudu/kudu/wiki/WebJobs)をご覧ください。 |
+| 関数 | [Azure Functions の継続的なデプロイ](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment)に関するページをご覧ください。 |
 
-デプロイをカスタマイズするには、_.deployment_ ファイルをリポジトリのルートに含めます。 詳細については、[デプロイのカスタマイズ](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)に関するページおよび「[Custom deployment script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
+デプロイをカスタマイズするには、 *.deployment* ファイルをリポジトリのルートに含めます。 詳細については、[デプロイのカスタマイズ](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)に関するページおよび「[Custom deployment script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
 
 > [!NOTE]
 > Visual Studio で開発する場合は、[Visual Studio にリポジトリを自動作成](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio)させてください。 プロジェクトは Git を使用してすぐにデプロイできます。
->
 >
 

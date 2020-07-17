@@ -1,27 +1,22 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array の概要 | Microsoft Docs
+title: Microsoft Azure StorSimple Virtual Array の概要
 description: オンプレミス仮想アレイと Microsoft Azure クラウド ストレージ間でストレージ タスクを管理する統合ストレージ ソリューションである StorSimple Virtual Array について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 03/14/2019
+ms.topic: conceptual
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013916"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76273868"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 
@@ -137,12 +132,12 @@ Azure Portal で実行されている StorSimple Device Manager サービスを�
 > [!NOTE]
 > 仮想アレイを拡張することはできません。 そのため、仮想アレイの作成時に十分なストレージをプロビジョニングすることが重要です。
 
-### <a name="storsimple-device-manager-service"></a>StorSimple Device Manager サービス
+### <a name="storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービス
 
 Microsoft Azure StorSimple には Web ベースのユーザー インターフェイス (StorSimple Device Manager サービス) があり、クラウド ストレージを一元管理できます。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
 
 * 1 つのサービスから複数の StorSimple Virtual Array を管理する。
-* StorSimple Virtual Array のセキュリティ設定を構成、管理する  (クラウドでの暗号化には、Microsoft Azure API を利用)。
+* StorSimple Virtual Array のセキュリティ設定を構成、管理する (クラウドでの暗号化には、Microsoft Azure API を利用)。
 * ストレージ アカウントの資格情報とプロパティを構成する。
 * ボリュームまたは共有を構成および管理する。
 * ボリュームまたは共有上のデータをバックアップおよび復元する。
@@ -173,7 +168,7 @@ Web ベースの UI の使用方法については、「 [Web UI を使用した
 * [スケジュールされたバックアップとオンデマンド バックアップ](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>自動ストレージ階層化
-仮想アレイでは、新しい階層化メカニズムを使用して、仮想アレイとクラウド全体にわたり、保存されているデータを管理します。 層はローカル 仮想アレイと Azure クラウド ストレージの 2 つだけです。 StorSimple Virtual Array では、現在の使用状況、データの古さ、および他のデータとの関係を追跡するヒート マップに基づいて、データを自動的に各層に配置します。 使用頻度が最も高い (最もホットな) データはローカルに保存され、使用頻度の低いデータとまったく使用されていないデータは自動的にクラウドに移行されます  (バックアップはすべてクラウドに保存されます)。StorSimple は、使用パターンの変化に応じて、データとストレージの割り当てを調整し、再整理します。 たとえば、時間の経過と共に一部の情報があまりアクティブではなくなったとします。 使用頻度が徐々に低下してくると、そのデータはクラウドに階層化されます。 この同じデータの使用頻度が再び高くなると、ストレージ アレイに階層化されます。
+仮想アレイでは、新しい階層化メカニズムを使用して、仮想アレイとクラウド全体にわたり、保存されているデータを管理します。 層はローカル 仮想アレイと Azure クラウド ストレージの 2 つだけです。 StorSimple Virtual Array では、現在の使用状況、データの古さ、および他のデータとの関係を追跡するヒート マップに基づいて、データを自動的に各層に配置します。 使用頻度が最も高い (最もホットな) データはローカルに保存され、使用頻度の低いデータとまったく使用されていないデータは自動的にクラウドに移行されます (バックアップはすべてクラウドに保存されます)。StorSimple は、使用パターンの変化に応じて、データとストレージの割り当てを調整し、再整理します。 たとえば、時間の経過と共に一部の情報があまりアクティブではなくなったとします。 使用頻度が徐々に低下してくると、そのデータはクラウドに階層化されます。 この同じデータの使用頻度が再び高くなると、ストレージ アレイに階層化されます。
 
 特定の階層化された共有またはボリュームのデータには、独自のローカル層スペース (その共有またはボリュームにプロビジョニングされている領域の合計の約 10%) が保証されます。 これにより、仮想アレイの、その共有またはボリュームの使用可能ストレージが減ると同時に、ある共有またはボリュームの階層化が、他の共有またはボリュームの階層化のニーズによる影響を受けることはなくなります。 そのため、共有またはボリュームに非常にビジーなワークロードがあっても、他のすべてのワークロードをクラウドに強制的に移行することはできません。
 
@@ -215,6 +210,6 @@ StorSimple のデータ保護機能を使用すると、オンデマンド バ�
 
 詳細については、[セキュリティ センターにある Microsoft のプライバシー ポリシー](https://www.microsoft.com/trustcenter)を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [仮想アレイ ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md)方法を確認します。

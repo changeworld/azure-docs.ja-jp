@@ -1,25 +1,23 @@
 ---
-title: Azure Network Watcher のセキュリティ グループ ビューを使用したネットワーク セキュリティの分析 - REST API | Microsoft Docs
+title: ネットワーク セキュリティを分析する - セキュリティ グループ ビュー - Azure REST API
+titleSuffix: Azure Network Watcher
 description: この記事では、PowerShell を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: a2f418fe-f5d2-43ed-8dc3-df0ed2a4d4ac
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 86fff39605fa91c1b09c1547dd0efa97b8fd26cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: c9c76e9c06d4c45a096cff79dac82bb80ebe25d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687860"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76840742"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
@@ -182,8 +180,8 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-security-group-view-powershell.md)に関する記事を参照して、ネットワーク セキュリティ グループの自動検証の方法を確認する。
+[Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-security-group-view-powershell.md)にアクセスして、ネットワーク セキュリティ グループの自動検証の方法を確認する。
 
 

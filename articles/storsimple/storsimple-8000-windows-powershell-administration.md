@@ -1,25 +1,17 @@
 ---
-title: PowerShell for StorSimple デバイス管理 | Microsoft Docs
+title: StorSimple 用 PowerShell のデバイス管理
 description: Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
-ms.author: alkohli@microsoft.com
-ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: alkohli
+ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003125"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76277102"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -55,7 +47,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 
 #### <a name="to-configure-putty"></a>PuTTY を構成するには
 
-1. PuTTY の **[Reconfiguration]** ダイアログ ボックスで、**[Category]** パネルの **[Keyboard]** を選択します。
+1. PuTTY の **[Reconfiguration]** ダイアログ ボックスで、 **[Category]** パネルの **[Keyboard]** を選択します。
 2. 次のオプションが選択されていることを確認します (これらは新しいセッションを開始したときの既定の設定です)。
    
    | キーボードの項目 | Select |
@@ -69,7 +61,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    
     ![サポートされる Putty 設定](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. **[Apply]** をクリックします。
-4. **[Category]** パネルで、**[Translation]** を選択します。
+4. **[Category]** パネルで、 **[Translation]** を選択します。
 5. **[Remote character set]** ボックスの一覧から **[UTF-8]** を選択します。
 6. **[Handling of line drawing characters]** の **[Use Unicode line drawing code points]** を選択します。 次のスクリーンショットに、正しい PuTTY の選択を示します。
    
@@ -97,7 +89,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 
 次の設定から選択できます。
 
-1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます  (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。 オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。 詳細については、「 [サポート セッションを開始する](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
+1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。 オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。 詳細については、「 [サポート セッションを開始する](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
    
 2. **Log in to peer controller with full access**。このオプションはオプション 1 と同じですが、接続先が異なり、ピア コントローラーの **SSAdminConsole** 実行空間に接続できます (適切な資格情報を使用します)。 StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。
    オプション 1 と同じように、このオプションも、ピア コントローラーの無制限実行空間にアクセスすることを Microsoft サポートに許可するために使用できます。
@@ -107,7 +99,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    * 工場出荷時設定をリセットする
    * パスワードを変更する
    * サポート アクセスを有効または無効にする
-   * 更新プログラムを適用する
+   * 更新プログラムの適用
    * 修正プログラムをインストールする
 
      > [!NOTE]
@@ -117,7 +109,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Windows PowerShell for StorSimple を使用して StorSimple にリモート接続する
 
-Windows PowerShell リモート処理を使用して StorSimple デバイスに接続できます。 この方法で接続すると、メニューは表示されません  (メニューは、デバイスのシリアル コンソールを使用して接続する場合のみ表示されます。 リモート接続すると、シリアル コンソールで "オプション 1 – フル アクセス" を選択した場合と同じ結果に直接移行します。)Windows PowerShell リモート処理を使用して、特定の実行空間に接続します。 表示言語を指定することもできます。
+Windows PowerShell リモート処理を使用して StorSimple デバイスに接続できます。 この方法で接続すると、メニューは表示されません (メニューは、デバイスのシリアル コンソールを使用して接続する場合のみ表示されます。 リモート接続すると、シリアル コンソールで "オプション 1 – フル アクセス" を選択した場合と同じ結果に直接移行します。)Windows PowerShell リモート処理を使用して、特定の実行空間に接続します。 表示言語を指定することもできます。
 
 表示言語は、シリアル コンソール メニューの **[Change Language]** オプションを使用して設定する言語とは無関係です。 リモート PowerShell は、何も指定されていない場合は、接続元のデバイスのロケールを自動的に選択します。
 
@@ -147,7 +139,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 | 目的の操作 | 実行する手順 |
 | --- | --- |
 | デバイスを登録する |[Windows PowerShell for StorSimple を使用してデバイスを構成して登録する](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
-| Web プロキシの </br>Web プロキシ表示設定を構成する |[StorSimple デバイスの Web プロキシを構成する](storsimple-8000-configure-web-proxy.md) |
+| Web プロキシの</br>Web プロキシ表示設定を構成する |[StorSimple デバイスの Web プロキシを構成する](storsimple-8000-configure-web-proxy.md) |
 | デバイスの DATA 0 ネットワーク インターフェイス設定を変更する |[StorSimple デバイスの DATA 0 ネットワーク インターフェイスを変更する](storsimple-8000-modify-data-0.md) |
 | コントローラーを停止する </br> コントローラーの再起動とシャットダウンを行う </br> デバイスをシャット ダウンする</br>デバイスを出荷時の設定にリセットする |[デバイス コントローラーを管理する](storsimple-8000-manage-device-controller.md) |
 | メンテナンス モードで更新プログラムと修正プログラムをインストールする |[デバイスを更新する](storsimple-update-device.md) |
@@ -159,7 +151,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 
 Windows PowerShell for StorSimple では、コマンドレット ヘルプを利用できます。 このヘルプのオンラインの最新バージョンも利用できます。これを使用して、システム上のヘルプを更新できます。
 
-このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、次の TechNet ライブラリでオンライン検索できます: [Windows PowerShell を使用したスクリプト](https://go.microsoft.com/fwlink/?LinkID=108518)。
+このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、次の場所でオンライン検索できます。[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/)
 
 Windows PowerShell インターフェイスで取得できるヘルプの種類の簡単な説明を、ヘルプの更新方法も含めて次に示します。
 
@@ -183,7 +175,7 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 > 実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「 [StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 

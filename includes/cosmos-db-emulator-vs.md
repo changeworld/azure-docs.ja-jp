@@ -4,12 +4,11 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
-ms.openlocfilehash: 6b009c58e15b4e54d0fc405135f077145bf44620
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e5d0d9ec2bf0c6b2ed8d6f2e2c8730e6ba52d606
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154614"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "71326912"
 ---
-まだ Visual Studio 2017 をインストールしていない場合は、**無料**の  
-[Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** ワークロードを有効にしてください。
+無料の [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用してください。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** ワークロードを有効にしてください。

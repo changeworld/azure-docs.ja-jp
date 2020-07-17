@@ -1,17 +1,17 @@
 ---
-title: データを Azure Database for MariaDB にレプリケートする
-description: この記事では、Azure Database for MariaDB のデータイン レプリケーションについて説明します。
+title: データイン レプリケーション - Azure Database for MariaDB
+description: データイン レプリケーションを使用して、外部のサーバーから Azure Database for MariaDB サービスに同期する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 3/18/2020
+ms.openlocfilehash: 1fbcc1fb27d5e6df4641f79c0d634580f74000b8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547611"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79532062"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>データを Azure Database for MariaDB にレプリケートする
 
@@ -34,10 +34,13 @@ ms.locfileid: "53547611"
 - 各テーブルには主キーが必要です。
 - マスター サーバーでは、InnoDB エンジンを使用する必要があります。
 - ユーザーは、バイナリ ログの構成とマスター サーバーでの新しいユーザーの作成を実行できるアクセス許可を持っている必要があります。
+- マスター サーバーで SSL が有効になっている場合は、ドメインに対して指定されている SSL CA 証明書が `mariadb.az_replication_change_master` ストアド プロシージャに含まれていることを確認します。 次の[例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)と `master_ssl_ca` パラメーターを参照してください。
+- マスター サーバーの IP アドレスが Azure Database for MariaDB レプリカ サーバーのファイアウォール規則に確実に追加されているようにします。 [Azure portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) または [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) を使用してファイアウォール規則を更新します。
+- マスター サーバーをホストしているコンピューターで、ポート 3306 の受信トラフィックと送信トラフィックの両方が確実に許可されているようにします。
+- マスター サーバーに**パブリック IP アドレス**があるか、DNS がパブリックにアクセスできるか、または完全修飾ドメイン名 (FQDN) を持っているようにしてください。
 
 ### <a name="other"></a>その他
 - データイン レプリケーションは、General Purpose 価格レベルとメモリ最適化価格レベルでのみサポートされます。
-- グローバル トランザクション ID (GTID) はサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [データイン レプリケーションを設定する](howto-data-in-replication.md)方法を確認する。

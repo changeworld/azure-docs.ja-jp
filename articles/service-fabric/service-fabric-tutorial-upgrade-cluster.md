@@ -1,26 +1,15 @@
 ---
-title: Azure で Service Fabric ランタイムをアップグレードする | Microsoft Docs
+title: Azure で Service Fabric ランタイムをアップグレードする
 description: このチュートリアルでは、PowerShell を使用して、Azure でホストされる Service Fabric クラスターのランタイムをアップグレードする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/28/2017
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157962"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756078"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのランタイムをアップグレードする
 
@@ -53,9 +42,9 @@ ms.locfileid: "66157962"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
-* Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+* Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -76,7 +65,7 @@ Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztes
     | Select-Object ClusterCodeVersion
 ```
 
-または、次の手順で、サブスクリプション内のすべてのクラスターの一覧を取得します。
+または、次の例を使用して、サブスクリプション内のすべてのクラスターの一覧を取得します。
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
@@ -106,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 アップグレードの状態は、PowerShell または Azure Service Fabric CLI (sfctl) を使用して監視できます。
 
-まず、チュートリアルの最初の部分で作成した SSL 証明書を使用して、クラスターに接続します。 `Connect-ServiceFabricCluster` コマンドレット、または `sfctl cluster upgrade-status` を使用します。
+まず、チュートリアルの最初の部分で作成した TLS/SSL 証明書を使用して、クラスターに接続します。 `Connect-ServiceFabricCluster` コマンドレット、または `sfctl cluster upgrade-status` を使用します。
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
@@ -119,7 +108,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
                              -StoreLocation CurrentUser -StoreName My
 ```
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
@@ -161,7 +150,7 @@ MaxPercentUpgradeDomainDeltaUnhealthyNodes : 0
 ApplicationHealthPolicyMap                 : {}
 ```
 
-```azurecli
+```console
 sfctl cluster upgrade-status
 
 {
@@ -198,7 +187,7 @@ sfctl cluster upgrade-status
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -207,8 +196,7 @@ sfctl cluster upgrade-status
 > * クラスター ランタイムをのアップグレードする
 > * アップグレードを監視する
 
-[!div class="checklist"]
-> * クラスターのランタイムのバージョンを取得する
-> * クラスター ランタイムをのアップグレードする
-> * アップグレードを監視する
+次のチュートリアルに進みます。
 
+> [!div class="nextstepaction"]
+> [クラスターの削除](service-fabric-tutorial-delete-cluster.md)

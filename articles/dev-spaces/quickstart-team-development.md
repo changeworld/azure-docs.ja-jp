@@ -1,23 +1,19 @@
 ---
-title: Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: Kubernetes 上でのチーム開発
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
-ms.date: 04/25/2019
+ms.date: 01/22/2020
 ms.topic: quickstart
-description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
+description: このクイックスタートでは、Azure Dev Spaces でコンテナーとマイクロサービスを使用した Kubernetes チーム開発を行う方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-manager: jeconnoc
-ms.openlocfilehash: 94083639ca769d12b04c4dc316a9f9867e4209b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+manager: gwallace
+ms.openlocfilehash: 0fe177db420913e5d68807dd803df791653c0914
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765237"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78244952"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
+# <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でのチーム開発 - Azure Dev Spaces
 
 このガイドでは、以下の方法について説明します。
 
@@ -31,24 +27,25 @@ ms.locfileid: "65765237"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 - [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [Helm 2.13 以上がインストールされていること](https://github.com/helm/helm/blob/master/docs/install.md)。
+- [Helm 3 がインストールされていること][helm-installed]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-[サポートされているリージョン](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)で AKS クラスターを作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
-
-*MyAKS* クラスターは、*Standard_DS2_v2* サイズを使用し、RBAC を無効にして 1 つのノードで作成されます。
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
 `use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 下記のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*dev* という開発空間が作成されます。
 
-```cmd
+> [!NOTE]
+> この `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI がまだインストールされていない場合にはこれもインストールされます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。
+
+```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 ```
 
@@ -85,37 +82,14 @@ Kubernetes でサンプル アプリケーションを実行するためのコ�
 
 デプロイに使用したツールとは無関係に、アプリケーションがクラスターで実行した後でチーム開発に Azure Dev Spaces を使用できます。
 
-`helm init` および `helm install` コマンドを使用して、クラスター上でサンプル アプリケーションをセットアップしインストールします。
+`helm install` コマンドを使用して、クラスター上でサンプル アプリケーションをセットアップしインストールします。
 
 ```cmd
 cd charts/
-helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-`helm install` コマンドは、完了までに数分かかる場合があります。 コマンドの出力には、完了時にコマンドによってクラスターにデプロイされたすべてのサービスのステータスが表示されます。
-
-```cmd
-$ cd charts/
-$ helm init --wait
-...
-Happy Helming!
-
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
-
-Hang tight while we grab the latest from your chart repositories...
-...
-NAME               READY  UP-TO-DATE  AVAILABLE  AGE
-bikes              1/1    1           1          4m32s
-bikesharingweb     1/1    1           1          4m32s
-billing            1/1    1           1          4m32s
-gateway            1/1    1           1          4m32s
-reservation        1/1    1           1          4m32s
-reservationengine  1/1    1           1          4m32s
-users              1/1    1           1          4m32s
-```
-
-サンプル アプリケーションをクラスターにインストールした後で、クラスターで Dev Spaces を有効にして以来、`azds list-uris` コマンドを使用して、現在選択されている *dev* 内のサンプル アプリケーションの URL を表示します。
+`helm install` コマンドは、完了までに数分かかる場合があります。 サンプル アプリケーションをクラスターにインストールした後で、クラスターで Dev Spaces を有効にして以来、`azds list-uris` コマンドを使用して、現在選択されている *dev* 内のサンプル アプリケーションの URL を表示します。
 
 ```cmd
 $ azds list-uris
@@ -144,12 +118,12 @@ azds space select -n dev/azureuser2 -y
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 `azds list-uris` を使用して、現在選択されている空間 (*dev/azureuser2*) 内のサンプル アプリケーションの URL を表示します。
@@ -200,6 +174,9 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 ![更新した Azure Dev Spaces 自転車共有サンプル アプリケーション](media/quickstart-team-development/bikeshare-update.png)
 
+> [!NOTE]
+> `azds up` の実行中にサービスに移動すると、`azds up` コマンドの出力に HTTP 要求のトレースも表示されます。 それらのトレースを、サービスのトラブルシューティングやデバッグに活かすことができます。 トレースは、`azds up` の実行時に `--disable-http-traces` を使用して無効にできます。
+
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>その他の開発空間が変更されていないことを確認する
 
 `azds up` コマンドがまだ実行している場合、*Ctrl + C* キーを押します。
@@ -222,13 +199,16 @@ http://dev.gateway.fedcab0987.eus.azds.io/                      Available
 
 ## <a name="clean-up-your-azure-resources"></a>Azure リソースをクリーンアップする
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 
 > [!div class="nextstepaction"]
 > [複数のコンテナーの操作とチーム開発](multi-service-nodejs.md)
+
+[helm-installed]: https://helm.sh/docs/intro/install/
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

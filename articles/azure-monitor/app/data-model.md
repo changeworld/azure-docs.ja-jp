@@ -3,21 +3,18 @@ title: Azure Application Insights Telemetry のデータ モデル | Microsoft D
 description: Application Insights データ モデルの概要
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
 manager: carmonm
-ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671836"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 
@@ -49,9 +46,9 @@ Application Insights Telemetry モデルは、テレメトリをそれが属す�
 
 Application Insights データ モデルはシンプルで基本的でありながら、アプリケーション テレメトリをモデル化するのに十分に強力な方法です。 基本的なシナリオをサポートするモデルをシンプルかつスリムに維持しながら、高度な用途に対してスキーマを拡張できるよう努めています。
 
-データ モデルまたはスキーマの問題やご提案を報告するには、GitHub の[ApplicationInsights ホーム](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) リポジトリを使用してください。
+データ モデルまたはスキーマの問題やご提案を報告するには、GitHub の[ApplicationInsights ホーム](https://github.com/Microsoft/ApplicationInsights-Home/issues) リポジトリを使用してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md)。
 - [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。

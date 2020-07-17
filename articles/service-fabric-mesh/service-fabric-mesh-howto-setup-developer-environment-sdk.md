@@ -1,27 +1,23 @@
 ---
-title: Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定 | Microsoft Docs
+title: Service Fabric Mesh 用の Windows 開発環境を設定する
 description: Windows 開発環境を設定して、Service Fabric Mesh アプリケーションを作成し、Azure Service Fabric Mesh にデプロイします。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 70c32f5e54fa7e71c0884ceba48c84af782b3f41
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777195"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229539"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
 
 Windows 開発コンピューターで Azure Service Fabric Mesh アプリケーションをビルドして実行するには、次のものが必要です。
 
 * Docker
-* Visual Studio 2017
+* Visual Studio 2017 以降
 * Service Fabric Mesh ランタイム
 * Service Fabric Mesh SDK とツール。
 
@@ -35,9 +31,9 @@ Windows 開発コンピューターで Azure Service Fabric Mesh アプリケー
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="visual-studio"></a>Visual Studio
+## <a name="visual-studio"></a>Visual Studio
 
-Service Fabric Mesh アプリケーションをデプロイするには、Visual Studio 2017 が必要です。 [バージョン 15.6.0][download-visual-studio] 以上をインストールし、次のワークロードを有効にします。
+Service Fabric Mesh アプリケーションをデプロイするには、Visual Studio 2017 以降が必要です。 [バージョン 15.6.0 以上をインストール][download-visual-studio]し、次のワークロードを有効にします。
 
 * ASP.NET および Web の開発
 * Azure 開発
@@ -50,9 +46,9 @@ Docker を既にインストールしてある場合は、最新のバージョ�
 
 Service Fabric Mesh が使用するコンテナー化 Service Fabric アプリをサポートするために、最新バージョンの [Docker Community Edition for Windows][download-docker] をダウンロードしてインストールします。
 
-インストール中に求められた場合は、**[Use Windows containers instead of Linux containers]\(Linux コンテナーの代わりに Windows コンテナーを使用する\)** を選択します。
+インストール中に求められた場合は、 **[Use Windows containers instead of Linux containers]\(Linux コンテナーの代わりに Windows コンテナーを使用する\)** を選択します。
 
-マシン上で Hyper-V が有効になっていない場合、有効にするためのメッセージが Docker のインストーラーによって表示されます。 求められたら **[OK]** をクリックします。
+マシン上で Hyper-V が有効になっていない場合、Docker のインストーラーによってそれを有効にするように提案されます。 求められたら **[OK]** をクリックします。
 
 #### <a name="install-docker-on-windows-server-2016"></a>Windows Server 2016 に Docker をインストールする
 
@@ -77,7 +73,7 @@ Install-WindowsFeature Containers
 Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインストールします。
 
 1. Web Platform Installer を使用して [Service Fabric Mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
-2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools] をインストールします。
+2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools]をインストールします。
 
 ## <a name="build-a-cluster"></a>クラスターの構築
 
@@ -89,7 +85,7 @@ Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインス
 > Windows Fall Creators Update (バージョン 1709) のマシンで開発を行っている場合は、Windows バージョン 1709 の Docker イメージのみを使用できます。
 > Windows 10 April 2018 Update (バージョン 1803) のコンピューターで開発を行っている場合は、Windows バージョン 1709 または 1803 の Docker イメージを使用できます。
 
-ローカル クラスターがない場合、Visual Studio は、ローカル クラスターを自動的に作成します。そのため、Visual Studio を使用している場合は、このセクションをスキップできます。
+ローカル クラスターがない場合、Visual Studio によって、ローカル クラスターが自動的に作成されるため、Visual Studio を使用している場合は、このセクションをスキップできます。
 
 一度に 1 つの Service Fabric アプリを作成および実行するときのデバッグのパフォーマンスを最大限に高めるには、単一ノードのローカル開発クラスターを作成します。 一度に複数のアプリケーションを実行する場合は、5 ノードのローカル開発クラスターを作成します。 Service Fabric Mesh プロジェクトをデプロイまたはデバッグするときは常に、クラスターを実行しておく必要があります。
 
@@ -107,13 +103,13 @@ Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインス
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
-5. サービス クラスター マネージャー ツールが実行されたら (これはシステム トレイに表示されます)、それを右クリックし、**[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。
+5. サービス クラスター マネージャー ツールが実行されたら (これはシステム トレイに表示されます)、それを右クリックし、 **[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。
 
 ![図 1 - ローカル クラスターを起動する](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 これで、Service Fabric Mesh アプリケーションを作成する準備ができました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Service Fabric アプリの作成](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するチュートリアルを参照してください。
 

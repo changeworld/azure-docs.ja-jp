@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall の インフラストラクチャ FQDN
-description: Azure Firewall のインフラストラクチャ FQDN について説明します。
+description: Azure Firewall には、既定で許可されるインフラストラクチャ FQDN 用の組み込みのルール コレクションが含まれています。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 1369a82829b2c80768d746ba92daf2482c1fd7f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d4de81bad1ddda2f5b54f47c1be78925ad4cdbf3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994141"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74168978"
 ---
 # <a name="infrastructure-fqdns"></a>インフラストラクチャ FQDN
 
@@ -23,12 +23,11 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 - ストレージのプラットフォーム イメージ リポジトリ (PIR) への Compute アクセス
 - マネージド ディスク状態ストレージ アクセス
 - Azure Diagnostics とログ記録 (MDS)
-- Azure Active Directory
 
 ## <a name="overriding"></a>オーバーライド 
 
 この組み込みのインフラストラクチャ ルール コレクションをオーバーライドするには、最後に処理される "すべて拒否" アプリケーション ルール コレクションを作成します。 このコレクションは、常にインフラストラクチャ ルール コレクションより先に処理されます。 インフラストラクチャ ルール コレクションに含まれていないものは既定で拒否されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Firewall のデプロイおよび構成](tutorial-firewall-deploy-portal.md)方法について説明します。

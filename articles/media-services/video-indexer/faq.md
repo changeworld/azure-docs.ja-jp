@@ -1,23 +1,23 @@
 ---
 title: Video Indexer についてよく寄せられる質問 - Azure
-titlesuffix: Azure Media Services
-description: Video Indexer についてよく寄せられる質問とその回答を紹介します。
+titleSuffix: Azure Media Services
+description: この記事では、Azure Media Services Video Indexer についてよく寄せられる質問に対する回答を提供します。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799499"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81767201"
 ---
-# <a name="frequently-asked-questions"></a>よく寄せられる質問
+# <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
 この記事では、Video Indexer についてよく寄せられる質問とその回答を紹介します。
 
@@ -43,7 +43,7 @@ Video Indexer 機能の詳細については、[概要](video-indexer-overview.m
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Video Indexer を使い始めるにはどうすればよいですか?
 
-Video Indexer には、Web ベースのインターフェイスなら 600 分、API 経由であれば 2,400 分ご利用いただける無料試用版が含まれています。 [Video Indexer の Web ベースのインターフェイスにログイン](https://www.videoindexer.ai/)して、Azure サブスクリプションを設定しなくても、Web ID を使用してご自分で試してみることができます。 
+Video Indexer には、Web ベースのインターフェイスなら 600 分、API 経由であれば 2,400 分ご利用いただける無料試用版が含まれています。 [Video Indexer の Web ベースのインターフェイスにログイン](https://www.videoindexer.ai/)して、Azure サブスクリプションを設定しなくても、Web ID を使用してご自分で試してみることができます。 Video Indexer の使用方法について理解を深めるには、[この簡単な概要ラボ](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)の手順に従います。
 
 大量のビデオやオーディオ ファイルにインデックスを付けるために、Video Indexer を有料の Microsoft Azure サブスクリプションに接続することができます。 詳しい料金情報については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)に関するページをご覧ください。
 
@@ -61,9 +61,18 @@ Video Indexer の Web ベースのインターフェイスを使用して、ア�
 
 Video Indexer は、ほとんどすべての一般的なメディア形式をサポートします。 詳細については、[Azure Media Encoder Standard の形式](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)の一覧を参照してください。
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Video Indexer にメディアをアップロードするにはどうすればよいですか?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>メディア ファイルを Video Indexer にアップロードするには、どうすればよいですか。また、どのような制限がありますか。
 
-Video Indexer の Web ベース ポータルでは、ファイルのアップロード ダイアログを使用するか、ソース ファイルを直接ホストする URL を指定して、メディア ファイルをアップロードできます ([例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)を参照)。 iFrame や埋め込みコードを使用しているメディア コンテンツをホストする URL は、動作しません ([例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)を参照)。 Video Indexer API では、URL またはバイト配列を使用して入力ファイルを指定する必要があります。 API を使用した URL 経由でのアップロードは 10 GB に制限されていますが、時間制限はありません。 詳細については、この[攻略ガイド](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)を参照してください。
+Video Indexer の Web ベース ポータルでは、ファイルのアップロード ダイアログを使用するか、ソース ファイルを直接ホストする URL を指定して、メディア ファイルをアップロードできます ([例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)を参照)。 iFrame や埋め込みコードを使用しているメディア コンテンツをホストする URL は、動作しません ([例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)を参照)。 
+
+詳細については、この[攻略ガイド](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)を参照してください。
+
+#### <a name="limitations"></a>制限事項
+
+* ビデオの名前は、80 文字以内にする必要があります。
+* バイト配列を使用してビデオをアップロードする場合、ビデオのサイズは 2 GB に制限されます (URL を使用する場合は 30 GB)。 
+
+包括的な一覧については、「[アップロードに関する考慮事項と制限事項](upload-index-videos.md#uploading-considerations-and-limitations)」を参照してください。
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Video Indexer がメディアから分析情報を抽出するには、どの程度の時間がかかりますか?
 
@@ -71,11 +80,25 @@ Video Indexer の Web ベース ポータルでは、ファイルのアップロ
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Video Indexer でプロセスを自動化するカスタマイズされたワークフローを作成できますか?
 
-はい、Video Indexer を Logic Apps、Flow、[Azure Functions](https://azure.microsoft.com/services/functions/) などのサーバーレス テクノロジに統合できます。 [Logic Apps](https://azure.microsoft.com/services/logic-apps/) と [Flow](https://flow.microsoft.com/en-us/) の Video Indexer 用のコネクタについては、[こちら](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)をご覧ください。 
+はい、Video Indexer を Logic Apps、Flow、[Azure Functions](https://azure.microsoft.com/services/functions/) などのサーバーレス テクノロジに統合できます。 [Logic Apps](https://azure.microsoft.com/services/logic-apps/) と [Flow](https://flow.microsoft.com/en-us/) の Video Indexer 用のコネクタについては、[こちら](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)をご覧ください。 パートナーによって実行される一部のオートメーション プロジェクトは、[Video Indexer サンプル](https://github.com/Azure-Samples/media-services-video-indexer) リポジトリで見ることができます。
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>Video indexer はどの Azure リージョンで利用できますか?
 
 Video Indexer を利用できる Azure リージョンについては、[リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)のページをご覧ください。
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>特定のユース ケースに合わせて Video Indexer モデルをカスタマイズできますか。 
+
+はい。 Video Indexer では、使用可能なモデルをニーズに合わせてカスタマイズできます。 
+
+たとえば、Person モデルでは、1,000,000 人の有名人の顔がすぐに認識されますが、そのデータベースにはない他の顔を認識するようにトレーニングすることもできます。 
+
+詳細については、[Person](customize-person-model-overview.md)、[Brands](customize-brands-model-overview.md)、[Language](customize-language-model-overview.md) モデルのカスタマイズに関する記事を参照してください。 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>ライブラリ内のビデオを編集できますか。
+
+はい。 ライブラリの表示で **[ビデオの編集]** ボタンを押すか、プレーヤーの表示で **[エディターで開く]** ボタンをクリックして **[プロジェクト]** タブに移動します。新しいプロジェクトを作成し、ライブラリからさらにビデオを追加して、それらをまとめて編集できます。完了したら、ビデオをレンダリングしてダウンロードすることができます。 
+
+新しいビデオについての分析情報を得るには、Video Indexer でインデックスを付けます。ビデオとその分析情報がライブラリに表示されるようになります。
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Video Indexer の SLA はどうなっていますか?
 
@@ -111,13 +134,28 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 はい、コンテンツとその分析情報は、その Azure リージョン内に保持されますが、複数の Azure リージョンを使用するように Azure サブスクリプションを手動構成した場合を除きます。 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Video Indexer のプライバシー ポリシーとは何ですか?
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Video Indexer のプライバシー ポリシーとは何ですか。
 
 Video Indexer には [Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)が適用されます。 プライバシーに関する声明では、Microsoft が処理する個人データ、Microsoft がそれをどのように処理し、何の目的でそれを処理するかについて説明しています。 プライバシーについて詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter) を参照してください。
 
 ### <a name="what-certifications-does-video-indexer-have"></a>Video Indexer には、どのような認証がありますか?
 
 Video Indexer は、現在のところ SOC 認証を取得しています。 Video Indexer の認証を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
+
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>プライベート ビデオとパブリック ビデオの違いは何ですか。 
+
+Video Indexer にビデオをアップロードするとき、プライベートとパブリックという 2 つのプライバシー設定から選択できます。 パブリック ビデオには、匿名ユーザーや身元が不明のユーザーを含め、誰でもアクセスできます。 プライベート ビデオは、アカウント メンバーにのみ限定されます。 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>パブリックとしてビデオをアップロードしたら、不適切または不快なコンテンツのフラグが付けられました。これは何を意味しますか。 
+
+Video Indexer にビデオがアップロードされると、不適切なコンテンツが一般公開されないよう、アルゴリズムとモデルによってコンテンツが自動的に分析されます。 過激な描写のコンテンツが含まれるものとビデオが疑われた場合、パブリックとして設定することができなくなります。 ただし、アカウント メンバーであれば、プライベート ビデオとしてアクセスできます (表示したり、分析情報や抽出された成果物をダウンロードしたり、アカウント メンバーが利用できるその他の操作を実行したりできます)。   
+
+パブリック アクセス用にビデオを設定するには、以下のいずれかを実行します。 
+
+* 独自のインターフェイス レイヤー (アプリや Web サイトなど) を構築し、それを利用して Video Indexer サービスを操作します。 この方法では、ビデオは Microsoft のポータル内でプライベートになり、ユーザーはインターフェイス経由でビデオを操作できます。 たとえば、独自のインターフェイスで分析情報を取得したり、ビデオの視聴を許可したりできます。 
+* コンテンツの人間によるレビューを要求します。過激な描写のコンテンツでなければ、制限が解除されることがあります。 
+
+    ユーザーがインターフェイス レイヤーとして、かつパブリック (認証なし) の視聴目的で Video Indexer Web サイトを直接使用する場合、このオプションを試すことができます。 
 
 ## <a name="api-questions"></a>API に関する質問
 
@@ -153,6 +191,12 @@ Video Indexer API には Authorization API (承認 API) と Operations API (操�
 
 アクセス トークンは 1 時間ごとに期限が切れるため、1 時間ごとに新しいアクセス トークンを生成する必要があります。 
 
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Video Indexer の開発者ポータルにはどのようなログイン オプションがありますか?
+
+Azure AD、Microsoft アカウント、Google アカウント、または Facebook アカウントを使用してログインできます。 
+
+ID プロバイダーを使用して電子メール アカウントを登録した後は、この電子メール アカウントを別の ID プロバイダーで使用することはできません。
+
 ## <a name="billing-questions"></a>課金に関する質問
 
 ### <a name="how-much-does-video-indexer-cost"></a>Video Indexer のコストはどれくらいですか?
@@ -167,6 +211,6 @@ Video Indexer では、インデックスを作成するコンテンツの入力
 
 はい、Video Indexer には、完全なサービスおよび API 機能を提供する無料試用版が用意されています。 Web ベースのインターフェイスのユーザーについてはビデオ 600 分、API ユーザーについては 2,400 分のクォータがあります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [概要](video-indexer-overview.md)

@@ -4,16 +4,16 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: f2ee442d0d6fecf34449ad28f058615a1274bbea
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 622a2f69c2e7b82f2df10d6120ee2dd466961915
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159209"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77211423"
 ---
 レガシ (古い) VPN ゲートウェイ SKU には以下があります。
 
-* Basic
+* 既定 (Basic)
 * Standard
 * HighPerformance
 

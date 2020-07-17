@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286093"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60245292"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
 Azure AD Connect には、データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 以前は、Azure AD Connect をインストールしたときに、ADSync という新しいデータベースが常に作成されました。 Azure AD Connect バージョン 1.1.613.0 (以降) では、既存の ADSync データベースを指定して、Azure AD Connect をインストールするオプションがあります。
@@ -62,12 +62,12 @@ Azure AD Connect には、データを格納する SQL Server データベース
 3.  新しいコマンド プロンプトまたは PowerShell セッションを開始します。 "C:\Program Files\Microsoft Azure Active Directory Connect" フォルダーに移動します。 コマンド .\AzureADConnect.exe /useexistingdatabase を実行して、"既存のデータベースを使用する" 設定モードで Azure AD Connect ウィザードを開始します。
 
 > [!NOTE]
-> データベースに既に、以前の Azure AD Connect のインストールからのデータが含まれる場合のみ、**/UseExistingDatabase** スイッチを使用します。 たとえば、ローカル データベースから完全な SQL Server データベースに移行しようとしている場合や、Azure AD Connect サーバーが再構築されて、Azure AD Connect の以前のインストールから ADSync データベースの SQL バックアップを復元した場合です。 データベースが空の場合、つまり以前の Azure AD Connect インストールからのデータがデータベースに含まれていない場合は、この手順をスキップしてください。
+> データベースに既に、以前の Azure AD Connect のインストールからのデータが含まれる場合のみ、 **/UseExistingDatabase** スイッチを使用します。 たとえば、ローカル データベースから完全な SQL Server データベースに移行しようとしている場合や、Azure AD Connect サーバーが再構築されて、Azure AD Connect の以前のインストールから ADSync データベースの SQL バックアップを復元した場合です。 データベースが空の場合、つまり以前の Azure AD Connect インストールからのデータがデータベースに含まれていない場合は、この手順をスキップしてください。
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
-1. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、**[続行]** をクリックします。
+1. [Azure AD Connect へようこそ] 画面が表示されます。 ライセンス条項とプライバシーに関する声明に同意したら、 **[続行]** をクリックします。
    ![ようこそ](./media/how-to-connect-install-existing-database/db3.png)
-1. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 例:          
+1. **[必須コンポーネントのインストール]** 画面で **[既存の SQL Server を使用する]** オプションをオンにします。 ADSync データベースをホストしている SQL サーバーの名前を指定します。 ADSync データベースのホストに使用されている SQL エンジン インスタンスが SQL サーバーで既定のインスタンスではない場合、SQL エンジン インスタンス名を指定する必要があります。 さらに、SQL の参照が有効ではない場合、SQL エンジン インスタンスのポート番号も指定する必要があります。 次に例を示します。         
    ![ようこそ](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **[Azure AD に接続]** 画面で、Azure AD ディレクトリのグローバル管理者の資格情報を指定する必要があります。 既定の onmicrosoft.com ドメインでアカウントを使用することをお勧めします。 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
@@ -77,7 +77,7 @@ Azure AD Connect には、データを格納する SQL Server データベース
    ![Directories](./media/how-to-connect-install-existing-database/db6.png)
  
  
-1. ポップアップ ダイアログで、(i) エンタープライズ管理者の資格情報を指定して Azure AD Connect に AD DS アカウントの作成を任せるか、(ii) AD DS アカウントを自分で作成してその資格情報を Azure AD Connect に提供することができます。 オプションを選択し、必要な資格情報を指定したら、**[OK]** をクリックしてポップアップ ダイアログを閉じます。
+1. ポップアップ ダイアログで、(i) エンタープライズ管理者の資格情報を指定して Azure AD Connect に AD DS アカウントの作成を任せるか、(ii) AD DS アカウントを自分で作成してその資格情報を Azure AD Connect に提供することができます。 オプションを選択し、必要な資格情報を指定したら、 **[OK]** をクリックしてポップアップ ダイアログを閉じます。
    ![ようこそ](./media/how-to-connect-install-existing-database/db7.png)
  
  
@@ -85,14 +85,14 @@ Azure AD Connect には、データを格納する SQL Server データベース
    ![ようこそ](./media/how-to-connect-install-existing-database/db8.png)
  
  
-1. **[構成の準備完了]** 画面で、**[インストール]** をクリックします。
+1. **[構成の準備完了]** 画面で、 **[インストール]** をクリックします。
    ![ようこそ](./media/how-to-connect-install-existing-database/db9.png)
  
  
 1. インストールが完了すると、Azure AD Connect サーバーがステージング モードで自動的に有効になります。 ステージング モードを無効にする前に、予期しない変更に備えてサーバー構成と保留中のエクスポートを確認することをお勧めします。 
 
 ## <a name="post-installation-tasks"></a>インストール後のタスク
-1.2.65.0 より前のバージョンの Azure AD Connect によって作成されたデータベースのバックアップを復元するとき、**[構成しない]** サインイン方法がステージング サーバーによって自動的に選択されます。 パスワード ハッシュ同期とパスワード ライトバックの設定は復元されますが、アクティブな同期サーバーに有効な他のポリシーに一致するようにサインイン方法を後で変更する必要があります。  これらの手順を完了しないと、このサーバーがアクティブになった場合にユーザーがサインインできなくなる可能性があります。  
+1\.2.65.0 より前のバージョンの Azure AD Connect によって作成されたデータベースのバックアップを復元するとき、 **[構成しない]** サインイン方法がステージング サーバーによって自動的に選択されます。 パスワード ハッシュ同期とパスワード ライトバックの設定は復元されますが、アクティブな同期サーバーに有効な他のポリシーに一致するようにサインイン方法を後で変更する必要があります。  これらの手順を完了しないと、このサーバーがアクティブになった場合にユーザーがサインインできなくなる可能性があります。  
 
 次の表を使用して、必要な追加の手順を確認してください。
 
@@ -103,9 +103,9 @@ Azure AD Connect には、データを格納する SQL Server データベース
 |パススルー認証およびデスクトップ シングル サインオン|お使いのアクティブな同期サーバーの構成に合わせてサインイン方法を更新します。  サーバーをプライマリに昇格させる前にこの作業を実行しないと、パススルー認証とシームレス シングル サインオンが無効になり、バックアップ サインイン オプションとしてパスワード ハッシュの同期を設定していないときにテナントがロックアウトされる可能性があります。 また、ステージング モードでパススルー認証を有効にすると、新しい認証エージェントがインストールおよび登録され、サインイン要求を受け入れる高可用性エージェントとして実行されることに注意してください。|
 |PingFederate によるフェデレーション|お使いのアクティブな同期サーバー用に構成された PingFederate ポリシーが Azure 認証で引き続き使用されます。  必要に応じて、スタンバイ サーバーがアクティブな同期インスタンスになるための準備として、サインイン方法を PingFederate に変更することもできます。  この手順は、PingFederate で追加のドメインをフェデレーションする必要があるときまで延期することができます。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
-- インストールの結果有効になった機能について詳しくは、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
+- インストールの結果有効になった機能については、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
 - 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](how-to-connect-sync-feature-scheduler.md)に関するページを参照してください。
 - 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

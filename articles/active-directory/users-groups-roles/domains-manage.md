@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201850"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582973"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -41,7 +41,7 @@ ms.locfileid: "58201850"
 
 ディレクトリのプライマリ ドメイン名を変更して、フェデレーションされていない検証済みカスタム ドメインを指定することができます。 ディレクトリのプライマリ ドメインを変更しても、既存のユーザーのユーザー名は変更されません。
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Azure AD テナントへのカスタム ドメイン名の追加
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Azure AD 組織にカスタム ドメイン名を追加する
 
 マネージド ドメインの名前は最大 900 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各ディレクトリに最大 450 件のドメイン名を追加できます。
 
@@ -72,7 +72,7 @@ Azure AD ディレクトリ内にこのようなリソースがある場合は�
 Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対する参照が 1000 個未満であることを確認し、Exchange がプロビジョニング サービスであるすべての参照を、[Exchange 管理センター](https://outlook.office365.com/ecp/)で更新または削除する必要があります。 これには、Exchange のメールが有効なセキュリティ グループと配布リストが含まれます。詳しくは、「[Removing mail-enabled security groups](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)」(メールが有効なセキュリティ グループの削除) に関する記事をご覧ください。 また、次のいずれかの場合、**ForceDelete** 操作は成功しません。
 
 * Office 365 ドメイン サブスクリプション サービスを使用してドメインを購入した
-* 別の顧客テナントの代わりに管理を行っているパートナーである
+* 別の顧客組織の代わりに管理を行っているパートナーである
 
 **ForceDelete** 操作の一部として、次のアクションが実行されます。
 
@@ -102,14 +102,14 @@ Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対�
 
 どの条件も当てはまらないことがわかった場合は、手動で参照をクリーンアップし、もう一度ドメインの削除を試みてください。
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>PowerShell または Graph API を使用してドメイン名を管理する
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>PowerShell または Microsoft Graph API を使用してドメイン名を管理する
 
-Azure Active Directory のドメイン名に関する管理作業の多くは、Microsoft PowerShell を使用するか、プログラムから Azure AD Graph API を使用して行うこともできます。
+Azure Active Directory のドメイン名に関する管理作業の多くは、Microsoft PowerShell を使用するか、プログラムから Microsoft Graph API を使用して行うこともできます。
 
-* [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-* [Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [PowerShell を使用して Azure AD のドメイン名を管理する](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [ドメインリソースの種類](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [カスタム ドメイン名を追加する](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Exchange 管理センターで Exchange のメールが有効なセキュリティ グループを削除する、または Azure AD でカスタム ドメイン名を削除する](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)

@@ -1,21 +1,17 @@
 ---
-title: チュートリアル - Azure に geo レプリケートされている Docker レジストリを作成する
+title: チュートリアル - geo レプリケートされたレジストリを作成する
 description: Azure Container Registry を作成し、geo レプリケーションを構成して、Docker イメージを準備し、それをレジストリにデプロイします。 3 部構成のシリーズのパート 1。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533666"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222149"
 ---
-# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル: geo レプリケーション Azure Container Registry の準備
 
 Azure Container Registry は、デプロイの近くにネットワークを確保できる Azure にデプロイされたプライベート Docker レジストリです。 この一連の 3 つのチュートリアルの記事では、geo レプリケーションを使用して、Linux コンテナーで実行する ASP.NET Core Web アプリケーションを、2 つの [Web Apps for Containers](../app-service/containers/index.yml) インスタンスにデプロイする方法について説明します。 Azure が最も近い geo レプリケーション レポジトリからの各 Web アプリ インスタンスにイメージをデプロイする方法を確認します。
 
@@ -41,16 +37,16 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
-**[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
+**[リソースの作成]**  >  **[コンテナー]**  >  **[Azure Container Registry]** の順に選択します。
 
 ![Azure Portal でコンテナー レジストリを作成する][tut-portal-01]
 
 次の設定で、新しいレジストリを構成します。
 
-* **レジストリ名**:Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
-* **リソース グループ**:**新規作成** > `myResourceGroup`
+* **レジストリ名**: Azure 内でグローバルに一意で、5 ～ 50 文字の英数字を含むレジストリ名を作成します。
+* **リソース グループ**: **[新規作成]**  > `myResourceGroup`
 * **場所**: `West US`
 * **管理者ユーザー**: `Enable` (イメージをプルするために、Web App for Containers に必要)
 * **SKU**: `Premium` (geo レプリケーションに必要)
@@ -114,7 +110,7 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>Dockerfile の更新
 
-サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の [aspnetcore][dockerhub-aspnetcore] イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の [aspnetcore-build][dockerhub-aspnetcore-build] イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
+サンプルに含まれる Dockerfile は、コンテナーの構築方法を示しています。 公式の [aspnetcore][dockerhub-aspnetcore] イメージから開始し、アプリケーション ファイルをコンテナーにコピーし、依存関係をインストールして、公式の [aspnetcore-build][dockerhub-aspnetcore-build]イメージを使用して出力をコンパイルし、最後に、最適化された aspnetcore イメージを構築します。
 
 [Dockerfile][dockerfile] は複製されたソース内の `./AcrHelloworld/Dockerfile` にあります。
 
@@ -224,7 +220,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、プライベートの geo レプリケーション コンテナー レジストリを作成し、コンテナー イメージを構築して、そのイメージをレジストリにプッシュしました。
 

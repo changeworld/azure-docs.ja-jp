@@ -42,7 +42,7 @@
             - name: 証明書
               tocHref: /cli/azure/keyvault/certificate
               topicHref: /azure/key-vault/
-            - name: 構成する
+            - name: '[キー]'
               tocHref: /cli/azure/keyvault/key
               topicHref: /azure/key-vault/
             - name: シークレット

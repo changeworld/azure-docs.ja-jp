@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から SMTP に接続する | Microsoft Docs
+title: Azure Logic Apps から SMTP に接続する
 description: Azure Logic Apps を使用して、SMTP (簡易メール転送プロトコル) アカウントで電子メールを送信するタスクとワークフローを自動化します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230507"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657000"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
 
@@ -24,7 +20,7 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * SMTP アカウントとユーザー資格情報。
 
@@ -44,10 +40,10 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. SMTP アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+1. SMTP アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「smtp」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
@@ -59,8 +55,8 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
    | **SMTP サーバー アドレス** | はい | SMTP サーバーのアドレス | 
    | **ユーザー名** | はい | SMTP アカウントのユーザー名 | 
    | **パスワード** | はい | SMTP アカウントのパスワード | 
-   | **SMTP サーバー ポート** | いいえ  | 使用する SMTP サーバー上の特定のポート | 
-   | **SSL を有効にしますか?** | いいえ  | SSL 暗号化を有効または無効にします。 | 
+   | **SMTP サーバー ポート** | いいえ | 使用する SMTP サーバー上の特定のポート | 
+   | **SSL を有効にしますか?** | いいえ | TLS または SSL での暗号化を有効または無効にする | 
    |||| 
 
 1. 選択したアクションで必要な詳細を指定します。 
@@ -69,13 +65,11 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/smtpconnector/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/smtpconnector/)を参照してください。
 
-## <a name="get-support"></a>サポートを受ける
+> [!NOTE]
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

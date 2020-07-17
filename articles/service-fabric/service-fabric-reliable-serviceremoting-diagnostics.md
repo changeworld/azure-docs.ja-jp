@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の診断と監視 | Microsoft Docs
+title: Azure Service Fabric の診断と監視
 description: この記事では、Service Fabric Reliable ServiceRemoting ランタイムから出力されるパフォーマンス カウンターなどのパフォーマンス監視機能について説明します。
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
-ms.author: suchiagicha
-ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.author: pepogors
+ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236639"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting の診断とパフォーマンス監視
 Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。
@@ -28,7 +19,7 @@ Reliable ServiceRemoting ランタイムからは[パフォーマンス カウ�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウンター カテゴリを定義します。
 
-| Category | 説明 |
+| カテゴリ | 説明 |
 | --- | --- |
 | Service Fabric サービス |Azure Service Fabric Service Remoting に固有のカウンター (要求の処理にかかる平均時間など) |
 | Service Fabric サービス メソッド |Service Fabric Remoting Service に実装されるメソッドに固有のカウンター (サービス メソッドが呼び出される頻度など) |
@@ -99,6 +90,6 @@ Reliable Service ランタイムは、サービス メソッドの実行に関�
 | Service Fabric サービス |要求の逆シリアル化の平均時間 (ミリ秒) |サービスで受信されたときに、サービス要求メッセージの逆シリアル化にかかった時間 (ミリ秒単位) |
 | Service Fabric サービス |応答のシリアル化の平均時間 (ミリ秒) |クライアントに応答を送信する前に、サービスでサービス応答メッセージをシリアル化するのにかかった時間 (ミリ秒単位) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [コード サンプル](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

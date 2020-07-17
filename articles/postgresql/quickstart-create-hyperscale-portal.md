@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) クイック スタート
-description: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) で分散型テーブルを作成し、クエリを実行するためのクイック スタート。
+title: 分散テーブルを作成する – Hyperscale (Citus) - Azure Database for PostgreSQL
+description: Azure Database for PostgreSQL - Hyperscale (Citus) で分散型テーブルを作成し、クエリを実行するためのクイックスタート。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: efc3801ab03f739761a41bec754f975fe43dcd8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792018"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290330"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を作成する
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) を作成する
 
-Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイック スタートでは、Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) サーバー グループを作成する方法について説明します。 ノード間でテーブルをシャード化したり、サンプル データを取り込んだり、複数のノードでクエリを実行したり、分散データをいろいろ試してみます。
+Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイック スタートでは、Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) サーバー グループを作成する方法について説明します。 ノード間でテーブルをシャード化したり、サンプル データを取り込んだり、複数のノードでクエリを実行したり、分散データをいろいろ試してみます。
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -88,6 +88,8 @@ SELECT create_distributed_table('github_users', 'user_id');
 次に、ファイルから分散テーブルに、データを読み込みます。
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy github_events from 'events.csv' WITH CSV
 \copy github_users from 'users.csv' WITH CSV
 ```
@@ -116,21 +118,21 @@ ORDER BY hour;
 `user_id` で結合した場合、Hyperscale は、worker ノードで並列実行するため、結合実行をシャードにプッシュできます。 たとえば、リポジトリを最も多く作成したユーザーを見つけましょう。
 
 ```sql
-SELECT login, count(*)
-FROM github_events ge
-JOIN github_users gu
-ON ge.user_id = gu.user_id
-WHERE event_type = 'CreateEvent' AND
-      payload @> '{"ref_type": "repository"}'
-GROUP BY login
-ORDER BY count(*) DESC;
+SELECT gu.login, count(*)
+  FROM github_events ge
+  JOIN github_users gu
+    ON ge.user_id = gu.user_id
+ WHERE ge.event_type = 'CreateEvent'
+   AND ge.payload @> '{"ref_type": "repository"}'
+ GROUP BY gu.login
+ ORDER BY count(*) DESC;
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの **[概要]** ページで、 **[削除]** ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の **[削除]** ボタンをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。
 

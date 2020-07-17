@@ -1,25 +1,19 @@
 ---
-title: 増分スナップショットを使用した非管理 Azure Linux VM ディスクのバックアップと復元 | Microsoft Docs
-description: 増分スナップショットを使用して Azure Linux 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。
-services: virtual-machines-linux
-documentationcenter: na
-author: aungoo-msft
-manager: tadb
-editor: tysonn
-ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
-ms.service: virtual-machines-linux
-ms.workload: storage
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2017
-ms.author: aungoo
+title: 増分スナップショットを使用した非管理ディスクのバックアップと復元
+description: 増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。
+author: roygara
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 06b0e8a16dc112728c9a69450cf88a399a27ed13
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.workload: storage
+ms.topic: article
+ms.date: 09/15/2018
+ms.author: rogarana
+ms.openlocfilehash: 2dac5665b70035baeca9113b7b207d054ee76768
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475161"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80066690"
 ---
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

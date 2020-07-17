@@ -1,27 +1,18 @@
 ---
-title: Microsoft Azure での Cloud Foundry の使用 | Microsoft Docs
+title: Microsoft Azure での Cloud Foundry の概要
 description: Microsoft Azure で OSS または Pivotal Cloud Foundry を実行する
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: jeconnoc
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
-ms.devlang: NA
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 68ae01b814de08098c0ba6b5713f420cfebc3d97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8645afac5734cdbffb8df6f341529e688ca526d7
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001259"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891639"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure での Cloud Foundry
 
@@ -37,7 +28,7 @@ OSS Cloud Foundry を Azure にデプロイするには、まず BOSH ディレ�
 
 Microsoft では、次のコミュニティ チャネルを通じて OSS CF のサポートをベストエフォート型で提供しています。
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>[Cloud Foundry Slack](https://slack.cloudfoundry.org/) の bosh azure-cpi チャネル
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slack"></a>[Cloud Foundry Slack](https://slack.cloudfoundry.org/) の bosh azure-cpi チャネル
 - [cf-bosh メーリング リスト](https://lists.cloudfoundry.org/pipermail/cf-bosh)
 - GitHub 発行の [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) と [Service Broker](https://github.com/Azure/meta-azure-service-broker/issues)
 
@@ -64,7 +55,7 @@ Pivotal Cloud Foundry を使用している場合、Service Broker は Pivotal N
 
 Cloud Foundry は、継続的インテグレーション (CI) や継続的デリバリー (CD) の使用を含めたアジャイル ソフトウェア開発に適しています。 Azure DevOps Services を使用してプロジェクトを管理しており、Cloud Foundry をターゲットとする CI/CD パイプラインを設定する場合は、[Azure DevOps Services の Cloud Foundry ビルド拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension)を使用できます。 このプラグインを利用すると、環境が Azure かどうかにかかわらず、簡単に Cloud Foundry へのデプロイを構成して自動化することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Marketplace から Pivotal Cloud Foundry をデプロイする](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [Azure Marketplace から Pivotal Cloud Foundry をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 - [アプリを Azure の Cloud Foundry にデプロイする](./cloudfoundry-deploy-your-first-app.md)

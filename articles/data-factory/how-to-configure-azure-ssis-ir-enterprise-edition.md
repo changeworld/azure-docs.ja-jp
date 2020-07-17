@@ -1,25 +1,25 @@
 ---
-title: Azure SSIS Integration Runtime の Enterprise Edition をプロビジョニングする | Microsoft Docs
+title: Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 description: この記事では、Azure SSIS Integration Runtime の Enterprise Edition の機能およびそのプロビジョニング方法について説明します
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: d2b06d044f68972ef72dd9b53401980e84ef779f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: anandsub
+ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152427"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81606156"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度なプレミアム機能を使用できます。
 -   変更データ キャプチャ (CDC) コンポーネント
@@ -35,8 +35,8 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 | **Enterprise の機能** | **説明** |
 |---|---|
 | CDC コンポーネント | Azure-SSIS IR Enterprise Edition には、CDC ソース、管理タスク、およびスプリッター変換がプレインストールされています。 Oracle に接続するには、別のコンピューターに CDC Designer と CDC Service をインストールする必要もあります。 |
-| Oracle コネクタ | Azure-SSIS IR Enterprise Edition には、Oracle 接続マネージャー、接続元、および接続先がプレインストールされています。 また、Azure-SSIS IR に Oracle Call Interface (OCI) ドライバーをインストールし、必要な場合は Oracle Transport Network Substrate (TNS) を構成する必要があります。 詳細については、「[Azure SSIS 統合ランタイムのカスタム セットアップ](how-to-configure-azure-ssis-ir-custom-setup.md)」をご覧ください。 |
-| Teradata コネクタ | Teradata 接続マネージャー、接続元、接続先、Teradata Parallel Transporter (TPT) API、および Teradata ODBC ドライバーを、Azure-SSIS IR Enterprise Edition にインストールする必要があります。 詳細については、「[Azure SSIS 統合ランタイムのカスタム セットアップ](how-to-configure-azure-ssis-ir-custom-setup.md)」をご覧ください。 |
+| Oracle コネクタ | Azure-SSIS IR Enterprise Edition には、Oracle 接続マネージャー、接続元、および接続先がプレインストールされています。 また、Azure-SSIS IR に Oracle Call Interface (OCI) ドライバーをインストールし、必要な場合は Oracle Transport Network Substrate (TNS) を構成する必要があります。 詳細については、「[Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)」(Azure-SSIS 統合ランタイムのカスタム設定) を参照してください。 |
+| Teradata コネクタ | Teradata 接続マネージャー、接続元、接続先、Teradata Parallel Transporter (TPT) API、および Teradata ODBC ドライバーを、Azure-SSIS IR Enterprise Edition にインストールする必要があります。 詳細については、「[Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)」(Azure-SSIS 統合ランタイムのカスタム設定) を参照してください。 |
 | SAP BW コネクタ | Azure-SSIS IR Enterprise Edition には、SAP BW 接続マネージャー、接続元、および接続先がプレインストールされています。 また、SAP BW ドライバーを Azure-SSIS IR にインストールする必要があります。 これらのコネクタは、SAP BW 7.0 以前のバージョンをサポートします。 これより後のバージョンの SAP BW または他の SAP 製品に接続するには、サード パーティの ISV から SAP コネクタを購入して、Azure-SSIS IR にインストールすることができます。 追加コンポーネントのインストール方法については、「[Azure SSIS 統合ランタイムのカスタム セットアップ](how-to-configure-azure-ssis-ir-custom-setup.md)」をご覧ください。 |
 | Analysis Services のコンポーネント               | データ マイニング モデル トレーニング変換先、ディメンション処理変換先、パーティション処理変換先、データ マイニング クエリ変換が、Azure-SSIS IR Enterprise Edition にプレインストールされています。 これらのコンポーネントはすべて SQL Server Analysis Services (SSAS) をサポートしますが、パーティション処理変換先だけは Azure Analysis Services (AAS) をサポートします。 SSAS に接続するには、[SSISDB で Windows 認証資格情報を構成する](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)必要もあります。 これらのコンポーネントに加えて、Azure-SSIS IR Standard/Enterprise Edition には Analysis Services DDL 実行タスク、Analysis Services 処理タスク、およびデータ マイニング クエリ タスクもプレインストールされています。 |
 | あいまいグループ化変換とあいまい参照変換  | Azure-SSIS IR Enterprise Edition には、あいまいグループ化変換とあいまい参照変換がプレインストールされています。 これらのコンポーネントは、参照データの格納用に SQL Server と Azure SQL Database の両方をサポートします。 |
@@ -48,7 +48,7 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 
 1.  [Azure PowerShell](/powershell/azure/install-az-ps)をダウンロードしてインストールします。
 
-2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
+2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、`Set-AzDataFactoryV2IntegrationRuntime`Edition**パラメーターの値として**Enterprise**を指定して** を実行します。 スクリプトのサンプルを次に示します。
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"
@@ -63,7 +63,7 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
                                                  -ResourceGroupName $MyResourceGroupName
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 -   [Azure SSIS 統合ランタイムのカスタム セットアップ](how-to-configure-azure-ssis-ir-custom-setup.md)
 

@@ -1,19 +1,19 @@
 ---
-title: Site Recovery を使用して Azure にオンプレミス Hyper-V VM (VMM なし) のディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用して Hyper-V のディザスター リカバリーを設定する
 description: Site Recovery を使用して Azure にオンプレミス Hyper-V VM (VMM なし) のディザスター リカバリーを設定する方法について学習します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 96a1a91f49754386de7127cb981d38acd1852e94
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241442"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182346"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -32,6 +32,8 @@ ms.locfileid: "66241442"
 > [!NOTE]
 > チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、「[Site Recovery のドキュメント](https://docs.microsoft.com/azure/site-recovery)」の**ハウツー ガイド** セクションにある記事を確認してください。
 
+
+
 ## <a name="before-you-begin"></a>開始する前に
 
 これは、シリーズ 3 番目のチュートリアルです。 前のチュートリアルで以下のタスクが既に完了していることが前提となります。
@@ -42,7 +44,7 @@ ms.locfileid: "66241442"
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
 
 1. Azure portal で、 **[Recovery Services コンテナー]** に移動し、コンテナーを選択します。 コンテナー **ContosoVMVault** を前のチュートリアルで準備しました。
-2. **[はじめに]** で、 **[Site Recovery]** を選択してから、 **[インフラストラクチャの準備]** を選びます。
+2. **[作業の開始]** で、 **[Site Recovery]** を選択してから、 **[インフラストラクチャの準備]** を選択します。
 3. **[保護の目標]**  >  **[マシンのある場所]** で、 **[オンプレミス]** を選択します。
 4. **[マシンをどこにレプリケートしますか?]** で、 **[To Azure]\(Azure\)** を選択します。
 5. **[マシンは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
@@ -54,7 +56,7 @@ ms.locfileid: "66241442"
 ## <a name="confirm-deployment-planning"></a>展開の計画を確認する
 
 1. 大規模なデプロイを計画している場合は、 **[デプロイ計画]** で、ページ上のリンクから Hyper-V 用の Deployment Planner をダウンロードします。 Hyper-V のデプロイ計画の[詳細を確認](hyper-v-deployment-planner-overview.md)してください。
-2. このチュートリアルでは、Deployment Planner は必要ありません。 **[デプロイ計画は完了していますか?]** で、 **[後で実行する]** を選択してから、 **[OK]** を選びます。
+2. このチュートリアルでは、Deployment Planner は必要ありません。 **[デプロイ計画は完了していますか?]** で、 **[後で実行する]** を選択してから、 **[OK]** を選択します。
 
     ![展開の計画](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
@@ -106,7 +108,7 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
 3. このコマンドを実行してサーバーを登録します。
 
     ```
-    cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"
+    cd  "C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"
     ```
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
@@ -125,10 +127,10 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 2. **[ポリシーの作成と関連付け]** で、ポリシー名を指定します。 ここでは、**ContosoReplicationPolicy** を使用しています。
 3. このチュートリアルでは、既定の設定のままにします。
     - **[コピーの頻度]** には、(初期レプリケーション後に) 差分データをレプリケートする頻度が示されています。 既定の頻度は 5 分ごとです。
-    - **[復旧ポイントの保持期間]** は、復旧ポイントが 2 時間保持されるように設定されています。
+    - **[復旧ポイントの保持期間]** は、復旧ポイントが 2 時間保持されるように設定されています。 Hyper-V ホストでホストされている仮想マシンを保護する場合、リテンション期間の最大許容値は 24 時間です。
     - **[アプリ整合性スナップショットの頻度]** は、アプリ整合性スナップショットを含む復旧ポイントが 1 時間ごとに作成されるように設定されています。
     - **[初期レプリケーションの開始時刻]** には、初期レプリケーションがすぐに開始されることが示されています。
-4. ポリシーが作成された後、 **[OK]** を選択します。 新しいポリシーを作成すると、指定された Hyper-V サイトに自動的に関連付けられます。 このチュートリアルでは、それは **ContosoHyperVSite** です。
+4. ポリシーが作成されたら、 **[OK]** を選択します。 新しいポリシーを作成すると、指定された Hyper-V サイトに自動的に関連付けられます。 このチュートリアルでは、それは **ContosoHyperVSite** です。
 
     ![Replication policy](./media/hyper-v-azure-tutorial/replication-policy.png)
 
@@ -142,6 +144,6 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 
    **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、 **[保護を有効にする]** アクションの進行状況を追跡できます。 **[保護の最終処理]** ジョブが完了した後、初期レプリケーションが完了し、VM がフェールオーバーを実行できる状態になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)

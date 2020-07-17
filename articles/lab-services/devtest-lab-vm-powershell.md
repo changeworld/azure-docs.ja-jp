@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する | Microsoft Docs
+title: Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 description: Azure DevTest Labs で Azure PowerShell を使用して仮想マシンを作成および管理する方法を説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008360"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76167112"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 この記事では、Azure PowerShell を使用して Azure DevTest Labs で仮想マシンを作成する方法について説明します。 PowerShell スクリプトを使用して、Azure DevTest Labs のラボで仮想マシンの作成を自動化できます。 
@@ -82,6 +82,7 @@ try {
           "labSubnetName"           = $labSubnetName;
           "notes"                   = "Windows Server 2016 Datacenter";
           "osType"                  = "windows"
+          "expirationDate"          = "2019-12-01"
           "galleryImageReference"   = @{
              "offer"     = "WindowsServer";
              "publisher" = "MicrosoftWindowsServer";
@@ -129,7 +130,7 @@ finally {
 Azure portal で VM を作成するときに、Azure Resource Manager テンプレートを生成できます。 VM の作成プロセスを完了する必要はありません。 テンプレートが表示されるまでの手順を実行するだけで構いません。 ラボの VM をまだ作成していない場合に必要な JSON 記述を取得するには、この方法が最適です。 
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
-2. 左側のナビゲーション メニューで、**[すべてのサービス]** を選択します。
+2. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。
 3. サービスの一覧で **[DevTest Labs]** を検索して選択します。 
 4. **DevTest Labs** ページで、ラボのリストから使用するラボを選択します。
 5. ラボのホーム ページで、ツール バーの **[+ 追加]** を選択します。 
@@ -181,14 +182,47 @@ Azure portal で VM を作成するときに、Azure Resource Manager テンプ�
 ### <a name="use-azure-rest-api"></a>Azure REST API の使用
 次の手順では、REST API を使用してイメージのプロパティを取得する方法について説明します。これらの手順は、ラボの既存の VM に対してのみ有効です。 
 
-1. [[Virtual Machines - list]\(仮想マシン - 一覧\)](/rest/api/dtl/virtualmachines/list) ページに移動し、**[Try it]\(試してみる\)** ボタンを選択します。 
+1. [[Virtual Machines - list]\(仮想マシン - 一覧\)](/rest/api/dtl/virtualmachines/list) ページに移動し、 **[Try it]\(試してみる\)** ボタンを選択します。 
 2. **Azure サブスクリプション**を選択します。
 3. **ラボのリソース グループ**を入力します。
 4. **ラボの名前**を入力します。 
 5. **[実行]** を選択します。
 6. VM の作成のベースとなった**イメージのプロパティ**が表示されます。 
 
+## <a name="set-expiration-date"></a>有効期限を設定する
+トレーニング、デモ、試用版などのシナリオでは、不要なコストが発生しないように、仮想マシンを作成し、固定期間後に自動的にそれらを削除することができます。 サンプルの [PowerShell スクリプト](#powershell-script) セクションに示されているように、PowerShell を使用して VM の作成時に有効期限を設定できます。
+
+ラボ内のすべての既存の VM の有効期限を設定する PowerShell スクリプトの例を次に示します。
+
+```powershell
+# Values to change
+$subscriptionId = '<Enter the subscription Id that contains lab>'
+$labResourceGroup = '<Enter the lab resource group>'
+$labName = '<Enter the lab name>'
+$VmName = '<Enter the VmName>'
+$expirationDate = '<Enter the expiration date e.g. 2019-12-16>'
+
+# Log into your Azure account
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+$VmResourceId = "subscriptions/$subscriptionId/resourcegroups/$labResourceGroup/providers/microsoft.devtestlab/labs/$labName/virtualmachines/$VmName"
+
+$vm = Get-AzureRmResource -ResourceId $VmResourceId -ExpandProperties
+
+# Get all the Vm properties
+$VmProperties = $vm.Properties
+
+# Set the expirationDate property
+If ($VmProperties.expirationDate -eq $null) {
+    $VmProperties | Add-Member -MemberType NoteProperty -Name expirationDate -Value $expirationDate
+} Else {
+    $VmProperties.expirationDate = $expirationDate
+}
+
+Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
+```
 
 
-## <a name="next-steps"></a>次の手順
-次の内容を参照してください。[Azure DevTest Labs の Azure PowerShell ドキュメント](/powershell/module/az.devtestlabs/)
+## <a name="next-steps"></a>次のステップ
+次のコンテンツをご覧ください: [Azure DevTest Labs の Azure PowerShell ドキュメント](/powershell/module/az.devtestlabs/)

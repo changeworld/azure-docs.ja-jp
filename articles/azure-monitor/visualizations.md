@@ -1,78 +1,25 @@
 ---
 title: Azure Monitor からのデータを視覚化する | Microsoft Docs
 description: Azure Monitor に格納されたメトリックとログ データを視覚化するために使用可能な方法の概要を提供します。
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
-ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 03/17/2020
+ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796054"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797499"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
 
 チャートやグラフなどの視覚化は、監視データを分析して問題をドリルダウンし、パターンを特定するのに役立ちます。 使用するツールによっては、組織の内外の他のユーザーと視覚化を共有するオプションもあります。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="azure-dashboards"></a>Azure ダッシュボード
-[Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)は、Azure の主要なダッシュボード テクノロジです。 ダッシュボードは、重要な問題をすばやく特定できるように、Azure インフラストラクチャとサービスに関する 1 つのウィンドウを提供するという点で特に役立ちます。
-
-![ダッシュボード](media/visualizations/dashboard.png)
-
-### <a name="advantages"></a>長所
-- Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、Log Analytics、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
-- メトリックとログの両方をサポート。
-- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、Application Insights の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
-- 個人または共有のダッシュボードのオプション。 Azure [ロール ベースの認証 (RBAC)](../role-based-access-control/overview.md) との統合。
-- 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 ログは 1 分で更新されます。
-- タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。
-- 柔軟なレイアウト オプション。
-- 全画面表示モード。
-
-
-### <a name="limitations"></a>制限事項
-- ログの視覚化に対する制御が限定的であり、データ テーブルはサポートされません。 データ系列の合計数は 10 に制限されていて、それ以上のデータ系列は _その他_ のバケットの下にグループ化されます。
-- ログのグラフに対するカスタム パラメーターのサポートはありません。
-- ログのグラフは、過去 30 日間に制限されます。
-- ログのグラフは、共有ダッシュボードにのみピン留めできます。
-- ダッシュボード データとのインタラクティビティはありません。
-- 制限されたコンテキストのドリルダウン。
-
-## <a name="azure-monitor-views"></a>Azure Monitor ビュー
-[Azure Monitor のビュー](platform/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
-
-![表示](media/visualizations/view.png)
-
-### <a name="advantages"></a>長所
-- ログ データの高度な視覚化。
-- ビューを他のリソース グループとサブスクリプションに転送するためのビューのエクスポートとインポート。
-- ワークスペースと監視ソリューションを持つ Azure Monitor 管理モデルへの統合。
-- カスタム パラメーターの[フィルター処理](platform/view-designer-filters.md)。
-- 対話型、複数レベルのドリルイン (別のビューに絞り込むビュー) をサポート
-
-### <a name="limitations"></a>制限事項
-- ログはサポートされるがメトリックはサポートされない。
-- 個人用ビューはなし。 ワークスペースへのアクセス権を持つすべてのユーザーが使用可能。
-- 自動更新なし。
-- 制限されたレイアウト オプション。
-- 複数のワークスペースや Application Insights アプリケーションに対する横断的なクエリ実行がサポートされない。
-- クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
-
-
 ## <a name="workbooks"></a>Workbooks
-[Workbooks](../azure-monitor/app/usage-workbooks.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
+[Workbooks](../azure-monitor/platform/workbooks-overview.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
 
 ![Workbooks](media/visualizations/workbook.png)
 
@@ -87,6 +34,31 @@ ms.locfileid: "59796054"
 ### <a name="limitations"></a>制限事項
 - 自動更新なし。
 - ダッシュボードのような密度の高いレイアウトがなく、Workbooks が 1 つのウィンドウとして表示されるため、利便性には劣りますが、 詳細な分析情報を提供することを目的としています。
+
+
+## <a name="azure-dashboards"></a>Azure ダッシュボード
+[Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)は、Azure の主要なダッシュボード テクノロジです。 ダッシュボードは、重要な問題をすばやく特定できるように、Azure インフラストラクチャとサービスに関する 1 つのウィンドウを提供するという点で特に役立ちます。
+
+![ダッシュボード](media/visualizations/dashboard.png)
+
+### <a name="advantages"></a>長所
+- Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、Log Analytics、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
+- メトリックとログの両方をサポート。
+- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、Application Insights の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
+- 個人または共有のダッシュボードのオプション。 Azure [ロール ベースの認証 (RBAC)](../role-based-access-control/overview.md) との統合。
+- 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 特定の視覚エフェクトの [更新] アイコンをクリックするか、ダッシュボード全体を更新することにより、オンデマンドで手動更新オプションを使って 1 時間ごとに更新をログに記録します。
+- タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。
+- 柔軟なレイアウト オプション。
+- 全画面表示モード。
+
+
+### <a name="limitations"></a>制限事項
+- ログの視覚化に対する制御が限定的であり、データ テーブルはサポートされません。 データ系列の合計数は 10 に制限されていて、それ以上のデータ系列は _その他_ のバケットの下にグループ化されます。
+- ログのグラフに対するカスタム パラメーターのサポートはありません。
+- ログのグラフは、過去 30 日間に制限されます。
+- ログのグラフは、共有ダッシュボードにのみピン留めできます。
+- ダッシュボード データとのインタラクティビティはありません。
+- 制限されたコンテキストのドリルダウン。
 
 
 ## <a name="power-bi"></a>Power BI
@@ -136,11 +108,36 @@ Azure Monitor のメトリック データとログ データには、その API
 - 多くのエンジニア リング作業が必要。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="azure-monitor-views"></a>Azure Monitor ビュー
+
+> [!IMPORTANT]
+> ビューは今後非推奨となる予定です。 ビューをブックに変換する方法のガイドラインについては、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](platform/view-designer-conversion-overview.md)」を参照してください。
+
+[Azure Monitor のビュー](platform/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
+
+
+![表示](media/visualizations/view.png)
+
+### <a name="advantages"></a>長所
+- ログ データの高度な視覚化。
+- ビューを他のリソース グループとサブスクリプションに転送するためのビューのエクスポートとインポート。
+- ワークスペースと監視ソリューションを持つ Azure Monitor 管理モデルへの統合。
+- カスタム パラメーターの[フィルター処理](platform/view-designer-filters.md)。
+- 対話型、複数レベルのドリルイン (別のビューに絞り込むビュー) をサポート
+
+### <a name="limitations"></a>制限事項
+- ログはサポートされるがメトリックはサポートされない。
+- 個人用ビューはなし。 ワークスペースへのアクセス権を持つすべてのユーザーが使用可能。
+- 自動更新なし。
+- 制限されたレイアウト オプション。
+- 複数のワークスペースや Application Insights アプリケーションに対する横断的なクエリ実行がサポートされない。
+- クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
+
+## <a name="next-steps"></a>次のステップ
 - [Azure Monitor によって収集されたデータ](platform/data-platform.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
 - [Azure Monitor のビュー](platform/view-designer.md)について学習します。
-- [Workbooks](../azure-monitor/app/usage-workbooks.md) について学習します。
+- [Workbooks](../azure-monitor/platform/workbooks-overview.md) について学習します。
 - [ログ データの Power BI へのインポート](../azure-monitor/platform/powerbi.md)について学習します。
 - [Grafana Azure Monitor データ ソース プラグイン](../azure-monitor/platform/grafana-plugin.md)について学習します。
 

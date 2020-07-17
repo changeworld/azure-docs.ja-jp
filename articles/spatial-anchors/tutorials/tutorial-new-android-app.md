@@ -1,19 +1,19 @@
 ---
-title: チュートリアル - Azure Spatial Anchors を使用して新しい Android アプリを作成する手順 | Microsoft Docs
+title: チュートリアル:[新しい Android アプリを作成する]
 description: このチュートリアルでは、Azure Spatial Anchors を使用して新しい Android アプリを作成する方法について説明します。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e1773ef81a5b727187a9a69ccc7ce7ad0421fb2c
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995729"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80246774"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -23,20 +23,20 @@ ms.locfileid: "59995729"
 
 このチュートリアルを完了するには、以下のものが必要です。
 
-- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 以降</a>がインストールされている Windows または macOS コンピューター。
+- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 以降</a>がインストールされている Windows または macOS マシン。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
-Android Studio を起動します。 **[Android Studio へようこそ]** ウィンドウで、**[新規 Android Studio プロジェクトの開始]** を選択します。 または、既に開かれているプロジェクトがある場合は、**[ファイル]**->**[新規プロジェクト]** を選択します。
+Android Studio を起動します。 **[Android Studio へようこそ]** ウィンドウで、 **[新規 Android Studio プロジェクトの開始]** を選択します。 または、既に開かれているプロジェクトがある場合は、 **[ファイル]** -> **[新規プロジェクト]** を選択します。
 
-**[新規プロジェクトの作成]** ウィンドウの **[スマホおよびタブレット]** セクションで、**[空のアクティビティ]** を選択し、**[次へ]** をクリックします。 次に、**[Minimum API level]\(最小 API レベル\)** で `API 26: Android 8.0 (Oreo)` を選択し、**[Language]\(言語\)** が `Java` に設定されていることを確認します。 プロジェクトの名前と場所、およびパッケージ名の変更が必要な場合があります。 他のオプションはそのままにします。 **[完了]** をクリックします。 **コンポーネント インストーラー**が実行されます。 完了したら、**[完了]** をクリックします。 いくつかの処理の後、Android Studio によって IDE が開かれます。
+**[新規プロジェクトの作成]** ウィンドウの **[スマホおよびタブレット]** セクションで、 **[空のアクティビティ]** を選択し、 **[次へ]** をクリックします。 次に、 **[Minimum API level]\(最小 API レベル\)** で `API 26: Android 8.0 (Oreo)` を選択し、 **[Language]\(言語\)** が `Java` に設定されていることを確認します。 プロジェクトの名前と場所、およびパッケージ名の変更が必要な場合があります。 他のオプションはそのままにします。 **[完了]** をクリックします。 **コンポーネント インストーラー**が実行されます。 完了したら、 **[完了]** をクリックします。 いくつかの処理の後、Android Studio によって IDE が開かれます。
 
 ## <a name="trying-it-out"></a>試してみる
 
-新しいアプリをテストするには、USB ケーブルを使用して開発用マシンに開発者向けのデバイスを接続します。 **[実行]**->**[Run 'app']\('アプリ' を実行\)** をクリックします。 **[Select Deployment Target]\(配置ターゲットの選択\)** ウィンドウで、お使いのデバイスを選択し、**[OK]** をクリックします。 Android Studio によって、接続されているデバイスにアプリがインストールされて起動されます。 "Hello World!" が、 お使いのデバイスで実行されているアプリに表示されます。 **[実行]**->**[Stop 'app']\('app' を停止\)** をクリックします。
+新しいアプリをテストするには、USB ケーブルを使用して開発用マシンに開発者向けのデバイスを接続します。 **[実行]** -> **[Run 'app']\('アプリ' を実行\)** をクリックします。 **[Select Deployment Target]\(配置ターゲットの選択\)** ウィンドウで、お使いのデバイスを選択し、 **[OK]** をクリックします。 Android Studio によって、接続されているデバイスにアプリがインストールされて起動されます。 "Hello World!" が、 お使いのデバイスで実行されているアプリに表示されます。 **[実行]** -> **[Stop 'app']\('app' を停止\)** をクリックします。
 
-## <a name="integrating-arcore"></a>_ARCore_ との統合
+## <a name="integrating-_arcore_"></a>_ARCore_ との統合
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> は、Augmented Reality エクスペリエンスを構築するための Google のプラットフォームであり、お使いのデバイスが移動するときにその位置を追跡し、現実世界の独自の認識を構築できるようにします。
 
@@ -57,21 +57,21 @@ Android Studio を起動します。 **[Android Studio へようこそ]** ウィ
 </application>
 ```
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に ARCore バージョン 1.7 を対象とするようになります。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、ご自分のアプリは確実に ARCore バージョン 1.8 を対象とするようになります。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。 **[Sync now]\(今すぐ同期\)** をクリックします。
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.7.0'
+    implementation 'com.google.ar:core:1.11.0'
     ...
 }
 ```
 
-## <a name="integrating-sceneform"></a>_Sceneform_ の統合
+## <a name="integrating-_sceneform_"></a>_Sceneform_ の統合
 
-<a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> により、OpenGL を習得しなくても、Augmented Reality アプリ内でリアルな 3D シーンを簡単にレンダリングできます。
+[_Sceneform_](https://developers.google.com/sceneform/develop/) により、OpenGL を習得しなくても、Augmented Reality アプリ内でリアルな 3D シーンを簡単にレンダリングできます。
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは `Sceneform` に必要な Java 8 の言語コンストラクトの使用を許可されます。 また、アプリは確実に `Sceneform` バージョン 1.7 を対象とするようになります。これはアプリで使用している ARCore のバージョンと一致する必要があるためです。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは `Sceneform` に必要な Java 8 の言語コンストラクトの使用を許可されます。 また、ご自分のアプリは確実に `Sceneform` バージョン 1.8 を対象とするようになります。これはご自分のアプリで使用している ARCore のバージョンと一致する必要があるためです。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。 **[Sync now]\(今すぐ同期\)** をクリックします。
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
     ...
 }
 ```
@@ -123,18 +123,18 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>ローカル Azure Spatial Anchor のアタッチ
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に Azure Spatial Anchors バージョン 1.0.2 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に Azure Spatial Anchors バージョン 2.2.0 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。 [こちら](https://github.com/Azure/azure-spatial-anchors-samples/releases)でリリース ノートを確認できます。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```
 
-`app\java\<PackageName>`->**[新規]**->**[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、**[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 Click **OK**. `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。
+`app\java\<PackageName>`-> **[新規]** -> **[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、 **[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 **[OK]** をクリックします。 `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。
 
 ```java
 import com.microsoft.CloudServices;

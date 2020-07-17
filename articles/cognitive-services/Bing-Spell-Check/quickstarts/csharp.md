@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:REST API と C# を使用してスペルをチェックする - Bing Spell Check
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/11/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 102fd27c25052f4f5b3c3c469447b8488171f644
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798489"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75382952"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
 
@@ -46,7 +46,7 @@ ms.locfileid: "65798489"
     using Newtonsoft.Json;
     ```
 
-2. API エンドポイント、サブスクリプション キー、スペル チェックの対象テキストのための変数を作成します。
+2. API エンドポイント、サブスクリプション キー、スペル チェックの対象テキストのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```csharp
     namespace SpellCheckSample
@@ -75,10 +75,10 @@ ms.locfileid: "65798489"
     ```csharp
     async static void SpellCheck()
     {
-        HttpClient client = new HttpClient();
+        var client = new HttpClient();
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        HttpResponseMessage response = new HttpResponseMessage();
+        HttpResponseMessage response = null;
         // add the rest of the code snippets here (except for main())...
     }
     ```
@@ -92,14 +92,11 @@ ms.locfileid: "65798489"
 3. 対象テキストを含んだ `KeyValuePair` オブジェクトのリストを作成し、それを使用して `FormUrlEncodedContent` オブジェクトを作成します。 ヘッダー情報を設定し、`PostAsync()` を使用して要求を送信します。
 
     ```csharp
-    List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-    values.Add(new KeyValuePair<string, string>("text", text));
-    
-    using (FormUrlEncodedContent content = new FormUrlEncodedContent(values))
-    {
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-        response = await client.PostAsync(uri, content);
-    }
+    var values = new Dictionary<string, string>();
+    values.Add("text", text);
+    var content = new FormUrlEncodedContent(values);
+    content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+    response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
 ## <a name="get-and-print-the-api-response"></a>API の応答を取得して出力する
@@ -139,6 +136,10 @@ static void Main(string[] args)
     Console.ReadLine();
 }
 ```
+
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。 Visual Studio を使用している場合は、**F5** キーを押してファイルをデバッグします。
 
 ## <a name="example-json-response"></a>JSON の応答例
 
@@ -182,10 +183,10 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

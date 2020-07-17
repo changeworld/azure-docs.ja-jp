@@ -1,46 +1,42 @@
 ---
-title: 各国のクラウドでの Azure Active Directory を使用した認証
+title: Azure AD の認証と各国のクラウド | Azure
+titleSuffix: Microsoft identity platform
 description: 各国のクラウドのアプリ登録と認証エンドポイントについて説明します。
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,CelesteDG
+ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d4586df23548854f4acbfefd32081a36906097
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067885"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845187"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
 各国のクラウドは、物理的に分離された Azure のインスタンスです。 Azure のこれらのリージョンは、データの保存場所、主権、およびコンプライアンス要件が地理的な境界内で確実に守られるように設計されています。
 
-グローバルなクラウドを含む Azure Active Directory は、次の各国のクラウドにデプロイされています。  
+グローバル クラウドを含め、Azure Active Directory (Azure AD) は次の各国のクラウドにデプロイされています。  
 
-- Azure US Government
+- Azure Government
 - Azure Germany
 - Azure China 21Vianet
 
-各国のクラウドは、特有で、Azure グローバルとは異なる環境です。 そのため、アプリケーションの登録、トークンの取得、エンドポイントの構成など、これらの環境に向けたアプリケーションの開発時には、いくつかの主な相違点について知っておくことが重要です。
+各国のクラウドは独特であり、Azure グローバルとは別の環境です。 これらの環境用にアプリケーションを開発するときは、その主な違いに注意することが重要です。 これらの違いには、アプリケーションの登録、トークンの取得、およびエンドポイントの構成が含まれます。
 
 ## <a name="app-registration-endpoints"></a>アプリ登録エンドポイント
 
-各国のクラウドには、それぞれ別個の Azure portal があります。 各国のクラウド内でアプリケーションを Microsoft ID プラットフォームと統合するには、各環境に固有の Azure portal それぞれで、アプリケーションを別個に登録する必要があります。
+各国のクラウドには、それぞれ別個の Azure portal があります。 各国のクラウドでアプリケーションを Microsoft ID プラットフォームに統合するには、その環境に固有の各 Azure Portal で個別にアプリケーションを登録する必要があります。
 
-次の表は、各国のクラウドにアプリケーションを登録するために使用される Azure Active Directory (Azure AD) エンドポイントのベース URL を示しています。
+次の表は、各国のクラウドごとにアプリケーションを登録するために使用される Azure AD エンドポイントのベース URL の一覧を示しています。
 
 | 各国のクラウド | Azure AD ポータル エンドポイント |
 |----------------|--------------------------|
@@ -53,7 +49,7 @@ ms.locfileid: "65067885"
 
 各国のクラウドはすべて、各環境で別個にユーザーを認証し、別個の認証エンドポイントを備えています。
 
-次の表は、各国のクラウドでトークンを取得するために使用される Azure Active Directory (Azure AD) エンドポイントのベース URL を示しています。
+次の表は、各国のクラウドごとにトークンを取得するために使用される Azure AD エンドポイントのベース URL の一覧を示しています。
 
 | 各国のクラウド | Azure AD 認証エンドポイント |
 |----------------|-------------------------|
@@ -62,26 +58,23 @@ ms.locfileid: "65067885"
 | 21Vianet が運営する Azure AD China | `https://login.chinacloudapi.cn` |
 | Azure AD (グローバル サービス)| `https://login.microsoftonline.com` |
 
-- Azure AD の承認またはトークン エンドポイントに対する要求は、リージョン固有の適切なベース URL を使用して構成できます。 例として、Azure Germany の場合を示します。
+適切なリージョン固有のベース URL を使用して、Azure AD 承認またはトークン エンドポイントへの要求を構成できます。 例として、Azure Germany の場合を示します。
 
-  - 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/authorize` です。
-  - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/token` です。
+  - 承認共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` です。
+  - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/v2.0/token` です。
 
-- シングルテナント アプリケーションの場合は、前の URL の common をテナント ID または名前 (たとえば `https://login.microsoftonline.de/contoso.com`) に置き換えます。
-
-> [!NOTE]
-> [Azure AD v2.0 承認]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)およびトークン エンドポイントは、グローバル サービスにのみ使用できます。 各国のクラウドのデプロイではまだサポートされていません。
+シングルテナント アプリケーションの場合は、前の URL にある "common" をテナント ID またはテナント名に置き換えます。 たとえば `https://login.microsoftonline.de/contoso.com` です。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-各国のクラウド環境で Microsoft Graph API を呼び出す方法については、[各国のクラウドでの Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments) に関するページを参照してください。
+各国のクラウドの環境で Microsoft Graph API を呼び出す方法については、[各国のクラウドのデプロイでの Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments)に関するページを参照してください。
 
 > [!IMPORTANT]
-> グローバル サービスの特定のリージョンにある特定のサービスと機能は、各国のクラウドでは使用できない場合もあります。 どのサービスを利用できるかを確認するには、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)に関するページを参照してください。
+> グローバル サービスの特定のリージョンにある特定のサービスや機能が、一部の各国のクラウドでは使用できない場合があります。 どのようなサービスが使用できるかを見つけるには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)」を参照してください。
 
-Microsoft ID プラットフォームを使用してアプリケーションを構築する方法について理解するには、この [Microsoft Authentication Library (MSAL) チュートリアル](msal-national-cloud.md)に従います。 具体的には、このアプリはユーザーをサインインさせ、Microsoft Graph API を呼び出すアクセス トークンを取得します。
+Microsoft ID プラットフォームを使用してアプリケーションを構築する方法を学習するには、[Microsoft Authentication Library (MSAL) のチュートリアル](msal-national-cloud.md)に従ってください。 具体的には、このアプリはユーザーをサインインさせ、Microsoft Graph API を呼び出すためのアクセス トークンを取得します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
 

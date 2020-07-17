@@ -1,52 +1,68 @@
 ---
-title: UNH 2.5 セグメントで EDIFACT メッセージを処理する - Azure Logic Apps | Microsoft Docs
-description: Enterprise Integration Pack を備えた Azure Logic Apps で UNH2.5 セグメントによる EDIFACT ドキュメントの解決を行います
+title: EDIFACT メッセージ内の UNH 2.5 セグメント
+description: Enterprise Integration Pack を使用して Azure Logic Apps で UNH2.5 セグメントを含む EDIFACT メッセージを解決する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
-ms.openlocfilehash: 9c8b8611347840dcf49759dac51fb506815cd782
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122010"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74792542"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Azure Logic Apps で UNH 2.5 セグメントを使用して EDIFACT メッセージを処理する
 
-EDIFACT ドキュメント内に UNH2.5 がある場合は、スキーマの検索に使用します。 
+EDIFACT ドキュメント内に UNH2.5 セグメントが存在する場合、そのセグメントはスキーマの検索に使用されます。 たとえば、このサンプルの EDIFACT メッセージでは、UNH フィールドは `EAN008` です。
 
-例: EDIFACT メッセージの UNH フィールドは **EAN008** です  
-UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'  
+`UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
 
-メッセージを処理する手順は次のとおりです。 
-1. スキーマを更新する
-2. アグリーメントの設定を確認する  
+このメッセージを処理するには、次に説明されている手順に従います。
+
+1. スキーマを更新します。
+
+1. 契約の設定を確認します。
 
 ## <a name="update-the-schema"></a>スキーマを更新する
-メッセージを処理するには、UNH2.5 のルート ノード名を持つスキーマをデプロイする必要があります。  たとえば、スキーマのルート名は **EFACT_D03B_ORDERS_EAN008** のようになります。  
 
-UNH2.5 セグメントが異なる D03B_ORDERS ごとに、個々のスキーマをデプロイする必要があります。  
+メッセージを処理するには、UNH2.5 ルート ノード名を含むスキーマをデプロイする必要があります。 たとえば、サンプルの UNH フィールドのスキーマ ルート名は `EFACT_D03B_ORDERS_EAN008` です。 UNH2.5 セグメントが異なる `D03B_ORDERS` ごとに、個別のスキーマをデプロイする必要があります。
 
-## <a name="add-schema-to-the-edifact-agreement"></a>EDIFACT アグリーメントにスキーマを追加する
+## <a name="add-schema-to-edifact-agreement"></a>EDIFACT 契約にスキーマを追加する
+
 ### <a name="edifact-decode"></a>EDIFACT デコード
-受信メッセージをデコードするには、EDIFACT アグリーメントの受信設定でスキーマを構成します。
-1. スキーマを統合アカウントに追加します。    
-2. EDIFACT アグリーメントの受信設定でスキーマを構成します。 
-3. EDIFACT アグリーメントを選択して **[JSON として編集]** をクリックします。  UNH2.5 の値を受信契約 **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png) に追加します。
+
+受信メッセージをデコードするには、EDIFACT 契約の受信の設定でスキーマを設定します。
+
+1. [Azure portal](https://portal.azure.com) で、統合アカウントを開きます。
+
+1. 統合アカウントにスキーマを追加します。
+
+1. EDIFACT 契約の受信の設定でスキーマを構成します。
+
+1. EDIFACT 契約を選択し、 **[JSON として編集]** を選択します。 受信契約の `schemaReferences` セクションに UNH2.5 値を追加します。
+
+   ![受信契約に UNH2.5 を追加する](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
 
 ### <a name="edifact-encode"></a>EDIFACT エンコード
-受信メッセージをエンコードするには、EDIFACT アグリーメントの送信設定でスキーマを構成します。
-1. スキーマを統合アカウントに追加します。    
-2. EDIFACT アグリーメントの送信設定でスキーマを構成します。 
-3. EDIFACT アグリーメントを選択して **[JSON として編集]** をクリックします。  UNH2.5 の値を送信契約 **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png) に追加します。
 
-## <a name="next-steps"></a>次の手順
-* [統合アカウント契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")  
+受信メッセージをエンコードするには、EDIFACT 契約の送信の設定でスキーマを構成します。
+
+1. [Azure portal](https://portal.azure.com) で、統合アカウントを開きます。
+
+1. 統合アカウントにスキーマを追加します。
+
+1. EDIFACT 契約の送信の設定でスキーマを構成します。
+
+1. EDIFACT アグリーメントを選択して **[JSON として編集]** をクリックします。  送信契約の **schemaReferences** で UNH2.5 値を追加します。
+
+1. EDIFACT 契約を選択し、 **[JSON として編集]** を選択します。 送信契約の `schemaReferences` セクションに UNH2.5 値を追加します。
+
+   ![送信契約に UNH2.5 を追加する](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
+
+## <a name="next-steps"></a>次のステップ
+
+* [統合アカウント契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)の詳細を学習します。

@@ -1,30 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: オープン データセット (プレビュー) のドキュメント
+### YamlMime:Landing
+title: Azure Open Datasets のドキュメント
+summary: Azure Open Datasets は、天気、国勢調査、休日など、ML モデルの強化のために最小限の準備で利用できる、キュレーションとクレンジングが済んだデータです。
 metadata:
-  title: Azure オープン データセット (プレビュー) のドキュメント – チュートリアル、API リファレンス | Microsoft Docs
-  description: 最小限の準備で使用できる、キュレーションとクリーニングが行われたデータ、Azure オープン データセットを使用する方法を説明します。 オープン データセットは、機械学習モデルをエンリッチできる、気象、国勢調査、祝日などの公開データです。 チュートリアル、例、および API リファレンス ドキュメントによって、方法が示されます。
+  title: Open Datasets のドキュメント - チュートリアル、API リファレンス - Azure
+  description: Azure Open Datasets は、天気、国勢調査、休日など、ML モデルの強化のために最小限の準備で利用できる、キュレーションとクレンジングが済んだデータです。
   ms.service: open-datasets
   ms.topic: landing-page
+  ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 05/02/2019
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-abstract:
-  description: 最小限の準備で使用できる、キュレーションとクリーニングが行われたデータ、Azure オープン データセットを使用する方法を説明します。 オープン データセットには、機械学習モデルをエンリッチできる、気象、国勢調査、休日などの公開データが含まれます。 チュートリアル、例、および API リファレンス ドキュメントによって、方法が示されます。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: <a href="tutorial-opendatasets-automl">自動機械学習で回帰モデルを構築する</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: <a href="samples">データセットをエンリッチするための Notebook</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/open-datasets-api">API リファレンス</a>'
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 0453213dd1433989869899d1e886bd87d02340b6
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930337"
+landingContent:
+- title: Open Datasets について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Open Datasets とは
+      url: overview-what-are-open-datasets.md
+    - text: サンプル
+      url: samples.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 自動の機械学習により回帰モデルを構築する
+      url: /azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+    - text: Azure Machine Learning で画像分類モデルをエンリッチする
+      url: /azure/machine-learning/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Python API
+      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py

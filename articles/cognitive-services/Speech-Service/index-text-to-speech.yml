@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: テキスト読み上げのドキュメント
+summary: 音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスで、テキストを人間のような合成音声に変換できます。
+metadata:
+  title: テキスト読み上げのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/10/2020
+  ms.author: trbye
+  ms.openlocfilehash: 83bf5f9e623d1d777834e5efdd26fa4cdbc42819
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401442"
+landingContent:
+- title: テキスト読み上げについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: テキスト読み上げの概要
+      url: text-to-speech.md
+    - text: 音声合成の基本
+      url: text-to-speech-basics.md
+  - linkListType: quickstart
+    links:
+    - text: スピーカーに音声を合成する
+      url: quickstarts/text-to-speech.md
+    - text: オーディオ ファイルに音声を合成する
+      url: quickstarts/text-to-speech-audio-file.md
+    - text: 長い形式の音声で音声を合成する
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+- title: テキスト読み上げを使用して開発する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: SSML を使用して合成を改善する
+      url: speech-synthesis-markup.md
+    - text: REST を使用して音声のリストを取得する (Python)
+      url: quickstart-python-get-text-to-speech-voices.md
+    - text: REST を使用してテキストを音声に変換する (Python)
+      url: quickstart-python-text-to-speech.md
+  - linkListType: concept
+    links:
+    - text: Custom Voice の概要
+      url: how-to-custom-voice.md
+    - text: Custom Voice モデルを作成して使用する
+      url: how-to-custom-voice-create-voice.md
+    - text: Custom Voice のゲーティング
+      url: concepts-gating-overview.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 標準の音声サポート
+      url: language-support.md#standard-voices
+    - text: ニューラルの音声サポート
+      url: language-support.md#neural-voices
+    - text: SSML 音素セット
+      url: speech-ssml-phonetic-sets.md
+    - text: テキスト読み上げの価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

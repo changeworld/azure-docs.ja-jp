@@ -1,11 +1,11 @@
 ---
-title: Azure Notification Hubs を使用して iOS デバイスにローカライズしたプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する | Microsoft Docs
 description: Azure Notification Hubs を使用して iOS デバイスにローカライズしたプッシュ通知を送信する方法について説明します。
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 484914b5-e081-4a05-a84a-798bbd89d428
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 527e9979b624970dd55b4300fe63c27386640ac4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886604"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72385653"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS デバイスにローカライズしたプッシュ通知を送信する
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する
 
 > [!div class="op_single_selector"]
 > * [Windows ストア C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -49,7 +51,7 @@ ms.locfileid: "57886604"
 > [!NOTE]
 > ローカライズした通知を送信する方法の 1 つに、各タグの複数のバージョンを作成する方法があります。 たとえば、英語、フランス語、および標準中国語をサポートするには、世界のニュースに関して "world_en"、"world_fr"、"world_ch" の 3 種類のタグが必要になります。 次に、これらの各タグに世界のニュースのローカライズ版を送信する必要があります。 このトピックでは、テンプレートを使用してタグの急増を回避したり、複数のメッセージを送信しなくても済むようにしたりします。
 
-大まかに言えば、テンプレートとは、特定のデバイスが通知をどのように受信するかを特定するための手段です。 テンプレートは、アプリケーション バックエンドにより送信されるメッセージの一部となっているプロパティを参照することで、正確なペイロードを指定します。 このケースでは、サポートされるすべての言語を含む、ロケールにとらわれないメッセージを送信します。
+テンプレートとは、特定のデバイスが通知をどのように受信するかを指定するための手段です。 テンプレートは、アプリケーション バックエンドにより送信されるメッセージの一部となっているプロパティを参照することで、正確なペイロードを指定します。 このケースでは、サポートされるすべての言語を含む、ロケールにとらわれないメッセージを送信します。
 
 ```json
 {
@@ -74,7 +76,7 @@ ms.locfileid: "57886604"
 ## <a name="prerequisites"></a>前提条件
 
 * このチュートリアルは「[特定の iOS デバイスにプッシュ通知を送信する](notification-hubs-ios-xplat-segmented-apns-push-notification.md)」のチュートリアルのコードに直接基づいて構築されているため、このチュートリアルを完了し、そのコードを使用可能にしてください。
-* Visual Studio 2017 はオプションです。
+* Visual Studio 2019 はオプションです。
 
 ## <a name="update-the-app-user-interface"></a>アプリのユーザー インターフェイスを更新する
 
@@ -259,7 +261,7 @@ Visual Studio にアクセスできない場合でも、ローカライズされ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、iOS デバイスにローカライズした通知を送信しました。 iOS アプリの特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する | Microsoft Docs
+title: Azure Blob Storage の有効期限を管理する
+titleSuffix: Azure Content Delivery Network
 description: Azure CDN キャッシュで BLOB の有効期限を制御するオプションについて説明します。
 services: cdn
 documentationcenter: ''
@@ -7,19 +8,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: a6dcd57591dcc6aa09ae2cb62f4b6dfe964c979f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191128"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74083156"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -50,7 +51,7 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 1. Azure Portal で、CDN プロファイルを選択してから、BLOB のエンドポイントを選択します。
 
-2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** を選択します。
+2. 左側のウィンドウの [設定] で、 **[キャッシュ規則]** を選択します。
 
    ![[CDN キャッシュ規則] ボタン](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
@@ -61,9 +62,9 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 **グローバル キャッシュ規則を使用して BLOB ストレージ サービスの Cache-Control ヘッダーを設定するには:**
 
-1. **[グローバル キャッシュ規則]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、**[キャッシュ動作]** を **[オーバーライド]** に設定します。
+1. **[グローバル キャッシュ規則]** で、 **[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、 **[キャッシュ動作]** を **[オーバーライド]** に設定します。
       
-2. **[キャッシュの有効期間]** として、**[Seconds] (秒)** ボックスに「3600」と入力するか、または **[時間]** ボックスに「1」と入力します。 
+2. **[キャッシュの有効期間]** として、 **[Seconds] (秒)** ボックスに「3600」と入力するか、または **[時間]** ボックスに「1」と入力します。 
 
    ![CDN グローバル キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
@@ -75,9 +76,9 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 1. **[Custom caching rules] (カスタム キャッシュ規則)** で、次の 2 つの一致条件を作成します。
 
-     A. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「4」と入力します。
+     A. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「4」と入力します。
 
-    B. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「2」と入力します。
+    B. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/blobcontainer1/blob1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「2」と入力します。
 
     ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
@@ -92,7 +93,7 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 [Azure PowerShell](/powershell/azure/overview) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。 `Get-AzStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
-例: 
+次に例を示します。
 
 ```powershell
 # Create a storage context
@@ -114,9 +115,9 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>.NET を使った Cache-Control ヘッダーの設定
-.NET コードを使用して BLOB の `Cache-Control` ヘッダーを指定するには、[.NET 用の Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使用して [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) プロパティを設定します。
+.NET コードを使用して BLOB の `Cache-Control` ヘッダーを指定するには、[.NET 用の Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使用して [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) プロパティを設定します。
 
-例: 
+次に例を示します。
 
 ```csharp
 class Program
@@ -157,7 +158,7 @@ class Program
 Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新するには、以下の操作を行います。
    1. BLOB を選択し、コンテキスト メニューから **[プロパティ]** を選択します。 
    2. 下にスクロールして *CacheControl* プロパティを表示させます。
-   3. 値を入力してから、**[保存]** を選択します。
+   3. 値を入力してから、 **[保存]** を選択します。
 
 
 ![Azure Storage Explorer のプロパティ](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)

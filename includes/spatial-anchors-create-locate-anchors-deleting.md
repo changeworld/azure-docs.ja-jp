@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110527"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67180892"
 ---
 ## <a name="delete-anchors"></a>アンカーの削除
 

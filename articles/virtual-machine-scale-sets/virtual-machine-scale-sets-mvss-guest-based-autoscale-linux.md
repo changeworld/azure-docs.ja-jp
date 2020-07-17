@@ -1,36 +1,30 @@
 ---
-title: Azure の自動スケールで Linux スケール セット テンプレートのゲスト メトリックを使用する | Microsoft Docs
+title: Azure の自動スケールで Linux スケール セット テンプレートのゲスト メトリックを使用する
 description: Linux 仮想マシン スケール セット テンプレートのゲスト メトリックを使用して自動スケールを行う方法について説明します。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: na
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/11/2017
-ms.author: manayar
-ms.openlocfilehash: deddcc8623803f9d003f3fafcef5252ebd34b813
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.date: 04/26/2019
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438338"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124807"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
 
-VM とスケール セットから収集される Azure のメトリックには、ホスト VM から収集されるメトリックと、ゲスト VM から収集されるメトリックの 2 種類があります。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックはおそらく適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、おそらくゲスト メトリックの方が適切です。 2 つの違いを見てみましょう。
+VM とスケール セットから収集された Azure のメトリックの広範な種類が 2 つあります。ホスト メトリックとゲスト メトリック。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックは適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、ゲスト メトリックの方を使用すべきです。
 
-ホスト メトリックの方が単純で確実です。 ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な最小のスケール セットのテンプレート](./virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
+ホスト メトリックの場合は、ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な基本のスケール セットのテンプレート](virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
 
 ## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
 
-実行可能な最小のスケール セット テンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)で確認できます。また、ゲストベースの自動スケールを使用して Linux スケール セットをデプロイするためのテンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json)で確認できます。 このテンプレートを作成する際に使用する diff (`git diff minimum-viable-scale-set existing-vnet`) を項目ごとに確認しましょう。
+[前回のアーティクル](virtual-machine-scale-sets-mvss-start.md)では、基本的なスケール セット テンプレートを作成しました。 では、以前のテンプレートを使用して、Linux スケール セットをゲスト メトリック ベースの自動スケーリングに展開するテンプレートを作成します。
 
 まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../cosmos-db/table-storage-how-to-use-dotnet.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 代わりに、[SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します。
 
@@ -111,7 +105,7 @@ VM とスケール セットから収集される Azure のメトリックには
        }
 ```
 
-最後に、`autoscaleSettings` リソースを追加して、これらのメトリックに基づいて自動スケールを構成します。 このリソースには、自動スケールの前にスケール セットが存在することを確認できるよう、スケール セットを参照する `dependsOn` 句が含まれています。 自動スケールに別のメトリックを選択した場合は、診断の拡張機能の構成の `counterSpecifier` を、自動スケールの構成の `metricName` として使用します。 自動スケールの構成の詳細については、「[自動スケールのベスト プラクティス](..//azure-monitor/platform/autoscale-best-practices.md)」と [Azure Monitor REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn931928.aspx)を参照してください。
+最後に、`autoscaleSettings` リソースを追加して、これらのメトリックに基づいて自動スケールを構成します。 このリソースには、自動スケールの前にスケール セットが存在することを確認できるよう、スケール セットを参照する `dependsOn` 句が含まれています。 自動スケールに別のメトリックを選択した場合は、診断の拡張機能の構成の `counterSpecifier` を、自動スケールの構成の `metricName` として使用します。 自動スケールの構成の詳細については、「[自動スケールのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)」と [Azure Monitor REST API リファレンス ドキュメント](/rest/api/monitor/autoscalesettings)を参照してください。
 
 ```diff
 +    },
@@ -187,6 +181,6 @@ VM とスケール セットから収集される Azure のメトリックには
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

@@ -1,26 +1,18 @@
 ---
-title: Azure Virtual Networks 用の一般的な PowerShell コマンド | Microsoft Docs
+title: Azure Virtual Networks 用の一般的な PowerShell コマンド
 description: 仮想ネットワークと VM に関連するリソースの作成を開始する際に使用される一般的な PowerShell コマンド
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 56e1a73c-8299-4996-bd03-f74585caa1dc
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 31a0d486f2540ea75a57b29b8f1da21839783468
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984642"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82098443"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure Virtual Networks 用の一般的な PowerShell コマンド
 
@@ -35,7 +27,7 @@ ms.locfileid: "55984642"
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-| タスク | コマンド |
+| タスク | command |
 | ---- | ------- |
 | サブネットの構成の作成 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<BR>$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<BR><BR>標準的なネットワークには、[インターネットに接続するロード バランサー](../../load-balancer/load-balancer-internet-overview.md)のサブネットと[内部ロード バランサー](../../load-balancer/load-balancer-internal-overview.md)の別のサブネットがあります。 |
 | 仮想ネットワークの作成 |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
@@ -65,7 +57,7 @@ ms.locfileid: "55984642"
 
 ## <a name="manage-network-resources"></a>ネットワーク リソースの管理
 
-| タスク | コマンド |
+| タスク | command |
 | ---- | ------- |
 | 仮想ネットワークへのサブネットの追加 |[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX.X.X.X/XX -Name "mySubnet1" -VirtualNetwork $vnet<BR><BR>既存の仮想ネットワークにサブネットを追加します。 $vnet 値は、Get-AzVirtualNetwork によって返されるオブジェクトを表します。 |
 | 仮想ネットワークの削除 |[Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup<BR><BR>リソース グループから、指定された仮想ネットワークを削除します。 |
@@ -74,6 +66,6 @@ ms.locfileid: "55984642"
 | パブリック IP アドレスの削除 |[Remove-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress)-Name "myIPAddress" -ResourceGroupName $myResourceGroup<BR><BR>リソース グループから、指定されたパブリック IP アドレスを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
-* [VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ときに、作成したネットワーク インターフェイスを使用します。
-* [複数のネットワーク インターフェイスを持つ VM を作成する](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md)方法について学習します。
+[VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ときに、作成したネットワーク インターフェイスを使用します。
+
 

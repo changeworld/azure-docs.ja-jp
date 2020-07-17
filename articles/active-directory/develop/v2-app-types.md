@@ -2,35 +2,26 @@
 title: Microsoft ID プラットフォームのアプリケーションの種類 | Azure
 description: Microsoft ID プラットフォーム (v2.0) エンドポイントでサポートされているアプリの種類とシナリオです。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/06/2019
+ms.topic: conceptual
+ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec10359c6f684b1d7fb008946b7ceca2ed626ba
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545374"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81677983"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
 Microsoft ID プラットフォーム (v2.0) エンドポイントでは、さまざまな最新アプリ アーキテクチャ向けの認証がサポートされています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Microsoft ID プラットフォームを使用して作成できるアプリの種類について説明します。 情報は、[コードを詳しく確認する](v2-overview.md#getting-started)前に大まかなシナリオを理解するうえで役立ちます。
-
-> [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure Active Directory (Azure AD) シナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[MicrosoftID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
 
 ## <a name="the-basics"></a>基本
 
@@ -44,14 +35,14 @@ Microsoft ID プラットフォーム エンドポイントを使う各アプリ
 
 登録の済んだアプリは、エンドポイントに要求を送ることによって、Microsoft ID プラットフォームと通信します。 これらの要求の詳細に対処するオープン ソース フレームワークとライブラリをご用意しています。 これらのエンドポイントへの要求を作成して、自分で認証ロジックを実装してもかまいません。
 
-```
+```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
 ## <a name="single-page-apps-javascript"></a>シングル ページ アプリ (JavaScript)
 
-最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 AngularJS、Ember.js、または Durandal.js などのフレームワークを使用して記述されていることも少なくありません。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 暗黙的フロー](v2-oauth2-implicit-grant-flow.md)を使用してこれらのアプリがサポートされます。
+最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 Angular、React、または Vue などのフレームワークを使用して記述されていることも、少なくありません。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 暗黙的フロー](v2-oauth2-implicit-grant-flow.md)を使用してこれらのアプリがサポートされます。
 
 このフローでは、アプリは Microsoft ID プラットフォーム承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、余分なページのリダイレクトなしに、JavaScript クライアント内ですべて行うことができます。
 
@@ -63,7 +54,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ブラウザーからアクセスされる Web アプリ (.NET、PHP、Java、Ruby、Python、Node) の場合、ユーザーのサインインに [OpenID Connect](active-directory-v2-protocols.md) を使うことができます。 OpenID Connect では、Web アプリは ID トークンを受け取ります。 ID トークンは、ユーザーの ID を検証し、要求の形でユーザーに関する情報を提供するセキュリティ トークンです。
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -90,9 +81,9 @@ Web サーバー アプリは、単純なサインインを実行するだけで
 
 ## <a name="web-apis"></a>Web API
 
-Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 Web API では、ID トークンとセッション Cookie の代わりに OAuth 2.0 アクセス トークンを使ってデータをセキュリティ保護し、受信要求を認証します。 Web API の呼び出し元は、HTTP 要求の承認ヘッダーの末尾にアクセス トークンを次のように追加します。
+Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 Web API は、さまざまなプラットフォームや言語で実装できます。 また、Azure Functions で HTTP トリガーを使用して実装することもできます。 Web API では、ID トークンとセッション Cookie の代わりに OAuth 2.0 アクセス トークンを使って、そのデータをセキュリティで保護し、受信要求を認証します。 Web API の呼び出し元によって、次のように HTTP 要求の Authorization ヘッダーにアクセス トークンが追加されます。
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -100,29 +91,29 @@ Accept: application/json
 ...
 ```
 
-Web API はそのアクセス トークンを使って API の呼び出し元の ID を検証し、アクセス トークンでエンコードされている要求から呼び出し元に関する情報を抽出します。 Microsoft ID プラットフォーム エンドポイントで使われている各種トークンについて詳しくは、[アクセス トークン](access-tokens.md)および [id_token](id-tokens.md) のリファレンス記事をご覧ください
+Web API では、そのアクセス トークンを使って API の呼び出し元の ID を検証し、アクセス トークンでエンコードされている要求から呼び出し元に関する情報を抽出します。 Microsoft ID プラットフォーム エンドポイントで使われている各種のトークンに関する詳細については、[アクセス トークン](access-tokens.md)および [id_token](id-tokens.md) のリファレンス記事を参照してください。
 
-Web API は、アクセス許可 ([スコープ](v2-permissions-and-consent.md)とも呼ばれる) を公開することで、特定の機能またはデータをオプトイン/オプトアウトできるようにします。 呼び出し元のアプリがスコープに対するアクセス許可を取得するには、ユーザーがフローの途中でスコープに同意する必要があります。 Microsoft ID プラットフォーム エンドポイントはユーザーにアクセス許可を求め、Web API が受け取るすべてのアクセス トークンにアクセス許可を記録します。 Web API は、呼び出しごとに受け取るアクセス トークンを検証し、承認チェックを行います。
+Web API を使用すると、アクセス許可 ([スコープ](v2-permissions-and-consent.md)とも呼ばれる) を公開することで、ユーザーが特定の機能またはデータをオプトイン/オプトアウトできるようになります。 呼び出し元のアプリがスコープに対するアクセス許可を取得するには、ユーザーがフローの途中でスコープに同意する必要があります。 Microsoft ID プラットフォーム エンドポイントでは、ユーザーにアクセス許可を求め、Web API が受信するすべてのアクセス トークンにアクセス許可を記録します。 Web API では、呼び出しごとに受信するアクセス トークンを検証し、承認チェックを実行します。
 
-Web API は、すべての種類のアプリ (Web サーバー アプリ、デスクトップ アプリとモバイル アプリ、シングル ページ アプリ、サーバー側のデーモン、さらにそれ以外の Web API など) からアクセス トークンを受信できます。 Web API 認証の大まかな流れは次のとおりです。
+Web API では、すべての種類のアプリ (Web サーバー アプリ、デスクトップ アプリとモバイル アプリ、シングル ページ アプリ、サーバー側のデーモン、さらにそれ以外の Web API など) からアクセス トークンを受信できます。 Web API の大まかなフローは次のとおりです。
 
-![Web API 認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Web API の認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
+OAuth2 アクセス トークンを使用して Web API をセキュリティで保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
 
 多くの場合、Web API は Microsoft ID プラットフォームで保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API では**代理**フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)」をご覧ください。
 
 ## <a name="mobile-and-native-apps"></a>モバイル アプリとネイティブ アプリ
 
-多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな処理を実行するバックエンド サービスや Web API にアクセスする必要があります。 これらのアプリは、[OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)を使ってバックエンド サービスにサインインと承認を追加します。
+多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな機能を実行するバックエンド サービスや Web API にアクセスする必要があります。 これらのアプリは、[OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)を使ってバックエンド サービスにサインインと承認を追加します。
 
-このフローでは、ユーザーがサインインすると、アプリは Microsoft ID プラットフォーム エンドポイントから承認コードを受け取ります。 承認コードは、サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。 アプリはバックグラウンドで承認コードを OAuth 2.0 のアクセス トークンおよび更新トークンと交換します。 アプリはそのアクセス トークンを使って HTTP 要求で Web API に対して認証を実行します。また、アクセス トークンの有効期限が切れた場合は、更新トークンを使って新しいアクセス トークンを取得します。
+このフローでは、ユーザーがサインインすると、アプリは Microsoft ID プラットフォーム エンドポイントから承認コードを受け取ります。 承認コードは、サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。 アプリはバックグラウンドで承認コードを OAuth 2.0 のアクセス トークンおよび更新トークンと交換します。 アプリではそのアクセス トークンを使って HTTP 要求で Web API を認証できます。また、古いアクセス トークンの有効期限が切れた場合は、更新トークンを使って新しいアクセス トークンを取得できます。
 
 ![ネイティブ アプリの認証フロー](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 
-長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳しくは、「[Authenticating to Microsoft identity platform in daemon apps with certificates (証明書を使用したデーモン アプリでの Microsoft ID プラットフォームへの認証)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/)」をご覧ください。
+長時間実行されるプロセスを含むアプリや、ユーザーとのやりとりはなく動作するアプリにも、セキュリティで保護されたリソース (Web API など) にアクセスする方法が必要です。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳細については、[Microsoft ID プラットフォームを使用する .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)に関する記事を参照してください。
 
 このフローでは、アプリは `/token` エンドポイントと直接対話してアクセスを取得します。
 

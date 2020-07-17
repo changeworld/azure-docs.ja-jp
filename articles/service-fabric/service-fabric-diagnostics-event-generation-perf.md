@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のパフォーマンスの監視 | Microsoft Docs
+title: Azure Service Fabric のパフォーマンスの監視
 description: Azure Service Fabric クラスターの監視と診断に使うパフォーマンス カウンターについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ee1608c40801f568b38ace4670b0d5ea7f73003c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663079"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75464705"
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 
@@ -36,9 +27,9 @@ ms.locfileid: "58663079"
 | PhysicalDisk(per Disk) | Avg.Disk Write Queue Length |
 | PhysicalDisk(per Disk) | Avg.Disk sec/Read |
 | PhysicalDisk(per Disk) | Avg.Disk sec/Write |
-| PhysicalDisk(per Disk) | Disk Reads/sec  |
-| PhysicalDisk(per Disk) | Disk Read Bytes/sec  |
-| PhysicalDisk(per Disk) |  Disk Writes/sec |
+| PhysicalDisk(per Disk) | Disk Reads/sec |
+| PhysicalDisk(per Disk) | Disk Read Bytes/sec |
+| PhysicalDisk(per Disk) | Disk Writes/sec |
 | PhysicalDisk(per Disk) | Disk Write Bytes/sec |
 | メモリ | Available MBytes |
 | PagingFile | % Usage |
@@ -87,7 +78,7 @@ Reliable Services またはサービスのリモート処理を使っている�
 Reliable Collections を使っている場合は、`Service Fabric Transactional Replicator` の `Avg. Transaction ms/Commit` を追加して、トランザクションあたりの平均コミット待ち時間メトリックを収集することをお勧めします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Service Fabric における[プラットフォーム レベルでのイベント生成](service-fabric-diagnostics-event-generation-infra.md)についてさらに学習します
 * [Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)経由でパフォーマンス メトリックを収集してください

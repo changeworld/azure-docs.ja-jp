@@ -1,19 +1,19 @@
 ---
-title: 'チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行 '
-description: Azure HDInsight で Spark クラスターにデータを読み込み、対話型のクエリを実行する方法を説明します。
+title: チュートリアル:Apache Spark を使用してデータの読み込みとクエリを実行する - Azure HDInsight
+description: チュートリアル - Azure HDInsight で Spark クラスターにデータを読み込み、対話型のクエリを実行する方法を説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.author: hrasheed
-ms.date: 05/16/2019
-ms.openlocfilehash: 09509b32320fb10b8ab3d563442b6d0fb44ad34e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909208"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77198890"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行
 
@@ -30,13 +30,13 @@ HDInsight での Apache Spark クラスター。 [Apache Spark クラスター�
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
 
-Jupyter Notebook は、さまざまなプログラミング言語をサポートする対話型のノートブック環境です。 ノートブックを使うと、データと対話し、Markdown テキストとコードを組み合わせて、簡単な視覚化を実行できます。 
+Jupyter Notebook は、さまざまなプログラミング言語をサポートする対話型のノートブック環境です。 ノートブックを使うと、データと対話し、Markdown テキストとコードを組み合わせて、簡単な視覚化を実行できます。
 
 1. URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` を編集して、`SPARKCLUSTER` を Spark クラスターの名前に置き換えます。 編集した URL を Web ブラウザーに入力します。 入力を求められたら、クラスターのログイン資格情報を入力します。
 
-2. Jupyter の Web ページで **[New]\(新規\)**  >  **[PySpark]** の順に選択して、ノートブックを作成します。 
+2. Jupyter の Web ページで **[New]\(新規\)**  >  **[PySpark]** の順に選択して、ノートブックを作成します。
 
-   ![対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する")
+   ![Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する")
 
    Untitled (`Untitled.ipynb`) という名前の新しいノートブックが作成されて開かれます。
 
@@ -45,9 +45,9 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>csv ファイルからデータフレームを作成する
 
-アプリケーションは、リモート記憶域 (Azure Storage、Azure Data Lake Storage など) にあるファイルやフォルダーか、Hive テーブル、または Spark でサポートされている他のデータ ソース (Cosmos DB、Azure SQL DB、DW など) から直接データフレームを作成できます。次のスクリーンショットは、このチュートリアルで使用されている HVAC.csv ファイルのスナップショットを示しています。 csv ファイルには、すべての HDInsight Spark クラスターが付属します。 このデータは、いくつかのビルの温度の変化をキャプチャしています。
-    
-![対話型 Spark SQL クエリのデータのスナップショット](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "対話型 Spark SQL クエリのデータのスナップショット")
+アプリケーションは、リモート記憶域 (Azure Storage、Azure Data Lake Storage など) にあるファイルやフォルダーか、Hive テーブル、または Spark でサポートされている他のデータ ソース (Cosmos DB、Azure SQL DB、DW など) から直接データフレームを作成できます。 次のスクリーンショットは、このチュートリアルで使用されている HVAC.csv ファイルのスナップショットを示しています。 csv ファイルには、すべての HDInsight Spark クラスターが付属します。 このデータは、いくつかのビルの温度の変化をキャプチャしています。
+
+![対話型の Spark SQL クエリのデータのスナップショット](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "対話型の Spark SQL クエリのデータのスナップショット")
 
 1. 次のコードを Jupyter ノートブックの空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
 
@@ -60,7 +60,9 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
     ![対話型の Spark SQL クエリの状態](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "対話型の Spark SQL クエリの状態")
 
-2. 次のコードを実行してデータフレームと一時テーブル (**hvac**) を作成します。 
+1. 返されたセッション ID をメモしておきます。 上の図では、セッション ID は 0 です。 必要に応じて、`https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` に移動してセッションの詳細を取得できます。ここで、CLUSTERNAME は Spark クラスターの名前、ID はセッション ID 番号です。
+
+1. 次のコードを実行してデータフレームと一時テーブル (**hvac**) を作成します。
 
     ```python
     # Create a dataframe and table from sample data
@@ -81,27 +83,27 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
    次の表形式の出力が表示されます。
 
-     ![対話型の Spark クエリの表形式の出力](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "対話型の Spark クエリの表形式の出力")
+     ![対話型の Spark クエリの結果のテーブル出力](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "対話型の Spark クエリの結果のテーブル出力")
 
 2. 他の視覚化でも結果を表示できます。 同じ出力に対する領域グラフを表示するには、 **[領域]** を選択し、他の値を次のように設定します。
 
-    ![対話型の Spark クエリ結果の領域グラフ](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "対話型の Spark クエリ結果の領域グラフ")
+    ![対話型の Spark クエリの結果の面積グラフ](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "対話型の Spark クエリの結果の面積グラフ")
 
 3. ノートブックのメニュー バーから **[ファイル]**  >  **[Save and Checkpoint]\(保存とチェックポイント)** に移動します。
 
 4. [次のチュートリアル](apache-spark-use-bi-tools.md)をすぐに開始する場合は、Notebook を開いたままにしておきます。 開始しない場合は、ノートブックのメニュー バーから **[ファイル]**  >   **[Close and Halt]\(閉じて停止)** に移動し、ノートブックをシャットダウンしてクラスター リソースを解放します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 HDInsight を使用すると、データと Jupyter Notebook は Azure Storage または Azure Data Lake Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 すぐに次のチュートリアルに取り掛かる場合は、クラスターを保持することができます。
 
 Azure Portal で、クラスターを開き、 **[削除]** を選択します。
 
-![HDInsight クラスターの削除](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+![HDInsight クラスターを削除する](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
-リソース グループ名を選択し、リソース グループ ページを開いて、 **[リソース グループの削除]** を選択することもできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
+リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、csv ファイルからデータフレームを作成する方法と、Azure HDInsight で Apache Spark クラスターに対して対話型の Spark SQL クエリを実行する方法を説明しました。 次の記事に進んで、Apache Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。
 

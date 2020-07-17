@@ -1,19 +1,14 @@
 ---
 title: デプロイ シーケンス順序について
-description: ブループリント定義が経過するライフサイクルと各ステージの詳細について説明します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/25/2019
+description: ブループリントの割り当て中にブループリント アーティファクトがデプロイされる既定の順序と、デプロイ順序をカスタマイズする方法について説明します。
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266190"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864523"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -42,11 +37,17 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 - リソース グループの子の**ポリシー割り当て**成果物が、成果物の名前で並べ替えられます
 - リソース グループの子の**Azure Resource Manager テンプレート**成果物が、成果物の名前で並べ替えられます
 
+> [!NOTE]
+> [artifacts()](../reference/blueprint-functions.md#artifacts) の使用により、参照される成果物の暗黙的な依存関係が作成されます。
+
 ## <a name="customizing-the-sequencing-order"></a>シーケンス順序のカスタマイズ
 
-大規模なブループリント定義を作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリント定義にいくつかの Azure Resource Manager テンプレートが含まれている場合です。 ブループリントでは、シーケンス順序を定義することで、このパターンを処理します。
+大規模なブループリント定義を作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリント定義にいくつかの Azure Resource Manager テンプレートが含まれている場合です。 Azure Blueprints では、シーケンス順序を定義できるようにすることによって、このパターンを処理します。
 
 この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 このプロパティは、リソース グループ用のブループリント定義、および成果物オブジェクトによってサポートされています。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
+
+> [!NOTE]
+> ブループリント オブジェクトが作成されるとき、各成果物のリソースは、[PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact) を使用している場合は、ファイル名から名前を取得し、[REST API](/rest/api/blueprints/artifacts/createorupdate) を使用している場合は、URL エンドポイントから取得します。 成果物内の _resourceGroup_ の参照は、ブループリント定義内のそれと一致している必要があります。
 
 ### <a name="example---ordered-resource-group"></a>例 - 順序指定されたリソース グループ
 
@@ -74,9 +75,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
         },
         "targetScope": "subscription"
     },
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint",
-    "type": "Microsoft.Blueprint/blueprints",
-    "name": "mySequencedBlueprint"
+    "type": "Microsoft.Blueprint/blueprints"
 }
 ```
 
@@ -95,15 +94,13 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
         ]
     },
     "kind": "policyAssignment",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
-    "type": "Microsoft.Blueprint/artifacts",
-    "name": "assignPolicyTags"
+    "type": "Microsoft.Blueprint/artifacts"
 }
 ```
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>例 - リソース グループに依存するサブスクリプション レベルのテンプレート成果物
 
-この例は、サブスクリプション レベルでデプロイされた Resource Manager テンプレートを対象とし、リソース グループに依存します。 既定の順序付けでは、サブスクリプション レベルの成果物は、任意のリソース グループとそのリソース グループの子成果物の前に作成されます。 リソース グループは、次のようにブループリント定義で定義されます。
+この例は、サブスクリプション レベルでデプロイされた Resource Manager テンプレートを対象とし、リソース グループに依存します。 サブスクリプション レベルの成果物は、既定の順序では、どのリソース グループおよびそのリソース グループの子成果物より前に作成されます。 リソース グループは、次のようにブループリント定義で定義されます。
 
 ```json
 "resourceGroups": {
@@ -131,9 +128,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
         "description": ""
     },
     "kind": "template",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
-    "type": "Microsoft.Blueprint/blueprints/artifacts",
-    "name": "subtemplateWaitForRG"
+    "type": "Microsoft.Blueprint/blueprints/artifacts"
 }
 ```
 
@@ -141,9 +136,10 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 作成プロセスでは、トポロジカル ソートを使用して、ブループリント成果物の依存関係グラフが作成されます。 この確認により、リソース グループと成果物の各レベルの依存関係がサポートされます。
 
-成果物の依存関係が既定の順序を変更しないと宣言されている場合、変更は加えられません。 たとえば、サブスクリプション レベルのポリシーに依存するリソース グループです。 もう 1 つの例は、リソース グループ 'standard rg' 子ロールの割り当てに依存しているリソース グループ ' standard rg' 子ポリシーの割り当てです。 どちらの場合も、`dependsOn` によって既定のシーケンス順序が変更されることはなく、何の変更も加えられません。
+成果物の依存関係が既定の順序を変更しないと宣言されている場合、変更は加えられません。
+たとえば、サブスクリプション レベルのポリシーに依存するリソース グループです。 もう 1 つの例は、リソース グループ 'standard rg' 子ロールの割り当てに依存しているリソース グループ ' standard rg' 子ポリシーの割り当てです。 どちらの場合も、`dependsOn` によって既定のシーケンス順序が変更されることはなく、何の変更も加えられません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](lifecycle.md)を参照する。
 - [静的および動的パラメーター](parameters.md)の使用方法を理解する。

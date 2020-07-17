@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用して、仮想マシン スケール セット上に Azure リソースのマネージド ID を構成する方法
+title: PowerShell を使用して仮想マシン スケール セット上にマネージド ID を構成する - Azure AD
 description: PowerShell を使用して、仮想マシン スケール セット上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するための順を追った説明。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 755aee312fd0492fd57a82cb7a437b04ebf72987
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448578"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74547266"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>PowerShell を使用して仮想マシン スケール セット上に Azure リソースのマネージド ID を構成する方法
 
@@ -36,7 +36,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-it-work)を確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 - この記事の管理操作を実行するアカウントには、次の Azure のロール ベースのアクセス制御の割り当てが必要です。
 
@@ -61,8 +61,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
-> [!NOTE]
-> オプションで、Azure リソース仮想マシン スケール セット拡張機能のマネージド ID をプロビジョニングできますが、これは間もなく非推奨になります。 Azure Instance Metadata の ID エンドポイントを認証に使用することをお勧めします。 詳細については、[VM 拡張機能の使用停止、および認証での Azure IMDS エンドポイントの使用開始](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 
 ## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>既存の Azure 仮想マシン スケール セット上でシステム割り当てマネージド ID を有効にする
@@ -81,8 +80,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-> [!NOTE]
-> オプションで、Azure リソース仮想マシン スケール セット拡張機能のマネージド ID をプロビジョニングできますが、これは間もなく非推奨になります。 Azure Instance Metadata の ID エンドポイントを認証に使用することをお勧めします。 詳細については、[認証のための VM 拡張機能から Azure IMDS エンドポイントへの移行](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セット上でシステム割り当てマネージド ID を無効にする
 
@@ -146,7 +144,7 @@ Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
 - 完全な Azure VM 作成のクイックスタートについては、次を参照してください。

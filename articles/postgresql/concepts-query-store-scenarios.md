@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL でのクエリ ストアの使用シナリオ
-description: この記事では、Azure Database for PostgreSQL でのクエリ ストアに関するいくつかのシナリオについて説明します。
+title: クエリ ストアのシナリオ - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストアに関するいくつかのシナリオについて説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: 873462354b70d13e56ca108c3257031ef34873f8
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 5/6/2019
+ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480856"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74768352"
 ---
 # <a name="usage-scenarios-for-query-store"></a>クエリ ストアの使用シナリオ
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 予測可能なワークロード パフォーマンスの追跡と管理が重要であるさまざまなシナリオで、クエリ ストアを使用することができます。 次の例を考えてみます。 
 - 高コスト上位クエリの識別と調整 
@@ -57,5 +57,5 @@ ms.locfileid: "58480856"
  
 ユーザーがアプリケーションのコードを管理している場合は、ストアド プロシージャまたはパラメーター化クエリを使用するようにデータ アクセス層を書き直すことを検討できます。 しかし、このような状況は、データベース全体 (すべてのクエリ) またはクエリ ハッシュが同じ個々のクエリ テンプレートに対し、クエリのパラメーター化を強制することにより、アプリケーションを変更しないで改善することもできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 詳細については、[クエリ ストアの使用のベスト プラクティス](concepts-query-store-best-practices.md)に関するページをご覧ください。

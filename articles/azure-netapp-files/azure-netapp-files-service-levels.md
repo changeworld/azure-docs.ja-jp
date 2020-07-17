@@ -12,27 +12,51 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: c2086eb0c5529d8e570a545e35fc716f70c7541f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668346"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75832578"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files のサービス レベル
-Azure NetApp Files では、次の 2 つのサービス レベルがサポートされています: Premium と Standard。 
+サービス レベルは容量プールの属性の 1 つです。 サービス レベルは、容量プール内のボリュームに割り当てられたクォータに基づいて許可された、ボリュームの最大スループットによって定義および区別されます。
 
-## <a name="Premium"></a>Premium Storage
+## <a name="supported-service-levels"></a>サポートされているサービス レベル
 
-*Premium* Storage では、TiB あたり最大 64 MiB/秒のスループットが提供されます。 スループットのパフォーマンスは、ボリュームのクォータと連動します。 たとえば、Premium Storage のボリュームでプロビジョニング済みクォータが 2 TiB である場合 (実際の消費量に関係なく)、スループットは 128 MiB/秒になります。
+Azure NetApp Files では、次の 3 つのサービス レベルがサポートされています。*Ultra*、*Premium*、*Standard*。 
 
-## <a name="Standard"></a>Standard Storage
+* <a name="Ultra"></a>Ultra ストレージ
 
-*Standard* Storage では、TiB あたり最大 16 MiB/秒のスループットが提供されます。 スループットのパフォーマンスは、ボリュームのクォータと連動します。 たとえば、Standard Storage のボリュームでプロビジョニング済みクォータが 2 TiB である場合 (実際の消費量に関係なく)、スループットは 32 MiB/秒になります。
+    Ultra ストレージ層は割り当てられた 1 TiB のボリューム クォータあたり、最大で 128 MiB/s のスループットを提供します。 
 
-## <a name="next-steps"></a>次の手順
+* <a name="Premium"></a>Premium Storage
+
+    Premium ストレージ層は割り当てられた 1 TiB のボリューム クォータあたり、最大で 64 MiB/s のスループットを提供します。 
+
+* <a name="Standard"></a>Standard Storage
+
+    Standard ストレージ層は割り当てられた 1 TiB のボリューム クォータあたり、最大で 16 MiB/s のスループットを提供します。
+
+## <a name="throughput-limits"></a>スループットの制限
+
+ボリュームに対するスループットの制限は、次の要素の組み合わせで決定されます。
+* ボリュームが属する容量プールのサービス レベル
+* ボリュームに割り当てられたクォータ  
+
+この概念を次の図に示します。
+
+![サービス レベルの図](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
+
+上記の例 1 では、2 TiB のクォータが割り当てられている Premium ストレージ層の容量プールからのボリュームに、128 MiB/s (2 TiB * 64 MiB/s) のスループットの制限が割り当てられます。 このシナリオは、容量プールのサイズや実際のボリューム消費量に関係なく適用されます。
+
+上記の例 2 では、100 GiB のクォータが割り当てられている Premium ストレージ層の容量プールからのボリュームに、6.25 MiB/s (0.09765625 TiB * 64 MiB/s) のスループットの制限が割り当てられます。 このシナリオは、容量プールのサイズや実際のボリューム消費量に関係なく適用されます。
+
+## <a name="next-steps"></a>次のステップ
 
 - さまざまなサービス レベルの価格については、[Azure NetApp Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)を参照してください
+- 容量プールでの容量消費の計算については、「[Cost model for Azure NetApp Files (Azure NetApp Files のコスト モデル)](azure-netapp-files-cost-model.md)」を参照してください 
 - [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+- 「[Azure NetApp File のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)」を参照してください

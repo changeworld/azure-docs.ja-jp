@@ -4,23 +4,31 @@
   items:
     - name: Azure SignalR サービスについて
       href: signalr-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 'ASP.NET Core - C#'
       href: signalr-quickstart-dotnet-core.md
+    - name: 'ASP.NET - C#'
+      href: signalr-quickstart-dotnet.md
     - name: Azure Functions - JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
     - name: 'Azure Functions - C#'
       href: signalr-quickstart-azure-functions-csharp.md
     - name: Azure Functions - Java
       href: signalr-quickstart-azure-functions-java.md
+    - name: Azure Functions - Python
+      href: signalr-quickstart-azure-functions-python.md
     - name: REST API
       href: signalr-quickstart-rest-api.md
 - name: チュートリアル
   items:
     - name: 認証を使用してサーバーレスのリアルタイム アプリを構築する
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: モニター
+      items:
+        - name: 診断ログを使用して SignalR サービスを監視する
+          href: signalr-tutorial-diagnostic-logs.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -49,15 +57,19 @@
       href: signalr-concept-messages-and-connections.md
     - name: パフォーマンスに関する考慮事項
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: 認証
       href: signalr-concept-authenticate-oauth.md
-- name: ハウツー ガイド
+    - name: イベント処理
+      href: signalr-concept-event-grid-integration.md
+- name: 操作方法ガイド
   items:
     - name: スケール
       items:
-        - name: 複数のインスタンス
+        - name: 単一インスタンス
+          href: signalr-howto-scale-signalr.md
+        - name: 複数インスタンス
           href: signalr-howto-scale-multi-instances.md
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: アクセス キーのローテーション
           href: signalr-howto-key-rotation.md
@@ -65,7 +77,9 @@
       items:
         - name: Azure Functions のバインド
           href: signalr-concept-azure-functions.md
-- name: 参照
+        - name: Event Grid の統合
+          href: signalr-howto-event-grid-integration.md
+- name: References
   items:
     - name: Azure CLI
       href: signalr-reference-cli.md
@@ -77,7 +91,7 @@
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
 - name: リソース
   items:
-    - name: 解決方法
+    - name: ソリューション
       href: 'https://docs.microsoft.com/azure/architecture/'
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
@@ -90,7 +104,7 @@
     - name: FAQ
       href: signalr-resource-faq.md
     - name: SignalR Service のサブスクリプション レベルの制限
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: ビデオ

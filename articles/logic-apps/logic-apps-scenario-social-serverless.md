@@ -1,23 +1,21 @@
 ---
-title: サーバーレス シナリオ - Azure サービスを使用して Customer Insights ダッシュボードを作成する | Microsoft Docs
+title: Customer Insights ダッシュボードの作成
 description: Azure Logic Apps と Azure Functions を使用してカスタマーのダッシュボードを構築することで、カスタマーのフィードバックやソーシャル メディアのデータなどを管理します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
-ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464434"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75980422"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
 Azure には、インフラストラクチャを気にすることなく、クラウドですばやくアプリをビルドしてホストするのに役立つ、[サーバーレス](https://azure.microsoft.com/solutions/serverless/) ツールが用意されています。 このチュートリアルでは、カスタマーからのフィードバックによってトリガーされ、機械学習を使用してフィードバックを分析し、Power BI や Azure Data Lake などのソースに洞察を発行するダッシュボードを作成することができます。
 
@@ -26,7 +24,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 このシナリオでは、カスタマーからのフィードバックを検出するとトリガーされるロジック アプリを作成します。 カスタマー フィードバックへの応答に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの HTTP 要求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)などがあります。 作成するワークフローは、Twitter のハッシュタグを監視します。
 
-[Visual Studio でソリューション全体をビルド](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)し、[Azure Resource Manager テンプレートを使用してソリューションをデプロイ](../logic-apps/logic-apps-create-deploy-template.md)することができます。 このソリューションの作成方法に関するビデオ チュートリアルについては、[こちらの Channel 9 ビデオ](https://aka.ms/logicappsdemo)をご覧ください。 
+[Visual Studio でソリューション全体をビルド](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)し、[Azure Resource Manager テンプレートを使用してソリューションをデプロイ](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)することができます。 このソリューションの作成方法に関するビデオ チュートリアルについては、[こちらの Channel 9 ビデオ](https://aka.ms/logicappsdemo)をご覧ください。 
 
 ## <a name="trigger-on-customer-data"></a>カスタマー データによるトリガー
 
@@ -48,7 +46,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 テキストの背後にあるセンチメントを検出するために、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を使用できます。
 
-1. ロジック アプリ デザイナーのトリガーの下で、**[新しいステップ]** を選択します。
+1. ロジック アプリ デザイナーのトリガーの下で、 **[新しいステップ]** を選択します。
 
 2. **テキスト分析**コネクタを検索します。
 
@@ -56,7 +54,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 4. メッセージが表示される場合は、テキスト分析サービス用の有効な Cognitive Services キーを指定します。
 
-5. **[要求本文]** の下で、**[ツイート テキスト]** フィールドを選択します。これにより、ツイート テキストが分析用の入力として提供されます。
+5. **[要求本文]** の下で、 **[ツイート テキスト]** フィールドを選択します。これにより、ツイート テキストが分析用の入力として提供されます。
 
 ツイート データとそのツイートに関する洞察を取得したら、その他のいくつかの関連するコネクタと、そのアクションを使用できますようになります。
 
@@ -81,7 +79,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 ## <a name="add-azure-function-to-logic-app"></a>ロジック アプリへの Azure 関数の追加
 
-1. ロジック アプリ デザイナーの **[Detect Sentiment]\(センチメントの検出\)** アクションで、**[新しいステップ]** を選択します。
+1. ロジック アプリ デザイナーの **[Detect Sentiment]\(センチメントの検出\)** アクションで、 **[新しいステップ]** を選択します。
 
 2. **Azure Functions** コネクタを検索し、作成した関数を選択します。
 
@@ -99,18 +97,18 @@ Visual Studio または Azure Portal で過去の実行履歴を表示するに�
 
 * Visual Studio Cloud Explorer を開きます。 ロジック アプリを検索し、アプリのショートカット メニューを開きます。 **[実行履歴を開く]** を選択します。
 
-  > [!NOTE]
-  > Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、まだ埋め込まれている Logic App Designer や実行履歴を開くことはできません。
+  > [!TIP]
+  > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
 
-* Azure Portal でロジック アプリを検索します。 ロジック アプリのメニューで、**[概要]** を選択します。 
+* Azure Portal でロジック アプリを検索します。 ロジック アプリのメニューで、 **[概要]** を選択します。 
 
 ## <a name="create-automated-deployment-templates"></a>自動デプロイ テンプレートを作成する
 
-ロジック アプリのソリューションを作成したら、アプリをキャプチャし、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)として世界中の Azure リージョンにデプロイすることができます。 この機能を使用すると、パラメーターを変更して、異なるバージョンのアプリを作成したり、Azure Pipelines にソリューションを統合したりできます。 Azure Functions をデプロイ テンプレートに含めることもできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。 詳しくは、[ロジック アプリのデプロイ テンプレートの作成方法](../logic-apps/logic-apps-create-deploy-template.md)に関するページを参照してください。
+ロジック アプリのソリューションを作成したら、アプリをキャプチャし、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)として世界中の Azure リージョンにデプロイすることができます。 この機能を使用すると、パラメーターを変更して、異なるバージョンのアプリを作成したり、Azure Pipelines にソリューションを統合したりできます。 Azure Functions をデプロイ テンプレートに含めることもできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。 [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)方法について学習してください。
 
 Azure 関数を使用したデプロイ テンプレートの例については、[Azure クイックスタート テンプレート レポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps のその他の例とシナリオを探す](logic-apps-examples-and-scenarios.md)
 

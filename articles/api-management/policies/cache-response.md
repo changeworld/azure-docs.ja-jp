@@ -1,5 +1,6 @@
 ---
-title: Azure API Management ポリシーのサンプル - バックエンド サービスへの機能の追加 | Microsoft Docs
+title: サンプルの API Management ポリシー - バックエンド サービスへの機能の追加
+titleSuffix: Azure API Management
 description: Azure API Management ポリシーのサンプル - バックエンド サービスに機能を追加する方法を示します。 たとえば、天気予報 API で、緯度と経度ではなく場所の名前を受け入れます。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 7c9edbf4b2d231453cd336521a04ba6b7714b696
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873832"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75442483"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>バックエンド サービスへの機能の追加
 
@@ -30,7 +30,7 @@ ms.locfileid: "52873832"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Call out to an HTTP endpoint and cache the response.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

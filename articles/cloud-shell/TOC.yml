@@ -7,9 +7,7 @@
     - name: PowerShell - クイック スタート
       href: quickstart-powershell.md
 - name: 機能とツール
-  items:
-    - name: 機能とツール
-      href: features.md
+  href: features.md
 - name: チュートリアル
   items:
     - name: Ansible
@@ -22,7 +20,7 @@
       items:
         - name: 実行プランの作成
           href: example-terraform-bash.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Windows ユーザー向けの PowerShell Cloud Shell
       href: cloud-shell-windows-users.md

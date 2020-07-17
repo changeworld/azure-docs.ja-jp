@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2018
+ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293945"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -30,6 +29,7 @@ ms.locfileid: "58313602"
 [2562184]:https://launchpad.support.sap.com/#/notes/2562184
 [2628497]:https://launchpad.support.sap.com/#/notes/2628497
 [2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[2815988]:https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -66,27 +66,34 @@ SAP LaMa は、SAP ランドスケープの操作と監視のために多くの�
 * 新しい VM および SAP インスタンスのデプロイが準備解除された場合は、IP アドレスが "盗まれる" のを防ぐために、個別のサブネットを使用して、動的 IP アドレスは使用しないでください。  
   サブネットで使用する動的 IP アドレスの割り当てが SAP LaMa でも使用されている場合は、SAP LaMa による SAP システムの準備が失敗することがあります。 SAP システムが準備解除された場合は、IP アドレスが予約されず、他の仮想マシンに割り当てられる可能性があります。
 
-* マネージド ホストにログオンする場合は、ファイル システムのマウント解除がブロックされないようにしてください。  
-  Linux 仮想マシンにログオンして作業ディレクトリをマウント ポイント内のディレクトリ (/usr/sap/AH1/ASCS00/exe など) に変更する場合は、ボリュームをマウント解除できず、再配置または準備解除が失敗します。
+* マネージド ホストにサインインする場合は、ファイル システムのマウント解除がブロックされないようにしてください。  
+  Linux 仮想マシンにサインインして作業ディレクトリをマウント ポイント内のディレクトリ (/usr/sap/AH1/ASCS00/exe など) に変更する場合は、ボリュームをマウント解除できず、再配置または準備解除が失敗します。
+
+* SUSE SLES Linux 仮想マシンで CLOUD_NETCONFIG_MANAGE を無効にしてください。 詳細については、[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633) を参照してください。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>SAP LaMa 用の Azure コネクタの設定
 
-Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP LaMa 3.0 用の最新のサポート パッケージとパッチを常にインストールすることをお勧めします。 Azure コネクタは、サービス プリンシパルを使用して Microsoft Azure を承認します。 次の手順に従って、SAP Landscape Management (LaMa) 用のサービス プリンシパルを作成してください。
+Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP LaMa 3.0 用の最新のサポート パッケージとパッチを常にインストールすることをお勧めします。
 
-1. https://portal.azure.com に移動します
+Azure コネクタでは、Azure Resource Manager API を使用して Azure リソースが管理されます。 SAP LaMa では、サービス プリンシパルまたはマネージド ID を使用して、この API に対する認証を行うことができます。 SAP LaMa が Azure VM 上で実行されている場合は、「[マネージド ID を使用して Azure API にアクセスする](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)」で説明されているように、マネージド ID を使用することをお勧めします。 サービス プリンシパルを使用する場合は、「[サービス プリンシパルを使用して Azure API にアクセスする](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)」の手順に従います。
+
+### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>サービス プリンシパルを使用して Azure API にアクセスする
+
+Azure コネクタでは、サービス プリンシパルを使用して Microsoft Azure に対する承認を行うことができます。 次の手順に従って、SAP Landscape Management (LaMa) 用のサービス プリンシパルを作成してください。
+
+1. [https://resources.azure.com](https://portal.azure.com ) に移動します
 1. [Azure Active Directory] ブレードを開きます
 1. [アプリの登録] をクリックします
-1. [追加] をクリックします
-1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http:\//localhost) を入力して、[作成] をクリックします
-1. サインオン URL は使用されず、任意の有効な URL を指定することができます
-1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
-1. 新しいキーの説明を入力し、[期限なし] を選択して [保存] をクリックします
+1. [New registration]\(新規登録\) をクリックします
+1. 名前を入力して [登録] をクリックします
+1. 新しいアプリを選択し、[設定] タブで [証明書とシークレット] をクリックします
+1. 新しいクライアント シークレットを作成し、新しいキーの説明を入力して、[when the secret should expire]\(シークレットの有効期限が切れたとき\) を選択し、[保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルのパスワードとして使用します
 1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 それらにアクセスするためのサービス プリンシパルの権限を付与する必要があります。
 
-1. https://portal.azure.com に移動します
+1. [https://resources.azure.com](https://portal.azure.com ) に移動します
 1. [リソース グループ] ブレードを開きます
 1. 使用するリソース グループを選択します
 1. [アクセス制御 (IAM)] を選択します
@@ -96,17 +103,40 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 1. [保存] をクリックします。
 1. SAP LaMa で使用するすべてのリソース グループについて、手順 3 ～ 8 を繰り返します
 
+### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>マネージド ID を使用して Azure API にアクセスする
+
+マネージド ID を使用できるようにするには、SAP LaMa インスタンスを、システムまたはユーザーによって割り当てられた ID を持つ Azure VM 上で実行する必要があります。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../../active-directory/managed-identities-azure-resources/overview.md)」および「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)」を参照してください。
+
+既定では、マネージド ID には、Azure のリソースにアクセスする権限はありません。 アクセス許可を付与する必要があります。
+
+1. [https://resources.azure.com](https://portal.azure.com ) に移動します
+1. [リソース グループ] ブレードを開きます
+1. 使用するリソース グループを選択します
+1. [アクセス制御 (IAM)] を選択します
+1. [追加] > [ロールの割り当ての追加] をクリックします
+1. 共同作成者ロールを選択します
+1. [アクセスの割り当て先] で [仮想マシン] を選択します
+1. SAP LaMa インスタンスが実行されている仮想マシンを選択します
+1. [保存] をクリックします。
+1. SAP LaMa で使用するすべてのリソース グループについて、この手順を繰り返します
+
+SAP LaMa Azure コネクタの構成で、[Use Managed Identity]\(マネージド ID を使用する\) を選択して、マネージド ID の使用を有効にします。 システム割り当ての ID を使用する場合は、[ユーザー名] フィールドを空のままにしておきます。 ユーザー割り当ての ID を使用する場合は、[ユーザー名] フィールドにユーザー割り当ての ID を入力します。
+
+### <a name="create-a-new-connector-in-sap-lama"></a>SAP LaMa で新しいコネクタを作成する
+
 SAP LaMa の Web サイトを開き、[Infrastructure]\(インフラストラクチャ\) に移動します。 [Cloud Managers]\(クラウド マネージャー\) タブに移動して [Add]\(追加\) をクリックします。 [Microsoft Azure Cloud Adapter]\(Microsoft Azure クラウド アダプター\) を選択し、[Next]\(次へ\) をクリックします。 次の情報を入力します。
 
 * Label (ラベル):コネクタ インスタンスの名前を選択します
-* User Name (ユーザー名):サービス プリンシパルのアプリケーション ID
-* Password (パスワード):サービス プリンシパルのキー/パスワード
-* URL:既定の https://management.azure.com/ を使用します
+* User Name (ユーザー名):仮想マシンのサービス プリンシパル アプリケーション ID またはユーザーによって割り当てられた ID。 詳細については、「システム割り当て ID またはユーザー割り当て ID の使用」を参照してください。
+* Password (パスワード):サービス プリンシパルのキー/パスワード。 システムまたはユーザーによって割り当てられた ID を使用する場合は、このフィールドを空のままにすることができます。
+* URL:既定の `https://management.azure.com/` を使用します
 * Monitoring Interval (Seconds) (監視間隔 (秒)):300 以上にする必要があります
+* Use Managed Identity (マネージド ID を使用する): SAP LaMa は、システムまたはユーザーによって割り当てられた ID を使用して、Azure API に対する認証を行うことができます。 このガイドの、「[マネージド ID を使用して Azure API にアクセスする](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)」を参照してください。
 * Subscription ID (サブスクリプション ID):Azure サブスクリプション ID
 * Azure Active Directory Tenant ID (Azure Active Directory テナント ID):Active Directory テナントの ID
 * Proxy host (プロキシ ホスト):プロキシのホスト名 (SAP LaMa でプロキシを使用してインターネットに接続する必要がある場合)
 * Proxy port (プロキシ ポート):プロキシの TCP ポート
+* Change Storage Type to save costs (ストレージの種類を変更してコストを節約する): ディスクが使用されていないときにコストを節約するために、Azure アダプターで Managed Disks のストレージの種類を変更する必要がある場合は、この設定を有効にします。 SAP インスタンスの構成で参照されているデータ ディスクの場合、アダプターによって、インスタンスが準備されていないときはディスクの種類が Standard Storage に変更され、インスタンスが準備されているときは元のストレージの種類に戻されます。 SAP LaMa で仮想マシンを停止すると、アダプターによって、接続されているすべてのディスク (OS ディスクを含む) のストレージの種類が Standard Storage に変更されます。 SAP LaMa で仮想マシンを起動すると、アダプターによって、ストレージの種類が元のストレージの種類に戻されます。
 
 [Test Configuration]\(構成のテスト\) をクリックして入力を検証します。 Web サイトの下部に
 
@@ -226,7 +256,7 @@ SAP LaMa は SQL Server 自体を再配置できないため、データベー�
 
 以下の例では、システム ID が HN1 の SAP HANA およびシステム ID が AH1 の SAP NetWeaver システムをインストールしていることを前提としています。 仮想ホスト名は、HANA インスタンスについては hn1-db、SAP NetWeaver システムで使用される HANA テナントについては ah1-db、SAP NetWeaver ASCS については ah1-ascs、1 台目の SAP NetWeaver アプリケーション サーバーについては ah1-di-0 です。
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana"></a>SAP HANA 用の SAP NetWeaver ASCS のインストール
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-using-azure-managed-disks"></a>Azure Managed Disks を使用して SAP NetWeaver ASCS for SAP HANA をインストールする
 
 SAP Software Provisioning Manager (SWPM) を起動する前に、ASCS の仮想ホスト名の IP アドレスをマウントする必要があります。 sapacext を使用することをお勧めします。 sapacextを使用して IP アドレスをマウントする場合は、再起動後に IP アドレスを再マウントしてください。
 
@@ -244,13 +274,100 @@ SAP Software Provisioning Manager (SWPM) を起動する前に、ASCS の仮想�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-SWPM を実行し、*[ASCS Instance Host Name]\(ASCS インスタンス ホスト名\)* として *ah1-ascs* を使用します。
+SWPM を実行し、 *[ASCS Instance Host Name]\(ASCS インスタンス ホスト名\)* として *ah1-ascs* を使用します。
 
 ![Linux][Logo_Linux] Linux  
 次のプロファイル パラメーターを SAP Host Agent プロファイルに追加します。このプロファイルは /usr/sap/hostctrl/exe/host_profile にあります。 詳しくは、SAP Note [2628497] をご覧ください。
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
+
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>Azure NetAppFiles (ANF) BETA にSAP NetWeaver ASCS for SAP HANA をインストールする
+
+> [!NOTE]
+> この機能はまだ GA ではありません。 詳細については、SAP Note [2815988] を参照してください (プレビュー版のお客様にのみ表示されます)。
+コンポーネント BC-VCM-LVM-HYPERV 上の SAP インシデントを開き、Azure NetApp Files 用の LaMa ストレージ アダプターへの参加を要求します
+
+ANF は Azure に NFS を提供します。 SAP LaMa のコンテキストでは、これによりABAP Central Services (ASCS) インスタンスの作成とそれ以降のアプリケーション サーバーのインストールが簡単になります。 以前は、ASCS インスタンスは NFS サーバーとしても動作する必要がありました。また、パラメーター acosprep/nfs_paths を SAP Hostagent の host_profile に追加する必要がありました。
+
+#### <a name="anf-is-currently-available-in-these-regions"></a>現在 ANF を使用できるリージョン:
+
+オーストラリア東部、米国中部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、西ヨーロッパ、米国西部 2。
+
+#### <a name="network-requirements"></a>ネットワークの要件
+
+ANF には、SAP サーバーと同じ VNET に属している必要がある委任サブネットが必要です。 そのような構成の例を次に示します。
+この画面は、VNET と最初のサブネットの作成を示しています。
+
+![SAP LaMa で Azure ANF 用の仮想ネットワークを作成する ](media/lama/sap-lama-createvn-50.png)
+
+次の手順では、Microsoft.NetApp/ボリューム用の委任サブネットを作成します。
+
+![SAP LaMa で委任サブネットを追加する ](media/lama/sap-lama-addsubnet-50.png)
+
+![SAP LaMa のサブネット一覧 ](media/lama/sap-lama-subnets.png)
+
+次は、NetApp アカウントを Azure portal で作成する必要があります。
+
+![SAP LaMa で NetApp アカウントを作成する ](media/lama/sap-lama-create-netappaccount-50.png)
+
+![作成された SAP LaMa NetApp アカウント ](media/lama/sap-lama-netappaccount.png)
+
+NetApp アカウント内で、容量プールには各プールのディスクのサイズと種類を指定します。
+
+![SAP LaMa で NetApp 容量プールを作成する ](media/lama/sap-lama-capacitypool-50.png)
+
+![作成された SAP LaMa NetApp 容量プール ](media/lama/sap-lama-capacitypool-list.png)
+
+これで NFS ボリュームを定義できるようになります。 1 つのプールに複数のシステムのボリュームがあるため、わかりやすい名前付けスキームを選択するようにします。 SID を追加すると、関連するボリュームをグループ化しやすくなります。 ASCS および AS インスタンスの場合、 */sapmnt/\<SID\>* 、 */usr/sap/\<SID\>* 、および */home/\<sid\>adm* のマウントが必要です。 必要に応じて、一元的なトランスポート ディレクトリ用の */usr/sap/trans* が必要です。これは、少なくとも、1 つのランドスケープのすべてのシステムで使用されます。
+
+> [!NOTE]
+> ベータ段階では、ボリュームの名前はサブスクリプション内で一意にする必要があります。
+
+![SAP LaMa でボリューム 1 を作成する ](media/lama/sap-lama-createvolume-80.png)
+
+![SAP LaMa でボリューム 2 を作成する ](media/lama/sap-lama-createvolume2-80.png)
+
+![SAP LaMa でボリューム 3 を作成する ](media/lama/sap-lama-createvolume3-80.png)
+
+他のボリュームについてもこれらの手順を繰り返す必要があります。
+
+![SAP LaMa の作成されたボリュームの一覧 ](media/lama/sap-lama-volumes.png)
+
+これらのボリュームは、SAP SWPM を使用した最初のインストールが実行されるシステムにマウントする必要があります。
+
+まずマウント ポイントを作成する必要があります。 この場合、SID は AN1 なので、次のコマンドを実行する必要があります。
+
+```bash
+mkdir -p /home/an1adm
+mkdir -p /sapmnt/AN1
+mkdir -p /usr/sap/AN1
+mkdir -p /usr/sap/trans
+```
+次に、次のコマンドを使用して ANF ボリュームをマウントします。
+
+```bash
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-sapmnt-sid /sapmnt/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
+```
+マウント コマンドはポータルからも取得できます。 ローカル マウント ポイントを調整する必要があります。
+
+確認するには、df -h コマンドを使用します。
+
+![SAP LaMa マウント ポイントの OS レベル ](media/lama/sap-lama-mounts.png)
+
+次は、SWPM を使用したインストールを実行する必要があります。
+
+少なくとも 1 つの AS インスタンスに対して同じ手順を実行する必要があります。
+
+インストールが成功したら、SAP LaMa 内で システムを検出する必要があります。
+
+ASCS および AS インスタンスのマウント ポイントは次のようになります。
+
+![LaMa の SAP LaMa マウント ポイント](media/lama/sap-lama-ascs.png) (これは例です。 IP アドレスとエクスポート パスは、以前のものとは異なります)
+
 
 #### <a name="install-sap-hana"></a>SAP HANA のインストール
 
@@ -319,9 +436,9 @@ SAP Software Provisioning Manager (SWPM) を起動する前に、ASCS の仮想�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-SWPM を実行し、*[ASCS Instance Host Name]\(ASCS インスタンス ホスト名\)* として *as1-ascs* を使用します。
+SWPM を実行し、 *[ASCS Instance Host Name]\(ASCS インスタンス ホスト名\)* として *as1-ascs* を使用します。
 
-#### <a name="install-sql-server"></a>SQL Server のインストール
+#### <a name="install-sql-server"></a>SQL Server をインストールする
 
 データベースの仮想ホスト名の IP アドレスをネットワーク インターフェイスに追加する必要があります。 sapacext を使用することをお勧めします。 sapacextを使用して IP アドレスをマウントする場合は、再起動後に IP アドレスを再マウントしてください。
 
@@ -385,7 +502,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
    ASCS/SCS 上の sapmnt 共有に SAP_AS1_GlobalAdmin のフル アクセスがあることを確認してください。
 
 * *[Enable Startup Protection for Clone]\(複製に対するスタートアップ保護の有効化\)* の手順におけるエラー
-  * Failed to open file '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' Cause:No such file or directory (ファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' を開けませんでした 原因: ファイルまたはディレクトリが存在しません)
+  * Failed to open file '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' Cause:を開けませんでした 原因: ファイルまたはディレクトリが存在しません
   * 解決策  
     アプリケーション サーバーのコンピューター アカウントにはプロファイルへの書き込みアクセスが必要です。
 
@@ -416,12 +533,12 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 ### <a name="errors-and-warnings-during-application-server-installation"></a>アプリケーション サーバーのインストール時のエラーと警告
 
 * SAPinst 手順の実行中のエラー: getProfileDir
-  * ERROR:(この手順から報告される最後のエラー:Caught ESAPinstException in module call:Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' reported an error:Node \\\as1-ascs\sapmnt\AS1\SYS\profile does not exist. (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード\\as1-ascs\sapmnt\AS1\SYS\profile が存在しません。) Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
+  * エラー: (この手順から報告される最後のエラー:Caught ESAPinstException in module call:Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' reported an error:Node \\\as1-ascs\sapmnt\AS1\SYS\profile does not exist. (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード\\as1-ascs\sapmnt\AS1\SYS\profile が存在しません。) Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: askUnicode
-  * ERROR:(この手順から報告される最後のエラー:Caught ESAPinstException in module call:Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error:Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
+  * エラー: (この手順から報告される最後のエラー:Caught ESAPinstException in module call:Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error:Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
   * 解決策  
     最新の SAP カーネルを使用すると、SWPM では、システムが Unicode システムであるかどうかを ASCS のメッセージ サーバーを使用して判断できなくなります。 詳しくは、SAP Note [2445033] をご覧ください。  
     この問題は、SAP LaMa の新しいサポート パッケージ/パッチで修正される予定です。  
@@ -474,7 +591,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 解決策  
     *[Isolation]\(分離\)* の手順でホスト ルールを追加して、VM からドメイン コントローラーへの通信を許可してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [SAP HANA on Azure 運用ガイド][hana-ops-guide]
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]

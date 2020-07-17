@@ -3,7 +3,7 @@
     - name: 開発者ガイド
       href: azure-developer-guide.md
     - name: SDK とツール
-      href: 'https://docs.microsoft.com/azure/index#pivot=sdkstools'
+      href: 'https://aka.ms/azsdkpackages'
 - name: クイック スタート
   items:
     - name: Web Apps
@@ -83,7 +83,7 @@
     - name: プラン
       items:
         - name: Web アプリケーションのアーキテクチャ
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: VM のアーキテクチャ
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/'
         - name: オンプレミス ネットワークへの接続
@@ -100,7 +100,7 @@
           href: 'https://docs.microsoft.com/azure/azure-functions/functions-reference'
         - name: マイクロサービス クラスター
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal'
-    - name: デプロイ
+    - name: 配置
       items:
         - name: ソース管理からの Web アプリとモバイル アプリ
           href: 'https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment'
@@ -127,22 +127,22 @@
     - name: スケール
       items:
         - name: Web アプリとモバイル アプリ
-          href: 'https://docs.microsoft.com/azure/app-service/web-sites-scale'
+          href: 'https://docs.microsoft.com/azure/app-service/manage-scale-up'
         - name: 仮想マシン
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: マイクロサービス アプリ
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: Web アプリとモバイル アプリ
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl'
+          href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
     - name: バックアップ
       items:
         - name: Web アプリとモバイル アプリ
           href: 'https://docs.microsoft.com/azure/app-service/manage-backup'
         - name: 仮想マシン
           href: 'https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction'
-    - name: 監視
+    - name: モニター
       items:
         - name: Web アプリとモバイル アプリ
           href: 'https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs'
@@ -189,7 +189,7 @@
 - name: リソース
   items:
     - name: Azure の制限とクォータ
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Azure Azure リージョン
       href: 'https://azure.microsoft.com/regions/'
     - name: Azure のロードマップ

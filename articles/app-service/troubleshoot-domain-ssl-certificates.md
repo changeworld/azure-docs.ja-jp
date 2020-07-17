@@ -1,49 +1,42 @@
 ---
-title: ドメインと SSL 証明書に関する問題のトラブルシューティング - Azure App Service | Microsoft Docs
-description: Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
-services: app-service\web
-documentationcenter: ''
+title: ドメインと TLS/SSL 証明書のトラブルシューティング
+description: Azure App Service でドメインまたは TLS/SSL 証明書を構成するときに発生する可能性がある一般的な問題の解決策を見つけます。
 author: genlin
-manager: cshepard
-editor: ''
+manager: dcscontentpm
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136185"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668015"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
-この記事では、Azure App Service の Web アプリのためにドメインまたは SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
+この記事では、Azure App Service でお使いの Web アプリ用のドメインまたは TLS/SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックしてください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックしてください。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>証明書に関する問題
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>アプリに対する SSL 証明書のバインディングを作成できない 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>アプリに対する TLS/SSL 証明書のバインディングを作成できない 
 
 #### <a name="symptom"></a>症状
 
-SSL バインディングを追加するときに、次のエラー メッセージが表示されます。
+TLS バインディングを追加するときに、次のエラー メッセージが表示されます。
 
 "SSL バインディングを追加できませんでした。 既存の VIP の証明書は設定できません。別の VIP が既にその証明書を使用しています。"
 
 #### <a name="cause"></a>原因
 
-この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書を持つアプリの SSL バインディングを更新すると、別のアプリに対して同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
+この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書でアプリの TLS バインディングを更新すると、別のアプリで同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
 
 #### <a name="solution"></a>解決策 
 
@@ -58,7 +51,7 @@ SSL バインディングを追加するときに、次のエラー メッセー
 
 証明書を削除しようとすると、次のエラー メッセージが表示されます。
 
-"証明書は、SSL バインディングで使用されているため、削除できません。 証明書を削除できるようにするには、先に SSL バインディングを削除する必要があります。"
+"証明書は、TLS/SSL バインディングで使用されているため、削除できません。 証明書を削除できるようにするには、先に TLS バインディングを削除する必要があります。"
 
 #### <a name="cause"></a>原因
 
@@ -66,17 +59,17 @@ SSL バインディングを追加するときに、次のエラー メッセー
 
 #### <a name="solution"></a>解決策
 
-アプリからその証明書の SSL バインディングを削除します。 その後で証明書の削除を試みます。 それでも証明書を削除できない場合は、インターネット ブラウザーのキャッシュをクリアし、新しいブラウザー ウィンドウで再度 Azure Portal を開きます。 その後で証明書の削除を試みます。
+アプリからその証明書の TLS バインディングを削除します。 その後で証明書の削除を試みます。 それでも証明書を削除できない場合は、インターネット ブラウザーのキャッシュをクリアし、新しいブラウザー ウィンドウで再度 Azure Portal を開きます。 その後で証明書の削除を試みます。
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>App Service 証明書を購入できない 
 
 #### <a name="symptom"></a>症状
-Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-site.md)を購入できません。
+Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md#import-an-app-service-certificate)を購入できません。
 
 #### <a name="cause-and-solution"></a>原因と解決策
 この問題は、次のいずれかの理由で発生することがあります。
 
-- App Service プランが Free または Shared である。 これらの価格レベルでは SSL がサポートされていません。 
+- App Service プランが Free または Shared である。 これらの価格レベルでは TLS はサポートされていません。 
 
     **解決策**:アプリの App Service プランを Standard にアップグレードします。
 
@@ -95,9 +88,9 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 
     **解決策**:証明書が不正であるとマークされて 24 時間以内に解決されない場合は、以下の手順に従ってください。
 
-    1. [Azure Portal](https://portal.azure.com) にサインインします。
+    1. [Azure portal](https://portal.azure.com) にサインインします。
     2. **[App Service 証明書]** に移動して、証明書を選択します。
-    3. **[証明書の構成]** > **[手順 2: 確認]** > **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
+    3. **[証明書の構成]**  >  **[手順 2: 確認]**  >  **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
 
 ## <a name="custom-domain-problems"></a>カスタム ドメインに関する問題
 
@@ -172,7 +165,7 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 
 ## <a name="domain-problems"></a>ドメインに関する問題
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>正しくないドメインの SSL 証明書を購入した
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>正しくないドメインの TLS/SSL 証明書を購入した
 
 #### <a name="symptom"></a>症状
 
@@ -191,14 +184,14 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 App Service 証明書が更新されましたが、その App Service 証明書を使用するアプリが、まだ古い証明書を使用しています。 また、HTTPS プロトコルが必要であるという警告が表示されます。
 
 #### <a name="cause"></a>原因 
-Azure App Service は 8 時間ごとにバックグラウンド ジョブを実行し、変更があった場合は証明書リソースを同期します。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 
+証明書は 48 時間以内に App Service によって自動的に同期されます。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 [同期] をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
  
 #### <a name="solution"></a>解決策
 
 証明書の同期を強制することができます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
-2. **[キー更新と同期]** を選択してから、**[同期]** を選択します。同期が完了するまでしばらく時間がかかります。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
+2. **[キー更新と同期]** を選択してから、 **[同期]** を選択します。同期が完了するまでしばらく時間がかかります。 
 3. 同期が完了すると、次の通知が表示されます。"最新の証明書ですべてのリソースが正常に更新されました。"
 
 ### <a name="domain-verification-is-not-working"></a>ドメインの確認が機能していない 
@@ -212,7 +205,7 @@ TXT レコードを追加して、手動でドメインを確認します。
 1.  使用中のドメイン名をホストしているドメイン ネーム サービス (DNS) プロバイダーに移動します。
 2.  Azure Portal に表示されるドメイン トークンの値を使用しているドメインの TXT レコードを追加します。 
 
-DNS 伝達が実行されるのを数分待ってから、**[最新の情報に更新]** ボタンを選択して確認をトリガーします。 
+DNS 伝達が実行されるのを数分待ってから、 **[最新の情報に更新]** ボタンを選択して確認をトリガーします。 
 
 別の方法として、HTML Web ページによる方法を使用して、手動でドメインを確認することができます。 この方法を使用すると、証明機関は、証明書が発行されるドメインの所有権を確認できます。
 
@@ -273,7 +266,7 @@ Microsoft Azure portal 内の App Service からドメインを購入できま�
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **カスタム ドメインを購入した後、それを Web サイト用に構成する必要がありますか**
 
@@ -313,7 +306,7 @@ Azure Portal 経由でドメインを購入した場合は、追加コストな�
 
 **サブスクリプションの別の Azure App Service アプリでドメインを使用できますか**
 
-はい。 Azure Portal でカスタム ドメインや SSL ブレードにアクセスすると、購入したドメインが表示されます。 これらのドメインのいずれかを使用するようにアプリを構成できます。
+はい。 Azure Portal でカスタム ドメインや TLS ブレードにアクセスすると、購入したドメインが表示されます。 これらのドメインのいずれかを使用するようにアプリを構成できます。
 
 **ドメインをあるサブスクリプションから別のサブスクリプションに転送できますか**
 
@@ -325,7 +318,6 @@ App Service Web Apps がない場合でも、ドメインを管理できます�
 
 **カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
-はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-)に関するページを参照してください。
+はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
 
 Web アプリを移動した後、カスタム ドメイン設定内のドメインのホスト名バインディングは同じままになります。 ホスト名バインディングを構成するための追加の手順は必要ありません。

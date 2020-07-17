@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 61da2454d6a72d43a7b4600d7ea85e6a3f82958f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 886bff3f57f101229c04e91cfa4cf85051f8b1c6
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997208"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561171"
 ---
 # <a name="monitor-your-azure-data-box-gateway"></a>Azure Data Box Gateway を監視する
 
-この記事では、Azure Data Box Gateway を監視する方法について説明します。 このデバイスは Azure portal またはローカル Web UI を使用して監視できます。 デバイスのイベントを確認したり、アラートを構成して管理したり、メトリックを確認したりするには、Azure portal を使用します。
+この記事では、Azure Data Box Gateway を監視する方法について説明します。 このデバイスは Azure portal またはローカル Web UI を使用して監視できます。 デバイスのイベントを確認したり、アラートを構成して管理したり、メトリックを確認したりするには、Azure portal を使用します。 
 
 この記事では、次のことについて説明します。
 
@@ -38,6 +38,6 @@ ms.locfileid: "59997208"
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [帯域幅を管理する](data-box-gateway-manage-bandwidth-schedules.md)方法について学習します。

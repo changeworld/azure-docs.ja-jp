@@ -1,24 +1,23 @@
 ---
 title: Azure IaaS Linux VM 用のディスクの種類の選択 - マネージド ディスク
-description: Ultra SSD、Premium SSD、Standard SSD、Standard HDD など、Linux 仮想マシンで使用できる Azure ディスクの種類について説明します。
-services: virtual-machines-linux,storage
+description: Ultra ディスク、Premium SSD、Standard SSD、Standard HDD などの、Linux 仮想マシンで使用できる Azure ディスクの種類について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 05/10/2019
-ms.topic: article
-ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
+ms.date: 11/04/2019
+ms.topic: conceptual
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2413cfe02dfb3be61ec01518e4fdd7f4b78f5773
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7990c178f18ac5219fde0882c24d5854001ba63e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65538374"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79232055"
 ---
+# <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-Ultra SSD の使用を開始したい場合は、次の記事をご覧ください: 「[Azure Ultra SSD の有効化](disks-enable-ultra-ssd.md)」。
+Ultra ディスクの使用を開始したい場合は、この件に関する記事「[Azure Ultra ディスクの使用](disks-enable-ultra-ssd.md)」を参照してください。
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 

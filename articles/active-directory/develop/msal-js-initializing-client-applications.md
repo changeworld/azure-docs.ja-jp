@@ -1,28 +1,24 @@
 ---
-title: クライアント アプリケーションの初期化 (JavaScript 用 Microsoft Authentication Library) | Azure
+title: MSAL.js クライアント アプリを初期化する | Azure
+titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を使用することによるクライアント アプリケーションの初期化について説明します。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: nacanuma
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd26f36356affbc8c272bd093757a8482773baf2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544024"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010156"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 この記事では、ユーザー エージェント アプリケーションのインスタンスを使用して JavaScript 用 Microsoft Authentication Library (MSAL.js) を初期化する方法について説明します。 ユーザー エージェント アプリケーションは、Web ブラウザーなどのユーザー エージェントでクライアント コードが実行されるパブリック クライアント アプリケーションの一種です。 これらのクライアントでは、シークレットは格納されません。ブラウザーのコンテキストが公開されアクセス可能であるからです。 クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -39,13 +35,13 @@ ms.locfileid: "65544024"
 
 プレーンな JavaScript または Typescript アプリケーションでは、MSAL.js を次のように使用できます。 構成オブジェクトを使用して `UserAgentApplication` をインスタンス化することで、MSAL 認証コンテキストを初期化します。 MSAL.js を初期化するために最低限必要な構成は、ご利用のアプリケーションの clientID です。これは、アプリケーション登録ポータルから取得する必要があります。
 
-リダイレクト フローを使用した認証メソッドの場合 (`loginRedirect` と `acquireTokenRedirect`)、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 これが必要な理由は、ポップアップ エクスペリエンスを備えたメソッドとは違い、リダイレクト フローからは Promise が返されないことにあります。
+リダイレクト フローを使用した認証メソッドの場合 (`loginRedirect` と `acquireTokenRedirect`)、MSAL.js 1.2.x 以前では、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 これが必要な理由は、ポップアップ エクスペリエンスを備えたメソッドとは違い、リダイレクト フローからは Promise が返されないことにあります。 これは、MSAL.js バージョン 1.3.0 では省略可能になりました。
 
 ```javascript
 // Configuration object constructed
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     }
 }
 
@@ -90,6 +86,7 @@ export type SystemOptions = {
     logger?: Logger;
     loadFrameTimeout?: number;
     tokenRenewalOffsetSeconds?: number;
+    navigateFrameWait?: number;
 };
 
 // Developer App Environment Support
@@ -118,12 +115,12 @@ export type Configuration = {
         * `https://login.microsoftonline.com/common` - 職場および学校のアカウント、または Microsoft の個人アカウントを持つユーザーにサインインする場合に使用されます。
         * `https://login.microsoftonline.com/organizations/` - 職場および学校のアカウントを持つユーザーにサインインする場合に使用されます。
         * `https://login.microsoftonline.com/consumers/` - 個人用の Microsoft アカウント (ライブ) のみを持つユーザーにサインインする場合に使用されます。
-    * Azure AD B2C では、その形式は `https://<instance>/tfp/<tenant>/<policyName>/` となります。ここで、instance は Azure AD B2C ドメインです。tenant は Azure AD B2C テナントの名前です。policyName は適用する B2C ポリシーの名前です。
+    * Azure AD B2C では、その形式は `https://<instance>/tfp/<tenant>/<policyName>/` となります。ここで、instance は Azure AD B2C ドメイン (つまり、{your-tenant-name}.b2clogin.com) です。tenant は Azure AD B2C テナントの名前 (つまり、{your-tenant-name}.onmicrosoft.com) です。policyName は適用する B2C ポリシーの名前です。
 
 
 - **validateAuthority**: 省略可能。  トークンの発行者を検証します。 既定値は `true` です。 B2C アプリケーションの場合、機関の値は既知でありポリシーによって異なる可能性があるので、機関の検証は機能せず、必然的に `false` に設定されます。
 
-- **redirectUri**: 省略可能。  アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 既定値は `window.location.href` です。
+- **redirectUri**: 省略可能。  アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録した URI のいずれかと完全に一致させる必要があります。 既定値は `window.location.href` です。
 
 - **postLogoutRedirectUri**: 省略可能。  サインアウト後、ユーザーを `postLogoutRedirectUri` にリダイレクトします。既定では、 `redirectUri`です。
 
@@ -138,6 +135,8 @@ export type Configuration = {
 - **loadFrameTimeout**: 省略可能。  Azure AD からのトークン更新応答をタイムアウトと見なすまでの非アクティビティ状態のミリ秒数。既定値は 6 秒です
 
 - **tokenRenewalOffsetSeconds**: 省略可能。 有効期限の前にトークンを更新するために必要なオフセットのウィンドウを設定するミリ秒数。 既定値は 300 ミリ秒です。
+
+- **navigateFrameWait**:省略可能。 非表示の iframe が移動先に移動するまでの待機時間を設定するミリ秒数。 既定値は 500 ミリ秒です。
 
 以下は、MSAL Angular ラッパー ライブラリから渡される場合にのみ適用可能です。
 - **unprotectedResources**: 省略可能。  保護されていないリソースである URI の配列です。 MSAL では、これらの URI を含む送信要求にトークンは添付されません。 既定値は `null` です。

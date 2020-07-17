@@ -1,24 +1,17 @@
 ---
 title: Azure Log Analytics のネットワーク パフォーマンス モニター ソリューション | Microsoft Docs
 description: Network Performance Monitor の ExpressRoute モニター機能を使用して、ブランチ オフィスと Azure の間のエンド ツー エンド接続とパフォーマンスを Azure ExpressRoute 経由で監視します。
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/27/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 11/27/2018
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963703"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77660752"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -31,7 +24,7 @@ ms.locfileid: "65963703"
 ![ExpressRoute モニター](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>構成 
-Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](network-performance-monitor.md)を開き、**[構成]** を選びます。
+Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](network-performance-monitor.md)を開き、 **[構成]** を選びます。
 
 ### <a name="configure-network-security-group-rules"></a>ネットワーク セキュリティ グループ規則を構成する 
 Network Performance Monitor による監視に使われる Azure 内のサーバーについては、Network Performance Monitor の代理トランザクションに使われるポートの TCP トラフィックを許可するようにネットワーク セキュリティ グループ (NSG) 規則を構成します。 既定のポートは 8084 です。 この構成により、Azure VM にインストールされている Log Analytics エージェントは、オンプレミスの監視エージェントと通信できます。 
@@ -60,8 +53,8 @@ NSG の詳細については、 [ネットワーク セキュリティ グル�
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>ExpressRoute ピアリング接続の監視を有効にする 
 
 1. 監視するプライベート ピアリング接続を選びます。
-2. 右側のウィンドウで、**[このピアリングを監視する]** チェック ボックスをオンにします。 
-3. この接続の正常性イベントを作成する場合は、**[このピアリングの正常性監視を有効にする]** をオンにします。 
+2. 右側のウィンドウで、 **[このピアリングを監視する]** チェック ボックスをオンにします。 
+3. この接続の正常性イベントを作成する場合は、 **[このピアリングの正常性監視を有効にする]** をオンにします。 
 4. 監視条件を選択します。 しきい値を入力して、正常性イベントの生成に関するカスタムしきい値を設定できます。 ピアリング接続に対して選択したしきい値を条件の値が上回ると、正常性イベントが生成されます。 
 5. **[エージェントの追加]** を選び、このピアリング接続を監視するために使う監視エージェントを選びます。 接続の両端にエージェントを追加したことを確認します。 このピアリングに接続されている仮想ネットワークには少なくとも 1 つのエージェントが必要です。 また、少なくとも 1 つのオンプレミスのエージェントがこのピアリングに接続されている必要もあります。 
 6. **[保存]** を選んで構成を保存します。 
@@ -100,7 +93,7 @@ Network Performance Monitor ダッシュ ボードには、ExpressRoute 回線�
 
 ### <a name="circuit-topology"></a>回線トポロジ 
 
-回線トポロジを表示するには、**[トポロジ]** タイルを選びます。 この操作により、選択した回線またはピアリングのトポロジ ビューが表示されます。 トポロジ ダイアグラムには、ネットワーク上の各セグメントの待ち時間が表示され、各レイヤー 3 ホップがダイアグラムのノードで表現されます。 いずれかのホップを選ぶと、そのホップについてのさらに詳しい情報が表示されます。 視認性を高めて表示範囲をオンプレミスのホップにまで広げるには、**[フィルター]** の下のスライダー バーを動かします。 スライダー バーを左右に動かすと、トポロジ グラフに表示されるホップ数が増減します。 各セグメントの待ち時間が視覚的に確認できるので、ネットワーク上のセグメントの中で、待ち時間の長いセグメントを短時間で切り分けることができます。
+回線トポロジを表示するには、 **[トポロジ]** タイルを選びます。 この操作により、選択した回線またはピアリングのトポロジ ビューが表示されます。 トポロジ ダイアグラムには、ネットワーク上の各セグメントの待ち時間が表示され、各レイヤー 3 ホップがダイアグラムのノードで表現されます。 いずれかのホップを選ぶと、そのホップについてのさらに詳しい情報が表示されます。 視認性を高めて表示範囲をオンプレミスのホップにまで広げるには、 **[フィルター]** の下のスライダー バーを動かします。 スライダー バーを左右に動かすと、トポロジ グラフに表示されるホップ数が増減します。 各セグメントの待ち時間が視覚的に確認できるので、ネットワーク上のセグメントの中で、待ち時間の長いセグメントを短時間で切り分けることができます。
 
 ![ExpressRoute のトポロジ](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
@@ -146,5 +139,5 @@ Network Performance Monitor は、いくつかの回線接続の問題を診断�
 
  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../../azure-monitor/log-query/log-query-overview.md)します。

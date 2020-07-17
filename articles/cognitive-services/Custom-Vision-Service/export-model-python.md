@@ -1,23 +1,23 @@
 ---
-title: チュートリアル:Python での TensorFlow モデルの実行 - Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Python での TensorFlow モデルの実行
+title: 'チュートリアル: Python での TensorFlow モデルの実行 - Custom Vision Service'
+titleSuffix: Azure Cognitive Services
+description: Python での TensorFlow モデルの実行 この記事は、Custom Vision Service 内のイメージ分類プロジェクトからエクスポートされたモデルにのみ適用されます。
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
-ms.author: areddish
-ms.openlocfilehash: babc9f8c7b8a05c4a91ead4990267311e926fd47
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236419"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81404134"
 ---
-# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル:Python での TensorFlow モデルの実行
+# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
 
 Custom Vision Service から [TensorFlow モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
 
@@ -48,7 +48,7 @@ pip install opencv-python
 import tensorflow as tf
 import os
 
-graph_def = tf.GraphDef()
+graph_def = tf.compat.v1.GraphDef()
 labels = []
 
 # These are set to the default names from exported models, update as needed.
@@ -56,7 +56,7 @@ filename = "model.pb"
 labels_filename = "labels.txt"
 
 # Import the TF graph
-with tf.gfile.GFile(filename, 'rb') as f:
+with tf.io.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>予測の画像を準備する
 
-予測に適した形になるように画像を準備するためのいくつかの手順があります。 これらの手順は、トレーニング中に実行される画像操作に似ています。
+予測に使用する画像を準備するにあたって行うべき手順がいくつかあります。 これらの手順は、トレーニング中に実行される画像操作に似ています。
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>ファイルを開き、BGR 色空間に画像を作成する
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>ディメンションが 1600 より大きい画像を扱う
+### <a name="handle-images-with-a-dimension-1600"></a>ディメンションが 1600 より大きい画像を処理する
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -116,7 +116,7 @@ augmented_image = resize_to_256_square(max_square_image)
 
 ```Python
 # Get the input size of the model
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
 network_input_size = input_tensor_shape[1]
 
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>画像を予測する
 
-画像が、テンソルとして準備されたら、予測用モデルを通じて送信できます。
+画像がテンソルとして準備されたら、予測用モデルを通じて送信できます。
 
 ```Python
 
@@ -180,7 +180,7 @@ def update_orientation(image):
 output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
         predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
@@ -208,7 +208,7 @@ with tf.Session() as sess:
         label_index += 1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、モバイル アプリケーションにモデルをラップする方法を学びましょう。
 * [エクスポートされた Tensorflow モデルを Android アプリケーションで使用する](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

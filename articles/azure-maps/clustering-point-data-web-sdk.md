@@ -1,28 +1,32 @@
 ---
-title: Azure Maps でのポイント データのクラスタリング | Microsoft Docs
-description: Web SDK でポイント データをクラスター化する方法
+title: マップでのポイント データのクラスタリング | Microsoft Azure Maps
+description: この記事では、ポイント データをクラスタリングし、Microsoft Azure Maps Web SDK を使用してマップ上にレンダリングする方法を学習します。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 03/27/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580896"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80804573"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
-多数のデータ ポイントをマップ上に視覚化すると、ポイントが互いに重なり合い、マップの見た目がごちゃごちゃして、見づらく使いづらいものになります。 ポイント データのクラスタリングは、このユーザー エクスペリエンスを向上させるために使用できます。 ポイント データのクラスタリングは、互いに近いポイント データを結合し、単一のクラスター化されたデータ ポイントとしてマップ上に表現するプロセスです。 ユーザーがマップにズーム インすると、クラスターは個々のデータ ポイントに分解します。
+多数のデータ ポイントをマップ上に視覚化すると、データ ポイントが互いに重なり合うことがあります。 重なり合うと、マップが読み取れなくなり、使用が困難になる可能性があります。 ポイント データのクラスタリングは、互いに近いポイント データを結合し、単一のクラスター化されたデータ ポイントとしてマップ上に表現するプロセスです。 ユーザーがマップにズーム インすると、クラスターは個々のデータ ポイントに分解します。 大量のデータ ポイントを操作する場合は、クラスタリング プロセスを使用して、ユーザー エクスペリエンスを向上させます。
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ## <a name="enabling-clustering-on-a-data-source"></a>データ ソースでのクラスタリングの有効化
 
-`cluster` オプションを true に設定することにより、`DataSource` クラスでクラスタリングを簡単に有効化できます。 また、クラスターに結合する近隣の点を選択するためのピクセル半径は `clusterRadius` を使用して設定でき、クラスタリング ロジックを無効化するズーム レベルは `clusterMaxZoom` オプションを使用して指定できます。 次に示すのは、データ ソースでクラスタリングを有効化する方法の例です。
+`DataSource` オプションを true に設定することにより、`cluster` クラスでクラスタリングを簡単に有効化できます。 近くのポイントを選択し、それらをクラスターに結合するには、`ClusterRadius` を設定します。 `ClusterRadius` の値はピクセル単位です。 `clusterMaxZoom` を使用して、クラスタリング ロジックを無効にするズーム レベルを指定します。 次に示すのは、データ ソースでクラスタリングを有効化する方法の例です。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -33,83 +37,97 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
 > [!TIP]
-> 2 つのデータ ポイントがきわめて近い場合、ユーザーがどれだけ近くまでズーム インしてもクラスターが分解しない可能性があります。 これに対処するには、データ ソースの `clusterMaxZoom` オプションを設定し、クラスタリング ロジックを無効化してすべてを表示するズーム レベルを指定することができます。
+> 2 つのデータ ポイントがきわめて近い場合、ユーザーがどれだけ近くまでズーム インしてもクラスターが分解しない可能性があります。 これに対処するには、`clusterMaxZoom` オプションを設定し、クラスタリング ロジックを無効化して単純にすべてを表示することができます。
 
-`DataSource` クラスには、クラスタリングに関連する以下のメソッドもあります。
+ここでは、`DataSource` クラスでクラスタリング用に提供されている追加のメソッドを示します。
 
-| 方法 | 戻り値の型 | 説明 |
+| 方法 | の戻り値の型 : | 説明 |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;Feature&lt;Geometry, any&gt; \| Shape&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
+| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | クラスターが拡大し始めるか、または分解するズーム レベルを計算します。 |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Feature&lt;Geometry, any&gt; \| Shape&gt; | クラスター内のすべてのポイントを取得します。 ポイントのサブセットを返すには `limit` を設定し、ポイントをページ送りするには `offset` を使用します。 |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | クラスター内のすべてのポイントを取得します。 ポイントのサブセットを返すには `limit` を設定し、ポイントをページ送りするには `offset` を使用します。 |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>バブル レイヤーを使用してクラスターを表示する
 
-バブル レイヤーは、クラスター化したポイントをレンダリングしながら半径を簡単に変更したり、式を使用してクラスター内のポイント数に基づいてクラスター化したポイントに色を付けたりするための優れた方法です。 バブル レイヤーを使用してクラスターを表示するときは、クラスター化されていないデータ ポイントをレンダリングするための別のレイヤーも使用することをお勧めします。 バブルの上にクラスターのサイズも表示できると便利なことがよくあります。 この動作を実現するために、テキスト付きでアイコンがないシンボル レイヤーを使用できます。 
+バブルレイヤーは、クラスター化されたポイントをレンダリングするための優れた方法です。 クラスター内のポイントの数に基づき、式を使用して半径を拡大し、色を変更します。 バブル レイヤーを使用してクラスターを表示する場合、クラスター化されていないデータ ポイントをレンダリングするための別のレイヤーを使用することをお勧めします。
+
+バブルの上にクラスターのサイズを表示するには、テキスト付きのシンボル レイヤーを使用し、アイコンを使用しないようにします。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="基本的なバブル レイヤー クラスタリング" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本的なバブル レイヤー クラスタリング" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本的なバブル レイヤー クラスタリング</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>シンボル レイヤーを使用してクラスターを表示する
 
-シンボル レイヤーを使用してポイント データを視覚化するとき、互いに重なるシンボルは既定で自動的に非表示になるため見た目はすっきりしますが、マップ上のデータ ポイントの密度を確認したい場合、これは望ましい動作ではない可能性があります。 シンボル レイヤーの `iconOptions` プロパティの `allowOverlap` オプションを `true` に設定すると、この動作が無効になり、すべてのシンボルが表示されます。 クラスタリングを使用すれば、すべてのデータの密度確認と、快適ですっきりしたユーザー エクスペリエンスを両立できます。 このサンプルでは、カスタム シンボルを使用してクラスターと個々のデータ ポイントを表現します。
+データ ポイントを視覚化すると、シンボル レイヤーは互いに重なり合うシンボルを自動的に非表示にして、ユーザー インターフェイスをすっきりさせることができます。 マップにデータ ポイントの密度を表示する場合、この既定の動作は望ましくないことがあります。 ただし、これらの設定は変更できます。 すべてのシンボルを表示するには、シンボル レイヤー `allowOverlap` プロパティの `iconOptions` オプションを `true` に設定します。 
+
+クラスタリングを使用して、ユーザー インターフェイスをすっきりとした状態に維持しながらデータ ポイントの密度を表示します。 次のサンプルは、カスタム シンボルを追加し、シンボル レイヤーを使用して、クラスターと個々のデータ ポイントを表示する方法を示しています。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター化されたシンボル レイヤー" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター化されたシンボル レイヤー" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>クラスター化されたシンボル レイヤー</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
 ## <a name="clustering-and-the-heat-maps-layer"></a>クラスタリングとヒート マップ レイヤー
 
-ヒート マップは、データの密度をマップ上に表示するための優れた方法です。 この視覚化は、それだけでも多数のデータ ポイントを処理できますが、データ ポイントをクラスター化し、クラスター サイズをヒート マップの重みとして使用すれば、さらに多くのデータを処理できます。 これを実現するには、ヒート マップ レイヤーの `weight` オプションを `['get', 'point_count']` に設定します。 クラスターの半径が小さい場合、クラスター化しないデータ ポイントを使用したヒート マップと比べてヒート マップの見た目はほぼ同じですが、パフォーマンスは大きく上回ります。 ただし、クラスターの半径が小さいほどヒート マップは正確になりますが、パフォーマンスの利点は少なくなります。
+ヒート マップは、データの密度をマップ上に表示するための優れた方法です。 この視覚化方法では、多数のデータ ポイントを自然に処理できます。 データ ポイントがクラスター化されており、クラスター サイズがヒート マップの重みとして使用されている場合、ヒート マップはさらに多くのデータを処理できます。 このオプションを実現するには、ヒート マップ レイヤーの `weight` オプションを `['get', 'point_count']` に設定します。 クラスターの半径が小さい場合、クラスター化しないデータ ポイントを使用したヒート マップと比べてヒート マップの見た目はほぼ同じですが、パフォーマンスは大きく上回ります。 ただし、クラスターの半径が小さいほどヒート マップは正確になりますが、パフォーマンスの利点は少なくなります。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター加重ヒート マップ" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター加重ヒート マップ" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラスター加重ヒート マップ</a> の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
 ## <a name="mouse-events-on-clustered-data-points"></a>クラスター化されたデータ ポイントでのマウス イベント
 
-クラスター化されたデータ ポイントを含むレイヤーでマウス イベントが発生すると、クラスター化されたデータ ポイントが GeoJSON ポイント フィーチャー オブジェクトとしてイベントに返されます。 このポイント フィーチャーには次のプロパティがあります。
+クラスター化されたデータ ポイントを含むレイヤーでマウス イベントが発生すると、クラスター化されたデータ ポイントは GeoJSON ポイント フィーチャー オブジェクトとしてイベントに返されます。 このポイント フィーチャーには次のプロパティがあります。
 
-| プロパティ名 | Type | 説明 |
-|---------------|------|-------------|
-| cluster | ブール値 | フィーチャーがクラスターを表すかどうかを示します。 |
-| cluster_id | 文字列 | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
-| point_count | number | クラスターに含まれているポイントの数。 |
-| point_count_abbreviated | 文字列 | point_count の値が長い場合にその値を省略形にした文字列。 (たとえば、4,000 が 4K になります) |
+| プロパティ名             | 種類    | 説明   |
+|---------------------------|---------|---------------|
+| `cluster`                 | boolean | フィーチャーがクラスターを表すかどうかを示します。 |
+| `cluster_id`              | string  | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
+| `point_count`             | number  | クラスターに含まれているポイントの数。  |
+| `point_count_abbreviated` | string  | `point_count` の値が長い場合にその値を省略形にした文字列。 (たとえば、4,000 が 4K になります)  |
 
-この例では、クラスター ポイントをレンダリングするバブル レイヤーを受け取り、クリック イベントを追加します。このイベントは、トリガーされると、クラスターが分解する次のズーム レベルを計算してそのレベルにマップをズームします。このとき、`DataSource` クラスの `getClusterExpansionZoom` メソッドと、クリックされたクラスター化データ ポイントの `cluster_id` プロパティが使用されます。 
+この例では、クラスター ポイントをレンダリングし、クリック イベントを追加したバブル レイヤーを使用します。 クリック イベントがトリガーされると、コードによってマップが計算され、クラスターが分割されている次のズーム レベルにズームされます。 この機能は、`getClusterExpansionZoom` クラスの `DataSource` メソッドと、クリックされたクラスター化されたデータ ポイントの `cluster_id` プロパティを使用して実装されます。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
 ## <a name="display-cluster-area"></a>クラスター領域を表示する 
 
-クラスターが表すポイント データは領域に分散しています。 このサンプルでは、クラスターにマウス カーソルを合わせると、それに含まれる個々のデータ ポイント (リーフ) を使用して凸包が計算され、領域を示すためにマップ上に表示されます。 クラスターに含まれるすべてのポイントは、`getClusterLeaves` メソッドを使用してデータソースから取得できます。 凸包は輪ゴムのように一連のポイントを囲む多角形であり、`atlas.math.getConvexHull` メソッドを使用して計算できます。
+クラスターが表すポイント データは領域に分散しています。 このサンプルでは、マウスがクラスター上に置かれたとき、主に 2 つの動作が行われます。 まず、クラスターに含まれている個々のデータ ポイントを使用して、凸包を計算します。 次に、領域を表示するために凸包がマップに表示されます。  凸包は輪ゴムのように一連のポイントを囲む多角形であり、`atlas.math.getConvexHull` メソッドを使用して計算できます。 クラスターに含まれるすべてのポイントは、`getClusterLeaves` メソッドを使用してデータソースから取得できます。
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="クラスター領域の凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="クラスター領域の凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>クラスター領域の凸包</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
-## <a name="next-steps"></a>次の手順
+## <a name="aggregating-data-in-clusters"></a>クラスター内のデータの集計
+
+クラスターは多くの場合、クラスター内のポイントの数を示すシンボルを使用して表現されます。 ただし、追加のメトリックを使用して、クラスターのスタイルをカスタマイズすることが望ましい場合もあります。 クラスター集計では、[集計式](data-driven-style-expressions-web-sdk.md#aggregate-expression)の計算を使用してカスタム プロパティを作成および設定できます。  クラスター集計は、`clusterProperties` の `DataSource` オプションで定義できます。
+
+次の例では集計式が使用されています。 このコードでは、クラスター内の各データ ポイントのエンティティ型プロパティに基づいて、カウントを計算します。 ユーザーがクラスターをクリックすると、クラスターに関する追加情報を示すポップアップが表示されます。
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター集計" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Azure Maps (<a href='https://codepen.io/azuremaps/pen/jgYyRL/'></a><a href='https://codepen.io/azuremaps'>) による@azuremapsクラスター集計</a>の Pen を <a href='https://codepen.io'>CodePen</a> で表示する。
+</iframe>
+
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

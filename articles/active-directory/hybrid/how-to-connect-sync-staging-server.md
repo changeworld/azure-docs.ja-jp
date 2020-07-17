@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230099"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect:ステージング サーバーとディザスター リカバリー
 ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。 また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
@@ -42,7 +42,7 @@ ms.locfileid: "57196128"
 
 同期サービス マネージャーを使用して、引き続き強制的にエクスポートすることもできます。
 
-ステージング モードのサーバーは、Active Directory と Azure AD から変更を受信し続けます。 サーバーには常に最新の変更のコピーが保持され、別のサーバーの役割を迅速に引き継ぐことができます。 プライマリ サーバーの構成を変更する場合、ステージング モードのサーバーに同じ変更を適用するのは管理者の責任です。
+ステージング モードのサーバーは Active Directory と Azure AD から変更を受信し続け、障害発生時に別のサーバーの役割を迅速に引き継ぐことができます。 プライマリ サーバーの構成を変更する場合、ステージング モードのサーバーに同じ変更を適用するのは管理者の責任です。
 
 従来の同期テクノロジの知識を持つ管理者にとっては、サーバーが独自の SQL Database を持つ点で、ステージング モードは異なるテクノロジに思えることでしょう。 このアーキテクチャにより、ステージング モードのサーバーを別のデータ センターに配置できます。
 
@@ -50,13 +50,13 @@ ms.locfileid: "57196128"
 この方法を適用するには、次の手順に従います。
 
 1. [準備](#prepare)
-2. [構成](#configuration)
+2. [Configuration](#configuration)
 3. [インポートおよび同期](#import-and-synchronize)
 4. [確認](#verify)
 5. [アクティブなサーバーの切り替え](#switch-active-server)
 
 #### <a name="prepare"></a>準備
-1. Azure AD Connect をインストールし、**[ステージング モード]** を選択します。インストール ウィザードの最後のページで、**[同期の開始]** を選択解除します。 このモードにより、同期エンジンを手動で実行することができます。
+1. Azure AD Connect をインストールし、 **[ステージング モード]** を選択します。インストール ウィザードの最後のページで、 **[同期の開始]** を選択解除します。 このモードにより、同期エンジンを手動で実行することができます。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. いったんサインオフし、サインインし直してから、[スタート] メニューの **[Synchronization Service (同期サービス)]** を選択します。
 
@@ -64,14 +64,14 @@ ms.locfileid: "57196128"
 プライマリ サーバーにカスタム変更を行い、構成をステージング サーバーと比較する場合は、[Azure AD Connect 構成データベース構造の解析](https://github.com/Microsoft/AADConnectConfigDocumenter)を使用します。
 
 #### <a name="import-and-synchronize"></a>インポートおよび同期
-1. **[コネクタ]** を選択します。種類が "**Active Directory Domain Services**" の 1 つ目のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。 この種類のすべてのコネクタに対して、これらの手順を繰り返します。
-2. 種類が " **Azure Active Directory (Microsoft)**" のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。
-3. [Connectors (コネクタ)] タブが選択されたままであることを確認します。 種類が "**Active Directory Domain Services**" の各コネクタに対し、**[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
-4. 種類が " **Azure Active Directory (Microsoft)**" のコネクタを選択します。 **[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
+1. **[コネクタ]** を選択します。種類が "**Active Directory Domain Services**" の 1 つ目のコネクタを選択します。 **[Run (実行)]** 、 **[Full import (フル インポート)]** 、 **[OK]** の順にクリックします。 この種類のすべてのコネクタに対して、これらの手順を繰り返します。
+2. 種類が " **Azure Active Directory (Microsoft)** " のコネクタを選択します。 **[Run (実行)]** 、 **[Full import (フル インポート)]** 、 **[OK]** の順にクリックします。
+3. [Connectors (コネクタ)] タブが選択されたままであることを確認します。 種類が "**Active Directory Domain Services**" の各コネクタに対し、 **[Run (実行)]** 、 **[Delta Synchronization (差分同期)]** 、 **[OK]** の順にクリックします。
+4. 種類が " **Azure Active Directory (Microsoft)** " のコネクタを選択します。 **[Run (実行)]** 、 **[Delta Synchronization (差分同期)]** 、 **[OK]** の順にクリックします。
 
 これで、Azure AD とオンプレミスの AD (Exchange ハイブリッド デプロイを使用している) へのエクスポートの変更がステージングされました。 次の手順では、実際にディレクトリへのエクスポートを開始する前に、変更される内容を確認できます。
 
-#### <a name="verify"></a>確認
+#### <a name="verify"></a>Verify (英語の可能性あり)
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
 2. 次のコマンドを実行します。`csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
 3. 次のコマンドを実行します。`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
@@ -267,7 +267,7 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**  
 
 * [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)  

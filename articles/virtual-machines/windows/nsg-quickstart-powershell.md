@@ -1,25 +1,18 @@
 ---
-title: Azure PowerShell を使用した VM へのポートの開放 | Microsoft Docs
+title: Azure PowerShell を使用した VM へのポートの開放
 description: Azure Resource Manager デプロイメント モデルと Azure PowerShell を使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 1bd5c63db63bea24e5cf088cf9974233d3535912
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869393"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell を使用して Azure の VM へのポートとエンドポイントを開放する方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -61,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、[Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) を使用して、*myVnet* という名前の既存の仮想ネットワークを *$vnet* 変数に割り当てます。
+ここで、ネットワーク セキュリティ グループをサブネットに割り当ててみましょう。 次の例では、*Get-AzVirtualNetwork* を使用して、*myVnet* という名前の既存の仮想ネットワークを [$vnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 変数に割り当てます。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -93,10 +86,10 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 高可用性 Web アプリケーション用に、Azure Load Balancer の背後に VM を配置する必要があります。 ロード バランサーは、トラフィックをフィルターできるネットワーク セキュリティ グループとともに、VM のトラフィックを分散します。 詳細については、[Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法](tutorial-load-balancer.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
-* [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)
+* [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
 * [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)
-* [ロード バランサー用の Azure Resource Manager の概要](../../load-balancer/load-balancer-arm.md)
+* [Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)
 

@@ -1,24 +1,28 @@
 ---
 title: Azure Backup エージェントのアップグレード
-description: この情報は、Azure Backup エージェントをアップグレードする理由と、アップグレードをダウンロードする場所について説明しています。
+description: この情報は、Azure Backup エージェントをアップグレードすべき理由と、アップグレードをダウンロードする場所について説明しています。
 services: backup
 cloud: ''
 suite: ''
-author: markgalioto
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.tgt_pltfrm: <optional>
 ms.devlang: <optional>
 ms.topic: article
-ms.date: 8/29/2018
-ms.author: markgal
-ms.openlocfilehash: 56310b7356dd9e263238234cf3e28bd498fa70fc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 03/03/2020
+ms.author: dacurwin
+ms.openlocfilehash: bd298f758d6109b908db01dd2ae3b97e5e2f714a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66127794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78673183"
 ---
 ## <a name="upgrade-the-mars-agent"></a>MARS エージェントをアップグレードする
 
-2.0.9083.0 より前のバージョンの Microsoft Azure Recovery Service (MARS) エージェントには、Azure Access Control Service (ACS) との依存関係があります。 MARS エージェントは、Azure Backup エージェントとも呼ばれます。 2018 年に、Azure では、[Azure Access Control Service (ACS) が非推奨になりました](../articles/active-directory/develop/active-directory-acs-migration.md)。 2018 年 3 月 19 日以降、2.0.9083.0 より前のすべてのバージョンの MARS エージェントでバックアップが失敗します。 バックアップの失敗を回避または解決するには、[MARS エージェントを最新バージョンにアップグレード](https://go.microsoft.com/fwlink/?linkid=229525)します。 MARS エージェントのアップグレードが必要なサーバーを識別するには、[MARS エージェントのアップグレードに関するバックアップ ブログ](https://blogs.technet.microsoft.com/srinathv/2018/01/17/updating-azure-backup-agents/)の手順に従ってください。 MARS エージェントは、ファイル、フォルダー、およびシステム状態データを Azure にバックアップするために使用します。 System Center DPM および Azure Backup Server は、MARS エージェントを使用してデータを Azure にバックアップします。
+2\.0.9083.0 より前のバージョンの Microsoft Azure Recovery Service (MARS) エージェントには、Azure Access Control Service との依存関係があります。 MARS エージェントは、Azure Backup エージェントとも呼ばれます。
+
+2018 年に、Microsoft では、[Azure Access Control Service (ACS) が非推奨になりました](../articles/active-directory/azuread-dev/active-directory-acs-migration.md)。 2018 年 3 月 19 日以降、2.0.9083.0 より前のすべてのバージョンの MARS エージェントでバックアップが失敗します。 バックアップの失敗を回避または解決するには [MARS エージェントを最新バージョンにアップグレード](https://support.microsoft.com/help/4538314/update-for-azure-backup-for-microsoft-azure-recovery-services-agent)します。 MARS エージェントのアップグレードが必要なサーバーを識別するには、「[Microsoft Azure Recovery Services (MARS) エージェントのアップグレード](../articles/backup/upgrade-mars-agent.md)」の手順に従ってください。
+
+MARS エージェントは、ファイル、フォルダー、およびシステム状態データを Azure にバックアップするために使用します。 System Center DPM および Azure Backup Server は、MARS エージェントを使用してデータを Azure にバックアップします。

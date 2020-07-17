@@ -1,34 +1,26 @@
 ---
-title: Azure Service Fabric のイベント ストア | Microsoft Docs
-description: Azure Service Fabric のイベント ストアについて
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric イベント ストア
+description: クラスターまたはワークロードの状態を常に把握および監視する方法である、Azure Service Fabric EventStore について説明します。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 1/17/2019
+ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: 520961fb4bd126ef878a779c10fb5689b8692c73
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683742"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645737"
 ---
-# <a name="eventstore-service-overview"></a>EventStore サービスの概要
+# <a name="eventstore-overview"></a>EventStore の概要
 
 >[!NOTE]
 >Service Fabric バージョン 6.4 の時点で、 EventStore API は現在、Azure 上で実行されている Windows クラスターでに対してのみ使用できます。 この機能を Linux およびスタンドアロン クラスターに移植する作業を進めています。
 
 ## <a name="overview"></a>概要
 
-バージョン 6.2 で導入された EventStore サービスは、Service Fabric の監視オプションです。 EventStore では、任意の時点でのクラスターまたはワークロードの状態を理解する手段が提供されます。 EventStore は、クラスターからのイベントを保持するステートフルな Service Fabric サービスです。 イベントは、Service Fabric Explorer や REST API を介して公開されます。 EventStore では、クラスターに対してクエリが直接行われて、クラスター内の任意のエンティティについて診断データが取得されます。EventStore は、以下に役立てるために使用します。
+バージョン 6.2 で導入された EventStore サービスは、Service Fabric の監視オプションです。 EventStore では、任意の時点でのクラスターまたはワークロードの状態を理解する手段が提供されます。
+EventStore は、クラスターからのイベントを保持するステートフルな Service Fabric サービスです。 イベントは、Service Fabric Explorer や REST API を介して公開されます。 EventStore では、クラスターに対してクエリが直接行われて、クラスター内の任意のエンティティについて診断データが取得されます。EventStore は、以下に役立てるために使用します。
 
 * 開発またはテストにおける問題の診断や、監視パイプラインを使用できる場所の診断
 * クラスターに対して行っている管理アクションが、正しく処理されていることの確認
@@ -39,7 +31,7 @@ ms.locfileid: "64683742"
 EventStore で使用できるイベントの完全な一覧を確認するには、「[Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)」を参照してください。
 
 >[!NOTE]
->Service Fabric バージョン 6.2 の時点で、 EventStore API は現在、Azure 上で実行されている Windows クラスターに対してのみプレビュー段階にあります。 この機能を Linux およびスタンドアロン クラスターに移植する作業を進めています。
+>Service Fabric バージョン 6.4 の時点で、 EventStore API と UX は、Azure Windows クラスターに対して一般公開されています。 この機能を Linux およびスタンドアロン クラスターに移植する作業を進めています。
 
 EventStore サービスでは、クラスター内のエンティティとエンティティ型のそれぞれで使用できるイベントのクエリを実行できます。 これは、以下のレベルでイベントのクエリを実行できることを意味します。
 * クラスター: クラスター自体に固有のイベント (クラスターのアップグレードなど)
@@ -70,9 +62,21 @@ EventStore サービスは、クラスター内のイベントを関連付ける
     ],
 ```
 
-### <a name="azure-cluster"></a>Azure クラスター
+### <a name="azure-cluster-version-65"></a>Azure クラスター バージョン 6.5 以降
+Azure クラスターをバージョン 6.5 以降にアップグレードした場合、EventStore はクラスター上で自動的に有効になります。 オプトアウトするには、ご利用のクラスター テンプレートを次の手順で更新する必要があります。
 
-自分のクラスターの Azure Resource Manager テンプレートで、[クラスター構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)を実行して次のコードを追加することにより、EventStore サービスを有効にできます。また、PlacementConstraints を使用して EventStore サービスのレプリカを特定の NodeType (システム サービス専用の NodeType など) に置くことができます。 `upgradeDescription` セクションで、ノードでの再起動をトリガーする構成のアップグレードを構成します。 別の更新ではそのセクションを削除できます。
+* `2019-03-01` 以降の API バージョンを使用する 
+* クラスター内の [プロパティ] セクションに次のコードを追加する
+  ```json  
+    "fabricSettings": [
+      …
+    ],
+    "eventStoreServiceEnabled": false
+  ```
+
+### <a name="azure-cluster-version-64"></a>Azure クラスター バージョン 6.4
+
+バージョン 6.4 を使用している場合、Azure Resource Manager テンプレートを編集して、EventStore サービスを有効にすることができます。 これを行うには、[クラスター構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)を実行して次のコードを追加します。また、PlacementConstraints を使用して EventStore サービスのレプリカを特定の NodeType (システム サービス専用の NodeType など) に置くことができます。 `upgradeDescription` セクションで、ノードでの再起動をトリガーする構成のアップグレードを構成します。 別の更新ではそのセクションを削除できます。
 
 ```json
     "fabricSettings": [
@@ -118,7 +122,7 @@ EventStore サービスは、クラスター内のイベントを関連付ける
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * EventStore API の概要 - [Azure Service Fabric クラスターでの EventStore API の使用](service-fabric-diagnostics-eventstore-query.md)
 * EventStore によって提供されるイベントの一覧の詳細 - [Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)
 * Service Fabric での監視と診断の概要 - [Service Fabric の監視と診断に関するページ](service-fabric-diagnostics-overview.md)

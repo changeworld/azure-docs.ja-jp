@@ -1,27 +1,18 @@
 ---
-title: PowerShell を使用して Azure 内の Windows VM に データ ディスクを接続する | Microsoft Docs
+title: PowerShell を使用して Azure 内の Windows VM に データ ディスクを接続する
 description: Resource Manager デプロイ モデルで、PowerShell を使用して Windows VM に新規または既存のデータ ディスクを接続する方法です。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1abc3fc18de3e9c1751c01c984e15ae44f25d5af
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713133"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232171"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
@@ -32,9 +23,7 @@ ms.locfileid: "64713133"
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 * Premium SSD を使用するには、[Premium Storage に対応した VM の種類](sizes-memory.md) (DS シリーズや GS シリーズなどの仮想マシン) が必要です。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+この記事では、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で Azure PowerShell を使用します。これは常に最新のバージョンに更新されています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>空のデータ ディスクを仮想マシンに追加する
 
@@ -126,6 +115,6 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[スナップショット](snapshot-copy-managed-disk.md)を作成します。
+テンプレートを使用してマネージド ディスクをデプロイすることもできます。 詳細については、「[Azure Resource Manager テンプレートでの管理ディスクの使用](using-managed-disks-template-deployments.md)」または複数のデータ ディスクをデプロイする[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)を参照してください。

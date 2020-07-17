@@ -1,23 +1,25 @@
 ---
-title: Azure Data Factory の Azure PowerShell サンプル | Microsoft Docs
+title: Azure Data Factory の Azure PowerShell サンプル
 description: Azure PowerShell サンプル - データ ファクトリの作成と管理で役立つスクリプト。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: c822ebdea2bab6f4c6c05cf2d4a4b822d6e02f3f
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 705b2464285b747ea7999b112733b7e99f761f22
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575683"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419087"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory の Azure PowerShell サンプル
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 次の表には、Azure Data Factory の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 
@@ -28,7 +30,7 @@ ms.locfileid: "57575683"
 |[Copy data from on-premises SQL Server to Azure Blob Storage (オンプレミスの SQL Server から Azure Blob Storage にデータをコピーする)](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーします。 |
 |[一括コピー](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| このサンプルの PowerShell スクリプトは、Azure SQL データベースの複数のテーブルから Azure SQL Data Warehouse にデータをコピーします。 |
 |[増分コピー](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| このサンプルの PowerShell スクリプトは、最初にソース データ ストアからシンク データ ストアにデータをすべてコピーした後で、新しいレコードまたは更新されたレコードだけをソースからシンクに読み込みます。 |
-|**データを変換する**||
+|**データの変換**||
 |[Spark クラスターを使用してデータを変換する](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Spark クラスターでプログラムを実行することでデータを変換します。 |
 |**SSIS パッケージを Azure にリフトしてシフトする**||
 |[Azure-SSIS 統合ランタイムを作成する](scripts/deploy-azure-ssis-integration-runtime-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、Azure で SQL Server Integration Services (SSIS) パッケージを実行する Azure-SSIS 統合ランタイムをプロビジョニングします。 |

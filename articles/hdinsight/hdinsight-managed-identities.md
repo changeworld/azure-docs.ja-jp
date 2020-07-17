@@ -2,29 +2,30 @@
 title: Azure HDInsight のマネージド ID
 description: Azure HDInsight でのマネージド ID の実装の概要を説明します。
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5012b669b7460a44cb2732d7db7bf76fd1f567cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 04/15/2020
+ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715770"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408934"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 
-マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD にサービス プリンシパルを登録したり、証明書などの資格情報を保持したりする必要はありません。
+マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD 内でサービス プリンシパルを登録する必要はありません。 または、証明書などの資格情報を保持します。
 
-Azure HDInsight でマネージド ID を使用すると、クラスターから Azure AD Domain Services へのアクセス、Azure Key Vault へのアクセス、または Azure Data Lake Storage Gen2 内のファイルへのアクセスが可能になります。
+Azure HDInsight では、必要に応じて、マネージド ID を使用して Azure AD ドメイン サービスにアクセスしたり、 Azure Data Lake Storage Gen2 のファイルにアクセスしたりします。
 
-マネージド ID には、ユーザー割り当てとシステム割り当ての 2 種類があります。 Azure HDInsight では、ユーザー割り当てマネージド ID が使用されます。 ユーザー割り当てマネージド ID はスタンドアロン Azure リソースとして作成され、1 つ以上の Azure サービス インスタンスに割り当てることができます。 これに対して、システム割り当てマネージド ID は Azure AD 内で作成され、自動的に特定の Azure サービス インスタンスで直接有効化されます。 システム割り当てマネージド ID の有効期間は、そのマネージド ID が有効になっているサービス インスタンスの有効期間に関連付けられます。
+マネージド ID には、ユーザー割り当てとシステム割り当ての 2 種類があります。 Azure HDInsight では、ユーザー割り当てマネージド ID のみがサポートされます。 HDInsight では、システム割り当てマネージド ID はサポートされません。 ユーザー割り当てマネージド ID は、スタンドアロン Azure リソースとして作成されます。その後、これを 1 つ以上の Azure サービス インスタンスに割り当てることができます。 これに対して、システム割り当てマネージド ID は Azure AD 内で作成され、自動的に特定の Azure サービス インスタンスで直接有効化されます。 システム割り当てマネージド ID の有効期間は、そのマネージド ID が有効になっているサービス インスタンスの有効期間に関連付けられます。
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight のマネージド ID 実装
 
-Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成する方法は、現在サポートされていません。 一部の Azure サービスでは、マネージド ID は、ユーザーが他の Azure サービスと独自にやり取りするためのアクセス トークンの取得に使用できるエンドポイントで実装されます。
+Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 現在、HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成するためのサポートされている方法はありません。 一部の Azure サービスでは、マネージド ID は、アクセス トークンの取得に使用できるエンドポイントで実装されます。 他の Azure サービスと独自にやり取りするためのトークンを使用します。
 
 ## <a name="create-a-managed-identity"></a>マネージド ID の作成
 
@@ -41,10 +42,16 @@ Azure HDInsight では、マネージド ID はクラスターのノードごと
 
 マネージド ID は、Azure HDInsight のさまざまなシナリオで使用されます。 セットアップと構成の詳細な手順については、次の関連ドキュメントをご覧ください。
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise セキュリティ パッケージ](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [お客様が管理するキー ディスクの暗号化](disk-encryption.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="faq"></a>よく寄せられる質問
+
+### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>クラスターの作成後にマネージド ID を削除するとどうなりますか?
+
+マネージド ID が必要になった時に、クラスターに問題が発生します。 現時点では、クラスターの作成後にマネージド ID を更新または変更する方法はありません。 そのため、クラスターの実行時にはマネージド ID が削除されないようにすることをお勧めします。 または、クラスターを再作成して新しいマネージド ID を割り当てることもできます。
+
+## <a name="next-steps"></a>次のステップ
 
 * [Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)

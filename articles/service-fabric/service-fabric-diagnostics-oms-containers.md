@@ -1,25 +1,16 @@
 ---
-title: Azure Monitor ログを使用して Azure Service Fabric のコンテナーを監視する | Microsoft Docs
+title: Azure Monitor ログでコンテナーを監視する
 description: Azure Service Fabric クラスターで実行されているコンテナーを監視するために Azure Monitor ログを使用します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: d03d68560502821b9c343be983d9f7b5a83ed977
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663194"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75614436"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Azure Monitor ログでコンテナーを監視する
  
@@ -36,7 +27,7 @@ ms.locfileid: "58663194"
 
 1. お使いのクラスターに Azure Monitor ログと Log Analytics エージェントを設定した後、コンテナーをデプロイします。 コンテナーが展開されるのを待ってから次の手順に進みます。
 
-2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理] カテゴリの下に表示される **[コンテナー監視ソリューション]** リソースをクリックします。
+2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理 カテゴリの下に表示される **コンテナー監視ソリューション** リソースをクリックします。
 
     ![コンテナー ソリューションの追加](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
@@ -54,8 +45,8 @@ ms.locfileid: "58663194"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Monitor ログ コンテナー ソリューション](../azure-monitor/insights/containers.md)の詳細を確認する
 * Service Fabric のコンテナー オーケストレーションについての詳細 - [Service Fabric とコンテナー](service-fabric-containers-overview.md)
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能をよく理解する
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します
 * Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する

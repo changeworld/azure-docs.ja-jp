@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66118287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181227"
 ---
 ### <a name="to-take-a-backup"></a>バックアップを作成するには
 
-1. StorSimple デバイス マネージャー サービスに移動します。 表形式のデバイス一覧で、デバイスを選択してクリックし、**[すべての設定]** をクリックします。 **[設定]** ブレードで、**[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
+1. StorSimple デバイス マネージャー サービスに移動します。 表形式のデバイス一覧で、デバイスを選択してクリックし、 **[すべての設定]** をクリックします。 **[設定]** ブレードで、 **[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
 
     ![バックアップ ポリシーの追加](./media/storsimple-8000-take-backup/step8takebu1.png)
 
-2. **[バックアップ ポリシー]** ブレードで、**[+ ポリシーの追加]** をクリックします。
+2. **[バックアップ ポリシー]** ブレードで、 **[+ ポリシーの追加]** をクリックします。
 
     ![バックアップ ポリシーの追加](./media/storsimple-8000-take-backup/step8takebu2.png)
 

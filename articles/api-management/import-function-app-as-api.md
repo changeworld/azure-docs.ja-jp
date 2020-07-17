@@ -1,5 +1,6 @@
 ---
-title: Azure API Management で Azure Function App を API としてインポートする | Microsoft Docs
+title: Azure Functions アプリを API として API Management にインポートする
+titleSuffix: Azure API Management
 description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2018
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: e5e8ffc18db902eeaa8484122e3844f35046191f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6f4626a8c42f3a50fa273c55099158750241bfee
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243064"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202923"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -42,11 +42,11 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-new-api-from-azure-function-app"></a>Azure Function App を新しい API としてインポートする
+## <a name="import-an-azure-function-app-as-a-new-api"></a><a name="add-new-api-from-azure-function-app"></a>Azure Function App を新しい API としてインポートする
 
 以下の手順に従って、Azure Function App から新しい API を作成します。
 
-1. お使いの **Azure API Management** サービス インスタンスで、左側のメニューから **[API]** を選択します。
+1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
 
 2. **[Add a new API]\(新しい API の追加\)** の一覧で **[Functions App]\(Function App\)** を選択します。
 
@@ -69,15 +69,12 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
     ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
-    > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。 現時点では、Linux 関数アプリはサポートされていません。
+    > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
 
-7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、他の事前に設定されているフィールドを編集します。
-
-    ![Function App から追加する](./media/import-function-app-as-api/add-06.png)
-
+7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 8. **Create** をクリックしてください。
 
-## <a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
+## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
 
 以下の手順に従って、Azure Function App を既存の API に追加します。
 
@@ -111,14 +108,14 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
     ![Function App から追加する](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a><a name="authorization"></a>承認
 
 Azure Function App のインポートによって、次が自動的に生成されます。
 
 * apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
 * {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
-2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)として渡されます。 Function App に関連付けられている *Backend* エンティティの`PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
+2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
 
 > [!WARNING]
 > Azure Function App のホスト キーまたは Azure API Management の名前付きの値のいずれかの値を削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。
@@ -143,7 +140,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
 ![Function App から追加する](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a> Azure Portal での新しい API Management API のテスト
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a> Azure portal での新しい API のテスト
 
 操作は Azure portal から直接呼び出すことができます。 Azure portal は API の操作を表示およびテストするのに便利です。  
 
@@ -159,29 +156,9 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
     バックエンドは **200 OK** といくつかのデータで応答します。
 
-## <a name="test-in-developer-portal"></a> 開発者ポータルから操作を呼び出す
-
-操作を開発者ポータルから呼び出して API をテストすることもできます。 
-
-1. 「バックエンド API のインポートと公開」で作成した API を選択します。
-
-2. **[開発者ポータル]** を選択します。
-
-    開発者ポータルのサイトが開きます。
-
-3. 作成した **API** を選びます。
-
-4. テストする操作を選択します。
-
-5. **[Try it]\(試してみる\)** を選択します。
-
-6. **[送信]** を選択します。
-    
-    操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
-
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [公開された API の変換と保護](transform-api.md)

@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL (単一サーバー) の Query Performance Insight
+title: Query Performance Insight - Azure Database for PostgreSQL (単一サーバー)
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) の Query Performance Insight 機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: d45b79e2ca3b3d478102bebdcff3c8892bef2cb5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 08/21/2019
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067556"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74768386"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10 (単一サーバー)
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 Query Performance Insight では、実行時間が最長のクエリ、クエリの経時変化､影響を受けている待機状態を素早く特定することができます。
 
@@ -42,7 +42,10 @@ Azure Database for PostgreSQL サーバーのポータル ページのメニュ�
 
 ![Query Performance Insight の待機時間の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="considerations"></a>考慮事項
+* Query Performance Insight は、[読み取りレプリカ](concepts-read-replicas.md)では使用できません。
+
+## <a name="next-steps"></a>次のステップ
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。
 
 

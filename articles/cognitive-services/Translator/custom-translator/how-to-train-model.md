@@ -2,19 +2,19 @@
 title: モデルをトレーニングする - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: モデルのトレーニングは、翻訳モデルを構築するときに重要な手順です。 トレーニングは、そのトレーニング用に選択したドキュメントに基づいて行われます。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437290"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68595683"
 ---
 # <a name="train-a-model"></a>モデルをトレーニングする
 
@@ -38,7 +38,7 @@ ms.locfileid: "58437290"
 
     -  Target sentences (ターゲット文): ターゲット ファイルから抽出された文の数が表示されます。
 
-    ![モデルをトレーニングする](media/how-to/how-to-train-model.png)
+    ![モデルのトレーニング](media/how-to/how-to-train-model.png)
 
 3.  [Train]\(トレーニング\) ボタンをクリックします。
 
@@ -73,6 +73,6 @@ ms.locfileid: "58437290"
 3.  [保存] をクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [モデルの詳細を表示する方法](how-to-view-model-details.md)について説明します。

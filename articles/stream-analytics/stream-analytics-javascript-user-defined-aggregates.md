@@ -1,28 +1,26 @@
 ---
 title: Azure Stream Analytics の JavaScript ユーザー定義集計
 description: この記事では、Azure Stream Analytics の JavaScript ユーザー定義集計で高度なクエリ機構を実行する方法を説明します。
-services: stream-analytics
-author: rodrigoamicrosoft
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531736"
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
+# <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計
  
 Azure Stream Analytics は JavaScript で記述されたユーザー定義集計 (UDA) をサポートしています。これを使用すると複雑なステートフルのビジネス ロジックを実装できます。 UDA 内では、状態のデータ構造、状態の蓄積、状態の処分および集計結果の計算を完全にコントロールできます。 この記事では、2 つの異なる JavaScript UDA インターフェイスと UDA の作成手順、および Stream Analytics クエリのウィンドウ ベースの操作を介して UDA を使用する方法について説明します。
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript ユーザー定義集計
 
-ユーザー定義集計は、タイム ウィンドウの仕様を利用して、そのウィンドウ内のイベントを集計し単一の結果値を生成するのに使用されます。 現在、Stream Analytics がサポートしている UDA インターフェイスには、AccumulateOnly と AccumulateDeaccumulate の 2 種類があります。 どちらの種類の UDA も、タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウで使用できます。 AccumulateDeaccumulate UDA をホッピング ウィンドウおよびスライディング ウィンドウと共に使用する場合は、AccumulateOnly UDA に比べて良いパフォーマンスを発揮します。 使用するアルゴリズムに基づいて 2 種類のいずれかを選択します。
+ユーザー定義集計は、タイム ウィンドウの仕様を利用して、そのウィンドウ内のイベントを集計し単一の結果値を生成するのに使用されます。 現在、Stream Analytics がサポートしている UDA インターフェイスには、AccumulateOnly と AccumulateDeaccumulate の 2 種類があります。 どちらの種類の UDA も、タンブリング、ホッピング、スライディング、およびセッションの各ウィンドウで使用できます。 AccumulateDeaccumulate UDA をホッピング、スライディング、およびセッションの各ウィンドウと共に使用する場合は、AccumulateOnly UDA に比べて良いパフォーマンスを発揮します。 使用するアルゴリズムに基づいて 2 種類のいずれかを選択します。
 
 ### <a name="accumulateonly-aggregates"></a>AccumulateOnly 集計
 
@@ -80,7 +78,7 @@ function main() {
 
 ### <a name="function-alias"></a>関数のエイリアス
 
-関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda." が付いて 始まります。
+関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda." が付いて プレフィックスは含まれません。
 
 ### <a name="function-type"></a>関数の型
 
@@ -92,7 +90,7 @@ Stream Analytics ジョブでサポートされる特定の型です。クエリ
 
 ### <a name="function-name"></a>関数名
 
-この関数オブジェクトの名前です。 関数名は UDA エイリアスと正確に一致する必要があります (プレビュー版の動作です。GA では匿名関数のサポートが検討されています)。
+この関数オブジェクトの名前です。 関数名は UDA エイリアスと一致している必要があります。
 
 ### <a name="method---init"></a>メソッド - init()
 
@@ -100,11 +98,11 @@ Init() メソッドは集計の状態を初期化します。 このメソッド
 
 ### <a name="method--accumulate"></a>メソッド - accumulate()
 
-accumulate() メソッドは、以前の状態とイベントの現在の値に基づいて UDA の状態を計算します。 このメソッドは、イベントがタイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、または SLIDINGWINDOW) に入る時に呼び出されます。
+accumulate() メソッドは、以前の状態とイベントの現在の値に基づいて UDA の状態を計算します。 このメソッドは、イベントがタイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW、または SESSIONWINDOW) に入る時に呼び出されます。
 
 ### <a name="method--deaccumulate"></a>メソッド - deaccumulate()
 
-deaccumulate() メソッドは、以前の状態とイベントの現在の値に基づいて状態を再計算します。 このメソッドは、イベントが SLIDINGWINDOW を離れるときに呼び出されます。
+deaccumulate() メソッドは、以前の状態とイベントの現在の値に基づいて状態を再計算します。 このメソッドは、イベントが SLIDINGWINDOW または SESSIONWINDOW を離れるときに呼び出されます。
 
 ### <a name="method--deaccumulatestate"></a>メソッド – deaccumulateState()
 
@@ -112,7 +110,7 @@ deaccumulateState() メソッドは、以前の状態とホップの状態に基
 
 ### <a name="method--computeresult"></a>メソッド – computeResult()
 
-computeResult() メソッドは、現在の状態に基づいて集計の結果を返します。 このメソッドは、タイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、および SLIDINGWINDOW) の最後に呼び出されます。
+computeResult() メソッドは、現在の状態に基づいて集計の結果を返します。 このメソッドは、タイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW、または SESSIONWINDOW) の最後に呼び出されます。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA がサポートする入力と出力のデータ型
 JavaScript UDA のデータ型については、[JavaScript UDF の統合](stream-analytics-javascript-user-defined-functions.md)に関するページの「**Stream Analytics と JavaScript の型変換**」のセクションをご覧ください。
@@ -175,7 +173,7 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>ASA クエリで JavaScript UDA を呼び出す
 
-Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
+Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 次に例を示します。
 
 ```SQL
 WITH value AS
@@ -225,14 +223,14 @@ GROUP BY TumblingWindow(minute, 5)
 ]
 ```
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

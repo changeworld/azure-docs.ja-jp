@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor によるアプリケーションの高可用性の向上 | Microsoft Docs
+title: Azure Advisor によるアプリケーションの高可用性の向上
 description: Azure Advisor を使用して、Azure のデプロイの高可用性を向上させます。
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699306"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788027"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Advisor によるアプリケーションの高可用性の向上
 
@@ -33,6 +28,10 @@ Azure Advisor を使用して、ビジネスに不可欠なアプリケーショ
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>データの信頼性を改善するために Managed Disks を使用する
 
 ストレージ アカウントまたはストレージ スケール ユニットを共有するディスクが含まれる、可用性セット内の仮想マシンは、停止時の単一ストレージ スケール ユニット障害に対する回復性がありません。 Advisor では、これらの可用性セットを識別し、Azure Managed Disks への移行を推奨します。 そうすることで、単一障害点を避けるために、可用性セット内の異なる仮想マシンのディスクが十分に分離されるようにすることができます。 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Check Point ネットワーク仮想アプライアンスのイメージ バージョンの既知の問題
+
+Advisor では、プラットフォームのサービス操作が発生したときにネットワーク接続が失われることがわかっているバージョンの Check Point イメージを仮想マシンが実行しているかどうかを特定できます。 Advisor の推奨事項は、この問題に対処する新しいバージョンのイメージにアップグレードするのに役立ちます。 これにより、より安定したネットワーク接続によってビジネスの継続性が確保されます。
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>アプリケーション ゲートウェイのフォールト トレランスを確保する
 
@@ -70,13 +69,40 @@ Traffic Manager プロファイルが地理的なルーティング用に構成�
 
 Azure Advisor では、Basic SKU であるすべての VPN ゲートウェイが確認され、代わりに運用 SKU を使用することが推奨されます。 Basic SKU は、開発とテストを目的にして設計されています。 運用 SKU では、より多くのトンネル、BGP サポート、アクティブ/アクティブ構成オプション、カスタム Ipsec/IKE ポリシー、およびより高い安定性と可用性が提供されます。
 
+## <a name="repair-invalid-log-alert-rules"></a>無効なログ アラート ルールを修復する
+
+Azure Advisor は、それぞれの状態セクションで指定された無効なクエリを含むアラート ルールを検出します。 ログ アラート ルールは Azure Monitor で作成され、指定された間隔で分析クエリを実行するために使用されます。 クエリの結果によって、アラートをトリガーする必要があるかどうかが決定されます。 分析クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor は、アラート ルールが自動的に無効になることを防止し、Azure でのリソースの監視範囲を保証するために、アラート ルール内のクエリを修正することを推奨します。 [アラート ルールのトラブルシューティング](https://aka.ms/aa_logalerts_queryrepair)の詳細を確認してください。
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Cosmos DB コレクションで同期 (Consistent) インデックス作成モードを構成する
+
+非同期 (Lazy) インデックス作成モードで構成された Azure Cosmos DB コンテナーが、クエリの結果の鮮度に影響を与える場合があります。 Advisor は、この方法で構成されたコンテナーを検出し、同期モードに切り替えることを推奨します。 [Cosmos DB でのインデックス作成ポリシー](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)の詳細を確認してください。
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>パーティション キーを使用して Azure Cosmos DB コンテナーを構成する
+
+Azure Advisor は、プロビジョニングされたストレージ クォータに近づいている Azure Cosmos DB のパーティション分割されていないコレクションを識別します。 サービスでこれらのコレクションを自動的にスケールアウトできるように、それらのコレクションをパーティション キーが定義された新しいコレクションに移行することを推奨します。 [パーティション キーの選択](https://aka.ms/cosmosdb/choose-partitionkey)の詳細を確認してください。
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Azure Cosmos DB .NET SDK を NuGet からの最新バージョンにアップグレードする
+
+Azure Advisor は、.NET SDK の古いバージョンを使用している Azure Cosmos DB アカウントを識別し、最新の修正プログラム、パフォーマンス向上、および新機能のために NuGet からの最新バージョンにアップグレードすることを推奨します。 [Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet) の詳細を確認してください。
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Azure Cosmos DB Java SDK を Maven からの最新バージョンにアップグレードする
+
+Azure Advisor は、Java SDK の古いバージョンを使用している Azure Cosmos DB アカウントを識別し、最新の修正プログラム、パフォーマンス向上、および新機能のために Maven からの最新バージョンにアップグレードすることを推奨します。 [Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java) の詳細を確認してください。
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark コネクタを Maven からの最新バージョンにアップグレードする
+
+Azure Advisor は、Cosmos DB Spark コネクタの古いバージョンを使用している Azure Cosmos DB アカウントを識別し、最新の修正プログラム、パフォーマンス向上、および新機能のために Maven からの最新バージョンにアップグレードすることを推奨します。 [Cosmos DB Spark コネクタ](https://aka.ms/cosmosdb/spark-connector)の詳細を確認してください。
+
+## <a name="enable-virtual-machine-replication"></a>仮想マシンのレプリケーションを有効にする
+他のリージョンへのレプリケーションが有効になっていない仮想マシンは、リージョン内の障害に対する回復性が高くありません。 仮想マシンをレプリケートすることによって、Azure リージョン内での障害発生時にビジネスへの悪影響が低減されます。 Advisor は、レプリケーションが有効になっていない VM を検出し、障害発生時にリモート Azure リージョンで仮想マシンをすばやく起動できるように、レプリケーションを有効にするよう推奨します。 [仮想マシンのレプリケーションの詳細を確認する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
 2.  Advisor ダッシュボードの **[高可用性]** タブをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項について詳しくは、以下を参照してください。
 * [Azure Advisor の概要](advisor-overview.md)
@@ -84,4 +110,4 @@ Advisor の推奨事項について詳しくは、以下を参照してくださ
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)

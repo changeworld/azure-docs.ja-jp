@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 37bf26db5f7ae08734410d36a892aaeb2380bd9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880288"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60878887"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション
 
@@ -23,7 +23,7 @@ ms.locfileid: "58880288"
 
 この記事では、Azure Data Lake Storage Gen1 で機能するオープン ソースのビッグ データ アプリケーションを示します。 次の表に示すアプリケーションでは、表示されているディストリビューションで利用できるバージョンのみがサポートされます。 これらのアプリケーションの HDInsight で利用できるバージョンについては、「 [HDInsight コンポーネントのバージョン](../hdinsight/hdinsight-component-versioning.md)」を参照してください。
 
-| オープン ソース ソフトウェア | ディストリビューション |
+| オープン ソース ソフトウェア | Distribution |
 | --- | --- |
 | [Apache Sqoop](https://sqoop.apache.org/) |HDInsight 3.2、3.4、3.5、3.6 |
 | [MapReduce](https://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |HDInsight 3.2、3.4、3.5、3.6 |
@@ -38,6 +38,6 @@ ms.locfileid: "58880288"
 | [Apache Spark](https://spark.apache.org/) |HDInsight 3.4、3.5、3.6 |
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 

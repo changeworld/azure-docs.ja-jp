@@ -1,18 +1,18 @@
 ---
-title: イベント ドメインを使用して Azure Event Grid で大規模なトピック セットを管理する
+title: Azure Event Grid を使用してイベント ドメインでイベントを発行する
 description: イベント ドメインを使用して、Azure Event Grid で大規模なトピック セットを管理し、それらにイベントを発行する方法を説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 10/22/2019
+ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180910"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72786550"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -35,7 +35,7 @@ ms.locfileid: "58180910"
 
 大規模なトピック セットを管理するには、イベント ドメインを作成します。
 
-Azure CLI では、次を使用します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -48,8 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-PowerShell では、次を使用します。
-
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -60,6 +59,7 @@ New-AzureRmEventGridDomain `
   -Name <my-domain-name> `
   -Location <location>
 ```
+---
 
 正常に作成された場合、次の値が返されます。
 
@@ -86,6 +86,7 @@ New-AzureRmEventGridDomain `
 
 Event Grid には、ドメイン内のさまざまなトピックへのアクセスを特定のユーザーに割り当てるために使用できる 2 つの組み込みロールがあります。 これらのロールは、サブスクリプションの作成と削除を許可する `EventGrid EventSubscription Contributor (Preview)` と、イベント サブスクリプションのリストのみを許可する `EventGrid EventSubscription Reader (Preview)` です。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 次の Azure CLI コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
 
 ```azurecli-interactive
@@ -95,6 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 次の PowerShell コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
 
 ```azurepowershell-interactive
@@ -103,6 +105,7 @@ New-AzureRmRoleAssignment `
   -RoleDefinitionName "EventGrid EventSubscription Contributor (Preview)" `
   -Scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
+---
 
 Event Grid の操作に対するアクセスの管理について詳しくは、「[Event Grid のセキュリティと認証](./security-authentication.md)」をご覧ください。
 
@@ -114,7 +117,7 @@ Event Grid サービスでは、ドメイン トピックのイベント サブ�
 
 通常、前のセクションでアクセスを許可されたユーザーが、サブスクリプションを作成します。 この記事では、簡単にするため自分でサブスクリプションを作成します。 
 
-Azure CLI では、次を使用します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -123,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-PowerShell では、次を使用します。
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -131,6 +134,8 @@ New-AzureRmEventGridSubscription `
   -EventSubscriptionName <event-subscription> `
   -Endpoint https://contoso.azurewebsites.net/api/updates
 ```
+
+---
 
 イベントをサブスクライブするテスト エンドポイントが必要な場合は、受信イベントを表示する[ビルド済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をいつでもデプロイすることができます。 `https://<your-site-name>.azurewebsites.net/api/updates` のテスト Web サイトにイベントを送信できます。
 
@@ -170,6 +175,7 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 Azure CLI を使用してドメイン エンドポイントを取得するには、以下を使用します。
 
 ```azurecli-interactive
@@ -186,6 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 PowerShell を使用してドメイン エンドポイントを取得するには、以下を使用します。
 
 ```azurepowershell-interactive
@@ -201,9 +208,10 @@ Get-AzureRmEventGridDomainKey `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
+---
 
 次に、HTTP POST を実行するための任意のメソッドを使用して、Event Grid ドメインにイベントを発行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント ドメインの概念の概要と役立つ理由の詳細については、[イベント ドメインの概念の概要](event-domains.md)に関するページを参照してください。

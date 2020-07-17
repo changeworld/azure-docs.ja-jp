@@ -1,5 +1,5 @@
 ---
-title: PersonName 作成済みエンティティ
+title: PersonName 作成済みエンティティ - LUIS
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) での personName 作成済みエンティティについて説明します。
 services: cognitive-services
@@ -8,101 +8,81 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 3b12c69b7c6710e774d50e631d2423fd72ce828a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072168"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78273435"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの PersonName 作成済みエンティティ
 作成済みの personName エンティティは、人の名前を検出します。 このエンティティは既にトレーニングされているので、personName を含む発話の例をアプリケーション意図に追加する必要はありません。 personName エンティティは、英語および中国語の[カルチャ](luis-reference-prebuilt-entities.md)でサポートされます。
 
 ## <a name="resolution-for-personname-entity"></a>personName エンティティの解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+次のエンティティ オブジェクトがクエリに対して返されます。
 
-次の例では、**builtin.personName** エンティティの解決を示します。
+`Is Jill Jones in Cairo?`
 
-```json
-{
-  "query": "Is Jill Jones in Cairo?",
-  "topScoringIntent": {
-    "intent": "WhereIsEmployee",
-    "score": 0.762141049
-  },
-  "entities": [
-    {
-      "entity": "Jill Jones",
-      "type": "builtin.personName",
-      "startIndex": 3,
-      "endIndex": 12
-    }
-  ]
-}
-```
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
+
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
 ```json
-{
-    "query": "Is Jill Jones in Cairo?",
-    "prediction": {
-        "normalizedQuery": "is jill jones in cairo?",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.6544678
-            }
-        },
-        "entities": {
-            "personName": [
-                "Jill Jones"
-            ]
-        }
-    }
+"entities": {
+    "personName": [
+        "Jill Jones"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
-{
-    "query": "Is Jill Jones in Cairo?",
-    "prediction": {
-        "normalizedQuery": "is jill jones in cairo?",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.6544678
-            }
-        },
-        "entities": {
-            "personName": [
-                "Jill Jones"
-            ],
-            "$instance": {
-                "personName": [
-                    {
-                        "type": "builtin.personName",
-                        "text": "Jill Jones",
-                        "startIndex": 3,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "personName": [
+        "Jill Jones"
+    ],
+    "$instance": {
+        "personName": [
+            {
+                "type": "builtin.personName",
+                "text": "Jill Jones",
+                "startIndex": 3,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ],
     }
 }
 ```
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
-## <a name="next-steps"></a>次の手順
+次の例では、**builtin.personName** エンティティの解決を示します。
 
-[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。 
+```json
+"entities": [
+{
+    "entity": "Jill Jones",
+    "type": "builtin.personName",
+    "startIndex": 3,
+    "endIndex": 12
+}
+]
+```
+* * *
+
+## <a name="next-steps"></a>次のステップ
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
+
+[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。

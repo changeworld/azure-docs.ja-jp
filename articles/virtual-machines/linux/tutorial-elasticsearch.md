@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66166053"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066538"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする
 
@@ -39,13 +39,13 @@ ms.locfileid: "66166053"
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -55,7 +55,7 @@ az group create --name myResourceGroup --location eastus
 
 次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -66,7 +66,7 @@ az vm create \
 
 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -204,7 +204,7 @@ output {
 sudo /usr/share/logstash/bin/logstash -f vm-syslog-logstash.conf
 ```
 
-端末の syslog エントリが、Elasticsearch に送信されたようにエコーされていることがわかります。 データをいくつか送信したら、`CTRL+C` を使用して Logstash を終了します。
+ターミナルの syslog エントリが、Elasticsearch に送信されたようにエコーされていることがわかります。 データをいくつか送信したら、`CTRL+C` を使用して Logstash を終了します。
 
 ## <a name="start-kibana-and-visualize-the-data-in-elasticsearch"></a>Kibana の起動と、Elasticsearch のデータの視覚化
 
@@ -226,7 +226,7 @@ Azure CLI からポート 5601 を開いて、Kibana コンソールへのリモ
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-Kibana コンソールを開いて、**[作成]** を選択し、前に Elasticsearch に送信した syslog データに基づいて、既定のインデックスを生成します。 
+Kibana コンソールを開いて、 **[作成]** を選択し、前に Elasticsearch に送信した syslog データに基づいて、既定のインデックスを生成します。 
 
 ![Kibana で Syslog イベントを参照](media/elasticsearch-install/kibana-index.png)
 
@@ -234,9 +234,9 @@ Kibana コンソールで **[検出]** を選択して、syslog イベントを�
 
 ![Kibana で Syslog イベントを参照](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Elastic Stack を Azure の開発 VM にデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、Elastic Stack を Azure の開発 VM にデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Azure リソース グループでの Ubuntu VM の作成

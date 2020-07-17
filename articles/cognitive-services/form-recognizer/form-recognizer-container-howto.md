@@ -1,27 +1,33 @@
 ---
-title: コンテナーのインストールと実行 - Form Recognizer
+title: Form Recognizer 向けコンテナーのインストールと実行
 titleSuffix: Azure Cognitive Services
-description: Form Recognizer コンテナーを使用してフォームとテーブルのデータを解析する方法を学習します。
-author: PatrickFarley
+description: この記事では、Azure Cognitive Services Form Recognizer コンテナーを使用し、フォームおよびテーブル データを解析する方法について説明します。
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
-ms.topic: overview
-ms.date: 05/28/2019
-ms.author: pafarley
-ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.subservice: forms-recognizer
+ms.topic: conceptual
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 27ce3931e6808c5ba7ee0dbf9d3354220bbc0177
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306544"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592170"
 ---
-# <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
-Form Recognizer では、機械学習テクノロジを適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。 値とテーブル エントリをそれらに関連付けてから、元のファイル内の関係を含む構造化データを出力します。 複雑さを軽減し、ワークフロー自動化プロセスまたは他のアプリケーションに簡単に統合するために、単純な REST API を使用してカスタム Form Recognizer モデルを呼び出すことができます。 必要なのは 5 つのドキュメント (または 1 つの空のフォーム) だけなので、手作業による操作やデータ サイエンスに関する深い専門知識を必要とすることなく、特定のコンテンツに合わせた結果をすばやく正確に得ることができます。 データのラベル付けやデータの注釈付けは必要ありません。
+# <a name="install-and-run-form-recognizer-containers-preview"></a>Form Recognizer コンテナーのインストールと実行 (プレビュー)
 
-|Function|機能|
-|-|-|
-|Form Recognizer| <li>種類が PDF、PNG、および JPG のファイルを処理します。<li>同じレイアウトのフォームを最小で 5 つ使用してカスタム モデルをトレーニングします。 <li>キーと値のペアとテーブル情報を抽出します。 <li>Cognitive Service の Computer Vision API RecognizeText を使用して、フォーム内の画像から印刷されたテキストを検出し、抽出します。<li>注釈またはラベル付けは必要ありません。|
+Azure Form Recognizer では、機械学習テクノロジを適用して、フォームにあるキーと値のペアおよびテーブルを識別して抽出します。 値とテーブル エントリをキー値のペアに関連付けてから、元のファイル内の関係を含む構造化データを出力します。 
+
+複雑さを軽減し、ワークフロー自動化プロセスまたは他のアプリケーションにカスタム Form Recognizer モデルを簡単に統合するために、単純な REST API を使用してモデルを呼び出すことができます。 必要なのは 5 つの形式のドキュメント (または 1 つの空のフォームと 2 つの入力済みフォーム) だけなので、すばやく正確に、特定のコンテンツに合わせて調整された結果を取得できます。 手動での大掛かりな介入や広範なデータ サイエンスの専門知識は必要ありません。 また、データのラベル付けやデータの注釈付けは必要ありません。
+
+> [!IMPORTANT]
+> Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン 1.0 が使用されています。 API の最新バージョンにアクセスするには、代わりにマネージド サービスを使用できます。
+
+| 機能 | 特徴 |
+|----------|----------|
+| Form Recognizer | <li>PDF、PNG、JPG ファイルを処理する<li>同じレイアウトのフォームを少なくとも 5 つ使用してカスタム モデルをトレーニングする <li>キーと値のペアおよびテーブル情報を抽出する <li>Azure Cognitive Service の Computer Vision API のテキスト認識機能を使用して、フォーム内の画像から印刷されたテキストを検出し、抽出する<li>注釈またはラベル付けを必要としない |
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -29,17 +35,39 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Form Recognizer コンテナーを使用する前に、次の前提条件を満たす必要があります。
 
-|必須|目的|
-|--|--|
-|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
-|Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|
-|Azure CLI| [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をホストにインストールする必要があります。|
-|Computer Vision API リソース| スキャンしたドキュメントおよび画像を処理するには、**Computer Vision リソース**が必要です。 Azure リソース (REST API または SDK) または `cognitive-services-recognize-text` [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)として**テキスト認識**機能にアクセスできます。 通常の課金の料金が適用されます。 <br><br>特定の Computer Vision リソース (Azure クラウドまたは Cognitive Services コンテナー) のキーと課金エンドポイントの両方を渡す必要があります。 このキーと課金エンドポイントを {COMPUTER_VISION_API_KEY} と {COMPUTER_VISION_BILLING_ENDPOINT_URI} として使用します。<br><br> **`cognitive-services-recognize-text` コンテナー**を使用する場合は、次の点を確認します。<br><br>* Form Recognizer コンテナーの Computer Vision キーは、`cognitive-services-recognize-text` コンテナーの Computer Vision `docker run` コマンドで指定されたキーです。<br>* 課金エンドポイントは、コンテナーのエンドポイントです (`https://localhost:5000` など)。 同じホスト上で Computer Vision と Form Recognizer の両方のコンテナーを一緒に使用する場合、既定のポート `5000` を使用してその両方を起動することはできません。  |  
-|Form Recognizer リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Form Recognizer_ Azure リソース。 どちらの値も、Azure portal の **Form Recognizer** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
+| 必須 | 目的 |
+|----------|---------|
+| Docker エンジン | [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br> |
+| Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。 |
+| Azure CLI | [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をホストにインストールします。 |
+| Computer Vision API リソース | スキャンしたドキュメントおよび画像を処理するには、Computer Vision リソースが必要です。 Azure リソース (REST API または SDK) または *cognitive-services-recognize-text* [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)のいずれかとして、テキスト認識機能にアクセスできます。 通常の課金の料金が適用されます。 <br><br>Computer Vision リソース (Azure クラウドまたは Cognitive Services コンテナー) の API キーとエンドポイントの両方を渡します。 この API キーとエンドポイントを **{COMPUTER_VISION_API_KEY}** と **{COMPUTER_VISION_ENDPOINT_URI}** として使用します。<br><br> *cognitive-services-recognize-text* コンテナーを使用する場合は、以下のことを確認します。<br><br>Form Recognizer コンテナーの Computer Vision キーは、*cognitive-services-recognize-text* コンテナーの Computer Vision `docker run` コマンドで指定されたキーです。<br>課金エンドポイントは、コンテナーのエンドポイントです (`http://localhost:5000` など)。 同じホスト上で Computer Vision コンテナーと Form Recognizer コンテナーの両方を一緒に使用する場合、既定のポート *5000* を使用してその両方を起動することはできません。 |
+| Form Recognizer リソース | これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure **Form Recognizer** リソース。 どちらの値も、Azure portal の **Form Recognizer** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するには両方の値が必要です。<br><br>**{FORM_RECOGNIZER_API_KEY}** :[キー] ページにある 2 つのリソース キーのうちのどちらか<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** :[概要] ページで提供されるエンドポイント |
+
+> [!NOTE]
+> Computer Vision リソース名は、ハイフン `-` または他の特殊文字を含まない 1 つの単語にする必要があります。 この制限は、Form Recognizer とテキスト認識コンテナーの互換性を保証するために設けられています。
+
+## <a name="gathering-required-parameters"></a>必須パラメーターの収集
+
+すべての Cognitive Services のコンテナーに対して必須である、3 つの主要なパラメーターがあります。 エンドユーザー使用許諾契約書 (EULA) は、`accept` の値と共に提示される必要があります。 さらに、エンドポイント URL と API キーの両方が必要です。
+
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>エンドポイント URI `{COMPUTER_VISION_ENDPOINT_URI}` と `{FORM_RECOGNIZER_ENDPOINT_URI}`
+
+**エンドポイント** URI の値は、Azure portal で、対応する Cognitive Service リソースの *[概要]* ページで入手できます。 *[概要]* ページに移動して、エンドポイントの上にマウス ポインターを移動すると、`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> アイコンが表示されます。 必要に応じてコピーして使用します。
+
+![後で使用するためにエンドポイント URI を収集する](../containers/media/overview-endpoint-uri.png)
+
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>キー `{COMPUTER_VISION_API_KEY}` と `{FORM_RECOGNIZER_API_KEY}`
+
+このキーはコンテナーを起動するために使用され、Azure portal で、対応する Cognitive Service リソースの [キー] ページで入手できます。 *[キー]* ページに移動し、`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> アイコンをクリックします。
+
+![後で使用するために 2 つのキーのどちらかを入手する](../containers/media/keys-copy-api-key.png)
+
+> [!IMPORTANT]
+> これらのサブスクリプション キーは、Cognitive Service API にアクセスするために使用されます。 キーを共有しないでください。 Azure Key Vault を使用するなどして、安全に保管してください。 これらのキーを定期的に再生成することもお勧めします。 API 呼び出しを行うために必要なキーは 1 つだけです。 最初のキーを再生成するときに、2 番目のキーを使用してサービスに継続的にアクセスすることができます。
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、最初に [Cognitive Services Form Recognizer コンテナー要求フォーム](https://aka.ms/FormRecognizerRequestAccess)に記入して送信する必要があります。 これにより、Computer Vision にもサインアップすることになります。 Computer Vision 要求フォームに別途サインアップする必要はありません。 
+コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -55,103 +83,103 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 コア、4 GB メモリ | 4 コア、8 GB メモリ |
+| Form Recognizer | 2 コア、4 GB メモリ | 4 コア、8 GB メモリ |
+| テキスト認識 | 1 コア、8 GB のメモリ | 2 コア、8 GB のメモリ |
 
 * 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
-* TPS - 1 秒あたりのトランザクション数
-
-コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
+* コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
 > [!Note]
-> 最小および推奨値は、Docker の制限に基づくもので、ホスト マシンのリソースに基づくものでは "*ありません*"。
+> 最小値と推奨値は、Docker の制限に基づくもので、ホスト マシンのリソースに基づくものでは*ありません*。
 
-## <a name="get-the-container-image-with-docker-pull-command"></a>docker pull コマンドでコンテナー イメージを入手する
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>docker pull コマンドでコンテナー イメージを入手する
 
-Form Recognizer のコンテナー イメージを入手できます。
+**Form Recognizer** と**テキスト認識**の両オファリングのコンテナー イメージは、次のコンテナー レジストリにあります。
 
-| コンテナー | リポジトリ |
+| コンテナー | イメージの完全修飾名 |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| テキスト認識 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Form Recognizer サービスではなく、`cognitive-services-recognize-text` [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)を使用する予定がある場合は、`docker pull` コマンドを正しいコンテナー名で使用してください。 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+両方のコンテナーが必要です。**テキスト認識**コンテナーの詳細については、[この記事以外で説明しています。](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
-
 
 ### <a name="docker-pull-for-the-form-recognizer-container"></a>Form Recognizer コンテナー用の docker pull
 
 #### <a name="form-recognizer"></a>Form Recognizer
 
+Form Recognizer コンテナーを入手するには、次のコマンドを使用します。
+
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>テキスト認識コンテナー用の Docker pull
+
+#### <a name="recognize-text"></a>テキスト認識
+
+テキスト認識コンテナーを入手するには、次のコマンドを使用します。
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要でありながら使用されていない課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](form-recognizer-container-configuration.md#example-docker-run-commands)もご覧いただけます。
+1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-by-using-the-docker-run-command)します。 `docker run` コマンドの他の[例](form-recognizer-container-configuration.md#example-docker-run-commands)もご覧いただけます。
 1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
-## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
+## <a name="run-the-container-by-using-the-docker-run-command"></a>docker run コマンドを使用してコンテナーを実行する
 
-3 つのコンテナーのいずれかを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 このコマンドには、次のパラメーターが使用されます。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{COMPUTER_VISION_ENDPOINT_URI}`、`{COMPUTER_VISION_API_KEY}`、`{FORM_RECOGNIZER_ENDPOINT_URI}`、および `{FORM_RECOGNIZER_API_KEY}` の値を取得する方法の詳細については、[必要なパラメーターの収集](#gathering-required-parameters)に関する記事を参照してください。
 
-| プレースホルダー | 値 |
-|-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Form Recognizer の [キー] ページで入手できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Form Recognizer の [概要] ページで入手できます。|
-|{COMPUTER_VISION_API_KEY}| このキーは、Azure portal の Computer Vision API の [キー] ページで入手できます。|
-|{COMPUTER_VISION_ENDPOINT_URI}|課金エンドポイント。 クラウドベースの Computer Vision リソースを使用している場合、URI 値は Azure portal の Computer Vision API の [概要] ページで入手できます。 `cognitive-services-recognize-text` コンテナーを使用している場合は、`docker run` コマンドでコンテナーに渡された課金エンドポイント URL を使用します。|
-
-次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
+`docker run` コマンドの[例](form-recognizer-container-configuration.md#example-docker-run-commands)を利用できます。
 
 ### <a name="form-recognizer"></a>Form Recognizer
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
 このコマンドは、次の操作を行います。
 
-* コンテナー イメージから Form Recognizer コンテナーを実行します
-* 2 つの CPU コアと 8 ギガバイト (GB) のメモリを割り当てます
-* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
+* コンテナー イメージから Form Recognizer コンテナーを実行します。
+* 2 つの CPU コアと 8 ギガバイト (GB) のメモリを割り当てます。
+* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
-* /input と /output のボリュームをコンテナーにマウントします
+* /input と /output のボリュームをコンテナーにマウントします。
 
 [!INCLUDE [Running multiple containers on the same host H2](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 ### <a name="run-separate-containers-as-separate-docker-run-commands"></a>別個のコンテナーを別個の docker run コマンドとして実行する
 
-同じホスト上でローカルにホストされている Form Recognizer とテキスト認識エンジンの組み合わせについて、2 つの Docker CLI コマンドの例を示します。
+同じホスト上でローカルにホストされている Form Recognizer とテキスト認識エンジンの組み合わせに対して、以下に示す 2 つの Docker CLI コマンドの例を実行します。
 
 ポート 5000 上で最初のコンテナーを実行します。 
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+--mount type=bind,source=c:\input,target=/input  \
+--mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY}
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
 
 ポート 5001 上で 2 番目のコンテナーを実行します。
-
 
 ```bash 
 docker run --rm -it -p 5001:5000 --memory 4g --cpus 1 \
@@ -164,7 +192,7 @@ ApiKey={COMPUTER_VISION_API_KEY}
 
 ### <a name="run-separate-containers-with-docker-compose"></a>Docker Compose を使用して別個のコンテナーを実行する
 
-同じホスト上でローカルにホストされている Form Recognizer とテキスト認識エンジンの組み合わせについて、Docker Compose YAML ファイルの例を示します。 テキスト認識エンジンの `{COMPUTER_VISION_API_KEY}` は、`formrecognizer` と `ocr` の両方のコンテナーで同じでなければなりません。 `formrecognizer` コンテナーでは `ocr` の名前とポートを使用するため、`{COMPUTER_VISION_ENDPOINT_URI}` は `ocr` コンテナーでのみ使用されます。 
+同じホスト上でローカルにホストされている Form Recognizer とテキスト認識エンジンの組み合わせについて、Docker Compose YAML ファイルの次の例を参照してください。 テキスト認識エンジンの `{COMPUTER_VISION_API_KEY}` は、`formrecognizer` と `ocr` の両方のコンテナーで同じでなければなりません。 `formrecognizer` コンテナーでは `ocr` の名前とポートを使用するため、`{COMPUTER_VISION_ENDPOINT_URI}` は `ocr` コンテナーでのみ使用されます。 
 
 ```docker
 version: '3.3'
@@ -182,7 +210,7 @@ services:
     environment:
       eula: accept
       billing: "{COMPUTER_VISION_ENDPOINT_URI}"
-      apikey: {COMPUTER_VISION_API_KEY}  
+      apikey: "{COMPUTER_VISION_API_KEY}"
 
   formrecognizer:
     image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
@@ -196,8 +224,8 @@ services:
           memory: 4g
     environment:
       eula: accept
-      billing: "{BILLING_ENDPOINT_URI}"
-      apikey: {BILLING_KEY}
+      billing: "{FORM_RECOGNIZER_ENDPOINT_URI}"
+      apikey: "{FORM_RECOGNIZER_API_KEY}"
       FormRecognizer__ComputerVisionApiKey: {COMPUTER_VISION_API_KEY}
       FormRecognizer__ComputerVisionEndpointUri: "http://ocr:5000"
       FormRecognizer__SyncProcessTaskCancelLimitInSecs: 75
@@ -211,19 +239,17 @@ services:
         source: c:\input
         target: /input
     ports:
-      - "5000:5000"  
+      - "5000:5000"
 ```
 
-
 > [!IMPORTANT]
-> コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` に加えて `FormRecognizer:ComputerVisionApiKey` と `FormRecognizer:ComputerVisionEndpointUri` のオプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
+> コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` に加えて `FormRecognizer:ComputerVisionApiKey` と `FormRecognizer:ComputerVisionEndpointUri` のオプションを指定する必要があります。そうしないと、コンテナーが起動しません。 詳細については、「[課金](#billing)」を参照してください。
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 |コンテナー|エンドポイント|
 |--|--|
 |form-recognizer|http://localhost:5000
-
 
 ### <a name="form-recognizer"></a>Form Recognizer
 
@@ -235,14 +261,19 @@ Form Recognizer SDK では、既定でオンライン サービスを使用し�
 
 この Azure クラウド初期化呼び出しを使用する方法を
 
-```C#
-var config = FormRecognizerConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+```csharp
+var config =
+    FormRecognizerConfig.FromSubscription(
+        "YourSubscriptionKey",
+        "YourServiceRegion");
 ```
-
 次のようにコンテナー エンドポイントを使用する呼び出しに変更します。
 
-```C#
-var config = FormRecognizerConfig.FromEndpoint("ws://localhost:5000/formrecognizer/v1.0-preview/custom", "YourSubscriptionKey");
+```csharp
+var config =
+    FormRecognizerConfig.FromEndpoint(
+        "ws://localhost:5000/formrecognizer/v1.0-preview/custom",
+        "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>Python の場合
@@ -250,18 +281,23 @@ var config = FormRecognizerConfig.FromEndpoint("ws://localhost:5000/formrecogniz
 この Azure クラウド初期化呼び出しを使用する方法を
 
 ```python
-formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=formrecognizer_key, region=service_region)
+formrecognizer_config =
+    formrecognizersdk.FormRecognizerConfig(
+        subscription=formrecognizer_key, region=service_region)
 ```
 
 次のようにコンテナー エンドポイントを使用する呼び出しに変更します。
 
 ```python
-formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=formrecognizer_key, endpoint="ws://localhost:5000/formrecognizer/v1.0-preview/custom"
+formrecognizer_config = 
+    formrecognizersdk.FormRecognizerConfig(
+        subscription=formrecognizer_key,
+        endpoint="ws://localhost:5000/formrecognizer/v1.0-preview/custom"
 ```
 
 ### <a name="form-recognizer"></a>Form Recognizer
 
-コンテナーは、[こちら](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel)にある REST エンドポイント API シリーズを提供します。
+コンテナーは、REST エンドポイント API を提供します。これは、[Form Recognizer API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel) のページにあります。
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -273,7 +309,9 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-コンテナーを実行するとき、コンテナーでは **stdout** と **stderr** を使用して、コンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立つ情報を出力します。
+出力[マウント](form-recognizer-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 
@@ -283,7 +321,7 @@ Form Recognizer コンテナーでは、Azure アカウントの _Form Recognize
 
 これらのオプションの詳細については、「[コンテナーの構成](form-recognizer-container-configuration.md)」を参照してください。
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video courses -->
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
@@ -294,13 +332,13 @@ Form Recognizer コンテナーでは、Azure アカウントの _Form Recognize
 * Form Recognizer は、Docker 用の Linux コンテナーを 1 つ提供します。
 * コンテナー イメージは、Azure のプライベート コンテナー レジストリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
-* REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Form Recognizer コンテナーの操作を呼び出すことができます。
-* コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
+* REST API または REST SDK のいずれかを使用して、コンテナーのホスト URI を指定することによって、Form Recognizer コンテナーの操作を呼び出すことができます。
+* コンテナーをインスタンス化するときには、課金情報を指定する必要があります。
 
 > [!IMPORTANT]
 >  Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* 構成設定について、[コンテナーの構成](form-recognizer-container-configuration.md)を確認する
-* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する
+* 構成設定について、[コンテナーの構成](form-recognizer-container-configuration.md)を確認します。
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用します。

@@ -1,21 +1,15 @@
 ---
 title: MetaMask を Azure Blockchain Service ネットワークに接続する
 description: MetaMask を使用して Azure Blockchain Service ネットワークに接続し、スマート コントラクトをデプロイします。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 09/12/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: db029cee6edcd14d29c83964e5bf75aa45077e7e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.reviewer: janders
+ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029950"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205106"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>クイック スタート:MetaMask を使用してスマート コントラクトを接続およびデプロイする
 
@@ -25,21 +19,22 @@ ms.locfileid: "65029950"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure Blockchain メンバーを作成する](create-member.md)
+* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
 * [MetaMask ブラウザー拡張機能](https://metamask.io)をインストールする
 * MetaMask [ウォレット](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time)を生成する
 
 ## <a name="get-endpoint-address"></a>エンドポイント アドレスを取得する
 
-ブロックチェーン ネットワークに接続するには、Azure Blockchain Service エンドポイント アドレスが必要です。 エンドポイント アドレスとアクセス キーは、Azure portal で確認できます。
+ブロックチェーン ネットワークに接続するには、Azure Blockchain Service エンドポイント アドレスが必要です。 エンドポイント アドレスとアクセス キーは、Azure portal に表示されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. Azure Blockchain Service メンバーに移動します。 **[Transaction nodes]\(トランザクション ノード\)** と既定のトランザクション ノード リンクを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. Azure Blockchain Service メンバーに移動します。
+1. **[Transaction nodes]\(トランザクション ノード\)** と既定のトランザクション ノード リンクを選択します。
 
     ![既定のトランザクション ノードを選択する](./media/connect-metamask/transaction-nodes.png)
 
 1. **[接続文字列] > [アクセス キー]** の順に選択します。
-1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** のエンドポイント アドレスをコピーします。 このアドレスは次のセクションで必要になります。
+1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** のエンドポイント アドレスをコピーします。
 
     ![接続文字列](./media/connect-metamask/connection-string.png)
 
@@ -50,10 +45,10 @@ ms.locfileid: "65029950"
 
     ![カスタム RPC](./media/connect-metamask/custom-rpc.png)
 
-1. 前のセクションでコピーしたエンドポイント アドレスを **[New Network]\(新しいネットワーク\) > [New RPC URL]\(新しい RPC URL\)** に入力します。
+1. **[新規ネットワーク] > [New RPC URL]\(新しい RPC URL\)** の順に移動して、上記でコピーしたエンドポイント アドレスを貼り付けます。
 1. **[保存]** を選択します。
 
-    接続が成功すると、ネットワーク ドロップダウンにプライベート ネットワークが表示されます。
+    接続が成功すると、[ネットワーク] ドロップダウンにプライベート ネットワークが表示されます。
 
     ![新しいネットワーク](./media/connect-metamask/new-network.png)
 
@@ -62,20 +57,13 @@ ms.locfileid: "65029950"
 Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と Remix を併用すると、スマート コントラクトをデプロイし、それに対してアクションを実行できます。
 
 1. ブラウザーで `https://remix.ethereum.org` にアクセスします。
-1. **[実行]** を選択します。 
-
-    MetaMask によって、**[Environment]\(環境\)** が **[Injected Web3]\(挿入された Web3\)** に、**[Account]\(アカウント\)** がお使いのネットワークに設定されます。
-
-    ![[Run]\(実行\) タブ](./media/connect-metamask/injected-web3.png)
-
-1. **[Create new file]\(新しいファイルの作成\)** を選択します。
+1. **[Home]\(ホーム\)** タブの **[File]\(ファイル\)** で **[New file]\(新しいファイル\)** を選択します。
 
     新しいファイルに `simple.sol` という名前を付けます。
 
-    ![ファイルを作成する](./media/connect-metamask/create-file.png)
+    ![[ファイルの作成]](./media/connect-metamask/create-file.png)
 
     **[OK]** を選択します。
-
 1. Remix エディターに次の **simple スマート コントラクト** コードを貼り付けます。
 
     ```solidity
@@ -99,20 +87,24 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
     ```
 
     この **simple コントラクト**では、**balance** という状態変数を宣言します。 2 つの関数が定義されています。 **add** 関数によって **balance** に数値が追加されます。 **get** 関数は **balance** の値を返します。
-
-1. コントラクトをコンパイルするには、**[Compile]\(コンパイル\) > [Start to compile]\(コンパイルの開始\)** の順に選択します。 成功すると、緑色のボックスとコントラクト名が表示されます。
+1. コントラクトをコンパイルするには、まず Solidity コンパイラ ウィンドウを選択し、次に **[Compile simple.sol]\(simple.sol をコンパイルする\)** を選択します。
 
     ![コンパイル](./media/connect-metamask/compile.png)
 
-1. コントラクトを実行するには、**[Run]\(実行\)** タブを選択します。**simple** コントラクト、**[Deploy]\(デプロイ\)** の順に選択します。
+1. **[Deploy & Run]\(展開して実行\)** ウィンドウを選択し、 **[Environment]\(環境\)** を **[Injected Web3]\(挿入された Web3\)** に設定して、MetaMask 経由でブロックチェーン メンバーに接続します。
 
-    ![カスタム RPC](./media/connect-metamask/deploy.png)
+    ![[Run]\(実行\) タブ](./media/connect-metamask/injected-web3.png)
 
-1. 資金が不十分でトランザクションを実行できないことを警告する MetaMask 通知が表示されます。
+1. **simple** コントラクト、 **[デプロイ]** の順に選択します。
+
+    ![配置](./media/connect-metamask/deploy.png)
+
+
+1. MetaMask 通知により、資金不足でトランザクションを実行できないことが警告されます。
 
     パブリック ブロックチェーン ネットワークの場合、トランザクション コストを支払うには Ether が必要です。 これはコンソーシアム内のプライベート ネットワークなので、ガス料金をゼロに設定できます。
 
-1.  **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、**[Gas Price]\(ガス料金\)** を 0 に設定します。
+1.  **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、 **[Gas Price]\(ガス料金\)** を 0 に設定します。
 
     ![ガス料金](./media/connect-metamask/gas-price.png)
 
@@ -123,28 +115,28 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
 
     ![デプロイ済みのコントラクト](./media/connect-metamask/deployed-contract.png)
 
-    コントラクトに定義されている関数にマップされる 2 つのアクション **add** および **get** があります。
+    2 つのアクション **add** および **get** が、コントラクトに定義されている関数にマップされます。
 
-1. ブロックチェーンに対して **add** トランザクションを実行するには、追加する数値を入力し、**[add]** を選択します。
-1. コントラクトをデプロイしたときと同様に、資金が不十分でトランザクションを実行できないことを警告する MetaMask 通知が表示されます。
+1. ブロックチェーンに対して **add** トランザクションを実行するには、追加する数値を入力し、 **[add]** を選択します。 Remix からガスの推定失敗メッセージ "You are sending the transaction to a private blockchain that does not require gas." (ガスを必要としないプライベート ブロックチェーンにトランザクションを送信しようとしています。) が表示される場合があります。 **[Send Transaction]\(トランザクションの送信\)** を選択して、トランザクションを強制的に実行します。
+1. コントラクトをデプロイしたときと同様に、MetaMask 通知により、資金不足でトランザクションを実行できないことが警告されます。
 
     これはコンソーシアム内のプライベート ネットワークなので、ガス料金をゼロに設定できます。
 
-1.  **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、**[Gas Price]\(ガス料金\)** を 0 に設定して、**[Save]\(保存\)** を選択します。
-1. **[Confirm]\(確認\)** を選択して、ブロックチェーンに対してトランザクションを実行します。
+1. **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、 **[Gas Price]\(ガスの価格\)** を 0 に設定して、 **[Save]\(保存\)** を選択します。
+1. **[Confirm]\(確認\)** を選択して、ブロックチェーンにトランザクションを送信します。
 1. **[get]** アクションを選択します。 これは、クエリ ノード データの呼び出しです。 トランザクションは必要ありません。
-1. Remix のデバッグ ウィンドウでは、ブロックチェーンに対するトランザクションに関する詳細を確認できます。
 
-    ![デバッグ履歴](./media/connect-metamask/debug.png)
+Remix のデバッグ ウィンドウに、ブロックチェーンに対するトランザクションの詳細が表示されます。
 
-    **simple** コントラクトの作成、**simple.add** のトランザクション、**simple.get** の呼び出しを確認できます。
+    ![Debug history](./media/connect-metamask/debug.png)
 
-1. また、MetaMask のトランザクション履歴も確認できます。 MetaMask ブラウザー拡張機能を開きます。
-1. **[History]\(履歴\)** セクションでは、デプロイされているコントラクトとトランザクションのログを確認できます。
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
 
-## <a name="next-steps"></a>次の手順
+MetaMask のトランザクション履歴を確認するには、MetaMask ブラウザー拡張機能を開いて、 **[History]\(履歴\)** セクションで、デプロイされたコントラクトとトランザクションのログを調べます。
 
-このクイックスタートでは、MetaMask ブラウザー拡張機能を使用して Azure Blockchain Service トランザクション ノードに接続し、スマート コントラクトをデプロイし、トランザクションをブロックチェーンに送信しました。 次のチュートリアルで、Truffle を使用したトランザクションのデプロイと送信を試してください。
+## <a name="next-steps"></a>次のステップ
+
+このクイックスタートでは、MetaMask ブラウザー拡張機能を使用して Azure Blockchain Service トランザクション ノードに接続し、スマート コントラクトをデプロイし、トランザクションをブロックチェーンに送信しました。 次のチュートリアルで、Ethereum および Truffle 用の Azure Blockchain Development Kit を使用して、トランザクションを介したスマート コントラクト関数の作成、ビルド、デプロイ、実行を試してみます。
 
 > [!div class="nextstepaction"]
-> [トランザクションを送信する](send-transaction.md)
+> [スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ](send-transaction.md)

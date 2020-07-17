@@ -1,22 +1,22 @@
 ---
-title: オンプレミスの Azure AD パスワード保護エージェントのバージョンのリリース履歴 - Azure Active Directory
+title: パスワード保護エージェントのリリース履歴 - Azure Active Directory
 description: バージョンのリリースと動作の変更履歴に関するドキュメント
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861864"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74847851"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD パスワード保護エージェントのバージョン履歴
 
@@ -38,7 +38,7 @@ ms.locfileid: "58861864"
   * ソフトウェアのバージョンおよび Azure テナントのデータは、バージョン 1.2.116.0 を実行している DC エージェントとプロキシでのみ使用可能です。
   * プロキシまたはフォレストの再登録 (または更新) が行われるまでは、Azure テナントのデータは報告されない可能性があります。
 * プロキシ サービスには、.NET 4.7 がインストールされていることが必要になりました。
-  * .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合は、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+  * .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合は、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
   * Server Core システムでは、.NET 4.7 インストーラーが正常に実行するために、/q フラグを渡す必要がある場合があります。
 * プロキシ サービスでは、自動アップグレードがサポートされるようになりました。 自動アップグレードでは、プロキシ サービスと並んでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定で有効になります。
 * 自動アップグレードは、Set-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して有効または無効にすることができます。 現在の設定のクエリは、Get-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して実行できます。
@@ -56,7 +56,7 @@ ms.locfileid: "58861864"
 
 * DC エージェントとプロキシ サービスが Server Core でサポートされるようになりました。 OS の最小要件は前から変更されておらず、DC エージェントには Windows Server 2012、プロキシには Windows Server 2012 R2 です。
 * Register-AzureADPasswordProtectionProxy と Register-AzureADPasswordProtectionForest コマンドレットでは、デバイス コード ベースの Azure 認証モードがサポートされるようになりました。
-* Get-AzureADPasswordProtectionDCAgent コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるバグが解決されます。
+* Get-AzureADPasswordProtectionDCAgent コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるというバグが解決されます。
 * Get-AzureADPasswordProtectionSummaryReport コマンドレットは、壊れた、または無効なサービス接続ポイントを無視します。 これにより、ドメイン コントローラーが出力に複数回表示されることがあるというバグが解決されます。
 * プロキシの PowerShell モジュールが %ProgramFiles%\WindowsPowerShell\Modules から登録されるようになりました。 コンピューターの PSModulePath 環境変数は変更されなくなりました。
 * フォレストまたはドメイン内の登録されたプロキシの検出を支援するために、新しい Get-AzureADPasswordProtectionProxy コマンドレットが追加されました。
@@ -134,6 +134,6 @@ ms.locfileid: "58861864"
 
 初期パブリック プレビュー リリース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD のパスワード保護をデプロイする](howto-password-ban-bad-on-premises-deploy.md)

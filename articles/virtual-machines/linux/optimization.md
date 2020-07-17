@@ -1,28 +1,19 @@
 ---
-title: Azure での Linux VM の最適化 | Microsoft Docs
+title: Azure での Linux VM の最適化
 description: Azure で最適なパフォーマンスが得られるように Linux VM が設定されていることを確認するための、最適化に関するいくつかのヒントを説明します。
-keywords: linux 仮想マシン,仮想マシン linux,ubuntu 仮想マシン
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327371"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757088"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -31,10 +22,10 @@ ms.locfileid: "56327371"
 このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/reference-index) を使用して Azure サブスクリプションにログインしておく必要があります。
 
 ## <a name="azure-os-disk"></a>Azure OS ディスク
-Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、**/dev/sdb** は一時ディスクを表します。  メインの OS ディスク (**/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
+Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、 **/dev/sdb** は一時ディスクを表します。  メインの OS ディスク ( **/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>サイズとパフォーマンスの目標に向けたディスクの追加
-VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 1 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 5,000 IOPS です。
+VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D シリーズのマシンでは 32 個、G シリーズのマシンでは 64 個のディスクを接続できます (ディスクのサイズはそれぞれ、最大 32 TB)。 スペースと IOPS の要件に従って、必要に応じてさらにディスクを追加します。 各ディスクのパフォーマンス目標は、Standard Storage の場合は 500 IOPS、Premium Storage の場合は最大 20,000 IOPS です。
 
 キャッシュ設定が **ReadOnly** または **None** に設定されている Premium Storage ディスクで最高レベルの IOPS を実現するには、Linux でファイル システムをマウントするときに**バリア**を無効にする必要があります。 Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるため、バリアは必要ありません。
 
@@ -51,18 +42,18 @@ IOPS が高いワークロードを処理していて、ディスクに Standard
  
 
 ## <a name="your-vm-temporary-drive"></a>VM の一時ドライブ
-既定では、VM の作成時に、Azure から OS ディスク (**/dev/sda**) と一時ディスク (**/dev/sdb**) が提供されます。  ユーザーが追加するその他のディスクはすべて、**/dev/sdc**、**/dev/sdd**、**/dev/sde** のように表示されます。 一時ディスク (**/dev/sdb**) 上のすべてのデータは持続性がないため、VM のサイズ変更、再デプロイ、メンテナンスなどの特定のイベントによって VM が再起動された場合に失われる可能性があります。  一時ディスクのサイズと種類は、デプロイ時に選択した VM サイズに関連付けられています。 プレミアム サイズの VM (DS、G、DS_V2 の各シリーズ) では、ローカル SSD が一時ドライブに使用され、さらに最大 48,000 IOPS のパフォーマンスが実現します。 
+既定では、VM の作成時に、Azure から OS ディスク ( **/dev/sda**) と一時ディスク ( **/dev/sdb**) が提供されます。  ユーザーが追加するその他のディスクはすべて、 **/dev/sdc**、 **/dev/sdd**、 **/dev/sde** のように表示されます。 一時ディスク ( **/dev/sdb**) 上のすべてのデータは持続性がないため、VM のサイズ変更、再デプロイ、メンテナンスなどの特定のイベントによって VM が再起動された場合に失われる可能性があります。  一時ディスクのサイズと種類は、デプロイ時に選択した VM サイズに関連付けられています。 プレミアム サイズの VM (DS、G、DS_V2 の各シリーズ) では、ローカル SSD が一時ドライブに使用され、さらに最大 48,000 IOPS のパフォーマンスが実現します。 
 
-## <a name="linux-swap-file"></a>Linux のスワップ ファイル
+## <a name="linux-swap-partition"></a>Linux スワップ パーティション
 Azure VM が Ubuntu イメージまたは CoreOS イメージから作成されている場合は、CustomData を使用して cloud-config を cloud-init に送信できます。 cloud-init を使用する[カスタム Linux イメージをアップロード](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)している場合は、cloud-init を使用してスワップ パーティションも構成します。
 
 Ubuntu Cloud Image では、cloud-init を使用してスワップ パーティションを構成する必要があります。 詳細については、「[AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)」をご覧ください。
 
 cloud-init のサポートがないイメージの場合、Azure Marketplace からデプロイされた VM イメージで VM Linux エージェントが OS と統合されています。 このエージェントにより、VM がさまざまな Azure サービスと対話できるようになります。 Azure Marketplace から標準イメージをデプロイしたことを想定すると、Linux スワップ ファイルの設定を正しく構成するには、次の操作を行う必要があります。
 
-**/etc/waagent.conf** ファイル内で 2 つのエントリを探して変更します。 これらのエントリは、専用のスワップ ファイルの存在と、そのスワップ ファイルのサイズを制御します。 変更しようとしているパラメーターは `ResourceDisk.EnableSwap=N` と `ResourceDisk.SwapSizeMB=0` です 
+**/etc/waagent.conf** ファイル内で 2 つのエントリを探して変更します。 これらのエントリは、専用のスワップ ファイルの存在と、そのスワップ ファイルのサイズを制御します。 確認する必要のあるパラメーターは `ResourceDisk.EnableSwap` と `ResourceDisk.SwapSizeMB` です。 
 
-次の設定のパラメーターを変更します。
+適切に有効化されたディスクとマウントされたスワップファイルを有効にするには、パラメーターの設定が次のようになっていることを確認します。
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk.SwapSizeMB={ニーズに合わせたサイズ (MB)} 
@@ -78,7 +69,7 @@ Swap:       524284          0     524284
 ```
 
 ## <a name="io-scheduling-algorithm-for-premium-storage"></a>Premium Storage の I/O スケジューリング アルゴリズム
-2.6.18 Linux カーネルでは、既定の I/O スケジューリング アルゴリズムが Deadline から CFQ (Completely fair queuing アルゴリズム) に変更されました。 ランダム アクセス I/O パターンの場合、CFQ と Deadline のパフォーマンスの違いはごくわずかです。  ディスク I/O パターンの大部分がシーケンシャルである SSD ベースのディスクの場合、NOOP または Deadline アルゴリズムに戻すと I/O パフォーマンスが向上する可能性があります。
+2\.6.18 Linux カーネルでは、既定の I/O スケジューリング アルゴリズムが Deadline から CFQ (Completely fair queuing アルゴリズム) に変更されました。 ランダム アクセス I/O パターンの場合、CFQ と Deadline のパフォーマンスの違いはごくわずかです。  ディスク I/O パターンの大部分がシーケンシャルである SSD ベースのディスクの場合、NOOP または Deadline アルゴリズムに戻すと I/O パフォーマンスが向上する可能性があります。
 
 ### <a name="view-the-current-io-scheduler"></a>現在の I/O スケジューラの表示
 次のコマンドを使用します。  
@@ -126,7 +117,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>ソフトウェア RAID の使用による IOPS の向上
-単一のディスクで実現できる以上の IOPS を必要とするワークロードの場合、複数のディスクから成るソフトウェア RAID 構成を使用する必要があります。 Azure は既にローカルのファブリック層でディスクの回復性を実現しているため、RAID 0 のストライピング構成を使用することで最高レベルのパフォーマンスが実現されます。  ドライブのパーティション分割、フォーマット、マウントを実行する前に、Azure 環境でディスクをプロビジョニングして作成し、それらを Linux VM に接続します。  Azure の Linux VM でのソフトウェア RAID セットアップの構成の詳細については、「**[Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**」を参照してください。
+単一のディスクで実現できる以上の IOPS を必要とするワークロードの場合、複数のディスクから成るソフトウェア RAID 構成を使用する必要があります。 Azure は既にローカルのファブリック層でディスクの回復性を実現しているため、RAID 0 のストライピング構成を使用することで最高レベルのパフォーマンスが実現されます。  ドライブのパーティション分割、フォーマット、マウントを実行する前に、Azure 環境でディスクをプロビジョニングして作成し、それらを Linux VM に接続します。  Azure の Linux VM でのソフトウェア RAID セットアップの構成の詳細については、「 **[Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 」を参照してください。
+
+従来の RAID 構成の代わりとして、複数の物理ディスク を 1 つのストライプ論理ストレージ ボリュームに構成するために、論理ボリューム マネージャー (LVM) をインストールすることもできます。 この構成では、読み取りと書き込みが、ボリューム グループに含まれる複数のディスクに分散されます (RAID0 に似ています)。 パフォーマンス上の理由で、論理ボリュームをストライピングして、アタッチされたすべてのデータ ディスクを読み取りと書き込みで利用できるようにすることを選択できます。  Azure の Linux VM でのストライプ論理ボリュームの構成の詳細については、「 **[Azure で Linux VM の LVM を構成する](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 最適化に関するあらゆる話題と同様に、それぞれの変更の前後にテストを行って、その変更の影響を評価する必要があります。  最適化は段階的なプロセスであり、環境内のコンピューターごとに結果は異なります。  ある構成に効果があっても、それが他の構成に効果があるとは限りません。
@@ -134,5 +127,4 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 関連リソースへの便利なリンクは次のとおりです。
 
 * [Azure Linux エージェント ユーザー ガイド](../extensions/agent-linux.md)
-* [Azure Linux VM 上での MySQL のパフォーマンスを最適化する](classic/optimize-mysql.md)
 * [Linux でのソフトウェア RAID の構成](configure-raid.md)

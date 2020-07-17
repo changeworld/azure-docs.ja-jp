@@ -1,26 +1,16 @@
 ---
-title: TLS 相互認証の構成 - Azure App Service
-description: TLS でクライアント証明書認証を使用するようにアプリを構成する方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: TLS 相互認証の構成
+description: TLS でクライアント証明書を認証する方法を学びます。 Azure App Service では、クライアント証明書をアプリ コードで確認できます。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: cephalin
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671966"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592368"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -30,17 +20,28 @@ ms.locfileid: "56671966"
 > HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。 したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。
 >
 
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
+
 ## <a name="enable-client-certificates"></a>クライアント証明書を有効にする
 
-クライアント証明書を要求するようにアプリを設定するには、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+アプリでクライアント証明書を必須にするようアプリを設定するには、Azure Portal で **[構成]**  >  **[全般設定]** の順に選択して、[Require incoming certificate]\(着信証明書を必須にする\) を **[オン]** にするか、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
+## <a name="exclude-paths-from-requiring-authentication"></a>パスを認証を必要としないものとして除外する
+
+お使いのアプリケーションで相互認証を有効にすると、お使いのアプリのルート下のすべてのパスで、アクセスにクライアント証明書が必要になります。 特定のパスが匿名アクセスできるよう残すには、お使いのアプリケーションを構成するときに除外するパスを定義する必要があります。
+
+除外するパスを構成するには、 **[構成]**  >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
+
+![証明書不要のパス][exclusion-paths]
+
+
 ## <a name="access-client-certificate"></a>クライアント証明書にアクセスする
 
-App Service では、要求の SSL 終了がフロントエンドのロード バランサー側で行われます。 [クライアント証明書を有効にした](#enable-client-certificates)状態で要求をアプリ コードに転送すると、App Service によって `X-ARR-ClientCert` 要求ヘッダーにクライアント証明書が挿入されます。 App Service がこのクライアント証明書に対して行うのは、この証明書をアプリに転送する処理だけです。 クライアント証明書の検証はアプリ コードが行います。
+App Service では、要求の TLS 終了がフロントエンドのロード バランサー側で行われます。 [クライアント証明書を有効にした](#enable-client-certificates)状態で要求をアプリ コードに転送すると、App Service によって `X-ARR-ClientCert` 要求ヘッダーにクライアント証明書が挿入されます。 App Service がこのクライアント証明書に対して行うのは、この証明書をアプリに転送する処理だけです。 クライアント証明書の検証はアプリ コードが行います。
 
 ASP.NET の場合は、**HttpRequest.ClientCertificate** プロパティを通じてクライアント証明書を使用できます。
 
@@ -56,7 +57,7 @@ ASP.NET の場合は、**HttpRequest.ClientCertificate** プロパティを通�
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";
@@ -190,7 +191,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity
@@ -214,3 +215,101 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+## <a name="java-sample"></a>Java サンプル
+
+次の Java クラスは、`X-ARR-ClientCert` から `X509Certificate` インスタンスに証明書をエンコードします。 `certificateIsValid()` は、証明書の拇印が、コンストラクターで指定されたものと一致し、その証明書の有効期限が切れていないことを検証します。
+
+
+```java
+import java.io.ByteArrayInputStream;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.*;
+import java.security.MessageDigest;
+
+import sun.security.provider.X509Factory;
+
+import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
+import java.util.Date;
+
+public class ClientCertValidator { 
+
+    private String thumbprint;
+    private X509Certificate certificate;
+
+    /**
+     * Constructor.
+     * @param certificate The certificate from the "X-ARR-ClientCert" HTTP header
+     * @param thumbprint The thumbprint to check against
+     * @throws CertificateException If the certificate factory cannot be created.
+     */
+    public ClientCertValidator(String certificate, String thumbprint) throws CertificateException {
+        certificate = certificate
+                .replaceAll(X509Factory.BEGIN_CERT, "")
+                .replaceAll(X509Factory.END_CERT, "");
+        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+        byte [] base64Bytes = Base64.getDecoder().decode(certificate);
+        X509Certificate X509cert =  (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(base64Bytes));
+
+        this.setCertificate(X509cert);
+        this.setThumbprint(thumbprint);
+    }
+
+    /**
+     * Check that the certificate's thumbprint matches the one given in the constructor, and that the
+     * certificate has not expired.
+     * @return True if the certificate's thumbprint matches and has not expired. False otherwise.
+     */
+    public boolean certificateIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        return certificateHasNotExpired() && thumbprintIsValid();
+    }
+
+    /**
+     * Check certificate's timestamp.
+     * @return Returns true if the certificate has not expired. Returns false if it has expired.
+     */
+    private boolean certificateHasNotExpired() {
+        Date currentTime = new java.util.Date();
+        try {
+            this.getCertificate().checkValidity(currentTime);
+        } catch (CertificateExpiredException | CertificateNotYetValidException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check the certificate's thumbprint matches the given one.
+     * @return Returns true if the thumbprints match. False otherwise.
+     */
+    private boolean thumbprintIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] der = this.getCertificate().getEncoded();
+        md.update(der);
+        byte[] digest = md.digest();
+        String digestHex = DatatypeConverter.printHexBinary(digest);
+        return digestHex.toLowerCase().equals(this.getThumbprint().toLowerCase());
+    }
+
+    // Getters and setters
+
+    public void setThumbprint(String thumbprint) {
+        this.thumbprint = thumbprint;
+    }
+
+    public String getThumbprint() {
+        return this.thumbprint;
+    }
+
+    public X509Certificate getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(X509Certificate certificate) {
+        this.certificate = certificate;
+    }
+}
+```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

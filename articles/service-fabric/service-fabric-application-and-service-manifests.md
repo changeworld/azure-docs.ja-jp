@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric のアプリとサービスの記述 | Microsoft Docs
+title: Azure Service Fabric のアプリとサービスの記述
 description: マニフェストを使って Service Fabric のアプリケーションとサービスを記述する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 12/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 8/12/2019
+ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662144"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75349973"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
 この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  詳細な例については、[アプリケーションとサービスのマニフェストの例](service-fabric-manifest-examples.md)を参照してください。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
@@ -74,7 +63,7 @@ ms.locfileid: "58662144"
 
 **EntryPoint** によって指定された実行可能ファイルは通常は実行時間の長いサービス ホストです。 **SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *LocalSystem* アカウント)。  別々にセットアップされたエントリ ポイントの存在により、長期にわたって高い権限でサービス ホストを実行する必要がなくなります。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 プロセスが終了またはクラッシュした場合、結果のプロセスは監視されて再起動されます (**SetupEntryPoint** で再起動)。  
 
-**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する場合や、昇格した特権で操作を実行する場合になります。 例: 
+**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する場合や、昇格した特権で操作を実行する場合になります。 次に例を示します。
 
 * サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述されの実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
 * セキュリティ証明書のインストールによるアクセス制御の設定
@@ -96,8 +85,12 @@ SetupEntryPoint の構成方法について詳しくは、「[エントリ ポ�
 </Settings>
 ```
 
-Service Fabric サービス **エンドポイント**は、Service Fabric のリソースの例です。Service Fabric のリソースは、コンパイル済みのコードを変更せずに、宣言および変更できます。 サービス マニフェストで指定した Service Fabric リソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。 サービス マニフェストでエンドポイント リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。 詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
+Service Fabric のサービス **エンドポイント**は、Service Fabric リソースの例です。 Service Fabric リソースは、コンパイルしたコードを変更せずに宣言/変更することができます。 サービス マニフェストで指定した Service Fabric リソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。 サービス マニフェストでエンドポイント リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。 詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
 
+ 
+> [!WARNING]
+> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に**正常性に関する警告**が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
+>
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -147,6 +140,7 @@ For more information about other features supported by service manifests, refer 
     <Service Name="VotingWeb" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="VotingWebType" InstanceCount="[VotingWeb_InstanceCount]">
         <SingletonPartition />
+         <PlacementConstraints>(NodeType==NodeType0)</PlacementConstraints
       </StatelessService>
     </Service>
   </DefaultServices>
@@ -163,7 +157,13 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates** (前の例では設定されていません) では、[HTTPS エンドポイントのセットアップ](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)または[アプリケーション マニフェストでのシークレットの暗号化](service-fabric-application-secret-management.md)に使われる証明書を宣言します。
 
-**Policies** (前の例では設定されていません) では、アプリケーション レベルで設定するログ コレクション、[既定の実行アカウント](service-fabric-application-runas-security.md)、[正常性](service-fabric-health-introduction.md#health-policies)、[セキュリティ アクセス](service-fabric-application-runas-security.md)の各ポリシーを記述します。
+**配置の制約**は、サービスを実行する場所を定義するステートメントです。 これらのステートメントは、1 つまたは複数のノードのプロパティに対して選択した個々のサービスに接続されます。 詳細については、「[配置の制約とノードのプロパティの構文](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)」を参照してください。
+
+**Policies** (前の例では設定されていません) では、サービスが Service Fabric ランタイムにアクセスできるかどうかなど、アプリケーション レベルで設定するログ コレクション、[既定の実行アカウント](service-fabric-application-runas-security.md)、[正常性](service-fabric-health-introduction.md#health-policies)、[セキュリティ アクセス](service-fabric-application-runas-security.md)の各ポリシーを記述します。
+
+> [!NOTE] 
+> 既定で、Service Fabric アプリケーションは、アプリケーション固有の要求を受け入れるエンドポイント、および Fabric とアプリケーション固有のファイルを含むホストのファイル パスを指す環境変数の形式で Service Fabric ランタイムにアクセスすることができます。 アプリケーションが信頼できないコード (つまり、出所が不明のコード、または実行することが安全でないことをアプリケーション所有者が認識しているコード) をホストしている場合は、このアクセス権を無効にすることを検討してください。 詳細については、[Service Fabric でのセキュリティのベスト プラクティス](service-fabric-best-practices-security.md#platform-isolation)に関する記事を参照してください。 
+>
 
 **Principals** (前の例では設定されていません) では、[サービスの実行およびサービスのリソースのセキュリティ保護](service-fabric-application-runas-security.md)に必要なセキュリティ プリンシパル (ユーザーまたはグループ) を記述します。  プリンシパルは、**Policies** セクションで参照されます。
 
@@ -180,7 +180,7 @@ For more information about other features supported by application manifests, re
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [アプリケーションをパッケージ化](service-fabric-package-apps.md)してデプロイできるようにします。
 - [アプリケーションをデプロイおよび削除](service-fabric-deploy-remove-applications.md)します。
 - [異なるアプリケーション インスタンスのパラメーターおよび環境変数を構成](service-fabric-manage-multiple-environment-app-configuration.md)します。

@@ -1,19 +1,18 @@
 ---
 title: Azure Analysis Services のコード、プロジェクト、データベースのサンプル | Microsoft Docs
-description: Azure Analysis Services のコード、プロジェクト、データベースのサンプルについて説明します。
+description: この記事では、Azure Analysis Services のコード、プロジェクト、データベースのサンプルについて学ぶためのリソースを説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fccf7bb5abafe75017a8df91f1f88a98238c74b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2b06a7ee41a69e32f44c44cdec0da6a47ec4b284
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704207"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731868"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 
@@ -27,22 +26,25 @@ GitHub の [Analysis Services](https://github.com/Microsoft/Analysis-Services) �
 
 GitHub の「[Adventure Works for Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services)」(Analysis Services 用 Adventure Works) は、最もよく使用されている表形式のサンプル モデル プロジェクトです。 VS プロジェクトまたは表形式の完全なサンプル モデル データベースをダウンロードすることができます。
 
+## <a name="sample-database-on-azure"></a>Azure 上のサンプル データベース
+
+Azure Synapse Analytics (SQL Data Warehouse) には、プロビジョニングされたリソースに含めることができるサンプルの AdventureWorksDW データベースが用意されています。 詳しくは、「[クイック スタート: Azure Synapse Analytics の SQL プールを作成し、クエリを実行する](/azure/sql-data-warehouse/create-data-warehouse-portal)」を参照してください。
 
 ## <a name="sample-databases-on-github"></a>GitHub 上のサンプル データベース
 
 GitHub 上のこれらのサンプル データベースを使用して、独自のモデルを作成およびテストできます。 
 
-[Adventure Works サンプル データベース](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+[Adventure Works サンプル データベース](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 
 [Wide World Importers サンプル データベース](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 
 ## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Azure Portal の Adventure Works Internet Sales サンプル モデル
 
-Azure Portal に Analysis Services サーバーがある場合、サンプル モデルをすばやく簡単に作成できます。 Azure Portal のサーバーの概要ページで、**[新しいモデル]** をクリックし、**[データ ソースを選ぶ]** で **[サンプル データ]** を選択します。
+Azure Portal に Analysis Services サーバーがある場合、サンプル モデルをすばやく簡単に作成できます。 Azure Portal のサーバーの概要ページで、 **[新しいモデル]** をクリックし、 **[データ ソースを選ぶ]** で **[サンプル データ]** を選択します。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Adventure Works チュートリアル](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Adventure Works チュートリアル](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Azure のオンプレミスのデータゲートウェイ](analysis-services-gateway.md)  

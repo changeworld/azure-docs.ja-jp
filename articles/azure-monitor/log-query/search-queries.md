@@ -1,32 +1,19 @@
 ---
 title: Azure Monitor ログでの検索クエリ | Microsoft Docs
 description: この記事では、Azure Monitor ログ クエリで検索の使用を開始するためのチュートリアルを提供します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 2df4cf994e118fef9048504daf40fabc1625c375
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 08/06/2018
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77660242"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
-
-> [!NOTE]
-> このチュートリアルを完了する前に、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 Azure Monitor ログ クエリは、テーブル名または search コマンドで始めることができます。 このチュートリアルでは、検索ベースのクエリについて説明します。 それぞれの方法に利点があります。
 
 テーブル ベースのクエリは、クエリの範囲を設定することから始まるので、検索クエリよりも効率的になる傾向があります。 検索クエリはあまり構造化されていないため、複数の列やテーブル全体で特定の値を検索するときに適しています。 **search** を使用すると、指定されたテーブルまたはすべてのテーブルのすべての列をスキャンし、指定した値を見つけることができます。 処理されるデータの量は膨大になる可能性があります。そのため、このようなクエリの処理には時間がかかり、非常に多数の結果セットが返される可能性があります。
@@ -56,7 +43,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>テーブルと列の範囲指定
-既定で、**search** ではデータ セット内のすべての列が評価されます。 特定の列のみを検索するには、次の構文を使用します。
+既定で、**search** ではデータ セット内のすべての列が評価されます。 特定の列 (次の例では *Source*  という名前) のみを検索するには、次の構文を使用します。
 
 ```Kusto
 search in (Event) Source:"error"
@@ -64,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> `:` ではなく `==` を使用すると、大文字と小文字の区別を含め、*Source* 列の値が "error" と完全一致するレコードが結果に含まれます。 ':' を使用すると、*Source* の値が "error code 404" や "Error" などのレコードは含まれません。
+> `:` ではなく `==` を使用すると、大文字と小文字の区別を含め、*Source* 列の値が "error" と完全一致するレコードが結果に含まれます。 ':' を使用すると、*Source* の値が "error code 404" や "Error" などのレコードが含まれます。
 
 ## <a name="case-sensitivity"></a>大文字と小文字の区別
 既定で、用語の検索では大文字と小文字が区別されないため、"dns" を検索すると、"DNS"、"dns"、"Dns" などの結果が返されます。 大文字と小文字を区別して検索するには、`kind` オプションを使用します。
@@ -142,6 +129,6 @@ search in (Event) "win"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - その他のチュートリアルについては、[Kusto クエリ言語サイト](/azure/kusto/query/)を参照してください。

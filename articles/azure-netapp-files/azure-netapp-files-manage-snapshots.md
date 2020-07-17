@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880816"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78267901"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
-Azure NetApp Files を使用すると、ボリュームのオンデマンド スナップショットを作成したり、スナップショットから新しいボリュームを復元したりできます。
+Azure NetApp Files を使用すると、ボリュームのオンデマンド スナップショットを手動で作成したり、スナップショットから新しいボリュームを復元したりできます。 Azure NetApp Files サービスでは、ボリューム スナップショットは自動的に作成されません。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>ボリュームのオンデマンド スナップショットを作成する
 
 スナップショットは、オンデマンドでのみ作成できます。 スナップショット ポリシーは、現在サポートされていません。
 
-1.  [ボリューム] ブレードで、**[スナップショット]** をクリックします。
+1.  [ボリューム] ブレードで、 **[スナップショット]** をクリックします。
 
     ![スナップショットに移動する](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -41,7 +41,7 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
 
     ![新しいスナップショット](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. Click **OK**. 
+4. **[OK]** をクリックします。 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>スナップショットから新しいボリュームを復元する
 
@@ -53,12 +53,12 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
     ![スナップショットから新しいボリュームを復元する](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. [新しいボリューム] ウィンドウで、新しいボリュームの情報を指定します。  
-    * **[名前]**   
+    * **[名前]**    
         作成するボリュームの名前を指定します。  
         
         名前はリソース グループ内で一意である必要があります。 3 文字以上になるようにしてください。  任意の英数字を使用できます。
 
-    * **[ファイル パス]**     
+    * **[ファイル パス]**      
         新しいボリュームのエクスポート パスを作成する際に使用するファイル パスを指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。   
         
         マウント ターゲットは、NFS サービスの IP アドレスのエンドポイントです。 自動的に生成されます。   
@@ -81,9 +81,9 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. Click **OK**.   
+5. **[OK]** をクリックします。   
     スナップショットから復元された新しいボリュームが [ボリューム] ブレードに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)

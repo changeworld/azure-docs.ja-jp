@@ -4,7 +4,7 @@ description: Azure で仮想ネットワークを削除できない問題を解�
 services: virtual-network
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2a64f42c8672972939bb2870ba40876e5cc8d855
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415221"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591949"
 ---
-# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング: Azure で仮想ネットワークを削除できない
+# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング:Azure で仮想ネットワークを削除できない
 
-Microsoft Azure で仮想ネットワークを削除しようとすると、エラーが表示されることがあります。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。 
+Microsoft Azure で仮想ネットワークを削除しようとすると、エラーが表示されることがあります。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -42,7 +42,7 @@ Microsoft Azure で仮想ネットワークを削除しようとすると、エ�
 
 仮想ネットワークを削除するには、まず仮想ネットワーク ゲートウェイを削除する必要があります。
 
-従来の仮想ネットワークの場合は、Azure Portal で従来の仮想ネットワークの **[概要]** ページに移動します。 仮想ネットワークでゲートウェイが実行中の場合は、**[VPN 接続]** セクションにゲートウェイの IP アドレスが表示されます。 
+従来の仮想ネットワークの場合は、Azure Portal で従来の仮想ネットワークの **[概要]** ページに移動します。 仮想ネットワークでゲートウェイが実行中の場合は、 **[VPN 接続]** セクションにゲートウェイの IP アドレスが表示されます。 
 
 ![ゲートウェイが実行されていないか確認する](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
 
@@ -66,7 +66,7 @@ Azure Active Directory ドメイン サービスが有効になっていて仮�
 
 ![接続デバイスの確認](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-サービスを無効にするには、「[Azure Portal を使用して Azure Active Directory Domain Services を無効にする](../active-directory-domain-services/active-directory-ds-disable-aadds.md)」をご覧ください。
+サービスを無効にするには、「[Azure Portal を使用して Azure Active Directory Domain Services を無効にする](../active-directory-domain-services/delete-aadds.md)」をご覧ください。
 
 ### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>仮想ネットワークが他のリソースに接続されていないか確認する
 
@@ -90,7 +90,7 @@ Azure Active Directory ドメイン サービスが有効になっていて仮�
 
     Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Virtual Network](virtual-networks-overview.md)
 - [Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)

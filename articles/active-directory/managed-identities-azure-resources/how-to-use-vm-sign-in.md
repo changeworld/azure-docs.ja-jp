@@ -1,5 +1,5 @@
 ---
-title: Azure VM 上の Azure リソースのマネージド ID を使用してサインインする方法
+title: Azure VM 上でマネージド ID を使用してサインインする - Azure AD
 description: Azure リソース サービス プリンシパルの Azure VM マネージド ID を使用して、スクリプト クライアントのサインインとリソースへのアクセスを行うための手順を追った説明と例。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66112970"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74547389"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 上の Azure リソースのマネージド ID を使用してサインインする方法 
 
@@ -41,7 +41,7 @@ ms.locfileid: "66112970"
 
 ## <a name="overview"></a>概要
 
-Azure リソースのマネージド ID は、[サービス プリンシパル オブジェクト](../develop/developer-glossary.md#service-principal-object)を提供します。これは、VM 上で [Azure リソースのマネージド ID を有効にしたときに作成](overview.md#how-does-it-work)されます。 サービス プリンシパルに Azure のリソースへのアクセス権を付与し、スクリプトまたはコマンドライン クライアントがサインインおよびリソースにアクセスするための ID として使用できます。 従来では、独自の ID でセキュリティで保護されたリソースにアクセスするには、スクリプト クライアントは以下を実行する必要がありました。  
+Azure リソースのマネージド ID は、[サービス プリンシパル オブジェクト](../develop/developer-glossary.md#service-principal-object)を提供します。これは、VM 上で [Azure リソースのマネージド ID を有効にしたときに作成](overview.md#how-does-the-managed-identities-for-azure-resources-work)されます。 サービス プリンシパルに Azure のリソースへのアクセス権を付与し、スクリプトまたはコマンドライン クライアントがサインインおよびリソースにアクセスするための ID として使用できます。 従来では、独自の ID でセキュリティで保護されたリソースにアクセスするには、スクリプト クライアントは以下を実行する必要がありました。  
 
    - Azure AD で機密/Web クライアント アプリケーションとして登録し合意されている
    - (多くの場合、スクリプトに埋め込まれている) アプリの資格情報を使用して、そのサービス プリンシパルを使ってサインインする。
@@ -96,7 +96,7 @@ Azure AD をサポートするリソースで、Azure リソースのマネー�
 
 いずれかが正しくない場合は、Azure リソースのマネージド ID をリソース上にもう一度展開するか、展開エラーのトラブルシューティングを行う必要があります。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM 上で Azure リソースのマネージド ID を有効にするには、「[Configure managed identities for Azure resources on an Azure VM using PowerShell](qs-configure-powershell-windows-vm.md)」(PowerShell を使用して VM 上に Azure リソースのマネージド ID を構成する)、または「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する](qs-configure-cli-windows-vm.md)」を参照してください。
 

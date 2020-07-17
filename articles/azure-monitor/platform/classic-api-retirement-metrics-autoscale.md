@@ -1,18 +1,15 @@
 ---
-title: メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
+title: Azure Monitor のメトリックと自動スケーリング用デプロイ API の提供終了
 description: メトリックおよび自動スケーリングのクラシック API (Azure Service Management (ASM) や RDFE デプロイ モデルともいう) の提供終了
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.author: robb
-ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433093"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114225"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 
@@ -38,7 +35,7 @@ Azure ポータルまたはさまざまな[監視パートナー サービス](.
 
 コードまたはカスタム ツールでクラシック API を呼び出しているかどうかがわからない場合は、以下を参照してください。
 
-- コードまたはツールで参照されている URI を確認します。 クラシック API では https://management.core.windows.net という URI が使用されます。 使用する必要がある、Resource Manager ベースの API の新しい URI は https://management.azure.com/ で始まります。
+- コードまたはツールで参照されている URI を確認します。 クラシック API では https://management.core.windows.net という URI が使用されます。 使用する必要がある、Resource Manager ベースの API の新しい URI は `https://management.azure.com/` で始まります。
 
 - ご利用のコンピューター上のアセンブリ名を比較します。 古いクラシック アセンブリは https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ にあります。
 
@@ -79,7 +76,7 @@ Azure サービスやそのワークロードに直接影響はありません�
 
 メトリックの場合: *この API は推奨されていません。Azure ポータル、Azure Monitor SDK、PowerShell、CLI を使用して、メトリックのクエリを実行してください*。
 
-## <a name="email-notifications"></a>電子メール通知
+## <a name="email-notifications"></a>メール通知
 
 提供終了に関する通知が、次のアカウント ロールのメール アドレスで送信されました。 
 
@@ -88,7 +85,7 @@ Azure サービスやそのワークロードに直接影響はありません�
 
 ご質問がある場合は、MonitorClassicAPIhelp@microsoft.com からお問い合わせください。  
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 - [Azure Monitor の新しい REST API](https://docs.microsoft.com/rest/api/monitor/) 
 - [新しい Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

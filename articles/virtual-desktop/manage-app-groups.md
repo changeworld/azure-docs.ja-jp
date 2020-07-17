@@ -1,79 +1,143 @@
 ---
-title: Windows Virtual Desktop プレビューのアプリ グループを管理する - Azure
-description: Windows Virtual Desktop プレビューのテナントを Azure Active Directory に設定する方法を説明します。
+title: Windows Virtual Desktop ポータルのアプリ グループを管理する - Azure
+description: Azure portal を使用して Windows Virtual Desktop アプリ グループを管理する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/30/2020
 ms.author: helohr
-ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+manager: lizross
+ms.openlocfilehash: f072ed8a758173645c886cabf0b20f9e123cbbab
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233904"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612166"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューのアプリ グループを管理する
+# <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
-Windows Virtual Desktop プレビューの新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
+>[!IMPORTANT]
+>このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
+>
+> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * RemoteApp グループを作成する。
-> * RemoteApp へのアクセスを許可する。
-
-作業を開始する前に、PowerShell セッションで使用する Windows Virtual Desktop モジュール [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します (まだ済んでいない場合)。
+> * RemoteApp プログラムへのアクセスを許可する。
 
 ## <a name="create-a-remoteapp-group"></a>RemoteApp グループを作成する
 
-1. 次の PowerShell コマンドレットを実行して、新しい空の RemoteApp アプリ グループを作成します。
+Azure portal または PowerShell を使用してホスト プールとセッション ホスト VM を作成済みである場合、Azure portal から次の手順に従ってアプリケーション グループを追加できます。
 
-   ```powershell
-   New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
-   ```
+1.  [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. (省略可) アプリ グループが作成されたことを確認したければ、次のコマンドレットを実行すると、ホスト プールのすべてのアプリ グループが一覧表示されます。
+2.  **[Windows Virtual Desktop]** を検索して選択します。
 
-   ```powershell
-   Get-RdsAppGroup <tenantname> <hostpoolname>
-   ```
+3.  ページの左側のメニューから **[アプリケーション グループ]** を選択し、 **[+ 追加]** を選択します。
 
-3. 次のコマンドレットを実行して、ホスト プールの仮想マシン イメージにあるスタート メニュー アプリの一覧を取得します。 **FilePath**、**IconPath**、**IconIndex** など、公開したいアプリケーションの重要な情報の値を書き留めます。
+4. **[基本]** タブで、アプリ グループを作成するサブスクリプション グループとリソース グループを選択します。 既存のリソース グループを選択せずに、新しいリソース グループを選択することもできます。
 
-   ```powershell
-   Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
-   ```
+5. **[ホスト プール]** の横にあるドロップダウン メニューから、アプリケーション グループに関連付けるホスト プールを選択します。
+
+    >[!NOTE]
+    >アプリケーション グループに関連付けるホスト プールを選択する必要があります。 アプリ グループには、セッション ホストから提供されるアプリまたはデスクトップがまとめられ、セッション ホストはホスト プールに属しています。 アプリ グループには、その作成時にホスト プールを関連付ける必要があります。
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure portal の [基本] タブのスクリーンショット。](media/basics-tab.png)
+
+6. アプリケーション グループをホスト プールに追加したい場合は、画面の左側にあるメニューから **[ホスト プール]** を選択します。
    
-4. 次のコマンドレットを実行して、appalias に基づくアプリケーションをインストールします。 appalias は、手順 3. の出力を実行すると利用できるようになります。
+    次に、アプリケーション グループの追加先となるホスト プールの名前を選択します。
+   
+    その後、画面の左側にあるメニューから **[アプリケーション グループ]** を選択し、 **[+ 追加]** を選択します。
 
-   ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
-   ```
+    最後に、アプリ グループを作成するサブスクリプション グループとリソース グループを選択します。 既存のリソース グループの名前をドロップダウン メニューから選択することも、 **[新規作成]** を選択してリソース グループを新たに作成することもできます。
 
-5. (省略可) 次のコマンドレットを実行して、手順 1. で作成したアプリケーション グループに新しい RemoteApp を公開します。
+      >[!NOTE]
+      >アプリケーション グループをホスト プールに追加すると、アプリケーション グループに関連付けられるホスト プールが最初から選択されています。これは、ホスト プールが操作の起点となっているためです。
+      > 
+      > [!div class="mx-imgBorder"]
+      >![ホスト プールが事前に選択されている [基本] タブのスクリーンショット。](media/host-pool-selected.png)
 
-   ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
-   ```
+7. [Application group type]\(アプリケーション グループの種類\) で **[RemoteApp]** を選択し、RemoteApp の名前を入力します。
 
-6. アプリが公開されたことを確認するために、次のコマンドレットを実行します。
+      > [!div class="mx-imgBorder"]
+      > ![[Application group type]\(アプリケーション グループの種類\) のフィールドのスクリーンショット。 [RemoteApp] が強調表示されている。](media/remoteapp-button.png)
 
-   ```powershell
-   Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
-   ```
+8.  **[割り当て]** タブを選択します。
 
-7. このアプリ グループに公開するアプリケーションごとに手順 1. から手順 5. を繰り返します。
-8. 次のコマンドレットを実行して、アプリ グループ内の RemoteApp へのアクセスをユーザーに許可します。
+9.  個々のユーザーまたはユーザー グループをアプリ グループに公開するために、 **[+Add Azure AD users or user groups]\(+ Azure AD ユーザーまたはユーザー グループの追加\)** を選択します。
 
-   ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
-   ```
+10.  アプリの追加先となるユーザーの数を選択します。 ユーザーとユーザー グループは、複数選択することもできます。
 
-## <a name="next-steps"></a>次の手順
+     > [!div class="mx-imgBorder"]
+     > ![ユーザー選択メニューのスクリーンショット。](media/select-users.png)
 
-このチュートリアルでは、アプリ グループを作成して、それに RemoteApp を設定し、アプリ グループにユーザーを割り当てる方法について説明しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
+11.  **[選択]** を選択します。
 
-- [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](connect-windows-7-and-10.md)
-- [Windows Virtual Desktop プレビュー Web クライアントに接続する](connect-web.md)
+12.  **[アプリケーション]** タブを選択し、 **[+ アプリケーションの追加]** を選択します。
+
+13.  スタート メニューからアプリケーションを追加するには、次の手順に従います。 
+
+      - **[アプリケーション ソース]** に移動し、ドロップダウン メニューから **[スタート メニュー]** を選択します。 次に、 **[アプリケーション]** に移動し、ドロップダウン メニューからアプリケーションを選択します。
+
+     > [!div class="mx-imgBorder"]
+     > ![[スタート メニュー] が選択されたアプリケーションの追加画面のスクリーンショット。](media/add-app-start.png)
+
+      - クライアント上でユーザーに対して表示されるアプリケーションの名前を **[表示名]** に入力します。
+
+      - 他のオプションはそのままにして、 **[保存]** を選択します。
+
+14. 特定のファイル パスからアプリケーションを追加するには、次の手順に従います。
+
+      - **[アプリケーション ソース]** に移動し、ドロップダウン メニューから **[ファイル パス]** を選択します。
+
+      - 関連付けられたホスト プールに登録されているセッション ホスト上のアプリケーションのパスを入力します。
+
+      - **[アプリケーション名]** 、 **[表示名]** 、 **[アイコンのパス]** 、 **[アイコンのインデックス]** の各フィールドにアプリケーションの詳細を入力します。
+
+      - **[保存]** を選択します。
+
+     > [!div class="mx-imgBorder"]
+     > ![アプリケーションの追加ページのスクリーンショット (ファイル パスを選択したところ)。](media/add-app-file.png)
+
+     アプリケーション グループに追加するすべてのアプリケーションについて、この手順を繰り返します。
+
+15.  次に、 **[ワークスペース]** タブを選択します。
+
+16.  アプリ グループをワークスペースに登録したい場合は、 **[Register application group]\(アプリケーション グループの登録\)** に移動し、 **[はい]** を選択します。 後からアプリ グループを登録する場合は、 **[いいえ]** を選択します。
+
+17.  **[はい]** を選択した場合は、アプリ グループの登録先として既存のワークスペースを選択できます。
+       
+       >[!NOTE]
+       >アプリ グループを登録できるのは、ホスト プールと同じ場所に作成されたワークスペースだけです。 さらに、 先ほどワークスペースに対し、新しいアプリ グループと同じホスト プールにある別のアプリ グループを登録した場合、そのワークスペースが選択され、編集することはできません。 特定のホスト プールにあるアプリ グループはすべて、同じワークスペースに登録する必要があります。
+
+     > [!div class="mx-imgBorder"]
+     > ![既存のワークスペースに対するアプリケーション グループの登録ページのスクリーンショット。 ホスト プールがあらかじめ選択されている。](media/register-existing.png)
+
+18. ワークスペースを整理しやすいようタグを作成したい場合は、必要に応じて **[タグ]** タブを選択し、目的のタグ名を入力します。
+
+19. 完了したら、 **[確認および作成]** タブを選択します。
+
+20. 検証プロセスが完了するまで少しかかります。 完了したら、 **[作成]** を選択してアプリ グループをデプロイします。
+
+デプロイ プロセスでは、次の処理が自動的に実行されます。
+
+- RemoteApp アプリ グループを作成する。
+- 選択されたアプリをアプリ グループに追加する。
+- 選択されたユーザーとユーザー グループに公開されたアプリ グループを公開する。
+- アプリ グループを登録する (そのように選択した場合)。
+- 後でダウンロードして保存できるよう、構成に基づいて Azure Resource Manager テンプレートへのリンクを作成する。
+
+## <a name="next-steps"></a>次のステップ
+
+このチュートリアルでは、アプリ グループを作成して、RemoteApp プログラムによりそれに値を設定し、アプリ グループにユーザーを割り当てる方法について説明しました。 検証ホスト プールを作成する方法については、次のチュートリアルを参照してください。 運用環境に展開する前に、検証ホスト プールを使用してサービスの更新プログラムを監視できます。
+
+> [!div class="nextstepaction"]
+> [サービスの更新プログラムを検証するためのホスト プールを作成する](./create-validation-host-pool.md)

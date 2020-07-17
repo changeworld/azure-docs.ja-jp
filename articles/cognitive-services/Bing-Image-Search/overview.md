@@ -9,15 +9,15 @@ ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 12/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6bd8c472aa659bec31440292e20328865b1cb531
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60917141"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79134529"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Bing Image Search API とは
 
@@ -31,9 +31,9 @@ Bing Image Search API では画像のみの検索結果が提供されますが�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、アプリのエクスペリエンスを向上します。 |
 | [画像の結果をフィルター処理して制限する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | クエリ パラメーターを編集して、Bing から返される画像をフィルター処理します。                                                                                                       |
-| [サムネイルのクロップ、サイズ変更、表示](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/resize-and-crop-thumbnails)                                                | Bing Image Search から返された画像のサムネイル プレビューを編集して表示します。                                                                                      |
+| [サムネイルのクロップ、サイズ変更、表示](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/resize-and-crop-thumbnails)                                                | Bing Image Search から返された画像のサムネイル プレビューを編集して表示します。                                                                                      |
 | [ユーザー検索クエリをピボットして展開する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)               | Bing で提案された検索用語をクエリに含めて表示することで、検索機能を拡張できます。                                                                    |
-| [注目の画像を取得する](https://review.docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)                                                                     | 世界で注目を集めている画像の検索をカスタマイズします。                                                                                                          |
+| [注目の画像を取得する](trending-images.md)                                                                     | 世界で注目を集めている画像の検索をカスタマイズします。                                                                                                          |
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -43,7 +43,7 @@ Bing Image Search API は RESTfulWeb サービスです。HTTP 要求を作成�
 2. 有効な[検索クエリ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)を使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まず、Bing Image Search API の[対話型のデモ](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)を試してみてください。
 このデモは、検索クエリをすばやくカスタマイズし、Web で画像を検索する方法を示しています。
@@ -55,14 +55,16 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 * REST API を使用して [Bing に検索クエリを送信する方法](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp)。または
 * SDK を使用して Bing から返される画像を[要求してフィルター処理する方法](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 
-* [Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) のリファレンス セクションには、API のエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する情報が含まれています。
+* [Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) のリファレンス セクションには、API のエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する情報が含まれています。
 
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
 
 * 「[Bing Image Search API で Web から画像を取得する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)」の記事では、Web から画像を検索して取得する方法について説明しています。
 
 * [検索クエリの送信と使用](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)に関する記事では、クエリの作成、カスタマイズ、およびピボット検索の方法について説明しています。
+
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。

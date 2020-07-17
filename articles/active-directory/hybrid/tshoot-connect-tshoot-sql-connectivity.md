@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:SQL 接続に関する問題のトラブルシューティング | Microsoft Docs
+title: 'Azure AD Connect: SQL 接続に関する問題のトラブルシューティング | Microsoft Docs'
 description: Azure AD Connect で起きる SQL 接続に関する問題のトラブルシューティング方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dea88951682c24d2a470d5bd7646722481e4db2f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162953"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70842701"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での SQL 接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と SQL Server の間の接続に関する問題のトラブルシューティング方法について説明します。 
@@ -37,7 +37,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 
 >[!NOTE]
 >Install-Module は [PowerShell 5.0 (WMF 5.0)](https://www.microsoft.com/download/details.aspx?id=50395) またはそれ以降への更新が必要になります。  
-または [PackageManagement PowerShell Modules Preview - March 2016 for PowerShell 3.0/4.0](https://www.microsoft.com/download/details.aspx?id=51451) をインストールしてください。 
+または [PackageManagement PowerShell Modules Preview - March 2016 for PowerShell 3.0/4.0](/powershell/module/PackageManagement) をインストールしてください。 
 
 - **すべてのコマンドを表示**: `Get-Command -Module AdSyncTools` 
 - **PowerShell 関数を実行**: 以下のパラメーターとともに `Connect-ADSyncDatabase`

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: daab3c3b2a5b756686a4867350478faaa1142279
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726864"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77162567"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Media Services を使用してライブ ストリーミングを実行し、Azure portal でマルチビットレートのストリームを作成する  
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "64726864"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする **チャネル** を作成する手順について説明します。
 
@@ -39,11 +39,11 @@ ms.locfileid: "64726864"
 以下に、一般的なライブ ストリーミング アプリケーションを作成する場合に関係する標準的な手順を示します。
 
 > [!NOTE]
-> 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+> 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amshelp@microsoft.com にお問い合わせください。
 
 1. ビデオ カメラをコンピューターに接続します。 <br/>設定のアイデアについては、「[Simple and portable event video gear setup (シンプルでポータブルなイベント ビデオ機器の設定)]( https://link.medium.com/KNTtiN6IeT)」を参照してください。
 
-    カメラにアクセスできない場合は、[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) などのツールを使用して、ビデオ ファイルからライブ フィードを生成できます。
+    カメラにアクセスできない場合は、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) などのツールを使用して、ビデオ ファイルからライブ フィードを生成できます。
 1. オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーでは、シングル ビットレート ストリームを次のいずれかのプロトコルで出力できます:RTMP またはスムーズ ストリーミング。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。 <br/>また、ブログ「[Live streaming production with OBS (OBS を使用したライブ ストリーミングの製作)](https://link.medium.com/ttuwHpaJeT)」も参照してください。
 
     この手順は、チャネルを作成した後でも実行できます。
@@ -66,7 +66,7 @@ ms.locfileid: "64726864"
 チュートリアルを完了するには次のものが必要です。
 
 * このチュートリアルを完了するには、Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 
-  詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+  詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Media Services アカウント。 Media Services アカウントを作成するには、「[アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 * シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
@@ -133,7 +133,7 @@ ms.locfileid: "64726864"
 
 アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられたアセットを削除します。 イベントが資産を使用している場合は資産を削除できません。まずイベントを削除する必要があります。 
 
-イベントを停止して削除した後も、資産を削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。
+イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。
 
 アーカイブ済みコンテンツを保持したいが、ストリーミングには使用したくない場合は、ストリーミング ロケーターを削除します。
 
@@ -156,7 +156,7 @@ ms.locfileid: "64726864"
     イベントをストリーミングする準備ができたら、いつでも **[開始]** をクリックできます。
 
     イベントを開始すると、 **[Watch (視聴)]** をクリックしてコンテンツの再生を開始できます。
-2. この方法の代わりに、ショートカットを使用して、**[チャネル]** ページの **[起動]** ボタンをクリックすることもできます。 これにより、既定の資産、プログラム、ストリーミング ロケーターが作成されます。
+2. この方法の代わりに、ショートカットを使用して、 **[チャネル]** ページの **[起動]** ボタンをクリックすることもできます。 これにより、既定の資産、プログラム、ストリーミング ロケーターが作成されます。
 
     イベント名は **default** となり、アーカイブ ウィンドウは 8 時間に設定されます。
 
@@ -167,7 +167,7 @@ ms.locfileid: "64726864"
 ## <a name="watch-the-event"></a>イベントの視聴
 イベントを視聴するには、Azure Portal で **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。 
 
-![作成日時](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![作成済み](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。
 
@@ -179,14 +179,14 @@ ms.locfileid: "64726864"
 * ライブ イベントのアーカイブをオンデマンド ストリームとして提供し続けるのでない限り、ストリーミング エンドポイントを停止できます。 チャネルが停止状態の場合は、いかなる課金も発生しません。
 
 ## <a name="view-archived-content"></a>アーカイブ済みコンテンツを視聴する
-イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
+イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。 
 
-アセットを管理するには、**[設定]** を選択し、**[アセット]** をクリックします。
+アセットを管理するには、 **[設定]** を選択し、 **[アセット]** をクリックします。
 
 ![アセット](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>考慮事項
-* 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
+* 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amshelp@microsoft.com にお問い合わせください。
 * コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
 
 ## <a name="next-step"></a>次のステップ

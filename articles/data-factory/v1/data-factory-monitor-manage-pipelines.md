@@ -1,24 +1,22 @@
 ---
-title: Azure Portal および PowerShell を使用したパイプラインの監視と管理 | Microsoft Docs
+title: Azure portal および PowerShell を使用したパイプラインの監視と管理
 description: Azure Portal および Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122758"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73666977"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -48,8 +46,8 @@ Azure Portal を使用すると、次の操作を行うことができます。
 このセクションでは、データセット スライスの状態がどのように移行するかについても説明します。   
 
 ### <a name="navigate-to-your-data-factory"></a>Data Factory に移動する
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで、**[データ ファクトリ]** をクリックします。 表示されない場合は、**[その他のサービス >]** をクリックし、**[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. 左側のメニューで、 **[データ ファクトリ]** をクリックします。 表示されない場合は、 **[その他のサービス >]** をクリックし、 **[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
 
    ![[すべて参照] > [データ ファクトリ]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. **[データ ファクトリ]** ブレードで、目的のデータ ファクトリを選択します。
@@ -89,7 +87,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 <table>
 <tr>
-    <th align="left">状態</th><th align="left">下位状態</th><th align="left">説明</th>
+    <th align="left">State</th><th align="left">下位状態</th><th align="left">説明</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
@@ -107,7 +105,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>ActivityResume</td><td>アクティビティは一時停止されており、再開されるまでスライスを実行できません。</td>
 </tr>
 <tr>
-<td>Retry</td><td>アクティビティの実行が再試行されています。</td>
+<td>[再試行]</td><td>アクティビティの実行が再試行されています。</td>
 </tr>
 <tr>
 <td>検証</td><td>検証がまだ開始されていません。</td>
@@ -137,7 +135,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>Ready</td><td>-</td><td>スライスは使用可能な状態です。</td>
 </tr>
 <tr>
-<td>Skipped</td><td>なし</td><td>スライスは処理中ではありません。</td>
+<td>スキップ</td><td>なし</td><td>スライスは処理中ではありません。</td>
 </tr>
 <tr>
 <td>なし</td><td>-</td><td>スライスは別のステータスで存在していましたが、リセットされました。</td>
@@ -154,7 +152,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 ![アクティビティ実行の詳細](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-スライスが **Ready** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備のできていないアップストリーム スライス]** の一覧に表示されます。 この機能は、スライスが **Waiting** 状態のときに、スライスが待機しているアップストリーム依存関係を理解するのに便利です。
+スライスが **Ready** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、 **[準備のできていないアップストリーム スライス]** の一覧に表示されます。 この機能は、スライスが **Waiting** 状態のときに、スライスが待機しているアップストリーム依存関係を理解するのに便利です。
 
 ![準備のできていないアップストリーム スライス](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -180,7 +178,7 @@ Azure PowerShell を使用してパイプラインを管理できます。 た�
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-例: 
+次に例を示します。
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -191,7 +189,7 @@ Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrec
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-例: 
+次に例を示します。
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -207,7 +205,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。 次の方法を使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Azure Portal を使用してエラーをデバッグする
-1. **[テーブル]** ブレードで、**[状態]** が **[Failed]** になっている問題のあるスライスをクリックします。
+1. **[テーブル]** ブレードで、 **[状態]** が **[Failed]** になっている問題のあるスライスをクリックします。
 
    ![問題のあるスライスを表示している [テーブル] ブレード](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. **[データ スライス]** ブレードで、失敗したアクティビティの実行をクリックします。
@@ -224,7 +222,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   例: 
+   次に例を示します。
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -238,7 +236,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    例: 
+    次に例を示します。
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
@@ -303,7 +301,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>Azure Portal でアラートを作成する
 
-1.  Azure Portal にログインし、**[モニター]、[アラート]** の順に選択して [アラート] ページを開きます。
+1.  Azure Portal にログインし、 **[モニター]、[アラート]** の順に選択して [アラート] ページを開きます。
 
     ![[アラート] ページを開きます。](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
 
@@ -311,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![新しいアラートを作成する](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  **[Alert condition]\(アラートの条件)** を定義します。 (**[リソースの種類でフィルター]** では **[データ ファクトリ]** を選択するようにしてください)。**[ディメンション]** の値を指定することもできます。
+3.  **[Alert condition]\(アラートの条件)** を定義します。 ( **[リソースの種類でフィルター]** では **[データ ファクトリ]** を選択するようにしてください)。 **[ディメンション]** の値を指定することもできます。
 
     ![アラートの条件を定義する - ターゲットを選択する](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Humanity の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Humanity の統合 | Microsoft Docs'
 description: Azure Active Directory と Humanity の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 6aa771e9-31c6-48d1-8dde-024bebc06943
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99cc3ea94422ea76a7fb71330fa234a4003f9467
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: fd7cfe93aa39982836944230f860c603c7117ceb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902075"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74233433"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル:Azure Active Directory と Humanity の統合
+# <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル: Azure Active Directory と Humanity の統合
 
 このチュートリアルでは、Humanity と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Humanity と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ Azure AD への Humanity の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Humanity を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Azure AD への Humanity の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Humanity**」と入力し、結果パネルで **[Humanity]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Humanity**」と入力し、結果パネルで **[Humanity]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Humanity](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ Humanity で Azure AD のシングル サインオンを構成してテストす
 
 Humanity で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Humanity** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Humanity** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +113,7 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Humanity クライアント サポート チーム](https://www.humanity.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -132,14 +133,14 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
-    ![管理](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![管理者](./media/shiftplanning-tutorial/iC786619.png "[Admin]")
 3. **[Integration]** の **[Single Sign-On]** をクリックします。
 
-    ![シングル サインオン](./media/shiftplanning-tutorial/iC786620.png "Single Sign-On")
+    ![シングル サインオン](./media/shiftplanning-tutorial/iC786620.png "[Single Sign-On]")
 
 4. **[Single Sign-On Options]** セクションで、次の手順に従います。
 
-    ![シングル サインオン](./media/shiftplanning-tutorial/iC786905.png "Single Sign-On")
+    ![シングル サインオン](./media/shiftplanning-tutorial/iC786905.png "[Single Sign-On]")
 
     a. **[SAML Enabled]** を選択します。
 
@@ -157,7 +158,7 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -182,7 +183,7 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Humanity へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Humanity]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Humanity]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -194,15 +195,15 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-humanity-test-user"></a>Humanity のテスト ユーザーの作成
 
@@ -214,26 +215,26 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
 2. **[Admin]** をクリックします。
 
-    ![管理](./media/shiftplanning-tutorial/iC786619.png "Admin")
+    ![管理者](./media/shiftplanning-tutorial/iC786619.png "[Admin]")
 
 3. **[Staff]** をクリックします。
 
-    ![Staff](./media/shiftplanning-tutorial/ic786623.png "Staff")
+    ![スタッフ](./media/shiftplanning-tutorial/ic786623.png "[Staff]")
 
 4. **[Actions]\(アクション\)** の **[Add Employee]\(従業員の追加\)** をクリックします。
 
-    ![Add Employees](./media/shiftplanning-tutorial/iC786624.png "Add Employees")
+    ![[Add Employee]\(従業員の追加\)](./media/shiftplanning-tutorial/iC786624.png "[Add Employees]")
 
 5. **[Add Employees]** セクションで、次の手順に従います。
 
-    ![Save Employees](./media/shiftplanning-tutorial/iC786625.png "Save Employees")
+    ![[Save Employees]\(従業員の保存\)](./media/shiftplanning-tutorial/iC786625.png "[Save Employees]")
 
-    a. プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール アドレス**を、対応するボックスに入力します。
+    a. プロビジョニングする有効な Azure AD アカウントの**姓**、**名**、**電子メール アドレス**を、対応するテキスト ボックスに入力します。
 
     b. **[Save Employees]** をクリックします。
 
 > [!NOTE]
-> Humanity から提供されている他の Humanity ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Humanity ユーザー アカウント作成ツールや、Humanity から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

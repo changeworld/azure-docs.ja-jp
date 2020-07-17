@@ -1,22 +1,17 @@
 ---
-title: 'サービス間認証: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+title: .NET - サービス間認証 - Data Lake Storage Gen1
 description: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881156"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691631"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -30,37 +25,30 @@ ms.locfileid: "58881156"
 この記事では、.NET SDK を使用して、Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。 .NET SDK を使用した Data Lake Storage Gen1 に対するエンド ユーザー認証については、[Data Lake Storage Gen1 による .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Visual Studio 2013、2015、2017**。 以下の手順では、Visual Studio 2017 を使用します。
+* **Visual Studio 2013 以降**。 以下の手順では、Visual Studio 2019 を使用します。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 * **Azure Active Directory "Web" アプリケーションを作成します**。 [Data Lake Storage Gen1 に対する Azure Active Directory を使用したサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)の手順を完了している必要があります。
 
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
-1. Visual Studio を開き、コンソール アプリケーションを作成します。
-2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
+1. Visual Studio で、 **[ファイル]** メニュー、 **[新規作成]** 、 **[プロジェクト]** の順に選択します。
+2. **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
+3. **[プロジェクト名]** に `CreateADLApplication` と入力して、 **[作成]** を選択します。
 
-   | プロパティ | 値 |
-   | --- | --- |
-   | Category |テンプレート/Visual C#/Windows |
-   | テンプレート |コンソール アプリケーション |
-   | Name |CreateADLApplication |
-4. **[OK]** をクリックしてプロジェクトを作成します。
-
-5. NuGet パッケージをプロジェクトに追加します。
+4. NuGet パッケージをプロジェクトに追加します。
 
    1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
-   2. **[NuGet パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
+   2. **[NuGet パッケージ マネージャー]** タブで、 **[パッケージ ソース]** が **nuget.org** に設定されており、 **[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
 
       * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v2.1.3-preview を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
-        ![NuGet ソースの追加](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
+        ![NuGet ソースを追加する](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
 
-6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
+5. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
 ```csharp
 using System;
@@ -119,7 +107,7 @@ private static void Main(string[] args)
 
 上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_Cert` を使用しています。 このヘルパー関数のコードは[こちらの GitHub で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、.NET SDK からサービス間認証を使って Data Lake Storage Gen1 に対して認証を行う方法について説明しました。 これで、.NET SDK を使用して Data Lake Storage Gen1 を操作する方法について説明した次の記事に進めるようになりました。
 
 * [.NET SDK を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)

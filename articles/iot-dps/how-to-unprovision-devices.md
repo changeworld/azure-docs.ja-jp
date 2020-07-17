@@ -1,19 +1,18 @@
 ---
-title: Azure IoT Hub Device Provisioning サービスにプロビジョニングされたデバイスをプロビジョニング解除する方法 | Microsoft Docs
-description: Azure IoT Hub Device Provisioning サービスにプロビジョニングされたデバイスをプロビジョニング解除する方法
+title: Azure IoT Hub Device Provisioning Service でプロビジョニングされたデバイスをプロビジョニング解除する
+description: Azure IoT Hub Device Provisioning Service (DPS) にプロビジョニングされたデバイスをプロビジョニング解除する方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 3c6e2a9006d73d269422292dc959866d3f6d8a82
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522674"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74974838"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法 
 
@@ -50,7 +49,7 @@ X.509 構成証明では、登録グループを使用してデバイスをプ�
 
 1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** をクリックします。
 2. リソースの一覧で、目的のプロビジョニング サービスをクリックします。
-3. 目的のプロビジョニング サービスで、**[Manage enrollments]\(登録の管理\)** をクリックし、**[Enrollment Groups]\(登録グループ\)** タブを選択します。
+3. 目的のプロビジョニング サービスで、 **[Manage enrollments]\(登録の管理\)** をクリックし、 **[Enrollment Groups]\(登録グループ\)** タブを選択します。
 4. 登録グループをクリックして開きます。
 
    ![ポータルで登録グループ エントリを表示する](./media/how-to-unprovision-devices/view-enrollment-group.png)

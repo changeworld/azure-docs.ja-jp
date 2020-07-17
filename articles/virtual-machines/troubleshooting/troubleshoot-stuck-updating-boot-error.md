@@ -4,28 +4,25 @@ description: Windows Update で Azure VM の起動が停止しているときに
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 7c516781f7d0c80dc7185585a29278820ab9a46e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919432"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM の起動が Windows Update で停止する
 
 この記事では、仮想マシン (VM) が起動中に Windows Update の段階で停止する場合の問題の解決を支援します。 
 
-> [!NOTE] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
 ## <a name="symptom"></a>症状
 

@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: Azure Internet Analyzer のドキュメント (プレビュー)
+summary: Internet Analyzer は、クライアント側の測定プラットフォームで、ネットワーク インフラストラクチャの変更による顧客のパフォーマンスへの影響をテストすることができます。 オンプレミスから Azure に移行する場合も、新しい Azure サービスを評価する場合も、Internet Analyzer を使用すると、移行前にユーザーのデータと Microsoft の豊富な分析から学習して、ネットワーク アーキテクチャについて理解を深め、Azure で最適化することができます。
+metadata:
+  title: Azure Internet Analyzer のドキュメント (プレビュー)
+  description: Internet Analyzer は、クライアント側の測定プラットフォームで、ネットワーク インフラストラクチャの変更による顧客のパフォーマンスへの影響をテストすることができます。 オンプレミスから Azure に移行する場合も、新しい Azure サービスを評価する場合も、Internet Analyzer を使用すると、移行前にユーザーのデータと Microsoft の豊富な分析から学習して、ネットワーク アーキテクチャについて理解を深め、Azure で最適化することができます。
+  services: internet-analyzer
+  ms.service: internet-analyzer
+  ms.topic: landing-page
+  author: megan-beatty
+  ms.author: mebeatty
+  ms.date: 10/16/2019
+  ms.openlocfilehash: f1d8bc4bafe140a8522591e57bf2aa6665120d1f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "74896494"
+landingContent:
+- title: Internet Analyzer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Internet Analyzer とは
+      url: internet-analyzer-overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ポータルを使用した Internet Analyzer の作成
+      url: internet-analyzer-create-test-portal.md
+    - text: CLI を使用した Internet Analyzer の作成
+      url: internet-analyzer-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Internet Analyzer クライアントの埋め込み
+      url: internet-analyzer-embed-client.md
+    - text: カスタム エンドポイントの構成
+      url: internet-analyzer-custom-endpoint.md
+    - text: スコアカードの解釈
+      url: internet-analyzer-scorecard.md
+- title: リソース
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Internet Analyzer の FAQ
+      url: internet-analyzer-faq.md
+    - text: Internet Analyzer のトラブルシューティング
+      url: troubleshoot.md
+    - text: Internet Analyzer の CLI リファレンス
+      url: https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest

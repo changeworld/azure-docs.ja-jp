@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus のエンドツーエンド トレースと診断 | Microsoft Docs
-description: Service Bus のクライアント診断とエンドツーエンド トレースの概要
+description: Service Bus のクライアント診断とエンドツーエンド トレース (クライアントから、処理に関連するすべてのサービスまで) の概要。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294167"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -28,14 +28,14 @@ ms.locfileid: "58107037"
 プロデューサーがキューを介してメッセージを送信すると、通常、そのメッセージは他の論理操作 (他のクライアントまたはサービスが開始した) のスコープ内で発生します。 メッセージを受信すると、同じ操作がコンシューマーによって続行されます。 プロデューサーとコンシューマーの両方 (および操作を処理する他のサービス) は、操作のフローと結果をトレースするためにテレメトリ イベントを出力すると推定されます。 このようなイベントを相関付けて、操作をエンドツーエンドでトレースするために、テレメトリをレポートする各サービスは、すべてのイベントにトレース コンテキストをスタンプする必要があります。
 
 Microsoft Azure Service Bus メッセージングによってペイロード プロパティが定義され、プロデューサーとコンシューマーはこれを使用してトレース コンテキストを渡す必要があります。
-プロトコルは [HTTP 相関関係プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に基づいています。
+プロトコルは [HTTP 相関関係プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に基づいています。
 
 | プロパティ名        | 説明                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnostic-Id       | プロデューサーからキューへの外部呼び出しの一意識別子。 論理的根拠、考慮事項、形式について詳しくは、[HTTP プロトコルの Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) に関するページをご覧ください。 |
-|  Correlation-Context | 操作の処理に関連するすべてのサービスに伝達される操作コンテキスト。 詳しくは、[HTTP プロトコルの Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) に関するページをご覧ください。 |
+|  Diagnostic-Id       | プロデューサーからキューへの外部呼び出しの一意識別子。 論理的根拠、考慮事項、形式について詳しくは、[HTTP プロトコルの Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) に関するページをご覧ください。 |
+|  Correlation-Context | 操作の処理に関連するすべてのサービスに伝達される操作コンテキスト。 詳しくは、[HTTP プロトコルの Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) に関するページをご覧ください。 |
 
-## <a name="service-bus-net-client-auto-tracing"></a>Service Bus .NET クライアントの自動トレース
+## <a name="service-bus-net-client-autotracing"></a>Service Bus .NET クライアントの自動トレース
 
 バージョン 3.0.0 以降の [Microsoft Azure ServiceBus Client for .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) ではトレース インストルメンテーション ポイントが提供され、トレーシング システムまたはクライアント コードの一部でこれを受け取ることができます。
 インストルメンテーションによって、すべての呼び出しをクライアント側から Service Bus メッセージング サービスまで追跡できるようになります。 メッセージの処理が[メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用して行われる場合は、メッセージの処理もインストルメント化されます。
@@ -49,7 +49,7 @@ Microsoft Azure Service Bus メッセージングによってペイロード プ
 - [ASP.NET Core](../azure-monitor/app/asp-net-core.md) - バージョン 2.2.0-beta2 以上をインストールします。
 これらのリンクには、SDK のインストール、リソースの作成、SDK の構成 (必要な場合) に関する説明があります。 ASP.NET 以外のアプリケーションについては、[コンソール アプリケーションのための Azure Application Insights](../azure-monitor/app/console.md) に関する記事をご覧ください。
 
-[メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用してメッセージを処理すると、それで完了です。サービスによって実行されたすべての Service Bus の呼び出しは自動的に追跡され、他のテレメトリ項目と関連付けられます。 それ以外の場合は、手動でのメッセージ追跡について次の例をご覧ください。
+[メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用してメッセージを処理すると完了です。サービスによって実行されたすべての Service Bus の呼び出しは自動的に追跡され、他のテレメトリ項目と関連付けられます。 それ以外の場合は、手動でのメッセージ追跡について次の例をご覧ください。
 
 #### <a name="trace-message-processing"></a>メッセージ処理のトレース
 
@@ -84,6 +84,12 @@ async Task ProcessAsync(Message message)
 メッセージ処理中に報告された入れ子のトレースと例外にも、`RequestTelemetry` の "子" であることを表す相関関係プロパティがスタンプされます。
 
 メッセージ処理中にサポートされる外部コンポーネントへの呼び出しを行った場合は、それらの呼び出しも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
+
+Application Insights SDK に加えて外部コードを実行している場合は、Application Insights ログを表示するときの**期間**が長くなります。 
+
+![Application Insights ログの期間が長くなる](./media/service-bus-end-to-end-tracing/longer-duration.png)
+
+これは、メッセージの受信で遅延があったことを意味するわけではありません。 このシナリオでは、メッセージは SDK コードにパラメーターとして渡されるため、メッセージは既に受信されています。 また、App Insights ログの **name** タグ (**Process**) は、メッセージが現在、外部イベント処理コードによって処理されていることを示しています。 この問題は、Azure に関連したものではありません。 メッセージが Service Bus から既に受信されていることを考えると、これらのメトリックは外部コードの効率を意味します。 [GitHub のこのファイル](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)を参照して、メッセージが Service Bus から受信された後に **Process** タグが生成されて割り当てられていることを確認してください。 
 
 ### <a name="tracking-without-tracing-system"></a>トレース システムなしで追跡する
 ご使用のトレーシング システムで自動的な Service Bus 呼び出し追跡がサポートされない場合は、トレーシング システムまたはアプリケーションにそのようなサポートを追加することを検討してください。 このセクションでは、Service Bus .NET クライアントによって送信される診断イベントについて説明します。  
@@ -165,12 +171,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 | Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` - 中止するメッセージに対応するロック トークン |
 | Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` - 保留するメッセージに対応するロック トークン | 
 | Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` - 配信不能に対応するメッセージのロック トークン | 
-| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` - ロックの更新に対応するメッセージのロック トークン<br/>`DateTime LockedUntilUtc` - 新しいロック トークンの有効期限の日時 (UTC 形式)  ('Stop' イベント ペイロード)|
+| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` - ロックの更新に対応するメッセージのロック トークン<br/>`DateTime LockedUntilUtc` - 新しいロック トークンの有効期限の日時 (UTC 形式) ('Stop' イベント ペイロード)|
 | Microsoft.Azure.ServiceBus.Process | [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) で提供されるメッセージ ハンドラーのラムダ関数 | `Message Message` - 処理されるメッセージ |
 | Microsoft.Azure.ServiceBus.ProcessSession | [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) で提供されるメッセージ せしょん ハンドラーのラムダ関数 | `Message Message` - 処理されるメッセージ<br/>`IMessageSession Session` - 処理されるセッション |
 | Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` - 追加するルールを提供するルールの説明 |
 | Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`- 削除するルールの名前 |
-| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`- サブスクリプションに関連付けられているすべてのルール  ('Stop' ペイロードのみ) |
+| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`- サブスクリプションに関連付けられているすべてのルール ('Stop' ペイロードのみ) |
 | Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` - メッセージ内に存在する sessionId |
 | Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` - メッセージ内に存在する sessionId<br/>`byte [] State` - セッション状態 ('Stop' イベント ペイロード) |
 | Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` - メッセージ内に存在する sessionId<br/>`byte [] State` - セッションの状態 |
@@ -211,7 +217,7 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 `IsEnabled` は次のように呼び出します。
 
-1. `IsEnabled(<OperationName>, string entity, null)` を、たとえば、`IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` と指定します。 最後に 'Start' も 'Stop' もないことに注意してください。 これを使用して、特定の操作またはキューをフィルター処理で除外します。 コールバックから `false` が返されると、その操作のイベントは送信されません。
+1. `IsEnabled(<OperationName>, string entity, null)` を、たとえば `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` と指定します。 最後に 'Start' も 'Stop' もないことに注意してください。 これを使用して、特定の操作またはキューをフィルター処理で除外します。 コールバックから `false` が返されると、その操作のイベントは送信されません。
 
    * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
   
@@ -225,7 +231,7 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 同じソースに対して複数の `DiagnosticSource` リスナーが存在するとき、イベントを受け取るには 1 つのリスナーだけで十分です。したがって、`IsEnabled` の呼び出しは保証されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Application Insights の相関付け](../azure-monitor/app/correlation.md)
 * [Application Insights による依存関係の監視](../azure-monitor/app/asp-net-dependencies.md): REST、SQL、その他の外部リソースによる処理速度の低下が発生しているかどうかを確認します。

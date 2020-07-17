@@ -1,28 +1,22 @@
 ---
-title: PowerShell の例 - Azure PowerShell を使用して複数の Web サイトを負荷分散する | Microsoft Docs
+title: 複数の Web サイトの負荷分散 - Azure PowerShell - Azure Load Balancer
 description: この Azure PowerShell スクリプトの例では、同じ仮想マシンに複数の Web サイトを負荷分散する方法を示します
-services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 6bedba2c68c05ee7ed6518996e54d007f3e83dc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: b7beb5186bd039d7098883915663e8a3286fb99d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170666"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76274596"
 ---
-# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell スクリプトの例: 複数の Web サイトの負荷分散
+# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell スクリプトの例: 複数の Web サイトを負荷分散する
 
 この Azure PowerShell スクリプトの例では、可用性セットのメンバーである 2 つの仮想マシン (VM) による仮想ネットワークを作成します。 ロード バランサーが、2 つの独立した IP アドレスのトラフィックを 2 つの VM に送信します。 スクリプトを実行した後は、Web サーバー ソフトウェアの VM へのデプロイ、および複数の Web サイトのホストを、それぞれ独自の IP アドレスで行うことができます。
 
@@ -66,7 +60,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | 仮想マシンを作成します。 |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

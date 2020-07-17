@@ -1,25 +1,23 @@
 ---
-title: レンダリング機能 - Azure Batch
-description: Azure Batch レンダリングの機能を使用する方法
-services: batch
-ms.service: batch
+title: レンダリングの機能を使用する
+description: Azure Batch レンダリングの機能を使用する方法。 直接またはクライアント アプリケーション プラグインから呼び出して、Batch Explorer アプリケーションの使用を試みます。
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 03/05/2020
+ms.topic: how-to
+ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726402"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
 Azure Batch のレンダリングを使用する方法はいくつかあります。
 
 * API:
-  * Batch の API のいずれかを使用してコードを記述します。  開発者は、クラウドまたはオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch の機能を統合できます。
+  * Batch の API のいずれかを使用してコードを記述します。  開発者は、クラウドかオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch 機能を統合できます。
 * コマンド ライン ツール:
   * [Azure コマンド ライン](https://docs.microsoft.com/cli/azure/)または [PowerShell](https://docs.microsoft.com/powershell/azure/overview) を使用すると、Batch の使用のスクリプトを作成できます。
   * 特に、[Batch CLI テンプレートのサポート](https://docs.microsoft.com/azure/batch/batch-cli-templates)により、プールの作成とジョブの送信がかなり容易になっています。
@@ -48,7 +46,7 @@ Windows、OSX および Linux 用の Batch Explorer の[ダウンロードが用
 
 VM イメージをレンダリングする Marketplace 上に存在するすべてのアプリケーションの要求に応じたテンプレートが用意されています。  各アプリケーションには CPU プールや GPU プール、Windows や Linux のプールの要求に応じたプールのテンプレートを含む、複数のテンプレートが存在します。ジョブ テンプレートにはフル フレームまたはタイル Blender レンダリングおよび V-Ray 分散レンダリングが含まれています。 提供されるテンプレートは時間の経過と共に、プールの自動スケーリングなど、他の Batch 機能の要求に応じるように展開されます。
 
-また、一から作成または提供されたテンプレートを編集することで、カスタムテンプレートを生成することもできます。 カスタム テンプレートは、Batch Explorer の [ギャラリー] セクションで [ローカル テンプレート] アイテムを選択することで使用できます。
+また、一から作成または提供されたテンプレートを編集することで、カスタムテンプレートを生成することもできます。 カスタム テンプレートは、Batch Explorer の [ギャラリー] セクションの [ローカル テンプレート] の項目を選択することで使用できます。
 
 ### <a name="file-system-and-data-movement"></a>ファイル システムとデータ移動
 
@@ -58,11 +56,12 @@ Batch Explorer の [データ] セクションでは、ローカル ファイル
 
 一部のクライアント アプリケーションにはプラグインが用意されています。  プラグインを使用すると、アプリケーションから直接プールやジョブを作成または Batch Explorer を呼び出すことができます。
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 以降](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 

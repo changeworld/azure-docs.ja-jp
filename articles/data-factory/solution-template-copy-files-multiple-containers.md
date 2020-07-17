@@ -1,25 +1,26 @@
 ---
-title: Azure Data Factory を使用して複数のコンテナーからファイルをコピーする |Microsoft Docs
+title: 複数のコンテナーからのファイルのコピー
 description: Azure Data Factory を使用して複数のコンテナーからファイルをコピーするための、ソリューション テンプレート の使用方法について説明します。
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543425"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629050"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Azure Data Factory を使用して複数のコンテナーからファイルをコピーする
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、ファイル ストア間で複数のコンテナーからファイルをコピーするために使用できる、ソリューション テンプレートについて説明します。 たとえば、AWS S3 から Azure Data Lake Store にデータ レイクを移行することもできます。 また、テンプレートを使用して、1 つの Azure BLOB ストレージ アカウントに含まれるすべてのファイルを、別の Azure Blob ストレージ アカウントにレプリケートすることもできます。
 
@@ -35,9 +36,11 @@ ms.locfileid: "57543425"
 - **ForEach** は、**GetMetadata** アクティビティからコンテナーの一覧を取得し、その一覧を反復処理して、各コンテナーを Copy アクティビティに渡します。
 - **Copy** は、各コンテナーをソース ストレージ ストアからコピー先ストアにコピーします。
 
-このテンプレートには、次の 2 つのパラメーターが定義されています。
-- *SourceFilePath* は、コンテナーの一覧を取得できるデータ ソース ストアのパスです。 ほとんどの場合、このパスは複数のコンテナー フォルダーを含んだルート ディレクトリです。 このパラメーターの既定値は `/` です。
-- *DestinationFilePath* は、コピー先ストア内でファイルがコピーされる場所のパスです。 このパラメーターの既定値は `/` です。
+このテンプレートでは、次のパラメーターを定義します。
+- *SourceFileFolder* は、コンテナーの一覧を取得できるデータ ソース ストアのフォルダー パスです。 このパスは複数のコンテナー フォルダーを格納するルート ディレクトリです。 このパラメーターの既定値は `sourcefolder` です。
+- *SourceFileDirectory* は、データ ソース ストアのルート ディレクトリの下にあるサブフォルダーのパスです。 このパラメーターの既定値は `subfolder` です。
+- *DestinationFileFolder* は、コピー先ストア内でファイルがコピーされる場所のフォルダー パスです。 このパラメーターの既定値は `destinationfolder` です。
+- *DestinationFileDirectory* は、コピー先ストア内でファイルがコピーされる場所のサブフォルダー パスです。 このパラメーターの既定値は `subfolder` です。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
@@ -57,7 +60,7 @@ ms.locfileid: "57543425"
 
     ![パイプラインを表示する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. **[デバッグ]** を選択し、**[パラメーター]** で入力し、**[完了]** を選択します。
+5. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
 
     ![パイプラインを実行する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 
@@ -65,7 +68,7 @@ ms.locfileid: "57543425"
 
     ![結果を確認する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory で制御テーブルを使用してデータベースから一括コピーを行う](solution-template-bulk-copy-with-control-table.md)
 

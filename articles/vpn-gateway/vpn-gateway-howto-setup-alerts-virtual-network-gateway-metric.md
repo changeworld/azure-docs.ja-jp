@@ -4,15 +4,15 @@ description: VPN Gateway メトリックにアラートを構成する手順
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptional
+ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 01704030ee3142cac9a328e1a3edc024651919a0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509903"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82127906"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway メトリックにアラートを設定する
 
@@ -25,15 +25,15 @@ ms.locfileid: "65509903"
 |**P2SBandwidth**| バイト/秒  | 1 分  | ゲートウェイ上のすべてのポイント対サイト接続の帯域幅合計使用率の平均。    |
 |**P2SConnectionCount**| Count  | 1 分  | ゲートウェイ上のポイント対サイト接続の数。   |
 |**TunnelAverageBandwidth** | バイト/秒    | 5 分  | ゲートウェイに作成されたトンネルの帯域幅使用率の平均。 |
-|**TunnelEgressBytes** | Bytes | 5 分 | ゲートウェイに作成されたトンネルの発信トラフィック。   |
+|**TunnelEgressBytes** | バイト | 5 分 | ゲートウェイに作成されたトンネルの発信トラフィック。   |
 |**TunnelEgressPackets** | Count | 5 分 | ゲートウェイに作成されたトンネルの発信パケット数。   |
 |**TunnelEgressPacketDropTSMismatch** | Count | 5 分 | トラフィック セレクターの不一致に原因があるトンネルでドロップされた発信パケットの数。 |
-|**TunnelIngressBytes** | Bytes | 5 分 | ゲートウェイに作成されたトンネルの着信トラフィック。   |
+|**TunnelIngressBytes** | バイト | 5 分 | ゲートウェイに作成されたトンネルの着信トラフィック。   |
 |**TunnelIngressPackets** | Count | 5 分 | ゲートウェイに作成されたトンネルの着信パケットの数。   |
 |**TunnelIngressPacketDropTSMismatch** | Count | 5 分 | トラフィック セレクターの不一致に原因があるトンネルでドロップされた着信パケットの数。 |
 
 
-## <a name="setup"></a>Azure portal を使用して、メトリックに基づいた Azure Monitor のアラートを設定します
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure portal を使用して、メトリックに基づいた Azure Monitor のアラートを設定します
 
 次の手順の例では、ゲートウェイに次のアラートを作成します。
 
@@ -44,31 +44,31 @@ ms.locfileid: "65509903"
 
 
 
-1. 仮想ネットワーク ゲートウェイのリソースに移動し、**[監視]** タブから **[アラート]** を選択します。次に新しいアラート ルールを作成するか、または既存のアラート ルールを編集します。
+1. 仮想ネットワーク ゲートウェイのリソースに移動し、 **[監視]** タブから **[アラート]** を選択します。次に新しいアラート ルールを作成するか、または既存のアラート ルールを編集します。
 
    ![アラート ルールを作成するための選択](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "作成")
 
 2. リソースとして VPN ゲートウェイを選択します。
 
-   ![[選択] ボタンとリソースの一覧内の VPN ゲートウェイ](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "選択")
+   ![[選択] ボタンとリソースの一覧内の VPN ゲートウェイ](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Select")
 
 3. アラート用に構成するメトリックを選択します。
 
-   ![メトリックの一覧内の選択されたメトリック](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "選択")
+   ![メトリックの一覧内の選択されたメトリック](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Select")
 4. シグナル ロジックを構成します。 これには 3 つのコンポーネントがあります。
 
-    a. **Dimensions**: メトリックにディメンションがある場合、特定のディメンション値を選択して、アラートがそのディメンションのデータのみを評価するようにできます。 これらは省略可能です。
+    a. **ディメンション**: メトリックにディメンションがある場合、特定のディメンション値を選択して、アラートがそのディメンションのデータのみを評価するようにできます。 これらは省略可能です。
 
     b. **条件**: これは、メトリック値を評価する操作です。
 
-    c. **時間**:メトリック データの細分性と、アラートを評価する期間を指定します。
+    c. **Time**: メトリック データの細分性と、アラートを評価する期間を指定します。
 
-   ![シグナル ロジックの構成の詳細](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "選択")
+   ![シグナル ロジックの構成の詳細](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Select")
 
-5. 構成済みのルールを表示するには、**[アラート ルールの管理]** を選択します。
+5. 構成済みのルールを表示するには、 **[アラート ルールの管理]** を選択します。
 
-   ![アラート ルールを管理するためのボタン](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "選択")
+   ![アラート ルールを管理するためのボタン](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Select")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-トンネル診断ログへのアラートを構成するには、[VPN Gateway 診断ログへのアラートの設定](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)に関するページを参照してください。
+トンネル リソース ログにアラートを構成するには、[VPN Gateway リソース ログのアラートの設定](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)に関するページを参照してください。

@@ -1,21 +1,20 @@
 ---
-title: Dynamics 365 に接続する - Azure Logic Apps
+title: Dynamics 365 に接続する
 description: Dynamics 365 (オンライン) REST API と Azure Logic Apps を使用してレコードを作成および管理します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
-ms.reviewer: estfan, LADocs
-ms.topic: article
+ms.reviewer: estfan, logicappspm
+ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310576"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789893"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Azure Logic Apps を使用して Dynamics 365 レコードを管理する
 
@@ -26,7 +25,7 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * [Dynamics 365 アカウント](https://dynamics.microsoft.com)
 
@@ -42,7 +41,7 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
 1. [Azure Portal](https://portal.azure.com) において、ロジック アプリ デザイナーで空のロジック アプリを開きます (まだ開いていない場合)。
 
-1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 この例では、トリガーの一覧で、次のトリガーを選択します: **レコードが作成されたとき**
+1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 この例では、トリガー一覧で **[レコードが作成されたとき]** トリガーを選択します。
 
    ![トリガーの選択](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -64,9 +63,9 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
 ここで、新しい潜在顧客レコードのタスク レコードを作成する Dynamics 365 アクションを追加します。
 
-1. トリガーで、**[新しいステップ]** を選択します。
+1. トリガーで、 **[新しいステップ]** を選択します。
 
-1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 アクションの一覧から、次のアクションを選択します。**新しいレコードを作成する**
+1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 アクションの一覧から、 **[新しいレコードの作成]** アクションを選択します。
 
    ![選択アクション](./media/connectors-create-api-crmonline/select-action.png)
 
@@ -80,7 +79,7 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
    ![アクションの詳細](./media/connectors-create-api-crmonline/action-details.png)
 
-1. **[件名]** ボックスがアクションに表示されたら、**[件名]** ボックスの内側をクリックして動的コンテンツ リストを表示します。 この一覧から、新しい潜在顧客レコードに関連するタスク レコードに含めるフィールド値を選択します。
+1. **[件名]** ボックスがアクションに表示されたら、 **[件名]** ボックスの内側をクリックして動的コンテンツ リストを表示します。 この一覧から、新しい潜在顧客レコードに関連するタスク レコードに含めるフィールド値を選択します。
 
    | フィールド | 説明 |
    |-------|-------------|
@@ -124,7 +123,7 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 |------------|--------------------|-------------|
 | テキスト フィールド | 1 行のテキスト | これらのフィールドでは、1 行のテキスト、またはテキスト型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[説明]** や **[カテゴリ]** | 
 | 整数フィールド | 整数 | 一部のフィールドでは、整数、または整数型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[達成率]** や **[期間]** | 
-| 日付フィールド | 日付と時刻 | 一部のフィールドでは、/mm/dd/yyyy 形式の日付、または date 型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[作成日]**、**[開始日]**、**[実際の開始日]**、**[実際の終了日]**、**[期限]** | 
+| 日付フィールド | 日時 | 一部のフィールドでは、/mm/dd/yyyy 形式の日付、または date 型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[作成日]** 、 **[開始日]** **[実際の開始日]** 、 **[実際の終了日]** 、 **[期限]** | 
 | レコード ID と参照タイプの両方を必要とするフィールド | Primary key (プライマリ キー) | 別のエンティティ レコードを参照する一部のフィールドでは、レコード ID と参照タイプの両方が必要です。 | 
 ||||
 
@@ -132,23 +131,23 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 
 | フィールド | 説明 |
 |-------|-------------|
-| **Owner** | 有効なユーザー ID またはチーム レコード ID にする必要があります。 |
-| **[所有者の種類]** | **systemusers** または **teams** にする必要があります。 |
+| **[所有者]** | 有効なユーザー ID またはチーム レコード ID にする必要があります。 |
+| **[所有者の種類]** | `systemusers` または `teams` のいずれかである必要があります。 |
 | **[関連]** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 |
-| **[関連の種類]** | 参照タイプ (**accounts** または **contacts**) にする必要があります。 |
-| **お客様** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 |
-| **[顧客の種類]** | 参照タイプ (**accounts** または **contacts**) にする必要があります。 |
+| **[関連の種類]** | 参照型 (`accounts` や `contacts` など) である必要があります。 |
+| **顧客** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 |
+| **[顧客の種類]** | 参照型 (`accounts` や `contacts` など) である必要があります。 |
 |||
 
-この例では、**[新しいレコードの作成]** アクションによって新しいタスク レコードが作成されます。
+この例では、 **[新しいレコードの作成]** アクションによって新しいタスク レコードが作成されます。
 
 ![レコード ID と参照タイプを使用してタスク レコードを作成する](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-このアクションは、**[所有者]** フィールドのレコード ID と **[所有者の種類]** フィールドの参照タイプに基づいて、特定のユーザー ID またはチーム レコード ID にタスク レコードを割り当てます。
+このアクションは、 **[所有者]** フィールドのレコード ID と **[所有者の種類]** フィールドの参照タイプに基づいて、特定のユーザー ID またはチーム レコード ID にタスク レコードを割り当てます。
 
 ![所有者のレコード ID と参照タイプ](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-また、このアクションでは、**[関連]** フィールドに追加されたレコード ID と、**[関連の種類]** フィールドの参照タイプに関連するアカウント レコードも追加されます。
+また、このアクションでは、 **[関連]** フィールドに追加されたレコード ID と、 **[関連の種類]** フィールドの参照タイプに関連するアカウント レコードも追加されます。
 
 ![[関連] のレコード ID と参照タイプ](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
@@ -161,7 +160,7 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 2. アクション ツール バーで、次の手順のいずれかを選択します。
 
    * **[ポップ アウト]** ![レコードのポップアウト](./media/connectors-create-api-crmonline/popout-record.png) を選択します。 
-   * 既定の電子メール プログラムに URL 全体をコピーできるように、**[リンクを電子メールで送信]** を選択します。
+   * 既定の電子メール プログラムに URL 全体をコピーできるように、 **[リンクを電子メールで送信]** を選択します。
 
    レコード ID は、URL 内の エンコード文字 `%7b` と `%7d` の間にあります。
 
@@ -189,11 +188,6 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/dynamicscrmonline/)を参照してください。
 
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

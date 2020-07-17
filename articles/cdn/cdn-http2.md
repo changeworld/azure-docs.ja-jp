@@ -6,19 +6,19 @@ documentationcenter: ''
 author: lichard
 manager: erikre
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
-ms.author: rli
-ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: ril
+ms.openlocfilehash: 703623e3f7f314d87417458f3f9a218dfdf45427
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764844"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67849973"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポート
 
@@ -28,7 +28,7 @@ HTTP/2 は HTTP/1.1 に対するメジャー リビジョンです。 これに�
 
 HTTP/2 の利点には、次のものがあります。
 
-*   **多重化および同時実行**
+*   **多重化およびコンカレンシー**
 
     HTTP 1.1 を使用した場合、複数のリソース要求には複数の TCP 接続が必要になるため、各接続に関連してパフォーマンス オーバーヘッドが発生します。 HTTP/2 では、1 つの TCP 接続で複数のリソースを要求できます。
 
@@ -45,7 +45,7 @@ HTTP/2 の利点には、次のものがあります。
 
 主要なブラウザーはすべて、現在のバージョンで HTTP/2 サポートを実装しています。 サポートされていないブラウザーは、自動的に HTTP/1.1 にフォールバックします。
 
-|[ブラウザー] ボタンを|最小バージョン|
+|Browser|最小バージョン|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|

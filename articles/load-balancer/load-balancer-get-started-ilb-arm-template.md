@@ -1,10 +1,10 @@
 ---
 title: 内部ロード バランサーの作成 - Azure テンプレート
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: リソース マネージャーでテンプレートを使用して、内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 339183dabf67abb43d6fc99bbe5258a39f12b14a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122289"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456966"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>テンプレートを使用した内部ロード バランサーの作成
 
@@ -58,9 +58,9 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
 1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、 **azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
+2. [https://shell.azure.com](https://shell.azure.com) にアクセスし、お使いのブラウザーで Cloud Shell を開きます。 次に示すように、 **azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
-    ```azurecli-interactive
+    ```console
     azure config mode arm
     ```
 
@@ -71,11 +71,11 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 3. パラメーター ファイルを開いて内容を選択し、コンピューター内のファイルに保存します。 この例では、パラメーター ファイルを *parameters.json*に保存しました。
 4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用し、 **azure group deployment create** コマンドを実行して、新しい内部ロード バランサーをデプロイします。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
-    ```azurecli
+    ```console
     azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 

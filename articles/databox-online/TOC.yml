@@ -1,4 +1,4 @@
-- name: Azure Data Box のドキュメント - オンライン転送
+- name: Azure Stack Edge と Data Box Gateway のドキュメント
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -31,7 +31,7 @@
           href: data-box-gateway-use-cases.md
     - name: 方法
       items:
-        - name: 管理
+        - name: 管理する
           items:
             - name: 共有
               href: data-box-gateway-manage-shares.md
@@ -43,79 +43,99 @@
               href: data-box-gateway-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: data-box-gateway-connect-powershell-interface.md
-        - name: 監視
+        - name: モニター
           href: data-box-gateway-monitor.md
         - name: トラブルシューティング
           href: data-box-gateway-troubleshoot.md
+        - name: Microsoft サポートに問い合わせる
+          href: azure-stack-edge-contact-microsoft-support.md
     - name: リリース ノート
       items:
-        - name: 一般公開
+        - name: 1911 - 最新
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 一般公開 (GA)
           href: data-box-gateway-release-notes.md
-- name: Data Box Edge
+- name: Azure Stack Edge
   items:
     - name: 概要
       items:
-        - name: Azure Data Box Edge とは
-          href: data-box-edge-overview.md
+        - name: Azure Stack Edge とは
+          href: azure-stack-edge-overview.md
     - name: チュートリアル
       items:
         - name: 1 - 準備
-          href: data-box-edge-deploy-prep.md
+          href: azure-stack-edge-deploy-prep.md
         - name: 2 - インストール
-          href: data-box-edge-deploy-install.md
+          href: azure-stack-edge-deploy-install.md
         - name: 3 - 接続、セットアップ、アクティブ化
-          href: data-box-edge-deploy-connect-setup-activate.md
+          href: azure-stack-edge-deploy-connect-setup-activate.md
         - name: 4 - 追加、共有への接続
-          href: data-box-edge-deploy-add-shares.md
+          href: azure-stack-edge-deploy-add-shares.md
         - name: 5A - コンピューティングの構成 (簡易)
-          href: data-box-edge-deploy-configure-compute.md
+          href: azure-stack-edge-deploy-configure-compute.md
         - name: 5B - コンピューティングの構成 (詳細)
-          href: data-box-edge-deploy-configure-compute-advanced.md
+          href: azure-stack-edge-deploy-configure-compute-advanced.md
     - name: 概念
       items:
         - name: 要件を確認する
-          href: data-box-edge-system-requirements.md
+          href: azure-stack-edge-system-requirements.md
         - name: 制限を理解する
-          href: data-box-edge-limits.md
+          href: azure-stack-edge-limits.md
         - name: セキュリティの概要
-          href: data-box-edge-security.md
+          href: azure-stack-edge-security.md
         - name: 仕様の確認
-          href: data-box-edge-technical-specifications-compliance.md
+          items:
+            - name: デバイスの仕様
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: 電源コードの仕様
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: 方法
       items:
         - name: 'C# モジュールの開発'
-          href: data-box-edge-create-iot-edge-module.md
-        - name: 管理
+          href: azure-stack-edge-create-iot-edge-module.md
+        - name: 管理する
           items:
             - name: Edge コンピューティング
-              href: data-box-edge-manage-compute.md
+              href: azure-stack-edge-manage-compute.md
             - name: Edge コンピューティングのネットワーク
-              href: data-box-edge-extend-compute-access-modules.md
+              href: azure-stack-edge-extend-compute-access-modules.md
             - name: 共有
-              href: data-box-edge-manage-shares.md
+              href: azure-stack-edge-manage-shares.md
             - name: ユーザー
-              href: data-box-edge-manage-users.md
+              href: azure-stack-edge-manage-users.md
             - name: 帯域幅のスケジュール
-              href: data-box-edge-manage-bandwidth-schedules.md
+              href: azure-stack-edge-manage-bandwidth-schedules.md
             - name: 電源、アクセス、接続
-              href: data-box-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell から
-              href: data-box-edge-connect-powershell-interface.md
+              href: azure-stack-edge-connect-powershell-interface.md
         - name: トラブルシューティング
-          href: data-box-edge-troubleshoot.md
-        - name: 監視
-          href: data-box-edge-monitor.md
-        - name: デバイスの返却
-          href: data-box-edge-return-device.md
+          href: azure-stack-edge-troubleshoot.md
+        - name: Microsoft サポートに問い合わせる
+          href: azure-stack-edge-contact-microsoft-support.md
+        - name: モニター
+          href: azure-stack-edge-monitor.md
+        - name: デバイスの返却または交換
+          href: azure-stack-edge-return-device.md
     - name: リリース ノート
       items:
-        - name: 一般公開
+        - name: 1911 - 最新
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 一般公開 (GA)
           href: data-box-gateway-release-notes.md
 - name: リソース
   items:
-    - name: 'Data Box Edge C# モジュールのサンプル (.NET)'
+    - name: 'Azure Stack Edge C# モジュールのサンプル (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Data Box Edge/Gateway 製品
+    - name: Azure Stack Edge/Data Box Gateway の製品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

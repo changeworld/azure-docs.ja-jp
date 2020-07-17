@@ -3,22 +3,20 @@ title: NSG フロー ログの読み取り | Microsoft Docs
 description: この記事では、NSG フロー ログの解析方法を説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: kumud
-ms.openlocfilehash: 4126f27156ed8a75abebe02e5d67f35695f5235f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.author: damendo
+ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205548"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77619925"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
@@ -70,8 +68,8 @@ function Get-NSGFlowLogCloudBlockBlob {
         # Gets the storage blog
         $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
+        # Gets the block blog of type 'Microsoft.Azure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.Azure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
         #Return the Cloud Block Blob
         $CloudBlockBlob
@@ -81,11 +79,11 @@ function Get-NSGFlowLogCloudBlockBlob {
 function Get-NSGFlowLogBlockList  {
     [CmdletBinding()]
     param (
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
     )
     process {
         # Stores the block list in a variable from the block blob.
-        $blockList = $CloudBlockBlob.DownloadBlockList()
+        $blockList = $CloudBlockBlob.DownloadBlockListAsync()
 
         # Return the Block List
         $blockList
@@ -116,14 +114,14 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>ブロック BLOB を読み取る
 
-次に、`$blocklist` 変数を読み取って、データを取得する必要があります。 この例では、ブロック リストを反復処理して各ブロックからバイトを読み取り、配列に保存します。 [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) メソッドを使用してデータを取得します。
+次に、`$blocklist` 変数を読み取って、データを取得する必要があります。 この例では、ブロック リストを反復処理して各ブロックからバイトを読み取り、配列に保存します。 [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) メソッドを使用してデータを取得します。
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
     [CmdletBinding()]
     param (
         [System.Array] [Parameter(Mandatory=$true)] $blockList,
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
 
     )
     # Set the size of the byte array to the largest block
@@ -142,7 +140,7 @@ function Get-NSGFlowLogReadBlock  {
         $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
         # Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
-        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length-1)) | Out-Null
+        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length)) | Out-Null
 
         # Increment the index by adding the current block length to the previous index
         $index = $index + $blockList[$i].Length
@@ -186,8 +184,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 このシナリオは、ログ全体を解析することなしに NSG フロー ログのエントリを読み取る方法の例を示しています。 ブロック ID を使用してログを書き込むか、またはブロック BLOB に格納されているブロックの長さを追跡することによって、ログの新規エントリを読み取ることができます。 この方法で読み取ることができるのは新規エントリのみです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 
 [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[Grafana の使用](network-watcher-nsg-grafana.md)、[Graylog の使用](network-watcher-analyze-nsg-flow-logs-graylog.md)に関する記事を参照し、NSG フロー ログの表示方法の詳細を理解します。 BLOB を直接使用して各種のログ分析コンシューマーを出力するためのオープン ソースの Azure 関数アプローチについては、[Azure Network Watcher NSG Flow Logs Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector) に関するページを参照してください。
+
+[Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) を使用して、トラフィック フローに関する分析情報を得ることができます。 Traffic Analytics は [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) を使用して、トラフィック フローをクエリ可能にします。
 
 BLOB ストレージの詳細については、[Azure Functions における Blob Storage のバインディング](../azure-functions/functions-bindings-storage-blob.md)に関するページを参照してください。

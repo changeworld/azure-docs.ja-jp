@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell サンプル スクリプト - アプリを作成してステージング スロットにコードをデプロイする | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - Web アプリの作成およびステージング環境へのコードのデプロイ
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell:ステージング スロットにコードをデプロイする
+description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、ステージング環境にコードをデプロイする方法を紹介しています。
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 79d5efc9e30bd5bd12e8ea89da942fd0b5ad160c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136416"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684772"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Web アプリを作成してステージング環境にコードをデプロイする
 
@@ -46,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
@@ -56,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | リソース グループのリソースを変更します。 |
 | [Switch-AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Web アプリのデプロイ スロットを運用環境にスワップします。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

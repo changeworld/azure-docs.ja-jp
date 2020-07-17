@@ -3,25 +3,24 @@ title: Azure での Windows VM デプロイのトラブルシューティング 
 description: Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
-manager: jeconnoc
+author: DavidCBerry13
+manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984343"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120965"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +35,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 ## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
 トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
-[デプロイ操作の表示](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[デプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)
 
 [アクティビティ ログを表示して Azure リソースを管理する](../../resource-group-audit.md)
 
@@ -66,7 +65,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 これらのエラーの両方を解決するには、ポータルから現在のイメージを削除し、OS と同じ設定 (一般化/特殊化) で[現在の VHD からイメージをキャプチャし直します](../windows/create-vm-specialized.md)。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/マーケットプレース イメージ - 割り当てエラー
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題: カスタム/ギャラリー/Marketplace イメージ - 割り当てエラー
 このエラーは、新しい VM 要求が、要求されている VM サイズをサポートできないか、要求に対応するための使用可能な空き領域がないクラスターに固定されている場合に発生します。
 
 **原因 1:** クラスターが要求された VM サイズをサポートできない。
@@ -76,7 +75,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 * VM サイズを小さくして要求を再試行します。
 * 要求した VM のサイズを変更できない場合は、次の手順を実行します。
   * 可用性セットのすべての VM を停止します。
-    **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+    **[リソース グループ]**  > *対象のリソース グループ* >  **[リソース]**  > *対象の可用性セット* >  **[Virtual Machines]**  > *対象の仮想マシン* >  **[停止]** の順にクリックします。
   * すべての VM が停止したら、目的のサイズで新しい VM を作成します。
   * 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]** をクリックします。
 
@@ -89,7 +88,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
   * 新しい VM を (同じリージョンの) 別の可用性セットに作成します。
   * 新しい VM を同じ仮想ネットワークに追加します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](restart-resize-error-troubleshooting.md)を参照してください。
 
 

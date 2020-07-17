@@ -1,89 +1,101 @@
 ---
 title: Azure 上の Linux VM でシェル スクリプトを実行する
-description: このトピックでは、実行コマンドを使用して Azure Linux 仮想マシン内でスクリプトを実行する方法について説明します。
+description: このトピックでは、実行コマンド機能を使用して Azure Linux 仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
-ms.service: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 10/25/2018
+ms.service: virtual-machines
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158807"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758609"
 ---
-# <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
+# <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
-実行コマンドは、VM エージェントを使用して Azure Linux VM 内でシェル スクリプトを実行します。 これらのスクリプトは、一般的なコンピューターまたはアプリケーションの管理に使用できるだけでなく、VM のアクセスやネットワークの問題をすばやく診断および修正し、その VM を正常な状態に戻すためにも使用できます。
+実行コマンド機能では、仮想マシン (VM) エージェントを使用して Azure Linux VM 内でシェル スクリプトが実行されます。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 
 ## <a name="benefits"></a>メリット
 
-仮想マシンにアクセスするために使用できるオプションは複数あります。 実行コマンドは、VM エージェントを使用して、リモートから仮想マシン上でスクリプトを実行できます。 実行コマンドは、Azure Portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Linux VM 用の [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) から使用できます。
+仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Linux VM 用の [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) から使用します。
 
-この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで有効であり、誤ったネットワークまたは管理ユーザーの構成のために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する最適な方法の 1 つです。
+この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで役立ちます。 これは、ネットワークまたは管理ユーザーの構成が正しくないために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する、限られた方法の 1 つです。
 
 ## <a name="restrictions"></a>制限
 
-実行コマンドを使用する場合に存在する制限の一覧を次に示します。
+実行コマンドを使用するときには、次の制限が適用されます。
 
-* 出力は最後の 4096 バイトに制限される
-* スクリプトを実行するための最小時間は約 20 秒
-* スクリプトは Linux 上で既定では管理者特権で実行される
-* 同時に実行できるスクリプトは 1 つ
+* 出力は最後の 4,096 バイトに制限されます。
+* スクリプトを実行するための最小時間は約 20 秒です。
+* スクリプトは既定で、管理者特権として Linux 上で実行されます。
+* 一度に実行できるスクリプトは 1 つです。
 * 情報の入力を求めるスクリプト (対話モード) はサポートされていません。
-* スクリプトの実行を取り消すことはできない
-* スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
+* スクリプトの実行を取り消すことはできません。
+* スクリプトを実行できる最大時間は 90 分です。 その後、スクリプトはタイムアウトになります。
 * スクリプトの結果を返すために、VM からの送信接続が必要
 
 > [!NOTE]
-> 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 拡張機能に、これらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行しても、結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して、Azure パブリック IP アドレスへのトラフィックを許可できます。
-
-## <a name="azure-cli"></a>Azure CLI
-
-[az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) コマンドを使用して Azure Linux VM 上でシェル スクリプトを実行する例を次に示します。
-
-```azurecli-interactive
-az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "sudo apt-get update && sudo apt-get install -y nginx"
-```
-
-> [!NOTE]
-> 別のユーザーとしてコマンドを実行するには、`sudo -u` を使用して、使用するユーザー アカウントを指定できます。
-
-## <a name="azure-portal"></a>Azure ポータル
-
-[Azure](https://portal.azure.com) で VM に移動し、**[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
-
-![実行コマンドの一覧](./media/run-command/run-command-list.png)
-
-実行するコマンドを選択します。 コマンドによっては、省略可能または必須の入力パラメーターがある場合があります。 これらのコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、**[スクリプトの表示]** を展開することによって、実行されるスクリプトを表示できます。 **RunShellScript** は、独自のカスタム スクリプトを指定できる点で他のコマンドとは異なります。
-
-> [!NOTE]
-> 組み込みコマンドは編集できません。
-
-コマンドを選択したら、**[実行]** をクリックしてスクリプトを実行します。 スクリプトが実行され、完了すると、出力ウィンドウで出力および発生したエラーが返されます。 次のスクリーンショットは、**ifconfig** コマンドの実行の出力例を示しています。
-
-![実行コマンド スクリプトの出力](./media/run-command/run-command-script-output.png)
+> 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 この拡張機能にこれらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行されても結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して Azure パブリック IP アドレスへのトラフィックを許可できます。
 
 ## <a name="available-commands"></a>使用可能なコマンド
 
-この表は、Linux VM で使用可能なコマンドの一覧を示しています。 **RunShellScript** コマンドを使用すると、必要な任意のカスタム スクリプトを実行できます。
+この表は、Linux VM で使用可能なコマンドの一覧を示しています。 **RunShellScript** コマンドを使用して、任意のカスタム スクリプトを実行できます。 Azure CLI または PowerShell を使用してコマンドを実行する場合、`--command-id` または `-CommandId` パラメーターに指定する値は、次に示す値のいずれかである必要があります。 使用可能なコマンドではない値を指定すると、次のエラーが表示されます。
+
+```error
+The entity was not found in this Azure location
+```
 
 |**名前**|**説明**|
 |---|---|
 |**RunShellScript**|Linux シェル スクリプトを実行します。|
 |**ifconfig**| すべてのネットワーク インターフェイスの構成を取得します。|
 
+## <a name="azure-cli"></a>Azure CLI
+
+次の例は、[az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) コマンドを使用して Azure Linux VM 上でシェル スクリプトを実行します。
+
+```azurecli-interactive
+az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "sudo apt-get update && sudo apt-get install -y nginx"
+```
+
+> [!NOTE]
+> 別のユーザーとしてコマンドを実行するには、`sudo -u` を入力してユーザー アカウントを指定します。
+
+## <a name="azure-portal"></a>Azure portal
+
+[Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
+
+![コマンドの一覧](./media/run-command/run-command-list.png)
+
+実行するコマンドを選択します。 一部のコマンドには、省略可能または必須の入力パラメーターがある場合があります。 そうしたコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、 **[スクリプトの表示]** を展開することによって、実行されるスクリプトを表示できます。 **RunShellScript** は他のコマンドと異なり、独自のカスタム スクリプトを指定することができます。
+
+> [!NOTE]
+> 組み込みコマンドは編集できません。
+
+コマンドを選択した後、 **[実行]** を選択してスクリプトを実行します。 スクリプトが完了すると、出力ウィンドウに出力およびエラー (発生した場合) が返されます。 次のスクリーンショットは、**ifconfig** コマンドの実行の出力例を示しています。
+
+![実行コマンド スクリプトの出力](./media/run-command/run-command-script-output.png)
+
+### <a name="powershell"></a>PowerShell
+
+次の例では、[Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して Azure VM 上で PowerShell スクリプトを実行します。 このコマンドレットは、`-ScriptPath` パラメーターで参照されるスクリプトが、このコマンドレットの実行場所に対してローカルであることを想定しています。
+
+```powershell-interactive
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+```
+
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限
 
-実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上が持っている `Microsoft.Compute/locations/runCommands/read` アクセス許可が必要です。
+実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、`Microsoft.Compute/locations/runCommands/read` アクセス許可がサブスクリプション レベルで必要です。 組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上のレベルには、このアクセス許可があります。
 
-コマンドを実行するには、[共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上が持っている `Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可が必要です。
+コマンドの実行には、`Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可がサブスクリプション レベルで必要です。 [仮想マシンの共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上のレベルには、このアクセス許可があります。
 
-実行コマンドを使用するには、いずれかの[組み込み](../../role-based-access-control/built-in-roles.md)ロールを使用するか、または[カスタム](../../role-based-access-control/custom-roles.md) ロールを作成することができます。
+実行コマンドを使用するには、いずれかの[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用するか、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-VM 内でリモートからスクリプトやコマンドを実行するためのその他の方法の詳細については、[Linux VM でのスクリプトの実行](run-scripts-in-vm.md)に関するページを参照してください。
+VM においてリモートでスクリプトやコマンドを実行するその他の方法の詳細については、「[Linux VM でスクリプトを実行する](run-scripts-in-vm.md)」を参照してください。

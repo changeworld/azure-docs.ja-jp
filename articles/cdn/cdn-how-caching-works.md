@@ -3,23 +3,23 @@ title: キャッシュのしくみ | Microsoft Docs
 description: キャッシュは、後でデータに対する要求があった場合により迅速にアクセスできるように、そのデータをローカルに保存するプロセスです。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: magattus
-ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: allensu
+ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813043"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81253715"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -126,14 +126,14 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 |    | Microsoft:一般的な Web 配信 | Verizon:一般的な Web 配信 | Verizon:DSA | Akamai:一般的な Web 配信 | Akamai:DSA | Akamai:大容量ファイルのダウンロード | Akamai: 一般的なメディア ストリーミングまたは VOD メディア ストリーミング |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **配信元を優先**       | はい    | はい   | いいえ    | はい    | いいえ    | 可能    | はい    |
+| **配信元を優先**       | はい    | はい   | いいえ   | はい    | いいえ   | はい   | はい    |
 | **CDN キャッシュ期間** | 2 日 |7 日 | なし | 7 日 | なし | 1 日 | 1 年 |
 
 **配信元を優先**:サポートされているキャッシュ ディレクティブ ヘッダーを優先するかどうかを指定します (配信元サーバーからの HTTP 応答にそれらのヘッダーが存在する場合)。
 
 **CDN キャッシュ期間**:Azure CDN でリソースをキャッシュする期間を指定します。 ただし、**配信元を優先**が "はい" で、配信元サーバーからの HTTP 応答にキャッシュ ディレクティブ ヘッダー `Expires` または `Cache-Control: max-age` が含まれている場合、Azure CDN は、ヘッダーによって指定された期間の値を代わりに使用します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - キャッシュ規則を使用して CDN の既定のキャッシュ動作をカスタマイズおよびオーバーライドする方法については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページをご覧ください。 
 - クエリ文字列を使用してキャッシュ動作を制御する方法については、[クエリ文字列による Azure CDN キャッシュ動作の制御](cdn-query-string.md)に関するページをご覧ください。

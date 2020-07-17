@@ -1,19 +1,19 @@
 ---
 title: コネクテッド ファクトリ ソリューションの機能 - Azure | Microsoft Docs
-description: コネクテッド ファクトリ事前構成済みソリューションの機能の概要。
+description: この記事では、クラウド ダッシュボード、ルール、アラートなどの、コネクテッド ファクトリ事前構成済みソリューションの機能の概要について説明します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183222"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73820107"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
 
@@ -63,9 +63,6 @@ ms.locfileid: "58183222"
 - ソリューションをカスタマイズして、独自のビジネス要件を満たします。
 - 完全なソリューション ソース コードは GitHub にあります。 [コネクテッド ファクトリ事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)のリポジトリをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-コネクテッド ファクトリ事前構成済みソリューションの詳細については、次の記事をご覧ください。
-
-* [コネクテッド ファクトリ事前構成済みソリューションのチュートリアル](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [コネクテッド ファクトリのゲートウェイをデプロイする]( iot-accelerators-connected-factory-gateway-deployment.md)
+コネクテッド ファクトリ ソリューション アクセラレータについて詳しくは、クイック スタート「[工業用 IoT デバイスを管理するクラウドベースのソリューションを試す](quickstart-connected-factory-deploy.md)」をご覧ください。

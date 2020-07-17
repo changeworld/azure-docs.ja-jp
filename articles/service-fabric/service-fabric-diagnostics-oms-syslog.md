@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric で Linux クラスター イベントを監視する | Microsoft Docs
-description: Syslog から Linux クラスター イベントを監視する方法について説明します
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric で Linux クラスター イベントを監視する
+description: Service Fabric プラットフォーム イベントを Syslog に書き込んで Service Fabric Linux クラスター イベントを監視する方法について説明します。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670372"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645754"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 内の Service Fabric Linux クラスター イベント
 
@@ -29,13 +20,13 @@ Service Fabric では、クラスター内の重要なアクティビティを�
 
 ## <a name="introduction"></a>はじめに
 
-6.4 リリースでは、Service Fabric プラットフォーム イベントを Linux クラスター用の Syslog に送信するための SyslogConsumer が導入されました。 有効にすると、イベントは自動的に Syslog に送信されます。これは、Log Analytics エージェントで収集および送信できます。
+6\.4 リリースでは、Service Fabric プラットフォーム イベントを Linux クラスター用の Syslog に送信するための SyslogConsumer が導入されました。 有効にすると、イベントは自動的に Syslog に送信されます。これは、Log Analytics エージェントで収集および送信できます。
 
 各 Syslog イベントには 4 つのコンポーネントがあります
 * Facility
 * ID
 * Message
-* severity
+* 重大度
 
 SyslogConsumer では、Facility `Local0` を使用すると、すべてのプラットフォーム イベントが書き込まれます。 構成を変更することで任意の有効な Facility に更新できます。使用される ID は `ServiceFabric` です。 Message フィールドには JSON でシリアル化されたイベント全体が含まれているため、さまざまなツールからクエリを実行したり使用したりすることができます。 
 
@@ -120,8 +111,8 @@ Azure Monitor ログなどの監視ツールでこれらの Syslog イベント�
 
 上の例は、NodeDown イベントの例です。 すべてのイベント一覧については、[こちら](service-fabric-diagnostics-event-generation-operational.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します
 * [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../log-analytics/log-analytics-view-designer.md)
 * [Azure Monitor ログを Syslog と統合する](../log-analytics/log-analytics-data-sources-syslog.md)方法を参照する。

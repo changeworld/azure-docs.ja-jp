@@ -1,28 +1,22 @@
 ---
-title: 方法 - Azure Active Directory の条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する | Microsoft Docs
-description: クラウド アプリへのアクセスにマネージド デバイスを要求する Azure Active Directory (Azure AD) デバイス ベースの条件付きアクセス ポリシーを構成する方法を説明します。
+title: 条件付きアクセスでマネージド デバイスを必須にする - Azure Active Directory
+description: クラウド アプリへのアクセスにマネージド デバイスを要求する Azure Active Directory (Azure AD) デバイスベースの条件付きアクセス ポリシーを構成する方法を説明します。
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 11/22/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481485"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -30,14 +24,16 @@ ms.locfileid: "58517353"
 
 この記事では、環境内の特定のクラウド アプリへのアクセスにマネージド デバイスを要求する条件付きアクセス ポリシーを構成する方法について説明します。 
 
-
 ## <a name="prerequisites"></a>前提条件
 
 クラウド アプリへのアクセスにマネージド デバイスを要求すると、**Azure AD の条件付きアクセス**と **Azure AD のデバイス管理**が連携します。 これらの領域を十分に理解してない場合は、次のトピックを先に読んでおく必要があります。
 
 - **[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
-
 - **[Azure Active Directory のデバイス管理の概要](../devices/overview.md)** - この記事は、組織の管理下にあるデバイスを取得する際に使用できるさまざまなオプションの概要を説明しています。 
+- **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
+
+>[!NOTE] 
+> Azure AD デバイスベースの条件付きアクセス ポリシーを使用して、最初のデバイス認証後に最適な実施を行うことをお勧めします。 これには、デバイスが準拠していない場合のセッションの終了とデバイス コード フローが含まれます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -47,11 +43,8 @@ ms.locfileid: "58517353"
 Azure AD 条件付きアクセスを使用すると、アクセス許可を付与するための次に示すポリシーを 1 つ使って、この要件に対応できます。
 
 - 選択したクラウド アプリに対して
-
 - 選択したユーザーおよびグループに対して
-
 - マネージド デバイスの要求
-
 
 ## <a name="managed-devices"></a>マネージド デバイス  
 
@@ -59,22 +52,21 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
   
 ![デバイス ベースの条件](./media/require-managed-devices/32.png)
 
-Azure AD に登録されているデバイスを取得するには、次の 3 つのオプションがあります:
+Azure AD に登録されているデバイスを取得するには、次の 3 つのオプションがあります: 
 
-- **[Azure AD 登録済みデバイス](../devices/overview.md#azure-ad-registered-devices)** - Azure AD に登録されたパーソナル デバイスを取得します
+- **Azure AD 登録済みデバイス** - Azure AD に登録されたパーソナル デバイスを取得します
+- **Azure AD 参加済みデバイス** - Azure AD に登録されたオンプレミス AD に参加していない、組織の Windows 10 デバイスを取得します。 
+- **ハイブリッド Azure AD 参加済みデバイス** - Azure AD に登録されたオンプレミス AD に参加している Windows 10 デバイスまたはサポートされるダウンレベルのデバイスを取得します。
 
-- **[Azure AD 参加済みデバイス](../devices/overview.md#azure-ad-joined-devices)** - Azure AD に登録されたオンプレミス AD に参加していない、組織の Windows 10 デバイスを取得します。 
-
-- **[ハイブリッド Azure AD 参加済みデバイス](../devices/overview.md#hybrid-azure-ad-joined-devices)** - Azure AD に登録されたオンプレミス AD に参加している Windows 10 デバイスまたはサポートされるダウンレベルのデバイスを取得します。
+これらの 3 つのオプションについては、「[デバイス ID とは](../devices/overview.md)」という記事で説明されています。
 
 マネージド デバイスになることができる登録済みデバイスは、**ハイブリッド Azure AD 参加済みデバイス**または**準拠とマークされたデバイス**である必要があります。  
 
 ![デバイス ベースの条件](./media/require-managed-devices/47.png)
-
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイスが必要
 
-条件付きアクセス ポリシーで、選択されたクラウド アプリにはマネージド デバイスを使用しなければアクセスできないことを宣言するために、**[ハイブリッド Azure AD 参加済みデバイスが必要]** を選択できます。 
+条件付きアクセス ポリシーで、選択されたクラウド アプリにはマネージド デバイスを使用しなければアクセスできないことを宣言するために、 **[ハイブリッド Azure AD 参加済みのデバイスが必要]** を選択できます。 
 
 ![デバイス ベースの条件](./media/require-managed-devices/10.png)
 
@@ -82,8 +74,7 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 ![デバイス ベースの条件](./media/require-managed-devices/45.png)
 
-ハイブリッド Azure AD 参加済みデバイスをマネージド デバイスにする条件は何でしょうか?  オンプレミス AD に参加しているデバイスの場合、これらのデバイスに対する統制は、**System Center Configuration Manager (SCCM)** などの管理ソリューションや、それらを管理するための**グループ ポリシー (GP)** を使用して適用されると想定されます。 これらの方法のいずれかがデバイスに適用されているかどうか Azure AD で判断する方法がないため、ハイブリッド Azure AD 参加済みデバイスを要求することは、マネージド デバイスを要求するための比較的弱いメカニズムです。 当該デバイスがハイブリッド Azure AD 参加済みデバイスでもある場合、オンプレミスのドメイン参加済みデバイスに適用されている方法がマネージド デバイスを構成するために十分に強いかどうかを判断することは管理者の責任です。
-
+ハイブリッド Azure AD 参加済みデバイスをマネージド デバイスにする条件は何でしょうか?  オンプレミス AD に参加しているデバイスの場合、これらのデバイスに対する統制は、**Configuration Manager** などの管理ソリューションや、それらを管理するための**グループ ポリシー (GP)** を使用して適用されると想定されます。 これらの方法のいずれかがデバイスに適用されているかどうか Azure AD で判断する方法がないため、ハイブリッド Azure AD 参加済みデバイスを要求することは、マネージド デバイスを要求するための比較的弱いメカニズムです。 当該デバイスがハイブリッド Azure AD 参加済みデバイスでもある場合、オンプレミスのドメイン参加済みデバイスに適用されている方法がマネージド デバイスを構成するために十分に強いかどうかを判断することは管理者の責任です。
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
 
@@ -93,12 +84,10 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 このオプションでは、デバイスが Azure AD に登録されている必要があり、次のものによって準拠とマークされている必要もあります。
          
-- Intune。
+- Intune
 - Azure AD 統合によって Windows 10 デバイスを管理するサードパーティ製のモバイル デバイス管理 (MDM) システム。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。
  
 ![デバイス ベースの条件](./media/require-managed-devices/46.png)
-
-
 
 準拠としてマークされているデバイスの場合、次のことを想定できます。 
 
@@ -107,10 +96,10 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 - 従業員が情報にアクセスして共有する方法の統制を補助することによって、会社の情報が保護されている
 - デバイスとそのアプリが会社のセキュリティ要件に準拠している
 
+### <a name="known-behavior"></a>既知の動作
 
+Windows 7、iOS、Android、macOS、および一部のサードパーティ製 Web ブラウザーでは、Azure AD によって、デバイスが Azure AD に登録されるときにプロビジョニングされたクライアント証明書を使用してデバイスが識別されます。 ユーザーは、ブラウザーで最初にサインインするときに、証明書の選択を求められます。 エンド ユーザーは、ブラウザーを引き続き使用する前に、この証明書を選択する必要があります。
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
-
-環境内でデバイス ベースの条件付きアクセス ポリシーを構成する前に、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。
-
+環境内でデバイスベースの条件付きアクセス ポリシーを構成する前に、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

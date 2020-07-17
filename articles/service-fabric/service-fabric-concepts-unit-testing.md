@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric のステートフル サービスの単体テスト | Microsoft Docs
+title: Azure Service Fabric のステートフル サービスの単体テスト
 description: Service Fabric のステートフル サービスの単体テストの概念と実践について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595507"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75433909"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric のステートフル サービスの単体テスト
 
@@ -51,8 +40,8 @@ Service Fabric のステートフル サービスに対する単体テストに�
 状態マネージャーはリモート リソースとして扱う必要があるため、モック作成する必要があります。 状態マネージャーをモック作成するときは、状態マネージャーに保存された情報の追跡用に、その情報を読み取って確認できるよう、基になるメモリ内の記憶域が必要です。 そのための最も単純な方法は、Reliable Collections の型ごとにモック インスタンスを作成することです。 そのモック内で、対応するコレクションに対して実行される操作にちょうど合うデータ型を使用します。 以下、いくつかの推奨されるデータ型をリライアブル コレクションごとに示します。
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>状態マネージャーのインスタンスは多数、ストレージは単一
 前述のように、状態マネージャーとリライアブル コレクションはリモート リソースとして扱う必要があります。 したがって、単体テスト内では、これらのリソースをモック作成することになります。 しかしステートフル サービスのインスタンスを複数実行しているときに、そのさまざまなインスタンス全体で、モック作成された各状態マネージャーの同期状態を維持することは簡単ではありません。 ステートフル サービスがクラスター上で実行されているときは、Service Fabric によって、各セカンダリ レプリカの状態マネージャーとプライマリ レプリカの整合性をとるための処理が行われます。 したがって、ロールの変更をシミュレートできるよう、テストにも同じ振る舞いを持たせなければなりません。
@@ -122,5 +111,5 @@ RunAsync に与えられたキャンセル トークンのキャンセル処理�
 #### <a name="verify-which-replicas-should-serve-requests"></a>どのレプリカが要求を処理すべきかを確認する
 テストでは、プライマリ以外のレプリカに要求がルーティングされた場合に必要な動作をアサートする必要があります。 Service Fabric には、セカンダリ レプリカに要求を処理させる機能があります。 しかしリライアブル コレクションへの書き込みは、プライマリ レプリカからしか実行できません。 実際のアプリケーションの意図として、プライマリ レプリカだけが要求を処理する場合、またはセカンダリで処理できるのが要求の一部だけである場合には、肯定的なケースと否定的なケースの両方について、期待される動作をテストでアサートする必要があります。 ここでいう否定的なケースとは、要求を処理すべきではないレプリカに要求がルーティングされることを指し、肯定的なケースは、その逆を指します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ステートフル サービスの単体テスト](service-fabric-how-to-unit-test-stateful-services.md)の方法を確認します。

@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL - Single Server でのクエリ ストア
+title: クエリ ストア - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストア機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 10/14/2019
+ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067197"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74768267"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
-**適用対象:** Azure Database for PostgreSQL - Single Server 9.6 および 10
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 Azure Database for PostgreSQL のクエリ ストア機能では、一定期間にわたってクエリ パフォーマンスを追跡する手段が提供されます。 クエリ ストアを使用すると、実行時間が最長のクエリおよびリソースを最も消費しているクエリを迅速に特定できるので、パフォーマンスのトラブルシューティングが簡単になります。 クエリ ストアでは、クエリおよびランタイム統計の履歴が自動的にキャプチャされて保持されるので、それらを確認できます。 データベースの使用パターンを確認できるように、データが時間枠で区切られます。 すべてのユーザー、データベース、クエリに関するデータが Azure Database for PostgreSQL インスタンス内の **azure_sys** という名前のデータベースに格納されます。
 
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL のクエリ ストア機能では、一定期間�
 
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal を使用してクエリ ストアを有効にする
 1. Azure portal にサインインし、ご利用の Azure Database for PostgreSQL サーバーを選択します。
-2. メニューの **[設定]** セクションで、**[サーバー パラメーター]** を選択します。
+2. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 3. `pg_qs.query_capture_mode` パラメーターを検索します。
 4. 値を `TOP` に設定して**保存**します。
 
@@ -58,6 +58,10 @@ azure_sys データベースに保持するデータの最初のバッチには�
 
 領域の使用量を最小限に抑えるために、ランタイム統計ストア内のランタイム実行統計は、固定の構成可能な時間枠で集計されます。 これらのストア内の情報は、クエリ ストアのビューに対してクエリを実行することで表示できます。
 
+## <a name="access-query-store-information"></a>クエリ ストア情報へのアクセス
+
+クエリ ストア データは、Postgres サーバー上の azure_sys データベースに格納されます。 
+
 次のクエリでは、クエリ ストア内のクエリに関する情報が返されます。
 ```sql
 SELECT * FROM query_store.qs_view; 
@@ -68,12 +72,15 @@ SELECT * FROM query_store.qs_view;
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
+分析とアラート用の [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage にクエリ ストア データを出力することもできます。 構成するログ カテゴリは **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** です。 セットアップの詳細については、[Azure Monitor の診断設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事を参照してください。
+
+
 ## <a name="finding-wait-queries"></a>待機クエリの検索
 待機イベントの種類では、類似性によってさまざまな待機イベントがバケットに結合されます。 クエリ ストアでは、待機イベントの種類、特定の待機イベント名、対象のクエリが提供されます。 この待機情報をクエリのランタイム統計に関連付けられることは、クエリのパフォーマンス特性に何が寄与しているかをより深く理解できることを意味します。
 
 クエリ ストア内の待機統計を使用してワークロードの詳細な分析情報を得る方法の例を次にいくつか示します。
 
-| **観測** | **アクション** |
+| **観測** | **操作** |
 |---|---|
 |ロック待機が長い | 影響を受けているクエリのクエリ テキストを確認し、ターゲット エンティティを識別します。 同じエンティティを変更する他のクエリのクエリ ストアで、頻繁に実行されているクエリ、実行時間が長いクエリ、あるいはその両方を探します。 これらのクエリを特定した後で、コンカレンシーを向上させるためにアプリケーション ロジックを変更するか、より制限の低い分離レベルを使用します。|
 | バッファー IO 待機が長い | クエリ ストア内で物理読み取り回数が多いクエリを検索します。 それらと IO 待機が長いクエリが一致する場合は、スキャンではなくシークを実行するために、基になるエンティティへのインデックスの導入を検討します。 これにより、クエリの IO オーバーヘッドが最小限に抑えられます。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、このサーバーに対してクエリを最適化するインデックスの推奨事項があるかどうかを確認します。|
@@ -84,7 +91,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 次のオプションは、クエリ ストア パラメーターを構成するために使用できます。
 
-| **パラメーター** | **説明** | **既定値** | **Range**|
+| **パラメーター** | **説明** | **[Default]** | **Range**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | 追跡対象のステートメントを設定します。 | なし | none、top、all |
 | pg_qs.max_query_text_length | 保存できるクエリの最大長を設定します。 これより長いクエリは切り詰められます。 | 6000 | 100 - 10K |
@@ -93,13 +100,13 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 待機統計には次のオプションが適用されます。
 
-| **パラメーター** | **説明** | **既定値** | **Range**|
+| **パラメーター** | **説明** | **[Default]** | **Range**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | 待機統計の追跡対象のステートメントを設定します。 | なし | none、all|
 | Pgms_wait_sampling.history_period | 待機イベントをサンプリングする頻度をミリ秒単位で設定します。 | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** は **pgms_wait_sampling.query_capture_mode** よりも優先されます。 pg_qs.query_capture_mode が NONE の場合、pgms_wait_sampling.query_capture_mode の設定は効果がありません。
+> **pg_qs.query_capture_mode** は **pgms_wait_sampling.query_capture_mode** に優先します。 pg_qs.query_capture_mode が NONE の場合、pgms_wait_sampling.query_capture_mode の設定は効果がありません。
 
 
 パラメーターに対して別の値を取得または設定するには [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用します。
@@ -109,10 +116,10 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 クエリは、リテラルと定数を削除した後、その構造を調べることで正規化されます。 2 つのクエリがリテラル値を除いて同一の場合、それらは同じハッシュを持ちます。
 
-### <a name="querystoreqsview"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store.qs_view
 このビューでは、クエリ ストア内のすべてのデータが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID ごとに 1 つの行があります。 
 
-|**Name**   |**Type** | **参照**  | **説明**|
+|**名前**   |**Type** | **参照**  | **説明**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | runtime_stats_entries テーブルからの ID|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
@@ -142,28 +149,28 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |blk_read_time  |double precision    || ステートメントによってブロックの読み取りに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
 |blk_write_time |double precision    || ステートメントによってブロックの書き込みに費やされた時間の合計 (ミリ秒単位) (track_io_timing が有効になっている場合。それ以外の場合は 0)|
     
-### <a name="querystorequerytextsview"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 このビューでは、クエリ ストア内のクエリ テキスト データが返されます。 個別の query_text ごとに 1 つの行があります。
 
-|**Name**|  **種類**|   **説明**|
+|**名前**|  **Type**|   **説明**|
 |---|---|---|
 |query_text_id  |bigint     |query_texts テーブルの ID|
 |query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
 
-### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
 
-|**Name**|  **Type**|   **参照**| **説明**|
+|**名前**|  **Type**|   **参照**| **説明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
 |db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
 |query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
 |event_type |text       ||バックエンドによって待機されているイベントの種類|
-|event  |text       ||バックエンドによって現在待機されている場合に、待機イベントの名前|
-|calls  |整数        ||同じイベントがキャプチャされた回数|
+|イベント  |text       ||バックエンドによって現在待機されている場合に、待機イベントの名前|
+|calls  |Integer        ||同じイベントがキャプチャされた回数|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>関数
 Query_store.qs_reset() returns void
 
 `qs_reset`  では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
@@ -175,8 +182,9 @@ Query_store.staging_data_reset() returns void
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 - PostgreSQL サーバーのパラメーター default_transaction_read_only がオンの場合、クエリ ストアはデータをキャプチャできません。
 - 時間がかかる Unicode クエリ (> = 6000 バイト) が発生した場合は、クエリ ストア機能の実行が中断されることがあります。
+- [読み取りレプリカ](concepts-read-replicas.md)には、マスター サーバーからクエリ ストア データがレプリケートされます。 つまり、読み取りレプリカのクエリ ストアでは、読み取りレプリカで実行されるクエリに関する統計情報は提供されません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 詳細については、[クエリ ストアが特に役に立つシナリオ](concepts-query-store-scenarios.md)に関するページをご覧ください。
 - 詳細については、[クエリ ストアの使用のベスト プラクティス](concepts-query-store-best-practices.md)に関するページをご覧ください。

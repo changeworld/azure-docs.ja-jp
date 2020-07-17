@@ -1,5 +1,5 @@
 ---
-title: 'Azure バックエンド接続機能の相互運用性: データ プレーンの分析 |Microsoft Docs'
+title: 'Azure での相互運用性: データ プレーンの分析'
 description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの相互運用性を分析する際に使用できるテスト セットアップのデータ プレーン分析について説明します。
 documentationcenter: na
 services: networking
@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499303"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518266"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: データ プレーンの分析
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Azure での相互運用性: データ プレーンの分析
 
-この記事では､[テスト セットアップ][Setup]のデータ プレーン分析について説明します。 [テスト セットアップの構成][Configuration]とテスト セットアップの[コントロール プレーン分析][Control-Analysis]もご覧ください。
+この記事では､[テスト セットアップ][Setup]のデータ プレーン分析について説明します。 [テスト セットアップの構成][Configuration]テスト セットアップの[ コントロール プレーンの分析][Control-Analysis]もご覧ください。
 
 データ プレーンの分析では、あるトポロジ内の 1 つのローカル ネットワーク (LAN または仮想ネットワーク) から別のローカル ネットワークへと移動するパケットが通過したパスについて調べます。 2 つのローカル ネットワーク間のデータ パスは、必ずしも対称ではありません。 したがってこの記事では、逆方向のパスとは異なる、あるローカル ネットワークから別のネットワークへの転送パスについて分析します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "58499303"
 次の図は、Azure Network Watcher の観点から見た、ハブ VNet とスポーク VNet のグラフィカル接続ビューを示しています。
 
 
-[![1]][1]
+![1][1]
 
 ### <a name="path-to-the-branch-vnet"></a>ブランチ VNet へのパス
 
@@ -60,11 +60,11 @@ ms.locfileid: "58499303"
 
 次の図は、Network Watcher の観点から見た、ハブ VNet とブランチ VNet のグラフィカル接続ビューを示しています。
 
-[![2]][2]
+![2][2]
 
 同じ接続について、次の図は、Network Watcher でのグリッド ビューを示しています。
 
-[![3]][3]
+![3][3]
 
 ### <a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
 
@@ -171,14 +171,14 @@ ms.locfileid: "58499303"
 以下に、スポーク VNet からオンプレミスの場所 2 内の VM への traceroute 出力を示します。
 
 
-    C:\Users\rb>tracert 10.2.30.10
+    C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+    Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
+      1    76 ms    75 ms    76 ms  10.10.30.134
       2     *        *        *     Request timed out.
       3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+      4    75 ms    75 ms    75 ms  10.1.31.10
 
     Trace complete.
 
@@ -302,7 +302,7 @@ Network Watcher で提供されるビューは、Azure を中心としたもの�
 
 次の図は、オンプレミスの場所 1 の VM から ExpressRoute を介してハブ VNet 上の VM に接続するトポロジのビューを示しています。
 
-[![4]][4]
+![4][4]
 
 前述したように、テスト セットアップでは、サイト間 VPN を、オンプレミスの場所 1 とハブ VNet 間の ExpressRoute のバックアップ接続として使用しています。 バックアップ データ パスをテストするために、オンプレミスの場所 1 のプライマリ CE ルーターと、対応する MSEE の間で、ExpressRoute のリンク障害を発生させてみましょう。 ExpressRoute のリンク障害を発生させるには、MSEE に接続している CE インターフェイスをシャット ダウンします。
 
@@ -318,7 +318,7 @@ Network Watcher で提供されるビューは、Azure を中心としたもの�
 
 次の図は、ExpressRoute 接続がダウンしたときに、オンプレミスの場所 1 の VM からサイト間 VPN 接続を介してハブ VNet 上の VM に接続するトポロジのビューを示しています。
 
-[![5]][5]
+![5][5]
 
 ### <a name="path-to-the-spoke-vnet"></a>スポーク VNet へのパス
 
@@ -356,7 +356,7 @@ Network Watcher で提供されるビューは、Azure を中心としたもの�
 
 ### <a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
 
-[コントロール プレーンの分析][Control-Analysis]で説明しているように、ネットワーク構成に従って、オンプレミスの場所 1 にはオンプレミスの場所 2 への可視性がありません。 次の ping の結果によって以下を確認します。 
+[コントロールプレーンの分析][Control-Analysis] について説明しているように、オンプレミスの場所 1 では、ネットワーク構成ごとにオンプレミスの場所 2 を表示できません。 次の ping の結果によって以下を確認します。 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -420,7 +420,7 @@ Network Watcher で提供されるビューは、Azure を中心としたもの�
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>ブランチ VNet、オンプレミスの場所 1、およびリモート VNet へのパス
 
-[コントロール プレーンの分析][Control-Analysis]で説明しているように、ネットワーク構成に従って、オンプレミスの場所 1 には、ブランチ VNet、オンプレミスの場所 1、リモート VNet への可視性がありません。 
+[コントロールプレーンの分析][Control-Analysis]で説明しているように、オンプレミスの場所 1 は、ブランチ VNet、オンプレミスの場所 1、またはネットワーク構成ごとのリモート VNet を表示できません。 
 
 ## <a name="data-path-from-the-remote-vnet"></a>リモート VNet からのデータ パス
 
@@ -454,7 +454,7 @@ Network Watcher で提供されるビューは、Azure を中心としたもの�
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>ブランチ VNet およびオンプレミスの場所 2 へのパス
 
-[コントロール プレーンの分析][Control-Analysis]で説明しているように、ネットワーク構成に従って、リモート VNet には、ブランチ VNet やオンプレミスの場所 2 への可視性がありません。 
+[コントロールプレーンの分析][Control-Analysis] で説明しているように、リモート VNet では、ネットワーク構成ごとにブランチ VNet またはオンプレミスの場所 2 を表示できません。 
 
 ### <a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
 
@@ -476,7 +476,7 @@ Network Watcher で提供されるビューは、Azure を中心としたもの�
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
-ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet の間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリング上のサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
+ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet の間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリングでのサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
 
 Microsoft ピアリングを使用するサイト間 VPN 構成に伴う主な制限はスループットです。 IPsec トンネル上では、VPN ゲートウェイの容量によりスループットが制限されます。 VPN ゲートウェイのスループットは、ExpressRoute のスループットよりも低くなります。 このシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のすべてのトラフィックにはプライベート ピアリングを使用すると、ExpressRoute の帯域幅使用率の最適化に役立ちます。
 
@@ -501,20 +501,20 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-次のテーマについては、「[ExpressRoute の FAQ][ExR-FAQ]」を参照してください。
+「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
 -   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
 -   ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数について学習する。
--   ExpressRoute のスケールの上限に関するその他の情報について学習します。
+-   ExpressRoute のその他のスケールの制限について学習する。
 
 
 <!--Image References-->
 [1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "ハブ VNet からスポーク VNet への接続の Network Watcher ビュー"
 [2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "ハブ VNet からブランチ VNet への接続の Network Watcher ビュー"
 [3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "ハブ VNet からブランチ VNet への接続の Network Watcher グリッド ビュー"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "場所 1 の VM から ExpressRoute 1 経由でハブ VNet に接続するときの Network Performance Monitor ビュー"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "場所 1 の VM からサイト間 VPN 経由でハブ VNet に接続するときの Network Performance Monitor ビュー"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "場所 1 の VM から ExpressRoute 1 経由でハブ VNet に接続する Network Performance Monitor ビュー"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "場所 1 の VM からサイト間 VPN 経由でハブ VNet に接続する Network Performance Monitor ビュー"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

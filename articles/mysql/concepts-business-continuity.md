@@ -1,21 +1,21 @@
 ---
-title: Azure Database for MySQL によるビジネス継続性の概要
-description: Azure Database for MySQL でのビジネス継続性の概要について説明します。
+title: ビジネス継続性 - Azure Database for MySQL
+description: Azure Database for MySQL サービスを使用する場合のビジネス継続性 (ポイントインタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 3/18/2020
+ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692904"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79537229"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Azure Database for MySQL によるビジネス継続性の概要
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する
 
-この概要では、Azure Database for MySQL に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
+この記事では、Azure Database for MySQL に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>ビジネス継続性を提供するときに使用できる機能
 
@@ -48,7 +48,7 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの mysqldump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MySQL での自動バックアップ](concepts-backup.md)の詳細を確認する。
 - [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。

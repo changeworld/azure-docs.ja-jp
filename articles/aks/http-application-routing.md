@@ -1,32 +1,30 @@
 ---
 title: Azure Kubernetes Service (AKS) の HTTP アプリケーション ルーティング アドオン
-description: Azure Kubernetes Service (AKS) で HTTP アプリケーション ルーティング アドオンを使用する。
+description: HTTP アプリケーション ルーティング アドオンを使用して、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションにアクセスします。
 services: container-service
 author: lachie83
-manager: jeconnoc
-ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312284"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632400"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
-HTTP アプリケーション ルーティング ソリューションを使用すると、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションに簡単にアクセスできます。 ソリューションを有効にすると、AKS クラスター内にイングレス コントローラーが構成されます。 アプリケーションがデプロイされると、このソリューションは、アプリケーション エンドポイントのパブリックにアクセス可能な DNS 名も作成します。
+HTTP アプリケーション ルーティング ソリューションを使用すると、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションに簡単にアクセスできます。 ソリューションを有効にすると、AKS クラスター内に[イングレス コントローラー](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)が構成されます。 アプリケーションがデプロイされると、このソリューションは、アプリケーション エンドポイントのパブリックにアクセス可能な DNS 名も作成します。
 
-アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、「[Azure DNS の価格][dns-pricing]」を参照してください。
+アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、[DNS の価格][dns-pricing]に関するページを参照してください。
 
 > [!CAUTION]
 > HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンを運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](https://docs.microsoft.com/azure/aks/ingress-tls)に関するページを参照してください。
 
 ## <a name="http-routing-solution-overview"></a>HTTP のルーティング ソリューションの概要
 
-アドオンによって、[Kubernetes イングレス コントローラー][ingress] と[外部 DNS][external-dns] コントローラーの 2 つのコンポーネントがデプロイされます。
+アドオンによって、[Kubernetes イングレス コントローラー][ingress]と[外部 DNS][external-dns] コントローラーの 2 つのコンポーネントがデプロイされます。
 
 - **イングレス コントローラー**:イングレス コントローラーは、LoadBalancer タイプの Kubernetes サービスを使用することで、インターネットに公開されます。 イングレス コントローラーは、アプリケーションのエンドポイントへのルートを作成する [Kubernetes イングレス リソース][ingress-resource]を監視し、実装します。
 - **外部 DNS コントローラー**:Kubernetes イングレス リソースを監視し、クラスター固有の DNS ゾーンに DNS A レコードを作成します。
@@ -51,12 +49,13 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。 この名前は、アプリケーションを AKS クラスターにデプロイするのに必要です。
 
 ```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
-
-Result
------------------------------------------------------
-9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
+
+結果
+
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+
 
 ## <a name="deploy-http-routing-portal"></a>HTTP ルーティングをデプロイする:ポータル
 
@@ -273,7 +272,7 @@ service "party-clippy" deleted
 ingress "party-clippy" deleted
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 セキュリティ保護された HTTPS イングレス コントローラーを AKS にインストールする方法については、「[Azure Kubernetes Service (AKS) での HTTPS イングレス][ingress-https]」を参照してください。
 

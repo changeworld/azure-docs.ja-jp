@@ -1,27 +1,22 @@
 ---
-title: Azure CLI を使用して Linux VM へのポートを開く | Microsoft Docs
-description: Azure Resource Manager デプロイ モデルと Azure CLI を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure CLI を使用して VM へのポートを開く
+description: Azure CLI を使用して VM へのポートを開き、エンドポイントを作成する方法について説明します。
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+manager: gwallace
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: a12952c73863d10c4fffd013ab594a83ab1b6433
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729458"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066626"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Azure CLI 使用した Linux VM へのポートとエンドポイントの開放
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLI 使用した VM へのポートの開放とエンドポイント
 
 サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI を使用して VM へのポートを開く方法を説明します。 
 
@@ -34,7 +29,7 @@ ms.locfileid: "55729458"
 ## <a name="quickly-open-a-port-for-a-vm"></a>VM 用のポートを簡単に開く
 開発/テスト シナリオで VM 用のポートを簡単に開く必要がある場合は、[az vm open-port](/cli/azure/vm) コマンドを使用できます。 このコマンドは、ネットワーク セキュリティ グループを作成して規則を追加し、これを VM またはサブネットに適用します。 次の例では、*myResourceGroup* というリソース グループ内の *myVM* という VM に、ポート *80* を開きます。
 
-```azure-cli
+```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 
@@ -89,8 +84,8 @@ az network vnet subnet update \
 
 高可用性 Web アプリケーション用に、Azure Load Balancer の背後に VM を配置する必要があります。 ロード バランサーは、トラフィックをフィルターできるネットワーク セキュリティ グループとともに、VM のトラフィックを分散します。 詳細については、[Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法](tutorial-load-balancer.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
-* [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)
+* [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
 * [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/security-overview.md)

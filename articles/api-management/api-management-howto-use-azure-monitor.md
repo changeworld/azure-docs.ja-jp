@@ -2,24 +2,20 @@
 title: Azure API Management で発行された API を監視する | Microsoft Docs
 description: このチュートリアルの手順に従って、Azure API Management で API を監視する方法を学びます。
 services: api-management
-documentationcenter: ''
 author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680247"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128836"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -29,7 +25,7 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 
 > [!div class="checklist"]
 > * アクティビティ ログを表示する
-> * 診断ログを表示する
+> * リソース ログを表示する
 > * API のメトリックを表示する 
 > * API が許可されていない呼び出しを受けたときのアラート ルールをセットアップする
 
@@ -49,7 +45,7 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 
 API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 使用できるメトリックの一部の概要を次に示します。
 
-* 容量 (プレビュー): APIM サービスのアップグレード/ダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
+* 容量: APIM サービスのアップグレードとダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
 * ゲートウェイ要求の合計: 期間中の API 要求の数。 
 * 成功したゲートウェイ要求: 304、307 および 301 よりも小さな値 (200 など) を含む成功した HTTP 応答コードを受信した API 要求の数。
 * 失敗したゲートウェイ要求: 400 および 500 よりも大きな値を含む失敗した HTTP 応答コードを受信した API 要求の数。
@@ -64,8 +60,9 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. ドロップダウン リストで、関心のあるメトリックを選択します。 たとえば、**[Successful Gateway Requests]\(成功したゲートウェイ要求\)** を選択します。 さらにメトリックをグラフに追加することもできます。
-3. グラフには、成功した API 呼び出しの合計数が表示されます。
+1. ドロップダウン リストで、関心のあるメトリックを選択します。 **Requests**など。 
+1. グラフには、API 呼び出しの合計数が表示されます。
+1. **[Requests]\(要求数\)** メトリックのディメンションを使用して、グラフをフィルター処理できます。 たとえば、 **[フィルターの追加]** をクリックし、 **[Backend Response Code]\(バックエンド応答コード\)** を選択し、値として「500」と入力します。 これで、API バックエンドで失敗した要求の数がグラフに表示されるようになりました。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>許可されていない要求に対するアラート ルールをセットアップする
 
@@ -84,11 +81,11 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 2. このアラートに対して **[新しいアラート ルール]** をクリックします。
 3. **[条件の追加]** をクリックします。
 4. [シグナルの種類] ドロップダウンの **[メトリック]** を選択します。
-5. 監視するシグナルとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
+5. 監視するシグナルとして、 **[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、**[完了]** をクリックします。
+6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、 **[完了]** をクリックします。
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
@@ -118,22 +115,22 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![アクティビティ ログ](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 目的のフィルター処理の範囲を選択し、**[適用]** をクリックします。
+3. 目的のフィルター処理の範囲を選択し、 **[適用]** をクリックします。
 
-## <a name="diagnostic-logs"></a>診断ログ
+## <a name="resource-logs"></a>リソース ログ
 
-診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソースが実行した操作を調査できます。
+リソース ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 リソース ログは、アクティビティ ログとは異なります。 アクティビティ ログは、Azure リソースで実行された操作に関する分析情報を提供します。 リソース ログは、自分のリソースが実行した操作に関する分析情報を提供します。
 
-診断ログを構成するには、次の手順に従います。
+リソース ログを構成するには、次の手順に従います。
 
 1. APIM サービス インスタンスを選びます。
 2. **[診断設定]** をクリックします。
 
-    ![診断ログ](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![リソース ログ](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. **[診断を有効にする]** をクリックします。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりすることができます。 
+3. **[診断を有効にする]** をクリックします。 リソース ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりすることができます。 
 
-現時点では、API Management は、個々の API 要求についての診断ログ (1 時間ごとにバッチ処理) を、次のスキーマを持つエントリで提供します。
+現時点では、API Management は、個々の API 要求についてのリソース ログ (1 時間ごとにバッチ処理) を、次のスキーマを持つエントリで提供します。
 
 ```json
 {  
@@ -182,11 +179,11 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
 | プロパティ  | Type | 説明 |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
-| time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
+| isRequestSuccess | boolean | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
+| time | date-time | ゲートウェイが要求の処理を開始した日時のタイムスタンプ |
 | operationName | string | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
 | category | string | "GatewayLogs" (定数値) |
-| durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数 |
+| durationMs | 整数 (integer) | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数。 これには clienTime、cacheTime、backendTime が含まれます。 |
 | callerIpAddress | string | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
 | correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
 | location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
@@ -196,17 +193,17 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | method | string | 受信要求の HTTP メソッド |
 | url | string | 受信要求の URL |
 | clientProtocol | string | 受信要求の HTTP プロトコル バージョン |
-| responseCode | integer | クライアントに送信された HTTP 応答の状態コード |
+| responseCode | 整数 (integer) | クライアントに送信された HTTP 応答の状態コード |
 | backendMethod | string | バックエンドに送信された要求の HTTP メソッド |
 | backendUrl | string | バックエンドに送信された要求の URL |
-| backendResponseCode | integer | バックエンドから受信した HTTP 応答のコード |
+| backendResponseCode | 整数 (integer) | バックエンドから受信した HTTP 応答のコード |
 | backendProtocol | string | バックエンドに送信された要求の HTTP プロトコル バージョン | 
-| requestSize | integer | 要求の処理中にクライアントから受信したバイト数 | 
-| responseSize | integer | 要求の処理中にクライアントに送信されたバイト数 | 
+| requestSize | 整数 (integer) | 要求の処理中にクライアントから受信したバイト数 | 
+| responseSize | 整数 (integer) | 要求の処理中にクライアントに送信されたバイト数 | 
 | cache | string | 要求の処理における API Management キャッシュ使用の状態 (ヒット、ミス、なし) | 
-| cacheTime | integer | API Management キャッシュの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
-| backendTime | integer | バックエンドの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
-| clientTime | integer | クライアントの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| cacheTime | 整数 (integer) | API Management キャッシュの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| backendTime | 整数 (integer) | バックエンドの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| clientTime | 整数 (integer) | クライアントの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
 | apiId | string | 現在の要求の API エンティティ識別子 | 
 | operationId | string | 現在の要求の操作エンティティ識別子 | 
 | productId | string | 現在の要求の製品エンティティ識別子 | 
@@ -214,20 +211,20 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | apimSubscriptionId | string | 現在の要求のサブスクリプション エンティティ識別子 | 
 | backendId | string | 現在の要求のバックエンド エンティティ識別子 | 
 | lastError | object | 最後の要求処理エラー | 
-| elapsed | integer | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
+| elapsed | 整数 (integer) | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
 | source | string | エラーの原因となったポリシー (または処理中の内部ハンドラー) の名前 | 
 | scope | string | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのスコープ | 
 | section | string | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのセクション | 
 | reason | string | エラーの理由 | 
 | message | string | エラー メッセージ | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * アクティビティ ログを表示する
-> * 診断ログを表示する
+> * リソース ログを表示する
 > * API のメトリックを表示する
 > * API が許可されていない呼び出しを受けたときのアラート ルールをセットアップする
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL のサーバーの概念
+title: サーバーの概念 - Azure Database for MySQL
 description: このトピックでは、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 565e1bf7a4972e230b3cf56232ebd24519fcab5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 3/18/2020
+ms.openlocfilehash: 300470b2e8fb10fda7cfc59517cef00c07bf0632
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007889"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537008"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 
@@ -50,7 +50,7 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 
 Azure Database for MySQL サーバーを管理するには、Azure Portal または Azure CLI を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - サービスの概要については、[Azure Database for MySQL の概要](./overview.md)に関するページをご覧ください
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-service-tiers.md)に関するページをご覧ください

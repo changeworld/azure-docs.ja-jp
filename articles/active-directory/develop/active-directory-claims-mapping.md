@@ -1,24 +1,24 @@
 ---
-title: Azure AD テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (パブリック プレビュー)
+title: Azure AD テナントのアプリ要求をカスタマイズする (PowerShell)
+titleSuffix: Microsoft identity platform
 description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/28/2019
+ms.topic: conceptual
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546197"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871209"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -177,7 +177,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| ユーザー名 |
+| username |
 | uti |
 | ver |
 | verified_primary_email |
@@ -284,11 +284,11 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 
-| ソース | ID | 説明 |
+| source | id | 説明 |
 |-----|-----|-----|
-| User | surname | 姓 |
+| User | surname | surname |
 | User | givenname | 名 |
-| User | displayname | 表示名 |
+| User | displayName | 表示名 |
 | User | objectid | ObjectID |
 | User | mail | 電子メール アドレス |
 | User | userprincipalname | ユーザー プリンシパル名 |
@@ -321,7 +321,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | othermail | その他のメール |
 | User | country | Country |
 | User | city | City |
-| User | state | 状態 |
+| User | state | State |
 | User | jobtitle | 役職 |
 | User | employeeid | 従業員 ID |
 | User | facsimiletelephonenumber | ファックスの電話番号 |
@@ -334,7 +334,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 - この要素は、この要求のデータを生成する方法を定義する、**ClaimsTransformation** プロパティの変換エントリの ID 要素と一致する必要があります。
 
-**要求の種類:****JwtClaimType** 要素と **SamlClaimType** 要素は、この要求スキーマ エントリが、どの要求を参照するかを定義します。
+**要求の種類:** **JwtClaimType** 要素と **SamlClaimType** 要素は、この要求スキーマ エントリが、どの要求を参照するかを定義します。
 
 - JwtClaimType には、JWT に出力する要求の名前を含める必要があります。
 - SamlClaimType には、SAML トークンに出力する要求の URI を含める必要があります。
@@ -360,7 +360,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 |TransformationMethod|想定される入力|想定される出力|説明|
 |-----|-----|-----|-----|
-|結合|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
+|Join|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
 
 **InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には 2 つの属性があります。**ClaimTypeReferenceId** と **TransformationClaimType** です。
@@ -384,7 +384,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5:SAML NameID のデータ ソースとして許可されている属性
 
-|ソース|ID|説明|
+|source|id|説明|
 |-----|-----|-----|
 | User | mail|電子メール アドレス|
 | User | userprincipalname|ユーザー プリンシパル名|
@@ -411,11 +411,17 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | TransformationMethod | 制限 |
 | ----- | ----- |
 | ExtractMailPrefix | なし |
-| 結合 | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
+| Join | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。  要求のマッピングが有効なアプリは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーの特殊な URI を確認する必要があります。  
+要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、「[New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)」を参照してください。
+
+要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>テナント間のシナリオ
 
@@ -463,7 +469,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
-   1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
       ``` powershell
@@ -478,7 +484,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
    1. ポリシーを作成するには、次のコマンドを実行します。  
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。
@@ -487,7 +493,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
-   1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
       ``` powershell
@@ -511,7 +517,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
-   1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph API にクエリを実行](/graph/traverse-the-graph)します。 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。 
      
       ``` powershell

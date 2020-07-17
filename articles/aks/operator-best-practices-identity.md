@@ -1,18 +1,16 @@
 ---
-title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) の ID
+title: ID 管理のベスト プラクティス
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) でクラスターの認証と認可を管理する方法に関するクラスター オペレーター ベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074158"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668311"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス
 
@@ -42,13 +40,13 @@ Azure AD 統合クラスターを AKS を使用するとき、リソースへの
 1. Kubernetes のロールベースのアクセス制御 (RBAC) とクラスター ポリシーが適用されます。
 1. 先の Azure AD グループ メンバーシップの検証、Kubernetes RBAC、ポリシーに基づき、開発者の要求が通過するか、却下されます。
 
-Azure AD を使用する AKS クラスターを作成する方法については、[「Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
+Azure AD を使用する AKS クラスターを作成する方法については、「[Azure Active Directory と Azure Kubernetes Service を統合する][aks-aad]」を参照してください。
 
 ## <a name="use-role-based-access-controls-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用する
 
 **ベスト プラクティス ガイダンス** - Kubernetes RBAC を使用し、クラスターのリソースに対するユーザーまたはグループのアクセス許可を定義します。 必要最低限のアクセス許可を割り当てるロールとバインディングを作成します。 ユーザーの状態やグループ メンバーシップが変わったとき、それが自動的に更新されるように、また、クラスター リソースへのアクセスが最新の状態になるように、Azure AD と統合します。
 
-Kubernetes では、クラスターのリソースへのアクセスを細かく制御できます。 アクセス許可はクラスター レベルで定義するか、特定の名前空間に定義できます。 管理できるリソースとアクセス許可の種類を定義できます。 このようなロールは、バインディングが与えられているユーザーまたはグループに適用されます。 *Roles*、*ClusterRoles*、*Bindings* に関する詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][aks-concepts-identity]」を参照してください。
+Kubernetes では、クラスターのリソースへのアクセスを細かく制御できます。 アクセス許可はクラスター レベルで定義するか、特定の名前空間に定義できます。 管理できるリソースとアクセス許可の種類を定義できます。 このようなロールはその後、バインディングが与えられているユーザーまたはグループに適用されます。 *Roles*、*ClusterRoles*、*Bindings* に関する詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][aks-concepts-identity]」を参照してください。
 
 たとえば、*finance-app* という名前の名前空間にあるリソースに完全アクセスできる Role を作成できます。次のサンプル YAML マニフェストをご覧ください。
 
@@ -84,7 +82,7 @@ roleRef:
 
 *developer1\@contoso.com* が AKS クラスターに対して認証されると、*finance-app* 名前空間に対する完全アクセスが与えられます。 このように、リソースへのアクセスが論理的に分離されて制御されます。 Kubernetes RBAC は、前のセクションで説明したように、Azure AD 統合との連動で使用してください。
 
-RBAC で Azure AD グループを使用して Kubernetes クラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access controls and Azure Active Directory identities in AKS][azure-ad-rbac]」(AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
+RBAC で Azure AD グループを使用して Kubernetes クラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access controls and Azure Active Directory identities in AKS][azure-ad-rbac]」 (AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
 
 ## <a name="use-pod-identities"></a>ポッド ID を使用する
 
@@ -113,7 +111,7 @@ Azure リソース (関連付けられた AKS オープン ソース プロジ�
 
 ポッド ID を使用する方法については、[Kubernetes アプリケーションのための Azure Active Directory ID][aad-pod-identity] に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このベスト プラクティスの記事では、クラスターとリソースの認証と認可について取り上げました。 これらのベスト プラクティスのいくつかを実装する場合は、次の記事を参照してください。
 
@@ -122,7 +120,7 @@ Azure リソース (関連付けられた AKS オープン ソース プロジ�
 
 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 
-* [マルチ テナント方式とクラスター分離][aks-best-practices-scheduler]
+* [マルチ テナントとクラスター分離][aks-best-practices-cluster-isolation]
 * [Kubernetes スケジューラの基本的な機能][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの高度な機能][aks-best-practices-advanced-scheduler]
 

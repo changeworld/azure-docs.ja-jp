@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Bime の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Bime の統合 | Microsoft Docs'
 description: Azure Active Directory と Bime の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bdcf0729-c880-4c95-b739-0f6345b17dd8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c0d595bcd96bb38021a2128138f7ee49f9b8354
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900858"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74232068"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル:Azure Active Directory と Bime の統合
+# <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
 このチュートリアルでは、Bime と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Bime と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ Azure AD への Bime の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Bime を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -89,15 +90,15 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
 
 Bime で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Bime** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Bime** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -112,7 +113,7 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Bime クライアント サポート チーム](https://bime.zendesk.com/hc/categories/202604307-Support-tech-notes-and-tips-)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、**[SAML 署名証明書]** ダイアログを開きます。
+5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
@@ -134,13 +135,13 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
 1. 別の Web ブラウザー ウィンドウで、Bime 企業サイトに管理者としてログインします。
 
-2. ツールバーで、**[管理者]**、**[アカウント]** の順にクリックします。
+2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
   
-    ![管理](./media/bime-tutorial/ic775558.png "Admin")
+    ![管理者](./media/bime-tutorial/ic775558.png "[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
   
-    ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure single sign-on")
 
     a. **[SAML 認証を有効にする]** を選択します。
 
@@ -148,13 +149,13 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** ボックスに、Azure portal からコピーした **THUMBPRINT (拇印)** 値を貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -179,7 +180,7 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、Britta Simon に Bime へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Bime]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Bime]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -191,15 +192,15 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-bime-test-user"></a>Bime テスト ユーザーの作成
 
@@ -209,28 +210,28 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 1. **Bime** テナントにログインします。
 
-2. ツールバーで、**[管理者]**、**[ユーザー]** の順にクリックします。
+2. ツールバーで、 **[管理者]** 、 **[ユーザー]** の順にクリックします。
 
-    ![管理](./media/bime-tutorial/ic775561.png "Admin")
+    ![管理者](./media/bime-tutorial/ic775561.png "[Admin]")
 
-3. **[ユーザー リスト]** で、**[新しいユーザーの追加]** ("+") をクリックします。
+3. **[ユーザー リスト]** で、 **[新しいユーザーの追加]** ("+") をクリックします。
 
-    ![ユーザー](./media/bime-tutorial/ic775562.png "Users")
+    ![ユーザー](./media/bime-tutorial/ic775562.png "ユーザー")
 
 4. **[ユーザーの詳細]** ダイアログ ページで、次の手順を実行します。
 
-    ![ユーザーの詳細](./media/bime-tutorial/ic775563.png "User Details")
+    ![ユーザーの詳細](./media/bime-tutorial/ic775563.png "[ユーザーの詳細]")
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
+    c. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 > [!NOTE]
-> Bime から提供されている他の Bime ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Bime ユーザー アカウント作成ツールや、Bime から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

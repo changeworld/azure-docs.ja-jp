@@ -1,50 +1,75 @@
 ---
-title: Azure Maps でのトラフィックの表示 | Microsoft Docs
-description: Javascript マップ上にトラフィック データを表示する方法
-author: jingjing-z
-ms.author: jinzh
-ms.date: 11/10/2018
+title: マップ上にトラフィックを表示する | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップ上にトラフィック データを表示する方法を示します。
+author: Philmea
+ms.author: philmea
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753541"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123923"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
-この記事では、マップ上にトラフィック情報やインシデント情報を表示する方法について説明します。
+Azure Maps で使用できるトラフィック データには、次の 2 種類があります。
 
-## <a name="understand-the-code"></a>コードの理解
+- インシデント データ - 建設、道路の閉鎖、事故などのためのポイント データと行ベースのデータで構成されます。
+- フロー データ - 道路のトラフィックのフローに関するメトリックを提供します。 多くの場合、トラフィック フロー データは、道路の色を設定するために使用されます。 その色は、速度制限やその他のメトリックと相対的な、フロー速度が低下するトラフィック量に基づいています。 Azure Maps のトラフィック フロー データには、次の 3 種類の測定メトリックがあります。
+    - `relative` - 道路のフリーフロー速度に対して相対的です。
+    - `absolute` - 道路のすべての車両の絶対速度です。
+    - `relative-delay` - 予想される平均遅延時間よりも遅い地域が表示されます。
 
-<iframe height='456' scrolling='no' title='マップ上にトラフィックを表示する' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>」Pen を表示します。
+次のコードは、トラフィック データをマップに表示する方法を示しています。
+
+```javascript
+//Show traffic on the map using the traffic options.
+map.setTraffic({
+    incidents: true,
+    flow: 'relative'
+});
+```
+
+上記の機能の完全な実行コード サンプルを以下に示します。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='マップ上にトラフィックを表示する' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/WMLRPw/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Show traffic on a map</a>」Pen を表示します。
 </iframe>
 
-上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](map-create.md)に関する記事を参照してください。
+## <a name="traffic-overlay-options"></a>トラフィック オーバーレイのオプション
 
-コードの 2 番目のブロックでは、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内で [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数を使用して、トラフィック フローとインシデントをマップ上にレンダリングしています。
+次のツールを使用すると、さまざまなトラフィック オーバーレイ設定に切り替えて、表示がどのように変化するかを確認できます。 
 
-## <a name="next-steps"></a>次の手順
+<br/>
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="トラフィック オーバーレイのオプション" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io'>トラフィック オーバーレイのオプション</a>を参照してください。
+</iframe>
+
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-完全なコードのサンプルについては、次の記事を参照してください。
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [コード サンプル ページ](https://aka.ms/AzureMapsSamples)
+> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
 
 ユーザー エクスペリエンスを強化します。
 
 > [!div class="nextstepaction"]
-> [操作をマウス イベントにマップする](./map-events.md)
+> [操作をマウス イベントにマップする](map-events.md)
 
 > [!div class="nextstepaction"]
-> [アクセス可能なマップをビルド](./map-accessibility.md)
+> [アクセス可能なマップをビルド](map-accessibility.md)
+
+> [!div class="nextstepaction"]
+> [コード サンプル ページ](https://aka.ms/AzureMapsSamples)

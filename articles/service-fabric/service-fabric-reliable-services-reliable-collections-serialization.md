@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化 | Microsoft Docs
-description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Reliable Collection オブジェクトのシリアル化
+description: Azure Service Fabric で Reliable Collection オブジェクトをシリアル化する規定の方法や、カスタムのシリアル化を定義する方法をなどについて説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522388"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75639549"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -35,7 +24,7 @@ Reliable State Manager には一般的な型のための組み込みのシリア
 
 Reliable State Manager には、次の型用の組み込みのシリアライザーがあります。 
 - Guid
-- bool
+- [bool]
 - byte
 - sbyte
 - byte[]
@@ -44,7 +33,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 - decimal
 - double
 - float
-- int
+- INT
 - uint
 - long
 - ulong
@@ -55,7 +44,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 
 カスタムのシリアライザーは通常、パフォーマンスを向上させたり、ネットワーク上とディスクのデータを暗号化したりするために使用します。 その主な理由は、型に関する情報をシリアル化する必要がないため、汎用シリアライザーに比べて、一般的にカスタム シリアライザーの方が効率性に優れているためです。 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
+[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) を使用して、特定の型 T 用のカスタム シリアライザーを登録します。復元が開始される前にすべての Reliable Collection が適切なシリアライザーにアクセスして永続化されたデータを読み取れるようにするため、この登録は StatefulServiceBase の作成時に行う必要があります。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +62,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>カスタム シリアライザーの実装方法
 
-カスタム シリアライザーは、[IStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) インターフェイスを実装する必要があります。
+カスタム シリアライザーは、[IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) インターフェイスを実装する必要があります。
 
 > [!NOTE]
-> IStateSerializer<T> には、ベース値と呼ばれる追加の T を受け取る書き込みと読み取りのオーバーロードが含まれています。 この API は差分のシリアル化に使用します。 現在、差分のシリアル化機能は公開されていません。 そのため、差分のシリアル化が公開されて有効になるまで、これら 2 つのオーバーロードは呼び出されません。
+> IStateSerializer\<T> には、ベース値と呼ばれる追加の T を受け取る書き込みと読み取りのオーバーロードが含まれています。 この API は差分のシリアル化に使用します。 現在、差分のシリアル化機能は公開されていません。 そのため、差分のシリアル化が公開されて有効になるまで、これら 2 つのオーバーロードは呼び出されません。
 
 4 つのプロパティを含み、OrderKey と呼ばれるカスタムの型の例を次に示します。
 
@@ -148,7 +137,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 すべてのバージョンをサポートする一般的な方法は、最初にサイズ情報を追加したら、後はオプションのプロパティ情報のみを追加することです。
 こうすることで、各バージョンで可能な限りの読み取りを実行でき、ストリームの残りの部分を省略できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   * [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。

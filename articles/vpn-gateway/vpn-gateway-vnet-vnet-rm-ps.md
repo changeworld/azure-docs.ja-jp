@@ -1,5 +1,5 @@
 ---
-title: VNet 対 VNet 接続を使用して Azure 仮想ネットワークを別の VNet に接続する:PowerShell | Microsoft Docs
+title: 'Azure VPN Gateway の VNet 対 VNet 接続を使用して VNet を別の VNet に接続する: PowerShell'
 description: VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続します。
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075153"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75860522"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "58075153"
 > * [異なるデプロイメント モデルの接続 - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [異なるデプロイメント モデルの接続 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 
-## <a name="about"></a>VNet の接続について
+## <a name="about-connecting-vnets"></a><a name="about"></a>VNet の接続について
 
 VNet の接続方法は複数あります。 以降のセクションでは、仮想ネットワークを接続するさまざまな方法について説明します。
 
@@ -44,7 +44,7 @@ VNet 間接続の構成は、VNet を簡単に接続するための良い方法�
 
 VNET ピアリングを使用して VNet を接続することを検討する場合もあります。 VNET ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。 さらに、[VNET ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)と計算方法が異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
-## <a name="why"></a>VNet 間接続を作成する理由
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>VNet 間接続を作成する理由
 
 VNet 間接続による仮想ネットワークの接続が望ましいのは、次のような場合です。
 
@@ -58,7 +58,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
-## <a name="steps"></a>どの VNet 間の手順を使用する必要がありますか。
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>どの VNet 間の手順を使用する必要がありますか。
 
 この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が別のサブスクリプション内に存在する](#difsub)場合の手順です。
 大きく違うのは、異なるサブスクリプションに存在する VNet の接続を構成するときは、別々の PowerShell セッションを使用する必要がある点です。 
@@ -73,17 +73,17 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
   ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
 
 ### <a name="before-you-begin"></a>開始する前に
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 端末の左上をクリックして、Cloud Shell を再起動できます。 端末を再起動したら、忘れずにすべての変数を再宣言してください。
+* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 ターミナルの左上をクリックして、Cloud Shell を再起動できます。 ターミナルを再起動したら、忘れずにすべての変数を再宣言してください。
 
 * 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
-### <a name="Step1"></a>手順 1 - IP アドレス範囲を決める
+### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>手順 1 - IP アドレス範囲を決める
 
 以下の手順に従って、2 つの仮想ネットワークを、それぞれのゲートウェイ サブネットおよび構成と共に作成します。 その後、2 つの VNet 間の VPN 接続を作成します。 ネットワーク構成の IP アドレスの範囲を計画することが重要です。 VNet の範囲やローカル ネットワークの範囲が重複することは、どのような形であれ許容されないので注意してください。 以下の例では、DNS サーバーは含まれていません。 仮想ネットワークの名前解決が必要な場合は、[名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
 
@@ -121,7 +121,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 * ConnectionType: VNet2VNet
 
 
-### <a name="Step2"></a>手順 2 - TestVNet1 を作成し、構成する
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>手順 2 - TestVNet1 を作成し、構成する
 
 1. サブスクリプションの設定を確認します
 
@@ -150,7 +150,6 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    $VNetName1 = "TestVNet1"
    $FESubName1 = "FrontEnd"
    $BESubName1 = "Backend"
-   $GWSubName1 = "GatewaySubnet"
    $VNetPrefix11 = "10.11.0.0/16"
    $VNetPrefix12 = "10.12.0.0/16"
    $FESubPrefix1 = "10.11.0.0/24"
@@ -167,14 +166,14 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. TestVNet1 のサブネット構成を作成します。 この例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
+4. TestVNet1 のサブネット構成を作成します。 この例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。 このため、以下の変数を使用して割り当てることはできません。
 
    次の例では、先ほど設定した変数を使用します。 この例では、ゲートウェイ サブネットに /27 が使用されています。 /29 と同程度の小規模なゲートウェイ サブネットを作成することはできますが、少なくとも /28 または /27 以上を選択してさらに多くのアドレスが含まれる大規模なサブネットを作成することをお勧めします。 これにより、十分な数のアドレスが、将来的に必要になる可能性のある追加の構成に対応できるようになります。
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
    $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix1
    ```
 5. TestVNet1 を作成します。
 
@@ -204,7 +203,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell 端末の左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
+コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell ターミナルの左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>手順 3 - TestVNet4 を作成し、構成する
 
@@ -218,7 +217,6 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
    $VnetName4 = "TestVNet4"
    $FESubName4 = "FrontEnd"
    $BESubName4 = "Backend"
-   $GWSubName4 = "GatewaySubnet"
    $VnetPrefix41 = "10.41.0.0/16"
    $VnetPrefix42 = "10.42.0.0/16"
    $FESubPrefix4 = "10.41.0.0/24"
@@ -239,7 +237,7 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
    ```azurepowershell-interactive
    $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
    $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix4
    ```
 4. TestVNet4 を作成します。
 
@@ -294,11 +292,11 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
    ```
 4. 接続を確認します。 「 [接続を確認する方法](#verify)」を参照してください。
 
-## <a name="difsub"></a>異なるサブスクリプション内にある VNet を接続する方法
+## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>異なるサブスクリプション内にある VNet を接続する方法
 
 このシナリオでは、TestVNet1 と TestVNet5 を接続します。 TestVNet1 と TestVNet5 は、異なるサブスクリプションに存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。
 
-以下の手順とこれまでの手順の違いは、2 つ目のサブスクリプションとの関連で、構成手順を一部別個の PowerShell セッションで実行する必要があることです  (特に 2 つのサブスクリプションが異なる組織に属する場合)。
+以下の手順とこれまでの手順の違いは、2 つ目のサブスクリプションとの関連で、構成手順を一部別個の PowerShell セッションで実行する必要があることです (特に 2 つのサブスクリプションが異なる組織に属する場合)。
 
 この演習ではサブスクリプションのコンテキストを変更するため、手順 8 では、Azure Cloud Shell を使用するのではなく、ローカル環境のコンピューター上の PowerShell を使用する方が簡単な場合があります。
 
@@ -473,17 +471,17 @@ TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するに
    New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
 
-## <a name="verify"></a>接続を確認する方法
+## <a name="how-to-verify-a-connection"></a><a name="verify"></a>接続を確認する方法
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、 [Virtual Machines のドキュメント](https://docs.microsoft.com/azure/) を参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

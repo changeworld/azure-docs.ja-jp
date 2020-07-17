@@ -1,34 +1,35 @@
 ---
-title: クイック スタート:Java を使用して Text Analytics API を呼び出す
+title: クイック スタート:Java を使用して Text Analytics REST API を呼び出す
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: fc848feb3f9a0e1160a8e36014ca4a469f792c96
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008581"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75446322"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Azure Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
-API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
+また、サインアップ中に生成された[エンドポイントとアクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)も必要です。
 
 <a name="Detect"></a>
 
@@ -38,8 +39,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 `DetectLanguage.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
-1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
-1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -90,23 +90,15 @@ class Documents {
 }
 
 public class DetectLanguage {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/languages";
     
@@ -114,11 +106,11 @@ public class DetectLanguage {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -147,6 +139,8 @@ public class DetectLanguage {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "This is a document written in English.");
             documents.add ("2", "Este es un document escrito en Español.");
@@ -208,14 +202,13 @@ public class DetectLanguage {
 ```
 <a name="SentimentAnalysis"></a>
 
-## <a name="analyze-sentiment"></a>センチメントを分析する
+## <a name="analyze-sentiment"></a>感情を分析する
 
 Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetSentiment.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
-1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
-1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -267,23 +260,15 @@ class Documents {
 }
 
 public class GetSentiment {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/sentiment";
     
@@ -291,11 +276,11 @@ public class GetSentiment {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -324,6 +309,8 @@ public class GetSentiment {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.");
@@ -367,8 +354,7 @@ Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentra
 
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetKeyPhrases.java` というクラスを作成します。
 1. そのクラスに次のコードを追加します。
-1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
-1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -420,23 +406,15 @@ class Documents {
 }
 
 public class GetKeyPhrases {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/keyPhrases";
     
@@ -444,11 +422,11 @@ public class GetKeyPhrases {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -477,6 +455,8 @@ public class GetKeyPhrases {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Si usted quiere comunicarse con Carlos, usted debe de llamarlo a su telefono movil. Carlos es muy responsable, pero necesita recibir una notificacion si hay algun problema.");
@@ -539,8 +519,7 @@ Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsof
 
 1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetEntities.java` という名前のクラスを作成します。
 1. そのクラスに次のコードを追加します。
-1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
-1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。 
 1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
 1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
@@ -592,23 +571,15 @@ class Documents {
 }
 
 public class GetEntities {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+    public static void Initialize () throws Exception {
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
+    }
 
     static String path = "/text/analytics/v2.1/entities";
     
@@ -616,11 +587,11 @@ public class GetEntities {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -649,6 +620,8 @@ public class GetEntities {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "Microsoft is an It company.");
 
@@ -711,7 +684,7 @@ public class GetEntities {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

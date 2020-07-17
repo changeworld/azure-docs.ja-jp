@@ -1,9 +1,9 @@
 ---
-title: Web ページでの Azure Traffic Manager への Real User Measurements | Microsoft Docs
-description: Real User Measurements を Traffic Manager に送信するように Web ページを設定する
+title: Web ページでのリアル ユーザー測定 - Azure Traffic Manager
+description: この記事では、Azure Traffic Manager にリアル ユーザー測定を送信するように Web ページを設定する方法について説明します。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 927d774ee30a291607a8a47fc2fd6878c1bc6fee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117270"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76938693"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 
@@ -31,18 +31,18 @@ Real User Measurements (RUM) キーを取得し、生成されたコードを We
 Azure Portal を使用して RUM キーを取得するには:
 1. ブラウザーから Azure Portal にサインインします。 まだアカウントを持っていない場合は、1 か月間の無料試用版にサインアップできます。
 2. ポータルの検索バーで、変更の対象となる Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-3. Traffic Manager プロファイル ブレードで、**[設定]** の下の **[Real User Measurements]\(Real User Measurements\)** をクリックします。
+3. Traffic Manager プロファイル ブレードで、 **[設定]** の下の **[Real User Measurements]\(Real User Measurements\)** をクリックします。
 4. **[キーの生成]** をクリックして、新しい RUM キーを作成します。
  
    ![Real User Measurements キーの生成](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   "**図 1:Real User Measurements キーの生成**
+   **図 1: Real User Measurements キーの生成**
 
 5. ブレードには、生成された RUM キーと、HTML ページに埋め込む必要がある JavaScript コード スニペットが表示されます。
  
     ![Real User Measurements キーの JavaScript コード](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    "**図 2:Real User Measurements キーと測定 JavaScript**
+    **図 2: Real User Measurements キーと測定 JavaScript**
  
 6. **[コピー]** をクリックして、JavaScript コードをコピーします。 
 
@@ -58,13 +58,13 @@ RUM キーを取得した後、次の手順は、エンドユーザーがアク�
  
     ![Real User Measurements の Web ページへの JavaScript コードの埋め込み](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    "**図 3:Real User Measurements JavaScript が埋め込まれた単純な HTML**
+    **図 3: Real User Measurements JavaScript が埋め込まれた単純な HTML**
 
 3.  HTML ファイルを保存して、インターネットに接続されている Web サーバーでホストします。 
 4. Web ブラウザーでこのページを次に表示したときに、参照される JavaScript がダウンロードされ、スクリプトは測定とレポートの操作を実行します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Real User Measurements](traffic-manager-rum-overview.md) について確認する
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。

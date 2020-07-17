@@ -1,28 +1,19 @@
 ---
-title: Azure Service Fabric CLI- sfctl | Microsoft Docs
-description: Service Fabric CLI sfctl のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI- sfctl
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 サブグループに対するコマンドの一覧が含まれています。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: c195d0c4250022102e735cf584370278e354bc41
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666677"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76906223"
 ---
 # <a name="sfctl"></a>sfctl
-Service Fabric のクラスターとエンティティを管理するためのコマンドです。 このバージョンは Service Fabric 6.4 ランタイムと互換性があります。
+Service Fabric のクラスターとエンティティを管理するためのコマンドです。 このバージョンは Service Fabric 7.0 ランタイムと互換性があります。
 
 コマンドは、名詞と動詞のパターンに従います。 詳しくはサブグループをご覧ください。
 
@@ -31,9 +22,10 @@ Service Fabric のクラスターとエンティティを管理するための�
 | --- | --- |
 | [application](service-fabric-sfctl-application.md) | アプリケーションおよびアプリケーションの種類を作成、削除、および管理します。 |
 | [chaos](service-fabric-sfctl-chaos.md) | chaos テスト サービスの開始、停止、レポートを実行します。 |
-| [cluster](service-fabric-sfctl-cluster.md) | Service Fabric クラスターの選択、管理、および操作をします。 |
+| [cluster](service-fabric-sfctl-cluster.md) | Service Fabric クラスターの選択、管理、および操作を行います。 |
 | [compose](service-fabric-sfctl-compose.md) | Docker Compose アプリケーションを作成、削除、および管理します。 |
 | [container](service-fabric-sfctl-container.md) | クラスター ノード上でコンテナー関連のコマンドを実行します。 |
+| [events](service-fabric-sfctl-events.md) | イベント ストアからイベントを取得します (EventStore サービスが既にインストールされている場合)。 |
 | [is](service-fabric-sfctl-is.md) | クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。 |
 | [mesh](service-fabric-sfctl-mesh.md) | Azure Service Fabric Mesh アプリケーションを削除および管理します。 |
 | [node](service-fabric-sfctl-node.md) | クラスターを形成するノードを管理します。 |
@@ -46,6 +38,6 @@ Service Fabric のクラスターとエンティティを管理するための�
 | [設定](service-fabric-sfctl-settings.md) | sfctl のこのインスタンスに対してローカルな設定を構成します。 |
 | [store](service-fabric-sfctl-store.md) | クラスター イメージ ストアで基本的なファイル レベルの操作を実行します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

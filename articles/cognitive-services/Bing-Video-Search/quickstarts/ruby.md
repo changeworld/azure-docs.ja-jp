@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Bing Video Search REST API と Ruby を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:REST API と Ruby を使用して動画を検索する - Bing Video Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 837a47b0eb1eff37eeafc1cdaad6370b8abc595f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860206"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448373"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>クイック スタート:Bing Video Search REST API と Ruby を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな Ruby アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 
+このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな Ruby アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "55860206"
     require 'json'
     ```
 
-2. API エンドポイント、動画 API 検索パス、サブスクリプション キー、検索語句の変数を作成します。
+2. API エンドポイント、動画 API 検索パス、サブスクリプション キー、検索語句の変数を作成します。 `uri` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -188,7 +188,7 @@ ms.locfileid: "55860206"
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングル ページ Web アプリを作成する](../tutorial-bing-video-search-single-page-app.md)

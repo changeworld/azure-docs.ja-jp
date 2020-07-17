@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric ホスティング モデル | Microsoft Docs
+title: Azure Service Fabric ホスティング モデル
 description: デプロイされた Service Fabric サービスのレプリカ (またはインスタンス) と、サービス ホスト プロセスとの関係を説明します。
-services: service-fabric
-documentationcenter: .net
 author: harahma
-manager: chackdan
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663283"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115033"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
 この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
@@ -33,7 +26,7 @@ ms.locfileid: "58663283"
 
 ホスティング モデルを理解するための例を紹介します。 たとえば、"MyAppType" という *ApplicationType* があり、これは "MyServiceType" という *ServiceType* を持つものとします。 'MyServiceType' は、'MyServicePackage' という *ServicePackage* によって提供され、'MyServicePackage' は 'MyCodePackage' という *CodePackage* を持ちます。 'MyCodePackage' は、'MyServiceType' という *ServiceType* を実行時に登録します。
 
-3 ノード クラスターがあるものとして、"MyAppType" というタイプの **fabric:/App1** という "*アプリケーション*" を作成します。 この **fabric:/App1** というアプリケーションの内部に、"MyServiceType" タイプのサービス **fabric:/App1/ServiceA** を作成します。 このサービスには、2 つのパーティション (たとえば、**P1** と **P2**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、最終的にノードにデプロイされるこのアプリケーションのビューを示しています。
+3 ノード クラスターがあるとして、"MyAppType" というタイプの **fabric:/App1** という*アプリケーション*を作成します。 この **fabric:/App1** というアプリケーションの内部に、"MyServiceType" タイプのサービス **fabric:/App1/ServiceA** を作成します。 このサービスには、2 つのパーティション (たとえば、**P1** と **P2**) と、パーティションごとに 3 つのレプリカがあります。 次の図は、最終的にノードにデプロイされるこのアプリケーションのビューを示しています。
 
 
 ![デプロイされたアプリケーションのノード ビューの図][node-view-one]
@@ -111,7 +104,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 
 ## <a name="work-with-a-deployed-service-package"></a>デプロイされたサービス パッケージの操作
-ノード上の *ServicePackage* のアクティブなコピーは、[デプロイされたサービス パッケージ][p3]と呼ばれます。 専有プロセス モデルを使ってサービスを作成した場合、特定のアプリケーションに、同じ *ServicePackage* の複数のサービス パッケージがデプロイされる可能性があります。 デプロイされているサービス パッケージに固有の操作を実行する場合は、**ServicePackageActivationId** を指定して、デプロイされている特定のサービス パッケージを示す必要があります。 たとえば、[デプロイされているサービス パッケージの正常性を報告する][p4]場合、または[デプロイされているサービス パッケージのコード パッケージを再起動する][p5]場合は、ID を指定します。
+ノード上の *ServicePackage* のアクティブなコピーは、[デプロイされたサービス パッケージ][p3]と呼ばれます。 専有プロセス モデルを使ってサービスを作成した場合、特定のアプリケーションに、同じ *ServicePackage* の複数のサービス パッケージがデプロイされる可能性があります。 デプロイされているサービス パッケージに固有の操作を実行する場合は、**ServicePackageActivationId** を指定して、デプロイされている特定のサービス パッケージを示す必要があります。 たとえば、[デプロイされたサービス パッケージの正常性を報告する][p4]場合、または[デプロイされたサービス パッケージのコード パッケージを再起動する][p5]場合は、ID を指定します。
 
 デプロイされたサービス パッケージの **ServicePackageActivationId** は、ノードで[デプロイされたサービス パッケージ][p3]のリストのクエリを実行することで確認できます。 ノード上にある、[デプロイされたサービスのタイプ][p6]、[デプロイされたレプリカ][p7]、[デプロイされたコード パッケージ][p8]のクエリを実行すると、クエリ結果には親のデプロイされたサービス パッケージの **ServicePackageActivationId** も含まれます。
 
@@ -176,10 +169,14 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 
 前の例を見ると、"MyCodePackageA" に "MyServiceTypeA" と "MyServiceTypeB" の両方が登録されていて、かつ "MyCodePackageB" が存在しなければ、冗長な *CodePackage* は 1 つも実行されていないように見えるかもしれません。 これは正しいことですが、このアプリケーション モデルは専有プロセス ホスティング モデルとは一致しません。 それぞれのレプリカに専用のプロセスを設定することが目的であれば、同じ *CodePackage* から両方の *ServiceTypes* を登録する必要はありません。 代わりに、単に各 *ServiceType* を専用の *ServicePackage* に格納します。
 
-## <a name="next-steps"></a>次の手順
-[アプリケーションをパッケージ化][a4]し、デプロイの準備を行います。
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
 
-「[アプリケーションのデプロイと削除][a5]」。 この記事では、PowerShell を使ってアプリケーション インスタンスを管理する方法について説明しています
+Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。
+
+## <a name="next-steps"></a>次のステップ
+[アプリケーションをパッケージ化][a4]して展開できるようにします。
+
+[アプリケーションをデプロイおよび削除][a5]します。 この記事では、PowerShell を使ってアプリケーション インスタンスを管理する方法について説明しています
 
 <!--Image references-->
 [node-view-one]: ./media/service-fabric-hosting-model/node-view-one.png

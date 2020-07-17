@@ -1,7 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 の URI を使用する
 description: Azure Data Lake Storage Gen2 の URI を使用する
-services: storage
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3f486da121927be23a6bd86e8567574cd95c541e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939277"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437130"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 の URI を使用する
 
@@ -28,7 +27,7 @@ Data Lake Storage Gen2 の URI 構文は、Data Lake Storage Gen2 を既定の�
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **スキーム識別子**:`abfs` プロトコルがスキーム識別子として使用されます。 接続時に Secure Socket Layer (SSL) を使用するかどうかを選択できます。 Secure Socket Layer を介して接続する場合は、`abfss` を使用します。
+1. **スキーム識別子**:`abfs` プロトコルがスキーム識別子として使用されます。 接続時にトランスポート層セキュリティ (TLS) 接続 (以前は Secure Sockets Layer (SSL) として知られていました) を使用するかどうかを選択できます。 TLS 接続を使用して接続する場合は、`abfss` を使用します。
 
 2. **ファイル システム**:ファイルとフォルダーを保持する親ロケーションです。 これは、Azure Storage Blob サービスのコンテナーと同じです。
 
@@ -47,6 +46,6 @@ Data Lake Storage Gen2 の URI 構文は、Data Lake Storage Gen2 を既定の�
 2. **ファイル名**:個々のファイルの名前です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

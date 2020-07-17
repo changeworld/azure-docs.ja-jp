@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: 21bfc632a6e8744fc549abb05a7013bb296ca254
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181511"
 ---
 * Windows: コピーの場合は `Ctrl-c` がサポートされますが、貼り付けには `Shift-insert` を使用します。
   * Firefox や IE ではクリップボードのアクセス許可が正しくサポートされない場合があります。

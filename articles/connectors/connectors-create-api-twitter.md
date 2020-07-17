@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から Twitter に接続する | Microsoft Docs
+title: Azure Logic Apps から Twitter に接続する
 description: Azure Logic Apps を使用して、Twitter アカウントからのツイートの監視と管理に加え、フォロワー、フォローしているユーザー、他のユーザー、タイムラインなどに関するデータの取得を行うタスクとワークフローを自動化します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230661"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789088"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Twitter の監視と管理を行う
 
@@ -29,7 +25,7 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * Twitter アカウントとユーザー資格情報。
 
@@ -45,7 +41,7 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. パスを選択します。 
+1. 以下からパスを選択します。 
 
    * 空のロジック アプリの場合: 検索ボックスに、フィルターとして「Twitter」と入力します。 
    トリガーの一覧で、目的のトリガーを選択します。 
@@ -54,12 +50,12 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
    * 既存のロジック アプリの場合: 
    
-     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+     * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
        または
 
      * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
      
        検索ボックスに、フィルターとして「Twitter」と入力します。 
        アクションの一覧で、目的のアクションを選択します。
@@ -70,7 +66,7 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
 ## <a name="examples"></a>例
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter トリガー: 新しいツイートが投稿されたら
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter トリガー:When a new tweet is posted (新しいツイートの投稿時)
 
 このトリガーは、トリガーが新しいツイート (たとえば #Seattle というハッシュタグ付きのツイート) を検出すると、ロジック アプリ ワークフローを開始します。 このため、これらのツイートが検出されたときに、たとえばツイートの内容が含まれるファイルを Dropbox コネクタを使用して Dropbox アカウントなどのストレージに追加できます。 
 
@@ -78,7 +74,7 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 
 **企業での使用例**: このトリガーを使用して、自社に関するツイートを監視し、ツイートのコンテンツを SQL データベースにアップロードできます。
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter アクション: ツイートを投稿する
+### <a name="twitter-action-post-a-tweet"></a>Twitter アクション:ツイートを投稿する
 
 このアクションは、ツイートを投稿しますが、そのツイートに既に説明したトリガーによって検出されたツイートのコンテンツが含まれるようにアクションを設定できます。 
 
@@ -91,6 +87,6 @@ Twitter アカウントから応答を取得し、その出力を他のアクシ
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

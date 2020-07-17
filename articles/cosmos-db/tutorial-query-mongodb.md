@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API でデータのクエリを実行する
-description: Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する方法を説明します。
-author: rimman
-ms.author: rimman
+description: Azure Cosmos DB の MongoDB 用 API から MongoDB シェル コマンドを使用してデータを照会する方法について説明します
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042990"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74870141"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する
 
@@ -58,7 +58,7 @@ ms.locfileid: "54042990"
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a> サンプル クエリ 1 
+## <a name="example-query-1"></a><a id="examplequery1"></a> サンプル クエリ 1 
 
 上記の家族に関するサンプル ドキュメントに対して、次のクエリは ID フィールドが `WakefieldFamily` と一致するドキュメントを返します。
 
@@ -108,7 +108,7 @@ ms.locfileid: "54042990"
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a>サンプル クエリ 2 
+## <a name="example-query-2"></a><a id="examplequery2"></a>サンプル クエリ 2 
 
 次のクエリでは、家族のすべての子が返されます。 
 
@@ -141,7 +141,7 @@ ms.locfileid: "54042990"
     }
 
 
-## <a id="examplequery3"></a>サンプル クエリ 3 
+## <a name="example-query-3"></a><a id="examplequery3"></a>サンプル クエリ 3 
 
 次のクエリでは、登録されているすべての家族が返されます。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "54042990"
     db.families.find( { "isRegistered" : true })
 **結果** ドキュメントは返されません。 
 
-## <a id="examplequery4"></a>サンプル クエリ 4
+## <a name="example-query-4"></a><a id="examplequery4"></a>サンプル クエリ 4
 
 次のクエリでは、登録されていないすべての家族が返されます。 
 
@@ -194,7 +194,7 @@ ms.locfileid: "54042990"
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a>サンプル クエリ 5
+## <a name="example-query-5"></a><a id="examplequery5"></a>サンプル クエリ 5
 
 次のクエリでは、登録されていない、州が NY のすべての家族が返されます。 
 
@@ -240,7 +240,7 @@ ms.locfileid: "54042990"
 }
 
 
-## <a id="examplequery6"></a>サンプル クエリ 6
+## <a name="example-query-6"></a><a id="examplequery6"></a>サンプル クエリ 6
 
 次のクエリでは、子が 8 年生のすべての家族が返されます。
 
@@ -285,7 +285,7 @@ ms.locfileid: "54042990"
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a>サンプル クエリ 7
+## <a name="example-query-7"></a><a id="examplequery7"></a>サンプル クエリ 7
 
 次のクエリでは、子の配列サイズが 3 のすべての家族が返されます。
 
@@ -297,7 +297,7 @@ ms.locfileid: "54042990"
 
 子が 2 人より多い家族はないため、返される結果はありません。 パラメーターが 2 の場合のみ、このクエリは成功し、ドキュメント全体を返します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を行いました。
 

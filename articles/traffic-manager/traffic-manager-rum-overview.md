@@ -1,23 +1,23 @@
 ---
 title: Azure Traffic Manager のリアル ユーザー測定
-description: Traffic Manager の Real User Measurements の概要
+description: この概要では、Azure Traffic Manager Real User Measurements のしくみについて説明します。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: fd37ef739522955ae8227db39a41aecf199d65c3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: e38e1255b1a84ab5d3fd37e16eb65c76001dbfa1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052821"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76938442"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager の Real User Measurements の概要
 
@@ -35,10 +35,50 @@ Real User Measurements を使用すると、エンド ユーザーが使用す�
 
 Real User Measurements を使用する場合は、Traffic Manager に送信された測定数に基づいて課金されます。 価格の詳細については、[Traffic Manager の価格ページ](https://azure.microsoft.com/pricing/details/traffic-manager/)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="faqs"></a>FAQ
+
+* [Real User Measurements のメリットは何ですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-benefits-of-using-real-user-measurements)
+
+* [Azure 以外のリージョンで Real User Measurements を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-non-azure-regions)
+
+* [どのルーティング方法が Real User Measurements のメリットを得られますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#which-routing-method-benefits-from-real-user-measurements)
+
+* [Real User Measurements は、プロファイルごとに個別に有効にする必要がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-real-user-measurements-each-profile-separately)
+
+* [サブスクリプションの Real User Measurements をオフにするには、どうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-turn-off-real-user-measurements-for-my-subscription)
+
+* [Web ページ以外のクライアント アプリケーションで Real User Measurements を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+
+* [Real User Measurements が有効な Web ページのレンダリング 1 回あたりの測定数はどのくらいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+
+* [Web ページで Real User Measurements スクリプトが実行されるまでの間に、遅延が発生しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
+
+* [Real User Measurements を使用できるのは、測定対象の Azure リージョンでだけですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
+
+* [測定数を特定の数値に制限できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
+
+* [Real User Measurements の一環としてクライアント アプリケーションによって取得される測定を表示できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
+
+* [Traffic Manager によって提供される測定スクリプトを変更できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+
+* [Real User Measurements で使用しているキーを、他のユーザーが見ることはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
+
+* [自分の RUM キーを、他のユーザーが悪用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-others-abuse-my-rum-key)
+
+* [すべての Web ページに測定 JavaScript を配置する必要がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
+
+* [Real User Measurements を使用している場合、Traffic Manager によってエンド ユーザーの情報を識別することは可能ですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+
+* [Real User Measurements を測定している Web ページは、ルーティング用に Traffic Manager を使用する必要がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
+
+* [Real User Measurements と共に使用するために、Azure リージョンでホストしなければならないサービスはありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
+
+* [Real User Measurements を使用しているとき、Azure の帯域幅の使用量は増えますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+
+## <a name="next-steps"></a>次のステップ
 - [Web ページで Real User Measurements](traffic-manager-create-rum-web-pages.md) を使用する方法を確認する
--  [Traffic Manager のしくみ](traffic-manager-overview.md)
+- [Traffic Manager のしくみ](traffic-manager-overview.md)
 - [Mobile Center](https://docs.microsoft.com/mobile-center/) について確認する
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
--  [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
+- [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
 

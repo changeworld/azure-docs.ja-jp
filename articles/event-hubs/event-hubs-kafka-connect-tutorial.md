@@ -3,24 +3,22 @@ title: Apache Kafka Connect との統合 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Kafka 用 Azure Event Hubs で Apache Spark を使用する方法について取り上げます。
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
-manager: timlt
+author: ShubhaVijayasarathy
 ms.service: event-hubs
-ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 2ed4432aec9b833efe6b521b4452177088d21d70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: how-to
+ms.date: 04/02/2020
+ms.author: shvija
+ms.openlocfilehash: 60c6207b1c90ca40f02097a1c82d2811a50f664d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119413"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632830"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs で Apache Kafka Connect のサポートを統合する (プレビュー)
-ビジネス ニーズに応じたインジェストが増えるにつれて、外部のさまざまなソースとシンクの取り込み要件も増してきています。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) は、Kafka クラスターを通じて、MySQL や HDFS、ファイル システムなどの外部システムに接続し、それらとの間でデータをインポート/エクスポートするためのフレームワークとなります。 このチュートリアルでは、Kafka 対応の Event Hubs と組み合わせて Kafka Connect フレームワークを使用する方法について説明します。
+ビジネス ニーズに応じたインジェストが増えるにつれて、外部のさまざまなソースとシンクの取り込み要件も増してきています。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) は、Kafka クラスターを通じて、MySQL や HDFS、ファイル システムなどの外部システムに接続し、それらとの間でデータをインポート/エクスポートするためのフレームワークとなります。 このチュートリアルでは、Event Hubs と共に Kafka Connect フレームワークを使用する方法について説明します。
 
-このチュートリアルでは、Kafka 対応の Azure イベント ハブに Kafka Connect を統合し、基本的な FileStreamSource コネクタと FileStreamSink コネクタをデプロイする方法について説明します。 現在、この機能はプレビュー段階にあります。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして機能する Kafka Connect のシナリオをエンド ツー エンドで示しています。
+このチュートリアルでは、イベント ハブに Kafka Connect を統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする方法について説明します。 現在、この機能はプレビュー段階にあります。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして機能する Kafka Connect のシナリオをエンド ツー エンドで示しています。
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) で入手できます。
@@ -44,7 +42,7 @@ ms.locfileid: "58119413"
 - [Apache Kafka 用 Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview) の概要に関する記事を読む。
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
-Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 Event Hubs Kafka エンドポイントを取得する方法については、[Kafka が有効なイベント ハブを作成する方法](event-hubs-create.md)に関するページをご覧ください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
+Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
 
 ## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 Azure Event Hubs リポジトリを複製し、tutorials/connect サブフォルダーに移動します。 
@@ -107,7 +105,9 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 4. `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` を実行します。  `'INFO Finished starting connectors and tasks'` が表示されれば、Connect ワーカーの REST API は対話可能な状態です。 
 
 > [!NOTE]
-> Event Hubs は、Kafka クライアントによるトピックの自動作成がサポートされています。 Azure portal で名前空間をざっとチェックすると、Connect ワーカーの内部的なトピックが自動的に作成されていることがわかります。
+> Kafka Connect は、Kafka AdminClient API を使用して、圧縮などの推奨される構成を含むトピックを自動的に作成します。 Azure portal で名前空間をざっとチェックすると、Connect ワーカーの内部的なトピックが自動的に作成されていることがわかります。
+>
+>Kafka Connect の内部トピックでは、**圧縮を使用する必要があります**。  Connect の内部トピックが正しく構成されていない場合、Event Hubs チームでは不適切な構成を修正する責任を負いません。
 
 ### <a name="create-connectors"></a>コネクタを作成する
 このセクションでは、FileStreamSource コネクタと FileStreamSink コネクタを立ち上げる方法について説明します。 
@@ -155,16 +155,13 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 ### <a name="cleanup"></a>クリーンアップ
 Kafka Connect は、イベント ハブのトピックを作成することによって、Connect クラスターが停止した後も永続的に存在する構成、オフセット、状態を格納します。 この永続化が不要である場合は、これらのトピックを削除することをお勧めします。 このチュートリアルで作成した `connect-quickstart` イベント ハブも必要に応じて削除してかまいません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピックを参照してください。  
+Kafka 用 Event Hubs の詳細については、次の記事を参照してください。  
 
-- [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
-- [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
-- [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka 対応イベント ハブでの Kafka ブローカーのミラーリング](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Kafka 対応イベント ハブへの Apache Spark の接続](event-hubs-kafka-spark-tutorial.md)
-- [Kafka 対応イベント ハブへの Apache Flink の接続](event-hubs-kafka-flink-tutorial.md)
-- [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
+- [イベント ハブ内の Kafka ブローカーをミラーリングする](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Spark をイベント ハブに接続する](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink をイベント ハブに接続する](event-hubs-kafka-flink-tutorial.md)
 - [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Akka Streams をイベント ハブに接続する](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)

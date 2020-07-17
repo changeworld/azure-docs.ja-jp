@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API と Ruby を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Ruby で Face API を使って画像から顔を検出します。
+description: このクイックスタートでは、Ruby で Face REST API を使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3ec6eb60a7325eb87ca637541c5f4222eab98053
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312397"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403175"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>クイック スタート:REST API と Ruby を使用して画像内の顔を検出する
 
@@ -23,20 +23,18 @@ ms.locfileid: "56312397"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
 ## <a name="write-the-script"></a>スクリプトを作成する
 
-新しいファイル (_faceDetection.rb_) を作成して、次のコードを追加します。 これは、特定の画像の URL を対象に Face API を呼び出すものです。
+新しいファイル (_faceDetection.rb_) を作成して、次のコードを追加します。 このコードは、特定の画像の URL を対象に Face API を呼び出すものです。
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,7 +60,9 @@ end
 puts response.body
 ```
 
-`request['Ocp-Apim-Subscription-Key']` の値は、実際のサブスクリプション キーの値で更新する必要があります。また `uri` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 
+`request['Ocp-Apim-Subscription-Key']` 値は、実際のサブスクリプション キーで更新する必要があります。また `uri` 文字列も、適切なエンドポイントを含むように変更する必要があります。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 また、`imageUri` フィールドも実際の入力画像を指すように変更する必要があります。 さらに、`returnFaceAttributes` フィールドも変更する必要があります。このフィールドで、取得する顔の属性を指定します。
 
@@ -74,7 +74,7 @@ puts response.body
 ruby faceDetection.rb
 ```
 
-検出された顔のデータの JSON 文字列がコンソールに出力されて表示されます。 次に示したのは成功時の JSON 応答の例です。
+検出された顔のデータの JSON 文字列がコンソールに出力されて表示されます。 次のテキストは、成功時の JSON 応答の例です。
 
 ```json
 [
@@ -255,9 +255,9 @@ ruby faceDetection.rb
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す Ruby スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイックスタートでは、Azure Face サービスを呼び出して画像内の顔を検出し、その属性を返す Ruby スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

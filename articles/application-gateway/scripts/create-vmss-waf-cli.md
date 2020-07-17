@@ -4,8 +4,6 @@ description: Azure CLI スクリプトのサンプル - OWASP 規則を使用し
 services: application-gateway
 documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: sample
@@ -14,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68c0b1c01d79f591b5023d2e048d1788a3eaffd4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7fb66c54b13581b9afc516067c1450a154699bb5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117376"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81457775"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Azure CLI を使用して Web トラフィックを制限する
 
@@ -57,7 +55,7 @@ az group delete --name myResourceGroupAG --yes
 | [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | ストレージ アカウントを作成します。 |
 | [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) | アプリケーション ゲートウェイのパブリック IP アドレスを取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 

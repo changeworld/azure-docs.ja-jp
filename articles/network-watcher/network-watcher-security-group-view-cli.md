@@ -1,25 +1,23 @@
 ---
-title: Azure Network Watcher のセキュリティ グループ ビューを使用したネットワーク セキュリティの分析 - Azure CLI | Microsoft Docs
+title: セキュリティ グループ ビューを使用してネットワーク セキュリティを分析する - Azure CLI
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure CLI を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 68222a90eb60ab4f84a34b5e46833128ea081ec1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724440"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76840777"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Azure CLI を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
@@ -154,7 +152,7 @@ az network watcher show-security-group-view --resource-group resourceGroupName -
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-nsg-auditing-powershell.md)にアクセスして、ネットワーク セキュリティ グループの自動検証の方法を確認する。
 

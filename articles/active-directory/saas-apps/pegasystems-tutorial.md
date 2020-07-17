@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Pega Systems の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Pega Systems の統合 | Microsoft Docs'
 description: このチュートリアルでは、Azure Active Directory と Pega Systems の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 195e7bf21fe1f6017705883f2ec692c182f15375
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560592"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "72026809"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル:Azure Active Directory と Pega Systems の統合
+# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル: Azure Active Directory と Pega Systems の統合
 
 このチュートリアルでは、Pega Systems と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -124,7 +124,7 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
     > [!NOTE]
     > ここに示されている値はプレースホルダーです。 実際の識別子、応答 URL、サインオン URL、リレー状態 URL を使用する必要があります。 このチュートリアルで後述しているように、Pega アプリケーションから、識別子と応答 URL の値を取得することができます。 リレー状態値を取得するには、[Pega Systems のサポート チーム](https://www.pega.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. Pega Systems アプリケーションには、特定の形式の SAML アサーションが必要です。 正しい形式のそれらを取得するには、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性を示しています。 **[編集]**   アイコンを選択して **[ユーザー属性]**   ダイアログ ボックスを開きます。
+6. Pega Systems アプリケーションには、特定の形式の SAML アサーションが必要です。 正しい形式のそれらを取得するには、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性を示しています。 **[編集]** アイコンを選択して **[ユーザー属性]** ダイアログ ボックスを開きます。
 
     ![[User Attributes (ユーザー属性)]](common/edit-attribute.png)
 
@@ -158,7 +158,7 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     1. **[ソース属性]** の一覧から、その行に表示される属性値を選択します。
 
-    1. **[OK]** を選びます。
+    1. **[OK]** を選択します。
 
     1. **[保存]** を選択します。
 
@@ -170,11 +170,11 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
-    1. **ログイン URL**。
+    1. **[ログイン URL]** 。
 
-    1. **Azure AD 識別子**。
+    1. **[Azure AD 識別子]** 。
 
-    1. **ログアウト URL**。
+    1. **[ログアウト URL]** 。
 
 ### <a name="configure-pega-systems-single-sign-on"></a>Pega Systems のシングル サインオンの構成
 
@@ -222,11 +222,11 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
 1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![[すべてのユーザー] の選択](common/users.png)
+    ![[すべてのユーザー] を選択する](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![[新しいユーザー] の選択](common/new-user.png)
+    ![[新しいユーザー] を選択する](common/new-user.png)
 
 3. **[ユーザー]** ダイアログ ボックスで、次の手順を完了します。
 

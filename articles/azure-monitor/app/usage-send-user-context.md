@@ -1,25 +1,17 @@
 ---
-title: Azure Application Insights にユーザー コンテキスト ID を送信して使用状況を把握できるようにする | Microsoft Docs
+title: アクティビティを追跡するためのユーザー コンテキスト ID - Azure Application Insights
 description: Application Insights で各ユーザーに一意の永続 ID 文字列を割り当てて、サービスにおけるユーザーの行動を追跡します。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078764"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797678"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
@@ -30,7 +22,7 @@ Application Insights を使用すると、次に示す一連の製品使用状�
 - [ユーザー、セッション、イベント](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [ファネル](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [リテンション期間](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)コーホート
-- [ブック](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 Application Insights で一定期間にわたってユーザーの行動を追跡するためには、ユーザーごと、またはセッションごとの ID が必要となります。 すべてのカスタム イベントまたはページ ビューに次の ID を追加します。
 
@@ -54,7 +46,7 @@ ID には、Guid のほか、個々のユーザーを一意に識別できるだ
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET アプリ:ITelemetryInitializer でのユーザー コンテキストの設定
 
-[ここ](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)で詳しく説明されているように、テレメトリ初期化子を作成します。 要求テレメトリを通じてセッション ID を渡し、Context.User.Id と Context.Session.Id を設定します。
+[ここ](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)で詳しく説明されているように、テレメトリ初期化子を作成します。 要求テレメトリを通じてセッション ID を渡し、Context.User.Id と Context.Session.Id を設定します。
 
 この例でユーザー ID に設定している識別子は、セッション後に有効期限が切れます。 可能であれば、セッションの終了後も維持されるユーザー ID を使用してください。
 
@@ -134,7 +126,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
@@ -142,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [ユーザー、セッション、およびイベント](usage-segmentation.md)
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
-    - [ブック](../../azure-monitor/app/usage-workbooks.md)
+    - [ブック](../../azure-monitor/platform/workbooks-overview.md)

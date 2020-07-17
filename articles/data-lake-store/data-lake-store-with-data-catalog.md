@@ -1,23 +1,17 @@
 ---
-title: Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する | Microsoft Docs
-description: Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: Azure Data Catalog に Data Lake Storage Gen1 を統合する
+description: ご自分の組織でデータを検出できるように、Azure Data Catalog に Data Lake Storage Gen1 のデータを登録する方法を説明します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877886"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692334"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
 この記事では、Azure Data Lake Storage Gen1 と Azure Data Catalog を統合し、データを Data Catalog と統合することで組織内で検出できるようにする方法について説明します。 データのカタログ化の詳細については、「 [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)」を参照してください。 Data Catalog を使用できるシナリオを理解するには、「 [Azure Data Catalog の一般的なシナリオ](../data-catalog/data-catalog-common-scenarios.md)」を参照してください。
@@ -44,7 +38,7 @@ ms.locfileid: "58877886"
 1. [ようこそ] ページで、 **[サインイン]** をクリックし、資格情報を入力します。
 
     ![[ようこそ] 画面](./media/data-lake-store-with-data-catalog/welcome.screen.png "[ようこそ] 画面")
-1. [データ ソースの選択] ページで、**[Azure Data Lake Store]** を選択してから **[次へ]** をクリックします。
+1. [データ ソースの選択] ページで、 **[Azure Data Lake Store]** を選択してから **[次へ]** をクリックします。
 
     ![データ ソースの選択](./media/data-lake-store-with-data-catalog/select-source.png "データ ソースの選択")
 1. 次のページで、Data Catalog に登録する Data Lake Storage Gen1 アカウントの名前を指定します。 その他のオプションは既定値のままにし、 **[接続]** をクリックします。
@@ -59,7 +53,7 @@ ms.locfileid: "58877886"
     c. **[登録されるオブジェクト]** ボックスには、Azure Data Catalog に登録するファイルとフォルダーがリストされます。
 
     ![データ構造の表示](./media/data-lake-store-with-data-catalog/view-data-structure.png "データ構造の表示")
-1. このチュートリアルでは、ディレクトリ内のすべてのファイルを登録する必要があります。 そのため、![オブジェクトの移動ボタン](./media/data-lake-store-with-data-catalog/move-objects.png "オブジェクトの移動")をクリックして、すべてのファイルを **[登録するオブジェクト]** ボックスに移動します。
+1. このチュートリアルでは、ディレクトリ内のすべてのファイルを登録する必要があります。 そのため、![オブジェクトの移動](./media/data-lake-store-with-data-catalog/move-objects.png "オブジェクトの移動")ボタンをクリックして、すべてのファイルを **[登録するオブジェクト]** ボックスに移動します。
 
     データは組織全体のデータ カタログに登録されるため、後でデータをすばやく見つけるために使用できるメタデータをいくつか追加することをお勧めします。 たとえば、データの所有者 (データをアップロードするユーザー) の電子メール アドレスを追加したり、データを識別するタグを追加したりすることができます。 以下の画面キャプチャには、データに追加するタグが示されています。
 
@@ -68,7 +62,7 @@ ms.locfileid: "58877886"
     **[登録]** をクリックします。
 1. 次のキャプチャ画面は、データが Data Catalog に正常に登録されたことを示しています。
 
-    ![登録完了](./media/data-lake-store-with-data-catalog/registration-complete.png "データ構造の表示")
+    ![登録の完了](./media/data-lake-store-with-data-catalog/registration-complete.png "データ構造の表示")
 1. **[ポータルの表示]** をクリックして Data Catalog ポータルに戻り、ポータルから登録されたデータにアクセスできるようになったことを確認します。 データを検索する場合は、データの登録時に使用したタグを使用できます。
 
      ![カタログ内のデータの検索](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "カタログ内のデータの検索")

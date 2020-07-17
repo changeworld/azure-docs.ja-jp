@@ -7,13 +7,14 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.date: 08/08/2019
+ms.custom: amqp
+ms.openlocfilehash: fba22324a3c35b861d28ed9b84207ab3a6f9816b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579412"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872701"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -24,9 +25,9 @@ ms.locfileid: "58579412"
 | **パーティション数** | このプロパティは作成時に設定し、device-to-cloud イベントを取り込む場合の[パーティション](../event-hubs/event-hubs-features.md#partitions)数を定義します。 |
 | **リテンション期間**  | このプロパティは、IoT Hub によってメッセージが保持される期間を日数で指定します。 既定は 1 日ですが、7 日間に増やすことができます。 |
 
-IoT Hub では、組み込みの Event Hubs に最大 7 日間データを保持できます。 保持期間は IoT Hub の作成時に設定できます。 IoT Hub でのデータ保持期間は、お使いの IoT Hub のレベルとユニットの種類によって異なります。 サイズに関しては、組み込みの Event Hubs では、最大メッセージ サイズのメッセージを少なくとも 24 時間のクォータまで保持できます。 たとえば、1 つの S1 ユニットの IoT Hub では、それぞれ 4K サイズのメッセージを少なくとも 400,000 件保持できるだけのストレージが提供されます。 デバイスが送信するメッセージのサイズが小さい場合、使用されているストレージ容量に応じて、メッセージが保持される期間が長くなる (最大 7 日間) 可能性があります。 少なくとも指定された保持期間はデータが保持されることが保証されています。
+IoT Hub では、組み込みの Event Hubs に最大 7 日間データを保持できます。 保持期間は IoT Hub の作成時に設定できます。 IoT Hub でのデータ保持期間は、お使いの IoT Hub のレベルとユニットの種類によって異なります。 サイズに関しては、組み込みの Event Hubs では、最大メッセージ サイズのメッセージを少なくとも 24 時間のクォータまで保持できます。 たとえば、1 つの S1 ユニットの IoT Hub では、それぞれ 4K サイズのメッセージを少なくとも 400,000 件保持できるだけのストレージが提供されます。 デバイスが送信するメッセージのサイズが小さい場合、使用されているストレージ容量に応じて、メッセージが保持される期間が長くなる (最大 7 日間) 可能性があります。 少なくとも指定された保持期間はデータが保持されることが保証されています。 メッセージは期限切れになり、リテンション期間が経過するとアクセスできなくなります。 
 
-IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。
+IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。 IoT Hub ごとに最大 20 個のコンシューマー グループを持つことができます。
 
 [メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用していて、[フォールバック ルート](iot-hub-devguide-messages-d2c.md#fallback-route)が有効になっている場合、ルートに関するクエリに一致しないメッセージはすべて、組み込みのエンドポイントに送信されます。 このフォールバック ルートを無効にすると、どのクエリにも一致しないメッセージは破棄されます。
 
@@ -44,7 +45,7 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 
 2. **[組み込みのエンドポイント]** をクリックします。
 
-3. **[イベント]** セクションには、**[パーティション]**、**[イベント ハブ互換名]**、**[イベント ハブ互換エンドポイント]**、**[保持期間]**、**[コンシューマー グループ]** の各値が含まれています。
+3. **[イベント]** セクションには、 **[パーティション]** 、 **[イベント ハブ互換名]** 、 **[イベント ハブ互換エンドポイント]** 、 **[保持期間]** 、 **[コンシューマー グループ]** の各値が含まれています。
 
     ![Device-to-cloud settings](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
@@ -53,19 +54,19 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 | 名前 | 値 |
 | ---- | ----- |
 | エンドポイント | sb://abcd1234namespace.servicebus.windows.net/ |
-| ホスト名 | abcd1234namespace.servicebus.windows.net |
+| hostname | abcd1234namespace.servicebus.windows.net |
 | 名前空間 | abcd1234namespace |
 
 この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセス ポリシーを使用できます。
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントに接続する際に使用できる SDK は次のとおりです。
 
-| 言語 | SDK | 例 | メモ |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [クイックスタート](quickstart-send-telemetry-dotnet.md) | Event Hubs 互換情報を使用 |
- Java | https://github.com/Azure/azure-event-hubs-java | [クイックスタート](quickstart-send-telemetry-java.md) | Event Hubs 互換情報を使用 |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [クイックスタート](quickstart-send-telemetry-node.md) | IoT Hub 接続文字列を使用 |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | IoT Hub 接続文字列を使用 |
+| Language | SDK | 例 |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [クイックスタート](quickstart-send-telemetry-dotnet.md) |
+ Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [クイックスタート](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [クイックスタート](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 IoT Hub が公開している組み込みのイベント ハブ互換エンドポイントで使用できる製品統合は次のとおりです。
 
@@ -76,7 +77,7 @@ IoT Hub が公開している組み込みのイベント ハブ互換エンド�
 * [Apache Spark 統合](../hdinsight/spark/apache-spark-eventhub-streaming.md)。
 * [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページをご覧ください。
 

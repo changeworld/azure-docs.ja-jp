@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory 用のテンプレートの概要 | Microsoft Docs
+title: テンプレートの概要
 description: 定義済みのテンプレートを使用して Azure Data Factory の使用をすぐに開始する方法について説明します。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.author: daperlov
+author: djpmsft
+manager: anandsub
+ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003551"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628948"
 ---
 # <a name="templates"></a>テンプレート
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 テンプレートは、Azure Data Factory の使用をすぐに開始できる定義済みの Data Factory パイプラインです。 テンプレートは、Data Factory を初めて使用するときに、すぐに作業を開始したい場合に役立ちます。 これらのテンプレートはデータ統合プロジェクトを構築するための開発時間を短縮するため、開発者の生産性が向上します。
 
@@ -30,7 +32,7 @@ ms.locfileid: "58003551"
 
     ![[概要] ページからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  リソース エクスプローラーの [作成者] タブで、[**+**] を選択し、**[Pipeline from template]\(テンプレートのパイプライン\)** を選択してテンプレート ギャラリーを開きます。
+1.  リソース エクスプローラーの [作成者] タブで、[ **+** ] を選択し、 **[Pipeline from template]\(テンプレートのパイプライン\)** を選択してテンプレート ギャラリーを開きます。
 
     ![[作成者] タブからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -50,11 +52,13 @@ Data Factory では、データ ファクトリ パイプライン テンプレ�
 
     -   [ファイルベースのストア間での複数のファイル コンテナーのコピー](solution-template-copy-files-multiple-containers.md)
 
+    -   [ファイルの移動](solution-template-move-files.md)
+
     -   [データベースからの差分コピー](solution-template-delta-copy-with-control-table.md)
 
     -   \<ソース\> から \<ターゲット\> へのコピー
 
-        -   Amazon S3 から Azure Data Lake Store Gen 2 へ
+        -   [Amazon S3 から Azure Data Lake Store Gen 2 へ](solution-template-migration-s3-azure.md)
 
         -   Google Big Query から Azure Data Lake Store Gen 2 へ
 

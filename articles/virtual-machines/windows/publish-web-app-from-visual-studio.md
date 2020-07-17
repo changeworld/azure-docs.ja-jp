@@ -1,48 +1,45 @@
 ---
 title: Visual Studio から Azure VM に Web アプリを発行する | Microsoft Docs
 description: Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
-services: virtual-machines-windows
 author: ghogen
-manager: douge
-tags: azure-service-management
-ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
+manager: jillfra
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304100"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583351"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
-このドキュメントでは、Visual Studio 2017 の **Microsoft Azure Virtual Machines** 発行機能を使用して、Azure 仮想マシン (VM) へ ASP.NET Web アプリケーションを発行する方法について説明します。  
+このドキュメントでは、Visual Studio 2019 の **Microsoft Azure Virtual Machines** 発行機能を使用して、Azure 仮想マシン (VM) へ ASP.NET Web アプリケーションを発行する方法について説明します。  
 
 ## <a name="prerequisites"></a>前提条件
 Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を使用するために VM を正しくセットアップする必要があります。
 
-- コンピューターは、ASP.NET Web アプリケーションを実行するよう構成し、WebDeploy をインストールする必要があります。
+- マシンは、ASP.NET Web アプリケーションを実行するよう構成し、WebDeploy をインストールする必要があります。 詳細については、[WebDeploy を使用した ASP.NET VM の作成](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)に関するページを参照してください。
 
 - VM に DNS 名が構成されている必要があります。 詳細については、「[Azure Portal で Windows VM の完全修飾ドメイン名を作成する](portal-create-fqdn.md)」を参照してください。
 
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Visual Studio を使用して Azure VM に ASP.NET Web アプリを発行します。
 次のセクションでは、Azure の仮想マシンに既存の ASP.NET Web アプリケーションを発行する方法について説明します。
 
-1. Visual Studio 2017 で Web アプリケーション ソリューションを開きます。
-2. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** を選択します。
+1. Visual Studio 2019 で Web アプリケーション ソリューションを開きます。
+2. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** を選択します。
 3. ページの右側の矢印を使用して、**Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
 
    ![発行 ページ - 右矢印]
 
-4. **Microsoft Azure Virtual Machines** アイコンを選択し、**[発行]** を選択します。
+4. **Microsoft Azure Virtual Machines** アイコンを選択し、 **[発行]** を選択します。
 
-   ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
+   ![発行 ページ - Microsoft Azure Virtual Machine Services アイコン]
 
 5. (仮想マシンに接続されている Azure サブスクリプション) の適切なアカウントを選択します。  
    - Visual Studio にサインインしている場合は、アカウントの一覧に、認証されたすべてのアカウントが表示されます。  
@@ -58,7 +55,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 7. 発行を開始するには、[OK] をクリックします。
 
-8. 資格情報が表示されたら、発行権限 (通常は VM の作成時に使用された管理者のユーザー名とパスワード) で構成されたターゲット VM 上のユーザー アカウントのユーザー名とパスワードを入力します。  
+8. 資格情報が表示されたら、発行権限で構成されたターゲット VM 上のユーザー アカウントのユーザー名とパスワードを入力します。 通常、これらの資格情報は、VM の作成時に使用された管理者のユーザー名とパスワードです。  
 
    ![WebDeploy ログイン]
 
@@ -68,7 +65,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 10. 発行操作の進行状況を確認するには、出力ウィンドウをご覧ください。
 
-    ![Output Window]
+    ![[出力ウィンドウ]]
 
 11. 発行が成功した場合は、新たに発行されたサイトの URL がブラウザーで開かれます。
 
@@ -90,7 +87,7 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 
 ### <a name="modify-publish-profile-settings"></a>発行プロファイル設定の変更
 
-発行プロファイルを表示して設定を変更するには、**[設定]** を選択します。  
+発行プロファイルを表示して設定を変更するには、 **[設定]** を選択します。  
 
 ![発行 ページ - 設定 ボタン]
 
@@ -99,18 +96,18 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 ![発行設定 - 接続 ページ]
 
 #### <a name="save-user-name-and-password"></a>ユーザー名とパスワードの保存
-- 発行するたびに認証情報を入力しなくてもすむように、**[ユーザー名]** と **[パスワード]** フィールドに入力して、**[パスワードを保存する]** をオンにできます。
-- 使用して、**[接続の検証]** ボタンをクリックして、適切な情報を入力したことを確認します。
+- 発行するたびの認証情報の入力を回避します。 これを行うには、 **[ユーザー名]** フィールドと **[パスワード]** フィールドに値を入力し、 **[パスワードの保存]** ボックスを選択します。
+- 使用して、 **[接続の検証]** ボタンをクリックして、適切な情報を入力したことを確認します。
 
 #### <a name="deploy-to-clean-web-server"></a>クリーンな Web サーバーへの展開
 
-- 毎回、Web アプリケーションのクリーンなコピーを　Web サーバーに確実にアップロードする (および過去のデプロイから残っている他のファイルがない) には、**[設定]** タブの **[発行先の追加ファイルを削除する]** チェック ボックスをオンにします。
+- アップロードのたびに Web サーバーに Web アプリケーションのクリーン コピーが確実に保存され、以前のデプロイの他のファイルが残らないようにするには、 **[設定]** タブの **[発行先の追加ファイルを削除する]** チェックボックスをオンにします。
 
-- 警告: この設定を使用して発行すると、Web サーバー (wwwroot ディレクトリ) に存在するすべてのファイルが削除されます。 このオプションを有効にして発行する前に、必ずマシンの状態を確認してください。 
+- 警告:この設定を使用して発行すると、Web サーバー (wwwroot ディレクトリ) に存在するすべてのファイルが削除されます。 このオプションを有効にして発行する前に、必ずマシンの状態を確認してください。 
 
 ![発行設定 - 設定 ページ]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM への自動展開の CI/CD を設定する
 
@@ -120,7 +117,7 @@ Azure Pipelines に継続的デリバリーのパイプラインを設定する�
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
 [発行 ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[発行 ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure アカウント セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
 [Azure VM セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy ログイン]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png

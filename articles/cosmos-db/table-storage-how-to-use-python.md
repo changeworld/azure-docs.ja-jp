@@ -1,20 +1,20 @@
 ---
-title: Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
+title: Python を使用して Azure Cosmos DB Table API と Azure Table Storage を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 11b47483eaf39e7445ece8b9e38d81a6a2404cc6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b3a6f4397ca1b8c56f06f6d967804c94096ee308
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756600"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76771002"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 
@@ -39,7 +39,7 @@ Table Storage または Azure Cosmos DB を使用すると、Web アプリケー
 
 - [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5、3.6
 - [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
-- [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
+- [Azure Storage アカウント](../storage/common/storage-account-create.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -56,7 +56,7 @@ Storage アカウントを作成した後は、[Microsoft Azure Cosmos DB Table 
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>TableService クラスと Entity クラスをインポートする
 
-Python で Azure Table service のエンティティを扱うには、[TableService][py_TableService] クラスと [Entity][py_Entity] クラスを使います。 次のコードを Python ファイルの先頭付近に追加して、両方をインポートします。
+Python で Azure Table service のエンティティを扱うには、[TableService][py_TableService] と [Entity][py_Entity] クラスを使います。 次のコードを Python ファイルの先頭付近に追加して、両方をインポートします。
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -73,10 +73,10 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 
 ## <a name="connect-to-azure-cosmos-db"></a>Azure Cosmos DB への接続
 
-Azure Cosmos DB に接続するには、Azure portal からプライマリ接続文字列をコピーし、コピーした接続文字列を使って [TableService][py_TableService] オブジェクトを作成します。
+Azure Cosmos DB に接続するには、Azure Portal からプライマリ接続文字列をコピーし、コピーした接続文字列を使って [TableService][py_TableService] オブジェクトを作成します。
 
 ```python
-table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;)
+table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;')
 ```
 
 ## <a name="create-a-table"></a>テーブルを作成する
@@ -94,7 +94,8 @@ table_service.create_table('tasktable')
 この例では、エンティティを表すディクショナリ オブジェクトを作成し、それを [insert_entity][py_insert_entity] メソッドに渡してテーブルに追加します。
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the trash', 'priority': 200}
 table_service.insert_entity('tasktable', task)
 ```
 
@@ -120,19 +121,22 @@ Table service は **PartitionKey** を使用してインテリジェントにテ
 エンティティのプロパティの値をすべて更新するには、[update_entity][py_update_entity] メソッドを呼び出します。 この例は、既存のエンティティを更新されたバージョンに置き換える方法を示しています。
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage', 'priority': 250}
 table_service.update_entity('tasktable', task)
 ```
 
-更新されるエンティティが存在しない場合、更新操作は失敗します。 エンティティが存在するかどうかに関わらず、エンティティを格納する場合は、[insert_or_replace_entity][py_insert_or_replace_entity] を使用します。 次の例では、最初の呼び出しで既存のエンティティを置き換えます。 2 番目の呼び出しでは、指定された PartitionKey と RowKey を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
+更新されるエンティティが存在しない場合、更新操作は失敗します。 エンティティが存在するかどうかにかかわらず、エンティティを格納する場合は、[insert_or_replace_entity][py_insert_or_replace_entity] を使用します。 次の例では、最初の呼び出しで既存のエンティティを置き換えます。 2 番目の呼び出しでは、指定された PartitionKey と RowKey を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
 
 ```python
 # Replace the entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage again', 'priority': 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003', 'description' : 'Buy detergent', 'priority' : 300}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003',
+        'description': 'Buy detergent', 'priority': 300}
 table_service.insert_or_replace_entity('tasktable', task)
 ```
 
@@ -148,8 +152,10 @@ Table service による要求のアトミック処理を保証するため、複
 ```python
 from azure.cosmosdb.table.tablebatch import TableBatch
 batch = TableBatch()
-task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
+task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004',
+           'description': 'Go grocery shopping', 'priority': 400}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005',
+           'description': 'Clean the bathroom', 'priority': 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
@@ -158,8 +164,10 @@ table_service.commit_batch('tasktable', batch)
 バッチは、コンテキスト マネージャーの構文でも使用できます。
 
 ```python
-task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
+task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006',
+           'description': 'Go grocery shopping', 'priority': 400}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007',
+           'description': 'Clean the bathroom', 'priority': 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
@@ -181,7 +189,8 @@ print(task.priority)
 **filter** パラメーターにフィルター文字列を指定することで、一連のエンティティに対してクエリを実行できます。 この例では、PartitionKey にフィルターを適用して、Seattle 内のすべてのタスクを検索します。
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'")
 for task in tasks:
     print(task.description)
     print(task.priority)
@@ -197,7 +206,8 @@ for task in tasks:
 > 次のスニペットは、Azure Storage に対してのみ機能します。 ストレージ エミュレーターではサポートされません。
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
 for task in tasks:
     print(task.description)
 ```
@@ -218,12 +228,12 @@ table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の FAQ - Table API を使った開発](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Azure Cosmos DB SDK for Python API のリファレンス](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション。
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション
 * [Visual Studio での Python の使用 (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 

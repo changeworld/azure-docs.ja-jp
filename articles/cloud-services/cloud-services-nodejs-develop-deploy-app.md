@@ -3,23 +3,18 @@ title: Node.js ファースト ステップ ガイド
 description: 簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。
 services: cloud-services
 documentationcenter: nodejs
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 50951a87-fed4-48e0-bcfa-453b9e50452e
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: jeconnoc
-ms.openlocfilehash: e235af8ae35a6ff8e310bac802484e6c3d0f5397
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.author: tagore
+ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506930"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75386189"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -48,7 +43,7 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 ## <a name="create-an-azure-cloud-service-project"></a>Azure クラウド サービス プロジェクトの作成
 新しい Azure クラウド サービス プロジェクトおよび基本的な Node.js スキャフォールディングを作成するには、次のタスクを実行します。
 
-1. **Windows PowerShell** を管理者として実行します。**[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索します。
+1. **Windows PowerShell** を管理者として実行します。 **[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索します。
 2. [PowerShell を接続します] 。
 3. 次の PowerShell コマンドレットを入力してプロジェクトを作成します。
 
@@ -60,8 +55,8 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 
     このコマンドレットによって作成されるファイルは、次のとおりです。
 
-   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**:アプリケーションの発行に必要な、Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
-   * **deploymentSettings.json**:Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
+   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
+   * **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
 4. 次のコマンドを入力して、新しい Web ロールを追加します。
 
        Add-AzureNodeWebRole
@@ -159,7 +154,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
    > [!NOTE]
    > サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。 他の用途に使用しているのでなければ、ストレージを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、 [Node.js デベロッパー センター]を参照してください。
 
 <!-- URL List -->
@@ -182,3 +177,6 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+
+
+

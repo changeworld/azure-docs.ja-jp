@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs インフラストラクチャのガバナンス
-description: この記事では、Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
+title: Azure DevTest Labs でのアプリケーションの移行と統合
+description: この記事では、アプリケーションの移行と統合のコンテキストでの Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436580"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75644888"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
@@ -28,7 +28,7 @@ ms.locfileid: "57436580"
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Marketplace イメージとカスタム イメージ
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 Azure Marketplace イメージと組織独自のカスタム イメージをどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -43,7 +43,7 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 
 ## <a name="formula-vs-custom-image"></a>定型イメージとカスタム イメージ
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 定型イメージとカスタム イメージをどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -55,7 +55,7 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 
 ## <a name="use-custom-organizational-images"></a>カスタム組織イメージを使用する
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 カスタム組織イメージを DevTest Labs 環境に展開する簡単に反復可能なプロセスをセットアップするにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
@@ -70,7 +70,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 開発用とテスト用の仮想マシンがパブリック インターネットに接続できないようにするにはどうすればよいですか。 ネットワーク構成の設定に推奨されるパターンはありますか。
 
 ### <a name="answer"></a>Answer
@@ -87,17 +87,17 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 
 ## <a name="new-vs-existing-virtual-network"></a>新規の仮想ネットワークと既存の仮想ネットワーク
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
 
 ### <a name="answer"></a>Answer
 VM で既存のインフラストラクチャとやりとりする必要がある場合は、DevTest Labs 環境内の既存の仮想ネットワークの使用を検討する必要があります。 さらに、ExpressRoute を使用する場合は、サブスクリプションで割り当てられている IP アドレス空間がフラグメント化しないように、VNet/サブネットの量を最小限に抑えることが必要な場合があります。 また、ここでは VNET ピアリング パターンの使用も考慮する必要があります (ハブ - スポーク モデル)。 この方法では、特定のリージョン内のサブスクリプション間で VNET/サブネット通信できますが、リージョンをまただピアリングは将来の Azure ネットワークで可能になります。
 
-それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 ただし、サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-subscription-service-limits.md)があることに注意してください。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
+それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 ただし、サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)があることに注意してください。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
 
 ## <a name="shared-public-or-private-ip"></a>共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレス
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレスはどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
@@ -110,19 +110,19 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 
 ## <a name="limits-of-number-of-virtual-machines-per-user-or-lab"></a>ユーザー単位またはラボ単位の仮想マシンの数の制限
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 ユーザーごと、またはラボごとに設定する必要がある仮想マシンの数に関するルールはありますか。
 
 ### <a name="answer"></a>Answer
 ユーザーごと、またはラボごとの仮想マシンの数を検討するときは、3 つの主な懸案事項があります。
 
 - ラボのリソースにチームが費やすことのできる**総コスト**。 多くのマシンを起動するのは簡単です。 コストを制御するための 1 つのメカニズムは、ユーザーごとおよびラボごとの VM の数を制限することです。
-- ラボ内の仮想マシンの総数は、使用できる[サブスクリプション レベルのクォータ](../azure-subscription-service-limits.md)の影響を受けます。 上限値の 1 つは、サブスクリプションあたり 800 リソース グループです。 現在、DevTest Labs では (共有パブリック IP アドレスが使用されていない場合) VM ごとに新しいリソース グループが作成されます。 サブスクリプションに 10 個のラボがある場合、ラボごとの仮想マシンの数は約 79 になります (上限値 800 から、10 個のラボ自体のリソース グループの数 10 を引いた値)。
+- ラボ内の仮想マシンの総数は、使用できる[サブスクリプション レベルのクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)の影響を受けます。 上限値の 1 つは、サブスクリプションあたり 800 リソース グループです。 現在、DevTest Labs では (共有パブリック IP アドレスが使用されていない場合) VM ごとに新しいリソース グループが作成されます。 サブスクリプションに 10 個のラボがある場合、ラボごとの仮想マシンの数は約 79 になります (上限値 800 から、10 個のラボ自体のリソース グループの数 10 を引いた値)。
 - たとえば、ラボが ExpressRoute 経由でオンプレミスに接続されている場合は、VNET/サブネット用に**使用可能な IP アドレス空間が定義されています**。 ラボ内の VM の作成が失敗しないようにするには (エラー: IP アドレスを取得できない)、ラボの所有者は、使用可能な IP アドレス空間に合わせて、ラボあたりの最大 VM 数を指定できます。
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 DevTest Labs 環境で Resource Manager テンプレートを使用するにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
@@ -132,5 +132,5 @@ DevTest Labs 環境で Resource Manager テンプレートを使用するには�
 
 また、ラボごとまたはユーザーごとの仮想マシン数のオプションは、ラボ自体でネイティブに作成されるマシンの数のみを制限し、任意の環境 (Resource Manager テンプレート) によって作成されるマシンの数は制限しないこと注意することも重要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [DevTest Labs での環境の使用](devtest-lab-test-env.md)に関するページをご覧ください。

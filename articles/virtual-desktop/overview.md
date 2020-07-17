@@ -1,22 +1,23 @@
 ---
-title: Windows Virtual Desktop プレビューとは  - Azure
-description: Windows Virtual Desktop プレビューの概要です。
+title: Windows Virtual Desktop とは - Azure
+description: Windows Virtual Desktop の概要
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 04/10/2020
 ms.author: helohr
-ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+manager: lizross
+ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965721"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261722"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューとは 
+# <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
-このたびパブリック プレビューを迎えた Windows Virtual Desktop プレビューは、クラウド上で運営されるデスクトップとアプリの仮想化サービスです。
+Windows Virtual Desktop は、クラウド上で実行されるデスクトップおよびアプリの仮想化サービスです。
 
 Azure 上の Windows Virtual Desktop でできることは次のとおりです。
 
@@ -26,6 +27,14 @@ Azure 上の Windows Virtual Desktop でできることは次のとおりです�
 * 既存のリモート デスクトップ サービス (RDS) と Windows Server のデスクトップやアプリをあらゆるコンピューターで利用
 * デスクトップとアプリの両方を仮想化
 * 統一的な管理エクスペリエンスを使って Windows 10、Windows Server、Windows 7 のデスクトップとアプリを管理
+
+## <a name="introductory-video"></a>紹介ビデオ
+
+Windows Virtual Desktop について、その独自性や新機能を、このビデオで学習してください。
+
+<br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+
+Windows Virtual Desktop に関するその他のビデオについては、[プレイリスト](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)を参照してください。
 
 ## <a name="key-capabilities"></a>主な機能
 
@@ -64,21 +73,60 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使うことにより可能になります。
-  * Azure AD Connect
-  * Azure AD Domain Services
-* Azure サブスクリプション (Windows Server Active Directory を含むか、Windows Server Active Directory に接続している仮想ネットワークが含まれるもの)
+* [Azure Active Directory](/azure/active-directory/)
+* Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使用して構成できます。
+  * Azure AD Connect (ハイブリッド組織向け)
+  * Azure AD Domain Services (ハイブリッドまたはクラウド組織向け)
+* Windows Server Active Directory を含むか、またはこのディレクトリに接続されている仮想ネットワークが含まれる Azure サブスクリプション
   
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
-* [標準ドメイン参加済み](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)または [Hybrid AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)であること。 仮想マシンを Azure AD に参加させることはできません。
-* 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-image)を実行していること。
+* [標準ドメイン参加済み](../active-directory-domain-services/active-directory-ds-comparison.md)または [Hybrid AD 参加済み](../active-directory/devices/hybrid-azuread-join-plan.md)であること。 仮想マシンを Azure AD に参加させることはできません。
+* 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-images)を実行していること。
 
 >[!NOTE]
 >Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
 
-Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 パブリック プレビューの期間中は、デスクトップとアプリは任意の Azure リージョンの仮想マシン (VM) 上にデプロイできるのに対して、管理ソリューションと VM 関連のデータはどちらも、米国 (米国東部 2 リージョン) でホストされます。 このため、パブリック プレビュー期間中にサービスをテストするときは、米国を宛先とするデータ転送が発生することがあります。 管理ソリューションとデータを Azure の全リージョンにローカライズして展開していく作業は、一般提供が始まってから開始する予定です。
+Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の URL に対するアクセスが必要です。
+
+|Address|アウトバウンド TCP ポート|目的|サービス タグ|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|サービス トラフィック|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|エージェントと SXS スタックの更新|AzureCloud|
+|*.core.windows.net|443|エージェント トラフィック|AzureCloud|
+|*.servicebus.windows.net|443|エージェント トラフィック|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|エージェント トラフィック|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
+|kms.core.windows.net|1688|Windows のライセンス認証|インターネット|
+
+>[!IMPORTANT]
+>サービスの問題を防ぐために、ほとんどの場合、URL ではなくサービス タグを使用することをお勧めします。 Windows Virtual Desktop を確実にデプロイするためには、これらの URL のブロックを解除することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
+
+次の表は、Azure 仮想マシンからアクセスできるオプションの URL の一覧です。
+
+|Address|アウトバウンド TCP ポート|目的|サービス タグ|
+|---|---|---|---|
+|*.microsoftonline.com|443|MS オンライン サービスへの認証|なし|
+|*.events.data.microsoft.com|443|テレメトリ サービス|なし|
+|www.msftconnecttest.com|443|OS がインターネットに接続されているかどうかの検出|なし|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|なし|
+|login.windows.net|443|MS オンライン サービス、Office 365 へのログイン|なし|
+|*.sfx.ms|443|OneDrive クライアント ソフトウェアの更新|なし|
+|*.digicert.com|443|証明書失効の確認|なし|
+
+
+>[!NOTE]
+>現在、Windows Virtual Desktop には、ネットワーク トラフィックを許可するためにホワイトリストに登録できる IP アドレス範囲の一覧がありません。 現時点では、特定の URL のホワイトリスト登録のみがサポートされます。
+>
+>Office に関連した一連の URL (必須の Azure Active Directory 関連の URL など) については、「[Office 365 の URL と IP アドレスの範囲](/office365/enterprise/urls-and-ip-address-ranges)」を参照してください。
+>
+>サービス トラフィックに関係した URL にはワイルドカード文字 (*) を使用する必要があります。 エージェント関連のトラフィックに * を使用したくない場合、ワイルドカードを使わずに URL を見つける方法は次のとおりです。
+>
+>1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
+>2. **イベント ビューアー**を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3702 を探します。
+>3. イベント ID 3702 に見つけた URL をホワイトリストに登録します。 イベント ID 3702 にある URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ホワイトリスト登録プロセスを繰り返す必要があります。
+
+Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
 
 最適なパフォーマンスを実現するために、お使いのネットワークが次の要件を満たしていることを確認してください。
 
@@ -90,24 +138,62 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 次のリモート デスクトップ クライアントは、Windows Virtual Desktop をサポートします。
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows デスクトップ](connect-windows-7-and-10.md)
+* [Web](connect-web.md)
+* [macOS](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android (プレビュー)](connect-android.md)
 
+> [!IMPORTANT]
+> Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
 
-## <a name="supported-virtual-machine-os-image"></a>サポートされている仮想マシン OS イメージ
+> [!IMPORTANT]
+> Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
 
-Windows Virtual Desktop は、次の OS イメージをサポートします。
+リモート デスクトップ クライアントから次の URL にアクセスできる必要があります。
 
-* Windows 10 (Enterprise マルチセッション)
+|Address|アウトバウンド TCP ポート|目的|クライアント|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|サービス トラフィック|All|
+|*.servicebus.windows.net|443|データのトラブルシューティング|All|
+|go.microsoft.com|443|Microsoft の FWLink|All|
+|aka.ms|443|Microsoft URL 短縮ツール|All|
+|docs.microsoft.com|443|ドキュメント|All|
+|privacy.microsoft.com|443|プライバシー ステートメント|All|
+|query.prod.cms.rt.microsoft.com|443|クライアント更新|Windows デスクトップ|
+
+>[!IMPORTANT]
+>信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、クライアントのサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
+
+## <a name="supported-virtual-machine-os-images"></a>サポートされている仮想マシン OS イメージ
+
+Windows Virtual Desktop は、次の x64 オペレーティング システム イメージをサポートします。
+
+* Windows 10 Enterprise マルチセッション、バージョン 1809 以降
+* Windows 10 Enterprise、バージョン 1809 以降
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
 
-## <a name="provide-feedback"></a>フィードバックの提供
+Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、または Windows 10 Enterprise KN オペレーティング システム イメージがサポートされていません。 また、Windows 7 では、セクター サイズの制限により、マネージド Azure Storage でホストされている VHD または VHDX ベースのプロファイル ソリューションもサポートされていません。
 
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。 Windows Virtual Desktop がプレビューの間は、サポート ケースを受け付けていません。
+利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+|オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|Windows Virtual Desktop エージェントの更新|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|自動|
+|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|自動|
+|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|自動|
+|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|自動|
+|Windows 7 Enterprise|はい|はい|いいえ|いいえ|マニュアル|
+|Windows Server 2019|はい|はい|いいえ|いいえ|自動|
+|Windows Server 2016|はい|はい|はい|はい|自動|
+|Windows Server 2012 R2|はい|はい|いいえ|いいえ|自動|
+
+## <a name="next-steps"></a>次のステップ
 
 まずは、テナントを作成する必要があります。 テナントの作成方法については、テナント作成に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Windows Virtual Desktop プレビューでテナントを作成する](tenant-setup-azure-active-directory.md)
+> [Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)

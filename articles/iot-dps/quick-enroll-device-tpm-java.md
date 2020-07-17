@@ -1,30 +1,35 @@
 ---
-title: Java を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
-description: Azure クイック スタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
+title: Java を使用して TPM デバイスを Azure Device Provisioning Service に登録する
+description: クイックスタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/20/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: ae1fbd93b26838b262dc6f07081f20b63e853d5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104745"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290590"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>クイック スタート:Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+このクイックスタートでは、Java Service SDK とサンプル Java アプリケーションを使用して、Azure IoT Hub Device Provisioning Service へのシミュレートされた TPM デバイスの個別登録をプログラムで作成する方法について説明します。
 
-以下の手順では、[Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) とサンプル Java アプリケーションを使用して、Azure IoT Hub Device Provisioning Service へのシミュレートされた TPM デバイスの個別登録をプログラムで作成する方法について説明します。 Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
+## <a name="prerequisites"></a>前提条件
 
-事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)と [TPM デバイスのシミュレート](quick-create-simulated-device.md#simulatetpm)を済ませておいてください。
+- [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
+- [TPM デバイスからの暗号化キーの読み取り](quick-create-simulated-device.md#simulatetpm)が完了していること。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/).
 
 <a id="setupdevbox"></a>
 
@@ -57,7 +62,7 @@ ms.locfileid: "58104745"
 
 ここでは、TPM デバイスのプロビジョニングの詳細をサンプル コードに追加する方法について説明します。 
 
-1. コマンド プロンプトを開きます。 Java Service SDK を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
+1. コマンド プロンプトを開きます。 [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -80,7 +85,7 @@ ms.locfileid: "58104745"
 
    2. TPM デバイスの詳細を追加します。
        1. 「[Simulate TPM device](quick-create-simulated-device.md#simulatetpm)」(TPM デバイスのシミュレート) に続く手順に従って、TPM デバイス シミュレーションの*登録 ID* と *TPM 保証キー*を取得します。
-       2. 前の手順の出力の**_登録 ID_** と**_保証キー_** を使用し、サンプル コード ファイル **_ServiceEnrollmentSample.java_** の `[RegistrationId]` と `[TPM Endorsement Key]` を置き換えます。
+       2. 前の手順の出力の **_登録 ID_** と **_保証キー_** を使用し、サンプル コード ファイル **_ServiceEnrollmentSample.java_** の `[RegistrationId]` と `[TPM Endorsement Key]` を置き換えます。
         
            ```Java
            private static final String REGISTRATION_ID = "[RegistrationId]";
@@ -89,7 +94,7 @@ ms.locfileid: "58104745"
 
    3. 必要に応じて、サンプル コードでプロビジョニング サービスを構成することができます。
       - この構成をサンプルに追加するには、次の手順を実行します。
-        1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、**[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
+        1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、 **[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
             ```Java
             private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
             ```
@@ -125,7 +130,7 @@ ms.locfileid: "58104745"
     mvn install -DskipTests
     ```
 
-   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な Java Service SDK のバイナリが含まれています。 
+   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) のバイナリが含まれています。 
 
 3. コマンド ウィンドウで次のコマンドを使用してサンプルを実行します。
 
@@ -136,18 +141,18 @@ ms.locfileid: "58104745"
 
 4. 出力ウィンドウで、登録が正常に完了したことを確認します。 
 
-5. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。シミュレートされた TPM デバイスの*登録 ID* が一覧表示されます。 
+5. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** を選択し、 **[個々の登録]** タブを選択します。シミュレートされた TPM デバイスの*登録 ID* が一覧表示されます。 
 
     ![ポータルで TPM の登録が正常に完了したことを確認する](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+Java サービスのサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. TPM デバイスをシミュレートするために作成した TPM シミュレーター ウィンドウが表示されている場合は閉じます。
-1. Azure Portal で Device Provisioning サービスに移動し、**[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。このクイックスタートで登録したデバイスの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。 
+1. Azure portal で Device Provisioning サービスに移動し、 **[登録を管理します]** を選択し、 **[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの "*登録 ID*" の横にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、シミュレートされた TPM デバイスを Device Provisioning Service に登録しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]

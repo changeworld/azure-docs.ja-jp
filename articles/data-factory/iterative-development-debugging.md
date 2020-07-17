@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory での反復開発とデバッグ | Microsoft Docs
+title: Azure Data Factory での反復開発とデバッグ
 description: Azure Portal で Data Factory パイプラインの開発とデバッグを反復して実行する方法について説明します。
 ms.date: 09/26/2018
 ms.topic: conceptual
@@ -7,18 +7,18 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: a8028fdde93d06f7b25bf9bd8b4ed5a560a35f83
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: 49e406f0730189439bb1c2529b23d8ad6d760a2f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575275"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81411529"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory では、Data Factory パイプラインの開発とデバッグを反復して実行できます。
 
@@ -39,7 +39,7 @@ Azure Data Factory では、Data Factory パイプラインの開発とデバッ
 
 ![テストの実行をキャンセルする](media/iterative-development-debugging/iterative-development-image3.png)
 
-テストの実行を行うときは、**[デバッグ]** を選択する前に、Data Factory に変更を発行する必要はありません。 この機能は、Data Factory ワークフローを更新する前に、変更が期待どおりに動作することを確認する場合に便利です。
+テストの実行を行うときは、 **[デバッグ]** を選択する前に、Data Factory に変更を発行する必要はありません。 この機能は、Data Factory ワークフローを更新する前に、変更が期待どおりに動作することを確認する場合に便利です。
 
 > [!IMPORTANT]
 > **[デバッグ]** を選択すると、パイプラインが実際に実行されます。 そのため、たとえばパイプラインにコピー アクティビティが含まれていれば、テストの実行では、データがコピー元からコピー先にコピーされます。 その結果、デバッグ時のコピー アクティビティとその他のアクティビティでは、テスト フォルダーを使用することをお勧めします。 パイプラインのデバッグが終わったら、通常の操作で使用する実際のフォルダーに切り替えます。
@@ -52,13 +52,17 @@ Azure Data Factory では、Data Factory パイプラインの開発とデバッ
 
 ![アクティブなデバッグ実行のサンプル一覧](media/iterative-development-debugging/view-debug-runs-image2.png)
 
+アクティブなデータ フロー デバッグ セッションがある場合、これらのセッションはアクティブなデバッグ ウィンドウの下部に表示されます。 アクティブなデータ フロー セッションを選択し、それぞれのクラスターを停止することができます。
+
+![アクティブなデータ フロー デバッグ実行の一覧 (サンプル)](media/data-flow/dfsessions.png)
+
 ## <a name="monitoring-debug-runs"></a>デバッグ実行の監視
 
-**デバッグ**機能を使用して開始するテストの実行は、**[モニター]** タブの一覧では利用できません。**[モニター]** タブの **[Trigger now]\(今すぐトリガー\)**、**[スケジュール]**、または **[タンブリング ウィンドウ]** トリガーでトリガーされた実行のみを確認できます。パイプライン キャンバスの**出力**ウィンドウで、**デバッグ**機能を使用して開始された最後のテストの実行を確認できます。
+**デバッグ**機能を使用して開始するテストの実行は、 **[モニター]** タブの一覧では利用できません。 **[モニター]** タブの **[Trigger now]\(今すぐトリガー\)** 、 **[スケジュール]** 、または **[タンブリング ウィンドウ]** トリガーでトリガーされた実行のみを確認できます。パイプライン キャンバスの**出力**ウィンドウで、**デバッグ**機能を使用して開始された最後のテストの実行を確認できます。
 
 ## <a name="setting-breakpoints-for-debugging"></a>デバッグ用のブレークポイントの設定
 
-Data Factory では、パイプライン キャンバスの特定のアクティビティに到達するまでデバッグすることもできます。 そこまでテストするアクティビティにブレークポイントを設定し、**[デバッグ]** を選択します。 Data Factory は、パイプライン キャンバスでブレークポイント アクティビティに達するまで、テストが実行されることを保証します。 この*特定の場所までデバッグする*機能は、パイプライン全体ではなく、パイプライン内のアクティビティのサブセットのみをテストする場合に便利です。
+Data Factory では、パイプライン キャンバスの特定のアクティビティに到達するまでデバッグすることもできます。 そこまでテストするアクティビティにブレークポイントを設定し、 **[デバッグ]** を選択します。 Data Factory は、パイプライン キャンバスでブレークポイント アクティビティに達するまで、テストが実行されることを保証します。 この*特定の場所までデバッグする*機能は、パイプライン全体ではなく、パイプライン内のアクティビティのサブセットのみをテストする場合に便利です。
 
 ![パイプライン キャンバス上のブレークポイント](media/iterative-development-debugging/iterative-development-image4.png)
 
@@ -70,5 +74,5 @@ Data Factory では、パイプライン キャンバスの特定のアクティ
 
 ![選択した要素にブレークポイントを設定した後](media/iterative-development-debugging/iterative-development-image6.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Data Factory における継続的インテグレーションとデプロイ](continuous-integration-deployment.md)

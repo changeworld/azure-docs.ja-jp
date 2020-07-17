@@ -1,27 +1,18 @@
 ---
-title: マネージド データ ディスクを Windows VM に接続する - Azure | Microsoft Docs
+title: マネージド データ ディスクを Windows VM に接続する - Azure
 description: Azure portal を使用して Windows VM にマネージド データ ディスクを接続する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 10/08/2018
+ms.topic: conceptual
+ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e3641960131d23bf5a8e5b2310a09e7a4dbd70b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64680394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919381"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal を使用して Windows VM にマネージド データ ディスクを接続する
 
@@ -30,10 +21,10 @@ ms.locfileid: "64680394"
 
 ## <a name="add-a-data-disk"></a>データ ディスクの追加
 
-1. 左側のメニューで、[[Azure portal]](https://portal.azure.com) の **[仮想マシン]** を選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、データ ディスクを追加します。 **[仮想マシン]** を検索して選択します。
 2. 一覧から仮想マシンを選択します。
-3. **[仮想マシン]** ページで、**[ディスク]** を選択します。
-4. **[ディスク]** ページで、**[データ ディスクの追加]** を選択します。
+3. **[仮想マシン]** ページで、 **[ディスク]** を選択します。
+4. **[ディスク]** ページで、 **[データ ディスクの追加]** を選択します。
 5. 新しいディスクのドロップダウン リストで **[ディスクの作成]** を選択します。
 6. **[マネージド ディスクの作成]** ページで、ディスクの名前を入力し、必要に応じてその他の設定を調整します。 完了したら **[作成]** を選択します。
 7. **[ディスク]** ページで **[保存]** を選択して、VM の新しいディスク構成を保存します。
@@ -44,17 +35,17 @@ ms.locfileid: "64680394"
 
 1. VM に接続します
 1. 実行中の VM 内で Windows の**スタート** メニューを選択し、検索ボックスに「**diskmgmt.msc**」と入力します。 **[ディスクの管理]** コンソールが開きます。
-2. 新しい未初期化ディスクがディスクの管理によって認識され、**[ディスクの初期化]** ウィンドウが表示されます。
-3. 新しいディスクが選択されていることを確認し、**[OK]** をクリックしてディスクを初期化します。
-4. 新しいディスクが、**未割り当て**として表示されます。 ディスクの任意の場所を右クリックし、**[新しいシンプル ボリューム]** を選択します。 **新しいシンプル ボリューム ウィザード**が開きます。
+2. 新しい未初期化ディスクがディスクの管理によって認識され、 **[ディスクの初期化]** ウィンドウが表示されます。
+3. 新しいディスクが選択されていることを確認し、 **[OK]** をクリックしてディスクを初期化します。
+4. 新しいディスクが、**未割り当て**として表示されます。 ディスクの任意の場所を右クリックし、 **[新しいシンプル ボリューム]** を選択します。 **新しいシンプル ボリューム ウィザード**が開きます。
 5. すべての設定を既定値のままウィザードを進め、完了したら **[完了]** を選択します。
 6. **[ディスクの管理]** を閉じます。
 7. ポップアップが表示され、新しいディスクは使用前にフォーマットする必要があることが通知されます。 **[ディスクのフォーマット]** を選択します。
-8. **[新しいディスクのフォーマット]** ウィンドウで設定を確認し、**[開始]** を選択します。
+8. **[新しいディスクのフォーマット]** ウィンドウで設定を確認し、 **[開始]** を選択します。
 9. ディスクをフォーマットするとデータがすべて削除されることを警告するメッセージが表示されます。 **[OK]** を選択します。
-10. フォーマットが完了したら、**[OK]** を選択します。
+10. フォーマットが完了したら、 **[OK]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [PowerShell を使用してデータ ディスクを接続する](attach-disk-ps.md)こともできます。
-- アプリケーションで *D:* ドライブを使用してデータを保存する必要がある場合は、[Windows 一時ディスクのドライブ文字を変更](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。
+- アプリケーションで *D:* ドライブを使用してデータを保存する必要がある場合は、[Windows 一時ディスクのドライブ文字を変更](change-drive-letter.md)できます。

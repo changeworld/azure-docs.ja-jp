@@ -1,28 +1,24 @@
 ---
-title: Azure Data Factory の概要 | Microsoft Docs
+title: Azure Data Factory の概要
 description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
-ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: 66ea269e2f29bfd39cdb81086391e0277474219d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 09/30/2019
+ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961357"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410944"
 ---
-# <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-introduction.md)
-> * [現在のバージョン](introduction.md)
+# <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ビッグ データの世界では、未整理の生データは、多くの場合、リレーショナル、非リレーショナル、その他のストレージ システム内に格納されます。 ただし、生データ自体には、アナリストや、データ サイエンティスト、管理職意思決定者に有用な分析を提供するのに必要となる正しいコンテキストや意味はありません。 
 
@@ -34,16 +30,15 @@ ms.locfileid: "56961357"
 
 状況を正確に把握するために、クラウドの Spark クラスターを使用して統合したデータを処理し (Azure HDInsight)、変換したデータを Azure SQL Data Warehouse などのクラウドのデータ ウェアハウスに公開して、これらのデータに基づくレポートを簡単に作成できるようにすることを希望しています。 このワークフローを自動化し、日単位のスケジュールに従って監視、管理することが目標となります。 それを実行するタイミングは、BLOB ストア コンテナーにファイルが到着したときとします。
 
-Azure Data Factory は、このようなデータ シナリオを解決するプラットフォームです。 *そのクラウドベースのデータ統合サービスを通じて、データの移動と変換を制御して自動化するデータ主導型のワークフローをクラウドに作成*することができます。 Azure Data Factory を使えば、各種のデータ ストアからデータを取り込むことができるデータ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。 そのデータは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使って処理し、変換することができます。 
+Azure Data Factory は、このようなデータ シナリオを解決するプラットフォームです。 *クラウドベースの ETL およびデータ統合サービスを通じて、データの移動と変換を大規模に制御するデータ ドリブンのワークフローを作成できます*。 Azure Data Factory を使えば、各種のデータ ストアからデータを取り込むことができるデータ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。 コンピューティング サービス (Azure HDInsight Hadoop、Azure Databricks、Azure SQL Database など) やデータ フローを使用してデータを変換する複雑な ETL プロセスを視覚的に作成できます。 
 
-さらに、ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure SQL Data Warehouse などのデータ ストアに出力データを公開することもできます。 Azure Data Factory を使うと、最終的に、生データを意味のあるデータ ストアとデータ レイクに整理し、より的確な意思決定に活用できます。
+さらに、ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure SQL Data Warehouse などのデータ ストアに、変換済みのデータを公開することもできます。 Azure Data Factory を使うと、最終的に、生データを意味のあるデータ ストアとデータ レイクに整理し、より的確な意思決定に活用できます。
 
-![Data Factory の最上位ビュー](media/introduction/big-picture.png)
+![Data Factory の最上位ビュー](media/data-flow/overview.png)
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
-通常、Azure Data Factory のパイプライン (データドリブン ワークフロー) では次の 4 つのステップが実行されます。
 
-![データドリブン ワークフローの 4 つのステップ](media/introduction/four-steps-of-a-workflow.png)
+Data Factory には、包括的なエンド ツー エンドのプラットフォームをデータ エンジニアに提供する、相互接続された一連のシステムが含まれています。
 
 ### <a name="connect-and-collect"></a>接続と収集
 
@@ -53,15 +48,17 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 
 Data Factory を使用していない企業では、カスタムのデータ移動コンポーネントを構築するか、これらのデータ ソースと処理を統合するカスタム サービスを作成しなければなりません。 このようなシステムの統合と保守は高コストで、容易ではありません。 そのうえ、エンタープライズ クラスの監視やアラートが欠け、フル マネージドのサービスが提供できるような制御機能を用意できないことも少なくありません。
 
-Data Factory を使用すれば、データ パイプラインの[コピー アクティビティ](copy-activity-overview.md)で、オンプレミスとクラウドの両方のソース データ ストアからクラウド内の一元化されたデータ ストアにデータを移動し、詳しく分析することができます。 たとえば、Azure Data Lake Store でデータを収集し、後で Azure Data Lake Analytics コンピューティング サービスを使用してデータを変換することができます。 または、Azure Blob Storage でデータを収集し、後で Azure HDInsight Hadoop クラスターを使用してデータを変換することもできます。
+Data Factory を使用すれば、データ パイプラインの[コピー アクティビティ](copy-activity-overview.md)で、オンプレミスとクラウドの両方のソース データ ストアからクラウド内の一元化されたデータ ストアにデータを移動し、詳しく分析することができます。 たとえば、Azure Data Lake Storage でデータを収集し、後で Azure Data Lake Analytics コンピューティング サービスを使用してデータを変換することができます。 または、Azure Blob Storage でデータを収集し、後で Azure HDInsight Hadoop クラスターを使用してデータを変換することもできます。
 
 ### <a name="transform-and-enrich"></a>変換と強化
-クラウド上の一元的なデータ ストアにデータが集まったら、HDInsight Hadoop、Spark、Data Lake Analytics、Machine Learning などのコンピューティング サービスを使って、その収集されたデータを処理または変換します。 保守しやすい管理されたスケジュールで確実に変換データを生成し、信頼性の高いデータを運用環境に提供する必要があります。
+クラウド上の一元的なデータ ストアにデータが集まったら、ADF マッピング データ フローを使用して、その収集されたデータを処理または変換します。 データ エンジニアは、Spark クラスターや Spark プログラミングの知識がなくても、データ フローを使用して、Spark 上で実行されるデータ変換グラフを作成、維持することができます。
 
-### <a name="publish"></a>発行
-生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
+変換を手動でコーディングしたい場合でも、ADF は、HDInsight Hadoop、Spark、Data Lake Analytics、Machine Learning などのコンピューティング サービス上で目的の変換を実行するための外部アクティビティをサポートしています。
 
-### <a name="monitor"></a>監視
+### <a name="cicd-and-publish"></a>CI/CD と公開
+Data Factory では、Azure DevOps と GitHub を使用したデータ パイプラインの CI/CD が完全にサポートされています。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
+
+### <a name="monitor"></a>モニター
 データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、Azure Monitor ログ、Azure portal の正常性パネルを利用してパイプラインを監視する、ビルトイン サポートが用意されています。
 
 ## <a name="top-level-concepts"></a>トップレベルの概念
@@ -71,6 +68,9 @@ Data Factory を使用すれば、データ パイプラインの[コピー ア�
 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 パイプラインは、1 つの作業単位を実行するための複数のアクティビティから成る論理的なグループです。 パイプライン内のアクティビティがまとまって 1 つのタスクを実行します。 たとえば、パイプラインに Azure BLOB からデータを取り込むアクティビティのグループを含め、HDInsight クラスターで Hive クエリを実行してデータをパーティション分割することができます。 
 
 パイプラインのメリットは、アクティビティを個別にではなく、セットとして管理できることです。 パイプライン内のアクティビティは、連鎖して順次処理することも、独立して並行処理することもできます。
+
+### <a name="mapping-data-flows"></a>データ フローのマッピング
+あらゆるサイズのデータの変換に使用できるデータ変換ロジックのグラフを作成して管理します。 再利用可能なデータ変換ルーチンのライブラリを構築し、それらのプロセスを ADF パイプラインからスケールアウト方式で実行することができます。 Data Factory は、必要なときにスピンアップおよびスピンダウンする Spark クラスターでロジックを実行します。 クラスターを自分で維持、管理する必要はありません。
 
 ### <a name="activity"></a>アクティビティ
 アクティビティは、パイプライン内の処理ステップを表します。 たとえば、コピー アクティビティを使用して、データ ストア間でデータをコピーできます。 同様に、Azure HDInsight クラスターに対して Hive クエリを実行する Hive アクティビティを使用して、データを変換または分析できます。 Data Factory では、データ移動アクティビティ、データ変換アクティビティ、制御アクティビティの 3 種類のアクティビティがサポートされています。
@@ -93,7 +93,7 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 ### <a name="pipeline-runs"></a>パイプライン実行
 パイプライン実行は、パイプラインを実行するインスタンスです。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 引数は、手動で渡すか、トリガー定義内で渡すことができます。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 パラメーターは、読み取り専用の構成のキーと値のペアです。  パラメーターはパイプラインで定義されます。 定義済みパラメーターの引数は、実行時に、トリガーが作成した実行コンテキストか、手動で実行されるパイプラインから渡されます。 パイプライン内のアクティビティは、パラメーターの値を使用します。
 
 データセットとは、厳密に型指定されたパラメーターと、再利用または参照可能なエンティティのことです。 アクティビティは、データセットを参照でき、データセットの定義で定義されたプロパティを使用できます。
@@ -103,33 +103,16 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 ### <a name="control-flow"></a>制御フロー
 制御フローは、パイプライン アクティビティのオーケストレーションです。これには、シーケンスに従うアクティビティの連鎖、分岐、パイプライン レベルでのパラメーターの定義、オンデマンドかトリガーからパイプラインが呼び出される際の引数の受け渡しが含まれます。 さらに、カスタム状態の受け渡しや、ループ コンテナー、つまり For-each 反復子も含まれます。
 
+### <a name="variables"></a>変数
+変数は、パイプライン内で一時的な値を格納するときに使用できるほか、パラメーターと組み合わせて、パイプラインやデータ フローなどのアクティビティ間で値を受け渡しする際にも使用できます。
 
-Data Factory の概念について詳しくは、次の記事をご覧ください。
+## <a name="next-steps"></a>次のステップ
+次のステップとして重要なドキュメントを次に示します。ぜひご覧ください。
 
 - [データセットとリンクされたサービス](concepts-datasets-linked-services.md)
 - [パイプラインとアクティビティ](concepts-pipelines-activities.md)
 - [Integration Runtime](concepts-integration-runtime.md)
-
-## <a name="supported-regions"></a>サポートされているリージョン
-
-現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
-
-Azure Data Factory 自体は、データを保存しません。 Azure Data Factory を使用すると、データ主導型のワークフローを作成し、サポートされているデータ ストア間でのデータ移動と、他のリージョンまたはオンプレミスの環境にあるコンピューティング サービスを使用したデータ処理を調整できます。 また、プログラムと UI の両方のメカニズムを使用して、ワークフローを監視および管理することもできます。
-
-Data Factory を利用できるリージョンが特定のリージョンのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているセルフホステッド統合ランタイムがデータを移動します。
-
-たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 米国東部または米国東部 2 に Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
-
-## <a name="accessibility"></a>アクセシビリティ
-
-Azure portal の Data Factory ユーザー エクスペリエンスはアクセシビリティ対応です。
-
-## <a name="compare-with-version-1"></a>バージョン 1 との比較
-Data Factory サービスのバージョン 1 と現在のバージョンの相違点の一覧については、「[バージョン 1 との比較](compare-versions.md)」を参照してください。 
-
-## <a name="next-steps"></a>次の手順
-次のツールおよび SDK のいずれかを使用して、Data Factory パイプラインの作成を開始します。 
-
+- [マッピング データ フロー](concepts-data-flow-overview.md)
 - [Azure Portal の Data Factory UI](quickstart-create-data-factory-portal.md)
 - [Azure Portal の [データのコピー] ツール](quickstart-create-data-factory-copy-data-tool.md)
 - [PowerShell](quickstart-create-data-factory-powershell.md)

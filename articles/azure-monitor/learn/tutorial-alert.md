@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights からのアラートの送信 | Microsoft Docs
 description: Azure Application Insights を使用して、アプリケーションのエラーに応じてアラートを送信するためのチュートリアルです。
-keywords: ''
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 05285a177827cd0dd1e0e39e779a395ccfdfc0cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578766"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77656264"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 
@@ -42,7 +40,7 @@ Application Insights の可用性テストを使用して、世界中のさま�
 
 1. **[Application Insights]** を選択してから、ご利用のサブスクリプションを選択します。  
 
-2. **[調査]** メニューの **[可用性]** を選択して、**[テストの作成]** をクリックします。
+2. **[調査]** メニューの **[可用性]** を選択して、 **[テストの作成]** をクリックします。
 
     ![可用性テストを追加する](media/tutorial-alert/add-test-001.png)
 
@@ -70,7 +68,7 @@ Application Insights の可用性テストを使用して、世界中のさま�
 
     ![テスト結果](media/tutorial-alert/test-result-001.png)
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで問題が生じた場合のアラートの送信方法について学習できました。次のチュートリアルでは、ユーザーがどのようにアプリケーションを使用しているかを分析する方法を説明します。
 

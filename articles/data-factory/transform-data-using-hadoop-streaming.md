@@ -1,27 +1,28 @@
 ---
-title: Azure Data Factory で Hadoop Streaming アクティビティを使用してデータを変換する | Microsoft Docs
+title: Hadoop ストリーミング アクティビティを使用したデータ変換
 description: Azure Data Factory で Hadoop Streaming アクティビティを使用して、Hadoop クラスターで Hadoop Streaming プログラムを実行することによってデータを変換する方法について説明します。
-services: data-factory
-documentationcenter: ''
-ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 0d8267f1cd65f78d5e98ae9d288d5fa5c4214420
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+manager: shwang
+services: data-factory
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 01/16/2018
+ms.openlocfilehash: c1bba6903fe1cb8cc5bae9a12153553594180b43
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576431"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81418883"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop Streaming アクティビティを使用したデータの変換
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-hadoop-streaming-activity.md)
 > * [現在のバージョン](transform-data-using-hadoop-streaming.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight Streaming アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Hadoop Streaming プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
 
@@ -70,22 +71,22 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | アクティビティの名前                     | [はい]      |
-| description       | アクティビティの用途を説明するテキストです。 | いいえ        |
-| type              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | [はい]      |
-| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
-| mapper            | mapper 実行可能ファイルの名前を指定します。 | [はい]      |
-| reducer           | reducer 実行可能ファイルの名前を指定します。 | [はい]      |
-| combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ        |
-| fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ        |
-| filePath          | fileLinkedService によって参照される、Azure Storage に格納された マッパー、コンバイナー、レジューサ の各プログラムのパスの配列を指定します。 パスでは大文字と小文字が区別されます。 | [はい]      |
-| input             | マッパーの入力ファイルの WASB パスを指定します。 | [はい]      |
-| output            | レジューサの出力ファイルの WASB パスを指定します。 | [はい]      |
-| getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:なし。 | いいえ        |
-| arguments         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ        |
-| defines           | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ        | 
+| name              | アクティビティの名前                     | はい      |
+| description       | アクティビティの用途を説明するテキストです。 | いいえ       |
+| type              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | はい      |
+| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
+| mapper            | mapper 実行可能ファイルの名前を指定します。 | はい      |
+| reducer           | reducer 実行可能ファイルの名前を指定します。 | はい      |
+| combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ       |
+| fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
+| filePath          | fileLinkedService によって参照される、Azure Storage に格納された マッパー、コンバイナー、レジューサ の各プログラムのパスの配列を指定します。 パスの大文字と小文字は区別されます。 | はい      |
+| input             | マッパーの入力ファイルの WASB パスを指定します。 | はい      |
+| output            | レジューサの出力ファイルの WASB パスを指定します。 | はい      |
+| getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | いいえ       |
+| 引数         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
+| defines           | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ       | 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

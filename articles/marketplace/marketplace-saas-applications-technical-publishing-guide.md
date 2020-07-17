@@ -1,18 +1,19 @@
 ---
-title: Azure Marketplace SaaS アプリケーションの技術的な発行ガイド
+title: Azure Marketplace SaaS アプリケーションの発行ガイド
 description: Azure Marketplace に SaaS アプリケーションを発行するためのステップ バイ ステップ ガイドと発行チェックリスト
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
-ms.topic: article
-ms.date: 07/09/2018
-ms.author: keithcharlie
-ms.openlocfilehash: 5106b22500b73b650742e7fe0f881c2a4c984eff
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 04/23/2020
+ms.author: dsindona
+ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937717"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117235"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -20,19 +21,14 @@ SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"�
 
 ## <a name="offer-overview"></a>オファーの概要  
 
-SaaS アプリケーションは、両方の Azure ネットショップで入手できます。次の表では、現在利用できるオプションについて説明しています。
-
-| ネットショップのオプション | 一覧 | 試用版/取引 |  
-| --- | --- | --- |  
-| AppSource | あり (お問い合わせ) | あり (PowerBI/Dynamics) |
-| Azure Marketplace | いいえ  | あり (SaaS アプリ) |   
+SaaS アプリケーションは Microsoft AppSource と Azure Marketplace でご利用いただけます。  両方のネットショップで、プラン一覧、試用版プラン、およびトランザクション プランがサポートされています。
 
 **リスト:** リストの発行オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
 **試用版/取引:** 顧客はソリューションを直接購入するか、試用版を要求することができます。 試用版エクスペリエンスを提供することで、顧客に提供されるエンゲージメント レベルが高くなり、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。  
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | はい | いいえ  |  
+| **お問い合わせ** | はい | いいえ |  
 | **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
 | **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
@@ -104,13 +100,13 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Marketplace に対する Azure AD 統合の認定  
 
-アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーショ シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定することができます。  
+アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーション シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定します。  
 
 **マルチテナント アプリケーションの場合:**  
 
 既に Azure AD をサポートしている場合は、以下を実行します。
-1.  Azure Portal でアプリケーションを登録します
-2.  Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
+1.    Azure Portal でアプリケーションを登録します
+2.    Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
 
 Azure AD フェデレーション SSO が初めての場合は、以下を実行します。 
 1.  Azure Portal でアプリケーションを登録します
@@ -126,13 +122,13 @@ Azure AD フェデレーション SSO が初めての場合は、以下を実行
 ## <a name="saas-subscriptions"></a>SaaS のサブスクリプション
 
 SaaS ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS アプリを使用します。 SaaS アプリでは、次の要件が満たされている必要があります。
-- サービスの価格設定と請求を月額固定料金で行う。
+- サービスの価格設置と請求を定額 (月額または年額) またはユーザー単位のレートで行う。
 - サービスをいつでもアップグレードまたはキャンセルする手段を用意する。
-商用トランザクションは、Microsoft がホストします。 顧客に対する請求は、Microsoft が公開元に代わって行います。 SaaS アプリをサブスクリプションとして利用して請求するには､公開元は独自のサブスクリプション管理サービス API を有効にする必要があります。 そのサブスクリプション管理サービス API から直接 Azure Resource Manager API とやり取りする必要があります。 サブスクリプション管理サービス API は、サービスのプロビジョニング、アップグレード、キャンセルをサポートしている必要があります。
+商用トランザクションは、Microsoft がホストします。 顧客に対する請求は、Microsoft が公開元に代わって行います。 SaaS アプリをサブスクリプションとして提供するには、SaaS Fulfillment API と統合する必要があります。  サービスは、プロビジョニング、アップグレード、およびキャンセルをサポートする必要があります。
 
 | 要件 | 詳細 |  
 |:--- |:--- |  
-|請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。 |  
+|請求/メータリング | プランの価格は、発行する前に選択する価格モデル (定額またはユーザー単位) に基づいて決まります。  定額モデルを使用する場合、オプションで、定額料金には含まれない使用量に応じて、追加のディメンションを含めることができます。 |  
 |キャンセル | オファーは、いつでも顧客が解約できます。 |  
 |トランザクションのランディング ページ | Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。 |   
 | サブスクリプション API | SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 |  
@@ -140,12 +136,12 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 まだ行っていない場合は、
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
+* マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 
-登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
+パートナー センターに登録するには、新しいプランの作成を開始するか、既存のものを操作します。
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
-- 詳細については、「[Azure SaaS アプリケーション プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer)」を参照してください。
+* [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
+* 詳細については、「[新しい SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)」を参照してください。

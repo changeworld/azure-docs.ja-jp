@@ -1,27 +1,25 @@
 ---
-title: チュートリアル - Azure で cloud-init を使用して Linux VM をカスタマイズする | Microsoft Docs
+title: チュートリアル - Azure で cloud-init を使用して Linux VM をカスタマイズする
 description: このチュートリアルでは、Azure での Linux VM の初回の起動時に cloud-init と Key Vault を使用してそれらをカスタマイズする方法を説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2543ffb20c4e7da840201cfd3be04505515458a6
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d2a6568b0d62c880a688160cf981fb33083ae02e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539362"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461482"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -34,8 +32,6 @@ ms.locfileid: "58539362"
 > * Key Vault を使用して証明書を安全に格納する
 > * cloud-init を使用して NGINX のセキュリティで保護されたデプロイを自動化する
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="cloud-init-overview"></a>cloud-init の概要
@@ -45,21 +41,23 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
 
-| エイリアス | Publisher | プラン | SKU | Version |
+| Publisher | プラン | SKU | Version | cloud-init 対応 |
 |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |latest |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
-| CoreOS |CoreOS |CoreOS |安定版 |latest |
-| | OpenLogic | CentOS | 7-CI | latest |
-| | RedHat | RHEL | 7-RAW-CI | latest |
+|Canonical |UbuntuServer |18.04-LTS |latest |はい | 
+|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
+|CoreOS |CoreOS |Stable |latest |はい |
+|OpenLogic 7.6 |CentOS |7-CI |latest |preview |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
 cloud-init が動作していることを確認するには、NGINX をインストールして単純な "Hello World" Node.js アプリを実行する VM を作成します。 次の cloud-init 構成によって、必要なパッケージのインストール、Node.js アプリの作成、アプリの初期化と起動が行われます。
 
-現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
+Bash プロンプトまたは Cloud Shell で、*cloud-init.txt* という名前のファイルを作成し、次の構成を貼り付けます。 たとえば、「`sensible-editor cloud-init.txt`」と入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
-```yaml
+```bash
 #cloud-config
 package_upgrade: true
 packages:
@@ -110,12 +108,12 @@ VM を作成する前に、[az group create](/cli/azure/group#az-group-create) �
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myAutomatedVM* という名前の VM を作成します。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myVM* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
-    --name myVM \
+    --name myAutomatedVM \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
@@ -127,11 +125,11 @@ VM が作成され、パッケージがインストールされて、アプリ�
 Web トラフィックが VM にアクセスできるようにするには、[az vm open-port](/cli/azure/vm#az-vm-open-port) を使用してインターネットからポート 80 を開きます。
 
 ```azurecli-interactive
-az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
+az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAutomatedVM
 ```
 
 ## <a name="test-web-app"></a>Web アプリのテスト
-Web ブラウザーを開き、アドレス バーに「*http:\/\/\<publicIpAddress>*」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
+Web ブラウザーを開き、アドレス バーに「*http:\/\/\<publicIpAddress>* 」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
 
 ![実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -166,7 +164,7 @@ az keyvault create \
 az keyvault certificate create \
     --vault-name $keyvault_name \
     --name mycert \
-    --policy "$(az keyvault certificate get-default-policy)"
+    --policy "$(az keyvault certificate get-default-policy --output json)"
 ```
 
 
@@ -178,14 +176,14 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secret "$secret")
+vm_secret=$(az vm secret format --secret "$secret" --output json)
 ```
 
 
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>NGINX をセキュリティで保護する cloud-init 構成を作成する
 VM を作成するとき、証明書とキーは、保護された */var/lib/waagent/* ディレクトリに格納されます。 VM への証明書の追加と NGINX の構成を自動化するために、前の例の更新された cloud-init 構成を使用できます。
 
-*cloud-init-secured.txt* というファイルを作成し、次の構成を貼り付けます。 ここでも、Cloud Shell を使用する場合は、ローカル コンピューター上ではなく、その場所に cloud-init 構成ファイルを作成します。 `sensible-editor cloud-init-secured.txt` を使用し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
+*cloud-init-secured.txt* というファイルを作成し、次の構成を貼り付けます。 Cloud Shell を使用する場合は、ローカル コンピューター上ではなく、その場所に cloud-init 構成ファイルを作成します。 たとえば、「`sensible-editor cloud-init-secured.txt`」と入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -242,7 +240,7 @@ runcmd:
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
@@ -257,12 +255,12 @@ VM が作成され、パッケージがインストールされて、アプリ�
 ```azurecli-interactive
 az vm open-port \
     --resource-group myResourceGroupAutomate \
-    --name myVMSecured \
+    --name myVMWithCerts \
     --port 443
 ```
 
 ### <a name="test-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>*」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
+Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>* 」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
 
 ![Web ブラウザーのセキュリティ警告を受け入れる](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
@@ -271,8 +269,8 @@ Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAdd
 ![セキュリティで保護された実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、VM の初回の起動時に cloud-init を使用してカスタマイズしました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、VM の初回の起動時に cloud-init を使用してカスタマイズしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * cloud-init 構成ファイルを作成する

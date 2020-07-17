@@ -1,17 +1,17 @@
 ---
-title: Advanced Threat Protection - Azure Database for MySQL | Microsoft Docs
-description: 脅威の防止は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
-author: bolzmj
-ms.author: mbolz
+title: Advanced Threat Protection - Azure portal - Azure Database for MySQL
+description: データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出する Advanced Threat Protection を構成する方法について説明します。
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 3/18/2020
+ms.openlocfilehash: 4936f765052d6993e5a372bde6336e00b19a24f6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61458942"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509263"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL の Advanced Threat Protection
 
@@ -20,7 +20,7 @@ Azure Database for MySQL 用の Advanced Threat Protection では、データベ
 Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) を使ってアクセスおよび管理でき、現在はプレビュー状態です。
 
 > [!NOTE]
-> Advanced Threat Protection 機能は、次の Azure 政府およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection の機能は、US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2 の Azure 政府およびソブリン クラウド領域では使用**できません**。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 >
 
 > [!NOTE]
@@ -54,14 +54,14 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
 
 ## <a name="explore-threat-detection-alerts"></a>脅威検出アラートを調査する
 
-SQL Database の脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 Azure portal のデータベースおよび SQL ATP ブレード内のライブ SQL 脅威検出タイルでは、アクティブな脅威の状態が追跡されます。
+SQL Database の脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 ライブ SQL 脅威検出タイルは、Azure portal でデータベースおよび SQL ATP ページ内のアクティブな脅威の状態を追跡します。
 
 **[脅威検出アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
    ![脅威検出アラート](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
 * 価格の詳細については、[Azure Database for MySQL の価格ページ](https://azure.microsoft.com/pricing/details/mysql/)をご覧ください  

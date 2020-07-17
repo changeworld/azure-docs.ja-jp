@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート | Microsoft Docs
+title: Azure Active Directory ポータルでのリスクのフラグ付きユーザー | Microsoft Docs
 description: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。
 services: active-directory
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439143"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100789"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -48,18 +48,18 @@ Office 365 の資格情報を使用して **Azure 管理センター**にアク�
 
 Microsoft 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
 
-1.  左側のナビゲーション メニューで、**[管理センター]** を選択します。 
+1.  左側のナビゲーション メニューで、 **[管理センター]** を選択します。 
 2.  **[Azure AD ]** を選びます。
 3.  **Azure Active Directory 管理センター**にログインします。
 4.  ページ上部に **[新しいポータルの確認]** というバナーが表示される場合は、そのリンクを選択します。
-4.  左側のナビゲーション メニューで、**[Azure Active Directory]** を選択します。 
-5.  ナビゲーション ウィンドウの **[セキュリティ]** セクションから、**[リスクのフラグ付きユーザー]** を選択します。
+4.  左側のナビゲーション メニューで、 **[Azure Active Directory]** を選択します。 
+5.  ナビゲーション ウィンドウの **[セキュリティ]** セクションから、 **[リスクのフラグ付きユーザー]** を選択します。
 
 ## <a name="remediation-actions"></a>修復アクション
 
 影響を受けたアカウントの問題を解決し、環境を保護するために、以下の操作を実行してください。
 
-1.  多要素認証とセルフサービスのパスワード リセットに関する[情報が正しいことを検証](https://aka.ms/MFAValid)します。 
+1.  多要素認証とセルフサービス パスワード リセットに関する[情報が正しいことを検証](https://aka.ms/MFAValid)します。 
 2.  すべてのユーザーの[多要素認証を有効](https://aka.ms/MFAuth)にします。 
 3.  この[修復スクリプト](https://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行します。 
 
@@ -87,10 +87,9 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 
 - [異常なアクティビティへの対処に関するこのガイダンス](https://aka.ms/fixaccount)を読み、実装します。 
 - テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](https://aka.ms/improvesecurity)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](https://aka.ms/sccsearch)を活用することもできます。 
-- すべてのアカウントに対して、この[スクリプトを使用してメールボックスの監査を有効](https://aka.ms/mailboxaudit1)にします。 
 - すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
 * [リスクのフラグ付きユーザー](concept-user-at-risk.md)

@@ -1,25 +1,18 @@
 ---
-title: App Service Environment を強制トンネリングされるように構成する - Azure
-description: 送信トラフィックが強制トンネリングされている場合に App Service Environment が機能するように設定します
-services: app-service
-documentationcenter: na
+title: 強制トンネリングについて
+description: 仮想ネットワークでアウトバウンド トラフィックが強制トンネリングされている場合に App Service Environment を正しく機能させるための設定方法について説明します。
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389286"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983912"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -46,7 +39,7 @@ Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) �
 
 Azure Virtual Network が ExpressRoute を使って構成されていても ASE からのトラフィックが直接インターネットに向かえるようにするには、次の作業を行ってください。
 
-* 0.0.0.0/0 をアドバタイズするように ExpressRoute を構成します。 これにより、すべての送信トラフィックが既定でオンプレミスにルーティングされます。
+* 0\.0.0.0/0 をアドバタイズするように ExpressRoute を構成します。 これにより、すべての送信トラフィックが既定でオンプレミスにルーティングされます。
 * アドレス プレフィックスが 0.0.0.0/0 で、次ホップの種類がインターネットであるような UDR を作成し、それを ASE のサブネットに適用します。
 
 これらの 2 つの変更を行った場合、App Service Environment サブネットから発信されたインターネット宛てのトラフィックは ExpressRoute 接続を強制的に経由しません。
@@ -67,7 +60,7 @@ Azure Virtual Network が ExpressRoute を使って構成されていても ASE 
 BGP ルートを無視するように ASE サブネットを構成するには
 
 * まだない場合は、UDR を作成して ASE サブネットに割り当てます。
-* Azure portal で、ASE サブネットに割り当てられているルート テーブルの UI を開きます。  [構成] を選択します。  [BGP ルート伝達] を [無効] に設定します。  [保存] をクリックします。 オフにすることについては、「[ルート テーブルの作成][routetable]」をご覧ください。
+* Azure portal で、ASE サブネットに割り当てられているルート テーブルの UI を開きます。  [構成] を選択します。  [仮想ネットワーク ゲートウェイのルート伝達] を [無効] に設定します。  [保存] をクリックします。 オフにすることについては、「[ルート テーブルの作成][routetable]」をご覧ください。
 
 すべての BGP ルートを無視するように ASE サブネットを構成すると、以後、アプリはオンプレミスにアクセスできなくなります。 アプリからオンプレミスのリソースにアクセスできるようにするには、ASE サブネットに割り当てられている UDR を編集し、オンプレミスのアドレス範囲へのルートを追加します。 次のホップの種類は、仮想ネットワーク ゲートウェイに設定する必要があります。 
 

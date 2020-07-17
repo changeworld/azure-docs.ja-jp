@@ -13,19 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;dbgeorge
-ms.openlocfilehash: 058a1f964eb14d89628c92cbadd80511b7a27bae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014952"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641679"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
 > [!div class="op_single_selector"]
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
 このトピックでは、[Haivision KB ライブ エンコーダー](https://www.haivision.com/products/kb-series/)を構成して、ライブ エンコードで有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
@@ -45,9 +43,9 @@ ms.locfileid: "58014952"
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
+1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。 **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、 **[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。 **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
 3. **[チャネルの作成]** をクリックします。
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
@@ -71,7 +69,7 @@ ms.locfileid: "58014952"
 
 ## <a name="configuration-steps"></a>構成の手順
 1.  Haivision KB のユーザー インターフェイスにログインします。
-2.  チャネル コントロール センターの**メニュー ボタン**をクリックし、**[Add Channel]\(チャネルの追加\)** を選びます  
+2.  チャネル コントロール センターの**メニュー ボタン**をクリックし、 **[Add Channel]\(チャネルの追加\)** を選びます  
     ![スクリーンショット 2017-08-14 午前 9.15.09](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  [Name]\(名前\) フィールドに**チャネル名**を入力し、[Next]\(次へ\) をクリックします。  
     ![スクリーンショット 2017-08-14 午前 9.19.07](./media/media-services-configure-kb-live-encoder/step3.png)

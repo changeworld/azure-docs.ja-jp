@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: f9f33a2e7e7408b0b383d544e494ede6af277328
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "58408426"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685565"
 ---
 # <a name="welcome-to-azure-germany"></a>Azure Germany へようこそ
 ## <a name="overview"></a>概要
@@ -32,7 +32,7 @@ Azure Germany は、静止データのレプリケーションや自動スケー
 ## <a name="azure-germany-documentation"></a>Azure Germany ドキュメント
 このサイトでは、 [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/) サービスの機能について説明すると共に、すべてのお客様に該当する一般的なガイダンスを提供しています。 特に規制されたデータを Azure Germany のサブスクリプションに含める前に、Azure Germany の機能について理解を深めておいてください。
 
-特定の適格性認定や規制の対象となる Azure Germany サービスの最新情報については、[Microsoft Azure セキュリティ センター コンプライアンス ページ](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)を参照してください。 その他の Microsoft サービスが利用できる可能性もありますが、Azure Germany がカバーするサービスおよびこのドキュメントの範囲には含まれていません。 また、Azure Germany サービスでは、その他さまざまなリソース、アプリケーション、サービスを使用することが認められている場合があります。そうしたリソースやアプリケーション、サービスは、サード パーティまたは Microsoft が、独立した使用条件とプライバシー ポリシーの下で提供しています。 それらもこのドキュメントの範囲に含まれていません。 そうした "付加的" サービス (Azure Marketplace サービスなど) については、付随する条項をご自身の責任ですべて確認し、コンプライアンスに関する要件を確実に満たしてください。
+特定の適格性認定や規制の対象となる Azure Germany サービスの最新情報については、[Microsoft Azure Security Center コンプライアンス ページ](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)を参照してください。 その他の Microsoft サービスが利用できる可能性もありますが、Azure Germany がカバーするサービスおよびこのドキュメントの範囲には含まれていません。 また、Azure Germany サービスでは、その他さまざまなリソース、アプリケーション、サービスを使用することが認められている場合があります。そうしたリソースやアプリケーション、サービスは、サード パーティまたは Microsoft が、独立した使用条件とプライバシー ポリシーの下で提供しています。 それらもこのドキュメントの範囲に含まれていません。 そうした "付加的" サービス (Azure Marketplace サービスなど) については、付随する条項をご自身の責任ですべて確認し、コンプライアンスに関する要件を確実に満たしてください。
 
 Azure Germany は、英国を含む EU/EFTA 圏内でビジネスを行う予定の全世界の有資格のお客様およびパートナーにご利用いただけます。
 

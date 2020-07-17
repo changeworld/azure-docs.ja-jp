@@ -1,22 +1,23 @@
 ---
-title: クイック スタート - Python で Bing Local Business Search API にクエリを送信する | Microsoft Docs
+title: クイック スタート - Python で API にクエリを送信する - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: この記事を使用して、Python で Bing Local Business Search API の使用を開始します。
+description: このクイックスタートを使用して、Python で Bing Local Business Search API の使用を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: e6626c1243f9f05a56effe3538870a5be9ac6b34
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796564"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75379745"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート:Python で Bing Local Business Search API にクエリを送信する
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート - Python で Bing Local Business Search API にクエリを送信する
 
 このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは Python で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
@@ -40,15 +41,15 @@ Bing API を使用して [Cognitive Services API アカウント](https://docs.m
 
 このデモの完全なコードを次に示します。
 
-```
+```python
 import http.client, urllib.parse
 import json
 
 # Replace the subscriptionKey string value with your valid subscription key.
 subscriptionKey = 'YOUR-SUBSCRIPTION-KEY'
 
-host = 'api.cognitive.microsoft.com/bing'
-path = '/v7.0/localbusinesses/search'
+host = 'api.cognitive.microsoft.com'
+path = '/bing/v7.0/localbusinesses/search'
 
 query = 'restaurant in Bellevue'
 
@@ -66,7 +67,7 @@ print (json.dumps(json.loads(result), indent=4))
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)
 - [Local Business Search (C#) のクイック スタート](local-quickstart.md)
 - [Local Business Search (Node.js) のクイック スタート](local-search-node-quickstart.md)

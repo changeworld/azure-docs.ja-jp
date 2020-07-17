@@ -1,0 +1,11 @@
+- name: サイト信頼性エンジニアリングのドキュメント
+  href: ../index.yml
+- name: リソース
+  expanded: true
+  items:
+    - name: SRE の書籍
+      href: books.md
+    - name: SRE イベント
+      href: events.md
+    - name: SRE のリンク集と要約
+      href: links.md

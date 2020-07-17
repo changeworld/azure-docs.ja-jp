@@ -1,10 +1,10 @@
 ---
 title: PowerShell を使用して Azure の内部ロード バランサーを作成する
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Azure Resource Manager と Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 17753ba374475c19fee1a213654caf4a624088f8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: allensu
+ms.openlocfilehash: 485afaa4b7009731784cf5da6f8c28e0a787c1d9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669909"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629424"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 
@@ -48,7 +48,7 @@ ms.locfileid: "56669909"
 * プローブ構成:仮想マシンの正常性状態のプローブ。
 * 受信 NAT ルール:仮想マシンに対する直接アクセスのポート ルール。
 
-ロード バランサー コンポーネントの詳細については、「[Azure Load Balancer での Azure Resource Manager のサポートの使用](load-balancer-arm.md)」を参照してください。
+ロード バランサー コンポーネントの詳細については、[Azure Load Balancer コンポーネント](components.md)に関するページを参照してください。
 
 次の手順では、2 つの仮想マシンの間でロード バランサーを構成する方法について説明します。
 
@@ -251,7 +251,7 @@ $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-b
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>手順 1:ロード バランサーのリソースを格納する
 
-変数にロード バランサーのリソースを格納します (まだ実行していない場合)。 ここでは、**$lb** という変数名を使用しています。スクリプトの属性名には、前の手順で作成したロード バランサー リソースの名前を使用します。
+変数にロード バランサーのリソースを格納します (まだ実行していない場合)。 ここでは、 **$lb** という変数名を使用しています。スクリプトの属性名には、前の手順で作成したロード バランサー リソースの名前を使用します。
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -267,7 +267,7 @@ $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBala
 
 ### <a name="step-3-store-the-network-interface"></a>手順 3:ネットワーク インターフェイスを格納する
 
-別の変数にネットワーク インターフェイスを格納します。 このインターフェイスは、「手順 1: ネットワーク インターフェイスを作成する」で作成されたものです。 ここでは、**$nic1** という変数名を使用しています。 前の例と同じネットワーク インターフェイス名を使用します。
+別の変数にネットワーク インターフェイスを格納します。 このインターフェイスは、「手順 1: ネットワーク インターフェイスを作成する」で作成されたものです。 ここでは、 **$nic1** という変数名を使用しています。 前の例と同じネットワーク インターフェイス名を使用します。
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
@@ -281,7 +281,7 @@ $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
-### <a name="step-5-save-the-network-interface-object"></a>手順 5: ネットワーク インターフェイス オブジェクトを保存する
+### <a name="step-5-save-the-network-interface-object"></a>手順 5:ネットワーク インターフェイス オブジェクトを保存する
 
 ネットワーク インターフェイス オブジェクトを保存します。
 

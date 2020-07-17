@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB のコンテナーのスループットをプロビジョニングする
-description: Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
-author: rimman
+description: Azure portal、CLI、PowerShell および他のさまざまな SDK を使用して、Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: dec6d0a65e556e0572bd030617e5b2c30078fce8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: conceptual
+ms.date: 12/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: e416501cb3c532b3ba0a262442b35b236875a463
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243827"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78273289"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos コンテナー上でのスループットをプロビジョニングする
 
 この記事では、Azure Cosmos DB のコンテナー (コレクション、グラフ、またはテーブル) のスループットをプロビジョニングする方法について説明します。 スループットは、単一のコンテナーを対象にプロビジョニングできるほか、[データベースを対象にプロビジョニング](how-to-provision-database-throughput.md)して、それをデータベース内の複数のコンテナーで共有することもできます。 コンテナーのスループットは、Azure portal、Azure CLI、Azure Cosmos DB SDK のいずれかを使用してプロビジョニングできます。
 
-## <a name="provision-throughput-using-azure-portal"></a>Azure portal を使用してスループットをプロビジョニングする
+## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos アカウントを選択します。
 
@@ -31,32 +31,28 @@ ms.locfileid: "66243827"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-![[新しいコレクション] が強調表示されている [データ エクスプローラー] のスクリーンショット](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    ![[新しいコレクション] が強調表示されている [データ エクスプローラー] のスクリーンショット](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli"></a>Azure CLI を使用してスループットをプロビジョニングする
+## <a name="azure-cli-or-powershell"></a>Azure CLI または PowerShell
 
-```azurecli-interactive
-# Create a container with a partition key and provision throughput of 1000 RU/s
-az cosmosdb collection create \
-    --resource-group $resourceGroupName \
-    --collection-name $containerName \
-    --name $accountName \
-    --db-name $databaseName \
-    --partition-key-path /myPartitionKey \
-    --throughput 1000
-```
+専用スループットを持つコンテナーの作成については、以下を参照してください。
 
-MongoDB 用 Azure Cosmos DB API を使用して構成された Azure Cosmos DB アカウントのコンテナーに対するスループットをプロビジョニングする場合は、パーティション キーのパスとして `/myShardKey` を使用します。 Cassandra API を使用して構成された Azure Cosmos アカウントのコンテナーに対するスループットをプロビジョニングする場合は、パーティション キーのパスとして `/myPrimaryKey` を使用します。
+* [Azure CLI を使用してコンテナーを作成する](manage-with-cli.md#create-a-container)
+* [PowerShell を使用してコンテナーを作成する](manage-with-powershell.md#create-container)
 
-## <a name="provision-throughput-by-using-net-sdk"></a>.NET SDK を使用してスループットをプロビジョニングする
+> [!Note]
+> MongoDB 用 Azure Cosmos DB API を使用して構成された Azure Cosmos DB アカウントのコンテナーに対するスループットをプロビジョニングする場合は、パーティション キーのパスとして `/myShardKey` を使用します。 Cassandra API を使用して構成された Azure Cosmos アカウントのコンテナーに対するスループットをプロビジョニングする場合は、パーティション キーのパスとして `/myPrimaryKey` を使用します。
+
+## <a name="net-sdk"></a>.NET SDK
 
 > [!Note]
 > Cassandra API を除くすべての Cosmos DB API シリーズに対するスループットをプロビジョニングするには、SQL API 用の Cosmos SDK を使用します。
 
-### <a id="dotnet-most"></a>SQL API、MongoDB API、Gremlin API、Table API
+### <a name="sql-mongodb-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL API、MongoDB API、Gremlin API、Table API
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
-// Create a container with a partition key and provision throughput of 1000 RU/s
+// Create a container with a partition key and provision throughput of 400 RU/s
 DocumentCollection myCollection = new DocumentCollection();
 myCollection.Id = "myContainerName";
 myCollection.PartitionKey.Paths.Add("/myPartitionKey");
@@ -64,20 +60,63 @@ myCollection.PartitionKey.Paths.Add("/myPartitionKey");
 await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
     myCollection,
-    new RequestOptions { OfferThroughput = 1000 });
+    new RequestOptions { OfferThroughput = 400 });
 ```
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
+
+## <a name="javascript-sdk"></a>JavaScript SDK
+
+```javascript
+// Create a new Client
+const client = new CosmosClient({ endpoint, key });
+
+// Create a database
+const { database } = await client.databases.createIfNotExists({ id: "databaseId" });
+
+// Create a container with the specified throughput
+const { resource } = await database.containers.createIfNotExists({
+id: "containerId",
+throughput: 1000
+});
+
+// To update an existing container or databases throughput, you need to user the offers API
+// Get all the offers
+const { resources: offers } = await client.offers.readAll().fetchAll();
+
+// Find the offer associated with your container or the database
+const offer = offers.find((_offer) => _offer.offerResourceId === resource._rid);
+
+// Change the throughput value
+offer.content.offerThroughput = 2000;
+
+// Replace the offer.
+await client.offer(offer.id).replace(offer);
+```
+
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
+
+同様のコマンドは、CQL に準拠している任意のドライバーを使用して発行できます。
 
 ```csharp
-// Create a Cassandra table with a partition (primary) key and provision throughput of 1000 RU/s
-session.Execute(CREATE TABLE myKeySpace.myTable(
+// Create a Cassandra table with a partition (primary) key and provision throughput of 400 RU/s
+session.Execute("CREATE TABLE myKeySpace.myTable(
     user_id int PRIMARY KEY,
     firstName text,
-    lastName text) WITH cosmosdb_provisioned_throughput=1000);
+    lastName text) WITH cosmosdb_provisioned_throughput=400");
+
+```
+### <a name="alter-or-change-throughput-for-cassandra-table"></a>Cassandra テーブルのスループットの変更
+
+```csharp
+// Altering the throughput too can be done through code by issuing following command
+session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throughput=5000");
 ```
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB でのスループットのプロビジョニングについては、次の記事を参照してください。
 

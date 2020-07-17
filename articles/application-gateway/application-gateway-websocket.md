@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway による WebSocket のサポート | Microsoft Docs
-description: このページでは、Application Gateway による WebSocket のサポートの概要を示します。
+title: Azure Application Gateway での WebSocket のサポート
+description: Application Gateway では、あらゆる規模のゲートウェイで WebSocket がネイティブにサポートされます。 ユーザーが構成可能な設定はありません。
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
+services: application-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 03/18/2019
-ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.date: 11/16/2019
+ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606907"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74130335"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
 
@@ -28,7 +28,7 @@ Application Gateway では、あらゆる規模のゲートウェイで WebSocke
 
 WebSocket の接続を確立するために、特定の HTTP ベースのハンドシェイクがクライアントとサーバーの間で交換されます。 成功すると、アプリケーション レイヤー プロトコルは、以前に確立された TCP 接続を使用して、HTTP から WebSockets に "アップグレード" されます。 これが発生すると、HTTP は完全に無関係になります。WebSocket 接続が閉じられるまで、両方のエンドポイントによって WebSocket プロトコルを使用してデータが送受信されます。 
 
-![addcert](./media/application-gateway-websocket/websocket.png)
+![WebSocket](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>リスナーの構成要素
 
@@ -68,7 +68,7 @@ WebSocket の接続を確立するために、特定の HTTP ベースのハン�
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting、およびルーティング規則の構成
 
-WebSocket が有効なサーバーにバックエンド プールを定義するには、BackendAddressPool を使用します。 backendHttpSetting は、バックエンド ポート 80 および 443 を使用して定義されます。 Cookie ベースのアフィニティのプロパティと requestTimeouts は、WebSocket のトラフィックには関係ありません。 適切なリスナーを対応するバックエンド アドレス プールに結び付けるには、引き続きルーティング規則の "Basic" を使用する必要があります。 
+WebSocket が有効なサーバーにバックエンド プールを定義するには、BackendAddressPool を使用します。 backendHttpSetting は、バックエンド ポート 80 および 443 を使用して定義されます。 HTTP 設定の要求タイムアウト値は、WebSocket セッションにも適用されます。 ルーティング規則を変更する必要はありません。それは、適切なリスナーを対応するバックエンド アドレス プールに関連付けるために使用されます。 
 
 ```json
 "requestRoutingRules": [{
@@ -121,6 +121,6 @@ WebSocket が動作するためには、バックエンドの構成済みのポ�
 
 もう 1 つの理由としては、アプリケーション ゲートウェイのバックエンドの正常性プローブでサポートされるプロトコルが HTTP と HTTPS のみであるという点が挙げられます。 バックエンド サーバーが HTTP または HTTPS プローブに応答しない場合、そのバックエンド サーバーはバックエンド プールから取り除かれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 WebSocket のサポートについて学習した後は、 [アプリケーション ゲートウェイの作成](quick-create-powershell.md) に関するページに進んで、WebSocket が有効な Web アプリケーションを作成しましょう。

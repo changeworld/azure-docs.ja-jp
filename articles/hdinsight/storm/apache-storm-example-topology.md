@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight での Apache Storm トポロジの例
 description: 基本的な C# や Java トポロジなど、HDInsight で Apache Storm を使用して作成、テストされる Storm トポロジの例の一覧と、Event Hubs の使用。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: b2407200b995ad956f233248f6cdd58488b583d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 302ba583f11b15be98832316b1ea05c7f9be931f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688790"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75530665"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Apache Storm トポロジとコンポーネントの例
 
@@ -26,12 +26,11 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 | [HDInsight での Apache Storm の Java ベース トポロジの開発][5797064f] |Maven |Java |
 | [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][16fce2d1] |HDInsight Tools for Visual Studio |C#、Java |
 | [HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)][844d1d81] |Event Hubs |C#、Java |
-| [Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) |Event Hubs |Java |
+| [Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) |Event Hubs |Java |
 | [HDInsight 上の Apache Storm を使用して Event Hubs からの車両センサー データを処理する][246ee964] |Event Hubs、Cosmos DB、Azure Storage Blob (WASB) |C#、Java |
 | [HDInsight 上の Apache Storm を使用した Azure Event Hubs から Apache HBase への抽出、変換、読み込み (ETL)][b4b68194] |Event Hubs、HBase |C# |
 | [HDInsight 上の Apache Storm から Azure サービスを使用するためのテンプレート C# Storm トポロジ プロジェクト][ce0c02a2] |Event Hubs、Cosmos DB、SQL Database、HBase、SignalR |C#、Java |
 | [HDInsight 上の Apache Storm を使用して Azure Event Hubs から読み取るためのスケーラビリティ ベンチマーク][d6c540e3] |メッセージ スループット、Event Hubs、SQL Database |C#、Java |
-| [HDInsight 上の Apache Storm で Python を使用する](apache-storm-develop-python-topology.md) |Flux トポロジを使用する Python コンポーネント |Python |
 | [HDInsight 上の Apache Storm で Apache Kafka を使用する](../hdinsight-apache-storm-with-kafka.md) | Apache Storm を使用した Apache Kafka の読み取りと書き込み | Java |
 
 > [!WARNING]  
@@ -39,12 +38,15 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 >
 > Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。
 
-### <a name="next-steps"></a>次の手順
+## <a name="python-only"></a>Python のみ
 
-* [HDInsight での Apache Storm の使用][2b8c3488]
+Flux トポロジを使用した Python コンポーネントの例については、「[HDInsight での Python を使用した Apache Storm トポロジの開発](apache-storm-develop-python-topology.md)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure HDInsight で Apache Storm トポロジを作成、監視する](./apache-storm-quickstart.md)
 * [HDInsight 上の Apache Storm で Apache Storm トポロジをデプロイおよび管理する方法について][6eb0d3b8]
 
-[2b8c3488]:apache-storm-tutorial-get-started-linux.md "HDInsight クラスター上に Apache Storm を作成し、Storm ダッシュボードを使用してトポロジの例をデプロイする方法について説明します。"
 [6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Web ベースの Apache Storm ダッシュボードと Storm UI または HDInsight Tools for Visual Studio を使用してトポロジをデプロイおよび管理する方法について説明します。"
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "HDInsight Tools for Visual Studio を使用して C# Storm トポロジを作成する方法を説明します。"
 [5797064f]:apache-storm-develop-java-topology.md "基本的なワードカウント トポロジを作成し、Maven を使用して Java で Storm トポロジを作成する方法について説明します。"
@@ -53,4 +55,3 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 [d6c540e3]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/EventCountExample "HDInsight の Apache Storm を使用して Azure Event Hubs から読み取って SQL Database に格納するときのスループットを示す複数のトポロジです。"
 [b4b68194]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample "Azure Event Hubs からデータを読み取り、データを集計および変換し、HDInsight の HBase に格納する方法を説明します。"
 [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、Cosmos DB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
-

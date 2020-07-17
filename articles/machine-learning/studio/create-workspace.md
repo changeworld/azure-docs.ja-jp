@@ -1,55 +1,62 @@
 ---
-title: Machine Learning Studio ワークスペースの作成
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+title: ワークスペースの作成
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b01e7667392d475bcab70dcd3dfaad2c3956e8f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086141"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208535"
 ---
-# <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの作成と共有
+# <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを作成して共有する
 
-Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-## <a name="create-a-studio-workspace"></a>Studio ワークスペースを作成する
+Azure Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+
+## <a name="create-a-studio-classic-workspace"></a>Studio (クラシック) ワークスペースを作成する
+
+Machine Learning Studio (クラシック) でワークスペースを開くには、ワークスペースを作成する際に使用した Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。 ワークスペースの管理は Azure Portal で実行できます。アクセス許可もポータルで構成できます。
 
 1. [Azure ポータル](https://portal.azure.com/)
 
     > [!NOTE]
-    > サインインして Studio ワークスペースを作成するには、Azure サブスクリプション管理者である必要があります。 
+    > サインインして Studio (クラシック) ワークスペースを作成するには、Azure サブスクリプション管理者である必要があります。 
     >
     > 
 
 2. **[+新規]** をクリックします。
 
-3. 検索ボックスに「**Machine Learning Studio ワークスペース**」と入力し、一致する項目を選びます。 次に、ページ下部にある **[作成]** をクリックします。
+3. 検索ボックスに「**Machine Learning Studio (クラシック) ワークスペース**」と入力し、一致する項目を選びます。 次に、ページ下部にある **[作成]** をクリックします。
 
 4. ワークスペースの情報を入力します。
 
    - *[ワークスペース名]* に使用できる最大文字数は 260 文字です。末尾に空白文字は使用しないでください。 また、`< > * % & : \ ? + /` の各文字は使用できません。
    - このワークスペースから Web サービスをデプロイした場合、選択 (または作成) した "*Web サービス プラン*" とそれに関連して選択した "*価格レベル*" が使用されます。
 
-     ![新しい Studio ワークスペースを作成する](./media/create-workspace/create-new-workspace.png)
+     ![新しい Studio (クラシック) ワークスペースを作成する](./media/create-workspace/create-new-workspace.png)
 
 5. **Create** をクリックしてください。
 
+   現在、Machine Learning は一部のリージョンでのみ利用できます。 サブスクリプションに対象のリージョンが含まれていない場合は、"許可されたリージョンにサブスクリプションがありません" というエラー メッセージが表示される可能性があります。  サブスクリプションへのリージョンの追加を要求するには、Azure Portal で Microsoft サポート要求を新規作成し、問題の種類として **[課金]** を選択して、プロンプトに従って要求を送信します。
+
+
 > [!NOTE]
-> Machine Learning Studio では、ワークフローの実行時に中間データを保存するときにユーザーが指定した Azure ストレージ アカウントを使用します。 ワークスペースの作成後に、ストレージ アカウントが削除された場合、またはアクセスキーが変更された場合、ワークスペースは機能しなくなり、そのワークスペースのすべての実験は失敗します。
+> Machine Learning Studio (クラシック) では、ワークフローの実行時に中間データを保存するときにユーザーが指定した Azure ストレージ アカウントが使用されます。 ワークスペースの作成後に、ストレージ アカウントが削除された場合、またはアクセスキーが変更された場合、ワークスペースは機能しなくなり、そのワークスペースのすべての実験は失敗します。
 誤ってストレージ アカウントを削除した場合は、削除されたストレージ アカウントと同じリージョンに同じ名前のストレージ アカウントを再作成し、アクセス キーを再同期します。 ストレージ アカウントのアクセス キーを変更した場合は、Azure Portal を使用してワークスペースのアクセス キーを再同期します。
 
-デプロイしたワークスペースは、Machine Learning Studio で開くことができます。
+デプロイしたワークスペースは、Machine Learning Studio (クラシック) で開くことができます。
 
-1. [https://studio.azureml.net/](https://studio.azureml.net/) で Machine Learning Studio を参照します。
+1. [https://studio.azureml.net/](https://studio.azureml.net/) で Machine Learning Studio (クラシック) を参照します。
 
 2. 右上隅で該当するワークスペースを選択します。
 
@@ -59,12 +66,12 @@ Azure Machine Learning Studio を使用するには、Machine Learning Studio �
 
     ![実験を開く](./media/create-workspace/my-experiments.png)
 
-Studio ワークスペースの管理方法の詳細については、「[Azure Machine Learning Studio ワークスペースの管理](manage-workspace.md)」をご覧ください。
-ワークスペースの作成で問題が発生した場合は、「[トラブルシューティング ガイド: Machine Learning Studio ワークスペースの作成と接続](troubleshooting-creating-ml-workspace.md)」を参照してください。
+Studio (クラシック) ワークスペースの管理方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」をご覧ください。
+ワークスペースの作成で問題が発生した場合は、「[トラブルシューティング ガイド: Machine Learning Studio (クラシック) ワークスペースの作成と接続](troubleshooting-creating-ml-workspace.md)」を参照してください。
 
 
-## <a name="share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースを共有する
-Machine Learning Studio ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセット、ノートブックなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
+## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを共有する
+Machine Learning Studio (クラシック) ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセット、ノートブックなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
 
 * **ユーザー** - ワークスペース内の実験やデータセットの作成、表示、変更、削除を行うことができます。
 * **所有者** - ワークスペース ユーザーの招待と削除、ユーザーが実行できる操作の登録を行うことができます。
@@ -74,9 +81,9 @@ Machine Learning Studio ワークスペースを作成した後、ユーザー�
 > 
 > 
 
-### <a name="to-share-a-studio-workspace"></a>Studio ワークスペースを共有するには
+### <a name="to-share-a-studio-classic-workspace"></a>Studio (クラシック) ワークスペースを共有するには
 
-1. [https://studio.azureml.net/Home](https://studio.azureml.net/Home) で Machine Learning Studio にサインインします。
+1. [https://studio.azureml.net/Home](https://studio.azureml.net/Home) で Machine Learning Studio (クラシック) にサインインします。
 
 2. 左側のパネルの **[設定]** をクリックします。
 
@@ -97,5 +104,32 @@ Machine Learning Studio ワークスペースを作成した後、ユーザー�
 > [!NOTE]
 > このワークスペースの Web サービスをデプロイしたり管理したりするユーザーは、Azure サブスクリプションの共同作成者または管理者である必要があります。 
 
+## <a name="troubleshoot-storage-accounts"></a>ストレージ アカウントのトラブルシューティング
 
 
+Machine Learning サービスでは、データを格納するためのストレージ アカウントが必要です。 既存のストレージ アカウントを使用するか、新しい Machine Learning Studio (クラシック) ワークスペースの作成時に新しいストレージ アカウントを作成することができます (新しいストレージ アカウントを作成するためのクォータがある場合)。
+
+新しい Machine Learning Studio (クラシック) ワークスペースの作成後は、ワークスペースの作成に使用した Microsoft アカウントで Machine Learning Studio (クラシック) にサインインできます。 エラー メッセージ "ワークスペースが見つかりません" (次のスクリーン ショットに類似) が発生する場合は、次の手順に従ってブラウザーの Cookie を削除します。
+
+![Workspace not found](media/troubleshooting-creating-ml-workspace/screen3.png)
+
+**ブラウザーの Cookie を削除するには**
+
+1. Internet Explorer を使用している場合は、右上隅の **[ツール]** をクリックして、 **[インターネット オプション]** を選択します。  
+
+   ![[インターネット オプション]](media/troubleshooting-creating-ml-workspace/screen4.png)
+
+2. **[全般]** タブで、 **[削除]** をクリックします。
+
+   ![[全般] タブ](media/troubleshooting-creating-ml-workspace/screen5.png)
+
+3. **[閲覧の履歴の削除]** ダイアログ ボックスで、 **[クッキーと Web サイト データ]** が選択されていることを確認し、 **[削除]** をクリックします。
+
+   ![Cookie の削除](media/troubleshooting-creating-ml-workspace/screen6.png)
+
+Cookie が削除されたら、ブラウザーを再起動し、[Microsoft Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) ページに移動します。 ユーザー名とパスワードの入力が求められたら、ワークスペースの作成時に使用したアカウントと同じ Microsoft アカウントを入力します。
+
+
+## <a name="next-steps"></a>次のステップ
+
+ワークスペースの管理方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」をご覧ください。

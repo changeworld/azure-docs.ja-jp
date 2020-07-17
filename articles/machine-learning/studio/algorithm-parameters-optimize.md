@@ -1,29 +1,31 @@
 ---
 title: アルゴリズムを最適化する
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 6dc9476f603d5664b7ea23489042b69f86647cf5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123285"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218261"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でアルゴリズムを最適化するためにパラメーターを選ぶ
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でアルゴリズムを最適化するためのパラメーターを選択する
 
-このトピックでは、Azure Machine Learning Studio でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+このトピックでは、Azure Machine Learning Studio (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
 
 
 
-モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning Studio の既定のモデル選択メカニズムになっています。 Azure Machine Learning Studio では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
+モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning Studio (クラシック) の既定のモデル選択メカニズムになっています。 Azure Machine Learning Studio (クラシック) では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
@@ -32,7 +34,7 @@ ms.locfileid: "58123285"
 3. **メトリックを定義する**:その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
 4. **トレーニング、評価、および比較を行う**:パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、そのメトリックに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
 
-次の図は、Azure Machine Learning Studio でこのプロセスを実施する方法を示しています。
+次の図は、Azure Machine Learning Studio (クラシック) でこのプロセスを実施する方法を示しています。
 
 ![最適なパラメーター セットを検索します](./media/algorithm-parameters-optimize/fig1.png)
 
@@ -41,7 +43,7 @@ ms.locfileid: "58123285"
 
 ![2 クラスのブースト デシジョン ツリー、1 つのパラメーター](./media/algorithm-parameters-optimize/fig2.png)
 
- 別の方法として、**[範囲ビルダーを使用]** で生成されるグリッドの最大ポイントと最小ポイント、および生成するポイントの合計数を定義できます。 既定では、パラメーターの値は線形スケールで生成されます。 しかし、**[対数スケール]** チェック ボックスをオンにすると、値が対数スケールで生成されます (つまり、隣接するポイントの差ではなく比率が一定になります)。 整数パラメーターの場合、ハイフンを使って範囲を定義できます。 たとえば、"1-10" は 1 ～ 10 (1 と 10 を含む) のすべての整数を意味するパラメーターのセットになります。 混合モードもサポートされています。 たとえば、パラメーター セット "1-10, 20, 50" は、整数 1 ～ 10、20、50 を含みます。
+ 別の方法として、 **[範囲ビルダーを使用]** で生成されるグリッドの最大ポイントと最小ポイント、および生成するポイントの合計数を定義できます。 既定では、パラメーターの値は線形スケールで生成されます。 しかし、 **[対数スケール]** チェック ボックスをオンにすると、値が対数スケールで生成されます (つまり、隣接するポイントの差ではなく比率が一定になります)。 整数パラメーターの場合、ハイフンを使って範囲を定義できます。 たとえば、"1-10" は 1 から10 (1 と 10 を含む) のすべての整数によってパラメーター セットが形成されることを意味します。 混合モードもサポートされています。 たとえば、パラメーター セット "1-10, 20, 50" は、整数 1 から 10、20、および 50 を含みます。
 
 ![2 クラスのブースト デシジョン ツリー、パラメーター範囲](./media/algorithm-parameters-optimize/fig3.png)
 
@@ -51,7 +53,7 @@ ms.locfileid: "58123285"
 ![パーティションとサンプル](./media/algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>メトリックを定義する
-[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールは、特定のアルゴリズムおよびデータセットに対してパラメーターの最適なセットを経験的に選択するためのサポートを提供します。 モデルのトレーニングに関する他の情報に加えて、このモジュールの **[プロパティ]** ウィンドウには、最適なパラメーター セットを決定するためのメトリックが含まれています。 また、分類アルゴリズムと回帰アルゴリズムに関する 2 つの異なるドロップダウン リスト ボックスがあります。 検討しているアルゴリズムが分類アルゴリズムの場合は回帰のメトリックが無視され、その逆も同じです。 この例では、メトリックは **[確度]** です。   
+[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールは、特定のアルゴリズムとデータセットに対してパラメーターの最適なセットを経験的に選択するためのサポートを提供します。 モデルのトレーニングに関する他の情報に加えて、このモジュールの **[プロパティ]** ウィンドウには、最適なパラメーター セットを決定するためのメトリックが含まれています。 また、分類アルゴリズムと回帰アルゴリズムに関する 2 つの異なるドロップダウン リスト ボックスがあります。 検討しているアルゴリズムが分類アルゴリズムの場合は回帰のメトリックが無視され、その逆も同じです。 この例では、メトリックは **[確度]** です。   
 
 ![パラメーターをスイープする](./media/algorithm-parameters-optimize/fig5.png)
 

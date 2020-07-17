@@ -1,39 +1,40 @@
 ---
-title: Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する
-description: Azure Monitor メトリック ストアの Cloud Services にゲスト OS メトリックを送信する
+title: 従来の Cloud Services のメトリックを Azure Monitor メトリック データベースに送信する
+description: 従来の Azure Cloud Services のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するためのプロセスについて説明します。
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129505"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77655797"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
+Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
 
 この記事では、従来の Azure Cloud Services 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
 
-この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。  これまで、診断拡張機能は Azure Storage に書き込みましたが、Azure Monitor データ ストアには書き込みませんでした。  
+この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。  これまで、診断拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。  
 
 この記事で説明されているプロセスは、Azure Cloud Services でのパフォーマンス カウンターに対してのみ機能します。 他のカスタム メトリックに対しては機能しません。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションで、[サービス管理者または共同管理者](~/articles/billing/billing-add-change-azure-subscription-administrator.md)である必要があります。 
+- Azure サブスクリプションで、[サービス管理者または共同管理者](../../cost-management-billing/manage/add-change-subscription-administrator.md)である必要があります。 
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります。 
+- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります 
 
 - [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+
+- お使いのクラウド サービスが、[カスタム メトリックをサポートするリージョン](metrics-custom-overview.md#supported-regions)に存在する必要があります。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>クラウド サービスとストレージ アカウントのプロビジョニング 
 
@@ -176,19 +177,19 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 2. 左側のメニューで **[モニター]** を選択します。
 
-3. **[モニター]** ブレードで、**[メトリックのプレビュー]** タブを選択します。
+3. **[モニター]** ブレードで、 **[メトリックのプレビュー]** タブを選択します。
 
 4. リソースのドロップダウン メニューで、お使いのクラシック クラウド サービスを選択します。
 
-5. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。 
+5. 名前空間のドロップダウン メニューで、 **[azure.vm.windows.guest]** を選択します。 
 
-6. メトリックのドロップダウン メニューで、**[Memory\Committed Bytes in Use]** を選択します。 
+6. メトリックのドロップダウン メニューで、 **[Memory\Committed Bytes in Use]** を選択します。 
 
 ディメンションのフィルタリング機能と分割機能を使用することで、特定のロールとロール インスタンスにより使用されている合計メモリを選択して表示することができます。 
 
  ![メトリック Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
 

@@ -10,11 +10,11 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: bc237d0f78c77a6fbc89db4061ca38403c3d777b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "58408432"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685187"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>管理ツール リソースをグローバル Azure に移行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "58408432"
 
 ## <a name="traffic-manager"></a>Traffic Manager
 
-Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません  (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
+Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
 
 ソース環境で引き続き実行されている Traffic Manager を使用して、ターゲット環境で追加のエンドポイントを定義できます。 Traffic Manager が新しい環境で実行されている場合も引き続き、ソース環境でまだ移行されていないエンドポイントを定義できます。 このシナリオは、[ブルーグリーン シナリオ](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/)と呼ばれます。 このシナリオには、次の手順が必要です。
 
@@ -134,7 +134,7 @@ az policy definition show --name allowgconly --output json --query policyRule > 
 }
 ```
 
-新しいポリシーの作成: 
+新しいポリシーの作成:
 
 ```azurecli
 cat policy.json |az policy definition create --name "allowweonly" --rules @-
@@ -156,7 +156,7 @@ az policy assignment list
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリ内のリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

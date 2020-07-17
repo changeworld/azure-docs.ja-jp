@@ -1,26 +1,16 @@
 ---
-title: Python アプリを構成する - Azure App Service
-description: このチュートリアルでは、Azure App Service on Linux 向けに Python アプリを作成および構成するためのオプションについて説明します。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Linux Python アプリを構成する
+description: アプリ用に事前構築済みの Python コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
-ms.custom: seodec18
-ms.openlocfilehash: ad2ea32749c6556d17460b2a16ed41bbaa2ec62e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.reviewer: astay; kraigb
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956156"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046021"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -58,9 +48,31 @@ Python バージョンを 3.7 に設定するには、[Cloud Shell](https://shel
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
 
+## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
+
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+
+1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+1. `pip install -r requirements.txt` を実行します。
+1. リポジトリのルートに *manage.py* がある場合、*manage.py collectstatic* を実行します。 ただし、`DISABLE_COLLECTSTATIC` が `true` に設定されている場合、この手順はスキップされます。
+1. `POST_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+
+`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND`、`DISABLE_COLLECTSTATIC` は、既定では空の環境変数です。 ビルド前のコマンドを実行するには、`PRE_BUILD_COMMAND` を定義します。 ビルド後のコマンドを実行するには、`POST_BUILD_COMMAND` を定義します。 Django アプリをビルドするときに collectstatic の実行を無効にするには、`DISABLE_COLLECTSTATIC=true` を設定します。
+
+次の例では、一連のコマンドに対して 2 つの変数をコンマ区切りで指定しています。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
+
+Linux 上で App Service によって Python アプリが実行されビルドされる方法に関する詳細については、[Oryx ドキュメントの Python アプリが検出されビルドされる方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)に関するページを参照してください。
+
 ## <a name="container-characteristics"></a>コンテナーの特性
 
-App Service on Linux にデプロイされた Python アプリは、GitHub リポジトリの [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) または [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0) で定義されている Docker コンテナー内で実行されます。
+App Service on Linux にデプロイされた Python アプリは、[App Service Python GitHub リポジトリ](https://github.com/Azure-App-Service/python)で定義されている Docker コンテナー内で実行されます。 イメージの構成は、バージョン固有のディレクトリ内で見つけることができます。
 
 このコンテナーには次の特性があります。
 
@@ -119,7 +131,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-たとえば、メイン モジュールが *hello.py* で、そのファイルにおける Flask アプリ オブジェクトの名前が `myapp` である Flask アプリがある場合、*\<custom-command>* は次のようになります。
+たとえば、メイン モジュールが *hello.py* で、そのファイルにおける Flask アプリ オブジェクトの名前が `myapp` である Flask アプリがある場合、 *\<custom-command>* は次のようになります。
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -133,7 +145,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 
 また、`--workers=4` のように、Gunicorn の追加の引数を *\<custom-command>* に追加することもできます。 詳細については、「[Running Gunicorn (Gunicorn の実行)」](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
 
-[aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html) のような Gunicorn 以外のサーバーを使用するには、*\<custom-command>* を次のように置き換えることができます。
+[aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html) のような Gunicorn 以外のサーバーを使用するには、 *\<custom-command>* を次のように置き換えることができます。
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -181,7 +193,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#customize-startup-command)を使用します。
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)

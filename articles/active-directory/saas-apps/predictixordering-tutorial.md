@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Predictix Ordering の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Predictix Ordering の統合 | Microsoft Docs'
 description: このチュートリアルでは、Azure Active Directory と Predictix Ordering の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 79e9952aefc44b7c490bb9fe375487c1a3335fc8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901509"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67094117"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル:Azure Active Directory と Predictix Ordering の統合
+# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル: Azure Active Directory と Predictix Ordering の統合
 
 このチュートリアルでは、Predictix Ordering と Azure Active Directory (Azure AD) を統合する方法について説明します。
-この統合により、これらのメリットが提供されます。
+この統合には、次の利点があります。
 
 * Azure AD を使用して、Predictix Ordering にアクセスするユーザーを管理できます。
 * ユーザーが自分の Azure AD アカウントを使用して Predictix Ordering に自動的にサインイン (シングル サインオン) するように設定できます。
@@ -75,12 +75,12 @@ Azure AD への Predictix Ordering の統合を設定するには、ギャラリ
 
 Predictix Ordering で Azure AD のシングル サインオンを構成およびテストするには、これらの手順を完了する必要があります。
 
-1. **[Azure AD シングル サインオンを構成](#configure-azure-ad-single-sign-on)** して、ユーザーに対してこの機能を有効にします。
+1. **[Azure AD のシングル サインオンを構成](#configure-azure-ad-single-sign-on)** して、この機能をユーザーに対して有効にします。
 2. アプリケーション側で **[Predictix Ordering シングル サインオンを構成](#configure-predictix-ordering-single-sign-on)** します。
-3. **[Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)** して、Azure AD シングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)** て、ユーザーに対して Azure AD シングル サインオンを有効にします。
+3. Azure AD のシングル サインオンをテストするための **[Azure AD テスト ユーザーを作成](#create-an-azure-ad-test-user)** します。
+4. **[Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)** て、Azure AD のシングル サインオンをそのユーザーに対して有効にします。
 5. ユーザーの Azure AD 表現にリンクされた **[Predictix Ordering テスト ユーザーを作成](#create-a-predictix-ordering-test-user)** します。
-6. **[シングル サインオンをテスト](#test-single-sign-on)** して、構成が機能することを確認します。
+6. **[シングル サインオンをテスト](#test-single-sign-on)** して、この構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -98,17 +98,17 @@ Predictix Ordering で Azure AD シングル サインオンを構成するに�
 
 3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
-    ![編集アイコン](common/edit-urls.png)
+    ![[編集] アイコン](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ダイアログ ボックスで、次の手順を完了します。
 
     ![[基本的な SAML 構成] ダイアログ ボックス](common/sp-identifier.png)
 
-    1. **[サインオン URL]** ボックスに、このパターンで URL を入力します。
+    1. **[サイン オン URL]** ボックスに、次のパターンの URL を入力します。
 
        `https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
-    1. **[識別子 (エンティティ ID)]** ボックスに、このパターンで URL を入力します。
+    1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンの URL を入力します。
 
         | |
         |--|
@@ -117,15 +117,15 @@ Predictix Ordering で Azure AD シングル サインオンを構成するに�
         | |
 
     > [!NOTE]
-    > これらの値はプレースホルダーです。 実際のサインオン URL と識別子を使用する必要があります。 この値を取得するには、[Predictix Ordering サポート チーム](https://www.predix.io/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
+    > これらの値はプレースホルダーです。 実際のサインオン URL と識別子を使用する必要があります。 この値を取得するには、[Predictix Ordering サポート チーム](https://www.predix.io/support/)に問い合わせてください。 また、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、実際の要件に従って、 **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書を自分のコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、要件に従って **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書をコンピューターに保存します。
 
     ![証明書のダウンロード リンク](common/certificatebase64.png)
 
 6. **[Predictix Ordering のセットアップ]** セクションで、実際の要件に基づいて適切な URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
     1. **[ログイン URL]** 。
 
@@ -139,15 +139,15 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal で Britta Simon という名前のテスト ユーザーを作成します。
 
-1. Azure portal で、左側のウィンドウで **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. Azure portal で、左側のウィンドウの **[Azure Active Directory]** を選択し、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![[すべてのユーザー] の選択](common/users.png)
+    ![[すべてのユーザー] を選択する](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![[新しいユーザー] の選択](common/new-user.png)
+    ![[新しいユーザー] を選択する](common/new-user.png)
 
 3. **[ユーザー]** ダイアログ ボックスで、次の手順を実行します。
 
@@ -157,7 +157,7 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
   
     1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
 
-    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックスの値を書き留めます。
+    1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
     1. **作成** を選択します。
 
@@ -181,7 +181,7 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 6. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** ボタンをクリックします。
 
@@ -189,7 +189,7 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
 
 ### <a name="create-a-predictix-ordering-test-user"></a>Predictix Ordering テスト ユーザーの作成
 
-次に、Predictix Ordering で Britta Simon という名前のユーザーを作成する必要があります。 [Predictix Ordering サポート チーム](https://www.predix.io/support/)と協力して、ユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成して有効にする必要があります。
+次に、Predictix Ordering で Britta Simon という名前のユーザーを作成する必要があります。 [Predictix Ordering サポート チーム](https://www.predix.io/support/)と協力して、ユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成してアクティブ化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

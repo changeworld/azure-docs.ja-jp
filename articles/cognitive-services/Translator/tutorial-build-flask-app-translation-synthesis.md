@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:テキストの翻訳、音声合成、分析を行う Flask アプリを作成する - Translator Text API
+title: チュートリアル:テキストの翻訳、音声合成、分析を行う Flask アプリを作成する - Translator
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Azure Cognitive Services を使用してテキストの翻訳、感情分析、翻訳済みテキストの音声合成を行う Flask ベースの Web アプリを作成します。 重点的に取り上げるのは、目的のアプリケーションを実現する Python コードと Flask ルートです。 アプリを制御する JavaScript については詳しく取り上げませんが、ご自身で詳細に調べることができるようすべてのファイルを提供しています。
+description: このチュートリアルでは、テキストの翻訳、感情分析、翻訳済みテキストの音声合成を行う Flask ベースの Web アプリを作成します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 02/10/2020
+ms.author: swmachan
+ms.openlocfilehash: 955476eefc7575edb90634ce305bbebdf62e2371
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007406"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592357"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -27,8 +27,8 @@ ms.locfileid: "59007406"
 > * Azure サブスクリプション キーを取得する
 > * 開発環境をセットアップして依存関係をインストールする
 > * Flask アプリを作成する
-> * Translator Text API を使用してテキストを翻訳する
-> * Text Analytics を使用して、入力されたテキストと翻訳の肯定的/否定的センチメントを分析する
+> * Translator を使用してテキストを翻訳する
+> * Text Analytics を使用して、入力されたテキストと翻訳の肯定的/否定的感情を分析する
 > * Speech Services を使用して、翻訳済みのテキストを合成音声に変換する
 > * Flask アプリをローカルで実行する
 
@@ -52,14 +52,14 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 * [Git ツール](https://git-scm.com/downloads)
 * IDE またはテキスト エディター ([Visual Studio Code](https://code.visualstudio.com/)、[Atom](https://atom.io/) など)  
 * [Chrome](https://www.google.com/chrome/browser/) または [Firefox](https://www.mozilla.org/firefox)
-* **Translator Text** のサブスクリプション キー (リージョンの選択は不要)
+* **Translator** のサブスクリプション キー (リージョンの選択は不要)
 * **Text Analytics** のサブスクリプション キー (**米国西部**リージョン)。
 * **Speech Services** のサブスクリプション キー (**米国西部**リージョン)。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>アカウントを作成してリソースをサブスクライブする
 
 前述のように、このチュートリアルには 3 つのサブスクリプション キーが必要となります。 つまり、次の目的に使用するリソースをご自分の Azure アカウント内に作成する必要があります。
-* Translator Text
+* Translator
 * Text Analytics
 * Speech Services
 
@@ -103,10 +103,10 @@ Flask Web アプリを作成する前に、プロジェクトの作業ディレ�
 
 2. 仮想環境をアクティブ化するコマンドは、プラットフォーム/シェルによって異なります。   
 
-   | プラットフォーム | シェル | command |
+   | プラットフォーム | Shell | コマンド |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
-   |  Windows | Bash | `source venv/Scripts/activate` |
+   | Windows | Bash | `source venv/Scripts/activate` |
    | | コマンド ライン | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 
@@ -128,7 +128,7 @@ requests は、HTTP 1.1 要求を送信するためのモジュールとして�
    ```
 
 > [!NOTE]
-> requests の詳細については、「[Requests: HTTP for Humans (Requests: 人のための HTTP)](http://docs.python-requests.org/en/master/)」を参照してください。
+> requests の詳細については、「[Requests: HTTP for Humans (Requests: 人のための HTTP)](https://2.python-requests.org/en/master/)」を参照してください。
 
 ### <a name="install-and-configure-flask"></a>Flask をインストールして構成する
 
@@ -182,7 +182,7 @@ def about():
 
 これらのサンプルは、html ページをレンダリングしてユーザーに表示する方法を示していますが、ルートを使用すれば、ボタンが押されたときに API を呼び出したり、ホームページから離れることなく任意の数のアクションを実行したりすることもできます。 この点は、翻訳、感情分析、音声合成のルートを作成するときに実際に見てみましょう。
 
-### <a name="get-started"></a>作業開始
+### <a name="get-started"></a>はじめに
 
 1. IDE でプロジェクトを開いて、作業ディレクトリのルートに `app.py` という名前のファイルを作成します。 さらに、次のコードを `app.py` にコピーして保存します。
 
@@ -245,14 +245,14 @@ def about():
 
 ここまでは、シンプルな Flask アプリの動作を確認しました。今度は、次のことを試してみましょう。
 
-* Translator Text API を呼び出して応答を返す Python を記述する
+* Translator を呼び出して応答を返す Python を記述する
 * その Python コードを呼び出す Flask ルートを作成する
 * テキスト入力と翻訳のための領域、言語セレクター、翻訳ボタンを HTML に追加する
 * ユーザーが HTML から Flask アプリを対話的に操作できる JavaScript を記述する
 
-### <a name="call-the-translator-text-api"></a>Translator Text API を呼び出す
+### <a name="call-the-translator"></a>Translator Text API を呼び出す
 
-最初に、Translator Text API を呼び出す関数を記述する必要があります。 この関数は、`text_input` と `language_output` の 2 つの引数を受け取ります。 ユーザーがアプリで翻訳ボタンを押すたびに、この関数が呼び出されます。 HTML 内のテキスト領域が `text_input` として送信され、HTML で選択された言語の値が `language_output` として送信されます。
+最初に、Translator を呼び出す関数を記述する必要があります。 この関数は、`text_input` と `language_output` の 2 つの引数を受け取ります。 ユーザーがアプリで翻訳ボタンを押すたびに、この関数が呼び出されます。 HTML 内のテキスト領域が `text_input` として送信され、HTML で選択された言語の値が `language_output` として送信されます。
 
 1. まず、作業ディレクトリのルートに `translate.py` というファイルを作成します。
 2. さらに、次のコードを `translate.py` に追加します。 この関数は、`text_input` と `language_output` の 2 つの引数を受け取ります。
@@ -262,7 +262,8 @@ def about():
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-
+   
+   # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
    # will grab these values from our web app, and use them in the request.
@@ -275,6 +276,7 @@ def about():
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
+           'Ocp-Apim-Subscription-Region': 'location',
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -286,7 +288,7 @@ def about():
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Translator Text のサブスクリプション キーを追加して保存します。
+3. Translator のサブスクリプション キーを追加して保存します。
 
 ### <a name="add-a-route-to-apppy"></a>`app.py` にルートを追加する
 
@@ -470,20 +472,20 @@ flask run
 
 **Ctrl + C** キーを押してアプリを強制終了してから、次のセクションに進みましょう。
 
-## <a name="analyze-sentiment"></a>センチメントを分析する
+## <a name="analyze-sentiment"></a>感情を分析する
 
-[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) を使用すると、感情分析を実行したり、テキストからキー フレーズを抽出したり、ソース言語を検出したりすることができます。 このアプリでは、入力されたテキストがポジティブかニュートラルかネガティブかを感情分析を使用して調べます。 この API は 0 から 1 までの数値スコアを返します。 1 に近いスコアは正のセンチメント、0 に近いスコアは負のセンチメントを示します。
+[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) を使用すると、感情分析を実行したり、テキストからキー フレーズを抽出したり、ソース言語を検出したりすることができます。 このアプリでは、入力されたテキストがポジティブかニュートラルかネガティブかを感情分析を使用して調べます。 この API は 0 から 1 までの数値スコアを返します。 1 に近いスコアは正の感情、0 に近いスコアは負の感情を示します。
 
 このセクションでは、次の作業を行います。
 
 * Text Analytics API を呼び出して感情分析を行い、応答を返す Python を記述する
 * その Python コードを呼び出す Flask ルートを作成する
-* センチメント スコアの領域と分析の実行ボタンを HTML に追加する
+* 感情スコアの領域と分析の実行ボタンを HTML に追加する
 * ユーザーが HTML から Flask アプリを対話的に操作できる JavaScript を記述する
 
 ### <a name="call-the-text-analytics-api"></a>Text Analytics API を呼び出す
 
-Text Analytics API を呼び出す関数を記述しましょう。 この関数は、`input_text`、`input_language`、`output_text`、`output_language` の 4 つの引数を受け取ります。 ユーザーがアプリで感情分析の実行ボタンを押すたびに、この関数が呼び出されます。 テキスト領域と言語セレクターを通じてユーザーが入力したデータ、そして検出された言語と出力された翻訳が、それぞれの要求で渡されます。 応答オブジェクトには、原文と翻訳のセンチメント スコアが含まれます。 以降のセクションでは、その応答を解析してアプリ内で使用するための JavaScript を記述していきます。 その前に、Text Analytics API の呼び出しに注目しましょう。
+Text Analytics API を呼び出す関数を記述しましょう。 この関数は、`input_text`、`input_language`、`output_text`、`output_language` の 4 つの引数を受け取ります。 ユーザーがアプリで感情分析の実行ボタンを押すたびに、この関数が呼び出されます。 テキスト領域と言語セレクターを通じてユーザーが入力したデータ、そして検出された言語と出力された翻訳が、それぞれの要求で渡されます。 応答オブジェクトには、原文と翻訳の感情スコアが含まれます。 以降のセクションでは、その応答を解析してアプリ内で使用するための JavaScript を記述していきます。 その前に、Text Analytics API の呼び出しに注目しましょう。
 
 1. 作業ディレクトリのルートに `sentiment.py` というファイルを作成します。
 2. さらに、次のコードを `sentiment.py` に追加します。
@@ -559,8 +561,8 @@ Text Analytics API を呼び出す関数を記述しましょう。 この関数
 これで、感情分析を実行する関数とそれを呼び出す Flask アプリのルートが完成しました。次に、アプリの HTML の記述を始めましょう。 以下の HTML では、いくつかの処理を行います。
 
 * 感情分析の実行ボタンをアプリに追加する
-* センチメント スコアについて説明する要素を追加する
-* センチメント スコアを表示する要素を追加する
+* 感情スコアについて説明する要素を追加する
+* 感情スコアを表示する要素を追加する
 
 1. `index.html` を開いて、次のコード コメントを見つけます。
    ```html
@@ -583,7 +585,7 @@ Text Analytics API を呼び出す関数を記述しましょう。 この関数
 
 以下のコードでは、HTML から取得した内容を使用して、Flask ルートへの要求を作成しています。 具体的には、テキスト領域の内容と言語セレクターを変数に代入したうえで、要求に追加し、`sentiment-analysis` ルートに渡しています。
 
-その後、応答を反復処理しながら、センチメント スコアで HTML を更新します。
+その後、応答を反復処理しながら、感情スコアで HTML を更新します。
 
 1. IDE で、`main.js` という名前のファイルを `static` ディレクトリに作成します。
 
@@ -778,7 +780,7 @@ flask run
        <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>
@@ -836,7 +838,7 @@ flask run
 
 以下のコードでは、HTML から取得した内容を使用して、Flask ルートへの要求を作成しています。 具体的には、翻訳と音声フォントを変数に代入したうえで、要求に追加し、`text-to-speech` ルートに渡しています。
 
-その後、応答を反復処理しながら、センチメント スコアで HTML を更新します。
+その後、応答を反復処理しながら、感情スコアで HTML を更新します。
 
 1. IDE で、`main.js` という名前のファイルを `static` ディレクトリに作成します。
 2. このコードを `static/scripts/main.js` にコピーします。
@@ -957,8 +959,8 @@ flask run
 
 このプロジェクトのソース コードは、[GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) で入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Translator Text API のリファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Translator リファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

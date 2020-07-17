@@ -1,26 +1,18 @@
 ---
 title: Visual Studio での傾向の分析 | Microsoft Docs
 description: Visual Studio で、Application Insights テレメトリの傾向を分析、視覚化、調査します。
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 2b08dfd87910cbb9f23f6b108a970d160612e1a7
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.custom: vs-azure
+ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255900"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670867"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
@@ -77,7 +69,7 @@ Application Insights Trends では、アプリのテレメトリが時系列で�
 > 
 > 
 
-## <a name="filter"></a>filter
+## <a name="filter"></a>Assert
 ウィンドウの下部にあるフィルター コントロールを使用して、より具体的な傾向を特定します。 フィルターを適用するには、その名前をクリックします。 各種フィルターをすばやく切り替えて、テレメトリの特定のディメンションに隠れている可能性のある傾向を突き止めることができます。 例外の種類など、いずれかのディメンションのフィルターを適用すると、それ以外のディメンションのフィルターは淡色表示されますが、クリックできます。フィルターの適用を解除するには、もう一度クリックします。 Ctrl キーを押しながらクリックして、同じディメンションの複数のフィルターを選択します。
 
 ![Trend filters](./media/visual-studio-trends/TrendsFiltering-750.png)
@@ -103,7 +95,7 @@ Trends ツールでは、同じ時系列の他のバブルと比べて異常な�
 > 
 > 
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 |  |  |
 | --- | --- |
 | **[Visual Studio での Application Insights の操作](../../azure-monitor/app/visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。 いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio-trends/34.png) |

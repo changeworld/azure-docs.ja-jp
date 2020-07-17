@@ -2,27 +2,22 @@
 title: Microsoft ID プラットフォーム (v2.0) の概要 - Azure
 description: Microsoft ID プラットフォーム (v2.0) エンドポイントとプラットフォームについて説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d139efaa8e6de4861dc8e885bd22a426fde6c94
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 2e5bbbd311d71f2925e86ae756b36de7194aa9fb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833034"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80886247"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft ID プラットフォーム (v2.0) の概要
 
@@ -34,16 +29,20 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開
   - ソーシャル アカウントまたはローカル アカウント (Azure AD B2C 使用)
 - **オープンソース ライブラリ**:Microsoft Authentication Libraries (MSAL) およびその他の標準準拠ライブラリのサポート
 - **アプリケーション管理ポータル**:Microsoft Azure portal で構築された登録および構成エクスペリエンスのほか、その他のすべての Azure の管理機能。
-- **アプリケーション構成 API および PowerShell**: REST API (Microsoft Graph および Azure Active Directory Graph 1.6) および PowerShell を通じて、アプリケーションのプログラム構成を可能にします。したがって、DevOps タスクを自動化できます。
+- **アプリケーション構成 API および PowerShell**: Microsoft Graph API および PowerShell を使用して対象のアプリケーションをプログラムで構成できます。これにより、DevOps タスクを自動化できます。
 - **開発者向けコンテンツ**: 概念およびリファレンス ドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、およびハウツー ガイド。
 
 開発者にとって、Microsoft ID プラットフォームは、パスワードなしの認証、ステップアップ認証、条件付きアクセスなど、ID およびセキュリティ領域における革新的技術をシームレスに統合します。  このような機能を自分で実装する必要はありません。Microsoft ID プラットフォームと統合されたアプリケーションは、このような革新的技術をネイティブに利用します。
 
 Microsoft ID プラットフォームでは、一度コードを記述すればすべてのユーザーに対応できます。 アプリを一度ビルドすれば、多数のプラットフォームで動作させたり、リソース アプリケーション (API) と同様にクライアントとして機能するアプリを構築できます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
-ID の処理は難しくありません。 自身に当てはまるシナリオを選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
+ID の処理は難しくありません。 
+
+[Microsoft ID プラットフォームのビデオ](identity-videos.md)を見て、基本を学習してください。 
+
+自身に当てはまる[シナリオ](authentication-flows-app-scenarios.md)を選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
 
 - [単一ページのアプリを構築する](scenario-spa-overview.md)
 - [ユーザーをサインインさせる Web アプリを構築する](scenario-web-app-sign-user-overview.md)
@@ -58,10 +57,11 @@ ID の処理は難しくありません。 自身に当てはまるシナリオ�
 
 [![Microsoft ID プラットフォームでのアプリケーション シナリオ](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コア認証の概念の詳細については、以下の各トピックから始めることをお勧めします。
 
+- [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)
 - [認証の基本](authentication-scenarios.md)
 - [アプリケーションとサービス プリンシパル](app-objects-and-service-principals.md)
 - [対象ユーザー](v2-supported-account-types.md)
@@ -72,7 +72,7 @@ ID の処理は難しくありません。 自身に当てはまるシナリオ�
 
 **実稼働環境**にアプリを導入する準備ができたら、これらのベスト プラクティスを確認してください。
 
-- アプリケーションへの[ログインを有効にします](msal-logging.md)。
+- アプリケーションで[ログを有効にします](msal-logging.md)。
 - アプリケーションでテレメトリを有効にします。
 - [プロキシを有効にし、HTTP クライアントをカスタマイズ](msal-net-provide-httpclient.md)します。
 - [Microsoft ID プラットフォームの統合チェックリスト](identity-platform-integration-checklist.md)に従って、統合をテストします。

@@ -1,25 +1,27 @@
 ---
-title: 従来の Web サービスの再トレーニングとデプロイ
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+title: 従来の Web サービスの再トレーニングを行う
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: b636883ee1f08fa0fb6d080b6980cd07553dde1b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0639a525384e751ac4441da5d2c03532618b801a
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65234045"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209453"
 ---
-# <a name="retrain-and-deploy-a-classic-studio-web-service"></a>従来の Studio Web サービスの再トレーニングとデプロイ
+# <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
-機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio Web サービスを再トレーニングする方法を示します。 新しい Studio Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,27 +46,14 @@ ms.locfileid: "65234045"
 
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Azure Web サービス ポータルを使用してエンドポイントを追加する
 
-1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。
-1. Web サービス ダッシュボードの下部で、**[Manage endpoints preview (エンドポイント プレビューの管理)]** をクリックします。
+1. Machine Learning Studio (クラシック) の左側のナビゲーション列で [Web サービス] をクリックします。
+1. Web サービス ダッシュボードの下部で、 **[Manage endpoints preview (エンドポイント プレビューの管理)]** をクリックします。
 1. **[追加]** をクリックします。
 1. 新しいエンドポイントの名前と説明を入力します。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 
 ## <a name="update-the-added-endpoints-trained-model"></a>追加エンドポイントのトレーニング済みモデルを更新する
 
 ### <a name="retrieve-patch-url"></a>PATCH URL を取得する
-
-### <a name="option-1-programmatically"></a>オプション 1:プログラムを使用する
-
-適切な PATCH URL をプログラムで取得するには、次の手順に従います。
-
-1. [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) サンプル コードを実行します。
-1. AddEndpoint の出力から、 *HelpLocation* 値を見つけ、URL をコピーします。
-
-   ![addEndpoint サンプルの出力での HelpLocation](./media/retrain-classic/addEndpoint-output.png)
-1. ブラウザーにこの URL を貼り付けて、Web サービスのヘルプ リンクを提供するページに移動します。
-1. **[Update Resource (リソースの更新)]** リンクをクリックしてパッチ適用のヘルプ ページを開きます。
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>オプション 2:Azure Machine Learning Web サービス ポータルを使用する
 
 適切な PATCH URL を Web ポータルを使用して取得するには、次の手順に従います。
 
@@ -73,10 +62,10 @@ ms.locfileid: "65234045"
 1. 作業中のスコアリング Web サービスをクリックします (Web サービスの既定の名前を変更しなかった場合、その名前の末尾は "[Scoring Exp.]" になります)。
 1. **[+新規]** をクリックします。
 1. エンドポイントが追加されたら、エンドポイントの名前をクリックします。
-1. **パッチ** URL の下で、**[API Help]\(API ヘルプ\)** をクリックして、パッチ適用のヘルプ ページを開きます。
+1. **パッチ** URL の下で、 **[API Help]\(API ヘルプ\)** をクリックして、パッチ適用のヘルプ ページを開きます。
 
 > [!NOTE]
-> エンドポイントを予測 Web サービスではなくトレーニング Web サービスに追加した場合は、**[リソースの更新]** リンクをクリックすると、"この機能はサポートされていないか、このコンテキストでは使用できません。 この Web サービスには、更新可能なリソースがありません。 ご不便をおかけして申し訳ありません。現在、このワークフローの強化に取り組んでいます" というエラーが表示されます。
+> エンドポイントを予測 Web サービスではなくトレーニング Web サービスに追加した場合は、 **[リソースの更新]** リンクをクリックすると、"この機能はサポートされていないか、このコンテキストでは使用できません。 この Web サービスには、更新可能なリソースがありません。 ご不便をおかけして申し訳ありません。現在、このワークフローの強化に取り組んでいます" というエラーが表示されます。
 >
 
 PATCH ヘルプ ページには、使用する必要のある PATCH URL が含まれており、これを呼び出すために使用できるサンプル コードが提供されています。
@@ -101,8 +90,8 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }
@@ -131,19 +120,19 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 
 *Resources* の *Name* パラメーターは、予測実験で保存したトレーニング済みモデルのリソース名と一致する必要があります。 リソース名を取得するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューで **[Machine Learning]** をクリックします。
 1. [名前] でワークスペースをクリックし、 **[Web サービス]** をクリックします。
 1. [名前] で **[Census Model [predictive exp.]]** をクリックします。
 1. 追加した新しいエンドポイントをクリックします。
 1. エンドポイント ダッシュボードで、 **[リソースの更新]** をクリックします。
-1. Web サービスの [Update Resource API Documentation (リソース API ドキュメントの更新)] ページで、**[Updatable Resource (更新可能なリソース)]** の **[リソース名]** を確認します。
+1. Web サービスの [Update Resource API Documentation (リソース API ドキュメントの更新)] ページで、 **[Updatable Resource (更新可能なリソース)]** の **[リソース名]** を確認します。
 
 エンドポイントの更新が完了する前に SAS トークンの有効期限が切れる場合は、ジョブ ID を指定して GET を実行し、新しいトークンを取得する必要があります。
 
 コードが正常に実行すると、新しいエンドポイントは、約 30 秒後に再トレーニング済みモデルを使用し始めます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Web サービスの管理または複数の実験の実行の追跡を行う方法については、次の記事を参照してください。
 

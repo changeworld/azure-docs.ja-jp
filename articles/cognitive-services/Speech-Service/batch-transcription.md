@@ -1,62 +1,74 @@
 ---
-title: バッチ文字起こしの使用方法 - Speech Services
-titlesuffix: Azure Cognitive Services
+title: バッチ文字起こしとは - Speech サービス
+titleSuffix: Azure Cognitive Services
 description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
-author: PanosPeriorellis
+author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
-ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 03/18/2020
+ms.author: wolfma
+ms.openlocfilehash: 46bfabfb2ccf091fd5dc0fcf0e9b447bad7c34d1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190414"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82208620"
 ---
-# <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
+# <a name="what-is-batch-transcription"></a>バッチ文字起こしとは
 
-バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
+バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしの結果を受け取ることができます。
+
+音声からテキストへの非同期の文字起こしは、その機能の 1 つにすぎません。 バッチ文字起こし REST API を使用すると、次のメソッドを呼び出すことができます。
+
+
+
+|    バッチ文字起こし操作                                             |    Method    |    REST API の呼び出し                                   |
+|------------------------------------------------------------------------------|--------------|----------------------------------------------------|
+|    新しい文字起こしを作成する。                                              |    POST      |    api/speechtotext/v2.0/transcriptions            |
+|    認証されたサブスクリプションに対する文字起こしのリストを取得する。    |    GET       |    api/speechtotext/v2.0/transcriptions            |
+|    オフライン文字起こしでサポートされているロケールの一覧を取得する。              |    GET       |    api/speechtotext/v2.0/transcriptions/locales    |
+|    ID によって示された文字起こしの変更可能な詳細を更新する。    |    PATCH     |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    指定した文字起こしタスクを削除する。                                 |    DELETE    |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    指定した ID によって示される文字起こしを取得する。                        |    GET       |    api/speechtotext/v2.0/transcriptions/{id}       |
+
+
+
+
+詳細な API を確認してテストできます。API は、[Swagger ドキュメント](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)の「`Custom Speech transcriptions`」という見出しの下にあります。
+
+バッチ文字起こしジョブは、ベスト エフォート ベースでスケジュールされます。 現時点では、ジョブがいつ実行状態になるかについて予測できません。 通常のシステム負荷では、この処理は数分以内に行われます。 いったん実行状態になると、実際の文字起こしはリアルタイムのオーディオより速く処理されます。
+
+使用しやすい API のほかに、カスタム エンドポイントをデプロイする必要はなく、監視する必要のある同時実行要件もありません。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="subscription-key"></a>サブスクリプション キー
 
-Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 ベースライン モデルから文字起こしを取得する場合は、行う必要があるのはキーを作成することだけです。
+Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。
 
 >[!NOTE]
-> バッチ文字起こしを使用するには、Speech Services の Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
+> バッチ文字起こしを使用するには、音声サービスの Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
 ### <a name="custom-models"></a>カスタム モデル
 
-音響モデルまたは言語モデルをカスタマイズする場合は、[音響モデルのカスタマイズ](how-to-customize-acoustic-models.md)および[言語モデルのカスタマイズ](how-to-customize-language-model.md)に関する記事をご覧ください。 作成されたモデルをバッチ文字起こしで使用するには、モデル ID が必要です。 この ID は [エンドポイントの詳細] ビューに表示されるエンドポイント ID ではなく、そのモデルの詳細を選択して取得できるモデル ID です。
+音響モデルまたは言語モデルをカスタマイズする場合は、[音響モデルのカスタマイズ](how-to-customize-acoustic-models.md)および[カスタマイズ言語モデルの設計](how-to-customize-language-model.md)に関するページの手順に従ってください。 作成されたモデルをバッチ文字起こしで使用するには、モデル ID が必要です。 モデルの詳細を調べると、モデル ID を取得できます。 デプロイされたカスタム エンドポイントは、バッチ文字起こしサービスには必要ありません。
 
 ## <a name="the-batch-transcription-api"></a>Batch 文字起こし API
-
-Batch 文字起こし API では、音声からテキストへの非同期文字起こしと他の機能が提供されます。 次のためのメソッドを公開する REST API です。
-
-1. バッチ処理要求の作成
-1. クエリの状態
-1. 文字起こしのダウンロード
-
-> [!NOTE]
-> Batch 文字起こし API は、何千時間ものオーディオがたまるのが普通なコール センターに理想的です。 大量のオーディオ録音の文字起こしが簡単になります。
 
 ### <a name="supported-formats"></a>サポートされるフォーマット
 
 Batch 文字起こし API では、次の形式がサポートされています。
 
-| 形式 | コーデック | Bitrate | サンプル レート |
-|--------|-------|---------|-------------|
-| WAV | PCM 0 | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
-| MP3 | PCM 0 | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
-| OGG | OPUS | 16 ビット | 8 または 16 kHz、モノラル、ステレオ |
+| Format | コーデック | Bitrate | サンプル レート                     |
+|--------|-------|---------|---------------------------------|
+| WAV    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
+| MP3    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
+| OGG    | OPUS  | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
 
-ステレオ オーディオ ストリームの場合、Batch 文字起こし API は文字起こしの間に左チャンネルと右チャンネルを分離します。 各チャンネルから 2 つの JSON ファイルが作成されます。 発話に従うタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。 このサンプルの要求には、不適切な表現のフィルター、句読点、および単語レベルのタイムスタンプのプロパティが含まれます。 
+ステレオ オーディオ ストリームの場合、文字起こし中に左チャンネルと右チャンネルが分離されます。 各チャネルに対して、JSON 結果ファイルが作成されます。 発話ごとに生成されるタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。
 
 ### <a name="configuration"></a>構成
 
@@ -66,53 +78,221 @@ Batch 文字起こし API では、次の形式がサポートされています
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to use, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
-    "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True",
-    "AddSentiment" : "True"
+    "ProfanityFilterMode": "None | Removed | Tags | Masked",
+    "PunctuationMode": "None | Dictated | Automatic | DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True | False",
+    "AddSentiment" : "True | False",
+    "AddDiarization" : "True | False",
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
 
-> [!NOTE]
-> Batch 文字起こし API は REST サービスを使用して、文字起こし、その状態、および関連する結果を要求します。 任意の言語からこの API を使用できます。 次のセクションでは、API の使用方法について説明します。
-
 ### <a name="configuration-properties"></a>構成プロパティ
 
-| パラメーター | 説明 | 必須/省略可能 |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`none` (不適切な表現のフィルターを無効にする)、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する) または `tags` ("不適切な表現" のタグを追加する) です。 既定の設定は `masked`です。 | 省略可能 |
-| `PunctuationMode` | 認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`none` (句読点を無効にする)、`dictated` (明示的な句読点)、`automatic` (デコーダーで句読点を処理する)、`dictatedandautomatic` (指定された句読点、または自動) です。 | 省略可能 |
- | `AddWordLevelTimestamps` | 単語レベルのタイムスタンプを出力に追加するかどうかを指定します。 `true` を指定すると単語レベルのタイムスタンプが有効になり、`false` (既定値) を指定すると無効になります。 | 省略可能 |
- | `AddSentiment` | センチメントを発話に追加するかどうかを指定します。 `true` を指定すると発話ごとのセンチメントが有効になり、`false` (既定値) を指定すると無効になります。 | 省略可能 |
+次の省略可能なプロパティを使用して、文字起こしを構成します。
 
-### <a name="storage"></a>Storage
+:::row:::
+   :::column span="1":::
+      **パラメーター**
+   :::column-end:::
+   :::column span="2":::
+      **説明**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`None` (不適切な表現のフィルターを無効にする)、`Masked` (不適切な表現をアスタリスクに置き換える)、`Removed` (すべての不適切な表現を結果から除去する)、または `Tags` ("profanity" (不適切な表現) のタグを追加する) です。 既定の設定は `Masked` です。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`None` (句読点を無効にする)、`Dictated` (明示的な (音声指示の) 句読点を暗黙指定する)、`Automatic` (デコーダーで句読点を処理する)、または `DictatedAndAutomatic` (口述指示および自動の句読点を使用する) です。 既定の設定は `DictatedAndAutomatic` です。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      単語レベルのタイムスタンプを出力に追加するかどうかを指定します。 指定できる値は、単語レベルのタイムスタンプを有効にする `true` と、それを無効にする `false` (既定値) です。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      発話に感情分析を適用する必要があるかどうかを指定します。 指定できる値は、有効にする `true` と、無効にする `false` (既定値) です。 詳細については、「[感情分析](#sentiment-analysis)」を参照してください。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      2 つの音声を含むモノラル チャネルであることが予測される入力に対してダイアライゼーション分析を実行する必要があることを指定します。 指定できる値は、ダイアライゼーションを有効にする `true` と、それを無効にする `false` (既定値) です。 さらに、`AddWordLevelTimestamps` を true に設定する必要があります。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Azure の書き込み可能なコンテナーに対する[サービス SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。
+:::row-end:::
+
+### <a name="storage"></a>ストレージ
 
 Batch 文字起こしでは、オーディオの読み取りや、文字起こしのストレージへの書き込みに [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) をサポートしています。
 
-## <a name="webhooks"></a>Webhook 
+## <a name="the-batch-transcription-result"></a>バッチ文字起こしの結果
 
-文字起こし状態のポーリングでは、最も高いパフォーマンスを実現できない場合や、最適なユーザー エクスペリエンスを提供できない場合があります。 状態をポーリングするには、コールバックを登録して、実行時間の長い文字起こしタスクが完了したときにクライアントに通知することができます。
+モノラル入力オーディオの場合、1 つの文字起こし結果ファイルが作成されます。 ステレオ入力オーディオの場合、2 つの文字起こし結果ファイルが作成されます。 それぞれ次のような構造です。
 
-詳細については、「[Webhook](webhooks.md)」を参照してください。
+```json
+{
+  "AudioFileResults":[
+    {
+      "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
+      "AudioFileUrl": null                                  'always null'
+      "AudioLengthInSeconds": number                        'Real number. Two decimal places'
+      "CombinedResults": [
+        {
+          "ChannelNumber": null                             'always null'
+          "Lexical": string
+          "ITN": string
+          "MaskedITN": string
+          "Display": string
+        }
+      ]
+      SegmentResults:[                                      'for each individual segment'
+        {
+          "RecognitionStatus": "Success | Failure"
+          "ChannelNumber": null
+          "SpeakerId": null | "1 | 2"                       'null if no diarization
+                                                             or stereo input file, the
+                                                             speakerId as a string if
+                                                             diarization requested for
+                                                             mono audio file'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
+          "OffsetInSeconds" : number                        'Real number. Two decimal places'
+          "DurationInSeconds" : number                      'Real number. Two decimal places'
+          "NBest": [
+            {
+              "Confidence": number                          'between 0 and 1'
+              "Lexical": string
+              "ITN": string
+              "MaskedITN": string
+              "Display": string
+              "Sentiment":
+                {                                           'this is omitted if sentiment is
+                                                             not requested'
+                  "Negative": number                        'between 0 and 1'
+                  "Neutral": number                         'between 0 and 1'
+                  "Positive": number                        'between 0 and 1'
+                }
+              "Words": [
+                {
+                  "Word": string
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
+                  "OffsetInSeconds": number                 'Real number. Two decimal places'
+                  "DurationInSeconds": number               'Real number. Two decimal places'
+                  "Confidence": number                      'between 0 and 1'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
-## <a name="sentiment"></a>センチメント
+結果には、次の形式が含まれます。
 
-センチメントは Batch 文字起こし API の新機能であり、コール センター ドメインの重要な機能です。 お客様は自身の要求に対して `AddSentiment` パラメーターを使用して次のことを行えます。 
+:::row:::
+   :::column span="1":::
+      **形式**
+   :::column-end:::
+   :::column span="2":::
+      **コンテンツ**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      実際に認識された単語。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      認識されたテキストの逆テキスト正規化形式。 略語 ("doctor smith" から "dr smith")、電話番号、およびその他の変換が適用されます。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      不適切表現のマスキングを適用した ITN 形式。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      認識されたテキストの表示形式。 追加された句読点と大文字化が含まれます。
+:::row-end:::
 
-1.  顧客満足度に関する分析情報を得る
-2.  エージェント (通話を受けるチーム) のパフォーマンスに関する分析情報を得る
-3.  通話がネガティブな方向に向かったときの正確なポイントインタイムをつかむ
-4.  ネガティブ通話がポジティブになったときに何が良かったのか特定する
-5.  製品やサービスについて、お客様が何を気に入り、何を好まないかを特定する
+## <a name="speaker-separation-diarization"></a>話者の分離 (ダイアライゼーション)
 
-センチメントは、オーディオのセグメントが発話 (オフセット) の開始とバイト ストリームの末尾の無音検出の間の時間経過として定義されているオーディオ セグメント単位でスコア付けされます。 そのセグメント内のテキスト全体が、センチメントの計算に使用されます。 各チャネルの通話全体または音声全体の集計センチメント値は計算されません。 これらは、さらに適用するためにドメインの所有者に残されます。
+ダイアライゼーションは、音声に含まれる話者を分離するプロセスです。 ダイアライゼーションはバッチ パイプラインによってサポートされ、モノラル チャンネル レコーディングの 2 人の話者を認識できます。 この機能は、ステレオ録音では使用できません。
 
-センチメントは、語彙形式で適用されます。
+すべての文字起こし出力には `SpeakerId` が含まれます。 ダイアライゼーションが使用されていない場合、JSON 出力では `"SpeakerId": null` が示されます。 ダイアライゼーションでは 2 つの音声がサポートされるため、話者は `"1"` または `"2"` として識別されます。
+
+ダイアライゼーションを要求するには、次に示すように、HTTP 要求に関連するパラメーターを追加する必要があります。
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+単語レベルのタイムスタンプも、上の要求に示されているように、パラメーターとして "有効にする" 必要があります。
+
+## <a name="sentiment-analysis"></a>センチメント分析
+
+センチメント機能によって、オーディオで表現されたセンチメント (感情) が推測されます。 センチメントは、`Negative`、`Neutral`、および `Positive` センチメントについて、0 から 1 の値で表されます。 たとえば、感情分析は、コール センターのシナリオで使用できます。
+
+- 顧客満足度に関する分析情報を得る
+- エージェント (通話を受けるチーム) のパフォーマンスに関する分析情報を得る
+- 通話がネガティブな方向に向かったときの正確なポイントインタイムを見つける
+- ネガティブ通話がポジティブな方向に向かったときに何が良かったのか特定する
+- 製品やサービスについて、お客様が何を気に入り、何を好まないかを特定する
+
+センチメントは、語彙形式に基づいてオーディオ セグメントごとにスコア付けされます。 そのオーディオ セグメント内のテキスト全体が、センチメントの計算に使用されます。 文字起こし全体に対して集計センチメントは計算されません。 感情分析は、現在英語でのみ使用できます。
+
+> [!NOTE]
+> その代わり、Microsoft Text Analytics API を使用することをお勧めします。 キー フレーズの抽出、自動言語検出などのセンチメント分析以外の高度な機能が用意されています。 情報とサンプルについては、「[Text Analytics のドキュメント](https://azure.microsoft.com/services/cognitive-services/text-analytics/)」を参照してください。
+>
 
 JSON の出力サンプルは、次のようになります。
 
@@ -149,13 +329,16 @@ JSON の出力サンプルは、次のようになります。
   ]
 }
 ```
-機能では、現在ベータ版のセンチメント モデルが使用されます。
+
+## <a name="best-practices"></a>ベスト プラクティス
+
+文字起こしサービスは、送信された多数の文字起こしを処理できます。 [文字起こしメソッド](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions) の `GET` を使用して、文字起こしの状態を照会できます。 `take` パラメーター (数百) を指定することで、返される情報を妥当なサイズに保つようにします。 結果を取得した後、サービスから定期的に[文字起こしを削除](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)してください。 これにより、文字起こし管理の呼び出しからの迅速な応答が保証されます。
 
 ## <a name="sample-code"></a>サンプル コード
 
 完全なサンプルは、[GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の `samples/batch` サブディレクトリにあります。
 
-自分のサブスクリプション情報、サービス リージョン、文字起こしするオーディオ ファイルをポイントする SAS URI、カスタムの音響モデルまたは言語モデルを使用する場合のモデル ID で、サンプル コードをカスタマイズする必要があります。 
+自分のサブスクリプション情報、サービス リージョン、文字起こしするオーディオ ファイルをポイントする SAS URI、カスタムの音響モデルまたは言語モデルを使用する場合のモデル ID で、サンプル コードをカスタマイズする必要があります。
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
@@ -176,9 +359,6 @@ JSON の出力サンプルは、次のようになります。
 
 サンプルについては、[GitHub のサンプル リポジトリ](https://aka.ms/csspeech/samples)の `samples/batch` ディレクトリをご覧ください。
 
-> [!NOTE]
-> バッチ文字起こしジョブはベスト エフォートでスケジュール設定され、ジョブが実行中状態になるときの推定時刻はありません。 いったん実行中状態になると、実際の文字起こしはリアルタイムのオーディオより速く処理されます。
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
-
-* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)

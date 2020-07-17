@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 09/24/2018
+ms.topic: conceptual
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799239"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77911738"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -58,14 +58,14 @@ Data Box に対する入出力データは、次の機能によって保護さ�
 
 - 保存データの AES 256 ビット暗号化。
 - 輸送中データのための暗号化プロトコルを使用できます。
-- Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データの消去は、NIST 800-88r1 標準に準拠しています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
+- Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データ消去は、[NIST 800-88r1 標準の ATA ハード ディスク ドライブに関する付録 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) のガイドラインに従っています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
 
 ### <a name="data-box-service-protection"></a>Data Box サービスの保護
 
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box サービスにアクセスするには、Data Box を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
 - Data Box の注文へのアクセスは、ロールベースのアクセス制御 (RBAC) ロールを使用して制御できます。 詳細については、[Data Box の注文のアクセス制御の設定](data-box-logs.md#set-up-access-control-on-the-order)に関する記事を参照してください
 - Data Box サービスでは、サービスでデバイスのロックを解除するために使用されるロック解除パスワードを保存します。
 - Data Box サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。
@@ -84,7 +84,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
   - 番地
   - City
   - 郵便番号
-  - 状態
+  - State
   - 国/地方/地域
   - 運送業者のアカウント番号
   - 配送追跡番号
@@ -93,7 +93,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[Security Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
 ## <a name="security-guidelines-reference"></a>セキュリティ ガイドラインのリファレンス
@@ -106,9 +106,9 @@ Data Box では、次のセキュリティ ガイドラインが実装されて�
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 劣悪な輸送条件に対する耐久性のため          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全なファームウェア更新のため         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | データ保護のため         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | データのサニタイズのため         |
+|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) の ATA ハード ディスク ドライブに関する付録 A      | データのサニタイズのため         |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box の要件](data-box-system-requirements.md)を確認する。
 - [Data Box の制限事項](data-box-limits.md)を理解する。

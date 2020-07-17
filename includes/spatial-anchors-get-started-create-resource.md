@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
 ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632873"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67135018"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Spatial Anchors リソースを作成する
 
 <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>にアクセスします。
 
-Azure portal の左側のナビゲーション ウィンドウで、**[リソースの作成]** を選択します。
+Azure portal の左側のナビゲーション ウィンドウで、 **[リソースの作成]** を選択します。
 
 検索ボックスを使用して、「**Spatial Anchors**」を検索します。
 
@@ -27,7 +27,7 @@ Azure portal の左側のナビゲーション ウィンドウで、**[リソー
 
 - 通常の英数字を使用して、一意のリソース名を入力します。
 - リソースをアタッチするサブスクリプションを選択します。
-- **[新規作成]** を選択して、リソース グループを作成します。 「**myResourceGroup**」と名前を付け、**[OK]** を選択します。
+- **[新規作成]** を選択して、リソース グループを作成します。 「**myResourceGroup**」と名前を付け、 **[OK]** を選択します。
       [!INCLUDE [resource group intro text](resource-group.md)]
 - リソースを配置する場所 (リージョン) を選択します。
 - **[新規]** を選択して、リソースの作成を開始します。

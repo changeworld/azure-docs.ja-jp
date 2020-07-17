@@ -1,24 +1,17 @@
 ---
 title: Log Analytics のスマート分析の例 | Microsoft Docs
 description: Log Analytics のスマート分析機能を使用してユーザー アクティビティの分析を実行する例。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/15/2019
 ms.author: bwren
-ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 01/15/2019
+ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355212"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77659834"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics のスマート分析の例
 この記事では、Log Analytics のスマート分析機能を使用してユーザー アクティビティの分析を実行する例を紹介しています。 これらの例を利用して、Application Insights によって監視されているお客様のアプリケーションを分析することができます。また、これらのクエリの概念を使用して、他のデータを同様に分析することもできます。 
@@ -219,7 +212,7 @@ traces
 | project PatternMatch = iff(RSquare2 > minRsquare and Slope>0, "Spike detected", "No Match")
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 言語の詳細については、[Data Explorer の言語リファレンス](/azure/kusto/query)に関するページを参照してください。
 - [Log Analytics でのクエリの記述](get-started-queries.md)に関するレッスンをご覧ください。

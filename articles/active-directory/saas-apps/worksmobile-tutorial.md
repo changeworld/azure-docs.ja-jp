@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と LINE WORKS の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs'
 description: Azure Active Directory と LINE WORKS の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f0ead46bf93815644cb766c24fc9d894c2b4983
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7e1dfe10cdf80f750efbb7f08d001c7ce25fe068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905279"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086670"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-line-works"></a>チュートリアル:Azure Active Directory と LINE WORKS の統合
+# <a name="tutorial-azure-active-directory-integration-with-line-works"></a>チュートリアル: Azure Active Directory と LINE WORKS の統合
 
 このチュートリアルでは、LINE WORKS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 LINE WORKS と Azure AD の統合には、次の利点があります。

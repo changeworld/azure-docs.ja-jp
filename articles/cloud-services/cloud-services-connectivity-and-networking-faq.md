@@ -1,28 +1,28 @@
 ---
-title: Microsoft Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 | Microsoft Docs
+title: 接続とネットワークの問題
+titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services の接続とネットワークについてよくあるご質問を紹介します。
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805588"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77019402"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 (FAQ)
 
 この記事では、[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) の接続とネットワークの問題についてよくあるご質問を紹介します。 サイズについては、[Cloud Services VM サイズのページ](cloud-services-sizes-specs.md)を参照してください。
 
@@ -50,7 +50,7 @@ Azure では、分散型サービス拒否 (DDoS) 攻撃からプラットフォ
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>自分のクラウド サービス インスタンスに RDP 接続しようとすると、"このユーザー アカウントの有効期限が切れています" というメッセージを受け取ります。
 RDP の設定で構成されている有効期限の日付を無視すると、"このユーザー アカウントの有効期限が切れています" のエラー メッセージを受け取ることがあります。 ポータルから有効期限の日付を変更するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、お使いのクラウド サービスに移動して、**[リモート デスクトップ]** タブを選びます。
+1. [Azure Portal](https://portal.azure.com) にサインインし、お使いのクラウド サービスに移動して、 **[リモート デスクトップ]** タブを選びます。
 
 2. **[運用]** または **[ステージング]** のデプロイ スロットを選びます。
 
@@ -72,7 +72,7 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか。
 
-クラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックを防ぐことができます。 そのためには、次のように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定します。
+クラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックを防ぐことができます。 次に示すように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタム DNS 名 (www\.MyCloudService.com など) に設定します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -101,10 +101,10 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 
 クラウド サービスのパブリックに公開された IP アドレス (別名、VIP) が変わらないようにして、いくつかの特定のクライアントで習慣的にホワイトリストに登録できるようにするには、予約済み IP を関連付けることをお勧めします。 それ以外の場合、Azure によって提供される仮想 IP は、デプロイを削除するとサブスクリプションから割り当て解除されます。 VIP スワップ操作を成功させるには、運用スロットとステージング スロットの両方について個々の予約済み IP が必要です。 これがないと、スワップ操作は失敗します。 IP アドレスを予約してクラウド サービスに関連付けるには、次の記事を参照してください。
 
-- [既存のクラウド サービスの IP アドレスを予約する](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [既存のクラウド サービスの IP アドレスを予約する](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。また、お使いの Azure データセンターの IP 範囲をホワイトリストに登録することができます。[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。
+お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。 また、お使いの Azure データセンターの IP 範囲を許可リストに登録することができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。
 
 このファイルには、Azure データセンターで使用される IP アドレス範囲 (計算、SQL、およびストレージの範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 Azure ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに気付くかもしれません。
 

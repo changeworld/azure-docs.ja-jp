@@ -1,26 +1,20 @@
 ---
-title: Azure VM スケール セット VM のインスタンス ID を理解する | Microsoft Docs
-description: Azure VM スケール セット VM のインスタンス ID を理解する
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+title: Azure VM スケール セット VM のインスタンス ID を理解する
+description: Azure VM スケール セットの仮想マシンのインスタンス ID と、そのさまざまな使用方法について説明します。
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 02/22/2018
-ms.author: manayar
-ms.openlocfilehash: 6aeba722a0661979664f8d61efdb9b2bf47ad801
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 6ffc92fe8d17970e1408262387140331189d6e51
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981657"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200123"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
@@ -47,8 +41,11 @@ CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (詳し
 
 出力の正確な表示はコマンドに指定したオプションによって異なりますが、CLI からのサンプル出力を次に示します。
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -77,7 +74,7 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 スケール セット VM 内から[インスタンス メタデータ](../virtual-machines/windows/instance-metadata-service.md)を問い合わせると、出力に "name" が含まれます。
 
-```
+```output
 {
   "compute": {
     "location": "westus",

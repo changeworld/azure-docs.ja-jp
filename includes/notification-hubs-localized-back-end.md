@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 04/02/2018
-ms.author: spelluru
+ms.date: 11/07/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: c15d695e072e72c6e7be6dcf49f3ea049a9b70b7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152406"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74260793"
 ---
 テンプレート通知を送信する場合、必要なことは一連のプロパティを提供することだけです。 このシナリオでは、一連プロパティには現在のニュースのローカライズされたバージョンが格納されます。
 
@@ -33,9 +33,11 @@ ms.locfileid: "66152406"
 private static async void SendTemplateNotificationAsync()
 {
     // Define the notification hub.
-    NotificationHubClient hub = 
-        NotificationHubClient.CreateClientFromConnectionString(
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(
             "<connection string with full access>", "<hub name>");
+
+    // Apple requires the apns-push-type header for all requests
+    var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
 
     // Sending the notification as a template notification. All template registrations that contain 
     // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 

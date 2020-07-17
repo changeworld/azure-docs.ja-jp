@@ -1,0 +1,69 @@
+### YamlMime:Landing
+title: Azure Queue storage のドキュメント
+summary: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
+metadata:
+  title: Azure Queue storage のドキュメント
+  description: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 871447957b905157625ab487269b9ce1ca105935
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "75457289"
+landingContent:
+- title: Azure キューについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure キューとは
+      url: storage-queues-introduction.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal でキューを作成してメッセージを追加する
+      url: storage-quickstart-queues-portal.md
+- title: キューを使用した開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET 用 Azure Queue storage
+      url: storage-quickstart-queues-dotnet.md
+    - text: Java 用 Azure Queue storage
+      url: storage-quickstart-queues-java.md
+    - text: Python 用 Azure Queue storage
+      url: storage-quickstart-queues-python.md
+    - text: JavaScript 用 Azure Queue storage
+      url: storage-quickstart-queues-nodejs.md
+  - linkListType: how-to-guide
+    links:
+    - text: .NET を使用して Azure Queue Storage を使用する
+      url: storage-dotnet-how-to-use-queues.md
+    - text: Java から Queue ストレージを使用する方法
+      url: storage-java-how-to-use-queue-storage.md
+    - text: Node.js から Queue ストレージを使用する方法
+      url: storage-nodejs-how-to-use-queues.md
+    - text: C++ から Queue ストレージを使用する方法
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: Python から Queue ストレージを使用する方法
+      url: storage-python-how-to-use-queue-storage.md
+- title: キューの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure PowerShell を使用し、Azure Queue Storage を操作する
+      url: storage-powershell-how-to-use-queues.md
+- title: チュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure ストレージ キューの操作 (.NET)
+      url: storage-tutorial-queues.md

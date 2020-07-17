@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor の Wire Data ソリューション | Microsoft Docs
 description: ワイヤー データは、Log Analytics エージェントを使用してコンピューターのネットワークとパフォーマンスのデータを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 10/03/2018
-ms.author: magoedte
-ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882074"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670646"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -60,10 +53,10 @@ Log Analytics エージェントに加えて、ワイヤ データ ソリュー�
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
-| Windows エージェント | はい | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)」を参照してください。 |
-| Linux エージェント | はい | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Azure Monitor への直接接続が必要です。 |
-| Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
+| Windows エージェント | はい | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](../platform/agent-windows.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](vminsights-enable-overview.md#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | はい | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](../learn/quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](vminsights-enable-overview.md#supported-operating-systems)」を参照してください。 |
+| System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Azure Monitor への直接接続が必要です。 |
+| Azure ストレージ アカウント | いいえ | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Windows では、データの収集と送信のために System Center Operations Manager と Azure Monitor の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Azure Monitor では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Azure Monitor、またはその両方にレポートできます。
 
@@ -89,7 +82,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ### <a name="operating-systems"></a>オペレーティング システム
 
-次のセクションでは、Dependency Agent でサポートされているオペレーティング システムを一覧します。 ワイヤ データでは、すべてのオペレーティング システムで 32 ビット アーキテクチャがサポートされていません。
+次のセクションでは、Dependency Agent でサポートされているオペレーティング システムを示します。 ワイヤ データでは、すべてのオペレーティング システムで 32 ビット アーキテクチャがサポートされていません。
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -160,7 +153,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ### <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 
-| ファイル | OS | バージョン | SHA-256 |
+| ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -187,7 +180,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
 1. [環境でホストされている Windows コンピューターからのデータの収集](../../azure-monitor/platform/agent-windows.md)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
-2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
+2. 前のセクションのリンクを使用して Windows の Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
 4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。
 
@@ -202,7 +195,7 @@ InstallDependencyAgent-Windows.exe /?
 | <code>/?</code> | コマンド ライン オプションの一覧を取得します。 |
 | <code>/S</code> | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
 
-Windows Dependency Agent のファイルは、既定で C:\Program Files\Microsoft Dependency Agent に配置されます。
+Windows の Dependency Agent のファイルは、既定で C:\Program Files\Microsoft Dependency agent に配置されます。
 
 ### <a name="install-the-dependency-agent-on-linux"></a>Linux に Dependency Agent をインストールする
 
@@ -230,7 +223,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| **ファイル** | **場所** |
+| **[ファイル]** | **場所** |
 | --- | --- |
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |
@@ -240,7 +233,7 @@ Dependency Agent のファイルは、次のディレクトリに保存されま
 
 ### <a name="installation-script-examples"></a>インストール スクリプトの例
 
-Dependency Agent を同時に多数のサーバーに対して簡単にデプロイするには、スクリプトの使用が便利です。 次のスクリプトの例を使用すると、Dependency Agent をダウンロードして Windows または Linux にインストールできます。
+Dependency Agent を同時に多数のサーバーに対して簡単にデプロイするには、スクリプトを使用すると便利です。 次のスクリプトの例を使用すると、Dependency Agent をダウンロードして Windows または Linux にインストールできます。
 
 #### <a name="powershell-script-for-windows"></a>Windows 用 PowerShell スクリプト
 
@@ -262,7 +255,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>Desired State Configuration
+### <a name="desired-state-configuration"></a>必要な状態の構成
 
 Desired State Configuration 経由で Dependency Agent をデプロイするには、次のように xPSDesiredStateConfiguration モジュールと簡単なコードを使用できます。
 
@@ -277,7 +270,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -356,7 +349,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="using-the-wire-data-20-solution"></a>Wire Data 2.0 ソリューションの使用
 
-Azure Portal の Log Analytics ワークスペースの **[概要]** ページで、**[Wire Data 2.0]** タイルをクリックし、Wire Data ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
+Azure Portal の Log Analytics ワークスペースの **[概要]** ページで、 **[Wire Data 2.0]** タイルをクリックし、Wire Data ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
 
 | **ブレード** | **説明** |
 | --- | --- |
@@ -370,7 +363,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 ![ログ検索例](./media/wire-data/log-search-example01.png)
 
-同様に、**[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは、多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
+同様に、 **[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは、多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
 
 ![ログ検索例](./media/wire-data/log-search-example02.png)
 
@@ -399,8 +392,8 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | IPVersion | IP バージョン |
 | Direction | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
-| Severity | 疑いのあるマルウェアの重大度 |
-| RemoteIPCountry | リモート IP アドレスの国 |
+| 重大度 | 疑いのあるマルウェアの重大度 |
+| RemoteIPCountry | リモート IP アドレスの国や地域 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |
 | SessionStartTime | セッションの開始時刻 |
@@ -418,7 +411,6 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | RemoteIPLongitude | IP の経度の値 |
 | RemoteIPLatitude | IP の緯度の値 |
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログを検索](../../azure-monitor/log-query/log-query-overview.md) して、詳細なワイヤ データ検索レコードを確認します。

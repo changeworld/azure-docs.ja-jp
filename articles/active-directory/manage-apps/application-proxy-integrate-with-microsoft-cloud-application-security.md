@@ -1,5 +1,5 @@
 ---
-title: オンプレミスのアプリを Cloud App Security と統合する - Azure Active Directory | Microsoft Docs
+title: オンプレミスのアプリを Cloud App Security と統合する - Azure AD
 description: オンプレミス アプリケーションを Microsoft Cloud App Security (MCAS) と連携するように Azure Active Directory で構成します。 MCAS のアプリの条件付きアクセス制御を使用して、条件付きアクセス ポリシーに基づいてセッションをリアルタイムで監視および制御します。 これらのポリシーは、Azure Active Directory (Azure AD) でアプリケーション プロキシが使用されているオンプレミス アプリケーションに適用できます。
 author: msmimart
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.date: 12/19/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c614d636e572eb261ec28c55ac49fec0e2b58b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783605"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74275504"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する
 Microsoft Cloud App Security (MCAS) を使用してリアルタイムで監視を行うように、オンプレミス アプリケーションを Azure Active Directory (Azure AD) で構成します。 MCAS では、条件付きアクセス ポリシーに基づいたリアルタイムでのセッションの監視と制御に、アプリの条件付きアクセス制御が使用されます。 これらのポリシーは、Azure Active Directory (Azure AD) でアプリケーション プロキシが使用されているオンプレミス アプリケーションに適用できます。
@@ -32,25 +32,25 @@ MCAS を使用して作成できるポリシーの種類の例をいくつか次
 
 ## <a name="requirements"></a>必要条件
 
-ライセンス: 
+ライセンス:
 
 - EMS E5 ライセンス、または 
 - Azure Active Directory Premium P1 および MCAS スタンドアロン。
 
-オンプレミスのアプリケーション: 
+オンプレミスのアプリケーション:
 
 - オンプレミスのアプリケーションでは、Kerberos 制約付き委任 (KCD) を使用する必要があります
 
-アプリケーション プロキシの構成: 
+アプリケーション プロキシの構成:
 
 - ご自身の環境の準備、アプリケーション プロキシ コネクタのインストールなど、アプリケーション プロキシを使用するように Azure AD を構成します。 チュートリアルについては、[Azure AD のアプリケーション プロキシを介してリモート アクセスするためのオンプレミス アプリケーションの追加](application-proxy-add-on-premises-application.md)に関するページをご覧ください。 
 
 ## <a name="add-on-premises-application-to-azure-ad"></a>オンプレミスのアプリケーションを Azure AD に追加する
 
-オンプレミスのアプリケーションを Azure AD に追加します。 クイック スタートについては、「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。 アプリケーションを追加するときは、**[Add your on-premises application]\(オンプレミス アプリケーションを追加\)** ブレードで必ず次の 2 つを設定してください。
+オンプレミスのアプリケーションを Azure AD に追加します。 クイック スタートについては、「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。 アプリケーションを追加するときは、 **[Add your on-premises application]\(オンプレミス アプリケーションを追加\)** ブレードで必ず次の 2 つを設定してください。
 
 - **事前認証**: **Azure Active Directory** を入力します。
-- **アプリケーション本文の URL を変換する**:**[はい]** を選択します。
+- **アプリケーション本文の URL を変換する**: **[はい]** を選択します。
 
 これらの 2 つの設定は、アプリケーションで MCAS を使用するために必要です。
 

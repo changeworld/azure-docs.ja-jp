@@ -1,61 +1,86 @@
 ---
-title: Azure Time Series Insights プレビューでタイム シリーズ ID を選択する場合のベスト プラクティス | Microsoft Docs
-description: Azure Time Series Insights プレビューでタイム シリーズ ID を選択するときのベスト プラクティスについて説明します。
-author: ashannon7
-ms.author: anshan
-ms.workload: big-data
+title: 時系列 ID の選択のベスト プラクティス - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights プレビューで時系列 ID を選択する場合のベスト プラクティスについて説明します。
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81877ad23728ad76cb5d4dc5084990511257c6df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695067"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838724"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
-この記事では、Azure Time Series Insights プレビューのパーティション キー、タイム シリーズ ID、および ID を選択するときのベスト プラクティスについて説明します。
+この記事では、Azure Time Series Insights プレビュー環境での時系列 ID の重要性と、それを選択するためのベスト プラクティスをまとめています。
 
 ## <a name="choose-a-time-series-id"></a>タイム シリーズ ID の選択
 
-タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 設計時に行う必要のある重要な決定です。 別のタイム シリーズ ID を使うように既存の Time Series Insights プレビュー環境を更新することはできません。 つまり、タイム シリーズ ID を使用して環境を作成すると、ポリシーは変更できない不変プロパティになります。
+適切な時系列 ID を選択することが重要です。 タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 これは、Time Series Insights プレビュー環境を作成するときに必要です。 
 
 > [!IMPORTANT]
-> タイム シリーズ ID は大文字と小文字が区別され、不変です (設定した後では変更できません)。
+> 時系列 ID：
+>
+> * *大文字と小文字を区別する* プロパティ： 大文字と小文字の区別は、検索、比較、更新、およびパーティション化で使用されます。
+> * *変更できません* プロパティ： 一度作成した後は変更できません。
 
-これを念頭に置いて、適切なタイム シリーズ ID を選択することが重要です。 タイム シリーズ ID を選択するときは、以下のベスト プラクティスに従ってください。
-* 値が多岐にわたっていて、なおかつ均等なアクセス パターンを持ったプロパティ名を選択します。 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーにすることをお勧めします。 多くの場合、これは JSON での DeviceID や SensorID のようなものになります。
+> [!TIP]
+> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id*** になる可能性があります。
+
+従うべき主なベストプラクティスは、次のとおりです：
+
+* 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
 * タイム シリーズ ID は、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)のリーフ ノード レベルで一意である必要があります。
-* タイム シリーズ ID プロパティの名前の文字列は最大 128 文字まで、タイム シリーズ ID プロパティの値は最大 1024 文字まで使用できます。
-* 一意のタイム シリーズ ID プロパティの値が一部不足している場合、それらの値は null 値として扱われます。これは一意性制約に含まれているためです。
-
-さらに、タイム シリーズ ID として最大 *3* 個のキー プロパティを選択できます。
-
+* 時系列 ID のプロパティ名文字列の文字制限は、128 です。 時系列 ID のプロパティ値の場合、文字数の制限は 1024 です。
+* 時系列 ID の一意のプロパティ値がない場合は、null 値として扱われ、一意性制約と同じルールに従います。
+* 時系列 ID として最大 *3* 個のキー プロパティも選択できます。 これらの組み合わせは、時系列 ID を表す複合キーになります。  
   > [!NOTE]
-  > *3* 個のキー プロパティは文字列である必要があります。
+  > 3 個のキー プロパティは文字列である必要があります。
+  > 一度に 1 つのプロパティではなく、この複合キーに対してクエリを実行する必要があります。
 
-次のシナリオでは、タイム シリーズ ID として複数のキー プロパティを選択する場合について説明します。  
+## <a name="select-more-than-one-key-property"></a>複数のキープロパティを選択する
 
-### <a name="scenario-1"></a>シナリオ 1
+次のシナリオでは、時系列 ID として複数のキー プロパティを選択する場合について説明します。  
 
-* それぞれが一意のキーを持つ資産の従来のフリートがあります。 
-* たとえば、1 つのフリートはプロパティ *deviceId* によって一意に識別され、別のフリートの一意プロパティは *objectId* です。 どのフリートにも、他のフリートの一意プロパティは含まれません。 この例では、一意キーとして 2 つのキー deviceId と objectId を選択します。 
-* null 値が受け付けられ、イベント ペイロードにプロパティが存在しない場合は `null` 値としてカウントされます。 またこれは、2 つの異なるイベント ソースにデータを送信し、各イベント ソースのデータが一意のタイム シリーズ ID を持っている場合の処理にも適した方法です。
+### <a name="example-1-time-series-id-with-a-unique-key"></a>例 1:一意のキーを持つ時系列 ID
 
-### <a name="scenario-2"></a>シナリオ 2
+* 従来の保有機材の資産があります。 それぞれには一意のキーがあります。
+* 1 つの車両は、プロパティ **deviceId** によって一意に識別されます。 別の車両では、一意のプロパティは **objectId** です。 どの車両にも、他の車両の一意プロパティは含まれません。 この例では、一意キーとして 2 つのキー **deviceId** と **objectId** を選択します。
+* null 値が受け付けられ、イベント ペイロードにプロパティが存在しない場合は null 値としてカウントされます。 またこれは、2 つのイベント ソースにデータを送信し、各イベント ソースのデータが一意の時系列 ID を持っている場合の処理にも適した方法です。
 
-* 資産の同じフリート内で複数のプロパティが一意である必要があります。 
-* たとえばスマート ビルディングの製造元で、すべての部屋にセンサーを設置するものとします。 通常、各部屋の *sensorId* の値は同じです (*sensor1*、*sensor2*、*sensor3* など)。
-* さらに、プロパティ *flrRm* ではサイト間でフロアと部屋の番号が重複しています (*1a*、*2b*、*3a* など)。
-* 最後に、プロパティ *location* には、*Redmond*、*Barcelona*、*Tokyo* などの値が含まれます。 一意性を作成するには、タイム シリーズ ID のキーとして 3 つのプロパティ *sensorId*、*flrRm*、*location* を指定します。
+### <a name="example-2-time-series-id-with-a-composite-key"></a>例 2:複合キーを持つ時系列 ID
 
-## <a name="next-steps"></a>次の手順
+* 資産の同じフリート内で複数のプロパティが一意である必要があります。
+* あなたはスマート ビルディングのメーカーで、すべての部屋にセンサーをデプロイしています。 通常、各部屋の **sensorId** の値は同じです。 例として、**sensor1**、**sensor2**、および **sensor3** となります。
+* 建物には、プロパティ **flrRm** のサイト間で、重複しているフロア番号と部屋番号があります。 これらの数値には、**1a**、**2b**、**3a** などの値があります。
+* プロパティ **location** には、**Redmond**、**Barcelona**、**Tokyo** などの値が含まれています。 一意性を作成するには、時系列 ID のキーとして、3 つのプロパティ **sensorId**、**flrRm**、**location** を指定します。
+
+未加工イベントの例:
+
+```JSON
+{
+  "sensorId": "sensor1",
+  "flrRm": "1a",
+  "location": "Redmond",
+  "temperature": 78
+}
+```
+
+Azure portal では、次のようにして、複合キーを入力できます：
+
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
+
+## <a name="next-steps"></a>次のステップ
 
 * [データ モデリング](./time-series-insights-update-tsm.md)の詳細を確認します。
 
-* [Azure Time Series Insights (プレビュー) の環境](./time-series-insights-update-plan.md)を計画します。
+* [Azure Time Series Insights プレビューの環境](./time-series-insights-update-plan.md)を計画します。

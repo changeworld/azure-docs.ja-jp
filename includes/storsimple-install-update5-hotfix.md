@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171186"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181372"
 ---
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
 
@@ -20,7 +20,7 @@ ms.locfileid: "66171186"
 
     ![カタログのインストール](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**4037264** など) を入力して、**[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**4037264** など) を入力して、 **[検索]** をクリックします。
    
     "**Cumulative Software Bundle Update 5.0 for StorSimple 8000 Series**" のような修正プログラムの一覧が表示されます。
    
@@ -93,7 +93,7 @@ ms.locfileid: "66171186"
     > [!NOTE]
     > 場合によっては、更新がまだ進行中であっても、コマンドレットは `False` とレポートします。 修正プログラムが完了したことを確認するには、数分待ってから、このコマンドを再実行し、`RunInProgress` が `False` になっていることを確認します。 False の場合、修正プログラムは完了しています。
 
-7. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 型: 
+7. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 型:
    
     `Get-HcsSystem`
    
@@ -175,7 +175,7 @@ KB4037263 を使用して、ディスク ファームウェアの更新プログ
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. `Get-HcsUpdateStatus` コマンドを使用して、インストールの進行状況を監視します。 更新が完了すると、`RunInProgress` が `False` に変わります。
-4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 型: 
+4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 型:
    
    `Get-HcsFirmwareVersion`
    

@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションでのシミュレートされたデバイスの動作 - Azure | Microsoft Docs
+title: リモート監視ソリューションでのシミュレートされたデバイス - Azure | Microsoft Docs
 description: この記事では、JavaScript を使用して、リモート監視ソリューションでのシミュレートされたデバイスの動作を定義する方法について説明します。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823416"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73890861"
 ---
 # <a name="implement-the-device-model-behavior"></a>デバイス モデルの動作の実装
 
@@ -256,7 +256,7 @@ function main(context, previousState, previousProperties) {
 
 GitHub 上の[ローカルでのサービスの実行](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks)に関する記事では、デバイス シミュレーション サービスをローカルで実行する方法を示しています。 サービスをローカルで実行すると、シミュレートされたデバイスをクラウドにデプロイする前に簡単にデバッグすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、独自のシミュレートされたカスタム デバイス モデルの動作を定義する方法について説明しました。 この記事では、次の方法について説明しました。
 

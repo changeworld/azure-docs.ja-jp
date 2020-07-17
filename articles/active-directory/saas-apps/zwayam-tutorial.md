@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zwayam の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zwayam の統合 | Microsoft Docs'
 description: Azure Active Directory と Zwayam の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 3d2c046fe5250ed2df275b94792caa45aa56d672
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c36749c40f3ce2e1d5478b3d9ab5eb2637a3c63b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65895759"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67085618"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>チュートリアル:Azure Active Directory と Zwayam の統合
+# <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>チュートリアル: Azure Active Directory と Zwayam の統合
 
 このチュートリアルでは、Zwayam と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zwayam と Azure AD の統合には、次の利点があります。

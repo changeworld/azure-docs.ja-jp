@@ -1,26 +1,25 @@
 ---
-title: 静的なグループ メンバーシップの種類を動的に変更する - Azure Active Directory | Microsoft Docs
+title: 静的なグループ メンバーシップを動的に変更する - Azure AD | Microsoft Docs
 description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: aff304b0866092badc515df7201fb4873acc298e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199603"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582923"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory で静的なグループメンバーシップを動的に変更する
 
@@ -33,7 +32,7 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
 
 ## <a name="change-the-membership-type-for-a-group"></a>グループのメンバーシップの種類を変更する
 
-1. グローバル管理者またはテナントのユーザー管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. グローバル管理者または Azure AD 組織のユーザー管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 2. **[グループ]** を選びます。
 3. **[すべてのグループ]** の一覧から、変更するグループを開きます。
 4. **[プロパティ]** を選択します。
@@ -41,7 +40,7 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
 
 次の手順は、ユーザーのグループを静的メンバーシップから動的メンバーシップに変更する例です。
 
-1. 選択したグループの **[プロパティ]** ページで、**[動的ユーザー]** の **[メンバーシップの種類]** を選び、グループ メンバーシップの変更について説明するダイアログ ボックスで [はい] を選んで続行します。 
+1. 選択したグループの **[プロパティ]** ページで、 **[動的ユーザー]** の **[メンバーシップの種類]** を選び、グループ メンバーシップの変更について説明するダイアログ ボックスで [はい] を選んで続行します。 
   
    ![動的ユーザーのメンバーシップの種類を選ぶ](./media/groups-change-type/select-group-to-convert.png)
   
@@ -116,7 +115,7 @@ ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
 

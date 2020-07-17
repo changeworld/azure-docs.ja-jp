@@ -1,21 +1,21 @@
 ---
-title: ロールベースのアクセス制御 (RBAC) を使用した Azure Site Recovery のアクセス管理 | Microsoft Docs
+title: Azure Site Recovery での Azure のロールベースのアクセス制御の管理
 description: この記事では、ロールベースのアクセス制御 (RBAC) を適用して、Azure Site Recovery のアクセスを管理する方法について説明します。
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229039"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用して Site Recovery のアクセスを管理する
 
-Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
+Azure のロールベースのアクセス制御 (RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
 
 Azure Site Recovery には、Site Recovery の管理操作を制御するための組み込みロールが 3 つ用意されています。 [Azure RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)について説明します。
 
@@ -38,7 +38,10 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 > [!IMPORTANT]
 >リソースのデプロイに使用されるデプロイメント モデル (Resource Manager/ Classic) ごとに関連するアクセス許可が追加されていることを確認します。
 
-| **リソースの種類** | **デプロイメント モデル** | **アクセス許可** |
+> [!NOTE]
+> Azure VM のレプリケーションを有効にして、Site Recovery で更新プログラムを管理できるようにする場合は、レプリケーションを有効にしながら、新しい Automation アカウントを作成することもできます。その場合、 コンテナーと同じサブスクリプションに Automation アカウントを作成するためのアクセス許可も必要です。
+
+| **リソースの種類** | **デプロイメント モデル** | **権限** |
 | --- | --- | --- |
 | Compute | リソース マネージャー | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -59,7 +62,7 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | クラシック | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Storage | リソース マネージャー | Microsoft.Storage/storageAccounts/read |
+| ストレージ | リソース マネージャー | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | クラシック | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
@@ -68,10 +71,10 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 
 Resource Manager デプロイ モデルとクラシック デプロイ モデルそれぞれに、'仮想マシン共同作業者' と '従来の仮想マシン共同作業者' の[組み込みのロール](../role-based-access-control/built-in-roles.md)を使用することを検討してください。
 
-## <a name="next-steps"></a>次の手順
-* [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md):Azure portal での RBAC の基本について説明します。
+## <a name="next-steps"></a>次のステップ
+* [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure Portal での RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [ロールベースのアクセス制御のトラブルシューティング](../role-based-access-control/troubleshooting.md):一般的な問題の修正に関する推奨事項を紹介します。
+* [ロールベースのアクセス制御のトラブルシューティング](../role-based-access-control/troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。

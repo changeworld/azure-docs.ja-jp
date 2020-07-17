@@ -1,11 +1,10 @@
 ---
-title: Azure CLI のサンプル スクリプト - VHD を使用した VM の作成 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - VHD を使用した VM の作成
 description: Azure CLI のサンプル スクリプト - 仮想ハード ディスクを使用して VM を作成します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
-editor: tysonn
+author: cynthn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/09/2017
-ms.author: allclark
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 331bf57c415922a6686ba733b5fbcee24699a152
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c7260730ccf94e909238c116cb77572463550ed9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118260"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81458558"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>仮想ハード ディスクを使用した VM の作成
 
@@ -64,7 +63,7 @@ az group delete -n az-cli-vhd
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 仮想マシンを作成します。 |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | 作成した VM の IP アドレスを取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

@@ -1,6 +1,7 @@
 ---
-title: 'S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする: Azure Resource Manager | Microsoft Docs'
+title: S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 description: この記事では、Azure Resource Manager を使って Azure VPN ゲートウェイで S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする手順を説明します。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157646"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77162138"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 
@@ -25,7 +26,7 @@ ms.locfileid: "66157646"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>VPN デバイス構成スクリプトについて
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>VPN デバイス構成スクリプトについて
 
 クロスプレミスの VPN 接続は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスおよび両者を接続する IPsec S2S VPN トンネルで構成されます。 一般的なワークフローには次の手順が含まれます。
 
@@ -77,7 +78,7 @@ Azure VPN ゲートウェイ、ローカル ネットワーク ゲートウェ�
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>Azure PowerShell を使用して構成スクリプトをダウンロードする
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 次の例で示すように、Azure PowerShell を使って構成スクリプトをダウンロードすることもできます。
 
@@ -97,6 +98,6 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 構成スクリプトをダウンロードして検証した後は、お使いの VPN デバイスにスクリプトを適用します。 実際の手順は、お使いの VPN デバイスの製造元とモデルによって異なります。 お使いの VPN デバイスの操作マニュアルまたは説明ページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 引き続き[サイト間接続](vpn-gateway-howto-site-to-site-resource-manager-portal.md)を構成してください。

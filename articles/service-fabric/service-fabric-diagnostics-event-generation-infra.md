@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のプラットフォーム レベルの監視 | Microsoft Docs
+title: Azure Service Fabric のプラットフォーム レベルの監視
 description: Azure Service Fabric クラスターの監視と診断に使用するプラットフォーム レベルのイベントとログについて説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662518"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791818"
 ---
 # <a name="monitoring-the-cluster"></a>クラスターの監視
 
@@ -83,7 +74,7 @@ Azure Service Fabric クラスターに関する支援を得るために Microso
 
 ## <a name="measuring-performance"></a>パフォーマンスの測定
 
-クラスターのパフォーマンスを測定すると、クラスターが負荷をどのように処理できるのかを理解しやすくなり、クラスターのスケーリングに関する意思決定が促進されます ([Azure](service-fabric-cluster-scale-up-down.md) または[オンプレミス](service-fabric-cluster-windows-server-add-remove-nodes.md)のクラスターのスケーリングの詳細を参照してください)。 また、パフォーマンス データは、今後ログを分析したときに、開発者またはアプリケーションやサービスによって実行された可能性のあるアクションと比較する際にも役立ちます。 
+クラスターのパフォーマンスを測定すると、クラスターが負荷をどのように処理できるのかを理解しやすくなり、クラスターのスケーリングに関する意思決定が促進されます ([Azure](service-fabric-cluster-scale-in-out.md) または[オンプレミス](service-fabric-cluster-windows-server-add-remove-nodes.md)のクラスターのスケーリングの詳細を参照してください)。 また、パフォーマンス データは、今後ログを分析したときに、開発者またはアプリケーションやサービスによって実行された可能性のあるアクションと比較する際にも役立ちます。 
 
 Service Fabric の使用時に収集されるパフォーマンス カウンターの一覧については、[Service Fabric のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)に関する記事をご覧ください。
 
@@ -95,7 +86,7 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 * **Azure Table Storage に対するパフォーマンス カウンター**  
 パフォーマンス メトリックは、イベントと同じテーブル ストレージに送信することもできます。 この場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure Diagnostics の構成を変更し、コンテナーをデプロイする場合は Azure Diagnostics が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照して、クラスター診断を収集し、カスタム クエリとアラートを作成します
 * Service Fabric の組み込みの診断エクスペリエンスについては、[EventStore](service-fabric-diagnostics-eventstore.md) に関するページを参照してください

@@ -1,29 +1,23 @@
 ---
-title: Azure AD で SAML プロトコルを使用する方法 | Microsoft Docs
+title: Azure AD で SAML プロトコルを使用する方法
 description: この記事では、Azure Active Directory のシングル サインオンおよびシングル サインアウト SAML プロファイルの概要を示します。
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 88125cfc-45c1-448b-9903-a629d8f31b01
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07d07f73412e889b018c1f667a500d7625912751
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546144"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885652"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD で SAML プロトコルを使用する方法
 
@@ -33,7 +27,7 @@ SAML プロトコルで、ID プロバイダー (Azure AD) とサービス プ�
 
 アプリケーションが Azure AD に登録されると、アプリ開発者は Azure AD にフェデレーションに関する情報を登録します。 この情報には、アプリケーションの**リダイレクト URI** と**メタデータ URI** が含まれます。
 
-Azure AD では、クラウド サービスの**メタデータ URI** を使用し、署名キーとログアウト URI を取得します。 お客様は、**[Azure AD]、[アプリの登録]** の順に選択してアプリを開き、**[設定]、[プロパティ]** の順に選択してログアウト URL を更新できます。 このようにして、Azure AD から適切な URL に応答を送信できます。 
+Azure AD では、クラウド サービスの**メタデータ URI** を使用し、署名キーとログアウト URI を取得します。 お客様は、 **[Azure AD]、[アプリの登録]** の順に選択してアプリを開き、 **[設定]、[プロパティ]** の順に選択してログアウト URL を更新できます。 このようにして、Azure AD から適切な URL に応答を送信できます。 
 
 Azure Active Directory は、テナント固有および共通 (テナント独立) のシングル サインオンとシングル サインアウト エンドポイントを公開します。 これらの URL は、単なる識別子ではなくアドレス指定可能な場所を表します。したがって、ユーザーはエンドポイントに移動してメタデータを読み取ることができます。
 
@@ -41,4 +35,4 @@ Azure Active Directory は、テナント固有および共通 (テナント独�
 
 * テナント独立のエンドポイントは、`https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` にあります。 このエンドポイント アドレスの **common** は、テナントのドメイン名または ID の代わりに表示されます。
 
-Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](azure-ad-federation-metadata.md)」を参照してください。
+Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](../azuread-dev/azure-ad-federation-metadata.md)」を参照してください。

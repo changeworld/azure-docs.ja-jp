@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 3ced8c9fdadf547ec234c6d1bd5f3ddb8af7bc05
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181682"
 ---
 1. `ToDoBroadcastReceiver`という名前のプロジェクトに新しいクラスを作成します。
 2. 次の using ステートメントを **ToDoBroadcastReceiver** クラスに追加します。
@@ -66,7 +66,7 @@ ms.locfileid: "42816270"
     このクラスは **GcmServiceBase** から派生したものであり、このクラスに **Service** 属性を適用する必要があることに注意してください。
 
     > [!NOTE]
-    > **GcmServiceBase** クラスでは、**OnRegistered()**、**OnUnRegistered()**、**OnMessage()**、**OnError()** の各メソッドを実装しています。 **PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
+    > **GcmServiceBase** クラスでは、**OnRegistered()** 、**OnUnRegistered()** 、**OnMessage()** 、**OnError()** の各メソッドを実装しています。 **PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
 
 6. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **PushHandlerService** クラスに追加します。
 

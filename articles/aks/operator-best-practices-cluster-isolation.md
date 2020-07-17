@@ -1,18 +1,16 @@
 ---
-title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) でのクラスターの分離
+title: クラスター分離に関するベスト プラクティス
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) での分離に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495005"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668354"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) でのクラスターの分離に関するベスト プラクティス
 
@@ -38,13 +36,13 @@ Kubernetes では、同じクラスター内のチームとワークロードを
 
 **ベスト プラクティス ガイダンス** - 論理的な分離を使用して、チームとプロジェクトを分離します。 チームまたはアプリケーションを分離するためにデプロイする物理 AKS クラスターの数を最小限にしてみます。
 
-論理的な分離では、1 つの AKS クラスターを、複数のワークロード、チーム、環境で使用できます。 Kubernetes の[名前空間では、][k8s-namespaces]ワークロードとリソースの論理的な分離境界を形成します。
+論理的な分離では、1 つの AKS クラスターを、複数のワークロード、チーム、環境で使用できます。 Kubernetes の[名前空間][k8s-namespaces]では、ワークロードとリソースの論理的な分離境界を形成します。
 
 ![AKS での Kubernetes クラスターの論理的な分離](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 クラスターの論理的な分離では、通常、物理的に分離されたクラスターよりも高いポッド密度が提供されます。 クラスターでアイドル状態の過剰なコンピューティング容量が少なくなります。 Kubernetes クラスターの自動スケーラーを組み合わせることで、ノード数をスケール アップまたはスケール ダウンして需要を満たすことできます。 自動スケールのためのこのベスト プラクティスの方法を使用すれば、必要な数のノードのみを実行でき、コストが最小限に抑えられます。
 
-AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 ノードに対して *Pod Security Policy* やより高度なロール ベースのアクセス制御 (RBAC) などの追加のセキュリティ機能を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
+AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 マルチテナント環境では、共通の共有インフラストラクチャ上で複数のテナントが動作しています。 そのため、すべてのテナントを信頼できない場合は、1 つのテナントがもう 1 つのセキュリティとサービスに影響を与えることを防ぐために、追加の計画を立てる必要があります。 ノードに対して *Pod Security Policy* やより高度なロール ベースのアクセス制御 (RBAC) などの追加のセキュリティ機能を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
 
 ## <a name="physically-isolate-clusters"></a>クラスターを物理的に分離する
 
@@ -56,13 +54,13 @@ AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント�
 
 物理的に分離されたクラスターのポッドの密度は通常、低くなります。 各チームまたはワークロードには独自の AKS クラスターがあるため、クラスターは多くの場合、コンピューティング リソースで過剰にプロビジョニングされます。 多くの場合、ノード上には少数のポッドがスケジュールされます。 ノード上の未使用の容量は、他のチームによって開発中のアプリケーションやサービスで使用することはできません。 これらの過剰なリソースは、物理的に分離されたクラスターでの追加コストの原因となります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事ではクラスターの分離に重点を置きました。 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 
 * [Kubernetes スケジューラの基本的な機能][aks-best-practices-scheduler]
 * [Kubernetes スケジューラの高度な機能][aks-best-practices-advanced-scheduler]
-* [認証と承認][aks-best-practices-identity]
+* [認証と権限承認][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 

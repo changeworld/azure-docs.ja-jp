@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137798"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77149815"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -56,13 +56,13 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-**Q:Azure AD Connect では、2 つのドメインから Azure AD への同期がサポートされていますか。**  
+**Q:Azure AD Connect では、2 つのドメインからの Azure AD への同期はサポートしていますか。**  
 はい、このシナリオはサポートされています。 [複数のドメイン](how-to-connect-install-multiple-domains.md)に関するページを参照してください。
  
 **Q:Azure AD Connect では同じ Active Directory ドメインに対して複数のコネクタを使用できますか。**  
 いいえ、同じ AD ドメインの複数のコネクタはサポートされていません。 
 
-**Q:Azure AD Connect データベースをローカル データベースからリモート SQL Server インスタンスに移行できますか。**   
+**Q:Azure AD Connect データベースをローカル データベースからリモート SQL Server インスタンスに移行できますか。**    
 はい、次の手順では、この移行方法に関する一般的なガイダンスを提供しています。 現在、より詳細なドキュメントの作成に取り組んでいます。
 1. LocalDB ADSync データベースをバックアップします。
 この最も簡単な方法は、Azure AD Connect と同じコンピューターにインストールされている SQL Server Management Studio を使用することです。 *(LocalDb).\ADSync* に接続し、ADSync データベースをバックアップします。
@@ -113,7 +113,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 - ステージング サーバーは高可用性ソリューションになることを想定していませんが、複数のステージング サーバーを備えることができます。
 - "ラグ" ステージング サーバーを導入すれば、エラーが発生した場合の潜在的なダウンタイムを軽減することが可能です。
 - まず、ステージング サーバー上のすべてのアップグレードをテストおよび検証します。
-- ステージング サーバーに切り替える前に必ずエクスポートを検証します。完全インポートおよび完全同期用のステージング サーバーを活用して、ビジネスへの影響を軽減します。
+- ステージング サーバーに切り替える前に、必ずエクスポートを検証してください。  完全インポートおよび完全同期用のステージング サーバーを活用して、ビジネスへの影響を軽減します
 - Azure AD Connect サーバー間でのバージョンの一貫性を可能な限り保持します。 
 
 **Q:ワークグループ コンピューター上に Azure AD Connector アカウントを作成することを Azure AD Connect に許可することができますか?**
@@ -136,7 +136,7 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 いいえ。Azure AD Connect は、純粋な IPv6 環境はサポートしていません。
 
 **Q: マルチフォレスト環境を使用しており、2 つのフォレスト間のネットワークでは NAT (ネットワーク アドレス変換) を使用しています。2 つのフォレスト間で Azure AD Connect の使用はサポートされますか。**</br>
- いいえ、NAT を介した Azure AD Connect の使用はサポートされていません。 
+いいえ、NAT を介した Azure AD Connect の使用はサポートされていません。 
 
 ## <a name="federation"></a>フェデレーション
 **Q:Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  
@@ -151,6 +151,12 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 
 **Q:FIPS 対応のコンピューター上で次世代暗号化 (NGC) 同期規則はサポートされていますか?**  
 いいえ。  それらはサポートされていません。
+
+**Q.Azure portal で同期されているデバイス (たとえば HAADJ) を無効にしても、再び有効になるのはなぜですか?**<br>
+同期されているデバイスは、オンプレミスで作成または管理されている場合があります。 同期されているデバイスがオンプレミスで有効になっているときは、前に管理者によって無効になった場合でも、Azure portal で再び有効になることがあります。 同期されているデバイスを無効にするには、オンプレミスの Active Directory を使用して、コンピューター アカウントを無効にします。
+
+**Q.Office 365 または Azure AD ポータルで同期されているユーザーのサインインをブロックした場合、サインイン時に再びブロックが解除されるのはなぜですか?**<br>
+同期されているユーザーは、オンプレミスで作成または管理されている場合があります。 アカウントがオンプレミスで有効になっている場合、管理者によって実行されたサインイン ブロックは解除される可能性があります。
 
 ## <a name="identity-data"></a>ID データ
 **Q:Azure AD の userPrincipalName (UPN) 属性がオンプレミス UPN と一致しないのはなぜですか。**  
@@ -175,10 +181,10 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 いいえ。 このオプションはすべての構成設定を取得しないため、使用すべきではありません。 代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。 詳細については、「[スウィング移行](how-to-upgrade-previous-version.md#swing-migration)」を参照してください。
 
 **Q:Azure サインイン ページではパスワードがキャッシュされますか。また、パスワード入力要素の *autocomplete 属性を "false"* に設定することで、このキャッシュを防ぐことはできますか。**  
-現在、オートコンプリート タグを含め、**[パスワード]** フィールドの HTML 属性を変更することはできません。 現在、**[パスワード]** フィールドに属性を追加できるようカスタム Javascript を許可する機能の開発に取り組んでいます。
+現在、オートコンプリート タグを含め、 **[パスワード]** フィールドの HTML 属性を変更することはできません。 現在、 **[パスワード]** フィールドに属性を追加できるようカスタム Javascript を許可する機能の開発に取り組んでいます。
 
 **Q:Azure サインイン ページでは、以前正常にサインインしたユーザーのユーザー名が表示されますか。また、この動作は無効にできますか。**  
-現在、オートコンプリート タグを含め、**[パスワード]** 入力フィールドの HTML 属性を変更することはできません。 現在、**[パスワード]** フィールドに属性を追加できるようカスタム Javascript を許可する機能の開発に取り組んでいます。
+現在、オートコンプリート タグを含め、 **[パスワード]** 入力フィールドの HTML 属性を変更することはできません。 現在、 **[パスワード]** フィールドに属性を追加できるようカスタム Javascript を許可する機能の開発に取り組んでいます。
 
 **Q:同時セッションを防ぐ方法はありますか。**  
 いいえ。
@@ -212,12 +218,12 @@ PowerShell スクリプトを実行するには、[スクリプトをダウン�
 最初に Azure AD Connect をアップグレードするときに使用されたユーザー名とパスワードを知っている必要はありません。 全体管理者ロールを持つ任意の Azure AD アカウントを使用してください。
 
 **Q:現在使用している Azure AD Connect のバージョンはどうすれば確認できますか。**  
-サーバーにインストールされている Azure AD Connect のバージョンを確認するには、コントロール パネルに移動し、次のように **[プログラム]** > **[プログラムと機能]** の順に選択して、インストールされている Microsoft Azure AD Connect のバージョンを調べてください。
+サーバーにインストールされている Azure AD Connect のバージョンを確認するには、コントロール パネルに移動し、次のように **[プログラム]**  >  **[プログラムと機能]** の順に選択して、インストールされている Microsoft Azure AD Connect のバージョンを調べてください。
 
 ![コントロール パネルの Azure AD Connect のバージョン](./media/reference-connect-faq/faq1.png)
 
 **Q:最新のバージョンの Azure AD Connect にアップグレードするにはどうすればよいですか。**  
-最新バージョンにアップグレードする方法については、「[Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](how-to-upgrade-previous-version.md)」の記事を参照してください。 
+最新バージョンにアップグレードする方法については、「[Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](how-to-upgrade-previous-version.md)」を参照してください。 
 
 **Q:昨年、Azure AD Connect を最新バージョンにアップグレードしたのですが、再度アップグレードする必要はありますか。**  
 Azure AD Connect チームは、このサービスを頻繁に更新しています。 バグの修正プログラムやセキュリティ更新プログラムだけでなく、新機能を利用するには、サーバーを最新バージョンの状態に保つことが重要です。 自動アップグレードを有効にしておけば、ソフトウェアのバージョンは自動的に更新されます。 Azure AD Connect のバージョン リリース履歴を確認するには、「[Azure AD Connect:バージョンのリリース履歴](reference-connect-version-history.md)」を参照してください。
@@ -264,3 +270,7 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 * [Azure AD コミュニティ](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)にアクセスして、技術的な質問と回答を探し、質問をすることができます。
 
 [Azure AD のサポートを受ける](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**Q:同期ステップのエラーの後にイベント 6311 と 6401 が発生するのはなぜですか。**
+
+イベント 6311 - "**The server encountered an unexpected error while performing a callback (コールバックの実行中にサーバーで予期しないエラーが発生しました)** " および 6401 - "**管理エージェント コントローラーで予期しないエラーが発生しました**" は、同期ステップのエラー後に常にログに記録されます。 これらのエラーを解決するには、同期ステップのエラーをクリーンアップする必要があります。  詳細については、「[同期中のエラーのトラブルシューティング](tshoot-connect-sync-errors.md)」および「[Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング](tshoot-connect-objectsync.md)」を参照してください

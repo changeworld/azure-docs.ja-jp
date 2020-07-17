@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834491"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76168816"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>クイック スタート:Bing Web Search REST API と Node.js を使用して Web を検索する
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>要求を行う関数の作成
 
-この関数は、セキュリティで保護された GET 要求を作成し、検索クエリをパス内のクエリ パラメーターとして保存します。 `encodeURIComponent` は無効な文字をエスケープするために使用され、サブスクリプション キーはヘッダー内で渡されます。 コールバックは、JSON 本文を集約する `data` イベント、問題があればログに記録する `error` イベント、およびメッセージが完了したと見なす必要があるタイミングを知るための `end` イベントにサブスクライブしている[応答](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)を受け取ります。 完了すると、アプリは興味深いヘッダーとメッセージ本文を出力します。 希望に合わせて色の変更や深さの設定が可能で、深さを `1` にすると、応答を使いやすくまとめたものが得られます。
+この関数は、セキュリティで保護された GET 要求を作成し、検索クエリをパス内のクエリ パラメーターとして保存します。 `hostname` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。  `encodeURIComponent` は無効な文字をエスケープするために使用され、サブスクリプション キーはヘッダー内で渡されます。 コールバックは、JSON 本文を集約する `data` イベント、問題があればログに記録する `error` イベント、およびメッセージが完了したと見なす必要があるタイミングを知るための `end` イベントにサブスクライブしている[応答](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)を受け取ります。 完了すると、アプリは興味深いヘッダーとメッセージ本文を出力します。 希望に合わせて色の変更や深さの設定が可能で、深さを `1` にすると、応答を使いやすくまとめたものが得られます。
 
 ```javascript
 function bingWebSearch(query) {
@@ -162,9 +162,9 @@ Bing Web Search API からの応答は、JSON として返されます。 この
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -266,7 +266,7 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)

@@ -1,20 +1,20 @@
 ---
-title: Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
-description: この記事では、Azure CLI コマンド ラインを使って Azure Database for PostgreSQL ファイアウォール規則を作成し、管理する方法について説明します。
+title: ファイアウォール規則の管理 - Azure CLI - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure CLI コマンド ラインを使用して Azure Database for PostgreSQL - Single Server のファイアウォール規則を作成し、管理する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 9a96361d3fb155ea5b400990690e3c2b1f65f819
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790809"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74765649"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
+# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のファイアウォール規則を作成および管理する
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for PostgreSQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for PostgreSQL ファイアウォール規則の概要については、「[Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)」をご覧ください。
 
 仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure CLI を使用した仮想ネットワーク サービス エンドポイントと規則の作成と管理](howto-manage-vnet-using-cli.md)の詳細を確認してください。
@@ -78,7 +78,7 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ```
 正常に完了すると、出力はありません。 失敗した場合は、エラー メッセージ テキストが返されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 同様に、Web ブラウザー上で [Azure Portal を使用して Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-manage-firewall-using-portal.md)を行うことができます。
 - [Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)について理解を深めます。
 - [Azure CLI を使用して仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-using-cli.md)して、サーバーへのアクセスのセキュリティ保護を強化します。

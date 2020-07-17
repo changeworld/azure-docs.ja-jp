@@ -1,23 +1,14 @@
 ---
-title: Azure Advisor を使用してリソースのセキュリティを向上させる | Microsoft Docs
+title: Azure Advisor を使用してリソースのセキュリティを向上させる
 description: Azure Advisor を使用して、Azure のデプロイのセキュリティを向上させます。
-services: advisor
-documentationcenter: NA
-author: kasparks
-manager: ''
-ms.assetid: ''
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494325"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75443037"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
@@ -31,16 +22,16 @@ Security Center は、Azure リソースのセキュリティを高度に視覚�
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2.  Advisor ダッシュボードで、**[セキュリティ]** タブをクリックします。
+2.  Advisor ダッシュボードで、 **[セキュリティ]** タブをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
-* [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
+* [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
-
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)
 
  

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849842"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645873"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上の SAP MaxDB、liveCache、Content Server のデプロイ
 
@@ -78,8 +77,8 @@ ms.locfileid: "58849842"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +235,7 @@ ms.locfileid: "58849842"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +249,7 @@ ms.locfileid: "58849842"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -329,7 +328,7 @@ Microsoft Windows オペレーティング システムの最新バージョン�
 次の SAP Note [767598]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための SAP MaxDB 構成ガイドライン
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>ストレージの構成
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>ストレージの構成
 SAP MaxDB 向けの Azure Storage のベスト プラクティスについては、「[RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)」の章に記載されている一般的な推奨事項に従ってください。
 
 > [!IMPORTANT]
@@ -349,12 +348,12 @@ SAP MaxDB 向けの Azure Storage のベスト プラクティスについては
 ![SAP MaxDB DBMS 用の Azure IaaS VM の参照の構成](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>バックアップと復元
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>バックアップと復元
 Azure にSAP MaxDB をデプロイする場合、バックアップ方法を確認する必要があります。 実稼働システムでない場合でも、SAP MaxDB でホストされている SAP データベースを定期的にバックアップする必要があります。 Azure Storage には 3 つのイメージを保持するため、ストレージの障害、重大な運用上またら管理上の障害から復旧するという点ではバックアップの重要度は低くなりました。 適切なバックアップと復元の計画を維持するための主な理由は、ポイントイン タイム復旧機能を提供することにより、論理エラーや人的エラーから復旧できる可能性が高くなるためです。 したがって、目標は、特定の時点までデータベースを復元するためにバックアップを使用するか、既存のデータベースをコピーして別のシステムに配置するために Azure のバックアップを使用するかのいずれかです。 
 
 Azure でのデータベースのバックアップと復元はオンプレミスと同様に動作します。そのため、SAP Note [767598] に記載されている SAP MaxDB ドキュメントのいずれかで説明した標準の SAP MaxDB バックアップ/復元ツールを使用できます。 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>バックアップと復元のパフォーマンスに関する考慮事項
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>バックアップと復元のパフォーマンスに関する考慮事項
 ベア メタル デプロイメントと同様に、バックアップのパフォーマンスは、並列で読み取ることができるボリュームの数と、それらのボリュームのスループットに依存します。 そのため、次のことを想定できます。
 
 * データ デバイスの格納に使用されるディスクの数が少ないほど、読み取りの全体的なスループットが低下する。
@@ -371,7 +370,7 @@ Azure でのデータベースのバックアップと復元はオンプレミ�
 
 複数のマウントされたディスクにボリュームをストライピングすることについては、「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」で説明されています。 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>その他の考慮事項
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>その他の考慮事項
 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」に記載されている、Azure 可用性セットや SAP の監視などの他のすべての一般的な領域も適用されます  (SAP MaxDB データベースを使用した VM のデプロイの場合)。
 その他の SAP MaxDB に固有の設定は Azure VM に透過的であり、SAP Note [767598] とこれらの SAP Note に挙げられたドキュメントに記載されています。
 
@@ -428,7 +427,7 @@ SAP が現在サポートしているのは次のものです。
 
 最新バージョンの SAP コンテンツ サーバーと最新のバージョンの **Microsoft IIS** を使用することを強くお勧めします。 
 
-SAP コンテンツ サーバーと Microsoft IIS の最新バージョンを [SAP 製品の可用性マトリックス (PAM)][sap-pam] でご確認ください。
+サポートされている最新バージョンの SAP コンテンツ サーバーと Microsoft IIS は、[SAP 製品の可用性マトリックス (PAM)][sap-pam] でご確認ください。
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP コンテンツ サーバー向けにサポートされている Microsoft Windows のバージョンと Azure VM タイプ
 Azure での SAP コンテンツ サーバー向けにサポートされている Microsoft Windows のバージョンについては、こちらをご覧ください。
@@ -463,7 +462,7 @@ SAP キャッシュ サーバーは、(キャッシュされた) ドキュメン
 ![オンプレミス SAP キャッシュ サーバーをインストールするオプション](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
-#### <a name="backup--restore"></a>バックアップと復元
+#### <a name="backup--restore"></a>バックアップ/復元
 SAP MaxDB データベースのファイルを格納するように SAP コンテンツ サーバーを構成する場合、バックアップと復元の手順、およびパフォーマンスに関する考慮事項については、このドキュメントの SAP MaxDB の章で既に説明しています。 
 
 ファイル システムのファイルを格納するように SAP コンテンツ サーバーを構成する場合、ドキュメントが置かれているファイル構造全体の手動バックアップ/復元を実行するという選択肢があります。 SAP MaxDB のバックアップ/復元と同様に、バックアップ専用のディスク ボリュームを用意することをお勧めします。 

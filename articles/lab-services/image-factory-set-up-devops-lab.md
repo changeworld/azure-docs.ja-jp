@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs で Azure DevOps からイメージ ファクトリを実行する | Microsoft Docs
-description: Azure DevTest Labs でカスタム イメージ ファクトリを作成する方法について説明します。
+title: Azure DevTest Labs で Azure DevOps からイメージ ファクトリを実行する
+description: この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149182"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76758684"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
 この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
@@ -44,7 +44,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 代わりに使用する既存の DevOps アカウントまたはプロジェクトがある場合、この手順をスキップします。
 
-開始するには、Azure DevOps で無料アカウントを作成します。 https://www.visualstudio.com/ にアクセスし、**Azure DevOps** (以前の VSTS) の真下にある **[無償版の入手]** を選択します。 一意のアカウント名を選択し、Git を使用してコードを管理することを確実に選択する必要があります。 これが作成されたら、チーム プロジェクトに URL を保存します。 サンプル URL を次に示します: `https://<accountname>.visualstudio.com/MyFirstProject`。
+開始するには、Azure DevOps で無料アカウントを作成します。 [https://www.visualstudio.com/](https://www.visualstudio.com/ ) にアクセスし、**Azure DevOps** (以前の VSTS) の真下にある **[無償版の入手]** を選択します。 一意のアカウント名を選択し、Git を使用してコードを管理することを確実に選択する必要があります。 これが作成されたら、チーム プロジェクトに URL を保存します。 サンプル URL を次に示します: `https://<accountname>.visualstudio.com/MyFirstProject`。
 
 ## <a name="check-in-the-image-factory-to-git"></a>イメージ ファクトリの Git へのチェックイン
 イメージ ファクトリのすべての PowerShell、テンプレート、構成は、[パブリックの DevTest Labs GitHub レポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)内にあります。 新しいチーム プロジェクトにコードを取り込む最も速い方法は、リポジトリをインポートすることです。 これにより、DevTest Labs リポジトリ全体をプルします (こうして追加のドキュメントやサンプルを取得できます)。
@@ -68,7 +68,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
     ![[ビルドのセットアップ] ボタン](./media/set-up-devops-lab/setup-build-button.png)
 2. ビルドの**名前**を指定します (たとえば、"イメージのビルドと DevTest Labs への配信")。
-3. **空の**ビルド定義を選択し、**[適用]** を選択してビルドを作成します。
+3. **空の**ビルド定義を選択し、 **[適用]** を選択してビルドを作成します。
 4. この段階で、ビルド エージェントに **[Hosted]\(ホステッド\)**  を選択できます。
 5. ビルド定義の **[保存]** を実行します。
 
@@ -78,7 +78,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 コマンド ライン パラメーターを簡素化するには、イメージ ファクトリを一連のビルド変数にするキー値をカプセル化します。 **[変数]** タブを選択すると、いくつかの既定の変数の一覧が表示されます。 Azure DevOps に入力する変数の一覧を次に示します。
 
 
-| 変数名 | 値 | メモ |
+| 変数名 | 値 | Notes |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | これは、リポジトリ内の **Configuration** フォルダーへのフルパスです。 上記のリポジトリ全体をインポートした場合、左側の値が正しいです。 そうでない場合、構成の場所を指すように更新します。 |
 | DevTestLabName | MyImageFactory | イメージを生成するためのファクトリとして使用される Azure DevTest Labs のラボの名前です。 それがない場合は、作成します。 ラボが、サービス エンドポイントがアクセスするのと同じサブスクリプション内にあることを確認します。 |
@@ -87,23 +87,23 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 | MachineUserName | ImageFactoryUser | 仮想マシンの組み込み管理者アカウント ユーザー名。 これは一時的なアカウントです。 |
 | StandardTimeoutMinutes | 30 | 通常の Azure 操作を待つ必要があるタイムアウト。 |
 | SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | ラボが存在し、サービス エンドポイントがアクセスできるサブスクリプションの ID。 |
-| VMSize | Standard_A3 | **作成**手順に使用する仮想マシンのサイズ。 作成された VM は一時的なものです。 サイズは、[ラボに有効](devtest-lab-set-lab-policy.md)なものでなければなりません。 十分な[サブスクリプション コア クォータ](../azure-subscription-service-limits.md)があることを確認します。
+| VMSize | Standard_A3 | **作成**手順に使用する仮想マシンのサイズ。 作成された VM は一時的なものです。 サイズは、[ラボに有効](devtest-lab-set-lab-policy.md)なものでなければなりません。 十分な[サブスクリプション コア クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)があることを確認します。
 
 ![ビルド変数](./media/set-up-devops-lab/configure-build-variables.png)
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 次の手順では、サービス プリンシパルを設定します。 これは、Azure Active Directory 内の ID であり、これによりユーザーの代わりに Azure で DevOps ビルド エージェントが動作します。 設定するには、まず Azure PowerShell のビルド ステップを追加することから始めます。
 
 1. **[タスクの追加]** を選択します。
 2. **Azure PowerShell** を検索します。
-3. 見つかった場合は、**[追加]** を選択してタスクをビルドに追加します。 これを実行すると、追加されたタスクが左側に表示されます。
+3. 見つかった場合は、 **[追加]** を選択してタスクをビルドに追加します。 これを実行すると、追加されたタスクが左側に表示されます。
 
 ![PowerShell のセットアップ手順](./media/set-up-devops-lab/set-up-powershell-step.png)
 
 サービス プリンシパルをセットアップする最も速い方法は、Azure DevOps にその実行を任せることです。
 
 1. 先ほど追加した**タスク**を選択します。
-2. **[Azure 接続の種類]** で、**[Azure Resource Manager]** を選択します。
+2. **[Azure 接続の種類]** で、 **[Azure Resource Manager]** を選択します。
 3. **[管理]** リンクを選択して、サービス プリンシパルを設定します。
 
 詳細については、[このブログの投稿](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)を参照してください。 **[管理]** リンクを選択すると、Azure への接続を設定するための、DevOps の適切な場所が表示されます (ブログ投稿の 2 番目のスクリーン ショット)。 これを設定するときには、**Azure Resource Manager サービス エンドポイント**を必ず選択します。
@@ -122,9 +122,9 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 
 ## <a name="queue-the-build"></a>ビルドをキューに配置する
-新しいビルドをキューに配置することで、すべてが正しく設定されていることを確認します。 ビルドの実行中に、[Azure portal](https://portal.azure.com) に切り替え、**[All Virtual Machines]\(すべての仮想マシン\)** をイメージ ファクトリのラボで選択して、すべてが正しく動作することを確認します。 ラボに 3 つの仮想マシンが作成されていることが表示されます。
+新しいビルドをキューに配置することで、すべてが正しく設定されていることを確認します。 ビルドの実行中に、[Azure portal](https://portal.azure.com) に切り替え、 **[All Virtual Machines]\(すべての仮想マシン\)** をイメージ ファクトリのラボで選択して、すべてが正しく動作することを確認します。 ラボに 3 つの仮想マシンが作成されていることが表示されます。
 
 ![ラボの VM](./media/set-up-devops-lab/vms-in-lab.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure DevTest Labs に基づいてイメージ ファクトリを設定する最初の手順が完了しました。 シリーズの次の記事では、一般化されてカスタム イメージに保存される VM について説明します。 次に、それらを他のすべてのラボに配布します。 シリーズの次の記事をご覧ください。「[カスタム イメージを保存して複数のラボに配布する](image-factory-save-distribute-custom-images.md)」。

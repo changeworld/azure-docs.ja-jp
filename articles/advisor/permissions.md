@@ -1,18 +1,14 @@
 ---
 title: Azure Advisor でのアクセス許可
 description: Advisor のアクセス許可と、それを利用してサブスクリプションを構成する機能、推奨事項を延期または無視する機能をブロックする方法。
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053282"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75422317"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Advisor でのアクセス許可
 
@@ -22,7 +18,7 @@ Azure Advisor は、Azure のリソースとサブスクリプションの使用
 
 次の表は、Advisor 内のロールとそのアクセス権の定義です。
 
-| **Role** | **推奨事項の表示** | **ルールを編集する** | **サブスクリプションの構成を編集する** | **リソース グループの構成を編集する**| **推奨事項を無視して延期する**|
+| **ロール** | **推奨事項を表示する** | **ルールを編集する** | **サブスクリプションの構成を編集する** | **リソース グループの構成を編集する**| **推奨事項を無視して延期する**|
 |---|:---:|:---:|:---:|:---:|:---:|
 |サブスクリプションの所有者|**X**|**X**|**X**|**X**|**X**|
 |サブスクリプションの共同作成者|**X**|**X**|**X**|**X**|**X**|
@@ -49,7 +45,7 @@ Advisor でサブスクリプションまたはリソース グループを構�
 
 推奨事項を延期または無視しようとしてエラーが発生する場合は、十分なアクセス許可を持っていない可能性があります。 延期または無視している推奨事項の影響を受けるリソースに対して、少なくとも共同作成者アクセス権を持っていることを確認してください。 この問題を解決するには、[ユーザーにアクセス権を付与する](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)方法を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Advisor が RBAC を使用してユーザー アクセス許可を制御する方法と一般的な問題を解決する方法の概要を説明しました。 Advisor の詳細については、次を参照してください。
 

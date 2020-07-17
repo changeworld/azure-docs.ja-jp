@@ -1,21 +1,21 @@
 ---
 title: REST API コンソールでモデレーション レビューを作成する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Content Moderator Review API を使用して、人によるモデレーションのために画像レビューまたはテキスト レビューを作成します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pafarley
+ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72757141"
 ---
 # <a name="create-human-reviews-rest"></a>人によるレビューの作成 (REST)
 
@@ -23,11 +23,11 @@ ms.locfileid: "58882018"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)サイトにサインインするか、またはアカウントを作成します。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
 
 ## <a name="create-a-review"></a>レビューを作成する
 
-レビューを作成するには、**[Review - Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API リファレンス ページに移動し、ご自分のキーのリージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
+レビューを作成するには、 **[Review - Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API リファレンス ページに移動し、ご自分のキーのリージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
 
 ![Review - Get リージョン選択](images/test-drive-region.png)
 
@@ -42,10 +42,10 @@ ms.locfileid: "58882018"
 
 **[要求本文]** ボックスを編集して、JSON 要求を次のフィールドとともに入力します。
 
-- **メタデータ**: コールバック エンドポイントに返される、カスタムのキー/値のペア。 キーが[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で定義された短いコードの場合は、タグとして表示されます。
+- **Metadata**:コールバック エンドポイントに返される、カスタムのキー/値のペア。 キーが[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で定義された短いコードの場合は、タグとして表示されます。
 - **Content**: イメージや動画コンテンツの場合、コンテンツを指す URL 文字列です。 テキスト コンテンツの場合、実際のテキスト文字列です。
 - **ContentId**:カスタム識別子の文字列。 この文字列は API に渡され、コールバックで返されます。 これは、内部識別子またはメタデータをモデレーション ジョブの結果に関連付けるために役立ちます。
-- **CallbackEndpoint**: (オプション) レビューが完了したときにコールバック情報を受信する URL。
+- **CallbackEndpoint**: (省略可能) レビューが完了したときにコールバック情報を受信する URL。
 
 既定の要求本文は、作成可能なさまざまな種類のレビューの例を示します。
 
@@ -129,13 +129,13 @@ ms.locfileid: "58882018"
 
 ### <a name="submit-your-request"></a>要求を送信する
   
-**[送信]** を選択します。 操作が成功すると、**[応答の状態]** は `200 OK` になり、**[応答のコンテンツ]** ボックスにはレビューの ID が表示されます。 次の手順で使用するためにこの ID をコピーします。
+**[送信]** を選択します。 操作が成功すると、 **[応答の状態]** は `200 OK` になり、 **[応答のコンテンツ]** ボックスにはレビューの ID が表示されます。 次の手順で使用するためにこの ID をコピーします。
 
 ![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックスに表示されるレビュー ID](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>新しいコードを確認する
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で、**[確認]** > **[イメージ]**/**[テキスト]**/**[ビデオ]** を (使用したコンテンツに応じて) 選択します。 アップロードしたコンテンツが表示され、人によるレビューが可能な状態になります。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で、 **[確認]**  >  **[イメージ]** / **[テキスト]** / **[ビデオ]** を (使用したコンテンツに応じて) 選択します。 アップロードしたコンテンツが表示され、人によるレビューが可能な状態になります。
 
 ![レビュー ツール画像、サッカー ボール](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ ms.locfileid: "58882018"
 
 ![[Review - Create]\(Review - Create\) コンソールの取得結果](images/test-drive-review-3.PNG)
   
-**[送信]** を選択します。 操作が成功すると、**[応答の状態]** は `200 OK` になり、**[応答のコンテンツ]** ボックスには JSON 形式でのレビュー詳細が、次のように表示されます。
+**[送信]** を選択します。 操作が成功すると、 **[応答の状態]** は `200 OK` になり、 **[応答のコンテンツ]** ボックスには JSON 形式でのレビュー詳細が、次のように表示されます。
 
 ```json
 {  
@@ -190,6 +190,6 @@ ms.locfileid: "58882018"
 - **reviewerResultTags**: 人によるレビュー チームによってタグが手動で追加された場合に、表示されます (**createdBy** フィールドが表示されます)。
 - **metadata**: 人によるレビュー チームが変更を加える前に、最初にレビューに追加されたタグが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、REST API を使用してコンテンツ モデレーション レビューを作成する方法について説明しました。 次に、レビューを、[E コマース モデレーション](./ecommerce-retail-catalog-moderation.md) チュートリアルなどのエンドツーエンドのモデレーション シナリオに統合します。

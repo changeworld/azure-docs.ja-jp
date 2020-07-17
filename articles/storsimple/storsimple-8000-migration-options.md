@@ -1,5 +1,5 @@
 ---
-title: StorSimple 5000-7000 シリーズのデータを移行するためのオプションを評価する | Microsoft Docs
+title: StorSimple 5000-7000 シリーズデバイスからのデータ移行オプション
 description: StorSimple 5000-7000 シリーズのデータを移行するためのオプションの概要を示します。
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 1e637f58b392b2de67a5ead9d57a6a87ab705b93
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007240"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77471824"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
@@ -39,7 +39,7 @@ StorSimple 8000 シリーズにアップグレードして、StorSimple プラ�
 
 StorSimple 8000 シリーズを使用してデータを移行する方法の詳細については、「[StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)」を参照してください。
 
-#### <a name="migrate-to-azure-file-sync"></a>Azure File Sync に移行する
+#### <a name="migrate-to-azure-file-sync"></a>Azure File Sync への移行
 
 この新しい移行オプションを使用すると、お客様は、所属する組織のファイル共有を Azure Files に格納することができます。 その後、これらのファイル共有は、オンプレミス アクセスのために Azure File Sync (AFS) を使用して一元化されます。 AFS は Windows Server ホストにデプロイできます。 以降、実際のデータ移行は、ホスト コピーとして、または移行ツールを使用して実行されます。
 
@@ -67,7 +67,7 @@ Nasuni では簡単に移行できます ‐ 今すぐ開始しましょう http
 
 #### <a name="migrate-to-talon-fast"></a>Talon FAST に移行する
 
-StorSimple 5000-7000 をお使いのお客様は、Talon にすることで、StorSimple プラットフォームで得られていたメリット (無制限のクラウド リソースでサポートされた小さいオンサイト フットプリント) を、いっそう優れた機能で引き続き利用できます。  Talon FAST ソリューションでは、お客様はデータを移行して Azure に保持できますが、さらに小さいソフトウェア専用のオンサイト フットプリントが用意され、グローバル ファイル ロック、グローバル名前空間、マルチサイト コラボレーションなどのベネフィットが加わっています。  Talon は最先端の Azure エコシステム ソリューションであり、世界中のお客様が、オンプレミスのファイル サーバーのワークロードを、ユーザー ワークフローやエクスペリエンスを損なうことなく、統合された Azure ベースのフットプリントに移行しています。  
+StorSimple 5000-7000 をお使いのお客様は、Talon にすることで、StorSimple プラットフォームで得られていたメリット (無制限のクラウド リソースでサポートされた小さいオンサイト フットプリント) を、いっそう優れた機能で引き続き利用できます。  Talon FAST ソリューションでは、お客様はデータを移行して Azure に保持できますが、さらに小さいソフトウェア専用のオンサイト フットプリントが用意され、グローバル ファイル ロック、グローバル名前空間、マルチサイト コラボレーションなどのベネフィットが加わっています。  Talon は、世界中のお客様と協力して、そのオンプレミスのファイル サーバーのワークロードを、ユーザー ワークフローまたはエクスペリエンスを損なうことなく、統合された Azure ベースのフットプリントに移行するための有数の Azure エコシステム ソリューションです。  
 
 クラウド統合エンタープライズに発展する方法の詳細については、 https://www.talonstorage.com/alliances/microsoft-storsimple を参照してください。
 
@@ -95,8 +95,8 @@ A. サービスは動作し続ける可能性がありますが、Microsoft で�
 
 A. StorSimple 5000-7000 シリーズのユーザーは、それぞれのシナリオに応じて、次の移行オプションを使用できます。 
 
- - **8000 シリーズへのアップグレード**:このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
- - **Azure File Sync に移行**:このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
+ - **8000 シリーズへのアップグレード**: このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
+ - **Azure File Sync に移行**: このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
 
 ここで紹介していない移行オプションについては、Microsoft サポートにお問い合わせください。
 
@@ -125,6 +125,6 @@ A. データの移行にかかる時間は、データ量と選択したアッ�
 A. StorSimple 8000 シリーズのサポート終了日については、[こちら](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)で公開されています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  - [StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)。
  - [StorSimple 5000-7000 シリーズ デバイスのデータを Azure File Sync に移行する](storsimple-5000-7000-afs-migration.md)

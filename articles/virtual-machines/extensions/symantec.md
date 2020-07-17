@@ -1,30 +1,30 @@
 ---
-title: Azure の Windows VM に Symantec Endpoint Protection をインストールする | Microsoft Docs
+title: Azure の Windows VM に Symantec Endpoint Protection をインストールする
 description: クラシック デプロイ モデルで作成された新しいまたは既存の Azure VM に Symantec Endpoint Protection のセキュリティ拡張機能をインストールして構成する方法を説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: roiyz
-ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: akjosh
+ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919908"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Windows VM に Symantec Endpoint Protection をインストールし、構成する方法
-> [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 この記事では、Windows Server を実行している既存の仮想マシン (VM) に Symantec Endpoint Protection クライアントをインストールし、構成する方法を説明します。 このクライアントには、ウイルスおよびスパイウェア対策、ファイアウォール、侵入防止などのサービスが含まれています。 このクライアントは、VM エージェントを使用することにより、セキュリティ拡張機能としてインストールできます。
 
@@ -61,8 +61,8 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 
 Symantec のセキュリティ拡張機能がインストールされ、最新の状態であることを確認するには:
 
-1. 仮想マシンにログオンします。 詳細については、[Windows Server が実行されている仮想マシンにログオンする方法][Logon]に関するページを参照してください。
-2. Windows Server 2008 R2 の場合は、**[スタート]、[Symantec Endpoint Protection]** の順にクリックします。 Windows Server 2012 または Windows Server 2012 R2 で、スタート画面から、「**Symantec**」と入力し、**[Symantec Endpoint Protection]** をクリックします。
+1. 仮想マシンにログオンします。 詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法][Logon]」を参照してください。
+2. Windows Server 2008 R2 の場合は、 **[スタート]、[Symantec Endpoint Protection]** の順にクリックします。 Windows Server 2012 または Windows Server 2012 R2 で、スタート画面から、「**Symantec**」と入力し、 **[Symantec Endpoint Protection]** をクリックします。
 3. **[状態: Symantec Endpoint Protection]** ウィンドウの **[状態]** タブで、更新を適用するか、必要に応じて再起動します。
 
 ## <a name="additional-resources"></a>その他のリソース

@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery を使用した VMware または物理サーバーのセカンダリ サイトへのディザスター リカバリーのためのアーキテクチャ | Microsoft Docs
+title: Azure Site Recovery を使用したセカンダリ サイトへの VMware VM または物理的なディザスター リカバリーのアーキテクチャ
 description: この記事では、Azure Site Recovery を使用して、オンプレミスの VMware VM または Windows/Linux 物理サーバーをセカンダリ VMware サイトでのディザスター リカバリーの際に使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5df82d811d3807b988cb950bccddd1767baba5c6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361838"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73954587"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトへの VMware または物理サーバーのレプリケーションのためのアーキテクチャ
 
@@ -44,6 +43,6 @@ ms.locfileid: "59361838"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 セカンダリ サイトへの VMware VM と物理サーバーのディザスター リカバリーを[設定](vmware-physical-secondary-disaster-recovery.md)する。

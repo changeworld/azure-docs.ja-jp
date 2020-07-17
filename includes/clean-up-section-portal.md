@@ -2,21 +2,21 @@
 author: cephalin
 ms.service: app-service-web
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 04/14/2020
 ms.author: cephalin
-ms.openlocfilehash: 60c1b63c4a915f8f55e142de5ed527abbbf9e5fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 88ebda7fcdd3fbdf148c9870ee3190b4824ff0ac
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131591"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121442"
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、リソース グループ内に Azure リソースを作成しました。 これらのリソースが将来必要になると思わない場合は、リソース グループを削除してリソースを削除できます。
  
-Azure Portal の左側のメニューで、**[リソース グループ]**、**[myResourceGroup]** の順に選択します。
+Azure portal メニューまたは **[ホーム]** ページから、 **[リソース グループ]** を選択し、 **[リソース グループ]** ページで、 **[myResourceGroup]** を選択します。
 
-リソース グループのページで、一覧表示されたリソースが、削除しようとするリソースであることを確認します。
+**[myResourceGroup]** ページで、一覧表示されたリソースが、削除しようとするリソースであることを確認します。
 
-**[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから、**[削除]** を選択します。
+**[リソース グループの削除]** を選択し、確認のためテキスト ボックスに「**myResourceGroup**」と入力して、 **[削除]** を選択します。

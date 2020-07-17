@@ -3,24 +3,25 @@ title: Azure Traffic Manager での機能低下状態のトラブルシューテ
 description: Traffic Manager プロファイルが機能低下状態と示されるときのトラブルシューティング方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: chadmath
+author: rohinkoul
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: genli
-ms.openlocfilehash: f01dfe78d5d5e322258b0ee98cec314f9afe33c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: rohink
+ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050647"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82130764"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
-この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性が **機能低下** 状態の場合は､1 つまたは複数のエンドポイントのステータスも**機能低下**している可能性があります｡
+この記事では、機能低下状態になっている Azure Traffic Manager プロファイルをトラブルシューティングする方法について説明します。 Azure Traffic Manager の機能低下状態をトラブルシューティングする最初の手順として、ログを有効にします。  詳細については、[リソース ログの有効化](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)に関するページを参照してください。 このシナリオでは、.cloudapp.net ホステッド サービスの一部を参照するように Traffic Manager プロファイルを構成しているとします。 Traffic Manager の正常性が **機能低下** 状態の場合は､1 つまたは複数のエンドポイントのステータスも**機能低下**している可能性があります｡
 
 ![エンドポイントの機能低下状態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -30,11 +31,11 @@ Traffic Manager の正常性が **Inactive** 状態の場合は､両方のエ�
 
 ## <a name="understanding-traffic-manager-probes"></a>Traffic Manager のプローブについて
 
-* Traffic Manager は、プローブがプローブ パスから HTTP 200 応答を受け取った場合にのみエンドポイントがオンラインになると見なします。 200 以外の応答はエラーです。
-* リダイレクトされた URL が 200 を返した場合でも、30x リダイレクトはエラーになります。
+* Traffic Manager は、プローブがプローブ パスから HTTP 200 応答を受け取った場合にのみエンドポイントがオンラインになると見なします。 アプリケーションから他の HTTP 応答コードが返された場合は、その応答コードを Traffic Manager プロファイルの [[状態コードの範囲が必要です]](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) に追加する必要があります。
+* 30x リダイレクト応答は、Traffic Manager プロファイルの [[状態コードの範囲が必要です]](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) でこれを有効な応答コードとして指定しない限り、エラーとして扱われます。 Traffic Manager は、リダイレクト ターゲットをプローブしません。
 * HTTPs プローブの場合、証明書エラーは無視されます。
 * 200 が返される限り、プローブ パスの実際の内容は関係ありません。 "/favicon.ico" などの静的コンテンツの URL へのプローブは、よくある手法です。 ASP ページなどの動的なコンテンツは、アプリケーションが正常な場合であっても、常に 200 を返すとは限りません。
-* ベスト プラクティスとしては、サイトが稼動していると判断するに足る十分なロジックを持っているパスに、プローブ パスを設定します。 前の例では、パスを "/favicon.ico" に設定することで、w3wp.exe が応答するかどうかのテストのみを実行しています。 このプローブでは、Web アプリケーションが正常であることが示されない可能性があります。 お勧めなのは、サイトの正常性を判断するロジックが組み込まれた "/Probe.aspx" などへのパスを設定する方法です。 たとえば、CPU 使用率のパフォーマンス カウンターを使用したり、失敗した要求の数を測定したりできます。 また、データベースのリソースやセッション状態にアクセスを試みて、Web アプリケーションが動作していることを確認することもできます。
+* ベスト プラクティスとしては、サイトが稼動しているかどうかを判断するに足る十分なロジックを持っているパスに、プローブ パスを設定します。 前の例では、パスを "/favicon.ico" に設定することで、w3wp.exe が応答するかどうかのテストのみを実行しています。 このプローブでは、Web アプリケーションが正常であることが示されない可能性があります。 お勧めなのは、サイトの正常性を判断するロジックが組み込まれた "/Probe.aspx" などへのパスを設定する方法です。 たとえば、CPU 使用率のパフォーマンス カウンターを使用したり、失敗した要求の数を測定したりできます。 また、データベースのリソースやセッション状態にアクセスを試みて、Web アプリケーションが動作していることを確認することもできます。
 * プロファイル内のすべてのエンドポイントが機能低下している場合、Traffic Manager はすべてのエンドポイントを正常として扱い、トラフィックをすべてのエンドポイントにルーティングします。 この動作により、プローブ メカニズムの問題が発生しても、サービスは完全には停止しなくなります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

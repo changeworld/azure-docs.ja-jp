@@ -1,20 +1,21 @@
 ---
-title: クイック スタート - Node.js を使用して Bing Local Business Search API にクエリを送信する | Microsoft Docs
+title: クイック スタート - Node.js を使用して API にクエリを送信する - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
-description: Node での Bing Local Business Search API の使用を開始します。
+description: このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: d0760f89eb98955f7ebb503ce59f904192635f7a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 03/24/2020
+ms.author: aahi
+ms.openlocfilehash: d366195f9cd72e6baa88c17203ae93cbbc6cbe6a
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796889"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80475540"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>クイック スタート: Node.js を使用して Bing Local Business Search API にクエリを送信する
 
@@ -42,7 +43,7 @@ Bing API を使用して [Cognitive Services API アカウント](https://docs.m
 
 このデモの完全なコードを次に示します。
 
-```
+```javascript
 'use strict';
 
 let https = require('https');
@@ -91,7 +92,7 @@ Search();
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Local Business Search のクイック スタート](local-quickstart.md)
 * [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)

@@ -3,185 +3,231 @@ title: Azure AD アプリケーション プロキシ用 PingAccess を使用し
 description: ヘッダーベースの認証に対応するには、PingAccess とアプリケーション プロキシを使ってアプリケーションを発行します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2017
+ms.date: 10/24/2019
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f3fb94629262519f8cfa5da72ee343726aa7d1c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882792"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77367983"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
-Azure Active Directory アプリケーション プロキシと PingAccess の連携によって、Azure Active Directory でアクセスできるアプリケーションの幅が一層広がっています。 PingAccess は[既存のアプリケーション プロキシ サービス](application-proxy.md)を拡張し、ヘッダーを使って認証を行うアプリケーションへのシングル サインオン アクセスに対応します。
+Azure Active Directory (Azure AD) アプリケーション プロキシは、Azure AD の顧客が複数のアプリケーションにアクセスできるように、PingAccess と連携しました。 PingAccess は[既存のアプリケーション プロキシ サービス](application-proxy.md)を拡張し、ヘッダーを使って認証を行うアプリケーションへのシングル サインオン アクセスに対応します。
 
-## <a name="what-is-pingaccess-for-azure-ad"></a>PingAccess for Azure AD とは
+## <a name="whats-pingaccess-for-azure-ad"></a>PingAccess for Azure AD とは?
 
-PingAccess for Azure Active Directory は、認証用のヘッダーを使用するアプリケーションにユーザーがシングル サインオンでアクセスできるようにする PingAccess のサービスです。 これらのアプリは、アプリケーション プロキシによって他のアプリと同じように扱われます。Azure AD を使ってアクセスが認証され、コネクタ サービスを通じてトラフィックが受け渡されます。 PingAccess は、アプリケーションが読み取り可能な形式で認証を受け取れるよう、アプリケーションの手前で Azure AD からのアクセス トークンをヘッダーに変換します。
+PingAccess for Azure AD を使用すると、認証にヘッダーを使用するアプリケーションへのアクセス権およびシングル サイン オン (SSO) をユーザーに与えることができます。 アプリケーション プロキシはこれらのアプリを他のアプリと同様に扱い、Azure AD を使ってアクセスを認証した後、コネクタ サービスを通してトラフィックを渡します。 PingAccess は、アプリケーションの前に位置し、アクセス トークンを Azure AD からヘッダーに変換します。 その後、アプリケーションは、読み取り可能な形式で認証を受信します。
 
-社内のアプリにサインインするユーザーからは、何が起こっているかは見えません。 ユーザーはいつもどおり、任意のデバイスでどこからでも作業を行うことができます。 
-
-アプリケーション プロキシ コネクタは、その認証の種類に関係なくすべてのアプリへのリモート トラフィックを誘導します。そのため負荷分散も引き続き自動的に行われます。
+会社のアプリケーションを使用するためにサインインするユーザーは、いかなる違いにも気付きません。 ユーザーはいつもどおり、任意のデバイスでどこからでも作業を行うことができます。 アプリケーション プロキシ コネクタは、その認証の種類に関係なくすべてのアプリにリモート トラフィックを誘導します。そのため負荷分散も引き続き自動的に行われます。
 
 ## <a name="how-do-i-get-access"></a>利用方法
 
-このシナリオは Azure Active Directory と PingAccess の連携によって実現されるため、その両方のサービスのライセンスが必要となります。 ただし、Azure Active Directory Premium サブスクリプションには、最大 20 のアプリケーションをカバーする基本的な PingAccess ライセンスが含まれています。 20 を超えるヘッダー ベースのアプリケーションを公開する必要がある場合は、PingAccess から追加のライセンスを購入できます。 
+このシナリオは Azure Active Directory と PingAccess の連携によって実現されるため、その両方のサービスのライセンスが必要となります。 ただし、Azure Active Directory Premium サブスクリプションには、最大 20 のアプリケーションをカバーする基本的な PingAccess ライセンスが含まれています。 20 を超えるヘッダー ベースのアプリケーションを公開する必要がある場合は、PingAccess から追加のライセンスを購入できます。
 
 詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。
 
 ## <a name="publish-your-application-in-azure"></a>アプリケーションを Azure に発行する
 
-この記事は、このシナリオで初めてアプリを発行する方を対象としています。 発行手順に加え、アプリケーションと PingAccess の基本的な利用方法についても説明しています。 両方のサービスは構成済みであり、公開手順の再確認が目的の場合は、コネクタのインストールをスキップして「[アプリケーション プロキシを使って Azure AD にアプリを登録する](#add-your-app-to-azure-ad-with-application-proxy)」に進むことができます。
+この記事は、このシナリオで初めてアプリケーションを公開する方を対象としています。 発行手順の詳細を示すだけでなく、アプリケーション プロキシと PingAccess の両方を開始できるように説明します。 両方のサービスは構成済みであり、公開手順の再確認が目的の場合は、「[アプリケーション プロキシを使って Azure AD にアプリを登録する](#add-your-application-to-azure-ad-with-application-proxy)」のセクションに進むことができます。
 
->[!NOTE]
->このシナリオは Azure AD と PingAccess を連携させることが前提となるため、一部の手順は Ping Identity のサイトでご覧ください。
+> [!NOTE]
+> このシナリオは Azure AD と PingAccess を連携させることが前提となるため、一部の手順は Ping Identity のサイトでご覧ください。
 
 ### <a name="install-an-application-proxy-connector"></a>アプリケーション プロキシ コネクタのインストール
 
-既にアプリケーション プロキシを有効にし、コネクタをインストールしている場合は、このセクションをスキップして「[アプリケーション プロキシを使って Azure AD にアプリを登録する](#add-your-app-to-azure-ad-with-application-proxy)」に進むことができます。
+既にアプリケーション プロキシを有効にし、コネクタをインストールしている場合は、このセクションをスキップして「[アプリケーション プロキシを使って Azure AD にアプリを登録する](#add-your-application-to-azure-ad-with-application-proxy)」に進むことができます。
 
-アプリケーション プロキシ コネクタは、遠隔にいる従業員からのトラフィックを発行済みアプリに誘導する Windows Server サービスです。 詳しいインストール手順については、「[Azure Portal でアプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)」を参照してください。
+アプリケーション プロキシ コネクタは、遠隔にいる従業員からのトラフィックを発行済みアプリケーションに誘導する Windows Server サービスです。 インストール手順の詳細については、[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
 
-1. アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]** > **[アプリケーション プロキシ]** の順に選択します。
-3. **[Download Connector (コネクタのダウンロード)]** を選択してアプリケーション プロキシ コネクタのダウンロードを開始します。 画面の指示に従ってインストールしてください。
+1. アプリケーション管理者として [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター**のページが表示されます。
+1. **[Azure Active Directory]**  >  **[アプリケーション プロキシ]**  >  **[コネクタ サービスのダウンロード]** の順に選択します。 **[アプリケーション プロキシ コネクタのダウンロード]** ページが表示されます。
 
-   ![アプリケーション プロキシの有効化とコネクタのダウンロード](./media/application-proxy-configure-single-sign-on-with-ping-access/install-connector.png)
+   ![アプリケーション プロキシ コネクタのダウンロード](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
-4. 通常、コネクタをダウンロードすれば、ディレクトリに対してアプリケーション プロキシが自動的に有効になります。有効にならなかった場合は、**[アプリケーション プロキシの有効化]** を選択してください。
+1. インストール手順に従います。
 
+通常、コネクタをダウンロードすれば、ディレクトリに対してアプリケーション プロキシが自動的に有効になります。有効にならなかった場合は、 **[アプリケーション プロキシの有効化]** を選択してください。
 
-### <a name="add-your-app-to-azure-ad-with-application-proxy"></a>アプリケーション プロキシを使って Azure AD にアプリを登録する
+### <a name="add-your-application-to-azure-ad-with-application-proxy"></a>アプリケーション プロキシを使って Azure AD にアプリケーションを登録する
 
-Azure ポータルで実行する必要がある操作は 2 つあります。 最初に、アプリケーション プロキシを使用してアプリケーションを発行する必要があります。 次に、アプリに関する情報をいくつか収集する必要があります。その情報が PingAccess の手順で必要になります。
+Azure ポータルで実行する必要がある操作は 2 つあります。 最初に、アプリケーション プロキシを使用してアプリケーションを発行する必要があります。 次に、アプリケーションに関する情報をいくつか収集する必要があります。その情報が PingAccess の手順で必要になります。
 
-アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)」を参照してください。
+#### <a name="publish-your-application"></a>アプリケーションの発行
 
-1. 直前のセクションの手順を省略した場合は、アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインしてください。
-2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** の順に選択します。
-3. ブレード上部の **[追加]** を選択します。
-4. **[オンプレミスのアプリケーション]** を選択します。
-5. 新しいアプリに関する情報を必須フィールドに入力します。 次のガイダンスに従って設定してください。
-   - **[内部 URL]**: 通常は、社内ネットワークにおけるアプリのサインイン ページへの URL を指定します。 このシナリオでは、コネクタは PingAccess プロキシをアプリケーションの最初のページとして処理する必要があります。 次の形式を使用します。`https://<host name of your PA server>:<port>` ポートは既定では 3000 ですが、PingAccess で設定できます。
+最初にアプリケーションを発行する必要があります。 このアクションには、次が含まれます。
 
-     > [!WARNING]
-     > この種の SSO の場合、内部 URL では HTTPS を使用する必要があります。HTTP は使用できません。
+- Azure AD へのオンプレミス アプリケーションの追加
+- アプリケーションをテストとヘッダー ベースの SSO を選択するためのユーザーの割り当て
+- アプリケーションのリダイレクト URL の設定
+- ユーザーおよび他のアプリケーションに対するオンプレミス アプリケーションを使用するためのアクセス許可の付与
 
-   - **事前認証方法**:Azure Active Directory
-   - **ヘッダーの URL を変換する**:いいえ 
+独自のオンプレミス アプリケーションを発行するには、次の手順に従います。
 
-   >[!NOTE]
-   >これが最初のアプリケーションの場合は、ポート 3000 の使用から始めてください。PingAccess 構成を変更した場合は、この設定を更新してください。 2 つ目以降のアプリの場合、PingAccess で構成したリスナーと一致する必要があります。 詳細については、[PingAccess のリスナー](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html)に関するページを参照してください。
+1. 直前のセクションの手順を省略した場合は、アプリケーション管理者として [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインしてください。
+1. **[エンタープライズ アプリケーション]**  >  **[新しいアプリケーション]**  >  **[オンプレミスのアプリケーションの追加]** の順に選択します。 **[独自のオンプレミスのアプリケーションの追加]** ページが表示されます。
 
-6. ブレード下部の **[追加]** を選択します。 アプリケーションが追加されて、クイック スタート メニューが表示されます。
-7. クイック スタート メニューで **[テスト用のユーザーを割り当てる]** を選択し、少なくとも 1 ユーザーをアプリケーションに追加します。 このテスト アカウントでオンプレミスのアプリケーションにアクセスできることを確認します。
-8. **[割り当て]** を選択して、テスト ユーザーの割り当てを保存します。
-9. アプリの管理ブレードで **[シングル サインオン]** を選択します。
-10. ドロップダウン メニューから **[Header-based sign-on (ヘッダーベースのサインオン)]** を選択します。 **[保存]** を選択します。
+   ![独自のオンプレミスのアプリケーションの追加](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
+1. 新しいアプリケーションに関する情報を必須フィールドに入力します。 設定には、下のガイダンスを使用します。
 
-    >[!TIP]
-    >ヘッダー ベースのシングル サインオンを初めて使用する場合は、PingAccess をインストールする必要があります。 Azure サブスクリプションを PingAccess のインストールに自動的に関連付けるには、このシングル サインオン ページのリンクを使用して PingAccess をダウンロードします。 今すぐダウンロード サイトを開くことも、後でこのページに戻ることもできます。 
+   > [!NOTE]
+   > この手順の詳細なチュートリアルは、「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。
 
-    ![ヘッダーに基づくサインオンを選択](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
+   1. **[内部 URL]** : 通常は、社内ネットワークにおけるアプリのサインイン ページへの URL を指定します。 このシナリオでは、コネクタは PingAccess プロキシをアプリケーションの最初のページとして処理する必要があります。 次の形式を使用します。`https://<host name of your PingAccess server>:<port>` ポートは既定では 3000 ですが、PingAccess で設定できます。
 
-11. [エンタープライズ アプリケーション] ブレードを閉じるか、左側いっぱいにスクロールして、Azure Active Directory メニューに戻ります。
-12. **[アプリの登録]** を選択します。
+      > [!WARNING]
+      > この種類のシングル サインオンの場合、内部 URL は `https` を使用する必要があり、`http` を使用できません。
 
-    ![[アプリの登録] を選択する](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
+   1. **事前認証方法**: **[Azure Active Directory]** を選択します。
+   1. **ヘッダーの URL を変換する**: **[いいえ]** を選択します。
 
-13. 先ほど追加したアプリを選択し、**[応答 URL]** を選択します。
+   > [!NOTE]
+   > これが最初のアプリケーションの場合は、ポート 3000 の使用から始めてください。PingAccess 構成を変更した場合は、この設定を更新してください。 後続のアプリケーションの場合、ポートは PingAccess で構成したリスナーと一致する必要があります。 詳細については、[PingAccess のリスナー](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)に関するページを参照してください。
 
-    ![[応答 URL] を選択する](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
+1. **[追加]** を選択します。 新しいアプリケーションの概要ページが表示されます。
 
-14. 手順 5. でアプリに割り当てた外部 URL が [応答 URL] の一覧に含まれているかどうかを確認します。 含まれていない場合は、ここで追加してください。
-15. アプリの設定ブレードで **[必要なアクセス許可]** を選択します。
+次に、アプリケーション テストのユーザーを割り当て、ヘッダーベースのシングル サインオンを選択します。
 
-    ![[必要なアクセス許可] を選択する](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+1. アプリケーションのサイドバーから、 **[ユーザーとグループ]**  >  **[ユーザーの追加]**  >  **[ユーザーとグループ] (選択された \<数>)** の順に選択します。 選択するためのユーザーとグループの一覧が表示されます。
 
-16. **[追加]** を選択します。 API に **[Windows Azure Active Directory]** を選び、**[選択]** を選択します。 アクセス許可に **[Read and write all applications] \(すべてのアプリケーションの読み取りと書き込み)** と **[サインインとユーザー プロファイルの読み取り]** を選び、**[選択]** と **[完了]** を選択します。  
+   ![ユーザーとグループのリストを示しています](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
-    ![アクセス許可を選択](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
+1. アプリケーション テストのユーザーを選択し、 **[選択]** を選択します。 このテスト アカウントでオンプレミスのアプリケーションにアクセスできることを確認します。
+1. **[割り当て]** を選択します。
+1. アプリケーションのサイドバーから、 **[シングル サインオン]**  >  **[ヘッダーベース]** を選択します。
 
-17. アクセス許可を付与してから、アクセス許可画面を閉じてください。 
-    ![アクセス許可を付与する](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
+   > [!TIP]
+   > ヘッダー ベースのシングル サインオンを初めて使用する場合は、PingAccess をインストールする必要があります。 Azure サブスクリプションを PingAccess のインストールに自動的に関連付けるには、このシングル サインオン ページのリンクを使用して PingAccess をダウンロードします。 今すぐダウンロード サイトを開くことも、後でこのページに戻ることもできます。
 
-### <a name="collect-information-for-the-pingaccess-steps"></a>PingAccess の手順で使う情報の収集
+   ![ヘッダー ベースのサインオン画面と PingAccess を示しています](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. アプリの設定ブレードで **[プロパティ]** を選択します。 
-
-   ![[プロパティ] を選択する](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
-
-2. **[アプリケーション ID]** の値を保存します。 PingAccess を構成するときのクライアント ID には、この ID が使用されます。
-3. [設定] ブレードで **[キー]** を選択します。
-
-   ![[キー] を選択する](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
-
-4. キーの説明を入力し、ドロップダウン メニューから有効期限を選択して、キーを作成します。
-5. **[保存]** を選択します。 **[値]** フィールドに GUID が表示されます。
-
-   この値は、このウィンドウを閉じると確認できなくなります。ここで保存してください。
-
-   ![新しいキーを作成する](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
-
-6. [アプリの登録] ブレードを閉じるか、左側いっぱいにスクロールして、Azure Active Directory メニューに戻ります。
-7. **[プロパティ]** を選択します。
-8. **[ディレクトリ ID]** の GUID を保存します。
-
-### <a name="optional---update-graphapi-to-send-custom-fields"></a>省略可能 - GraphAPI を更新してカスタム フィールドを送信する
-
-Azure AD が認証のために送信するセキュリティ トークンの一覧については、「[Azure AD のトークン リファレンス](../develop/v1-id-and-access-tokens.md)」を参照してください。 他のトークンを送信するカスタム クレームが必要な場合は、Graph エクスプローラー、または Azure Portal 内のアプリケーションのマニフェストを使用して、アプリのフィールド *acceptMappedClaims* を **True** に設定します。    
-
-次の例では、Graph Explorer を使用しています。
-
-```
-PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application> 
-
-{
-  "acceptMappedClaims":true
-}
-```
-次の例では、[Azure portal](https://portal.azure.com) を使用して *acceptedMappedClaims* フィールドを更新しています。
-1. アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]** > **[アプリの登録]** の順に選択します。
-3. ご使用のアプリケーション > **[マニフェスト]** の順に選択します。
-4. **[編集]** を選択し、*acceptedMappedClaims* フィールドを検索して、値を **true** に変更します。
-![アプリ マニフェスト](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-ping-access-manifest.PNG)
 1. **[保存]** を選択します。
 
->[!NOTE]
->カスタム要求を使用するには、カスタム ポリシーも定義し、アプリケーションに割り当てる必要があります。  このポリシーには、すべての必要なカスタム属性を含めます。
->
->ポリシーの定義と割り当てには、PowerShell、Azure AD Graph Explorer、または MS Graph を使用できます。  PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Set-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。  詳細については、[Azure AD ポリシーのドキュメント](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)を参照してください。
+続いてリダイレクト URL が外部 URL に設定されてことを確認しています。
 
-### <a name="optional---use-a-custom-claim"></a>省略可能 - カスタム要求を使用する
+1. **[Azure Active Directory 管理センター]** サイドバーから **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。 アプリケーションの一覧を表示します。
+1. アプリケーションを選択します。
+1. Web およびパブリック クライアントに対して設定されたリダイレクト URI の数を表示した、 **[リダイレクト URI]** の横にあるリンクを選択します。 **[\<アプリケーション名> - 認証]** ページが表示されます。
+1. 以前にアプリケーションに割り当てた外部 URL が **[リダイレクト URI]** の一覧にあるかどうかを確認します。 ない場合は、**Web** のリダイレクト URI の種類を使用して外部 URL を追加し、 **[保存]** を選択します。
+
+最後に、ユーザーに読み取りアクセス権を、他のアプリケーションに読み取り/書き込みアクセス権を与えるように、オンプレミス アプリケーションを設定します。
+
+1. アプリケーションの **[アプリの登録]** サイドバーから、 **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[Microsoft API]**  >  **[Microsoft Graph]** の順に選択します。 Windows Azure Active Directory の API を含んだ、**Microsoft Graph** の **[API アクセス許可の要求]** ページが表示されます。
+
+   ![[API アクセス許可の要求] ページを示しています](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+
+1. **[委任されたアクセス許可]**  >  **[ユーザー]**  >  **[User.Read]** の順に選択します。
+1. **[アプリケーションのアクセス許可]**  >  **[アプリケーション]**  >  **[Application.ReadWrite.All]** の順に選択します。
+1. **[アクセス許可の追加]** を選択します.
+1. **[API のアクセス許可]** ページで、 **[\<ディレクトリ名> に管理者の同意を与えます]** を選択します。
+
+#### <a name="collect-information-for-the-pingaccess-steps"></a>PingAccess の手順で使う情報の収集
+
+PingAccess でアプリケーションを設定するには、次の 3 つの情報 (すべての GUID) を収集する必要があります。
+
+| Azure AD フィールドの名前 | PingAccess フィールドの名前 | データ形式 |
+| --- | --- | --- |
+| **アプリケーション (クライアント) ID** | **クライアント ID** | GUID |
+| **ディレクトリ (テナント) ID** | **発行者** | GUID |
+| `PingAccess key` | **クライアント シークレット** | ランダムな文字列 |
+
+この情報を収集します。
+
+1. **[Azure Active Directory 管理センター]** サイドバーから **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。 アプリケーションの一覧を表示します。
+1. アプリケーションを選択します。 アプリケーションの **[アプリの登録]** ページが表示されます。
+
+   ![アプリケーションの登録の概要](./media/application-proxy-configure-single-sign-on-with-ping-access/registration-overview-for-an-application.png)
+
+1. **[アプリケーション (クライアント) ID]** 値の横で **[クリップボードにコピー]** アイコンを選択し、それをコピーして保存します。 この値は、後から PingAccess のクライアント ID として指定します。
+1. **[ディレクトリ (テナント) ID]** 値の横で **[クリップボードにコピー]** も選択し、それをコピーして保存します。 この値は、後から PingAccess の発行者として指定します。
+1. アプリケーションの **[アプリの登録]** のサイドバーから、 **[証明書とシークレット]**  >  **[新しいクライアント シークレット]** の順に選択します。 **[クライアント シークレットの追加]** ページが表示されます。
+
+   ![[クライアント シークレットの追加] ページを示しています](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
+
+1. **[説明]** で `PingAccess key` を入力します。
+1. **[有効期限]** の下で、PingAccess キーを設定する方法を選択します: **[1 年]** 、 **[2 年]** 、または **[無期限]** 。
+1. **[追加]** を選択します。 クライアント シークレットのテーブルに PingAccess キーが、**VALUE** フィールドに自動入力されるランダム文字列で表示されます。
+1. PingAccess キーの **VALUE** フィールドの横で **[クリップボードにコピー]** アイコンを選択し、それをコピーして保存します。 この値は、後から PingAccess のクライアント シークレットとして指定します。
+
+**`acceptMappedClaims` フィールドを更新する:**
+
+1. アプリケーション管理者として [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。
+1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。 アプリケーションの一覧を表示します。
+1. アプリケーションを選択します。
+1. アプリケーションの **[アプリの登録]** ページのサイドバーから、 **[マニフェスト]** を選択します。 アプリケーションの登録のマニフェスト JSON コードが表示されます。
+1. `acceptMappedClaims` フィールドを検索し、値を `True` に変更します。
+1. **[保存]** を選択します。
+
+### <a name="use-of-optional-claims-optional"></a>省略可能な要求の使用 (省略可能)
+
+省略可能な要求を使用すると、すべてのユーザーとテナントが持つ、標準だが既定では含まれない要求を追加できます。 アプリケーション マニフェストを変更して、アプリケーションの省略可能な要求を構成することができます。 詳細については、[Azure AD アプリケーション マニフェストの概要に関する記事](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)を参照してください
+
+PingAccess が消費する access_token に、メール アドレスを含める例:
+```
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "email",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+```
+
+### <a name="use-of-claims-mapping-policy-optional"></a>要求のマッピング ポリシーの使用 (省略可能)
+
+AzureAD に存在しない属性に対する[要求のマッピング ポリシー (プレビュー)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties)。 要求のマッピングでは、ADFS またはユーザー オブジェクトでサポートされるカスタム要求を追加することにより、古いオンプレミス アプリをクラウドに移行できます
+
 アプリケーションからカスタム要求を使用し、追加のフィールドを含めるには、[カスタム要求のマップ ポリシーも作成し、そのポリシーをアプリケーションに割り当てる](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)必要があります。
 
-## <a name="download-pingaccess-and-configure-your-app"></a>PingAccess をダウンロードしてアプリを構成する
+> [!NOTE]
+> カスタム要求を使用するには、カスタム ポリシーも定義し、アプリケーションに割り当てる必要があります。 このポリシーには、すべての必要なカスタム属性を含めます。
+>
+> PowerShell または Microsoft Graph から、ポリシーの定義と割り当てを行うことができます。 PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Add-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。 詳細については、「[要求のマッピング ポリシーの割り当て](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)」を参照してください。
 
-これで、Azure Active Directory のすべてのセットアップ手順が完了したので、PingAccess の構成に進むことができます。 
+例:
+```powershell
+$pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
 
-このシナリオの PingAccess に関連した領域の詳しい手順については、Ping Identity のサイトで、[PingAccess for Azure AD の構成](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)に関するドキュメントを参照してください。
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id
+```
 
-記載されている作業手順に従い、PingAccess アカウントを取得して (まだ所有していない場合)、PingAccess サーバーをインストールし、Azure Portal からコピーした Directory ID で Azure AD OIDC プロバイダー接続を作成してください。 そのうえで、アプリケーションの ID とキーの値を使って PingAccess に Web セッションを作成します。 その後、ID のマッピングをセットアップし、仮想ホスト、サイト、アプリケーションを作成することができます。
+### <a name="enable-pingaccess-to-use-custom-claims"></a>PingAccess でカスタム要求を使用できるようにする
 
-### <a name="test-your-app"></a>アプリをテストする
+PingAccess でカスタム要求を使用できるようにすることは省略可能ですが、アプリケーションで追加の要求を使用すると予想される場合は必須です。
 
-以上の手順がすべて完了すれば、アプリは正常に動作します。 正しく動作するか確認するために、ブラウザーを起動し、Azure にアプリを発行したときに作成した外部 URL にアクセスしてみてください。 サインインには、アプリに割り当てたテスト アカウントを使用します。
+次の手順で PingAccess を構成すると、作成する Web セッション ([設定] > [アクセス] > [Web セッション]) では、 **[Request Profile]** (プロファイルの要求) を選択解除し、 **[Refresh User Attributes]** (ユーザー属性の更新) を **[いいえ]** に設定する必要があります
 
-## <a name="next-steps"></a>次の手順
+## <a name="download-pingaccess-and-configure-your-application"></a>PingAccess をダウンロードしてアプリケーションを構成する
 
-- [PingAccess for Azure AD を構成する](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
-- [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](application-proxy-single-sign-on.md)
-- [アプリケーション プロキシのトラブルシューティング](application-proxy-troubleshoot.md)
+これで、Azure Active Directory のすべてのセットアップ手順が完了したので、PingAccess の構成に進むことができます。
+
+このシナリオの PingAccess に関連した領域の詳しい手順については、Ping Identity のドキュメントを参照してください。 Ping Identity の Web サイトの [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)に関するページの手順に従ってください。
+
+これらの手順では、PingAccess をインストールして PingAccess アカウント (まだない場合) を設定できます。 続いて Azure AD OpenID Connect (OIDC) 接続を作成するには、Azure AD ポータルからコピーした **[ディレクトリ (テナント) ID]** 値でトークン プロバイダーを設定します。 次に、PingAccess に Web セッションを作成するために、 **[アプリケーション (クライアント) ID]** および `PingAccess key` の値を使用します。 その後、ID のマッピングをセットアップし、仮想ホスト、サイト、アプリケーションを作成することができます。
+
+### <a name="test-your-application"></a>アプリケーションのテスト
+
+以上の手順がすべて完了すれば、アプリケーションは正常に動作します。 正しく動作するか確認するために、ブラウザーを起動し、Azure にアプリケーションを発行したときに作成した外部 URL にアクセスしてみてください。 サインインには、アプリケーションに割り当てたテスト アカウントを使用します。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
+- [Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md)
+- [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)

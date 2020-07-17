@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
-ms.openlocfilehash: 89a97196f14332ec1812dc3e8a16905af1aa4407
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0ea8048ed72aab11a144b0160eb9299398ec37ac
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139264"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82086006"
 ---
 Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) コマンドを使用して、App Service プランを作成します。
 
-次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
+次の例では、`myAppServicePlan`Free**価格レベルの** という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -25,7 +25,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
-```json
+<pre>
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -36,9 +36,9 @@ App Service プランが作成されると、Azure CLI によって、次の例�
   "location": "South Central US",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 } 
-```
+</pre>

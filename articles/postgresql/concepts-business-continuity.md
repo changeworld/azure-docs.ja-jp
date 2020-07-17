@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
-description: Azure Database for PostgreSQL でのビジネス継続性の概要について説明します。
+title: ビジネス継続性 - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure Database for PostgreSQL を使用する場合のビジネス継続性 (ポイント インタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 08/21/2019
+ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068925"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75981928"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -29,26 +29,31 @@ Azure Database for PostgreSQL で提供されるビジネス継続性機能に�
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | ERT < 12 時間<br/>RPO < 1 時間 | ERT < 12 時間<br/>RPO < 1 時間 |
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 
 サービスのバックアップを使って、さまざまな破壊的イベントからサーバーを復旧できます。 一部のデータ、重要なテーブル、そしてデータベース全体さえも、うっかり削除してしまう場合があります。 アプリケーションの欠陥などにより、正しいデータが不良データによって誤って上書きされることもあります。
 
-ポイントインタイム リストアを実行して、正常であることがわかっている時点のサーバーのコピーを作成できます。 この時点は、サーバーに対して構成されているバックアップ リテンション期間内でなければなりません。 新しいサーバーにデータを復元した後は、元のサーバーを新しく復元したサーバーに置き換えたり、復元したサーバーから元のサーバーに必要なデータをコピーしたりできます。
+**ポイントインタイム リストア**を実行して、正常であることがわかっている時点のサーバーのコピーを作成できます。 この時点は、サーバーに対して構成されているバックアップ リテンション期間内でなければなりません。 新しいサーバーにデータを復元した後は、元のサーバーを新しく復元したサーバーに置き換えたり、復元したサーバーから元のサーバーに必要なデータをコピーしたりできます。
 
-## <a name="recover-from-an-azure-regional-data-center-outage"></a>Azure リージョンのデータ センターの停止から復旧する
+## <a name="recover-from-an-azure-data-center-outage"></a>Azure データ センターの停止から復旧する
 
 まれではありますが、Azure データ センターが停止することもあります。 停止が発生すると、ビジネスが中断します。この中断はわずか数分で解消されることもありますが、数時間に及ぶ場合もあります。
 
 オプションの 1 つは、データ センターの停止が終了し、サーバーがオンラインに戻るのを待つことです。 開発環境など、サーバーがしばらくオフラインになっていてもかまわないアプリケーションの場合はこの方法が使えます。 データ センターが停止したときは、復旧までの時間を予測できないため、このオプションはしばらくサーバーが必要ない場合にのみ有効です。
 
-もう 1 つのオプションは、geo 冗長バックアップを使ってサーバーを復元する Azure Database for PostgreSQL の geo リストア機能を使うことです。 これらのバックアップは、サーバーがホストされているリージョンがオフラインのときでもアクセスできます。 これらのバックアップから他の任意のリージョンに復元し、サーバーをオンラインに戻すことができます。
+## <a name="geo-restore"></a>geo リストア
+
+geo リストア機能では、geo 冗長バックアップを使用してサーバーを復元します。 バックアップは、サーバーの[ペアになっているリージョン](../best-practices-availability-paired-regions.md)でホストされます。 これらのバックアップから他の任意のリージョンに復元することができます。 geo リストアでは、バックアップからのデータを使用して新しいサーバーが作成されます。 geo リストアの詳細については、[バックアップと復元の概念に関する記事](concepts-backup.md)を参照してください。
 
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの pg_dump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="cross-region-read-replicas"></a>リージョンにまたがる読み取りレプリカ
+リージョンにまたがる読み取りレプリカを使用すると、事業継続とディザスター リカバリーの計画を強化できます。 読み取りレプリカは、PostgreSQL の物理的なレプリケーション テクノロジを使用して非同期的に更新されます。 読み取りレプリカ、利用可能なリージョン、フェールオーバーする方法については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
+
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL での自動バックアップ](concepts-backup.md)の詳細を確認する。 
 - [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。
 - [Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認する。

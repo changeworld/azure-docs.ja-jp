@@ -1,29 +1,26 @@
 ---
-title: 非推奨のコグニティブ スキル - Azure Search
-description: このページには、近い将来サポートされなくなり、非推奨と見なされるコグニティブ検索スキルの一覧が含まれています。
-services: search
-manager: pablocas
+title: 非推奨のコグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: このページには、近い将来 Azure Cognitive Search スキルセットでサポートされなくなり、非推奨と見なされるコグニティブ スキルの一覧が含まれています。
+manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: f773cd298c8faaac90b30d88a74e8ddcb51c3afa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021948"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72792034"
 ---
-# <a name="deprecated-cognitive-search-skills"></a>非推奨のコグニティブ検索スキル
+# <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure Cognitive Search の非推奨のコグニティブ スキル
 
 このドキュメントでは、非推奨と見なされるコグニティブ スキルについて説明します。 以下の内容について、次のガイドを使用してください。
 
 * スキル名: 非推奨となるスキルの名前です。@odata.type 属性にマッピングされます。
-* 利用可能な最終 API バージョン: 対応する非推奨スキルを含むスキルセットを作成および更新できる Azure Search パブリック API の最終バージョンです。
+* 利用可能な最終 API バージョン: 対応する非推奨スキルを含むスキルセットを作成および更新できる Azure Cognitive Search パブリック API の最終バージョンです。
 * サポート終了: この日を過ぎると、対応するスキルはサポートされていないと見なされます。 以前に作成したスキルセットは引き続き機能するはずですが、ユーザーには非推奨のスキルから移行することが推奨されています。
 * 推奨事項:サポートされているスキルを使用するための移行パスです。 ユーザーは、引き続きサポートを受けるため、推奨事項に従うことをお勧めします。
 
@@ -31,7 +28,7 @@ ms.locfileid: "65021948"
 
 ### <a name="last-available-api-version"></a>利用可能な最終 API バージョン
 
-2019-05-06-Preview
+2017-11-11-Preview
 
 ### <a name="end-of-support"></a>サポート終了
 
@@ -150,6 +147,6 @@ ms.locfileid: "65021948"
 
 ## <a name="see-also"></a>関連項目
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)

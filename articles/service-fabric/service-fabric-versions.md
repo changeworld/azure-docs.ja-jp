@@ -1,29 +1,18 @@
 ---
-title: Azure Service Fabric でサポートされているクラスターのバージョン | Microsoft Docs
-description: Azure Service Fabric でのクラスターのバージョンについて説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric でサポートされているクラスターのバージョン
+description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 9/24/2018
-ms.author: aljo
-ms.openlocfilehash: 5d4ba32b3074098b3e3c1f2a4f42ac0e069e0a5f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409893"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81732871"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
-クラスターでは常に、サポートされている Azure Service Fabric のバージョンが実行されている状態にします。 Service Fabric の新しいバージョンのリリースが発表された日から最短で 60 日後には、以前のバージョンのサポートが終了します。 新しいリリースについては、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)上でお知らせします。
+クラスターでは常に、サポートされている Azure Service Fabric のバージョンが実行されている状態にします。 Service Fabric の新しいバージョンのリリースが発表された日から最短で 60 日後には、以前のバージョンのサポートが終了します。 新しいリリースについては、[Service Fabric チーム ブログ](https://azure.microsoft.com/updates/?product=service-fabric)上でお知らせします。
 
 サポートされている Service Fabric のバージョンをクラスターにおいて継続して実行する方法の詳細については、次のドキュメントを参照してください。
 
@@ -36,7 +25,7 @@ ms.locfileid: "65409893"
 
 | クラスター内の Service Fabric ランタイム | クラスター バージョンから直接アップグレードできる |互換性のある SDK または NuGet パッケージのバージョン | サポート終了 |
 | --- | --- |--- | --- |
-| 5.3.121 より前のすべてのクラスター バージョン | 5.1.158.* |バージョン 2.3 以前 |2017 年 1 月 20 日 |
+| 5\.3.121 より前のすべてのクラスター バージョン | 5.1.158.* |バージョン 2.3 以前 |2017 年 1 月 20 日 |
 | 5.3.* | 5.1.158.* |バージョン 2.3 以前 |2017 年 2 月 24 日 |
 | 5.4.* | 5.1.158.* |バージョン 2.4 以前 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |バージョン 2.5 以前 |2017 年 8 月 10 日    |
@@ -46,9 +35,14 @@ ms.locfileid: "65409893"
 | 6.1.* | 5.7.221.* |バージョン 3.0 以前 |2018 年 7 月 15 日      |
 | 6.2.* | 6.0.232.* |バージョン 3.1 以前 |2018 年 10 月 26 日   |
 | 6.3.* | 6.1.480.* |バージョン 3.2 以前 |2019 年 3 月 31 日  |
-| 6.4.* | 6.2.301.* |バージョン 3.3 以前 |最新バージョンのため、終了日なし |
+| 6.4.* | 6.2.301.* |バージョン 3.3 以前 |2019 年 9 月 15 日 |
+| 6.5.* | 6.4.617.* |バージョン 3.4 以前 |2020 年 8 月 1 日 |
+| 7.0.466.* | 6.4.664.* |バージョン 4.0 以前|2020 年 8 月 1 日  |
+| 7.0.466.* | 6.5.* |バージョン 4.0 以前|2020 年 8 月 1 日 |
+| 7.0.470.* | 7.0.466.* |バージョン 4.0 以前 |2020 年 8 月 1 日  |
+| 7.1.409.* | 7.0.466.* |バージョン 4.0 以前 |最新バージョンのため、終了日なし |
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 次の表に、サポートされている Service Fabric のバージョンに対応しているサポート対象のオペレーティング システムを示します。
 
@@ -57,7 +51,7 @@ ms.locfileid: "65409893"
 | Windows Server 2012 R2 | すべてのバージョン |
 | Windows Server 2016 | すべてのバージョン |
 | Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4. |
+| Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
@@ -102,3 +96,15 @@ ms.locfileid: "65409893"
 | 6.4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
 | 6.4 CU6 | 6.4.658.9590 | NA |
+| 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
+| 6.4 CU8 | 6.4.670.9590 | NA |
+| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
+| 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
+| 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
+| 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
+| 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |
+| 7.0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
+| 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
+| 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

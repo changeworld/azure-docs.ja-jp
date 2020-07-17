@@ -1,28 +1,24 @@
 ---
-title: シングル サインオン (JavaScript 用 Microsoft Authentication Library) | Azure
+title: シングル サインオン (MSAL.js) | Azure
+titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を使用したシングル サインオン エクスペリエンスのビルドについて説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f102307256852ac92616c7fb707e0e2739e5d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230663"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js でのシングル サインオン
 
@@ -39,7 +35,7 @@ Azure AD では、ユーザーが初めてを認証を行うときに、セッ�
 ```javascript
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     },
     cache: {
         cacheLocation: 'localStorage'
@@ -91,7 +87,7 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 
 **ログイン ヒントの使用**
 
-SID の要求を構成していない場合、または対話型認証の呼び出しでアカウント選択のプロンプトをバイパスする必要がある場合は、MSAL.js の対話型メソッド (`loginPopup`、`loginRedirect`、`acquireTokenPopup`、`acquireTokenRedirect`) において、要求パラメーターで `login_hint` を提供し、必要に応じて `domain_hint` を `extraQueryParameters` として渡すことにより、これを行うことができます。 例: 
+SID の要求を構成していない場合、または対話型認証の呼び出しでアカウント選択のプロンプトをバイパスする必要がある場合は、MSAL.js の対話型メソッド (`loginPopup`、`loginRedirect`、`acquireTokenPopup`、`acquireTokenRedirect`) において、要求パラメーターで `login_hint` を提供し、必要に応じて `domain_hint` を `extraQueryParameters` として渡すことにより、これを行うことができます。 次に例を示します。
 
 ```javascript
 var request = {
@@ -161,7 +157,7 @@ var authContext = new AuthenticationContext(config);
 // In latest MSAL.js version
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     },
     cache: {
         cacheLocation: 'localStorage'
@@ -173,6 +169,6 @@ const myMSALObj = new UserAgentApplication(config);
 
 これを構成すると、MSAL.js は ADAL.js で認証されたユーザーのキャッシュされた状態を読み取って、MSAL.js で SSO を提供するために使用することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD での[シングル サインオン セッションとトークンの有効期間](active-directory-configurable-token-lifetimes.md)の値に関する詳細を確認してください。

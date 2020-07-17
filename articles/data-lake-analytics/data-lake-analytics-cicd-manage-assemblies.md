@@ -1,21 +1,17 @@
 ---
-title: Azure Data Lake の CI/CD パイプラインで U-SQL アセンブリを管理するためのベスト プラクティス
+title: CI/CD パイプラインでの U-SQL アセンブリの管理 - Azure Data Lake
 description: Azure DevOps を使用して CI/CD パイプラインで U-SQL C# アセンブリを管理するためのベスト プラクティスについて学習します。
-services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-ms.reviewer: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768027"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71315844"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>CI/CD パイプラインで U-SQL アセンブリを管理するためのベスト プラクティス
 
@@ -34,12 +30,12 @@ C# アセンブリ ソース コードとアセンブリ登録 DDL U-SQL スク�
 U-SQL データベース プロジェクトは、クラス ライブラリ (U-SQL アプリケーション用の) プロジェクトを参照できます。 U-SQL データベースに登録されているアセンブリは、参照される C# ソース コードを使用して、このクラス ライブラリ (U-SQL アプリケーション用の) プロジェクトから作成できます。
 
 次の手順に従ってプロジェクトを作成し、参照を追加します。
-1. **[File]\(ファイル\)** > **[New]\(新規\)** > **[Project]\(プロジェクト\)** の順に選択して、[Class Library (For U-SQL Application)] プロジェクトを作成します。 プロジェクトは **[Azure Data Lake] > [U-SQL]** ノードにあります。
+1. **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Project]\(プロジェクト\)** の順に選択して、[Class Library (For U-SQL Application)] プロジェクトを作成します。 プロジェクトは **[Azure Data Lake] > [U-SQL]** ノードにあります。
 
    ![Data Lake Tools for Visual Studio -- C# クラス ライブラリ プロジェクトの作成](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 1. ユーザー定義の C# コードを [Class Library (For U-SQL Application)] プロジェクトに追加します。
 
-1. **[File]\(ファイル\)** > **[New]\(新規\)** > **[Project]\(プロジェクト\)** の順に選択して、U-SQL プロジェクトを作成します。 プロジェクトは **[Azure Data Lake]** > **[U-SQL]** ノードにあります。
+1. **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Project]\(プロジェクト\)** の順に選択して、U-SQL プロジェクトを作成します。 プロジェクトは **[Azure Data Lake]**  >  **[U-SQL]** ノードにあります。
 
    ![Data Lake Tools for Visual Studio -- U-SQL データベース プロジェクトの作成](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 1. U-SQL データベース プロジェクトのために、C# クラス ライブラリ プロジェクトの参照を追加します。
@@ -48,7 +44,7 @@ U-SQL データベース プロジェクトは、クラス ライブラリ (U-SQ
 
     ![Data Lake Tools for Visual Studio -- U-SQL データベース プロジェクト参照の追加](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
-5. プロジェクトを右クリックし、**[新しい項目の追加]** を選択して、U-SQL データベース プロジェクトにアセンブリ スクリプトを作成します。
+5. プロジェクトを右クリックし、 **[新しい項目の追加]** を選択して、U-SQL データベース プロジェクトにアセンブリ スクリプトを作成します。
 
    ![Data Lake Tools for Visual Studio -- アセンブリ スクリプトの追加](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
 
@@ -74,11 +70,11 @@ Visual Studio で、U-SQL データベース プロジェクトまたは `.usqld
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>U-SQL データベース プロジェクトを使用した配置
 
-1.  U-SQL データベース プロジェクトを右クリックし、**[展開]** を選択します。
+1.  U-SQL データベース プロジェクトを右クリックし、 **[展開]** を選択します。
 2.  **U-SQL データベースの配置**ウィザードで、データベースを配置する **[ADLA アカウント]** を選択します。 ローカル アカウントと ADLA アカウントの両方がサポートされています。
 3.  **[データベース ソース]** が自動的に入力されます。 これは、プロジェクトのビルド出力フォルダー内の .usqldbpack パッケージを指します。
-4.  データベースを作成するには、**[データベース名]** に名前を入力します。 ターゲットの Azure Data Lake Analytics アカウントに同じ名前のデータベースが存在する場合、データベースは再作成されず、データベース プロジェクトに定義されているすべてのオブジェクトが作成されます。
-5.  U-SQL データベースを配置するには、**[送信]** を選択します。 アセンブリや追加ファイルなどのすべてのリソースがアップロードされます。 すべての DDL ステートメントを含む U-SQL ジョブが送信されます。
+4.  データベースを作成するには、 **[データベース名]** に名前を入力します。 ターゲットの Azure Data Lake Analytics アカウントに同じ名前のデータベースが存在する場合、データベースは再作成されず、データベース プロジェクトに定義されているすべてのオブジェクトが作成されます。
+5.  U-SQL データベースを配置するには、 **[送信]** を選択します。 アセンブリや追加ファイルなどのすべてのリソースがアップロードされます。 すべての DDL ステートメントを含む U-SQL ジョブが送信されます。
 
     ![Data Lake Tools for Visual Studio -- U-SQL データベース プロジェクトの配置](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
 
@@ -90,7 +86,7 @@ Visual Studio で、U-SQL データベース プロジェクトまたは `.usqld
 
 Azure DevOps では、コマンド ライン タスクとこの SDK を使用して、U-SQL データベース更新のためのオートメーション パイプラインを設定できます。 [SDK と、U-SQL データベースを配置する CI/CD パイプラインの設定方法の詳細については、こちらを参照してください](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Lake Analytics の CI/CD パイプラインをセットアップする](data-lake-analytics-cicd-overview.md)
 * [Azure Data Lake Analytics コードのテスト](data-lake-analytics-cicd-test.md)

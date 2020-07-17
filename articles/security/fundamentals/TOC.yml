@@ -1,0 +1,141 @@
+- name: 基礎のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure のセキュリティの概要
+      href: overview.md
+    - name: クラウドにおける共同責任
+      href: shared-responsibility.md
+- name: Azure のワークロードをセキュリティで保護する
+  items:
+    - name: セキュリティの技術的な機能
+      href: technical-capabilities.md
+    - name: 組み込みのセキュリティ制御
+      href: security-controls.md
+- name: Azure プラットフォームとインフラストラクチャ
+  items:
+    - name: インフラストラクチャのセキュリティ
+      href: infrastructure.md
+      items:
+        - name: 物理的なセキュリティ
+          href: physical-security.md
+        - name: 可用性
+          href: infrastructure-availability.md
+        - name: コンポーネントと境界
+          href: infrastructure-components.md
+        - name: ネットワーク アーキテクチャ
+          displayName: 'ssl, https'
+          href: infrastructure-network.md
+        - name: 運用ネットワーク
+          href: production-network.md
+        - name: SQL Database
+          href: infrastructure-sql.md
+        - name: 操作
+          href: infrastructure-operations.md
+        - name: 監視
+          href: infrastructure-monitoring.md
+        - name: 整合性
+          href: infrastructure-integrity.md
+        - name: データ保護
+          href: protection-customer-data.md
+    - name: Azure クラウドでの分離
+      href: isolation-choices.md
+- name: ID 管理
+  items:
+    - name: セキュリティの概要
+      href: identity-management-overview.md
+    - name: ベスト プラクティス
+      href: identity-management-best-practices.md
+    - name: セキュリティ チェックリスト
+      href: steps-secure-identity.md
+    - name: パスワードなしの選択
+      href: ad-passwordless.md
+- name: ネットワークのセキュリティ
+  items:
+    - name: セキュリティの概要
+      href: network-overview.md
+    - name: ベスト プラクティス
+      href: network-best-practices.md
+    - name: DDoS Protection
+      href: ddos-best-practices.md
+    - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+- name: IaaS セキュリティ
+  items:
+    - name: Microsoft Antimalware
+      href: antimalware.md
+    - name: 仮想マシンのセキュリティの概要
+      href: virtual-machines-overview.md
+    - name: ベスト プラクティス - IaaS ワークロード
+      href: iaas.md
+    - name: Azure Marketplace イメージ
+      href: azure-marketplace-images.md
+- name: データのセキュリティ、暗号化、保管
+  items:
+    - name: データ セキュリティと暗号化
+      href: encryption-overview.md
+    - name: ディスクの暗号化
+      items:
+        - name: ベスト プラクティス
+          href: data-encryption-best-practices.md
+        - name: 保存時のデータ暗号化
+          href: encryption-atrest.md
+        - name: 仮想マシン用の Azure Disk Encryption
+          href: azure-disk-encryption-vms-vmss.md
+    - name: データベースのセキュリティ
+      items:
+        - name: 概要
+          href: ../../sql-database/sql-database-security-overview.md
+        - name: ベスト プラクティス
+          href: ../../sql-database/sql-database-security-best-practice.md
+        - name: セキュリティ チェックリスト
+          href: database-security-checklist.md
+    - name: Storage のセキュリティ ガイド
+      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: カスタマー ロックボックス
+      href: customer-lockbox-overview.md
+- name: Application
+  items:
+    - name: PaaS
+      href: paas-deployments.md
+      items:
+        - name: PaaS の Azure App Service
+          href: paas-applications-using-app-services.md
+        - name: PaaS の Azure Storage
+          href: paas-applications-using-storage.md
+        - name: PaaS の DB ベスト プラクティス
+          href: paas-applications-using-sql.md
+    - name: Azure Service Fabric のセキュリティ
+      href: service-fabric-best-practices.md
+- name: 監視、監査、および操作
+  items:
+    - name: 高度な脅威保護
+      href: threat-detection.md
+    - name: Azure のログと監査
+      href: log-audit.md
+    - name: セキュリティの管理と監視
+      href: management-monitoring-overview.md
+    - name: リモート管理を強化する
+      href: management.md
+    - name: 運用上のセキュリティ
+      items:
+        - name: 概要
+          href: operational-overview.md
+        - name: ベスト プラクティス
+          href: operational-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: operational-checklist.md
+- name: リソース
+  items:
+    - name: Azure セキュリティ サービス
+      href: services-technologies.md
+    - name: セキュリティ ホワイト ペーパー
+      href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
+    - name: ベスト プラクティス
+      href: best-practices-and-patterns.md
+    - name: サイバーセキュリティに関する相談
+      href: cyber-services.md
+    - name: セキュリティ イベント サポート チケットのログ記録
+      href: event-support-ticket.md
+    - name: 侵入テスト
+      href: pen-testing.md

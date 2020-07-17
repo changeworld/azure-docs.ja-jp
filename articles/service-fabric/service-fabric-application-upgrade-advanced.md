@@ -1,33 +1,82 @@
 ---
-title: 高度なアプリケーション アップグレードに関するトピック | Microsoft Docs
+title: アプリケーションのアップグレードに関する高度なトピック
 description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: e29585ff-e96f-46f4-a07f-6682bbe63281
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 3cdddac74552b56dfe3567adf30f1a05b6eb8e24
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663793"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414493"
 ---
-# <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック
-## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの種類の追加と削除
+# <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
+
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>アプリケーションのアップグレード中にサービスの種類を追加または削除する
+
 アップグレードの一環として、発行したアプリケーションに新しいサービスの種類を追加した場合、その新しいサービスの種類はデプロイされているアプリケーションに追加されます。 このようなアップグレードは、既にアプリケーションの一部であるサービス インスタンスには影響しませんが、追加されたサービスの種類のインスタンスを作成して、新しいサービスの種類をアクティブにする必要があります (「[New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)」を参照)。
 
 同様に、アップグレードの一環として、アプリケーションからサービスの種類を削除することもできます。 ただし、アップグレードに進む前に、削除するサービスの種類のサービス インスタンスをすべて削除する必要があります (「[Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)」を参照)。
 
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>ステートレス サービスの計画的なダウンタイム中に接続がドロップされないようにする
+
+アプリケーションやクラスターのアップグレードまたはノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、インスタンスがダウンして接続が強制的に終了された後、公開されたエンドポイントが削除されるため、接続がドロップされる可能性があります。
+
+これを回避するには、*RequestDrain* (プレビュー) 機能を構成します。サービス構成に*インスタンスの終了遅延期間*を追加して、クラスター内で他のサービスからの要求受信中にドレインを許可し、リバース プロキシを使用するか、エンドポイントを更新するための通知モデルで解決 API を使用してください。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントは、インスタンス終了に先立つ延期期間の開始*前*に削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントには、延期期間開始時点でコールバック関数によってエンドポイントの変更が通知されるため、エンドポイントを解決し、停止するインスタンスへの新しい要求の送信を回避できます。
+
+### <a name="service-configuration"></a>サービス構成
+
+サービス側で延期期間を構成するには、いくつかの方法があります。
+
+ * **新しいサービスを作成する場合**は、`-InstanceCloseDelayDuration` を指定します。
+
+    ```powershell
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    ```
+
+ * **アプリケーション マニフェストの既定のセクションでサービスを定義する場合**は、`InstanceCloseDelayDurationSeconds` プロパティを割り当てます。
+
+    ```xml
+          <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
+              <SingletonPartition />
+          </StatelessService>
+    ```
+
+ * **既存のサービスを更新する場合**は、`-InstanceCloseDelayDuration` を指定します。
+
+    ```powershell
+    Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+### <a name="client-configuration"></a>クライアントの構成
+
+エンドポイントが変更されたときに通知を受け取るには、クライアントはコールバックを登録する必要があります ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription) を参照)。
+変更通知は、エンドポイントが変更されたことを示しており、クライアントでは、エンドポイントを再び解決する必要があります。また、アドバタイズされなくなったエンドポイントはすぐに停止するため、使用しないようにします。
+
+### <a name="optional-upgrade-overrides"></a>省略可能なアップグレードのオーバーライド
+
+サービスごとに既定の延期期間を設定するだけでなく、同じ (`InstanceCloseDelayDurationSec`) オプションを使用して、アプリケーションまたはクラスターのアップグレード中に延期期間をオーバーライドすることもできます。
+
+```powershell
+Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+
+Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+```
+
+延期期間は、呼び出されたアップグレード インスタンスにのみ適用されます。それ以外の場合、個々のサービスの延期期間構成は変更されません。 たとえば、これを利用すると、事前に構成されたアップグレードの延期期間をスキップするために `0` の延期期間を指定できます。
+
+> [!NOTE]
+> 要求をドレインする設定は、Azure ロード バランサーからの要求では受け入れられません。 呼び出しサービスがクレーム ベースの解決を使用する場合、この設定は無視されます。
+>
+>
+
+> [!NOTE]
+> この機能は、前述のように Update-ServiceFabricService コマンドレットを使用すると、既存のサービスで構成できます (クラスター コードのバージョンが 7.1.XXX 以上の場合)。
+>
+>
+
 ## <a name="manual-upgrade-mode"></a>手動アップグレード モード
+
 > [!NOTE]
 > すべての Service Fabric アップグレードで、*Monitored* アップグレード モードをお勧めします。
 > *UnmonitoredManual* アップグレード モードは、アップグレードが失敗または中断した場合にのみ検討してください。 
@@ -41,6 +90,7 @@ ms.locfileid: "58663793"
 最後に、*UnmonitoredAuto* モードは、ユーザーの入力が不要で、アプリケーションの正常性ポリシーが評価されないため、サービスの開発時やテスト時に迅速にアップグレードを繰り返し実行する場合に便利です。
 
 ## <a name="upgrade-with-a-diff-package"></a>差分のパッケージを使用したアップグレード
+
 完全なアプリケーション パッケージをプロビジョニングする代わりに、完全なアプリケーション マニフェストと完全なサービス マニフェストと共に、更新されたコード/構成/データ パッケージのみを含む差分パッケージをプロビジョニングして、アップグレードを実行することもできます。 完全なアプリケーション パッケージは、アプリケーションをクラスターに最初にインストールするときにのみ必要です。 後続のアップグレードは、完全なアプリケーション パッケージと差分パッケージのどちらからでも実行できます。  
 
 アプリケーション パッケージ内に見つからない、差分パッケージのアプリケーション マニフェストまたはサービス マニフェスト内の参照はすべて、現在プロビジョニングされているバージョンに自動的に置き換えられます。
@@ -86,7 +136,45 @@ app1/
 
 つまり、通常どおり完全なアプリケーション パッケージを作成した後、バージョンが変更されなかったコード/構成/データ パッケージ フォルダーをすべて削除します。
 
-## <a name="rolling-back-application-upgrades"></a>アプリケーションのアップグレードのロールバック
+## <a name="upgrade-application-parameters-independently-of-version"></a>バージョンとは無関係にアプリケーション パラメーターをアップグレードする
+
+マニフェストのバージョンを変更せずに Service Fabric アプリケーションのパラメーターを変更することが望ましい場合があります。 これは、Azure Service Fabric の **Start-ServiceFabricApplicationUpgrade** という PowerShell コマンドレットで **-ApplicationParameter** フラグを使用することで簡単に実行できます。 次のプロパティを持つ Service Fabric アプリケーションを想定します。
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
+```
+
+ここで、**Start-ServiceFabricApplicationUpgrade** コマンドレットを使用してアプリケーションをアップグレードします。 この例では監視付きのアップグレードを示していますが、監視されていないアップグレードも使用できます。 このコマンドレットに指定できるフラグの詳細については、[Azure Service Fabric PowerShell モジュール リファレンス](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)をご覧ください。
+
+```PowerShell
+PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
+
+PS C:\> Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/Application1 -ApplicationTypeVers
+ion 1.0.0 -ApplicationParameter $appParams -Monitored
+
+```
+
+アップグレード後、アプリケーションのパラメーターが更新されていること、またバージョンが同じであることを確認します。
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
+```
+
+## <a name="roll-back-application-upgrades"></a>アプリケーションのアップグレードをロールバックする
 
 アップグレードは 3 つのモード (*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual*) のいずれかでロールフォワードできますが、ロールバックできるのは *UnmonitoredAuto* または *UnmonitoredManual* モードのみです。 *UnmonitoredAuto* モードでのロールバックは、*UpgradeReplicaSetCheckTimeout* の既定値が異なる点を除き、ロールフォワードと同じように動作します (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)。 *UnmonitoredManual* モードでのロールバックは、ロールフォワードと同じように動作します。つまり、ロールバックは各 UD の完了後に中断し、[Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) を使用して明示的に再開してロールバックを続行する必要があります。
 
@@ -94,7 +182,7 @@ app1/
 
 ロールバック中、*UpgradeReplicaSetCheckTimeout* の値とモードは、[Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) を使用していつでも変更できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
@@ -103,4 +191,4 @@ app1/
 
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
-「 [アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。

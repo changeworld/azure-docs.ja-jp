@@ -1,23 +1,17 @@
 ---
 title: Azure Blockchain Workbench のトラブルシューティング
-description: Azure Blockchain Workbench アプリケーションのトラブルシューティング方法。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
+description: Azure Blockchain Workbench プレビュー アプリケーションのトラブルシューティング方法。
+ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: b0263761a4aaf663b16584fbf9caa11bb124d5c4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.reviewer: brendal
+ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510087"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74324299"
 ---
-# <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench のトラブルシューティング
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench プレビューのトラブルシューティング
 
 PowerShell スクリプトを利用すると、開発時のデバッグやサポートに役立ちます。 トラブルシューティングのために、スクリプトで概要を生成し、詳細なログを収集することができます。 収集されるログの内容は次のとおりです。
 
@@ -27,6 +21,8 @@ PowerShell スクリプトを利用すると、開発時のデバッグやサポ
 * Azure 監視 (Azure Monitor ログ)
 
 この情報を利用して、次の手順を決定し、問題の根本原因を特定することができます。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="troubleshooting-script"></a>トラブルシューティング スクリプト
 
@@ -39,7 +35,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>スクリプトを実行する
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-`collectBlockchainWorkbenchTroubleshooting.ps1` スクリプトを実行してログを収集し、トラブルシューティング情報のフォルダーを含む ZIP ファイルを作成します。 例: 
+`collectBlockchainWorkbenchTroubleshooting.ps1` スクリプトを実行してログを収集し、トラブルシューティング情報のフォルダーを含む ZIP ファイルを作成します。 次に例を示します。
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -50,11 +46,11 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 |---------|---------|----|
 | SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | はい |
 | ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | はい |
-| OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
-| LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
-| OmsSubscriptionId | Azure Monitor ログのデプロイ先のサブスクリプション ID。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsResourceGroup |Azure Monitor ログのデプロイ先のリソース グループ。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ  |
+| OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ |
+| LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ |
+| OmsSubscriptionId | Azure Monitor ログのデプロイ先のサブスクリプション ID。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ |
+| OmsResourceGroup |Azure Monitor ログのデプロイ先のリソース グループ。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ |
+| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ |
 
 ## <a name="what-is-collected"></a>収集される内容
 
@@ -72,7 +68,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 **Metrics** フォルダーには、時間の経過に伴う各種システム コンポーネントのメトリックが格納されます。 たとえば、出力ファイル `\Details\Workbench\apiMetrics.txt` には、さまざまな応答コードと収集期間全体の応答時間の概要が格納されます。 **Details** フォルダーには、Workbench または基盤のブロックチェーン ネットワークの特定の問題のトラブルシューティングのための詳細なログが格納されます。 たとえば、`\Details\Workbench\Exceptions.csv` にはシステムで発生した最新の例外の一覧が格納されますが、これはスマート コントラクトやブロックチェーンとの相互作用のエラーのトラブルシューティングに役立ちます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench Application Insights トラブルシューティング ガイド](https://aka.ms/workbenchtroubleshooting)

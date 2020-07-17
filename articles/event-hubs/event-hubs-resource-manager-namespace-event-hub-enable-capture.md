@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/06/2019
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453872"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
@@ -27,7 +27,7 @@ ms.locfileid: "57776497"
 
 この記事では、選択した保存先に応じて Azure Storage Blob または Azure Data Lake Store にキャプチャされるイベントの指定方法についても取り上げます。
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[ resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」を参照してください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.EventHub resource types (Microsoft.EventHub のリソースの種類)](/azure/templates/microsoft.eventhub/allversions)」を参照してください。
 
 Azure リソースの名前付け規則のパターンとプラクティスの詳細については、[Azure リソースの名前付け規則][Azure Resources naming conventions]に関するページを参照してください。
 
@@ -37,7 +37,7 @@ Azure リソースの名前付け規則のパターンとプラクティスの�
 - [イベント ハブと Azure Data Lake Store へのキャプチャを有効にするテンプレート][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Event Hubs" を検索してください。
+> 最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][Azure Quickstart Templates] 」ギャラリーで "Event Hubs" を検索してください。
 > 
 > 
 
@@ -51,7 +51,7 @@ Event Hubs Capture を Azure Data Lake Store に対して有効にするには�
 
 [![Azure へのデプロイ](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
@@ -235,7 +235,7 @@ Azure Storage を保存先として選ぶ場合は、次のパラメーターを
 }
 ```
 
-Azure Data Lake Store を保存先として選ぶ場合は、次のパラメーターを使用します。 キャプチャしたイベントの保存先となる Data Lake Store パスには、アクセス許可を設定する必要があります。 アクセス許可の設定については、[こちらの記事](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account)を参照してください。
+Azure Data Lake Store Gen1 を保存先として選ぶ場合は、次のパラメーターを使用します。 キャプチャしたイベントの保存先となる Data Lake Store パスには、アクセス許可を設定する必要があります。 アクセス許可を設定するには、「[Azure Data Lake Storage Gen 1 へのデータのキャプチャ](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)」を参照してください。
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -414,20 +414,16 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 保存先としての Azure Blob Storage:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 保存先としての Azure Data Lake Store:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Portal](https://portal.azure.com) を使用して Event Hubs Capture を構成することもできます。 詳細については、「[Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)」を参照してください。
 
@@ -437,8 +433,8 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure Resources naming conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
+[Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
 [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

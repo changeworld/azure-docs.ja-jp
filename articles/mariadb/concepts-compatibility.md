@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB ドライバーと管理ツールの互換性
+title: ドライバーとツールの互換性 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツールについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 7a3d9a5f87a565625052fc54e3ecccc99fd928a7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 3/18/2020
+ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259501"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79532350"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツール
 
@@ -23,13 +23,13 @@ Azure Database for MariaDB では、MariaDB サーバーのコミュニティ �
 
 目標は、MariaDB ドライバーの 3 つの最新バージョンと、常に MariaDB ドライバーの機能と使いやすさを向上させ続けているオープン ソース コミュニティの作成者の努力をサポートすることです。 テストによって Azure Database for MariaDB 10.2 と互換性のあることがわかっているドライバーの一覧を次の表に示します。
 
-**ドライバー** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ**
+**[ドライバー]** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **注**
 ---|---|---|---|---
 PHP | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | SSL MySQLi との PHP 7.0 接続では、接続文字列に MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT を追加します。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO の設定: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` オプションを false に設定します。
 .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 |
-MySQL コネクタ/NET | [MySQL コネクタ/NET](https://github.com/mysql/mysql-connector-net) | 8.0、7.0、6.10 |  | 一部の非 UTF8 Windows システムでは、エンコードのバグが原因で、接続できない場合があります。
+MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0、7.0、6.10 |  | 一部の非 UTF8 Windows システムでは、エンコードのバグが原因で、接続できない場合があります。
 Node.js |  [GitHub 上の MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM のインストール パッケージ:<br> NPM から `npm install mysql` を実行 | 2.15 | 2.14.1 以前
-GO | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 以前 | バージョン 1.3 では接続文字列で `allowNativePasswords=true` を使用します。 バージョン 1.4 には修正プログラムが含まれているため、`allowNativePasswords=true`は不要になりました。
+GO | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 以前 | バージョン 1.3 では接続文字列で `allowNativePasswords=true` を使用します。 バージョン 1.4 には修正プログラムが含まれているため、`allowNativePasswords=true` は不要になりました。
 Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2 | 1.2.2 以前 |
 Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 以前 |
 
@@ -48,6 +48,6 @@ SQL クエリのオート コンプリート | X | X |
 サーバー パラメーターの表示 | X | X | X
 クライアント接続の表示 | X | X | X
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MariaDB への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

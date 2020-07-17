@@ -1,26 +1,20 @@
 ---
-title: Azure の OpenShift の概要 | Microsoft Docs
+title: Azure の OpenShift の概要
 description: Azure の OpenShift の概要について説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: mdotson
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c8ebd10544331d3b7d887124542fe4ee2753c714
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233143"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759458"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -36,7 +30,7 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 完全なドキュメントは[こちら](https://docs.microsoft.com/azure/openshift/)でご覧いただけます。 
+Microsoft Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 詳細については、[Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/) ドキュメントをご覧ください。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
@@ -48,11 +42,11 @@ Container Platform は Red Hat 製のエンタープライズ対応[市販バー
 
 OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロジェクトであり、コミュニティによりサポートされています。 OKD は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure で OpenShift の共通の前提条件を構成する](./openshift-prerequisites.md)
-- [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform.md)
-- [OpenShift Container Platform 自己管理型マーケットプレース プランをデプロイする](./openshift-marketplace-self-managed.md)
+- [Azure で OpenShift の共通の前提条件を構成する](./openshift-container-platform-3x-prerequisites.md)
+- [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform-3x.md)
+- [OpenShift Container Platform 自己管理型マーケットプレース プランをデプロイする](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [OpenShift を Azure Stack にデプロイする](./openshift-azure-stack.md)
-- [デプロイ後タスク](./openshift-post-deployment.md)
-- [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
+- [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

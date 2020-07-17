@@ -1,26 +1,27 @@
 ---
-title: Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング | Azure Active Directory
+title: Azure MFA NPS 拡張機能のトラブルシューティング - Azure Active Directory
 description: Azure Multi-Factor Authentication の NPS 拡張機能の問題を解決するためのヘルプを得る
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: troubleshooting
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80ecf02a7e517300c41e84986659a66cfa11c90
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313432"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611383"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
-Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバーで **[カスタム ビュー]** > **[サーバー ロール]** > **[Network Policy and Access Services]\(ネットワーク ポリシーと Access Services\)** を選択すると表示されるイベント ビューアーで確認できます。
+Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生した場合、この記事を使ってすばやく解決してください。 NPS 拡張機能のログは、NPS 拡張機能がインストールされているサーバーで **[カスタム ビュー]**  >  **[サーバー ロール]**  >  **[Network Policy and Access Services]\(ネットワーク ポリシーと Access Services\)** を選択すると表示されるイベント ビューアーで確認できます。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>一般的なエラーのトラブルシューティング手順
 
@@ -30,8 +31,8 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **CLIENT_CERT_INSTALL_ERROR** | テナントへのクライアント証明書のインストールまたは関連付けに問題がある可能性があります。 [MFA NPS 拡張機能のトラブルシューティング](howto-mfa-nps-extension.md#troubleshooting)の手順に従って、クライアント証明書に関する問題を調査します。 |
 | **ESTS_TOKEN_ERROR** | [MFA NPS 拡張機能のトラブルシューティング](howto-mfa-nps-extension.md#troubleshooting)の手順に従って、クライアント証明書および ADAL トークンに関する問題を調査します。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS サーバーが、Azure MFA から応答を受信できません。 ファイアウォールが https://adnotifications.windowsazure.com との間で送受信されるトラフィックに対して双方向に開いていることを確認します。 |
-| **HTTP_CONNECT_ERROR** | NPS 拡張機能を実行しているサーバーで、 https://adnotifications.windowsazure.com と https://login.microsoftonline.com/ に到達できることを確認します。 このサイトが読み込まれない場合は、そのサーバーで接続のトラブルシューティングを行います。 |
-| **Azure MFA の NPS 拡張機能:** <br> Azure MFA の NPS 拡張機能は、AccessAccept 状態での Radius 要求のセカンダリ認証のみ実行します。 ユーザー username から受け取った要求に対する応答の状態は AccessReject で、要求を無視します。 | このエラーは通常、AD の認証の失敗または NPS サーバーが Azure AD から応答を受信できないことを反映します。 ファイアウォールがポート 80 と 443 を使用して、 https://adnotifications.windowsazure.com および https://login.microsoftonline.comの間で送受信されるトラフィックに対して双方向に開いていることを確認します。 また、[Network Access Permissions]\(ネットワーク アクセス許可) の [DIAL-IN]\(ダイヤル IN) タブで、[control access through NPS Network Policy]\(NPS ネットワーク ポリシーでアクセスを制御する) に設定されていることを確認することも重要です。 |
+| **HTTP_CONNECT_ERROR** | NPS 拡張機能を実行しているサーバーで、`https://adnotifications.windowsazure.com` と `https://login.microsoftonline.com/` に到達できることを確認します。 このサイトが読み込まれない場合は、そのサーバーで接続のトラブルシューティングを行います。 |
+| **Azure MFA の NPS 拡張機能:** <br> Azure MFA の NPS 拡張機能は、AccessAccept 状態での Radius 要求のセカンダリ認証のみ実行します。 ユーザー username から受け取った要求に対する応答の状態は AccessReject で、要求を無視します。 | このエラーは通常、AD の認証の失敗または NPS サーバーが Azure AD から応答を受信できないことを反映します。 ファイアウォールがポート 80 と 443 を使用して、`https://adnotifications.windowsazure.com` および `https://login.microsoftonline.com`の間で送受信されるトラフィックに対して双方向に開いていることを確認します。 また、[Network Access Permissions]\(ネットワーク アクセス許可) の [DIAL-IN]\(ダイヤル IN) タブで、[control access through NPS Network Policy]\(NPS ネットワーク ポリシーでアクセスを制御する) に設定されていることを確認することも重要です。 また、ユーザーにライセンスが割り当てられていない場合にも、このエラーがトリガーされる可能性があります。 |
 | **REGISTRY_CONFIG_ERROR** | レジストリにアプリケーションに対するキーが見つかりません。原因としては、[PowerShell スクリプト](howto-mfa-nps-extension.md#install-the-nps-extension)がインストール後に実行されていないことが考えられます。 見つからないキーは、エラー メッセージに示されています。 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa に、そのキーがあることを確認してください。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 要求に、必須の Radius userName\Identifier 属性がありません。NPS が RADIUS 要求を受信していることを確認します | このエラーは、通常、インストールに問題があることを示します。 NPS 拡張機能は、RADIUS 要求を受信できる NPS サーバーにインストールする必要があります。 RDG、RRAS などのサービスの依存関係としてインストールされた NPS サーバーは、RADIUS 要求を受信しません。 このようにインストールされ、エラーが発生した場合、NPS 拡張機能は、認証要求から詳細情報を読み取ることができないため動作しません。 |
 | **REQUEST_MISSING_CODE** | NPS サーバーと NAS サーバーの間のパスワード暗号化プロトコルが 2 つ目として使用している認証方法に対応していることを確認します。 **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。 **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。 |
@@ -42,8 +43,8 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | エラー コード | エラー メッセージ | トラブルシューティングの手順 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | エラー: userObjectSid の検索に失敗しました | ユーザーがオンプレミスの Active Directory インスタンスに存在することを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
 
 ## <a name="errors-your-users-may-encounter"></a>ユーザー側で発生する可能性があるエラー
 
@@ -66,9 +67,9 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 認証要求の失敗が原因で、Multi-Factor Authentication からメッセージが表示されることもあります。 これは構成の結果としてエラーが発生したことを示すものではありません。認証要求が拒否された理由を説明する意図的な警告です。
 
-| エラー コード | エラー メッセージ | 推奨される手順 | 
+| エラー コード | エラー メッセージ | 推奨される手順 |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 誤ったコードが入力されました\OATH コードが正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 | 
+| **OathCodeIncorrect** | 誤ったコードが入力されました\OATH コードが正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 許可されている最大コード再試行回数に達しました | ユーザーが何回も検証チャレンジに失敗しました。 設定によっては、管理者によるブロック解除が必要になることがあります。  |
 | **SMSAuthFailedWrongCodeEntered** | 誤ったコードが入力されました/テキスト メッセージ OTP が正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 |
 
@@ -90,11 +91,15 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **VersionNotSupported** |  |
 | **MFAPinNotSetup** |  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ### <a name="troubleshoot-user-accounts"></a>ユーザー アカウントをトラブルシューティングする
 
 [2 段階認証で問題が発生](../user-help/multi-factor-authentication-end-user-troubleshoot.md)している場合は、その問題を自己診断できるようユーザーをサポートします。
+
+### <a name="health-check-script"></a>正常性チェック スクリプト
+
+[Azure MFA NPS 拡張機能の正常性チェック スクリプト](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
 
 ### <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
@@ -102,7 +107,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 サポート診断用のデバッグ ログを収集するには、NPS サーバー上で次の手順に従います。
 
-1. レジストリ エディターを開き、[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa] を参照して、**[VERBOSE_LOG]** を **[TRUE]** に設定します。
+1. レジストリ エディターを開き、[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa] を参照して、 **[VERBOSE_LOG]** を **[TRUE]** に設定します。
 2. 管理者のコマンド プロンプトを開き、次のコマンドを実行します。
 
    ```
@@ -126,5 +131,5 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
    Start .
    ```
 
-5. レジストリ エディターを開き、[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa] を参照して、**[VERBOSE_LOG]** を **[FALSE]** に設定します。
+5. レジストリ エディターを開き、[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa] を参照して、 **[VERBOSE_LOG]** を **[FALSE]** に設定します。
 6. C:\NPS フォルダーの内容を zip 形式で圧縮し、zip ファイルをサポート ケースに添付します。

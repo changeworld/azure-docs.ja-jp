@@ -1,6 +1,6 @@
 ---
-title: C を使用してイベントを送信する - Azure Event Hubs | Microsoft Docs
-description: この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。
+title: クイック スタート:C を使用してイベントを送信する - Azure Event Hubs
+description: クイック スタート:この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678770"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73720661"
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>C を使用して Azure Event Hubs にイベントを送信する
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>クイック スタート:C を使用して Azure Event Hubs にイベントを送信する
 
 ## <a name="introduction"></a>はじめに
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -154,7 +154,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

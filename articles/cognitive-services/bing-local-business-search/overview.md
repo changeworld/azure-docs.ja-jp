@@ -1,25 +1,26 @@
 ---
-title: Bing Local Business Search API とは | Microsoft Docs
+title: Bing Local Business Search API とは
 titleSuffix: Azure Cognitive Services
 description: RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元の場所や企業に関する情報を検索できます。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: 3cc9ed4dd108e76da6430a450876b709be514356
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.subservice: bing-local-business
+ms.topic: overview
+ms.date: 03/24/2020
+ms.author: aahi
+ms.openlocfilehash: 0006761126eb1d561da7eeff97e8a9928d62ddb0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796763"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478938"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing Local Business Search とは
 RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元企業に関する情報を検索できます。 たとえば、`q=<business-name> in Redmond, Washington`、または `q=Italian restaurants near me` です。 
 
-## <a name="features"></a>機能
+## <a name="features"></a>特徴
 | 機能 | 説明 |  
 | -- | -- | 
 | [地元の企業と場所を検索する](quickstarts/local-quickstart.md) | Bing Local Business Search API では、クエリからローカライズされた結果が得られます。 結果には、企業の Web サイトの URL と表示テキスト、電話番号、地理的な場所(GPS 座標、市区町村、番地など) が含まれます |  
@@ -35,11 +36,11 @@ HTTP 要求を行って JSON 応答を解析できる任意のプログラミン
 4. JSON 応答を解析します 
 
 > [!NOTE]
-> 現時点で Local Business Search でサポートされているのは、`en-US` 市場のみです。 
-> [!NOTE]
-> 現時点では、Local Business Search で Autosuggest はサポートされていません。 
+> Local Business Search の現在のサポート状況は次のとおりです。 
+> * サポートされるのは `en-US` 市場のみです。 
+> * Bing Autosuggest はサポートされません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [クエリと応答](local-search-query-response.md)
 - [Local Business Search のクイック スタート](quickstarts/local-quickstart.md)
 - [Local Business Search API リファレンス](local-search-reference.md)

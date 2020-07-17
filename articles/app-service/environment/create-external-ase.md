@@ -1,25 +1,18 @@
 ---
-title: 外部 App Service 環境の作成 - Azure
-description: アプリまたはスタンドアロンの作成中に Azure App Service Environment を作成する方法について説明します。
-services: app-service
-documentationcenter: na
+title: 外部 ASE の作成
+description: アプリが含まれる App Service 環境を作成する方法、またはスタンドアロンの (空の) ASE を作成する方法について説明します。
 author: ccompy
-manager: stefsch
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545418"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75430506"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
@@ -39,9 +32,9 @@ App Service Environment (ASE) をデプロイするには、次の 2 つの方�
 
 ASE を作成した後は、次の変更は行えません。
 
-- Location
+- 場所
 - サブスクリプション
-- リソース グループ
+- Resource group
 - 使用する VNet
 - 使用するサブネット
 - サブネットのサイズ
@@ -56,7 +49,7 @@ ASE を作成する方法は、3 つあります。
 
 - **App Service プランを作成中に作成する**。 この方法では、1 つの手順で、ASE と App Service プランを作成します。
 - **スタンドアロン アクションとして作成する**。 この方法では、何も含まない ASE である、スタンドアロン ASE を作成します。 この方法は、ASE を作成するより高度なプロセスです。 これを使用して ILB を備えた ASE を作成します。
-- **Azure Resource Manager テンプレートから作成する**。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートを使用して ASE を作成する方法][MakeASEfromTemplate]に関するページをご覧ください。
+- **Azure Resource Manager テンプレートから作成する**。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートからの ASE の作成][MakeASEfromTemplate]に関するページをご覧ください。
 
 外部 ASE はパブリック VIP を持ちます。つまり、ASE 内のアプリへのすべての HTTP/HTTPS トラフィックは、インターネットからアクセス可能な IP アドレスに届きます。 ILB を備えた ASE には、ASE によって使用されるサブネットの IP アドレスがあります。 ILB ASE 内でホストされているアプリは、インターネットに直接は公開されません。
 
@@ -66,23 +59,23 @@ App Service プランは、アプリのコンテナーです。 App Service で�
 
 App Service プランを作成中に ASE を作成するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web アプリ]** を選択します。
 
     ![Web アプリの作成][1]
 
 2. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
-3. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
+3. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」を参照してください。
 
 4. お使いの OS (Windows、Linux、Docker) を選択します。 
 
-5. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+5. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
     ![新しい App Service プラン][2]
 
 6. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-7. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
+7. **[価格レベル]** を選択し、 **[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、 **[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、 **[分離]** 以外の他の価格 SKU は使用できません。 
 
     ![価格レベルの選択][3]
 
@@ -96,7 +89,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     b. 新しいサブネット名を入力します。
 
-    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/25` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
+    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/24` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
 
     d. サブネット IP の範囲を選択します。
 
@@ -104,21 +97,21 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>カスタム Docker イメージを一緒に使用して ASE と Linux Web アプリを作成する
 
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[Web + モバイル]** > **[Web App for Containers]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web App for Containers]** をクリックします。 
 
     ![Web アプリの作成][7]
 
 1. サブスクリプションを選択します。 アプリと ASE は、同じサブスクリプションに作成されます。
 
-1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
+1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」を参照してください。
 
-1. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+1. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
     ![新しい App Service プラン][8]
 
 1. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-1. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
+1. **[価格レベル]** を選択し、 **[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、 **[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、 **[分離]** 以外の他の価格 SKU は使用できません。 
 
     ![価格レベルの選択][3]
 
@@ -132,7 +125,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
     b. 新しいサブネット名を入力します。
 
-    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/25` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
+    c. サブネットのサイズを選択します。 *ご使用の ASE の将来的な規模の拡大に対応できるサイズを選択するのを忘れないでください。* 128 のアドレスを持ち、最大サイズの ASE に対応できる `/24` が推奨されています。 たとえば、`/28` は 16 のアドレスしか使用できないため、推奨されません。 インフラストラクチャは少なくとも 7 つのアドレスを使用し、Azure のネットワークはさらに 5 つを使用します。 `/28` サブネットでは、外部 ASE に対して最大スケーリングの 4 App Service プラン インスタンス、ILB ASE に対して 3 App Service プラン インスタンスのみが残されています。
 
     d. サブネット IP の範囲を選択します。
 
@@ -148,7 +141,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 ASE スタンドアロンを作成する場合、ASE には何も含まれません。 空の ASE でも、インフラストラクチャに対して月額料金が発生します。 以下の手順は、ILB を備えた ASE を作成するか、独自のリソース グループ内に ASE を作成する場合に行います。 ASE を作成した後は、通常のプロセスを使用してその中にアプリを作成できます。 場所として、新しい ASE を選択します。
 
-1. Azure Marketplace で **App Service Environment** を検索するか、**[リソースの作成]** > **[Web + モバイル]** > **[App Service Environment]** の順に選択します。 
+1. Azure Marketplace で **App Service Environment** を検索するか、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[App Service Environment]** の順に選択します。 
 
 1. ご使用の ASE の名前を入力します。 この名前は、ASE で作成されるアプリで使用されます。 名前が *mynewdemoase* の場合、サブドメイン名は *.mynewdemoase.p.azurewebsites.net* になります。 ここで *mytestapp* という名前のアプリを作成した場合、この Web アプリのアドレスは mytestapp.mynewdemoase.p.azurewebsites.net になります。 名前に空白文字は使用できません。 大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。 ILB を使用する場合、ASE の名前はサブドメインでは使用されず、ASE の作成時に明示的に指定されます。
 
@@ -176,7 +169,7 @@ ASE スタンドアロンを作成する場合、ASE には何も含まれませ
 
 最初のバージョンの App Service Environment (ASEv1) のインスタンスを作成することもできます。 そのプロセスを開始するには、Marketplace で **App Service Environment v1** を検索します。 スタンドアロン ASE を作成するのと同じ方法で、ASE を作成します。 完了すると、ASEv1 は 2 つのフロントエンドと 2 つの worker を持ちます。 ASEv1 では、フロントエンドや worker を管理する必要があります。 App Service プランを作成するときに自動的には追加されません。 フロントエンドは HTTP/HTTPS エンドポイントとして動作し、worker にトラフィックを送信します。 worker は、アプリをホストするロールです。 ASE を作成した後は、フロントエンドと worker の数を調整できます。 
 
-ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページをご覧ください。 ASEv1 のスケーリング、管理、および監視について詳しくは、[App Service Environment の構成方法][ConfigureASEv1]に関するページをご覧ください。
+ASEv1 について詳しくは、「[App Service Environment v1 の概要][ASEv1Intro]」をご覧ください。 ASEv1 のスケーリング、管理、および監視について詳しくは、[App Service Environment の構成方法][ConfigureASEv1]に関するページをご覧ください。
 
 <!--Image references-->
 [1]: ./media/how_to_create_an_external_app_service_environment/createexternalase-create.png
@@ -206,4 +199,4 @@ ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Int
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md

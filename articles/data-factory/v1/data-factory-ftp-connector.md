@@ -1,27 +1,26 @@
 ---
-title: Azure Data Factory を使用した FTP サーバーからのデータ移動 | Microsoft Docs
+title: Azure Data Factory を使用して FTP サーバーからデータを移動する
 description: Azure Data Factory を使用して FTP サーバーからデータを移動する方法を説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523428"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992047"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-ftp-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-ftp.md)
 
@@ -40,12 +39,12 @@ FTP サーバーから、サポートされている任意のシンク データ
 
 FTP サーバーとして、同じオンプレミスのコンピューターまたは IaaS VM にゲートウェイをインストールすることが可能です。 ただし、リソースの競合を防ぎ、パフォーマンスの向上を図るために、別のコンピューターまたは IaaS VM にゲートウェイをインストールすることをお勧めします。 別のコンピューターにゲートウェイをインストールすると、そのコンピューターが FTP サーバーにアクセスできるようになります。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 さまざまなツールまたは API を使用して、FTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
+パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -63,18 +62,18 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、FTP リンク サービスに固有の JSON 要素について説明しています。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | type |FtpServer に設定します。 |はい |&nbsp; |
 | host |FTP サーバーの名前または IP アドレスを指定します。 |はい |&nbsp; |
 | authenticationType |認証の種類を指定します。 |はい |Basic、Anonymous |
-| username |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
-| password |ユーザー (username) のパスワードを指定します。 |いいえ  |&nbsp; |
-| encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報を指定します。 |いいえ  |&nbsp; |
-| gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway のゲートウェイの名前を指定します。 |いいえ  |&nbsp; |
-| port |FTP サーバーがリッスンしているポートを指定します。 |いいえ  |21 |
-| enableSsl |SSL/TLS チャネル上の FTP を使用するかどうかを指定します。 |いいえ  |true |
-| enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ  |true |
+| username |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ |&nbsp; |
+| password |ユーザー (username) のパスワードを指定します。 |いいえ |&nbsp; |
+| encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報を指定します。 |いいえ |&nbsp; |
+| gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway のゲートウェイの名前を指定します。 |いいえ |&nbsp; |
+| port |FTP サーバーがリッスンしているポートを指定します。 |いいえ |21 |
+| enableSsl |SSL/TLS チャネル上の FTP を使用するかどうかを指定します。 |いいえ |true |
+| enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの TLS/SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ |true |
 
 >[!NOTE]
 >FTP コネクタでは、暗号化なしまたは明示的な SSL/TLS 暗号化での FTP サーバーへのアクセスがサポートされています。暗黙的な SSL/TLS 暗号化はサポートされていません。
@@ -156,12 +155,12 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | folderPath |フォルダーへのサブパス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始および終了日時に基づくフォルダー パスを使用できます。 |はい |
-| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
-| fileFilter |すべてのファイルではなく、**folderPath** 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** は FileShare 入力データセットに適用されます。 このプロパティは、Hadoop 分散ファイル システム (HDFS) ではサポートされていません。 |いいえ  |
-| partitionedBy |時系列データに動的な **folderPath** と **fileName** を指定するために使用します。 たとえば、毎時間のデータとしてパラメーター化されている **folderPath** を指定できます。 |いいえ  |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> コピーしたいファイルがファイルベース ストア間である場合 (バイナリ コピー) は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ  |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
-| useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 値は、バイナリ モードの場合は true (既定値)、ASCII の場合は false です。 このプロパティを使用できるのは、関連するリンクされたサービスの種類がFtpServer の場合のみです。 |いいえ  |
+| fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
+| fileFilter |すべてのファイルではなく、**folderPath** 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** は FileShare 入力データセットに適用されます。 このプロパティは、Hadoop 分散ファイル システム (HDFS) ではサポートされていません。 |いいえ |
+| partitionedBy |時系列データに動的な **folderPath** と **fileName** を指定するために使用します。 たとえば、毎時間のデータとしてパラメーター化されている **folderPath** を指定できます。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> コピーしたいファイルがファイルベース ストア間である場合 (バイナリ コピー) は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は **GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。サポートされるレベルは **Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
+| useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 値は、バイナリ モードの場合は true (既定値)、ASCII の場合は false です。 このプロパティを使用できるのは、関連するリンクされたサービスの種類がFtpServer の場合のみです。 |いいえ |
 
 > [!NOTE]
 > **fileName** と **fileFilter** は、同時に使用することができません。
@@ -206,12 +205,12 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| recursive |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ  |
+| recursive |データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True、False (既定値) |いいえ |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON の使用例:FTP サーバーから Azure BLOB にデータをコピーする
 このサンプルは、FTP サーバーから Azure Blob ストレージにデータをコピーする方法を示します。 ただし、Data Factory のコピー アクティビティを使用して、[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)で説明されているシンクのいずれかにデータを直接コピーすることができます。
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
+以下の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または[ Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
 
 * [FtpServer](#linked-service-properties) 型のリンクされたサービス
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス
@@ -389,8 +388,8 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 * Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 

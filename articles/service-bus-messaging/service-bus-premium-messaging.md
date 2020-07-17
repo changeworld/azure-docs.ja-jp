@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus の Premium および Standard メッセージング価格レベルの概要 | Microsoft Docs
-description: Service Bus の Premium および Standard メッセージング レベル
+title: Azure Service Bus の Premium レベルと Standard レベル
+description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9e9c8918556b7ff003bcfed062ea1e15233b2845
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761958"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76774565"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -37,7 +37,7 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 | ワークロードをスケールアップおよびスケールダウンする機能 |該当なし |
 | 最大 1 MB のメッセージ サイズ |最大 256 KB のメッセージ サイズ |
 
-**Service Bus Premium メッセージング**では、各顧客のワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット*と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを購入できます。 1 つのワークロードまたはエンティティは、複数のメッセージング ユニットにまたがることができます。課金は 24 時間単位、すなわち日単位ですが、メッセージング ユニットの数は自由に変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
+**Service Bus Premium メッセージング**では、各顧客のワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット*と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 各 Service Bus Premium 名前空間に対して 1、2、4、または 8 のメッセージング ユニットを購入することができます。 1 つのワークロードまたはエンティティが複数のメッセージング ユニットにまたがることができ、メッセージング ユニットの数は任意で変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
 このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。 Service Bus Premium メッセージングは、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に導入されたストレージ エンジンが基盤になっています。 Premium メッセージングでのピークのパフォーマンスは、Standard レベルよりもはるかに高速です。
 
@@ -70,6 +70,31 @@ CPU とメモリの使用は追跡され、次の理由で表示されます。
 - 購入したリソースの容量を把握する。
 - スケール アップ/スケール ダウンを判断するのに役立つ容量計画。
 
+## <a name="messaging-unit---how-many-are-needed"></a>メッセージング ユニット - 必要な数
+
+Azure Service Bus Premium 名前空間をプロビジョニングする場合は、割り当てられるメッセージング ユニット数を指定する必要があります。 これらのメッセージング ユニットは、名前空間に割り当てられる専用リソースです。
+
+Service Bus Premium 名前空間に割り当てられるメッセージング ユニット数は、ワークロードの変化 (増加または減少) を考慮して**動的に調整**できます。
+
+アーキテクチャのメッセージング ユニット数を決定する際には、いくつかの要素を考慮する必要があります。
+
+- 名前空間に割り当てられた ***1 つまたは 2 つのメッセージング ユニット***から始めます。
+- 名前空間の[リソース使用状況メトリック](service-bus-metrics-azure-monitor.md#resource-usage-metrics)内の CPU 使用率メトリックを調査します。
+    - CPU 使用率が ***20% を下回る***場合は、名前空間に割り当てられたメッセージング ユニット数を***スケールダウン***できる可能性があります。
+    - CPU 使用率が ***70% を超える***場合、名前空間に割り当てられるメッセージング ユニットを***スケールアップ***すると、アプリケーションにメリットがあります。
+
+Service Bus 名前空間に割り当てられたリソースのスケール プロセスは、[Azure Automation Runbook](../automation/automation-quickstart-create-runbook.md) を使用して自動化できます。
+
+> [!NOTE]
+> 名前空間に割り当てられたリソースの**スケール**は、プリエンティブまたはリアクティブにすることができます。
+>
+>  * **プリエンプティブ**:(季節性や傾向により) 追加のワークロードが予想される場合は、ワークロードが増える前に、さらに多くのメッセージング ユニットを名前空間に割り当てることができます。
+>
+>  * **リアクティブ**:リソース使用状況メトリックを調べて追加のワークロードが特定された場合、増加する需要を組み込むために追加のリソースを名前空間に割り当てることができます。
+>
+> Service Bus の課金メーターは時間単位です。 スケールアップの場合は、これらが使用された時間の追加リソースに対してのみ課金されます。
+>
+
 ## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
 
 Premium メッセージングは簡単に使い始めることができ、そのプロセスは Standard メッセージングと似ています。 まず、[Azure Portal](https://portal.azure.com) で[名前空間を作成](service-bus-create-namespace-portal.md)します。 **[価格レベル]** で **[Premium]** を選択します。 **[価格の詳細を表示]** をクリックして、各レベルについての詳細を表示します。
@@ -78,7 +103,7 @@ Premium メッセージングは簡単に使い始めることができ、その
 
 [Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/)を作成することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のリンクをご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ForeSee CX Suite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ForeSee CX Suite の統合 | Microsoft Docs'
 description: Azure Active Directory と ForeSee CX Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 19c2ccab6685f53ba714298f66bc8e8821b4aa02
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988027"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67550405"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル:Azure Active Directory と ForeSee CX Suite の統合
+# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル: Azure Active Directory と ForeSee CX Suite の統合
 
 このチュートリアルでは、ForeSee CX Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ForeSee CX Suite と Azure AD の統合には、次の利点があります。
@@ -119,7 +119,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成するに�
 
     a. **[サインオン URL]** テキスト ボックスに URL として「`https://cxsuite.foresee.com/`」と入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します: https:\//www.okta.com/saml2/service-provider/<UniqueID>
+    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。https:\//www.okta.com/saml2/service-provider/\<UniqueID>
 
     > [!Note]
     > **識別子**の値が自動的に設定されない場合は、上記のパターンに従って手動で値を入力してください。 この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[ForeSee CX Suite クライアント サポート チーム](mailto:support@foresee.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -1,28 +1,23 @@
 ---
-title: ユーザー アカウントでタスクを実行する - Azure Batch | Microsoft Docs
-description: Azure Batch でタスクを実行するためのユーザー アカウントを構成する
-services: batch
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
+title: ユーザー アカウントでタスクを実行する - Azure Batch
+description: タスクを実行するユーザー アカウントを構成できることは便利です。 ユーザー アカウントの種類とその構成方法について説明します。
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 05/22/2017
-ms.author: lahugh
+ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 000495ab84990f15885c254b472be7863c75da58
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877518"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980288"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
+
+> [!NOTE] 
+> この記事で説明するユーザー アカウントは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) で使用されているユーザー アカウントとは異なります。 
+>
+> SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには「[リモート デスクトップを使用した Azure の Linux VM への接続](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)に関するページをご覧ください。 RDP を使用して Windows を実行しているノードに接続するには、[Windows Server VM への接続](../virtual-machines/windows/connect-logon.md)に関するページをご覧ください。<br /><br />
+> RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
 
 Azure Batch のタスクは、常にユーザー アカウントのもとで実行されます。 既定では、管理者権限のない標準ユーザー アカウントでタスクが実行されます。 通常は、既定のユーザー アカウントの設定で十分です。 ただし、タスクを実行するために、特別にユーザー アカウントを構成したほうが良い場合もあります。 この記事では、ユーザー アカウントの種類、および自分の用途に合わせてユーザー アカウントを構成する方法について説明します。
 
@@ -36,14 +31,6 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 
 > [!IMPORTANT] 
 > Batch サービス バージョン 2017-01-01.4.0 では互換性を損ねる変更が行われ、このバージョンを呼び出すにはコードを更新する必要があります。 Batch の古いバージョンからコードを移行する場合、**runElevated** プロパティは REST API または Batch クライアント ライブラリではサポートされなくなることに注意してください。 昇格レベルの指定には、タスクの新しい **userIdentity** プロパティを使用してください。 クライアント ライブラリのいずれかをご使用の場合は、「[コードを最新の Batch クライアント ライブラリに更新する](#update-your-code-to-the-latest-batch-client-library)」のセクションから、Batch コードの更新に関する簡単なガイドラインをご覧ください。
->
->
-
-> [!NOTE] 
-> この記事で説明したユーザー アカウントでは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) はサポートされません。 
->
-> SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには「[リモート デスクトップを使用した Azure の Linux VM への接続](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)に関するページをご覧ください。 RDP を使用して Windows を実行しているノードに接続するには、[Windows Server VM への接続](../virtual-machines/windows/connect-logon.md)に関するページをご覧ください。<br /><br />
-> RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
 >
 >
 
@@ -280,7 +267,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -329,10 +316,10 @@ Batch サービス バージョン 2017-01-01.4.0 では、以前のバージョ
 | コードが次の場合                      | 次のように更新                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
+| `run_elevated=False`                      | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
 | `run_elevated` の指定なし | 更新の必要なし                                                                                                                                  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。

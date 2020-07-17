@@ -1,11 +1,10 @@
 ---
 title: Azure Security Center のファイルの整合性の監視 | Microsoft Docs
-description: " Azure Security Center のファイルの整合性の監視を有効にする方法を説明します。 "
+description: このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: memildin
+ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968802"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82106697"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -46,11 +45,43 @@ FIM は、Azure Change Tracking ソリューションを使用して、ユーザ
 ## <a name="which-files-should-i-monitor"></a>どのファイルを監視する必要があるか
 監視するファイルを選択するときは、システムとアプリケーションにとって重要なファイルを考慮する必要があります。 計画なしで変更されることがないファイルを選択することを検討してください。 アプリケーションまたはオペレーティング システムによって頻繁に変更されるファイル (ログ ファイルやテキスト ファイルなど) を選択すると、多数のノイズの発生によって攻撃が識別が困難になります。
 
-Security Center では、ファイルとレジストリの変更を伴う既知の攻撃パターンに従って、監視対象としてお勧めするファイルを既定値として設定しています。
+Security Center では、既知の攻撃パターンに基づいて、監視が推奨される項目を次のリストに示しています。 ここには、ファイルと Windows レジストリ キーが含まれます。 すべてのキーは、HKEY_LOCAL_MACHINE (表では "HKLM") の下にあります。
+
+|**Linux ファイル**|**Windows ファイル**|**Windows レジストリ キー**|
+|:----|:----|:----|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/*.conf|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
+|/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows|
+|/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
+|/bin|C:\Windows\regedit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders|
+|/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders|
+|/boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
+|/usr/local/bin|C:\Program Files\Microsoft Security Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
+|/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
+|/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
+|/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
+|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
+|/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows|
+|/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
+|/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnce|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnceEx|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunServices|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunServicesOnce|
+|||HKLM\SYSTEM\CurrentControlSet\Control\hivelist|
+|||HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\PublicProfile|
+|||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 ## <a name="using-file-integrity-monitoring"></a>ファイルの整合性の監視の使用
 1. **[Security Center]** ダッシュボードを開きます。
-2. 左側のウィンドウで、**[高度なクラウド防御]** の下の **[ファイルの整合性の監視]** を選択します。
+2. 左側のウィンドウで、 **[高度なクラウド防御]** の下の **[ファイルの整合性の監視]** を選択します。
 ![Security Center ダッシュボード][1]
 
 **[ファイルの整合性の監視]** が開きます。
@@ -74,27 +105,26 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 ## <a name="enable-fim"></a>FIM を有効にする
 ワークスペースで FIM を有効にするには:
 
-1. **[ファイルの整合性の監視]** で、**[有効化]** ボタンを使用してワークスペースを選択します。
+1. **[ファイルの整合性の監視]** で、 **[有効化]** ボタンを使用してワークスペースを選択します。
 2. **[ファイルの整合性の監視を有効にする]** が開き、そのワークスペース下にある Windows マシンと Linux マシンの数が表示されます。
 
    ![ファイルの整合性の監視の有効化][5]
 
-   Windows と Linux の推奨設定も表示されます。  **[Windows ファイル]**、**[レジストリ]**、および **[Linux ファイル]** を展開して、推奨される項目の完全な一覧を表示します。
+   Windows と Linux の推奨設定も表示されます。  **[Windows ファイル]** 、 **[レジストリ]** 、および **[Linux ファイル]** を展開して、推奨される項目の完全な一覧を表示します。
 
 3. FIM を適用しないエンティティをオフにします。
-4. FIM を有効にするには、**[ファイルの整合性の監視を適用する]** を選択します。
+4. FIM を有効にするには、 **[ファイルの整合性の監視を適用する]** を選択します。
 
 > [!NOTE]
 > 設定はいつでも変更できます。 詳細については、以降の「監視対象エンティティを編集する」を参照してください。
->
->
+
 
 ## <a name="view-the-fim-dashboard"></a>FIM ダッシュボードを表示する
 **ファイルの整合性の監視**ダッシュボードには、FIM が有効になっているワークスペースが表示されます。 FIM ダッシュボードは、ワークスペースの FIM を有効にした後、または **[ファイルの整合性の監視]** ウィンドウで FIM が既に有効になっているワークスペースを選択したときに開きます。
 
 ![ファイルの整合性の監視ダッシュボード][6]
 
-ワークスペースの FIM ダッシュボードには、次の情報が表示されます。
+ワークスペースの FIM ダッシュボードには、次の詳細が表示されます。
 
 - ワークスペースに接続されているマシンの合計数
 - 選択した期間中に発生した変更の合計数
@@ -110,7 +140,7 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 - 選択した期間中に発生した変更の合計数
 - ファイルの変更またはレジストリの変更としての変更の合計数の内訳
 
-検索フィールドにコンピューター名を入力するか、[コンピューター] タブに一覧表示されているコンピューターを選択すると、**[ログ検索]** が開きます。ログ検索は、選択された期間中にコンピューターで行われたすべての変更を表示します。 変更を展開して詳細を確認できます。
+検索フィールドにコンピューター名を入力するか、[コンピューター] タブに一覧表示されているコンピューターを選択すると、 **[ログ検索]** が開きます。ログ検索は、選択された期間中にコンピューターで行われたすべての変更を表示します。 変更を展開して詳細を確認できます。
 
 ![ログ検索][8]
 
@@ -123,17 +153,17 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
 ![ワークスペースに対する変更][9]
 
-**[変更の詳細]** は、検索フィールドに変更を入力するか、**[変更]** タブに一覧表示されているエンティティを選択したときに開きます。
+**[変更の詳細]** は、検索フィールドに変更を入力するか、 **[変更]** タブに一覧表示されているエンティティを選択したときに開きます。
 
 ![変更の詳細][10]
 
 ## <a name="edit-monitored-entities"></a>監視対象エンティティを編集する
 
-1. **ファイルの整合性の監視ダッシュ ボード**に戻り、**[設定]** を選択します。
+1. **ファイルの整合性の監視ダッシュ ボード**に戻り、 **[設定]** を選択します。
 
    ![設定][11]
 
-   **[ワークスペースの構成]** を開くと 3 つのタブが表示されます:**[Windows レジストリ]**、**[Windows ファイル]**、および **[Linux ファイル]**。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
+   **[ワークスペースの構成]** を開くと 3 つのタブが表示されます: **[Windows レジストリ]** 、 **[Windows ファイル]** 、および **[Linux ファイル]** 。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
 
    ![ワークスペースの構成][12]
 
@@ -150,7 +180,7 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
 ## <a name="add-a-new-entity-to-monitor"></a>監視する新しいエンティティを追加する
 1. **ファイルの整合性の監視ダッシュボード**に戻り、上部にある **[設定]** を選択します。 **[ワークスペースの構成]** が開きます。
-2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブを選択します:[Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]。 この例では、**[Linux ファイル]** が選択されています。
+2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブを選択します:[Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]。 この例では、 **[Linux ファイル]** が選択されています。
 
    ![監視する新しい項目を追加する][14]
 
@@ -158,7 +188,7 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
    ![要求された情報の入力][15]
 
-4. **[追加]** ページで、要求された情報を入力し、**[保存]** を選択します。
+4. **[追加]** ページで、要求された情報を入力し、 **[保存]** を選択します。
 
 ## <a name="disable-monitored-entities"></a>監視対象エンティティを無効にする
 1. **ファイルの整合性の監視**ダッシュボードに戻ります。
@@ -166,15 +196,15 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
    ![FIM が有効になっているワークスペースの選択][16]
 
-3. [ファイルの整合性の監視] で、**[設定]** を選択します。
+3. [ファイルの整合性の監視] で、 **[設定]** を選択します。
 
    ![[設定] の選択][17]
 
-4. **[ワークスペースの構成]** で、**[有効化]** が [True] に設定されているグループを選択します。
+4. **[ワークスペースの構成]** で、 **[有効化]** が [True] に設定されているグループを選択します。
 
    ![ワークスペースの構成][18]
 
-5. **[Edit for Change Tracking]\(変更追跡を行うための編集\)** ウィンドウで、**[有効化]** を [False] に設定します。
+5. **[Edit for Change Tracking]\(変更追跡を行うための編集\)** ウィンドウで、 **[有効化]** を [False] に設定します。
 
    ![[有効化] を False に設定][19]
 
@@ -193,21 +223,17 @@ FIM を無効にすることができます。 FIM は、Azure Change Tracking �
 
 1. FIM を無効にするには、**ファイルの整合性の監視**ダッシュボードに戻ります。
 2. ワークスペースを選択します。
-3. **[ファイルの整合性の監視]** で、**[無効化]** を選択します。
+3. **[ファイルの整合性の監視]** で、 **[無効化]** を選択します。
 
    ![FIM を無効にする][20]
 
-4. 無効にするには、**[削除]** を選択します。
+4. 無効にするには、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
-この記事では、Security Center のファイルの整合性の監視 (FIM) を使用する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
+## <a name="next-steps"></a>次のステップ
+この記事では、Security Center のファイルの整合性の監視 (FIM) を使用する方法について説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
 
 * [セキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 * [セキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明します。
-* [セキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明します。
-* [セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティの警告の管理と対応の方法について説明します。
-* [パートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明します。
-* [Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)-- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->

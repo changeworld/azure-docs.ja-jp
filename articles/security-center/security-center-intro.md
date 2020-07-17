@@ -1,11 +1,10 @@
 ---
 title: Azure Security Center とは | Microsoft Docs
-description: Azure Security Center の主な機能とそのしくみについて説明します。
+description: このページでは、Security Center の主な利点 (リソースがクラウドとオンプレミスのどちらにあるかを問わず、セキュリティの状態を検出し、改善する) について説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 06/06/2019
+ms.author: memildin
+ms.openlocfilehash: a02abd931dddd410882dd67a73a5b5fab6dc8cf9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242039"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82194892"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -32,27 +31,29 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **急速に変化するワークロード**: これはクラウドの強みであり、課題でもあります。 一方、エンド ユーザーはより多くの処理を実行できます。 さらに、使用および作成されている常に変化するサービスが、お客様のセキュリティ基準に準拠し、セキュリティのベスト プラクティスに従っていることを確認するにはどうすればよいでしょうか。
 
--   **ますます高度になる攻撃** : ワークロードをどこで実行する場合でも、攻撃はますます高度になっています。 パブリック クラウドのワークロードを保護する必要があります。これは実質的にインターネットに接続しているワークロードであり、セキュリティのベスト プラクティスに従わないと、さらに脆弱になる可能性があります。
+-   **ますます高度になる攻撃**: ワークロードをどこで実行する場合でも、攻撃はますます高度になっています。 パブリック クラウドのワークロードを保護する必要があります。これは実質的にインターネットに接続しているワークロードであり、セキュリティのベスト プラクティスに従わないと、さらに脆弱になる可能性があります。
 
--   **セキュリティ スキルの不足** : セキュリティ アラートとアラート システムの数は、環境が保護されているかどうかを確認するために必要な経歴と経験を持つ管理者の数をはるかに上回っています。 最近の攻撃の最新情報を把握し続けることは常に課題であり、セキュリティの世界が絶え間なく変化する最前線に立ち続けることは不可能です。
+-   **セキュリティ スキルの不足**: セキュリティ アラートとアラート システムの数は、環境が保護されているかどうかを確認するために必要な経歴と経験を持つ管理者の数を上回っています。 最近の攻撃の最新情報を把握し続けることは常に課題であり、セキュリティの世界が絶え間なく変化する最前線に立ち続けることは不可能です。
 
 このような課題からお客様自身を保護できるように、Security Center には次のツールが用意されています。
 
--   **セキュリティ体制を強化する**:Security Center では環境が評価されます。リソースの状態、つまりセキュリティで保護されているかどうかを把握できます。
+-   **セキュリティ体制を強化する**:Security Center を使用すると、ご自分の環境を評価することができ、リソースの状態や、それらがセキュリティで保護されているかどうかを把握できます。
 
--   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項と脅威検出アラートが生成されます。
+-   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項とセキュリティ アラートが生成されます。
 
 -   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスによる自動プロビジョニングと保護が提供されます。
 
-## <a name="architecture"></a>アーキテクチャ
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+
+## <a name="architecture"></a>Architecture
 
 Security Center はネイティブで Azure の一部なので、Service Fabric、SQL Database、ストレージ アカウントなどの Azure に含まれる PaaS サービスは、デプロイすることなく Security Center で監視および保護されます。
 
-さらに、Security Center によって、クラウド内またはオンプレミス上にある Azure 以外のサーバーおよび仮想マシンが保護されます。Microsoft Monitoring Agent をインストールすることで、Windows サーバーと Linux サーバーのどちらにも対応できます。 Azure 仮想マシンは、Security Center 内に自動プロビジョニングされます。
+さらに、Security Center は、Log Analytics エージェントをインストールすることにより、Windows と Linux の両方のサーバーで、クラウドまたはオンプレミスにある Azure 以外のサーバーと仮想マシンを保護します。 Azure 仮想マシンは、Security Center 内に自動プロビジョニングされます。
 
-エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、脅威検出アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
+エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、セキュリティ アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
 
-Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーが、Security Center カテゴリのビルトインのイニシアティブとして Azure Policy に反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 ビルトインのイニシアティブに含まれているのは監査ポリシーだけです。 Azure Policy における Security Center のポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
+Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーが、Security Center カテゴリのビルトインのイニシアティブとして Azure Policy に反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。 Azure Policy における Security Center のポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
 
 ## <a name="strengthen-security-posture"></a>セキュリティ体制の強化
 
@@ -60,15 +61,15 @@ Azure Security Center を使用すると、セキュリティ体制を強化で�
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>組織のセキュリティ ポリシーとコンプライアンスの管理
 
-これは、ワークロードがセキュリティで保護されていることを把握し、確実にするための基本的なセキュリティです。まず、セキュリティ ポリシーを適切に調整して配置することから始めます。 Security Center のすべてのポリシーは Azure のポリシー制御を基礎にして構築されているため、 **世界レベルのポリシー ソリューション**のすべての範囲と柔軟性を利用できます。 Security Center では、管理グループ、サブスクリプション全体、さらにはテナント全体に対して実行するようにポリシーを設定できます。
+これは、ワークロードがセキュリティで保護されていることを把握し、確実にするための基本的なセキュリティです。まず、セキュリティ ポリシーを適切に調整して配置することから始めます。 Security Center のすべてのポリシーは Azure Policy 制御を基礎にして構築されているため、**世界レベルのポリシー ソリューション**のすべての範囲と柔軟性を利用できます。 Security Center では、管理グループ、サブスクリプション全体、さらにはテナント全体に対して実行するようにポリシーを設定できます。
 
 ![Security Center ダッシュボード](media/security-center-intro/sc-dashboard.png)
 
-Security Center を使用すると、 **シャドウ IT のサブスクリプションを特定する**ことができます。 ダッシュボードで**未カバー**のラベルが付いたサブスクリプションを見ると、新しくサブスクリプションが作成されたときにすぐに把握できます。また、ポリシーによって保護され、Azure Security Center によって保護されていることを確認できます。
+Security Center を使用すると、**シャドウ IT のサブスクリプションを特定する**ことができます。 ダッシュボードで**未カバー**のラベルが付いたサブスクリプションを見ると、新しくサブスクリプションが作成されたときにすぐに把握できます。また、ポリシーによって保護され、Azure Security Center によって保護されていることを確認できます。
 
 ![Security Center のポリシー ダッシュボード](media/security-center-intro/sc-policy-dashboard.png)
 
-Security Center の高度な監視機能を使用すると、 **コンプライアンスとガバナンスを長期にわたって追跡および管理することもできます**。  **全体的なコンプライアンス** には、ワークロードに関連付けられているポリシーにサブスクリプションが準拠しているかどうかのメジャーが表示されます。 
+Security Center の高度な監視機能を使用すると、**コンプライアンスとガバナンスを長期にわたって追跡および管理**することもできます。 **全体的なコンプライアンス**には、ワークロードに関連付けられているポリシーにサブスクリプションがどのくらい準拠しているかが表示されます。 
 
 ![長期にわたる Security Center ポリシー](media/security-center-intro/sc-policy-time.png)
 
@@ -76,11 +77,11 @@ Security Center の高度な監視機能を使用すると、 **コンプライ
 
 Security Center では、ワークロード全体に展開されている新しいリソースが継続的に検出され、セキュリティのベスト プラクティスに従って構成されているかどうかが評価され、そうでない場合はフラグが立てられます。また、マシンを保護するために必要な修正点について、優先順位が付けられた推奨事項一覧が表示されます。
 
-ネットワークのセキュリティ状態を継続的に監視するために Security Center に用意されている最も強力なツールの 1 つとして、 **ネットワーク マップ**があります。 このマップを使用すると、ワークロードのトポロジを確認できるため、各ノードが正しく構成されているかどうかを確認できます。 ノードがどのように接続されているかを確認できます。これにより、攻撃者がネットワークに侵入しやすくなる可能性がある望ましくない接続をブロックすることができます。
+ネットワークのセキュリティ状態を継続的に監視するために Security Center に用意されている最も強力なツールの 1 つとして、**ネットワーク マップ**があります。 このマップを使用すると、ワークロードのトポロジを確認できるため、各ノードが正しく構成されているかどうかを確認できます。 ノードがどのように接続されているかを確認できます。これにより、攻撃者がネットワークに侵入しやすくなる可能性がある望ましくない接続をブロックすることができます。
 
 ![Security Center のネットワーク マップ](media/security-center-intro/sc-net-map.png)
 
-Security Center では、 **セキュリティ スコア**を追加することで、もう一段階簡単にセキュリティ アラートを緩和できます。 セキュリティ スコアは、全体的なセキュリティ体制に対する各推奨事項の重要度を理解できるように、受信した各推奨事項と関連付けられるようになりました。 これは、 **セキュリティ作業の優先度付け**を可能にする上で重要です。
+Security Center では、**セキュリティ スコア**を追加することで、もう一段階簡単にセキュリティ アラートを緩和できます。 セキュリティ スコアは、全体的なセキュリティ体制に対する各推奨事項の重要度を理解できるように、受信した各推奨事項と関連付けられるようになりました。 これは、**セキュリティ作業の優先度付け**を可能にするうえで重要です。
 
 ![Security Center のセキュリティ スコア](media/security-center-intro/sc-secure-score.png)
 
@@ -106,9 +107,9 @@ Security Center の脅威の防止機能には、サイバー キルチェーン
 
 ![Security Center の攻撃に対する推奨事項](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>高度な脅威保護
+### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Advanced Threat Protection との統合
 
-Security Center では、Windows Defender Advanced Threat Protection とのネイティブ統合をすぐに利用できます。 つまり、Windows 仮想マシンとサーバーは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。 高度な脅威検出は、Linux 仮想マシンおよびサーバー用にも提供されており、すぐに利用できます。
+Security Center には、Microsoft Defender Advanced Threat Protection との自動ネイティブ統合機能が備わっています。 つまり、Windows マシンと Linux マシンは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。
 
 さらに、Security Center では、サーバー環境のアプリケーション制御ポリシーを自動化することができます。 Security Center の適応型アプリケーション制御を使用すると、Windows サーバー全体の包括的なアプリのホワイトリストを作成できます。 ルールを作成して違反を確認する必要はありません。すべて自動的に行われます。
 
@@ -126,6 +127,10 @@ Security Center は、ブルートフォース攻撃への露出を制限する�
 
 Security Center には、Azure SQL 内のデータの自動分類を実行するために役立つ機能が含まれています。 また、Azure SQL と Storage サービス全体の潜在的な脆弱性の評価と、それらを緩和する方法の推奨事項を取得することもできます。
 
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT およびハイブリッド クラウド ワークロードを保護する
+
+Azure Security Center for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、脅威に対するインテリジェントな保護と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
+
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 
 ネイティブの Azure 統合 (Azure Policy、Azure Monitor ログなど) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Windows Defender Advanced Threat Protection など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
@@ -138,9 +143,10 @@ Security Center で、Azure および Azure リソースとのシームレスで
 
 広範なログ収集: Windows および Linux のログはすべてセキュリティ分析エンジンで活用され、推奨事項とアラートの作成に使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- Security Center の Free 価格レベルは、Azure サブスクリプションがある場合に有効です。 高度なセキュリティ管理と脅威検出の機能を利用するには、Standard 価格レベルにアップグレードする必要があります。 Standard レベルは無料でお試しいただくことができます。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。
-- 今すぐ Security Center Standard を有効にする準備ができたら、「[クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」の詳細な手順を参照してください。
 
+- Azure portal の Azure Security Center ダッシュボードに初めてアクセスしたとき、または API を介してプログラムで有効にした場合は、現在のすべての Azure サブスクリプションで Security Center の Free の価格レベルが有効になります。 高度なセキュリティ管理と脅威検出の機能を利用するには、Standard の価格レベルにアップグレードする必要があります。 Standard レベルは 30 日間無料でお試しいただくことができます。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。
+
+- 今すぐ Security Center の Standard を有効にする準備ができたら、「[クイック スタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」の詳細な手順を参照してください。

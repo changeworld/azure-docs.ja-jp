@@ -1,22 +1,17 @@
 ---
-title: 'エンドユーザー認証: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+title: エンドユーザー認証 - .NET と Data Lake Storage Gen1 - Azure
 description: Azure Active Directory を .NET SDK と共に使用した Data Lake Storage Gen1 でエンドユーザー認証を行う方法について説明します
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 78a290d8136f8804e853d36a9bc95571625ed89c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876770"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688154"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 での .NET SDK を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -30,39 +25,31 @@ ms.locfileid: "58876770"
 この記事では、.NET SDK を使用して、Azure Data Lake Storage Gen1 に対するエンドユーザー認証を行う方法について説明します。 .NET SDK を使用した Data Lake Storage Gen1 に対するサービス間認証については、[.NET SDK を使用した Data Lake Storage Gen1 に対するサービス間認証](data-lake-store-service-to-service-authenticate-net-sdk.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Visual Studio 2013、2015、2017**。 以下の手順では、Visual Studio 2017 を使用します。
+* **Visual Studio 2013 以降**。 以下の手順では、Visual Studio 2019 を使用します。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 * **Azure Active Directory "ネイティブ" アプリケーションを作成します**。 「[End-user authentication with Data Lake Storage Gen1 using Azure Active Directory (Azure Active Directory を使用した Data Lake Storage Gen1 でのエンドユーザー認証)](data-lake-store-end-user-authenticate-using-active-directory.md)」のステップを完了している必要があります。
 
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
-1. Visual Studio を開き、コンソール アプリケーションを作成します。
-2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
+1. Visual Studio で、 **[ファイル]** メニュー、 **[新規作成]** 、 **[プロジェクト]** の順に選択します。
+2. **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
+3. **[プロジェクト名]** に `CreateADLApplication` と入力して、 **[作成]** を選択します。
 
-   | プロパティ | 値 |
-   | --- | --- |
-   | Category |テンプレート/Visual C#/Windows |
-   | テンプレート |コンソール アプリケーション |
-   | Name |CreateADLApplication |
-
-4. **[OK]** をクリックしてプロジェクトを作成します。
-
-5. NuGet パッケージをプロジェクトに追加します。
+4. NuGet パッケージをプロジェクトに追加します。
 
    1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
-   2. **[NuGet パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
+   2. **[NuGet パッケージ マネージャー]** タブで、 **[パッケージ ソース]** が **nuget.org** に設定されており、 **[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
 
       * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v2.1.3-preview を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
-        ![NuGet ソースの追加](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
+        ![NuGet ソースを追加する](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
 
-6. **Program.cs** を開きます。
-7. using ステートメントを次の行に置き換えます。
+5. **Program.cs** を開きます。
+6. using ステートメントを次の行に置き換えます。
 
     ```csharp
     using System;
@@ -82,7 +69,7 @@ ms.locfileid: "58876770"
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD のネイティブ アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 でアプリケーションを**対話的**に認証できます。つまり、Azure 資格情報を入力するように求められます。
 
-使いやすくするために、次のスニペットでは、クライアント ID とリダイレクト URI について、すべての Azure サブスクリプションで有効な既定値を使用しています。 次のスニペットでは、入力する必要があるのはテナント ID の値のみです。 テナント ID は、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」で説明されている指示に従って取得できます。
+使いやすくするために、次のスニペットでは、クライアント ID とリダイレクト URI について、すべての Azure サブスクリプションで有効な既定値を使用しています。 次のスニペットでは、入力する必要があるのはテナント ID の値のみです。 テナント ID は、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」で説明されている指示に従って取得できます。
     
 - Main() 関数を次のコードに置き換えます。
 
@@ -109,7 +96,7 @@ ms.locfileid: "58876770"
 * ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、作成したアプリケーションの Azure AD テナント ID、クライアント ID、およびリダイレクト URI を使用する必要があります。 手順については、[Data Lake Storage Gen1 でのエンド ユーザー認証のための Active Directory アプリケーションの作成](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページを参照してください。
 
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure Data Lake Storage Gen1 に対し、.NET SDK からエンドユーザー認証を使って認証を行う方法について説明しました。 これで、.NET SDK を使用して Azure Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
 * [.NET SDK を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)

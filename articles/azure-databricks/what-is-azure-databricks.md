@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 0864db682141b1d7f8cb0c9ff14c9897fb02fe1b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412748"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255517"
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 
@@ -23,7 +23,7 @@ Azure Databricks は、Microsoft Azure クラウド サービス プラットフ
 
 ![Azure Databricks とは](./media/what-is-azure-databricks/azure-databricks-overview.png "Azure Databricks とは")
 
-Azure Databricks は、高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービスです。 ビッグ データ パイプラインに使用されるデータ (生データまたは構造化データ) は、Azure Data Factory を介して一連のバッチに分けて Azure に取り込まれるか、Kafka、Event Hubs、IoT Hub を使ってほぼリアルタイムでストリーム配信されます。 このデータは、長期永続保管を目的としたデータ レイク (Azure Blob Storage または Azure Data Lake Storage) に到達します。 Azure Databricks は、分析ワークフローの過程で使います。[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml)、[Azure SQL Data Warehouse](../sql-data-warehouse/index.md) などさまざまなデータ ソースから、Azure Databricks を使ってデータを読み取り、そのデータを Spark で変換することによって重要な分析情報が得られます。
+Azure Databricks は、高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービスです。 ビッグ データ パイプラインに使用されるデータ (生データまたは構造化データ) は、Azure Data Factory を介して一連のバッチに分けて Azure に取り込まれるか、Kafka、Event Hubs、IoT Hub を使ってほぼリアルタイムでストリーム配信されます。 このデータは、長期永続保管を目的としたデータ レイク (Azure Blob Storage または Azure Data Lake Storage) に到達します。 Azure Databricks は、分析ワークフローの過程で使います。[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.yml)、[Azure Cosmos DB](../cosmos-db/index.yml)、[Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/index.yml) などさまざまなデータ ソースから、Azure Databricks を使ってデータを読み取り、そのデータを Spark で変換することによって重要な分析情報が得られます。
 
 ![Databricks のパイプライン](./media/what-is-azure-databricks/databricks-pipeline.png)
 
@@ -31,13 +31,13 @@ Azure Databricks は、高速で使いやすい、コラボレーション対応
 
 Azure Databricks は、完全なオープン ソースの Apache Spark クラスター テクノロジと機能から構成されています。 Azure Databricks の Spark には、次のコンポーネントが含まれています。
 
-![Azure Databricks での Apache Spark](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Azure Databricks での Apache Spark")
+![Azure Databricks における Apache Spark](./media/what-is-azure-databricks/apache-spark-ecosystem-databricks.png "Azure Databricks における Apache Spark")
 
 * **Spark SQL と DataFrame**: Spark SQL は構造化データを処理するための Spark モジュールです。 DataFrame は、名前付きの列に編成されたデータの分散型コレクションです。 概念的には、リレーショナル データベースのテーブルまたは R/Python のデータ フレームと同等のものです。
 
 * **Streaming**: 分析アプリケーションおよび対話型アプリケーションのためのリアルタイムのデータ処理と分析です。 HDFS、Flume、Kafka と統合されています。
 
-* **MLib**: 分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Machine Learning ライブラリです。
+* **MLlib**: 分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Machine Learning ライブラリです。
 
 * **GraphX**: 認知分析からデータ探索まで、さまざまなユース ケースを対象とするグラフおよびグラフ計算です。
 
@@ -86,6 +86,11 @@ Azure Active Directory の統合、ロール ベースの制御、データと�
 * Azure Databricks のロール ベースのアクセスでは、ノートブック、クラスター、ジョブ、およびデータに対してきめ細かいユーザー権限を設定できます。
 * エンタープライズ グレードの SLA です。 
 
+> [!IMPORTANT]
+>
+> Azure Databricks は、グローバル Azure パブリック クラウド インフラストラクチャにデプロイされる Microsoft Azure のファーストパーティ サービスです。 コントロール プレーンのパブリック IP とカスタマー データ プレーンのパブリック IP との間の通信を含め、サービスのコンポーネント間の通信はすべて、Microsoft Azure のネットワーク バックボーン内に維持されます。 「[マイクロソフトのグローバル ネットワーク](https://docs.microsoft.com/azure/networking/microsoft-global-network)」も参照してください。
+
+
 ## <a name="integration-with-azure-services"></a>Azure サービスとの統合
 
 Azure Databricks は、SQL Data Warehouse、Cosmos DB、Data Lake Store、Blob Storage などの Azure のデータベースおよびストアと深いレベルで統合します。 
@@ -93,12 +98,12 @@ Azure Databricks は、SQL Data Warehouse、Cosmos DB、Data Lake Store、Blob S
 ## <a name="integration-with-power-bi"></a>Power BI との統合
 Power BI とのリッチな統合により、Azure Databricks は大きな影響を与えるインサイトを迅速かつ簡単に検出して共有することができます。 JDBC/ODBC クラスター エンドポイントを介して Tableau Software などの他の BI ツールを使うこともできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート:Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
-* [Spark クラスターを使用する](https://docs.azuredatabricks.net/user-guide/clusters/index.html)
-* [Notebook を使用する](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
-* [Spark ジョブを作成する](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [クイック スタート: Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
+* [Spark クラスターを使用する](/azure/databricks/clusters/index)
+* [Notebook を使用する](/azure/databricks/notebooks/index)
+* [Spark ジョブを作成する](/azure/databricks/jobs)
 
  
 

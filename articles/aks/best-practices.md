@@ -2,17 +2,14 @@
 title: Azure Kubernetes Service (AKS) に関するベスト プラクティス
 description: Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス集
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: iainfou
-ms.openlocfilehash: c73f2fea808944847fab6a675914ee57e537560b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77596319"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス
 
@@ -35,12 +32,12 @@ Azure Kubernetes Service (AKS) でのアプリケーションを構築して実�
 * [認証と認可に関するベスト プラクティス](operator-best-practices-identity.md)
     * Azure Active Directory との統合、ロールベースのアクセス制御 (RBAC) の使用、およびポッド ID が含まれます。
 
-**セキュリティ**
+**Security**
 
 * [クラスターのセキュリティとアップグレードに関するベスト プラクティス](operator-best-practices-cluster-security.md)
     * API サーバーへのアクセスのセキュリティ保護、コンテナーへのアクセスの制限、アップグレードとノードの再起動の管理が含まれます。
 * [コンテナー イメージの管理とセキュリティに関するベスト プラクティス](operator-best-practices-container-image-management.md)
-    * イメージとランタイムのセキュリティ保護、信頼できるレジストリの使用、基本イメージの更新の自動ビルドが含まれます.
+    * イメージとランタイムのセキュリティ保護と基本イメージ更新プログラムの自動ビルドが含まれます。
 * [ポッドのセキュリティに関するベスト プラクティス](developer-best-practices-pod-security.md)
     * リソースへのアクセスのセキュリティ保護、資格情報の公開の制限、ポッド ID とデジタルのキー コンテナーの使用が含まれます。
 
@@ -76,6 +73,6 @@ Azure Kubernetes Service (AKS) でのアプリケーションを構築して実�
 * [ストレージ オプション](concepts-storage.md)
 * [スケーリング オプション](concepts-scale.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS を使用する必要がある場合は、いずれかのクイック スタートに従って、[Azure CLI](kubernetes-walkthrough.md) または [Azure portal](kubernetes-walkthrough-portal.md) を使用して Azure Kubernetes Service (AKS) クラスターをデプロイしてください。

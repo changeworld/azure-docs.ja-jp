@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric と VS Code の概要 | Microsoft Docs
+title: Azure Service Fabric と VS Code の概要
 description: この記事では、Visual Studio Code を使用して Service Fabric アプリケーションを作成する方法の概要について説明します。
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543670"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229319"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -57,14 +48,14 @@ Java 開発の場合は、以下の前提条件をインストールする必要
 .NET Core/C# 開発の場合は、以下の前提条件をインストールする必要があります。
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (バージョン 2.0.0 以降)
-* [C# for Visual Studio Code (OmniSharp 搭載) VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) C# サービスのデバッグに必要です。 VS Code の**アクティビティ バー**にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
+* [C# for Visual Studio Code (OmniSharp 搭載) VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) C# サービスのデバッグに必要です。 VS Code の**アクティビティ バー**にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
 
 ## <a name="setup"></a>セットアップ
 
 1. VS Code を開きます。
 2. VS Code の左側にある**アクティビティ バー**で [デバッグ] アイコンをクリックします。 「Service Fabric」を探します。 Service Fabric Reliable Services 拡張機能の **[インストール]** をクリックします。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 VS Code の Service Fabric Reliable Services 拡張機能には、開発者が Service Fabric プロジェクトを作成してデプロイするために役立つコマンドが多数用意されています。 **コマンド パレット**からコマンドを呼び出すには、`(Ctrl + Shift + p)` を押し、入力バーにコマンド名を入力し、プロンプト リストから目的のコマンドを選択します。 
 
 * Service Fabric:Create Application (Service Fabric: アプリケーションの作成) 
@@ -78,7 +69,7 @@ VS Code の Service Fabric Reliable Services 拡張機能には、開発者が S
 
 **[Service Fabric:Create Application]\(Service Fabric: アプリケーションの作成\)** コマンドで、現在のワークスペースに新しい Service Fabric アプリケーションを作成します。 開発マシンにインストールされている Yeoman ジェネレーターに応じて、Java、C#、コンテナー、ゲスト プロジェクトなど、複数種類の Service Fabric アプリケーションを作成できます。 
 
-1.  **[Service Fabric:Add Service]\(サービスの追加\)** コマンドを選択します
+1.  **[Service Fabric:アプリケーションの作成]** コマンドを選択します
 2.  新しい Service Fabric アプリケーションの種類を選択します。 
 3.  作成するアプリケーションの名前を入力します。
 3.  Service Fabric アプリケーションに追加するサービスの種類を選択します。 
@@ -133,7 +124,7 @@ VS Code の Service Fabric Reliable Services 拡張機能には、開発者が S
 2.  **[Service Fabric:Clean Application]\(アプリケーションの消去\)** コマンドを選択します。
 3.  消去プロセスの出力は統合ターミナルに書き込まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [VS Code を使用して C# Service Fabric アプリケーションを開発し、デバッグする](./service-fabric-develop-csharp-applications-with-vs-code.md)方法について学びます。
 * [VS Code を使用して Java Service Fabric アプリケーションを開発し、デバッグする](./service-fabric-develop-java-applications-with-vs-code.md)方法について学びます。

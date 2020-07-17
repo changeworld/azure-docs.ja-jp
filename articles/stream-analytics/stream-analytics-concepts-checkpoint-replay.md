@@ -1,20 +1,19 @@
 ---
-title: Azure Stream Analytics でのチェックポイントおよび再生のジョブの回復の概念
+title: Azure Stream Analytics でのチェックポイントおよび再生の回復の概念
 description: この記事では、Azure Stream Analytics でのチェックポイントおよび再生のジョブの回復の概念について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088257"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426404"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブでのチェックポイントと再生の概念
 この記事では、Azure Stream Analytics の内部チェックポイントおよび再生の概念と、これらがジョブの回復に与える影響について説明します。 Stream Analytics ジョブが実行されるたびに、状態情報が内部的に維持されます。 状態情報は、チェックポイントに定期的に保存されます。 一部のシナリオでは、ジョブ エラーまたはアップグレードが発生した場合にチェックポイント情報がジョブの回復に使用されます。 その他の状況では、チェックポイントを回復に使用できず、再生が必要です。
@@ -68,8 +67,8 @@ Stream Analytics ジョブが実行されるたびに、そのジョブが複数
 
 チェックポイント データは、ユーザーが開始したジョブの再開に使用できません。 このような再開中の出力の遅延を見積もるには前のセクションで説明したのと同じ手順を使用し、遅延時間が長すぎる場合には同様の軽減策を適用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 信頼性とスケーラビリティについて詳しくは、以下の記事をご覧ください。
-- [チュートリアル: Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)
+- [チュートリアル:Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)
 - [スループット向上のために Azure Stream Analytics ジョブをスケーリングする](stream-analytics-scale-jobs.md)
 - [サービス更新中における Stream Analytics ジョブの信頼性を保証する](stream-analytics-job-reliability.md)

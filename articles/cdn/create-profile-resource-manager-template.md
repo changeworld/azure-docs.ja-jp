@@ -1,5 +1,6 @@
 ---
-title: クイック スタート - Resource Manager テンプレートを使用して Azure Content Delivery Network のプロファイルとエンドポイントを作成する | Microsoft Docs
+title: クイックスタート - Resource Manager テンプレートを使用してプロファイルとエンドポイントを作成する
+titleSuffix: Azure Content Delivery Network
 description: Resource Manager テンプレートを使用して Azure Content Delivery Network のプロファイルとエンドポイントを作成する方法について説明します。
 services: cdn
 documentationcenter: ''
@@ -7,20 +8,20 @@ author: senthuransivananthan
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/05/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dfd7b933502b96c0952a24dbee563e9b537dcdd8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922386"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683470"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure CDN のプロファイルとエンドポイントを作成する
 
@@ -35,13 +36,13 @@ ms.locfileid: "64922386"
 
 詳細については、「[Azure で静的 HTML Web アプリを作成する](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 すべてのリソースを同じリソース グループ内にデプロイする必要があります。
 
 選択した場所にリソース グループを作成します。 この例では、米国東部に cdn という名前のリソース グループを作成します。
 
-```bash
+```azurecli-interactive
 az group create --name cdn --location eastus
 ```
 
@@ -188,7 +189,7 @@ Azure CLI を使用してテンプレートをデプロイします。 以下の
 
 **endpointOriginHostName** - CDN を通じてサービスが提供されるエンドポイント (cdndemo.azurewebsites.net など)。
 
-```bash
+```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
@@ -196,7 +197,7 @@ az group deployment create --resource-group cdn --template-file arm-cdn.json
 
 ## <a name="view-the-cdn-profile"></a>CDN プロファイルの表示
 
-```bash
+```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
@@ -204,30 +205,30 @@ az cdn profile list --resource-group cdn -o table
 
 ## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>プロファイル standard-microsoft の CDN エンドポイントの表示
 
-```bash
+```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
 ![CDN エンドポイントの表示](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-コンテンツを表示するには、HostName を使用します。 たとえば、ブラウザーを使用して https://cdndemo-azurewebsites-net.azureedge.net にアクセスします。
+コンテンツを表示するには、HostName を使用します。 たとえば、ブラウザーを使用して https:\//cdndemo-azurewebsites-net.azureedge.net にアクセスします。
 
 ## <a name="clean-up"></a>クリーンアップ
 
 リソース グループを削除すると、リソース グループ内にデプロイされたすべてのリソースが削除されます。
 
-```bash
+```azurecli-interactive
 az group delete --name cdn
 ```
 
 ![リソース グループの削除](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * CDN プロファイル - [Azure Resource Manager テンプレート参照](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)に関するページ
 * CDN エンドポイント - [Azure Resource Manager テンプレート参照のドキュメント](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム ドメインを CDN エンドポイントに追加する方法については、次のチュートリアルを参照してください。
 

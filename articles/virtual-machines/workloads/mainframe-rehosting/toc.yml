@@ -2,7 +2,7 @@
   items:
     - name: 概要
       items:
-        - name: 作業開始
+        - name: はじめに
           href: overview.md
         - name: ワークロード
           href: partner-workloads.md
@@ -10,11 +10,11 @@
       items:
         - name: Compute
           href: concepts/mainframe-compute-azure.md
-        - name: Storage
+        - name: ストレージ
           href: concepts/mainframe-storage-azure.md
     - name: Micro Focus
       items:
-        - name: 作業開始
+        - name: はじめに
           href: microfocus/get-started.md
         - name: Enterprise Server をインストールする
           href: microfocus/set-up-micro-focus-azure.md
@@ -24,13 +24,13 @@
           href: microfocus/run-enterprise-server-container.md
     - name: TmaxSoft OpenFrame
       items:
-        - name: 作業開始
+        - name: はじめに
           href: tmaxsoft/get-started.md
         - name: OpenFrame のインストール
           href: tmaxsoft/install-openframe-azure.md
     - name: IBM
       items:
-        - name: 作業開始
+        - name: はじめに
           href: ibm/get-started.md
         - name: IBM ZD&T をインストールする
           href: ibm/install-ibm-z-environment.md

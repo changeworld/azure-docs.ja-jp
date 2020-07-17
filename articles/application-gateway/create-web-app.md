@@ -1,20 +1,21 @@
 ---
-title: Azure Application Gateway を使用した Web アプリの保護 - PowerShell
+title: PowerShell を使用して App Service を構成する
+titleSuffix: Azure Application Gateway
 description: この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313856"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74089507"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>PowerShell を使用して Application Gateway で App Service を構成する
 
 Application Gateway では、App Service アプリまたはその他のマルチテナント サービスをバックエンド プール メンバーとして使用できます。 この記事では、Application Gateway を使用して App Service アプリを構成する方法について説明します。 最初の例では、既存のアプリケーション ゲートウェイを構成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。 2 番目の例では、新しいアプリケーション ゲートウェイを作成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。
 
@@ -163,6 +164,6 @@ DnsSettings              : {
 
 Web アプリへのアクセスを制限できる 1 つの方法は、[Azure App Service 静的 IP 制限](../app-service/app-service-ip-restrictions.md)を使用することです。 たとえば、アプリケーション ゲートウェイからのトラフィックのみを受信するように Web アプリを制限できます。 アプリ サービスの IP 制限の機能を使用して、アクセス権を持つ唯一のアドレスとして、アプリケーション ゲートウェイの VIP を一覧表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-次のページにアクセスして、リダイレクトの構成方法について確認します。[PowerShell で Application Gateway にリダイレクトを構成する](redirect-overview.md)。
+リダイレクトを構成する方法について学習するために、「[PowerShell で Application Gateway にリダイレクトを構成する](redirect-overview.md)」を参照してください。

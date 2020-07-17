@@ -1,19 +1,19 @@
 ---
-title: .NET と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
+title: .NET と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin アプリを作成する
 description: Azure Cosmos DB の MongoDB 用 API に接続してクエリを実行するために使用できる Xamarin コード サンプルについて説明します
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860339"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659161"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 
@@ -23,10 +23,10 @@ ms.locfileid: "65860339"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
 このクイック スタートでは、Azure portal を使用して、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)、ドキュメント データベース、コレクションを作成する方法を説明します。 その後、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用して、TODO Xamarin.Forms アプリを構築します。
 
@@ -52,10 +52,18 @@ Mac で作業したい場合は、[Visual Studio for Mac](https://visualstudio.m
 
 最初に、GitHub からサンプル アプリをダウンロードします。 このアプリには、MongoDB のドキュメント ストレージ モデルを使った TODO アプリが実装されています。
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. Windows でコマンド プロンプトを開くか、または Mac でターミナルを開いて、git-samples という名前の新しいフォルダーを作成し、ウィンドウを閉じます。
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
@@ -86,6 +94,8 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -160,9 +170,14 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列**の値をコピーし、**APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
 
+4. 接続文字列から `&replicaSet=globaldb` を削除します。 クエリ文字列からその値を削除しないと、ランタイム エラーが発生します。
+
+> [!IMPORTANT]
+> ランタイム エラーを回避するために、接続文字列のクエリ文字列から `&replicaSet=globaldb` のキーと値のペアを削除する必要があります。
+
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
@@ -183,11 +198,11 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Xamarin.Forms アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
 

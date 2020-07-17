@@ -1,80 +1,51 @@
 ---
-title: Azure Security Center (ASC) for IoT プレビューの使用開始 | Microsoft Docs
+title: デプロイ オプション
 description: Azure Security Center for IoT の機能とサービスの基本的なワークフローへの理解を深めます。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 55c8d3b6-3126-4246-8d07-ef88fe5ea84f
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: bdc5e858286d7db03281408cf3ed00e0760e0c3a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 452372f187e97a95b9eee88936b15a0409dd4fe0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200643"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81311388"
 ---
-# <a name="get-started-with-azure-security-center-for-iot"></a>Azure Security Center for IoT の使用を開始する 
+# <a name="get-started-with-azure-security-center-for-iot"></a>Azure Security Center for IoT の使用を開始する
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+この記事では、Azure Security Center for IoT サービスのさまざまなコンポーネント、および 2 つの使用可能なデプロイ オプションを使ってサービスを開始する方法について説明します。
 
-この記事では、Azure Security Center (ASC) for IoT サービスのさまざまな構成要素、および[サービスの有効化](quickstart-onboard-iot-hub.md)を開始する方法について説明します。 
+## <a name="deployment-options"></a>デプロイ オプション
 
-ASC for IoT は、IoT Hub の構成、デバイス ID、およびハブとデバイス間の通信パターンのセキュリティ分析を提供するために、IoT Hub にシームレスに統合できます。
-セキュリティ機能を強化するために、ASC for IoT は、IoT デバイスからのエージェント ベースの収集を提供します。
+IoT デバイスと環境の要件に最適なサービス シナリオを選択します。
 
-## <a name="asc-for-iot-seamless-iot-hub-integration"></a>ASC for IoT のシームレスな IoT Hub 統合
+### <a name="built-in-deployment"></a>組み込みデプロイ
 
-個々の IoT デバイスの保護を試行するときに、デバイスからデータを直接収集する機能、またはネットワークから収集する機能が必要になります。 この取り組みをサポートするために、ASC for IoT では、フットプリントの小さいセキュリティ エージェントによる対策を提供し、デバイスの監視と強化を行います。
+シームレスな組み込みのデプロイ オプションを使用することで、Azure Security Center for IoT を IoT Hub に迅速に統合し、IoT Hub の構成、デバイスの ID と管理、ハブとデバイス間の通信パターンのセキュリティ分析を行うことができます。
 
-ASC for IoT プレビューでは、Linux および Windows のセキュリティ エージェントの参照アーキテクチャが C# と C の両方で提供されています。
-エージェントは、デバイスのオペレーティング システムからの未加工イベント収集、コストを削減するためのイベント集計、およびデバイス モジュール ツインの構成を処理します。
-セキュリティー メッセージは、IoT Hub を介して ASC for IoT 分析サービスへ送信されます。
+IoT Hub の監視と推奨事項を備えた[組み込みデプロイ](iot-hub-integration.md)を開始します。
+    <br>
 
-## <a name="asc-for-iot-basics"></a>ASC for IoT の基本
+### <a name="enhanced-deployment"></a>強化されたデプロイ
 
-IoT デバイスと環境の要件に最適なワークフロー シナリオを選択します。
+強化されたセキュリティ機能のためには、IoT Hub セキュリティを有効にすることに加え Azure Security Center for IoT エージェントをデプロイすることにより、エージェントベースのイベント収集、IoT デバイスからの主要なセキュリティ データの分析と脅威検出、および包括的セキュリティ体制管理の各機能が提供されます。
 
-### <a name="get-started-with-asc-for-iot-seamless-iot-hub-integration"></a>ASC for IoT のシームレスな IoT Hub 統合を開始する 
+エージェントベースの包括的な脅威保護とセキュリティ体制の管理ソリューションを備えた、[強化されたデプロイ](security-agents.md)を開始します。
 
->[!Note]
->このワークフローでは、ASC for IoT セキュリティ エージェントを使用せずに、サービスを使用することができます。 
+## <a name="next-steps"></a>次のステップ
 
-デバイス ID 管理およびデバイスとクラウド間の通信パターンの監視を有効にするには、次の基本的なワークフローをテストとサービスの開始に使用します。 
-
-1. [IoT Hub で ASC for IoT を有効](quickstart-onboard-iot-hub.md)にします。
-1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy)します。
-1. デバイス用の [azureiotsecurity セキュリティ モジュールを作成](quickstart-create-security-twin.md)します。 
-1. [カスタム アラート](quickstart-create-custom-alerts.md)を使用して、デバイスとシステムの通常の動作を定義します。 
-1. サービスとデバイスの状態を確認するためにシステムのテストを実行します。 
-1. IoT Hub を使用して、[アラート](concept-security-alerts.md)、[推奨事項](concept-recommendations.md)、および [Log Analytics を使用した詳細情報](how-to-security-data-access.md)を確認します。 
-
-
-### <a name="get-started-with-asc-for-iot-security-agents"></a>ASC for IoT セキュリティ エージェントを使用して作業を開始する
-
-次の基本的なワークフローを使用して、ASC for IoT の強化されたセキュリティ機能 (リモート接続、アクティブ アプリケーション、ログイン イベント、および OS 構成のベスト プラクティスの監視など) を活用し、サービスのテストと有効化を行います。 
-
-1. [IoT Hub で ASC for IoT サービスを有効化](quickstart-onboard-iot-hub.md)します。
-1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy)します。
-1. デバイス用の [azureiotsecurity セキュリティ モジュール](quickstart-create-security-twin.md)を作成します。
-1. 実際のデバイスにインストールするのではなく、Azure シミュレート デバイスにエージェントをインストールするには、使用可能なゾーンで[新しい Azure Virtual Machine (VM ) を作成](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)します。 
-1. IoT デバイスまたは新しい VM 上に [ASC for IoT セキュリティ エージェントをデプロイ](how-to-deploy-linux-cs.md)します。
-1. 無害な攻撃のシミュレーションを実行するには、[trigger_events](https://aka.ms/iot-security-github-trigger-events) の手順に従います。
-1. 前の手順のシミュレートした攻撃への応答で ASC for IoT アラートを確認します。 スクリプトを実行した 5 分後に確認を開始してください。
-1. IoT Hub を使用して、[アラート](concept-security-alerts.md)、[推奨事項](concept-recommendations.md)、および [Log Analytics を使用した詳細情報](how-to-security-data-access.md)を確認します。 
-
-## <a name="next-steps"></a>次の手順
-
-- [ASC for IoT を有効にする](quickstart-onboard-iot-hub.md)
+- [Azure Security Center for IoT](quickstart-onboard-iot-hub.md) を有効にする
 - [ソリューションを構成する](quickstart-configure-your-solution.md)
 - [セキュリティ モジュールを作成する](quickstart-create-security-twin.md)
 - [カスタム アラートを構成する](quickstart-create-custom-alerts.md)

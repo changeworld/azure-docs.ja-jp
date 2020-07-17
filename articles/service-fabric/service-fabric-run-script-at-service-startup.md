@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric サービスの開始時にスクリプトを実行する | Microsoft Docs
+title: Azure Service Fabric サービスの開始時にスクリプトを実行する
 description: Service Fabric サービス セットアップ エントリ ポイントのポリシーを構成し、サービスの開始時にスクリプトを実行する方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
 ms.author: atsenthi
-ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660393"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75464276"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
 Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要はありません。
@@ -147,7 +138,7 @@ Service Fabric サービス実行可能ファイルを開始する前に、構�
 
 Visual Studio でサービス プロジェクトを右クリックし、*MySetup.bat* という名前の新しいファイルを追加します。
 
-次に、サービス パッケージに *MySetup.bat* ファイルが含まれていることを確認します。 既定では、含まれていません。 ファイルを選択し、右クリックしてコンテキスト メニューを表示し、 **[プロパティ]** を選択します。 [プロパティ] ダイアログ ボックスで、**[出力ディレクトリにコピー]** が **[新しい場合はコピーする]** に設定されていることを確認します。 次のスクリーンショットをご覧ください。
+次に、サービス パッケージに *MySetup.bat* ファイルが含まれていることを確認します。 既定では、含まれていません。 ファイルを選択し、右クリックしてコンテキスト メニューを表示し、 **[プロパティ]** を選択します。 [プロパティ] ダイアログ ボックスで、 **[出力ディレクトリにコピー]** が **[新しい場合はコピーする]** に設定されていることを確認します。 次のスクリーンショットをご覧ください。
 
 ![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][image1]
 
@@ -238,7 +229,7 @@ Echo "Test console redirection which writes to the application log folder on the
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アプリケーションとサービスのセキュリティについて確認する](service-fabric-application-and-service-security.md)
 * [アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)

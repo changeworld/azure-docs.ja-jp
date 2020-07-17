@@ -3,28 +3,28 @@ title: Azure Content Delivery Network (CDN) 製品の機能の比較 | Microsoft
 description: 各 Azure Content Delivery Network (CDN) 製品がサポートする機能について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
-editor: sohamnchatterjee
+editor: mdgattuso
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/25/2019
-ms.author: magattus
+ms.date: 11/15/2019
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0c80abeb4aca47b3ef957c25e12c59e86d59dd94
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872873"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260515"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
 
-Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。
+Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムがないことに注意してください。
 
 次の表では、各製品で使用できる機能を比較しています。
 
@@ -40,24 +40,25 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | 配信元のポート |すべての TCP ポート |[使用できる配信元ポート](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |すべての TCP ポート |すべての TCP ポート |
 | [グローバル サーバー負荷分散 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [高速消去](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** (すべての消去およびワイルドカードによる消去は、現在 Azure CDN from Akamai ではサポートされていません) |**&#x2713;** |**&#x2713;** |
-| [資産の事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用)  |  |**&#x2713;** |**&#x2713;** | |
-| カスタマイズ可能なルール ベースのコンテンツ配信エンジン ([ルール エンジン](cdn-rules-engine.md)を使用)  |  | | |**&#x2713;** |
-| キャッシュ/ヘッダーの設定 ( [ルール エンジン](cdn-rules-engine.md)を使用)  |  | | |**&#x2713;** |
-| URL のリダイレクト/書き換え ( [ルール エンジン](cdn-rules-engine.md)を使用)  |  | | |**&#x2713;** |
-| モバイル デバイスのルール ( [ルール エンジン](cdn-rules-engine.md)を使用)  |  | | |**&#x2713;** |
+| [アセットの事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
+| キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用)  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  |**&#x2713;** |**&#x2713;** | |
+| カスタマイズ可能なルール ベースのコンテンツ配信エンジン |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ([ルール エンジン](cdn-rules-engine.md)を使用) |
+| キャッシュ/ヘッダーの設定  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |
+| URL のリダイレクト/書き換え |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |
+| モバイル デバイスのルール  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |
 | [クエリ文字列のキャッシュ](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 デュアルスタック | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 のサポート](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||
- **セキュリティ** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
+ **Security** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | CDN エンドポイントでの HTTPS のサポート | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [カスタム ドメイン HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [カスタム ドメイン HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** 、有効にするには直接 CNAME が必要です |**&#x2713;** |**&#x2713;** |
 | [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geo-filtering](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [認証トークン](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS 保護](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [独自の証明書の持ち込み](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| [独自の証明書の持ち込み](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| サポートされている TLS バージョン | TLS 1.2、TLS 1.0 または 1.1 - [構成可能](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **分析とレポート** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | [Azure 診断ログ](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |

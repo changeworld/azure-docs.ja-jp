@@ -1,38 +1,36 @@
 ---
-title: Web API を呼び出す Web API (API の呼び出し) - Microsoft ID プラットフォーム
-description: ダウンストリーム Web API を呼び出す Web API を構築する方法について説明します (Web API の呼び出し)
+title: Web API を呼び出す Web API - Microsoft ID プラットフォ―ム | Azure
+description: Web API を呼び出す Web API を構築する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6bbd24978891efd147b0c317c1746d13961ce5e9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080081"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80885091"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API を呼び出す Web API - API の呼び出し
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 
-トークンを取得すると、保護された Web API を呼び出すことができます。 これは、ASP.NET/ASP.NET Core web API のコント ローラーから行われます。
+トークンを取得した後に、保護された Web API を呼び出せます。 これを行うには、Web API のコントローラーを使用します。
 
 ## <a name="controller-code"></a>コントローラー コード
 
-以下に示すのは、API コントローラーのアクションで呼び出されて、ダウンストリーム API (todolist という名前) を呼び出す「[Web API を呼び出す保護された Web API - トークンの取得](scenario-web-api-call-api-acquire-token.md)」で示されたサンプル コードの続きです。
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-トークンを取得したら、ダウン ストリーム API を呼び出すベアラー トークンとしてそれを使用します。
+次のコードは、「[Web API を呼び出す Web API: アプリのトークンを取得する](scenario-web-api-call-api-acquire-token.md)」で示されているコード例の続きです。 このコードは、API コントローラーのアクションで呼び出されます。 *todolist* という名前のダウンストリーム API を呼び出します。
 
-```CSharp
+トークンを取得した後、ダウンストリーム API を呼び出すベアラー トークンとしてそれを使用します。
+
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...
@@ -49,7 +47,7 @@ private async Task GetTodoList(bool isAppStarting)
  }
 ...
 
-// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+// After the token has been returned by Microsoft Authentication Library (MSAL), add it to the HTTP authorization header before making the call to access the To Do list service.
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
 // Call the To Do list service.
@@ -58,7 +56,36 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+# <a name="java"></a>[Java](#tab/java)
+
+次のコードは、「[Web API を呼び出す Web API: アプリのトークンを取得する](scenario-web-api-call-api-acquire-token.md)」で示されているコード例の続きです。 このコードは、API コントローラーのアクションで呼び出されます。 ダウンストリーム API MS Graph を呼び出します。
+
+トークンを取得した後、ダウンストリーム API を呼び出すベアラー トークンとしてそれを使用します。
+
+```Java
+private String callMicrosoftGraphMeEndpoint(String accessToken){
+    RestTemplate restTemplate = new RestTemplate();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    headers.set("Authorization", "Bearer " + accessToken);
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    String result = restTemplate.exchange("https://graph.microsoft.com/v1.0/me", HttpMethod.GET,
+            entity, String.class).getBody();
+
+    return result;
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+このフローを MSAL Python でデモンストレーションするサンプルはまだ使用できません。
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [運用環境への移行](scenario-web-api-call-api-production.md)
+> [Web API を呼び出す Web API: 運用環境に移行する](scenario-web-api-call-api-production.md)

@@ -1,25 +1,25 @@
 ---
-title: リモート監視ソリューションを (Visual Studio IDE 経由で) ローカルにデプロイする - Azure | Microsoft Docs
+title: リモート監視ソリューションをローカルにデプロイする - VS IDE - Azure | Microsoft Docs
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Visual Studio を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150969"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73890884"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、Visual Studio でマイクロ サービスを実行する方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、Visual Studio でマイクロ サービスを実行する方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の Docker で実行する場合、[リモート監視ソリューション アクセラレータをローカルでデプロイする - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md) に関するページを参照してください。
 
@@ -27,7 +27,7 @@ ms.locfileid: "65150969"
 
 リモート監視ソリューション アクセラレータによって使用される Azure サービスをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ### <a name="machine-setup"></a>コンピューターのセットアップ
 
@@ -60,11 +60,11 @@ ms.locfileid: "65150969"
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>ローカル コンピューター上のその他すべてのマイクロサービスをデプロイする
 
-次の手順では、Visual Studio 2017 のリモート監視マイクロサービスを実行する方法を示します。
+次の手順では、Visual Studio のリモート監視マイクロサービスを実行する方法を示します。
 
-1. Visual Studio 2017 を起動します
+1. Visual Studio を起動します。
 1. リポジトリのローカル コピー内の **services** フォルダーで、**remote-monitoring.sln** ソリューションを開きます。
-1. **ソリューション エクスプローラー**でソリューションを右クリックして、**[プロパティ]** をクリックします。
+1. **ソリューション エクスプローラー**でソリューションを右クリックして、 **[プロパティ]** をクリックします。
 1. **[共通プロパティ] > [スタートアップ プロジェクト]** を選択します。
 1. **[マルチ スタートアップ プロジェクト]** を選択し、以下のプロジェクトで **[アクション]** を **[開始]** に設定します。
     * WebService (asa-manager\WebService)
@@ -85,7 +85,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
-1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
+1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンをクリックします。 次に、 **[開始]** をクリックしてジョブをすぐに開始します。
 
 ### <a name="run-the-web-ui"></a>Web UI を実行する
 
@@ -117,6 +117,6 @@ npm start
 
 また、GitHub からソース コードを複製するときに作成されたリモート監視リポジトリのローカル コピーを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](quickstart-remote-monitoring-deploy.md)することです。

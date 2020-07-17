@@ -1,27 +1,17 @@
 ---
-title: アクティブな DNS 名の移行 - Azure App Service | Microsoft Docs
+title: アクティブな DNS 名を移行する
 description: 既にライブ サイトに割り当てられているカスタム DNS ドメイン名を、ダウンタイムを発生させずに Azure App Service に移行する方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
-ms.author: cephalin
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999091"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535691"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -75,7 +65,7 @@ DNS レコードのページで、移行する DNS 名のレコード タイプ�
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**[カスタム ドメイン]** ページで、**[ホスト名の追加]** の横にある **+** アイコンをクリックします。
+**[カスタム ドメイン]** ページで、 **[ホスト名の追加]** の横にある **+** アイコンをクリックします。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -107,7 +97,7 @@ DNS レコードのページで、移行する DNS 名のレコード タイプ�
 
 CNAME レコードを再マップしている場合、このセクションは省略します。 
 
-A レコードを再マップするには、**[カスタム ドメイン]** ページに示されている App Service アプリの外部 IP アドレスが必要です。
+A レコードを再マップするには、 **[カスタム ドメイン]** ページに示されている App Service アプリの外部 IP アドレスが必要です。
 
 右上隅の **[X]** をクリックして **[ホスト名の追加]** ページを閉じます。 
 
@@ -131,9 +121,15 @@ A レコードを再マップするには、**[カスタム ドメイン]** ペ�
 
 DNS の伝播が始まるとすぐに、DNS クエリが App Service アプリの解決を開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="active-domain-in-azure"></a>Azure でのアクティブなドメイン
 
-カスタム SSL 証明書を App Service にバインドする方法を確認します。
+Azure でのアクティブなカスタム ドメインは、サブスクリプション間または同じサブスクリプション内で移行できます。 ただし、ダウンタイムを伴わない移行にはソース アプリが必要であり、特定の時点で同じカスタム ドメインにターゲット アプリが割り当てられます。 そのため、2 つのアプリが同じ展開単位 (内部的には、Web スペースとして知られています) には展開されないようにする必要があります。 1 つのドメイン名は、展開単位ごとに 1 つのアプリにのみ割り当てできます。
+
+FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名を確認することで、アプリの展開単位がわかります。 ソース アプリとターゲット アプリ間で展開単位が必ず異なることを確認してください。 アプリの展開単位は、それ自体が含まれている [App Service プラン](overview-hosting-plans.md)によって決まります。 プランを作成するときに Azure によってランダムに選択され、変更することはできません。 Azure では、[同じリソース グループ*かつ*同じリージョン内に作成する](app-service-plan-manage.md#create-an-app-service-plan)場合、2 つのプランが同じ展開単位内にあることだけを確認し、異なる展開単位にプランがあることを確認するロジックは用意されていません。 異なる展開単位にプランを作成する唯一の方法は、別の展開単位を取得するまで、新しいリソース グループまたはリージョン内にプランを作成し続けることです。
+
+## <a name="next-steps"></a>次のステップ
+
+カスタム TLS/SSL 証明書を App Service にバインドする方法を確認します。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)
+> [Azure App Service で TLS バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)

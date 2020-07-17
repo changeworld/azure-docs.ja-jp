@@ -1,0 +1,88 @@
+- name: Azure Private Link のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Private Link とは
+      href: private-link-overview.md
+- name: クイックスタート
+  items:
+    - name: プライベート エンドポイントの作成 - ポータル
+      href: create-private-endpoint-portal.md
+    - name: プライベート エンドポイントの作成 - PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: プライベート エンドポイントの作成 - Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: プライベート リンク サービスの作成 - ポータル
+      href: create-private-link-service-portal.md
+    - name: プライベート リンク サービスの作成 - PowerShell
+      href: create-private-link-service-powershell.md
+    - name: プライベート リンク サービスの作成 - Azure CLI
+      href: create-private-link-service-cli.md
+- name: 概念
+  items:
+    - name: プライベート エンドポイント
+      href: private-endpoint-overview.md
+    - name: Private Link サービス
+      href: private-link-service-overview.md
+    - name: プライベート エンドポイントの DNS 統合
+      href: private-endpoint-dns.md
+- name: 方法
+  items:
+    - name: ストレージ アカウントに非公開で接続する
+      href: create-private-endpoint-storage-portal.md
+    - name: Cosmos DB アカウントに非公開で接続する
+      href: create-private-endpoint-cosmosdb-portal.md
+    - name: Web アプリに非公開で接続する
+      href: create-private-endpoint-webapp-portal.md
+    - name: プライベート エンドポイントのネットワーク ポリシーを無効にする
+      href: disable-private-endpoint-network-policy.md
+    - name: Private Link サービスのネットワーク ポリシーを無効にする
+      href: disable-private-link-service-network-policy.md
+    - name: プライベート エンドポイントを管理する
+      href: manage-private-endpoint.md
+    - name: トラブルシューティング
+      items:
+        - name: プライベート エンドポイントの接続に関する問題のトラブルシューティング
+          href: troubleshoot-private-endpoint-connectivity.md
+        - name: Private Link サービスの接続に関する問題のトラブルシューティング
+          href: troubleshoot-private-link-connectivity.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: .NET
+      href: /dotnet/api/overview/azure/virtual-network
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtualnetwork/privateendpoints
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.network/allversions
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: リソース
+  items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ネットワークのブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: ネットワークに関する Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: ネットワークに関するフィードバック
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/private-link/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: よく寄せられる質問
+      href: private-link-faq.md

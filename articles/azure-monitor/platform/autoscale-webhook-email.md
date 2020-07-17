@@ -1,31 +1,27 @@
 ---
 title: 自動スケールを使用して電子メールと webhook アラート通知を送信する
-description: 'Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。 '
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: Azure Monitor で自動スケール操作を使用して Web URL を呼び出したり、電子メール通知を送信したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259297"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77120691"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhooks
 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。 たとえば、受信 Web 要求を処理して SMS を送信する、バグをログに記録する、チャットやメッセージング サービスを使用してチームに通知するなどのサービスにアラートをルーティングすることができます。Webhook URI は有効な HTTP または HTTPS エンドポイントである必要があります。
 
-## <a name="email"></a>電子メール
+## <a name="email"></a>Email
 電子メールは、任意の有効な電子メール アドレスに送信できます。 このルールが実行されているサブスクリプションの管理者と共同管理者にも通知されます。
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services と Web Apps
-Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) をオプトインできます。
+## <a name="cloud-services-and-app-services"></a>Cloud Services と App Services
+Azure portal から Cloud Services とサーバー ファーム (App Services) をオプトインできます。
 
 * **[スケールの基準]** メトリックを選択します。
 
@@ -33,7 +29,7 @@ Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) 
 
 ## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 Resource Manager で作成された比較的新しい仮想マシン (仮想マシン スケール セット) の場合、REST API、Resource Manager テンプレート、PowerShell、CLI を使用してこれを構成できます。 ポータルのインターフェイスはまだ使用できません。
-REST API または Resource Manager テンプレートを使用している場合は、次のオプションを使って通知要素を追加してください。
+REST API または Resource Manager テンプレートを使用する場合は、次のオプションを使用して [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) に通知要素を追加してください。
 
 ```
 "notifications": [
@@ -66,7 +62,7 @@ REST API または Resource Manager テンプレートを使用している場�
 | sendToSubscriptionAdministrator |はい |値は "true" または "false" にする必要があります。 |
 | sendToSubscriptionCoAdministrators |はい |値は "true" または "false" にする必要があります。 |
 | customEmails |はい |値として null [] または電子メールの文字列配列を指定できます。 |
-| Webhook |はい |値として null または有効な URI を指定できます。 |
+| webhooks |はい |値として null または有効な URI を指定できます。 |
 | serviceUri |はい |有効な https URI を指定します。 |
 | properties |はい |値は空 {} にするか、キーと値のペアを指定できます。 |
 
@@ -111,7 +107,7 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
 | id |はい |自動スケール設定の Resource Manager ID |
 | name |はい |自動スケール設定の名前。 |
-| 詳細 |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| details |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
 | subscriptionId |はい |スケールされるターゲット リソースのサブスクリプション ID。 |
 | resourceGroupName |はい |スケールされるターゲット リソースのリソース グループ名。 |
 | resourceName |はい |スケールされるターゲット リソースの名前。 |
@@ -120,5 +116,5 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | portalLink |はい |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
 | oldCapacity |はい |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |はい |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
-| Properties |いいえ  |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
+| properties |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
 

@@ -1,23 +1,19 @@
 ---
-title: Windows の Azure Diagnostics 拡張機能 | Microsoft Docs
+title: Windows 用の Azure Diagnostics 拡張機能
 description: Azure Diagnostics 拡張機能を使用して Azure Windows VM を監視する
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 772c0a4b6cf57aa428f722fb90a0673f9e703627
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982796"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869676"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能
 
@@ -37,7 +33,7 @@ Azure Diagnostics 拡張機能では、ターゲットの仮想マシンがイ�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-[このドキュメントでは、Azure 診断拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[このドキュメントでは、Azure Diagnostics 拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
@@ -59,9 +55,9 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzVMDiagnosticsExtension` コマンドを使用して、Azure 診断拡張機能を既存の仮想マシンに追加することができます。 また、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](ps-extensions-diagnostics.md)」も参照してください。
+`Set-AzVMDiagnosticsExtension` コマンドを使用して、Azure Diagnostics 拡張機能を既存の仮想マシンに追加することができます。 また、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](ps-extensions-diagnostics.md)」も参照してください。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 
 ```powershell
@@ -76,7 +72,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 
@@ -84,12 +80,12 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Azure 診断拡張機能の包括的なトラブルシューティング ガイドについては、[こちらの記事](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)を参照してください。
+Azure Diagnostics 拡張機能の包括的なトラブルシューティング ガイドについては、[こちらの記事](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)を参照してください。
 
 ### <a name="support"></a>サポート
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure 診断拡張機能の詳細](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [拡張機能スキーマとバージョンの確認](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [Azure Diagnostics 拡張機能の詳細](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [拡張機能スキーマとバージョンの確認](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

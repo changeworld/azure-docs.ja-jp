@@ -1,25 +1,21 @@
 ---
-title: Azure Service Fabric Mesh CLI の設定 | Microsoft Docs
-description: Azure Service Fabric Mesh CLI を設定する方法について説明します。
-services: service-fabric-mesh
-keywords: ''
+title: Azure Service Fabric Mesh CLI を設定する
+description: Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: c716ae0a2bb30e7e8eb249a1d230097efc0d3795
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229535"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
-Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
+Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
 
-使用できる3 種類の CLI を次の表にまとめています。 
+使用できる3 種類の CLI を次の表にまとめています。
 
 | CLI モジュール | ターゲット環境 |  説明 | 
 |---|---|---|
@@ -32,7 +28,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Service Fabric Mesh CLI をインストールする
-1. Azure CLI バージョン 2.0.43 以降をインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 最新バージョンの CLI をインストールするか、最新バージョンにアップグレードする場合は、「[Azure CLI のインストール][azure-cli-install]」を参照してください。
+1. Azure CLI バージョン 2.0.67 以降をインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 最新バージョンの CLI をインストールするか、最新バージョンにアップグレードする場合は、「[Azure CLI のインストール][azure-cli-install]」を参照してください。
 
 2. 次のコマンドを使用して、Azure Service Fabric Mesh CLI 拡張モジュールをインストールします。 
 
@@ -86,7 +82,7 @@ Maven プラグインを Maven Java アプリで使用するには、次のス�
 
 使用方法について詳しくは、[Maven CLI リファレンス](service-fabric-mesh-reference-maven.md)のセクションをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Windows 開発環境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)を設定することもできます。
 

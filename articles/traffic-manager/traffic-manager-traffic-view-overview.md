@@ -1,23 +1,23 @@
 ---
 title: Azure Traffic Manager のトラフィック ビュー
-description: Traffic Manager の Traffic View の概要
+description: この概要では、Traffic Manager のトラフィック ビューのしくみについて説明します。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534942"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76938358"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 
@@ -45,6 +45,8 @@ Traffic View は、この機能が有効になっているプロファイルで�
 
 Traffic Manager のページで **[トラフィック ビュー]** セクションに移動すると、地理的マップにトラフィック ビューの詳細情報がオーバーレイ表示されています。 このマップは、ユーザー ベースと、Traffic Manager プロファイルのエンドポイントに関する情報を提供しています。
 
+![Traffic Manager トラフィック ビューの地理的ビュー][1]
+
 ### <a name="user-base-information"></a>ユーザー ベースの情報
 
 位置情報が利用可能なローカル DNS リゾルバーは、マップに表示されます。 DNS リゾルバーの色は、Traffic Manager のクエリでその DNS リゾルバーを使用したエンドユーザーが経験した平均待機時間を表します。
@@ -68,10 +70,31 @@ Azure Portal ポータルでは、トラフィック ビューのデータが表
 
 Traffic View を使用する場合は、提示される洞察の作成に使用されたデータ ポイントの数に基づいて課金されます。 現在使用されている唯一のデータ ポイントの種類は、Traffic Manager プロファイルに対して受信したクエリです。 価格の詳細については、[Traffic Manager の価格ページ](https://azure.microsoft.com/pricing/details/traffic-manager/)をご覧ください。
 
+## <a name="faqs"></a>FAQ
 
-## <a name="next-steps"></a>次の手順
+* [トラフィック ビューは何をしますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+
+* [トラフィック ビューを使用することには、どのようなメリットがありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+
+* [トラフィック ビューは、Azure Monitor で使用できる Traffic Manager メトリックとは、どのように異なりますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+
+* [トラフィック ビューは EDNS クライアント サブネット情報を使用しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+
+* [トラフィック ビューは何日分のデータを使用しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+
+* [トラフィック ビューは外部エンドポイントをどのように処理しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+
+* [サブスクリプションのプロファイルごとにトラフィック ビューを有効にする必要がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+
+* [トラフィック ビューをオフにするには、どうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+
+* [トラフィック ビューはどのように課金されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+
+## <a name="next-steps"></a>次のステップ
 
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 - [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

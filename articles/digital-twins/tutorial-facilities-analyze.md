@@ -1,21 +1,22 @@
 ---
-title: チュートリアル:Azure Digital Twins 設定からのイベントを分析する | Microsoft Docs
+title: チュートリアル:Time Series Insights でのイベントの分析 - Azure Digital Twins |Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Time Series Insights を使って Azure Digital Twins 空間からのイベントを視覚化および分析する方法を学習します。
 services: digital-twins
-author: dsk-2015
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/18/2018
-ms.author: dkshir
-ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 01/10/2020
+ms.openlocfilehash: 38bd1755ed87050cf8b91a0a82f6e5f1d2af9db5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542269"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75933854"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins からのイベントを視覚化および分析する
 
 Azure Digital Twins インスタンスをデプロイし、空間をプロビジョニングして、特定の条件を監視するカスタム関数を実装した後は、傾向や異常を見つけるために空間から受け取ったイベントやデータを視覚化することができます。
 
@@ -38,42 +39,50 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 - [Digital Twins C# のサンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp)がダウンロードされ、作業マシン上に展開されていること。
 - サンプルを実行する開発マシンに [.NET Core SDK バージョン 2.1.403 以上](https://www.microsoft.com/net/download)がインストールされていること。 適切なバージョンがインストールされていることを確認するには、`dotnet --version` を実行します。
 
+> [!TIP]
+> 新しいインスタンスをプロビジョニングする場合は、一意の Digital Twins インスタンス名を使用します。
+
 ## <a name="stream-data-by-using-event-hubs"></a>Event Hubs を使用したデータのストリーム配信
 
 [Event Hubs](../event-hubs/event-hubs-about.md) サービスを使用すると、データをストリーム配信するパイプラインを作成できます。 このセクションでは、Azure Digital Twins インスタンスと Time Series Insights インスタンスの間のコネクタとしてイベント ハブを作成する方法について説明します。
 
 ### <a name="create-an-event-hub"></a>イベント ハブの作成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、**[リソースの作成]** を選びます。
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
-1. **[Event Hubs]** を見つけて選択します。 **作成**を選択します。
+1. **[Event Hubs]** を見つけて選択します。 **［作成］** を選択します
 
-1. Event Hubs 名前空間の**名前**を入力します。 **Standard** **価格レベル**、**サブスクリプション**、Digital Twins インスタンスに使用した**リソース グループ**、**場所**を選択します。 **作成**を選択します。
+    [![Event Hubs 名前空間の作成](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
 
-1. Event Hubs 名前空間のデプロイに移動し、**[リソース]** の下の名前空間を選択します。
+1. Event Hubs 名前空間の**名前**を入力します。 **Standard** **価格レベル**、**サブスクリプション**、Digital Twins インスタンスに使用した**リソース グループ**、**場所**を選択します。 **［作成］** を選択します
 
-    ![デプロイ後の Event Hubs 名前空間](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+1. Event Hubs 名前空間のデプロイで、 **[概要]** ウィンドウを選択し、 **[リソースに移動]** を選択します。
+
+    [![デプロイ後の Event Hubs 名前空間](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png)](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png#lightbox)
 
 1. Event Hubs 名前空間の **[概要]** ウィンドウで、最上部にある **[イベント ハブ]** を選択します。
-    ![[イベント ハブ] ボタン](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![[イベント ハブ] ボタン](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png#lightbox)
 
-1. イベント ハブの**名前**を入力し、**[作成]** を選択します。
+1. イベント ハブの**名前**を入力し、 **[作成]** を選択します。
 
-   イベント ハブは、デプロイ後、Event Hubs 名前空間の **[Event Hubs]** ウィンドウに **[アクティブ]** 状態として表示されます。 このイベント ハブを選択して、**[概要]** ウィンドウを開きます。
+   イベント ハブは、デプロイ後、Event Hubs 名前空間の **[Event Hubs]** ウィンドウに **[アクティブ]** 状態として表示されます。 このイベント ハブを選択して、 **[概要]** ウィンドウを開きます。
 
-1. 最上部にある **[コンシューマー グループ]** をクリックし、コンシューマー グループの名前 (たとえば、**tsievents**) を選択します。 **作成**を選択します。
+1. 最上部にある **[コンシューマー グループ]** をクリックし、コンシューマー グループの名前 (たとえば、**tsievents**) を選択します。 **［作成］** を選択します
 
-    ![イベント ハブ コンシューマー グループ](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![イベント ハブ コンシューマー グループ](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    作成されたコンシューマー グループが、イベント ハブの **[概要]** ウィンドウの下部にある一覧に表示されます。
 
-1. イベント ハブの **[共有アクセス ポリシー]** ウィンドウを開き、**[追加]** ボタンを選択します。 ポリシーの名前として「**ManageSend**」を入力し、すべてのチェック ボックスがオンになっていることを確認して、**[作成]** を選択します。
+1. イベント ハブの **[共有アクセス ポリシー]** ウィンドウを開き、 **[追加]** ボタンを選択します。 ポリシーの名前として「**ManageSend**」を入力し、すべてのチェック ボックスがオンになっていることを確認して、 **[作成]** を選択します。
 
-    ![イベント ハブの接続文字列](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![イベント ハブの接続文字列](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. 作成した ManageSend ポリシーを開き、**[接続文字列 - 主キー]** と **[接続文字列 - セカンダリ キー]** の値を一時ファイルにコピーします。 これらの値は、次のセクションでイベント ハブのエンドポイントを作成するために必要です。
+    > [!TIP]
+    > 名前空間ではなく、イベント ハブ インスタンスの SAS ポリシーを作成していることを確認してください。
+
+1. 作成した **ManageSend** ポリシーを開き、 **[接続文字列 - 主キー]** と **[接続文字列 - セカンダリ キー]** の値を一時ファイルにコピーします。 これらの値は、次のセクションでイベント ハブのエンドポイントを作成するために必要です。
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>イベント ハブのエンドポイントの作成
 
@@ -101,13 +110,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. プレースホルダー `Primary_connection_string_for_your_event_hub` を、イベント ハブの **[接続文字列 - 主キー]** の値に置き換えます。 この接続文字列が次の形式になっていることを確認します。
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. プレースホルダー `Secondary_connection_string_for_your_event_hub` を、イベント ハブの **[接続文字列 - セカンダリ キー]** の値に置き換えます。 この接続文字列が次の形式になっていることを確認します。 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
@@ -124,39 +133,41 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    イベント ハブに対して 2 つのエンドポイントが作成されます。
 
-   ![Event Hubs のエンドポイント](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![Event Hubs のエンドポイント](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Time Series Insights を使用した分析
 
-1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、**[リソースの作成]** を選択します。 
+1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[リソースの作成]** を選択します。 
 
-1. 新しい **Time Series Insights** リソースを見つけて選択します。 **作成**を選択します。
+1. **Time Series Insights** の一般公開 (GA) リソースを検索して選択します。 **［作成］** を選択します
 
-1. Time Series Insights インスタンスの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用した**リソース グループ**と**場所**を選択します。 **作成**を選択します。
+1. Time Series Insights インスタンスの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用した**リソース グループ**と**場所**を選択します。 **イベント ソース** ボタンまたは **イベント ソース** タブを選択します。
 
-    ![Time Series Insights インスタンスを作成するための選択内容](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![Time Series Insights インスタンスを作成するための選択内容](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
 
-1. インスタンスがデプロイされたら、Time Series Insights 環境を開き、その **[イベント ソース]** ウィンドウを開きます。 コンシューマー グループを追加するために、最上部にある **[追加]** を選択します。
+1. **[イベント ソース]** タブで、 **[名前]** を入力し、 **[ソースの種類]** として **[イベントハブ]** を選択し、作成したイベント ハブを参照する他の値が適切に選択されていることを確認します。 **[イベント ハブ アクセス ポリシー名]** には、**ManageSend** を選択します。さらに、 **[イベント ハブ コンシューマー グループ]** には、前のセクションで作成したコンシューマー グループを選択します。 **[Review + create]\(レビュー + 作成\)** を選択します。
 
-1. **[新しいイベント ソース]** ウィンドウで、**名前**を入力し、他の値が正しく選択されていることを確認します。 **イベント ハブ ポリシー名**には、**ManageSend** を選択します。さらに、**イベント ハブ コンシューマー グループ**には、前のセクションで作成したコンシューマー グループを選択します。 **作成**を選択します。
+    [![イベント ソースを作成するための選択内容](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png)](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png#lightbox)
 
-    ![イベント ソースを作成するための選択内容](./media/tutorial-facilities-analyze/tsi-event-source.png)
+1. **[確認と作成]** ウィンドウで、入力した情報を確認し、 **[作成]** を選択します。
 
-1. Time Series Insights 環境の **[概要]** ウィンドウを開き、最上部にある **[環境を開く]** を選択します。 "データ アクセスの警告" が表示された場合は、Time Series Insights インスタンスの **[データ アクセス ポリシー]** ウィンドウを開きます。**[追加]** を選択し、ロールとして **[共同作成者]** を選択して、適切なユーザーを選択します。
+1. デプロイ ペインで、作成した Time Series Insights リソースを選択します。 Time Series Insights 環境の **[概要]** ウィンドウが開きます。
+
+1. 上部にある **[環境を開く]** ボタンを選択します。 "データ アクセスの警告" が表示された場合は、Time Series Insights インスタンスの **[データ アクセス ポリシー]** ウィンドウを開きます。 **[追加]** を選択し、ロールとして **[共同作成者]** を選択して、適切なユーザーを選択します。
 
 1. **[環境を開く]** をクリックすると、[Time Series Insights エクスプローラー](../time-series-insights/time-series-insights-explorer.md)が開きます。 イベントが表示されない場合は、Digital Twins サンプルの **device-connectivity** プロジェクトに移動し、`dotnet run` を実行して、デバイス イベントをシミュレートします。
 
-1. いくつかのシミュレートされたイベントが生成されたら、Time Series Insights エクスプローラーに戻り、最上部にある更新ボタンを選択します。 シミュレートされたセンサー データの分析グラフが作成されるのがわかります。 
+1. いくつかのシミュレートされたイベントが生成されたら、Time Series Insights エクスプローラーに戻り、最上部にある更新ボタンを選択します。 シミュレートされたセンサー データについて作成中の分析グラフが表示されます。 
 
-    ![Time Series Insights エクスプローラーのグラフ](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![Time Series Insights エクスプローラーのグラフ](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png)](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png#lightbox)
 
 1. 次に、Time Series Insights エクスプローラーを使用して、部屋、センサー、その他のリソースからのさまざまなイベントやデータについてグラフやヒートマップを生成できます。 独自の視覚化を作成するには、左側の **[メジャー]** と **[SPLIT BY]\(分割基準\)** ドロップダウン ボックスを使用します。 
 
-   たとえば、**[メジャー]** で **[イベント]** を選択し、**[SPLIT BY]\(分割基準\)** で **[DigitalTwins-SensorHardwareId]** を選択して、各センサーのヒートマップを生成します。 次の画像のようなヒートマップが得られます。
+   たとえば、 **[メジャー]** で **[イベント]** を選択し、 **[SPLIT BY]\(分割基準\)** で **[DigitalTwins-SensorHardwareId]** を選択して、各センサーのヒートマップを生成します。 次の画像のようなヒートマップが得られます。
 
-   ![Time Series Insights エクスプローラーのヒートマップ](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![Time Series Insights エクスプローラーのヒートマップ](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 これ以降 Azure Digital Twins の探索を中止する場合は、このチュートリアルで作成されたリソースを削除してかまいません。
 
@@ -167,7 +178,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 2. 必要に応じて、作業マシン上のサンプル アプリケーションを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins の空間インテリジェンス グラフとオブジェクト モデルについて学習するには、次の記事に進んでください。
 

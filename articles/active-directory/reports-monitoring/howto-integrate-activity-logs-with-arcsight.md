@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する方法 | Microsoft Docs
+title: Azure Monitor を使用してログを ArcSight と統合する | Microsoft Docs
 description: Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f03b146331069371106c1857f2acc68b566d3c5d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996308"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129240"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する
 
@@ -36,7 +36,7 @@ ms.locfileid: "59996308"
 * Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](quickstart-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 * ArcSight Syslog NG Daemon SmartConnector (SmartConnector) または ArcSight Load Balancer の構成済みインスタンス。 イベントが ArcSight Load Balancer に送信されると、その結果、Load Balancer によってイベントは SmartConnector に送信されます。
 
-[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)をダウンロードして開いてください。 このガイドには、ArcSight SmartConnector for Azure Monitor のインストールと構成に必要な手順が記載されています。 
+[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)をダウンロードして開いてください。 このガイドには、ArcSight SmartConnector for Azure Monitor のインストールと構成に必要な手順が記載されています。 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD ログと ArcSight の統合
 
@@ -53,10 +53,10 @@ ms.locfileid: "59996308"
     * デプロイのアプリケーション設定が、Azure Function Apps の [アプリケーション設定] に保持されている。 
     * ArcSight コネクタ用の Azure AD アプリケーションと、CEF 形式のマップ ファイルを含むストレージ アカウントを使用して、ArcSight 用の新しいリソース グループが Azure 内に作成されます。
 
-4. 最後に、構成ガイドの「**Post-Deployment Configurations**」(デプロイ後の構成) に記載されているデプロイ後の手順を完了します。 このセクションには、タイムアウト期間後に関数アプリがアイドルにならないように App Service プランを使用している場合に追加の構成を実行する方法、イベント ハブの診断ログのストリーミングを構成する方法、および新しく作成したストレージ アカウントと関連付けられるように SysLog NG Daemon SmartConnector キーストア証明書を更新する方法が説明されています。
+4. 最後に、構成ガイドの「**Post-Deployment Configurations**」(デプロイ後の構成) に記載されているデプロイ後の手順を完了します。 このセクションには、タイムアウト期間後に関数アプリがアイドルにならないように App Service プランを使用している場合に追加の構成を実行する方法、イベント ハブのリソース ログのストリーミングを構成する方法、および新しく作成したストレージ アカウントと関連付けられるように SysLog NG Daemon SmartConnector キーストア証明書を更新する方法が説明されています。
 
 5. この構成ガイドには、Azure 上でコネクタのプロパティをカスタマイズする方法、およびコネクタをアップグレードおよびアンインストールする方法についても説明されています。 [Azure の従量課金プラン](https://azure.microsoft.com/pricing/details/functions)へのアップグレードや ArcSight Load Balancer の構成 (イベントの負荷が Syslog NG Daemon SmartConnector で処理できる量を超えている場合) など、パフォーマンスの改善に関するセクションもあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

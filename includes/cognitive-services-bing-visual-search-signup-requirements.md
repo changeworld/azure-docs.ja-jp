@@ -3,20 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/18/2018
-ms.openlocfilehash: 606734726539397c0be0bc01afb3dbfac08b3a2b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 12/17/2019
+ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145284"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75379499"
 ---
-Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を所有している必要があります。 続行する前に、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始した後で提供されるアクセス キーが必要になります。 
+## <a name="create-an-azure-resource"></a>Azure リソースを作成する
 
-Azure portal でサブスクリプションを開始するには、次の手順に従います。
-1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
-2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
-3. 新しいリソースの名前を [`Name`] に入力します。
-4. `Pay-As-You-Go` サブスクリプションを選択します。
-5. `S9` 価格レベルを選択します。
-6. [`Enable`] をクリックしてサブスクリプションを開始します。
+次のいずれかの Azure リソースを作成して、Bing Visual Search API の使用を開始します。
+
+* [試用版のリソースを作成する](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Azure サブスクリプションは不要です。
+    * 7 日間有効です (無料)。 試用版のキーとエンドポイントは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。
+
+* [Bing Search v7 リソースを作成する](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。
+    * `S9` 価格レベルを選択します。
+
+* [マルチサービス リソースを作成する](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。  
+    * 複数の Cognitive Services 全体で同じキーとエンドポイントをアプリケーションに使用します。

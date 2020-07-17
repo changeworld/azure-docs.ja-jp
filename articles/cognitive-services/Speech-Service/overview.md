@@ -1,100 +1,92 @@
 ---
-title: Azure Speech Service とは
+title: 音声サービスとは
 titleSuffix: Azure Cognitive Services
-description: Azure Speech Services は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 Speech SDK、Speech Devices SDK、または REST API を使用して、アプリケーション、ツール、デバイスに音声を簡単に追加できます。 既存のチャット ボットに音声機能を追加したり、翻訳アプリケーションでテキストを音声に変換したり、コール センターの大量のデータを文字起こししたりします。
+description: Speech Service は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 Speech SDK、Speech Devices SDK、または REST API を使用して、アプリケーション、ツール、デバイスに音声を追加します。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.date: 03/12/2020
+ms.author: trbye
+ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002984"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81401035"
 ---
-# <a name="what-are-the-speech-services"></a>Speech Service とは
+# <a name="what-is-the-speech-service"></a>音声サービスとは
 
-Azure Speech Services は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
+音声サービスは、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
 
 > [!IMPORTANT]
-> Speech Services は、Bing Speech API、Translator Speech、Custom Speech に代わるものです。 移行の手順については、" *「ハウツー ガイド」の「移行」* " をご覧ください。
+> Speech Service は、Bing Speech API と Translator Speech に代わるものです。 移行の手順については、" _「ハウツー ガイド」の「移行」_ " をご覧ください。
 
-Azure Speech Services は次の機能で構成されています。 各機能の一般的なユース ケースの詳細を学習したり、API リファレンスを参照したりするには、次の表のリンクを使用してください。
+Speech Service は次の機能で構成されています。 各機能の一般的なユース ケースの詳細を学習したり、API リファレンスを参照したりするには、次の表のリンクを使用してください。
 
-| Service | 機能 | 説明 | SDK | REST |
+| サービス | 機能 | 説明 | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [音声テキスト変換](speech-to-text.md) | 音声テキスト変換 | 音声テキスト変換では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われます。結果のテキストを、アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [バッチ文字起こし](batch-transcription.md) | バッチ文字起こしでは、大量のデータの音声からテキストへの文字起こしを、非同期で行うことができます。 これは REST ベースのサービスであり、カスタマイズとモデルの管理と同じエンドポイントを使用します。 | いいえ  | [はい](https://westus.cris.ai/swagger/ui/index) |
-| | [会話の文字起こし](conversation-transcription-service.md) | リアルタイムの音声認識、話者識別、およびダイアライゼーションが有効になります。 話者を区別することができるため、対面会議の文字起こしに最適です。 | はい | いいえ  |
-| | [カスタム音声モデルの作成](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ  | [はい](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [カスタム音声の作成](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ  | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [音声翻訳](speech-translation.md) | 音声翻訳 | 音声翻訳を使用すると、音声のリアルタイムの多言語翻訳がアプリケーション、ツール、デバイスで可能になります。 音声間翻訳や音声テキスト翻訳にはこのサービスを使用します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | いいえ  |
-| [音声優先仮想アシスタント](voice-first-virtual-assistants.md) | 音声優先仮想アシスタント | 開発者が Azure Speech Services を使用したカスタムの仮想アシスタントを使用すると、アプリケーションとエクスペリエンスに合わせて自然で人間のような会話型インターフェイスを作成できます。 Bot Framework の Direct Line Speech チャネルには、低待機時間と高信頼性で音声入力、音声出力の対話を可能にする、互換性のあるボットへの調整され、編成されたエントリ ポイントが用意されており、これらの機能が強化されます。 | [はい](voice-first-virtual-assistants.md) | いいえ  |
+| [音声テキスト変換](speech-to-text.md) | リアルタイム音声テキスト変換 | 音声テキスト変換では、オーディオ ストリームまたはローカル ファイルからテキストへの文字起こしまたは翻訳がリアルタイムで行われます。結果のテキストを。アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [一括音声テキスト変換](batch-transcription.md) | 一括音声テキスト変換では、Azure Blob Storage に格納された大量の音声データを対象に、音声からテキストへの文字起こしを非同期で行うことができます。 音声からテキストへの変換に加え、一括音声テキスト変換は、ダイアライゼーションや感情分析にも対応します。 | いいえ | [はい](https://westus.cris.ai/swagger/ui/index) |
+| | [マルチデバイスの会話](multi-device-conversation.md) | 会話の中で複数のデバイスまたはクライアントを接続して、音声ベースまたはテキストベースのメッセージを送信し、文字起こしや翻訳を容易に実現します。| はい | いいえ |
+| | [会話の文字起こし](conversation-transcription-service.md) | リアルタイムの音声認識、話者識別、およびダイアライゼーションが有効になります。 話者を区別することができるため、対面会議の文字起こしに最適です。 | はい | いいえ |
+| | [カスタム音声モデルの作成](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ | [はい](https://westus.cris.ai/swagger/ui/index) |
+| [音声合成](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) が使用され、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [Custom Voice の作成](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [音声翻訳](speech-translation.md) | 音声翻訳 | 音声翻訳を使用すると、音声のリアルタイムの多言語翻訳がアプリケーション、ツール、デバイスで可能になります。 音声間翻訳や音声テキスト翻訳にはこのサービスを使用します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | いいえ |
+| [音声アシスタント](voice-assistants.md) | 音声アシスタント | Speech Service を使用した音声アシスタントにより、開発者は、そのアプリケーションとエクスペリエンスのための自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド (プレビュー) サービスを使用してタスクを遂行するアシスタントの実装とデバイスとの間に、高速で信頼性の高い対話を実現します。 | [はい](voice-assistants.md) | いいえ |
 
-## <a name="news-and-updates"></a>新機能と更新
 
-Azure Speech Services の新機能について説明します。
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-* 2019 年 5 月 - [会話の文字起こし](conversation-transcription-service.md)、[コール センター文字起こし](call-center-transcription.md)、[音声優先仮想アシスタント](voice-first-virtual-assistants.md)のドキュメントの公開を開始しました。
-* 2019 年 5 月
-    * Speech SDK 1.5.1 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
-    * Speech SDK 1.5.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
-* 2019 年 4 月 - Windows および Linux における C++、C#、Java 向けにテキスト読み上げ (Beta) をサポートする Speech SDK 1.4.0 をリリースしました。 また、この SDK では、Linux における C++ および C# 向けとして、新たに MP3 および Opus/Ogg のオーディオ形式がサポートされます。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
-* 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げ (TTS) の新しいエンドポイントが利用可能になりました。 加えて、TTS で新しいリージョンがサポートされます。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
+## <a name="try-the-speech-service"></a>Speech Service を試す
 
-## <a name="try-speech-services"></a>Speech Services を試してみる
-
-ほとんどの一般的なプログラミング言語向けのクイック スタートが提供されており、いずれも 10 分かからずにコードを実行できるように作られています。 各機能の最も人気のあるクイック スタートを次の表に示します。 その他の言語やプラットフォームを調べるには、左側のナビゲーションを使用してください。
+ ほとんどの一般的なプログラミング言語向けのクイック スタートが提供されており、いずれも 10 分もかからずにコードを実行できるように作られています。  各機能の最も人気のあるクイック スタートを次の表に示します。 その他の言語やプラットフォームを調べるには、左側のナビゲーションを使用してください。
 
 | 音声テキスト変換 (SDK) | テキスト読み上げ (SDK) | 翻訳 (SDK) |
 |----------------------|----------------------|-------------------|
-| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [C#、.NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) | [Java (Windows、Linux)](quickstart-translate-speech-java-jre.md) |
-| [JavaScript (ブラウザー)](quickstart-js-browser.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) |
-| [Python (Windows、Linux、macOS)](quickstart-python.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) | [C#、.NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
-| [Java (Windows、Linux)](quickstart-java-jre.md) | | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) |
+| [オーディオ ファイルから音声を認識する](quickstarts/speech-to-text-from-file.md) | [オーディオ ファイルに音声を合成する](quickstarts/text-to-speech-audio-file.md) | [音声をテキストに変換する](quickstarts/translate-speech-to-text.md) |
+| [マイクを使用して音声を認識する](quickstarts/speech-to-text-from-microphone.md) | [スピーカーに音声を合成する](quickstarts/text-to-speech.md) | [音声を複数のターゲット言語に翻訳する](quickstarts/translate-speech-to-text-multiple-languages.md) |
+| [BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md) | [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [音声間翻訳](quickstarts/translate-speech-to-speech.md) |
 
 > [!NOTE]
 > 音声テキスト変換とテキスト読み上げには、REST エンドポイントとクイックスタートも用意されています。
 
-Speech Services を使ってみた後、Speech SDK と LUIS を使用して音声から意図を認識する方法がわかるチュートリアルを試してください。
+Speech Service を使ってみた後、Speech SDK と LUIS を使用して音声から意図を認識する方法がわかるチュートリアルを試してください。
 
-* [チュートリアル:Speech SDK、LUIS、C# を使用して音声の意図を認識する](how-to-recognize-intents-from-speech-csharp.md)
-* [チュートリアル:テキストを翻訳してセンチメントを分析し、翻訳済みテキストから音声を合成する Flask アプリを作成する (REST)](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+- [チュートリアル:Speech SDK、LUIS、C# を使用して音声の意図を認識する](how-to-recognize-intents-from-speech-csharp.md)
+- [チュートリアル:Speech SDK を使用してボットを音声対応にする (C#)](tutorial-voice-enable-your-bot-speech-sdk.md)
+- [チュートリアル:テキストを翻訳してセンチメントを分析し、翻訳済みテキストから音声を合成する Flask アプリを作成する (REST)](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>サンプル コードを取得する
 
-各 Azure Speech Services のサンプル コードを、GitHub で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
+Speech Service のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
 
-* [音声変換、テキスト読み上げ、および音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
-* [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [音声変換、テキスト読み上げ、および音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [音声アシスタントのサンプル (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>音声エクスペリエンスをカスタマイズする
 
-Azure Speech Services は組み込みのモデルで問題なく動作しますが、製品や環境に合わせてエクスペリエンスをさらにカスタマイズおよび調整したいことがあります。 カスタマイズ オプションは、音響モデルのチューニングから、独自ブランドに固有の音声フォントにまで及びます。 カスタム モデルを作成した後は、すべての Azure Speech Services でそれを使用できます。
+Speech Service は組み込みのモデルで問題なく動作しますが、製品や環境に合わせてエクスペリエンスをさらにカスタマイズおよび調整したいことがあります。 カスタマイズ オプションは、音響モデルのチューニングから、独自ブランドに固有の音声フォントにまで及びます。
 
-| Speech Service | モデル | 説明 |
-|----------------|-------|-------------|
-| 音声テキスト変換 | [音響モデル](how-to-customize-acoustic-models.md) | 自動車や工場など、それぞれに固有の録音条件がある特定の環境で使用されるアプリケーション、ツール、デバイス用のカスタム音響モデルを作成します。 たとえば、アクセント記号付きの音声、特定の背景ノイズ、録音に特定のマイクを使用する場合などです。 |
-| | [言語モデル](how-to-customize-language-model.md) | 医療用語や IT の専門用語など、フィールド固有のボキャブラリと文法の文字起こしを向上させるために、カスタム言語モデルを作成します。 |
-| | [発音モデル](how-to-customize-pronunciation.md) | カスタムの発音モデルを使用すると、発音形式と単語または用語の表示を定義できます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 始めるにあたって必要なのは、発音ファイル (単純な .txt ファイル) のみです。 |
-| テキスト読み上げ | [音声フォント](how-to-customize-voice-font.md) | カスタム音声フォントを使用すると、ブランド用に認識性の高い固有の音声を作成できます。 少量のデータだけで始めることができます。 提供するデータを増やすと、いっそう自然で人間のように聞こえる音声フォントになります。 |
+| Speech Service | プラットフォーム | 説明 |
+| -------------- | -------- | ----------- |
+| 音声テキスト変換 | [カスタム音声](https://aka.ms/customspeech) | 音声認識モデルをニーズと使用可能なデータに合わせてカスタマイズします。 話し方、ボキャブラリ、背景ノイズといった音声認識の障壁を克服可能です。 |
+| テキスト読み上げ | [Custom Voice](https://aka.ms/customvoice) | お客様のスピーチ データを使用して、テキスト読み上げアプリ用の認識可能な独自の音声を作成します。 音声パラメーターのセットを調整することで、音声出力をさらに細かく調整できます。 |
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [Speech SDK](speech-sdk-reference.md)
-* [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: 音声テキスト変換](rest-speech-to-text.md)
-* [REST API: テキスト読み上げ](rest-text-to-speech.md)
-* [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
+- [Speech SDK](speech-sdk-reference.md)
+- [Speech Devices SDK](speech-devices-sdk.md)
+- [REST API: 音声テキスト変換](rest-speech-to-text.md)
+- [REST API: テキスト読み上げ](rest-text-to-speech.md)
+- [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Speech Service のサブスクリプション キーを無料で取得する](get-started.md)
+> [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)

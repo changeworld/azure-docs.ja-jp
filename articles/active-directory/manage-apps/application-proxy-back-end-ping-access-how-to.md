@@ -1,5 +1,5 @@
 ---
-title: PingAccess を使うようにアプリケーション プロキシ アプリケーションを構成する方法 | Microsoft Docs
+title: PingAccess を使うようにアプリケーション プロキシ アプリを構成する方法
 description: PingAccess を使用して、アプリケーション プロキシの利点をヘッダー ベースの認証が使われているアプリケーションにまで拡大する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d555aaf99470588bb3ed2b328adb3e99f6c4a50e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c852c69b6f64b59845b551202bd1a25646a49eb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783992"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74275654"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>PingAccess を使うようにアプリケーション プロキシ アプリケーションを構成する方法
 

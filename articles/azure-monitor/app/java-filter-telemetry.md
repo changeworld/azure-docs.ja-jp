@@ -1,22 +1,14 @@
 ---
-title: Java Web アプリでの Azure Application Insights Telemetry のフィルター処理 | Microsoft Docs
+title: Java Web アプリでの Azure Application Insights テレメトリのフィルター処理
 description: 監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/23/2016
-ms.author: mbullwin
-ms.openlocfilehash: ee50a0e9c7fca8f01f12b3508c86d901b5315120
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.date: 3/14/2019
+ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418824"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77659919"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -254,7 +246,7 @@ ApplicationInsights.xml で、以下を使用します。
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>手順 3.お使いのフィルターを呼び出す (Java Spring)
+### <a name="3-invoke-your-filter-java-spring"></a>3.お使いのフィルターを呼び出す (Java Spring)
 
 Spring フレームワークに基づくアプリケーションの場合、カスタムのテレメトリ プロセッサを、ご自身のメイン アプリケーション クラスに Bean として登録する必要があります。 その後、アプリケーションの開始時に自動接続されます。
 
@@ -270,10 +262,10 @@ public TelemetryProcessor successFilter() {
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-"*フィルターが機能しません。*"
+"*フィルターが機能しません。* "
 
 * 有効なパラメーター値を指定していることを確認してください。 たとえば、期間は整数である必要があります。 無効な値を指定すると、フィルターは無視されます。 カスタム フィルターがコンストラクターまたは set メソッドから例外をスローした場合、これも無視されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [サンプリング](../../azure-monitor/app/sampling.md) - メトリックがゆがめられない代替方法として、サンプリングを検討してください。

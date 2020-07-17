@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services エラー コード | Microsoft Docs
-description: このトピックでは、Azure Media Services エラー コードの概要を説明します。
+description: Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 この記事では、Azure Media Services v2 API のエラー コードの概要を説明します。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189463"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74887070"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
 Microsoft Azure Media Services を使用する場合は、Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 Media Services やそれらが原因となって返されることがある **HTTP エラー コード** の一覧を次に示します。  
 
-## <a name="400-bad-request"></a>400 正しくない要求
+## <a name="400-bad-request"></a>400 Bad Request
 要求には、無効な情報が含まれており、次のいずれかの理由で拒否されます。
 
 * サポートされていない API バージョンが指定されています。 最新バージョンについては、「[Media Services REST API 開発用の設定](media-services-rest-how-to-use.md)」をご覧ください。
@@ -116,10 +116,10 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 > 
 > 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Media Services 管理エラー コード](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

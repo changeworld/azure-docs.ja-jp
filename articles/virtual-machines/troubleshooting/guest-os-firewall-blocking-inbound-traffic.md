@@ -1,10 +1,10 @@
 ---
 title: Azure VM のゲスト OS のファイアウォールがインバウンド トラフィックをブロックしている | Microsoft Docs
-description: ''
+description: ゲスト オペレーティング システムのファイアウォールによりインバウンド トラフィックがブロックされるリモート デスクトップ ポータル (RDP) 接続の問題を修正する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213113"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422555"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM のゲスト OS のファイアウォールがインバウンド トラフィックをブロックしている
 
@@ -53,7 +53,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 #### <a name="mitigation-1"></a>対応策 1
 
-1.  Azure エージェントが VM にインストールされ、正しく動作している場合には、VM メニューの **[サポート + トラブルシューティング]** > **[パスワードのリセット]** で [構成のみのリセット] オプションを利用できます。
+1.  Azure エージェントが VM にインストールされ、正しく動作している場合には、VM メニューの **[サポート + トラブルシューティング]**  >  **[パスワードのリセット]** で [構成のみのリセット] オプションを利用できます。
 
 2.  この回復オプションで行われることは、次のとおりです。
 
@@ -102,7 +102,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 #### <a name="mitigation-2"></a>対応策 2
 
-1.  ファイアウォール プロファイルを表示するクエリを実行し、インバウンド ファイアウォール ポリシーが [ *BlockInboundAlways*] に設定されているかどうかを確認します。
+1.  ファイアウォール プロファイルを表示するクエリを実行し、インバウンド ファイアウォール ポリシーが "*BlockInboundAlways*" に設定されているかどうかを確認します。
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
     >    * *BlockInbound*:インバウンド トラフィックを許可する規則が有効になっていないと、インバウンド トラフィックがすべてブロックされます。
     >    * *BlockInboundAlways*:ファイアウォール規則がすべて無視され、トラフィックがすべてブロックされます。
 
-2.   *DefaultInboundAction*  を編集し、トラフィックを **許可** するようにこれらのプロファイルを設定します。 そのためには、次のコマンドを実行します。
+2.  "*DefaultInboundAction*" を編集して、トラフィックを**許可**するようにこれらのプロファイルを設定します。 そのためには、次のコマンドを実行します。
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 2.  復旧 VM へのリモート デスクトップ接続を開始します。
 
-3.  ディスクが ディスクの管理コンソールで  **オンライン**  の印がついていることを確認します。 アタッチしたシステム ディスクに割り当てられているドライブ文字をメモします。
+3.  ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 アタッチしたシステム ディスクに割り当てられているドライブ文字をメモします。
 
 #### <a name="mitigation-1"></a>対応策 1
 
@@ -150,7 +150,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 2.  復旧 VM へのリモート デスクトップ接続を開始します。
 
-3.  システム ディスクを回復 VM にアタッチしたら、[ディスクの管理] コンソールでそのディスクに  **[オンライン]**  のフラグが設定されていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
+3.  システム ディスクを復旧 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 
 4.  CMD インスタンスを管理者特権で開き、次のスクリプトを実行します。
 
@@ -173,6 +173,6 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
     reg unload HKLM\BROKENSYSTEM
     ```
 
-5.  [システム ディスクをデタッチして、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md)。
+5.  [システム ディスクをデタッチし、VM を再作成します](troubleshoot-recovery-disks-portal-windows.md)。
 
 6.  問題が解決しているかどうかを確認します。

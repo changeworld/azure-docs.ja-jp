@@ -1,26 +1,26 @@
 ---
 title: 用語集 - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Custom Translator 用語集
-author: rajdeep-in
-manager: christw
+description: Custom Translator Glossary は、サービスの使用方法について学習するとき、記事で使用されている用語を理解する上で役立ちます。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: b257a8d15eeed5989db2b69f64bf6e756a73a1fd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: caf4a4b038cab81333ca78cd355bb2033891da00
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767517"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73888140"
 ---
-# <a name="glossary"></a>用語集
+# <a name="custom-translator-glossary"></a>Custom Translator 用語集
 
 [Custom Translator](https://portal.customtranslator.azure.ai) の用語集では、Custom Translator の操作時に表示されることがある用語について説明します。
 
-| **単語またはフレーズ**       | **定義**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **単語またはフレーズ**       | **[定義]**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ソース言語          | ソース言語は、基の言語であり、別の言語 ("ターゲット") に変換する言語です。                                                                                                                                                                                                                                                                                                                                                         |
 | ターゲット言語          | ターゲット言語は、ソース言語を受け取った後に機械翻訳の提供に使用する言語です。                                                                                                                                                                                                                                                                                                                                               |

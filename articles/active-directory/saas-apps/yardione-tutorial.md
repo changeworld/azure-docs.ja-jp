@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と YardiOne の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と YardiOne の統合 | Microsoft Docs'
 description: Azure Active Directory と YardiOne の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c1b35e6a28948cf952c61ec700cbd2ba764674ab
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 757d0b09c652e97e9dddc924c4c700819e333409
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65895993"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086455"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yardione"></a>チュートリアル:Azure Active Directory と YardiOne の統合
+# <a name="tutorial-azure-active-directory-integration-with-yardione"></a>チュートリアル: Azure Active Directory と YardiOne の統合
 
 このチュートリアルでは、YardiOne と Azure Active Directory (Azure AD) を統合する方法について説明します。
 YardiOne と Azure AD の統合には、次の利点があります。

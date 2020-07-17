@@ -1,6 +1,6 @@
 ---
 title: データで回答できる質問をする
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371096"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930252"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
@@ -36,7 +36,7 @@ ms.locfileid: "58371096"
 * ビデオ 4: [単純なモデルで回答を予測する](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト:データで回答できる質問をする
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト: データで回答できる質問をする
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
@@ -72,7 +72,7 @@ ms.locfileid: "58371096"
 
 "これはデータ ポイント A かデータ ポイント B か" という質問では、 何かのカテゴリ (または名前やラベル) を予測します。 この質問に回答するには、"*分類アルゴリズム*" を使用します。
 
-"どのくらいの量か"  または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
+"どのくらいの量か" または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
 
 これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から 1 つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
 
@@ -88,8 +88,8 @@ ms.locfileid: "58371096"
 
 ここでは、データによって回答可能な質問をするための基本原則について説明してきました。
 
-Microsoft Azure Machine Learning Studio の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
+Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## <a name="next-steps"></a>次の手順
-* [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>次のステップ
+* [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/overview-what-is-azure-ml)

@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 20729d1e73dd0ff9010201a1c6597b616b364a09
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: c0dcba2dd003dfebdd9ce67bf4d78082c32824ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149671"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789489"
 ---
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
 * [Office 365 Video](https://support.office.com/article/Meet-Office-365-Video-ca1cc1a9-a615-46e1-b6a3-40dbd99939a6) アカウント  
 
 ロジック アプリで Office 365 Video アカウントを使用するには、Office 365 Video アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  

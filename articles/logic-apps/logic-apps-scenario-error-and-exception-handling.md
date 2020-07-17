@@ -1,25 +1,22 @@
 ---
-title: 例外処理とエラー ロギングのシナリオ - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps の高度な例外処理とエラー ロギングに関する実際のユース ケースを紹介します
+title: 例外処理とエラーのログ記録のシナリオ
+description: Azure Logic Apps での高度な例外処理とエラーのログ記録に関する実際のユース ケースとシナリオ
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: b-hoedid
-ms.reviewer: estfan, LADocs
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098665"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76902705"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジック アプリの例外処理とエラーのログ記録
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
-このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 次の質問に答える現実のユース ケースが使用されています。"Azure Logic Apps では例外とエラーの処理がサポートされていますか?"
+このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 Azure Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
 
 > [!NOTE]
 > 現在の Azure Logic Apps スキーマには、アクションに対する応答の標準テンプレートが用意されています。 このテンプレートには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
@@ -28,7 +25,7 @@ ms.locfileid: "55098665"
 
 このシナリオで使用したユース ケースの背景情報を次に示します。 
 
-以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。 すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
+以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。 Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。 すべての患者レコードに [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) 標準を使うように依頼されました。
 
 このプロジェクトには、主に 2 つの要件がありました。  
 
@@ -40,9 +37,9 @@ ms.locfileid: "55098665"
 
 ## <a name="how-we-solved-the-problem"></a>問題の解決方法
 
-ここでは、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") をログとエラーのレコードを格納するリポジトリとして選びました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
+ここでは、ログおよびエラー レコードのリポジトリとして [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") を選択しました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに **Time to Live** 値を設定できる [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
 > このチュートリアルの作業を行うためには、Cosmos DB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
@@ -121,7 +118,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 > [!NOTE]
 > 次の例は、あくまでサンプルです。 このチュートリアルは、現在運用段階の実装がベースになっているため、 **Source Node** の値に、予約のスケジューリングに関連するプロパティが表示されない場合があります。 
 
-### <a name="logging"></a>ログの記録
+### <a name="logging"></a>ログ記録
 
 以下に示したのは、ログ処理の方法を示すロジック アプリのコード サンプルです。
 
@@ -402,7 +399,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 エラーを表示するには、Cosmos DB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
 
 > [!NOTE]
-> 編集操作:Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
+> 編集操作について: Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 
 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 
@@ -479,10 +476,10 @@ Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てら
 
 ### <a name="source-code"></a>ソース コード
 
-lLogic Apps 例外管理 API アプリケーションのソース コードは、こちらの [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")のサイトでプロジェクトの概要ビデオをご覧いただけます。
+Logic Apps 例外管理 API アプリケーションのソース コードは、この [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")で入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [さらに他のロジック アプリ の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [ロジック アプリの監視について知る](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [ロジック アプリの自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
+* [ロジック アプリの監視](../logic-apps/monitor-logic-apps.md)
+* [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

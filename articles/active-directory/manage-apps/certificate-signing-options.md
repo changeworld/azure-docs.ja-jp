@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の事前統合アプリ用の SAML トークンの詳細な証明書署名オプション | Microsoft Docs
+title: Azure AD アプリにおける SAML トークンの詳細な証明書署名オプション
 description: Azure Active Directory の事前統合アプリ用の SAML トークンの詳細な証明書署名オプションの使い方について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1baf4af41fd5dcb6723b6ee2827ae91b43b072d9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780958"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77159201"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory のギャラリー アプリ用の SAML トークンの詳細な証明書署名オプション
 
@@ -54,32 +54,26 @@ Azure AD では、SAML 応答に署名するための次の 2 つの署名アル
 アプリケーションの SAML 証明書署名オプションと証明書署名アルゴリズムを変更するには、対象のアプリケーションを選択します。
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)で、自分のアカウントにサインインします。 **Azure Active Directory 管理センター**のページが表示されます。
-1. 左側のウィンドウで、**[エンタープライズ アプリケーション]** を選択します。 自分のアカウントのエンタープライズ アプリケーションの一覧が表示されます。
+1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 自分のアカウントのエンタープライズ アプリケーションの一覧が表示されます。
 1. アプリケーションを選択します。 アプリケーションの概要ページが表示されます。
 
-   ![アプリケーションの概要ページ](./media/certificate-signing-options/application-overview-page.png)
+   ![例:アプリケーションの概要ページ](./media/certificate-signing-options/application-overview-page.png)
 
 次に、そのアプリケーションの SAML トークンの証明書署名オプションを変更します。
 
-1. アプリケーションの概要ページの左側のウィンドウで、**[シングル サインオン]** を選択します。
+1. アプリケーションの概要ページの左側のウィンドウで、 **[シングル サインオン]** を選択します。
+1. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページが表示されたら、手順 5 に進みます。
+1. **[シングル サインオン方式の選択]** ページが表示されない場合は、 **[シングル サインオン モードの変更]** を選択して表示します。
+1. **[シングル サインオン方式の選択]** ページに **[SAML]** が表示されている場合は選択します。 ( **[SAML]** が表示されていない場合、そのアプリケーションで SAML はサポートされていないため、残りの手順と記事は無視してもかまいません。)
+1. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページで、 **[SAML 署名証明書]** 見出しを探し、 **[編集]** アイコン (鉛筆) を選択します。 **[SAML 署名証明書]** ページが表示されます。
 
-2. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページが表示されたら、手順 5 に進みます。
+   ![例:[SAML 署名証明書] ページ](./media/certificate-signing-options/saml-signing-page.png)
 
-3. **[シングル サインオン方式の選択]** ページが表示されない場合は、**[シングル サインオン モードの変更]** を選択して表示します。
+1. **[署名オプション]** ドロップダウン リストで、 **[SAML 応答への署名]** 、 **[SAML アサーションへの署名]** 、または **[SAML 応答とアサーションへの署名]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名オプション](#certificate-signing-options)」で紹介しています。
+1. **[署名アルゴリズム]** ドロップダウン リストで、 **[SHA-1]** または **[SHA-256]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名アルゴリズム](#certificate-signing-algorithms)」で紹介しています。
+1. 選択内容に問題がなければ、 **[保存]** を選択して新しい SAML 署名証明書の設定を適用します。 それ以外の場合は、 **[X]** を選択して変更を破棄します。
 
-4. **[シングル サインオン方式の選択]** ページに **[SAML]** が表示されている場合は選択します。 (**[SAML]** が表示されていない場合、そのアプリケーションで SAML はサポートされていないため、残りの手順と記事は無視してもかまいません。)
-
-5. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページで、**[SAML 署名証明書]** 見出しを探し、**[編集]** アイコン (鉛筆) を選択します。 **[SAML 署名証明書]** ページが表示されます。
-
-   ![SAML の署名のページ](./media/certificate-signing-options/saml-signing-page.png)
-
-6. **[署名オプション]** ドロップダウン リストで、**[SAML 応答への署名]**、**[SAML アサーションへの署名]**、または **[SAML 応答とアサーションへの署名]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名オプション](#certificate-signing-options)」で紹介しています。
-
-7. **[署名アルゴリズム]** ドロップダウン リストで、**[SHA-1]** または **[SHA-256]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名アルゴリズム](#certificate-signing-algorithms)」で紹介しています。
-
-8. 選択内容に問題がなければ、**[保存]** を選択して新しい SAML 署名証明書の設定を適用します。 それ以外の場合は、**[X]** を選択して変更を破棄します。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](configure-federated-single-sign-on-non-gallery-applications.md)
-* [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](../develop/howto-v1-debug-saml-sso-issues.md)
+* [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

@@ -1,20 +1,19 @@
 ---
 title: リソース プロバイダー REST API を使用して Azure IoT Hnb を作成する | Microsoft Docs
-description: リソース プロバイダー REST API を使用して IoT Hub を作成する方法。
+description: リソース プロバイダー C# REST API を使用して、IoT ハブをプログラム的に作成および管理する方法について説明します。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 6d91f5e61dfd7c3cb4d1869edf0c6cb8c2c85190
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827492"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75429174"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>リソース プロバイダー REST API を使用して IoT Hub を作成する (.NET)
 
@@ -36,13 +35,13 @@ ms.locfileid: "65827492"
 
 ## <a name="prepare-your-visual-studio-project"></a>Visual Studio プロジェクトの準備
 
-1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを作成します。 プロジェクトに **CreateIoTHubREST**という名前を付けます。
+1. Visual Studio で、 **[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを作成します。 プロジェクトに **CreateIoTHubREST**という名前を付けます。
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-3. NuGet パッケージ マネージャーで **[プレリリースを含める]** をオンにし、**[参照]** ページで **Microsoft.Azure.Management.ResourceManager** を検索します。 パッケージを選択して **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+3. NuGet パッケージ マネージャーで **[プレリリースを含める]** をオンにし、 **[参照]** ページで **Microsoft.Azure.Management.ResourceManager** を検索します。 パッケージを選択して **[インストール]** をクリックし、 **[変更の確認]** で、 **[OK]** 、 **[同意する]** の順にクリックしてライセンス条項に同意します。
 
-4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、 **[変更の確認]** で、 **[OK]** 、 **[同意する]** の順にクリックしてライセンス条項に同意します。
 
 5. Program.cs で、既存の **using** ステートメントを以下のコードに置き換えます。
 
@@ -162,22 +161,22 @@ ms.locfileid: "65827492"
     Console.ReadLine();
     ```
 
-2. **[ビルド]**、**[ソリューションのビルド]** の順にクリックします。 すべてのエラーを修正します。
+2. **[ビルド]** 、 **[ソリューションのビルド]** の順にクリックします。 すべてのエラーを修正します。
 
-3. **[デバッグ]**、**[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
+3. **[デバッグ]** 、 **[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
 
 4. アプリケーションが新しい IoT ハブを追加したことを確認するには、[Azure portal](https://portal.azure.com/) にアクセスしてリソースの一覧を表示します。 または、**Get-AzResource** PowerShell コマンドレットを使用します。
 
 > [!NOTE]
 > このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 完了したら、[Azure portal](https://portal.azure.com/) を使うか、終了時に **Remove-AzResource** PowerShell コマンドレットを使用して IoT ハブを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、リソース プロバイダー REST API を使用して IoT ハブをデプロイしました。次の手順に進んでください。
 
 * [IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) の機能の詳細をご確認ください。
 
-* Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+* Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を参照してください。
 
 IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 

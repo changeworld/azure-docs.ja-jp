@@ -1,25 +1,25 @@
 ---
 title: クイック スタート:Web 上で Content Moderator を試す - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.topic: quickstart
+ms.date: 03/13/2020
+ms.author: pafarley
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756467"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79203571"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 
-このクイック スタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にアプリに統合する場合、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
+このクイックスタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にアプリに統合する場合、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,13 +32,27 @@ Content Moderator レビュー ツールは、レビューア担当者が意思�
 
 ## <a name="create-a-review-team"></a>レビュー チームを作成する
 
-次に、レビュー チームを作成します。 作業のシナリオでは、これは、サービスのモデレート意思決定を手作業でレビューするユーザーのグループになります。 ここでは、チーム名を作成する必要があるだけです。 仕事仲間をチームに招待する場合は、仲間のメール アドレスをここに入力します。
+次に、レビュー チームを作成します。 作業のシナリオでは、これは、サービスのモデレート意思決定を手作業でレビューするユーザーのグループになります。 チームを作成するには、 **[リージョン]** を選択し、 **[チーム名]** と **[チーム ID]** を指定します。 仕事仲間をチームに招待する場合は、仲間のメール アドレスをここに入力します。
 
-![チーム メンバーを招待する](images/QuickStart-2-small.png)
+> [!NOTE]
+> **[チーム名]** は、ご自分のレビュー チームのフレンドリ名です。 この名前は Azure portal に表示されます。 **[チーム ID]** は、ご自分のレビュー チームのプログラムでの識別に使用されます。
+
+> [!div class="mx-imgBorder"]
+> ![チーム メンバーを招待する](images/create-team.png)
+
+カスタマー マネージド キー (CMK) を使用してデータを暗号化することを選択した場合は、E0 価格レベルのご自分の Content Moderator リソースの **[リソース ID]** の入力が求められます。 指定するリソースは新しいものである必要があります。 
+
+> [!div class="mx-imgBorder"]
+> ![カスタマー マネージド キーを使用してチーム メンバーを招待する](images/create-team-cmk.png)
+
+Content Moderator のリソースを再利用しようとすると、次の警告が表示されます。 
+
+> [!div class="mx-imgBorder"]
+> ![CMK failure](images/create-team-cmk-fail.png)\(CMK エラー\)
 
 ## <a name="upload-sample-content"></a>サンプル コンテンツのアップロード
 
-サンプル コンテンツをアップロードする準備ができました。 **[Try > Image] (トライ > イメージ)**、**[Try > Text] (トライ > テキスト)**、または **[Try > Video] (トライ > ビデオ)**.を選択します。
+サンプル コンテンツをアップロードする準備ができました。 **[Try > Image] (トライ > イメージ)** 、 **[Try > Text] (トライ > テキスト)** 、または **[Try > Video] (トライ > ビデオ)** .を選択します。
 
 ![画像またはテキスト モデレーションを試す](images/tryimagesortext.png)
 
@@ -65,9 +79,9 @@ Content Moderator レビュー ツールを使用する方法についてさら�
 
 または、次の手順に進み、コードでの Moderation API の使用を開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリで Moderation API 自体を使用する方法を学習します。
-- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)または [C# クイックスタート](image-moderation-quickstart-dotnet.md)を使用して、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けや猥褻な可能性のあるコンテンツを検出します。
-- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または [C# クイック スタート](text-moderation-quickstart-dotnet.md)を使用して、潜在的な不適切な表現、マシン支援の不要なテキスト分類 (プレビュー)、個人データに関してテキスト コンテンツをスキャンします。
-- ビデオのモデレートを実装します。 [C# 用のビデオのモデレートに関する攻略ガイド](video-moderation-api.md)に関するページ従ってビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 
+- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)を使用するか、または [.NET SDK クイックスタート](dotnet-sdk-quickstart.md)に従って、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けまたはわいせつな可能性のあるコンテンツを検出します。
+- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または [.NET SDK クイック スタート](dotnet-sdk-quickstart.md)を使用して、潜在的な不適切な表現、マシン支援の不要なテキスト分類 (プレビュー)、個人データに関してテキスト コンテンツをスキャンします。
+- ビデオのモデレートを実装します。 [C# 用のビデオのモデレートに関するハウツー ガイド](video-moderation-api.md)に関するページ従ってビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 

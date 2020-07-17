@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181368"
 ---
 ## <a name="preparing-for-updates"></a>更新プログラムの準備
 更新プログラムをスキャンして適用する前に、次の手順を実行する必要があります。

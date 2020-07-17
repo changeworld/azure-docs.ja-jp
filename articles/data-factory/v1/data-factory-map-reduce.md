@@ -3,25 +3,24 @@ title: Azure Data Factory から MapReduce プログラムを起動する
 description: Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110530"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74703149"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md) 
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -40,7 +39,7 @@ ms.locfileid: "58110530"
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、「[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)」チュートリアルを実行してください。  
+> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。  
 
 ## <a name="introduction"></a>はじめに
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、HDInsight MapReduce アクティビティを使用する方法について説明しています。
@@ -113,7 +112,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
    HDInsight MapReduce アクティビティを使用して、HDInsight クラスター上で MapReduce jar ファイルを実行できます。 次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
 
 ## <a name="sample-on-github"></a>GitHub 上のサンプル
-HDInsight MapReduce アクティビティを使用するためのサンプルを [GitHub の Data Factory のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)からダウンロードできます。  
+[GitHub の Data Factory のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample)から、HDInsight MapReduce アクティビティを使用するためのサンプルをダウンロードできます。  
 
 ## <a name="running-the-word-count-program"></a>Word Count プログラムの実行
 このチュートリアルのパイプラインでは、Azure HDInsight クラスターで Word Count Map/Reduce プログラムを実行します。   
@@ -180,7 +179,7 @@ HDInsight MapReduce アクティビティを使用するためのサンプルを
 ```
 
 ### <a name="pipeline"></a>パイプライン
-この例のパイプラインには、種類が HDInsightMapReduce である 1 つのアクティビティのみが含まれます。 JSON の重要なプロパティの一部を次に示します。 
+この例のパイプラインには、HDInsightMapReduce という種類のアクティビティが 1 つだけあります。 JSON の重要なプロパティの一部を次に示します。 
 
 | プロパティ | メモ |
 |:--- |:--- |
@@ -188,7 +187,7 @@ HDInsight MapReduce アクティビティを使用するためのサンプルを
 | className |クラスの名前は **wordcount** |
 | jarFilePath |クラスを含む jar ファイルのパス。 次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 |
 | jarLinkedService |jar ファイルが含まれるAzure Storage のリンクされたサービス。 このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 |
-| arguments |wordcount プログラムは、入力と出力という2 つの引数を使用します。 入力ファイルは davinci.txt ファイルです。 |
+| 引数 |wordcount プログラムは、入力と出力という2 つの引数を使用します。 入力ファイルは davinci.txt ファイルです。 |
 | frequency/interval |これらのプロパティの値は、出力データセットと一致します。 |
 | linkedServiceName |前に作成した HDInsight のリンクされたサービスを参照します。 |
 
@@ -246,10 +245,10 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 [Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: https://portal.azure.com
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Hive アクティビティ](data-factory-hive-activity.md)
 * [Pig アクティビティ](data-factory-pig-activity.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
-* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

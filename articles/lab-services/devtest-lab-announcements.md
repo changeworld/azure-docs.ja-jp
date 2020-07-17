@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148970"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75976445"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボへお知らせを投稿する
 
@@ -35,10 +35,10 @@ ms.locfileid: "60148970"
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>既存のラボにお知らせを投稿する手順
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
-1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
+1. 必要に応じて、 **[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、 **[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
 1. ラボの一覧から、お知らせを投稿するラボを選択します。
-1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。
+1. ラボの **[概要]** で、 **[Configuration and policies]\(構成とポリシー\)** を選択します。
 
     ![[Configuration and policies]\(構成とポリシー\) ボタン](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "60148970"
 1. **有効期限日**を入力して、その日を過ぎると通知がユーザーに表示されないようにできます。 有効期限日を入力しない場合、通知は無効にするまで残ります。
 
    > [!NOTE]
-   > 有効期限日が過ぎた通知は、ユーザーに表示されなくなります。ただし、**[ラボのお知らせ]** ウィンドウには残ります。 それを編集または再有効化して、再度アクティブにすることができます。
+   > 有効期限日が過ぎた通知は、ユーザーに表示されなくなります。ただし、 **[ラボのお知らせ]** ウィンドウには残ります。 それを編集または再有効化して、再度アクティブにすることができます。
    >
    >
 
@@ -64,9 +64,9 @@ ms.locfileid: "60148970"
     ![メッセージを作成するラボのお知らせ画面。](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
 
 
-1. お知らせを投稿する準備ができたら、**[保存]** を選択します。
+1. お知らせを投稿する準備ができたら、 **[保存]** を選択します。
 
-このお知らせをラボのユーザーに表示する必要がなくなったら、**[Lab announcement]\(ラボのお知らせ\)** ページに戻り、**[有効]** を **[いいえ]** に設定します。 有効期限日を指定した場合は、その日付を過ぎると通知が自動的に無効になります。
+このお知らせをラボのユーザーに表示する必要がなくなったら、 **[Lab announcement]\(ラボのお知らせ\)** ページに戻り、 **[有効]** を **[いいえ]** に設定します。 有効期限日を指定した場合は、その日付を過ぎると通知が自動的に無効になります。
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>ユーザーがお知らせを表示するための手順
 
@@ -160,11 +160,11 @@ ms.locfileid: "60148970"
 
 次のいずれかの方法を使用して、Azure Resource Manager テンプレートをデプロイできます。
 
-- [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-- [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-- [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-- [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+- [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
+- [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ラボのポリシーを設定または変更した場合は、ユーザーに通知するお知らせを投稿することをお勧めします。 カスタマイズしたポリシーを使用して、サブスクリプションに制限と規則を適用する方法については[ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)に関するページを参照してください。
 * [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を検索します。

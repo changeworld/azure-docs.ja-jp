@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric のセキュリティに関するベスト プラクティス | Microsoft Docs
-description: Azure Service Fabric のセキュリティに関するベスト プラクティスです。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric セキュリティに関するベスト プラクティス
+description: Azure Service Fabric クラスターとアプリケーションを安全に保つためのベストプラクティスと設計上の考慮事項。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 3349abfb1b7cf85247b1bb5de8eb53fa09299b74
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136483"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478744"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric のセキュリティ 
 
-[Azure のセキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/)について詳しくは、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)」をご覧ください
+[Azure のセキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/)について詳しくは、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)」をご覧ください
 
 ## <a name="key-vault"></a>Key Vault
 
@@ -152,9 +143,21 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 保護対象の値を暗号化した後、[Service Fabric アプリケーションで暗号化されたシークレットを指定](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)し、[サービス コードから暗号化されたシークレットを暗号化解除](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)します。
 
+## <a name="include-certificate-in-service-fabric-applications"></a>Service Fabric アプリケーションに証明書を含める
+
+アプリケーションがシークレットにアクセスできるようにするには、アプリケーション マニフェストに **SecretsCertificate** 要素を追加することにより証明書を含めます。
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>マネージド サービス ID (MSI) を使用して Azure リソースに対して Service Fabric アプリケーションを認証する
 
-Azure リソースに対するマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)」をご覧ください。
+Azure リソースに対するマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」をご覧ください。
 Azure Service Fabric クラスターは、[マネージド サービス ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources) をサポートする仮想マシン スケール セットでホストされています。
 MSI を認証に使用できるサービスの一覧を取得するには、「[Azure AD 認証をサポートしている Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
@@ -201,6 +204,20 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Windows のセキュリティ ベースライン
+[ベースラインを自分で作成するのではなく、Microsoft セキュリティ ベースラインのように、広く知られており、十分にテストされている業界標準の構成を実装することをお勧めします](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines)。これらを仮想マシン スケール セットにプロビジョニングするための 1 つの方法は、Azure Desired State Configuration (DSC) 拡張ハンドラーを使用して、VM をオンラインになるときに構成し、運用ソフトウェアが実行されるようにすることです。
+
+## <a name="azure-firewall"></a>Azure Firewall
+[Azure Firewall は、Azure Virtual Network リソースを保護する、クラウドベースのマネージド ネットワーク セキュリティ サービスです。これは、組み込みの高可用性とクラウドによる無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。](https://docs.microsoft.com/azure/firewall/overview)これによって、アウトバウンド HTTP/S トラフィックを、ワイルド カードを含む完全修飾ドメイン名 (FQDN) の指定した一覧に制限できます。 この機能に TLS/SSL 終了は必要ありません。 Windows Update に [Azure Firewall FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を利用し、Microsoft Windows Update エンドポイントへのネットワーク トラフィックがファイアウォールを通過できるようにすることをお勧めします。 「[テンプレートを使用して Azure Firewall をデプロイする](https://docs.microsoft.com/azure/firewall/deploy-template)」では、Microsoft.Network/azureFirewalls リソース テンプレート定義のサンプルが提供されています。 Service Fabric アプリケーションに共通するファイアウォール規則では、クラスターの仮想ネットワークで以下が許可されます。
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+これらのファイアウォール規則は、許可されている送信ネットワーク セキュリティ グループを補完するものであり、お使いの仮想ネットワークから許可される宛先として ServiceFabric と Storage が含まれます。
+
+## <a name="tls-12"></a>TLS 1.2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 
@@ -236,7 +253,19 @@ Windows Server 2016 には、Windows Defender ウイルス対策が既定でイ�
 > [!NOTE]
 > Windows Defender を使用していない場合は、お使いのマルウェア対策のドキュメントで構成ルールを参照してください。 Windows Defender は、Linux ではサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="platform-isolation"></a>プラットフォームの分離
+既定では、Service Fabric アプリケーションには Service Fabric ランタイムそのものへのアクセスが許可され、それらのマニフェストの形式は異なります。ホストのファイル パスを指す[環境変数](service-fabric-environment-variables-reference.md)はアプリケーションと Fabric ファイルに相当し、内部プロセス通信エンドポイントはアプリケーション固有の要求を受け取り、クライアント証明書はアプリケーションが自身を認証するために使用すると Fabric が想定しているものです。 サービス自体が信頼できないコードをホストしている場合は、明示的に必要でない限り、SF ランタイムへのアクセスを無効にすることをお勧めします。 ランタイムへのアクセスは、アプリケーション マニフェストのポリシー セクション内の次の宣言を使用して削除されます。 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
+
+## <a name="next-steps"></a>次のステップ
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)。
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)。

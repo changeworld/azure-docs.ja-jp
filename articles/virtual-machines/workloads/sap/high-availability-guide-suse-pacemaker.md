@@ -1,26 +1,25 @@
 ---
-title: Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする | Microsoft Docs
+title: Azure での SLES に対する Pacemaker の設定 | Microsoft Docs
 description: Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 04/07/2020
+ms.author: radeltch
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992119"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811576"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -28,8 +27,8 @@ ms.locfileid: "65992119"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-windows-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
@@ -61,6 +60,9 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
 
    <pre><code>sudo zypper update
    </code></pre>
+
+   > [!NOTE]
+   > OS のアップグレード後または更新後に、OS の再起動が必要になる場合があります。 
 
 1. パッケージの削除
 
@@ -176,7 +178,7 @@ o- / ...........................................................................
 
 最後の手順で作成した iSCSI デバイスにクラスターから接続します。
 以下のコマンドは、作成する新しいクラスターの各ノード上で実行します。
-次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
 1. **[A]** iSCSI デバイスに接続します
 
@@ -299,7 +301,6 @@ o- / ...........................................................................
    [...]
    <b>SBD_STARTMODE="always"</b>
    [...]
-   <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
    `softdog` 構成ファイルを作成します
@@ -314,12 +315,27 @@ o- / ...........................................................................
 
 ## <a name="cluster-installation"></a>クラスターのインストール
 
-次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
 1. **[A]** SLES を更新します
 
    <pre><code>sudo zypper update
    </code></pre>
+
+1. **[A]** クラスター リソースに必要なコンポーネントをインストールします
+
+   <pre><code>sudo zypper in socat
+   </code></pre>
+
+1. **[A]** クラスター リソースに必要な azure-lb コンポーネントをインストールします
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > パッケージ resource-agents のバージョンを確認し、最小バージョン要件が満たされていることを確認します。  
+   > - SLES 12 SP4/SP5 の場合、バージョンは resource-agents-4.3.018.a7fb5035-3.30.1 以上である必要があります。  
+   > - SLES 15/15 SP1 の場合、バージョンは resource-agents-4.3.0184.6ee15eb2-4.13.1 以上である必要があります。  
 
 1. **[A]** オペレーティング システムを構成します
 
@@ -350,6 +366,9 @@ o- / ...........................................................................
 
 1. **[A]** HA クラスター用に cloud-netconfig-azure を構成します
 
+   >[!NOTE]
+   > **zypper info cloud-netconfig-azure** を実行して、パッケージ **cloud-netconfig-azure** のインストールされているバージョンを確認します。 環境内のバージョンが 1.3 以降である場合、クラウド ネットワーク プラグインによるネットワーク インターフェイスの管理を抑制する必要はなくなりました。 バージョンが 1.3 より前の場合は、パッケージ **cloud-netconfig-azure** を利用可能な最新バージョンに更新することをお勧めします。  
+
    クラウド ネットワーク プラグインによって仮想 IP アドレスが削除されるのを防ぐために、次に示すようにネットワーク インターフェイスの構成ファイルを変更します (Pacemaker で VIP の割り当てを制御する必要があります)。 詳細については、[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633) を参照してください。 
 
    <pre><code># Edit the configuration file
@@ -374,14 +393,15 @@ o- / ...........................................................................
 
 1. **[2]** SSH アクセスを有効にします
 
-   <pre><code># insert the public key you copied in the last step into the authorized keys file on the second server
-   sudo vi /root/.ssh/authorized_keys
-   
+   <pre><code>
    sudo ssh-keygen
-
+   
    # Enter file in which to save the key (/root/.ssh/id_rsa): -> Press ENTER
    # Enter passphrase (empty for no passphrase): -> Press ENTER
    # Enter same passphrase again: -> Press ENTER
+   
+   # insert the public key you copied in the last step into the authorized keys file on the second server
+   sudo vi /root/.ssh/authorized_keys   
    
    # copy the public key
    sudo cat /root/.ssh/id_rsa.pub
@@ -397,6 +417,28 @@ o- / ...........................................................................
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
+
+   >[!IMPORTANT]
+   > SUSE Linux Enterprise Server for SAP 15 を使用する場合は、追加のモジュールをアクティブ化し、追加のコンポーネント (Azure Fence Agent を使用するための前提条件) をインストールする必要があることに注意してください。 SUSE のモジュールと拡張機能の詳細については、[説明されているモジュールと拡張機能](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html)のセクションを参照してください。 Azure Python SDK をインストールするには、以下の手順に従います。 
+
+   以降に示した Azure Python SDK のインストール手順は、Suse Enterprise Server for SAP **15** のみを対象としています。  
+
+    - Bring-Your-Own-Subscription を使用している場合は、次の手順に従います。  
+
+    <pre><code>
+    #Activate module PackageHub/15/x86_64
+    sudo SUSEConnect -p PackageHub/15/x86_64
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
+     - 従量課金制サブスクリプションを使用している場合は、次の手順に従います。  
+
+    <pre><code>#Activate module PackageHub/15/x86_64
+    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
 
 1. **[A]** ホスト名解決を設定します
 
@@ -416,14 +458,13 @@ o- / ...........................................................................
 
 1. **[1]** クラスターをインストールします
 
-   <pre><code>sudo ha-cluster-init
+   <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
    # Do you want to continue anyway (y/n)? <b>y</b>
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
-   # Network address to bind to (e.g.: 192.168.1.0) [10.0.0.0] <b>Press ENTER</b>
-   # Multicast address (e.g.: 239.x.x.x) [239.232.97.43] <b>Press ENTER</b>
-   # Multicast port [5405] <b>Press ENTER</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
@@ -443,12 +484,12 @@ o- / ...........................................................................
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 これを構成しないと、クラスターは機能しません。
+1. **[A]** corosync の設定を調整します。  
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳しくは、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]をご覧ください。 また、必ずパラメーター mcastaddr を削除してください。
+   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳細については、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]を参照してください。
 
    <pre><code>[...]
      <b>token:          30000
@@ -460,20 +501,16 @@ o- / ...........................................................................
      interface { 
         [...] 
      }
-     <b>transport:      udpu</b>
-     # remove parameter mcastaddr
-     <b># mcastaddr: IP</b>
+     transport:      udpu
    } 
-   <b>nodelist {
+   nodelist {
      node {
-      # IP address of <b>prod-cl1-0</b>
       ring0_addr:10.0.0.6
      }
      node {
-      # IP address of <b>prod-cl1-1</b>
       ring0_addr:10.0.0.7
      } 
-   }</b>
+   }
    logging {
      [...]
    }
@@ -495,21 +532,22 @@ o- / ...........................................................................
 
 STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
 
-1. [https://portal.azure.com](https://portal.azure.com) に移動します
+1. [https://resources.azure.com](<https://portal.azure.com>) に移動します
 1. [Azure Active Directory] ブレードを開きます  
    [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
-1. [追加] をクリックします。
-1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http\://localhost) を入力して、[作成] をクリックします
-1. サインオン URL は使用されず、任意の有効な URL を指定することができます
-1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
-1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
+1. [New Registration]\(新規登録\) をクリックします
+1. 名前を入力し、[Accounts in this organization directory only]\(この組織ディレクトリ内のアカウントのみ\) を選択します 
+2. [アプリケーションの種類] は "Web" を選択し、サインオン URL (たとえば http:\//localhost) を入力して、[追加] をクリックします  
+   サインオン URL は使用されず、任意の有効な URL を指定することができます
+1. [Certificates and Secrets]\(証明書とシークレット\) を選択し、[New client secret]\(新しいクライアント シークレット\) をクリックします
+1. 新しいキーの説明を入力し、[Never expires]\(有効期限なし\) を選択して [追加] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. [概要] を選択します。 アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) を使って作成してください
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) を使って作成してください
 
 入力ファイルには次の内容を使用します。 実際のサブスクリプションに合わせて内容を調整する必要があります。つまり、c276fc76-9cd4-44c9-99a7-4fd71546436e and e91d47c4-76f3-4271-a796-21b4ecfe3624 は、ご利用のサブスクリプションの ID に置き換えます。 ご利用のサブスクリプションが 1 つしかない場合は、AssignableScopes の 2 つ目のエントリは削除してください。
 
@@ -522,7 +560,8 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
   "Actions": [
     "Microsoft.Compute/*/read",
     "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action"
+    "Microsoft.Compute/virtualMachines/start/action", 
+    "Microsoft.Compute/virtualMachines/powerOff/action" 
   ],
   "NotActions": [
   ],
@@ -580,9 +619,9 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 Azure では、[スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
 
-1. **[A]** **azure-events** エージェントをインストールします。 
+1. **[A]** **azure-events** エージェントのパッケージが既にインストールされ、最新であることを確認します。 
 
-<pre><code>sudo zypper install resource-agents
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
 2. **[1]** Pacemaker 内でリソースを構成します。 
@@ -606,7 +645,7 @@ sudo crm configure property maintenance-mode=false
      警告: cib-bootstrap-options: 属性 'hostName_ <strong>hostname</strong>' が不明です  
    > これらの警告メッセージは無視できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]

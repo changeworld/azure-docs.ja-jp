@@ -1,35 +1,25 @@
 ---
-title: App Service on Linux での SSH のサポート - Azure | Microsoft Docs
-description: Azure App Service on Linux で SSH を使用する方法について説明します。
+title: SSH access for Linux コンテナー
+description: Azure App Service で Linux コンテナーへの SSH セッションを開くことができます。 カスタムの Linux コンテナーは、カスタムイメージにいくつかの変更を加えてサポートされます。
 keywords: Azure App Service, Web アプリ, Linux, OSS
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 18d10afc9132c81c2dcfbb1aa17ded81a21336ca
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235995"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
-[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) は、一般にコマンド ライン ターミナルから管理コマンドをリモートで実行するために使用されます。 App Service on Linux では、新しい Web アプリのランタイム スタックで使用される各組み込み Docker イメージで、アプリ コンテナーへの SSH をサポートしています。 
+[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) は、一般にコマンド ライン ターミナルから管理コマンドをリモートで実行するために使用されます。 Linux の App Service では、アプリコンテナーへの SSH サポートが提供されます。 
 
-![ランタイム スタック](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-カスタム Docker イメージでは、カスタム イメージ内で SSH サーバーを構成します。
+![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 SSH と SFTP を使用して、ローカル開発マシンからコンテナーに直接接続することもできます。
 
@@ -51,7 +41,7 @@ TCP トンネリングを使用して、認証済みの WebSocket 接続経由�
 
 最初に、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。 
 
-[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 お使いのアプリの _\<subscription-id>_、_\<group-name>_、および \_<app-name>_ を指定します。
+[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 お使いのアプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -62,7 +52,7 @@ az webapp create-remote-connection --subscription <subscription-id> --resource-g
 
 コマンドの出力では、SSH セッションを開くために必要な情報が示されます。
 
-```
+```output
 Port 21382 is open
 SSH is available { username: root, password: Docker! }
 Start your favorite client and connect to port 21382
@@ -70,20 +60,20 @@ Start your favorite client and connect to port 21382
 
 ローカル ポートを使用して、任意のクライアントでコンテナーとの SSH セッションを開きます。 次の例では、既定の [ssh](https://ss64.com/bash/ssh.html) コマンドを使用しています。
 
-```azurecli-interactive
+```bash
 ssh root@127.0.0.1 -p <port>
 ```
 
 プロンプトが表示されたら、`yes` と入力して接続を続行します。 パスワードを入力するように求められます。 前に示された `Docker!` を使用します。
 
-```
+```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
 root@127.0.0.1's password:
 ```
 
 認証されると、セッションのようこそ画面が表示されます。
 
-```
+```output
   _____
   /  _  \ __________ _________   ____
  /  /_\  \___   /  |  \_  __ \_/ __ \
@@ -99,7 +89,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 [top](https://ss64.com/bash/top.html) コマンドを実行してみます。 プロセスの一覧にアプリのプロセスが表示されます。 次の出力例では、`PID 263` のものです。
 
-```
+```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
 CPU:   3% usr   3% sys   0% nic  92% idle   0% io   0% irq   0% sirq
 Load average: 0.07 0.04 0.08 4/765 45738
@@ -121,9 +111,9 @@ Load average: 0.07 0.04 0.08 4/765 45738
 45738     1 root     Z        0   0%   0   0% [init]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-質問や問題は、[Azure フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
+質問や問題は、[Azure フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)に投稿できます。
 
 Web App for Containers について詳しくは、以下をご覧ください。
 

@@ -1,10 +1,10 @@
 ---
 title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
-description: Azure Active Directory レポートに関するよく寄せられる質問。
+description: Azure Active Directory レポートに関するよく寄せられる質問
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: daveba
+author: cawrites
+manager: MarkusVi
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437443"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199387"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
 この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](overview-reports.md)」をご覧ください。 
 
-## <a name="getting-started"></a>使用の開始 
+## <a name="getting-started"></a>作業の開始 
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 
@@ -37,7 +37,7 @@ ms.locfileid: "58437443"
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:**  [Identity Protection リスク イベント API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
+**A:**  [Identity Protection リスク検出 API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
 
 ---
 
@@ -71,13 +71,7 @@ ms.locfileid: "58437443"
 
 **Q:Azure portal でのアクティビティ ログ (監査およびサインイン) のデータ保持期間はどのぐらいですか。** 
 
-**A:** 次の表に、アクティビティ ログのデータ保持期間を示します。 詳細については、[Azure AD レポートのデータ保持ポリシー](reference-reports-data-retention.md)に関するページを参照してください。
-
-| レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| 監査ログ             | 7 日        | 30 日             | 30 日             |
-| サインイン               | 該当なし           | 30 日             | 30 日             |
-| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
+**A:** 詳細については、[Azure AD レポートのデータ保持ポリシー](reference-reports-data-retention.md)に関するページを参照してください。
 
 ---
 
@@ -107,7 +101,7 @@ ms.locfileid: "58437443"
 
 ## <a name="risky-sign-ins"></a>リスクの高いサインイン
 
-**Q:Identity Protection にリスク イベントがありますが、サインイン レポートの中に該当するサインインが見つかりません。これは期待される動作ですか?**
+**Q:Identity Protection にリスク検出がありますが、サインイン レポートの中に該当するサインインが見つかりません。これは期待される動作ですか?**
 
 **A:** はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
 
@@ -115,7 +109,7 @@ ms.locfileid: "58437443"
 
 **Q:Azure portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。**
 
-**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
+**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク検出に関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になるリスク検出情報は確認できません。
 
 ---
 
@@ -125,7 +119,7 @@ ms.locfileid: "58437443"
 
 ---
 
-**Q:リスク イベント "追加のリスクが検出されたサインイン" は何を意味していますか。**
+**Q:リスク検出 "追加のリスクが検出されたサインイン" は何を意味していますか。**
 
 **A:** 環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバー限定の検出で、サインインに対するプレースホルダーとして機能します。
 

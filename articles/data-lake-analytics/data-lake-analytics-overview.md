@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 1f798917548f4a744518b12ba1e2be2095bdf1c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811646"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "70164509"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics とは
 
@@ -42,9 +42,9 @@ Data Lake Analytics は、ビッグ データ ワークロードを実行する�
     
 ### <a name="works-with-all-your-azure-data"></a>すべての Azure データに対応
   
-Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために Azure Data Lake Store と連携し、Azure Storage BLOB、Azure SQL Database、Azure Warehouse とも連動します。
+Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために Azure Data Lake Storage と連携し、Azure Storage Blob、Azure SQL Database、Azure Warehouse とも連動します。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
  
   * [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md) で Data Lake Analytics の使用を開始する
   * [Azure portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md) でAzure Data Lake Analytics を管理する

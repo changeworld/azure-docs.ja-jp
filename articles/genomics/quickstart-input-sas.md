@@ -1,7 +1,7 @@
 ---
-title: Shared Access Signature を使用してワークフローを送信する - Microsoft Genomics
-titleSuffix: Azure
-description: この記事では、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+title: Shared Access Signatures を使用したワークフロー
+titleSuffix: Microsoft Genomics
+description: この記事では、ストレージ アカウント キーの代わりに Shared Access Signature (SAS) を使用して Microsoft Genomics サービスにワークフローを送信する方法について説明します。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 7c51a0934457a2fcc03f9be1535712e97ac91a1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451384"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72248580"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
 
@@ -33,14 +33,14 @@ Microsoft Genomics に送信する SAS は、入力ファイルと出力ファ�
 Microsoft Genomics サービスに送信される各ワークフローには、入力ファイルごとに 1 つと出力コンテナーに 1 つという 2 つ以上の SAS トークンが必要です。
 
 入力ファイルの SAS には、次のプロパティが必要です。
-1.  範囲 (アカウント、コンテナー、BLOB): BLOB
-2.  有効期限: 今から 48 時間後
-3.  アクセス許可: 読み取り
+ - 範囲 (アカウント、コンテナー、BLOB): BLOB
+ - 有効期限: 今から 48 時間後
+ - アクセス許可: 読み取り
 
 出力コンテナーの SAS には、次のプロパティが必要です。
-1.  範囲 (アカウント、コンテナー、BLOB): コンテナー
-2.  有効期限: 今から 48 時間後
-3.  アクセス許可: 読み取り、書き込み、削除
+ - 範囲 (アカウント、コンテナー、BLOB): コンテナー
+ - 有効期限: 今から 48 時間後
+ - アクセス許可: 読み取り、書き込み、削除
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>入力ファイルと出力コンテナー用の SAS を作成する
@@ -58,7 +58,7 @@ SAS トークンを作成するには、Azure Storage Explorer を使用する�
 
 ### <a name="set-up-create-a-sas-programmatically"></a>設定: SAS をプログラムで作成する
 
-Azure Storage SDK を使用して SAS を作成する場合は、[.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage)、[Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) など、複数の言語について説明されている既存のドキュメントを参照してください。 
+Azure Storage SDK を使用して SAS を作成する場合は、[.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)、[Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage)、[Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) など、複数の言語について説明されている既存のドキュメントを参照してください。 
 
 SDK を使用せずに SAS を作成するには、SAS の認証に必要なすべての情報を含め、SAS クエリ文字列を直接構築することができます。 これらの[手順](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas)では、SAS クエリ文字列のコンポーネントとその構成方法について詳しく説明されています。 必要な SAS 署名は、これらの[手順](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples)で説明されているように、BLOB/コンテナー認証情報を使用して HMAC を生成して作成されます。
 
@@ -66,7 +66,7 @@ SDK を使用せずに SAS を作成するには、SAS の認証に必要なす�
 ## <a name="add-the-sas-to-the-configtxt-file"></a>SAS を config.txt ファイルに追加する
 SAS クエリ文字列を使用して Microsoft Genomics サービスを介してワークフローを実行するには、config.txt ファイルを編集して config.txt ファイルからキーを削除します。 次に、図のように、(`?` で始まる) SAS クエリ文字列を出力コンテナー名に追加します。 
 
-![Genomics SAS の構成](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS の構成")
+![Genomics SAS 構成](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS 構成")
 
 Microsoft Genomics Python クライアントを使用し、次のコマンドで、各入力 BLOB 名に対応する SAS クエリ文字列を付加してワークフローを送信します。
 
@@ -85,5 +85,5 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、アカウント キーの代わりに SAS トークンを使用して、`msgen` Python クライアントを介して Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページを参照してください。 

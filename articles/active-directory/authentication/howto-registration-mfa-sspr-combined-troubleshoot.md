@@ -1,31 +1,26 @@
 ---
-title: Azure AD SSPR と Multi-Factor Authentication のための統合された登録をトラブルシューティングする (プレビュー) - Azure Active Directory
-description: Azure AD Multi-Factor Authentication とパスワード リセットのセルフサービスの結合された登録のトラブルシューティングを行う (プレビュー)
+title: 統合された登録の使用のトラブルシューティング - Azure Active Directory
+description: Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの結合された登録のトラブルシューティングを行う
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: troubleshooting
+ms.date: 04/15/2020
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489195"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81450940"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>結合されたセキュリティ情報の登録のトラブルシューティング (プレビュー)
+# <a name="troubleshooting-combined-security-information-registration"></a>結合されたセキュリティ情報の登録のトラブルシューティング
 
 この記事の情報は、統合された登録エクスペリエンスのユーザーによって報告された問題をトラブルシューティングしている管理者を支援するように考慮されています。
-
-|     |
-| --- |
-| Azure Multi-Factor Authentication と Azure Active Directory (Azure AD) セルフサービスのパスワード リセットのための統合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
 
 ## <a name="audit-logs"></a>監査ログ
 
@@ -38,26 +33,26 @@ ms.locfileid: "59489195"
 | アクティビティ | Status | 理由 | 説明 |
 | --- | --- | --- | --- |
 | ユーザーが必要なすべてのセキュリティ情報を登録した | Success | ユーティリティが必要なすべてのセキュリティ情報を登録しました。 | このイベントは、ユーザーが登録を正常に完了したときに発生します。|
-| ユーザーが必要なすべてのセキュリティ情報を登録した | 失敗 | ユーザーがセキュリティ情報の登録を取り消しました。 | このイベントは、ユーザーが中断モードから登録を取り消したときに発生します。|
+| ユーザーが必要なすべてのセキュリティ情報を登録した | 障害 | ユーザーがセキュリティ情報の登録を取り消しました。 | このイベントは、ユーザーが中断モードから登録を取り消したときに発生します。|
 | ユーザーがセキュリティ情報を登録した | Success | ユーザーが*方法*を登録しました。 | このイベントは、ユーザーが個々の方法を登録したときに発生します。 *方法*は、認証アプリ、電話、電子メール、セキュリティの質問、アプリ パスワード、代替の電話などにすることができます。| 
 | ユーザーがセキュリティ情報を確認した | Success | ユーザーが正常にセキュリティ情報を確認しました。 | このイベントは、ユーザーがセキュリティ情報の確認ページで **[良い]** を選択したときに発生します。|
-| ユーザーがセキュリティ情報を確認した | 失敗 | ユーザーがセキュリティ情報を確認できませんでした。 | このイベントは、ユーザーがセキュリティ情報の確認ページで **[良い]** を選択したが、バックエンドで何かが失敗したときに発生します。|
+| ユーザーがセキュリティ情報を確認した | 障害 | ユーザーがセキュリティ情報を確認できませんでした。 | このイベントは、ユーザーがセキュリティ情報の確認ページで **[良い]** を選択したが、バックエンドで何かが失敗したときに発生します。|
 | ユーザーがセキュリティ問題を削除した | Success | ユーザーが*方法*を削除しました。 | このイベントは、ユーザーが個々の方法を削除したときに発生します。 *方法*は、認証アプリ、電話、電子メール、セキュリティの質問、アプリ パスワード、代替の電話などにすることができます。|
-| ユーザーがセキュリティ問題を削除した | 失敗 | ユーザーが*方法*を削除できませんでした。 | このイベントは、ユーザーが方法を削除しようとしたが、その試みが何らかの理由で失敗したときに発生します。 *方法*は、認証アプリ、電話、電子メール、セキュリティの質問、アプリ パスワード、代替の電話などにすることができます。|
+| ユーザーがセキュリティ問題を削除した | 障害 | ユーザーが*方法*を削除できませんでした。 | このイベントは、ユーザーが方法を削除しようとしたが、その試みが何らかの理由で失敗したときに発生します。 *方法*は、認証アプリ、電話、電子メール、セキュリティの質問、アプリ パスワード、代替の電話などにすることができます。|
 | ユーザーが既定のセキュリティ情報を変更した | Success | ユーザーが*方法*の既定のセキュリティ情報を変更しました。 | このイベントは、ユーザーが既定の方法を変更したときに発生します。 *方法*は、認証アプリの通知、認証アプリまたはトークンからのコード、+X XXXXXXXXXX の呼び出し、+X XXXXXXXXX へのコードのテキスト送信などにすることができます。|
-| ユーザーが既定のセキュリティ情報を変更した | 失敗 | ユーザーが*方法*の既定のセキュリティ情報を変更できませんでした。 | このイベントは、ユーザーが既定の方法を変更しようとしたが、その試みが何らかの理由で失敗したときに発生します。 *方法*は、認証アプリの通知、認証アプリまたはトークンからのコード、+X XXXXXXXXXX の呼び出し、+X XXXXXXXXX へのコードのテキスト送信などにすることができます。|
+| ユーザーが既定のセキュリティ情報を変更した | 障害 | ユーザーが*方法*の既定のセキュリティ情報を変更できませんでした。 | このイベントは、ユーザーが既定の方法を変更しようとしたが、その試みが何らかの理由で失敗したときに発生します。 *方法*は、認証アプリの通知、認証アプリまたはトークンからのコード、+X XXXXXXXXXX の呼び出し、+X XXXXXXXXX へのコードのテキスト送信などにすることができます。|
 
 ## <a name="troubleshooting-interrupt-mode"></a>割り込みモードのトラブルシューティング
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 予期していた方法が表示されません。 | 1.ユーザーに Azure AD 管理者ロールがあるかどうかを確認します。 ある場合は、SSPR 管理者ポリシーの違いを確認します。 <br> 2.ユーザーが中断される理由が、Multi-Factor Authentication 登録の適用か SSPR 登録の適用であるかを確認します。 どの方法が表示される必要があるかを判断するために、「統合された登録のモード」で[フローチャート](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)を確認します。 <br> 手順 3.Multi-Factor Authentication または SSPR ポリシーがどのくらい最近に変更されたかを判定します。 最近、変更が加えられた場合、更新されたポリシーが反映されるまでしばらく時間がかかることがあります。|
+| 予期していた方法が表示されません。 | 1.ユーザーに Azure AD 管理者ロールがあるかどうかを確認します。 ある場合は、SSPR 管理者ポリシーの違いを確認します。 <br> 2.ユーザーが中断される理由が、Multi-Factor Authentication 登録の適用か SSPR 登録の適用であるかを確認します。 どの方法が表示される必要があるかを判断するために、「統合された登録のモード」で[フローチャート](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)を確認します。 <br> 3.Multi-Factor Authentication または SSPR ポリシーがどのくらい最近に変更されたかを判定します。 最近、変更が加えられた場合、更新されたポリシーが反映されるまでしばらく時間がかかることがあります。|
 
 ## <a name="troubleshooting-manage-mode"></a>管理モードのトラブルシューティング
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 手順 3.方法が有効になっている場合は、ユーザーが設定を許可されている、その最大数の方法を既に設定していないことを確認します。|
+| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 3.方法が有効になっている場合は、ユーザーが設定できるメソッドの最大数をまだ設定していないことを確実にします。|
 
 ## <a name="disable-combined-registration"></a>結合された登録を無効にする
 
@@ -65,7 +60,7 @@ ms.locfileid: "59489195"
 
 管理者がプレビューを有効にした場合、ユーザーは新しいエクスペリエンスを使って登録し、その後、管理者がプレビューを無効にすると、ユーザーは知らないうちに Multi-Factor Authentication にも登録される場合があります。
 
-統合された登録を完了したユーザーがセルフサービスのパスワード リセット (SSPR) の現在の登録ページ ([https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)) に移動した場合、そのページにアクセスする前に Multi-Factor Authentication を実行するよう求められます。 この手順は技術的な観点から予測されますが、以前に SSPR にのみ登録されたユーザーにとっては新しい手順です。 この余分な手順により、ユーザーのセキュリティ体制はセキュリティ レベルが追加されることで向上しますが、管理者としてはユーザーが Multi-Factor Authentication を実行できないようにユーザーをロールバックしたい場合があります。  
+統合された登録を完了したユーザーがセルフサービス パスワード リセット (SSPR) の現在の登録ページ ([https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)) に移動した場合、そのページにアクセスする前に Multi-Factor Authentication を実行するよう求められます。 この手順は技術的な観点から予測されますが、以前に SSPR にのみ登録されたユーザーにとっては新しい手順です。 この余分な手順により、ユーザーのセキュリティ体制はセキュリティ レベルが追加されることで向上しますが、管理者としてはユーザーが Multi-Factor Authentication を実行できないようにユーザーをロールバックしたい場合があります。  
 
 ### <a name="how-to-roll-back-users"></a>ユーザーをロールバックする方法
 
@@ -150,16 +145,16 @@ PowerShell ウィンドウで、次のコマンドを実行し、スクリプト
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>プレビュー エクスペリエンスを無効にする
+### <a name="disable-the-updated-experience"></a>更新されたエクスペリエンスを無効にする
 
-ユーザーのプレビュー エクスペリエンスを無効にするには、次の手順を実行します。
+ユーザーの更新されたエクスペリエンスを無効にするには、次の手順を行います。
 
 1. ユーザー管理者として Azure Portal にサインインします。
-2. **[Azure Active Directory]** > **[ユーザー設定]** > **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
+2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
 3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます]** で、セレクターを **[なし]** に設定して **[保存]** を選択します。
 
-ユーザーは、プレビュー エクスペリエンスを使った登録を求められなくなります。
+ユーザーは、更新されたエクスペリエンスを使った登録を求められなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [パスワード リセットのセルフサービスと Azure Multi-Factor Authentication の結合された登録のパブリック プレビューについてさらに学習する](concept-registration-mfa-sspr-combined.md)
+* [セルフサービス パスワード リセットと Azure Multi-Factor Authentication の統合された登録についてさらに学習する](concept-registration-mfa-sspr-combined.md)

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB のサーバー パラメーターの構成方法
+title: サーバー パラメーターの構成 - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal を使用して Azure Database for MariaDB で使用できる MariaDB サーバー パラメータを構成する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.date: 4/16/2020
+ms.openlocfilehash: f39e9450fb922e5b93d7b4b809df73cf5ab007c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615950"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81602401"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -26,7 +26,7 @@ Azure Database for MariaDB では、いくつかのサーバー パラメータ�
 ![列挙ドロップ ダウン](./media/howto-server-parameters/3-toggle_parameter.png)
 4. **[保存]** をクリックして変更を保存します。
 ![変更の保存または破棄](./media/howto-server-parameters/4-save_parameters.png)
-5. パラメーターの新しい値を保存した場合は、**[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
+5. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧
@@ -37,21 +37,21 @@ Azure Database for MariaDB では、いくつかのサーバー パラメータ�
 
 InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-pricing-tiers.md)に関連付けられています。
 
-|**価格レベル**| **仮想コア数**|**InnoDB バッファー プール (MB)**| **最大接続数**|
-|---|---|---|---|
-|Basic| 1| 1024| 50|
-|Basic| 2| 2560| 100|
-|汎用| 2| 3584| 300|
-|汎用| 4| 7680| 625|
-|汎用| 8| 15360| 1250|
-|汎用| 16| 31232| 2500|
-|汎用| 32| 62976| 5000|
-|汎用| 64| 125952| 10000|
-|メモリ最適化| 2| 7168| 600|
-|メモリ最適化| 4| 15360| 1250|
-|メモリ最適化| 8| 30720| 2500|
-|メモリ最適化| 16| 62464| 5000|
-|メモリ最適化| 32| 125952| 10000|
+|**価格レベル**| **仮想コア数**|**InnoDB バッファー プール (MB)**|
+|---|---|---|
+|Basic| 1| 1024|
+|Basic| 2| 2560|
+|General Purpose| 2| 3584|
+|General Purpose| 4| 7680|
+|General Purpose| 8| 15360|
+|General Purpose| 16| 31232|
+|General Purpose| 32| 62976|
+|General Purpose| 64| 125952|
+|メモリ最適化| 2| 7168|
+|メモリ最適化| 4| 15360|
+|メモリ最適化| 8| 30720|
+|メモリ最適化| 16| 62464|
+|メモリ最適化| 32| 125952|
 
 次に示す追加のサーバー パラメーターは、システム内で構成できません。
 
@@ -60,7 +60,8 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 |Basic レベルの innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|512 MB|
+|innodb_log_file_size|256MB|
+|innodb_log_files_in_group|2|
 
 ここに記載されていないその他のサーバー パラメーターはすべて、[MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/) に対する MariaDB の初期既定値に設定されます。
 
@@ -68,15 +69,17 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 
 ### <a name="populating-the-time-zone-tables"></a>タイム ゾーン テーブルに入力する
 
-サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
+サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
 
 > [!NOTE]
-> MySQL Workbench から `az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
+> MySQL Workbench から `mysql.az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
+> [!IMPORTANT]
+> タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。 サーバーを再起動するには、[Azure portal](howto-restart-server-portal.md) または [CLI](howto-restart-server-cli.md) を使用します。
 利用可能なタイム ゾーン値を表示するには、次のコマンドを実行します。
 
 ```sql

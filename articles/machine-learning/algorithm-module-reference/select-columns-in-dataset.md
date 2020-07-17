@@ -1,25 +1,24 @@
 ---
 title: データセット内の列の選択:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning サービスのデータセット内の列の選択モジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択する方法を学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のデータセット内の列の選択モジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択する方法を学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: e7407f62bd3401411d56076b298bd8cd134ece62
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027643"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77153776"
 ---
 # <a name="select-columns-in-dataset-module"></a>データセット内の列の選択モジュール
 
-この記事では、Azure Machine Learning service に使用されるビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 このモジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択します。 このモジュールでは、列がソース データセットから物理的に削除されることはありません。その代わりに、データベースの*ビュー*や*プロジェクション*のように、列のサブセットが作成されます。
 
@@ -63,7 +62,7 @@ ms.locfileid: "65027643"
     データセットが広範囲にわたる場合、列を個別に選択するより、索引を利用したり、名前の一覧を生成したりするほうが簡単かもしれません。 一覧を前もって準備している場合:
 
     1. **[WITH RULES]\(規則を使用\)** オプションをクリックします。 
-    2. **[No columns]\(列なし\)** を選択し、**[Include]\(含める\)** を選択し、赤の感嘆符が付いているテキスト ボックスの内側をクリックします。 
+    2. **[No columns]\(列なし\)** を選択し、 **[Include]\(含める\)** を選択し、赤の感嘆符が付いているテキスト ボックスの内側をクリックします。 
     3. 前に検証した列名のコンマ区切り一覧を貼り付けるか、入力します。 列の名前が無効な場合、モジュールを保存できません。そのため、あらかじめ名前を確認してください。
     
     この方法を利用し、索引値で列の一覧を指定することもできます。 
@@ -74,13 +73,13 @@ ms.locfileid: "65027643"
 
 **[BEGIN WITH]\(次で始まる\)** オプションでは始点が決定されます。結果を理解するために重要です。 
 
-+ **[すべての列]** オプションを選択した場合、すべての列が一覧に追加されます。 その後、**[除外]** オプションを使用し、特定の条件を満たさない列を*削除*する必要があります。 
++ **[すべての列]** オプションを選択した場合、すべての列が一覧に追加されます。 その後、 **[除外]** オプションを使用し、特定の条件を満たさない列を*削除*する必要があります。 
 
     たとえば、最初にすべての列を選択し、それから名前や型に基づいて列を削除します。
 
 + **[NO COLUMNS]\(列なし\)** オプションを選択した場合、列の一覧は空の状態から始まります。 その後、条件を指定し、列を一覧に*追加*します。 
 
-    複数の規則を適用する場合、各条件は**付加**されます。 たとえば、列なしから始め、数値列をすべて取得する規則を追加します。 自動車の価格のデータセットで、結果的に 16 の列が追加されます。 次に、**+** 記号をクリックして新しい条件を追加し、**[Include all features]\(すべてのフィーチャーを含める\)** を選択します。 結果的に得られるデータセットにはすべての数値列が含まれ、さらに文字列のフィーチャー列など、すべてのフィーチャー列が含まれます。
+    複数の規則を適用する場合、各条件は**付加**されます。 たとえば、列なしから始め、数値列をすべて取得する規則を追加します。 自動車の価格のデータセットで、結果的に 16 の列が追加されます。 次に、 **+** 記号をクリックして新しい条件を追加し、 **[Include all features]\(すべてのフィーチャーを含める\)** を選択します。 結果的に得られるデータセットにはすべての数値列が含まれ、さらに文字列のフィーチャー列など、すべてのフィーチャー列が含まれます。
 
 ### <a name="choose-by-column-index"></a>列の索引別に選択する
 
@@ -111,6 +110,6 @@ ms.locfileid: "65027643"
 + `4,3,1`
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

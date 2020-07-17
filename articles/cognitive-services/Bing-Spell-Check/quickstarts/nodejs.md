@@ -1,21 +1,21 @@
 ---
-title: クイック スタート:Bing Spell Check REST API と Node.js を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+title: クイック スタート:REST API と Node.js を使用してスペルをチェックする - Bing Spell Check
+titleSuffix: Azure Cognitive Services
+description: このクイックスタートで、Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: 0a1260de6428f6ebc70757261cdcc3002820ec7b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547766"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75382858"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>クイック スタート:Bing Spell Check REST API と Node.js を使用してスペルをチェックする
 
@@ -30,7 +30,7 @@ ms.locfileid: "59547766"
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成します。 厳格度を設定し、`https` を要求します。 次に、API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。
+1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成します。 厳格度を設定し、`https` を要求します。 次に、API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```javascript
     'use strict';
@@ -97,6 +97,18 @@ req.write ("text=" + text);
 req.end ();
 ```
 
+
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。
+
+コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルド、実行します。
+
+```bash
+node <FILE_NAME>.js
+```
+
+
 ## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
@@ -139,10 +151,10 @@ req.end ();
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

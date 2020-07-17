@@ -2,26 +2,26 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
 ms.date: 10/09/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 50d71a3967e61e5d531f4bfeae3582b56230a0d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 98d765e2f6909f00f8dfe76d06aef017aad67adf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117297"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "71174967"
 ---
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
 Azure Marketplace イメージには、次の属性があります。
 
-* **[発行者]**: イメージを作成した組織。 次に例を示します。Canonical、MicrosoftWindowsServer
-* **[プラン]**: 発行元によって作成された関連するイメージのグループ名です。 次に例を示します。UbuntuServer、WindowsServer
-* **SKU**:ディストリビューションのメジャー リリースなど、プランのインスタンス。 次に例を示します。18.04-LTS、2019-Datacenter
+* **[発行者]** : イメージを作成した組織。 例 :Canonical、MicrosoftWindowsServer
+* **[プラン]** : 発行元によって作成された関連するイメージのグループ名です。 例 :UbuntuServer、WindowsServer
+* **SKU**:ディストリビューションのメジャー リリースなど、プランのインスタンス。 例 :18.04-LTS、2019-Datacenter
 * **バージョン**:イメージの SKU のバージョン番号。 
 
 プログラムで VM をデプロイした場合に Marketplace イメージを識別するには、これらの値をパラメーターとして個別に指定します。 一部のツールはイメージ *URN* を受け入れます。これは、次のように、これらの値を組み合わせてコロン (:) で区切ったものです:*Publisher*:*Offer*:*Sku*:*Version*。 URN では、バージョン番号を "latest" で置き換えることもできます。この場合、イメージの最新バージョンが選択されます。 

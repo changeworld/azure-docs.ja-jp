@@ -1,19 +1,15 @@
 ---
-title: チュートリアル - クラウドでコンテナー イメージをビルドする - Azure Container Registry タスク
+title: チュートリアル - コンテナー イメージのクイック ビルド
 description: このチュートリアルでは、Azure Container Registry Task (ACR Task) 使用して Azure で Docker コンテナー イメージをビルドして、Azure Container Instances にデプロイする方法を説明します。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152127"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78398504"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
@@ -34,7 +30,7 @@ Dockerfile に関する専門知識をすべて、ACR Task に直接転送でき
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] でログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,17 +48,17 @@ Dockerfile に関する専門知識をすべて、ACR Task に直接転送でき
 
 ### <a name="clone-your-fork"></a>フォークの複製
 
-リポジトリをフォークしたら、フォークを複製して、ローカル クローンを含むディレクトリを入力します。
+リポジトリをフォークしたら、フォークのクローンを作成し、ローカル クローンを含むディレクトリに移動します。
 
-`git` を使用してリポジトリを複製し、**\<your-github-username\>** を GitHub のユーザー名に置き換えます。
+`git` を使用してリポジトリを複製し、 **\<your-github-username\>** を GitHub のユーザー名に置き換えます。
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 ソース コードを含むディレクトリを入力します。
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -74,9 +70,11 @@ cd acr-build-helloworld-node
 
 これで、コンピューターにソース コードを取得したので、次の手順に従ってコンテナー レジストリを作成して、ACR Task を使用してコンテナー イメージをビルドします。
 
-サンプル コマンドの実行を簡単にするために、このシリーズのチュートリアルではシェル環境変数を使用します。 次のコマンドを実行して、`ACR_NAME` 変数を設定します。 **\<registry-name\>** を新しいコンテナー レジストリの一意の名前に置き換えます。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このチュートリアルで作成する他のリソースはこの名前に基づくため、この最初の変数のみ変更する必要があります。
+サンプル コマンドの実行を簡単にするために、このシリーズのチュートリアルではシェル環境変数を使用します。 次のコマンドを実行して、`ACR_NAME` 変数を設定します。 **\<registry-name\>** を新しいコンテナー レジストリの一意の名前に置き換えます。 レジストリ名は、Azure 内で一意にする必要があり、小文字のみで 5 - 50 文字の英数字を含める必要があります。 このチュートリアルで作成する他のリソースはこの名前に基づくため、この最初の変数のみ変更する必要があります。
 
-```azurecli-interactive
+[![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -95,10 +93,9 @@ az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --loca
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
-[az acr build][az-acr-build] コマンドの出力は次の例のようになります。 ソース コード ("コンテキスト") の Azure へのアップロードと、クラウドで ACR Task によって実行された `docker build` 操作の詳細を表示できます。 ACR Task は `docker build` を使用してイメージをビルドするため、Dockerfile を変更することなく ACR Task の使用をすぐに開始できます。
+[az acr build][az-acr-build] コマンドの出力は、次のようになります。 ソース コード ("コンテキスト") の Azure へのアップロードと、クラウドで ACR Task によって実行された `docker build` 操作の詳細を表示できます。 ACR Task は `docker build` を使用してイメージをビルドするため、Dockerfile を変更することなく ACR Task の使用をすぐに開始できます。
 
-```console
-$ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
+```output
 Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
@@ -175,7 +172,7 @@ ACR Task によって、既定でビルド イメージがレジストリに自�
 
 ### <a name="configure-registry-authentication"></a>レジストリの認証を構成する
 
-すべての運用環境では、[サービス プリンシパル][service-principal-auth]を使用して、Azure コンテナー レジストリにアクセスします。 サービス プリンシパルを使用すると、コンテナー イメージへのロールベースのアクセス制御を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
+すべての運用環境のシナリオでは、[サービス プリンシパル][service-principal-auth]を使用して、Azure コンテナー レジストリにアクセスする必要があります。 サービス プリンシパルを使用すると、コンテナー イメージへのロールベースのアクセス制御を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
 
 #### <a name="create-a-key-vault"></a>Key Vault を作成します
 
@@ -246,17 +243,7 @@ az container create \
 
 前のコマンドが、コンテナーの DNS 名のラベルにコンテナーのレジストリの名前を追加するため、`--dns-name-label` の値は Azure 内で一意でなければなりません。 コマンドの出力には、次のようにコンテナーの完全修飾ドメイン名 (FQDN) が表示されます。
 
-```console
-$ az container create \
->     --resource-group $RES_GROUP \
->     --name acr-tasks \
->     --image $ACR_NAME.azurecr.io/helloacrtasks:v1 \
->     --registry-login-server $ACR_NAME.azurecr.io \
->     --registry-username $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-usr --query value -o tsv) \
->     --registry-password $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-pwd --query value -o tsv) \
->     --dns-name-label acr-tasks-$ACR_NAME \
->     --query "{FQDN:ipAddress.fqdn}" \
->     --output table
+```output
 FQDN
 ----------------------------------------------
 acr-tasks-myregistry.eastus.azurecontainer.io
@@ -274,8 +261,7 @@ az container attach --resource-group $RES_GROUP --name acr-tasks
 
 `az container attach` 出力では、イメージを取得して開始するときに最初にコンテナーの状態が表示され、次にローカル コンソールの STDOUT と STDERR がコンテナーにバインドされます。
 
-```console
-$ az container attach --resource-group $RES_GROUP --name acr-tasks
+```output
 Container 'acr-tasks' is in state 'Running'...
 (count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
 (count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
@@ -292,7 +278,7 @@ Server running at http://localhost:80
 
 コンテナーからコンソールをデタッチするには、`Control+C` を押します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [az container delete][az-container-delete] コマンドを使用してコンテナー インスタンスを停止します。
 
@@ -307,7 +293,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、クイックタスクで内部ループをテストしたので、ソース コードを Git リポジトリにコミットしたときにコンテナー イメージ ビルドをトリガーするように**ビルド タスク**を構成します。
 

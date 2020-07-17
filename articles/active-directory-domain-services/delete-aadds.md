@@ -1,53 +1,51 @@
 ---
-title: Azure Active Directory Domain Services の無効化 | Microsoft Docs
-description: Azure Portal を使用して Azure Active Directory Domain Services を無効にする
+title: Azure Active Directory Domain Services の削除 | Microsoft Docs
+description: Azure portal を使用して Azure Active Directory Domain Services マネージド ドメインを無効化または削除する方法について説明します
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 89e407e1-e1e0-49d1-8b89-de11484eee46
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/14/2019
-ms.author: mstephen
-ms.openlocfilehash: 122caddd73219060689ac8f6e3ab6408ea99a422
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: how-to
+ms.date: 03/30/2020
+ms.author: iainfou
+ms.openlocfilehash: 595436daa2efbd8e706a539d0a89c3ea98be31ff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245342"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80655464"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を無効にする
-この記事では、Azure ポータルを使用して、Azure AD ディレクトリの Azure Active Directory Domain Services を無効にする方法を示します。
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Azure portal を使用して Azure Active Directory Domain Services マネージド ドメインを無効化または削除する
+
+マネージド ドメインが不要になった場合、Azure Active Directory Domain Services (Azure AD DS) インスタンスを削除できます。 Azure AD DS マネージド ドメインをオフにしたり、一時的に無効にしたりすることはできません。 Azure AD DS マネージド ドメインを削除しても、Azure AD テナントが削除されたり、削除以外の悪影響が出たりすることはありません。 この記事では、Azure portal を使用して Azure AD DS マネージド ドメインを削除する方法について説明します。
 
 > [!WARNING]
 > **削除は永続的であり、元に戻すことはできません。**
-> 慎重に進めてください。 マネージド ドメインを削除する場合、次の点に注意してください。
+> Azure AD DS マネージド ドメインを削除すると、次の処理が行われます。
 >   * マネージド ドメインのドメイン コント ローラーはプロビジョニング解除され、仮想ネットワークから削除されます。
->   * マネージド ドメイン上のデータは完全に削除されます。 これには、マネージド ドメインで作成したカスタム OU、GPO、カスタムの DNS レコード、サービス プリンシパル、GMSA などが含まれます。
+>   * マネージド ドメイン上のデータは完全に削除されます。 このデータには、作成したカスタム OU、GPO、カスタムの DNS レコード、サービス プリンシパル、GMSA などが含まれます。
 >   * マネージド ドメインに参加しているコンピューターでは、ドメインとの信頼関係が失われ、ドメインへの参加を解消する必要があります。
->   * 企業の AD 資格情報を使用してこれらのコンピューターにサインインすることはできません。 代わりに、該当のコンピューターのローカル管理者の資格情報を使用します。
-> マネージド ドメインを削除しても、Azure AD ディレクトリが削除されたり、ディレクトリに悪影響を与えたりすることはありません。
+>       * 企業の AD 資格情報を使用してこれらのコンピューターにサインインすることはできません。 代わりに、コンピューターのローカル管理者の資格情報を使用する必要があります。
 
-Azure AD Domain Services のマネージド ドメインを削除するには、次の手順を実行します。
-1. Azure Portal で、[Azure AD Domain Services 拡張機能](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices)に移動します。
-2. マネージド ドメインの名前をクリックします。
+## <a name="delete-the-managed-domain"></a>マネージド ドメインを削除する
 
-    ![削除するドメインの選択](./media/getting-started/domain-services-delete-select-domain.png)
+Azure AD DS マネージド ドメインを削除するには、次の手順を実行します。
 
-3. **[概要]** ページで、 **[削除]** ボタンをクリックします。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。
+1. Azure AD DS マネージド ドメインの名前 (*aaddscontoso.com* など) を選択します。
+1. **[概要]** ページで **[削除]** を選択します。 削除を確定するには、マネージド ドメインのドメイン名を再度入力し、 **[削除]** を選択します。
 
-    ![ドメインの削除](./media/getting-started/domain-services-delete-domain.png)
+Azure AD DS マネージド ドメインを削除するには、15 から 20 分以上かかることがあります。
 
-4. 削除を確認するには、マネージド ドメインの DNS ドメイン名を入力します。 終了したら、 **[削除]** ボタンをクリックします。
+## <a name="next-steps"></a>次のステップ
 
-    ![ドメインの削除の確認](./media/getting-started/domain-services-delete-domain-confirm.png)
+Azure AD DS に希望する機能があれば、[フィードバックの投稿][feedback]をご検討ください。
 
-マネージド ドメインは、約 15 ~ 20 分で削除されます。
+Azure AD DS を再開する場合、「[チュートリアル: Azure Active Directory Domain Services インスタンスを作成して構成する][create-instance]」を参照してください。
 
-どの機能によってユーザーが将来 Azure AD Domain Services を選択するかを理解するために、 [フィードバックの共有](contact-us.md) を検討してください。 このフィードバックは、デプロイのニーズとユースケースに合わせたサービスの拡張に活用させていただきます。
+<!-- INTERNAL LINKS -->
+[feedback]: contact-us.md
+[create-instance]: tutorial-create-instance.md

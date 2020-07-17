@@ -2,16 +2,17 @@
 title: 'Azure HDInsight: Java のサンプル'
 description: HDInsight SDK for Java を使用した一般的なタスクの Java サンプルは、GitHub でご覧いただけます。
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 90723afd8864bd7ec64f7b2e81e11644561cb52d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 11/29/2019
+ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710160"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74775362"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java のサンプル
 
@@ -26,11 +27,11 @@ ms.locfileid: "64710160"
 * クラスター作成タスクのサンプルへのリンク
 * その他の管理タスクのリファレンス コンテンツへのリンク
 
-## <a name="prerequisites"></a>前提条件
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK for Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisites"></a>前提条件
+
+[Azure HDInsight SDK for Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 

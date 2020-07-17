@@ -1,23 +1,21 @@
 ---
-title: Java と VS Code を使用してクラウドに Kubernetes 開発空間を作成する
-titleSuffix: Azure Dev Spaces
+title: 'Kubernetes 開発空間を作成する: Visual Studio Code と Java'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
+description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上で Java アプリケーションのデバッグと迅速な反復型開発を行う方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-manager: mmontwil
-ms.openlocfilehash: 10f85ea697ad0ffae181112ae51eac928424ccc3
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+manager: gwallace
+ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861728"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240533"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure Dev Spaces での Java の使用
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Java
 
 このガイドでは、以下の方法について説明します。
 
@@ -34,7 +32,7 @@ Azure Dev Spaces には、ローカル マシンの最小限のセットアッ�
 ### <a name="sign-in-to-azure-cli"></a>Azure CLI へのサインイン
 Azure にサインインします。 ターミナル ウィンドウで次のコマンドを入力します。
 
-```cmd
+```azurecli
 az login
 ```
 
@@ -44,28 +42,29 @@ az login
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>複数の Azure サブスクリプションがある場合:
 以下を実行して、サブスクリプションを表示できます。 
 
-```cmd
-az account list
+```azurecli
+az account list --output table
 ```
-JSON 出力に `isDefault: true` が含まれているサブスクリプションを見つけます。
+
+*IsDefault* が *True* のサブスクリプションを探します。
 それが使用したいサブスクリプションでない場合は、既定のサブスクリプションを変更できます。
 
-```cmd
+```azurecli
 az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces 対応の Kubernetes クラスターを作成する
 
-[Azure Dev Spaces をサポートするリージョン](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)に、コマンド プロンプトでリソース グループを作成します。
+[Azure Dev Spaces をサポートするリージョン][supported-regions]に、コマンド プロンプトでリソース グループを作成します。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location <region>
 ```
 
 以下のコマンドを使用して Kubernetes クラスターを作成します。
 
-```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 クラスターの作成には数分かかります。
@@ -74,7 +73,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 
 次の Azure CLI コマンドを入力します。このとき、AKS クラスターを含む含むリソース グループと、AKS クラスター名を使用します。 このコマンドでは、Azure Dev Spaces のサポートを使用してクラスターが構成されます。
 
-   ```cmd
+   ```azurecli
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
 
@@ -94,22 +93,25 @@ Azure Dev Spaces で Java アプリケーションをデバッグするには、
 このセクションでは、Java Web アプリケーションを作成し、Kubernetes のコンテナーで実行します。
 
 ### <a name="create-a-java-web-app"></a>Java Web アプリを作成する
-https://github.com/Azure/dev-spaces に移動して GitHub からコードをダウンロードし、**[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/java/getting-started/webfrontend` にあります。
+GitHub からコードをダウンロードするために、[https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) に移動し、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/java/getting-started/webfrontend` にあります。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Docker および Kubernetes 開発用コードの準備
 ここまでで、ローカルで実行できる基本的な Web アプリを用意しました。 ここで、アプリのコンテナーと、それを Kubernetes にデプロイする方法を定義するアセットを作成して、それをコンテナー化します。 このタスクは Azure Dev Spaces で行うのが容易です。 
 
 1. VS Code を起動し、`webfrontend` フォルダーを開きます。 (デバッグ アセットの追加やプロジェクトの復元を行うための既定のプロンプトはすべて無視できます。)
-1. VS Code で統合ターミナルを開きます (**[表示]、[統合ターミナル]** メニューを使用)。
+1. VS Code で統合ターミナルを開きます ( **[表示]、[統合ターミナル]** メニューを使用)。
 1. このコマンドを実行します (**webfrontend** が現在のフォルダーであることを確認します)。
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Azure CLI の `azds prep` コマンドにより、既定の設定で Docker と Kubernetes のアセットが生成されます。
 * `./Dockerfile` は、アプリのコンテナー イメージと、ソース コードがどのようにコンテナー内でビルドされ、実行されるかを記述しています。
 * `./charts/webfrontend` の下の [Helm チャート](https://docs.helm.sh)は、Kubernetes にコンテナーを展開する方法を記述しています。
+
+> [!TIP]
+> プロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works-prep.md#prepare-your-code)は、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 ここでは、これらのファイルの内容をすべて理解する必要はありません。 ただし、開発から運用まで、**コードとしての構成である同じ Kubernetes および Docker アセットを使用できるため、異なる環境にわたってより高い一貫性が提供されることに注意してください。**
  
@@ -137,18 +139,27 @@ azds up
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 コンテナーが実行されると、`stdout` と `stderr` の出力がターミナル ウィンドウにストリーミングされます。
+`up` コマンドの出力で、サービスのパブリック URL を特定します。 これは `.azds.io` で終わります。 上記の例では、パブリック URL は `http://webfrontend.1234567890abcdef1234.eus.azds.io/` です。
+
+Web アプリを表示するには、ブラウザーでこのパブリック URL を開きます。 また、Web アプリを操作すると、`stdout` と `stderr` の出力が *azds trace* ターミナル ウィンドウにストリームされることに注目してください。 さらに、システムを通過する HTTP 要求の追跡情報を確認することもできます。 これにより、開発中に複雑なマルチ サービス呼び出しを追跡しやすくなります。 Dev Spaces で追加されるインストルメンテーションによって、この要求の追跡が提供されます。
 
 > [!Note]
-> 最初の実行では、パブリック DNS が準備されるまでに数分かかることがあります。 公開 URL が解決されない場合は、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 利便性を考慮し、また、ローカル コンピューターからのサービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。 後で DNS レコードが準備できたら、戻って公開 URL を試してみることができます。
-> ### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
-> Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
+> パブリック URL に加えて、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 Azure Dev Spaces では、Kubernetes の *port-forward* 機能が使用され、AKS で実行されているコンテナーに localhost ポートがマップされます。 これにより、ローカル コンピューターからのサービスとの対話が容易になります。
+
+### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
+Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
 1. ターミナル ウィンドウで、`Ctrl+C` キーを押して `azds up` を停止します。
-1. `src/main/java/com/ms/sample/webfrontend/Application.java` という名前のコード ファイルを開き、あいさつメッセージ (`return "Hello from webfrontend in Azure!";`) を編集します。
+1. `src/main/java/com/ms/sample/webfrontend/Application.java` を開き、[19 行目](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)のあいさつメッセージを編集します。
+
+    ```java
+    return "Hello from webfrontend in Azure!";
+    ```
+
 1. ファイルを保存します。
 1. ターミナル ウィンドウで `azds up` を実行します。
 
@@ -168,7 +179,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>VS Code 拡張機能によるデバッグ アセットの初期化
 まず、VS Code が Azure 内の開発空間と通信するように、コード プロジェクトを構成する必要があります。 Azure Dev Spaces 用の VS Code 拡張機能は、デバッグ構成をセットアップするためのヘルパー コマンドを提供します。 
 
-(**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
+( **[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
 Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追加されます。 このコマンドと、デプロイ用にプロジェクトを構成する `azds prep` コマンドを混同しないでください。
 
@@ -176,12 +187,12 @@ Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追�
 
 ### <a name="select-the-azds-debug-configuration"></a>AZDS デバッグ構成を選択する
 1. VS Code の左側の**アクティビティ バー**で、[デバッグ] アイコンをクリックしてデバッグ ビューを開きます。
-1. アクティブなデバッグ構成として、**[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を選択します。
+1. アクティブなデバッグ構成として、 **[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)** を選択します。
 
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> コマンド パレットに Azure Dev Spaces コマンドが表示されない場合は、Azure Dev Spaces 用 VS Code 拡張機能がインストールされていることを確認してください。 VS Code で開いているワークスペースが、azds.yaml が含まれているフォルダーであることを確認します。
+> コマンド パレットに Azure Dev Spaces コマンドが表示されない場合は、Azure Dev Spaces 用 VS Code 拡張機能がインストールされていることを確認してください。 VS Code で開いているワークスペースが、`azds.yaml` が含まれているフォルダーであることを確認します。
 
 ### <a name="debug-the-container-in-kubernetes"></a>Kubernetes でコンテナーをデバッグする
 **F5** キーを押して、Kubernetes でコードをデバッグします。
@@ -189,7 +200,7 @@ Azure Dev Spaces 用のデバッグ構成が `.vscode` フォルダー下に追�
 `up` コマンドと同様に、コードが開発空間に同期され、コンテナーがビルドされて Kubernetes にデプロイされます。 今回は、デバッガーがリモート コンテナーにアタッチされます。
 
 > [!Tip]
-> VS Code のステータス バーに、クリック可能な URL が表示されます。
+> VS Code のステータス バーが、デバッガーがアタッチされていることを示すオレンジ色に変化します。 また、アプリケーションを開くために使用できるクリック可能な URL も表示されます。
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -207,9 +218,9 @@ public String greeting()
 }
 ```
 
-ファイルを保存し、**デバッグ操作ウィンドウ**で **[最新の情報に更新]** ボタンをクリックします。
+ファイルを保存し、**デバッグ操作ウィンドウ**で **[再起動]** ボタンをクリックします。
 
-![](media/get-started-java/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 コードを編集するたびに新しいコンテナー イメージを再構築して再展開すると、多くの場合、かなりの時間がかかります。Azure Dev Spaces では、代わりに既存のコンテナー内でコードの増分再コンパイルを実行することで、編集/デバッグ ループを高速化します。
 
@@ -217,7 +228,10 @@ public String greeting()
 
 **これで、コードを迅速に反復処理し、Kubernetes で直接デバッグできるようになりました。** 次に、2 つ目のコンテナーを作成して呼び出す方法を説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [マルチサービス開発について学習する](multi-service-java.md)
+
+
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

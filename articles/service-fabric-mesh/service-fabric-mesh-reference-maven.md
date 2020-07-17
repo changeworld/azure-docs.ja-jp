@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric Mesh Maven のリファレンス | Microsoft Docs
+title: Azure Service Fabric Mesh Maven のリファレンス
 description: Service Fabric Mesh の Maven プラグインの使用法のリファレンスが含まれています
-services: service-fabric-mesh
-keywords: maven、java、cli
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
-ms.service: service-fabric-mesh
-manager: subramar
-ms.openlocfilehash: 08e842f5b91bd0ca5f8e8b2a7866f3f9a689ac28
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998987"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75459021"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 用の Maven プラグイン
 
@@ -38,6 +34,9 @@ ms.locfileid: "52998987"
 
 ### `azure-sfmesh:addgateway`
 - 指定したゲートウェイ名を付けた `gateway` YAML を `appresources` フォルダー内に生成します。 
+
+#### `azure-sfmesh:addvolume`
+- 指定したボリューム名を付けた `volume` YAML を `appresources` フォルダー内に生成します。
 
 ### `azure-sfmesh:addsecret`
 - 指定したシークレット名を付けた `secret` YAML を `appresources` フォルダー内に生成します。 
@@ -96,7 +95,7 @@ mvn azure-sfmesh:init -DapplicationName=helloworldserver
 次のコマンドを実行して、ネットワーク リソース YAML を作成します。 
 
 ```cmd
-mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.4/22
+mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
 - `network_helloworldservicenetwork` という名前のフォルダー `servicefabric->appresources` にネットワーク YAML を作成します。

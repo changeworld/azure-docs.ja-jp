@@ -1,21 +1,21 @@
 ---
 title: ワークスペースとプロジェクトとは - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: ワークスペースは、カスタム翻訳システムを作成および構築するための作業領域です。 ワークスペースには、複数のプロジェクト、モデル、ドキュメントを含めることができます。 プロジェクトは、モデル、ドキュメント、およびテストのラッパーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。
+description: この記事では、ワークスペースとプロジェクトの違い、およびカスタム翻訳ツール サービスのプロジェクトのカテゴリとラベルについて説明します。
 services: cognitive-services
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: dc45847f3dc2e11af9b7cf566fdd6780ec2b9dac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a67e199af1ee6e68f00dbde9a0a43d02e4c7d638
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762162"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588668"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 
@@ -39,12 +39,12 @@ ms.locfileid: "57762162"
 
 Custom Translator を使用すると、プロジェクトにプロジェクト ラベルを割り当てることができます。 プロジェクト ラベルで、言語ペアとカテゴリが同じ複数のプロジェクトを区別します。 必要な場合を除き、プロジェクト ラベルを使用しないことをお勧めします。
 
-プロジェクト ラベルは CategoryID の一部として使用されます。 プロジェクト ラベルを設定しない場合、またはプロジェクト全体で同様に設定されている場合、同じカテゴリで言語ペアが*異なる*プロジェクトは同じ CategoryID を共有することになります。 このアプローチは、Text Translator API を使用するときに、各プロジェクトに固有の CategoryID について心配することなく、自分も顧客も言語間を切り替えることができるので便利です。
+プロジェクト ラベルは CategoryID の一部として使用されます。 プロジェクト ラベルを設定しない場合、またはプロジェクト全体で同様に設定されている場合、同じカテゴリで言語ペアが*異なる*プロジェクトは同じ CategoryID を共有することになります。 このアプローチでは、Translator を使用するときに、各プロジェクトに固有の CategoryID について心配することなく、自分も顧客も言語間を切り替えることができるので便利です。
 
 たとえば、テクノロジ ドメインで英語からフランス語へ、フランス語から英語への翻訳を有効にしたい場合は、英語用 -\> フランス語用とフランス語 -\> 英語用の 2 つのプロジェクトを作成します。 両方に同じカテゴリ (テクノロジ) を指定し、プロジェクト ラベルは空白のままにします。 両方のプロジェクトの CategoryID が一致するので、CategoryID を変更することなく、英語とフランス語の両方の翻訳に対して API のクエリを実行することができます。
 
 言語サービス プロバイダーが、同じカテゴリと言語ペアを保持する異なるモデルを複数の顧客に対して提供する場合は、プロジェクト ラベルを使用して顧客間を区別することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 翻訳モデルを効率的に構築する方法については、[トレーニングとモデル](training-and-model.md)に関するページを参照してください。

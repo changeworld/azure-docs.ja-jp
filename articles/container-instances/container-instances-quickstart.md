@@ -1,35 +1,34 @@
 ---
-title: クイック スタート - Azure Container Instances への Docker コンテナーのデプロイ - CLI
+title: クイックスタート - コンテナー インスタンスに Docker コンテナーをデプロイする - Azure CLI
 description: このクイック スタートでは、Azure CLI を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 8e504a081f8685107871aed920077dd75a70dfa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65908093"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78252183"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする
 
-サーバーレスの Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 Azure Kubernetes Service のように完全なコンテナー オーケストレーション プラットフォームが不要な場合は、コンテナー インスタンス オンデマンドにアプリケーションをデプロイします。
+サーバーレスの Docker コンテナーを Azure 内で簡単にすばやく実行するには、Azure Container Instances を使用します。 Azure Kubernetes Service のように完全なコンテナー オーケストレーション プラットフォームが不要な場合は、コンテナー インスタンス オンデマンドにアプリケーションをデプロイします。
 
 このクイック スタートでは、Azure CLI を使用して、分離された Docker コンテナーをデプロイし、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 1 つのデプロイ コマンドを実行して数秒後には、コンテナーで実行中のアプリケーションを参照できます。
 
 ![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][azure-account]を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 Azure CLI をローカルで使用する場合は、バージョン 2.0.55 以降をお勧めします。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
@@ -41,7 +40,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure CLI を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [az container create][az-container-create] コマンドに渡します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージを使用します。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
+リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure CLI を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、Docker コンテナー イメージを [az container create][az-container-create] コマンドに指定します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージを使用します。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
 
 1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、Web アプリにパブリックに到達できるよう、DNS 名ラベルを指定してコンテナーをデプロイします。
 
@@ -51,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show][az-container-show] コマンドを使用して、コンテナーの状態を確認します。
+数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show][az-container-show] コマンドを使用して、その状態を確認します。
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -59,8 +58,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query "{
 
 コマンドを実行すると、コンテナーの完全修飾ドメイン名 (FQDN) とそのプロビジョニング状態が表示されます。
 
-```console
-$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+```output
 FQDN                               ProvisioningState
 ---------------------------------  -------------------
 aci-demo.eastus.azurecontainer.io  Succeeded
@@ -68,7 +66,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 コンテナーの `ProvisioningState` が **[Succeeded]\(成功\)** と表示されている場合は、ブラウザーでその FQDN に移動します。 次のような Web ページが表示されたら成功です。 Docker コンテナーで実行されているアプリケーションが Azure に正常にデプロイされました。
 
-![Azure コンテナー インスタンスで実行されているアプリケーションを示すブラウザー スクリーンショット][aci-app-browser]
+![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
 最初にアプリケーションが表示されない場合は、DNS が反映されるまで数秒待った後、ブラウザーを更新してみてください。
 
@@ -84,8 +82,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 出力はコンテナーのログを表示し、ブラウザーでアプリケーションを表示したときに生成された HTTP GET 要求が表示されます。
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```output
 listening on port 80
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:43:53 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:44:36 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
@@ -104,8 +101,7 @@ az container attach --resource-group myResourceGroup --name mycontainer
 
 アタッチしたら、ブラウザーを数回更新して、追加の出力を生成します。 完了したら、`Control+C` キーを押してコンソールをデタッチします。 次のような出力が表示されます。
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```output
 Container 'mycontainer' is in state 'Running'...
 (count: 1) (last timestamp: 2019-03-21 17:27:20+00:00) pulling image "mcr.microsoft.com/azuredocs/aci-helloworld"
 (count: 1) (last timestamp: 2019-03-21 17:27:24+00:00) Successfully pulled image "mcr.microsoft.com/azuredocs/aci-helloworld"
@@ -122,9 +118,9 @@ listening on port 80
 ::ffff:10.240.255.56 - - [21/Mar/2019:17:47:12 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-コンテナーを使い終えたら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
+コンテナーでの処理が完了したら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -138,13 +134,13 @@ az container list --resource-group myResourceGroup --output table
 
 **mycontainer** コンテナーは、コマンドの出力に表示されません。 リソース グループに別のコンテナーがない場合、出力は表示されません。
 
-*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの操作が終了したら、[az group delete][az-group-delete] コマンドを使用してそれを削除します。
+*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの処理が完了したら、[az group delete][az-group-delete] コマンドを使用してそれを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、パブリック Microsoft イメージを使用して Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 
@@ -154,7 +150,7 @@ az group delete --name myResourceGroup
 Azure のオーケストレーション システムでコンテナーを実行するためのオプションを試すには、[Azure Kubernetes Service (AKS)][container-service] のクイック スタートを参照してください。
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

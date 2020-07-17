@@ -4,35 +4,37 @@
   items:
     - name: Azure Cosmos DB の概要
       href: introduction.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: .NET
-      href: create-sql-api-dotnet.md
-    - name: .NET プレビュー
-      href: create-sql-api-dotnet-preview.md
-    - name: Java
-      href: create-sql-api-java.md
-    - name: Node.js
-      href: create-sql-api-nodejs.md
-    - name: Python
-      href: create-sql-api-python.md
-    - name: Xamarin
-      href: create-sql-api-xamarin-dotnet.md
+    - name: Cosmos DB リソースを作成する
+      expanded: true
+      items:
+        - name: Azure portal
+          href: create-cosmosdb-resources-portal.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: quick-create-template.md
+        - name: .NET アプリ - V4 SDK
+          href: create-sql-api-dotnet-v4.md
+        - name: .NET アプリ - V3 SDK
+          href: create-sql-api-dotnet.md
+        - name: Java アプリ
+          href: create-sql-api-java.md
+        - name: Node.js アプリ
+          href: create-sql-api-nodejs.md
+        - name: Python アプリ
+          href: create-sql-api-python.md
+        - name: Xamarin アプリ
+          href: create-sql-api-xamarin-dotnet.md
 - name: チュートリアル
   items:
-    - name: 1 - データの作成/管理
+    - name: 1 - データの作成と管理
       items:
         - name: コンソール アプリの構築
           items:
             - name: .NET
               href: sql-api-get-started.md
-            - name: .NET プレビュー
-              href: sql-api-dotnet-get-started-preview.md
-            - name: .NET Core
-              href: sql-api-dotnetcore-get-started.md
-            - name: .NET Core プレビュー
-              href: sql-api-dotnet-core-get-started-preview.md
             - name: Java
               href: sql-api-java-get-started.md
             - name: Async Java
@@ -43,29 +45,34 @@
           items:
             - name: .NET
               href: sql-api-dotnet-application.md
-            - name: .NET プレビュー
-              href: sql-api-dotnet-application-preview.md
             - name: Java
               href: sql-api-java-application.md
             - name: Node.js
               href: sql-api-nodejs-application.md
+        - name: モバイル アプリを構築する
+          items:
             - name: Xamarin
               href: mobile-apps-with-xamarin.md
     - name: 2 - データの移行
-      displayName: import
-      href: import-data.md
+      items:
+        - name: データ移行ツールの使用
+          href: import-data.md
+        - name: .NET Bulk サポートの使用
+          href: tutorial-sql-api-dotnet-bulk-import.md
     - name: 3 - データのクエリ
       href: tutorial-query-sql-api.md
-    - name: 4 - データのグローバル分散
+    - name: 4 - ノートブックの作成
+      href: create-notebook-visualize-data.md
+    - name: 5 - データのグローバル分散
       href: tutorial-global-distribution-sql-api.md
 - name: サンプル
   items:
-    - name: .NET のサンプル
+    - name: .NET V2 SDK のサンプル
       href: sql-api-dotnet-samples.md
-    - name: Java のサンプル
-      href: sql-api-java-samples.md
-    - name: Async Java のサンプル
-      href: sql-api-async-java-samples.md
+    - name: .NET V3 SDK のサンプル
+      href: sql-api-dotnet-v3sdk-samples.md
+    - name: Java SDK v4 のサンプル
+      href: sql-api-java-sdk-samples.md
     - name: Node.js のサンプル
       href: sql-api-nodejs-samples.md
     - name: Python のサンプル
@@ -76,11 +83,16 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
+    - name: NoSQL とリレーショナル データベース
+      href: relational-nosql.md
     - name: グローバル配信
       items:
-        - name: 概要
+        - name: グローバル配信の概要
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: 一貫性レベル
@@ -99,7 +111,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: 競合のタイプと解決ポリシー
-          displayName: 'last write wins, custom'
+          displayName: 'last write wins, custom, multi master, multi-master'
           href: conflict-resolution-policies.md
         - name: グローバル配信 - 内部のしくみ
           href: global-dist-under-the-hood.md
@@ -107,7 +119,7 @@
           href: regional-presence.md
     - name: パーティション分割
       items:
-        - name: 概要
+        - name: パーティション分割の概要
           href: partitioning-overview.md
         - name: パーティション分割と水平スケーリング
           href: partition-data.md
@@ -118,9 +130,331 @@
         - name: 要求ユニット
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: コンテナーとデータベースのスループットのプロビジョニング
+        - name: プロビジョニングされたスループットの概要
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
+        - name: 自動スケーリングのスループットをプロビジョニングする
+          href: provision-throughput-autoscale.md
+        - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
+          href: how-to-choose-offer.md
+        - name: 自動スケーリングに関する FAQ
+          href: autoscale-faq.md
+    - name: SQL クエリ (SQL query)
+      items:
+        - name: 作業の開始
+          displayName: 'sql query, query basics'
+          href: sql-query-getting-started.md
+        - name: 句
+          items:
+            - name: SELECT
+              displayName: 'select, select clause'
+              href: sql-query-select.md
+            - name: FROM
+              displayName: 'from, from clause'
+              href: sql-query-from.md
+            - name: WHERE
+              displayName: 'where, where clause'
+              href: sql-query-where.md
+            - name: ORDER BY
+              displayName: 'order by, order by clause'
+              href: sql-query-order-by.md
+            - name: GROUP BY
+              displayName: group by clause
+              href: sql-query-group-by.md
+            - name: OFFSET LIMIT
+              displayName: offset limit
+              href: sql-query-offset-limit.md
+        - name: JSON の使用
+          displayName: 'alias, JSON, projection'
+          href: sql-query-working-with-json.md
+        - name: サブクエリ
+          displayName: 'subquery, exists'
+          href: sql-query-subquery.md
+        - name: 結合
+          displayName: join
+          href: sql-query-join.md
+        - name: 配列とオブジェクト
+          displayName: 'object and array creation, object and array'
+          href: sql-query-object-array.md
+        - name: Keywords
+          displayName: 'keywords, distinct, between, in, top'
+          href: sql-query-keywords.md
+        - name: 定数
+          displayName: 'object, number,array'
+          href: sql-query-constants.md
+        - name: オペレーター
+          displayName: 'operators, operator, logical operators, equality, comparison'
+          href: sql-query-operators.md
+        - name: スカラー式
+          displayName: 'scalar expressions, scalar'
+          href: sql-query-scalar-expressions.md
+        - name: 関数
+          items:
+            - name: ユーザー定義関数
+              displayName: 'functions, udf'
+              href: sql-query-udfs.md
+            - name: 集計
+              displayName: 'functions, aggregate, count, sum, min, minimum, max, maximum, avg, average'
+              href: sql-query-aggregates.md
+            - name: システム関数
+              items:
+                - name: システム関数
+                  displayName: 'functions, system functions, built-in functions'
+                  href: sql-query-system-functions.md
+                - name: 配列関数
+                  items:
+                    - name: 配列関数
+                      displayName: 'array functions, array, system functions, built-in functions'
+                      href: sql-query-array-functions.md
+                    - name: ARRAY_CONCAT
+                      displayName: 'ARRAY_CONCAT, array concat, array functions'
+                      href: sql-query-array-concat.md
+                    - name: ARRAY_CONTAINS
+                      displayName: 'ARRAY_CONTAINS, array contains, array functions'
+                      href: sql-query-array-contains.md
+                    - name: ARRAY_LENGTH
+                      displayName: 'ARRAY_LENGTH, array length, array functions'
+                      href: sql-query-array-length.md
+                    - name: ARRAY_SLICE
+                      displayName: 'ARRAY_SLICE, array slice, array functions'
+                      href: sql-query-array-slice.md
+                - name: 日付と時刻関数
+                  items:
+                    - name: 日付と時刻関数
+                      displayName: 'date and time functions, date and time, datetime, system functions, built-in functions'
+                      href: sql-query-date-time-functions.md
+                    - name: GetCurrentDateTime
+                      displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
+                      href: sql-query-getcurrentdatetime.md
+                    - name: GetCurrentTimestamp
+                      displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
+                      href: sql-query-getcurrenttimestamp.md
+                - name: 数学関数
+                  items:
+                    - name: 数学関数
+                      displayName: 'mathematical, mathematical functions, system functions, built-in functions'
+                      href: sql-query-mathematical-functions.md
+                    - name: ABS
+                      displayName: 'ABS, absolute value, built-in functions'
+                      href: sql-query-abs.md
+                    - name: ACOS
+                      displayName: 'ACOS, arccosine, built-in functions'
+                      href: sql-query-acos.md
+                    - name: ASIN
+                      displayName: 'ASIN, asine, built-in functions'
+                      href: sql-query-asin.md
+                    - name: ATAN
+                      displayName: 'ATAN, arctangent, built-in functions'
+                      href: sql-query-atan.md
+                    - name: ATN2
+                      displayName: 'ATN2, built-in functions'
+                      href: sql-query-atn2.md
+                    - name: CEILING
+                      displayName: 'CEILING, built-in functions'
+                      href: sql-query-ceiling.md
+                    - name: COS
+                      displayName: 'COS, cosine, built-in functions'
+                      href: sql-query-cos.md
+                    - name: COT
+                      displayName: 'COT, cotangent, built-in functions'
+                      href: sql-query-cot.md
+                    - name: DEGREES
+                      displayName: 'DEGREES, built-in functions'
+                      href: sql-query-degrees.md
+                    - name: EXP
+                      displayName: 'EXP, exponential value, built-in functions'
+                      href: sql-query-exp.md
+                    - name: FLOOR
+                      displayName: 'FLOOR, built-in functions'
+                      href: sql-query-floor.md
+                    - name: LOG
+                      displayName: 'LOG, logarithm, built-in functions'
+                      href: sql-query-log.md
+                    - name: LOG10
+                      displayName: 'LOG10, log base 10, built-in functions'
+                      href: sql-query-log10.md
+                    - name: PI
+                      displayName: 'PI, built-in functions'
+                      href: sql-query-pi.md
+                    - name: POWER
+                      displayName: 'POWER, exponent, built-in functions'
+                      href: sql-query-power.md
+                    - name: RADIANS
+                      displayName: 'RADIANS, built-in functions'
+                      href: sql-query-radians.md
+                    - name: RAND
+                      displayName: 'RAND, random, built-in functions'
+                      href: sql-query-rand.md
+                    - name: ROUND
+                      displayName: 'ROUND, built-in functions'
+                      href: sql-query-round.md
+                    - name: SIGN
+                      displayName: 'SIGN, built-in functions'
+                      href: sql-query-sign.md
+                    - name: SIN
+                      displayName: 'SIN, sine, built-in functions'
+                      href: sql-query-sin.md
+                    - name: SQRT
+                      displayName: 'SQRT, square root, built-in functions'
+                      href: sql-query-sqrt.md
+                    - name: SQUARE
+                      displayName: 'SQUARE, built-in functions'
+                      href: sql-query-square.md
+                    - name: TAN
+                      displayName: 'TAN, built-in functions'
+                      href: sql-query-tan.md
+                    - name: TRUNC
+                      displayName: 'TRUNC, truncate, built-in functions'
+                      href: sql-query-trunc.md
+                - name: 空間関数
+                  items:
+                    - name: 空間関数
+                      displayName: 'spatial functions, spatial, system functions, built-in functions'
+                      href: sql-query-spatial-functions.md
+                    - name: ST_DISTANCE
+                      displayName: 'ST_DISTANCE, st distance, distance, built-in functions'
+                      href: sql-query-st-distance.md
+                    - name: ST_WITHIN
+                      displayName: 'ST_WITHIN, st within, within, built-in functions'
+                      href: sql-query-st-within.md
+                    - name: ST_INTERSECTS
+                      displayName: 'ST_INTERSECTS, st intersects, intersects, built-in functions'
+                      href: sql-query-st-intersects.md
+                    - name: ST_ISVALID
+                      displayName: 'ST_ISVALID, st isvalid, is valid, built-in functions'
+                      href: sql-query-st-isvalid.md
+                    - name: ST_ISVALIDDETAILED
+                      displayName: 'ST_ISVALIDDETAILED, st isvaliddetailed, is valid detailed, built-in functions'
+                      href: sql-query-st-isvaliddetailed.md
+                - name: 文字列関数
+                  items:
+                    - name: 文字列関数
+                      displayName: 'string functions, string, system functions, built-in functions'
+                      href: sql-query-string-functions.md
+                    - name: CONCAT
+                      displayName: 'CONCAT, concatenate, built-in functions'
+                      href: sql-query-concat.md
+                    - name: CONTAINS
+                      displayName: 'CONTAINS, built-in functions'
+                      href: sql-query-contains.md
+                    - name: ENDSWITH
+                      displayName: 'ENDSWITH, built-in functions'
+                      href: sql-query-endswith.md
+                    - name: INDEX_OF
+                      displayName: 'INDEX_OF, index of, built-in functions'
+                      href: sql-query-index-of.md
+                    - name: LEFT
+                      displayName: 'LEFT, built-in functions'
+                      href: sql-query-left.md
+                    - name: LENGTH
+                      displayName: 'LENGTH, built-in functions'
+                      href: sql-query-length.md
+                    - name: LOWER
+                      displayName: 'LOWER, built-in functions'
+                      href: sql-query-lower.md
+                    - name: LTRIM
+                      displayName: 'LTRIM, left trim, built-in functions'
+                      href: sql-query-ltrim.md
+                    - name: REPLACE
+                      displayName: 'REPLACE, built-in functions'
+                      href: sql-query-replace.md
+                    - name: REPLICATE
+                      displayName: 'REPLICATE, built-in functions'
+                      href: sql-query-replicate.md
+                    - name: REVERSE
+                      displayName: 'REVERSE, built-in functions'
+                      href: sql-query-reverse.md
+                    - name: RIGHT
+                      displayName: 'RIGHT, built-in functions'
+                      href: sql-query-right.md
+                    - name: RTRIM
+                      displayName: 'RTRIM, right trim, built-in functions'
+                      href: sql-query-rtrim.md
+                    - name: STARTSWITH
+                      displayName: 'STARTSWITH, starts with, built-in functions'
+                      href: sql-query-startswith.md
+                    - name: STRINGEQUALS
+                      displayName: 'STRINGEQUALS, equals, case-insensitive'
+                      href: sql-query-stringequals.md
+                    - name: StringToArray
+                      displayName: 'StringToArray, string to array, built-in functions'
+                      href: sql-query-stringtoarray.md
+                    - name: StringToBoolean
+                      displayName: 'StringToBoolean, string to boolean, built-in functions'
+                      href: sql-query-stringtoboolean.md
+                    - name: StringToNull
+                      displayName: 'StringToNull, string to null, built-in functions'
+                      href: sql-query-stringtonull.md
+                    - name: StringToNumber
+                      displayName: 'StringToNumber, string to number, built-in functions'
+                      href: sql-query-stringtonumber.md
+                    - name: StringToObject
+                      displayName: 'StringToObject, string to object, built-in functions'
+                      href: sql-query-stringtoobject.md
+                    - name: SUBSTRING
+                      displayName: 'SUBSTRING, built-in functions'
+                      href: sql-query-substring.md
+                    - name: ToString
+                      displayName: 'ToString, to sting, built-in functions'
+                      href: sql-query-tostring.md
+                    - name: TRIM
+                      displayName: 'TRIM, built-in functions'
+                      href: sql-query-trim.md
+                    - name: UPPER
+                      displayName: 'UPPER, built-in functions'
+                      href: sql-query-upper.md
+                - name: 型チェック関数
+                  items:
+                    - name: 型チェック関数
+                      displayName: 'type checking functions, type checking, type, system functions, built-in functions'
+                      href: sql-query-type-checking-functions.md
+                    - name: IS_ARRAY
+                      displayName: 'IS_ARRAY, is array, built-in functions'
+                      href: sql-query-is-array.md
+                    - name: IS_BOOL
+                      displayName: 'IS_BOOL, IsBool, is bool, built-in functions'
+                      href: sql-query-is-bool.md
+                    - name: IS_DEFINED
+                      displayName: 'IS_DEFINED, IsDefined, is defined, built-in functions'
+                      href: sql-query-is-defined.md
+                    - name: IS_NULL
+                      displayName: 'IS_NULL, IsNull, is null, built-in functions'
+                      href: sql-query-is-null.md
+                    - name: IS_NUMBER
+                      displayName: 'IS_NUMBER, IsNumber, is number, built-in functions'
+                      href: sql-query-is-number.md
+                    - name: IS_OBJECT
+                      displayName: 'IS_OBJECT, IsObject, is object, built-in functions'
+                      href: sql-query-is-object.md
+                    - name: IS_PRIMITIVE
+                      displayName: 'IS_PRIMITIVE, IsPrimitive, is primitive, built-in functions'
+                      href: sql-query-is-primitive.md
+                    - name: IS_STRING
+                      displayName: 'IS_STRING, IsString, is string, built-in functions'
+                      href: sql-query-is-string.md
+        - name: 地理空間のデータ
+          items:
+            - name: 地理空間の概要
+              displayName: 'geospatial, spatial'
+              href: sql-query-geospatial-intro.md
+            - name: 地理空間のデータのクエリを実行する
+              displayName: 'geospatial, spatial, query'
+              href: sql-query-geospatial-query.md
+            - name: 地理空間のデータのインデックスを付ける
+              displayName: 'geospatial, spatial, index'
+              href: sql-query-geospatial-index.md
+        - name: DateTime
+          displayName: 'datetime, date, time'
+          href: working-with-dates.md
+        - name: パラメーター化クエリ
+          displayName: 'parameterized query, parameterized, parameter, parameters'
+          href: sql-query-parameterized-queries.md
+        - name: LINQ to SQL
+          displayName: 'linq, .NET'
+          href: sql-query-linq-to-sql.md
+        - name: SQL クエリの実行
+          displayName: 'query performance, query execution'
+          href: sql-query-execution.md
     - name: Azure Cosmos アカウントの使用
       href: account-overview.md
     - name: コンテナーとアイテム
@@ -128,18 +462,12 @@
         - name: データベース、コンテナー、アイテムの操作
           displayName: 'collection, document'
           href: databases-containers-items.md
-        - name: SQL 言語のリファレンス
-          displayName: 'collection, document'
-          href: sql-api-query-reference.md
-        - name: SQL クエリの例
-          displayName: 'collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains'
-          href: how-to-sql-query.md
         - name: モデル ドキュメント データ
           displayName: document
           href: modeling-data.md
         - name: インデックス作成
           items:
-            - name: 概要
+            - name: インデックス作成の概要
               displayName: 'range, spatial'
               href: index-overview.md
             - name: インデックス作成ポリシー
@@ -154,8 +482,10 @@
           href: database-transactions-optimistic-concurrency.md
     - name: Change Feed
       items:
-        - name: 概要
+        - name: 変更フィードの概要
           href: change-feed.md
+        - name: 変更フィードの設計パターン
+          href: change-feed-design-patterns.md
         - name: 変更フィードの読み取り
           href: read-change-feed.md
         - name: 変更フィード プロセッサ
@@ -163,8 +493,24 @@
         - name: Azure Functions をトリガーする
           displayName: change feed
           href: change-feed-functions.md
-    - name: Apache Spark による組み込みの分析
-      href: spark-api-introduction.md
+        - name: 変更フィードのプル モデル
+          href: change-feed-pull-model.md
+    - name: Azure Synapse Link を使用した分析
+      items:
+        - name: Cosmos DB の Azure Synapse Link
+          href: synapse-link.md
+        - name: 分析ストア - 概要
+          href: analytical-store-introduction.md
+        - name: Synapse Link でサポートされる機能
+          href: ../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Synapse Link のユース ケース
+          href: synapse-link-use-cases.md
+        - name: Synapse Link に関する FAQ
+          href: synapse-link-frequently-asked-questions.md
+    - name: 組み込み Jupyter ノートブック
+      items:
+        - name: Jupyter ノートブックの概要
+          href: cosmosdb-jupyter-notebooks.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF
@@ -173,11 +519,14 @@
           href: javascript-query-api.md
     - name: Azure Cosmos DB コストの最適化
       items:
+        - name: コストの計画と管理
+          href: plan-manage-costs.md
         - name: 価格モデル
           href: how-pricing-works.md
         - name: 総保有コスト (TCO)
           href: total-cost-ownership.md
         - name: 課金内容を確認する
+          displayName: free tier
           href: understand-your-bill.md
         - name: プロビジョニング スループット コストの最適化
           displayName: 'request units, RUs, RU'
@@ -191,12 +540,13 @@
         - name: マルチリージョンのコストの最適化
           href: optimize-cost-regions.md
         - name: 開発とテストのコストの最適化
+          displayName: free tier
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
-    - name: セキュリティ
+    - name: Security
       items:
-        - name: 概要
+        - name: セキュリティの概要
           href: database-security.md
         - name: データの暗号化
           href: database-encryption-at-rest.md
@@ -206,28 +556,39 @@
         - name: IP ファイアウォール
           href: firewall-support.md
         - name: 仮想ネットワークからのアクセス
+          displayName: service endpoint
           href: vnet-service-endpoint.md
+        - name: サービス タグ
+          href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: ロールベースのアクセス制御
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: 高度な脅威保護
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: エンタープライズ対応
       items:
         - name: オンラインのバックアップとオンデマンドの復元
           href: online-backup-and-restore.md
         - name: コンプライアンス
           href: compliance.md
-    - name: リソース制限
+        - name: Azure Policy のサポート
+          href: policy.md
+    - name: サービス クォータ
       href: concepts-limits.md
 - name: Cassandra、MongoDB、およびその他の API
   expanded: true
   items:
     - name: Cassandra API
       items:
-        - name: はじめに
-          href: cassandra-introduction.md
-        - name: ワイヤ プロトコルのサポート
-          href: cassandra-support.md
-        - name: クイック スタート
+        - name: 概要
+          items:
+            - name: Cosmos DB の Cassandra API とは
+              href: cassandra-introduction.md
+            - name: ワイヤ プロトコルのサポート
+              href: cassandra-support.md
+        - name: クイックスタート
           items:
             - name: .NET
               href: create-cassandra-dotnet.md
@@ -239,7 +600,7 @@
               href: create-cassandra-python.md
         - name: チュートリアル
           items:
-            - name: 1 - データの作成/管理
+            - name: 1 - データの作成と管理
               href: create-cassandra-api-account-java.md
             - name: 2 - データの読み込み
               href: cassandra-api-load-data.md
@@ -248,11 +609,20 @@
             - name: 4 - データの移行
               displayName: import
               href: cassandra-import-data.md
-        - name: ハウツー ガイド
+        - name: 概念
           items:
+            - name: よく寄せられる質問
+              href: cassandra-faq.md
+            - name: エラスティック スケール
+              href: manage-scale-cassandra.md
+            - name: セカンダリ インデックス
+              href: cassandra-secondary-index.md
+        - name: 操作方法ガイド
+          items:
+            - name: Change Feed
+              href: cassandra-change-feed.md
             - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra と Spark
               items:
                 - name: はじめに
@@ -261,9 +631,9 @@
                   href: cassandra-spark-databricks.md
                 - name: HDInsight を使用して接続する
                   href: cassandra-spark-hdinsight.md
-                - name: キースペースとテーブルを作成する
+                - name: キースペースとテーブルの作成
                   href: cassandra-spark-ddl-ops.md
-                - name: データを挿入する
+                - name: データの挿入
                   href: cassandra-spark-create-ops.md
                 - name: データの読み取り
                   href: cassandra-spark-read-ops.md
@@ -277,15 +647,18 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-cassandra-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-cassandra.md
+            - name: Azure CLI を使用して管理する
+              href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
-        - name: はじめに
-          href: mongodb-introduction.md
-        - name: ワイヤ プロトコルのサポート
-          href: mongodb-feature-support.md
-        - name: クイック スタート
+        - name: 概要
+          items:
+            - name: Cosmos DB の MongoDB API とは
+              href: mongodb-introduction.md
+        - name: クイックスタート
           items:
             - name: .NET
               href: create-mongodb-dotnet.md
@@ -298,10 +671,10 @@
             - name: Xamarin
               href: create-mongodb-xamarin.md
             - name: Golang
-              href: create-mongodb-golang.md
+              href: create-mongodb-go.md
         - name: チュートリアル
           items:
-            - name: 1 - データの作成/管理
+            - name: 1 - データの作成と管理
               items:
                 - name: Node.js コンソール アプリ
                   href: mongodb-samples.md
@@ -323,13 +696,20 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2 - データの移行
               displayName: import
-              href: /azure/dms/tutorial-mongodb-cosmos-db
-              maintainContext: true
+              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 3 - データのクエリ
               href: tutorial-query-mongodb.md
             - name: 4 - データのグローバル分散
               href: tutorial-global-distribution-mongodb.md
-        - name: ハウツー ガイド
+        - name: 概念
+          items:
+            - name: ワイヤ プロトコルのサポート (3.6)
+              href: mongodb-feature-support-36.md
+            - name: ワイヤ プロトコルのサポート (3.2)
+              href: mongodb-feature-support.md
+            - name: よく寄せられる質問
+              href: mongodb-api-faq.md
+        - name: 操作方法ガイド
           items:
             - name: 移行前ガイド
               href: mongodb-pre-migration.md
@@ -339,7 +719,9 @@
               href: connect-mongodb-account.md
             - name: Studio 3T を使用して接続する
               href: mongodb-mongochef.md
-            - name: Robomongo を使用して接続する
+            - name: Compass を使用して接続する
+              href: mongodb-compass.md
+            - name: Robo 3T を使用して接続する
               href: mongodb-robomongo.md
             - name: Mongoose を使用して接続する
               href: mongodb-mongoose.md
@@ -348,26 +730,34 @@
               href: mongodb-readpreference.md
             - name: 有効期限 - MongoDB
               href: mongodb-time-to-live.md
+            - name: ストリームを変更する
+              href: mongodb-change-streams.md
             - name: データのインデックス作成を管理する
               href: mongodb-indexing.md
             - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB 拡張コマンド
               href: mongodb-custom-commands.md
               displayName: custom commands
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-mongodb-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-mongodb.md
+            - name: Azure CLI を使用して管理する
+              href: cli-samples-mongodb.md
+            - name: 一般的な問題のトラブルシューティング
+              href: mongodb-troubleshoot.md
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: はじめに
-          href: graph-introduction.md
-        - name: ワイヤ プロトコルのサポート
-          href: gremlin-support.md
-        - name: クイック スタート
+        - name: 概要
+          items:
+            - name: Cosmos DB の Gremlin API とは
+              href: graph-introduction.md
+            - name: ワイヤ プロトコルのサポート
+              href: gremlin-support.md
+        - name: クイックスタート
           items:
             - name: Gremlin Console
               href: create-graph-gremlin-console.md
@@ -385,26 +775,52 @@
           items:
             - name: 1 - データのクエリ
               href: tutorial-query-graph.md
-        - name: ハウツー ガイド
+        - name: 概念
           items:
-            - name: グラフ データのインポート
-              href: bulk-executor-graph-dotnet.md
+            - name: よく寄せられる質問
+              href: gremlin-api-faq.md
+        - name: 操作方法ガイド
+          items:
+            - name: グラフ データのモデリング
+              href: graph-modeling.md
             - name: グラフ データのパーティション分割
               href: graph-partitioning.md
+            - name: グラフ データのインポート
+              href: bulk-executor-graph-dotnet.md
             - name: Gremlin クエリの最適化
               href: graph-execution-profile.md
+            - name: リソース トークンの使用
+              href: how-to-use-resource-tokens-gremlin.md
+            - name: リージョン エンドポイントの使用
+              href: how-to-use-regional-gremlin.md
+            - name: システム ドキュメント プロパティのアクセス
+              href: how-to-access-system-properties-gremlin.md
+            - name: グラフ データの視覚化
+              href: graph-visualization.md
             - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-gremlin-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-gremlin.md
+            - name: Azure CLI を使用して管理する
+              href: cli-samples-gremlin.md
+        - name: リファレンス
+          items:
+            - name: レスポンス ヘッダー
+              href: gremlin-headers.md
+            - name: 制限
+              href: gremlin-limits.md
+            - name: 互換性
+              href: gremlin-compatibility.md
     - name: テーブル API
       items:
-        - name: はじめに
-          href: table-introduction.md
-        - name: クイック スタート
+        - name: 概要
+          items:
+            - name: Cosmos DB の Table API とは
+              href: table-introduction.md
+        - name: クイックスタート
           items:
             - name: .NET
               href: create-table-dotnet.md
@@ -416,7 +832,7 @@
               href: create-table-python.md
         - name: チュートリアル
           items:
-            - name: 1 - データの作成/管理
+            - name: 1 - データの作成と管理
               href: tutorial-develop-table-dotnet.md
             - name: 2 - データの移行
               displayName: import
@@ -444,7 +860,11 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
-        - name: ハウツー ガイド
+        - name: 概念
+          items:
+            - name: よく寄せられる質問
+              href: table-api-faq.md
+        - name: 操作方法ガイド
           items:
             - name: Table API によるアプリの構築
               href: table-support.md
@@ -452,8 +872,11 @@
               href: table-storage-design-guide.md
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-table-with-resource-manager.md
+              displayName: ARM
             - name: PowerShell を使用して管理する
               href: powershell-samples-table.md
+            - name: Azure CLI を使用して管理する
+              href: cli-samples-table.md
         - name: リファレンス
           items:
             - name: .NET
@@ -467,17 +890,30 @@
             - name: Python
               href: table-sdk-python.md
             - name: Table Storage REST API
-              href: /rest/api/storageservices/Table-Service-Concepts
+              href: /rest/api/storageservices/table-service-rest-api
     - name: etcd API
       items:
-        - name: はじめに
-          href: etcd-api-introduction.md
-        - name: Azure Kubernetes と Azure Cosmos DB
-          href: bootstrap-kubernetes-cluster.md
-- name: ハウツー ガイド
+        - name: 概要
+          items:
+            - name: Cosmos DB の etcd API とは
+              href: etcd-api-introduction.md
+        - name: 操作方法ガイド
+          items:
+            - name: Azure Kubernetes と Azure Cosmos DB
+              href: bootstrap-kubernetes-cluster.md
+- name: 操作方法ガイド
   items:
-    - name: Azure Cosmos アカウントを管理する
+    - name: Azure Cosmos アカウントの使用
       href: how-to-manage-database-account.md
+    - name: Azure Cosmos DB リソースの使用
+      items:
+        - name: PowerShell の使用
+          href: manage-with-powershell.md
+        - name: Azure CLI の使用
+          href: manage-with-cli.md
+        - name: Resource Manager テンプレートの使用
+          href: manage-sql-with-resource-manager.md
+          displayName: ARM
     - name: グローバル配信
       items:
         - name: マルチマスターを構成する
@@ -485,23 +921,38 @@
         - name: 整合性レベルを管理する
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: カスタム同期を実装する
-          href: how-to-custom-synchronization.md
         - name: 競合解決ポリシーを構成する
           href: how-to-manage-conflicts.md
+        - name: セッション トークン形式の変換
+          href: how-to-convert-session-token.md
     - name: プロビジョニング スループット
       items:
-        - name: コンテナーのスループットをプロビジョニングする
+        - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
           displayName: 'request units, RUs, RU, collection level'
           href: how-to-provision-container-throughput.md
-        - name: データベースのスループットをプロビジョニングする
+        - name: データベースでの標準 (手動) スループットをプロビジョニングする
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
+          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+          href: how-to-provision-autoscale-throughput.md
+        - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
+          displayName: 'request units, RUs, RU, capacity'
+          href: estimate-ru-with-capacity-planner.md
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-    - name: コンテナーとアイテムの操作
+        - name: Azure Functions タイマーを使用してスケーリングする
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
+    - name: コンテナーと項目を操作する
       items:
+        - name: Cosmos DB のデータを操作する
+          items:
+            - name: Azure Storage Explorer を使ってデータを操作する
+              href: storage-explorer.md
+            - name: Azure Cosmos Explorer を使ってデータを操作する
+              href: data-explorer.md
         - name: コンテナーを作成する
           href: how-to-create-container.md
         - name: 大規模なパーティション キーを備えたコンテナーを作成する
@@ -516,68 +967,153 @@
         - name: Time to Live の構成
           displayName: 'delete, delete data, ttl'
           href: how-to-time-to-live.md
-        - name: Azure Storage Explorer を使ってデータを操作する
-          href: storage-explorer.md
-        - name: Azure Cosmos Explorer を使ってデータを操作する
-          href: data-explorer.md
         - name: インデックス作成ポリシーの管理
           href: how-to-manage-indexing-policy.md
         - name: 一意のキーの定義
           href: how-to-define-unique-keys.md
-        - name: SQL サブクエリの例
-          displayName: 'subquery, exists'
-          href: how-to-sql-subquery.md
+    - name: ベスト プラクティス
+      items:
+        - name: パフォーマンスに関するヒント
+          items:
+            - name: クエリ実行メトリックの取得
+              displayName: 'query profile, profile'
+              href: profile-sql-api-query.md
+            - name: クエリ パフォーマンスの調整
+              href: sql-api-query-metrics.md
+            - name: .NET SDK のパフォーマンスに関するヒント
+              href: performance-tips.md
+            - name: Java SDK v4 のパフォーマンスに関するヒント
+              href: performance-tips-java-sdk-v4-sql.md
+            - name: 以前の Java SDK のパフォーマンスに関するヒント
+              items:
+                - name: 非同期の Java SDK v2
+                  href: performance-tips-async-java.md
+                - name: 同期の Java SDK v2
+                  href: performance-tips-java.md
+            - name: パフォーマンス テスト - サンプル アプリ
+              href: performance-testing.md
+        - name: コスト効率の優れた読み取りと書き込み
+          href: key-value-store-cost.md
+    - name: トラブルシューティング
+      items:
+        - name: クエリ パフォーマンスのトラブルシューティング
+          href: troubleshoot-query-performance.md
+        - name: Java SDK v4 のトラブルシューティング
+          href: troubleshoot-java-sdk-v4-sql.md
+        - name: 以前の Java SDK のトラブルシューティング
+          items:
+            - name: 非同期の Java SDK v2
+              href: troubleshoot-java-async-sdk.md
+        - name: .NET SDK のトラブルシューティング
+          href: troubleshoot-dot-net-sdk.md
+    - name: 新しい SDK への移行
+      items:
+        - name: Java V4 SDK への移行
+          href: migrate-java-v4-sdk.md
     - name: 変更フィード
       items:
         - name: Azure Cosmos DB トリガーのログ
           href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Azure Cosmos DB トリガーの接続ポリシー
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: 複数の Azure Cosmos DB トリガー
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング
           href: troubleshoot-changefeed-functions.md
+        - name: 変更フィード プロセッサの開始時刻
+          href: how-to-configure-change-feed-start-time.md
+        - name: 変更フィード推定機能の使用
+          href: how-to-use-change-feed-estimator.md
+        - name: 変更フィード プロセッサ ライブラリからの移行
+          href: how-to-migrate-from-change-feed-library.md
+        - name: 変更フィード - Async Java のサンプル
+          href: create-sql-api-java-changefeed.md
+    - name: Azure Synapse Link を使用した分析
+      items:
+        - name: Azure Synapse Link を構成する
+          href: configure-synapse-link.md
+        - name: Azure Synapse Link に接続する
+          href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure Synapse Spark を使用してクエリを実行する
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+    - name: Apache Spark による組み込みの分析
+      items:
+        - name: Azure Databricks の Spark コネクタ
+          href: spark-connector.md
+        - name: Apache Kafka と Cosmos DB を使用したストリーミング
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+    - name: 組み込み Jupyter ノートブック
+      items:
+        - name: ノートブックの有効化
+          href: enable-notebooks.md
+        - name: GitHub からノートブックをインポートする
+          href: import-github-notebooks.md
+        - name: 組み込みの Python ノートブック コマンドを使用する
+          href: use-python-notebook-features-and-commands.md
+        - name: '組み込みの C# ノートブック コマンドを使用する'
+          href: use-csharp-notebook-features-and-commands.md
     - name: サーバー側プログラミング
       items:
-        - name: ストアド プロシージャ、トリガー、UDF を書き込む
+        - name: ストアド プロシージャ、トリガー、UDF の記述
           href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: JavaScript クエリ API を使用してストアド プロシージャとトリガーを書き込む
+        - name: JavaScript クエリ API を使用したストアド プロシージャとトリガーの記述
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md
         - name: 仮想ネットワークからのアクセスの構成
+          displayName: service endpoints
           href: how-to-configure-vnet-service-endpoint.md
+        - name: プライベート エンドポイントからアクセスを構成する
+          href: how-to-configure-private-endpoints.md
+        - name: Cosmos DB アカウントに非公開で接続する
+          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: クロス オリジン リソース共有 (CORS) の構成
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Key Vault を使用して Azure Cosmos キーをセキュリティ保護する
+        - name: マネージド ID を使用してデータにアクセスする
+          href: managed-identity-based-authentication.md
+          displayName: 'msi, managed service identity, aad, azure active directory, identity'
+        - name: 証明書を使用してデータにアクセスする
+          href: certificate-based-authentication.md
+        - name: Azure Key Vault を使用してデータにアクセスする
           href: access-secrets-from-keyvault.md
+        - name: ユーザー アクセスをデータ操作のみに制限する
+          href: how-to-restrict-user-data.md
+        - name: 顧客が管理するキーを構成する
+          href: how-to-setup-cmk.md
     - name: エンタープライズ対応
       items:
         - name: バックアップからデータを復元する
           href: how-to-backup-and-restore.md
-    - name: Azure Cosmos DB リソースの管理
+    - name: モニター
       items:
-        - name: PowerShell を使用して管理する
-          href: manage-with-powershell.md
-        - name: Azure CLI を使用して管理する
-          href: manage-with-cli.md
-        - name: Resource Manager テンプレートを使用して管理する
-          href: manage-sql-with-resource-manager.md
-    - name: ログの記録
-      items:
-        - name: 診断ログの記録
-          href: logging.md
-        - name: Logic Apps を使用したアプリケーション ログ記録
-          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
-          maintainContext: true
-    - name: 監視
-      items:
-        - name: メトリックを使用した監視
+        - name: Cosmos DB を監視する
+          href: monitor-cosmos-db.md
+        - name: Azure Monitor のメトリックを使用する
+          items:
+            - name: Azure Monitor for Cosmos (プレビュー)
+              href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: サーバー側の待機時間を監視する
+              href: monitor-server-side-latency.md
+            - name: 要求ユニットの使用状況を監視する
+              href: monitor-request-unit-usage.md
+            - name: 正規化された要求ユニットの使用状況の監視
+              href: monitor-normalized-request-units.md
+        - name: Azure モニター ログを使用する
+          items:
+            - name: 診断ログを使用して監視する
+              href: cosmosdb-monitor-resource-logs.md
+            - name: コントロール プレーン ログの監査
+              href: audit-control-plane-logs.md
+        - name: Cosmos DB アカウントからメトリックを表示する
           href: use-metrics.md
-        - name: SLA の監視
-          href: monitor-accounts.md
+        - name: 監視データのリファレンス
+          href: monitor-cosmos-db-reference.md
+        - name: Logic Apps を使用したアプリケーション ログ記録
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: ローカルでの開発
       items:
         - name: エミュレーターの使用
@@ -588,32 +1124,12 @@
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Azure DevOps CI/CD パイプラインの設定
       href: tutorial-setup-ci-cd.md
-    - name: データの種類
-      items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: GeoSpatial
-          href: geospatial.md
-    - name: ベスト プラクティス
-      items:
-        - name: パフォーマンスに関するヒント
-          items:
-            - name: クエリ パフォーマンスの調整
-              href: sql-api-query-metrics.md
-            - name: .NET SDK のパフォーマンスに関するヒント
-              href: performance-tips.md
-            - name: Java SDK のパフォーマンスに関するヒント
-              href: performance-tips-java.md
-            - name: Async Java SDK のパフォーマンスに関するヒント
-              href: performance-tips-async-java.md
-            - name: パフォーマンス テスト - サンプル アプリ
-              href: performance-testing.md
-        - name: コスト効率の優れた読み取りと書き込み
-          href: key-value-store-cost.md
     - name: Cosmos DB のデータを視覚化する
       items:
         - name: Power BI を使用する
           href: powerbi-visualize.md
+        - name: ライブ天気ダッシュボードを作成する
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Qlik Sense を使用する
           href: visualize-qlik-sense.md
     - name: 他の Azure サービスとの統合
@@ -622,68 +1138,78 @@
           href: changefeed-ecommerce-solution.md
         - name: Azure App Service
           href: create-website.md
-        - name: Azure Search インデクサー
-          href: /azure/search/search-howto-index-cosmosdb
-          maintainContext: true
+        - name: Azure Cognitive Search インデクサー
+          href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Functions
           items:
             - name: サーバーレス コンピューティング
               href: serverless-computing-database.md
             - name: Azure Functions のバインド
-              href: /azure/azure-functions/functions-bindings-cosmosdb
-              maintainContext: true
+              href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Factory
-          href: /azure/data-factory/connector-azure-cosmos-db
-          maintainContext: true
+          href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
-          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
-          maintainContext: true
-        - name: Logic Apps と Service Bus
-          href: change-feed-hl7-fhir-logic-apps.md
+          href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Event Hubs と Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Starter の使用
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-          maintainContext: true
-        - name: ラムダ アーキテクチャ
-          href: lambda-architecture.md
-        - name: Azure Databricks (Spark コネクタ)
-          href: spark-connector.md
-        - name: Spark と Kafka
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
+        - name: Spring Data の開発者ガイド
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC ドライバー
           href: odbc-driver.md
+    - name: Cosmos DB にデータを移行する
+      items:
+        - name: Cosmos DB にデータを移行するためのオプション
+          href: cosmosdb-migrationchoices.md
+        - name: Striim を使用して SQL API に移行する
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Striim を使用して Cassandra API に移行する
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: 移行 - Blitzz を使用して Oracle DB から Cassandra API へ
+          href: oracle-migrate-cosmos-db-blitzz.md
+        - name: 移行 - Blitzz を使用して Apache Cassandra から Cassandra API へ
+          href: cassandra-migrate-cosmos-db-blitzz.md
+        - name: 数百テラバイトのデータを Azure Cosmos DB に移行する
+          href: migrate-cosmosdb-data.md
+        - name: 1 対多のリレーショナル データを移行する
+          href: migrate-relational-to-cosmos-db-sql-api.md
+        - name: 移行 - Couchbase から SQL API へ
+          href: couchbase-cosmos-migration.md
+        - name: 移行 - DynamoDB から SQL API へ
+          href: dynamo-to-cosmos.md
     - name: Bulk Executor ライブラリ
       items:
         - name: Bulk Executor ライブラリについて
           href: bulk-executor-overview.md
         - name: Bulk Executor - .NET ライブラリ
           href: bulk-executor-dot-net.md
+        - name: バルク エグゼキューターから .NET SDK への移行
+          href: how-to-migrate-from-bulk-executor-library.md
         - name: Bulk Executor - Java ライブラリ
           href: bulk-executor-java.md
-    - name: トラブルシューティング
-      items:
-        - name: Java Async SDK のトラブルシューティング
-          href: troubleshoot-java-async-sdk.md
-        - name: .NET SDK のトラブルシューティング
-          href: troubleshoot-dot-net-sdk.md
 - name: リファレンス
   items:
     - name: .NET
       href: sql-api-sdk-dotnet.md
     - name: .NET Core
       href: sql-api-sdk-dotnet-core.md
+    - name: .NET Standard
+      href: sql-api-sdk-dotnet-standard.md
     - name: .NET 変更フィード ライブラリ
       href: sql-api-sdk-dotnet-changefeed.md
     - name: .NET Bulk Executor ライブラリ
       href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java
-      href: sql-api-sdk-java.md
     - name: Java Bulk Executor ライブラリ
       href: sql-api-sdk-bulk-executor-java.md
-    - name: Async Java
-      href: sql-api-sdk-async-java.md
+    - name: Core 用 Java SDK v4
+      href: sql-api-sdk-java-v4.md
+    - name: 以前の Core 用 Java SDK
+      items:
+        - name: 非同期の Java SDK v2
+          href: sql-api-sdk-async-java.md
+        - name: 同期の Java SDK v2
+          href: sql-api-sdk-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python
@@ -693,7 +1219,10 @@
     - name: REST リソース プロバイダー
       href: /rest/api/cosmos-db-resource-provider/
     - name: Resource Manager テンプレート
-      href: /templates/microsoft.documentdb/allversions
+      href: /azure/templates/microsoft.documentdb/allversions
+      displayName: ARM
+    - name: エミュレーターのリリース ノート
+      href: local-emulator-release-notes.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -701,8 +1230,8 @@
     - name: クエリ チート シート
       href: query-cheat-sheet.md
     - name: SQL のプレイグラウンド
-      href: 'https://aka.ms/cosmos-db-playground'
-    - name: FAQ
+      href: 'https://www.documentdb.com/sql/demo'
+    - name: よく寄せられる質問
       href: faq.md
     - name: ホワイトペーパー
       href: whitepapers.md
@@ -716,6 +1245,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: パフォーマンス レベル
+      href: performance-levels.md
     - name: ユース ケース
       items:
         - name: 一般的なユース ケース

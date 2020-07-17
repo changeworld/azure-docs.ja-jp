@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery における Hyper-V から Azure へのディザスター リカバリー アーキテクチャ | Microsoft Docs
+title: Azure Site Recovery における Hyper-V ディザスター リカバリー アーキテクチャ
 description: この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM から Azure へのディザスター リカバリーをデプロイするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f77069592fb34caf409b387f5c8452159f55e296
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311511"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74082661"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -36,8 +36,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 **Hyper-V から Azure へのアーキテクチャ (VMM なし)**
 
-![アーキテクチャ](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
-
+![Architecture](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>アーキテクチャのコンポーネント - Hyper-V (VMM あり)
@@ -54,7 +53,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 **Hyper-V から Azure へのアーキテクチャ (VMM あり)**
 
-![コンポーネント](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![Components](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 
 
@@ -105,7 +104,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
     - 再同期では、ソース ファイルとターゲット ファイルを固定チャンクに分割する固定ブロック チャンク アルゴリズムが使用されます。
     - 各チャンクのチェックサムが生成されます。 チェックサムを比較することによって、ソース側のどのブロックをターゲットに適用すべきかが判断されます。
 2. 再同期が完了すると、通常の差分レプリケーションが再開されます。
-3. 既定の業務時間外の再同期を待ちたくない場合は、VM を手動で再同期できます。 たとえば、障害が発生した場合などです。 そのためには、Azure Portal で VM を選択し、**[再同期]** を選択します。
+3. 既定の業務時間外の再同期を待ちたくない場合は、VM を手動で再同期できます。 たとえば、障害が発生した場合などです。 そのためには、Azure Portal で VM を選択し、 **[再同期]** を選択します。
 
     ![Manual resynchronization](./media/hyper-v-azure-architecture/image4-site.png)
 
@@ -141,7 +140,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 Hyper-V から Azure へのレプリケーションの使用を開始するには、[このチュートリアル](tutorial-prepare-azure.md)に従ってください。

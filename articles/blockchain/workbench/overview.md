@@ -1,25 +1,21 @@
 ---
-title: Azure Blockchain Workbench の概要
-description: Azure Blockchain Workbench とその機能の概要。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/20/2019
+title: Azure Blockchain Workbench プレビューの概要
+description: Azure Blockchain Workbench プレビューとその機能の概要。
+ms.date: 09/05/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 16e2497f4e26d16c008161477fd7d573e59e84db
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955208"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79203646"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench とは
 
-Azure Blockchain Workbench は、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン アプリケーションを構築し、開発者がビジネス ロジックやスマート コントラクトの作成に集中できるようにするための、インフラストラクチャ スキャフォールディングを提供します。 また、Azure のサービスや機能を統合することでブロックチェーン アプリケーションの作成を容易にし、共通の開発タスクを自動化しやすくします。
+Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン アプリケーションを構築し、開発者がビジネス ロジックやスマート コントラクトの作成に集中できるようにするための、インフラストラクチャ スキャフォールディングを提供します。 また、Azure のサービスや機能を統合することでブロックチェーン アプリケーションの作成を容易にし、共通の開発タスクを自動化しやすくします。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="create-blockchain-applications"></a>ブロックチェーン アプリケーションの作成
 
@@ -33,7 +29,7 @@ Azure Blockchain Workbench では、ブロックチェーン アプリケーシ�
 
 開発者は、Blockchain Workbench の REST API とメッセージ ベース API を使用して、ブロックチェーンを既存のシステムと統合できます。 これらの API は、複数の分散型台帳テクノロジー、ストレージ、およびデータベース ソリューションを置き換えたり、使用したりするためのインターフェイスを提供します。
 
-Blockchain Workbench では、メッセージ ベース API に送信されたメッセージを変換して、そのブロックチェーンのネイティブ API で受け付けられる形式のトランザクションを作成することができます。  また Workbench では、トランザクションに署名をし、それを適切なブロックチェーンにルーティングできます。 
+Blockchain Workbench では、メッセージ ベース API に送信されたメッセージを変換して、そのブロックチェーンのネイティブ API で想定される形式のトランザクションを作成することができます。  また Workbench では、トランザクションに署名をし、それを適切なブロックチェーンにルーティングできます。 
 
 Workbench は、Service Bus と Event Grid にイベントを自動的に配信し、下流のコンシューマーにメッセージを送信します。 開発者は、これらのメッセージング システムのいずれかを統合してトランザクションを実行し、結果を確認できます。
 
@@ -49,7 +45,21 @@ Azure Blockchain Workbench では、Azure Resource Manager ソリューション
 
 Azure Blockchain Workbench では、ブロックチェーン上のデータをオフチェーンのストレージに自動的に同期することで、ブロックチェーン イベントを簡単に分析できます。 ブロックチェーンから直接データを抽出するのではなく、SQL Server などのオフチェーン データベース システムからデータを照会できます。 データ分析タスクを実行するエンド ユーザーに、ブロックチェーンの専門知識は必要ありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="support-and-feedback"></a>サポートとフィードバック
+
+Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
+
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)でアイデアに投票してください。
+
+### <a name="community-support"></a>コミュニティ サポート
+
+Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
+
+* [Azure Blockchain MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench アーキテクチャ](architecture.md)

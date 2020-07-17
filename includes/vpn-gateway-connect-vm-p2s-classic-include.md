@@ -9,17 +9,17 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157654"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181041"
 ---
 VNet にデプロイされた VM に接続するためのリモート デスクトップ接続を作成します。 VM に接続できることを確認する最善の方法は、その VM のコンピューター名ではなく、プライベート IP アドレスで接続してみることです。 この方法であれば、名前の解決が適切に構成されているかではなく、VM に接続できるかどうかをテストすることができます。 
 
 1. ご利用の VM のプライベート IP アドレスを特定します。 VM のプライベート IP アドレスを確認するには、Azure portal で VM のプロパティを表示するか、PowerShell を使用します。
 2. ポイント対サイト VPN 接続を使って VNet に接続していることを確認します。 
-3. リモート デスクトップ接続を開くには、タスク バーの検索ボックスに「*RDP*」または「*リモート デスクトップ接続*」と入力し、**[リモート デスクトップ接続]** を選択します。 このほか、PowerShell で "**mstsc**" コマンドを使って開くこともできます。 
+3. リモート デスクトップ接続を開くには、タスク バーの検索ボックスに「*RDP*」または「*リモート デスクトップ接続*」と入力し、 **[リモート デスクトップ接続]** を選択します。 このほか、PowerShell で "**mstsc**" コマンドを使って開くこともできます。 
 3. **リモート デスクトップ接続**で、VM のプライベート IP アドレスを入力します。 必要に応じて **[オプションの表示]** を選択し、追加の設定を行ってから接続します。
 
 ### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>VM に対する RDP 接続をトラブルシューティングするには

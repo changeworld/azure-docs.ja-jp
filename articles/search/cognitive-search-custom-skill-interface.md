@@ -1,40 +1,40 @@
 ---
-title: コグニティブ検索でのカスタム スキルのインターフェイス定義 - Azure Search
-description: Azure Search のコグニティブ検索パイプラインでの web-api カスタム スキル用カスタム データ抽出インターフェイス。
-manager: pablocas
+title: カスタム スキルのインターフェイス定義
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の AI エンリッチメント パイプラインでの、web-api カスタム スキル用カスタム データ抽出インターフェイス。
+manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.devlang: NA
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 02/20/2020
+ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021931"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77500262"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>コグニティブ検索パイプラインにカスタム スキルを追加する方法
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search エンリッチメント パイプラインにカスタム スキルを追加する方法
 
-Azure Search の [コグニティブ検索インデックス作成パイプライン](cognitive-search-concept-intro.md)は、[定義済みスキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)で組み立てることができます。 この記事では、コグニティブ検索パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
+Azure Cognitive Search の[エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)と、個人的に作成してパイプラインに追加する[カスタム スキル](cognitive-search-custom-skill-web-api.md)から組み立てることができます。 この記事では、AI エンリッチメント パイプラインに含めることができるようにインターフェイスを公開するカスタム スキルの作成方法について説明します。 
 
-カスタム スキルを構築すると、コンテンツに固有の変換を挿入することができます。 カスタム スキルは独立して実行され、必要なすべてのエンリッチメント ステップが適用されます。 たとえば、フィールド固有のカスタム エンティティを定義して、ビジネスおよび財務の契約やドキュメントを区別するためのカスタム分類モデルを作成したり、音声認識スキルを追加して、関連するコンテンツのオーディオ ファイルを細かく調べたりすることができます。 手順の例については、[カスタム スキルの作成に関する例](cognitive-search-create-custom-skill-example.md)を参照してください。
+カスタム スキルを構築すると、コンテンツに固有の変換を挿入することができます。 カスタム スキルは独立して実行され、必要なすべてのエンリッチメント ステップが適用されます。 たとえば、フィールド固有のカスタム エンティティを定義して、ビジネスおよび財務の契約やドキュメントを区別するためのカスタム分類モデルを作成したり、音声認識スキルを追加して、関連するコンテンツのオーディオ ファイルを細かく調べたりすることができます。 手順の例については、[例: AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください。
 
  どのようなカスタム機能が必要な場合でも、カスタム スキルをエンリッチメント パイプラインの他の部分に接続するための単純でわかりやすいインターフェイスがあります。 [スキルセット](cognitive-search-defining-skillset.md)に含めるための唯一の要件は、入力を受け入れて、スキルセット内で全体として使用できる方法で出力を行うことです。 この記事で焦点となっているのは、エンリッチメント パイプラインが必要とする入力と出力の形式です。
 
 ## <a name="web-api-custom-skill-interface"></a>Web API のカスタム スキル インターフェイス
 
-Web API のカスタム スキル エンドポイントが、30 秒以内に応答を返さない場合、既定ではタイムアウトになります。 インデックス作成パイプラインは同期的であり、この時間内に応答が受信されない場合は、タイムアウト エラーが発生します。  タイムアウト パラメーターを設定することで、タイムアウトを最長で 90 秒に構成できます。
+Web API のカスタム スキル エンドポイントが、30 秒以内に応答を返さない場合、既定ではタイムアウトになります。 インデックス作成パイプラインは同期的であり、この時間内に応答が受信されない場合は、タイムアウト エラーが発生します。  タイムアウト パラメーターを設定することで、タイムアウトを最長で 230 秒に構成できます。
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "This skill has a 90 second timeout",
+        "description": "This skill has a 230 second timeout",
         "uri": "https://[your custom skill uri goes here]",
-        "timeout": "PT90S",
+        "timeout": "PT230S",
 ```
+
+URI が安全 (HTTPS) であることを確認します。
 
 現在のところ、カスタム スキルとやり取りするための唯一のメカニズムは、Web API インターフェイスです。 Web API は、このセクションで説明する要件を満たしている必要があります。
 
@@ -124,7 +124,7 @@ Web API は、入力レコードのバッチを受け取る準備ができてい
 
 ## <a name="consuming-custom-skills-from-skillset"></a>スキルセットのカスタム スキルの使用
 
-Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメーターを要求の一部として記述できます。 次のスニペットは、要求パラメーターと HTTP ヘッダーをスキルセット定義の一部として記述する方法を示しています。
+Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメーターを要求の一部として記述できます。 次のスニペットは、要求パラメーターと "*オプションの*" HTTP ヘッダーをスキルセット定義の一部として記述する方法を示しています。 HTTP ヘッダーは要件ではありませんが、これを使用すると、追加の構成機能をスキルに追加して、スキルセット定義から設定できます。
 
 ```json
 {
@@ -154,9 +154,12 @@ Web API エンリッチャーを作成すると、HTTP ヘッダーとパラメ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-+ [例:Translate Text API のカスタム スキルの作成](cognitive-search-create-custom-skill-example.md)
+この記事では、カスタム スキルをスキルセットに統合するために必要なインターフェイス要件について説明しました。 カスタム スキルとスキルセットの構成の詳細については、次のリンクをクリックしてください。
+
++ [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
++ [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

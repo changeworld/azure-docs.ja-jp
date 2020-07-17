@@ -1,45 +1,37 @@
 ---
-title: Service Fabric Azure Files ボリューム ドライバー (プレビュー) | Microsoft Docs
-description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。 これは現在プレビューの段階です。
-services: service-fabric
-documentationcenter: other
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: other
+title: Service Fabric 用の Azure Files ボリューム ドライバー
+description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/10/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: b8012cbdad02995c3fc98a3ea1fa02a3a08bd2dc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665901"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75750045"
 ---
-# <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure Files ボリューム ドライバー (プレビュー)
-Azure Files ボリューム プラグインは、Docker コンテナーに [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure ファイル ベースのボリュームを提供することです。
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric 用の Azure Files ボリューム ドライバー
+
+Azure Files ボリューム ドライバーは、Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 これは Service Fabric アプリケーションとしてパッケージ化されており、Service Fabric クラスターにデプロイして、クラスター内の他の Service Fabric コンテナー アプリケーションにボリュームを提供できます。
 
 > [!NOTE]
-> バージョン 6.4.571.9590 の Azure Files ボリューム プラグインは、このドキュメントで使用可能なプレビュー リリースです。 プレビュー リリースとして、運用環境での使用はサポートされて**いません**。
+> Azure Files ボリューム プラグインのバージョン 6.5.661.9590 が一般公開されています。
 >
 
 ## <a name="prerequisites"></a>前提条件
-* Windows バージョンの Azure Files ボリューム プラグインは、[Windows Server バージョン 1709](https://docs.microsoft.com/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 バージョン 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) 以降のオペレーティング システムでのみ動作します。 Linux バージョンの Azure Files ボリューム プラグインは、Service Fabric でサポートされているすべてのオペレーティング システムのバージョンで動作します。
+* Windows バージョンの Azure Files ボリューム プラグインは、[Windows Server バージョン 1709](/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 バージョン 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) 以降のオペレーティング システムでのみ動作します。
+
+* Linux バージョンの Azure Files ボリューム プラグインは、Service Fabric でサポートされているすべてのオペレーティング システムのバージョンで動作します。
 
 * Azure Files ボリューム プラグインは、Service Fabric バージョン 6.2 以降でのみ機能します。
 
-* [Azure Files ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
+* [Azure Files ドキュメント](/azure/storage/files/storage-how-to-create-file-share) の指示に従って、Service Fabric コンテナー アプリケーションがボリュームとして使用するファイル共有を作成します。
 
-* [Service Fabric モジュールと Powershell](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) または [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) をインストールしている必要があります。
+* [Service Fabric モジュールと Powershell](/azure/service-fabric/service-fabric-get-started) または [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) をインストールしている必要があります。
 
-* Htper-V コンテナーを使用している場合は、ARM テンプレート (Azure クラスター) または ClusterConfig.json (スタンドアロン クラスター) の ClusterManifest (ローカル クラスター) セクションまたは fabricSettings セクションに次のスニペットを追加する必要があります。 ボリューム名と、そのボリュームがクラスターでリッスンするするポートが必要です。 
+* Hyper-V コンテナーを使用している場合は、Azure Resource Manager テンプレート (Azure クラスター) または ClusterConfig.json (スタンドアロン クラスター) の ClusterManifest (ローカル クラスター) セクションまたは fabricSettings セクションに、次のスニペットを追加する必要があります。
 
-ClusterManifest では、Hosting セクションに次のコードを追加する必要があります。 この例では、ボリューム名は **sfazurefile**、そのボリュームがクラスター上でリッスンするポートは **19100** です。  
+ClusterManifest では、Hosting セクションに次のコードを追加する必要があります。 この例では、ボリューム名は **sfazurefile**、そのボリュームがクラスター上でリッスンするポートは **19100** です。 これらは、クラスターの正しい値で置き換えてください。
 
 ``` xml 
 <Section Name="Hosting">
@@ -47,7 +39,7 @@ ClusterManifest では、Hosting セクションに次のコードを追加す�
 </Section>
 ```
 
-ARM テンプレート (Azure デプロイの場合) または ClusterConfig.json (スタンドアロン デプロイの場合) の fabricSettings セクションに、次のスニペットを追加する必要があります。 
+Azure Resource Manager テンプレート (Azure デプロイの場合) または ClusterConfig.json (スタンドアロン デプロイの場合) の fabricSettings セクションに、次のスニペットを追加する必要があります。 ここでも、ボリューム名とポート値を独自の値で置き換えます。
 
 ```json
 "fabricSettings": [
@@ -63,10 +55,29 @@ ARM テンプレート (Azure デプロイの場合) または ClusterConfig.jso
 ]
 ```
 
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバーを使用してサンプル アプリケーションをデプロイする
 
-## <a name="deploy-the-service-fabric-azure-files-application"></a>Service Fabric Azure Files アプリケーションのデプロイ
+### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>提供された Powershell スクリプトを介した Azure Resource Manager の使用 (推奨)
 
-コンテナーにボリュームを提供する Service Fabric アプリケーションは、次の[リンク](https://download.microsoft.com/download/C/0/3/C0373AA9-DEFA-48CF-9EBE-994CA2A5FA2F/AzureFilesVolumePlugin.6.4.571.9590.zip)からダウンロードできます。 アプリケーションは、[PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)、[CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-lifecycle-sfctl)、または [FabricClient API](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications-fabricclient) を使用して、クラスターにデプロイできます。
+クラスターが Azure ベースの場合は、Azure Resource Manager アプリケーション リソース モデルを使用して、Azure にアプリケーションをデプロイすることをお勧めします。その方が使いやすいし、インフラストラクチャをコードとして維持するモデルに移行しやすくなるためです。 この方法であれば、Azure Files ボリューム ドライバーのアプリ バージョンを追跡する必要がなくなります。 また、サポートされている OS ごとに個別の Azure Resource Manager テンプレートを維持することもできます。 このスクリプトは、Azure Files アプリケーションの最新バージョンをデプロイすることを前提としており、OS の種類、クラスター サブスクリプション ID、およびリソース グループのパラメーターを受け取ります。 このスクリプトは、[Service Fabric のダウンロード サイト](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip)からダウンロードできます。 このスクリプトにより、自動的に ListenPort が 19100 に設定されます。この値は、Azure Files ボリューム プラグインが、Docker デーモンからの要求をリッスンするポートです。 "listenPort" という名前のパラメーターを追加することによって、これを変更することができます。 そのポートが、クラスターまたはアプリケーションで使用する他のどのポートとも競合しないことを確認します。
+ 
+
+Windows 用の Azure Resource Manager デプロイ コマンドは次のとおりです。
+```powershell
+.\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -windows
+```
+
+Linux 用の Azure Resource Manager デプロイ コマンドは次のとおりです。
+```powershell
+.\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
+```
+
+スクリプトが正常に実行されたら、[アプリケーションの構成](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)に関するセクションに進むことができます。
+
+
+### <a name="manual-deployment-for-standalone-clusters"></a>スタンドアロン クラスターの手動デプロイ
+
+コンテナーにボリュームを提供する Service Fabric アプリケーションは、[Service Fabric のダウンロード サイト](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip)からダウンロードできます。 アプリケーションは、[PowerShell](./service-fabric-deploy-remove-applications.md)、[CLI](./service-fabric-application-lifecycle-sfctl.md)、または [FabricClient API](./service-fabric-deploy-remove-applications-fabricclient.md) を使用して、クラスターにデプロイできます。
 
 1. コマンド ラインを使用して、ダウンロードされたアプリケーション パッケージのルート ディレクトリにディレクトリを変更します。
 
@@ -78,7 +89,7 @@ ARM テンプレート (Azure デプロイの場合) または ClusterConfig.jso
     cd ~/AzureFilesVolume
     ```
 
-2. アプリケーション パッケージをイメージ ストアにコピーし、[ApplicationPackagePath] と [ImageStoreConnectionString] に適切な値を指定して以下のコマンドを実行します。
+2. 次に、アプリケーション パッケージをイメージ ストアにコピーし、[ApplicationPackagePath] と [ImageStoreConnectionString] に適切な値を指定します。
 
     ```powershell
     Copy-ServiceFabricApplicationPackage -ApplicationPackagePath [ApplicationPackagePath] -ImageStoreConnectionString [ImageStoreConnectionString] -ApplicationPackagePathInImageStore AzureFilesVolumePlugin
@@ -99,32 +110,35 @@ ARM テンプレート (Azure デプロイの場合) または ClusterConfig.jso
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. アプリケーションを作成します。以下のアプリケーションを作成するコマンドで、**ListenPort** アプリケーション パラメーターに注意してください。 このアプリケーション パラメーターに指定されたこの値は、Azure Files ボリューム プラグインが、Docker デーモンからの要求をリッスンするポートです。 アプリケーションに提供されるポートは、ClusterManifest 内の VolumePluginPorts と一致していて、クラスターまたはご自分のアプリケーションで使用するその他のすべてのポートと競合しないことを確認することが重要です。
+4. **ListenPort** アプリケーション パラメーター値に注意して、アプリケーションを作成します。 この値は、Azure Files ボリューム プラグインが、Docker デーモンからの要求をリッスンするポートです。 アプリケーションに提供されるポートは、ClusterManifest 内の VolumePluginPorts と一致していて、クラスターまたはご自分のアプリケーションで使用する他のどのポートとも競合していないことを確認する必要があります。
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9590 -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9590 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
 > 
-> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage))。 この制約があるため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。
+> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](/virtualization/windowscontainers/manage-containers/container-storage))。 この制約があるため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。
 
-### <a name="deploy-the-application-on-a-local-development-cluster"></a>ローカル開発クラスターにアプリケーションをデプロイする
-Azure Files ボリューム プラグイン アプリケーションの既定のサービス インスタンス数は、-1 です。これは、クラスター内の各ノードにデプロイされたサービスのインスタンスがあることを意味します。 ただし、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションをデプロイする場合は、サービス インスタンス数を 1 と指定する必要があります。 これは、**InstanceCount** アプリケーション パラメーターを使用して実行できます。 したがって、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションをデプロイするコマンドは、次のようになります。
+#### <a name="deploy-the-application-on-a-local-development-cluster"></a>ローカル開発クラスターにアプリケーションをデプロイする
+[上記](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)の手順 1. から 3. に従います。
+
+ Azure Files ボリューム プラグイン アプリケーションの既定のサービス インスタンス数は、-1 です。これは、クラスター内の各ノードにデプロイされたサービスのインスタンスがあることを意味します。 ただし、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションをデプロイする場合は、サービス インスタンス数を 1 と指定する必要があります。 これは、**InstanceCount** アプリケーション パラメーターを使用して実行できます。 したがって、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションを作成するコマンドは、次のようになります。
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.4.571.9590 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.4.571.9590 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
+
 ## <a name="configure-your-applications-to-use-the-volume"></a>ボリュームを使用するようにアプリケーションを構成する
-次のスニペットは、アプリケーションのアプリケーション マニフェストに、 Azure Files ベースのボリュームを指定する方法を示しています。 興味のある特定の要素は、**Volume** タグです。
+次のスニペットは、アプリケーションのアプリケーション マニフェスト ファイルに、Azure Files ベースのボリュームを指定する方法を示しています。 興味のある特定の要素は、**Volume** タグです。
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -158,11 +172,11 @@ sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type
 </ApplicationManifest>
 ```
 
-Azure Files ボリューム プラグインのドライバー名は **sfazurefile** です。 この値を、アプリケーション マニフェストの **Volume** 要素の **Driver** 属性に設定します。
+Azure Files ボリューム プラグインのドライバー名は **sfazurefile** です。 この値を、アプリケーション マニフェストの **Volume** タグ要素の **Driver** 属性に設定します。
 
-上記スニペットの **Volume** 要素では、Azure Files ボリューム プラグインに、次のタグが必要です。
+上記のスニペットの **Volume** タグでは、Azure Files ボリューム プラグインに次の属性が必要です。
 - **Source** - ボリュームの名前です。 ユーザーは、ボリュームの名前として任意の名前を選択できます。
-- **Destination** - このタグは、実行中のコンテナー内でボリュームがマップされている場所です。 そのため、Destination としてコンテナー内の既存の場所を指定することはできません
+- **Destination** - この属性は、実行中のコンテナー内でボリュームがマップされている場所です。 そのため、Destination としてコンテナー内の既存の場所を指定することはできません
 
 上記スニペットの **DriverOption** 要素に示すように、Azure Files ボリューム プラグインは、次のドライバー オプションをサポートしています。
 - **shareName** - コンテナーのボリュームを提供する Azure Files ファイル共有の名前。
@@ -184,7 +198,7 @@ Azure Files ボリューム プラグインのドライバー名は **sfazurefil
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>独自のボリュームまたはログ ドライバーの使用
-Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)を使って実行できます。
+Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](/azure/service-fabric/service-fabric-application-model)を使って実行できます。
 
 [Azure 用 Docker ボリューム ドライバー](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)をインストールするスクリプトの例を次に示します。
 
@@ -225,6 +239,6 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 
 Docker ログ ドライバーを指定する場合は、クラスター内のログを処理するエージェント (またはコンテナー) をデプロイする必要があります。 **DriverOption** タグを使って、ログ ドライバーのオプションを指定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ボリューム ドライバーを含むコンテナーのサンプルを参照するには、[Service Fabric コンテナーのサンプル](https://github.com/Azure-Samples/service-fabric-containers)をご覧ください
 * Service Fabric クラスターにコンテナーをデプロイする方法については、[Service Fabric へのコンテナーのデプロイ](service-fabric-deploy-container.md)に関する記事をご覧ください

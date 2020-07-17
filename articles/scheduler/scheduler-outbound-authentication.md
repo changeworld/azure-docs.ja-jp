@@ -1,25 +1,26 @@
 ---
-title: 送信認証 - Azure Scheduler
+title: 送信認証
 description: Azure Scheduler の送信認証を設定または削除する方法について説明します
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993337"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878971"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler の送信認証
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。 
+>
+> Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
 Azure Scheduler ジョブは、他の Azure サービス、Salesforce.com、Facebook、セキュリティで保護されたカスタム Web サイトなど、認証が必要なサービスを呼び出す必要があります。 呼び出されたサービスは、Scheduler ジョブが必要なリソースにアクセスできるかどうかを確認できます。 
 
@@ -46,8 +47,8 @@ Scheduler では、これらの認証モデルがサポートされています�
 
 | 要素 | 必須 | 説明 |
 |---------|----------|-------------|
-| **authentication** (親要素) | SSL クライアント証明書を使用するための認証オブジェクト |
-| **type** | はい | 認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
+| **authentication** (親要素) | SSL/TLS クライアント証明書を使用するための認証オブジェクト |
+| **type** | はい | 認証の種類。 SSL/TLS クライアント証明書の場合、値は `ClientCertificate` です。 |
 | **pfx** | はい | Base64 でエンコードされた PFX ファイルのコンテンツ |
 | **password** | はい | PFX ファイルにアクセスするためのパスワード |
 ||| 
@@ -58,8 +59,8 @@ Scheduler では、これらの認証モデルがサポートされています�
 
 | 要素 | 説明 | 
 |---------|-------------| 
-| **authentication** (親要素) | SSL クライアント証明書を使用するための認証オブジェクト |
-| **type** | 認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
+| **authentication** (親要素) | SSL/TLS クライアント証明書を使用するための認証オブジェクト |
+| **type** | 認証の種類。 SSL/TLS クライアント証明書の場合、値は `ClientCertificate` です。 |
 | **certificateThumbprint** |証明書のサムプリント |
 | **certificateSubjectName** |証明書のサブジェクト識別名 |
 | **certificateExpiration** | 証明書の有効期限日 |
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Scheduler とは](scheduler-intro.md)
 * [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 * [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-* [Azure Scheduler REST API](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
 * [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)

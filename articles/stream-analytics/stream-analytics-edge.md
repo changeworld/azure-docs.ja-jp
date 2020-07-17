@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics on IoT Edge
 description: Azure Stream Analytics でエッジ ジョブを作成し、Azure IoT Edge で実行中のデバイスに展開します。
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
-ms.service: stream-analytics
+ms.reviewer: mamccrea
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892230"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475894"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -45,7 +44,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 ### <a name="installation-instructions"></a>インストール手順
 手順の概要を次の表に示します。 詳細については、以降のセクションを参照してください。
 
-|      |手順   | メモ   |
+|      |手順   | Notes   |
 | ---   | ---   |  ---      |
 | 1   | **ストレージ コンテナーを作成する**   | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
 | 2   | **ASA エッジ ジョブを作成する**   |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
@@ -61,7 +60,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 ASA のコンパイルされたクエリとジョブ構成をエクスポートするには、ストレージ コンテナーが必要です。 これは、特定のクエリで ASA Docker イメージを構成するときに使用されます。 
 1. Azure Portal からストレージ アカウントを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従ってください。 ASA でアカウントを使用するために、オプションを変更する必要はありません。
 2. 新しく作成したストレージ アカウントで、Blob Storage コンテナーを作成します。
-    1. **[BLOB]**、**[+ コンテナー]** の順にクリックします。 
+    1. **[BLOB]** 、 **[+ コンテナー]** の順にクリックします。 
     2. 名前を入力し、コンテナーを **[プライベート]** のままにします。
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge ジョブを作成する
@@ -82,7 +81,7 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 4. **[IoT Edge の設定]** メニュー で、ストレージ コンテナー情報を設定します。
 
 5. オプション設定を設定します
-    1. **イベントの順序付け**。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396)で入手できます。
+    1. **イベントの順序付け**。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)で入手できます。
     2. **ロケール**。 内部化形式を設定します。
 
 
@@ -103,15 +102,15 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>ASA を IoT Edge デバイスに展開する
 ##### <a name="add-asa-to-your-deployment"></a>ASA を展開に追加する
-- Azure portal で IoT Hub を開き、**[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
-- **[モジュールの設定]**、**[+ 追加]**、**[Azure Stream Analytics モジュール]** の順に選択します。
+- Azure portal で IoT Hub を開き、 **[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
+- **[モジュールの設定]** 、 **[+ 追加]** 、 **[Azure Stream Analytics モジュール]** の順に選択します。
 - サブスクリプションと、作成した ASA Edge ジョブを選択します。 [保存] をクリックします。
 ![ASA モジュールを展開に追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
 > この手順中に、ASA によって、ストレージ コンテナー内に "EdgeJobs" という名前のフォルダーが作成されます (まだ存在しない場合)。 "EdgeJobs" フォルダーには、展開ごとに新しいサブフォルダーが作成されます。
-> ジョブをエッジ デバイスに展開する目的で、ASA は、ジョブ定義ファイルに対して共有アクセス署名 (SAS) を作成します。 SAS キーは、デバイス ツインを使用して、IoT Edge デバイスに安全に送信されます。 このキーの有効期限は、作成日から 3 年間です。
+> ジョブを IoT Edge デバイスに展開すると、ASA は、ジョブ定義ファイルに対して共有アクセス署名 (SAS) を作成します。 SAS キーは、デバイス ツインを使用して、IoT Edge デバイスに安全に送信されます。 このキーの有効期限は、作成日から 3 年間です。 IoT Edge ジョブを更新すると SAS が変更されますが、イメージのバージョンは変更されません。 **更新**したら、以下の展開ワークフローに従ってください。更新通知がデバイスに記録されます。
 
 
 IoT Edge の展開の詳細については、[こちらのページ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)をご覧ください。
@@ -148,13 +147,13 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 ただし、次の機能はエッジ ジョブではまだサポートされていません。
 * JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (プレビュー) で使用できます。
 * ユーザー定義集計 (UDA)。
-* Azure ML 関数
+* Azure ML 関数。
 * 1 つの手順での 14 を超える集計の使用。
 * 入力/出力の AVRO 形式。 現時点では、CSV と JSON のみがサポートされています。
 * 次の SQL 演算子:
     * PARTITION BY
     * GetMetadataPropertyValue
-
+* 遅延到着ポリシー
 
 ### <a name="runtime-and-hardware-requirements"></a>ランタイムとハードウェア要件
 ASA on IoT Edge を実行するには、[Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) を実行できるデバイスが必要です。 
@@ -203,11 +202,33 @@ IoT Edge の更新プログラム上の参照データは、デプロイによ�
 * [Azure Stream Analytics on IoT Edge ライセンス](https://go.microsoft.com/fwlink/?linkid=862827)。 
 * [Azure Stream Analytics on IoT Edge に関するサード パーティへの通知](https://go.microsoft.com/fwlink/?linkid=862828)。
 
-## <a name="get-help"></a>問い合わせ
+## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics モジュールのイメージ情報 
+
+このバージョン情報は、2019 年 6 月 27 日に最終更新が行われました。
+
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
+   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - プラットフォーム:
+      - アーキテクチャ: amd64
+      - OS: linux
+  
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
+   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - プラットフォーム:
+      - アーキテクチャ: arm
+      - OS: linux
+  
+- イメージ: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
+   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - プラットフォーム:
+      - アーキテクチャ: amd64
+      - OS: windows
+      
+      
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure IoT Edge の詳細](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

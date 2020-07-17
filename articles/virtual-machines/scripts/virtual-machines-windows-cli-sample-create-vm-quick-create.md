@@ -1,11 +1,10 @@
 ---
-title: Azure CLI のサンプル スクリプト - Windows Server 2016 の簡易作成 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - Windows Server 2016 の簡易作成
 description: Azure CLI のサンプル スクリプト - Windows Server 2016 の簡易作成
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+author: cynthn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
-ms.author: rickstercdn
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2f63bbc444367afdad32615d0f6132e8986a6160
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 46f630dc1b700659d047a31b5aa5905ef99d9cd0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670351"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459459"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの簡易作成
 
@@ -53,7 +52,7 @@ az group delete --name myResourceGroup --yes
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

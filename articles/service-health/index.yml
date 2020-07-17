@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: Azure Service Health のドキュメント
+summary: Azure Service Health は、Azure サービスの問題があるか、将来それらの問題の影響を受ける可能性がある場合に、パーソナライズされたガイダンスとサポートを提供するエクスペリエンスのスイートです。 Azure Service Health は、Azure の状態、サービス正常性サービス、および Resource Health で構成されています。
+metadata:
+  title: Azure Service Health のドキュメント
+  description: Azure Service Health は、Azure サービスの問題による影響を受けた場合にパーソナライズされたガイダンスとサポートを提供するエクスペリエンスのスイートです。 Azure Service Health を使用すると、通知を受け取ることができます。また、問題の影響を把握するのが容易になるほか、問題が解決したときに更新情報が届きます。 さらに、Azure Service Health は、お使いのリソースの可用性に影響を及ぼすおそれのある計画的なメンテナンスや変更の準備に役立ちます。
+  services: service-health
+  ms.service: service-health
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 83380e57a5d67431fccf1d808b8c8f69eddc5962
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "72966007"
+landingContent:
+- title: Azure Service Health について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Service Health
+      url: overview.md
+    - text: Azure の状態
+      url: azure-status-overview.md
+    - text: サービス正常性サービス
+      url: service-health-overview.md
+    - text: リソース正常性
+      url: resource-health-overview.md
+  - linkListType: video
+    links:
+    - text: Azure Service Health に関する概要ビデオ
+      url: https://www.microsoft.com/videoplayer/embed/RE2OgX6
+- title: 通知を受け取る
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 影響のある Azure サービスの問題が発生したときに通知を受け取る
+      url: alerts-activity-log-service-notifications.md
+    - text: Azure リソースが使用不可になったときに通知を受け取る
+      url: resource-health-alert-arm-template-guide.md

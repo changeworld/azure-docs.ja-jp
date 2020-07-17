@@ -1,29 +1,22 @@
 ---
-title: Azure CLI を使用した Linux VM のコピー | Microsoft Docs
+title: Azure CLI を使用した Linux VM のコピー
 description: Azure CLI と Managed Disks を使用して Azure Linux VM のコピーを作成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-tags: azure-resource-manager
-ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: abc8c09a51104c81b827afb7055531df98691714
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.custom: legacy
+ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731346"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792226"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLI と Managed Disks を使用して Linux VM のコピーを作成する
 
-この記事では、Azure CLI と Azure Resource Manager デプロイ モデルを使用して、Linux を実行する Azure 仮想マシン (VM) のコピーを作成する方法について説明します。 
+この記事では、Azure CLI を使用して、Linux を実行している Azure 仮想マシン (VM) のコピーを作成する方法について説明します。 VM イメージを大規模にコピー、作成、保存、共有する方法については、「[共有イメージ ギャラリー](shared-images.md)」を参照してください。
 
 さらに、[VHD から VM をアップロードして作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。
 
@@ -100,7 +93,7 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks の概要
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、パブリック IP を作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  (DNS 名は一意である必要があるため、一意の名前を入力してください)。
+1.  [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、パブリック IP を作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します (DNS 名は一意である必要があるため、一意の名前を入力してください)。
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -131,6 +124,6 @@ az vm create --resource-group myResourceGroup \
     --attach-os-disk myCopiedDisk
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure CLI を使用して新しい VM を管理する方法については、[Azure Resource Manager の Azure CLI コマンド](../azure-cli-arm-commands.md)に関する記事を参照してください。
+[共有イメージ ギャラリー](shared-images.md) を使用して VM イメージを管理する方法について学習します。

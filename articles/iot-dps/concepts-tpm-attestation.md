@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning Service - TPM の構成証明
-description: この記事では、IoT Device Provisioning Service を使用して TPM 構成証明フローの概念について概説します。
+description: この記事では、IoT Device Provisioning Service (DPS) を使用する TPM 構成証明フローの概念について概説します。
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 07c5dbce0b98d1c197164f4fc77682f78ede57f0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048879"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74975280"
 ---
 # <a name="tpm-attestation"></a>TPM の構成証明
 
@@ -63,7 +63,7 @@ TPM を装備したデバイスを Device Provisioning Service に初めて接�
 
 ![デバイスが Device Provisioning Service との接続を再確立して EK の所有権を検証する](./media/concepts-tpm-attestation/step-three-validation.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、デバイスが IoT Hub に接続され、デバイスのキーが安全に格納されていることがわかり安心できます。 Device Provisioning Service で TPM を使用してデバイスの ID を安全に検証する方法を確認しました。詳細について次の記事を参照してください。
 

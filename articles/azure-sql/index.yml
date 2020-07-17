@@ -1,0 +1,183 @@
+### YamlMime:Landing
+title: Azure SQL のドキュメント
+summary: 'クラウド内の SQL Server データベース エンジン製品の Azure SQL ファミリに関するドキュメントを紹介します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。 '
+metadata:
+  title: Azure SQL のドキュメント
+  description: Azure SQL は、クラウド内の SQL Server データベース エンジン製品のファミリで、Azure SQL Database のフルマネージド データベース、Azure SQL Managed Instance のフルマネージド インスタンス、または Azure の仮想マシンにインストールされた SQL Server です。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 449fa109712c3a92a48cc1e1997da3d2703bb1b2
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023689"
+landingContent:
+- title: Azure SQL データベース
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 新機能
+      url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: SQL Database とは
+      url: database/sql-database-paas-overview.md
+    - text: エラスティック プールとは
+      url: database/elastic-pool-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL Database を作成する
+      url: database/single-database-create-quickstart.md
+    - text: ファイアウォールの構成
+      url: database/firewall-create-server-level-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: SQL Server からの移行
+      url: database/migrate-to-database-from-sql-server.md
+    - text: 高度なセキュリティ
+      url: database/security-overview.md
+    - text: ビジネス継続性
+      url: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 監視とチューニング
+      url: database/monitor-tune-overview.md
+    - text: SQL Server の T-SQL との相違点
+      url: database/transact-sql-tsql-differences-sql-server.md
+- title: Azure SQL Managed Instance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 新機能
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: SQL Managed Instance とは
+      url: managed-instance/sql-managed-instance-paas-overview.md
+    - text: インスタンス プールとは
+      url: managed-instance/instance-pools-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL マネージド インスタンスの作成
+      url: managed-instance/instance-create-quickstart.md
+    - text: 接続する VM の構成
+      url: managed-instance/connect-vm-instance-configure.md
+    - text: サンプル データベースを復元する
+      url: managed-instance/restore-sample-database-quickstart.md
+  - linkListType: concept
+    links:
+    - text: SQL Server からの移行
+      url: managed-instance/migrate-to-instance-from-sql-server.md
+    - text: 高度なセキュリティ
+      url: database/security-overview.md
+    - text: ビジネス継続性
+      url: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 監視とチューニング
+      url: database/monitor-tune-overview.md
+    - text: SQL Server の T-SQL との相違点
+      url: managed-instance/transact-sql-tsql-differences-sql-server.md
+- title: Azure VM 上の SQL Server
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 新機能
+      url: virtual-machines/windows/doc-changes-updates-release-notes.md
+    - text: SQL Server on Windows VM とは
+      url: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: SQL Server on Linux VM とは
+      url: virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure VM での SQL の作成 (Windows)
+      url: virtual-machines/windows/sql-vm-create-portal-quickstart.md
+    - text: Azure VM での SQL の作成 (Linux)
+      url: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: SQL Server からの移行
+      url: virtual-machines/windows/migrate-to-vm-from-sql-server.md
+    - text: セキュリティに関する考慮事項
+      url: virtual-machines/windows/security-considerations-best-practices.md
+    - text: 高可用性とディザスター リカバリー
+      url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: パフォーマンスに関するガイドライン
+      url: virtual-machines/windows/performance-guidelines-best-practices.md
+- title: 接続とクエリ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 概要
+      url: database/connect-query-content-reference-guide.md
+    - text: SQL Server Management Studio (SSMS)
+      url: database/connect-query-ssms.md
+    - text: Azure Data Studio
+      url: /azure-data-studio/quickstart-sql-database?toc=%2Fazure%2Fsql-database%2Ftoc.json
+    - text: Azure portal
+      url: database/connect-query-portal.md
+    - text: Visual Studio (.NET)
+      url: database/connect-query-dotnet-visual-studio.md
+    - text: Visual Studio Code
+      url: database/connect-query-vscode.md
+    - text: .NET Core
+      url: database/connect-query-dotnet-core.md
+    - text: Python
+      url: database/connect-query-python.md
+- title: 開発
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: アプリケーション開発
+      url: database/develop-overview.md
+    - text: ディザスター リカバリー アプリの設計
+      url: database/designing-cloud-solutions-for-disaster-recovery.md
+    - text: ローリング アップグレードの管理 (SQL DB)
+      url: database/manage-application-rolling-upgrade.md
+    - text: 開発戦略 (SQL VM)
+      url: virtual-machines/windows/application-patterns-development-strategies.md
+    - text: SaaS データベース テナント パターン
+      url: database/saas-tenancy-app-design-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: 最初のデータベースの設計 (SSMS)
+      url: database/design-first-database-tutorial.md
+    - text: 最初のデータベースの設計 (C#)
+      url: database/design-first-database-csharp-tutorial.md
+- title: リファレンス
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 学習用 SQL リソース
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell のサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Resource Manager テンプレートのサンプル
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 移行ガイド
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/

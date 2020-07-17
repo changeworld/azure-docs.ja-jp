@@ -1,21 +1,21 @@
 ---
 title: .NET を使用してモデレーション ジョブを使用する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator .NET SDK を使用して、Azure Content Moderator で画像コンテンツまたはテキスト コンテンツのエンド ツー エンドのコンテンツ モデレーション ジョブを開始します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
-ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76294339"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>モデレーション ジョブを定義して使用する (.NET)
 
@@ -28,7 +28,7 @@ ms.locfileid: "58757040"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)サイトにサインインするか、アカウントを作成します。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>お使いの API キーで、レビュー作成のためにレビュー API の呼び出しが可能であることを確認してください
 
@@ -67,8 +67,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -81,7 +80,7 @@ using System.Threading;
 次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
 
 > [!IMPORTANT]
-> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+> **AzureEndpoint** および **CMSubscriptionKey** フィールドをエンドポイント URL とサブスクリプション キーの値で更新します。
 
 ```csharp
 /// <summary>
@@ -93,16 +92,9 @@ using System.Threading;
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account,
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -121,7 +113,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -132,10 +124,10 @@ public static class Clients
 次の定数と静的フィールドを Program.cs 内の **Program** クラスに追加します。
 
 > [!NOTE]
-> TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 [Content Moderator Web サイト](https://westus.contentmoderator.cognitive.microsoft.com/)から TeamName を取得します。
-> ログインしたら、**[設定]** (歯車) メニューから **[資格情報]** を選択します。
+> TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 Content Moderator Web サイトから TeamName を取得します。
+> ログインしたら、 **[設定]** (歯車) メニューから **[資格情報]** を選択します。
 >
-> チーム名は、**[API]** セクションの **[Id]** フィールドの値です。
+> チーム名は、 **[API]** セクションの **[Id]** フィールドの値です。
 
 ```csharp
 /// <summary>
@@ -241,11 +233,11 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 ```
 
 > [!NOTE]
-> Content Moderator サービス キーには、Requests per Second (RPS) の速度制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。
+> Content Moderator サービス キーには、秒単位の要求数 (RPS) の制限があります。 この制限を超えた場合、SDK は 429 エラー コードを使用して例外をスローします。
 >
-> 階層なしのキーの RPS は 1 に制限されています。
+> 無料レベルのキーの RPS は 1 に制限されています。
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 
 コンソールに次のサンプル出力が表示されます。
 
@@ -258,7 +250,7 @@ Content Moderator レビュー ツールにサインインして、保留中の�
 
 **[次へ]** ボタンを使用して送信します。
 
-![ヒューマン モデレーター用の画像レビュー](images/ocr-sample-image.PNG)
+![人によるモデレーション用のイメージ レビュー](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>ログ ファイルのサンプル出力を確認する
 
@@ -322,6 +314,6 @@ Get review details.
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

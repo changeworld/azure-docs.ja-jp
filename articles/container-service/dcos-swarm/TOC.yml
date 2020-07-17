@@ -4,7 +4,7 @@
   items:
     - name: Container Service について
       href: container-service-intro.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Docker Swarm
@@ -25,7 +25,7 @@
   items:
     - name: コンテナーをセキュリティ保護する
       href: container-service-security.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ACS クラスターをスケールする
       href: container-service-scale.md
@@ -77,7 +77,7 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: container-service-faq.md
     - name: テンプレート - ACS Engine
       href: 'https://github.com/Azure/acs-engine'

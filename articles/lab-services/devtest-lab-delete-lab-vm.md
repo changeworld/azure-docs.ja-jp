@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs でラボやラボ内の VM を削除する | Microsoft Docs
-description: この記事では、ラボまたはラボ内の VM を削除する方法について説明します。
+title: Azure DevTest Labs でラボやラボ内の VM を削除する
+description: この記事では、Azure portal (Azure DevTest Labs) を使用してラボを削除したり、ラボ内の VM を削除したりする方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956332"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233111"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボやラボ内の VM を削除する
 この記事では、ラボまたはラボ内の VM を削除する方法について説明します。
@@ -31,17 +31,17 @@ DevTest Labs インスタンスをリソース グループから削除すると
 
 ラボを削除するには、次の手順を実行します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメニューから **[すべてのリソース]** を選択し、サービスの種類として **[DevTest Labs]** を選択し、ラボを選択します。
 
     ![ラボを選択する](media/devtest-lab-delete-lab-vm/select-lab.png)
 3. **[DevTest Lab]** ページで、ツール バーの **[削除]** をクリックします。 
 
     ![[削除] ボタン](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. **[確認]** ページで、ラボの**名前**を入力し、**[削除]** を選択します。 
+4. **[確認]** ページで、ラボの**名前**を入力し、 **[削除]** を選択します。 
 
     ![Confirm](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. 操作の状態を確認するには、**[通知]** アイコン (ベル) を選択します。 
+5. 操作の状態を確認するには、 **[通知]** アイコン (ベル) を選択します。 
 
     ![通知](media/devtest-lab-delete-lab-vm/delete-status.png)
 
@@ -56,22 +56,22 @@ DevTest Labs インスタンスをリソース グループから削除すると
 
 ラボ内の VM を削除するには、次の手順を実行します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメニューから **[すべてのリソース]** を選択し、サービスの種類として **[DevTest Labs]** を選択し、ラボを選択します。
 
     ![ラボを選択する](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. VM 一覧にある VM の **[...] \(省略記号\)** を選択し、**[削除]** を選択します。 
+3. VM 一覧にある VM の **[...] \(省略記号\)** を選択し、 **[削除]** を選択します。 
 
     ![メニューの VM の削除](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
 4. **確認**のダイアログ ボックスで **[はい]** を選択します。 
-5. 操作の状態を確認するには、**[通知]** アイコン (ベル) を選択します。 
+5. 操作の状態を確認するには、 **[通知]** アイコン (ベル) を選択します。 
 
 **[仮想マシン] ページ**から VM を削除するには、次の図のようにツール バーの **[削除]** を選択します。
 
 ![VM ページから VM を削除する](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボを作成する場合は、次の記事を参照してください。 
 
 - [ラボを作成する](devtest-lab-create-lab.md)

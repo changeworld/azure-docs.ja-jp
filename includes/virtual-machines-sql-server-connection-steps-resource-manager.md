@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181130"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>パブリック IP アドレスの DNS ラベルの構成
 
@@ -36,9 +36,9 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
 
 1. インターネットに接続されたコンピューターで、SQL Server Management Studio (SSMS) を開きます。 SQL Server Management Studio を保有していない場合は、[ここ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)からダウンロードできます。
 
-1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** の値を編集します。 (前のタスクで確認した) 仮想マシンの IP アドレスまたは完全 DNS 名を入力します。 また、コンマを追加し、SQL Server の TCP ポートを指定することもできます。 たとえば、「 `mysqlvmlabel.eastus.cloudapp.azure.com,1433` 」のように入力します。
+1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、 **[サーバー名]** の値を編集します。 (前のタスクで確認した) 仮想マシンの IP アドレスまたは完全 DNS 名を入力します。 また、コンマを追加し、SQL Server の TCP ポートを指定することもできます。 たとえば、「 `mysqlvmlabel.eastus.cloudapp.azure.com,1433` 」のように入力します。
 
-1. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
+1. **[認証]** ボックスで、 **[SQL Server 認証]** を選択します。
 
 1. **[ログイン]** ボックスに、有効な SQL ログインの名前を入力します。
 

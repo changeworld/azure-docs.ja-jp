@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB Gremlin API の実行プロファイル関数を使用してクエリを評価する
+title: Azure Cosmos DB Gremlin API で実行プロファイルを使用してクエリを評価する
 description: 実行プロファイル ステップを使用して Gremlin クエリのトラブルシューティングと向上を行う方法について説明します。
 services: cosmos-db
 author: luisbosquez
 manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: 2f3967c64e79b2bc7b01b35eff26f5ac0d4e3db4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287576"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75441851"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>実行プロファイル ステップを使用して Gremlin のクエリを評価する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "59287576"
 
 このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され**、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
 
-例: 
+次に例を示します。
 
 ```java
     // Basic traversal
@@ -54,12 +54,14 @@ ms.locfileid: "59287576"
     // Amount of time in milliseconds that the entire operation took.
     "totalTime": 28,
 
-    // An array containing metrics for each of the steps that were executed. Each Gremlin step will translate to one or more of these steps.
+    // An array containing metrics for each of the steps that were executed. 
+    // Each Gremlin step will translate to one or more of these steps.
     // This list is sorted in order of execution.
     "metrics": [
       {
         // This operation obtains a set of Vertex objects.
-        // The metrics include: time, percentTime of total execution time, resultCount, fanoutFactor, count, size (in bytes) and time.
+        // The metrics include: time, percentTime of total execution time, resultCount, 
+        // fanoutFactor, count, size (in bytes) and time.
         "name": "GetVertices",
         "time": 24,
         "annotations": {
@@ -78,8 +80,12 @@ ms.locfileid: "59287576"
         ]
       },
       {
-        // This operation obtains a set of Edge objects. Depending on the query, these might be directly adjacent to a set of vertices, or separate, in the case of an E() query.
-        // The metrics include: time, percentTime of total execution time, resultCount, fanoutFactor, count, size (in bytes) and time.
+        // This operation obtains a set of Edge objects. 
+        // Depending on the query, these might be directly adjacent to a set of vertices, 
+        // or separate, in the case of an E() query.
+        //
+        // The metrics include: time, percentTime of total execution time, resultCount, 
+        // fanoutFactor, count, size (in bytes) and time.
         "name": "GetEdges",
         "time": 4,
         "annotations": {
@@ -110,8 +116,9 @@ ms.locfileid: "59287576"
         }
       },
       {
-        // This operation represents the serialization and preparation for a result from the preceding graph operations.
-        // The metrics include: time, percentTime of total execution time and resultCount.
+        // This operation represents the serialization and preparation for a result from 
+        // the preceding graph operations. The metrics include: time, percentTime of total 
+        // execution time and resultCount.
         "name": "ProjectOperator",
         "time": 0,
         "annotations": {
@@ -380,6 +387,6 @@ Cosmos DB Gremlin ランタイム演算子|説明
 - 最初の応答の方が `metrics[0].time` の値が高く、これはこの 1 つのステップの解決に長くかかったことを示します。
 - `metrics[0].counts.resultsCount` の値も最初の応答の方が高く、初期作業データセットが大きかったことを示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB で[サポートされている Gremlin の機能](gremlin-support.md)について確認します。 
 * [Azure Cosmos DB での Gremlin API](graph-introduction.md) の詳細について確認します。

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Ziflow の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Ziflow の統合 | Microsoft Docs'
 description: Azure Active Directory と Ziflow の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 02c09744130bec55eed4181b0d4ba958aec59e69
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d9745bdb1cb6de86a96946564865958433d49732
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905355"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086209"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル:Azure Active Directory と Ziflow の統合
+# <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル: Azure Active Directory と Ziflow の統合
 
 このチュートリアルでは、Ziflow と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Ziflow と Azure AD の統合には、次の利点があります。

@@ -1,22 +1,21 @@
 ---
 title: Azure Stream Analytics の管理用 .NET SDK
 description: Stream Analytics 管理用 .NET SDK の使用 分析ジョブを設定および実行する方法について説明します。 プロジェクト、入力、出力、および変換を作成します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa4a9a8d01d499dc431c8b182401226aa72bf1f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732570"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426254"
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
 
 [管理用 Stream Analytics API の管理リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn889315.aspx)を参照してください。
@@ -27,11 +26,11 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 > この記事では、Azure Stream Analytics 管理用 .NET SDK v2.x バージョンを使用してサンプル コードを更新しました。 レガシ (1.x) バージョンの SDK を使用するサンプル コードについては、「[管理用 .NET SDK v1.x: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-この記事を読み始める前に、次の項目を用意する必要があります。
+この記事の操作を始める前に、以下の要件を満たしておく必要があります。
 
-* Visual Studio 2017 または 2015 のインストール。
+* Visual Studio 2019 または 2015 のインストール。
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
-* サブスクリプションに Azure リソース グループを作成する。 次に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。  
+* サブスクリプションに Azure リソース グループを作成する。 次の例に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。  
 
    ```powershell
    # Log in to your Azure account
@@ -211,7 +210,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics の出力ターゲットの作成
-出力ターゲットの作成は、Stream Analytics の入力ソースの作成とよく似ています。 入力ソースと同様、出力ターゲットも特定のジョブに関連付けられます。 1 つの出力ターゲットを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
+出力ターゲットの作成は、Stream Analytics の入力ソースの作成と似ています。 入力ソースと同様、出力ターゲットも特定のジョブに関連付けられます。 1 つの出力ターゲットを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
 
 次のコードで出力ターゲット (Azure SQL データベース) を作成します。 出力ターゲットのデータとシリアル化の種類はカスタマイズできます。
 
@@ -288,14 +287,14 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 ## <a name="get-support"></a>サポートを受ける
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次の手順
-分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、以下の記事をお読みください。
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics 管理用 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

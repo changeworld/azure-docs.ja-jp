@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120158"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181539"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -39,15 +39,13 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
-サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、**[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenInteractive` または `AcquireTokenSilent` の呼び出しを介して取得されたトークンに関する基本情報は、**[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
+サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、 **[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenInteractive` または `AcquireTokenSilent` の呼び出しを介して取得されたトークンに関する基本情報は、 **[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
 
-|プロパティ  |形式  |説明 |
+|プロパティ  |Format  |説明 |
 |---------|---------|---------|
+|**ユーザー名** |<span>user@domain.com</span> |ユーザーの識別に使用されているユーザー名。|
+|**Token Expires** |DateTime |トークンの有効期限が切れる時刻。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
 
-|**Username** |<span>user@domain.com</span> |ユーザーを識別するために使用されるユーザー名。| |**Token Expires** |DateTime |トークンの有効期限が切れる日時。 MSAL では、必要に応じてトークンを更新することで、有効期限日を延長します。|
-
-
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
 
 Microsoft Graph API には、ユーザーのプロファイルを読み取るための *user.read* スコープが必要です。 このスコープは、アプリケーション登録ポータルで登録されたすべてのアプリケーションで、既定で自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 Microsoft Graph API には、ユーザーの予定表を表示するための *Calendars.Read* スコープが必要です。
@@ -56,7 +54,5 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 >[!NOTE]
 >スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

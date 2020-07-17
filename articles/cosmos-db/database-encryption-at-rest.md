@@ -1,24 +1,24 @@
 ---
 title: Azure Cosmos DB での保存時の暗号化
 description: Azure Cosmos DB で保存時のデータの暗号化が提供される方法と、その実装方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
+ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: b88b32b3ae2d4939d26fc268e25c87b1fb70eee5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237219"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592136"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
 
 保存時の暗号化という語句は、一般的にはソリッド ステート ドライブ (SSD) やハード ディスク (HDD) などの不揮発性メモリ デバイスでデータを暗号化することを意味します。 Cosmos DB では、プライマリ データベースを SSD に保存します。 そのメディア添付ファイルとバックアップは Azure Blob ストレージに保存され、このストレージは通常 HDD でバックアップされます。 Cosmos DB の保存時の暗号化のリリースにより、すべてのデータベース、メディア添付ファイル、バックアップが暗号化されます。 データの転送中 (ネットワーク経由) と保存時 (非揮発性メモリ) にデータが暗号化されることで、エンド ツー エンドの暗号化が実現しました。
 
-PaaS サービスである Cosmos DB は、非常に簡単に使用できます。 Cosmos DB に保存されているすべてのユーザー データは、保存時と転送時に暗号化されているため、操作は何も必要ありません。 つまり、保存時の暗号化機能は、既定で "オン" になっています。 オンまたはオフにするコントロールはありません。 Azure Cosmos DB では、アカウントが実行されているすべてのリージョンで AES 256 暗号化が使われます。 [可用性とパフォーマンスの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) を引き続き満たしながら、この機能を提供します。
+PaaS サービスである Azure Cosmos DB は使用方法がとても簡単です。 Azure Cosmos DB に保存されているすべてのユーザー データは、保存時と転送時に暗号化されているため、操作は何も必要ありません。 つまり、保存時の暗号化機能は、既定で "オン" になっています。 オンまたはオフにするコントロールはありません。 Azure Cosmos DB では、アカウントが実行されているすべてのリージョンで AES 256 暗号化が使われます。 [可用性とパフォーマンスの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) を引き続き満たしながら、この機能を提供します。 Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (サービス マネージド キー) を使用して自動的かつシームレスに暗号化されます。 必要に応じて、[カスタマー マネージド キー](how-to-setup-cmk.md)の記事で説明されているように、独自のキーを使用して 2 つ目の暗号化レイヤーを追加することもできます。
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Azure Cosmos DB に保存時の暗号化の実装
 
@@ -46,7 +46,7 @@ A:キーは Microsoft によって管理されます。
 A:マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Q:独自の暗号化キーを使用できますか?
-A:Cosmos DB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。 この質問は、PCI-DSS などのコンプライアンス要件のクリアに関する代替質問として頻繁に寄せられることがわかりました。 この機能を構築する際に、コンプライアンス監査者の協力を得て、Cosmos DB を使用する顧客が自身でキーを管理しなくても要件を満たすことができるようにしました。
+A:はい。この機能は新しい Cosmos アカウントで使用でき、アカウントの作成時に行う必要があります。 詳細については、[カスタマー マネージド キー](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)のドキュメントを参照してください。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Q:どのリージョンで暗号化が有効になっていますか?
 A:すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
@@ -57,7 +57,8 @@ A:パフォーマンスの SLA への影響や変化はないため、既存お�
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Q:ローカル エミュレーターは、保存時の暗号化に対応していますか?
 A:エミュレーターは、スタンドアロンの開発/テスト ツールであり、管理された Cosmos DB サービスで使用するキー管理サービスを使用していません。 機密性の高いエミュレーター テスト データを格納するドライブで BitLocker を有効にすることをお勧めします。 [エミュレーターは既定のデータ ディレクトリの変更](local-emulator.md)と、よく知られた場所の使用をサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB データベースのセキュリティ](database-security.md)」を参照してください。
-マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+* 独自のキーを使用して 2 つ目の暗号化レイヤーを追加することもできます。詳細については、[カスタマー マネージド キー](how-to-setup-cmk.md)の記事を参照してください。
+* Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure Security Center](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。

@@ -3,7 +3,7 @@ title: サポート - Azure の専用 HSM | Microsoft Docs
 description: さまざまなシナリオにおける Azure の専用 HSM のサポート オプションと責任の範囲
 services: dedicated-hsm
 author: johndaw
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 3fd460409cab8dce0f5c4ce31f5323f19706d268
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: mbaldwin
+ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541105"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70881003"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure の専用 HSM のサポート
 
-Azure の専用 HSM サービスでは、完全な管理制御と管理責任が備わった、お客様専用の物理デバイスが提供されます。 使用できるようになったデバイスは、[Gemalto SafeNet Luna 7 HSM モデル A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) です。 お客様がプロビジョニングを行った後は、監視ロールで物理シリアル ポートに接続することを除き、Microsoft による管理アクセスはできなくなります。  アクセス権がないため、Microsoft には継続的なソフトウェア レベルのメンテナンスまたはシステム管理の責任はありません。 そのため、お客様が一般的な運用アクティビティを担当する必要があります。
-お客様は、Gemalto からサポートまたはコンサルティング ベースの支援を受け、HSM を使用しているアプリケーションについての全責任を負います。 運用の健全性はお客様の責任であるため、Microsoft はこのサービスについていかなる高可用性の保証も行うことはできません。 高可用性を実現するためにアプリケーションが正しく構成されていることを確認するのは、お客様の責任です。 Microsoft は、デバイスの正常性とネットワーク接続の監視および管理を行います。
+Azure Dedicated HSM サービスでは、完全な管理制御と管理責任が備えられた、お客様専用の物理デバイスが提供されます。 使用できるようになったデバイスは、[Gemalto SafeNet Luna 7 HSM モデル A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) です。 お客様がプロビジョニングを行った後は、監視の役割で物理シリアル ポートに接続することを除き、Microsoft による管理アクセスはできなくなります。  アクセス権がないため、Microsoft には継続的なソフトウェア レベルのメンテナンスまたはシステム管理の責任はありません。 そのため、お客様が一般的な運用アクティビティを担当する必要があります。
+お客様は、Gemalto からサポートまたはコンサルティング ベースの支援を受け、HSM を使用しているアプリケーションについての全責任を負います。 運用上の健全性についてお客様が所有する範囲に基づき、Microsoft はこのサービスについていかなる高可用性も保証することはできません。 高可用性を実現するためにアプリケーションが正しく構成されていることを確認するのは、お客様の責任です。 Microsoft は、デバイスの正常性とネットワーク接続の監視および管理を行います。
 
 ## <a name="getting-support"></a>サポートの利用
 
@@ -89,7 +89,7 @@ HSM デバイスに対するネットワーク アクセスの問題が発生し
 Microsoft のサポートのサービス レベルについては、[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を参照してください
 Gemalto のサポートのサービス レベルについては、[Gemalto サポートの要点に関するページ](https://azure.microsoft.com/support/plans/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスのプロビジョニングやアプリケーションの設計、アプリケーションのデプロイ前に、高可用性やセキュリティの主要概念を十分に理解しておくことをお勧めします。
 

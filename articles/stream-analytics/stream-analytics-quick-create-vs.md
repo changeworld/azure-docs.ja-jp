@@ -1,31 +1,32 @@
 ---
-title: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成
+title: クイックスタート - Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 description: 作業を開始するためのこのクイック スタートでは、Visual Studio を使用して Stream Analytics ジョブを作成し、入力と出力を構成し、クエリを定義する方法を示します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 12/20/2018
+ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc
-ms.openlocfilehash: 1a72e2874e28a2aa5b69866bd959743707ea9d99
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021919"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767240"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>クイック スタート:Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 
 このクイック スタートでは、Visual Studio の Azure Stream Analytics ツールを使用して Stream Analytics ジョブを作成および実行する方法を示します。 サンプル ジョブでは、IoT Hub デバイスからストリーミング データを読み取ります。 温度が 27 度を超えるときに平均温度を計算し、結果の出力イベントを BLOB ストレージ内の新しいファイルに書き込むジョブを定義します。
+
+> [!NOTE]
+> Visual Studio と Visual Studio Code のツールでは、中国東部、中国北部、ドイツ中部、ドイツ北東部のリージョンでのジョブはサポートされていません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [Azure Portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインします。
 
-* Visual Studio 2017、Visual Studio 2015、または Visual Studio 2013 Update 4 をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。
+* Visual Studio 2019、Visual Studio 2015、または Visual Studio 2013 Update 4 をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。
 
 * [インストール手順](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)に従って、Visual Studio の Stream Analytics ツールをインストールします。
 
@@ -33,50 +34,50 @@ ms.locfileid: "54021919"
 
 Stream Analytics ジョブを定義する前に、後でジョブの入力として構成されるデータを準備する必要があります。 ジョブで必要な入力データを準備するには、次の手順を完了します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[リソースの作成]** > **[モノのインターネット]** > **[IoT Hub]** を選択します。
+2. **[リソースの作成]**  >  **[モノのインターネット]**  >  **[IoT Hub]** を選択します。
 
 3. **[IoT Hub]** ウィンドウで、以下の情報を入力します。
    
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |サブスクリプション  | \<該当するサブスクリプション\> |  使用する Azure サブスクリプションを選択します。 |
-   |リソース グループ   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
+   |Resource group   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
    |リージョン  |  \<ユーザーに最も近いリージョンを選択\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
    |IoT Hub 名  | MyASAIoTHub  |   お客様の IoT ハブの名前を選択します。   |
 
    ![IoT Hub の作成](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. **[次へ:Set size and scale]\(次へ: サイズとスケールの設定\)** を選択します。
+4. **Set size and scale\(次へ: サイズとスケールの設定\)** を選択します。
 
-5. **[価格とスケールティア]** を選択します。 このクイック スタートでは、**[F1 - Free tier]\(F1 - Free レベル\)** を選択します (お客様のサブスクリプションでまだ使用可能な場合)。 Free レベルを使用できない場合は、使用可能な最も低いレベルを選択します。 詳細については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
+5. **[価格とスケールティア]** を選択します。 このクイック スタートでは、 **[F1 - Free tier]\(F1 - Free レベル\)** を選択します (お客様のサブスクリプションでまだ使用可能な場合)。 Free レベルを使用できない場合は、使用可能な最も低いレベルを選択します。 詳細については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
    ![お客様の IoT ハブのサイズ設定とスケール設定](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
-6. **[Review + create]\(レビュー + 作成\)** を選択します。 お客様の IoT ハブの情報を確認して、**[作成]** をクリックします。 お客様の IoT ハブの作成には数分かかることがあります。 **[通知]** ウィンドウで進行状況を監視できます。
+6. **[Review + create]\(レビュー + 作成\)** を選択します。 お客様の IoT ハブの情報を確認して、 **[作成]** をクリックします。 お客様の IoT ハブの作成には数分かかることがあります。 **[通知]** ウィンドウで進行状況を監視できます。
 
-7. お客様の IoT ハブ ナビゲーション メニューで、**[IoT デバイス]** の **[追加]** をクリックします。 **デバイス ID** を追加して **[保存]** をクリックします。
+7. お客様の IoT ハブ ナビゲーション メニューで、 **[IoT デバイス]** の **[追加]** をクリックします。 **デバイス ID** を追加して **[保存]** をクリックします。
 
    ![お客様の IoT ハブへのデバイスの追加](./media/stream-analytics-quick-create-vs/add-device-iot-hub.png)
 
-8. デバイスが作成されたら、**[IoT デバイス]** の一覧からデバイスを開きます。 後で使用するために **[接続文字列 (主キー)]** をコピーしてメモ帳に保存します。
+8. デバイスが作成されたら、 **[IoT デバイス]** の一覧からデバイスを開きます。 後で使用するために **[接続文字列 (主キー)]** をコピーしてメモ帳に保存します。
 
    ![IoT Hub デバイスの接続文字列のコピー](./media/stream-analytics-quick-create-vs/save-iot-device-connection-string.png)
 
 ## <a name="create-blob-storage"></a>BLOB ストレージを作成する
 
-1. Azure Portal の左上隅で、**[リソースの作成]** > **[ストレージ]** > **[ストレージ アカウント]** の順に選択します。
+1. Azure Portal の左上隅で、 **[リソースの作成]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順に選択します。
 
 2. **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前、場所、リソース グループを入力します。 お客様が作成した IoT ハブと同じ場所およびリソース グループを選択します。 **[確認および作成]** をクリックしてアカウントを作成します。
 
    ![ストレージ アカウントの作成](./media/stream-analytics-quick-create-portal/create-storage-account.png)
 
-3. お客様のストレージ アカウントが作成されたら、**[概要]** ウィンドウの **[BLOB]** タイルを選択します。
+3. お客様のストレージ アカウントが作成されたら、 **[概要]** ウィンドウの **[BLOB]** タイルを選択します。
 
    ![ストレージ アカウントの概要](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. **[Blob service]** ページで、**[コンテナー]** を選択し、お客様のコンテナーに名前を付けます (*container1* など)。 **[パブリック アクセス レベル]** を **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** のままにして、**[OK]** を選択します。
+4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます (*container1* など)。 **[パブリック アクセス レベル]** を **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** のままにして、 **[OK]** を選択します。
 
    ![BLOB コンテナーを作成する](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -86,9 +87,9 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 2. **[ファイル] > [新しいプロジェクト]** を選択します。  
 
-3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、**[Azure Stream Analytics アプリケーション]** を選択します。  
+3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics アプリケーション]** を選択します。  
 
-4. プロジェクトの**名前**、**場所**、および**ソリューション名**を入力し、**[OK]** を選択します。
+4. プロジェクトの**名前**、**場所**、および**ソリューション名**を入力し、 **[OK]** を選択します。
 
    ![Stream Analytics プロジェクトを作成する](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -101,11 +102,11 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 1. Visual Studio の **[表示]** メニューで **[サーバー エクスプローラー]** を選択します。
 
-2. **[Azure]** を右クリックし、**[Connect to Microsoft Azure Subscription]\(Microsoft Azure サブスクリプションへの接続\)** を選択します。その後、Azure アカウントでサインインします。
+2. **[Azure]** を右クリックし、 **[Connect to Microsoft Azure Subscription]\(Microsoft Azure サブスクリプションへの接続\)** を選択します。その後、Azure アカウントでサインインします。
 
 ## <a name="define-input"></a>入力を定義する
 
-1. **ソリューション エクスプローラー**で **[入力]** ノードを展開し、**[Input.json]** をダブルクリックします。
+1. **ソリューション エクスプローラー**で **[入力]** ノードを展開し、 **[Input.json]** をダブルクリックします。
 
 2. **[Stream Analytics Input Configuration]\(Stream Analytics 入力構成\)** で、次の値を入力します。
 
@@ -113,18 +114,18 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
    |---------|---------|---------|
    |入力のエイリアス  |  入力   |  ジョブの入力を識別する名前を入力します。   |
    |ソースの種類   |  データ ストリーム |  適切な入力ソース ([データ ストリーム] または [参照データ]) を選択します。   |
-   |ソース  |  IoT Hub |  適切な入力ソースを選択します。   |
+   |source  |  IoT Hub |  適切な入力ソースを選択します。   |
    |リソース  | 現在のアカウントからデータ ソースを選択します | 手動でデータを入力するか、既存のアカウントを選択するかを選択します。   |
    |サブスクリプション  |  \<該当するサブスクリプション\>   | 作成した IoT ハブがある Azure サブスクリプションを選択します。   |
    |IoT Hub  |  MyASAIoTHub   |  対象の IoT ハブの名前を選択または入力します。 IoT ハブが同じサブスクリプション内に作成されている場合、IoT ハブ名は自動的に検出されます。   |
    
-3. 他のオプションは既定値のままにして、**[保存]** を選択し、設定を保存します。  
+3. 他のオプションは既定値のままにして、 **[保存]** を選択し、設定を保存します。  
 
    ![入力データを構成する](./media/stream-analytics-quick-create-vs/stream-analytics-vs-input.png)
 
 ## <a name="define-output"></a>出力の定義
 
-1. **ソリューション エクスプローラー**で **[出力]** ノードを展開し、**[Output.json]** をダブルクリックします。
+1. **ソリューション エクスプローラー**で **[出力]** ノードを展開し、 **[Output.json]** をダブルクリックします。
 
 2. **[Stream Analytics Output Configuration]\(Stream Analytics 出力構成\)** で、次の値を入力します。
 
@@ -138,7 +139,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
    |コンテナー  |  container1   |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |
    |パスのパターン  |  output   |  コンテナー内に作成するファイル パスの名前を入力します。   |
    
-3. 他のオプションは既定値のままにして、**[保存]** を選択し、設定を保存します。  
+3. 他のオプションは既定値のままにして、 **[保存]** を選択し、設定を保存します。  
 
    ![出力データを構成する](./media/stream-analytics-quick-create-vs/stream-analytics-vs-output.png)
 
@@ -179,7 +180,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
    ![Stream Analytics ジョブを開始する](./media/stream-analytics-quick-create-vs/start-stream-analytics-job-vs.png)
 
-2. **[ジョブ出力の開始モード]** を **[JobStartTime]** に変更し、**[開始]** を選択します。
+2. **[ジョブ出力の開始モード]** を **[JobStartTime]** に変更し、 **[開始]** を選択します。
 
    ![ジョブ構成を開始する](./media/stream-analytics-quick-create-vs/stream-analytics-start-configuration.png)
 
@@ -187,11 +188,11 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
    ![実行中の Stream Analytics ジョブ](./media/stream-analytics-quick-create-vs/stream-analytics-job-running.png)
 
-4. 結果を表示するには、**[表示]** メニューで **[Cloud Explorer]** を選択し、リソース グループ内のストレージ アカウントに移動します。 **[BLOB コンテナー]** で、**[container1]** をダブルクリックし、**[出力]** ファイル パスをダブルクリックします。
+4. 結果を表示するには、 **[表示]** メニューで **[Cloud Explorer]** を選択し、リソース グループ内のストレージ アカウントに移動します。 **[BLOB コンテナー]** で、 **[container1]** をダブルクリックし、 **[出力]** ファイル パスをダブルクリックします。
 
    ![結果の表示](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
@@ -199,7 +200,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 2. リソース グループのページで **[削除]** を選択し、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Visual Studio を使用して、簡単な Stream Analytics ジョブをデプロイしました。 [Azure portal](stream-analytics-quick-create-portal.md) と [PowerShell](stream-analytics-quick-create-powershell.md) を使用して Stream Analytics ジョブをデプロイすることもできます。 
 

@@ -1,31 +1,20 @@
 ---
 title: Azure Service Fabric Docker Compose デプロイメント プレビュー
 description: Azure Service Fabric では、Service Fabric を使用して既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 このサポートは現在プレビューの段階です。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661396"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236695"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 
 Docker は、複数コンテナー アプリケーションの定義に [docker-compose.yml](https://docs.docker.com/compose) ファイルを使用します。 Docker を使用した Azure Service Fabric での既存のコンテナー アプリケーションの調整を理解しやすくするため、プラットフォームでネイティブに Docker Compose をデプロイするためのプレビュー版サポートが含められています。 Service Fabric は `docker-compose.yml` ファイルのバージョン 3 以降を受け入れることができます。 
 
-このサポートはプレビュー段階であるため、Compose ディレクティブのサブセットのみがサポートされます。 たとえば、アプリケーションのアップグレードはサポートされません。 ただし、アプリケーションをアップグレードする代わりに、いつでも削除してデプロイすることができます。
+このサポートはプレビュー段階であるため、Compose ディレクティブのサブセットのみがサポートされます。
 
 このプレビューを使用するには、Azure Portal でバージョン 5.7 以降の Service Fabric ランタイムを使用し、対応する SDK も使用してクラスターを作成します。 
 
@@ -80,37 +69,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 次の Service Fabric CLI コマンドを使用することもできます。
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 デプロイメントが作成されたら、次のコマンドを使用して、その状態を確認できます。
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Compose デプロイを削除するには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Compose デプロイメントをアップグレードするには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Compose デプロイのアップグレードをロールバックするには、次のコマンドを使用します。
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
@@ -138,8 +127,8 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 ### <a name="ports-section"></a>ポート セクション
 
 Service Fabric サービス リスナーによって使用されるポート セクションでは、http または https プロトコルを指定します。 これにより、エンドポイント プロトコルがネーム サービスによって正常に公開され、リバース プロキシが要求の転送を許可されるようになります。
-* セキュリティで保護されていない Service Fabric Compose サービスをルーティングするには、**/http** を指定します。 例 - **"80:80/http"**。
-* セキュリティで保護された Service Fabric Compose サービスをルーティングするには、**/https** を指定します。 例 - **"443:443/https"**。
+* セキュリティで保護されていない Service Fabric Compose サービスをルーティングするには、 **/http** を指定します。 例 - **"80:80/http"** 。
+* セキュリティで保護された Service Fabric Compose サービスをルーティングするには、 **/https** を指定します。 例 - **"443:443/https"** 。
 
 > [!NOTE]
 > /http および /https ポート セクションの構文は、適切な Service Fabric リスナーの URL を登録する Service Fabric に固有です。  Docker Compose ファイルの構文がプログラムによって検証される場合、検証エラーが発生する可能性があります。
@@ -161,7 +150,7 @@ docker-compose.yml ファイルでは、プロパティと構成を含む、コ�
 
 このモデルは柔軟性がありますが、種類がマニフェスト ファイルから暗黙的に指定されるより単純なインスタンス ベースのデプロイ モデルもサポートする予定です。 このモデルでは、各アプリケーションが独自の独立したマニフェストを取得します。 インスタンス ベースのデプロイ形式である docker-compose.yml のサポートを追加することで、この取り組みをプレビューしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric アプリケーション モデル](service-fabric-application-model.md)の学習
 * [Service Fabric CLI の概要](service-fabric-cli.md)

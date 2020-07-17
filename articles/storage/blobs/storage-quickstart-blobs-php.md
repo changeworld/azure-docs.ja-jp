@@ -1,20 +1,18 @@
 ---
 title: Azure クイック スタート - PHP を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
 description: PHP を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: php
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 790c6a372021542daa1098e94209c91b7bcecfd5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149455"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "68726384"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイック スタートでは、PHP を使って、Azure Blob Storage のコンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法を説明します。 
@@ -44,14 +42,14 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 アプリケーションでは、ストレージ アカウント名とアカウント キーを指定して、お使いのアプリケーションの **BlobRestProxy** インスタンスを作成する必要があります。 アプリケーションを実行しているローカル マシンの環境変数内にこれらの識別子を格納することをお勧めします。 環境変数を作成するオペレーティング システムに応じて、以下のいずれかの例を使用します。 **youraccountname** および **youraccountkey** の値を、自分のアカウント名とキーに置き換えます。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -59,7 +57,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 ```
 ---
 
-## <a name="configure-your-environment"></a>環境の構成
+## <a name="configure-your-environment"></a>環境を構成する
 ローカル git フォルダーのフォルダーを、PHP サーバーによって処理されているディレクトリに配置します。 その後、コマンド プロンプトを開き、同じディレクトリを対象にして、「`php composer.phar install`」と入力します。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
@@ -175,7 +173,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
     fpassthru($blob->getContentStream());
 ```
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 このクイック スタートでアップロードした BLOB が不要になった場合は、**deleteContainer()** メソッドを使用してコンテナー全体を削除できます。 作成したファイルが不要になった場合は、**deleteBlob()** メソッドを使用してファイルを削除します。
 
 ```PHP
@@ -204,7 +202,7 @@ Blob Storage を使用する PHP 開発については、以下の追加リソ�
 - GitHub で Azure Storage 用の [PHP クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-php)を確認し、ダウンロードしてインストールします。
 - PHP クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 このクイック スタートでは、PHP を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 PHP の操作の詳細を学習するには、PHP デベロッパー センターに進みます。
 

@@ -1,10 +1,10 @@
 ---
 title: RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティング | Microsoft Docs
-description: ''
+description: リモート デスクトップ プロトコル (RDP) を使用して Azure 仮想マシン (VM) に接続するときに発生した認証エラーをトラブルシューティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967982"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420808"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティングについて説明します。
 
@@ -77,7 +77,7 @@ VM は Federal Information Processing Standards (FIPS) 準拠アルゴリズム�
 
 バックアップ スナップショットを作成するには、「[ディスクのスナップショットの作成](../windows/snapshot-copy-managed-disk.md)」の手順に従います。
 
-### <a name="connect-to-the-vm-remotely"></a>VM へのリモート接続
+### <a name="connect-to-the-vm-remotely"></a>VM にリモート接続する
 
 VM にリモート接続するには、[リモート ツールを使用して Azure VM に関する問題のトラブルシューティングを行う方法](remote-tools-troubleshoot-azure-vm-issues.md)に関する記事を参照してください。
 
@@ -101,7 +101,7 @@ gpupdate /force
 
 変更が元に戻された場合、それは Active Directory ポリシーが問題の原因であることを意味します。 
 
-### <a name="workaround"></a>対処法
+### <a name="workaround"></a>回避策
 
 この問題を回避するには、コマンド ウィンドウで、NLA を無効にする次のコマンドを実行します。
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > SSH/TLS バージョン x.x は、SCHANNEL エラーに関するゲスト OS ログから取得します。
 
-#### <a name="fips-compliant"></a> FIPS 準拠アルゴリズムによる接続の確認
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> FIPS 準拠アルゴリズムによる接続の確認
 
 リモート デスクトップで FIPS 準拠アルゴリズムの接続のみを使用するように指定できます。 これはレジストリ キーを使用して設定できます。 これを行うには、管理者特権でコマンド プロンプト ウィンドウを開きし、次のキーのクエリを実行します。
 
@@ -274,7 +274,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 レジストリに対する変更が反映されるように、VM を再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Win32_TSGeneralSetting クラスの SetEncryptionLevel メソッド](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
 

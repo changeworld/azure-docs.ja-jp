@@ -1,108 +1,317 @@
-- name: Azure Search のドキュメント
+- name: Azure Cognitive Search のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Search とは
+    - name: Azure Cognitive Search とは
       href: search-what-is-azure-search.md
-- name: クイック スタート
+    - name: 新機能
+      href: whats-new.md
+- name: クイックスタート
   expanded: true
   items:
-    - name: サービスの作成
-      href: search-create-service-portal.md
     - name: ポータル
       items:
-        - name: インデックスの読み込みとクエリ
+        - name: サービスの作成
+          href: search-create-service-portal.md
+        - name: インデックスを作成する
           href: search-get-started-portal.md
-        - name: AI によるエンリッチ (コグニティブ検索)
+        - name: アプリを作成する
+          href: search-create-app-portal.md
+        - name: スキルセットを作成する
           href: cognitive-search-quickstart-blob.md
+        - name: ナレッジ ストアの作成
+          href: knowledge-store-create-portal.md
+        - name: 検索エクスプローラーを使用したクエリ実行
+          href: search-explorer.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
-      items:
-        - name: 1 - インデックスの作成
-          href: search-create-index-dotnet.md
-        - name: 2 - データの読み込み
-          href: search-import-data-dotnet.md
-        - name: 3 - インデックスの検索
-          href: search-query-dotnet.md
+      href: search-get-started-dotnet.md
+    - name: Java
+      href: search-get-started-java.md
+    - name: Node.js
+      href: search-get-started-nodejs.md
     - name: postman
-      href: search-fiddler.md
+      href: search-get-started-postman.md
     - name: PowerShell
-      href: search-create-index-rest-api.md
+      href: search-get-started-powershell.md
     - name: Python
       href: search-get-started-python.md
 - name: チュートリアル
   items:
-    - name: Azure SQL Database のインデックスを作成する
-      href: search-indexer-tutorial.md
-    - name: Azure JSON BLOB のインデックスを作成する
-      href: search-semi-structured-data.md
-    - name: AI によるエンリッチ (コグニティブ検索)
+    - name: 'C# アプリの作成'
       items:
-        - name: REST
-          href: cognitive-search-tutorial-blob.md
+        - name: 1 - 基本的な検索ページ
+          href: tutorial-csharp-create-first-app.md
+        - name: 2 - 結果のページングの追加
+          href: tutorial-csharp-paging.md
+        - name: 3 - 入力候補の追加
+          href: tutorial-csharp-type-ahead-and-suggestions.md
+        - name: 4 - ファセットの追加
+          href: tutorial-csharp-facets.md
+        - name: 5 - 結果の順序付けの追加
+          href: tutorial-csharp-orders.md
+    - name: Azure データのインデックス作成
+      items:
+        - name: Azure SQL Database のインデックスを作成する
+          href: search-indexer-tutorial.md
+        - name: Azure JSON BLOB のインデックスを作成する
+          href: search-semi-structured-data.md
+        - name: 複数の Azure データ ソースのインデックスを作成する
+          href: tutorial-multiple-data-sources.md
+    - name: 任意のデータのインデックス作成
+      href: tutorial-optimize-indexing-push-api.md
+    - name: AI を使用してコンテンツを作成する
+      items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: Python
+          href: cognitive-search-tutorial-blob-python.md
+    - name: スキルセットをデバッグする
+      href: cognitive-search-tutorial-debug-sessions.md
+    - name: Power Apps からのクエリ
+      href: search-howto-powerapps.md
 - name: サンプル
   items:
-    - name: Azure のコード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=search'
-- name: トレーニング
-  items:
-    - name: ナレッジ マイニングに関する短期集中講座
-      href: 'https://azure.github.io/LearnAI-KnowledgeMiningBootcamp/'
-    - name: アプリに検索を追加する (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Microsoft Azure 開発者向けコース (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: 'C# のサンプル'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
+    - name: Java のサンプル
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
+    - name: JavaScript のサンプル
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
+    - name: Python のサンプル
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
+    - name: REST サンプル
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
-    - name: Cognitive Search
+    - name: インデクサー
+      href: search-indexer-overview.md
+    - name: AI エンリッチメント
       href: cognitive-search-concept-intro.md
-    - name: ナレッジ ストア
-      href: knowledge-store-concept-intro.md
-    - name: プロジェクション
-      href: knowledge-store-projection-overview.md
-- name: ハウツー ガイド
+      items:
+        - name: スキルセット
+          href: cognitive-search-working-with-skillsets.md
+        - name: デバッグ セッション
+          href: cognitive-search-debug-session.md
+        - name: ナレッジ ストア
+          href: knowledge-store-concept-intro.md
+        - name: プロジェクション
+          href: knowledge-store-projection-overview.md
+        - name: インクリメンタル エンリッチメント
+          href: cognitive-search-incremental-indexing-conceptual.md
+- name: 操作方法ガイド
   items:
-    - name: 計画
+    - name: インデックスとコンストラクトの作成
+      items:
+        - name: 基本インデックスの作成
+          href: search-what-is-an-index.md
+        - name: インデックスの作成 (ポータル)
+          href: search-create-index-portal.md
+        - name: 複数言語インデックスの作成
+          href: search-language-support.md
+        - name: アナライザー
+          items:
+            - name: アナライザーの追加
+              href: search-analyzers.md
+            - name: 言語アナライザーの追加
+              href: index-add-language-analyzers.md
+            - name: カスタム アナライザーの追加
+              href: index-add-custom-analyzers.md
+        - name: シノニム
+          items:
+            - name: シノニムの追加
+              href: search-synonyms.md
+            - name: シノニムの例
+              href: search-synonyms-tutorial-sdk.md
+        - name: 複合データ型をモデル化する
+          href: search-howto-complex-data-types.md
+        - name: リレーショナル データをモデル化する
+          href: index-sql-relational-data.md
+    - name: データの取り込み
+      items:
+        - name: データ インポートの概要
+          href: search-what-is-data-import.md
+        - name: データのインポート (ポータル)
+          href: search-import-data-portal.md
+        - name: インデックスを再構築する
+          href: search-howto-reindex.md
+        - name: 大規模なデータ セットにインデックスを付ける
+          href: search-howto-large-index.md
+        - name: 同時更新を処理する
+          href: search-howto-concurrency.md
+    - name: Azure データの取り込み
+      items:
+        - name: インデクサーを構成する
+          href: search-indexer-overview.md
+        - name: インデクサーの監視
+          href: search-howto-monitor-indexers.md
+        - name: インデクサーのスケジュール設定
+          href: search-howto-schedule-indexers.md
+        - name: フィールドのマッピング
+          href: search-indexer-field-mappings.md
+        - name: データ ソース
+          items:
+            - name: Azure BLOB
+              items:
+                - name: BLOB を検索する
+                  href: search-blob-storage-integration.md
+                - name: AI を使用して BLOB を理解する
+                  href: search-blob-ai-integration.md
+                - name: BLOB インデクサーを構成する
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: 一対多の BLOB のインデックス作成
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: CSV BLOB のインデックス作成
+                  href: search-howto-index-csv-blobs.md
+                - name: JSON BLOB のインデックス作成
+                  href: search-howto-index-json-blobs.md
+            - name: Azure テーブル
+              href: search-howto-indexing-azure-tables.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: Azure Data Lake Storage Gen2
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: SQL Database
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: SQL マネージド インスタンス
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: SQL Server VM
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: マネージド ID を使用して接続する
+          items:
+            - name: マネージド ID の概要
+              href: search-howto-managed-identities-data-sources.md
+            - name: Azure Storage
+              href: search-howto-managed-identities-storage.md
+            - name: Azure Cosmos DB
+              href: search-howto-managed-identities-cosmos-db.md
+            - name: SQL Database
+              href: search-howto-managed-identities-sql.md
+    - name: AI を使用した取り込み
+      items:
+        - name: Cognitive Services リソースをアタッチする
+          href: cognitive-search-attach-cognitive-services.md
+        - name: スキルセット
+          items:
+            - name: スキルセットを定義する
+              href: cognitive-search-defining-skillset.md
+            - name: 注釈を参照する
+              href: cognitive-search-concept-annotations-syntax.md
+            - name: インデックスのフィールドにマップする
+              href: cognitive-search-output-field-mapping.md
+            - name: 画像から情報を抽出する
+              href: cognitive-search-concept-image-scenarios.md
+            - name: キャッシュ (インクリメンタル) エンリッチメント
+              href: search-howto-incremental-index.md
+        - name: カスタム スキル
+          items:
+            - name: カスタム スキルを統合する
+              href: cognitive-search-custom-skill-interface.md
+            - name: 例 - Azure Functions (Python)
+              href: cognitive-search-custom-skill-python.md
+            - name: 例 - Azure Functions
+              href: cognitive-search-create-custom-skill-example.md
+            - name: 例 - Azure Form Recognizer
+              href: cognitive-search-custom-skill-form.md
+            - name: 例 - コンテナー
+              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
+        - name: 設計のヒント
+          href: cognitive-search-concept-troubleshooting.md
+        - name: ドキュメント リンク
+          href: cognitive-search-resources-documentation.md
+        - name: ナレッジ ストア
+          items:
+            - name: REST と Postman を使用した作成
+              href: knowledge-store-create-rest.md
+            - name: Storage Explorer を使用した表示
+              href: knowledge-store-view-storage-explorer.md
+            - name: Power BI を使用した接続
+              href: knowledge-store-connect-power-bi.md
+            - name: プロジェクションの例
+              href: knowledge-store-projections-examples.md
+    - name: クエリ
+      items:
+        - name: クエリの種類と構成
+          href: search-query-overview.md
+        - name: 簡単なクエリを作成する
+          href: search-query-simple-examples.md
+        - name: 完全な Lucene 構文を使用する
+          href: search-query-lucene-examples.md
+        - name: 部分的な語句と特殊文字
+          href: search-query-partial-matching.md
+        - name: あいまい検索
+          href: search-query-fuzzy.md
+        - name: '"入力と並行した検索" のオートコンプリート'
+          items:
+            - name: suggester の作成
+              href: index-add-suggesters.md
+            - name: オートコンプリートと検索候補の追加
+              href: search-autocomplete-tutorial.md
+        - name: 構文リファレンス
+          items:
+            - name: 単純なクエリ構文
+              href: query-simple-syntax.md
+            - name: Full Lucene クエリ構文
+              href: query-lucene-syntax.md
+            - name: moreLikeThis (プレビュー)
+              href: search-more-like-this.md
+    - name: Assert
+      items:
+        - name: フィルターの概要
+          href: search-filters.md
+        - name: ファセット フィルター
+          href: search-filters-facets.md
+        - name: ファセット ナビゲーションの追加
+          href: search-faceted-navigation.md
+        - name: コレクション フィルターのトラブルシューティング
+          href: search-query-troubleshoot-collection-filters.md
+        - name: コレクション フィルターについて
+          href: search-query-understand-collection-filters.md
+        - name: 言語でフィルター
+          href: search-filters-language.md
+    - name: 結果
+      items:
+        - name: 結果を操作する
+          href: search-pagination-page-layout.md
+        - name: 関連性のスコアリング
+          href: index-similarity-and-scoring.md
+        - name: スコアリング プロファイル
+          href: index-add-scoring-profiles.md
+        - name: 類似性アルゴリズム
+          href: index-ranking-similarity.md
+    - name: プラン
       items:
         - name: レベルの選択
           href: search-sku-tier.md
         - name: サービスの制限
           href: search-limits-quotas-capacity.md
-        - name: パーティションとレプリカのスケーリング
+        - name: 容量の調整
           href: search-capacity-planning.md
-        - name: デプロイ戦略とベスト プラクティス
+        - name: パフォーマンスのためのスケール
           href: search-performance-optimization.md
         - name: マルチテナント アーキテクチャ
           href: search-modeling-multitenant-saas-applications.md
-    - name: セキュリティ
-      items:
-        - name: セキュリティの概要
-          href: search-security-overview.md
-        - name: サービス キーの管理
-          href: search-security-api-keys.md
-        - name: ロール ベースの管理者アクセス
-          href: search-security-rbac.md
-        - name: セキュリティ フィルター
-          href: search-security-trimming-for-azure-search.md
-        - name: AAD の ID のフィルター処理
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: 暗号化キーの管理 (プレビュー)
-          href: search-security-manage-encryption-keys.md
     - name: 開発
       items:
         - name: API のバージョン
           href: search-api-versions.md
+        - name: プレビュー機能一覧
+          href: search-api-preview.md
         - name: .NET での開発
           href: search-howto-dotnet-sdk.md
-        - name: Node.js での開発
-          href: search-get-started-nodejs.md
-        - name: Java での開発
-          href: search-get-started-java.md
         - name: SDK をアップグレードする
           items:
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
               href: search-dotnet-sdk-migration-version-9.md
             - name: .NET SDK 5.0
@@ -115,218 +324,170 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: インデックスの作成
+    - name: セキュリティで保護
       items:
-        - name: 基本インデックスの作成
-          href: search-what-is-an-index.md
-        - name: インデックスの作成 (ポータル)
-          href: search-create-index-portal.md
-        - name: アナライザー
-          items:
-            - name: アナライザーの追加
-              href: search-analyzers.md
-            - name: 言語アナライザーの追加
-              href: index-add-language-analyzers.md
-            - name: カスタム アナライザーの追加
-              href: index-add-custom-analyzers.md
-        - name: 先行入力
-          items:
-            - name: suggester の作成
-              href: index-add-suggesters.md
-            - name: 入力候補またはオートコンプリートの追加
-              href: search-autocomplete-tutorial.md
-        - name: シノニム
-          items:
-            - name: シノニムの追加
-              href: search-synonyms.md
-            - name: シノニムの例
-              href: search-synonyms-tutorial-sdk.md
-        - name: 複合データ型をモデル化する
-          href: search-howto-complex-data-types.md
-        - name: リレーショナル データをモデル化する
-          href: search-example-adventureworks-modeling.md
-        - name: 多層構造ファセットをモデル化する
-          href: search-example-adventureworks-multilevel-faceting.md
-    - name: データを読み込む
+        - name: セキュリティの概要
+          href: search-security-overview.md
+        - name: プライベート エンドポイントの作成
+          href: service-create-private-endpoint.md
+        - name: IP ファイアウォールの構成
+          href: service-configure-firewall.md
+        - name: サービス キーの管理
+          href: search-security-api-keys.md
+        - name: ロール ベースの管理者アクセス
+          href: search-security-rbac.md
+        - name: セキュリティ フィルター
+          href: search-security-trimming-for-azure-search.md
+        - name: AAD の ID のフィルター処理
+          href: search-security-trimming-for-azure-search-with-aad.md
+        - name: 暗号化キーの管理
+          href: search-security-manage-encryption-keys.md
+    - name: 管理する
       items:
-        - name: データ インポートの概要
-          href: search-what-is-data-import.md
-        - name: データのインポート (ポータル)
-          href: search-import-data-portal.md
-        - name: インデックスを再構築する
-          href: search-howto-reindex.md
-        - name: 大規模なデータ セットにインデックスを付ける
-          href: search-howto-large-index.md
-        - name: 同時更新を処理する
-          href: search-howto-concurrency.md
-    - name: インデクサーを使用してデータを読み込む
-      items:
-        - name: インデクサーの概要
-          href: search-indexer-overview.md
-        - name: Blob Storage インデクサー
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Table Storage インデクサー
-          href: search-howto-indexing-azure-tables.md
-        - name: SQL DB インデクサー
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Cosmos DB インデクサー
-          href: search-howto-index-cosmosdb.md
-        - name: 一対多の BLOB インデックス作成
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV BLOB のインデックス作成
-          href: search-howto-index-csv-blobs.md
-        - name: JSON BLOB のインデックス作成
-          href: search-howto-index-json-blobs.md
-        - name: SQL Server VM への接続
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: フィールド マッピング
-          href: search-indexer-field-mappings.md
-        - name: 一般的な問題のトラブルシューティング
-          href: search-indexer-troubleshooting.md
-    - name: AI によるエンリッチ
-      items:
-        - name: Cognitive Services リソースをアタッチする
-          href: cognitive-search-attach-cognitive-services.md
-        - name: スキルセット
-          items:
-            - name: スキルセットを定義する
-              href: cognitive-search-defining-skillset.md
-            - name: 注釈を参照する
-              href: cognitive-search-concept-annotations-syntax.md
-            - name: インデックスのフィールドにマップする
-              href: cognitive-search-output-field-mapping.md
-            - name: 画像の情報を処理し、抽出する
-              href: cognitive-search-concept-image-scenarios.md
-        - name: カスタム スキル
-          items:
-            - name: カスタム スキルを統合する
-              href: cognitive-search-custom-skill-interface.md
-            - name: 例 - Azure Functions
-              href: cognitive-search-create-custom-skill-example.md
-            - name: 例 - コンテナー
-              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: トラブルシューティングのヒント
-          href: cognitive-search-concept-troubleshooting.md
-        - name: ドキュメント リンク
-          href: cognitive-search-resources-documentation.md
-    - name: ナレッジ ストア (プレビュー)
-      items:
-        - name: ファースト ステップ
-          href: knowledge-store-howto.md
-    - name: データのクエリを実行する
-      items:
-        - name: 基本的なクエリの作成
-          href: search-query-overview.md
-        - name: Search エクスプローラー (ポータル)
-          href: search-explorer.md
-        - name: 単純なクエリ構文
-          href: query-simple-syntax.md
-        - name: Full Lucene クエリ構文
-          href: query-lucene-syntax.md
-        - name: 例 (簡単な構文)
-          href: search-query-simple-examples.md
-        - name: 例 (完全な Lucene)
-          href: search-query-lucene-examples.md
-        - name: moreLikeThis (プレビュー)
-          href: search-more-like-this.md
-    - name: データのフィルター処理と並べ替え
-      items:
-        - name: フィルターの概要
-          href: search-filters.md
-        - name: ファセット フィルター
-          href: search-filters-facets.md
-        - name: ファセット ナビゲーションの追加
-          href: search-faceted-navigation.md
-        - name: フィルターと OrderBy 式の構文と例
-          href: query-odata-filter-orderby-syntax.md
-    - name: 結果を処理する
-      items:
-        - name: ページ関連の機能
-          href: search-pagination-page-layout.md
-    - name: 関連性のチューニング
-      items:
-        - name: スコアリング プロファイルの追加
-          href: index-add-scoring-profiles.md
-    - name: 管理
-      items:
-        - name: ポータルの管理
+        - name: ポータル
           href: search-manage.md
-        - name: PowerShell の管理
+        - name: PowerShell
           href: search-manage-powershell.md
-    - name: 監視
+        - name: リージョン間でのサービスの移動
+          href: search-howto-move-across-regions.md
+    - name: モニター
       items:
-        - name: Monitor アクティビティとログ記録
+        - name: 基礎
           href: search-monitor-usage.md
+        - name: 診断ログ
+          href: search-monitor-logs.md
+        - name: 診断ログの視覚化
+          href: search-monitor-logs-powerbi.md
+        - name: クエリ アクティビティの監視
+          href: search-monitor-queries.md
         - name: 検索トラフィックの分析
           href: search-traffic-analytics.md
+    - name: トラブルシューティング
+      items:
+        - name: インデクサーの問題
+          href: search-indexer-troubleshooting.md
+        - name: インデクサーのエラーと警告
+          href: cognitive-search-common-errors-warnings.md
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET (管理)
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python (管理)
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: REST (管理)
-      href: /rest/api/searchmanagement
-    - name: REST (プレビュー)
-      href: search-api-preview.md
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.search/searchservices
-    - name: コグニティブ スキルのリファレンス
-      href: cognitive-search-predefined-skills.md
+    - name: .NET
       items:
-        - name: キー フレーズ抽出
-          href: cognitive-search-skill-keyphrases.md
-        - name: 言語検出
-          href: cognitive-search-skill-language-detection.md
-        - name: 名前付きエンティティの認識
-          href: cognitive-search-skill-named-entity-recognition.md
-        - name: エンティティの認識
-          href: cognitive-search-skill-entity-recognition.md
-        - name: テキスト マージャー
-          href: cognitive-search-skill-textmerger.md
-        - name: テキスト分割
-          href: cognitive-search-skill-textsplit.md
-        - name: センチメント
-          href: cognitive-search-skill-sentiment.md
-        - name: 画像分析
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: シェーパー
-          href: cognitive-search-skill-shaper.md
-        - name: 条件付き
-          href: cognitive-search-skill-conditional.md
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: 検索 2019-05-06
+          href: /rest/api/searchservice
+        - name: 検索 2019-05-06-Preview
+          href: /rest/api/searchservice/index-2019-05-06-preview
+        - name: 管理 2020-03-13
+          href: /rest/api/searchmanagement
+        - name: 管理 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: 管理 API
+          href: /python/api/overview/azure/search?view=azure-python
+    - name: OData 言語のリファレンス
+      items:
+        - name: 概要
+          href: query-odata-filter-orderby-syntax.md
+        - name: $filter
+          href: search-query-odata-filter.md
+        - name: $orderby
+          href: search-query-odata-orderby.md
+        - name: $select
+          href: search-query-odata-select.md
+        - name: any、all
+          href: search-query-odata-collection-operators.md
+        - name: eq、ne、gt、lt、ge、le
+          href: search-query-odata-comparison-operators.md
+        - name: search.ismatch、search.ismatchscoring
+          href: search-query-odata-full-text-search-functions.md
+        - name: geo.distance、geo.intersects
+          href: search-query-odata-geo-spatial-functions.md
+        - name: and、or、not
+          href: search-query-odata-logical-operators.md
+        - name: search.in
+          href: search-query-odata-search-in-function.md
+        - name: search.score
+          href: search-query-odata-search-score-function.md
+        - name: OData 言語の文法
+          href: search-query-odata-syntax-reference.md
+    - name: スキルのリファレンス
+      items:
+        - name: 組み込みのスキル
+          items:
+            - name: 概要
+              href: cognitive-search-predefined-skills.md
+            - name: 条件付き
+              href: cognitive-search-skill-conditional.md
+            - name: カスタム エンティティの参照
+              href: cognitive-search-skill-custom-entity-lookup.md
+            - name: ドキュメント抽出
+              href: cognitive-search-skill-document-extraction.md
+            - name: エンティティの認識
+              href: cognitive-search-skill-entity-recognition.md
+            - name: 画像分析
+              href: cognitive-search-skill-image-analysis.md
+            - name: キー フレーズ抽出
+              href: cognitive-search-skill-keyphrases.md
+            - name: 言語検出
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: PII 検出
+              href: cognitive-search-skill-pii-detection.md
+            - name: センチメント
+              href: cognitive-search-skill-sentiment.md
+            - name: シェーパー
+              href: cognitive-search-skill-shaper.md
+            - name: テキスト マージャー
+              href: cognitive-search-skill-textmerger.md
+            - name: テキスト分割
+              href: cognitive-search-skill-textsplit.md
+            - name: Text Translation
+              href: cognitive-search-skill-text-translation.md
+        - name: カスタム スキル
+          items:
+            - name: カスタム Web API
+              href: cognitive-search-custom-skill-web-api.md
         - name: 非推奨のスキル
           href: cognitive-search-skill-deprecated.md
-    - name: カスタム スキル
-      items:
-        - name: カスタム Web API
-          href: cognitive-search-custom-skill-web-api.md
+          items:
+            - name: 名前付きエンティティの認識
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: リソース
   items:
     - name: Azure コミュニティ サポート
       href: 'https://azure.microsoft.com/support/community/?product=search'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: フィードバック フォーラム (UserVoice)
+      href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: デモ サイト
       items:
         - name: 財務ファイルのデモ
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK ファイルのデモ
-          href: 'https://aka.ms/jfkfiles'
-        - name: NYC ジョブのデモ
-          href: 'https://aka.ms/azjobsdemo'
-        - name: Search のユース ケース
-          href: 'https://searchsamples.azurewebsites.net/'
-    - name: FAQ
+          href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+    - name: トレーニング
+      items:
+        - name: 入門 (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: アプリに検索を追加する (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: 開発者向けコース (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: よく寄せられる質問
       href: search-faq-frequently-asked-questions.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/search/'

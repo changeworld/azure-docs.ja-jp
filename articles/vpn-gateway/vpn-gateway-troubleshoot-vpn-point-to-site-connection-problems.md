@@ -1,25 +1,19 @@
 ---
-title: Azure ポイント対サイト接続の問題のトラブルシューティング | Microsoft Docs
+title: Azure ポイント対サイト接続の問題のトラブルシューティング
+titleSuffix: Azure VPN Gateway
 description: ポイント対サイト接続の問題のトラブルシューティング方法について説明します。
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: cshepard
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/11/2018
+ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492381"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188295"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -41,28 +35,27 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 この問題を解決するには、次の手順に従ってください。
 
-1. 証明書マネージャーを開く:**[開始]** をクリックし、「**コンピューター証明書の管理**」と入力して、検索結果の **[コンピューター証明書の管理]** をクリックします。
+1. 証明書マネージャーを開く: **[開始]** をクリックし、「**コンピューター証明書の管理**」と入力して、検索結果の **[コンピューター証明書の管理]** をクリックします。
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | Location |
+    | Certificate | 場所 |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
-    | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
-    | AzureGateway-*GUID*.cloudapp.net、AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
+    | AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
 
 3. C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
 
 クライアント証明書をインストールする方法の詳細については、[ポイント対サイト接続の証明書の生成とエクスポート](vpn-gateway-certificates-point-to-site.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> クライアント証明書をインポートする際は、**[秘密キーの保護を強力にする]** オプションを選択しないでください。
+> クライアント証明書をインポートする際は、 **[秘密キーの保護を強力にする]** オプションを選択しないでください。
 
 ## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>リモート サーバーが応答していないため、お使いのコンピューターと VPN サーバーの間のネットワーク接続を確立できませんでした
 
 ### <a name="symptom"></a>症状
 
-Windows で IKEv2 を使用し、Azure 仮想ネットワークに接続しようとすると、次のエラー メッセージが表示されます。
+Windows で IKEv2 を使用し、Azure 仮想ネットワーク ゲートウェイに接続しようとすると、次のエラー メッセージが表示されます。
 
 **リモート サーバーが応答していないため、お使いのコンピューターと VPN サーバーの間のネットワーク接続を確立できませんでした**
 
@@ -85,7 +78,7 @@ Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
    | Windows 10 バージョン 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. レジストリ キーの値を設定します。 レジストリの "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD キーを作成するか、または 1 に設定します。
+2. レジストリ キーの値を設定します。 レジストリの `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD キーを 1 として作成するか、1 に設定します。
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN クライアント エラー:予期していない、または形式が間違ったメッセージを受信しました
 
@@ -122,7 +115,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | 証明書 | Location |
+    | Certificate | 場所 |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -175,7 +168,7 @@ VPN クライアント構成パッケージを抽出し、.cer ファイルを�
 1. mmc.exe を開きます。
 2. **証明書**スナップインを追加します。
 3. ローカル コンピューターの**コンピューター** アカウントを選択します。
-4. **[信頼されたルート証明機関]** ノードを右クリックします。 **[すべてのタスク]** > **[インポート]** の順にクリックし、VPN クライアント構成パッケージから抽出した .cer ファイルを参照します。
+4. **[信頼されたルート証明機関]** ノードを右クリックします。 **[すべてのタスク]**  >  **[インポート]** の順にクリックし、VPN クライアント構成パッケージから抽出した .cer ファイルを参照します。
 5. コンピューターを再起動します。 
 6. VPN クライアントをインストールしてみます。
 
@@ -252,32 +245,6 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 接続の最大許容数に達しました。 接続されているクライアントの総数は、Azure Portal で確認できます。
 
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>ポイント対サイト VPN でルート テーブルに 10.0.0.0/8 のルートが誤って追加される
-
-### <a name="symptom"></a>症状
-
-ポイント対サイト クライアント上で VPN 接続をダイヤルすると、VPN クライアントにより Azure 仮想ネットワークにルートが追加されます。 IP ヘルパー サービスによって、VPN クライアントのサブネットのルートが追加されます。 
-
-VPN クライアントの範囲が 10.0.0.0/8 の小規模なサブネット (10.0.12.0/24 など) に属する場合、 10.0.12.0/24 のルートではなく、優先順位の高い 10.0.0.0/8 のルートが追加されます。　 
-
-この不適切なルートにより、具体的なルートが定義されていない 10.50.0.0/24 など、10.0.0.0/8 の範囲内の別のサブネットに属する他のオンプレミス ネットワークとの接続が切断されます。 
-
-### <a name="cause"></a>原因
-
-この動作は、Windows クライアントの仕様です。 クライアントは、PPP IPCP プロトコルを使用する場合、サーバー (この場合は VPN ゲートウェイ) からトンネル インターフェイスの IP アドレスを取得します。 ただし、このプロトコルの制限により、クライアントにはサブネット マスクがありません。 サブネット マスクを取得する方法が他にないため、クライアントはトンネル インターフェイスの IP アドレスのクラスに基づいてサブネット マスクを推測しようとします。 
-
-そのため、次の静的マッピングに基づいてルートが追加されます。 
-
-アドレスがクラス A に属している場合 --> /8 が適用されます
-
-アドレスがクラス B に属している場合 --> /16 が適用されます
-
-アドレスがクラス C に属している場合 --> /24 が適用されます
-
-### <a name="solution"></a>解決策
-
-他のネットワークのルートが、最長プレフィックス一致またはポイント対サイトより低い (そのため優先順位の高い) メトリックでルーティング テーブルに挿入されるようにします。 
-
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN クライアントがネットワーク ファイル共有にアクセスできない
 
 ### <a name="symptom"></a>症状
@@ -315,7 +282,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="cause"></a>原因
 
-ポイント対サイト VPN クライアントは、Azure 仮想ネットワーク内に構成されている Azure DNS サーバーを使用します。 Azure DNS サーバーはクライアント内に構成されているローカル DNS サーバーに優先するため、すべての DNS クエリは Azure DNS サーバーに送信されます。 Azure DNS サーバーにローカル リソースのレコードがない場合、クエリは失敗します。
+ポイント対サイト VPN クライアントでは通常、Azure 仮想ネットワーク内に構成されている Azure DNS サーバーが使用されます。 (Ethernet インターフェイスのメトリックがより低い場合を除いて、) Azure DNS サーバーはクライアント内に構成されているローカル DNS サーバーに優先するため、すべての DNS クエリは Azure DNS サーバーに送信されます。 Azure DNS サーバーにローカル リソースのレコードがない場合、クエリは失敗します。
 
 ### <a name="solution"></a>解決策
 
@@ -368,9 +335,22 @@ NIC ドライバーを更新します。
 
 1. **[開始]** をクリックして「**デバイス マネージャー**」と入力し、結果の一覧から選択します。 管理者パスワードまたは確認を求められたら、パスワードを入力するか、確認を行います。
 2. **ネットワーク アダプター**カテゴリで、更新したい NIC を見つけます。  
-3. デバイス名をダブルクリックして **[ドライバーの更新]** を選択し、**[自動的に更新されたドライバ ソフトウェアを検索します]** を選択します。
+3. デバイス名をダブルクリックして **[ドライバーの更新]** を選択し、 **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択します。
 4. Windows によって新しいドライバーが検出されない場合、デバイス製造元の Web サイト上にあるドライバーを探してその手順に従うことができます。
 5. コンピューターを再起動して、もう一度接続を試してみてください。
+
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN クライアント エラー:Dialing VPN connection <VPN Connection Name>, Status = VPN Platform did not trigger connection (VPN 接続 <VPN Connection Name> にダイヤルしています、状況 = VPN プラットフォームでは接続がトリガーされませんでした)
+
+また、RasClient からイベント ビューアーに次のエラーが表示されることがあります: "ユーザー <User> は <VPN Connection Name> という接続にダイヤルし、失敗しました。 失敗時に返された理由コードは 1460 です。"
+
+### <a name="cause"></a>原因
+
+Windows のアプリ設定で、Azure VPN クライアントについては [バックグラウンド アプリ] アプリのアクセス許可が有効になっていません。
+
+### <a name="solution"></a>解決策
+
+1. Windows で、[設定]-> [プライバシー]-> [バックグラウンドアプリ] にアクセスします
+2. [アプリのバックグラウンド実行を許可する] をオンに切り替えます
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>エラー:'ファイル ダウンロード エラー: ターゲット URI が指定されていません'
 

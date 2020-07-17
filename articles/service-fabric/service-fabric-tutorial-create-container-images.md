@@ -1,29 +1,19 @@
 ---
-title: Azure で Service Fabric にコンテナー イメージを作成する | Microsoft Docs
+title: Azure の Service Fabric 上でコンテナー イメージを作成する
 description: このチュートリアルでは、複数コンテナーの Service Fabric アプリケーションのコンテナー イメージを作成する方法を説明します。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662552"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78252785"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
 
 このチュートリアルは、Linux Service Fabric クラスター内のコンテナーの使い方を実演するるチュートリアル シリーズの第 1 部です。 このチュートリアルでは、複数コンテナーのアプリケーションを Service Fabric で使うことができるように準備します。 以降のチュートリアルでは、これらのイメージを Service Fabric アプリケーションの一部として使います。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -88,39 +78,39 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
-最初に、**az login** コマンドを実行して Azure アカウントにログインします。
+最初に、**az login** コマンドを実行して Azure アカウントにサインインします。
 
-```bash
+```azurecli
 az login
 ```
 
 次に、**az account** コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 <subscription_id> には、お使いの Azure サブスクリプションのサブスクリプション ID を入力する必要があります。
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-**az group create** コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *westus* リージョンに作成されます。
+**az group create** コマンドを使用して、リソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *westus* リージョンに作成されます。
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 **az acr create** コマンドで Azure Container Registry を作成します。 \<acrName> は、お使いのサブスクリプション下に作成するコンテナー レジストリの名前に置き換える必要があります。 この名前は、英数字を使用して一意にする必要があります。
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
 このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrName」を使用します。 この値をメモしておいてください。
 
-## <a name="log-in-to-your-container-registry"></a>コンテナー レジストリにログインする
+## <a name="sign-in-to-your-container-registry"></a>コンテナー レジストリにサインインする
 
-イメージをプッシュする前に、ACR のインスタンスにログインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
+イメージをプッシュする前に、ACR のインスタンスにサインインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -146,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 loginServer 名を取得するには、次のコマンドを実行します。
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 これにより、以下のような結果がテーブルに出力されます。 この結果は、次の手順でコンテナー レジストリにプッシュする前に、**azure-vote-front** イメージのタグ付けに使用されます。
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -168,7 +158,7 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 出力:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -192,13 +182,13 @@ docker push コマンドが完了までに数分かかります。
 
 お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 出力:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front
@@ -206,7 +196,7 @@ azure-vote-front
 
 チュートリアル完了時には、コンテナー イメージがプライベートの Azure Container Registry インスタンスに格納されています。 このイメージは、以降のチュートリアルで、ACR から Service Fabric クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、アプリケーションを GitHub から取得し、コンテナー イメージを作成して、レジストリにプッシュしました。 次の手順を完了しました。
 

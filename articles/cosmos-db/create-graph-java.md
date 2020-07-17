@@ -1,21 +1,22 @@
 ---
-title: Azure Cosmos DB グラフ データベースを Java で作成する
+title: Azure Cosmos DB で Java を使用してグラフ データベースをビルドする
 description: Gremlin を使用した Azure Cosmos DB 内のグラフ データへの接続とクエリに使用できる Java コード サンプルについて説明します。
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 03/26/2019
 ms.author: lbosq
-ms.openlocfilehash: 23b8f7db40eb2df063e055c489f11ff1b19dd8d5
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 9f9b6614c586d9c7c721dfc59da9c4a9c342b57c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519090"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77062059"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>クイック スタート:Azure Cosmos DB で Java SDK を使用してグラフ データベースを作成する 
+# <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>クイック スタート:Java SDK と Azure Cosmos DB Gremlin API を使ってグラフ データベースを作成する
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -26,21 +27,13 @@ ms.locfileid: "65519090"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、管理対象のドキュメントやテーブル、グラフのデータベースを迅速に作成しクエリできます。 
-
-このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使って簡単なグラフ データベースを作成します。 また、[Gremlin API](graph-introduction.md) データベースを使った Java コンソール アプリを OSS [Apache TinkerPop](https://tinkerpop.apache.org/) ドライバーですばやく作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートに従うと、UI とプログラムのどちらか好きな方法で、グラフの作成と変更を行うことができるようになります。 
+このクイックスタートでは、Azure portal から Azure Cosmos DB の Gremlin (グラフ) API アカウントを作成、管理し、GitHub からクローンした Java アプリを使用してデータを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-加えて次の作業を行います。
-
-* [Java Development Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
-    * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
-* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
-    * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
-* [Git](https://www.git-scm.com/)
-    * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 JDK のインストール先フォルダーを指すように `JAVA_HOME` 環境変数を設定してください。
+- [Maven バイナリ アーカイブ](https://maven.apache.org/download.cgi)。 
+- [Git](https://www.git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -78,9 +71,11 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。
 
-以降のスニペットはすべて、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java ファイルから取得されます。
+以降のスニペットはすべて、*C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java* ファイルから取得されます。
 
-* Gremlin `Client` は、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml ファイルの構成から初期化されます。
+この Java コンソール アプリは、OSS [Apache TinkerPop](https://tinkerpop.apache.org/) ドライバーで [Gremlin API](graph-introduction.md) データベースを使用します。 
+
+- Gremlin `Client` は、*C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml* ファイルの構成から初期化されます。
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -88,7 +83,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     client = cluster.connect();
     ```
 
-* Gremlin の一連の手順は、`client.submit` メソッドを使用して実行されます。
+- Gremlin の一連の手順は、`client.submit` メソッドを使用して実行されます。
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -105,14 +100,14 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで Azure Portal に戻り、接続情報を取得して、アプリにコピーします。 これらの設定により、アプリはホストされているデータベースと通信できるようになります。
 
-1. [Azure Portal](https://portal.azure.com/) で **[キー]** をクリックします。 
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[キー]** を選択します。 
 
     URI の値の最初の部分をコピーします。
 
-    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-java/keys.png)
-2. src/remote.yaml ファイルを開き、`hosts: [$name$.graphs.azure.com]` の `$name$` に一意の ID 値を貼り付けます。
+    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-java/copy-access-key-azure-portal.png)
+2. *src/remote.yaml* ファイルを開き、`hosts: [$name$.graphs.azure.com]` の `$name$` に一意の ID 値を貼り付けます。
 
-    remote.yaml の 1 行目は次のようになります。 
+    *remote.yaml* の 1 行目は次のようになります。 
 
     `hosts: [test-graph.graphs.azure.com]`
 
@@ -124,11 +119,11 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 4. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password: $masterKey$` の `$masterKey$` に貼り付けます。
 
-    remote.yaml の 4 行目は次のようになります。 
+    *remote.yaml* の 4 行目は次のようになります。 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-5. remote.yaml の 3 行目
+5. *remote.yaml* の 3 行目
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -138,7 +133,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
     サンプルのデータベースまたはグラフに一意の名前を使用した場合は、適宜値を更新してください。
 
-6. remote.yaml ファイルを保存します。
+6. *remote.yaml* ファイルを保存します。
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
@@ -150,13 +145,13 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 2. git ターミナル ウィンドウで、次のコマンドを実行して 必要な Java パッケージをインストールします。
 
-   ```
+   ```git
    mvn package
    ```
 
 3. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを起動します。
     
-    ```
+    ```git
     mvn exec:java -D exec.mainClass=GetStarted.Program
     ```
 
@@ -164,14 +159,14 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     
     タイムアウト エラーが発生した場合は、[[Update your connection information]\(接続情報の更新\)](#update-your-connection-information) で接続情報が適切に更新されていることを確認し、最後のコマンドを再試行してください。 
     
-    プログラムが停止したら、Enter キーを押して、インターネット ブラウザーで Azure Portal に切り替えます。 
+    プログラムが停止したら、Enter キーを選択し、インターネット ブラウザーで Azure portal に切り替えます。 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>サンプル データの確認と追加
 
 今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
 
-1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
+1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、**sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
@@ -179,15 +174,15 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
    ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンをクリックします。
+3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** を選択します。
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. ラベル ボックスに「*person*」と入力します。
 
-5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
+5. **[プロパティの追加]** を選択して、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
-    key|value|メモ
+    key|value|Notes
     ----|----|----
     id|ashley|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|female| 
@@ -196,51 +191,51 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     > [!NOTE]
     > このクイック スタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
-6. Click **OK**. 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
+6. **[OK]** を選択します。 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
-7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
+7. もう一度 **[New Vertex]\(新しい頂点\)** を選択して、新しいユーザーを追加します。 
 
 8. 「*person*」というラベルを入力します。
 
-9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
+9. **[プロパティの追加]** を選択し、次の各プロパティを追加します。
 
-    key|value|メモ
+    key|value|Notes
     ----|----|----
     id|rakesh|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|male| 
     school|MIT| 
 
-10. Click **OK**. 
+10. **[OK]** を選択します。 
 
-11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンをクリックして、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
+11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンを選択して、グラフ内のすべての値を表示します。 すると、 **[結果]** リストにすべてのユーザーが表示されます。 
 
-    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** をクリックし、もう一度すべての結果を表示します。
+    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** を選択し、もう一度すべての結果を表示します。
 
-12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある ![[Change the target of a vertex in a graph]\(グラフ内の頂点のターゲットを変更します\)](./media/create-graph-java/edit-pencil-button.png) をクリックします。 ウィンドウの幅を広げないとボタンが見えない場合があります。
+12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある ![[Change the target of a vertex in a graph]\(グラフ内の頂点のターゲットを変更します\)](./media/create-graph-java/edit-pencil-button.png) を選択します。 ウィンドウの幅を広げないとボタンが見えない場合があります。
 
-    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![グラフ内の頂点のターゲットを変更する - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
+13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力し、チェック ボックスを選択します。
 
-    ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![データ エクスプローラーで接続を追加する - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
 
-    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![データ エクスプローラーに接続された 2 つの頂点 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
+以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
+このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、グラフにデータを追加する Java アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)

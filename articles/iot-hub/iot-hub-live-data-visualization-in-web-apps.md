@@ -1,21 +1,21 @@
 ---
-title: Azure IoT Hub から取得したリアルタイム センサー データの視覚化 – Web Apps | Microsoft Docs
-description: Microsoft Azure App Service の Web Apps 機能を使用して、センサーから収集された気温と湿度のデータを視覚化し、IoT ハブに送信します。
+title: Web アプリでの IoT ハブ データのリアルタイム データの視覚化
+description: Web アプリを使用して、センサーから収集されて IoT ハブ に送信された気温と湿度のデータを視覚化します。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 070f37a969411cfc4caf5f2d2b089ccfae759ca2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683199"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201524"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Azure App Service の Web Apps 機能を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
 ![エンド ツー エンド ダイアグラム](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
 
@@ -23,15 +23,17 @@ ms.locfileid: "59683199"
 
 ## <a name="what-you-learn"></a>学習内容
 
-このチュートリアルでは、Web アプリでホストされた Web アプリケーションを実行して、IoT ハブに届いたリアルタイム センサー データを視覚化する方法について説明します。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
+このチュートリアルでは、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT ハブで受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
 
 ## <a name="what-you-do"></a>作業内容
 
-* Azure ポータルで Web アプリを作成する。
-* コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
-* IoT ハブからセンサー データを読み取る Web アプリを構成する。
-* Web アプリでホストされる Web アプリケーションをアップロードする。
-* Web アプリを開いて、IoT ハブから取得したリアルタイムの温度と湿度のデータを確認する。
+* Web アプリがセンサー データの読み取りに使用する IoT ハブにコンシューマー グループを追加する
+* GitHub から Web アプリのコードをダウンロードする
+* Web アプリのコードを調べる
+* Web アプリに必要な IoT Hub の成果物を保持するために環境変数を構成する
+* 開発マシンで Web アプリを実行する
+* Web ページを開いて、IoT ハブからのリアルタイムの温度と湿度のデータを確認する
+* (省略可能) Azure CLI を使用して Azure App Service で Web アプリをホストする
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -43,81 +45,220 @@ ms.locfileid: "59683199"
 
 * [Git のダウンロード](https://www.git-scm.com/downloads)
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+* この記事の手順では、Windows の開発マシンを想定しています。ただし、これらの手順は、Linux システムで好みのシェルを使って簡単に実行することができます。
 
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** をクリックします。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-2. 一意のジョブ名を入力してサブスクリプションを確認し、リソース グループと場所を指定します。次に、**[ダッシュボードにピン留めする]** をオンにし、**[作成]** をクリックします。
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
-   リソース グループと同じ場所を選択することをお勧めします。 
-   
-   ![Web アプリを作成する](./media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
+```azurecli-interactive
+az extension add --name azure-iot
+```
 
-[!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
 
-## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>IoT ハブからデータを読み取る Web アプリの構成
+[コンシューマー グループ](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)は、イベント ストリームへの独立したビューを提供します。これにより、アプリと Azure サービスは、同じイベント ハブのエンドポイントからデータを別々に使用することができます。 このセクションでは、Web アプリがデータの読み取りに使用する IoT ハブの組み込みエンドポイントにコンシューマー グループを追加します。
 
-1. プロビジョニングしたばかりの Web アプリを開きます。
+IoT ハブの組み込みエンドポイントにコンシューマー グループを追加するには、次のコマンドを実行します。
 
-2. **[アプリケーション設定]** をクリックし、**[アプリの設定]** で次のキー/値のペアを追加します。
+```azurecli-interactive
+az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGroupName
+```
 
-   | キー                                   | 値                                                        |
-   |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | Azure CLI から取得                                      |
-   | Azure.IoT.IoTHub.ConsumerGroup        | IoT ハブに追加するコンシューマー グループの名前  |
-   | WEBSITE_NODE_DEFAULT_VERSION          | 8.9.4                                                        |
+選択した名前を書き留めておいてください。後でこのチュートリアルで必要になります。
 
-   ![キー/値のペアを使用して Web アプリに設定を追加する](./media/iot-hub-live-data-visualization-in-web-apps/3_web-app-settings-key-value-azure.png)
+## <a name="get-a-service-connection-string-for-your-iot-hub"></a>IoT ハブのサービス接続文字列を取得する
 
-3. **[アプリケーション設定]** をクリックし、**[全般設定]** で **[Web Socket]** オプションを切り替えてから **[保存]** をクリックします。
+IoT ハブは、いくつかの既定のアクセス ポリシーを使用して作成されます。 そのようなポリシーの 1 つとして**サービス**ポリシーがあります。これは、サービスが IoT ハブのエンドポイントを読み書きするのに十分なアクセス許可を提供します。 サービス ポリシーに準拠する IoT ハブの接続文字列を取得するには、次のコマンドを実行します。
 
-   ![Web Socket オプションを切り替える](./media/iot-hub-live-data-visualization-in-web-apps/4_toggle_web_sockets.png)
+```azurecli-interactive
+az iot hub show-connection-string --hub-name YourIotHub --policy-name service
+```
 
-## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>Web アプリでホストされる Web アプリケーションのアップロード
+接続文字列は次のようになります。
 
-GitHub には、IoT ハブからのリアルタイム センサー データを表示するための Web アプリケーションが用意されています。 必要な作業は、Git リポジトリを使用するよう Web アプリを構成し、GitHub から Web アプリケーションをダウンロードしてから、Web アプリでホストされるよう Azure にそれをアップロードすることだけです。
+```javascript
+"HostName={YourIotHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"
+```
 
-1. Web アプリで、**[デプロイ オプション]** > **[ソースの選択]** > **[ローカル Git リポジトリ]** の順にクリックし、**[OK]** をクリックします。
+このサービス接続文字列を書き留めておいてください。後でこのチュートリアルで必要になります。
 
-   ![ローカル Git リポジトリを使用するよう Web アプリのデプロイを構成する](./media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
+## <a name="download-the-web-app-from-github"></a>GitHub から Web アプリをダウンロードする
 
-2. **[デプロイ資格情報]** をクリックし、Git リポジトリに接続するときに Azure で使用されるユーザー名とパスワードを作成し、**[保存]** をクリックします。
+コマンド ウィンドウを開き、次のコマンドを入力して、サンプルを GitHub からダウンロードし、そのサンプルのディレクトリに移動します。
 
-3. **[概要]** をクリックし、**[Git クローン URL]** の値を書き留めます。
+```cmd
+git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
+cd web-apps-node-iot-hub-data-visualization
+```
 
-   ![Web アプリの Git クローン URL の取得](./media/iot-hub-live-data-visualization-in-web-apps/6_web-app-git-clone-url-azure.png)
+## <a name="examine-the-web-app-code"></a>Web アプリのコードを調べる
 
-4. ローカル コンピューターでコマンド ウィンドウまたはターミナル ウィンドウを開きます。
+web-apps-node-iot-hub-data-visualization ディレクトリから、お好みのエディターで Web アプリを開きます。 VS Code で表示されるファイル構造を以下に示します。
 
-5. GitHub から Web アプリをダウンロードし、それが Web アプリでホストされるよう Azure にアップロードします。 これを行うには、次のコマンドを実行します。
+![Web アプリのファイル構造](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
 
-   ```bash
-   git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
-   cd web-apps-node-iot-hub-data-visualization
-   git remote add webapp <Git clone URL>
-   git push webapp master:master
+少し時間を取って、次のファイルを調べます。
+
+* **Server.js** は、Wb ソケットとイベント ハブのラッパー クラスを初期化するサービス側のスクリプトです。 これは、クラスが受信メッセージを Web ソケットにブロードキャストするために使用するイベント ハブ ラッパー クラスへのコールバックを提供します。
+
+* **Event-hub-reader.js** は、指定された接続文字列とコンシューマー グループを使用して IoT ハブの組み込みエンドポイントに接続するサービス側のスクリプトです。 これは、受信メッセージのメタデータから DeviceId と EnqueuedTimeUtc を抽出し、次に server.js によって登録されたコールバック メソッドを使用してメッセージをリレーします。
+
+* **Chart-device-data.js** は、Web ソケットでリッスンし、各 DeviceId を追跡し、各デバイスの受信データの最後の 50 ポイントを格納するクライアント側のスクリプトです。 そしてそれは、選択したデバイス データをグラフ オブジェクトにバインドします。
+
+* **Index.html** は、Web ページの UI レイアウトを処理し、クライアント側のロジックのために必要なスクリプトを参照します。
+
+## <a name="configure-environment-variables-for-the-web-app"></a>Web アプリの環境変数を構成する
+
+IoT ハブからデータを読み取るためには、Web アプリには、IoT ハブの接続文字列と、読み取りに使用するコンシューマー グループの名前が必要です。 これらの文字列は、server.js の次の行のプロセス環境から取得されます。
+
+```javascript
+const iotHubConnectionString = process.env.IotHubConnectionString;
+const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
+```
+
+次のコマンドを使用して、コマンド ウィンドウで環境変数を設定します。 プレース ホルダーの値は、前に作成した、IoT ハブのサービス接続文字列とコンシューマー グループの名前に置き換えます。 文字列は引用符で囲まないでください。
+
+```cmd
+set IotHubConnectionString=YourIoTHubConnectionString
+set EventHubConsumerGroup=YourConsumerGroupName
+```
+
+## <a name="run-the-web-app"></a>Web アプリの実行
+
+1. お使いのデバイスが実行中であり、データを送信していることを確認します。
+
+2. コマンド ウィンドウで、次の行を実行して、参照されたパッケージをダウンロードしてインストールし、Web サイトを開始します。
+
+   ```cmd
+   npm install
+   npm start
    ```
 
-   > [!NOTE]
-   > \<Git clone URL\> は、Web アプリの **[概要]** ページにあった Git リポジトリの URL になります。
+3. Web アプリが正常に IoT ハブに接続し、ポート 3000 でリッスンしていることを示す出力がコンソールに表示されます。
 
-## <a name="open-the-web-app-to-see-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Web アプリを開いて IoT ハブから取得したリアルタイムの温度と湿度のデータを確認する
+   ![コンソール上の開始済み Web アプリ](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
 
-Web アプリの **[概要]** ページで、URL をクリックして Web アプリを開きます。
+## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Web ページを開いて IoT ハブからのデータを表示する
 
-![Web アプリの URL の取得](./media/iot-hub-live-data-visualization-in-web-apps/7_web-app-url-azure.png)
+`http://localhost:3000` を指定してブラウザーを開きます。
 
-IoT ハブから取得したリアルタイムの温度と湿度のデータが表示されます。
+**[デバイスの選択]** 一覧からお使いのデバイスを選択し、デバイスによって IoT ハブに送信された最新 50 個の温度と湿度を示すデータ ポイントの実行中のプロットを表示します。
 
-![リアルタイムの温度と湿度を示す Web アプリのページ](./media/iot-hub-live-data-visualization-in-web-apps/8_web-app-page-show-real-time-temperature-humidity-azure.png)
+![リアルタイムの温度と湿度を示す Web アプリのページ](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
 
-> [!NOTE]
-> デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合は、空のグラフを取得し、チュートリアルの[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページをご覧ください。
+Web アプリがブラウザー クライアントにブロードキャストしているメッセージを示す出力もコンソールに表示されるはずです。  
 
-## <a name="next-steps"></a>次の手順
+![コンソール上の Web アプリのブロードキャスト出力](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
+
+## <a name="host-the-web-app-in-app-service"></a>App Service で Web アプリをホストする
+
+[Azure App Service の Web Apps 機能](https://docs.microsoft.com/azure/app-service/overview) は、Web アプリをホストするためのサービスとしてのプラットフォーム (PAAS) を提供します。 Azure App Service でホストされている Web アプリは、継続的デプロイやパッケージ管理などの Azure とパートナーの DevOps ソリューションだけでなく、追加のセキュリティ、負荷分散、スケーラビリティなどの強力な Azure の機能の恩恵を受けることができます。 Azure App Service は、多くの一般的な言語で開発されて、Windows や Linux のインフラストラクチャにデプロイされた Web アプリをサポートします。
+
+このセクションでは、App Service で Web アプリをプロビジョニングし、Azure CLI コマンドを使用してそれにコードをデプロイします。 [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) のドキュメントで、使用されているコマンドの詳細を確認できます。 始める前に、[IoT ハブにリソース グループを追加する](#add-a-consumer-group-to-your-iot-hub)、[IoT ハブのサービス接続文字列を取得する](#get-a-service-connection-string-for-your-iot-hub)、および [GitHub から Web アプリをダウンロードする](#download-the-web-app-from-github)の各手順を完了していることを確認してください。
+
+1. [App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)は、App Service でホストされているアプリを実行するための一連のコンピューティング リソースを定義します。 このチュートリアルでは、Developer/Free のレベルを使用して Web アプリをホストします。 Free レベルでは、Web アプリは、他のお客様のアプリを含めた他の App Service アプリとの共有 Windows リソースで実行されます。 Azure では、Web アプリを Linux コンピューティング リソースにデプロイする App Service プランも提供されています。 使用したい App Service プランが既にある場合は、この手順をスキップできます。
+
+   Windows の Free レベルを使用して App Service プランを作成するには、次のコマンドを実行します。 IoT ハブが所属するものと同じリソース グループを使用します。 サービス プラン名には、大文字と小文字、数字、ハイフンを含めることができます。
+
+   ```azurecli-interactive
+   az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
+   ```
+
+2. 次に、App Service プランで Web アプリをプロビジョニングします。 `--deployment-local-git` パラメーターにより、お使いのローカル マシンで Git リポジトリから Web アプリのコードがアップロードされてデプロイされます。 Web アプリ名はグローバルに一意である必要があり、大文字と小文字の英字、数字、およびハイフンを使用できます。 使用している Node.js ランタイムのバージョンに応じて、`--runtime` パラメーターにノード バージョン 10.6 以降を指定してください。 `az webapp list-runtimes` コマンドを使用して、サポートされているランタイムの一覧を取得できます。
+
+   ```azurecli-interactive
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
+   ```
+
+3. 次に、IoT ハブ接続文字列とイベント ハブ コンシューマー グループを指定する環境変数のアプリケーション設定を追加します。 `-settings` パラメーターで、個々の設定はスペースで区切られています。 このチュートリアルで前に作成した、IoT ハブのサービス接続文字列とコンシューマー グループを使用します。 値は引用符で囲まないでください。
+
+   ```azurecli-interactive
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
+   ```
+
+4. Web アプリに対して Web ソケット プロトコルを有効にし、Web アプリが HTTPS 要求のみを受信する (HTTP 要求は HTTPS にリダイレクトされる) ように設定します。
+
+   ```azurecli-interactive
+   az webapp config set -n <your web app name> -g <your resource group name> --web-sockets-enabled true
+   az webapp update -n <your web app name> -g <your resource group name> --https-only true
+   ```
+
+5. コードを App Service にデプロイするには、[ユーザー レベルのデプロイ資格情報](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を使用します。 ユーザー レベルのデプロイ資格情報は、Azure 資格情報とは異なり、Web アプリへの Git のローカルおよび FTP デプロイに使用されます。 それらは一度設定すると、お使いの Azure アカウント内のすべてのサブスクリプションのすべての App Service アプリで有効になります。 以前にユーザー レベルのデプロイ資格情報を設定している場合は、それらを使用できます。
+
+   ユーザー レベルのデプロイ資格情報を以前に設定していない場合やパスワードを思い出せない場合は、次のコマンドを実行してください。 デプロイ ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュに対して '@' シンボルを含めることはできません。 プロンプトが表示されたら、新しいパスワードを入力して確認します。 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。
+
+   ```azurecli-interactive
+   az webapp deployment user set --user-name <your deployment user name>
+   ```
+
+6. コードを App Service にプッシュするために使用する Git URL を取得します。
+
+   ```azurecli-interactive
+   az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
+   ```
+
+7. App Service の Web アプリの Git リポジトリを参照するリモートをクローンに追加します。 \<Git clone URL\> の場合、前の手順で返された URL を使用します。 コマンド ウィンドウで次のコマンドを実行します。
+
+   ```cmd
+   git remote add webapp <Git clone URL>
+   ```
+
+8. App Service にコードをデプロイするには、コマンド ウィンドウで次のコマンドを入力します。 資格情報の入力を求められたら、手順 5 で作成したユーザー レベルのデプロイ資格情報を入力します。 必ず、App Service リモートの master ブランチにプッシュしてください。
+
+    ```cmd
+    git push webapp master:master
+    ```
+
+9. コマンド ウィンドウで、デプロイの進行状況が更新されます。 デプロイが成功すると、次の出力のような行で終了します。
+
+    ```cmd
+    remote:
+    remote: Finished successfully.
+    remote: Running post deployment command(s)...
+    remote: Deployment successful.
+    To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
+    6b132dd..7cbc994  master -> master
+    ```
+
+10. 次のコマンドを実行して、Web アプリの状態のクエリを実行し、それが実行中であることを確認します。
+
+    ```azurecli-interactive
+    az webapp show -n <your web app name> -g <your resource group name> --query state
+    ```
+
+11. ブラウザーで `https://<your web app name>.azurewebsites.net` にアクセスします。 Web アプリをローカルで実行したときに表示されたものと同様の Web ページが表示されます。 デバイスが実行中でデータを送信していれば、デバイスによって送信された最新の 50 個の温度と湿度を示す測定値の実行中のプロットが表示されるはずです。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+このサンプルで問題が発生した場合は、次のセクションの手順を試してください。 まだ問題がある場合は、このトピックの下部でフィードバックを送信してください。
+
+### <a name="client-issues"></a>クライアントの問題
+
+* デバイスが一覧に表示されない場合や、グラフが描画されていない場合は、お使いのデバイスでデバイス コードが実行されていることを確認してください。
+
+* ブラウザーで開発者ツールを開き (多くのブラウザーでは、F12 キーで開きます)、コンソールを見つけます。 そこに警告やエラーが表示されていないか確認します。
+
+* クライアント側のスクリプトは /js/chat-device-data.js でデバッグできます。
+
+### <a name="local-website-issues"></a>ローカル Web サイトの問題
+
+* コンソールの出力についてノードを起動したウィンドウの出力を確認します。
+
+* サーバー コード (具体的には server.js と /scripts/event-hub-reader.js) をデバッグします。
+
+### <a name="azure-app-service-issues"></a>Azure App Service の問題
+
+* Azure portal で、Web アプリに移動します。 左側のウィンドウの **[監視]** から **[App Service ログ]** を選択します。 **[アプリケーションのログ記録 (ファイル システム)]** を有効にし、 **[レベル]** を [エラー] に設定して、 **[保存]** を選択します。 次に、( **[監視]** の下の) **[ログ ストリーム]** を開きます。
+
+* Azure portal の Web アプリから、 **[開発ツール]** の下で **[コンソール]** を選択し、`node -v` と `npm -v` を使用してノードと npm のバージョンを確認します。
+
+* パッケージが見つからないというエラーが表示される場合は、手順が正しく実行されていない可能性があります。 サイトが (`git push` を使用して) デプロイされると、アプリ サービスは `npm install` を実行します。これは、構成したノードの現在のバージョンに基づいて行われます。 後になってそれが構成で変更される場合は、コードに意味のない変更を行って、再度プッシュする必要があります。
+
+## <a name="next-steps"></a>次のステップ
 
 Web アプリを使用して、IoT ハブからのリアルタイム センサー データを視覚化することができました。
 
-Azure IoT Hub からのデータを視覚化する別の方法については、[Power BI を使用して IoT Hub からのリアルタイム センサー データを視覚化する](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
+Azure IoT Hub からのデータを視覚化するもう 1 つの方法については、「[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する](iot-hub-live-data-visualization-in-power-bi.md)」を参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

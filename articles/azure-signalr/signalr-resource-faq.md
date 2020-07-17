@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service についてよく寄せられる質問
-description: Azure SignalR Service に関する FAQ。
+description: Azure SignalR Service のトラブルシューティングと一般的な使用シナリオについてよく寄せられる質問を紹介しています。
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914953"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75891250"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
@@ -37,7 +37,7 @@ ASP.NET SignalR のサポートはまだ*パブリック プレビュー*段階�
 次の原因が考えられます。
 - SignalR Service と接続されているアプリケーション サーバーがない。 アプリケーション サーバーのログを調べて、接続エラーの可能性を確認してください。 これは、アプリケーション サーバーが複数ある高可用性設定ではまれです。
 - SignalR Service インスタンスとの接続に問題があります。 この問題は一時的なもので、自動的に復旧します。
-1 時間以上続く場合は、[GitHub で問題をオープン](https://github.com/Azure/azure-signalr/issues/new)するか、[Azure でサポート要求を作成](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)してください。
+1 時間以上続く場合は、[GitHub で問題をオープン](https://github.com/Azure/azure-signalr/issues/new)するか、[Azure でサポート要求を作成](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)してください。
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>複数のアプリケーション サーバーが存在する場合、クライアント メッセージはすべてのサーバーに送信されますか? それとも 1 つのサーバーだけに送信されますか?
 
@@ -59,7 +59,7 @@ ASP.NET Core SignalR の場合、`HubConnectionContext context` はすべての�
 Azure SignalR Service SDK の場合、`HubConnectionContext context` は論理クライアント接続からのコンテキストです。 物理クライアント接続は SignalR Service インスタンスに接続されます。そのため、限られた数のプロパティのみが指定されます。
 
 現在のところ、`HubConnectionContext.GetHttpContext()` と `HubConnectionContext.User` のみがアクセス可能です。
-ソース コードは、[こちら](https://github.com/Azure/azure-signalr/blob/kevinzha/faq/src/Microsoft.Azure.SignalR/ServiceHubConnectionContext.cs)で確認できます。
+ソース コードは、[こちら](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)で確認できます。
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>ASP.NET Core SignalR を使用した場合のサーバー側での構成と同じように、SignalR Service で使用できる転送を構成できますか? たとえば、WebSocket 転送を無効にできますか?
 
@@ -67,4 +67,4 @@ Azure SignalR Service SDK の場合、`HubConnectionContext context` は論理�
 
 Azure SignalR Service は、ASP.NET Core SignalR が既定でサポートする 3 つの転送をすべて提供します。 これは構成できません。 SignalR Service がすべてのクライアント接続の接続と転送を処理します。
 
-[こちら](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports)に記載されているように、クライアント側の転送は構成できます。
+[こちら](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)に記載されているように、クライアント側の転送は構成できます。

@@ -1,416 +1,229 @@
 ---
 title: デバイスでのブロック blob の格納 -Azure IoT Edge | Microsoft Docs
-description: Azure Blob Storage モジュールをご利用の IoT Edge デバイスにデプロイして、そのエッジにデータを格納します。
+description: 階層化機能と Time-To-Live 機能を理解してから、サポートされている Blob Storage の操作を確認し、その後、ご自身の Blob Storage アカウントに接続します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.reviewer: arduppal
-ms.date: 03/07/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499160"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76509820"
 ---
-# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
+# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
-IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure のブロック BLOB サービスのように動作しますが、そのブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 
+IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) および[追加 BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure の BLOB サービスのように動作しますが、その BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れている BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
 
-このモジュールには**自動ティアリング**機能と**自動期限終了**機能が付属しています。
+このモジュールは、次のシナリオで役立ちます。
 
-> [!NOTE]
-> 現在のところ自動ティアリング機能と自動期限終了機能は、Linux AMD64 Linux ARM32 でのみ使用できます。
+* データを処理するかクラウドに転送できる状態になるまでデータをローカルに格納する必要のある場合。 そうしたデータには、動画、画像、ファイナンス データ、病院データなど、あらゆる非構造化データが考えられます。
+* 接続が制限されている場所にデバイスが配置されている場合。
+* 緊急事態にできるだけ迅速に対応できるように、データをローカルで効率的に処理し、データに短い待機時間でアクセスしたい場合。
+* 帯域幅のコストを削減し、テラバイト単位のデータをクラウドに転送しないようにする場合。 データをローカルで処理し、処理されたデータのみをクラウドに送信することができます。
 
-**自動ティアリング**は構成可能な機能で、断続的なインターネット接続のサポートによりローカルの BLOB ストレージから Azure にデータを自動的にアップロードすることができます。 これにより次の操作を行うことができます。
-- ティアリング機能のオン/オフを切り替える
-- データを Azure にコピーする順序 (NewestFirst や OldestFirst など) を選択する
-- データのアップロード先の Azure Storage アカウントを選択する。
-- Azure にアップロードするコンテナーを指定する。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。
-- 完全な BLOB 階層化 (`Put Blob` 操作を使用) とブロック レベルの階層化 (`Put Block` および `Put Block List` 操作を使用) を行う。
+概要紹介のビデオを見る
+> [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
-このモジュールは、BLOB がブロックで構成されている場合、ブロック レベルの階層化を使用します。 一般的なシナリオのいくつかを次に示します。
-- アプリケーションが以前にアップロードした BLOB のいくつかのブロックを更新すると、このモジュールは、BLOB 全体ではなく更新されたブロックのみをアップロードします。
-- モジュールが BLOB をアップロード中にインターネット接続がなくなると、接続が戻ったときに、BLOB 全体ではなく残りのブロックのみアップロードされます。
+このモジュールには、**deviceToCloudUpload** 機能と **deviceAutoDelete** 機能が付属しています。
+
+**deviceToCloudUpload** は構成可能な機能です。 この機能は、断続的なインターネット接続のサポートによりローカルの Blob Storage から Azure にデータを自動的にアップロードすることができます。 これにより次の操作を行うことができます。
+
+* deviceToCloudUpload 機能のオン/オフを切り替える。
+* データを Azure にコピーする順序 (NewestFirst や OldestFirst など) を選択する。
+* データのアップロード先の Azure Storage アカウントを選択する。
+* Azure にアップロードするコンテナーを指定する。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。
+* クラウド ストレージへのアップロードが完了した後ですぐに BLOB を削除する機能を選択する
+* 完全な BLOB アップロード (`Put Blob` 操作を使用) とブロック レベルのアップロード (`Put Block`、`Put Block List`、および `Append Block` 操作を使用) を行う。
+
+このモジュールは、BLOB がブロックで構成されている場合、ブロック レベルのアップロードを使用します。 一般的なシナリオのいくつかを次に示します。
+
+* アプリケーションにより、以前にアップロードしたブロック BLOB のいくつかのブロックが更新されるか、追加 BLOB に新しいブロックが追加されると、このモジュールでは、BLOB 全体ではなく更新されたブロックのみがアップロードされます。
+* BLOB のアップロード中にインターネット接続がなくなると、接続が戻ったときに、BLOB 全体ではなく残りのブロックのみアップロードされます。
 
 BLOB のアップロード中に予期しないプロセスの終了 (電源障害など) が発生すると、モジュールがオンラインに戻ったときに、アップロード予定だったすべてのブロックが再度アップロードされます。
 
-**自動期限終了**は構成可能な機能で、このモジュールは、Time to Live (TTL) が期限切れになると、ローカル ストレージから自動的に BLOB を削除します。 これは分単位で測定されます。 これにより次の操作を行うことができます。
-- 自動期限終了機能のオン/オフを切り替える
-- TTL を分単位で指定する
+**deviceAutoDelete** は構成可能な機能です。 この機能では、指定した期限 (分単位) が過ぎると、モジュールによって BLOB がローカル ストレージから自動的に削除されます。 これにより次の操作を行うことができます。
 
-ビデオ、画像、財務データ、病院データなど、ローカルに格納する必要があるデータで、後でローカルで処理またはクラウドに転送できるシナリオは、このモジュールを使用するよい例です。
-
-この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナーに Azure Blob Storage をデプロイするための手順を示します。 
-
->[!NOTE]
->IoT Edge の Azure Blob Storage は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中です。 
-
-概要紹介のビデオを見る
-> [!VIDEO https://www.youtube.com/embed/wkprcfVidyM]
+* deviceAutoDelete 機能のオン/オフを切り替える。
+* BLOB が自動的に削除されるまでの分単位の時間 (deleteAfterMinutes) を指定する。
+* deleteAfterMinutes 値が期限切れになった場合に、アップロード中は BLOB を保持する機能を選択する。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
-* IoT Edge モジュールの Azure Blob Storage では、次のデバイスの構成がサポートされます。
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って、開発マシンまたは仮想マシンを IoT Edge デバイスとして使用できます。
 
-   | オペレーティング システム | アーキテクチャ |
-   | ---------------- | ------------ |
-   | Ubuntu Server 16.04 | AMD64 |
-   | Ubuntu Server 18.04 | AMD64 |
-   | Windows 10 IoT Core (10 月の更新プログラム) | AMD64 |
-   | Windows 10 IoT Enterprise (10 月の更新プログラム) | AMD64 |
-   | Windows Server 2019 | AMD64 |
-   | Raspbian Stretch | ARM32 |
+* サポートされているオペレーティング システムおよびアーキテクチャの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。 IoT Edge モジュールの Azure Blob Storage では、次のアーキテクチャがサポートされます。
+  * Windows AMD64
+  * Linux AMD64
+  * Linux ARM32
+  * Linux ARM64 (プレビュー)
 
 クラウド リソース:
 
-* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 
+## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload および deviceAutoDelete のプロパティ
 
-## <a name="deploy-blob-storage-to-your-device"></a>BLOB ストレージをご利用のデバイスにデプロイする
+このモジュールの必要なプロパティを使用して、**deviceToCloudUploadProperties** と **deviceAutoDeleteProperties** を設定します。 必要なプロパティは、デプロイ中に設定したり、モジュール ツインを編集することで、再デプロイすることなく後で変更したりできます。 値が確実に正しく反映されるよう、`reported configuration` と `configurationValidation` の "モジュール ツイン" をチェックすることをお勧めします。
 
-IoT Edge デバイスにモジュールをデプロイするにはいくつかの方法があり、これらすべてが IoT Edge モジュールの Azure Blob Storage で機能します。 2 つの最も簡単な方法では、Azure portal または Visual Studio Code テンプレートを使用します。 
+### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-### <a name="azure-portal"></a>Azure ポータル
+この設定の名前は `deviceToCloudUploadProperties` です。 IoT Edge シミュレーターを使用している場合は、値を、これらのプロパティの関連する環境変数 (説明セクションに記載) に設定します。
 
-Azure Marketplace には、IoT Edge 上の Azure Blob Storage など、IoT Edge デバイスに直接デプロイできる IoT Edge モジュールが用意されています。 次の手順に従って、Microsoft Azure portal でモジュールをデプロイします。
-
-1. [Azure portal](https://portal.azure.com) で「Azure Blob Storage on IoT Edge」を検索します。 また、Marketplace から検索結果を**選択**します。
-
-   ![Marketplace 検索からモジュールを作成する](./media/how-to-store-data-blob/marketplace-module.png)
-
-2. モジュールを受け取る IoT Edge デバイスを選択します。 **[IoT Edge モジュールのターゲット デバイス]** ページで、次の情報を入力します。
-
-   1. 使用している IoT ハブを含む**サブスクリプション**を選択します。
-
-   2. 対象の **[IoT Hub]** を選択します。
-
-   3. **IoT Edge デバイス名**がわかっている場合、テキスト ボックスに入力します。 または、**[デバイスの検索]** を選択して、お客様の IoT ハブにある IoT Edge デバイスの一覧から選択します。 
-   
-   4. **作成**を選択します。
-
-   これで、Azure Marketplace から IoT Edge モジュールを選択し、モジュールを受け取る IoT Edge デバイスを選択する手順は完了です。次は、モジュールのデプロイ方法を正確に定義するために役立つ 3 つの手順のウィザードに進みます。
-
-3. [モジュールの設定] ウィザードの **[モジュールの追加]** 手順で、**AzureBlobStorageonIoTEdge** モジュールが既に **[デプロイ モジュール]** の下に一覧表示されていることに注意してください。 
-
-2. デプロイ モジュールの一覧から BLOB ストレージ モジュールを選択し、そのモジュールの詳細を開きます。 
-
-   ![モジュールの詳細を開くモジュール名を選択する](./media/how-to-store-data-blob/open-module-details.png)
-
-3. **[IoT Edge のカスタム モジュール]** ページで、次の手順で IoT Edge モジュール上の Azure Blob Storage を更新します。
-
-   1. モジュールの**名前**を小文字に変更します。 必要に応じて、モジュールの名前を変更したり、`azureblobstorageoniotedge` を使用します。 
-
-      >[!IMPORTANT]
-      >Azure IoT Edge は、モジュールを呼び出すときに大文字と小文字を区別し、Storage SDK は既定で小文字になります。 IoT Edge モジュール上の Azure Blob Storage への接続が中断されないようにするには、小文字の名前を付けます。 
-
-   2. 既定の **[コンテナーの作成オプション]** は、コンテナーで必要なポート バインドですが、ストレージ アカウント情報と、デバイス上のストレージ ディレクトリのバインドも追加する必要があります。 ポータル内の JSON を以下の JSON で上書きします。
-    
-      ```json
-      {
-          "Env":[
-              "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
-              "LOCAL_STORAGE_ACCOUNT_KEY=<your storage account key>"
-          ],
-          "HostConfig":{
-              "Binds":[
-                  "<storage directory bind>"
-              ],
-              "PortBindings":{
-                  "11002/tcp":[{"HostPort":"11002"}]
-              }
-          }
-      }
-      ```   
-   3. コピーした JSON を次の情報で更新します。 
-
-      * `<your storage account name>` を覚えやすい名前に置き換えます。 アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。
-      * `<your storage account key>` を 64 バイトの Base64 キーに置き換えます。 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。
-      * コンテナーのオペレーティング システムに応じて `<storage directory bind>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ ディレクトリのバインドは、提供したデバイス上の位置をモジュール内の設定された位置にマップします。 
-
-         * Linux コンテナー: **\<ストレージのパス>:/blobroot**。 たとえば、/srv/containerdata:/blobroot です。 または、my-volume:/blobroot。 
-         * Windows コンテナー: **\<ストレージのパス>:C:/BlobRoot**。 たとえば、C:/ContainerData:C:/BlobRoot です。 または、my-volume:C:/blobroot。
-   
-      > [!IMPORTANT]
-      > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
-
-      ![モジュール コンテナー作成オプション - ポータルの更新](./media/how-to-store-data-blob/edit-module.png)
-
-   4. 必要なプロパティに[自動ティアリングと自動期限終了](#configure-auto-tiering-and-auto-expiration-via-azure-portal)を設定します。 [自動ティアリング](#auto-tiering-properties)と[自動有効期限](#auto-expiration-properties)のプロパティ、および指定可能な値の一覧。 
-
-   5. **[保存]** を選択します。 
-
-4. **[次へ]** を選択して、ウィザードの次の手順に進みます。
-5. ウィザードの **[ルートの指定]** ステップで、**[次へ]** を選択します。
-6. ウィザードの **[デプロイの確認]** ステップで、**[送信]** を選びます。
-7. デプロイを送信した後、IoT ハブの **IoT Edge** のページに戻ります。 デプロイで対象にした Azure IoT Edge デバイスを選択して、その詳細を開きます。 
-8. デバイスの詳細で、BLOB ストレージ モジュールが **[デプロイで指定]** および **[デバイス別に報告]** の両方として一覧表示されていることを確認します。 モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。 
-
-### <a name="visual-studio-code-templates"></a>Visual Studio Code のテンプレート
-
-Azure IoT Edge では、エッジ ソリューションの開発に役立つ、Visual Studio Code のテンプレートが提供されます。 これらの手順では、ご利用の開発マシンに [Visual Studio Code](https://code.visualstudio.com/) がインストールされ、[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) が構成されている必要があります。
-
-次の手順を使って、BLOB ストレージ モジュールで新しい IoT Edge ソリューションを作成し、配置マニフェストを構成します。 
-
-1. **[ビュー]** > **[コマンド パレット]** の順に選択します。 
-
-2. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
-
-   | フィールド | 値 |
-   | ----- | ----- |
-   | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
-   | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
-   | Select module template (モジュール テンプレートの選択) | **既存のモジュール (完全なイメージの URL を入力)** を選択します。 |
-   | Provide a module name (モジュール名の指定) | **azureblobstorage** のようにすべて小文字でモジュールの名前を入力します。<br><br>IoT Edge モジュール上の Azure Blob Storage に小文字の名前を使用することが重要です。 IoT Edge は、モジュールを参照するときに大文字と小文字を区別し、Storage SDK は既定で小文字になります。 |
-   | Provide Docker image for the module (モジュールの Docker イメージの指定) | イメージの URI: **mcr.microsoft.com/azure-blob-storage:latest** を指定します。 |
-
-   VS Code は指定した情報を取り、IoT Edge ソリューションを作成して、それを新しいウィンドウに読み込みます。 ソリューション テンプレートによって、ご自分の BLOB ストレージ モジュール イメージを含む配置マニフェストのテンプレートが作成されますが、モジュールの作成オプションを構成する必要があります。 
-
-3. 新しいソリューション ワークスペースで **deployment.template.json** を開いて、**modules** セクションを見つけます。 次の構成の変更を行います。
-
-   1. このデプロイに必要ないときは、**tempSensor** モジュールを削除します。 
-
-   2. 次のコードをコピーして、ご自分の BLOB ストレージ モジュールの **createOptions** フィールドに貼り付けます。 
-
-      ```json
-      "Env": [
-        "LOCAL_STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME","LOCAL_STORAGE_ACCOUNT_KEY=$STORAGE_ACCOUNT_KEY"
-      ],
-      "HostConfig":{
-        "Binds": ["<storage directory bind>"],
-        "PortBindings":{
-          "11002/tcp": [{"HostPort":"11002"}]
-        }
-      }
-      ```
-
-      ![モジュール createOptions - VS Code の更新](./media/how-to-store-data-blob/create-options.png)
-
-4. 作成オプションの JSON で、ご利用のコンテナー オペレーティング システムに応じて `<storage directory bind>` を更新します。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ ディレクトリのバインドは、提供したデバイス上の位置をモジュール内の設定された位置にマップします。  
-
-   * Linux コンテナー: **\<ストレージのパス>:/blobroot**。 たとえば、/srv/containerdata:/blobroot です。 または、my-volume:/blobroot。
-   * Windows コンテナー: **\<ストレージのパス>:C:/BlobRoot**。 たとえば、C:/ContainerData:C:/BlobRoot です。 または、my-volume:C:/blobroot。
-   
-   > [!IMPORTANT]
-   > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
-
-5. [自動ティアリングと自動期限終了](#configure-auto-tiering-and-auto-expiration-via-vscode)を構成します。 [自動ティアリング](#auto-tiering-properties)と[自動期限終了](#auto-expiration-properties)のプロパティの一覧
-
-6. **deployment.template.json** ファイルを保存します。
-
-7. ソリューション ワークスペース内の **.env** ファイルを開きます。 
-
-8. .env ファイルはコンテナー レジストリの資格情報を受信するように設定されていますが、公開されているため、BLOB ストレージ イメージには必要ありません。 代わりに、次の 2 つの新しい環境変数でファイルを置き換えます。 
-
-   ```env
-   STORAGE_ACCOUNT_NAME=
-   STORAGE_ACCOUNT_KEY=
-   ```
-
-9. `STORAGE_ACCOUNT_NAME` の値を指定します。アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。 `STORAGE_ACCOUNT_KEY` に 64 バイトの Base64 キーを指定します。 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。 
-
-   指定する値をスペースや引用符で囲まないでください。 
-
-10. **.env** ファイルを保存します。 
-
-11. **[deployment.template.json]** を右クリックして、**[Generate IoT Edge deployment manifest]\(IoT Edge 配置マニフェストの生成\)** を選択します。 
-
-12. Visual Studio Code では、deployment.template.json と .env で指定した情報が取得され、それを使用して新しい配置マニフェスト ファイルが作成されます。 配置マニフェストは、ご利用のソリューション ワークスペース内の新しい **config** フォルダーに作成されます。 そのファイルが用意されたら、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](how-to-deploy-modules-vscode.md)」または [Azure CLI 2.0 を使用した Azure IoT Edge モジュールのデプロイ](how-to-deploy-modules-cli.md)に関するページの手順に従うことができます。
-
-## <a name="auto-tiering-and-auto-expiration-properties-and-configuration"></a>自動ティアリングと自動期限終了のプロパティと構成
-
-必要なプロパティを使用して、自動ティアリングと自動期限終了のプロパティを設定します。 これらは、デプロイ中に設定したり、モジュール ツインを編集することで、再デプロイすることなく後で変更したりできます。 値が確実に正しく反映されるよう、`reported configuration` と `configurationValidation` の "モジュール ツイン" をチェックすることをお勧めします。
-
-### <a name="auto-tiering-properties"></a>自動ティアリングのプロパティ 
-この設定の名前は `tieringSettings` です
-
-| フィールド | 指定できる値 | 説明 |
+| プロパティ | 指定できる値 | 説明 |
 | ----- | ----- | ---- |
-| tieringOn | true、false | 既定では `false` に設定されていて、有効にする場合は `true` に設定します|
-| backlogPolicy | NewestFirst、OldestFirst | データを Azure にコピーする順序を選択できます。 既定では `OldestFirst` に設定されています。 順序は Blob の最終更新時刻によって決定されます |
-| remoteStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` は、データのアップロード先の Azure Storage アカウントを選択するための接続文字列です。 `Azure Storage Account Name`、`Azure Storage Account Key`、`End point suffix` を指定します。 データのアップロード先の Azure の適切な EndpointSuffix を追加します。これはグローバル Azure、政府機関向け Azure、および Microsoft Azure Stack ごとに異なります。 |
-| tieredContainers | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure にアップロードするコンテナーの名前を指定できます。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。 ターゲット コンテナー名を指定しない場合、コンテナー名は自動的に `<IoTHubName>-<IotEdgeDeviceName>-<ModuleName>-<ContainerName>` として割り当てられます。 ターゲット コンテナー名で使用可能な値の列をチェックする、テンプレート文字列を作成することができます。 <br>* %h -> IoT Hub 名 (3 ～ 50 文字)。 <br>* %d -> IoT デバイス ID (1 ～ 129 文字)。 <br>* %m -> モジュール名 (1 ～ 64 文字)。 <br>* %c -> ソース コンテナー名 (3 ～ 63 文字)。 <br><br>コンテナー名の最大サイズは 63 文字です。ターゲット コンテナー名を自動的に割り当てる場合は、コンテナーのサイズが 63 文字を超えると、各セクション (IoTHubName、IotEdgeDeviceName、ModuleName、ContainerName) が 15 文字まで削除されます。 |
+| uploadOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 <br><br> 環境変数: `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst、OldestFirst | データを Azure にコピーする順序を選択できます。 既定では `OldestFirst` に設定されています。 順序は BLOB の最終更新時刻によって決定されます。 <br><br> 環境変数: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` は、データのアップロード先のストレージ アカウントを選択するための接続文字列です。 `Azure Storage Account Name`、`Azure Storage Account Key`、`End point suffix` を指定します。 データのアップロード先の Azure の適切な EndpointSuffix を追加します。これはグローバル Azure、政府機関向け Azure、および Microsoft Azure Stack ごとに異なります。 <br><br> ここで Azure Storage SAS 接続文字列を指定できます。 ただし、有効期限が切れた場合は、このプロパティを更新する必要があります。 <br><br> 環境変数: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure にアップロードするコンテナーの名前を指定できます。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。 ターゲット コンテナー名を指定しない場合、コンテナー名は自動的に `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` として割り当てられます。 ターゲット コンテナー名のテンプレート文字列を作成して、使用可能な値の列をチェックアウトできます。 <br>* %h -> IoT Hub 名 (3 ～ 50 文字)。 <br>* %d -> IoT Edge デバイス ID (1 ～ 129 文字)。 <br>* %m -> モジュール名 (1 ～ 64 文字)。 <br>* %c -> ソース コンテナー名 (3 ～ 63 文字)。 <br><br>コンテナー名の最大サイズは 63 文字です。ターゲット コンテナー名を自動的に割り当てる場合は、コンテナーのサイズが 63 文字を超えると、各セクション (IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName) が 15 文字まで削除されます。 <br><br> 環境変数: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
+| deleteAfterUpload | true、false | 既定では `false` に設定されています。 `true` に設定すると、クラウド ストレージへのアップロードが完了したときにデータが自動的に削除されます。 <br><br> **注意**:追加 BLOB を使用している場合、この設定は、アップロードの成功後にローカル ストレージから追加 BLOB を削除し、それ以降、それらの BLOB へのブロック追加操作はすべて失敗します。 この設定は注意して使用してください。アプリケーションで追加操作がまれにしか行われない、または連続追加操作がサポートされていない場合は、これを有効にしないでください<br><br> 環境変数: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
 
-### <a name="auto-expiration-properties"></a>自動期限終了のプロパティ
-この設定の名前は `ttlSettings` です
+### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
-| フィールド | 指定できる値 | 説明 |
+この設定の名前は `deviceAutoDeleteProperties` です。 IoT Edge シミュレーターを使用している場合は、値を、これらのプロパティの関連する環境変数 (説明セクションに記載) に設定します。
+
+| プロパティ | 指定できる値 | 説明 |
 | ----- | ----- | ---- |
-| ttlOn | true、false | 既定では `false` に設定されていて、有効にする場合は `true` に設定します|
-| timeToLiveInMinutes | `<minutes>` | TTL を分単位で指定します。 TTL が期限切れになると、モジュールが自動的にローカル ストレージから BLOB を削除します |
+| deleteOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 <br><br> 環境変数: `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | 時間を分単位で指定します。 この値が期限切れになると、モジュールが自動的にローカル ストレージから BLOB を削除します。 <br><br> 環境変数: `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true、false | 既定では `true` に設定されていて、deleteAfterMinutes が期限切れになった場合に、クラウド ストレージへのアップロード中は BLOB が保持されます。 `false` に設定することができ、その場合は deleteAfterMinutes が期限切れになるとすぐにデータが削除されます。 注:このプロパティを機能させるには、UploadOn が true に設定されている必要があります。  <br><br> **注意**:追加 BLOB を使用している場合、この設定は、値の有効期限が切れるとローカル ストレージから追加 BLOB を削除し、それ以降、それらの BLOB へのブロック追加操作はすべて失敗します。 アプリケーションによって実行される追加操作の予想される頻度に対して、有効期限の値が十分に大きいことを確認してください。<br><br> 環境変数: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
-### <a name="configure-auto-tiering-and-auto-expiration-via-azure-portal"></a>Azure portal を使用して自動ティアリングと自動期限終了を構成する
+## <a name="using-smb-share-as-your-local-storage"></a>ローカル ストレージとして SMB 共有を使用する
 
-必要なプロパティを、自動ティアリングと自動期限終了を有効にするように設定します。以下の値を設定できます。
+Windows ホストにこのモジュールの Windows コンテナーをデプロイするときに、ローカル ストレージ パスとして SMB 共有を指定できます。
 
-- **初期デプロイ中**:**[モジュール ツインの必要なプロパティの設定]** ボックス内の JSON をコピーします。 各プロパティを適切な値で構成して保存し、デプロイを続行します。
+SMB 共有と IoT デバイスが相互に信頼されたドメインにあることを確認してください。
 
-   ```json
-   {
-     "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>, 
-         "timeToLiveInMinutes": <timeToLiveInMinutes> 
-       },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
-           "<source container name1>": {
-             "target": "<target container name1>"
-           }
-         }
-       }
-     }
-   }
+`New-SmbGlobalMapping` PowerShell コマンドを実行して、Windows を実行している IoT デバイス上でローカルに SMB 共有をマップすることができます。
 
-   ```
+構成手順は次のとおりです。
 
-  ![自動ティアリングと自動期限終了のプロパティの設定](./media/how-to-store-data-blob/iotedge_custom_module.png)
+```PowerShell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
+```
 
-- **"モジュール ID ツイン" 機能を使用してモジュールをデプロイした後**:このモジュールの "モジュール ID ツイン" に移動し、必要なプロパティの JSON をコピーし、各プロパティを適切な値で構成して保存します。 "モジュール ID ツイン" JSON で、必要なプロパティを追加または更新し、`reported configuration` セクションが変更を反映し、`configurationValidation` セクションが各プロパティの成功をレポートするたびに確認します。
+次に例を示します。
 
-   ```json 
-    "ttlSettings": {
-        "ttlOn": <true, false>, 
-        "timeToLiveInMinutes": <timeToLiveInMinutes> 
-    },
-    "tieringSettings": {
-        "tieringOn": <true, false>,
-        "backlogPolicy": "<NewestFirst, OldestFirst>",
-        "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-        "tieredContainers": {
-            "<source container name1>": {
-                "target": "<target container name1>"
-            }
-        }
-    }
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
 
-   ```
+このコマンドは、資格情報を使用してリモート SMB サーバーで認証を行います。 次に、リモート共有パスを G: ドライブ文字にマップします (他の使用可能なドライブ文字を指定できます)。 これで、IoT デバイスのデータ ボリュームが G: ドライブのパスにマップされました。
 
-![tiering+ttl module_identity_twin](./media/how-to-store-data-blob/module_identity_twin.png) 
+IoT デバイスのユーザーがリモート SMB 共有に対して読み取りおよび書き込みできることを確認してください。
 
-### <a name="configure-auto-tiering-and-auto-expiration-via-vscode"></a>VSCode を使用して自動ティアリングと自動期限終了を構成する
+実際のデプロイでは、`<storage mount>` の値として **G:/ContainerData:C:/BlobRoot** を指定できます。
 
-- **初期デプロイ中**:deployment.template.json に以下の JSON を追加して、このモジュールに必要なプロパティを定義します。 各プロパティを適切な値で構成して保存します。
+## <a name="granting-directory-access-to-container-user-on-linux"></a>Linux のコンテナー ユーザーにディレクトリ アクセスを許可する
 
-   ```json
-   "<your azureblobstorageoniotedge module name>":{
-     "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>, 
-         "timeToLiveInMinutes": <timeToLiveInMinutes> 
-       },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
-           "<source container name1>": {
-             "target": "<target container name1>"
-           }
-         }
-       }
-     }
-   }
+Linux コンテナーの作成オプションでストレージに[ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用した場合は、追加の手順を実行する必要はありませんが、[バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用した場合は、サービスを正しく実行するために次の手順が必要になります。
 
-   ```
+ユーザーのアクセス権を作業の実行に必要な最小限のアクセス許可に制限する最小限の特権の原則に従って、このモジュールには、ユーザー (名前: absie、ID:11000) とユーザー グループ (名前: absie、ID:11000) が含まれています。 コンテナーが**ルート**として開始された場合 (既定のユーザーは**ルート**)、サービスは低い特権の **absie** ユーザーとして開始されます。
 
-このモジュールの必要なプロパティの例を次に示します。![azureblobstorageoniotedge の必要なプロパティの設定 - VS Code](./media/how-to-store-data-blob/tiering_ttl.png)
+この動作により、サービスが正常に動作するために、ホスト パス バインドのアクセス許可の構成が重要になります。構成によっては、アクセス拒否エラーが発生してサービスがクラッシュします。 ディレクトリ バインディングで使用されるパスには、コンテナー ユーザー (例: absie 11000) がアクセスできる必要があります。 ホストで次のコマンドを実行して、コンテナー ユーザーにディレクトリへのアクセス権を付与できます。
 
-- **"モジュール ツイン" を使用してモジュールをデプロイした後**:このモジュールの[モジュール ツインを編集](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)し、必要なプロパティの JSON をコピーし、各プロパティを適切な値で構成して保存します。 "モジュール ツイン" JSON で、必要なプロパティを追加または更新し、`reported configuration` セクションが変更を反映し、`configurationValidation` セクションが各プロパティの成功をレポートするたびに確認します。
+```terminal
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
+```
 
-   ```json 
-    "ttlSettings": {
-        "ttlOn": <true, false>, 
-        "timeToLiveInMinutes": <timeToLiveInMinutes> 
-    },
-    "tieringSettings": {
-        "tieringOn": <true, false>,
-        "backlogPolicy": "<NewestFirst, OldestFirst>",
-        "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-        "tieredContainers": {
-            "<source container name1>": {
-                "target": "<target container name1>"
-            }
-        }
-    }
+次に例を示します。
 
-   ```
-## <a name="logs"></a>ログ
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
-[IoT Edge モジュールの Docker ログの構成](production-checklist.md#set-up-logs-and-diagnostics)に関するページの指示に従ってください
+**absie** 以外のユーザーとしてサービスを実行する必要がある場合は、配置マニフェストの createOptions の "User" プロパティでカスタム ユーザー ID を指定できます。 このような場合は、既定値またはルート グループ ID `0` を使用する必要があります。
+
+```json
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
+```
+
+ここで、コンテナー ユーザーにディレクトリへのアクセスを許可します。
+
+```terminal
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
+```
+
+## <a name="configure-log-files"></a>ログ ファイルを構成する
+
+お使いのモジュールのログ ファイルの構成については、こちらの[運用環境のベスト プラクティス](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)をご覧ください。
 
 ## <a name="connect-to-your-blob-storage-module"></a>ご自分の BLOB ストレージ モジュールに接続する
 
-ご自分のモジュールに対して構成したアカウント名とアカウントキーを使用して、ご利用の IoT Edge デバイス上の BLOB ストレージにアクセスできます。 
+ご自分のモジュールに対して構成したアカウント名とアカウントキーを使用して、ご利用の IoT Edge デバイス上の BLOB ストレージにアクセスできます。
 
-作成する任意のストレージ要求に対する BLOB エンドポイントとして、ご利用の IoT Edge デバイスを指定します。 構成した IoT Edge デバイス情報とアカウント名を使用して、[明示的なストレージ エンドポイントへの接続文字列を作成](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)できます。 
+作成する任意のストレージ要求に対する BLOB エンドポイントとして、ご利用の IoT Edge デバイスを指定します。 構成した IoT Edge デバイス情報とアカウント名を使用して、[明示的なストレージ エンドポイントへの接続文字列を作成](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)できます。
 
-1. "Azure Blob Storage on IoT Edge" が実行されている同じエッジ デバイスにデプロイされているモジュールの場合、BLOB エンドポイントは `http://<module name>:11002/<account name>` になります。 
-2. "Azure Blob Storage on IoT Edge" が実行されているエッジ デバイスとは別のエッジ デバイスにデプロイされているモジュールの場合、設定によって BLOB エンドポイントは `http://<device IP >:11002/<account name>`、`http://<IoT Edge device hostname>:11002/<account name>`、または `http://<FQDN>:11002/<account name>` になります
+* Azure Blob Storage on IoT Edge モジュールが実行されているデバイスにデプロイされているモジュールの場合、BLOB エンドポイントは `http://<module name>:11002/<account name>` になります。
+* 別のデバイスで実行されているモジュールまたはアプリケーションの場合、実際のネットワークの適切なエンドポイントを選択する必要があります。 ネットワーク設定に応じて、外部モジュールまたはアプリケーションからのデータ トラフィックが Azure Blob Storage on IoT Edge モジュールを実行しているデバイスに到達できるようにエンドポイントの形式を選択します。 このシナリオの BLOB エンドポイントは次のいずれかです。
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
-## <a name="deploy-multiple-instances"></a>複数のインスタンスのデプロイ
+## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob Storage のクイックスタートのサンプル
 
-IoT Edge 上の Azure Blob Storage の複数のインスタンスをデプロイする場合は、別のストレージ パスを指定し、モジュールでバインドする HostPort を変更する必要があります。 BLOB ストレージ モジュールでは常に、コンテナーでポート 11002 を公開しますが、ホスト上でバインドされるポートを宣言できます。 
+Azure Blob Storage のドキュメントには、複数の言語のクイック スタートのサンプル コードが含まれています。 ご利用のローカル Blob Storage モジュールに接続するように BLOB エンドポイントを変更して、これらのサンプルを実行し、IoT Edge の Azure Blob Storage をテストできます。
 
-モジュールの作成オプションを編集して、HostPort 値を変更します。
-
-```json
-\"PortBindings\": {\"11002/tcp\": [{\"HostPort\":\"<port number>\"}]}
-```
-
-追加の BLOB ストレージ モジュールに接続すると、更新されたホスト ポートをポイントするエンドポイントを変更します。 
-
-## <a name="try-it-out"></a>試してみる
-
-### <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob Storage のクイック スタートのサンプル
-Azure Blob Storage ドキュメントには、複数の言語でサンプル コードを提供するクイック スタートが含まれます。 ご利用の BLOB ストレージ モジュールをポイントするように BLOB エンドポイントを変更して、これらのサンプルを実行し、IoT Edge の Azure Blob Storage をテストできます。 「[ご自分の BLOB ストレージ モジュールに接続する](#connect-to-your-blob-storage-module)」の手順に従ってください
-
-次のクイック スタートでは IoT Edge からもサポートされる言語を使用するため、BLOB ストレージ モジュールと共に IoT Edge モジュールとして言語をデプロイできます。
+次のクイック スタート サンプルでは IoT Edge からもサポートされる言語を使用するため、BLOB ストレージ モジュールと共に IoT Edge モジュールとして言語をデプロイできます。
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-* [Java](../storage/blobs/storage-quickstart-blobs-java.md)
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
+  * バージョン 2.1 より前の Python SDK には、このモジュールが BLOB の作成時刻を返さないという既知の問題があります。 この問題により、list_blobs (BLOB の一覧表示) などの一部のメソッドが機能しません。 回避策として、BLOB クライアントで API バージョンを「'2017-04-17'」に明示的に設定します。 例: `block_blob_service._X_MS_VERSION = '2017-04-17'`
+  * [追加 BLOB のサンプル](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
+* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
+* [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+* [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+* [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
-### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
-"Azure Storage Explorer" でローカル ストレージ アカウントに接続してみることもできます。 [Azure Storage Explorer バージョン 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) で動作します。
+## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Azure Storage Explorer を使用してお使いのローカル ストレージに接続する
 
-> [!NOTE]
-> 次の手順 (ローカル ストレージ アカウントに接続を追加したり、ローカル ストレージ アカウントでコンテナーを作成するなど) を実行中にエラーが発生する場合があります。 無視して更新してください。 
+[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、ご自身のローカル ストレージ アカウントに接続できます。
 
 1. Azure ストレージ エクスプローラーをダウンロードしてインストールします
-2. 接続文字列を使用して Azure Storage に接続します
-3. 接続文字列 (`DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`) を指定します
-4. 接続する手順を実行します。
-5. ご自分のローカル ストレージ アカウント内にコンテナーを作成します
-6. ファイルをブロック BLOB としてアップロードを開始します。
-   > [!NOTE]
-   > ページ BLOB としてアップロードするには、チェック ボックスをオフにしてください。 このモジュールはページ BLOB をサポートしていません。 このプロンプトは、.iso、.vhd、.vhdx などのファイルや大きいファイルのアップロード中に表示されます。
 
-7. データをアップロードする Azure ストレージ アカウントの接続を選択することができます。 これにより、1 つのビューにローカル ストレージ アカウントと Azure ストレージ アカウントの両方を表示できます。
+1. 接続文字列を使用して Azure Storage に接続します
+
+1. 接続文字列 (`DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`) を指定します
+
+1. 接続する手順を実行します。
+
+1. ご自分のローカル ストレージ アカウント内にコンテナーを作成します
+
+1. ブロック BLOB または追加 BLOB としてファイルのアップロードを開始します。
+   > [!NOTE]
+   > このモジュールでは、ページ BLOB はサポートされていません。
+
+1. Storage Explorer で Azure Storage アカウントを接続するように選択することもできます。 この構成により、1 つのビューにローカル ストレージ アカウントと Azure ストレージ アカウントの両方を表示できます。
 
 ## <a name="supported-storage-operations"></a>サポートされるストレージ操作
 
-IoT Edge 上の BLOB ストレージ モジュールでは同じ Azure Storage SDK が使用され、ブロック BLOB エンドポイント用の 2017-04-17 バージョンの Azure Storage API と一貫性があります。 今後のリリースは、顧客のニーズに依存します。
+IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が使用され、ブロック BLOB エンドポイント用の 2017-04-17 バージョンの Azure Storage API と一貫性があります。
 
-すべての Azure Blob Storage の操作が、IoT Edge の Azure Blob Storage でサポートされるわけではありません。 次のセクションで、サポート対象とサポート対象外の操作の一覧を示します。
+すべての Azure Blob Storage の操作が、IoT Edge の Azure Blob Storage でサポートされるわけではないため、このセクションでは、それぞれの状態の一覧を示します。
 
 ### <a name="account"></a>Account
 
-サポート対象: 
+サポート対象:
+
 * コンテナーの一覧表示
 
-サポート外: 
+サポート外:
+
 * Blob service プロパティの取得と設定
 * BLOB 要求のプレフライト
 * Blob service の統計情報の取得
@@ -418,7 +231,8 @@ IoT Edge 上の BLOB ストレージ モジュールでは同じ Azure Storage S
 
 ### <a name="containers"></a>Containers
 
-サポート対象: 
+サポート対象:
+
 * コンテナーの作成と削除
 * コンテナーのプロパティとメタデータの取得
 * BLOB を一覧表示する
@@ -426,16 +240,19 @@ IoT Edge 上の BLOB ストレージ モジュールでは同じ Azure Storage S
 * コンテナー メタデータの設定
 
 サポート外:
+
 * コンテナーのリース
 
 ### <a name="blobs"></a>BLOB
 
-サポート対象: 
+サポート対象:
+
 * BLOB の配置、取得、削除
 * BLOB プロパティの取得と設定
 * BLOB メタデータの取得と設定
 
-サポート外: 
+サポート外:
+
 * BLOB のリリース
 * BLOB のスナップショット
 * BLOB のコピーとコピーの中止
@@ -444,19 +261,44 @@ IoT Edge 上の BLOB ストレージ モジュールでは同じ Azure Storage S
 
 ### <a name="block-blobs"></a>ブロック blob
 
-サポート対象: 
+サポート対象:
+
 * ブロックの配置
 * ブロック一覧の配置と取得
 
 サポート外:
+
 * URL からブロックの配置
 
-## <a name="feedback"></a>フィードバック:
-お客様のフィードバックは、このモジュールとその機能を便利で使いやすいものにするために、Microsoft にとって非常に重要です。 Microsoft では、今後の改良の参考とするために、皆様からのフィードバックをお待ちしています。
+### <a name="append-blobs"></a>追加 BLOB
 
-absiotfeedback@microsoft.com までお寄せください 
+サポート対象:
 
-## <a name="next-steps"></a>次の手順
+* ブロックの追加
 
-[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) の詳細情報
+サポート外:
 
+* URL からブロックの追加
+
+## <a name="event-grid-on-iot-edge-integration"></a>Event Grid on IoT Edge の統合
+
+> [!CAUTION]
+> Event Grid on IoT Edge との統合はプレビュー段階です。
+
+この Azure Blob Storage on IoT Edge モジュールを Event Grid on IoT Edge と統合できるようになりました。 この統合の詳細については、[モジュールのデプロイ、イベントの発行、イベント配信の確認に関するチュートリアル](../event-grid/edge/react-blob-storage-events-locally.md)を参照してください。
+
+## <a name="release-notes"></a>リリース ノート
+
+このモジュール用の [Docker Hub のリリース ノート](https://hub.docker.com/_/microsoft-azure-blob-storage)です
+
+## <a name="feedback"></a>フィードバック
+
+お客様のフィードバックは、このモジュールとその機能を便利で使いやすいものにするために、Microsoft にとって重要です。 Microsoft では、今後の改良の参考とするために、皆様からのフィードバックをお待ちしています。
+
+absiotfeedback@microsoft.com までお寄せください
+
+## <a name="next-steps"></a>次のステップ
+
+[Azure Blob Storage を IoT Edge にデプロイする](how-to-deploy-blob.md)方法を学習する
+
+[IoT Edge 上のAzure Blob Storage ブログ](https://aka.ms/abs-iot-blogpost)の最新の更新とお知らせによって最新情報を得る

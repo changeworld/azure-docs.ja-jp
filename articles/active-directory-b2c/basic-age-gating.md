@@ -2,30 +2,30 @@
 title: Azure Active Directory B2C で年齢制限を有効にする | Microsoft Docs
 description: アプリケーションを使用している未成年者を特定する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: davidmu
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b594dc6eadce5093c58d693492f8e86eb92ae4e3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228004"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78189975"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
 >[!IMPORTANT]
->この機能はパブリック プレビュー段階にあります。 運用アプリケーションにはこの機能を使わないでください。 
+>この機能はパブリック プレビュー段階にあります。 運用アプリケーションにはこの機能を使わないでください。
 >
 
-Azure Active Directory (Azure AD) B2C の年齢制御を使うと、アプリケーションを使おうとしている未成年者を識別することができます。 未成年者がアプリケーションにサインインするのをブロックできます。 ユーザーはアプリケーションに戻り、自分の年齢グループと、保護者の同意の状況を確認することもできます。 Azure AD B2C では、保護者の同意がない未成年者をブロックできます。 また、未成年者の処理をアプリケーションが決定できるように、Azure AD B2C を設定することもできます。
+Azure Active Directory B2C (Azure AD B2C) の年齢制御を使うと、アプリケーションを使おうとしている未成年者を識別することができます。 未成年者がアプリケーションにサインインするのをブロックできます。 ユーザーはアプリケーションに戻り、自分の年齢グループと、保護者の同意の状況を確認することもできます。 Azure AD B2C では、保護者の同意がない未成年者をブロックできます。 また、未成年者の処理をアプリケーションが決定できるように、Azure AD B2C を設定することもできます。
 
-[ユーザー フロー](active-directory-b2c-reference-policies.md)で年齢制御を有効にすると、それ以降、ユーザーは生年月日と居住国/地域をたずねられます。 サインインしているユーザーが以前にその情報を入力していない場合、次にサインインするときに入力する必要があります。 ユーザーがサインインするたびに、ルールが適用されます。
+[ユーザー フロー](user-flow-overview.md)で年齢制御を有効にすると、それ以降、ユーザーは生年月日と居住国/地域をたずねられます。 サインインしているユーザーが以前にその情報を入力していない場合、次にサインインするときに入力する必要があります。 ユーザーがサインインするたびに、ルールが適用されます。
 
 Azure AD B2C では、ユーザーが入力した情報を使って、ユーザーが未成年かどうかが識別されます。 その後、アカウントの **AgeGroup** フィールドが更新されます。 値は、`null`、`Undefined`、`Minor`、`Adult`、`NotAdult` のいずれかです。  その後、**AgeGroup** フィールドと **consentProvidedForMinor** フィールドを使って、**legalAgeGroupClassification** の値が計算されます。
 
@@ -33,7 +33,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 
 | 国/リージョン | 国/地域名 | 同意が必要な未成年の年齢 | 未成年の年齢 |
 | -------------- | ------------------- | ----------------- | --------- |
-| 既定値 | なし | なし | 18 |
+| Default | なし | なし | 18 |
 | AE | アラブ首長国連邦 | なし | 21 |
 | AT | オーストリア | 14 | 18 |
 | BE | ベルギー | 14 | 18 |
@@ -70,11 +70,11 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 | SK | スロバキア | 16 | 18 |
 | TD | チャド | なし | 21 |
 | TH | タイ | なし | 20 |
-| TW | 台湾 | なし | 20 | 
-| US | 米国 | 13 | 18 |
+| TW | 台湾 | なし | 20 |
+| US | United States | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年齢制限のオプション
- 
+
 ### <a name="allowing-minors-without-parental-consent"></a>保護者の同意がない未成年者を許可する
 
 サインアップ、サインイン、またはその両方を許可するユーザー フローでは、同意のない未成年者にアプリケーションの使用を許可することを選択できます。 保護者の同意がない未成年者は、通常どおりにサインインまたはサインアップすることが許可され、Active Directory B2C では**legalAgeGroupClassification** 要求を含む ID トークンが発行されます。 この要求では、保護者の同意の収集や **consentProvidedForMinor** フィールドの更新など、ユーザーのエクスペリエンスが定義されます。
@@ -90,10 +90,10 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 
 ユーザー フローで年齢制限を使うには、追加のプロパティが含まれるようにテナントを構成する必要があります。
 
-1. 上部メニューの **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** をクリックして、Azure AD B2C テナントを含むディレクトリを使っていることを確認します。 テナントが含まれるディレクトリを選択します。 
-2. Azure portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
+1. 上部メニューの **[ディレクトリ + サブスクリプション]** フィルターを選択して、Azure AD B2C テナントを含むディレクトリを使っていることを確認します。 テナントが含まれるディレクトリを選択します。
+2. Azure portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 3. 左側のメニューで、テナントの **[プロパティ]** を選択します。
-2. **[年齢制御]** セクションで、**[構成]** をクリックします。
+2. **[年齢制御]** セクションで、 **[構成]** をクリックします。
 3. 操作が完了するまで待ちます。テナントは年齢制限対応に設定されます。
 
 ## <a name="enable-age-gating-in-your-user-flow"></a>ユーザー フローで年齢制限を有効にする
@@ -102,8 +102,8 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 
 1. 年齢制限が有効になっているユーザー フローを作成します。
 2. ユーザー フローを作成した後、メニューで **[プロパティ]** を選択します。
-3. **[年齢制御]** セクションで、**[有効]** を選択します。
-4. その後、未成年者として識別されたユーザーの管理方法を決定します。 **[Sign-up or sign-in]\(サインアップまたはサインイン\)** では、[`Allow minors to access your application`] または [`Block minors from accessing your application`] を選択します。 未成年者のブロックを選択した場合は、[`Send a JSON back to the application`] または [`Show an error message`] を選択します。 
+3. **[年齢制御]** セクションで、 **[有効]** を選択します。
+4. その後、未成年者として識別されたユーザーの管理方法を決定します。 **[Sign-up or sign-in]\(サインアップまたはサインイン\)** では、[`Allow minors to access your application`] または [`Block minors from accessing your application`] を選択します。 未成年者のブロックを選択した場合は、[`Send a JSON back to the application`] または [`Show an error message`] を選択します。
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure-SSIS 統合ランタイムのパフォーマンスを構成する | Microsoft Docs
+title: Azure-SSIS Integration Runtime のパフォーマンスを構成する
 description: Azure-SSIS 統合ランタイムのプロパティを高パフォーマンス用に構成する方法について説明します。
 services: data-factory
 ms.date: 01/10/2018
@@ -9,15 +9,18 @@ ms.workload: data-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 42c69653a002446552da998320a43730dfdaadf5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+manager: anandsub
+ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232550"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81418288"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 この記事では、Azure-SSIS 統合ランタイム (IR) を高パフォーマンス用に構成する方法について説明します。 Azure-SSIS IR を使うと、SQL Server Integration Services (SSIS) パッケージを Azure にデプロイして実行できます。 Azure-SSIS IR について詳しくは、「[Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime)」をご覧ください。 Azure での SSIS パッケージのデプロイと実行については、「[Lift and shift SQL Server Integration Services workloads to the cloud](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)」(SQL Server Integration Services のワークロードをクラウドにリフト アンド シフトする) をご覧ください。
 
@@ -160,5 +163,5 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 ## <a name="design-for-high-performance"></a>高パフォーマンス用の設計
 Azure で実行するための SSIS パッケージの設計は、オンプレミスで実行するためのパッケージの設計とは異なります。 複数の独立したタスクを同じパッケージにまとめるのではなく、Azure SSIS IR での実行効率を上げるために複数のパッケージに分割します。 相互の完了を待機する必要がないように、パッケージごとにパッケージ実行を作成します。 このアプローチでは、Azure-SSIS 統合ランタイムのスケーラビリティのメリットがあり、全体的なスループットが向上します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure-SSIS 統合ランタイムについてさらに学習します。 「[Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime)」をご覧ください。

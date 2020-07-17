@@ -1,167 +1,186 @@
 ---
-title: 継続的デプロイ - Azure App Service | Microsoft Docs
-description: Azure App Service への継続的なデプロイを有効にする方法を説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
+title: 継続的なデプロイを構成する
+description: GitHub、BitBucket、Azure Repos、またはその他のリポジトリから Azure App Service への CI/CD を有効にする方法について説明します。 ニーズに合ったビルド パイプラインを選択します。
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
-ms.author: cephalin;dariagrigoriu
+ms.date: 03/20/2020
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337546"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437168"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
-この記事では、[Azure App Service](overview.md) の継続的デプロイを構成する方法を示します。 App Service は、BitBucket、GitHub、および [Azure DevOps Services](https://www.visualstudio.com/team-services/) の既存のリポジトリから最新の更新プログラムをプルすることで、これらのサービスから継続的デプロイを実行できます。
 
-Azure Portal に表示されないクラウド リポジトリ ([GitLab](https://gitlab.com/) など) の継続的デプロイを手動で構成する方法については、「[Setting up continuous deployment using manual steps](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)」(手動による手順を使用した継続的デプロイの設定) を参照してください。
+[Azure App Service](overview.md) により、最新の更新プログラムをプルすることで、GitHub、BitBucket、[Azure Repos](https://azure.microsoft.com/services/devops/repos/) のリポジトリからの継続的なデプロイが可能になります。 この記事では、Azure portal を使用して、Kudu ビルド サービスまたは [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) を通じてアプリを継続的にデプロイする方法について説明します。 
+
+ソース管理サービスの詳細については、「[Create a repo (GitHub) (リポジトリの作成 (GitHub))]」(GitHub)、「[Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]」(BitBucket)、「[新しい Git リポジトリの作成 (Azure Repos)]」(Azure Repos) を参照してください。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-準備したリポジトリをサポートされているサービスのいずれかに発行します。 これらのサービスにプロジェクトを発行する方法の詳細については、「[Create a repo (GitHub) (リポジトリの作成 (GitHub))]」、「[Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]」、「[Azure DevOps Services で作業を始める]」を参照してください。
+## <a name="authorize-azure-app-service"></a>Azure App Service を承認する 
 
-## <a name="deploy-continuously-from-github"></a>GitHub からの継続的デプロイ
+Azure Repos を使用するには、Azure DevOps 組織がお使いの Azure サブスクリプションにリンクされていることを確認します。 詳細については、[Web アプリにデプロイできるようにするための Azure DevOps Services アカウントの設定](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)に関するページを参照してください。
 
-GitHub を使用する継続的デプロイを有効にするには、[Azure Portal](https://portal.azure.com) の App Service アプリ のページに移動します。
+Bitbucket または GitHub の場合は、Azure App Service がお使いのリポジトリに接続することを承認します。 ソース管理サービスを使用して承認する必要があるのは 1 回だけです。 
 
-左側のメニューで、**[デプロイ センター]** > **[GitHub]** > **[承認]** をクリックします。 承認のプロンプトに従います。 
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。
 
-![](media/app-service-continuous-deployment/github-choose-source.png)
+   ![App Services を検索します。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-GitHub の承認は、1 回のみ実行する必要があります。 既に承認されている場合は、**[続行]** をクリックします。 **[アカウントの変更]** をクリックすることで、承認された GitHub アカウントを変更できます。
+1. デプロイする App Service を選択します。
 
-![](media/app-service-continuous-deployment/github-continue.png)
+   ![アプリを選択します。](media/app-service-continuous-deployment/select-your-app.png)
+   
+1. アプリのページで、左側のメニューから **[管理者用センター]** を選択します。
+   
+1. **[管理者用センター]** ページで、 **[GitHub]** または **[Bitbucket]** を選択し、次に **[承認]** を選択します。 
+   
+   ![ソース管理サービスを選択し、[承認] を選択します。](media/app-service-continuous-deployment/github-choose-source.png)
+   
+1. 必要に応じてサービスにサインインし、承認のプロンプトに従います。 
 
-**[ビルド プロバイダー]** ページで、ビルド プロバイダーを選択し、**[続行]** をクリックします。
+## <a name="enable-continuous-deployment"></a>継続的配置を有効にする 
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>オプション 1: App Service Kudu ビルド サーバーを使用する
+ソース管理サービスを承認した後、組み込みの [Kudu App Service](#option-1-kudu-app-service) ビルド サーバー、または [Azure Pipelines](#option-2-azure-pipelines) を通じて継続的なデプロイ用にアプリを構成します。 
 
-**[構成]** ページで、継続的デプロイのソースになる組織、リポジトリ、およびブランチを選択します。 完了したら、**[続行]** をクリックします。
+### <a name="option-1-kudu-app-service"></a>オプション 1: Kudu App Service
 
-GitHub 組織でリポジトリからデプロイするには、GitHub を参照して、**[設定]** > **[アプリケーション]** > **[Authorized OAuth Apps]\(承認済み OAuth アプリ\)** に移動します。 次に、[Azure App Service] をクリックします。
+組み込みの Kudu App Service ビルド サーバーを使用して、GitHub、Bitbucket、または Azure Repos から継続的にデプロイできます。 
 
-![[設定] > [アプリケーション] > [Authorized OAuth Apps]\(承認済み OAuth アプリ\) > [Azure App Service]](media/app-service-continuous-deployment/github-settings-navigation.png)
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択した後、デプロイする Web アプリを選択します。 
+   
+1. アプリのページで、左側のメニューから **[管理者用センター]** を選択します。
+   
+1. **[管理者用センター]** ページで、承認したソース管理プロバイダーを選択し、 **[続行]** を選択します。 GitHub または Bitbucket の場合、さらに **[アカウントの変更]** を選択して、承認されたアカウントを変更することもできます。 
+   
+   > [!NOTE]
+   > Azure Repos を使用するには、Azure DevOps Services 組織がお使いの Azure サブスクリプションにリンクされていることを確認します。 詳細については、[Web アプリにデプロイできるようにするための Azure DevOps Services アカウントの設定](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)に関するページを参照してください。
+   
+1. GitHub または Azure Repos の場合、 **[ビルド プロバイター]** ページで **[App Service のビルド サービス]** を選択し、 **[続行]** を選択します。 Bitbucket では常に App Service のビルド サービスが使用されます。
+   
+   ![[App Service のビルド サービス] を選択して、[続行] を選択します。](media/app-service-continuous-deployment/choose-kudu.png)
+   
+1. **[構成]** ページで、次を実行します。
+   
+   - GitHub の場合、ドロップダウンから、継続的にデプロイする**組織**、**リポジトリ**、および**ブランチ**を選択します。
+     
+     > [!NOTE]
+     > リポジトリが表示されない場合は、GitHub で Azure App Service を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]**  >  **[アプリケーション]**  >  **[Authorized OAuth Apps]\(認可された OAuth アプリ\)** の順に移動します。 **[Azure App Service]** を選択し、次に **[許可]\(Grant\)** を選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
+     
+   - Bitbucket の場合、継続的にデプロイする Bitbucket の **チーム**、**リポジトリ**、**ブランチ**を選択します。
+     
+   - Azure Repos の場合、継続的にデプロイする **Azure DevOps の組織**、**プロジェクト**、**リポジトリ**、**ブランチ**を選択します。
+     
+     > [!NOTE]
+     > Azure DevOps 組織が一覧に表示されていない場合は、お使いの Azure サブスクリプションにリンクされていることを確認してください。 詳細については、[Web アプリにデプロイできるようにするための Azure DevOps Services アカウントの設定](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)に関するページを参照してください。
+     
+1. **[続行]** をクリックします。
+   
+   ![リポジトリの情報を入力し、[続行] を選択します。](media/app-service-continuous-deployment/configure-kudu.png)
+   
+1. ビルド プロバイダーを構成したら、 **[概要]** ページで設定を確認し、 **[完了]** を選択します。
+   
+1. 選択したリポジトリおよびブランチでの新しいコミットが App Service アプリに継続的にデプロイされるようになりました。 **[管理者用センター]** ページで、コミットとデプロイを追跡できます。
+   
+   ![管理者用センターでコミットとデプロイを追跡する](media/app-service-continuous-deployment/github-finished.png)
 
-次のページで、右側にある [許可] ボタンをクリックして、App Service がご自身の組織のリポジトリにアクセスできるようにします。
+### <a name="option-2-azure-pipelines"></a>オプション 2:Azure Pipelines 
 
-![[許可] をクリックして組織のリポジトリに App Service がアクセスできるようにする](media/app-service-continuous-deployment/grant-access.png)
+アカウントに、必要なアクセス許可がある場合は、GitHub または Azure Repos から継続的にデプロイするように Azure Pipelines を設定できます。 Azure Pipelines を使用したデプロイの詳細については、「[Web アプリを Azure App Services にデプロイする](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)」を参照してください。
 
-これでご自身の組織が、デプロイ センターの **[構成]** ページにある [組織] の一覧に表示されるようになりました。
+#### <a name="prerequisites"></a>前提条件
 
-### <a name="option-2-use-azure-pipelines-preview"></a>オプション 2: Azure Pipelines (プレビュー) を使用する
+Azure App Service で Azure Pipelines を使用する継続的デリバリーを作成するには、Azure DevOps 組織が次のアクセス許可を所有している必要があります。 
 
-> [!NOTE]
-> App Service で必要な Azure Pipelines を Azure DevOps Services 組織に作成するには、Azure アカウントが Azure サブスクリプションの**所有者**ロールを持っている必要があります。
->
+- ご利用の Azure アカウントには、Azure Active Directory への書き込みを行うためのアクセス許可とサービスを作成するためのアクセス許可が必要です。 
+  
+- ご利用の Azure アカウントには、Azure サブスクリプションの**所有者**ロールが必要です。
 
-**[構成]** ページの **[コード]** セクションで、継続的デプロイのソースになる組織、リポジトリ、およびブランチを選択します。 完了したら、**[続行]** をクリックします。
+- ご自身が、使用する Azure DevOps プロジェクトの管理者である必要があります。
 
-**[構成]** ページの **[ビルド]** セクションで、新しい Azure DevOps Services 組織を構成するか、既存の組織を指定します。 完了したら、**[続行]** をクリックします。
+#### <a name="github--azure-pipelines"></a>GitHub と Azure Pipelines
 
-> [!NOTE]
-> 一覧にない既存の Azure DevOps Services 組織を使用する場合、[Azure DevOps Services 組織を Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択した後、デプロイする Web アプリを選択します。 
+   
+1. アプリのページで、左側のメニューから **[デプロイ センター]** を選択します。
 
-**[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
+1. **[デプロイ センター]** ページで、ソース管理プロバイダーとして **[GitHub]** を選択し、 **[続行]** を選択します。 **GitHub** の場合、 **[アカウントの変更]** を選択して、承認されたアカウントを変更できます。
 
-App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択し、**[続行]** をクリックします。
+    ![ソース管理 (source control)](media/app-service-continuous-deployment/deployment-center-src-control.png)
+   
+1. **[ビルド プロバイダー]** ページで **[Azure Pipelines (プレビュー)]** を選択した後、 **[続行]** を選択します。
 
-### <a name="finish-configuration"></a>構成を終了する
+    ![ビルド プロバイダー](media/app-service-continuous-deployment/select-build-provider.png)
+   
+1. **[構成]** ページの **[コード]** セクションで、継続的デプロイのソースになる**組織**、**リポジトリ**、および**ブランチ**を選択し、 **[続行]** を選択します。
+     
+     > [!NOTE]
+     > リポジトリが表示されない場合は、GitHub で Azure App Service を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]**  >  **[アプリケーション]**  >  **[Authorized OAuth Apps]\(認可された OAuth アプリ\)** の順に移動します。 **[Azure App Service]** を選択し、次に **[許可]\(Grant\)** を選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
+       
+    **[ビルド]** セクションで、Azure Pipelines でビルド タスクを実行するために使用する必要がある Azure DevOps 組織、プロジェクト、言語フレームワークを指定した後、 **[続行]** を選択します。
 
-**[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
+   ![ビルド プロバイダー](media/app-service-continuous-deployment/build-configure.png)
 
-構成が完了したら、選択したリポジトリ内の新しいコミットが App Service アプリに継続的にデプロイされます。
+1. ビルド プロバイダーを構成したら、 **[概要]** ページで設定を確認し、 **[完了]** を選択します。
 
-![](media/app-service-continuous-deployment/github-finished.png)
+   ![ビルド プロバイダー](media/app-service-continuous-deployment/summary.png)
+   
+1. 選択したリポジトリおよびブランチでの新しいコミットが App Service に継続的にデプロイされるようになりました。 **[管理者用センター]** ページで、コミットとデプロイを追跡できます。
+   
+   ![管理者用センターでコミットとデプロイを追跡する](media/app-service-continuous-deployment/github-finished.png)
 
-## <a name="deploy-continuously-from-bitbucket"></a>BitBucket からの継続的デプロイ
+#### <a name="azure-repos--azure-pipelines"></a>Azure Repos と Azure Pipelines
 
-BitBucket を使用する継続的デプロイを有効にするには、[Azure Portal](https://portal.azure.com) の App Service アプリ のページに移動します。
+1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択した後、デプロイする Web アプリを選択します。 
+   
+1. アプリのページで、左側のメニューから **[デプロイ センター]** を選択します。
 
-左側のメニューで、**[デプロイ センター]** > **[BitBucket]** > **[承認]** をクリックします。 承認のプロンプトに従います。 
+1. **[デプロイ センター]** ページで、ソース管理プロバイダーとして **[Azure Repos]** を選択し、 **[続行]** を選択します。
 
-![](media/app-service-continuous-deployment/bitbucket-choose-source.png)
+    ![ソース管理 (source control)](media/app-service-continuous-deployment/deployment-center-src-control.png)
 
-BitBucket の承認は、1 回のみ実行する必要があります。 既に承認されている場合は、**[続行]** をクリックします。 **[アカウントの変更]** をクリックすることで、承認された BitBucket アカウントを変更できます。
+1. **[ビルド プロバイダー]** ページで **[Azure Pipelines (プレビュー)]** を選択した後、 **[続行]** を選択します。
 
-![](media/app-service-continuous-deployment/bitbucket-continue.png)
+    ![ソース管理 (source control)](media/app-service-continuous-deployment/azure-pipelines.png)
 
-**[構成]** ページで、継続的デプロイのソースになるリポジトリとブランチを選択します。 完了したら、**[続行]** をクリックします。
+1. **[構成]** ページの **[コード]** セクションで、継続的デプロイのソースになる**組織**、**リポジトリ**、および**ブランチ**を選択し、 **[続行]** を選択します。
 
-**[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
+   > [!NOTE]
+   > 既存の Azure DevOps 組織が一覧に表示されていない場合は、それをお使いの Azure サブスクリプションにリンクしなければならない場合があります。 詳細については、「[Define your CD release pipeline](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)」(CD リリース パイプラインを定義する) を参照してください。
 
-構成が完了したら、選択したリポジトリ内の新しいコミットが App Service アプリに継続的にデプロイされます。
+   **[ビルド]** セクションで、Azure Pipelines でビルド タスクを実行するために使用する必要がある Azure DevOps 組織、プロジェクト、言語フレームワークを指定した後、 **[続行]** を選択します。
 
-## <a name="deploy-continuously-from-azure-repos-devops-services"></a>Azure Repos (DevOps Services) から継続的にデプロイする
+   ![ビルド プロバイダー](media/app-service-continuous-deployment/build-configure.png)
 
-[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index) による継続的デプロイを有効にするには、[Azure portal](https://portal.azure.com) の App Service アプリのページに移動します。
+1. ビルド プロバイダーを構成したら、 **[概要]** ページで設定を確認し、 **[完了]** を選択します。  
+     
+   ![ビルド プロバイダー](media/app-service-continuous-deployment/summary-azure-pipelines.png)
 
-左側のメニューで、**[デプロイ センター]** > **[Azure Repos]** > **[続行]** をクリックします。 
-
-![](media/app-service-continuous-deployment/vsts-choose-source.png)
-
-**[ビルド プロバイダー]** ページで、ビルド プロバイダーを選択し、**[続行]** をクリックします。
-
-> [!NOTE]
-> 一覧にない既存の Azure DevOps Services 組織を使用する場合、[Azure DevOps Services 組織を Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
-
-### <a name="option-1-use-app-service-kudu-build-server"></a>オプション 1: App Service Kudu ビルド サーバーを使用する
-
-**[構成]** ページで、継続的デプロイのソースになる Azure DevOps Services 組織、プロジェクト、リポジトリ、およびブランチを選択します。 完了したら、**[続行]** をクリックします。
-
-### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>オプション 2: Azure DevOps Services の継続的デリバリーを使用する
-
-> [!NOTE]
-> App Service で必要な Azure Pipelines を Azure DevOps Services 組織に作成するには、Azure アカウントが Azure サブスクリプションの**所有者**ロールを持っている必要があります。
->
-
-**[構成]** ページの **[コード]** セクションで、継続的デプロイのソースになる Azure DevOps Services 組織、プロジェクト、リポジトリ、およびブランチを選択します。 完了したら、**[続行]** をクリックします。
-
-**[構成]** ページの **[ビルド]** セクションで、選択されたリポジトリに対して Azure DevOps Services がビルド タスクを実行するために使用する必要がある言語フレームワークを指定します。 完了したら、**[続行]** をクリックします。
-
-**[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
-
-App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 [デプロイ スロットを有効にする](deploy-staging-slots.md)かどうかを選択し、**[続行]** をクリックします。 
-
-### <a name="finish-configuration"></a>構成を終了する
-
-**[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
-
-構成が完了したら、選択したリポジトリ内の新しいコミットが App Service アプリに継続的にデプロイされます。
+1. 選択したリポジトリおよびブランチでの新しいコミットが App Service に継続的にデプロイされるようになりました。 **[管理者用センター]** ページで、コミットとデプロイを追跡できます。
 
 ## <a name="disable-continuous-deployment"></a>継続的なデプロイの無効化
 
-継続的デプロイを無効にするには、[Azure Portal](https://portal.azure.com) の App Service アプリ のページに移動します。
+継続的なデプロイを無効にするには、アプリの **[管理者用センター]** ページの上部にある **[切断]** を選択します。
 
-左側のメニューで、**[デプロイ センター]** > **[GitHub]** または **[Azure DevOps Services]** または **[BitBucket]** > **[切断]** をクリックします。
-
-![](media/app-service-continuous-deployment/disable.png)
+![継続的なデプロイの無効化](media/app-service-continuous-deployment/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
+## <a name="use-unsupported-repos"></a>サポートされていないリポジトリを使用する
+
+Windows アプリの場合、ポータルで直接サポートされていないクラウド Git または Mercurial リポジトリ ([GitLab](https://gitlab.com/) など) からの継続的なデプロイを手動で構成できます。 これを行うには、 **[デプロイ センター]** ページで [外部] ボックスを選択します。 詳細については、[手動の手順を使用した継続的デプロイの設定](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)に関するページを参照してください。
+
 ## <a name="additional-resources"></a>その他のリソース
 
-* [継続的なデプロイに関する一般的な問題の調査方法](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]
-* [Git に関するドキュメント]
+* [継続的なデプロイに関する一般的な問題の調査](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [Azure PowerShell の使用](/powershell/azureps-cmdlets-docs)
+* [Git のドキュメント](https://git-scm.com/documentation)
 * [プロジェクト Kudu](https://github.com/projectkudu/kudu/wiki)
-* [Use Azure to automatically generate a CI/CD pipeline to deploy an ASP.NET 4 app](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic) (Azure を使用して、ASP.NET 4 アプリをデプロイする CI/CD パイプラインを自動的に生成する)
-
-[Azure portal]: https://portal.azure.com
-[Azure DevOps portal]: https://azure.microsoft.com/services/devops/
-[Installing Git]: https://git-scm.com/book/en/Getting-Started-Installing-Git
-[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: /powershell/azureps-cmdlets-docs
-[Git に関するドキュメント]: https://git-scm.com/documentation
 
 [Create a repo (GitHub) (リポジトリの作成 (GitHub))]: https://help.github.com/articles/create-a-repo
 [Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Azure DevOps Services で作業を始める]: https://docs.microsoft.com/azure/devops/user-guide/devops-alm-overview
+[新しい Git リポジトリの作成 (Azure Repos)]: /azure/devops/repos/git/creatingrepo

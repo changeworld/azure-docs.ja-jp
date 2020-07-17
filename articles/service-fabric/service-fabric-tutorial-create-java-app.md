@@ -1,33 +1,23 @@
 ---
-title: Azure で Service Fabric 上に Java アプリを作成する | Microsoft Docs
+title: チュートリアル:Azure Service Fabric で Java アプリを作成する
 description: このチュートリアルでは、フロントエンドを備えたリライアブル サービス Java アプリケーションと Reliable Services ステートフル バックエンドを作成し、クラスターにアプリケーションをデプロイする方法について説明します。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: cf1ede2db8dbdc7557775cf7b22dde53b69280da
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314588"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81314236"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル:Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
+# <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>チュートリアル:Azure Service Fabric 上に Java API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
 
-このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、クラスター内のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。 また、[Java Reliable Services のクイック スタート](service-fabric-quickstart-java-reliable-services.md)に従うことも検討してください。
+このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、Azure Service Fabric 上のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。 また、[Java Reliable Services のクイックスタート](service-fabric-quickstart-java-reliable-services.md)に従うことも検討してください。
 
-
-![ローカルの投票アプリ](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Service Fabric の投票サンプル](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -57,19 +47,19 @@ ms.locfileid: "58314588"
 
 まず、投票アプリケーションの Web フロントエンドを作成します。 AngularJS を使用する Web UI は、軽量 HTTP サーバーを実行する Java ステートレス サービスに要求を送信します。 このサービスは各要求を処理し、投票を保存するためにリモート プロシージャ呼び出しをステートフル サービスに送信します。 
 
-1. Eclipse を起動します。
+1. Eclipse を開きます。
 
-2. **[File]\(ファイル\)**->**[New]\(新規\)**->**[Other]\(その他\)**->**[Service Fabric]** ->**[Service Fabric Project]\(Service Fabric プロジェクト\)** の順に選択して、プロジェクトを作成します。
+2. **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[Other]\(その他\)**  >  **[Service Fabric]**  >  **[Service Fabric Project]\(Service Fabric プロジェクト\)** の順に選択して、プロジェクトを作成します。
 
-    ![Eclipse の新規プロジェクトのダイアログ ボックス](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
+    ![Eclipse での新しい Service Fabric プロジェクト](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
-3. **[ServiceFabric Project Wizard]\(ServiceFabric プロジェクト ウィザード\)** ダイアログで、プロジェクトに **Voting** という名前を付け、**[Next]\(次へ\)** を押します。
+3. **[ServiceFabric Project Wizard]\(ServiceFabric プロジェクト ウィザード\)** ダイアログで、プロジェクトに **Voting** という名前を付け、 **[Next]\(次へ\)** を選択します。
 
-    ![新しいサービス ダイアログで Java ステートレス サービスを選択する](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
+    ![新しいサービス ダイアログで Java ステートレス サービスを選択する](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
-4. **[Add Service]\(サービスの追加\)** ページで、**[Stateless Service]\(ステートレス サービス\)** を選択し、サービスに **VotingWeb** という名前を付けます。 **[Finish]\(完了\)** をクリックしてプロジェクトを作成します。
+4. **[Add Service]\(サービスの追加\)** ページで、 **[Stateless Service]\(ステートレス サービス\)** を選択し、サービスに **VotingWeb** という名前を付けます。 **[Finish]\(完了\)** を選択してプロジェクトを作成します。
 
-    ![ステートレス サービスの作成]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
+    ![Service Fabric プロジェクトのステートレス サービスを作成する]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 
     Eclipse によってアプリケーションとサービス プロジェクトが作成され、Package Explorer に表示されます。
 
@@ -92,9 +82,9 @@ ms.locfileid: "58314588"
 
 1. *VotingApplication* ディレクトリを展開して *VotingApplication/VotingWebPkg/Code* ディレクトリに移動します。
 
-2. *Code* ディレクトリを右クリックし、**[New]\(新規\)**->**[Folder]\(フォルダー\)** の順にクリックします。
+2. *Code* ディレクトリを右クリックし、 **[New]\(新規\)**  >  **[Folder]\(フォルダー\)** の順に選択します。
 
-3. フォルダーに *wwwroot* という名前を付け、**[Finish]\(完了\)** をクリックします。
+3. フォルダーに *wwwroot* という名前を付け、 **[Finish]\(完了\)** を選択します。
 
     ![Eclipse によって wwwroot フォルダーが作成される](./media/service-fabric-tutorial-create-java-app/create-wwwroot-folder.png)
 
@@ -229,7 +219,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>HTTPCommunicationListener.java ファイルを追加する
 
-HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\) -> [File]\(ファイル\)** の順に選択します。  ファイルに *HttpCommunicationListener.java* という名前を付け、**[Finish]\(完了\)** をクリックします。
+HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\)**  >  **[File]\(ファイル\)** の順に選択します。  ファイルに *HttpCommunicationListener.java* という名前を付け、 **[Finish]\(完了\)** を選択します。
 
 ファイルの内容を次のように置き換え、変更を保存します。  後の HttpCommunicationListener.java ファイルの更新では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
 
@@ -409,15 +399,15 @@ VotingWeb サービス フロントエンド サービスが作成されると�
 
 Service Fabric では、Reliable Collection によってデータがサービス内に一貫して確実に格納されます。 Reliable Collection は、可用性が高く信頼できる一連のコレクション クラスです。 Java コレクションを使用したことがある方は、これらのクラスの使用法をもうよくご存じでしょう。
 
-1. Package Explorer で、アプリケーション プロジェクト内の **Voting** を右クリックし、**[Service Fabric] > [Add Service Fabric Service]\(Service Fabric サービスの追加\)** の順に選択します。
+1. Package Explorer で、アプリケーション プロジェクト内の **Voting** を右クリックし、 **[Service Fabric]**  >  **[Add Service Fabric Service]\(Service Fabric サービスの追加\)** の順に選択します。
 
-2. **[Add Service]\(サービスの追加\)** ダイアログで、**[Stateful Service]\(ステートフル サービス\)** を選択し、サービスに **VotingDataService** という名前を付けて **[Add Service]\(サービスの追加\)** をクリックします。
+2. **[Add Service]\(サービスの追加\)** ダイアログで、 **[Stateful Service]\(ステートフル サービス\)** を選択し、サービスに **VotingDataService** という名前を付けて **[Add Service]\(サービスの追加\)** を選択します。
 
     作成したサービス プロジェクトでは、2 つのサービスがアプリケーションに含まれます。 アプリケーションのビルドを続けながら、同じ方法でさらにサービスを追加することができます。 それぞれを個別にバージョン管理およびアップグレードできます。
 
 3. Eclipse によってサービス プロジェクトが作成され、Package Explorer に表示されます。
 
-    ![ソリューション エクスプローラー](./media/service-fabric-tutorial-create-java-app/packageexplorercompletejava.png)
+    ![Eclipse Project Explorer](./media/service-fabric-tutorial-create-java-app/service-fabric-package-explorer-java.png)
 
 ### <a name="add-the-votingdataservicejava-file"></a>VotingDataService.java ファイルを追加する
 
@@ -556,9 +546,9 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
  次の手順は、フロントエンド ステートレス サービスとバックエンド サービスを接続することです。 どちらのサービスも、投票アプリケーションの動作を定義する VotingRPC と呼ばれるインターフェイスを利用しています。 このインターフェイスは、フロントエンド サービスとバックエンド サービスの両方によって実装され、2 つのサービス間のリモート プロシージャ コール (RPC) を可能にします。 残念ながら、Eclipse では Gradle サブプロジェクトの追加がサポートされていないため、このインターフェイスを含むパッケージを手動で追加する必要があります。
 
-1. Package Explorer で **Voting** プロジェクトを右クリックし、**[New]\(新規\) -> [Folder]\(フォルダー\)** の順にクリックします。 フォルダーに **VotingRPC/src/rpcmethods** という名前を付けます。
+1. Package Explorer で **Voting** プロジェクトを右クリックし、 **[New]\(新規\)**  >  **[Folder]\(フォルダー\)** の順に選択します。 フォルダーに **VotingRPC/src/rpcmethods** という名前を付けます。
 
-    ![VotingRPC パッケージを作成する](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
+    ![Eclipse Package Explorer で VotingRPC パッケージを作成する](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
 3. *Voting/VotingRPC/src/rpcmethods* の下に *VotingRPC.java* という名前のファイルを作成し、この **VotingRPC.java** ファイル内に以下を貼り付けます。 
 
@@ -721,7 +711,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 - Web フロントエンド サービス (VotingWeb) - Web ページを提供し、バックエンド サービスとやり取りするための API を公開する Java Web フロントエンド サービス。
 - バックエンド サービス (VotingDataService) - 投票を保持するためにリモート プロシージャ コール (RPC) を介して呼び出されるメソッドを定義する Java Web サービス。
 
-![アプリケーション ダイアグラム](./media/service-fabric-tutorial-create-java-app/walkthroughjavavoting.png)
+![投票のサンプルの図](./media/service-fabric-tutorial-create-java-app/walkthrough-java-voting.png)
 
 アプリケーションでアクション (項目の追加、投票、項目の削除) を実行すると、次のイベントが発生します。
 1. JavaScript が、適切な要求を Web フロントエンド サービスの Web API に HTTP 要求として送信します。
@@ -892,14 +882,14 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 これで、アプリケーションをローカル Service Fabric クラスターにデプロイする準備が整いました。
 
-1. Package Explorer で **Voting** プロジェクトを右クリックし、**[Service Fabric] -> [Build Application]\(アプリケーションのビルド\)** の順にクリックして、アプリケーションをビルドします。
+1. Package Explorer で **Voting** プロジェクトを右クリックし、 **[Service Fabric]**  >  **[Build Application]\(アプリケーションのビルド\)** の順に選択して、アプリケーションをビルドします。
 
 2. ローカル Service Fabric クラスターを実行します。 この手順は開発環境 (Mac または Linux) によって異なります。
 
-    Mac を使用している場合は、次のコマンドを使用してローカル クラスターを実行します。**-v** パラメーターに渡すコマンドは、自分のワークスペースへのパスに置き換えます。
+    Mac を使用している場合は、次のコマンドを使用してローカル クラスターを実行します。 **-v** パラメーターに渡すコマンドは、自分のワークスペースへのパスに置き換えます。
 
     ```bash
-    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
     ```
     [OS X の設定ガイド](service-fabric-get-started-mac.md)で、詳細な手順を参照してください。
 
@@ -910,11 +900,11 @@ class VotingDataService extends StatefulService implements VotingRPC {
     ```
     [Linux の設定ガイド](service-fabric-get-started-linux.md)で、詳細な手順を参照してください。
 
-4. Eclipse の Package Explorer で、**Voting** プロジェクトを右クリックし、**[Service Fabric] -> [Publish Application...]\(アプリケーションの発行...\)** の順にクリックします 
-5. **[Publish Application]\(アプリケーションの発行\)** ウィンドウで、ドロップダウンから **[Local.json]** を選択し、**[Publish]\(発行\)** をクリックします。
+4. Eclipse の Package Explorer で、**Voting** プロジェクトを右クリックし、 **[Service Fabric]**  >  **[Publish Application]\(アプリケーションの発行\)** の順に選択します 
+5. **[Publish Application]\(アプリケーションの発行\)** ウィンドウで、ドロップダウンから **[Local.json]** を選択し、 **[Publish]\(発行\)** を選択します。
 6. Web ブラウザーを使用して http:\//localhost:8080 にアクセスし、ローカル Service Fabric クラスターで実行されているアプリケーションを表示します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

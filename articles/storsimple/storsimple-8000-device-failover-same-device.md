@@ -1,5 +1,5 @@
 ---
-title: StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs
+title: チュートリアル - StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 description: StorSimple デバイスを同じデバイスにフェールオーバーする方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dde01f9b91ff5a04ddb3fcc8d5f0c535278b0539
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809063"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398071"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 
@@ -29,7 +29,7 @@ ms.locfileid: "55809063"
 
 デバイスのフェールオーバーと災害から復旧するための使用方法の詳細については、「[Failover and disaster recovery for StorSimple 8000 series devices](storsimple-8000-device-failover-disaster-recovery.md)」(StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー) を参照してください。
 
-物理デバイスを別の物理デバイスにフェールオーバーするには、「[Fail over to a StorSimple 8000 series physical device](storsimple-8000-device-failover-physical-device.md)」(StorSimple 物理デバイスにフェールオーバーする) を参照してください。 StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオーバーするには、「[Fail over to a StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)」(StorSimple クラウド アプライアンスにフェールオーバーする) を参照してください。
+物理デバイスを別の物理デバイスにフェールオーバーするには、「[Fail over to a StorSimple 8000 series physical device](storsimple-8000-device-failover-physical-device.md)」(StorSimple 物理デバイスにフェールオーバーする) を参照してください。 StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオーバーするには、「[Fail over to a StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md)」(StorSimple Cloud Appliance にフェールオーバーする) を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -43,11 +43,11 @@ ms.locfileid: "55809063"
 
 1. デバイスにあるすべてのボリュームのクラウド スナップショットを取得します。 詳細については、「[Use StorSimple Device Manager service to create backups](storsimple-8000-manage-backup-policies-u2.md)」(StorSimple デバイス マネージャー サービスを使用してバックアップを作成する) を参照してください。
 2. デバイスを工場出荷時の既定値にリセットします。 [StorSimple デバイスを工場出荷時の既定の設定にリセットする方法](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)に関するページの詳細な指示に従います。
-3. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** を選択します。 **[デバイス]** ブレードでは、古いデバイスは **[オフライン]** と表示されます。
+3. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** を選択します。 **[デバイス]** ブレードでは、古いデバイスは **[オフライン]** と表示されます。
 
     ![ソース デバイスはオフライン](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
-4. StorSimple デバイス マネージャー サービスで再度デバイスを構成して登録します。 新しく登録されたデバイスには、**[セットアップの準備が完了しました]** と表示されます。 新しいデバイスのデバイス名は古いデバイスと同じですが、デバイスが出荷時の既定値にリセットされ、再登録されたことを示すために、数字が追加されます。
+4. StorSimple デバイス マネージャー サービスで再度デバイスを構成して登録します。 新しく登録されたデバイスには、 **[セットアップの準備が完了しました]** と表示されます。 新しいデバイスのデバイス名は古いデバイスと同じですが、デバイスが出荷時の既定値にリセットされ、再登録されたことを示すために、数字が追加されます。
 
     ![新しく登録され、セットアップの準備が完了したデバイス](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
 5. 新しいデバイスで、デバイスのセットアップを完了します。 詳細については、「[手順 4.デバイスの最小セットアップを完了する](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup)」を参照してください。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
@@ -65,7 +65,7 @@ ms.locfileid: "55809063"
 
 7. **[ジョブ]** ブレードから監視できるデバイスの復元ジョブが作成されます。
 
-8. ジョブが正常に完了したら、新しいデバイスにアクセスし、**[ボリューム コンテナー]** ブレードに移動します。 すべてのボリューム コンテナーが古いデバイスから新しいデバイスに移行されていることを確認します。
+8. ジョブが正常に完了したら、新しいデバイスにアクセスし、 **[ボリューム コンテナー]** ブレードに移動します。 すべてのボリューム コンテナーが古いデバイスから新しいデバイスに移行されていることを確認します。
 
    ![ボリューム コンテナーが移行された](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "55809063"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * フェールオーバーの実行後、必要に応じて [StorSimple デバイスを非アクティブ化または削除](storsimple-8000-deactivate-and-delete-device.md)します。
 * StorSimple デバイス マネージャー サービスを使用する方法の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。

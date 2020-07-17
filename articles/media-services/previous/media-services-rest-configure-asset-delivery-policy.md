@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e4e565b0b5272de19458617a9c4bd3509907cce
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 09f0371bc189fcf7b25ec3261e2e1f5eaf1892ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295727"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78194493"
 ---
 # <a name="configuring-asset-delivery-policies"></a>資産配信ポリシーの構成
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "58295727"
 
 ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があります。 資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。 たとえば、Advanced Encryption Standard (AES) エンベロープ暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を **DynamicEnvelopeEncryption**に設定します。 ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を **NoDynamicEncryption**に設定します。 これらのポリシーの種類を構成する例を次に示します。
 
-資産の配信ポリシーの構成方法に応じて、動的パッケージングと動的暗号化を実行し、次のストリーミング プロトコルを使用してストリームを行うことができます:スムーズ ストリーミング、HLS、MPEG DASH ストリーム。
+資産の配信ポリシーの構成方法に応じて、動的パッケージングと動的暗号化を実行し、次のストリーミング プロトコル (スムーズ ストリーミング、HLS、MPEG DASH ストリーム) を使用してストリームを行うことができます。
 
 次の一覧に、スムーズ、HLS、DASH でストリームを行うために使用するフォーマットを示します。
 
@@ -71,8 +71,8 @@ MPEG DASH
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
 ## <a name="clear-asset-delivery-policy"></a>資産の配信ポリシーを解除する
-### <a id="create_asset_delivery_policy"></a>資産の配信ポリシーを作成する
-次の HTTP 要求により、動的暗号化の適用なしで、次のいずれかのプロトコルでストリームを配信することを指定する資産配信ポリシーが作成されます:MPEG DASH、HLS、および Smooth Streaming プロトコル。 
+### <a name="create-asset-delivery-policy"></a><a id="create_asset_delivery_policy"></a>資産の配信ポリシーを作成する
+次の HTTP 要求により、動的暗号化の適用なしで、MPEG DASH、HLS、Smooth Streaming のいずれかのプロトコルでストリームを配信することを指定する資産配信ポリシーが作成されます。 
 
 AssetDeliveryPolicy を作成する際に指定できる値については、 [AssetDeliveryPolicy を定義するときに使用される種類](#types) セクションをご覧ください。   
 
@@ -85,7 +85,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 4651882c-d7ad-4d5e-86ab-f07f47dcb41e
     Host: media.windows.net
 
@@ -120,7 +120,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a id="link_asset_with_asset_delivery_policy"></a>資産を資産配信ポリシーにリンクする
+### <a name="link-asset-with-asset-delivery-policy"></a><a id="link_asset_with_asset_delivery_policy"></a>資産を資産配信ポリシーにリンクする
 次の HTTP 要求により、指定した資産が資産配信ポリシーにリンクされます。
 
 要求:
@@ -132,7 +132,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 56d2763f-6e72-419d-ba3c-685f6db97e81
     Host: media.windows.net
 
@@ -145,9 +145,9 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
 
 ## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption 資産の配信ポリシー
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>EnvelopeEncryption タイプのコンテンツ キーを作成して資産にリンクする
-DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、資産を EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。 詳細については、次を参照してください。[ コンテンツ キーの作成](media-services-rest-create-contentkey.md)に関する記事。
+DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、資産を EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。 詳細については、「 [コンテンツ キーの作成](media-services-rest-create-contentkey.md)」を参照してください。
 
-### <a id="get_delivery_url"></a>配信 URL を取得する
+### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>配信 URL を取得する
 前の手順で作成したコンテンツ キーの指定された配信方法向けの配信 URL を取得します。 クライアントは取得した URL を使用し、保護されたコンテンツを再生するために AES キーまたは PlayReady ライセンスを要求します。
 
 HTTP 要求の本文に含める URL の種類を指定します。 PlayReady を使用してコンテンツを保護する場合は、keyDeliveryType に 1 を指定して({"keyDeliveryType":1})、Media Services PlayReady ライセンス取得 URL を要求します。 エンベロープ暗号化を使用してコンテンツを保護する場合は、keyDeliveryType に 2 を指定して ({"keyDeliveryType":2})、キー取得 URL を要求します。
@@ -160,7 +160,7 @@ HTTP 要求の本文に含める URL の種類を指定します。 PlayReady �
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 569d4b7c-a446-4edc-b77c-9fb686083dd8
     Host: media.windows.net
     Content-Length: 21
@@ -200,7 +200,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.windows.net
 
@@ -231,7 +231,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
 
 ## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption 資産の配信ポリシー
 ### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>CommonEncryption タイプのコンテンツ キーを作成して資産にリンクする
-DynamicCommonEncryption 配信ポリシーを指定する際に、資産を CommonEncryption タイプのコンテンツ キーにリンクする必要があります。 詳細については、次を参照してください。[ コンテンツ キーの作成](media-services-rest-create-contentkey.md)に関する記事。
+DynamicCommonEncryption 配信ポリシーを指定する際に、資産を CommonEncryption タイプのコンテンツ キーにリンクする必要があります。 詳細については、「 [コンテンツ キーの作成](media-services-rest-create-contentkey.md)」を参照してください。
 
 ### <a name="get-delivery-url"></a>配信 URL を取得する
 前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。 クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。 詳細については、「 [配信 URL を取得する](#get_delivery_url)」をご覧ください
@@ -251,16 +251,16 @@ AssetDeliveryPolicy を作成する際に指定できる値については、 [A
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.windows.net
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Widevine DRM を使用してコンテンツを保護する場合は、WidevineLicenseAcquisitionUrl (値 7 が設定されています) を使用するように AssetDeliveryConfiguration の値を更新し、ライセンス配信サービスの URL を指定します。 次の AMS パートナーを使用して Widevine ライセンスを提供できます:[Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/)。
+Widevine DRM を使用してコンテンツを保護する場合は、WidevineLicenseAcquisitionUrl (値 7 が設定されています) を使用するように AssetDeliveryConfiguration の値を更新し、ライセンス配信サービスの URL を指定します。 AMS パートナー、[Axinom](https://www.axinom.com)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/) を通してWidevine ライセンスを提供できます。
 
-例:  
+次に例を示します。 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
@@ -272,7 +272,7 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
 ### <a name="link-asset-with-asset-delivery-policy"></a>資産を資産配信ポリシーにリンクする
 「 [資産を資産配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)
 
-## <a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
@@ -421,6 +421,10 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
         /// </summary>
         WidevineLicenseAcquisitionUrl
     }
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

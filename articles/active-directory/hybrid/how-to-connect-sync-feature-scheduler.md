@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139285"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230115"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ (同期エンジン) について説明します。
@@ -48,7 +48,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 このコマンドレットを実行するときに「 **sync コマンドまたはコマンドレットを使用できません** 」と表示される場合、PowerShell モジュールが読み込まれません。 この問題は、PowerShell 制限レベルが既定の設定よりも高いドメイン コント ローラーまたはサーバーで Azure AD Connect を実行する場合に発生する可能性があります。 このエラーが発生する場合、 `Import-Module ADSync` を実行してコマンドレットを使用できるようにします。
 
 * **AllowedSyncCycleInterval**。 Azure AD で利用できる同期サイクルの最短の時間間隔です。 この設定よりも頻繁に同期してサポートを受けることはできません。
-* **CurrentlyEffectiveSyncCycleInterval**。 現時点で有効になっているスケジュールです。 AllowedSyncInterval よりも高い頻度でない場合は、CustomizedSyncInterval と同じ値です (設定されている場合)。 1.1.281 より前のビルドを使用している場合、CustomizedSyncCycleInterval を変更すると、次回の同期サイクルの後に有効になります。 ビルド 1.1.281 以降を使用している場合、変更はすぐに反映されます。
+* **CurrentlyEffectiveSyncCycleInterval**。 現時点で有効になっているスケジュールです。 AllowedSyncInterval よりも高い頻度でない場合は、CustomizedSyncInterval と同じ値です (設定されている場合)。 1\.1.281 より前のビルドを使用している場合、CustomizedSyncCycleInterval を変更すると、次回の同期サイクルの後に有効になります。 ビルド 1.1.281 以降を使用している場合、変更はすぐに反映されます。
 * **CustomizedSyncCycleInterval**。 既定の 30 分以外の頻度でスケジューラを実行する場合は、この設定を構成します。 上の図では、スケジューラは 1 時間ごとに実行されるように設定されています。 この設定を AllowedSyncInterval より低い値に設定すると、その値が使用されます。
 * **NextSyncCyclePolicyType**。 Delta または Initial です。 次回の実行で、変更の差分だけを処理するのか、完全なインポートと同期を行って、新規の規則と変更した規則のすべてを再処理するのかを定義します。
 * **NextSyncCycleStartTimeInUTC**。 スケジューラが次回の同期サイクルを開始する時刻です。
@@ -72,7 +72,7 @@ Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 構文: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
- d - 日数、HH - 時間数、mm - 分数、ss - 秒数
+d - 日数、HH - 時間数、mm - 分数、ss - 秒数
 
 例: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 スケジューラが 3 時間ごとに実行されるように変更されます。
@@ -93,7 +93,7 @@ Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-
 スケジューラは、既定では 30 分ごとに実行されます。 場合によっては、スケジュールされたサイクル間に同期サイクルを実行したり、別の種類を実行する必要があったりします。
 
 ### <a name="delta-sync-cycle"></a>差分同期サイクル
- 差分同期サイクルには、以下の手順が含まれています。
+差分同期サイクルには、以下の手順が含まれています。
 
 
 - すべてのコネクタでの差分インポート
@@ -157,7 +157,7 @@ Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-
 同期サイクルの実行中は、構成を変更できません。 スケジューラが処理を終了するまで待つこともできますが、すぐに変更を行うことができるように、スケジューラを停止することもできます。 現在のサイクルを停止しても害はなく、保留になった変更は次回の実行で処理されます。
 
 1. まず、PowerShell コマンドレット `Stop-ADSyncSyncCycle` で、現在のサイクルを停止するようスケジューラに指示します。
-2. 1.1.281 より前のビルドを使用している場合は、スケジューラを停止しても、現在のコネクタの現在のタスクは停止しません。 コネクタを強制的に停止させるには、以下の操作を行います。![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. 1\.1.281 より前のビルドを使用している場合は、スケジューラを停止しても、現在のコネクタの現在のタスクは停止しません。 コネクタを強制的に停止させるには、以下の操作を行います。![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * [スタート] メニューから **[Synchronization Service (同期サービス)]** を起動します。 **[コネクタ]** に移動し、状態が **[実行中]** のコネクタを強調表示して、[操作] で **[停止]** を選択します。
 
 スケジューラはアクティブなままで、次の機会に再度開始されます。
@@ -199,12 +199,12 @@ Get-ADSyncConnectorRunStatus
 ```
 
 ![Connector Run Status](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
- 上の図の 1 行目は、同期エンジンがアイドル状態であることを示しています。 2 行目は、Azure AD コネクタが実行されていることを示しています。
+上の図の 1 行目は、同期エンジンがアイドル状態であることを示しています。 2 行目は、Azure AD コネクタが実行されていることを示しています。
 
 ## <a name="scheduler-and-installation-wizard"></a>スケジューラとインストール ウィザード
 インストール ウィザードを開始すると、スケジューラは一時的に中断されます。 この動作は、構成が変更されても、同期エンジンがアクティブに実行されていると、この設定を適用できないためです。 このようなしくみになっているので、インストール ウィザードを開いたままにしないでください。開いたままにすると、同期エンジンが同期操作を実行できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

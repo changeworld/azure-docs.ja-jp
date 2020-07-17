@@ -1,23 +1,20 @@
 ---
-title: Azure Container Registry の geo レプリケーション
-description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。
-services: container-registry
+title: レジストリの geo レプリケーション
+description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。
 author: stevelas
-manager: jeconnoc
-ms.service: container-registry
-ms.topic: overview
-ms.date: 04/10/2018
+ms.topic: article
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541861"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74456448"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
-ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。
+ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。 
 
 geo レプリケートされたレジストリには次の利点があります。
 
@@ -60,18 +57,19 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 * すべてのリージョンにまたがる 1 つのレジストリ (`contoso.azurecr.io`) を管理すれば済む。
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
-* 1 つのレジストリにプッシュすれば済む。ローカル通知用のリージョン Webhook を含め、geo レプリケーションは ACR が管理する。
+* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成できます。
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
-geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。
+
+geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
 
 geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)限定の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 
 ![Azure Portal での SKU の切り替え](media/container-registry-skus/update-registry-sku.png)
 
-Premium レジストリの geo レプリケーションを構成するには、Azure Portal (https://portal.azure.com) にログインします。
+Premium レジストリの geo レプリケーションを構成するには、Azure Portal (https://portal.azure.com ) にログインします。
 
-Azure Container Registry に移動し、**[レプリケーション]** を選択します。
+Azure Container Registry に移動し、 **[レプリケーション]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ UI の [レプリケーション]](media/container-registry-geo-replication/registry-services.png)
 
@@ -83,13 +81,32 @@ Azure Container Registry に移動し、**[レプリケーション]** を選択
 * 緑色の六角形は、レプリカを構成可能なリージョンを表します。
 * 灰色の六角形は、レプリケーションをまだ利用できない Azure リージョンを表します。
 
-レプリカを構成するには、緑色の六角形を選択し、**[作成]** をクリックします。
+レプリカを構成するには、緑色の六角形を選択し、 **[作成]** をクリックします。
 
  ![Azure Portal の [レプリケーションの作成] UI](media/container-registry-geo-replication/create-replication.png)
 
-追加のレプリカを構成するには、他のリージョンの緑色の六角形を選択し、**[作成]** をクリックします。
+追加のレプリカを構成するには、他のリージョンの緑色の六角形を選択し、 **[作成]** をクリックします。
 
 ACR は、構成済みのレプリカ間でイメージの同期を開始します。 同期が完了すると、ポータルに *[準備完了]* と表示されます。 ポータルのレプリカの状態は自動的に更新されるわけではありません。 最新の状態を表示するには、更新ボタンを使用します。
+
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>geo レプリケーションされたレジストリの使用に関する注意点
+
+* geo レプリケーションされたレジストリの各リージョンは、設定後は独立しています。 Azure Container Registry の SLA は、geo レプリケーションされた各リージョンに適用されます。
+* geo レプリケーションされたレジストリからイメージをプッシュまたはプルすると、バックグラウンドの Azure Traffic Manager は最も近いリージョンにあるレジストリに要求を送信します。
+* イメージまたはタグの更新を最も近いリージョンにプッシュした後、Azure Container Registry がマニフェストとレイヤーを、選択された残りのリージョンにレプリケートするまでに、少し時間がかかります。 大きいイメージは、小さいイメージよりもレプリケートに時間がかかります。 イメージとタグは、最終的な整合性モデルを使用して、レプリケーションのリージョン間で同期されます。
+* geo レプリケーションされたレジストリへのプッシュ更新に依存するワークフローを管理するには、プッシュ イベントに応答するように [Webhook](container-registry-webhook.md) を構成することをお勧めします。 geo レプリケーションされたレジストリ内にリージョンの Webhook を設定して、geo レプリケーションされたすべてのリージョンにわたってプッシュ イベントが完了したときにそれを追跡できます。
+
+## <a name="delete-a-replica"></a>レプリカの削除
+
+レジストリのレプリカを構成した後に、それが不要になった場合はいつでも削除できます。 Azure portal またはその他のツール (Azure CLI の[az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) コマンドなど) を使用してレプリカを削除します。
+
+Azure portal でレプリカを削除するには、次の手順に従います。
+
+1. Azure Container Registry に移動し、 **[レプリケーション]** を選択します。
+1. レプリカの名前を選択し、 **[削除]** を選択します。 レプリカを削除することを確認します。
+
+> [!NOTE]
+> レジストリの "*ホーム リージョン*" (レジストリを作成した場所) でレジストリのレプリカを削除することはできません。 ホーム レプリカは、レジストリ自体の削除によってのみ削除できます。
 
 ## <a name="geo-replication-pricing"></a>geo レプリケーションの価格
 
@@ -97,11 +114,15 @@ geo レプリケーションは、Azure Container Registry の [Premium SKU](con
 
 前の例では、Contoso は、米国東部、カナダ中部、西ヨーロッパにレプリカを追加して、2 つのレジストリを 1 つに統合しました。 Contoso には、1 か月あたり 4 倍の Premium 料金が課金されます。追加の構成や管理は不要です。 各リージョンではイメージをローカルでプルできるようになったため、米国西部からカナダおよび米国東部へのネットワーク エグレス料金が発生することなく、パフォーマンスと信頼性が向上します。
 
-## <a name="summary"></a>まとめ
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>geo レプリカ レジストリでプッシュ操作の問題を解決する
+ 
+geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに*近くの*レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
+ 
+この問題が発生する場合、Linux ホスト上で、`dnsmasq` など、クライアント側 DNS キャッシュを適用することが 1 つの解決策です。 これでレジストリ名の解決に一貫性が与えられます。 Azure で Linux VM を使用してレジストリにプッシュしている場合、「[Azure での Linux 仮想マシンの DNS 名前解決のオプション](../virtual-machines/linux/azure-dns.md)」を参照してください。
 
-geo レプリケーションにより、リージョン データ センターを 1 つのグローバル クラウドとして管理できます。 イメージは多くの Azure サービスで使用されるので、ネットワーク上の近い場所での高速で信頼性の高いローカル イメージのプルを維持しながら、単一の管理プレーンによるメリットが得られます。
+イメージをプッシュするとき、DNS 解決を最も近くのレプリカに求めることで最適化するには、プッシュ操作のソースと同じ Azure リージョンか、Azure 外での作業となる場合、最も近くのリージョンで geo レプリカ レジストリを構成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Container Registry の geo レプリケーション](container-registry-tutorial-prepare-registry.md)に関する 3 部構成のチュートリアル シリーズを確認します。 これらのチュートリアルでは、geo レプリケートされたレジストリを作成する方法、コンテナーをビルドする方法、1 つの `docker push` コマンドを使用してリージョンの複数の Web App for Containers インスタンスにデプロイする方法を説明します。
 

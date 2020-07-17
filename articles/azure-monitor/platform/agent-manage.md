@@ -1,24 +1,16 @@
 ---
-title: Azure Log Analytics エージェントの管理 | Microsoft Docs
+title: Azure Log Analytics エージェントの管理
 description: この記事では、コンピューターに配置された Windows または Linux 用 Log Analytics エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/23/2019
-ms.author: magoedte
-ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+author: bwren
+ms.author: bwren
+ms.date: 06/14/2019
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234431"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -40,13 +32,13 @@ Windows VM 上のエージェントを、Log Analytics VM 拡張機能を使用�
 
 Windows エージェントの最新バージョンは、次の手順を実行することによって、Log Analytics ワークスペースからダウンロードできます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
+2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 
 3. Log Analytics ワークスペースの一覧からワークスペースを選択します。
 
-4. Log Analytics ワークスペースで、**[詳細設定]**、**[接続されたソース]**、**[Windows サーバー]** の順に選択します。
+4. Log Analytics ワークスペースで、 **[詳細設定]** 、 **[接続されたソース]** 、 **[Windows サーバー]** の順に選択します。
 
 5. **[Windows サーバー]** ページからの適切な **[Windows エージェントのダウンロード]** を選択して、Windows オペレーティング システムのプロセッサ アーキテクチャに応じてダウンロードします。
 
@@ -60,13 +52,13 @@ Windows エージェントの最新バージョンは、次の手順を実行す
 
 2. **MMASetup-\<プラットフォーム\>.exe** を実行して、セットアップ ウィザードを開始します。
 
-3. セットアップ ウィザードの最初のページで、**[次へ]** をクリックします。
+3. セットアップ ウィザードの最初のページで、 **[次へ]** をクリックします。
 
-4. **[Microsoft Monitoring Agent のセットアップ]** ダイアログ ボックスで、**[同意する]** をクリックしてライセンス契約に同意します。
+4. **[Microsoft Monitoring Agent のセットアップ]** ダイアログ ボックスで、 **[同意する]** をクリックしてライセンス契約に同意します。
 
-5. **[Microsoft Monitoring Agent のセットアップ]** ダイアログ ボックスで、**[アップグレード]** をクリックします。 状態ページに、アップグレードの進行状況が表示されます。
+5. **[Microsoft Monitoring Agent のセットアップ]** ダイアログ ボックスで、 **[アップグレード]** をクリックします。 状態ページに、アップグレードの進行状況が表示されます。
 
-6. **[Microsoft Monitoring Agent の構成が正常に完了しました。]**  ページが表示されたら、**[完了]** をクリックします。
+6. **[Microsoft Monitoring Agent の構成が正常に完了しました。]** ページが表示されたら、 **[完了]** をクリックします。
 
 #### <a name="to-upgrade-from-the-command-line"></a>コマンド ラインからアップグレードするには
 
@@ -99,11 +91,11 @@ Windows エージェントの最新バージョンは、次の手順を実行す
 
 2. **[コントロール パネル]** を開きます。
 
-3. **[Microsoft Monitoring Agent]** を選択した後、**[Azure Log Analytics]** タブをクリックします。
+3. **[Microsoft Monitoring Agent]** を選択した後、 **[Azure Log Analytics]** タブをクリックします。
 
-4. ワークスペースを削除する場合は、削除するワークスペースを選択し、**[削除]** をクリックします。 エージェントによる報告を停止するその他のワークスペースに対して、この手順を繰り返します。
+4. ワークスペースを削除する場合は、削除するワークスペースを選択し、 **[削除]** をクリックします。 エージェントによる報告を停止するその他のワークスペースに対して、この手順を繰り返します。
 
-5. ワークスペースを追加する場合は、**[追加]** をクリックし、**[Log Analytics ワークスペースの追加]** ダイアログ ボックスにワークスペース ID とワークスペース キー (主キー) を貼り付けます。 コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、[Azure クラウド] ドロップダウン リストから [Azure US Government] を選択します。
+5. ワークスペースを追加する場合は、 **[追加]** をクリックし、 **[Log Analytics ワークスペースの追加]** ダイアログ ボックスにワークスペース ID とワークスペース キー (主キー) を貼り付けます。 コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、[Azure クラウド] ドロップダウン リストから [Azure US Government] を選択します。
 
 6. **[OK]** をクリックして変更を保存します。
 
@@ -182,9 +174,9 @@ $mma.ReloadConfiguration()
 
 2. **[コントロール パネル]** を開きます。
 
-3. **[Microsoft Monitoring Agent]** を選択した後、**[プロキシ設定]** タブをクリックします。
+3. **[Microsoft Monitoring Agent]** を選択した後、 **[プロキシ設定]** タブをクリックします。
 
-4. **[プロキシ サーバーの使用]** をクリックし、プロキシ サーバーまたはゲートウェイの URL とポート番号を指定します。 プロキシ サーバーまたは Log Analytics ゲートウェイで認証が必要な場合は、認証するためのユーザー名とパスワードを入力し、**[OK]** をクリックします。
+4. **[プロキシ サーバーの使用]** をクリックし、プロキシ サーバーまたはゲートウェイの URL とポート番号を指定します。 プロキシ サーバーまたは Log Analytics ゲートウェイで認証が必要な場合は、認証するためのユーザー名とパスワードを入力し、 **[OK]** をクリックします。
 
 #### <a name="update-settings-using-powershell"></a>PowerShell を使用して設定を更新する
 
@@ -239,9 +231,9 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 #### <a name="uninstall-from-control-panel"></a>コントロール パネルからアンインストールする
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 
-2. **コントロール パネル**を開き、**[プログラムと機能]** をクリックします。
+2. **コントロール パネル**を開き、 **[プログラムと機能]** をクリックします。
 
-3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックし、**[はい]** をクリックします。
+3. **[プログラムと機能]** で、 **[Microsoft Monitoring Agent]** をクリックし、 **[アンインストール]** をクリックし、 **[はい]** をクリックします。
 
 >[!NOTE]
 >**MMASetup-\<platform\>.exe** をダブルクリックして、エージェント セットアップ ウィザードを実行することもできます。このファイルは、Azure portal でワークスペースからダウンロードできます。
@@ -271,11 +263,11 @@ System Center Operations Manager 管理グループに報告するように Wind
 
 2. **[コントロール パネル]** を開きます。
 
-3. **Microsoft Monitoring Agent** をクリックした後、**[Operations Manager]** タブをクリックします。
+3. **Microsoft Monitoring Agent** をクリックした後、 **[Operations Manager]** タブをクリックします。
 
 4. Operations Manager サーバーが Active Directory と統合されている場合は、 **[管理グループの割り当てを AD DS から自動的に更新する]** をクリックします。
 
-5. **[追加]** をクリックして、**[管理グループを追加する]** ダイアログ ボックスを開きます。
+5. **[追加]** をクリックして、 **[管理グループを追加する]** ダイアログ ボックスを開きます。
 
 6. **[管理グループ名]** フィールドに、管理グループの名前を入力します。
 
@@ -292,12 +284,14 @@ System Center Operations Manager 管理グループに報告するように Linu
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1.  `/etc/opt/omi/conf/omiserver.conf`
+1. `/etc/opt/omi/conf/omiserver.conf`
 
-2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)。
+2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します (例: `httpsport=1270`)。
 
 3. `sudo /opt/omi/bin/service_control restart` で OMI サーバーを再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-エージェントのインストールまたは管理中に問題が発生した場合は、[Linux エージェントのトラブルシューティング](agent-linux-troubleshoot.md)に関する記事を参照してください。
+- Linux エージェントのインストールまたは管理中に問題が発生した場合は、[Linux エージェントのトラブルシューティング](agent-linux-troubleshoot.md)に関する記事を参照してください。
+
+- Windows エージェントのインストールまたは管理中に問題が発生した場合は、[Windows エージェントのトラブルシューティング](agent-windows-troubleshoot.md)に関する記事を参照してください。

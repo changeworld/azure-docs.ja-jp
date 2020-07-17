@@ -1,24 +1,24 @@
 ---
-title: LinkedIn アカウント接続データの共有と同意 - Azure Active Directory | Microsoft Docs
+title: LinkedIn データの共有と同意 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で Microsoft のアプリを介して LinkedIn 統合がデータを共有する方法について説明します
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200448"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74025384"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn アカウント接続のデータ共有と同意
 
@@ -78,6 +78,6 @@ Microsoft のアカウントと LinkedIn のアカウントを接続するとき
 
 LinkedIn での個人データの使用に関して詳しくは、[LinkedIn のプライバシー ポリシー](https://www.linkedin.com/legal/privacy-policy)をご覧ください。 LinkedIn のサービス、データ転送、およびストレージの場合、データを欧州連合と米国の間で双方向に伝送でき、プライバシーは[欧州連合のデータ転送](https://www.linkedin.com/help/linkedin/answer/62533)に従って保護されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [職場または学校アカウントを使用する Microsoft アプリケーションでの LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077)

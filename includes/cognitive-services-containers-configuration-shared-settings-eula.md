@@ -1,19 +1,19 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/02/2019
-ms.openlocfilehash: 04b7031382d7ed611822a3dd721dfa09f01bce74
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 98a0ddd828c3d72fdead0ccc2fb1daabf7548de1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67712544"
 ---
 `Eula` 設定は、コンテナーのライセンスに同意済みであることを示します。 この構成設定の値を指定する必要があり、値を `accept` に設定する必要があります。
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Eula` | String | ライセンスへの同意<br><br>例:<br>`Eula=accept` |
 

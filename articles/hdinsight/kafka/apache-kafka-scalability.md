@@ -1,19 +1,19 @@
 ---
 title: Apache Kafka のスケーラビリティの向上 - Azure HDInsight
 description: スケーラビリティが向上するように Azure HDInsight 上の Apache Kafka クラスター用のマネージド ディスクを構成する方法を説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: a3c4f78e9d3b46b66cb2a893c4eed39f865172dc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 56c25b7c77809a5cb7f4e539cff8e1815cd9976f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711730"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77031709"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
@@ -23,20 +23,20 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
 次の図は、マネージド ディスクを使う前と使った後の HDInsight 上の Kafka を比較したものです。
 
-![HDInsight 上の Kafka で、VM ごとに単一の VHD を使った場合と、VM ごとに複数のマネージド ディスクを使った場合の比較](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+![Kafka とマネージド ディスクのアーキテクチャ](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する:Azure ポータル
+## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する: Azure Portal
 
-1. 「[HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 Portal の作成プロセスは実行しないでください。
+1. 「[HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 ポータルの作成プロセスを完了しないでください。
 
-2. __[クラスター サイズ]__ セクションの __[Disks per worker node\(ワーカー ノードごとのディスク数\)]__ フィールドを使って、ディスクの数を構成します。
+2. **[構成と価格]** セクションで、 __[ノード数]__  フィールドを使用して、ディスクの数を構成します。
 
     > [!NOTE]  
     > マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
-    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクションの画像](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
 
-## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する:Resource Manager テンプレート
+## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する: Resource Manager テンプレート
 
 Kafka クラスターのワーカー ノードによって使われるディスクの数を制御するには、テンプレートの次のセクションを使います。
 
@@ -50,7 +50,7 @@ Kafka クラスターのワーカー ノードによって使われるディス�
 
 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) に、マネージド ディスクを構成する方法を示す完全なテンプレートがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight 上の Apache Kafka の操作の詳細については、次のドキュメントを参照してください。
 

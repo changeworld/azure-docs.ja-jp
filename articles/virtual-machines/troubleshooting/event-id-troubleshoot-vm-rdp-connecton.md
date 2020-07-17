@@ -1,10 +1,10 @@
 ---
 title: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング | Microsoft Docs
-description: ''
+description: Azure 仮想マシン (VM) へのリモート デスクトップ プロトコル (RDP) 接続を妨げるさまざまな問題をトラブルシューティングするには、イベント ID を使用します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959684"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437054"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 
@@ -29,7 +29,7 @@ ms.locfileid: "52959684"
 
 リモート デスクトップ プロトコル (RDP) セッションを使用して Azure VM に接続しようとします。 資格情報を入力した後、接続が失敗し、次のようなエラー メッセージを受け取ります。
 
-**このコンピューターはリモート コンピューターに接続できません。接続を再試行してください。問題が解決しない場合は、リモート コンピューターの所有者またはネットワーク管理者に問い合わせてください。**
+**このコンピューターはリモート コンピューターに接続できません。接続を再試行してください。問題が解決しない場合は、リモート コンピューターの所有者またはネットワーク管理者にお問い合わせください。**
 
 この問題をトラブルシューティングするには、VM でイベント ログを確認した後、以下のシナリオを参照してください。
 
@@ -59,33 +59,33 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **日付:**          *時刻* <br />
 **イベント ID:**    1058 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**    クラシック <br />
 **ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、期限切れの自己署名証明書を置き換えられませんでした。 関連する状態コードは "アクセスが拒否されました" でした。
+**説明:** RD セッション ホスト サーバーは、TLS 接続での RD セッション ホスト サーバー認証に使用される期限切れの自己署名証明書を置き換えることができませんでした。 関連する状態コードは "アクセスが拒否されました" でした。
 
 **ログ名:**    システム <br />
 **ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1058 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**    クラシック <br />
 **ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、新規の自己署名証明書を生成できませんでした。関連する状態コードは "オブジェクトは既に存在します" でした。
+**説明:** RD セッション ホスト サーバーは、TLS 接続での RD セッション ホスト サーバー認証に使用される新しい自己署名証明書を作成できませんでした。関連する状態コードは "オブジェクトは既に存在します" でした。
 
 **ログ名:**    システム <br />
 **ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1057 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**    クラシック <br />
 **ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、新規の自己署名証明書を生成できませんでした。 関連する状態コードは "キー セットがありません" でした。
+**説明:** RD セッション ホスト サーバーは、TLS 接続での RD セッション ホスト サーバー認証に使用される新しい自己署名証明書を作成できませんでした。 関連する状態コードは "キー セットがありません" でした。
 
 次のコマンドを実行して、SCHANNEL エラー イベント 36872 および 36870 を確認することもできます。
 
@@ -99,11 +99,11 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **日付:**          — <br />
 **イベント ID:**    36870 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        SYSTEM <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** SSL サーバー資格証明の秘密キーにアクセスしようとしているときに致命的なエラーが発生しました。 暗号化モジュールから返されたエラー コードは 0x8009030D です。  <br />
+**説明:** TLS サーバー資格情報の秘密キーにアクセスにしようとしているときに致命的なエラーが発生しました。 暗号化モジュールから返されたエラー コードは 0x8009030D です。  <br />
 内部エラーの状態は 10001 です。
 
 ### <a name="cause"></a>原因
@@ -156,23 +156,23 @@ Start-Service -Name "SessionEnv"
 
 証明書を更新できない場合は、以下の手順に従って、証明書の削除を試みます。
 
-1. 同じ VNET 内の別の VM で、**[ファイル名を指定して実行]** ボックスを開き、「**mmc**」と入力して、**[OK]** をクリックします。 
+1. 同じ VNET 内の別の VM で、 **[ファイル名を指定して実行]** ボックスを開き、「**mmc**」と入力して、 **[OK]** をクリックします。 
 
 2. **[ファイル]** メニューの **[スナップインの追加と削除]** を選択します。
 
-3. **[利用できるスナップイン]** ボックスの一覧で **[証明書]** を選択し、**[追加]** を選択します。
+3. **[利用できるスナップイン]** ボックスの一覧で **[証明書]** を選択し、 **[追加]** を選択します。
 
-4. **[コンピューター アカウント]** を選択し、**[次へ]** を選択します。
+4. **[コンピューター アカウント]** を選択し、 **[次へ]** を選択します。
 
 5. **[別のコンピューター]** を選択してから、問題が発生している VM の IP アドレスを追加します。
    >[!Note]
    >内部ネットワークを使用して、仮想 IP アドレスの使用を回避します。
 
-6. **[完了]** を選択し、**[OK]** を選択します。
+6. **[完了]** を選択し、 **[OK]** を選択します。
 
    ![コンピューターを選択する](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. 証明書を展開し、Remote Desktop\Certificates フォルダーに移動し、証明書を右クリックして、**[削除]** を選択します。
+7. 証明書を展開し、Remote Desktop\Certificates フォルダーに移動し、証明書を右クリックして、 **[削除]** を選択します。
 
 8. リモート デスクトップ構成サービスを再起動します。
 
@@ -186,9 +186,9 @@ Start-Service -Name "SessionEnv"
 
 RDP を使用して、VM へのアクセスを再び試みます。
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Secure Sockets Layer (SSL) 証明書を更新する
+#### <a name="update-tlsssl-certificate"></a>TLS/SSL 証明書を更新する
 
-SSL 証明書を使用するように VM を設定した場合は、次のコマンドを実行して拇印を取得します。 そして、証明書の拇印と同じかどうかを確認します。
+TLS/SSL 証明書を使用するように VM を設定した場合は、次のコマンドを実行して拇印を取得します。 そして、証明書の拇印と同じかどうかを確認します。
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -221,7 +221,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **日付:**          — <br />
 **イベント ID:**    36871 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        SYSTEM <br />
 **コンピューター:**      *コンピューター* <br />
@@ -250,8 +250,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **ソース:**      Microsoft-Windows-TerminalServices-SessionBroker <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    2056 <br />
-**タスク カテゴリ:**(109) <br />
-**レベル:**       Error <br />
+**タスク カテゴリ:** (109) <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        NETWORK SERVICE <br />
 **コンピューター:**      *コンピューターの FQDN* <br />
@@ -266,8 +266,8 @@ NULL <br />
 **ソース:**      Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1,296 <br />
-**タスク カテゴリ:**(104) <br />
-**レベル:**       Error <br />
+**タスク カテゴリ:** (104) <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        NETWORK SERVICE <br />
 **コンピューター:**      *コンピューターの FQDN* <br />

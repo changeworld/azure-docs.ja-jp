@@ -1,35 +1,36 @@
 ---
-title: Azure Active Directory B2C の Identity Experience Framework スキーマの整数要求変換の例 | Microsoft Docs
-description: Azure Active Directory B2C の Identity Experience Framework スキーマの整数要求変換の例。
+title: カスタム ポリシーの整数要求変換の例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの整数要求変換の例。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20c109f188acfe37292aa31dfe057ced8b73199b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78187680"
 ---
 # <a name="integer-claims-transformations"></a>整数要求変換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C の Identity Experience Framework スキーマの整数要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
+この記事では、Azure Active Directory B2C (Azure AD B2C) の Identity Experience Framework スキーマの整数要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
 
-## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim 
+## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim
 
 long データ型を string データ型に変換します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | long | 文字列に変換する ClaimType。  |
+| InputClaim | inputClaim | long | 文字列に変換する ClaimType。 |
 | OutputClaim | outputClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
 この例では、値の型が long の `numericUserId` 要求は、値の型が string の `UserId` 要求に変換されます。
@@ -49,6 +50,6 @@ long データ型を string データ型に変換します。
 
 - 入力要求:
     - **inputClaim**:12334 (long)
-- 出力要求: 
+- 出力要求:
     - **outputClaim**:"12334" (string)
 

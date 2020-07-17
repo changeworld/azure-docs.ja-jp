@@ -1,5 +1,6 @@
 ---
-title: Azure API Management ポリシーのサンプル - 既存の承認者を使用して要求を承認する | Microsoft Docs
+title: API Management ポリシーのサンプル - 外部承認者を使用して要求を承認する
+titleSuffix: Azure API Management
 description: Azure API Management ポリシーのサンプル - カスタムまたは従来の認証/承認ロジックをカプセル化する外部承認者を使用して、要求を承認する方法を示します。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 65ea8622187d0665e4680f4162ddff0bc01e6eb9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869393"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75442497"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>外部承認者を使用して要求を承認する
 
@@ -30,7 +30,7 @@ ms.locfileid: "52869393"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Authorize requests using external authorizer.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

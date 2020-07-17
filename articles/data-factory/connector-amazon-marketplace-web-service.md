@@ -1,38 +1,41 @@
 ---
-title: Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする (プレビュー) | Microsoft Docs
+title: AWS Marketplace からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Amazon Marketplace Web Service からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 08/01/2018
+ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021052"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418271"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする (プレビュー)
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon Marketplace Web Service からデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
-> [!IMPORTANT]
-> このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
-
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Amazon Marketplace Web Service コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 Amazon Marketplace Web Service から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -44,16 +47,16 @@ Amazon Marketplace Web Service のリンクされたサービスでは、次の�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**AmazonMWS** | はい |
+| type | type プロパティは、次のように設定する必要があります:**AmazonMWS** | はい |
 | endpoint | Amazon MWS サーバーのエンドポイント (つまり、mws.amazonservices.com)  | はい |
 | marketplaceID | データを取得する Amazon Marketplace ID。 複数の Marketplace ID からデータを取得するには、コンマ (`,`) で区切って指定します。 (つまり、A2EUQ1WTGCTBG2)  | はい |
 | sellerID | Amazon の販売者 ID。  | はい |
 | mwsAuthToken | Amazon MWS 認証トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | accessKeyId | データのアクセスに使用されるアクセス キー ID。  | はい |
 | secretKey | データのアクセスに使用されるシークレット キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
-| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
-| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
-| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
+| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
+| useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
+| usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
 
 **例:**
 
@@ -88,7 +91,7 @@ Amazon Marketplace Web Service からデータをコピーするには、デー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonMWSObject** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**AmazonMWSObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -98,11 +101,12 @@ Amazon Marketplace Web Service からデータをコピーするには、デー�
     "name": "AmazonMWSDataset",
     "properties": {
         "type": "AmazonMWSObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -118,7 +122,7 @@ Amazon Marketplace Web Service からデータをコピーするには、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**AmazonMWSSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AmazonMWSSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -153,5 +157,9 @@ Amazon Marketplace Web Service からデータをコピーするには、コピ�
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

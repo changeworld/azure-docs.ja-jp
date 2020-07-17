@@ -2,18 +2,15 @@
 title: Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する
 description: Azure Kubernetes Service (AKS) で kubenet (基本) ネットワークを構成して、既存の仮想ネットワークおよびサブネットに AKS クラスターをデプロイする方法について説明します。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
-ms.date: 01/31/2019
-ms.author: iainfou
+ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 09fd5326c2532e115dbab0752af31a809488f04c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073988"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559689"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -23,9 +20,21 @@ ms.locfileid: "65073988"
 
 この記事では、 *kubenet* ネットワークを使用して、AKS クラスター用の仮想ネットワーク サブネットを作成して使用する方法を示します。 ネットワークのオプションと考慮事項について詳しくは、[Kubernetes および AKS のネットワークの概念][aks-network-concepts]に関する記事をご覧ください。
 
+## <a name="prerequisites"></a>前提条件
+
+* AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
+* 同じサブネット内に複数の AKS クラスターを作成しないでください。
+* AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` は使用できません。
+* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)ロールが必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
+
+> [!WARNING]
+> Windows Server ノード プールを使用するには、Azure CNI を使用する必要があります。 Windows Server コンテナーには、ネットワーク モデルとして kubenet を使用できません。
+
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.56 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>独自のサブネットでの kubenet ネットワークの概要
 
@@ -35,9 +44,9 @@ Azure CLI バージョン 2.0.56 以降がインストールされて構成さ�
 
 ![AKS クラスターでの kubenet ネットワーク モデル](media/use-kubenet/kubenet-overview.png)
 
-Azure でサポートされる UDR のルート数は最大 400 なので、AKS クラスターに 400 個より多くのノードを作成することはできません。 [仮想ノード][virtual-nodes]やネットワーク ポリシーなどの AKS の機能は、*kubenet* ではサポートされていません。
+Azure でサポートされる UDR のルート数は最大 400 なので、AKS クラスターに 400 個より多くのノードを作成することはできません。 AKS [仮想ノード][virtual-nodes]や Azure ネットワーク ポリシーは、*kubenet* ではサポートされていません。  Kubernet でサポートされている [Calico ネットワーク ポリシー][calico-network-policies]をご利用ください。
 
-*Azure CNI* では、各ポッドは IP サブネット内の IP アドレスを受け取り、他のポッドやサービスと直接通信できます。 クラスターは、ユーザーが指定する IP アドレスの範囲まで拡大できます。 ただし、IP アドレスの範囲を事前に計画する必要があり、すべての IP アドレスは、ノードでサポートできるポッドの最大数に基づいて AKS ノードによって消費されます。 *Azure CNI* では、[仮想ノード][virtual-nodes]やネットワーク ポリシーなどの高度なネットワーク機能とシナリオがサポートされます。
+*Azure CNI* では、各ポッドは IP サブネット内の IP アドレスを受け取り、他のポッドやサービスと直接通信できます。 クラスターは、ユーザーが指定する IP アドレスの範囲まで拡大できます。 ただし、IP アドレスの範囲を事前に計画する必要があり、すべての IP アドレスは、ノードでサポートできるポッドの最大数に基づいて AKS ノードによって消費されます。 *Azure CNI* では、[仮想ノード][virtual-nodes]やネットワーク ポリシー (Azure または Calico) などの高度なネットワーク機能とシナリオがサポートされます。
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP アドレスの使用可能性と不足
 
@@ -45,7 +54,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 妥協案として、*kubenet* を使用する AKS クラスターを作成し、既存の仮想ネットワーク サブネットに接続することができます。 この方法では、ノードは定義済みの IP アドレスを受け取ることができ、クラスター内で実行される可能性のあるすべてのポッド用に多数の IP アドレスを事前に予約する必要はありません。
 
-*kubenet* では、はるかに小さい IP アドレス範囲を使用して、大きなクラスターやアプリケーションの需要をサポートできます。 たとえばを、*/27* の IP アドレス範囲でも、20 ～ 25 ノードのクラスターを実行し、スケーリングやアップグレードのための十分な余裕を確保できます。 このクラスター サイズでは、最大で *2,200 ～ 2,750* 個のポッドがサポートされます (既定では、ノードあたり最大 110 ポッド)。
+*kubenet* では、はるかに小さい IP アドレス範囲を使用して、大きなクラスターやアプリケーションの需要をサポートできます。 たとえばを、 */27* の IP アドレス範囲でも、20 ～ 25 ノードのクラスターを実行し、スケーリングやアップグレードのための十分な余裕を確保できます。 このクラスター サイズでは、最大で *2,200 ～ 2,750* 個のポッドがサポートされます (既定では、ノードあたり最大 110 ポッド)。 AKS において *kubenet* で構成できるノードあたりの最大ポッド数は 110 です。
 
 次の基本的な計算では、ネットワーク モデルの違いを比較します。
 
@@ -59,7 +68,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>仮想ネットワーク ピアリングと ExpressRoute 接続
 
-オンプレミスの接続を提供するため、*kubenet* および *Azure CNI* のどちらのネットワーク アプローチでも、[Azure 仮想ネットワーク ピアリング][vnet-peering]または [ExpressRoute 接続][express-route]を使用できます。 重複および正しくないトラフィック ルーティングが発生しないように、慎重に IP アドレス範囲を計画する必要があります。 たとえば、多くのオンプレミス ネットワークでは、ExpressRoute 接続経由でアドバタイズされる *10.0.0.0/8* のアドレス範囲が使用されます。 このアドレス範囲の外側にある Azure 仮想ネットワーク サブネット (*172.26.0.0/16* など) に、AKS クラスターを作成することをお勧めします。
+オンプレミスの接続を提供するため、*kubenet* および *Azure CNI* のどちらのネットワーク アプローチでも、[Azure 仮想ネットワーク ピアリング][vnet-peering]または [ExpressRoute 接続][express-route]を使用できます。 重複および正しくないトラフィック ルーティングが発生しないように、慎重に IP アドレス範囲を計画する必要があります。 たとえば、多くのオンプレミス ネットワークでは、ExpressRoute 接続経由でアドバタイズされる *10.0.0.0/8* のアドレス範囲が使用されます。 AKS クラスターをこのアドレス範囲外の Azure 仮想ネットワーク サブネット (*172.16.0.0/16* など) に作成することをお勧めします。
 
 ### <a name="choose-a-network-model-to-use"></a>使用するネットワーク モデルを選択する
 
@@ -69,35 +78,34 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 - IP アドレス空間が限られている。
 - ポッドのほとんどの通信がクラスター内で行われる。
-- 仮想ノードやネットワーク ポリシーなどの高度な機能を使用する必要がない。
+- 仮想ノードや Azure ネットワーク ポリシーなどの高度な AKS 機能を使用する必要がない。  [Calico ネットワーク ポリシー][calico-network-policies] を使用している。
 
 *Azure CNI* を使用する場合:
 
 - 使用可能な IP アドレス空間が十分にある。
 - ポッドの通信のほとんどが、クラスターの外部にあるリソースに対するものである。
 - UDR を管理したくない。
-- 仮想ノードやネットワーク ポリシーなどの高度な機能を使用する必要がある。
+- 仮想ノードや Azure ネットワーク ポリシーなどの高度な AKS 機能を使用する必要がある。  [Calico ネットワーク ポリシー][calico-network-policies] を使用している。
 
-> [!NOTE]
-> Kuberouter により、kubenet の使用時にネットワーク ポリシーを有効にして AKS クラスターにデーモンセットとしてインストールできます。 Kube ルーターはまだベータ版であり、プロジェクトに対する Microsoft のサポートは提供されていないことに注意してください。
+どのネットワーク モデルを使用するかの決定に役立つ詳細については、[ネットワーク モデルとそのサポート範囲の比較][network-comparisons]に関するページを参照してください。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
-*kubenet* と独自の仮想ネットワーク サブネットを使い始めるには、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+*kubenet* と独自の仮想ネットワーク サブネットを使って作業を始めるには、最初に [az group create][az-group-create] コマンドを使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用できる既存の仮想ネットワークとサブネットがない場合は、[az network vnet create][az-network-vnet-create] コマンドを使用してこれらのネットワーク リソースを作成します。 次の例では、仮想ネットワークの名前は *myVnet*、アドレス プレフィックスは *10.0.0.0/8* です。 作成するサブネットの名前は *myAKSSubnet*、アドレス プレフィックスは *10.240.0.0/16* です。
+使用できる既存の仮想ネットワークとサブネットがない場合は、[az network vnet create][az-network-vnet-create] コマンドを使用してこれらのネットワーク リソースを作成します。 次の例では、*192.168.0.0/16* のアドレス プレフィックスを持つ仮想ネットワークに *myVnet* という名前が付けられています。 *192.168.1.0/24* のアドレス プレフィックスを持つ *myAKSSubnet* という名前のサブネットが作成されています。
 
 ```azurecli-interactive
 az network vnet create \
     --resource-group myResourceGroup \
     --name myAKSVnet \
-    --address-prefixes 10.0.0.0/8 \
+    --address-prefixes 192.168.0.0/16 \
     --subnet-name myAKSSubnet \
-    --subnet-prefix 10.240.0.0/16
+    --subnet-prefix 192.168.1.0/24
 ```
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>サービス プリンシパルを作成してアクセス許可を割り当てる
@@ -110,9 +118,11 @@ az ad sp create-for-rbac --skip-assignment
 
 次の出力例では、サービス プリンシパルのアプリケーション ID とパスワードが示されています。 これらの値を後の手順で使用して、サービス プリンシパルにロールを割り当てた後、AKS クラスターを作成します。
 
-```console
-$ az ad sp create-for-rbac --skip-assignment
+```azurecli
+az ad sp create-for-rbac --skip-assignment
+```
 
+```output
 {
   "appId": "476b3636-5eda-4c0e-9751-849e70b5cfad",
   "displayName": "azure-cli-2019-01-09-22-29-24",
@@ -141,14 +151,16 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 クラスター作成プロセスの一部として、次の IP アドレス範囲も定義します。
 
-* *--service-cidr* は、AKS クラスター内の内部サービスに IP アドレスを割り当てるために使用します。 この IP アドレス範囲は、ネットワーク環境の他の場所で使われていないアドレス空間でなければなりません。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこれに含まれます。
+* *--service-cidr* は、AKS クラスター内の内部サービスに IP アドレスを割り当てるために使用します。 この IP アドレス範囲は、ネットワーク環境の他の場所で使われていないアドレス空間でなければなりません。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこの範囲に含まれます。
 
 * *--dns-service-ip* アドレスは、サービス IP アドレス範囲の *.10* アドレスにする必要があります。
 
-* *--pod-cidr* は、ネットワーク環境の他の場所で使われていない大きいアドレス空間にする必要があります。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこれに含まれます。
+* *--pod-cidr* は、ネットワーク環境の他の場所で使われていない大きいアドレス空間にする必要があります。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこの範囲に含まれます。
     * このアドレス範囲は、スケールアップ後に予想されるノードの数を格納するのに十分な大きさである必要があります。 追加ノード用により多くのアドレスが必要になった場合でも、クラスターをデプロイした後では、このアドレス範囲を変更できません。
-    * ポッドの IP アドレス範囲は、クラスター内の各ノードに */24* アドレス空間を割り当てるために使用されます。 次の例の *--pod-cidr* の *192.168.0.0/16* では、1 番目のノードに *192.168.0.0/24* が、2 番目のノードに *192.168.1.0/24* が、3 番目のノードに *192.168.2.0/24* が、それぞれ割り当てられてます。
+    * ポッドの IP アドレス範囲は、クラスター内の各ノードに */24* アドレス空間を割り当てるために使用されます。 次の例では、*10.244.0.0/16* の *--pod-cidr* によって、最初のノードに *10.244.0.0/24*、2 番目のノードに *10.244.1.0/24*、3 番目のノードに *10.244.2.0/24* が割り当てられます。
     * クラスターをスケーリングまたはアップグレードすると、Azure プラットフォームによって引き続き新しい各ノードにポッドの IP アドレス範囲が割り当てられます。
+    
+* *--docker-bridge-address* を使用すると、AKS ノードは基になる管理プラットフォームと通信できます。 この IP アドレスは、クラスターの仮想ネットワーク IP アドレス範囲に含まれていてはならず、ネットワークで使用されている他のアドレス範囲と重複していてもなりません。
 
 ```azurecli-interactive
 az aks create \
@@ -158,7 +170,25 @@ az aks create \
     --network-plugin kubenet \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
-    --pod-cidr 192.168.0.0/16 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
+> [!Note]
+> AKS クラスターに [Calico ネットワーク ポリシー][calico-network-policies]を含めるには、次のコマンドを使用します。
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \
@@ -167,14 +197,15 @@ az aks create \
 
 AKS クラスターを作成すると、ネットワーク セキュリティ グループとルート テーブルが作成されます。 これらのネットワーク リソースは、AKS コントロール プレーンによって管理されます。 ネットワーク セキュリティ グループは、ノードの仮想 NIC と自動的に関連付けられます。 ルート テーブルは、仮想ネットワーク サブネットと自動的に関連付けられます。 サービスを作成して公開すると、ネットワーク セキュリティ グループ規則とルート テーブルが自動的に更新されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用したアプリの構築][dev-spaces]や [Draft の使用][use-draft]を始めたり、[Helm を使用してアプリをデプロイ][use-helm]したりできます。
+既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用してアプリを構築する][dev-spaces]ことから始めるか、[Helm を使用して既存のアプリをデプロイする][use-helm]か、[Helm を使用して新しいアプリを作成します][develop-helm]。
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
@@ -186,8 +217,9 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
-[use-draft]: kubernetes-draft.md
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
+[network-comparisons]: concepts-network.md#compare-network-models

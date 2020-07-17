@@ -9,17 +9,17 @@ ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157787"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181362"
 ---
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
 1.  Microsoft アカウントの資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にサインインします。 Government ポータルでデバイスをデプロイする場合、<https://portal.azure.us/> でサインインします。
 
-2.  Azure Portal で、**[+ リソースの作成]** &gt; **[ストレージ]** &gt; **[StorSimple 仮想シリーズ]** の順にクリックします。
+2.  Azure Portal で、 **[+ リソースの作成]** &gt; **[ストレージ]** &gt; **[StorSimple 仮想シリーズ]** の順にクリックします。
 
     ![新しいサービスの作成](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "66157787"
 
     5.  **[新しい Azure ストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。 **ストレージ アカウント名**を指定します。 別の場所でデータが必要になる場合、このボックスをオフにします。
 
-    6.  ダッシュボードにこのサービスへのクイック リンクが必要な場合、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+    6.  ダッシュボードにこのサービスへのクイック リンクが必要な場合、 **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
     7.  **[作成]** をクリックして、StorSimple デバイス マネージャーを作成します。
 

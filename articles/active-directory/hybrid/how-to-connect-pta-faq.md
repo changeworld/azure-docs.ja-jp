@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616596"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406881"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -29,23 +29,22 @@ ms.locfileid: "59616596"
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Azure AD へのサインイン方法として、パススルー認証、パスワード ハッシュ同期、Active Directory フェデレーション サービス (AD FS) のうちどれを選択すればよいですか。
 
-Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)をご覧ください。
+Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)をご覧ください。
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>パススルー認証は無料の機能ですか。
 
 パススルー認証は、無料の機能です。 この機能を使用するために Azure AD の有料エディションは不要です。
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>パススルー認証は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>パススルー認証は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
 
 いいえ。 パススルー認証は、世界中の Azure AD のインスタンスでのみ使用できます。
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、パススルー認証と連携しますか。
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、パススルー認証と連携しますか。
 
 はい。 Microsoft Azure Multi-Factor Authentication を含め、すべての条件付きアクセス機能がパススルー認証と連携します。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>パススルー認証では、"userPrincipalName" の代わりに "Alternate ID" がユーザー名としてサポートされますか。
-
-はい。パススルー認証では、Azure AD Connect で構成されている場合はユーザー名として `Alternate ID` をサポートします。 前提条件として、Azure AD Connect ではオンプレミスの Active Directory の `UserPrincipalName` 属性を Azure AD に同期する必要があります。 詳細については、「[Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」をご覧ください。 すべての Office 365 アプリケーションで `Alternate ID` をサポートしているわけではありません。 サポートの説明については、それぞれのアプリケーションのドキュメントを参照してください。
+連絡用電子メールなどの UPN 以外の値を使用したサインインは、現在、パススルー認証 (PTA) とパスワード ハッシュ同期 (PHS) の両方について、プライベート プレビューでのテスト中です。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
@@ -55,7 +54,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 Azure AD Connect を使用して、サインイン方法をパスワード ハッシュ同期からパススルー認証に切り替えると、パススルー認証がマネージド ドメイン内でのユーザーのプライマリ サインイン方法になります。 パスワード ハッシュ同期によって以前同期されていたすべてのユーザーのパスワード ハッシュは、Azure AD に格納されたままになることに注意してください。
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
 はい。 この構成は、パススルー認証エージェント (バージョン 1.5.193.0 以降) のブランド名変更バージョンでサポートされます。
 
@@ -76,7 +75,7 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>パススルー認証エージェントはポート 80 およびポート 443 で何をやり取りしますか。
 
 - 認証エージェントは、すべての機能操作について、ポート 443 で HTTPS 要求を行います。
-- 認証エージェントは、SSL 証明書失効リスト (CRL) をダウンロードするために、ポート 80 で HTTP 要求を行います。
+- 認証エージェントは、TLS/SSL 証明書失効リスト (CRL) をダウンロードするために、ポート 80 で HTTP 要求を行います。
 
      >[!NOTE]
      >この機能に必要なポートの数は、最近の更新で減らされています。 以前のバージョンの Azure AD Connect または認証エージェントを使用している場合は、5671、8080、9090、9091、9350、9352、および 10100 - 10120 の各ポートも開いておいてください。
@@ -108,11 +107,11 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>パススルー認証エージェントで使用される証明書は手動で更新する必要がありますか。
 
-各パススルー認証エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの[証明書は、Azure AD によって数か月ごとに自動的に更新されます](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents)。 これらの証明書を手動で更新する必要はありません。 必要に応じて、有効期限が切れた古い証明書をクリーンアップできます。
+各パススルー認証エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの[証明書は、Azure AD によって数か月ごとに自動的に更新されます](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents)。 これらの証明書を手動で更新する必要はありません。 必要に応じて、有効期限が切れた古い証明書をクリーンアップできます。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>パススルー認証エージェントを削除するにはどうすればよいですか。
 
-パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、**[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント**と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
+パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、 **[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント**と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
 
 上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは**非アクティブ**と表示されます。 これは "_予期されること_" です。 認証エージェントは数日後に自動的に一覧から削除されます。
 
@@ -122,7 +121,7 @@ AD FS (または他のフェデレーション テクノロジ) からパスス�
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>複数フォレスト Active Directory 環境でパススルー認証を使用できますか。
 
-はい。 ご使用の Active Directory フォレスト間にフォレストの信頼があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
+はい。 ご使用の Active Directory フォレスト間にフォレストの信頼 (双方向) があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>パススルー認証では、複数の認証エージェント間の負荷分散を提供しますか。
 
@@ -169,13 +168,13 @@ A:次の状況においては、オンプレミスの UPN の変更点が同期�
 
 これは、2015 年 6 月 15 日よりも前に作成されたテナントの既定の動作が UPN の変更点のブロックであるためです。  UPN の変更点のブロックを解除する必要がある場合は、次の PowerShell コマンドレットを実行する必要があります。  
 
-`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`
 
 2015 年 6 月 15 日以降に作成されたテナントでは、UPN の変更点を同期するのが既定の動作です。   
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [現時点での制限事項](how-to-connect-pta-current-limitations.md):サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。
 - [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。

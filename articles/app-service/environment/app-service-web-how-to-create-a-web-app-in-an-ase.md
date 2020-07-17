@@ -1,26 +1,18 @@
 ---
-title: App Service Environment v1 で Web アプリを作成する - Azure
-description: App Service Environment v1 で Web アプリと App Service プランを作成する方法について説明します
-services: app-service
-documentationcenter: ''
+title: ASE v1 での Web アプリの作成
+description: App Service Environment v1 で Web アプリを作成する方法について説明します このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718097"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231691"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -40,7 +32,7 @@ ms.locfileid: "53718097"
 このチュートリアルは、App Service 環境が作成済みであることを前提としています。 まだ完了していない場合は、「 [App Service 環境を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
    
     ![][1]
 2. サブスクリプションを選択します。  
@@ -48,7 +40,7 @@ ms.locfileid: "53718097"
     サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
-    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」をご覧ください。 
+    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
 4. App Service プランを選択または作成します。
    
     *App Service プラン*は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../overview-hosting-plans.md)」を参照してください。
@@ -63,9 +55,9 @@ ms.locfileid: "53718097"
     ASE で外部 VIP を使用する場合、ASE でのアプリの URL は [*サイト名*].azurewebsites.net ではなく、[*サイト名*].[*App Service Environment の名前*].p.azurewebsites.net になります。
    
     ASE で内部 VIP を使用する場合、ASE 内のアプリの URL は [*サイト名*].[*ASE の作成時に指定されたサブドメイン*] になります。   
-    ASE の作成時に ASP を選択すると、**[名前]** の下のサブドメインが更新されます。
+    ASE の作成時に ASP を選択すると、 **[名前]** の下のサブドメインが更新されます。
 
-## <a name="createplan"></a> App Service プランを作成する
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> App Service プランを作成する
 App Service 環境に App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。  使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンスの総数よりも多くのワーカーを ASE ワーカー プールに割り当てておく必要があります。  プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
 
 App Service 環境でホストされる App Service プランに関するもう 1 つの違いは、価格の選択肢がないことです。  App Service 環境を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、その環境内のプランに対する追加料金はありません。  通常、App Service プランを作成する際に、価格プランを選択します。これに基づいて、支払い価格が決定されます。  App Service 環境は、基本的に、コンテンツを作成できるプライベートな場所です。  支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。
@@ -112,5 +104,5 @@ Web アプリと App Service プランを作成した後は、これをスケー
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
-[ResourceGroups]: ../../azure-resource-manager/resource-group-overview.md
+[ResourceGroups]: ../../azure-resource-manager/management/overview.md
 [AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

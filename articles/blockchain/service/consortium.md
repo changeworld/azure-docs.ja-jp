@@ -1,21 +1,15 @@
 ---
 title: Azure Blockchain Service のコンソーシアム
-description: ''
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: azure-blockchain
+description: Azure Blockchain Service がコンソーシアム ブロックチェーン ネットワークを実装するしくみの概要。
+ms.date: 11/21/2019
+ms.topic: conceptual
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: e745a4ee4789ef46a61b5cb0bbf806c41ef631ec
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027619"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225975"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service のコンソーシアム
 
@@ -37,11 +31,11 @@ Azure Blockchain Service のコンソーシアム管理では、コンソーシ�
 
 コンソーシアムの参加者は個人でも組織でもよく、ユーザー ロールまたは管理者ロールを割り当てることができます。 次の表では、2 つのロールの違いの概要を示します。
 
-| Action | ユーザー ロール | 管理者ロール
+| アクション | ユーザー ロール | 管理者ロール
 |--------|:----:|:------------:|
 | 新しいメンバーを作成する | はい | はい |
-| 新しいメンバーを招待する | いいえ  | はい |
-| メンバーの参加者ロールを設定または変更する | いいえ  | はい |
+| 新しいメンバーを招待する | いいえ | はい |
+| メンバーの参加者ロールを設定または変更する | いいえ | はい |
 | メンバーの表示名を変更する | 自分のメンバーについてのみ | 自分のメンバーについてのみ |
 | メンバーを削除する | 自分のメンバーについてのみ | はい |
 | ブロックチェーン トランザクションに参加する | はい | はい |
@@ -83,6 +77,6 @@ Azure Blockchain Service でのコンソーシアム管理は、コンソーシ�
 
 メンバー アカウントをクリックして新しいパスワードを入力することで、Ethereum アカウントをリセットできます。 Ethereum アカウントのアドレスとパスワードの両方がリセットされます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[PowerShell を使用して Azure Blockchain Service のメンバーを管理する方法](manage-consortium-powershell.md)
+コンソーシアムの管理アクションには、PowerShell を使用してアクセスできます。 詳細については、「[PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する](manage-consortium-powershell.md)」を参照してください。

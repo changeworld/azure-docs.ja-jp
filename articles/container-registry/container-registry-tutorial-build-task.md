@@ -1,23 +1,22 @@
 ---
-title: チュートリアル - コンテナー イメージ ビルドを自動化する - Azure Container Registry タスク
+title: チュートリアル - コードのコミット時にイメージをビルドする
 description: このチュートリアルでは、Git リポジトリにソース コードをコミットしたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするように Azure Container Registry タスクを構成する方法を説明します。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544978"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78402851"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル: ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 
-[クイック タスク](container-registry-tutorial-quick-task.md)に加えて、ACR タスクは、ソース コードを Git リポジトリにコミットしたときのクラウド内での自動 Docker コンテナー イメージ ビルドをサポートしています。
+[クイック タスク](container-registry-tutorial-quick-task.md)に加えて、ACR タスクは、ソース コードを Git リポジトリにコミットしたときのクラウド内での自動 Docker コンテナー イメージ ビルドをサポートしています。 ACR タスクに関してサポートされる Git コンテキストには、パブリックまたはプライベートの GitHub リポジトリと Azure リポジトリが含まれます。
+
+> [!NOTE]
+> 現在、GitHub Enterprise リポジトリにおける commit や pull request トリガーは、ACR タスクではサポートされません。
 
 このチュートリアルでは、ソース コードを Git リポジトリにコミットしたときに、ACR タスクによって、Dockerfile で指定されている単一のコンテナー イメージをビルドしてプッシュします。 YAML ファイルを使用して、コードのコミットで複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義する[マルチステップ タスク](container-registry-tasks-multi-step.md)を作成するには、「[チュートリアル:ソース コードをコミットしたらクラウドでマルチステップ コンテナー ワークフローを実行する](container-registry-tutorial-multistep-task.md)」を参照してください。 ACR タスクの概要については、「[ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)」を参照してください
 
@@ -33,7 +32,7 @@ ms.locfileid: "65544978"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-ローカルで Azure CLI を使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] でログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+Azure CLI をローカルで使用する場合は、Azure CLI のバージョン **2.0.46** 以降がインストールされていて、[az login][az-login] を使用してログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -41,9 +40,11 @@ ms.locfileid: "65544978"
 
 ACR タスクがコミットの状態を読み取ってリポジトリに webhook を作成できるようにするために必要な手順が済んだので、リポジトリへのコミットでコンテナー イメージのビルドをトリガーするタスクを作成できます。
 
-最初に、次のシェル環境変数に、環境に適した値を設定します。 この手順は必須ではありませんが、このチュートリアルの複数行の Azure CLI コマンドの実行が少し簡単になります。 これらの環境変数を設定しない場合は、コマンドの例に現れるそれぞれの値を手動で置き換える必要があります。
+最初に、次のシェル環境変数に、環境に適した値を設定します。 この手順は必須ではありませんが、このチュートリアルの複数行の Azure CLI コマンドの実行が少し簡単になります。 これらの環境変数を設定しない場合は、それぞれの値を、サンプル コマンド内の現れたところで手動で置き換える必要があります。
 
-```azurecli-interactive
+[![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -57,7 +58,6 @@ az acr task create \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -69,7 +69,7 @@ az acr task create \
 
 [az acr task create][az-acr-task-create] コマンドが成功した場合、出力は次のようになります。
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -128,7 +128,7 @@ az acr task create \
 
 ## <a name="test-the-build-task"></a>ビルド タスクをテストする
 
-ビルドを定義するタスクが完成しました。 ビルド パイプラインをテストするには、[az acr task run][az-acr-task-run] コマンドを実行してビルドを手動でトリガーします。
+ビルドを定義するタスクが完成しました。 ビルド パイプラインをテストするには、[az acr task run][az-acr-task-run] コマンドを実行することで、ビルドを手動でトリガーします。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -136,9 +136,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 既定では、`az acr task run` コマンドを実行すると、ログ出力がコンソールにストリーミングされます。
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
+```output
 2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
 2018/09/17 22:51:00 Setting up Docker configuration...
 2018/09/17 22:51:02 Successfully set up Docker configuration
@@ -208,15 +206,15 @@ Run ID: da2 was successful after 27s
 
 手動実行によるタスクのテストが済んだので、次に、ソース コードを変更して自動的にトリガーします。
 
-最初に、[リポジトリ][sample-repo]のローカルな複製が含まれるディレクトリにいることを確認します。
+最初に、[リポジトリ][sample-repo]のローカルなクローンが含まれるディレクトリにいることを確実にします。
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 次に、以下のコマンドを実行することで、新しいファイルを作成してコミットし、GitHub 上のリポジトリのフォークにプッシュします。
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
@@ -225,8 +223,7 @@ git push origin master
 
 `git push` コマンドを実行するときに、GitHub の資格情報の入力を求められることがあります。 GitHub のユーザー名を指定し、前にパスワードに対して作成した個人用アクセス トークン (PAT) を入力します。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -239,8 +236,7 @@ az acr task logs --registry $ACR_NAME
 
 次のような出力が表示され、現在実行中の (または最後に実行された) タスクが示されます。
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: da4
 
@@ -259,9 +255,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 次のようなコマンドの出力が表示されます。 ACR タスクが実行した実行が表示され、最新のタスクの [TRIGGER] 列には "Git Commit" と表示されます。
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
@@ -270,7 +264,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タスクを使って、Git リポジトリにソース コードをコミットすると Azure でコンテナー イメージのビルドが自動的にトリガーされるようにする方法を説明しました。 次のチュートリアルに進んで、コンテナー イメージの基本イメージが更新されたらビルドをトリガーするタスクを作成する方法を学習してください。
 

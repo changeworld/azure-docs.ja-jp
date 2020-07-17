@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Azure Peering Service
+summary: Azure Peering Service について説明します。
+metadata:
+  title: Azure Peering Service のドキュメント
+  description: Peering Service の接続を管理およびデプロイする方法について説明します
+  services: peering-service
+  ms.service: peering-service
+  ms.subservice: peering-service
+  ms.topic: landing-page
+  author: ypitsch
+  ms.author: ypitsch
+  ms.date: 05/18/2020
+  ms.openlocfilehash: 182f9dbb72f39a0489bb908d8ab315bdecaec7ec
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83586067"
+landingContent:
+- title: Peering Service について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Peering Service とは
+      url: about.md
+  - linkListType: concept
+    links:
+    - text: 場所とパートナー
+      url: location-partners.md
+    - text: 接続
+      url: connection.md
+    - text: 接続テレメトリ
+      url: connection-telemetry.md
+    - text: モデルのオンボード
+      url: onboarding-model.md
+- title: はじめに
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Peering Service の登録 - Azure portal
+      url: azure-portal.md
+- title: テレメトリ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 接続テレメトリ
+      url: connection-telemetry.md
+  - linkListType: how-to-guide
+    links:
+    - text: 接続テレメトリの計測
+      url: measure-connection-telemetry.md

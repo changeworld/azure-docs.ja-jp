@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery Deployment Planner による VMware VM から Azure へのディザスター リカバリーについて | Microsoft Docs
+title: VMware ディザスター リカバリーのための Azure Site Recovery Deployment Planner
 description: Azure Site Recovery Deployment Planner による VMware VM から Azure へのディザスター リカバリーについて説明します。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 42ef6087663c48cad965be768f14920efa777a62
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366298"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner について
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -41,10 +41,9 @@ Azure Site Recovery を使用して VMware 仮想マシン (VM) を保護する�
 
 **Azure インフラストラクチャの要件**
 
-* VM ごとに必要なストレージの種類 (Standard ストレージ アカウントまたは Premium ストレージ アカウント)
-* レプリケーション用にセットアップする Standard ストレージ アカウントと Premium ストレージ アカウントの総数
+* VM ごとに必要なストレージの種類 (Standard ストレージまたは Premium ストレージ)
+* レプリケーション用に設定する Standard ストレージ アカウントと Premium ストレージ アカウントの総数 (キャッシュ ストレージ アカウントを含む)
 * ストレージ アカウントの命名に関する推奨事項 (Storage ガイダンスに基づく)
-* 全 VM のストレージ アカウントの配置
 * サブスクリプションのテスト フェールオーバー (またはフェールオーバー) の前にセットアップする Azure コアの数
 * Azure VM の推奨サイズ (オンプレミスの VM ごと)
 
@@ -65,7 +64,7 @@ Azure Site Recovery を使用して VMware 仮想マシン (VM) を保護する�
 
 | | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
 --|--|--|--|--|--
-サポートされるシナリオ |はい|はい|いいえ |はい*|いいえ 
+サポートされるシナリオ |はい|はい|いいえ|はい*|いいえ
 サポートされているバージョン | vCenter 6.7、6.5、6.0、または 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 サポートされている構成|vCenter、ESXi| Hyper-V クラスター、Hyper-V ホスト|NA|Hyper-V クラスター、Hyper-V ホスト|NA|
 Site Recovery Deployment Planner の実行中のインスタンスごとにプロファイルできるサーバーの数 |単一 (単一の vCenter Server または ESXi サーバーに含まれている VM を同時にプロファイル可能)|複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA |複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA
@@ -77,7 +76,7 @@ Site Recovery Deployment Planner の実行中のインスタンスごとにプ�
 
 | サーバーの要件 | 説明|
 |---|---|
-|プロファイリングとスループット測定| <ul><li>オペレーティング システム:Windows Server 2016 または Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 1 以上に設定できます</li><li>vCenter ポートの許可 (既定値は 443):Site Recovery Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
+|プロファイリングとスループット測定| <ul><li>オペレーティング システム:Windows Server 2016 または Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure (*.blob.core.windows.net) へのインターネット アクセス、ポート 443<br>[これは省略可能です。 レポート生成時に使用可能な帯域幅を手動で指定することを選択できます。]</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 1 以上に設定できます</li><li>vCenter ポートの許可 (既定値は 443):Site Recovery Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
 | レポートの生成 | Excel 2013 以降がインストールされた Windows PC または Windows Server。<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) が必要なのは、VM の最新の VM 構成情報をフェッチするためにレポート生成コマンドで -User オプションを渡す場合のみです。 Deployment Planner は vCenter サーバーに接続します。 vCenter ポート (既定値は 443) に vCenter Server への接続を許可します。</li>|
 | ユーザーのアクセス許可 | 読み取り専用アクセス許可 (プロファイリング中、VMware vCenter サーバー/VMware vSphere ESXi ホストにアクセスするユーザー アカウントに適用) |
 
@@ -120,8 +119,8 @@ Site Recovery Deployment Planner の実行中のインスタンスごとにプ�
 
 
 ## <a name="version-history"></a>バージョン履歴
-Site Recovery Deployment Planner ツールの最新バージョンは 2.4 です。
+Site Recovery Deployment Planner ツールの最新バージョンは 2.5 です。
 各更新で追加された修正については、「[Site Recovery Deployment Planner version history (Site Recovery Deployment Planner のバージョン履歴)](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Site Recovery Deployment Planner の実行](site-recovery-vmware-deployment-planner-run.md)

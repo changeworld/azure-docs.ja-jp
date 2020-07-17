@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159770"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67180850"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
@@ -70,7 +70,7 @@ Get-AzTableRow -table $cloudTable | ft
 
 このコマンドによって、次の表のような結果が生成されます。
 
-| userid | ユーザー名 | partition | rowkey |
+| userid | username | partition | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
@@ -85,7 +85,7 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 結果は次の表のようになります。
 
-| userid | ユーザー名 | partition | rowkey |
+| userid | username | partition | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
@@ -104,7 +104,7 @@ Get-AzTableRow -table $cloudTable `
 |フィールド|value|
 |----|----|
 | userid | 1 |
-| ユーザー名 | Chris |
+| username | Chris |
 | パーティション キー | partition1 |
 | 行キー      | CA |
 
@@ -121,7 +121,7 @@ Get-AzTableRow `
 |フィールド|value|
 |----|----|
 | userid | 1 |
-| ユーザー名 | Chris |
+| username | Chris |
 | パーティション キー | partition1 |
 | 行キー      | CA |
 
@@ -156,7 +156,7 @@ Get-AzTableRow -table $cloudTable `
 |フィールド|value|
 |----|----|
 | userid | 2 |
-| ユーザー名 | Jessie2 |
+| username | Jessie2 |
 | パーティション キー | partition2 |
 | 行キー      | NM |
 

@@ -1,25 +1,20 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアからのエクスポート | Microsoft Docs
-description: Azure App Configuration ストアからのエクスポートを行うサンプル スクリプトについて取り上げます。
+title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアからのエクスポート
+titleSuffix: Azure App Configuration
+description: Azure CLI スクリプトを使用して、Azure App Configuration から構成をエクスポートします
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 02/19/2020
+ms.author: lcozzens
+ms.openlocfilehash: 3e014504fc1e94c3b323a49b408fa992de00d14a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444471"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77523623"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Azure App Configuration ストアからのエクスポート
 
@@ -30,10 +25,6 @@ ms.locfileid: "57444471"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
-最初に次のコマンドを実行して Azure App Configuration CLI の拡張機能をインストールする必要があります。
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -48,14 +39,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用してアプリ構成ストアをエクスポートします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して App Configuration ストアからのエクスポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | メモ |
 |---|---|
-| [az appconfig export](/cli/azure/ext/appconfig/appconfig) | アプリ構成ストア リソースからのエクスポートを行います。 |
+| [az appconfig kv export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration のドキュメント](../cli-samples.md)のページにあります。
+その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration の CLI サンプル](../cli-samples.md)のページにあります。

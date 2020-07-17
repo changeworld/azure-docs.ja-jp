@@ -1,20 +1,15 @@
 ---
-title: Azure Backup 用 Azure Resource Manager テンプレート
-description: Azure Backup PowerShell のサンプル
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+title: Azure Resource Manager のテンプレート
+description: Recovery Services コンテナーと Azure Backup 機能で使用するための Azure Resource Manager テンプレート
 ms.topic: sample
 ms.date: 01/31/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c0b023b6bdd01bc64eb5a6deb5fafa8e3c34c616
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3c05f345c6c5df5d0350c75e52381c24b0609501
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819022"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74172181"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Backup 用 Azure Resource Manager テンプレート
 
@@ -23,7 +18,7 @@ ms.locfileid: "56819022"
 |   |   |
 |---|---|
 |**Recovery Services コンテナー** | |
-| [Recovery Services コンテナーの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Recovery Services コンテナーを作成します。 コンテナーは、Azure Backup および Azure Site Recovery に使用できます。 |
+| [Recovery Services コンテナーの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Recovery Services コンテナーを作成する。 コンテナーは、Azure Backup および Azure Site Recovery に使用できます。 |
 |**仮想マシンのバックアップ**| |
 | [Resource Manager VM のバックアップ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-vms) | 既存の Recovery Services コンテナーとバックアップ ポリシーを使用して、同じリソース グループ内の Resource Manager 仮想マシンをバックアップします。|
 | [Recovery Services コンテナーへの IaaS VM のバックアップ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-recovery-services-backup-classic-resource-manager-vms) | クラシックおよび Resource Manager 仮想マシンをバックアップするためのテンプレート。 |
@@ -32,5 +27,6 @@ ms.locfileid: "56819022"
 | [バックアップが有効な Windows Server VM のデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | このテンプレートを使用して、Windows Server VM と、既定のバックアップ ポリシーが有効な Recovery Services コンテナーを作成します。|
 |**バックアップ ジョブの監視** |  |
 | [Azure Backup での Azure Monitor ログの使用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | このテンプレートを使用して、Azure Backup での Azure Monitor ログをデプロイします。これにより、Recovery Services コンテナーで使用されているバックアップおよび復元ジョブ、バックアップ アラート、およびクラウド ストレージを監視できます。|  
+|**Azure VM の SQL Server のバックアップ** |  |
+| [Azure VM の SQL Server のバックアップ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | このテンプレートを使用して、Recovery Services コンテナーとワークロード固有のバックアップ ポリシーを作成します。 これにより、Azure Backup サービスに VM を登録し、その VM の保護を構成できます。 現在、これは SQL ギャラリー イメージでのみ機能します。 |
 |   |   |
-

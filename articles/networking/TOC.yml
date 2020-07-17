@@ -2,7 +2,7 @@
   items:
     - name: Azure のネットワークについて
       href: networking-overview.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: 仮想データセンター
           href: /azure/architecture/vdc/networking-virtual-datacenter
@@ -13,7 +13,7 @@
         - name: ハブスポーク トポロジ
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke'
         - name: ネットワーク セキュリティのベスト プラクティス
-          href: ../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../security/fundamentals/network-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 高可用性ネットワーク仮想アプライアンス
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha'
         - name: 負荷分散方法の組み合わせ
@@ -22,6 +22,8 @@
           href: disaster-recovery-dns-traffic-manager.md
     - name: 計画と設計
       items:
+        - name: リモートでの作業のサポート
+          href: working-remotely-support.md
         - name: 仮想ネットワーク
           href: ../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: クロスプレミス接続 - VPN
@@ -42,6 +44,11 @@
       items:
         - name: マイクロソフトのグローバル ネットワーク
           href: microsoft-global-network.md
+          items:
+            - name: Azure のネットワーク待ち時間
+              href: azure-network-latency.md
+            - name: Azure でのインターネット ルーティング設定
+              href: ../virtual-network/routing-preference-overview.md
         - name: 仮想ネットワーク
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: ネットワークの負荷分散
@@ -90,6 +97,10 @@
           href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 専用プライベート接続を作成する (ExpressRoute)
           href: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: パブリック クラウドの接続
+      items:
+        - name: Azure をパブリック クラウドに接続する
+          href: ../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: 管理
       items:
         - name: ネットワーク監視の概要
@@ -126,6 +137,8 @@
   items:
     - name: テンプレートの作成
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: プロバイダー
+      href: networking-partners-msp.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: コミュニティ テンプレート
@@ -138,7 +151,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=virtual-network'

@@ -1,30 +1,33 @@
 ---
-title: バージョンのリリース履歴 - Microsoft Genomics
-titleSuffix: Azure
-description: Microsoft Genomics は、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。
+title: バージョンのリリース履歴
+titleSuffix: Microsoft Genomics
+description: 修正プログラムおよび新しい機能に関する Microsoft Genomics Python クライアントの更新のリリース履歴。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260279"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76991084"
 ---
 # <a name="version-release-history"></a>バージョンのリリース履歴
 Microsoft Genomics チームは、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。 
 
 ## <a name="latest-release"></a>最新リリース
-現在の Python クライアントは、バージョン 0.8.1 です。 これは 2018 年 12 月 3 日にリリースされ、GATK 3.5 および GATK4 でのワークフローの実行をサポートしています。 gVCF 出力もサポートします。
+現在の Python クライアントは、バージョン 0.9.0 です。 これは 2019 年 2 月 6 日にリリースされ、GATK 3.5 および GATK4 を使用したワークフローの実行がサポートされています。 gVCF 出力がサポートされ、オプションの引数を使用して出力圧縮を行うことができます。
 
 
 ## <a name="release-history"></a>リリース履歴 
-Microsoft Genomics Python クライアントの新しいバージョンは、ほぼ年に 2 回リリースされます。 Microsoft Genomics Python クライアントの新しいバージョンがリリースされると、このページの修正プログラムと機能の一覧が更新されます。 新しいバージョンがリリースされると、以前のバージョンは少なくとも 90 日間、引き続きサポートされます。 以前のバージョンがサポートされなくなった場合は、このページで告知されます。 
+Microsoft Genomics Python クライアントの新しいバージョンは、ほぼ年に 1 回リリースされます。 Microsoft Genomics Python クライアントの新しいバージョンがリリースされると、このページの修正プログラムと機能の一覧が更新されます。 新しいバージョンがリリースされると、以前のバージョンは少なくとも 90 日間、引き続きサポートされます。 以前のバージョンがサポートされなくなった場合は、このページで告知されます。 
+
+### <a name="version-090"></a>バージョン 0.9.0
+バージョン 0.9.0 には、出力圧縮のサポートが含まれています。 これは、vcf または gvcf の出力で `-bgzip` に続けて `-tabix` を実行するのと同じです。 詳細については、[よく寄せられる質問](frequently-asked-questions-genomics.md)に関するページを参照してください。 
 
 ### <a name="version-081"></a>バージョン 0.8.1
 バージョン 0.8.1 には、軽微なバグの修正が含まれています。  

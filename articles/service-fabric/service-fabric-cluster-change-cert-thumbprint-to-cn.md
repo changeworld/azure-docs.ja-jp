@@ -1,25 +1,14 @@
 ---
-title: 証明書共通名を使用するように Azure Service Fabric クラスターを更新する | Microsoft Docs
+title: 証明書の共通名を使用するようにクラスターを更新する
 description: 証明書の拇印の使用から証明書共通名の使用へと Service Fabric クラスターを切り替える方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: aljo
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/01/2019
-ms.author: aljo
-ms.openlocfilehash: d6860cdfb2e453a2151b4c5e425cfe0b12d88f8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/06/2019
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050477"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272629"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -31,12 +20,12 @@ ms.locfileid: "59050477"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>証明書を取得する
-最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書共通名は、クラスターのホスト名にする必要があります。  たとえば、"myclustername.southcentralus.cloudapp.azure.com" とします。  
+最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書の共通名は、貴社が所有するカスタム ドメインを対象とし、かつドメイン レジストラーから購入したものであることが必要です。 たとえば、"azureservicefabricbestpractices.com" とします。Microsoft の従業員以外は、MS ドメインの証明書をプロビジョニングできません。そのため、ご利用の LB や Traffic Manager の DNS 名を証明書の共通名として使用することはできません。また、カスタム ドメインを Azure で解決可能にするためには、[Azure DNS ゾーン](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)をプロビジョニングする必要があります。 また、ご利用のクラスターのカスタム ドメイン エイリアスをポータルに反映したい場合は、貴社が所有するカスタム ドメインをクラスターの "managementEndpoint" として宣言する必要があります。
 
 テスト目的の場合は、無料またはオープンな証明機関から CA の署名証明書を取得できます。
 
 > [!NOTE]
-> Azure Portal で、Service Fabric クラスターをデプロイするときに生成されるものを含め、自己署名証明書はサポートされません。
+> Azure Portal で、Service Fabric クラスターをデプロイするときに生成されるものを含め、自己署名証明書はサポートされません。 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>証明書をアップロードしてそれをスケールセットにインストールする
 Azure 内で、Service Fabric クラスターは仮想マシン スケール セットにデプロイされます。  キー コンテナーに証明書をアップロードしてから、それをクラスターが実行されている仮想マシン スケール セットにインストールします。
@@ -68,7 +57,7 @@ $resourceId = $newKeyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName `
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName `
     -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
@@ -102,7 +91,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 > スケール セットのシークレットでは、各シークレットはバージョン管理された一意のリソースであるため、2 つの個別のシークレットに対して同じリソース ID はサポートされません。 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>ポータルからテンプレートをダウンロードして更新する
-基になるスケール セットに証明書がインストールされましたが、その証明書と共通名を使用するように Service Fabric クラスターを更新する必要もあります。  ここで、クラスター デプロイ用のテンプレートをダウンロードします。  [Azure Portal](https://portal.azure.com) にログインし、クラスターをホストしているリソース グループに移動します。  **[設定]** で、**[デプロイ]** を選択します。  最新のデプロイを選択し、**[テンプレートの表示]** をクリックします。
+基になるスケール セットに証明書がインストールされましたが、その証明書と共通名を使用するように Service Fabric クラスターを更新する必要もあります。  ここで、クラスター デプロイ用のテンプレートをダウンロードします。  [Azure portal](https://portal.azure.com) にサインインし、クラスターをホストしているリソース グループに移動します。  **[設定]** で、 **[デプロイ]** を選択します。  最新のデプロイを選択し、 **[テンプレートの表示]** をクリックします。
 
 ![テンプレートの表示][image1]
 
@@ -127,7 +116,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     },
     ```
 
-    また、*certificateThumbprint* を削除することを検討します。これはもう不要の可能性があります。
+    また、*certificateThumbprint* を削除することを検討します。これは Resource Manager テンプレートでもう参照されていない可能性があります。
 
 2. **Microsoft.Compute/virtualMachineScaleSets** リソースで、拇印ではなく証明書の設定の共通名を使用するように仮想マシン拡張機能を更新します。  **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate** に `"commonNames": ["[parameters('certificateCommonName')]"],` を追加し、`"thumbprint": "[parameters('certificateThumbprint')]",` を削除します。
     ```json
@@ -190,6 +179,8 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
         ...
     ```
 
+詳細については、「[拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)」を参照してください。
+
 ## <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 変更を加えた後、更新したテンプレートを再度デプロイします。
 
@@ -200,7 +191,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスター セキュリティ](service-fabric-cluster-security.md)について学習します。
 * [クラスター証明書のロールオーバー](service-fabric-cluster-rollover-cert-cn.md)について学習します
 * [クラスター証明書の更新と管理を行います](service-fabric-cluster-security-update-certs-azure.md)

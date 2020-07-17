@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: eamono
 ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65521421"
 ---
-# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>チュートリアル: Azure Automation を Event Grid および Microsoft Teams と統合する
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>チュートリアル:Azure Automation を Event Grid および Microsoft Teams と統合する
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -124,9 +124,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Microsoft Teams の通知](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Event Grid と Automation の間の統合を設定しました。 以下の方法について学習しました。
+このチュートリアルでは、Event Grid と Automation の間の統合を設定しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Event Grid のサンプル Runbook をインポートする。

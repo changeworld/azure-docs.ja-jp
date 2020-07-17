@@ -4,23 +4,21 @@ description: Azure Monitor によって収集される監視データは、軽�
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
-ms.service: monitoring
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790928"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81457265"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
-クラウドとオンプレミスのサービスの両方に依存して分散アプリケーションが実行される今日の複雑なコンピューティング環境で可観測性を有効にするには、分散システムのすべての層とすべてのコンポーネントから運用データを収集する必要があります。 このデータに対して詳細な分析を実行し、組織の数多くの利害関係者をサポートするためにさまざまな観点から見ることができる単一ウィンドウにそれを統合できる必要があります。
+クラウドとオンプレミスのサービスの両方に依存して分散アプリケーションが実行される今日の複雑なコンピューティング環境で監視を有効にするには、分散システムのすべての層とすべてのコンポーネントから運用データを収集する必要があります。 このデータに対して詳細な分析を実行し、組織の数多くの利害関係者をサポートするためにさまざまな観点から見ることができる単一ウィンドウにそれを統合できる必要があります。
 
 [Azure Monitor](../overview.md) では、分析、視覚化、およびアラートを行うために使用できる共通データ プラットフォームにさまざまなソースからデータが収集されて集計されます。 これにより、複数のソースのデータに対する一貫性のあるエクスペリエンスが提供され、監視対象のすべてのリソースに加え、Azure Monitor にデータを格納する他のサービスのデータに対しても深い分析を行うことができます。
 
@@ -38,20 +36,20 @@ Azure リソースによって、大量の監視データが生成されます�
 
 Azure Monitor のメトリックは、タイムスタンプ付きのデータを分析するために最適化された時系列データベースに格納されます。 これにより、メトリックは、特にアラートと問題の迅速な検出に適しています。 それらによって、システムがどのように実行されているかを知ることができますが、通常は、問題の根本原因を識別するためにログと組み合わせる必要があります。
 
-メトリックは、Azure portal の[メトリックス エクスプローラー](../app/metrics-explorer.md)で、対話式の分析を行うために使用できます。 他のデータと組み合わせた視覚化や、リアルタイムの[アラート](alerts-metric.md)で使用するために、[Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加できます。
+メトリックは、Azure portal の [Azure メトリックス エクスプローラー](../platform/metrics-getting-started.md)で、対話式の分析を行うために使用できます。 他のデータと組み合わせた視覚化や、リアルタイムの[アラート](../learn/tutorial-app-dashboards.md)で使用するために、[Azure ダッシュボード](alerts-metric.md)に追加できます。
 
 データのソースを含む Azure Monitor のメトリックの詳細については、「[Metrics in Azure Monitor (Azure Monitor のメトリック)](data-platform-metrics.md)」を参照してください。
 
 ### <a name="logs"></a>ログ
 [ログ](data-platform-logs.md)は、システム内で発生したイベントです。 異なる種類のデータが含まれる可能性があり、構造化されている場合も、タイムスタンプ付きの自由形式のテキストである場合もあります。 それらは、環境内でログ エントリを生成するイベントとして散発的に作成される可能性があり、通常は、大きな負荷がかかっているシステムでは大量のログが生成されます。
 
-Azure Monitor のログは、強力な分析エンジンと[豊富なクエリ言語](/azure/kusto/query/)を備えた [Azure Data Explorer](/azure/data-explorer/) のベースになる Log Analytics ワークスペースに格納されます。 通常、ログには、識別された問題の完全なコンテキストを示す十分な情報が提供され、問題の根本原因を識別するのに役立ちます。
+Azure Monitor のログは、強力な分析エンジンと[豊富なクエリ言語](/azure/data-explorer/)を備えた [Azure Data Explorer](/azure/kusto/query/) のベースになる Log Analytics ワークスペースに格納されます。 通常、ログには、識別された問題の完全なコンテキストを示す十分な情報が提供され、問題の根本原因を識別するのに役立ちます。
 
 > [!NOTE]
-> Azure Monitor のログと Azure 上のログ データのソースを区別することが重要です。 たとえば、Azure のサブスクリプション レベルのイベントは、Azure Monitor のメニューから表示できる[アクティビティ ログ](activity-logs-overview.md)に書き込まれます。 ほとんどのリソースでは、別の場所に転送できる[診断ログ](diagnostic-logs-overview.md)に運用情報が書き込まれます。 Azure Monitor のログは、アクティビティ データと診断ログと共に他の監視データを収集して、リソース全体を深く分析するためのログ データ プラットフォームです。
+> Azure Monitor のログと Azure 上のログ データのソースを区別することが重要です。 たとえば、Azure のサブスクリプション レベルのイベントは、Azure Monitor のメニューから表示できる[アクティビティ ログ](platform-logs-overview.md)に書き込まれます。 ほとんどのリソースでは、別の場所に転送できる[リソース ログ](platform-logs-overview.md)に運用情報が書き込まれます。 Azure Monitor Logs は、アクティビティ データとリソース ログと共に他の監視データを収集して、リソース全体を深く分析するためのログ データ プラットフォームです。
 
 
- Azure portal の [Log Analytics](../log-query/portals.md)で [ログ クエリ](../log-query/log-query-overview.md)を対話式で操作したり、結果を [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加して、他のデータと組み合わせて視覚化したりできます。 スケジュール クエリの結果に基づいてアラートをトリガーする[ログ アラート](alerts-log.md)を作成することもできます。
+ Azure portal の [Log Analytics](../log-query/log-query-overview.md)で [ログ クエリ](../log-query/portals.md)を対話式で操作したり、結果を [Azure ダッシュボード](../learn/tutorial-app-dashboards.md)に追加して、他のデータと組み合わせて視覚化したりできます。 スケジュール クエリの結果に基づいてアラートをトリガーする[ログ アラート](alerts-log.md)を作成することもできます。
 
 データのソースを含む Azure Monitor のログの詳細については、「[Logs in Azure Monitor (Azure Monitor のログ)](data-platform-logs.md)」を参照してください。
 
@@ -70,11 +68,11 @@ Azure Monitor の分散トレースは、[Application Insights SDK](../app/distr
 | Attribute  | メトリック | ログ |
 |:---|:---|:---|
 | メリット | 軽量であり、アラートなどのリアルタイムに近いシナリオが可能です。 問題の迅速な検出に最適です。 | 豊富な分析クエリ言語を使用して分析されます。 詳細な分析と根本原因の識別に最適です。 |
-| データ | 数値のみ | テキストまたは数値データ |
-| Structure | サンプリング時間、監視対象のリソース、数値を含むプロパティの標準セット。 一部のメトリックには、定義を深めるための複数のディメンションが含まれます。 | ログの種類に応じたプロパティの一意のセット。 |
+| Data | 数値のみ | テキストまたは数値データ |
+| 構造体 | サンプリング時間、監視対象のリソース、数値を含むプロパティの標準セット。 一部のメトリックには、定義を深めるための複数のディメンションが含まれます。 | ログの種類に応じたプロパティの一意のセット。 |
 | コレクション | 一定の間隔で収集されます。 | イベントによってレコードの作成がトリガされるときに、散発的に収集される可能性があります。 |
 | Azure portal に表示 | メトリックス エクスプローラー | Log Analytics |
-| 含まれるデータ ソース | Azure リソースから収集されたプラットフォームのメトリック。<br>Application Insights によって監視されるアプリケーション。<br>アプリケーションまたは API によってカスタム に定義される。 | アプリケーションと診断ログ。<br>監視ソリューション。<br>エージェントと VM 拡張機能。<br>アプリケーションの要求と例外。<br>Azure Security Center。<br>Data Collector API。 |
+| 含まれるデータ ソース | Azure リソースから収集されたプラットフォームのメトリック。<br>Application Insights によって監視されるアプリケーション。<br>アプリケーションまたは API によってカスタム に定義される。 | アプリケーションとリソースのログ。<br>監視ソリューション。<br>エージェントと VM 拡張機能。<br>アプリケーションの要求と例外。<br>Azure Security Center。<br>Data Collector API。 |
 
 ## <a name="collect-monitoring-data"></a>Azure で監視データを収集する
 さまざまな [sources of data for Azure Monitor のデータ ソース](data-sources.md)から、Log Analytics ワークスペース (ログ) または Azure Monitor メトリック データベース (メトリック)、あるいはその両方に書き込みが行われます。 これらのデータ ストアに直接書き込みするデータ ソースも、Azure ストレージなどの別の場所に書き込むためにログまたはメトリックを設定する構成が必要なデータ ソースもあります。 
@@ -87,7 +85,7 @@ Azure のツールを使用した監視データの分析に加え、監視デ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor のメトリック](data-platform-metrics.md)を確認します。
 - [Azure Monitor のログ](data-platform-logs.md)を確認します。

@@ -1,27 +1,116 @@
 ---
 title: Azure の Office 365 管理ソリューション | Microsoft Docs
 description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Azure Monitor で作成された Office 365 レコードの詳細な説明が含まれています。
-services: operations-management-suite
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.service: operations-management-suite
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/30/2020
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130774"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023607"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
 ![Office 365 のロゴ](media/solution-office-365/icon.png)
+
+> [!IMPORTANT]
+> ## <a name="solution-update"></a>ソリューションの更新
+> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 7 月 30 日までは、既存のソリューションを引き続きご利用いただけます。
+> 
+> Azure Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Azure Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
+> 
+> Azure AD のレポートは、サインイン イベント、監査イベント、ディレクトリへの変更など、環境内の Azure AD アクティビティのさらに包括的なビューとログを提供します。 Azure AD ログに接続するには [Azure Sentinel Azure ADコネクタ](../../sentinel/connect-azure-active-directory.md)を使用するか、[Azure Monitor で Azure AD ログ統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成します。 
+>
+> Azure AD ログのコレクションは Azure Monitor 価格が適用されます。  詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
+>
+> Azure Sentinel Office 365 ソリューションを使用するには、次の手順に従います。
+> 1. Azure Sentinel で Office 365 コネクタを使用すると、ワークスペースの料金に影響します。 詳細については、「[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」を参照してください。
+> 2. Azure Monitor Office 365 ソリューションを既に使用している場合は、[次のアンインストールに関するセクション](#uninstall)のスクリプトを使用して、まずアンインストールする必要があります。
+> 3. ワークスペースで [Azure Sentinel ソリューションを有効にします](../../sentinel/quickstart-onboard.md)。
+> 4. Azure Sentinel の **[データ コネクタ]** ページにアクセスし、**Office 365** コネクタを有効にします。
+>
+> ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+> 
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>Q:現時点から 7 月 30 日までの間に、Office 365 Azure Monitor ソリューションをオンボードすることはできますか。
+> いいえ、Azure Monitor Office 365 ソリューションのオンボード スクリプトは使用できません。 このソリューションは 7 月 30 日に削除されます。
+> 
+> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Q:テーブルとスキーマは変更されますか。
+> **OfficeActivity** テーブル名とスキーマは、現在のソリューションと同じままです。 新しいソリューションでは、Azure AD データを参照するクエリを除き、同じクエリを使用し続けることができます。
+> 
+> 新しい [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)ログは、**OfficeActivity** ではなく、[SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) と [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) テーブルに取り込まれます。 詳細については、[Azure AD ログの分析方法](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)に関する記事を参照してください。これは、Azure Sentinel と Azure Monitor ユーザーにも関連しています。
+> 
+> **OfficeActivity** から **SigninLogs** にクエリを変換するためのサンプルを次に示します。
+> 
+> **ユーザーがサインインに失敗した場合のクエリ:**
+> 
+> ```Kusto
+> OfficeActivity
+> | where TimeGenerated >= ago(1d) 
+> | where OfficeWorkload == "AzureActiveDirectory"                      
+> | where Operation == 'UserLoginFailed'
+> | summarize count() by UserId    
+> ```
+> 
+> ```Kusto
+> SigninLogs
+> | where ConditionalAccessStatus == "failure" or ConditionalAccessStatus == "notApplied"
+> | summarize count() by UserDisplayName
+> ```
+> 
+> **Azure AD の操作を表示:**
+> 
+> ```Kusto
+> OfficeActivity
+> | where OfficeWorkload =~ "AzureActiveDirectory"
+> | sort by TimeGenerated desc
+> | summarize AggregatedValue = count() by Operation
+> ```
+> 
+> ```Kusto
+> AuditLogs
+> | summarize count() by OperationName
+> ```
+> 
+> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>Q:Azure Sentinel をオンボードするにはどうすればよいですか。
+> Azure Sentinel は、新規または既存の Log Analytics ワークスペースで有効にできるソリューションです。 詳細については、[Azure Sentinel のオンボードに関するドキュメント](../../sentinel/quickstart-onboard.md)を参照してください。
+>
+> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>Q:Azure AD ログを接続するために Azure Sentinel は必要ですか。
+> [Azure AD ログと Azure Monitor の統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成できます。これは、Azure Sentinel ソリューションに関連付けられていません。 Azure Sentinel は、ネイティブ コネクタと、すぐに使用できる Azure AD ログ用のコンテンツを提供します。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問を参照してください。
+>
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Q:Azure Sentinel と Azure Monitor から Azure AD ログを接続する場合の違いは何ですか。
+> Azure Sentinel と Azure Monitor は、同じ [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に基づいて Azure AD ログに接続します。 Azure Sentinel では、同じデータを接続し、監視情報をワンクリック提供するでネイティブ コネクタが使用できます。
+>
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Q:新しい Azure AD レポートおよび監視テーブルに移動する場合は、どのように変更する必要がありますか。
+> 警告、ダッシュボード、および Office 365 Azure AD データを使用して作成したコンテンツを含む Azure AD データを使用するすべてのクエリを、新しいテーブルを使用して再作成する必要があります。
+>
+> Azure Sentinel と Azure AD には、Azure AD レポートおよび監視ソリューションに移行するときに使用できる組み込みコンテンツが用意されています。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問、および 「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 
+>
+> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>Q:組み込みの Azure Sentinel のセキュリティ指向コンテンツを使用するにはどうすればよいですか。
+> Azure Sentinel は、Office 365 および Azure AD ログに基づいた、組み込みのセキュリティ指向のダッシュボード、カスタム アラート クエリ、検索クエリ、調査、および自動応答機能を提供します。 詳細については、Azure Sentinel GitHub とチュートリアルを参照してください。
+>
+> - [難しい設定なしで脅威を検出する](../../sentinel/tutorial-detect-threats-built-in.md)
+> - [疑わしい脅威を検出するカスタム分析ルールを作成する](../../sentinel/tutorial-detect-threats-custom.md)
+> - [データを監視する](../../sentinel/tutorial-monitor-your-data.md)
+> - [Azure Sentinel でインシデントを調査します](../../sentinel/tutorial-investigate-cases.md)
+> - [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Azure Sentinel GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
+> 
+> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q:Azure Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
+> はい。[Azure Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
+> 
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>Q:7 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
+> 
+> - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
+> - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
+> - ソリューションを手動でオフボードしない場合、データは 7 月 30 日に自動的に切断されます。
+> 
+> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
+> はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
+ 
 
 Office 365 管理ソリューションでは、Azure Monitor で Office 365 環境を監視できます。
 
@@ -31,362 +120,6 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
 - 組織の Office 365 アクティビティ データに対して[ログ クエリ](../log-query/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-このソリューションをインストールして構成する前に、次のものが必要です。
-
-- 組織の Office 365 サブスクリプション。
-- グローバル管理者であるユーザー アカウントの資格情報。
-- 監査データを受信するには、Office 365 サブスクリプションで[監査を構成する](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)必要があります。  [メールボックスの監査](https://technet.microsoft.com/library/dn879651.aspx)は個別に構成されることに注意してください。  監査が構成されていない場合でも、ソリューションをインストールしてその他のデータを収集することは可能です。
- 
-
-## <a name="management-packs"></a>管理パック
-
-このソリューションでは、[接続されている管理グループ](../platform/om-agents.md)に管理パックがインストールされることはありません。
-  
-
-## <a name="install-and-configure"></a>インストールと構成
-
-[サブスクリプションに Office 365 ソリューション](solutions.md#install-a-monitoring-solution)を追加することで開始します。 追加されたら、Office 365 サブスクリプションへのアクセス権を付与するため、このセクションの構成手順を実行する必要があります。
-
-### <a name="required-information"></a>必要な情報
-
-この手順を開始する前に、次の情報を収集します。
-
-Log Analytics ワークスペースから:
-
-- ワークスペース名: Office 365 データが収集されるワークスペース。
-- リソース グループ名: そのワークスペースを含むリソース グループ。
-- Azure サブスクリプション ID: そのワークスペースを含むサブスクリプション。
-
-Office 365 サブスクリプションから:
-
-- ユーザー名:管理者アカウントの電子メール アドレス。
-- テナント ID: Office 365 サブスクリプションの一意の ID。
-- クライアント ID: Office 365 クライアントを表す 16 文字の文字列。
-- クライアント シークレット: 認証に必要な暗号化された文字列。
-
-### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory に Office 365 アプリケーションを作成する
-
-最初の手順では、管理ソリューションが Office 365 ソリューションへのアクセスに使用する Azure Active Directory でアプリケーションを作成します。
-
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にログインします。
-1. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。
-1. **[新しいアプリケーションの登録]** をクリックします。
-
-    ![アプリの登録の追加](media/solution-office-365/add-app-registration.png)
-1. アプリケーションの **[名前]** を入力し、**[サインオン URL]** をクリックします。  名前は、わかりやすいである必要があります。  URL には `http://localhost` を使用し、**[アプリケーションの種類]** として _[Web アプリ/API]_ を選択します。
-    
-    ![アプリケーションの作成](media/solution-office-365/create-application.png)
-1. **[作成]** をクリックしてアプリケーションの情報を検証します。
-
-    ![登録済みのアプリ](media/solution-office-365/registered-app.png)
-
-### <a name="configure-application-for-office-365"></a>Office 365 のアプリケーションを構成する
-
-1. **[設定]** をクリックし、**[設定]** メニューを開きます。
-1. **[プロパティ]** を選択します。 **[マルチテナント]** を _[はい]_ に変更します。
-
-    ![マルチテナントの設定](media/solution-office-365/settings-multitenant.png)
-
-1. **[設定]** メニューで、**[必要なアクセス許可]** を選択し、**[追加]** をクリックします。
-1. **[API を選択します]** をクリックして **[Office 365 Management API]** をクリックします。 **[Office 365 Management API]** をクリックします。 **[選択]** をクリックします。
-
-    ![API の選択](media/solution-office-365/select-api.png)
-
-1. **[アクセス許可を選択]** で **[アプリケーションのアクセス許可]** と **[デリゲートされたアクセス許可]** の両方の以下のオプションを選択します。
-   - 組織の Service Health 情報の読み取り
-   - 組織のアクティビティ データの読み取り
-   - 組織の活動レポートの読み取り
-
-     ![API の選択](media/solution-office-365/select-permissions.png)
-
-1. **[選択]**、**[完了]** の順にクリックします。
-1. **[アクセス許可の付与]** をクリックし、確認を求められたら **[はい]** をクリックします。
-
-    ![アクセス許可を付与する](media/solution-office-365/grant-permissions.png)
-
-### <a name="add-a-key-for-the-application"></a>アプリケーションのキーを追加する
-
-1. **[設定]** メニューで、**[キー]** を選択します。
-1. 新しいキーの **[説明]** と **[期間]** に入力します。
-1. **[保存]** をクリックし、生成された **[値]** をコピーします。
-
-    ![構成する](media/solution-office-365/keys.png)
-
-### <a name="add-admin-consent"></a>管理者の同意の入力
-
-最初に管理者アカウントを有効にするには、アプリケーションの管理者の同意を指定する必要があります。 これは PowerShell スクリプトで行うことができます。 
-
-1. 次のスクリプトを *office365_consent.ps1* として保存します。
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,     
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId
-    )
-    
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocation
-    
-    Function AdminConsent{
-    
-    $domain='login.microsoftonline.com'
-    switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
-           "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
-           "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
-           "southeastasia"   {$OfficeAppClientId="09c5b521-648d-4e29-81ff-7f3a71b27270"; break}
-           "australiasoutheast"  {$OfficeAppClientId="f553e464-612b-480f-adb9-14fd8b6cbff8"; break}   
-           "westcentralus"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break}
-           "japaneast"   {$OfficeAppClientId="b07d97d3-731b-4247-93d1-755b5dae91cb"; break}
-           "uksouth"   {$OfficeAppClientId="f232cf9b-e7a9-4ebb-a143-be00850cd22a"; break}
-           "centralindia"   {$OfficeAppClientId="ffbd6cf4-cba8-4bea-8b08-4fb5ee2a60bd"; break}
-           "canadacentral"  {$OfficeAppClientId="c2d686db-f759-43c9-ade5-9d7aeec19455"; break}
-           "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
-           "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
-           "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.microsoftonline.us'; break}
-           default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
-                    $domain='login.windows-ppe.net'; break} #Int
-        }
-    
-        $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
-    }
-    
-    AdminConsent -ErrorAction Stop
-    ```
-
-2. 次のコマンドを実行して、スクリプトを実行します。 資格情報を求めるメッセージが 2 回表示されます。 最初に Log Analytics ワークスペースの資格情報を指定し、次に Office 365 テナントのグローバル管理者の資格情報を指定します。
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
-    ```
-
-    例:
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
-    ```
-
-1. 次のようなウィンドウが表示されます。 **[Accept]\(受け入れる\)** をクリックします。
-    
-    ![管理者の同意](media/solution-office-365/admin-consent.png)
-
-### <a name="subscribe-to-log-analytics-workspace"></a>Log Analytics ワークスペースへの送信
-
-最後の手順では、Log Analytics ワークスペースにアプリケーションを送信します。 これは PowerShell スクリプトでも行うことができます。
-
-1. 次のスクリプトを *office365_subscription.ps1* として保存します。
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId,
-        [Parameter(Mandatory=$True)][string]$OfficeUsername,
-        [Parameter(Mandatory=$True)][string]$OfficeTennantId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientSecret
-    )
-    $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
-    $line
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $Workspace
-    $WorkspaceLocation= $Workspace.Location
-    $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
-    
-    # Client ID for Azure PowerShell
-    $clientId = "1950a258-227b-4e31-a9cf-717495945fc2"
-    # Set redirect URI for Azure PowerShell
-    $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
-    $domain='login.microsoftonline.com'
-    $adTenant = $Subscription[0].Tenant.Id
-    $authority = "https://login.windows.net/$adTenant";
-    $ARMResource ="https://management.azure.com/";
-    $xms_client_tenant_Id ='55b65fb5-b825-43b5-8972-c8b6875867c1'
-    
-    switch ($WorkspaceLocation) {
-           "USGov Virginia" { 
-                             $domain='login.microsoftonline.us';
-                              $authority = "https://login.microsoftonline.us/$adTenant";
-                              $ARMResource ="https://management.usgovcloudapi.net/"; break} # US Gov Virginia
-           default {
-                    $domain='login.microsoftonline.com'; 
-                    $authority = "https://login.windows.net/$adTenant";
-                    $ARMResource ="https://management.azure.com/";break} 
-                    }
-    
-    Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
-    # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
-    # Authenticate and Acquire Token 
-    # Create Authentication Context tied to Azure AD Tenant
-    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
-    # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
-    $authHeader
-    }
-    
-    Function Failure {
-    $line
-    $formatstring = "{0} : {1}`n{2}`n" +
-                    "    + CategoryInfo          : {3}`n" +
-                    "    + FullyQualifiedErrorId : {4}`n"
-    $fields = $_.InvocationInfo.MyCommand.Name,
-              $_.ErrorDetails.Message,
-              $_.InvocationInfo.PositionMessage,
-              $_.CategoryInfo.ToString(),
-              $_.FullyQualifiedErrorId
-    
-    $formatstring -f $fields
-    $_.Exception.Response
-    
-    $line
-    break
-    }
-    
-    Function Connection-API
-    {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
-    $ResourceName = "https://manage.office.com"
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    
-    $line
-    $connectionAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/connections/office365connection_' + $SubscriptionId + $OfficeTennantId + '?api-version=2017-04-26-preview'
-    $connectionAPIUrl
-    $line
-    
-    $xms_client_tenant_Id ='1da8f770-27f4-4351-8cb3-43ee54f14759'
-    
-    $BodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'clientId': '" + $OfficeClientId + "',
-                                    'clientSecret': '" + $OfficeClientSecret + "',
-                                    'Username': '" + $OfficeUsername   + "',
-                                    'Url': 'https://$($domain)/" + $OfficeTennantId + "/oauth2/token',
-                                  },
-                    'etag': '*',
-                    'kind': 'Connection',
-                    'solution': 'Connection',
-                   }"
-    
-    $params = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id #Prod-'1da8f770-27f4-4351-8cb3-43ee54f14759'
-        'Content-Type' = 'application/json'
-        }
-        Body = $BodyString
-        Method = 'Put'
-        URI = $connectionAPIUrl
-    }
-    $response = Invoke-WebRequest @params 
-    $response
-    $line
-    
-    }
-    
-    Function Office-Subscribe-Call{
-    try{
-    #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
-    
-    $OfficeBodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'office365TenantID': '" + $OfficeTennantId + "',
-                                    'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
-                                    'office365AdminUsername': '" + $OfficeUsername + "',
-                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.SharePoint'
-                                  },
-                    'etag': '*',
-                    'kind': 'Office365',
-                    'solution': 'Office365',
-                   }"
-    
-    $Officeparams = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id
-        'Content-Type' = 'application/json'
-        }
-        Body = $OfficeBodyString
-        Method = 'Put'
-        URI = $OfficeAPIUrl
-      }
-    
-    $officeresponse = Invoke-WebRequest @Officeparams 
-    $officeresponse
-    }
-    catch{ Failure }
-    }
-    
-    #GetDetails 
-    RESTAPI-Auth -ErrorAction Stop
-    Connection-API -ErrorAction Stop
-    Office-Subscribe-Call -ErrorAction Stop
-    ```
-
-2. 次のコマンドを実行して、スクリプトを実行します。
-
-    ```
-    .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
-    ```
-
-    例:
-
-    ```powershell
-    .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
-    ```
-
-### <a name="troubleshooting"></a>トラブルシューティング
-
-アプリケーションがこのワークスペースに既にサブスクライブしている場合や、このテナントが別のワークスペースにサブスクライブしている場合は、次のエラーが表示されることがあります。
-
-```Output
-Invoke-WebRequest : {"Message":"An error has occurred."}
-At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
-+ $officeresponse = Invoke-WebRequest @Officeparams
-+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
-    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand 
-```
-
-無効なパラメーター値を指定した場合は、次のエラーが表示される場合があります。
-
-```Output
-Select-AzSubscription : Please provide a valid tenant or a valid subscription.
-At line:12 char:18
-+ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
-
-```
 
 ## <a name="uninstall"></a>アンインストール
 
@@ -443,15 +176,17 @@ At line:12 char:18
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $authHeader
     }
     
     Function Office-UnSubscribe-Call{
     
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   = $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_'  + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
@@ -477,7 +212,7 @@ At line:12 char:18
     Office-UnSubscribe-Call -ErrorAction Stop
     ```
 
-2. 次のコマンドを実行して、スクリプトを実行します。
+2. 次のコマンドを使用してこのスクリプトを実行します。
 
     ```
     .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
@@ -489,13 +224,9 @@ At line:12 char:18
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
-## <a name="data-collection"></a>データ収集
+資格情報を求めるメッセージが表示されます。 Log Analytics ワークスペースの資格情報を入力します。
 
-### <a name="supported-agents"></a>サポートされているエージェント
-
-Office 365 ソリューションは、どの [Log Analytics エージェント](../platform/agent-data-sources.md)からもデータを取得しません。  Office 365 から直接データを取得します。
-
-### <a name="collection-frequency"></a>収集の頻度
+## <a name="data-collection"></a>データ コレクション
 
 最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
 
@@ -514,7 +245,7 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 | 列 | 説明 |
 |:--|:--|
-| Operations | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
+| 操作 | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
 | Exchange | Add-Mailbox Permission、または Set-Mailbox などの Exchange Server アクティビティの内訳を示します。 |
 | SharePoint | SharePoint ドキュメントに対してユーザーが実行する最上位のアクティビティを示します。 このタイルからドリル ダウンすると、ターゲット ドキュメントやこのアクティビティの場所など、これらのアクティビティの詳細が検索ページに表示されます。 たとえば、File Accessed イベントの場合、アクセスされているドキュメント、それと関連付けられたアカウント名、および IP アドレスを見ることができます。 |
 | Azure Active Directory | ユーザー パスワードのリセットやログイン試行など、最上位のユーザー アクティビティが含まれます。 ドリルダウンすると、結果の状態など、これらのアクティビティの詳細を見ることができます。 これは主に、Azure Active Directory 上の不審なアクティビティを監視する場合に便利です。 |
@@ -526,11 +257,11 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 Azure Monitor の Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload**プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
 
-### <a name="common-properties"></a>共通のプロパティ
+### <a name="common-properties"></a>共通プロパティ
 
 次のプロパティは、Office 365 のすべてのレコードに共通です。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--- |:--- |
 | Type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
@@ -541,7 +272,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
 | UserId | レコードがログに記録される結果になったアクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、my_name@my_domain_name。 (SHAREPOINT\system や NTAUTHORITY\SYSTEM などの) システム アカウントによって実行されるアクティビティのレコードも含まれることに注意してください。 | 
 | UserKey | UserId プロパティで識別されるユーザーの代替 ID。  たとえば、SharePoint、OneDrive for Business、および Exchange でユーザーによって実行されたイベントの Passport 一意識別子 (PUID) が、このプロパティの値になります。 このプロパティは、他のサービスで発生するイベントや、システム アカウントによって実行されるイベントの UserID プロパティと同じ値を指定する場合もあります。|
-| UserType | 操作を実行したユーザーの種類。<br><br>[Admin]<br>Application<br>DcAdmin<br>通常 <br>予約済み<br>ServicePrincipal<br>システム |
+| UserType | 操作を実行したユーザーの種類。<br><br>[Admin]<br>Application<br>DcAdmin<br>通常<br>予約済み<br>ServicePrincipal<br>システム |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory ベース
@@ -562,12 +293,12 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Application | アカウント ログイン イベントをトリガーするアプリケーション (Office 15 など)。 |
-| Client | アカウント ログイン イベントで使用されたクライアント デバイス、デバイス OS、およびデバイス ブラウザーの詳細。 |
-| LoginStatus | このプロパティは OrgIdLogon.LoginStatus に直接由来します。 アルゴリズムを変えることにより、さまざまな興味深いログオン失敗のマッピングを実行できます。 |
-| UserDomain | テナント ID 情報 (TII)。 | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | アカウント ログイン イベントをトリガーするアプリケーション (Office 15 など)。 |
+| `Client` | アカウント ログイン イベントで使用されたクライアント デバイス、デバイス OS、およびデバイス ブラウザーの詳細。 |
+| `LoginStatus` | このプロパティは OrgIdLogon.LoginStatus に直接由来します。 アルゴリズムを変えることにより、さまざまな興味深いログオン失敗のマッピングを実行できます。 |
+| `UserDomain` | テナント ID 情報 (TII)。 | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
@@ -583,7 +314,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ActorContextId | アクターが所属する組織の GUID。 |
 | ActorIpAddress | アクターの IP アドレス。IPv4 または IPv6 アドレスの形式。 |
 | InterSystemsId | Office 365 サービス内のコンポーネント間でアクションを追跡する GUID。 |
-| IntraSystemId |   アクションを追跡するために Azure Active Directory によって生成される GUID。 |
+| IntraSystemId |     アクションを追跡するために Azure Active Directory によって生成される GUID。 |
 | SupportTicketId | "代理操作" の状況におけるアクションのカスタマー サポート チケット ID。 |
 | TargetContextId | ターゲットのユーザーが所属する組織の GUID。 |
 
@@ -598,7 +329,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ElevationApprovedTime | 昇格が承認されたときのタイムスタンプ。 |
 | ElevationApprover | Microsoft マネージャーの名前。 |
 | ElevationDuration | 昇格がアクティブだった期間。 |
-| ElevationRequestId |  昇格要求の一意識別子。 |
+| ElevationRequestId |     昇格要求の一意識別子。 |
 | ElevationRole | 昇格が要求されたロール。 |
 | ElevationTime | 昇格の開始時刻。 |
 | Start_Time | コマンドレット実行の開始時刻。 |
@@ -612,11 +343,11 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
-| ExternalAccess |  組織内のユーザー、Microsoft のデータセンター担当者またはデータセンター サービス アカウント、委任された管理者のいずれによってコマンドレットが実行されたかを指定します。 False の値は、組織内の人物によってコマンドレットが実行されたことを示します。 True の値は、データセンター担当者、データセンター サービス アカウント、または委任管理者によってコマンドレットが実行されたことを示します。 |
-| ModifiedObjectResolvedName |  コマンドレットによって変更されたオブジェクトのユーザー フレンドリ名。 コマンドレットがオブジェクトを変更する場合にのみ記録されます。 |
+| ExternalAccess |     組織内のユーザー、Microsoft のデータセンター担当者またはデータセンター サービス アカウント、委任された管理者のいずれによってコマンドレットが実行されたかを指定します。 False の値は、組織内の人物によってコマンドレットが実行されたことを示します。 True の値は、データセンター担当者、データセンター サービス アカウント、または委任管理者によってコマンドレットが実行されたことを示します。 |
+| ModifiedObjectResolvedName |     コマンドレットによって変更されたオブジェクトのユーザー フレンドリ名。 コマンドレットがオブジェクトを変更する場合にのみ記録されます。 |
 | OrganizationName | テナントの名前。 |
 | OriginatingServer | コマンドレットの実行元だったサーバーの名前。 |
-| parameters | Operations プロパティで識別されるコマンドレットと共に使用されたすべてのパラメーターの名前と値。 |
+| パラメーター | Operations プロパティで識別されるコマンドレットと共に使用されたすべてのパラメーターの名前と値。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange メールボックス
@@ -634,7 +365,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ClientVersion | 電子メール クライアントのバージョン。 |
 | InternalLogonType | 内部使用のために予約されています。 |
 | Logon_Type | メールボックスにアクセスし、記録された操作を実行したユーザーの種類を示します。 |
-| LogonUserDisplayName |    操作を実行したユーザーのユーザー フレンドリ名。 |
+| LogonUserDisplayName |     操作を実行したユーザーのユーザー フレンドリ名。 |
 | LogonUserSid | 操作を実行したユーザーの SID。 |
 | MailboxGuid | アクセスされたメールボックスの Exchange GUID。 |
 | MailboxOwnerMasterAccountSid | メールボックス所有者アカウントのマスター アカウント SID。 |
@@ -687,7 +418,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | EventSource | SharePoint で発生したイベントを識別します。 値は SharePoint または ObjectModel です。 |
 | ItemType | アクセスまたは変更されたオブジェクトの種類。 オブジェクトの種類の詳細については、ItemType の表を参照してください。 |
 | MachineDomainInfo | デバイス同期操作に関する情報。 この情報は、要求に存在する場合にのみ報告されます。 |
-| MachineId |   デバイス同期操作に関する情報。 この情報は、要求に存在する場合にのみ報告されます。 |
+| MachineId |     デバイス同期操作に関する情報。 この情報は、要求に存在する場合にのみ報告されます。 |
 | Site_ | ユーザーがアクセスするファイルまたはフォルダーがあるサイトの GUID。 |
 | Source_Name | 監査対象の操作をトリガーしたエンティティ。 値は SharePoint または ObjectModel です。 |
 | UserAgent | ユーザーのクライアントまたはブラウザーに関する情報。 この情報は、クライアントまたはブラウザーによって提供されます。 |
@@ -702,7 +433,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | CustomEvent | カスタム イベントに関する省略可能文字列。 |
-| Event_Data |  カスタム イベントに関する省略可能ペイロード。 |
+| Event_Data |     カスタム イベントに関する省略可能ペイロード。 |
 | ModifiedProperties | サイトまたはサイト コレクション管理者グループのメンバーとしてユーザーを追加するなどの管理者イベントに含まれるプロパティ。 プロパティには、変更されたプロパティの名前 (サイト管理者グループなど)、変更されたプロパティの新しい値 (サイト管理者として追加されたユーザーなど)、変更されたオブジェクトの以前の値が含まれます。 |
 
 
@@ -720,28 +451,27 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | SharingType | リソースの共有相手だったユーザーに割り当てられていた共有アクセス許可の種類。 このユーザーは UserSharedWith パラメーターによって識別されます。 |
 | Site_Url | ユーザーがアクセスするファイルまたはフォルダーがあるサイトの URL。 |
 | SourceFileExtension | ユーザーがアクセスしたファイルのファイル拡張子。 アクセスしたオブジェクトがフォルダーの場合、このプロパティは空です。 |
-| SourceFileName |  ユーザーがアクセスしたファイルまたはフォルダーの名前。 |
+| SourceFileName |     ユーザーがアクセスしたファイルまたはフォルダーの名前。 |
 | SourceRelativeUrl | ユーザーがアクセスするファイルが含まれているフォルダーの URL。 SiteURL、SourceRelativeURL、および SourceFileName パラメーターの値の組み合わせは、(ユーザーがアクセスするファイルの完全パス名である) ObjectID プロパティの値と同じです。 |
-| UserSharedWith |  リソースの共有相手だったユーザー。 |
+| UserSharedWith |     リソースの共有相手だったユーザー。 |
 
 
 
 
-## <a name="sample-log-searches"></a>サンプル ログ検索
+## <a name="sample-log-queries"></a>サンプル ログ クエリ
 
-次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
+次の表は、このソリューションによって収集された更新レコードを探すログ クエリの例です。
 
-| Query | 説明 |
+| クエリ | 説明 |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
-|ユーザーの種類別のファイル アクセス操作|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
-|特定のキーワードで検索する|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
+|ユーザーの種類別のファイル アクセス操作 | OfficeActivity &#124; summarize count() by UserType |
 |Exchange 上の外部アクションを監視する|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
 * [独自のダッシュボードを作成](../learn/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。

@@ -14,11 +14,11 @@
       href: use.md
 - name: 概念
   items:
-    - name: アーキテクチャ
+    - name: Architecture
       href: architecture.md
     - name: 統合のパターン
       href: integration-patterns.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: Workbench をデプロイする
@@ -55,19 +55,21 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: リソース
   items:
-    - name: ブログ
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: コード サンプル
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: コミュニティ
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html'
+    - name: コミュニティ サポート
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: フォーラム
-      href: 'https://aka.ms/workbenchforum'
+    - name: Stack Overflow サポート
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: 製品フィードバック
       href: 'https://aka.ms/blockchainuservoice'
 - name: ソリューション テンプレート
   items:
     - name: Ethereum Proof-of-Authority Consortium
       href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger Fabric コンソーシアム
-      href: ../templates/hyperledger-fabric-consortium-blockchain.md
+    - name: Hyperledger Fabric コンソーシアム Azure Kubernetes Service
+      href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md

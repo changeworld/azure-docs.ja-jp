@@ -1,25 +1,15 @@
 ---
-title: マルチインスタンス タスクを使用した MPI アプリケーションの実行 - Azure Batch | Microsoft Docs
+title: マルチインスタンス タスクを使用した MPI アプリケーションの実行
 description: Azure Batch でマルチインスタンス タスクを使用して、Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
+ms.topic: how-to
 ms.date: 03/13/2019
-ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43902e774f4c291e8d6a9c659b575d7e75ca032e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905020"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724229"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -191,9 +181,7 @@ Batch サービスによって、マルチインスタンス タスクで使用�
 これらの変数とその他の Batch コンピューティング ノードの環境変数のコンテンツと可視性を含む詳細については、[コンピューティング ノードの環境変数][msdn_env_var]に関する記事をご覧ください。
 
 > [!TIP]
-> Batch Linux MPI コード サンプルには、さまざまな環境変数をどのように使用できるかの例が含まれています。 [coordination-cmd][coord_cmd_example] Bash スクリプトは、共通アプリケーションと入力ファイルを Azure Storage からダウンロードし、Network File System (NFS) 共有をマスター ノード上で有効にし、マルチインスタンス タスクに割り当てられているその他のノードを NFS クライアントとして構成します。
->
->
+> Batch Linux MPI コード サンプルには、さまざまな環境変数をどのように使用できるかの例が含まれています。
 
 ## <a name="resource-files"></a>リソース ファイル
 マルチインスタンス タスクには、考慮すべきリソース ファイルのセットが 2 つあります。"*すべてのタスク*" (プライマリ タスクとサブタスクの両方) でダウンロードされる**共通リソース ファイル**と、マルチインスタンス タスク自体に指定され、"*プライマリ タスクでのみ*" ダウンロードされる**リソース ファイル**です。
@@ -265,11 +253,11 @@ await subtasks.ForEachAsync(async (subtask) =>
 });
 ```
 
-## <a name="code-sample"></a>サンプル コード
-GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マルチインスタンス タスクを使用して Batch コンピューティング ノード上で [MS-MPI][msmpi_msdn] アプリケーションを実行する方法を紹介しています。 「[準備](#preparation)」セクションと「[実行](#execution)」セクションの手順に従い、サンプルを実行してください。
+## <a name="code-sample"></a>コード サンプル
+GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マルチインスタンス タスクを使用して Batch 計算ノード上で [MS-MPI][msmpi_msdn] アプリケーションを実行する方法を紹介しています。 「[準備](#preparation)」セクションと「[実行](#execution)」セクションの手順に従い、サンプルを実行してください。
 
 ### <a name="preparation"></a>準備
-1. 「[How to compile and run a simple MS-MPI program (単純な MS-MPI プログラムのコンパイルと実行の方法)][msmpi_howto]」の最初の 2 つの手順に従います。 これで、次の手順の前提条件が満たされます。
+1. 「[単純な MS-MPI プログラムのコンパイルと実行の方法][msmpi_howto]」の最初の 2 つの手順に従います。 これで、次の手順の前提条件が満たされます。
 2. [MPIHelloWorld][helloworld_proj] サンプル MPI プログラムの "*リリース*" バージョンをビルドします。 このプログラムは、マルチインスタンス タスクによりコンピューティング ノードで実行されます。
 3. `MPIHelloWorld.exe` (手順 2. でビルドしたもの) と `MSMpiSetup.exe` (手順 1. でダウンロードしたもの) を含む zip ファイルを作成します。 この zip ファイルは、次の手順でアプリケーション パッケージとしてアップロードします。
 4. [Azure Portal][portal] を使用して "MPIHelloWorld" という名前の Batch [アプリケーション](batch-application-packages.md)を作成し、前の手順で作成した zip ファイルをアプリケーション パッケージのバージョン "1.0" として指定します。 詳細については、「[アプリケーションのアップロードと管理](batch-application-packages.md#upload-and-manage-applications)」を参照してください。
@@ -279,14 +267,14 @@ GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マ�
 >
 >
 
-### <a name="execution"></a>Execution
+### <a name="execution"></a>実行
 1. GitHub から [azure-batch-samples][github_samples_zip] をダウンロードします。
-2. Visual Studio 2017 で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
+2. Visual Studio 2019 で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. **Microsoft.Azure.Batch.Samples.Common** プロジェクトの `AccountSettings.settings` に、Batch と Storage のアカウント資格情報を入力します。
 4. MultiInstanceTasks ソリューションを**ビルドおよび実行**して、Batch プール内のコンピューティング ノード上で MPI サンプル アプリケーションを実行します。
-5. *省略可能*: [Azure portal][portal] または [Batch Explorer][batch_labs] を使用して、リソースを削除する前に、サンプル プール、ジョブ、タスク ("MultiInstanceSamplePool"、"MultiInstanceSampleJob"、"MultiInstanceSampleTask") を確認します。
+5. *省略可能*:[Azure portal][portal] または [Batch Explorer][batch_labs] を使用して、リソースを削除する前に、サンプル プール、ジョブ、タスク ("MultiInstanceSamplePool"、"MultiInstanceSampleJob"、"MultiInstanceSampleTask") を確認します。
 
 > [!TIP]
 > Visual Studio をお持ちでない場合は、[Visual Studio Community][visual_studio] を無料でダウンロードできます。
@@ -328,7 +316,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Microsoft HPC & Azure Batch チームのブログに、[Azure Batch での Linux 上の MPI のサポート][blog_mpi_linux]の説明があります。[OpenFOAM][openfoam] での Batch の使用に関する情報が含まれています。 [OpenFOAM][github_mpi] での Python コード サンプルを GitHub で見つけることができます。
 * [Linux コンピューティング ノードのプールを作成](batch-linux-nodes.md)して Azure Batch MPI ソリューションで使用する方法を確認します。
 
@@ -339,7 +327,7 @@ Sample complete, hit ENTER to exit...
 [batch_labs]: https://azure.github.io/BatchExplorer/
 [blog_mpi_linux]: https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/
 [cmd_start]: https://technet.microsoft.com/library/cc770297.aspx
-[coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/linux/openfoam/coordination-cmd
+[coord_cmd_example]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/mpi/data/coordination-cmd
 [github_mpi]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip

@@ -1,8 +1,14 @@
 - name: 概要
   items:
-    - name: Oracle VM に関する考慮事項
-      href: oracle-considerations.md
-- name: クイック スタート
+    - name: Oracle ソリューションの概要
+      href: oracle-overview.md
+    - name: Azure VM 上のソリューション
+      href: oracle-vm-solutions.md
+    - name: WebLogic Server Azure アプリケーション
+      href: oracle-weblogic.md
+    - name: OCI を使用したソリューション
+      href: oracle-oci-overview.md
+- name: クイックスタート
   items:
     - name: Oracle DB の作成
       href: oracle-database-quick-create.md
@@ -10,18 +16,26 @@
   items:
     - name: Oracle ASM の構成
       href: configure-oracle-asm.md
-    - name: Oracle DataGuard の構成
+    - name: Oracle Data Guard の構成
       href: configure-oracle-dataguard.md
     - name: Oracle GoldenGate の構成
       href: configure-oracle-golden-gate.md
 - name: 概念
   items:
+    - name: Oracle アプリケーションのアーキテクチャ
+      href: oracle-oci-applications.md
+    - name: Oracle データベースのアーキテクチャ
+      href: oracle-reference-architecture.md
     - name: Oracle DB の構築
       href: oracle-design.md
     - name: Oracle DB のバックアップ戦略
       href: oracle-backup-recovery.md
-    - name: Oracle のディザスター リカバリーのオプション
+    - name: Oracle のディザスター リカバリー オプション
       href: oracle-disaster-recovery.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure と OCI の相互接続
+      href: configure-azure-oci-networking.md
 - name: リソース
   items:
     - name: Azure のロードマップ

@@ -2,7 +2,7 @@
 title: ユーザーのパスワードをリセットする - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用してユーザーのパスワードをリセットする方法について説明します。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492704"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "69032662"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 
@@ -35,22 +35,23 @@ ms.locfileid: "59492704"
 
 1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページを参照してください。
 
-2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、**[パスワードのリセット]** を選択します。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、 **[パスワードのリセット]** を選択します。
 
     **[パスワードのリセット]** オプションを含む **[Alain Charon - プロファイル]** ページが表示されます。
 
     ![[パスワードのリセット] オプションが強調表示されているユーザーのプロファイル ページ](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. **[パスワードのリセット]** ページで、**[パスワードのリセット]** を選択します。
+3. **[パスワードのリセット]** ページで、 **[パスワードのリセット]** を選択します。
 
-    ユーザー用に一時パスワードが自動生成されます。
+    > [!Note]
+    > Azure Active Directory を使用している場合、ユーザー用に一時パスワードが自動生成されます。 オンプレミスで Active Directory を使用している場合は、自分でユーザー用のパスワードを作成します。
 
 4. そのパスワードをコピーして、ユーザーに付与します。 ユーザーは次のサインイン プロセス中にパスワードを変更するように求められます。
 
     >[!Note]
     >一時パスワードに期限はありません。 次回ユーザーがサインインすると、一時パスワードが生成されてから経過している時間にかかわらず、パスワードは引き続き機能します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ユーザーのパスワードをリセットしたら、次の基本的な手順を行うことができます。
 
@@ -62,4 +63,4 @@ ms.locfileid: "59492704"
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の使用可能なアクションについて詳しくは、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」をご覧ください。
+または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。

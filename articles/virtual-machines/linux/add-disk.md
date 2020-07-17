@@ -1,27 +1,19 @@
 ---
-title: Azure CLI を使用して Linux VM にデータ ディスクを追加する | Microsoft Docs
+title: Azure CLI を使用して Linux VM にデータ ディスクを追加する
 description: Azure CLI を使用して Linux VM に永続データ ディスクを追加する方法について説明します
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.date: 06/13/2018
 ms.author: rogarana
-ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226835"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
@@ -73,6 +65,9 @@ dmesg | grep SCSI
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> ご使用のディストリビューションで利用できる最新バージョンの fdisk または parted を使用することをお勧めします。
 
 ここでは、*sdc* が対象のディスクです。 `parted` を使用してディスクをパーティション分割します。ディスクのサイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。2 TiB 未満の場合は、MBR または GPT のパーティション分割を使用することができます。 MBR パーティション分割を使用している場合、`fdisk` を使用できます。 それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 
@@ -237,7 +232,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 * ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。

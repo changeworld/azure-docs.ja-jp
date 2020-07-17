@@ -4,27 +4,32 @@ description: このクイックスタートでは、Azure Database for PostgreSQ
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom:
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5ebcb3151bf9b6eaca4a726553a3c8f1d93c08aa
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067122"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80062256"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL - Single Server: Node.js を使った接続とデータの照会
-このクイックスタートでは、[Node.js](https://nodejs.org/) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Node.js を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Node.js を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
+
+このクイックスタートでは、Node.js アプリケーションを使用して、Azure Database for PostgreSQL に接続します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Node.js を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
-このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
-- [DB の作成 - ポータル](quickstart-create-server-database-portal.md)
-- [DB の作成 - CLI](quickstart-create-server-database-azure-cli.md)
 
-さらに、以下を実行する必要があります。
--  [Node.js](https://nodejs.org)
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+- 次の項目の完了: 「[クイックスタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成」](quickstart-create-server-database-portal.md)または「[クイック スタート:Azure CLI を使用した Azure Database for PostgreSQL の作成](quickstart-create-server-database-azure-cli.md)」の手順を使用して作成されたもの)。
+
+- [Node.js](https://nodejs.org)
 
 ## <a name="install-pg-client"></a>pg クライアントのインストール
 [pg](https://www.npmjs.com/package/pg) をインストールします。pg は、Node.js 用の PostgreSQL クライアントです。
@@ -42,11 +47,11 @@ npm list
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
-3. サーバー名をクリックします。
-4. サーバーの **[概要]** パネルから、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for PostgreSQL サーバーの名前](./media/connect-nodejs/1-connection-string.png)
+1. [Azure portal](https://portal.azure.com/) で、作成したサーバー (たとえば、**mydemoserver**) を検索して選択します。
+
+1. サーバーの **[概要]** パネルから、**サーバー名**と**管理者ユーザー名**を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
+
+   ![Azure Database for PostgreSQL の接続文字列](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js での JavaScript コードの実行
 Node.js は、Bash シェル、ターミナル、または Windows コマンド プロンプトから「`node`」と入力して起動できます。起動後、サンプルの JavaScript コードをコピーし、プロンプトに貼り付けて対話形式で実行してください。 または、JavaScript コードをテキスト ファイルに保存し、パラメーターとしてそのファイル名を使用して `node filename.js` を起動して実行することもできます。
@@ -246,6 +251,6 @@ function queryDatabase() {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)

@@ -7,36 +7,36 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547597"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74278093"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
 CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](https://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類があります。
 
 ### <a name="for-simple-requests"></a>単純な要求の場合:
 
-1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https://www.contoso.com のページが fabrikam.com オリジン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。
+1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は親ページを提供したオリジンであり、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https\://www.contoso.com からのページが fabrikam.com オリジンのユーザーのデータにアクセスしようとすると、次の要求ヘッダーが fabrikam.com に送信されます。
 
-   `Origin: https:\//www.contoso.com`
+   `Origin: https://www.contoso.com`
 
 2. サーバーからは次のいずれかの応答が返される場合があります。
 
-   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 例: 
+   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 次に例を示します。
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
@@ -63,12 +63,21 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 ## <a name="multiple-origin-scenarios"></a>複数のオリジンのシナリオ
 複数のオリジンを CORS で許可する必要がある場合は、若干複雑になります。 最初の CORS オリジンの **Access-Control-Allow-Origin** ヘッダーが CDN にキャッシュされるときに問題が発生します。  異なる CORS オリジンが後続の要求を行った場合、CDN によってキャッシュされた **Access-Control-Allow-Origin** ヘッダーが提供されても、オリジンが一致しません。  これを修正するにはいくつかの方法があります。
 
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard プロファイル
+Microsoft の Azure CDN Standard では、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)でルールを作成して、要求の **Origin** ヘッダーを確認することができます。 オリジンが有効である場合、ルールによって、目的の値が **Access-Control-Allow-Origin** ヘッダーに設定されます。 この場合は、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは無視され、CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
+
+![Standard ルール エンジンを使用したルールの例](./media/cdn-cors/cdn-standard-cors.png)
+
+> [!TIP]
+> 追加のアクションをルールに追加して、**Access-Control-Allow-Methods** などの追加の応答ヘッダーを変更できます。
+> 
+
+**Akamai の Azure CDN Standard** では、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、[クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。 CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用してください。 これにより、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。 この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。  
+
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium from Verizon
-その方法として最もお勧めできるのが、高度な機能が複数公開されている **Azure CDN Premium from Verizon**を使用する方法です。 
+Verizon Premium ルール エンジンを使用する場合、要求の **Origin** ヘッダーを確認するための[ルールを作成](cdn-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
 
-要求の **Origin** ヘッダーを確認するための[ルールを作成](cdn-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
-
-ルール エンジンを使用してこれを行う方法は 2 つあります。 どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは無視され、CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
+Premium ルール エンジンを使用してこれを行う方法は 2 つあります。 どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは無視され、CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>有効なオリジンがすべて含まれる 1 つの正規表現
 この場合、許可するオリジンがすべて含まれた正規表現を作成します。 
@@ -85,7 +94,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 ![Rules example with regular expression](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>オリジンごとの要求ヘッダー ルール
-正規表現を使用するのではなく、許可するオリジンごとに個別のルールを作成することもできます。この場合、**Request Header Wildcard (要求ヘッダーのワイルドカード)** [一致条件](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1)を使用します。 正規表現の方法と同様に、ルール エンジンは単独で CORS ヘッダーを設定します。 
+正規表現を使用するのではなく、許可するオリジンごとに個別のルールを作成することもできます。この場合、**Request Header Wildcard (要求ヘッダーのワイルドカード)** [一致条件](/previous-versions/azure/mt757336(v=azure.100)#match-conditions)を使用します。 正規表現の方法と同様に、ルール エンジンは単独で CORS ヘッダーを設定します。 
 
 ![Rules example without regular expression](./media/cdn-cors/cdn-cors-no-regex.png)
 
@@ -94,6 +103,5 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 > 
 > 
 
-### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard プロファイル
-Azure CDN Standard プロファイル (**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard from Verizon**) では、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、[クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。 CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用してください。 これにより、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。 この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。  
+
 

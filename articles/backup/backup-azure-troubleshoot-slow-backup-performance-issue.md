@@ -1,21 +1,18 @@
 ---
-title: Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
+title: ファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 description: Azure Backup のパフォーマンスに関する問題の原因を診断するのに役立つトラブルシューティングの指針を示します。
-services: backup
-author: genlin
-manager: cshepard
-ms.service: backup
+ms.reviewer: saurse
 ms.topic: troubleshooting
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 07/05/2019
+ms.openlocfilehash: 5e669a68794a8622bb4a2fa55b206153717fd772
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248471"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187904"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
+
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。
 
 * [バックアップ対象コンピューターにパフォーマンスのボトルネックが存在する。](#cause1)
@@ -29,24 +26,37 @@ ms.locfileid: "51248471"
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>原因: 最適化されないモードでバックアップ ジョブが実行されている
+
+* MARS エージェントでは、USN (更新シーケンス番号) の変更ジャーナルを使用して**最適化されたモード**でバックアップ ジョブを実行できます。また、ボリューム全体をスキャンして、ディレクトリまたはファイルの変更を確認すると、**最適化されないモード**で実行されます。
+* エージェントでは、ボリューム上のすべてのファイルをスキャンし、メタデータと比較して変更されたファイルを判断する必要があるため、最適化されないモードは低速です。
+* これを確認するには、MARS エージェント コンソールから **[ジョブの詳細]** を開き、状態を確認し、次のように "**データを転送しています (最適化されていないため、しばらく時間がかかることがあります)** " と表示されるかどうかを確認します。
+
+    ![最適化されないモードで実行中](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* 次の状況では、バックアップ ジョブが最適化されないモードで実行される可能性があります。
+  * 最初のバックアップ (初期レプリケーションとも呼ばれます) は、常に最適化されないモードで実行されます。
+  * 前のバックアップ ジョブが失敗した場合、次のスケジュールされたバックアップ ジョブは最適化されないモードで実行されます。
+
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>原因: コンピューターのパフォーマンス ボトルネック
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>原因: コンピューター上のパフォーマンス ボトルネック
+
 バックアップ対象コンピューターにパフォーマンスのボトルネックが存在すると、遅延が生じるおそれがあります。 たとえば、コンピューターのディスク読み取り/書き込み能力や、ネットワーク経由のデータ送信に使用できる帯域幅は、ボトルネックの原因となる可能性があります。
 
-Windows には、これらのボトルネックを検出するための、 [パフォーマンス モニター](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon) という組み込みのツールが用意されています。
+Windows には、これらのボトルネックを検出することができる[パフォーマンス モニター](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon) という組み込みのツールが用意されています。
 
 バックアップを最適化するために、パフォーマンス カウンターとボトルネック診断の目安となる範囲を以下に示します。
 
 | カウンター | Status |
 | --- | --- |
-| Logical Disk(Physical Disk)--%idle |• 100 ～ 50% アイドル = 正常</br>• 49 ～ 20% アイドル = 警告または監視</br>• 19 ～ 0% アイドル = 重大または基準不適合 |
-| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%idle |* 100% から 50% アイドル = 正常</br>* 49% から 20% アイドル = 警告または監視</br>* 19% から 0% アイドル = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |* 0.001 から 0.015 ミリ秒 = 正常</br>* 0.015 から 0.025 ミリ秒 = 警告または監視</br>* 0.026 ミリ秒以上 = 重大または基準不適合 |
 | Logical Disk(Physical Disk)--Current Disk Queue Length (全インスタンス) |要求数が 80 件の状態が 6 分超 |
-| Memory--Pool Non Paged Bytes |• プールの 60% 未満を消費 = 正常<br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
-| Memory--Pool Paged Bytes |• プールの 60% 未満を消費 = 正常</br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
-| Memory--Available Megabytes |• 空きメモリ 50% 以上 = 正常</br>• 空きメモリ 25% = 監視</br>• 空きメモリ 10% = 警告</br>• 空きメモリ 100 MB または 5% 未満 = 重大または基準不適合 |
-| Processor--\%Processor Time (全インスタンス) |• 60% 未満を消費 = 正常</br>• 61 ～ 90% を消費 = 監視または注意</br>• 91 ～ 100% を消費 = 重大 |
+| Memory--Pool Non Paged Bytes |* プールの 60% 未満を消費 = 正常<br>* プールの 61% から 80% を消費 = 警告または監視</br>* プールの 80% 超を消費 = 重大または基準不適合 |
+| Memory--Pool Paged Bytes |* プールの 60% 未満を消費 = 正常</br>* プールの 61% から 80% を消費 = 警告または監視</br>* プールの 80% 超を消費 = 重大または基準不適合 |
+| Memory--Available Megabytes |* 空きメモリ 50% 以上 = 正常</br>* 空きメモリ 25% = 監視</br>* 空きメモリ 10% = 警告</br>* 空きメモリ 100 MB または 5% 未満 = 重大または基準不適合 |
+| Processor--\%Processor Time (全インスタンス) |* 60% 未満を消費 = 正常</br>* 61% から 90% を消費 = 監視または注意</br>* 91% から 100% を消費 = 重大 |
 
 > [!NOTE]
 > インフラストラクチャが原因であることがわかった場合は、パフォーマンス向上のために定期的にディスクを最適化することをお勧めします。
@@ -55,7 +65,8 @@ Windows には、これらのボトルネックを検出するための、 [パ�
 
 <a id="cause2"></a>
 
-## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>原因: Azure Backup の妨げとなっている別のプロセスまたはウイルス対策ソフトウェア
+## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>原因: Azure Backup の妨げになっている別のプロセスまたはウイルス対策ソフトウェア
+
 Windows システム内の他のプロセスが Azure Backup エージェントのプロセスのパフォーマンスに悪影響を及ぼすいくつかのケースが確認されています。 たとえば Azure Backup エージェントと別のプログラムを両方使用してデータをバックアップしている場合や、ウイルス対策ソフトウェアが実行されていてバックアップ対象ファイルがロックされている場合、ファイルに対する複数のロックが競合している可能性があります。 この状況ではバックアップが失敗するか、ジョブに予想以上の時間がかかる可能性があります。
 
 この状況で最も推奨される対策は、他のバックアップ プログラムを無効にして、Azure Backup エージェントのバックアップ時間が変化するかどうかを確認することです。 通常、複数のバックアップ ジョブが同時に実行されないようにすることで、互いに干渉する状況を十分回避できます。
@@ -68,12 +79,14 @@ Windows システム内の他のプロセスが Azure Backup エージェント�
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>原因: Azure 仮想マシンで実行されている Backup エージェント
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>原因: Azure 仮想マシン上で実行されている Backup エージェント
+
 Backup エージェントを VM で実行している場合、パフォーマンスは物理マシンで実行した場合よりも低くなります。 これは IOPS の制限によるものと考えられます。  ただし、バックアップ対象のデータ ドライブを Azure Premium Storage に切り替えることによってパフォーマンスを最適化できます。 Microsoft は現在この問題の解決に取り組んでおり、将来のリリースで修正プログラムが公開される予定です。
 
 <a id="cause4"></a>
 
 ## <a name="cause-backing-up-a-large-number-millions-of-files"></a>原因: 大量 (数百万) のファイルのバックアップ
+
 少量のデータを移動するよりも大量のデータを移動する方が時間がかかります。 場合によっては、データのサイズだけでなくファイルやフォルダーの数が、バックアップにかかる時間に関係します。 これは特に、数百万個の小さなファイル (数バイトから数キロバイト) がバックアップされている場合に当てはまります。
 
 この動作が発生するのは、データをバックアップして Azure にそのデータを移行している間に、Azure によるファイルのカタログ化が並行して行われているためです。 まれなシナリオではあるものの、カタログ化の処理には予想以上の時間がかかる場合があります。
@@ -82,3 +95,7 @@ Backup エージェントを VM で実行している場合、パフォーマン
 
 * **データ転送の進行状況が UI に表示されている**。 データは依然として転送中です。 ネットワーク帯域幅またはデータ サイズが原因で、遅延が生じている可能性があります。
 * **データ転送の進行状況が UI に表示されていない**。 C:\Program Files\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、ログ内に FileProvider::EndData エントリがあるかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
+
+## <a name="next-steps"></a>次のステップ
+
+* [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.md)

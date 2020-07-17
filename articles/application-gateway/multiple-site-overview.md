@@ -4,28 +4,28 @@ description: この記事では、Azure Application Gateway による複数サ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 1/17/2019
+ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257412"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
-複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web アプリケーションを構成することができます。 この機能を使用すると、最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (ContosoServerPool と FabrikamServerPool) からの contoso.com および fabrikam.com のトラフィックを処理します。
+複数サイトのホストにより、1 つのアプリケーション ゲートウェイの同じポートで複数の Web アプリケーションを構成することができます。 この機能を使用すると、最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (ContosoServerPool と FabrikamServerPool) からの `contoso.com` および `fabrikam.com` のトラフィックを処理します。
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
+> v1 SKU では、規則はポータルに一覧表示されている順序で処理されます。 v2 SKU では、完全一致の優先順位が高くなります。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
 
-http://contoso.com の要求は ContosoServerPool にルーティングされ、 http://fabrikam.com は FabrikamServerPool にルーティングされます。
+`http://contoso.com` の要求は ContosoServerPool にルーティングされ、`http://fabrikam.com` は FabrikamServerPool にルーティングされます。
 
-同様に、同じ親ドメインの 2 つのサブドメインも、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 サブドメインを使用する例としては、単一のアプリケーション ゲートウェイ デプロイ上でホストされる http://blog.contoso.com 、 http://app.contoso.com などがあります。
+同様に、同じ親ドメインの複数のサブドメインを、同じアプリケーション ゲートウェイ デプロイでホストすることができます。 たとえば、`http://blog.contoso.com` および `http://app.contoso.com` を、単一のアプリケーション ゲートウェイ デプロイでホストできます。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>ホスト ヘッダーと Server Name Indication (SNI)
 
@@ -35,11 +35,17 @@ http://contoso.com の要求は ContosoServerPool にルーティングされ、
 2. ホスト名を使用して、同じ IP アドレスで複数の Web アプリケーションをホストする。
 3. さまざまなポートを使用して、同じ IP アドレスで複数の Web アプリケーションをホストする。
 
-現在、アプリケーション ゲートウェイは、トラフィックをリッスンする単一のパブリック IP アドレスを取得します。 そのため、それぞれ独自の IP アドレスを持つ複数のアプリケーションへの対応は、現在、サポートされていません。 Application Gateway は、それぞれが異なるポートをリッスンしている複数のアプリケーションのホストをサポートしていますが、このシナリオではアプリケーションが非標準ポートでトラフィックを受け入れることが必要です。多くの場合、それは望ましい構成ではありません。 Application Gateway は、複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用します。 アプリケーション ゲートウェイでホストされているサイトは、Server Name Indication (SNI) TLS 拡張機能で SSL オフロードをサポートすることもできます。 つまり、クライアント ブラウザーとバックエンド Web ファームは、HTTP/1.1 と、RFC 6066 で定義されている TLS 拡張機能をサポートする必要があります。
+現在、Application Gateway は、トラフィックをリッスンする単一のパブリック IP アドレスをサポートします。 そのため、それぞれ独自の IP アドレスを持つ複数のアプリケーションは、現在サポートされていません。 
+
+Application Gateway は、それぞれが異なるポートをリッスンしている複数のアプリケーションをサポートしていますが、このシナリオではアプリケーションが非標準ポートでトラフィックを受け入れることが必要です。 これは多くの場合、望ましい構成ではありません。
+
+Application Gateway は、複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用します。 アプリケーション ゲートウェイでホストされているサイトでは、Server Name Indication (SNI) TLS 拡張機能によって TLS オフロードをサポートすることもできます。 つまり、クライアント ブラウザーとバックエンド Web ファームは、HTTP/1.1 と、RFC 6066 で定義されている TLS 拡張機能をサポートする必要があります。
 
 ## <a name="listener-configuration-element"></a>リスナーの構成要素
 
-既存の HTTPListener 構成要素は、ホスト名とサーバー名の指示要素をサポートするように拡張されています。これらの要素は、アプリケーション ゲートウェイがトラフィックを適切なバックエンド プールにルーティングするために使用されます。 次のコード例は、テンプレート ファイルの HttpListeners 要素のスニペットです。
+既存の HTTPListener 構成要素は、ホスト名とサーバー名の表示要素をサポートするように拡張されています。 これは、適切なバックエンド プールにトラフィックをルーティングするために、Application Gateway によって使用されます。 
+
+次のコード例は、テンプレート ファイルの HttpListeners 要素のスニペットです。
 
 ```json
 "httpListeners": [
@@ -120,7 +126,7 @@ http://contoso.com の要求は ContosoServerPool にルーティングされ、
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 複数サイトのホストについて学習した後に、 [複数サイトのホストを使用するアプリケーション ゲートウェイの作成](tutorial-multiple-sites-powershell.md) に関するページにアクセスして、複数の Web アプリケーションをサポートする機能を備えたアプリケーション ゲートウェイを作成してください。
 

@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項 | Microsoft Docs
+title: Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 description: Azure Data Factory におけるデータ移動の保護について説明します。
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130837"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -50,7 +49,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 ## <a name="cloud-scenarios"></a>クラウド シナリオ
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
-Azure Data Factory では、データ ストアの資格情報を保護するために、**Microsoft が管理する証明書**を使用して**暗号化**します。 証明書は、**2 年**ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、**Azure Data Factory 管理サービスによって管理される Azure Storage** に安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../../security/security-storage-overview.md)」を参照してください。
+Azure Data Factory では、データ ストアの資格情報を保護するために、**Microsoft が管理する証明書**を使用して**暗号化**します。 証明書は、**2 年**ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、**Azure Data Factory 管理サービスによって管理される Azure Storage** に安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../../security/fundamentals/storage-overview.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
 クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。
@@ -62,9 +61,9 @@ Azure Data Factory では、データ ストアの資格情報を保護するた
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
+Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL データベース
 Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -114,8 +113,8 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
   
 | ゲートウェイのバージョン (作成時) | 資格情報の格納先 | 資格情報の暗号化/セキュリティ | 
 | --------------------------------- | ------------------ | --------- |  
-| 2.3.xxxx.x 以前 | クラウド | 証明書を使用して暗号化されます (資格情報マネージャー アプリケーションで使用する証明書とは異なります) | 
-| 2.4.xxxx.x 以降 | オンプレミス | DPAPI を使用して保護されます | 
+| 2\.3.xxxx.x 以前 | クラウド | 証明書を使用して暗号化されます (資格情報マネージャー アプリケーションで使用する証明書とは異なります) | 
+| 2\.4.xxxx.x 以降 | オンプレミス | DPAPI を使用して保護されます | 
   
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
@@ -127,7 +126,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとゲートウェイの構成の推奨事項がまとめてあります。
 
-| ソース | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
+| source | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
 | ------ | ----------- | --------------------- | ------------- | 
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 
@@ -191,7 +190,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 **質問:** ゲートウェイの証明書の要件は何ですか?
 **回答:** 現行のゲートウェイには、資格情報マネージャー アプリケーションがデータ ストアの資格情報を安全に設定するために使用する証明書が必要です。 この証明書は、ゲートウェイの設定によって作成および構成された自己署名証明書です。 代わりに独自の TLS または SSL 証明書を使用できます。 詳細については、「[ClickOnce 資格情報マネージャー アプリケーション](#click-once-credentials-manager-app)」セクションを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
  

@@ -3,36 +3,53 @@ title: Azure ダッシュボードでカスタムのマークダウン タイル
 description: マークダウン タイルを Azure ダッシュボードに追加して、静的コンテンツを表示する方法について説明します
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 01/25/2019
+author: mgblythe
+ms.author: mblythe
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110785"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76310715"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
-マークダウン タイルを Azure ダッシュボードに追加して、カスタム コンテンツ、静的コンテンツを表示できます。 たとえば、マークダウン タイルを使用して、基本的な手順、画像、または一連のハイパーリンクを表示できます。
+マークダウン タイルを Azure ダッシュボードに追加して、カスタム コンテンツ、静的コンテンツを表示できます。 たとえば、マークダウン タイルで、基本的な手順、画像、または一連のハイパーリンクを表示できます。
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>マークダウン タイルをダッシュボードに追加する
 
-1. Azure portal のサイドバーから **[ダッシュボード]** を選択します。 カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、**タイル ギャラリー**を開きます。
+1. Azure portal のサイドバーから **[ダッシュボード]** を選択します。
+
+   ![ポータルのサイドバーを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-nav.png)
+
+1. カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、**タイル ギャラリー**を開きます。
 
    ![ダッシュボード編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-2. **[タイル ギャラリー]** で **[Markdown]\(マークダウン\)** というタイルを見つけて、**[追加]** をクリックします。 タイルがダッシュボードに追加され、**[マークダウンの編集]** ウィンドウが開きます。
+1. **[タイル ギャラリー]** で **[マークダウン]** というタイルを見つけて、 **[追加]** を選択します。 タイルがダッシュボードに追加され、 **[マークダウンの編集]** ウィンドウが開きます。
 
-1. **[タイトル]**、**[サブタイトル]**、および **[コンテンツ]** フィールドを編集して、タイルをカスタマイズします。 以下の例では、マークダウン タイルがカスタム ヘルプ デスク情報を表示するように編集されています。
+1. **[タイトル]** と **[サブタイトル]** の値を入力します。これらは、別のフィールドに移動するとタイルに表示されます。
 
-   ![マークダウン タイルの編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![タイトルとサブタイトルの入力結果を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-4. **[完了]** を選択して、**[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
+1. マークダウン コンテンツを含めるオプションとして、 **[インライン編集]** または **[URL を使用してコンテンツを挿入する]** のいずれかを選択します。
+
+   - マークダウンを直接入力する場合は、 **[インライン編集]** を選択します。
+
+      ![インライン コンテンツの入力を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+
+   - オンラインでホストされている既存のマークダウン コンテンツを使用する場合は、 **[URL を使用してコンテンツを挿入する]** を選択します。
+
+      ![URL の入力を示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+
+      > [!NOTE]
+      > セキュリティを強化するために、マークダウン ファイルを作成して[暗号化が有効になっている Azure ストレージ アカウント BLOB](../storage/common/storage-service-encryption.md) に保存し、URL オプションを使用してそのファイルを指定できます。 マークダウン コンテンツは、ストレージ アカウントの暗号化オプションを使用して暗号化されます。 そのファイルに対するアクセス許可を持つユーザーのみが、ダッシュボードでマークダウン コンテンツを表示できます。
+
+1. **[完了]** を選択して、 **[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
 
    ![カスタムのマークダウン タイルを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
@@ -44,6 +61,6 @@ ms.locfileid: "58110785"
 * iframe - `<iframe>` タグが削除されます。
 * スタイル - `<style>` タグが削除されます。 HTML 要素のインライン スタイル属性は、公式にはサポートされていません。 一部のインライン スタイル要素が動作する場合がありますが、ポータルのレイアウトに干渉した場合、いつでもその動作は停止します。 [マークダウン] タイルは、ポータルの既定のスタイルを使用する基本的な静的コンテンツを対象としています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * カスタム ダッシュボードを作成するには、「[Azure portal でのダッシュボードの作成および共有方法](../azure-portal/azure-portal-dashboards.md)」を参照してください。

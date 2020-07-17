@@ -1,30 +1,19 @@
 ---
-title: Azure Batch プール内の計算ノードの自動スケール | Microsoft Docs
+title: Azure Batch プール内のコンピューティング ノードの自動スケール
 description: クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
-ms.service: batch
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: multiple
-ms.date: 06/20/2017
-ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: how-to
+ms.date: 10/24/2019
+ms.custom: H1Hack27Feb2017,fasttrack-edit
+ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869094"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780244"
 ---
-# <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
+# <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
-Azure Batch は定義したパラメーターに基づいてプールを自動的にスケールできます。 自動スケールにより、Batch はタスクの需要が増えるとノードを動的にプールに追加し、需要が減ると計算ノードを削除します。 Batch アプリケーションで使用される計算ノードの数を自動的に調整することで、時間とコストの両方を節約できます。 
+Azure Batch は定義したパラメーターに基づいてプールを自動的にスケールできます。 自動スケールにより、Batch はタスクの需要が増えるとノードを動的にプールに追加し、需要が減ると計算ノードを削除します。 Batch アプリケーションで使用される計算ノードの数を自動的に調整することで、時間とコストの両方を節約できます。
 
 計算ノード プールの自動スケーリングは、ユーザーが定義した*自動スケールの数式*をプールに関連付けることによって有効にします。 Batch サービスでは、自動スケーリングの数式を使用して、ワークロードを実行するために必要な計算ノードの数を決定します。 計算ノードは、専用ノードまたは[優先順位の低いノード](batch-low-pri-vms.md)のいずれかです。 Batch は、定期的に収集されるサービス メトリック データに応答します。 Batch はこのメトリック データを使用して、数式と構成可能な間隔に基づいて、プール内の計算ノードの数を調整します。
 
@@ -33,14 +22,15 @@ Azure Batch は定義したパラメーターに基づいてプールを自動�
 この記事では、変数、演算子、操作、関数など、自動スケールの数式を構成するさまざまな要素について説明します。 Batch 内の各種計算リソースとタスクのメトリックを取得する方法について取り上げます。 これらのメトリックを使用すると、リソースの使用状況やタスクの状態に応じて、プールのノード数を調整できます。 その後、数式を作成する方法や、Batch の REST API と .NET API を使用してプールの自動スケールを有効にする方法について説明します。 最後に、数式の例をいくつか紹介します。
 
 > [!IMPORTANT]
-> Batch アカウントを作成する際に、[アカウント構成](batch-api-basics.md#account)を指定できます。アカウント構成は、プールが Batch Service サブスクリプションに割り当てられる (既定) か、ユーザー サブスクリプションに割り当てられるかを決定します。 Batch Service の既定の構成で Batch アカウントを作成した場合、アカウントは処理に使用できるコアの最大数に制限されます。 そのコア数が、Batch サービスでスケール可能な計算ノードの最大数になります。 このことにより、Batch サービスが自動スケールの数式によって指定された目標数に到達しない場合があります。 アカウントのクォータを表示する方法および増やす方法については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
+> Batch アカウントを作成する際に、[アカウント構成](accounts.md)を指定できます。アカウント構成は、プールが Batch Service サブスクリプションに割り当てられる (既定) か、ユーザー サブスクリプションに割り当てられるかを決定します。 Batch Service の既定の構成で Batch アカウントを作成した場合、アカウントは処理に使用できるコアの最大数に制限されます。 そのコア数が、Batch サービスでスケール可能な計算ノードの最大数になります。 このことにより、Batch サービスが自動スケールの数式によって指定された目標数に到達しない場合があります。 アカウントのクォータを表示する方法および増やす方法については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
 >
->ユーザー サブスクリプションの構成でアカウントを作成した場合、アカウントはそのサブスクリプションのコア クォータで共有します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」の「[Virtual Machines の制限](../azure-subscription-service-limits.md#virtual-machines-limits)」をご覧ください。
+>ユーザー サブスクリプションの構成でアカウントを作成した場合、アカウントはそのサブスクリプションのコア クォータで共有します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」の「[Virtual Machines の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits)」をご覧ください。
 >
 >
 
 ## <a name="automatic-scaling-formulas"></a>自動スケールの数式
-自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケールの数式は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式は 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
+
+自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケーリングの数式は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式は 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
 
 自動スケールの数式は、Batch 自動スケール "言語" と捉えることができます。 数式は自由形式のステートメントになっていて、サービス定義の変数 (Batch サービスによって定義された変数) とユーザー定義の変数 (ユーザーによって定義された変数) の両方を含めることができます。 組み込みの型、演算子、関数を使用して、これらの値に対する各種の操作を実行できます。 たとえば、ステートメントは次の形式を使用する場合があります。
 
@@ -59,9 +49,11 @@ $variable2 = function2($OtherServiceDefinedVariable, $variable1);
 
 ノードの目標数は、現在のプール内のその種類のノードの数より多くなることも、少なくなることも、同じになることもあります。 プールの自動スケールの数式は、Batch によって一定間隔で評価されます (「[自動スケールの間隔](#automatic-scaling-interval)」をご覧ください)。 Batch はプール内の各種類のノードの目標数を、自動スケールの数式の評価時に割り出されたノード数と一致するように調整します。
 
-### <a name="sample-autoscale-formula"></a>自動スケールの数式の例
+### <a name="sample-autoscale-formulas"></a>自動スケールの数式の例
 
-ほとんどのシナリオで機能するように調整できる自動スケールの数式の例を次に示します。 必要に応じて、例の式の `startingNumberOfVMs` 変数と `maxNumberofVMs`変数を調整できます。 この数式は専用ノードをスケールしますが、優先順位の低いノードのスケールにも適用されるように変更できます。 
+ほとんどのシナリオで機能するように調整できる 2 つの自動スケールの数式の例を次に示します。 必要に応じて、例の式の `startingNumberOfVMs` 変数と `maxNumberofVMs` 変数を調整できます。
+
+#### <a name="pending-tasks"></a>保留中のタスク
 
 ```
 startingNumberOfVMs = 1;
@@ -69,11 +61,26 @@ maxNumberofVMs = 25;
 pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
 pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
 $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
+$NodeDeallocationOption = taskcompletion;
 ```
 
 この自動スケールの数式では、プールは最初は 1 つの VM で作成されます。 `$PendingTasks` メトリックにより、実行中またはキューに置かれているタスクの数が定義されます。 この数式により、最後の 180 秒間の保留タスク平均数が判明し、`$TargetDedicatedNodes` 変数が適宜設定されます。 この数式により、専用ノードの目標数が 25 台の VM を超えることはありません。 新しいタスクが送信されると、プールは自動的に拡大します。 タスクが完了すると、VM が 1 台ずつ解放され、自動スケーリングの数式によってプールが縮小します。
 
-## <a name="variables"></a>variables
+この数式は専用ノードをスケールしますが、優先順位の低いノードのスケールにも適用されるように変更できます。
+
+#### <a name="preempted-nodes"></a>Preempted Node (割り込まれたノード) 
+
+```
+maxNumberofVMs = 25;
+$TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
+$TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+$NodeDeallocationOption = taskcompletion;
+```
+
+この例では、25 個の優先順位の低いノードから始まるプールを作成します。 優先順位の低いノードが割り込まれるたびに、専用のノードに置き換えられます。 最初の例と同様に、`maxNumberofVMs` 変数は、プールが 25 台の VM を超過することを防ぎます。 この例は、優先順位の低い VM を活用する場合に役立ちます。また、プールの有効期間中、割り込みが一定数に留まるようにします。
+
+## <a name="variables"></a>変数:
+
 自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。 ユーザー定義の変数は、ユーザーが定義する変数です。 前のセクションで示した例の数式では、`$TargetDedicatedNodes` と`$PendingTasks` がサービス定義の変数です。 `startingNumberOfVMs` と `maxNumberofVMs` がユーザー定義の変数です。
 
 > [!NOTE]
@@ -88,8 +95,13 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 | 読み取り/書き込み可能なサービス定義変数 | 説明 |
 | --- | --- |
 | $TargetDedicatedNodes |プールの専用計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、専用ノードの数は目標として指定されます。 たとえば、自動スケール評価によって専用ノードの目標数がプールが最初に設定された目標に達する前に変更された場合、そのプールは目標に到達しない可能性があります。 <br /><br /> Batch Service 構成で作成されたアカウント内のプールの目標が Batch アカウント ノードまたはコア クォータを超える場合、その目標に到達しない可能性があります。 ユーザー サブスクリプション構成で作成されたアカウント内のプールの目標がそのサブスクリプションの共有コア クォータを超える場合、その目標に到達しない可能性があります。|
-| $TargetLowPriorityNodes |プールの優先順位の低い計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、優先順位の低いノードの数は目標として指定されます。 たとえば、自動スケール評価によって優先順位の低いノードの目標数がプールが最初に設定された目標に達する前に変更された場合、プールは目標に到達しない可能性があります。 また、目標が Batch アカウント ノードまたはコア クォータを超える場合、プールはその目標に到達しない可能性があります。 <br /><br /> 優先順位の低い計算ノードについて詳しくは、「[優先順位の低い VM で Batch を使用する (プレビュー)](batch-low-pri-vms.md)」をご覧ください。 |
-| $NodeDeallocationOption |コンピューティング ノードがプールから削除されるときに発生するアクション。 次のいずれかの値になります。<ul><li>**requeue** – すぐにタスクを終了し、再スケジュールされるようにジョブ キューに戻します。<li>**terminate** – すぐにタスクを終了し、ジョブ キューから削除します。<li>**taskcompletion** – 現在実行中のタスクの完了を待ち、プールからノードを削除します。<li>**retaineddata** - ノードでローカル タスクによって保持されているすべてのデータがクリーンアップされるまで待機してから、ノードをプールから削除します。</ul> |
+| $TargetLowPriorityNodes |プールの優先順位の低い計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、優先順位の低いノードの数は目標として指定されます。 たとえば、自動スケール評価によって優先順位の低いノードの目標数がプールが最初に設定された目標に達する前に変更された場合、プールは目標に到達しない可能性があります。 また、目標が Batch アカウント ノードまたはコア クォータを超える場合、プールはその目標に到達しない可能性があります。 <br /><br /> 優先順位の低い計算ノードの詳細については、「[Batch で優先順位の低い VM を使用する](batch-low-pri-vms.md)」を参照してください。 |
+| $NodeDeallocationOption |コンピューティング ノードがプールから削除されるときに発生するアクション。 次のいずれかの値になります。<ul><li>**requeue** -- 既定値。 すぐにタスクを終了し、再スケジュールされるようにジョブ キューに戻します。 これにより、ノードの目標数には可能な限り早く到達するようになりますが、実行中のタスクを中断して再起動する必要があり、既に完了している作業が無駄になるため、効率が低下する可能性があります。 <li>**terminate** – すぐにタスクを終了し、ジョブ キューから削除します。<li>**taskcompletion** – 現在実行中のタスクの完了を待ち、プールからノードを削除します。 タスクが中断されてキューに再登録されないようにして、タスクで行われた作業が無駄にならないようにするには、このオプションを使用します。 <li>**retaineddata** - ノードでローカル タスクによって保持されているすべてのデータがクリーンアップされるまで待機してから、ノードをプールから削除します。</ul> |
+
+> [!NOTE]
+> 別名 `$TargetDedicated` を使用して、`$TargetDedicatedNodes` 変数を指定することもできます。 同様に、別名 `$TargetLowPriority` を使用して、`$TargetLowPriorityNodes` 変数を指定できます。 完全な名前の変数とその別名の両方が数式によって設定されている場合は、完全な名前の変数に割り当てられた値が優先されます。
+>
+>
 
 これらのサービス定義変数の値を取得して、Batch サービスのメトリックに基づいて調整できます。
 
@@ -99,20 +111,20 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 | $WallClockSeconds |使用された秒数。 |
 | $MemoryBytes |使用された平均メガバイト数。 |
 | $DiskBytes |ローカル ディスクで使用された平均ギガバイト数。 |
-| $DiskReadBytes |読み取られたバイト数。 |
+| $DiskReadBytes |読み取るバイト数。 |
 | $DiskWriteBytes |書き込まれたバイト数。 |
 | $DiskReadOps |実行された読み取りディスク操作の数。 |
 | $DiskWriteOps |実行された書き込みディスク操作の数。 |
 | $NetworkInBytes |受信バイト数。 |
 | $NetworkOutBytes |送信バイト数。 |
 | $SampleNodeCount |計算ノードの数。 |
-| $ActiveTasks |実行する準備はできているがまだ実行されていないタスクの数。 $ActiveTasks の数には、アクティブ状態にあり、依存関係が満たされているすべてのタスクが含まれます。 アクティブ状態にあるものの、依存関係が満たされていないタスクはすべて $ActiveTasks の数から除外されます。|
+| $ActiveTasks |実行する準備はできているがまだ実行されていないタスクの数。 $ActiveTasks の数には、アクティブ状態にあり、依存関係が満たされているすべてのタスクが含まれます。 アクティブ状態にあるものの、依存関係が満たされていないタスクはすべて $ActiveTasks の数から除外されます。 マルチインスタンス タスクの場合、$ActiveTasks にはタスクに設定されているインスタンスの数が含まれます。|
 | $RunningTasks |実行状態のタスクの数。 |
 | $PendingTasks |$ActiveTasks と $RunningTasks の合計。 |
 | $SucceededTasks |正常に完了したタスクの数。 |
 | $FailedTasks |失敗したタスクの数。 |
 | $CurrentDedicatedNodes |専用コンピューティング ノードの現在の数。 |
-| $CurrentLowPriorityNodes |優先順位の低い計算ノードの現在の数。割り込まれているノードも含まれます。 |
+| $CurrentLowPriorityNodes |優先順位の低い計算ノードの現在の数。割り込まれたノードも含まれます。 |
 | $PreemptedNodeCount | 割り込み状態にあるプール内のノードの数。 |
 
 > [!TIP]
@@ -121,12 +133,13 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 >
 
 ## <a name="types"></a>型
+
 次の型が数式でサポートされています。
 
 * double
 * doubleVec
 * doubleVecList
-* 文字列
+* string
 * timestamp -- timestamp は次のメンバーを含む複合構造になっています。
 
   * year
@@ -150,16 +163,17 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
   * TimeInterval_Year
 
 ## <a name="operations"></a>操作
+
 前のセクションに列挙されている型に対して、次の演算を実行できます。
 
-| Operation | サポートされている演算子 | 結果の種類 |
+| 操作 | サポートされている演算子 | 結果の種類 |
 | --- | --- | --- |
 | double *&lt;演算子&gt;* double |+, -, *, / |double |
 | double *&lt;演算子&gt;* timeinterval |* |timeinterval |
 | doubleVec *&lt;演算子&gt;* double |+, -, *, / |doubleVec |
 | doubleVec *&lt;演算子&gt;* doubleVec |+, -, *, / |doubleVec |
 | timeinterval *&lt;演算子&gt;* double |*, / |timeinterval |
-| timeinterval *&lt;演算子&gt;* timeinterval |+, - |timeinterval |
+| timeinterval *&lt;演算子&gt;* timeinterval |+、- |timeinterval |
 | timeinterval *&lt;演算子&gt;* timestamp |+ |timestamp |
 | timestamp *&lt;演算子&gt;* timeinterval |+ |timestamp |
 | timestamp *<演算子>* timestamp |- |timeinterval |
@@ -173,38 +187,39 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** になります。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 次の定義済みの **関数** は、自動スケールの数式の定義に使用できます。
 
-| 関数 | 戻り値の型 | 説明 |
+| Function | の戻り値の型 : | 説明 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |doubleVecList のすべての値の平均値を返します。 |
 | len(doubleVecList) |double |doubleVecList から作成されたベクター長を返します。 |
 | lg (double) |double |2 を底とする double の対数を返します。 |
 | lg(doubleVecList) |doubleVec |2 を底とする doubleVecList の成分ごとの対数を返します。 このパラメーターには明示的に vec(double) を渡す必要があります。 そのようにしないと、double lg(double) として解釈されます。 |
 | ln(double) |double |double の自然対数を返します。 |
-| ln(doubleVecList) |doubleVec |2 を底とする doubleVecList の成分ごとの対数を返します。 このパラメーターには明示的に vec(double) を渡す必要があります。 そのようにしないと、double lg(double) として解釈されます。 |
+| ln(doubleVecList) |doubleVec |double の自然対数を返します。 |
 | log(double) |double |10 を底とする double の対数を返します。 |
 | log(doubleVecList) |doubleVec |10 を底とする doubleVecList の成分ごとの対数を返します。 この単一の double パラメーターには明示的に vec(double) を渡す必要があります。 そのようにしないと、double log(double) として解釈されます。 |
 | max(doubleVecList) |double |doubleVecList の最大値を返します。 |
 | min(doubleVecList) |double |doubleVecList の最小値を返します。 |
 | norm(doubleVecList) |double |doubleVecList から作成されたベクトルの 2 ノルムを返します。 |
 | percentile(doubleVec v, double p) |double |ベクトル v の百分位要素を返します。 |
-| rand() |double |0.0 ～ 1.0 のランダムな値を返します。 |
+| rand() |double |0\.0 ～ 1.0 のランダムな値を返します。 |
 | range(doubleVecList) |double |doubleVecList の最小値と最大値の差を返します。 |
 | std(doubleVecList) |double |doubleVecList の値のサンプルの標準偏差を返します。 |
 | stop() | |自動スケール式の評価を停止します。 |
 | sum(doubleVecList) |double |doubleVecList のすべての成分の合計を返します。 |
-| time(string dateTime="") | timestamp |パラメーターが渡されない場合は現在の時刻のタイムスタンプ、渡された場合は dateTime 文字列のタイムスタンプを返します。 サポートされている dateTime 形式は、W3C-DTF と RFC 1123 です。 |
+| time(string dateTime="") |timestamp |パラメーターが渡されない場合は現在の時刻のタイムスタンプ、渡された場合は dateTime 文字列のタイムスタンプを返します。 サポートされている dateTime 形式は、W3C-DTF と RFC 1123 です。 |
 | val(doubleVec v, double i) |double |開始インデックス 0 のベクター v の位置 i にある要素の値を返します。 |
 
-前の表に示した一部の関数は、リストを引数として受け入れることができます。 コンマ区切りのリストは、*double* と *doubleVec* の任意の組み合わせです。 例: 
+前の表に示した一部の関数は、リストを引数として受け入れることができます。 コンマ区切りのリストは、*double* と *doubleVec* の任意の組み合わせです。 次に例を示します。
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
 *doubleVecList* 値は、評価の前に 1 つの *doubleVec* に変換されます。 たとえば、`v = [1,2,3]` の場合、`avg(v)` の呼び出しは、`avg(1,2,3)` の呼び出しに相当します。 `avg(v, 7)` の呼び出しは、`avg(1,2,3,7)` の呼び出しに相当します。
 
-## <a name="getsampledata"></a>サンプル データの取得
+## <a name="obtain-sample-data"></a><a name="getsampledata"></a>サンプル データの取得
+
 自動スケールの数式は、Batch サービスから提供されるメトリック データ (サンプル) に基づいて作用します。 プール サイズは、サービスから数式に与えられる値に基づいて拡大されたり縮小されたりします。 前のサービス定義の変数は、関連付けられたデータにアクセスするメソッドを提供するオブジェクトです。 たとえば、次の式は、最後の 5 分間の CPU 使用率を取得する要求を示しています。
 
 ```
@@ -217,7 +232,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |履歴のサンプル データ セットで受け取ったサンプルの期間を返します。 |
 | Count() |メトリック履歴のサンプルの合計数を返します。 |
 | HistoryBeginTime() |使用可能な最も古いメトリックのデータ サンプルのタイムスタンプを返します。 |
-| GetSamplePercent() |特定の時間間隔で利用できるサンプルの割合を返します。 例: <br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>返されたサンプルの割合が指定した `samplePercent` 未満の場合、`GetSample` メソッドは失敗するので、まず `GetSamplePercent` メソッドを使用して確認します。 その後、十分なサンプルが存在しない場合は、自動スケール評価を停止せずに代替の操作を実行します。 |
+| GetSamplePercent() |特定の時間間隔で利用できるサンプルの割合を返します。 次に例を示します。<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>返されたサンプルの割合が指定した `samplePercent` 未満の場合、`GetSample` メソッドは失敗するので、まず `GetSamplePercent` メソッドを使用して確認します。 その後、十分なサンプルが存在しない場合は、自動スケール評価を停止せずに代替の操作を実行します。 |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>サンプル、サンプルの割合、 *GetSample()* メソッド
 タスクおよびリソースのメトリック データを取得し、そのデータに基づいてプールのサイズを調整することが、自動スケールの数式の主要な動作となります。 そのため、自動スケールの数式とメトリック データ (サンプル) とがどのように関与するのかをしっかりと把握しておくことが重要です。
@@ -242,7 +257,7 @@ Batch サービスでは、タスクおよびリソースのメトリックの�
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-上記の行は Batch によって評価されると、値のベクターとしてサンプルの範囲を返します。 例: 
+上記の行は Batch によって評価されると、値のベクターとしてサンプルの範囲を返します。 次に例を示します。
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -264,6 +279,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 >
 
 ## <a name="metrics"></a>メトリック
+
 数式を定義するときは、リソースとタスクの両方のメトリックを使用できます。 プール内の専用ノードの目標数は、収集して評価したメトリック データに基づいて調整します。 各メトリックの詳細については、前述の「 [変数](#variables) 」をご覧ください。
 
 <table>
@@ -280,7 +296,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
             <li>$TargetLowPriorityNodes</li>
             <li>$CurrentDedicatedNodes</li>
             <li>$CurrentLowPriorityNodes</li>
-            <li>$preemptedNodeCount</li>
+            <li>$PreemptedNodeCount</li>
             <li>$SampleNodeCount</li>
     </ul></p>
     <p>次のサービス定義の変数は、ノード リソースの使用状況に基づいて調整を行う場合に有用です。</p>
@@ -310,13 +326,15 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 </table>
 
 ## <a name="write-an-autoscale-formula"></a>自動スケールの数式の記述
+
 自動スケールの数式は、これまでに挙げたさまざまな要素を使ってステートメントを記述し、それらを 1 つの数式として組み合わせることで作成します。 このセクションでは、実際にスケールを実行できる、自動スケールの数式のサンプルを作成します。
 
 まず、新しい自動スケールの数式の要件を定義します。 数式の要件は次のようになります。
 
 1. CPU 使用率が高い場合、プール内の専用計算ノードの目標数を増やす。
-2. CPU 使用率が低い場合、プール内の専用計算ノードの目標数を減らす。
-3. 常に専用ノードの最大数を 400 までに制限する。
+1. CPU 使用率が低い場合、プール内の専用計算ノードの目標数を減らす。
+1. 常に専用ノードの最大数を 400 までに制限する。
+1. ノードの数を減らすときは、タスクを実行しているノードを削除しないでください。必要な場合は、タスクが完了するまで待ってから、ノードを削除してください。
 
 CPU 使用率が高いときにノード数を増やすには、過去 10 分間の平均 CPU 使用率の最小値が 70% を超えた場合にのみ、ユーザー定義変数 (`$totalDedicatedNodes`) を専用ノードの現在の目標数の 110% の値に設定するステートメントを定義します。 それ以外の場合は、専用ノードの現在の数の値を使用します。
 
@@ -352,15 +370,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>.NET で自動スケール対応のプールを作成する
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Batch の SDK で自動スケーリング対応のプールを作成する
+
+プールの自動スケーリングは、[Batch の SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](https://docs.microsoft.com/rest/api/batchservice/)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、および [Batch CLI](batch-cli-get-started.md) を使用して構成できます。 このセクションでは、.NET と Python の両方の例を紹介します。
+
+### <a name="net"></a>.NET
 
 .NET で自動スケール対応のプールを作成するには、次の手順を実行します。
 
 1. [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool) でプールを作成します。
-2. [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) プロパティを `true` に設定します。
-3. [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) プロパティを自動スケールの数式で設定します。
-4. (省略可能) [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) プロパティを設定します (既定では 15 分)。
-5. [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) または [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) で、プールをコミットします。
+1. [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) プロパティを `true` に設定します。
+1. [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) プロパティを自動スケールの数式で設定します。
+1. (省略可能) [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) プロパティを設定します (既定では 15 分)。
+1. [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) または [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) で、プールをコミットします。
 
 次のコード スニペットを使用すると、.NET で自動スケール対応のプールを作成できます。 このプールでは、自動スケールの数式によって、専用ノードの目標数を月曜日は 5 に、それ以外の曜日は 1 に設定しています。 [自動スケールの間隔](#automatic-scaling-interval)は、30 分に設定されます。 次に示す C# スニペットまたはこの記事で示すその他の C# スニペットでは、`myBatchClient` は適切に初期化された [BatchClient][net_batchclient] クラスのインスタンスです。
 
@@ -380,10 +402,8 @@ await pool.CommitAsync();
 >
 >
 
-Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST](https://docs.microsoft.com/rest/api/batchservice/)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) のいずれかを使用して自動スケールを構成できます。
+#### <a name="automatic-scaling-interval"></a>自動スケールの間隔
 
-
-### <a name="automatic-scaling-interval"></a>自動スケールの間隔
 既定では、Batch サービスは自動スケールの数式に従って 15 分ごとにプールのサイズを調整します。 この間隔は、次のプール プロパティを使用して構成できます。
 
 * [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
@@ -396,12 +416,56 @@ Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accoun
 >
 >
 
+### <a name="python"></a>Python
+
+同様に、自動スケーリング対応のプールを Python SDK で作成できます。
+
+1. プールを作成してその構成を指定します。
+1. サービス クライアントにプールを追加します。
+1. 作成した数式でプールの自動スケーリングを有効にします。
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> その他の Python SDK の使用例については、GitHub の [Batch Python クイックスタート リポジトリ](https://github.com/Azure-Samples/batch-python-quickstart)を参照してください。
+>
+>
+
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>既存のプールでの自動スケールの有効化
 
-各 Batch SDK には自動スケールを有効にする方法が用意されています。 例: 
+各 Batch SDK には自動スケールを有効にする方法が用意されています。 次に例を示します。
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
-* [プールの自動スケーリングを有効にする][rest_enableautoscale] (REST API)
+* [プールで自動スケールを有効にする][rest_enableautoscale] (REST API)
 
 既存のプールで自動スケールを有効にする際には、次の点に注意してください。
 
@@ -416,7 +480,7 @@ Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accoun
 >
 >
 
-次の C# コード スニペットでは、[Batch .NET][net_api] ライブラリを使用して、既存のプールの自動スケールを有効にします。
+この C# コード スニペットでは、[Batch .NET][net_api] ライブラリを使用し、既存のプールで自動スケールを有効にします。
 
 ```csharp
 // Define the autoscaling formula. This formula sets the target number of nodes
@@ -577,9 +641,11 @@ Error:
 ```
 
 ## <a name="example-autoscale-formulas"></a>自動スケールの数式の例
+
 さまざまな方法でプールのコンピューティング リソースの量を調整する、いくつかの数式を見ていきます。
 
-### <a name="example-1-time-based-adjustment"></a>例 1:時間ベースの調整
+### <a name="example-1-time-based-adjustment"></a>例 1: 時間ベースの調整
+
 曜日や時間帯でプール サイズを調整する必要があるとします。 この例では、状況に応じてプールのノード数を増減させる方法を示します。
 
 数式は、最初に現在の時刻を取得します。 平日 (1 ～ 5) および稼働時間 (午前 8 時～午後 6 時) 内の場合、目標のプール サイズは 20 のノードに設定されます。 その他の場合、プール サイズは 10 ノードに設定されます。
@@ -590,28 +656,32 @@ $workHours = $curTime.hour >= 8 && $curTime.hour < 18;
 $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5;
 $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
+$NodeDeallocationOption = taskcompletion;
 ```
+`$curTime` は、`TimeZoneInterval_Hour` と UTC オフセットの積に `time()` を追加することで、ローカル タイム ゾーンを反映するように調整できます。 たとえば、山地夏時間 (MDT) には `$curTime = time() + (-6 * TimeInterval_Hour);` を使用します。 オフセットは、夏時間の開始時と終了時に調整する必要があることに注意してください (該当する場合)。
 
-### <a name="example-2-task-based-adjustment"></a>例 2:タスクベースの調整
+### <a name="example-2-task-based-adjustment"></a>例 2: 時間ベースの調整
+
 この例では、プールのサイズはキューのタスク数に基づいて調整されます。 数式の文字列にはコメントと改行の両方を使用できます。
 
 ```csharp
 // Get pending tasks for the past 15 minutes.
-$samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
+$samples = $PendingTasks.GetSamplePercent(TimeInterval_Minute * 15);
 // If we have fewer than 70 percent data points, we use the last sample point,
 // otherwise we use the maximum of last sample point and the history average.
-$tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1), avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
+$tasks = $samples < 70 ? max(0,$PendingTasks.GetSample(1)) : max( $PendingTasks.GetSample(1), avg($PendingTasks.GetSample(TimeInterval_Minute * 15)));
 // If number of pending tasks is not 0, set targetVM to pending tasks, otherwise
 // half of current dedicated.
 $targetVMs = $tasks > 0? $tasks:max(0, $TargetDedicatedNodes/2);
 // The pool size is capped at 20, if target VM value is more than that, set it
 // to 20. This value should be adjusted according to your use case.
 $TargetDedicatedNodes = max(0, min($targetVMs, 20));
-// Set node deallocation mode - keep nodes active only until tasks finish
+// Set node deallocation mode - let running tasks finish before removing a node
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>例 3:並列タスクの説明
+### <a name="example-3-accounting-for-parallel-tasks"></a>例 3: 並列タスクの説明
+
 この例では、タスクの数に基づいてプール サイズを調整します。 また、この数式では、プールに設定されている [MaxTasksPerComputeNode][net_maxtasks] 値が考慮されます。 このアプローチは、プールで[並列タスクの実行](batch-parallel-node-tasks.md)が有効になっている場合に便利です。
 
 ```csharp
@@ -632,7 +702,8 @@ $TargetDedicatedNodes = max(0,min($targetVMs,3));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-4-setting-an-initial-pool-size"></a>例 4:初期のプール サイズの設定
+### <a name="example-4-setting-an-initial-pool-size"></a>例 4: 初期のプール サイズの設定
+
 この例は、最初の期間におけるプール サイズを特定のノード数に設定する、自動スケールの数式を使用した C# コード スニペットを示します。 この例では、最初の期間はプール サイズを特定のノード数に設定し、最初の期間が経過した後は、実行中のアクティブなタスク数に基づいてプール サイズを調整します。
 
 次のコード スニペットの数式では、
@@ -656,7 +727,8 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 * [同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」では、プール内のコンピューティング ノードで複数のタスクを同時に実行する方法の詳細を説明しています。 自動スケール以外にも、この機能は一部のワークロードのジョブの実行時間短縮に役立つことがあり、費用の節約になります。
 * 他にも、効率を上げるために、Batch アプリケーションによって、最適な方法で Batch サービスが照会されていることを確認してください。 数千に上る可能性のある計算ノードやタスクの状態を照会するときに、送信されるデータの量を制限する方法について詳しくは、[効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)に関する記事をご覧ください。
 

@@ -1,22 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン | Microsoft Docs
+title: 'パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2 | Microsoft Docs'
 description: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aa3c942448be6444044981eacc2bbc3214b9c1b4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939405"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74327913"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight と Azure Data Lake Storage Gen2 の Storm に対するパフォーマンス チューニング ガイダンス
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2
 
 Azure Storm トポロジのパフォーマンスを調整する際に考慮すべき要素について説明します。 たとえば、スパウトとボルトによる処理 (I/O とメモリのどちらを大量に消費する場合でも) の特性を理解しておくことが重要です。 この記事では、一般的な問題のトラブルシューティングを含む、さまざまなパフォーマンス チューニング ガイドラインについて説明します。
 
@@ -111,10 +110,10 @@ Data Lake Storage Gen2 によって提供される帯域幅の制限に達した
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にしてください。
 
-1. **[Ambari]** > **[Storm]** > **[構成]** > **[Advanced storm-worker-log4j (storm-worker-log4j の詳細)]** の順に移動し、**&lt;root level="info"&gt;** を **&lt;root level="debug"&gt;** に変更します。 すべてのノードとサービスを再起動して構成を有効にします。
+1. **Ambari** > **Storm** > **構成** > **Advanced storm-worker-log4j\(storm-worker-log4j の詳細\)** の順に移動し、 **&lt;root level="info"&gt;** を **&lt;root level="debug"&gt;** に変更します。 すべてのノードとサービスを再起動して構成を有効にします。
 2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Storage Gen2 調整の例外を監視します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)を参照してください。
 
 実行できる他のサンプルについては、[GitHub のこちらのサンプル](https://github.com/hdinsight/storm-performance-automation)を参照してください。

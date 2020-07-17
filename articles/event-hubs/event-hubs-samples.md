@@ -13,44 +13,46 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 1c1198733fb56303d328ee97152442d25dbe945a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682394"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77162060"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Azure Event Hubs のサンプルが含まれる Git リポジトリ 
 Event Hubs サンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) で見つけることができます。 これらのサンプルは [Azure Event Hubs](/azure/event-hubs/) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
 ## <a name="net-samples"></a>.NET のサンプル
 
-| サンプル名 | 説明 | 
-| ----------- | ----------- | 
-| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | このサンプルでは、イベント ハブに一連のインベントリを送信する .NET Core コンソール アプリケーションの記述方法を示します。 |
-| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | このサンプルでは、イベント プロセッサ ホスト ライブラリを使ってイベント ハブから一連のイベントを受信する .NET Core コンソール アプリケーションを作成する方法を説明します。  | 
+| Version | サンプルの場所 |
+| ------- | ---------------- | 
+| Azure.Messaging.EventHubs バージョン 5 (最新) | [GitHub にある Event Hubs のサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[GitHub にある Event Hubs プロセッサのサンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Microsoft.Azure.EventHubs バージョン 4 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Java のサンプル
 
-| サンプル名 | 説明 | 
-| ----------- | ----------- | 
-| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | このサンプルは、イベント ハブにイベントのバッチを取り込む方法を示しています。 | 
-| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | このサンプルは、イベント ハブにイベントを取り込む方法を示しています。 |
-| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | このサンプルは、Event Hubs がイベントを取り込むために利用できるさまざまなオプションを示しています。 |
-| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | このサンプルは、日時のオフセットを指定してイベント ハブ パーティションからイベントを受信する方法を示しています。 |
-| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | このサンプルは、データのオフセットを指定してイベント ハブ パーティションからイベントを受信する方法を示しています。 |  
-| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | このサンプルは、シーケンス番号を使用してイベント ハブ パーティションから受信する方法を示しています。 |   
-| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |このサンプルは、イベント プロセッサ ホストを使用して、イベント ハブからイベントを受信する方法を示しています。パーティションの自動選択機能と、複数の並列する受信側全体にフェールオーバー機能を提供します。 | 
-| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | このサンプルは、高負荷の場合にイベント ハブを自動的にスケールアップする方法を示しています。 このサンプルを実行すると、構成したイベント ハブのレートをやや超えるレートでイベントが送信され、イベント ハブのスケールアップが実行されます。 | 
-| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | このサンプルでは、受信レートを測定できます。 | 
+| Version | サンプルの場所 |
+| ------- | ---------------- | 
+| azure-messaging-eventhubs バージョン 5 (最新) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
+| azure-eventhubs バージョン 3 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Python のサンプル
-Azure Event Hubs の Python サンプルは、[azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) GitHub リポジトリにあります。
 
-## <a name="nodejs-samples"></a>Node.js のサンプル
-Azure Event Hubs の Node.js サンプルは、[azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) GitHub リポジトリにあります。
+| Version | サンプルの場所 |
+| ------- | ---------------- | 
+| azure-eventhub バージョン 5 (最新) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
+| azure-eventhub バージョン 1 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
+
+## <a name="javascript-samples"></a>JavaScript のサンプル
+
+| Version | サンプルの場所 |
+| ------- | ---------------- | 
+| azure/event-hubs バージョン 5 (最新) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
+| azure/event-hubs バージョン 2 (レガシ) | [GitHub の場所](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
+
 
 ## <a name="go-samples"></a>Go のサンプル
 Azure Event Hubs の Go サンプルは、[azure-event-hubs-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) GitHub リポジトリにあります。
@@ -64,7 +66,7 @@ Azure Event Hubs の Azure PowerShell サンプルは、[azure-event-hubs](https
 ## <a name="apache-kafka-samples"></a>Apache Kafka のサンプル
 Apache Kafka 用の Event Hubs 機能のサンプルは、[azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub リポジトリにあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次の記事を参照してください。
 
 - [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

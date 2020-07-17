@@ -1,32 +1,25 @@
 ---
-title: スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Docs
+title: スケジュールされたクリーンアップ タスクを Azure Functions で実行する
 description: Azure Functions を使用して、Azure SQL Database に接続し、定期的に行をクリーンアップするタスクをスケジュールします。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 10/02/2019
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608581"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366813"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
-この記事では、Azure Functions を使用して Azure SQL データベース インスタンスに接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2017 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
+この記事では、Azure Functions を使用して Azure SQL Database または Azure SQL Managed Instance に接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 Azure SQL Managed Instance の場合は、Azure Functions から接続できるように[パブリック エンドポイントを有効にする](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)必要があります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)をお読みください。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 「[Visual Studio を使用して初めての関数を作成する](functions-create-your-first-function-visual-studio.md)」記事の手順が完了しており、バージョン 2.x ランタイムを対象としたローカル関数アプリを作成しています。 また、プロジェクトを Azure の関数アプリに発行している必要があります。
++ 「[Visual Studio を使用して初めての関数を作成する](functions-create-your-first-function-visual-studio.md)」記事の手順が完了しており、バージョン 2.x 以降のランタイムを対象としたローカル関数アプリを作成しています。 また、プロジェクトを Azure の関数アプリに発行している必要があります。
 
 + この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、記事「[Azure portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」の手順を実行します。
 
@@ -36,11 +29,11 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を完了したときに作成したデータベースの接続文字列を取得する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。
 
-1. **[Settings]** \(設定) の下の **[接続文字列]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。
+1. **[Settings]** \(設定) の下の **[接続文字列]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。 Azure SQL Managed Instance の場合は、パブリック エンドポイントの接続文字列をコピーします。
 
     ![ADO.NET の接続文字列をコピーします。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -50,7 +43,7 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 以前アプリを Azure に発行している必要があります。 まだ行っていない場合は、[[Publish your function app to Azure]](functions-develop-vs.md#publish-to-azure)\(関数アプリを Azure に発行) します。
 
-1. ソリューション エクスプ ローラーで関数アプリ プロジェクトを右クリックし、**[Publish]** \(発行)  > **[Manage application settings...]** \(アプリケーション設定の管理...) を選択します。**[設定の追加]** を選択し、**[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[Publish]** \(発行)  >  **[Edit Azure App Service settings]** \(Azure App Service の設定を編集する) を選択します。 **[設定の追加]** を選択し、 **[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
 
     ![関数アプリのアプリケーション設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -64,15 +57,15 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 SqlClient ライブラリを含む NuGet パッケージを追加する必要があります。 SQL データベースへの接続には、このデータ アクセス ライブラリが必要です。
 
-1. Visual Studio 2017 で、ローカル関数アプリ プロジェクトを開きます。
+1. Visual Studio 2019 で、ローカル関数アプリ プロジェクトを開きます。
 
-1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
 1. **[参照]** タブで ```System.Data.SqlClient``` を探し、見つかったらそれを選択します。
 
-1. **[System.Data.SqlClient]** ページでバージョン `4.5.1` を選択し、**[インストール]** をクリックします。
+1. **[System.Data.SqlClient]** ページでバージョン `4.5.1` を選択し、 **[インストール]** をクリックします。
 
-1. インストールが完了したら変更を確認し、**[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。
+1. インストールが完了したら変更を確認し、 **[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。
 
 1. **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** をクリックします。
 
@@ -80,11 +73,11 @@ SqlClient ライブラリを含む NuGet パッケージを追加する必要が
 
 ## <a name="add-a-timer-triggered-function"></a>タイマーでトリガーされる関数を追加する
 
-1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、**[Add]** \(追加) > **[新しい Azure 関数]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[Add]** \(追加) >  **[新しい Azure 関数]** を選択します。
 
-1. **Azure Functions** テンプレートを選択し、新しい項目に `DatabaseCleanup.cs` などの名前を付けて、**[Add]** \(追加) を選択します。
+1. **Azure Functions** テンプレートを選択し、新しい項目に `DatabaseCleanup.cs` などの名前を付けて、 **[Add]** \(追加) を選択します。
 
-1. **[新しい Azure 関数]** ダイアログ ボックスで、**[タイマー トリガー]**、**[OK]** を選択します。 このダイアログで、タイマー トリガー関数のコード ファイルが作成されます。
+1. **[新しい Azure 関数]** ダイアログ ボックスで、 **[タイマー トリガー]** 、 **[OK]** を選択します。 このダイアログで、タイマー トリガー関数のコード ファイルが作成されます。
 
 1. 新しいコード ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 
@@ -127,9 +120,9 @@ SqlClient ライブラリを含む NuGet パッケージを追加する必要が
 
     最初の実行では、32 行のデータを更新する必要があります。 以降の実行では、`UPDATE` ステートメントで行が選択されるように SalesOrderHeader テーブルのデータに変更を加えた場合を除き、データ行は更新されません。
 
-[この関数を発行する](functions-develop-vs.md#publish-to-azure)予定がある場合は、`TimerTrigger` 属性を 15 秒ごとよりも適切な [cron スケジュール](functions-bindings-timer.md#cron-expressions)に変更してください。
+[この関数を発行する](functions-develop-vs.md#publish-to-azure)予定がある場合は、`TimerTrigger` 属性を 15 秒ごとよりも適切な [cron スケジュール](functions-bindings-timer.md#ncrontab-expressions)に変更してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、使用方法を学習します。 Logic Apps で Functions を使用して、その他のサービスと統合します。
 

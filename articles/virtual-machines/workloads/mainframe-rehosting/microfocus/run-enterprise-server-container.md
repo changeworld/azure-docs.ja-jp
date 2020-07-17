@@ -9,11 +9,11 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896728"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "61488462"
 ---
 # <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Azure 上の Docker コンテナーで Micro Focus Enterprise Server 4.0 を実行する
 
@@ -29,7 +29,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- Micro Focus ソフトウェアおよび有効なライセンス (または評価版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[評価版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
+- Micro Focus ソフトウェアおよび有効なライセンス (または試用版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[試用版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
 
      > [!NOTE]
      > Docker のデモ ファイルは、Enterprise Server 4.0 に含まれています。 このチュートリアルでは、ent\_server\_dockerfiles\_4.0\_windows.zip を使用します。 Enterprise Server のインストール ファイルにアクセスしたのと同じ場所からそれにアクセスするか、*Micro Focus* に移動して、開始します。
@@ -54,7 +54,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
     4. **[ユーザー名]** には、使用する管理者アカウントとパスワードを入力します。
 
-    5. **ポート 3389 RDP** が開かれていることを確認します。 VM にサインインできるよう、このポートのみをパブリックに公開する必要があります。 すべての既定値をそのまま使用して、**[確認と作成]** をクリックします。
+    5. **ポート 3389 RDP** が開かれていることを確認します。 VM にサインインできるよう、このポートのみをパブリックに公開する必要があります。 すべての既定値をそのまま使用して、 **[確認と作成]** をクリックします。
 
      ![仮想マシンの作成ウィンドウ](media/container-02.png)
 
@@ -125,7 +125,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
          docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win_4.0_x64
     ```
 
-2.  [x3270](http://x3270.bgp.nu/) などの 3270 端末エミュレーターをインストールし、それを使用してポート 9040 経由で実行しているイメージにアタッチします。
+2.  [x3270](http://x3270.bgp.nu/) などの 3270 ターミナルエミュレーターをインストールし、それを使用してポート 9040 経由で実行しているイメージにアタッチします。
 
 3.  Docker が管理するコンテナーに対して DHCP サーバーとして機能できるように、acctdemo コンテナーの IP アドレスを取得します。
 
@@ -137,7 +137,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
        docker inspect <containerID> --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-       例: 
+       次に例を示します。
 
     ```   
         docker inspect 22a0fe3159d0 --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
@@ -150,9 +150,9 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
     ![CICS へのサインオン画面](media/container-07.png)
 
-6. **[USERID]\(ユーザー ID\)** に「**SYSAD**」と入力し、**[Password]\(パスワード\)** に「**SYSAD**」と入力して、CICS 領域にサインインします。
+6. **[USERID]\(ユーザー ID\)** に「**SYSAD**」と入力し、 **[Password]\(パスワード\)** に「**SYSAD**」と入力して、CICS 領域にサインインします。
 
-7. エミュレーターのキーマップを使用して、画面をクリアします。 x3270 の場合は、**[Keymap]\(キーマップ\)** メニュー オプションを選択します。
+7. エミュレーターのキーマップを使用して、画面をクリアします。 x3270 の場合は、 **[Keymap]\(キーマップ\)** メニュー オプションを選択します。
 
 8. acctdemo アプリケーションを起動するには、「**ACCT**」と入力します。 アプリケーションの最初の画面が表示されます。
 
@@ -168,7 +168,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 これで完了です。 今は、Docker コンテナーで CICS アプリケーションを実行し、管理しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure で Micro Focus Enterprise Server 4.0 および Enterprise Developer 4.0 をインストールする](./set-up-micro-focus-azure.md)
 - [メインフレーム アプリケーションの移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

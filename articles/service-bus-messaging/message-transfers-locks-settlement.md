@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus メッセージの転送、ロック、および解決 | Microsoft Docs
-description: Service Bus メッセージの転送および解決処理の概要
+title: Azure Service Bus メッセージの転送、ロック、および解決
+description: この記事では、Azure Service Bus のメッセージの転送、ロック、および解決操作について概要を説明します。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230091"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 
@@ -96,11 +96,15 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>受信操作の解決
 
-受信操作を行う Service Bus API クライアントでは、明示的なモードが 2 つ有効になっています。*受信して削除*と*ピーク ロック*です。
+受信操作を行う Service Bus API クライアントには、*受信して削除*と*ピーク ロック*の 2 つの明示的なモードがあります。
+
+### <a name="receiveanddelete"></a>ReceiveAndDelete
 
 [受信して削除](/dotnet/api/microsoft.servicebus.messaging.receivemode)モードでは、ブローカーは、ブローカーが受信クライアントに送信するすべてのメッセージを、送信時点で解決済みとみなします。 つまり、ブローカーが送信するとただちにメッセージは消費されたとみなされます。 メッセージの転送が失敗した場合、メッセージは失われます。
 
 このモードのメリットは、受信側メッセージでそれ以上のアクションを実行する必要はなく、解決の結果を待機する遅延も発生しないことです。 各メッセージに含まれるデータの価値が低い、またはデータが意味を持つ時間が非常に短時間の場合は、このモードは妥当な選択です。
+
+### <a name="peeklock"></a>PeekLock
 
 [ピーク ロック](/dotnet/api/microsoft.servicebus.messaging.receivemode)モードでは、受信クライアントが、受信したメッセージの明示的な解決を求めることを、ブローカーに指示します。 受信クライアントが処理できるよう、メッセージに排他的なロックがかけられ、他の競合受信クライアントからは認識できなくなります。 ロックの有効期間は、当初キューまたはサブスクリプション レベルで定義され、ロックを所有しているクライアントによる [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) 操作によって延長できます。
 
@@ -122,7 +126,15 @@ for (int i = 0; i < 100; i++)
 
 重複するメッセージの配信を識別するための一般的な方法は、送信側によって一意の値に設定され、元の処理からの ID と紐付けられている場合もある、メッセージ ID を確認することです。 ジョブ スケジューラは、特定のワーカーに割り当てようとしているジョブ ID にメッセージ ID を設定することが多く、ワーカーは、ジョブがすでに完了している場合は、2 回目のジョブの割り当てを無視します。
 
-## <a name="next-steps"></a>次の手順
+> [!IMPORTANT]
+> PeekLock がメッセージに対して取得するロックは揮発性であり、次のような状況では失われる可能性があることに注意してください
+>   * サービスの更新
+>   * OS の更新
+>   * ロックを保持したままエンティティ (キュー、トピック、サブスクリプション) のプロパティを変更。
+>
+> ロックが失われると、Azure Service Bus によって LockLostException が生成され、クライアント アプリケーション コードに表示されます。 この場合、クライアントの既定の再試行ロジックが自動的に開始され、操作が再試行されます。
+
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

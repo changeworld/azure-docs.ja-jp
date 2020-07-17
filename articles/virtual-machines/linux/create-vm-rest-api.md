@@ -1,26 +1,17 @@
 ---
-title: Azure REST API を使用して Linux 仮想マシンを作成する | Microsoft Docs
+title: REST API を使用して Linux VM を作成する
 description: マネージド ディスクと SSH 認証を使用する Linux 仮想マシンを Azure REST API を使用して Azure 内に作成する方法を説明します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447848"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78970273"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -55,7 +46,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 要求ヘッダー   | 説明 |
 |------------------|-----------------|
 | *Content-Type:*  | 必須。 `application/json` を設定します。 |
-| *Authorization:* | 必須。 有効な `Bearer` [ アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |
+| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
 
 REST API 要求の操作の概要については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
 
@@ -63,10 +54,10 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-| Name                       | 必須 | type                                                                                | 説明  |
+| 名前                       | 必須 | Type                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | 文字列                                                                              | リソースの場所。 |
-| name                       |          | 文字列                                                                              | 仮想マシンの名前。 |
+| location                   | True     | string                                                                              | リソースの場所。 |
+| name                       |          | string                                                                              | 仮想マシンの名前。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 仮想マシンのハードウェア設定を指定します。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 仮想マシンのストレージ設定を指定します。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 仮想マシンのオペレーティング システム設定を指定します。 |
@@ -131,16 +122,16 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 ## <a name="sending-the-request"></a>要求の送信
 
-この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、**[試してみる]** ボタンをクリックして、[ブラウザー内ツール](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
+この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[試してみる]** ボタンをクリックして、[ブラウザー内ツール](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
 
-### <a name="responses"></a>応答
+### <a name="responses"></a>Responses
 
-バーチャル マシンの作成または更新操作には、2 種類の成功応答があります。
+仮想マシンの作成または更新操作には、2 種類の成功応答があります。
 
-| Name        | Type                                                                              | 説明 |
+| 名前        | Type                                                                              | 説明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
-| 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成日時     |
+| 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | [OK]          |
+| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成済み     |
 
 MV を作成する要求本文の例の圧縮された *201 Created* 応答は、*vmId* が割り当てられ、*provisioningState* が *Creating* であることを示します。
 
@@ -153,7 +144,7 @@ MV を作成する要求本文の例の圧縮された *201 Created* 応答は�
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure REST API や他の管理ツール (Azure CLI や Azure PowerShell など) の詳細については、以下を参照してください。
 

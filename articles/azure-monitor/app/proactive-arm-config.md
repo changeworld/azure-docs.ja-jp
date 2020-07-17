@@ -1,37 +1,30 @@
 ---
-title: Azure Resource Manager テンプレートで Azure Application Insights スマート検出ルール設定を構成する | Microsoft Docs
+title: スマート検出のルール設定 - Azure Application Insights
 description: Azure Resource Manager テンプレートでの Azure Application Insights スマート検出ルールの管理と構成を自動化する
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.reviewer: mbullwin
+author: harelbr
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 06/26/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294912"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
-Application Insights のスマート検出ルールは、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して管理および構成できます。
+Application Insights のスマート検出ルールは、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して管理および構成できます。
 この手法は、Azure Resource Manager オートメーションで新しい Application Insights リソースをデプロイするとき、または既存のリソースの設定を変更するときに使用できます。
 
 ## <a name="smart-detection-rule-configuration"></a>スマート検出ルールの構成
 
 スマート検出ルールに対して次の設定を構成できます。
 - ルールが有効になっているかどうか (既定値は **true**)。
-- 検出が見つかったときに、サブスクリプションの所有者、共同作成者、閲覧者に電子メールを送信する必要があるかどうか (既定値は**true**)。
+- 検出が見つかったときに、メールがサブスクリプションの [[閲覧者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) ロールと [[共同作成者の監視]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) ロールに関連付けられたユーザーに送信される必要がある場合 (既定値は **true**)。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
-- * 電子メールの構成は、_プレビュー_ とマークされたスマート検出ルールで使用できません。
+    -  メールの構成は、_プレビュー_ とマークされたスマート検出ルールで使用できません。
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
@@ -39,7 +32,7 @@ Azure Resource Manager を使用してルールの設定を構成できるよう
 ## <a name="examples"></a>例
 
 Azure Resource Manager テンプレートを使用してスマート検出ルールの設定を構成する方法を示す例を次にいくつか示します。
-すべてのサンプルは、_"myApplication"_ という名前の Application Insights リソースと、_"longdependencyduration"_ という内部名の "長い依存関係期間スマート検出ルール" を参照します。
+すべてのサンプルは、 _"myApplication"_ という名前の Application Insights リソースと、 _"longdependencyduration"_ という内部名の "長い依存関係期間スマート検出ルール" を参照します。
 Application Insights リソース名を置換し、関連するスマート検出ルールの内部名を指定してください。 各スマート検出ルールに対応する Azure Resource Manager 内部名の一覧については、次の表をご確認ください。
 
 ### <a name="disable-a-smart-detection-rule"></a>スマート検出ルールを無効にする
@@ -136,12 +129,13 @@ Application Insights リソース名を置換し、関連するスマート検�
 
 ```
 
+
 ## <a name="smart-detection-rule-names"></a>スマート検出ルール名
 
 Azure Resource Manager テンプレートで使用する必要がある、ポータルに表示されるスマート検出ルール名とその内部名の表を次に示します。
 
 > [!NOTE]
-> プレビューとしてマークされているスマート検出ルールでは、電子メール通知はサポートされません。 そのため、これらのルールに対して有効なプロパティのみを設定できます。 
+> _プレビュー_ としてマークされているスマート検出ルールでは、メール通知がサポートされません。 そのため、これらのルールに対して _有効な_ プロパティのみを設定できます。 
 
 | Azure portal ルール名 | 内部名
 |:---|:---|
@@ -154,18 +148,45 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 | 例外数の異常な上昇 (プレビュー) | extension_exceptionchangeextension |
 | Potential memory leak detected (潜在的なメモリ リークの検出) (プレビュー) | extension_memoryleakextension |
 | Potential security issue detected (潜在的なセキュリティの問題の検出) (プレビュー) | extension_securityextensionspackage |
-| Resource utilization issue detected (リソース使用率の問題の検出) (プレビュー) | extension_resourceutilizationextensionspackage |
+| 日次データ ボリュームの異常な上昇 (プレビュー) | extension_billingdatavolumedailyspikeextension |
 
-## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
+### <a name="failure-anomalies-alert-rule"></a>失敗の異常の警告ルール
 
-このセクションは、スマート検出クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 [クラシック アラート](../platform/alerts-classic.overview.md)と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 現在スマート検出アラートは、クラシック アラート エクスペリエンスのみをサポートしています。 この 1 つの例外は、[Azure クラウド サービスのスマート検出アラート](./proactive-cloud-services.md)です。 Azure クラウド サービスのスマート検出アラートのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
-
-* スマート検出/クラシック アラート通知には、特定の受信者の使用をお勧めします。
-
-* スマート検出アラートの場合、**一括/グループ** チェックボックス オプションが有効にされていれば、サブスクリプション内の所有者、共同作成者、または閲覧者ロールを持つユーザーに送信されます。 実際には、サブスクリプションの Application Insights リソースにアクセスできる _すべて_ のユーザーが範囲内になり、通知を受け取ります。 
+この Azure Resource Manager テンプレートでは、重大度が 2 の失敗の異常警告ルールの構成について示しています。 この新しいバージョンのエラーの異常のアラート ルールは、新しい Azure のアラート プラットフォームの一部であり、[従来のアラートの回収プロセス](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)の一環として廃止される従来のバージョンに置き換わります。
 
 > [!NOTE]
-> 現在、**一括/グループ** チェックボックス オプションを使用しており、それを無効にすると、変更を元に戻すことはできません。
+> 失敗の異常はグローバル サービスであるため、ルールはグローバルな場所に作成されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "location": "global", 
+            "properties": {
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> この Azure Resource Manager テンプレートは、失敗の異常の警告ルールに固有のものであり、この記事で説明されている他の従来のスマート検出ルールとは異なります。 失敗の異常を手動で管理したい場合は、Azure Monitor アラートで行います。他のすべてのスマート検出ルールは、UI の [スマート検出] ウィンドウで管理されます。
 
 ## <a name="next-steps"></a>次の手順
 

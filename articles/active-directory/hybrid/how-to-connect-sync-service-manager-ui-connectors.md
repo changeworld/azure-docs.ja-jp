@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431174"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230107"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 
@@ -31,9 +31,9 @@ ms.locfileid: "57431174"
 [コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
 ## <a name="connector-actions"></a>コネクタのアクション
-| Action | Comment (コメント) |
+| アクション | 解説 |
 | --- | --- |
-| Create |使用しないでください。 その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
+| 作成 |使用しないでください。 その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
 | Properties |ドメインと OU フィルター処理に使用されます。 |
 | [削除](#delete) |コネクタ スペースのデータを削除するか、フォレストへの接続を削除するために使用されます。 |
 | [実行プロファイルの構成](#configure-run-profiles) |ドメイン フィルター処理を除き、ここで構成するものはありません。 このアクションは、既に構成されている実行プロファイルを確認する場合に使用します。 |
@@ -65,11 +65,11 @@ ms.locfileid: "57431174"
 
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-まず、 **[scope]**(範囲) を選択します。 データ (RDN、DN、アンカー、サブツリー) またはオブジェクトの状態 (その他すべてのオプション) に基づいて検索できます。  
+まず、 **[scope]** (範囲) を選択します。 データ (RDN、DN、アンカー、サブツリー) またはオブジェクトの状態 (その他すべてのオプション) に基づいて検索できます。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-このグリッドからオブジェクトを選択し、**[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](tshoot-connect-object-not-syncing.md)できます。
+このグリッドからオブジェクトを選択し、 **[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](tshoot-connect-object-not-syncing.md)できます。
 
 ### <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
 アカウントのパスワードを変更すると、Synchronization Service でオンプレミスの AD に変更をインポートまたはエクスポートできなくなります。   次のように表示されます。
@@ -93,7 +93,7 @@ ms.locfileid: "57431174"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

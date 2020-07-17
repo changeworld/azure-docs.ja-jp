@@ -1,19 +1,18 @@
 ---
-title: クラシックから Resource Manager への回線の移動 - ExpressRoute:PowerShell:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: クラシックの回線を Resource Manager に移行する'
 description: このページでは、PowerShell を使用して、クラシックの回線を Resource Manager デプロイ モデルに移行する方法について説明します。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 7bd554896d739a567d04e7b978fba72960762805
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: charwen
+ms.openlocfilehash: d3014aae44b8d63be67cd0d31f996470aeda40df
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111363"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80616273"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
@@ -21,7 +20,7 @@ ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 * お使いのコンピューターにクラシックおよび Az Azure PowerShell モジュールの両方がローカルにインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
@@ -31,7 +30,7 @@ ExpressRoute 回線をクラシック デプロイ モデルと Resource Manager
 
 ## <a name="move-an-expressroute-circuit"></a>ExpressRoute 回線の移行
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>手順 1: クラシック デプロイ モデルからの回線の詳細を収集する
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>手順 1:クラシック デプロイ モデルからの回線の詳細を収集する
 
 Azure クラシック環境にサインインし、サービス キーを収集します。
 
@@ -41,7 +40,7 @@ Azure クラシック環境にサインインし、サービス キーを収集�
    Add-AzureAccount
    ```
 
-2.  適切な Azure サブスクリプションを選択します。
+2. 適切な Azure サブスクリプションを選択します。
 
    ```powershell
    Select-AzureSubscription "<Enter Subscription Name here>"
@@ -60,7 +59,7 @@ Azure クラシック環境にサインインし、サービス キーを収集�
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>手順 2: サインインし、リソース グループを作成する
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>手順 2:サインインし、リソース グループを作成する
 
 Resource Manager 環境にサインインし、新しいリソース グループを作成します。
 
@@ -70,7 +69,7 @@ Resource Manager 環境にサインインし、新しいリソース グルー�
    Connect-AzAccount
    ```
 
-2.  適切な Azure サブスクリプションを選択します。
+2. 適切な Azure サブスクリプションを選択します。
 
    ```powershell
    Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
@@ -155,7 +154,7 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)

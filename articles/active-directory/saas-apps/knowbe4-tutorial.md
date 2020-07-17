@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と KnowBe4 Security Awareness Training の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と KnowBe4 Security Awareness Training の統合 | Microsoft Docs'
 description: Azure Active Directory と KnowBe4 Security Awareness Training の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: b80d2212-cc5f-4adb-836c-570640810c39
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 829e0c08191e3eeba9dc410dda74502dc9ada327
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f774357dc2fd1e37466c2c338e8e8616ae599d12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897871"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73159680"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>チュートリアル:Azure Active Directory と KnowBe4 Security Awareness Training の統合
+# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>チュートリアル: Azure Active Directory と KnowBe4 Security Awareness Training の統合
 
 このチュートリアルでは、KnowBe4 Security Awareness Training と Azure Active Directory (Azure AD) を統合する方法について説明します。
 KnowBe4 Security Awareness Training と Azure AD の統合には、次の利点があります。
@@ -55,11 +56,11 @@ KnowBe4 Security Awareness Training の Azure AD への統合を構成するに�
 
 **ギャラリーから KnowBe4 Security Awareness Training を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +68,7 @@ KnowBe4 Security Awareness Training の Azure AD への統合を構成するに�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**KnowBe4 Security Awareness Training**」と入力し、結果パネルで **[KnowBe4 Security Awareness Training]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**KnowBe4 Security Awareness Training**」と入力し、結果パネルで **[KnowBe4 Security Awareness Training]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の KnowBe4 Security Awareness Training](common/search-new-app.png)
 
@@ -91,15 +92,15 @@ KnowBe4 Security Awareness Training で Azure AD のシングル サインオン
 
 KnowBe4 Security Awareness Training を使用して Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **KnowBe4 Security Awareness Training** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **KnowBe4 Security Awareness Training** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -117,7 +118,7 @@ KnowBe4 Security Awareness Training を使用して Azure AD シングル サイ
     > [!NOTE]
     > これは大文字小文字を区別します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -139,7 +140,7 @@ KnowBe4 Security Awareness Training を使用して Azure AD シングル サイ
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -164,11 +165,11 @@ KnowBe4 Security Awareness Training を使用して Azure AD シングル サイ
 
 このセクションでは、Britta Simon に KnowBe4 Security Awareness Training へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[KnowBe4 Security Awareness Training]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[KnowBe4 Security Awareness Training]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[KnowBe4 Security Awareness Training]** を選択します。
+2. アプリケーションの一覧で、 **[KnowBe4 Security Awareness Training]** を選択します。
 
     ![アプリケーションの一覧の KnowBe4 Security Awareness Training リンク](common/all-applications.png)
 
@@ -176,15 +177,15 @@ KnowBe4 Security Awareness Training を使用して Azure AD シングル サイ
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-knowbe4-security-awareness-training-test-user"></a>KnowBe4 Security Awareness Training のテスト ユーザーの作成
 

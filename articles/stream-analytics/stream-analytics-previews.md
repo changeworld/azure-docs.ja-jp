@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics のプレビュー機能
 description: この記事では、現在プレビュー段階にある Azure Stream Analytics の機能を示します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.openlocfilehash: 08430f3eee858cdb6c9a7fbdfe11bd4c00ef148d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.date: 05/08/2020
+ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630399"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83609003"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -23,44 +22,58 @@ ms.locfileid: "58630399"
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
 
-### <a name="anomaly-detection"></a>異常検出
+### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>マネージド ID を使用して SQL Database の出力に対する認証を行う
 
-Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。 詳細については、「[Azure Stream Analytics での異常検出](stream-analytics-machine-learning-anomaly-detection.md)」を参照してください。
+Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)がサポートされています。 マネージド ID を使用すると、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性など、ユーザー ベースの認証方法に伴う制限がなくなります。 手動による認証の必要がなくなると、Stream Analytics のデプロイを完全に自動化できます。
 
-### <a name="sql-database-reference-data"></a>SQL Database 参照データ
+### <a name="output-to-azure-synapse-analytics"></a>Azure Synapse Analytics に対する出力
 
-Azure Stream Analytics では、参照データ入力のソースとして Azure SQL Database がサポートされています。 Stream Analytics ツールを使用して、Azure portal および Visual Studio で Stream Analytics ジョブに対する参照データとして SQL Database を使用できます。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
+Azure Stream Analytics ジョブで、[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) 内の SQL プール テーブルに出力でき、最大 200 MB/秒のスループット レートを処理できます。これにより、レポートやダッシュボードなどのワークロードに対して、最も要求の厳しいリアルタイム分析とホットパス データ処理がサポートされます。  
 
-### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合
 
-Machine Learning (ML) 関数を使用して Stream Analytics のジョブをスケーリングできます。 Stream Analytics ジョブで ML 関数を使用する方法について詳しくは、「[Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング](stream-analytics-scale-with-machine-learning-functions.md)」をご覧ください。 現実のシナリオについては、「[Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行](stream-analytics-machine-learning-integration-tutorial.md)」を確認してください。
+### <a name="online-scaling"></a>オンライン スケーリング
 
-### <a name="javascript-user-defined-aggregate"></a>JavaScript ユーザー定義集計
+オンライン スケーリングを使用すると、SU 割り当てを変更する必要が生じてもジョブを停止する必要はありません。 実行中のジョブを停止しなくても、その SU 容量を増減できます。 その根底には、ミッションクリティカルな長時間実行パイプラインを Stream Analytics で提供するというユーザーへの誓いがあります。 詳細については、[Azure Stream Analytics のストリーミング ユニットを構成する方法](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)に関するセクションを参照してください。
 
-Azure Stream Analytics は JavaScript で記述されたユーザー定義集計 (UDA) をサポートしています。これを使用すると複雑なステートフルのビジネス ロジックを実装できます。 UDA の使用方法については、「[Azure Stream Analytics の JavaScript ユーザー定義集計](stream-analytics-javascript-user-defined-aggregates.md)」をご覧ください。 
+### <a name="c-custom-de-serializers"></a>C# カスタム デシリアライザー
+開発者は、Protobuf や XML のほか、あらゆるカスタム形式のデータを処理する目的に Azure Stream Analytics のパワーを活用できます。 [カスタム デシリアライザー](custom-deserializer-examples.md)を C# で実装し、それを使用して、Azure Stream Analytics で受信したイベントを逆シリアル化することができます。
+
+### <a name="extensibility-with-c-custom-code"></a>C# のカスタム コードを使用した拡張性
+
+クラウドまたは IoT Edge に Stream Analytics モジュールを作成する開発者は、カスタム C# 関数を作成または再利用し、[ユーザー定義関数](stream-analytics-edge-csharp-udf-methods.md)を通じて、クエリの中でそれらを直接呼び出すことができます。
+
+
+### <a name="debug-query-steps-in-visual-studio"></a>Visual Studio でのクエリ ステップのデバッグ
+
+Visual Studio 用 Azure Stream Analytics ツールでローカル テストを行う際、中間行セットをデータ ダイアグラムで簡単にプレビューできます。 
+
+### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Visual Studio Code でのライブ データを使用したローカル テスト
+
+Azure にジョブを送信する前に、ローカル コンピューター上でライブ データに対してクエリをテストできます。 それぞれのテストのイテレーションにかかる時間は平均して 2 秒から 3 秒なので、きわめて効率的な開発プロセスが実現します。
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
+
+Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 [VS Code の使用に関するチュートリアル](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)をご覧ください。
+
+
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning によって管理されるカスタム ML モデルを使用したリアルタイムのハイ パフォーマンス スコアリング
+
+Azure Stream Analytics は、事前トレーニング済みのカスタム機械学習モデルを活用し、コードの記述が不要なワークフローを使用することでハイパフォーマンスのリアルタイム スコアリングをサポートします。カスタム機械学習モデルは、Azure Machine Learning によって管理され、Azure Kubernetes Service (AKS) または Azure Container Instances (ACI) でホストされます。 プレビューへの[サインアップ](https://aka.ms/asapreview1)
+
 
 ### <a name="live-data-testing-in-visual-studio"></a>Visual Studio でのライブ データ テスト
 
 Visual Studio Tools for Azure Stream Analytics ではローカル テスト機能が強化され、イベント ハブや IoT ハブなどのクラウド ソースからのライブ イベント ストリームに対してクエリをテストすることができます。 方法については、「[Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする](stream-analytics-live-data-local-testing.md)」をご覧ください。
 
+
 ### <a name="net-user-defined-functions-on-iot-edge"></a>IoT Edge での .NET ユーザー定義関数
 
 .NET Standard のユーザー定義関数を使用すると、ストリーミング パイプラインの一部として .NET Standard のコードを実行できます。 簡単な C# クラスを作成したり、完全なプロジェクトやライブラリをインポートしたりできます。 Visual Studio では完全な作成およびデバッグ エクスペリエンスがサポートされています。 詳しくは、「[Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発](stream-analytics-edge-csharp-udf-methods.md)」をご覧ください。
 
-## <a name="private-previews"></a>プライベート プレビュー
+## <a name="other-previews"></a>その他のプレビュー
 
-以下の機能は、プライベート プレビュー段階です。
+ご要望に応じて、次の機能もプレビューとして提供されています。
 
-### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge 用の C# カスタム デシリアライザー
-
-開発者は、C# でカスタム デシリアライザーを実装して、Azure Stream Analytics で受信したイベントを逆シリアル化できるようになりました。 逆シリアル化できる形式としては、Parquet、Protobuf、XML、または任意のバイナリ形式などがあります。
-
-### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
-
-Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 ツールのプライベート プレビュー機能にアクセスするには、*ASAToolsfeedback\@microsoft.com* にお問い合わせください。
-
-## <a name="next-steps"></a>次の手順
-
-* [Azure Stream Analytics での 8 つの新機能](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)
-
-* [Azure Stream Analytics で利用可能になった 4 つの新機能](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)
+### <a name="support-for-azure-stack"></a>Azure Stack のサポート
+この機能は Azure IoT Edge ランタイムで有効になり、Azure Stack 上で実行するローカルの入出力 (Event Hubs、IoT Hub、Blob Storage など) のネイティブ サポートなど、Azure Stack のカスタム機能を活用します。 この新しい統合により、データを生成場所の近くで分析できるハイブリッド アーキテクチャを構築し、待機時間を短縮して分析情報を最大限に活用することができます。
+この機能により、データを生成場所の近くで分析できるハイブリッド アーキテクチャを構築し、待ち時間を短縮して分析情報を最大限に活用することができます。 このプレビューは[サインアップ](https://aka.ms/asapreview1)が必要です。

@@ -1,21 +1,21 @@
 ---
-title: Azure Digital Twins でのエグレスとエンドポイント | Microsoft Docs
-description: Azure Digital Twins を使用してエンドポイントを作成する方法のガイドラインです。
+title: エグレスとエンドポイント - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins でエグレス イベント エンドポイントを作成する方法を説明します。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
-ms.author: alinast
-ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994827"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76511571"
 ---
-# <a name="egress-and-endpoints"></a>エグレスとエンドポイント
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure Digital Twins でのエグレスとエンドポイント
 
 Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブスクリプション内のメッセージ ブローカーまたはイベント ブローカーを表します。 イベントとメッセージは、Azure Event Hubs、Azure Event Grid、および Azure Service Bus のトピックに送信できます。
 
@@ -47,11 +47,11 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 }
 ```
 
-| Attribute | type | 説明 |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | id | string | イベントの一意識別子。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
-| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
+| data | object | リソース プロバイダーに固有のイベント データ。 |
 | eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
 | dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
@@ -61,7 +61,7 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 Event Grid イベント スキーマの詳細については、
 
 - [Azure Event Grid イベント スキーマ リファレンス](../event-grid/event-schema.md)に関するページを参照してください。
-- [Azure EventGrid Node.js SDK EventGridEvent リファレンス](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)に関するページをお読みください。
+- [Azure EventGrid Node.js SDK EventGridEvent リファレンス](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest)に関するページをお読みください。
 
 ## <a name="event-types"></a>イベントの種類
 
@@ -90,7 +90,7 @@ Event Grid イベント スキーマの詳細については、
 - センサー
 - SensorBlobMetadata
 - SensorExtendedProperty
-- スペース
+- Space
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -246,9 +246,9 @@ Event Grid イベント スキーマの詳細については、
 >[!IMPORTANT]
 > **eventTypes** 属性に注意してください。 これはエンドポイントによって処理されるイベントの種類を定義するため、ルーティングを決定します。
 
-認証済みの HTTP POST 要求
+認証済みの HTTP POST 要求:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
@@ -356,7 +356,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
 
 エンドポイントが到達不能になると、システムは最大 30 分の指数バックオフ待機時間に入ります。 トリガーされた各バックオフ待機時間では、イベントは削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Digital Twins Swagger の使用方法](how-to-use-swagger.md)を確認します。
 

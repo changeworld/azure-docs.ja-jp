@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall と Azure Standard Load Balancer を統合する
-description: Azure Firewall と Azure Standard Load Balancer を統合する方法について説明します
+description: Azure Firewall と Azure Standard Load Balancer (パブリックまたは内部) を仮想ネットワークに統合できます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/1/2019
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784825"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78196717"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall と Azure Standard Load Balancer を統合する
 
@@ -32,16 +32,30 @@ Azure Load Balancer の詳細については、[Azure Load Balancer とは何か
 
 ### <a name="fix-the-routing-issue"></a>ルーティングの問題を修正する
 
-Azure Firewall をサブネットにデプロイするときの 1 つの手順は、AzureFirewallSubnet 上のファイアウォールのプライベート IP アドレスを通過するようにパケットを方向づけるサブネット用の既定のルートを作成することです。 詳細については、[チュートリアル: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](tutorial-firewall-deploy-portal.md#create-a-default-route)」を参照してください。
+Azure Firewall をサブネットにデプロイするときの 1 つの手順は、AzureFirewallSubnet 上のファイアウォールのプライベート IP アドレスを通過するようにパケットを方向づけるサブネット用の既定のルートを作成することです。 詳細については、「[チュートリアル:Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](tutorial-firewall-deploy-portal.md#create-a-default-route)」を参照してください。
 
 ロード バランサーのシナリオにファイアウォールを導入するときに、インターネット トラフィックがファイアウォールのパブリック IP アドレス経由で到着するように設定できます。 そこから、ファイアウォールによってファイアウォール規則が適用され、パケットがロードバランサーのパブリック IP アドレスに NAT されます。 ここで問題が発生します。 パケットはファイアウォールのパブリック IP アドレスに到着しますが、プライベート IP アドレス経由でファイアウォールに戻ります (既定のルートが使用されます)。
 この問題を回避するには、ファイアウォールのパブリック IP アドレス用の追加のホスト ルートを作成します。 ファイアウォールのパブリック IP アドレスに到着するパケットは、インターネット経由でルーティングされます。 これにより、ファイアウォールのプライベート IP アドレスへの既定のルートの使用が回避されます。
 
 ![非対称ルーティング](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-たとえば、パブリック IP アドレスが 13.86.122.41 で、プライベート IP アドレスが 10.3.1.4 のファイアウォールのルートは次のようになります。
+### <a name="route-table-example"></a>ルート テーブルの例
 
-![ルート テーブル](media/integrate-lb/route-table.png)
+たとえば、パブリック IP アドレスが 20.185.97.136 で、プライベート IP アドレスが 10.0.1.4 のファイアウォールのルートは次のようになります。
+
+> [!div class="mx-imgBorder"]
+> ![ルート テーブル](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>NAT 規則の例
+
+次の例の NAT 規則は、RDP トラフィックを 20.42.98.220 のロード バランサー経由で 20.185.97.136 のファイアウォールに変換します。
+
+> [!div class="mx-imgBorder"]
+> ![NAT 規則](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>正常性プローブ
+
+TCP 正常性プローブをポート 80 に使用する場合、または HTTP/HTTPS プローブを使用する場合は、ロード バランサー プール内のホストでWeb サービスが実行されている必要があることに注意してください。
 
 ## <a name="internal-load-balancer"></a>内部ロード バランサー
 
@@ -57,8 +71,10 @@ Azure Firewall をサブネットにデプロイするときの 1 つの手順�
 
 たとえば、負荷分散される仮想マシンが配置されているバックエンドのサブネット上に NSG を作成できます。 ファイアウォールの IP アドレスまたはポートからの受信トラフィックが許可されます。
 
+![ネットワーク セキュリティ グループ](media/integrate-lb/nsg-01.png)
+
 NSG について詳しくは、「[セキュリティ グループ](../virtual-network/security-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Firewall のデプロイおよび構成](tutorial-firewall-deploy-portal.md)方法について説明します。

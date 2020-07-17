@@ -1,19 +1,19 @@
 ---
 title: Azure 用 OPC Twin モジュールをゼロからデプロイする方法 |Microsoft Docs
-description: OPC Twin をゼロからデプロイする方法
+description: この記事では、Azure portal の IoT Edge ブレードを使用して、また AZ CLI を使用して、OPC Twin をゼロからデプロイする方法について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241075"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
@@ -33,69 +33,71 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ```json
 {
-  "modulesContent": {
-    "$edgeAgent": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "runtime": {
-          "type": "docker",
-          "settings": {
-            "minDockerVersion": "v1.25",
-            "loggingOptions": "",
-            "registryCredentials": {}
-          }
-        },
-        "systemModules": {
-          "edgeAgent": {
+  "content": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired": {
+          "schemaVersion": "1.0",
+          "runtime": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-              "createOptions": ""
+              "minDockerVersion": "v1.25",
+              "loggingOptions": "",
+              "registryCredentials": {}
             }
           },
-          "edgeHub": {
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}], \"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
-            }
-          }
-        },
-        "modules": {
-          "opctwin": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "never",
-            "settings": {
-              "image": "mcr.microsoft.com/iotedge/opc-twin:latest",
-              "createOptions": "{\"HostConfig\": { \"NetworkMode\": \"host\", \"CapAdd\": [\"NET_ADMIN\"] } }"
+          "systemModules": {
+            "edgeAgent": {
+              "type": "docker",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "createOptions": ""
+              }
+            },
+            "edgeHub": {
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}], \"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+              }
             }
           },
-          "opcpublisher": {
-            "version": "2.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "never",
-            "settings": {
-              "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
-              "createOptions": "{\"Hostname\": \"publisher\", \"Cmd\": [ \"publisher\", \"--pf=./pn.json\", \"--di=60\", \"--to\", \"--aa\", \"--si=0\", \"--ms=0\" ], \"ExposedPorts\": { \"62222/tcp\": {} }, \"HostConfig\": { \"PortBindings\": { \"62222/tcp\": [{ \"HostPort\": \"62222\" }] } } }"
+          "modules": {
+            "opctwin": {
+              "version": "1.0",
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/iotedge/opc-twin:latest",
+                "createOptions": "{\"NetworkingConfig\": {\"EndpointsConfig\": {\"host\": {}}}, \"HostConfig\": {\"NetworkMode\": \"host\" }}"
+              }
+            },
+            "opcpublisher": {
+              "version": "2.0",
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
+                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--to\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
+              }
             }
           }
         }
-      }
-    },
-    "$edgeHub": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "routes": {
-          "opctwinToIoTHub": "FROM /messages/modules/opctwin/outputs/* INTO $upstream",
-          "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/outputs/* INTO $upstream"
-        },
-        "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 7200
+      },
+      "$edgeHub": {
+        "properties.desired": {
+          "schemaVersion": "1.0",
+          "routes": {
+            "opctwinToIoTHub": "FROM /messages/modules/opctwin/* INTO $upstream",
+            "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/* INTO $upstream"
+          },
+          "storeAndForwardConfiguration": {
+            "timeToLiveSecs": 7200
+          }
         }
       }
     }
@@ -123,7 +125,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 4. **[Set Modules] \(モジュールの設定)** を選択します。
 
-5. このページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、**[追加]** と **[IoT Edge モジュール]** を選択します。
+5. このページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、 **[追加]** と **[IoT Edge モジュール]** を選択します。
 
 6. **[IoT Edge のカスタム モジュール]** ダイアログで、モジュールの名前として `opctwin` を使用し、次にコンテナーの*画像 URI* を次のように指定します
 
@@ -131,10 +133,10 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   *作成オプション*として、次の JSON を使用します。
+   *コンテナー作成オプション*として、次の JSON を使用します。
 
    ```json
-   {"HostConfig":{"NetworkMode":"host","CapAdd":["NET_ADMIN"]}}
+   {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
    必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)」をご覧ください。
@@ -147,21 +149,21 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   *作成オプション*として、次の JSON を使用します。
+   *コンテナー作成オプション*として、次の JSON を使用します。
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
-9. **[保存]** を選択し、**[次へ]** を選択して、ルートのセクションに進みます。
+9. **[保存]** を選択し、 **[次へ]** を選択して、ルートのセクションに進みます。
 
 10. ルート タブに以下を貼り付けます 
 
     ```json
     {
       "routes": {
-        "opctwinToIoTHub": "FROM /messages/modules/opctwin/outputs/* INTO $upstream",
-        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/outputs/* INTO $upstream"
+        "opctwinToIoTHub": "FROM /messages/modules/opctwin/* INTO $upstream",
+        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/* INTO $upstream"
       }
     }
     ```
@@ -184,68 +186,22 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 2. 次のコマンドを使用して、IoT Edge デバイスに構成を適用します。
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
    `device id` パラメーターは、大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。 
-    ![az IoT Edge モジュール設定の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![az IoT Edge set-modules の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. モジュールをデバイスにデプロイした後で、そのすべてを次のコマンドで表示できます。
 
-   ```bash
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
    device ID パラメーターでは大文字と小文字が区別されます。 ![az iot hub module-identity list の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
-## <a name="run-and-debug-locally"></a>ローカルでの実行とデバッグ
-
-トラブルシューティングとデバッグには、[IoT Edge Development Simulator](https://github.com/Azure/iotedgehubdev) を使用して Edge モジュールをローカルで実行すると便利です。  シミュレーターを含むローカルの開発エクスペリエンスが用意されており、運用環境で使用されるものと同じビット/コードを使用して Azure IoT Edge モジュールおよびソリューションを作成、開発、テスト、実行、デバッグすることができます。
-
-### <a name="prerequisites"></a>前提条件
-
-1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイする。
-
-2. [Windows](https://docs.docker.com/docker-for-windows/install/)、[macOS](https://docs.docker.com/docker-for-mac/install/)、または [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) に [Docker CE (18.02.0 以降)](https://www.docker.com/community-edition) をインストールします。
-
-3. [Docker Compose (1.20.0 以降)](https://docs.docker.com/compose/install/#install-compose) をインストールします (**Linux** の場合にのみ必要です。 Compose は Windows/macOS Docker CE インストールに既に含まれています)
-
-4. [Python (2.7/3.5 以降) と Pip](https://www.python.org/) をインストールします
-
-5. ターミナルで以下のコマンドを実行して iotedgehubdev をインストールします
-
-   ```bash
-   pip install --upgrade iotedgehubdev
-   ```
-
-> [!NOTE]
-> Linux/macOS 上には `iotedgehubdev` を**ルート**にインストールします (*'pip install' コマンドに '--user' オプションを使用しないでください*)。
-> iotedgehubdev と同じマシン上で Azure IoT Edge ランタイムが実行されていないことを確認します。これらは同じポートを使用するためです。
-
-### <a name="quickstart"></a>クイック スタート
-
-1. 手順に従って [Azure portal で Edge デバイスを作成](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)します。  Edge デバイスの接続文字列をコピーします。
-
-2. Edge 接続文字列を使用してシミュレーターを設定します。
-
-    ```bash
-    iotedgehubdev setup -c <edge-device-connection-string>
-    ```
-
-3. 上のマニフェストを同じフォルダー内の `deployment.json` ファイルにコピーします。  以下を使用してシミュレーターでデプロイを開始します
-
-    ```bash
-    iotedgehubdev start -d deployment.json
-    ```
-
-4. 以下を使用してシミュレーターを終了します
-
-   ```bash
-   iotedgehubdev stop
-   ```
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC Twin をゼロからデプロイする方法を学習しました。次に以下の記事を読むことをお勧めします。
 

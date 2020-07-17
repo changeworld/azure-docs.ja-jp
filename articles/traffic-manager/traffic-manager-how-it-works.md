@@ -3,7 +3,7 @@ title: Azure Traffic Manager のしくみ | Microsoft Docs
 description: この記事は、Traffic Manager でトラフィックをルーティングし、Web アプリケーションの高いパフォーマンスと可用性を実現するしくみを理解するために役立ちます
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: kumud
-ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rohink
+ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108867"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294869"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -34,7 +34,7 @@ Traffic Manager の 2 つのメリットを次に示します。
 
 ## <a name="traffic-manager-example"></a>Traffic Manager の例
 
-Contoso Corp が、新しいパートナー ポータルを開発しました。 このポータルの URL は https://partners.contoso.com/login.aspx です。 アプリケーションは、Azure の 3 つのリージョンにホストされます。 可用性を向上させ、グローバル パフォーマンスを最大化するには、Traffic Manager を使用して、利用可能な最も近いエンドポイントにクライアント トラフィックを分散します。
+Contoso Corp が、新しいパートナー ポータルを開発しました。 このポータルの URL は `https://partners.contoso.com/login.aspx` です。 アプリケーションは、Azure の 3 つのリージョンにホストされます。 可用性を向上させ、グローバル パフォーマンスを最大化するには、Traffic Manager を使用して、利用可能な最も近いエンドポイントにクライアント トラフィックを分散します。
 
 この構成を実現するために、次の手順を実行します。
 
@@ -49,11 +49,11 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Traffic Manager でのクライアントの接続方法
 
-前の例に続いて、クライアントがページ https://partners.contoso.com/login.aspx を要求すると、クライアントが次の手順を実行して DNS 名を解決して接続を確立します。
+前の例に続いて、クライアントがページ `https://partners.contoso.com/login.aspx` を要求すると、クライアントが次の手順を実行して DNS 名を解決して接続を確立します。
 
 ![Traffic Manager を使用した接続の確立][2]
 
-1. クライアントは、構成されている再帰 DNS サービスに対して DNS クエリを送信し、名前 "partners.contoso.com" を解決します  再帰 DNS サービス ("ローカル DNS" サービスと呼ばれることもあります) は、DNS ドメインを直接ホストしません。 代わりに、クライアントは、DNS 名を解決するために必要となる、信頼できるさまざまな DNS サービスにインターネット経由で接続する作業をオフロードします。
+1. クライアントは、構成されている再帰 DNS サービスに対して DNS クエリを送信し、名前 "partners.contoso.com" を解決します 再帰 DNS サービス ("ローカル DNS" サービスと呼ばれることもあります) は、DNS ドメインを直接ホストしません。 代わりに、クライアントは、DNS 名を解決するために必要となる、信頼できるさまざまな DNS サービスにインターネット経由で接続する作業をオフロードします。
 2. DNS 名を解決するために、再帰 DNS サービスは、"contoso.com" ドメインのネーム サーバーを見つけます。 次に、そのネーム サーバーに接続して、"partners.contoso.com" DNS レコードを要求します。 "contoso.com" DNS サーバーは、"contoso.trafficmanager.net" を指す CNAME レコードを返します。
 3. 次に、再帰 DNS サービスは、Azure Traffic Manager サービスで提供される、"trafficmanager.net" ドメインのネーム サーバーを見つけます。 見つけた DNS サーバーに "contoso.trafficmanager.net" の DNS レコードの要求を送信します。
 4. Traffic Manager ネーム サーバーは要求を受け取り、 次の内容に基づいてエンドポイントを選択します。
@@ -69,8 +69,31 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 
 再帰 DNS サービスでは、受信した DNS 応答をキャッシュします。 クライアント デバイス上の DNS リゾルバーも、結果をキャッシュします。 キャッシュのデータを使用することで、後続の DNS クエリに対する応答が迅速になります。他のネーム サーバーにクエリを実行する必要はありません。 キャッシュの期間は、各 DNS レコードの "Time-to-Live" (TTL) プロパティによって決まります。 値を小さくすると、キャッシュの有効期限が短くなるため、Traffic Manager ネーム サーバーとのラウンドトリップが増加します。 値を大きくすると、失敗したエンドポイントからトラフィックを転送するときにより時間がかかる可能性があります。 Traffic Manager では、Traffic Manager の DNS 応答で使用する TTL を 0 ～ 2,147,483,647 秒に構成できるため (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt) に準拠している)、アプリケーションのニーズの最適なバランスを実現する値を選択できます。
 
+## <a name="faqs"></a>FAQ
 
-## <a name="next-steps"></a>次の手順
+* [Traffic Manager ではどの IP アドレスが使用されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+
+* [Traffic Manager を使用して、どのような種類のトラフィックをルーティングできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+
+* [Traffic Manager では "スティッキー" セッションはサポートされていますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+
+* [Traffic Manager を使用していると HTTP エラーが表示されたのはなぜですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+
+* [Traffic Manager を使用すると、パフォーマンスにどのような影響がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+
+* [Traffic Manager ではどのようなアプリケーション プロトコルを使用できますか](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+
+* ["ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+
+* [Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+
+* [DNS TTL とは何ですか。DNS TTL はユーザーにどのような影響を及ぼしますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+
+* [Traffic Manager の応答に設定できる TTL の値を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+
+* [マイ プロファイルへのクエリの量を把握する方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+
+## <a name="next-steps"></a>次のステップ
 
 Traffic Manager の [エンドポイントの監視と自動フェールオーバー](traffic-manager-monitoring.md)の詳細を確認する。
 

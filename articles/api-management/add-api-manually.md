@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 14d4bf6d7e1d1f474e2388c4e2ce232574ebf0d8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682799"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203269"
 ---
 # <a name="add-an-api-manually"></a>手動による API の追加
 
@@ -36,25 +35,14 @@ ms.locfileid: "59682799"
 
 ## <a name="create-an-api"></a>API の作成
 
-1. **[API Management]** で **[API]** を選びます。
-2. 左側のメニューで、**[+ API の追加]** を選びます。
-3. 一覧から **[空の API]** を選びます。
+1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
+2. 左側のメニューで、 **[+ API の追加]** を選びます。
+3. 一覧から **[空の API]** を選びます。  
+    ![空の API](media/add-api-manually/blank-api.png)  
+4. API の設定を入力します。 設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+5. **［作成］** を選択します
 
-    ![空の API](media/add-api-manually/blank-api.png)
-4. API の設定を入力します。
-
-    ![設定](media/add-api-manually/settings.png)
-
-    |**Name**|**値**|**説明**|
-    |---|---|---|
-    |**[表示名]**|"*Blank API*" |この名前は開発者ポータルに表示されます。|
-    |**[Web サービスの URL]** (省略可能)| "*https://httpbin.org*"| モック API を作成する場合は、何も入力しない場合があります。 <br/>この例では、「[https://httpbin.org](https://httpbin.org)」と入力します。これは、パブリック テスト サービスです。 <br/>自動的にバックエンドにマッピングされる API をインポートする場合は、「[関連トピック](#related-topics)」セクションのいずれかのトピックをご覧ください。|
-    |**[URL スキーム]**|"*HTTPS*"|この場合、バックエンドはセキュリティで保護されていない HTTP でアクセスしますが、バックエンドに対してはセキュリティで保護された HTTPS APIM アクセスを指定します。 <br/>このようなシナリオ (HTTPS から HTTP へ) は、HTTPS の終了と呼ばれます。 API が仮想ネットワーク内にある場合は、このようにすることがあります (仮想ネットワーク内では、HTTPS が使用されていなくても、アクセスが安全であることが分かります)。 <br/>CPU サイクルを節約するために "HTTPS の終了" を使用する場合があります。|
-    |**[URL suffix]\(URL サフィックス\)**|"*hbin*"| サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。|
-    |**成果物**|"*Unlimited*" |API を成果物に関連付けることで API を公開します。 API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。<br/><br/>成果物には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 <br/>開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。<br/><br/> すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。**スターター**と**無制限**。| 
-5. **作成** を選択します。
-
-この時点では、バックエンド API の操作にマッピングされる APIM の操作はありません。 APIM ではなくバックエンドを介して公開される操作を呼び出すと、**404** が返されます。
+この時点では、バックエンド API の操作にマッピングされる API Management の操作はありません。 API Management ではなくバックエンドを介して公開される操作を呼び出すと、**404** が返されます。
 
 >[!NOTE] 
 > 既定では、追加する API がバックエンド サービスに接続されていても、ホワイトリストに登録するまでは APIM ではいかなる操作も公開されません。 バックエンド サービスの操作をホワイトリストに登録するには、バックエンドの操作にマッピングされる APIM の操作を作成します。
@@ -67,7 +55,7 @@ ms.locfileid: "59682799"
 
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
-3. **[URL]** で、**GET** を選び、リソースに「*/get*」と入力します。
+3. **[URL]** で、**GET** を選び、リソースに「 */get*」と入力します。
 4. **[表示名]** に「*FetchData*」と入力します。
 5. **[保存]** を選択します。
 
@@ -89,7 +77,7 @@ Azure Portal で操作をテストします。 または、**開発者ポータ�
 
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
-3. **[URL]** で、**GET** を選び、リソースに「*/status/{code}*」と入力します。 必要に応じて、このパラメーターに関連付けられている情報を指定できます。 たとえば、**[種類]** に「*Number*」を、**[値]** に「*200*」(既定値) を入力します。
+3. **[URL]** で、**GET** を選び、リソースに「 */status/{code}* 」と入力します。 必要に応じて、このパラメーターに関連付けられている情報を指定できます。 たとえば、 **[種類]** に「*Number*」を、 **[値]** に「*200*」(既定値) を入力します。
 4. **[表示名]** に「GetStatus」と入力します。
 5. **[保存]** を選択します。
 
@@ -107,7 +95,7 @@ Azure Portal で操作をテストします。  または、**開発者ポータ
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [公開された API の変換と保護](transform-api.md)

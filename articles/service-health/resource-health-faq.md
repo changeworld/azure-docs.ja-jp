@@ -1,18 +1,14 @@
 ---
-title: Azure Resource Health の FAQ | Microsoft Docs
+title: Azure Resource Health の FAQ
 description: Azure Resource Health の概要
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.workload: Supportability
-ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924442"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985033"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -41,7 +37,7 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>使用不可のリソースについてサポートを受けるにはどうすればよいですか。
 [リソース正常性] ブレードからサポート リクエストを送信できます。 プラットフォームのイベントが原因でリソースが使用不可になっている場合は、リクエストの作成にマイクロソフトとのサポート契約は必要ありません。
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Resource Health では、使用不可の状態は、プラットフォームの問題とユーザーの操作で区別されますか。
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Resource Health では、プラットフォームの問題に起因する使用不可とユーザーの操作に起因する使用不可は区別されますか?
 はい、リソースが使用不可になっている場合は、Resource Health で、以下のいずれかのカテゴリ内で根本原因が識別されます。 
 -   ユーザーが開始したアクション
 -   計画的なイベント 
@@ -54,9 +50,9 @@ Resource Health では、アクティビティ ログ ベースのアラート�
 
 ## <a name="where-do-i-find-resource-health"></a>Resource Health はどこにありますか。
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。
-- 対象のリソースに移動します。 左側のナビゲーションで、**[リソース正常性]** を選択します。
-- [Azure Service Health] ブレードに移動します。  左側のナビゲーションで、**[リソース正常性]** を選択します。
-- ポータルの右上隅の疑問符を選択し、**[ヘルプ + サポート]** を選択して **[ヘルプ + サポート]** ブレードを表示します。 ブレードが開いたら、**[リソース正常性]** を選択します。
+- 対象のリソースに移動します。 左側のナビゲーションで、 **[リソース正常性]** を選択します。
+- [Azure Service Health] ブレードに移動します。  左側のナビゲーションで、 **[リソース正常性]** を選択します。
+- ポータルの右上隅の疑問符を選択し、 **[ヘルプ + サポート]** を選択して **[ヘルプ + サポート]** ブレードを表示します。 ブレードが開いたら、 **[リソース正常性]** を選択します。
 
 Resource Health API を使用してリソースの正常性に関する情報を取得することもできます。
 
@@ -88,7 +84,7 @@ Resource Health の方が、Azure の状態や Service Health ダッシュボー
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Resource Health で提示されている推奨事項とはどのようなものですか。
 Resource Health では、正常性状態に基づいて、トラブルシューティングに費やされる時間の削減を目標とする推奨事項を提示しています。 使用可能なリソースの場合は、顧客が直面する最も一般的な問題を解決する方法に絞り込んだ推奨事項を提示します。 Azure の計画外のイベントが原因でリソースを使用できない場合、回復プロセス中と回復プロセス終了後のサポートに対象が絞り込まれます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health の概要](Resource-health-overview.md)

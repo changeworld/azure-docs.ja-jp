@@ -15,14 +15,16 @@ ms.workload: TBD
 ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23108250"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68963384"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 シリーズのシステム制限とは
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 
@@ -58,6 +60,6 @@ StorSimple は、データセンターのスケーラブルかつフレキシブ
 
 &#42;&#42; Update 3 より前のパフォーマンスの数値は低くなる可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple のシステム要件](storsimple-8000-system-requirements.md)を確認します。
 

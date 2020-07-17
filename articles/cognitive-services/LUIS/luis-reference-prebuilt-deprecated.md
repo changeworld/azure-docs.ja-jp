@@ -1,6 +1,6 @@
 ---
-title: 非推奨の作成済みエンティティ
-titleSuffix: Azure
+title: 非推奨の作成済みエンティティ - LUIS
+titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での非推奨の作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795102"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78270673"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS アプリにおける非推奨の作成済みエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。
@@ -30,7 +30,7 @@ ms.locfileid: "59795102"
 
 #### <a name="3-geography-subtypes"></a>geography の 3 つのサブタイプ
 
-作成済みエンティティ   |   発話の例   |   JSON
+事前構築済みのエンティティ   |   発話の例   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -43,7 +43,7 @@ ms.locfileid: "59795102"
 **encyclopedia** は `en-US` ロケールでのみ使用できます。
 
 #### <a name="encyclopedia-subtypes"></a>encyclopedia のサブタイプ
-encyclopedia 組み込みエンティティには、次の表に示す 100 を超えるサブタイプが含まれます。さらに、多くの場合、encyclopedia エンティティは複数のタイプにマップします。 たとえば、Ronald Reagan をクエリすると次のようになります。 
+encyclopedia 組み込みエンティティには、次の表に示す 100 を超えるサブタイプが含まれます。さらに、多くの場合、encyclopedia エンティティは複数のタイプにマップします。 たとえば、Ronald Reagan をクエリすると次のようになります。
 
 ```json
 {
@@ -65,7 +65,7 @@ encyclopedia 組み込みエンティティには、次の表に示す 100 を�
  ```
 
 
-作成済みエンティティ   |   作成済みエンティティ (サブタイプ)   |   発話の例
+事前構築済みのエンティティ   |   作成済みエンティティ (サブタイプ)   |   発話の例
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -161,7 +161,7 @@ encyclopedia 組み込みエンティティには、次の表に示す 100 を�
 `builtin.encyclopedia.finance.stock_exchange`| `builtin.encyclopedia.finance.stock_exchange`| `tokyo stock exchange`|
 `builtin.encyclopedia.film.festival`| `builtin.encyclopedia.film.festival`| `berlin international film festival`|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。 
+[dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。
 

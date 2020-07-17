@@ -1,39 +1,27 @@
 ---
-title: 仮想マシン スケール セット テンプレートの詳細 | Microsoft Docs
-description: 仮想マシン スケール セットの実行可能な最小のスケール セット テンプレートを作成する方法の詳細
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+title: 仮想マシン スケール セット テンプレートの詳細情報
+description: いくつかの簡単な手順に従って、Azure 仮想マシン スケール セット用の基本的なスケール セット テンプレートを作成する方法について説明します。
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 06/01/2017
-ms.author: manayar
-ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.subservice: template
+ms.date: 04/26/2019
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: af2f000b9f9a7bf64898c46b3126cf180802b445
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008422"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198121"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、実行可能な最小のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。 
+[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、基本のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。
 
 このテンプレートは単純なものにしてあります。 スケール セット テンプレートの完全な例については、[Azure クイックスタート テンプレート GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で、`vmss` という文字列を含むフォルダーを検索してください。
 
 テンプレートの作成を熟知している場合は、"次の手順" セクションに進んで、このテンプレートを変更する方法をご覧ください。
-
-## <a name="review-the-template"></a>テンプレートを確認する
-
-GitHub を使用して、実行可能な最小のスケール セット テンプレート [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json) を確認します。
-
-このチュートリアルでは、diff (`git diff master minimum-viable-scale-set`) を取り上げて、実行可能な最小のスケール セット テンプレートを作成していきます。
 
 ## <a name="define-schema-and-contentversion"></a>$schema と contentVersion を定義する
 まず、テンプレートの `$schema` と `contentVersion` を定義します。 `$schema` 要素は、テンプレートの言語のバージョンを定義し、Visual Studio 構文の強調表示や同様の検証機能で使用されます。 `contentVersion` 要素は、Azure では使用されません。 テンプレートのバージョンを追跡するときに役立ちます。
@@ -43,6 +31,7 @@ GitHub を使用して、実行可能な最小のスケール セット テン�
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
+
 ## <a name="define-parameters"></a>パラメーターを定義する
 次に、2 つのパラメーター (`adminUsername` と `adminPassword`) を定義します。 これらのパラメーターは、デプロイ時に指定する値です。 パラメーター `adminUsername` は単なる `string` 型ですが、`adminPassword` はシークレットであるため、`securestring` 型にします。 これらのパラメーターは、後ほどスケール セット構成に渡されます。
 
@@ -56,7 +45,7 @@ GitHub を使用して、実行可能な最小のスケール セット テン�
     }
   },
 ```
-## <a name="define-variables"></a>変数を定義する
+## <a name="define-variables"></a>変数の定義
 Resource Manager テンプレートでは、テンプレート内で後ほど使用される変数を定義することもできます。 この例では変数を使用しないため、JSON オブジェクトは空のままです。
 
 ```json
@@ -70,17 +59,17 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
    "resources": [
 ```
 
-すべてのリソースのプロパティ `type`、`name`、`apiVersion`、`location` を指定する必要があります。 この例の最初のリソースには、type [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、name `myVnet`、apiVersion `2016-03-30` が含まれています。 (リソースの種類に対する最新の API バージョンを確認するには、[Azure Resource Manager テンプレートのリファレンス](/azure/templates/)を参照してください。)
+すべてのリソースのプロパティ `type`、`name`、`apiVersion`、`location` を指定する必要があります。 この例の最初のリソースには、type [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、name `myVnet`、apiVersion `2018-11-01` が含まれています。 (リソースの種類に対する最新の API バージョンを確認するには、[Azure Resource Manager テンプレートのリファレンス](/azure/templates/)を参照してください。)
 
 ```json
      {
        "type": "Microsoft.Network/virtualNetworks",
        "name": "myVnet",
-       "apiVersion": "2016-12-01",
+       "apiVersion": "2018-11-01",
 ```
 
 ## <a name="specify-location"></a>場所を指定する
-仮想マシンの場所を指定するには、[Resource Manager テンプレート関数](../azure-resource-manager/resource-group-template-functions.md)を使用します。 この関数は、`"[<template-function>]"` のように、引用符や角かっこで囲む必要があります。 この例では、`resourceGroup` 関数を使用します。 この関数には引数がなく、JSON オブジェクトとこのデプロイのデプロイ先であるリソース グループに関するメタデータを返します。 リソース グループは、デプロイ時にユーザーによって設定されます。 この値はその後、JSON オブジェクトから場所を取得するために、`.location` を使用してこの JSON オブジェクト内にインデックス化されます。
+仮想マシンの場所を指定するには、[Resource Manager テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用します。 この関数は、`"[<template-function>]"` のように、引用符や角かっこで囲む必要があります。 この例では、`resourceGroup` 関数を使用します。 この関数には引数がなく、JSON オブジェクトとこのデプロイのデプロイ先であるリソース グループに関するメタデータを返します。 リソース グループは、デプロイ時にユーザーによって設定されます。 この値はその後、JSON オブジェクトから場所を取得するために、`.location` を使用してこの JSON オブジェクト内にインデックス化されます。
 
 ```json
        "location": "[resourceGroup().location]",
@@ -117,7 +106,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
      {
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
          "Microsoft.Network/virtualNetworks/myVnet"
@@ -136,7 +125,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 ```
 
 ### <a name="choose-type-of-updates"></a>更新の種類を選択する
-さらに、スケール セットは、スケール セットに関する更新を処理する方法を知る必要があります。 現時点では、`Manual` と `Automatic` の 2 つのオプションがあります。 この 2 つの違いの詳細については、「[仮想マシン スケール セットのアップグレード](./virtual-machine-scale-sets-upgrade-scale-set.md)」を参照してください。
+さらに、スケール セットは、スケール セットに関する更新を処理する方法を知る必要があります。 現時点では、`Manual`、`Rolling` と `Automatic` の 3 つのオプションがあります。 この 2 つの違いの詳細については、「[仮想マシン スケール セットのアップグレード](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)」を参照してください。
 
 ```json
        "properties": {
@@ -209,6 +198,6 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

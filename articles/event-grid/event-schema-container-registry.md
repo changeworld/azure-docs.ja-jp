@@ -1,25 +1,27 @@
 ---
-title: Azure Event Grid の Container Registry イベント スキーマ
+title: Event Grid ソースとして Azure Container Registry
 description: Azure Event Grid で Container Registry イベント用に用意されているプロパティについて説明します
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084329"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393361"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 用の Azure Event Grid イベント スキーマ
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Event Grid ソースとして Azure Container Registry
 
 この記事では、Container Registry イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
+
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 Azure Container Registry では、次の種類のイベントが生成されます。
 
@@ -30,7 +32,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 | Microsoft.ContainerRegistry.ChartPushed | Helm チャートがプッシュされたときに発生します。 |
 | Microsoft.ContainerRegistry.ChartDeleted | Helm チャートが削除されたときに発生します。 |
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 次の例は、イメージ プッシュ イベントのスキーマを示しています。 
 
@@ -151,55 +153,61 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 }]
 ```
 
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | Blob Storage イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | Blob Storage イベントのデータ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| id | 文字列 | イベント ID。 |
-| timestamp | 文字列 | イベントが発生した時刻。 |
-| action | 文字列 | 指定されたイベントを引き起こすアクション。 |
-| target | オブジェクト | イベントのターゲット。 |
-| request | オブジェクト | イベントを生成した要求。 |
+| id | string | イベント ID。 |
+| timestamp | string | イベントが発生した時刻。 |
+| action | string | 指定されたイベントを引き起こすアクション。 |
+| ターゲット (target) | object | イベントのターゲット。 |
+| request | object | イベントを生成した要求。 |
 
 ターゲット オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| mediaType | 文字列 | 参照されているオブジェクトの MIME の種類。 |
-| size | integer | コンテンツのバイト数。 length フィールドと同じです。 |
-| digest | 文字列 | コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。 |
-| length | integer | コンテンツのバイト数。 size フィールドと同じです。 |
-| repository | 文字列 | リポジトリの名前。 |
-| tag | 文字列 | タグ名。 |
-| name | 文字列 | チャートの名前。 |
-| version | 文字列 | チャートのバージョン。 |
+| mediaType | string | 参照されているオブジェクトの MIME の種類。 |
+| size | 整数 (integer) | コンテンツのバイト数。 length フィールドと同じです。 |
+| digest | string | コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。 |
+| length | 整数 (integer) | コンテンツのバイト数。 size フィールドと同じです。 |
+| repository | string | リポジトリの名前。 |
+| tag | string | タグ名。 |
+| name | string | チャートの名前。 |
+| version | string | チャートのバージョン。 |
 
 要求オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| id | 文字列 | イベントを開始した要求の ID。 |
-| addr | 文字列 | IP またはホスト名。イベントを開始したクライアント接続のポートの可能性もあります。 この値は、標準 http 要求からの RemoteAddr です。 |
-| host | 文字列 | レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の http ホスト ヘッダーで指定されています。 |
-| method | 文字列 | イベントを生成した要求メソッド。 |
-| useragent | 文字列 | 要求のユーザー エージェント ヘッダー。 |
+| id | string | イベントを開始した要求の ID。 |
+| addr | string | IP またはホスト名。イベントを開始したクライアント接続のポートの可能性もあります。 この値は、標準 http 要求からの RemoteAddr です。 |
+| host | string | レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の http ホスト ヘッダーで指定されています。 |
+| method | string | イベントを生成した要求メソッド。 |
+| useragent | string | 要求のユーザー エージェント ヘッダー。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+|タイトル |説明  |
+|---------|---------|
+| [クイック スタート: コンテナー レジストリ イベントを送信する](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Container Registry イベントを送信する方法を示します。 |
+
+
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

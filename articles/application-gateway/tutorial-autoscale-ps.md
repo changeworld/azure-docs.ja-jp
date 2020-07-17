@@ -1,19 +1,19 @@
 ---
-title: チュートリアル:自動スケールの予約済み IP アドレスを持つゾーン冗長アプリケーション ゲートウェイを作成する - Azure PowerShell
+title: チュートリアル:Web アプリケーション アクセスを改善する - Azure Application Gateway
 description: このチュートリアルでは、Azure PowerShell を使用して、自動スケールの予約済み IP アドレスを持つゾーン冗長アプリケーション ゲートウェイを作成する方法について学習します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 2/14/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947140"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74011364"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>チュートリアル:Web アプリケーションのアクセスを改善するアプリケーション ゲートウェイを作成する
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 利用可能ないずれかの場所で、リソース グループを作成します。
 
 ```azurepowershell
@@ -184,13 +184,13 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 最初に、アプリケーション ゲートウェイで作成されたリソースを調べます。 次に、必要がないときは、`Remove-AzResourceGroup` コマンドを使用して、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除できます。
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](./tutorial-url-route-powershell.md)

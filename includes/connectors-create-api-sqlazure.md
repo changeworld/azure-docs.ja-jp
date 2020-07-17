@@ -1,21 +1,17 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: logic-apps
-author: ecfan
 ms.service: logic-apps
-ms.topic: include
-ms.date: 05/15/2018
+author: ecfan
 ms.author: estfan
-ms.custom: include file
-ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.topic: include
+ms.date: 11/08/2019
+ms.openlocfilehash: ea0ae1b1527aa1f527c8ac8fbcd3b4e4f6b6fe2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138067"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789200"
 ---
-* Azure SQL Database を使用している場合は、「[Azure SQL Database に接続する](#connect-azure-sql-db)」の手順に従ってください。 
+* Azure SQL Database を使用している場合は、「[Azure SQL Database に接続する](#connect-azure-sql-db)」の手順に従ってください。
 
 * SQL Server を使用している場合は、「[SQL Server への接続](#connect-sql-server)」の手順に従ってください。
 
@@ -23,91 +19,54 @@ ms.locfileid: "37138067"
 
 ### <a name="connect-to-azure-sql-database"></a>Azure SQL Database に接続する
 
-1. SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。
+SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。手順はトリガーとアクションの両方に適用されます。
 
-   1. 接続の名前を作成します。
+1. **[接続名]** では、接続の名前を作成します。
 
-   2. SQL Server を選択し、データベースを選択します。 
+1. **[SQL サーバー名]** では、お使いの Azure SQL サーバーを選択します。 **[SQL Database 名]** 一覧が表示されたら、お使いのデータベースを選択します。 お使いの Azure SQL サーバーのユーザー名とパスワードを入力します。
 
-      データベースの一覧は、SQL Server を選択した後にのみ表示されます。
- 
-   3. サーバーのユーザー名とパスワードを入力します。
+   この情報は、Azure portal の、SQL データベースのプロパティまたは次の接続文字列にもあります。
 
-      この情報は、Azure ポータルの、SQL データベースのプロパティまたは次の接続文字列にあります。 
-      
-      "User ID=<*yourUserName*>"
-      <br>
-      "Password=<*yourPassword*>"
+   * `User ID=<your-user-name>`
+   * `Password=<your-password>`
 
-   この例は、トリガーの場合の接続情報を示していますが、アクションでも次の手順を使用できます。
+   ![Azure SQL Database への接続を作成する](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
-   ![Azure SQL Database 接続を作成する](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
-   <br>
-   アスタリスク (*) は、必要な値を示しています。
+1. 完了したら **[作成]** を選択します。
 
-   | プロパティ | 値 | 詳細 | 
-   |----------|-------|---------| 
-   | 接続名 | <*my-sql-connection*> | 接続の名前 | 
-   | SQL Server 名 | <*my-sql-server*> | SQL Server の名前 |
-   | SQL データベース名 | <*my-sql-database*>  | SQL データベースの名前 | 
-   | ユーザー名 | <*my-sql-username*> | データベースにアクセスするためのユーザー名 |
-   | パスワード | <*my-sql-password*> | データベースにアクセスするためのパスワード | 
-   |||| 
-
-2. 操作が完了したら、**[作成]** を選択します。
-
-3. 接続を作成した後で、[SQL トリガーの追加](#add-sql-trigger)または[ SQL アクションの追加](#add-sql-action)を続けて実行します。
+1. 接続を作成したら、次に [SQL トリガーを追加](#add-sql-trigger)するか、[SQL アクションを追加](#add-sql-action)します。
 
 <a name="connect-sql-server"></a>
 
 ### <a name="connect-to-sql-server"></a>SQL Server への接続
 
-ゲートウェイを選択する前に、既に[データ ゲートウェイを設定](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)していることを確認してください。 こうすれば、接続を作成するときにゲートウェイの一覧で、ゲートウェイが表示されます。
+SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。手順はトリガーとアクションの両方に適用されます。 [オンプレミス データ ゲートウェイ](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install)をローカル コンピューターにインストールし、[Azure データ ゲートウェイ リソースを作成する](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)ことが必要なシナリオでは、必ず最初にこれらの要件を完了してください。 設定されていない場合、接続を作成するとき、ゲートウェイの一覧にゲートウェイ リソースが表示されません。
 
-1. SQL のトリガーまたはアクションから接続情報を求められた場合は、以下の手順に従います。
+また、[統合サービス環境 (ISE)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview) で SQL Server コネクタとの Windows 認証を使用するには、コネクタの ISE 以外のバージョンとオンプレミス データ ゲートウェイを使用します。 ISE とラベル付けされたバージョンでは、Windows 認証はサポートされていません。
 
-   1. トリガーまたはアクションで、**[オンプレミスのデータ ゲートウェイ経由で接続]** を選択し、SQL Server のオプションが表示されるようにします。
+1. **[接続名]** では、接続の名前を作成します。
 
-   2. 接続の名前を作成します。
+1. トリガーまたはアクションで、 **[オンプレミスのデータ ゲートウェイ経由で接続]** を選択し、SQL Server のオプションが表示されるようにします。
 
-   3. SQL Server のアドレスを指定し、データベースの名前を指定します。
-   
-      接続文字列で、この情報を確認できます。 
-      
-      * "Server=<*yourServerAddress*>"
-      * "Database=<*yourDatabaseName*>"
+1. **[SQL サーバー名]** と **[SQL データベース名]** に、お使いの SQL サーバーのアドレスとお使いのデータベースの名前を指定します。 **[ユーザー名]** と **[パスワード]** に、お使いのサーバーのユーザー名とパスワードを指定します。
 
-   4. サーバーのユーザー名とパスワードを入力します。
+   接続文字列でもこの情報を確認できます。
 
-      接続文字列で、この情報を確認できます。 
-      
-      * "User ID=<*yourUserName*>"
-      * "Password=<*yourPassword*>"
+   * `Server=<your-server-address>`
+   * `Database=<your-database-name>`
+   * `User ID=<your-user-name>`
+   * `Password=<your-password>`
 
-   5. SQL server で、Windows 認証または基本認証を使用する場合は、認証の種類を選択します。
+   ![SQL Server への接続を作成する](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
-   6. 以前に作成した、オンプレミス データ ゲートウェイの名前を選択します。
-   
-      ゲートウェイが一覧に表示されない場合は、正しく[ゲートウェイを設定](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)していることを確認します。
+1. SQL サーバーで Windows 認証または基本認証を使用する場合、**認証の種類**を選択します。
 
-   この例は、トリガーの場合の接続情報を示していますが、アクションでも次の手順を使用できます。
+1. **[ゲートウェイ]** の下では、前に作成したオンプレミス データ ゲートウェイに関連付けられている Azure サブスクリプションを選択し、お使いのオンプレミス データ ゲートウェイの名前を選択します。
 
-   ![SQL Server の接続の作成](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
-   <br>
-   アスタリスク (*) は、必要な値を示しています。
+   ゲートウェイが一覧に表示されない場合は、正しく[ゲートウェイを設定](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)していることを確認します。
 
-   | プロパティ | 値 | 詳細 | 
-   |----------|-------|---------| 
-   | オンプレミスのゲートウェイ経由で接続 | SQL Server の設定で最初にこのオプションを選択します。 | | 
-   | 接続名 | <*my-sql-connection*> | 接続の名前 | 
-   | SQL Server 名 | <*my-sql-server*> | SQL Server の名前 |
-   | SQL データベース名 | <*my-sql-database*>  | SQL データベースの名前 |
-   | ユーザー名 | <*my-sql-username*> | データベースにアクセスするためのユーザー名 |
-   | パスワード | <*my-sql-password*> | データベースにアクセスするためのパスワード | 
-   | 認証の種類 | Windows または基本 | 省略可能: SQL server で使用される認証の種類 | 
-   | ゲートウェイ | <*my-data-gateway*> | オンプレミス データ ゲートウェイの名前 | 
-   |||| 
+   ![SQL Server 接続の作成完了](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-2. 操作が完了したら、**[作成]** を選択します。 
+1. 完了したら **[作成]** を選択します。
 
-3. 接続を作成した後で、[SQL トリガーの追加](#add-sql-trigger)または[ SQL アクションの追加](#add-sql-action)を続けて実行します。
+1. 接続を作成した後で、[SQL トリガーの追加](#add-sql-trigger)または[ SQL アクションの追加](#add-sql-action)を続けて実行します。

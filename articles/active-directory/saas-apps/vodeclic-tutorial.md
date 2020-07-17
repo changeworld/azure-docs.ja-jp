@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Vodeclic の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Vodeclic の統合 | Microsoft Docs'
 description: Azure Active Directory と Vodeclic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a3e457ca29ebe086c6097528af5a9253446b757c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: c9c860bf994dfeef57e8fd86329ed3a2b3f85e4c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990551"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67087345"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル:Azure Active Directory と Vodeclic の統合
+# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル: Azure Active Directory と Vodeclic の統合
 
 このチュートリアルでは、Vodeclic と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Vodeclic と Azure AD の統合には、次の利点があります。

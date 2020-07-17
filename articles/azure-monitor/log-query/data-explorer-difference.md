@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリ言語の違い | Microsoft Docs
 description: Azure Monitor で使用される Kusto クエリ言語のリファレンス情報。 Azure Monitor に固有の追加要素と、Azure Monitor ログ クエリでサポートされていない要素が含まれています。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/31/2018
 ms.author: bwren
-ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 04/01/2020
+ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266732"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80585712"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor ログ クエリ言語の違い
 
@@ -48,10 +41,10 @@ ms.locfileid: "56266732"
 ### <a name="operators-not-supported-in-azure-monitor"></a>Azure Monitor でサポートされていない演算子
 
 * [クラスター間の結合](/azure/kusto/query/joincrosscluster)
-* [externaldata 演算子](/azure/kusto/query/externaldata-operator)
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Azure Monitor でサポートされていないプラグイン
 
+* [Python プラグイン](/azure/kusto/query/pythonplugin)
 * [sql_request プラグイン](/azure/kusto/query/sqlrequestplugin)
 
 
@@ -61,7 +54,7 @@ ms.locfileid: "56266732"
 * [app()](app-expression.md)
 * [workspace()](workspace-expression.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor ログ クエリを記述するための、さまざまなリソース](query-language.md)への参照を取得します。
 - 完全な [Kusto クエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。

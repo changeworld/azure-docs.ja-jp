@@ -1,6 +1,6 @@
 ---
-title: バージョンの管理
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: バージョンの管理 - LUIS
+titleSuffix: Azure Cognitive Services
 description: バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別のバージョンに複製することをお勧めします。
 services: cognitive-services
 author: diberry
@@ -8,29 +8,30 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/16/2019
+ms.topic: conceptual
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f919651cf39d1f2c48fca87da935e49e3affa79f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678541"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219133"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
 バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別の[バージョン](luis-concept-version.md)に複製することをお勧めします。 
 
-バージョンを操作するには、**[マイ アプリ]** ページで名前を選択してアプリを開き、上部のバーにある **[管理]** を選択し、左側のナビゲーションで **[バージョン]** を選択します。 
+バージョンを操作するには、 **[My Apps]\(マイ アプリ\)** ページで名前を選択してアプリを開き、上部のバーにある **[Manage]\(管理\)** を選択し、左側のナビゲーションで **[Versions]\(バージョン\)** を選択します。 
 
 バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。 
 
-[![管理 セクションの バージョン ページ](./media/luis-how-to-manage-versions/versions-import.png "管理 セクションの バージョン ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>バージョンを複製する
 
-1. 複製するバージョンを選択し、ツール バーから **[複製]** を選択します。 
+1. 複製するバージョンを選択し、ツール バーから **[Clone]\(複製\)** を選択します。 
 
 2. **[Clone version]\(複製のバージョン\)** ダイアログ ボックスで、新しいバージョンの名前 ("0.2" など) を入力します。
 
@@ -43,15 +44,18 @@ ms.locfileid: "59678541"
 
 ## <a name="set-active-version"></a>アクティブなバージョンを設定する
 
-一覧からバージョンを選択し、ツール バーから **[Make Active]\(アクティブにする\)** を選択します。 
+一覧からバージョンを選択し、ツール バーから **[Activate]\(アクティブ\)** を選択します。 
 
-[![管理 セクションの バージョン ページ、バージョンの作成アクション](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョンの作成アクション")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![[管理] セクションの [バージョン] ページ、バージョン アクションの作成](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョン アクションの作成")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>バージョンをインポートする
 
-1. ツール バーから **[Import version]\(バージョンのインポート\)** を選択します。 
+アプリケーションの `.json` または `.lu` バージョンをインポートできます。
 
-2. **[Import new version]\(新しいバージョンのインポート\)** ポップアップ ウィンドウで、新しい 10 文字のバージョン名を入力します。 JSON ファイルのバージョンが既にアプリに存在する場合、設定する必要があるのはバージョン ID のみです。
+1. ツール バーの **[Import]\(インポート\)** を選択し、形式を選択します。 
+
+2. **[Import new version]\(新しいバージョンのインポート\)** ポップアップ ウィンドウで、新しい 10 文字のバージョン名を入力します。 ファイルのバージョンが既にアプリに存在する場合は、バージョン ID のみを設定する必要があります。
 
     ![[管理] セクションの [バージョン] ページ、新しいバージョンのインポート](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
@@ -65,7 +69,7 @@ ms.locfileid: "59678541"
 
 ## <a name="other-actions"></a>その他のアクション
 
-* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[削除]** を選択します。 **[OK]** を選びます。 
-* バージョンの**名前を変更**するには、一覧からバージョンを選択し、ツール バーから **[名前の変更]** を選択します。 新しい名前を入力して **[完了]** を選択します。 
-* バージョンを**エクスポート**するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする JSON を選択し、**[Export for container]\(コンテナー用にエクスポート\)** を選択します。  
+* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[Delete]\(削除\)** を選択します。 **[OK]** を選択します。 
+* バージョンの**名前を変更**するには、一覧からバージョンを選択し、ツール バーから **[Rename]\(名前の変更\)** を選択します。 新しい名前を入力して **[Done]\(完了\)** を選択します。 
+* バージョンを**エクスポート**するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする JSON を選択し、 **[Export for container]\(コンテナー用にエクスポート\)** を選択します。  
 

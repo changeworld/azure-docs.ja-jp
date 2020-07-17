@@ -1,28 +1,20 @@
 ---
-title: Azure 上での Jupyter ノートブックの作成と複製
-description: Azure Notebooks プロジェクトでは、別のソースから新規作成または複製できるノートブックや関連するファイルのコレクションが管理されます。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: Jupyter ノートブックを作成および複製する - Azure Notebooks プレビュー
+description: Azure Notebooks プレビュー プロジェクトでは、別のソースから新規作成または複製できるノートブックや関連するファイルのコレクションを管理できます。
+ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: kraigb
-ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282323"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236115"
 ---
-# <a name="create-and-clone-projects"></a>プロジェクトの作成と複製
+# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでプロジェクトを作成および複製する
 
-Azure Notebooks では、Jupyter ノートブックや関連するファイルが*プロジェクト*と呼ばれる論理グループに整理されます。 まずコンテナーとしてプロジェクトを作成すると、他のプロジェクト ファイルと並列して 1 つのフォルダー内に 1 つ以上のノートブックが作成または複製されます  (このプロセスについては[チュートリアル](tutorial-create-run-jupyter-notebook.md)で説明されています)。
+Azure Notebooks では、Jupyter ノートブックや関連するファイルが*プロジェクト*と呼ばれる論理グループに整理されます。 まずコンテナーとしてプロジェクトを作成すると、他のプロジェクト ファイルと並列して 1 つのフォルダー内に 1 つ以上のノートブックが作成または複製されます (このプロセスについては[チュートリアル](tutorial-create-run-jupyter-notebook.md)で説明されています)。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 プロジェクトでは、カスタム設定手順やパッケージのインストールなど、ノートブックを実行するサーバーに影響を与えるメタデータやその他の構成設定も保持されます。 詳細については、「[Manage and configure projects](configure-manage-azure-notebooks-projects.md)」(プロジェクトの管理と構成) を参照してください。
 
@@ -36,18 +28,18 @@ Azure Notebooks では、Jupyter ノートブックや関連するファイル�
 
 | command | 対象 | 説明 |
 | --- | --- | --- |
-| **Run** | Owner | プロジェクト サーバーを起動し、Jupyter でプロジェクト フォルダーを開きます  (さらに一般的な手順では、まずプロジェクト フォルダーに移動して、そこからノートブックを開始します)。 |
+| **[実行]** | 所有者 | プロジェクト サーバーを起動し、Jupyter でプロジェクト フォルダーを開きます (さらに一般的な手順では、まずプロジェクト フォルダーに移動して、そこからノートブックを開始します)。 |
 | **ダウンロード** | Anyone | 選択したプロジェクトのコピーを ZIP ファイルとしてダウンロードします。 |
 | **共有** | Anyone | URL を含む "ノートブックの起動" バッジを使用して (「[起動バッジを取得する](#obtain-a-launch-badge)」を参照してください)、選択したプロジェクトの URL の取得、ソーシャル メディアへの共有、URL を含むメールの送信、および HTML またはマークダウン コードの両方の取得に使用できる共有ポップアップを表示します。 |
-| **削除** | Owner | 選択されたプロジェクトを削除します。 削除操作は元に戻すことができません。 |
-| **ターミナル** | Owner | プロジェクト サーバーを起動し、そのサーバー用の bash ターミナルを使用して新しいブラウザー ウィンドウを開きます。 |
-| **+ 新しいプロジェクト** | Owner | 新しいプロジェクトを作成します。 「[新しいプロジェクトを作成する](#create-a-new-project)」を参照してください。 |
-| **Upload GitHub Repo (GitHub リポジトリのアップロード)** | Owner | GitHub からプロジェクトをインポートします。 「[GitHub からプロジェクトをインポートする](#import-a-project-from-github)」。 |
+| **削除** | 所有者 | 選択されたプロジェクトを削除します。 この操作を元に戻すことはできません。 |
+| **ターミナル** | 所有者 | プロジェクト サーバーを起動し、そのサーバー用の bash ターミナルを使用して新しいブラウザー ウィンドウを開きます。 |
+| **+ 新しいプロジェクト** | 所有者 | 新しいプロジェクトを作成します。 「[新しいプロジェクトを作成する](#create-a-new-project)」を参照してください。 |
+| **Upload GitHub Repo (GitHub リポジトリのアップロード)** | 所有者 | GitHub からプロジェクトをインポートします。 「[GitHub からプロジェクトをインポートする](#import-a-project-from-github)」。 |
 | **複製** | Anyone | 選択したプロジェクトを自分のアカウントにコピーします。 まだの場合はサインインするように求められます。 「[プロジェクトを複製する](#clone-a-project)」を参照してください。 |
 
 ### <a name="obtain-a-launch-badge"></a>起動バッジを取得する
 
-**[共有]** コマンドを使用し、**[埋め込み]** タブを選択すると、"ノートブックの起動" バッジを作成する HTML コードまたはマークダウンをコピーできます。
+**[共有]** コマンドを使用し、 **[埋め込み]** タブを選択すると、"ノートブックの起動" バッジを作成する HTML コードまたはマークダウンをコピーできます。
 
 ![ノートブックの起動バッジ](https://notebooks.azure.com/launch.png)
 
@@ -63,7 +55,7 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-**[+ 新しいプロジェクト]** コマンドを使用すると、Azure Notebooks に **[新しいプロジェクトの作成]** ポップアップが表示されます。 このポップアップに次の情報を入力し、**[作成]** を選択します。
+**[+ 新しいプロジェクト]** コマンドを使用すると、Azure Notebooks に **[新しいプロジェクトの作成]** ポップアップが表示されます。 このポップアップに次の情報を入力し、 **[作成]** を選択します。
 
 | フィールド | 説明 |
 | --- | --- |
@@ -80,8 +72,8 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 | --- | --- | --- | --- | --- | --- |
 | about | account | administration | api | blog | classroom |
 | content | dashboard | explore | faq | help | html |
-| home | import | library | management | new | notebook |
-| notebooks | pdf | preview | 価格 | [プロファイル] | 検索 |
+| home | import | library | management | new | ノートブック |
+| notebooks | pdf | preview | 価格 | profile | 検索 |
 | status | support | テスト | | | |
 
 これらの語のいずれかをプロジェクト ID として使用しようとすると、「**新しいプロジェクトの作成**」および「**プロジェクトの設定**」ポップアップに「Library id is a reserved identifier.(ライブラリ ID は予約済み ID です)」と表示されます。
@@ -90,7 +82,7 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 
 ## <a name="import-a-project-from-github"></a>GitHub からプロジェクトをインポートする
 
-パブリック GitHub リポジトリ全体を、任意のデータと *README.md* ファイルを含む 1 つのプロジェクトとして簡単にインポートすることができます。 **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** コマンドを使用し、ポップアップに次の詳細情報を指定して、**[インポート]** を選択します。
+パブリック GitHub リポジトリ全体を、任意のデータと *README.md* ファイルを含む 1 つのプロジェクトとして簡単にインポートすることができます。 **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** コマンドを使用し、ポップアップに次の詳細情報を指定して、 **[インポート]** を選択します。
 
 | フィールド | 説明 |
 | --- | --- |
@@ -108,7 +100,7 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 
 プロジェクトを複製するには:
 
-1. **[マイ プロジェクト]** ダッシュボードで目的のプロジェクトを右クリックし、**[複製]** を選択します (キーボード ショートカット: c)。
+1. **[マイ プロジェクト]** ダッシュボードで目的のプロジェクトを右クリックし、 **[複製]** を選択します (キーボード ショートカット: c)。
 
     ![プロジェクト コンテキスト メニューの [複製] コマンド](media/clone-command.png)
 
@@ -118,12 +110,12 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 
 1. **[複製]** ボタンを選択すると、Azure Notebooks によってコピーに直接移動されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
-- [方法:プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
+- [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
 - [方法: ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
-- [方法:スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
-- [方法:データ ファイルの操作](work-with-project-data-files.md)
+- [方法: スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
+- [方法: データ ファイルの操作](work-with-project-data-files.md)
 - [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法: Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Coupa の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Coupa の統合 | Microsoft Docs'
 description: Azure Active Directory と Coupa の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709578"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74227647"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル:Azure Active Directory と Coupa の統合
+# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル: Azure Active Directory と Coupa の統合
 
 このチュートリアルでは、Coupa と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Coupa と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ Azure AD への Coupa の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Coupa を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Azure AD への Coupa の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Coupa**」と入力し、結果ウィンドウで **Coupa** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Coupa**」と入力し、結果ウィンドウで **Coupa** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Coupa](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ Coupa で Azure AD のシングル サインオンを構成してテストする
 
 Coupa で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Coupa** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Coupa** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -126,7 +127,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
     | Production | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -146,23 +147,23 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
 2. **[Setup]\>[Security Control]** の順に移動します。
 
-    ![Security Controls](./media/coupa-tutorial/ic791900.png "Security Controls")
+    ![セキュリティ制御](./media/coupa-tutorial/ic791900.png "[シングル サインオンの設定]")
 
 3. **[Coupa 資格情報を使用してログイン]** セクションで、次の手順を実行します。
 
-    ![Coupa SP metadata](./media/coupa-tutorial/ic791901.png "Coupa SP metadata")
+    ![Coupa SP メタデータ](./media/coupa-tutorial/ic791901.png "Coupa SP メタデータ")
 
     a. **[SAML を使用してログイン]** を選択します。
 
     b. **[参照]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -187,7 +188,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、Britta Simon に Coupa へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Coupa]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Coupa]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -199,15 +200,15 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-coupa-test-user"></a>Coupa テスト ユーザーの作成
 
@@ -219,17 +220,17 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
 1. **Coupa** 企業サイトに管理者としてログインします。
 
-2. 上部のメニューで、**[設定]**、**[ユーザー]** の順にクリックします。
+2. 上部のメニューで、 **[設定]** 、 **[ユーザー]** の順にクリックします。
 
-    ![ユーザー](./media/coupa-tutorial/ic791908.png "Users")
+    ![ユーザー](./media/coupa-tutorial/ic791908.png "ユーザー")
 
 3. **Create** をクリックしてください。
 
-    ![Create Users](./media/coupa-tutorial/ic791909.png "Create Users")
+    ![ユーザーの作成](./media/coupa-tutorial/ic791909.png "ユーザーの作成")
 
 4. **[ユーザーを作成]** セクションで、次の手順を実行します。
 
-    ![ユーザーの詳細](./media/coupa-tutorial/ic791910.png "User Details")
+    ![ユーザーの詳細](./media/coupa-tutorial/ic791910.png "[ユーザーの詳細]")
 
     a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
 
@@ -240,7 +241,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
     >
 
 >[!NOTE]
->Coupa から提供されている他の Coupa ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の Coupa ユーザー アカウント作成ツールや、Coupa から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

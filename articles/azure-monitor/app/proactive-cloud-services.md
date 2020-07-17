@@ -1,24 +1,15 @@
 ---
 title: Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する | Microsoft Docs
 description: Azure Application Insights を使用して Azure Cloud Services での起動エラー、クラッシュ、ロールのリサイクル ループなどの問題を監視します
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.author: mbullwin
-ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77669745"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
 
@@ -89,23 +80,23 @@ EventLogs
 
 ## <a name="create-an-alert"></a>アラートを作成する
 
-Application Insights リソース内のナビゲーション メニューで **[アラート]** に移動し、**[新しいアラート ルール]** を選択します。
+Application Insights リソース内のナビゲーション メニューで **[アラート]** に移動し、 **[新しいアラート ルール]** を選択します。
 
 ![[ルールの作成] のスクリーン ショット](./media/proactive-cloud-services/001.png)
 
-**[ルールの作成]** ウィンドウで、**[アラートの条件を定義します]** セクションの **[条件の追加]** をクリックし、**[カスタム ログ検索]** をクリックします。
+**[ルールの作成]** ウィンドウで、 **[アラートの条件を定義します]** セクションの **[条件の追加]** をクリックし、 **[カスタム ログ検索]** をクリックします。
 
 ![アラートの条件定義のスクリーン ショット](./media/proactive-cloud-services/002.png)
 
 **[検索クエリ]** ボックスに、前の手順で準備したクエリの組み合わせを貼り付けます。
 
-次に、**[しきい値]** ボックスに進み、その値を [0] に設定します。 必要に応じて、**[期間]** フィールドと **[頻度]** フィールドを調整できます。
+次に、 **[しきい値]** ボックスに進み、その値を [0] に設定します。 必要に応じて、 **[期間]** フィールドと **[頻度]** フィールドを調整できます。
 **[Done]** をクリックします。
 
 ![シグナル ロジック クエリの構成のスクリーン ショット](./media/proactive-cloud-services/003.png)
 
-**[アラートの詳細を定義します]** セクションで、アラート ルールの **[名前]** と **[説明]** を指定し、**[重大度]** を設定します。
-さらに、**[ルールの作成時に有効にする]** ボタンが **[はい]** に設定されていることを確認します。
+**[アラートの詳細を定義します]** セクションで、アラート ルールの **[名前]** と **[説明]** を指定し、 **[重大度]** を設定します。
+さらに、 **[ルールの作成時に有効にする]** ボタンが **[はい]** に設定されていることを確認します。
 
 ![アラートの詳細のスクリーン ショット](./media/proactive-cloud-services/004.png)
 
@@ -114,7 +105,7 @@ Application Insights リソース内のナビゲーション メニューで **[
 
 ![アクション グループのスクリーン ショット](./media/proactive-cloud-services/005.png)
 
-アクション グループを定義したら、変更内容を確認し、**[アラート ルールの作成]** をクリックします。
+アクション グループを定義したら、変更内容を確認し、 **[アラート ルールの作成]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

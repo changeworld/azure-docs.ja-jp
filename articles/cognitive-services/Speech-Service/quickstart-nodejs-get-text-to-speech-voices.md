@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:テキスト読み上げ音声の表示、Node.js - Speech Services
+title: クイック スタート:テキスト読み上げ音声を一覧表示する、Node.js - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。
 services: cognitive-services
@@ -7,29 +7,29 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 04/02/2019
+ms.topic: quickstart
+ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 62187ddbe587a81038f8424b079e3c0c313d1ae2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9fe8bc06aafd17518d37c35034fac9b566e079ce
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58887087"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261552"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>クイック スタート:Node.js を使用してテキスト読み上げ音声の一覧を取得する
 
 このクイック スタートでは、Node.js を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。 サポートされているリージョンの一覧については、[リージョン](regions.md)に関するページをご覧ください。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Services リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
+このクイックスタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech サービス リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
-* [Node 8.12.x 以降](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Services 用の Azure サブスクリプション キー。 [1 つ無料で取得できます](get-started.md)。
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 以降<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a>、または任意のテキスト エディター
+* Speech サービス用の Azure サブスクリプション キー。 [1 つ無料で取得できます](get-started.md)。
 
 ## <a name="create-a-project-and-require-dependencies"></a>プロジェクトと必要な依存関係を作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "58887087"
 // Requires request and request-promise for HTTP requests
 // e.g. npm install request request-promise
 const rp = require('request-promise');
-// Requires fs to write the list of languagesto a file
+// Requires fs to write the list of languages to a file
 const fs = require('fs');
 ```
 
@@ -48,9 +48,9 @@ const fs = require('fs');
 
 ## <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 この関数では、`issueToken` エンドポイントを使用して、ご利用の Speech Services のサブスクリプション キーをアクセス トークンと交換します。
+Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 この関数では、`issueToken` エンドポイントを使用して、ご利用の Speech サービスのサブスクリプション キーをアクセス トークンと交換します。
 
-このサンプルでは、ご利用の Speech Services のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`uri` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
+このサンプルでは、ご利用の Speech サービスのサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`uri` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
 
 このコードをプロジェクトにコピーします。
 
@@ -75,7 +75,7 @@ function getAccessToken(subscriptionKey) {
 
 ## <a name="make-a-request-and-save-the-response"></a>要求を実行して応答を保存する
 
-ここでは要求を構築して、返された音声の一覧を保存します。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `uri` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
+ここでは要求を構築して、返された音声の一覧を保存します。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `uri` を更新してください。 詳細については、[Speech サービスのリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するページを参照してください。
 
 次に、要求に必要なヘッダーを追加します。 最後に、サービスに対して要求を実行します。 要求が成功し、状態コード 200 が返された場合、応答がファイルに書き込まれます。
 
@@ -139,11 +139,11 @@ main()
 node get-voices.js
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Node.js のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)

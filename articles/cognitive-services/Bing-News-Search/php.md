@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:PHP を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090527"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75383093"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -34,12 +34,13 @@ ms.locfileid: "58090527"
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
+[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
 
 1. コードのコメントで説明されているように、`php.ini` でセキュリティ保護された HTTP のサポートが有効になっていることを確認します。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。
 3. 次に示すコードを追加します。
 4. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+5. 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 5. プログラムを実行します。
 
 ```php
@@ -102,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**応答**
+**Response**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -197,7 +198,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

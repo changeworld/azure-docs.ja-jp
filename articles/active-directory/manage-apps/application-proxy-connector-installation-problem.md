@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c82bba6ccb1eaa1933176362e34b8c3e30c37f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783627"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82172408"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -37,30 +37,82 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 3.  **管理者の認証** – コネクタのインストールを完了するために、ユーザーはインストール時に管理者の資格情報を提供する必要があります。
 
+> [!NOTE]
+> コネクタのインストール ログは %TEMP% フォルダーにあり、インストール エラーの原因に関する追加情報を提供するのに役立ちます。
+
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>クラウド アプリケーション プロキシ サービスと Microsoft のログイン ページへの接続を確認する
 
 **目的:** コネクタ コンピューターが AAD アプリケーション プロキシの登録エンドポイントと Microsoft のログイン ページに接続できることを確認します。
 
-1.  ブラウザーを開き、Web ページ <https://aadap-portcheck.connectorporttest.msappproxy.net> に移動し、ポート 80 と 443 で米国中部と米国東部のデータ センターへの接続が機能していることを確認します。
+1.  [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバー上でポートのテストを実行して、ポート 443 と 80 が開いているかどうかを確認します。
 
-2.  どちらかのポートが機能していない (緑色のチェックマークが表示されない) 場合は、ファイアウォールまたはバックエンド プロキシで \*.msappproxy.net およびポート 80 と 443 が正しく定義されていることを確認します。
+2.  これらのポートのいずれかが正常に実行されない場合は、ファイアウォールまたはバックエンド プロキシが、必要なドメインおよびポートにアクセスできることを確認します。「[オンプレミスの環境を準備する](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)」を参照してください。
 
-3.  ブラウザー (別のタブ) を開き、Web ページ <https://login.microsoftonline.com> に移動し、そのページにログインできることを確認します。
+3.  ブラウザー (別のタブ) を開き、Web ページ `https://login.microsoftonline.com` に移動し、そのページにログインできることを確認します。
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>コンピューターとバックエンド コンポーネントでアプリケーション プロキシ信頼証明書がサポートされていることを確認する
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>コンピューターとバックエンド コンポーネントでアプリケーション プロキシ信頼証明書がサポートされていることを確認する
 
-**目的:** コネクタ コンピューターおよびバックエンドのプロキシとファイアウォールが将来の信頼のためにコネクタによって作成された証明書をサポートできることを確認します。
+**目的:** コネクタ コンピューターおよびバックエンドのプロキシとファイアウォールが将来の信頼のためにコネクタによって作成された証明書をサポートできることと、証明書が有効であることを確認します。
 
 >[!NOTE]
 >コネクタは、TLS1.2 でサポートされる SHA512 証明書の作成を試みます。 コンピューターまたはバックエンドのファイアウォールとプロキシで TLS1.2 がサポートされていない場合、インストールに失敗します。
 >
 >
 
-**この問題を解決するには:**
+**必要な前提条件の確認:**
 
 1.  コンピューターで TLS 1.2 がサポートされていることを確認します。2012 R2 より後のすべてのバージョンの Windows では、TLS1.2 をサポートしています。 コネクタ コンピューターで 2012 R2 以前のバージョンを使用している場合は、サポート技術情報 (<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>) の更新プログラムがコンピューターにインストールされていることを確認してください。
 
 2.  ネットワーク管理者に連絡し、バックエンドのプロキシとファイアウォールで発信トラフィックについて SHA512 がブロックされていないことを確認するよう依頼します。
+
+**クライアント証明書を確認するには:**
+
+現在のクライアント証明書のサムプリントを確認します。 証明書ストアは、%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml に見つかります
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorTrustSettingsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CloudProxyTrust>
+    <Thumbprint>4905CC64B2D81BBED60962ECC5DCF63F643CCD55</Thumbprint>
+    <IsInUserStore>false</IsInUserStore>
+  </CloudProxyTrust>
+</ConnectorTrustSettingsFile>
+```
+
+考えられる **IsInUserStore** の値と意味は次のとおりです。
+
+- **false** - クライアント証明書は、Register-AppProxyConnector コマンドによって開始されたインストールまたは登録時に作成されました。 これは、ローカル コンピューターの証明書ストアの個人用コンテナーに格納されます。 
+
+手順に従って、証明書を確認します
+
+1. **certlm.msc** を実行します
+2. 管理コンソールで、[個人用] コンテナーを展開し、[証明書] をクリックします
+3. **connectorregistrationca.msappproxy.net** によって発行された証明書を見つけます
+
+- **true** - 自動的に更新された証明書は、ネットワーク サービスのユーザー証明書ストアの個人用コンテナーに格納されます。 
+
+手順に従って、証明書を確認します
+
+1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) をダウンロードします
+2. パッケージから [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) を抽出し、管理者特権でのコマンド プロンプトから **psexec -i -u "nt authority\network service" cmd.exe** を実行します。
+3. 新しく表示されたコマンド プロンプトで **certmgr.msc** を実行します
+2. 管理コンソールで、[個人用] コンテナーを展開し、[証明書] をクリックします
+3. **connectorregistrationca.msappproxy.net** によって発行された証明書を見つけます
+
+**クライアント証明書を更新するには:**
+
+コネクタが数か月間サービスに接続していないと、証明書の有効期限が切れることがあります。 証明書の更新に失敗すると、証明書が期限切れになります。 これにより、コネクタ サービスが動作を停止します。 イベント 1000 がコネクタの管理ログに記録されます。
+
+"Connector re-registration failed:The Connector trust certificate expired. Run the PowerShell cmdlet Register-AppProxyConnector on the computer on which the Connector is running to re-register your Connector." (コネクタの再登録に失敗しました: コネクタの信頼証明書の有効期限が切れました。コネクタが実行されているコンピューター上で PowerShell コマンドレット Register-AppProxyConnector を実行して、コネクタを再登録してください。)
+
+このような場合は、コネクタをアンインストールしてから再インストールして、登録をトリガーするか、次の PowerShell コマンドを実行します。
+
+```
+Import-module AppProxyPSModule
+Register-AppProxyConnector
+```
+
+Register-AppProxyConnector コマンドの詳細については、「[Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)」を参照してください
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>コネクタのインストールに管理者を使用していることを確認する
 
@@ -68,9 +120,9 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 **資格情報が適切であることを確認するには:**
 
-<https://login.microsoftonline.com> に接続し、同じ資格情報を使用します。 ログインに成功したことを確認します。 **[Azure Active Directory]** -&gt; **[ユーザーとグループ]** -&gt; **[すべてのユーザー]** に移動して、ユーザー ロールを確認できます。 
+`https://login.microsoftonline.com` に接続し、同じ資格情報を使用します。 ログインに成功したことを確認します。 **[Azure Active Directory]**  -&gt; **[ユーザーとグループ]**  -&gt; **[すべてのユーザー]** と移動すると、ユーザー ロールを確認できます。 
 
-ユーザー アカウントを選択し、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "アプリケーション管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合、ユーザーは必要なロールを持っていません。
+ユーザー アカウントを選択してから、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "アプリケーション管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合、ユーザーは必要なロールを持っていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)

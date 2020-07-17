@@ -1,43 +1,45 @@
 ---
-title: Azure Active Directory B2C の Identity Experience Framework スキーマの文字列要求変換の例 | Microsoft Docs
-description: Azure Active Directory B2C の Identity Experience Framework スキーマの文字列要求変換の例
+title: カスタム ポリシーの文字列要求変換の例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの文字列要求変換の例
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 04/21/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707463"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81756781"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C の Identity Experience Framework スキーマの文字列要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
+この記事では、Azure Active Directory B2C (Azure AD B2C) の Identity Experience Framework スキーマの文字列要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
 
-## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual 
+## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
 2 つの要求を比較し、それらが指定された比較 inputClaim1、inputClaim2 および stringComparison によれば等しくない場合は、例外をスローします。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
-| inputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
+| InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
+| InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationStringsAreNotEqual** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
 
-この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。 
+この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -80,21 +82,21 @@ ms.locfileid: "64707463"
 - 入力要求:
   - **inputClaim1**: someone@contoso.com
   - **inputClaim2**: someone@outlook.com
-    - 入力パラメーター:
+- 入力パラメーター:
   - **stringComparison**:  ordinalIgnoreCase
 - 結果:エラーがスローされます
 
-## <a name="changecase"></a>ChangeCase 
+## <a name="changecase"></a>ChangeCase
 
 指定された要求の大文字または小文字を演算子に従って変更します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | 変更する ClaimType。 |
 | InputParameter | toCase | string | 次のいずれかの値を指定できます。`LOWER` または `UPPER`。 |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
-この要求変換を使用して、任意の文字列 ClaimType を小文字または大文字に変更します。  
+この要求変換を使用して、任意の文字列 ClaimType を小文字または大文字に変更します。
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -119,13 +121,13 @@ ms.locfileid: "64707463"
 - 出力要求:
   - **email**: someone@contoso.com
 
-## <a name="createstringclaim"></a>CreateStringClaim 
+## <a name="createstringclaim"></a>CreateStringClaim
 
-ポリシーで指定された入力パラメーターから文字列要求を作成します。
+変換で指定された入力パラメーターから文字列要求を作成します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | string | 設定する文字列 |
+| InputParameter | value | string | 設定する文字列。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。 |
 | OutputClaim | createdClaim | string | この要求変換が呼び出された後に生成される ClaimType は、入力パラメーターに指定された値で呼び出されています。 |
 
 この要求変換を使用して、文字列 ClaimType 値を設定します。
@@ -152,13 +154,13 @@ ms.locfileid: "64707463"
 
 文字列要求が相互に等しいかどうかを確認します。 結果は、`true` または `false` の値を含む新しい ClaimType ブール値です。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
-| inputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
+| InputClaim | inputClaim1 | string | 比較する最初の要求の種類。 |
+| InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
-| InputParameter | ignoreCase | ブール値 | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
-| OutputClaim | outputClaim | ブール値 | この要求変換が呼び出された後に生成される ClaimType。 |
+| InputParameter | ignoreCase | boolean | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
+| OutputClaim | outputClaim | boolean | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して、要求が別の要求と等しいかどうかをチェックします。 たとえば、以下の要求変換は **email** 要求の値が **Verified.Email** 要求と等しいかどうかをチェックします。
 
@@ -193,13 +195,13 @@ ms.locfileid: "64707463"
 
 要求の値が入力パラメーターの値と等しいかどうかを確認します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 比較する要求の種類。 |
+| InputClaim | inputClaim1 | string | 比較する要求の種類。 |
 | InputParameter | operator | string | 指定できる値: `EQUAL` または `NOT EQUAL`。 |
 | InputParameter | compareTo | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
-| InputParameter | ignoreCase | ブール値 | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
-| OutputClaim | outputClaim | ブール値 | この要求変換が呼び出された後に生成される ClaimType。 |
+| InputParameter | ignoreCase | boolean | この比較が比較対象の文字列の大文字と小文字を無視するかどうかを指定します。 |
+| OutputClaim | outputClaim | boolean | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。
 
@@ -224,7 +226,7 @@ ms.locfileid: "64707463"
     - **inputClaim1**: v1
 - 入力パラメーター:
     - **compareTo**:V1
-    - **operator**:EQUAL 
+    - **operator**:EQUAL
     - **ignoreCase**:  true
 - 出力要求:
     - **outputClaim**: true
@@ -233,13 +235,13 @@ ms.locfileid: "64707463"
 
 乱数ジェネレーターを使用してランダムな文字列を作成します。 乱数ジェネレーターの種類が `integer` の場合、必要に応じてシード パラメーターと最大数を指定できます。 省略可能な文字列形式パラメーターを使用して、出力を書式設定できます。省略可能な base64 パラメーターは、出力が base64 でエンコードされた randomGeneratorType [guid, integer] outputClaim (文字列) であるかどうかを指定します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | string | 生成されるランダムな値、`GUID` (グローバル固有 ID) または `INTEGER` (数字) を指定します。 |
 | InputParameter | stringFormat | string | [省略可能] ランダムな値を書式設定します。 |
-| InputParameter | base64 | ブール値 | [省略可能] ランダムな値を base64 に変換します。 文字列形式が適用されている場合、文字列形式の後の値は base64 にエンコードされます。 |
-| InputParameter | maximumNumber | int | [省略可能] `INTEGER` randomGeneratorType のみです。 最大数を指定します。 |
-| InputParameter | seed  | int | [省略可能] `INTEGER` randomGeneratorType のみです。 乱数値のシードを指定します。 注: 同じシードは、同じ乱数のシーケンスを生成します。 |
+| InputParameter | base64 | boolean | [省略可能] ランダムな値を base64 に変換します。 文字列形式が適用されている場合、文字列形式の後の値は base64 にエンコードされます。 |
+| InputParameter | maximumNumber | INT | [省略可能] `INTEGER` randomGeneratorType のみです。 最大数を指定します。 |
+| InputParameter | seed  | INT | [省略可能] `INTEGER` randomGeneratorType のみです。 乱数値のシードを指定します。 注: 同じシードは、同じ乱数のシーケンスを生成します。 |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimTypes。 ランダムな値。 |
 
 次の例はグローバルな一意の ID を生成します。 この要求変換を使用してランダムな UPN (ユーザー プリンシパル名) を作成します。
@@ -258,7 +260,7 @@ ms.locfileid: "64707463"
 
 - 入力パラメーター:
     - **randomGeneratorType**:GUID
-- 出力要求: 
+- 出力要求:
     - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 次の例では、0 ~ 1000 の範囲の整数のランダムな値を生成します。 値は OTP_{ランダム値} に書式設定されます。
@@ -281,10 +283,10 @@ ms.locfileid: "64707463"
 
 - 入力パラメーター:
     - **randomGeneratorType**:INTEGER
-    - **maximumNumber**:1,000
+    - **maximumNumber**:1000
     - **stringFormat**:OTP_{0}
     - **base64**: false
-- 出力要求: 
+- 出力要求:
     - **outputClaim**:OTP_853
 
 
@@ -292,13 +294,13 @@ ms.locfileid: "64707463"
 
 指定された書式設定文字列に従って要求の書式を設定します。 この変換では､C# の `String.Format` メソッドを使用します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string |文字列形式 {0} パラメーターとして機能する ClaimType。 |
-| InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 |
+| InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。  |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
-この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。   
+この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -325,13 +327,13 @@ ms.locfileid: "64707463"
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-指定された書式設定文字列に従って、2 つの要求の書式を設定します。 この変換は C# **String.Format** メソッドを使用します。
+指定された書式設定文字列に従って、2 つの要求の書式を設定します。 この変換では､C# の `String.Format` メソッドを使用します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string | 文字列形式 {0} パラメーターとして機能する ClaimType。 |
 | InputClaim | inputClaim | string | 文字列形式 {1} パラメーターとして機能する ClaimType。 |
-| InputParameter | stringFormat | string | {0} および {1} パラメーターを含む文字列の形式。 |
+| InputParameter | stringFormat | string | {0} および {1} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。   |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
 この要求変換を使用して 2 つのパラメーター {0} および {1} を持つ任意の文字列の書式を設定します。 次の例では、指定した形式で **displayName** を作成します。
@@ -361,11 +363,81 @@ ms.locfileid: "64707463"
 - 出力要求:
     - **outputClaim**:Joe Fernando
 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
+
+ローカライズされた文字列を要求にコピーします。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| OutputClaim | ローカライズされた文字列の名前 | string | この要求変換が呼び出された後に生成される要求の種類の一覧。 |
+
+GetLocalizedStringsTransformation 要求変換を使用する場合は、次の操作を行います。
+
+1. [ローカライズ文字列](localization.md)を定義し、それを[セルフアサート技術プロファイル](self-asserted-technical-profile.md)に関連付けます。
+1. `LocalizedString` 要素の `ElementType` は `GetLocalizedStringsTransformationClaimType` に設定する必要があります。
+1. `StringId` はユーザーが定義する一意識別子であり、後ほど要求変換で使用します。
+1. 要求変換で、ローカライズされた文字列を使用して設定される要求の一覧を指定します。 `ClaimTypeReferenceId` は、ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照です。 `TransformationClaimType` は、`LocalizedString` 要素の `StringId` で定義されているローカライズされた文字列の名前です。
+1. [セルフアサート技術プロファイル](self-asserted-technical-profile.md)、または[表示コントロール](display-controls.md)の入力または出力要求変換で、要求変換への参照を付けます。
+
+![GetLocalizedStringsTransformation](./media/string-transformations/get-localized-strings-transformation.png)
+
+次の例では、ローカライズされた文字列から電子メールの件名、本文、コード メッセージ、電子メールの署名を検索します。 これらの要求は、後でカスタム メール確認テンプレートによって使用されます。
+
+英語 (既定値) とスペイン語のローカライズされた文字列を定義します。
+
+```XML
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+     </LocalizedStrings>
+   </LocalizedResources>
+   <LocalizedResources Id="api.localaccountsignup.es">
+     <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Su código es</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Atentamente</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+要求変換では、`StringId` *email_subject* の値を使用して要求の種類 *subject* の値が設定されます。
+
+```XML
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 出力要求:
+  - **subject**: Contoso アカウントの電子メール確認コード
+  - **message**:アカウントの確認が完了しました!
+  - **codeIntro**:お客様のコード
+  - **signature**:ご利用ありがとうございます
+
+
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
 要求 **Restriction** コレクションからの項目の検索。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | mapFromClaim | string | **Restriction** コレクションがある **restrictionValueClaim** 要求から検索するテキストを含む要求。  |
 | OutputClaim | restrictionValueClaim | string | **Restriction** コレクションが含まれる要求。 要求変換が呼び出された後には、この要求の値には、選択した項目の値が含まれます。 |
@@ -378,7 +450,7 @@ ms.locfileid: "64707463"
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -392,7 +464,7 @@ ms.locfileid: "64707463"
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -408,12 +480,12 @@ ms.locfileid: "64707463"
 
 別の要求の値に基づいて、値の一覧から要求の値を検索します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | string | 参照値が含まれる要求 |
 | InputParameter | |string | inputParameters のコレクションです。 |
-| InputParameter | errorOnFailedLookup | ブール値 | 一致参照がない場合にエラーが返されるかどうかを制御します。 |
-| OutputClaim | inputParameterId | string | この要求変換が呼び出された後に生成される ClaimTypes。 一致する ID の値 |
+| InputParameter | errorOnFailedLookup | boolean | 一致参照がない場合にエラーが返されるかどうかを制御します。 |
+| OutputClaim | inputParameterId | string | この要求変換が呼び出された後に生成される ClaimTypes。 一致する `Id` の値。 |
 
 次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。
 
@@ -431,7 +503,7 @@ ms.locfileid: "64707463"
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation> 
+</ClaimsTransformation>
 ```
 
 ### <a name="example"></a>例
@@ -446,15 +518,51 @@ ms.locfileid: "64707463"
 - 出力要求:
     - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
+`errorOnFailedLookup` 入力パラメーターが `true` に設定されると、**LookupValue** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `LookupNotFound` メタデータによって制御されます。
+
+![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
+
+次の例では、inpuParameters コレクションの 1 つからドメイン名を検索します。 要求変換では、識別子内のドメイン名を検索し、その値 (アプリケーション ID) を返します。つまり、エラー メッセージが生成されます。
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputParameterId**: live.com
+- 入力パラメーター:
+    - **contoso.com**:13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**:0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
+- エラー:
+    - 一連の入力パラメーターの ID に入力要求値との一致が見つかりませんでした。また、errorOnFailedLookup は true になっています。
+
+
 ## <a name="nullclaim"></a>NullClaim
 
 特定の要求の値を消去します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | string | 値が NULL になる要求。 |
+| OutputClaim | claim_to_null | string | 要求の値を Null に設定します。 |
 
-この要求変換は、要求のプロパティ バッグから不要なデータを削除するために使用します。 そのため、セッション cookie は小さくなります。 次の例では、`TermsOfService` 要求の種類の値を削除します。
+この要求変換を使用して、不要なデータを要求プロパティ バッグから削除し、セッション Cookie のサイズを縮小します。 次の例では、`TermsOfService` 要求の種類の値を削除します。
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -473,12 +581,12 @@ ms.locfileid: "64707463"
 
 電子メール アドレスのドメイン部分を取得します。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | string | 電子メール アドレスが含まれている ClaimType。 |
 | OutputClaim | domain | string | この要求変換が呼び出された後に生成される ClaimType - ドメイン。 |
 
-この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 これは、監査データから個人を特定できる情報 (PII) を削除するために役立てることができます。 次の要求変換は、**email** 要求からドメイン名を解析する方法を示しています。
+この要求変換は、ユーザーの @ 記号の後のドメイン名を解析するために使用します。 次の要求変換は、**email** 要求からドメイン名を解析する方法を示しています。
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -498,22 +606,98 @@ ms.locfileid: "64707463"
 - 出力要求:
     - **domain**: outlook.com
 
+## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
+
+文字列の要求の `claimToMatch` と `matchTo` の入力パラメーターが等しいことをチェックし、出力要求を `outputClaimIfMatched` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| inputClaim | claimToMatch | string | 比較する要求の種類。 |
+| InputParameter | matchTo | string | 照合する正規表現。 |
+| InputParameter | outputClaimIfMatched | string | 文字列が等しい場合に設定する値。 |
+| InputParameter | extractGroups | boolean | [省略可能] Regex の一致でグループ値を抽出するかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 | 
+| OutputClaim | outputClaim | string | 正規表現が一致する場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 一致するものがない場合は null になります。 |
+| OutputClaim | regexCompareResultClaim | boolean | 正規表現で結果の出力要求の種類が照合されます。これは照合の結果に基づいて、`true` または `false` として設定されます。 |
+| OutputClaim| 要求の名前| string | extractGroups 入力パラメーターが true に設定されている場合は、この要求変換が呼び出された後に生成される要求の種類の一覧です。 claimType の名前は、Regex グループ名と一致する必要があります。 | 
+
+### <a name="example-1"></a>例 1
+
+電話番号の正規表現パターンに基づいて、指定された電話番号が有効かどうかをチェックします。
+
+```XML
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="^[0-9]{4,16}$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isPhone" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isPhoneBoolean" TransformationClaimType="regexCompareResultClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- 入力要求:
+    - **claimToMatch**:"64854114520"
+- 入力パラメーター:
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
+- 出力要求:
+    - **outputClaim**: "isPhone"
+    - **regexCompareResultClaim**: true
+
+### <a name="example-2"></a>例 2
+
+指定された電子メール アドレスが有効かどうかを確認し、電子メールの別名を返します。
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- 入力要求:
+    - **claimToMatch**: "emily@contoso.com"
+- 入力パラメーター:
+    - **matchTo**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**:  "isEmail"
+    - **extractGroups**: true
+- 出力要求:
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 文字列の要求と `matchTo` 入力パラメーターが等しいことをチェックし、出力要求を `stringMatchMsg` および `stringMatchMsgCode` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | string | 比較する要求の種類。 |
+| InputClaim | inputClaim | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | `inputClaim` と比較する文字列。 |
 | InputParameter | stringComparison | string | 指定できる値: `Ordinal` または `OrdinalIgnoreCase`。 |
 | InputParameter | stringMatchMsg | string | 文字列が等しい場合に設定する最初の値。 |
 | InputParameter | stringMatchMsgCode | string | 文字列が等しい場合に設定する 2 番目の値。 |
 | OutputClaim | outputClaim1 | string | 文字列が等しい場合は、この出力要求に `stringMatchMsg` 入力パラメーターの値が含まれます。 |
 | OutputClaim | outputClaim2 | string | 文字列が等しい場合は、この出力要求に `stringMatchMsgCode` 入力パラメーターの値が含まれます。 |
-| OutputClaim | stringCompareResultClaim | ブール値 | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
 
-この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。 等しい場合、値を `v2` に変更します。 
+この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。 等しい場合、値を `v2` に変更します。
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -539,7 +723,7 @@ ms.locfileid: "64707463"
     - **inputClaim**: v1
 - 入力パラメーター:
     - **matchTo**:V1
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **stringMatchMsg**:B2C_V1_90005
     - **stringMatchMsgCode**:TOS は v2 にアップグレードされます
 - 出力要求:
@@ -551,16 +735,16 @@ ms.locfileid: "64707463"
 
 文字列の要求と `matchTo` 入力パラメーターが等しいことをチェックし、出力要求を `outputClaimIfMatched` 入力パラメーターにある値で設定します。同時に結果の出力要求を比較します。これは比較の結果に基づいて `true` または `false` として設定されます。
 
-| Item | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | claimToMatch | string | 比較する要求の種類。 |
+| InputClaim | claimToMatch | string | 比較する要求の種類。 |
 | InputParameter | matchTo | string | inputClaim と比較する文字列。 |
 | InputParameter | stringComparison | string | 指定できる値: `Ordinal` または `OrdinalIgnoreCase`。 |
 | InputParameter | outputClaimIfMatched | string | 文字列が等しい場合に設定する値。 |
 | OutputClaim | outputClaim | string | 文字列が等しい場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 または、文字列が一致しない場合は null です。 |
-| OutputClaim | stringCompareResultClaim | ブール値 | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
 
-たとえば、以下の要求変換は **ageGroup** 要求の値が `Minor` と等しいかどうかをチェックします。 等しい場合は、値を `B2C_V1_90001` に返します。 
+たとえば、以下の要求変換は **ageGroup** 要求の値が `Minor` と等しいかどうかをチェックします。 等しい場合は、値を `B2C_V1_90001` に返します。
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -585,9 +769,203 @@ ms.locfileid: "64707463"
     - **claimToMatch**:Minor
 - 入力パラメーター:
     - **matchTo**:Minor
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched**:B2C_V1_90001
 - 出力要求:
     - **isMinorResponseCode**:B2C_V1_90001
     - **isMinor**: true
 
+
+## <a name="stringcontains"></a>StringContains
+
+指定した substring が入力要求内に出現しているかどうかが確認されます。 結果は、`true` または `false` の値を含む新しい ClaimType ブール値です。 値パラメーターがこの文字列内に存在する場合は `true`、それ以外の場合は `false`。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 検索する要求の種類。 |
+|InputParameter|contains|string|検索する値。|
+|InputParameter|ignoreCase|string|この比較で比較対象の文字列の大文字と小文字を無視するかどうかを指定します。|
+| OutputClaim | outputClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimType。 入力要求内で substring が出現した場合のブール値インジケーター。 |
+
+この要求変換は、文字列要求の種類に substring が含まれているかどうかをチェックする場合に使用します。 次の例では、`roles` 文字列要求の種類に **admin** の値が含まれているかどうかをチェックしています。
+
+```XML
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="contains" DataType="string" Value="admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**:"Admin, Approver, Editor"
+- 入力パラメーター:
+    - **contains**: "admin,"
+    - **ignoreCase**: true
+- 出力要求:
+    - **outputClaim**: true
+
+## <a name="stringsubstring"></a>StringSubstring
+
+指定した位置にある文字から始まる文字列要求の種類の一部が抽出され、指定した文字数が返されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 文字列を含む要求の種類。 |
+| InputParameter | startIndex | INT | このインスタンス内の substring の 0 から始まる開始文字位置。 |
+| InputParameter | length | INT | substring の文字数。 |
+| OutputClaim | outputClaim | boolean | このインスタンスの startIndex から始まる長さの substring と等価な文字列。startIndex がこのインスタンスの長さと等しく、length がゼロの場合は空になります。 |
+
+たとえば、電話番号の国のプレフィックスを取得します。
+
+
+```XML
+<ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="startIndex" DataType="int" Value="0" />
+  <InputParameter Id="length" DataType="int" Value="2" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phonePrefix" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: "+1644114520"
+- 入力パラメーター:
+    - **startIndex**: 0
+    - **length**: 2
+- 出力要求:
+    - **outputClaim**: "+1"
+
+## <a name="stringreplace"></a>StringReplace
+
+要求の種類の文字列で指定した値が検索され、新しい要求の種類の文字列が返されます。ここでは、現在の文字列内の指定した文字列のすべての出現箇所が、別の指定した文字列に置き換えられます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 文字列を含む要求の種類。 |
+| InputParameter | oldValue | string | 検索対象の文字列。 |
+| InputParameter | newValue | string | 出現するすべての `oldValue` を置換する文字列 |
+| OutputClaim | outputClaim | boolean | oldValue のすべてのインスタンスが newValue で置き換えられることを除いて、現在の文字列と等価な文字列。 oldValue が現在のインスタンス内に見つからない場合、メソッドにより現在のインスタンスが変更せずに返されます。 |
+
+たとえば、電話番号の `-` 文字が削除されて正規化されます
+
+
+```XML
+<ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="oldValue" DataType="string" Value="-" />
+  <InputParameter Id="newValue" DataType="string" Value="" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: "+164-411-452-054"
+- 入力パラメーター:
+    - **oldValue**: "-"
+    - **length**:  ""
+- 出力要求:
+    - **outputClaim**: "+164411452054"
+
+## <a name="stringjoin"></a>StringJoin
+
+指定した文字列コレクションの要求の種類の要素を連結します。各要素またはメンバーの間には、指定した区切り記号が使用されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | 連結する文字列を格納しているコレクション。 |
+| InputParameter | delimiter | string | 区切り記号として使用する文字列 (コンマ `,` など)。 |
+| OutputClaim | outputClaim | string | `inputClaim` 文字列コレクションのメンバーからなる、`delimiter` 入力パラメーターで区切られた文字列。 |
+
+次の例では、ユーザー ロールの文字列コレクションが取得され、それがコンマ区切り文字列に変換されています。 このメソッドを使用して、Azure AD ユーザー アカウントに文字列コレクションを格納することができます。 後でディレクトリからアカウントを読み取るときに、`StringSplit` を使用してコンマ区切り文字列を文字列コレクションに戻します。
+
+```XML
+<ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
+  <InputClaims>
+   <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter DataType="string" Id="delimiter" Value="," />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="rolesCommaDelimiterConverted" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
+- 入力パラメーター:
+  - **delimiter**: ","
+- 出力要求:
+  - **outputClaim**:"Admin,Author,Reader"
+
+
+## <a name="stringsplit"></a>StringSplit
+
+指定された文字列の要素で区切られた、このインスタンスの substring を格納する文字列配列が返されます。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | 分割する substring を含む文字列要求の種類。 |
+| InputParameter | delimiter | string | 区切り記号として使用する文字列 (コンマ `,` など)。 |
+| OutputClaim | outputClaim | stringCollection | `delimiter` 入力パラメーターで区切られた文字列の要素に substring を格納する文字列コレクション。 |
+
+次の例では、ユーザー ロールのコンマ区切り文字列が取得され、それが文字列コレクションに変換されています。
+
+```XML
+<ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+  <InputParameter DataType="string" Id="delimiter" Value="," />
+    </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="roles" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+  - **inputClaim**:"Admin,Author,Reader"
+- 入力パラメーター:
+  - **delimiter**: ","
+- 出力要求:
+  - **outputClaim**: [ "Admin", "Author", "Reader" ]
+
+## <a name="string-claim-transformations-expressions"></a>文字列要求変換式
+Azure AD B2C のカスタム ポリシーにおける要求変換式は、テナント ID と技術プロファイル ID についてのコンテキスト情報を提供します。
+
+  | 式 | 説明 | 例 |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | 技術プロファイル ID の名前。 | Facebook-OAUTH |
+ | `{RelyingPartyTenantId}` | 証明書利用者ポリシーのテナント ID。 | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | 信頼フレームワークのテナント ID。 | your-tenant.onmicrosoft.com |

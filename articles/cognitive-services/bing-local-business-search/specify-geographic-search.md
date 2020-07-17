@@ -1,20 +1,21 @@
 ---
-title: 地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する | Microsoft Docs
+title: 地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
 titleSuffix: Azure Cognitive Services
 description: この記事を使用して、Bing Local Business Search API からの検索結果をフィルター処理する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.subservice: bing-local-business
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: e87ef96184974d10f99028be13399d1422a1c774
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: rosh
+ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "69906238"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
 
@@ -48,7 +49,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search (Java) のクイック スタート](quickstarts/local-search-java-quickstart.md)
 - [Local Business Search (C#) のクイック スタート](quickstarts/local-quickstart.md)
 - [Local Business Search (Node.js) のクイック スタート](quickstarts/local-search-node-quickstart.md)

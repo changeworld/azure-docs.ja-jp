@@ -1,21 +1,15 @@
 ---
 title: Durable Functions を WebJobs として実行する方法 - Azure
 description: WebJobs SDK を使用して、Durable Function を WebJobs で実行するようにコーディングし、構成する方法について説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905094"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733415"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -25,7 +19,7 @@ ms.locfileid: "58905094"
 
 WebJobs SDK のバージョン 3.x では、このホストは `IHost` の実装であり、バージョン 2.x では `JobHost` オブジェクトを使用します。
 
-Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
+Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージョンで提供されています。[Durable Functions リポジトリ](https://github.com/azure/azure-functions-durable-extension/)をダウンロードまたは複製し、*v1* ブランチをチェックアウトして、*samples\\webjobssdk\\chaining* フォルダーに移動してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,9 +31,9 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
 この記事の手順を完了するには、次のことが条件となります。
 
-* **Azure 開発**のワークロードを備えた、[Visual Studio 2017 バージョン 15.6 以降をインストールします](https://docs.microsoft.com/visualstudio/install/)。
+* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://docs.microsoft.com/visualstudio/install/)します。
 
-  Visual Studio は既にあるものの、必要なワークロードがない場合は、**[ツール]** > **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
+  Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール]**  >  **[ツールと機能の取得]** の順に選択してワークロードを追加してください。
 
   (代わりに [Visual Studio Code](https://code.visualstudio.com/) を使うこともできますが、一部の説明は Visual Studio に固有のものです。)
 
@@ -53,9 +47,9 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 
 Durable Functions を WebJobs として実行するには、まず、コンソール アプリを作成する必要があります。 WebJobs SDK プロジェクトは、適切な NuGet パッケージがインストールされたコンソール アプリ プロジェクトです。
 
-Visual Studio の **[新しいプロジェクト]** ダイアログ ボックスで、**[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]** を選択します。 プロジェクト ファイルでは、`TargetFrameworkVersion` が `v4.6.1` になっています。
+Visual Studio の **[新しいプロジェクト]** ダイアログ ボックスで、 **[Windows クラシック デスクトップ]**  >  **[コンソール アプリ (.NET Framework)]** を選択します。 プロジェクト ファイルでは、`TargetFrameworkVersion` が `v4.6.1` になっています。
 
-Visual Studio には、WebJob プロジェクト テンプレートも用意されています。これを使用するには、**[クラウド]** > **[Azure WebJob (.NET Framework)]** を選択します。 このテンプレートでは多数のパッケージがインストールされますが、これらの一部は必要ない場合があります。
+Visual Studio には、WebJob プロジェクト テンプレートも用意されています。これを使用するには、 **[クラウド]**  >  **[Azure WebJob (.NET Framework)]** を選択します。 このテンプレートでは多数のパッケージがインストールされますが、これらの一部は必要ない場合があります。
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
@@ -64,7 +58,7 @@ Visual Studio には、WebJob プロジェクト テンプレートも用意さ�
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
 ログ プロバイダーも必要です。 次に示すのは、Azure Application Insights プロバイダーと `ConfigurationManager` をインストールするコマンドです。 `ConfigurationManager` では、Application Insights のインストルメンテーション キーをアプリ設定から取得できます。
@@ -125,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 WebJobs のコンテキスト内の Durable Functions と、Azure Functions のコンテキスト内の Durable Functions はやや異なります。 コードを記述する際は、この相違点に注意することが重要です。
 
@@ -190,7 +184,7 @@ while (true)
 
 WebJob として実行されるように設定された Durable Functions を取得できたので、これが、Durable Functions をスタンドアロン Azure Functions として実行する場合とどのように異なるのかを理解します。 この時点で、それがサンプル内で動作するのを確認することをお勧めします。
 
-このセクションでは、[サンプル プロジェクト](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)の実行方法について概説します。 WebJobs SDK プロジェクトをローカルで実行し、それを Azure WebJob にデプロイする方法について詳しくは、「[WebJobs SDK の概要](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)」をご覧ください。
+このセクションでは、[サンプル プロジェクト](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining)の実行方法について概説します。 WebJobs SDK プロジェクトをローカルで実行し、それを Azure WebJob にデプロイする方法について詳しくは、「[WebJobs SDK の概要](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)」をご覧ください。
 
 ### <a name="run-locally"></a>ローカルで実行する
 
@@ -222,7 +216,7 @@ WebJob として実行されるように設定された Durable Functions を取
 
 導入された主な変更は、.NET Framework の代わりに .NET Core を使用することです。 WebJobs SDK 3.x プロジェクトの作成手順は基本的に以前と同じですが、次の点が異なります。
 
-1. .NET Core コンソール アプリを作成します。 Visual Studio の **[新しいプロジェクト]** ダイアログ ボックスで、**[.NET Core]** > **[コンソール アプリ (.NET Core)]** を選択します。 プロジェクト ファイルでは、`TargetFramework` が `netcoreapp2.x` と指定されています。
+1. .NET Core コンソール アプリを作成します。 Visual Studio の **[新しいプロジェクト]** ダイアログ ボックスで、 **[.NET Core]**  >  **[コンソール アプリ (.NET Core)]** を選択します。 プロジェクト ファイルでは、`TargetFramework` が `netcoreapp2.x` と指定されています。
 
 1. 次のパッケージのリリース版 WebJobs SDK 3.x を選択します。
 
@@ -275,6 +269,6 @@ WebJob として実行されるように設定された Durable Functions を取
    }
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 WebJobs SDK について詳しくは、「[How to use the WebJobs SDK (WebJobs SDK の使用方法)](../../app-service/webjobs-sdk-how-to.md)」をご覧ください。

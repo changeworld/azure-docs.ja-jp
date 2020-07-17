@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0c0ad6ea5a687d066c78533b45a7f531561661bf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3c1e34bb418f9be2e26afc117343f1fa50bd8566
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76308970"
 ---
 この FAQ は、クラシック デプロイ モデルを使用した P2S 接続に適用されます。
 
@@ -35,7 +35,8 @@ ms.locfileid: "66157656"
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>ポイント対サイト構成に存在できる VPN クライアント エンドポイントの最大数を教えてください。
 
-仮想ネットワークに同時に接続できる VPN クライアント数は、最大で 128 個です。
+VPN クライアント エンドポイントの量は、ゲートウェイの SKU とプロトコルによって異なります。
+[!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>ポイント対サイト接続で自社の内部 PKI ルート CA を使用できますか。
 
@@ -55,7 +56,7 @@ ms.locfileid: "66157656"
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>サイト間接続とポイント対サイト接続の構成を同一仮想ネットワークに共存させることはできますか。
 
-はい。 ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、**-VpnType PolicyBased** コマンドレットを使用するゲートウェイでは、ポイント対サイト接続はサポートされません。
+はい。 ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、 **-VpnType PolicyBased** コマンドレットを使用するゲートウェイでは、ポイント対サイト接続はサポートされません。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 

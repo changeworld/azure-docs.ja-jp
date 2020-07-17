@@ -7,6 +7,7 @@ ms.reviewer: zhiweiwangmsft
 author: billmath
 manager: daveba
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540909"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76897255"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
@@ -38,7 +39,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 > 
 
 ## <a name="what-is-in-the-report"></a>レポートの内容
-失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が表示されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
+失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が提供されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
 
 | レポート アイテム | 説明 |
 | ------- | ----------- |
@@ -75,7 +76,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 | isWhitelistedIpAddress | IP アドレスがアラートおよびレポート用にフィルター処理されているかどうかを示すフラグ。 プライベート IP アドレス (<i>10.x.x.x、172.x.x.x、192.168.x.x</i>) と Exchange IP アドレスはフィルター処理され、True とマークされます。 プライベート IP アドレス範囲が表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。  | 
 
 ## <a name="configure-notification-settings"></a>通知設定の構成
-レポートの管理者連絡先は、**[通知設定]** で更新できます。 既定では、危険な IP アラートの電子メール通知はオフの状態になっています。 通知を有効にするには、[アクティビティ失敗のしきい値を超えている IP アドレスのレポートの通知を電子メールで受け取ります] の下にあるボタンを切り替えます。Connect Health の一般的なアラート通知設定と同様に、危険な IP のレポートに関する指定の通知受信者の一覧をここからカスタマイズできます。 変更を加えると同時に、すべての全体管理者に通知することもできます。 
+レポートの管理者連絡先は、 **[通知設定]** で更新できます。 既定では、危険な IP アラートの電子メール通知はオフの状態になっています。 通知を有効にするには、[アクティビティ失敗のしきい値を超えている IP アドレスのレポートの通知を電子メールで受け取ります] の下にあるボタンを切り替えます。Connect Health の一般的なアラート通知設定と同様に、危険な IP のレポートに関する指定の通知受信者の一覧をここからカスタマイズできます。 変更を加えると同時に、すべての全体管理者に通知することもできます。 
 
 ## <a name="configure-threshold-settings"></a>しきい値設定の構成
 アラートのしきい値は、[しきい値の設定] で更新できます。 まず、システムには既定でしきい値が設定されています。 危険な IP のレポートのしきい値設定には、4 つのカテゴリがあります。
@@ -96,7 +97,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 >
 >
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 **レポートにプライベート IP アドレス範囲が表示されるのはなぜですか?**  <br />
 プライベート IP アドレス (<i>10.x.x.x、172.x.x.x、192.168.x.x</i>) と Exchange IP アドレスはフィルター処理され、IP ホワイトリスト内で True とマークされます。 プライベート IP アドレス範囲が表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。
 
@@ -115,6 +116,6 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)のアクセス許可が必要です。 アクセスするには、全体管理者に連絡してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)

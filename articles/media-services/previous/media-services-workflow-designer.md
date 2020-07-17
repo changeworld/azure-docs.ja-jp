@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: anilmur
+ms.reviewer: juliako;johndeu
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314026"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72801944"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する  
 ## <a name="overview"></a>概要
@@ -40,7 +41,7 @@ ms.locfileid: "58314026"
 
 作成されたワークフロー ファイルはアセットとしてアップロードした後、メディア ファイルのエンコードに使用できます。 **.NET** を使用した**メディア エンコーダー プレミアム ワークフロー**によるエンコード方法の詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」を参照してください。
 
-## <a id="existing_workflows"></a>既存のワークフローを変更する
+## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>既存のワークフローを変更する
 デザイナー ツールを使用して、 [既定の公開済みワークフロー](media-services-workflow-designer.md#existing_workflows) を変更できます。 既定のワークフロー ファイルは [こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。 フォルダーにはこれらのファイルの説明も含まれています。
 
 以下のビデオでは、デザイナーの使用方法を示しています。
@@ -78,6 +79,10 @@ Day 3 のビデオの内容は次のとおりです。
 > 
 > 
 
+## <a name="need-help"></a>お困りの際は、
+
+[[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
+
 ## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
@@ -86,8 +91,6 @@ Media Services のラーニング パスを確認します。
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-ワークフロー デザイナー ツールでカスタム ワークフローを作成するとき、サポートが必要になりましたら、あるいはご質問がございましたら、mepd@microsoft.com までメールを送信してください。
-
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

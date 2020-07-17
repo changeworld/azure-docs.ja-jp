@@ -1,28 +1,24 @@
 ---
-title: Azure Active Directory のシングルテナント アプリとマルチテナント アプリ
+title: Azure AD のシングルテナント アプリとマルチテナント アプリ
+titleSuffix: Microsoft identity platform
 description: Azure AD のシングルテナント アプリとマルチテナント アプリの機能と違いについて説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db590c8c79db9bc47edbbef69a11d3b0e4b51f6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540360"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80881367"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory のテナント
 
@@ -46,10 +42,10 @@ Azure portal で次のように対象ユーザーを設定することで、ア�
 
 IT 管理者がテナントで設定できる各種ポリシーの数が多いため、優れたマルチテナント アプリの作成が難しい場合があります。 マルチテナント アプリを作成する場合は、次のベスト プラクティスに従ってください。
 
-* [条件付きアクセス ポリシー](conditional-access-dev-guide.md)が構成されているテナントでアプリをテストします。
+* [条件付きアクセス ポリシー](../azuread-dev/conditional-access-dev-guide.md)が構成されているテナントでアプリをテストします。
 * 最小限のユーザー アクセスの原則に従って、アプリでは実際に必要なアクセス許可だけを要求するようにします。 管理者の同意が必要なアクセス許可を要求することは避けます。組織によっては、ユーザーがアプリをまったく取得できなくなる可能性があるためです。 
-* アプリの一部として公開するアクセス許可の適切な名前と説明を提供します。 これにより、ユーザーと管理者は、アプリの API を使用しようとしたときに同意する内容を把握しやすくなります。 詳細については、[アクセス許可ガイド](v1-permissions-and-consent.md)のベスト プラクティスのセクションをご覧ください。
+* アプリの一部として公開するアクセス許可の適切な名前と説明を提供します。 これにより、ユーザーと管理者は、アプリの API を使用しようとしたときに同意する内容を把握しやすくなります。 詳細については、[アクセス許可ガイド](v2-permissions-and-consent.md)のベスト プラクティスのセクションをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリをマルチテナントに変換する方法](howto-convert-app-to-be-multi-tenant.md)

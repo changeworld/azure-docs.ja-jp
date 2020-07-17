@@ -1,21 +1,20 @@
 ---
 title: Azure Site Recovery を使用したディザスター リカバリー中にフェールバックする | Microsoft Docs
 description: この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用したディザスター リカバリー中に、オンプレミスにフェールバックする際に考慮すべき注意事項を示します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236503"
 ---
-# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>VMware VM のディザスター リカバリー後のフェールバック
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリー後の VMware VM のフェールバック
 
 ディザスター リカバリー プロセスの一部として Azure にフェールオーバーした後、オンプレミス サイトにフェールバックすることができます。 Azure Site Recovery で可能なフェールバックには 2 種類あります。 
 
@@ -49,7 +48,7 @@ ms.locfileid: "58316271"
 > [!NOTE]
 > 物理マシンは、Azure にフェールオーバーした場合、VMware 仮想マシンとしてのみフェールバックできます。 これは、別の場所への復旧と同じワークフローに従います。 1 つ以上のマスター ターゲット サーバーと、フェールバック先として必要な ESX/ESXi ホストを必ず検出します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 手順に従って[フェールバック操作](vmware-azure-failback.md)を実行します。
 

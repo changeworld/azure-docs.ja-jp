@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する | Microsoft Docs
+title: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163301"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74084404"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -42,7 +42,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 次のセクションでは、使用されるパラメーターについて説明します。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 これらのパラメーターのほとんどには既定値があります。 末尾が **_in** のものは、*randomValue* と連結されてグローバルに一意になります。 
 
@@ -82,7 +82,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 **iotHubName**: このフィールドは、randomValue が連結された後の IoT ハブの名前です。 
 
-**storageAccountName**: このフィールドは、randomValue が連結された後のストレージ アカウントの名前です。 
+**storageAccountName**:このフィールドは、randomValue が連結された後のストレージ アカウントの名前です。 
 
 **service_bus_namespace**: このフィールドは、randomValue が連結された後の名前空間です。
 
@@ -90,7 +90,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 **sbVersion**: 使用する Service Bus API のバージョンです。 このケースでは "2017-04-01" です。
 
-### <a name="resources-storage-account-and-container"></a>リソース:ストレージ アカウントとコンテナー
+### <a name="resources-storage-account-and-container"></a>リソース: ストレージ アカウントとコンテナー
 
 最初に作成されるリソースは、ストレージ アカウントと、メッセージのルーティング先となるコンテナーです。 コンテナーは、ストレージ アカウントに属するリソースです。 ストレージ アカウントに対する `dependsOn` 句が存在するため、コンテナーの前にストレージ アカウントを作成しておく必要があります。
 
@@ -124,7 +124,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 }
 ```
 
-### <a name="resources-service-bus-namespace-and-queue"></a>リソース:Service Bus の名前空間とキュー
+### <a name="resources-service-bus-namespace-and-queue"></a>リソース: Service Bus の名前空間とキュー
 
 2 番目に作成されるリソースは、Service Bus 名前空間と、メッセージのルーティング先となる Service Bus キューです。 SKU は Standard に設定されます。 API バージョンは変数から取得されます。 また、このセクションのデプロイ時に Service Bus 名前空間をアクティブ化するように設定されます (status:Active)。 
 
@@ -165,7 +165,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 }
 ```
 
-### <a name="resources-iot-hub-and-message-routing"></a>リソース:IoT Hub とメッセージ ルーティング
+### <a name="resources-iot-hub-and-message-routing"></a>リソース: IoT Hub とメッセージ ルーティング
 
 ストレージ アカウントと Service Bus キューが作成されたところで、それらにメッセージをルーティングする IoT ハブを作成します。 RM テンプレートで `dependsOn` 句が使用されているため、Service Bus リソースとストレージ アカウントが作成される前にハブの作成が試みられることはありません。 
 
@@ -301,7 +301,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 }
 ```
 
-### <a name="resources-service-bus-queue-authorization-rules"></a>リソース:Service Bus キューの承認規則
+### <a name="resources-service-bus-queue-authorization-rules"></a>リソース: Service Bus キューの承認規則
 
 Service Bus キューの承認規則は、Service Bus キューの接続文字列を取得するために使用されます。 Service Bus 名前空間と Service Bus キューよりも前に作成されることがないよう、`dependsOn` 句が使用されています。
 
@@ -324,7 +324,7 @@ Service Bus キューの承認規則は、Service Bus キューの接続文字�
 },
 ```
 
-### <a name="resources-consumer-group"></a>リソース:コンシューマー グループ
+### <a name="resources-consumer-group"></a>リソース: コンシューマー グループ
 
 このセクションでは、このチュートリアルのパート 2 で Azure Stream Analytics によって使用される IoT Hub データのコンシューマー グループを作成します。
 
@@ -339,7 +339,7 @@ Service Bus キューの承認規則は、Service Bus キューの接続文字�
 }
 ```
 
-### <a name="resources-outputs"></a>リソース:出力
+### <a name="resources-outputs"></a>リソース: 出力
 
 デプロイ スクリプトに値を返して表示したい場合は、出力セクションを使用します。 テンプレートのこの部分は、Service Bus キューの接続文字列を返します。 必ずしも値を返す必要はありません。これは呼び出し元のスクリプトに結果を返す方法の例として含まれています。
 
@@ -370,7 +370,7 @@ Cloud Shell インスタンスによって使用される共有にファイル�
 
 デプロイを行うスクリプトを実行します。 このスクリプトの最後の行では、返されるように設定された変数 (Service Bus キューの接続文字列) を取得します。
 
-このスクリプトでは、次の変数が設定されます。
+このスクリプトは、次の変数を設定して使用します。
 
 **$RGName** は、テンプレートのデプロイ先となるリソース グループの名前です。 このフィールドは、テンプレートをデプロイする前に作成されます。
 
@@ -416,7 +416,7 @@ New-AzResourceGroupDeployment `
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 すべてのリソースを設定してメッセージ ルートを構成したので、次のチュートリアルに進み、ルーティングされたメッセージに関する情報を処理して表示する方法を確認しましょう。
 

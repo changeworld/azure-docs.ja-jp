@@ -1,25 +1,17 @@
 ---
-title: Azure Automation を使用して StorSimple Data Manager でジョブを起動する | Microsoft Docs
+title: Azure Automation を使用して StorSimple Data Manager でジョブを起動する
 description: Azure Automation を使用して StorSimple Data Manager ジョブをトリガーする方法について説明します
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086022"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76273987"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 
@@ -43,11 +35,11 @@ ms.locfileid: "58086022"
 
 ### <a name="set-up-the-automation-account"></a>Automation アカウントを設定する
 
-1. Azure Portal で、Azure 実行アカウントを Automation として作成します。 そのためには、**[Azure Marketplace] > [すべて]** に移動し、**Automation** を検索します。 **[Automation アカウント]** を選択します。
+1. Azure Portal で、Azure 実行アカウントを Automation として作成します。 そのためには、 **[Azure Marketplace] > [すべて]** に移動し、**Automation** を検索します。 **[Automation アカウント]** を選択します。
 
     ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
 
-2. 新しい Automation アカウントを追加するには、**[+ 追加]** をクリックします。
+2. 新しい Automation アカウントを追加するには、 **[+ 追加]** をクリックします。
 
     ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
@@ -58,7 +50,7 @@ ms.locfileid: "58086022"
    3. 新しいリソース グループを作成するか、既存のリソース グループを選択します。
    4. **[場所]** を選択します。
    5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
-   6. ダッシュボードでのクイック アクセス用のリンクを取得するには、**[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
+   6. ダッシュボードでのクイック アクセス用のリンクを取得するには、 **[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
 
       ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -68,7 +60,7 @@ ms.locfileid: "58086022"
 
       詳しくは、[実行アカウントの作成](../automation/automation-create-runas-account.md)に関するページをご覧ください。
 
-3. 新しく作成されたアカウントで、**[共有リソース] > [モジュール]** に移動し、**[+ モジュールの追加]** をクリックします。
+3. 新しく作成されたアカウントで、 **[共有リソース] > [モジュール]** に移動し、 **[+ モジュールの追加]** をクリックします。
 
     ![モジュールのインポート 1](./media/storsimple-data-manager-job-using-automation/import-module-1.png)
 
@@ -88,11 +80,11 @@ ms.locfileid: "58086022"
 
 Runbook をインポート、発行、実行してジョブ定義をトリガーするには、次の手順を実行します。
 
-1. Azure ポータルで、Automation アカウントを開きます。 **[プロセス オートメーション] > [Runbook]** に移動し、**[+ Runbook の追加]** をクリックします。
+1. Azure ポータルで、Automation アカウントを開きます。 **[プロセス オートメーション] > [Runbook]** に移動し、 **[+ Runbook の追加]** をクリックします。
 
     ![Runbook の追加 1](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
 
-2. **[Runbook の追加]** で、**[既存の Runbook のインポート]** をクリックします。
+2. **[Runbook の追加]** で、 **[既存の Runbook のインポート]** をクリックします。
 
 3. **[Runbook ファイル]** で、Azure PowerShell スクリプト ファイル `Trigger-DataTransformation-Job.ps1`を参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
 
@@ -102,7 +94,7 @@ Runbook をインポート、発行、実行してジョブ定義をトリガー
 
     ![Runbook の追加 3](./media/storsimple-data-manager-job-using-automation/add-runbook-3.png)
 
-5. Runbook を編集し、**[テスト]** ウィンドウをクリックします。
+5. Runbook を編集し、 **[テスト]** ウィンドウをクリックします。
 
     ![Runbook の追加 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
@@ -124,6 +116,6 @@ Runbook をインポート、発行、実行してジョブ定義をトリガー
 
     ![Runbook の追加 10](./media/storsimple-data-manager-job-using-automation/add-runbook-10.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。

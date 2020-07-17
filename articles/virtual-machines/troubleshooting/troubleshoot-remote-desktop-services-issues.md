@@ -4,28 +4,25 @@ description: 仮想マシンへの接続時のリモート デスクトップ �
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 5458a02c09a3600875c7300b27c5a87a735b2f1b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000540"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919466"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
 この記事では、Azure 仮想マシン (VM) への接続時にリモート デスクトップ サービス (TermService) が起動しないか起動に失敗する場合の問題のトラブルシューティングを行う方法について説明します。
 
-> [!NOTE]  
-> Azure には、リソースの作成と操作を行うデプロイメント モデルが 2 種類あります。[Azure Resource Manager とクラシックです](../../azure-resource-manager/resource-manager-deployment-model.md)。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 
@@ -42,9 +39,9 @@ VM に接続しようとすると、次のシナリオが発生します。
     **日付**:        12/16/2017 11:19:36 AM</br>
     **イベント ID**:    7022</br>
     **タスク カテゴリ**:なし</br>
-    **レベル**:       Error</br>
+    **レベル**:       エラー</br>
     **キーワード**:    クラシック</br>
-    **ユーザー**:        該当なし</br>
+    **[ユーザー]** :        該当なし</br>
     **コンピューター**:      vm.contoso.com</br>
     **説明**:Remote Desktop Services サービスは起動時に停止しました。 
 
@@ -66,7 +63,7 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 ### <a name="use-serial-console"></a>シリアル コンソールの使用
 
-1. **[サポートとトラブルシューティング]** > **[シリアル コンソール]** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
+1. **[サポートとトラブルシューティング]**  >  **[シリアル コンソール]** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
 2. CMD インスタンス用の新しいチャネルを作成します。 「**CMD**」と入力してチャネルを開始し、チャネル名を取得します。
 
@@ -97,7 +94,7 @@ VM に接続しようとすると、次のシナリオが発生します。
    ```
 8. サービスを開始できない場合、表示されたエラーに応じて解決策を実行します。
 
-    |  Error |  推奨事項 |
+    |  エラー |  推奨事項 |
     |---|---|
     |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |
     |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termservice-service-is-disabled)」を参照してください。  |  
@@ -142,14 +139,14 @@ VM に接続しようとすると、次のシナリオが発生します。
    procmon /Terminate 
    ```
 
-5. \ **c:\temp\ProcMonTrace.PML** というファイルを収集します。
+5. **c:\temp\ProcMonTrace.PML**: というファイルを収集します。
 
     1. [データ ディスクを VM に接続します](../windows/attach-managed-disk-portal.md
 )。
     2. 新しいドライブにファイルをコピーできるシリアル コンソールを使用します。 たとえば、「 `copy C:\temp\ProcMonTrace.PML F:\` 」のように入力します。 このコマンドの F は、接続されたデータ ディスクのドライブ文字です。
     3. データ ドライブを切断してから、プロセス モニターがインストールされている作業用 VM に接続します。
 
-6. プロセス モニター (作業用 VM) を使用して、**ProcMonTrace.PML** を開きます。 次に、以下のスクリーンショットに示すように、 **Result is ACCESS DENIED** でフィルター処理します。
+6. プロセス モニター (作業用 VM) を使用して、**ProcMonTrace.PML** を開きます。 次に、以下のスクリーンショットに示すように、**Result is ACCESS DENIED** でフィルター処理します。
 
     ![プロセス モニターでの結果によるフィルター処理](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
@@ -206,7 +203,7 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。 接続したディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3. 管理者特権でのコマンド プロンプト インスタンス (**[管理者として実行]**) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
+3. 管理者特権でのコマンド プロンプト インスタンス ( **[管理者として実行]** ) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

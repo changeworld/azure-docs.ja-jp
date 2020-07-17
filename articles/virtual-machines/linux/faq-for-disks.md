@@ -1,25 +1,18 @@
 ---
-title: Azure IaaS Linux VM ディスクについてよく寄せられる質問 (FAQ) | Microsoft Docs
+title: ディスクに関してよく寄せられる質問
 description: Azure IaaS Linux VM ディスクと Premium ディスク (管理および非管理) についてよく寄せられる質問
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
-ms.service: virtual-machines-linux
-ms.workload: ''
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.service: virtual-machines
+ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 924214b7acb6280c691200b05dcc68b95cef3d00
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d4f814647aeaaf3ab66e746360ce7656a22a4520
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461612"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79232043"
 ---
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

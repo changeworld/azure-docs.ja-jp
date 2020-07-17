@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL への接続に関する問題のトラブルシューティング |Microsoft Docs
-description: Azure Database for MySQL への接続に関する問題のトラブルシューティング方法について説明します。
+title: 接続の問題のトラブルシューティング - Azure Database for MySQL
+description: 再試行が必要な一時的なエラー、ファイアウォールの問題、障害など、Azure Database for MySQL への接続に関する問題をトラブルシューティングする方法について説明します。
 keywords: mysql 接続,接続文字列,接続の問題,一時的なエラー,接続エラー
-author: jan-eng
-ms.author: janeng
+author: ajlam
+ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: faf378a81a6db24acc676bed82fe495cfb108612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: troubleshooting
+ms.date: 3/18/2020
+ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855522"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100891"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Azure Database for MySQL への接続に関する問題のトラブルシューティング
 
@@ -47,7 +47,7 @@ ms.locfileid: "57855522"
 アプリケーションが Azure Database for MySQL への接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
 * サーバーのファイアウォールの構成:Azure Database for MySQL サーバーのファイアウォールが、プロキシ サーバーやゲートウェイなど、クライアントからの接続を許可するように構成されていることを確認します。
-* クライアント ファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、MySQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
+* クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、MySQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
 * ユーザー エラー:接続文字列のサーバー名の間違いや、ユーザー名に *\@servername* サフィックスがないなど、接続パラメーターを誤って入力している可能性があります。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
@@ -55,8 +55,8 @@ ms.locfileid: "57855522"
 1. クライアントの IP アドレスを許可するには、 [ファイアウォール規則](howto-manage-firewall-using-portal.md) を設定します。 一時的なテストのためのみには、0.0.0.0 を開始 IP アドレス、255.255.255.255 を終了 IP アドレスとするファイアウォール規則を設定します。 これにより、サーバーがすべての IP アドレスに開かれます。 これによって接続の問題が解決する場合は、この規則を削除した後、IP アドレスまたはアドレス範囲を適切に制限するファイアウォール規則を作成します。
 2. クライアントとインターネットの間のすべてのファイアウォールで、ポート 3306 が送信接続用に開かれていることを確認します。
 3. 接続文字列およびその他の接続設定を確認します。 「[Azure Database for MySQL にアプリケーションを接続する方法](howto-connection-string.md)」を参照してください。
-4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧する手順について「[Overview of business continuity with Azure Database for MySQL](concepts-business-continuity.md)」を参照してください。
+4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧するステップを「[Azure Database for MySQL でのビジネス継続性を理解する](concepts-business-continuity.md)」で参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Handling of transient connectivity errors for Azure Database for MySQL](concepts-connectivity.md)

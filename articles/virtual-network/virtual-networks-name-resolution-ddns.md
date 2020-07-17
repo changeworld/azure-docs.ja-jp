@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994701"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60640380"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>動的 DNS を使用して独自の DNS サーバーでホスト名を登録する
 
@@ -35,7 +35,7 @@ ms.locfileid: "57994701"
 ## <a name="linux-clients"></a>Linux クライアント
 Linux クライアントは一般に、起動時にそれ自体を DNS サーバーに登録することはなく、DHCP サーバーがそれを行うことを前提としています。 Azure の DHCP サーバーは、DNS サーバーにレコードを登録する資格情報を持っていません。 Bind パッケージに含まれる `nsupdate` という名前のツールを利用し、DDNS 更新を送信できます。 DDNS プロトコルは標準化されているため、DNS サーバーで Bind を使用していないときにも `nsupdate` を利用できます。
 
-DHCP クライアントが提供するフックを使用して、DNS サーバー内にホスト名エントリを作成して登録できます。 DHCP 周期の間、クライアントは */etc/dhcp/dhclient-exit-hooks.d/* のスクリプトを実行します。 `nsupdate` を使って新しい IP アドレスを登録するには、フックを使用できます。 例: 
+DHCP クライアントが提供するフックを使用して、DNS サーバー内にホスト名エントリを作成して登録できます。 DHCP 周期の間、クライアントは */etc/dhcp/dhclient-exit-hooks.d/* のスクリプトを実行します。 `nsupdate` を使って新しい IP アドレスを登録するには、フックを使用できます。 次に例を示します。
 
 ```bash
 #!/bin/sh

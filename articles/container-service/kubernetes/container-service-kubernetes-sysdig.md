@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Kubernetes クラスターを監視する - Sysdig
 description: Sysdig を使用した Azure Container Service での Kubernetes クラスターの監視
-services: container-service
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 4aef241e2c86e4016c3c468fcdcfdfc620fc7aa9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 68136d5b9ec16c822cb62e4fee85b8ace9b1899a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998719"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371101"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(非推奨) Sysdig を使用して Azure Container Service Kubernetes クラスターを監視します
 
@@ -27,8 +25,8 @@ ms.locfileid: "52998719"
 
 `az` ツールがインストールされていることを確認するには、次を実行します。
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。
@@ -36,13 +34,13 @@ $ az --version
 `kubectl` ツールがインストールされていることを確認するには、次を実行します。
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 `kubectl` をインストールしていない場合、次を実行できます。
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
@@ -63,13 +61,13 @@ Sysdig DaemonSet をインストールするには、まず[テンプレート](
 Linux および OS X 上では次のように実行することができます。
 
 ```console
-$ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
+curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
 PowerShell では次のとおりです。
 
-```console
-$ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
+```powershell
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
 次に、そのファイルを編集して、Sysdig アカウントから取得したアクセス キーを挿入します。
@@ -77,7 +75,7 @@ $ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-s
 最後に、DaemonSet を作成します。
 
 ```console
-$ kubectl create -f sysdig-daemonset.yaml
+kubectl create -f sysdig-daemonset.yaml
 ```
 
 ## <a name="view-your-monitoring"></a>監視の表示

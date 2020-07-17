@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Java での Table API の使用 - Azure Cosmos DB'
+title: Table API と Java を使用してアプリを作成する - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB Table API を使って Azure Portal と Java でアプリケーションを作成する方法を示します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 22d5aea119d71553afc02ee923fab5cf5ead5ce0
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: e3517804cb66a9f98351e4c68f4f7c4387cee8fe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519046"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083803"
 ---
-# <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>クイック スタート: Java と Azure Cosmos DB で Table API アプリを構築する
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>クイック スタート:Azure Cosmos DB Table API データを管理する Java アプリを作成する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -24,23 +25,14 @@ ms.locfileid: "65519046"
 > * [Python](create-table-python.md)
 > 
 
-このクイックスタートでは、GitHub から例を複製することで、Java と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
-
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+このクイックスタートでは、Azure Cosmos DB Table API アカウントを作成し、データ エクスプローラーと GitHub からクローンした Java アプリを使用してテーブルとエンティティを作成します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-加えて次の作業を行います。 
-
-* [Java Development Kit (JDK) 8](https://aka.ms/azure-jdks)
-    * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
-* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
-    * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
-* [Git](https://www.git-scm.com/)
-    * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。 または、`https://localhost:8081` の URI でキー `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` を使用して [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) を使用することもできます。
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 JDK のインストール先フォルダーを指すように `JAVA_HOME` 環境変数を設定してください。
+- [Maven バイナリ アーカイブ](https://maven.apache.org/download.cgi)。 
+- [Git](https://www.git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -60,7 +52,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -80,21 +72,23 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
 
+> ![ヒント] 類似のコードの詳細なチュートリアルについては、[Cosmos DB Table API サンプル](table-storage-how-to-use-java.md)に関する記事を参照してください。 
+
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
-1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-   ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-java/connection-string.png)
+   ![[接続文字列] ウィンドウで接続文字列の情報を表示する](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. 右側にある [コピー] ボタンを使って、プライマリ接続文字列をコピーします。
 
-3. C:\git-samples\storage-table-java-getting-started\src\main\resources フォルダーで config.properties を開きます。 
+3. *C:\git-samples\storage-table-java-getting-started\src\main\resources* フォルダーで *config.properties* を開きます。 
 
 5. 1 行目をコメント アウトし、2 行目をコメント解除します。 最初の 2 行は次のようになります。
 
-    ```
+    ```xml
     #StorageConnectionString = UseDevelopmentStorage=true
     StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
     ```
@@ -105,11 +99,11 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
     > エンドポイントで documents.azure.com を使用している場合は、プレビュー アカウントを持っていることになるため、[新しいテーブル API](#create-a-database-account) アカウントを作成して、一般公開のテーブル API SDK を操作する必要があります。
     >
 
-7. config.properties ファイルを保存します。
+7. *config.properties* ファイルを保存します。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 1. git ターミナル ウィンドウで、storage-table-java-getting-started フォルダーに `cd` で移動します。
 
@@ -117,7 +111,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
     cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
-2. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを起動します。
+2. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを実行します。
 
     ```git
     mvn compile exec:java 
@@ -131,13 +125,13 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、アプリを実行する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
+このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、Java アプリを実行してテーブル データを追加する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
 
 > [!div class="nextstepaction"]
 > [テーブル データを Table API にインポートする](table-import.md)

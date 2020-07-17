@@ -1,24 +1,23 @@
 ---
-title: Azure Monitor 診断ログの形式変更のための準備
-description: Azure 診断ログでは、2018 年 11 月 1 日より追加 BLOB を使用するように移行されます。
+title: Azure Monitor リソース ログの形式変更のための準備
+description: 2018 年 11 月 1 日に追加 BLOB を使用するように変更された新しい Azure リソース ログの影響と、それを処理するようにツールを更新する方法について説明します。
 author: johnkemnetz
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670442"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備
 
 > [!WARNING]
-> [Azure リソース診断ログまたはメトリックをリソース診断設定を使用してストレージ アカウントに](./../../azure-monitor/platform/archive-diagnostic-logs.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](./../../azure-monitor/platform/archive-activity-log.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されます。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。 
+> [Azure リソースのリソース ログまたはメトリックをリソース診断設定を使用してストレージ アカウントに](./../../azure-monitor/platform/archive-diagnostic-logs.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](./../../azure-monitor/platform/archive-activity-log.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されます。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。 
 >
 > 
 
@@ -29,15 +28,15 @@ Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空
 * 2018 年 11 月 1 日木曜日の深夜 12 時 00 分 (UTC) より、BLOB 形式は [JSON Lines](http://jsonlines.org/) に変更されます。 つまり、各レコードは改行で区切られるようになり、外部のレコード配列や JSON レコード間のコンマはなくなります。
 * すべてのサブスクリプションのすべての診断設定の BLOB 形式が一度に変更されます。 11 月 1 日に出力される最初の PT1H.json ファイルでは、この新しい形式が使用されます。 BLOB およびコンテナーの名前は変わりません。
 * 今から 11 月 1 日までの間に診断設定が行われた場合、11 月 1 日までは現在の形式で引き続きデータが出力されます。
-* この変更はすべてのパブリック クラウド リージョンで一度に行われます。 Azure 中国、Azure ドイツ、Azure Government クラウドではまだこの変更は行われません。
+* この変更はすべてのパブリック クラウド リージョンで一度に行われます。 21Vianet が運営する Microsoft Azure、Azure Germany、および Azure Government のクラウドではまだこの変更は行われません。
 * この変更は次のデータの種類に影響します。
-  * [Azure リソース診断ログ](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](./../../azure-monitor/platform/diagnostic-logs-schema.md))
-  * [診断設定でエクスポートされる Azure リソース メトリック](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](./../../azure-monitor/platform/archive-activity-log.md)
+  * [Azure リソースのリソース ログ](archive-diagnostic-logs.md) ([リソースの一覧をこちらから参照してください](diagnostic-logs-schema.md))
+  * [診断設定でエクスポートされる Azure リソース メトリック](diagnostic-settings.md)
+  * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](archive-activity-log.md)
 * この変更は以下のものには影響しません。
   * ネットワーク フロー ログ
-  * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service の診断ログ、ストレージ分析ログなど)
-  * Azure 診断ログとアクティビティ ログの他の送信先 (Event Hubs、Log Analytics) へのルーティング
+  * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service のリソース ログ、ストレージ分析ログなど)
+  * Azure リソース ログとアクティビティ ログの他の送信先 (Event Hubs、Log Analytics) へのルーティング
 
 ### <a name="how-to-see-if-you-are-impacted"></a>影響があるかどうかを確認する方法
 
@@ -45,7 +44,7 @@ Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空
 1. リソース診断設定を使用して、Azure ストレージ アカウントにログ データを送信する。
 2. ストレージ内のこれらのログの JSON 構造に依存しているツールがある。
  
-Azure ストレージ アカウントにデータを送信しているリソース診断設定があるかどうかを確認するには、ポータルの **[監視]** セクションに移動し、**[診断設定]** をクリックして、**診断状態**が**有効**に設定されているリソースを確認します。
+Azure ストレージ アカウントにデータを送信しているリソース診断設定があるかどうかを確認するには、ポータルの **[監視]** セクションに移動し、 **[診断設定]** をクリックして、**診断状態**が**有効**に設定されているリソースを確認します。
 
 ![Azure Monitor の [診断設定] ブレード](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
@@ -133,8 +132,8 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 現在の形式と、上述の JSON Lines 形式の両方に対応するには、カスタム ツールを更新する必要があります。 これにより、新しい形式でデータの表示が開始されるときに、ご利用のツールで作業が中断されることはなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [ストレージ アカウントへのリソース診断ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
+* [ストレージ アカウントへのリソース ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
 * [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。
 

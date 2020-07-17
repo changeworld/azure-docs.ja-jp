@@ -1,24 +1,15 @@
 ---
 title: Azure Application Insights のアプリケーション マップ | Microsoft Docs
 description: アプリケーション マップを使用した複雑なアプリケーション トポロジの監視
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509986"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989529"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -68,21 +59,21 @@ ms.locfileid: "65509986"
 
 ### <a name="go-to-details"></a>詳細の表示
 
-呼び出し履歴レベルまでのビューを提供できるエンドツーエンドのトランザクション エクスペリエンスの詳細を表示するには、**[詳細に移動]** を選択します。
+呼び出し履歴レベルまでのビューを提供できるエンドツーエンドのトランザクション エクスペリエンスの詳細を表示するには、 **[詳細に移動]** を選択します。
 
 ![[go-to-details] (詳細の表示) ボタンのスクリーンショット](media/app-map/go-to-details.png)
 
 ![[end-to-end transaction details] (エンドツーエンドのトランザクションの詳細) のスクリーンショット](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Analytics での表示
+### <a name="view-logs-analytics"></a>ログの表示 (Analytics)
 
-さらにアプリケーション データのクエリと調査を行うには、**Analytics で表示** をクリックします。
+さらにアプリケーション データのクエリと調査を行うには、**Analytics で表示 (Analytics)** をクリックします。
 
-![[view in analytics] (Analytics で表示) ボタンのスクリーンショット](media/app-map/view-in-analytics.png)
+![[view in analytics] (Analytics で表示) ボタンのスクリーンショット](media/app-map/view-logs.png)
 
-![Analytics エクスペリエンスのスクリーンショット](media/app-map/analytics.png)
+![Analytics エクスペリエンスのスクリーンショット。 過去12時間の要求の平均応答時間を要約した折れ線グラフ。](media/app-map/log-analytics.png)
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 アクティブなアラートと、アラートがトリガーされる原因になっている元のルールを表示するには、**アラート** を選択します。
 
@@ -94,7 +85,9 @@ ms.locfileid: "65509986"
 
 アプリケーション マップでは、**クラウド ロール名**プロパティを使用して、マップ上のコンポーネントが識別されます。 Application Insights SDK では、コンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。 たとえば、SDK では、Web サイト名またはサービス ロール名がクラウド ロール名プロパティに追加されます。 ただし、既定値をオーバーライドする必要のある場合があります。 クラウド ロール名をオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
-### <a name="net"></a>.NET
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
+
+**以下のようにカスタム TelemetryInitializer を作成します。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -110,16 +103,16 @@ namespace CustomInitializer.Telemetry
             {
                 //set custom role name here
                 telemetry.Context.Cloud.RoleName = "Custom RoleName";
-                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance";
             }
         }
     }
 }
 ```
 
-**初期化子を読み込む**
+**ASP.NET アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
 
-ApplicationInsights.config で:
+ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -131,7 +124,7 @@ ApplicationInsights.config で:
     </ApplicationInsights>
 ```
 
-もう 1 つの方法は、Global.aspx.cs などのコード内で初期化子をインスタンス化することです。
+ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコード内で初期化子をインスタンス化することです。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -144,7 +137,60 @@ ApplicationInsights.config で:
     }
 ```
 
-### <a name="nodejs"></a>Node.js
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+**ASP.NET Core アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
+
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+**Java エージェント**
+
+[Java エージェント3.0 の場合](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)、クラウド ロール名は次のように設定されます。
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+代わりに、環境変数 ```APPLICATIONINSIGHTS_ROLE_NAME``` を使用して、クラウド ロール名を設定することもできます。
+
+**Java SDK**
+
+SDK を使用している場合、Application Insights Java SDK 2.5.0 以降では、`ApplicationInsights.xml` ファイルに `<RoleName>` を追加することで、クラウド ロール名を指定できます。例:
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Application Insights Spring Boot スターターで Spring Boot を使用する場合、必要な変更は application.properties ファイルにアプリケーションのカスタム名を設定することだけです。
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot スターターにより、クラウド ロール名が、ユーザーが spring.application.name プロパティに入力した値に自動的に割り当てられます。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -165,26 +211,17 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Application Insights Spring Boot スターターで Spring Boot を使用する場合、必要な変更は application.properties ファイルにアプリケーションのカスタム名を設定することだけです。
-
-`spring.application.name=<name-of-app>`
-
-Spring Boot スターターにより、クラウド ロール名が、ユーザーが spring.application.name プロパティに入力した値に自動的に割り当てられます。
-
-Java の相関関係と、SpringBoot 以外のアプリケーションにクラウド ロール名を構成する方法の詳細については、この相関関係に関する[セクション](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name)を調べてください。
-
-### <a name="clientbrowser-side-javascript"></a>クライアント/ブラウザー側の JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
-appInsights.context.addTelemetryInitializer((envelope) => {
+appInsights.addTelemetryInitializer((envelope) => {
   envelope.tags["ai.cloud.role"] = "your role name";
   envelope.tags["ai.cloud.roleInstance"] = "your role instance";
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>アプリケーション マップのコンテキスト内でのクラウド ロール名の理解
 
@@ -212,7 +249,7 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 
 コンテナー化された環境でアプリが実行されている場合は、個々のサーバーを知るだけでは特定の問題を見つけられない可能性があり、クラウド ロール インスタンスの値をオーバーライドした方がよいシナリオです。
 
-クラウド ロール名プロパティをテレメトリ初期化子でオーバーライドする方法の詳細については、[ITelemetryInitializer プロパティの追加](api-filtering-sampling.md#add-properties-itelemetryinitializer)に関するページを参照してください。
+クラウド ロール名プロパティをテレメトリ初期化子でオーバーライドする方法の詳細については、[ITelemetryInitializer プロパティの追加](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)に関するページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -252,6 +289,8 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 
 ![MapLink-1 image](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [関連付けについて](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* Application Insights での関連付けのしくみの詳細については、[テレメトリの関連付けの記事](correlation.md)を参照してください。
+* [エンドツーエンドのトランザクション診断エクスペリエンス](transaction-diagnostics.md)は、Application Insights に監視されるすべてのコンポーネントからのサーバー側テレメトリを単一ビューに関連付けます。
+* ASP.NET Core と ASP.NET の高度な相関シナリオについては、[カスタム操作の追跡](custom-operations-tracking.md)に関する記事を参照してください。

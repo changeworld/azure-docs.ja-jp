@@ -1,22 +1,23 @@
 ---
-title: Web ブラウザーから Windows Virtual Desktop プレビューに接続する - Azure
-description: Web ブラウザーから Windows Virtual Desktop プレビューに接続する方法。
+title: Windows Virtual Desktop Web クライアントの接続 - Azure
+description: Web クライアントを使用して Windows Virtual Desktop に接続する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
-ms.date: 04/12/2019
+ms.topic: conceptual
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+manager: lizross
+ms.openlocfilehash: b8023c0927c05d3952bd9f3a51e99e85154552fd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142445"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80656371"
 ---
-# <a name="connect-from-a-web-browser"></a>Web ブラウザーから接続する
+# <a name="connect-with-the-web-client"></a>Web クライアントに接続する
 
-Web クライアントでは、時間のかかるインストール プロセスなしで Web ブラウザーから Windows Virtual Desktop プレビュー リソースにアクセスすることができます。
+Web クライアントを利用すると、時間のかかるインストール プロセスなしで Web ブラウザーから Windows Virtual Desktop リソースにアクセスできます。
 
 >[!NOTE]
 >現在、Web クライアントにはモバイル OS のサポートがありません。
@@ -25,7 +26,7 @@ Web クライアントでは、時間のかかるインストール プロセス
 
 任意の HTML5 対応ブラウザーが動作しますが、正式にサポートしているオペレーティング システムとブラウザーは次のとおりです。
 
-| ブラウザー           | サポート対象 OS                     | メモ               |
+| Browser           | サポート対象 OS                     | メモ               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
@@ -38,6 +39,10 @@ Web クライアントでは、時間のかかるインストール プロセス
 ブラウザーで、[Windows Virtual Desktop Web クライアント](https://rdweb.wvd.microsoft.com/webclient)に移動し、ユーザー アカウントを使用してサインインします。
 
 >[!NOTE]
->Windows Virtual Desktop に使用するものとは異なる Azure AD アカウントを使用して既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
+>Windows Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
 
-サインインすると、リソースの一覧が表示されます。 リソースを起動するには、**[すべてのリソース]** タブで通常のアプリと同様にそのリソースを選択します。
+サインインすると、リソースの一覧が表示されます。 リソースを起動するには、 **[すべてのリソース]** タブで通常のアプリと同様にそのリソースを選択します。
+
+## <a name="next-steps"></a>次のステップ
+
+Web クライアントの使用方法の詳細については、「[Web クライアントの概要](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client)」を参照してください。

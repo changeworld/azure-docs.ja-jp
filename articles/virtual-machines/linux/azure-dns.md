@@ -1,25 +1,17 @@
 ---
-title: Azure での Linux 仮想マシンの DNS 名前解決のオプション
+title: Linux VM での DNS 名前解決のオプション
 description: Azure IaaS での Linux 仮想マシンの名前解決のシナリオを示します (提供される DNS サービス、ハイブリッド外部 DNS、独自 DNS サーバーの使用など)。
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819146"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641726"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
@@ -72,7 +64,7 @@ dnsmasq など、いくつかの異なる DNS キャッシュ パッケージを
 **Ubuntu (resolvconf を使用)**
   * dnsmasq パッケージをインストールします ("sudo apt-get install dnsmasq")。
 
-**SUSE (netconf を使用)**:
+**SUSE (netconf を使用)** :
 1. dnsmasq パッケージをインストールします ("sudo zypper install dnsmasq")。
 2. dnsmasq サービスを有効にします ("systemctl enable dnsmasq.service")。
 3. dnsmasq サービスを開始します ("systemctl start dnsmasq.service")。
@@ -105,7 +97,7 @@ Linux 仮想マシンの現在の設定を確認するには、次に示す 'cat
 resolv.conf ファイルは自動生成され、編集すべきではありません。 'options' 行を追加する具体的な手順は、ディストリビューションによって異なります。
 
 **Ubuntu** (resolvconf を使用)
-1. options 行を '/etc/resolveconf/resolv.conf.d/head' に追加します。
+1. options 行を '/etc/resolvconf/resolv.conf.d/head' に追加します。
 2. ' resolvconf -u' を実行して更新します。
 
 **SUSE** (netconf を使用)

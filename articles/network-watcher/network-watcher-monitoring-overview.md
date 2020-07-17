@@ -3,9 +3,7 @@ title: Azure Network Watcher | Microsoft Docs
 description: 仮想ネットワーク内のリソースを対象とする Azure Network Watcher の監視、診断、メトリック、ログの機能について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -14,22 +12,22 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: ddc577af945c01b94dae5a75725082e4e6689fd9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697132"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76844991"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
 
-Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。
+Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。 Network Watcher は、Virtual Machines、Virtual Networks、アプリケーション ゲートウェイ、ロード バランサーなどの IaaS (サービスとしてのインフラストラクチャ) 製品のネットワーク正常性を監視および修復するように設計されています。注:これは、PaaS 監視または Web 分析を対象としたものではなく、それらには使用できません。 
 
 ## <a name="monitoring"></a>監視
 
-### <a name = "connection-monitor"></a>仮想マシンとエンドポイントの間の通信を監視する
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>仮想マシンとエンドポイントの間の通信を監視する
 
 エンドポイントは、別の仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、Uniform Resource Identifier (URI)、または IPv4 アドレスの場合があります。 "*接続監視*" 機能を使用すると、通信を定期的に監視できるほか、VM とエンドポイントの間の到達可能性、待ち時間、ネットワーク トポロジの変更について通知を受け取ることができます。 たとえば、データベース サーバー VM と通信する Web サーバー VM がある場合があります。 組織の他のユーザーが、自分の知らない間に Web サーバー、データベース サーバー VM またはサブネットにカスタム ルートまたはネットワーク セキュリティ規則を適用するかもしれません。
 
@@ -57,7 +55,7 @@ VM をデプロイすると、VM との間のトラフィックを許可また�
 
 仮想ネットワークを作成すると、ネットワーク トラフィックの送信ルートが既定でいくつか作成されます。 仮想ネットワーク内にデプロイされたすべてのリソース (VM など) からの送信トラフィックは、Azure の既定のルートに基づいてルーティングされます。 Azure の既定のルートをオーバーライドしたり、追加のルートを作成したりできます。 特定のルートが原因となって VM が他のリソースと通信できなくなる場合があります。 "*次ホップ*" 機能を使用すると、送信元および宛先 IPv4 アドレスを指定できます。 その後、次ホップによって通信のテストが行われ、トラフィックのルーティングに使用される次ホップの種類が通知されます。 ルートを削除、変更、または追加して、ルーティングの問題を解決できます。 次ホップ機能の詳細については、[こちら](diagnose-vm-network-routing-problem.md)を参照してください。
 
-### <a name="connection-troubleshoot"></a>VM からの送信接続を診断する
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>VM からの送信接続を診断する
 
 "*接続のトラブルシューティング*" 機能を使用すると、ある VM と別の VM、FQDN、URI、または IPv4 アドレスとの間の接続をテストできます。 テストは、[接続監視](#connection-monitor)機能を使用した場合に返されるのと同様の情報を返します。しかし、接続監視による経時的な監視とは異なり、テストされるのはある時点の接続です。 接続のトラブルシューティングを使用して接続のトラブルシューティングを行う方法については、[こちら](network-watcher-connectivity-overview.md)を参照してください。
 
@@ -79,7 +77,7 @@ Azure リージョン間およびインターネット サービス プロバイ
 
 ## <a name="metrics"></a>メトリック
 
-Azure のサブスクリプションおよびリージョン内で作成できるネットワーク リソースの数には[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)があります。 制限に達すると、サブスクリプション内またはリージョン内でそれ以上リソースを作成できません。 "*ネットワーク サブスクリプションの制限*" 機能を使用すると、サブスクリプションおよびリージョンでデプロイした各ネットワーク リソースの数の概要のほか、リソースに関する制限がわかります。 次の図は、サンプルのサブスクリプションで米国東部リージョンにデプロイされたネットワーク リソースに関する出力を部分的に示しています。
+Azure のサブスクリプションおよびリージョン内で作成できるネットワーク リソースの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)があります。 制限に達すると、サブスクリプション内またはリージョン内でそれ以上リソースを作成できません。 "*ネットワーク サブスクリプションの制限*" 機能を使用すると、サブスクリプションおよびリージョンでデプロイした各ネットワーク リソースの数の概要のほか、リソースに関する制限がわかります。 次の図は、サンプルのサブスクリプションで米国東部リージョンにデプロイされたネットワーク リソースに関する出力を部分的に示しています。
 
 ![サブスクリプションの制限](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
@@ -102,6 +100,6 @@ NSG フロー ログについて詳しくは、[仮想マシンへの送受信�
 ## <a name="network-watcher-automatic-enablement"></a>Network Watcher の自動での有効化
 サブスクリプションで仮想ネットワークを作成したり更新したりすると、お使いの Virtual Network のリージョンで Network Watcher が自動的に有効になります。 Network Watcher は自動的に有効化され、リソースや関連する料金が影響を受けることはありません。 詳細については、[Network Watcher の作成](network-watcher-create.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Network Watcher の概要については以上です。 Network Watcher の使用を開始するには、IP フロー検証を使用して仮想マシンとの間の通信に関する一般的な問題を診断します。 方法については、[仮想マシン ネットワーク トラフィック フィルターの問題の診断](diagnose-vm-network-traffic-filtering-problem.md)に関するクイック スタートを参照してください。

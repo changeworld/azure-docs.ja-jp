@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 75d0bbc536c907e6530570b4d7568f39371cfced
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26367677"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60628661"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>クラウド ソリューション プロバイダー プログラムの StorSimple とは。
 

@@ -4,10 +4,13 @@
   items:
     - name: Azure IoT Hub とは
       href: about-iot-hub.md
-- name: クイック スタート
+- name: クイックスタート
+  expanded: true
   items:
     - name: テレメトリを送信する
       items:
+        - name: はじめに
+          href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
         - name: Node.js
@@ -36,7 +39,7 @@
           href: quickstart-control-device-android.md
     - name: デバイス ストリームを使用した通信 (プレビュー)
       items:
-        - name: 'C#'
+        - name: .NET
           href: quickstart-device-streams-echo-csharp.md
         - name: Node.js
           href: quickstart-device-streams-echo-nodejs.md
@@ -44,7 +47,7 @@
           href: quickstart-device-streams-echo-c.md
     - name: デバイス ストリームを使用した SSH/RDP (プレビュー)
       items:
-        - name: 'C#'
+        - name: .NET
           href: quickstart-device-streams-proxy-csharp.md
         - name: Node.js
           href: quickstart-device-streams-proxy-nodejs.md
@@ -66,6 +69,8 @@
               href: tutorial-routing-config-message-routing-PowerShell.md
         - name: パート 2 - メッセージのルーティング結果の表示
           href: tutorial-routing-view-message-routing-results.md
+    - name: メッセージ エンリッチメント
+      href: tutorial-message-enrichments.md
     - name: メトリックと診断ログの使用
       href: tutorial-use-metrics-and-diags.md
     - name: 手動フェールオーバーの実行
@@ -76,16 +81,31 @@
       href: tutorial-firmware-update.md
     - name: デバイス接続のテスト
       href: tutorial-connectivity.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
+    - name: TLS サポート
+      href: iot-hub-tls-support.md
+    - name: 仮想ネットワークのサポート
+      href: virtual-network-support.md
+    - name: メッセージ エンリッチメントの概要
+      href: iot-hub-message-enrichments-overview.md
     - name: デバイス管理の概要
       href: iot-hub-device-management-overview.md
     - name: IoT Hub と Event Hubs の比較
       href: iot-hub-compare-event-hubs.md
     - name: 適切な階層の選択
       href: iot-hub-scaling.md
-    - name: 高可用性と障害復旧
+    - name: 高可用性とディザスター リカバリー
       href: iot-hub-ha-dr.md
+    - name: IoT ハブを別のリージョンに複製する方法
+      href: iot-hub-how-to-clone.md
+    - name: IoT Hub IP アドレスについて
+      href: iot-hub-understand-ip-address.md
     - name: その他のプロトコルのサポート
       href: iot-hub-protocol-gateway.md
     - name: メッセージ ルーティングとイベント ルーティングの比較
@@ -153,11 +173,13 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: Recommendations
+          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
-        - name: セキュリティのベスト プラクティス
+        - name: セキュリティの運用方法
           href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
         - name: セキュリティのアーキテクチャ
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
@@ -169,7 +191,7 @@
           href: iot-hub-x509ca-overview.md
         - name: X.509 CA 証明書セキュリティの概念
           href: iot-hub-x509ca-concept.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発
       items:
@@ -241,7 +263,7 @@
               href: iot-hub-python-python-module-twin-getstarted.md
             - name: C
               href: iot-hub-c-c-module-twin-getstarted.md
-            - name: ノード
+            - name: Node.js
               href: iot-hub-node-node-module-twin-getstarted.md
         - name: デバイス管理の開始
           items:
@@ -263,7 +285,7 @@
               href: iot-hub-java-java-schedule-jobs.md
             - name: Python
               href: iot-hub-python-python-schedule-jobs.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: IoT Hub の作成
           items:
@@ -278,7 +300,7 @@
             - name: REST API の使用
               href: iot-hub-rm-rest.md
             - name: Azure PowerShell からテンプレートを使用する
-              displayName: 'Azure Resource Manager, ARM'
+              displayName: Azure Resource Manager
               href: iot-hub-rm-template-powershell.md
             - name: .NET からテンプレートを使用する
               href: iot-hub-rm-template.md
@@ -323,8 +345,6 @@
               href: iot-hub-raspberry-pi-kit-c-get-started.md
             - name: Arduino での MXChip IoT DevKit
               href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-            - name: Arduino での Adafruit Feather HUZZAH ESP8266
-              href: iot-hub-arduino-huzzah-esp8266-get-started.md
         - name: MXChip IoT DevKit の使用
           items:
             - name: Azure Cognitive Services を使用して音声メッセージを翻訳する
@@ -343,7 +363,7 @@
               href: iot-hub-visual-studio-cloud-device-messaging.md
             - name: Power BI でのデータ視覚化
               href: iot-hub-live-data-visualization-in-power-bi.md
-            - name: Web Apps でのデータ視覚化
+            - name: Web アプリでのデータ視覚化
               href: iot-hub-live-data-visualization-in-web-apps.md
             - name: Azure Machine Learning を使用した天気予報
               href: iot-hub-weather-forecast-machine-learning.md
@@ -355,34 +375,66 @@
               href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
             - name: Logic Apps を使用したリモートの監視と通知
               href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
-    - name: トラブルシューティング
+    - name: トラブルシューティングと問題の解決策
       items:
         - name: デバイスの切断
           href: iot-hub-troubleshoot-connectivity.md
+        - name: 問題解決
+          items:
+            - name: 400027 ConnectionForcefullyClosedOnNewConnection
+              href: iot-hub-troubleshoot-error-400027-connectionforcefullyclosedonnewconnection.md
+            - name: 401003 IoTHubUnauthorized
+              href: iot-hub-troubleshoot-error-401003-iothubunauthorized.md
+            - name: 403002 IoTHubQuotaExceeded
+              href: iot-hub-troubleshoot-error-403002-iothubquotaexceeded.md
+            - name: 403004 DeviceMaximumQueueDepthExceeded
+              href: iot-hub-troubleshoot-error-403004-devicemaximumqueuedepthexceeded.md
+            - name: 403006 DeviceMaximumActiveFileUploadLimitExceeded
+              href: iot-hub-troubleshoot-error-403006-devicemaximumactivefileuploadlimitexceeded.md
+            - name: 404001 DeviceNotFound
+              href: iot-hub-troubleshoot-error-404001-devicenotfound.md
+            - name: 404103 DeviceNotOnline
+              href: iot-hub-troubleshoot-error-404103-devicenotonline.md
+            - name: 404104 DeviceConnectionClosedRemotely
+              href: iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md
+            - name: 409001 DeviceAlreadyExists
+              href: iot-hub-troubleshoot-error-409001-devicealreadyexists.md
+            - name: 409002 LinkCreationConflict
+              href: iot-hub-troubleshoot-error-409002-linkcreationconflict.md
+            - name: 412002 DeviceMessageLockLost
+              href: iot-hub-troubleshoot-error-412002-devicemessagelocklost.md
+            - name: 429001 ThrottlingException
+              href: iot-hub-troubleshoot-error-429001-throttlingexception.md
+            - name: 500xxx 内部エラー
+              href: iot-hub-troubleshoot-error-500xxx-internal-errors.md
+            - name: 503003 PartitionNotFound
+              href: iot-hub-troubleshoot-error-503003-partitionnotfound.md
+            - name: 504101 GatewayTimeout
+              href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/iot
-    - name: .NET (サービス)
-      href: /dotnet/api/microsoft.azure.devices
+    - name: Azure PowerShell
+      href: '/powershell/module/az.iothub#iot'
     - name: .NET (デバイス)
       href: /dotnet/api/microsoft.azure.devices.client
-    - name: Java (サービス)
-      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: .NET (サービス)
+      href: /dotnet/api/microsoft.azure.devices
     - name: Java (デバイス)
       href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Java (サービス)
+      href: /java/api/com.microsoft.azure.sdk.iot.service
     - name: Node.js (デバイス)
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js (サービス)
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
     - name: C デバイス SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
-    - name: Azure IoT Edge
-      href: 'http://azure.github.io/iot-edge/'
     - name: REST (デバイス)
       href: 'https://docs.microsoft.com/rest/api/iothub/device'
     - name: REST (サービス)
-      href: 'https://docs.microsoft.com/rest/api/iothub/service'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
     - name: REST (IoT Hub リソース)
       href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
     - name: REST (証明書)
@@ -395,46 +447,50 @@
           href: iot-hub-operations-monitoring.md
         - name: 診断設定への移行
           href: iot-hub-migrate-to-diagnostics-settings.md
-- name: 関連項目
+        - name: TLS 1.0 および 1.1 の廃止
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
+- name: リソース
   items:
-    - name: 解決方法
-      items:
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: プラットフォーム サービス
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT のサービス
       items:
         - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: マップ
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: Azure IoT SDK
       items:
-        - name: IoT Edge
-          href: /azure/iot-edge
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT デバイス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: リソース
-  items:
-    - name: 'C# 用 Azure IoT サンプル (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: Node.js 用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: Java 用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: Python 用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: iOS プラットフォーム用 Azure IoT サンプル
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT サンプル
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS プラットフォーム
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: IoT デバイス カタログ向けの Azure 認定
-      href: 'https://catalog.azurazureiotsolutionseiotsuite.com/'
+      href: 'https://catalog.azureiotsolutions.com/'
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: 顧客データ要求
@@ -443,19 +499,19 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Azure IoT Tools
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
-    - name: DeviceExplorer ツール
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: Azure IoT エクスプローラー ツール
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-iot-hub.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

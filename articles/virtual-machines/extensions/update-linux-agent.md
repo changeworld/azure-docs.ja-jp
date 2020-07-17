@@ -1,26 +1,25 @@
 ---
-title: GitHub から Azure Linux エージェントを更新する | Microsoft Docs
+title: GitHub から Azure Linux エージェントを更新する
 description: Azure の Linux VM で使用する Azure Linux エージェントを更新する方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: mimckitt
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: roiyz
-ms.openlocfilehash: 5d53f34ea6b0983d0687cdaf6ec6271c703bb055
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: mimckitt
+ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998531"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82112050"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -30,6 +29,9 @@ Azure 上の Linux VM の [Azure Linux エージェント](https://github.com/Az
 - SSH を使用してその Linux VM に接続している。
 
 まずは常に Linux ディストリビューション リポジトリでパッケージを確認することをお勧めします。 使用できるパッケージが最新のバージョンでない可能性もありますが、自動更新を有効にすると Linux エージェントが常に最新の更新プログラムを入手します。 パッケージ マネージャーからのインストールに問題がある場合は、ディストリビューション ベンダーにサポートを依頼してください。
+
+> [!NOTE]
+> 詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Azure での仮想マシン エージェントの最小バージョンのサポート
 先に進む前に、[Azure での仮想マシン エージェントの最小バージョンのサポート](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を確認してください。
@@ -89,77 +91,6 @@ initctl restart walinuxagent
 
 ```bash
 systemctl restart walinuxagent.service
-```
-
-## <a name="debian"></a>Debian
-
-### <a name="debian-7-wheezy"></a>Debian 7 “Wheezy”
-
-#### <a name="check-your-current-package-version"></a>現在のパッケージのバージョンを確認する
-
-```bash
-dpkg -l | grep waagent
-```
-
-#### <a name="update-package-cache"></a>パッケージ キャッシュを更新する
-
-```bash
-sudo apt-get -qq update
-```
-
-#### <a name="install-the-latest-package-version"></a>最新バージョンのパッケージをインストールする
-
-```bash
-sudo apt-get install waagent
-```
-
-#### <a name="enable-agent-auto-update"></a>エージェントの自動更新を有効にする
-このバージョンの Debian には 2.0.16 以上のバージョンがないため、自動更新は使用できません。 上記のコマンドの出力で、パッケージが最新であるかどうかがわかります。
-
-### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 “Jessie” / Debian 9 “Stretch”
-
-#### <a name="check-your-current-package-version"></a>現在のパッケージのバージョンを確認する
-
-```bash
-apt list --installed | grep waagent
-```
-
-#### <a name="update-package-cache"></a>パッケージ キャッシュを更新する
-
-```bash
-sudo apt-get -qq update
-```
-
-#### <a name="install-the-latest-package-version"></a>最新バージョンのパッケージをインストールする
-
-```bash
-sudo apt-get install waagent
-```
-#### <a name="ensure-auto-update-is-enabled"></a>自動更新が有効になっていることを確認する 
-
-まず、次を実行して自動更新が有効になっているかどうかを確認します。
-
-```bash
-cat /etc/waagent.conf
-```
-
-'AutoUpdate.Enabled' を検索する。 この出力がある場合、自動更新は有効になっています。
-
-```bash
-# AutoUpdate.Enabled=y
-AutoUpdate.Enabled=y
-```
-
-有効にするには、次を実行します。
-
-```bash
-sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-```
-
-### <a name="restart-the-waagent-service"></a>waagent サービスを再起動します
-
-```
-sudo systemctl restart walinuxagent.service
 ```
 
 ## <a name="red-hat--centos"></a>Red Hat / CentOS
@@ -350,7 +281,76 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo systemctl restart waagent.service
 ```
 
-## <a name="oracle-6-and-7"></a>Oracle 6 および 7
+## <a name="debian"></a>Debian
+
+### <a name="debian-7-jesse-debian-7-stretch"></a>Debian 7 “Jesse”/ Debian 7 "Stretch"
+
+#### <a name="check-your-current-package-version"></a>現在のパッケージのバージョンを確認する
+
+```bash
+dpkg -l | grep waagent
+```
+
+#### <a name="update-package-cache"></a>パッケージ キャッシュを更新する
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>最新バージョンのパッケージをインストールする
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="enable-agent-auto-update"></a>エージェントの自動更新を有効にする
+このバージョンの Debian には 2.0.16 以上のバージョンがないため、自動更新は使用できません。 上記のコマンドの出力で、パッケージが最新であるかどうかがわかります。
+
+
+
+### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 “Jessie” / Debian 9 “Stretch”
+
+#### <a name="check-your-current-package-version"></a>現在のパッケージのバージョンを確認する
+
+```bash
+apt list --installed | grep waagent
+```
+
+#### <a name="update-package-cache"></a>パッケージ キャッシュを更新する
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>最新バージョンのパッケージをインストールする
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="ensure-auto-update-is-enabled"></a>自動更新が有効になっていることを確認する
+まず、次を実行して自動更新が有効になっているかどうかを確認します。
+
+```bash
+cat /etc/waagent.conf
+```
+
+'AutoUpdate.Enabled' を検索する。 この出力がある場合、自動更新は有効になっています。
+
+```bash
+AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+有効にするには、次を実行します。
+
+```bash
+sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+Restart the waagent service
+sudo systemctl restart walinuxagent.service
+```
+
+## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 および Oracle Linux 7
 
 Oracle Linux の場合、 `Addons` リポジトリが有効になっていることを確認します。 `/etc/yum.repos.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または`/etc/yum.repos.d/public-yum-ol7.repo` ファイル (Oracle Linux) を選択して編集し、このファイルの **[ol6_addons]** または **[ol7_addons]** の下の行 `enabled=0` を `enabled=1` に変更します。
 
@@ -418,7 +418,7 @@ cd WALinuxAgent-2.2.14
 ### <a name="2-install-the-azure-linux-agent"></a>2.Azure Linux エージェントをインストールします。
 
 #### <a name="for-version-22x-use"></a>バージョン 2.2.x の場合は次を使用します。
-パッケージ `setuptools` を先にインストールする必要がある場合は、 [こちら](https://pypi.python.org/pypi/setuptools)をご覧ください。 次に、以下を実行します。
+パッケージ `setuptools` を先にインストールする必要がある場合は、 [こちら](https://pypi.python.org/pypi/setuptools)をご覧ください。 次に、次のコマンドを実行します。
 
 ```bash
 sudo python setup.py install
@@ -445,7 +445,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>手順 3.waagent サービスを再起動します
+### <a name="3-restart-the-waagent-service"></a>3.waagent サービスを再起動します
 ほとんどの Linux ディストリビューションでは、次のコマンドを使用します。
 
 ```bash

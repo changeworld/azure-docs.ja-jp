@@ -1,45 +1,34 @@
 ---
-title: このクイック スタートは、Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
-description: このクイック スタートでは、グループ登録と個別登録の両方を使用します。 このクイック スタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します。
+title: Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
+description: このクイック スタートでは、グループ登録と個別登録の両方を使用します。 このクイックスタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/20/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412773"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77604906"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート: Java を使用して X.509 デバイスを Device Provisioning Service に登録する
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート:Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-このクイック スタートでは、Java を使用して X.509 のシミュレートされたデバイスのグループを Azure IoT Hub Device Provisioning Service にプログラムで登録する方法を示します。 デバイスは、[登録グループ](concepts-service.md#enrollment-group)または[個々の登録](concepts-service.md#individual-enrollment)の作成によりプロビジョニング サービス インスタンスに登録されます。 このクイック スタートは、両方の種類の登録を作成する方法を示します。 登録は [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) と Java のサンプル アプリケーションを使用して作成されます。 
-
-このクイック スタートでは、IoT ハブと Device Provisioning Service インスタンスを既に作成していることを前提としています。 これらのリソースをまだ作成していない場合は、この記事を進める前に「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」のクイック スタートを完了してください。
-
-Java Service SDK は Windows および Linux マシンの両方で動作しますが、この記事では、Windows 開発マシンを使用して登録プロセスの手順を説明します。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+このクイックスタートでは、Java を使用して X.509 のシミュレートされたデバイスのグループを Azure IoT Hub Device Provisioning Service にプログラムで登録します。 デバイスは、登録グループまたは個別登録を作成することによってプロビジョニング サービス インスタンスに登録されます。 このクイックスタートでは、Java Service SDK とサンプル Java アプリケーションを使用して、両方の種類の登録を作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](https://aka.ms/azure-jdks) のインストール。
-* [Maven 3](https://maven.apache.org/download.cgi) のインストール。 現在使用している Maven のバージョンは、次を実行することで確認できます。
-
-    ```cmd/sh
-    mvn --version
-    ```
-
-* [Git](https://git-scm.com/download/) のインストール。
-
+- [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks)。 このクイックスタートの中で、後から [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) をインストールします。 Windows と Linux のどちらでも使用できます。 このクイックスタートでは Windows を使用します。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/).
 
 <a id="javasample"></a>
 
@@ -52,7 +41,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 
 以降の手順では、X.509 デバイスのプロビジョニングの詳細をサンプル コードに追加する方法について説明します。 
 
-1. コマンド プロンプトを開きます。 Java Service SDK を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
+1. コマンド プロンプトを開きます。 [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) を使用して、デバイス登録コード サンプルの GitHub リポジトリを複製します。
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -89,9 +78,9 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
                 ```
 
         5. プロンプトが表示されたら、必要に応じて証明書の _[Common Name]\(共通名\)_ を入力します。
-        6. このツールで、**[Client Cert]\(クライアント証明書\)**、**[Client Cert Private Key]\(クライアント証明書の秘密キー\)**、**[Root Cert]\(ルート証明書\)** がローカルに生成されます。
+        6. このツールで、 **[Client Cert]\(クライアント証明書\)** 、 **[Client Cert Private Key]\(クライアント証明書の秘密キー\)** 、 **[Root Cert]\(ルート証明書\)** がローカルに生成されます。
         7. **_-----BEGIN CERTIFICATE-----_** から **_-----END CERTIFICATE-----_** の行を含めて **[Root Cert]\(ルート証明書\)** をコピーします。 
-        8. 次のように、**[Root Cert]\(ルート証明書\)** の値をパラメーター **PUBLIC_KEY_CERTIFICATE_STRING** に割り当てます。
+        8. 次のように、 **[Root Cert]\(ルート証明書\)** の値をパラメーター **PUBLIC_KEY_CERTIFICATE_STRING** に割り当てます。
 
                 ```Java
                 private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -113,7 +102,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
  
     3. 必要に応じて、サンプル コードでプロビジョニング サービスを構成することができます。
         - この構成をサンプルに追加するには、次の手順を実行します。
-            1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、**[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
+            1. [Azure Portal](https://portal.azure.com) でプロビジョニング サービスにリンクされている IoT Hub に移動します。 ハブの **[概要]** タブを開き、 **[ホスト名]** をコピーします。 この **[ホスト名]** を *IOTHUB_HOST_NAME* パラメーターに割り当てます。
 
                 ```Java
                 private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
@@ -142,6 +131,13 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 
 ## <a name="build-and-run-sample-group-enrollment"></a>サンプル グループの登録をビルドして実行する
 
+Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
+
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
+
+この手順では、登録グループを使用します。 次のセクションでは、個別登録を使用します。
+
 1. コマンド ウィンドウを開き、フォルダー **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** に移動します。
 
 2. 次のコマンドを使用して、サンプル コードをビルドします。
@@ -150,7 +146,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
     mvn install -DskipTests
     ```
 
-   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な Java Service SDK のバイナリが含まれています。 前のセクションで _X.509 証明書ジェネレーター_ を実行した場合、このパッケージは既にマシンにダウンロードされています。 
+   このコマンドで、Maven パッケージ [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) がマシンにダウンロードされます。 このパッケージには、サンプル コードのビルドに必要な Java Service SDK のバイナリが含まれています。 前のセクションで _X.509 証明書ジェネレーター_ を実行した場合、このパッケージは既にマシンにダウンロードされています。 
 
 3. コマンド ウィンドウで次のコマンドを使用してサンプルを実行します。
 
@@ -202,14 +198,14 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 4. 「[Build and run the sample code for individual enrollment](quick-enroll-device-tpm-java.md#runjavasample)」(個々の登録のサンプル コードをビルドして実行する) の手順に従って、*個々の登録*のサンプル ファイルを保存し、ビルドして実行します。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+Java サービスのサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
-1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、**[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
+1. Azure portal で Device Provisioning Service に移動し、 **[登録を管理します]** 、 **[登録グループ]** タブの順に選択します。このクイックスタートを使用して登録した X.509 デバイスの "*グループ名*" の隣にあるチェック ボックスをオンにして、ペイン上部にある **[削除]** を押します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、シミュレートされた X.509 デバイスのグループを Device Provisioning Service に登録しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]

@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs での VM および環境の作成の失敗に関するトラブルシューティング | Microsoft Docs
+title: Azure DevTest Labs での VM および環境の失敗に関するトラブルシューティング
 description: Azure DevTest Labs での仮想マシン (VM) および 環境の作成の失敗に関するトラブルシューティングの方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,22 +10,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7baa5e4c113e6c21c6123ac7c8399533a7dfb358
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410297"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76166345"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure DevTest Labs での仮想マシン (VM) および 環境の作成の失敗に関するトラブルシューティング
 DevTest Labs は、マシン名が無効であるか、ラボ ポリシーに違反する可能性がある場合に警告を表示します。 問題が発生したことを伝えるラボ VM または環境のステータスの隣に、赤色の `X` が表示されることがあります。  この記事では、根本的な問題を検索し、できれば今後の問題を回避するために使用できるいくつかのこつを示します。
 
 ## <a name="portal-notifications"></a>Azure portal の通知
-Azure portal を使用している場合、最初に表示される場所が**通知パネル**です。  **ベルのアイコン**をクリックすることによりメイン コマンド バーで使用できる通知パネルには、ラボ VM または環境の作成が成功したかどうかが表示されます。  失敗した場合、作成エラーに関連付けられているエラー メッセージを参照してください。 多くの場合、問題解決に役立つ追加情報はこの詳細から得られます。 次の例では、仮想マシンの作成は、コアを使い果たしたために失敗しました。 詳細メッセージには、問題を修正し、コア クォータの引き上げを要求する方法が示されています。
+Azure portal を使用している場合、最初に表示される場所が**通知パネル**です。  **ベルのアイコン**をクリックすることによりメイン コマンド バーで使用できる通知パネルには、ラボ VM または環境の作成が成功したかどうかが表示されます。  失敗した場合、作成エラーに関連付けられているエラー メッセージを参照してください。 多くの場合、問題解決に役立つ追加情報はこの詳細から得られます。 次の例では、仮想マシンの作成は、コアを使い果たしたために失敗しました。 詳細メッセージには、問題を修正し、コア クォータの引き上げを要求する方法が示されています。
 
 ![Microsoft Azure portal 通知](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+
+### <a name="vm-in-corruption-state"></a>破損状態の VM
+ラボ内の VM の状態が **[破損]** の場合、基になる VM が **[仮想マシン]** ページから削除されている可能性があります。ユーザーはこのページに **[仮想マシン]** ページから移動できます ([DevTest Labs] ページからではありません)。 [DevTest Labs] で、ラボから VM を削除してクリーンアップします。 次に、ラボで VM を再作成します。 
+
+![破損状態の VM](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
+
 
 
 ## <a name="activity-logs"></a>アクティビティ ログ
@@ -34,7 +40,7 @@ VM または環境の作成を試みてからしばらくの間、失敗を調�
 ## <a name="activity-logs-for-virtual-machines"></a>仮想マシンのアクティビティ ログ
 
 1. ラボのホーム ページで VM を選択して **[仮想マシン]** ページを起動します。
-2. **[仮想マシン]** ページの左メニューの **[監視]** セクションで、**[アクティビティ ログ]** を選択して、VM に関連付けられているすべてのログを表示します。
+2. **[仮想マシン]** ページの左メニューの **[監視]** セクションで、 **[アクティビティ ログ]** を選択して、VM に関連付けられているすべてのログを表示します。
 3. アクティビティ ログ項目では、失敗した操作を選択します。 通常、失敗した操作は、`Write Virtualmachines` と呼ばれます。
 4. 右ウィンドウで [JSON] タブに切り替えます。ログの JSON ビューで詳細を確認します。
 
@@ -70,5 +76,5 @@ VM または環境の作成を試みてからしばらくの間、失敗を調�
 4. **[デプロイ]** ページで、失敗した操作の **[操作の詳細]** リンクを選択します。
 5. **[操作の詳細]** ウィンドウで、失敗した操作の詳細を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アーティファクトの失敗に関するトラブルシューティング](devtest-lab-troubleshoot-artifact-failure.md)を参照してください

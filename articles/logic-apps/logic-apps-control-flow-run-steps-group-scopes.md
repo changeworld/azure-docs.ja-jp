@@ -1,23 +1,19 @@
 ---
-title: グループの状態に基づいてアクションを実行するスコープを追加する - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps のグループ アクションの状態に基づいてワークフロー アクションを実行するスコープを作成する方法です
+title: スコープ別にアクションをグループ化して実行する
+description: Azure Logic Apps でグループの状態に基づいて実行されるスコープ付きアクションを作成する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882414"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74791494"
 ---
-# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを利用し、グループの状態に基づいてアクションを実行する
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
 
 別のアクションのグループが成功または失敗した後にのみアクションを実行するには、そのアクションを "*スコープ*" の中にグループ化します。 この構造は、アクションを論理グループとして整理し、そのグループの状態を評価して、そのスコープの状態に基づいてアクションを実行するときに便利です。 そのスコープ内のすべてのアクションの実行が完了すると、スコープも独自の状態を取得します。 たとえば、[例外とエラー処理](../logic-apps/logic-apps-exception-handling.md#scopes)を実装するときにスコープを使用できます。 
 
@@ -54,7 +50,7 @@ ms.locfileid: "58882414"
 
 1. まだサインインしていない場合は、<a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。 空のロジック アプリを作成します。
 
-1. **[スケジュール - 繰り返し]** トリガーを追加します。**[間隔]** は "1"、**[頻度]** は [分] に、それぞれ設定します
+1. **[スケジュール - 繰り返し]** トリガーを追加します。 **[間隔]** は "1"、 **[頻度]** は [分] に、それぞれ設定します
 
    ![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -65,19 +61,19 @@ ms.locfileid: "58882414"
 
    1. Bing 地図の接続が存在しない場合、接続を作成するように求められます。
 
-      | Setting | 値 | 説明 |
+      | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
       | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
       ||||  
 
-   1. この画像の下の表に示すように、**[Get route]\(ルートを取得する\)** アクションを設定します。
+   1. この画像の下の表に示すように、 **[Get route]\(ルートを取得する\)** アクションを設定します。
 
       ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
       これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://msdn.microsoft.com/library/ff701717.aspx)」を参照してください。
 
-      | Setting | 値 | 説明 |
+      | 設定 | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **通過地点 1** | <*start*> | ルートの出発地を入力します。 | 
       | **通過地点 2** | <*end*> | ルートの目的地を入力します。 | 
@@ -92,13 +88,13 @@ ms.locfileid: "58882414"
 1. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする[条件を追加](../logic-apps/logic-apps-control-flow-conditional-statement.md)します。 
    この例に対して、次の手順に従います。
 
-   1. 条件の名前を次の文言に変更します:**If traffic time is more than specified time (移動時間が指定した時間を超える場合)**
+   1. 条件の名前を次の説明に変更します: **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**
 
-   1. 左端の列で、**[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
+   1. 左端の列で、 **[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、 **[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
 
       ![条件をビルドする](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
 
-   1. 真ん中のボックスで、**[次の値より大きい]** 演算子を選択します。
+   1. 真ん中のボックスで、 **[次の値より大きい]** 演算子を選択します。
 
    1. 右端の列にこの比較値を入力します。これは秒単位であり、10 分であれば次の値になります:**600**
 
@@ -130,11 +126,11 @@ ms.locfileid: "58882414"
 
    1. カーソルが関数の括弧内にある状態で **[動的コンテンツ]** を選択すると、動的コンテンツ リストが表示されます。 
    
-   1. **[ルートを取得する]** セクションから、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します。
+   1. **[ルートを取得する]** セクションから、 **[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します。
 
       ![[Travel Duration Traffic]\(移動時間の交通量\) フィールドを選択する](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、**[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
+   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、 **[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -144,7 +140,7 @@ ms.locfileid: "58882414"
 
       ![式を仕上げる](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
 
-   1. 完了したら、**[OK]** を選びます。
+   1. 完了したら、 **[OK]** を選びます。
 
    <!-- markdownlint-disable MD038 -->
    1. 式が解決された後は、先頭にスペースを入れたテキスト ``` minutes``` を追加します
@@ -154,7 +150,7 @@ ms.locfileid: "58882414"
        ![完成した[本文] フィールド](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、スコープを追加して特定のアクションをグループ化し、それらの状態を評価します。
 
@@ -165,7 +161,7 @@ ms.locfileid: "58882414"
 1. 必要なワークフローの場所にスコープを追加します。 たとえば、ロジック アプリ ワークフローに既存の手順間のスコープを追加するには、次の手順を行います。 
 
    1. スコープを追加する場所の矢印の上にポインターを移動します。 
-   **プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
+   **プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
       ![スコープを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -177,22 +173,22 @@ ms.locfileid: "58882414"
 1. ここで、スコープ内で実行するステップを追加するか、既存のステップをドラッグします。 この例では、次のアクションをスコープにドラッグします。
       
    * **[Get route]\(ルートを取得する\)**
-   * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**。**true** と **false** の両方のブランチが含まれます。
+   * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)** 。**true** と **false** の両方のブランチが含まれます。
 
    これでロジック アプリは次の例のようになります。
 
    ![スコープが追加された状態](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前を次の文言に変更します:**スコープが失敗した場合**
+1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前を次の説明に変更します: **スコープが失敗した場合**
 
    ![スコープの状態をチェックする条件を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
 1. 条件で、スコープの状態が "失敗" または "中止" に相当するかどうかを判断する次のような式を追加します。 
 
-   1. 別の行を追加するには、**[追加]** を選択します。 
+   1. 別の行を追加するには、 **[追加]** を選択します。 
 
    1. 各行で左のボックス内をクリックすると、動的コンテンツ リストが表示されます。 
-   動的コンテンツ リストから **[式]** を選択します。 編集ボックスにこの式を入力し、**[OK]** を選択します。 
+   動的コンテンツ リストから **[式]** を選択します。 編集ボックスにこの式を入力し、 **[OK]** を選択します。 
    
       `result('Scope')[0]['status']`
 
@@ -209,7 +205,7 @@ ms.locfileid: "58882414"
 
       次に、条件によってスコープの状態が確認され、後の手順で定義する照合アクションが実行されるように、条件の `runAfter` プロパティを設定します。
 
-   1. **[If scope failed]** 条件で**省略記号** (...) ボタンを選択し、**[実行条件の構成]** を選択します。
+   1. **[If scope failed]** 条件で**省略記号** (...) ボタンを選択し、 **[実行条件の構成]** を選択します。
 
       !["runAfter" プロパティを構成する](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
@@ -217,14 +213,14 @@ ms.locfileid: "58882414"
 
       ![スコープの状態を選択する](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
-   1. 完了したら、**[完了]** を選択します。 
+   1. 完了したら、 **[完了]** を選択します。 
    条件に "情報" アイコンが表示されます。
 
 1. **[If true]\(true の場合\)** ブランチと **[If false]\(false の場合\)** ブランチに、スコープの状態に基づいて実行するアクション (例: 電子メールまたはメッセージを送信する) を追加します。
 
    ![スコープの状態に基づいて行うアクションを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 完成したロジック アプリは次の例のようになります。
 
@@ -232,7 +228,7 @@ ms.locfileid: "58882414"
 
 ## <a name="test-your-work"></a>作業をテストする
 
-デザイナーのツールバーで、**[実行]** を選択します。 すべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。 いずれかのアクションが失敗した場合は、[Scope failed]\(スコープが失敗した場合\) のメッセージが送信されます。 
+デザイナーのツールバーで、 **[実行]** を選択します。 すべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。 いずれかのアクションが失敗した場合は、[Scope failed]\(スコープが失敗した場合\) のメッセージが送信されます。 
 
 <a name="scopes-json"></a>
 
@@ -395,7 +391,7 @@ ms.locfileid: "58882414"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)

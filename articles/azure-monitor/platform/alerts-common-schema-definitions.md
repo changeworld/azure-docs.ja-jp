@@ -1,31 +1,26 @@
 ---
-title: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義
-description: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義について説明します
-author: anantr
-services: azure-monitor
-ms.service: azure-monitor
+title: Azure Monitor のアラート スキーマ定義
+description: Azure Monitor の共通アラート スキーマ定義について
+author: ofirmanor
 ms.topic: conceptual
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f0c99899b647c677025dbb38480b4d7f64c24fa
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775748"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739990"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
-この記事では、Webhooks、Logic Apps、Azure Functions、Automation Runbooks の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
+この記事では、Azure Monitor や、Webhooks、Azure Logic Apps、Azure Functions、Azure Automation Runbook の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
 
-## <a name="overview"></a>概要
+すべてのアラート インスタンスでは、影響を受けたリソースおよびアラートの原因が記述されています。 これらのインスタンスは、共通スキーマの以下のセクションに記述されています。
+* **要点**: すべてのアラートの種類において共通の一連の標準化されたフィールド。これらのフィールドでは、アラート対象のリソースと、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
+* **アラート コンテキスト**: アラートの原因が記述されているフィールドと、アラートの種類に基づいて異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
 
-すべてのアラート インスタンスでは、**影響を受けたリソース**および**アラートの原因**が記述されており、これらのインスタンスは次のセクションの共通スキーマで記述されています。
-* **要点**: すべてのアラートの種類において共通の一連の**標準化されたフィールド**。これらのフィールドでは、アラート対象の**リソース**と、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
-* **アラート コンテキスト**: **アラートの原因**が記述されているフィールドと、**アラートの種類に基づいて**異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
-
-##### <a name="sample-alert-payload"></a>アラートのペイロードのサンプル
+**アラートのペイロードのサンプル**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +69,25 @@ ms.locfileid: "60775748"
 }
 ```
 
-## <a name="essentials-fields"></a>"essentials" のフィールド
+## <a name="essentials"></a>要点
 
 | フィールド | 説明|
 |:---|:---|
 | alertId | アラート インスタンスを一意に識別する GUID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
-| Severity | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、Sev4 |
-| signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、Activity Log |
-| monitorCondition | アラートが発生すると、アラートの監視条件は "Fired" に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は "Resolved" に設定されます。   |
+| 重大度 | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、または Sev4。 |
+| signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、または Activity Log。 |
+| monitorCondition | アラートが発生すると、アラートの監視条件は **Fired** に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は **Resolved** に設定されます。   |
 | monitoringService | アラートを生成した監視サービスまたはソリューション。 アラート コンテキストのフィールドは、監視サービスによって決まります。 |
-| alertTargetIds | アラートの影響を受けたすべてのターゲットの ARM ID のリスト。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペース/アプリケーションになります。 |
-| originAlertId | 生成元の監視サービスによって生成された警告インスタンスの ID。 |
-| firedDateTime | 警告インスタンスが生成された日時 (UTC) |
-| resolvedDateTime | アラート インスタンスの監視状態が "Resolved" に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
-| description | アラート ルールで定義されている説明 |
+| alertTargetIds | アラートの影響を受けるターゲットである Azure Resource Manager ID の一覧。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペースまたはアプリケーションになります。 |
+| originAlertId | 生成元の監視サービスによって生成された、アラート インスタンスの ID。 |
+| firedDateTime | アラート インスタンスが発生した日時 (協定世界時 (UTC))。 |
+| resolvedDateTime | アラート インスタンスの監視状態が **Resolved** に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
+| description | アラート ルールで定義されている説明。 |
 |essentialsVersion| essentials セクションのバージョン番号。|
-|alertContextVersion | alertContext セクションのバージョン番号 |
+|alertContextVersion | `alertContext` セクションのバージョン番号。 |
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "essentials": {
@@ -114,13 +109,13 @@ ms.locfileid: "60775748"
 }
 ```
 
-## <a name="alert-context-fields"></a>"alertContext" のフィールド
+## <a name="alert-context"></a>アラート コンテキスト
 
 ### <a name="metric-alerts"></a>メトリック アラート
 
-#### <a name="monitoringservice--platform"></a>monitoringService = "Platform"
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -154,57 +149,143 @@ ms.locfileid: "60775748"
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> 既存のログ アラートにカスタム JSON オプションを使用した場合、カスタマイズ内容は共通スキーマに保存されません。
+> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludeSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get) と組み合わせて検索クエリを使用する必要があります。 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
-      "SearchQuery": "search * \n| where Type == \"Heartbeat\" \n| where Category == \"Direct Agent\" \n| where TimeGenerated > ago(30m) ",
-      "SearchIntervalStartTimeUtc": "3/22/2019 1:36:31 PM",
-      "SearchIntervalEndtimeUtc": "3/22/2019 1:51:31 PM",
-      "ResultCount": 15,
-      "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2Fpipelinealertrg%2Fproviders%2FMicrosoft.OperationalInsights%2Fworkspaces%2FINC-OmsAlertRunner%22%7D%5D%7D/query/search%20%2A%20%0A%7C%20where%20Type%20%3D%3D%20%22Heartbeat%22%20%0A%7C%20where%20Category%20%3D%3D%20%22Direct%20Agent%22%20%0A%7C%20where%20TimeGenerated%20%3E%20%28datetime%282019-03-22T13%3A51%3A31.0000000%29%20-%2030m%29%20%20/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a31.0000000Z%2f2019-03-22T13%3a51%3a31.0000000Z",
-      "SeverityDescription": "Warning",
-      "WorkspaceId": "2a1f50a7-ef97-420c-9d14-938e77c2a929",
-      "SearchIntervalDurationMin": "15",
-      "AffectedConfigurationItems": [
-        "INC-Gen2Alert"
+    "SearchQuery": "search * \n| where Type == \"Heartbeat\" \n| where Category == \"Direct Agent\" \n| where TimeGenerated > ago(30m) ",
+    "SearchIntervalStartTimeUtc": "3/22/2019 1:36:31 PM",
+    "SearchIntervalEndtimeUtc": "3/22/2019 1:51:31 PM",
+    "ResultCount": 2,
+    "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2Fpipelinealertrg%2Fproviders%2FMicrosoft.OperationalInsights%2Fworkspaces%2FINC-OmsAlertRunner%22%7D%5D%7D/query/search%20%2A%20%0A%7C%20where%20Type%20%3D%3D%20%22Heartbeat%22%20%0A%7C%20where%20Category%20%3D%3D%20%22Direct%20Agent%22%20%0A%7C%20where%20TimeGenerated%20%3E%20%28datetime%282019-03-22T13%3A51%3A31.0000000%29%20-%2030m%29%20%20/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a31.0000000Z%2f2019-03-22T13%3a51%3a31.0000000Z",
+    "SeverityDescription": "Warning",
+    "WorkspaceId": "2a1f50a7-ef97-420c-9d14-938e77c2a929",
+    "SearchIntervalDurationMin": "15",
+    "AffectedConfigurationItems": [
+      "INC-Gen2Alert"
+    ],
+    "SearchIntervalInMinutes": "15",
+    "Threshold": 10000,
+    "Operator": "Less Than",
+    "SearchResults": {
+      "tables": [
+        {
+          "name": "PrimaryResult",
+          "columns": [
+            {
+              "name": "$table",
+              "type": "string"
+            },
+            {
+              "name": "Id",
+              "type": "string"
+            },
+            {
+              "name": "TimeGenerated",
+              "type": "datetime"
+            }
+          ],
+          "rows": [
+            [
+              "Fabrikam",
+              "33446677a",
+              "2018-02-02T15:03:12.18Z"
+            ],
+            [
+              "Contoso",
+              "33445566b",
+              "2018-02-02T15:16:53.932Z"
+            ]
+          ]
+        }
       ],
-      "SearchIntervalInMinutes": "15",
-      "Threshold": 10000,
-      "Operator": "Less Than"
-    }
+      "dataSources": [
+        {
+          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-60e7496dd873/resourcegroups/nrt-tip-kc/providers/microsoft.operationalinsights/workspaces/nrt-tip-kc",
+          "tables": [
+            "Heartbeat"
+          ]
+        }
+      ]
+    },
+    "IncludeSearchResults": "True",
+    "AlertType": "Number of results"
+  }
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = "Application Insights"
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
-      "SearchQuery": "search *",
-      "SearchIntervalStartTimeUtc": "3/22/2019 1:36:33 PM",
-      "SearchIntervalEndtimeUtc": "3/22/2019 1:51:33 PM",
-      "ResultCount": 0,
-      "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2FPipeLineAlertRG%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FWEU-AIRunner%22%7D%5D%7D/query/search%20%2A/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a33.0000000Z%2f2019-03-22T13%3a51%3a33.0000000Z",
-      "SearchIntervalDurationMin": "15",
-      "SearchIntervalInMinutes": "15",
-      "Threshold": 10000,
-      "Operator": "Less Than",
-      "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6"
-    }
+    "SearchQuery": "search *",
+    "SearchIntervalStartTimeUtc": "3/22/2019 1:36:33 PM",
+    "SearchIntervalEndtimeUtc": "3/22/2019 1:51:33 PM",
+    "ResultCount": 2,
+    "LinkToSearchResults": "https://portal.azure.com#@72f988bf-86f1-41af-91ab-2d7cd011db47/blade/Microsoft_OperationsManagementSuite_Workspace/AnalyticsBlade/initiator/AnalyticsShareLinkToQuery/isQueryEditorVisible/true/scope/%7B%22resources%22%3A%5B%7B%22resourceId%22%3A%22%2Fsubscriptions%<subscription ID>%2FresourceGroups%2FPipeLineAlertRG%2Fproviders%2Fmicrosoft.insights%2Fcomponents%2FWEU-AIRunner%22%7D%5D%7D/query/search%20%2A/isQuerybase64Compressed/false/timespanInIsoFormat/2019-03-22T13%3a36%3a33.0000000Z%2f2019-03-22T13%3a51%3a33.0000000Z",
+    "SearchIntervalDurationMin": "15",
+    "SearchIntervalInMinutes": "15",
+    "Threshold": 10000,
+    "Operator": "Less Than",
+    "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
+    "SearchResults": {
+      "tables": [
+        {
+          "name": "PrimaryResult",
+          "columns": [
+            {
+              "name": "$table",
+              "type": "string"
+            },
+            {
+              "name": "Id",
+              "type": "string"
+            },
+            {
+              "name": "TimeGenerated",
+              "type": "datetime"
+            }
+          ],
+          "rows": [
+            [
+              "Fabrikam",
+              "33446677a",
+              "2018-02-02T15:03:12.18Z"
+            ],
+            [
+              "Contoso",
+              "33445566b",
+              "2018-02-02T15:16:53.932Z"
+            ]
+          ]
+        }
+      ],
+      "dataSources": [
+        {
+          "resourceId": "/subscriptions/a5ea27e2-7482-49ba-90b3-60e7496dd873/resourcegroups/nrt-tip-kc/providers/microsoft.operationalinsights/workspaces/nrt-tip-kc",
+          "tables": [
+            "Heartbeat"
+          ]
+        }
+      ]
+    },
+    "IncludeSearchResults": "True",
+    "AlertType": "Number of results"
+  }
 }
 ```
 
 ### <a name="activity-log-alerts"></a>アクティビティ ログ アラート
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = "Activity Log - Administrative"
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -229,8 +310,177 @@ ms.locfileid: "60775748"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-- [共通アラート スキーマの詳細を確認する](https://aka.ms/commonAlertSchemaDocs)
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "authorization": {
+      "action": "Microsoft.Resources/checkPolicyCompliance/read",
+      "scope": "/subscriptions/<GUID>"
+    },
+    "channels": "Operation",
+    "claims": "{\"aud\":\"https://management.azure.com/\",\"iss\":\"https://sts.windows.net/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
+    "caller": "<GUID>",
+    "correlationId": "<GUID>",
+    "eventSource": "Policy",
+    "eventTimestamp": "2019-08-25T11:11:34.2269098+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Warning",
+    "operationName": "Microsoft.Authorization/policies/audit/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "isComplianceCheck": "True",
+      "resourceLocation": "eastus2",
+      "ancestors": "<GUID>",
+      "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/<GUID>/\",\"policySetDefinitionId\":\"/providers/Microsoft.Authorization/policySetDefinitions/<GUID>/\",\"policyDefinitionReferenceId\":\"vulnerabilityAssessmentMonitoring\",\"policySetDefinitionName\":\"<GUID>\",\"policyDefinitionName\":\"<GUID>\",\"policyDefinitionEffect\":\"AuditIfNotExists\",\"policyAssignmentId\":\"/subscriptions/<GUID>/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn/\",\"policyAssignmentName\":\"SecurityCenterBuiltIn\",\"policyAssignmentScope\":\"/subscriptions/<GUID>\",\"policyAssignmentSku\":{\"name\":\"A1\",\"tier\":\"Standard\"},\"policyAssignmentParameters\":{}}]"
+    },
+    "status": "Succeeded",
+    "subStatus": "",
+    "submissionTimestamp": "2019-08-25T11:12:46.1557298+00:00"
+  }
+}
+```
 
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "claims": "{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"}",
+    "caller": "Microsoft.Insights/autoscaleSettings",
+    "correlationId": "<GUID>",
+    "eventSource": "Autoscale",
+    "eventTimestamp": "2019-08-21T16:17:47.1551167+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Insights/AutoscaleSettings/Scaleup/Action",
+    "operationId": "<GUID>",
+    "properties": {
+      "description": "The autoscale engine attempting to scale resource '/subscriptions/d<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS' from 9 instances count to 10 instances count.",
+      "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
+      "oldInstancesCount": "9",
+      "newInstancesCount": "10",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
+    },
+    "status": "Succeeded",
+    "submissionTimestamp": "2019-08-21T16:17:47.2410185+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "channels": "Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "Security",
+    "eventTimestamp": "2019-08-26T08:34:14+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Security/locations/alerts/activate/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "threatStatus": "Quarantined",
+      "category": "Virus",
+      "threatID": "2147519003",
+      "filePath": "C:\\AlertGeneration\\test.eicar",
+      "protectionType": "Windows Defender",
+      "actionTaken": "Blocked",
+      "resourceType": "Virtual Machine",
+      "severity": "Low",
+      "compromisedEntity": "testVM",
+      "remediationSteps": "[\"No user action is necessary\"]",
+      "attackedResourceType": "Virtual Machine"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-08-26T09:28:58.3019107+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "authorization": null,
+    "channels": 1,
+    "claims": null,
+    "caller": null,
+    "correlationId": "f3cf2430-1ee3-4158-8e35-7a1d615acfc7",
+    "eventSource": 2,
+    "eventTimestamp": "2019-06-24T11:31:19.0312699+00:00",
+    "httpRequest": null,
+    "eventDataId": "<GUID>",
+    "level": 3,
+    "operationName": "Microsoft.ServiceHealth/maintenance/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "title": "Azure SQL DW Scheduled Maintenance Pending",
+      "service": "SQL Data Warehouse",
+      "region": "East US",
+      "communication": "<MESSAGE>",
+      "incidentType": "Maintenance",
+      "trackingId": "<GUID>",
+      "impactStartTime": "2019-06-26T04:00:00Z",
+      "impactMitigationTime": "2019-06-26T12:00:00Z",
+      "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"East US\"}],\"ServiceName\":\"SQL Data Warehouse\"}]",
+      "impactedServicesTableRows": "<tr>\r\n<td align='center' style='padding: 5px 10px; border-right:1px solid black; border-bottom:1px solid black'>SQL Data Warehouse</td>\r\n<td align='center' style='padding: 5px 10px; border-bottom:1px solid black'>East US<br></td>\r\n</tr>\r\n",
+      "defaultLanguageTitle": "Azure SQL DW Scheduled Maintenance Pending",
+      "defaultLanguageContent": "<MESSAGE>",
+      "stage": "Planned",
+      "communicationId": "<GUID>",
+      "maintenanceId": "<GUID>",
+      "isHIR": "false",
+      "version": "0.1.1"
+    },
+    "status": "Active",
+    "subStatus": null,
+    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00",
+    "ResourceType": null
+  }
+}
+```
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "ResourceHealth",
+    "eventTimestamp": "2019-06-24T15:42:54.074+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Resourcehealth/healthevent/Activated/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "title": "This virtual machine is stopping and deallocating as requested by an authorized user or process",
+      "details": null,
+      "currentHealthStatus": "Unavailable",
+      "previousHealthStatus": "Available",
+      "type": "Downtime",
+      "cause": "UserInitiated"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-06-24T15:45:20.4488186+00:00"
+  }
+}
+```
+
+
+## <a name="next-steps"></a>次のステップ
+
+- [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)について学習します。
+- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)について学習します。 
 

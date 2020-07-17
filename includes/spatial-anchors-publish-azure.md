@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305214"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67180864"
 ---
 ### <a name="open-the-publish-wizard"></a>発行ウィザードを開く
 
-**ソリューション エクスプローラー**で、**SharingService** プロジェクトを右クリックし、**[発行]** を選択します。
+**ソリューション エクスプローラー**で、**SharingService** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-発行ウィザードが起動します。 **[App Service]** > **[発行]** の順に選択し、**[App Service の作成]** ダイアログ ボックスを開きます。
+発行ウィザードが起動します。 **[App Service]**  >  **[発行]** の順に選択し、 **[App Service の作成]** ダイアログ ボックスを開きます。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -25,13 +25,13 @@ ms.locfileid: "58305214"
 > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
 >
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
 **[リソース グループ]** の横にある **[新規]** をクリックします。
 
-リソース グループに **myResourceGroup** という名前を付けて、**[OK]** をクリックします。
+リソース グループに **myResourceGroup** という名前を付けて、 **[OK]** をクリックします。
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "58305214"
 
 **[ホスティング プランの構成]** ダイアログ ボックスで、以下の設定を使用します。
 
-| Setting | 推奨値 | 説明 |
+| 設定 | 推奨値 | 説明 |
 |-|-|-|
 |App Service プラン| MySharingServicePlan | App Service プランの名前です。 |
 | Location | 米国西部 | Web アプリがホストされているデータ センターです。 |

@@ -1,23 +1,21 @@
 ---
-title: B2B 統合アカウントのディザスター リカバリー - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps での複数のリージョンにわたるディザスター リカバリーの準備
+title: 統合アカウントのディザスター リカバリー
+description: Azure Logic Apps のリージョン間ディザスター リカバリーで統合アカウントと B2B 成果物を設定します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967752"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76905122"
 ---
-# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での B2B 統合アカウントの複数のリージョンにわたるディザスター リカバリー
+# <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での統合アカウントの複数のリージョンにわたるディザスター リカバリーを設定する
 
 B2B のワークロードには、発注や請求などの金銭が関係するトランザクションが含まれます。 ビジネスでは、障害イベント時に迅速に復旧して、パートナーと合意したビジネス レベルの SLA を満たすことが重要です。 この記事では、B2B ワークロード向けのビジネス継続性計画の構築方法について説明します。 
 
@@ -91,30 +89,30 @@ EDI X12 ドキュメントのビジネス継続性は、制御番号に基づい
 
 1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)を作成します。    
 
-2. **X12** で検索し、**[X12 - 制御番号が変更されたとき]** を選択します。   
+2. **X12** で検索し、 **[X12 - 制御番号が変更されたとき]** を選択します。   
 
    ![X12 を検索する](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
    トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 
    トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。
 
-3. 接続名を入力し、リストから*プライマリ リージョンの統合アカウント*を選択して、**[作成]** を選択します。   
+3. 接続名を入力し、リストから*プライマリ リージョンの統合アカウント*を選択して、 **[作成]** を選択します。   
 
    ![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。   
+4. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、 **[日]** 、 **[時間]** 、 **[分]** 、または **[秒]** の間隔に設定できます。   
 
    ![日付時刻と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. **[新しいステップ]** > **[アクションの追加]** の順に選択します。
+5. **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。
 
    ![[新しいステップ]、[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. **X12** で検索し、**[X12 - 制御番号を追加または更新します]** を選択します。   
+6. **X12** で検索し、 **[X12 - 制御番号を追加または更新します]** を選択します。   
 
    ![制御番号の追加または更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから*セカンダリ リージョンの統合アカウント*を選択して、**[作成]** を選択します。 
+7. アクションをセカンダリ リージョン統合アカウントに接続するには、 **[接続の変更]**  >  **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから*セカンダリ リージョンの統合アカウント*を選択して、 **[作成]** を選択します。 
 
    ![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -146,30 +144,30 @@ EDI EDIFACT ドキュメントのビジネス継続性は、制御番号に基�
 
 1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)を作成します。    
 
-2. **EDIFACT** で検索し、**[EDIFACT - 制御番号が変更されたとき]** を選択します。
+2. **EDIFACT** で検索し、 **[EDIFACT - 制御番号が変更されたとき]** を選択します。
 
    ![EDIFACT の検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
    トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 
    トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 
 
-3. 接続名を入力し、リストから*プライマリ リージョンの統合アカウント*を選択して、**[作成]** を選択します。    
+3. 接続名を入力し、リストから*プライマリ リージョンの統合アカウント*を選択して、 **[作成]** を選択します。    
 
    ![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。    
+4. **制御番号の同期を開始する DateTime** 設定は省略できます。 **頻度**は、 **[日]** 、 **[時間]** 、 **[分]** 、または **[秒]** の間隔に設定できます。    
 
    ![日付時刻と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-6. **[新しいステップ]** > **[アクションの追加]** の順に選択します。    
+6. **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。    
 
    ![[新しいステップ]、[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. **EDIFACT** で検索し、**[EDIFACT - 制御番号を追加または更新します]** を選択します。   
+7. **EDIFACT** で検索し、 **[EDIFACT - 制御番号を追加または更新します]** を選択します。   
 
    ![制御番号の追加または更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから*セカンダリ リージョンの統合アカウント*を選択して、**[作成]** を選択します。
+8. アクションをセカンダリ リージョン統合アカウントに接続するには、 **[接続の変更]**  >  **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから*セカンダリ リージョンの統合アカウント*を選択して、 **[作成]** を選択します。
 
    ![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -198,30 +196,30 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 
 1. セカンダリ リージョンで[ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)を作成します。  
 
-2. **AS2** を検索し、**[AS2 - When a MIC value is created] \(AS2 - MIC 値を作成する場合)** を選択します。   
+2. **AS2** を検索し、 **[AS2 - When a MIC value is created] \(AS2 - MIC 値を作成する場合)** を選択します。   
 
    ![AS2 の検索](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
    トリガーを選択すると、統合アカウントへの接続を確立するように求められます。 
    トリガーは、プライマリ リージョンの統合アカウントに接続される必要があります。 
    
-3. 接続名を入力し、リストから*プライマリ リージョンの統合アカウント*を選択して、**[作成]** を選択します。
+3. 接続名を入力し、リストから*プライマリ リージョンの統合アカウント*を選択して、 **[作成]** を選択します。
 
    ![プライマリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. **MIC 値の同期を開始する DateTime** 設定は省略できます。 **頻度**は、**[日]**、**[時間]**、**[分]**、または **[秒]** の間隔に設定できます。   
+4. **MIC 値の同期を開始する DateTime** 設定は省略できます。 **頻度**は、 **[日]** 、 **[時間]** 、 **[分]** 、または **[秒]** の間隔に設定できます。   
 
    ![日付時刻と頻度](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
-5. **[新しいステップ]** > **[アクションの追加]** の順に選択します。  
+5. **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。  
 
    ![[新しいステップ]、[アクションの追加]](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. **AS2** を検索し、**[AS2 - MIC コンテンツの追加または更新]** を選択します。  
+6. **AS2** を検索し、 **[AS2 - MIC コンテンツの追加または更新]** を選択します。  
 
    ![MIC の追加または更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. アクションをセカンダリ リージョン統合アカウントに接続するには、**[接続の変更]** > **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから*セカンダリ リージョンの統合アカウント*を選択して、**[作成]** を選択します。
+7. アクションをセカンダリ リージョン統合アカウントに接続するには、 **[接続の変更]**  >  **[新しい接続の追加]** の順に選択し、使用可能な統合アカウントのリストを表示します。 接続名を入力し、リストから*セカンダリ リージョンの統合アカウント*を選択して、 **[作成]** を選択します。
 
    ![セカンダリ リージョンの統合アカウント名](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
@@ -240,7 +238,7 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 
 時間間隔に基づいて、増分ランタイム状態がプライマリ リージョンからセカンダリ リージョンにレプリケートされます。 障害イベント時に、プライマリ リージョンが使用できない場合は、セカンダリ リージョンにトラフィックをダイレクトしてビジネス継続性を確保します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[B2B メッセージを監視する](logic-apps-monitor-b2b-message.md)
+[Azure Monitor ログで B2B メッセージを監視する](../logic-apps/monitor-b2b-messages-log-analytics.md)
 

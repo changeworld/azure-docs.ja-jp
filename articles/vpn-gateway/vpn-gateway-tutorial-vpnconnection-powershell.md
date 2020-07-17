@@ -1,19 +1,19 @@
 ---
-title: PowerShell を使用して Azure S2S VPN 接続を作成および管理する | Microsoft Docs
+title: Azure VPN Gateway:S2S VPN 接続を作成して管理する:チュートリアル
 description: チュートリアル - Azure PowerShell モジュールを使用して S2S VPN 接続を作成および管理する
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: cac68506803cda2c4e537feac84da2a82bc128bd
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 18c6188e1b13c35a4c28a5f9e7fc863f00798eed
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444286"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80616398"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>チュートリアル:PowerShell を使用して S2S VPN 接続を作成および管理する
 
@@ -25,13 +25,13 @@ Azure S2S VPN 接続は、顧客構内と Azure との間の安全なクロス�
 > * VPN 接続をさらに追加する
 > * VPN 接続を削除する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 次の図に、このチュートリアルのトポロジを示します。
 
 ![サイト間 VPN 接続の図](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell および Azure PowerShell の操作
+
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>必要条件
 
@@ -86,7 +86,7 @@ S2S VPN 接続を作成するためのワークフローは単純です。
 
 ```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
-  -Location 'East US' -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
+  -Location $Location1 -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
 ```
 
 ## <a name="create-a-s2s-vpn-connection"></a>S2S VPN 接続を作成する
@@ -99,10 +99,10 @@ $lng1 = Get-AzLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
 
 New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 `
   -Location $Location1 -VirtualNetworkGateway1 $vng1 -LocalNetworkGateway2 $lng1 `
-  -ConnectionType IPsec -SharedKey "Azure@!b2C3"
+  -ConnectionType IPsec -SharedKey "Azure@!b2C3" -ConnectionProtocol IKEv2
 ```
 
-BGP を使用している場合は、オプションの "**-EnableBGP $True**" プロパティを追加して、接続の BGP を有効にします。 この機能は既定で無効になっています。
+BGP を使用している場合は、オプションの " **-EnableBGP $True**" プロパティを追加して、接続の BGP を有効にします。 この機能は既定で無効になっています。 既定では、パラメーター '-ConnectionProtocol' は IKEv2 では省略可能です。 **-ConnectionProtocol IKEv1** を指定することにより、IKEv1 プロトコルで接続を作成できます。
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>VPN 接続の事前共有キー、BGP、および IPsec/IKE ポリシーを更新する
 
@@ -224,7 +224,7 @@ Remove-AzVirtualNetworkGatewayConnection -Name $Connection2 -ResourceGroupName $
 Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この構成がプロトタイプ、テスト、または概念実証のデプロイの一部である場合は、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VPN ゲートウェイ、およびすべての関連リソースを削除できます。
 
@@ -232,7 +232,7 @@ Remove-AzVirtualNetworkGatewayConnection -Name $LNG2 -ResourceGroupName $RG1
 Remove-AzResourceGroup -Name $RG1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のような S2S VPN 接続の作成と管理について説明しました。
 
@@ -242,7 +242,7 @@ Remove-AzResourceGroup -Name $RG1
 > * VPN 接続をさらに追加する
 > * VPN 接続を削除する
 
-S2S 接続、VNet 間接続、および P2S 接続については、次のチュートリアルに進んでください。
+S2S 接続、VNet 間接続、P2S 接続については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > * [VNet 間接続の作成](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

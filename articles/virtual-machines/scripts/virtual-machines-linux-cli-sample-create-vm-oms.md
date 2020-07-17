@@ -1,11 +1,10 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure Monitor がインストールされた Linux VM の作成 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - Azure Monitor がインストールされた Linux VM の作成
 description: Azure CLI のサンプル スクリプト - Azure Monitor がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6aed5f40d689fc84c82f37760e78fc7c3fe94dd1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 211d81b2ceec985844ed7abf7b8fc4d3e30dcca5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535623"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459935"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>Azure Monitor を使用して VM を監視する
 
@@ -54,7 +53,7 @@ az group delete --name myResourceGroup
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 このサンプルでは、Azure Monitor エージェント拡張機能を使用して、Log Analytics エージェントをインストールし Log Analytics ワークスペースに VM を登録します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

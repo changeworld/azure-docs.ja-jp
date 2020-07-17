@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 8f110a88558b4479d8fdadb2967c7dedeca60ce9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043559"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "62113937"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>ローカル コンピューターで U-SQL スクリプトを実行する
 
@@ -28,7 +28,7 @@ U-SQL スクリプトを開発すると、スクリプトをローカルで実�
 |コンポーネント|ローカルの実行|クラウド実行|
 |---------|---------|---------|
 |ストレージ|ローカル データ ルート フォルダー|既定の Azure Data Lake Store アカウント|
-|コンピューティング|U-SQL ローカル実行エンジン|Azure Data Lake Analytics サービス|
+|Compute|U-SQL ローカル実行エンジン|Azure Data Lake Analytics サービス|
 |実行環境|ローカル コンピューター上の作業ディレクトリ|Azure Data Lake Analytics クラスター|
 
 以下のセクションでは、ローカル実行コンポーネントの詳細について説明します。
@@ -57,7 +57,7 @@ Azure Data Lake Tools for Visual Studio には、ローカル実行エンジン�
  
 ## <a name="local-runs-with-a-local-machine-account"></a>Local-machine アカウントを使用したローカル実行
 
-**Local-machine** アカウントは、ローカル ストア アカウントとして 1 つのローカル データ ルート フォルダーを持つ共有ローカル コンピューティング アカウントです。 既定で、データ ルート フォルダーは **C:\Users\<username>\AppData\Local\USQLDataRoot** です。 **[ツール]** > **[Data Lake]** > **[オプションと設定]** で構成することもできます。
+**Local-machine** アカウントは、ローカル ストア アカウントとして 1 つのローカル データ ルート フォルダーを持つ共有ローカル コンピューティング アカウントです。 既定で、データ ルート フォルダーは **C:\Users\<username>\AppData\Local\USQLDataRoot** です。 **[ツール]**  >  **[Data Lake]**  >  **[オプションと設定]** で構成することもできます。
 
 ![ローカル データ ルート フォルダーを構成する](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
@@ -75,7 +75,7 @@ U-SQL プロジェクトは、プロジェクトの参照とプロパティを�
 
 U-SQL プロジェクトはローカル データ ルート フォルダーを作成し、**Local-project** アカウントのデータを設定します。 一時データ ルート フォルダーは、リビルドおよびローカル実行が発生するたびにクリーニングされ、U-SQL プロジェクトの作業ディレクトリの下に再作成されます。 ローカル ジョブの実行の前に、U-SQL プロジェクトによって構成されたすべてのデータ ソースがこの一時ローカル データ ルート フォルダーにコピーされます。 
 
-データ ソースのルート フォルダーを構成できます。 **[U-SQL プロジェクト] を右クリック** > **[プロパティ]** > **[Test Data Source]** の順に選択します。 **Local-project** アカウントで U-SQL スクリプトを実行する場合は、**Test Data Source** フォルダー内のすべてのファイルおよびサブフォルダーが一時ローカル データ ルート フォルダーにコピーされます。 サブフォルダー以下のファイルも含まれます。 ローカル ジョブの実行後、その出力結果も、プロジェクトの作業ディレクトリ内の一時ローカル データ ルート フォルダーの下に見つけることができます。 プロジェクトがリビルドされ、クリーニングされると、このすべての出力が削除され、クリーニングされます。 
+データ ソースのルート フォルダーを構成できます。 **[U-SQL プロジェクト] を右クリック** >  **[プロパティ]**  >  **[Test Data Source]** の順に選択します。 **Local-project** アカウントで U-SQL スクリプトを実行する場合は、**Test Data Source** フォルダー内のすべてのファイルおよびサブフォルダーが一時ローカル データ ルート フォルダーにコピーされます。 サブフォルダー以下のファイルも含まれます。 ローカル ジョブの実行後、その出力結果も、プロジェクトの作業ディレクトリ内の一時ローカル データ ルート フォルダーの下に見つけることができます。 プロジェクトがリビルドされ、クリーニングされると、このすべての出力が削除され、クリーニングされます。 
 
 ![プロジェクトのテスト データ ソースを構成する](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
@@ -95,8 +95,8 @@ U-SQL クエリで U-SQL データベース オブジェクトを使用するか
 |違いの観点|Local-machine|Local-project|
 |----------------|---------------|---------------|
 |ローカル アクセス|すべてのプロジェクトからアクセスできます。|このアカウントにアクセスできるのは対応するプロジェクトだけです。|
-|ローカル データ ルート フォルダー|永続的なローカル フォルダー。 **[ツール]** > **[Data Lake]** > **[オプションと設定]** で構成されます。|U-SQL プロジェクトの作業ディレクトリの下の、ローカル実行のたびに作成される一時フォルダー。 このフォルダーは、リビルドまたは再実行が発生するとクリーニングされます。|
-|U-SQL スクリプトの入力データ|永続的なローカル データ ルート フォルダーの下の相対パス。|**U-SQL プロジェクトの [プロパティ]** > **[Test Data Source]** で設定されます。 ローカル実行の前に、すべてのファイルおよびサブフォルダーが一時データ ルート フォルダーにコピーされます。|
+|ローカル データ ルート フォルダー|永続的なローカル フォルダー。 **[ツール]**  >  **[Data Lake]**  >  **[オプションと設定]** で構成されます。|U-SQL プロジェクトの作業ディレクトリの下の、ローカル実行のたびに作成される一時フォルダー。 このフォルダーは、リビルドまたは再実行が発生するとクリーニングされます。|
+|U-SQL スクリプトの入力データ|永続的なローカル データ ルート フォルダーの下の相対パス。|**U-SQL プロジェクトの [プロパティ]**  >  **[Test Data Source]** で設定されます。 ローカル実行の前に、すべてのファイルおよびサブフォルダーが一時データ ルート フォルダーにコピーされます。|
 |U-SQL スクリプトの出力データ|永続的なローカル データ ルート フォルダーの下の相対パス。|一時データ ルート フォルダーに出力されます。 これらの結果は、リビルドまたは再実行が発生するとクリーニングされます。|
 |参照されるデータベースのデプロイ|**Local-machine** アカウントに対して実行する場合、参照されるデータベースは自動的にはデプロイされません。 Azure Data Lake Analytics アカウントへの送信の場合も同じです。|参照されるデータベースは、ローカル実行の前に **Local-project** アカウントに自動的にデプロイされます。 リビルドまたは再実行が発生すると、すべてのデータベース環境がクリーニングされ、再デプロイされます。|
 
@@ -106,7 +106,7 @@ U-SQL クエリで U-SQL データベース オブジェクトを使用するか
 
 詳細については、[Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md) に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法](data-lake-analytics-cicd-overview.md)。
 - [Azure Data Lake Analytics コードをテストする方法](data-lake-analytics-cicd-test.md)。

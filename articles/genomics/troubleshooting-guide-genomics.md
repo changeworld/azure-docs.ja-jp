@@ -1,22 +1,21 @@
 ---
-title: 'Microsoft Genomics: トラブルシューティング ガイド | Microsoft Docs'
-titleSuffix: Azure
-description: トラブルシューティング戦略の詳細について説明します。
+title: トラブルシューティング ガイド
+titleSuffix: Microsoft Genomics
+description: エラー メッセージとその解決方法など、Microsoft Genomics を使用するためのトラブルシューティング方法について学習します。
 keywords: トラブルシューティング, エラー, デバッグ
-services: microsoft-genomics
+services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078059"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100908"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -116,7 +115,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 | ファイルの種類 | エラー コード | エラー メッセージ                                                                           | 推奨されるトラブルシューティングの手順                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| 任意          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength]\(読み取り [readId] に [numberOfBases] ベースありますが、制限は [maxReadLength] です\)           | このエラーの最も一般的な理由は、2 つの読み取りの連結につながるファイルの破損です。 入力ファイルを確認してください。 |
+| Any          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength]\(読み取り [readId] に [numberOfBases] ベースありますが、制限は [maxReadLength] です\)           | このエラーの最も一般的な理由は、2 つの読み取りの連結につながるファイルの破損です。 入力ファイルを確認してください。 |
 | BAM          | 200        |   ファイル '[yourFileName]' を読み取ることができません。                                                                                       | BAM ファイルの形式を確認してください。 正しく書式設定されたファイルを使用して、ワークフローを再送信します。                                                                           |
 | BAM          | 201        |  Unable to read BAM file [File_name].                                                                                      |BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 202        | Unable to read BAM file [File_name]. File too small and missing header.\(BAM ファイル [File_name] を読み取ることができません。ファイルが小さすぎ、ヘッダーがありません。\)                                                                                        | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
@@ -126,7 +125,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 | BAM          | 206        |   Unable to read BAM file [File_name]. Header of file was corrupt.\(BAM ファイル [File_name] を読み取ることができません。ファイルのヘッダーが破損しています。\)                                                                                      | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 207        |  Unable to read BAM file [File_name]. File truncated near offset [offset].\(BAM ファイル [File_name] を読み取ることができません。ファイルはオフセット [offset] 付近で切り詰められています。\)                                                                                       | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 208        |   Invalid BAM file. The ReadID [Read_Id] has no sequence in file [File_name].\(BAM ファイルが無効です。ファイル [File_name] 内の ReadID [Read_Id] にシーケンスがありません。\)                                                                                      | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                             |
-| FASTQ        | 300        |  Unable to read FASTQ file. [File_name] doesn't end with a newline.\(FASTQ ファイルを読み取ることができません。[File_name] が改行で終わっていません。\)                                                                                     | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                           |
+| FASTQ        | 該当なし        |  Unable to read FASTQ file. [File_name] doesn't end with a newline.\(FASTQ ファイルを読み取ることができません。[File_name] が改行で終わっていません。\)                                                                                     | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                           |
 | FASTQ        | 301        |   Unable to read FASTQ file [File_name]. FASTQ record is larger than buffer size at offset: [_offset]\(FASTQ ファイル [File_name] を読み取ることができません。FASTQ レコードがオフセット: [_offset] でバッファー サイズより大きくなっています\)                                                                                      | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 | FASTQ        | 302        |     FASTQ Syntax error. File [File_name] has a blank line.\(FASTQ 構文エラー。ファイル [File_name] には空白行があります。\)                                                                                    | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 | FASTQ        | 303        |       FASTQ Syntax error. File[File_name] has an invalid starting character at offset: [_offset],  line type: [line_type], character: [_char]\(FASTQ 構文エラー。ファイル [File_name] には、オフセット: [_offset]、行タイプ: [line_type]、文字: [_char] に無効な開始文字があります\)                                                                                  | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
@@ -141,6 +140,6 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 ジョブのエラーが解決しない場合や、その他の質問がある場合は、Azure Portal の Microsoft Genomics サポートに問い合わせてください。 サポート要求を送信する方法の詳細については、[こちら](file-support-ticket-genomics.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Microsoft Genomics サービスに関する一般的な問題のトラブルシューティングと解決方法を学びました。 詳細情報とその他の一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 

@@ -9,29 +9,30 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: mqtt
+ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274520"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732248"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Node.js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-このチュートリアルは、[IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-node-node-c2d.md)に関するチュートリアル内のコードに基づいて、[IoT Hub のファイル アップロード機能](iot-hub-devguide-file-upload.md)を使用して [Azure Blob Storage](../storage/index.yml) にファイルをアップロードする方法を示しています。 このチュートリアルでは、次の操作方法について説明します。
+このチュートリアルでは、[IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-node-node-c2d.md)に関するチュートリアル内のコードに基づいて、[IoT Hub のファイル アップロード機能](iot-hub-devguide-file-upload.md)を使用して [Azure Blob Storage](../storage/index.yml) にファイルをアップロードする方法を示しています。 このチュートリアルでは、次の操作方法について説明します。
 
-- ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
-- 
-- IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
+* ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
 
-「[Azure IoT Hub の使用](quickstart-send-telemetry-node.md)」チュートリアルでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が説明されています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例: 
+* IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-*  イメージを含む大きなファイル
-*  ビデオ
-*  高頻度でサンプリングされる振動データ
-*  何らかの形式の前処理済みデータ。
+[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するクイックスタートでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が示されます。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 次に例を示します。
+
+* イメージを含む大きなファイル
+* ビデオ
+* 高頻度でサンプリングされる振動データ
+* 何らかの形式の前処理済みデータ。
 
 これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.yml) スタックなどのツールを使用してクラウドでバッチ処理されます。 デバイスからファイルをアップロードする必要がある場合も、IoT Hub のセキュリティを信頼性を使用できます。
 
@@ -44,11 +45,13 @@ ms.locfileid: "59274520"
 > [!NOTE]
 > IoT Hub は、Azure IoT Device SDK を介して多数のデバイス プラットフォームと言語 (C、.NET、Javascript、Python、および Java) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、Azure IoT デベロッパー センターを参照してください。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
-* Node.js バージョン 4.0.x 以降。
+* Node.js バージョン 10.0.x 以降。 「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+
+* ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -68,9 +71,9 @@ ms.locfileid: "59274520"
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. テキスト エディターを使用して、```simulateddevice``` フォルダーに **SimulatedDevice.js** ファイルを作成します。
+3. テキスト エディターを使用して、**フォルダーに**SimulatedDevice.js```simulateddevice``` ファイルを作成します。
 
-4. **SimulatedDevice.js** ファイルの先頭に、次の ```require``` ステートメントを追加します。
+4. ```require```SimulatedDevice.js**ファイルの先頭に、次の** ステートメントを追加します。
 
     ```javascript
     'use strict';
@@ -80,7 +83,7 @@ ms.locfileid: "59274520"
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. `deviceconnectionstring` 変数を追加し、それを使用して **Client** インスタンスを作成します。  「*IoT Hub の作成*」セクションで作成したデバイスの名前で `{deviceconnectionstring}` を置き換えます。
+5. `deviceconnectionstring` 変数を追加し、それを使用して **Client** インスタンスを作成します。  「`{deviceconnectionstring}`IoT Hub の作成 *」セクションで作成したデバイスの名前で*  を置き換えます。
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -117,6 +120,12 @@ ms.locfileid: "59274520"
 
 9. イメージ ファイルを `simulateddevice` フォルダーにコピーし、名前を `myimage.png` に変更します。
 
+## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
+
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-node.md)に関するページで作成した IoT ハブからファイル アップロード通知メッセージを受け取るバックエンド サービスを作成します。 ファイル アップロード通知メッセージを受信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
 ## <a name="receive-a-file-upload-notification"></a>ファイル アップロードの通知の受信
 
 このセクションでは、IoT Hub からファイル アップロードの通知メッセージを受信する Node.js コンソール アプリケーションを作成します。
@@ -135,9 +144,9 @@ ms.locfileid: "59274520"
     npm install azure-iothub --save
     ```
 
-3. テキスト エディターを使用して、`fileuploadnotification` フォルダーに **FileUploadNotification.js** ファイルを作成します。
+3. テキスト エディターを使用して、**フォルダーに**FileUploadNotification.js`fileuploadnotification` ファイルを作成します。
 
-4. **FileUploadNotification.js** ファイルの冒頭に次の `require` ステートメントを追加します。
+4. `require`FileUploadNotification.js**ファイルの冒頭に次の** ステートメントを追加します。
 
     ```javascript
     'use strict';
@@ -145,7 +154,7 @@ ms.locfileid: "59274520"
     var Client = require('azure-iothub').Client;
     ```
 
-5. `iothubconnectionstring` 変数を追加し、それを使用して **Client** インスタンスを作成します。  `{iothubconnectionstring}` を 「_IoT Hub の作成_」セクションで作成した IoT Hub の接続文字列に置き換えます。
+5. `iothubconnectionstring` 変数を追加し、それを使用して **Client** インスタンスを作成します。  プレースホルダー `{iothubconnectionstring}` の値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -212,10 +221,12 @@ node SimulatedDevice.js
 
 ![アップロードされたファイル](./media/iot-hub-node-node-file-upload/uploaded-file.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-*  [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
-*  [C SDK の概要](iot-hub-device-sdk-c-intro.md)
-*  [Azure IoT SDK](iot-hub-devguide-sdks.md)
+* [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
+
+* [C SDK の概要](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)

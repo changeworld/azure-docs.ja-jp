@@ -1,42 +1,27 @@
 ---
-title: Azure Cache for Redis を使用して ASP.NET Web アプリを作成する | Microsoft Docs
+title: Azure Cache for Redis で ASP.NET Web アプリを作成する
 description: このクイック スタートでは、Azure Cache for Redis を使用して ASP.NET Web アプリを作成する方法について説明します
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864816"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74927065"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリで Azure Cache for Redis を使用する 
 
-## <a name="introduction"></a>はじめに
-
-このクイック スタートでは、Visual Studio 2019 を使用して ASP.NET Web アプリケーションを作成し Azure App Service にデプロイする方法を説明します。 このサンプル アプリケーションは、Azure Cache for Redis に接続して、キャッシュにデータを格納し、キャッシュからデータを取得します。 このクイック スタートを完了すると、Azure Redis Cache との間で読み書きを行う、Azure でホストされる Web アプリが完成します。
-
-![簡単なテストが完了した Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+このクイック スタートでは、Visual Studio 2019 を使用して、Azure Cache for Redis に接続してキャッシュからデータを格納および取得する ASP.NET Web アプリケーションを作成します。 次に、アプリを Azure App Service にデプロイします。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次の環境で [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする必要があります。
-* ASP.NET および Web の開発
-* Azure の開発
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- **ASP.NET と Web 開発**ワークロードおよび **Azure の開発**ワークロードを含む、[Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
@@ -62,7 +47,7 @@ ms.locfileid: "65864816"
 
 4. **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定の **[認証]** が別の設定になっている場合があります。 これを変更するには、 **[認証の変更]** 、 **[認証なし]** の順に選択します。
 
-5. **[OK]** を選択してプロジェクトを作成します。
+5. **[OK]** を選択すると、プロジェクトが作成されます。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 
@@ -195,7 +180,7 @@ ms.locfileid: "65864816"
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
 
-    を以下に置き換えます。
+    with:
 
     ```csharp
     @Html.ActionLink("Azure Cache for Redis Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -274,7 +259,7 @@ ms.locfileid: "65864816"
 
 3. **[App Service の作成]** ダイアログ ボックスで、次のように変更します。
 
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | 説明 |
     | ------- | :---------------: | ----------- |
     | **アプリ名** | 既定値を使用します。 | アプリ名は、Azure へのデプロイ時にアプリのホスト名になります。 必要に応じて、名前を一意にするためにタイムスタンプのサフィックスが追加される場合があります。 |
     | **サブスクリプション** | Azure サブスクリプションを選択します。 | 関連するホスティング料金は、このサブスクリプションに請求されます。 複数の Azure サブスクリプションがある場合は、適切なサブスクリプションを選択したことを確認します。|
@@ -311,7 +296,7 @@ ms.locfileid: "65864816"
 
 ![簡単なテストが完了した Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -332,7 +317,7 @@ ms.locfileid: "65864816"
 
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルでは、より現実的なシナリオで Azure Cache for Redis を使って、アプリのパフォーマンスを向上させます。 このアプリケーションを更新し、ASP.NET とデータベースでキャッシュ アサイド パターンを使ってスコアボードの結果をキャッシュします。
 

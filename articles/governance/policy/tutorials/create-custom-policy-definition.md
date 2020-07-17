@@ -1,18 +1,14 @@
 ---
-title: カスタム ポリシー定義の作成
-description: カスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 04/23/2019
+title: チュートリアル:カスタム ポリシー定義の作成
+description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979663"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190709"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -35,6 +31,8 @@ ms.locfileid: "65979663"
 > - 使用する効果を決定する
 > - ポリシー定義を作成する
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="identify-requirements"></a>要件を特定する
@@ -54,23 +52,28 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure リソースのプロパティを判別する方法はたくさんあります。 このチュートリアルでは、それぞれについて見ていきます。
 
+- VS Code 用 Azure Policy 拡張機能
 - Resource Manager テンプレート
   - 既存のリソースのエクスポート
   - 作成エクスペリエンス
   - クイック スタート テンプレート (GitHub)
   - テンプレートのリファレンス ドキュメント
-- Azure リソース エクスプローラー
+- Azure Resource Explorer
+
+### <a name="view-resources-in-vs-code-extension"></a>VS Code 拡張機能でリソースを表示する
+
+[VS Code 拡張機能](../how-to/extension-for-vscode.md#search-for-and-view-resources)を使用すると、環境内のリソースを参照し、各リソースの Resource Manager プロパティを表示できます。
 
 ### <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
-管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)を確認する方法はいくつかあります。
+管理しようとしているプロパティを含む [Resource Manager テンプレート](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md)を確認する方法はいくつかあります。
 
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 
 プロパティを見つける最も簡単な方法は、同じ種類の既存リソースを確認することです。 適用する設定を使用して既に構成されているリソースには、比較対象の値もあります。
 その特定のリソースについて、Azure portal の ( **[設定]** にある) **[テンプレートのエクスポート]** ページを確認します。
 
-![既存のリソースのテンプレート ページをエクスポートする](../media/create-custom-policy-definition/export-template.png)
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="既存のリソースのテンプレート ページをエクスポートする" border="false":::
 
 これにより、ストレージ アカウントの場合、次の例のようなテンプレートが表示されます。
 
@@ -148,7 +151,7 @@ GitHub 上の [Azure クイック スタート テンプレート](https://githu
 **supportsHttpsTrafficOnly** が適切なプロパティであるかどうかを検証するには、Resource Manager テンプレート リファレンスで、ストレージ プロバイダーの[ストレージ アカウント リソース](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)について確認します。
 プロパティ オブジェクトには、有効なパラメーターのリストがあります。 [[StorageAccountPropertiesCreateParameters-object]](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) リンクを選択すると、許容されるプロパティの表が表示されます。 **supportsHttpsTrafficOnly** が存在し、その説明は探しているものと一致していてビジネス要件を満たします。
 
-### <a name="azure-resource-explorer"></a>Azure リソース エクスプローラー
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
 Azure リソースを探すもう 1 つの方法は、[Azure Resource Explorer](https://resources.azure.com) (プレビュー) を使用することです。 このツールはお使いのサブスクリプションのコンテキストを使用するため、Web サイトで Azure 資格情報を使用して認証する必要があります。 認証されると、プロバイダー、サブスクリプション、リソース グループ、リソースごとに参照できます。
 
@@ -160,9 +163,14 @@ Azure リソースを探すもう 1 つの方法は、[Azure Resource Explorer](
 
 Azure リソースのエイリアスを判別する方法はいくつかあります。 このチュートリアルでは、それぞれについて見ていきます。
 
+- VS Code 用 Azure Policy 拡張機能
 - Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
+
+### <a name="get-aliases-in-vs-code-extension"></a>VS Code 拡張機能でエイリアスを取得する
+
+VS Code 拡張機能の Azure Policy 拡張機能を使用すると、リソースを簡単に参照し、[エイリアスを検出](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)できます。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -192,35 +200,37 @@ Azure CLI と同様に、その結果から **supportsHttpsTrafficOnly** とい�
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) は、プレビュー段階の新しいサービスです。 これは、Azure リソースのプロパティを探すための別の方法となります。 Resource Graph を使用して単一のストレージ アカウントを探すサンプル クエリを次に示します。
+[Azure Resource Graph](../../resource-graph/overview.md) は、Azure リソースのプロパティを探すもう 1 つの手段となるサービスです。 Resource Graph を使用して単一のストレージ アカウントを探すサンプル クエリを次に示します。
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_配列を_プロジェクションする_ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
+これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_ 配列を _プロジェクションする_ ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 | project aliases
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 エイリアスに関するストレージ アカウントからの出力の例を次に示します。
@@ -305,12 +315,11 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 }
 ```
 
-Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com) を介して使用することもでき、リソースのプロパティを素早く簡単に探すことができます。
+Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使用することもでき、リソースのプロパティをすばやく簡単に探すことができます。
 
 ## <a name="determine-the-effect-to-use"></a>使用する効果を決定する
 
-非準拠リソースをどう処理するかを決定することは、最初に何を評価するかを決定することと同じくらい重要です。 非準拠リソースに対して考えられる応答はそれぞれ、[効果](../concepts/effects.md)と呼ばれます。
-効果は、非準拠リソースがログ記録されるか、ブロックされるか、追加されるデータがあるか、リソースを準拠状態に戻すために関連付けられているデプロイがあるかを制御します。
+非準拠リソースをどう処理するかを決定することは、最初に何を評価するかを決定することと同じくらい重要です。 非準拠リソースに対して考えられる応答はそれぞれ、[効果](../concepts/effects.md)と呼ばれます。 効果は、非準拠リソースがログ記録されるか、ブロックされるか、追加されるデータがあるか、リソースを準拠状態に戻すために関連付けられているデプロイがあるかを制御します。
 
 この例では、非準拠リソースを Azure 環境で作成したくないため、必要な効果は Deny です。 Audit は、ポリシーの効果を Deny に設定する前にポリシーの影響を判別するのに最適な効果です。 割り当てごとにより簡単に効果を変更できるようにする方法の 1 つは、効果をパラメーター化することです。 詳細な方法については、「[パラメーター](#parameters)」を参照してください。
 
@@ -349,7 +358,7 @@ Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com
 "mode": "all",
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 評価の変更のためにパラメーターは使用していませんが、トラブルシューティング用にパラメーターを使用して**効果**を変更できるようにしたいと思います。 **effectType** パラメーターを定義し、それを **Deny** と **Disabled** のみに制限します。 これら 2 つのオプションは、目的のビジネス要件に一致しています。 完成した parameters ブロックの例を次に示します。
 
@@ -444,7 +453,17 @@ Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com
 
 この完成した定義を使用して、新しいポリシーを作成できます。 ポータルと各 SDK (Azure CLI、Azure PowerShell、REST API) で定義の受け入れ方は異なるので、それぞれのコマンドを参照して適切な使用方法を確認してください。 次に、パラメーター化した効果を使用して適切なリソースに割り当て、ストレージ アカウントのセキュリティを管理します。
 
-## <a name="review"></a>レビュー
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルのリソースに対する作業が完了した場合は、次の手順を使用して、ここで作成した割り当てまたは定義をすべて削除してください。
+
+1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** (または割り当てを削除する場合は **[割り当て]** ) を選択します。
+
+1. 削除する新しいイニシアティブまたはポリシー定義 (または割り当て) を見つけます。
+
+1. 行を右クリックするか、定義 (または割り当て) の末尾にある省略記号を選択し、 **[定義の削除]** (または **[割り当ての削除]** ) を選択します。
+
+## <a name="review"></a>確認
 
 このチュートリアルでは、以下のタスクを完了しました。
 
@@ -455,7 +474,7 @@ Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com
 > - 使用する効果を決定する
 > - ポリシー定義を作成する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、カスタム ポリシー定義を使用し、ポリシーを作成して割り当てます。
 

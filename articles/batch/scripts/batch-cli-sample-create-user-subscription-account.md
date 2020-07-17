@@ -1,27 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch アカウントの作成 - ユーザー サブスクリプション | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - ユーザー サブスクリプション モードでの Batch アカウントの作成
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI サンプル スクリプト - Batch アカウントの作成 - ユーザー サブスクリプション
+description: このスクリプトでは、ユーザー サブスクリプション モードで Azure Batch アカウントを作成します。 このアカウントを使うと、サブスクリプションにコンピューティング ノードを割り当てられます。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: 3358c1aab5dc39e30690b242039940830f2e9ffc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f3919574dd7dcbe932c71dfcea2ac52ec906c6c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127436"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681893"
 ---
-# <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI の例:ユーザー サブスクリプション モードでの Batch アカウントの作成
+# <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI の例: ユーザー サブスクリプション モードでの Batch アカウントの作成
 
 このスクリプトでは、ユーザー サブスクリプション モードで Azure Batch アカウントを作成します。 サブスクリプションにコンピューティング ノードを割り当てるアカウントは、Azure Active Directory トークンを使用して認証される必要があります。 割り当てられたコンピューティング ノードは、サブスクリプションの vCPU (コア) クォータに対してカウントされます。 
 
@@ -55,6 +44,6 @@ az group delete --name myResourceGroup
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

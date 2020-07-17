@@ -1,25 +1,15 @@
 ---
-title: Microsoft Azure Service Fabric に関するよく寄せられる質問 |Microsoft ドキュメント
-description: Service Fabric に関してよく寄せられる質問とその回答
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Microsoft Azure Service Fabric に関する一般的な質問
+description: Service Fabric についてよく寄せられる質問 (機能、ユースケース、一般的なシナリオなど)。
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
-ms.author: chackdan
-ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pepogors
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153828"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78254897"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -32,7 +22,7 @@ Service Fabric で実行できる内容とその使用方法に関してよく�
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書はどのようにロールバックするのですか?
 
-アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)は、[Application アップグレード パラメーター](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
+アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)は、[Application アップグレード パラメーター](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
  
 お使いのクラスターが、Resource Manager テンプレートで旧来の証明書の Thumbprint プロパティをまだ活用している場合は、最新の機密管理機能を活用するため、[クラスターで使用するのを証明書の拇印から共通名に変更する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)ことをお勧めします。
 
@@ -65,7 +55,7 @@ Azure で実行されていないクラスターの場合は、Service Fabric �
 
 
 
-### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric クラスターの最小サイズとは何ですか?  もっと小さくできないのはなぜですか?
+### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric クラスターの最小サイズとは何ですか? もっと小さくできないのはなぜですか?
 
 運用ワークロードを実行する Service Fabric クラスターでサポートされる最小サイズは、5 つのノードです。 開発シナリオでは、1 つのノード (Visual Studio での迅速な開発エクスペリエンスのために最適化) と 5 つのノード クラスターがサポートされます。
 
@@ -104,7 +94,7 @@ Azure で実行されていないクラスターの場合は、Service Fabric �
 Microsoft はエクスペリエンスの改善に取り組んでいますが、現時点ではお客様の責任でアップグレードを行っていただく必要があります。 クラスターの仮想マシンで OS イメージをアップグレードする場合は、一度に 1 つの VM で行う必要があります。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で接続されたデータ ディスクを暗号化することはできますか?
-はい。  詳細については、「[接続されたデータ ディスクを備えたクラスターの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)」、[ディスクの暗号化 (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) に関するセクション、および[ディスクの暗号化 (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md) に関するセクションを参照してください。
+はい。  詳細については、[データ ディスクをアタッチしたクラスターの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)に関するページおよび[仮想マシン スケール セット用の Azure Disk Encryption](../virtual-machine-scale-sets/disk-encryption-overview.md) に関するページを参照してください。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で、優先度の低い VM を使用することはできますか?
 いいえ。 優先度の低い VM はサポートされていません。 
@@ -146,7 +136,8 @@ Reliable collection は、通常は、パフォーマンスとスループット
 
 - 別のサービスのすべてのパーティションを照会して必要なデータを引き出すサービスを作成します。
 - 別のサービスのすべてのパーティションからデータを受信できるサービスを作成します。
-- 各サービスから外部ストアにデータを定期的にプッシュします。 この方法は、実行する照会が中核となるビジネス ロジックの一部ではない場合のみに適しています。
+- 各サービスから外部ストアにデータを定期的にプッシュします。 外部ストアのデータは古くなるため、この方法は、実行する照会が中核となるビジネス ロジックの一部ではない場合のみに適しています。
+- あるいは、あらゆるレコードにクエリを実行しなければならないデータについては、信頼できるコレクションではなく、データ ストアに直接、格納してください。 これで古いデータの問題が解消されますが、信頼できるコレクションの長所は活用できません。
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>アクター全体のデータを照会する最善の方法は何ですか。
@@ -176,7 +167,7 @@ Reliable Services は通常はパーティション分割されるため、格�
 
 Reliable Services と同じように、アクター サービスに格納できるデータの量は、ディスク領域の合計とクラスター内のノードで使用できるメモリによってのみ制限されます。 ただし、個々のアクターは、小さな分量の状態とそれに関連付けられたビジネス ロジックをカプセル化するために使用すると、最も効果があります。 原則として、個々のアクターには、キロバイト単位で測定される状態を格納してください。
 
-## <a name="other-questions"></a>どの他の質問
+## <a name="other-questions"></a>その他の質問
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric はコンテナーとどのように関連していますか?
 
@@ -190,6 +181,6 @@ Service Fabric ラインタイムをオープン ソース化する予定であ�
 
 詳しくは、[Service Fabric ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)での発表をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[コア Service Fabric の概念](service-fabric-technical-overview.md)および[ベスト プラクティス](service-fabric-best-practices-overview.md) Service Fabric の概念](service-fabric-technical-overview.md) および[ベスト プラクティス](service-fabric-best-practices-overview.md)
+[Service Fabric の中心概念](service-fabric-technical-overview.md)と[ベスト プラクティス](service-fabric-best-practices-overview.md)を学習する

@@ -1,20 +1,19 @@
 ---
 title: Azure Storage Analytics のログ
 description: Azure Storage に対する要求の詳細をログに記録する方法について説明します。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: common
+ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.subservice: common
-ms.openlocfilehash: a77cf20be30361abf6590dbd53bdb07c327eb9d8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204988"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204068"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -87,15 +86,15 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
  以下の表は、ログ名内の各属性を説明しています。
 
-|Attribute|説明|
+|属性|説明|
 |---------------|-----------------|
 |`<service-name>`|ストレージ サービスの名前。 たとえば、`blob`、`table`、`queue` などがあります。|
-|`YYYY`|ログの 4 桁表記の年。 次に例を示します。`2011`|
-|`MM`|ログの 2 桁表記の月。 次に例を示します。`07`|
-|`DD`|ログの 2 桁表記の日。 次に例を示します。`31`|
-|`hh`|ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 次に例を示します。`18`|
+|`YYYY`|ログの 4 桁表記の年。 例: `2011`|
+|`MM`|ログの 2 桁表記の月。 例: `07`|
+|`DD`|ログの 2 桁表記の日。 例: `31`|
+|`hh`|ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 例: `18`|
 |`mm`|ログの開始時刻 (分) を示す 2 桁の数字。 **注:** 現在のバージョンの Storage Analytics ではこの値はサポートされず、常に `00` になります。|
-|`<counter>`|1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は `000000` です。 次に例を示します。`000001`|
+|`<counter>`|1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は `000000` です。 例: `000001`|
 
  上記の例をすべて組み合わせたサンプルのログ名は、以下のようになります。
 
@@ -111,11 +110,11 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
  すべてのログ BLOB はメタデータと共に格納されます。このメタデータを使って、BLOB に含まれるログ データを特定できます。 それぞれのメタデータ属性について以下の表で説明します。
 
-|Attribute|説明|
+|属性|説明|
 |---------------|-----------------|
 |`LogType`|読み取り、書き込み、削除の各操作に関連した情報がログに含まれているかどうかを表します。 この値には、操作の種類が 1 つだけ含まれている場合もあれば、3 つすべてがコンマ区切りで記録されている場合もあります。<br /><br /> 例 1: `write`<br /><br /> 例 2: `read,write`<br /><br /> 例 3: `read,write,delete`|
-|`StartTime`|ログに含まれる最も古いエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 次に例を示します。`2011-07-31T18:21:46Z`|
-|`EndTime`|ログに含まれる最も新しいエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 次に例を示します。`2011-07-31T18:22:09Z`|
+|`StartTime`|ログに含まれる最も古いエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 例: `2011-07-31T18:21:46Z`|
+|`EndTime`|ログに含まれる最も新しいエントリの時刻です (`YYYY-MM-DDThh:mm:ssZ` 形式)。 例: `2011-07-31T18:22:09Z`|
 |`LogVersion`|ログのフォーマットのバージョン。|
 
  上記の例を使用したサンプル メタデータを以下に示します。
@@ -131,7 +130,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>Azure portal を使用したストレージ ログの有効化  
 
-Azure portal では、**[Diagnostics settings (classic)]\(診断の設定 (クラシック)\)** ブレードを使用して、ストレージ ログを制御します。このブレードは、ストレージ アカウントの **[Menu blade]\(メニュー ブレード\)** の **[監視 (クラシック)]** セクションからアクセスできます。
+Azure portal では、 **[Diagnostics settings (classic)]\(診断の設定 (クラシック)\)** ブレードを使用して、ストレージ ログを制御します。このブレードは、ストレージ アカウントの **[Menu blade]\(メニュー ブレード\)** の **[監視 (クラシック)]** セクションからアクセスできます。
 
 指定できるのは、ログに記録するストレージ サービスと、ログ データの保持期間 (日数) です。  
 
@@ -159,7 +158,11 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  Azure portal または Azure PowerShell コマンドレットを使用してストレージ ログを制御する方法に加え、いずれかの Azure Storage API を使用することもできます。 たとえば、.NET 言語を使用している場合は、ストレージ クライアント ライブラリを使用できます。  
 
- クラス **CloudBlobClient**、**CloudQueueClient**、および **CloudTableClient** はすべて、**SetServiceProperties** や **SetServicePropertiesAsync** のような、**ServiceProperties** オブジェクトをパラメーターとして使用するメソッドが用意されています。 **ServiceProperties** オブジェクトを使用して、ストレージ ログを構成することができます。 たとえば、以下の C# スニペットは、ログの記録対象、およびキュー ログの保持期間を変更する方法を示しています。  
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
+
+# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -172,13 +175,19 @@ serviceProperties.Logging.RetentionDays = 2;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
+---
+
+
  .NET 言語を使用してストレージ ログを構成する方法の詳細については、「[Storage Client Library Reference (ストレージ クライアント ライブラリ リファレンス)](https://msdn.microsoft.com/library/azure/dn261237.aspx)」を参照してください。  
 
  REST API を使用してストレージ ログを構成する方法の概要については、「[Enabling and Configuring Storage Analytics (Storage Analytics の有効化および構成)](https://msdn.microsoft.com/library/azure/hh360996.aspx)」を参照してください。  
 
 ## <a name="download-storage-logging-log-data"></a>ストレージ ログのログ データのダウンロード
 
- ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールでは、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool (**AzCopy**) を使用して、ログ データをダウンロードすることもできます。  
+ ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールを使用して、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool ([AzCopy](storage-use-azcopy-v10.md)) を使用して、ログ データをダウンロードすることもできます。  
+ 
+>[!NOTE]
+> `$logs` コンテナーは Event Grid と統合されていないため、ログ ファイルが書き込まれたときにユーザーは通知を受信しません。 
 
  対象のログ データをダウンロードし、同じログ データを複数回ダウンロードしないためには、以下のようにします。  
 
@@ -186,22 +195,19 @@ queueClient.SetServiceProperties(serviceProperties);
 
 -   ダウンロードする必要がある BLOB を正確に識別するには、ログ データを含む BLOB のメタデータを使用して、BLOB がログ データを保持する期間を確認します。  
 
-> [!NOTE]
->  AzCopy は、Azure SDK に含まれているものですが、[https://aka.ms/AzCopy](https://aka.ms/AzCopy) から最新バージョンをいつでもダウンロードできます。 既定では、AzCopy は、フォルダー **C:\Program Files (x86)\Microsoft SDKs\Windows Azure\AzCopy** 内にインストールされます。コマンド プロンプトまたは PowerShell ウィンドウ内でこのツールを実行しようとするときは、事前にこのフォルダーをパスに追加する必要があります。  
+AzCopy の使用を開始するには、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。 
 
- 次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。 AzCopy で **/S** パラメーターを指定すると、ログ ファイル名内の日時に基づいて、ローカル フォルダー構造が作成されます。**/V** パラメーターを指定すると、詳細な出力が生成されます。**/Y** パラメーターを指定すると、すべてのローカル ファイルが上書きされます。 **<yourstorageaccount\>** は、ストレージ アカウント名に置き換えます。**<yourstoragekey\>** は、ストレージ アカウント キーに置き換えます。  
+次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。
 
 ```
-AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
-```  
+azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
+```
 
- AzCopy には、便利なパラメーターもいくつか用意されています。これらのパラメーターを使用すると、ダウンロードしたファイルの最終変更日時の設定方法を制御したり、ローカル マシン上に既に存在しているファイルより古いファイルをダウンロードするのか、それとも新しいファイルをダウンロードするのかを制御したりできます。 AzCopy は、再起動可能モードで実行することもできます。 詳細については、**AzCopy/?** コマンドを実行して、ヘルプを表示してください。  
+特定のファイルをダウンロードする方法の詳細については、「[特定のファイルをダウンロードする](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)」を参照してください。
 
- ログ データをプログラムでダウンロードする方法の例については、ブログ投稿「[Windows Azure Storage Logging:Using Logs to Track Storage Requests (Windows Azure Storage ログ: ログを使用してストレージ要求を追跡する)](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)」を参照し、このページ上で "DumpLogs (ダンプログ)" という語を検索してください。  
+ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルは、区切り記号付きテキスト形式が使用されているため、Microsoft Message Analyzer などの多くのログ読み取りツールで解析できます (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
 
- ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルは、区切り記号付きテキスト形式が使用されているため、Microsoft Message Analyzer などの多くのログ読み取りツールで解析できます (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)
 * [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)

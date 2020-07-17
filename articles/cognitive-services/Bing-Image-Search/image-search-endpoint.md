@@ -1,25 +1,25 @@
 ---
 title: Bing Image Search API のエンドポイント
 titleSuffix: Azure Cognitive Services
-description: Bing Image Search API で利用できるエンドポイントの一覧。
+description: Image Search API には 3 つのエンドポイントが含まれています。 エンドポイント 1 は、Web から画像を返します。 エンドポイント 2 は ImageInsights を返します。 エンドポイント 3 は注目の画像を返します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 9b3edd10d2928a512b94e9273000439f80cb8f33
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74072623"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Image Search API のエンドポイント
 
-**Image Search API** には 3 つのエンドポイントが含まれています。  エンドポイント 1 は、クエリに基づいて Web からの画像を返します。 エンドポイント 2 は [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) を返します。  エンドポイント 3 は注目の画像を返します。
+**Image Search API** には 3 つのエンドポイントが含まれています。  エンドポイント 1 は、クエリに基づいて Web からの画像を返します。 エンドポイント 2 は [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) を返します。  エンドポイント 3 は注目の画像を返します。
 
 ## <a name="endpoints"></a>エンドポイント
 
@@ -34,9 +34,9 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-GET 要求では、画像を含む Web ページなど、画像に関する分析情報が返されます。 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) パラメーターを `GET` 要求に含めます。
+GET 要求では、画像を含む Web ページなど、画像に関する分析情報が返されます。 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) パラメーターを `GET` 要求に含めます。
 
-または、`POST` 要求の本文にバイナリ イメージを含めて、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) パラメーターを `RecognizedEntities` に設定することもできます。 これは、後続の `GET` 要求でパラメーターとして使用する [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference#insightstoken) を返します。これは、画像内の人物に関する情報を返します。  `modules` を `All` に設定して、`insightsToken` を使用して別の呼び出しを行わずに、`POST` の結果内の `RecognizedEntities` を除くすべての分析情報を取得します。
+または、`POST` 要求の本文にバイナリ イメージを含めて、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) パラメーターを `RecognizedEntities` に設定することもできます。 これは、後続の `GET` 要求でパラメーターとして使用する [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) を返します。これは、画像内の人物に関する情報を返します。  `modules` を `All` に設定して、`insightsToken` を使用して別の呼び出しを行わずに、`POST` の結果内の `RecognizedEntities` を除くすべての分析情報を取得します。
 
 
 **エンドポイント 3:** 他のユーザーが行った検索要求に基づく注目の画像を返します。 画像は、たとえば注目の人物やイベントに基づいて異なるカテゴリに分離されます。
@@ -46,11 +46,11 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 
 注目の画像をサポートする市場の一覧については、[注目の画像](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)に関する記事をご覧ください。
 
-ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) のリファレンスをご覧ください。
+ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) のリファレンスをご覧ください。
 ## <a name="response-json"></a>応答 JSON
 画像検索要求に対する応答には、結果が JSON オブジェクトとして含まれます。 結果の解析例については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)と[ソース コード](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。

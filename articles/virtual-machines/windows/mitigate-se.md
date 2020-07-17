@@ -1,26 +1,19 @@
 ---
-title: Azure での予測実行の軽減のガイダンス | Microsoft Docs
+title: Azure での予測実行の軽減に関するガイダンス
 description: Azure での予測実行のサイドチャネルの脆弱性を軽減するためのガイダンスを示します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 keywords: spectre,メルトダウン,スペクター
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: conceptual
+ms.date: 11/12/2019
 ms.author: cynthn
-ms.openlocfilehash: b11562015e16cf52b6b6604f1a061a0bb03598c2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 9477b23b0d9ce42fb6c860f003ee80681354cef3
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620256"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865676"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>Azure での予測実行のサイドチャネルの脆弱性を軽減するためのガイダンス
 

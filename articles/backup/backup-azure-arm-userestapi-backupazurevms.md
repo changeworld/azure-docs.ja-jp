@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: REST API を使用して Azure VM をバックアップする'
-description: REST API を使用して Azure VM バックアップのバックアップ操作を管理する
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
-ms.service: backup
+title: REST API を使用して Azure VM をバックアップする
+description: この記事では、REST API を使用して Azure VM Backup のバックアップ操作を構成、開始、および管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289579"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226143"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -23,13 +17,13 @@ ms.locfileid: "51289579"
 
 新しいコンテナーやポリシーを作成する場合は、[コンテナーの作成](backup-azure-arm-userestapi-createorupdatevault.md)と[ポリシーの作成する](backup-azure-arm-userestapi-createorupdatepolicy.md)に関する REST API のチュートリアルを参照してください。
 
-既定のポリシー (名前は "DefaultPolicy") を使用して、リソース グループ "testVaultRG" 内に存在する Recovery Services コンテナー "testVault" に対して、"testRG" リソース グループの "testVM" という VM を保護すると仮定します。
+既定のポリシー (名前は "DefaultPolicy") を使用し、リソース グループ "testVaultRG" 内に存在する Recovery Services コンテナー "testVault" に対して、リソース グループ "testRG" の "testVM" という VM を保護すると仮定します。
 
 ## <a name="configure-backup-for-an-unprotected-azure-vm-using-rest-api"></a>REST API を使用して保護されていない Azure VM のバックアップを構成する
 
 ### <a name="discover-unprotected-azure-vms"></a>保護されていない Azure VM を検出する
 
-最初に、コンテナーが Azure VM を識別できる必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていないすべての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする、非同期の *POST* 操作です。 VM が ''キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
+最初に、コンテナーが Azure VM を識別できるようにする必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする非同期の *POST* 操作です。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -41,16 +35,16 @@ POST URI には、パラメーターとして `{subscriptionId}`、`{vaultName}`
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>応答
+#### <a name="responses"></a>Responses
 
-"refresh" 操作は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+"refresh" 操作は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 ##### <a name="example-responses"></a>応答の例
 
@@ -69,14 +63,14 @@ x-ms-correlation-request-id: 43cf550d-e463-421c-8922-37e4766db27d
 x-ms-routing-request-id: SOUTHINDIA:20180521T105701Z:43cf550d-e463-421c-8922-37e4766db27d
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 10:57:00 GMT
-Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 簡単な *GET* コマンドで "Location" ヘッダーを使用して結果の操作を追跡します
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2019-05-13
 ```
 
 すべての Azure VM が検出されると、GET コマンドは 204 (No Content) 応答を返します。 コンテナーはこれで、サブスクリプション内のすべての VM を検出できるようになりました。
@@ -108,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
 
-#### <a name="responses"></a>応答
+#### <a name="responses"></a><a name="responses-1"></a>応答
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [OK] |
 
-##### <a name="example-responses"></a>応答の例
+#### <a name="example-responses"></a><a name="example-responses-1"></a>応答の例
 
 *GET* 要求を送信すると、200 (OK) 応答が返されます。
 
@@ -168,25 +162,25 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM の保護の有効化
 
-適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
+適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
 
 保護を有効にすることは、"保護された項目" を作成する非同期の *PUT* 操作です。
 
 ```http
-https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
 `{containerName}` と `{protectedItemName}` は、上のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
 
 ```http
-PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 #### <a name="create-the-request-body"></a>要求本文を作成する
 
 保護された項目を作成する場合、要求本文のコンポーネントは次のようになります。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem リソースのプロパティ         |
 
@@ -208,16 +202,16 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 `{sourceResourceId}` は、上述の、[保護可能な項目の一覧表示の応答](#example-responses-1)からの `{virtualMachineId}` です。
 
-#### <a name="responses"></a>応答
+#### <a name="responses"></a>Responses
 
-保護された項目の作成は、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+保護された項目の作成は、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 受理されました     |         |     承認済み    |
+|200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [OK]       |
+|202 Accepted     |         |     承認済み    |
 
 ##### <a name="example-responses"></a>応答の例
 
@@ -227,7 +221,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-client-request-id: e1f94eef-9b2d-45c4-85b8-151e12b07d03; e1f94eef-9b2d-45c4-85b8-151e12b07d03
@@ -237,14 +231,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
-その後は、簡単な *GET* コマンドで場所のヘッダーまたは Azure-AsyncOperation ヘッダーを使用した結果の操作を追跡します。
+その後は、場所ヘッダーまたは Azure-AsyncOperation ヘッダーを使用して簡単な *GET* コマンドで結果の操作を追跡します。
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 操作が完了すると、応答本文に保護された項目のコンテンツが含まれる 200 (OK) が返されます。
@@ -300,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -319,17 +313,17 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 }
 ```
 
-### <a name="responses"></a>応答
+### <a name="responses"></a>Responses
 
-オンデマンド バックアップをトリガーすることは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+オンデマンド バックアップのトリガーは[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
-#### <a name="example-responses"></a>応答の例
+#### <a name="example-responses"></a><a name="example-responses-3"></a>応答の例
 
 オンデマンド バックアップの *POST* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 
@@ -337,7 +331,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-client-request-id: 7df8e874-1d66-4f81-8e91-da2fe054811d; 7df8e874-1d66-4f81-8e91-da2fe054811d
@@ -347,14 +341,14 @@ x-ms-correlation-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-routing-request-id: SOUTHINDIA:20180521T083541Z:7885ca75-c7c6-43fb-a38c-c0cc437d8810
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 08:35:41 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationResults/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationResults/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
-その後は、簡単な *GET* コマンドで場所のヘッダーまたは Azure-AsyncOperation ヘッダーを使用した結果の操作を追跡します。
+その後は、場所ヘッダーまたは Azure-AsyncOperation ヘッダーを使用して簡単な *GET* コマンドで結果の操作を追跡します。
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 操作が完了すると、応答本文に結果のバックアップ ジョブの ID が含まれる 200 (OK) が返されます。
@@ -393,7 +387,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="changing-the-policy-of-protection"></a>保護のポリシーの変更
 
-VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 例: testVM のポリシーを "DefaultPolicy" から "ProdPolicy" に変更するには、要求本文で "ProdPolicy" という ID を指定します。
+VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 次に例を示します。testVM のポリシーを 'DefaultPolicy' から 'ProdPolicy' に変更するには、要求本文で ID 'ProdPolicy' を指定します。
 
 ```http
 {
@@ -430,31 +424,53 @@ VM の保護に使用されているポリシーを変更するために、[保�
 保護の停止とデータの削除は、*DELETE* 操作です。
 
 ```http
-DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
 `{containerName}` と `{protectedItemName}` は、[上](#responses-1)のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
 
 ```http
-DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses"></a>応答
+#### <a name="responses"></a><a name="responses-2"></a>応答
 
-保護の *DELETE* は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+保護の *DELETE* は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
-これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 204 (NoContent) です。
+これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|Name  |type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
-## <a name="next-steps"></a>次の手順
+> [!IMPORTANT]
+> 誤った削除のシナリオから保護するために、Recovery Services コンテナーに対して[使用できる論理的な削除機能](use-restapi-update-vault-properties.md#soft-delete-state)があります。 コンテナーの論理的な削除の状態が [有効] に設定されている場合、削除操作では、データは直ちに削除されません。 14 日間保持された後に、完全に消去されます。 この 14 日間は、お客様はストレージに対して課金されません。 削除操作を元に戻すには、[削除の取り消しに関するセクション](#undo-the-stop-protection-and-delete-data)を参照してください。
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>保護の停止とデータの削除を取り消す
+
+誤削除の取り消しは、バックアップ項目の作成と似ています。 削除を取り消すと、その項目は保持されますが、以降のバックアップはトリガーされません。
+
+削除の取り消しは *PUT* 操作であり、[ポリシーの変更](#changing-the-policy-of-protection)や[保護の有効化](#enabling-protection-for-the-azure-vm)と非常に似ています。 [要求本文](#example-request-body)の中で変数 *isRehydrate* を使用して、単に削除を取り消すという目的を提示して、要求を送信します。 次に例を示します。testVM に対する削除を取り消すには、次の要求本文を使用する必要があります。
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+応答は、[オンデマンド バックアップをトリガーする場合](#example-responses-3)に説明したのと同じ書式に従ったものになります。 結果のジョブは、[REST API を使用してジョブを監視することに関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明したように追跡する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 
 [Azure 仮想マシンのバックアップからデータを復元します](backup-azure-arm-userestapi-restoreazurevms.md)。
 
-Azure Backup REST API の詳細については、以下のドキュメントを参照してください。
+Azure Backup REST API について詳しくは、次のドキュメントをご覧ください。
 
 - [Azure Recovery Services プロバイダー REST API](/rest/api/recoveryservices/)
 - [Azure Rest API の開始](/rest/api/azure/)

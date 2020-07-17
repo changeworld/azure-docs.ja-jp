@@ -4,22 +4,21 @@ description: PerfInsights を使用して Windows VM のパフォーマンスに
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275737"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226747"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -72,7 +71,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 このシナリオでは、特別なパフォーマンス カウンター キャプチャと、ネットワーク トレースを実行します。 このキャプチャには、すべてのサーバー メッセージ ブロック (SMB) クライアント共有カウンターが含まれています。 キャプチャに含まれる重要な SMB クライアント共有のパフォーマンス カウンターをいくつか次に示します。
 
-| **種類**     | **SMB クライアント共有カウンター** |
+| **Type**     | **SMB クライアント共有カウンター** |
 |--------------|-------------------------------|
 | IOPS         | データ要求数/秒             |
 |              | 読み取り要求数/秒             |
@@ -83,7 +82,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 | IO サイズ      | Avg.バイト/データ要求       |
 |              | Avg.バイト/読み取り               |
 |              | Avg.バイト/書き込み              |
-| Throughput   | データ バイト数/秒                |
+| スループット   | データ バイト数/秒                |
 |              | 読み取りバイト数/秒                |
 |              | 書き込みバイト数/秒               |
 | キューの長さ | Avg.読み取りキューの長さ        |
@@ -117,7 +116,7 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 | Netstat 出力                    | はい                        | はい                                | はい                      | はい                  | はい                  |
 | ネットワーク構成             | はい                        | はい                                | はい                      | はい                  | はい                  |
 | ファイアウォールの構成            | はい                        | はい                                | はい                      | はい                  | はい                  |
-| SQL Server 構成          | はい                        | はい                                | はい                      | はい                  | はい                  |
+| SQL Server の構成          | はい                        | はい                                | はい                      | はい                  | はい                  |
 | パフォーマンス診断トレース *  | はい                        | はい                                | はい                      | はい                  | はい                  |
 | パフォーマンス カウンター トレース **      |                            |                                    | はい                      |                      | はい                  |
 | SMB カウンター トレース **              |                            |                                    |                          | はい                  |                      |
@@ -132,10 +131,10 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 
 バックグラウンドでルール ベースのエンジンを実行してデータを収集し、継続的なパフォーマンスの問題を診断します。 現在サポートされているルールは次のとおりです。
 
-- HighCpuUsage ルール: CPU 使用率が高い期間を検出し、その期間で CPU 使用率が最も高いコンシューマーを表示します。
-- HighDiskUsage ルール: 物理ディスクでディスク使用量が多い期間を検出し、その期間でディスク使用量が最も多いコンシューマーを表示します。
-- HighResolutionDiskMetric ルール: 物理ディスクごとに 50 ミリ秒あたりの IOPS、スループット、および IO 待機時間の指標を表示します。 ディスク調整期間をすばやく特定するときに役立ちます。
-- HighMemoryUsage ルール: メモリ使用量が多い期間を検出し、その期間でメモリ使用量が最も多いコンシューマーを表示します。
+- HighCpuUsage ルール: CPU 使用率が高い期間を検出し、それらの期間中に CPU 使用率が最も高いコンシューマーを表示します。
+- HighDiskUsage ルール: 物理ディスク上のディスク使用量が多い期間を検出し、それらの期間中にディスク使用量が最も多いコンシューマーを表示します。
+- HighResolutionDiskMetric ルール: 物理ディスクごとに 50 ミリ秒あたりの IOPS、スループット、および I/O 待機時間のメトリックを表示します。 ディスク調整期間をすばやく特定するときに役立ちます。
+- HighMemoryUsage ルール: メモリ使用量が多い期間を検出し、それらの期間中にメモリ使用量が最も多いコンシューマーを表示します。
 
 > [!NOTE] 
 > 現時点では、.NET Framework 4.5 以降のバージョンが搭載された Windows バージョンがサポートされています。
@@ -167,7 +166,7 @@ Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプ�
 
 -  このツールを、パフォーマンスに問題がある VM で実行する必要があります。 
 
--  Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1、および Windows 10 のオペレーティング システムがサポートされています。
+-  次のクライアント オペレーティング システムがサポートされています。Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1、および Windows 10。
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>運用 VM でこのツールを実行したときに発生する可能性のある問題
 
@@ -192,9 +191,9 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 1. [PerfInsights.zip](https://aka.ms/perfinsightsdownload) をダウンロードします。
 
-2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、**[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、**[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
+2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、 **[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、 **[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
 
-    ![[ブロックの解除] が強調表示された PerfInsights プロパティのスクリーンショット](media/how-to-use-perfInsights/unlock-file.png)
+    ![[ブロックの解除] が強調表示された PerfInsights プロパティのスクリーンショット](media/how-to-use-perfInsights/pi-unlock-file.png)
 
 3.  圧縮された PerfInsights.zip ファイルを一時ドライブ (既定では通常、D ドライブ) に展開します。 
 
@@ -204,7 +203,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![PerfInsights コマンド ラインの出力のスクリーンショット](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![PerfInsights コマンド ラインの出力のスクリーンショット](media/how-to-use-perfInsights/pi-commandline.png)
     
     PerfInsights シナリオを実行する基本構文は次のとおりです。
     
@@ -237,11 +236,11 @@ PerfInsights ツールを実行するには、次の手順に従います。
     ```
 
     >[!Note]
-    >シナリオを実行する前に、PerfInsights から、診断情報を共有し、使用許諾契約書に同意するよう求めるプロンプトが表示されます。 これらのプロンプトを省略するには、**/AcceptDisclaimerAndShareDiagnostics** オプションを使用します。 
+    >シナリオを実行する前に、PerfInsights から、診断情報を共有し、使用許諾契約書に同意するよう求めるプロンプトが表示されます。 これらのプロンプトを省略するには、 **/AcceptDisclaimerAndShareDiagnostics** オプションを使用します。 
     >
     >有効な Microsoft のサポート チケットをお持ちで、サポート エンジニアからの依頼に従って PerfInsights を実行している場合は、 **/sr** オプションを使用してサポート チケット番号を入力してください。
     >
-    >既定では、PerfInsights は自動的に最新バージョンに更新されます。 自動更新を省略するには、**/SkipAutoUpdate** または **/sau** パラメーターを使用してください。  
+    >既定では、PerfInsights は自動的に最新バージョンに更新されます。 自動更新を省略するには、 **/SkipAutoUpdate** または **/sau** パラメーターを使用してください。  
     >
     >期間を切り替えるスイッチ **/d** が指定されていない場合は、PerfInsights から、VM の低速シナリオ、Azure Files シナリオ、および高度なシナリオの実行中に発生した問題を報告することを求められます。 
 
@@ -253,8 +252,8 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 **[検索結果]** タブを選択します。
 
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/findingtab.png)
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/findings.PNG)
+![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > [高] と分類された結果は、パフォーマンスの問題の原因となる可能性のある既知の問題です。 [中] と分類された結果は、最適ではないが、必ずしもパフォーマンス問題の原因とはならない構成です。 [低] と分類された結果は、単なる情報提供のためのステートメントです。
@@ -269,25 +268,25 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 物理ディスクの観点 ([ディスク マップ]) では、このテーブルはディスク上で実行されているすべての論理ボリュームを示しています。 次の例では、**PhysicalDrive2** は複数のパーティション上に作成された 2 つの論理ボリューム (J および H) を実行しています。
 
-![ディスク タブのスクリーンショット](media/how-to-use-perfInsights/disktab.png)
+![ディスク タブのスクリーンショット](media/how-to-use-perfInsights/pi-disk-tab.png)
 
 ボリュームの観点 ([ボリューム マップ]) では、このテーブルは各論理ボリュームにあるすべての物理ディスクを示しています。 RAID/動的ディスクの場合は、1 つの論理ボリュームを複数の物理ディスク上で実行する可能性があることに注意してください。 次の例では、*C:\\mount* は、物理ディスク 2 および 3 上で *SpannedDisk* として構成されたマウント ポイントです。
 
-![ボリューム タブのスクリーンショット](media/how-to-use-perfInsights/volumetab.png)
+![ボリューム タブのスクリーンショット](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>[SQL Server] タブ
 
 ターゲット VM が SQL Server インスタンスをホストしている場合は、レポートに **SQL** という名前の追加のタブが表示されます。
 
-![SQL タブのスクリーンショット](media/how-to-use-perfInsights/sqltab.png)
+![SQL タブのスクリーンショット](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-このセクションには、**[検索結果]** タブと、VM 上でホストされている SQL Server インスタンスごとの追加のタブが含まれています。
+このセクションには、 **[検索結果]** タブと、VM 上でホストされている SQL Server インスタンスごとの追加のタブが含まれています。
 
 **[検索結果]** タブには、見つかった SQL に関連するすべてのパフォーマンスの問題の一覧が推奨事項と共に含まれています。
 
 次の例では、**PhysicalDrive0** (C ドライブを実行しています) が表示されます。 これは、**modeldev** と **modellog** の両方のファイルが C ドライブに配置され、それらが別の種類 (それぞれ、データ ファイルとトランザクション ログなど) であるためです。
 
-![ログ情報のスクリーンショット](media/how-to-use-perfInsights/loginfo.png)
+![ログ情報のスクリーンショット](media/how-to-use-perfInsights/pi-log-info.png)
 
 SQL Server の特定のインスタンスのタブには、選択されたインスタンスに関する基本的な情報を表示する一般的なセクションが含まれています。 これらのタブにはまた、高度な情報 (設定、構成、ユーザー オプションなど) のための追加のセクションも含まれています。
 
@@ -304,13 +303,13 @@ Diskspd は、Microsoft からのストレージ ロード ジェネレーター
 
 Xperf は、Windows パフォーマンス ツールキットからのトレースをキャプチャするためのコマンドライン ツールです。 詳細については、「[Windows Performance Toolkit – Xperf (Windows パフォーマンス ツールキット - Xperf)](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらに詳しく調べるために、診断ログとレポートを Microsoft サポートにアップロードできます。 サポートは、トラブルシューティング プロセスを支援するために、PerfInsights によって生成された出力を送信するよう要求する可能性があります。
 
 次のスクリーンショットは、受信する可能性があるものと同様のメッセージを示しています。
 
-![Microsoft サポートからのサンプル メッセージのスクリーンショット](media/how-to-use-perfInsights/supportemail.png)
+![Microsoft サポートからのサンプル メッセージのスクリーンショット](media/how-to-use-perfInsights/pi-support-email.png)
 
 メッセージ内の指示に従って、ファイル転送ワークスペースにアクセスします。 セキュリティを強化するために、最初の使用時にパスワードを変更する必要があります。
 

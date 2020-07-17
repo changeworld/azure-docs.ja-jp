@@ -1,26 +1,26 @@
 ---
 title: コンテナーを構成する - Computer Vision
-titlesuffix: Azure Cognitive Services
-description: Computer Vision で、テキスト認識コンテナーのさまざまな設定を構成します。
+titleSuffix: Azure Cognitive Services
+description: この記事では、Computer Vision のテキスト認識コンテナーに必須の設定とオプションの設定を構成する方法を説明します。
 services: cognitive-services
-author: diberry
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
+ms.date: 04/01/2020
+ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678685"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80879311"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>テキスト認識 Docker コンテナーを構成する
+# <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker コンテナーを構成する
 
-**テキスト認識**コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
+`docker run` コマンドの引数を使用することによって、Computer Vision コンテナーのランタイム環境を構成します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 
 ## <a name="configuration-settings"></a>構成設定
 
@@ -51,7 +51,7 @@ ms.locfileid: "59678685"
 
 次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -63,9 +63,9 @@ ms.locfileid: "59678685"
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+## <a name="http-proxy-credentials-settings"></a>HTTP プロキシ資格情報設定
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Logging の設定
  
@@ -79,56 +79,56 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](computer-vision-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| Name | データ型 | 説明 |
+|省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
 |省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>docker run コマンドの例 
+## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
 以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](computer-vision-how-to-install-containers.md#stop-the-container)するまで動作し続けます。
 
 * **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 * **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
-次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
-
-{_<引数名>_} はお客様独自の値に置き換えてください。
+{ _<引数名>_ } はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{BILLING_KEY} | Cognitive Services リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | リージョンを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
+| **{API_KEY}** | Azure `Computer Vision` の [キー] ページの `Computer Vision` リソースのエンドポイント キー。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Computer Vision` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](computer-vision-how-to-install-containers.md#gathering-required-parameters)に関するページを参照してください。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
-> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある**キー**です。 
+> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある**キー**です。
 
-## <a name="recognize-text-container-docker-examples"></a>テキスト認識コンテナーの Docker の例
+## <a name="container-docker-examples"></a>コンテナーの Docker の例
 
-次の Docker の例は、テキスト認識コンテナーに関するものです。 
+次の Docker の例は、読み取りコンテナーに関するものです。
 
-### <a name="basic-example"></a>基本的な例 
+### <a name="basic-example"></a>基本的な例
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  ```docker
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>ログの例 
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  ```docker
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [コンテナーのインストール方法と実行方法](computer-vision-how-to-install-containers.md)を確認する。
+* [コンテナーのインストール方法と実行方法](computer-vision-how-to-install-containers.md)を確認します。

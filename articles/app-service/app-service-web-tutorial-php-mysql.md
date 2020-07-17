@@ -1,26 +1,17 @@
 ---
-title: PHP (Laravel) と MySQL - Azure App Service | Microsoft Docs
+title: チュートリアル:PHP アプリと MySQL
 description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。 このチュートリアルでは Laravel を使用します。
-services: app-service\web
-documentationcenter: php
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: tutorial
-ms.date: 11/15/2018
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: eddccc9897380e3ff47de49771a617bf6cacc407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/25/2019
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: ee5a12b11e36f3d1e08d1154d21f198c0fd1b76e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138385"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82085233"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL アプリを構築する
 
@@ -28,7 +19,7 @@ ms.locfileid: "66138385"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[Azure App Service on Linux で PHP と MySQL アプリを構築する](./containers/tutorial-php-mysql-app.md)」を参照してください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Azure App Service で実行される [Laravel](https://laravel.com/) アプリが完成します。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Azure で PHP アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Azure App Service で実行される [Laravel](https://laravel.com/) アプリが完成します。
 
 ![Azure App Service で実行される PHP アプリ](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -109,7 +100,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL 接続を構成する
 
-リポジトリのルートに、*.env* という名前のテキスト ファイルを作成します。 次の変数を *.env* ファイルにコピーします。 _&lt;root_password >_ プレース ホルダーを、MySQL ルート ユーザーのパスワードに置き換えます。
+リポジトリのルートに、 *.env* という名前のテキスト ファイルを作成します。 次の変数を *.env* ファイルにコピーします。 _&lt;root_password >_ プレース ホルダーを、MySQL ルート ユーザーのパスワードに置き換えます。
 
 ```
 APP_ENV=local
@@ -157,7 +148,7 @@ PHP サーバーを停止するには、ターミナルに「`Ctrl + C`」と入
 
 この手順では、MySQL データベースを [Azure Database for MySQL](/azure/mysql) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -165,7 +156,7 @@ PHP サーバーを停止するには、ターミナルに「`Ctrl + C`」と入
 
 Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
 
-次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
+次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、 *\<admin_user>* プレースホルダーをユーザー名に、 *\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
@@ -178,10 +169,10 @@ az mysql server create --resource-group myResourceGroup --name <mysql_server_nam
 
 MySQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "location": "westeurope",
-  "name": "<mysql_server_name>",
+  "name": "&lt;mysql_server_name&gt;",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "additionalProperties": {},
@@ -192,10 +183,10 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  ...   +  
-  -  < Output has been truncated for readability >
+  ...    +  
+  -  &lt; Output has been truncated for readability &gt;
 }
-```
+</pre>
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
@@ -220,7 +211,8 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql_ser
 ローカルのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;mysql_server_name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
 
 ```bash
-mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p<PASSWORD> --ssl-mode=REQUIRED --ssl-ca=<PATH_TO_PEM>
+
 ```
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する
@@ -275,9 +267,9 @@ MYSQL_SSL=true
 > MySQL の接続情報を保護するために、このファイルは既に Git リポジトリから除外されています (リポジトリのルートで _.gitignore_ を参照してください)。 後で、App Service の環境変数を構成して Azure Database for MySQL のデータベースに接続する方法を学習します。 環境変数を構成するので、App Service には *.env* ファイルは必要ありません。
 >
 
-### <a name="configure-ssl-certificate"></a>SSL 証明書を構成する
+### <a name="configure-tlsssl-certificate"></a>TLS/SSL 証明書を構成する
 
-既定では、Azure Database for MySQL はクライアントからの SSL 接続を強制します。 Azure で MySQL データベースに接続するには、[Azure Database for MySQL から提供された _.pem_ 証明書](../mysql/howto-configure-ssl.md)を使用する必要があります。
+既定では、Azure Database for MySQL はクライアントからの TLS 接続を強制します。 Azure で MySQL データベースに接続するには、[Azure Database for MySQL から提供された _.pem_ 証明書](../mysql/howto-configure-ssl.md)を使用する必要があります。
 
 _config/database.php_ を開き、次のコードに示すように `sslmode` パラメーターと `options` パラメーターを `connections.mysql` に追加します。
 
@@ -301,7 +293,7 @@ _config/database.php_ を開き、次のコードに示すように `sslmode` �
 php artisan migrate --env=production --force
 ```
 
-この時点では、_.env.production_ には有効なアプリケーション キーはありません。 ターミナルで、新しいものを生成します。
+この時点では、 _.env.production_ には有効なアプリケーション キーはありません。 ターミナルで、新しいものを生成します。
 
 ```bash
 php artisan key:generate --env=production --force
@@ -315,7 +307,7 @@ php artisan serve --env=production
 
 `http://localhost:8000` に移動します。 エラーなしでページが読み込まれれば、PHP アプリケーションは Azure の MySQL データベースに接続しています。
 
-ページにいくつかのタスクを追加します。
+ページで、いくつかのタスクを追加します。
 
 ![PHP が Azure Database for MySQL に正常にデータベースに接続されている](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
@@ -378,7 +370,7 @@ PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを�
 
 Laravel には App Service のアプリケーション キーが必要です。 これはアプリ設定で構成できます。
 
-ローカル ターミナル ウィンドウで、`php artisan` を使用して新しいアプリケーションキーを生成します (_.env_ には保存されません)。
+ローカル ターミナル ウィンドウで、`php artisan` を使用して新しいアプリケーションキーを生成します ( _.env_ には保存されません)。
 
 ```bash
 php artisan key:generate --show
@@ -402,13 +394,13 @@ Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) �
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス (_/_) をポイントします。
+既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス ( _/_ ) をポイントします。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 3, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
@@ -420,8 +412,8 @@ remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
 remote: Running deployment command...
 ...
-< Output has been truncated for readability >
-```
+&lt; Output has been truncated for readability &gt;
+</pre>
 
 > [!NOTE]
 > デプロイ プロセスの最後に [Composer](https://getcomposer.org/) パッケージがインストールされることに気付くかもしれません。 App Service では既定のデプロイ中にこれらの自動化が実行されないため、このサンプル レポジトリには、有効化するための3 つのファイルがルート ディレクトリに追加されます。
@@ -433,7 +425,7 @@ remote: Running deployment command...
 > この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
 >
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 `http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -595,7 +587,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
 
-任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。
+任意のタイミングでログのストリーミングを停止するには、`Ctrl`+`C` キーを押します。
 
 > [!TIP]
 > PHP アプリケーションは、標準の [error_log()](https://php.net/manual/function.error-log.php) を使用してコンソールに出力できます。 サンプル アプリケーションでは、_app/Http/routes.php_ でこの方法を使用しています。
@@ -622,7 +614,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

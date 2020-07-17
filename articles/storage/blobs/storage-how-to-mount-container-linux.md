@@ -1,24 +1,24 @@
 ---
 title: Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs
 description: Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする
-services: storage
-author: normesta
+author: rishabpoh
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.date: 2/1/2019
-ms.author: normesta
-ms.reviewer: seguler
-ms.openlocfilehash: 261fd9f820f3e5421d9d0f4f7c9220ec31003283
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.author: ripohane
+ms.reviewer: dineshm
+ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061426"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
 ## <a name="overview"></a>概要
-[blobfuse](https://github.com/Azure/azure-storage-fuse) は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 blobfuse を使用すると、Linux ファイル システムからお客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 Azure Blob Storage はオブジェクト ストレージ サービスであり、階層型名前空間を持っていません。 blobfuse は、フォワードスラッシュ '/' を区切り記号として使用して、仮想ディレクトリ スキームによってこの名前空間を提供します。  
+[blobfuse](https://github.com/Azure/azure-storage-fuse) は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 blobfuse を使用すると、Linux ファイル システムからお客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 blobfuse は、フォワードスラッシュ '/' を区切り記号として使用する仮想ディレクトリ スキームを使用します。  
 
 このガイドでは、blobfuse を使用し、Linux 上で Blob Storage コンテナーをマウントしてデータにアクセスする方法を示します。 blobfuse の詳細については、「[the blobfuse repository (blobfuse リポジトリ)](https://github.com/Azure/azure-storage-fuse)」にある詳細を参照してください。
 
@@ -140,7 +140,7 @@ mkdir test
 echo "hello world" > test/blob.txt
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [blobfuse ホーム ページ](https://github.com/Azure/azure-storage-fuse#blobfuse)
 * [blobfuse の問題を報告する](https://github.com/Azure/azure-storage-fuse/issues) 

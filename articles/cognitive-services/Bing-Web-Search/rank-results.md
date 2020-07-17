@@ -11,18 +11,18 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9a49c4af474d7f0618bf0cff1a093e5cbb62fe2d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295608"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "66390136"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>ランキングを使用して Bing Web Search API の結果を表示する方法  
 
-検索の各応答には、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) 回答が含まれます。これには、検索結果の表示方法が指定されています。 ランキング応答は、従来の検索結果ページに対してメインライン コンテンツとサイドバー コンテンツによって結果をグループ化します。 結果を従来のメインラインおよびサイドバー形式で表示しない場合は、メインラインのコンテンツの視認性をサイドバーのコンテンツよりも高くする必要があります。  
+検索の各応答には、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 回答が含まれます。これには、検索結果の表示方法が指定されています。 ランキング応答は、従来の検索結果ページに対してメインライン コンテンツとサイドバー コンテンツによって結果をグループ化します。 結果を従来のメインラインおよびサイドバー形式で表示しない場合は、メインラインのコンテンツの視認性をサイドバーのコンテンツよりも高くする必要があります。  
 
-各グループ (メインラインまたはサイドバー) 内で、[Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) 配列は、コンテンツの表示順序を指定します。 各項目では、回答内の結果を次の 2 つの方法で識別できます。  
+各グループ (メインラインまたはサイドバー) 内で、[Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) 配列は、コンテンツの表示順序を指定します。 各項目では、回答内の結果を次の 2 つの方法で識別できます。  
 
 -   `answerType` および `resultIndex` — `answerType` フィールドは、回答 (Web ページ、ニュースなど) を識別し、`resultIndex` は、回答内の結果 (ニュース記事など) を識別します。 インデックスは、0 から始まります。  
 
@@ -30,11 +30,11 @@ ms.locfileid: "58295608"
 
 ID を使用するのは簡単です。必要があるのは、ランキング ID を回答またはその結果の ID と一致させることだけです。 回答オブジェクトに `id` フィールドが含まれている場合は、すべての回答の結果を一緒に表示します。 たとえば、`News` オブジェクトに `id` フィールドが含まれている場合は、すべてのニュース記事を一緒に表示します。 `News` オブジェクトに `id` フィールドが含まれていない場合は、各ニュース記事に `id` フィールドが含まれており、ランキング応答によって、ニュース記事と他の回答の結果がミックスされます。  
 
-`answerType` と `resultIndex` を使用するのはもう少し複雑です。 `answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用してその回答の結果にインデックスを付けて、表示する結果を取得できるようにします  (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。  
+`answerType` と `resultIndex` を使用するのはもう少し複雑です。 `answerType` を使用して、表示する結果が含まれる回答を識別します。 次に、`resultIndex` を使用してその回答の結果にインデックスを付けて、表示する結果を取得できるようにします  (`answerType` 値は、[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) オブジェクト内のフィールドの名前です)。すべての回答の結果を一緒に表示する場合、ランキング応答の項目には、`resultIndex` フィールドは含まれません。  
 
 ## <a name="ranking-response-example"></a>ランキング応答の例
 
-次に示すのは、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) の例です。 Web 回答には `id` フィールドが含まれていないため、ランキングに基づいてすべての Web ページが個別に表示されます (各 Web ページには `id` フィールドが含まれています)。 画像、ビデオ、および関連検索の回答には `id` フィールドが含まれているため、これらの回答のそれぞれの結果がランキングに基づいて一緒に表示されます。
+次に示すのは、[RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) の例です。 Web 回答には `id` フィールドが含まれていないため、ランキングに基づいてすべての Web ページが個別に表示されます (各 Web ページには `id` フィールドが含まれています)。 画像、ビデオ、および関連検索の回答には `id` フィールドが含まれているため、これらの回答のそれぞれの結果がランキングに基づいて一緒に表示されます。
 
 ```json
 {  
@@ -218,7 +218,7 @@ ID を使用するのは簡単です。必要があるのは、ランキング I
 -   すべての関連検索  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ランク付けされない結果を昇格する方法については、「[Promoting answers that are not ranked (ランク付けされない回答を昇格する)](./filter-answers.md#promoting-answers-that-are-not-ranked)」を参照してください。
 

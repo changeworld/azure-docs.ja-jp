@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:LocalDB の 10 GB の制限の問題から回復する方法 | Microsoft Docs
+title: 'Azure AD Connect: LocalDB の 10 GB の制限の問題から回復する方法 | Microsoft Docs'
 description: このトピックでは、LocalDB の 10 GB 制限の問題が発生したときに Azure AD Connect Synchronization Service を回復する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435599"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60386926"
 ---
-# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect:LocalDB の 10 GB 制限からの回復方法
+# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB の 10 GB の制限から回復する方法
 Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 SQL Server Express には、10 GB のサイズ制限があります。 LocalDB を使用していて、この上限に達すると、Azure AD Connect Synchronization Service は正常に開始または同期できなくなります。 この記事では、回復の手順を説明します。
 
 ## <a name="symptoms"></a>現象
 一般的には、次の 2 つの症状があります。
 
-* Azure AD Connect Synchronization Service が**実行中**でも、*"stopped-database-disk-full"* エラーで同期が失敗する。
+* Azure AD Connect Synchronization Service が**実行中**でも、 *"stopped-database-disk-full"* エラーで同期が失敗する。
 
-* Azure AD Connect Synchronization Service が**開始できない**。 このサービスを開始しようとすると、イベント 6323 で失敗し、"*SQL Server のディスク領域が不足しているため、サーバーでエラーが発生しました。*" というエラー メッセージが表示されます。
+* Azure AD Connect Synchronization Service が**開始できない**。 このサービスを開始しようとすると、イベント 6323 で失敗し、"*SQL Server のディスク領域が不足しているため、サーバーでエラーが発生しました。* " というエラー メッセージが表示されます。
 
 ## <a name="short-term-recovery-steps"></a>短期的な回復手順
 このセクションでは、Azure AD Connect Synchronization Service が操作を再開するために必要な DB 空き領域を増やす手順について説明します。 これには次の手順が含まれます。
@@ -87,7 +87,7 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 
 3. **[アクション]** で **[Clear Runs (実行のクリア)]** コマンドを選択します。
 
-4. **[Clear all runs]\(すべての実行をクリア\)** または **[Clear runs before… \<date>]\(date> より前の実行をクリア\)** のいずれかのオプションを選択できます。 まずは 2 日を経過した実行履歴データをクリアすることをお勧めします。 DB サイズの問題が引き続き発生する場合は、**[Clear all runs (すべての実行をクリア)]** オプションを選択してください。
+4. **[Clear all runs]\(すべての実行をクリア\)** または **[Clear runs before… \<date>]\(date> より前の実行をクリア\)** のいずれかのオプションを選択できます。 まずは 2 日を経過した実行履歴データをクリアすることをお勧めします。 DB サイズの問題が引き続き発生する場合は、 **[Clear all runs (すべての実行をクリア)]** オプションを選択してください。
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>実行履歴データの保有期間を短縮する
 この手順は、複数の同期サイクル後に 10 GB 制限の問題が発生する可能性を低減するためのものです。
@@ -103,5 +103,5 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 * Azure AD Connect でリモート SQL を構成する方法の手順については、「[Azure AD Connect のカスタム インストール](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)」を参照してください。
 * Azure AD Connect アップグレードのスウィング移行の手順については、「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

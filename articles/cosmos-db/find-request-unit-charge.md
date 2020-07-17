@@ -3,15 +3,15 @@ title: Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 description: Azure Cosmos コンテナーに対して実行した操作の要求ユニット (RU) 使用量を確認する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
+ms.topic: conceptual
+ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: 8ccb7ae9869ec01b4f26009535af613ccb1d35d0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241118"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77585902"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -25,7 +25,7 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 現在のところ、SQL クエリについてのみ、Azure portal で要求の使用量を確認できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成](create-sql-api-dotnet.md#create-account)してデータを取り込むか、既にデータが存在する既存の Azure Cosmos アカウントを選択します。
 
@@ -39,7 +39,8 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 ![Azure portal で SQL クエリの要求の使用量を表示した画面のスクリーンショット](./media/find-request-unit-charge/portal-sql-query.png)
 
-### <a name="use-the-net-sdk-v2"></a>.NET SDK V2 の使用
+### <a name="use-the-net-sdk"></a>.NET SDK を使用する
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
 
@@ -73,6 +74,12 @@ while (query.HasMoreResults)
     requestCharge = queryResponse.RequestCharge;
 }
 ```
+
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+
+[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 詳細については、「[クイック スタート: Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする](create-sql-api-dotnet.md)」を参照してください。
 
@@ -146,10 +153,12 @@ while (query.hasMoreResults()) {
 [Python SDK](https://pypi.org/project/azure-cosmos/) の `CosmosClient` オブジェクトは、`last_response_headers` ディクショナリを公開します。直前に実行された操作に関して、基になる HTTP API から返されるすべてのヘッダーが、このディクショナリによってマップされます。 要求の使用量は、`x-ms-request-charge` キーで得られます。
 
 ```python
-response = client.ReadItem('dbs/database/colls/container/docs/itemId', { 'partitionKey': 'partitionKey' })
+response = client.ReadItem(
+    'dbs/database/colls/container/docs/itemId', {'partitionKey': 'partitionKey'})
 request_charge = client.last_response_headers['x-ms-request-charge']
 
-response = client.ExecuteStoredProcedure('dbs/database/colls/container/sprocs/storedProcedureId', None, { 'partitionKey': 'partitionKey' })
+response = client.ExecuteStoredProcedure(
+    'dbs/database/colls/container/sprocs/storedProcedureId', None, {'partitionKey': 'partitionKey'})
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
@@ -163,11 +172,11 @@ RU 使用量は、`getLastRequestStatistics` という名前のカスタム [デ
 
 現在のところ、クエリについてのみ、Azure portal で要求の使用量を確認できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. [新しい Azure Cosmos アカウントを作成](create-mongodb-dotnet.md#create-a-database-account)してデータを取り込むか、既にデータが存在する既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウに進み、操作の対象となるコレクションを選択します。
+1. **[データ エクスプローラー]** ウィンドウに進み、操作の対象となるコンテナーを選択します。
 
 1. **[新しいクエリ]** を選択します。
 
@@ -231,7 +240,7 @@ Azure Cosmos DB の Cassandra API に対して操作を実行すると、受信�
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
-double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"], 0);
+double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
 ```
 
 詳細については、「[クイック スタート: .NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する](create-cassandra-dotnet.md)」を参照してください。
@@ -292,7 +301,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 詳細については、「[クイック スタート: .NET SDK と Azure Cosmos DB を使用して Table API アプリをビルドする](create-table-dotnet.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 RU 使用量を最適化する方法については、次の記事をご覧ください。
 
@@ -302,3 +311,4 @@ RU 使用量を最適化する方法については、次の記事をご覧く�
 * [プロビジョニングされたスループットのグローバルなスケーリング](scaling-throughput.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
 * [特定のコンテナーに対してスループットをプロビジョニングする](how-to-provision-container-throughput.md)
+* [Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)

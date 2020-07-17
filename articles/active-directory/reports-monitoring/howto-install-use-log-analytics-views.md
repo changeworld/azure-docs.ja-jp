@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のログ分析ビューをインストールして使用する方法 | Microsoft Docs
+title: ログ分析ビューをインストールして使用する方法 | Microsoft Docs
 description: Azure Active Directory のログ分析ビューをインストールして使用する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92a5d9539d254eb7d52e3277691c9d8ff5a41821
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005062"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74014421"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用のログ分析ビューのインストールと使用
 
@@ -41,25 +41,25 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 
 ## <a name="install-the-log-analytics-views"></a>ログ分析ビューのインストール
 
-1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
-2. **[ビュー デザイナー]** を選択し、**[インポート]** してから、**[ファイルの選択]** を選択して、ローカル コンピューターからビューをインポートします。
-3. 前提条件からダウンロードしたビューを選択し、**[保存]** を選択してインポートを保存します。 **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)** ビューと **[Sign-ins Events]\(サインイン イベント\)** ビューに対しても同じ操作を実行します。
+1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、 **[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
+2. **[ビュー デザイナー]** を選択し、 **[インポート]** してから、 **[ファイルの選択]** を選択して、ローカル コンピューターからビューをインポートします。
+3. 前提条件からダウンロードしたビューを選択し、 **[保存]** を選択してインポートを保存します。 **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)** ビューと **[Sign-ins Events]\(サインイン イベント\)** ビューに対しても同じ操作を実行します。
 
 ## <a name="use-the-views"></a>ビューの使用
 
-1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
+1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、 **[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
 
-2. ワークスペースに移動して、**[ワークスペースの概要]** を選択します。 次の 3 つのビューを確認する必要があります。
+2. ワークスペースに移動して、 **[ワークスペースの概要]** を選択します。 次の 3 つのビューを確認する必要があります。
 
-    * **Azure AD Account Provisioning Events\(Azure AD アカウントのプロビジョニング イベント\)**:プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
-    * **Sign-ins Events\(サインイン イベント\)**:このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
+    * **Azure AD Account Provisioning Events\(Azure AD アカウントのプロビジョニング イベント\)** :プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
+    * **Sign-ins Events\(サインイン イベント\)** :このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
 
-3. これらのいずれかのビューを選択して、個々のレポートに進みます。 また、任意のレポート パラメーターにアラートを設定することも可能です。 たとえば、サインイン エラーが発生するたびに、アラートを設定するとします。 これを行うには、まず、**[Sign-ins Events]\(サインイン イベント\)** ビューを選択し、**[Sign-in errors over time]\(経時的なサインイン エラー\)** レポートを選択し、**[Analytics]** を選択して、レポートの背景となる実際のクエリを示した詳細ページを開きます。 
+3. これらのいずれかのビューを選択して、個々のレポートに進みます。 また、任意のレポート パラメーターにアラートを設定することも可能です。 たとえば、サインイン エラーが発生するたびに、アラートを設定するとします。 これを行うには、まず、 **[Sign-ins Events]\(サインイン イベント\)** ビューを選択し、 **[Sign-in errors over time]\(経時的なサインイン エラー\)** レポートを選択し、 **[Analytics]** を選択して、レポートの背景となる実際のクエリを示した詳細ページを開きます。 
 
     ![詳細](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. **[アラートの設定]** を選択して、**[アラートの条件]** セクションで **[Whenever the Custom log search]\(次の場合に、カスタム ログ検索を行う: \) に &lt;ロジックが定義されていません&gt;** を選択します。 サインイン エラーが発生するたびにアラートを生成したいので、既定のアラート ロジックの **[しきい値]** に **1** を設定してから、**[完了]** を選択します。 
+4. **[アラートの設定]** を選択して、**[アラートの条件]** セクションで **[Whenever the Custom log search]\(次の場合に、カスタム ログ検索を行う: \) に &lt;ロジックが定義されていません&gt;** を選択します。 サインイン エラーが発生するたびにアラートを生成したいので、既定のアラート ロジックの **[しきい値]** に **1** を設定してから、 **[完了]** を選択します。 
 
     ![シグナル ロジックの構成](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 
@@ -71,7 +71,7 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 
 7. **[アラート ルールの作成]** を選択して、アラートを作成します。 これで、サインイン エラーが発生するたびに、アラート通知が行われるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログでアクティビティ ログを分析する方法](howto-analyze-activity-logs-log-analytics.md)
 * [Azure portal での Azure Monitor ログの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

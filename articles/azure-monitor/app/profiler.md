@@ -1,29 +1,23 @@
 ---
 title: Application Insights を使用したライブ Azure App Service アプリのプロファイリング | Microsoft Docs
 description: Application Insights Profiler を使用して Azure App Service でライブ アプリをプロファイルします。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 4d41ece86240a20afea06bff3469b5c02c6e46ff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493741"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121199"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
 Profiler は、Basic 以上のサービス レベルを使用し、Azure App Service で実行されている ASP.NET および ASP.NET Coreアプリで実行できます。 現時点では、[この方法](profiler-aspnetcore-linux.md)でのみ Linux で Profiler を有効にできます。
 
-## <a id="installation"></a> アプリの Profiler を有効にする
+## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> アプリの Profiler を有効にする
 アプリで Profiler を有効にするには、次の手順に従います。 別の種類の Azure サービスを実行している場合、以下のサポートされている他のプラットフォームで Profiler を有効にする手順を参照してください。
 * [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric アプリケーション](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
@@ -37,7 +31,7 @@ Application Insights Profiler は、App Services ランタイムの一部とし�
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 
-1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションでは、Profiler を手動で有効にする手順を説明します。](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションには、Profiler を手動で有効にするための手順が含まれています。](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
@@ -58,10 +52,18 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 これらの値は、[Azure Resource Manager テンプレート](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) または [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest) を使用して設定できます。
 
+### <a name="enabling-profiler-for-other-clouds-manually"></a>他のクラウドに対して Profiler を手動で有効にする
+
+他のクラウドに対して Profiler を有効にする場合は、次のアプリ設定を使用できます。
+
+|アプリ設定    | 米国政府の値| China Cloud |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | `https://agent.serviceprofiler.azure.us`    | `https://profiler.applicationinsights.azure.cn` |
+|ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々の Web アプリのインスタンスで Profiler を停止または再起動するには、**[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、**[拡張機能]** に移動します。
+個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[WebJobs]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
 
 ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 
@@ -70,7 +72,7 @@ Profiler を有効にするために必要な設定は次のとおりです。
 WebDeploy を使用して Web アプリケーションへの変更をデプロイするときに、Profiler のファイルを削除できます。 App_Data フォルダーを除外しておけば、デプロイ中に削除されることを防ぐことができます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Visual Studio での Application Insights の操作](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 

@@ -12,27 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2019
+ms.date: 02/27/2020
 ms.author: b-juche
-ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522865"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78163966"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files のストレージ階層とは
 
 Azure NetApp Files のボリュームを作成する前に、プロビジョニング容量のプールを購入して設定する必要があります。  容量プールを設定するには、NetApp アカウントが必要です。 ストレージ階層についての理解は、Azure NetApp Files のリソースを設定および管理するうえで役立ちます。
 
-## <a name="azure_netapp_files_account"></a>NetApp アカウント
+> [!IMPORTANT] 
+> Azure NetApp Files は現在、サブスクリプション間でのリソースの移行をサポートしていません。
+
+## <a name="netapp-accounts"></a><a name="azure_netapp_files_account"></a>NetApp アカウント
 
 - NetApp アカウントは、構成容量プールの管理グループとしての役割を果たします。  
 - NetApp アカウントは、一般的な Azure Storage アカウントとは異なります。 
 - NetApp アカウントは、範囲がリージョン単位となります。   
 - 1 つのリージョンで複数の NetApp アカウントを持つことはできますが、個々の NetApp アカウントが関連付けられるリージョンは 1 つだけです。
 
-## <a name="capacity_pools"></a>容量プール
+## <a name="capacity-pools"></a><a name="capacity_pools"></a>容量プール
 
 - 容量プールは、そのプロビジョニング容量で測定されます。  
 - 容量は、購入した固定 SKU 単位でプロビジョニングされます (4 TiB 容量など)。
@@ -42,7 +45,7 @@ Azure NetApp Files のボリュームを作成する前に、プロビジョニ�
   たとえば、下の「[ストレージ階層の概念図](#conceptual_diagram_of_storage_hierarchy)」で、容量プール 1 を米国東部の NetApp アカウントから米国西部 2 の NetApp アカウントへ移動することはできません。  
 - 容量プール内のすべてのボリュームが削除されるまで、容量プールを削除できません。
 
-## <a name="volumes"></a>ボリューム
+## <a name="volumes"></a><a name="volumes"></a>ボリューム
 
 - ボリュームは、論理容量消費で測定され、スケーラブルです。 
 - ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。
@@ -51,12 +54,12 @@ Azure NetApp Files のボリュームを作成する前に、プロビジョニ�
   たとえば、下の「[ストレージ階層の概念図](#conceptual_diagram_of_storage_hierarchy)」で、容量プール 1 のボリュームを容量プール 2 に移動することはできません。
 - すべてのスナップショットが削除されるまで、ボリュームを削除できません。
 
-## <a name="conceptual_diagram_of_storage_hierarchy"></a>ストレージ階層の概念図 
+## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>ストレージ階層の概念図 
 次の例は、Azure サブスクリプション、NetApp アカウント、容量プール、ボリュームの関係を示したものです。   
 
 ![ストレージ階層の概念図](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
 - [Azure NetApp Files に登録する](azure-netapp-files-register.md)

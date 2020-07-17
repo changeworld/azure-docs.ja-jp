@@ -1,38 +1,36 @@
 ---
 title: Azure Analysis Services でのサーバー管理者の管理 | Microsoft Docs
-description: Azure で Analysis Services サーバーのサーバー管理者を管理する方法について説明します。
+description: この記事では、Azure portal、PowerShell、または REST API を使用し、Azure Analysis Services サーバーのサーバー管理者を管理する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25eb111871bbe3b18f59b0d6c123c72f3e55c859
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737112"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81454239"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
 サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザーまたはセキュリティ グループである必要があります。 Azure portal でご利用のサーバーの **[Analysis Services 管理者]** を使用するか、SSMS、PowerShell、または REST API のサーバー プロパティを使用して、サーバー管理者を管理できます。 
 
-> [!NOTE]
-> セキュリティ グループでは、`MailEnabled` プロパティが `True` に設定されている必要があります。
+**セキュリティ グループ**を追加するときは、`obj:groupid@tenantid` を使用します。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure Portal を使用してサーバー管理者を追加するには
 
 1. ポータルで、サーバーの **[Analysis Services 管理者]** をクリックします。
-2. **[\<サーバー名> - Analysis Services 管理者]** で、**[追加]** をクリックします。
+2. **[\<サーバー名> - Analysis Services 管理者]** で、 **[追加]** をクリックします。
 3. **[サーバー管理者を追加します]** で、Azure AD からユーザー アカウントを選択するか、メール アドレスで外部のユーザーを招待します。
 
     ![Azure Portal のサーバー管理者](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
 ## <a name="to-add-server-administrators-by-using-ssms"></a>SSMS を使用してサーバー管理者を追加するには
 
-1. サーバーを右クリックして、**[プロパティ]** をクリックします。
+1. サーバーを右クリックして、 **[プロパティ]** をクリックします。
 2. **[分析サーバーのプロパティ]** で **[セキュリティ]** をクリックします。
 3. **[追加]** をクリックし、Azure AD のユーザーまたはグループのメール アドレスを入力します。
    
@@ -52,7 +50,7 @@ ms.locfileid: "56737112"
 
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 [認証とユーザーのアクセス許可](analysis-services-manage-users.md)  
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  

@@ -2,22 +2,24 @@
 title: Azure Notification Hubs の Azure PowerShell サンプル | Microsoft Docs
 description: Azure PowerShell サンプル - 通知ハブの作成と管理で役立つスクリプト。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 5e08b72c93734c9fc693e342397bb6cffaa36f8b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401813"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "71213332"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>Azure Notification Hubs の Azure PowerShell サンプル
 

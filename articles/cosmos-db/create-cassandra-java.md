@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Cassandra API と Java - Azure Cosmos DB'
+title: Azure Cosmos DB Cassandra API を使用して Java アプリを作成する
 description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
 ms.service: cosmos-db
 author: SnehaGunda
@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 124bbcedceffca318367799441f66e330bc41fef
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519034"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811315"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>クイック スタート:Java SDK と Azure Cosmos DB を使用して Cassandra アプリをビルドする
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>クイック スタート:Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,22 +25,14 @@ ms.locfileid: "65519034"
 > * [Python](create-cassandra-python.md)
 >  
 
-このクイック スタートは、GitHub から例を複製することで、Java と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使用してプロファイル アプリを作成する方法を示します。 このクイック スタートでは、Web ベースの Azure portal を使用して Azure Cosmos DB アカウントを作成する方法も示します。
-
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、テーブル、キーと値、およびグラフ データベースをすばやく作成およびクエリできます。 
+このクイックスタートでは、Azure Cosmos DB Cassandra API アカウントを作成し、GitHub からクローンした Cassandra Java アプリを使用して Cassandra データベースとコンテナーを作成します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能を備えたドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
-
-さらに、次のものが必要です。
-
-* [Java Development Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
-    * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
-* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
-    * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
-* [Git](https://www.git-scm.com/)
-    * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 JDK のインストール先フォルダーを指すように `JAVA_HOME` 環境変数を設定してください。
+- [Maven バイナリ アーカイブ](https://maven.apache.org/download.cgi)。 Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
+- [Git](https://www.git-scm.com/downloads). Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -71,9 +64,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java` ファイルからのものです。  
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、*src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
 
-* Cassandra ホスト、ポート、ユーザー名、パスワード、および SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
+* Cassandra ホスト、ポート、ユーザー名、パスワード、および TLS/SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -85,7 +78,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     return cluster.connect();
     ```
 
-次のスニペットは、`src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java` ファイルからのものです。
+次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 新しいキースペースを作成します。
 
@@ -149,44 +142,44 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列の詳細によって、ホストされているデータベースと通信できます。
 
-1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。 
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-    ![Azure Portal の [接続文字列] ページからユーザー名を表示してコピー](./media/create-cassandra-java/keys.png)
+    ![Azure Portal の [接続文字列] ページからユーザー名を表示してコピー](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
-2. 画面右側の ![コピー ボタン](./media/create-cassandra-java/copy.png) ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
+2. 画面右側の ![コピー ボタン](./media/create-cassandra-java/copy-button-azure-portal.png) ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 
-3. `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources` フォルダーの `config.properties` ファイルを開きます。 
+3. *C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources* フォルダーから *config.properties* ファイルを開きます。 
 
 3. 2 行目の `<Cassandra endpoint host>` にポータルのコンタクト ポイントの値を貼り付けます。
 
-    config.properties の 2 行目は次のようになります。 
+    *config.properties* の 2 行目は次のようになります。 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. ポータルに戻り、[ユーザー名] の値をコピーします。 4 行目の `<cassandra endpoint username>` にポータルの [ユーザー名] の値を貼り付けます。
 
-    config.properties の 4 行目は次のようになります。 
+    *config.properties* の 4 行目は次のようになります。 
 
     `cassandra_username=cosmos-db-quickstart`
 
 4. ポータルに戻り、[パスワード] の値をコピーします。 5 行目の `<cassandra endpoint password>` にポータルの [パスワード] の値を貼り付けます。
 
-    config.properties の 5 行目は次のようになります。 
+    *config.properties* の 5 行目は次のようになります。 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. 特定の SSL 証明書を使用する場合は、6 行目の `<SSL key store file location>` を SSL 証明書の場所に置き換えます。 値が指定されない場合、<JAVA_HOME>/jre/lib/security/cacerts にインストールされている JDK 証明書が使用されます。 
+5. 特定の TLS/SSL 証明書を使用する場合は、6 行目の `<SSL key store file location>` を TLS/SSL 証明書の場所に置き換えます。 値が指定されない場合、<JAVA_HOME>/jre/lib/security/cacerts にインストールされている JDK 証明書が使用されます。 
 
-6. 特定の SSL 証明書を使用するように 6 行目を変更した場合は、その証明書のパスワードを使用するように 7 行目を更新します。 
+6. 特定の TLS/SSL 証明書を使用するように 6 行目を変更した場合は、その証明書のパスワードを使用するように 7 行目を更新します。 
 
-7. `config.properties` ファイルを保存します。
+7. *config.properties* ファイルを保存します。
 
 ## <a name="run-the-java-app"></a>Java アプリを実行する
 
-1. Git ターミナル ウィンドウで、`azure-cosmosdb-cassandra-java-getting-started\java-examples` フォルダーに `cd` します。
+1. Git ターミナル ウィンドウで、`azure-cosmosdb-cassandra-java-getting-started` フォルダーに `cd` します。
 
     ```git
-    cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples"
+    cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started"
     ```
 
 2. Git ターミナル ウィンドウで、次のコマンドを使用して、`cosmosdb-cassandra-examples.jar` ファイルを生成します。
@@ -207,19 +200,19 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    ![データ エクスプローラーでのデータの表示](./media/create-cassandra-java/data-explorer.png)
+    ![データ エクスプローラーでデータを表示する - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、Cassandra データベース、コンテナーを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Azure Cosmos DB コンテナーに追加のデータをインポートできます。 
+このクイックスタートでは、Cassandra API を使用して Azure Cosmos DB アカウントを作成する方法と、Cassandra データベースとコンテナーを作成する Cassandra Java アプリの実行方法について説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB への Cassandra データのインポート](cassandra-import-data.md)

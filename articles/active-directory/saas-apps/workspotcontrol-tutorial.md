@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Workspot Control の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Workspot Control の統合 | Microsoft Docs'
 description: Azure Active Directory と Workspot Control に対してシングル サインオンを構成する方法について学習します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 41d8d05cf5f900c7fcd5640f8896c715640ebcab
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65772794"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086675"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル: Azure Active Directory と Workspot Control の統合
 
 このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Workspot Control を統合すると、次のことができます。
 

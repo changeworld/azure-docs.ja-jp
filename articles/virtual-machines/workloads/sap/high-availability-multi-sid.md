@@ -3,26 +3,25 @@ title: Azure での SAP マルチ SID 構成の作成 | Microsoft Docs
 description: Windows 仮想マシン上の高可用性 SAP NetWeaver マルチ SID の構成ガイド
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/09/2016
-ms.author: goraco
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8c7c6b797605da2884c6bffc47e593ffc9a3faca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153865"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77615134"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -78,8 +77,8 @@ ms.locfileid: "66153865"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 [dbms-guide-2.1]:../../virtual-machines-windows-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -366,9 +365,9 @@ ms.locfileid: "66153865"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -381,15 +380,15 @@ ms.locfileid: "66153865"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/management/overview.md
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 [virtual-machines-Az-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
@@ -445,7 +444,7 @@ ms.locfileid: "66153865"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。
+2016 年 9 月に、Microsoft では [Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能をリリースしました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。
 
 [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide]に関するページで説明されているように、SAP をデプロイしている場合、SAP の ASCS/SCS の Windows クラスターの構成を作成するには内部ロード バランサーを使用することができます。
 
@@ -473,7 +472,7 @@ ms.locfileid: "66153865"
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager]。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -620,7 +619,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 追加する各 SAP ASCS/SCS インスタンスには新しいクラスター共有ディスクを追加する必要があります。 Windows Server 2012 R2 WSFC で現在使用されているクラスター共有ディスクは、SIOS DataKeeper ソフトウェア ソリューションです。
 
-以下の手順を実行します。
+次の操作を行います。
 1. 各クラスター ノードに追加のディスク、または同じサイズのディスク (ストライピングが必要なもの) を追加してフォーマットします。
 2. SIOS DataKeeper でストレージのレプリケーションを構成します。
 
@@ -642,33 +641,33 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 おおまかな手順は次のとおりです。
 
-1. [最初の SAP クラスター ノードのインストール][sap-ha-guide-9.1.2]  
+1. [最初の SAP クラスター ノードをインストールします][sap-ha-guide-9.1.2]。  
  このステップでは、**EXISTING WSFC クラスター ノード 1** に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
-2. [ASCS/SCS インスタンスの SAP プロファイルの変更][sap-ha-guide-9.1.3]
+2. [ASCS/SCS インスタンスの SAP プロファイルを変更します][sap-ha-guide-9.1.3]。
 
-3. [プローブ ポートの構成][sap-ha-guide-9.1.4]  
+3. [プローブ ポートを構成します][sap-ha-guide-9.1.4]。  
  このステップではPowerShell を使用して、SAP クラスター リソース SAP-SID2-IP プローブ ポートを構成します。 この構成は、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
 
-4. [データベース インスタンスのインストール][sap-ha-guide-9.2]  
+4. [データベース インスタンスをインストールします][sap-ha-guide-9.2]。  
  このステップでは、専用の WSFC クラスターに DBMS をインストールします。
 
-5. [第 2 のクラスター ノードのインストール][sap-ha-guide-9.3]  
+5. [第 2 のクラスター ノードをインストールします][sap-ha-guide-9.3]。  
  このステップでは、既存の WSFC クラスター ノード 2 に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
 6. SAP ASCS/SCS のインスタンスと ProbePort の Windows ファイアウォール ポートを開く  
  SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらのポートのリストは、メインの [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide-8.8]に記載されています。  
  また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。
 
-7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類の変更][sap-ha-guide-9.4]
+7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類を変更します][sap-ha-guide-9.4]。
 
-8. 新しい専用 VM での [SAP プライマリ アプリケーション サーバーのインストール][sap-ha-guide-9.5]
+8. 新しい専用 VM で [SAP プライマリ アプリケーション サーバーをインストールします][sap-ha-guide-9.5]。
 
-9. 新しい専用 VM での [SAP 追加アプリケーション サーバーのインストール][sap-ha-guide-9.6]
+9. 新しい専用 VM で [SAP 追加アプリケーション サーバーをインストールします][sap-ha-guide-9.6]。
 
-10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト][sap-ha-guide-10]
+10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションをテストします][sap-ha-guide-10]。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Azure Load Balancer の複数 VIP][load-balancer-multivip-overview]

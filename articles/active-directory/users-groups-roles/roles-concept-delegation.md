@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0cb6e2b1df062c3d056bd9a5aa0c1ff89f6636a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 87f5b1ec02400c5cd9d26cc324ddbafdf8d76537
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201467"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582591"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Azure Active Directory での管理の委任
 
@@ -100,7 +100,7 @@ Azure AD には、Azure AD 管理者ロールに関するセキュリティ プ�
 
 ## <a name="secure-your-administrator-roles"></a>ご自身の管理者ロールを保護する
 
-攻撃者に特権アカウントを掌握されると多大な損害が発生する可能性があるため、まずは、すべての Azure AD テナントが既定で使用できる[ベースライン アクセス ポリシー](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)を使用して、これらのアカウントを保護します (パブリック プレビュー)。 このポリシーにより、特権 Azure AD アカウントに多要素認証が強制されます。 Azure AD ベースライン ポリシーの対象となる Azure AD ロールは次のとおりです。
+攻撃者に特権アカウントを掌握されると多大な損害が発生する可能性があるため、まずは、すべての Azure AD 組織が既定で使用できる[ベースライン アクセス ポリシー](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)を使用して、これらのアカウントを保護します (パブリック プレビュー)。 このポリシーにより、特権 Azure AD アカウントに多要素認証が強制されます。 Azure AD ベースライン ポリシーの対象となる Azure AD ロールは次のとおりです。
 
 * 全体管理者
 * SharePoint 管理者
@@ -112,6 +112,6 @@ Azure AD には、Azure AD 管理者ロールに関するセキュリティ プ�
 
 ほとんどの日常的アクティビティでは、すべてのユーザーがグローバル管理者権限を必要とするわけではなく、必ずしもすべてのユーザーをグローバル管理者ロールに永続的に割り当てる必要はありません。 ユーザーがグローバル管理者のアクセス許可を必要とするときは、ユーザー自身のアカウントまたは別の管理者アカウントで、Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) のロール割り当てをアクティブ化する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD ロールの説明については、[Azure AD での管理者ロールの割り当て](directory-assign-admin-roles.md)に関するページをご覧ください

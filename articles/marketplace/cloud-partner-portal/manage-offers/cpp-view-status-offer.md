@@ -1,29 +1,22 @@
 ---
-title: Marketplace のオファーの状態を表示する - Azure Marketplace | Microsoft Docs
+title: Marketplace のオファーの状態を表示する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーの状態を表示する
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pbutlerm
-ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: dsindona
+ms.openlocfilehash: 0cbe6a45ba205f32a764bdadb021dc0dcf5bf0cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275970"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Azure Marketplace オファーと AppSource オファーの発行状態を表示する
 
-オファーを作成した後、特に発行プロセス中には、Cloud パートナー ポータルでオファーの状態を表示できます。  全体的な発行状態は、ポータルの [**[すべてのプラン]**](../portal-tour/cpp-all-offers-page.md) と [**[承認]**](../portal-tour/cpp-approvals-page.md) ページで確認できます。  各オファーには、以下の状態インジケーターのいずれかが表示されます。  
+オファーを作成した後、特に発行プロセス中には、Cloud パートナー ポータルでオファーの状態を表示できます。  全体的な発行状態は、ポータルの [ **[すべてのプラン]** ](../portal-tour/cpp-all-offers-page.md) と [ **[承認]** ](../portal-tour/cpp-approvals-page.md) ページで確認できます。  各オファーには、以下の状態インジケーターのいずれかが表示されます。  
 
 |            Status              |   説明                                                           |
 |            ------              |   -----------                                                           |
@@ -38,7 +31,7 @@ ms.locfileid: "54430383"
 
 ## <a name="publishing-status-details"></a>発行状態の詳細 
 
-発行処理中のオファーの詳細な状態は、**[新しいプラン]** ページの **[状態]** タブに表示されます。  このページには、そのオファーの種類に関するすべての発行手順が一覧表示されます。  *手順の数と具体的な手順はオファーの種類によって変わることが多いので注意してください。*  このページには、Microsoft の検証およびレビューの手順で提起された未解決の問題も表示されます。多くの場合、発行プロセスを進める前にパブリッシャーによるアクションが必要な問題です。  たとえば、次の図は、新しい仮想マシン オファーの **[状態]** タブを示しています。 
+発行処理中のオファーの詳細な状態は、 **[新しいプラン]** ページの **[状態]** タブに表示されます。  このページには、そのオファーの種類に関するすべての発行手順が一覧表示されます。  *手順の数と具体的な手順はオファーの種類によって変わることが多いので注意してください。*  このページには、Microsoft の検証およびレビューの手順で提起された未解決の問題も表示されます。多くの場合、発行プロセスを進める前にパブリッシャーによるアクションが必要な問題です。  たとえば、次の図は、新しい仮想マシン オファーの **[状態]** タブを示しています。 
 
 ![VM オファーの [状態] タブ](./media/vm-offer-pub-steps1.png)
 
@@ -46,11 +39,11 @@ ms.locfileid: "54430383"
 
 ![エラーが表示されているコンサルティング サービスの [状態] タブ](./media/consulting-service-error.png)
 
-Azure アプリケーションの状態の最後の例は、Microsoft の重大なレビューの問題を示しています。  このレビューの問題に関する詳細情報を含む VSTS 項目へのホット リンクが含まれています。  詳細については、[Azure アプリケーション オファーの発行](cpp-publish-offer.md)に関するページを参照してください。
+Azure アプリケーションの状態の最後の例は、Microsoft の重大なレビューの問題を示しています。  このレビューの問題に関する詳細情報を含む Azure DevOps 項目へのホット リンクが含まれています。  詳細については、[Azure アプリケーション オファーの発行](cpp-publish-offer.md)に関するページを参照してください。
 
 ![レビューの問題が表示されている Azure アプリの [状態] タブ](../azure-applications/media/status-tab-ms-review.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 未解決の問題を修正する場合、オファーの設定を更新する場合は、[オファーを更新する](./cpp-update-offer.md)必要があります。 

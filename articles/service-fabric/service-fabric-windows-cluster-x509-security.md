@@ -1,25 +1,16 @@
 ---
-title: 証明書を使用して Windows 上の Azure Service Fabric クラスターを保護する | Microsoft Docs
+title: 証明書を使用して Windows 上のクラスターをセキュリティで保護する
 description: Azure Service Fabric スタンドアロンまたはオンプレミスのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ee2ce03fccc3e6556f9d261687edb050c8cfa1cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661447"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562000"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -265,11 +256,11 @@ ms.locfileid: "58661447"
 正しく保護できる自己署名証明書を作成する方法の 1 つが、C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure ディレクトリの Service Fabric SDK フォルダーにある CertSetup.ps1 スクリプトを使用する方法です。 このファイルを編集して証明書の既定の名前を変更します。 (値 CN=ServiceFabricDevClusterCert を探します。)このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
 
 次に、保護されたパスワードを含む .pfx ファイルにその証明書をエクスポートします。 まず、証明書の拇印を取得します。 
-1. **[スタート]** メニューから、**[コンピューター証明書の管理]** を実行します。 
+1. **[スタート]** メニューから、 **[コンピューター証明書の管理]** を実行します。 
 
 2. **Local Computer\Personal** フォルダーに移動して、作成した証明書を探します。 
 
-3. その証明書をダブルクリックして開き、**[詳細]** タブを選択して、下にスクロールして **[拇印]** を表示します。 
+3. その証明書をダブルクリックして開き、 **[詳細]** タブを選択して、下にスクロールして **[拇印]** を表示します。 
 
 4. その拇印の値を次の PowerShell コマンドにコピーします。スペースは削除してください。 
 
@@ -301,7 +292,7 @@ Azure サブスクリプションがある場合は、「[Azure Resource Manager
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. 次に、この証明書に対するアクセス制御を設定し、Network Service アカウントで実行される Service Fabric プロセスが次のスクリプトを実行することでそれを使用できるようにします。 証明書とサービス アカウントの **NETWORK SERVICE** の拇印を指定します。 証明書を **[スタート]** > **[コンピューター証明書の管理]** で開いて、**[すべてのタスク]** > **[秘密キーの管理]** を表示することで、証明書の ACL が正しいかどうか確認できます。
+3. 次に、この証明書に対するアクセス制御を設定し、Network Service アカウントで実行される Service Fabric プロセスが次のスクリプトを実行することでそれを使用できるようにします。 証明書とサービス アカウントの **NETWORK SERVICE** の拇印を指定します。 証明書を **[スタート]**  >  **[コンピューター証明書の管理]** で開いて、 **[すべてのタスク]**  >  **[秘密キーの管理]** を表示することで、証明書の ACL が正しいかどうか確認できます。
    
     ```powershell
     param
@@ -318,7 +309,7 @@ Azure サブスクリプションがある場合は、「[Azure Resource Manager
     $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; }
    
     # Specify the user, the permissions, and the permission type
-    $permission = "$($serviceAccount)","FullControl","Allow"
+    $permission = "$($serviceAccount)","FullControl","Allow" # "NT AUTHORITY\NetworkService" is the service account
     $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission
    
     # Location of the machine-related keys
@@ -347,7 +338,7 @@ ClusterConfig.X509.MultiMachine.json ファイルの security セクションを
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用してクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell)」を参考にしてクラスターに接続してください。 例: 
+セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用してクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell)」を参考にしてクラスターに接続してください。 次に例を示します。
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
@@ -364,7 +355,7 @@ Connect-ServiceFabricCluster $ConnectArgs
 ```
 
 > [!NOTE]
-> 証明書の構成が正しくないと、デプロイ中にクラスターを起動できない場合があります。 セキュリティの問題を自己診断するには、イベント ビューアーのグループ **[アプリケーションとサービス ログ]** > **[Microsoft Service Fabric]** を参照してください。
+> 証明書の構成が正しくないと、デプロイ中にクラスターを起動できない場合があります。 セキュリティの問題を自己診断するには、イベント ビューアーのグループ **[アプリケーションとサービス ログ]**  >  **[Microsoft Service Fabric]** を参照してください。
 > 
 > 
 

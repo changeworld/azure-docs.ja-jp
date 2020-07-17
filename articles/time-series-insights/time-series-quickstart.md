@@ -1,77 +1,96 @@
 ---
-title: クイック スタート:Azure Time Series Insights エクスプローラー | Microsoft Docs
-description: このクイック スタートでは、大量の IoT データを視覚化するために Web ブラウザーで Azure Time Series Insights エクスプローラーの使用を開始する方法を示します。 デモ環境で主な機能について説明します。
+title: クイック スタート:Azure Time Series Insights エクスプローラー- Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights エクスプローラーを使用する方法について説明します。 大量の IoT データを視覚化し、環境の主な機能を知ることができます。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: anshan
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 11/15/2017
-ms.openlocfilehash: 32ed0ec178f7a0064fae88357011197e71604885
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 04/13/2020
+ms.openlocfilehash: a566c55d2ac51efc5ff2650ad682f10dae2bdc31
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555542"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81272000"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
-このクイック スタートでは、無料のデモンストレーション環境で Azure Time Series Insights エクスプローラーの使用を開始する方法を示します。 Web ブラウザーを使用して大量の IoT データを視覚化する方法について説明した後、Time Series Insights エクスプローラーの主な機能について説明します。 
 
-Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データのグローバルなビューが表示され、隠れた傾向の発見、異常の特定、および根本原因の分析をほぼリアルタイムで実行できるようになるため、IoT ソリューションをすばやく検証して、ミッション クリティカルなデバイスのコストのかかるダウンタイムを回避できます。  時系列データを格納またはクエリする必要のあるアプリケーションを構築している場合は、Time Series Insights の REST API を使用して開発できます。
+この Azure Time Series Insights エクスプローラー クイック スタートは、無料のデモンストレーション環境で Time Series Insights の使用を開始するときに役立ちます。 このクイックスタートでは、Web ブラウザーで大量の IoT データを視覚化する方法を学習し、現在一般提供されている主な機能を知ることができます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 Azure Time Series Insights は、ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりするために役立ちます。
 
-## <a name="explore-time-series-insights-explorer-in-a-demo-environment"></a>デモ環境で Time Series Insights エクスプローラーを探索する
+柔軟性を高めるために、強力な [REST API](./time-series-insights-update-tsq.md) および[クライアント SDK](https://github.com/microsoft/tsiclient) を介して、Azure Time Series Insights を既存のアプリケーションに追加できます。 API を使用すると、時系列データの保存やクエリを行ったり、任意のクライアント アプリケーションで時系列データを使用したりすることができます。 クライアント SDK を使用して、既存のアプリケーションに UI コンポーネントを追加することもできます。
 
-1. ブラウザーで [https://insights.timeseries.azure.com/demo](https://insights.timeseries.azure.com/demo) にアクセスします。 
+この Time Series Insights エクスプローラー クイックスタートでは、現在一般提供されている機能のガイド付きツアーを提供します。
 
-2. メッセージが表示されたら、Azure アカウントの資格情報を使用して Time Series Insights エクスプローラーにログインします。 
- 
-3. Time Series Insights のクイック ツアー ページが表示されます。 **[次へ]** をクリックしてクイック ツアーを開始します。
+> [!IMPORTANT]
+> [無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を、まだお持ちでない場合は、作成します。
 
-   ![[Next]\(次へ\) をクリックします](media/quickstart/quickstart1.png)
+## <a name="prepare-the-demo-environment"></a>デモ環境を準備する
 
-4. **日時選択パネル**が表示されます。 このパネルを使用して、視覚化する期間を選択します。
+1. ブラウザーで、[一般提供デモ](https://insights.timeseries.azure.com/demo)に移動します。
 
-   ![日時選択パネル](media/quickstart/quickstart2.png)
+1. メッセージが表示されたら、Azure アカウントの資格情報を使用して Time Series Insights エクスプローラーにサインインします。
 
-5. リージョン内をクリックしてドラッグしてから、**[検索]** ボタンをクリックします。
- 
-   ![期間を選択する](media/quickstart/quickstart3.png) 
+1. Time Series Insights のクイック ツアー ページが表示されます。 **[次へ]** を選択してクイック ツアーを開始します。
 
-   Time Series Insights には、指定した期間のグラフが表示されます。 折れ線グラフを使用して、フィルター処理、ピン留め、並べ替え、積み重ねなどのさまざまなアクションを実行できます。 
+   [![クイックスタートの開始 - [次へ] を選択する](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
-   **日時選択パネル**に戻るには、次に示すように下矢印をクリックします。
+## <a name="explore-the-demo-environment"></a>デモ環境を調査する
 
-   ![グラフ](media/quickstart/quickstart4.png)
+1. **日時選択パネル**が表示されます。 このパネルを使用して、視覚化する期間を選択します。
 
-6. 新しい検索用語を追加するには、**[用語] パネル**で **[追加]** をクリックします。
+   [![日時選択パネル](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
-   ![項目を追加する](media/quickstart/quickstart5.png)
+1. 時間枠を選択してリージョン内にドラッグします。 次に **[検索]** を選択します。
 
-7. グラフでは、リージョンを選択し、そのリージョンを右クリックして **[Explore Events] \(イベントの探索)** を選択できます。
- 
-   ![[Explore Events] (イベントの探索)](media/quickstart/quickstart6.png)
+   [![期間を選択する](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
+
+   Time Series Insights には、指定した期間のグラフが表示されます。 その折れ線グラフ内でさまざまなアクションを実行できます。 たとえば、フィルター処理、ピン留め、並べ替え、積み重ねができます。
+
+   **日時選択パネル**に戻るには、次に示すように下矢印を選択します。
+
+   [![グラフ](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
+
+1. 新しい検索条件を追加するには、**条件パネル**で **[追加]** を選択します。
+
+   [![検索条件の追加パネル](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
+
+1. グラフでは、リージョンを選択し、そのリージョンを右クリックして **[Explore Events] \(イベントの探索)** を選択できます。
+
+   [![[イベントの探索]](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    探索しているリージョンの生データのグリッドが表示されます。
 
-   ![グリッド ビュー](media/quickstart/quickstart7.png)
+   [![イベントの探索 - グリッド データ ビュー](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
-8. 用語を編集してグラフ内の値を変更し、別の用語を追加して異なる型の値を相互に関連付けます。
+## <a name="select-and-filter-data"></a>データを選択およびフィルター処理する
 
-   ![用語を追加する](media/quickstart/quickstart8.png)
+1. 条件を編集してグラフ内の値を変更します。 別の条件を追加して、さまざまな種類の値を相互に関連付けます。
 
-9. アドホックのシリーズ フィルター処理を行うには、**[Filter series...] \(シリーズのフィルター処理...)** ボックスにフィルター用語を入力します。 クイック スタートの場合は、「**Station5**」と入力して、そのステーションの温度と圧力を相互に関連付けます。
- 
-   ![[Filter series] (シリーズのフィルター処理)](media/quickstart/quickstart9.png)
+   [![用語を追加する](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-クイック スタートを完了したら、別の視覚化を作成するためにサンプル データ セットを試してみることができます。 
+1. 選択した検索条件をすべて表示するには、 **[系列をフィルター処理します]** ボックスを空のままにします。系列のフィルター処理を行うには、 **[系列をフィルター処理します]** ボックスに、思い付いたフィルター条件を入力します。
 
-### <a name="next-steps"></a>次の手順
-独自の Time Series Insights 環境を作成する準備ができました。
+   [![系列をフィルター処理する](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   クイック スタートの場合は、「**Station5**」と入力して、そのステーションの温度と圧力を相互に関連付けます。
+
+クイック スタートを完了したら、別の視覚化を作成するためにサンプル データ セットを試してみることができます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+チュートリアルを完了したので、作成したリソースをクリーンアップします。
+
+1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** を選択し、目的の Azure Time Series Insights リソース グループを見つけます。
+1. **[削除]** を選択してリソース グループ全体 (およびその中に含まれるすべてのリソース) を削除するか、各リソースを個別に削除します。
+
+## <a name="next-steps"></a>次のステップ
+
+独自の Time Series Insights 環境を作成する準備ができました:
 > [!div class="nextstepaction"]
 > [Time Series Insights 環境の計画](time-series-insights-environment-planning.md)

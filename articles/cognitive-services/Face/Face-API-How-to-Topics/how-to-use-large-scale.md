@@ -1,7 +1,7 @@
 ---
-title: 例:大規模機能を使用する方法 - Face API
+title: 例:大規模なフィーチャーを使用する - Face
 titleSuffix: Azure Cognitive Services
-description: Face API で大規模機能を使用します。
+description: このガイドは、既存の PersonGroup および FaceList オブジェクトから LargePersonGroup および LargeFaceList オブジェクトにスケールアップする方法に関する記事です。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 5a4085f713d66859a464ab59b00d856921db8ec3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124479"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76169782"
 ---
 # <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
@@ -23,20 +23,23 @@ ms.locfileid: "66124479"
 
 LargePersonGroup と LargeFaceList は、まとめて大規模操作と呼びます。 LargePersonGroup には、最大 100 万人、その 1 人あたり最大 248 個の顔を保持できます。 LargeFaceList には、最大 100 万人の顔を保持できます。 大規模操作は、従来の PersonGroup と FaceList に似ていますが、新しいアーキテクチャなのでいくつかの違いがあります。 
 
-サンプルは Azure Cognitive Services Face API クライアント ライブラリを使用して C# で記述されています。
+サンプルは Azure Cognitive Services Face クライアント ライブラリを使用して C# で記述されています。
 
 > [!NOTE]
 > Identification と FindSimilar に対して大規模な顔検索パフォーマンスを有効にするには、トレーニング操作を導入して LargeFaceList と LargePersonGroup を事前に処理します。 トレーニング時間は実際の容量に応じて変わり、数秒から約 30 分かかります。 以前にトレーニング操作に成功している場合、トレーニング期間中に Identification と FindSimilar を実行できます。 欠点は、大規模なトレーニングへの新しい移行後処理が完了するまで、新しく追加された人物や顔が結果に表示されないことです。
 
 ## <a name="step-1-initialize-the-client-object"></a>手順 1:クライアント オブジェクトを初期化する
 
-Face API クライアント ライブラリを使用する場合、サブスクリプション キーとサブスクリプション エンドポイントは、FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
+Face クライアント ライブラリを使用する場合、サブスクリプション キーとサブスクリプション エンドポイントは、FaceClient クラスのコンストラクターを介して渡されます。 次に例を示します。
 
-```CSharp
+```csharp
 string SubscriptionKey = "<Subscription Key>";
 // Use your own subscription endpoint corresponding to the subscription key.
-string SubscriptionRegion = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/";
-FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, SubscriptionRegion);
+string SubscriptionEndpoint = "https://westus.api.cognitive.microsoft.com";
+private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials(subscriptionKey),
+            new System.Net.Http.DelegatingHandler[] { });
+faceClient.Endpoint = SubscriptionEndpoint
 ```
 
 サブスクリプションキーを対応するエンドポイントで取得するには、Azure portal から Azure Marketplace にアクセスします。
@@ -60,17 +63,17 @@ PersonGroup または Person 関連の実装では、API パスまたは SDK ク
 
 | FaceList の API | LargeFaceList の API |
 |:---:|:---:|
-| Create | Create |
+| 作成 | 作成 |
 | 削除 | 削除 |
 | 取得 | 取得 |
 | List | List |
-| アップデート | アップデート |
+| 更新 | 更新 |
 | - | トレーニング |
 | - | トレーニング状態の取得 |
 
 上の表は、FaceList と LargeFaceList の間のリストレベル操作の比較です。 ご覧のように、FaceList と比較すると、LargeFaceList にはトレーニングとトレーニング状態の取得という新しい操作が追加されています。 LargeFaceList のトレーニングは、[FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 操作の前提条件です。 FaceList にはトレーニングは必要ありません。 次のスニペットは、LargeFaceList のトレーニングを待機するヘルパー関数です。
 
-```CSharp
+```csharp
 /// <summary>
 /// Helper function to train LargeFaceList and wait for finish.
 /// </summary>
@@ -94,13 +97,13 @@ private static async Task TrainLargeFaceList(
     int timeIntervalInMilliseconds = 1000)
 {
     // Trigger a train call.
-    await FaceServiceClient.TrainLargeFaceListAsync(largeFaceListId);
+    await FaceClient.LargeTrainLargeFaceListAsync(largeFaceListId);
 
     // Wait for training finish.
     while (true)
     {
         Task.Delay(timeIntervalInMilliseconds).Wait();
-        var status = await FaceServiceClient.GetLargeFaceListTrainingStatusAsync(largeFaceListId);
+        var status = await faceClient.LargeFaceList.TrainAsync(largeFaceListId);
 
         if (status.Status == Status.Running)
         {
@@ -120,12 +123,12 @@ private static async Task TrainLargeFaceList(
 
 以前は、顔を追加した FaceList と FindSimilar の一般的な使用方法は、次のようなものでした。
 
-```CSharp
+```csharp
 // Create a FaceList.
 const string FaceListId = "myfacelistid_001";
 const string FaceListName = "MyFaceListDisplayName";
 const string ImageDir = @"/path/to/FaceList/images";
-FaceServiceClient.CreateFaceListAsync(FaceListId, FaceListName).Wait();
+faceClient.FaceList.CreateAsync(FaceListId, FaceListName).Wait();
 
 // Add Faces to the FaceList.
 Parallel.ForEach(
@@ -134,7 +137,7 @@ Parallel.ForEach(
         {
             using (Stream stream = File.OpenRead(imagePath))
             {
-                await FaceServiceClient.AddFaceToFaceListAsync(FaceListId, stream);
+                await faceClient.FaceList.AddFaceFromStreamAsync(FaceListId, stream);
             }
         });
 
@@ -143,22 +146,22 @@ const string QueryImagePath = @"/path/to/query/image";
 var results = new List<SimilarPersistedFace[]>();
 using (Stream stream = File.OpenRead(QueryImagePath))
 {
-    var faces = FaceServiceClient.DetectAsync(stream).Result;
+    var faces = faceClient.Face.DetectWithStreamAsync(stream).Result;
     foreach (var face in faces)
     {
-        results.Add(await FaceServiceClient.FindSimilarAsync(face.FaceId, FaceListId, 20));
+        results.Add(await faceClient.Face.FindSimilarAsync(face.FaceId, FaceListId, 20));
     }
 }
 ```
 
 LargeFaceList に移行すると、次のようになります。
 
-```CSharp
+```csharp
 // Create a LargeFaceList.
 const string LargeFaceListId = "mylargefacelistid_001";
 const string LargeFaceListName = "MyLargeFaceListDisplayName";
 const string ImageDir = @"/path/to/FaceList/images";
-FaceServiceClient.CreateLargeFaceListAsync(LargeFaceListId, LargeFaceListName).Wait();
+faceClient.LargeFaceList.CreateAsync(LargeFaceListId, LargeFaceListName).Wait();
 
 // Add Faces to the LargeFaceList.
 Parallel.ForEach(
@@ -167,7 +170,7 @@ Parallel.ForEach(
         {
             using (Stream stream = File.OpenRead(imagePath))
             {
-                await FaceServiceClient.AddFaceToLargeFaceListAsync(LargeFaceListId, stream);
+                await faceClient.LargeFaceList.AddFaceFromStreamAsync(LargeFaceListId, stream);
             }
         });
 
@@ -180,10 +183,10 @@ const string QueryImagePath = @"/path/to/query/image";
 var results = new List<SimilarPersistedFace[]>();
 using (Stream stream = File.OpenRead(QueryImagePath))
 {
-    var faces = FaceServiceClient.DetectAsync(stream).Result;
+    var faces = faceClient.Face.DetectWithStreamAsync(stream).Result;
     foreach (var face in faces)
     {
-        results.Add(await FaceServiceClient.FindSimilarAsync(face.FaceId, largeFaceListId: LargeFaceListId));
+        results.Add(await faceClient.Face.FindSimilarAsync(face.FaceId, largeFaceListId: LargeFaceListId));
     }
 }
 ```
@@ -230,13 +233,13 @@ LargePersonGroup または LargeFaceList の Persons または Faces は、ト�
 
 `TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
 
-```CSharp
+```csharp
 private static void Main()
 {
     // Create a LargePersonGroup.
     const string LargePersonGroupId = "mylargepersongroupid_001";
     const string LargePersonGroupName = "MyLargePersonGroupDisplayName";
-    FaceServiceClient.CreateLargePersonGroupAsync(LargePersonGroupId, LargePersonGroupName).Wait();
+    faceClient.LargePersonGroup.CreateAsync(LargePersonGroupId, LargePersonGroupName).Wait();
 
     // Set up standalone training at regular intervals.
     const int TimeIntervalForStatus = 1000 * 60; // 1-minute interval for getting training status.
@@ -265,7 +268,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 - LargePaceGroup と LargeFaceList は、LargeFaceList によるトレーニング操作が必要であることを除けば、PersonGroup または FaceList と同様に機能します。
 - 大規模なデータセットの動的なデータ更新には、適切なトレーニング戦略を実行してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行する方法を学習します。
 

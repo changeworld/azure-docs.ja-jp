@@ -1,36 +1,27 @@
 ---
-title: Microsoft ID プラットフォームと OpenID Connect プロトコル | Azure
+title: OpenID Connect プロトコル - Microsoft ID プラットフォーム | Azure
 description: Microsoft ID プラットフォームで導入された OpenID Connect 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: hpsin
 manager: CelesteDG
-editor: ''
-ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544804"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688232"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
 OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 Microsoft ID プラットフォーム エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、この作業を言語非依存で行う方法を示し、Microsoft オープンソース ライブラリを利用せずに HTTP メッセージを送受信する方法について説明します。
-
-> [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure Active Directory (Azure AD) シナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 Microsoft ID プラットフォーム エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、[Microsoft ID プラットフォーム エンドポイントを使用してアプリケーションを登録する方法](quickstart-register-app.md)に関する記事を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](v2-app-types.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
 
@@ -47,6 +38,7 @@ OpenID Connect はメタデータ ドキュメントについて説明するも�
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+
 > [!TIP]
 > 試してみる [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) をクリックすると、`common` テナントの構成が表示されます。
 
@@ -57,11 +49,11 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `common` |個人の Microsoft アカウントを持つユーザーと Azure AD の職場/学校アカウントを持つユーザーのどちらもアプリケーションにサインインできます。 |
 | `organizations` |Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
 | `consumers` |個人の Microsoft アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` または `contoso.onmicrosoft.com` | 特定の Azure AD テナントの職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 `consumers` テナントの代わりにコンシューマー テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を使用することもできます。  |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` または `contoso.onmicrosoft.com` | 特定の Azure AD テナントからのユーザーのみ (職場または学校のアカウントを持つディレクトリのメンバーでも、個人向け Microsoft アカウントを持つディレクトリのゲストでも)、アプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 `consumers` テナントの代わりにコンシューマー テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を使用することもできます。  |
 
 メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)に詳しく記載されています。
 
-```
+```json
 {
   "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
   "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
@@ -76,7 +68,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 }
 ```
 
-アプリに [claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、カスタム署名キーがある場合、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
+[claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、アプリにカスタム署名キーがある場合は、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
 
 通常、このメタデータ ドキュメントを使用して OpenID Connect ライブラリまたは SDK を構成します。ライブラリは、メタデータを使用して処理を実行します。 ただし、ビルド前の OpenID Connect ライブラリを使用していない場合は、Microsoft ID プラットフォーム エンドポイントを使用した Web アプリへのサインインを実行するには、この記事で後述する手順を行ってください。
 
@@ -91,9 +83,9 @@ Web アプリでユーザーを認証する必要があるときは、ユーザ�
 > [!IMPORTANT]
 > /authorization エンドポイントから ID トークンを適切に要求するには、[登録ポータル](https://portal.azure.com)でのアプリ登録で、[認証] タブの id_tokens の暗黙的な許可を有効する必要があります (これで、[アプリケーション マニフェスト](reference-app-manifest.md)の `oauth2AllowIdTokenImplicitFlow` フラグが `true` に設定されます)。 有効でない場合、`unsupported_response` エラー"The provided value for the input parameter 'response_type' isn't allowed for this client. Expected value is 'code'"\(入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。\) が返されます。
 
-例: 
+次に例を示します。
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -132,7 +124,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 `response_mode=form_post` を使用して成功した場合の応答は次のようになります。
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -149,7 +141,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 アプリ側でエラーを処理できるよう、リダイレクト URI にはエラー応答も送信される場合があります。 エラーの場合の応答は次のようになります。
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -196,7 +188,7 @@ id_token を検証したら、ユーザーとのセッションを開始し、id
 
 OpenID Connect メタデータ ドキュメントの一覧にある `end_session_endpoint` にはユーザーをリダイレクトできます。
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
@@ -220,7 +212,7 @@ OpenID Connect によるサインインとトークン取得の完全なフロ�
 ## <a name="get-access-tokens"></a>アクセス トークンを取得する
 アクセス トークンを取得するには、次のようにサインイン要求を変更します。
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -228,8 +220,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 &response_type=id_token%20code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered redirect URI, URL encoded
 &response_mode=form_post                              // 'form_post' or 'fragment'
-&scope=openid%20                                      // Include both 'openid' and scopes that your app needs  
-offline_access%20                                         
+&scope=openid%20                                      // Include both 'openid' and scopes that your app needs
+offline_access%20
 https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &state=12345                                          // Any value, provided by your app
 &nonce=678910                                         // Any value, provided by your app
@@ -245,7 +237,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 
 `response_mode=form_post` を使用した場合の成功応答は次のようになります。
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -263,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 アプリ側でエラーを適切に処理できるよう、リダイレクト URI にはエラー応答も送信される場合があります。 エラーの場合の応答は次のようになります。
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded

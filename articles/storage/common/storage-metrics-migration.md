@@ -1,24 +1,24 @@
 ---
 title: Azure Storage メトリックの移行 | Microsoft Docs
 description: 従来のメトリックを Azure Monitor によって管理される新しいメトリックに移行する方法について説明します。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 58ac15c1aba715c9a5b67e723401b531e76608b2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.custom: monitoring
+ms.openlocfilehash: 10768ca4c6fbe4afc322fa9a7045c7cc4fe6f175
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153590"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681306"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure Storage メトリックの移行
 
-Azure のモニター エクスペリエンスの統合戦略に合わせて、Azure Storage はメトリックを Azure Monitor プラットフォームに統合します。 今後、Azure ポリシーに基づいて、従来のメトリックのサービスは事前に通知されたうえで終了します。 従来のストレージ メトリックに依存している場合は、メトリック情報を維持するためにサービス終了日より前に移行する必要があります。
+Azure のモニター エクスペリエンスの統合戦略に合わせて、Azure Storage はメトリックを Azure Monitor プラットフォームに統合します。 今後、Azure Policy に基づいて、従来のメトリックのサービスは事前に通知されたうえで終了します。 従来のストレージ メトリックに依存している場合は、メトリック情報を維持するためにサービス終了日より前に移行する必要があります。
 
 この記事では、従来のメトリックから新しいメトリックに移行する方法について説明します。
 
@@ -46,7 +46,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 
 | 従来のメトリック | 新しいメトリック |
 | ------------------- | ----------------- |
-| **Capacity**            | ディメンション **BlobType** が **BlockBlob** または **PageBlob** と等しい **BlobCapacity** |
+| **[容量]**            | ディメンション **BlobType** が **BlockBlob** または **PageBlob** と等しい **BlobCapacity** |
 | **ObjectCount**        | ディメンション **BlobType** が **BlockBlob** または **PageBlob** と等しい **BlobCount** |
 | **ContainerCount**      | **ContainerCount** |
 
@@ -105,7 +105,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 | **TotalIngress** | **イングレス** |
 | **TotalRequests** | **トランザクション** |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="how-should-i-migrate-existing-alert-rules"></a>既存のアラート ルールを移行する必要はありますか?
 
@@ -115,7 +115,7 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 
 いいえ。 メトリック データをストレージ アカウントにアーカイブするには、[Azure Monitor Diagnostic Setting API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
 * [Azure Monitor の Storage メトリック](./storage-metrics-in-azure-monitor.md)

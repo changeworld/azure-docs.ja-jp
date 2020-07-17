@@ -1,26 +1,14 @@
 ---
-title: Azure Batch プールの Azure ファイル共有 | Microsoft Docs
+title: Azure Batch プールの Azure ファイル共有
 description: Azure Batch の Linux または Windows プールの計算ノードから Azure Files 共有をマウントする方法
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: lahugh
-ms.custom: ''
-ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103334"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82115450"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -51,8 +39,8 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
-* **[ユーザー名]**: AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
-* **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==*)
+* **ユーザー名**:AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
+* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。
 
@@ -120,7 +108,7 @@ tasks.Add(task);
 
 Azure ファイル共有は、[CIFS カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 次の例は、Ubuntu 16.04 LTS 計算ノードのプール上でファイル共有をマウントする方法を示しています。 異なる Linux ディストリビューションを使用する場合、一般的な手順はほぼ同じですが、ディストリビューションに適したパッケージ マネージャーを使用してください。 詳細およびその他の例については、「[Linux で Azure Files を使用する](../storage/files/storage-how-to-use-files-linux.md)」を参照してください。
 
-最初に、管理者ユーザー ID で、`cifs-utils` パッケージをインストールして、ローカル ファイルシステムにマウント ポイント (たとえば、*/mnt/MyAzureFileShare*) を作成します。 マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、`/mnt` フォルダー下にこれを作成するのが一般的な規則です。 必ず、`/mnt` (Ubuntu 上) または `/mnt/resource` (他のディストリビューション上) に直接、マウント ポイントを作成しないようにしてください。
+最初に、管理者ユーザー ID で、`cifs-utils` パッケージをインストールして、ローカル ファイルシステムにマウント ポイント (たとえば、 */mnt/MyAzureFileShare*) を作成します。 マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、`/mnt` フォルダー下にこれを作成するのが一般的な規則です。 必ず、`/mnt` (Ubuntu 上) または `/mnt/resource` (他のディストリビューション上) に直接、マウント ポイントを作成しないようにしてください。
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
@@ -129,7 +117,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 次に、以下の資格情報を指定して、`mount` コマンドを実行してファイル共有をマウントします。
 
 * **ユーザー名**: \<storageaccountname\> (たとえば、*mystorageaccountname*)
-* **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==*)
+* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を */mnt/MyAzureFileShare* でマウントします。 
 
@@ -148,17 +136,18 @@ Linux プール上では、これらのすべての手順を単一の開始タ�
 ```python
 pool = batch.models.PoolAddParameter(
     id=pool_id,
-    virtual_machine_configuration = batchmodels.VirtualMachineConfiguration(
-        image_reference = batchmodels.ImageReference(
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
             sku="16.04.0-LTS",
             version="latest"),
-        node_agent_sku_id = "batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 16.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_POOL_NODE_COUNT,
     start_task=batchmodels.StartTask(
-        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(_COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
+        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(
+            _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
         wait_for_success=True,
         user_identity=batchmodels.UserIdentity(
             auto_user=batchmodels.AutoUserSpecification(
@@ -181,7 +170,7 @@ batch_service_client.task.add(job_id, task)
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch でデータの読み取りと書き込みを行うためのその他のオプションについては、[Batch 機能の概要](batch-api-basics.md) に関するページと「[ジョブとタスク出力を保持する](batch-task-output.md)」を参照してください。
 

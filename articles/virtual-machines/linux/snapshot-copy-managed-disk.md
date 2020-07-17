@@ -1,25 +1,20 @@
 ---
-title: Azure で VHD のスナップショットを作成する | Microsoft Docs
+title: Azure で VHD のスナップショットを作成する
 description: バックアップまたは問題のトラブルシューティングに使うために、Azure で VHD のコピーを作成する方法について説明します。
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 9f2f3ac3668f0e48716fc30fb69cd1782dbd4e56
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f2d905d041198bd35c4657052bf18d981904dc44
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706977"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758400"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成 
 
@@ -51,7 +46,7 @@ az snapshot create \
 ```
 
 > [!NOTE]
-> スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、**--sku Standard_ZRS** パラメーターを含める必要があります。
+> スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、 **--sku Standard_ZRS** パラメーターを含める必要があります。
 
 [az snapshot list](/cli/azure/snapshot#az-snapshot-list) を使用して、スナップショットの一覧を表示できます。
 
@@ -63,17 +58,17 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左上の **[リソースの作成]** をクリックし、**[スナップショット]** を探します。 検索結果から **[スナップショット]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. 左上の **[リソースの作成]** をクリックし、 **[スナップショット]** を探します。 検索結果から **[スナップショット]** を選択します。
 3. **[スナップショット]** ブレードで **[作成]** をクリックします。
 4. スナップショットの **[名前]** を入力します。
 5. 既存のリソース グループを選択するか、新しいリソース グループの名前を入力します。 
 7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
-8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスの SSD に保存する必要がある場合を除き、**[Standard HDD]** を使用します。
+8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスの SSD に保存する必要がある場合を除き、 **[Standard HDD]** を使用します。
 9. **Create** をクリックしてください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
- スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json)」のスクリプトを参照してください。
+ スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、[スナップショットからの仮想マシンの作成に関する記事のスクリプトを参照してください](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json)。
 

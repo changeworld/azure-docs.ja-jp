@@ -1,25 +1,22 @@
 ---
-title: Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理
+title: Azure Stream Analytics での構成可能なしきい値ベースのルール
 description: この記事では、Azure Stream Analytics で、参照データを使用して、設定可能なしきい値ベースのルールを含むアラート ソリューションを実現する方法について説明します。
-services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731193"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75369713"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理
 この記事では、Azure Stream Analytics で、参照データを使用して、設定可能なしきい値に基づいたルールを含むアラート ソリューションを実現する方法について説明します。
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>シナリオ: 調整可能なルールしきい値ベースのアラート
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>シナリオ:調整可能なルールしきい値ベースのアラート
 ストリーム化された受信イベントが特定の値に達した、またはストリーム化された受信イベントに基づいた集計値が特定のしきい値を超えた場合にアラートを出力として生成する必要がある場合があります。 固定値の、または事前定義の静的しきい値と値を比較する Stream Analytics クエリを簡単に設定できます。 固定値のしきい値は、単純な数値比較 (より大きい、より小さい、および等値) を使用してストリーミング クエリ構文にハードコーディングすることができます。
 
 場合によっては、しきい値の値が変化するたびにクエリの構文を編集する必要のない、より簡単な方法でしきい値の値を設定する必要があります。 また、異なる種類のデバイス上に異なるしきい値が設定された、複数のデバイスまたはユーザーを、同じクエリで処理する必要がある場合もあります。 

@@ -4,9 +4,12 @@
   items:
     - name: Service Fabric とは
       href: service-fabric-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: .NET アプリケーションの作成
       href: service-fabric-quickstart-dotnet.md
     - name: Linux コンテナー アプリケーションのデプロイ
@@ -73,10 +76,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 - クラスターの削除
           href: service-fabric-tutorial-delete-cluster.md
-    - name: AWS でのスタンドアロン クラスターの作成
+    - name: スタンドアロン クラスターを作成する
       items:
-        - name: 1- AWS でのインフラストラクチャの作成
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1 - インフラストラクチャの作成
+          items:
+            - name: AWS を使用する
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Azure を使用する
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2- Service Fabric の設定
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3- クラスターへのアプリケーションのデプロイ
@@ -87,7 +94,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: セキュリティ
+    - name: Security
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -104,11 +111,14 @@
 - name: サンプル
   items:
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
       href: samples-cli.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: マイクロサービスを理解する
@@ -117,9 +127,9 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: アーキテクチャ
+    - name: Architecture
       href: service-fabric-architecture.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -127,9 +137,13 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric クラスターのセキュリティ
           href: service-fabric-cluster-security.md
-        - name: Azure の一般的なセキュリティ属性
-          href: service-fabric-security-attributes.md
-    - name: 用語集
+        - name: 組み込みのセキュリティ制御
+          href: service-fabric-security-controls.md
+        - name: Service Fabric での証明書ベースの認証
+          href: cluster-security-certificates.md
+        - name: Service Fabric での証明書管理
+          href: cluster-security-certificate-management.md
+    - name: 用語
       href: service-fabric-technical-overview.md
     - name: アプリケーションの構築
       items:
@@ -141,8 +155,8 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (プレビュー)
               href: service-fabric-docker-compose.md
-            - name: リソース ガバナンス
-              href: service-fabric-resource-governance.md
+            - name: プローブ
+              href: probes-codepackage.md
         - name: Reliable Service
           items:
             - name: Reliable Services の概要
@@ -173,7 +187,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -189,10 +203,14 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: ゲスト実行可能ファイル
           href: service-fabric-guest-executables-introduction.md
+        - name: リソース管理
+          href: service-fabric-resource-governance.md
     - name: アプリケーションとサービス
       items:
         - name: アプリケーション モデル
           href: service-fabric-application-model.md
+        - name: アプリケーション モデルのテンプレートを作成する
+          href: service-fabric-concept-resource-model.md
         - name: アプリケーション マニフェストとサービス マニフェスト
           href: service-fabric-application-and-service-manifests.md
         - name: アプリケーション マニフェストとサービス マニフェストの例
@@ -258,6 +276,10 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: パーティションのオンデマンド バックアップ
               href: service-fabric-backup-restore-service-ondemand-backup.md
+        - name: 初期化子 CodePackage
+          href: initializer-codepackages.md
+        - name: RunToCompletion
+          href: run-to-completion.md
     - name: クラスター
       items:
         - name: クラスターの概要
@@ -270,11 +292,11 @@
           items:
             - name: Azure クラスターの概要
               href: service-fabric-azure-clusters-overview.md
-            - name: ノードの種類と VM Scale Sets
+            - name: ノード タイプと仮想マシン スケール セット
               href: service-fabric-cluster-nodetypes.md
             - name: Azure でのクラスターのアップグレード
               href: service-fabric-cluster-upgrade.md
-            - name: スケーリング
+            - name: Scaling
               href: service-fabric-cluster-scaling.md
             - name: クラスター ネットワークのパターン
               href: service-fabric-patterns-networking.md
@@ -284,13 +306,13 @@
               href: service-fabric-standalone-clusters-overview.md
             - name: スタンドアロン クラスターのアップグレード
               href: service-fabric-cluster-upgrade-standalone.md
-            - name: スケーリング
+            - name: Scaling
               href: service-fabric-cluster-scaling-standalone.md
         - name: Cluster Resource Manager
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -310,6 +332,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: クラスターの分散
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: サブクラスタリング
+              href: cluster-resource-manager-subclustering.md
             - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: サービスの移動
@@ -346,7 +370,13 @@
           href: service-fabric-diagnostics-partners.md
     - name: API Management との統合
       href: service-fabric-api-management-overview.md
-- name: ハウツー ガイド
+    - name: アプリ リソース モデル
+      href: service-fabric-concept-resource-model.md
+    - name: マネージド ID
+      href: concepts-managed-identity.md
+    - name: コンテナー リポジトリの資格情報の構成
+      href: configure-container-repository-credentials.md
+- name: 操作方法ガイド
   items:
     - name: 開発環境を設定する
       items:
@@ -354,7 +384,7 @@
           href: service-fabric-get-started.md
         - name: Linux
           href: service-fabric-get-started-linux.md
-        - name: Mac OS
+        - name: macOS
           href: service-fabric-get-started-mac.md
         - name: Service Fabric CLI のセットアップ
           href: service-fabric-cli.md
@@ -392,14 +422,10 @@
           items:
             - name: ゲスト実行可能ファイルをデプロイする
               href: service-fabric-deploy-existing-app.md
-            - name: 複数のゲスト実行可能ファイルのデプロイ
-              href: service-fabric-deploy-multiple-apps.md
         - name: コンテナー サービスの構築
           items:
             - name: Docker Compose (プレビュー)
               href: service-fabric-docker-compose.md
-            - name: コンテナーとサービスのリソース ガバナンス
-              href: service-fabric-resource-governance.md
             - name: ボリュームとログ ドライバー
               href: service-fabric-containers-volume-logging-drivers.md
             - name: コンテナー ログの表示
@@ -470,11 +496,15 @@
               href: service-fabric-tutorial-deploy-api-management.md
             - name: アプリケーション シークレットの管理
               href: service-fabric-application-secret-management.md
+            - name: Service Fabric シークレット ストアの使用
+              href: service-fabric-application-secret-store.md
               items:
                 - name: Windows での暗号化証明書の設定とシークレットの暗号化
                   href: service-fabric-application-secret-management-windows.md
                 - name: Linux での暗号化証明書の設定とシークレットの暗号化
                   href: service-fabric-application-secret-management-linux.md
+                - name: KeyVaultReference を使用して安全にシークレットを保存する (プレビュー)
+                  href: service-fabric-keyvault-references.md
             - name: セキュリティで保護された通信用のリバース プロキシの構成
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
@@ -517,6 +547,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Windows での Linux クラスターの設定
               href: service-fabric-local-linux-cluster-windows.md
+            - name: VS からリモート Linux クラスターに .NET Core アプリをデプロイする
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Linux/Eclipse 開発環境での作業
           items:
             - name: Java 開発用の Eclipse プラグインの使用
@@ -541,8 +573,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: 推奨プラクティス
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: 移行済みのアプリをリファクタリングする
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: アプリケーションを最新化する
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: アプリケーションのライフサイクルを管理する
       items:
         - name: アプリケーションをパッケージ化する
@@ -605,7 +637,7 @@
       items:
         - name: Azure 上のクラスター
           items:
-            - name: Create
+            - name: 作成
               items:
                 - name: クラスターのデプロイの計画
                   href: service-fabric-cluster-azure-deployment-preparation.md
@@ -626,7 +658,7 @@
             - name: スケール
               items:
                 - name: 手動によるスケールアウト
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: プログラムによるスケールアウト
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: プライマリ ノード タイプのスケールアップ
@@ -659,9 +691,11 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: クラスター ノード VM へのリモート接続
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+                - name: マネージド ディスクを使用するためにクラスター ノードをアップグレードする
+                  href: upgrade-managed-disks.md
         - name: スタンドアロンのクラスター
           items:
-            - name: Create
+            - name: 作成
               items:
                 - name: オンプレミスでの作成
                   href: service-fabric-cluster-creation-for-windows-server.md
@@ -693,6 +727,8 @@
       items:
         - name: 一般的なシナリオの診断
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: コード パッケージのエラーの診断
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: アプリケーションの監視
           items:
             - name: アプリケーションへのログ記録の追加
@@ -733,6 +769,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: ローカル クラスターのトラブルシューティング
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Service Fabric アプリのマネージド ID を使用する
+      items:
+        - name: クラスターのセットアップ
+          items:
+            - name: マネージド ID を使用して既存のクラスターを構成する
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: マネージド ID を使用して新しい Azure Service Fabric クラスターを構成する
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: アプリケーションのセットアップ
+          items:
+            - name: マネージド ID を持つアプリケーションのデプロイ方法
+              items:
+                - name: システム割り当てのマネージド ID を持つアプリケーションのデプロイ方法
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: ユーザー割り当てのマネージド ID を持つアプリケーションのデプロイ方法
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: Service Fabric アプリケーション コードで MITS を使用する
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: 他の Azure リソースへのアクセス権を付与する
+          href: how-to-grant-access-other-resources.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
@@ -836,14 +892,16 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 一般的な質問
       href: service-fabric-common-questions.md
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+    - name: Azure Resource Manager デプロイのガードレール
+      href: service-fabric-azure-resource-manager-guardrails.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: トラブルシューティング ガイド
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: リリース ノート
+      href: release-notes.md
     - name: サンプル コード
       href: 'https://aka.ms/servicefabricsamples'
     - name: サポート オプション
@@ -852,5 +910,7 @@
       href: service-fabric-versions.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: トラブルシューティング ガイド
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

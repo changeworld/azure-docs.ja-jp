@@ -1,37 +1,32 @@
 ---
 title: Durable Functions のシングルトン - Azure
 description: Azure Functions の Durable Functons 拡張機能でシングルトンを使用する方法。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683805"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76262811"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
-バックグラウンド ジョブでは、多くの場合、特定のオーケストレーターのインスタンスが 1 度に 1 つだけ実行されることを保証する必要があります。 これは、[Durable Functions](durable-functions-overview.md) でオーケストレーターを作成するときに、特定のインスタンス ID を割り当てることによって実現できます。
+バックグラウンド ジョブでは、多くの場合、特定のオーケストレーターのインスタンスが一度に 1 つだけ実行されることを保証する必要があります。 特定のインスタンス ID を作成時にオーケストレーターに割り当てて、[Durable Functions](durable-functions-overview.md) でこのようなシングルトン動作を確実に行うことができます。
 
 ## <a name="singleton-example"></a>シングルトンの例
 
-次の C# および JavaScript の例は、シングルトン バックグラウンド ジョブのオーケストレーションを作成する HTTP トリガー関数を示しています。 このコードは、指定されたインスタンス ID の インスタンスが 1 つだけ存在することを保証します。
+次の例は、シングルトン バックグラウンド ジョブのオーケストレーションを作成する HTTP トリガー関数を示しています。 このコードは、指定されたインスタンス ID の インスタンスが 1 つだけ存在することを保証します。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
 public static async Task<HttpResponseMessage> RunSingle(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/{instanceId}")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient starter,
+    [DurableClient] IDurableOrchestrationClient starter,
     string functionName,
     string instanceId,
     ILogger log)
@@ -56,9 +51,13 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+> [!NOTE]
+> 前記の C# コードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-function.json ファイルを次に示します。
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+**function.json**
+
 ```json
 {
   "bindings": [
@@ -84,7 +83,8 @@ function.json ファイルを次に示します。
 }
 ```
 
-JavaScript コードを次に示します。
+**index.js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -112,17 +112,16 @@ module.exports = async function(context, req) {
 };
 ```
 
-既定では、インスタンス ID は、ランダムに生成される GUID です。 ただし、ここでは、インスタンス ID は URL からルート データに渡されます。 コードは、[GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) または `getStatus` (JavaScript) を呼び出して、指定した ID を持つインスタンスが既に実行されているかどうかを確認します。 実行されていなければ、インスタンスがその ID で作成されます。
+---
 
-> [!WARNING]
-> JavaScript でローカルに開発する場合は、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` に設定する必要があります。たとえば、 `DurableOrchestrationClient` のメソッドを使用するには、`localhost:7071` に設定します。 この要件の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-js/issues/28)に関するページを参照してください。
+既定では、インスタンス ID は、ランダムに生成される GUID です。 ただし、前記の例では、URL からルート データにインスタンス ID が渡されています。 コードは、`GetStatusAsync` (C#) または `getStatus` (JavaScript) を呼び出して、指定した ID を持つインスタンスが既に実行されているかどうかを確認します。 そのようなインスタンスが実行されていない場合は、その ID で新しいインスタンスが作成されます。
 
 > [!NOTE]
 > このサンプルには潜在的な競合状態があります。 **HttpStartSingle** の 2 つのインスタンスが同時に実行された場合、両方の関数呼び出しで成功が報告されますが、実際に開始するのは 1 つのオーケストレーション インスタンスだけです。 これは、要件によっては望ましくない副作用になる可能性があります。 このため、このトリガー関数を同時に 2 つの要求で実行できないようにすることが重要です。
 
-オーケストレーター関数の 実装の詳細は、実際は問題ではありません。 開始して完了する通常のオーケストレーター関数でも、永久に実行される関数 (つまり、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)) でも可能です。 重要な点は、インスタンスが 1 度に 1 つだけ実行されていることです。
+オーケストレーター関数の実装の詳細は、実際は問題ではありません。 開始して完了する通常のオーケストレーター関数でも、永久に実行される関数 (つまり、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)) でも可能です。 重要な点は、インスタンスが 1 度に 1 つだけ実行されていることです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [サブオーケストレーションを呼び出す方法を知る](durable-functions-sub-orchestrations.md)
+> [オーケストレーションのネイティブ HTTP 機能について学習する](durable-functions-http-features.md)

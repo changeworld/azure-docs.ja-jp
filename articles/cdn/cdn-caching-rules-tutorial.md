@@ -3,28 +3,28 @@ title: チュートリアル - Azure CDN キャッシュ規則の設定 | Micros
 description: このチュートリアルでは、Azure CDN のグローバル キャッシュ規則およびカスタム キャッシュ規則を設定します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 10d06d2e792b476a4c973029241d6cb98c0dd444
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094073"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81254310"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル: Azure CDN キャッシュ規則の設定
 
 > [!NOTE] 
-> Azure CDN キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** でのみ使用できます。 **Azure CDN Premium from Verizon** の場合は、同様の機能のために、**管理**ポータルの [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用します。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して[管理](cdn-rules-engine.md)ポータルで **Verizon Premium ルール エンジン**を使用する必要があります。
  
 
 このチュートリアルでは、Azure Content Delivery Network (CDN) のキャッシュ規則を使って、グローバルと、URL パスやファイル拡張子などのカスタム条件の両方で、既定のキャッシュ期限切れ動作を設定または変更する方法について説明します。 Azure CDN では、2 種類のキャッシュ規則が提供されます。
@@ -48,7 +48,7 @@ ms.locfileid: "49094073"
 
 1. [Azure Portal](https://portal.azure.com) で CDN プロファイルを選択し、エンドポイントを選択します。
 
-2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** を選択します。
+2. 左側のウィンドウの [設定] で、 **[キャッシュ規則]** を選択します。
 
    ![CDN の [キャッシュ規則] ボタン](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
@@ -61,11 +61,11 @@ ms.locfileid: "49094073"
 
 グローバル キャッシュ規則を次のように作成します。
 
-1. **[グローバル キャッシュ ルール]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定します。
+1. **[グローバル キャッシュ ルール]** で、 **[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定します。
 
 2. **[キャッシュ動作]** を **[存在しない場合に設定]** に設定します。
        
-3. **[キャッシュの有効期間]** で、**[日]** フィールドに「10」と入力します。
+3. **[キャッシュの有効期間]** で、 **[日]** フィールドに「10」と入力します。
 
     グローバル キャッシュ規則は、エンドポイントに対するすべての要求に適用されます。 この規則は、元の要求にキャッシュ ディレクティブ ヘッダー (`Cache-Control`または`Expires`) が存在する場合はそれに従い、指定されていない場合はキャッシュを 10 日に設定します。 
 
@@ -75,24 +75,24 @@ ms.locfileid: "49094073"
 
 カスタム キャッシュ規則を次のように作成します。
 
-1. **[カスタム キャッシュ ルール]** で、**[一致条件]** を **[パス]** に、**[一致する値]** を「`/images/*.jpg`」に設定します。
+1. **[カスタム キャッシュ ルール]** で、 **[一致条件]** を **[パス]** に、 **[一致する値]** を「`/images/*.jpg`」に設定します。
     
-2. **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[日]** フィールドに「30」と入力します。
+2. **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[日]** フィールドに「30」と入力します。
        
-    このカスタム キャッシュ規則は、エンドポイントの `/images` フォルダーにあるすべての `.jpg` イメージ ファイルについて、キャッシュの有効期間を 30 日に設定します。 要求元のサーバーによって送信された `Cache-Control` または `Expires` HTTP ヘッダーを、この規則はオーバーライドします。
+    このカスタム キャッシュ規則は、エンドポイントの `.jpg` フォルダーにあるすべての `/images` イメージ ファイルについて、キャッシュの有効期間を 30 日に設定します。 要求元のサーバーによって送信された `Cache-Control` または `Expires` HTTP ヘッダーを、この規則はオーバーライドします。
 
     ![カスタム キャッシュ ルール](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
     
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 上記の手順で、キャッシュ規則を作成しました。 これらのキャッシュ規則を使用する必要がなくなった場合は、次の手順を実行して規則を削除できます。
  
 1. CDN プロファイルを選択し、削除するキャッシュ規則があるエンドポイントを選択します。
 
-2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** を選択します。
+2. 左側のウィンドウの [設定] で、 **[キャッシュ規則]** を選択します。
 
-3. **[グローバル キャッシュ ルール]** で、**[キャッシュ動作]** を **[未設定]** に設定します。
+3. **[グローバル キャッシュ ルール]** で、 **[キャッシュ動作]** を **[未設定]** に設定します。
  
 4. **[Custom caching rules (カスタム キャッシュ規則)]** で、削除する規則の横にあるチェック ボックスをオンにします。
 
@@ -101,7 +101,7 @@ ms.locfileid: "49094073"
 6. ページの最上部から **[保存]** を選択します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

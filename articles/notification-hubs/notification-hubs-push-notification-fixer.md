@@ -3,23 +3,25 @@ title: Azure Notification Hubs での欠落した通知の診断
 description: Azure Notification Hubs で欠落した通知に関する一般的な問題を診断する方法について説明します。
 services: notification-hubs
 documentationcenter: Mobile
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/04/2019
-ms.author: jowargo
-ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 02/25/2020
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/04/2019
+ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925820"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77657585"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs での欠落した通知の診断
 
@@ -31,7 +33,7 @@ Azure Notification Hubs に関してよく寄せられる質問の 1 つに、�
 
 一般的な送信通知フローでは、メッセージは*アプリケーション バックエンド*から Notification Hubs に送信されます。 Notification Hubs は、すべての登録を処理します。 この処理では、構成済みのタグとタグ式を考慮してターゲットが決定されます。 ターゲットは、プッシュ通知を受け取る必要がある登録です。 これらの登録は、サポートされている次のプラットフォームのいずれかにわたる可能性があります: Android、Baidu (中国の Android デバイス)、Fire OS (Amazon) iOS、Windows、Windows Phone。
 
-ターゲットが確立されると、Notification Hubs は、デバイス プラットフォームの*プッシュ通知サービス*に通知をプッシュします。 例としては、Apple の Apple Push Notification Service (APNs) や、Google の Firebase Cloud Messaging (FCM) があります。 Notification Hubs のプッシュ通知は、複数の登録バッチに分割されます。 Azure portal の **[Configure Notification Hub]\(通知ハブを構成する\)** で設定された資格情報に基づいて、それぞれのプッシュ通知サービスを認証します。 その後、プッシュ通知サービスが各*クライアント デバイス*に通知を転送します。
+ターゲットが確立されると、Notification Hubs は、デバイス プラットフォームの*プッシュ通知サービス*に通知をプッシュします。 例としては、iOS および macOS の Apple Push Notification Service (APNs) や、Android デバイスの Firebase Cloud Messaging (FCM) があります。 Notification Hubs のプッシュ通知は、複数の登録バッチに分割されます。 Azure portal の **[Configure Notification Hub]\(通知ハブを構成する\)** で設定された資格情報に基づいて、それぞれのプッシュ通知サービスを認証します。 その後、プッシュ通知サービスが各*クライアント デバイス*に通知を転送します。
 
 通知の配信の最終段階は、プラットフォーム プッシュ通知サービスとデバイスの間です。 通知の配信は、プッシュ通知プロセスの 4 つ (クライアント、アプリケーション バックエンド、Notification Hubs、プラットフォームのプッシュ通知サービス) のいずれの段階でも、エラーとなる可能性があります。 Notification Hubs のアーキテクチャの詳細については、[Notification Hubs の概要]に関する記事をご覧ください。
 
@@ -39,7 +41,7 @@ Azure Notification Hubs に関してよく寄せられる質問の 1 つに、�
 
 次のセクションでは、通知が欠落するシナリオを、一般的なケースから稀なケースまで見ていきます。
 
-## <a name="notification-hubs-misconfiguration"></a>Notification Hubs の構成の誤り ##
+## <a name="notification-hubs-misconfiguration"></a>Notification Hubs の構成の誤り
 
 各プッシュ通知サービスに通知を送信できるようにするには、Notification Hubs を自身のアプリケーションのコンテキストで認証する必要があります。 ターゲット プラットフォームの通知サービス (Microsoft、Apple、Google など) で開発者アカウントを作成する必要があります。 次に、ターゲットのプラットフォーム通知システムの操作に使用するトークンまたはキーを取得する OS に、自身のアプリケーションを登録する必要があります。
 
@@ -52,19 +54,20 @@ Azure Portal にプラットフォームの資格情報を追加する必要が�
 ### <a name="notification-hub-name-location"></a>通知ハブの名前の場所
 
 Notification Hubs 名にタイプミスがなく、次の各場所で同じであることを確認します。
-   * クライアントから登録する場所
-   * バックエンドから通知を送信する場所
-   * プッシュ通知サービスの資格情報を構成した場所
+
+* クライアントから登録する場所
+* バックエンドから通知を送信する場所
+* プッシュ通知サービスの資格情報を構成した場所
 
 クライアントとアプリケーション バックエンドで、適切な共有アクセス署名の構成文字列を使用していることを確認します。 原則として、クライアントでは **DefaultListenSharedAccessSignature** を、アプリケーション バックエンドでは **DefaultFullSharedAccessSignature** を使用する必要があります。 これにより、Notification Hubs に通知を送信する権限が付与されます。
 
-### <a name="apn-configuration"></a>APN の構成 ###
+### <a name="apn-configuration"></a>APN の構成
 
 運用環境とテスト用に 2 つの異なるハブを維持する必要があります。 サンドボックス環境で使用する証明書と運用環境で使用する証明書/ハブを、それぞれ別のハブにアップロードする必要があります。 異なる種類の証明書を同じハブにアップロードしないでください。 通知エラーの原因になります。
 
 異なる種類の証明書を誤って同じハブにアップロードした場合には、そのハブを削除し、新しいハブで新たに開始する必要があります。 何らかの理由でハブを削除できない場合は、少なくとも、既存のすべての登録をハブから削除する必要があります。
 
-### <a name="fcm-configuration"></a>FCM の構成 ###
+### <a name="fcm-configuration"></a>FCM の構成
 
 1. Firebase から取得した*サーバー キー*が、Azure portal で登録したサーバー キーと一致していることを確認します。
 
@@ -74,9 +77,9 @@ Notification Hubs 名にタイプミスがなく、次の各場所で同じで�
 
    ![Firebase プロジェクト ID][1]
 
-## <a name="application-issues"></a>アプリケーションの問題 ##
+## <a name="application-issues"></a>アプリケーションの問題
 
-### <a name="tags-and-tag-expressions"></a>タグとタグ式 ###
+### <a name="tags-and-tag-expressions"></a>タグとタグ式
 
 タグまたはタグ式を使用して対象ユーザーを分割している場合、通知の送信時にターゲットを見つけられない場合があります。 このエラーは、送信呼び出しで指定したタグまたはタグ式に基づくものです。
 
@@ -84,11 +87,11 @@ Notification Hubs 名にタイプミスがなく、次の各場所で同じで�
 
 たとえば、Notification Hubs での登録すべてで "政治" タグを使用しているとします。 その場合に "スポーツ" タグを付けて通知を送信しても、その通知はどのデバイスにも送信されません。 複雑なケースとしては、"Tag A" *or* "Tag B" というタグ式を使用して登録したにもかかわらず、"Tag A && Tag B" をターゲットとした、という例が挙げられます。 この記事の後半の「自己診断のヒント」セクションで、登録とそのタグを確認する方法について説明します。
 
-### <a name="template-issues"></a>テンプレートの問題 ###
+### <a name="template-issues"></a>テンプレートの問題
 
 テンプレートを使用する場合は、「[テンプレート]」に説明されているガイドラインに従ってください。
 
-### <a name="invalid-registrations"></a>無効な登録 ###
+### <a name="invalid-registrations"></a>無効な登録
 
 通知ハブが適切に構成されている状態で、タグやタグ式が適切に使用されている場合は、有効なターゲットが見つかります。 通知はこれらのターゲットに送信する必要があります。 その後、Notification Hubs は複数の処理バッチを並列で実行します。 各バッチは登録のセットにメッセージを送信します。
 
@@ -101,7 +104,7 @@ Notification Hubs は、"最大 1 回" のメッセージ配信モデルに最�
 
 この場合、エラーが発生した登録はデータベースから削除されます。 その後、そのバッチで残りのデバイスに通知の配信が再試行されます。
 
-登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://msdn.microsoft.com/library/azure/mt608135.aspx)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)に関する記事をご覧ください。
+登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)に関する記事をご覧ください。
 
 ## <a name="push-notification-service-issues"></a>プッシュ通知サービスの問題
 
@@ -111,7 +114,7 @@ Notification Hubs は、"最大 1 回" のメッセージ配信モデルに最�
 
 プッシュ通知サービスが通知の配信を試行したがデバイスがオフラインの場合、その通知はプッシュ通知サービスにより保存されます。 保存されるのは限られた期間のみです。 この通知は、デバイスが利用可能になるとデバイスに配信されます。
 
-アプリごとに、最新の通知が 1 つのみ保存されます。 デバイスがオフラインの間に複数の通知が送信された場合、新しい通知が配信されるたびに前回の通知が破棄されます。 最新の通知のみを維持するこの動作は、APNs では*結合*と呼ばれ、FCM では*折りたたみ*と呼ばれます  (FCM は折りたたみキーを使用します)。デバイスが長時間オフラインのままになると、そのデバイス用に保存されている通知は破棄されます。 詳細については、「[APNs の概要]」 (APNs の概要) と「[FCM メッセージについて]」をご覧ください。
+アプリごとに、最新の通知が 1 つのみ保存されます。 デバイスがオフラインの間に複数の通知が送信された場合、新しい通知が配信されるたびに前回の通知が破棄されます。 最新の通知のみを維持するこの動作は、APNs では*結合*と呼ばれ、FCM では*折りたたみ*と呼ばれます (FCM は折りたたみキーを使用します)。デバイスが長時間オフラインのままになると、そのデバイス用に保存されている通知は破棄されます。 詳細については、「[APNs の概要]」 (APNs の概要) と「[FCM メッセージについて]」をご覧ください。
 
 Notification Hubs では、汎用 SendNotification API を使用することで、HTTP ヘッダーを介して結合キーを渡すことができます。 たとえば、.NET SDK の場合、`SendNotificationAsync` を使用します。 SendNotification API では、それぞれのプッシュ通知サービスにそのまま渡される HTTP ヘッダーも使用します。
 
@@ -119,13 +122,13 @@ Notification Hubs では、汎用 SendNotification API を使用することで�
 
 このセクションでは、Notification Hubs で通知の欠落の根本原因を診断する方法について説明します。
 
-### <a name="verify-credentials"></a>資格情報の確認 ###
+### <a name="verify-credentials"></a>資格情報の確認
 
-#### <a name="push-notification-service-developer-portal"></a>プッシュ通知サービス開発者ポータル ####
+#### <a name="push-notification-service-developer-portal"></a>プッシュ通知サービス開発者ポータル
 
-各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
+各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、「[チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
 
-#### <a name="azure-portal"></a>Azure ポータル ####
+#### <a name="azure-portal"></a>Azure portal
 
 資格情報を確認し、プッシュ通知サービス開発者ポータルから取得した資格情報とマッチングするには、Azure portal の **[アクセス ポリシー]** タブに移動します。
 
@@ -133,46 +136,48 @@ Notification Hubs では、汎用 SendNotification API を使用することで�
 
 ### <a name="verify-registrations"></a>登録の確認
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 Visual Studio では、サーバー エクスプローラーから Azure に接続して、Notification Hubs を含む複数の Azure サービスを表示、管理できます。 このショートカットは、特に開発/テスト環境で便利です。
 
 ![Visual Studio のサーバー エクスプローラー][9]
 
+![[サーバー エクスプローラー]](media/notification-hubs-push-notification-fixer/vsserverexplorer2.png)
+
 ハブのすべての登録を表示、管理することができます。 登録は、プラットフォーム、ネイティブまたはテンプレートの登録、タグ、プッシュ通知サービス識別子、登録 ID、有効期限ごとに分類することができます。 このページでは、登録を編集することもできます。 タグを編集する場合に特に便利です。
 
-**サーバー エクスプローラー**で自分の通知ハブを右クリックして、**[診断]** を選択します。 
+**サーバー エクスプローラー**で自分の通知ハブを右クリックして、 **[診断]** を選択します。 
 
-![Visual Studio のサーバー エクスプローラー:診断メニュー](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio のサーバー エクスプローラー:診断メニュー](./media/notification-hubs-push-notification-fixer/diagnose-menu.png)
 
 次のページが表示されます。
 
-![Visual Studio:診断ページ](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio:診断ページ](./media/notification-hubs-push-notification-fixer/diagnose-page.png)
 
 **[デバイスの登録]** ページに切り替えます。
 
-![Visual Studio:デバイス登録](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio:デバイス登録](./media/notification-hubs-push-notification-fixer/VSRegistrations.png)
 
 **[テスト送信]** ページを使用して、テスト通知メッセージを送信することができます。
 
-![Visual Studio:送信をテストします。](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio:送信をテストします。](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
 > Visual Studio を使用した登録の編集は開発またはテスト中にのみ可能ですが、編集できる登録の数には制限があります。 登録を一括で修正する必要が生じた場合は、「[方法:登録の一括エクスポートと変更](https://msdn.microsoft.com/library/dn790624.aspx)」に説明されている、登録のエクスポートとインポート機能を使用することを検討してください。
 
-#### <a name="service-bus-explorer"></a>サービス バス Explorer ####
+#### <a name="service-bus-explorer"></a>サービス バス Explorer
 
 多くのお客様が [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を使用して、通知ハブを表示、管理します。 Service Bus Explorer はオープンソースのプロジェクトです。 
 
 ### <a name="verify-message-notifications"></a>メッセージ通知の確認
 
-#### <a name="azure-portal"></a>Azure ポータル ####
+#### <a name="azure-portal"></a>Azure portal
 
-サービス バックエンドを稼働させずにクライアントにテスト通知を送信するには、**[サポート + トラブルシューティング]** から **[テスト送信]** を選択します。
+サービス バックエンドを稼働させずにクライアントにテスト通知を送信するには、 **[サポート + トラブルシューティング]** から **[テスト送信]** を選択します。
 
 ![Azure のテスト送信機能][7]
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 Visual Studio からテスト通知を送信することもできます。
 
@@ -186,7 +191,7 @@ Visual Studio サーバー エクスプローラーでの Notification Hubs の�
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>失敗した通知のデバッグと通知結果の確認
 
-#### <a name="enabletestsend-property"></a>EnableTestSend プロパティ ####
+#### <a name="enabletestsend-property"></a>EnableTestSend プロパティ
 
 Notification Hubs 経由で通知を送信すると、その通知は最初はキューに登録されます。 Notification Hubs は適切なターゲットを判断し、その後プッシュ通知サービスに通知を送信します。 REST API やクライアント SDK を使用している場合、送信呼び出しが返されても、それは Notification Hubs でメッセージがキューに追加されたということでしかありません。 Notification Hubs が最終的に通知をプッシュ通知サービスに送信したらどうなるかについての情報は提供されません。
 
@@ -194,13 +199,13 @@ Notification Hubs 経由で通知を送信すると、その通知は最初は�
 
 プッシュ通知サービス エラーに関する情報を取得するには、[EnableTestSend] プロパティを使用できます。 このプロパティは、ポータルまたは Visual Studio クライアントからテスト メッセージを送信するときに自動的に有効にされます。 このプロパティは、詳細なデバッグ情報の参照に使用できます。また、API を介して使用することもできます。 現時点では、.NET SDK で使用できます。 最終的には、すべてのクライアント SDK に追加される予定です。
 
-`EnableTestSend` プロパティを REST 呼び出しで使用するには、送信呼び出しの最後に *test* というクエリ文字列パラメーターを追加します。 例: 
+`EnableTestSend` プロパティを REST 呼び出しで使用するには、送信呼び出しの最後に *test* というクエリ文字列パラメーターを追加します。 次に例を示します。
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 ```
 
-#### <a name="net-sdk-example"></a>.NET SDK の例 ####
+#### <a name="net-sdk-example"></a>.NET SDK の例
 
 .NET SDK を使用してネイティブ ポップアップ (トースト) 通知を送信する例を次に示します。
 
@@ -227,7 +232,7 @@ Console.WriteLine(result.State);
     }
 ```
 
-#### <a name="sample-output"></a>サンプル出力 ####
+#### <a name="sample-output"></a>サンプル出力
 
 ```text
 DetailedStateAvailable
@@ -241,9 +246,9 @@ The Token obtained from the Token Provider is wrong
 > [!NOTE]
 > `EnableTestSend` プロパティの使用は厳格に調整されます。 このオプションは、開発環境またはテスト環境でのみ、限られた登録で使用してください。 デバッグ通知は 10 個のデバイスにのみ送信されます。 また、1 分あたりに処理できるデバッグ送信は 10 件に制限されています。
 
-### <a name="review-telemetry"></a>統計情報の確認 ###
+### <a name="review-telemetry"></a>統計情報の確認
 
-#### <a name="azure-portal"></a>Azure ポータル ####
+#### <a name="azure-portal"></a>Azure portal
 
 このポータルでは、Notification Hubs のすべてのアクティビティの概要を簡単に確認できます。
 
@@ -259,7 +264,7 @@ The Token obtained from the Token Provider is wrong
 
 4. 通知ハブの認証設定が正しくない場合、**PNS 認証エラー**のメッセージが表示されます。 プッシュ通知サービスの資格情報を確認してください。
 
-#### <a name="programmatic-access"></a>プログラムによるアクセス ####
+#### <a name="programmatic-access"></a>プログラムによるアクセス
 
 プログラムによるアクセスの詳細については、「[プログラムによるアクセス](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))」をご覧ください。
 
@@ -269,16 +274,16 @@ The Token obtained from the Token Provider is wrong
 > テレメトリに関連する機能を使用するには、まず Azure portal で、Standard サービス レベルを使用していることを確認してください。  
 
 <!-- IMAGES -->
-[0]: ./media/notification-hubs-diagnosing/Architecture.png
-[1]: ./media/notification-hubs-diagnosing/FCMConfigure.png
-[3]: ./media/notification-hubs-diagnosing/FCMServerKey.png
+[0]: ./media/notification-hubs-push-notification-fixer/Architecture.png
+[1]: ./media/notification-hubs-push-notification-fixer/FCMConfigure.png
+[3]: ./media/notification-hubs-push-notification-fixer/FCMServerKey.png
 [4]: ../../includes/media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png
-[5]: ./media/notification-hubs-diagnosing/PortalDashboard.png
-[6]: ./media/notification-hubs-diagnosing/PortalAnalytics.png
+[5]: ./media/notification-hubs-push-notification-fixer/PortalDashboard.png
+[6]: ./media/notification-hubs-push-notification-fixer/PortalAnalytics.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
-[8]: ./media/notification-hubs-diagnosing/VSRegistrations.png
-[9]: ./media/notification-hubs-diagnosing/VSServerExplorer.png
-[10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
+[8]: ./media/notification-hubs-push-notification-fixer/VSRegistrations.png
+[9]: ./media/notification-hubs-push-notification-fixer/vsserverexplorer.png
+[10]: ./media/notification-hubs-push-notification-fixer/VSTestNotification.png
 
 <!-- LINKS -->
 [Notification Hubs の概要]: notification-hubs-push-notification-overview.md

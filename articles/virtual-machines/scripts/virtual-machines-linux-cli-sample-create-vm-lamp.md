@@ -1,27 +1,24 @@
 ---
-title: Azure CLI のサンプル スクリプト - 負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - 負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ
 description: カスタム スクリプト拡張機能を使用して、LAMP スタックを Azure の負荷分散された仮想マシン スケール セットにデプロイします。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
-editor: tysonn
+author: cynthn
+ms.author: cynthn
 tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/05/2017
-ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: ff4c41ff6428ba6ef88473508830ec8545be8778
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 04/05/2017
+ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731106"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74039116"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ
 
@@ -33,7 +30,7 @@ ms.locfileid: "55731106"
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
-## <a name="connect"></a>接続
+## <a name="connect"></a>接続する
 
 このコードを使用して、VM とスケール セットに接続する方法を表示します。
 
@@ -51,7 +48,7 @@ az group delete -n myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | 仮想マシンスケール セットを作成します。 |
@@ -62,7 +59,7 @@ az group delete -n myResourceGroup
 | [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | サンプルで作成された VM の IP アドレスを取得します。 |
 | [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | ロード バランサーで使用されるフロントエンド ポートおよびバックエンド ポートを取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

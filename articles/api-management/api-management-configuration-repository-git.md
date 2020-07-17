@@ -9,16 +9,15 @@ editor: mattfarm
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c371333dcc7db0b60ffa5f94d6e2d55ae500a4f6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241181"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81259172"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -38,7 +37,7 @@ Git を使用して API Management サービス インスタンスを管理す�
 
 1. サービスの Git 構成にアクセスする
 2. サービス構成データベースを Git リポジトリに保存する
-3. Git リポジトリをローカル コンピューターに複製する
+3. Git リポジトリをローカル コンピューターにクローンする
 4. 最新のリポジトリをローカル コンピューターにプルし、変更をコミットしてリポジトリにプッシュする
 5. リポジトリからサービス構成データベースに変更をデプロイする
 
@@ -57,7 +56,7 @@ Git 構成設定を表示して構成するには、 **[セキュリティ]** �
 >
 >
 
-REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)」を参照してください。
+REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit)」を参照してください。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>サービス構成を Git リポジトリに保存するには
 
@@ -69,7 +68,7 @@ REST API を使用して Git アクセスを有効または無効にする方法
 
 構成がリポジトリに保存されたら、そのリポジトリを複製できます。
 
-REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot)」を参照してください。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>ローカル コンピューターにリポジトリを複製するには
 
@@ -100,7 +99,7 @@ git clone https://username:password@{name}.scm.azure-api.net/
 それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]** で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、 **[デバッグ]** メニューから **[ウィンドウ]** 、 **[イミディエイト]** の順に選択します。
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 エンコードされたパスワードをユーザー名とリポジトリの場所と共に使用して Git コマンドを作成します。
@@ -143,13 +142,13 @@ git push
 
 ローカルの変更をコミットし、サーバー リポジトリにプッシュしたら、これらの変更を API Management サービス インスタンスにデプロイできます。
 
-REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)」を参照してください。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
 
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
 
-| Item | 説明 |
+| アイテム | 説明 |
 | --- | --- |
 | api-management ルート フォルダー |サービス インスタンスの最上位の構成が含まれています |
 | apis フォルダー |サービス インスタンス内の API の構成が含まれています |
@@ -173,9 +172,9 @@ REST API を使用してこの操作を実行する方法については、「 [
 > [!NOTE]
 > 次のエンティティは、Git リポジトリに含まれないため、Git を使用して構成することはできません。
 >
-> * [ユーザー](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [サブスクリプション](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [名前付きの値](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [ユーザー](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [サブスクリプション](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [名前付きの値](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
 > * スタイル以外の開発者ポータルのエンティティ
 >
 
@@ -223,15 +222,15 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="apis-folder"></a>apis フォルダー
 `apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
-* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
-* `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)の `description` プロパティに対応します。
-* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)の `description` プロパティに対応します。
+* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get)を `export=true` 形式で `application/json` を指定して呼び出した場合に返される情報と同じです。
+* `apis\<api name>\api.description.html` - これは API の説明で、`description`API エンティティ[の ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty) プロパティに対応します。
+* `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の`description`操作エンティティ[の ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
 
-* `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) 操作を呼び出した場合に返される情報と同じです。
-* `groups\<group name>\description.html` - これはグループの説明で、[グループ エンティティ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)の `description` プロパティに対応します。
+* `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) 操作を呼び出した場合に返される情報と同じです。
+* `groups\<group name>\description.html` - これはグループの説明で、`description`グループ エンティティ[の ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) プロパティに対応します。
 
 ### <a name="policies-folder"></a>policies フォルダー
 `policies` フォルダーには、サービス インスタンスのポリシー ステートメントが含まれています。
@@ -250,8 +249,8 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="products-folder"></a>products フォルダー
 `products` フォルダーには、サービス インスタンスで定義された各製品のフォルダーが含まれています。
 
-* `products\<product name>\configuration.json` - これは製品の構成です。 [特定の製品の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) 操作を呼び出した場合に返される情報と同じです。
-* `products\<product name>\product.description.html` - これは製品の説明で、REST API の[製品エンティティ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)の `description` プロパティに対応します。
+* `products\<product name>\configuration.json` - これは製品の構成です。 [特定の製品の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) 操作を呼び出した場合に返される情報と同じです。
+* `products\<product name>\product.description.html` - これは製品の説明で、REST API の`description`製品エンティティ[の ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) プロパティに対応します。
 
 ### <a name="templates"></a>テンプレート
 `templates` フォルダーには、サービス インスタンスの [電子メール テンプレート](api-management-howto-configure-notifications.md) の構成が含まれています。
@@ -259,7 +258,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 * `<template name>\configuration.json` - これは電子メール テンプレートの構成です。
 * `<template name>\body.html` - これは電子メール テンプレートの本文です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 サービス インスタンスの他の管理方法については、以下を参照してください。
 
 * 次の PowerShell コマンドレットを使用したサービス インスタンスの管理

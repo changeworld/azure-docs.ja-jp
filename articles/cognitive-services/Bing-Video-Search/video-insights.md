@@ -1,6 +1,6 @@
 ---
 title: Bing Video Search API を使用してビデオの分析情報を取得する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Video Search API を使用して、関連するビデオなど、ビデオに関する詳細情報を取得する方法を示します。
 services: cognitive-services
 author: swhite-msft
@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68500594"
 ---
 # <a name="get-insights-about-a-video"></a>ビデオに関する分析情報を取得する
 
-Bing Video Search API によって返される各ビデオには、関連するビデオなど、ビデオに関する詳細情報を取得するために使用できるビデオ ID が含まれています。 ビデオに関する分析情報を取得するには、API 応答内の [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) トークンを取得します。 
+Bing Video Search API によって返される各ビデオには、関連するビデオなど、ビデオに関する詳細情報を取得するために使用できるビデオ ID が含まれています。 ビデオに関する分析情報を取得するには、API 応答内の [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) トークンを取得します。 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Bing Video Search API によって返される各ビデオには、関連する�
     ],
 ```
 
-その後、ID を使用して Video Details エンドポイントに GET 要求を送信します。 このとき、[id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) クエリ パラメーターを `videoId` トークンに設定します。 取得する分析情報を指定するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) クエリ パラメーターを設定します。 すべての分析情報を取得するには、`modules` を All に設定します。 応答には、要求したすべての分析情報 (使用可能な場合) が含まれます。
+その後、ID を使用して Video Details エンドポイントに GET 要求を送信します。 このとき、[id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) クエリ パラメーターを `videoId` トークンに設定します。 取得する分析情報を指定するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) クエリ パラメーターを設定します。 すべての分析情報を取得するには、`modules` を All に設定します。 応答には、要求したすべての分析情報 (使用可能な場合) が含まれます。
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>関連ビデオの分析情報の取得  
 
-指定したビデオに関連するビデオを取得するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) クエリ パラメーターを `RelatedVideos` に設定します。
+指定したビデオに関連するビデオを取得するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) クエリ パラメーターを `RelatedVideos` に設定します。
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-この要求への応答は、[Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) オブジェクトではなく、最上位の [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) オブジェクトを持ちます。  
+この要求への応答は、[Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトではなく、最上位の [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) オブジェクトを持ちます。  
   
 ```json
 {
@@ -94,7 +94,7 @@ Host: api.cognitive.microsoft.com
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [急上昇中の動画を検索する](trending-videos.md)

@@ -1,38 +1,39 @@
 ---
-title: PowerShell を使って Azure 内の Windows VM のサイズを変更する | Microsoft Docs
-description: Resource Manager デプロイ モデルで作成された Windows 仮想マシンのサイズを Azure Powershell を使用して変更します。
-services: virtual-machines-windows
-documentationcenter: ''
+title: Azure で Windows VM のサイズを変更する
+description: Azure 仮想マシンに使用する VM のサイズを変更します。
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
+ms.subservice: sizes
+ms.workload: infrastructure
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f54ff738199d433308a8eaba6a643861c57b4abb
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540688"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82099888"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 
-この記事では、Azure Powershell を使用して VM を別の [VM サイズ](sizes.md)に移行する方法について説明します。
+この記事では、VM を別の [VM サイズ](sizes.md)に移行する方法について説明します。
 
 仮想マシン (VM) を作成した後、VM のサイズを変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 これは、現在 VM をホストしているハードウェア クラスターで新しいサイズを使用できない場合に発生する可能性があります。
 
 VM が Premium Storage を使用している場合、Premium Storage のサポートを受けるには、**s** バージョンのサイズを選択する必要があります。 たとえば、Standard_E4_v3 ではなく Standard_E4**s**_v3 を選択します。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+## <a name="use-the-portal"></a>ポータルの使用
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>可用性セット内にない Windows VM のサイズ変更
+1. [Azure Portal](https://portal.azure.com)を開きます。
+1. 仮想マシンのページを開きます。
+1. 左側のメニューで **[サイズ]** を選択します。
+1. 利用可能なサイズの一覧から新しいサイズを選択し、 **[サイズ変更]** をクリックします。
+
+
+仮想マシンが現在実行されている場合、そのサイズを変更すると、再起動されます。 仮想マシンを停止すると、追加のサイズが表示される場合があります。
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>PowerShell を使用して可用性セット内にない VM のサイズを変更する
 
 変数をいくつか設定します。 値は実際の値に変更してください。
 
@@ -70,7 +71,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>可用性セット内の Windows VM のサイズ変更
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>PowerShell を使用して可用性セット内の VM のサイズを変更する
 
 現在 VM をホストしているハードウェア クラスターで可用性セット内の VM の新しいサイズを使用できない場合、可用性セット内のすべての VM の割り当てを解除して、VM のサイズを変更する必要があります。 また、1 つの VM のサイズを変更した後、可用性セット内の他の VM のサイズを更新する必要がある場合もあります。 可用性セット内の VM のサイズを変更するには、次の手順を実行します。
 
@@ -123,7 +124,7 @@ $vmIds = $as.VirtualMachinesReferences
     }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、[仮想マシン スケール セットでのマシンの自動スケール](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)に関するページを参照してください。
 

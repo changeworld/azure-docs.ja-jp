@@ -1,22 +1,53 @@
 - name: Form Recognizer のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Form Recognizer とは
       href: overview.md
-- name: クイック スタート
+    - name: 新機能
+      href: whats-new.md
+- name: クイックスタート
   expaned: true
   items:
-    - name: モデルをトレーニングしてデータを抽出する
+    - name: クライアント ライブラリの使用
+      href: quickstarts/client-library.md
+    - name: サンプル ラベル付けツールの使用
       items:
-        - name: REST API の使用
+        - name: ラベルを使用してカスタム モデルをトレーニングする
+          href: quickstarts/label-tool.md
+    - name: REST API の使用
+      items:
+        - name: ラベルを使用しないカスタム モデルのトレーニングと使用
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-- name: ハウツー ガイド
+        - name: ラベルを使用したカスタム モデルのトレーニングと使用
+          items:
+            - name: Python
+              href: quickstarts/python-labeled-data.md
+        - name: あらかじめ構築されたレシート モデルを使用する
+          items:
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
+        - name: テキスト レイアウト情報を取得する
+          items:
+            - name: Python
+              href: quickstarts/python-layout.md
+- name: チュートリアル
   items:
+    - name: Logic Apps で Form Recognizer を使用する
+      href: tutorial-form-recognizer-with-logic-apps.md
+- name: 操作方法ガイド
+  items:
+    - name: トレーニング データ セットの作成
+      href: build-training-data-set.md
+    - name: サンプル ラベル付けツールのデプロイ
+      href: deploy-label-tool.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
@@ -25,21 +56,39 @@
         - name: コンテナーを構成する
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Container Instances の使用
+          href: deploy-form-recognizer-on-container-instances.md
 - name: リファレンス
   items:
-    - name: Form Recognizer API
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Form Recognizer API v2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: Form Recognizer API v1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview'
+        - name: JavaScript
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview'
 - name: リソース
   items:
     - name: 料金と制限
       href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: 言語のサポート
+      href: language-support.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: form-recognizer-encryption-of-data-at-rest.md

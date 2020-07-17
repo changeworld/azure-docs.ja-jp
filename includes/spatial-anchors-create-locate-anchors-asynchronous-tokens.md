@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 18f76ea4acc99038939a2653bb66875154529126
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110678"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67180868"
 ---
 ハンドラーで非同期操作を実行する必要がある場合は、次の例のように `deferral` オブジェクトを要求してこれを完了することによって、トークンの設定を延期することができます。

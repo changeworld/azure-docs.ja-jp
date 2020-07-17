@@ -1,17 +1,17 @@
 ---
-title: Azure SignalR Service の複数のインスタンスでのスケーリング方法
+title: 複数のインスタンスでスケーリングする - Azure SignalR Service
 description: 多くのスケーリング シナリオでは、大規模なデプロイを作成するために、お客様が複数のインスタンスをプロビジョニングし、それらを一緒に使用しなければならない場合がよくあります。 たとえば、シャーディングでは複数のインスタンスのサポートが必要です。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623342"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74158163"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>複数のインスタンスでの SignalR Service のスケーリング方法
 最新の SignalR Service SDK では、SignalR Service インスタンスの複数のエンドポイントがサポートされています。 この機能を使用して同時接続をスケーリングすることや、リージョンをまたがるメッセージングにこれを使用することができます。
@@ -223,7 +223,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ![地域をまたがるインフラ](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-クライアントが既定のルーターを使用してアプリ サーバーとの `/negotiate` を試行すると、SDK は使用可能な一連の `primary` エンドポイントから 1 つのエンドポイントを**ランダムに選択**します。 エンドポイントが使用可能な場合、SDK は使用可能なすべての `secondary`エンドポイントから**ランダムに選択**します。 サーバーとサービス エンドポイント間の接続が保持されている場合、エンドポイントは**使用可能**としてマークされます。
+クライアントが既定のルーターを使用してアプリ サーバーとの `/negotiate` を試行すると、SDK は使用可能な一連の `primary` エンドポイントから 1 つのエンドポイントを**ランダムに選択**します。 プライマリ エンドポイントが使用できない場合、SDK は使用可能なすべての `secondary` エンドポイントから**ランダムに選択**します。 サーバーとサービス エンドポイント間の接続が保持されている場合、エンドポイントは**使用可能**としてマークされます。
 
 リージョンをまたがるシナリオでは、*米国東部*でホストされているアプリ サーバーとの `/negotiate` をクライアントが試行すると、既定では、同じリージョンに配置されている `primary` エンドポイントが常に返されます。 *米国東部*のすべてのエンドポイントが使用不可の場合、クライアントは他のリージョンのエンドポイントにリダイレクトされます。 次の「フェールオーバー」セクションでこのシナリオについて詳しく説明します。
 
@@ -235,7 +235,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ![フェールオーバー](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、同じアプリケーション内の複数のインスタンスをスケーリング、シャーディング、およびリージョンをまたがるシナリオ向けに構成する方法について説明しました。
 

@@ -1,122 +1,192 @@
 ---
-title: MQ サーバーに接続する - Azure Logic Apps | Microsoft Docs
-description: Azure またはオンプレミスの MQ サーバーと Azure Logic Apps を使用して、メッセージを送信および取得します
-author: valrobb
-ms.author: valthom
-ms.date: 06/01/2017
-ms.topic: article
-ms.service: logic-apps
+title: IBM MQ サーバーへの接続
+description: Azure またはオンプレミスの IBM MQ サーバーと Azure Logic Apps を使用して、メッセージを送信および取得します
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, estfan, logicappspm
+ms.topic: article
+ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167883"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652470"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>MQ コネクタを使用してロジック アプリから IBM MQ サーバーに接続する
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps からの IBM MQ サーバーへの接続
 
-Microsoft Connector for MQ は、オンプレミスの、または Azure 内の MQ サーバーに保管されているメッセージの送信と取得を行います。 このコネクタには、TCP/IP ネットワーク経由でリモート IBM MQ サーバーと通信する Microsoft MQ クライアントが含まれています。 このドキュメントは、MQ コネクタを使用するためのスターター ガイドです。 まずキューの 1 つのメッセージを参照することから始め、次いでその他のアクションを試してみるようお勧めします。
+IBM MQ コネクタは、オンプレミスの、または Azure 内の IBM MQ サーバーに保管されているメッセージの送信と取得を行います。 このコネクタには、TCP/IP ネットワーク経由でリモート IBM MQ サーバーと通信する Microsoft MQ クライアントが含まれています。 この記事は、MQ コネクタを使用するためのスターター ガイドです。 まずキューの 1 つのメッセージを参照することから始め、次いでその他のアクションを試してみることができます。
 
-MQ コネクタには、次のアクションがあります。 トリガーはありません。
+IBM MQ コネクタには以下のアクションが含まれていますが、トリガーが用意されていません。
 
-- IBM MQ サーバーから削除しないで 1 つのメッセージを参照する
-- IBM MQ サーバーから削除しないで一群のメッセージを参照する
-- 1 つのメッセージを受信し、IBM MQ サーバーから削除する
-- 一群のメッセージを受信し、IBM MQ サーバーから削除する
-- IBM MQ サーバーに 1 つのメッセージを送信する
+- IBM MQ サーバーからメッセージを削除せずに 1 つのメッセージを参照します。
+- IBM MQ サーバーからメッセージを削除せずにメッセージのバッチを参照します。
+- 1 つのメッセージを受信し、IBM MQ サーバーからメッセージを削除します。
+- メッセージのバッチを受信し、IBM MQ サーバーからメッセージを削除します。
+- 1 つのメッセージを IBM MQ サーバーに送信します。
+
+正式サポートされている IBM WebSphere MQ バージョンを次に示します。
+
+  * MQ 7.5
+  * MQ 8.0
+  * MQ 9.0
+  * MQ 9.1
 
 ## <a name="prerequisites"></a>前提条件
 
-* オンプレミスの MQ サーバーを使用している場合は、ご使用のネットワーク内のサーバーに[オンプレミスのデータ ゲートウェイをインストール](../logic-apps/logic-apps-gateway-install.md)します。 MQ サーバーが一般に公開されている、または Azure 内で使用できる場合、データ ゲートウェイは使用されない、または不要です。
+* オンプレミスの MQ サーバーを使用している場合は、ご使用のネットワーク内のサーバーに[オンプレミスのデータ ゲートウェイをインストール](../logic-apps/logic-apps-gateway-install.md)します。 MQ コネクタが動作するには、オンプレミスのデータ ゲートウェイがインストールされているサーバーに .NET Framework 4.6 もインストールする必要があります。
 
-    > [!NOTE]
-    > MQ コネクタが動作するには、オンプレミスのデータ ゲートウェイがインストールされているサーバーに .NET Framework 4.6 もインストールする必要があります。
+  ゲートウェイのインストールを完了した後、Azure にオンプレミス データ ゲートウェイ用のリソースも作成する必要があります。 詳細については、[データ ゲートウェイ接続の設定に関する記事](../logic-apps/logic-apps-gateway-connection.md)を参照してください。
 
-* オンプレミスのデータ ゲートウェイ用に Azure リソースを作成します (「[データ ゲートウェイ接続を設定する](../logic-apps/logic-apps-gateway-connection.md)」)。
+  MQ サーバーが公開されているか、または Azure 内で使用できる場合、データ ゲートウェイを使用する必要はありません。
 
-* 正式にサポートされている以下のバージョンの IBM WebSphere MQ:
-    * MQ 7.5
-    * MQ 8.0
+* MQ アクションを追加するロジック アプリ。 このロジック アプリは、オンプレミス データ ゲートウェイ接続と同じ場所を使用し、ワークフローを開始するトリガーが既にある必要があります。
 
-## <a name="create-a-logic-app"></a>ロジック アプリを作成します
+  MQ コネクタにはトリガーがないので、最初にロジック アプリにトリガーを追加する必要があります。 たとえば、繰り返しトリガーを使用できます。 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法に関するクイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)を試してみてください。
 
-1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
-2. **[名前]** (例: MQTestApp)、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** (オンプレミスのデータ ゲートウェイ接続が設定されている場所を使用) を入力します。 **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** を選択します。  
-![ロジック アプリの作成](media/connectors-create-api-mq/Create_Logic_App.png)
+<a name="create-connection"></a>
 
-## <a name="add-a-trigger"></a>トリガーの追加
+## <a name="create-mq-connection"></a>MQ 接続を作成する
 
-> [!NOTE]
-> MQ コネクタにはトリガーがありません。 そのため、**繰り返し**トリガーなどの別のトリガーを使って、ロジック アプリを開始します。
+MQ アクションを追加するときに MQ 接続がまだない場合は、その接続を作成するよう求められます。次に例を示します。
 
-1. **Logic Apps デザイナー**が表示され、一般的なトリガーの一覧で **[繰り返し]** を選択します。
-2. 繰り返しトリガーで **[編集]** を選択します。
-3. **[頻度]** を **[日]** に、**[間隔]** を **[7]** に設定します。
+![接続情報を指定する](media/connectors-create-api-mq/connection-properties.png)
 
-## <a name="browse-a-single-message"></a>1 つのメッセージの参照
-1. **[+ New step]\(+ 新しいステップ\)**、**[アクションの追加]** の順に選択します。
-2. 検索ボックスで `mq` と入力し、**[MQ - Browse message]\(MQ - メッセージの参照\)** を選択します。  
-![メッセージの参照](media/connectors-create-api-mq/Browse_message.png)
+1. オンプレミスの MQ サーバーに接続している場合は、 **[オンプレミス データ ゲートウェイ経由で接続]** を選択します。
 
-3. 既存の MQ 接続がない場合は、次の手順に従って接続を作成します。  
+1. MQ サーバーの接続情報を指定します。
 
-    1. **[オンプレミスのデータ ゲートウェイ経由で接続]** を選択し、MQ サーバーのプロパティを入力します。  
-    **[サーバー]** には、MQ サーバーの名前を入力するか、IP アドレスに続けてコロンとポート番号を入力します。
-    2. **[ゲートウェイ]** ドロップダウンには、構成済みの既存のゲートウェイ接続が一覧表示されます。 ゲートウェイを選択します。
-    3. 入力し終えたら **[作成]** を選択します。 接続は次のようになります。  
-    ![接続のプロパティ](media/connectors-create-api-mq/Connection_Properties.png)
+   * **[サーバー]** には、MQ サーバーの名前を入力するか、IP アドレスに続けてコロンとポート番号を入力します。
 
-4. アクションのプロパティでは、次のことができます。  
+   * Secure Sockets Layer (SSL) を使用するには、 **[SSL を有効にしますか?]** を選択します。
 
-    * **[キュー]** プロパティを使用して、接続に定義されているものと異なるキュー名にアクセスする
-    * **[MessageId]**、**[CorrelationId]**、**[GroupId]** などのプロパティを使用し、さまざまな MQ メッセージのプロパティに基づいてメッセージを参照する
-    * **[IncludeInfo]** を **[True]** に設定して、メッセージに関する追加情報を出力に含める。 メッセージに関する追加情報を出力に含めない場合は、**[False]** に設定します。
-    * **[タイムアウト]** の値を入力して、空のキューにメッセージが到着するまで待機する時間を決定する。 何も入力しない場合は、キューの最初のメッセージが取得され、その後にメッセージの出現を待機する時間はありません。  
-    ![メッセージの参照のプロパティ](media/connectors-create-api-mq/Browse_message_Props.png)
+     MQ コネクタは現在、クライアント認証ではなく、サーバー認証のみをサポートしています。 詳細については、「[接続と認証の問題](#connection-problems)」を参照してください。
 
-5. 変更内容を **[保存]** し、ロジック アプリを **[実行]** します。  
-![保存と実行](media/connectors-create-api-mq/Save_Run.png)
+1. **[ゲートウェイ]** セクションで、次の手順に従います。
 
-6. 数秒後に実行の手順が表示され、出力を確認できます。 各手順の詳細を表示するには、緑色のチェックマークを選択します。 出力データの追加情報を表示するには、**[未加工出力の表示]** を選択します。  
-![メッセージの参照の出力](media/connectors-create-api-mq/Browse_message_output.png)  
+   1. **[サブスクリプション]** 一覧から、Azure ゲートウェイ リソースに関連付けられている Azure サブスクリプションを選択します。
 
-    未加工出力:  
-    ![メッセージの参照の未加工出力](media/connectors-create-api-mq/Browse_message_raw_output.png)
+   1. **[接続ゲートウェイ]** 一覧から、使用する Azure ゲートウェイ リソースを選択します。
 
-7. **[IncludeInfo]** オプションが True に設定されている場合は、次の出力が表示されます。  
-![メッセージの参照に含まれる情報](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+1. 完了したら **[作成]** を選択します。
+
+<a name="connection-problems"></a>
+
+### <a name="connection-and-authentication-problems"></a>接続と認証の問題
+
+ロジック アプリがオンプレミスの MQ サーバーに接続しようとしているとき、次のエラーが発生することがあります。
+
+`"MQ: Could not Connect the Queue Manager '<queue-manager-name>': The Server was expecting an SSL connection."`
+
+* Azure で直接 MQ コネクタを使用している場合、MQ サーバーは、信頼された[証明機関](https://www.ssl.com/faqs/what-is-a-certificate-authority/)によって発行された証明書を使用する必要があります。
+
+* オンプレミス データ ゲートウェイを使用している場合は、可能であれば、信頼された[証明機関](https://www.ssl.com/faqs/what-is-a-certificate-authority/)によって発行された証明書の使用を試みてください。 ただし、このオプションが可能でない場合は、自己署名証明書を使用することもできます。これは、信頼された[証明機関](https://www.ssl.com/faqs/what-is-a-certificate-authority/)によって発行されていないため、安全性が低いと見なされます。
+
+  サーバーの自己署名証明書をインストールするには、**Windows Certification Manager** (certmgr.msc) ツールを使用できます。 このシナリオでは、オンプレミス データ ゲートウェイ サービスが実行されているローカル コンピューターで、 **[信頼されたルート証明機関]** レベルにある **[Local Computer] (ローカル コンピューター)** 証明書ストアに証明書をインストールする必要があります。
+
+  1. オンプレミス データ ゲートウェイ サービスが実行されているコンピューターで、[スタート] メニューを開き、 **[ユーザー証明書の管理]** を見つけて選択します。
+
+  1. Windows Certification Manager ツールが開いたら、 **[証明書 - ローカル コンピューター]**  >   **[信頼されたルート証明機関]** フォルダーに移動し、証明書をインストールします。
+
+     > [!IMPORTANT]
+     > 確実に **[証明書 - ローカル コンピューター]**  >  **[信頼されたルート証明機関]** ストアに証明書をインストールするようにしてください。
+
+* MQ サーバーでは、SSL 接続に使用する暗号化仕様を定義する必要があります。 ただし、.NET の SsLStream では、暗号化仕様の順序を指定することは許可されません。 この制限を回避するには、コネクタが SSL ネゴシエーションで送信するスイート内の最初の暗号化仕様に一致するように MQ サーバー構成を変更できます。
+
+  接続しようとすると、MQ サーバーは、もう一方の終端が正しくない暗号化仕様を使用したために接続が失敗したことを示すイベント メッセージをログに記録します。 このイベント メッセージには、一覧の最初に表示される暗号化仕様が含まれています。 チャネル構成の暗号化仕様を、イベント メッセージ内の暗号化仕様に一致するように更新します。
+
+## <a name="browse-single-message"></a>1 つのメッセージを参照する
+
+1. ロジック アプリで、トリガーまたは別のアクションの **[新しいステップ]** を選択します。
+
+1. 検索ボックスに「`mq`」と入力し、 **[メッセージの参照]** アクションを選択します。
+
+   ![[メッセージの参照] アクションを選択する](media/connectors-create-api-mq/browse-message.png)
+
+1. まだ MQ 接続を作成していない場合は、[その接続を作成する](#create-connection)よう求められます。
+
+1. 接続を作成したら、 **[メッセージの参照]** アクションのプロパティを設定します。
+
+   | プロパティ | 説明 |
+   |----------|-------------|
+   | **キュー** | 接続で指定されたキューと異なる場合は、そのキューを指定します。 |
+   | **MessageId**、**CorrelationId**、**GroupId**、その他のプロパティ | さまざまな MQ メッセージ プロパティに基づいたメッセージを参照します。 |
+   | **IncludeInfo** | 出力に追加のメッセージ情報を含めるには、**true** を選択します。 出力の追加のメッセージ情報を省略するには、**false** を選択します。 |
+   | **タイムアウト** | 値を入力して、空のキューにメッセージが到着するまで待機する時間を決定します。 何も入力しない場合は、キューの最初のメッセージが取得され、その後にメッセージの出現を待機する時間はありません。 |
+   |||
+
+   次に例を示します。
+
+   ![[メッセージの参照] アクションのプロパティ](media/connectors-create-api-mq/browse-message-properties.png)
+
+1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。 アプリをテストするには、 **[実行]** を選択します。
+
+   実行が完了すると、デザイナーにワークフロー ステップとその状態が表示され、出力を確認できるようになります。
+
+1. 各ステップに関する詳細を表示するには、そのステップのタイトル バーをクリックします。 ステップの出力に関するより詳細な情報を確認するには、 **[未加工出力の表示]** を選択します。
+
+   ![メッセージの参照の出力](media/connectors-create-api-mq/browse-message-output.png)
+
+   未加工出力の例を次に示します。
+
+   ![メッセージの参照の未加工出力](media/connectors-create-api-mq/browse-message-raw-output.png)
+
+1. **[IncludeInfo]** を **true** に設定した場合は、追加の出力が表示されます。
+
+   ![メッセージの参照に含まれる情報](media/connectors-create-api-mq/browse-message-include-info.png)
 
 ## <a name="browse-multiple-messages"></a>複数のメッセージの参照
-**[Browse messages]\(メッセージの参照\)** アクションには、キューから返されるメッセージの数を指定する **[BatchSize]** オプションが含まれます。  **[BatchSize]** を指定しないと、すべてのメッセージが返されます。 返される出力は、メッセージの配列です。
 
-1. **[Browse messages]\(メッセージの参照\)** アクションを追加すると、構成されている最初の接続が既定で選択されます。 新しい接続を作成するか、別の接続を選択するには、**[Change connection]\(接続の変更\)** を選択します。
+**[メッセージの参照]** アクションには、キューから返すメッセージの数を示す **[BatchSize]** オプションが含まれています。 **[BatchSize]** に値がない場合は、すべてのメッセージが返されます。 返される出力は、メッセージの配列です。
 
-2. メッセージの参照の出力は次のようになります。  
-![メッセージの参照の出力](media/connectors-create-api-mq/Browse_messages_output.png)
+1. 前のステップに従いますが、代わりに **[メッセージの参照]** アクションを追加します。
 
-## <a name="receive-a-single-message"></a>1 つのメッセージの受信
-**[メッセージの受信]** アクションの入力と出力は、**[Browse message]\(メッセージの参照\)** アクションと同じです。 **[メッセージの受信]** を使用する場合、メッセージはキューから削除されます。
+1. まだ MQ 接続を作成していない場合は、[その接続を作成する](#create-connection)よう求められます。 それ以外の場合、既定では、以前に構成された最初の接続が使用されます。 新しい接続を作成するには、 **[接続の変更]** を選択します。 または、別の接続を選択します。
+
+1. アクションに関する情報を指定します。
+
+1. ロジック アプリを保存して実行します。
+
+   ロジック アプリが実行を完了した後の **[メッセージの参照]** アクションからのいくつかのサンプル出力を次に示します。
+
+   ![[メッセージの参照] のサンプル出力](media/connectors-create-api-mq/browse-messages-output.png)
+
+## <a name="receive-single-message"></a>1 つのメッセージの受信
+
+**[メッセージの受信]** アクションの入力と出力は、 **[Browse message]\(メッセージの参照\)** アクションと同じです。 **[メッセージの受信]** を使用した場合、メッセージはキューから削除されます。
 
 ## <a name="receive-multiple-messages"></a>複数のメッセージの受信
-**[メッセージの受信]** アクションの入力と出力は、**[Browse messages]\(メッセージの参照\)** アクションと同じです。 **[メッセージの受信]** を使用する場合、メッセージはキューから削除されます。
 
-キューにメッセージが含まれていない場合に参照や受信を行うと、手順が失敗して次の出力が表示されます。  
-![MQ のメッセージなしエラー](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
+**[メッセージの受信]** アクションの入力と出力は、 **[Browse messages]\(メッセージの参照\)** アクションと同じです。 **[メッセージの受信]** を使用した場合、メッセージはキューから削除されます。
 
-## <a name="send-a-message"></a>メッセージの送信
-1. **[メッセージの送信]** アクションを追加すると、構成されている最初の接続が既定で選択されます。 新しい接続を作成するか、別の接続を選択するには、**[Change connection]\(接続の変更\)** を選択します。 有効な **[メッセージの種類]** は **[Datagram]\(データグラム\)**、**[返信]**、**[要求]** です。  
-![メッセージの送信のプロパティ](media/connectors-create-api-mq/Send_Msg_Props.png)
+> [!NOTE]
+> メッセージが含まれていないキューに対して参照または受信アクションを実行した場合、このアクションは失敗し、次の出力が生成されます。
+>
+> ![MQ の "メッセージなし" エラー](media/connectors-create-api-mq/mq-no-message-error.png)
 
-2. メッセージの送信の出力は次のようになります。  
-![メッセージの送信の出力](media/connectors-create-api-mq/Send_Msg_Output.png)
+## <a name="send-message"></a>メッセージを送信する
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+1. 前のステップに従いますが、代わりに **[メッセージの送信]** アクションを追加します。
 
-[コネクタの詳細](/connectors/mq/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+1. まだ MQ 接続を作成していない場合は、[その接続を作成する](#create-connection)よう求められます。 それ以外の場合、既定では、以前に構成された最初の接続が使用されます。 新しい接続を作成するには、 **[接続の変更]** を選択します。 または、別の接続を選択します。
 
-## <a name="next-steps"></a>次の手順
-[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+1. アクションに関する情報を指定します。 **[MessageType]** では、有効なメッセージの種類を選択します。 **[データグラム]** 、 **[返信]** 、または **[要求]**
+
+   ![[メッセージの送信] アクションのプロパティ](media/connectors-create-api-mq/send-message-properties.png)
+
+1. ロジック アプリを保存して実行します。
+
+   ロジック アプリの実行完了後の **[Send messages] (メッセージの送信)** アクションの出力例を示します。
+
+   ![[メッセージの送信] のサンプル出力](media/connectors-create-api-mq/send-message-output.png)
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの Swagger の説明に記載されているアクションと制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/mq/)を確認してください。
+
+## <a name="next-steps"></a>次のステップ
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

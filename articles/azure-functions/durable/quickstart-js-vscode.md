@@ -1,22 +1,16 @@
 ---
 title: JavaScript を使用して Azure で最初の Durable Functions を作成する
 description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
-services: functions
-documentationcenter: na
-author: ColbyTresness
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
-ms.devlang: multiple
+author: anthonychu
 ms.topic: quickstart
-ms.date: 11/07/2018
-ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.date: 05/07/2020
+ms.reviewer: azfuncdf, antchu
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921355"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889666"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -32,110 +26,161 @@ ms.locfileid: "65921355"
 
 * [Visual Studio Code](https://code.visualstudio.com/download) をインストールします。
 
-* [最新の Azure Functions ツール](../functions-develop-vs.md#check-your-tools-version)があることを確認します。
+* [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) VS Code 拡張機能をインストールします。
 
-* Windows コンピューターでは、[Azure Storage Emulator](../../storage/common/storage-use-emulator.md) がインストールされ、実行されていることを確認します。 Mac または Linux コンピューターでは、実際の Azure ストレージ アカウントを使用する必要があります。
+* 最新バージョンの [Azure Functions Core Tools](../functions-run-local.md) があることを確認します。
 
-* バージョン 8.0 以降の [Node.js](https://nodejs.org/) がインストールされていることを確認します。
+* Durable Functions には Azure ストレージ アカウントが必要です。 Azure サブスクリプションが必要です。
+
+* [Node.js](https://nodejs.org/) のバージョン 10.x または 12.x がインストールされていることを確認します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>ローカル プロジェクトを作成する 
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+このセクションでは、Visual Studio Code を使用して、ローカル Azure Functions プロジェクトを作成します。 
+
+1. Visual Studio Code で、F1 (または Ctrl/Cmd + Shift + P) キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Create New Project...` を検索して選択します。
+
+    ![関数の作成](media/quickstart-js-vscode/functions-create-project.png)
+
+1. プロジェクト用に空のフォルダーの場所を選択し、 **[選択]** を選択します。
+
+1. プロンプトに従って、次の情報を入力します。
+
+    | Prompt | 値 | 説明 |
+    | ------ | ----- | ----------- |
+    | Select a language for your function app project (関数アプリ プロジェクトの言語を選択してください) | JavaScript | ローカル Node.js 関数プロジェクトを作成します。 |
+    | Select a version (バージョンを選択してください) | Azure Functions v3 | このオプションが表示されるのは、Core Tools がまだインストールされていない場合だけです。 その場合、アプリの初回実行時に Core Tools がインストールされます。 |
+    | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | 今はしない | |
+    | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | 現在のウィンドウで開く | 選択したフォルダーで VS Code を開き直します。 |
+
+Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。
+
+また、ルート フォルダーには、package.json ファイルが作成されます。
+
+### <a name="enable-compatibility-mode"></a>互換モードを有効にする
+
+現時点では、JavaScript Durable Functions で Azure Functions V2 互換モードを有効にする必要があります。
+
+1. アプリをローカルで実行するときに使用される設定を編集するために、*local.settings.json* を開きます。
+
+1. `FUNCTIONS_V2_COMPATIBILITY_MODE` という名前で値が `true` の設定を追加します。
+
+    ```json
+    {
+        "IsEncrypted": false,
+        "Values": {
+            "AzureWebJobsStorage": "",
+            "FUNCTIONS_WORKER_RUNTIME": "node",
+            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
+        }
+    }
+    ```
 
 ## <a name="install-the-durable-functions-npm-package"></a>Durable Functions npm パッケージをインストールする
 
+Node.js 関数アプリで Durable Functions を使用して作業するには、`durable-functions` というライブラリを使用します。
+
+1. *[表示]* メニューまたは Ctrl + Shift + ' キーを使用して、VS Code で新しいターミナルを開きます。
+
 1. 関数アプリのルート ディレクトリで `npm install durable-functions` を実行して、`durable-functions` npm パッケージをインストールします。
 
-## <a name="create-a-starter-function"></a>starter 関数を作成する
+## <a name="creating-your-functions"></a>関数を作成する
 
-まず、Durable Functions のオーケストレーションを開始する HTTP トリガー関数を作成します。
+最も基本的な Durable Functions アプリには、3 つの関数が含まれています。
 
-1. **[Azure:Functions]** で [関数の作成] アイコンを選択します。
+* "*オーケストレーター関数*" - 他の関数を調整するワークフローを記述します。
+* "*アクティビティ関数*" - オーケストレーター関数によって呼び出され、作業を実行し、必要に応じて値を返します。
+* *クライアント関数* - オーケストレーター関数を開始する通常の Azure Functions。 この例では、HTTP によってトリガーされる関数を使用しています。
 
-    ![関数を作成する](./media/quickstart-js-vscode/create-function.png)
+### <a name="orchestrator-function"></a>オーケストレーター関数
 
-2. 関数アプリ プロジェクトが含まれたフォルダーを選択し、 **[HTTP トリガー]** 関数テンプレートを選択します。
+テンプレートを使用してプロジェクト内に永続関数のコードを作成します。
 
-    ![HTTP トリガー テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
+1. コマンド パレットで、`Azure Functions: Create Function...` を検索して選択します。
 
-3. 関数名として「`HttpStart`」と入力して Enter キーを押し、 **[匿名]** 認証を選択します。
+1. プロンプトに従って、次の情報を入力します。
 
-    ![匿名認証を選択する](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
+    | Prompt | 値 | 説明 |
+    | ------ | ----- | ----------- |
+    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions オーケストレーター | Durable Functions オーケストレーションを作成します |
+    | Provide a function name (関数名を指定してください) | HelloOrchestrator | 持続的な関数の名前 |
 
-    HTTP によってトリガーされる関数のテンプレートを使用して、選択した言語で関数が作成されます。
+アクティビティ関数を調整するオーケストレーターを追加しました。 *HelloOrchestrator/index.js* を開いて、オーケストレーター関数を確認します。 `context.df.callActivity` を呼び出すたびに、`Hello` という名前のアクティビティ関数が呼び出されます。
 
-4. index.js を以下の JavaScript に置き換えます。
+次に、参照先の `Hello` アクティビティ関数を追加します。
 
-    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
+### <a name="activity-function"></a>アクティビティ関数
 
-5. function.json を以下の JSON に置き換えます。
+1. コマンド パレットで、`Azure Functions: Create Function...` を検索して選択します。
 
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+1. プロンプトに従って、次の情報を入力します。
 
-これで Durable Functions へのエントリ ポイントが作成されます。 オーケストレーターを追加してみましょう。
+    | Prompt | 値 | 説明 |
+    | ------ | ----- | ----------- |
+    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions のアクティビティ | アクティビティ関数を作成する |
+    | Provide a function name (関数名を指定してください) | こんにちは | アクティビティ関数の名前 |
 
-## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
+オーケストレーターによって呼び出される `Hello` アクティビティ関数を追加しました。 *Hello/index.js* を開いて、それが入力として名前を受け取り、あいさつを返すことを確認します。 アクティビティ関数では、データベース呼び出しや計算の実行などのアクションを実行します。
 
-次に、オーケストレーターにする別の関数を作成します。 便宜的に、HTTP トリガー関数テンプレートを使用します。 関数コード自体は、オーケストレーター コードに置き換えられます。
+最後に、オーケストレーションを開始する、HTTP によってトリガーされる関数を追加します。
 
-1. 前のセクションの手順を繰り返し、HTTP トリガー テンプレートを使用して 2 つ目の関数を作成します。 今回は関数に `OrchestratorFunction` と名前を付けます。
+### <a name="client-function-http-starter"></a>クライアント関数 (HTTP スターター)
 
-2. 新しい関数の index.js ファイルを開き、内容を次のコードに置き換えます。
+1. コマンド パレットで、`Azure Functions: Create Function...` を検索して選択します。
 
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
+1. プロンプトに従って、次の情報を入力します。
 
-3. function.json ファイルを開き、次の JSON ファイルに置き換えます。
+    | Prompt | 値 | 説明 |
+    | ------ | ----- | ----------- |
+    | Select a template for your function (関数のテンプレートを選択してください) | Durable Functions HTTP スターター | HTTP スターター関数を作成する |
+    | Provide a function name (関数名を指定してください) | DurableFunctionsHttpStart | アクティビティ関数の名前 |
+    | 承認レベル | Anonymous | デモの目的で、認証を使用せずに関数を呼び出すことができるようにします。 |
 
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
+オーケストレーションを開始する、HTTP によってトリガーされる関数を追加しました。 *DurableFunctionsHttpStart/index.js* を開いて、`client.startNew` を使用して新しいオーケストレーションが開始されていることを確認します。 次に、`client.createCheckStatusResponse` を使用して HTTP 応答が返されます。その応答には、新しいオーケストレーションを監視および管理するために使用できる URL が含まれています。
 
-ここでは、アクティビティ関数を調整するオーケストレーターを追加しました。 次は参照アクティビティ関数を追加してみましょう。
-
-## <a name="create-an-activity-function"></a>アクティビティ関数を作成する
-
-1. 前のセクションの手順を繰り返し、HTTP トリガー テンプレートを使用して 3 つ目の関数を作成します。 ただし、今回は関数に `E1_SayHello` と名前を付けます。
-
-2. 新しい関数の index.js ファイルを開き、内容を次のコードに置き換えます。
-
-    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
-
-3. function.json を以下の JSON に置き換えます。
-
-    [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
-
-これで、オーケストレーションを開始し、アクティビティ関数を連結するために必要なすべてのコンポーネントが追加されます。
+これで、ローカルで実行して Azure にデプロイできる Durable Functions アプリが作成されました。
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
-1. Windows コンピューターでは、Azure Storage Emulator を起動し、local.settings.json の **AzureWebJobsStorage** プロパティが `UseDevelopmentStorage=true` に設定されていることを確認します。 
-
-    Storage Emulator 5.8 では、local.settings.json の **AzureWebJobsSecretStorageType** プロパティが `files` に設定されていることを確認します。 Mac または Linux コンピューターでは、既存の Azure ストレージ アカウントの接続文字列に **AzureWebJobsStorage** プロパティを設定する必要があります。 ストレージ アカウントの作成については、この記事で後述します。
-
-2. 関数をテストするには、関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。 Durable Functions を初めて使用する場合は、Durable Functions 拡張機能がインストールされるので、ビルドに数秒かかる場合があります。
+1. 関数をテストするには、`Hello` アクティビティ関数のコード (*Hello/index.js*) にブレークポイントを設定します。 F5 キーを押すか、コマンド パレットから `Debug: Start Debugging` を選択して、関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
 
     > [!NOTE]
-    > JavaScript Durable Functions では、バージョン **1.7.0** 以降の **Microsoft.Azure.WebJobs.Extensions.DurableTask** 拡張機能が必要です。 Azure Functions アプリのルート フォルダーから次のコマンドを実行して、Durable Functions 拡張機能 `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0` をインストールします
+    > デバッグについて詳しくは、[Durable Functions の診断](durable-functions-diagnostics.md#debugging)に関する記事をご覧ください。
 
-3. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
+1. Durable Functions を実行するには Azure ストレージ アカウントが必要です。 VS Code でストレージ アカウント選択のプロンプトが表示されたら、 **[ストレージ アカウントの選択]** を選択します。
 
-    ![Azure のローカル出力](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
+    ![ストレージ アカウントの作成](media/quickstart-js-vscode/functions-select-storage.png)
 
-4. `{functionName}` を `OrchestratorFunction` で置き換え
+1. プロンプトに従って次の情報を入力し、Azure で新しいストレージ アカウントを作成します。
 
-5. [Postman](https://www.getpostman.com/) または [cURL](https://curl.haxx.se/) のようなツールを使用して、HTTP POST 要求を URL エンドポイントに送信します。
+    | Prompt | 値 | 説明 |
+    | ------ | ----- | ----------- |
+    | サブスクリプションの選択 | *<お使いのサブスクリプションの名前>* | Azure サブスクリプションを選択します。 |
+    | Select a storage account (ストレージ アカウントを選択する) | 新しいストレージ アカウントの作成 |  |
+    | Enter the name of the new storage account (新しいストレージ アカウントの名前を入力する) | *<一意の名前>* | 作成するストレージ アカウントの名前 |
+    | リソース グループの選択 | *<一意の名前>* | 作成するリソース グループの名前 |
+    | 場所を選択します。 | *リージョン* | 近くのリージョンを選択します |
+
+1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
+
+    ![Azure のローカル出力](media/quickstart-js-vscode/functions-f5.png)
+
+1. [Postman](https://www.getpostman.com/) または [cURL](https://curl.haxx.se/) のようなツールを使用して、HTTP POST 要求を URL エンドポイントに送信します。 最後のセグメントをオーケストレーター関数の名前 (`HelloOrchestrator`) に置き換えます。 この URL は `http://localhost:7071/api/orchestrators/HelloOrchestrator` のようになります。
 
    応答は、永続的なオーケストレーションが正常に開始されたことを示す HTTP 関数の最初の結果です。 これはまだオーケストレーションの最終的な結果ではありません。 応答には、いくつかの便利な URL が含まれています。 ここでは、オーケストレーションの状態を照会してみましょう。
 
-6. `statusQueryGetUri` の URL 値をコピーし、ブラウザーのアドレス バーに貼り付け、要求を実行します。 また、引き続き Postman を使用して GET 要求を発行することもできます。
+1. `statusQueryGetUri` の URL 値をコピーし、ブラウザーのアドレス バーに貼り付け、要求を実行します。 また、引き続き Postman を使用して GET 要求を発行することもできます。
 
    この要求によって、オーケストレーション インスタンスの状態が照会されます。 インスタンスが完了したことを示し、持続的な関数の出力または結果を含む、最終的な応答を受け取ります。 次のように表示されます。 
 
     ```json
     {
-        "instanceId": "d495cb0ac10d4e13b22729c37e335190",
+        "name": "HelloOrchestrator",
+        "instanceId": "9a528a9e926f4b46b7d3deaa134b7e8a",
         "runtimeStatus": "Completed",
         "input": null,
         "customStatus": null,
@@ -144,12 +189,12 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2020-03-18T21:54:49Z",
+        "lastUpdatedTime": "2020-03-18T21:54:54Z"
     }
     ```
 
-7. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー**を押します。
+1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー**を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 
@@ -157,17 +202,29 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
+### <a name="enable-compatibility-mode"></a>互換モードを有効にする
+
+ローカルで有効にしたのと同じ Azure Functions V2 互換性が Azure のアプリで有効になっている必要があります。
+
+1. コマンド パレットを使用して、`Azure Functions: Edit Setting...` を検索して選択します。
+
+1. プロンプトに従って、お使いの Azure サブスクリプション内で関数アプリを見つけます。
+
+1. [`Create new App Setting...`] を選択します。
+
+1. `FUNCTIONS_V2_COMPATIBILITY_MODE` の新しい設定キーを入力します。
+
+1. `true` の設定値を入力します。
+
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
-
-        http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
+1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Visual Studio Code を使用して、JavaScript の Durable Functions アプリを作成して発行しました。
 
 > [!div class="nextstepaction"]
-> [Durable Functions の一般的なパターンについて学習する](durable-functions-concepts.md)
+> [Durable Functions の一般的なパターンについて学習する](durable-functions-overview.md#application-patterns)

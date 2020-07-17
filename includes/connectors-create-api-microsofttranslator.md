@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 46a6fcb57a21f3f1e30b39fc6967256550e31616
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: 94f18b20d84a1929368053c44b4f07793e385b38
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149708"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74789547"
 ---
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
 * [MicrosoftTranslator](https://www.microsoft.com/translator) アカウント  
 
 ロジック アプリで MicrosoftTranslator アカウントを使用するには、MicrosoftTranslator アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  

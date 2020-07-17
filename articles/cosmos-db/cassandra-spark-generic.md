@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037228"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70241238"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API に接続する
 
@@ -29,7 +29,7 @@ ms.locfileid: "54037228"
 
 * **Cassandra API 用 Azure Cosmos DB ヘルパー ライブラリ:** Spark コネクタに加えて、Azure Cosmos DB の [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) という別のライブラリが必要です。 このライブラリには、カスタムの接続ファクトリと再試行ポリシー クラスが含まれています。
 
-  Azure Cosmos DB の再試行ポリシーは、HTTP 状態コード 429 ("Request Rate Large") 例外を処理するように構成されています。 Azure Cosmos DB Cassandra API は、このような例外を Cassandra ネイティブ プロトコルに関する過負荷エラーに変換するため、バックオフで再試行できます。 Azure Cosmos DB はプロビジョニングされたスループット モデルを使用するため、受信/送信レートが増加すると、要求レートの制限例外が発生します。 再試行ポリシーによって、収集に割り当てられたスループットを瞬間的に超えるデータの急増から Spark ジョブを保護します。
+  Azure Cosmos DB の再試行ポリシーは、HTTP 状態コード 429 ("Request Rate Large") 例外を処理するように構成されています。 Azure Cosmos DB Cassandra API は、このような例外を Cassandra ネイティブ プロトコルに関する過負荷エラーに変換するため、バックオフで再試行できます。 Azure Cosmos DB はプロビジョニングされたスループット モデルを使用するため、受信/送信レートが増加すると、要求レートの制限例外が発生します。 再試行ポリシーにより、コンテナーに割り当てられたスループットを瞬間的に超えるデータの急増から、Spark ジョブが保護されます。
 
   > [!NOTE] 
   > 再試行ポリシーで、瞬間的な急増に対してのみ Spark ジョブを保護することができます。 ワークロードを実行するために必要十分な RU を構成していない場合は、再試行ポリシーは適用されず、再試行ポリシー クラスによって例外が再スローされます。
@@ -46,9 +46,9 @@ ms.locfileid: "54037228"
 | spark.cassandra.connection.connections_per_executor_max  | なし | Executor あたりの各ノードの最大接続数。 10*n は、n ノード Cassandra クラスター内のノードあたりの 10 接続に相当します。 そのため、5 ノードの Cassandra クラスターで、Executor あたりの各ノードに 5 接続が必要な場合は、この構成を 25 に設定する必要があります。 この値は、Spark ジョブを構成する並列処理の次数または Executor の数に基づいて変更します。   |
 | spark.cassandra.output.concurrent.writes  |  100 | Executor あたりで発生する可能性がある並列書き込み数を定義します。 "batch.size.rows" を 1 に設定しているので、それに従ってこの値をスケール アップします。 ワークロードのために達成したい並列処理の次数またはスループットに基づいて、この値を変更します。 |
 | spark.cassandra.concurrent.reads |  512 | Executor あたりで実行できる並列読み取りの数を定義します。 ワークロードのために達成したい並列処理の次数またはスループットに基づいて、この値を変更します  |
-| spark.cassandra.output.throughput_mb_per_sec  | なし | Executor あたりの合計書き込みスループットを定義します。 このパラメーターは、Spark ジョブのスループットの上限として使用できます。また、Cosmos DB Collection のプロビジョニングされたスループットに基づいています。   |
-| spark.cassandra.input.reads_per_sec| なし   | Executor あたりの合計読み取りスループットを定義します。 このパラメーターは、Spark ジョブのスループットの上限として使用できます。また、Cosmos DB Collection のプロビジョニングされたスループットに基づいています。  |
-| spark.cassandra.output.batch.grouping.buffer.size |  1,000  | Cassandra API に送信する前にメモリに格納できる単一の Spark タスクあたりのバッチ数を定義します |
+| spark.cassandra.output.throughput_mb_per_sec  | なし | Executor あたりの合計書き込みスループットを定義します。 このパラメーターは、Spark ジョブのスループットの上限として使用できます。また、Cosmos コンテナーのプロビジョニングされたスループットに基づいています。   |
+| spark.cassandra.input.reads_per_sec| なし   | Executor あたりの合計読み取りスループットを定義します。 このパラメーターは、Spark ジョブのスループットの上限として使用できます。また、Cosmos コンテナーのプロビジョニングされたスループットに基づいています。  |
+| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Cassandra API に送信する前にメモリに格納できる単一の Spark タスクあたりのバッチ数を定義します |
 | spark.cassandra.connection.keep_alive_ms | 60000 | 使用されていない接続が使用可能になるまでの時間を定義します。 | 
 
 Spark ジョブに期待するワークロードと、Cosmos DB アカウント用にプロビジョニングしたスループットに基づいて、これらのパラメーターのスループットと並列処理の次数を調整します。
@@ -73,7 +73,7 @@ cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-C
 以下の記事では、HDinsight-Spark サービス、プロビジョニング、Azure Cosmos DB Cassandra API に接続するためのクラスター構成、および DDL 操作、DML 操作などに関するいくつかのサンプル ノートブックについて説明します。<BR>
 [Azure HDInsight-Spark から Azure Cosmos DB Cassandra API を使用する](cassandra-spark-hdinsight.md)
  
-### <a name="3--spark-environment-in-general"></a>手順 3.一般的な Spark 環境
+### <a name="3--spark-environment-in-general"></a>3.一般的な Spark 環境
 上記のセクションは Azure Spark ベースの PaaS サービスに固有の内容ですが、このセクションでは一般的な Spark 環境について説明します。  コネクタの依存関係、インポート、Spark セッション構成について、以下で詳しく説明します。 「次の手順」セクションでは、DDL 操作、DML 操作などのコード サンプルについて説明します。  
 
 #### <a name="connector-dependencies"></a>コネクタの依存関係:
@@ -113,7 +113,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事は、Spark と Azure Cosmos DB Cassandra API の統合方法を示しています。 
  

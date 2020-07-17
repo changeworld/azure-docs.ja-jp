@@ -1,33 +1,24 @@
 ---
-title: Azure Application Insights のカスタム メトリックと診断を使用した Live Metrics Stream | Microsoft Docs
+title: Live Metrics Stream による診断 - Azure Application Insights
 description: カスタム メトリックを使用して Web アプリをリアルタイムで監視し、エラー、トレース、イベントのライブ フィードを使用して問題を診断します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670102"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 Live Metrics Stream は、[プロファイラー](../../azure-monitor/app/profiler.md)、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)、[パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)とともに、実稼働中の Web サイト向けの強力で非侵襲的な診断ツールを提供します。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) の Live Metrics Stream を使用して、実稼働中の Web アプリケーションの心臓部を調べます。 メトリックとパフォーマンス カウンターを選択してフィルタリングし、サービスに支障をきたすことなく、リアルタイムで監視します。 失敗した要求と例外のサンプルからスタック トレースを検査します。 [プロファイラー](../../azure-monitor/app/profiler.md)、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)と共に、 Live Metrics Stream によって、ライブ Web サイトに影響を与えない強力な診断ツールが提供されます。
 
 Live Metrics Stream を使用すると、次のことが可能になります。
 
 * 修正がリリースされている間に、パフォーマンスと失敗の数を確認して、修正を検証します。
-* テスト負荷の影響を監視し、問題をライブで診断します。 
+* テスト負荷の影響を監視し、問題をライブで診断します。
 * 監視するメトリックを選択してフィルタリングすることにより、特定のテスト セッションに焦点を当てたり、既知の問題を除外したりできます。
 * 発生時に例外トレースを取得します。
 * フィルターを試して、最も関連性の高い KPI を検索します。
@@ -38,11 +29,11 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 現在、Live Metrics は ASP.NET、ASP.NET Core、Azure Functions、Java、および Node.js アプリでサポートされています。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
-1. Web アプリに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.md)していない場合は、今すぐインストールしてください。
+1. Web アプリに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.yml)していない場合は、今すぐインストールしてください。
 2. Live Metrics ストリームを有効にするには、標準の Application Insights パッケージに加え、[Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) が必要です。
-3. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
+3. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
     アプリケーションを再デプロイします。
 
@@ -52,26 +43,24 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 ### <a name="no-data-check-your-server-firewall"></a>データが表示されない場合 サーバーのファイアウォールを確認
 
-サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](../../azure-monitor/app/ip-addresses.md#outgoing-ports)が開いているか確認します。 
-
+サーバーのファイアウォールで、[Live Metrics Stream の発信ポート](../../azure-monitor/app/ip-addresses.md#outgoing-ports)が開いているか確認します。
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Live Metrics Stream が メトリックス エクスプローラーや Analytics と異なる点
 
 | |Live Stream | メトリックス エクスプローラーと Analytics |
 |---|---|---|
-|待機時間|1 秒以内に表示されるデータ|数分間で集計|
+|Latency|1 秒以内に表示されるデータ|数分間で集計|
 |リテンション期間なし|データは、グラフに表示されている間は保持され、その後破棄されます|[データは 90 日間保持](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |オン デマンド|Live Metrics を開いている間、データはストリーミングされます|SDK がインストールされて有効になるたびに、データが送信されます|
-|無料|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
+|Free|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
 |サンプリング|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
 |コントロール チャネル|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
-
 
 ## <a name="select-and-filter-your-metrics"></a>メトリックの選択とフィルタリング
 
 (ASP.NET、ASP.NET Core、Azure Functions (v2) で使用できます。)
 
-ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。 
+ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。
 
 ![カスタム要求 KPI](./media/live-stream/live-stream-filteredMetric.png)
 
@@ -94,7 +83,7 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 
 注:現時点では、例外メッセージ ベースの条件には、最も外側の例外メッセージを使用します。 前の例では、"クライアントが切断されました。" という内部例外メッセージ ("<--" 区切り記号の後) が示されている害のない例外を除外するために、 "Error reading request content (要求内容の読み取りエラー)" が含まれていないメッセージという条件を使用します。
 
-ライブ フィードの項目をクリックして詳細を表示します。 フィードを一時停止するには、**[一時停止]** をクリックするか、下にスクロールするか、または項目をクリックします。 スクロールして上部に戻るか、一時停止されている間に収集された項目のカウンターをクリックすると、ライブ フィードが再開されます。
+ライブ フィードの項目をクリックして詳細を表示します。 フィードを一時停止するには、 **[一時停止]** をクリックするか、下にスクロールするか、または項目をクリックします。 スクロールして上部に戻るか、一時停止されている間に収集された項目のカウンターをクリックすると、ライブ フィードが再開されます。
 
 ![サンプリングされたライブ エラー](./media/live-stream/live-metrics-eventdetail.png)
 
@@ -103,9 +92,6 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 特定のサーバー ロール インスタンスを監視する場合は、サーバーでフィルター処理できます。
 
 ![サンプリングされたライブ エラー](./media/live-stream/live-stream-filter.png)
-
-## <a name="sdk-requirements"></a>SDK の要件
-カスタムの Live Metrics Stream は、バージョン 2.4.0-beta2 以降の [Application Insights SDK for web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) で使用できます。 NuGet パッケージ マネージャーで [リリース前のパッケージを含める] を必ず選択してください。
 
 ## <a name="secure-the-control-channel"></a>コントロール チャネルの保護
 指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。
@@ -163,23 +149,23 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ### <a name="azure-function-apps"></a>Azure Function App
 
-Azure Function App (v2) の場合、API キーを使用してチャネルをセキュリティで保護するには、環境変数を使用します。 
+Azure Function App (v2) の場合、API キーを使用してチャネルをセキュリティで保護するには、環境変数を使用して完了することができます。
 
 Application Insights リソース内から API キーを作成し、Function App の **[アプリケーションの設定]** に移動します。 **[新しい文字列の追加]** を選択し、`APPINSIGHTS_QUICKPULSEAUTHAPIKEY` の名前と、API キーに対応する値を入力します。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0-beta 以降が必要)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0 以降が必要)
 
 startup.cs ファイルを次のように変更します。
 
 最初に以下を追加します。
 
-``` C#
+```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 ```
 
 その後、ConfigureServices メソッド内で以下を追加します。
 
-``` C#
+```csharp
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
@@ -191,23 +177,33 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 >フィルター条件に CustomerID などの機密情報を入力する前に、認証済みチャネルを設定することを強くお勧めします。
 >
 
-## <a name="generating-a-performance-test-load"></a>パフォーマンス テスト負荷の生成
+## <a name="supported-features-table"></a>サポートされる機能の表
 
-負荷増加の影響を確認するには、パフォーマンス テスト ブレードを使用します。 これは、複数の同時ユーザーからの要求をシミュレートします。 単一の URL の "手動テスト" (ping テスト) を実行することも、アップロードする[複数ステップの Web パフォーマンス テスト](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)を (可用性テストと同じ方法で) 実行することもできます。
+| Language                         | 基本メトリック       | パフォーマンス メトリック | カスタム フィルター処理    | サンプル テレメトリ    | プロセス別の CPU 分割 |
+|----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
+| .NET                             | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降) | サポート対象 (V2.7.2 以降)  |
+| .NET Core (ターゲット =.NET Framework)| サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降)  |
+| .NET Core (ターゲット =.NET Core)     | サポート対象 (V2.4.1 以降) | サポート対象*          | サポート対象 (V2.4.1 以降) | サポート対象 (V2.4.1 以降) | **サポートされていません**    |
+| Azure Functions v2               | サポートされています           | サポートされています           | サポートされています           | サポートされています           | **サポートされていません**    |
+| Java                             | サポート対象 (V2.0.0 以降) | サポート対象 (V2.0.0 以降) | **サポートされていません**   | **サポートされていません**   | **サポートされていません**    |
+| Node.js                          | サポート対象 (V1.3.0 以降) | サポート対象 (V1.3.0 以降) | **サポートされていません**   | サポート対象 (V1.3.0 以降) | **サポートされていません**    |
 
-> [!TIP]
-> パフォーマンス テストを作成したあと、テストと Live Stream ブレードを別々のウィンドウで開きます。 キューに登録済みのパフォーマンス テストの開始を確認でき、同時にライブ ストリームを見ることができます。
->
+基本メトリックには、要求、依存関係、例外率が含まれます。 パフォーマンス メトリック (パフォーマンス カウンター) には、メモリと CPU が含まれます。 テレメトリのサンプルには、失敗した要求と依存関係、例外、イベント、トレースに関する詳細情報のストリームが表示されます。
 
+ \* PerfCounters のサポートは、.NET Framework を対象としない .NET Core のバージョンによって多少異なります。
+
+- PerfCounters メトリックは、Windows の Azure App Service で実行する場合にサポートされます。 (AspNetCore SDK バージョン 2.4.1 以降)
+- PerfCounters は、アプリが任意の Windows マシン (VM またはクラウド サービスまたはオンプレミスなど) (AspNetCore SDK バージョン 2.7.1 以降) で実行されている場合にサポートされますが、.NET Core 2.0 以降を対象とするアプリ用です。
+- PerfCounters は、最新のベータ版 (AspNetCore SDK バージョン 2.8.0-beta1 以降) の任意の場所 (Linux、Windows、Linux のアプリ サービス、コンテナーなど) でアプリが実行されている場合にサポートされますが、 .NET Core 2.0 以降を対象とするアプリ用です。
+
+既定で Live Metrics は、Node.js SDK で無効になります。 Live Metrics を有効にするには、SDK を初期化する際に`setSendLiveMetrics(true)`を[構成メソッド](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)に追加します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では他の Application Insights Telemetry とは異なる IP アドレスを使用します。 [これらの IP アドレス](../../azure-monitor/app/ip-addresses.md)がファイアウォールで開いていることを確認してください。
+データが表示されない場合 保護されているネットワークにアプリケーションが存在する場合:Live Metrics Stream では、他の Application Insights テレメトリとは異なる IP アドレスを使用します。 [これらの IP アドレス](../../azure-monitor/app/ip-addresses.md)がファイアウォールで開いていることを確認してください。
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Application Insights による使用状況の監視](../../azure-monitor/app/usage-overview.md)
 * [診断検索の使用](../../azure-monitor/app/diagnostic-search.md)
-* [プロファイラー](../../azure-monitor/app/profiler.md)
+* [Profiler](../../azure-monitor/app/profiler.md)
 * [スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)

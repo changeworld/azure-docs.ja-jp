@@ -1,21 +1,18 @@
 ---
 title: Azure Application Insights を使用して ASP.NET Web アプリを監視する | Microsoft Docs
 description: Application Insights で監視するために ASP.NET Web アプリを迅速に設定する手順を説明します
-services: application-insights
-keywords: ''
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
-ms.service: application-insights
+ms.date: 06/26/2019
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595743"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82142633"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 
@@ -26,7 +23,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
+- 次のワークロードを使って、[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
 
@@ -47,7 +44,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. サブスクリプションを選択し、 **[登録]** をクリックします。
 
-5. **[デバッグ]** メニューの **[デバッグ開始]** をクリックするか、F5 キーを押して、アプリケーションを実行します。
+5. **[プロジェクト]**  >  **[NuGet パッケージの管理]**  >  **[パッケージ ソース: nuget.org]**  >  **[更新]** の順に選択して、Application Insights SDK パッケージを最新の安定版リリースに更新します。
+
+6. **[デバッグ]** メニューの **[デバッグ開始]** をクリックするか、F5 キーを押して、アプリケーションを実行します。
 
 ## <a name="confirm-app-configuration"></a>アプリの構成を確認する
 
@@ -63,13 +62,13 @@ Azure Portal で Application Insights を開いて、実行中のアプリケー
 
 1. ソリューション エクスプローラーの **[接続済みサービス]** フォルダー (クラウドとプラグのアイコン) を展開し、 **[Application Insights]** フォルダーを右クリックし、 **[Application Insights ポータルを開く]** をクリックします。  アプリケーションに関する情報とさまざまなオプションが表示されます。
 
-    ![アプリケーション マップ](media/quick-monitor-portal/4overview.png)
+    ![アプリケーション マップ](media/quick-monitor-portal/04-overview.png)
 
 2. **[アプリケーション マップ]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。  各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-    ![アプリケーション マップ](media/quick-monitor-portal/5appmap.png)
+    ![アプリケーション マップ](media/quick-monitor-portal/05-appmap.png)
 
-3. いずれかのアプリケーション コンポーネントで、 **[アプリ分析]** のアイコン ![アプリケーション マップ](media/quick-monitor-portal/app-analytics-icon.png) **[分析で表示]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。  この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. いずれかのアプリケーション コンポーネントで、 **[アプリ分析]** のアイコン ![アプリケーション マップ](media/quick-monitor-portal/app-viewinlogs-icon.png) **[ログに表示 (Analytics)]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **[ログ (Analytics)]** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
     ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -102,16 +101,12 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 詳細については、GitHub リポジトリにアクセスして、Microsoft の[オープンソース JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) をご覧ください。
 
-## <a name="video"></a>ビデオ
-
-* [.NET アプリケーションを使って最初から Application Insights を構成する](https://www.youtube.com/watch?v=blnGAVgMAfA)ステップ バイ ステップの外部ビデオ。
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
 1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、Azure Application Insights で監視できるようにアプリケーションを有効にしました。  チュートリアルを続けて、統計情報を監視してアプリケーションの問題を検出する方法を学習してください。
 
 > [!div class="nextstepaction"]

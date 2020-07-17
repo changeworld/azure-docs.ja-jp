@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172198"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181364"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>StorSimple のバックアップ スケジュールを追加または変更するには
 
-1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
+1. StorSimple デバイスに移動して、 **[バックアップ ポリシー]** をクリックします。
 
-2. ポリシーの表形式の一覧で、変更するポリシーを選択してクリックします。 右クリックしてコンテキスト メニューを起動し、**[スケジュールの追加]** を選択します。
+2. ポリシーの表形式の一覧で、変更するポリシーを選択してクリックします。 右クリックしてコンテキスト メニューを起動し、 **[スケジュールの追加]** を選択します。
 
     ![[スケジュールの管理]](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 

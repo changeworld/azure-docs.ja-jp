@@ -3,20 +3,20 @@ title: Team Data Science Process でのビジネスの把握
 description: Team Data Science Process でのデータ サイエンス プロジェクトのビジネスの把握ステージの目標、タスク、成果物です。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545316"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76710339"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのビジネスの把握ステージ
 
@@ -25,7 +25,7 @@ ms.locfileid: "59545316"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **Deployment**
+   4. **デプロイ**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -40,19 +40,19 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す 2 つの主な課題に取り組みます。 
 
-   * **目標を定義する**:顧客およびその他の利害関係者と連携し、ビジネス上の問題を把握し、特定します。 データ サイエンス手法のターゲットにできるような、ビジネスの目標を定義付ける質問を考案します。
-   * **データ ソースを特定する**:プロジェクトの目標を定義付ける質問に対して答えを出すために利用できる関連データを見つけます。
+   * **目標を定義する**: 顧客およびその他の利害関係者と連携し、ビジネス上の問題を把握し、特定します。 データ サイエンス手法のターゲットにできるような、ビジネスの目標を定義付ける質問を考案します。
+   * **データ ソースを特定する**: プロジェクトの目標を定義付ける質問に対して答えを出すために利用できる関連データを見つけます。
 
 ### <a name="define-objectives"></a>目標を定義する
 1. このステップの中心となる目標は、分析によって予測する必要がある、主要なビジネス変数を特定することです。 これらの変数は*モデル ターゲット*と呼ばれ、これらの変数に関連付けられているメトリックがプロジェクトの成功を評価するために使用されます。 このようなターゲットの 2 つの例は、売上予測とある注文が不正な注文である確率です。
 
 2. 関連性があり、具体的かつ明確な "鋭い" 質問の問いかけと改善を行うことで、プロジェクトの目標を定義します。 データ サイエンスは、名前と数字を使用してこのような質問に回答するプロセスです。 データ サイエンスや機械学習は、一般的には以下の 5 種類の質問に回答するために使用されます。
  
-   * どのくらいの量または数か  (回帰)
-   * どのカテゴリか  (分類)
-   * どのグループか  (クラスタリング)
+   * どのくらいの量または数か (回帰)
+   * どのカテゴリか (分類)
+   * どのグループか (クラスタリング)
    * 異常か (異常の検出)
-   * どの選択肢を選ぶべきか  (推奨)
+   * どの選択肢を選ぶべきか (推奨)
 
    これらの質問のうちのどれについて質問し、どのような回答がビジネス上の目標の達成に役立つかを判断します。
 
@@ -77,18 +77,18 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ## <a name="artifacts"></a>アーティファクト
 このステージでの成果物を以下に示します。
 
-   * [チャーター ドキュメント](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md):TDSP プロジェクト構造定義に標準テンプレートが用意されています。 チャーター ドキュメントは、常に変化するドキュメントです。 プロジェクトの進行中に新しい発見やビジネス要件の変化があったときに、このテンプレートを更新します。 検出プロセスの進行に合わせてこのドキュメントに詳細を追加し、更新を繰り返すことが重要です。 変更を加える際は、顧客およびその他の利害関係者が常に関与するようにし、変更の理由を明確に伝えます。  
-   * [データ ソース](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources):これは、TDSP プロジェクトのデータ ソースが含まれている **[データ レポート]** フォルダーにある**データ定義**レポートの **[生データ ソース]** セクションです。 このセクションは、生データの元の場所と移動先の場所を指定します。 後のステージで、分析環境にデータを移動するスクリプトなどの詳細を追加します。  
-   * [データ辞書](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries):このドキュメントはクライアントによって提供されているデータの説明を提供します。 これらの説明にはスキーマ (データ型、検証ルールに関する情報 (ある場合)) とエンティティ関連の図 (ある場合) に関する情報が含まれています。
+   * [チャーター ドキュメント](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): TDSP プロジェクト構造定義に標準テンプレートが用意されています。 チャーター ドキュメントは、常に変化するドキュメントです。 プロジェクトの進行中に新しい発見やビジネス要件の変化があったときに、このテンプレートを更新します。 検出プロセスの進行に合わせてこのドキュメントに詳細を追加し、更新を繰り返すことが重要です。 変更を加える際は、顧客およびその他の利害関係者が常に関与するようにし、変更の理由を明確に伝えます。  
+   * [データ ソース](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): これは、TDSP プロジェクトのデータ ソースが含まれている **[データ レポート]** フォルダーにある**データ定義**レポートの **[生データ ソース]** セクションです。 このセクションは、生データの元の場所と移動先の場所を指定します。 後のステージで、分析環境にデータを移動するスクリプトなどの詳細を追加します。  
+   * [データ辞書](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): このドキュメントはクライアントによって提供されているデータの説明を提供します。 これらの説明にはスキーマ (データ型、検証ルールに関する情報 (ある場合)) とエンティティ関連の図 (ある場合) に関する情報が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [Deployment](lifecycle-deployment.md)
+   4. [デプロイ](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
+特定のシナリオのプロセスでのすべての手順を示す完全なチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 

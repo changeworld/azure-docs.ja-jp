@@ -1,5 +1,5 @@
 ---
-title: 画像クエリを送信する - Bing Image Search API
+title: 画像検索クエリをカスタマイズおよび提案する - Bing Image Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Image Search API に送信する検索クエリのカスタマイズについて説明します。
 services: cognitive-services
@@ -9,28 +9,26 @@ ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: b2d142783146edcaf40125ce58e43fe001909412
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67542754"
 ---
-# <a name="send-queries-to-the-bing-image-search-api"></a>Bing Image Search API にクエリを送信する
+# <a name="customize-and-suggest-image-search-queries"></a>画像検索クエリをカスタマイズおよび提案する
 
-Bing Image Search API では、Bing.com/Images に似た操作性が提供されています。 これを利用し、Bing に検索クエリを送信したり、関連画像の一覧を取得したりできます。
+この記事を使用して、クエリをカスタマイズし、Bing Image Search API に送信する検索語句を提案する方法について学習します。
 
-## <a name="use-and-suggest-search-terms"></a>検索語句の使用と提案
-
-検索語句が入力された後、その語句を URL エンコードしたうえで、[**q**](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば、「*sailing dinghies*」と入力した場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+## <a name="suggest-search-terms"></a>検索語句を提案する
 
 検索語句を入力するための検索ボックスがアプリに備わっている場合は、[Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) を利用して利便性を高めることができます。 API でおすすめ検索語句をリアルタイム表示できます。 この API は、検索語句の一部分や Cognitive Services に基づいてクエリ文字列の候補を返します。
 
 ## <a name="pivot-the-query"></a>クエリをピボットする
 
-元の検索クエリを Bing が分割できる場合、返された [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) オブジェクトには `pivotSuggestions` が含まれます。 ピボット候補を任意の検索語句としてユーザーに表示できます。 たとえば、元のクエリが「*Microsoft Surface*」である場合、そのクエリが Bing によって *Microsoft* と *Surface* に分割され、それぞれについてピボット候補を得ることができます。 このような候補は、任意のクエリ語句としてユーザーに表示できます。
+元の検索クエリを Bing が分割できる場合、返された [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトには `pivotSuggestions` が含まれます。 ピボット候補を任意の検索語句としてユーザーに表示できます。 たとえば、元のクエリが「*Microsoft Surface*」である場合、そのクエリが Bing によって *Microsoft* と *Surface* に分割され、それぞれについてピボット候補を得ることができます。 このような候補は、任意のクエリ語句としてユーザーに表示できます。
 
 次の例は、*Microsoft Surface* に関するピボット候補を示しています。  
 
@@ -91,7 +89,7 @@ Bing Image Search API では、Bing.com/Images に似た操作性が提供され
 }
 ```
 
-`pivotSuggestions` フィールドには、元のクエリを分割することによって得られたセグメント (ピボット) のリストが含まれています。 応答には、ピボットごとにおすすめクエリを含んだ [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj) オブジェクトのリストが格納されます。 `text` フィールドには、候補のクエリが含まれます。 `displayText` フィールドには、元のクエリでピボットを置換する語句が含まれます。 "Release Date of Surface" はその一例です。
+`pivotSuggestions` フィールドには、元のクエリを分割することによって得られたセグメント (ピボット) のリストが含まれています。 応答には、ピボットごとにおすすめクエリを含んだ [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) オブジェクトのリストが格納されます。 `text` フィールドには、候補のクエリが含まれます。 `displayText` フィールドには、元のクエリでピボットを置換する語句が含まれます。 "Release Date of Surface" はその一例です。
 
 ユーザーが探しているものがピボット クエリ文字列であれば、`text` フィールドと `thumbnail` フィールドを使用し、ピボット クエリ文字列を表示します。 `webSearchUrl` URL または `searchLink` URL を利用し、サムネイルとテキストをクリック可能にします。 `webSearchUrl` を使用し、Bing 検索結果にユーザーを送信します。 独自の結果ページを提供する場合、`searchLink` を使用します。
 
@@ -103,7 +101,7 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>クエリを展開する
 
-Bing がクエリを展開して元の検索を絞り込むことができる場合、[Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Microsoft Surface* であれば、クエリは次のように展開されます。
+Bing がクエリを展開して元の検索を絞り込むことができる場合、[Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Microsoft Surface* であれば、クエリは次のように展開されます。
 - Microsoft Surface **Pro 3**。
 - Microsoft Surface **RT**。
 - Microsoft Surface **Phone**。
@@ -149,7 +147,7 @@ Bing がクエリを展開して元の検索を絞り込むことができる場
 }
 ```
 
-`queryExpansions` フィールドには、[Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query_obj) オブジェクトのリストが含まれています。 `text` フィールドには、展開されたクエリが含まれています。 `displayText` フィールドには、展開語句が含まれています。 ユーザーが探しているものが展開されたクエリ文字列であれば、`text` フィールドと `thumbnail` フィールドを使用し、展開されたクエリ文字列を表示します。 `webSearchUrl` URL または `searchLink` URL を利用し、サムネイルとテキストをクリック可能にします。 `webSearchUrl` を使用し、Bing 検索結果にユーザーを送信します。 独自の結果ページを提供する場合、`searchLink` を使用します。
+`queryExpansions` フィールドには、[Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) オブジェクトのリストが含まれています。 `text` フィールドには、展開されたクエリが含まれています。 `displayText` フィールドには、展開語句が含まれています。 ユーザーが探しているものが展開されたクエリ文字列であれば、`text` フィールドと `thumbnail` フィールドを使用し、展開されたクエリ文字列を表示します。 `webSearchUrl` URL または `searchLink` URL を利用し、サムネイルとテキストをクリック可能にします。 `webSearchUrl` を使用し、Bing 検索結果にユーザーを送信します。 独自の結果ページを提供する場合、`searchLink` を使用します。
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.
@@ -162,6 +160,6 @@ The following shows an example Bing implementation that uses expanded queries. I
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ Bing Image Search API を試していない方は、[クイック スタート](../quickstarts/csharp.md)をご覧ください。 さらに高度な内容をお求めの方は、[単一ページの Web アプリ](../tutorial-bing-image-search-single-page-app.md)の作成に関するチュートリアルをご覧ください。

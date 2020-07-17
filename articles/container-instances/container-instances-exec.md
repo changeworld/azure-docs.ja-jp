@@ -1,18 +1,14 @@
 ---
-title: Azure Container Instances で実行中のコンテナーでコマンドを実行する
+title: 実行中のコンテナー インスタンスでコマンドを実行する
 description: Azure Container Instances で現在実行されているコンテナーでコマンドを実行する方法について説明します
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: danlep
-ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854090"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225847"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>実行中の Azure Container Instances でコマンドを実行する
 
@@ -34,8 +30,7 @@ az container exec --resource-group myResourceGroup --name mynginx --exec-command
 
 次の出力例では、実行中の Linux コンテナーで Bash シェルが起動され、`ls` が実行されるターミナルが用意されます。
 
-```console
-$ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
+```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
@@ -46,8 +41,11 @@ Bye.
 
 次の例では、実行中の Nanoserver コンテナーでコマンド プロンプトが起動します。
 
-```console
-$ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```azurecli
+az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```
+
+```output
 Microsoft Windows [Version 10.0.14393]
 (c) 2016 Microsoft Corporation. All rights reserved.
 
@@ -86,7 +84,7 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 Azure Container Instances は、現時点では [az container exec][az-container-exec] による単一のプロセスの起動をサポートしています。コマンドの引数を渡すことはできません。 たとえば、`sh -c "echo FOO && echo BAR"` のようなコマンドのチェーンや、`echo FOO` の実行は行えません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Container Instances でのコンテナーとデプロイに関する問題のトラブルシューティング](container-instances-troubleshooting.md)に関する記事で、他のトラブルシューティング ツールとデプロイの一般的な問題を確認します。
 

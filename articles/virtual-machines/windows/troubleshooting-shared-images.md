@@ -1,33 +1,26 @@
 ---
-title: Azure での共有イメージに関する問題のトラブルシューティング | Microsoft Docs
+title: Azure での共有イメージに関する問題のトラブルシューティング
 description: 共有イメージ ギャラリーに関する問題のトラブルシューティングを行う方法について説明します。
-services: virtual-machine-windows
-documentationcenter: virtual-machine-scale-sets
 author: axayjo
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: ''
+ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 04/25/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 50e13f13cfd244f0199920c210abf4acc7c53d4a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ef4cdb8c5cd8956f85dadba80d3dffec8d0e4730
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150134"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100517"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>共有イメージ ギャラリーのトラブルシューティング
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。

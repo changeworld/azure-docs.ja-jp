@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合 | Microsoft Docs'
 description: Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8cb048964830f62fe483da63d24356f46538b7
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501399"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67099511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>チュートリアル:Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合
+# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合
 
 このチュートリアルでは、JIRA SAML SSO by Microsoft (V5.2) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 JIRA SAML SSO by Microsoft (V5.2) と Azure AD の統合には、次の利点があります。
@@ -58,15 +58,15 @@ JIRA SAML SSO by Microsoft (V5.2) と Azure AD の統合を構成するには、
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="supported-versions-of-jira"></a>サポートされている JIRA のバージョン
 
-* JIRA Core と Software:5.2
+* JIRA Core と Software: 5.2
 * JIRA では、6.0 から 7.12 もサポートされています。 詳細については、[JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md) をクリックしてください。
 
 > [!NOTE]
-> JIRA では Linux Ubuntu バージョン 16.04 もサポートしていることに注意してください
+> JIRA プラグインは、Ubuntu Version 16.04 でも動作することに注意してください
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -80,11 +80,11 @@ Azure AD への JIRA SAML SSO by Microsoft (V5.2) の統合を構成するには
 
 **ギャラリーから JIRA SAML SSO by Microsoft (V5.2) を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -92,7 +92,7 @@ Azure AD への JIRA SAML SSO by Microsoft (V5.2) の統合を構成するには
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**JIRA SAML SSO by Microsoft (V5.2)**」と入力し、結果パネルで **[JIRA SAML SSO by Microsoft (V5.2)]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**JIRA SAML SSO by Microsoft (V5.2)** 」と入力し、結果パネルで **[JIRA SAML SSO by Microsoft (V5.2)]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの JIRA SAML SSO by Microsoft (V5.2)](common/search-new-app.png)
 
@@ -116,15 +116,15 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD のシングル サインオン�
 
 JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **JIRA SAML SSO by Microsoft (V5.2)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **JIRA SAML SSO by Microsoft (V5.2)** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -132,11 +132,11 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
     ![[JIRA SAML SSO by Microsoft (V5.2) のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<domain:port>/plugins/servlet/saml/auth`
+    a. **[サインオン URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 `https://<domain:port>/`
+    b. **[識別子]** ボックスに、`https://<domain:port>/` という形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<domain:port>/plugins/servlet/saml/auth`
+    c. **[応答 URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 名前付き URL である場合は、ポートは省略できます。 これらの値は JIRA プラグインの構成中に受け取ります (これについてはこのチュートリアルの後半で説明します)。
@@ -149,11 +149,11 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
 1. 別の Web ブラウザー ウィンドウで、JIRA インスタンスに管理者としてサインインします。
 
-2. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
+2. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
     ![Configure single sign-on](./media/jira52microsoft-tutorial/addon1.png)
 
-3. [アドオン] タブ セクションで、**[アドオンの管理]** をクリックします。
+3. [アドオン] タブ セクションで、 **[アドオンの管理]** をクリックします。
 
     ![Configure single sign-on](./media/jira52microsoft-tutorial/addon7.png)
 
@@ -161,7 +161,7 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
     ![Configure single sign-on](./media/jira52microsoft-tutorial/addon12.png)
 
-5. プラグインがインストールされると、**[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
+5. プラグインがインストールされると、 **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
     ![Configure single sign-on](./media/jira52microsoft-tutorial/addon13.png)
 
@@ -172,24 +172,24 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
 
-    a. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、**[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
+    a. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、 **[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
 
     b. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子]、[応答 URL]、[サインオン URL]** ボックスにそれぞれ貼り付けます。
 
     c. ユーザーのログイン画面に表示するボタン名を **[Login Button Name]\(ログイン ボタン名\)** に入力します。
 
-    d. **[SAML User ID Locations]\(SAML ユーザー ID の場所\)** で、**[User ID is in the NameIdentifier element of the Subject statement]\(Subject ステートメントの NameIdentifier 要素内のユーザー ID\)**、または **[User ID is in an Attribute element]\(Attribute 要素内のユーザー ID\)** を選択します。  この ID は JIRA ユーザー ID である必要があります。 ユーザー ID が一致しない場合、システムはユーザーのサインインを許可しません。
+    d. **[SAML User ID Locations]\(SAML ユーザー ID の場所\)** で、 **[User ID is in the NameIdentifier element of the Subject statement]\(Subject ステートメントの NameIdentifier 要素内のユーザー ID\)** 、または **[User ID is in an Attribute element]\(Attribute 要素内のユーザー ID\)** を選択します。  この ID は JIRA ユーザー ID である必要があります。 ユーザー ID が一致しない場合、システムはユーザーのサインインを許可しません。
 
     > [!Note]
     > 既定の SAML ユーザー ID の場所は、名前識別子です。 属性オプションでこれを変更して、適切な属性名を入力できます。
 
-    e. **[User ID is in an Attribute element]\(Attribute 要素内のユーザー ID\)** を選択する場合は、ユーザー ID がある属性の名前を **[Attribute name]\(属性名\)** ボックスに入力します。 
+    e. **[User ID is in an Attribute element]\(Attribute 要素内のユーザー ID\)** を選択する場合は、ユーザー ID が格納されている属性の名前を **[Attribute name]\(属性名\)** ボックスに入力します。 
 
-    f. Azure AD でフェデレーション ドメイン (ADFS など) を使用している場合は、**[Enable Home Realm Discovery]\(ホーム領域の検出を有効にする\)** をクリックして **[Domain Name]\(ドメイン名\)** を構成します。
+    f. Azure AD でフェデレーション ドメイン (ADFS など) を使用している場合は、 **[Enable Home Realm Discovery]\(ホーム領域の検出を有効にする\)** をクリックして **[Domain Name]\(ドメイン名\)** を構成します。
 
-    g. ADFS ベースでログインする場合は、**[Domain Name]\(ドメイン名\)** にドメイン名を入力します。
+    g. ADFS ベースでログインする場合は、 **[Domain Name]\(ドメイン名\)** にドメイン名を入力します。
 
-    h. ユーザーが JIRA からサインアウトしたときに Azure AD からもサインアウトさせる場合は、**[Enable Single Sign out]\(シングル サインアウトを有効にする\)** をオンにします。 
+    h. ユーザーが JIRA からサインアウトしたときに Azure AD からもサインアウトさせる場合は、 **[Enable Single Sign out]\(シングル サインアウトを有効にする\)** をオンにします。 
 
     i. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
@@ -200,7 +200,7 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -224,11 +224,11 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
 このセクションでは、Britta Simon に JIRA SAML SSO by Microsoft (V5.2) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
+2. アプリケーションの一覧で、 **[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
 
     ![アプリケーションの一覧の [JIRA SAML SSO by Microsoft (V5.2)] リンク](common/all-applications.png)
 
@@ -236,33 +236,33 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-jira-saml-sso-by-microsoft-v52-test-user"></a>JIRA SAML SSO by Microsoft (V5.2) テスト ユーザーの作成
 
 Azure AD ユーザーが JIRA オンプレミス サーバーにサインインできるようにするには、そのユーザーを JIRA オンプレミス サーバーにプロビジョニングする必要があります。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. 管理者として、オンプレミス サーバーの JIRA にサインインします。
 
-2. 歯車をポイントし、**[User management]\(ユーザー管理\)** をクリックします。
+2. 歯車をポイントし、 **[User management]\(ユーザー管理\)** をクリックします。
 
     ![従業員の追加](./media/jira52microsoft-tutorial/user1.png)
 
-3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード**を入力し、**[Confirm]\(確認\)** ボタンをクリックします。
+3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード**を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
     ![従業員の追加](./media/jira52microsoft-tutorial/user2.png)
 
-4. **[User management]\(ユーザー管理\)** タブ セクションで、**[create user]\(ユーザーの作成\)** をクリックします。
+4. **[User management]\(ユーザー管理\)** タブ セクションで、 **[create user]\(ユーザーの作成\)** をクリックします。
 
     ![従業員の追加](./media/jira52microsoft-tutorial/user3.png) 
 

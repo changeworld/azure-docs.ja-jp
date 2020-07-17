@@ -1,19 +1,15 @@
 ---
-title: チュートリアル - Azure Container Instances に複数コンテナー グループをデプロイする - テンプレート
+title: チュートリアル - 複数コンテナー グループをデプロイする - テンプレート
 description: このチュートリアルでは、Azure Resource Manager テンプレートと Azure CLI を使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f769beda1654dc9f58ecff733741fb1ab9118031
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b08a974cbbdc9e4bdf1594672f82748bfabe88b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152297"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653514"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 
@@ -21,7 +17,7 @@ ms.locfileid: "66152297"
 > * [YAML](container-instances-multi-container-yaml.md)
 > * [Resource Manager](container-instances-multi-container-group.md)
 
-Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
+Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 つ目のアタッチされたプロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
 このチュートリアルでは、Azure CLI を使用して Azure Resource Manager テンプレートをデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順を行います。 学習内容は次のとおりです。
 
@@ -115,11 +111,11 @@ code azuredeploy.json
           "ports": [
             {
               "protocol": "tcp",
-              "port": "80"
+              "port": 80
             },
             {
                 "protocol": "tcp",
-                "port": "8080"
+                "port": 8080
             }
           ]
         }
@@ -149,7 +145,7 @@ code azuredeploy.json
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-[az group create][az-group-create] コマンドでリソース グループを作成します。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -224,9 +220,9 @@ Connection: keep-alive
 
 このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、`200 OK` 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * 複数コンテナー グループ テンプレートをデプロイする

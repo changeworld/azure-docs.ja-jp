@@ -4,27 +4,25 @@ description: Microsoft Azure で RDP 内部エラーのトラブルシューテ�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231915"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>リモート デスクトップを介して Azure VM に接続しようとするときに、内部エラーが発生する
 
 この記事では、Microsoft Azure で仮想マシン (VM) を接続しようとしたときに発生する可能性があるエラーについて説明します。
-> [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
+
 
 ## <a name="symptoms"></a>現象
 
@@ -47,7 +45,7 @@ ms.locfileid: "56445783"
 
 これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
-この問題のトラブルシューティングを行うには、シリアル コンソールを使用するか、VM の OS ディスクを復旧 VM にアタッチして [VM をオフライン修復](#repair-the-vm-offline)します。
+この問題をトラブルシューティングするには、シリアル コンソールを使用するか、VM の OS ディスクを復旧 VM にアタッチして [VM をオフライン修復](#repair-the-vm-offline)します。
 
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
@@ -87,7 +85,7 @@ ms.locfileid: "56445783"
 
     3. Azure portal の RDP ポートで、[新しいポートのネットワーク セキュリティ グループを更新](../../virtual-network/security-overview.md)します。
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>手順 2:RDP の自己署名証明書に適切なアクセス許可を設定する
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>手順 2: RDP の自己署名証明書に適切なアクセス許可を設定する
 
 1.  PowerShell インスタンスで、次のコマンドを 1 つずつ実行して、RDP の自己署名証明書を更新します。
 
@@ -105,9 +103,9 @@ ms.locfileid: "56445783"
 
 2. この手法を使用して証明書を更新できない場合は、リモートで RDP の自己署名証明書の更新を試してください。
 
-    1. 問題が発生している VM に接続している作業用 VM から、**[実行]** ボックスに「**mmc**」を入力して、Microsoft 管理コンソールを開きます。
-    2. **[ファイル]** メニューで **[スナップインの追加と削除]** を選択し、**[証明書]**、**[追加]** の順に選択します。
-    3. **[コンピューター アカウント]**、**[別のコンピューター]** の順に選択してから、問題の VM の IP アドレスを追加します。
+    1. 問題が発生している VM に接続している作業用 VM から、 **[実行]** ボックスに「**mmc**」を入力して、Microsoft 管理コンソールを開きます。
+    2. **[ファイル]** メニューで **[スナップインの追加と削除]** を選択し、 **[証明書]** 、 **[追加]** の順に選択します。
+    3. **[コンピューター アカウント]** 、 **[別のコンピューター]** の順に選択してから、問題の VM の IP アドレスを追加します。
     4. **Remote Desktop\Certificates** フォルダーに移動し、証明書を右クリックして **[削除]** を選択します。
     5. シリアル コンソールから PowerShell インスタンスで、リモート デスクトップ構成サービスを再開します。
 
@@ -136,7 +134,7 @@ ms.locfileid: "56445783"
 
 4. VM を再起動し、VM へのリモート デスクトップ接続の開始を試行します。 エラーが引き続き発生する場合は、次の手順に移動します。
 
-手順 3:サポートされているすべての TLS バージョンを有効にする
+#### <a name="step-3-enable-all-supported-tls-versions"></a>手順 3: サポートされているすべての TLS バージョンを有効にする
 
 RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、これは新しい標準となっている TLS 1.1 に変更できます。 VM で TLS 1.1 が無効になっている場合、接続は失敗します。
 1.  CMD インスタンスで、TLS プロトコルを有効にします。
@@ -168,7 +166,7 @@ RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使�
 
 ダンプ ログとシリアル コンソールを有効にするには、次のスクリプトを実行します。
 
-1. 管理者特権のコマンド プロンプト セッション (**[管理者として実行]**) を開きます。
+1. 管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開きます。
 2. 次のスクリプトを実行します。
 
     このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
@@ -197,7 +195,7 @@ RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使�
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>MachineKeys フォルダーに対するアクセス許可をリセットする
 
-1. 管理者特権のコマンド プロンプト セッション (**[管理者として実行]**) を開きます。
+1. 管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開きます。
 2. 次のスクリプトを実行します。 このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
 
         Md F:\temp
@@ -216,7 +214,7 @@ RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使�
 
 #### <a name="enable-all-supported-tls-versions"></a>サポートされているすべての TLS バージョンを有効にする
 
-1.  管理者特権のコマンド プロンプト セッション (**[管理者として実行]**) を開き、次のコマンドを使用します。 次のスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
+1.  管理者特権のコマンド プロンプト セッション ( **[管理者として実行]** ) を開き、次のコマンドを使用します。 次のスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
 2.  どの TLS が有効になっているかを確認します。
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

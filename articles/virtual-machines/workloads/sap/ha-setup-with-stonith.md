@@ -4,27 +4,26 @@ description: STONITH を使って SUSE の SAP HANA on Azure (L インスタン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525468"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77615084"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
 
-**免責事項:***このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
+**免責事項:** *このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
 ## <a name="overview"></a>概要
 SUSE のクラスタリングを使って高可用性をセットアップするには、次の前提条件が満たされている必要があります。
 ### <a name="pre-requisites"></a>前提条件
@@ -123,7 +122,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>手順 3. クラスターを構成する
+## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
 このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
 ### <a name="31-package-installation"></a>3.1 パッケージのインストール
 3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方**のノードにインストールしてください。
@@ -140,7 +139,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 [yast2] > [High Availability]\(高可用性) > [Cluster]\(クラスター\) の順に選びます ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-halk2 パッケージは既にインストールされているので、**[Cancel]\(キャンセル\)** をクリックします。
+halk2 パッケージは既にインストールされているので、 **[Cancel]\(キャンセル\)** をクリックします。
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -218,7 +217,7 @@ sbd  -d <SBD Device Name> list
 ```
 ![sbd-list-message.png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 sbd の構成を適用するには、*/etc/sysconfig/sbd* ファイルを次のように更新します。 **両方**のノードでファイルを更新します
+4.9 sbd の構成を適用するには、 */etc/sysconfig/sbd* ファイルを次のように更新します。 **両方**のノードでファイルを更新します
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -334,11 +333,12 @@ Service pacemaker stop
 ```
 次に、**node2** で Pacemaker サービスを停止すると、リソースが **node1** にフェールオーバーします
 
-**フェールオーバーの前**
-![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-**フェールオーバーの後**
-![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
-![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**フェールオーバー前**  
+![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**フェールオーバー後**  
+![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9.トラブルシューティング
@@ -444,11 +444,11 @@ yast2 コントロール センターに高可用性オプションが表示さ�
 
 ![yast2-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-インストールが完了したら、**[Next]\(次へ\)** をクリックします
+インストールが完了したら、 **[Next]\(次へ\)** をクリックします
 
 ![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4:HANA のインストールが gcc アセンブリ エラーで失敗する
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>シナリオ 4: HANA のインストールが gcc アセンブリ エラーで失敗する
 HANA のインストールが次のエラーで失敗します。
 
 ![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
@@ -457,7 +457,7 @@ HANA のインストールが次のエラーで失敗します。
 
 ![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5:Pacemaker サービスが失敗する
+### <a name="scenario-5-pacemaker-service-fails"></a>シナリオ 5: Pacemaker サービスが失敗する
 
 Pacemaker サービスの開始中に、次の問題が発生します。
 
@@ -500,7 +500,7 @@ sapprdhdb95:/ # tail -f /var/log/messages
 2017-09-28T18:45:01.308066-04:00 sapprdhdb95 CRON[57995]: pam_unix(crond:session): session closed for user root
 ```
 
-これを修正するには、*/usr/lib/systemd/system/fstrim.timer* ファイルから次の行を削除します
+これを修正するには、 */usr/lib/systemd/system/fstrim.timer* ファイルから次の行を削除します
 
 ```
 Persistent=true

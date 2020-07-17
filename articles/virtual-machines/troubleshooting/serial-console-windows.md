@@ -4,22 +4,21 @@ description: Azure Virtual Machines および仮想マシン スケール セッ
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 6fd7f36510bdc7ed56ede6a5743a5f131149472e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834749"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410115"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -27,10 +26,10 @@ Azure portal のシリアル コンソールでは、Windows 仮想マシン (VM
 
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
-Linux VM および仮想マシン スケール セット用のシリアル コンソールのドキュメントについては、「[Linux 用 Azure シリアル コンソール](serial-console-linux.md)」を参照してください。
+Linux のシリアル コンソールのドキュメントについては、「[Linux 用 Azure シリアル コンソール](serial-console-linux.md)」をご覧ください。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されています。 Azure Government や Azure China Cloud では利用できません。
+> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,42 +40,19 @@ Linux VM および仮想マシン スケール セット用のシリアル コ�
 
 - VM または仮想マシン スケール セット インスタンスには、パスワード ベースのユーザーが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
 
-* シリアル コンソールにアクセスする VM では、[ブート診断](boot-diagnostics.md)が有効になっている必要があります。
+* 仮想マシン スケール セット インスタンス用 VM では、[ブート診断](boot-diagnostics.md)が有効になっている必要があります。
 
     ![ブート診断の設定](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-## <a name="get-started-with-the-serial-console"></a>シリアル コンソールの概要
-VM および仮想マシン スケール セット用のシリアル コンソールには、Azure Portal を使用してのみアクセスできます。
-
-### <a name="serial-console-for-virtual-machines"></a>仮想マシン用のシリアル コンソール
-VM 用のシリアル コンソールには、Azure portal で **[サポート + トラブルシューティング]** セクション内の **[シリアル コンソール]** をクリックするだけでアクセスできます。
-  1. [Azure Portal](https://portal.azure.com)を開きます。
-
-  1. **[すべてのリソース]** に移動し、仮想マシンを選択します。 VM の概要ページが開きます。
-
-  1. 下へスクロールして **[サポート + トラブルシューティング]** セクションを表示し、**[シリアル コンソール]** を選択します。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
-
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用のシリアル コンソール
-シリアル コンソールは、仮想マシン スケール セットのインスタンスごとに使用できます。 **[シリアル コンソール]** ボタンが表示されるようにするには、仮想マシン スケール セットの個々のインスタンスに移動する必要があります。 仮想マシン スケール セットでブート診断が有効になっていない場合は、ブート診断を有効にするように仮想マシン スケール セット モデルを更新したことを確認してから、シリアル コンソールにアクセスするためにすべてのインスタンスを新しいモデルにアップグレードします。
-  1. [Azure Portal](https://portal.azure.com)を開きます。
-
-  1. **[すべてのリソース]** に移動し、仮想マシン スケール セットを選択します。 仮想マシン スケール セットの概要ページが開きます。
-
-  1. **[インスタンス]** に移動します
-
-  1. 仮想マシン スケール セット インスタンスを選択します
-
-  1. **[サポート + トラブルシューティング]** セクションから、**[シリアル コンソール]** を選択します。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
-
-## <a name="enable-serial-console-functionality"></a>シリアル コンソール機能を有効にする
+## <a name="enable-serial-console-functionality-for-windows-server"></a>Windows Server 向けのシリアル コンソール機能を有効にする
 
 > [!NOTE]
 > シリアル コンソールに何も表示されていない場合は、VM または仮想マシン スケール セットでブート診断が有効になっていることを確認してください。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
-Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
+Azure の新しい Windows Server イメージでは、既定で [Special Administration Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
 
-以前の Windows Server イメージ (2018 年 2 月より前に作成されたもの) では、Azure portal の実行コマンド機能を使用してシリアル コンソールを自動的に有効にすることができます。 Azure Portal で、**[実行コマンド]** を選択し、一覧から **EnableEMS** という名前のコマンドを選択します。
+以前の Windows Server イメージ (2018 年 2 月より前に作成されたもの) では、Azure portal の実行コマンド機能を使用してシリアル コンソールを自動的に有効にすることができます。 Azure Portal で、 **[実行コマンド]** を選択し、一覧から **EnableEMS** という名前のコマンドを選択します。
 
 ![実行コマンドの一覧](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
@@ -84,7 +60,7 @@ Azure の新しい Windows Server イメージでは、既定で [Special Admini
 
 1. リモート デスクトップを使用して Windows 仮想マシンに接続します。
 1. 管理コマンド プロンプトで次のコマンドを実行します。
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on`、PowerShell の場合は `bcdedit /ems '{current}' on`
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. システムを再起動して、SAC コンソールを有効にします。
 
@@ -126,15 +102,15 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
     ![SAC に接続する](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
+1.    「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
 
-1.  「`ch -si 1`」と入力して、CMD インスタンスを実行しているチャネルに切り替えます。
+1.    「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
 
-1.  **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
+1.    **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
 
-1.  有効な資格情報を入力すると、CMD インスタンスが開きます。
+1.    有効な資格情報を入力すると、CMD インスタンスが開きます。
 
-1.  PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
+1.    PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
 
     ![PowerShell インスタンスを開く](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
@@ -160,46 +136,8 @@ Windows Subsystem for Linux (WSL) は Windows Server 2019 以降で有効なの�
 
 ![Windows シリアル コンソールでの再起動](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
-## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
-既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 サブスクリプション レベルまたは VM レベルのいずれかで、シリアル コンソールを無効にすることができます。
-
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>VM/仮想マシン スケール セット レベルの無効化
-シリアル コンソールは、ブート診断設定を無効にすることによって、特定の VM または仮想マシン スケール セットに対して無効にできます。 VM または仮想マシン スケール セット用のシリアル コンソールを無効にするには、Azure portal からブート診断を無効にします。 仮想マシン スケール セットでシリアル コンソールを使用している場合は、仮想マシン スケール セット インスタンスを最新モデルにアップグレードしたことを確認してください。
-
-> [!NOTE]
-> あるサブスクリプションに対してシリアル コンソールを有効または無効にするには、そのサブスクリプションの書き込み権限が必要です。 これらの権限には、管理者ロールと所有者ロールがありますが、それらに限定されません。 カスタム ロールにも、書き込み権限が与えることができます。
-
-### <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
-サブスクリプション全体のシリアル コンソールは、[Disable Console REST API 呼び出し](/rest/api/serialconsole/console/disableconsole)で無効にできます。 API ドキュメントのページで使用できる**使ってみる**機能を利用して、サブスクリプションのシリアル コンソールを有効または無効にすることができます。 **subscriptionId** のサブスクリプション ID を入力し、**default** に "default" と入力して、**[実行]** を選択します。 Azure CLI コマンドはまだ利用できません。
-
-![REST API Try It](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
-
-または、Cloud Shell で以下の一連の bash コマンドを使用して、サブスクリプションのシリアル コンソールの無効化と有効化、および無効化状態の表示ができます。
-
-* サブスクリプションのシリアル コンソールの無効化状態を取得するには、以下を実行します。
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
-    ```
-* サブスクリプションのシリアル コンソールを無効にするには、以下を実行します。
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-* サブスクリプションのシリアル コンソールを有効にするには、以下を実行します。
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
+## <a name="disable-the-serial-console"></a>シリアル コンソールを無効にする
+既定では、すべてのサブスクリプションは、シリアル コンソールのアクセスが有効になっています。 サブスクリプション レベルまたは VM/仮想マシン スケール セット レベルのいずれかで、シリアル コンソールを無効にすることができます。 詳細な手順については、「[Azure シリアル コンソールの有効化と無効化](./serial-console-enable-disable.md)」を参照してください。
 
 ## <a name="serial-console-security"></a>シリアル コンソールのセキュリティ
 
@@ -240,38 +178,24 @@ RDP 構成の問題 | シリアル コンソールにアクセスし、設定を
 システムのネットワーク ロックダウン | Azure portal からシリアル コンソールにアクセスして、システムを管理します。 一部のネットワーク コマンドについては、「[Windows コマンド - CMD と PowerShell](serial-console-cmd-ps-commands.md)」を参照してください。
 ブートローダーの操作 | シリアル コンソールを使用して BCD にアクセスします。 詳細については、「[シリアル コンソールの Windows ブート メニューの有効化](#enable-the-windows-boot-menu-in-the-serial-console)」を参照してください。
 
-
-## <a name="errors"></a>Errors
-ほとんどのエラーは一時的なものであるため、多くの場合、接続の再試行によって解決できます。 次の表は、VM と仮想マシン スケール セット インスタンスの両方でのエラーと対応策の一覧を示しています。
-
-Error                            |   対応策
-:---------------------------------|:--------------------------------------------|
-Unable to retrieve boot diagnostics settings for *&lt;VMNAME&gt;*. (VMNAME のブート診断設定を取得できません。) To use the serial console, ensure that boot diagnostics is enabled for this VM. (シリアル コンソールを使用するには、この VM のブート診断が有効になっていることを確認してください。) | VM の[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。
-The VM is in a stopped deallocated state. (VM は停止済み (割り当て解除) 状態です。) Start the VM and retry the serial console connection. (VM を起動し、シリアル コンソール接続を再試行してください。) | シリアル コンソールにアクセスするには、仮想マシンが起動済み状態である必要があります。
-You do not have the required permissions to use this VM serial console.\(この VM のシリアル コンソールを使用するために必要なアクセス許可がありません。\) Ensure you have at least Virtual Machine Contributor role permissions. (少なくとも仮想マシン共同作成者ロールのアクセス許可があることを確認してください。)| シリアル コンソールにアクセスするには、特定のアクセス許可が必要です。 詳細については、「[前提条件](#prerequisites)」を参照してください。
-Unable to determine the resource group for the boot diagnostics storage account *&lt;STORAGEACCOUNTNAME&gt;*. (ブート診断ストレージ アカウント STORAGEACCOUNTNAME のリソース グループを特定できません。) Verify that boot diagnostics is enabled for this VM and you have access to this storage account. (この VM のブート診断が有効になっており、このストレージ アカウントにアクセスできることを確認してください。) | シリアル コンソールにアクセスするには、特定のアクセス許可が必要です。 詳細については、「[前提条件](#prerequisites)」を参照してください。
-この VM のブート診断ストレージ アカウントにアクセスする際に、"許可されていません" という応答が発生しました。 | ブート診断にアカウントのファイアウォールがないことを確認してください。 シリアル コンソールが機能するには、アクセス可能なブート診断ストレージ アカウントが必要です。
-Web ソケットが閉じているか、開けませんでした。 | 場合によっては、`*.console.azure.com` をホワイトリストに登録する必要があります。 より詳しいものの時間もかかるアプローチとしては、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)をホワイトリストに追加するというものがありますが、この IP 範囲はかなり規則的に変化します。
-Windows VM に接続したときに、正常性情報だけが表示される| このエラーは、Windows イメージ用に Special Administrative Console が有効になっていない場合に発生します。 Windows VM で SAC を手動で有効にする方法については、「[カスタム イメージまたは古いイメージでシリアル コンソールを有効にする](#enable-the-serial-console-in-custom-or-older-images)」を参照してください。 詳細については、[Windows 正常性シグナル](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)に関するページをご覧ください。
-
 ## <a name="known-issues"></a>既知の問題
-Microsoft は、シリアル コンソールには問題がいくつかあることを認識しています。 そのような問題と軽減手順を以下に示します。 これらの問題と軽減策は、VM と仮想マシン スケール セット インスタンスの両方に適用されます。
+Microsoft は、シリアル コンソールおよび VM のオペレーティング システムには問題がいくつかあることを認識しています。 Windows VM のそのような問題と軽減手順を以下に示します。 これらの問題と軽減策は、VM と仮想マシン スケール セット インスタンスの両方に適用されます。 表示されているエラーと一致しない場合は、[シリアル コンソールに関する一般的なエラー](./serial-console-errors.md)に関する記事で一般的なシリアル コンソール サービス エラーを参照してください。
 
 問題                             |   対応策
 :---------------------------------|:--------------------------------------------|
-接続バナーの後に **Enter** キーを押しても、サインイン プロンプトが表示されない。 | 詳細については、[Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 このエラーは、Windows がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、ブート構成を実行している場合に発生する可能性があります。 このエラーは Windows 10 クライアント VM を実行している場合にも発生します。Windows Server VM のみが EMS を有効にするように構成されているからです。
+接続バナーの後に **Enter** キーを押しても、サインイン プロンプトが表示されない。 | 詳細については、[Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 このエラーは、Windows がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、ブート構成を実行している場合に発生する可能性があります。 このエラーは Windows 10 VM を実行している場合にも発生します。Windows Server VM のみが EMS を有効にするように構成されているからです。
+Windows VM に接続したときに、正常性情報だけが表示される| このエラーは、Windows イメージ用に Special Administration Console が有効になっていない場合に発生します。 Windows VM で SAC を手動で有効にする方法については、「[カスタム イメージまたは古いイメージでシリアル コンソールを有効にする](#enable-the-serial-console-in-custom-or-older-images)」を参照してください。 詳細については、[Windows 正常性シグナル](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)に関するページをご覧ください。
+SAC がブラウザーのシリアル コンソール領域全体に表示されない | これは、Windows とターミナル エミュレーターに関する既知の問題です。 両方のチームでこの問題を追跡していますが、現在は軽減策がありません。
 カーネル デバッグを有効にすると、SAC プロンプトで入力できない。 | VM に RDP で接続して、管理者特権でのコマンド プロンプトから `bcdedit /debug {current} off` を実行します。 RDP で接続できない場合は、代わりに OS ディスクを別の Azure VM に接続して、データ ディスクとしてアタッチされている間に `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` を実行して変更し、ディスクを戻すこともできます。
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される。 | 回避策は、`Remove-Module PSReadLine` を実行して、現在のセッションから PSReadLine モジュールをアンロードすることです。 このアクションは、モジュールを削除またはアンインストールしません。
-一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、**[3~**)。 | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
+一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、 **[3~** )。 | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
 長い文字列を貼り付けると機能しない。 | シリアル コンソールでは、シリアル ポートの帯域幅に対する過負荷を防止するために、ターミナルに貼り付けられる文字列の長さが 2048 文字に制限されます。
-シリアル コンソールは、ストレージ アカウントのファイアウォールと連動しません。 | シリアル コンソールは、ブート診断ストレージ アカウントで有効になっているストレージ アカウント ファイアウォールと設計上、連動できません。
-
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q.フィードバックを送信するにはどうすればよいですか?**
 
-A. GitHub の問題を作成したフィードバックの提供 https://aka.ms/serialconsolefeedbackします。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または https://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
+A. GitHub の問題を作成したフィードバックの提供 https://aka.ms/serialconsolefeedback します。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または https://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
 
 **Q.シリアル コンソールでは、コピー/貼り付けが可能ですか。**
 
@@ -291,9 +215,9 @@ A. シリアル コンソールのアクセスに関して、おそらく、イ�
 
 **Q.シリアル コンソールは仮想マシン スケール セットに利用できますか。**
 
-A. 現時点では、仮想マシン スケール セット インスタンスのシリアル コンソールにはアクセスできません。
+A. はい。 「[仮想マシン スケール セット用のシリアル コンソール](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Windows SAC で使用できる CMD および PowerShell コマンドの詳細なガイドについては、「[Windows コマンド -CMD と PowerShell](serial-console-cmd-ps-commands.md)」を参照してください。
 * シリアル コンソールは、[Linux](serial-console-linux.md) VM でも使用できます。
 * ブート診断の詳細については、[こちら](boot-diagnostics.md)を参照してください。

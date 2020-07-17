@@ -1,31 +1,33 @@
 ---
-title: Azure Data Catalog で "ビッグ データ" のデータ ソースを操作する方法
+title: Azure Data Catalog でビッグ データのカタログを作成する方法
 description: Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの "ビッグ データ" のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: b6b419d575e2164fc683b8e6b5020572db74d1b4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998670"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71300582"
 ---
-# <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データのカタログを作成する方法
+
 ## <a name="introduction"></a>はじめに
+
 **Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 これはユーザーがデータ ソースを検出、理解、使用するために役立つサービスであり、組織が既存のデータ ソース (ビッグ データなど) から、より多くの価値を引き出すために利用することもできます。
 
 **Azure Data Catalog** では、Azure BLOG ストレージの BLOB とディレクトリに加え、Hadoop HDFS のファイルとディレクトリの登録がサポートされています。 これらのデータ ソースの半構造化という性質によって高い柔軟性が得られます。 ただし、**Azure Data Catalog** へのデータ ソースの登録による効果を最大限に引き出すためには、データ ソースを構造化する方法をユーザーが検討する必要があります。
 
 ## <a name="directories-as-logical-data-sets"></a>論理データ セットとしてのディレクトリ
+
 ビッグ データ ソースを構造化するための一般的なパターンでは、ディレクトリを論理データ セットとして扱います。 最上位レベルのディレクトリはデータ セットの定義に使用されるのに対し、サブフォルダーはパーティションを定義し、それに含まれるファイルはデータそのものを格納しています。
 
 このパターンの例は次のようになります。
 
+```text
     \vehicle_maintenance_events
         \2013
         \2014
@@ -38,26 +40,32 @@ ms.locfileid: "59998670"
     \location_tracking_events
         \2013
         ...
+```
 
 この例では、vehicle_maintenance_events と location_tracking_events が論理データ セットを表しています。 これらの各フォルダーには、年および月単位でサブフォルダーに分類されたデータ ファイルが含まれています。 各フォルダーに含まれるファイルの数は、数百から数千に及ぶ可能性があります。
 
 このパターンでは、個々のファイルを **Azure Data Catalog** に登録しても、おそらく効果はありません。 代わりに、データを操作するユーザーにとって意味のあるデータ セットを表すディレクトリを登録してください。
 
 ## <a name="reference-data-files"></a>参照データ ファイル
+
 補足的なパターンでは、参照データ セットを個々のファイルとして格納します。 このようなデータ セットは、ビッグ データの "小さな" 側面と見なされる可能性があり、多くの場合は、分析データ モデルにおける次元に似ています。 参照データ ファイルにはレコードが含まれていますが、レコードは、ビッグ データ ストアのどこかに格納されているデータ ファイルの大部分についてのコンテキストを提供するために使用されます。
 
 このパターンの例は次のようになります。
 
+```text
     \vehicles.csv
     \maintenance_facilities.csv
     \maintenance_types.csv
+```
 
 アナリストやデータ サイエンティストがより大規模なディレクトリ構造に含まれるデータを操作する場合、これらの参照ファイル内のデータは、より大きなデータ セット内で名前または ID のみで参照されるエンティティについてより詳細な情報を提供するために使用できます。
 
 このパターンでは、個々の参照データ ファイルを **Azure Data Catalog** に登録することが理にかなっています。 各ファイルはデータ セットを表し、個別に注釈を付けたり探索したりできます。
 
 ## <a name="alternate-patterns"></a>代替パターン
+
 前のセクションで説明したパターンは、ビッグ データ ストアを構造化できるただ 2 つの方法ですが、それぞれの実装は異なります。 データ ソースがどのように構造化されているかに関係なく、ビッグ データ ソースを **Azure Data Catalog** に登録する際は、組織内の他のユーザーにとって価値のあるデータ セットを表すファイルまたはディレクトリを登録することに重点を置いてください。 すべてのファイルとディレクトリを登録すると、カタログは煩雑になり、ユーザーが必要なデータを見つけにくくなります。
 
 ## <a name="summary"></a>まとめ
+
 データ ソースを **Azure Data Catalog** に登録すると、そのデータ ソースの探索や理解が簡単になります。 ビッグ データ ファイルと、論理データ セットを表すディレクトリを登録して注釈を付けることで、ユーザーが必要なビッグ データを見つけて使用することを支援できます。

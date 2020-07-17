@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523509"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70073541"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Azure API Management でサブスクリプションを作成する
 
@@ -45,7 +44,7 @@ Azure API Management を介して API を公開する場合、これらの API �
 
 サブスクリプションを作成した後、API にアクセスするために 2 つの API キーが提供されます。 一方のキーはプライマリで、他方のキーはセカンダリです。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 API Management の詳細情報:
 
 + API Management の他の[概念](api-management-terminology.md)を確認します。

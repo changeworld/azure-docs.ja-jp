@@ -1,28 +1,22 @@
 ---
-title: Azure Notebook プロジェクトを構成および管理する
-description: Azure Notebooks UI とターミナル直接アクセスの両方を使用し、プロジェクト メタデータ、プロジェクト ファイル、プロジェクトの環境を管理して、セットアップする方法。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/25/2019
-ms.author: kraigb
-ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+title: Azure Notebooks プレビューの構成と管理
+description: Azure Notebooks UI とターミナル直接アクセスの両方を使用し、プロジェクト メタデータ、プロジェクト ファイル、プロジェクトの環境を管理して、セットアップする方法について説明します。
+ms.topic: how-to
+ms.date: 02/28/2020
+ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268009"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236123"
 ---
-# <a name="manage-and-configure-projects"></a>プロジェクトの管理と構成
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks プレビューでプロジェクトを管理および構成する
 
-Azure Notebooks のプロジェクトは、基本的には、Jupyter ノートブックが実行される基になる Linux 仮想マシンと、ファイル フォルダーおよび記述メタデータで構成されます。 Azure Notebooks のプロジェクト ダッシュボードを使用すると、ファイルを管理できます。また、プロジェクトの特性を構成することもできます。
+Azure Notebooks プレビューのプロジェクトは、基本的には、Jupyter ノートブックが実行される基になる Linux 仮想マシンと、ファイル フォルダーおよび記述メタデータで構成されます。 
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks のプロジェクト ダッシュボードを使用すると、ファイルを管理できます。また、プロジェクトの特性を構成することもできます。
 
 - プロジェクトで実行するコンピューティング レベル。Free レベルまたは Azure 仮想マシンを指定できます。
 - プロジェクト メタデータ。これには、名前、説明、プロジェクトを共有するときに使用される識別子のほか、プロジェクトがパブリックかプライベートかも含まれています。
@@ -37,48 +31,17 @@ Azure Notebooks のプロジェクトは、基本的には、Jupyter ノート�
 
 ## <a name="compute-tier"></a>コンピューティング レベル
 
-プロジェクト ダッシュ ボードの **[実行]** ドロップダウン リストでは、プロジェクトで実行するコンピューティング レベルを選択します。 既定で、プロジェクトは **Free コンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されます。
-
-![プロジェクト ダッシュ ボードのコンピューティング レベル ドロップダウン リスト](media/project-compute-tier-list.png)
-
-これらの制限をバイパスするには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 その仮想マシン上で、JupyterHub をインストールして実行する必要があります。 Data Science Virtual Machine イメージ (オペレーティング システムは任意) は、既定で JupyterHub が含まれるため、適切な選択です。
-
-適切に構成された Azure 仮想マシンを用意したら、ドロップダウン リストで **[Direct Compute]\(直接コンピューティング\)** オプションを選択します。すると、名前 (一覧に表示する名前)、VM の IP アドレスとポート (通常は 8000、JupyterHub がリッスンする既定のポート)、および VM 資格情報の入力を求められます。
-
-![[Direct Compute]\(直接コンピューティング\) オプションのサーバー情報を収集するプロンプト](media/project-compute-tier-direct.png)
-
-次の条件が当てはまる場合、ドロップダウン リストには、[Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine) インスタンスも表示されます (これらのいずれかの条件を満たしていない場合でも、[Direct Compute]\(直接コンピューティング\) オプションを使用し、Azure portal から取得した値を入力して、DSVM に接続できます)。
-
-- 会社のアカウントなどの Azure Active Directory (AAD) を使用するアカウントで、Azure Notebooks にサインインしている。
-- アカウントが Azure サブスクリプションに接続されている。
-- そのサブスクリプションに、少なくとも閲覧者アクセス権を持ち、Data Science Virtual Machine for Linux (Ubuntu) イメージを使用する 1 つ以上の仮想マシンが含まれている。
-
-![プロジェクト ダッシュボードのドロップダウン リストの Data Science Virtual Machine インスタンス](media/project-compute-tier-dsvm.png)
-
-DSVM インスタンスを選択すると、Azure Notebooks によって、VM を作成したときに使用した特定のマシン資格情報が求められることがあります。
-
-新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に関するページの指示に従います。 Azure Notebooks 内のドロップダウン リストに DSVM が表示されるようにする場合は、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用します。  その他の理由で Windows または CentOS イメージを使用する必要がある場合は、**[Direct Compute]\(直接コンピューティング\)** オプションを使用して手動で DSVM に接続できます。
-
-> [!IMPORTANT]
-> [Direct Compute]\(直接コンピューティング\) または Data Science Virtual Machine を使用する場合、それらを実行するノートブックは完全に自己完結型でなければなりません。 現時点では、Azure Notebooks は *.ipynb* ファイルのみを VM にコピーし、プロジェクト内の他のファイルはコピーしません。 その結果、他の VM で実行されているノートブックでは、他のプロジェクト ファイルを見つけることができません。
->
-> この動作を回避するには、次の 2 つの方法があります。
->
-> 1. プロジェクト ファイルを手動で VM にコピーします。
->
-> 2. プライマリ ノートブックの前に最初に実行するセットアップ ノートブック内にそのファイルを埋め込みます。 セットアップ ノートブックで、セルにファイルの内容が含まれている各ファイルのコード セルを作成します。 次に、各セルの先頭にコマンド `%%writefile <filename>` を挿入します。ここで、`<filename>` は、内容を受け取るファイルの名前です。 ノートブックを実行すると、VM 上にそれらすべてのファイルが作成されます。 例については、[Microsoft Pet Detector デモの setup.ipynb ファイル](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub) をご覧ください。
->
->     ![コード セルの先頭で %%writefile コマンドを使用する](media/setup-notebook-writefile-command.png)
+既定では、プロジェクトは**無料のコンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されています。 これらの制限を回避してコンピューティング能力を向上させるには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 詳細については、「[Azure Data Science Virtual Machine を使用する](use-data-science-virtual-machine.md)」を参照してください。
 
 ## <a name="edit-project-metadata"></a>プロジェクト メタデータを編集する
 
-プロジェクト ダッシュボードで、**[プロジェクト設定]**、**[情報]** タブの順に選択します。このタブには、次の表に示すプロジェクトのメタデータが格納されています。 プロジェクト メタデータは、いつでも変更できます。
+プロジェクト ダッシュボードで、 **[プロジェクト設定]** 、 **[情報]** タブの順に選択します。このタブには、次の表に示すプロジェクトのメタデータが格納されています。 プロジェクト メタデータは、いつでも変更できます。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 | --- | --- |
 | プロジェクト名 | Azure Notebooks が表示目的で使用する、ご自身のプロジェクトのフレンドリ名。 例: "Python の Hello World" |
 | プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます。 この ID には、文字、数字、およびハイフンのみを使用できます。長さは 30 文字に制限されています。また、この ID は[予約済みプロジェクト ID](create-clone-jupyter-notebooks.md#reserved-project-ids) にすることはできません。 何を使用すればよいかよくわからない場合は、"my-notebook-project" のように、プロジェクトを小文字にしてスペースをハイフンに変えたバージョンを使用するのが一般的な慣例です (長さの制限に合わせて必要に応じて短くします)。 |
-| パブリック プロジェクト | 設定すると、リンクを知っているすべてのユーザーがプロジェクトにアクセスできます。 プライベート プロジェクトを作成する場合、このオプションはオフにします。 |
+| パブリック プロジェクト | 設定すると、リンクを持つすべてのユーザーがプロジェクトにアクセスできます。 プライベート プロジェクトを作成する場合、このオプションはオフにします。 |
 | 複製を非表示にする | 設定すると、他のユーザーが、このプロジェクトに対して作成された複製の一覧を表示できません。 複製を非表示にする機能は、講義にノートブックを使っている場合など、同じ組織に所属していない人が共有先として多数存在するプロジェクトに便利です。 |
 
 > [!Important]
@@ -110,7 +73,7 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 ![ファイルのコンテキスト メニューのコマンド](media/project-file-commands.png)
 
-| command | キーボード ショートカット | Action |
+| command | キーボード ショートカット | アクション |
 | --- | --- | --- |
 | ラン | r (またはクリック) | ノートブック ファイルを実行します。 他の種類のファイルは、閲覧のみの設定で表示されます。  |
 | リンクのコピー | y | ファイルへのリンクをクリップボードにコピーします。 |
@@ -118,9 +81,9 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 | プレビュー | p | ファイルの HTML プレビューを開きます。ノートブックの場合、プレビューは、ノートブックの読み取り専用レンダリングです。 詳細については、「[プレビュー](#preview)」を参照してください。 |
 | ファイルの編集 | i | 編集のためにファイルを開きます。 |
 | ダウンロード | d | ファイルまたはフォルダーのコンテンツを含む zip ファイルをダウンロードします。 |
-| 名前の変更 | a | ファイルまたはフォルダーに付ける新しい名前を求めるメッセージが表示されます。 |
+| [名前の変更] | a | ファイルまたはフォルダーに付ける新しい名前を求めるメッセージが表示されます。 |
 | 削除 | x | 削除の確認メッセージを表示した後、そのファイルをプロジェクトから完全に削除します。 削除を元に戻すことはできません。 |
-| Move | m | 同じプロジェクト内の別のフォルダーにファイルを移動します。 |
+| 詳細ビュー | m | 同じプロジェクト内の別のフォルダーにファイルを移動します。 |
 
 #### <a name="preview"></a>プレビュー
 
@@ -128,7 +91,7 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 プレビュー ページでは、複数のツール バー コマンドとキーボード ショートカットを使用できます。
 
-| command | キーボード ショートカット | Action |
+| command | キーボード ショートカット | アクション |
 | --- | --- | --- |
 | 共有 | s | リンクの取得、ソーシャル メディアでの共有、埋め込み用 HTML の取得、電子メールの送信など、共有操作を行うためのポップアップを表示します。 |
 | 複製 | c  | ノートブックをご自身のアカウントに複製します。 |
@@ -147,17 +110,17 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 ### <a name="one-time-initialization-script"></a>1 回限りの初期化スクリプト
 
-Azure Notebooks は、プロジェクトに対してサーバーを初めて作成するときに、そのプロジェクトで *aznbsetup.sh* という名前のファイルを探し、このファイルが存在する場合は、それを実行します。 スクリプトの出力は、*.aznbsetup.log* としてプロジェクト フォルダーに格納されます。
+Azure Notebooks は、プロジェクトに対してサーバーを初めて作成するときに、そのプロジェクトで *aznbsetup.sh* という名前のファイルを探し、このファイルが存在する場合は、それを実行します。 スクリプトの出力は、 *.aznbsetup.log* としてプロジェクト フォルダーに格納されます。
 
 ### <a name="environment-setup-steps"></a>環境のセットアップ ステップ
 
 プロジェクトの環境設定を使用すると、環境を構成するためのステップを個別に作成できます。
 
-プロジェクト ダッシュボードで、**[プロジェクト設定]**、**[環境]** タブの順に選択します。ここで、そのプロジェクトのセットアップ ステップを追加、削除、および変更します。
+プロジェクト ダッシュボードで、 **[プロジェクト設定]** 、 **[環境]** タブの順に選択します。ここで、そのプロジェクトのセットアップ ステップを追加、削除、および変更します。
 
 ![[環境] タブが選択されている [プロジェクト設定] ポップアップ](media/project-settings-environment-steps.png)
 
-ステップを追加するには、最初に **[+ 追加]** を選択し、**[操作]** ドロップダウン リストでステップの種類を選択します。
+ステップを追加するには、最初に **[+ 追加]** を選択し、 **[操作]** ドロップダウン リストでステップの種類を選択します。
 
 ![新しい環境セットアップ ステップの操作セレクター](media/project-settings-environment-details.png)
 
@@ -169,7 +132,10 @@ Azure Notebooks は、プロジェクトに対してサーバーを初めて作�
 
 - **Environment.yml**:2 番目のドロップダウン リストで、conda 環境を使用して、Python プロジェクト用の *environments.yml* ファイルを選択します。
 
-ステップの追加が完了したら、**[保存]** を選択します。
+   > [!WARNING]
+   > これは開発段階のプレビュー サービスであるため、現在、`Environment.yml` 設定がプロジェクトに正しく適用されないという問題が確認されています。 現時点では、指定した環境ファイルが、プロジェクトとそこに含まれる Jupyter ノートブックに読み込まれません。
+
+ステップの追加が完了したら、 **[保存]** を選択します。
 
 ### <a name="use-the-terminal"></a>ターミナルの使用
 
@@ -220,7 +186,7 @@ Python ノートブックのコード セルからコマンドを使用するこ
 !cat .nb.log
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [方法:プロジェクト データ ファイルを操作する](work-with-project-data-files.md)
+- [方法: プロジェクト データ ファイルを操作する](work-with-project-data-files.md)
 - [ノートブックでクラウド データにアクセスする](access-data-resources-jupyter-notebooks.md)

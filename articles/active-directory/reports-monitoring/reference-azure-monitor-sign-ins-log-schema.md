@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor の Azure Active Directory サインイン ログ スキーマ | Microsoft Docs
+title: Azure Monitor のサインイン ログ スキーマ | Microsoft Docs
 description: Azure Monitor で使用する Azure AD サインイン ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001152"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129196"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -149,20 +149,25 @@ ms.locfileid: "60001152"
 | ResourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
 | OperationName | サインインの場合、この値は常に *Sign-in activity* です。 |
 | OperationVersion | クライアントによって要求された REST API のバージョン。 |
-| Category | サインインの場合、この値は常に *SignIn* です。 | 
+| カテゴリ | サインインの場合、この値は常に *SignIn* です。 | 
 | TenantId | ログに関連付けられたテナント GUID。 |
 | ResultType | サインイン操作の結果は、*Success* または *Failure* です。 | 
 | ResultSignature | サインイン操作にエラーがある場合は、そのエラー コードが含まれます。 |
 | ResultDescription | サインイン操作のエラーの説明を指定します。 |
-| DurationMs |  この値はマップされていないため、このフィールドを無視しても問題ありません。|
+| riskDetail | riskDetail | 危険なユーザー、サインイン、リスク検出の特定の状態の背後にある "理由" を提供します。 値には `none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue` があります。 値 `none` は、ユーザーまたはサインインに対してこれまで何のアクションも行われていないことを意味します。 <br>**注:** このプロパティの詳細には Azure AD Premium P2 ライセンスが必要です。 その他のライセンスからは、値 `hidden` が返されます。 |
+| riskEventTypes | riskEventTypes | サインインに関連するリスク検出の種類。 値には `unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic`、`unknownFutureValue` があります。 |
+| riskLevelAggregated | riskLevel | 集計リスク レベル。 値には `none`、`low`、`medium`、`high`、`hidden`、`unknownFutureValue` があります。 値 `hidden` は、Azure AD Identity Protection に対してユーザーまたはサインインが有効にされなかったことを意味します。 **注:** このプロパティの詳細は、Azure AD Premium P2 のお客様のみが利用できます。 その他の顧客には、`hidden` が返されます。 |
+| riskLevelDuringSignIn | riskLevel | サインイン中のリスク レベル。 値には `none`、`low`、`medium`、`high`、`hidden`、`unknownFutureValue` があります。 値 `hidden` は、Azure AD Identity Protection に対してユーザーまたはサインインが有効にされなかったことを意味します。 **注:** このプロパティの詳細は、Azure AD Premium P2 のお客様のみが利用できます。 その他の顧客には、`hidden` が返されます。 |
+| riskState | riskState | 危険なユーザー、サインイン、リスク検出の状態を報告します。 値には、`none`、`confirmedSafe`、`remediated`、`dismissed`、`atRisk`、`confirmedCompromised`、`unknownFutureValue` があります。 |
+| DurationMs |  この値はマップされていないため、このフィールドを無視しても問題ありません。 |
 | CallerIpAddress | 要求を行ったクライアントの IP アドレス。 | 
 | CorrelationId | クライアントから渡される省略可能な GUID。 この値は、クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
 | ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
 | Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
-| Location | サインイン アクティビティの場所を指定します。 |
+| 場所 | サインイン アクティビティの場所を指定します。 |
 | Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
-* [Azure 診断ログの詳細を確認する](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Azure でのプラットフォーム ログの詳細について読む](../../azure-monitor/platform/platform-logs-overview.md)

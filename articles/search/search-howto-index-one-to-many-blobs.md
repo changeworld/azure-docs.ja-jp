@@ -1,34 +1,33 @@
 ---
-title: フルテキスト検索のために Azure Blob インデクサーから複数の検索インデックス ドキュメントを含む BLOB にインデックスを付ける - Azure Search
-description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure BLOB をクロールします。 各 BLOB には、1 つまたは複数の Azure Search インデックス ドキュメントが含まれる場合があります。
-ms.date: 05/02/2019
+title: 複数のドキュメントを含むインデックス BLOB
+titleSuffix: Azure Cognitive Search
+description: Azure BLOB をクロールしてテキスト コンテンツを探すために、Azure Cognitive Search Blob インデクサーを使用します。この場合、各 BLOB から 1 つ以上の検索インデックス ドキュメントが生成される場合があります。
+manager: nitinme
 author: arv100kri
-manager: briansmi
 ms.author: arjagann
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seofeb2018
-ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/04/2019
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024662"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74112270"
 ---
-# <a name="indexing-blobs-producing-multiple-search-documents"></a>複数の検索ドキュメントを生成する BLOB のインデックス作成
+# <a name="indexing-blobs-to-produce-multiple-search-documents"></a>BLOB のインデックス作成して複数の検索ドキュメントを生成する
 既定では、BLOB インデクサーで BLOB のコンテンツが単一の検索ドキュメントとして扱われます。 特定の **parsingMode** 値では、個々の BLOB で複数の検索ドキュメントが生成される可能性のあるシナリオがサポートされます。 インデクサーで BLOB から複数の検索ドキュメントを抽出できるようにする、さまざまな種類の **parsingMode** を以下に示します。
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
 
 ## <a name="one-to-many-document-key"></a>一対多のドキュメント キー
-Azure Search インデックスに表示される各ドキュメントは、ドキュメント キーによって一意に識別されます。 
+Azure Cognitive Search インデックスに表示される各ドキュメントは、ドキュメント キーによって一意に識別されます。 
 
-解析モードが指定されていない状態で、インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Search で自動的にキーとして `metadata_storage_path` プロパティが[マップ](search-indexer-field-mappings.md)されます。 このマッピングによって、各 BLOB が別個の検索ドキュメントとして確実に表示されます。
+解析モードが指定されていない状態で、インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Cognitive Search で自動的にキーとして `metadata_storage_path` プロパティが[マップ](search-indexer-field-mappings.md)されます。 このマッピングによって、各 BLOB が別個の検索ドキュメントとして確実に表示されます。
 
-上記にリストされた解析モードのいずれかを使用する場合、1 つの BLOB が "多くの" 検索ドキュメントにマップされ、BLOB メタデータのみに基づくドキュメント キーが不適切なものとなります。 この制約を克服するために、Azure Search では、BLOB から抽出された個々のエンティティごとに "一対多" のドキュメント キーを生成できます。 このプロパティは `AzureSearch_DocumentKey` という名前で、BLOB から抽出された個々のエンティティに追加されます。 このプロパティの値は必ず、_BLOB 全体の_ 個々のエンティティごとに一意となり、エンティティは別の検索ドキュメントとして表示されます。
+上記にリストされた解析モードのいずれかを使用する場合、1 つの BLOB が "多くの" 検索ドキュメントにマップされ、BLOB メタデータのみに基づくドキュメント キーが不適切なものとなります。 この制約を克服するために、Azure Cognitive Search では、BLOB から抽出された個々のエンティティごとに "一対多" のドキュメント キーを生成できます。 このプロパティは `AzureSearch_DocumentKey` という名前で、BLOB から抽出された個々のエンティティに追加されます。 このプロパティの値は必ず、_BLOB 全体の_ 個々のエンティティごとに一意となり、エンティティは別の検索ドキュメントとして表示されます。
 
 既定では、キー インデックス フィールドに対して明示的なフィールド マッピングが指定されていない場合、`base64Encode` フィールド マッピング関数を使用して、`AzureSearch_DocumentKey` がそれにマップされます。
 
@@ -59,7 +58,7 @@ _Blob2.json_
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-この設定では、以下の情報を含む Azure Search インデックスが生成されます (簡潔にするため、base64 エンコード ID は短縮されています)
+この設定では、以下の情報を含む Azure Cognitive Search インデックスが生成されます (簡潔にするため、base64 エンコード ID は短縮されています)
 
 | id | 温度 | pressure | timestamp |
 |----|-------------|----------|-----------|
@@ -91,19 +90,17 @@ _Blob2.json_
         "targetFieldName": "id"
     }
 
-しかし、このマッピングでは、インデックスに 4 つのドキュメントは表示_されません_。`recordid` フィールドは _BLOB 全体で_ 一意ではないためです。 そのため、"1 対多" の解析モードでは、`AzureSearch_DocumentKey` プロパティからキー インデックス フィールドに適用される暗黙的なフィールド マッピングを利用することをお勧めします。
+しかし、このマッピングでは、インデックスに 4 つのドキュメントは表示 _されません_。`recordid` フィールドは _BLOB 全体で_ 一意ではないためです。 そのため、"1 対多" の解析モードでは、`AzureSearch_DocumentKey` プロパティからキー インデックス フィールドに適用される暗黙的なフィールド マッピングを利用することをお勧めします。
 
 明示的なフィールド マッピングを設定する場合は、**BLOB 全体の**個々のエンティティの _sourceField_ がそれぞれ固有であることを確認してください。
 
 > [!NOTE]
 > 抽出されたエンティティごとの一意性を確保するために `AzureSearch_DocumentKey` で使用される手法は変更される可能性があるため、アプリケーションのニーズに応じて、その値に依存しないようにしてください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-+ [Azure Search のインデクサー](search-indexer-overview.md)
-+ [Azure Blob Storage のインデックスを Azure Search で作成する](search-howto-index-json-blobs.md)
-+ [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-+ [Azure Search の BLOB インデクサーを使用して JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
+BLOB のインデックス作成の基本構造とワークフローについてまだよく理解していない場合は、まず [Azure Cognitive Search で Azure Blob Storage のインデックスを作成する](search-howto-index-json-blobs.md)方法に関するページを参照してください。 さまざまな種類の BLOB コンテンツ タイプ の解析モードに関する詳細については、次の記事を参照してください。
 
-## <a name="NextSteps"></a>次のステップ
-* Azure Search について詳しくは、[Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
+> [!div class="nextstepaction"]
+> [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
+> [JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)

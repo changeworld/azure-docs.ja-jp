@@ -1,19 +1,15 @@
 ---
 title: Azure Monitor と統合するパートナー
 description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: robb
-ms.subservice: ''
-ms.openlocfilehash: fae8e80c6fa94c3581de3038399ef031506b2f55
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65774244"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854940"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -37,12 +33,6 @@ AppDynamics アプリケーション パフォーマンス管理 (APM) により
 
 [ドキュメントを確認する。][appdynamics-doc]
 
-## <a name="microfocus-arcsight"></a>Microfocus ArcSight
-
-Arcsight 社には、Azure Monitor イベント ハブ用のスマート コネクタがあります。
-
-[詳細情報。][arcsight-doc]
-
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 
 ![Atlassian のロゴ](./media/partners/atlassian.png)
@@ -59,7 +49,7 @@ Azure Monitor のアラートで JIRA チケットを作成できます。
 
 ![Circonus のロゴ](./media/partners/circonus.png)
 
-Circonus は、オンプレミスまたは SaaS デプロイメント用に構築された、マイクロサービスの監視と分析のプラットフォームです。 完全に自動化できる API 中心プラットフォームは、監視対象のシステムよりもスケーラビリティが高く信頼性に優れています。 Circonus は、DevOps の要件を満たすように開発されており、パーセンタイルベースのアラート、グラフ、ダッシュボード、機械学習インテリジェンスを提供して、ビジネスの最適化を実現します。 Circonus は、Microsoft Azure クラウド リソースとそのアプリケーションをリアルタイムで監視します。 Circonus を使用すると、リソースとアプリケーションについて測定する変数のメトリックを収集および追跡できます。 Circonus では、Azure のリソース使用率、アプリケーション パフォーマンス、操作の正常性を、システム全体で把握できます。
+Circonus はマシン データ インテリジェンスのエキスパートであり、かつてないビジネスの洞察と価値を実現するために、数十億のメトリック ストリームをリアルタイムで処理できる唯一のマシン データ インテリジェンス プラットフォームを提供しています。 Circonus を使用して、Microsoft Azure のセットアップに関連する主要なメトリックを収集、追跡、および視覚化します。 Azure のリソース使用率、アプリケーション パフォーマンス、操作の正常性を、システム全体で把握します。
 
 [ドキュメントを確認する。][circonus-doc]
 
@@ -68,9 +58,9 @@ Circonus は、オンプレミスまたは SaaS デプロイメント用に構�
 ![CloudHealth のロゴ](./media/partners/cloudhealth.png)
 
 
-時間と費用を節約するように構築されたプラットフォームで、クラウドを統合および自動化します。 CloudHealth は、クラウドを管理するための可視性、直感的な最適化、堅牢なガバナンス プラクティスを提供します。 Cloudhealth プラットフォームによって、企業と MSP は、クラウドへの投資から最大の利益を得ることができます。 コスト、使用状況、パフォーマンス、およびセキュリティに関して自信を持って決定を下すことができます。
+時間と費用を節約するように構築されたプラットフォームで、クラウドを統合および自動化します。 CloudHealth は、クラウドを管理するための可視性、直感的な最適化、堅牢なガバナンス プラクティスを提供します。 CloudHealth プラットフォームによって、企業と MSP は、クラウドへの投資から最大の利益を得ることができます。 コスト、使用状況、パフォーマンス、およびセキュリティに関して自信を持って決定を下すことができます。
 
-[詳細はこちら。][cloudhealth-doc]
+[詳細情報][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -125,9 +115,34 @@ InfluxDB の開発元である InfluxData は、DevOps と IoT アプリケー�
 
 ![Logic Monitor のロゴ](./media/partners/logicmonitor.png)
 
-LogicMonitor® は、複雑な IT インフラストラクチャ向けの SaaS ベースのパフォーマンス監視プラットフォームです。 LogicMonitor は、何千ものテクノロジに対応しているので、インフラストラクチャとアプリケーションのパフォーマンスを細かく把握できます。 LM Cloud の包括的な Azure 監視機能を使用すると、Azure クラウド、オンプレミス、およびハイブリッド クラウド リソースのパフォーマンスをすべて 1 つのプラットフォームから相互に関連付けることができます。 自動化リソース検出、組み込みの監視テンプレート、事前構成されたアラートのしきい値、カスタマイズ可能なダッシュボードを利用することで、IT 業務の成功に必要なスピード、柔軟性、可視性を実現できます。
+LogicMonitor&reg; は、複雑な IT インフラストラクチャ向けの SaaS ベースのパフォーマンス監視プラットフォームです。 LogicMonitor は、何千ものテクノロジに対応しているので、インフラストラクチャとアプリケーションのパフォーマンスを細かく把握できます。 LM Cloud の包括的な Azure 監視機能を使用すると、Azure クラウド、オンプレミス、およびハイブリッド クラウド リソースのパフォーマンスをすべて 1 つのプラットフォームから相互に関連付けることができます。 自動化リソース検出、組み込みの監視テンプレート、事前構成されたアラートのしきい値、カスタマイズ可能なダッシュボードを利用することで、IT 業務の成功に必要なスピード、柔軟性、可視性を実現できます。
 
 [ドキュメントを確認する。][logicmonitor-doc]
+
+## <a name="logrhythm"></a>LogRhythm
+
+![LogRhythm ロゴ](./media/partners/logrhythm.png)
+
+NextGen SIEM で業界をリードする LogRhythm は、インターネット上の脅威をすばやく検出し、対応し、無力化することでリスクを確実に減らす力を世界中の企業に与えています。 LogRhythm の Threat Lifecycle Management (TLM) ワークフローはセキュリティ運用センターの土台であり、顧客が IT および OT 環境のためのインフラストラクチャ (クラウド、物理、仮想) をセキュリティで保護する活動を支援します。 LogRhythm のお客様が Azure の導入を始める準備ができている場合、LogRhythm Open Collector と EventHub 統合をインストールし、構成する必要があります。 Azure Monitor と Open Collector の両方の構成方法に関するドキュメントなど、詳細は[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)にあります。 
+
+
+
+## <a name="microfocus"></a>Microfocus
+
+![Microfocus ロゴ](./media/partners/microfocus.png)     
+
+Microfocus **ArcSight** には、Azure Monitor イベント ハブ用のスマート コネクタがあります。
+
+[詳細情報](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight ドキュメント。")
+
+Microfocus **Operations Bridge** では、実行される箇所やあらゆる種類のデータ (イベント、メトリクス、ログ、依存関係) に AIOps を適用する箇所に関係なく、あらゆるハイブリッド IT リソース、つまり、あらゆるデバイス、オペレーティング システム、データベース、アプリケーション、サービスが自動的に監視されます。 高品質のサービス監視とアプリケーションの正常性の詳細な分析を独自の方法で組み合わせ、Microsoft Azure サービスの包括的なパフォーマンスと可用性を監視します。 Operations Bridge の顧客は、ビジネスの関係者も IT の関係者も理解できるような方法で、ブラウザー付きのあらゆるデバイスで利用できる統一画面を提供できます。
+
+詳細情報
+- [OB Suite の概要](https://www.microfocus.com/products/operations-bridge-suite/overview)
+- [ダウンロード](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
+- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) - SiteScope は Operations Bridge Suite のコンポーネントです。
+
+
 
 ## <a name="moogsoft"></a>Moogsoft
 
@@ -190,6 +205,14 @@ Serverless360 は、Azure のサーバーレス コンポーネントを操作�
 
 [詳細情報。][serverless360-doc]
 
+## <a name="servicenow"></a>ServiceNow
+
+![ServiceNow のロゴ](./media/partners/servicenow.png)
+
+NOW AIOps プラットフォームを使用してインシデントと MTTR を削減することで、ノイズの除去、優先順位付け、ML を使用した根本原因検出の特定、ITX ワークフローによる修復を行っています。  Azure からの Iaas/PaaS/FaaS サービスの現在の状態を把握し、タグからサービス マップを構築して、ビジネス影響分析のためのアプリケーション サービス コンテキストを構築します。    
+
+[詳細情報。](https://www.servicenow.com/solutions/aiops.html)
+
 ## <a name="signalfx"></a>SignalFx
 
 ![SignalFX のロゴ](./media/partners/signalfx.png)
@@ -199,6 +222,7 @@ SignalFx は、データドリブン DevOps 向けリアルタイム オペレ�
 [ドキュメントを確認する。][signalfx-doc]
 
 ## <a name="signl4"></a>SIGNL4
+
 ![SIGNL4 のロゴ](./media/partners/signl4.png)
 
 SIGNL4 は運用チーム向けのモバイル アラート アプリです。プッシュ、テキスト、音声通話などを使用して、どこからでも適切なタイミングで適切な相手に Azure Monitor の重要なアラートをルーティングできる最速のアプリです。 SIGNL4 は、チームの待機業務とシフトを管理し、アラートの配信と所有権を追跡し、必要に応じてエスカレートします。 チーム全体の完全な透明性が提供されます。 SIGNL4 のとても簡単な REST Web フックを使用すると、どのような Azure サービスでもすぐに接続できます。 SIGNL4 を使用すると、電子メール通知と手動アラートに対する応答が最大 10 倍速くなります。
@@ -217,6 +241,14 @@ Splunk 向けの Azure Monitor アドオンは、[こちら](https://splunkbase.
 
 [ドキュメントを確認する。][splunk-doc]
 
+## <a name="squaredup"></a>SquaredUp 
+
+![SquaredUp のロゴ](./media/partners/squaredup.png)
+
+SquaredUp for Azure により、Azure アプリケーションを素晴らしく簡単に視覚化します。 リアルタイムの対話型ダッシュボードが提供されます。 サブスクリプション、リソース グループ、タグ、および個々のリソースにドリルダウンして、CPU、最も多くの着信接続、Application Insights 応答時間、合計コスト、および正常性状態の概要などのメトリックを表示し、ドリルスルーしてアラート、Log Analytics イベント、詳細なメトリックなどの関連データを表示したり、ServiceNow、Dynatrace、PagerDuty、Ping Dom などの使用している他のツールから関連データを表示したりできます。  独自のダッシュボードをカスタマイズしたり、公開したり、個人と、またはイントラネット ページで共有したりできます。 
+
+[詳細情報。](https://squaredup.com/)
+
 ## <a name="sumo-logic"></a>Sumo Logic
 
 ![Sumo Logic のロゴ](./media/partners/SumoLogic.png)
@@ -233,21 +265,21 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 
 [詳細情報。][turbonomic-doc]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 - [Azure Monitor の詳細情報](../../azure-monitor/overview.md)
 - [REST API を使用してメトリックにアクセスする](rest-api-walkthrough.md)
 - [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [診断ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+- [リソース ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 
 <!--Partner Documentation-->
 [alertlogic-doc]: https://legacy.docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic ドキュメント。"
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics ドキュメント。"
-[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight ドキュメント。"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric の紹介。"
-[circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
+[circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix の概要。"
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog ドキュメント。"
@@ -255,7 +287,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic ドキュメント。"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana の統合。"
 [influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf の統合。"
-[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logic Monitor のドキュメント。"
+[logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor のドキュメント。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft のドキュメント。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic ドキュメント。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie ドキュメント。"
@@ -268,5 +300,5 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "SolarWinds のドキュメント。"
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk ドキュメント。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic ドキュメント。"
-[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic の紹介。"
+[turbonomic-doc]: https://turbonomic.com/ "Turbonomic の紹介。"
 

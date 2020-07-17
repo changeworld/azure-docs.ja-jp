@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と IriusRisk の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と IriusRisk の統合 | Microsoft Docs'
 description: Azure Active Directory と IriusRisk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c01cb1e7d937c691354270880c1e6be5cd44723
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: eb35982f8004407b51a325bb485f902f51380ba2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898030"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67099691"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル:Azure Active Directory と IriusRisk の統合
+# <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル: Azure Active Directory と IriusRisk の統合
 
 このチュートリアルでは、IriusRisk と Azure Active Directory (Azure AD) を統合する方法について説明します。
 IriusRisk と Azure AD の統合には、次の利点があります。

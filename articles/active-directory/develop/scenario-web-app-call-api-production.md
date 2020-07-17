@@ -1,42 +1,38 @@
 ---
-title: Web API を呼び出す Web アプリ (運用環境への移行) - Microsoft ID プラットフォーム
-description: Web API を呼び出す Web アプリを構築する方法について説明します (運用環境への移行)
+title: Web API を呼び出す Web アプリを運用環境に移行する - Microsoft ID プラットフォーム
+description: Web API を呼び出す Web アプリを運用環境に移行する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b326cdb7303ff392c6129e0f0fa460ffe088305
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6404d00b87b9ee745b9e3a92c646404e574417c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080109"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80881663"
 ---
-# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出す Web アプリ - 運用環境への移行
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出す Web アプリ: 運用環境に移行する
 
-Web API を呼び出すトークンの取得方法が分かったところで、次に運用環境に移行する方法について説明します。
+Web API を呼び出すトークンの取得方法が分かったところで、次に、運用環境に移行する方法を学びます。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-ASP.NET Core Web アプリの詳細なプログレッシブ チュートリアルをお試しになり、詳細をご確認ください。以下の内容が記載されています。
+ASP.NET Core Web アプリの詳細なプログレッシブ チュートリアルを試して、さらに詳しく学習します。 このチュートリアルでは以下を行います。
 
-- 複数の対象ユーザー、各国のクラウドまたはソーシャル ID を持つユーザーをサインインさせる方法
-- Microsoft Graph の呼び出し
-- 複数の Microsoft API の呼び出し
-- 増分同意の取り扱い
-- お客様独自の Web API の呼び出し
+- 複数の対象ユーザーや各国のクラウドにユーザーをサインインさせたり、ソーシャル ID を使用してユーザーをサインインさせたりする方法を示します。
+- Microsoft Graph を呼び出します。
+- 複数の Microsoft API を呼び出します。
+- 増分同意を処理します。
+- ユーザー自身の Web API を呼び出します。
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web アプリのチュートリアル](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)

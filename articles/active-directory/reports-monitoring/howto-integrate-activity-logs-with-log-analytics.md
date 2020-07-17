@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010937"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81639737"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
@@ -44,7 +44,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 監査アクティビティ ログとサインイン アクティビティ ログを Azure Monitor ログにルーティングして、さらに詳しく分析できます。 
 
-* **[監査ログ]**:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
@@ -60,19 +60,23 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 * Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
 * Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)を確認してください。
 
+## <a name="licensing-requirements"></a>ライセンスの要件
+
+この機能を使用するには、Azure AD Premium P1 または P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+
 ## <a name="send-logs-to-azure-monitor"></a>ログを Azure Monitor に送信する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
-2. **[Azure Active Directory]** > **[診断設定]** -> **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 **[監査ログ]** または **[サインイン]** ページから **[エクスポート設定]** を選択して、診断設定の構成ページに移動することもできます。  
+2. **[Azure Active Directory]**  >  **[診断設定]**  ->  **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 **[監査ログ]** または **[サインイン]** ページから **[エクスポート設定]** を選択して、診断設定の構成ページに移動することもできます。  
     
-3. **[診断設定]** メニューで **[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** チェック ボックスをオンにして、**[構成]** を選択します。
+3. **[診断設定]** メニューで **[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** チェック ボックスをオンにして、 **[構成]** を選択します。
 
 4. ログ送信先の Log Analytics ワークスペースを選択するか、表示されたダイアログ ボックスで新しいワークスペースを作成します。  
 
 5. 次のいずれかまたは両方を実行します。
-    * 監査ログを Log Analytics ワークスペースに送信するには、**[AuditLogs]** チェックボックスをオンにします。 
-    * サインイン ログを Log Analytics ワークスペースに送信するには、**[SignInLogs]** チェックボックスをオンにします。
+    * 監査ログを Log Analytics ワークスペースに送信するには、 **[AuditLogs]** チェックボックスをオンにします。 
+    * サインイン ログを Log Analytics ワークスペースに送信するには、 **[SignInLogs]** チェックボックスをオンにします。
 
 6. **[保存]** を選択して設定を保存します。
 
@@ -80,7 +84,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 7. 約 15 分後に、イベントが Log Analytics ワークスペースにストリーミングされていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](howto-analyze-activity-logs-log-analytics.md)
 * [Azure Active Directory ログ分析用のビューのインストールと使用](howto-install-use-log-analytics-views.md)

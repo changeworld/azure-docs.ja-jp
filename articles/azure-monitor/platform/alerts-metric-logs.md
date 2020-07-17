@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor でのログのメトリック アラートの作成
 description: 一般的なログ分析データでほぼリアルタイムのメトリック アラートを作成する方法に関するチュートリアル。
-author: msvijayn
-services: monitoring
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 9f47ba44e7940414932371ef1b7a360d0b01e1ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483864"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055176"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -44,11 +42,11 @@ Azure Monitor では、[クラシック アラート](../../azure-monitor/platfo
  メトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされているソリューションでの、Log Analytics ワークスペースのログでサポートされているメトリックの一覧については、[こちら](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)をご覧ください。
 
 > [!NOTE]
-> [Azure Monitor のメトリック](../../azure-monitor/platform/metrics-charts.md)を使用して Log Analytics ワークスペースから抽出するためにサポートされているメトリックを表示するには、そのメトリックに対してログのメトリック アラートを作成する必要があります。 ログのメトリック アラートで選択されたディメンションは、Azure Monitor のメトリックを使用して探索する場合にのみ表示されます。
+> [Azure Monitor のメトリック](../../azure-monitor/platform/metrics-charts.md)を使用して Log Analytics ワークスペースから抽出されたサポート対象のメトリックを表示するには、その特定のメトリックに対してログのメトリック アラートを作成する必要があります。 ログのメトリック アラートで選択されたディメンションは、Azure Monitor のメトリックを使用して探索する場合にのみ表示されます。
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Log Analytics のメトリック アラートの作成
 
-一般的なログのメトリック データは、Log Analytics で処理される前に Azure Monitor のメトリックにパイプ処理されます。 これにより、ユーザーはメトリック プラットフォームとメトリック アラートの機能 (1 分という低頻度のアラートの使用など) を活用できます。
+一般的なログのメトリック データは、Log Analytics で処理される前に Azure Monitor のメトリックにパイプ処理されます。 これにより、ユーザーはメトリック プラットフォームとメトリック アラートの機能 (1 分という短時間の頻度でのアラートの使用など) を活用できます。
 ログのメトリック アラートを作成する方法を以下に示します。
 
 ## <a name="prerequisites-for-metric-alert-for-logs"></a>ログのメトリック アラートの前提条件
@@ -57,8 +55,8 @@ Log Analytics データで収集されたログのメトリックを機能させ
 
 1. **アクティブな Log Analytics ワークスペース**: 有効かつアクティブな Log Analytics ワークスペースが存在する必要があります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページをご覧ください。
 2. **Log Analytics ワークスペースのエージェントを構成する**: 前の手順で使用した Log Analytics ワークスペースにデータを送信するために、Azure VM およびオンプレミスの VM でエージェントを構成する必要があります。 詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/agents-overview.md)に関する記事をご覧ください。
-3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成し、Log Analytics ワークスペースにデータを送信する必要があります。サポートされているソリューションは、[Windows および Linux のパフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../../azure-monitor/insights/solution-agenthealth.md)、Update Management、[イベント データ](../../azure-monitor/platform/data-sources-windows-events.md)です。
-4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応するログまたはデータが必要です。 たとえば、*% Available Memory* の場合、[パフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
+3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成して、データを Log Analytics ワークスペースに送信する必要があります。サポートされるソリューションは、[Windows および Linux のパフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../../azure-monitor/insights/solution-agenthealth.md)、[更新管理](../../automation/automation-update-management.md)、および[イベント データ](../../azure-monitor/platform/data-sources-windows-events.md)です。
+4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応するログまたはデータが必要です。 たとえば、 *% Available Memory* の場合、[パフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
 
 ## <a name="configuring-metric-alert-for-logs"></a>ログのメトリック アラートの構成
 
@@ -357,7 +355,7 @@ Log Analytics データで収集されたログのメトリックを機能させ
 }
 ```
 
-上記のパラメーター ファイルが metricfromLogsAlertStatic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md)を使用してログのメトリック アラートを作成できます。
+上記のパラメーター ファイルが metricfromLogsAlertStatic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/templates/deploy-portal.md)を使用してログのメトリック アラートを作成できます。
 
 次の Azure PowerShell コマンドを使用することもできます。
 
@@ -367,7 +365,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 
 または、Azure CLI を使用してリソース テンプレートをデプロイします。
 
-```CLI
+```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
@@ -673,7 +671,7 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 }
 ```
 
-上記のパラメーター ファイルが metricfromLogsAlertDynamic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/resource-group-template-deploy-portal.md)を使用してログのメトリック アラートを作成できます。
+上記のパラメーター ファイルが metricfromLogsAlertDynamic.parameters.json として保存されている場合、[Azure portal での作成用のリソース テンプレート](../../azure-resource-manager/templates/deploy-portal.md)を使用してログのメトリック アラートを作成できます。
 
 次の Azure PowerShell コマンドを使用することもできます。
 
@@ -683,11 +681,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 
 または、Azure CLI を使用してリソース テンプレートをデプロイします。
 
-```CLI
+```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [メトリック アラート](alerts-metric.md)の詳細を確認します。
 - [Azure でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します。

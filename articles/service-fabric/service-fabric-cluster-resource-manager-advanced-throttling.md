@@ -1,25 +1,16 @@
 ---
-title: Service Fabric クラスター リソース マネージャーのスロットル | Microsoft Docs
+title: Service Fabric クラスター リソース マネージャーでのスロットル
 description: Service Fabric クラスター リソース マネージャーで使用可能なスロットルの構成について説明します。
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4abc3e4a28b8b98070affe19b7b7ca38f904c45b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669828"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75452174"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーのスロットル
 クラスター リソース マネージャーを正しく構成している場合でも、クラスターが中断する場合があります。 たとえば、同時ノードや障害ドメインのエラーが考えられます。このようなことがアップグレードの実行中に発生したとしたらどうなるでしょうか。 クラスター リソース マネージャーは常に、クラスターの再編成と修正を試みるクラスター リソースを使用することで、すべてを修正しようとします。 スロットルは、安定化、つまり、ノードを元に戻し、ネットワーク パーティションを正常化し、修正されたビットをデプロイするためのリソースを提供する、バックネットの役割を果たします。
@@ -91,6 +82,6 @@ Service Fabric には、レプリカの移動数のスロットルを行うた�
 
 こうしたスロットルの構成は、割合に基づくスロットルと同じパターンに従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
 - Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。

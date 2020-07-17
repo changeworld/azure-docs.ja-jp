@@ -1,11 +1,10 @@
 ---
-title: Azure CLI サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する| Microsoft Docs
+title: マネージド ディスクをサブスクリプションにコピーする - CLI サンプル
 description: Azure CLI サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: abb051e9646d547907384ed06413439845a29d5e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b863217057427861112aea2c7ceaffd4152cbfb7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249550"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459629"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>CLI を使用した同じまたは別のサブスクリプションへのマネージド ディスクのコピー
 
@@ -44,7 +43,7 @@ ms.locfileid: "57249550"
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | マネージド ディスクの名前とリソース グループのプロパティを使用して、そのマネージド ディスクのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにそのマネージド ディスクをコピーします。  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | 親マネージド ディスクの名前と ID を使用して別のサブスクリプションに新しいマネージド ディスクを作成することで、マネージド ディスクをコピーします。  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

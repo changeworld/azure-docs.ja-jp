@@ -1,28 +1,17 @@
 ---
-title: Azure で Service Fabric クラスターをスケーリングする | Microsoft Docs
-description: このチュートリアルでは、Azure 内で Service Fabric クラスターをすばやくスケーリングする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Azure で Service Fabric クラスターのスケーリングを行う
+description: このチュートリアルでは、Azure の Service Fabric クラスターをスケールアウトおよびスケールインする方法と、残ったリソースをクリーンアップする方法について説明します。
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/19/2019
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157975"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788826"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
 
 このチュートリアルはシリーズ第 3 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。  Azure 内で実行されているクラスターのスケーリングの詳細については、[Service Fabric クラスターのスケーリング](service-fabric-cluster-scaling.md)に関するページを参照してください。
 
@@ -49,7 +38,7 @@ ms.locfileid: "66157975"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
 ## <a name="important-considerations-and-guidelines"></a>重要な考慮事項とガイドライン
@@ -68,7 +57,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 * 実稼働ワークロードを実行するプライマリ ノード タイプの場合、[持続性レベル][durability]が Gold または Silver であり、必ず 5 つ以上のノードが必要です。
 * ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。
 * ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
-* [持続性レベル][durability]が Gold または Silver であるノードの場合、どのタイプであっても必ず 5 つ以上のノードが必要です。
+* [耐久性レベル][durability]が Gold または Silver であるノードの場合、どの種類であっても必ず 5 つ以上のノードが必要です。
 * プライマリ ノード タイプをスケールインする (ノードを削除する) 場合、[信頼性レベル][reliability]で必要な数を下回るまでインスタンスの数を減らさないでください。
 
 詳細については、[クラスター容量のガイダンス](service-fabric-cluster-capacity.md)を参照してください。
@@ -79,11 +68,11 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 1. [Azure portal](https://portal.azure.com) で、目的のクラスターを含むリソース グループ (このチュートリアルに従っている場合は **sfclustertutorialgroup**) に移動します。 
 
-2. 左側のウィンドウで、**[デプロイ]** を選択するか、**[デプロイ]** の下にあるリンクを選択します。 
+2. 左側のウィンドウで、 **[デプロイ]** を選択するか、 **[デプロイ]** の下にあるリンクを選択します。 
 
 3. 最新の正常なデプロイを一覧から選択します。
 
-4. 左側のウィンドウで、**[テンプレート]**、**[ダウンロード]** の順に選択して、テンプレートを ZIP ファイルとしてエクスポートします。  テンプレートとパラメーターをご自分のローカル コンピューターに保存します。
+4. 左側のウィンドウで、 **[テンプレート]** 、 **[ダウンロード]** の順に選択して、テンプレートを ZIP ファイルとしてエクスポートします。  テンプレートとパラメーターをご自分のローカル コンピューターに保存します。
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>ノード タイプのノードを追加または削除する
 
@@ -95,7 +84,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 そのため、*nt1InstanceCount* の値を更新すると、2 つ目のノード タイプのノードの数が変更されます。  100 ノードを超えてノード タイプをスケールアウトすることができない点に注意してください。  ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。 ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
 
-[持続性レベル][durability]が Bronze のノード タイプをスケールインする (ノードを削除する) 場合、[それらのノードの状態を手動で削除](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)する必要があります。  持続性レベルが Silver および Gold の場合、これらの手順はプラットフォームによって自動的に行われます。
+[持続性レベル][durability]が Bronze のノード タイプをスケールインする (ノードを削除する) 場合、[それらのノードの状態を手動で削除する](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)必要があります。  持続性レベルが Silver および Gold の場合、これらの手順はプラットフォームによって自動的に行われます。
 
 ### <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 *template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
@@ -104,7 +93,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 または、次の Azure CLI コマンドを使用します。
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -810,7 +799,7 @@ Azure 内で実行されている Service Fabric クラスターで定義され�
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 または、次の Azure CLI コマンドを使用します。
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -847,7 +836,7 @@ Foreach($node in $nodes)
 Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  
 
 > [!WARNING]
-> Silver 以上の持続性で実行されている場合を除き、スケール セット/ノード タイプの VM SKU は変更しないことをお勧めします。 VM SKU のサイズ変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートレス サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。
+> Silver 以上の持続性で実行されている場合を除き、スケール セット/ノード タイプの VM SKU は変更しないことをお勧めします。 VM SKU のサイズ変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートフル サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。
 
 > [!WARNING]
 > プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。これは危険な操作で、サポートされていません。  クラスター容量を増やす必要がある場合、VM インスタンスまたは別のノード タイプを追加できます。  それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md)ことができます (妥当な場合)。  それが不可能な場合は、[プライマリ ノード タイプの VM SKU を変更](service-fabric-scale-up-node-type.md)できます。
@@ -856,7 +845,7 @@ Service Fabric クラスターを作成した後は、クラスターのノー�
 
 リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあります。  
 
-2 つ目のノード タイプの VM のサイズは、*vmNodeType1Size* パラメーターで設定されています。  *vmNodeType1Size* パラメーターの値を Standard_D2_V2 から [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series) に変更します。そうすると、各 VM インスタンスのリソースが 2 倍になります。
+2 つ目のノード タイプの VM のサイズは、*vmNodeType1Size* パラメーターで設定されています。  *vmNodeType1Size* パラメーターの値を Standard_D2_V2 から [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md) に変更します。そうすると、各 VM インスタンスのリソースが 2 倍になります。
 
 3 つすべてのノード タイプの VM SKU は、*vmImageSku* パラメーターで設定されています。  繰り返しになりますが、ノード タイプの VM SKU の変更は慎重に行う必要があり、プライマリ ノード タイプではお勧めしません。
 
@@ -867,11 +856,11 @@ Service Fabric クラスターを作成した後は、クラスターのノー�
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 または、次の Azure CLI コマンドを使用します。
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -888,7 +877,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 [reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-およびスケールイン))
+
 > * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
 > * ノード リソースを増加する (スケールアップ)
 

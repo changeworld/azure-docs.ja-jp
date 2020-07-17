@@ -1,36 +1,38 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238518"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77592428"
 ---
 次の表は、Azure IoT Hub Device Provisioning Service のリソースに適用される制限の一覧です。
 
-| Resource | 制限 |
+| リソース | 制限 |
 | --- | --- |
 | Azure サブスクリプションあたりのデバイス プロビジョニング サービスの最大数 | 10 |
 | 加入の最大数 | 1,000,000 |
 | 登録の最大数 | 1,000,000 |
 | 加入グループの最大数 | 100 |
 | CA の最大数 | 25 |
-
-> [!NOTE]
-> お使いのサブスクリプションのインスタンス数を増やすには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+| リンクされた IoT Hub の最大数 | 50 |
+| メッセージの最大サイズ | 96 KB|
 
 > [!NOTE]
 > お使いのプロビジョニング サービスの加入数と登録数を増やすには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+
+> [!NOTE]
+> CA の最大数を増やすことはサポートされていません。
 
 Device Provisioning Service は、次のクォータを超えた場合に、要求を調整します。
 
 | スロットル | ユニットあたりの値 |
 | --- | --- |
-| Operations | 200/分/サービス |
+| 操作 | 200/分/サービス |
 | デバイス登録 | 200/分/サービス |
 | デバイスのポーリング操作 | 5/10 秒/デバイス |

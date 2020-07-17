@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Azure Arc
+summary: Azure Arc は、Azure Resource Manager の機能を Linux および Windows サーバーに拡張するほか、オンプレミス、マルチクラウド、エッジにわたるあらゆるインフラストラクチャに Kubernetes クラスターを拡張します。 Azure Arc を使用すると、顧客は場所を問わず Azure データ サービスを実行できるため、データを常に最新の状態に保つ機能、(数時間ではなく) 数秒でのデプロイ、インフラストラクチャでの動的なスケーラビリティなど、クラウド イノベーションの利点を実感できます。 サーバー向け Azure Arc は現在、パブリック プレビュー段階にあります。
+metadata:
+  title: サーバー向け Azure Arc
+  description: Azure でオンプレミスのマシンを管理する方法について説明します
+  author: bobbytreed
+  manager: carmonm
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 11/04/2019
+  ms.author: robreed
+  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81261280"
+landingContent:
+- title: Azure Arc の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc の詳細
+      url: https://aka.ms/Azure-Arc-Info
+- title: サーバー向け Azure Arc を使用してマシンを Azure に接続する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: サーバー向け Azure Arc とは
+      url: ./servers/overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure portal から Azure Arc へのマシンの接続
+      url: ./servers/onboard-portal.md
+    - text: サービス プリンシパルを使用したマシンの大規模な接続
+      url: ./servers/onboard-service-principal.md
+    - text: PowerShell DSC を使用してマシンを Azure に接続する
+      url: ./servers/onboard-dsc.md

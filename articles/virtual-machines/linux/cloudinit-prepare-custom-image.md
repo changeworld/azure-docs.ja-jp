@@ -1,28 +1,21 @@
 ---
-title: cloud-init で使用するための Azure VM イメージの準備 | Microsoft Docs
+title: cloud-init で使用するための Azure VM イメージの準備
 description: cloud-init でデプロイするために既存の Azure VM イメージを準備する方法
-services: virtual-machines-linux
-documentationcenter: ''
 author: danis
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
+ms.subservice: imaging
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: da539a5bebc1613115f89a7b47c513ce486b5e3a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337313"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792311"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>cloud-init で使用するための既存の Linux Azure VM イメージの準備
-この記事では、cloud-init を使用するように既存の Azure 仮想マシンを再デプロイおよび準備する方法を示します。 生成されるイメージを使用して、新しい仮想マシンまたは仮想マシン スケール セットをデプロイできます。そのどちらも、デプロイ時に cloud-init によってさらにカスタマイズできます。  これらの cloud-init スクリプトは、リソースが Azure によってプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
+この記事では、cloud-init を使用するように既存の Azure 仮想マシンを再デプロイおよび準備する方法を示します。 生成されるイメージを使用して、新しい仮想マシンまたは仮想マシン スケール セットをデプロイできます。そのどちらも、デプロイ時に cloud-init によってさらにカスタマイズできます。  これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
 
 ## <a name="prerequisites"></a>前提条件
 このドキュメントでは、サポートされているバージョンの Linux オペレーティング システムを実行している Azure 仮想マシンが既に実行中であることを前提としています。 ニーズに合わせたマシンの構成、すべての必要なモジュールのインストール、すべての必要な更新プログラムの処理、要件を満たしていることを確認するテストは既に行いました。 
@@ -36,13 +29,15 @@ sudo yum install -y gdisk cloud-utils-growpart
 sudo yum install - y cloud-init 
 ```
 
-`/etc/cloud/cloud.cfg` の `cloud_init_modules` のセクションを更新して次のモジュールを含めます。
+`cloud_init_modules` の `/etc/cloud/cloud.cfg` のセクションを更新して次のモジュールを含めます。
+
 ```bash
 - disk_setup
 - mounts
 ```
 
 汎用的な `cloud_init_modules` セクションのサンプルを次に示します。
+
 ```bash
 cloud_init_modules:
  - migrator
@@ -59,25 +54,22 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-一時ディスクのプロビジョニングと処理に関連するいくつかのタスクを `/etc/waagent.conf` で更新する必要があります。 次のコマンドを実行して適切な設定を更新します。 
+
+一時ディスクのプロビジョニングと処理に関連するいくつかのタスクを `/etc/waagent.conf` で更新する必要があります。 次のコマンドを実行して適切な設定を更新します。
+
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-cp /lib/systemd/system/waagent.service /etc/systemd/system/waagent.service
-sed -i 's/After=network-online.target/WantedBy=cloud-init.service\\nAfter=network.service systemd-networkd-wait-online.service/g' /etc/systemd/system/waagent.service
-systemctl daemon-reload
 cloud-init clean
 ```
+
 任意のエディターを使用して次の行を含む新しいファイル `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` を作成することで、Azure Linux エージェントのデータソースとして Azure のみを許可します。
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
-datasource:
-   Azure:
-     agent_command: [systemctl, start, waagent, --no-block]
 ```
 
 既存の Azure イメージにスワップ ファイルが構成されており、cloud-init を使用して新しいイメージのスワップ ファイル構成を変更する場合は、既存のスワップ ファイルを削除する必要があります。
@@ -85,12 +77,14 @@ datasource:
 Red Hat ベースのイメージの場合は、[スワップ ファイルを削除する](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file)方法を説明している Red Hat ドキュメントの指示に従います。
 
 スワップファイルが有効になっている CentOS イメージでは、次のコマンドを実行してスワップファイルをオフにできます。
+
 ```bash
 sudo swapoff /mnt/resource/swapfile
 ```
 
 スワップファイル参照が `/etc/fstab` から削除されたことを確認します。出力は次のようになります。
-```text
+
+```output
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
 # See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
@@ -100,9 +94,11 @@ UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
 領域を節約し、スワップ ファイルを削除するには、次のコマンドを実行します。
+
 ```bash
 rm /mnt/resource/swapfile
 ```
+
 ## <a name="extra-step-for-cloud-init-prepared-image"></a>cloud-init で準備されたイメージに対する追加の手順
 > [!NOTE]
 > イメージが **cloud-init** で準備されており、イメージを構成した場合は、次の手順を実行する必要があります。
@@ -125,13 +121,13 @@ Azure Linux エージェントのプロビジョニング解除コマンドに�
 
 SSH セッションを終了し、bash シェルから次の AzureCLI コマンドを実行して、Azure VM イメージの割り当て解除、汎用化、新規作成を行います。  `myResourceGroup` と `sourceVmName` は、sourceVM を反映した適切な情報で置換します。
 
-```bash
+```azurecli
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
 az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 構成変更の cloud-init の他の例については、以下をご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

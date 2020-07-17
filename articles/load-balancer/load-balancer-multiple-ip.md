@@ -1,10 +1,10 @@
 ---
 title: 複数の IP 構成での負荷分散 - Azure portal
-titlesuffix: Azure Load Balancer
-description: プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。
+titleSuffix: Azure Load Balancer
+description: この記事では、Azure portal を使用した、プライマリとセカンダリの IP 構成の間の負荷分散について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856124"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74077000"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -88,21 +88,21 @@ ms.locfileid: "57856124"
 
 1. Azure Portal にアクセスします: https://portal.azure.com Azure のアカウントを使用してサインインします。
 
-2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。 次に、**[作成]** を選択します。
+2. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[Load Balancer]** の順に選択します。 次に、 **[作成]** を選択します。
 
 3. **[ロード バランサーの作成]** で、ロード バランサーの名前を入力します。 このシナリオでは、**mylb** という名前を使用します。
 
 4. **[パブリック IP アドレス]** で、**PublicIP1** という名前の新しいパブリック IP を作成します。
 
-5. **[リソース グループ]** で、VM の既存のリソース グループ (たとえば、**contosofabrikam**) を選択します。 ロード バランサーを展開する場所を選択してから、**[OK]** を選択します。
+5. **[リソース グループ]** で、VM の既存のリソース グループ (たとえば、**contosofabrikam**) を選択します。 ロード バランサーを展開する場所を選択してから、 **[OK]** を選択します。
 
 ロード バランサーのデプロイが開始されます。 デプロイが正常に完了するまでに数分かかる場合があります。 デプロイが完了すると、ロード バランサーがリソース グループ内のリソースとして表示されます。
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>手順 3:フロントエンド IP プールを構成する
+### <a name="step-3-configure-the-front-end-ip-pool"></a>手順 3: フロントエンド IP プールを構成する
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、ロード バランサーのフロントエンド IP プールを構成します。
 
-1. ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**パブリック IP アドレス**」と入力して、**[パブリック IP アドレス]** をクリックします。 表示されたウィンドウの上部近くにある **[追加]** を選択します。
+1. ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**パブリック IP アドレス**」と入力して、 **[パブリック IP アドレス]** をクリックします。 表示されたウィンドウの上部近くにある **[追加]** を選択します。
 
 2. 次のように両方の Web サイト (contoso.com と fabrikam.com) の 2 つのパブリック IP アドレス (**PublicIP1** と **PublicIP2**) を構成します。
 
@@ -116,29 +116,29 @@ ms.locfileid: "57856124"
 
       パブリック IP アドレスが作成されると、 **[パブリック IP アドレス]** に表示されます。
 
-3. <a name="step3-3"></a>ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、**[Load Balancer]** を選択します。 
+3. <a name="step3-3"></a>ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、 **[Load Balancer]** を選択します。 
 
 4. フロントエンド IP プールを追加するロード バランサー (**mylb**) を選択します。
 
-5. **[設定]** で、**[フロントエンド IP の構成]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。
+5. **[設定]** で、 **[フロントエンド IP の構成]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。
 
 6. フロントエンド IP アドレスの名前 (たとえば、**contosofe** または **fabrikamfe**) を入力します。
 
-7. <a name="step3-7"></a>**[IP アドレス]** を選択します。 **[パブリック IP アドレスの選択]** で、フロントエンドの IP アドレス (**PublicIP1** または **PublicIP2**) を選択します。
+7. <a name="step3-7"></a> **[IP アドレス]** を選択します。 **[パブリック IP アドレスの選択]** で、フロントエンドの IP アドレス (**PublicIP1** または **PublicIP2**) を選択します。
 
 8. 2 つ目のフロントエンド IP アドレスを作成するには、このセクションの<a href="#step3-3">手順 3</a> ～ <a href="#step3-7">7</a> を繰り返します。
 
 フロントエンド プールの構成が完了すると、IP アドレスがロード バランサーの **[フロントエンド IP の構成]** 設定に表示されます。 
     
-### <a name="step-4-configure-the-back-end-pool"></a>手順 4:バックエンド プールを構成する
+### <a name="step-4-configure-the-back-end-pool"></a>手順 4: バックエンド プールを構成する
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、ロード バランサーのバックエンド アドレス プールを構成します。
         
-1. ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、**[Load Balancer]** を選択します。
+1. ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、 **[Load Balancer]** を選択します。
 
 2. バックエンド プールを追加するロード バランサー (**mylb**) を選択します。
 
-3. **[設定]** で、**[バックエンド プール]** を選択します。 バックエンド プールの名前 (たとえば、**contosopool** や **fabrikampool**) を入力します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
+3. **[設定]** で、 **[バックエンド プール]** を選択します。 バックエンド プールの名前 (たとえば、**contosopool** や **fabrikampool**) を入力します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
 
 4. **[関連付け先]** で **[可用性セット]** を選択します。
 
@@ -156,23 +156,23 @@ ms.locfileid: "57856124"
 
 バックエンド プールの構成が完了すると、アドレスがロード バランサーの **[バックエンド プール]** 設定に表示されます。
 
-### <a name="step-5-configure-the-health-probe"></a>手順 5:正常性プローブを構成する
+### <a name="step-5-configure-the-health-probe"></a>手順 5: 正常性プローブを構成する
 
 次のようにロード バランサーの正常性プローブを構成します。
 
-1. ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、**[Load Balancer]** を選択します。
+1. ポータルで **[その他のサービス]** を選択します。 フィルター ボックスに「**ロード バランサー**」と入力して、 **[Load Balancer]** を選択します。
 
 2. 正常性プローブを追加するロード バランサー (**mylb**) を選択します。
 
-3. **[設定]** で、**[正常性プローブ]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
+3. **[設定]** で、 **[正常性プローブ]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
 
 4. 正常性プローブの名前 (たとえば、**HTTP**) を入力します。 **[OK]** を選択します。
 
-### <a name="step-6-configure-load-balancing-rules"></a>手順 6:負荷分散規則の構成
+### <a name="step-6-configure-load-balancing-rules"></a>手順 6: 負荷分散規則を構成する
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、負荷分散規則を構成します。
     
-1. <a name="step6-1"></a>**[設定]** で、**[負荷分散規則]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
+1. <a name="step6-1"></a> **[設定]** で、 **[負荷分散規則]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
 
 2. **[名前]** に、負荷分散規則の名前 (たとえば、contoso.com には **HTTPc**、fabrikam.com には **HTTPf**) を入力します。
 
@@ -180,18 +180,18 @@ ms.locfileid: "57856124"
 
 4. **[ポート]** と **[バックエンド ポート]** については、既定値の **80** のままにします。
 
-5. **[フローティング IP (ダイレクト サーバー リターン)]** で、**[無効]** を選択します。
+5. **[フローティング IP (ダイレクト サーバー リターン)]** で、 **[無効]** を選択します。
 
-6. <a name="step6-6"></a>**[OK]** を選択します。
+6. <a name="step6-6"></a> **[OK]** を選択します。
 
 7. 2 つ目の負荷分散規則を作成するには、このセクションの<a href="#step6-1">手順 1</a> ～ <a href="#step6-6">6</a> を繰り返します。
 
 規則の構成が完了すると、規則がロード バランサーの **[負荷分散規則]** 設定に表示されます。
 
-### <a name="step-7-configure-dns-records"></a>手順 7:DNS レコードを構成する
+### <a name="step-7-configure-dns-records"></a>手順 7: DNS レコードを構成する
 
 最後に、Load Balancer の各フロントエンド IP アドレスを指すように DNS リソース レコードを構成します。 ドメインを Azure DNS でホストできます。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
 - 各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、[Azure Load Balancer の Azure Monitor ログ](../load-balancer/load-balancer-monitor-log.md)に関するページを参照してください。

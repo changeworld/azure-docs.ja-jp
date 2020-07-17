@@ -1,21 +1,22 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで要求変換技術プロファイルを定義する |Microsoft Docs
+title: 要求変換技術プロファイルを定義する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求変換技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 02/13/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a2904bec34978a33d25534c9e9b32552191ad88
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705323"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78189788"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで要求変換技術プロファイルを定義する
 
@@ -25,7 +26,7 @@ ms.locfileid: "64705323"
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は、`Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 次の例は、要求変換技術プロファイルを示してます。
 
@@ -36,7 +37,7 @@ ms.locfileid: "64705323"
   ...
 ```
 
-## <a name="output-claims"></a>出力要求
+## <a name="output-claims"></a>出力クレーム
 
 **OutputClaims** 要素は必須です。 技術プロファイルにより返される出力要求を、少なくとも 1 つを指定するようにしてください。 次の例は、出力要求で既定値を設定する方法を示しています。
 
@@ -98,6 +99,12 @@ TransformationClaimType="collection" />
   </OrchestrationSteps>
 </UserJourney>
 ```
+
+## <a name="metadata"></a>メタデータ
+
+| Attribute | 必須 | 説明 |
+| --------- | -------- | ----------- |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ## <a name="use-a-validation-technical-profile"></a>検証技術プロファイルの使用
 

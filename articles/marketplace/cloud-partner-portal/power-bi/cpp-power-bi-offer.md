@@ -1,27 +1,23 @@
 ---
-title: Power BI アプリ オファー - Azure Marketplace | Microsoft Docs
+title: Power BI アプリ オファー | Azure Marketplace
 description: Microsoft AppSource マーケットプレースに Power BI アプリを発行する方法を示します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f18a1b05e5a38a79945d8df6706dd2147d6b43df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/06/2020
+ms.author: dsindona
+ms.openlocfilehash: 1745868085a4ca573e2d6b5f78bea5f18b9e23c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798104"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82147708"
 ---
 # <a name="power-bi-app-offer"></a>Power BI アプリ オファー
+
+>[!Important]
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)に関するページの手順に従ってください。
 
 |              |                                |
 |--------------|--------------------------------|
@@ -53,6 +49,6 @@ Power BI アプリ オファーの発行プロセスを次に示します。
 8. Power BI で、実稼働前パッケージを運用に昇格させます。 詳細については、「[テンプレート アプリのリリースを管理する](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)」をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Power BI アプリ オファーを作成して AppSource に発行するには、その前に、Power BI アプリを AppSource に発行するための[要件](./cpp-prerequisites.md)を満たしている必要があります。

@@ -4,13 +4,13 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: cfd4ce1838ba2b48cbda3442d88362f4f1e0fd67
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 727b2985711b51f1474fecb014906b08d18437cb
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684463"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562129"
 ---
-- Data Box Edge サービスにアクセスするには、お客様の組織がマイクロソフトエンタープライズ契約 (EA) またはクラウド ソリューション プロバイダー (CSP) のサブスクリプションを保有している必要があります。 詳細については、「[Azure サブスクリプションにサインアップする](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)」にアクセスしてください。
-- お客様の管理サービスは Azure にホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
-- SDK の管理操作で使用するリソースの暗号化キーは、**[デバイスのプロパティ]** で入手できます。 暗号化キーを表示できるのは、Resource Graph API のアクセス許可がある場合のみです。
+- Azure Stack Edge サービスにアクセスするには、組織にマイクロソフト エンタープライズ契約 (EA) またはクラウド ソリューション プロバイダー (CSP) サブスクリプションが必要です。 詳細については、[Azure サブスクリプションへのサインアップ](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)に関するページを参照してください。
+- この管理サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Azure によって提供されるセキュリティ機能の詳細については、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)にアクセスしてください。
+- SDK の管理操作の場合は、 **[デバイスのプロパティ]** でリソースの暗号化キーを取得できます。 暗号化キーを表示できるのは、Resource Graph API のアクセス許可がある場合のみです。

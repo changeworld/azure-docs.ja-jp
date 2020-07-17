@@ -1,38 +1,38 @@
 ---
 title: Azure の高可用性ポートの概要
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 内部ロード バランサーでの高可用性ポートの負荷分散について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
-ms.author: kumud
-ms.openlocfilehash: 328471292ea6cbe07e96cc18af7f9c524407de3d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 09/19/2019
+ms.author: allensu
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809472"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476981"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
 内部ロード バランサーを使用するときは、Azure Standard Load Balancer によって、すべてのポートで TCP フローと UDP フローの負荷分散を同時に行うことができます。 
 
-高可用性 (HA) ポート負荷分散規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます
+高可用性 (HA) ポート負荷分散規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます。
 
 HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、多数のポートを負荷分散する必要がある場合にも役立ちます。 
 
-HA ポート負荷分散規則は、フロントエンド ポートとバックエンド ポートを **0** に、プロトコルを**すべて**に設定すると構成されます。 その後は、内部 Load Balancer リソースによって、ポート番号に関係なく、すべての TCP フローおよび UDP フローが負荷分散されます
+HA ポート負荷分散規則は、フロントエンド ポートとバックエンド ポートを **0** に、プロトコルを**すべて**に設定すると構成されます。 その後は、内部 Load Balancer リソースによって、ポート番号に関係なく、すべての TCP フローおよび UDP フローが負荷分散されます。
 
 ## <a name="why-use-ha-ports"></a>HA ポートを使う理由
 
-### <a name="nva"></a>ネットワーク仮想アプライアンス
+### <a name="network-virtual-appliances"></a><a name="nva"></a>ネットワーク仮想アプライアンス
 
 NVA を使うことで、さまざまなセキュリティの脅威から Azure ワークロードを保護できます。 こうしたシナリオで使用する NVA は、信頼性と可用性に優れ、必要に応じてスケールアウトする必要があります。
 
@@ -66,7 +66,7 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 この構成は、基本的な HA ポートの構成です。 次の手順によって、単一フロントエンド IP アドレスでの HA ポート負荷分散規則を構成できます:
 1. Standard Load Balancer を構成するときに、Load Balancer 規則の構成で **[HA ポート]** チェック ボックスをオンにします。
-2. **[フローティング IP]** で、**[無効]** を選択します。
+2. **[フローティング IP]** で、 **[無効]** を選択します。
 
 この構成は、現在のロード バランサー リソース上で他のいかなる負荷分散規則の構成も許可しません。 また、バックエンド インスタンスの特定のセットについて、他の内部ロード バランサー リソース構成を許可しません。
 
@@ -74,7 +74,7 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の単一のフローティング IP (Direct Server Return) HA ポートの構成
 
-同様に、**HA ポート**と単一フロントエンドの負荷分散規則を使用するようにロード バランサーを構成できます。それには、**[フローティング IP]** を **[有効]** に設定します。 
+同様に、**HA ポート**と単一フロントエンドの負荷分散規則を使用するようにロード バランサーを構成できます。それには、 **[フローティング IP]** を **[有効]** に設定します。 
 
 この構成を使用することにより、複数のフローティング IP 負荷分散規則またはパブリック ロード バランサー、あるいはその両方を追加できます。 ただし、この構成の上で、非フローティング IP と HA ポートを使用する負荷分散構成は使用できません。
 
@@ -94,16 +94,13 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ## <a name="limitations"></a>制限事項
 
-- HA ポートの構成は内部ロード バランサーに対してのみ使用できます。 パブリック ロード バランサーに対しては使用できません。
-
-- HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせはサポートされていません。
-
-- HA ポート機能は、IPv6 では使うことができません。
-
+- HA ポートの負荷分散規則は、内部 Standard Load Balancer でのみ使用できます。
+- 同じバックエンド ipconfigurations を指す HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせはサポートされていません。
+- 既存の IP フラグメントは、HA ポートの負荷分散規則によって、最初のパケットと同じ宛先に転送されます。  UDP または TCP パケットの IP フラグメントはサポートされていません。
 - フロー対称 (主に NVA シナリオの場合) がバックエンド インスタンスと 1 つの NIC (および 1 つの IP 構成) でサポートされるのは、上の図に示すように使用し、HA ポート負荷分散規則が使用されている場合のみです。 これは他のシナリオでは提供されません。 つまり、2 つ以上のロード バランサー リソースと個別の規則を使用した場合、それぞれ独立した意思決定が行われるため調整することはできません。 [ネットワーク仮想アプライアンス](#nva)の説明と図をご覧ください。 複数の NIC を使用しているか、またはパブリック ロード バランサーおよび内部ロード バランサーの間に NVA を配置している場合は、フロー対称を使用できません。  イングレス フローをアプライアンスの IP にソース NAT して、応答が同じ NVA に到着できるようにすることによって、これを回避できる場合があります。  ただし、1 つの NIC を使用し、上の図に示す参照アーキテクチャを使用することを強くお勧めします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [内部 Standard Load Balancer で HA ポートを構成する](load-balancer-configure-ha-ports.md)
 - [Standard Load Balancer の詳細を確認する](load-balancer-standard-overview.md)

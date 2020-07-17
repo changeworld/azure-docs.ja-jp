@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 704f08bc4a41eb52789f8f28675332892d72a500
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104099"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80475144"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Virtual Network コンテナー ネットワーク インターフェイス プラグインのデプロイ
 
@@ -31,7 +31,7 @@ Azure Virtual Network コンテナー ネットワーク インターフェイ�
 
 ACS エンジンは、Azure Resource Manager テンプレートを使用して Kubernetes クラスターをデプロイします。 クラスターの構成は、テンプレートを生成するときにツールに渡される JSON ファイルで指定されます。 サポートされているクラスターの設定とその説明の完全なリストについては、「[Microsoft Azure Container Service Engine - Cluster Definition](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)」 (Microsoft Azure Container Service エンジン - クラスター定義) を参照してください。 このプラグインは、ACS エンジンを使用して作成されたクラスターの既定のネットワーク プラグインです。 プラグインを構成するときには、次のネットワーク構成設定が重要です。
 
-  | Setting                              | 説明                                                                                                           |
+  | 設定                              | 説明                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | マスター ノードに割り当てられる IP アドレス。 これは必須の設定です。                                     |
   | kubernetesConfig の下の clusterSubnet | クラスターのデプロイ先で、ポッドへの IP アドレスの割り当て元の仮想ネットワーク サブネットの CIDR   |
@@ -39,7 +39,7 @@ ACS エンジンは、Azure Resource Manager テンプレートを使用して K
   | vnetCidr                             | クラスターのデプロイ先の仮想ネットワークの CIDR                                                             |
   | kubeletConfig 下の max-Pods         | すべてのエージェント仮想マシン上のポッドの最大数。 プラグインの場合、既定値は 30 です。 最大 250 を指定できます。  |
 
-### <a name="example-configuration"></a>構成の例
+### <a name="example-configuration"></a>構成例
 
 次の json の例は、次のプロパティを持つクラスター用です。
 -   1 つのマスター ノードと 2 つのエージェント ノード 
@@ -159,10 +159,10 @@ CNI ネットワーク構成ファイルは、JSON 形式で記述されてい�
 
 - **cniVersion**: Azure Virtual Network CNI プラグインは、 [CNI 仕様](https://github.com/containernetworking/cni/blob/master/SPEC.md)のバージョン 0.3.0 および 0.3.1 をサポートしています。
 - **name**:ネットワークの名前。 このプロパティは、任意の一意の値に設定できます。
-- **type**: ネットワーク プラグインの名前。  *azure-vnet* に設定します。
+- **type**: ネットワーク プラグインの名前。 *azure-vnet* に設定します。
 - **mode**: 操作モード。 このフィールドは省略可能です。 サポートされているモードは、"bridge" だけです。 詳細については、 [操作モード](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)を参照してください。
 - **bridge**: コンテナーを仮想ネットワークに接続するために使用されるブリッジの名前。 このフィールドは省略可能です。 省略した場合、マスター インターフェイスのインデックスに基づいて、一意の名前がプラグインによって自動的に選択されます。
-- **ipam type**: IPAM プラグインの名前。 常に  *azure-vnet-ipam* に設定します。
+- **ipam type**: IPAM プラグインの名前。 常に *azure-vnet-ipam* に設定します。
 
 ## <a name="download-and-install-the-plug-in"></a>プラグインのダウンロードとインストール
 

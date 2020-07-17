@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606794"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "61442241"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM データをリモート監視ソリューションに統合する
 
@@ -33,7 +33,7 @@ IoT デバイスは、どこからでもデータ ストリームを送信でき
 
 この追加のリモート監視機能は、現在プレビューの段階です。 接続データを Azure リモート監視ソリューションに同期するには、次の手順に従います。
 
-1. [Telefónica のサイト](https://iot.telefonica.com/contact) で要求を入力し、連絡先データなど、**[Azure Remote Monitoring]\ (Azure リモート監視\)** オプションを選択します。
+1. [Telefónica のサイト](https://iot.telefonica.com/contact) で要求を入力し、連絡先データなど、 **[Azure Remote Monitoring]\ (Azure リモート監視\)** オプションを選択します。
 2. Telefónica が、あなたのアカウントをアクティブにします。
 3. あなたがまだ Telefónica のクライアントではなく、このサービス、または他の IoT Connectivity Cloud Ready サービスを利用したい場合は、[Telefónica のサイト](https://iot.telefonica.com/) にアクセスし、オプション **Connectivity** を選択してください。
 
@@ -63,7 +63,7 @@ Telefónica アカウントが正しく構成され、デバイスが接続さ�
 
 ![ダッシュボード](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT リモート監視に SIM データを統合する方法の概要を確認できたので、ソリューション アクセラレータに推奨される次の手順を以下に示します。
 

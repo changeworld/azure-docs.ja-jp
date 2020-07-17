@@ -1,55 +1,44 @@
 - name: Custom Vision Service のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Custom Vision とは
       href: home.md
-- name: クイック スタート
-  items:
-    - name: .NET SDK の使用
-      items:
-        - name: 画像の分類
-          href: csharp-tutorial.md
-        - name: オブジェクトの検出
-          href: csharp-tutorial-od.md
-    - name: Python SDK の使用
-      items:
-        - name: 画像の分類
-          href: python-tutorial.md
-        - name: オブジェクトの検出
-          href: python-tutorial-od.md
-    - name: Java SDK の使用
-      items:
-        - name: 画像の分類
-          href: java-tutorial.md
-        - name: オブジェクトの検出
-          href: java-tutorial-od.md
-    - name: Node.js SDK の使用
-      items:
-        - name: 画像の分類
-          href: node-tutorial.md
-        - name: オブジェクトの検出
-          href: node-tutorial-object-detection.md
-    - name: Go SDK の使用
-      items:
-        - name: 画像の分類
-          href: go-tutorial.md
-        - name: オブジェクトの検出
-          href: go-tutorial-object-detection.md
-- name: チュートリアル
-  items:
-    - name: モバイル向けのロゴ検出機能
-      href: logo-detector-mobile.md
-- name: ハウツー ガイド
+    - name: 新機能
+      href: whats-new.md
+- name: クイックスタート
   items:
     - name: 分類器の構築
-      href: getting-started-build-a-classifier.md
+      items:
+        - name: Web ポータルの使用
+          href: getting-started-build-a-classifier.md
+        - name: Custom Vision SDK の使用
+          href: quickstarts/image-classification.md
+    - name: オブジェクト検出器の構築
+      items:
+        - name: Web ポータルの使用
+          href: get-started-build-detector.md
+        - name: Custom Vision SDK の使用
+          href: quickstarts/object-detection.md
+- name: チュートリアル
+  items:
+    - name: IoT デバイスでビジュアルの状態をレポートする
+      href: iot-visual-alerts-tutorial.md
+    - name: モバイルでロゴを認識する
+      href: logo-detector-mobile.md
+- name: 操作方法ガイド
+  items:
     - name: モデルのテスト
       href: test-your-model.md
     - name: 分類子の改善
       href: getting-started-improving-your-classifier.md
+    - name: ドメインの選択
+      href: select-domain.md
     - name: 予測 API の使用
       href: use-prediction-api.md
+    - name: Smart Labeler の使用
+      href: suggested-tags.md
     - name: モデルをエクスポートする
       items:
         - name: モバイルへのモデルのエクスポート
@@ -60,8 +49,6 @@
           href: export-model-python.md
     - name: アカウント データのエクスポートまたは削除
       href: ./export-delete-data.md
-    - name: 期間限定試用版のプロジェクトの Azure への移行
-      href: ./move-your-project-to-azure.md
     - name: アプリを 3.0 API に更新する
       href: ./update-application-to-3.0-sdk.md
 - name: リファレンス
@@ -70,14 +57,16 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Custom Vision Prediction API
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: 用語集
-      href: glossary-of-terms.md
     - name: SDK
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Node.js - トレーニング
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
+        - name: Node.js - 予測
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
         - name: Go - トレーニング
@@ -87,12 +76,12 @@
 - name: リソース
   items:
     - name: サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: 制限とクォータ
       href: limits-and-quotas.md
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
@@ -100,5 +89,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: custom-vision-encryption-of-data-at-rest.md
     - name: リリース ノート
       href: release-notes.md

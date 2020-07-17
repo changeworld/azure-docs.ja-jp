@@ -1,26 +1,27 @@
 ---
-title: Azure Data Factory の Mapping Data Flow のピボット解除変換
-description: Azure Data Factory の Mapping Data Flow のピボット解除変換
+title: マッピング データ フローのピボット解除変換
+description: Azure Data Factory のマッピング データ フローのピボット解除変換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854256"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81606240"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory のピボット解除変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ADF の Mapping Data Flow で、正規化されていないデータセットをより正規化されたバージョンに変換するための方法としてピボット解除を使用して、単一のレコード内の複数の列の値を、単一の列内に同じ値を持つ複数のレコードに展開します。
+ADF のマッピング データ フローで、正規化されていないデータセットをより正規化されたバージョンに変換するための方法としてピボット解除を使用して、単一のレコード内の複数の列の値を、単一の列内に同じ値を持つ複数のレコードに展開します。
 
-![ピボット解除変換](media/data-flow/unpivot1.png "ピボット解除オプション 1 ")
+![ピボット解除変換](media/data-flow/unpivot1.png "ピボット解除オプション 1")
 
 ## <a name="ungroup-by"></a>グループ化解除
 
@@ -42,16 +43,16 @@ ADF の Mapping Data Flow で、正規化されていないデータセットを
 
 (省略可能) 行の値から作成される新しい列の先頭、中間、および末尾に文字列を追加する名前付けパターンを設定できます。
 
-たとえば、"売上" を "地域" によってピボット処理すると、各売上値から新しい列値が算出されるだけです。 例: "25"、"50"、"1000" などです。ただし、"売上" というプレフィックス値を設定すれば、値に "売上" が付加されます。
+たとえば、"売上" を "地域" によってピボット処理すると、各売上値から新しい列値が算出されるだけです。 次に例を示します。"25"、"50"、"1000" などです。ただし、"売上" というプレフィックス値を設定すれば、値に "売上" が付加されます。
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
-[Column Arrangement]\(列の配列\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配列\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
+[Column Arrangement]\(列の配置\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配置\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
 
 ![ピボット解除変換](media/data-flow//unpivot7.png "ピボット解除オプション 5")
 
 ピポット解除された最終的なデータの結果セットには、別個の行の値にピボット解除された列の合計が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ピボット解除変換](data-flow-pivot.md)を使用して、行を列にピボットします。

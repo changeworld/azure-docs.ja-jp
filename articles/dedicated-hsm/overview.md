@@ -2,8 +2,8 @@
 title: 専用 HSM とは - Azure Dedicated HSM | Microsoft Docs
 description: Azure Dedicated HSM の概要では、FIPS 140-2 レベル 3 認定を満たす Azure 内でのキーの保管機能について説明します
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 88a49c9c124c5399749d2b60595d7f5c7ec77b20
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: mbaldwin
+ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62117994"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "70881075"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Azure Dedicated HSM とは何か
 
@@ -46,7 +46,7 @@ Microsoft のお客様の多くは、暗号の保管デバイスのシングル 
  
  この監視は必要であればお客様が自由に無効化できます。 ただし、これを無効にした場合、Microsoft からプロアクティブな正常性アラートは通知されません。
 
-### <a name="high-performance"></a>高性能
+### <a name="high-performance"></a>高パフォーマンス
 
 Gemalto デバイスがこのサービスに選ばれたのには、さまざまな理由があります。 幅広い暗号アルゴリズムのサポート、さまざまなオペレーティング システムのサポート、広範な API のサポートが提供されます。 デプロイされた特定のモデルは、RSA-2048 の場合に毎秒 10,000 操作という優れたパフォーマンスを発揮します。 一意のアプリケーションのインスタンスについて、10 個のパーティションを使用することができます。 短い待ち時間、大容量、高スループットのデバイスです。
 
@@ -81,7 +81,7 @@ Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な
 - Azure Storage のクライアント側暗号化
 - SQL Server と Azure SQL DB の Always Encrypted
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これは非常に特殊なサービスです。 そのため、このドキュメント セットの主要な概念について、価格、サポート、サービス レベル アグリーメントを含めて十分に理解しておくことをお勧めします。 
 
@@ -91,4 +91,4 @@ Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)

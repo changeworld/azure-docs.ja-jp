@@ -1,10 +1,10 @@
-- name: Container Instances
+- name: Container Instances のドキュメント
   href: index.yml
 - name: 概要
   items:
     - name: Azure Container Instances について
       href: container-instances-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: コンテナー インスタンスのデプロイ - CLI
@@ -13,6 +13,9 @@
       href: container-instances-quickstart-portal.md
     - name: コンテナー インスタンスのデプロイ - PowerShell
       href: container-instances-quickstart-powershell.md
+    - name: コンテナー インスタンスのデプロイ - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: container-instances-quickstart-template.md
 - name: チュートリアル
   items:
     - name: コンテナー イメージの作成とデプロイ
@@ -29,6 +32,10 @@
           href: container-instances-multi-container-yaml.md
         - name: コンテナー グループのデプロイ - Resource Manager
           href: container-instances-multi-container-group.md
+    - name: Azure サービスと統合する
+      items:
+        - name: Azure Functions でトリガーする
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -45,34 +52,48 @@
       href: container-instances-region-availability.md
     - name: オーケストレーターとの関係
       href: container-instances-orchestrator-relationship.md
-    - name: セキュリティに関する考慮事項
-      href: container-instances-image-security.md
-- name: ハウツー ガイド
-  items:
-    - name: デプロイ
+    - name: Security
       items:
-        - name: 仮想ネットワークでのデプロイ (プレビュー)
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: セキュリティに関する考慮事項
+          href: container-instances-image-security.md
+    - name: 仮想ネットワーク
+      href: container-instances-virtual-network-concepts.md
+- name: 操作方法ガイド
+  items:
+    - name: 配置
+      items:
+        - name: 仮想ネットワークでのデプロイ
           href: container-instances-vnet.md
         - name: Azure Container Registry からのデプロイ
           href: container-instances-using-azure-container-registry.md
+        - name: GitHub Actions を使用したデプロイ (プレビュー)
+          href: container-instances-github-action.md
+        - name: デプロイ データの暗号化
+          href: container-instances-encrypt-data.md
+        - name: 専用ホストへのデプロイ
+          href: container-instances-dedicated-hosts.md
+        - name: Logic Apps コネクタの使用
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: コンテナーのシナリオ
       items:
         - name: 一度だけ実行されるタスクの再起動ポリシーの設定
           href: container-instances-restart-policy.md
         - name: 環境変数の設定 (env)
           href: container-instances-environment-variables.md
-        - name: コンテナーのエントリポイントのオーバーライド
+        - name: コンテナー スタートアップ コマンドの設定 (entrypoint)
           href: container-instances-start-command.md
         - name: コマンドの実行 (exec)
           href: container-instances-exec.md
-        - name: Jenkins ビルド ジョブの実行
-          href: container-instances-jenkins.md
         - name: マネージド ID の使用 (プレビュー)
           href: container-instances-managed-identity.md
         - name: GPU リソースの使用 (プレビュー)
           href: container-instances-gpu.md
-        - name: SSL エンドポイントの有効化
+        - name: サイドカーでの SSL エンドポイントの有効化
           href: container-instances-container-group-ssl.md
+        - name: 静的 IP アドレスの公開
+          href: container-instances-application-gateway.md
     - name: データ ボリュームのマウント
       items:
         - name: Azure ファイル共有
@@ -87,6 +108,8 @@
       items:
         - name: liveness probe の構成
           href: container-instances-liveness-probe.md
+        - name: readiness probe の構成
+          href: container-instances-readiness-probe.md
         - name: コンテナーの停止と開始
           href: container-instances-stop-start.md
         - name: 実行中のコンテナーの更新
@@ -97,7 +120,7 @@
           href: container-instances-monitor.md
         - name: コンテナー ログとコンテナー イベントの取得
           href: container-instances-get-logs.md
-        - name: Azure Log Analytics によるログ記録
+        - name: Azure Monitor ログでのログ記録
           href: container-instances-log-analytics.md
     - name: トラブルシューティング
       items:
@@ -121,6 +144,10 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
+    - name: コネクタ
+      href: /connectors/aci
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -133,7 +160,9 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 製品フィードバックの提供
       href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: よく寄せられる質問
+      href: container-instances-faq.md

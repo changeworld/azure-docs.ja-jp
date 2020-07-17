@@ -1,22 +1,22 @@
 ---
-title: Azure Maps を使用してストア ロケーターを作成する | Microsoft Docs
-description: Azure Maps を使用してストア ロケーターを作成します。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 11/15/2018
+title: チュートリアル:Azure Maps を使用してストア ロケーター アプリケーションを作成する | Microsoft Azure Maps
+description: このチュートリアルでは、Microsoft Azure Maps Web SDK を使用して、ストア ロケーター Web アプリケーションを作成する方法について説明します。
+author: philmea
+ms.author: philmea
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545299"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80333853"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
 このチュートリアルでは、Azure Maps を使用してシンプルなストア ロケーターを作成する手順を紹介します。 ストア ロケーターは広く一般的に使用されています。 この種のアプリケーションで使われている概念の多くは、他のさまざまな種類のアプリケーションに当てはまります。 コンシューマーに商品を直接販売するほとんどの企業にとって、ストア ロケーターを顧客に提供することは必要不可欠になっています。 このチュートリアルでは、以下の内容を学習します。
     
@@ -35,25 +35,23 @@ ms.locfileid: "59545299"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するためには、まず [Azure Maps アカウントを作成](./tutorial-search-location.md#createaccount)し、[アカウントのサブスクリプション キーを取得](./tutorial-search-location.md#getkey)する必要があります。
+このチュートリアルの手順を完了するには、まず Azure Maps アカウントを作成して、主キー (サブスクリプション キー) を取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
-## <a name="design"></a>設計
+## <a name="design"></a>デザイン
 
 すぐにコードを作成し始めるよりも、まず設計から取り組むことをお勧めします。 単純なものから複雑なものまで、必要に応じてさまざまなストア ロケーターを作成できます。 このチュートリアルでは、シンプルなストア ロケーターを作成します。 読者が必要に応じて機能を拡張しやすいよう、途中でいくつかのヒントを記載しています。 ここでは、Contoso Coffee という架空の企業向けにストア ロケーターを作成します。 次の図は、このチュートリアルで作成するストア ロケーターの一般的なレイアウトのワイヤーフレームを示したものです。
 
-<br/>
 <center>
 
-![Contoso Coffee コーヒー ショップの所在地を示すストア ロケーターのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Contoso Coffee ショップの場所を示すストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 このストア ロケーターには、その実用性を最大化するために、ユーザーの画面幅が 700 ピクセルよりも狭いときに調整されるレスポンシブ レイアウトを採用しています。 レスポンシブ レイアウトにより、モバイル デバイスなどの小さな画面でも使いやすいストア ロケーターとなっています。 小さな画面レイアウトのワイヤーフレームを次に示します。  
 
-<br/>
 <center>
 
-![モバイル デバイスにおける Contoso Coffee ストア ロケーターのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![モバイル デバイスにおける Contoso Coffee ストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-ワイヤーフレームを見ると、きわめてシンプルなアプリケーションであることがわかります。 このアプリケーションには、検索ボックス、近隣の店舗の一覧、いくつかのマーカー (記号) が表示された地図に加え、ユーザーがマーカーを選択したときに詳しい情報を表示するポップアップ ウィンドウがあります。 さらに、このチュートリアルでこのストア ロケーターに組み込む機能は次のとおりです。
+ワイヤーフレームを見ると、きわめてシンプルなアプリケーションであることがわかります。 このアプリケーションには、検索ボックス、近隣の店舗の一覧、いくつかのマーカー (記号など) が表示された地図があります。 また、ユーザーがマーカーを選択したときに詳しい情報を表示するポップアップ ウィンドウも存在します。 さらに、このチュートリアルでこのストア ロケーターに組み込む機能は次のとおりです。
 
 * インポートしたタブ区切りデータ ファイル内のすべての所在地が地図上に読み込まれます。
 * ユーザーは地図に対するパン操作やズーム操作のほか、検索を実行したり、[My Location]\(現在位置\) という GPS ボタンを選択したりすることができます。
@@ -71,9 +69,8 @@ ms.locfileid: "59545299"
 
 ## <a name="create-the-store-location-dataset"></a>店舗所在地のデータセットを作成する
 
-ストア ロケーター アプリケーションを開発する前に、地図上に表示する店舗のデータセットを作成する必要があります。 このチュートリアルでは、Contoso Coffee という架空のコーヒー ショップのデータセットを使用します。 このシンプルなストア ロケーターのデータセットは、Excel ブックで管理します。 データセットには、米国、カナダ、イギリス、フランス、ドイツ、イタリア、オランダ、デンマーク、スペインの 9 か国に点在する Contoso Coffee コーヒー ショップ 10,213 店舗の所在地が含まれています。 実際のデータのスクリーンショットを次に示します。
+ストア ロケーター アプリケーションを開発する前に、地図上に表示する店舗のデータセットを作成する必要があります。 このチュートリアルでは、Contoso Coffee という架空のコーヒー ショップのデータセットを使用します。 このシンプルなストア ロケーターのデータセットは、Excel ブックで管理します。 データセットには、米国、カナダ、イギリス、フランス、ドイツ、イタリア、オランダ、デンマーク、スペインの 9 つの国/地域に点在する Contoso Coffee コーヒー ショップ 10,213 店舗の所在地が含まれています。 実際のデータのスクリーンショットを次に示します。
 
-<br/>
 <center>
 
 ![Excel ブック形式のストア ロケーター データのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -84,25 +81,23 @@ ms.locfileid: "59545299"
     
 * 所在地情報は、**AddressLine**、**City**、**Municipality** (郡)、**AdminDivision** (州)、**PostCode** (郵便番号)、**Country** の各列を使用して格納されています。  
 * **Latitude** 列と **Longitude** 列には、Contoso Coffee コーヒー ショップの各所在地に対応する座標が格納されています。 座標情報がない場合は、Azure Maps の Search サービスを使用して所在地の座標を特定できます。
-* その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、Wi-Fi スポットと車椅子の利用の可否 (ブール型列)、店舗の開店時間と閉店時間 (24 時間形式) です。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
+* その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、ブール型列、店舗の開店時間と閉店時間 (24 時間形式) です。 ブール型列は、Wi-Fi と車椅子の利用の可否に使用されます。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
 
 > [!Note]
 > Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4325" のデータを読み取ります。 
 
-データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会してユーザーのブラウザーに結果を返す Web サービスを公開する方法です。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が著しく増え、コストも大きくなります。 
+データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会する Web サービスを公開する方法です。 その結果をユーザーのブラウザーに返すことができます。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が増え、コストも大きくなります。 
 
 さらに別の方法として、ブラウザーで簡単に解析できるフラット テキスト ファイルにこのデータセットを変換する方法もあります。 ファイルそのものは、アプリケーションの他の要素と共にホストすることができます。 この方法ならシンプルな状態を保つことができますが、選択肢として適しているのはデータセットが比較的小さい場合に限られます。ユーザーがすべてのデータをダウンロードすることになるためです。 ここでは、データ ファイルのサイズが 1 MB 未満であるため、このデータセットにフラット テキスト ファイルを使用します。  
 
-このブックをフラット テキスト ファイルに変換するには、タブ区切りファイルとしてブックを保存します。 それぞれの列はタブ文字で区切られているため、コード内で容易に列を解析することができます。 コンマ区切り値 (CSV) 形式を使用することもできますが、その場合、より多くの解析ロジックが必要となります。 コンマを含んでいるフィールドはすべて、前後に引用符を付けてラップされます。 このデータを Excel でタブ区切りファイルとしてエクスポートするには、**[名前を付けて保存]** を選択します。 **[ファイルの種類]** ボックスの一覧から **[テキスト (タブ区切り)(*.txt)]** を選択します。 このファイルに *ContosoCoffee.txt* という名前を付けます。 
+このブックをフラット テキスト ファイルに変換するには、タブ区切りファイルとしてブックを保存します。 それぞれの列はタブ文字で区切られているため、コード内で容易に列を解析することができます。 コンマ区切り値 (CSV) 形式を使用することもできますが、その場合、より多くの解析ロジックが必要となります。 コンマを含んでいるフィールドはすべて、前後に引用符を付けてラップされます。 このデータを Excel でタブ区切りファイルとしてエクスポートするには、 **[名前を付けて保存]** を選択します。 **[ファイルの種類]** ボックスの一覧から **[テキスト (タブ区切り)(*.txt)]** を選択します。 このファイルに *ContosoCoffee.txt* という名前を付けます。 
 
-<br/>
 <center>
 
 ![[ファイルの種類] ダイアログ ボックスのスクリーンショット](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 テキスト ファイルをメモ帳で開いた場合、次の図のようになります。
 
-<br/>
 <center>
 
 ![タブ区切りデータセットが表示されたメモ帳ファイルのスクリーンショット](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ ms.locfileid: "59545299"
 
 プロジェクトの作成には、[Visual Studio](https://visualstudio.microsoft.com) または任意のコード エディターを使用できます。 プロジェクト フォルダーに、*index.html*、*index.css*、*index.js* の 3 つのファイルを作成します。 これらのファイルによって、アプリケーションのレイアウト、スタイル、ロジックが定義されます。 *data* という名前のフォルダーを作成し、そのフォルダーに *ContosoCoffee.txt* を追加します。 *images* という名前の別のフォルダーを作成します。 このアプリケーションでは、地図上のアイコン、ボタン、マーカー用に 10 個の画像を使用します。 [これらの画像をダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)することができます。 これでプロジェクト フォルダーは、次の図のようになります。
 
-<br/>
 <center>
 
 ![Simple Store Locator プロジェクト フォルダーのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -121,7 +115,7 @@ ms.locfileid: "59545299"
 
 ユーザー インターフェイスを作成するには、次のコードを *index.html* に追加します。
 
-1. *index.html* の `head` に次の `meta` タグを追加します。 これらのタグで文字セット (UTF-8) を定義し、Internet Explorer と Microsoft Edge に最新のブラウザー バージョンを使用するよう伝え、レスポンシブ レイアウトに適したビューポートを指定しています。
+1. *index.html* の `head` に次の `meta` タグを追加します。 `charset` タグは、文字セット (UTF-8) を定義します。 Internet Explorer と Microsoft Edge には、`http-equiv` の値を通じて、最新バージョンのブラウザーを使用するように伝えられます。 そして、最後の `meta` タグで、レスポンシブ レイアウトに適したビューポートを指定しています。
 
     ```HTML
     <meta charset="utf-8">
@@ -139,7 +133,7 @@ ms.locfileid: "59545299"
 1. Azure Maps Services モジュールへの参照を追加します。 このモジュールは、Azure Maps の REST サービスをラップして JavaScript で使いやすいようにしている JavaScript ライブラリです。 検索機能を強化するうえで、このモジュールは役立ちます。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
 1. *index.js* と *index.css* への参照を追加します。
@@ -381,13 +375,13 @@ ms.locfileid: "59545299"
     }
    ```
 
-ここでアプリケーションを実行した場合、ヘッダー、検索ボックス、検索ボタンは表示されますが、地図はまだ読み込まれていないので表示されません。 検索を実行しようとしても何も起こりません。 ストア ロケーターのすべての機能を利用するには、次のセクションで説明する JavaScript ロジックを設定する必要があります。
+ここでアプリケーションを実行した場合、ヘッダー、検索ボックス、検索ボタンは表示されます。 ただし、地図はまだ読み込まれていないので表示されません。 検索を実行しようとしても何も起こりません。 次のセクションで説明する JavaScript ロジックを設定する必要があります。 ストア ロケーターのすべての機能には、このロジックでアクセスします。
 
 ## <a name="wire-the-application-with-javascript"></a>JavaScript を使用してアプリケーションを接続する
 
-この時点で、ユーザー インターフェイスの設定はすべて整っています。 次に、データを読み込んで解析した後、そのデータを地図上にレンダリングする JavaScript を追加する必要があります。 最初に、以下の手順で示すとおり、*index.js* を開いてコードを追加します。
+ユーザー インターフェイスの設定はすべて整っています。 さらに、データを読み込んで解析した後、そのデータを地図上にレンダリングする JavaScript を追加する必要があります。 最初に、以下の手順で示すとおり、*index.js* を開いてコードを追加します。
 
-1. 設定を更新しやすいようグローバル オプションを追加します。 さらに、地図、ポップアップ ウィンドウ、データ ソース、アイコン レイヤー、検索エリアの中心に表示される HTML マーカー、Azure Maps Search サービス クライアントのインスタンス用の各変数を定義します。
+1. 設定を更新しやすいようグローバル オプションを追加します。 マップ、ポップアップ ウィンドウ、データ ソース、アイコン レイヤー、および HTML マーカーの変数を定義します。 検索領域の中心を示すように HTML マーカーを設定します。 また、Azure Maps 検索サービス クライアントのインスタンスを定義します。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -401,11 +395,11 @@ ms.locfileid: "59545299"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *index.js* にコードを追加します。 以下のコードでは、地図の初期化、ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)の追加、地図の読み込みを監視するイベントの接続、検索ボタンと [My Location]\(現在位置\) ボタンの追加を行います。
+1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
 
-   ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力した後で Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国に限定するために、それらの国の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国を限定することで、返される結果の精度向上につながります。 
+   ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力して Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国/地域に限定するために、それらの国の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国/地域を限定することで、返される結果の精度向上につながります。 
   
-   検索が完了したら、最初の結果を取得し、その地域上に地図のカメラを設定します。 [My Location]\(現在位置\) ボタンがユーザーによって選択されたら、ブラウザーに組み込まれている HTML5 Geolocation API を使用して、ユーザーの位置情報を取得し、その位置が中心に来るように地図を配置します。  
+   検索が完了したら、最初の結果を取得し、その地域上にマップ カメラを設定します。 ユーザーが [My Location]\(現在位置\) ボタンを選択すると、HTML5 Geolocation API を使用してユーザーの位置が取得されます。 この API はブラウザーに組み込まれています。 次に、ユーザーの現在位置をマップの中央に配置します。  
 
    > [!Tip]
    > ポップアップ ウィンドウを使用するときは、単一の `Popup` インスタンスを作成し、その内容と位置を更新することによって再利用することをお勧めします。 コードに追加する `Popup` インスタンスごとに、ページに複数の DOM 要素が追加されます。 ページ上の DOM 要素が増えるほど、ブラウザーで追跡する必要のあるものが増えます。 項目が多すぎると、ブラウザーが低速化する可能性があります。
@@ -417,7 +411,7 @@ ms.locfileid: "59545299"
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'
@@ -432,7 +426,7 @@ ms.locfileid: "59545299"
 
         //Use subscriptionKeyCredential to create a pipeline
         const pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential, {
-            retryOptions: { maxTries: 4 }, // Retry options
+            retryOptions: { maxTries: 4 } // Retry options
         });
 
         //Create an instance of the SearchURL client.
@@ -533,7 +527,7 @@ ms.locfileid: "59545299"
     map.markers.add(centerMarker);
     ```
 
-1. 地図の `ready` イベント リスナーで、データ ソースを追加します。 そのうえで、データセットの読み込みと解析のための呼び出しを行います。 データ ソースでは、クラスタリングを有効にしてください。 データ ソースでのクラスタリングにより、重なり合うポイントがまとめて 1 つのクラスターにグループ化されます。 ユーザーが拡大操作を実行すると、クラスターは個々のポイントに分かれます。 これによって、より流動的なユーザー エクスペリエンスとなり、パフォーマンスも向上します。
+1. 地図の `ready` イベント リスナーで、データ ソースを追加します。 そのうえで、データセットの読み込みと解析のための呼び出しを行います。 データ ソースでは、クラスタリングを有効にしてください。 データ ソースでのクラスタリングにより、重なり合うポイントがまとめて 1 つのクラスターにグループ化されます。 ユーザーが拡大操作を実行すると、クラスターは個々のポイントに分かれます。 この動作により、ユーザー エクスペリエンスとパフォーマンスが向上します。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -692,7 +686,7 @@ ms.locfileid: "59545299"
     }
     ```
 
-1. リスト パネルが更新されたら、地図の中心から現在のマップ ビュー内のすべてのポイント フィーチャーまでの距離が計算されます。 その後、距離でフィーチャーが並べ替えられます。 HTML が生成され、個々の場所がリスト パネルに表示されます。
+1. リスト パネルが更新されると距離が計算されます。 これは、地図の中心から現在のマップ ビュー内のすべてのポイント フィーチャーまでの距離となります。 その後、距離でフィーチャーが並べ替えられます。 HTML が生成され、個々の場所がリスト パネルに表示されます。
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -706,21 +700,6 @@ ms.locfileid: "59545299"
         //Get the current camera and view information for the map.
         var camera = map.getCamera();
         var listPanel = document.getElementById('listPanel');
-
-        //Get all the shapes that have been rendered in the bubble layer.
-        var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
-
-        data.forEach(function(shape) {
-            if (shape instanceof atlas.Shape) {
-                //Calculate the distance from the center of the map to each shape, and then store the data in a distance property.  
-                shape.distance = atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles');
-            }
-        });
-
-        //Sort the data by distance.
-        data.sort(function(x, y) {
-            return x.distance - y.distance;
-        });
 
         //Check to see whether the user is zoomed out a substantial distance. If they are, tell the user to zoom in and to perform a search or select the My Location button.
         if (camera.zoom < maxClusterZoomLevel) {
@@ -747,6 +726,25 @@ ms.locfileid: "59545299"
             </div>
             */
 
+            //Get all the shapes that have been rendered in the bubble layer. 
+            var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
+
+            //Create an index of the distances of each shape.
+            var distances = {};
+
+            data.forEach(function (shape) {
+                if (shape instanceof atlas.Shape) {
+
+                    //Calculate the distance from the center of the map to each shape and store in the index. Round to 2 decimals.
+                    distances[shape.getId()] = Math.round(atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles') * 100) / 100;
+                }
+            });
+
+            //Sort the data by distance.
+            data.sort(function (x, y) {
+                return distances[x.getId()] - distances[y.getId()];
+            });
+
             data.forEach(function(shape) {
                 properties = shape.getProperties();
                 html.push('<div class="listItem" onclick="itemSelected(\'', shape.getId(), '\')"><div class="listItem-title">',
@@ -760,8 +758,8 @@ ms.locfileid: "59545299"
                 getOpenTillTime(properties),
                 '<br />',
 
-                //Route the distance to two decimal places.  
-                (Math.round(shape.distance * 100) / 100),
+                //Get the distance of the shape.
+                distances[shape.getId()],
                 ' miles away</div>');
             });
 
@@ -872,6 +870,9 @@ ms.locfileid: "59545299"
             </div>
         */
 
+         //Calculate the distance from the center of the map to the shape in miles, round to 2 decimals.
+        var distance = Math.round(atlas.math.getDistanceTo(map.getCamera().center, shape.getCoordinates(), 'miles') * 100)/100;
+
         var html = ['<div class="storePopup">'];
         html.push('<div class="popupTitle">',
             properties['AddressLine'],
@@ -882,8 +883,8 @@ ms.locfileid: "59545299"
             //Convert the closing time to a format that's easier to read.
             getOpenTillTime(properties),
 
-            //Route the distance to two decimal places.  
-            '<br/>', (Math.round(shape.distance * 100) / 100),
+            //Add the distance information.  
+            '<br/>', distance,
             ' miles away',
             '<br /><img src="images/PhoneIcon.png" title="Phone Icon"/><a href="tel:',
             properties['Phone'],
@@ -896,11 +897,11 @@ ms.locfileid: "59545299"
             html.push('<br/>Amenities: ');
 
             if (properties['IsWiFiHotSpot']) {
-                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>')
+                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>');
             }
 
             if (properties['IsWheelchairAccessible']) {
-                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>')
+                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>');
             }
         }
 
@@ -923,26 +924,23 @@ ms.locfileid: "59545299"
 
 ユーザーが初めて [My Location]\(現在位置\) ボタンを選択するときは、ユーザーの位置情報へのアクセス許可を求めるセキュリティ警告がブラウザーに表示されます。 ユーザーが位置情報の共有に同意した場合、その場所が地図で拡大表示され、付近のコーヒー ショップが表示されます。 
 
-<br/>
 <center>
 
 ![ユーザーの位置情報へのアクセスを求めるブラウザーの要求のスクリーンショット](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-コーヒー ショップの所在地を含んだエリアを十分拡大表示すると、クラスターが個々の所在地に分かれます。 地図上のいずれかのアイコンを選択するか、サイド パネル内の項目を選択すると、その所在地の情報を示すポップアップ ウィンドウが表示されます。
+コーヒー ショップの所在地を含んだエリアを十分拡大表示すると、クラスターが個々の所在地に分かれます。 地図上のいずれかのアイコンを選択するか、サイド パネル内の項目を選択すると、ポップアップ ウィンドウが表示されます。 ポップアップには、選択した場所に関する情報が表示されます。
 
-<br/>
 <center>
 
 ![完成したストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 ブラウザー ウィンドウのサイズを幅 700 ピクセル未満に変更するか、アプリケーションをモバイル デバイスで開いた場合、小さい画面用に合わせてレイアウトが変化します。 
 
-<br/>
 <center>
 
 ![小画面バージョンのストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Maps を使用して基本的なストア ロケーターを作成する方法を紹介しています。 このチュートリアルで作成するストア ロケーターには、必要な機能がすべて備わっているものと思われます。 次のように、ストア ロケーターに機能を追加したり、より高度な機能を使用したりすれば、ユーザー エクスペリエンスの独自性を高めることができます。 
 

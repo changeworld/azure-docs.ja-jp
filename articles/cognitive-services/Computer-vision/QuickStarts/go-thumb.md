@@ -8,36 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f13a384cb32596d191625c8f13bc914686c6297
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7e9980bfe3065b4ce0df5a2f083f5f4bef366f35
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000183"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681108"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Go を使用したサムネイルの生成
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>クイック スタート:Computer Vision の REST API と Go を使用してサムネイルを生成する
 
-このクイック スタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+このクイックスタートでは、Computer Vision の REST API を使用して、画像からサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Go](https://golang.org/dl/) がインストールされている必要があります。
-- Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。
+- Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
 1. テキスト エディターに次のコードをコピーします。
-1. 必要に応じて、コードに次の変更を加えます。
-    1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
-    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
-    1. 必要に応じて、サムネイルを生成する別のイメージの URL で `imageUrl` 値を置き換えます。
+1. 必要に応じて、サムネイルを生成する別のイメージの URL で `imageUrl` 値を置き換えます。
 1. `.go` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-thumbnail.go` 」のように入力します。
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`go build` コマンドを実行して、ファイルからパッケージをコンパイルします。 たとえば、「 `go build get-thumbnail.go` 」のように入力します。
@@ -47,33 +44,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 package main
 
 import (
-    "encoding/json"
+    "bytes"
     "fmt"
     "io/ioutil"
+    "io"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace <Subscription Key> with your valid subscription key.
-    const subscriptionKey = "<Subscription Key>"
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
+    endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    const uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail"
-    const imageUrl =
-        "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
+    uriBase := endpoint + "vision/v3.0/generateThumbnail"
+    const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
     const params = "?width=100&height=100&smartCropping=true"
-    const uri = uriBase + params
+    uri := uriBase + params
     const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
     reader := strings.NewReader(imageUrlEnc)
@@ -107,14 +98,19 @@ func main() {
     if err != nil {
         panic(err)
     }
+    
+    // Convert byte[] to io.Reader type
+    readerThumb := bytes.NewReader(data)
 
-    // Parse the JSON data
-    var f interface{}
-    json.Unmarshal(data, &f)
+    // Write the image binary to file
+    file, err := os.Create("thumb_local.png")
+    if err != nil { log.Fatal(err) }
+    defer file.Close()
+    _, err = io.Copy(file, readerThumb)
+    if err != nil { log.Fatal(err) }
 
-    // Format and display the JSON result
-    jsonFormatted, _ := json.MarshalIndent(f, "", "  ")
-    fmt.Println(string(jsonFormatted))
+    fmt.Println("The thunbnail from local has been saved to file.")
+    fmt.Println()
 }
 ```
 
@@ -122,7 +118,7 @@ func main() {
 
 成功応答には、サムネイル画像のバイナリ データが格納されます。 要求が失敗した場合は、原因の特定につながるエラー コードとメッセージが応答に格納されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出を実行する Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
 

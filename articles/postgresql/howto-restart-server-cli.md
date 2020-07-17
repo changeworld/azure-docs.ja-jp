@@ -1,17 +1,17 @@
 ---
-title: Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
+title: サーバーを再起動する - Azure CLI - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する方法について説明します
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 13b26b545f9e95ce2457e4f8d9cf32da59cd91e6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068975"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74770154"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -38,6 +38,6 @@ ms.locfileid: "65068975"
 az postgres server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Database for PostgreSQL でパラメーターを設定する方法](howto-configure-server-parameters-using-cli.md)について確認する

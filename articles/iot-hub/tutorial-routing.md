@@ -1,5 +1,5 @@
 ---
-title: Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する | Microsoft Docs
+title: Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: d81b01992bd3bdd49a48a873281d1be1e795497a
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556013"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74084380"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -26,16 +26,18 @@ ms.locfileid: "65556013"
 
 このチュートリアルでは、Azure CLI を使用してベース リソースを作成してから、[Azure portal](https://portal.azure.com) を使用してメッセージ ルーティングを構成する方法およびテスト用の仮想デバイスを設定する方法を説明します。
 
-IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 それを簡単にするために、それらのリソース名には、*randomValue* という英数字のランダム値が追加されます。 randomValue はスクリプトの冒頭で 1 度生成され、スクリプト全体で必要に応じてリソース名に追加されます。 これをランダムにしたくない場合は、空の文字列または特定の値に設定できます。
-
 以下のスクリプトをコピーして Cloud Shell に貼り付け、Enter キーを押してください。 スクリプトが 1 行ずつ実行されます。 これで、ストレージ アカウント、IoT ハブ、Service Bus 名前空間、Service Bus キューなど、このチュートリアルのベース リソースが作成されます。
 
-デバッグに関する注意: このスクリプトは、読みやすくするために継続記号 (バックスラッシュ `\`) を使用しています。 スクリプトの実行で問題が生じた場合は、バックスラッシュの後ろにスペースがないことを確認してください。
+IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 それを簡単にするために、それらのリソース名には、*randomValue* という英数字のランダム値が追加されます。 randomValue はスクリプトの冒頭で 1 度生成され、スクリプト全体で必要に応じてリソース名に追加されます。 これをランダムにしたくない場合は、空の文字列または特定の値に設定できます。
+
+> [!TIP]
+> デバッグのヒント: このスクリプトでは、読みやすくするために継続記号 (バックスラッシュ `\`) を使用しています。 スクリプトの実行で問題が生じた場合は、Cloud Shell セッションで `bash` が実行されていること、およびバックスラッシュの後ろにスペースがないことを確認してください。
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 
 #   in which you're logged in.
-# This field is used to set up the routing rules.
+# This field is used to set up the routing queries.
 subscriptionID=$(az account show --query id)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -134,7 +136,7 @@ az servicebus queue create --name $sbQueueName \
 
 2. リソースの一覧で IoT ハブを選択します。 このチュートリアルでは、**ContosoTestHub** を使います。
 
-3. **[メッセージ ルーティング]** を選択します。 **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。 次の図に示すように、**[Add a Route]\(ルートの追加\)** ウィンドウで、[エンドポイント] フィールドの隣にある + **[追加]** を選択し、サポートされているエンドポイントを表示します。
+3. **[メッセージ ルーティング]** を選択します。 **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。 次の図に示すように、 **[Add a Route]\(ルートの追加\)** ウィンドウで、[エンドポイント] フィールドの隣にある + **[追加]** を選択し、サポートされているエンドポイントを表示します。
 
    ![ルートのエンドポイントの追加を開始する](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
 
@@ -149,7 +151,7 @@ az servicebus queue create --name $sbQueueName \
 7. エンコードを AVRO または JSON に設定します。 このチュートリアルでは、残りのフィールドには既定値を使用します。 選択したリージョンが JSON エンコードをサポートしていない場合、このフィールドは灰色表示されます。
 
    > [!NOTE]
-   > BLOB 名の形式は、**[BLOB ファイル名形式]** を使用して設定することができます。 既定では、 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`です。 形式には任意の順序で {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH}、および {mm} を含める必要があります。
+   > BLOB 名の形式は、 **[BLOB ファイル名形式]** を使用して設定することができます。 既定では、 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`です。 形式には任意の順序で {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH}、および {mm} を含める必要があります。
    >
    > たとえば、既定の BLOB ファイル名形式を使用して、ハブ名が ContosoTestHub であり、日付/時刻が 2018 年 10 月 30 日午前 10:56 である場合、BLOB 名は `ContosoTestHub/0/2018/10/30/10/56` のようになります。
    > 
@@ -160,7 +162,7 @@ az servicebus queue create --name $sbQueueName \
 
 9. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加したストレージ コンテナーにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。
 
-   **[名前]**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoStorageRoute** を使います。
+   **Name**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoStorageRoute** を使います。
 
    **エンドポイント**: ここには、先ほど設定したエンドポイントが表示されます。
 
@@ -178,7 +180,7 @@ az servicebus queue create --name $sbQueueName \
 
 次に、Service Bus キューへのルーティングを設定します。 [メッセージ ルーティング] ウィンドウに移動して、ルートを追加します。 ルートを追加するときは、ルートに対する新しいエンドポイントを定義します。 このルートを設定した後、**level** プロパティが **critical** に設定されているメッセージは、Service Bus キューに書き込まれます。それにより、ロジック アプリがトリガーされて、情報を含むメールが送信されます。
 
-1. [リソース グループ] ページで、自分の IoT ハブを選択し、**[メッセージ ルーティング]** を選択します。
+1. [リソース グループ] ページで、自分の IoT ハブを選択し、 **[メッセージ ルーティング]** を選択します。
 
 2. **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。
 
@@ -198,7 +200,7 @@ az servicebus queue create --name $sbQueueName \
 
 6. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加した Service Bus キューにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
 
-   **[名前]**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoSBQueueRoute** を使います。 
+   **Name**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoSBQueueRoute** を使います。 
 
    **エンドポイント**: ここには、先ほど設定したエンドポイントが表示されます。
 
@@ -222,7 +224,7 @@ az servicebus queue create --name $sbQueueName \
 
 [!INCLUDE [iot-hub-include-create-simulated-device-portal](../../includes/iot-hub-include-create-simulated-device-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 リソースを設定してメッセージ ルートを構成したら、次のチュートリアルに進んで、IoT ハブにメッセージを送信する方法と、それらがさまざまな宛先にルーティングされるようすを確認しましょう。 
 

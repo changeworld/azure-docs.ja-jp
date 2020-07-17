@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 61082333afc88abef0a8d8a57d1f1b1d893b6148
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161532"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181033"
 ---
 ### <a name="to-view-local-network-gateways"></a>ローカル ネットワーク ゲートウェイを表示するには
 

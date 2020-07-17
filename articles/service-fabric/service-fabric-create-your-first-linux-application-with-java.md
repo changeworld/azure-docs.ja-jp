@@ -1,25 +1,14 @@
 ---
-title: Linux 上で Azure Service Fabric Reliable Actors Java アプリケーションを作成する | Microsoft Docs
+title: Linux 上で Azure Service Fabric Reliable Actors Java アプリケーションを作成する
 description: Java Service Fabric Reliable Actors アプリケーションを 5 分で作成してデプロイする方法について説明します。
-services: service-fabric
-documentationcenter: java
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: aljo
-ms.openlocfilehash: 37d9c17ff10922aa524fa2fe3eb8abff92c83052
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4d09666bad7b4e03b8598191d99a9db717c277d4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664244"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193566"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -186,7 +175,7 @@ public static void main(String[] args) throws Exception {
 ```
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
-Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、端末からアプリケーションをビルドすることができます。
+Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、ターミナルからアプリケーションをビルドすることができます。
 Service Fabric Java 依存関係は、Maven からフェッチされます。 Service Fabric Java アプリケーションをビルドして操作するには、JDK と Gradle がインストールされている必要があります。 まだインストールされていない場合は、[Linux による Service Fabric の概要](service-fabric-get-started-linux.md#set-up-java-development)に関するページを参照し、JDK と Gradle のインストール手順を確認してください。
 
 アプリケーションをビルドしてパッケージ化するには、次のコマンドを実行します。
@@ -196,7 +185,7 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
   gradle
   ```
 
-## <a name="deploy-the-application"></a>アプリケーションのデプロイ
+## <a name="deploy-the-application"></a>アプリケーションの配置
 ビルドしたアプリケーションは、ローカル クラスターにデプロイできます。
 
 1. ローカルの Service Fabric クラスターに接続します (クラスターが[セットアップ済みで稼働中](service-fabric-get-started-linux.md#set-up-a-local-cluster)であることが必要)。
@@ -215,7 +204,7 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
 
 これらのコマンドのパラメーターは、アプリケーション パッケージ内の生成されたマニフェストで確認できます。
 
-アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。
+アプリケーションのデプロイ後、ブラウザーを開いて `http://localhost:19080/Explorer` の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。
 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
 
 > [!IMPORTANT]
@@ -346,7 +335,7 @@ Service Fabric のシステム レベルのサポート。ネイティブの Ser
   }
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Linux で初めての Service Fabric Java アプリケーションを作成する](service-fabric-get-started-eclipse.md)
 * [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)

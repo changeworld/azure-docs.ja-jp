@@ -3,23 +3,23 @@ title: Azure CDN エンドポイントの作成 | Microsoft Docs
 description: この記事では、高度な設定を含む、新しい Azure Content Delivery Network (CDN) エンドポイントを作成する方法を説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525111"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81254017"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの作成
 この記事では、既存の CDN プロファイルに [Azure Content Delivery Network (CDN)](cdn-overview.md) エンドポイントを作成するためのすべての設定について説明します。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツ配信を開始することができます。 プロファイルとエンドポイント作成のクイック スタートについては、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
@@ -32,7 +32,7 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
 
 ## <a name="create-a-new-cdn-endpoint"></a>新しい CDN エンドポイントの作成
 
-1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。 これは、前の手順でダッシュボードにピン留めしている可能性があります。 そうでない場合、**[すべてのサービス]**、**[CDN のプロファイル]** の順に選択して見つけることができます。 **[CDN のプロファイル]** ウィンドウで、エンドポイントの追加先となる予定のプロファイルを選択します。 
+1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。 これは、前の手順でダッシュボードにピン留めしている可能性があります。 そうでない場合、 **[すべてのサービス]** 、 **[CDN のプロファイル]** の順に選択して見つけることができます。 **[CDN のプロファイル]** ウィンドウで、エンドポイントの追加先となる予定のプロファイルを選択します。 
    
     CDN プロファイル ウィンドウが表示されます。
 
@@ -44,13 +44,13 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    
     ![[エンドポイントの追加] ページ](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. **[名前]** に、新しい CDN エンドポイントの一意の名前を入力します。 この名前は、ドメイン _\<endpointname>_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。
+3. **[名前]** に、新しい CDN エンドポイントの一意の名前を入力します。 この名前は、ドメイン _\<endpointname>_ .azureedge.net でキャッシュされたリソースにアクセスする際に使用します。
 
 4. **[配信元の種類]** には、次のいずれかの配信元の種類を選択します。 
-   - **[ストレージ]**: Azure Storage 用
-   - **[クラウド サービス]**: Azure Cloud Services 用
-   - **[Web アプリ]**: Azure Web Apps 用
-   - **[カスタムの配信元]**: パブリックにアクセスできる配信元の任意の Web サーバー用 (Azure または別の場所でホストされている)
+   - **[ストレージ]** : Azure Storage 用
+   - **[クラウド サービス]** : Azure Cloud Services 用
+   - **[Web アプリ]** : Azure Web Apps 用
+   - **[カスタムの配信元]** : パブリックにアクセスできる配信元の任意の Web サーバー用 (Azure または別の場所でホストされている)
 
 5. **[配信元のホスト名]** には、ご自分の配信元サーバーのドメインを選択または入力します。 ドロップダウンには、手順 4. で指定した種類の利用可能なすべての配信元サーバーが一覧表示されます。 配信元の種類として **[カスタムの配信元]** を選択した場合は、カスタムの配信元サーバーのドメインを入力します。
     
@@ -62,10 +62,10 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    > Azure Storage や Web Apps など、配信元の種類によっては、ホスト ヘッダーを配信元のドメインに合わせる必要があります。 ホスト ヘッダーがそのドメインと異なっていることをご利用の配信元で要求される場合以外は、既定値をそのまま使用してください。
    > 
     
-8. **[プロトコル]** と **[配信元ポート]** に、配信元サーバーのリソースへのアクセスに使用するプロトコルとポートを指定します。 少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。 HTTPS コンテンツには、CDN によって提供されたドメイン (_\<endpointname>_.azureedge.net) を使用してアクセスします。 
+8. **[プロトコル]** と **[配信元ポート]** に、配信元サーバーのリソースへのアクセスに使用するプロトコルとポートを指定します。 少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。 HTTPS コンテンツには、CDN によって提供されたドメイン ( _\<endpointname>_ .azureedge.net) を使用してアクセスします。 
    
    > [!NOTE]
-   > **[配信元のポート]** の値によって決定されるのは、エンドポイントが配信元サーバーから情報を取得するときに使用されるポートのみです。 エンドポイントそのものは、**[配信元ポート]** の値に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。  
+   > **[配信元のポート]** の値によって決定されるのは、エンドポイントが配信元サーバーから情報を取得するときに使用されるポートのみです。 エンドポイントそのものは、 **[配信元ポート]** の値に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。  
    > 
    > **Azure CDN from Akamai** プロファイルのエンドポイントでは、配信元ポートの TCP ポート範囲全体が許可されません。 使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](/previous-versions/azure/mt757337(v=azure.100))」を参照してください。  
    > 
@@ -101,10 +101,10 @@ Azure アカウントを使用して [Azure Portal](https://portal.azure.com) �
    
     エンドポイントの構成がポイント オブジェクト プレゼンス (POP) サーバーに反映される前に CDN のドメイン名を利用しようとすると、HTTP 404 応答状態が表示されることがあります。 エンドポイントを作成してから数時間が経過しても 404 応答状態が返される場合は、「[404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったときにエンドポイントを削除するには、そのエンドポイントを選択してから、**[削除]** を選択します。 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+不要になったときにエンドポイントを削除するには、そのエンドポイントを選択してから、 **[削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 カスタム ドメインについて学習するには、CDN エンドポイントにカスタム ドメインを追加するためのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

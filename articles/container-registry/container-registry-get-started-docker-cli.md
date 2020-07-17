@@ -1,20 +1,15 @@
 ---
-title: Docker イメージをプライベート Azure コンテナー レジストリにプッシュする
+title: Docker イメージのプッシュとプル
 description: Docker CLI を使用した、Azure のプライベート コンテナー レジストリに対する Docker イメージのプッシュとプル
-services: container-registry
-author: dlepow
-manager: jeconnoc
-ms.service: container-registry
 ms.topic: article
 ms.date: 01/23/2019
-ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 2cb401dfd68075ff0867ae3f89eee3474000b5de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282697"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74456360"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -122,7 +117,7 @@ Azure コンテナー レジストリからイメージを削除するには、A
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 基本を理解したので、レジストリの使用を開始する準備ができました。 たとえば、レジストリから次の宛先にコンテナー イメージをデプロイします。
 

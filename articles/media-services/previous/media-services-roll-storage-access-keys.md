@@ -13,19 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: c688169dc21304f234aead7196f377a3fa5fd633
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.author: juliako
+ms.reviewer: milanga;cenkdin
+ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294928"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75981958"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する 
 
 新しく Azure Media Services (AMS) アカウントを作成すると、メディア コンテンツの保存に使用する Azure Storage アカウントも選択するよう求めるメッセージが表示されます。 Media Services アカウントには複数のストレージ アカウントを追加できます。 この記事では、ストレージ キーを入れ換える方法を示します。 また、メディア アカウントにストレージ アカウントを追加する方法も示します。 
 
-この記事で説明している操作を実行するには、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) と [PowerShell](https://docs.microsoft.com/powershell/module/az.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/manage-resource-groups-powershell.md)に関するページをご覧ください。
+この記事で説明している操作を実行するには、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) と [PowerShell](https://docs.microsoft.com/powershell/module/az.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/management/manage-resource-groups-powershell.md)に関するページをご覧ください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

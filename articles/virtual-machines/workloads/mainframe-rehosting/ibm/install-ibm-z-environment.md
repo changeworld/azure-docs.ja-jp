@@ -2,18 +2,22 @@
 title: Azure で IBM zD&T 開発/テスト環境をインストールする | Microsoft Docs
 description: Azure 仮想マシン (VM) IaaS (サービスとしてのインフラストラクチャ) に IBM Z Development and Test Environment (zD&T) をデプロイします。
 services: virtual-machines-linux
+ms.service: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894527"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72025943"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure で IBM zD&T 開発/テスト環境をインストールする
 
@@ -48,7 +52,7 @@ zD&T のすべてのエディションが Windows Server ではなく、x86 Linu
 
      - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
 
-     - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法をお勧めします。それには、管理サーバーで IBM から受信したキーを設定する必要があります。
+     - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
 
 ## <a name="create-the-base-image-and-connect"></a>基本イメージおよび接続を作成する
 
@@ -100,7 +104,7 @@ Web サーバーのインストール ファイルは **ZDT\_Install\_EE\_V12.0.
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. **1**  を選択して Enterprise Server をインストールします。
+3. **1** を選択して Enterprise Server をインストールします。
 
 4. **Enter** キーを押し、使用許諾契約書を注意深く読みます。 ライセンスの最後に「**Yes**」と入力して処理を続行します。
 
@@ -132,6 +136,6 @@ Web サーバーは、起動されると、インストール プロセス中に
 
 3. この URL を Web ブラウザーに貼り付けて、zD&T インストールのための管理コンポーネントを開きます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する](./demo.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 79fb8517ec6880e8a3eae0e74275567a24644b87
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132548"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67180978"
 ---
 ## <a name="deployment-customization"></a>展開のカスタマイズ
 

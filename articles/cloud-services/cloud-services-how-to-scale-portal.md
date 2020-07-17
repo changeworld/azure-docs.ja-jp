@@ -2,31 +2,24 @@
 title: ポータルでのクラウド サービスの自動スケール | Microsoft Docs
 description: ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004338"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75360839"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 
 スケールインまたはスケールアウトをトリガーするクラウド サービス worker ロールに対して条件を設定することができます。 ロールの条件は、CPU、ディスク、またはロールのネットワークの負荷に基づいて設定できます。 条件はまた、メッセージ キューに基づいて、またはサブスクリプションに関連付けられているその他の Azure リソースのメトリックに基づいて設定することができます。
 
 > [!NOTE]
-> この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、仮想マシンはクラウド サービスでホストされます。 標準の仮想マシンは、[可用性セット](../virtual-machines/windows/classic/configure-availability-classic.md)に関連付けることでスケールを設定でき、手動でオンまたはオフにすることができます。
+> この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、その仮想マシンはクラウド サービスでホストされます。 標準の仮想マシンは、[可用性セット](../virtual-machines/windows/classic/configure-availability-classic.md)に関連付けることでスケールを設定でき、手動でオンまたはオフにすることができます。
 
 ## <a name="considerations"></a>考慮事項
 アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
@@ -41,7 +34,7 @@ ms.locfileid: "39004338"
 
 * アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
-* 自動スケールは、すべてのロールが**準備完了**状態の場合にのみ発生します。  
+* 自動スケールは、すべてのロールが**準備完了**状態の場合にのみ発生します。  
 
 
 ## <a name="where-scale-is-located"></a>スケールの設定
@@ -66,14 +59,14 @@ ms.locfileid: "39004338"
 2. 親プロファイルのルールを追加します。
 3. 別のプロファイルを追加します。
 
-**[プロファイルの追加]** を選択します。 プロファイルではスケールで使用するモードを指定します。**[常時]**、**[繰り返し]**、**[固定日付]** という 3 つのモードがあります。
+**[プロファイルの追加]** を選択します。 プロファイルではスケールで使用するモードを指定します。 **[常時]** 、 **[繰り返し]** 、 **[固定日付]** という 3 つのモードがあります。
 
 プロファイルとルールを構成したら、上部にある **[保存]** アイコンをクリックします。
 
 #### <a name="profile"></a>プロファイル
 プロファイルでは、スケールにおけるインスタンスの最大数と最小数、ならびにこのスケール範囲を有効にするタイミングを設定します。
 
-* **Always (常に)**
+* **毎回**
 
     常に、この使用可能なインスタンスの範囲を保持します。  
 
@@ -101,7 +94,7 @@ ms.locfileid: "39004338"
 ルールを構成したら、ルール ブレードの下部にある **[OK]** ボタンを選択します。
 
 ## <a name="back-to-manual-scale"></a>手動スケールに戻る
-[[スケールの設定]](#where-scale-is-located) に移動し、**[スケールの基準]** オプションを **[手動で入力したインスタンス数]** に設定します。
+[[スケールの設定]](#where-scale-is-located) に移動し、 **[スケールの基準]** オプションを **[手動で入力したインスタンス数]** に設定します。
 
 ![プロファイルとルールを使用したクラウド サービスのスケール設定](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
@@ -112,3 +105,6 @@ ms.locfileid: "39004338"
 3. スケールするロールのインスタンス。
 
 スケール設定を構成したら、上部にある **[保存]** アイコンを選択します。
+
+
+

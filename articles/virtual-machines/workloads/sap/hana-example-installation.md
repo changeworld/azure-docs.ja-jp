@@ -4,22 +4,21 @@ description: SAP HANA on Azure (Large Instances) に HANA をインストール�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4629894933507bda7359fb034c4079d38100029
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77617206"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (Large Instances) に HANA をインストールする
 
@@ -40,7 +39,7 @@ HANA L インスタンス ユニットは、インターネットに直接接続
 
 SAP S ユーザーなどのユーザーに、SAP Marketplace にアクセスできるようにしてもらう必要があります。
 
-1. [SAP Service Marketplace](https://support.sap.com/en/index.html) にサインインしてアクセスします。 **[Download Software]\(ソフトウェアのダウンロード\)** > **[Installations and Upgrade]\(インストールとアップグレード\)** > **[By Alphabetical Index]\(アルファベット インデックス順\)** を選択します。 **[Under H - SAP HANA Platform Edition]\(H の SAP HANA Platform Edition\)** > **[SAP HANA Platform Edition 2.0]** > **[Installation]\(インストール\)** の順に選択します。 次のスクリーンショットに示されているファイルをダウンロードします。
+1. [SAP Service Marketplace](https://support.sap.com/en/index.html) にサインインしてアクセスします。 **[Download Software]\(ソフトウェアのダウンロード\)**  >  **[Installations and Upgrade]\(インストールとアップグレード\)**  >  **[By Alphabetical Index]\(アルファベット インデックス順\)** を選択します。 **[Under H - SAP HANA Platform Edition]\(H の SAP HANA Platform Edition\)**  >  **[SAP HANA Platform Edition 2.0]**  >  **[Installation]\(インストール\)** の順に選択します。 次のスクリーンショットに示されているファイルをダウンロードします。
 
    ![ダウンロードするファイルのスクリーンショット](./media/hana-installation/image16_download_hana.PNG)
 
@@ -76,11 +75,11 @@ rpm –qa | grep gtk2
 ```
 ./hdblcmgui 
 ```
-ここから一連の画面に従って進み、インストールのデータを指定します。 この例では、SAP HANA データベース サーバーと SAP HANA クライアント コンポーネントをインストールします。 したがって、**[SAP HANA Database]\(SAP HANA データベース\)** を選択します。
+ここから一連の画面に従って進み、インストールのデータを指定します。 この例では、SAP HANA データベース サーバーと SAP HANA クライアント コンポーネントをインストールします。 したがって、 **[SAP HANA Database]\(SAP HANA データベース\)** を選択します。
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([SAP HANA Database]\(SAP HANA データベース\) を選択)](./media/hana-installation/image18_hana_selection.PNG)
 
-次の画面で、**[Install New System]\(新しいシステムのインストール\)** を選択します。
+次の画面で、 **[Install New System]\(新しいシステムのインストール\)** を選択します。
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([Install New System]\(新しいシステムのインストール\) を選択)](./media/hana-installation/image19_select_new.PNG)
 
@@ -88,7 +87,7 @@ rpm –qa | grep gtk2
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット (追加コンポーネントの一覧)](./media/hana-installation/image20_select_components.PNG)
 
-ここでは、SAP HANA Client と SAP HANA Studio を選択します。 また、スケールアップ インスタンスもインストールします。 次に、**[Single-Host System]\(シングルホスト システム\)** を選択します。 
+ここでは、SAP HANA Client と SAP HANA Studio を選択します。 また、スケールアップ インスタンスもインストールします。 次に、 **[Single-Host System]\(シングルホスト システム\)** を選択します。 
 
 ![SAP HANA ライフサイクル管理画面のスクリーンショット ([Single-Host System]\(シングルホスト システム\) を選択)](./media/hana-installation/image21_single_host.PNG)
 
@@ -131,7 +130,7 @@ rpm –qa | grep gtk2
 SAP HANA インスタンスが起動して稼働状態になり、使用する準備が整いました。 SAP HANA インスタンスには、SAP HANA Studio から接続することもできます。 また、最新の更新プログラムを必ず確認して適用してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure での SAP HANA Large Instances の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)
 

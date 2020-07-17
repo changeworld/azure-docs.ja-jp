@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2019
-ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78897909"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -28,25 +28,25 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 接続されたネットワークで HDInsight とリソースが名前によって通信できるようにするには、次のアクションを実行する必要があります。
 
-* Azure 仮想ネットワークを作成する。
-* Azure Virtual Network のカスタム DNS サーバーを作成する。
-* 既定の Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用するように仮想ネットワークを構成する。
-* カスタム DNS サーバーとオンプレミス DNS サーバーの間の転送を構成する。
+1. Azure 仮想ネットワークを作成する。
+1. Azure Virtual Network のカスタム DNS サーバーを作成する。
+1. 既定の Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用するように仮想ネットワークを構成する。
+1. カスタム DNS サーバーとオンプレミス DNS サーバーの間の転送を構成する。
 
-この構成により次の動作が可能になります。
+これらの構成により、次の動作が有効になります。
 
 * __仮想ネットワークの__ DNS サフィックスを持つ完全修飾ドメイン名の要求が、カスタム DNS サーバーに転送されます。 カスタム DNS サーバーはその要求を Azure 再帰リゾルバーに転送し、リゾルバーは IP アドレスを返します。
 * その他の要求はすべて、オンプレミス DNS サーバーに転送されます。 microsoft.com などのパブリック インターネット リソースの要求も、名前解決のためにオンプレミス DNS サーバーに転送されます。
 
 次の図の緑色の線は、仮想ネットワークの DNS サフィックスで終わるリソースの要求です。 青色の線は、オンプレミス ネットワークまたはパブリック インターネットのリソースの要求です。
 
-![このドキュメントで使用される構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>前提条件
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](./hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
-* Azure CLI を使用したい場合で、なおかつまだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-virtual-network-configuration"></a>仮想ネットワーク構成を作成する
 
@@ -63,30 +63,32 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 次の手順では [Azure portal](https://portal.azure.com) を使用して Azure Virtual Machine を作成します。 他の方法で仮想マシンを作成する場合は、[VM の作成 - Azure CLI](../virtual-machines/linux/quick-create-cli.md) および [VM の作成 - Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md) に関するページをご覧ください。  [Bind](https://www.isc.org/downloads/bind/) DNS ソフトウェアを使用する Linux VM を作成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
   
-2. 左側のメニューから、**[+ リソースの作成]** > **[Compute]** > **[Ubuntu Server 18.04 LTS]** に移動します。
+1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Ubuntu 仮想マシンを作成する](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Ubuntu 仮想マシンを作成する](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-3. __[基本]__ タブで、次の情報を入力します。  
+1. **[Compute]\(計算\)**  >  **[Virtual machine]\(仮想マシン\)** を選択して、 **[仮想マシンの作成]** ページに移動します。
+
+1. __[基本]__ タブで、次の情報を入力します。  
   
     | フィールド | 値 |
     | --- | --- |
     |サブスクリプション |適切なサブスクリプションを選択します。|
-    |リソース グループ |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
+    |Resource group |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
     |仮想マシン名 | この仮想マシンを特定するフレンドリ名を入力します。 この例では、**DNSProxy** を使用します。|
     |リージョン | 前に作成した仮想ネットワークと同じリージョンを選択します。  すべてのリージョンですべての VM サイズを使用できるわけではありません。  |
-    |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、**[インフラストラクチャ冗長は必要ありません]** を使用します。 |
+    |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、 **[インフラストラクチャ冗長は必要ありません]** を使用します。 |
     |Image | **[Ubuntu Server 18.04 LTS]** のままにしてください。 |
-    |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 安全性の高いパブリック キーを使用することをお勧めします。 この例では、**[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
+    |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 より安全な公開キーを使用することをお勧めします。 この例では、 **[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
     |ユーザー名 |VM の管理者ユーザー名を入力します。  この例では、**sshuser** を使用します。|
-    |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、**[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
-    |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、**[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
+    |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、 **[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
+    |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、 **[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
 
-    ![仮想マシンの基本構成](./media/connect-on-premises-network/vm-basics.png)
+    ![仮想マシンの基本構成](./media/connect-on-premises-network/virtual-machine-basics.png)
 
-    他のエントリは既定値のままにして、**[ネットワーク]** タブを選択します。
+    他のエントリは既定値のままにして、 **[ネットワーク]** タブを選択します。
 
 4. **[ネットワーク]** タブで、次の情報を入力します。
 
@@ -96,20 +98,21 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
     |パブリック IP | 自動入力されている値を使用します。  |
 
-    ![仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![HDInsight 仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
 
-    他のエントリは既定値のままにして、**[確認と作成]** を選択します。
+    他のエントリは既定値のままにして、 **[確認と作成]** を選択します。
 
-5. **[確認と作成]** タブで、**[作成]** を選択して仮想マシンを作成します。
+5. **[確認と作成]** タブで、 **[作成]** を選択して仮想マシンを作成します。
 
 ### <a name="review-ip-addresses"></a>IP アドレスの確認
-仮想マシンが作成されると、**[リソースに移動]** ボタンが含まれている **[デプロイメントに成功しました]** という通知を受け取ります。  **[リソースに移動]** を選択して、新しい仮想マシンに移動します。  新しい仮想マシンの既定のビューで、次の手順に従って関連する IP アドレスを特定します。
+
+仮想マシンが作成されると、 **[リソースに移動]** ボタンが含まれている **[デプロイメントに成功しました]** という通知を受け取ります。  **[リソースに移動]** を選択して、新しい仮想マシンに移動します。  新しい仮想マシンの既定のビューで、次の手順に従って関連する IP アドレスを特定します。
 
 1. **[設定]** で **[プロパティ]** を選択します。
 
 2. 後で使用するために **[パブリック IP アドレス/DNS 名ラベル]** と **[プライベート IP アドレス]** の値をメモします。
 
-   ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bind (DNS ソフトウェア) をインストールして構成する
 
@@ -231,13 +234,13 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用するように仮想ネットワークを構成するには、[Azure portal](https://portal.azure.com) から次の手順に従います。
 
-1. 左側のメニューから **[すべてのサービス]** > **[ネットワーキング]** > **[仮想ネットワーク]** の順に移動します。
+1. 左側のメニューから **[すべてのサービス]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に移動します。
 
 2. リストから仮想ネットワークを選択して、仮想ネットワークの既定のビューを開きます。  
 
-3. 既定のビューの **[設定]** で、**[DNS サーバー]** を選択します。  
+3. 既定のビューの **[設定]** で、 **[DNS サーバー]** を選択します。  
 
-4. __[カスタム]__ を選択し、カスタム DNS サーバーの**プライベート IP アドレス** を入力します。   
+4. __[カスタム]__ を選択し、カスタム DNS サーバーの**プライベート IP アドレス** を入力します。
 
 5. __[保存]__ を選択します。  <br />  
 
@@ -275,14 +278,14 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 > [!WARNING]  
 > HDInsight では、Azure クラウド内の特定の IP アドレスからの着信アクセスと、制限のない発信アクセスが必要です。 NSG または UDR を使用してトラフィックを制御する場合は、次の手順を実行する必要があります。
 
-1. 仮想ネットワークがある場所の IP アドレスを調べます。 場所ごとの必須 IP アドレスの一覧については、「[必須 IP アドレス](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)」を参照してください。
+1. 仮想ネットワークがある場所の IP アドレスを調べます。 場所ごとの必須 IP アドレスの一覧については、「[必須 IP アドレス](./hdinsight-management-ip-addresses.md)」を参照してください。
 
 2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
 
    * __NSG__ を使用している場合:IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
    * __UDR__ を使用している場合:IP アドレスについて、ルートの __[次ホップ]__ の種類を __[インターネット]__ に設定します。
 
-Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg)」を参照してください。
+Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-create-virtual-network.md#hdinsight-nsg)」を参照してください。
 
 ## <a name="create-the-hdinsight-cluster"></a>HDInsight クラスターを作成する
 
@@ -297,9 +300,9 @@ Azure PowerShell または Azure CLI を使用して NSG を作成する例に�
 
 ## <a name="connecting-to-hdinsight"></a>HDInsight に接続する
 
-HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://CLUSTERNAME.azurehdinsight.net` でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://CLUSTERNAME.azurehdinsight.net` でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されています。これは、NSG または UDR を使用してインターネットからのアクセスを制限している場合は使用できません。
 
-一部のドキュメントは、SSH セッションからクラスターに接続するときに `headnodehost` も参照しています。 このアドレスは、クラスター内のノードからのみ使用可能であり、仮想ネットワーク経由で接続しているクライアントでは使用できません。
+一部のドキュメントは、SSH セッションからクラスターに接続するときに `headnodehost` も参照しています。 このアドレスはクラスター内のノードからのみ使用でき、仮想ネットワーク経由で接続されたクライアントでは使用できません。
 
 仮想ネットワーク経由で HDInsight に直接接続するには、次の手順を使用します。
 
@@ -332,9 +335,9 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
     >
     > たとえば、Apache Ambari は一度に 1 つのヘッド ノードでのみアクティブになります。 一方のヘッド ノードで Ambari にアクセスしようして、404 エラーが返された場合、Ambari はもう一方のヘッド ノードで実行されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* 仮想ネットワークでの HDInsight の使用の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+* 仮想ネットワークにおける HDInsight の使用方法の詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](./hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
 
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 

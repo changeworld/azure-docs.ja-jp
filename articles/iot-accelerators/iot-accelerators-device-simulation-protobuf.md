@@ -6,15 +6,17 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 74bb2d181533f802e1428eaa8a855f60fb855193
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258831"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81684006"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -41,7 +43,7 @@ Protobuf では、データをシリアル化するためにコンパイル済�
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * SQL API を使用し、かつ[強力な一貫性](../cosmos-db/manage-account.md)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/create-sql-api-dotnet.md#create-account)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
-* [Azure サブスクリプションにデプロイされた Azure ストレージ アカウント](../storage/common/storage-quickstart-create-account.md)。 このガイドの手順を完了するには、ストレージ アカウントの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
+* [Azure サブスクリプションにデプロイされた Azure ストレージ アカウント](../storage/common/storage-account-create.md)。 このガイドの手順を完了するには、ストレージ アカウントの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 
 ## <a name="prepare-your-development-environment"></a>開発環境を準備する
 
@@ -68,7 +70,7 @@ Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapte
 > [!NOTE]
 > マイクロサービスをローカル コンピューターで実行する際にも、Azure 内の Cosmos DB インスタンスは必要です (サービスを正常に機能させるため)。
 
-ストレージ アダプター マイクロサービスをローカルで実行するために、**[デバッグ] \> [デバッグの開始]** をクリックします。
+ストレージ アダプター マイクロサービスをローカルで実行するために、 **[デバッグ] \> [デバッグの開始]** をクリックします。
 
 Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。これに、Web サービスの正常性チェック用の URL (<http://127.0.0.1:9022/v1/status>) が含まれます。 このアドレスに移動すると、状態が "OK: Alive and well" と表示されます。
 
@@ -76,7 +78,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 ## <a name="define-your-device-model"></a>デバイス モデルを定義する
 
-Visual Studio Code の新しいインスタンスで、GitHub からダウンロードした **device-simulation-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
+Visual Studio Code の新しいインスタンスで、GitHub からダウンロードした **device-simulation-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、 **[復元]** ボタンをクリックして修正します。
 
 この攻略ガイドでは、アセット トラッカー用の新しいデバイス モデルを作成します。
 
@@ -174,7 +176,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 1. [Protobuf コンパイラを GitHub からダウンロードします](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. ソース ディレクトリ、ターゲット ディレクトリ、および **proto** ファイルの名前を指定して、コンパイラを実行します。 例: 
+1. ソース ディレクトリ、ターゲット ディレクトリ、および **proto** ファイルの名前を指定して、コンパイラを実行します。 次に例を示します。
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -204,9 +206,9 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>新しいデバイス モデル ファイルを含めるようにソリューションを構成する
 
-既定では、新しいデバイス モデルの JSON ファイルと JS ファイルは、ビルドしたソリューションにコピーされません。 明示的に含める必要があります。
+既定では、新しいデバイス モデルの JSON および JS ファイルは、ビルドされたソリューションにコピーされません。 明示的に含める必要があります。
 
-含めるファイルごとに、**services\services.csproj** ファイルにエントリを追加します。 例: 
+含めるファイルごとに、**services\services.csproj** ファイルにエントリを追加します。 次に例を示します。
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -217,7 +219,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 </None>
 ```
 
-マイクロサービスをローカルで実行するために、**[デバッグ] \> [デバッグの開始]** をクリックします。
+マイクロサービスをローカルで実行するために、 **[デバッグ] \> [デバッグの開始]** をクリックします。
 
 Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。
 
@@ -231,7 +233,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test
@@ -247,27 +249,27 @@ Postman を設定するには:
 
 1. ローカル コンピューターで Postman を開きます。
 
-1. **[File]\(ファイル\) \> [Import]\(インポート\)** をクリックします。 次に、**[Choose Files]\(ファイルの選択\)** をクリックします。
+1. **[File]\(ファイル\) \> [Import]\(インポート\)** をクリックします。 次に、 **[Choose Files]\(ファイルの選択\)** をクリックします。
 
-1. **Azure IoT Device Simulation solution accelerator.postman\_collection** と **Azure IoT Device Simulation solution accelerator.postman\_environment** を選択し、**[Open]\(開く\)** をクリックします。
+1. **Azure IoT Device Simulation solution accelerator.postman\_collection** と **Azure IoT Device Simulation solution accelerator.postman\_environment** を選択し、 **[Open]\(開く\)** をクリックします。
 
 1. **[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を展開して、送信可能な要求を表示します。
 
-1. **[No Environment]\(環境なし\)** をクリックし、**[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を選択します。
+1. **[No Environment]\(環境なし\)** をクリックし、 **[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を選択します。
 
 これで、デバイス シミュレーション マイクロサービスとやり取りするためのコレクションと環境が Postman ワークスペースに読み込まれました。
 
 シミュレーションを構成および実行するには:
 
-1. Postman コレクション内で、**[Create asset tracker simulation]\(アセット トラッカー シミュレーションの作成\)** を選択し、**[Send]\(送信\)** をクリックします。 この要求により、シミュレートされたアセット トラッカー デバイスの種類のインスタンスが 4 つ作成されます。
+1. Postman コレクション内で、 **[Create asset tracker simulation]\(アセット トラッカー シミュレーションの作成\)** を選択し、 **[Send]\(送信\)** をクリックします。 この要求により、シミュレートされたアセット トラッカー デバイスの種類のインスタンスが 4 つ作成されます。
 
 1. Azure CLI ウィンドウのイベント モニター出力に、シミュレートされたデバイスからのテレメトリが表示されます。
 
-シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、**[Send]\(送信\)** をクリックします。
+シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、 **[Send]\(送信\)** をクリックします。
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ローカルで実行されている 2 つのマイクロサービスを Visual Studio Code インスタンスで停止することができます (**[デバッグ] \> [デバッグの停止]**)。
+ローカルで実行されている 2 つのマイクロサービスを Visual Studio Code インスタンスで停止することができます ( **[デバッグ] \> [デバッグの停止]** )。
 
 IoT Hub および Cosmos DB のインスタンスが必要でなくなった場合は、不必要な課金を回避するために、Azure サブスクリプションからそれらを削除します。
 
@@ -275,6 +277,6 @@ IoT Hub および Cosmos DB のインスタンスが必要でなくなった場�
 
 多くの IoT Hub 機能では、Protobuf やその他のバイナリ形式がネイティブにサポートされません。 たとえば、IoT Hub ではメッセージ ペイロードを処理することができないため、メッセージ ペイロードに基づいてルーティングを行うことはできません。 ただし、メッセージ ヘッダーに基づいてルーティングすることは可能です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法がわかったら、次は、[カスタム イメージをクラウドにデプロイする](iot-accelerators-device-simulation-deploy-image.md)方法について学習しましょう。

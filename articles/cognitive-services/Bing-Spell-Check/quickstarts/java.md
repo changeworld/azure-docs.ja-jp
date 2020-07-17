@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:REST API と Java を使用してスペルをチェックする - Bing Spell Check
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/11/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616697"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735115"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
 
-このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Java アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java) で入手できます。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Java アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "59616697"
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。 市場、スペル チェック対象のテキスト、スペル チェック モードの文字列に使用する変数を作成します。
+2. API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。 市場、スペル チェック対象のテキスト、スペル チェック モードの文字列に使用する変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -101,15 +101,16 @@ ms.locfileid: "59616697"
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+    ```
 
-1. Create a `BufferedReader` and read the response from the API. Print it to the console.
+1. `BufferedReader` を作成して、API から応答を読み取ります。 それをコンソールに出力します。
     
     ```java
     BufferedReader in = new BufferedReader(
     new InputStreamReader(connection.getInputStream()));
     String line;
     while ((line = in.readLine()) != null) {
-        System.out.println(prettify(line);
+        System.out.println(prettify(line));
     }
     in.close();
     ```
@@ -117,17 +118,16 @@ ms.locfileid: "59616697"
 ## <a name="call-the-api"></a>API を呼び出す
 
 アプリケーションの main 関数で、上で作成した check() メソッドを呼び出します。
-
-    ```java
-    public static void main(String[] args) {
-        try {
-            check();
+```java
+        public static void main(String[] args) {
+            try {
+                check();
+            }
+            catch (Exception e) {
+                System.out.println (e);
+            }
         }
-        catch (Exception e) {
-            System.out.println (e);
-        }
-    }
-    ```
+```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -135,12 +135,12 @@ ms.locfileid: "59616697"
 
 コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルド、実行します。
 
-**ビルド:** 
+**ビルド:**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**実行:** 
+**実行:**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```
@@ -187,10 +187,10 @@ java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

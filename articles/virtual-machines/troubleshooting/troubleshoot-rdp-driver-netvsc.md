@@ -4,21 +4,20 @@ description: Azure 内の Windows 10 または Windows Server 2016 の VM に接
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994622"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71057987"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>netvsc.sys のために Azure 内の Windows 10 または Windows Server 2016 VM にリモート接続できない
 
@@ -55,7 +54,7 @@ ms.locfileid: "57994622"
 
 2. 同じリージョンから作業用 VM にアタッチされている新規または既存のデータ ディスクに、適切な更新プログラムをダウンロードします。
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)  以降の更新プログラム
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) 以降の更新プログラム
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) 以降の更新プログラム
 
 3. 作業用 VM からユーティリティ ディスクをデタッチして、破損した VM にアタッチします。
@@ -76,11 +75,11 @@ ms.locfileid: "57994622"
 
 3. ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 アタッチしたシステム ディスクに割り当てられているドライブ文字をメモします。
 
-4. 変更のロールバックが必要なケースに備えて、**\Windows\System32\config** フォルダーのコピーを作成します。
+4. 変更のロールバックが必要なケースに備えて、 **\Windows\System32\config** フォルダーのコピーを作成します。
 
 5. 復旧用 VM で、レジストリ エディター (regedit.exe) を開始します。
 
-6. **HKEY_LOCAL_MACHINE** キーを選択し、メニューから **[ファイル]** > **[ハイブの読み込み]** を選択します。
+6. **HKEY_LOCAL_MACHINE** キーを選択し、メニューから **[ファイル]**  >  **[ハイブの読み込み]** を選択します。
 
 7. **\Windows\System32\config** フォルダーの SYSTEM ファイルを探します。
 
@@ -98,7 +97,7 @@ ms.locfileid: "57994622"
 
 12. 適切な更新プログラムをダウンロードします。
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)  以降の更新プログラム
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) 以降の更新プログラム
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) 以降の更新プログラム
 
 13. 更新プログラムをダウンロードできる復旧用 VM で、データ ディスクとしてシステム ディスクをアタッチします。

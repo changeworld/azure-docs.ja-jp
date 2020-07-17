@@ -1,220 +1,352 @@
 ---
-title: 例:コグニティブ検索パイプラインにカスタム スキルを作成する - Azure Search
-description: Azure Search のコグニティブ検索インデックス作成パイプラインにマッピングされたカスタム スキルで Text Translate API を使用する方法を紹介します。
-manager: pablocas
+title: Bing Entity Search API を使用したカスタム スキルの例
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
+manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.devlang: NA
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023627"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74113818"
 ---
-# <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>例:Text Translate API を使用してカスタム スキルを作成する
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
 
-この例では、任意の言語のテキストを受け取って英語に翻訳する Web API カスタム スキルを作成する方法について説明します。 この例では、[Azure 関数](https://azure.microsoft.com/services/functions/)を使用して、[Translate Text API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) をラップし、カスタム スキル インターフェイスを実装します。
+この例では、Web API カスタム スキルを作成する方法について説明します。 このスキルでは、場所、著名人、組織を受け入れ、それらの説明を返します。 この例では、[Azure Functions](https://azure.microsoft.com/services/functions/)を使用して、カスタム スキル インターフェイスを実装できるように [Bing Entity Search API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) をラップします。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ カスタム スキルに実装する必要がある入出力インターフェイスがよくわからない場合は、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
++ カスタム スキルで実装する必要がある入出力インターフェイスがよくわからない場合は、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
-+ [Translator Text API にサインアップ](../cognitive-services/translator/translator-text-how-to-signup.md)し、その API を利用するための API キーを取得します。
++ [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-+ Azure 開発のワークロードを備えた、[Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降をインストールします。
++ Azure 開発のワークロードを備えた、[Visual Studio 2019](https://www.visualstudio.com/vs/) 以降をインストールします。
 
 ## <a name="create-an-azure-function"></a>Azure Function の作成
 
-この例では Azure 関数を使用して Web API をホストしていますが、必須ではありません。  [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
+この例では Azure Functions を使用して Web API をホストしていますが、必須ではありません。  [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-1. Visual Studio で、[ファイル] メニューから **[新規]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio で、[ファイル] メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-1. [新しいプロジェクト] ダイアログで、**[インストール済み]** を選択し、**[Visual C#]** > **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、**[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+1. [新しいプロジェクト] ダイアログで、 **[インストール済み]** を選択し、 **[Visual C#]**  >  **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、 **[OK]** を選択します。 Functions アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
 1. **[Azure Functions v2 (.NET Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
 
 1. 種類として **[HTTP Trigger]\(HTTP トリガー\)** を選択します。
 
-1. ストレージ アカウントについては、この関数にはストレージが不要なので、**[なし]** を選択できます。
+1. ストレージ アカウントについては、この Functions にはストレージが不要なので、 **[なし]** を選択できます。
 
-1. **[OK]** を選択して、関数プロジェクトと、HTTP でトリガーされる関数を作成します。
+1. **[OK]** を選択して、Functions プロジェクトと、HTTP でトリガーされる Functions を作成します。
 
-### <a name="modify-the-code-to-call-the-translate-cognitive-service"></a>Translate Cognitive Service を呼び出すようにコードを変更する
+### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Bing Entity Search サービスを呼び出すコードを変更する
 
-Visual Studio によってプロジェクトが作成されます。その中には、選択した関数の種類のスケルトン コードが含まれているクラスがあります。 メソッドの *FunctionName* 属性は、関数の名前を設定します。 *HttpTrigger* 属性は、関数が HTTP 要求によってトリガーされることを指定します。
+Visual Studio によってプロジェクトが作成されます。その中には、選択した Functions の種類のスケルトン コードが含まれているクラスがあります。 メソッドの *FunctionName* 属性は、Functions の名前を設定します。 *HttpTrigger* 属性は、Functions が HTTP 要求によってトリガーされることを指定します。
 
 次に、*Function1.cs* ファイルのすべての内容を次のコードに置き換えます。
 
 ```csharp
 using System;
-using System.Net.Http;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.IO;
-using System.Text;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace TranslateFunction
+namespace SampleSkills
 {
-    // This function will simply translate messages sent to it.
-    public static class Function1
+    /// <summary>
+    /// Sample custom skill that wraps the Bing entity search API to connect it with a 
+    /// AI enrichment pipeline.
+    /// </summary>
+    public static class BingEntitySearch
     {
-        static string path = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
+        #region Credentials
+        // IMPORTANT: Make sure to enter your credential and to verify the API endpoint matches yours.
+        static readonly string bingApiEndpoint = "https://api.cognitive.microsoft.com/bing/v7.0/entities/";
+        static readonly string key = "<enter your api key here>";  
+        #endregion
 
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "<enter your api key here>";
-
-        #region classes used to serialize the response
-        private class WebApiResponseError
+        #region Class used to deserialize the request
+        private class InputRecord
         {
-            public string message { get; set; }
+            public class InputRecordData
+            {
+                public string Name { get; set; }
+            }
+
+            public string RecordId { get; set; }
+            public InputRecordData Data { get; set; }
         }
 
-        private class WebApiResponseWarning
+        private class WebApiRequest
         {
-            public string message { get; set; }
-        }
-
-        private class WebApiResponseRecord
-        {
-            public string recordId { get; set; }
-            public Dictionary<string, object> data { get; set; }
-            public List<WebApiResponseError> errors { get; set; }
-            public List<WebApiResponseWarning> warnings { get; set; }
-        }
-
-        private class WebApiEnricherResponse
-        {
-            public List<WebApiResponseRecord> values { get; set; }
+            public List<InputRecord> Values { get; set; }
         }
         #endregion
 
-        [FunctionName("Translate")]
-        public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req,
-            TraceWriter log)
-        {
-            log.Info("C# HTTP trigger function processed a request.");
+        #region Classes used to serialize the response
 
-            string recordId = null;
-            string originalText = null;
-            string toLanguage = null;
-            string translatedText = null;
+        private class OutputRecord
+        {
+            public class OutputRecordData
+            {
+                public string Name { get; set; } = "";
+                public string Description { get; set; } = "";
+                public string Source { get; set; } = "";
+                public string SourceUrl { get; set; } = "";
+                public string LicenseAttribution { get; set; } = "";
+                public string LicenseUrl { get; set; } = "";
+            }
+
+            public class OutputRecordMessage
+            {
+                public string Message { get; set; }
+            }
+
+            public string RecordId { get; set; }
+            public OutputRecordData Data { get; set; }
+            public List<OutputRecordMessage> Errors { get; set; }
+            public List<OutputRecordMessage> Warnings { get; set; }
+        }
+
+        private class WebApiResponse
+        {
+            public List<OutputRecord> Values { get; set; }
+        }
+        #endregion
+
+        #region Classes used to interact with the Bing API
+        private class BingResponse
+        {
+            public BingEntities Entities { get; set; }
+        }
+        private class BingEntities
+        {
+            public BingEntity[] Value { get; set; }
+        }
+
+        private class BingEntity
+        {
+            public class EntityPresentationinfo
+            {
+                public string[] EntityTypeHints { get; set; }
+            }
+
+            public class License
+            {
+                public string Url { get; set; }
+            }
+
+            public class ContractualRule
+            {
+                public string _type { get; set; }
+                public License License { get; set; }
+                public string LicenseNotice { get; set; }
+                public string Text { get; set; }
+                public string Url { get; set; }
+            }
+
+            public ContractualRule[] ContractualRules { get; set; }
+            public string Description { get; set; }
+            public string Name { get; set; }
+            public EntityPresentationinfo EntityPresentationInfo { get; set; }
+        }
+        #endregion
+
+        #region The Azure Function definition
+
+        [FunctionName("EntitySearch")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+            ILogger log)
+        {
+            log.LogInformation("Entity Search function: C# HTTP trigger function processed a request.");
+
+            var response = new WebApiResponse
+            {
+                Values = new List<OutputRecord>()
+            };
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            var data = JsonConvert.DeserializeObject<WebApiRequest>(requestBody);
 
-            // Validation
-            if (data?.values == null)
+            // Do some schema validation
+            if (data == null)
             {
-                return new BadRequestObjectResult(" Could not find values array");
+                return new BadRequestObjectResult("The request schema does not match expected schema.");
             }
-            if (data?.values.HasValues == false || data?.values.First.HasValues == false)
+            if (data.Values == null)
             {
-                // It could not find a record, then return empty values array.
-                return new BadRequestObjectResult(" Could not find valid records in values array");
-            }
-
-            recordId = data?.values?.First?.recordId?.Value as string;
-            originalText = data?.values?.First?.data?.text?.Value as string;
-            toLanguage = data?.values?.First?.data?.language?.Value as string;
-
-            if (recordId == null)
-            {
-                return new BadRequestObjectResult("recordId cannot be null");
+                return new BadRequestObjectResult("The request schema does not match expected schema. Could not find values array.");
             }
 
-            translatedText = TranslateText(originalText, toLanguage).Result;
-        
-            // Put together response.
-            WebApiResponseRecord responseRecord = new WebApiResponseRecord();
-            responseRecord.data = new Dictionary<string, object>();
-            responseRecord.recordId = recordId;
-            responseRecord.data.Add("text", translatedText);
+            // Calculate the response for each value.
+            foreach (var record in data.Values)
+            {
+                if (record == null || record.RecordId == null) continue;
 
-            WebApiEnricherResponse response = new WebApiEnricherResponse();
-            response.values = new List<WebApiResponseRecord>();
-            response.values.Add(responseRecord);
+                OutputRecord responseRecord = new OutputRecord
+                {
+                    RecordId = record.RecordId
+                };
+
+                try
+                {
+                    responseRecord.Data = GetEntityMetadata(record.Data.Name).Result;
+                }
+                catch (Exception e)
+                {
+                    // Something bad happened, log the issue.
+                    var error = new OutputRecord.OutputRecordMessage
+                    {
+                        Message = e.Message
+                    };
+
+                    responseRecord.Errors = new List<OutputRecord.OutputRecordMessage>
+                    {
+                        error
+                    };
+                }
+                finally
+                {
+                    response.Values.Add(responseRecord);
+                }
+            }
 
             return (ActionResult)new OkObjectResult(response);
         }
 
+        #endregion
 
+        #region Methods to call the Bing API
         /// <summary>
-        /// Use Cognitive Service to translate text from one language to another.
+        /// Gets metadata for a particular entity based on its name using Bing Entity Search
         /// </summary>
-        /// <param name="originalText">The text to translate.</param>
-        /// <param name="toLanguage">The language you want to translate to.</param>
-        /// <returns>Asynchronous task that returns the translated text. </returns>
-        async static Task<string> TranslateText(string originalText, string toLanguage)
+        /// <param name="entityName">The name of the entity to extract data for.</param>
+        /// <returns>Asynchronous task that returns entity data. </returns>
+        private async static Task<OutputRecord.OutputRecordData> GetEntityMetadata(string entityName)
         {
-            System.Object[] body = new System.Object[] { new { Text = originalText } };
-            var requestBody = JsonConvert.SerializeObject(body);
-
-            var uri = $"{path}&to={toLanguage}";
-
-            string result = "";
+            var uri = bingApiEndpoint + "?q=" + entityName + "&mkt=en-us&count=10&offset=0&safesearch=Moderate";
+            var result = new OutputRecord.OutputRecordData();
 
             using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
+            using (var request = new HttpRequestMessage {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(uri)
+            })
             {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
                 request.Headers.Add("Ocp-Apim-Subscription-Key", key);
 
-                var response = await client.SendAsync(request);
-                var responseBody = await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response = await client.SendAsync(request);
+                string responseBody = await response?.Content?.ReadAsStringAsync();
 
-                dynamic data = JsonConvert.DeserializeObject(responseBody);
-                result = data?.First?.translations?.First?.text?.Value as string;
-
+                BingResponse bingResult = JsonConvert.DeserializeObject<BingResponse>(responseBody);
+                if (bingResult != null)
+                {
+                    // In addition to the list of entities that could match the name, for simplicity let's return information
+                    // for the top match as additional metadata at the root object.
+                    return AddTopEntityMetadata(bingResult.Entities?.Value);
+                }
             }
+
             return result;
         }
+
+        private static OutputRecord.OutputRecordData AddTopEntityMetadata(BingEntity[] entities)
+        {
+            if (entities != null)
+            {
+                foreach (BingEntity entity in entities.Where(
+                    entity => entity?.EntityPresentationInfo?.EntityTypeHints != null
+                        && (entity.EntityPresentationInfo.EntityTypeHints[0] == "Person"
+                            || entity.EntityPresentationInfo.EntityTypeHints[0] == "Organization"
+                            || entity.EntityPresentationInfo.EntityTypeHints[0] == "Location")
+                        && !String.IsNullOrEmpty(entity.Description)))
+                {
+                    var rootObject = new OutputRecord.OutputRecordData
+                    {
+                        Description = entity.Description,
+                        Name = entity.Name
+                    };
+
+                    if (entity.ContractualRules != null)
+                    {
+                        foreach (var rule in entity.ContractualRules)
+                        {
+                            switch (rule._type)
+                            {
+                                case "ContractualRules/LicenseAttribution":
+                                    rootObject.LicenseAttribution = rule.LicenseNotice;
+                                    rootObject.LicenseUrl = rule.License.Url;
+                                    break;
+                                case "ContractualRules/LinkAttribution":
+                                    rootObject.Source = rule.Text;
+                                    rootObject.SourceUrl = rule.Url;
+                                    break;
+                            }
+                        }
+                    }
+
+                    return rootObject;
+                }
+            }
+
+            return new OutputRecord.OutputRecordData();
+        }
+        #endregion
     }
 }
 ```
 
-Translate Text API にサインアップしたときに取得したキーに基づいて、*TranslateText* メソッドの *key* 値を確実に入力します。
+Bing Entity Search API にサインアップしたときに取得したキーに基づいて、`key` 定数の独自の *key* 値を確実に入力します。
 
-この例は、一度に 1 つのレコードに対してのみ機能する単純なエンリッチャーです。 この点が、後でスキルセットのバッチ サイズを設定する際に重要になります。
+このサンプルには、便宜上すべての必要なコードが 1 つのファイルに含まれています。 それと同じスキルでもう少し構造化されたバージョンが、[power skills リポジトリ](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)にあります。
 
-## <a name="test-the-function-from-visual-studio"></a>Visual Studio から関数をテストする
+もちろん、ファイル名を `Function1.cs` から `BingEntitySearch.cs` に変更できます。
 
-**F5** キーを押して、プログラムを実行し、関数の動作をテストします。 このケースでは、下の関数を使用してスペイン語のテキストを英語に翻訳します。 Postman または Fiddler を使用して、以下に示すような呼び出しを発行します。
+## <a name="test-the-function-from-visual-studio"></a>Visual Studio から Functions をテストする
+
+**F5** キーを押して、プログラムを実行し、Functions の動作をテストします。 ここでは、次の Functions を使用して、2 つのエンティティを検索します。 Postman または Fiddler を使用して、以下に示すような呼び出しを発行します。
 
 ```http
-POST https://localhost:7071/api/Translate
+POST https://localhost:7071/api/EntitySearch
 ```
+
 ### <a name="request-body"></a>要求本文
 ```json
 {
-   "values": [
+    "values": [
         {
-            "recordId": "a1",
+            "recordId": "e1",
             "data":
             {
-               "text":  "Este es un contrato en Inglés",
-               "language": "en"
+                "name":  "Pablo Picasso"
+            }
+        },
+        {
+            "recordId": "e2",
+            "data":
+            {
+                "name":  "Microsoft"
             }
         }
-   ]
+    ]
 }
 ```
+
 ### <a name="response"></a>Response
 次の例のような応答が表示されます。
 
@@ -222,94 +354,132 @@ POST https://localhost:7071/api/Translate
 {
     "values": [
         {
-            "recordId": "a1",
+            "recordId": "e1",
             "data": {
-                "text": "This is a contract in English"
+                "name": "Pablo Picasso",
+                "description": "Pablo Ruiz Picasso was a Spanish painter [...]",
+                "source": "Wikipedia",
+                "sourceUrl": "http://en.wikipedia.org/wiki/Pablo_Picasso",
+                "licenseAttribution": "Text under CC-BY-SA license",
+                "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
             },
             "errors": null,
             "warnings": null
+        },
+        "..."
+    ]
+}
+```
+
+## <a name="publish-the-function-to-azure"></a>Azure に Functions を発行する
+
+Functions の動作に満足したら、発行できます。
+
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
+
+1. まだ Visual Studio を Azure アカウントに接続していない場合は、 **[アカウントの追加]** を選択します。
+
+1. 画面の指示に従います。 使用するアプリ サービス、Azure サブスクリプション、リソース グループ、ホスティング プラン、ストレージ アカウントに対して一意の名前を指定するように求められます。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 終わったら、 **[作成]** を選択します。
+
+1. デプロイが完了したら、サイトの URL を書き留めておきます。 これが Azure における Functions アプリのアドレスになります。 
+
+1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `EntitySearch` Functions を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 "*既定*" のホスト キーの **[コピー]** アイコンを選択します。  
+
+## <a name="test-the-function-in-azure"></a>Azure で Functions をテストする
+
+既定のホスト キーが用意できたので、次のように Functions をテストします。
+
+```http
+POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
+```
+
+### <a name="request-body"></a>要求本文
+```json
+{
+    "values": [
+        {
+            "recordId": "e1",
+            "data":
+            {
+                "name":  "Pablo Picasso"
+            }
+        },
+        {
+            "recordId": "e2",
+            "data":
+            {
+                "name":  "Microsoft"
+            }
         }
     ]
 }
 ```
 
-## <a name="publish-the-function-to-azure"></a>Azure に関数を発行する
-
-関数の動作に満足したら、発行できます。
-
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。 **[新規作成]** > **[発行]** の順に選択します。
-
-1. まだ Visual Studio を Azure アカウントに接続していない場合は、**[アカウントの追加]** を選択します。
-
-1. 画面の指示に従います。 使用する Azure アカウント、リソース グループ、ホスティング プラン、ストレージ アカウントを指定するように求められます。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 終わったら、**[作成]** を選択します。
-
-1. デプロイが完了したら、サイトの URL を書き留めておきます。 これが Azure における関数アプリのアドレスになります。 
-
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した Translate 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 "*既定*" のホスト キーの **[コピー]** アイコンを選択します。  
-
-## <a name="test-the-function-in-azure"></a>Azure で関数をテストする
-
-既定のホスト キーが用意できたので、次のように関数をテストします。
-
-```http
-POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]
-```
-### <a name="request-body"></a>要求本文
-```json
-{
-   "values": [
-        {
-            "recordId": "a1",
-            "data":
-            {
-               "text":  "Este es un contrato en Inglés",
-               "language": "en"
-            }
-        }
-   ]
-}
-```
-
-これにより、以前にローカル環境で関数を実行したときと同じような結果が得られます。
+この例では、以前にローカル環境で Functions を実行したときと同じ結果が得られるはずです。
 
 ## <a name="connect-to-your-pipeline"></a>パイプラインに接続する
-新しいカスタム スキルが作成できたので、スキルセットに追加できます。 下の例では、スキルを呼び出す方法を示しています。 スキルはバッチに対応していないので、一度に 1 つずつドキュメントを送信するために、最大バッチ サイズを ```1``` にする命令を追加します。
+新しいカスタム スキルが作成できたので、スキルセットに追加できます。 次の例では、スキルを呼び出して、ドキュメント内の組織に説明を追加する方法を示しています (これは場所および人の操作にも拡張できる可能性があります)。 `[your-entity-search-app-name]` をご自分のアプリの名前に置き換えます。
 
 ```json
 {
     "skills": [
-      ...,  
+      "[... your existing skills remain here]",  
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "Our new translator custom skill",
-        "uri": "https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
-        "batchSize":1,
-        "context": "/document",
-        "inputs": [
-          {
-            "name": "text",
-            "source": "/document/content"
-          },
-          {
-            "name": "language",
-            "source": "/document/destinationLanguage"
-          }
-        ],
-        "outputs": [
-          {
-            "name": "text",
-            "targetName": "translatedText"
-          }
-        ]
+        "description": "Our new Bing entity search custom skill",
+        "uri": "https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]",
+          "context": "/document/merged_content/organizations/*",
+          "inputs": [
+            {
+              "name": "name",
+              "source": "/document/merged_content/organizations/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "description",
+              "targetName": "description"
+            }
+          ]
       }
   ]
 }
 ```
 
-## <a name="next-steps"></a>次の手順
-お疲れさまでした。 最初のカスタム エンリッチャーが作成されました。 これで同じパターンに従って、独自のカスタム機能を追加できます。 
+ここでは、組み込みの[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)がスキルセットに存在すること、および組織のリストでエンリッチされたドキュメントがあることを想定しています。 参考のため、必要なデータを生成するために十分なエンティティ抽出スキルの構成を示します。
 
-+ [コグニティブ検索パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+    "name": "#1",
+    "description": "Organization name extraction",
+    "context": "/document/merged_content",
+    "categories": [ "Organization" ],
+    "defaultLanguageCode": "en",
+    "inputs": [
+        {
+            "name": "text",
+            "source": "/document/merged_content"
+        },
+        {
+            "name": "languageCode",
+            "source": "/document/language"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "organizations",
+            "targetName": "organizations"
+        }
+    ]
+},
+```
+
+## <a name="next-steps"></a>次のステップ
+お疲れさまでした。 最初のカスタム スキルが作成されました。 これで同じパターンに従って、独自のカスタム機能を追加できます。 詳細については、以下のリンクをクリックしてください。
+
++ [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
++ [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

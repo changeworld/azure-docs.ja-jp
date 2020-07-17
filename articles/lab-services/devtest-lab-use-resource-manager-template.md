@@ -1,5 +1,5 @@
 ---
-title: 仮想マシンの Azure Resource Manager テンプレートを表示し使用する | Microsoft Docs
+title: 仮想マシンの Azure Resource Manager テンプレートの表示と使用
 description: 仮想マシンから Azure Resource Manager テンプレートを使用して他の VM を作成する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 7064fdeec04f4dc5ae2c73c1a3896cf2d10dd01d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648437"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76169111"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -51,9 +51,8 @@ Resource Manager テンプレートを使用して DevTest Labs で VM を作成
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>仮想マシンの Resource Manager テンプレートを表示し保存する
 1. 「[Azure DevTest Labs のラボに最初の VM を作成する](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)」の手順に従い、仮想マシンの作成を始めます。
 1. 仮想マシンに必要な情報を入力し、この VM に必要なすべてのアイテムを追加します。
-1. [構成の設定] ウィンドウの下部で、**[View ARM template]\(ARM テンプレートの表示\)** を選択します。
-
-   ![[View ARM template]\(ARM テンプレートの表示\) ボタン](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
+1. **[詳細設定]** タブに切り替えます。 
+1. [構成の設定] ウィンドウの下部で、 **[View ARM template]\(ARM テンプレートの表示\)** を選択します。
 1. 後で別の仮想マシンの作成に使用するために、Resource Manager テンプレートをコピーして保存します。
 
    ![後から使用するために保存する Resource Manager テンプレート](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
@@ -64,7 +63,12 @@ Resource Manager テンプレートを保存したら、使用する前に、テ
 
 これで、Resource Manager テンプレートを使用して [VM を作成する](devtest-lab-create-environment-from-arm.md)準備ができました。
 
-### <a name="next-steps"></a>次の手順
+## <a name="set-expiration-date"></a>有効期限を設定する
+トレーニング、デモ、試用版などのシナリオでは、不要なコストが発生しないように、仮想マシンを作成し、固定期間後に自動的にそれらを削除することができます。 VM の **expirationDate** プロパティを指定することで、有効期限があるラボ VM を作成できます。 [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)で同じ Resource Manager テンプレートを確認してください。
+
+
+
+### <a name="next-steps"></a>次のステップ
 * [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。
 * [Resource Manager テンプレートをデプロイして VM を作成する](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
-* [パブリックの DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタートの Resource Manager テンプレートをもっと探します。
+* [パブリックの DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタート Resource Manager テンプレートをさらに調べます。

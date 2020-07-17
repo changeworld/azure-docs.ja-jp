@@ -1,5 +1,5 @@
 ---
-title: B2B ユーザーにオンプレミスのアプリへのアクセスを許可する - Azure Active Directory | Microsoft Docs
+title: B2B ユーザーにオンプレミスのアプリへのアクセス許可する - Azure AD
 description: Azure AD B2B Collaboration を使用してクラウド B2B ユーザーにオンプレミスのアプリへのアクセスを許可する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2447aac825874779a543d25b0a70c339dcbf1473
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768457"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74272798"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
-Azure Active Directory (Azure AD) B2B コラボレーション機能を使用して、パートナー組織のゲスト ユーザーを Azure AD に招待している組織の場合、これらの B2B ユーザーにオンプレミスのアプリへのアクセスを提供できるようになりました。 これらのオンプレミス アプリケーションでは、Kerberos の制約付き委任 (KCD) と共に SAML ベースの認証または統合 Windows 認証 (IWA) を使用できます。
+Azure Active Directory (Azure AD) B2B コラボレーション機能を使用して取引先組織のゲスト ユーザーを Azure AD に招待している組織が、これらの B2B ユーザーにオンプレミスのアプリケーションへのアクセスを提供できるようになりました。 これらのオンプレミスのアプリケーションでは、Kerberos の制約付き委任 (KCD) と共に SAML ベースの認証または統合 Windows 認証 (IWA) を使用できます。
 
 ## <a name="access-to-saml-apps"></a>SAML アプリケーションへのアクセス
 
@@ -61,9 +61,9 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ### <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 
-ライフサイクル管理ポリシーを使用して、オンプレミス B2B ユーザー オブジェクトを管理できます。 例: 
+ライフサイクル管理ポリシーを使用して、オンプレミス B2B ユーザー オブジェクトを管理できます。 次に例を示します。
 
-- アプリケーション プロキシ認証中に多要素認証 (MFA) が使用されるようにゲスト ユーザーの MFA ポリシーを設定することができます。 詳細は、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」をご覧ください。
+- アプリケーション プロキシ認証中に多要素認証 (MFA) が使用されるようにゲスト ユーザーの MFA ポリシーを設定することができます。 詳細については、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。
 - クラウド B2B ユーザーに対して実行されるスポンサー、アクセス レビュー、アカウントの検証などが、オンプレミス ユーザーに適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、MIM 同期または Azure AD Connect 同期によってオンプレミス ユーザーも削除されます。詳細については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>MIM を介した B2B ゲスト ユーザー オブジェクトの作成
@@ -82,7 +82,7 @@ MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェン�
 
 オンプレミス アプリにアクセスする外部ゲスト ユーザーに対して、正しいクライアント アクセス ライセンス (CAL) があることを確認してください。 詳細については、「[クライアント アクセス ライセンスと マネジメント ライセンス](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)」の「エクスターナル コネクタ」セクションを参照してください。 具体的なライセンス要件については、マイクロソフトの担当者または地域の販売代理店にお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)
 

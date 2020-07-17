@@ -1,22 +1,22 @@
 ---
 title: 総保有コスト (TCO) と Azure Cosmos DB
 description: この記事では、Azure Cosmos DB の総保有コストを、IaaS およびオンプレミスのデータベースと比較します
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
+ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e603435a49894a9b8faa2df9b49a8572b94eecb5
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965593"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72754789"
 ---
-# <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
+# <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 
-Azure Cosmos DB は、きめ細かいマルチ テナントとリソース ガバナンスを考慮して設計されています。 この設計により、Azure Cosmos DB はかなり低コストで動作し、ユーザーはコストを節約できます。 現在、Azure Cosmos DB では、密度が増加し続ける 1 台のコンピューター上の 280 個を超えるお客様のワークロードと、クラスター内の数千ものお客様のワークロードがサポートされています。 これにより、クラスター内のさまざまなコンピューター間で、またデータ センター内の複数のクラスター間でお客様のワークロードのレプリカの負荷が分散されます。詳細については、「[Azure Cosmos DB:グローバルな分散データベースの新境地を開拓する](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)」を参照してください。 リソース ガバナンス、マルチ テナント、および Azure インフラストラクチャの残りの部分とのネイティブ統合により、Azure Cosmos DB のコストは、MongoDB、Cassandra、または IaaS で実行されているその他の OSS NoSQL より平均で 4 倍から 6 倍低くなり、オンプレミスで実行されているデータベース エンジンより最大で 10 倍低くなります。 「[The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)」 (NoSQL データベース クラウド サービスの総 (非) 保有コスト) の論文を参照してください。
+Azure Cosmos DB は、きめ細かいマルチ テナントとリソース ガバナンスを考慮して設計されています。 この設計により、Azure Cosmos DB はかなり低コストで動作し、ユーザーはコストを節約できます。 現在、Azure Cosmos DB では、密度が増加し続ける 1 台のコンピューター上の 280 個を超えるお客様のワークロードと、クラスター内の数千ものお客様のワークロードがサポートされています。 これにより、クラスター内のさまざまなコンピューター間で、またデータ センター内の複数のクラスター間でお客様のワークロードのレプリカの負荷が分散されます。 詳細については、「[Azure Cosmos DB:グローバルな分散データベースの新境地を開拓する](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)」を参照してください。 リソース ガバナンス、マルチ テナント、および Azure インフラストラクチャの残りの部分とのネイティブ統合により、Azure Cosmos DB のコストは、MongoDB、Cassandra、または IaaS で実行されているその他の OSS NoSQL より平均で 4 倍から 6 倍低くなり、オンプレミスで実行されているデータベース エンジンより最大で 10 倍低くなります。 「[The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)」 (NoSQL データベース クラウド サービスの総 (非) 保有コスト) の論文を参照してください。
 
 Apache Cassandra、MongoDB、HBase、エンジンなどの OSS NoSQL データベース ソリューションは、オンプレミス用に設計されています。 マネージド サービスとして提供されている場合は、プロビジョニングされたクラスターの管理および監視のサポートのためのテナント データベースを使用する Resource Manager テンプレートと同等となります。 OSS NoSQL アーキテクチャでは運用上のオーバーヘッドがかなり必要となり、専門知識を見つけるのが難しく、コストがかかる場合があります。 一方、Azure Cosmos DB は完全に管理されたクラウド サービスであり、これを使用することで、開発者はデータベース インフラストラクチャの管理や維持ではなく、事業革新に集中できます。 
 
@@ -56,7 +56,7 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 
 * **予約容量により最大 65% のコストの節約が可能:** Azure Cosmos DB の[予約容量](cosmos-db-reserved-capacity.md)は、Azure Cosmos DB のリソース料金 1 年分または 3 年分を前払いすることで経費を節減するのに役立ちます。 1 年分または 3 年分を事前にコミットすることでコストを大幅に減らすことができ、通常価格に比べ、20% から 65% の割引になります。 ミッション クリティカルなワークロードでは、容量のプロビジョニングの観点からより良い SLA が得られます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の価格モデルがお客様にとっていかにコスト効率がよいか](total-cost-ownership.md)について詳しく学習します
 * [開発とテストのための最適化](optimize-dev-test.md)の詳細について学習します
@@ -64,5 +64,5 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
-* [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細を確認します
+* [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
 * [NoSQL データベース クラウド サービスの総 (非) 保有コスト](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)の詳細を確認します

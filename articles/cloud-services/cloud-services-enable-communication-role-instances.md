@@ -3,29 +3,24 @@ title: Cloud Services でのロールの通信 | Microsoft Docs
 description: Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
+author: tgore03
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792480"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75386342"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化
 クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。
 
 ## <a name="input-endpoint"></a>入力エンドポイント
-入力エンドポイントは、ポートを外部に公開するときに使用します。 プロトコルの種類とエンドポイントのポートを指定してから、そのエンドポイントの内部ポートと外部ポートの両方に適用します。 必要に応じて、 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) 属性を使用して、エンドポイントに異なる内部ポートを指定することができます。
+入力エンドポイントは、ポートを外部に公開するときに使用します。 プロトコルの種類とエンドポイントのポートを指定してから、そのエンドポイントの内部ポートと外部ポートの両方に適用します。 必要に応じて、 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) 属性を使用して、エンドポイントに異なる内部ポートを指定することができます。
 
 入力エンドポイントには、プロトコル **http、https、tcp、udp**を使用できます。
 
@@ -220,7 +215,7 @@ namespace WorkerRole1
 ## <a name="network-traffic-rules-to-control-role-communication"></a>ロール通信を制御するためのネットワーク トラフィック規則
 内部エンドポイントを定義した後、作成したエンドポイントに基づいてネットワーク トラフィック規則を追加して、ロール インスタンス間の通信方法を制御できます。 次の図は、ロール通信を制御するためのいくつかの一般的なシナリオを示しています。
 
-![ネットワーク トラフィック ルールのシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック ルールのシナリオ")
+![ネットワーク トラフィック規則のシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック規則のシナリオ")
 
 次のコード例は、前の図で示されたロールのロール定義を示しています。 各ロール定義では、少なくとも 1 つの内部エンドポイントが定義されています。
 
@@ -370,6 +365,9 @@ namespace WorkerRole1
 
 上記で使用される要素の XML スキーマ参照は [こちら](/previous-versions/azure/reference/gg557551(v=azure.100))でご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
+
+
+
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
+title: クイック スタート:REST API と Ruby を使用して画像に関する分析情報を取得する - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: 563c0d39eb5c057aef9b9c7cdcba798dc6ee4cbb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796512"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75379642"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
 
@@ -28,7 +28,7 @@ ms.locfileid: "65796512"
 * [Ruby 2.4 以降](https://www.ruby-lang.org/en/downloads/)のインストール
 * サブスクリプション キーを取得します。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>プロジェクトと必須のモジュール
 
@@ -281,7 +281,7 @@ JSON Response:
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Visual Search の概要](../overview.md)

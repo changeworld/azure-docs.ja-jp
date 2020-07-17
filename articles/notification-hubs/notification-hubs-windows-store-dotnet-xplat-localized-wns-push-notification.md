@@ -3,9 +3,9 @@ title: Azure Notification Hubs を使用して Windows アプリにローカラ�
 description: ローカライズ ニュース速報通知を Azure Notification Hubs を使用して送信する方法について説明します。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402714"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "72387399"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
 
 > [!div class="op_single_selector"]
 > * [Windows ストア C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -46,7 +48,7 @@ ms.locfileid: "58402714"
 
 ## <a name="prerequisites"></a>前提条件
 
-[特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) を完了してください。
+「[チュートリアル: 特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) のために作成した Visual Studio ソリューションを開きます。
 
 [特定のデバイスに通知を送信するチュートリアル (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) では、**タグ**を使用してさまざまなニュース**カテゴリ**の通知にサブスクライブするアプリを構築しました。 このチュートリアルでは、Notification Hubs の**テンプレート**機能を使用して、**ローカライズした**ニュース速報通知を簡単に配信します。
 
@@ -197,7 +199,7 @@ ms.locfileid: "58402714"
 1. ユニバーサル Windows プラットフォーム アプリケーションを実行します。 **登録が成功しました**というメッセージが表示されるまで待ちます。
 
     ![モバイル アプリケーションと登録](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. **カテゴリ**と**ロケール**を選択し、**[Subscribe]\(サブスクライブ)** をクリックします。 アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
+2. **カテゴリ**と**ロケール**を選択し、 **[Subscribe]\(サブスクライブ)** をクリックします。 アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。
 
     ![モバイル アプリケーション](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
 3. **サブスクリプション**に関する**確認**メッセージが表示されます。
@@ -262,7 +264,7 @@ private static async void SendTemplateNotificationAsync()
 
 ![Notification messages](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タグが登録に関連付けられている特定のデバイスにローカライズしたプッシュ通知を送信する方法を学習しました。 複数のデバイスを使用している可能性のある特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

@@ -1,44 +1,32 @@
 ---
-title: Azure 関数からの戻り値の使用
+title: Azure Functions からの戻り値の使用
 description: Azure Functions の戻り値を管理する方法について学習します
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 4ccfe192eaea94cb9b199bd3c6f0bdacf1685519
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740423"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74480578"
 ---
-# <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
+# <a name="using-the-azure-function-return-value"></a>Azure Functions の戻り値の使用
 
 この記事では、戻り値が関数内でどのように機能するかについて説明します。
 
 戻り値がある言語では、その戻り値に関数の[出力バインディング](./functions-triggers-bindings.md#binding-direction)をバインドできます。
 
 * C# クラス ライブラリでは、メソッド戻り値に出力バインディング属性を適用します。
+* Java では、出力バインドの注釈を関数メソッドに適用します。
 * その他の言語では、*function.json* 内の `name` プロパティを `$return` に設定します。
 
 複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
 
 C# と C# スクリプトでは、`out` パラメーターや[コレクター オブジェクト](functions-reference-csharp.md#writing-multiple-output-values)を使用してデータを出力バインディングに送信できます。
 
-言語固有の戻り値の使用例を次に示します。
-
-* [C#](#c-example)
-* [C# スクリプト (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-## <a name="c-example"></a>C# の例
+# <a name="c"></a>[C#](#tab/csharp)
 
 出力バインディングに戻り値を使用する C# コードと非同期の例を次に示します。
 
@@ -64,7 +52,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C# スクリプトの例
+# <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -97,7 +85,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F# の例
+# <a name="f"></a>[F#](#tab/fsharp)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -119,7 +107,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-## <a name="javascript-example"></a>JavaScript の例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -142,7 +130,7 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Python の例
+# <a name="python"></a>[Python](#tab/python)
 
 *function.json* ファイル内の出力バインディングを次に示します。
 
@@ -165,7 +153,27 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-## <a name="next-steps"></a>次の手順
+# <a name="java"></a>[Java](#tab/java)
+
+出力バインディングに戻り値を使用する Java コードを次に示します。
+
+```java
+@FunctionName("QueueTrigger")
+@StorageAccount("AzureWebJobsStorage")
+@BlobOutput(name = "output", path = "output-container/{id}")
+public static String run(
+  @QueueTrigger(name = "input", queueName = "inputqueue") WorkItem input,
+  final ExecutionContext context
+) {
+  String json = String.format("{ \"id\": \"%s\" }", input.id);
+  context.getLogger().info("Java processed queue message. Item=" + json);
+  return json;
+}
+```
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のバインド エラーの処理](./functions-bindings-errors.md)

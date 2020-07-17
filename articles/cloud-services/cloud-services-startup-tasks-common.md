@@ -3,26 +3,20 @@ title: Cloud Services 共通のスタートアップ タスク | Microsoft Docs
 description: クラウド サービスの Web ロールや worker ロールで実行できる共通のスタートアップ タスクの例を示します。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: tagore
+ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233803"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
-この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
+この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
 
 スタートアップ タスクの仕組み、特にスタートアップ タスクを定義するエントリを作成する方法については、 [こちらの記事](cloud-services-startup-tasks.md) をご覧ください。
 
@@ -73,7 +67,7 @@ ms.locfileid: "58916656"
 ### <a name="example-of-managing-the-error-level"></a>エラー レベルの管理の例
 この例では *Web.config* に JSON 用の圧縮セクションと圧縮エントリを追加し、エラー処理とログ記録を示します。
 
-ここに示す [ServiceDefinition.csdef] ファイルの関連セクションでは、[executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
+ここに示す [ServiceDefinition.csdef] ファイルの関連セクションでは、[executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -96,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -328,7 +322,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 </ServiceDefinition>
 ```
 
-これで、タスクは、**%ComputeEmulatorRunning%** 環境変数をチェックして、ロールがクラウドで実行されるかエミュレーターで実行されるかに基づいて異なるアクションを実行できます。 環境変数をチェックする .cmd シェル スクリプトはこちらです。
+これで、タスクは、 **%ComputeEmulatorRunning%** 環境変数をチェックして、ロールがクラウドで実行されるかエミュレーターで実行されるかに基づいて異なるアクションを実行できます。 環境変数をチェックする .cmd シェル スクリプトはこちらです。
 
 ```cmd
 REM   Check if this task is running on the compute emulator.
@@ -472,12 +466,12 @@ EXIT %ERRORLEVEL%
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>スタートアップ タスクに適した executionContext を設定する
 スタートアップ タスクに適切な特権を設定します。 ロールが通常の特権で実行されるときでも、スタートアップ タスクは管理者特権で実行する必要がある場合があります。
 
-[executionContext][Task] 属性はスタートアップ タスクの特権レベルを設定します。 `executionContext="limited"` を使用すると、スタートアップ タスクにロールと同じ特権レベルが付与されます。 `executionContext="elevated"` を使用すると、スタートアップ タスクに管理者特権が付与されます。これにより、お使いのロールに管理者特権を与えることなく、スタートアップ タスクで管理者のタスクを実行できます。
+[executionContext][environment] 属性はスタートアップ タスクの特権レベルを設定します。 `executionContext="limited"` を使用すると、スタートアップ タスクにロールと同じ特権レベルが付与されます。 `executionContext="elevated"` を使用すると、スタートアップ タスクに管理者特権が付与されます。これにより、お使いのロールに管理者特権を与えることなく、スタートアップ タスクで管理者のタスクを実行できます。
 
 管理者特権を必要とするスタートアップ タスクの例は、 **AppCmd.exe** を使用して IIS を構成するスタートアップ タスクです。 **AppCmd.exe** には `executionContext="elevated"` が必要です。
 
 ### <a name="use-the-appropriate-tasktype"></a>適切な taskType を使用する
-[taskType][Task] 属性は、スタートアップ タスクを実行する方法を決定します。 **simple**、**background**、および **foreground** の 3 つの値があります。 background タスクと foreground タスクは非同期的に開始され、simple タスクは一度に 1 回のみ同期的に実行されます。
+[taskType][environment] 属性は、スタートアップ タスクを実行する方法を決定します。 **simple**、**background**、および **foreground** の 3 つの値があります。 background タスクと foreground タスクは非同期的に開始され、simple タスクは一度に 1 回のみ同期的に実行されます。
 
 **simple** スタートアップ タスクでは、ServiceDefinition.csdef ファイルに表示される順序でタスクが実行されます。 **simple** タスクがゼロ以外の終了コードで終了すると、スタートアップ手続きは停止し、ロールは開始されません。
 
@@ -499,7 +493,7 @@ EXIT %ERRORLEVEL%
 ### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>ロールでアクセスする必要があるファイルをローカル ストレージに格納する
 スタートアップ タスクの実行時にファイルをコピーまたは作成し、後からお使いのロールでアクセスするには、そのファイルをローカル ストレージに配置する必要があります。 [前のセクション](#create-files-in-local-storage-from-a-startup-task)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラウドの [サービス モデルとパッケージ](cloud-services-model-and-package.md)
 
 [タスク](cloud-services-startup-tasks.md) の動作について説明します。
@@ -507,14 +501,17 @@ EXIT %ERRORLEVEL%
 クラウド サービス パッケージを[作成してデプロイ](cloud-services-how-to-create-deploy-portal.md)します。
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Endpoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[ServiceDefinition.csdef]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+
+
+

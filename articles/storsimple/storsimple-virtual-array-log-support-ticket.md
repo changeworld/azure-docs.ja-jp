@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110000"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "64723950"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のサポート要求を記録します
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 StorSimple デバイス マネージャーのサービスの概要ブレードには、**新しいサポート要求を記録**する機能が用意されています。 この記事では、ポータル内から新しいサポート要求を記録し、そのライフサイクルを管理する方法について説明します。
 
@@ -33,7 +33,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 #### <a name="to-log-a-new-request"></a>新しい要求を記録するには
 
-1. StorSimple デバイス マネージャー サービスに移動します。 サービスの概要ブレードの設定で、**[サポート + トラブルシューティング]** セクションに移動し、**[新しいサポート要求]** をクリックします。
+1. StorSimple デバイス マネージャー サービスに移動します。 サービスの概要ブレードの設定で、 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート要求]** をクリックします。
    
     ![新しいサポート要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
@@ -61,7 +61,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 #### <a name="to-manage-your-support-requests"></a>サポート要求を管理するには
 
-ヘルプとサポート ページにアクセスするには、**[参照] > [ヘルプとサポート]** の順に移動します。
+ヘルプとサポート ページにアクセスするには、 **[参照] > [ヘルプとサポート]** の順に移動します。
 
 ![サポート要求を管理する](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

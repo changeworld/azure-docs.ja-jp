@@ -1,0 +1,146 @@
+---
+title: 条件付きアクセス ポリシーの許可コントロール - Azure Active Directory
+description: Azure AD 条件付きアクセス ポリシーの許可コントロールとは
+services: active-directory
+ms.service: active-directory
+ms.subservice: conditional-access
+ms.topic: conceptual
+ms.date: 03/25/2020
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: calebb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583200"
+---
+# <a name="conditional-access-grant"></a>条件付きアクセス:Grant
+
+条件付きアクセス ポリシー内では、管理者はアクセス コントロールを使用して、リソースへのアクセスを許可またはブロックすることができます。
+
+![多要素認証を必要とする許可コントロールを使用した条件付きアクセス ポリシー](./media/concept-conditional-access-grant/conditional-access-grant.png)
+
+## <a name="block-access"></a>アクセスのブロック
+
+ブロックは、割り当てを考慮して、条件付きアクセス ポリシーの構成に基づいてアクセスを禁止します。
+
+ブロックは強力なコントロールであるため、適切な知識を習得したうえで扱う必要があります。 管理者は、有効化する前に[レポート専用モード](concept-conditional-access-report-only.md)を使用してそれをテストする必要があります。
+
+## <a name="grant-access"></a>アクセス権の付与
+
+管理者は、アクセス権を付与するときに 1 つ以上のコントロールを適用することを選択できます。 これらのコントロールには、次のオプションがあります。 
+
+- [多要素認証 (Azure Multi-Factor Authentication) を要求する](../authentication/concept-mfa-howitworks.md)
+- [デバイスが準拠としてマーク済みであることを必要とする (Microsoft Intune)](/intune/protect/device-compliance-get-started)
+- [ハイブリッド Azure AD 参加済みのデバイスを必要とする](../devices/concept-azure-ad-join-hybrid.md)
+- [承認済みクライアント アプリを必須にする](app-based-conditional-access.md)
+- [アプリの保護ポリシーを必須にする](app-protection-based-conditional-access.md)
+
+これらのオプションを組み合わせることを選択する場合、管理者は次の方法を選択できます。
+
+- 選択したコントロールすべてが必要 (コントロール**と**コントロール)
+- 選択したコントロールのいずれかが必要 (コントロール**または**コントロール)
+
+既定では、条件付きアクセスでは、選択したすべてのコントロールが必要です。
+
+### <a name="require-multi-factor-authentication"></a>多要素認証が必要です
+
+このチェックボックスをオンにすると、ユーザーは Azure Multi-Factor Authentication を実行する必要があります。 Azure Multi-factor Authentication のデプロイの詳細については、「[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)」の記事を参照してください。
+
+### <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
+
+Microsoft Intune をデプロイしている組織では、デバイスから返された情報を使用して、特定の準拠要件を満たすデバイスを識別することができます。 このポリシー準拠情報は Intune から Azure AD に転送され、条件付きアクセスはそこで、リソースへのアクセスを許可するかブロックするかを決定できます。 準拠ポリシーの詳細については、「[Intune を使用して組織内のリソースへのアクセスを許可するように、デバイス上でルールを設定する](/intune/protect/device-compliance-get-started)」という記事を参照してください。
+
+デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Jamf pro は、唯一サポートされているサードパーティ製 MDM システムです。 統合の詳細については、「[コンプライアンスのために Jamf Pro を Intune と統合する](/intune/protect/conditional-access-integrate-jamf)」を参照してください。
+
+デバイスを準拠としてマークするには、あらかじめそのデバイスが Azure AD に登録されている必要があります。 デバイス登録の詳細については、「[デバイス ID とは](../devices/overview.md)」を参照してください。
+
+### <a name="require-hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みのデバイスを必要とする
+
+組織は、条件付きアクセス ポリシーの一部としてデバイス ID を使用することを選択できます。 組織は、このチェックボックスを使用して、デバイスがハイブリッド Azure AD 参加済みであることを必須にすることができます。 デバイス ID の詳細については、「[デバイス ID とは](../devices/overview.md)」の記事を参照してください。
+
+### <a name="require-approved-client-app"></a>承認済みクライアント アプリを必須にする
+
+組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。 これらの承認されたクライアント アプリは、モバイル デバイス管理 (MDM) ソリューションには一切依存せずに、[Intune アプリ保護ポリシー](/intune/app-protection-policy)をサポートします。
+
+この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
+
+この設定は、以下の iOS アプリと Android アプリに適用されます。
+
+- Microsoft Azure Information Protection
+- Microsoft Bookings
+- Microsoft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft Invoicing
+- Microsoft Kaizala
+- Microsoft Launcher
+- Microsoft Office
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Skype for Business
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- Microsoft To-Do
+- Microsoft Visio
+- Microsoft Word
+- Microsoft Yammer
+- Microsoft Whiteboard
+
+**解説**
+
+- 承認されたクライアント アプリは、Intune モバイル アプリケーション管理機能をサポートしています。
+- **[承認されたクライアント アプリが必要です]** 要件:
+   - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
+   - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
+- 条件付きアクセスでは、InPrivate モードの Microsoft Edge を承認されたクライアント アプリと見なすことはできません。
+
+「[方法: 条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する](app-based-conditional-access.md)」を参照して構成の例を確認してください。
+
+### <a name="require-app-protection-policy"></a>アプリの保護ポリシーを必須にする
+
+条件付きアクセス ポリシー内で、選択したクラウド アプリがアクセスできるようにする前に、クライアント アプリに [Intune アプリ保護ポリシー](/intune/app-protection-policy)が存在することを要求できます。 
+
+この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
+
+この設定は、以下のクライアント アプリに適用されます。
+
+- Microsoft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Microsoft Planner
+
+**解説**
+
+- アプリ保護ポリシーのアプリは、ポリシー保護を含む Intune モバイル アプリケーション管理機能をサポートしています。
+- **アプリの保護ポリシーが必要**の要件:
+    - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
+    - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
+
+「[方法: 条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする](app-protection-based-conditional-access.md)」を参照して構成の例を確認してください。
+
+### <a name="terms-of-use"></a>使用条件
+
+社内で利用規約を作成している場合、許可コントロールに追加のオプションが表示されます。 これらのオプションを使用すると、ポリシーによって保護されたリソースにアクセスするための条件として、管理者は利用規約への同意を要求することができます。 利用規約の詳細については、「[Azure Active Directory の利用規約](terms-of-use.md)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+- [条件付きアクセス:セッション コントロール](concept-conditional-access-session.md)
+
+- [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
+
+- [レポート専用モード](concept-conditional-access-report-only.md)

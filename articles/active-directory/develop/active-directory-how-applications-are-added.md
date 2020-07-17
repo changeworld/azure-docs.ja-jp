@@ -1,40 +1,38 @@
 ---
-title: Azure Active Directory にアプリケーションを追加する方法と理由
+title: アプリを Azure AD に追加する方法と理由
+titleSuffix: Microsoft identity platform
 description: Azure AD にアプリケーションを追加する意味とその方法
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.reviewer: lenalepa, sureshja
+ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544638"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80884275"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
-Azure AD には、2 つの表現のアプリケーションがあります。 
+Azure AD には、2 つの表現のアプリケーションがあります。
+
 * [アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object) - [例外](#notes-and-exceptions)はありますが、アプリケーション オブジェクトはアプリケーションの定義と考えることができます。
 * [サービス プリンシパル](app-objects-and-service-principals.md#service-principal-object) - アプリケーションのインスタンスと考えることができます。 一般的に、サービス プリンシパルはアプリケーション オブジェクトを参照し、1 つのアプリケーション オブジェクトは複数のディレクトリの複数のプリンシパルによって参照されます。
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>アプリケーション オブジェクトの概要とその由来
-[アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object)は、Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) エクスペリエンスで管理できます。 アプリケーション オブジェクトは、Azure AD に対してアプリケーションについて記述します。アプリケーション オブジェクトはアプリケーションの定義と考えることができます。これにより、サービスは設定に基づいてアプリケーションにトークンを発行する方法を知ることができます。 他のディレクトリ内のサービス プリンシパルをサポートするマルチテナント アプリケーションであっても、アプリケーション オブジェクトはそのホーム ディレクトリにのみ存在します。 アプリケーション オブジェクトには、以下のいずれかが含まれる可能性があります (ここに記載されていない他の情報もあります)。
+
+[アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object)は、Azure portal の [[アプリの登録]](https://aka.ms/appregistrations) エクスペリエンスで管理できます。 アプリケーション オブジェクトは、Azure AD に対してアプリケーションについて記述します。アプリケーション オブジェクトはアプリケーションの定義と考えることができます。これにより、サービスは設定に基づいてアプリケーションにトークンを発行する方法を知ることができます。 他のディレクトリ内のサービス プリンシパルをサポートするマルチテナント アプリケーションであっても、アプリケーション オブジェクトはそのホーム ディレクトリにのみ存在します。 アプリケーション オブジェクトには、以下のいずれかが含まれる可能性があります (ここに記載されていない他の情報もあります)。
+
 * 名前、ロゴ、発行元
-* 応答 URL
+* リダイレクト URI
 * シークレット (アプリケーションの認証に使用される対称キーまたは非対称キー)
 * API の依存関係 (OAuth)
 * 発行済みの API/リソース/スコープ (OAuth)
@@ -44,13 +42,15 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 * プロキシのメタデータと構成
 
 アプリケーション オブジェクトは、以下のような複数の経路で作成できます。
+
 * Azure Portal のアプリケーションの登録
 * Visual Studio を使用して新しいアプリケーションを作成し、Azure AD 認証を使用するように構成する
 * 管理者がアプリ ギャラリーからアプリケーションを追加するとき (これによってサービス プリンシパルも作成されます)
-* Microsoft Graph API、Azure AD Graph API、または PowerShell を使用して新しいアプリケーションを作成する
+* Microsoft Graph API または PowerShell を使用して新しいアプリケーションを作成する
 * Azure でのさまざまな開発者エクスペリエンスや、デベロッパー センターでの API エクスプローラー エクスペリエンスなど、その他多数
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>サービス プリンシパルの概要とその由来
+
 [サービス プリンシパル](app-objects-and-service-principals.md#service-principal-object)は、Azure portal の [[エンタープライズ アプリケーション]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) エクスペリエンスで管理できます。 サービス プリンシパルは、実際には Azure AD に接続するアプリケーションを制御するものであり、ディレクトリ内のアプリケーションのインスタンスと考えることができます。 どのアプリケーションでも、最大で 1 つの ("ホーム" ディレクトリに登録されている) アプリケーション オブジェクトと、アプリケーションが動作する各ディレクトリ内のアプリケーションのインスタンスを表す 1 つ以上のサービス プリンシパル オブジェクトを持つことができます。 
 
 サービス プリンシパルには、以下を含めることができます。
@@ -74,13 +74,15 @@ Azure AD には、2 つの表現のアプリケーションがあります。
   * Office 365 にサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
   * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
 * 管理者がアプリ ギャラリーからアプリケーションを追加するとき (これによって基になるアプリケーション オブジェクトも作成されます)
-* [Azure AD アプリケーション プロキシ](https://msdn.microsoft.com/library/azure/dn768219.aspx)を使用するアプリケーションを追加する
+* [Azure AD アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)を使用するアプリケーションを追加する
 * シングル サインオンのために、SAML またはパスワードのシングル サインオン (SSO) を使用してアプリを接続する
-* Azure AD Graph API または PowerShell でプログラムを使用する
+* Microsoft Graph API または PowerShell でプログラムを使用する
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>アプリケーション オブジェクトとサービス プリンシパルの相互の関係
+
 アプリケーションには、ホーム ディレクトリ内に 1 つのアプリケーション オブジェクトがあり、そのアプリケーション オブジェクトは、アプリケーションが動作する各ディレクトリ (アプリケーションのホーム ディレクトリを含む) 内の 1 つ以上のサービス プリンシパルから参照されます。
-![アプリケーション オブジェクトとサービス プリンシパルが相互および Azure AD インスタンスとやり取りする方法を示す図][apps_service_principals_directory]
+
+![アプリケーション オブジェクトとサービス プリンシパル間のリレーションシップの表示][apps_service_principals_directory]
 
 上の図では、Microsoft はアプリケーションを発行するために使用する 2 つのディレクトリを内部的に保持しています (左側)。
 
@@ -89,22 +91,24 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 
 Azure AD と統合するアプリケーションのパブリッシャー/ベンダーには、発行ディレクトリが必要です (右側の "Some SaaS Directory")。
 
-自分自身を追加するアプリケーション (この図では "**App (yours)**" と示されている) には、次のアプリケーションが含まれます。
+自分自身を追加するアプリケーション (この図では "**App (yours)** " と示されている) には、次のアプリケーションが含まれます。
 
 * ユーザーが開発したアプリ (Azure AD と統合)
 * シングル サインオン用に接続したアプリ
 * Azure AD アプリケーション プロキシを使用して発行したアプリ
 
 ### <a name="notes-and-exceptions"></a>エラーと例外
-* すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリケーション ID を確立するのに十分でした。 元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。 このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用するなど、異なる経路でサービス プリンシパルを作成できます。 Azure AD Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
+
+* すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリケーション ID を確立するのに十分でした。 元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。 このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用するなど、異なる経路でサービス プリンシパルを作成できます。 Microsoft Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
 * 現在、このような情報の中にはプログラムによって公開されていないものがあります。 次の情報は UI でのみ使用できます。
   * 要求変換ルール
   * 属性マッピング (ユーザーのプロビジョニング)
-* サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Azure AD Graph REST API のリファレンス ドキュメントを参照してください。
-  * [Application](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [サービス プリンシパル](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Microsoft Graph API のリファレンス ドキュメントを参照してください。
+  * [Application](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [サービス プリンシパル](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>アプリケーションを Azure AD と統合する理由
+
 アプリケーションは、次のような Azure AD が提供するサービスを利用するために Azure AD に追加されます。
 
 * アプリケーションの認証と承認
@@ -116,6 +120,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 * アプリケーションの発行とプロキシ。プライベート ネットワークからインターネットにアプリケーションを発行します。
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー
+
 グローバル管理者のみが実行できるタスクがいくつかありますが (アプリ ギャラリーからアプリケーションを追加する、アプリケーション プロキシを使用するようにアプリケーションを構成するなど)、既定で、ディレクトリ内のすべてのユーザーは、開発中のアプリケーション オブジェクトを登録する権利を持ち、組織のデータを共有し、アクセス権を付与するアプリケーションについて、同意によって決定することができます。 ディレクトリ内で、アプリケーションにサインインし、同意を許可した最初のユーザーの場合、テナントにサービス プリンシパルが作成されます。それ以外の場合、同意の許可情報は既存のサービス プリンシパルに格納されます。
 
 アプリケーションへの登録と同意をユーザーに許可することは、最初は心配かもいれませんが、以下の点に留意してください。
@@ -132,10 +137,11 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 
 * ユーザーが自分のためにアプリケーションに同意できないようにするには:
   1. Azure Portal で、エンタープライズ アプリケーションの [[ユーザー設定]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) セクションに移動します。
-  2. **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を **[いいえ]** に変更します。 
+  2. **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を **[いいえ]** に変更します。
      
      > [!NOTE]
-     > ユーザーの同意を無効にする場合、ユーザーが新しいアプリケーションを使用する必要があるとき、そのアプリケーションに管理者が同意する必要があります。    
+     > ユーザーの同意を無効にする場合、ユーザーが新しいアプリケーションを使用する必要があるとき、そのアプリケーションに管理者が同意する必要があります。
+
 * ユーザーが自分のアプリケーションを登録できないようにするには:
   1. Azure Portal で、Azure Active Directory の [[ユーザー設定]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) セクションに移動します。
   2. **[ユーザーはアプリケーションを登録できる]** を **[いいえ]** に変更します。
@@ -145,4 +151,3 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
-

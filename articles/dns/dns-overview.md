@@ -1,17 +1,17 @@
 ---
 title: Azure DNS とは
 description: Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: victorh
-ms.openlocfilehash: 530730dcf303a54803816e6f2af8787298c1c658
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795586"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76932400"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -25,7 +25,7 @@ Azure DNS には、次の機能が含まれています。
 
 Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS には、エニーキャスト ネットワークが使用されています。 各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。これによって、ドメインには高速なパフォーマンスと高可用性が提供されます。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
@@ -51,7 +51,7 @@ DNS の課金は、Azure でホストされている DNS ゾーンの数と、�
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>プライベート ドメインを持つカスタマイズ可能な仮想ネットワーク
 
-Azure DNS では、プライベート DNS ドメインもサポートされるようになり、その機能は、現在パブリック プレビュー段階となっています。 この機能は、現在利用可能な Azure 提供の名前ではなく、独自のカスタム ドメイン名をプライベート仮想ネットワーク内で使用できます。
+Azure DNS は、プライベート DNS ドメインもサポートします。 この機能は、現在利用可能な Azure 提供の名前ではなく、独自のカスタム ドメイン名をプライベート仮想ネットワーク内で使用できます。
 
 詳細については、「[プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)」を参照してください。
 
@@ -63,7 +63,7 @@ Azure DNS では、エイリアス レコード セットをサポートしま�
 
 詳細については、「[Azure DNS エイリアス レコード](dns-alias.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * DNS ゾーンとレコードについて学びます ([DNS ゾーンとレコードの概要](dns-zones-records.md)に関するページを参照)。
 

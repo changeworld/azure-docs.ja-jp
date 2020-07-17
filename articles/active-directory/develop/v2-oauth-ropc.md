@@ -1,32 +1,31 @@
 ---
-title: Microsoft ID プラットフォームでリソース所有者のパスワード資格情報 (ROPC) を使用してサインインする | Azure
-description: リソース所有者のパスワード資格情報 (ROPC) 付与によるブラウザーなしの認証フローをサポートします。
+title: リソース所有者のパスワード資格情報付与を使用してサインインする | Azure
+titleSuffix: Microsoft identity platform
+description: リソース所有者のパスワード資格情報 (ROPC) 付与を使用して、ブラウザーなしの認証フローをサポートします。
 services: active-directory
-documentationcenter: ''
-author: rwike77
+author: hpsin
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
-ms.author: ryanwi
+ms.date: 11/19/2019
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 26b3cb343aba2d45d5a14944a7f8856715bca100
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545105"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690097"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
-Microsoft ID プラットフォームでは、[リソース所有者のパスワード資格情報 (ROPC) 付与](https://tools.ietf.org/html/rfc6749#section-4.3)がサポートされています。これにより、アプリケーションでは、ユーザーのパスワードを直接処理することでユーザーをサインインさせることができます。 ROPC フローには、高い度合の信頼が必要であり、また、ユーザーを公開する必要があります。このフローは、他のより安全なフローを使用できない場合にのみ使用してください。
+Microsoft ID プラットフォームでは、[OAuth 2.0 リソース所有者のパスワード資格情報 (ROPC) 付与](https://tools.ietf.org/html/rfc6749#section-4.3)がサポートされています。これにより、アプリケーションでは、ユーザーのパスワードを直接処理することでユーザーをサインインさせることができます。  この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
+
+> [!WARNING]
+> ROPC フローは "_使用しない_" ことをお勧めします。 ほとんどのシナリオでは、より安全な代替手段を利用でき、推奨されます。 このフローでは、アプリケーションで非常に高い信頼度が要求されるため、他のフローには存在しないリスクが伴います。 他のもっと安全なフローを使用できない場合にのみ、このフローを使用する必要があります。
 
 > [!IMPORTANT]
 >
@@ -34,12 +33,13 @@ Microsoft ID プラットフォームでは、[リソース所有者のパスワ
 > * Azure AD テナントに招待された個人アカウントでは、ROPC を使用できません。
 > * パスワードがないアカウントでは、ROPC 経由でサインインできません。 このシナリオでは、代わりに、自分のアプリに対して別のフローを使用することをお勧めします。
 > * ユーザーが多要素認証 (MFA) を使用してアプリケーションにログインすると、ログインできずにブロックされます。
+> * ROPC は[ハイブリッド ID フェデレーション](/azure/active-directory/hybrid/whatis-fed) シナリオ (たとえば、オンプレミスのアカウントの認証に使用される Azure AD や ADFS) ではサポートされていません。 ユーザーがオンプレミスの ID プロバイダーに全ページ リダイレクトされる場合、Azure AD ではその ID プロバイダーに対してユーザー名とパスワードをテストできません。 ただし、ROPC では[パススルー認証](/azure/active-directory/hybrid/how-to-connect-pta)がサポートされています。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
 次は ROPC フローの図です。
 
-![ROPC フロー](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![リソース所有者のパスワード資格情報フローを示す図](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Authorization request (承認要求)
 
@@ -47,11 +47,11 @@ ROPC フローは 1 件の要求です。クライアント ID とユーザー�
 
 > [!TIP]
 > を必ず置き換えてください)。
-> [![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,10 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | `tenant` | 必須 | ユーザーをログインさせるディレクトリ テナント。 これは GUID またはフレンドリ名の形式で指定できます。 このパラメーターは `common` と `consumers` に設定できませんが、`organizations` には設定できます。 |
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `grant_type` | 必須 | `password` に設定する必要があります。 |
 | `username` | 必須 | ユーザーの電子メール アドレス。 |
 | `password` | 必須 | ユーザーのパスワード。 |
 | `scope` | 推奨 | アプリで必要となる[スコープ](v2-permissions-and-consent.md) (アクセス許可) をスペースで区切った一覧。 対話型のフローでは、管理者またはユーザーが事前にこれらのスコープに同意する必要があります。 |
+| `client_secret`| 必要な場合あり | アプリがパブリック クライアントである場合、`client_secret` または `client_assertion` を含めることはできません。  アプリが機密クライアントである場合は、それを含める必要があります。 |
+| `client_assertion` | 必要な場合あり | 証明書を使用して生成された、`client_secret` の別の形式。  詳細については、[証明書の資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。 |
 
 ### <a name="successful-authentication-response"></a>正常な認証応答
 
@@ -87,11 +90,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター | 形式 | 説明 |
+| パラメーター | Format | 説明 |
 | --------- | ------ | ----------- |
 | `token_type` | String | 常に `Bearer` に設定します。 |
 | `scope` | スペース区切りの文字列 | アクセス トークンが返された場合、このパラメーターによって、アクセス トークンが有効なスコープの一覧が生成されます。 |
-| `expires_in`| int | 含まれているアクセス トークンが有効となる秒数。 |
+| `expires_in`| INT | 含まれているアクセス トークンが有効となる秒数。 |
 | `access_token`| 不透明な文字列 | 要求された[スコープ](v2-permissions-and-consent.md)に対して発行されます。 |
 | `id_token` | JWT | 元の `scope` パラメーターに `openid` スコープが含まれている場合に発行されます。 |
 | `refresh_token` | 不透明な文字列 | 元の `scope` パラメーターに `offline_access` が含まれている場合に発行されます。 |
@@ -102,11 +105,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ユーザーが正しいユーザー名やパスワードを指定していない場合、あるいは要求した同意がクライアントに届いていない場合、認証は失敗します。
 
-| Error | 説明 | クライアント側の処理 |
+| エラー | 説明 | クライアント側の処理 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 認証に失敗しました | 資格情報が正しくないか、要求したスコープに対してクライアントに同意がありません。 スコープが付与されていない場合、`consent_required` エラーが返されます。 その場合、クライアントでは、Web ビューまたはブラウザーを利用し、対話式プロンプトにユーザーを送信する必要があります。 |
-| `invalid_request` | 要求が正しく構築されていません | この付与タイプは `/common` または `/consumers` 認証ではサポートされていません。  代わりに `/organizations` を使用してください |
-| `invalid_client` | アプリが正しく設定されていません | これは[アプリケーション マニフェスト](reference-app-manifest.md)で `allowPublicClient` プロパティが true に設定されていない場合に発生することがあります。 ROPC 付与ではリダイレクト URI がないため、`allowPublicClient` プロパティが必要になります。 Azure AD では、このプロパティが設定されていない限り、クライアント アプリケーションの種類がパブリックかプライベートかを判断できません。 ROPC はパブリック クライアント アプリでのみサポートされています。 |
+| `invalid_request` | 要求が正しく構築されていません | この付与タイプは `/common` または `/consumers` 認証ではサポートされていません。  代わりに `/organizations` またはテナント ID を使用してください。 |
 
 ## <a name="learn-more"></a>詳細情報
 

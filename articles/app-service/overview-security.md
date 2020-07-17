@@ -1,56 +1,41 @@
 ---
-title: セキュリティの概要 - Azure App Service | Microsoft Docs
+title: Security
 description: App Service でアプリをセキュリティで保護する方法と、アプリを脅威からさらに保護する方法について説明します。
 keywords: azure app service, web アプリ, モバイル アプリ, api アプリ, 関数アプリ, セキュリティ, セキュア, セキュリティ保護, コンプライアンス, 準拠, 証明書, https, ftps, tls, 信頼, 暗号化, 暗号化する, 暗号化済み, ip の制限, 認証, 認可, authn, autho, msi, マネージド サービス ID, マネージド ID, シークレット, 秘密, パッチ処理, パッチ, バージョン, 分離, ネットワークの分離, ddos, mitm
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955749"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649026"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
 この記事では、[Azure App Service](overview.md) で Web アプリ、モバイル アプリ バック エンド、API アプリ、および[関数アプリ](/azure/azure-functions/)をセキュリティで保護する方法について説明します。 また、組み込みの App Service 機能を使用してアプリをさらに保護する方法についても説明します。
 
-Azure VM、ストレージ、ネットワーク接続、Web フレームワーク、管理、統合機能を含む App Service のプラットフォーム コンポーネントは、積極的に保護され、強化されています。 App Service は、徹底したコンプライアンス チェックを継続的に行い、以下の点を確認しています。
-
-- お客様のアプリのリソースが、他のお客様の Azure リソースから[セキュリティで保護](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)されていること。
-- 新たに発見された脆弱性に対応できるように、[VM インスタンスとランタイム ソフトウェアが定期的に更新されている](overview-patch-os-runtime.md)こと。 
-- アプリと他の Azure リソース ([SQL Database](https://azure.microsoft.com/services/sql-database/) など) 間のシークレット (接続文字列など) の通信が Azure 内にとどまり、ネットワーク境界を越えないこと。 保存時にシークレットが常に暗号化されていること。
-- [ハイブリッド接続](app-service-hybrid-connections.md)などの App Service 接続機能を介したすべての通信が暗号化されていること。 
-- Azure PowerShell、Azure CLI、Azure SDK、REST API などのリモート管理ツールとの接続がすべて暗号化されていること。
-- 24 時間体制の脅威管理によって、マルウェア、分散型サービス拒否 (DDoS)、man-in-the-middle (MITM) などの脅威からインフラストラクチャとプラットフォームが保護されていること。
-
-Azure のインフラストラクチャとプラットフォームのセキュリティの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/overview/trusted-cloud/)を参照してください。
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 以下のセクションでは、App Service アプリを脅威からさらに保護する方法について説明します。
 
 ## <a name="https-and-certificates"></a>HTTPS と証明書
 
-App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) でアプリをセキュリティで保護できます。 アプリを作成すると、HTTPS を使用して既定のドメイン名 (\<app_name>.azurewebsites.net) にアクセスできます。 [アプリのカスタム ドメインを構成する](app-service-web-tutorial-custom-domain.md)場合は、クライアント ブラウザーがカスタム ドメインに対して安全な HTTPS 接続を実行できるように、[カスタム証明書を使用してセキュリティで保護する](app-service-web-tutorial-custom-ssl.md)必要があります。 それには 2 つの方法があります。
+App Service を使用すると、[HTTPS](https://wikipedia.org/wiki/HTTPS) でアプリをセキュリティで保護できます。 アプリを作成すると、HTTPS を使用して既定のドメイン名 (\<app_name>.azurewebsites.net) にアクセスできます。 [アプリのカスタム ドメインを構成する](app-service-web-tutorial-custom-domain.md)場合は、クライアント ブラウザーがカスタム ドメインに対して安全な HTTPS 接続を実行できるように、[TLS/SSL 証明書を使用してセキュリティで保護する](configure-ssl-bindings.md)必要があります。 App Service では、いくつかの種類の証明書がサポートされています。
 
-- **App Service 証明書** - Azure で証明書を直接作成します。 証明書は [Azure Key Vault](/azure/key-vault/) でセキュリティで保護され、App Service アプリにインポートできます。 詳細については、「[Azure App Service の SSL 証明書を購入して構成する](web-sites-purchase-ssl-web-site.md)」を参照してください。
-- **サードパーティ証明書** - 信頼できる証明機関から購入したカスタム SSL 証明書をアップロードして、App Service アプリにバインドします。 App Service は、単一ドメイン証明書とワイルドカード証明書の両方をサポートしています。 また、テスト目的の自己署名証明書もサポートしています。 詳細については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+- Free App Service マネージド証明書
+- App Service 証明書
+- サードパーティの証明書
+- Azure Key Vault からインポートされた証明書
+
+詳細については、[Azure App Service への TLS/SSL 証明書の追加](configure-ssl-certificate.md)に関する記事をご覧ください。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>セキュリティで保護されていないプロトコル (HTTP、TLS 1.0、FTP)
 
-すべての暗号化されていない (HTTP) 接続からアプリをセキュリティで保護するために、App Service には 1 クリックで HTTPS を適用できる構成が用意されています。 セキュリティで保護されていない要求は、アプリケーション コードに到達する前に拒否されます。 詳細については、「[HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)」を参照してください。
+すべての暗号化されていない (HTTP) 接続からアプリをセキュリティで保護するために、App Service には 1 クリックで HTTPS を適用できる構成が用意されています。 セキュリティで保護されていない要求は、アプリケーション コードに到達する前に拒否されます。 詳細については、「[HTTPS の適用](configure-ssl-bindings.md#enforce-https)」を参照してください。
 
-[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 は、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 App Service で [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions) を適用することで、古いプロトコルを無効にすることができます。
+[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 は、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 App Service で [TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) を適用することで、古いプロトコルを無効にすることができます。
 
 App Service は、ファイルの展開に FTP と FTPS の両方をサポートしています。 ただし、可能な限り FTP ではなく FTPS を使用することをお勧めします。 これらのプロトコルの 1 つまたは両方が使用されていない場合は、[無効にする](deploy-ftp.md#enforce-ftps)ことをお勧めします。
 
@@ -71,7 +56,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 バックエンド サービスに対して認証する場合、App Service には必要に応じて 2 つの異なるメカニズムが用意されています。
 
 - **サービス ID** - アプリ自体の ID を使用してリモート リソースにサインインします。 App Service を使用すると、[マネージド ID](overview-managed-identity.md) を簡単に作成できます。この ID は、[Azure SQL Database](/azure/sql-database/)、[Azure Key Vault](/azure/key-vault/) などの他のサービスで認証するために使用できます。 この方法のエンドツーエンドのチュートリアルについては、「[マネージド ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護](app-service-web-tutorial-connect-msi.md)」を参照してください。
-- **代理 (OBO)** - ユーザーの代理でリモート リソースへの委任されたアクセスを行います。 Azure Active Directory を認証プロバイダーとして使用すると、App Service アプリは、App Service で [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) やリモート API アプリなどのリモート サービスに対して代理サインインを実行できます。 この方法のエンドツーエンドのチュートリアルについては、「[Linux 用 Azure App Service でユーザーをエンドツーエンドで認証および承認する](app-service-web-tutorial-auth-aad.md)」を参照してください。
+- **代理 (OBO)** - ユーザーの代理でリモート リソースへの委任されたアクセスを行います。 Azure Active Directory を認証プロバイダーとして使用すると、App Service アプリは、[Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) や App Service のリモート API アプリなどのリモート サービスへの委任されたサインインを実行できます。 この方法のエンドツーエンドのチュートリアルについては、「[Linux 用 Azure App Service でユーザーをエンドツーエンドで認証および承認する](app-service-web-tutorial-auth-aad.md)」を参照してください。
 
 ## <a name="connectivity-to-remote-resources"></a>リモート リソースへの接続性
 
@@ -113,7 +98,6 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 **Isolated** 価格レベルを除くすべての価格レベルでは、App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 たとえば、パブリック IP アドレスとフロントエンド ロード バランサーは他のテナントと共有されます。 **Isolated** 価格レベルでは、専用の [App Service 環境](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service 環境は、[Azure Virtual Network](/azure/virtual-network/) の独自のインスタンスで実行されます。 以下を実行できます。 
 
-- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-dmz-nsg.md)を使用してネットワーク アクセスを制限する。 
 - 専用のフロント エンドを使用し、専用のパブリック エンドポイントを介してアプリを提供する。
 - 内部ロードバランサー (ILB) を使用して内部アプリケーションを提供する。これによって、Azure Virtual Network 内からのアクセスのみが許可されます。 ILB にはプライベート サブネットの IP アドレスがあり、アプリはインターネットから完全に分離されます。
 - [Web アプリケーション ファイアウォール (WAF) の背後で ILB を使用する](environment/integrate-with-application-gateway.md)。 WAF は、DDoS 保護、URI フィルター処理、SQL のインジェクション防止など、一般公開されているアプリケーションにエンタープライズレベルの保護を提供します。

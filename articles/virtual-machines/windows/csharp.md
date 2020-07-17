@@ -1,26 +1,18 @@
 ---
-title: C# を使用した Azure 仮想マシンの作成および管理 | Microsoft Docs
+title: C# を使用した Azure 仮想マシンの作成および管理
 description: C# と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883060"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82082885"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -39,15 +31,15 @@ ms.locfileid: "54883060"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、**[インストール]** をクリックします。 サマリーで、**[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
-2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** をクリックします。
-3. **[テンプレート]** > **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
+1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、 **[インストール]** をクリックします。 サマリーで、 **[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
+2. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** をクリックします。
+3. **[テンプレート]**  >  **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、 **[OK]** をクリックします。
 
 ## <a name="install-the-package"></a>パッケージをインストールする
 
 NuGet パッケージを使用すると、手順を完了するために必要なライブラリを簡単にインストールできます。 Visual Studio で必要なライブラリを入手するには、次の手順に従います。
 
-1. **[ツール]** > **[NuGet パッケージ マネージャー]** をクリックし、**[パッケージ マネージャー コンソール]** をクリックします。
+1. **[ツール]**  >  **[NuGet パッケージ マネージャー]** をクリックし、 **[パッケージ マネージャー コンソール]** をクリックします。
 2. コンソールに次のコマンドを入力します。
 
     ```
@@ -58,9 +50,9 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 この手順を開始する前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
 
-### <a name="create-the-authorization-file"></a>認証ファイルを作成する
+### <a name="create-the-authorization-file"></a>承認ファイルを作成する
 
-1. ソリューション エクスプ ローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、**[追加]** をクリックします。
+1. ソリューション エクスプローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 *[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
 2. 次の承認プロパティを追加します。
 
     ```
@@ -71,23 +63,23 @@ NuGet パッケージを使用すると、手順を完了するために必要�
     managementURI=https://management.core.windows.net/
     baseURL=https://management.azure.com/
     authURL=https://login.windows.net/
-    graphURL=https://graph.windows.net/
+    graphURL=https://graph.microsoft.com/
     ```
 
-    **&lt;subscription-id&gt;** をサブスクリプション ID に、**&lt;application-id&gt;** を Active Directory アプリケーション ID に、**&lt;authentication-key&gt;** をアプリケーション キーに、**&lt;tenant-id&gt;** をテナント識別子に置き換えます。
+    **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
 
 3. azureauth.properties ファイルを保存します。 
 4. AZURE_AUTH_LOCATION という Windows 環境変数を、作成した認証ファイルへのフルパスに設定します。 たとえば、次の PowerShell コマンドを使用します。
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>管理クライアントを作成する
 
-1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭の既存のステートメントに追加します。
+1. 作成したプロジェクトの Program.cs ファイルを開きます。 次に、ファイルの先頭にある既存のステートメントに次の using ステートメントを追加します。
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -97,7 +89,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 2. 管理クライアントを作成するには、次のコードを Main メソッドに追加します。
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -112,11 +104,11 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-resource-group"></a>リソース グループの作成
 
-すべてのリソースは、[リソース グループ](../../azure-resource-manager/resource-group-overview.md)に含まれる必要があります。
+すべてのリソースは、[リソース グループ](../../azure-resource-manager/management/overview.md)に含まれる必要があります。
 
 アプリケーションに値を指定し、リソース グループを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var vmName = "myVM";
 var location = Region.USWest;
@@ -133,7 +125,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 可用性セットを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating availability set...");
 var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .WithRegion(location)
@@ -148,7 +140,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 仮想マシンのパブリック IP アドレスを作成するには、次のコードを Main メソッドに追加します。
    
-```
+```csharp
 Console.WriteLine("Creating public IP address...");
 var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
     .WithRegion(location)
@@ -163,7 +155,7 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 サブネットと仮想ネットワークを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating virtual network...");
 var network = azure.Networks.Define("myVNet")
     .WithRegion(location)
@@ -179,7 +171,7 @@ var network = azure.Networks.Define("myVNet")
 
 ネットワーク インターフェイスを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating network interface...");
 var networkInterface = azure.NetworkInterfaces.Define("myNIC")
     .WithRegion(location)
@@ -197,7 +189,7 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 仮想マシンを作成するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Creating virtual machine...");
 azure.VirtualMachines.Define(vmName)
     .WithRegion(location)
@@ -219,7 +211,7 @@ azure.VirtualMachines.Define(vmName)
 
 Marketplace イメージではなく、既存のディスクを使用する場合は、このコードを使用します。
 
-```
+```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
     .WithRegion(location)
     .WithExistingResourceGroup(groupName)
@@ -244,7 +236,7 @@ azure.VirtualMachines.Define("myVM")
 
 VM で何かを実行する必要がある場合、そのインスタンスを取得する必要があります。
 
-```
+```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
@@ -252,7 +244,7 @@ var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 
 仮想マシンに関する情報を取得するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Getting information about the virtual machine...");
 Console.WriteLine("hardwareProfile");
 Console.WriteLine("   vmSize: " + vm.Size);
@@ -324,7 +316,7 @@ Console.ReadLine();
 
 仮想マシンの割り当てを解除せずに仮想マシンを停止するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Stopping vm...");
 vm.PowerOff();
 Console.WriteLine("Press enter to continue...");
@@ -333,7 +325,7 @@ Console.ReadLine();
 
 仮想マシンの割り当てを解除する場合は、PowerOff 呼び出しを次のコードに変更します。
 
-```
+```csharp
 vm.Deallocate();
 ```
 
@@ -341,7 +333,7 @@ vm.Deallocate();
 
 仮想マシンを起動するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Starting vm...");
 vm.Start();
 Console.WriteLine("Press enter to continue...");
@@ -354,7 +346,7 @@ Console.ReadLine();
 
 仮想マシンのサイズを変更するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 Console.WriteLine("Resizing vm...");
 vm.Update()
     .WithSize(VirtualMachineSizeTypes.StandardDS2) 
@@ -365,9 +357,9 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
 
-仮想マシンにデータ ディスクのサイズが 2 GB で、LUN が 0 で、キャッシングの種類が ReadWrite のデータ ディスクを追加するには、次のコードを Main メソッドに追加します。
+仮想マシンにデータ ディスクを追加するには、Main メソッドに次のコードを追加します。 この例では、2 GB のサイズ、LUN が 0、キャッシュの種類が ReadWrite のデータ ディスクを追加します。
 
-```
+```csharp
 Console.WriteLine("Adding data disk to vm...");
 vm.Update()
     .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
@@ -382,7 +374,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 リソース グループを削除するには、次のコードを Main メソッドに追加します。
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -390,11 +382,10 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 
 
-1. コンソール アプリケーションを実行するには、**[開始]** をクリックします。
+1. コンソール アプリケーションを実行するには、 **[開始]** をクリックします。
 
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 * [Azure libraries for .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet) の使用方法の詳細について学習します。
-

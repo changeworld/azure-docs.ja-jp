@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure Data Box のシステム要件 | Microsoft Docs
-description: Azure Data Box のソフトウェア要件とネットワーキング要件について説明します
+description: Azure Data Box のソフトウェア要件とネットワーキング要件について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3bce5dd1dd34c53276c5486cc255c4cd93bb6080
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229771"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 
@@ -41,7 +41,7 @@ ms.locfileid: "66242156"
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
-### <a name="supported-storage-types"></a>サポートされるストレージの種類
+### <a name="supported-storage-types"></a>サポートされているストレージの種類
 
 [!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 
@@ -53,6 +53,13 @@ ms.locfileid: "66242156"
 
 お客様のデータセンターには、高速ネットワークが必要です。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用してデータをコピーできますが、コピーの速度が影響を受けます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="port-requirements"></a>ポートの要件
+
+SMB または NFS トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Data Box デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
+
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Box をデプロイする](data-box-deploy-ordered.md)

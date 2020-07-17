@@ -1,24 +1,17 @@
 ---
 title: Azure Log Analytics の IT Service Management Connector | Microsoft Docs
 description: この記事では、IT Service Management Connector (ITSMC) の概要を説明し、このソリューションを使用して ITSM の作業項目を Azure Log Analytics で一元的に監視および管理して、問題を迅速に解決する方法に関する情報を示します。
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/24/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/24/2018
+ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234259"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -35,11 +28,12 @@ ITSMC は、次の ITSM ツールとの接続をサポートしています。
 -   Provance
 -   Cherwell
 
-ITSMC を使用すると、次のことができます
+ITSMC を使用すると、次のことができます。
 
 -  Azure アラート (メトリック アラート、アクティビティ ログ アラート、および Log Analytics アラート) に基づいて、ITSM ツールで作業項目を作成する。
 -  オプションで、ITSM ツールのインシデントと変更要求データを Azure Log Analytics ワークスペースに同期する。
 
+詳細については、[法的条項とプライバシー ポリシー](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)を参照してください。
 
 ITSM Connector の使用を開始するには、次の手順を使用します。
 
@@ -52,17 +46,19 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 接続を作成する前に、ITSM Connector ソリューションを追加する必要があります。
 
-1. Azure Portal で、**[+ 新規]** アイコンをクリックします。
+1. Azure Portal で、 **[+ 新規]** アイコンをクリックします。
 
    ![Azure の新しいリソース](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Marketplace で **IT Service Management Connector** を検索し、**[作成]** をクリックします。
+2. Marketplace で **IT Service Management Connector** を検索し、 **[作成]** をクリックします。
 
    ![ITSMC ソリューションの追加](media/itsmc-overview/add-itsmc-solution.png)
 
 3. **[OMS ワークスペース]** セクションで、ソリューションをインストールする Azure Log Analytics ワークスペースを選択します。
    >[!NOTE]
-   >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
+   > * Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
+   > * ITSM Connector は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます。米国東部、米国西部 2、米国中南部、米国中西部、カナダ中部、西ヨーロッパ、英国南部、東南アジア、東日本、インド中部、オーストラリア南東部。
+
 4. **[OMS ワークスペースの設定]** セクションで、ソリューション リソースを作成する ResourceGroup を選択します。
 
    ![ITSMC ワークスペース](media/itsmc-overview/itsmc-solution-workspace.png)
@@ -80,7 +76,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 接続を作成するには、ITSM Connector ソリューションからの接続を許可するように ITSM ツールを準備する必要があります。  
 
-接続先の ITSM 製品に応じて、次の手順に従います。
+接続先の ITSM 製品に応じて、次の手順を使用します。
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
@@ -90,7 +86,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 ITSM ツールの準備が完了したら、次の手順に従って接続を作成します。
 
 1. **[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します。
-2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
+2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、 **[ITSM 接続]** をクリックします。
    ![ITSM 接続](media/itsmc-overview/itsm-connections.png)
 
    このページには接続の一覧を表示されています。
@@ -101,7 +97,7 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 4. [ITSM 製品/サービスとの ITSMC 接続の構成](../../azure-monitor/platform/itsmc-connections.md)に関する記事の説明に従って、接続の設定を指定します。
 
    > [!NOTE]
-   > 
+   >
    > 既定では、ITSMC は、接続の構成データを 24 時間に 1 回更新します。 編集内容やテンプレートの更新を反映するために接続データをすぐに更新するには、接続のブレードに表示される **[同期]** ボタンをクリックします。
 
    ![接続の更新](media/itsmc-overview/itsmc-connections-refresh.png)
@@ -118,28 +114,28 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 
 次の手順に従います。
 
-1. Azure Portal で、**[監視]** をクリックします。
-2. 左側のウィンドウで、**[アクション グループ]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
+1. Azure Portal で、 **[監視]** をクリックします。
+2. 左側のウィンドウで、 **[アクション グループ]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
 
-    ![アクション グループ](media/itsmc-overview/action-groups.png)
+    ![Action Groups](media/itsmc-overview/action-groups.png)
 
 3. アクション グループの**名前**と**短い名前**を入力します。 アクション グループを作成する**リソース グループ**と**サブスクリプション**を選択します。
 
     ![アクション グループの詳細](media/itsmc-overview/action-groups-details.png)
 
-4. アクション リストで、**[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの**名前**を入力し、**[詳細の編集]** をクリックします。
+4. アクション リストで、 **[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの**名前**を入力し、 **[詳細の編集]** をクリックします。
 5. Log Analytics ワークスペースが配置される**サブスクリプション**を選択します。 ご使用のワークスペース名が後に続く**接続**名 (ITSM Connector の名前) を選択します。 たとえば、"MyITSMMConnector(MyWorkspace)" などです。
 
     ![ITSM アクションの詳細](media/itsmc-overview/itsm-action-details.png)
 
 6. ドロップダウン メニューから **[作業項目]** の種類を選択します。
    既存のテンプレートを使用するか、ITSM 製品に必要なフィールドに入力します。
-7. Click **OK**.
+7. **[OK]** をクリックします。
 
 Azure のアラート ルールを作成/編集する場合は、ITSM アクションを含むアクション グループを使用します。 アラートがトリガーされると、ITSM ツールで作業項目が作成/更新されます。
 
 > [!NOTE]
-> 
+>
 > ITSM アクションの価格については、アクション グループの[価格ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
 
 
@@ -155,7 +151,7 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 Service Map ソリューション内で、影響を受けるコンピューターに対して同期されたインシデントを視覚化することもできます。
 
-サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細情報](../../azure-monitor/insights/service-map.md)。
+サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細については、こちらを参照してください](../../azure-monitor/insights/service-map.md)。
 
 Service Map ソリューションを使用する場合は、ITSM ソリューションで作成されたサービス デスク項目が次の例のように表示されます。
 
@@ -164,7 +160,7 @@ Service Map ソリューションを使用する場合は、ITSM ソリューシ
 詳細情報: [サービス マップ](../../azure-monitor/insights/service-map.md)
 
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 ### <a name="data-synced-from-itsm-product"></a>ITSM 製品から同期されるデータ
 インシデントと変更要求は、接続の構成に基づいて、ITSM 製品から Log Analytics ワークスペースに同期されます。
@@ -172,27 +168,27 @@ Service Map ソリューションを使用する場合は、ITSM ソリューシ
 ITSMC によって収集されるデータの例を以下に示します。
 
 > [!NOTE]
-> 
+>
 > Log Analytics にインポートされる作業項目の種類によっては、**ServiceDesk_CL** には以下のフィールドが含まれます。
 
 **作業項目:** **インシデント**  
 ServiceDeskWorkItemType_s="Incident"
 
-**フィールド**
+**Fields**
 
 - サービス デスク接続名
 - サービス デスク ID
-- 状態
+- State
 - 緊急度
 - 影響
-- 優先順位
+- Priority
 - エスカレーション
 - 作成者
 - 解決者
 - 終了者
-- ソース
+- source
 - 割当先
-- Category
+- カテゴリ
 - タイトル
 - 説明
 - 作成日
@@ -206,21 +202,21 @@ ServiceDeskWorkItemType_s="Incident"
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
-**フィールド**
+**Fields**
 - サービス デスク接続名
 - サービス デスク ID
 - 作成者
 - 終了者
-- ソース
+- source
 - 割当先
 - タイトル
-- type
-- Category
-- 状態
+- Type
+- カテゴリ
+- State
 - エスカレーション
 - 競合状態
 - 緊急度
-- 優先順位
+- Priority
 - リスク
 - 影響
 - 割当先
@@ -240,18 +236,18 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics のフィールド | ServiceNow のフィールド |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 状態 |
+| IncidentState_s | State |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
-| Priority_s | 優先順位 |
+| Priority_s | Priority |
 | CreatedBy_s | 開始者 |
 | ResolvedBy_s | 解決者|
 | ClosedBy_s  | 終了者 |
 | Source_s| 連絡先の種類 |
 | AssignedTo_s | 割り当て先  |
-| Category_s | Category |
+| Category_s | カテゴリ |
 | Title_s|  簡単な説明 |
-| Description_s|  メモ |
+| Description_s|  Notes |
 | CreatedDate_t|  開始済み |
 | ClosedDate_t| closed|
 | ResolvedDate_t|解決済み|
@@ -266,11 +262,11 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
-| Type_s|  type |
-| Category_s|  Category |
-| CRState_s|  状態|
+| Type_s|  Type |
+| Category_s|  カテゴリ |
+| CRState_s|  State|
 | Urgency_s|  緊急度 |
-| Priority_s| 優先順位|
+| Priority_s| Priority|
 | Risk_s| リスク|
 | Impact_s| 影響|
 | RequestedDate_t  | Requested by date\(要求日\) |
@@ -298,7 +294,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。
-2.  [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、**[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
+2.  [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、 **[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
 3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal で Service Bus Relay 名前空間を手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
 
 
@@ -306,5 +302,5 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 IT Service Management Connector に関するご質問やフィードバックは、[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) にお寄せください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ITSM 製品/サービスを IT Service Management Connector に追加する](../../azure-monitor/platform/itsmc-connections.md)。

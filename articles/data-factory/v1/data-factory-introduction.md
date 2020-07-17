@@ -1,27 +1,26 @@
 ---
-title: データ統合サービスである Data Factory の概要 | Microsoft Docs
-description: Azure Data Factory の概要を理解する:データの移動と変換を調整および自動化するクラウド データ統合サービス。
+title: データ統合サービスである Data Factory の概要
+description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014932"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73666799"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-introduction.md)
 > * [バージョン 2 (最新バージョン)](../introduction.md)
 
@@ -119,7 +118,7 @@ Data Factory ではリンクされたサービスは 2 つの理由で使用さ�
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory エンティティ間の関係
 
-![図:クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![図: クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 現時点では、データ ファクトリは、米国西部、米国東部、北ヨーロッパ リージョンで作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
@@ -133,8 +132,7 @@ Data Factory は、米国西部、米国東部、北ヨーロッパ リージョ
 ## <a name="get-started-with-creating-a-pipeline"></a>パイプライン作成の概要
 Azure Data Factory には、次のいずれかのツールまたは API でデータ パイプラインを作成できます。 
 
-- Azure ポータル
-- Visual Studio
+- Visual Studio
 - PowerShell
 - .NET API
 - REST API

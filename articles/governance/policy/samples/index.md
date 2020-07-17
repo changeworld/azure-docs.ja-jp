@@ -1,42 +1,44 @@
 ---
 title: ポリシーのサンプルのインデックス
-description: Azure Policy のサンプルのインデックス。 カテゴリには、名前付け、タグ、Key Vault、ネットワーク、ストレージなどがあります。
-author: DCtheGeek
-manager: carmonm
-ms.service: azure-policy
+description: Azure Policy のビルトインのインデックス。 カテゴリ タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成など。
+ms.date: 03/25/2020
 ms.topic: sample
-ms.date: 03/19/2019
-ms.author: dacoulte
-ms.openlocfilehash: 140429cef7f63219a0d5cf82c6ebfb3731b0072b
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979650"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697190"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
-次の表に、Azure Policy のサンプルへのリンクを示します。 これらのサンプルは、[Azure Policy のサンプル リポジトリ](https://github.com/Azure/azure-policy)にもあります。
+このページは、Azure Policy の組み込みのポリシー定義と言語使用パターンのインデックスです。
 
-[!INCLUDE [azure-policy-samples-general](../../../../includes/azure-policy-samples-general.md)]
+## <a name="built-ins"></a>組み込み
 
-[!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
+- [ポリシー](./built-in-policies.md)
+- [イニシアティブ](./built-in-initiatives.md)
 
-[!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+## <a name="patterns"></a>パターン
 
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
+次に示すのは、Azure Policy の言語と演算子を使用したさまざまなパターンの例です。
 
-[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
+- [論理演算子](./pattern-logical-operators.md)
+- [Fields](./pattern-fields.md)
+- [パラメーター](./pattern-parameters.md)
+- [効果の詳細](./pattern-effect-details.md)
+- [タグの使用](./pattern-effect-details.md)
+- [値の演算子](./pattern-value-operator.md)
+- [count 演算子](./pattern-count-operator.md)
+- [イニシアティブでのポリシー定義のグループ化](./pattern-group-with-initiative.md)
+- [deployIfNotExists によるリソースのデプロイ](./pattern-deploy-resources.md)
 
-[!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
+## <a name="other-samples"></a>その他のサンプル
 
-[!INCLUDE [azure-policy-samples-network](../../../../includes/azure-policy-samples-network.md)]
+- [GitHub - コミュニティ ポリシー リポジトリ](https://github.com/Azure/Community-Policy)
 
-[!INCLUDE [azure-policy-samples-sql](../../../../includes/azure-policy-samples-sql.md)]
+## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [azure-policy-samples-storage](../../../../includes/azure-policy-samples-storage.md)]
-
-## <a name="next-steps"></a>次の手順
-
+- [Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のビルトインを参照します。
 - 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
 - 「[Policy の効果について](../concepts/effects.md)」を確認します。

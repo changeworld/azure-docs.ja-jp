@@ -1,22 +1,18 @@
 ---
-title: OneDrive for Business に接続する - Azure Logic Apps | Microsoft Docs
+title: OneDrive for Business に接続する
 description: OneDrive for Business REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 08/18/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 08/18/2016
 tags: connectors
-ms.openlocfilehash: 63cb02c52b5def12675ccca4f2cd292a8ad4bb66
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295644"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789455"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business コネクタの使用
 OneDrive for Business に接続してファイルを管理します。 ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。

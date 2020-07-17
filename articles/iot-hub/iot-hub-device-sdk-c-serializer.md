@@ -1,19 +1,20 @@
 ---
 title: C 用 Azure IoT device SDK – シリアライザー | Microsoft Docs
 description: C 用 Azure IoT device SDK でシリアライザー ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
-ms.author: yizhon
-ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.author: robinsh
+ms.custom: amqp
+ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024868"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81767019"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 
@@ -60,21 +61,21 @@ END_NAMESPACE(WeatherStation);
 > 
 > 
 
-## <a name="supported-data-types"></a>サポートされているデータ型
+## <a name="supported-data-types"></a>サポートされるデータ型
 
 次のデータの型は、 **シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
-| type | 説明 |
+| Type | 説明 |
 | --- | --- |
 | double |倍精度浮動小数点数 |
-| int |32 ビット整数 |
+| INT |32-bit integer |
 | float |単精度浮動小数点数 |
 | long |長整数 |
 | int8\_t |8 ビット整数 |
-| int16\_t |16 ビット整数型 |
-| int32\_t |32 ビット整数 |
-| int64\_t |64 ビット整数 |
-| bool |ブール値 |
+| int16\_t |16 ビット整数 |
+| int32\_t |32-bit integer |
+| int64\_t |64-bit integer |
+| [bool] |boolean |
 | ascii\_char\_ptr |ASCII 文字列 |
 | EDM\_DATE\_TIME\_OFFSET |日時オフセット |
 | EDM\_GUID |GUID |
@@ -194,7 +195,7 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-シリアル化は、**シリアライザー** ライブラリによって生成される形式である JSON で行われることに注意してください。 また、シリアル化された JSON オブジェクトの各メンバーとこのモデルで定義した **TestType** のメンバーが一致することにも注意してください。 値も、コードで使用されている値と正確に一致します。 ただし、バイナリ データが Base64 でエンコードされていることに注意してください。"AQID" は、{0x01、0x02、0x03} の Base64 エンコードです。
+シリアル化は、**シリアライザー** ライブラリによって生成される形式である JSON で行われることに注意してください。 また、シリアル化された JSON オブジェクトの各メンバーとこのモデルで定義した **TestType** のメンバーが一致することにも注意してください。 値も、コードで使用されている値と正確に一致します。 ただし、バイナリ データが Base64 でエンコードされていることに注意してください。"AQID" は {0x01、0x02、0x03} の Base64 エンコードです。
 
 この例から、**シリアライザー** ライブラリを使用する利点がわかります。これにより、アプリケーションでシリアル化を明示的に処理しなくても、クラウドに JSON を送信することができます。 必要なのは、このモデルにデータ イベントの値を設定し、クラウドにそれらのイベントを送信するためにシンプルな API を呼び出すことだけです。
 
@@ -233,7 +234,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-モデルには、**Temperature** と **Humidity** という 2 つのデータ イベントが含まれることに注意してください。 これまでの例とは異なり、各イベントの型は、**DECLARE\_STRUCT** を使用して定義された構造体です。 **TemperatureEvent** には温度の測定値とタイムスタンプが含まれており、**HumidityEvent** には湿度の測定値とタイムスタンプが含まれています。 このモデルにより、自然な方法で上のシナリオのデータをモデル化できます。 イベントをクラウドに送信するとき、温度/タイムスタンプのペア、または湿度/タイムスタンプのペアを送信します。
+このモデルには、**Temperature** と **Humidity** の 2 つのデータ イベントが含まれていることに注意してください。 これまでの例とは異なり、各イベントの型は、**DECLARE\_STRUCT** を使用して定義された構造体です。 **TemperatureEvent** には温度の測定値とタイムスタンプが含まれており、**HumidityEvent** には湿度の測定値とタイムスタンプが含まれています。 このモデルにより、自然な方法で上のシナリオのデータをモデル化できます。 イベントをクラウドに送信するとき、温度/タイムスタンプのペア、または湿度/タイムスタンプのペアを送信します。
 
 次のようなコードを使用して、クラウドに温度のイベントを送信できます。
 
@@ -278,7 +279,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-送信するのは **TemperatureEvent** 型の温度で、この構造体には、**Temperature** メンバーと **Time** メンバーが含まれています。 これは、シリアル化されたデータに直接反映されます。
+送信されるのは型 **TemperatureEvent** の温度であり、その構造体には **Temperature** および **Time** メンバーが含まれています。 これは、シリアル化されたデータに直接反映されます。
 
 同様に、次のコードで湿度のイベントを送信できます。
 
@@ -315,9 +316,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-このモデルでは、**DECLARE\_STRUCT** マクロを削除したうえで、モデリング言語の単純型を使用して、このシナリオのデータ項目の定義だけを行います。
+この場合は、**DECLARE\_STRUCT** マクロを削除しており、単にモデリング言語の単純型を使用してこのシナリオのデータ項目を定義しています。
 
-しばらくの間は、**Time** イベントを無視します。 それを無視した場合、 **Temperature**を受信するコードは次のとおりです。
+しばらくの間は、**Time** イベントを無視します。 それを無視した場合、**Temperature**を受信するコードは次のとおりです。
 
 ```C
 time_t now;
@@ -408,7 +409,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-モデルをオブジェクト指向の用語を使って考えてみます。 ここで、物理デバイス (サーモスタット) をモデル化し、そのデバイスには、**Temperature** と **Humidity** のような属性があるとします。
+モデルをオブジェクト指向の用語を使って考えてみます。 この場合は、物理デバイス (サーモスタット) をモデル化しており、そのデバイスには **Temperature** や **Humidity** などの属性が含まれています。
 
 次のようなコードを使用して、モデル全体の状態を送信できます。
 
@@ -431,11 +432,11 @@ Temperature、Humidity、Time の値が設定されていると仮定すると�
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-これにより、モデル 1 のように **Temperature** メンバーと **Time** メンバーを含む **TemperatureEvent** を定義した場合とまったく同じシリアル化されたイベントが生成されます。 この場合は、異なるモデル (モデル 2) を使用して、まったく同じシリアル化されたイベントを生成できました。これは、**SERIALIZE** を別の方法で呼び出したためです。
+これにより、モデル 1 のように **Temperature** メンバーと **Time** メンバーを含む **TemperatureEvent** を定義した場合とまったく同じシリアル化されたイベントが生成されます。 この場合は、**SERIALIZE** を別の方法で呼び出したため、別のモデル (モデル 2) を使用して、まったく同じシリアル化されたイベントを生成することができました。
 
 重要な点は、複数のデータ イベントを **SERIALIZE** に渡す場合、各イベントは、1 つの JSON オブジェクトのプロパティと見なされるということです。
 
-最適なアプローチは、モデルについての考え方によって異なります。 "イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。 その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。 その後、上の最初の例で行ったように各イベントを送信します。 このアプローチでは、 **SERIALIZER**に 1 つのデータ イベントだけを渡します。
+最適なアプローチは、モデルについての考え方によって異なります。 "イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。 その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。 その後、上の最初の例で行ったように各イベントを送信します。 このアプローチでは、**SERIALIZER** に 1 つのデータ イベントだけを渡します。
 
 オブジェクト指向でモデルを考える場合は、2 番目のアプローチが適切である可能性があります。 この場合、**WITH\_DATA** を使用して定義した要素は、オブジェクトの "プロパティ" です。 クラウドに送信する "オブジェクトの" 状態の量に応じて、希望するイベントのサブセットはすべて **SERIALIZE** に渡すことができます。
 
@@ -514,7 +515,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {"Name" : "", "Parameters" : "" }
 ```
 
-2 つのプロパティを含むシリアル化された JSON オブジェクトを送信します。ここで、**Name** はアクション (メッセージ) の名前で、**Parameters** にはそのアクションのパラメーターが含まれています。
+次の 2 つのプロパティを含むシリアル化された JSON オブジェクトを送信します。**Name** はアクション (メッセージ) の名前であり、**Parameters** にはそのアクションのパラメーターが含まれています。
 
 たとえば、 **SetAirResistance** を呼び出すには、デバイスに次のメッセージを送信できます。
 
@@ -537,7 +538,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 **シリアライザー** ライブラリを使用する場合に、注意が必要な SDK の重要部分は azure-c-shared-utility ライブラリで参照できます。
 
-再帰オプションを使用して GitHub から Azure-iot-sdk-c リポジトリを複製している場合、この共有ユーティリティ ライブラリがここに表示されます:
+GitHub から Azure-iot-sdk-c リポジトリを複製し、`git submodule update --init` コマンドを発行している場合、この共有ユーティリティ ライブラリは次の場所に見つかります。
 
 ```C
 .\\c-utility
@@ -557,7 +558,7 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
 このソリューションのプログラムは、**macro\_utils.h** ファイルを生成します。 SDK には、既定の macro\_utils.h ファイルが含まれています。 このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
 
-考慮が必要な 2 つの重要なパラメーターは、**nArithmetic** と **nMacroParameters** で、これらは macro\_utils.tt 内の次の 2 行で定義されています。
+注意すべき 2 つの重要なパラメーターは **nArithmetic** と **nMacroParameters** であり、これらは macro\_utils.tt にある次の 2 行で定義されています。
 
 ```C
 <#int nArithmetic=1024;#>
@@ -661,7 +662,7 @@ serializer_deinit();
 
 それ以外の場合、上に示したその他の機能はすべて、**シリアライザー** ライブラリの場合でも **IoTHubClient** ライブラリの場合と同じように動作します。 これらのいずれかのトピックの詳細については、このシリーズの [前回の記事](iot-hub-device-sdk-c-iothubclient.md) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、**C 用 Azure IoT device SDK** に含まれている**シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
 

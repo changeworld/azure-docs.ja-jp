@@ -1,55 +1,57 @@
 ---
 title: デプロイと使用
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio を使用すると、機械学習のワークフローとモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) を使用して、機械学習ワークフローおよびモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359666"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627961"
 ---
-# <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web サービス:デプロイと使用
+# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (クラシック) Web サービス: デプロイと使用
 
-Azure Machine Learning Studio を使用すると、機械学習のワークフローとモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Azure Machine Learning Studio (クラシック) を使用して、機械学習ワークフローおよびモデルを Web サービスとしてデプロイできます。 次に、リアルタイムまたはバッチ モードで予測を行うために、インターネット経由で機械学習モデルをアプリケーションから呼び出すのに、これらの Web サービスを使用できます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
 
 次のセクションでは、作業を開始するために役立つチュートリアル、コード、ドキュメントへのリンクを示します。
 
 ## <a name="deploy-a-web-service"></a>Web サービスのデプロイ
 
-### <a name="with-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使って
+### <a name="with-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) を使用して
 
-Studio ポータルと Microsoft Azure Machine Learning Web サービス ポータルを使用すると、コードを記述せずに、Web サービスをデプロイして管理することができます。
+Studio (クラシック) ポータルおよび Microsoft Azure Machine Learning Web サービス ポータルは、コードを記述せずに Web サービスをデプロイして管理するのに役立ちます。
 
 新しい Web サービスのデプロイ方法に関する一般的な情報を入手できるリンクを次に示します。
 
-* Azure Resource Manager に基づいた新しい Web サービスのデプロイの概要については、「 [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)」をご覧ください。
-* Web サービスのデプロイのチュートリアルについては、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」をご覧ください。
+* Azure Resource Manager に基づいた新しい Web サービスのデプロイの概要については、「 [新しい Web サービスのデプロイ](deploy-a-machine-learning-web-service.md)」をご覧ください。
+* Web サービスのデプロイのチュートリアルについては、「 [Azure Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)」をご覧ください。
 * Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 * Web サービス デプロイの具体的な例については、次をご覧ください。
 
   * [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
-  * [複数のリージョンに Web サービスをデプロイする方法](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
+  * [複数のリージョンに Web サービスをデプロイする方法](deploy-a-machine-learning-web-service.md#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Web サービス リソースプロバイダー API を使う (Azure Resource Manager API)
 
-Web サービス用の Azure Machine Learning Studio リソースプロバイダーでは、REST API を使用して Web サービスをデプロイし、管理することができます。 詳細については、[Machine Learning Web サービス (REST)](/rest/api/machinelearning/index) のリファレンスを参照してください。
+Web サービス用の Azure Machine Learning Studio (クラシック) リソースプロバイダーでは、REST API を使用して Web サービスをデプロイし、管理することができます。 詳細については、[Machine Learning Web サービス (REST)](/rest/api/machinelearning/index) のリファレンスを参照してください。
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>PowerShell コマンドレットを使う
 
-Web サービス用の Azure Machine Learning Studio リソースプロバイダーでは、PowerShell コマンドレットを使用して Web サービスをデプロイし、管理することができます。
+Web サービス用の Azure Machine Learning Studio (クラシック) リソースプロバイダーでは、PowerShell コマンドレットを使用して Web サービスをデプロイし、管理することができます。
 
-コマンドレットを使用するには、最初に [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../../azure-resource-manager/manage-resources-powershell.md)」をご覧ください。
+コマンドレットを使用するには、最初に [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../../azure-resource-manager/management/manage-resources-powershell.md)」をご覧ください。
 
 予測実験をエクスポートするには、こちらの [サンプル コード](https://github.com/ritwik20/AzureML-WebServices)を使用します。 コードから実行可能ファイルを作成したら、次のように入力します。
 
@@ -78,8 +80,7 @@ Web サービス用の Azure Machine Learning Studio リソースプロバイダ
 
 詳細については、次の記事とサンプル コードをご覧ください:
 
-* [Azure Machine Learning Studio コマンドレット](https://docs.microsoft.com/powershell/module/az.machinelearning) リファレンス
-* GitHub のサンプルの [チュートリアル](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
+* MSDN 上の [Azure Machine Learning Studio (クラシック) コマンドレット](https://docs.microsoft.com/powershell/module/az.machinelearning) リファレンス
 
 ## <a name="consume-the-web-services"></a>Web サービスを使用する
 
@@ -87,8 +88,8 @@ Web サービス用の Azure Machine Learning Studio リソースプロバイダ
 
 Azure Machine Learning Web サービス ポータルから Web サービスをテストできます。 これには、要求応答サービス (RRS) およびバッチ実行サービス (BES) インターフェイスのテストが含まれます。
 
-* [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)
-* [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
+* [新しい Web サービスのデプロイ](deploy-a-machine-learning-web-service.md)
+* [Azure Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)
 * [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Excel から

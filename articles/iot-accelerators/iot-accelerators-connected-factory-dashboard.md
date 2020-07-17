@@ -1,6 +1,6 @@
 ---
 title: 接続済みファクトリ ダッシュボードを使用する - Azure | Microsoft Docs
-description: 接続済みファクトリ ダッシュボードの機能の使用方法について説明します。
+description: この記事では、接続された済みファクトリ ダッシュボードの機能を使用して、産業用 IoT デバイスを監視および管理する方法について説明します。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: 4af93b5667181941585cc1ac89f5696379962026
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075570"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73820173"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>接続済みファクトリ ソリューション アクセラレータ ダッシュボードの機能を使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "39075570"
 
     [![接続済みファクトリ ソリューション アクセラレータのフィルター](./media/iot-accelerators-connected-factory-dashboard/filterpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterpanel-expanded.png#lightbox)
 
-1. 必要なフィルターを選択し、**[適用]** をクリックします。 フィルター フィールドにフリー テキストを入力することもできます。
+1. 必要なフィルターを選択し、 **[適用]** をクリックします。 フィルター フィールドにフリー テキストを入力することもできます。
 
 1. フィルターが適用されます。 追加のじょうごアイコンは、フィルターが適用されたことを示します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "39075570"
 
 ## <a name="browse-an-opc-ua-server"></a>OPC UA サーバーを参照する
 
-ソリューション アクセラレータをデプロイすると、シミュレートされた一連の OPC UA サーバーが自動的にプロビジョニングされ、ダッシュボードから参照できるようになります。 シミュレートされたサーバーを使用することで、実際にサーバーをデプロイしなくても、ソリューション アクセラレータを簡単にテストできます。 実際の OPC UA サーバーをソリューションに接続する方法については、[接続済みファクトリ ソリューション アクセラレータへの OPC UA デバイスの接続](iot-accelerators-connected-factory-gateway-deployment.md)チュートリアルを参照してください。
+ソリューション アクセラレータをデプロイすると、シミュレートされた一連の OPC UA サーバーが自動的にプロビジョニングされ、ダッシュボードから参照できるようになります。 シミュレートされたサーバーを使用することで、実際にサーバーをデプロイしなくても、ソリューション アクセラレータを簡単にテストできます。
 
 1. ダッシュボードのナビゲーション バーにある**ブラウザー アイコン**をクリックします。
 
@@ -107,10 +107,9 @@ ms.locfileid: "39075570"
 > [!NOTE]
 > ソリューション アクセラレータに関連するすべての要素を確実に削除するには、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators#dashboard) サイトで削除してください。 ポータルでリソース グループを削除しないようにしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、実際のソリューション アクセラレータをデプロイできました。引き続き IoT ソリューション アクセラレータの概要について学習するには、次の記事を参照してください。
 
-* [接続済みファクトリ ソリューション アクセラレータのチュートリアル](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [お使いのデバイスを接続済みファクトリ ソリューション アクセラレータに接続する](iot-accelerators-connected-factory-gateway-deployment.md)
+* [コネクテッド ファクトリ ソリューション アクセラレータの構成](iot-accelerators-connected-factory-configure.md)
 * [azureiotsolutions.com サイトでのアクセス許可](iot-accelerators-permissions.md)

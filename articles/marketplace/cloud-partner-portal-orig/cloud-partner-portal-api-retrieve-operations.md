@@ -1,28 +1,23 @@
 ---
-title: 操作の取得 API | Microsoft Docs
+title: 操作の取得 API | Azure Marketplace
 description: オファーのすべての操作を取得するか、指定した operationId の特定の操作を取得します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3f0f087c98f2b6594ab7e841f92ffac7ffe4003e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807819"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255874"
 ---
-<a name="retrieve-operations"></a>操作の取得
-===================
+# <a name="retrieve-operations"></a>操作の取得
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、プランがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 オファーのすべての操作を取得するか、指定した operationId の特定の操作を取得します。 クライアントは、クエリ パラメーターを使用して実行中の操作にフィルターを適用できます。
 
@@ -35,31 +30,27 @@ ms.locfileid: "48807819"
 ```
 
 
-<a name="uri-parameters"></a>URI パラメーター
---------------
+## <a name="uri-parameters"></a>URI パラメーター
 
 |  **名前**          |      **説明**                                                                                           | **データの種類** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  パブリッシャー ID。たとえば、`Contoso`                                                                   |  String       |
 |  offerId           |  オファー ID                                                                                              |  String       |
 |  operationId       |  オファーの操作を一意に識別する GUID。 operationId はこの API を使用して取得できます。また、[オファーの発行](./cloud-partner-portal-api-publish-offer.md) API など、実行時間の長い任意の操作に対する応答の HTTP ヘッダーでも返されます。  |   Guid   |
-|  filteredStatus    | この API によって返されるコレクションを状態 (たとえば `running`) でフィルター処理するために使用されるオプションのクエリ パラメーター。  |   String |
-|  api-version       | API の最新バージョン                                                                                           |    日付      |
+|  api-version       | API の最新バージョン |    Date      |
 |  |  |  |
 
+## <a name="header"></a>ヘッダー
 
-<a name="header"></a>ヘッダー
-------
 
-|  **名前**          |  **値**           |
+|  **名前**          |  **Value**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
-|  Authorization     | `Bearer YOUR_TOKEN`  |
+|  承認     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-<a name="body-example"></a>本文の例
-------------
+## <a name="body-example"></a>本文の例
 
 ### <a name="response"></a>Response
 
@@ -174,25 +165,35 @@ ms.locfileid: "48807819"
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
 |  **名前**                    |  **説明**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 操作を一意に識別する GUID                                                       |
-|  submissionType              | 報告されているオファーの操作の種類を特定します。たとえば、`Publish/GGoLive`      |
+|  submissionType              | 報告されているオファーの操作の種類を特定します。たとえば、`Publish/GoLive`      |
 |  createdDateTime             | 操作が作成された UTC 日時                                                       |
 |  lastActionDateTime          | 操作に対する最終更新の UTC 日時                                       |
-|  status                      | 操作の状態。以下のいずれか: 「未開始 | 実行中 | 失敗 | 完了`. Only one operation can have status `実行中」の状態を持つ操作は一度に 1 つだけです。 |
+|  status                      | 操作の状態。`not started` \| `running` \| `failed` \| `completed` のいずれか。 `running` 状態にできるのは、一度に 1 つの操作だけです。 |
 |  error                       | 失敗した操作のエラー メッセージ                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>応答ステップのプロパティ
+
+|  **名前**                    |  **説明**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| estimatedTimeFrame | この操作の推定所要時間 |
+| id | ステップ プロセスの一意識別子 |
+| description | 手順の説明 |
+| stepName | ステップのフレンドリ名 |
+| status | ステップの状態。`notStarted` \| `running` \| `failed` \| `completed` のいずれか |
+| messages | ステップ中に発生した通知または警告。 文字列の配列 |
+| progressPercentage | ステップの進行状況を示す 0 から 100 までの整数 |
+| | |
 
 ### <a name="response-status-codes"></a>応答状態コード
 

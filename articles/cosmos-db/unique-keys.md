@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB で一意なキーを使用する
-description: Azure Cosmos データベースで一意なキーを使用する方法について説明します
-author: rimman
-ms.author: rimman
+description: Azure Cosmos データベースの一意のキーを定義して使用する方法について説明します。 この記事では、一意キーによってデータ整合性の層がどのように追加されるかについても説明します。
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3c5e8a2c85898175772dc353258e77fc8e0a74f2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799118"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74869835"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
 
-一意キーを使用すると、Azure Cosmos コンテナーにデータ整合性のレイヤーが追加されます。 一意キー ポリシーは、Azure Cosmos コンテナーを作成するときに作成します。 一意キーを使用して、論理パーティション内にある 1 つ以上の値が一意であることを保証します。 また、[パーティション キー](partition-data.md)ごとの一意性を保証することもできます。 
+一意キーを使用すると、Azure Cosmos コンテナーにデータ整合性のレイヤーが追加されます。 一意キー ポリシーは、Azure Cosmos コンテナーを作成するときに作成します。 一意キーを使用して、論理パーティション内にある 1 つ以上の値が一意であることを保証します。 また、[パーティション キー](partition-data.md)ごとの一意性を保証することもできます。
 
 一意キー ポリシーを使用してコンテナーを作成した後は、論理パーティション内に新しく項目を作成したり既存の項目を更新したりして重複項目を作成することは、一意キー制約で指定されているためできなくなります。 パーティション キーと一意キーを組み合わせることで、コンテナーのスコープ内にある項目の一意性が確保されます。
 
@@ -53,6 +53,7 @@ ms.locfileid: "59799118"
 
 * 一意キー名では大文字と小文字が区別されます。 たとえば、あるコンテナーの一意キー制約が `/address/zipcode` に設定されているとします。 データに `ZipCode` という名前のフィールドがあると、`zipcode` と `ZipCode` は同じではないため、一意キーとして "null" が挿入されます。 このように大文字と小文字が区別されることにより、ZipCode を含む他のすべてのレコードは、重複する "null" が一意キー制約に違反するため、挿入できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [論理パーティション](partition-data.md)の詳細を確認する。
+* [論理パーティション](partition-data.md)の詳細を確認する
+* コンテナーの作成時に[一意キーを定義する方法](how-to-define-unique-keys.md)を確認する

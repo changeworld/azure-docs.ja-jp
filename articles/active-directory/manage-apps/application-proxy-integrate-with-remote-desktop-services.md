@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 05/23/2019
 ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecd55cbb3a8eefc150db731901458561d90f033
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783406"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67108459"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -58,6 +58,8 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 
 - Internet Explorer で RDS ActiveX アドオンを有効にしてください。
 
+- Azure AD の事前認証フローでは、ユーザーは **[RemoteApp およびデスクトップ]** ウィンドウで自分に公開されているリソースにのみ接続できます。 ユーザーは **[リモート PC に接続]** ウィンドウを使用してデスクトップに接続できません。
+
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>RDS とアプリケーション プロキシの共同デプロイのシナリオ
 
 RDS と Azure AD アプリケーション プロキシを自分の環境用に設定した後、2 つのソリューションを結合する手順に従います。 これらの手順では、Web に接続された 2 つの RDS エンドポイント (RD Web と RD ゲートウェイ) をアプリケーションとして発行し、RDS 上のトラフィックをアプリケーション プロキシに転送する方法を説明します。
@@ -68,11 +70,12 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
    - [内部 URL]: `https://\<rdhost\>.com/`。 `\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
    - 外部 URL:このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]:Azure Active Directory
-   - [ヘッダーの URL を変換する]:いいえ 
+   - [ヘッダーの URL を変換する]:いいえ
 2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
-3. アプリケーションのシングル サインオン方式は、**[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。
-4. **[Azure Active Directory]** > **[アプリの登録]** > *[Your application (アプリケーション)]* > **[設定]** に移動します。
-5. **[プロパティ]** を選択し、RD Web エンドポイント (`https://\<rdhost\>.com/RDWeb` など) を指すように **[ホーム ページ URL]** フィールドを更新します。
+3. アプリケーションのシングル サインオン方式は、 **[Azure AD シングル サインオンが無効]** のままにします。 ユーザーは、Azure AD に対して 1 回と RD Web に対して 1 回認証を求められますが、RD ゲートウェイに対してはシングル サインオンを使用できます。
+4. **[Azure Active Directory]** を選択してから、 **[アプリの登録]** を選択します。 一覧からアプリを選択します。
+5. **[管理]** 下にある **[ブランド]** を選択します。
+6. RD Web エンドポイント (`https://\<rdhost\>.com/RDWeb` など) を参照するように **[ホーム ページ URL]** フィールドを更新します。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 
@@ -82,8 +85,8 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
 2. **サーバー マネージャー**を起動します。
 3. 左側のペインで **[リモート デスクトップ サービス]** を選択します。
 4. **[概要]** を選択します。
-5. [展開の概要] セクションで、ドロップダウン メニューを選択し、**[展開プロパティの編集]** を選択します。
-6. [RD ゲートウェイ] タブで、**[サーバー名]** フィールドを、アプリケーション プロキシで RD ホスト エンドポイントに対して設定した外部 URL に変更します。
+5. [展開の概要] セクションで、ドロップダウン メニューを選択し、 **[展開プロパティの編集]** を選択します。
+6. [RD ゲートウェイ] タブで、 **[サーバー名]** フィールドを、アプリケーション プロキシで RD ホスト エンドポイントに対して設定した外部 URL に変更します。
 7. **[ログオン方法]** フィールドを **[パスワード認証]** に変更します。
 
    ![RDS の [展開プロパティ] 画面](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
@@ -132,7 +135,7 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 1. [RD ホスト エンドポイントの発行](#publish-the-rd-host-endpoint)の手順 1 の事前認証方法を**パススルー**に設定します。
 2. [RDS トラフィックをアプリケーション プロキシに転送する](#direct-rds-traffic-to-application-proxy)手順で、手順 8 全体をスキップします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-integrate-with-sharepoint-server.md)  
 [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security.md)

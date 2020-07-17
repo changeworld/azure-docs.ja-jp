@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698095"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60457268"
 ---
 # <a name="storage-explorer-accessibility"></a>Storage Explorer のアクセシビリティ
 

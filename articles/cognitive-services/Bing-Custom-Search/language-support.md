@@ -3,31 +3,31 @@ title: 言語サポート - Bing Custom Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Custom Search API でサポートされる言語と地域の一覧。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.author: aahi
+ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006779"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "66388564"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Custom Search API の言語と地域のサポート
 
 Bing Custom Search API では 30 を超える国/地域がサポートされ、その多くで複数の言語が使用されています。
 
-必須ではありませんが、要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) クエリ パラメーターを指定するべきです。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)」をご覧ください。
+必須ではありませんが、要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) クエリ パラメーターを指定するべきです。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)」をご覧ください。
 
 `cc` クエリ パラメーターを使用して国/地域を指定できます。 国/地域を指定する場合は、`Accept-Language` ヘッダーを使用して 1 つ以上の言語コードも指定する必要があります。 サポートされる言語は国/地域によって異なります。これらは、「**市場**」の表に国/地域ごとに示されています。
 
-`Accept-Language` ヘッダーと `setLang` クエリ パラメーターは相互に排他的なので、両方指定することはできません。 詳細については、「[Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage)」を参照してください。
+`Accept-Language` ヘッダーと `setLang` クエリ パラメーターは相互に排他的なので、両方指定することはできません。 詳細については、「[Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)」を参照してください。
 
-## <a name="countries"></a>国
+## <a name="countriesregions"></a>国/リージョン
 
 |国/リージョン|コード|
 |-------|----|
@@ -44,7 +44,7 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |ドイツ|DE|
 |香港特別行政区|HK|
 |インド|IN|
-|インドネシア|ID|
+|インドネシア|id|
 |イタリア|IT|
 |日本|JP|
 |韓国|KR|
@@ -86,7 +86,7 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|繁体字中国語|zh-HK|
+|香港特別行政区|Traditional Chinese|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -108,7 +108,7 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|繁体字中国語|zh-TW|
+|台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
 |米国|英語|en-US|

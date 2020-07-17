@@ -12,16 +12,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498173"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372222"
 ---
-# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>イベント プロセッサ ホストを使用して Azure Event Hubs からイベントを受信する
+# <a name="event-processor-host"></a>イベント プロセッサ ホスト
+> [!NOTE]
+> この記事は、以前のバージョンの Azure Event Hubs SDK に適用されます。 新しいバージョンの SDK にコードを移行する方法については、以下の移行ガイドを参照してください。 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> また、[アプリケーションの複数のインスタンス間でのパーティション負荷のバランスを取る](event-processor-balance-partition-load.md)も参照してください。
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
@@ -85,7 +93,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 - **hostName:** 各コンシューマー インスタンスの名前。 **EventProcessorHost** の各インスタンスは、コンシューマー グループ内でこの変数の一意の値を持つ必要があります。したがって、この値をハードコーディングしないでください。
 - **eventHubPath:** イベント ハブの名前。
-- **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として "**$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
+- **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として " **$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
 - **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する**リッスン** アクセス許可が付与されている必要があります。
 - **storageConnectionString:** 内部リソースの管理に使用されるストレージ アカウント。
 
@@ -186,11 +194,19 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 - 1 つまたは複数のレシーバーがエポックなしで作成されているとき、新しいレシーバーがエポック e1 で作成される場合、古いレシーバーの接続が解除されます。
 
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> エポックを使用するアプリケーションや、エラーを回避するためにエポックを使用しないアプリケーションには、異なるコンシューマー グループを使用することをお勧めします。 
+
+
+## <a name="next-steps"></a>次のステップ
 
 イベント プロセッサ ホストについて学習した後は、Event Hubs の詳細について次の記事を参照してください。
 
-* [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
+- Event Hubs の使用
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

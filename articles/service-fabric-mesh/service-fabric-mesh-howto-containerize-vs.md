@@ -1,20 +1,16 @@
 ---
-title: 既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する |Microsoft Docs
-description: 既存の .NET アプリに Mesh のサポートを追加します
-services: service-fabric-mesh
-keywords: コンテナー化 service fabric mesh
+title: 既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
+description: 完全な .NET Framework を使用する ASP.NET および Console プロジェクトに、Service Fabric Mesh コンテナー オーケストレーションのサポートを追加します。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779880"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75462036"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 
@@ -49,12 +45,12 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 Service Fabric Mesh ツールを使用して、既存の ASP.NET または Console プロジェクトにコンテナー オーケストレーション サポートを追加します。手順は次のとおりです。
 
-Visual Studio のソリューション エクスプ ローラーで、プロジェクト名 (この例では **eShopLegacyWebForms**) を右クリックし、**[追加]** > **[コンテナー オーケストレーター サポート]** を選択します。
+Visual Studio のソリューション エクスプ ローラーで、プロジェクト名 (この例では **eShopLegacyWebForms**) を右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** を選択します。
 **[コンテナー オーケストレーター サポートの追加]** ダイアログが表示されます。
 
 ![Visual Studio の [コンテナー オーケストレーター サポートの追加] ダイアログ](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-ドロップダウン リストから **[Service Fabric Mesh]** を選択し、**[OK]** をクリックします。
+ドロップダウン リストから **[Service Fabric Mesh]** を選択し、 **[OK]** をクリックします。
 
 ツールによって Docker がインストールされ、プロジェクトに Dockerfile が追加されて、プロジェクト用の docker イメージがプルダウンされます。  
 Service Fabric Mesh のアプリケーション プロジェクトがソリューションに追加されます。 これには、Mesh の発行プロファイルと構成ファイルが含まれています。 プロジェクトの名前は、ご使用のプロジェクト名の末尾に "Application" を連結したものになります (例: **eShopLegacyWebFormsApplication**)。 
@@ -69,6 +65,6 @@ Service Fabric Mesh のアプリケーション プロジェクトがソリュ�
 
 これで、Azure Service Fabric Mesh にアプリを発行できるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Service Fabric Mesh にアプリを発行する方法: [チュートリアル: Service Fabric Mesh アプリケーションをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Service Fabric Mesh にアプリを発行する方法について学習しましょう: [チュートリアル - Service Fabric mesh アプリケーションをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

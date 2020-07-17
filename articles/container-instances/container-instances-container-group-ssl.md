@@ -1,30 +1,26 @@
 ---
-title: Azure Container Instances での SSL の有効化
-description: Azure Container Instances 内で実行されるコンテナー グループに対する、SSL または TLS エンドポイントを作成します
-services: container-instances
-author: dlepow
-manager: jeconnoc
-ms.service: container-instances
+title: サイドカー コンテナーで TLS を有効にする
+description: サイドカー コンテナーで Nginx を実行することで、Azure Container Instances 内で実行されるコンテナー グループに対して SSL または TLS エンドポイントを作成します
 ms.topic: article
-ms.date: 04/03/2019
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 02/14/2020
+ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411400"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984608"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>コンテナー グループで SSL エンドポイントを有効にする
+# <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで TLS を有効にする
 
-この記事では、SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の SSL エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの SSL 接続を有効にすることができます。
+この記事では、TLS/SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の TLS エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの TLS 接続を有効にすることができます。
 
-2 つのコンテナーで構成されるコンテナー グループを設定します。
+次の 2 つのコンテナーで構成されるコンテナー グループ例を設定します。
 * パブリック Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) イメージを使用してシンプルな Web アプリを実行する、アプリケーション コンテナー。 
-* SSL を使用するよう構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
+* TLS を使用するように構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
 
-この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。
+この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。 
+
+コンテナー グループで TLS を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,9 +28,9 @@ Azure Cloud Shell または Azure CLI のローカル インストールを使�
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-SSL プロバイダーとして Nginx を設定するには、SSL 証明書が必要です。 この記事では、自己署名 SSL 証明書の作成および設定方法について説明します。 運用環境のシナリオでは、証明機関から証明書を取得する必要があります。
+TLS プロバイダーとして Nginx を設定するには、TLS/SSL 証明書が必要です。 この記事では、自己署名 TLS/SSL 証明書の作成および設定方法について説明します。 運用環境のシナリオでは、証明機関から証明書を取得する必要があります。
 
-自己署名 SSL 証明書を作成するには、Azure Cloud Shell と多くの Linux ディストリビューションで入手可能な [OpenSSL](https://www.openssl.org/) ツールを使用するか、ご使用のオペレーティング システムにある同等のクライアント ツールを使用します。
+自己署名 TLS/SSL 証明書を作成するには、Azure Cloud Shell と多くの Linux ディストリビューションで入手可能な [OpenSSL](https://www.openssl.org/) ツールを使用するか、ご使用のオペレーティング システムにある同等のクライアント ツールを使用します。
 
 まず、ローカルの作業ディレクトリに証明書の要求 (.csr ファイル) を作成します。
 
@@ -44,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 画面の指示に従って、ID 情報を追加します。 Common Name には、証明書に関連付けられているホスト名を入力します。 パスワードの入力を求めるメッセージが表示されたら、何も入力せず Enter キーを押して、パスワードの追加をスキップします。
 
-次のコマンドを実行して、証明書の要求から自己署名証明書 (.crt file) を作成します。 例: 
+次のコマンドを実行して、証明書の要求から自己署名証明書 (.crt file) を作成します。 次に例を示します。
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -52,11 +48,11 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 これでディレクトリ内には、証明書の要求 (`ssl.csr`)、秘密キー (`ssl.key`)、自己署名証明書 (`ssl.crt`) の 3 つのファイルが表示されます。 `ssl.key` と `ssl.crt` は後の手順で使用します。
 
-## <a name="configure-nginx-to-use-ssl"></a>SSL を使用するよう Nginx を構成する
+## <a name="configure-nginx-to-use-tls"></a>TLS を使用するように Nginx を構成する
 
 ### <a name="create-nginx-configuration-file"></a>Nginx 構成ファイルを作成する
 
-このセクションでは、Nginx で SSL を使用するための構成ファイルを作成します。 まず、次のテキストを `nginx.conf` という名前の新しいファイルにコピーします。 Azure Cloud Shell では、Visual Studio Code を使用して作業ディレクトリにファイルを作成できます。
+このセクションでは、Nginx で TLS を使用するための構成ファイルを作成します。 まず、次のテキストを `nginx.conf` という名前の新しいファイルにコピーします。 Azure Cloud Shell では、Visual Studio Code を使用して作業ディレクトリにファイルを作成できます。
 
 ```console
 code nginx.conf
@@ -91,13 +87,13 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
         ssl_prefer_server_ciphers  on;
 
-        # Optimize SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive SSL handshakes.
+        # Optimize TLS/SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive TLS/SSL handshakes.
         # The handshake is the most CPU-intensive operation, and by default it is re-negotiated on every new/parallel connection.
         # By enabling a cache (of type "shared between all Nginx workers"), we tell the client to re-use the already negotiated state.
         # Further optimization can be achieved by raising keepalive_timeout, but that shouldn't be done unless you serve primarily HTTPS.
@@ -128,12 +124,12 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>シークレットと構成ファイルを Base64 でエンコードする
 
-Nginx 構成ファイル、SSL 証明書、SSL キーを Base64 でエンコードします。 次のセクションで、エンコードされたコンテンツを、コンテナー グループのデプロイに使用される YAML ファイルに入力します。
+Nginx 構成ファイル、TLS/SSL 証明書、TLS キーを Base64 でエンコードします。 次のセクションで、エンコードされたコンテンツを、コンテナー グループのデプロイに使用される YAML ファイルに入力します。
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>コンテナー グループをデプロイする
@@ -200,7 +196,7 @@ type: Microsoft.ContainerInstance/containerGroups
 [az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location westus
 ```
 
 [az container create](/cli/azure/container#az-container-create) コマンドでコンテナー グループをデプロイし、YAML ファイルを引数として渡します。
@@ -222,23 +218,28 @@ az container show --resource-group <myResourceGroup> --name app-with-ssl --outpu
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="verify-ssl-connection"></a>SSL 接続を確認する
+## <a name="verify-tls-connection"></a>TLS 接続を検証する
 
-実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、この例の IP アドレスは `52.157.22.76` です。 Nginx サーバーの構成により、実行中のアプリケーションを表示するには `https://<IP-ADDRESS>` を使用する必要があります。 `http://<IP-ADDRESS>` で接続しようとすると、失敗します。
+ブラウザーを使用し、コンテナー グループのパブリック IP アドレスに移動します。 この例の IP アドレスは `52.157.22.76` です。そのため、URL は **https://52.157.22.76** です。 Nginx サーバーの構成により、実行中のアプリケーションを表示するには HTTPS を使用する必要があります。 HTTP 経由で接続すると失敗します。
 
 ![Azure コンテナー インスタンスで実行されているアプリケーションを示すブラウザー スクリーンショット](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> この例では証明機関の証明書ではなく、自己署名証明書を使用するため、HTTPS 経由でサイトに接続しようとするとブラウザにセキュリティの警告が表示されます。 これは正しい動作です。
+> この例では証明機関の証明書ではなく、自己署名証明書を使用するため、HTTPS 経由でサイトに接続しようとするとブラウザにセキュリティの警告が表示されます。 警告を受け入れるか、ブラウザーまたは証明書の設定を調整してページに進みます。 これは正しい動作です。
+
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、コンテナー グループ内で実行している Web アプリに SSL 接続できるよう Nginx コンテナーを設定する方法について説明しました。 ポート 80 以外のポートをリッスンするアプリの例を適応させることもできます。 ポート 80 (HTTP) 上のサーバー接続を自動的にリダイレクトして HTTPS を使用するよう、Nginx 構成ファイルを更新することもできます。
+この記事では、コンテナー グループ内で実行している Web アプリに TLS 接続できるように Nginx コンテナーを設定する方法について説明しました。 ポート 80 以外のポートをリッスンするアプリの例を適応させることもできます。 ポート 80 (HTTP) 上のサーバー接続を自動的にリダイレクトして HTTPS を使用するよう、Nginx 構成ファイルを更新することもできます。
 
-この記事ではサイドカー内の Nginx を使用しましたが、[Caddy](https://caddyserver.com/) などの別の SSL プロバイダーを使用することもできます。
+この記事ではサイドカー内の Nginx を使用しましたが、[Caddy](https://caddyserver.com/) などの別の TLS プロバイダーを使用することもできます。
 
-コンテナー グループ内で SSL を有効にする別の方法として、[Azure Application Gateway](../application-gateway/overview.md) を使用した [Azure Virtual Network](container-instances-vnet.md) にグループをデプロイするというものもあります。 ゲートウェイは、SSL エンドポイントとして設定できます。 ゲートウェイ上で SSL ターミネーションを有効にするために適応可能な、サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)を参照してください。
+[Azure 仮想ネットワーク](container-instances-vnet.md)にコンテナー グループをデプロイする場合は、次のような他のオプションを使用して、バックエンド コンテナー インスタンスの TLS エンドポイントを有効にすることを検討できます。
+
+* [Azure Functions プロキシ](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md) - サンプルの[デプロイ テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)をご覧ください。

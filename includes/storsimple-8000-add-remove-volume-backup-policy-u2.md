@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 92036cebf0541f9e9928acf1a9c32db0037bde48
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172167"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181366"
 ---
 #### <a name="to-add-or-remove-a-volume"></a>ボリュームを追加または削除するには
 
-1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
+1. StorSimple デバイスに移動して、 **[バックアップ ポリシー]** をクリックします。
 
-2. ポリシーの表形式の一覧で、変更するポリシーを選択してクリックします。 右クリックしてコンテキスト メニューを起動し、**[ボリュームの追加/削除]** を選択します。
+2. ポリシーの表形式の一覧で、変更するポリシーを選択してクリックします。 右クリックしてコンテキスト メニューを起動し、 **[ボリュームの追加/削除]** を選択します。
 
     ![[スケジュールの管理]](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol1.png)
 

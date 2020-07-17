@@ -1,35 +1,35 @@
 ---
-title: チュートリアル:Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs
-description: Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。
+title: チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
+titleSuffix: Azure Storage
+description: Azure Key Vault でクライアント側暗号化を使用して BLOB を暗号化および復号化する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 01/23/2017
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 758eeedb89b3cef6766cf195a2cada50fbe63042
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148413"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81456891"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
-## <a name="introduction"></a>はじめに
 このチュートリアルでは、Azure Key Vault でクライアント側ストレージ暗号化を利用する方法について説明します。 これらのテクノロジを使用して、コンソール アプリケーションで BLOB を暗号化および復号化する手順を説明します。
 
 **推定所要時間:** 20 分
 
-Azure Key Vault の概要については、「[Azure Key Vault とは](../../key-vault/key-vault-whatis.md)」をご覧ください。
+Azure Key Vault の概要については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 
 Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには次の準備が必要です。
 
 * Azure ストレージ アカウント
 * Visual Studio 2013 以降
@@ -48,11 +48,11 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault のセットアップ
 
-このチュートリアルを続けるには、チュートリアル「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」で説明されている以下の手順を実行する必要があります。
+このチュートリアルを続けるために実行する必要のある手順の概要が、チュートリアル「[クイックスタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-net.md)」で説明されています。
 
 * Key Vault を作成します。
 * キーやシークレットを Key Vault に追加します。
-* Azure Active Directory にアプリケーションを登録します。
+* アプリケーションを Azure Active Directory に登録します。
 * キーまたはシークレットを使用してアプリケーションを承認します。
 
 アプリケーションを Azure Active Directory に登録するときに生成された ClientID と ClientSecret を記録しておきます。
@@ -66,7 +66,9 @@ Visual Studio で、新しいコンソール アプリケーションを作成�
 パッケージ マネージャー コンソールで、必要な nuget パッケージを追加します。
 
 ```powershell
-Install-Package WindowsAzure.Storage
+Install-Package Microsoft.Azure.ConfigurationManager
+Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Azure.Storage.Blob
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 Install-Package Microsoft.Azure.KeyVault
@@ -90,11 +92,12 @@ App.Config に AppSettings を追加します。
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.KeyVault;
-using System.Threading;        
+using System.Threading;
 using System.IO;
 ```
 
@@ -107,8 +110,8 @@ private async static Task<string> GetToken(string authority, string resource, st
 {
     var authContext = new AuthenticationContext(authority);
     ClientCredential clientCred = new ClientCredential(
-        ConfigurationManager.AppSettings["clientId"],
-        ConfigurationManager.AppSettings["clientSecret"]);
+        CloudConfigurationManager.GetSetting("clientId"),
+        CloudConfigurationManager.GetSetting("clientSecret"));
     AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
 
     if (result == null)
@@ -118,18 +121,19 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>プログラムでのストレージおよび Key Vault へのアクセス
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>プログラムでの Azure Storage および Key Vault へのアクセス
 
-Main 関数に次のコードを追加します。
+Main() メソッド内に、次のコードを追加します。
 
 ```csharp
 // This is standard code to interact with Blob storage.
 StorageCredentials creds = new StorageCredentials(
-    ConfigurationManager.AppSettings["accountName"],
-       ConfigurationManager.AppSettings["accountKey"]);
+    CloudConfigurationManager.GetSetting("accountName"),
+    CloudConfigurationManager.GetSetting("accountKey")
+);
 CloudStorageAccount account = new CloudStorageAccount(creds, useHttps: true);
 CloudBlobClient client = account.CreateCloudBlobClient();
-CloudBlobContainer contain = client.GetContainerReference(ConfigurationManager.AppSettings["container"]);
+CloudBlobContainer contain = client.GetContainerReference(CloudConfigurationManager.GetSetting("container"));
 contain.CreateIfNotExists();
 
 // The Resolver object is used to interact with Key Vault for Azure Storage.
@@ -155,8 +159,9 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```csharp
 // Retrieve the key that you created previously.
 // The IKey that is returned here is an RsaKey.
-// Remember that we used the names contosokeyvault and testrsakey1.
-var rsa = cloudResolver.ResolveKeyAsync("https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", CancellationToken.None).GetAwaiter().GetResult();
+var rsa = cloudResolver.ResolveKeyAsync(
+            "https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", 
+            CancellationToken.None).GetAwaiter().GetResult();
 
 // Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy.
 BlobEncryptionPolicy policy = new BlobEncryptionPolicy(rsa, null);
@@ -166,14 +171,12 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 
 // Upload using the UploadFromStream method.
-using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
+using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
 
 > [!NOTE]
 > BlobEncryptionPolicy コンストラクターを見ると、キーおよびリゾルバーを受け付けられることがわかります。 現在リゾルバーは既定のキーをサポートしていないため、暗号化にリゾルバーを使用できないことに注意してください。
-> 
-> 
 
 ## <a name="decrypt-blob-and-download"></a>BLOB の復号化とダウンロード
 
@@ -195,8 +198,6 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 
 > [!NOTE]
 > キー管理を容易にするリゾルバーとして、他にAggregateKeyResolver および CachingKeyResolver の 2 つがあります。
-> 
-> 
 
 ## <a name="use-key-vault-secrets"></a>Key Vault シークレットの使用
 
@@ -229,9 +230,10 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 これで終了です。 機能を有効にご活用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 C# での Microsoft Azure Storage の使用について詳しくは、「[.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)」をご覧ください。
 

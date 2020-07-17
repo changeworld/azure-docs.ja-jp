@@ -8,37 +8,28 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: 8d21e41ad487ad17598f2320fab5eebae02309e8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 03/05/2020
+ms.openlocfilehash: ff449626ce528cfe0218a95330a567303c547e5f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66123234"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79486146"
 ---
-1. 「[Azure Machine Learning service ワークスペースを作成する](../articles/machine-learning/service/setup-create-workspace.md#portal)」にある手順を使用して、次のことを行います。
-    * Miniconda 環境を作成する
-    * Azure Machine Learning SDK for Python をインストールする
-    * ワークスペースの作成
-    * ワークスペースの構成ファイル (**aml_config/config.json**) を記述する。
-    
-1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+1. [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) に関するページの手順を使用して、Azure Machine Learning SDK for Python をインストールします
 
-    ```
+1. [Azure Machine Learning ワークスペース](../articles/machine-learning/how-to-manage-workspace.md)を作成します。
+
+1. [構成ファイル](../articles/machine-learning/how-to-configure-environment.md#workspace)  (**aml_config/config.json**) を記述します。
+
+1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)をクローンします。
+
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. 次のいずれかの方法を使用して、ワークスペース構成ファイルを追加します。
-    * 手順 1 で作成した **aml_config/config.json** ファイルを複製されたディレクトリにコピーします。
+1. クローンしたディレクトリから、Notebook サーバーを起動します。
 
-    * [Azure portal](https://ms.portal.azure.com) で、お使いのワークスペースの **[概要]** セクションから **[config.json をダウンロード]** を選択します。 
-
-    ![config.json をダウンロードする](./media/aml-dsvm-server/download-config.png)
-
-    * [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 内のコードを使用して新しいワークスペースを作成します。
-
-1. 複製したディレクトリから、Notebook サーバーを起動します。
-    
-    ```shell
+    ```bash
     jupyter notebook
     ```

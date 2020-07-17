@@ -1,25 +1,16 @@
 ---
-title: Windows Azure Diagnostics を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
+title: Windows Azure Diagnostics を使用したイベントの集計
 description: Azure Service Fabric クラスターの監視と診断に WAD を使用したイベントの集計と収集について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 641f9150d1135f4f214038150b95b6691a37ecc0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236707"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -38,7 +29,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ## <a name="prerequisites"></a>前提条件
 この記事では、次のツールが使用されます。
 
-* [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -74,7 +65,7 @@ Resource Manager を使用してクラスターを作成するには、診断構
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事を参照してください。
+または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関する記事を参照してください。
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>既存のクラスターに診断拡張機能を追加する
 まだ診断がデプロイされていない既存のクラスターがある場合は、クラスター テンプレートを使用して追加または更新を実行できます。 既存クラスターの作成に使用された Resource Manager テンプレートを変更するか、前の説明に基づき、ポータルからテンプレートをダウンロードします。 次のタスクを実行して、template.json ファイルを変更します。
@@ -159,6 +150,15 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
                 "EtwManifestProviderConfiguration": [
                 {
                     "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                    "scheduledTransferLogLevelFilter": "Information",
+                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricSystemEventTable"
+                    }
+                },
+                {
+                    "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
                     "scheduledTransferLogLevelFilter": "Information",
                     "scheduledTransferKeywordFilter": "4611686018427387904",
                     "scheduledTransferPeriod": "PT5M",
@@ -262,6 +262,15 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"
                 }
+              },
+              {
+                "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                "eventDestination": "ServiceFabricSystemEventTable"
+                }
               }
             ]
           }
@@ -342,7 +351,7 @@ Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を�
 >[!NOTE]
 >ポータルまたは Resource Manager テンプレートのいずれかで間違った Application Insights キーを使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Diagnostics を正しく構成すると、ETW ログと EventSource ログのデータがストレージ テーブルに表示されます。 Azure Monitor ログ、Kibana、または Resource Manager テンプレートで直接構成されていないその他のデータ分析および視覚化プラットフォームを使用する場合は、これらのストレージ テーブルからデータを読み取るように、選択したプラットフォームを設定する必要があります。 Azure Monitor ログでこれを行うのは比較的簡単です。方法については、[イベントとログの分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照してください。 Application Insights は、診断拡張機能の構成の一部として構成できるので、少し特殊と言えます。AI を使用する場合は、[こちらの記事](service-fabric-diagnostics-event-analysis-appinsights.md)をご覧ください。
 

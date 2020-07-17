@@ -4,7 +4,7 @@ description: Azure Windows VM のネットワーク インターフェイスを�
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -12,16 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982881"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226731"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 この記事では、Microsoft Azure Windows Virtual Machine (VM) に接続できなくなったときに、次の操作を行ってから、Azure Windows VM のネットワーク インターフェイスをリセットして問題を解決する方法について説明します。
 
@@ -42,7 +40,7 @@ ms.locfileid: "55982881"
     
 4.  **[IP 構成]** を選択します。
 5.  IP を選択します。 
-6.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、**[静的]** に変更します。
+6.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、 **[静的]** に変更します。
 7.  **[IP アドレス]** を、サブネットで使用できる別の IP アドレスに変更します。
 8. 仮想マシンが再起動して、新しい NIC をシステムに初期化します。
 9.  マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
@@ -68,11 +66,13 @@ ms.locfileid: "55982881"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. マシンへの RDP を試します。  成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。
 
 ### <a name="for-classic-vms"></a>クラシック VM の場合
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ネットワーク インターフェイスをリセットするには、次の手順に従います。
 
@@ -82,7 +82,7 @@ ms.locfileid: "55982881"
 2.  **[仮想マシン (クラシック)]** を選択します。
 3.  影響を受ける仮想マシンを選択します。
 4.  **[IP アドレス]** を選択します。
-5.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、**[静的]** に変更します。
+5.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、 **[静的]** に変更します。
 6.  **[IP アドレス]** を、サブネットで使用できる別の IP アドレスに変更します。
 7.  **[保存]** を選択します。
 8.  仮想マシンが再起動して、新しい NIC をシステムに初期化します。
@@ -109,7 +109,7 @@ ms.locfileid: "55982881"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
 
@@ -117,7 +117,7 @@ ms.locfileid: "55982881"
 コンピューターにリモート デスクトップ接続できたら、潜在的な問題を回避するために古い NIC を削除する必要があります。
 
 1.  デバイス マネージャーを開きます。
-2.  **[表示]** > **[非表示のデバイスの表示]** を選択します。
+2.  **[表示]**  >  **[非表示のデバイスの表示]** を選択します。
 3.  **[ネットワーク アダプター]** を選択します。 
 4.  "Microsoft Hyper-V Network Adapter" という名前のアダプターを確認します。
 5.  使用できないアダプターは淡色表示されることがあります。アダプターを右クリックし、[アンインストール] を選択します。

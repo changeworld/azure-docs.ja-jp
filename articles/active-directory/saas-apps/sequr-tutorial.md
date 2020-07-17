@@ -1,145 +1,144 @@
 ---
-title: チュートリアル:Azure Active Directory と Sequr の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Sequr の統合 | Microsoft Docs'
 description: Azure Active Directory と Sequr の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: a491e2ce-b4e8-41b8-8f4a-a2e263e462c3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 1/8/2017
+ms.topic: tutorial
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007989d51ad111fb6a3ef21daee6a7c484bd154d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2eed00aab4296cb5352e74d9e6bfc014f2340646
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184366"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67091079"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル:Azure Active Directory と Sequr の統合
+# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル: Azure Active Directory と Sequr の統合
 
 このチュートリアルでは、Sequr と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Sequr と Azure AD の統合には、次の利点があります。
 
-- Sequr にアクセスできる Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで Sequr に自動的にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Sequr にアクセスできる Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Sequr に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Sequr と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Sequr でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Sequr でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Sequr の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Sequr では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sequr-from-the-gallery"></a>ギャラリーからの Sequr の追加
+
 Azure AD への Sequr の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Sequr を追加する必要があります。
 
 **ギャラリーから Sequr を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに「**Sequr**」と入力し、結果ウィンドウで **[Sequr]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の Sequr](./media/sequr-tutorial/tutorial_sequr_addfromgallery.png)
+4. 検索ボックスに「**Sequr**」と入力し、結果ウィンドウで **[Sequr]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+
+    ![結果一覧の Sequr](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Sequr で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Sequr ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Sequr の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Sequr で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sequr で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Sequr 内の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 Sequr で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[ のテスト ユーザーの作成](#create-a-sequr-test-user)** - Sequr で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Sequr のシングル サインオンの構成](#configure-sequr-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Sequr のテスト ユーザーの作成](#create-sequr-test-user)** - Sequr で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Sequr アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Sequr で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Sequr で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Sequr** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Sequr** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/sequr-tutorial/tutorial_sequr_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[Sequr のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[Sequr のドメインと URL] のシングル サインオン情報](./media/sequr-tutorial/tutorial_sequr_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    **[識別子]** ボックスに次の URL を入力します。`https://login.sequr.io`
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Sequr のドメインと URL] のシングル サインオン情報](./media/sequr-tutorial/tutorial_sequr_url1.png)
+    ![[Sequr のドメインと URL] のシングル サインオン情報](common/idp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://login.sequr.io`」を入力します。
+    **[識別子]** ボックスに、`https://login.sequr.io` という URL を入力します。
+
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+
+    ![image](common/both-advanced-urls.png)
+
+    a. **[サインオン URL]** テキスト ボックスに、URL として「`https://login.sequr.io`」と入力します。
 
     b. **[リレー状態]** テキストボックスに、この値を取得します。これについてはチュートリアルの後半で説明しています。
-     
-1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media/sequr-tutorial/tutorial_sequr_certificate.png) 
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
-1. **[保存]** ボタンをクリックします。
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/sequr-tutorial/tutorial_general_400.png)
-    
-1. **[Sequr Configuration]** \(Sequr 構成\) セクションで、**[Configure Sequr]** \(Sequr を構成する\) をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+7. **[Set up Sequr]\(Sequr の設定\)** セクションで、要件どおりの適切な URL をコピーします。
 
-    ![Sequr 構成](./media/sequr-tutorial/tutorial_sequr_configure.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-1. 別の Web ブラウザー ウィンドウで、Sequr 企業サイトに管理者としてログインします。
+    a. ログイン URL
 
-1. 左側のナビゲーション パネルから、**[統合]** をクリックします。
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-sequr-single-sign-on"></a>Sequr のシングル サインオンの構成
+
+1. 別の Web ブラウザー ウィンドウで、Sequr 企業サイトに管理者としてサインインします。
+
+1. 左側のナビゲーション パネルから、 **[統合]** をクリックします。
 
     ![Sequr 構成](./media/sequr-tutorial/configure1.png)
 
-1. **[シングル サインオン]** セクションまで下方向にスクロールして、**[管理]** をクリックします。
+1. **[シングル サインオン]** セクションまで下方向にスクロールして、 **[管理]** をクリックします。
 
     ![Sequr 構成](./media/sequr-tutorial/configure2.png)
 
@@ -147,106 +146,79 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![Sequr 構成](./media/sequr-tutorial/configure3.png)
 
-    a. **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
+    a. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
     b. Azure Portal からダウンロードした**証明書**ファイルをドラッグ アンド ドロップするか、証明書のコンテンツを手動で入力します。
 
-    c. 構成を保存した後に、[リレー状態] の値が生成されます。 **[リレー状態]** の値をコピーして、Azure Portal の **[Sequr のドメインと URL]** セクションの **[リレー状態]** テキスト ボックスに貼り付けます。
+    c. 構成を保存した後に、[リレー状態] の値が生成されます。 **[リレー状態]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[リレー状態]** テキスト ボックスに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/sequr-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/sequr-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/sequr-tutorial/create_aaduser_03.png)
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/sequr-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
- 
-### <a name="create-a-sequr-test-user"></a>Sequr テスト ユーザーを作成する
-
-このセクションでは、Sequr で Britta Simon というユーザーを作成します。  [Sequr クライアント サポート チーム](mailto:support@sequr.io) と協力して、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+    d. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Sequr へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Sequr]** の順に選択します。
 
-**Sequr に Britta Simon を割り当てるには、次の手順を実行します。**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[Sequr]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の [Sequr] リンク](common/all-applications.png)
 
-1. アプリケーションの一覧で **[Sequr]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の [Sequr] リンク](./media/sequr-tutorial/tutorial_sequr_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+### <a name="create-sequr-test-user"></a>Sequr のテスト ユーザーの作成
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、Sequr で Britta Simon というユーザーを作成します。  [Sequr クライアント サポート チーム](mailto:support@sequr.io) と協力して、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Sequr のタイルをクリックすると、Sequr アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネル上で [Sequr] タイルをクリックすると、SSO を設定した Sequr に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/sequr-tutorial/tutorial_general_01.png
-[2]: ./media/sequr-tutorial/tutorial_general_02.png
-[3]: ./media/sequr-tutorial/tutorial_general_03.png
-[4]: ./media/sequr-tutorial/tutorial_general_04.png
-
-[100]: ./media/sequr-tutorial/tutorial_general_100.png
-
-[200]: ./media/sequr-tutorial/tutorial_general_200.png
-[201]: ./media/sequr-tutorial/tutorial_general_201.png
-[202]: ./media/sequr-tutorial/tutorial_general_202.png
-[203]: ./media/sequr-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB でのパーティション分割
-description: Azure Cosmos DB でのパーティション分割の概要。
-ms.author: rimman
-author: rimman
+description: Azure Cosmos DB でのパーティション分割、パーティション キーを選択する際のベスト プラクティス、および論理パーティションの管理方法について説明します。
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.openlocfilehash: 7d252aed830e24719be2112391f0e77d9a6ff9c5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 12/02/2019
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953714"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227283"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
 
@@ -33,13 +33,13 @@ Azure Cosmos DB は、ハッシュベースのパーティション分割を使�
 
 Azure Cosmos DB でパーティションを管理する方法の詳細については、[論理パーティション](partition-data.md)に関するページを参照してください。 (アプリケーションをビルドまたは実行するために内部の詳細を理解する必要はありませんが、興味がある方のためにここに追加されています。)
 
-## <a id="choose-partitionkey"></a>パーティション キーを使用する場合
+## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>パーティション キーを使用する場合
 
 パーティション キーを選択するための優れたガイダンスを次に示します。
 
-* 1 つの論理パーティションでは、ストレージの上限は 10 GB です。  
+* 1 つの論理パーティションでは、ストレージの上限は 20 GB です。  
 
-* Azure Cosmos コンテナーの最小スループットは、400 要求ユニット/秒 (RU/秒) です。 同じパーティション キーへの要求は、パーティションに割り当てられているスループットを超えることはできません。 割り当て済みのスループットを要求が超えている場合、要求ではレートが制限されます。 そのため、アプリケーション内の "ホット スポット" にならないパーティション キーを選択することが重要です。
+* Azure Cosmos コンテナーの最小スループットは、400 要求ユニット/秒 (RU/秒) です。 データベースに関するスループットがプロビジョニングされる場合、コンテナーあたりの最小 RU 数は 100 要求ユニット/秒 (RU/秒) です。 同じパーティション キーへの要求は、パーティションに割り当てられているスループットを超えることはできません。 割り当て済みのスループットを要求が超えている場合、要求ではレートが制限されます。 そのため、アプリケーション内の "ホット スポット" にならないパーティション キーを選択することが重要です。
 
 * さまざまな値とアクセス パターンがあり、それが論理パーティション間で均等に分散されるパーティション キーを選択します。 このことで、コンテナー内のデータとアクティビティが一連の論理パーティションに分散するため、データ ストレージとスループットのリソースをその論理パーティション全体に分散できるようになります。
 
@@ -47,7 +47,7 @@ Azure Cosmos DB でパーティションを管理する方法の詳細につい�
 
 * パーティション キーの候補には、クエリ内でフィルターとして頻繁に出現するプロパティが含まれる場合があります。 フィルターの述語にパーティション キーを含めることで、クエリ呼び出しを効率的にルーティングできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB でのパーティション分割と水平スケーリング](partition-data.md)について理解します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します。

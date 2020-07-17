@@ -1,26 +1,19 @@
 ---
-title: カスタム プローブを作成する - Azure Application Gateway - PowerShell | Microsoft Docs
+title: PowerShell を使用したカスタム プローブを作成する
+titleSuffix: Azure Application Gateway
 description: リソース マネージャーで PowerShell を使用して、Application Gateway のカスタム プローブを作成する方法の説明
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135243"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312582"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
 
@@ -102,7 +95,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 | **HTTP 設定** | ポート、プロトコル、cookie ベースのアフィニティ、プローブ、タイムアウトなど設定のコレクション。  これらの設定によって、バックエンド プール メンバーへのトラフィックのルーティング方法が決まります。|
 | **フロントエンド ポート** | Application Gateway がトラフィックをリッスンするポート|
 | **リスナー** | プロトコル、フロントエンド IP 構成、およびフロントエンド ポートの組み合わせ。 これが受信要求をリッスンします。
-|**ルール**| HTTP 設定に基づいてトラフィックを適切なバックエンドにルーティングします。|
+|**Rule**| HTTP 設定に基づいてトラフィックを適切なバックエンドにルーティングします。|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -202,7 +195,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-SSL オフロードの構成について確認するために、次を参照してください: [SSL オフロードの構成](application-gateway-ssl-arm.md)
+TLS オフロードの構成の詳細については、以下を参照してください。[TLS オフロードの構成](application-gateway-ssl-arm.md)
 

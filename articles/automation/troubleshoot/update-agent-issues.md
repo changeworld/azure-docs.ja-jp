@@ -1,44 +1,44 @@
 ---
-title: Azure Update Management での Windows エージェント チェック結果について
-description: Update Management エージェントの問題をトラブルシューティングする方法を説明します。
+title: Azure Automation Update Management での Windows Update エージェントに関する問題のトラブルシューティング
+description: Update Management ソリューションを使用して Windows Update エージェントの問題をトラブルシューティングして解決する方法について説明します。
 services: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597688"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81678969"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
+# <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update エージェントの問題をトラブルシューティングする
 
-Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
+Update Management にマシンが準備完了 (正常) と表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
-次の一覧は、マシンが取り得る 3 つの準備状態です。
+マシンの 3 つの準備状態を次に示します。
 
-* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
-* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
-* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
+* 準備完了 - Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間未満である。
+* 切断 - Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間以上である。
+* 未構成 - Hybrid Runbook Worker が見つからないか、オンボードを終了していない。
 
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、[オフラインの手順](#troubleshoot-offline)を参照してください。
+Azure マシンの場合は、ポータルの **[Update Agent Readiness]\(Update エージェントの準備\)** 列にある **[トラブルシューティング]** リンクをクリックすると、[Troubleshoot Update Agent]\(Update エージェントのトラブルシューティング\) ページが起動します。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、[オフラインの手順](#troubleshoot-offline)を参照してください。
 
 ![仮想マシンの管理の一覧の更新](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> エージェントの正常性を確認するには、VM が実行されている必要があります。 VM が実行されていない場合は、**[Start the VM]\(VM を起動\)** ボタンが表示されます。
+> Hybrid Runbook Worker の正常性を確認するには、VM が実行されている必要があります。 VM が実行されていない場合は、 **[Start the VM]\(VM を起動\)** ボタンが表示されます。
 
-「**Update エージェントのトラブルシューティング**」のページで **[チェックの実行]** を選択すると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[実行コマンド]](../../virtual-machines/windows/run-command.md) を使ってマシンに対してスクリプトを実行し、エージェントの依存関係を検証します。 トラブルシューティング ツールが終了すると、チェック結果が返されます。
+[Troubleshoot Update Agent]\(Update エージェントのトラブルシューティング\) ページで **[チェックを実行]** を選択すると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[実行コマンド]](../../virtual-machines/windows/run-command.md) を使ってマシンに対してスクリプトを実行し、依存関係を検証します。 トラブルシューティング ツールが終了すると、チェック結果が返されます。
 
 ![「Update エージェントのトラブルシューティング」のページ](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -50,20 +50,19 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-オペレーティング システムのチェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。
+オペレーティング システム チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかが検証されます。
 
-|オペレーティング システム  |メモ  |
+|オペレーティング システム  |Notes  |
 |---------|---------|
-|Windows Server 2008 R2 RTM、Windows Server 2008 | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降 |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です  ([Windows Management Framework 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 以降 |.NET Framework 4.6 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 が必要です。  ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-451"></a>.NET 4.5.1
+### <a name="net-462"></a>.NET 4.6.2
 
-.NET Framework チェックでは、最小要件の [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) がインストールされているかどうかを検証します。
+.NET Framework のチェックでは、最小要件の [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) がインストールされているかどうかが検証されます。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF チェックでは、必要なバージョンの Windows Management Framework (WMF) がシステムに存在するかどうかを検証します。 サポートされる最小バージョンは [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) です。 Hybrid Runbook Worker の信頼性を向上させるには [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をインストールすることをお勧めします。
+WMF のチェックでは、必要なバージョンの Windows Management Framework (WMF) がシステムに存在するかどうかが検証されます ([Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -87,15 +86,13 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 ### <a name="monitoring-agent-service-status"></a>エージェント サービスの状態の監視
 
-このチェックでは、Microsoft Monitoring Agent (`HealthService`) がマシンで実行されているかどうかを判別します。
+このチェックでは、Windows 用 Log Analytics エージェント (`healthservice`) がマシン上で実行されているかどうかを確認します。 このサービスのトラブルシューティングの詳細については、「[Windows 用 Log Analytics エージェントが実行されていない](hybrid-runbook-worker.md#mma-not-running)」を参照してください。
 
-このサービスのトラブルシューティングの詳細については、「[Microsoft Monitoring Agent が実行されていない場合](hybrid-runbook-worker.md#mma-not-running)」を参照してください。
-
-Microsoft Monitoring Agent を再インストールするには、[Microsoft Monitoring Agent のインストールと構成](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)に関する記事を参照してください。
+Windows 用の Log Analytics エージェントを再インストールするには、[Windows 用 Log Analytics エージェントのインストールと構成](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)に関する記事を参照してください。
 
 ### <a name="monitoring-agent-service-events"></a>エージェント サービス イベントの監視
 
-このチェックでは、過去 24 時間にマシン上の Azure Operations Manager ログに `4502` イベントが表示されているかどうかを判別します。
+このチェックでは、過去 24 時間にマシンの Azure Operations Manager ログに 4502 イベントが記録されているかどうかを判別します。
 
 このイベントの詳細については、このイベントに関する[トラブルシューティング ガイド](hybrid-runbook-worker.md#event-4502)を参照してください。
 
@@ -105,16 +102,18 @@ Microsoft Monitoring Agent を再インストールするには、[Microsoft Mon
 
 Crypto フォルダー アクセスのチェックでは、ローカル システム アカウントが C:\ProgramData\Microsoft\Crypto\RSA にアクセスできるかどうかを判別します。
 
-## <a name="troubleshoot-offline"></a>オフライン トラブルシューティング
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 このスクリプト ([Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)) は PowerShell ギャラリーで入手できます。 このスクリプトの出力は次の例のようになります。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 このスクリプト ([Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)) は PowerShell ギャラリーで入手できます。 このスクリプトを実行するには、WMF 4.0 以上をインストールしておく必要があります。 最新バージョンの PowerShell をダウンロードするには、「[PowerShell のさまざまなバージョンのインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)」を参照してください。
+
+このスクリプトの出力は次の例のようになります。
 
 ```output
 RuleId                      : OperatingSystemCheck
 RuleGroupId                 : prerequisites
 RuleName                    : Operating System
 RuleGroupName               : Prerequisite Checks
-RuleDescription             : The Windows Operating system must be version 6.1.7601 (Windows Server 2008 R2 SP1) or higher
+RuleDescription             : The Windows Operating system must be version 6.2.9200 (Windows Server 2012) or higher
 CheckResult                 : Passed
 CheckResultMessage          : Operating System version is supported
 CheckResultMessageId        : OperatingSystemCheck.Passed
@@ -144,7 +143,7 @@ RuleId                      : AutomationAgentServiceConnectivityCheck1
 RuleGroupId                 : connectivity
 RuleName                    : Registration endpoint
 RuleGroupName               : connectivity
-RuleDescription             : 
+RuleDescription             :
 CheckResult                 : Failed
 CheckResultMessage          : Unable to find Workspace registration information in registry
 CheckResultMessageId        : AutomationAgentServiceConnectivityCheck1.Failed.NoRegistrationFound
@@ -166,9 +165,9 @@ RuleName                    : Monitoring Agent service status
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : HealthService must be running on the machine
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service (HealthService) is not running
+CheckResultMessage          : Log Analytics for Windows service (HealthService) is not running
 CheckResultMessageId        : MonitoringAgentServiceRunningCheck.Failed
-CheckResultMessageArguments : {Microsoft Monitoring Agent, HealthService}
+CheckResultMessageArguments : {Log Analytics agent for Windows, HealthService}
 
 RuleId                      : MonitoringAgentServiceEventsCheck
 RuleGroupId                 : servicehealth
@@ -176,9 +175,9 @@ RuleName                    : Monitoring Agent service events
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : Event Log must not have event 4502 logged in the past 24 hours
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service Event Log (Operations Manager) does not exist on the machine
+CheckResultMessage          : Log Analytics agent for Windows service Event Log (Operations Manager) does not exist on the machine
 CheckResultMessageId        : MonitoringAgentServiceEventsCheck.Failed.NoLog
-CheckResultMessageArguments : {Microsoft Monitoring Agent, Operations Manager, 4502}
+CheckResultMessageArguments : {Log Analytics agent for Windows, Operations Manager, 4502}
 
 RuleId                      : CryptoRsaMachineKeysFolderAccessCheck
 RuleGroupId                 : permissions
@@ -201,7 +200,6 @@ CheckResultMessageId        : TlsVersionCheck.Passed.EnabledByDefault
 CheckResultMessageArguments : {}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。
-

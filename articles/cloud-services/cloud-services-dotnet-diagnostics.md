@@ -3,23 +3,19 @@ title: Cloud Services で Azure Diagnostics (.NET) を使用する方法 | Micro
 description: デバッグ、パフォーマンスの測定、監視、トラフィック分析などに使用するために、Azure Diagnostics を使用して、Azure Cloud Services からデータを収集します。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
+author: tgore03
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: tagore
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786243"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77469767"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure Diagnostics の有効化
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
@@ -28,14 +24,14 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 このチュートリアルでは、.NET EventSource クラスを使用してテレメトリ データを生成する Azure Worker ロールの実装方法について説明します。 Azure Diagnostics を使用してテレメトリ データを収集し、これを Azure ストレージ アカウントに格納します。 Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。 次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
 
 ### <a name="prerequisites"></a>前提条件
-この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio を使用していることを前提としています。 Azure サブスクリプションがない場合でも、[無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
+この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio を使用していることを前提としています。 Azure サブスクリプションがない場合でも、 [無料試用版][Free Trial]にサインアップできます。 [Azure PowerShell Version 0.8.7 以降をインストールして構成している][Install and configure Azure PowerShell version 0.8.7 or later]ことを確認してください。
 
 ### <a name="step-1-create-a-worker-role"></a>手順 1:worker ロールを作成する
 1. **Visual Studio** を起動します。
 2. .NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、**Azure クラウド サービス** プロジェクトを作成します。  プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
 3. **[worker ロール]** を選択して [OK] をクリックします。 プロジェクトが作成されます。
 4. **ソリューション エクスプローラー**で、**WorkerRole1** プロパティ ファイルをダブルクリックします。
-5. **[構成]** タブで、**[診断を有効にする]** をオフにして診断 1.0 (Azure SDK 2.4 以前) を無効にします。
+5. **[構成]** タブで、 **[診断を有効にする]** をオフにして診断 1.0 (Azure SDK 2.4 以前) を無効にします。
 6. ソリューションを構築してエラーが発生しないことを確認します。
 
 ### <a name="step-2-instrument-your-code"></a>手順 2:コードをインストルメント化する
@@ -126,12 +122,12 @@ namespace WorkerRole1
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. ソリューション エクスプローラーで **[WadExample]** プロジェクトを選択し、**[ビルド]** メニューから **[発行]** を選択して、worker ロールを Visual Studio から Azure にデプロイします。
+1. ソリューション エクスプローラーで **[WadExample]** プロジェクトを選択し、 **[ビルド]** メニューから **[発行]** を選択して、worker ロールを Visual Studio から Azure にデプロイします。
 2. サブスクリプションを選択します。
-3. **[Microsoft Azure 発行設定]** ダイアログで、**[新規作成]** を選択します。
+3. **[Microsoft Azure 発行設定]** ダイアログで、 **[新規作成]** を選択します。
 4. **[クラウド サービスとストレージ アカウントの作成]** ダイアログで **[名前]** を入力し ("WadExample" など)、リージョンまたはアフィニティ グループを選択します。
 5. **[環境]** を **[ステージング]** に設定します。
-6. 必要に応じて、他の **[設定]** を変更し、**[発行]** をクリックします。
+6. 必要に応じて、他の **[設定]** を変更し、 **[発行]** をクリックします。
 7. デプロイが完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure Portal で確認します。
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>手順 4:診断構成ファイルを作成して拡張機能をインストールする
@@ -140,10 +136,10 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. **WorkerRole1** プロジェクトを右クリックし、**[追加]** -> **[新しいアイテム]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。  -> **[Visual C# アイテム]**  -> **[データ]**  -> **[XML ファイル]** の順に選びます ファイルに「WadExample.xml」という名前を付けます。
+2. **WorkerRole1** プロジェクトを右クリックし、 **[追加]**  ->  **[新しいアイテム]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。 ->  **[Visual C# アイテム]**  ->  **[データ]**  ->  **[XML ファイル]** の順に選びます ファイルに「WadExample.xml」という名前を付けます。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]**  ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 Click **OK**.
+3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、 **[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]** をクリックします。
 
 4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
@@ -197,7 +193,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-diagnostics-troubleshooting.md) 」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics)をご覧ください。
+収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../azure-monitor/platform/diagnostics-extension-overview.md)をご覧ください。
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 
@@ -205,3 +201,6 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+
+
+

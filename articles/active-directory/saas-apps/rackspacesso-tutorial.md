@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: fd420ea3fc4faae7fe4510a72204d71acaa3549a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890800"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81870294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル:Azure Active Directory と Rackspace SSO の統合
 
@@ -53,11 +53,11 @@ Azure AD への Rackspace SSO の統合を構成するに、ギャラリーか�
 
 **ギャラリーから Rackspace SSO を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD への Rackspace SSO の統合を構成するに、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Rackspace SSO**」と入力し、結果パネルから **[Rackspace SSO]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Rackspace SSO**」と入力し、結果パネルから **[Rackspace SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Rackspace SSO](common/search-new-app.png)
 
@@ -89,15 +89,15 @@ Rackspace SSO で Azure AD のシングル サインオンを構成してテス�
 
 Rackspace SSO で Azure AD のシングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Rackspace SSO** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Rackspace SSO** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
     ![image](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![image](common/browse-upload-metadata.png)
 
@@ -117,7 +117,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
     ![[Rackspace SSO Domain and URLs] (Rackspace SSO のドメインと URL) のシングル サインオン情報](common/sp-signonurl.png)   
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -139,7 +139,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -163,7 +163,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に Rackspace SSO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Rackspace SSO]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Rackspace SSO]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -175,19 +175,19 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Rackspace コントロール パネルでの属性マッピングの設定
 
-Rackspace は、**属性マッピング ポリシー**を使用して Rackspace のロールやグループをシングル サインオン ユーザーに割り当てます。 Azure AD の SAML 要求は、**属性マッピング ポリシー**によって、Rackspace に必要なユーザー構成フィールドに変換されます。 詳細については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)を参照してください。 いくつかの考慮事項があります。
+Rackspace は、**属性マッピング ポリシー**を使用して Rackspace のロールやグループをシングル サインオン ユーザーに割り当てます。 Azure AD の SAML 要求は、**属性マッピング ポリシー**によって、Rackspace に必要なユーザー構成フィールドに変換されます。 詳細については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)を参照してください。 いくつかの考慮事項があります。
 
 * Azure AD グループを使用して、さまざまなレベルの Rackspace アクセスを割り当てたい場合は、Azure **Rackspace SSO** のシングル サインオン設定でグループ要求を有効にする必要があります。 それらのグループは、**属性マッピング ポリシー**を使用して、Rackspace の適切なロールとグループに対応付けられます。
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > ポリシー ファイルの編集する際は YAML 構文が検証されるテキスト エディターを必ず使用してください。
 
-その他の例については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)を参照してください。
+その他の例については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)を参照してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

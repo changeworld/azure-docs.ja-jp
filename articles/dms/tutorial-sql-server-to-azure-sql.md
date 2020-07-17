@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して SQL Server から Azure SQL Database の単一データベース/プールされたデータベースにオフラインで移行する | Microsoft Docs
+title: チュートリアル:SQL Server を SQL の単一データベースにオフラインで移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する方法について学習します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: 32d8bd528da2823907e4f992f977eef91e55b9b0
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 01/08/2020
+ms.openlocfilehash: ff47246482bd0712ea4e741d44b12f2c6767380b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298913"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する
 
@@ -41,7 +42,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-- [SQL Server 2016 以降](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション) をダウンロードしてインストールします。
+- [SQL Server 2016 以降](https://www.microsoft.com/sql-server/sql-server-downloads)をダウンロードしてインストールします。
 - SQL Server Express のインストール時に既定では無効になっている TCP/IP プロトコルを有効にします。有効にする手順については、[サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事を参照してください。
 - 「[Azure portal を使用して Azure SQL Database で単一データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started)」の詳細な手順に従って、Azure SQL Database の単一 (またはプールされた) データベースを作成します。
 
@@ -49,22 +50,25 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
     > SQL Server Integration Services (SSIS) を使用していて、SSIS プロジェクト/パッケージ (SSISDB) のカタログ データベースを SQL Server から Azure SQL Database に移行する場合は、SSIS を Azure Data Factory (ADF) にプロビジョニングしたときに移行先 SSISDB が自動的に作成および管理されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
   
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールします。
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
-    > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    >
     > - ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
     > - ストレージ エンドポイント
     > - サービス バス エンドポイント
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
+    >
+    >オンプレミス ネットワークと Azure の間にサイト間接続がない場合、またはサイト間接続の帯域幅が制限されている場合は、Azure Database Migration Service をハイブリッド モード (プレビュー) で使用することを検討してください。 ハイブリッド モードでは、オンプレミスの移行 worker と、クラウドで実行されている Azure Database Migration Service のインスタンスを利用します。 ハイブリッド モードで Azure Database Migration Service のインスタンスを作成するには、[Azure portal を使用してハイブリッド モードで Azure Database Migration Service のインスタンスを作成する方法](https://aka.ms/dms-hybrid-create)に関する記事を参照してください。
 
-- VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
+- 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
-- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
+- Azure Database Migration Service でソース SQL Server にアクセスできるように Windows ファイアウォールを開放します。既定では TCP ポート 1433 が使用されます。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-- Azure SQL Database サーバーのサーバーレベルの IP [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
+- Azure SQL Database サーバーのサーバーレベルの IP [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 - ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含めます。
 - ターゲットの Azure SQL データベース インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可を含めます。
 
@@ -72,8 +76,8 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 オンプレミスの SQL Server インスタンスから Azure SQL Database の単一データベースまたはプールされたデータベースにデータを移行する前に、SQL Server データベースを評価して、移行を妨げる問題がないかどうかを確認する必要があります。 Data Migration Assistant v3.3 以降を使用し、[SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事の手順に従って、オンプレミス データベースの評価を完了してください。 必要な手順の概要は次のとおりです。
 
-1. Data Migration Assistant で、新規 (+) アイコンを選択し、**[評価]** プロジェクト タイプを選択します。
-2. プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server**、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、**[作成]** を選択してプロジェクトを作成します。
+1. Data Migration Assistant で、新規 (+) アイコンを選択し、 **[評価]** プロジェクト タイプを選択します。
+2. プロジェクト名を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server**、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、 **[作成]** を選択してプロジェクトを作成します。
 
     Azure SQL Database の単一データベースまたはプールされたデータベースに移行するソース SQL Server データベースを評価する際には、次のいずれかまたは両方の評価レポート タイプを選択できます。
 
@@ -82,9 +86,9 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
     どちらのレポート タイプも、既定で選択されています。
 
-3. Data Migration Assistant の **[オプション]** 画面で、**[次へ]** を選択します。
-4. **[ソースの選択]** 画面の **[サーバーへの接続]** ダイアログ ボックスで、SQL Server への接続詳細を入力し、**[接続]** を選択します。
-5. **[Add sources]\(ソースの追加\)** ダイアログ ボックスで、**AdventureWorks2012**、**[追加]**、**[Start Assessment]\(評価の開始\)** の順に選択します。
+3. Data Migration Assistant の **[オプション]** 画面で、 **[次へ]** を選択します。
+4. **[ソースの選択]** 画面の **[サーバーへの接続]** ダイアログ ボックスで、SQL Server への接続詳細を入力し、 **[接続]** を選択します。
+5. **[Add sources]\(ソースの追加\)** ダイアログ ボックスで、**AdventureWorks2012**、 **[追加]** 、 **[Start Assessment]\(評価の開始\)** の順に選択します。
 
     > [!NOTE]
     > SSIS を使用する場合、現在、DMA ではソース SSISDB の評価はサポートされていません。 ただし、SSIS プロジェクト/パッケージは、Azure SQL Database によってホストされている移行先 SSISDB に再デプロイされるため、評価/検証されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
@@ -106,25 +110,26 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 > [!NOTE]
 > Data Migration Assistant で移行プロジェクトを作成する前に、Azure SQL データベースが前提要件での説明に従って既にプロビジョニングされていることを確認してください。 このチュートリアルでは、Azure SQL Database の名前を **AdventureWorksAzure** としていますが、任意の名前を指定することもできます。
+
 > [!IMPORTANT]
 > SSIS を使用する場合、現在 DMA ではソース SSISDB の移行はサポートされていませんが、Azure SQL Database によってホストされている移行先 SSISDB に SSIS プロジェクト/パッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
 **AdventureWorks2012** スキーマを Azure SQL Database の単一データベースまたはプールされたデータベースに移行するには、次の手順を実行します。
 
-1. Data Migration Assistant で、新規 (+) アイコンを選択し、**[プロジェクト タイプ]** で **[移行]** を選択します。
-2. プロジェクト名を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
-3. **[移行スコープ]** で、**[Schema only]\(スキーマのみ\)** を選択します。
+1. Data Migration Assistant で、新規 (+) アイコンを選択し、 **[プロジェクト タイプ]** で **[移行]** を選択します。
+2. プロジェクト名を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server** を選択した後、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
+3. **[移行スコープ]** で、 **[Schema only]\(スキーマのみ\)** を選択します。
 
     上記の手順を実行すると、Data Migration Assistant のインターフェイスの表示が次の図のようになります。
 
     ![Data Migration Assistant プロジェクトを作成する](media/tutorial-sql-server-to-azure-sql/dma-create-project.png)
 
 4. **[作成]** を選択してプロジェクトを作成します。
-5. Data Migration Assistant で、SQL Server のソース接続詳細を指定し、**[接続]** を選択した後、**AdventureWorks2012** データベースを選択します。
+5. Data Migration Assistant で、SQL Server のソース接続詳細を指定し、 **[接続]** を選択した後、**AdventureWorks2012** データベースを選択します。
 
     ![Data Migration Assistant のソース接続詳細](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
-6. **[次へ]** を選択し、**[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL データベースのターゲット接続の詳細を指定し、**[接続]** を選択し、Azure SQL データベースで事前プロビジョニングした **AdventureWorksAzure** データベースを選択します。
+6. **[次へ]** を選択し、 **[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL データベースのターゲット接続の詳細を指定し、 **[接続]** を選択し、Azure SQL Database で事前プロビジョニングした **AdventureWorksAzure** データベースを選択します。
 
     ![Data Migration Assistant のターゲット接続詳細](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
@@ -144,25 +149,25 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインします。 **サブスクリプション**を検索して選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
 
     ![リソース プロバイダーの表示](media/tutorial-sql-server-to-azure-sql/portal-select-resource-provider.png)
 
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
+3. 移行を検索してから、 **[Microsoft.DataMigration]** の **[登録]** を選択します。
 
     ![リソース プロバイダーの登録](media/tutorial-sql-server-to-azure-sql/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>インスタンスを作成する
 
-1. Azure portal で **[+ リソースの作成]** を選択し、Azure Database Migration Service を検索して、ドロップダウン リストから **[Azure Database Migration Service]** を選択します。
+1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。 **[Azure Database Migration Service]** を検索して選択します。
 
     ![Azure Marketplace](media/tutorial-sql-server-to-azure-sql/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-sql-server-to-azure-sql/dms-create1.png)
   
@@ -170,11 +175,11 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 4. Azure Database Migration Service のインスタンスを作成する場所を選択します。
 
-5. 既存の VNet を選択するか、新しいものを作成します。
+5. 既存の仮想ネットワークを選択するか、新しく作成します。
 
-    この VNet が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL データベース インスタンスへのアクセスを提供します。
+    この仮想ネットワークが Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL Database インスタンスへのアクセスを提供します。
 
-    Azure portal で VNet を作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
+    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
 
 6. 価格レベルを選択します。
 
@@ -188,16 +193,17 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure portal のメニューで、 **[すべてのサービス]** を選択します。 **[Azure Database Migration Service]** を検索して選択します。
 
      ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-sql-server-to-azure-sql/dms-search.png)
 
-2. **[Azure Database Migration Services]** 画面で、作成した Azure Database Migration Service インスタンスの名前を検索して選択します。
+2. **[Azure Database Migration Service]** 画面で、作成した Azure Database Migration Service インスタンスを選択します。
 
-    ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
+3. **[新しい移行プロジェクト]** を選択します。
 
-3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **[SQL Server]** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択し、**[アクティビティの種類を選択します]** で **[オフライン データの移行]** を選択します。 
+     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
+
+4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **[SQL Server]** を選択した後、 **[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択し、 **[アクティビティの種類を選択します]** で **[オフライン データの移行]** を選択します。
 
     ![Database Migration Service プロジェクトを作成する](media/tutorial-sql-server-to-azure-sql/dms-create-project2.png)
 
@@ -209,12 +215,12 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
     ソース SQL Server インスタンス名には、必ず完全修飾ドメイン名 (FQDN) を使用してください。 DNS の名前解決ができない場合は、IP アドレスを使用することもできます。
 
-2. 信頼できる証明書をソース サーバーにインストールしていない場合は、**[Trust server certificate]\(サーバー証明書を信頼する\)** チェック ボックスをオンにします。
+2. 信頼できる証明書をソース サーバーにインストールしていない場合は、 **[Trust server certificate]\(サーバー証明書を信頼する\)** チェック ボックスをオンにします。
 
     信頼できる証明書がインストールされていない場合、SQL Server はインスタンスの開始時に自己署名証明書を生成します。 この証明書は、クライアント接続の資格情報の暗号化に使用されます。
 
     > [!CAUTION]
-    > 自己署名証明書を使用して暗号化されている SSL 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用した SSL を信頼しないでください。
+    > 自己署名証明書を使用して暗号化される TLS 接続では、強固なセキュリティが提供されません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 実稼働環境やインターネットに接続しているサーバーでは、自己署名証明書を使用した TLS 接続は使用しないでください。
 
    ![ソースの詳細](media/tutorial-sql-server-to-azure-sql/dms-source-details2.png)
 
@@ -223,23 +229,23 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[移行のターゲットの詳細]** 画面でターゲット Azure SQL Database Server の接続の詳細を指定します。これは、Data Migration Assistant を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
+1. **[保存]** を選択し、 **[移行のターゲットの詳細]** 画面でターゲット Azure SQL Database Server の接続の詳細を指定します。これは、Data Migration Assistant を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
 
     ![ターゲットを選択する](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
 
-2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
+2. **[保存]** を選択し、 **[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
-    ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service は既定でターゲット データベースを選択します。
+    ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service では、既定でターゲット データベースが選択されます。
 
     ![ターゲット データベースにマップする](media/tutorial-sql-server-to-azure-sql/dms-map-targets-activity2.png)
 
-3. **[保存]** を選択し、**[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
+3. **[保存]** を選択し、 **[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
 
     Azure Database Migration Service では、ターゲット Azure SQL データベース インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、このブレードでテーブルを明示的に選択する必要があります。
 
     ![テーブルを選択する](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
 
-4. **[保存]** を選択し、**[Migration summary]\(移行の概要\)** 画面の **[アクティビティ名]** テキスト ボックスで、移行アクティビティの名前を指定します。
+4. **[保存]** を選択し、 **[Migration summary]\(移行の概要\)** 画面の **[アクティビティ名]** テキスト ボックスで、移行アクティビティの名前を指定します。
 
 5. **[検証オプション]** セクションを展開して **[検証オプションの選択]** 画面を表示し、移行したデータベースで**スキーマ比較**、**データの整合性**、**クエリの正確さ**を検証するかどうかを指定します。
 
@@ -263,13 +269,13 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
     ![完了したアクティビティの状態](media/tutorial-sql-server-to-azure-sql/dms-completed-activity1.png)
 
-2. 移行が完了したら、**[レポートのダウンロード]** を選択して、移行プロセスに関連する詳細情報を一覧表示したレポートを取得します。
+2. 移行が完了したら、 **[レポートのダウンロード]** を選択して、移行プロセスに関連する詳細情報を一覧表示したレポートを取得します。
 
 3. ターゲットの Azure SQL Database サーバーにターゲット データベースがあることを確認します。
 
 ### <a name="additional-resources"></a>その他のリソース
 
-- [Azure Data Migration Service (DMS) を使用した SQL 移行](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587)に関するハンズオン ラボ。
+- [Azure Data Migration Service を使用した SQL 移行](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587)に関するハンズオン ラボ。
 - Azure SQL Database へのオンライン移行を実行する際の既知の問題と制限事項については、[Azure SQL Database のオンライン移行に伴う既知の問題と回避策](known-issues-azure-sql-online.md)に関する記事を参照してください。
 - Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。
 - Azure SQL Database については、「[Azure SQL Database サービスとは](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)」を参照してください。

@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009713"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68976793"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
 
@@ -36,15 +36,15 @@ Azure Data Catalog では、データ ソースの検出が可能なため、分
 
 ビジネス用語集には、Data Catalog ポータルのナビゲーション メニューにある **[用語集]** オプションでアクセスできます。  
 
-![ビジネス用語集へのアクセス](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Data Catalog - ビジネス用語集にアクセスする](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 Data Catalog 管理者と用語集管理者ロールのメンバーは、ビジネス用語集の用語を作成、編集、削除できます。 すべての Data Catalog ユーザーは用語定義を表示し、資産に用語集の用語でタグを付けることができます。
 
-![新しい用語を追加する](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Data Catalog - 新しい用語集の用語を追加する](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>用語集の用語を作成する
 
-Data Catalog 管理者や用語集管理者は、**[新しい用語]** ボタンをクリックして、用語集の用語を作成できます。 用語集の各用語には、次のフィールドが含まれます。
+Data Catalog 管理者や用語集管理者は、 **[新しい用語]** ボタンをクリックして、用語集の用語を作成できます。 用語集の各用語には、次のフィールドが含まれます。
 
 * 用語のビジネスの定義
 * 資産または列の使用意図やビジネス ルールを示す説明
@@ -80,6 +80,6 @@ Data Catalog ポータルでは、2 種類のタグは区別して表示され�
 
 Azure Data Catalog のビジネス用語集と、それで有効になる管理タグ付けを使用すると、データ資産の識別、管理、検出を一貫した方法で行うことができます。 ビジネス用語集は、組織のメンバーによるビジネス語彙の学習を推進できます。 用語集は、資産の検出と把握を容易にする、意味のあるメタデータのキャプチャもサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ビジネス用語集操作の REST API ドキュメント](/rest/api/datacatalog/data-catalog-glossary)

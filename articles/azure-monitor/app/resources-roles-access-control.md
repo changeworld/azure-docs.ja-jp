@@ -1,30 +1,21 @@
 ---
 title: Azure Application Insights のリソース、ロール、アクセス制御 | Microsoft Docs
 description: 組織の insights の所有者、共同作成者、閲覧者。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361877"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628239"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
 Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
 
 > [!IMPORTANT]
-> リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細情報](#access)。
+> リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細については、こちらを参照してください](#access)。
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -46,14 +37,9 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 * [**サブスクリプション**](https://portal.azure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは 1 つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
 * [**Microsoft アカウント**][account] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、およびその他の Microsoft サービスへのサインインに使用するユーザー名とパスワード。
 
-## <a name="access"></a> リソース グループのコントロール制御
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> リソース グループのコントロール制御
 
 アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはご利用の Application Insights リソースと同じ[リソース グループ](#resource-group)に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
-
-これらのリソースのアクセスを制御するには、次の処置が推奨されます。
-
-* **リソース グループまたはサブスクリプション** レベルでアクセスを制御します。
-* **Application Insights コンポーネントの共同作業者** ロールをユーザーに割り当てます。 この処置により、グループのその他のサービスのアクセス権を与えなくても、ユーザーは Web テスト、アラート、Application Insights リソースを編集できます。
 
 ## <a name="to-provide-access-to-another-user"></a>別のユーザーにアクセスを与えるには
 
@@ -83,18 +69,18 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 | Role | In the resource group |
 | --- | --- |
-| [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
+| [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
 | [Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
-| [Application Insights コンポーネントの共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
+| [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights リソースを編集できます。 |
 | [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |表示はできますが、何も変更することはできません。 |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
 | Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
 | [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)についての記事をご覧ください。   |
 | ExpressRoute 管理者 | Express Route を作成、削除、管理できます。|
-| [Log Analytics 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。  |
-| [Log Analytics 閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 |
+| [Log Analytics Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。  |
+| [Log Analytics Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 |
 | masterreader | ユーザーがあらゆるものを表示できるようにします。ただし、変更することはできません。 |
-| [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。 |
+| [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。|
 | [監視メトリック パブリッシャー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします。 |
 | [Monitoring Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | すべての監視データを読み取ることができます。 |
 | リソース ポリシーの共同作成者 (プレビュー) | リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。  |
@@ -103,9 +89,9 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 'Editing' includes creating, deleting and updating:
 
-* Resources
-* Web tests
-* アラート
+* リソース
+* Web テスト
+* 警告
 * 連続エクスポート
 
 #### <a name="select-the-user"></a>ユーザーを選択する
@@ -115,7 +101,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [Azure でのロール ベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)
+* [Azure の役割基準のアクセス制御](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>ロール メンバーシップを特定する PowerShell クエリ
 
@@ -130,22 +116,22 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>所有者と共同作成者について特定の Application Insights リソースのコンテキスト内でクエリを実行する
 
 ```powershell
-$resourceGroup = “RGNAME”
-$resourceName = “AppInsightsName”
-$resourceType = “microsoft.insights/components”
+$resourceGroup = "RGNAME"
+$resourceName = "AppInsightsName"
+$resourceType = "microsoft.insights/components"
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>所有者と共同作成者について特定の Application Insights リソースのコンテキスト内でクエリを実行する
 
 ```powershell
-$resourceGroup = “RGNAME”
+$resourceGroup = "RGNAME"
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../../azure-resource-manager/resource-group-overview.md
+[group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md

@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、PHP で Face API を使って画像から顔を検出します。
+description: このクイックスタートでは、PHP で Face REST API を使って画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490448"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403361"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 
@@ -23,7 +23,7 @@ ms.locfileid: "59490448"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
 - PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) パッケージ。
 - PHP 対応の Web ブラウザー。 設定していない場合は、マシンに [XAMPP](https://www.apachefriends.org/) をインストールして設定することで、これを設定できます。
@@ -43,17 +43,15 @@ ms.locfileid: "59490448"
 
 ## <a name="write-the-php-script"></a>PHP スクリプトを作成する
 
-ドキュメントの `body` 要素内に次のコードを追加します。 これにより、URL フィールドと **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
+ドキュメントの `body` 要素内に次のコードを追加します。 このコードにより、URL フィールド、 **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
 
 ```php
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
 
-// You must use the same location in your REST call as you used to obtain
-// your subscription keys. For example, if you obtained your subscription keys
-// from westus, replace "westcentralus" in the URL below with "westus".
-$uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/';
+// Replace <My Endpoint String> with the string in your endpoint URL.
+$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
 
 $imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
@@ -101,7 +99,9 @@ catch (HttpException $ex)
 ?>
 ```
 
-`subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。この文字列は、実際の用途に合わせて変更してください。
+`subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なエンドポイント文字列を含むように変更する必要があります。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。この文字列は、実際の用途に合わせて変更してください。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>スクリプトを実行する
 
@@ -286,9 +286,9 @@ PHP に対応した Web ブラウザーでファイルを開きます。 次の�
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-画像の中から人の顔を検出し、顔の境界を四角形で囲んで、属性 (年齢、性別など) を返す Face API について考察します。
+画像内の人の顔を検出し、顔の境界を四角形で囲んで、属性 (年齢、性別など) を返すために使用する Face API について考察します。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

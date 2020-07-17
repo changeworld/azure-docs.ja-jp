@@ -1,24 +1,27 @@
 ---
 title: Key Vault を使用し Azure Cosmos DB キーを格納してアクセスする
 description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列、キー、エンドポイントを格納し、アクセスします。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 157ccd284c25cb5c7275aa942823ade2a40795cc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239850"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618768"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 
-アプリケーションで Azure Cosmos DB を使用すると、アプリケーションの構成ファイル内のエンドポイントとキーを使用して、データベース、コレクション、ドキュメントにアクセスできます。  ただし、キーと URLをアプリケーション コードに直接入力するのは安全ではありません。すべてのユーザーがクリア テキスト形式で入手できるためです。 セキュリティで保護されたメカニズムを通してエンドポイントとキーを提供する必要があります。 ここで Azure Key Vault が、アプリケーション シークレットを安全に格納および管理する際に役立ちます。
+>[!IMPORTANT]
+> Azure Cosmos DB キーにアクセスするために推奨されるソリューションは、[システムによって割り当てられたマネージド ID](managed-identity-based-authentication.md) を使用することです。 サービスでマネージド ID を利用できない場合は、[証明書ベースのソリューション](certificate-based-authentication.md)を使用します。 マネージド ID ソリューションと証明書ベースのソリューションのどちらもニーズを満たしていない場合は、次のキー コンテナー ソリューションを使用してください。
+
+アプリケーションで Azure Cosmos DB を使用すると、アプリの構成ファイル内のエンドポイントとキーを使用して、データベース、コレクション、ドキュメントにアクセスできます。  ただし、キーと URL をアプリケーション コードに直接入力するのは安全ではありません。理由は、すべてのユーザーがクリア テキスト形式でそれらを入手できるためです。 セキュリティで保護されたメカニズムを通してエンドポイントとキーを提供する必要があります。 ここで Azure Key Vault が、アプリケーション シークレットを安全に格納および管理する際に役立ちます。
 
 Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るためには、次の手順が必要です。
 
@@ -30,11 +33,11 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 ## <a name="create-a-key-vault"></a>Key Vault の作成
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。  
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。  
 2. **[リソースの作成] > [セキュリティ] > [Key Vault]** を選択します。  
 3. **[キー コンテナーの作成]** セクションで、次の情報を入力します。  
    * **[名前]:** Key Vault の一意の名前を指定します。  
-   * **[サブスクリプション]:** 使用するサブスクリプションを選択します。  
+   * **サブスクリプション:** 使用するサブスクリプションを選択します。  
    * **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。  
    * [場所] プルダウン メニューで、場所を選択します。  
    * 他のオプションは既定値のままにしておきます。  
@@ -89,7 +92,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
  
 同様に、Key Vault にアクセスするユーザーを追加できます。 自分自身を Key Vaultに追加する必要があります。これには、**アクセスポリシー** をクリックしてから、Visual Studio でアプリケーションを実行するために必要なすべてのアクセス許可を付与します。 このアプリケーションをデスクトップから実行するとき、自分の ID が使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Cosmos DB のファイアウォールを構成するには、[ファイアウォールのサポート](firewall-support.md)に関する記事を参照してください。
 * 仮想ネットワーク サービス エンドポイントを構成するには、[VNet サービス エンドポイントを使用してアクセスをセキュリティで保護する](vnet-service-endpoint.md)方法に関する記事をご覧ください。

@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更する
-description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更する
+title: シングルマスター Azure Cosmos アカウントのフェールオーバー優先度を変更する PowerShell スクリプト
+description: Azure PowerShell スクリプト サンプル - Azure Cosmos DB シングルマスター アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりします
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/06/2019
+ms.topic: sample
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2e6fefbbd3db23a41fc64021b19a412d7a12b322
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245564"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366118"
 ---
-# <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのフェールオーバー優先度を変更する
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB シングルマスター アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "66245564"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
+> [!NOTE]
+> 手動フェールオーバーは、`failoverPriority=0` のリージョンを変更した場合にトリガーされ、また、手動フェールオーバー用に構成されたアカウントに対してのみ実行できます。 それ以外は、どのリージョンを変更しても、Cosmos アカウントのフェールオーバー優先度が変更されるだけです。
+> [!NOTE]
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -35,15 +40,16 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | リソースに対するアクションを呼び出します。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB アカウントを一覧表示します。または、指定された Cosmos DB アカウントを取得します。 |
+| [Update-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Cosmos DB アカウントのリージョンに対するフェールオーバーの優先順位を更新します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

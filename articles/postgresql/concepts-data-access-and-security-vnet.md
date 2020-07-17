@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server での仮想ネットワーク (VNet) サービス エンドポイントの概要
-description: Azure Database for PostgreSQL - Single Server で仮想ネットワーク (VNet) サービス エンドポイントがどのように機能するかについて説明します。
-author: bolzmj
-ms.author: mbolz
+title: 仮想ネットワーク規則 - Azure Database for PostgreSQL - Single Server
+description: 仮想ネットワーク（Vnet）サービスエンドポイントを使用して Azure Database for PostgreSQL-Single Server に接続する方法を学びます。
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073473"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75965837"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "65073473"
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**仮想ネットワーク サービス エンドポイント:**[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
+**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
 
 **仮想ネットワーク規則:** Azure Database for PostgreSQL サーバーの仮想ネットワーク規則は、Azure Database for PostgreSQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for PostgreSQL の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
@@ -53,13 +53,13 @@ ms.locfileid: "65073473"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
-接続のセキュリティ ペインには、**[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
+接続のセキュリティ ペインには、 **[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
 Azure Database for PostgreSQL のファイアウォールでは、Azure Database for PostgreSQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、*動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
+お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
@@ -89,8 +89,8 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 仮想ネットワーク サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
-- **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
-- **データベース管理者:**&nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for PostgreSQL サーバーに追加します。
+- **ネットワーク管理者:** &nbsp; エンドポイントを有効にします。
+- **データベース管理者:** &nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for PostgreSQL サーバーに追加します。
 
 *RBAC による代替:*
 
@@ -102,6 +102,7 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
+> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 
@@ -139,14 +140,14 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク規則機能�
 - [Azure 仮想ネットワーク][vm-virtual-network-overview]
 - [Azure 仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VNet ルールの作成については、以下の記事を参照してください。
 - [Azure portal を使用した Azure Database for PostgreSQL VNet ルールの作成と管理](howto-manage-vnet-using-portal.md)
 - [Azure CLI を使用した Azure Database for PostgreSQL VNet ルールの作成と管理](howto-manage-vnet-using-cli.md)
 
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -159,3 +160,5 @@ VNet ルールの作成については、以下の記事を参照してくださ
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
+
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

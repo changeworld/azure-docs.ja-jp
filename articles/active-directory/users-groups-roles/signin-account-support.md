@@ -1,24 +1,24 @@
 ---
-title: Azure AD サインイン ページで Microsoft アカウントが受け入れられるかどうかを確認する方法 | Microsoft Docs
+title: Azure AD サインイン ページで Microsoft アカウントが受け入れられるか | Microsoft Docs
 description: サインイン中にユーザー名の参照が画面のメッセージに反映されるしくみ
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491597"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74024282"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Azure Active Directory での Microsoft アカウントのサインイン オプション
 
@@ -34,6 +34,6 @@ Azure Active Directory (Azure AD) の Microsoft 365 サインイン ページで
 
 [追加のサインイン オプションは個人用の Microsoft アカウントに対してのみ機能します](https://azure.microsoft.com/updates/microsoft-account-signin-options/ )が、職場または学校アカウント リソースへのサインインには使用できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サインイン ブランドのカスタマイズ](../fundamentals/add-custom-domain.md)

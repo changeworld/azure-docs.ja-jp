@@ -1,26 +1,19 @@
 ---
-title: Windows での SSH キーを使用した Linux VM への接続 | Microsoft Docs
+title: Windows での SSH キーを使用した Linux VM への接続
 description: Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005678"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757999"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -48,7 +41,7 @@ Windows コンピューターでは、それに相当する SSH コマンドが�
 * [Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)をインストールすることにより、Visual Studio Code 内からターミナルとして Cloud Shell にアクセスします。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
-以下のセクションでは、Windows で SSH キー ペアを作成する 2 つのオプションについて説明します。 シェル コマンド (`ssh-keygen`) または GUI ツール (PuTTYgen) を使用できます。
+以下のセクションでは、Windows で SSH キー ペアを作成する 2 つのオプションについて説明します。 シェル コマンド (`ssh-keygen`) または GUI ツール (PuTTYgen) を使用できます。 また、Powershell を使用してキーを作成している場合は、公開キーを ssh.com(SECSH) 形式でアップロードすることにも注意してください。 CLI を使用している場合は、アップロードの前にキーを OpenSSH 形式に変換します。 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>ssh-keygen で SSH キーを作成する
 
@@ -78,11 +71,11 @@ PuTTYgen で SSH RSA キー ペアを作成するには:
 
     ![PuTTY 公開キー ファイルの保存](./media/ssh-from-windows/save-public-key.png)
 
-7. PuTTy の秘密キー形式 (.ppk ファイル) で秘密キーを保存する必要がある場合は、**[Save private key]\(秘密キーの保存\)** を選択します。 後で PuTTY を使用して VM への SSH 接続を行うときに .ppk ファイルが必要になります。
+7. PuTTy の秘密キー形式 (.ppk ファイル) で秘密キーを保存する必要がある場合は、 **[Save private key]\(秘密キーの保存\)** を選択します。 後で PuTTY を使用して VM への SSH 接続を行うときに .ppk ファイルが必要になります。
 
     ![PuTTY 秘密キー ファイルを保存する](./media/ssh-from-windows/save-ppk-file.png)
 
-    多くの SSH クライアントによって使われる秘密キーの形式である OpenSSH 形式で秘密キーを保存する場合は、**[変換]** > **[Export OpenSSH key]\(OpenSSH キーのエクスポート\)** を選択します。
+    多くの SSH クライアントによって使われる秘密キーの形式である OpenSSH 形式で秘密キーを保存する場合は、 **[変換]**  >  **[Export OpenSSH key]\(OpenSSH キーのエクスポート\)** を選択します。
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>VM をデプロイするときに SSH 公開キーを提供する
 
@@ -118,13 +111,13 @@ VM が Just-In-Time アクセス ポリシーを使用している場合、VM �
 
     ![新しい PuTTY 接続の開始](./media/ssh-from-windows/putty-new-connection.png)
 
-3. **[接続]** > **[SSH]** > **[認証]** カテゴリを選択します。 PuTTY の秘密キー (.ppk ファイル) を参照して選択します。
+3. **[接続]**  >  **[SSH]**  >  **[認証]** カテゴリを選択します。 PuTTY の秘密キー (.ppk ファイル) を参照して選択します。
 
     ![認証用の PuTTY 秘密キーを選択する](./media/ssh-from-windows/putty-auth-dialog.png)
 
 4. **[Open]\(開く\)** をクリックして、VM に接続します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * SSH キーの使用に関する詳細な手順、オプション、および高度な例については、[SSH キー ペアの詳細な作成手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 

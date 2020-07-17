@@ -1,24 +1,21 @@
 ---
-title: コグニティブ検索パイプラインで入出力を参照する - Azure Search
-description: 注釈の構文と、Azure Search でのコグニティブ検索パイプラインのスキルセットの入力と出力で注釈を参照する方法について説明します。
-services: search
-manager: pablocas
-author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: スキルセットで入力と出力を参照する
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の AI エンリッチメント パイプラインでの注釈の構文と、スキルセットの入力と出力で注釈を参照する方法について説明します。
+manager: nitinme
+author: LuisCabrer
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023869"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74113873"
 ---
-# <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Cognitive Search スキルセットで注釈を参照する方法
 
 この記事では、さまざまなシナリオを説明する例を使用して、スキル定義で注釈を参照する方法を学習します。 ドキュメントの内容がスキルのセットを通過するにつれて、注釈が豊富になっていきます。 注釈は、ダウンストリームをさらに豊富にするための入力として使用することも、インデックスの出力フィールドにマッピングすることもできます。 
  
@@ -34,7 +31,7 @@ ms.locfileid: "65023869"
 | エンリッチメント コンテキスト | どの要素がエンリッチされるかという観点での、エンリッチメントが行われるコンテキストです。 既定では、エンリッチメント コンテキストは `"/document"` レベルであり、個々のドキュメントがスコープになります。 スキルを実行すると、そのスキルの出力は、[定義されたコンテキストのプロパティ](#example-2)になります。|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>例 1:単純な注釈参照
+## <a name="example-1-simple-annotation-reference"></a>例 1: 単純な注釈参照
 
 Azure BLOB ストレージに、エンティティ認識を使用して抽出する人名への参照を含む、さまざまなファイルがあるとします。 以下のスキル定義では、`"/document/content"` はドキュメント全体のテキスト表現であり、"people" は人物として識別されるエンティティのフル ネームの抽出です。
 
@@ -62,7 +59,7 @@ Azure BLOB ストレージに、エンティティ認識を使用して抽出す
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>例 2:ドキュメント内の配列の参照
+## <a name="example-2-reference-an-array-within-a-document"></a>例 2: ドキュメント内の配列の参照
 
 この例は、前の例を基に構築されており、同じドキュメントに対して複数回エンリッチメント ステップを呼び出す方法を示しています。 前の例では、1 つのドキュメントから 10 人の名前を持つ文字列の配列が生成されたものとします。 妥当な次のステップは、フル ネームから姓を抽出する 2 回目のエンリッチメントでしょう。 10 個の名前があるため、このステップをこのドキュメントで 10 回、各人に対して 1 回ずつ呼び出します。 
 
@@ -94,7 +91,7 @@ Azure BLOB ストレージに、エンティティ認識を使用して抽出す
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>例 3:配列内のメンバーの参照
+## <a name="example-3-reference-members-within-an-array"></a>例 3: 配列内のメンバーの参照
 
 場合によっては、特定の種類のすべての注釈をグループ化して、特定のスキルに渡す必要があります。 例 2 で抽出されたすべての姓の中から最も一般的な姓を特定する、架空のカスタム スキルを考えてみましょう。 カスタム スキルに姓だけを提供するには、コンテキストを `"/document"`、入力を `"/document/people/*/lastname"` と指定します。
 
@@ -123,7 +120,7 @@ Azure BLOB ストレージに、エンティティ認識を使用して抽出す
 
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 + [エンリッチメント パイプラインにカスタム スキルを統合する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

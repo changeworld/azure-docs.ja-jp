@@ -1,0 +1,113 @@
+- name: IoT プラグ アンド プレイのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: IoT プラグ アンド プレイとは
+      href: overview-iot-plug-and-play.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: デバイスを作成する
+      items:
+        - name: C Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: デバイスを IoT Hub に接続する
+      items:
+        - name: C Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
+    - name: デバイスを IoT Central に接続する
+      href: ../iot-central/core/tutorial-connect-pnp-device.md
+    - name: ソリューション内のデバイスに接続する
+      items:
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
+- name: チュートリアル
+  items:
+    - name: VS Code を使用してデバイスを作成する
+      href: tutorial-pnp-visual-studio-code.md
+    - name: 認定に対応したデバイスを構築する
+      href: tutorial-build-device-certification.md
+    - name: デバイスの認定を受ける
+      href: tutorial-certification-test.md
+- name: 概念
+  items:
+    - name: 用語集
+      href: iot-plug-and-play-glossary.md
+    - name: 開発者ガイド
+      href: concepts-developer-guide.md
+    - name: 共通インターフェイス
+      href: concepts-common-interfaces.md
+    - name: モデル検出
+      href: concepts-model-discovery.md
+    - name: 制限とクォータ
+      href: concepts-limits-quotas.md
+- name: 操作方法ガイド
+  items:
+    - name: Visual Studio と Visual Studio Code を使用して開発する
+      href: howto-develop-with-vs-vscode.md
+    - name: IoT エクスプローラーをインストールする
+      href: howto-install-iot-explorer.md
+    - name: Azure CLI 拡張機能をインストールする
+      href: howto-install-pnp-cli.md
+    - name: IoT ポータルにオンボードする
+      href: howto-onboard-portal.md
+    - name: モデルを管理する
+      href: howto-manage-models.md
+    - name: デバイスに接続して対話する
+      href: howto-develop-solution.md
+- name: リファレンス
+  items:
+    - name: ライブラリと SDK
+      href: libraries-sdks.md
+    - name: REST API
+      items:
+        - name: デジタル ツイン
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+        - name: デジタル ツインのサービス
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+        - name: デジタル ツインのモデル リポジトリ
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
+        - name: REST セキュリティ トークンを生成する
+          href: howto-generate-sas-token.md
+- name: リソース
+  items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

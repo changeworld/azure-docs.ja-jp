@@ -3,25 +3,25 @@ title: アプリケーション プロキシを使用したシングル サイ�
 description: Azure AD アプリケーション プロキシを使用してシングル サインオンを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: celested
+ms.date: 08/13/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652520"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583130"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -55,27 +55,38 @@ IWA アプリケーションでのシングル サインオンに着手する前
 Active Directory の構成は、アプリケーション プロキシ コネクタとアプリケーション サーバーが同じドメイン内にあるかどうかによって異なります。
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>同じドメインにあるコネクタとアプリケーション サーバー
-1. Active Directory で、**[ツール]** > **[ユーザーとコンピューター]** の順に移動します。
+1. Active Directory で、 **[ツール]**  >  **[ユーザーとコンピューター]** の順に移動します。
 2. コネクタを実行しているサーバーを選択します。
-3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
+3. 右クリックし、 **[プロパティ]**  >  **[委任]** を選択します。
 4. **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** をクリックします。 
-5. **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。 これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
+5. **[任意の認証プロトコルを使う]** を選択します。
+6. **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。 これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
 
    ![Connector-SVR のプロパティ ウィンドウのスクリーン ショット](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>異なるドメインにあるコネクタとアプリケーション サーバー
 1. ドメイン間の KCD を使用するための前提条件の一覧については、「 [ドメイン間の Kerberos の制約付き委任](https://technet.microsoft.com/library/hh831477.aspx)」を参照してください。
-2. コネクタ サーバーの `principalsallowedtodelegateto` プロパティを使って、アプリケーション プロキシを有効にし、コネクタ サーバーを代行します。 アプリケーション サーバーは `sharepointserviceaccount`、委任サーバーは `connectormachineaccount` です。 Windows 2012 R2 では、例としてこのコードを使います。
+2. Web アプリケーションのサービス アカウント (コンピューターまたは専用ドメインのユーザー アカウント) の `principalsallowedtodelegateto` プロパティを使用して、アプリケーション プロキシ (コネクタ) からの Kerberos 認証の委任を有効にします。 アプリケーション サーバーは `webserviceaccount` のコンテキストで実行され、委任サーバーは `connectorcomputeraccount` です。 `webserviceaccount` のドメイン内の (Windows Server 2012 R2 以降を実行している) ドメイン コントローラーで次のコマンドを実行します。 両方のアカウントにフラット名 (UPN 以外) を使用します。
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   `webserviceaccount` がコンピューター アカウントの場合は、次のコマンドを使用します。
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount` には、SPS コンピューター アカウントか、SPS アプリ プールの実行に使用されているサービス アカウントを指定できます。
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   `webserviceaccount` がユーザー アカウントの場合は、次のコマンドを使用します。
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Configure single sign-on 
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
@@ -89,11 +100,13 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 
 ## <a name="sso-for-non-windows-apps"></a>Windows 以外のアプリの SSO
 
-Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。 要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。 このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。 次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。 
+Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。 要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。 このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。 
 
-このような要求を送信する方法を定義するプロトコルはいくつかあります。 ほとんどの非 Windows サーバーは、SPNEGO でのネゴシエートを予期します。 このプロトコルは Azure AD アプリケーション プロキシでサポートされていますが、既定で無効になっています。 サーバーは、SPNEGO または標準 KCD のどちらかに構成できますが、両方に構成することはできません。
+次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。 
 
-SPNEGO 用にコネクタ マシンを構成する場合は、そのコネクタ グループ内の他のすべてのコネクタも SPNEGO で構成されていることを確認してください。 標準 KCD を使用するアプリケーションは、SPNEGO 用に構成されていない他のコネクタを介してルーティングする必要があります。
+このような要求で Kerberos チケットを送信する方法を定義するメカニズムはいくつかあります。 Windows 以外のほとんどのサーバーでは、SPNEGO トークンの形式でそれを受け取ることが想定されています。 このメカニズムは Azure AD アプリケーション プロキシでサポートされていますが、既定で無効になっています。 SPNEGO と標準の Kerberos トークンの両方ではなくいずれかに対してコネクタを構成することができます。
+
+SPNEGO 用にコネクタ マシンを構成する場合は、そのコネクタ グループ内の他のすべてのコネクタも SPNEGO で構成されていることを確認してください。 標準 Kerberos トークンを使用するアプリケーションは、SPNEGO 用に構成されていない他のコネクタを介してルーティングする必要があります。
  
 
 SPNEGO を有効にするには:
@@ -111,7 +124,7 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 非 Windows アプリは通常、ドメインのメール アドレスの代わりに、ユーザー名または SAM アカウント名を使います。 お使いのアプリケーションでこの状況が当てはまる場合、指定されたログイン ID フィールドを構成して、クラウド ID をアプリケーション ID に接続する必要があります。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>さまざまなオンプレミス ID とクラウド ID の操作
-アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 このようになっていない場合でも、シングル サインオンに KCD を使うことができます。 アプリケーションごとに**指定されたログイン ID** を構成し、シングル サインオンを実行するときに使う ID を指定します。  
+アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 しかし、環境によっては、企業ポリシーやアプリケーションの依存関係が原因で、サインインに代替 ID を使用する必要がある場合があります。 このような場合でも、シングル サインオンに引き続き KCD を使用できます。 アプリケーションごとに**指定されたログイン ID** を構成し、シングル サインオンを実行するときに使う ID を指定します。  
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 
@@ -141,11 +154,10 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 SSO プロセスにエラーがある場合は、「[トラブルシューティング](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
 ただし、場合によっては、バックエンド アプリケーションが他のさまざまな HTTP 応答に応答している間に、要求が正常に送信されることがあります。 このような場合のトラブルシューティングは、アプリケーション プロキシ セッションのイベント ログで、コネクタ コンピューターのイベント番号 24029 を調べることから始める必要があります。 委任のために使用されたユーザー ID は、イベント詳細の [ユーザー] フィールドに表示されます。 セッション ログを有効にするには、イベント ビューアーで [表示] メニューの **[分析およびデバッグ ログの表示]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
 
 
 最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](https://blogs.technet.com/b/applicationproxyblog/)
-

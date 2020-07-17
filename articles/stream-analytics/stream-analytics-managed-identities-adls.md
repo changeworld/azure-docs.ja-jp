@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen1 出力に対して Azure Stream Analytics ジョブを認証する
+title: Azure Data Lake Storage Gen1 に対して Azure Stream Analytics を認証する
 description: この記事では、マネージド ID を使用して、Azure Data Lake Storage Gen1 出力に対してご自身の Azure Stream Analytics ジョブを認証する方法について説明します。
 author: mamccrea
 ms.author: mamccrea
@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228055"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
 
@@ -22,9 +22,9 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
-1. Azure portal で、新しい Stream Analytics ジョブを作成するか既存のジョブを開くことから始めます。 画面の左側にあるメニュー バーで、**[構成]** の下にある **[マネージド ID]** を選択します。
+1. Azure portal で、新しい Stream Analytics ジョブを作成するか既存のジョブを開くことから始めます。 画面の左側にあるメニュー バーで、 **[構成]** の下にある **[マネージド ID]** を選択します。
 
    ![Stream Analytics のマネージド ID の構成](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
@@ -38,27 +38,27 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 3. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、**[マネージド ID]** を選択します。
 
-4. 残りのプロパティを入力します。 ADLS 出力の作成の詳細については、[Stream Analytics を使用した Data Lake Store 出力の作成](../data-lake-store/data-lake-store-stream-analytics.md)に関する記事を参照してください。 操作が終了したら、**[OK]** をクリックします。
+4. 残りのプロパティを入力します。 ADLS 出力の作成の詳細については、[Stream Analytics を使用した Data Lake Store 出力の作成](../data-lake-store/data-lake-store-stream-analytics.md)に関する記事を参照してください。 操作が終了したら、 **[OK]** をクリックします。
 
    ![Azure Data Lake Storage の構成](./media/stream-analytics-managed-identities-adls/stream-analytics-configure-adls.png)
  
-5. ADLS Gen1 の [概要] ページに移動し、**[データ エクスプローラー]** をクリックします。
+5. ADLS Gen1 の [概要] ページに移動し、 **[データ エクスプローラー]** をクリックします。
 
    ![Data Lake Storage の [概要] での構成](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-overview.png)
 
-6. [データ エクスプローラー] ウィンドウで、**[アクセス]** をクリックし、[アクセス] ウィンドウで **[追加]** をクリックします。
+6. [データ エクスプローラー] ウィンドウで、 **[アクセス]** をクリックし、[アクセス] ウィンドウで **[追加]** をクリックします。
 
    ![Data Lake Store のアクセスの構成](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
 
-7. **[ユーザーまたはグループの選択]** ウィンドウで、サービス プリンシパルの名前をテキスト ボックスに入力します。 サービス プリンシパルの名前は、対応する Stream Analytics ジョブの名前でもあることに注意してください。 プリンシパル名の入力を開始すると、テキスト ボックスの下に該当するプリンシパル名が表示されます。 目的のサービス プリンシパル名を選択し、**[選択]** をクリックします。
+7. **[ユーザーまたはグループの選択]** ウィンドウで、サービス プリンシパルの名前をテキスト ボックスに入力します。 サービス プリンシパルの名前は、対応する Stream Analytics ジョブの名前でもあることに注意してください。 プリンシパル名の入力を開始すると、テキスト ボックスの下に該当するプリンシパル名が表示されます。 目的のサービス プリンシパル名を選択し、 **[選択]** をクリックします。
 
    ![サービス プリンシパル名の選択](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. **[アクセス許可]** ウィンドウで、**[書き込み]** と **[実行]** のアクセス許可をオンにし、割当先として **[このフォルダーとすべての子]** を選択します。 次に、**[OK]** をクリックします。
+8. **[アクセス許可]** ウィンドウで、 **[書き込み]** と **[実行]** のアクセス許可をオンにし、割当先として **[このフォルダーとすべての子]** を選択します。 次に、 **[OK]** をクリックします。
 
    ![書き込みと実行のアクセス許可を選択](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
-9. 次のように、サービス プリンシパルが、**[アクセス]** ウィンドウの **[割り当てられたアクセス許可]** の下に表示されます。 これで、Stream Analytics ジョブに戻って、ジョブを開始できます。
+9. 次のように、サービス プリンシパルが、 **[アクセス]** ウィンドウの **[割り当てられたアクセス許可]** の下に表示されます。 これで、Stream Analytics ジョブに戻って、ジョブを開始できます。
 
    ![ポータルの Stream Analytics アクセス リスト](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
@@ -66,7 +66,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>Visual Studio 用の Stream Analytics ツール
 
-1. JobConfig.json 内で、**[システム割り当て ID を使用]** を **[True]** に設定します。
+1. JobConfig.json 内で、 **[システム割り当て ID を使用]** を **[True]** に設定します。
 
    ![Stream Analytics ジョブ構成のマネージド ID](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
@@ -74,7 +74,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
    ![ADLS 出力のマネージド ID](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
-3. 残りのプロパティを入力して、**[保存]** をクリックします。
+3. 残りのプロパティを入力して、 **[保存]** をクリックします。
 
 4. クエリ エディターで **[Azure に送信]** をクリックします。
 
@@ -180,9 +180,9 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 1. **マルチテナント アクセス**: 特定の Stream Analytics ジョブに対して作成されたサービス プリンシパルは、ジョブが作成された Azure Active Directory テナント上に配置され、別の Azure Active Directory テナントに配置されたリソースに対しては使用できません。 そのため、MSI は、Azure Stream Analytics ジョブと同じ Azure Active Directory テナント内にある ADLS ジェネレーション 1 リソースに対してのみ使用できます。 
 
-2. **[ユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md)**: サポートされていません。 つまりユーザーは、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics によって生成されます。
+2. **[ユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md)** : サポートされていません。 つまりユーザーは、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics によって生成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics を使用して Data Lake Store 出力を作成する](../data-lake-store/data-lake-store-stream-analytics.md)
 * [Visual Studio で Stream Analytics クエリをローカルでテストする](stream-analytics-vs-tools-local-run.md)

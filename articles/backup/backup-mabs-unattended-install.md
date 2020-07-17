@@ -1,19 +1,14 @@
 ---
 title: Azure Backup Server V2 のサイレント インストール
 description: PowerShell スクリプトを使用して、Azure Backup Server V2 をサイレント モードでインストールします。 この種類のインストールは無人インストールとも呼ばれます。
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: raynew
-ms.openlocfilehash: 66ed5765a91b607bc5b765926c5df87d13ff6a24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109850"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74172242"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server の無人インストールの実行
 
@@ -27,7 +22,7 @@ Azure Backup Server の無人インストールの実行について説明しま
 
 2. MABSSetup.ini ファイルに次のコードを貼り付けます。 ブラケット (\< \>) 内のテキストを環境の値に置き換えます。 テキスト例を次に示します。
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -50,7 +45,7 @@ Azure Backup Server の無人インストールの実行について説明しま
 
 3. ファイルを保存します。 次に、インストール サーバーの管理者特権でのコマンド プロンプトで、次のコマンドを入力します。
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 
@@ -60,7 +55,8 @@ Azure Backup Server の無人インストールの実行について説明しま
 **/i**:インストール パス</br>
 **/x**:アンインストール パス</br>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 Backup Server をインストールしたら、サーバーを準備する方法、またはワークロードの保護を開始する方法について見ていきましょう。
 
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)

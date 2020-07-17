@@ -1,64 +1,62 @@
 ---
-title: Linux での Python アプリの作成 - Azure App Service | Microsoft Docs
-description: Azure App Service on Linux で、初めての Python の Hello World アプリを数分でデプロイします。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: クイック スタート:Linux Python アプリを作成する
+description: App Service で Linux コンテナーに初めての Python アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.date: 04/03/2020
+ms.custom: seo-python-october2019, cli-validate
+ms.openlocfilehash: 5b055c3ed93d5f093295b52c7a28a73e242bfe75
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607774"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690876"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
-このクイック スタートでは、高度にスケーラブルな自己適用型の Web ホスティング サービスである [App Service on Linux](app-service-linux-intro.md) にシンプルな Python アプリをデプロイします。 インタラクティブなブラウザーベースの Azure Cloud Shell を通じて Azure のコマンド ライン インターフェイス ([Azure CLI](/cli/azure/install-azure-cli)) を使用するので、以下の手順は、Mac、Linux、Windows のどのコンピューターからでも使用できます。
+このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](app-service-linux-intro.md) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上で、ローカルの [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
 
-![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
+IDE を使用してアプリをデプロイする場合は、[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/python/tutorial-deploy-app-service-on-linux-01)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 もサポートされています)
+- <a href="https://git-scm.com/downloads" target="_blank">Git</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 以降。 バージョンを確認するには `az --version` を実行します。
 
-* <a href="https://www.python.org/downloads/" target="_blank">Python 3.7 をインストールする</a>
-* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-* Azure サブスクリプション。 まだお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+## <a name="download-the-sample"></a>サンプルのダウンロード
 
-## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
+ターミナル ウィンドウで、次のコマンドを実行して、サンプル アプリケーションをお使いのローカル コンピューターに複製します。 
 
-ターミナル ウィンドウで、次のコマンドを実行して、ローカル コンピューターにサンプル アプリケーションを複製し、サンプル コードのあるディレクトリに移動します。
-
-```bash
+```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
+```
+
+次に、そのフォルダーに移動します。
+
+```terminal
 cd python-docs-hello-world
 ```
 
-リポジトリには、*application.py* が含まれています。これによって、リポジトリに Flask アプリが含まれていることが App Service に知らされます。 詳細については、「[コンテナーのスタートアップ プロセスとカスタマイズ](how-to-configure-python.md)」を参照してください。
+このリポジトリには、*application.py* ファイルが含まれています。これによって、コードに Flask アプリが含まれていることが App Service に伝えられます。 詳細については、「[コンテナーのスタートアップ プロセスとカスタマイズ](how-to-configure-python.md)」を参照してください。
 
-## <a name="run-the-app-locally"></a>アプリをローカルで実行する
+## <a name="run-the-sample"></a>サンプルを実行する
 
-アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、次のコマンドを使用して必要な依存関係をインストールし、組み込みの開発サーバーを起動します。 
+ターミナル ウィンドウで、(お使いのオペレーティング システムに合わせて) 次のコマンドを使用し、必要な依存関係をインストールして、組み込みの開発サーバーを起動します。 
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
-# In Bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-FLASK_APP=application.py flask run
+export FLASK_APP=application.py
+flask run
+```
 
-# In PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
 py -3 -m venv env
 env\scripts\activate
 pip install -r requirements.txt
@@ -66,143 +64,175 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
-サンプル アプリケーションから "**Hello World!**"  というメッセージがページに表示されます。
-
-![ローカルで実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
-
-ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="download-the-sample"></a>サンプルのダウンロード
-
-Cloud Shell で、クイックスタートのディレクトリを作成し、それに変更します。
-
-```bash
-mkdir quickstart
-
-cd quickstart
+```cmd
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+SET FLASK_APP=application.py
+flask run
 ```
 
-次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
+---
 
-```bash
-git clone https://github.com/Azure-Samples/python-docs-hello-world
+Web ブラウザーを開き、`http://localhost:5000/` のサンプル アプリに移動します。 アプリによって、"**Hello World!** " というメッセージが表示されます。
+
+![サンプル Python アプリをローカルで実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
+
+ターミナル ウィンドウで **Ctrl**+**C** キーを押して、Web サーバーを終了します。
+
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+Azure CLI には、コマンド ラインから Azure リソースをプロビジョニングおよび管理するための、ローカル ターミナルから使用できる便利なコマンドが、多数用意されています。 コマンドを使用して、ブラウザーの Azure portal を通じて実行するのと同じタスクを完了することができます。 また、スクリプト内で CLI コマンドを使用して、管理プロセスを自動化することもできます。
+
+Azure CLI で Azure コマンドを実行するには、最初に `az login` コマンドを使ってサインインする必要があります。 このコマンドを実行すると、お客様の資格情報を収集するためにブラウザーが開かれます。
+
+```azurecli
+az login
 ```
 
-実行中、次の例のような情報が表示されます。
+## <a name="deploy-the-sample"></a>サンプルのデプロイ
 
-```bash
-Cloning into 'python-docs-hello-world'...
-remote: Enumerating objects: 43, done.
-remote: Total 43 (delta 0), reused 0 (delta 0), pack-reused 43
-Unpacking objects: 100% (43/43), done.
-Checking connectivity... done.
+[`az webapp up`](/cli/azure/webapp#az-webapp-up) コマンドを実行すると、App Service 上に Web アプリが作成され、コードがデプロイされます。
+
+サンプル コードが含まれている *python-docs-hello-world* フォルダーで、次の `az webapp up` コマンドを実行します。 `<app-name>` を、グローバルに一意であるアプリ名に置き換えてください ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。
+
+
+```azurecli
+az webapp up --sku F1 -n <app-name>
 ```
+> [!CAUTION]
+> **Azure-CLI バージョン 2.5.0** を使用している場合、前のバージョンにはなかった不具合が `az webapp up` に存在します。`-l <location-name>` パラメーターが指定されないと、特定のシナリオでエラーが発生します。 この問題は、[こちらで追跡](https://github.com/Azure/azure-cli/issues/13257)されています。  
+> 
+>使用している Azure CLI のバージョンは、`az --version` コマンドを使用して確認できます。
+>
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+`--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略すると、代わりに Premium レベルを使用することができます。その場合、時間単位のコストが発生します。
 
-サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
+オプションで引数 `-l <location-name>` を含めることができます。ここで、`<location_name>` は、**centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** などの Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
 
-次の例の `<app-name>` は一意のアプリ名に置き換えます。
+`az webapp up` コマンドの実行が完了するまでに、数分かかる場合があります。 実行中、次の例のような情報が表示されます。ここで、`<app-name>` は、前に入力した名前です。
 
-```bash
-cd python-docs-hello-world
-
-az webapp up -n <app-name>
-```
-
-このコマンドの実行には、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
-
-```json
-The behavior of this command has been altered by the following extension: webapp
-Creating Resource group 'appsvc_rg_Linux_CentralUS' ...
+<pre>
+Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
-Creating App service plan 'appsvc_asp_Linux_CentralUS' ...
+Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
-Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Creating app '&lt;app-name&gt;' ....
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
-  "name": "<app-name>",
+  "URL": "http://&lt;app-name&gt;.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
+  "name": "&lt;app-name&gt;",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_CentralUS ",
-  "serverfarm": "appsvc_asp_Linux_CentralUS",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
-Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
+URL `http://<app-name>.azurewebsites.net` を使って、お使いの Web ブラウザーでデプロイされたアプリケーションを参照します。
 
-```bash
-http://<app-name>.azurewebsites.net
-```
+Python サンプル コードによって、App Service 内で、組み込みのイメージを使用して、Linux コンテナーが実行されています。
 
-App Service on Linux で組み込みのイメージを使用して Python サンプル コードが実行されています。
+![サンプル Python アプリを Azure で実行する](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
+**お疲れさまでした。** App Service on Linux に Python アプリをデプロイすることができました。
 
-**お疲れさまでした。** App Service on Linux に初めての Python アプリをデプロイしました。
+## <a name="redeploy-updates"></a>更新の再デプロイ
 
-## <a name="update-locally-and-redeploy-the-code"></a>コードをローカルで更新して再デプロイする
-
-Cloud Shell で、「`code application.py`」と入力して Cloud Shell エディターを開きます。
-
-![Code application.py](media/quickstart-python/code-applicationpy.png)
-
- `return` を呼び出すテキストに小さな変更を加えます。
+好みのコード エディターで *application.py* を開き、`hello` 関数を次のように更新します。 この変更では、次のセクションで使用するログ出力を生成するための `print` ステートメントを追加しています。 
 
 ```python
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
-変更内容を保存し、エディターを終了します。 コマンド `^S` を使用して保存し、`^Q` を使用して終了します。
+変更内容を保存し、エディターを終了します。 
 
-[`az webapp up`](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) コマンドを使用してアプリを再デプロイします。 `<app-name>` は実際のアプリの名前に置き換え、`<location-name>` には、[`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドから表示されるいずれかの値を使用して実際の場所を指定してください。
+`az webapp up` コマンドを使用してアプリを再デプロイします。
 
-```bash
-az webapp up -n <app-name> -l <location-name>
+```azurecli
+az webapp up
 ```
 
-デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
+このコマンドでは、 *.azure/config* ファイルにキャッシュされている、アプリ名、リソース グループ、App Service プランなどの値を使用します。
 
-![Azure で実行される更新済みのサンプル アプリ](media/quickstart-python/hello-azure-in-browser.png)
+デプロイが完了したら、`http://<app-name>.azurewebsites.net` が開かれているブラウザー ウィンドウに戻り、ページを更新します。これにより、変更されたメッセージが表示されます。
 
-## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
+![更新したサンプル Python アプリを Azure で実行する](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
+> [!TIP]
+> Visual Studio Code には、Python と Azure App Service 用の強力な拡張機能が用意されています。これを使うと、App Service に Python Web アプリをデプロイするプロセスが簡単になります。 詳細については、[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/python/tutorial-deploy-app-service-on-linux-01)に関する記事をご覧ください。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+## <a name="stream-logs"></a>ログのストリーミング
 
-![Azure アプリへのポータル ナビゲーション](./media/quickstart-python/app-service-list.png)
+アプリ、およびそれを実行するコンテナー内から生成されたコンソール ログに、アクセスすることができます。 ログには、`print` ステートメントを使って生成されたすべての出力が含まれます。
+
+ログをストリーム配信するには、次のコマンドを実行します。
+
+```azurecli
+az webapp log tail
+```
+
+ブラウザーでアプリを更新して、コンソール ログを生成します。これにより、次のテキストのような行が追加されます。 すぐに出力が表示されない場合は、30 秒後にもう一度お試しください。
+
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
+
+`https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
+
+任意のタイミングでログのストリーミングを停止するには、`Ctrl`+`C` と入力します。
+
+## <a name="manage-the-azure-app"></a>Azure アプリの管理
+
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。 **[App Services]** を検索して選択します。
+
+![Azure portal で App Services に移動する](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
+
+使用する Azure アプリの名前を選択します。
+
+![Azure portal で App Services の Python アプリに移動する](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
 お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 
-![Azure Portal の [App Service] ページ](media/quickstart-python/app-service-detail.png)
+![Azure portal の [概要] ページで Python アプリを管理する](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
-左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
+App Service のメニューには、アプリを構成するためのさまざまなページが用意されています。
 
-[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-## <a name="next-steps"></a>次の手順
+前の手順では、リソース グループ内に Azure リソースを作成しました。 リソース グループには、お客様の場所に応じて "appsvc_rg_Linux_CentralUS" のような名前が付いています。 無料の F1 レベル以外の App Service SKU を使用する場合は、これらのリソースによって継続的なコストが発生します (「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/linux/)」を参照してください)。
 
-App Service on Linux の組み込み Python イメージは現在プレビュー段階であり、アプリを開始するために使用するコマンドをカスタマイズすることができます。 代わりにカスタム コンテナーを使用して運用環境向け Python アプリを作成することもできます。
+今後これらのリソースを必要とする予定がない場合は、次のコマンドを実行して、リソース グループを削除します。`<resource-group-name>` は、`az webapp up` コマンドの出力に示されているリソース グループ ("appsvc_rg_Linux_centralus" など) に置き換えます。 このコマンドは、完了するまでに少し時間がかかる場合があります。
+
+```azurecli
+az group delete -n <resource-group-name>
+```
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)
+> [チュートリアル:PostgreSQL を使った Python (Django) Web アプリ](tutorial-python-postgresql-app.md)
+
+> [!div class="nextstepaction"]
+> [Python Web アプリにユーザーのサインインを追加する](../../active-directory/develop/quickstart-v2-python-webapp.md)
 
 > [!div class="nextstepaction"]
 > [Python アプリの構成](how-to-configure-python.md)

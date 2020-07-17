@@ -3,25 +3,27 @@ title: Azure Notification Hubs を使用して特定の iOS デバイスにプ�
 description: このチュートリアルでは、Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 11/07/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: a775963f1b0fa19cd687c839f527f4a078c76864
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834219"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80126992"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -41,7 +43,7 @@ ms.locfileid: "57834219"
 
 ## <a name="prerequisites"></a>前提条件
 
-このトピックは、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」を完了している必要があります。
+このトピックは、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -59,6 +61,7 @@ ms.locfileid: "57834219"
      ![Xcode インターフェイス ビルダー][3]
 
 2. アシスタント エディターで、すべてのスイッチのアウトレットを作成し、"WorldSwitch"、"PoliticsSwitch"、"BusinessSwitch"、"TechnologySwitch"、"ScienceSwitch"、"SportsSwitch" という名前にします。
+
 3. `subscribe` という名前のボタンのアクションを作成します。`ViewController.h` には次のコードを含める必要があります。
 
     ```objc
@@ -177,7 +180,7 @@ ms.locfileid: "57834219"
 10. [Notification Hubs の使用の開始][get-started]に関するチュートリアルを完了していれば、次のメソッドが既に `AppDelegate.m` に含まれています。 ない場合は、それらを追加します。
 
     ```objc
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    - (void)MessageBox:(NSString *)title message:(NSString *)messageText
     {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
@@ -185,7 +188,7 @@ ms.locfileid: "57834219"
         [alert show];
     }
 
-    * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:
        (NSDictionary *)userInfo {
        NSLog(@"%@", userInfo);
        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
@@ -212,7 +215,9 @@ ms.locfileid: "57834219"
 
     [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
         if (!error) {
-            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:"Notification" message:"Subscribed" delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         } else {
             NSLog(@"Error subscribing: %@", error);
         }
@@ -346,7 +351,7 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 
 3. ニュース速報にサブスクライブしている各デバイスが、今送信したばかりのニュース速報通知を受信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、カテゴリに登録している特定の iOS デバイスにブロードキャスト通知を送信しました。 ローカライズしたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

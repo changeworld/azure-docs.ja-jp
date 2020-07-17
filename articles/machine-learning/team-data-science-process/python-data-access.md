@@ -3,20 +3,20 @@ title: Python クライアント ライブラリを使用したデータセッ�
 description: Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf0e679ab46752d71ba4f5ef2b014e0cb2b4c6ad
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471999"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76720981"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -28,9 +28,7 @@ Microsoft Azure Machine Learning Python クライアント ライブラリのプ
 * 実験から中間データセットにアクセスする
 * Python クライアント ライブラリを使用してデータ セットを列挙、メタデータにアクセス、データ セットのコンテンツを読み込み、新しいデータ セットを作成して既存のデータ セットを更新する
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a><a name="prerequisites"></a>前提条件
 Python クライアント ライブラリは、次の環境でテストされています。
 
 * Windows、Mac、Linux
@@ -44,8 +42,8 @@ Python クライアント ライブラリは、次の環境でテストされて
 
 [Anaconda](http://continuum.io/downloads#all)、[Canopy](https://store.enthought.com/downloads/) などの Python ディストリビューションを使用し、Python、IPython、また上述の 3 つのパッケージをインストールすることを推奨します。 IPython は厳密には必要ありませんが、データをインタラクティブに操作して視覚化する優れた環境になります。
 
-### <a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
-また、このトピックで説明するタスクを完了するためには Azure Machine Learning Python クライアント ライブラリをインストールする必要があります。 [Python Package Index](https://pypi.python.org/pypi/azureml)から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
+### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Azure Machine Learning Python クライアント ライブラリをインストールする方法
+このトピックで説明されているタスクを完了するには、Azure Machine Learning Python クライアント ライブラリをインストールします。 このライブラリは、[Python Package Index](https://pypi.python.org/pypi/azureml) から入手できます。 ご利用の Python 環境にインストールするには、ローカルの Python 環境から次のコマンドを実行します。
 
     pip install azureml
 
@@ -58,34 +56,34 @@ Python クライアント ライブラリは、次の環境でテストされて
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Studio Code スニペットを使ってデータ セットにアクセスする
+## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>を使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
 
-Studio Web インターフェイスから、ローカル マシンでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
+Azure Machine Learning Studio (クラシック) Web インターフェイスから、ローカル コンピューターでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
 
-### <a name="security"></a>データ アクセスのためのセキュリティ
-Python クライアント ライブラリで使用するために Studio で提供されるコード スニペットには、ワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
+### <a name="security-for-data-access"></a><a name="security"></a>データ アクセスのためのセキュリティ
+Python クライアント ライブラリで使用するために Azure Machine Learning Studio (クラシック) で提供されるコード スニペットには、ユーザーのワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
 
-セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio で **[設定]** の下の **[ユーザー]** ページに表示されます。
+セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
 
-![セキュリティ][security]
+![Security][security]
 
 役割が **[所有者]** に設定されていない場合は、所有者として再度招待をリクエストするか、ワークスペースの所有者にコード スニペットを提供するよう依頼する必要があります。
 
-次のいずれかを実行することで認証トークンを取得できます。
+認証トークンを取得するには、次のいずれかの方法を選択します。
 
-* 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
+* 所有者からトークンをリクエストします。 所有者は Azure Machine Learning Studio (クラシック) のワークスペースの [設定] ページから自分の認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、 **[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
-![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
+   ![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 所有者への役割の昇格を申請する そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
+* 所有者のロールに昇格するように依頼します。ワークスペースの現在の所有者がまずワークスペースからあなたを削除してから、所有者として再び招待する必要があります。
 
-開発者がワークスペース ID と認証トークンを取得したら、役割に関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
+開発者がワークスペース ID と認証トークンを取得したら、ロールに関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
 認証トークンは、**[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
-### <a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
-1. Machine Learning Studio で、左側のナビゲーション バーの **[データセット]** をクリックします。
+### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
+1. Machine Learning Studio (クラシック) で、左側のナビゲーション バーの **[データセット]** をクリックします。
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]** をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
    
@@ -97,12 +95,12 @@ Python クライアント ライブラリで使用するために Studio で提�
    
     ![ノートブックにコードを貼り付ける][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
-Machine Learning Studio で実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
+## <a name="access-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
+Machine Learning Studio (クラシック) で実験が実行されると、モジュールの出力ノードから中間データセットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
 
 中間データセットは、データの形式が Python クライアント ライブラリと互換性がある限りアクセスできます。
 
-次の形式がサポートされます ( `azureml.DataTypeIds` クラスの定数)。
+次の形式がサポートされます (これらの形式の定数は `azureml.DataTypeIds` クラスです)。
 
 * PlainText
 * GenericCSV
@@ -124,11 +122,11 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
 
 1. 新しい実験を作成する
 2. **[米国国勢調査局提供の、成人収入に関する二項分類データセット]** モジュールを挿入します。
-3. [[分割]][split] モジュールを挿入して、その入力値をデータ セット モジュール出力に接続します。
+3. [[分割]][split] モジュールを挿入して、その入力値をデータセット モジュール出力に接続します。
 4. [[CSV に変換]][convert-to-csv] モジュールを挿入して、その入力値を [[分割]][split] モジュール出力の 1 つに接続します。
-5. 実験を保存して実行し、実行が完了するまで待機します。
+5. 実験を保存し、実行して、ジョブが完了するまで待ちます。
 6. [[CSV に変換]][convert-to-csv] モジュールで出力ノードをクリックします。
-7. コンテキスト メニューが表示されたら、**[データ アクセス コードの生成]** を選択します。
+7. コンテキスト メニューが表示されたら、 **[データ アクセス コードの生成]** を選択します。
    
     ![コンテキスト メニュー][experiment]
 8. 表示されたウィンドウからコード スニペットを選択し、クリップボードにコピーします。
@@ -141,9 +139,9 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
     
     ![ヒストグラム][ipython-histogram]
 
-## <a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
+## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
 ### <a name="workspace"></a>ワークスペース
-ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 ワークスペース ID と認証トークンを使って `Workspace` クラスを提供し、インスタンスを作成します。
+ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 `Workspace` クラスに自分のワークスペース ID と認証トークンを指定し、インスタンスを作成します。
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
@@ -174,8 +172,8 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
     ds = ws.datasets[0]
 
 
-### <a name="metadata"></a>Metadata
-データセットには、コンテンツに加え、メタデータがあります  (中間データセットはこのルールの例外であり、メタデータはありません)。
+### <a name="metadata"></a>メタデータ
+データセットには、コンテンツに加え、メタデータがあります (中間データセットはこのルールの例外であり、メタデータはありません)。
 
 作成時にユーザーが割り当てるメタデータの値の一部には次のものがあります。
 
@@ -193,7 +191,7 @@ Azure ML によって割り当てられるその他の値には次のものが�
 使用できるメタデータの詳細については、 `SourceDataset` クラスをご覧ください。
 
 ### <a name="read-contents"></a>コンテンツを読み込む
-Machine Learning Studio で提供されるコード スニペットは、データ セットを自動的にダウンロードして pandas DataFrame オブジェクトに逆シリアル化します。 これは次の `to_dataframe` メソッドで実行されます。
+Machine Learning Studio (クラシック) で提供されるコード スニペットにより、データセットが自動的にダウンロードされ、pandas DataFrame オブジェクトに逆シリアル化されます。 これは次の `to_dataframe` メソッドで実行されます。
 
     frame = ds.to_dataframe()
 

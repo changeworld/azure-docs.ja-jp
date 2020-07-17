@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Go を使用して Text Analytics API を呼び出す
+title: 'クイック スタート: Go を使用して Text Analytics API を呼び出す'
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
@@ -8,27 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: e6d641109bafdc3dba05a30fd627a3246c7edef5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002779"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75378766"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Go を使用して Text Analytics Cognitive Service を呼び出す 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
-API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
 
 <a name="Detect"></a>
 
@@ -38,8 +39,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
-1. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-1. `uriBase` の場所 (現在は `westcentralus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics API のキーとエンドポイントをコードにコピーします。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトをルート フォルダーから開きます。
 1. ファイルをビルドします (例: `go build detect.go`)。
@@ -52,29 +52,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
+    
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     const uriPath = "/text/analytics/v2.1/languages"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "text": "This is a document written in English."},
@@ -175,14 +166,13 @@ func main() {
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="analyze-sentiment"></a>センチメントを分析する
+## <a name="analyze-sentiment"></a>感情を分析する
 
 Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
-1. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-1. `uriBase` の場所 (現在は `westcentralus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトをルート フォルダーから開きます。
 1. ファイルをビルドします (例: `go build sentiment.go`)。
@@ -195,29 +185,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
     const uriPath = "/text/analytics/v2.1/sentiment"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -299,8 +280,7 @@ Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentra
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
-1. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-1. `uriBase` の場所 (現在は `westcentralus`) を、サインアップしたリージョンで置き換えます。
+1. Text Analytics のキーとエンドポイントをコードにコピーします。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトを開きます。
 1. ファイルをビルドします (例: `go build key-phrases.go`)。
@@ -313,29 +293,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    
     const uriPath = "/text/analytics/v2.1/keyPhrases"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -437,8 +408,6 @@ Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsof
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
-1. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-1. `uriBase` の場所 (現在は `westcentralus`) を、サインアップしたリージョンで置き換えます。
 1. "go" という拡張子でファイルを保存します。
 1. Go がインストールされているコンピューターのコマンド プロンプトを開きます。
 1. ファイルをビルドします (例: `go build entities.go`)。
@@ -451,32 +420,24 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westus" in the URI below with "westcentralus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westus.api.cognitive.microsoft.com"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    
     const uriPath = "/text/analytics/v2.1/entities"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
-        {"id": "1", "language": "en", "text": "Microsoft is an It company."}
+        {"id": "1", "language": "en", "text": "Microsoft is an It company."},
     }
 
     documents, err := json.Marshal(&data)
@@ -574,12 +535,12 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

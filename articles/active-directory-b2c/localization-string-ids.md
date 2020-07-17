@@ -2,20 +2,20 @@
 title: ローカライズ文字列 ID - Azure Active Directory B2C |Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーに api.signuporsignin の ID を持つコンテンツ定義の ID を指定します。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 05/02/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c6cabcc89e66e9fbf153f2931bfe8b9b70c5f426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: aa90775df4462328ed7c39e70c8dd1989248e308
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682705"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900512"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -25,25 +25,25 @@ ms.locfileid: "64682705"
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>サインアップ ページまたはサインイン ページの要素
 
-次の ID は、`api.signuporsignin`の ID を持つコンテンツ定義に使用されます。
+次の ID は、`api.signuporsignin` の ID を持つコンテンツ定義に使用されます。
 
-| ID | Default value |
+| id | 既定値 |
 | -- | ------------- |
 | **local_intro_email** | 自分の既存のアカウントでサインイン |
 | **logonIdentifier_email** | 電子メール アドレス |
 | **requiredField_email** | メール アドレスを入力してください |
 | **invalid_email** | 有効な電子メール アドレスを入力してください |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&'' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | 自分のユーザー名でサインイン |
 | **logonIdentifier_username** | ユーザー名 |
 | **requiredField_username** | ユーザー名を入力してください |
-| **password** | パスワード |
+| **password** | Password |
 | **requiredField_password** | パスワードを入力してください |
 | **invalid_password** | 入力したパスワードは、予期された形式ではありません。 |
 | **forgotpassword_link** | パスワードを忘れた場合 |
 | **createaccount_intro** | アカウントをお持ちでない場合は、 |
 | **createaccount_link** | 今すぐサインアップ |
-| **divider_title** | または |
+| **divider_title** | OR |
 | **cancel_message** | ユーザーがパスワードを忘れました |
 | **button_signin** | サインイン |
 | **social_intro** | 自分のソーシャル アカウントでサインイン |
@@ -79,26 +79,26 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">فيس بوك</LocalizedString>
 ```
 
-## <a name="sign-up-or-sign-in-error-messages"></a>サインアップまたはサインインのエラー メッセージ
+### <a name="sign-up-or-sign-in-error-messages"></a>サインアップまたはサインインのエラー メッセージ
 
-| ID | Default value |
+| id | 既定値 |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | パスワードが正しくありません。 |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | ご利用のアカウントが見つからないようです。 |
-| **UserMessageIfOldPasswordUsed** | 古いパスワードが使用された可能性があります。 |  
-| **DefaultMessage** | ユーザー名またはパスワードが無効です。 |  
-| **UserMessageIfUserAccountDisabled** | ご使用のアカウントはロックされています。 サポート担当者に連絡してロックを解除してから、もう一度お試しください。 |  
-| **UserMessageIfUserAccountLocked** | ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。 後でもう一度やり直してください。 |  
-| **AADRequestsThrottled** | この時点でリクエストが多すぎます。 しばらく待って、もう一度やり直してください。 |  
+| **UserMessageIfOldPasswordUsed** | 古いパスワードが使用された可能性があります。 |
+| **DefaultMessage** | ユーザー名またはパスワードが無効です。 |
+| **UserMessageIfUserAccountDisabled** | ご使用のアカウントはロックされています。 サポート担当者に連絡してロックを解除してから、もう一度お試しください。 |
+| **UserMessageIfUserAccountLocked** | ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。 後で再試行してください。 |
+| **AADRequestsThrottled** | この時点でリクエストが多すぎます。 しばらく待って、もう一度やり直してください。 |
 
-## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>サインアップとセルフ アサート ページのユーザー インターフェイス要素
+## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>サインアップとセルフアサート ページのユーザー インターフェイス要素
 
 以下は、`api.localaccountsignup`の ID を持つコンテンツ定義、または`api.selfasserted.profileupdate`や`api.localaccountpasswordreset`など、`api.selfasserted`で始まるコンテンツ定義の ID です。
 
-| ID | Default value |
+| id | 既定値 |
 | -- | ------------- |
 | **ver_sent** | 次の場所に確認コードが送信されました: |
-| **ver_but_default** | 既定値 |
+| **ver_but_default** | Default |
 | **cancel_message** | セルフ アサート情報の入力がユーザーによって取り消されました |
 | **preloader_alt** | お待ちください |
 | **ver_but_send** | 確認コードを送信する |
@@ -108,33 +108,33 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **verifying_blurb** | 情報の処理が終わるまでお待ちください。 |
 | **button_cancel** | Cancel |
 | **ver_fail_no_retry** | 多くの正しくない試行を行いました。 後でもう一度やり直してください。 |
-| **month** | 月 |
+| **month** | Month |
 | **ver_success_msg** | 電子メールアドレスが確認されました。 続行することができるようになりました。 |
 | **months** | 1 月、2 月、3 月、4 月、5 月、6 月、7 月、8 月、9 月、10 月、11 月、12 月 |
 | **ver_fail_server** | ご使用のメールアドレスの確認に問題があります。 有効なメール アドレスを入力して、もう一度やり直してください。 |
 | **error_requiredFieldMissing** | 必要なフィールドがありません。 すべての必須フィールドに入力してから、やり直してください。 |
 | **initial_intro** | 以下の詳細を指定してください。 |
 | **ver_but_resend** | 新しいコードを送信します |
-| **button_continue** | Create |
+| **button_continue** | 作成 |
 | **error_passwordEntryMismatch** | パスワードの入力フィールドが一致しません。 両方のフィールドに同じパスワードを入力して、もう一度やり直してください。 |
 | **ver_incorrect_format** | 形式が正しくありません |
 | **ver_but_edit** | 電子メールを変更します |
 | **ver_but_verify** | コードの確認 |
-| **alert_no** | No |
+| **alert_no** | いいえ |
 | **ver_info_msg** | 確認コードが受信トレイに送信されました。 次の入力ボックスにコピーしてください。 |
 | **day** | 日 |
 | **ver_fail_throttled** | このメール アドレスを確認するリクエストが多すぎます。 しばらく待って、再試行してください。 |
 | **helplink_text** | これは何ですか。 |
-| **ver_fail_retry** | そのコードが正しくありません。 もう一度実行してください。 |
+| **ver_fail_retry** | そのコードが正しくありません。 再試行してください。 |
 | **alert_title** | 詳細情報の入力をキャンセルします。 |
 | **required_field** | この情報は必須です。 |
 | **alert_message** | 詳細情報の入力をキャンセルしますか。 |
 | **ver_intro_msg** | 確認が必要です。 [送信] ボタンをクリックしてください。 |
 | **ver_input** | 確認コード |
 
-## <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフ アサート ページ エラー メッセージ
+### <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフアサート ページ エラー メッセージ
 
-| ID | Default value |
+| id | 既定値 |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 指定した ID を持つユーザーは既に存在します。 別の ID を選択してください。 |
 | **UserMessageIfClaimNotVerified** | 要求が確認されていません: {0} |
@@ -146,7 +146,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 次の例では、サインアップページにユーザーインターフェイス要素の一部を使用しています。
 
-![サインアップページの UX 要素](./media/localization-string-ids/localization-sign-up.png)
+![UI 要素名がラベル付けされたサインアップ ページ](./media/localization-string-ids/localization-sign-up.png)
 
 次の例は、ユーザーが [認証コードを送信する] ボタンをクリックした後に、サインアップ ページでユーザー インターフェイス要素の一部を使用する方法を示しています。
 
@@ -155,9 +155,9 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>電話ファクター認証ページのユーザー インタフェース要素
 
-以下は、`api.phonefactor`の ID を持つコンテンツ定義用の ID です。 
+以下は、`api.phonefactor`の ID を持つコンテンツ定義用の ID です。
 
-| ID | Default value |
+| id | 既定値 |
 | -- | ------------- |
 | **button_verify** | 電話する |
 | **country_code_label** | 国番号 |
@@ -171,7 +171,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **invalid_code** | 受信した 6 桁のコードを入力してください |
 | **button_cancel** | Cancel |
 | **local_number_input_placeholder_text** | 電話番号 |
-| **button_retry** | Retry |
+| **button_retry** | [再試行] |
 | **alternative_text** | 自分の電話を持っていません |
 | **intro_phone_p** | レコードに、次の番号があります。 電話で認証できる番号を選択してください。 |
 | **intro_phone** | レコードに次の番号があります。 認証するためにお電話します。 |
@@ -190,7 +190,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **number_label** | 電話番号 |
 | **error_tryagain** | 指定した電話番号がビジー状態であるか、利用不可です。 番号を確認して、もう一度やり直してください。 |
 | **error_incorrect_code** | 入力した確認コードは、弊社の記録と一致しません。 もう一度やり直すか、新しいコードを要求してください。 |
-| **countryList** | {\"デフォルト\":\"国/地域\"、\"AF\":\"アフガニスタン\"、\"AX\":\"オーランド諸島\"、\"AL\":\"アルバニア\"、\"DZ\":\"アルジェリア\"、\"AS\":\"アメリカンサモア\"、\"AD\":\"アンドラ\"、\"AO\":\"アンゴラ\"、\"AI\":\"アンギラ\"、\"AQ\":\"南極大陸\"、\"AG\":\"アンティグアバーブーダ\"、\"AR\":\"アルゼンチン\"、\"AM\":\"アルメニア\"、\"AW\":\"アルバ\"、\"AU\":\"オーストラリア\"、\"AT\":\"オーストリア\"、\"AZ\":\"アゼルバイジャン\"、\"BS\":\"バハマ\"、\"BH\":\"バーレーン\"、\"BD\":\"バングラデシュ\"、\"BB\":\"バルバドス\"、\" \":\"ベラルーシ\"、\"BE\":\"ベルギー\"、\"BZ\":\"ベリーズ\"、\"BJ\":\"ベニン\"、\"BM\":\"バミューダ\"、\"BT\":\"ブータン\"、\"BO\":\"ボリビア\"、\"BQ\":\"ボネール島\"、\"BA\":\"ボスニア・ヘルツェゴビナ\"、\"BW\":\"ボツワナ\"、\"BV\":\"ブーベ島\"、\"BR\":\"ブラジル\"、\"IO\":\"英領インド洋領\"、\"VG\":\"英領ヴァージン諸島\"、\"BN\":\"ブルネイ\"、\"BG\":\"ブルガリア\"、\"BF\":\"ブルキナファソ\"、\"BI\":\"ブルンジ\"、\"CV\":\"カボベルデ\"、\"KH\":\"カンボジア\"、\"CM\":\"カメルーン\"、\"CA\":\"カナダ\"、\"KY\":\"ケイマン諸島\"、\"CF\":\"中央アフリカ共和国\"、\"TD\":\"チャド\"、\"CL\":\"チリ\"、\"CN\":\"中国\"、\"CX\":\"クリスマス島\"、\"CC\":\"ココス (キリング) 諸島\"、\"CO\":\"コロンビア\"、\"KM\":\"コモロ\"、\"CG\":\"コンゴ共和国\"、\"CD\":\"コンゴ民主共和国\"、\"CK\":\"クック諸島\"、\"CR\":\"コスタリカ\"、\"CI\":\"コートジボワール\"、\"HR\":\"クロアチア\"、\"CU\":\"キューバ\"、\"CW\":\"キュラソー\"、\"CY\":\"キプロス\"、\"CZ\":\"チェコ共和国\"、\"DK\":\"デンマーク\"、\"DJ\":\"ジブチ\"、\"DM\":\"ドミニカ\"、\"DO\":\"ドミニカ共和国\"、\"EC\":\"エクアドル\"、\"EG\":\"エジプト\"、\"SV\":\"エルサルバドル\"、\"GQ\":\"赤道ギニア\"、\"ER\":\"エリトリア\"、\"EE\":\"エストニア\"、\"ET\":\"エチオピア\"、\"FK\":\"フォークランド諸島\"、\"FO\":\"フェロー諸島\"、\"FJ\":\"フィジー\"、\"FI\":\"フィンランド\"、\"FR\":\"フランス\"、\"GF\":\"フランスガイアナン\"、\"PF\":\"フランス領ポリネシア\"、\"TF\":\"フランス南部準州\"、\"GA\":\"ガボン\"、\"GM\":\"ガンビア\"、\"GE\":\"ジョージア\"、\"DE\":\"ドイツ\"、\"GH\":\"ガーナ\"、\"GI\":\"ジブラルタル\"、\"GR\":\"ギリシャ\"、\"GL\":\"グリーンランド\"、\"GD\":\"グレナダ\"、\"GP\":\"グアドループ\"、\"GU\":\"グアム\"、\"GT\":\"グアテマラ\"、\"GG\":\"ガーンジー\"、\"GN\":\"ギニア\"、\"GW\":\"ギニア・ビサウ\"、\"GY\":\"ガイアナ\"、\"HT\":\"ハイチ\"、\"HM\":\"ヒアード島とマクドナルド諸島\"、\"HN\":\"ホンジュラス\"、\"香港\":\"香港特別行政区\"、\"HU\":\"ハンガリー\"、\"IS\":\"アイスランド\"、\"IN\":\"インド\"、\"ID\":\"インドネシア\"、\"IR\":\"イラン\"、\"IQ\":\"イラク\"、\"IE\":\"アイルランド\"、\"IM\":\"マン島\"、\"イリノイ\":\"イスラエル\"、\"IT\":\"イタリア\"、\"JM\":\"ジャマイカ\"、\"JP\":\"日本\"、\"JE\":\"ジャージ\"、\"JO\":\"ヨルダン\"、\"KZ\":\"カザフスタン\"、\"KE\":\"ケニア\"、\"KI\":\"キリバス\"、\"KR\":\"韓国\"、\"KW\":\"クウェート\"、\"KG\":\"キルギスタン\"、\"LA\":\"ラオス\"、\"LV\":\"ラトビア\"、\"LB\":\"レバノン\"、\"LS\":\"レソト\"、\"LR\":\"リベリア\"、\"LY\":\"リビア\"、\"LI\":\"リヒテンシュタイン\"、\"LT\":\"リトアニア\"、\"LU\":\"ルクセンブルグ\"、\"MO\":\"マカオ SAR\"、\"MK\":\"マケドニア旧ユーゴスラビア共和国\"、\"MG\":\"マダガスカル\"、\"MW\":\"マラウイ\"、\"MY\":\"マレーシア\"、\"MV\":\"モルディブ\"、\"ML\":\"マリ\"、\"MT\":\"マルタ\"、\"MH\":\"マーシャル諸島\"、\"MQ\":\"マルティニーク\"、\"MR\":\"モーリタニア\"、\"MU\":\"モーリシャス\"、\"YT\":\"マヨット\"、\"MX\":\"メキシコ\"、\"FM\":\"ミクロネシア\"、\"MD\":\"モルドバ\"、\"MC\":\"モナコ\"、\"MN\":\"モンゴル\"、\"ME\":\"モンテネグロ\"、\"MS\":\"モントセラト\"、\"MA\":\"モロッコ\"、\"MZ\":\"モザンビーク\"、\"MM\":\"ミャンマー\"、\"NA\":\"ナミビア\"、\"NR\":\"ナウル\"、\"NP\":\"ネパール\"、\"NL\":\"オランダ\"、\"NC\":\"ニューカレドニア\"、\"NZ\":\"ニュージーランド\"、\"NI\":\"ニカラグア\"、\"NE\":\"ニジェール\"、\"NG\":\"ナイジェリア\"、\"NU\":\"ニウエ\"、\"NF\":\"ノーフォーク島\"、\"KP\":\"北朝鮮\"、\"MP\":\"北マリアナ諸島\"、\"いいえ\":\"ノルウェー\"、\"OM\":\"オマーン\"、\"PK\":\"パキスタン\"、\"PW\":\"パラオ\"、\"PS\":\"パレスチナ自治政府\"、\"PA\":\"パナマ\"、\"PG\":\"パプアニューギニア\"、\"PY\":\"パラグアイ\"、\"PE\":\"ペルー\"、\"PH\":\"フィリピン\"、\"PN\":\"ピトケアン諸島\"、\"PL\":\"ポーランド\"、\"PT\":\"ポルトガル\"、\"PR\":\"プエルトリコ\"、\"QA\":\"カタール\"、\"RE\":\"Réunion\"、\"RO\":\"ルーマニア\"、\"RU\":\"ロシア\"、\"RW\":\"ルワンダ\"、\"BL\":\"聖バテルレミー\"、\"KN\":\"セントクリストファー・ネイビス\"、\"LC\":\"セントルシア\"、\"MF\":\"聖マーティン\"、\"PM\":\"サンピエールとミケロン\"、\"VC\":\"セントビンセントとグレナディーンズ\"、\"WS\":\"サモア\"、\"SM\":\"サンマリノ\"、\"ST\":\"サントメとプリンシペ\"、\"SA\":\"サウジアラビア\"、\"SN\":\"セネガル\"、\"RS\":\"セルビア\"、\"SC\":\"セイシェル\"、\"SL\":\"シエラレオネ\"、\"SG\":\"シンガポール\"、\"SX\":\"セント・マーチン島\"、\"SK\":\"スロバキア\"、\"SI\":\"スロベニア\"、\"SB\":\"ソロモン諸島\"、\"SO\":\"ソマリア\"、\"ZA\":\"南アフリカ\"、\"GS\":\"サウスジョージアとサウスサンドイッチ諸島\"、\"SS\":\"南スーダン\"、\"ES\":\"スペイン\"、\"LK\":\"スリランカ\"、\"SH\":\"聖ヘレナ、昇天、トリスタンダクンハ\"、\"SD\":\"スーダン\"、\"SR\":\"スリナム\"、\"SJ\":\"スバールバル\"、\"SZ\":\"スワジランド\"、\"SE\":\"スウェーデン\"、\"CH\":\"スイス\"、\"SY\":\"シリア\"、\"TW\":\"台湾\"、\"TJ\":\"タジキスタン\"、\"TZ\":\"タンザニア\"、\"TH\":\"タイ\"、\"TL\":\"東ティモール\"、\"TG\":\"トーゴ\"、\"TK\":\"トケラウ\"、\"TO\":\"トンガ\"、\"TT\":\"トリニダード・トバゴ\"、\"TN\":\"チュニジア\"、\"TR\":\"トルコ\"、\"TM\":\"トルクメニスタン\"​​、\"TC\":\"タークスカイコス諸島\"、\"テレビ\":\"ツバル\"、\"UM\":\"米国領有小離島\"、\"VI\":\"米国米領バージン諸島\"、\"UG\":\"ウガンダ\"、\"UA\":\"ウクライナ\"、\"AE\":\"アラブ首長国連邦\"、\"GB\":\"英国\"、\"US\":\"米国\"、\"UY\":\"ウルグアイ\"、\"UZ\":\"ウズベキスタン\"、\"VU\":\"バヌアツ\"、\"VA\":\"Vatican City\"、\"VE\":\"ベネズエラ\"、\"VN\":\"ベトナム\"、\"WF\":\"ワリス ・ フテュナ諸島\"、\"YE\":\"イエメン\"、\"ZM\":\"ザンビア\"、\"ZW\":\"ジンバブエ\"} |
+| **countryList** | {\"デフォルト\":\"国/地域\"、\"AF\":\"アフガニスタン\"、\"AX\":\"オーランド諸島\"、\"AL\":\"アルバニア\"、\"DZ\":\"アルジェリア\"、\"AS\":\"アメリカンサモア\"、\"AD\":\"アンドラ\"、\"AO\":\"アンゴラ\"、\"AI\":\"アンギラ\"、\"AQ\":\"南極大陸\"、\"AG\":\"アンティグアバーブーダ\"、\"AR\":\"アルゼンチン\"、\"AM\":\"アルメニア\"、\"AW\":\"アルバ\"、\"AU\":\"オーストラリア\"、\"AT\":\"オーストリア\"、\"AZ\":\"アゼルバイジャン\"、\"BS\":\"バハマ\"、\"BH\":\"バーレーン\"、\"BD\":\"バングラデシュ\"、\"BB\":\"バルバドス\"、\"\":\"ベラルーシ\"、\"BE\":\"ベルギー\"、\"BZ\":\"ベリーズ\"、\"BJ\":\"ベニン\"、\"BM\":\"バミューダ\"、\"BT\":\"ブータン\"、\"BO\":\"ボリビア\"、\"BQ\":\"ボネール島\"、\"BA\":\"ボスニア・ヘルツェゴビナ\"、\"BW\":\"ボツワナ\"、\"BV\":\"ブーベ島\"、\"BR\":\"ブラジル\"、\"IO\":\"英領インド洋領\"、\"VG\":\"英領ヴァージン諸島\"、\"BN\":\"ブルネイ\"、\"BG\":\"ブルガリア\"、\"BF\":\"ブルキナファソ\"、\"BI\":\"ブルンジ\"、\"CV\":\"カボベルデ\"、\"KH\":\"カンボジア\"、\"CM\":\"カメルーン\"、\"CA\":\"カナダ\"、\"KY\":\"ケイマン諸島\"、\"CF\":\"中央アフリカ共和国\"、\"TD\":\"チャド\"、\"CL\":\"チリ\"、\"CN\":\"中国\"、\"CX\":\"クリスマス島\"、\"CC\":\"ココス (キリング) 諸島\"、\"CO\":\"コロンビア\"、\"KM\":\"コモロ\"、\"CG\":\"コンゴ共和国\"、\"CD\":\"コンゴ民主共和国\"、\"CK\":\"クック諸島\"、\"CR\":\"コスタリカ\"、\"CI\":\"コートジボワール\"、\"HR\":\"クロアチア\"、\"CU\":\"キューバ\"、\"CW\":\"キュラソー\"、\"CY\":\"キプロス\"、\"CZ\":\"チェコ共和国\"、\"DK\":\"デンマーク\"、\"DJ\":\"ジブチ\"、\"DM\":\"ドミニカ\"、\"DO\":\"ドミニカ共和国\"、\"EC\":\"エクアドル\"、\"EG\":\"エジプト\"、\"SV\":\"エルサルバドル\"、\"GQ\":\"赤道ギニア\"、\"ER\":\"エリトリア\"、\"EE\":\"エストニア\"、\"ET\":\"エチオピア\"、\"FK\":\"フォークランド諸島\"、\"FO\":\"フェロー諸島\"、\"FJ\":\"フィジー\"、\"FI\":\"フィンランド\"、\"FR\":\"フランス\"、\"GF\":\"フランスガイアナン\"、\"PF\":\"フランス領ポリネシア\"、\"TF\":\"フランス南部準州\"、\"GA\":\"ガボン\"、\"GM\":\"ガンビア\"、\"GE\":\"ジョージア\"、\"DE\":\"ドイツ\"、\"GH\":\"ガーナ\"、\"GI\":\"ジブラルタル\"、\"GR\":\"ギリシャ\"、\"GL\":\"グリーンランド\"、\"GD\":\"グレナダ\"、\"GP\":\"グアドループ\"、\"GU\":\"グアム\"、\"GT\":\"グアテマラ\"、\"GG\":\"ガーンジー\"、\"GN\":\"ギニア\"、\"GW\":\"ギニア・ビサウ\"、\"GY\":\"ガイアナ\"、\"HT\":\"ハイチ\"、\"HM\":\"ヒアード島とマクドナルド諸島\"、\"HN\":\"ホンジュラス\"、\"香港\":\"香港特別行政区\"、\"HU\":\"ハンガリー\"、\"IS\":\"アイスランド\"、\"IN\":\"インド\"、\"ID\":\"インドネシア\"、\"IR\":\"イラン\"、\"IQ\":\"イラク\"、\"IE\":\"アイルランド\"、\"IM\":\"マン島\"、\"イリノイ\":\"イスラエル\"、\"IT\":\"イタリア\"、\"JM\":\"ジャマイカ\"、\"JP\":\"日本\"、\"JE\":\"ジャージ\"、\"JO\":\"ヨルダン\"、\"KZ\":\"カザフスタン\"、\"KE\":\"ケニア\"、\"KI\":\"キリバス\"、\"KR\":\"韓国\"、\"KW\":\"クウェート\"、\"KG\":\"キルギスタン\"、\"LA\":\"ラオス\"、\"LV\":\"ラトビア\"、\"LB\":\"レバノン\"、\"LS\":\"レソト\"、\"LR\":\"リベリア\"、\"LY\":\"リビア\"、\"LI\":\"リヒテンシュタイン\"、\"LT\":\"リトアニア\"、\"LU\":\"ルクセンブルグ\"、\"MO\":\"マカオ SAR\"、\"MK\":\"マケドニア旧ユーゴスラビア共和国\"、\"MG\":\"マダガスカル\"、\"MW\":\"マラウイ\"、\"MY\":\"マレーシア\"、\"MV\":\"モルディブ\"、\"ML\":\"マリ\"、\"MT\":\"マルタ\"、\"MH\":\"マーシャル諸島\"、\"MQ\":\"マルティニーク\"、\"MR\":\"モーリタニア\"、\"MU\":\"モーリシャス\"、\"YT\":\"マヨット\"、\"MX\":\"メキシコ\"、\"FM\":\"ミクロネシア\"、\"MD\":\"モルドバ\"、\"MC\":\"モナコ\"、\"MN\":\"モンゴル\"、\"ME\":\"モンテネグロ\"、\"MS\":\"モントセラト\"、\"MA\":\"モロッコ\"、\"MZ\":\"モザンビーク\"、\"MM\":\"ミャンマー\"、\"NA\":\"ナミビア\"、\"NR\":\"ナウル\"、\"NP\":\"ネパール\"、\"NL\":\"オランダ\"、\"NC\":\"ニューカレドニア\"、\"NZ\":\"ニュージーランド\"、\"NI\":\"ニカラグア\"、\"NE\":\"ニジェール\"、\"NG\":\"ナイジェリア\"、\"NU\":\"ニウエ\"、\"NF\":\"ノーフォーク島\"、\"KP\":\"北朝鮮\"、\"MP\":\"北マリアナ諸島\"、\"いいえ\":\"ノルウェー\"、\"OM\":\"オマーン\"、\"PK\":\"パキスタン\"、\"PW\":\"パラオ\"、\"PS\":\"パレスチナ自治政府\"、\"PA\":\"パナマ\"、\"PG\":\"パプアニューギニア\"、\"PY\":\"パラグアイ\"、\"PE\":\"ペルー\"、\"PH\":\"フィリピン\"、\"PN\":\"ピトケアン諸島\"、\"PL\":\"ポーランド\"、\"PT\":\"ポルトガル\"、\"PR\":\"プエルトリコ\"、\"QA\":\"カタール\"、\"RE\":\"Réunion\"、\"RO\":\"ルーマニア\"、\"RU\":\"ロシア\"、\"RW\":\"ルワンダ\"、\"BL\":\"聖バテルレミー\"、\"KN\":\"セントクリストファー・ネイビス\"、\"LC\":\"セントルシア\"、\"MF\":\"聖マーティン\"、\"PM\":\"サンピエールとミケロン\"、\"VC\":\"セントビンセントとグレナディーンズ\"、\"WS\":\"サモア\"、\"SM\":\"サンマリノ\"、\"ST\":\"サントメとプリンシペ\"、\"SA\":\"サウジアラビア\"、\"SN\":\"セネガル\"、\"RS\":\"セルビア\"、\"SC\":\"セイシェル\"、\"SL\":\"シエラレオネ\"、\"SG\":\"シンガポール\"、\"SX\":\"セント・マーチン島\"、\"SK\":\"スロバキア\"、\"SI\":\"スロベニア\"、\"SB\":\"ソロモン諸島\"、\"SO\":\"ソマリア\"、\"ZA\":\"南アフリカ\"、\"GS\":\"サウスジョージアとサウスサンドイッチ諸島\"、\"SS\":\"南スーダン\"、\"ES\":\"スペイン\"、\"LK\":\"スリランカ\"、\"SH\":\"聖ヘレナ、昇天、トリスタンダクンハ\"、\"SD\":\"スーダン\"、\"SR\":\"スリナム\"、\"SJ\":\"スバールバル\"、\"SZ\":\"スワジランド\"、\"SE\":\"スウェーデン\"、\"CH\":\"スイス\"、\"SY\":\"シリア\"、\"TW\":\"台湾\"、\"TJ\":\"タジキスタン\"、\"TZ\":\"タンザニア\"、\"TH\":\"タイ\"、\"TL\":\"東ティモール\"、\"TG\":\"トーゴ\"、\"TK\":\"トケラウ\"、\"TO\":\"トンガ\"、\"TT\":\"トリニダード・トバゴ\"、\"TN\":\"チュニジア\"、\"TR\":\"トルコ\"、\"TM\":\"トルクメニスタン\"​​、\"TC\":\"タークスカイコス諸島\"、\"テレビ\":\"ツバル\"、\"UM\":\"米国領有小離島\"、\"VI\":\"米国米領バージン諸島\"、\"UG\":\"ウガンダ\"、\"UA\":\"ウクライナ\"、\"AE\":\"アラブ首長国連邦\"、\"GB\":\"英国\"、\"US\":\"米国\"、\"UY\":\"ウルグアイ\"、\"UZ\":\"ウズベキスタン\"、\"VU\":\"バヌアツ\"、\"VA\":\"Vatican City\"、\"VE\":\"ベネズエラ\"、\"VN\":\"ベトナム\"、\"WF\":\"ワリス ・ フテュナ諸島\"、\"YE\":\"イエメン\"、\"ZM\":\"ザンビア\"、\"ZW\":\"ジンバブエ\"} |
 | **error_448** | 指定された電話番号につながりません。 |
 | **error_449** | ユーザーが再試行回数を超えました。 |
 | **verification_code_input_placeholder_text** | 確認コード |
@@ -202,6 +202,116 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 次の例は、MFA 検証ページでユーザー インターフェイス要素の一部を使用する方法を示しています。
 
 ![電子メール検証のサインアップ ページ UX 要素](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="verification-display-control-user-interface-elements"></a>検証表示コントロールのユーザー インターフェイス要素
+
+[検証表示コントロール](display-control-verification.md)の ID を次に示します。
+
+| id | 既定値 |
+| -- | ------------- |
+|verification_control_but_change_claims |Change |
+|verification_control_fail_send_code |コードを送信できませんでした。しばらくしてから、もう一度お試しください。 |
+|verification_control_fail_verify_code |コードを検証できませんでした。しばらくしてから、もう一度お試しください。 |
+|verification_control_but_send_code |コードの送信 |
+|verification_control_but_send_new_code |新しいコードを送信します |
+|verification_control_but_verify_code |コードの確認 |
+|verification_control_code_sent| 確認コードが送信されました。 次の入力ボックスにコピーしてください。 |
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="azure-mfa-error-messages"></a>Azure MFA エラー メッセージ
+
+[Azure MFA の技術プロファイル](multi-factor-auth-technical-profile.md)のエラー メッセージ用 ID を次に示します。
+
+| id | 既定値 |
+| -- | ------------- |
+|UserMessageIfCouldntSendSms | 電話に SMS を送信できません。別の電話番号をお試しください。 |
+|UserMessageIfInvalidFormat | 電話番号の形式が正しくありません。修正してから、もう一度お試しください。|
+|UserMessageIfMaxAllowedCodeRetryReached | 間違ったコードの入力回数が多くなりすぎました。後でもう一度お試しください。|
+|UserMessageIfServerError | MFA サービスを使用できませんでした。後でもう一度お試しください。|
+|UserMessageIfThrottled | 要求が調整されています。後でもう一度お試しください。|
+|UserMessageIfWrongCodeEntered|間違ったコードが入力されました。後でもう一度お試しください。|
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidFormat">Your phone number is not in a valid format, please correct it and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxAllowedCodeRetryReached">Wrong code entered too many times, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfServerError">Cannot use MFA service, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">Your request has been throttled, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfWrongCodeEntered">Wrong code entered, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="one-time-password-error-messages"></a>ワンタイム パスワードのエラー メッセージ
+
+[ワンタイム パスワードの技術プロファイル](one-time-password-technical-profile.md)のエラー メッセージ用 ID を次に示します
+
+| id | 既定値 |
+| -- | ------------- |
+|UserMessageIfMaxRetryAttempted |指定されたワンタイム パスワードの検証が最大試行回数を超えました |
+|UserMessageIfSessionDoesNotExist |ワンタイム パスワードの検証セッションが期限切れになりました |
+|UserMessageIfSessionConflict |ワンタイム パスワードの検証セッションが競合しています |
+|UserMessageIfInvalidCode |検証用に指定されたワンタイム パスワードが正しくありません |
+|UserMessageIfVerificationFailedRetryAllowed |そのコードが正しくありません。 再試行してください。 | 
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
+## <a name="claims-transformations-error-messages"></a>要求の変換のエラー メッセージ
+
+要求の変換のエラー メッセージの ID を次に示します。
+
+| id | 要求の変換 | 既定値 |
+| -- | ------------- |------------- |
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 要求の種類 "inputClaim" のブール値の要求値の比較に失敗しました。| 
+|DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 要求値の比較に失敗しました。指定された左オペランドが右オペランドを超えています。|
+|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | StringComparison "OrdinalIgnoreCase" を使用した要求値の比較に失敗しました。|
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DateTimeGreaterThan">Expiration date must be greater that the current date.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationStringsAreNotEqual">The email entry fields do not match. Please enter the same email address in both fields and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
+
 
 
 

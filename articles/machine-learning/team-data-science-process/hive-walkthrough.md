@@ -3,20 +3,20 @@ title: Hadoop クラスターでのデータの探索 - Team Data Science Proces
 description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、モデルを構築してデプロイします。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524006"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677456"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -25,10 +25,10 @@ ms.locfileid: "59524006"
 
 IPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。 詳細については、[Hive ODBC 接続を使用する Criteo のチュートリアル](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)を参照してください。
 
-## <a name="dataset"></a>NYC タクシー乗車データセットの説明
+## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC タクシー乗車データセットの説明
 NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切り値 (CSV) ファイル (非圧縮で最大 48 GB) です。 このデータには、1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金が含まれています。 各旅行レコードには、pickup (乗車) と dropoff (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion 番号 (タクシーの一意の ID) が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
-- trip_data の CSV ファイルには、乗車の詳細が含まれます。 乗客数、乗車地点、降車地点、乗車時間、乗車距離などです。 いくつかのサンプル レコードを次に示します。
+- trip_data CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離) が含まれています。 いくつかのサンプル レコードを次に示します。
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-- trip_fare の CSV ファイルには、各乗車に対して支払われた料金の詳細が含まれます。 支払いの種類、料金、追加料金と税、チップと道路などの通行料、合計支払金額などです。 いくつかのサンプル レコードを次に示します。
+- trip_fare CSV ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、合計支払金額) が含まれます。 いくつかのサンプル レコードを次に示します。
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -47,8 +47,8 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
 
 trip\_data と trip\_fare を結合するための一意のキーは medallion、hack\_licence、pickup\_datetime の各フィールドで構成されています。 特定の乗車に関する詳細をすべて取得するには、これら 3 つのキーと連結するだけで十分です。
 
-## <a name="mltasks"></a>予測タスクの例
-データ分析に基づいて予測の種類を決定します。 これは、プロセスに含める必要があるタスクを明確にするために役立ちます。 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。 これらの例は、*tip\_amount* に基づいています。
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
+行う予測の種類をデータ分析に基づいて決定すると、必要なプロセス タスクを明確にするのに役立ちます。 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。すべて *tip\_amount* に基づいています。
 
 - **二項分類**:乗車に対してチップが支払われたかどうかを予測します。 つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
    
@@ -63,7 +63,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
         Class 4: tip_amount > $20
 - **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
-## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
+## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 > [!NOTE]
 > 通常、これは管理タスクです。
 > 
@@ -71,14 +71,14 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
-1. [ストレージ アカウントを作成する](../../storage/common/storage-quickstart-create-account.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータも格納されます。
-2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md):  この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
+1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータも格納されます。
+2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md): この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
    
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理されるデータにアクセスします。
-   * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、**[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
+   * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、 **[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
 3. [Azure Machine Learning ワークスペースを作成する](../studio/create-workspace.md):このワークスペースを使用して、機械学習モデルを構築します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
-## <a name="getdata"></a>公開されているソースからデータを取得する
+## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得する
 > [!NOTE]
 > 通常、これは管理タスクです。
 > 
@@ -88,13 +88,13 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。 AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../../storage/common/storage-use-azcopy.md)」に記載されている手順に従います。
 
-1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。*\<path_to_data_folder>* を、目的の転送先に置き換えてください。
+1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。 *\<path_to_data_folder>* を、目的の転送先に置き換えてください。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
 1. コピーが完了すると、選択したデータのフォルダー内に合計 24 個の Zip ファイルが表示されます。 ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。 圧縮されていないファイルが存在するフォルダーをメモしておきます。 *\<path\_to\_unzipped_data\_files\>* として参照されるこのフォルダーについては、後ほど説明します。
 
-## <a name="upload"></a>データを HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
+## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>データを HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 > [!NOTE]
 > 通常、これは管理タスクです。
 > 
@@ -119,7 +119,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 これで、データが BLOB ストレージに格納され、HDInsight クラスター内で利用できるようになりました。
 
-## <a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにサインインして探索的データ分析の準備をする
+## <a name="sign-in-to-the-head-node-of-hadoop-cluster-and-prepare-for-exploratory-data-analysis"></a><a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにサインインして探索的データ分析の準備をする
 > [!NOTE]
 > 通常、これは管理タスクです。
 > 
@@ -127,19 +127,19 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「[Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」で説明されている手順に従います。
 
-このチュートリアルでは、SQL に似たクエリ言語である [Hive](https://hive.apache.org/)で記述されたクエリを主に使用して、事前のデータ探索を行います。 Hive クエリは .hql ファイルに保存されています。 その後、モデル作成のために、Machine Learning で使用されるこのデータをダウンサンプリングします。
+このチュートリアルでは、SQL に似たクエリ言語である [Hive](https://hive.apache.org/)で記述されたクエリを主に使用して、事前のデータ探索を行います。 Hive クエリは ".hql" ファイルに保存されています。 その後、モデル作成のために、Machine Learning で使用されるこのデータをダウンサンプリングします。
 
-探索的データ分析用にクラスターを準備するために、関連する Hive スクリプトを含む .hql ファイルを [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) からヘッド ノード上のローカル ディレクトリ (C:\temp) にダウンロードします。 これを行うには、クラスターのヘッド ノードからコマンド プロンプトを開き、次の 2 つのコマンドを実行します。
+探索的データ分析用にクラスターを準備するために、関連する Hive スクリプトを含む ".hql" ファイルを [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) からヘッド ノード上のローカル ディレクトリ (C:\temp) にダウンロードします。 クラスターのヘッド ノードからコマンド プロンプトを開き、次の 2 つのコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-この 2 つのコマンドによって、このチュートリアルで必要なすべての .hql ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;*** にダウンロードされます。
+この 2 つのコマンドによって、このチュートリアルで必要なすべての ".hql" ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;*** にダウンロードされます。
 
-## <a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
+## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 > [!NOTE]
-> 通常、これは管理タスクです。
+> このタスクは通常、管理者が行います。
 > 
 > 
 
@@ -153,11 +153,11 @@ Hadoop クラスターのヘッド ノードのデスクトップで Hadoop コ�
 > 
 > 
 
-Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを実行します。 Hive データベースとテーブルを作成する Hive クエリが送信されます。
+Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを実行します。これにより、Hive データベースとテーブルが作成されます。
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-**C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を次に示します。 これにより、Hive データベース **nyctaxidb** とテーブル **trip** および **fare** が作成されます。
+**C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を以下に示します。このファイルでは、Hive データベース **nyctaxidb** と、テーブル **trip**、**fare**が作成されます。
 
     create database if not exists nyctaxidb;
 
@@ -205,9 +205,9 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 
 これらの手順について追加のサポートが必要な場合、または代わりの手順を調査する必要がある場合は、「[Hive クエリを直接 Hadoop コマンドラインから送信する](move-hive-tables.md#submit)」を参照してください。
 
-## <a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
+## <a name="load-data-to-hive-tables-by-partitions"></a><a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
 > [!NOTE]
-> 通常、これは管理タスクです。
+> このタスクは通常、管理者が行います。
 > 
 > 
 
@@ -220,14 +220,14 @@ NYC タクシー データセットは、月ごとに自然にパーティショ
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-ここで探索プロセスに使用される多数の Hive クエリは、1 つまたは 2 つのパーティションのみを対象にしている点に注意してください。 これらのクエリをデータセット全体に対して実行することもできます。
+ここで探索プロセスに使用される多数の Hive クエリは、1 つまたは 2 つのパーティションのみを対象にしています。 これらのクエリをデータセット全体に対して実行することもできます。
 
-### <a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
+### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
 Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラスターで作成されたデータベースを表示するには、Hadoop コマンド ラインで次のコマンドを実行します。
 
     hive -e "show databases;"
 
-### <a name="#show-tables"></a>**nyctaxidb** データベースの Hive テーブルを表示する
+### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>**nyctaxidb** データベースの Hive テーブルを表示する
 **nyctaxidb** データベースのテーブルを表示するには、Hadoop コマンドラインで次のコマンドを実行します。
 
     hive -e "show tables in nyctaxidb;"
@@ -272,7 +272,7 @@ Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラス�
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
+## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -302,7 +302,7 @@ Hive クエリを使用すると、Hive テーブルに読み込まれるデー�
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-レコードをファイルに保存すると、レコードを簡単に表示できるので便利です。 これを実現するには、上記のクエリを少し変更します。
+レコードをファイルに保存しておくと、上記のクエリを少し変更するだけで簡単に表示できます。
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
@@ -316,7 +316,7 @@ Hive クエリを使用すると、Hive テーブルに読み込まれるデー�
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-その結果、次のように出力されます。
+このコマンドでは次の出力が生成されます。
 
     1       14776615
     2       13990176
@@ -338,7 +338,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行して、�
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
-次が生成されます。
+このコマンドの結果は、次のようになります。
 
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
@@ -347,7 +347,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行して、�
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
-その結果、次のように出力されます。
+このコマンドでは次の出力が生成されます。
 
     1       14776615
     2       13990176
@@ -363,22 +363,22 @@ Hive ディレクトリ プロンプトで次のコマンドを実行して、�
     12      13971118
     Time taken: 253.955 seconds, Fetched: 12 row(s)
 
-2 つのデータセットでまったく同じ月ごとの乗車数が返されています。 これで、データが正しく読み込まれていることが検証されました。
+両方のデータセットについて、まったく同じ 1 か月あたりの乗車数が返されます。これにより、データが正しく読み込まれたことを示す最初の検証が提供されます。
 
 Hive ディレクトリ プロンプトで次のコマンドを実行して、乗車データ セットの合計レコード数をカウントすることもできます。
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
-次が生成されます。
+このコマンドの結果は、次のようになります。
 
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
 
-2 つのテーブルの合計レコード数も同じです。 これで、データが正しく読み込まれていることが再度検証されました。
+両方のテーブルのレコードの合計数も同じであり、データが正しく読み込まれたことを示す 2 番目の検証が提供されます。
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
 > [!NOTE]
-> 通常、これはデータ サイエンティスト タスクです。
+> 通常、この分析はデータ サイエンティスト タスクです。
 > 
 > 
 
@@ -412,11 +412,11 @@ Hive ディレクトリ プロンプトから次のコマンドを実行しま�
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索:medallion および hack_license ごとの乗車回数の分布
 > [!NOTE]
-> 通常、これはデータ サイエンティスト タスクです。
+> 通常、このタスクはデータ サイエンティストが行います。
 > 
 > 
 
-データセットの探索時に、値のグループの出現回数を確認する必要があることがよくあります。 このセクションでは、タクシーと運転手に対してこれを行う方法の例を示します。
+データセットの探索時に、値のグループの分布を確認する必要があることがよくあります。 このセクションでは、タクシーと運転手に対してこの分析を行う方法の例を示します。
 
 **sample\_hive\_trip\_count\_by\_medallion\_license.hql** ファイルは、**medallion** と **hack_license** で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。 その内容を次に示します。
 
@@ -457,7 +457,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。 このコマンドは、Hive クエリの画面出力を読みやすくするので役立ちます。
+このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。 このコマンドは、Hive クエリの画面出力を読みやすくするので便利です。
 
 ### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索:チップの二項分類の分布
 > [!NOTE]
@@ -470,7 +470,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 * tip given (Class 1, tip\_amount > $0)  
 * no tip (Class 0, tip\_amount = $0)
 
-次に示す **sample\_hive\_tipped\_frequencies.hql** ファイルがこれを実行します。
+次の **sample\_hive\_tipped\_frequencies.hql** ファイルは、コマンドの実行内容を示しています。
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -565,7 +565,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 Azure BLOB にこのデータがあることの主な利点は、[データのインポート][import-data] モジュールを使って Machine Learning 内でデータを探索できることです。
 
-## <a name="#downsample"></a>Machine Learning でデータをダウンサンプリングしてモデルを作成する
+## <a name="down-sample-data-and-build-models-in-machine-learning"></a><a name="#downsample"></a>Machine Learning でデータをダウンサンプリングしてモデルを作成する
 > [!NOTE]
 > 通常、これはデータ サイエンティスト タスクです。
 > 
@@ -578,10 +578,10 @@ Azure BLOB にこのデータがあることの主な利点は、[データの�
 
 Machine Learning の[データのインポート][import-data] モジュールからダウンサンプリングされたデータを直接使用できるようにするには、上記のクエリの結果を内部の Hive テーブルに格納する必要があります。 以下では、内部の Hive テーブルを作成し、結合されダウンサンプリングされたデータでその内容を設定します。
 
-このクエリは、標準の Hive 関数を直接適用して **pickup\_datetime** フィールドから以下を生成します。
+このクエリは、標準の Hive 関数を直接適用して **pickup\_datetime** フィールドから以下の時間パラメーターを生成します。
 - 時間
 - 年度の通算週
-- 曜日 (1 は月曜日、7 は日曜日)
+- 曜日 ("1" は月曜日、"7" は日曜日)
 
 このクエリで、乗車場所と降車場所間の直接距離も生成されます。 このような関数の一覧については、「[LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)」を参照してください。
 
@@ -721,17 +721,17 @@ Machine Learning の[データのインポート][import-data] モジュール�
 
 [データのインポート][import-data] モジュールと入力するパラメーターの詳細は次のとおりです。
 
-**HCatalog サーバー URI**:クラスター名が **abc123** である場合、これは単純に https://abc123.azurehdinsight.net です。
+**HCatalog サーバー URI**:クラスター名が **abc123** の場合は、https:\//abc123.azurehdinsight.net を使用します。
 
-**Hadoop ユーザー アカウント名**:クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
+**Hadoop ユーザーのアカウント名**:クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 
 **Hadoop ユーザー アカウントのパスワード**:クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
 
-**出力データの場所**:これは、Azure になるように選択されます。
+**出力データの場所**:Azure になるように選択されます。
 
-**Azure ストレージ アカウント名**:クラスターに関連付けられている既定のストレージ アカウント名。
+**Azure ストレージ アカウント名**: クラスターに関連付けられている既定のストレージ アカウント名。
 
-**Azure コンテナー名**:クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、これは abc123 になります。
+**Azure コンテナー名**:クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、名前は abc123 になります。
 
 > [!IMPORTANT]
 > Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。
@@ -750,11 +750,11 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
 ![データのインポート モジュールの Hive クエリのスクリーンショット](./media/hive-walkthrough/1eTYf52.png)
 
-ダウンサンプリングされたデータは既定のコンテナーに格納されているため、Machine Learning からの結果の Hive クエリはとても簡単で、 単に **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data** となります。
+ダウンサンプリングされたデータは既定のコンテナーに格納されているため、Machine Learning からの結果の Hive クエリはシンプルになります。 単に **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data** となります。
 
 このデータセットを Machine Learning モデル作成のための出発点として使用できます。
 
-### <a name="mlmodel"></a>Machine Learning でモデルを作成する
+### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>Machine Learning でモデルを作成する
 これで、[Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データも、以前に特定した予測問題への対応に使用できる状態になりました。
 
 - **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
@@ -781,7 +781,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   **使用する学習者:** 多クラスのロジスティック回帰
 
-  a. この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる **tip\_class** になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、**tipped**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
+  a. この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる **tip\_class** になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、**tipped**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns] モジュールを使ってこれらの列を削除します。
 
   次のダイアグラムは、チップが分類される可能性が高い箱を予測する実験を示しています。 ビンは、クラス 0: チップ = $0、クラス 1: チップ > $0 および チップ <= $5、クラス 2: チップ > $5 および チップ <= $10、クラス 3: チップ > $10 および チップ <= $20、クラス 4: チップ > $20 です。
 
@@ -791,17 +791,17 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 
   ![テスト クラスの分布グラフ](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b. この実験では、混同行列を使用して予測精度を確認します。 次に例を示します。
+  b. この実験では、次に示すように混同行列を使用して予測精度を確認します。
 
   ![混同行列](./media/hive-walkthrough/cxFmErM.png)
 
-  一般的なクラスのクラス精度がかなり良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていないことに注意してください。
+  一般的なクラスのクラス精度が良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていません。
 
 - **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
   **使用する学習者:** ブースト デシジョン ツリー
 
-  a. この問題では、ターゲット (またはクラス) ラベルは **tip\_amount** です。 この場合のターゲット リークは、**tipped**、**tip\_class**、**total\_amount** です。 これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
+  a. この問題では、ターゲット (またはクラス) ラベルは **tip\_amount** です。 この場合のターゲット リークは、**tipped**、**tip\_class**、**total\_amount** です。 これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択][select-columns] モジュールを使ってこれらの列を削除します。
 
   次のダイアグラムは、支払われるチップの金額を予測する実験を示しています。
 
@@ -821,7 +821,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 ## <a name="license-information"></a>ライセンス情報
 このサンプルのチュートリアルとそれに付随するスクリプトは、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある **LICENSE.txt** ファイルを参照してください。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 •    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/)  
 •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

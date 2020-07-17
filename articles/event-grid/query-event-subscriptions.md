@@ -1,19 +1,18 @@
 ---
 title: Azure Event Grid サブスクリプションのクエリを実行する
-description: Azure Event Grid サブスクリプションの一覧を表示する方法を説明します。
+description: この記事では、Azure サブスクリプション内の Event Grid サブスクリプションの一覧を表示する方法を説明します。 サブスクリプションの種類に基づいて、異なるパラメーターを指定します。
 services: event-grid
 author: spelluru
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/04/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162020"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76721542"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid サブスクリプションのクエリを実行する 
 
@@ -46,7 +45,7 @@ Azure サブスクリプションに対する Event Grid サブスクリプシ�
 Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions" --location global
 ```
 
 PowerShell では、次を使用します。
@@ -60,7 +59,7 @@ Azure サブスクリプション内のすべてのリソース グループに�
 Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups" --location global
 ```
 
 PowerShell では、次を使用します。
@@ -74,7 +73,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-az eventgrid event-subscription list --resource-group myResourceGroup
+az eventgrid event-subscription list --resource-group myResourceGroup --location global
 ```
 
 PowerShell では、次を使用します。
@@ -159,7 +158,7 @@ $resourceid = (Get-AzResource -Name mystorage -ResourceGroupName myResourceGroup
 Get-AzEventGridSubscription -ResourceId $resourceid
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント配信と再試行については、「[Event Grid によるメッセージ配信と再試行](delivery-and-retry.md)」をご覧ください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

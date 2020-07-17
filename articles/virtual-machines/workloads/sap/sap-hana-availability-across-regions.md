@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297584"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70078847"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Azure リージョンの枠を越えた SAP HANA の可用性
 
@@ -83,7 +82,7 @@ SAP では、HANA 2.0 SPS3 による[マルチターゲット システム レ�
 > [!IMPORTANT]
 > 異なる階層間の操作モードは、同じ種類にする必要があります。 階層 1 と階層 2 の間の操作モードとして logreply を使用し、階層 3 の指定で delta_datashipping を使用することは**できません**。 すべての階層に一貫性がある必要がある、いずれか一方の操作モードのみを選ぶことができます。 RPO=0 を提供するために delta_datashipping は適していないため、このような多層構成に適切な唯一の操作モードは logreplay です。 操作モードと一部の制限事項について詳しくは、SAP の [SAP HANA システム レプリケーションの操作モード](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)に関する記事をご覧ください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure でのこれらの構成の設定手順については、以下をご覧ください。
 

@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a4c315d2696b081a4f2ac646d097e76ff9562380
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009482"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68881919"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing Image Search API の言語と地域のサポート
 
@@ -32,7 +32,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 > - en-AU (英語、オーストラリア)
 > - zh-CN (中国語、中国)
 
-## <a name="countries"></a>国
+## <a name="countriesregions"></a>国/リージョン
 
 |国/リージョン|コード|
 |-------|----|
@@ -49,7 +49,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |ドイツ|DE|
 |香港特別行政区|HK|
 |インド|IN|
-|インドネシア|ID|
+|インドネシア|id|
 |イタリア|IT|
 |日本|JP|
 |韓国|KR|
@@ -91,7 +91,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|繁体字中国語|zh-HK|
+|香港特別行政区|Traditional Chinese|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -112,11 +112,11 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|繁体字中国語|zh-TW|
+|台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
 |米国|英語|en-US|
 |米国|スペイン語|es-US|
 
-## <a name="next-steps"></a>次の手順
-Bing News Search エンドポイントの詳細については、[News Image Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)を参照してください。
+## <a name="next-steps"></a>次のステップ
+Bing News Search エンドポイントの詳細については、[News Image Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)を参照してください。

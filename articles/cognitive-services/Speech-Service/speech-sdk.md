@@ -1,104 +1,129 @@
 ---
-title: Speech SDK について - Speech Services
+title: Speech SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech ソフトウェア開発キット (SDK) は、Speech サービスの機能に対するネイティブ アクセス権をアプリケーションに提供します。これによりソフトウェアの開発が容易になります。 この記事では、Windows、Linux、Android 向けの SDK について、さらに詳しく取り上げます。
+description: Speech ソフトウェア開発キット (SDK) には Speech サービスの各種機能が多数含まれており、音声認識対応アプリケーションの開発が容易になります。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: wolfma
-ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003006"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81400025"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
-Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフトウェア開発を支援します。アプリケーションから SDK を利用することで、Speech Services の各種機能を利用することができます。 現在、これらの SDK は**音声テキスト変換**、**テキスト音声変換**、**音声翻訳**、および**意図認識**へのアクセスを提供しています。 機能やサポートされているプラットフォームについての概要は、[エントリ ページ](https://aka.ms/csspeech) ドキュメントで確認できます。
+Speech ソフトウェア開発キット (SDK) には Speech サービスの各種機能が多数含まれており、音声認識対応アプリケーションを開発できます。 Speech SDK は、多くのプログラミング言語と、すべてのプラットフォームで使用できます。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+## <a name="scenario-capabilities"></a>シナリオの機能
 
-## <a name="get-the-sdk"></a>SDK の取得
+Speech SDK は Speech サービスの機能が多数含まれていますが、すべてではありません。 Speech SDK の機能は、多くの場合、シナリオに関連づけられています。 Speech SDK は、ローカル デバイス、ファイル、Azure blob ストレージ、さらに入力ストリームと出力ストリームを使用して、リアルタイムのシナリオと非リアルタイムのシナリオの両方に適しています。 Speech SDK でシナリオを実現できない場合は、別の REST API を探してください。
 
-### <a name="windows"></a> Windows
+### <a name="speech-to-text"></a>音声テキスト変換
 
-Windows の場合、次の言語がサポートされています。
+[音声テキスト変換](speech-to-text.md) (*音声認識*とも呼ばれます) ではオーディオ ストリームからテキストへの文字起こしが行われ、アプリケーション、ツール、またはデバイスでそのテキストを使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](../luis/index.yml) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 [Speech Translation](speech-translation.md) を使用すると、音声入力を 1 回の通話で別の言語に変換できます。 詳細については、「[音声テキスト変換の基本](speech-to-text-basics.md)」を参照してください。
 
-* C# (UWP と .NET)、C++: Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 パッケージには、32 ビットおよび 64 ビットのクライアント ライブラリとマネージ (.NET) ライブラリが含まれています。 この SDK は NuGet を使用して Visual Studio でインストールできます。 **Microsoft.CognitiveServices.Speech** を検索してください。
+### <a name="text-to-speech"></a>テキスト読み上げ
 
-* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。これは Windows x64 のみをサポートします。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` を参照します。
+[テキスト読み上げ](text-to-speech.md) (*音声合成*とも呼ばれます) は、テキストを人間に似た合成音声に変換します。 入力テキストは、文字列リテラルか、[音声合成マーク付け言語 (SSML)](speech-synthesis-markup.md) を使用したものです。 標準またはニューラルな音声の詳細については、「[テキスト読み上げ言語と音声サポート](language-support.md#text-to-speech)」を参照してください。
 
-### <a name="linux"></a>Linux
+### <a name="voice-assistants"></a>音声アシスタント
 
-> [!NOTE]
-> 現在は、Ubuntu 16.04、Ubuntu 18.04、および Debian 9 のみが PC 上でサポートされています (C++ 開発向けには x86 または x64、.NET Core、Java、Python 向けには x64)。
+Speech SDK を使用した音声アシスタントにより、開発者はアプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、デバイスとアシスタントの間で高速かつ信頼性の高い対話機能を提供します。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド (プレビュー) サービスを使用してタスクを完了します。 さらに、音声アシスタントは、[Custom Voice Portal](https://aka.ms/customvoice) を使用して作成し、独自の音声エクスペリエンスを創造できます。
 
-次のシェル コマンドを実行して、必須のライブラリがインストールされていることを確認します。
+#### <a name="keyword-spotting"></a>キーワード認識
 
-Ubuntu の場合:
+Speech SDK では、[キーワード認識](speech-devices-sdk-create-kws.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2
-```
+### <a name="meeting-scenarios"></a>ミーティングのシナリオ
 
-Debian 9 の場合:
+Speech SDK は、単一のデバイスか複数デバイスの会話かに関わらず、ミーティングのシナリオの文字起こしに最適です。
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.2 libasound2
-```
+#### <a name="conversation-transcription"></a>会話の文字起こし
 
-* C#:Speech SDK NuGet パッケージの最新バージョンを参照および使用することができます。 SDK を参照するには、プロジェクトに次のパッケージ参照を追加します。
+[会話の文字起こし](conversation-transcription.md)を使用すると、リアルタイム (および非同期) の音声認識、話者識別、各話者に対する文の属性が有効になります (*ダイアライゼーション*とも呼ばれます)。 話者を区別することができるため、対面会議の文字起こしに最適です。
 
-  ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.5.1" />
-  ```
+#### <a name="multi-device-conversation"></a>マルチデバイスの会話
 
-* Java:Speech SDK Maven パッケージの最新バージョンを参照および使用することができます。 Maven プロジェクトでは、追加のリポジトリとして `https://csspeechstorage.blob.core.windows.net/maven/` を追加し、依存関係として `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` を参照します。
+[マルチデバイスの会話](multi-device-conversation.md)を使用して、会話の中で複数のデバイスまたはクライアントを接続し、音声ベースまたはテキストベースのメッセージを送信し、文字起こしや翻訳を容易に実現します。
 
-* C++: [.tar パッケージ](https://aka.ms/csspeech/linuxbinary)として SDK をダウンロードし、ファイルを任意のディレクトリにアンパックします。 SDK のフォルダー構造を次の表に示します。
+### <a name="custom--agent-scenarios"></a>カスタム/エージェントのシナリオ
 
-  |Path|説明|
-  |-|-|
-  |`license.md`|ライセンス|
-  |`ThirdPartyNotices.md`|サード パーティに関する通知|
-  |`include`|C および C++ 用のヘッダー ファイル|
-  |`lib/x64`|アプリケーションとのリンクのためのネイティブ x64 ライブラリ|
-  |`lib/x86`|アプリケーションとのリンクのためのネイティブ x86 ライブラリ|
+Speech SDK は、テレフォニー データが生成されるコール センターのシナリオでの文字起こしにも使用できます。
 
-  アプリケーションを作成するには、必須のバイナリ (およびライブラリ) を開発環境にコピーまたは移動し、 必要に応じてそれらをビルド プロセスに含めます。
+#### <a name="call-center-transcription"></a>コール センターの文字起こし
 
-### <a name="android"></a>Android
+[コール センターの文字起こし](call-center-transcription.md)は、対話型音声応答 (IVR) のような様々なシステムに由来する大量のテレフォニー データを文字起こしする一般的な音声テキスト変換シナリオです。 Speech サービスの最新の音声認識モデルはそのような電話データの文字起こしに優れており、人間には理解が難しいデータにも対応しています。
 
-Android 用 Java SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。 これは、`https://csspeechstorage.blob.core.windows.net/maven/` にある Maven リポジトリでパッケージ `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` としてホストされます。
+### <a name="codec-compressed-audio-input"></a>コーデック圧縮音声入力
 
-このパッケージを Android Studio プロジェクトから使用するには、次の変更を行います。
+いくつかの Speech SDK プログラミング言語では、コーデック圧縮音声入力ストリームをサポートしています。 詳細については、「<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">圧縮音声入力形式を使用する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
 
-* プロジェクト レベルの build.gradle ファイルで、`repository` セクションに次を追加します。
+## <a name="rest-api"></a>REST API
 
-  ```gradle
-  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-  ```
+Speech SDK には音声サービスの多くの機能が含まれていますが、一部のシナリオでは REST API を使用した方がよいかもしれません。
 
-* モジュール レベルの build.gradle ファイルで、`dependencies` セクションに次を追加します。
+### <a name="batch-transcription"></a>バッチ文字起こし
 
-  ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.5.1'
-  ```
+[バッチ文字起こし](batch-transcription.md)では、大量のデータの音声からテキストへの文字起こしを非同期で行うことができます。 バッチ文字起こしは、REST API でのみ可能です。 音声からテキストへの変換に加え、一括音声テキスト変換は、ダイアライゼーションやセンチメント分析にも対応します。
 
-Java SDK は [Speech Devices SDK](speech-devices-sdk.md) の一部でもあります。
+## <a name="customization"></a>カスタマイズ
 
-[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Speech サービスは、音声からテキスト、テキストから音声、音声翻訳に至るまで、既定のモデルを使用して優れた機能を提供します。 場合によっては、独自のユース ケースに合わせて、ベースラインのパフォーマンスを向上させた方がよいかもしれません。 Speech サービスには、簡単に使用できるさまざまなコードなしのカスタマイズ ツールがあり、独自のデータに基づいてカスタム モデルを使用して競争力を得られます。 これらのモデルは、ユーザーとその組織だけが使用できます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="custom-speech-to-text"></a>カスタム音声変換
+
+独自環境での認識と文字起こしに音声テキスト変換を使用する場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 コードを使用しない Custom Speech モデルの作成と管理は、[Custom Speech Portal](https://aka.ms/customspeech) を通じて行うことができます。 Custom Speech モデルが発行されると、Speech SDK で利用できるようになります。
+
+### <a name="custom-text-to-speech"></a>カスタム テキスト読み上げ
+
+Custom Voice とも呼ばれるカスタム テキスト読み上げは、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 コードを使用しない Custom Voice モデルの作成と管理は、[Custom Voice Portal](https://aka.ms/customvoice) を通じて行うことができます。 Custom Voice モデルが発行されると、Speech SDK で利用できるようになります。
+
+## <a name="get-the-speech-sdk"></a>Speech SDK を取得する
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-windows.md)]
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-linux.md)]
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
+
+# <a name="macos"></a>[macOS](#tab/macos)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
+
+# <a name="android"></a>[Android](#tab/android)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-android.md)]
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+[!INCLUDE [Get the Node.js Speech SDK](includes/get-speech-sdk-nodejs.md)]
+
+# <a name="browser"></a>[ブラウザー](#tab/browser)
+
+[!INCLUDE [Get the Browser Speech SDK](includes/get-speech-sdk-browser.md)]
+
+---
+
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+[!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+
+## <a name="next-steps"></a>次のステップ
 
 * [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](quickstart-csharp-dotnet-windows.md)
+* [C# で音声を認識する方法を確認する](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

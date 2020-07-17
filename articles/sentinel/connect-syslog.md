@@ -1,58 +1,110 @@
 ---
-title: Azure Sentinel プレビューに Syslog データを接続する | Microsoft Docs
+title: Azure Sentinel に Syslog データを接続する | Microsoft Docs
 description: Azure Sentinel に Syslog データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: 5dd59729-c623-4cb4-b326-bb847c8f094b
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 673b1df6094703bebcbfd9d82c1268c01d46e814
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 12/30/2019
+ms.author: yelevin
+ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77588078"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Syslog を使用して、ご利用の外部ソリューションを接続する
-
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Syslog をサポートする任意のオンプレミスのアプライアンスを Azure Sentinel に接続することができます。 これを行うには、アプライアンスと Azure Sentinel 間に Linux マシンに基づくエージェントを使用します。 ご利用の Linux マシンが Azure 内にある場合は、ご自分のアプライアンスまたはアプリケーションから、Azure 内で作成した専用のワークスペースへと、ログをストリーミングし、それを接続することができます。 ご利用の Linux マシンが Azure 内にない場合は、ご自分のアプライアンスから、Linux 用エージェントのインストール先である専用のオンプレミスの VM またはマシンへと、ログをストリーミングすることができます。 
 
 > [!NOTE]
 > ご利用のアプライアンスで Syslog CEF がサポートされている場合、接続はより詳細になるので、このオプションを選択し、[CEF からのデータの接続](connect-common-event-format.md)に関するページに記載の手順に従う必要があります。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
-Syslog 接続は、Linux 用エージェントを使用して実現されます。 既定では、Linux 用エージェントは Syslog デーモンからのイベントを UDP 経由で受信しますが、Linux マシンで大量の Syslog イベントが収集されると予想される場合 (Linux エージェントが他のデバイスからイベントを受信している場合など)、Syslog デーモンとエージェントの間で TCP トランスポートを使用するように構成が変更されます。
+Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。
+
+詳細については、「[Azure Monitor の Syslog データ ソース](../azure-monitor/platform/data-sources-syslog.md)」を参照してください。
+
+> [!NOTE]
+> - エージェントは、複数のソースからログを収集できますが、専用のプロキシ コンピューターにインストールする必要があります。
+> - 同じ VM 上の CEF 用と Syslog 用の両方のコネクタをサポートする場合は、次の手順を実行してデータの重複を回避します。
+>    1. 手順に従って、[CEF を接続](connect-common-event-format.md)します。
+>    2. Syslog データを接続するには、 **[設定]**  >  **[ワークスペースの設定]**  >  **[詳細設定]**  >  **[データ]**  >  **[Syslog]** にアクセスして、ファシリティおよびその優先順位を設定し、CEF 構成で使用したファシリティやプロパティと同じにならないようにします。 <br></br>**[下の構成をコンピューターに適用する]** を選択する場合、このワークスペースに接続されるすべての VM にこれらの設定が適用されます。
+
 
 ## <a name="connect-your-syslog-appliance"></a>Syslog アプライアンスを接続する
 
-1. Azure Sentinel ポータルで、**[データ コネクタ]** を選択し、**[Syslog]** タイルを選択します。
-2. ご利用の Linux マシンが Azure 内にない場合は、Azure Sentinel **エージェント for Linux** をダウンロードしてご利用のアプライアンス上にインストールします。 
-1. Azure 内で作業している場合は、Syslog メッセージの受信専用である Azure Sentinel ワークスペース内で VM を選択または作成します。 Azure Sentinel ワークスペース内の VM を選択し、左側のウィンドウの上部にある **[接続]** をクリックします。
-3. Syslog コネクタの設定に戻り、**[Configure the logs to be connected]\(接続するログの構成\)** をクリックします。 
-4. **[Press here to open the configuration blade]\(構成ブレードを開くにはここを押してください\)** をクリックします。
-1. **[データ]**、**[Syslog]** の順に選択します。
-   - Syslog によって送信する各ファシリティがテーブル内にあることを確認します。 ファシリティごとに、監視を実行し、重大度レベルを設定します。 **[Apply]** をクリックします。
-1. ご利用の Syslog マシン上で、それらのファシリティを送信していることを確認します。 
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Syslog]** コネクタを選択します。
 
-3. Log Analytics で Syslog ログに関連するスキーマを使用するために、**Syslog** を検索します。
+2. **[Syslog]** ブレードで、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
+3. Linux エージェントをインストールします。
+    
+    - Linux 仮想マシンが Azure 内にある場合、 **[Download and install agent on Azure Linux virtual machine]\(Azure Linux 仮想マシン上でエージェントをダウンロードしてインストールする\)** を選択します。 **[仮想マシン]** ブレードでエージェントをインストールする仮想マシンを選択し、 **[接続]** をクリックします。
+    - Linux マシンが Azure 内にない場合、 **[Download and install agent on Linux non-Azure machine]\(Azure 以外の Linux マシン上でエージェントをダウンロードしてインストールする\)** を選択します。 **[Direct agent]\(直接エージェント\)** ブレードで、 **[DOWNLOAD AND ONBOARD AGENT FOR LINUX]\(Linux 用エージェントのダウンロードとオンボーディング\)** の下にあるコマンドをコピーし、対象のコンピューター上で実行します。 
+    
+   > [!NOTE]
+   > 組織のセキュリティ ポリシーに従って、これらのコンピューターのセキュリティ設定を構成してください。 たとえば、組織のネットワーク セキュリティ ポリシーに合わせてネットワーク設定を構成し、デーモンのポートとプロトコルをセキュリティ要件に合わせて変更できます。
 
+4. **[Open your workspace advanced settings configuration]\(ワークスペースの詳細設定の構成を開く\)** を選択します。
 
+5. **[詳細設定]** ブレードで、 **[データ]**  >  **[Syslog]** の順に選択します。 次に、収集するコネクタのファシリティを追加します。
+    
+    Syslog アプライアンスがそのログ ヘッダーに含めるファシリティを追加します。 この構成は、Syslog アプライアンスの `/etc/rsyslog.d/security-config-omsagent.conf`フォルダーにある **Syslog-d**と、 `/etc/syslog-ng/security-config-omsagent.conf`にある **r-Syslog** で確認できます。
+    
+    収集するデータで異常な SSH ログイン検出を使用する場合は、 **[auth]** と **[authpriv]** を追加します。 追加情報については、[次のセクション](#configure-the-syslog-connector-for-anomalous-ssh-login-detection)を参照してください。
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Syslog オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+6. 監視するファシリティをすべて追加し、それぞれの重大度オプションを調整したら、 **[Apply below configuration to my machines]\(下の構成をコンピューターに適用する\)** チェックボックスを選択します。
+
+7. **[保存]** を選択します。 
+
+8. Syslog アプライアンスで、指定したファシリティが送信されていることを確認します。
+
+9. Azure Monitor で Syslog ログに関連するスキーマを使用するために、**Syslog** を検索します。
+
+10. 「[Azure Monitor ログ クエリでの関数の使用](../azure-monitor/log-query/functions.md)」で説明されている Kusto 関数を使用して、Syslog メッセージを解析できます。 その後、新しい Log Analytics 関数としてそれらを保存し、新しいデータ型として使用できます。
+
+### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>異常な SSH ログイン検出用に Syslog コネクタを構成する
+
+> [!IMPORTANT]
+> 異常な SSH ログイン検出は現在、パブリック プレビュー段階です。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常な Secure Shell (SSH) ログイン アクティビティを識別できます。 シナリオには以下が含まれます。
+
+- あり得ない移動 - 2 つの成功したログイン イベントが、この 2 つのログイン イベントの期間内に到達できない 2 つの場所で発生した場合。
+- 予期しない場所 - 成功したログイン イベントの発生した場所が疑わしい場合。 たとえば、最近検出されることのなかった場所などです。
+ 
+この検出には、Syslog データ コネクタの特定の構成が必要です。 
+
+1. 前の手順のステップ 5 で、監視するファシリティとして **[auth]** と **[authpriv]** の両方が選択されていることを確認してください。 重大度オプションは既定の設定のままにし、すべてが選択されるようにします。 次に例を示します。
+    
+    > [!div class="mx-imgBorder"]
+    > ![異常な SSH ログインの検出に必要なファシリティ](./media/connect-syslog/facilities-ssh-detection.png)
+
+2. Syslog 情報が収集されるまで、十分な時間をかけます。 その後、 **[Azure Sentinel - Logs]\(Azure Sentinel - ログ\)** に移動して、次のクエリをコピーして貼り付けます。
+    
+        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    
+    必要に応じて **[Time range]\(時間の範囲\)** を変更し、 **[実行]** を選択します。
+    
+    結果の数が 0 の場合は、コネクタの構成を確認し、クエリに指定した期間内に監視対象のコンピュータで成功したログイン アクティビティがあったことを確認します。
+    
+    結果の数が 0 より大きい場合、Syslog データは、異常な SSH ログインの検出用に適しています。 この検出は、 **[分析]**  >   **[Rule templates]\(ルール テンプレート\)**  >  **[(Preview) Anomalous SSH Login Detection]\((プレビュー) 異常な SSH ログインの検出\)** で有効にします。
+
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Syslog オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+

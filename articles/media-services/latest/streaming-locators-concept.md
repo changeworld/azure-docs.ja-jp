@@ -9,38 +9,102 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465032"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582676"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
-出力アセット内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成し、ストリーミング URL をビルドする必要があります。 .NET のサンプルについては、「[Get a Streaming Locator](stream-files-tutorial-with-api.md#get-a-streaming-locator)」(ストリーミング ロケーターを取得する) を参照してください。
+出力アセット内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成し、ストリーミング URL をビルドする必要があります。 URL を作成するには、ストリーミング エンドポイントのホスト名とストリーミング ロケーター パスを連結する必要があります。 .NET のサンプルについては、「[Get a Streaming Locator](stream-files-tutorial-with-api.md#get-a-streaming-locator)」(ストリーミング ロケーターを取得する) を参照してください。
 
 **ストリーミング ロケーター** を作成するプロセスは発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-**ストリーミング ロケーター**を作成するときに、[アセット](https://docs.microsoft.com/rest/api/media/assets)名と[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)名を指定する必要があります。 定義済みのストリーミング ポリシーまたは作成済みのカスタム ポリシーのいずれかを使用できます。 現在利用できる定義済みのポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming' カスタム ストリーミング ポリシーの使用時には、お使いの Media Service アカウント用にこうしたポリシーの限られたセットを設計し、同じオプションとプロトコルが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 
+**ストリーミング ロケーター**を作成するときに、**アセット**名と**ストリーミング ポリシー**名を指定する必要があります。 詳細については、次のトピックを参照してください。
 
-ストリームで暗号化オプションを指定する場合は、コンテンツ キーを Media Services の Key Delivery コンポーネント経由でエンド クライアントへ配信する方法を構成する[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)を作成します。 ストリーミング ロケーターを**コンテンツ キー ポリシー**とコンテンツ キーに関連付けます。 Media Services でキーを自動生成させることができます。 次の .NET の例では、Media Services v3:[EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted) でトークン制限を使用して AES 暗号化を構成する方法を示します。 **コンテンツ キー ポリシー**は更新が可能なため、キーのローテーションを行う必要がある場合には、ポリシーを更新することができます。 キー配信キャッシュでポリシーが更新されて、その更新されたポリシーが取得されるまでには、最大 15 分かかる場合があります。 ストリーミング ロケーターごとに新しいコンテンツ キー ポリシーを作成しないことをお勧めします。 同じオプションが必要な場合は常に、既存のポリシーを再利用するようにしてください。
+* [アセット](assets-concept.md)
+* [ストリーミング ポリシー](streaming-policy-concept.md)
+* [コンテンツ キー ポリシー](content-key-policy-concept.md)
 
-> [!IMPORTANT]
-> * Datetime 型の**ストリーミング ロケーター**のプロパティは、常に UTC 形式です。
-> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 
+ストリーミング ロケーターで開始時刻と終了時刻を指定することもできます。これにより、ユーザーはこれらの時刻の間 (例: 2019 年 5 月 1 日から 2019 年 5 月 5 日の間) のコンテンツのみを再生できます。  
+
+## <a name="considerations"></a>考慮事項
+
+* **ストリーミング ロケーター**は更新できません。 
+* Datetime 型の**ストリーミング ロケーター**のプロパティは、常に UTC 形式です。
+* お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
+
+## <a name="create-streaming-locators"></a>ストリーミング ロケーターの作成  
+
+### <a name="not-encrypted"></a>暗号化なし
+
+平文 (暗号化されていない) でファイルをストリーミングする場合は、定義済みの平文のストリーミング ポリシーを 'Predefined_ClearStreamingOnly' に設定します (.NET では、PredefinedStreamingPolicy.ClearStreamingOnly 列挙型を使用できます)。
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
+    });
+```
+
+### <a name="encrypted"></a>Encrypted 
+
+コンテンツを CENC 暗号化を使用してコンテンツを暗号化する必要がある場合は、ポリシーを 'Predefined_MultiDrmCencStreaming' に設定します。 Widevine 暗号化は DASH ストリームに適用され、PlayReady は Smooth に適用されます。 このキーは、構成された DRM ライセンスに基づいて再生クライアントに配信されます。
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
+        DefaultContentKeyPolicyName = contentPolicyName
+    });
+```
+
+また、CBCS (FairPlay) でも HLS ストリームを暗号化する場合は、'Predefined_MultiDrmStreaming' を使用します。
+
+> [!NOTE]
+> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="associate-filters-with-streaming-locators"></a>フィルターをストリーミング ロケーターに関連付ける
 
-[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。これは[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+「[フィルターをストリーミング ロケーターに関連付ける](filters-concept.md#associating-filters-with-streaming-locator)」を参照してください。
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>ストリーミング ロケーター エンティティのフィルター処理、順序付け、ページング
 
 「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="list-streaming-locators-by-asset-name"></a>アセット名別のストリーミング ロケーターの一覧
 
+関連するアセット名に基づくストリーミング ロケーターを取得するには、次の操作を使用します。
+
+|Language|API|
+|---|---|
+|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
+|CLI|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+
+## <a name="see-also"></a>関連項目
+
+* [アセット](assets-concept.md)
+* [ストリーミング ポリシー](streaming-policy-concept.md)
+* [コンテンツ キー ポリシー](content-key-policy-concept.md)
 * [チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
-* [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)
+
+## <a name="next-steps"></a>次のステップ
+
+[ストリーミング ロケーターを作成して URL を構築する方法](create-streaming-locator-build-url.md)

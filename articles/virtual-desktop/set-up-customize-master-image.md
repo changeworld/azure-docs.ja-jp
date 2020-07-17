@@ -1,40 +1,41 @@
 ---
 title: マスター VHD イメージを準備してカスタマイズする - Azure
-description: Windows Virtual Desktop プレビューのマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
+description: Windows Virtual Desktop のマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
-ms.date: 04/03/2019
+ms.topic: conceptual
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 58471dc539f72c49b041638e928dda751f4bf5a2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+manager: lizross
+ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410590"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611961"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
-この記事では、仮想マシン (VM) を作成してインストールし、その上でソフトウェアを構成する方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop プレビュー固有の構成に対するものです。
+この記事では、仮想マシン (VM) を作成してそこにソフトウェアをインストールする方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
 
 ## <a name="create-a-vm"></a>VM の作成
 
 Windows 10 Enterprise マルチセッションは、Azure イメージ ギャラリーで入手できます。 このイメージをカスタマイズにするには、2 つのオプションがあります。
 
-最初のオプションでは、「[管理イメージから VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)」の手順に従ってAzure 内で仮想マシン (VM) をプロビジョニングしてから、「[ソフトウェアの準備とインストール](set-up-customize-master-image.md#software-preparation-and-installation)」に進みます。
+最初のオプションでは、「[管理イメージから VM を作成する](../virtual-machines/windows/create-vm-generalized-managed.md)」の手順に従ってAzure 内で仮想マシン (VM) をプロビジョニングしてから、「[ソフトウェアの準備とインストール](set-up-customize-master-image.md#software-preparation-and-installation)」に進みます。
 
 2 番目のオプションでは、イメージをダウンロードし、Hyper-V VM をプロビジョニングし、ニーズに合わせてカスタマイズすることで、イメージをローカルで作成します。これについては次のセクションで説明します。
 
 ### <a name="local-image-creation"></a>ローカル イメージの作成
 
-イメージをローカルの場所にダウンロードした後、**Hyper-V マネージャー**を開き、先ほどコピーした VHD を使用して VM を作成します。 次に示すのはシンプルなバージョンですが、「[Create a virtual machine in Hyper-V (Hyper-V 内で仮想マシンを作成する)](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v)」で詳細な手順を確認できます。
+イメージをローカルの場所にダウンロードした後、**Hyper-V マネージャー**を開き、コピーした VHD を使用して VM を作成します。 次の手順はシンプルなバージョンですが、「[Create a virtual machine in Hyper-V (Hyper-V 内で仮想マシンを作成する)](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/)」で詳細な手順を確認できます。
 
 コピーした VHD を使用して VM を作成するには:
 
 1. **新しい仮想マシン ウィザード**を開きます。
 
-2. [世代の指定] ページで、**[第 1 世代]** を選択します。
+2. [世代の指定] ページで、 **[第 1 世代]** を選択します。
 
     ![[世代の指定] ページのスクリーンショット。 [第 1 世代] オプションが選択されています。](media/a41174fd41302a181e46385e1e701975.png)
 
@@ -50,125 +51,49 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>固定ディスク
 
-既存の VHD から VM を作成する場合、既定ではダイナミック ディスクが作成されます。 次の図に示すように、**[ディスクの編集]** を選択して固定ディスクに変更できます。 詳しい手順については、「[Azure にアップロードする Windows VHD または VHDX を準備する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)」をご覧ください。
+既存の VHD から VM を作成する場合、既定ではダイナミック ディスクが作成されます。 次の図に示すように、 **[ディスクの編集]** を選択して固定ディスクに変更できます。 詳しい手順については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」をご覧ください。
 
 ![[ディスクの編集] オプションのスクリーンショット。](media/35772414b5a0f81f06f54065561d1414.png)
 
 次の PowerShell コマンドレットを実行して、ディスクを固定ディスクに変更することもできます。
 
 ```powershell
-Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.vhd -VHDType Fixed
+Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
 ## <a name="software-preparation-and-installation"></a>ソフトウェアの準備とインストール
 
-このセクションでは、Office365 ProPlus、OneDrive、FSLogix、Windows Defender、その他の一般的なアプリケーションを準備し、インストールする方法について説明します。 ユーザーが特定の LOB アプリケーションにアクセスする必要がある場合は、このセクションの手順を完了した後にそれらをインストールすることをお勧めします。
+このセクションでは、FSLogix と Windows Defender の準備とインストールのほか、アプリとイメージのレジストリについてのいくつかの基本的な構成オプションについて説明します。 
 
-このセクションでは、Azure と Hyper-V マネージャーのどちらでプロビジョニングされているかにかかわらず、VM に対して昇格されたアクセス権があることを想定します。
+Office 365 ProPlus と OneDrive を VM にインストールする場合は、「[マスター VHD イメージに Office をインストールする](install-office-on-wvd-master-image.md)」に移動し、そこに記載されている手順に従ってアプリをインストールします。 完了したら、この記事に戻ります。
 
-### <a name="install-office-in-shared-computer-activation-mode"></a>共有コンピューターのアクティブ化モードで Office をインストールする
+ユーザーが特定の LOB アプリケーションにアクセスする必要がある場合は、このセクションの手順を完了した後にそれらをインストールすることをお勧めします。
 
-[Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)を使用して Office をインストールします。 Windows 10 Enterprise マルチセッションでは、Office 365 ProPlus のみがサポートされ、Office 2019 永続ライセンスはサポートされません。
+### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
 
-Office 展開ツールには、構成 XML ファイルが必要です。 次のサンプルをカスタマイズするには、「[Office 展開ツールの構成オプション](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool)」をご覧ください。
+FSLogix コンテナーをイメージの一部として含めるには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](/fslogix/configure-cloud-cache-tutorial/)を使用して FSLogix コンテナーの機能をテストできます。
 
-マイクロソフトが提供しているこのサンプル構成 XML では、次の操作を行います。
+### <a name="configure-windows-defender"></a>Windows Defender を構成する
 
-- Insiders チャネルから Office をインストールし、実行時に Insiders チャネルから更新プログラムを配信します。
-- x64 アーキテクチャを使用します。
-- 自動更新を無効にします。
-- Visio とプロジェクトをインストールします。
-- Office の既存のインストールを削除し、その設定を移行します。
-- ターミナル サーバー環境内での操作に対して共有コンピューター ライセンスを有効にします。
+VM に Windows Defender が構成されている場合、ファイルの添付中は VHD ファイルと VHDX ファイルの内容全体をスキャンしないように構成されていることを確認してください。
 
-このサンプル構成 XML では、以下の操作は行われません。
+この構成では、ファイル添付中の VHD ファイルと VHDX ファイルのスキャンのみ削除され、リアルタイム スキャンには影響しません。
 
-- Skype for Business のインストール
-- ユーザーごとのモードでの OneDrive のインストール。 詳しくは、「[マシンごとのモードで OneDrive をインストールする](#install-onedrive-in-per-machine-mode)」をご覧ください。
+Windows Server 上で Windows Defender を構成する手順について詳しくは、「[Windows Server 上で Windows Defender ウイルス対策の除外を構成する](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/)」をご覧ください。
 
->[!NOTE]
->共有コンピューターのライセンスは、グループ ポリシー オブジェクト (GPO) またはレジストリ設定を使用して設定することができます。 GPO は、**[コンピューターの構成] \\ [ポリシー] \\ [管理用テンプレート] \\ [Microsoft Office 2016 (マシン)] \\ [ライセンスの設定]** にあります
-
-Office 展開ツールには、setup.exe が含まれています。 Office をインストールするには、コマンド ラインで次のコマンドを実行します。
-
-```batch
-Setup.exe /configure configuration.xml
-```
-
-#### <a name="sample-configurationxml"></a>サンプルの configuration.xml
-
-次の XML サンプルでは、Insiders Fast または Insiders Main とも呼ばれる Insider リリースがインストールされます。
-
-```xml
-<Configuration>
-    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
-        <Product ID="O365ProPlusRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Groove" />
-            <ExcludeApp ID="Lync" />
-            <ExcludeApp ID="OneDrive" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-        <Product ID="VisioProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" /> 
-        </Product>
-        <Product ID="ProjectProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-    </Add>
-    <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
-    <Display Level="None" AcceptEULA="TRUE" />
-    <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
-    <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
-    <Property Value="1" Name="SharedComputerLicensing"/>
-    <Property Value="TRUE" Name="PinIconsToTaskbar"/>
-</Configuration>
-```
-
->[!NOTE]
->Office チームは、**OfficeClientEdition** パラメーターに 64 ビット インストールを使用することをお勧めします。
-
-Office をインストールした後で、Office の既定の動作を更新できます。 次のコマンドを個別にまたはバッチ ファイルで実行して、動作を更新します。
-
-```batch
-rem Mount the default user registry hive
-reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
-rem Must be executed with default registry hive mounted.
-reg add HKU\TempDefault\SOFTWARE\Policies\Microsoft\office\16.0\common /v InsiderSlabBehavior /t REG_DWORD /d 2 /f
-rem Set Outlook's Cached Exchange Mode behavior
-rem Must be executed with default registry hive mounted.
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v enable /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v syncwindowsetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSettingMonths  /t REG_DWORD /d 1 /f
-rem Unmount the default user registry hive
-reg unload HKU\TempDefault
-
-rem Set the Office Update UI behavior.
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideupdatenotifications /t REG_DWORD /d 1 /f
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
-```
+特定のファイルをスキャンから除外するように Windows Defender を構成する方法について詳しくは、「[ファイル拡張子とフォルダーの場所に基づく除外の構成と検証](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)」をご覧ください。
 
 ### <a name="disable-automatic-updates"></a>自動更新を無効にする
 
 ローカル グループ ポリシーを介して自動更新を無効にするには:
 
 1. **[ローカル グループ ポリシー エディター]\\[管理用テンプレート]\\[Windows コンポーネント]\\[Windows Update]** を開きます。
-2. **[Configure Automatic Update]\(自動更新の構成\)** を右クリックし、**[無効]** に設定します。
+2. **[Configure Automatic Update]\(自動更新の構成\)** を右クリックし、 **[無効]** に設定します。
 
 コマンド プロンプトで次のコマンドを実行して自動更新を無効にすることもできます。
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 ### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Windows 10 PC のスタート画面のレイアウトを指定する (省略可能)
@@ -179,102 +104,16 @@ Windows 10 PC のスタート画面のレイアウトを指定するには、こ
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
-### <a name="install-onedrive-in-per-machine-mode"></a>マシンごとのモードで OneDrive をインストールする
-
-OneDrive は、通常はユーザーごとにインストールされます。 この環境では、マシンごとにインストールする必要があります。
-
-マシンごとのモードで OneDrive をインストールする方法を次に示します。
-
-1. 最初に、OneDrive のインストーラーをステージングする場所を作成します。 ローカル ディスク フォルダーまたは [\\\\unc](file://unc) で問題ありません。
-
-2. <https://aka.ms/OneDriveWVD-Installer> リンクを使用して、ステージング場所に OneDriveSetup.exe をダウンロードします。
-
-3. **\<ExcludeApp ID="OneDrive" /\>** を省略することで office を OneDrive と共にインストールした場合は、次のコマンドを実行して、管理者特権でのコマンド プロンプトから既存のユーザーごとの OneDrive インストールをアンインストールします。
-    
-    ```batch
-    "[staged location]\OneDriveSetup.exe" /uninstall
-    ```
-
-4. このコマンドを管理者特権でのコマンド プロンプトから実行して、**AllUsersInstall** レジストリ値を設定します。
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
-    ```
-
-5. 次のコマンドを実行して OneDrive をマシンごとのモードでインストールします。
-
-    ```batch
-    Run "[staged location]\OneDriveSetup.exe" /allusers
-    ```
-
-6. 次のコマンドを実行して、すべてのユーザーのサインイン時に開始する OneDrive を構成します。
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
-    ```
-
-7. 次のコマンドを実行して、**[Silently configure user account]\(ユーザー アカウントをサイレントで構成\)** を有効にします。
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
-    ```
-
-8. 次のコマンドを実行して、Windows の既知のフォルダーを OneDrive にリダイレクトおよび移動します。
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
-    ```
-
-### <a name="teams-and-skype"></a>Teams と Skype
-
-Windows Virtual Desktop では、Skype for Business と Teams は公式にサポートされていません。
-
-### <a name="set-up-user-profile-container-fslogix"></a>ユーザー プロファイル コンテナーを設定する (FSLogix)
-
-FSLogix コンテナーをイメージの一部として含めるには、「[ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」の手順に従います。 [このクイックスタート](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start)を使用して FSLogix コンテナーの機能をテストできます。
-
-### <a name="configure-windows-defender"></a>Windows Defender を構成する
-
-VM に Windows Defender が構成されている場合、同じファイルの添付中は VHD ファイルと VHDX ファイルの内容全体をスキャンしないように構成されていることを確認してください。
-
-この構成では、ファイル添付中の VHD ファイルと VHDX ファイルのスキャンのみ削除され、リアルタイム スキャンには影響しません。
-
-Windows Server 上で Windows Defender を構成する手順について詳しくは、「[Windows Server 上で Windows Defender ウイルス対策の除外を構成する](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)」をご覧ください。
-
-特定のファイルをスキャンから除外するように Windows Defender を構成する方法について詳しくは、「[ファイル拡張子とフォルダーの場所に基づく除外の構成と検証](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)」をご覧ください。
-
-### <a name="configure-session-timeout-policies"></a>セッション タイムアウト ポリシーを構成する
-
-リモート セッション ポリシーは、ホスト プール内のすべての VM が同じセキュリティ グループに属しているため、グループ ポリシー レベルで適用できます。
-
-リモート セッション ポリシーを構成するには:
-
-1. **[管理用テンプレート]** > **[Windows コンポーネント]** > **[リモート デスクトップ サービス]** > **[リモート デスクトップ セッション ホスト]** > **[セッションの時間制限]** に移動します。
-2. 右側のパネルで、**[アクティブでアイドル状態になっているリモート デスクトップ サービス セッションの制限時間を設定する]** ポリシーを選択します。
-3. モーダル ウィンドウが表示されたら、ポリシー オプションを **[未構成]** から **[有効]** に変更してポリシーをアクティブにします。
-4. ポリシー オプションの下にあるドロップダウン メニューで、時間数を **4 時間**に設定します。
-
-次のコマンドを実行して、リモート セッション ポリシーを手動で構成することもできます。
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
-```
-
 ### <a name="set-up-time-zone-redirection"></a>タイム ゾーン リダイレクトを設定する
 
 タイム ゾーン リダイレクトは、ホスト プール内のすべての VM が同じセキュリティ グループに属しているため、グループ ポリシー レベルで適用できます。
 
 タイム ゾーンをリダイレクトするには:
 
-1. Active Directory サーバー上で、**[グループ ポリシー管理コンソール]** を開きます。
+1. Active Directory サーバー上で、 **[グループ ポリシー管理コンソール]** を開きます。
 2. ドメインとグループ ポリシー オブジェクトを展開します。
-3. グループ ポリシー設定に対して作成した**グループ ポリシー オブジェクト**を右クリックし、**[編集]** を選択します。
-4. **グループ ポリシー管理エディター**で、**[コンピューターの構成]** > **[ポリシー]** > **[管理テンプレート]** > **[Windows コンポーネント]** > **[リモート デスクトップ サービス]** > **[リモート デスクトップ セッション ホスト]** > **[デバイスとリソースのリダイレクト]** に移動します。
+3. グループ ポリシー設定に対して作成した**グループ ポリシー オブジェクト**を右クリックし、 **[編集]** を選択します。
+4. **グループ ポリシー管理エディター**で、 **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[デバイスとリソースのリダイレクト]** に移動します。
 5. **[タイム ゾーン リダイレクトを許可する]** 設定を有効にします。
 
 このコマンドをマスター イメージに対して実行してタイム ゾーンをリダイレクトすることもできます。
@@ -292,29 +131,28 @@ Windows 10 Enterprise または Windows 10 Enterprise マルチセッション�
 次のコマンドを実行して、レジストリで設定を変更することもできます。
 
 ```batch
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy /v 01 /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
 ### <a name="include-additional-language-support"></a>追加の言語サポートを含める
 
 この記事では、言語とリージョンのサポートの構成方法については説明しません。 詳細については、次の記事を参照してください。
 
-- [Windows イメージへの言語の追加](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [オンデマンド機能](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Language and region features on demand (FOD) (言語とリージョンのオンデマンド機能 (FOD))](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Windows イメージへの言語の追加](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [オンデマンド機能](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Language and region features on demand (FOD) (言語とリージョンのオンデマンド機能 (FOD))](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>その他のアプリケーションとレジストリを構成する
 
 このセクションでは、アプリケーションとオペレーティング システムの構成について説明します。 このセクションのすべての構成は、コマンドラインと regedit ツールで実行できるレジストリ エントリを使用して行います。
 
 >[!NOTE]
->一般ポリシー オブジェクト (GPO) またはレジストリ インポートのいずれかを使用して構成にベスト プラクティスを実装できます。 管理者は、組織の要件に基づいていずれかのオプションを選択できます。
+>グループ ポリシー オブジェクト (GPO) またはレジストリ インポートのいずれかを使用して構成にベスト プラクティスを実装できます。 管理者は、組織の要件に基づいていずれかのオプションを選択できます。
 
 Windows 10 Enterprise マルチセッションでのテレメトリ データのフィードバック ハブ コレクションの場合は、次のコマンドを実行します。
 
 ```batch
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
-reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
 ワトソン クラッシュを修正するには、次のコマンドを実行します。
@@ -326,20 +164,18 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 5k 解像度のサポートを修正するには、レジストリ エディターに次のコマンドを入力します。 サイドバイサイド スタックを有効にする前に、コマンドを実行する必要があります。
 
 ```batch
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]
-"MaxMonitors"=dword:00000004
-"MaxXResolution"=dword:00001400
-"MaxYResolution"=dword:00000b40
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxXResolution /t REG_DWORD /d 5120 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxYResolution /t REG_DWORD /d 2880 /f
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs]
-"MaxMonitors"=dword:00000004
-"MaxXResolution"=dword:00001400
-"MaxYResolution"=dword:00000b40
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxMonitors /t REG_DWORD /d 4 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxXResolution /t REG_DWORD /d 5120 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxYResolution /t REG_DWORD /d 2880 /f
 ```
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Azure にアップロードするイメージの準備
 
-構成が完了し、すべてのアプリケーションをインストールしたら、「[Azure にアップロードする Windows VHD または VHDX を準備する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)」の手順に従ってイメージを準備します。
+構成が完了し、すべてのアプリケーションをインストールしたら、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」の手順に従ってイメージを準備します。
 
 イメージのアップロードの準備ができたら、VM がオフのままであるか、または割り当てが解除された状態になっていることを確認します。
 
@@ -347,7 +183,7 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 
 このセクションは、マスター イメージがローカルで作成された場合にのみ適用されます。
 
-次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](https://code.visualstudio.com/tutorials/static-website/create-storage)の指示に従って作成します。
+次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](/azure/javascript/tutorial-vscode-static-website-node-03)の指示に従って作成します。
 
 1. まだ行っていない場合は、VM イメージ (VHD) を固定に変換します。 イメージを固定に変換しない場合は、イメージを正常に作成できません。
 
@@ -363,12 +199,12 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 
     !["イメージが作成されました" 通知のスクリーンショット。](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これでイメージが作成されたので、ホスト プールを作成または更新することができます。 ホスト プールの作成と更新の方法について詳しくは、以下の記事をご覧ください。
 
-- [Azure Resource Manager テンプレートを使用してホスト プールを作成する](create-host-pools-arm-template.md)
+- [Azure Resource Manager テンプレートを使用してホスト プールを作成する](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
 - [チュートリアル:](create-host-pools-azure-marketplace.md)Azure Marketplace を使用してホスト プールを作成する
 - [PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)
-- [ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md)
+- [ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)
 - [Windows Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)

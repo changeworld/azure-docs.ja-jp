@@ -1,5 +1,5 @@
 ---
-title: ルーター構成サンプル - NAT - Azure ExpressRoute | Microsoft Docs
+title: 'Azure ExpressRoute: ルーター構成のサンプル - NAT'
 description: このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872082"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74072110"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT をセットアップして管理するためのルーター構成のサンプル
 
@@ -123,7 +122,7 @@ NAT コマンド:
     security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>手順 3.ゾーン間のセキュリティ ポリシーの作成
+### <a name="3-create-security-policies-between-zones"></a>3.ゾーン間のセキュリティ ポリシーの作成
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -311,6 +310,6 @@ NAT コマンド:
         }
     }
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 

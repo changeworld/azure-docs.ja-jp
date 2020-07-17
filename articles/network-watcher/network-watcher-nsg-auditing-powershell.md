@@ -1,25 +1,23 @@
 ---
-title: Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化 | Microsoft Docs
+title: NSG 監査の自動化 - セキュリティ グループ ビュー
+titleSuffix: Azure Network Watcher
 description: このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 016d68de90088314250fef1fcfdb57d7f155ef79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707165"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76840980"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 
@@ -44,7 +42,7 @@ ms.locfileid: "64707165"
 
 - 既知の適切な規則セットを取得する
 - REST API を使用して仮想マシンを取得する
-- 仮想マシンのセキュリティ グループ ビューを取得する
+- 仮想マシンのセキュリティ グループ ビューの取得
 - 応答を評価する
 
 ## <a name="retrieve-rule-set"></a>規則セットの取得
@@ -129,8 +127,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 次の手順では、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、`AzNetworkWatcherSecurityGroupView` コマンドレットに渡されます。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
 ## <a name="get-a-vm"></a>VM の取得
@@ -189,7 +186,7 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 設定が変更されている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関するページを参照して、問題があるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
 

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
 ms.openlocfilehash: e2601d5200f0b8ebcfb856bffb871f01b3acb215
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148941"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181823"
 ---
 > [!NOTE]
 > これは、DC/OS ベースの ACS クラスターを操作することを目的としています。 Swarm ベースの ACS クラスターには、行う必要はありません。

@@ -12,21 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0fd4d01eab739b79685c1de67cb8fe28873961
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167203"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77917915"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
-ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[Azure AD Graph API ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://developer.microsoft.com/graph/) を通じて利用できます。 使用可能な属性を表示するには、それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用します。
+ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](https://docs.microsoft.com/graph/extensibility-overview
+)から使用できます。 使用可能な属性を確認するには、[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用します。 この機能を使用して、Azure AD に動的グループを作成することもできます。
 
 現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
+
+## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Azure AD と同期する属性をカスタマイズする
 
 インストール ウィザードのカスタム設定パスで、どの追加属性を同期するかを構成します。
 
@@ -38,8 +41,8 @@ ms.locfileid: "56167203"
 インストールでは、次の属性が表示されます。これらは有効な候補です。
 
 * ユーザーおよびグループ オブジェクト型
-* 単一値の属性:文字列、ブール値、整数、バイナリ
-* 複数値の属性:文字列、バイナリ
+* 単一値の属性: 文字列、ブール値、整数、バイナリ
+* 複数値の属性: 文字列、バイナリ
 
 
 >[!NOTE]
@@ -49,24 +52,48 @@ ms.locfileid: "56167203"
 
 Azure AD のオブジェクトでは、ディレクトリ拡張機能に対して最大 100 個の属性を持つことができます。 最大長は 250 文字です。 属性値がそれより長い場合は、同期エンジンによって切り捨てられます。
 
-これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。 このアプリケーションは、Azure Portal で確認できます。
+## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>ウィザードが Azure AD に対して行う構成の変更
+
+これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。 このアプリケーションは、Azure Portal で確認できます。 その名前は常に **Tenant Schema Extension App** となります。
 
 ![スキーマ拡張機能アプリ](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-属性には、拡張機能 \_{AppClientId}\_ というプレフィックスが付きます。 AppClientId の値は、使用している Azure AD テナントに存在するすべての属性で同じになります。
+このアプリを表示するには、 **[すべてのアプリケーション]** を選択する必要があります。
 
-これで、これらの属性を Azure AD Graph API を通じて利用できるようになりました。 これにクエリを実行するには、[Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) を使用します。
+属性には、**extension \_{ApplicationId}\_** というプレフィックスが付きます。 ApplicationId の値は、使用している Azure AD テナントに存在するすべての属性で同じになります。 この値は、このトピックで取り上げる他のすべてのシナリオで必要になります。
 
-![Azure AD Graph Explorer](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Microsoft Graph API を使用した属性の表示
 
-または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#) を使用して、Microsoft Graph API で属性にクエリを実行します。
+[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer#)を使用することで、Microsoft Graph API を利用してこれらの属性を使用できるようになりました。
 
 >[!NOTE]
-> 属性が返されるように要求する必要があります。 このように、明白に属性を選びます： https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division. 
+> Microsoft Graph API で、属性が返されるように要求する必要があります。 次のような属性を明示的に選択します: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
-> 詳細については、[Microsoft Graph:クエリ パラメーターの使用](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)に関するページを参照してください。
+> 詳細については、[Microsoft Graph: クエリ パラメーターの使用](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)に関するトピックをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="use-the-attributes-in-dynamic-groups"></a>動的グループで属性を使用する
+
+より有益なシナリオの 1 つは、動的セキュリティや Office 365 グループでこれらの属性を使用することです。
+
+1. Azure AD に新しいグループを作成します。 適切な名前を付け、 **[メンバーシップの種類]** が **[動的ユーザー]** になっていることを確認します。
+
+   ![新しいグループを含むスクリーンショット](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
+
+2. **[動的クエリの追加]** を選択します。 プロパティを見ても、それらの拡張属性は表示されません。 それらは最初に自分で追加する必要があります。 **[カスタム拡張機能のプロパティを取得します]** をクリックし、アプリケーション ID を入力して、 **[プロパティの更新]** をクリックします。
+
+   ![ディレクトリ拡張が追加された画面のスクリーンショット](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
+
+3. プロパティのドロップダウンを開くと、今度は、追加した属性が表示されていることがわかります。
+
+   ![UI に表示されるようになった新しい属性を含むスクリーンショット](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
+
+   実際の要件に合わせて式を完成させます。 この例では、ルールを **(user.extension_9d98ed114c4840d298fad781915f27e4_division -eq "Sales and marketing")** に設定しています。
+
+4. グループの作成後、しばらく待つと、Azure AD によってメンバーが設定されます。それらのメンバーを確認してください。
+
+   ![動的グループ内のメンバーを含むスクリーンショット](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
+
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

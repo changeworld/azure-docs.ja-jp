@@ -1,11 +1,11 @@
-- name: Azure Storage のドキュメント
-  href: /azure/storage/
+- name: Azure Files のドキュメント
+  href: index.yml
 - name: 概要
   expanded: true
   items:
     - name: Azure Files とは
       href: storage-files-introduction.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: ファイル共有の作成および使用 - Windows
       href: storage-files-quick-create-use-windows.md
@@ -23,38 +23,37 @@
       href: storage-sync-files-extend-servers.md
 - name: 概念
   items:
-    - name: Azure Files について
+    - name: Azure Files のデプロイの計画
       href: storage-files-planning.md
-    - name: Azure File Sync について
+    - name: Azure File Sync のデプロイの計画
       href: storage-sync-files-planning.md
+    - name: 直接アクセスに関するネットワークの考慮事項
+      href: storage-files-networking-overview.md
     - name: クラウドの階層化について
       href: storage-sync-cloud-tiering.md
+    - name: データの誤削除の防止
+      href: storage-files-prevent-file-share-deletion.md
     - name: ストレージ アカウントについて
       href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 冗長性
-      items:
-        - name: Azure Storage レプリケーション
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ローカル冗長ストレージ
-          href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ゾーン冗長ストレージ
-          href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: geo 冗長ストレージ
-          href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure ファイル共有スナップショット
       href: storage-snapshots-files.md
+    - name: データの冗長性
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: ディザスター リカバリーとフェールオーバー
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: スケーラビリティとパフォーマンスのターゲット
       href: storage-files-scale-targets.md
-    - name: セキュリティ
+    - name: ID ベースの認証と承認
+      href: storage-files-active-directory-overview.md
+    - name: Azure Storage の保存時の暗号化
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
       items:
-        - name: Azure Storage セキュリティ
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ アカウントの暗号化
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: SMB 経由の Azure AD 認証
-          href: storage-files-active-directory-overview.md
-        - name: コンプライアンス認証
-          href: ../common/storage-compliance-offerings.md
+        - name: Azure Key Vault でのカスタマー マネージド キー
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: ネットワーク ルーティング設定の構成
+      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: コンプライアンス認証
+      href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 開発
       items:
         - name: コンカレンシーの管理
@@ -62,7 +61,7 @@
         - name: 共有キー認証
           href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
         - name: Shared Access Signatures (SAS)
-          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+          href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 監視とトラブルシューティング
       items:
         - name: 監視、診断、およびトラブルシューティング
@@ -73,19 +72,19 @@
           href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Storage Analytics のメトリック (クラシック)
           href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: ディザスター リカバリーとフェールオーバー
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: FAQ
+    - name: よく寄せられる質問
       href: storage-files-faq.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: Create
+    - name: 作成
       items:
-        - name: 標準ファイル共有を作成する
+        - name: ファイル共有を作成する
           href: storage-how-to-create-file-share.md
+        - name: 大型ファイル共有を有効にする
+          href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Azure Files のデプロイ
           href: storage-files-deployment-guide.md
@@ -93,6 +92,8 @@
           href: storage-sync-files-deployment-guide.md
         - name: File Sync のプロキシとファイアウォールの設定
           href: storage-sync-files-firewall-and-proxy.md
+        - name: Premium ファイル共有を使用した SQL Server FCI
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: マウントする
       items:
         - name: Windows で Azure Files を使用する
@@ -101,34 +102,62 @@
           href: storage-how-to-use-files-linux.md
         - name: macOS で Azure Files を使用する
           href: storage-how-to-use-files-mac.md
-    - name: 管理
+    - name: ネットワーク
+      items:
+        - name: Azure Files ネットワーク エンドポイントの構成
+          href: storage-files-networking-endpoints.md
+        - name: Azure Files の DNS 転送の構成
+          href: storage-files-networking-dns.md
+        - name: サイト間 VPN を構成する
+          href: storage-files-configure-s2s-vpn.md
+        - name: Windows でポイント対サイト VPN を構成する
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Linux でポイント対サイト VPN を構成する
+          href: storage-files-configure-p2s-vpn-linux.md
+    - name: 管理する
       items:
         - name: Azure File Sync でのサーバーの登録
           href: storage-sync-files-server-registration.md
         - name: Azure File Sync の Server エンドポイントの追加
           href: storage-sync-files-server-endpoint.md
+        - name: 論理的な削除を有効にする
+          href: storage-files-enable-soft-delete.md
         - name: Azure の独立したクラウドでのストレージの管理
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: アカウントのフェールオーバーを開始する
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 監視
+        - name: データの冗長性を管理する
+          items:
+            - name: データのレプリケート方法の変更
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 高可用性アプリケーションの設計
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ディザスター リカバリーの管理
+          items:
+            - name: 最終同期時刻プロパティを確認する
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: アカウントのフェールオーバーを開始する
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: モニター
       items:
         - name: Azure File Sync の監視
           href: storage-sync-files-monitoring.md
     - name: 移行
       items:
-        - name: Azure File Sync への移行
-          href: storage-sync-offline-data-transfer.md
-        - name: Azure Storage との間のデータの移動
-          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: AzCopy を使用したデータの移動
+        - name: Azure ファイル共有への移行
+          href: storage-files-migration-overview.md
+        - name: ハイブリッド デプロイをターゲットにする
           items:
-            - name: 作業開始
-              href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: ファイルでの使用
-              href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 構成、最適化、トラブルシューティング
-              href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Azure Data Box を使用して Azure File Sync に大量のデータを移行する
+              href: storage-sync-offline-data-transfer.md
+            - name: Azure File Sync を使用して Linux からハイブリッド ファイル サーバーに移行する
+              href: storage-files-migration-linux-hybrid.md
+            - name: Azure File Sync を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する
+              href: storage-files-migration-nas-hybrid.md
+        - name: StorSimple から
+          items:
+            - name: StorSimple 8100 および 8600 の移行ガイド
+              href: storage-files-migration-storsimple-8000.md
+            - name: StorSimple 1200 の移行ガイド
+              href: storage-files-migration-storsimple-1200.md
     - name: 開発
       items:
         - name: 接続文字列の構成
@@ -141,16 +170,38 @@
           href: storage-c-plus-plus-how-to-use-files.md
         - name: Python
           href: storage-python-how-to-use-file-storage.md
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
+        - name: ストレージ アカウントの暗号化キーの管理
+          items:
+            - name: アカウントの暗号化キー モデルの確認
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 顧客が管理する暗号化キーの構成
+              items:
+                - name: ポータル
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: ファイアウォールと仮想ネットワークの構成
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 安全な転送が必要
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: SMB 経由の Azure AD 認証を有効にする
-          href: storage-files-active-directory-enable.md
+        - name: AD 認証と承認の有効化
+          href: storage-files-identity-auth-active-directory-enable.md
+        - name: Azure AD DS 認証と承認の有効化
+          href: storage-files-identity-auth-active-directory-domain-service-enable.md
         - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
           href: ../common/storage-security-tls.md
+    - name: 転送
+      items:
+        - name: 作業の開始 - AzCopy
+          href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: ファイルでの使用
+          href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 構成、最適化、トラブルシューティング - AzCopy
+          href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: トラブルシューティング
       items:
         - name: Azure Files のトラブルシューティング - Windows
@@ -161,46 +212,52 @@
           href: storage-troubleshooting-files-performance.md
         - name: Azure File Sync のトラブルシューティング
           href: storage-sync-files-troubleshoot.md
+        - name: Azure Files の削除に関するトラブルシューティング
+          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: リファレンス
   items:
-    - name: PowerShell
-      href: /powershell/module/azure.storage
+    - name: Azure PowerShell (Storage)
+      href: /powershell/module/az.storage
+    - name: Azure PowerShell (StorageSync)
+      href: /powershell/module/az.storagesync
     - name: Azure CLI
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: BLOB、キュー、テーブル、ファイル
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
-        - name: データの移動
+        - name: Files (バージョン 11.x)
+          href: /dotnet/api/microsoft.azure.storage.file
+        - name: データ移動
           href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: リソース マネージャー
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: ストレージ リソース プロバイダー
+          href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
-        - name: BLOB、キュー、テーブル、ファイル
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client'
-    - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
-    - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/storage'
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+        - name: Files (バージョン 8.x)
+          href: /java/api/com.microsoft.azure.storage.file
+        - name: ストレージ リソース プロバイダー
+          href: /java/api/overview/azure/storage/management
+    - name: JavaScript (バージョン 10.x)
+      href: /javascript/api/@azure/storage-file
+    - name: Python (バージョン 2.x)
+      href: /python/api/azure-storage-file/?view=azure-python
     - name: REST
       items:
         - name: BLOB、キュー、テーブル、ファイル
           href: /rest/api/storageservices
-        - name: リソース プロバイダー
+        - name: ストレージ リソース プロバイダー
           href: /rest/api/storagerp
-        - name: Import/Export
+        - name: インポート/エクスポート
           href: /rest/api/storageimportexport
+    - name: C++
+      href: 'https://azure.github.io/azure-storage-cpp'
+    - name: Ruby
+      href: 'https://azure.github.io/azure-storage-ruby'
+    - name: PHP
+      href: 'https://azure.github.io/azure-storage-php/'
+    - name: iOS
+      href: 'https://azure.github.io/azure-storage-ios/'
+    - name: Android
+      href: 'https://azure.github.io/azure-storage-android'
     - name: Resource Manager テンプレート
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions
@@ -208,55 +265,65 @@
       href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure File Sync のリリース ノート
       href: storage-files-release-notes.md
-    - name: Azure Storage クライアント ツール
-      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: スタック オーバーフロー
+    - name: Azure Storage フォーラム
+      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
+    - name: Stack Overflow の Azure Storage
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
-    - name: 料金計算ツール
+    - name: Azure Storage の価格
+      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
-    - name: Azure ストレージ エクスプローラー
+    - name: NuGet パッケージ (.NET)
       items:
-        - name: ストレージ エクスプローラー
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ エクスプローラーのリリース ノート
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ エクスプローラーのトラブルシューティング
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ エクスプローラーのアクセシビリティ
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: NuGet パッケージ
-      items:
-        - name: Azure Storage Common クライアント ライブラリ
+        - name: Microsoft.Azure.Storage.Common (バージョン 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-        - name: Azure Files ストレージ クライアント ライブラリ
+        - name: Azure.Storage.Common (バージョン 12.x - プレビュー)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.File (バージョン 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
-        - name: Azure Storage Data Movement Library
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Azure.Storage.File (バージョン 12.x - プレビュー)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Files/'
         - name: Azure Configuration Manager
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: Azure Storage データ移動ライブラリ
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: ストレージ リソース プロバイダーのライブラリ
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: ソース コード
       items:
         - name: .NET
           items:
-            - name: BLOB、キュー、ファイル
-              href: 'https://github.com/Azure/azure-storage-net'
-            - name: データの移動
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: ストレージ リソース プロバイダー
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+            - name: Azure Storage クライアント ライブラリ
+              items:
+                - name: バージョン 12.x (プレビュー)
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: バージョン 11.x 以前
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: データ移動ライブラリ
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: ストレージ リソース プロバイダーのライブラリ
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
-          href: 'https://github.com/Azure/azure-storage-java'
-        - name: C++
-          href: 'https://github.com/Azure/azure-storage-cpp'
+          items:
+            - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Azure Storage クライアント ライブラリ バージョン 8.x 以前
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Azure Storage クライアント ライブラリ バージョン 10.x
+              href: 'https://github.com/Azure/azure-storage-node'
         - name: Python
-          href: 'https://github.com/Azure/azure-storage-python'
+          items:
+            - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Azure Storage クライアント ライブラリ バージョン 2.1
+              href: 'https://github.com/Azure/azure-storage-python'

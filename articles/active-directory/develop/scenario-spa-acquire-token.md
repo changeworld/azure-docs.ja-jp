@@ -1,51 +1,47 @@
 ---
-title: シングルページ アプリケーション (API を呼び出すトークンを取得する) - Microsoft ID プラットフォーム
+title: Web API を呼び出すトークンを取得する (シングルページ アプリ) - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーション (API を呼び出すトークンを取得する) を構築する方法を説明します
 services: active-directory
-documentationcenter: dev-center-name
-author: navyasric
+author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 08/20/2019
+ms.author: negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c842db8a0874d3619e0dc59b90aa12226cb984
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138817"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80882320"
 ---
-# <a name="single-page-application---acquire-a-token-to-call-an-api"></a>シングルページ アプリケーション - API を呼び出すトークンを取得する
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>シングルページ アプリケーション：API を呼び出すトークンを取得する
 
 MSAL.js を使用して API 用のトークンを取得するパターンは、`acquireTokenSilent` メソッドを使用してサイレント トークン要求を最初に試行することです。 このメソッドが呼び出されると、ライブラリでは、まずブラウザー ストレージ内のキャッシュに有効なトークンが存在するかどうかが確認され、それが返されます。 キャッシュ内に有効なトークンがない場合は、非表示の iframe から Azure Active Directory (Azure AD) にサイレント トークン要求が送信されます。 このメソッドを使用すれば、ライブラリでトークンを更新することもできます。 シングル サインオン セッションおよび Azure AD 内のトークン有効期間値の詳細については、[トークンの有効期間](active-directory-configurable-token-lifetimes.md)に関するページを参照してください。
 
-Azure AD へのサイレント トークン要求は、Azure AD セッションの有効期限切れやパスワードの変更などのいくつかの理由により、失敗する場合があります。 その場合は、トークンを取得するために対話型メソッド (ユーザーにプロンプトを表示する) のいずれかを呼び出すことができます。
+Azure AD へのサイレント トークン要求は、Azure AD セッションの有効期限切れやパスワードの変更などの理由により、失敗する場合があります。 その場合は、トークンを取得するために対話型メソッド (ユーザーにプロンプトを表示する) のいずれかを呼び出すことができます。
 
-* `acquireTokenPopup` を使用して[ポップアップ ウィンドウでトークンを取得](#acquire-token-with-a-pop-up-window)する
-* `acquireTokenRedirect` を使用して[リダイレクトによりトークンを取得](#acquire-token-with-redirect)する
+* `acquireTokenPopup` を使用して[ポップアップ ウィンドウ](#acquire-a-token-with-a-pop-up-window)でトークンを取得する
+* `acquireTokenRedirect` を使用して[リダイレクト](#acquire-a-token-with-a-redirect)によりトークンを取得する
 
-**ポップアップ エクスペリエンスか、リダイレクト エクスペリエンスを選択**
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>ポップアップ エクスペリエンスか、リダイレクト エクスペリエンスを選択
 
- ご利用のアプリケーション内で、ポップアップ メソッドとリダイレクト メソッドの両方を組み合わせて使用することはできません。 ポップアップまたはリダイレクト エクスペリエンスのいずれを選択するかは、ご利用のアプリケーション フローに依存します。
+ ご利用のアプリケーション内で、ポップアップ メソッドとリダイレクト メソッドの両方を使用することはできません。 ポップアップまたはリダイレクト エクスペリエンスのいずれを選択するかは、ご利用のアプリケーション フローに依存します。
 
-* 認証中にユーザーにメイン アプリケーション ページから移動してほしくない場合は、ポップアップ メソッドの使用をお勧めします。 認証リダイレクトはポップアップ ウィンドウで行われるため、メイン アプリケーションの状態は保持されます。
+* 認証中にユーザーにメイン アプリケーション ページから移動してほしくない場合は、ポップアップ メソッドをお勧めします。 認証リダイレクトはポップアップ ウィンドウで行われるため、メイン アプリケーションの状態は保持されます。
 
-* リダイレクト メソッドを使用することが必要になる特定のケースがあります。 アプリケーションのユーザーが使用しているブラウザーに制約またはポリシーが存在し、ポップアップ ウィンドウが無効になっている場合は、リダイレクト メソッドを使用することができます。 ポップアップ ウィンドウを処理するとき [Internet Explorer には特定の問題が存在することがわかっている](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)ので、Internet Explorer ブラウザーではリダイレクト メソッドを使用することをお勧めします。
+* ユーザーが使用しているブラウザーに制約またはポリシーが存在し、ポップアップ ウィンドウが無効になっている場合は、リダイレクト メソッドを使用することができます。 [Internet Explorer のポップアップ ウィンドウには既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) があるので、Internet Explorer ブラウザーでは、リダイレクト メソッドを使用してください。
 
-アクセス トークン要求を作成するときにアクセス トークンに含める API スコープを設定することができます。 要求されたすべてのスコープがアクセス トークンに付与されるとは限らず、ユーザーの同意に依存することに注意してください。
+アクセス トークン要求を作成するときにアクセス トークンに含める API スコープを設定することができます。 要求されたすべてのスコープがアクセス トークンに付与されるとは限らないことに注意してください。 これは、ユーザーの同意によって異なります。
 
-## <a name="acquire-token-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してトークンを取得する
+## <a name="acquire-a-token-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してトークンを取得する
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-ポップアップ エクスペリエンス用のメソッドを使用する上記のパターン:
+次のコードでは、前に説明したパターンと、ポップアップ エクスペリエンスのメソッドを組み合わせています。
 
 ```javascript
 const accessTokenRequest = {
@@ -54,10 +50,10 @@ const accessTokenRequest = {
 
 userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // Acquire token silent success
-    // call API with token
+    // Call API with token
     let accessToken = accessTokenResponse.accessToken;
 }).catch(function (error) {
-    //Acquire token silent failure, send an interactive request.
+    //Acquire token silent failure, and send an interactive request
     if (error.errorMessage.indexOf("interaction_required") !== -1) {
         userAgentApplication.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // Acquire token interactive success
@@ -70,27 +66,47 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付する HTTP インターセプター `MsalInterceptor` を容易に追加できます。
+MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付する HTTP インターセプターが提供されます。
 
-トークンの自動取得の際に MsalInterceptor から要求される `protectedResourceMap` 構成オプション内に API のスコープを指定することができます。
+API のスコープは、`protectedResourceMap` 構成オプションで指定できます。 `MsalInterceptor` は、トークンを自動的に取得するときにこれらのスコープを要求します。
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 サイレント トークン取得の成功と失敗については、MSAL Angular からコールバックが提供され、それはサブスクライブすることができます。 サブスクライブ解除を忘れずに行うことも重要です。
@@ -104,23 +120,25 @@ providers: [ ProductService, {
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
 ```
 
-あるいは、コア MSAL.js ライブラリ内に記述されているように、取得トークン メソッドを使用してトークンを明示的に取得することもできます。
+あるいは、コア MSAL.js ライブラリ内に記述されているように、取得トークン メソッドを使用してトークンを明示的に取得することができます。
 
-## <a name="acquire-token-with-redirect"></a>リダイレクトを使用してトークンを取得する
+---
 
-### <a name="javascript"></a>JavaScript
+## <a name="acquire-a-token-with-a-redirect"></a>リダイレクトを使用してトークンを取得する
 
-パターンは前述したとおりですが、トークンを対話形式で取得するリダイレクト メソッドを使用して示しています。 前述のようにリダイレクト コールバックを登録する必要があるので注意してください。
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次のパターンは前述したとおりですが、トークンを対話形式で取得するリダイレクト メソッドを使用して示しています。 前述のようにリダイレクト コールバックを登録する必要があります。
 
 ```javascript
 function authCallback(error, response) {
-    //handle redirect response
+    // Handle redirect response
 }
 
 userAgentApplication.handleRedirectCallback(authCallback);
@@ -131,10 +149,10 @@ const accessTokenRequest: AuthenticationParameters = {
 
 userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // Acquire token silent success
-    // call API with token
+    // Call API with token
     let accessToken = accessTokenResponse.accessToken;
 }).catch(function (error) {
-    //Acquire token silent failure, send an interactive request.
+    //Acquire token silent failure, and send an interactive request
     console.log(error);
     if (error.errorMessage.indexOf("interaction_required") !== -1) {
         userAgentApplication.acquireTokenRedirect(accessTokenRequest);
@@ -142,11 +160,43 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+## <a name="request-optional-claims"></a>省略可能な要求を要請する
 
-これは上記と同じです。
+次の目的で省略可能な要求を使用できます。
 
-## <a name="next-steps"></a>次の手順
+- アプリケーションのトークンに省略可能な要求を含める。
+- Azure AD からトークンで返される特定の要求の動作を変更する。
+- アプリケーションのカスタムの要求を追加してアクセスする。
+
+`IdToken` で省略可能な要求を要請するには、`AuthenticationParameters.ts` クラスの `claimsRequest` フィールドに文字列化された要求オブジェクトを送信します。
+
+```javascript
+"optionalClaims":
+   {
+      "idToken": [
+            {
+                  "name": "auth_time",
+                  "essential": true
+             }
+      ],
+
+var request = {
+    scopes: ["user.read"],
+    claimsRequest: JSON.stringify(claims)
+};
+
+myMSALObj.acquireTokenPopup(request);
+```
+
+詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページを参照してください。
+
+# <a name="angular"></a>[Angular](#tab/angular)
+
+このコードは前述と同じです。
+
+---
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Web API の呼び出し](scenario-spa-call-api.md)

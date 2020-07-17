@@ -1,0 +1,60 @@
+### YamlMime:Landing
+title: Azure Data Share のドキュメント
+summary: Azure Data Share は、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
+metadata:
+  title: Azure Data Share
+  description: Azure Data Share は、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
+  services: data-share
+  ms.service: data-share
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 66350050a84617b789c6a73c38170dc25dad331d
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "73802902"
+landingContent:
+- title: Azure Data Share について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Share とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Data Share の概念
+      url: terminology.md
+    - text: Azure Data Share のロールと要件
+      url: concepts-roles-permissions.md
+- title: データの共有
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Data Share を使用したデータの共有
+      url: share-your-data.md
+    - text: Azure Data Share を使用したデータの受け入れと受信
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: データセット マッピングの構成
+      url: how-to-configure-mapping.md
+    - text: データセットの追加
+      url: how-to-add-datasets.md
+- title: 監視と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Share の監視
+      url: how-to-monitor.md
+    - text: 一般的な問題のトラブルシューティング
+      url: data-share-troubleshoot.md
+    - text: データセットの追加
+      url: how-to-add-datasets.md
+    - text: 招待の削除
+      url: how-to-delete-invitation.md
+    - text: 共有サブスクリプションの取り消し
+      url: how-to-revoke-share-subscription.md

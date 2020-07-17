@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell スクリプト: Azure DevTest Labs でラボにマーケットプレース イメージを追加する | Microsoft Docs'
+title: PowerShell - Azure DevTest Labs でラボにマーケットプレース イメージを追加する
 description: この PowerShell スクリプトは、Azure DevTest Labs でラボにマーケットプレース イメージを追加します。
 services: lab-services
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2f5d6b6b9500ccd90630e8920c09340658fb76f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160598"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82100189"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>PowerShell を使用して、Azure DevTest Labs でラボにマーケットプレース イメージを追加します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "66160598"
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | リソースを変更します。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

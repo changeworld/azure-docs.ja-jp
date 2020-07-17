@@ -1,55 +1,120 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Edge
+### YamlMime:Landing
+title: Azure IoT Edge のドキュメント
+summary: Azure IoT Edge を使うと、IoT Hub を拡張できます。 クラウドではなくローカルでデバイス データを分析してクラウドに送信するデータを減らし、イベントにすばやく対応し、オフラインで操作することができます。
 metadata:
-  title: Azure IoT Edge - チュートリアル、API リファレンス
-  description: Azure IoT Edge を使用して、Azure サービスとカスタム ビジネス ロジックをエッジのデバイスにデプロイします。
-  author: kgremban
-  manager: philmea
-  ms.service: iot-edge
+  title: Azure IoT Edge のドキュメント
+  description: Azure IoT Edge を使うと、IoT Hub を拡張できます。 クラウドではなくローカルでデバイス データを分析してクラウドに送信するデータを減らし、イベントにすばやく対応し、オフラインで操作することができます。
   services: iot-edge
+  ms.service: iot-edge
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: kgremban
   ms.author: kgremban
-abstract:
-  description: Azure IoT Edge は、IoT Hub の上に構築されるモノのインターネット (IoT) サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています 。 ワークロードの一部をエッジに移動することで、デバイスがクラウドにメッセージを送る時間を減らし、状態の変化により迅速に反応できるようにすることができます。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/iot-edge-thumbnail.png
-      width: 250
-    title: 'Azure IoT Edge でのインテリジェント エッジの作成 (6:59)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Creating-the-intelligent-edge-with-Azure-IoT-Edge'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure 仮想マシンを作成し、IoT Edge デバイスとして実行されるように構成して、それにコードをデプロイします。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows
-            href: /azure/iot-edge/quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux-color.svg'
-            text: Linux
-            href: /azure/iot-edge/quickstart-linux
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: IoT Edge をインストールして構成する方法、モジュールをデプロイする方法、Stream Analytics、Custom Vision などの Azure サービスをエッジで利用する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: 開発マシンを設定し、<a href="/azure/iot-edge/tutorial-develop-for-linux">Linux デバイス</a>または <a href="/azure/iot-edge/tutorial-develop-for-windows">Windows デバイス</a>用の IoT Edge モジュールについて確認する。
-          - html: '<a href="/azure/iot-edge/tutorial-c-module">C</a>、<a href="/azure/iot-edge/tutorial-csharp-module">C#</a>、<a href="/azure/iot-edge/tutorial-python-module">Python</a>、<a href="/azure/iot-edge/tutorial-node-module">Node.js</a>、または <a href="/azure/iot-edge/tutorial-java-module">Java</a> で、Linux デバイス用のカスタム コード モジュールを開発する。'
-          - html: '<a href="/azure/iot-edge/tutorial-c-module-windows">C</a> または <a href="/azure/iot-edge/tutorial-csharp-module-windows">C#</a> で、Windows デバイス用のカスタム コード モジュールを開発する。'
-          - html: <a href="/azure/iot-edge/tutorial-deploy-function">Azure Functions を使用してメッセージをフィルター処理する</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Azure Stream Analytics をモジュールとして使用して平均値を見つける</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Azure Machine Learning をモジュールとして使用してデータにスコアを付ける</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Custom Vision サービスをモジュールとして使用して画像を分類する</a>
-          - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">SQL Server を使用してエッジでデータを格納する</a>
+  manager: philmea
+  ms.date: 08/05/2019
+  ms.openlocfilehash: 7c190dd3421d0eef9ce0aac3487644be9e758e4c
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82130816"
+landingContent:
+- title: Linux デバイス向けの開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 初めての IoT Edge モジュールを Linux デバイスに展開する
+      url: quickstart-linux.md
+  - linkListType: tutorial
+    links:
+    - text: Linux のデバイス用の IoT Edge モジュールを開発する
+      url: tutorial-develop-for-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio Code を使用してモジュールを開発およびデバッグする
+      url: how-to-vs-code-develop-module.md
+- title: Windows デバイス向けの開発
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 初めての IoT Edge モジュールを Windows デバイスにデプロイする
+      url: quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Windows デバイス用の IoT Edge モジュールを開発する
+      url: tutorial-develop-for-windows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio 2017 を使用してモジュールを開発およびデバッグする
+      url: how-to-visual-studio-develop-module.md
+- title: IoT Edge デバイスのプロビジョニング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Linux に IoT Edge をインストールする
+      url: how-to-install-iot-edge-linux.md
+    - text: Windows に IoT Edge をインストールする
+      url: how-to-install-iot-edge-windows.md
+    - text: Linux デバイスを自動的にプロビジョニングする
+      url: how-to-auto-provision-simulated-device-linux.md
+    - text: Windows デバイスを自動的にプロビジョニングする
+      url: how-to-auto-provision-simulated-device-windows.md
+- title: オープンソース コミュニティと交流する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: IoT Edge のリポジトリ
+      url: https://github.com/Azure/iotedge
+    - text: IoT Edge の GitHub 問題
+      url: https://github.com/Azure/iotedge/issues
+    - text: 最新のリリースと changelog
+      url: https://github.com/Azure/azure-iotedge/releases
+- title: ゲートウェイとしての IoT Edge デバイスの使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT Edge デバイスをゲートウェイとして使用する方法
+      url: iot-edge-as-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: 透過的なゲートウェイの構成
+      url: how-to-create-transparent-gateway.md
+    - text: Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
+      url: how-to-authenticate-downstream-device.md
+    - text: ダウンストリーム デバイスをゲートウェイに接続する
+      url: how-to-connect-downstream-device.md
+- title: 運用環境のシナリオに備える
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自動デプロイを理解する
+      url: module-deployment-monitoring.md
+    - text: プラットフォームのサポート
+      url: support.md
+    - text: 運用環境デプロイのチェックリスト
+      url: production-checklist.md
+    - text: IoT Edge 証明書の使用方法を理解する
+      url: iot-edge-certs.md
+    - text: IoT Edge のセキュリティ標準
+      url: security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI を使用した大規模なデプロイと監視
+      url: how-to-deploy-cli-at-scale.md
+    - text: Azure Pipelines を使用した CI/CD パイプラインの作成
+      url: how-to-ci-cd.md
+  - linkListType: deploy
+    links:
+    - text: IoT Hub 用の REST API
+      url: https://docs.microsoft.com/rest/api/iothub/
+- title: AI をエッジにデプロイする
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Machine Learning を IoT Edge モジュールとしてデプロイする
+      url: tutorial-deploy-machine-learning.md
+    - text: Custom Vision Service を使用してエッジで画像の分類を実行する
+      url: tutorial-deploy-custom-vision.md
+  - linkListType: deploy
+    links:
+    - text: Azure Marketplace で Azure Cognitive Services モジュールを見つける
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services

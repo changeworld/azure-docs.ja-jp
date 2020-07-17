@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 7cfce34cb2d6002dba5ec570bf859ec47e894c65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: 951ab2300aa4ffed2c5f1039ff993cd7f6af543f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149751"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74789668"
 ---
-#### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
 * Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 * [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) アカウント 
 

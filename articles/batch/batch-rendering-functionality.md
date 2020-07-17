@@ -1,18 +1,16 @@
 ---
-title: レンダリング機能 - Azure Batch
-description: Azure Batch 固有のレンダリング機能
-services: batch
-ms.service: batch
+title: レンダリングの機能
+description: Azure Batch の標準の機能は、レンダリングのワークロードとアプリの実行に使用されます。 Batch には、レンダリングのワークロードをサポートする特定の機能が含まれています。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.topic: how-to
+ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791802"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726470"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -30,15 +28,15 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 
 プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
-| Publisher | プラン | SKU | Version |
+| Publisher | プラン | Sku | Version |
 |---------|---------|---------|--------|
 | batch (バッチ) | rendering-centos73 | rendering | latest |
 | batch (バッチ) | rendering-windows2016 | rendering | latest |
 
 プールの VM で追加のアプリケーションが要求されている場合は、その他のオプションを使用できます。
 
-* Marketplace の標準のイメージに基づくカスタム イメージ:
-  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳しくは、[カスタム イメージを使用して仮想マシンのプールを作成する](https://docs.microsoft.com/azure/batch/batch-custom-images)方法に関するページをご覧ください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
+* Shared Image Gallery のカスタム イメージ
+  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳細については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
 * [アプリケーション パッケージ](https://docs.microsoft.com/azure/batch/batch-application-packages):
   * 1 つまたは複数の ZIP ファイルを使用してアプリケーション ファイルをパッケージ化し、Azure portal でアップロードして、プール構成でそのパッケージを指定します。 プール のVM が作成されると、ZIP ファイルがダウンロードされ、ファイルが抽出されます。
 * リソース ファイル:
@@ -62,7 +60,7 @@ Azure portal または Batch Explorer を使用してアプリケーションを
 
 レンダリング タスクのコマンドラインを作成できるようにするには、レンダリング アプリケーションの実行可能ファイルのインストール場所を指定する必要があります。  Azure Marketplace の VM イメージにシステム環境変数が作成されており、これを実際のパスを指定する代わりに使用できます。  これらの環境変数は、[Batch の標準の環境変数](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)に加えてタスクごとに作成されます。
 
-|アプリケーション|アプリケーション実行可能ファイル|環境変数|
+|Application|アプリケーション実行可能ファイル|環境変数|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
@@ -90,7 +88,7 @@ Arnold などの一部のレンダリング アプリケーションは CPU ベ�
 ジョブやタスクでレンダリング固有のサポートは不要です。  主な構成項目はタスク コマンドラインであり、必要なアプリケーションを参照する必要があります。
 Azure Marketplace の VM イメージが使用されている場合は、ベスト プラクティスとして、環境変数を使用してパスとアプリケーション実行可能ファイルを指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 

@@ -1,17 +1,17 @@
 ---
-title: 最小限のダウンタイムでの Azure Database for MySQL への移行
+title: 最小限のダウンタイムでの移行 - Azure Database for MySQL
 description: この記事では、Azure Database Migration Service を使用して、MySQL データベースを Azure Database for MySQL に最小限のダウンタイムで移行する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 49e2662f215d845d416e46246b03e4408fae118b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 3/18/2020
+ms.openlocfilehash: df818fa4106aec341607d8142b2a672699b8e9d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61424167"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80063341"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>最小限のダウンタイムでの Azure Database for MySQL への移行
 [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) に新たに導入された**継続的同期機能**を使用すると、最小限のダウンタイムで MySQL を Azure Database for MySQL に移行できます。 この機能で、アプリケーションによって発生するダウンタイムの長さが短くなります。
@@ -21,6 +21,6 @@ Azure DMS は、オンプレミスから Azure Database for MySQL への初期�
 
 ![Azure Database Migration Service での継続的同期](./media/howto-migrate-online/ContinuousSync.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [MySQL/PostgreSQL アプリを Azure マネージド サービスに簡単に移行する方法](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201)のビデオをご覧ください。MySQL アプリを Azure Database for MySQL に移行する方法を示すデモが含まれています。
 - 「[DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)」のチュートリアルを参照してください。

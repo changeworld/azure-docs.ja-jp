@@ -1,19 +1,15 @@
 ---
 title: 自動スケールの一般的なメトリック
 description: Cloud Services、Virtual Machines、Web Apps の自動スケールに一般的に使用されるメトリックについて説明します。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.subservice: autoscale
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129744"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76845569"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
 
@@ -40,7 +36,7 @@ VM Scale Sets を使用し、特定のメトリックが一覧に表示されな
 - [Resource Manager ベースの Windows と Linux VM のホスト メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [Resource Manager ベースの Windows と Linux VM Scale Sets のホスト メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>ゲスト OS メトリック Resource Manager ベースの Windows VM
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Resource Manager ベースの Windows VM のゲスト OS メトリック
 診断拡張機能を使用して Azure で VM を作成すると、診断は有効になります。 診断拡張機能では、VM 内から取得した一連のメトリックを出力します。 これで、既定では出力されないメトリックから自動スケールができます。
 
 メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
@@ -51,7 +47,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 次のメトリックのアラートを作成できます。
 
-| メトリックの名前 | 単位 |
+| メトリックの名前 | ユニット |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Percent |
 | \Processor(_Total)\% Privileged Time |Percent |
@@ -61,11 +57,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \Process(_Total)\Thread Count |Count |
 | \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |Percent |
-| \Memory\Available Bytes |Bytes |
-| \Memory\Committed Bytes |Bytes |
-| \Memory\Commit Limit |Bytes |
-| \Memory\Pool Paged Bytes |Bytes |
-| \Memory\Pool Nonpaged Bytes |Bytes |
+| \Memory\Available Bytes |バイト |
+| \Memory\Committed Bytes |バイト |
+| \Memory\Commit Limit |バイト |
+| \Memory\Pool Paged Bytes |バイト |
+| \Memory\Pool Nonpaged Bytes |バイト |
 | \PhysicalDisk(_Total)\% Disk Time |Percent |
 | \PhysicalDisk(_Total)\% Disk Read Time |Percent |
 | \PhysicalDisk(_Total)\% Disk Write Time |Percent |
@@ -92,19 +88,19 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  次のメトリックのアラートを作成できます。
 
-| メトリックの名前 | 単位 |
+| メトリックの名前 | ユニット |
 | --- | --- |
-| \Memory\AvailableMemory |Bytes |
+| \Memory\AvailableMemory |バイト |
 | \Memory\PercentAvailableMemory |Percent |
-| \Memory\UsedMemory |Bytes |
+| \Memory\UsedMemory |バイト |
 | \Memory\PercentUsedMemory |Percent |
 | \Memory\PercentUsedByCache |Percent |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
-| \Memory\AvailableSwap |Bytes |
+| \Memory\AvailableSwap |バイト |
 | \Memory\PercentAvailableSwap |Percent |
-| \Memory\UsedSwap |Bytes |
+| \Memory\UsedSwap |バイト |
 | \Memory\PercentUsedSwap |Percent |
 | \Processor\PercentIdleTime |Percent |
 | \Processor\PercentUserTime |Percent |
@@ -124,17 +120,17 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageWriteTime |Seconds |
 | \PhysicalDisk\AverageTransferTime |Seconds |
 | \PhysicalDisk\AverageDiskQueueLength |Count |
-| \NetworkInterface\BytesTransmitted |Bytes |
-| \NetworkInterface\BytesReceived |Bytes |
+| \NetworkInterface\BytesTransmitted |バイト |
+| \NetworkInterface\BytesReceived |バイト |
 | \NetworkInterface\PacketsTransmitted |Count |
 | \NetworkInterface\PacketsReceived |Count |
-| \NetworkInterface\BytesTotal |Bytes |
+| \NetworkInterface\BytesTotal |バイト |
 | \NetworkInterface\TotalRxErrors |Count |
 | \NetworkInterface\TotalTxErrors |Count |
 | \NetworkInterface\TotalCollisions |Count |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>一般的に使用される Web (サーバー ファーム) メトリック
-HTTP キューの長さなどの一般的な Web サーバー メトリックに基づいて、自動スケールを実行することもできます。 このメトリック名は **HttpQueueLength** です。  使用できるサーバー ファーム (Web Apps) メトリックで使用できる一覧については、次のセクションを参照してください。
+## <a name="commonly-used-app-service-server-farm-metrics"></a>一般的に使用される App Service (サーバー ファーム) のメトリック
+HTTP キューの長さなどの一般的な Web サーバー メトリックに基づいて、自動スケールを実行することもできます。 そのメトリック名は **HttpQueueLength** です。  次のセクションに、使用できるサーバー ファーム (App Service) のメトリックを一覧表示します。
 
 ### <a name="web-apps-metrics"></a>Web Apps のメトリック
 Web Apps メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
@@ -145,14 +141,14 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 これらのメトリックに基づいてアラートしたり、スケールすることができます。
 
-| メトリックの名前 | 単位 |
+| メトリックの名前 | ユニット |
 | --- | --- |
 | CpuPercentage |Percent |
 | MemoryPercentage |Percent |
 | DiskQueueLength |Count |
 | HttpQueueLength |Count |
-| BytesReceived |Bytes |
-| BytesSent |Bytes |
+| BytesReceived |バイト |
+| BytesSent |バイト |
 
 ## <a name="commonly-used-storage-metrics"></a>一般的に使用される Storage のメトリック
 Storage キューの長さ (Storage キュー内のメッセージ数) に応じてスケールすることができます。 Storage キューの長さは特殊なメトリックであり、しきい値は、1 インスタンスあたりのメッセージ数です。 たとえば、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケーリングが発生します。 インスタンスごとに 100 メッセージある場合や、120 と 80 メッセージ、またはその他の合計で最大 200 メッセージ以上となる組み合わせがあります。
@@ -163,8 +159,8 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 (非従来の) ストレージ アカウントの場合、metricTrigger は、次のようになります。
@@ -181,7 +177,7 @@ Service Bus キューの長さ (Service Bus キュー内のメッセージ数) �
 VM Scale Sets の場合、Resource Manager テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```
@@ -190,3 +186,4 @@ VM Scale Sets の場合、Resource Manager テンプレートの [自動スケ�
 > Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。 通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。 たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
 >
 >
+

@@ -5,27 +5,39 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30197131"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75751918"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>ポイント対サイト接続で自社の内部 PKI ルート CA を使用できますか。
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>証明書認証を使用した接続時、証明書が一致しないと表示された場合、どうすればよいでしょうか。
+
+手動でプロファイルを作成するとき、 **[証明書を検証してサーバーの ID を検証する]** チェック ボックスをオフにするか、**証明書と共にサーバーの FQDN を追加**します。 これを行うには、コマンド プロンプトから **rasphone** を実行し、ドロップ ダウン リストからプロファイルを選択します。
+
+一般に、サーバー ID の検証は回避しないようお勧めします。ただし、Azure 証明書認証では、VPN トンネリング プロトコル (IKEv2 または SSTP) と EAP プロトコルとで同じ証明書がサーバー検証に使用されます。 サーバー証明書と FQDN は VPN トンネリング プロトコルによって既に検証済みであるため、EAP で再度検証する必要はありません。
+
+![ポイント対サイト](./media/vpn-gateway-faq-p2s-all-include/servercert.png "サーバー証明書")
+
+### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>内部 PKI ルート CA を使用して、ポイント対サイト接続用に証明書を生成できますか?
 
 はい。 以前は、自己署名ルート証明書のみを使用できました。 現在も 20 ルート証明書までアップロードできます。
+
+### <a name="can-i-use-certificates-from-azure-key-vault"></a>Azure Key Vault の証明書を使用できますか?
+
+いいえ。
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>証明書の作成にどのようなツールを使用できますか。
 
 エンタープライズ PKI ソリューション (内部 PKI)、Azure PowerShell、MakeCert、OpenSSL を使用できます。
 
-### <a name="certsettings"></a>証明書の設定およびパラメーターに関する指示はありますか。
+### <a name="are-there-instructions-for-certificate-settings-and-parameters"></a><a name="certsettings"></a>証明書の設定およびパラメーターに関する指示はありますか。
 
 * **内部 PKI/エンタープライズ PKI ソリューション:** [証明書を生成する](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)手順を参照してください。
 
@@ -40,4 +52,4 @@ ms.locfileid: "30197131"
     * クライアント証明書の場合:
 
       * 秘密キーを作成する際は、長さを 4096 として指定します。
-      * 証明書を作成する際は、*-extensions* パラメーターに *usr_cert* を指定します。
+      * 証明書を作成する際は、 *-extensions* パラメーターに *usr_cert* を指定します。

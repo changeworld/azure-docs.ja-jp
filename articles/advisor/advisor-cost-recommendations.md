@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor を使用してサービスのコストを削減する | Microsoft Docs
+title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
-services: advisor
-documentationcenter: NA
-author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699332"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788095"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -21,11 +16,11 @@ Advisor は、アイドル状態にあるリソースや活用されていない
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する 
 
-特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor は、仮想マシンの使用状況を 7 日間にわたって監視して、使用率が低い仮想マシンを識別します。 仮想マシンは、CPU 使用率が 5% 以下およびネットワーク使用率が 2% 以下の場合、または現在のワークロードがより小さい仮想マシン サイズで対応できる場合に、使用率が低いと見なされます。
+特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor の高度な評価モデルでは、CPU 使用率の最大値の P95 が3％未満で、ネットワーク使用率が 7 日間で 2 ％未満の場合、仮想マシンのシャットダウンが考慮されます。 ユーザーに接するワークロードで現在の負荷が 80% の使用率を超えず、ユーザーに接しないワークロードで 40% を超えないよう、(同じ SKU ファミリ内の) より小さな SKU で現在の負荷に合うように仮想マシンの適切なサイズが検討されます。 ここで、ワークロードの種類は、ワークロードの CPU 使用率の特性を分析することによって決定されます。
 
-Advisor には、そのような仮想マシンの使用を継続した場合の推定コストが示され、シャット ダウンまたはサイズ変更を選択できます。
+推奨されるアクションは、推奨対象のリソースに基づき、シャットダウンかサイズ変更になります。 Advisor からは、いずれかの推奨アクション (シャットダウンまたはサイズ変更) の見積もりコスト削減額が提示されます。 また、サイズ変更の推奨アクションについては、Advisor から現在のターゲット SKU 情報が提示されます。 
 
-使用率が低い仮想マシンを積極的に特定する場合は、サブスクリプションごとに平均 CPU 使用率ルールを調整できます。
+使用率が低い仮想マシンを積極的に特定する場合は、サブスクリプションごとに CPU 使用率ルールを調整できます。
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>プロビジョニングが解除された ExpressRoute 回線を排除してコストを削減する
 
@@ -33,7 +28,7 @@ Advisor は、プロバイダーの状態が 1 か月以上 "*未プロビジョ
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>アイドル状態の仮想ネットワーク ゲートウェイを削除または再構成してコストを削減する
 
-Advisor は、90 日以上アイドル状態にあった仮想ネットワークのゲートを特定します。 これらのゲートウェイは 1 時間単位で課金されるので、もう使用しない予定の場合は、再構成または削除を検討する必要がありあす。 
+Advisor は、90 日以上アイドル状態にあった仮想ネットワークのゲートウェイを特定します。 これらのゲートウェイは 1 時間単位で課金されるので、もう使用しない予定の場合は、再構成または削除を検討する必要がありあす。 
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>従量課金のコストより費用を節約するために、予約された仮想マシン インスタンスを購入する
 
@@ -45,17 +40,33 @@ Advisor では、予約インスタンスについて、残り 30 日で有効�
 
 Advisor は、ロード バランサーまたは仮想マシンなどの Azure リソースに現在関連付けられていないパブリック IP アドレスを識別します。 これらのパブリック IP アドレスには、わずかな料金がかかります。 それらを使用する予定がない場合は、削除するとコスト削減につながります。
 
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>障害が発生している Azure Data Factory パイプラインを削除する
+
+Azure Advisor は、繰り返し障害が発生している Azure Data Factory パイプラインを検出し、その問題を解決するか、または障害が発生しているパイプラインを必要なくなっている場合は削除することを推奨します。 障害発生中にサービスが提供されていない場合でも、これらのパイプラインに対して課金されます。 
+
+## <a name="use-standard-snapshots-for-managed-disks"></a>マネージド ディスクに Standard スナップショットを使用する
+コストの 60% を節約するために、親ディスクのストレージの種類には関係なく、スナップショットを Standard Storage に格納することをお勧めします。 このオプションは、マネージド ディスクのスナップショットの既定オプションです。 Azure Advisor は、Premium Storage に格納されているスナップショットを識別し、スナップショットを Premium Storage から Standard Storage に移行することを推奨します。 [マネージド ディスクの価格](https://aka.ms/aa_manageddisksnapshot_learnmore)の詳細を確認してください。
+
+## <a name="utilize-lifecycle-management"></a>ライフサイクル管理を使用する
+Azure Advisor は、Azure BLOB ストレージのオブジェクト数、合計サイズ、およびトランザクションに関するインテリジェンスを利用して、ライフサイクル管理でデータを階層化できるようにするために 1 つ以上のストレージ アカウントが最適かどうかを検出します。 アプリケーションの互換性のために Azure BLOB ストレージにご自身のデータを保持しながらストレージ コストを最適化するために、ライフサイクル管理ルールを作成してデータをクールまたはアーカイブに自動的に階層化するように求めるメッセージが表示されます。
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>エフェメラル OS ディスクの作成に関する推奨事項
+[エフェメラル OS ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)を使用すると、次の利点が得られます。OS ディスクのストレージ コストを節約します。 OS ディスクへの読み取り/書き込み待機時間が短縮されます。 OS (および一時ディスク) を元の状態にリセットすることで、VM の再イメージ化操作を高速化します。 短期の IaaS VM やワークロードがステートレスである VM にはエフェメラル OS ディスクを使用するほうが望ましくなります。 Advisor では、エフェメラル OS ディスクでメリットを得ることができるリソースが推薦されています。 
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2.  Advisor ダッシュボードで、**[コスト]** タブをクリックします。
+1. 任意のページから [ **[Advisor]** ](https://aka.ms/azureadvisordashboard) を検索して選択します。
 
-## <a name="next-steps"></a>次の手順
+1. **[Advisor]** ダッシュボードで、 **[コスト]** タブをクリックします。
+
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
-* [作業の開始](advisor-get-started.md)
-* [Advisor のパフォーマンスに関する推奨事項](advisor-cost-recommendations.md)
-* [Advisor の高可用性に関する推奨事項](advisor-cost-recommendations.md)
-* [Advisor のセキュリティに関する推奨事項](advisor-cost-recommendations.md)
+* [開始するには](advisor-get-started.md)
+* [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
+* [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
+* [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)

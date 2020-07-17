@@ -1,24 +1,21 @@
 ---
-title: テキスト分割コグニティブ検索スキル - Azure Search
-description: Azure Search のエンリッチメント パイプラインの長さに基づいて、テキストをテキストのチャンクまたはページに分割します。
-services: search
-manager: pablocas
+title: テキスト分割コグニティブ スキル
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search の AI 強化パイプラインの長さに基づいて、テキストをチャンクまたはページに分割します。
+manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: c7f5fda405ca0e5ba9cf1dd0ed44c47cd3ee74b1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949867"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73479664"
 ---
-#   <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
+# <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 
 **テキスト分割**スキルは、テキストをテキストのチャンクに分割します。 テキストを特定の長さの文章またはページに分割するかどうかを指定できます。 このスキルは、他のスキル ダウンストリームでテキストの最大長の要件がある場合に、特に便利です。 
 
@@ -36,7 +33,7 @@ Microsoft.Skills.Text.SplitSkill
 |--------------------|-------------|
 | textSplitMode      | "pages" または "sentences" のいずれか | 
 | maximumPageLength | textSplitMode が "pages" に設定されている場合、`String.Length` で測定されるため、これは ページの最大長を指します。 最小値は 100 です。  textSplitMode が "pages" に設定されている場合、アルゴリズムは、最大でも "maximumPageLength" のサイズであるチャンクにテキストを分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは "maximumPageLength" よりも少し小さくなることがあります。 | 
-| defaultLanguageCode   | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などのスペースのない言語で、単語が途中で分割されるのを避けることができます。</li></ul>  |
+| defaultLanguageCode   | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などの空白スペースのない言語で、単語が途中で分割されるのを避けることができます。</li><li>言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、既定の英語 (en) で十分です。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -44,7 +41,7 @@ Microsoft.Skills.Text.SplitSkill
 | パラメーター名       | 説明      |
 |----------------------|------------------|
 | text  | 部分文字列に分割するテキスト。 |
-| languageCode  | (省略可能) ドキュメントの言語コード。  |
+| languageCode  | (省略可能) ドキュメントの言語コード。 言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、この入力を削除すると安全です。  |
 
 ## <a name="skill-outputs"></a>スキルの出力 
 
@@ -133,7 +130,7 @@ Microsoft.Skills.Text.SplitSkill
 ## <a name="error-cases"></a>エラーになる場合
 言語がサポートされていない場合、警告が生成され、テキストは文字境界で分割されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-+ [定義済みのスキル](cognitive-search-predefined-skills.md)
++ [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

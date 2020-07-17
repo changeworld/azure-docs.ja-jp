@@ -1,30 +1,19 @@
 ---
-title: Azure Service Fabric クラスターでの証明書の管理 | Microsoft Docs
+title: Azure Service Fabric クラスターで証明書を管理する
 description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chakdan
-editor: ''
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161832"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75458352"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
 
-Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プライマリとセカンダリの構成定義に関係なく、有効期限が最も先の日付になっている定義済みの証明書がデプロイされて使用されます。 従来の動作に戻すことは推奨されませんが、高度な操作として行うことはできます。このためには、Fabric.Code 構成で "UseSecondaryIfNewer" 設定パラメーター値を false に設定する必要があります。
+Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プライマリとセカンダリの構成定義に関係なく、有効期限が最も先の日付になっている定義済みの証明書がデプロイされて使用されます。 従来の動作に戻すことは推奨されませんが、高度な操作として行うことはできます。このためには、`Fabric.Code` 構成で "UseSecondaryIfNewer" 設定パラメーター値を false に設定する必要があります。
 
 Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、クライアントの証明書に加えて 2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。 作成時にそれらを設定する方法について詳しくは、[ポータルからクラスターを作成する](service-fabric-cluster-creation-via-portal.md)方法に関する記事か、[Azure Resource Manager を使用して Azure クラスターを作成する](service-fabric-cluster-creation-via-arm.md)方法に関する記事をご覧ください。 作成時にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。 クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
 
@@ -40,7 +29,7 @@ Service Fabric では、クラスターの作成中に証明書セキュリテ�
 Azure Portal では、セカンダリのクラスター証明書を追加できません。Azure PowerShell を使用してください。 このプロセスはこのドキュメントの後半で説明されています。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>ポータルを使用してクラスター証明書を削除する
-セキュリティ保護されたクラスターでは、常に、有効な証明書 (失効も期限切れもしていない) が 1 つ以上必要です。 有効期限が最も先の日付でデプロイされている証明書が使用中になります。その証明書を削除するとクラスターの機能が停止するため、期限切れの証明書または有効期限が最も近い未使用の証明書のみを削除してください。
+セキュリティ保護されたクラスターでは、常に、有効な証明書 (失効も期限切れもしていない) が 1 つ以上必要です。 有効期限が最も先の日付でデプロイされている証明書が使用中になります。その証明書を削除するとクラスターの機能が停止するため、期限切れの証明書または有効期限が最も近い未使用の証明書のみを確実に削除します。
 
 未使用のクラスター セキュリティ証明書を削除するには、[セキュリティ] セクションに移動して、未使用の証明書のコンテキスト メニューから [削除] オプションを選択します。
 
@@ -48,18 +37,18 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager PowerShell を使用してセカンダリ証明書を追加する
 > [!TIP]
-> セカンダリ証明書を追加するには、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用する方がより優れた簡単な方法です。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
+> [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) を使用し、よりうまくより簡単に、セカンダリ証明書を追加できるようになりました。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
 
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
 > [!NOTE]
-> 操作を理解するため、または作業の出発点とするために利用できるサンプル テンプレートおよびパラメーターをお探しの場合は、[こちらの Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)からダウンロードできます。 
+> 操作を理解するため、または作業の出発点とするために利用できるサンプル テンプレートおよびパラメーターをお探しの場合は、[こちらの Git リポジトリ](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)からダウンロードできます。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Resource Manager テンプレートを編集する
 
-サンプル 5-VM-1-NodeTypes-Secure_Step2.JSON にはこれから行うすべての編集内容が含まれています。 このサンプルは、[Git リポジトリ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)から入手できます。
+サンプル 5-VM-1-NodeTypes-Secure_Step2.JSON にはこれから行うすべての編集内容が含まれています。 このサンプルは、[Git リポジトリ](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)から入手できます。
 
 **すべての手順に従う**
 
@@ -117,7 +106,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
          }
     ``` 
 
-4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" までスクロールします。
+4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" にスクロールします。
 
     Service Fabric のパブリッシャーの設定は、次のように表示されます。
     
@@ -178,7 +167,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>追加した新しいパラメーターを反映するようにテンプレート ファイルを編集する
-[git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) のサンプルを使用して操作する場合は、サンプル 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON の変更から始めることができます 
+[git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) のサンプルを使用して操作する場合は、サンプル 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON の変更から始めることができます 
 
 Resource Manager テンプレートのパラメーター ファイルを編集し、secCertificateThumbprint と secCertificateUrlValue に 2 つの新しいパラメーターを追加します。 
 
@@ -195,7 +184,7 @@ Resource Manager テンプレートのパラメーター ファイルを編集�
 ### <a name="deploy-the-template-to-azure"></a>テンプレートを Azure にデプロイする
 
 - これでテンプレートを Azure にデプロイする準備が整いました。 Azure PS のバージョン 1 以降のコマンド プロンプトを開きます。
-- Azure アカウントにログインし、特定の Azure サブスクリプションを選択します。 1 つ以上の Azure サブスクリプションにアクセスできるユーザーにとって、これは重要な手順です。
+- ご自分の Azure アカウントにサインインし、特定の Azure サブスクリプションを選択します。 1 つ以上の Azure サブスクリプションにアクセスできるユーザーにとって、これは重要な手順です。
 
 ```powershell
 Connect-AzAccount
@@ -242,7 +231,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-ここでのクイック リファレンスは、セキュリティ保護されたクラスターに接続するための次のコマンドです:  
+ここでのクイック リファレンスは、セキュリティ保護されたクラスターに接続するための次のコマンドです: 
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
@@ -256,7 +245,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My
 ```
-ここでのクイック リファレンスは、クラスターの正常性を取得するための次のコマンドです: 
+ここでのクイック リファレンスは、クラスターの正常性を取得するための次のコマンドです:
 
 ```powershell
 Get-ServiceFabricClusterHealth 
@@ -288,7 +277,11 @@ Get-ServiceFabricClusterHealth
 
 クラスターのセキュリティ保護にセカンダリ証明書が使用されないようにするには、[セキュリティ] セクションに移動して指定の証明書のコンテキスト メニューから [削除] オプションを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>アプリケーション証明書を仮想マシン スケール セットに追加する
+
+アプリケーションに使用する証明書をクラスターに追加する方法については、[こちらの PowerShell サンプル スクリプト](scripts/service-fabric-powershell-add-application-certificate.md)をご覧ください。
+
+## <a name="next-steps"></a>次のステップ
 クラスター管理の詳細については、次の記事を参照してください。
 
 * [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)

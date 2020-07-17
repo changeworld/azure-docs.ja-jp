@@ -4,24 +4,23 @@ description: Azure VM に SAP S/4HANA または BW/4HANA をデプロイしま�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: c59fcf43cb4767f1d95d769dfce4d5c8755e45ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77616202"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure に SAP S/4HANA または BW/4HANA をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して Azure に S/4HANA をデプロイする方法について説明します。 BW/4HANA などの他の SAP HANA ベースのソリューションをデプロイする手順は同じです。
@@ -60,7 +59,7 @@ ms.locfileid: "57990494"
 
     c. **[Windows Azure operated by 21Vianet]\(21Vianet が運用する Windows Azure\)** は中国向けのオプションで、クラシック デプロイ モデルを使用します。
 
-    Resource Manager モデルでデプロイするには、**[Microsoft Azure]** を選択します。
+    Resource Manager モデルでデプロイするには、 **[Microsoft Azure]** を選択します。
 
     ![SAP CAL アカウントの詳細](./media/cal-s4h/s4h-pic-2a.png)
 
@@ -68,7 +67,7 @@ ms.locfileid: "57990494"
 
    ![SAP CAL アカウント](./media/cal-s4h/s4h-pic3c.png)
 
-1. SAP CAL を承認し、定義した Azure サブスクリプションにデプロイするには、**[Authorize]\(承認\)** をクリックします。 次のページがブラウザー タブに表示されます。
+1. SAP CAL を承認し、定義した Azure サブスクリプションにデプロイするには、 **[Authorize]\(承認\)** をクリックします。 次のページがブラウザー タブに表示されます。
 
    ![Internet Explorer のクラウド サービスのサインイン](./media/cal-s4h/s4h-pic4c.png)
 
@@ -78,13 +77,13 @@ ms.locfileid: "57990494"
 
 1. **[Accept]\(受け入れる\)** をクリックします。 承認が成功した場合は、SAP CAL アカウントの定義が再び表示されます。 短い時間が経過すると、承認プロセスが成功したことを示すメッセージが表示されます。
 
-1. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに**ユーザー ID** を入力し、**[Add]\(追加\)** をクリックします。
+1. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに**ユーザー ID** を入力し、 **[Add]\(追加\)** をクリックします。
 
    ![アカウントからユーザーへの関連付け](./media/cal-s4h/s4h-pic8a.png)
 
-1. アカウントを SAP CAL へのサインインに使用するユーザーに関連付けるには、**[Review]\(レビュー\)** をクリックします。 
+1. アカウントを SAP CAL へのサインインに使用するユーザーに関連付けるには、 **[Review]\(レビュー\)** をクリックします。 
  
-1. ユーザーと新しく作成した SAP CAL アカウントの間の関連付けを作成するには、**[Create]\(作成\)** をクリックします。
+1. ユーザーと新しく作成した SAP CAL アカウントの間の関連付けを作成するには、 **[Create]\(作成\)** をクリックします。
 
    ![ユーザーから SAP CAL アカウントへの関連付け](./media/cal-s4h/s4h-pic9b.png)
 
@@ -112,7 +111,7 @@ SAP CAL の **[Solutions]\(ソリューション\)** ページからソリュー
 
 1. **[Account Details]\(アカウントの詳細\)** ページで、次のことを行う必要があります。
 
-    a. SAP CAL アカウントを選択します  (Resource Manager デプロイ モデルを使用したデプロイに関連付けられているアカウントを使用します)。
+    a. SAP CAL アカウントを選択します (Resource Manager デプロイ モデルを使用したデプロイに関連付けられているアカウントを使用します)。
 
     b. インスタンスの**名前**を入力します。
 
@@ -126,11 +125,11 @@ SAP CAL の **[Solutions]\(ソリューション\)** ページからソリュー
 
    ![SAP CAL でサポートされる VM のサイズ](./media/cal-s4h/s4h-pic10b.png)
 
-1. **[Private Key]\(秘密キー\)** ダイアログ ボックスで、**[Store]\(格納\)** をクリックしてSAP CAL に秘密キーを格納します。 秘密キーに対してパスワード保護を使用するには、**[Download]\(ダウンロード\)** をクリックします。 
+1. **[Private Key]\(秘密キー\)** ダイアログ ボックスで、 **[Store]\(格納\)** をクリックしてSAP CAL に秘密キーを格納します。 秘密キーに対してパスワード保護を使用するには、 **[Download]\(ダウンロード\)** をクリックします。 
 
    ![SAP CAL の秘密キー](./media/cal-s4h/s4h-pic10c.png)
 
-1. SAP CAL の**警告**メッセージに目を通し、**[OK]** をクリックします。
+1. SAP CAL の**警告**メッセージに目を通し、 **[OK]** をクリックします。
 
    ![SAP CAL の警告](./media/cal-s4h/s4h-pic10d.png)
 
@@ -140,11 +139,11 @@ SAP CAL の **[Solutions]\(ソリューション\)** ページからソリュー
 
    ![新しいポータルにデプロイされている SAP CAL オブジェクト](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. SAP CAL ポータルで、状態が **[Active]\(アクティブ\)** として表示されます。 ソリューションに接続するには、**[Connect]\(接続\)** をクリックします。 別のコンポーネントに接続するための別のオプションはこのソリューション内にデプロイされています。
+1. SAP CAL ポータルで、状態が **[Active]\(アクティブ\)** として表示されます。 ソリューションに接続するには、 **[Connect]\(接続\)** をクリックします。 別のコンポーネントに接続するための別のオプションはこのソリューション内にデプロイされています。
 
    ![SAP CAL のインスタンス](./media/cal-s4h/active_solution.png)
 
-1. いずれかのオプションを使用してデプロイ済みのシステムに接続する前に、**[Getting Started Guide]\(ファースト ステップ ガイド\)** をクリックします。 
+1. いずれかのオプションを使用してデプロイ済みのシステムに接続する前に、 **[Getting Started Guide]\(ファースト ステップ ガイド\)** をクリックします。 
 
    ![インスタンスに接続する](./media/cal-s4h/connect_to_solution.png)
 

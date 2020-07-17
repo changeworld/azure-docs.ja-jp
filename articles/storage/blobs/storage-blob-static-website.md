@@ -1,179 +1,120 @@
 ---
 title: Azure Storage での静的 Web サイト ホスティング
 description: Azure Storage 静的 Web サイト ホスティングは、最新の Web アプリケーションをホストするための、費用対効果の高いスケーラブルなソリューションを提供します。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.author: normesta
-ms.reviewer: seguler
-ms.date: 04/29/2019
+ms.reviewer: dineshm
+ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: cd1fa71cb2a10c7e61f76bdd224ba6d0f039346f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148469"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779979"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
-Azure Storage GPv2 アカウントでは、*$web* という名前のストレージ コンテナーから直接、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でのホスティングを活用すれば、[Azure Functions](/azure/azure-functions/functions-overview) やその他の PaaS サービスなど、サーバーレス アーキテクチャを使用できます。
 
-静的 Web サイト ホスティングとは対照的に、サーバー側のコードに依存する動的サイトは、[Azure App Service](/azure/app-service/overview) を使用してホストするのが最適です。
+*$web* という名前のストレージ コンテナーから直接に、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でコンテンツをホスティングすることで、[Azure Functions](/azure/azure-functions/functions-overview) やその他のサービスとしてのプラットフォーム (PaaS) サービスなど、サーバーレス アーキテクチャを使用できます。
 
-## <a name="how-does-it-work"></a>それはどのように機能しますか?
-ストレージ アカウントで静的 Web サイト ホスティングを有効にする場合、既定のファイルの名前を選択します。必要に応じて、カスタム 404 ページへのパスも指定します。 機能が有効になると、*$web* という名前のコンテナーが作成されます (まだ存在しない場合)。
-
-*$web* コンテナー内のファイルは、
-
-- 匿名のアクセス要求を通じて提供されます
-- オブジェクト読み取り操作を通じてのみ利用可能です
-- 大文字と小文字の区別
-- 次のパターンに従っているパブリック Web で利用可能です
-    - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
-- 次のパターンに従っている BLOB ストレージ エンドポイントを通じて利用可能です
-    - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
-
-ファイルのアップロードには BLOB ストレージ エンドポイントを使用します。 たとえば、次の場所にアップロードされたファイルは、
-
-```bash
-https://contoso.blob.core.windows.net/$web/image.png
-```
-
-ブラウザーで次のような場所を指定して利用できます。
-
-```bash
-https://contoso.z4.web.core.windows.net/image.png
-```
-
-選択された既定のファイル名はルートで使用されるほか、ファイル名が指定されていない場合にサブディレクトリで使用されます。 エラー ドキュメントのパスを指定していないと、サーバーが 404 を返す際に既定の 404 ページがユーザーに返されます。
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
-> ファイルの既定のパブリック アクセス レベルは非公開です。 ファイルは匿名アクセス要求によって処理されるため、この設定は無視されます。 すべてのファイルへのパブリック アクセスがあり、RBAC のアクセス許可は無視されます。
+> サイトでサーバー側コードに依存している場合は、代わりに [Azure App Service](/azure/app-service/overview) を使用します。
 
-## <a name="cdn-and-ssl-support"></a>CDN および SSL のサポート
+## <a name="setting-up-a-static-website"></a>静的 Web サイトの設定
 
-静的な Web サイトのファイルをカスタム ドメインおよび HTTPS 経由で使用できるようにするには、「[Azure CDN を使用して HTTPS 経由でカスタム ドメイン付きの BLOB にアクセスする](storage-https-custom-domain-cdn.md)」を参照してください。 このプロセスの一環として、CDN が BLOB エンドポイントではなく "*Web エンドポイントを指す*" ようにする必要があります。 CDN 構成がすぐに実行されないため、コンテンツが表示されるまで数分待たなければならない場合があります。
+静的 Web サイトのホスティングは、ストレージ アカウントで有効にする必要がある機能です。
 
-静的 Web サイトを更新するときは、CDN エンドポイントを消去して、CDN エッジ サーバー上のキャッシュされたコンテンツを必ず消去してください。 詳細については、「[Azure CDN エンドポイントの消去](../../cdn/cdn-purge-endpoint.md)」を参照してください。
+静的 Web サイトのホスティングを有効にするには、既定のファイルの名前を選択してから、必要に応じて、カスタム 404 ページへのパスを指定します。 アカウントに **$web** という名前の BLOB ストレージ コンテナーがまだ存在しない場合は、自動的に作成されます。 このコンテナーに、サイトのファイルを追加します。
+
+手順を追ったガイダンスについては、「[Host a static website in Azure Storage](storage-blob-static-website-how-to.md)」 (Azure Storage で静的 Web サイトをホストする) を参照してください。
+
+![Azure Storage 静的 Web サイトのメトリック: メトリック](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
+
+**$web** コンテナー内のファイルは大文字と小文字が区別され、匿名アクセス要求によって処理され、読み取り操作によってのみ使用できます。
+
+## <a name="uploading-content"></a>コンテンツのアップロード
+
+これらの任意のツールを使用して、コンテンツを **$web** コンテナーにアップロードできます。
+
+> [!div class="checklist"]
+> * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> * [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
+> * [AzCopy](../common/storage-use-azcopy-v10.md)
+> * [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
+> * [Visual Studio Code 拡張機能](/azure/javascript/tutorial-vscode-static-website-node-01)
+
+## <a name="viewing-content"></a>コンテンツの表示
+
+ユーザーは、Web サイトのパブリック URL を使用して、ブラウザーからサイトのコンテンツを表示できます。 URL を見つけるには、Azure portal、Azure CLI、または PowerShell を使用します。 次の表を参考にしてください。
+
+|ツール| ガイダンス |
+|----|----|
+|**Azure Portal** | [Azure portal を使用して Web サイトの URL を見つける](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure CLI** | [Azure CLI を使用して Web サイトの URL を見つける](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure PowerShell モジュール** | [PowerShell を使用して Web サイトの URL を見つける](storage-blob-static-website-how-to.md#powershell-find-url) |
+
+サイトの URL には、リージョン コードが含まれます。 たとえば、URL `https://contosoblobaccount.z22.web.core.windows.net/` にはリージョン コード `z22` が含まれています。
+
+そのコードは URL に残しておく必要がありますが、内部的に使用されるだけであり、他にそのコードを使用する必要はありません。
+
+ユーザーがサイトを開き、特定のファイル (例: `https://contosoblobaccount.z22.web.core.windows.net`) を指定しない場合、静的 Web サイトのホスティングを有効にしたときに指定したインデックス ドキュメントが表示されます。  
+
+サーバーが 404 エラーを返し、Web サイトを有効にしたときに、エラー ドキュメントを指定していない場合、既定の 404 ページがユーザーに返されます。
 
 > [!NOTE]
-> HTTPS は、アカウントの Web エンドポイント経由でネイティブにサポートされます。 現時点では、カスタム ドメインを HTTPS 経由で使用するには Azure CDN の使用が必要です。 
->
-> HTTPS 経由でのパブリック アカウントの Web エンドポイント: `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) は、静的な Web サイトではサポートされません。
 
-## <a name="custom-domain-names"></a>カスタム ドメイン名
+## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web コンテナーのパブリック アクセス レベルの設定の影響
 
-静的 Web サイトをカスタム ドメイン経由で利用できるよう、[Azure ストレージ アカウントのカスタム ドメイン名を構成](storage-custom-domain-name.md)できます。 Azure でのドメインのホスティングについて詳しくは、[Azure DNS でのドメインのホスト](../../dns/dns-delegate-domain-azure-dns.md)に関するページを参照してください。
+**$web** コンテナーのパブリック アクセス レベルを変更できますが、プライマリ静的 Web サイト エンドポイントに対しては、これらのファイルが匿名アクセス要求によって処理されるため、この変更が無効になります。 つまり、すべてのファイルへのパブリック (読み取り専用) アクセスです。
+
+次のスクリーンショットは、Azure Portal のパブリック アクセス レベル設定を示しています。
+
+![ポータルでパブリック アクセス レベルを設定する方法を示すスクリーンショット](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+
+プライマリ静的 Web サイト エンドポイントは影響を受けませんが、パブリック アクセス レベルの変更は、プライマリ BLOB サービス エンドポイントには有効です。
+
+**$web** コンテナーのパブリック アクセス レベルを**プライベート (匿名アクセスなし)** から **BLOB (BLOB 専用の匿名読み取りアクセス)** に変更した場合、プライマリ静的 Web サイト エンドポイント `https://contosoblobaccount.z22.web.core.windows.net/index.html` へのパブリック アクセスのレベルは変更されません。
+
+しかし、プライマリ BLOB サービス エンドポイント `https://contosoblobaccount.blob.core.windows.net/$web/index.html` へのパブリック アクセスは、プライベートからパブリックに変更されます。 ユーザーはこれらの 2 つのエンドポイントのいずれかを使用して、このファイルを開けるようになりました。
+
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>カスタム ドメインを静的 Web サイトの URL にマップする
+
+静的 Web サイトをカスタム ドメイン経由で利用できるようにすることができます。 
+
+カスタム ドメインの HTTP アクセスは、Azure Storage でネイティブにサポートされているため、簡単に有効にすることができます。 HTTPS を有効にするには、Azure CDN を使用する必要があります。これは、Azure Storage がカスタム ドメインを使用した HTTPS をまだネイティブにサポートしていないためです。 手順を追ったガイダンスについては、「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を参照してください。
+
+ストレージ アカウントが HTTPS 経由での[安全な転送を必要とする](../common/storage-require-secure-transfer.md)ように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。 
+
+> [!TIP]
+> Azure でドメインをホストすることを検討してください。 詳しくは、「[Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。
+
+## <a name="adding-http-headers"></a>HTTP ヘッダーの追加
+
+静的 Web サイト機能の一部としてヘッダーを構成する方法はありません。 ただし、Azure CDN を使用してヘッダーを追加したり、ヘッダー値を追加 (または上書き) したりすることができます。 「[Azure CDN の Standard ルール エンジン リファレンス](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)」を参照してください。
+
+ヘッダーを使用してキャッシュを制御する場合は、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)」を参照してください。
 
 ## <a name="pricing"></a>価格
-静的な Web サイトのホスティングは無料で有効にできます。 顧客は、利用された BLOB ストレージと運用コストに対して課金されます。 Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
-## <a name="quickstart"></a>クイック スタート
-
-### <a name="azure-portal"></a>Azure ポータル
-最初に https://portal.azure.com で Azure portal を開いて、GPv2 ストレージ アカウントで以下の手順を実行します。
-
-1. **[設定]** をクリックします。
-2. **[静的な Web サイト]** をクリックします。
-3. "*インデックス ドキュメント名*" を入力します  (一般的な値は *index.html* です)。
-4. 必要に応じて、カスタム 404 ページへの "*エラー ドキュメントのパス*" を入力します  (一般的な値は *404.html* です)。
-
-![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
-
-次に、Azure portal または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して *$web* コンテナーにアセットをアップロードします。これにより、ディレクトリ全体をアップロードします。 必ず、機能を有効にするときに選択した "*インデックス ドキュメント名*" に一致するファイルを含めてください。
-
-最後に、Web エンドポイントに移動して Web サイトをテストします。
-
-### <a name="azure-cli"></a>Azure CLI
-ストレージ プレビュー拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add --name storage-preview
-```
-サブスクリプションが複数ある場合は、有効にしたい GPv2 ストレージ アカウントのサブスクリプションに CLI を設定します。
-
-```azurecli-interactive
-az account set --subscription <SUBSCRIPTION_ID>
-```
-機能を有効にします。 山かっこも含め、すべてのプレースホルダーの値は、実際の値に置き換えてください。
-
-```azurecli-interactive
-az storage blob service-properties update --account-name <ACCOUNT_NAME> --static-website --404-document <ERROR_DOCUMENT_NAME> --index-document <INDEX_DOCUMENT_NAME>
-```
-Web エンドポイント URL のクエリを実行します。
-
-```azurecli-interactive
-az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
-```
-
-ソース ディレクトリから *$web* コンテナーにオブジェクトをアップロードします。 コマンド内での *$web* コンテナーに対する参照を正しくエスケープしてください。 たとえば、Azure portal の CloudShell から Azure CLI を使用する場合は、*$web* コンテナーを次のようにエスケープします。
-
-```azurecli-interactive
-az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_NAME>
-```
-
-## <a name="deployment"></a>Deployment
-
-コンテンツをストレージ コンテナーにデプロイするために使用できる方法には、以下があります。
-
-- [AzCopy](../common/storage-use-azcopy.md)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-- [Visual Studio Code 拡張機能](https://code.visualstudio.com/tutorials/static-website/getting-started)
-
-どの場合も、ファイルを *$web* コンテナーにコピーしてください。
+静的 Web サイトのホスティングは無料で有効にできます。 サイトで利用した BLOB ストレージと、運用コストに対してのみ課金されます。 Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 ## <a name="metrics"></a>メトリック
 
-静的 Web サイトのページでメトリックを有効にするには、**[設定]** > **[監視]** > **[メトリック]** の順にクリックします。
+静的 Web サイトのページでメトリックを有効にできます。 メトリックを有効にすると、 **$web** コンテナーのファイルに関するトラフィック統計情報が、メトリック ダッシュボードでレポートされます。
 
-メトリック データは、さまざまなメトリック API に接続することで生成されます。 データを返す API メンバーだけに注目するために、ポータルには一定期間内に使用されたメンバーのみが表示されます。 必要な API メンバーを選択できるようにするために、最初の手順で期間を展開します。
+静的 Web サイトのページでメトリックを有効にするには、「[Enable metrics on static website pages](storage-blob-static-website-how-to.md#metrics)」 (静的 Web サイト ページでメトリックを有効にする) を参照してください。
 
-期間のボタンをクリックして **[過去 24 時間]** を選択し、**[適用]** をクリックします。
+## <a name="next-steps"></a>次のステップ
 
-![Azure Storage 静的 Web サイトのメトリック: 時間の範囲](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
-
-次に、"*名前空間*" のドロップ ダウンから **[BLOB]** を選択します。
-
-![Azure Storage 静的 Web サイトのメトリック: 名前空間](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
-
-メトリックとして **[エグレス]** を選択します。
-
-![Azure Storage 静的 Web サイトのメトリック: メトリック](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
-
-*[集計]* セレクターから **[合計]** を選択します。
-
-![Azure Storage 静的 Web サイトのメトリック: 集計](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
-
-次に、**[フィルターの追加]** ボタンをクリックし、*[プロパティ]* セレクターから **[API 名]** を選択します。
-
-![Azure Storage 静的 Web サイトのメトリック: API 名](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
-
-最後に、*[値]* セレクターで **[GetWebContent]** の横にあるチェック ボックスをオンにして、メトリック レポートを設定します。
-
-![Azure Storage 静的 Web サイトのメトリック: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
-
-有効にすると、*$web* コンテナーのファイルに関するトラフィック統計情報が、メトリック ダッシュボードでレポートされます。
-
-## <a name="faq"></a>FAQ
-
-**静的 Web サイト機能は、すべての種類のストレージ アカウントで使用できますか?**  
-いいえ、静的 Web サイト ホスティングは、GPv2 標準ストレージ アカウントでのみ使用できます。
-
-**Storage VNET とファイアウォールのルールは、新しい Web エンドポイントでサポートされますか?**  
-はい、新しい Web エンドポイントは、ストレージ アカウント用に構成された VNET とファイアウォールのルールに従って機能します。
-
-**Web エンドポイントでは、大文字と小文字が区別されますか?**  
-はい、Web エンドポイントでは、BLOB エンドポイントと同じように、大文字と小文字が区別されます。
-
- **Web エンドポイントには HTTP 経由と HTTPS 経由の両方でアクセスできますか?**
-はい。Web エンドポイントには HTTP 経由と HTTPS 経由の両方でアクセスできます。 ただし、ストレージ アカウントが HTTPS 経由での安全な転送を必要とするように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md)」を参照してください。
-
-## <a name="next-steps"></a>次の手順
-* [カスタム ドメインを用いた BLOB にAzure CDN から HTTPS 経由でアクセスする](storage-https-custom-domain-cdn.md)
-* [BLOB または Web エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)
+* [Azure Storage で静的 Web サイトをホストする](storage-blob-static-website-how-to.md)
+* [カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [最初のサーバーレス Web アプリを作成する](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [チュートリアル:Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)
+* [チュートリアル: Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)

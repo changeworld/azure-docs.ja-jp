@@ -3,22 +3,20 @@ title: Azure Data Factory - よく寄せられる質問
 description: Azure データ ファクトリについてよく寄せられる質問です。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485851"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75645142"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -35,7 +33,7 @@ Data Factory を使用すると、データ ドリブンのワークフローを
 詳細については、「[概要と主要な概念](data-factory-introduction.md)」を参照してください。
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Azure Data Factory の料金の詳細はどこで確認できますか。
-Azure Data Factory の料金の詳細については、[Data Factory の価格の詳細][adf-pricing-details]に関するページをご覧ください。  
+Azure Data Factory の価格の詳細については、[Data Factory の価格の詳細][adf-pricing-details]に関するページを参照してください。  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>Azure Data Factory の利用はどのように開始するのですか。
 * Azure Data Factory の概要については、 [Azure Data Factory サービスの概要](data-factory-introduction.md)に関するページをご覧ください。
@@ -46,14 +44,13 @@ Azure Data Factory の料金の詳細については、[Data Factory の価格�
 Data Factory は、**米国西部**と**北ヨーロッパ**で使用できます。 Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。 「 [サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Data Factory/パイプライン/アクティビティ/データセットの数の制限値はいくつですか。
-詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../../azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
+詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
 データ ファクトリの生成または作成は、次のツール/SDK を使用して行う事ができます。
 
-* **Azure Portal** : Azure Portal の Data Factory ブレードは、Data Factory およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。 **Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。 ポータルまたはエディターを使用した Data Factory の作成とデプロイの例については、 [Azure Portal を使用した初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline-using-editor.md) に関するページを参照してください。
 * **Visual Studio** : Visual Studio を使用して、Azure Data Factory を作成することができます。 詳細については、「 [Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md) 」を参照してください。
-* **Azure PowerShell** : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、 [Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference]をご覧ください。
+* **Azure PowerShell** : PowerShell を使用する Data Factory の作成に関するチュートリアルについては、 [Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md) に関するページを参照してください。 Data Factory コマンドレットの包括的なドキュメントについては、MSDN ライブラリの [Data Factory コマンドレット リファレンス][adf-powershell-reference] コンテンツをご覧ください。
 * **.NET クラス ライブラリ** : Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。 .NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、 [.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md) に関するページをご覧ください。 Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]をご覧ください。
 * **REST API** : Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。 Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]をご覧ください。
 * **Azure Resource Manager テンプレート** 詳細については、「[チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure データ ファクトリの作成](data-factory-build-your-first-pipeline-using-arm.md)」をご覧ください。
@@ -98,7 +95,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
+> \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="what-are-the-supported-file-formats"></a>どのようなファイル形式がサポートされますか。
 [!INCLUDE [data-factory-file-format](../../../includes/data-factory-file-format.md)]
@@ -189,7 +186,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 2. **[データセット]** ブレードの特定のデータセットをクリックします。
 3. **[テーブル]** ブレードの **[最近使用したスライス]** ボックスの一覧で、目的のスライスを選択します。
 4. **[データ スライス]** ブレードの **[アクティビティの実行]** ボックスの一覧で、[アクティビティの実行] をクリックします。
-5. **[アクティビティの実行の詳細]** ブレードで、**[プロパティ]** タイルをクリックします。
+5. **[アクティビティの実行の詳細]** ブレードで、 **[プロパティ]** タイルをクリックします。
 6. **[期間]** フィールドに表示されている値を確認します。 この値が、スライスの処理にかかった時間です。   
 
 ### <a name="how-to-stop-a-running-slice"></a>実行中のスライスを停止するにはどうすればよいですか

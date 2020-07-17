@@ -1,28 +1,52 @@
 ---
 title: Azure Cosmos DB のメトリックを使用した監視とデバッグ
 description: Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。
-ms.service: cosmos-db
 author: kanshiG
-ms.author: sngun
-ms.topic: conceptual
-ms.date: 05/23/2019
+ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: b7633b75bbb6d37c68a562560a6459e35d03b810
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.service: cosmos-db
+ms.topic: conceptual
+ms.date: 06/18/2019
+ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242534"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065927"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
-Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 [Azure portal](https://portal.azure.com) には、このようなメトリックの集計ビューが用意されています。 より詳細なメトリックについては、クライアント SDK と[診断ログ](./logging.md)の両方を使用できます。
+Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](cosmos-db-azure-monitor-metrics.md)に関する記事を参照してください。 
 
 この記事では、一般的なユース ケースと、Azure Cosmos DB メトリックを使用してこれらの問題を分析およびデバッグする手順について説明します。 メトリックは 5 分間隔で収集され、7 日間保持されます。
 
+## <a name="view-metrics-from-azure-portal"></a>Azure portal からメトリックを表示する
+
+1. [Azure portal](https://portal.azure.com/) にサインインします
+
+1. **[メトリック]** ウィンドウを開きます。 既定では、[メトリック] ウィンドウには、Azure Cosmos アカウント内のすべてのデータベースのストレージ、インデックス、要求単位のメトリックが表示されます。 これらのメトリックをデータベース、コンテナー、またはリージョン別にフィルター処理することができます。 特定の時間の粒度でメトリックをフィルター処理することもできます。 スループット、ストレージ、可用性、待機時間、および一貫性の各メトリックの詳細が、別々のタブで提供されます。 
+
+   ![Azure portal での Cosmos DB のパフォーマンス メトリック](./media/use-metrics/performance-metrics.png)
+
+**[メトリック]** ウィンドウから、次のメトリックを入手できます。 
+
+* **スループット メトリック** - このメトリックでは、消費された要求の数、またはコンテナーに対してプロビジョニングされたスループットまたはストレージの容量を超過しているために失敗した (応答コード 429) 要求の数が示されます。
+
+* **ストレージ メトリック** - このメトリックでは、データのサイズとインデックスの使用状況が示されます。
+
+* **可用性メトリック** - このメトリックでは、1 時間あたりの要求の合計に対する成功した要求の割合が示されます。 成功率は、Azure Cosmos DB の SLA によって定義されます。
+
+* **待機時間メトリック** - このメトリックでは、アカウントが動作しているリージョンで Azure Cosmos DB によって観察された読み取りと書き込みの待機時間が示されます。 Geo レプリケートされたアカウントのリージョン間での待機時間を視覚化することができます。 このメトリックでは、エンド ツー エンドの要求の待機時間は表されません。
+
+* **整合性メトリック** - このメトリックでは、選択した整合性モデルの最終的な整合性が示されます。 マルチリージョン アカウントでは、このメトリックには、選択したリージョン間でのレプリケーションの待機時間も示されます。
+
+* **システム メトリック** - このメトリックでは、マスター パーティションによって処理されているメタデータ要求の数が示されます。 スロットルされた要求を識別するためにも役立ちます。
+
+次のセクションで、Azure Cosmos DB のメトリックを使用する一般的なシナリオについて説明します。 
+
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>成功した要求数とエラーになった要求数の把握
 
-まず [Azure Portal](https://portal.azure.com) を開き、 **[メトリック]** ブレードに移動します。 このブレードで **[1 分あたりに容量を超過した要求の数]** グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
+まず [Azure Portal](https://portal.azure.com) を開き、 **[メトリック]** ブレードに移動します。 このブレードで、[1 分あたりに容量を超過した要求の数] グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
 
 最も一般的なエラー状態コードは 429 (レート制限/調整) です。 このエラーは、Azure Cosmos DB への要求がプロビジョニングされたスループットを超えることを意味します。 この問題の最も一般的な解決策は、そのコレクションの [RU をスケール アップ](./set-throughput.md)することです。
 
@@ -83,9 +107,10 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* は、クエリの各コンポーネントが実行にかかった時間について詳細情報を提供します。 クエリの時間が長くなる最も一般的な根本原因はスキャンです。つまり、クエリがインデックスを利用できなかったことを示します。 この問題は、フィルター条件を修正することで解決できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure portal で提供されているメトリックを使用して、問題の監視とデバッグを行う方法について説明しました。 データベースのパフォーマンスを改善する方法については、次の記事を参照してください。
 
+* Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](cosmos-db-azure-monitor-metrics.md)に関する記事を参照してください。 
 * [Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)
 * [Azure Cosmos DB のパフォーマンスに関するヒント](performance-tips.md)

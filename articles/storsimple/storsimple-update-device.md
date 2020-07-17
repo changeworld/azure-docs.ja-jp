@@ -3,7 +3,7 @@ title: StorSimple デバイスの更新 | Microsoft Docs
 description: StorSimple の更新プログラムの機能を使用して、通常またはメンテナンス モードの更新プログラムや修正プログラムをインストールする方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: v-sharos
-ms.openlocfilehash: 412978d2c343394f295e336690ec72153dda4b79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: twooley
+ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452619"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75933431"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの更新
 > [!NOTE]
@@ -74,7 +74,7 @@ Azure クラシック ポータルを使用して、StorSimple デバイスに�
 [!INCLUDE [storsimple-install-regular-updates-powershell](../../includes/storsimple-install-regular-updates-powershell.md)]
 
 ## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用したメンテナンス モードの更新プログラムのインストール
-StorSimple 用 Windows PowerShell を使用して、メンテナンス モードの更新プログラムを StorSimple デバイスに適用します。 このモードでは、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスも停止します。 このモードを開始または終了するときに、両方のコントローラーが再起動されます。 このモードを終了するときに、すべてのサービスが再開され、正常な状態になります  (これには数分かかることがあります)。
+StorSimple 用 Windows PowerShell を使用して、メンテナンス モードの更新プログラムを StorSimple デバイスに適用します。 このモードでは、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスも停止します。 このモードを開始または終了するときに、両方のコントローラーが再起動されます。 このモードを終了するときに、すべてのサービスが再開され、正常な状態になります (これには数分かかることがあります)。
 
 メンテナンス モードの更新プログラムを適用する必要がある場合は、インストールが必要な更新プログラムがあることを示すアラートを Azure クラシック ポータルから受信します。 このアラートには、StorSimple 用 Windows PowerShell を使用して更新プログラムをインストールする手順が含まれます。 デバイスを更新した後、同じ手順を使用してデバイスを通常モードに変更します。 手順については、「 [手順 4: メンテナンス モードを終了するには](#step4)」を参照してください。
 
@@ -119,7 +119,7 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 ## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>デバイスを工場出荷時の状態にリセットした場合、更新プログラムはどうなりますか。
 デバイスを工場出荷時の設定にリセットした場合、すべての更新プログラムが失われます。 出荷時の設定にリセットしたデバイスを登録し、構成した後で、Azure クラシック ポータルまたは StorSimple 用 Windows PowerShell から更新プログラムを手動でインストールする必要があります。 出荷時の設定へのリセットの詳細については、「 [デバイスの出荷時設定へのリセット](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
-* [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+* [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
 

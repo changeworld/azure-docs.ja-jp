@@ -4,7 +4,7 @@ description: Azure の Windows 仮想マシンに接続できないリモート 
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: リモート デスクトップに接続できない, リモート デスクトップのトラブルシューティング, リモート デスクトップで接続できない, リモート デスクトップ エラー, リモート デスクトップのトラブルシューティング, リモート デスクトップの問題
@@ -12,16 +12,15 @@ ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237154"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77920146"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
@@ -31,7 +30,6 @@ ms.locfileid: "51237154"
 
 [リモート デスクトップの基本的なトラブルシューティング ガイド](troubleshoot-rdp-connection.md)で扱われている具体的なエラー メッセージのいずれにも似ていないエラー メッセージがリモート デスクトップで表示されることもあります。 次の手順に従って、リモート デスクトップ (RDP) クライアントが Azure VM 上の RDP サービスに接続できない原因を特定してください。
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「 [Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
@@ -40,7 +38,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 例: 
+先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 次に例を示します。
 
 * VM、または VM が含まれるクラウド サービスのパブリック IP アドレス (仮想 IP アドレス ( [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) とも呼ばれる) が変更されました。 この RDP 障害は、DNS 名について登録された *古い IP アドレス* が DNS クライアント キャッシュにまだ入っているために発生した可能性があります。 DNS クライアント キャッシュをフラッシュしてから、もう一度 VM に接続してみてください。 または、新しい VIP に直接接続してみてください。
 * Azure ポータルによって生成された接続を使用する代わりに、サード パーティのアプリケーションを使用してリモート デスクトップ接続を管理しています。 アプリケーションの構成にリモート デスクトップのトラフィック用の正しい TCP ポートが含まれていることを確認します。 クラシック仮想マシンのこのポートを確認するには、[Azure Portal](https://portal.azure.com) で VM の [設定]、[エンドポイント] の順にクリックします。
@@ -94,6 +92,9 @@ RDP 接続には以下のコンポーネントが関連しています。
 ネットワーク管理者とともに、インターネットへの HTTPS ベースのリモート デスクトップ接続が可能になるように、組織のイントラネットのエッジ デバイスの設定を修正してください。
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>ソース 3: クラウド サービス エンドポイントと ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 クラシック デプロイ モデルを使用して作成された VM の場合は、同じクラウド サービスまたは仮想ネットワーク内にある別の Azure VM が自分の Azure VM にリモート デスクトップ接続できることを確認してください。
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
@@ -195,7 +196,7 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 ## <a name="additional-resources"></a>その他のリソース
 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](../windows/reset-rdp.md)
 
-[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

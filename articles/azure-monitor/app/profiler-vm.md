@@ -1,23 +1,17 @@
 ---
-title: Application Insights Profiler を使用して Azure VM で実行されている Web アプリをプロファイルする | Microsoft Docs
+title: Azure VM 上の Web アプリをプロファイルする - Application Insights Profiler
 description: Application Insights Profiler を使用して Azure VM 上の Web アプリをプロファイルします。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4cca65e2be44d2c846cd4034f0a9d7e8c7d9af28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/08/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130892"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77671581"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
@@ -31,7 +25,8 @@ Azure Application Insights Profiler を次のサービスにデプロイする�
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>仮想マシンまたは仮想マシン スケール セットに Profiler をデプロイする
 この記事では、Azure 仮想マシン (VM) または Azure 仮想マシン スケール セットで Application Insights Profiler を実行する方法を説明します。 Profiler は、VM 用の Azure Diagnostics 拡張機能と共にインストールされます。 Profiler を実行するように拡張機能を構成し、Application Insights SDK をお使いのアプリケーションにビルドします。
 
-1. Application Insights SDK を、お使いの [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)または正規の [.NET アプリケーション](windows-services.md?toc=/azure/azure-monitor/toc.json)に追加します。  
+1. Application Insights SDK を [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)に追加します。
+
    要求のプロファイルを表示するには、要求テレメトリを Application Insights に送信する必要があります。
 
 1. Azure Diagnostics 拡張機能を VM にインストールします。 Resource Manager テンプレートの完全な例については、次を参照してください。  
@@ -92,15 +87,15 @@ portal から Application Insights Profiler シンクを設定する方法はま
 
     ![WAD 拡張機能がインストールされているかどうか確認する][wadextension]
 
-1. 使用する VM 用の VM 診断拡張機能を見つけます。 リソース グループ、Microsoft.Compute virtualMachines、仮想マシン名、および拡張機能を展開します。  
+2. 使用する VM 用の VM 診断拡張機能を見つけます。 [https://resources.azure.com](https://resources.azure.com) に移動します。 リソース グループ、Microsoft.Compute virtualMachines、仮想マシン名、および拡張機能を展開します。  
 
     ![Azure Resource Explorer で WAD 構成に移動する][azureresourceexplorer]
 
-1. Application Insights Profiler シンクを WadCfg の下の SinksConfig ノードに追加します。 SinksConfig セクションがまだない場合は、追加する必要がある場合があります。 必ず、適切な Application Insights iKey を設定に指定してください。 右上隅でエクスプローラーのモードを読み取り/書き込みに切り替えて、青色の [編集] ボタンを押す必要があります。
+3. Application Insights Profiler シンクを WadCfg の下の SinksConfig ノードに追加します。 SinksConfig セクションがまだない場合は、追加する必要がある場合があります。 必ず、適切な Application Insights iKey を設定に指定してください。 右上隅でエクスプローラーのモードを読み取り/書き込みに切り替えて、青色の [編集] ボタンを押す必要があります。
 
     ![Application Insights Profiler シンクを追加する][resourceexplorersinksconfig]
 
-1. 構成の編集が完了したら、[PUT] を押します。 PUT が成功すると、画面の真ん中に緑色のチェック マークが表示されます。
+4. 構成の編集が完了したら、[PUT] を押します。 PUT が成功すると、画面の真ん中に緑色のチェック マークが表示されます。
 
     ![PUT 要求を送信して変更を適用する][resourceexplorerput]
 
@@ -112,7 +107,7 @@ portal から Application Insights Profiler シンクを設定する方法はま
 ## <a name="can-profiler-run-on-on-premises-servers"></a>オンプレミスのサーバーで Profiler を実行できますか。
 オンプレミス サーバーで Application Insights Profiler をサポートすることは予定されていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](monitor-web-app-availability.md)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
 - Azure ポータルで [Profiler トレース](profiler-overview.md?toc=/azure/azure-monitor/toc.json)を表示します。

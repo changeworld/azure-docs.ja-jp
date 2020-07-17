@@ -1,24 +1,23 @@
 ---
-title: Azure Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視 | Microsoft Docs
+title: VPN ゲートウェイをトラブルシューティングおよび監視する - Azure Automation
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure Automation と Network Watcher を使用してオンプレミスの接続を診断する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: c26aef777df3ef5c7df6575b8d939a329740a97e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719799"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76845046"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
 
@@ -35,7 +34,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 このシナリオで、以下の作業を行います。
 
 - 接続の状態のトラブルシューティングを行う `Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットを呼び出す Runbook を作成する
-- スケジュールを Runbook にリンクする
+- Runbook へのスケジュールのリンク
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -56,7 +55,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 ### <a name="step-1"></a>手順 1
 
-[Azure Portal](https://portal.azure.com) で Azure Automation に移動して、**[Runbook]** をクリックします。
+[Azure Portal](https://portal.azure.com) で Azure Automation に移動して、 **[Runbook]** をクリックします。
 
 ![Automation アカウントの概要][1]
 
@@ -82,7 +81,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 この手順では Runbook を作成します。次のコード例には、ここで必要なすべてのコードがあります。 \<値\>が含まれたコードの項目は、実際のサブスクリプションの値に置き換える必要があります。
 
-次のコードを使用して、**[保存]** をクリックします。
+次のコードを使用して、 **[保存]** をクリックします。
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -146,7 +145,7 @@ else
 
 ### <a name="step-6"></a>手順 6.
 
-Runbook を保存したら、スケジュールをそれにリンクして Runbook の開始を自動化する必要があります。 プロセスを開始するには、**[スケジュール]** をクリックします。
+Runbook を保存したら、スケジュールをそれにリンクして Runbook の開始を自動化する必要があります。 プロセスを開始するには、 **[スケジュール]** をクリックします。
 
 ![手順 6.][6]
 
@@ -158,7 +157,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 
 ### <a name="step-1"></a>手順 1
 
-**[スケジュール]** ブレードで、**[新しいスケジュールを作成します]** をクリックします。
+**[スケジュール]** ブレードで、 **[新しいスケジュールを作成します]** をクリックします。
 
 ![手順 8.][8]
 
@@ -169,7 +168,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 - **[名前]** - スケジュールのフレンドリ名です。
 - **[説明]** - スケジュールの説明。
 - **[開始]** - この値は、スケジュールがトリガーされる時間を構成する、日付、時刻、タイム ゾーンを組み合わせたものです。
-- **[繰り返し]** - この値でスケジュールの繰り返しを指定します。  有効な値は、**[1 回のみ]** と **[定期的]** のいずれかです。
+- **[繰り返し]** - この値でスケジュールの繰り返しを指定します。  有効な値は、 **[1 回のみ]** と **[定期的]** のいずれかです。
 - **[繰り返し間隔]** - 時間、日、週、または月で指定するスケジュールの繰り返し間隔。
 - **[有効期限の設定]** - この値で、スケジュールに有効期限を設けるどうかを指定します。 **[はい]** と **[いいえ]** のいずれかに設定できます。 [はい] を選んだ場合、有効な日付と時刻を入力する必要があります。
 
@@ -184,7 +183,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 
 ![手順 10.][10]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Network Watcher トラブルシューティングを Azure Automation と統合する方法を確認しました。次は、[アラートでトリガーされるパケット キャプチャを Azure Network Watcher で作成する方法](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、VM アラートでパケット キャプチャをトリガーする方法について学習します。
 

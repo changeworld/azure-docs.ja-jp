@@ -1,36 +1,40 @@
 ---
-title: PIM 向けの Microsoft Graph API (プレビュー) - Azure Active Directory | Microsoft Docs
+title: PIM 向けの Microsoft Graph API (プレビュー) - Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) 向けの Microsoft Graph API (プレビュー) の使用に関する情報を提供します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: curtand
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/13/2018
-ms.author: rolyon
+ms.date: 01/02/2020
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578970"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75638665"
 ---
-# <a name="microsoft-graph-apis-for-pim-preview"></a>PIM 向けの Microsoft Graph API (プレビュー)
+# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management 向けの Microsoft Graph API (プレビュー)
 
-Azure portal を使用して Azure Active Directory (Azure AD) Privileged Identity Management (PIM) で実行できるタスクのほとんどは、[Microsoft Graph API シリーズ](https://developer.microsoft.com/graph/docs/concepts/overview)を使用して実行することもできます。 この記事では、PIM 向けの Microsoft Graph API を使用する際のいくつかの重要な概念について説明します。 Microsoft Graph API の詳細については、[Azure AD Privileged Identity Management API のリファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)に関するページをご確認ください。
+Azure Active Directory の [Microsoft Graph API シリーズ](https://developer.microsoft.com/graph/docs/concepts/overview)を使用して、すべての Privileged Identity Management タスクを実行できます。 この記事では、Privileged Identity Management 向けの Microsoft Graph API シリーズを使用するための重要な概念について説明します。
+
+Microsoft Graph API の詳細については、[Azure AD Privileged Identity Management API のリファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)に関するページをご確認ください。
 
 > [!IMPORTANT]
 > Microsoft Graph でベータ版の API はプレビュー段階であり、変更されることがあります。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。
+>
+> Graph API コマンドではすべての PIM 操作がサポートされていますが、アクティブ化要求の承認には別のシステムが使用されます。 承認用の Graph API は現在開発中であり、今後数か月のうちにリリースされる予定です。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
-PIM 向けの Microsoft Graph API を呼び出すには、以下のアクセス許可が **1 つまたは複数**必要です。
+Privileged Identity Management 向けの Microsoft Graph API シリーズを呼び出すには、以下のアクセス許可が **1 つまたは複数**必要です。
 
 - `Directory.AccessAsUser.All`
 - `Directory.Read.All`
@@ -39,7 +43,7 @@ PIM 向けの Microsoft Graph API を呼び出すには、以下のアクセス�
 
 ### <a name="set-permissions"></a>アクセス許可を設定する
 
-アプリケーションが PIM 向けの Microsoft Graph API を呼び出すには、それらが必要なアクセス許可を備えていなければなりません。 必要なアクセス許可を指定する最も簡単な方法は、[Azure AD 同意フレームワーク](../develop/consent-framework.md)を使用することです。
+アプリケーションが Privileged Identity Management 向けの Microsoft Graph API シリーズを呼び出すには、それらが必要なアクセス許可を備えていなければなりません。 必要なアクセス許可を指定する最も簡単な方法は、[Azure AD 同意フレームワーク](../develop/consent-framework.md)を使用することです。
 
 ### <a name="set-permissions-in-graph-explorer"></a>Graph エクスプローラーでアクセス許可を設定する
 
@@ -51,12 +55,12 @@ PIM 向けの Microsoft Graph API を呼び出すには、以下のアクセス�
 
     ![Graph エクスプローラー - アクセス許可の変更](./media/pim-apis/graph-explorer.png)
 
-1. 含めたいアクセス許可の横にあるチェックマークをオンにします。 `PrivilegedAccess.ReadWrite.AzureAD` は、Graph エクスプローラーではまだ使用できません。
+1. 含めたいアクセス許可の横にあるチェック ボックスをオンにします。 `PrivilegedAccess.ReadWrite.AzureAD` は、Graph エクスプローラーではまだ使用できません。
 
     ![Graph エクスプローラー - アクセス許可の変更](./media/pim-apis/graph-explorer-modify-permissions.png)
 
 1. **[アクセス許可の変更]** をクリックして、アクセス許可の変更を適用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD Privileged Identity Management API のリファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

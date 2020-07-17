@@ -1,18 +1,16 @@
 ---
-title: Azure Kubernetes Service で RBAC と Azure AD を使用してクラスター リソースを制御する
+title: Azure AD と RBAC をクラスターに使用する
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) でロールベースのアクセス制御 (RBAC) を使用してクラスター リソースへのアクセスを制限するために、Azure Active Directory グループのメンバーシップを使用する方法を学習します
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013018"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803571"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 
@@ -131,7 +129,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ad
 kubectl create namespace dev
 ```
 
-Kubernetes では、*Role* によって付与するアクセス許可が定義され、*RoleBinding* によってそれらが目的のユーザーまたはグループに適用されます。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、「[Using RBAC authorization (RBAC 認可の使用)][rbac-authorization]」を参照してください。
+Kubernetes では、*Role* によって付与するアクセス許可が定義され、*RoleBinding* によってそれらが目的のユーザーまたはグループに適用されます。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
 
 最初に、*dev* 名前空間に Role を作成します。 このロールにより名前空間に完全なアクセス許可が付与されます。 運用環境では、さまざまなユーザーまたはグループに対してより細かくアクセス許可を指定できます。
 
@@ -369,7 +367,7 @@ $ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事では、AKS クラスター内にリソースを作成し、Azure AD でユーザーとグループを作成しました。 これらのリソースをすべてクリーンアップするには、次のコマンドを実行します。
 
@@ -390,11 +388,11 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Kubernetes クラスターをセキュリティで保護する方法の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][rbac-authorization]」のページを参照してください。
+Kubernetes クラスターをセキュリティで保護する方法の詳細については、[AKS でのアクセスと ID オプション][rbac-authorization]に関するページを参照してください。
 
-ID とリソース コントロールに関するベスト プラクティスについては、[Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
+ID とリソース管理に関するベスト プラクティスについては、[AKS での認証と承認のベスト プラクティス][operator-best-practices-identity]に関するページを参照してください。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

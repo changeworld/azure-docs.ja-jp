@@ -1,22 +1,20 @@
 ---
-title: プールとノードのエラーのチェック - Azure Batch
-description: エラーを確認してプールとノードを作成するときに回避する方法
-services: batch
-ms.service: batch
+title: プールとノードのエラーのチェック
+description: この記事では、発生する可能性のあるバックグラウンド操作、およびプールとノードを作成するときにチェックするエラーとそれらを回避する方法について説明します。
 author: mscurrell
 ms.author: markscu
-ms.date: 9/25/2018
-ms.topic: conceptual
-ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 08/23/2019
+ms.topic: how-to
+ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791343"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723920"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 
-Azure Batch プールを作成して管理するとき、いくつかの操作は直ちに行われます。 ただし、一部の操作は非同期で、バック グラウンドで実行されます。 これらは完了までに数分かかる場合があります。
+Azure Batch プールを作成して管理するとき、いくつかの操作は直ちに行われます。 ただし、一部の操作は非同期的にバック グラウンドで実行され、完了までに数分かかります。
 
 API、CLI、UI で直ちにエラーが返されるので、すぐに実行される操作のエラーを検出するのは簡単です。
 
@@ -26,11 +24,11 @@ API、CLI、UI で直ちにエラーが返されるので、すぐに実行さ�
 
 ### <a name="resize-timeout-or-failure"></a>タイムアウトまたはエラーのサイズ変更
 
-新しいプール作成する場合、または既存のプールのサイズ変更を行う場合、ノードのターゲット数はユーザーが指定します。  操作はすぐに完了しますが、新しいノードを実際に割り当てたり既存のノードを削除したりするには数分かかる場合があります。  サイズ変更タイムアウトを[作成](https://docs.microsoft.com/rest/api/batchservice/pool/add)または[サイズ変更](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API で指定します。 サイズ変更タイムアウトの期間中にバッチがターゲット数のノードを取得できない場合、バッチは操作を停止します。 プールは安定した状態になり、サイズ変更エラーを報告します。
+新しいプール作成する場合、または既存のプールのサイズ変更を行う場合、ノードのターゲット数はユーザーが指定します。  作成操作またはサイズ変更操作はすぐに完了しますが、新しいノードを実際に割り当てたり既存のノードを削除したりするには数分かかる場合があります。  サイズ変更タイムアウトを[作成](https://docs.microsoft.com/rest/api/batchservice/pool/add)または[サイズ変更](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API で指定します。 サイズ変更タイムアウトの期間中に、Batch でターゲットとする数のノードを取得できない場合、プールが定常状態に移行し、サイズ変更エラーがレポートされます。
 
-最新の評価の [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) プロパティでは、サイズ変更タイムアウトが報告され、発生したエラーが一覧表示されます。
+直近の評価についての [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) プロパティに、発生したエラーが列挙されます。
 
-サイズ変更タイムアウトの一般的な原因は次のとおりです。
+サイズ変更エラーの一般的な原因は次のとおりです。
 
 - サイズ変更タイムアウトが短すぎる
   - ほとんどの状況では、プールのノードを割り当てまたは削除するための時間は、既定のタイムアウトである 15 分あれば十分です。
@@ -42,7 +40,7 @@ API、CLI、UI で直ちにエラーが返されるので、すぐに実行さ�
 - [プールが仮想ネットワーク](https://docs.microsoft.com/azure/batch/batch-virtual-network)の時の不十分なリソース
   - ロード バランサー、パブリック IP、ネットワーク セキュリティ グループなどのリソースを、バッチ アカウントと同じサブスクリプションに作成する場合があります。 これらのリソースのためのサブスクリプション クォータが十分であるか確認してください。
 - カスタム VM イメージを使用した大規模なプール
-  - カスタム VM イメージを使用する大規模なプールは割り当てに時間がかかり、タイムアウトのサイズ変更が発生することがあります。  制限と構成に関する推奨事項については、[カスタム イメージを使用して仮想マシンのプールを作成する](https://docs.microsoft.com/azure/batch/batch-custom-images)を参照してください。
+  - カスタム VM イメージを使用する大規模なプールは割り当てに時間がかかり、タイムアウトのサイズ変更が発生することがあります。  制限と構成に関する推奨事項については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。
 
 ### <a name="automatic-scaling-failures"></a>自動スケールの失敗
 
@@ -64,43 +62,96 @@ Batch は削除プロセス中に[プールの状態](https://docs.microsoft.com
 
 ## <a name="pool-compute-node-errors"></a>プールのコンピューティング ノードエラー
 
-Batch がプール内のノードを正常に割り当てた場合でも、さまざまな問題が原因で一部のノードが異常な状態になったり使用できなくなる場合があります。 これらのノードには料金が発生します。 使用できないノードへの支払いをなくすために、問題を検出することが重要です。
+Batch がプール内のノードを正常に割り当てた場合でも、さまざまな問題が原因で一部のノードが異常な状態になったり、タスクを実行できなくなったりする場合があります。 これらのノードによって引き続き料金が発生してしまうので、使用できないノードに対する支払いを回避するために問題を検出することが重要です。 一般的なノードエラーに加えて、現在の[ジョブの状態](/rest/api/batchservice/job/get#jobstate)を把握しておくと、トラブルシューティングに役立ちます。
 
-### <a name="start-task-failure"></a>タスクの開始に失敗
+### <a name="start-task-failures"></a>開始タスクの失敗
 
-プールについて、省略可能な[タスクの開始](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)を指定する場合もあります。 すべてのタスクと同じように、ストレージからダウンロードするためにコマンドラインとリソース ファイルを指定できます。 タスクの開始は各ノードの開始後にノードごとに実行されます。 **WaitForSuccess** プロパティは、Batch がすべてのタスクをノードにスケジュールする前に、タスクの開始が正常に完了するまで Batch が待機するかどうかを指定します。
+プールについて、省略可能な[タスクの開始](/rest/api/batchservice/pool/add#starttask)を指定する場合もあります。 すべてのタスクと同じように、ストレージからダウンロードするためにコマンドラインとリソース ファイルを指定できます。 タスクの開始は各ノードの開始後にノードごとに実行されます。 **WaitForSuccess** プロパティは、Batch がすべてのタスクをノードにスケジュールする前に、タスクの開始が正常に完了するまで Batch が待機するかどうかを指定します。
 
 タスクの開始が正しく完了するまで待機するようノードを構成したが、タスクの開始が失敗した場合はどうなるでしょうか。 その場合、ノードは使用できませんが、料金は発生します。
 
-タスクの開始の失敗は、最上位レベルの [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) ノードプロパティの [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) と [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) プロパティを使って検出できます。
+タスクの開始の失敗は、最上位レベルの [startTaskInfo](/rest/api/batchservice/computenode/get#starttaskinformation) ノードプロパティの [result](/rest/api/batchservice/computenode/get#taskexecutionresult) と [failureInfo](/rest/api/batchservice/computenode/get#taskfailureinformation) プロパティを使って検出できます。
 
-また、**waitForSuccess** を **true** に設定した場合、タスクの開始に失敗すると、Batch はノードの[状態](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)を **starttaskfailed** に設定します。
+また、**waitForSuccess** が **true** に設定された場合、開始タスクに失敗すると、Batch はノードの[状態](/rest/api/batchservice/computenode/get#computenodestate)を **starttaskfailed** に設定します。
 
 すべてのタスクと同様、タスクの開始の失敗には多くの原因があります。  トラブルシューティングするには stdout、stderr、さらにタスク固有のログ ファイルをチェックしてください。
+
+開始タスクは同じノードで複数回実行される可能性があるため、再入可能である必要があります。ノードの再イメージ化時と再起動時に開始タスクが実行されます。 まれに、イベントによってノードの再起動が引き起こされた後、オペレーティング システム ディスクとエフェメラル ディスクの一方が再イメージ化され、もう一方は再イメージ化されていない状態で開始タスクが実行されます。 Batch の開始タスクは (すべての Batch タスクと同様) エフェメラル ディスクから実行されるため、このことが問題になることは通常ありません。しかし、開始タスクでオペレーティング システム ディスクにアプリケーションをインストールし、エフェメラル ディスクには他のデータを維持するような一部のケースでは、同期が失われるために、このことが問題の原因となる可能性があります。両方のディスクを使用している場合は、アプリケーションを適切に保護してください。
 
 ### <a name="application-package-download-failure"></a>アプリケーション パッケージのダウンロード エラー
 
 プール用の 1 つ以上のアプリケーション パッケージを指定できます。 Batch は指定されたパッケージ ファイルを各ノードにダウンロードし、ノードが開始した後、タスクがスケジュールされる前にファイルを圧縮解除します。 アプリケーション パッケージと組み合わせてタスクの開始のコマンドラインを使用することが一般的です。 たとえば、別の場所にファイルをコピーしたり、セットアップを実行したりする場合が該当します。
 
-ノード[エラー](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)プロパティは、ダウンロードやアプリケーション パッケージの圧縮解除に失敗したノードを報告します。 Batch はノードの状態を**使用不可**に設定します。
+ノード [エラー](/rest/api/batchservice/computenode/get#computenodeerror) プロパティは、アプリケーション パッケージのダウンロードや圧縮解除に失敗したノードをレポートします。このとき、ノードの状態は **unusable** に設定されます。
+
+### <a name="container-download-failure"></a>コンテナーのダウンロード エラー
+
+プールには、コンテナーの参照を 1 つまたは複数指定できます。 指定したコンテナーが Batch によって各ノードにダウンロードされます。 ノードの [errors](/rest/api/batchservice/computenode/get#computenodeerror) プロパティによって、コンテナーのダウンロード エラーがレポートされ、そのノードの状態が**使用不可**に設定されます。
 
 ### <a name="node-in-unusable-state"></a>ノードは使用できない状態
 
-Azure Batch はさまざまな理由で[ノード状態](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)を**使用不可**に設定します。 ノード状態が**使用不可**に設定された場合、ノードにタスクをスケジュールできませんが、料金は発生します。
+Azure Batch はさまざまな理由で[ノード状態](/rest/api/batchservice/computenode/get#computenodestate)を**使用不可**に設定します。 ノード状態が**使用不可**に設定された場合、ノードにタスクをスケジュールできませんが、料金は発生します。
 
-Batch は、使用できないノードの回復を常に試みますが、原因によっては、回復の可能性がある場合とない場合があります。
+ノードが **unusable** 状態であるにもかかわらず、[エラー](/rest/api/batchservice/computenode/get#computenodeerror)を伴っていない場合、Batch が VM と通信できないことを意味します。 このケースでは、Batch によって常に VM の復旧が試みられます。 アプリケーション パッケージまたはコンテナーのインストール エラーが発生した VM については、その状態が **unusable** であっても、Batch が自動的に復旧を試みることはありません。
 
-Batch が原因を特定できる場合、ノードの[エラー](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)プロパティは原因を報告します。
+Batch が原因を特定できる場合、ノードの[エラー](/rest/api/batchservice/computenode/get#computenodeerror)プロパティは原因を報告します。
 
 **使用できない** ノードが発生する原因として、次のような例もあります。
 
 - カスタム VM イメージが無効である。 たとえば、イメージが適切に作成されていない場合があります。
+
 - インフラストラクチャの障害または低レベルのアップグレードのため、VM が移動した。 Batch はノードを回復します。
+
+- VM イメージが、それをサポートしないハードウェアにデプロイされている。 [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) の VM で CentOS HPC イメージを実行したりすることが該当します。
+
+- VM が [Azure Virtual Network](batch-virtual-network.md) に存在し、重要なポートへのトラフィックがブロックされている。
+
+- VM は仮想ネットワークに存在するが、Azure Storage へのアウトバウンド トラフィックがブロックされている。
+
+- カスタマーの DNS 構成を使用した仮想ネットワークに VM が存在し、DNS サーバーが Azure Storage を解決できない。
 
 ### <a name="node-agent-log-files"></a>ノード エージェント ログ ファイル
 
-各プールのノードで実行される Batch エージェント プロセスはログ ファイルを作成でき、このログ ファイルは、プールのノード上の問題についてサポートに連絡する必要があるときに役立つ場合があります。 ノードのログ ファイルは、Azure portal、Batch Explorer、または [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs) 経由でアップロードできます。 ログ ファイルをアップロードして保存することをお勧めします。 実行中のノードのコストを節約するために、ノードまたはプールを後で削除できます。
+各プールのノードで実行される Batch エージェント プロセスはログ ファイルを作成でき、そのログ ファイルは、プールのノード上の問題についてサポートに連絡する必要があるときに役立つ場合があります。 ノードのログ ファイルは、Azure portal、Batch Explorer、または [API](/rest/api/batchservice/computenode/uploadbatchservicelogs) 経由でアップロードできます。 ログ ファイルをアップロードして保存することをお勧めします。 実行中のノードのコストを節約するために、ノードまたはプールを後で削除できます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="node-disk-full"></a>ノードのディスクがいっぱいである
+
+ジョブ ファイル、タスク ファイル、共有ファイルには、プール ノード VM の一時ドライブが Batch によって使用されます。
+
+- アプリケーション パッケージ ファイル
+- タスク リソース ファイル
+- Batch のいずれかのフォルダーにダウンロードされたアプリケーション固有のファイル
+- タスク アプリケーションの実行ごとの stdout ファイルと stderr ファイル
+- アプリケーション固有の出力ファイル
+
+これらのファイルのいくつかは、プール ノードの作成時に 1 回だけ書き込まれます (プールのアプリケーション パッケージやプールの開始タスクのリソース ファイルなど)。 ノードの作成時に 1 回しか書き込まれなかったとしても、ファイルが大きすぎると、それだけで一時ドライブがいっぱいになってしまう可能性はあります。
+
+一方、ノード上で実行されたタスクごとに書き込まれるファイルもあります (stdout や stderr など)。 同じノード上で大量のタスクが実行された場合や、タスクのファイルが大きすぎる場合、一時ドライブがいっぱいになってしまう可能性があります。
+
+一時ドライブのサイズは、VM のサイズによって異なります。 一時ドライブの容量を十分に確保することが、VM のサイズを選ぶ際の 1 つの考慮事項となります。
+
+- Azure portal では、プールを追加する際に VM サイズの全一覧を表示でき、その中に、"リソース ディスク サイズ" という列があります。
+- すべての VM サイズについて説明した記事に、"一時ストレージ" 列を含んだ表が掲載されています ([コンピューティング最適化済み VM サイズ](/azure/virtual-machines/windows/sizes-compute)に関する記事など)。
+
+それぞれのタスクによって書き込まれるファイルについては、タスクごとに保持期間を指定できます。保持期間はタスク ファイルが保持される期間を決めるもので、その期間を経過したファイルは自動的にクリーンアップされます。 保存期間を短縮することで、ストレージの要件を軽減することができます。
+
+
+一時ディスクの空き領域がなくなった場合 (またはなくなりそうになった場合) は、ノードが [使用不可](/rest/api/batchservice/computenode/get#computenodestate)状態に移行し、ディスクがいっぱいであることを示すノード エラーが報告されます。
+
+### <a name="what-to-do-when-a-disk-is-full"></a>ディスクがいっぱいになった場合の対処方法
+
+ディスクがいっぱいになった原因を特定します。ノード上の領域が何によって占有されているのかがわからない場合は、ノードにリモートで移動し、空き領域がなくなった場所を手動で調査することをお勧めします。 また、[Batch List Files API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) を使用して、バッチ管理フォルダー内のファイル (タスク出力など) を確認することもできます。 この API では、バッチ管理ディレクトリ内のファイルのみが一覧表示されます。タスクが他の場所でファイルを作成した場合、それらは表示されないことに注意してください。
+
+必要なデータがノードから取得されているか、永続ストアにアップロードされていることを確認します。 ディスクの問題を軽減するには、必ずデータを削除し、領域を解放する必要があります。
+
+### <a name="recovering-the-node"></a>ノードの復旧
+
+1. プールが [C.loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) プールの場合は、[バッチ再イメージ化 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) を使用して、ノードを再イメージ化することができます。これを実行すると、ディスク全体が消去されます。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) プールについては、現在、再イメージ化はサポートされていません。
+
+2. プールが [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) の場合は、[ノード削除 API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) を使用して、プールからノードを削除することができます。 その後、もう一度プールを拡張して、不良ノードを新しいノードに置き換えることができます。
+
+3.  完了済みの古いジョブやタスクについて、タスク データがまだノード上にある場合は、それらのジョブやタスクを削除します。 どのジョブ/タスク データがノード上にあるかについてのヒントは、ノードの [RecentTasks コレクション](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)か、[ノード上のファイル](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)で探すことができます。 ジョブを削除すると、ジョブ内のすべてのタスクが削除され、ジョブ内のタスクが削除されると、ノード上のタスク ディレクトリのデータが削除されるので、領域が解放されます。 十分な領域を解放した後、ノードを再起動すると、ノードが "使用不可" 状態から "アイドル" 状態に戻ります。
+
+## <a name="next-steps"></a>次のステップ
 
 包括的なエラー チェック (特に非同期操作に対するエラー チェック) を実装するようにアプリケーションを設定したことを確認します。 これは問題をすばやく検出して診断するために欠かない場合があります。

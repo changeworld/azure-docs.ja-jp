@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB アカウントの操作
-description: この記事では、Azure Cosmos DB アカウントの作成および使用方法について説明します。
-author: rimman
+description: この記事では、Azure Cosmos アカウントを作成し使用する方法について説明します。 Azure Cosmos アカウントの要素の階層も示している
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: rimman
+ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c0e97eed0a4028fdd9d2254fd9472dc3141d607a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d29ed68b2945b2473b33aa88176e6f5d832a0fba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225755"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos アカウントの使用
 
@@ -25,13 +25,13 @@ Azure Cosmos アカウント内のすべてのデータに対するアクセス�
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos アカウントの要素
 
-Azure Cosmos DB コンテナーはスケーラビリティの基本単位です。 コンテナー上に持つことができるプロビジョニング スループット (RU/秒) とストレージは事実上無制限です。 Azure Cosmos DB では、プロビジョニング スループットとストレージを柔軟にスケーリングするために、指定した論理パーティション キーを使用してコンテナーを透過的に分割します。 詳細については、[Azure Cosmos コンテナーとアイテムの使用](databases-containers-items.md)に関するページを参照してください。
+Azure Cosmos コンテナーは、スケーラビリティの基本単位です。 コンテナー上に持つことができるプロビジョニング スループット (RU/秒) とストレージは事実上無制限です。 Azure Cosmos DB では、プロビジョニング スループットとストレージを柔軟にスケーリングするために、指定した論理パーティション キーを使用してコンテナーを透過的に分割します。 詳細については、[Azure Cosmos コンテナーとアイテムの使用](databases-containers-items.md)に関するページを参照してください。
 
 現在、1 つの Azure サブスクリプションで Azure Cosmos アカウントを最大 100 個作成することができます。 1 つの Azure Cosmos アカウントで、事実上無制限のデータ量とプロビジョニング スループットを管理できます。 データとプロビジョニング スループットを管理するには、自分のアカウントで 1 つまたは複数の Azure Cosmos データベースを作成し、そのデータベース内に 1 つまたは複数のコンテナーを作成することができます。 次の画像は、Azure Cosmos アカウントの要素の階層を示しています。
 
 ![Azure Cosmos アカウントの階層](./media/account-overview/hierarchy.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos アカウントの管理方法とその他の概念を確認します。
 

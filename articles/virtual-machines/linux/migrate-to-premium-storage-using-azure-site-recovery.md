@@ -1,21 +1,18 @@
 ---
-title: Azure Site Recovery で Linux VM を Azure Premium Storage に移行する | Microsoft Docs
+title: Azure Site Recovery で Linux VM を Azure Premium Storage に移行する
 description: Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
-services: virtual-machines-linux,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: ffcc2f46a30569979879ff302cde1e3b146d3b50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992038"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78944831"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -77,23 +74,23 @@ Site Recovery を使用して、リージョン間または同じリージョン
 ### <a name="step-1-create-a-recovery-services-vault"></a>手順 1:Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-2. **[リソースの作成]** > **[管理]** > **[Backup** and **Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。 
+2. **[リソースの作成]**  >  **[管理]**  >  **[Backup** and **Site Recovery (OMS)]** を選択します。 または、 **[参照]**  >  **[Recovery Services コンテナー]**  >  **[追加]** を選択します。 
 3. VM をレプリケートする先のリージョンを指定します。 今回は同じリージョン内で移行を行うため、ソース VM とソース ストレージ アカウントがあるリージョンを選択します。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>手順 2:保護の目標を選択する 
 
 1. 構成サーバーをインストールする VM で [Azure Portal](https://portal.azure.com) を開きます。
-2. **[Recovery Services コンテナー]** > **[設定]** > **[Site Recovery]** > **[手順 1:インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+2. **[Recovery Services コンテナー]**  >  **[設定]**  >  **[Site Recovery]**  >  **[手順 1:インフラストラクチャを準備する]**  >  **[保護の目標]** の順にクリックします。
 
    ![[保護の目標] ウィンドウの参照][2]
 
-3. **[保護の目標]** の下の最初のドロップダウン リストで、**[To Azure (Azure へ)]** を選択します。 2 番目のドロップダウン リストで、**[非仮想化/その他]** を選択し、**[OK]** を選択します。
+3. **[保護の目標]** の下の最初のドロップダウン リストで、 **[To Azure (Azure へ)]** を選択します。 2 番目のドロップダウン リストで、 **[非仮想化/その他]** を選択し、 **[OK]** を選択します。
 
    ![ボックスが入力された [保護の目標] ウィンドウ][3]
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>手順 3:ソース環境 (構成サーバー) を設定する
 
-1. **[インフラストラクチャの準備]** > **[ソースの準備]** > **[サーバーの追加]** ウィンドウに移動し、**Azure Site Recovery 統合セットアップ**とコンテナー登録キーをダウンロードします。 
+1. **[インフラストラクチャの準備]**  >  **[ソースの準備]**  >  **[サーバーの追加]** ウィンドウに移動し、**Azure Site Recovery 統合セットアップ**とコンテナー登録キーをダウンロードします。 
  
    コンテナー登録キーは、統合セットアップを実行するために必要です。 キーは生成後 5 日間有効です。
 
@@ -113,20 +110,20 @@ Site Recovery を使用して、リージョン間または同じリージョン
 
       ![[登録] ページ][7]
 
-   3. **[環境の詳細]** で、VMware VM をレプリケートするかどうかを選択します。 この移行シナリオでは、**[いいえ]** を選択します。
+   3. **[環境の詳細]** で、VMware VM をレプリケートするかどうかを選択します。 この移行シナリオでは、 **[いいえ]** を選択します。
 
       ![[環境の詳細] ページ][8]
 
-4. インストールが完了したら、**[Microsoft Azure Site Recovery 構成サーバー]** ウィンドウで次の操作を実行します。
+4. インストールが完了したら、 **[Microsoft Azure Site Recovery 構成サーバー]** ウィンドウで次の操作を実行します。
  
-   1. **[アカウントの管理]** タブを使用して、Site Recovery が自動検出に使用できるアカウントを作成します  (物理マシンの保護に関するシナリオでは、アカウントの設定は必要ありません。ただし、以降の手順のいずれかを実行するには少なくとも 1 つのアカウントが必要です。 アカウントを作成する場合には、アカウント名とパスワードに任意の文字列を使用してかまいません)。 
+   1. **[アカウントの管理]** タブを使用して、Site Recovery が自動検出に使用できるアカウントを作成します (物理マシンの保護に関するシナリオでは、アカウントの設定は必要ありません。ただし、以降の手順のいずれかを実行するには少なくとも 1 つのアカウントが必要です。 アカウントを作成する場合には、アカウント名とパスワードに任意の文字列を使用してかまいません)。 
    2. **[Vault Registration (コンテナーの登録)]** タブを使用して、コンテナー資格情報ファイルをアップロードします。
 
       ![[Vault Registration]\(コンテナーの登録\) タブ][9]
 
 ### <a name="step-4-set-up-the-target-environment"></a>手順 4:ターゲット環境をセットアップする
 
-**[インフラストラクチャの準備]** > **[ターゲット]** を選択し、フェールオーバー後に VM に使用するデプロイ モデルを指定します。 シナリオに応じて、**[クラシック]** または **[Resource Manager]** を選択できます。
+**[インフラストラクチャの準備]**  >  **[ターゲット]** を選択し、フェールオーバー後に VM に使用するデプロイ モデルを指定します。 シナリオに応じて、 **[クラシック]** または **[Resource Manager]** を選択できます。
 
 ![[ターゲット] ウィンドウ][10]
 
@@ -142,7 +139,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 ### <a name="step-6-plan-capacity"></a>手順 6:容量を計画する
 
 1. [Capacity Planner](../../site-recovery/site-recovery-capacity-planner.md) を使用して、レプリケーション ニーズを満たすためのネットワーク帯域幅、ストレージ、およびその他の要件を正確に見積もります。 
-2. 作業が完了したら、**[容量計画は完了していますか?]** で **[はい、完了しました]** を選択します。
+2. 作業が完了したら、 **[容量計画は完了していますか?]** で **[はい、完了しました]** を選択します。
 
    ![容量計画を完了したことを確認するボックス][11]
 
@@ -155,8 +152,8 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
    フェールオーバーされる VM には 2 つの一時ディスクが存在します。1 つはプライマリ VM の一時ディスク、もう 1 つは回復リージョンでの VM のプロビジョニング中に作成された一時ディスクです。 レプリケーションの前に一時ディスクを除外するには、レプリケーションを有効にする前に、モビリティ サービスをインストールします。 一時ディスクを除外する方法の詳細については、「[レプリケーションからディスクを除外する](../../site-recovery/vmware-walkthrough-overview.md)」を参照してください。
 
 2. レプリケーションを有効にするには、次の手順に従います。
-   1. **[アプリケーションをレプリケートする]** > **[ソース]** を選択します。 レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** を選択して、追加のマシンのレプリケーションを有効にします。
-   2. 手順 1 で、**[ソース]** をプロセス サーバーとして設定します。
+   1. **[アプリケーションをレプリケートする]**  >  **[ソース]** を選択します。 レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** を選択して、追加のマシンのレプリケーションを有効にします。
+   2. 手順 1 で、 **[ソース]** をプロセス サーバーとして設定します。
    3. 手順 2 で、フェールオーバー後のデプロイ モデル、移行先の Premium Storage アカウント、ログを保存するための Standard Storage アカウント、およびフェールオーバー先の仮想ネットワークを指定します。
    4. 手順 3 では、保護されている VM を IP アドレスを指定して追加します (検出するには、内部 IP アドレスが必要な場合があります)。
    5. 手順 4 で、以前にプロセス サーバー上で設定したアカウントを選択して、プロパティを構成します。
@@ -174,16 +171,16 @@ VM が 1 つの可用性セットに存在する場合には、すべての VM �
  
 フェールオーバー後のデプロイメント モデルは、ニーズに合わせて選択できます。 フェールオーバー後のデプロイ モデルとして Azure Resource Manager を選択する場合、VM (Resource Manager) を VM (Resource Manager) にフェールオーバーするか、VM (クラシック) を VM (Resource Manager) にフェールオーバーすることができます。
 
-### <a name="step-8-run-a-test-failover"></a>ステップ 8:テスト フェールオーバーの実行
+### <a name="step-8-run-a-test-failover"></a>手順 8:テスト フェールオーバーの実行
 
-レプリケーションが完了したかどうかを確認するには、[Site Recovery] インスタンスを選択し、**[設定]** > **[レプリケートされたアイテム]** を選択します。 レプリケーション プロセスの状態と進捗状況が表示されます。 
+レプリケーションが完了したかどうかを確認するには、[Site Recovery] インスタンスを選択し、 **[設定]**  >  **[レプリケートされたアイテム]** を選択します。 レプリケーション プロセスの状態と進捗状況が表示されます。 
 
 初期レプリケーションが完了したら、テスト フェールオーバーを実行してレプリケーション戦略を検証します。 テスト フェールオーバーの詳細な手順については、[Site Recovery でのテスト フェールオーバーの実行](../../site-recovery/vmware-walkthrough-overview.md)に関するセクションを参照してください。 
 
 > [!NOTE]
 > フェールオーバーを実行する前に、VM とレプリケーション戦略が要件を満たしていることを確認してください。 テスト フェールオーバーの実行の詳細については、「[Site Recovery での Azure へのフェールオーバーをテストする](../../site-recovery/site-recovery-test-failover-to-azure.md)」を参照してください。
 
-テスト フェールオーバーの状態を確認するには、**[設定]** > **[ジョブ]** > *<フェールオーバー計画名>* の順に選択します。 ウィンドウに、各手順の内訳とその結果 (成功、失敗) が表示されます。 いずれかの手順でテスト フェールオーバーが失敗した場合は、手順を選択してエラー メッセージを確認します。 
+テスト フェールオーバーの状態を確認するには、 **[設定]**  >  **[ジョブ]**  >  *<フェールオーバー計画名>* の順に選択します。 ウィンドウに、各手順の内訳とその結果 (成功、失敗) が表示されます。 いずれかの手順でテスト フェールオーバーが失敗した場合は、手順を選択してエラー メッセージを確認します。 
 
 ### <a name="step-9-run-a-failover"></a>手順 9:フェールオーバーの実行
 
@@ -195,7 +192,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 
 ## <a name="post-migration-steps"></a>移行後の手順
 
-1. **レプリケートされた VM を可用性セットに構成します (該当する場合)**。 Site Recovery では、VM を可用性セットと併せて移行する操作はサポートされていません。 レプリケートされた VM のデプロイに応じて、次のいずれかを実行してください。
+1. **レプリケートされた VM を可用性セットに構成します (該当する場合)** 。 Site Recovery では、VM を可用性セットと併せて移行する操作はサポートされていません。 レプリケートされた VM のデプロイに応じて、次のいずれかを実行してください。
    * クラシック デプロイ モデルを使用して作成された VM の場合: Azure portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../linux/classic/configure-availability-classic.md)」を参照してください。
    * Resource Manager デプロイ モデルを使用して作成された VM の場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトを実行する前に、制限を確認し、ダウンタイムを計画します。
 
@@ -208,7 +205,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 * [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [Microsoft Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
@@ -218,7 +215,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure ストレージ](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [IaaS VM 用のディスクの種類の選択](disks-types.md)
 

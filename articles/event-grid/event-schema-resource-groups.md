@@ -1,20 +1,20 @@
 ---
-title: Azure Event Grid のリソース グループ用のイベント スキーマ
+title: Event Grid ソースとしての Azure リソース グループ
 description: Azure Event Grid のリソース グループ イベントに対して用意されているプロパティについて説明します
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535744"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393266"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid のリソース グループ用のイベント スキーマ
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Event Grid ソースとしての Azure リソース グループ
 
 この記事では、リソース グループ イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
@@ -28,9 +28,10 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 
 イベントの対象は、操作の対象となっているリソースのリソース ID です。 リソースのイベントをフィルター処理するには、イベント サブスクリプションを作成するときに、そのリソース ID を指定します。  リソースの種類でフィルター処理するには、次の形式で値を使用します。`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-サンプル スクリプトとチュートリアルの一覧については、[リソース グループのイベント ソース](event-sources.md#resource-groups)に関する記事をご覧ください。
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
+
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 リソース グループは、VM が作成されたりストレージ アカウントが削除されたりしたときに、Azure Resource Manager から管理イベントを出力します。
 
@@ -46,7 +47,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 | Microsoft.Resources.ResourceWriteFailure | 作成または更新操作が失敗したときに発生します。 |
 | Microsoft.Resources.ResourceWriteSuccess | 作成または更新操作が成功したときに発生します。 |
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 次の例は、**ResourceWriteSuccess** イベント用のスキーマを示しています。 **ResourceWriteFailure** イベントと **ResourceWriteCancel** イベントでも、`eventType` の値を変更して、同じスキーマが使用されます。
 
@@ -230,37 +231,47 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 }]
 ```
 
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | リソース グループ イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | リソース グループ イベントのデータ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| authorization | オブジェクト | 操作の要求された承認。 |
-| claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
-| correlationId | 文字列 | トラブルシューティング用の操作 ID。 |
-| httpRequest | オブジェクト | 操作の詳細。 このオブジェクトは、既存のリソースを更新する場合、またはリソースを削除する場合にのみ含まれます。 |
-| resourceProvider | 文字列 | 操作に対するリソース プロバイダー。 |
-| resourceUri | 文字列 | 操作内のリソースの URI。 |
-| operationName | 文字列 | 実行された操作。 |
-| status | 文字列 | 操作の状態。 |
-| subscriptionId | 文字列 | リソースのサブスクリプション ID。 |
-| tenantId | 文字列 | リソースのテナント ID。 |
+| authorization | object | 操作の要求された承認。 |
+| claims | object | 要求のプロパティ。 詳細については、[JWT 認証](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
+| correlationId | string | トラブルシューティング用の操作 ID。 |
+| httpRequest | object | 操作の詳細。 このオブジェクトは、既存のリソースを更新する場合、またはリソースを削除する場合にのみ含まれます。 |
+| resourceProvider | string | 操作に対するリソース プロバイダー。 |
+| resourceUri | string | 操作内のリソースの URI。 |
+| operationName | string | 実行された操作。 |
+| status | string | 操作の状態。 |
+| subscriptionId | string | リソースのサブスクリプション ID。 |
+| tenantId | string | リソースのテナント ID。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+|タイトル  |説明  |
+|---------|---------|
+| [チュートリアル: Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md) | ロジック アプリは仮想マシンへの変更を監視し、それらの変更に関する電子メールを送信します。 |
+| [Azure CLI: リソース グループのイベントのサブスクライブ](./scripts/event-grid-cli-resource-group.md)| リソース グループのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
+| [Azure CLI: リソース グループのイベントのサブスクライブとリソースのフィルタリング](./scripts/event-grid-cli-resource-group-filter.md) | リソース グループのイベントにサブスクライブし、1 つのリソースのイベントをフィルター処理するサンプル スクリプトです。 |
+| [PowerShell: リソース グループのイベントのサブスクライブ](./scripts/event-grid-powershell-resource-group.md) | リソース グループのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
+| [PowerShell: リソース グループのイベントのサブスクライブとリソースのフィルタリング](./scripts/event-grid-powershell-resource-group-filter.md) | リソース グループのイベントにサブスクライブし、1 つのリソースのイベントをフィルター処理するサンプル スクリプトです。 |
+| [Resource Manager テンプレート: リソースのサブスクリプション](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Azure サブスクリプションまたはリソース グループのイベントにサブスクライブします。 Webhook にイベントを送信します。 |
+
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

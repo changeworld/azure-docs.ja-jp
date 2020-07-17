@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric Explorer を使用したクラスターの視覚化 | Microsoft Docs
+title: Azure Service Fabric Explorer を使用したクラスターの視覚化
 description: Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するためのアプリケーションです。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317393"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229227"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -29,7 +20,7 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
 
 デスクトップ アプリケーションとして Service Fabric Explorer をダウンロードするには、次のリンクを使ってください。
 
--  Windows
+- Windows
   - https://aka.ms/sfx-windows
 
 - Linux
@@ -61,7 +52,7 @@ Service Fabric クラスターに接続するには、クラスター管理エ�
 ### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
 
-セキュリティで保護されたクラスターに接続する場合は、クラスターの構成に応じて、クライアント証明書を提示するか、AAD を使ってログインする必要があります。
+セキュリティで保護されたクラスターに接続しようとすると、そのクラスターの構成によっては、クライアント証明書を指定するか、または AAD を使用してサインインすることが必要になります。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Service Fabric Explorer のレイアウトについて
 左側のツリーを使用して、Service Fabric Explorer 内を移動できます。 ツリーのルートでは、クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。
@@ -89,10 +80,10 @@ Service Fabric クラスターのノードは、障害ドメインとアップ�
 ### <a name="view-the-clusters-nodes"></a>クラスターのノードを表示する
 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、 正確に言うと、そこで現在実行されているレプリカを調べることができます。
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 Service Fabric Explorer では、クラスター内のノード、アプリケーション、サービスに対する操作を簡単に呼び出すことができます。
 
-たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、**[アクション]** > **[アプリケーションの削除]** の順に選択します。
+たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、 **[アクション]**  >  **[アプリケーションの削除]** の順に選択します。
 
 ![Service Fabric Explorer でのアプリケーションの削除][sfx-delete-application]
 
@@ -123,16 +114,36 @@ EventStore は Service Fabric Explorer と REST API で使用可能な Service F
 >[!NOTE]
 >Service Fabric バージョン 6.4 の時点で、 EventStore API は現在、Azure 上で実行されている Windows クラスターでに対してのみ使用できます。 この機能を Linux およびスタンドアロン クラスターに移植する作業を進めています。
 
+## <a name="image-store-viewer"></a>Image Store Viewer
+Image Store Viewer は、Native Image Store を使用している場合に提供される機能であり、これを使用して、イメージ ストアの現在の内容を表示したり、ファイルやフォルダーの情報を取得したり、ファイルやフォルダーを削除したりできます。
 
-## <a name="next-steps"></a>次の手順
+![Service Fabric Explorer のクラスター マップ][sfx-imagestore]
+
+## <a name="backup-and-restore"></a>バックアップと復元
+Service Fabric Explorer には、[バックアップと復元](./service-fabric-reliable-services-backup-restore.md)とのインターフェイスを提供する機能が用意されています。 SFX でバックアップと復元の機能を表示するには、詳細設定モードを有効にする必要があります。
+
+![詳細設定モードの有効化][0]
+ 
+次の操作を実行できます。
+
+* バックアップ ポリシーを作成、編集、削除します。
+* アプリケーション、サービス、またはパーティションのバックアップを有効または無効にします。
+* アプリケーション、サービス、またはパーティションのバックアップを中断および再開します。
+* パーティションのバックアップをトリガーして追跡します。
+* パーティションの復元をトリガーして追跡します。
+
+バックアップと復元サービスの詳細については、[REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)に関するページを参照してください。
+## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
-[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/SfxClusterDashboard.png
-[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/SfxClusterMap.png
-[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
-[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
-[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
-[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png
+[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-map.png
+[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/sfx-application-tree.png
+[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/sfx-service-essentials.png
+[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/sfx-delete-application.png
+[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
+[sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure REST API と C# を使用して画像から顔を検出する
+title: 'クイック スタート: Azure REST API と C# を使って画像から顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と C# を使用して、画像から顔を検出します。
 services: cognitive-services
@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629915"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81403407"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート: Face REST API と C# を使って画像から顔を検出する
 
 このクイック スタートでは、Azure Face REST API と C# を使用して、画像から人の顔を検出します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**FaceDetection** という名前を付けます。 
+1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**FaceDetection** という名前を付けます。
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 
 ## <a name="add-face-detection-code"></a>顔検出コードを追加する
@@ -44,6 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ```csharp
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -51,8 +52,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>必須フィールドを追加する
 
-次のフィールドを含む **Program** クラスを追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
+次のフィールドを含む **Program** クラスを追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、お使いのリソースのエンドポイント文字列を含むように、必要に応じて変更してください。
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -63,26 +65,18 @@ namespace DetectFace
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>画像の入力を受け取る
 
-**Program** クラスの **Main** メソッドに次のコードを追加します。 これは、画像の URL を入力するようユーザーに要求するプロンプトをコンソールに出力するものです。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
+**Program** クラスの **Main** メソッドに次のコードを追加します。 このコードによって、画像の URL を入力するようユーザーに要求するプロンプトがコンソールに出力されます。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
 
 ```csharp
         static void Main(string[] args)
         {
-
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
             Console.Write(
@@ -162,7 +156,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>入力画像データを処理する
 
-**Program** クラスに次のメソッドを追加します。 これは、指定された URL にある画像をバイト配列に変換するものです。
+**Program** クラスに次のメソッドを追加します。 このメソッドでは、指定された URL にある画像をバイト配列に変換します。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +173,7 @@ namespace DetectFace
 
 ### <a name="parse-the-json-response"></a>JSON 応答を解析します
 
-**Program** クラスに次のメソッドを追加します。 これは、JSON 入力を読みやすく書式設定するものです。 アプリからは、この文字列データをコンソールに書き込むことになります。 その後、クラスと名前空間を閉じることができます。
+**Program** クラスに次のメソッドを追加します。 このメソッドでは、JSON 入力を読みやすく書式設定します。 アプリからは、この文字列データをコンソールに書き込むことになります。 その後、クラスと名前空間を閉じることができます。
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -248,9 +242,9 @@ namespace DetectFace
 }
 ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
-実行に成功した場合、応答として顔データが、読みやすい JSON 形式で表示されます。 例: 
+実行に成功した場合、応答として顔データが、読みやすい JSON 形式で表示されます。 次に例を示します。
 
 ```json
 [
@@ -346,9 +340,9 @@ namespace DetectFace
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、REST 呼び出しと Azure Face API を使って画像から顔を検出し、その属性を返す単純な .NET コンソール アプリケーションを作成しました。 この後は、サポートされているシナリオについて、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
+このクイックスタートでは、REST 呼び出しと Azure Face サービスを使って画像内の顔を検出し、その属性を返す単純な .NET コンソール アプリケーションを作成しました。 この後は、サポートされているシナリオについて、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

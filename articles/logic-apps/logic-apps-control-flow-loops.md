@@ -1,21 +1,17 @@
 ---
-title: アクションを繰り返す、または配列を処理するループを追加する - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps 内のワークフロー アクションを繰り返したり、配列を処理したりするループを作成する方法です
+title: アクションを繰り返すループを追加する
+description: Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-manager: jeconnoc
-ms.date: 01/05/2019
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 01/05/2019
+ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233039"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -44,7 +40,7 @@ ms.locfileid: "59523003"
 
 * 各ループ イテレーション中での変数に対する操作の予測可能な結果を取得するには、これらのループを順番に実行します。 たとえば、同時実行ループが終了すると、変数操作に対する増分、減分、追加で予測可能な結果が返されます。 ただし、同時実行ループでの各イテレーション中に、これらの操作で予期しない結果が返される可能性があります。 
 
-* "Foreach" ループ内のアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item)  
+* "Foreach" ループ内のアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
 式を使用して、配列内の各項目を参照して処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
 
 このロジック アプリの例では、Web サイトの RSS フィードの日次サマリーを送信します。 アプリは、新しい項目ごとに電子メールを送信する "Foreach" ループを使用します。
@@ -54,15 +50,15 @@ ms.locfileid: "59523003"
 2. RSS トリガーと電子メール送信アクションの間に、"Foreach" ループを追加します。 
 
    1. ステップの間にループを追加するには、これらのステップ間の矢印の上にポインターを移動します。 
-   表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
       ![[アクションの追加] を選択](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. 検索ボックスで、**[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、次のアクションを選択します。**For each - コントロール**
+   1. 検索ボックスで、 **[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、次のアクションを選択します。**For each - コントロール**
 
       !["For each" ループを追加](media/logic-apps-control-flow-loops/select-for-each.png)
 
-3. これでループをビルドします。 **[動的なコンテンツの追加]** リストが表示された後に、**[Select an output from previous steps]\(前のステップから出力を選択する\)** で、RSS トリガーからの出力である **[フィード リンク]** 配列を選択します。 
+3. これでループをビルドします。 **[動的なコンテンツの追加]** リストが表示された後に、 **[Select an output from previous steps]\(前のステップから出力を選択する\)** で、RSS トリガーからの出力である **[フィード リンク]** 配列を選択します。 
 
    ![動的コンテンツ リストから選択する](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
 
@@ -79,7 +75,7 @@ ms.locfileid: "59523003"
 
    !["Foreach"ループにステップを追加する](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
+5. ロジック アプリを保存します。 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
 
 <a name="for-each-json"></a>
 
@@ -126,11 +122,11 @@ ms.locfileid: "59523003"
 
 既定では、"Foreach" ループのサイクルは並列に実行されます。 各サイクルをシーケンシャルに実行するには、ループの **[シーケンシャル]** オプションを設定します。 予測可能な結果が想定されるループ内でループや変数を入れ子にしている場合、"Foreach" ループは順番に実行する必要があります。 
 
-1. ループの右上隅で、**省略記号** (**...**) > **[設定]** と選択します。
+1. ループの右上隅で、**省略記号** ( **...** ) > **[設定]** と選択します。
 
    !["Foreach" ループで、[...] > [設定] を選択する](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. **[同時実行制御]** で、**[同時実行制御]** 設定を **[オン]** にします。 **[並列処理の次数]** スライダーを **1** まで動かし、**[完了]** を選択します。
+1. **[同時実行制御]** で、 **[同時実行制御]** 設定を **[オン]** にします。 **[並列処理の次数]** スライダーを **1** まで動かし、 **[完了]** を選択します。
 
    ![同時実行制御をオンにする](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
@@ -168,12 +164,12 @@ ms.locfileid: "59523003"
 > これらの手順では Office 365 Outlook を使用できますが、Logic Apps がサポートするどの電子メール プロバイダーでも使用できます。 
 > [こちらからコネクタの一覧を確認してください](https://docs.microsoft.com/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
 
-1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、**[すべて]** を選択します。 「定期的」を検索します。 
-   トリガーの一覧から、**[定期的なスケジュール]** を選択します。
+1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、 **[すべて]** を選択します。 「定期的」を検索します。 
+   トリガーの一覧から、 **[定期的なスケジュール]** を選択します。
 
    ![[定期的なスケジュール] トリガーの追加](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
-1. 間隔、頻度、時刻を設定して、トリガーが実行されるタイミングを指定します。 時刻を設定するには、**[詳細オプションを表示する]** を選択します。
+1. 間隔、頻度、時刻を設定して、トリガーが実行されるタイミングを指定します。 時刻を設定するには、 **[詳細オプションを表示する]** を選択します。
 
    ![定期的なスケジュールを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
@@ -184,7 +180,7 @@ ms.locfileid: "59523003"
    | **設定時刻 (時間)** | 8 |
    ||| 
 
-1. トリガーで、**[新しいステップ]** を選択します。 
+1. トリガーで、 **[新しいステップ]** を選択します。 
    "変数" を検索し、次のアクションを選択します: **[変数の初期化 - 変数]**
 
    ![変数の初期化 - 変数 を追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
@@ -196,13 +192,13 @@ ms.locfileid: "59523003"
    | プロパティ | 値 | 説明 |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
-   | **種類** | 整数 | 変数のデータ型 | 
-   | **値** | 0 | 変数の開始値 | 
+   | **Type** | Integer | 変数のデータ型 | 
+   | **Value** | 0 | 変数の開始値 | 
    |||| 
 
-1. **[変数を初期化する]** アクションの下で、**[新しいステップ]** を選択します。 
+1. **[変数を初期化する]** アクションの下で、 **[新しいステップ]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 "期限" を検索し、次のアクションを選択します: **[期限 - コントロール]**
+1. 検索ボックスで、 **[すべて]** を選択します。 "期限" を検索し、次のアクションを選択します: **[期限 - コントロール]**
 
    ![[期限] ループを追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
@@ -211,9 +207,9 @@ ms.locfileid: "59523003"
 
    ![ループを停止させる終了条件をビルドする](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-1. ループ内で、**[アクションの追加]** を選択します。 
+1. ループ内で、 **[アクションの追加]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 "変数" を検索し、次のアクションを選択します: **[変数の値を増やす - 変数]**
+1. 検索ボックスで、 **[すべて]** を選択します。 "変数" を検索し、次のアクションを選択します: **[変数の値を増やす - 変数]**
 
    ![変数の値を増やすアクションを追加する](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
@@ -221,9 +217,9 @@ ms.locfileid: "59523003"
 
      !["Limit" を 1 ずつ増やす](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-1. ループ外部の下側で、**[新しいステップ]** を選択します。 
+1. ループ外部の下側で、 **[新しいステップ]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 
+1. 検索ボックスで、 **[すべて]** を選択します。 
      電子メールを送信するアクションを検索し、追加します。たとえば、次のようにします。 
 
      ![電子メールを送信するアクションを追加する](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
@@ -237,11 +233,11 @@ ms.locfileid: "59523003"
       | プロパティ | 値 | 説明 |
       | -------- | ----- | ----------- | 
       | **To** | *\<email-address\@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
-      | **[件名]** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
+      | **件名** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
       | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
       |||| 
 
-1. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
+1. ロジック アプリを保存します。 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
 
       ロジックの実行が開始された後に、指定した内容の電子メールを受け取ります。
 
@@ -253,7 +249,7 @@ ms.locfileid: "59523003"
 
 | プロパティ | 既定値 | 説明 | 
 | -------- | ------------- | ----------- | 
-| **カウント** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
+| **Count** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
 | **タイムアウト** | PT1H | ループが終了するまでにループが実行される最大時間数。 既定値は 1 時間で、ISO 8601 形式で指定されます。 <p>タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 | 
 |||| 
 
@@ -342,7 +338,7 @@ ms.locfileid: "59523003"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)

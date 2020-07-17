@@ -6,27 +6,27 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/26/2019
+ms.topic: overview
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a29a00c34d4c60e6ba2b4fd6b0b413873301af5c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888374"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80631719"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
 Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。  また、以下のような特徴があります。
-    
+     
 - [パスワード ハッシュ同期](whatis-phs.md) - ユーザーのオンプレミス AD パスワードのハッシュを Azure AD と同期させるサインイン方法。
 - [パススルー認証](how-to-connect-pta.md) - ユーザーがオンプレミスとクラウド内で同じパスワードを使用できるようにするサインイン方法ですが、フェデレーション環境の追加のインフラストラクチャは必要ありません。
 - [フェデレーション統合](how-to-connect-fed-whatis.md) - フェデレーションは Azure AD Connect のオプション部分であり、オンプレミスの AD FS インフラストラクチャを使ってハイブリッド環境を構成するために使用できます。 証明書の更新や追加の AD FS サーバー デプロイなどの AD FS 管理機能も提供されます。
 - [同期](how-to-connect-sync-whatis.md) - ユーザー、グループ、およびその他のオブジェクトを作成する役割を果たします。  また、オンプレミスのユーザーやグループの ID 情報をクラウド側と一致させる役割もあります。  この同期にはパスワード ハッシュも含まれます。
--   [正常性の監視](whatis-hybrid-identity-health.md) - Azure AD Connect Health は、堅牢な監視を提供したり、このアクティビティを表示するための Azure Portal 内の中央の場所を提供したりできます。 
+- [正常性の監視](whatis-hybrid-identity-health.md) - Azure AD Connect Health は、堅牢な監視を提供したり、このアクティビティを表示するための Azure Portal 内の中央の場所を提供したりできます。 
 
 
 ![What is Azure AD Connect](./media/whatis-hybrid-identity/arch.png)
@@ -64,9 +64,14 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2、Windows Serv
 |優れたユーザー エクスペリエンス|Azure Portal からのダッシュボード方式</br>[電子メール経由のアラート](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
 
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Azure AD Connect を使用するためのライセンス要件
 
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用するためのライセンス要件
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
+
+## <a name="next-steps"></a>次のステップ
 
 - [ハードウェアおよび前提条件](how-to-connect-install-prerequisites.md) 
 - [簡単設定](how-to-connect-install-express.md)

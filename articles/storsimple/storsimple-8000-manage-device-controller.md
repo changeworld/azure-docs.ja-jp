@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232175"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
 
@@ -47,25 +47,25 @@ ms.locfileid: "51261708"
 
 > [!IMPORTANT]
 > * **実行中のコントローラーを物理的に取り外すことは絶対に避けてください。冗長性が失われ、ダウンタイムのリスクが増大します。**
-> * 以下の手順は、StorSimple の物理デバイスにのみ当てはまります。 StorSimple Cloud Appliance の起動、停止、および再起動については、[クラウド アプライアンスの操作](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance)に関するページをご覧ください。
+> * 以下の手順は、StorSimple の物理デバイスにのみ当てはまります。 StorSimple Cloud Appliance の起動、停止、および再起動については、[クラウド アプライアンスの操作](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)に関するページをご覧ください。
 
 StorSimple デバイス マネージャー サービスの Azure ポータルまたは StorSimple 用 Windows PowerShell を使用して、1 つのデバイス コントローラーを再起動またはシャットダウンできます。
 
 Azure ポータルからデバイス コントローラーを管理するには、次の手順を実行します。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Azure ポータルでコントローラーを再起動またはシャットダウンするには
-1. StorSimple デバイス マネージャー サービスで、**[デバイス]** に移動します。 デバイスの一覧からデバイスを選択します。 
+1. StorSimple デバイス マネージャー サービスで、 **[デバイス]** に移動します。 デバイスの一覧からデバイスを選択します。 
 
     ![デバイスを選択する](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
 2. **[設定]、[コントローラー]** の順に移動します。
    
     ![StorSimple デバイス コントローラーが正常であることを確認する](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. **[コントローラー]** ブレードで、デバイスの両方のコントローラーの状態が **[正常]** であることを確認します。 コントローラーを選択します。右クリックした後、**[再起動]** または **[シャットダウン]** を選択します。
+3. **[コントローラー]** ブレードで、デバイスの両方のコントローラーの状態が **[正常]** であることを確認します。 コントローラーを選択します。右クリックした後、 **[再起動]** または **[シャットダウン]** を選択します。
 
     ![StorSimple デバイス コントローラーの再起動またはシャットダウンを選択する](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. コントローラーを再起動またはシャット ダウンするジョブが作成され、該当する警告が存在する場合は、警告が表示されます。 再起動またはシャットダウンを監視するには、**[サービス]、[アクティビティ ログ]** の順に移動し、サービスに固有のパラメーターでフィルター処理します。 コントローラーがシャット ダウンされた場合は、電源ボタンを押してコントローラーをオンにする必要があります。
+4. コントローラーを再起動またはシャット ダウンするジョブが作成され、該当する警告が存在する場合は、警告が表示されます。 再起動またはシャットダウンを監視するには、 **[サービス]、[アクティビティ ログ]** の順に移動し、サービスに固有のパラメーターでフィルター処理します。 コントローラーがシャット ダウンされた場合は、電源ボタンを押してコントローラーをオンにする必要があります。
 
 #### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell でコントローラーを再起動またはシャットダウンするには
 StorSimple デバイスの単一のコントローラーを StorSimple 用 Windows PowerShell でシャットダウンまたは再起動するには、次の手順を実行します。
@@ -91,7 +91,7 @@ StorSimple デバイスの単一のコントローラーを StorSimple 用 Windo
 このセクションでは、実行中の StorSimple デバイスまたは障害の発生した StorSimple デバイスをリモート コンピューターからシャットダウンする方法について説明します。 両方のデバイス コントローラーをシャットダウンすると、デバイスはオフになります。 デバイスのシャットダウンは、そのデバイスを物理的に移動するか、または運用から外すときに行います。
 
 > [!IMPORTANT]
-> デバイスをシャットダウンする前に、デバイスのコンポーネントの正常性を確認してください。 デバイスに移動し、**[設定]、[ハードウェアの正常性]** の順にクリックします。 **[状態とハードウェアの正常性]** ブレードで、すべてのコンポーネントの LED ステータスが緑色になっていることを確認します。 正常なデバイスのみ、緑色のステータスになります。 デバイスをシャットダウンする場合や、不調なコンポーネントを交換する場合、コンポーネントごとにエラー (赤色) または機能低下 (黄色) ステータスが表示されます。
+> デバイスをシャットダウンする前に、デバイスのコンポーネントの正常性を確認してください。 デバイスに移動し、 **[設定]、[ハードウェアの正常性]** の順にクリックします。 **[状態とハードウェアの正常性]** ブレードで、すべてのコンポーネントの LED ステータスが緑色になっていることを確認します。 正常なデバイスのみ、緑色のステータスになります。 デバイスをシャットダウンする場合や、不調なコンポーネントを交換する場合、コンポーネントごとにエラー (赤色) または機能低下 (黄色) ステータスが表示されます。
 
 
 #### <a name="to-shut-down-a-storsimple-device"></a>StorSimple デバイスをシャットダウンするには
@@ -148,7 +148,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 **Q.** コントローラーが再起動されたかどうかやシャットダウンされたかどうかは、どのようにして確認できるでしょうか。
 
-**A.** コントローラーの状態は、[コントローラー] ブレードで確認できます。 コントローラーの状態は、コントローラーが再起動またはシャット ダウンの処理中であるかどうかを示します。 コントローラーが再起動またはシャットダウンされた場合、**[アラート]** ブレードにも情報アラートが表示されます。 アクティブ ログにも、コントローラーの再起動操作とシャットダウン操作が記録されます。 アクティビティ ログの詳細については、「[アクティビティ ログの表示](storsimple-8000-service-dashboard.md#view-the-activity-logs)」を参照してください。
+**A.** コントローラーの状態は、[コントローラー] ブレードで確認できます。 コントローラーの状態は、コントローラーが再起動またはシャット ダウンの処理中であるかどうかを示します。 コントローラーが再起動またはシャットダウンされた場合、 **[アラート]** ブレードにも情報アラートが表示されます。 アクティブ ログにも、コントローラーの再起動操作とシャットダウン操作が記録されます。 アクティビティ ログの詳細については、「[アクティビティ ログの表示](storsimple-8000-service-dashboard.md#view-the-activity-logs)」を参照してください。
 
 **Q.** コントローラーのフェールオーバーは I/O に影響しますか。
 
@@ -158,7 +158,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 **A.** コントローラーを運用状態に戻すには、「 [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-8000-controller-replacement.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、 [Microsoft サポートにお問い合わせ](storsimple-8000-contact-microsoft-support.md)ください。
 * StorSimple デバイス マネージャー サービスの使用の詳細については、「[Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md)」(StorSimple デバイス マネージャーを使用して StorSimple デバイスを管理する) を参照してください。
 

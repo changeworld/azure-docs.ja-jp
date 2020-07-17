@@ -1,0 +1,105 @@
+- name: Azure Lighthouse ドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Lighthouse とは
+      displayName: 'management at scale, service providers'
+      href: overview.md
+- name: サンプル
+  items:
+    - name: インデックス
+      displayName: 'template, sample'
+      href: ./samples/index.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
+- name: 概念
+  items:
+    - name: Azure の委任されたリソース管理
+      displayName: 'delegation, projection'
+      href: ./concepts/azure-delegated-resource-management.md
+    - name: テナント間の管理エクスペリエンス
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
+      href: ./concepts/cross-tenant-management-experience.md
+    - name: テナント、ロール、ユーザー
+      displayName: 'Azure AD, Azure Active Directory'
+      href: ./concepts/tenants-users-roles.md
+    - name: Azure Marketplace のマネージド サービス オファー
+      displayName: 'azure marketplace, marketplace, managed service, private, plan'
+      href: ./concepts/managed-services-offers.md
+    - name: 推奨セキュリティ プラクティス
+      displayName: 'mfa, authentication, secure, group'
+      href: ./concepts/recommended-security-practices.md
+    - name: Cloud Solution Provider プログラムの考慮事項
+      displayName: 'csp, aobo, partner'
+      href: ./concepts/cloud-solution-provider.md
+    - name: エンタープライズ シナリオにおける Azure Lighthouse
+      displayName: 'corporation, IT, consolidate'
+      href: ./concepts/enterprise.md
+    - name: Azure Lighthouse と Azure マネージド アプリケーション
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure の委任されたリソース管理に顧客をオンボードする
+      displayName: resource management
+      href: ./how-to/onboard-customer.md
+    - name: Azure Marketplace へのマネージド サービス オファーの公開
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
+      href: ./how-to/publish-managed-services-offers.md
+    - name: 顧客を表示し、管理する
+      displayName: my customers
+      href: ./how-to/view-manage-customers.md
+    - name: 委任へのアクセスを削除する
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
+    - name: Azure Monitor の統合
+      items:
+        - name: Azure Monitor ログの大規模な使用
+          displayName: 'log, analytics, analyze, activity'
+          href: ./how-to/monitor-at-scale.md
+        - name: 委任変更の監視
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
+    - name: Azure Policy の統合
+      items:
+        - name: 大規模なポリシーのデプロイ
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: 修復できるポリシーをデプロイする
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
+    - name: 顧客のアクション
+      items:
+        - name: サービス プロバイダーを表示し、管理する
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: サービス プロバイダーのアクティビティを表示する
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services'
+    - name: Azure SDK for .NET
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet'
+    - name: Azure SDK for .NET (NuGet)
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
+    - name: Azure SDK for Python
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-managedservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/managedservices/'
+    - name: OpenAPI
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+- name: リソース
+  items:
+    - name: Azure Lighthouse 用の Microsoft Q&A
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-lighthouse.html'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: UserVoice
+      href: 'https://feedback.azure.com/forums/922753'

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: e6456c79dbce1f8bb874ce4c88b932e592235a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587805"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80244428"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
 
@@ -26,17 +26,12 @@ ms.locfileid: "56587805"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB は、Microsoft が提供するグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
-
-このクイック スタートでは、Azure portal を使用した Azure Cosmos DB [Gremlin API](graph-introduction.md) アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーを使用して、コンソール アプリを構築し実行します。
+このクイックスタートでは、Azure portal から Azure Cosmos DB の Gremlin (グラフ) API アカウントを作成して管理し、GitHub から複製された Node.js アプリを使用してデータを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
-
-このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
-* [Node.js](https://nodejs.org/en/) バージョン v0.10.29 以降
-* [Git](https://git-scm.com/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -74,81 +69,94 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
-次のスニペットはすべて app.js ファイルからのものです。
+次のスニペットはすべて *app.js* ファイルからのものです。
+
+このコンソール アプリでは、オープンソースの [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーが使用されます。
 
 * Gremlin クライアントが作成されます。
 
     ```javascript
-    const client = Gremlin.createClient(
-        443, 
+    const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(
+        `/dbs/${config.database}/colls/${config.collection}`, 
+        config.primaryKey
+    )
+
+
+    const client = new Gremlin.driver.Client(
         config.endpoint, 
         { 
-            "session": false, 
-            "ssl": true, 
-            "user": `/dbs/${config.database}/colls/${config.collection}`,
-            "password": config.primaryKey
-        });
+            authenticator,
+            traversalsource : "g",
+            rejectUnauthorized : true,
+            mimeType : "application/vnd.gremlin-v2.0+json"
+        }
+    );
+
     ```
 
-  構成はすべて、[次のセクション](#update-your-connection-string)で編集する `config.js` に含まれています。
+  構成はすべて、*config.js* に含まれています。これは[次のセクション](#update-your-connection-string)で編集します。
 
 * さまざまな Gremlin 操作を実行する一連の関数が定義されています。 その一例を次に示します。
 
     ```javascript
-    function addVertex1(callback)
+    function addVertex1()
     {
         console.log('Running Add Vertex1'); 
-        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
-          if (err) callback(console.error(err));
-          console.log("Result: %s\n", JSON.stringify(results));
-          callback(null)
-        });
+        return client.submit("g.addV(label).property('id', id).property('firstName', firstName).property('age', age).property('userid', userid).property('pk', 'pk')", {
+                label:"person",
+                id:"thomas",
+                firstName:"Thomas",
+                age:44, userid: 1
+            }).then(function (result) {
+                    console.log("Result: %s\n", JSON.stringify(result));
+            });
     }
     ```
 
 * 各関数は、Gremlin クエリ文字列パラメーターが指定された `client.execute` メソッドを実行します。 `g.V().count()` の実行方法の例を次に示します。
 
     ```javascript
-    console.log('Running Count'); 
-    client.execute("g.V().count()", { }, (err, results) => {
-        if (err) return console.error(err);
-        console.log(JSON.stringify(results));
-        console.log();
-    });
+    function countVertices()
+    {
+        console.log('Running Count');
+        return client.submit("g.V().count()", { }).then(function (result) {
+            console.log("Result: %s\n", JSON.stringify(result));
+        });
+    }
     ```
 
-* このファイルの最後で、`async.waterfall()` メソッドを使用してすべてのメソッドが呼び出されます。 すべてのメソッドは順に実行されます。
+* このファイルの最後で、すべてのメソッドが呼び出されます。 すべてのメソッドは順に実行されます。
 
     ```javascript
-    try{
-        async.waterfall([
-            dropGraph,
-            addVertex1,
-            addVertex2,
-            addEdge,
-            countVertices
-            ], finish);
-    } catch(err) {
-        console.log(err)
-    }
+    client.open()
+    .then(dropGraph)
+    .then(addVertex1)
+    .then(addVertex2)
+    .then(addEdge)
+    .then(countVertices)
+    .catch((err) => {
+        console.error("Error running query...");
+        console.error(err)
+    }).then((res) => {
+        client.close();
+        finish();
+    }).catch((err) => 
+        console.error("Fatal error:", err)
+    );
     ```
 
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
-1. config.js ファイルを開きます。 
+1. *config.js* ファイルを開きます。 
 
-2. config.js の `config.endpoint` キーに、Azure Portal の **[概要]** ページに表示される **[Gremlin URI]** の値を設定します。 
+2. *config.js* の `config.endpoint` キーに、Azure portal の Cosmos DB アカウントで **[概要]** ページに表示される **[Gremlin エンドポイント]** の値を設定します。 
 
-    `config.endpoint = "GRAPHENDPOINT";`
+    `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
+    ![Azure portal の [概要] ページでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
 
-   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、 https:// を削除し、documents を gremlin.cosmosdb に変更してください。 2017 年 12 月 20 日より前に作成したグラフ アカウントの場合は、documents を graphs に変更します。 
-
-   Gremlin エンドポイントは、`mygraphdb.gremlin.cosmosdb.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.gremlin.cosmosdb.azure.com` や `mygraphdb.gremlin.cosmosdb.azure.com:433` は不可)。
-
-3. config.js の config.primaryKey の値に、Azure Portal の **[キー]** ページに表示される **[Primary Key]\(主キー\)** の値を設定します。 
+3. *config.js* で、config.primaryKey の値として、Azure portal の Cosmos DB アカウントの **[キー]** ページから **[プライマリ キー]** の値を入力します。 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -156,13 +164,13 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 4. データベース名とグラフ (コンテナー) 名を config.database と config.collection の値として入力します。 
 
-たとえば、完成した config.js ファイルの内容は次のようになります。
+たとえば、完成した *config.js* ファイルの内容は次のようになります。
 
 ```javascript
 var config = {}
 
-// Note that this must not have HTTPS or the port number
-config.endpoint = "testgraphacct.gremlin.cosmosdb.azure.com";
+// Note that this must include the protocol (HTTPS:// for .NET SDK URI or wss:// for Gremlin Endpoint) and the port number
+config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"
@@ -172,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
-1. ターミナル ウィンドウを開き、`cd` コマンドを使用して、プロジェクトに含まれる package.json ファイルのインストール ディレクトリに移動します。
+1. ターミナル ウィンドウを開き、`cd` コマンドを使用して、プロジェクトに含まれる *package.json* ファイルのインストール ディレクトリに移動します。
 
 2. `npm install` を実行し、`gremlin`など、必要な npm モジュールをインストールします。
 
@@ -182,9 +190,9 @@ module.exports = config;
 
 ここで、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データの表示、クエリ実行、変更、使用を行うことができます。
 
-データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コンテナーの順に展開し、**[グラフ]** を選択します。
+データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コンテナーの順に展開し、 **[グラフ]** を選択します。
 
-**[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
+**[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、 **[グラフ]** タブ内にある隣のウィンドウに表示されます。
 
 試しに `g.V()` に「`.has('firstName', 'Thomas')`」と入力して、フィルターをテストします。 値の大文字と小文字が区別されることに注意してください。
 
@@ -196,9 +204,9 @@ module.exports = config;
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
+この記事では、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、Node.js アプリを実行してグラフにデータを追加する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)

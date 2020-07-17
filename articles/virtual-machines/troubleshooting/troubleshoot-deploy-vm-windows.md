@@ -4,23 +4,22 @@ description: Azure Resource Manager デプロイ モデルでの Windows 仮想�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540705"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628284"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -83,13 +82,13 @@ Enterprise Dev/Test オファーに基づいてサブスクリプションを作
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Windows N シリーズ VM のドライバーが見つかりません
 
-Windows ベースの VM 用のドライバーは、[ここ](../windows/n-series-driver-setup.md)にあります。
+Windows ベースの VM 用のドライバーのインストール手順については、[こちら](../sizes-gpu.md#supported-operating-systems-and-drivers)を参照してください。
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>N シリーズ VM 内で GPU インスタンスが見つかりません
 
-Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM に NVIDIA グラフィック ドライバーをインストールする必要があります。 [Windows VM](../windows/n-series-driver-setup.md) 用と [Linux VM](../linux/n-series-driver-setup.md) 用のドライバー セットアップ情報を利用できます。
+Azure N シリーズ VM の GPU 機能を利用するには、デプロイ後に各 VM にグラフィック ドライバーをインストールする必要があります。 ドライバーの設定情報については[こちら](../sizes-gpu.md#supported-operating-systems-and-drivers)を参照してください。
 
-## <a name="is-n-series-vms-available-in-my-region"></a>自分のリージョンで N シリーズ VM を使用できますか?
+## <a name="are-n-series-vms-available-in-my-region"></a>自分のリージョンで N シリーズ VM を使用できますか?
 
 [リージョンごとの使用可能な製品の表](https://azure.microsoft.com/regions/services)で、使用できるかどうかを確認できます。価格については、[こちら](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)を参照してください。
 
@@ -108,6 +107,8 @@ VM は、実行されている場合、物理サーバーにデプロイされ�
 
 - クラシック デプロイ モデルでデプロイされた VM の場合、VM を他のサイズ ファミリのサイズに変更するには、クラウド サービス デプロイを削除し、再デプロイする必要があります。
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 - Resource Manager デプロイ モデルでデプロイされた VM の場合は、可用性セット内の VM のサイズを変更する前に、可用性セット内のすべての VM を停止する必要があります。
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>一覧の VM サイズが、可用性セットに対するデプロイでサポートされていません。
@@ -119,7 +120,7 @@ VM は、実行されている場合、物理サーバーにデプロイされ�
 はい。 既存のクラシック VM を、新規または既存の可用性セットに追加することができます。 詳細については、「[既存の仮想マシンを可用性セットに追加する](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

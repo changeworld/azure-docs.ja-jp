@@ -9,11 +9,11 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 2684f89088854ecf05c547c77852155168baa38d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150376"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181410"
 ---
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
@@ -21,10 +21,10 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
 
 ### <a name="add-the-relay-nuget-package"></a>Relay NuGet パッケージを追加する
 
-1. 新しく作成したプロジェクトを右クリックしてから、**[NuGet パッケージの管理]** を選択します。
+1. 新しく作成したプロジェクトを右クリックしてから、 **[NuGet パッケージの管理]** を選択します。
 2. **[プレリリースを含める]** オプションを選択します。 
 3. **[参照]** を選択し、**Microsoft.Azure.Relay** を検索します。 検索結果から、"**Microsoft Azure Relay**" を選択します。
-4. バージョンには、**[2.0.0-preview1-20180523]** を選択します。 
+4. バージョンには、 **[2.0.0-preview1-20180523]** を選択します。 
 5. **[インストール]** を選択してインストールを完了します。 ダイアログ ボックスを閉じます。
 
 ### <a name="write-code-to-receive-messages"></a>メッセージを受信するコードを記述する

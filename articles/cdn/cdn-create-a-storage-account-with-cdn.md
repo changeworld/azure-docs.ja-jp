@@ -1,28 +1,28 @@
 ---
-title: クイック スタート - Azure ストレージ アカウントと Azure CDN との統合 | Microsoft Docs
+title: クイック スタート - Azure ストレージ アカウントと Azure CDN との統合
 description: Azure Content Delivery Network (CDN) を使用して、Azure Storage から BLOB をキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 35de327b4a6602bb5191157e3b3c4e56c9c091b5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193366"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81254089"
 ---
-# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート:Azure ストレージ アカウントと Azure CDN との統合
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート: Azure ストレージ アカウントと Azure CDN との統合
 このクイック スタートでは、[Azure Content Delivery Network (CDN)](cdn-overview.md) を有効にして、Azure ストレージからのコンテンツをキャッシュします。 Azure CDN では、高帯域幅コンテンツ配信用のグローバル ソリューションが開発者に提供されています。 Azure CDN は、コンピューティング インスタンスの BLOB と静的コンテンツを、米国、ヨーロッパ、アジア、オーストラリア、南アメリカの物理ノードにキャッシュできます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "57193366"
 Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-Azure サブスクリプションの新しいストレージ アカウントを作成するには、次の手順に従います。 ストレージ アカウントを使うと、Azure Storage サービスにアクセスできます。 ストレージ アカウントは、Azure Storage サービスの各コンポーネント (Azure Blob Storage、Queue Storage、Table Storage) にアクセスするための最高レベルの名前空間を表します。 詳細については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
+Azure サブスクリプションの新しいストレージ アカウントを作成するには、次の手順に従います。 ストレージ アカウントを使うと、Azure Storage サービスにアクセスできます。 ストレージ アカウントは、Azure Storage サービスの各コンポーネント (Blob Storage、Queue Storage、Table Storage) にアクセスするための最高レベルの名前空間を表します。 詳細については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
 
 ストレージ アカウントを作成するには、サービス管理者または関連付けられているサブスクリプションの共同管理者である必要があります。
 
@@ -43,7 +43,7 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
 
     **[新規]** ウィンドウが表示されます。
 
-2. **[ストレージ]**、**[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
+2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
     
     ![ストレージ リソースの選択](./media/cdn-create-a-storage-account-with-cdn/cdn-select-new-storage-account.png)
 
@@ -55,9 +55,9 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
    
     この値は、サブスクリプションの Blob リソース、Queue リソース、または Table リソースのアドレス指定に使われる URI 内のホスト名になります。 Blob Storage 内のコンテナー リソースをアドレス指定するには、次の形式の URI を使います。
    
-    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
+    http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
 
-    *&lt;StorageAccountLabel&gt;* は、**[名前]** ボックスに入力した値を示します。
+    *&lt;StorageAccountLabel&gt;* は、 **[名前]** ボックスに入力した値を示します。
    
     > [!IMPORTANT]    
     > URL ラベルは、ストレージ アカウントの URI のサブドメインになるので、Azure のすべてのホストされるサービスにおいて一意である必要があります。
@@ -66,21 +66,21 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
     
 4. 残りの設定については、次の表で指定されている値を使用します。
 
-    | Setting  | 値 |
+    | 設定  | 値 |
     | -------- | ----- |
     | **デプロイ モデル** | 既定値を使用します。 |
     | **アカウントの種類** | 既定値を使用します。 |
-    | **場所**    | ドロップダウンから **[米国中部]** を選択します。 |
+    | **Location**    | ドロップダウンから **[米国中部]** を選択します。 |
     | **レプリケーション** | 既定値を使用します。 |
     | **パフォーマンス** | 既定値を使用します。 |
     | **安全な転送が必須** | 既定値を使用します。 |
     | **サブスクリプション** | ドロップダウン リストから Azure サブスクリプションを選択します。 |
-    | **リソース グループ** | **[新規作成]** を選択し、リソース グループ名として「*my-resource-group-123*」と入力します。 この名前はグローバルに一意である必要があります。 既に使用している場合は、別の名前を入力するか、**[既存のものを使用]** を選択し、ドロップダウン リストから **[my-resource-group-123]** を選択できます。 <br />リソース グループについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md#resource-groups)」をご覧ください。| 
+    | **リソース グループ** | **[新規作成]** を選択し、リソース グループ名として「*my-resource-group-123*」と入力します。 この名前はグローバルに一意である必要があります。 既に使用している場合は、別の名前を入力するか、 **[既存のものを使用]** を選択し、ドロップダウン リストから **[my-resource-group-123]** を選択できます。 <br />リソース グループについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md#resource-groups)」をご覧ください。| 
     | **仮想ネットワークの構成** | 既定値を使用します。 |  
     
-5. ストレージ アカウントを作成後にダッシュボードに保存するには、**[ダッシュボードにピン留め]** をオンにします。
+5. ストレージ アカウントを作成後にダッシュボードに保存するには、 **[ダッシュボードにピン留め]** をオンにします。
     
-6. **作成**を選択します。 ストレージ アカウントの作成は、完了までに数分かかる場合があります。
+6. **作成** を選択します。 ストレージ アカウントの作成は、完了までに数分かかる場合があります。
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>ストレージ アカウントの Azure CDN を有効にする
 
@@ -94,14 +94,14 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
     
 2. 次の表で指定されている必要な情報を入力して、新しいエンドポイントを作成します。
 
-    | Setting  | 値 |
+    | 設定  | 値 |
     | -------- | ----- |
     | **[CDN プロファイル]** | **[新規作成]** を選択し、プロファイル名を入力します (例: *my-cdn-profile-123*)。 この名前はグローバルに一意である必要があります。  |
     | **[価格レベル]** | ドロップダウンから **[Standard Verizon]** を選択します。 |
-    | **[CDN エンドポイント名]** | エンドポイントのホスト名を入力します (例: *my-endpoint-123*)。 この名前はグローバルに一意である必要があります。 この名前は、ドメイン _&lt;エンドポイント名&gt;_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。 |
+    | **[CDN エンドポイント名]** | エンドポイントのホスト名を入力します (例: *my-endpoint-123*)。 この名前はグローバルに一意である必要があります。 この名前は、ドメイン _&lt;エンドポイント名&gt;_ .azureedge.net でキャッシュされたリソースにアクセスする際に使用します。 |
     | **配信元のホスト名** | 既定では、新しい CDN エンドポイントは、ストレージ アカウントのホスト名を配信元サーバーとして使います。 |
 
-3. **作成**を選択します。 作成されたエンドポイントが、エンドポイントの一覧に表示されます。
+3. **作成** を選択します。 作成されたエンドポイントが、エンドポイントの一覧に表示されます。
 
     ![ストレージの新しい CDN エンドポイント](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
@@ -131,20 +131,20 @@ Azure CDN にオブジェクトをキャッシュする必要がなくなった�
 
 Azure CDN に既にキャッシュされているオブジェクトは、オブジェクトの有効期限が切れるまで、またはエンドポイントが[消去](cdn-purge-endpoint.md)されるまで、キャッシュに残ったままとなります。 有効期限が切れると、Azure CDN は、CDN エンドポイントがまだ有効で、オブジェクトがまだ匿名アクセス可能かどうかを確認します。 そうではない場合、オブジェクトはキャッシュされなくなります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 前の手順では、リソース グループ内に CDN プロファイルとエンドポイントを作成しました。 [次の手順](#next-steps)に進んでエンドポイントにカスタム ドメインを追加する方法について学習するには、これらのリソースを保存してください。 ただし、将来これらのリソースを使用する予定がない場合は、次の手順に従ってリソース グループを削除してリソースを削除することで、追加の料金が発生するのを避けることができます。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]**、**[my-resource-group-123]** の順に選択します。
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** 、 **[my-resource-group-123]** の順に選択します。
 
-2. **[リソース グループ]** ページで、**[リソース グループの削除]** を選択し、テキスト ボックスに「*my-resource-group-123*」と入力し、**[削除]** を選択します。
+2. **[リソース グループ]** ページで、 **[リソース グループの削除]** を選択し、テキスト ボックスに「*my-resource-group-123*」と入力し、 **[削除]** を選択します。
 
     このアクションにより、このクイック スタートで作成したリソース グループ、プロファイル、およびエンドポイントが削除されます。
 
 3. ストレージ アカウントを削除するには、ダッシュボードからそのアカウントを選択し、上部のメニューから **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 カスタム ドメインの追加および CDN エンドポイントでの HTTPS の有効化の詳細については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする](cdn-storage-custom-domain-https.md)
+> [チュートリアル: HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする](cdn-storage-custom-domain-https.md)
 

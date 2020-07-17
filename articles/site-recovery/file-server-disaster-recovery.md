@@ -5,15 +5,15 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005203"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75980298"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -56,7 +56,7 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 
 |環境  |推奨  |考慮すべき点 |
 |---------|---------|---------|
-|ファイル サーバー環境 (DFSR あり/なし)|   [Site Recovery を使用したレプリケーション](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery では、共有ディスク クラスターとネットワーク接続ストレージ (NAS) はサポートされません。 環境でこれらの構成を使用する場合は、他の方法を適宜使用してください。 <br> Site Recovery では SMB 3.0 はサポートされません。 レプリケートされた VM にファイルの変更が反映されるのは、変更がファイルの元の場所で更新された場合だけです。
+|ファイル サーバー環境 (DFSR あり/なし)|   [Site Recovery を使用したレプリケーション](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery では、共有ディスク クラスターとネットワーク接続ストレージ (NAS) はサポートされません。 環境でこれらの構成を使用する場合は、他の方法を適宜使用してください。 <br> Site Recovery では SMB 3.0 はサポートされません。 レプリケートされた VM にファイルの変更が反映されるのは、変更がファイルの元の場所で更新された場合だけです。<br>  Site Recovery では、ほぼ同期で実行されるデータ レプリケーション プロセスが提供されます。そのため、予定外のフェールオーバーが発生した場合、データ損失と USN 不一致問題が発生する可能性があります。
 |ファイル サーバー環境 (DFSR あり)     |  [Azure IaaS 仮想マシンへの DFSR の拡張](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR は、帯域幅が極端に不足している環境でも適切に機能します。 この方法では、Azure VM を常時稼働させておく必要があります。 計画で VM のコストを考慮する必要があります。         |
 |Azure Iaas VM     |     File Sync    |     ディザスター リカバリー シナリオで File Sync を使用する場合は、フェールオーバー時に手動アクションを実行して、クライアント マシンがファイル共有に透過的にアクセスできるようにする必要があります。 File Sync では、クライアント マシンからポート 445 を開いておく必要があります。     |
 
@@ -64,16 +64,18 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 ### <a name="site-recovery-support"></a>Site Recovery のサポート
 Site Recovery レプリケーションはアプリケーションに依存しないため、ここで紹介する推奨事項は次のシナリオに適用できます。
 
-| ソース    |セカンダリ サイトへ    |Azure へ
+| source    |セカンダリ サイトへ    |Azure へ
 |---------|---------|---------|
-|Azure| -|[はい]|
-|Hyper-V|   [はい] |[はい]
-|VMware |[はい]|   [はい]
-|物理サーバー|   [はい] |[はい]
+|Azure| -|はい|
+|Hyper-V|   はい |はい
+|VMware |はい|   はい
+|物理サーバー|   はい |はい
  
 
 > [!IMPORTANT]
 > 以下の 3 つの方法のいずれかを使用する前に、次の依存関係を考慮してください。
+
+
 
 **サイト間接続**: サーバー間の通信を許可するには、オンプレミスのサイトと Azure ネットワークの間の直接接続を確立する必要があります。 ディザスター リカバリー サイトとして使用する Azure 仮想ネットワークへのセキュリティで保護されたサイト間 VPN 接続を使用します。 詳細については、[オンプレミス サイトと Azure 仮想ネットワーク間のサイト間 VPN 接続の確立](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)に関する記事をご覧ください。
 
@@ -130,7 +132,7 @@ IaaS ファイル サーバー仮想マシンにアクセスするオンプレ�
 2. オンプレミスの Active Directory を拡張します。
 3. Azure 仮想ネットワークで[ファイル サーバー VM を作成してプロビジョニング](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)します。
 オンプレミス環境とクロス接続された同じ Azure 仮想ネットワークに仮想マシンが追加されていることを確認します。 
-4. Windows Server に DFSR をインストールして[構成](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx)します。
+4. Windows Server に DFSR をインストールして[構成](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877)します。
 5. [DFS 名前空間を実装](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces)します。
 6. DFS 名前空間を実装すると、DFS 名前空間のフォルダー ターゲットを更新することで、運用サイトからディザスター リカバリー サイトへの共有フォルダーのフェールオーバーを実行できます。 Active Directory を使用して DFS 名前空間の変更がレプリケートされると、ユーザーは適切なフォルダー ターゲットに透過的に接続されます。
 

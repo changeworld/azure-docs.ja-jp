@@ -1,33 +1,27 @@
 ---
-title: Linux を実行する仮想マシンでのソフトウェア RAID の構成 | Microsoft Docs
+title: Linux VM でのソフトウェア RAID の構成
 description: mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: na
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: e773fdcb031f0f8f896ea40d76231fd54a603dc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089031"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226787"
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
 
 ## <a name="attaching-data-disks"></a>データ ディスクをアタッチする
 RAID デバイスの構成には、2 つ以上の空のデータ ディスクが必要です。  RAID デバイスを作成する主な目的は、ディスク I/O のパフォーマンスを向上させることです。  IO ニーズに応じて、Standard Storage または Premium Storage に格納されているディスクをアタッチするように選択できます。Standard Storage ではディスクあたり最大 500 IO/ps が、Premium Storage ではディスクあたり最大 5000 IO/ps が実現します。 この記事では、データ ディスクをプロビジョニングし、Linux 仮想マシンにアタッチする方法については詳しく説明しません。  Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事 「[Linux VM へのディスクの追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+
+> [!IMPORTANT]
+>異なるサイズのディスクを混在させないでください。これをすると、RAID セットのパフォーマンスが最も低速なディスクのそれに制限されます。 
 
 ## <a name="install-the-mdadm-utility"></a>mdadm ユーティリティをインストールする
 * **Ubuntu**
@@ -122,19 +116,19 @@ RAID デバイスの構成には、2 つ以上の空のデータ ディスクが
 
 1. 新しい RAID デバイスにファイル システムを作成します。
    
-    a. **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
+    **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127
     ```
    
-    b. **SLES 11**
+    **SLES 11**
 
     ```bash
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    c. **SLES 11** - boot.md を有効にし、mdadm.conf を作成します。
+    **SLES 11** - boot.md を有効にし、mdadm.conf を作成します。
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -144,7 +138,7 @@ RAID デバイスの構成には、2 つ以上の空のデータ ディスクが
    > [!NOTE]
    > SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。 SLES 12 では、この手順は必須では *ありません* 。
    > 
-   > 
+   
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>新しいファイル システムを /etc/ fstab に追加する
 > [!IMPORTANT]

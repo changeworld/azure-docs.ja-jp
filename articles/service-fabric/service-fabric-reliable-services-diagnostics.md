@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric ステートフル Reliable Services の診断 | Microsoft Docs
+title: Azure Service Fabric ステートフル Reliable Services の診断
 description: Azure Service Fabric のステートフル Reliable Services の診断機能
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236635"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
 Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
@@ -32,11 +23,11 @@ EventSource イベントの収集や表示に役立つツールとテクノロ�
 ## <a name="events"></a>events
 | イベント名 | イベント ID | Level | イベントの説明 |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |1 |情報 |サービスの RunAsync タスクが開始されたときに出力されます |
-| StatefulRunAsyncCancellation |2 |情報 |サービスの RunAsync タスクが取り消されたときに出力されます |
-| StatefulRunAsyncCompletion |3 |情報 |サービスの RunAsync タスクが完了したときに出力されます |
+| StatefulRunAsyncInvocation |1 |Informational |サービスの RunAsync タスクが開始されたときに出力されます |
+| StatefulRunAsyncCancellation |2 |Informational |サービスの RunAsync タスクが取り消されたときに出力されます |
+| StatefulRunAsyncCompletion |3 |Informational |サービスの RunAsync タスクが完了したときに出力されます |
 | StatefulRunAsyncSlowCancellation |4 |警告 |サービスの RunAsync タスクが取り消しの実行に時間がかかりすぎたときに出力されます |
-| StatefulRunAsyncFailure |5 |Error |サービスの RunAsync タスクが例外をスローしたときに出力されます |
+| StatefulRunAsyncFailure |5 |エラー |サービスの RunAsync タスクが例外をスローしたときに出力されます |
 
 ## <a name="interpret-events"></a>イベントの解釈
 StatefulRunAsyncInvocation、StatefulRunAsyncCompletion、および StatefulRunAsyncCancellation イベントは、サービスの作成者が、サービスのライフ サイクルや、サービスの開始、取り消し、または完了のタイミングを知るために役立ちます。 この情報はサービスの問題をデバッグする場合やサービスのライフ サイクルを理解する場合に役立つことがあります。
@@ -50,7 +41,7 @@ StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求�
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 Reliable Services ランタイムでは、次のパフォーマンス カウンター カテゴリを定義しています。
 
-| Category | 説明 |
+| カテゴリ | 説明 |
 | --- | --- |
 | Service Fabric トランザクション レプリケーター |Azure Service Fabric トランザクション レプリケーターに固有のカウンター |
 | Service Fabric TStore |Azure Service Fabric TStore に固有のカウンター |
@@ -82,21 +73,23 @@ Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-servi
 #### <a name="service-fabric-tstore-category"></a>Service Fabric TStore カテゴリ
 カテゴリ `Service Fabric TStore`では、カウンター インスタンス名の形式は次のようになります。
 
-`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+`ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
 *ServiceFabricPartitionId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID であり、その文字列表現は書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) を使用して生成されます。
 
 *ServiceFabricReplicaId* は、Reliable Service の特定のレプリカに関連付けられている ID です。 一意性を確保し、同じパーティションによって生成された他のパフォーマンス カウンター インスタンスと競合しないように、レプリカ ID は、パフォーマンス カウンター インスタンス名の中に組み入れられています。 Reliable Services におけるレプリカとその役割に関する詳細については、[こちら](service-fabric-concepts-replica-lifecycle.md)で確認できます。
 
-*ServiceFabricStateProviderId* は、リライアブル サービス内の状態プロバイダーと関連付けられている ID です。 状態プロバイダー ID は、TStore を別の TStore と区別するために、パフォーマンス カウンター インスタンス名に含まれています。
+*StateProviderId* は、リライアブル サービス内の状態プロバイダーと関連付けられている ID です。 状態プロバイダー ID は、TStore を別の TStore と区別するために、パフォーマンス カウンター インスタンス名の中に組み入れられています。
 
 *PerformanceCounterInstanceDifferentiator* は、状態プロバイダー内のパフォーマンス カウンター インスタンスに関連付けられた差別化 ID です。 一意性を確保し、同じ状態プロバイダーによって生成された他のパフォーマンス カウンター インスタンスと競合しないように、この差別化要素は、パフォーマンス カウンター インスタンス名の中に組み入れられています。
 
+*StateProviderName* は、リライアブル サービス内の状態プロバイダーと関連付けられている名前です。 状態プロバイダー名は、提供する状態をユーザーが簡単に識別できるように、パフォーマンス カウンターのインスタンス名の中に組み入れられています。
+
 次のカウンター インスタンス名は、`Service Fabric TStore` カテゴリ下のカウンターでは一般的です。
 
-`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-上記の例で、`00d0126d-3e36-4d68-98da-cc4f7195d85e` は Service Fabric パーティション ID の文字列表現、`131652217797162571` はレプリカ ID、`142652217797162571` は状態プロバイダー ID、`1337` はパフォーマンス カウンター インスタンスの差別化要素です。
+上記の例で、`00d0126d-3e36-4d68-98da-cc4f7195d85e` は Service Fabric パーティション ID の文字列表現、`131652217797162571` はレプリカ ID、`142652217797162571` は状態プロバイダー ID、`1337` はパフォーマンス カウンター インスタンスの差別化要素です。 `urn:MyReliableDictionary/dataStore` は、`urn:MyReliableDictionary` という名前のコレクションのデータを格納する状態プロバイダーの名前です。
 
 ### <a name="transactional-replicator-performance-counters"></a>トランザクション レプリケーター パフォーマンス カウンター
 
@@ -122,5 +115,5 @@ Reliable Services ランタイムでは、`Service Fabric TStore` カテゴリ�
 | チェックポイント ファイル書き込みバイト数/秒 | 最新のチェックポイント ファイルで 1 秒あたりに書き込まれたバイト数。|
 | コピー ディスク転送バイト数/秒 | ストア コピー中に (プライマリ レプリカ上で) 読み取られたディスク バイト数/秒と (セカンダリ レプリカ上で) 書き込まれたディスク バイト数/秒。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

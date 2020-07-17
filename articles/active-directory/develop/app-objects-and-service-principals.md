@@ -1,29 +1,24 @@
 ---
-title: Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
+title: Azure AD におけるアプリとサービス プリンシパル | Azure
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについて説明します。
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 services: active-directory
-editor: ''
-ms.assetid: adfc0569-dc91-48fe-92c3-b5b4833703de
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: a636ff15da09bcf1891618d65270376f26fd3239
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540682"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80885601"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 
@@ -83,7 +78,7 @@ Azure AD テナントによってセキュリティ保護されているリソ�
 - **Contoso** - **HR アプリ**のコンシューマーである Contoso という組織が使用するテナント
 - **Fabrikam** - Contoso と同じく **HR アプリ**のコンシューマーである Fabrikam という組織が使用するテナント
 
-![Relationship between an application object and a service principal object](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![アプリ オブジェクトとサービス プリンシパル オブジェクトの間のリレーションシップ](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 このサンプル シナリオの内容:
 
@@ -93,11 +88,11 @@ Azure AD テナントによってセキュリティ保護されているリソ�
 | 2    | Contoso と Fabrikam の管理者が同意を終えると、それぞれの会社の Azure AD テナント内にサービス プリンシパル オブジェクトが作成され、それに管理者が付与したアクセス許可が割り当てられます。 HR アプリは、個々のユーザー用として、ユーザーによる同意を許可するように構成/設計することができる点にも注目してください。 |
 | 3    | HR アプリケーション (Contoso と Fabrikam) のコンシューマー テナントにそれぞれ独自のサービス プリンシパル オブジェクトが作成されます。 それぞれ実行時におけるアプリケーションのインスタンスの使用を表し、それぞれの管理者によって同意されたアクセス許可によって管理されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用して、アプリケーションとサービス プリンシパル オブジェクトの両方を照会できます。
-- Microsoft Graph API、[Azure portal][AZURE-Portal] のアプリケーション マニフェスト エディター、[Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を使用して、OData [Application エンティティ][MS-Graph-App-Entity]によって表されるアプリケーションのアプリケーション オブジェクトにアクセスできます。
-- Microsoft Graph API または [Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を通じて、OData [ServicePrincipal エンティティ][MS-Graph-Sp-Entity]によって表されるアプリケーションのサービス プリンシパル オブジェクトにアクセスできます。
+- Microsoft Graph API、[Azure portal][AZURE-Portal] のアプリケーション マニフェスト エディター、[Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を使用して、その OData [Application エンティティ][MS-Graph-App-Entity]によって表されるアプリケーションのアプリケーション オブジェクトにアクセスできます。
+- Microsoft Graph API または [Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を通じて、その OData [ServicePrincipal エンティティ][MS-Graph-Sp-Entity]によって表されるアプリケーションのサービス プリンシパル オブジェクトにアクセスできます。
 
 <!--Image references-->
 

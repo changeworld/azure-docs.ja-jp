@@ -1,5 +1,5 @@
 ---
-title: VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft Docs
+title: VM のプライベート IP アドレスの構成 - Azure CLI
 description: Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -15,22 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681405"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78199480"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
-[!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
-
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-この記事では、Resource Manager デプロイ モデルについて説明します。 [クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-cli.md)こともできます。
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -70,9 +65,9 @@ ms.locfileid: "64681405"
     }
     ```
 
-   * `--resource-group`:パブリック IP の作成場所となるリソース グループの名前。
-   * `--name`:パブリック IP の名前です。
-   * `--location`:パブリック IP を作成する Azure リージョン。
+   * `--resource-group`: パブリック IP の作成場所となるリソース グループの名前。
+   * `--name`: パブリック IP の名前。
+   * `--location`: パブリック IP を作成する Azure リージョン。
 
 3. [az network nic create](/cli/azure/network/nic) コマンドを実行し、静的プライベート IP を使用して NIC を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。 
    
@@ -122,9 +117,9 @@ ms.locfileid: "64681405"
     
     パラメーター:
 
-    * `--private-ip-address`:NIC の静的プライベート IP アドレスです。
-    * `--vnet-name`:NIC を作成する VNet の名前です。
-    * `--subnet`:NIC を作成するためのサブネットの名前です。
+    * `--private-ip-address`: NIC の静的プライベート IP アドレスです。
+    * `--vnet-name`: NIC を作成する VNet の名前です。
+    * `--subnet`: NIC を作成するためのサブネットの名前です。
 
 4. [azure vm create](/cli/azure/vm/nic) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
    
@@ -156,7 +151,7 @@ ms.locfileid: "64681405"
    
    基本的な [az vm create](/cli/azure/vm) パラメーター以外のパラメーター。
 
-   * `--nics`:VM が接続されている NIC の名前です。
+   * `--nics`: VM が接続されている NIC の名前。
    
 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 
@@ -197,7 +192,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する
 
-Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プライベート IP アドレスを削除することはできません。 前提条件は、以下のとおりです。
+Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プライベート IP アドレスを削除することはできません。 次の手順が必要です。
 - 動的 IP を使用した新しい NIC の作成
 - 新しく作成された NIC の VM に NIC を設定します。 
 
@@ -251,7 +246,7 @@ Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プ
 2. **azure vm set** コマンドを実行し、VM によって使用される NIC を変更します。
    
     ```azurecli
-    azure vm set -g TestRG -n DNS01 -N TestNIC2
+   az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
     ```
 
     予想される出力:
@@ -269,6 +264,6 @@ Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プ
     > [!NOTE]
     > VM が複数の NIC を持つのに十分な大きさである場合、**azure network nic delete** コマンドを実行して、古い NIC を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [IP アドレス設定](virtual-network-network-interface-addresses.md)の管理について学習します。

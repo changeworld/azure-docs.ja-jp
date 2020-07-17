@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526590"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70073424"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
@@ -42,7 +41,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 ### <a name="subscriptions-for-a-product"></a>製品のサブスクリプション
 
-従来、API Management のサブスクリプションは、常に 1 つの [API 製品](api-management-terminology.md)の範囲に関連付けられていました。 開発者は、開発者ポータルで製品の一覧を確認していました。 その後、使用する製品のサブスクリプション要求を送信します。 サブスクリプション要求が (自動的にまたは API の公開元によって) 承認されると、開発者はそのキーを使用して製品内のすべての API にアクセスできます。
+従来、API Management のサブスクリプションは、常に 1 つの [API 製品](api-management-terminology.md)の範囲に関連付けられていました。 開発者は、開発者ポータルで製品の一覧を確認していました。 その後、使用する製品のサブスクリプション要求を送信します。 サブスクリプション要求が (自動的にまたは API の公開元によって) 承認されると、開発者はそのキーを使用して製品内のすべての API にアクセスできます。現時点では、製品をスコープとするサブスクリプションは、開発者ポータルのユーザー プロファイルセクションにのみ表示されます。 
 
 ![製品のサブスクリプション](./media/api-management-subscriptions/product-subscription.png)
 
@@ -60,7 +59,7 @@ API Management の[従量課金](https://aka.ms/apimconsumptionblog)レベルの
 
     ![柔軟なサブスクリプション](./media/api-management-subscriptions/flexible-subscription.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 API Management の詳細情報:
 
 + API Management の他の[概念](api-management-terminology.md)を確認します。

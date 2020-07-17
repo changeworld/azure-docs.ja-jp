@@ -1,6 +1,6 @@
 ---
 title: 既存のプレーヤーを使用したコンテンツの再生 - Azure | Microsoft Docs
-description: このトピックでは、コンテンツの再生に使用できる既存のプレーヤーを示します。
+description: この記事では、コンテンツの再生に使用できる既存のプレーヤーを示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257433"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686917"
 ---
 # <a name="playing-your-content-with-existing-players"></a>既存のプレーヤーによるコンテンツの再生
 Azure Media Services は、スムーズ ストリーミング、HTTP ライブ ストリーミング、Mpeg-dash など、人気のある多くのストリーミング形式をサポートします。 このトピックでは、ストリームのテストに使用できる既存のプレーヤーを示します。
@@ -31,12 +31,13 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 いくつかの考慮事項が適用されます。
 
-* **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用します。
+* **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://aka.ms/azuremediaplayer) を使用します。
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
+
+[Azure Media Player](https://aka.ms/azuremediaplayer) を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
 
 * スムーズ ストリーミング
 * MPEG DASH
@@ -44,15 +45,13 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 * Progressive MP4
 
 ### <a name="flash-player"></a>Flash Player
-#### <a name="aes-encrypted-with-token"></a>トークンを使用した AES 暗号化
-[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
-
-### <a name="silverlight-players"></a>Silverlight Players
 
 #### <a name="playready-with-token"></a>トークンを使用した PlayReady
+
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>DASH Players
+
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
@@ -62,9 +61,6 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 * **Safari** (iOS デバイス) または
 * **3ivx HLS Player** (Windows)
-
-## <a name="developing-video-players"></a>ビデオ プレーヤーの開発
-独自のプレーヤーの開発方法については、「 [ビデオ プレーヤーの開発](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

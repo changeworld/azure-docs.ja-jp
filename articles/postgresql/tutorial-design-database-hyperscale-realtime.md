@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用したリアルタイム ダッシュボードの設計のチュートリアル
-description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) (プレビュー) で分散テーブルの作成、設定、クエリを行う方法について説明します。
+title: チュートリアル:リアルタイム ダッシュボードを設計する - Hyperscale (Citus) - Azure Database for PostgreSQL
+description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) で分散テーブルを作成、設定、クエリする方法を説明します。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791334"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76716315"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用したリアルタイム分析ダッシュボードの設計
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) を使用したリアルタイム分析ダッシュボードの設計
 
-このチュートリアルでは、Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用して、次の作業を実行する方法を説明します。
+このチュートリアルでは、Azure Database for PostgreSQL - Hyperscale (Citus) を使用して、次の作業を実行する方法を説明します。
 
 > [!div class="checklist"]
 > * Hyperscale (Citus) サーバー グループを作成する
@@ -34,7 +34,7 @@ ms.locfileid: "65791334"
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>psql ユーティリティを使用してスキーマを作成する
 
-psql を使用して Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) に接続すると、いくつかの基本的なタスクを完了することができます。 このチュートリアルでは、Web 分析からトラフィック データを取り込んでから、データをロールアップし、そのデータに基づいてリアルタイムのダッシュボードを提供する方法について説明します。
+psql を使用して Azure Database for PostgreSQL - Hyperscale (Citus) に接続すると、いくつかの基本的なタスクを完了することができます。 このチュートリアルでは、Web 分析からトラフィック データを取り込んでから、データをロールアップし、そのデータに基づいてリアルタイムのダッシュボードを提供する方法について説明します。
 
 生の Web トラフィック データをすべて使用するテーブルを作成しましょう。 psql ターミナルで次のコマンドを実行します。
 
@@ -128,7 +128,7 @@ END $$;
    > データ生成クエリを実行したままにして、このチュートリアルのその他のコマンド用に 2 つ目の psql 接続を開きます。
    >
 
-## <a name="query"></a>Query
+## <a name="query"></a>クエリ
 
 ハイパースケール ホスティング オプションを使用すると、複数のノードでクエリを並行処理して速度を上げることができます。 たとえば、データベースではワーカー ノード上で SUM や COUNT などの集計が計算され、その結果が最終的な回答にまとめられます。
 
@@ -216,13 +216,13 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 
 運用環境では、これらのクエリを関数にラップして cron ジョブで毎分呼び出すことができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの *[概要]* ページで、 *[削除]* ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の *[削除]* ボタンをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。 生のフォームで両方のデータのクエリを実行すること、そのデータを定期的に集計すること、集計されたテーブルのクエリを実行すること、古いデータを期限切れにすることを学習しました。
+このチュートリアルでは、Hyperscale (Citus) サーバー グループのプロビジョニング方法を学習しました。 そのサーバー グループに psql で接続し、スキーマを作成して、データを分散しました。 生のフォームでデータのクエリを実行すること、そのデータを定期的に集計すること、集計されたテーブルのクエリを実行すること、古いデータを期限切れにすることを学習しました。
 
 次は、ハイパースケールの概念について学習します。
 > [!div class="nextstepaction"]

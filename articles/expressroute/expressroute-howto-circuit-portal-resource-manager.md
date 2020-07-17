@@ -1,26 +1,26 @@
 ---
-title: 'ExpressRoute 回線の作成と変更 - ポータル: Azure | Microsoft Docs'
-description: ExpressRoute 回線を作成、プロビジョニング、確認、更新、削除、プロビジョニング解除します。
+title: チュートリアル - ExpressRoute を使った回線の作成と変更
+description: このチュートリアルでは、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について学習します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: cherylmc
+ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103028"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74813161"
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
+# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>チュートリアル:ExpressRoute 回線の作成と変更
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager テンプレート](expressroute-howto-circuit-resource-manager-template.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
@@ -34,9 +34,9 @@ ms.locfileid: "58103028"
 * 新しいネットワーク リソースを作成するアクセス許可があることを確認します。 適切なアクセス許可がない場合は、アカウント管理者に連絡してください。
 * 手順をより理解するため、開始する前に[ビデオを確認](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
 
-## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1.Azure ポータルにサインインします。
+### <a name="1-sign-in-to-the-azure-portal"></a>1.Azure portal にサインインする
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
@@ -45,10 +45,13 @@ ms.locfileid: "58103028"
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
 
-1. 新しいリソースを作成するオプションを選択して、ExpressRoute 回線を作成できます。 次の図に示すように、**[リソースの作成]**  >  **[ネットワーク]**  >  **[ExpressRoute]** をクリックします。
+新しいリソースを作成するオプションを選択して、ExpressRoute 回線を作成できます。 
 
-   ![ExpressRoute 回線の作成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-2. **[ExpressRoute]** をクリックすると、**[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU レベル (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 次の図に示すように、 **[ネットワーク]**  >  **[ExpressRoute]** を選択します。
+
+   ![ExpressRoute 回線の作成](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+
+2. **[ExpressRoute]** をクリックすると、 **[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU レベル (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
 
    ![SKU レベルとデータ計測方法の構成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
@@ -63,7 +66,7 @@ ms.locfileid: "58103028"
      > [!IMPORTANT]
      > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに**リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
 
-### <a name="3-view-the-circuits-and-properties"></a>手順 3.回線とプロパティを表示する
+### <a name="3-view-the-circuits-and-properties"></a>3.回線とプロパティを表示する
 
 **すべての回線を表示する**
 
@@ -115,13 +118,13 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 Resource Manager デプロイ モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
-## <a name="status"></a>ExpressRoute 回線の状態の取得
+## <a name="getting-the-status-of-an-expressroute-circuit"></a><a name="status"></a>ExpressRoute 回線の状態の取得
 
 回線を選択し、[概要] ページを表示することで回線の状態を表示できます。
 
-## <a name="modify"></a>ExpressRoute 回線の変更
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>ExpressRoute 回線の変更
 
-ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 帯域幅、SKU、課金モデルを変更し、**[構成]** ページの従来の操作を許可することができます。 制限と制約事項の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。 
+ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 帯域幅、SKU、課金モデルを変更し、 **[構成]** ページの従来の操作を許可することができます。 制限と制約事項の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
 ダウンタイムなく、次のタスクを実行できます。
 
@@ -139,16 +142,16 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 * *従来の操作の許可*を有効または無効にできます。
   > [!IMPORTANT]
   > 既存のポートの容量が不十分な場合、ExpressRoute 回線の再作成が必要になる可能性があります。 その場所に使用可能な追加の容量がない場合、回路をアップグレードすることはできません。
-  > 
+  >
   > 帯域幅はシームレスにアップグレードできますが、ExpressRoute 回線の帯域幅を中断なく減らすことはできません。 帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
-  > 
+  >
   > Standard 回線で許可されるリソースより多くのリソースを使用する場合、Premium アドオンの無効化操作が失敗することがあります。
 
-ExpressRoute 回線を変更するには、**[構成]** をクリックします。
+ExpressRoute 回線を変更するには、 **[構成]** をクリックします。
 
-![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
-## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 次の情報をメモしておきます。
 
@@ -156,7 +159,7 @@ ExpressRoute 回線を変更するには、**[構成]** をクリックします
 * ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が**プロビジョニング中**または**プロビジョニング済み**の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
 * サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が**未プロビジョニング**に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 回線を作成したら、次の手順に移ります。
 

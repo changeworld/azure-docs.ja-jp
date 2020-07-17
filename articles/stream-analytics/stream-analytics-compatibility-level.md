@@ -1,17 +1,17 @@
 ---
-title: Azure Stream Analytics ジョブの互換性レベルを理解する
+title: Azure Stream Analytics の互換性レベル
 description: Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/2/2019
-ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205454"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79087867"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -25,11 +25,9 @@ ms.locfileid: "65205454"
 
 Azure Stream Analytics では現在、次の 3 つの互換性レベルがサポートされています。
 
-* 1.0 - 以前の動作
-* 1.1 - 既定の動作
-* 1.2 (プレビュー) - 評価中の最新の改善による最新の動作
-
-元の互換性レベル 1.0 は、数年前の Azure Stream Analytics の一般公開時に導入されました。
+* 1.0 - 元の互換性レベル。数年前の Azure Stream Analytics の一般提供時に導入されました。
+* 1.1 - 以前の動作
+* 1.2 - 最近の改善による最新の動作
 
 新しい Stream Analytics ジョブを作成する場合は、最新の互換性レベルを使用して作成することをお勧めします。 その後に追加される変更や複雑さを避けるために、最新の動作に基づいてジョブの設計を開始ししてください。
 
@@ -41,17 +39,21 @@ Azure portal でジョブの互換性レベルを更新するには:
 
 1. [Azure portal](https://portal.azure.com) を使用して、Stream Analytics ジョブを見つけます。
 2. 互換性レベルを更新する前に、ジョブを**停止**します。 ジョブが実行状態の場合は、互換性レベルを更新できません。
-3. **[構成]** 見出しで、**[互換性レベル]** を選択します。
+3. **[構成]** 見出しで、 **[互換性レベル]** を選択します。
 4. 必要な互換性レベルの値を選択します。
 5. ページの下部にある **[保存]** を選択します。
 
 ![Azure portal の Stream Analytics の互換性レベル](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-互換性レベルを更新すると、T-SQL コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。
+互換性レベルを更新すると、T コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。
 
-## <a name="compatibility-level-12-preview"></a>互換性レベル 1.2 (プレビュー)
+## <a name="compatibility-level-12"></a>互換性レベル 1.2
 
 互換性レベル 1.2 では、以下の大きな変更が導入されました。
+
+###  <a name="amqp-messaging-protocol"></a>AMQP メッセージングプロトコル
+
+**1.2 レベル**:Azure Stream Analytics では [Advanced Message Queuing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) メッセージングプロトコルを使用して Service Bus キューおよびトピックに書き込みます。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。
 
 ### <a name="geospatial-functions"></a>地理空間の関数
 
@@ -81,9 +83,21 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL 出力に書き込むときの DateTimeOffset
 
-**以前のレベル:**[DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 型は、UTC に調整されました。
+**以前のレベル:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 型は、UTC に調整されました。
 
 **1.2 レベル:** DateTimeOffset は調整されなくなりました。
+
+### <a name="long-when-writing-to-sql-output"></a>SQL 出力に書き込むときの Long
+
+**以前のレベル:** 値はターゲットの型に基づいて切り捨てられました。
+
+**1.2 レベル:** ターゲットの型に適合しない値は、出力エラー ポリシーに従って処理されます。
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>SQL 出力への書き込み時のレコードと配列のシリアル化
+
+**以前のレベル:** レコードは "Record" として書き込まれ、配列は "Array" として書き込まれました。
+
+**1.2 レベル:** レコードと配列は JSON 形式でシリアル化されます。
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>関数のプレフィックスの厳密な検証
 
@@ -107,11 +121,11 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML 形式
 
-**1.0 レベル:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例: 
+**1.0 レベル:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 次に例を示します。
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 レベル:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 次に例を示します。`{ "SensorId":"1", "Temperature":64}`
+**1.1 レベル:** メッセージのコンテンツにはストリームが直接含まれていて、追加のタグは含まれていません。 例: `{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>フィールド名の大文字と小文字の区別の保持
 
@@ -134,7 +148,7 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 **1.1 レベル:** 日付/時刻/ゾーン情報を持つ文字列値を DateTime 型に自動的にアップキャストすることはなくなりました。 そのため、タイムゾーン情報は保持されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の入力をトラブルシューティングする](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics のリソース正常性](stream-analytics-resource-health.md)

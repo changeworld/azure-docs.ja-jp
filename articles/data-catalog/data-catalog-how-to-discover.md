@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b21bf1b50152130d7b6edd227c87fcaca28c1e6a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007867"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68736370"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースを検出する方法
 
@@ -60,6 +60,6 @@ Data Catalog の検索の詳細については、[Azure Data Catalog](/rest/api/
 
 Data Catalog でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースからカタログ サービスにコピーされるため、データ ソースの検出と把握が容易になります。 データ ソースを登録すると、Data Catalog ポータルでフィルター処理と検索を使用してデータ ソースの探索を行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * データ ソースの検出方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」を参照してください。

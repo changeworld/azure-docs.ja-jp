@@ -1,50 +1,49 @@
 ---
-title: Web API を呼び出すモバイル アプリ - Web API の呼び出し | Microsoft ID プラットフォーム
-description: Web API を呼び出すモバイル アプリ (Web API の呼び出し) のビルド方法について学習します
+title: モバイルアプリから Web API を呼び出す | Azure
+titleSuffix: Microsoft identity platform
+description: Web API を呼び出すモバイル アプリを構築する方法について説明します。 (Web API を呼び出す。)
 services: active-directory
-documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: dadobali
+ms.author: jmprieur
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd65b9f97c373c55a3486e06e83fca7cf824cad
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080133"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80882694"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出すモバイル アプリ - Web API の呼び出し
+# <a name="call-a-web-api-from-a-mobile-app"></a>モバイル アプリから Web API を呼び出す
 
-アプリがユーザーにサインインして、トークンを受信すると、ユーザーとその環境、および発行されたトークンに関するいくつかの情報が MSAL によって公開されます。 アプリではこれらの値が使用され、Web API を呼び出したり、ウェルカム メッセージをユーザーに表示したりすることができます。
+アプリがユーザーにサインインして、トークンを受信すると、ユーザーとユーザーの環境、および発行されたトークンに関する情報が Microsoft Authentication Library (MSAL) によって公開されます。 アプリではこれらの値が使用され、Web API を呼び出したり、ウェルカム メッセージをユーザーに表示したりすることができます。
 
-最初に、MSAL の結果について説明し、次に、`AuthenticationResult` または `result` からのアクセス トークンを使用して保護された Web API を呼び出す方法を説明します。
+この記事では、最初に MSAL の結果を確認します。 次に、`AuthenticationResult` または `result` からのアクセス トークンを使用して保護された Web API を呼び出す方法を説明します。
 
 ## <a name="msal-result"></a>MSAL の結果
+MSAL には次のような値があります。 
 
-- `AccessToken`:HTTP ベアラー要求で保護された Web API の呼び出しに使用します。
-- `IdToken`:サインインしたユーザーに関する有用な要求 (名前、ホーム テナント、ストレージの一意識別子など) が含まれます。
-- `ExpiresOn`: トークンの有効期限。 MSAL はアプリの自動更新を処理します。
-- `TenantId`:サインインに使用されるユーザーのテナントの識別子。 ゲスト ユーザー (Azure AD B2B) の場合、これはユーザーのホーム テナントではなく、ユーザーがサインインしたテナントになります。  
-- `Scopes`: トークンで付与されたスコープ。 これは要求内容のサブセットである場合があります。
+- `AccessToken` は、HTTP ベアラー要求で保護された Web API を呼び出します。
+- `IdToken` には、サインインしたユーザーに関する有用な情報が含まれています。 この情報には、ユーザー名、ホーム テナント、ストレージの一意識別子などが含まれます。
+- `ExpiresOn` はトークンの有効期限です。 MSAL は、アプリの自動更新を処理します。
+- `TenantId` は、ユーザーがサインインした場所のテナントの識別子です。 Azure Active Directory (Azure AD) B2B のゲスト ユーザーの場合、この値によって、ユーザーがサインインしたテナントが識別されます。 この値は、ユーザーのホーム テナントを識別しません。  
+- `Scopes` は、お使いのトークンで付与されたスコープを示します。 付与されたスコープは、要求したスコープのサブセットである場合があります。
 
-さらに、MSAL では `Account` の抽象化も提供されます。 アカウントは、現在のユーザーのサインインしたアカウントを表します。
+また、MSAL では `Account` 値の抽象化も提供されます。 `Account` 値は、現在のユーザーのサインインしたアカウントを表します。
 
-- `HomeAccountIdentifier`:ユーザーのホーム テナントの識別子。
-- `UserName`:ユーザーの推奨ユーザー名。 Azure AD B2C ユーザーの場合、これは空の場合があります。
-- `AccountIdentifier`:サインインしているユーザーの識別子。 ユーザーが別のテナントのゲストではない限り、ほとんどの場合、これは `HomeAccountIdentifier` と同じになります。
+- `HomeAccountIdentifier` は、ユーザーのホーム テナントの識別子を識別します。
+- `UserName` は、ユーザーの推奨ユーザー名です。 Azure AD B2C ユーザーの場合、この値は空の場合があります。
+- `AccountIdentifier` は、サインインしているユーザーを識別します。 ほとんどの場合、ユーザーが別のテナントのゲストでない限り、この値は `HomeAccountIdentifier` 値と同じです。
 
-## <a name="calling-an-api"></a>API の呼び出し
+## <a name="call-an-api"></a>API を呼び出す
 
-アクセス トークンが準備できたら、Web API を呼び出すのは簡単です。 アプリはこのトークンを取得して、HTTP 要求を構築し、それを実行します。
+アクセス トークンがあれば、Web API を呼び出すことができます。 お使いのアプリではトークンを使って HTTP 要求が作成され、実行されます。
 
 ### <a name="android"></a>Android
 
@@ -55,25 +54,25 @@ ms.locfileid: "65080133"
         try {
             parameters.put("key", "value");
         } catch (Exception e) {
-            // Error when constructing
+            // Error when constructing.
         }
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
                 parameters,new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // Successfully called graph, process data and send to UI 
+                // Successfully called Graph. Process data and send to UI.
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // Error
+                // Error.
             }
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 
-                // Put Access Token in HTTP request 
+                // Put access token in HTTP request.
                 headers.put("Authorization", "Bearer " + authResult.getAccessToken());
                 return headers;
             }
@@ -86,52 +85,79 @@ ms.locfileid: "65080133"
         queue.add(request);
 ```
 
-### <a name="ios"></a>iOS
+### <a name="msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL
+
+トークンを取得するメソッドは `MSALResult` オブジェクトを返します。 `MSALResult` は `accessToken` プロパティを公開します。 `accessToken` を使用して、Web API を呼び出すことができます。 保護された Web API にアクセスするための呼び出しを行う前に、このプロパティを HTTP Authorization ヘッダーに追加してください。
+
+```objc
+NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
+urlRequest.HTTPMethod = @"GET";
+urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
+        
+NSURLSessionDataTask *task =
+[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
+     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
+[task resume];
+```
 
 ```swift
-        let url = URL(string: kGraphURI)
-        var request = URLRequest(url: url!)
-
-        // Put Access token in HTTP Request
-        request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                self.updateLogging(text: "Couldn't get graph result: \(error)")
-                return
-            }
-            guard let result = try? JSONSerialization.jsonObject(with: data!, options: []) else {
-                self.updateLogging(text: "Couldn't deserialize result JSON")
-                return
-            }
-
-            // Successfully got data from Graph
-            self.updateLogging(text: "Result from Graph: \(result))")
-        }.resume()
+let urlRequest = NSMutableURLRequest()
+urlRequest.url = URL(string: "https://contoso.api.com")!
+urlRequest.httpMethod = "GET"
+urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
+     
+let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
+task.resume()
 ```
 
 ### <a name="xamarin"></a>Xamarin
 
-```CSharp
-httpClient = new HttpClient();
+[!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-// Put Access token in HTTP request 
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+## <a name="make-several-api-requests"></a>複数の API 要求を行う
 
-// Call Graph
-HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
-...
+同じ API を複数回呼び出す必要がある場合、または複数の API を呼び出す必要がある場合は、アプリを構築するときに、次の点を考慮してください。
+
+- **増分同意**:Microsoft ID プラットフォームでは、すべて開始時にではなく、アクセス許可が必要なときに、アプリがユーザーの同意を得られるようにしています。 アプリが API を呼び出す準備ができたら、毎回、必要なスコープのみを要求します。
+
+- **条件付きアクセス**:複数の API 要求を行うときに、特定のシナリオでは、追加の条件付きアクセスの要件を満たさなければならない場合があります。 最初の要求に条件付きアクセス ポリシーが適用されておらず、アプリが条件付きアクセスを必要とする新しい API にサイレントでアクセスしようとする場合に、要件がこのように増加することがあります。 この問題に対処するため、必ずサイレント要求からのエラーをキャッチし、対話型の要求を行えるように準備します。  詳細については、[条件付きアクセスについてのガイダンス](../azuread-dev/conditional-access-dev-guide.md)に関するページを参照してください。
+
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>増分同意と条件付きアクセスを使用して複数の API を呼び出す
+
+同じユーザーに対して複数の API を呼び出す必要がある場合、ユーザーのトークンを取得した後、続けて `AcquireTokenSilent` を呼び出してトークンを取得すれば、ユーザーに何度も資格情報の入力を求める必要がなくなります。
+
+```csharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+```
+
+対話は、次の場合に必要です。
+
+- ユーザーが最初の API については同意したが、より多くのスコープについて同意する必要が生じた。 この場合は、増分同意を使用します。
+- 最初の API は多要素認証を必要としなかったが、次の API は多要素認証を必要とする。
+
+```csharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+try
+{
+ result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+}
+catch(MsalUiRequiredException ex)
+{
+ result = await app.AcquireTokenInteractive("scopeApi2")
+                  .WithClaims(ex.Claims)
+                  .ExecuteAsync();
 }
 ```
 
-## <a name="making-several-api-requests"></a>複数の API 要求を行う
-
-同じ API を複数回、または複数の API を呼び出す必要がある場合は、アプリをビルドするときに追加の考慮事項があります。
-
-- ***増分同意***:Microsoft ID プラットフォームでは、すべて事前にではなく、必要に応じて、アプリがユーザーの同意をアクセス許可として得られるようにしています。 アプリが API を呼び出す準備ができたら、毎回、使用する予定のスコープのみを要求します。
-- ***条件付きアクセス***:特定のシナリオでは、複数の API 要求を行うときに、追加の条件付きアクセスの要件が課される場合があります。 このシナリオを処理するため、必ずサイレント要求からのエラーをキャッチし、対話型の要求を行えるように準備します。 これは、最初の要求に条件付きアクセス ポリシーが適用されておらず、アプリが条件付きアクセスを必要とする新しい API にサイレントでアクセスしようとする場合に発生することがあります。 詳細については、[条件付きアクセスについてのガイダンス](conditional-access-dev-guide.md)のページを参照してください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [運用環境に移行する](scenario-mobile-production.md)
+> [運用環境への移行](scenario-mobile-production.md)

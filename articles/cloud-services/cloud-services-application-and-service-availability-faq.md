@@ -1,26 +1,26 @@
 ---
-title: Microsoft Azure Cloud Services のアプリケーションとサービスの可用性の問題についてよくあるご質問 | Microsoft Docs
+title: アプリケーションとサービスの可用性の問題に関する FAQ
+titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services のアプリケーションとサービスの可用性についてよくあるご質問を紹介します。
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547641"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75386920"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のアプリケーションとサービスの可用性の問題:よく寄せられる質問 (FAQ)
 

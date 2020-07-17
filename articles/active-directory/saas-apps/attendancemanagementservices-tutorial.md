@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Attendance Management Services の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Attendance Management Services の統合 | Microsoft Docs'
 description: Azure Active Directory と Attendance Management Services の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9449e196a59fa20288bca9d4401c5e56a97b86cd
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7143d0afce7a3644286703a9eba0da1ee45305f2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901222"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67106559"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル:Azure Active Directory と Attendance Management Services の統合
+# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル: Azure Active Directory と Attendance Management Services の統合
 
 このチュートリアルでは、Attendance Management Services と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Attendance Management Services と Azure AD の統合には、次の利点があります。
@@ -52,7 +52,7 @@ Attendance Management Services と Azure AD の統合を構成するには、次
 
 Azure AD への Attendance Management Services の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Attendance Management Services を追加する必要があります。
 
-**ギャラリーから Attendance Management Services を追加するには、次の手順を実行します:** 
+**ギャラリーから Attendance Management Services を追加するには、次の手順を実行します:**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 

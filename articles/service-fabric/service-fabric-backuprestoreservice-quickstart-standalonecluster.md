@@ -1,27 +1,18 @@
 ---
-title: Azure Service Fabric での定期的なバックアップと復元 | Microsoft Docs
+title: スタンドアロン Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAADBCAB-F0CF-4CBC-B663-4A6DCCB4DEE1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 154efffcb1f86907fefecc060419c1d9450470f8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237336"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75526245"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元
+# <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>標準的な Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
 > * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -54,7 +45,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 - バックアップの保有期間を管理する (予定)
 
 ## <a name="prerequisites"></a>前提条件
-* Service Fabric のバージョンが 6.2 以降の Fabric クラスター。 クラスターは、Windows Server 上に設定されている必要があります。 必要なパッケージのダウンロード手順については、この[記事](service-fabric-cluster-creation-for-windows-server.md)を参照してください。
+* Service Fabric のバージョンが 6.4 以降の Fabric クラスター。 必要なパッケージのダウンロード手順については、この[記事](service-fabric-cluster-creation-for-windows-server.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得するか自己署名証明書を作成する方法については、[こちらの記事](service-fabric-windows-cluster-x509-security.md)を参照してください。
 
 * Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 Net Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
@@ -117,6 +108,8 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 
 4. 上記の変更でクラスター構成ファイルを更新したら、その変更を適用してデプロイ/アップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
 
+
+
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化
 Reliable Stateful サービスと Reliable Actors の定期バックアップを有効にする手順について説明します。 これらの手順は、以下を前提としています。
 - クラスターが "_バックアップと復元サービス_" で設定されている。
@@ -170,6 +163,16 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+
+1. Service Fabric Explorer で、[バックアップ] タブに移動し、[アクション] > [バックアップ ポリシーの作成] の順に選択します。
+
+    ![バックアップ ポリシーの作成][6]
+
+2. 情報を入力します。 スタンドアロン クラスターの場合は、FileShare を選択する必要があります。
+
+    ![バックアップ ポリシー FileShare を作成する][7]
+
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすポリシーを定義した後、バックアップ ポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
@@ -193,6 +196,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+
+1. アプリケーションを選択し、アクションを実行します。 [Enable/Update Application Backup]\(アプリケーションのバックアップを有効化/更新する\) をクリックします。
+
+    ![アプリケーションのバックアップの有効化][3] 
+
+2. 最後に希望のポリシーを選択して、[バックアップの有効化] をクリックします。
+
+    ![ポリシーの選択][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>定期バックアップが動作していることを確認する
 
@@ -263,13 +276,23 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+
+Service Fabric Explorer でバックアップを表示するには、パーティションに移動し、[バックアップ] タブを選択します。
+
+![バックアップの列挙][5]
+
 ## <a name="limitation-caveats"></a>制限事項/注意事項
 - Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent.png
-
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/create-bp-fileshare.png

@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリからのグラフと図の作成 | Microsoft Docs
 description: ログ データをさまざまな方法で表示するための、Azure Monitor の多様な視覚化について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 08/16/2018
+ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269418"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670323"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Azure Monitor ログ クエリからのグラフと図の作成
 
@@ -42,7 +35,7 @@ Heartbeat
 
 ![テーブル](media/charts/table-display.png)
 
-より見やすくするために、**[グラフ]**、**[円]** オプションの順に選択し、結果を視覚化します。
+より見やすくするために、 **[グラフ]** 、 **[円]** オプションの順に選択し、結果を視覚化します。
 
 ![円グラフ](media/charts/charts-and-diagrams-pie.png)
 
@@ -92,7 +85,7 @@ SecurityEvent
 
 ![棒グラフ AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

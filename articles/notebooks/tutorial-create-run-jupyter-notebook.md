@@ -1,24 +1,14 @@
 ---
-title: チュートリアル - Azure で Jupyter ノートブックを作成して実行する
-description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebook で作成して実行する方法です。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: チュートリアル - Jupyter ノートブックを作成して実行する - Azure Notebooks プレビュー
+description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebooks で作成して実行する方法を説明します。
+ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: kraigb
-ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258536"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75660819"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 
@@ -26,24 +16,35 @@ ms.locfileid: "59258536"
 
 完成したノートブックは、[GitHub の Azure Notebook サンプル](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)にありあます。 ただし、このチュートリアルでは、新しいプロジェクトと空のノートブックで始めるので、作成する手順を経験できます。
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * いくつかのサンプル データを含むプロジェクト ノートブックを作成する
+> * ノートブック インターフェイスを使用してさまざまな種類のセルを作成する
+> * ノートブックを実行する
+> * ノートブックを保存する
+> * Visual Studio Code でノートブックをデバッグする
+
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
 1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
-1. **[マイ プロジェクト]** ページで、**[+ 新しいプロジェクト]** (キーボード ショートカット: N) を選択します。ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
+1. **[マイ プロジェクト]** ページで、 **[+ 新しいプロジェクト]** (キーボード ショートカット: N) を選択します。ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
 
     ![[マイ プロジェクト] ページの [新しいプロジェクト] コマンド](media/quickstarts/new-project-command.png)
 
-1. 表示される **[新しいプロジェクトの作成]** ポップアップで、次の詳細を入力または設定した後、**[作成]** を選択します。
+1. 表示される **[新しいプロジェクトの作成]** ポップアップで、次の詳細を入力または設定した後、 **[作成]** を選択します。
 
-    - **[プロジェクト名]**:Linear Regression Example - Cricket Chirps
-    - **[プロジェクト ID]**: linear-regression-example
-    - **[Public project]\(パブリック プロジェクト\)**: (オフ)
-    - **[Create a README.md]\(README.md を作成する\)**: (オフ)
+   - **[プロジェクト名]** :Linear Regression Example - Cricket Chirps
+   - **[プロジェクト ID]** : linear-regression-example
+   - **[Public project]\(パブリック プロジェクト\)** : (オフ)
+   - **[Create a README.md]\(README.md を作成する\)** : (オフ)
 
 1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。
 
@@ -53,8 +54,8 @@ ms.locfileid: "59258536"
 
 ### <a name="upload-the-data-file"></a>データ ファイルをアップロードする
 
-1. Azure Notebooks のプロジェクト ダッシュボードで、**[Upload]\(アップロード\)** > **[From URL]\(URL から\)** を選択します
-1. ポップアップで、次の URL を **[File URL]\(ファイルの URL\)** に入力し、**[File Name]\(ファイル名\)** に「*cricket_chirps.csv*」と入力して、**[Done]\(完了\)** を選択します。
+1. Azure Notebooks のプロジェクト ダッシュボードで、 **[Upload]\(アップロード\)**  >  **[From URL]\(URL から\)** を選択します
+1. ポップアップで、次の URL を **[File URL]\(ファイルの URL\)** に入力し、 **[File Name]\(ファイル名\)** に「*cricket_chirps.csv*」と入力して、 **[Done]\(完了\)** を選択します。
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
@@ -66,9 +67,9 @@ ms.locfileid: "59258536"
 
 ### <a name="create-a-file-from-scratch"></a>ファイルを最初から作成する
 
-1. Azure Notebooks のプロジェクト ダッシュボードで、**[+ New]\(+ 新規作成\)** > **[Blank File]\(空のファイル\)** を選択します
+1. Azure Notebooks のプロジェクト ダッシュボードで、 **[+ New]\(+ 新規作成\)**  >  **[Blank File]\(空のファイル\)** を選択します
 1. プロジェクトのファイル一覧にフィールドが表示されます。 「*cricket_chirps.csv*」と入力して Enter キーを押します。
-1. *cricket_chirps.csv* を右クリックして、**[Edit File]\(ファイルの編集\)** を選択します。
+1. *cricket_chirps.csv* を右クリックして、 **[Edit File]\(ファイルの編集\)** を選択します。
 1. 表示されるエディターで、次のデータを入力します。
 
     ```csv
@@ -107,11 +108,11 @@ ms.locfileid: "59258536"
 
     その方がよければ、「[データ ファイルをアップロードする](#upload-the-data-file)」で説明されているように、ローカル コンピューターから `requirements.txt` ファイルをアップロードすることもできます。
 
-1. プロジェクト ダッシュボードで、**[Project Settings]\(プロジェクトの設定\)** を選択します。
-1. 表示されるポップアップで、**[Environment]\(環境\)** タブを選択し、**[+Add]\(+ 追加\)** を選択します。
+1. プロジェクト ダッシュボードで、 **[Project Settings]\(プロジェクトの設定\)** を選択します。
+1. 表示されるポップアップで、 **[Environment]\(環境\)** タブを選択し、 **[+Add]\(+ 追加\)** を選択します。
 1. **[Environment Setup Steps]\(環境のセットアップ手順\)** の最初のドロップダウン コントロール (操作) で、**Requirements.txt** を選択します。
 1. 2 番目のドロップダウン コントロール (ファイル名) で、*requirements.txt* (作成したファイル) を選択します。
-1. 3 番目のドロップダウン コントロール (Python のバージョン) で、**[Python Version 3.6]\(Python バージョン 3.6\)** を選択します。
+1. 3 番目のドロップダウン コントロール (Python のバージョン) で、 **[Python Version 3.6]\(Python バージョン 3.6\)** を選択します。
 1. **[保存]** を選択します。
 
 ![[Project Settings]\(プロジェクトの設定\) の [Environment]\(環境\) タブでの requirements.txt ファイルの指定](media/tutorial/tutorial-requirements-txt.png)
@@ -122,8 +123,8 @@ ms.locfileid: "59258536"
 
 データ ファイルを準備してプロジェクトの環境を設定したら、ノートブックを作成して開くことができます。
 
-1. プロジェクト ダッシュボードで、**[+ New]\(+ 新規作成\)** > **[Notebook]\(ノートブック\)** を選択します。
-1. ポップアップで、**[Item Name]\(アイテム名\)** に「*Linear Regression Example - Cricket Chirps.ipynb*」と入力し、言語で **[Python 3.6]** を選択して、**[New]\(新規作成\)** を選択します。
+1. プロジェクト ダッシュボードで、 **[+ New]\(+ 新規作成\)**  >  **[Notebook]\(ノートブック\)** を選択します。
+1. ポップアップで、 **[Item Name]\(アイテム名\)** に「*Linear Regression Example - Cricket Chirps.ipynb*」と入力し、言語で **[Python 3.6]** を選択して、 **[New]\(新規作成\)** を選択します。
 1. ファイルの一覧に新しいノートブックが表示されたら、それを選択してノートブックを開始します。 ブラウザーに新しいタブが自動的に開きます。
 1. 環境設定に *requirements.txt* ファイルがあるので、"Waiting for your container to finish being prepared" (コンテナーの準備が完了するのを待っています) というメッセージが表示されます。 **[OK]** を選択してメッセージを閉じ、ノートブックでの作業を継続できます。ただし、環境が完全に設定されるまで、コード セルを実行することはできません。
 1. 既定で空のコード セルが 1 つ含まれるノートブックが、Jupyter のインターフェイスで開きます。
@@ -132,7 +133,7 @@ ms.locfileid: "59258536"
 
 ## <a name="tour-the-notebook-interface"></a>Notebook のインターフェイスをツアーする
 
-ノートブックが実行されていると、コード セルや Markdown セルを追加し、それらのセルを実行し、ノートブックの動作を管理することができます。 ただし、最初に少し時間を取ってインターフェイスに慣れておくと役に立ちます。 完全なドキュメントで、**[Help]\(ヘルプ\)** > **[Notebook Help]\(Notebook ヘルプ\)** メニュー コマンドを選択します。
+ノートブックが実行されていると、コード セルや Markdown セルを追加し、それらのセルを実行し、ノートブックの動作を管理することができます。 ただし、最初に少し時間を取ってインターフェイスに慣れておくと役に立ちます。 完全なドキュメントで、 **[Help]\(ヘルプ\)**  >  **[Notebook Help]\(Notebook ヘルプ\)** メニュー コマンドを選択します。
 
 ウィンドウの上部には次の項目が表示されています。
 
@@ -146,21 +147,21 @@ ms.locfileid: "59258536"
 
 [![Jupyter インターフェイスの主な UI 領域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
-Jupyter では、主な UI 要素の組み込みツアーが提供されています。 ツアーを始めるには、**[Help]\(ヘルプ\)** > **[User Interface Tour]\(ユーザー インターフェイス ツアー\)** コマンドを選択し、ポップアップをクリックします。
+Jupyter では、主な UI 要素の組み込みツアーが提供されています。 ツアーを始めるには、 **[Help]\(ヘルプ\)**  >  **[User Interface Tour]\(ユーザー インターフェイス ツアー\)** コマンドを選択し、ポップアップをクリックします。
 
 メニュー コマンドのグループは次のとおりです。
 
 | メニュー | 説明 |
 | --- | --- |
 | ファイル | ノートブック ファイルを管理するコマンドです。ノートブックの作成とコピー、印刷プレビューの表示、さまざまな形式でのノートブックのダウンロードなどのコマンドが含まれます。 |
-| Edit | セルの切り取り、コピー、貼り付け、値の検索と置換、セルの添付の管理、イメージの挿入など、一般的なコマンドです。  |
+| [編集] | セルの切り取り、コピー、貼り付け、値の検索と置換、セルの添付の管理、イメージの挿入など、一般的なコマンドです。  |
 | 表示 | Jupyter UI のさまざまな部分の表示を制御するコマンドです。 |
 | 挿入 | 現在のセルの上または下に新しいセルを挿入するコマンドです。 ノートブックを作成するときは、これらのコマンドを頻繁に使用します。 |
-| Cell (セル) | さまざまな **[Run]\(実行\)** コマンドでは、1 つまたは複数のセルをさまざまな組み合わせで実行します。 **[Cell Type]\(セルの種類\)** コマンドでは、セルの種類を **[Code]\(コード\)**、**[Markdown]**、**[Raw NBConvert]\(生 NBConvert\)** (プレーン テキスト) の間で変更します。 **[Current Outputs]\(現在の出力\)** と **[All Outputs]\(すべて出力\)** コマンドでは実行コードからの出力の表示方法を制御し、すべての出力をクリアするコマンドが含まれます。 |
-| Kernel (カーネル) | カーネルでのコードの実行方法を管理するコマンドです。**[Change kernel]\(カーネルの変更\)** では、ノートブックの実行に使用される言語または Python バージョンを変更します。 |
-| データ | プロジェクトまたはセッションからファイルをアップロードおよびダウンロードするコマンドです。 [プロジェクト データ ファイルの操作](work-with-project-data-files.md)に関する記事をご覧ください |
+| Cell (セル) | さまざまな **[Run]\(実行\)** コマンドでは、1 つまたは複数のセルをさまざまな組み合わせで実行します。 **[Cell Type]\(セルの種類\)** コマンドでは、セルの種類を **[Code]\(コード\)** 、 **[Markdown]** 、 **[Raw NBConvert]\(生 NBConvert\)** (プレーン テキスト) の間で変更します。 **[Current Outputs]\(現在の出力\)** と **[All Outputs]\(すべて出力\)** コマンドでは実行コードからの出力の表示方法を制御し、すべての出力をクリアするコマンドが含まれます。 |
+| カーネル | カーネルでのコードの実行方法を管理するコマンドです。 **[Change kernel]\(カーネルの変更\)** では、ノートブックの実行に使用される言語または Python バージョンを変更します。 |
+| Data | プロジェクトまたはセッションからファイルをアップロードおよびダウンロードするコマンドです。 [プロジェクト データ ファイルの操作](work-with-project-data-files.md)に関する記事をご覧ください |
 | Widgets (ウィジェット) | [Jupyter のウィジェット](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)を管理するコマンドです。視覚化、マッピング、プロットに関する追加機能が提供されます。|
-| [Help] | Jupyter インターフェイスのヘルプとドキュメントを提供するコマンドです。 |
+| Help | Jupyter インターフェイスのヘルプとドキュメントを提供するコマンドです。 |
 
 ツール バーのほとんどのコマンドには、対応するメニュー コマンドがあります。 1 つの例外は **[Enter/Edit RISE Slideshow]\(RISE スライドショーの入力/編集\)** で、[ノートブックの共有と提供](present-jupyter-notebooks-slideshow.md)に関するページで説明されています。
 
@@ -172,7 +173,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
     ![ツール バーのセルの種類ドロップダウン](media/tutorial/tutorial-cell-type-drop-down.png)
 
-1. ツール バーのドロップダウンを使用して、セルの種類を **[Markdown]** に変更します。または、**[Cell]\(セル\)** > **[Cell Type]\(セルの種類\)** > **[Markdown]** メニュー コマンドを使用します。
+1. ツール バーのドロップダウンを使用して、セルの種類を **[Markdown]** に変更します。または、 **[Cell]\(セル\)**  >  **[Cell Type]\(セルの種類\)**  >  **[Markdown]** メニュー コマンドを使用します。
 
     ![セルの種類のメニュー コマンド](media/tutorial/tutorial-cell-type-menu.png)
 
@@ -197,7 +198,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
     When you run a code cell, Jupyter executes the code; when you run a Markdown cell, Jupyter renders all the formatting into text that's suitable for presentation.
     ```
 
-1. Markdown をブラウザーの HTML にレンダリングするには、ツール バーの **[Run]\(実行\)** コマンドを選択するか、または **[Cell]\(セル\)** > **[Run Cells]\(セルの実行\)** コマンドを使用します。 書式設定とリンクのための Markdown コードが、ブラウザーに期待どおりに表示されます。
+1. Markdown をブラウザーの HTML にレンダリングするには、ツール バーの **[Run]\(実行\)** コマンドを選択するか、または **[Cell]\(セル\)**  >  **[Run Cells]\(セルの実行\)** コマンドを使用します。 書式設定とリンクのための Markdown コードが、ブラウザーに期待どおりに表示されます。
 
 1. ノートブックで最後のセルを実行すると、実行したセルの下に新しいセルが自動的に作成されます。 このセクションの手順を繰り返し、次の Markdown を使用して、このセルにさらに Markdown を配置します。
 
@@ -219,7 +220,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 前の Markdown のセルで説明したように、ノートブックにコマンドを直接含めることができます。 コマンドを使用して、パッケージのインストール、データを取得するための curl または wget の実行、その他を行うことができます。 Jupyter Notebook は Linux 仮想マシン内で実質的に実行されるので、完全な Linux コマンド セットを使用できます。
 
-1. 前の Markdown セルで **[Run]\(実行\)** を使用した後に表示されるコード セルに、次のコマンドを入力します。 新しいセルが表示されない場合は、**[Insert]\(挿入\)** > **[Insert Cell Below]\(下にセルを挿入\)** またはツール バーの **[+]** ボタンを使用して、セルを作成します。
+1. 前の Markdown セルで **[Run]\(実行\)** を使用した後に表示されるコード セルに、次のコマンドを入力します。 新しいセルが表示されない場合は、 **[Insert]\(挿入\)**  >  **[Insert Cell Below]\(下にセルを挿入\)** またはツール バーの **[+]** ボタンを使用して、セルを作成します。
 
     ```bash
     !pip install numpy
@@ -234,11 +235,11 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
     Note that when you run a code block that contains install commands, and also those with `import` statements, it make take the notebooks a little time to complete the task. To the left of the code block you see `In [*]` to indicate that execution is happening. The Notebook's kernel on the upper right also shows a filled-in circle to indicate "busy."
     ```
 
-1. **[Cell]\(セル\)** > **[Run All]\(すべて実行\)** コマンドを選択して、ノートブックのすべてのセルを実行します。 Markdown のセルが HTML としてレンダリングされ、コマンドがカーネルで実行され、Markdown 自体で記述されているようにカーネル インジケーターが表示されることに注意してください。
+1. **[Cell]\(セル\)**  >  **[Run All]\(すべて実行\)** コマンドを選択して、ノートブックのすべてのセルを実行します。 Markdown のセルが HTML としてレンダリングされ、コマンドがカーネルで実行され、Markdown 自体で記述されているようにカーネル インジケーターが表示されることに注意してください。
 
     ![ノートブック カーネルのビジー状態インジケーター](media/tutorial/tutorial-kernel-busy.png)
 
-1. すべての `pip install` コマンドの実行には少し時間がかかります。プロジェクト環境にはこれらのパッケージが既にインストールされているため (そして、それらは Azure Notebooks にも既定で含まれるため)、"Requirement already satisfied" (要件は既に満たされています) というメッセージが何回も表示されます。 その出力はすべて視覚的な混乱を招く可能性があるので、そのセルを選択し (シングル クリックを使用)、**[Cell]\(セル\)** > **[Cell Outputs]\(セルの出力\)** > **[Toggle]\(切り替え\)** を使用して、出力を非表示にします。 その同じサブメニューの **[Clear]\(クリア\)** コマンドを使用して、出力を完全に削除することもできます。
+1. すべての `pip install` コマンドの実行には少し時間がかかります。プロジェクト環境にはこれらのパッケージが既にインストールされているため (そして、それらは Azure Notebooks にも既定で含まれるため)、"Requirement already satisfied" (要件は既に満たされています) というメッセージが何回も表示されます。 その出力はすべて視覚的な混乱を招く可能性があるので、そのセルを選択し (シングル クリックを使用)、 **[Cell]\(セル\)**  >  **[Cell Outputs]\(セルの出力\)**  >  **[Toggle]\(切り替え\)** を使用して、出力を非表示にします。 その同じサブメニューの **[Clear]\(クリア\)** コマンドを使用して、出力を完全に削除することもできます。
 
     **[Toggle]\(切り替え\)** コマンドでは、セルから最新の出力だけが非表示になります。セルをもう一度実行すると、出力が再び表示されます。
 
@@ -257,7 +258,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 各セルを作成した後まで待ってからノートブックを実行することもできますが、各セルを作成しながら実行するという興味深い方法もあります。 すべてのセルで出力が表示されるわけではありません。エラーが何も表示されなければ、セルは正常に実行されたものと見なされます。
 
-各コード セルは、それより前のセルで実行されたコードに依存し、1 つのセルの実行を忘れると、以降のセルでエラーが発生する可能性があります。 セルの実行を忘れたことがわかった場合は、現在のセルを実行する前に **[Cell]\(セル\)** > **[Run All Above]\(上のすべてを実行\)** を使用してみます。
+各コード セルは、それより前のセルで実行されたコードに依存し、1 つのセルの実行を忘れると、以降のセルでエラーが発生する可能性があります。 セルの実行を忘れたことがわかった場合は、現在のセルを実行する前に **[Cell]\(セル\)**  >  **[Run All Above]\(上のすべてを実行\)** を使用してみます。
 
 予期しない結果が表示される場合は (きっとそうなります)、各セルが必要に応じて "コード" または "Markdown" に設定されていることを確認します。 たとえば、"Invalid syntax" (構文が無効です) エラーは、通常、コード セルに Markdown を入力したときに発生します。
 
@@ -307,7 +308,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
     With two independent variables you can imagine a three-dimensional plot with a line fitted to the data. At three or more independent variables, however, it's no longer easy to visualize the fit, but you get the idea. In the end, it's all just mathematics, which a computer can handle easily without having to form a mental picture!
 
-    The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept`).
+    The regressor's `fit` method here creates the line, which algebraically is of the form `y = x*b1 + b0`, where b1 is the coefficient or slope of the line (which you can get to through `regressor.coef_`), and b0 is the intercept of the line at x=0 (which you can get to through `regressor.intercept_`).
     ```
 
 1. コード セル: このセルを実行すると、`LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,normalize=False)` という出力が表示されます。
@@ -326,7 +327,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
     With the regressor in hand, we can predict the test set results using its `predict` method. That method takes a vector of independent variables for which you want predictions.
 
-    Because the regressor is fit to the data by virtue of `coef_` and `intercept_` and `coef_`, a prediction is the result of `coef_ * x + intercept_`. (Indeed, `predict(0)` returns `intercept_` and `predict(1)` returns `intercept_ + coef_`.)
+    Because the regressor is fit to the data by virtue of `coef_` and `intercept_`, a prediction is the result of `coef_ * x + intercept_`. (Indeed, `predict(0)` returns `intercept_` and `predict(1)` returns `intercept_ + coef_`.)
 
     In the code, the `y_test` matrix (from when we split the set) contains the real observations. `y_pred` assigned here contains the predictions for the same `X_test` inputs. It's not expected that the test or training points exactly fit the regression; the regression is trying to find the model that we can use to make predictions with new observations of the independent variables.
     ```
@@ -393,21 +394,21 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 ここでノートブック全体をもう一度実行してみます。
 
-1. **[Kernel]\(カーネル\)** > **[Restart & Clear Output]\(再起動して出力をクリア\)** を選択して、カーネルのすべてのセッション データとすべてのセル出力をクリアします。 このコマンドは常に、ノートブックが完成して、コード セル間におかしな依存関係が作成されていないことを確認するだけのときに、実行するのに適しています。
+1. **[Kernel]\(カーネル\)**  >  **[Restart & Clear Output]\(再起動して出力をクリア\)** を選択して、カーネルのすべてのセッション データとすべてのセル出力をクリアします。 このコマンドは常に、ノートブックが完成して、コード セル間におかしな依存関係が作成されていないことを確認するだけのときに、実行するのに適しています。
 
-1. **[Cell]\(セル\)** > **[Run All]\(すべて実行\)** を使用して、ノートブックを再実行します。 コードの実行中、カーネル インジケーターが設定されていることに注意してください。
+1. **[Cell]\(セル\)**  >  **[Run All]\(すべて実行\)** を使用して、ノートブックを再実行します。 コードの実行中、カーネル インジケーターが設定されていることに注意してください。
 
-    コードの実行が長すぎる場合、またはそれ以外でコードがスタックしている場合は、**[Kernel]\(カーネル\)** > **[Interrupt]\(中断\)** コマンドを使用してカーネルを停止できます。
+    コードの実行が長すぎる場合、またはそれ以外でコードがスタックしている場合は、 **[Kernel]\(カーネル\)**  >  **[Interrupt]\(中断\)** コマンドを使用してカーネルを停止できます。
 
 1. ノートブックをスクロールして、結果を確認します。 (やはりプロットが表示されない場合は、そのセルを再実行します。)
 
 ## <a name="save-halt-and-close-the-notebook"></a>ノートブックを保存、停止、および閉じる
 
-ノートブックを編集しているときは、**[File]\(ファイル\)** > **[Save and Checkpoint]\(保存およびチェックポイント\)** コマンドを使用するか、ツール バーの保存ボタンを使用して、現在の状態を保存できます。 "チェックポイント" では、セッション中にいつでも戻すことができるスナップショットが作成されます。 チェックポイントを使用すると、一連の実験的な変更を行い、その変更が動作しない場合でも、**[File]\(ファイル\)** > **[Revert to Checkpoint]\(チェックポイントに戻す\)** コマンドを使用するだけでチェックポイントに戻すことができます。 もう 1 つの方法は、余分なセルを作成し、実行したくないコードをコメントにすることです。どちらの方法でも機能します。
+ノートブックを編集しているときは、 **[File]\(ファイル\)**  >  **[Save and Checkpoint]\(保存およびチェックポイント\)** コマンドを使用するか、ツール バーの保存ボタンを使用して、現在の状態を保存できます。 "チェックポイント" では、セッション中にいつでも戻すことができるスナップショットが作成されます。 チェックポイントを使用すると、一連の実験的な変更を行い、その変更が動作しない場合でも、 **[File]\(ファイル\)**  >  **[Revert to Checkpoint]\(チェックポイントに戻す\)** コマンドを使用するだけでチェックポイントに戻すことができます。 もう 1 つの方法は、余分なセルを作成し、実行したくないコードをコメントにすることです。どちらの方法でも機能します。
 
-いつでも **[File]\(ファイル\)** > **[Make a Copy]\(コピーの作成\)** コマンドを使用して、ノートブックの現在の状態のコピーをプロジェクト内の新しいファイルに作成することもできます。 そのコピーは、新しいブラウザー タブで自動的に開きます。
+いつでも **[File]\(ファイル\)**  >  **[Make a Copy]\(コピーの作成\)** コマンドを使用して、ノートブックの現在の状態のコピーをプロジェクト内の新しいファイルに作成することもできます。 そのコピーは、新しいブラウザー タブで自動的に開きます。
 
-ノートブックの作業が終わったら、**[File]\(ファイル\)** > **[Close and halt]\(閉じて停止\)** コマンドを使用します。ノートブックが閉じられて、ノートブックを実行していたカーネルがシャットダウンされます。 その後、Azure Notebooks によってブラウザーのタブが自動的に閉じられます。
+ノートブックの作業が終わったら、 **[File]\(ファイル\)**  >  **[Close and halt]\(閉じて停止\)** コマンドを使用します。ノートブックが閉じられて、ノートブックを実行していたカーネルがシャットダウンされます。 その後、Azure Notebooks によってブラウザーのタブが自動的に閉じられます。
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Visual Studio Code を使用してノートブックをデバッグする
 
@@ -419,7 +420,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 また、[Visual Studio Code の Jupyter サポート](https://code.visualstudio.com/docs/python/jupyter-support)に関するページで、Jupyter ノートブック用の Visual Studio Code の追加機能についてもご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
 
@@ -431,4 +432,4 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 - [スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [データ ファイルの操作](work-with-project-data-files.md)
 - [データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [Azure Machine Learning の使用](use-machine-learning-services-jupyter-notebooks.md)

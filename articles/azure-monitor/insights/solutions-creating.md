@@ -1,25 +1,18 @@
 ---
 title: Azure での管理ソリューションのビルド | Microsoft Docs
 description: 管理ソリューションには、Azure のパッケージ化された管理シナリオが含まれており、お客様はそれを Log Analytics ワークスペースに追加できます。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。
-services: monitoring
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2017
 ms.author: bwren
+ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef1af4d3d27bc098341a4de716e293557baa946a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77663217"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]
@@ -29,7 +22,7 @@ ms.locfileid: "57761389"
 
 ## <a name="what-is-a-management-solution"></a>管理ソリューションとは
 
-管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
+管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
 
 管理ソリューションの構築は、基本的には、Azure 環境内で個々のコンポーネントを作成することから開始します。  正常に機能したら、それらのコンポーネントを[管理ソリューション ファイル]( solutions-solution-file.md)にパッケージ化できます。 
 
@@ -52,7 +45,7 @@ ms.locfileid: "57761389"
 
 ビューやアラートで使用されていない場合でも、ユーザーにとって便利だと思われるすべてのクエリを定義する必要があります。  こうしたクエリはポータルで保存された検索として利用でき、カスタム ビューの [[クエリのリスト] 視覚エフェクト パーツ](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part)に含めることもできます。
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md)では、リポジトリ内のデータに対する[ログ検索](#log-searches)によって問題を特定します。  アラートが発生した場合、ユーザーに通知するか、アクションを自動的に実行します。 アプリケーションのさまざまなアラートの状態を特定し、対応するアラート ルールをソリューション ファイルに含める必要があります。
 
 自動化されたプロセスで問題を修正できる可能性がある場合は、通常、その修復を実行する Azure Automation の Runbook を作成します。  ほとんどの Azure サービスは、[コマンドレット](/powershell/azure/overview)を使用して管理できます。Runbook では、コマンドレットを活用して、そうした機能を実行します。
@@ -66,11 +59,11 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 
 
 ## <a name="create-solution-file"></a>ソリューション ファイルの作成
-ソリューションのコンポーネントを構成し、テストしたら、[ソリューション ファイルを作成]( solutions-solution-file.md)できます。  ファイル内の他のリソースとリレーションシップがある[ソリューション リソース]( solutions-solution-file.md#solution-resource)を含む [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)にソリューションのコンポーネントを実装します。  
+ソリューションのコンポーネントを構成し、テストしたら、[ソリューション ファイルを作成]( solutions-solution-file.md)できます。  ファイル内の他のリソースとリレーションシップがある[ソリューション リソース]( solutions-solution-file.md#solution-resource)を含む [Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にソリューションのコンポーネントを実装します。  
 
 
 ## <a name="test-your-solution"></a>ソリューションのテスト
-ソリューションを開発している場合は、ワークスペースにインストールしてテストする必要があります。  これには、[Resource Manager テンプレートをテストおよびインストール](../../azure-resource-manager/resource-group-template-deploy.md)できる方法であればどれでも使用できます。
+ソリューションを開発している場合は、ワークスペースにインストールしてテストする必要があります。  これには、[Resource Manager テンプレートをテストおよびインストール](../../azure-resource-manager/templates/deploy-powershell.md)できる方法であればどれでも使用できます。
 
 ## <a name="publish-your-solution"></a>ソリューションを発行する
 ソリューションが完成してテストしたら、次のソースを使用して、顧客がソリューションを利用できるようにします。
@@ -80,7 +73,7 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 管理ソリューションの[ソリューション ファイルの作成]( solutions-solution-file.md)方法について
-* [Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
+* [Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。

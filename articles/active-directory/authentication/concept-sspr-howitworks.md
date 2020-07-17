@@ -1,31 +1,26 @@
 ---
-title: セルフサービスによるパスワード リセットの詳細 - Azure Active Directory
-description: セルフサービスによるパスワードのリセットの動作
+title: セルフサービス パスワード リセットの詳細 - Azure Active Directory
+description: セルフサービス パスワード リセット の動作
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 08/16/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370008"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74848580"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
-セルフサービスによるパスワードのリセット (SSPR) はどのように動作するのでしょうか? そのオプションはインターフェイスでは何を意味するのでしょうか? 以降では、Azure Active Directory (Azure AD) SSPR の詳細について説明します。
-
-|     |
-| --- |
-| Azure AD のセルフ サービスによるパスワードのリセットの方法であるモバイル アプリ通知およびモバイル アプリ コードは、Azure Active Directory のパブリック プレビューの機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+セルフサービス パスワード リセット (SSPR) はどのように動作するのでしょうか? そのオプションはインターフェイスでは何を意味するのでしょうか? 以降では、Azure Active Directory (Azure AD) SSPR の詳細について説明します。
 
 ## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
 
@@ -39,7 +34,7 @@ ms.locfileid: "58370008"
 
 パスワード リセット ページの背後にあるロジックの詳細については、次の手順をお読みください。
 
-1. ユーザーは、**[アカウントにアクセスできません]** リンクを選ぶか、直接 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) に移動します。
+1. ユーザーは、 **[アカウントにアクセスできません]** リンクを選ぶか、直接 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) に移動します。
    * ブラウザーのロケールに基づいて、エクスペリエンスが適切な言語で表示されます。 パスワード リセットのエクスペリエンスは、Office 365 でサポートされている言語と同じ言語にローカライズされています。
    * パスワードのリセット ポータルを別のローカライズ言語で表示するには、パスワードのリセット URL の末尾に「?mkt=」を追加します。[https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) は、スペイン語へのローカライズの例を示しています。
 2. ユーザーは、ユーザー ID を入力し、CAPTCHA を渡します。
@@ -61,9 +56,9 @@ ms.locfileid: "58370008"
 
 SSPR が有効になっている場合は、認証方法として以下のオプションの少なくとも 1 つを選択する必要があります。 これらのオプションは、"ゲート" と呼ばれることもあります。 **2 つ以上の認証方法を選択**することを強くお勧めします。そうすれば、一方の認証方法を利用できない場合でも、必要があれば、ユーザーはもう一方の認証方法を利用できます。 次に示されている方法の追加の詳細については、「[認証方法とは](concept-authentication-methods.md)」を参照してください。
 
-* モバイル アプリ通知 (プレビュー)
-* モバイル アプリ コード (プレビュー)
-* 電子メール
+* モバイル アプリの通知
+* モバイル アプリ コード
+* Email
 * 携帯電話
 * 会社電話
 * セキュリティの質問
@@ -71,7 +66,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法の中にユーザーのデータがある場合のみです。
 
 > [!IMPORTANT]
-> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
 
 > [!WARNING]
 > Azure 管理者ロールが割り当てられたアカウントは、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。
@@ -86,7 +81,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 ユーザーに必要最低限の方法が登録されていない場合は、管理者にパスワードのリセットを依頼するよう指示するエラー ページが表示されます。
 
-#### <a name="mobile-app-and-sspr-preview"></a>モバイル アプリおよび SSPR (プレビュー)
+#### <a name="mobile-app-and-sspr"></a>モバイル アプリおよび SSPR
 
 Microsoft Authenticator アプリなどのモバイル アプリを使用している場合、パスワードのリセット方法として、次の注意事項を理解しておく必要があります。
 
@@ -97,10 +92,16 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 | :---: | :---: | :---: |
 | 使用可能なモバイル アプリの機能 | コード | コードまたは通知 |
 
-[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) からセルフ サービスによるパスワードのリセットを登録すると、ユーザーはモバイル アプリを登録するオプションを選択できません。 ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
+[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) からセルフサービス パスワード リセットを登録すると、ユーザーはモバイル アプリを登録するオプションを選択できません。 ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
 
 > [!WARNING]
-> [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) での新しいエクスペリエンスにユーザーがアクセスできるようにするには、まず[セルフ サービス パスワード リセットと Azure Multi-factor Authentication (パブリック プレビュー) の集中型登録](concept-registration-mfa-sspr-converged.md)を有効にする必要があります。
+> [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) での新しいエクスペリエンスにユーザーがアクセスできるようにするには、まず[セルフサービス パスワード リセットと Azure Multi-factor Authentication (パブリック プレビュー) の集中型登録](concept-registration-mfa-sspr-converged.md)を有効にする必要があります。
+
+> [!IMPORTANT]
+> 1 ゲート ポリシーを構成するときに、唯一の認証方法として認証アプリを選択することはできません。 同様に、2 ゲート ポリシーを構成する場合は、認証アプリと追加の方法を 1 つだけ選択することはできません。
+> 次に、認証アプリを方法として含む SSPR ポリシーを構成する場合、1 ゲート ポリシーを構成するときは追加の方法を少なくとも 1 つ選択する必要があります。2 ゲート ポリシーを構成するときは、追加の方法を少なくとも 2 つ選択する必要があります。
+> この要件の理由は、現在の SSPR 登録エクスペリエンスに認証アプリを登録するオプションが含まれていないためです。 認証アプリを登録するオプションは、新しい[セルフサービス パスワード リセットと Azure Multi-Factor Authentication (パブリック プレビュー) の集中型登録](concept-registration-mfa-sspr-converged.md)に含まれています。
+> 認証アプリだけを使用するポリシー (1 ゲート ポリシーの場合)、または認証アプリと追加の方法を 1 つだけ使用するポリシー (2 ゲート ポリシーの場合) を許可すると、ユーザーは新しい登録エクスペリエンスを使用するように構成されるまで、SSPR の登録をブロックされる可能性があります。
 
 ### <a name="change-authentication-methods"></a>認証方法を変更する
 
@@ -126,7 +127,7 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 ユーザーが Azure AD を使用してアプリケーションにサインインする場合、このオプションを有効にするには、ユーザーがパスワード リセットの登録を完了する必要があります。 このワークフローには、次のアプリケーションが含まれます。
 
 * Office 365
-* Azure ポータル
+* Azure portal
 * アクセス パネル
 * フェデレーション アプリケーション
 * Azure AD を使用するカスタム アプリケーション
@@ -134,13 +135,13 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 登録の要求が無効になっている場合でも、ユーザーは手動で登録を行うことができます。 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) にアクセスするか、アクセス パネルの **[プロファイル]** タブの下にある **[パスワード リセットの登録]** リンクを使って行うことができます。
 
 > [!NOTE]
-> ユーザーは、**[キャンセル]** を選ぶか、ウィンドウを閉じることで、パスワード リセット登録ポータルを終了できます。 ただし、登録を完了するまでは、サインインのたびに登録を求められます。
+> ユーザーは、 **[キャンセル]** を選ぶか、ウィンドウを閉じることで、パスワード リセット登録ポータルを終了できます。 ただし、登録を完了するまでは、サインインのたびに登録を求められます。
 >
 > ユーザーが既にサインインしている場合、この中断によりその接続が切断されることはありません。
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>ユーザーが認証情報を再確認するように求められるまでの日数を設定する
 
-このオプションは、認証情報を設定してから再確認するまでの期間を決定し、**[サインイン時にユーザーに登録を求めますか]** オプションを有効にした場合にのみ表示されます。
+このオプションは、認証情報を設定してから再確認するまでの期間を決定し、 **[サインイン時にユーザーに登録を求めますか]** オプションを有効にした場合にのみ表示されます。
 
 有効な値は 0 - 730 日で、"0" はユーザーに認証情報の再確認を求めることがないことを意味します。
 
@@ -202,15 +203,15 @@ Azure AD のセルフサービス パスワード リセットでは、Active Di
 > [!NOTE]
 > Azure AD テナントへのゲスト アクセスを許可されている Microsoft アカウント (Hotmail.com、Outlook.com、他の個人メール アドレスからなど) は、Azure AD SSPR を使うことができません。 このようなユーザーは、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の情報を使って、パスワードをリセットする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
@@ -219,5 +220,5 @@ Azure AD のセルフサービス パスワード リセットでは、Active Di
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
-[Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Azure AD の使用できる認証方法と必要な数量"
-[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "オンプレミスの統合のパスワード ライトバックの構成とトラブルシューティングに関する情報"
+[Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "Azure AD の使用できる認証方法と必要な数量"
+[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-on-premises-integration-writeback.png "オンプレミスの統合のパスワード ライトバックの構成とトラブルシューティングに関する情報"

@@ -1,27 +1,20 @@
 ---
-title: チュートリアル - Azure の Windows VM の高可用性 | Microsoft Docs
+title: チュートリアル - Azure での Windows VM の高可用性
 description: このチュートリアルでは、Azure PowerShell を使用して、可用性セット内での高可用性仮想マシンをデプロイする方法について説明します
-documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: afc3e550f0a3d135f1c62ee321fff8d7afc5cae6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785277"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100449"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
@@ -108,13 +101,13 @@ for ($i=1; $i -le 2; $i++)
 
 VM 2 台分の作成と構成が終わるまでには、数分かかります。 完了すると、基になるハードウェア全体に 2 つの仮想マシンが分散されています。 
 
-ポータルで **[リソース グループ]** > **myResourceGroupAvailability** > **myAvailabilitySet** の順に移動して可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
+ポータルで **[リソース グループ]**  > **myResourceGroupAvailability** > **myAvailabilitySet** の順に移動して可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
 
 ![ポータルの可用性セット](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
 
-可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。 ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示するには、[Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) を使用します。
+可用性セット内に VM を作成する場合、ハードウェアで使用可能な VM のサイズを把握しておく必要があります。 可用性セットにデプロイできる仮想マシンの使用可能なすべてのサイズを取得するには、[Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) コマンドを使用します。
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -126,10 +119,10 @@ Get-AzVMSize `
 
 Azure Advisor を使用して、VM の可用性を向上させる方法についてより多くの情報を取得することもできます。 Azure Advisor では、構成と使用状況のテレメトリが分析された後、Azure リソースの費用対効果、パフォーマンス、可用性、セキュリティを向上させるために役立つソリューションが推奨されます。
 
-[Azure Portal](https://portal.azure.com) にサインインし、**[すべてのサービス]** を選択して、「**Advisor**」と入力します。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 詳細については、「[Azure Advisor の使用を開始する](../../advisor/advisor-get-started.md)」を参照してください。
+[Azure Portal](https://portal.azure.com) にサインインし、 **[すべてのサービス]** を選択して、「**Advisor**」と入力します。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 詳細については、「[Azure Advisor の使用を開始する](../../advisor/advisor-get-started.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

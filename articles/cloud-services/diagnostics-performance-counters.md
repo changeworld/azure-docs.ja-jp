@@ -3,23 +3,17 @@ title: Azure Cloud Services でパフォーマンス カウンターを収集す
 description: Azure Diagnostics および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: tgore03
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/02/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: tagore
+ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485409"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77469529"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -127,7 +121,7 @@ Cloud Services 用の Azure Diagnostics 拡張機能では、収集するパフ�
 
 収集するパフォーマンス カウンターは、**diagnostics.wadcfgx** ファイルで定義されています。 このファイル (ロールごとに定義されています) を Visual Studio で開き、**DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 要素を探します。 新しい **PerformanceCounterConfiguration** 要素を子として追加します。 この要素には、`counterSpecifier` と `sampleRate` の 2 つの属性があります。 `counterSpecifier` 属性では、収集するシステム パフォーマンス カウンター セット (前のセクションで説明) を定義します。 `sampleRate` 値は、その値がポーリングされる頻度を示します。 全体として、すべてのパフォーマンス カウンターは、親 `PerformanceCounters` 要素の `scheduledTransferPeriod` 属性値に従って Azure に転送されます。
 
-`PerformanceCounters` スキーマ要素の詳細については、[Azure 診断スキーマ](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)に関するページを参照してください。
+`PerformanceCounters` スキーマ要素の詳細については、[Azure Diagnostics スキーマ](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)に関するページを参照してください。
 
 `sampleRate` 属性で定義された期間は、XML 期間データ型を使用して、パフォーマンス カウンターのポーリング頻度を示します。 下の例では、頻度が `PT3M` に設定されています。これは、`[P]eriod[T]ime[3][M]inutes` (3 分ごと) を意味します。
 
@@ -297,4 +291,7 @@ counterServiceUsed.Increment();
 - [Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights のシステム パフォーマンス カウンター](../azure-monitor/app/performance-counters.md)
 - [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure 診断のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+- [Azure Diagnostics のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+
+
+

@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9734859c0bf22201c146e5d8a220f3146f6051c4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181065"
 ---
 次の表は、ゲートウェイの種類と、ゲートウェイ SKU によって予測される合計スループットを示したものです。 この表は、Resource Manager とクラシック デプロイ モデルに適用されます。 
 
@@ -23,7 +23,7 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 
 |  | **VPN Gateway のスループット (1)** | **VPN Gateway の IPsec トンネルの最大数 (2)** | **ExpressRoute ゲートウェイのスループット** | **VPN Gateway と ExpressRoute の共存** |
 | --- | --- | --- | --- | --- |
-| **Basic SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |いいえ  |
+| **Basic SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |いいえ |
 | **Standard SKU (4)(5)** |100 Mbps |10 |1000 Mbps |はい |
 | **High Performance SKU (4)** |200 Mbps |30 |2000 Mbps |はい |
 

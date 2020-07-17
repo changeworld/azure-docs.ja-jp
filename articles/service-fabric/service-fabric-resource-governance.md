@@ -1,27 +1,16 @@
 ---
-title: Azure Service Fabric におけるコンテナーとサービスのリソース ガバナンス | Microsoft Docs
+title: コンテナーとサービスのリソース ガバナンス
 description: Azure Service Fabric では、内部または外部のコンテナーを実行するサービスのリソース制限を指定できます。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: aljo, subramar
-ms.openlocfilehash: e011554e61411fddca034f024c30c2270593e07b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669250"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115141"
 ---
-# <a name="resource-governance"></a>リソース ガバナンス
+# <a name="resource-governance"></a>リソース管理
 
 同じノードまたはクラスター上の複数のサービスを実行するとき、あるサービスがリソースを余計に消費して、プロセスの他のサービスのリソースを枯渇させてしまうことがあります。 この問題は、"迷惑な隣人問題" と呼ばれます。 Service Fabric では、開発者はリソースを保証しリソースの使用量を制限するために、1 サービスあたりの予約数と制限を指定できます。
 
@@ -42,7 +31,8 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 * クラスターはこの 2 つのメトリックに従って[最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)できます。
 * [クラスターを記述する](service-fabric-cluster-resource-manager-cluster-description.md)ときに、この 2 つのメトリックに対してバッファーの容量を設定できます。
 
-[動的な負荷レポート](service-fabric-cluster-resource-manager-metrics.md)は、この 2 つのメトリックについてはサポートされておらず、2 つのメトリックの負荷は作成時に定義されます。
+> [!NOTE]
+> [動的読み込みレポート](service-fabric-cluster-resource-manager-metrics.md)は、これらのメトリックについてはサポートされておらず、これらのメトリックの読み込みは作成時に定義されます。
 
 ## <a name="resource-governance-mechanism"></a>リソース ガバナンスのメカニズム
 
@@ -76,7 +66,7 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 </Section>
 ```
 
-ノード容量を完全に手動で設定する必要がある場合は、クラスター内のノードを記述するための通常のメカニズムを使用できます。 4 つのコアと 2 GB のメモリを持つノードを設定する方法の例を次に示します。
+ほとんどのお客様とシナリオでは、CPU とメモリのノード容量の自動検出値が推奨される構成です (自動検出は既定でオンになっています)。 ただし、ノード容量を完全に手動で設定する必要がある場合は、クラスター内のノードを記述するメカニズムを使用して、ノードの種類ごとに構成することができます。 4 つのコアと 2 GB のメモリを持つノードの種類を設定する方法の例を次に示します。
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -110,6 +100,18 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 </Section>
 ```
 
+> [!IMPORTANT]
+> Service Fabric バージョン 7.0 以降では、ノード リソース容量の値をユーザーが手動で指定している場合に、ノード リソース容量の計算方法に関する規則が改訂されました。 次のシナリオを検討してみましょう。
+>
+> * ノード上に合計 10 個の CPU コアがあります
+> * SF は、ユーザー サービスに対して総リソースの 80% を使用するように構成されています (既定の設定)。ノード上で実行される他のサービス (Service Fabric システム サービスを含む) 用に 20% のバッファーが残されています。
+> * ユーザーは、CPU コア メトリックのためにノード リソース容量を手動で上書きして、5 コアに設定することに決めます。
+>
+> Service Fabric ユーザー サービスに使用できる容量の計算方法に関する規則は、次のように改訂されています。
+>
+> * Service Fabric 7.0 より前であれば、ユーザー サービスに使用できる容量を計算すると、**5 コア**になります (容量バッファーの 20% は無視されます)
+> * Service Fabric 7.0 以降では、ユーザー サービスに利用できる容量を計算すると、**4 コア**になります (容量バッファー 20% は無視されません)
+
 ## <a name="specify-resource-governance"></a>リソース ガバナンスの指定
 
 リソース ガバナンスの制限は、次の例で示すようにアプリケーション マニフェスト (ServiceManifestImport セクション) 内で指定します。
@@ -141,7 +143,7 @@ Memory の制限は絶対的であるため、コード パッケージのメモ
 
 ### <a name="using-application-parameters"></a>アプリケーション パラメーターの使用
 
-リソース ガバナンスを指定するときは、[アプリケーション パラメーター](service-fabric-manage-multiple-environment-app-configuration.md)を使って複数のアプリ構成を管理できます。 次の例では、アプリケーション パラメーターの使い方を示します。
+リソース ガバナンスの設定を指定する場合は、[アプリケーション パラメーター](service-fabric-manage-multiple-environment-app-configuration.md)を使って複数のアプリ構成を管理できます。 次の例では、アプリケーション パラメーターの使い方を示します。
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -186,6 +188,27 @@ Memory の制限は絶対的であるため、コード パッケージのメモ
 >
 > アプリケーション パラメーターを使ってリソース ガバナンスを指定すると、Service Fabric をバージョン 6.1 より前のバージョンにダウングレードできなくなります。
 
+## <a name="enforcing-the-resource-limits-for-user-services"></a>ユーザー サービスへのリソース制限の適用
+
+Service Fabric サービスにリソース ガバナンスを適用すると、リソース管理の対象となるサービスではリソース クォータを超過しないことが保証される一方で、多くのユーザーは依然として、一部の Service Fabric サービスを非管理モードで実行する必要があります。 非管理の Service Fabric サービスを使用する際に、管理されずに "暴走した" サービスによって、Service Fabric ノード上で使用できるすべてのリソースが使い尽くされる状況に陥る可能性があります。
+
+* ノード上で実行されている他のサービス (Service Fabric システムサービスを含む) でのリソースの不足
+* 異常な状態でノードが終了する
+* Service Fabric クラスター管理 API が応答しない
+
+このような状況が発生しないように、Service Fabric では、指定された量を超えるリソースがユーザー サービスによって使用されないことを保証するために、(管理および非管理のどちらでも) " *ノード上で実行されるすべての Service Fabric ユーザー サービスにリソース制限を適用*" できます。 ClusterManifest の PlacementAndLoadBalancing セクションにある EnforceUserServiceMetricCapacities config の値を true に設定することで、これを実現できます。 この設定は、既定では無効になっています。
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+追加の注意事項:
+
+* リソース制限の適用は、`servicefabric:/_CpuCores` および `servicefabric:/_MemoryInMB` リソース メトリックのみに該当します
+* リソース制限の適用は、(「[リソース ガバナンスを有効にするためのクラスターのセットアップ](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)」セクションの説明にあるように、) 自動検出メカニズムを介して、あるいは、ユーザーが手動でノード容量を指定することで、リソース メトリックのノード容量が Service Fabric で利用可能な場合にのみ有効です。 ノード容量が構成されていない場合、Service Fabric ではユーザー サービス用に予約すべきリソース量を把握できないため、リソース制限の適用機能は使用できません。 "EnforceUserServiceMetricCapacities" は true になっているが、ノード容量が構成されていない場合に、Service Fabric  では正常性に関する警告を発行します。
+
 ## <a name="other-resources-for-containers"></a>コンテナー用の他のリソース
 
 CPU とメモリに加え、コンテナー用の他のリソース制限を指定できます。 これらの制限は、コード パッケージ レベルで指定され、コンテナーが開始されたときに適用されます。 CPU とメモリとは異なり、クラスター リソース マネージャーはこれらのリソースを認識せず、それらの容量チェックも負荷分散も実行しません。
@@ -209,7 +232,7 @@ CPU とメモリに加え、コンテナー用の他のリソース制限を指�
     </ServiceManifestImport>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * クラスター リソース マネージャーの詳細については、「[Service Fabric クラスター リソース マネージャーの概要](service-fabric-cluster-resource-manager-introduction.md)」をご覧ください。
 * アプリケーション モデル、サービス パッケージ、コード パッケージ、およびこれらにレプリカをマップする方法の詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」をご覧ください。

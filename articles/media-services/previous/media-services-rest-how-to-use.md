@@ -1,6 +1,6 @@
 ---
 title: Media Services Operations REST API の概要 | Microsoft Docs
-description: Media Services REST API の概要
+description: "\"Media Services Operations REST\" API は、Media Services アカウントで、ジョブ、アセット、ライブ チャンネル、およびその他のリソースを作成するときに使用されます。 この記事では、Azure Media Services v2 REST API の概要を説明します。"
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu
-ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: juliako
+ms.reviewer: johndeu
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687053"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76773655"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
 
@@ -44,7 +45,7 @@ REST を使用するときには、次の考慮事項が適用されます。
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -59,7 +60,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 | ヘッダー | Type | 値 |
 | --- | --- | --- |
-| Authorization |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
+| 承認 |Bearer |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -74,12 +75,12 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | ヘッダー | Type | 値 |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
-| Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
+| Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> \- application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
 | Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注:大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
 | Accept-Charset |"UTF-8"　などの文字の種類 |既定値は UTF-8 です。 |
 | X-HTTP-Method |HTTP メソッド |PUT や DELETE などの HTTP メソッドをサポートしないクライアントやファイアウォールが、GET 呼び出しを通じてトンネリングされたこれらのメソッドを使用できます。 |
-| Content-Type |コンテンツの種類 |PUT または POST 要求の本文のコンテンツの種類。 |
+| Content-Type |Content type |PUT または POST 要求の本文のコンテンツの種類。 |
 | client-request-id |String |指定した要求を識別する、呼び出し元で定義された値。 指定されている場合、この値は、要求をマッピングする方法として、応答メッセージに含まれます。 <p><p>**重要**<p>値は 2096b (2k) に制限する必要があります。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
@@ -90,8 +91,8 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
 | Date |RFC 1123 の日付 |要求が処理された日時。 |
-| Content-Type |多様 |応答本文のコンテンツの種類。 |
-| Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |
+| Content-Type |場合により異なる |応答本文のコンテンツの種類。 |
+| Content-Encoding |場合により異なる |Gzip またはデフレート (必要に応じて)。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 動詞
 HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次に示します。
@@ -119,7 +120,7 @@ Media Services アカウントに必要な認証の詳細を Azure Portal から
 
 Azure AD 認証を使用して REST API に接続するコードの作成の詳細については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services REST API で Azure AD 認証を使用する方法については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

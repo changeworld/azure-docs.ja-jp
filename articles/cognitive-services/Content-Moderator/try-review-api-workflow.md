@@ -1,21 +1,21 @@
 ---
 title: REST API コンソールを使用してモデレーション ワークフローを定義する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Content Moderator Review API シリーズを使用し、ご自分のコンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: e150b1321f2fbd348e737222c752203281503643
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: pafarley
+ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756578"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72754185"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>モデレーション ワークフローを定義して使用する (REST)
 
@@ -27,15 +27,15 @@ ms.locfileid: "58756578"
 
 ## <a name="create-a-workflow"></a>ワークフローを作成する
 
-ワークフローを作成または更新するには、**[Workflow - Create Or Update](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API リファレンス ページに移動し、ご自分の主なリージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
+ワークフローを作成または更新するには、 **[Workflow - Create Or Update](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API リファレンス ページに移動し、ご自分の主なリージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
 
 ![[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) ページのリージョンの選択](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>REST 呼び出しパラメーターを入力する
 
-**[team]**、**[workflowname]**、**[Ocp-Apim-Subscription-Key]** に値を入力します。
+**[team]** 、 **[workflowname]** 、 **[Ocp-Apim-Subscription-Key]** に値を入力します。
 
-- **team**: [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールドにあります)。
+- **team**: [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールド内にあります)。
 - **workflowname**: 追加する新しいワークフローの名前 (または、既存のワークフローを更新する場合は、既存の名前)。
 - **Ocp-Apim-Subscription-Key**: ご自分の Content Moderator キー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
 
@@ -80,29 +80,29 @@ ms.locfileid: "58756578"
 
 ### <a name="submit-your-request"></a>要求を送信する
   
-**[送信]** を選択します。 操作が成功すると、**[Response status]\(応答の状態\)** は `200 OK` になり、**[Response Content]\(応答のコンテンツ\)** ボックスには `true` と表示されます。
+**[送信]** を選択します。 操作が成功すると、 **[Response status]\(応答の状態\)** は `200 OK` になり、 **[Response Content]\(応答のコンテンツ\)** ボックスには `true` と表示されます。
 
 ### <a name="examine-the-new-workflow"></a>新しいワークフローを確認する
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)で、**[設定]** > **[ワークフロー]** の順に選択します。 ご自分の新しいワークフローが一覧に表示されます。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)で、 **[設定]**  >  **[ワークフロー]** の順に選択します。 ご自分の新しいワークフローが一覧に表示されます。
 
 ![レビュー ツールのワークフローリスト](images/workflow-console-new-workflow.PNG)
 
-ご自分のワークフローの **[編集]** オプションを選択し、**[デザイナー]** タブに移動します。ここでは、JSON ロジックの直感的な表現を確認できます。
+ご自分のワークフローの **[編集]** オプションを選択し、 **[デザイナー]** タブに移動します。ここでは、JSON ロジックの直感的な表現を確認できます。
 
 ![選択したワークフローの [Designer]\(デザイナー\) タブ](images/workflow-console-new-workflow-designer.PNG)
 
 ## <a name="get-workflow-details"></a>ワークフローの詳細を取得する
 
-既存のワークフローに関する詳細を取得するには、**[Workflow - Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** API リファレンス ページに移動し、ご自分のリージョン (ご自分のキーが管理されているリージョン) のボタンを選択します。
+既存のワークフローに関する詳細を取得するには、 **[Workflow - Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** API リファレンス ページに移動し、ご自分のリージョン (ご自分のキーが管理されているリージョン) のボタンを選択します。
 
 ![[Workflow - Get]\(ワークフロー - 取得\) のリージョン選択](images/test-drive-region.png)
 
-上記のセクションと同様に、REST 呼び出しパラメーターを入力します。 今度は、**[workflowname]** が既存のワークフローの名前であることを確認してください。
+上記のセクションと同様に、REST 呼び出しパラメーターを入力します。 今度は、 **[workflowname]** が既存のワークフローの名前であることを確認してください。
 
 ![クエリ パラメーターとヘッダーを取得する](images/workflow-get-default.PNG)
 
-**[送信]** を選択します。 操作が成功すると、**[Response status]\(応答の状態\)** は `200 OK` になり、**[Response Content]\(応答のコンテンツ\)** ボックスには次のような JSON 形式のワークフローが表示されます。
+**[送信]** を選択します。 操作が成功すると、 **[Response status]\(応答の状態\)** は `200 OK` になり、 **[Response Content]\(応答のコンテンツ\)** ボックスには次のような JSON 形式のワークフローが表示されます。
 
 ```json
 {
@@ -137,6 +137,6 @@ ms.locfileid: "58756578"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コンテンツ モデレーション ジョブ](try-review-api-job.md) でワークフローを使用する方法について学習します。

@@ -1,25 +1,24 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: search
 author: HeidiSteen
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160506"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272854"
 ---
-サブスクリプション内に複数のサービスを作成することができます。 作成したサービスはそれぞれ、一定のレベルでプロビジョニングできます。 各レベルにはサービス数に上限が設けられています。 たとえば、Basic レベルのサービスであれば 12 個まで作成できますが、同じサブスクリプションの枠内で S1 レベルのサービスをさらにもう 12 個まで作成できます。 レベルの詳細については、「[Azure Search 用の SKU または価格レベルの選択](../articles/search/search-sku-tier.md)」を参照してください。
+サブスクリプション内に複数のサービスを作成することができます。 作成したサービスはそれぞれ、一定のレベルでプロビジョニングできます。 各レベルにはサービス数に上限が設けられています。 たとえば、Basic レベルのサービスであれば 12 個まで作成できますが、同じサブスクリプションの枠内で S1 レベルのサービスをさらにもう 12 個まで作成できます。 レベルの詳細については、[Azure Cognitive Search 用の SKU または価格レベルの選択](../articles/search/search-sku-tier.md)に関するページを参照してください。
 
 サービス数の上限は、依頼により引き上げが可能です。 同一のサブスクリプションで通常よりも多数のサービスが必要な場合には、Azure Support にお問い合わせください。
 
-| Resource            | Free<sup>1</sup> | Basic | S1  | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| リソース            | Free<sup>1</sup> | Basic | S1  | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
 | 最大サービス数    |1     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
 | 検索単位の最大スケール (SU)<sup>2</sup> |該当なし |3 SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |

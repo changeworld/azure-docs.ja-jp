@@ -4,23 +4,23 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: 880b9f2610117d40251e7d99690889d1356980e5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c63fa01a078c415568b8d3d82701e424b9c72951
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132241"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76845416"
 ---
-## <a name="install-the-azure-function-extension"></a>Azure Functions 拡張機能をインストールする
+## <a name="install-the-azure-functions-extension"></a>Azure Functions 拡張機能をインストールする
 
-関数を作成してテストし、Azure にデプロイするには、Azure Functions 拡張機能を使用します。
+Azure Functions 拡張機能を使用すると、関数を作成してテストし、Azure にデプロイすることができます。
 
-1. Visual Studio Code で **[拡張機能]** を開き、`azure functions` を検索するか、[Visual Studio Code でこのリンクを開きます](vscode:extension/ms-azuretools.vscode-azurefunctions)。
+1. Visual Studio Code で **[拡張機能]** を開き、**azure functions** を検索するか、[Visual Studio Code でこのリンクを選択](vscode:extension/ms-azuretools.vscode-azurefunctions)します。
 
 1. **[インストール]** を選択して、Visual Studio Code に拡張機能をインストールします。
 
     ![Azure Functions の拡張機能をインストールする](./media/functions-install-vs-code-extension/vscode-install-extension.png)
 
-1. Visual Studio Code を再起動し、アクティビティ バーの Azure アイコンを選択します。 サイド バーに Azure Functions 領域が表示されます。
+1. インストール後、アクティビティ バーの Azure アイコンを選択します。 サイド バーに Azure Functions 領域が表示されます。
 
     ![サイド バーの Azure Functions 領域](./media/functions-install-vs-code-extension/azure-functions-window-vscode.png)

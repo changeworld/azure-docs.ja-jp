@@ -1,11 +1,11 @@
 ---
-title: PHP で Notification Hubs を使用する方法
+title: PHP から Azure Notification Hubs を使用する方法
 description: PHP バックエンドから Azure Notification Hubs を使用する方法について説明します。
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: php
 ms.devlang: php
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 054edaf321d90015840fd84e1697fca742fd7e1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838597"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76263848"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
 
@@ -216,7 +218,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 上記のメソッドは、HTTP POST 要求とともに、通知を送信するための正しい本文とヘッダーを、通知ハブの `/messages` エンドポイントに送信します。
 
-## <a name="complete-tutorial"></a>チュートリアルの完了
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>チュートリアルの完了
 
 ここで、PHP バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
@@ -280,7 +282,7 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 
 ## <a name="next-steps"></a>次の手順
 
-このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 次は、以下を実行できます。
+このトピックでは、Notification Hubs 用の単純な Java REST クライアントを作成する方法を示しました。 ここでは、次の操作を実行できます。
 
 * [PHP REST wrapper sample (PHP REST ラッパー サンプル)]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
 * 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。

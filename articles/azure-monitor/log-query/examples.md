@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリの例 | Microsoft Docs
 description: Kusto クエリ言語を使用する Azure Monitor でのログ クエリの例です。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.date: 03/16/2020
+ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416651"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79480285"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
 この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
@@ -34,7 +27,7 @@ ms.locfileid: "56416651"
 Event
 | where EventLog == "Application" 
 | where TimeGenerated > ago(24h) 
-| where RenderedDescription == "cryptographic"
+| where RenderedDescription contains "cryptographic"
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>マーシャリングの解除に関連するイベントの検索
@@ -181,7 +174,6 @@ let EndTime = now()-4d;
 Perf
 | where CounterName == "% Processor Time"  
 | where TimeGenerated > StartTime and TimeGenerated < EndTime
-and TimeGenerated < EndTime
 | project TimeGenerated, Computer, cpu=CounterValue 
 | join kind= inner (
    Perf
@@ -237,7 +229,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>アクティビティ ID ごとのセキュリティ イベントのカウント
 
 
-次の例は、**Activity** 列(\<ID\>-\<Name\>) の固定された構造に依存します。
+次の例は、**Activity** 列 (\<ID\>-\<Name\>) の固定された構造に依存します。
 これは、**Activity** 値を解析して 2 つの新しい列にし、それぞれの **activityID** の発生回数をカウントします。
 
 ```Kusto
@@ -278,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>アクティビティ名と ID の解析
-以下の 2 つの例は、**Activity** 列(\<ID\>-\<Name\>) の固定された構造に依存します。 最初の例では、2 つの新しい列 **activityID** と **activityDesc** に値を割り当てるために、**parse** 演算子を使用します。
+以下の 2 つの例は、**Activity** 列 (\<ID\>-\<Name\>) の固定された構造に依存します。 最初の例では、2 つの新しい列 **activityID** と **activityDesc** に値を割り当てるために、**parse** 演算子を使用します。
 
 ```Kusto
 SecurityEvent
@@ -383,40 +375,47 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用法
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>コンピューターごとのパフォーマンス使用量レポートの平均サイズの計算
+`Usage` データ型を使用して、取り込まれたデータ ボリュームをソリューションまたはデータ型ごとに追跡できます。 [コンピューター](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)または[Azure サブスクリプション、リソース グループまたはリソース](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)ごとに、取り込まれたデータ ボリュームを調査するその他の手法があります。
 
-次の例は、過去 3 時間のコンピューターごとのパフォーマンス使用量レポートの平均サイズを計算します。
-結果は、棒グラフで表示されます。
-```Kusto
+#### <a name="data-volume-by-solution"></a>ソリューション別のデータ ボリューム
+
+過去 1 か月間 (まだ終わっていない最終日を除く) の課金対象データ ボリュームをソリューション別に表示するために使用するクエリは、次のとおりです。
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>時間グラフ待機時間のパーセンタイル 50 および 95
+句 `where IsBillable = true` は、取り込み料金がかからない特定のソリューションからのデータの種類を除外することに注意してください。  また、`TimeGenerated` を含む句は、Azure portal のクエリ機能が既定の 24 時間を超えてさかのぼって参照するようにするためだけのものです。 Usage データ型を使用する場合、`StartTime` と `EndTime` は、結果が表示される時間バケットを表します。 
 
-次の例は、過去 24 時間に時間単位でレポートされた **avgLatency** の 50 および 95 パーセンタイルを計算し、グラフ化します。
+#### <a name="data-volume-by-type"></a>種類別のデータ ボリューム
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+さらにドリルダウンして、データの種類別にデータの傾向を確認できます。
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>当日の特定のコンピューターの使用状況
-次の例は、コンピューター名に文字列 _ContosoFile_ が含まれているコンピューターの過去 1 日間の **Usage** を取得します。 結果は、**TimeGenerated** で並べ替えられます。
+または、過去 1 か月について、ソリューション別および種類別にテーブルを表示するには、次のようにします
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
 
 ## <a name="updates"></a>更新プログラム
 
@@ -425,19 +424,18 @@ Usage
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 言語の詳細については、[Kusto 言語リファレンス](/azure/kusto/query)を参照してください。
 - [Azure Monitor でのログ クエリの記述に関するレッスン](get-started-queries.md)を行います。

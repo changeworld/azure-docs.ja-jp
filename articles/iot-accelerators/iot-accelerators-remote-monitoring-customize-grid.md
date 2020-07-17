@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: e1c694847a1ec16d4d7a7b1118df71cb06396186
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165932"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186290"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム グリッドを追加する
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のページに新しいグリッドを追加する方法について説明します。 この記事では、次の内容について説明します。
 
-- ローカル開発環境を準備する方法。
+- ローカルの開発環境を準備する方法。
 - Web UI のページに新しいグリッドを追加する方法。
 
 この記事で使用するグリッドの例では、「[Add a custom service to the Remote Monitoring solution accelerator web UI](iot-accelerators-remote-monitoring-customize-service.md)」(リモート監視ソリューション アクセラレータ Web UI にカスタム サービスを追加する) のハウツー記事で追加方法が説明されているサービスのデータが表示されます。
@@ -182,7 +182,7 @@ describe('BasicPage Component', () => {
 npm start
 ```
 
-前のコマンドは、ローカルの [http://localhost:3000/dashboard](http://localhost:3000/dashboard) で UI を実行します。 **[例]** ページに移動して、サービスからのグリッド表示データを確認します。
+前のコマンドは、`http://localhost:3000/dashboard` のローカルで UI を実行します。 **[例]** ページに移動して、サービスからのグリッド表示データを確認します。
 
 ## <a name="select-rows"></a>行を選択する
 
@@ -239,7 +239,7 @@ npm start
     ```js
     doSomething = () => {
       //Just for demo purposes. Don't console log in a real grid.
-      console.log('hard selected rows', this.gridApi.getSelectedRows());
+      console.log('Hard selected rows', this.gridApi.getSelectedRows());
     };
     ```
 
@@ -263,21 +263,21 @@ npm start
 1. ソフト選択されたリンクがクリックされると、**onSoftSelectChange** イベントがトリガーされます。 詳細のポップアップを開くなど、その行に必要なアクションが実行されます。 この例では、単にコンソールに出力されます。
 
     ```js
-    onSoftSelectChange = (rowId, rowEvent) => {
+    onSoftSelectChange = (rowId, rowData) => {
+      //Note: only the Id is reliable, rowData may be out of date
       const { onSoftSelectChange } = this.props;
-      const obj = (this.gridApi.getDisplayedRowAtIndex(rowId) || {}).data;
-      if (obj) {
+      if (rowId) {
         //Just for demo purposes. Don't console log a real grid.
-        console.log('Soft selected', obj);
-        this.setState({ softSelectedObj: obj });
+        console.log('Soft selected', rowId);
+        this.setState({ softSelectedId: rowId });
       }
       if (isFunc(onSoftSelectChange)) {
-        onSoftSelectChange(obj, rowEvent);
+        onSoftSelectChange(rowId, rowData);
       }
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のページの追加またはカスタマイズに使用できるリソースについて説明しました。
 

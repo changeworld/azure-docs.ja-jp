@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77920639"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box の配線方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "58077549"
     - **IP アドレス**: 192.168.100.5
     - **サブネット**: 255.255.255.0
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>静的 IP を使用して DATA ポート経由で転送する
@@ -67,14 +67,14 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
      ![2 ポートの設定](media/data-box-cable-options/cabling-2-port-setup.png)
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. 構成したデータ ポートに静的 IP を割り当てます。
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>オプション 2 - 別のコンピューターを介した初期設定
 
 次の手順に従ってケーブルを配線します。
 
-1. RJ45 イーサネット ケーブルを使用して、構成のために MGMT ポートとサーバーを直接接続します。
+1. RJ45 イーサネット ケーブルを使用して、構成用の MGMT ポートに別のコンピューターを直接接続します。
 2. 使用するポートが DATA 3 であれば RJ45 ケーブル、DATA 1 または DATA 2 であれば SFP+ ケーブルを使って、サーバーに接続します。 良好なパフォーマンスを得るには、10-GbE の DATA 1 ポートまたは DATA 2 ポートの使用をお勧めします。 データが格納されているサーバーとデータ ポートは、10-GbE スイッチを介して接続します。
 3. デバイスに接続するために使用するノート PC のイーサネット アダプターを、次のとおり構成します。
 
@@ -83,7 +83,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
      ![スイッチを使用した 2 ポートの設定](media/data-box-cable-options/cabling-with-static-ip.png)
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. DHCP サーバーにより割り当てられた IP アドレスを特定します。
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>静的 IP とスイッチを使用して DATA ポート経由で転送する 
@@ -107,7 +107,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
      ![スイッチを使用した 2 ポートの設定](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. 構成したデータ ポートに静的 IP を割り当てます。
 
 
@@ -129,6 +129,6 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 2. DHCP サーバーまたは DNS サーバーを使用して IP アドレスを特定します。
 3. 同じネットワーク上のサーバーから、DHCP サーバーによって割り当てられた IP アドレスを使用してデバイスのローカル Web UI にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - デバイスの配線を済ませたら、[Azure Data Box へのデータのコピー](data-box-deploy-copy-data.md)に進みます。

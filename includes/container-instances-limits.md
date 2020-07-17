@@ -4,16 +4,17 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
-ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 33a82a55b03cde79d2d80826041ee6d43565476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334812"
 ---
-| Resource | 既定の制限 |
+| リソース | 制限 |
 | --- | :--- |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコンテナー グループ数 | 100<sup>1</sup> |
+| 1 リージョン、1 [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの Standard SKU コンテナー グループ | 100<sup>1</sup> |
+| 1 リージョン、1 [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの Dedicated SKU コンテナー グループ | 0<sup>1</sup> |
 | コンテナー グループあたりのコンテナーの数 | 60 |
 | コンテナー グループあたりのボリュームの数 | 20 |
 | IP あたりのポートの数 | 5 |
@@ -25,7 +26,7 @@ ms.locfileid: "66146236"
 | 5 分あたりのコンテナーの削除件数 | 100<sup>1</sup> |
 
 
-<sup>1</sup>制限値の引き上げを要求するには、[Azure サポート リクエスト]を作成してください。[azure-support]<br />
+<sup>1</sup>制限値の引き上げを要求するには、[Azure サポート リクエスト][azure-support]を作成してください。<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

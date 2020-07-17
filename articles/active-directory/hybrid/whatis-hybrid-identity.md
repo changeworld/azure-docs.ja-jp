@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43238d44b2309d105ef14e696a5a16848d0b58
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896837"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "68779848"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Azure Active Directory でのハイブリッド ID とは
 
@@ -36,7 +36,7 @@ Azure AD でハイブリッド ID を実現するために、お使いのシナ�
 
 これらの認証方法でも、[シングル サインオン](how-to-connect-sso.md)機能が提供されます。  シングル サインオンでは、ユーザーが企業ネットワークに接続される会社のデバイスを使用するときに、自動的にサインインを行います。
 
-詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)」を参照してください。 
+詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)」を参照してください。 
 
 ## <a name="common-scenarios-and-recommendations"></a>一般的なシナリオと推奨事項 
 

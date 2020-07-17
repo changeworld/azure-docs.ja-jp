@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 192e3d4b0fee350b5e736aba423990874d8fd5f4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080129"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74482485"
 ---
-この記事では、次の概念を熟知しているか、次の記事を参照済みであることを前提としています。
+次の概念について理解してから、この記事をお読みになることをお勧めします。
 
 - [Microsoft ID プラットフォームの概要](../articles/active-directory/develop/v2-overview.md)
 - [認証の基本](../articles/active-directory/develop/authentication-scenarios.md)

@@ -1,19 +1,19 @@
 ---
-title: Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する | Microsoft Docs
+title: オブジェクト モデルと空間インテリジェンス グラフを理解する - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins を使用して、人、場所、デバイスの間の関係をモデル化します
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
-ms.author: alinast
-ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 12/30/2019
+ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542949"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231387"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 
@@ -23,9 +23,7 @@ Digital Twins のオブジェクト モデルは、ドメイン固有の概念�
 
 Digital Twins のオブジェクト モデルとオントロジーが整えば、"_空間グラフ_" を設定できます。 空間グラフは、IoT ソリューションに関連するスペース、デバイス、人の間における多数の関係の仮想表現です。 この図は、スマート ビルディングのオントロジーが使用された空間グラフの例です。
 
-![Digital Twins 空間グラフの構築][1]
-
-<a id="model"></a>
+[![Digital Twins 空間グラフの構築](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 空間グラフには、スペース、デバイス、センサー、ユーザーがまとめられています。 それぞれは、現実世界をモデル化する方法でリンクされています。 このサンプルでは、会場 43 には 4 つのフロアがあり、それぞれに多数の異なる領域があります。 ユーザーは各自のワークステーションに関連付けられていて、グラフの一部にアクセスできます。 管理者には空間グラフを変更する権限があるのに対し、訪問者にはビルのデータの一部しか見る権限がありません。
 
@@ -55,8 +53,6 @@ Digital Twins オブジェクト モデルでは、オブジェクトの以下�
   - 予め定義されている条件が満たされたときに通知を送る。 現在は、JavaScript で UDF を記述できます。
 - **マッチャー**は、特定のテレメトリ メッセージに対して実行される UDF を決定するオブジェクトです。
 - **エンドポイント**は、テレメトリ メッセージと Digital Twins のイベントをルーティングできる場所です (例: `Event Hub`、`Service Bus`、`Event Grid`)。
-
-<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>空間インテリジェンス グラフ
 
@@ -89,7 +85,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
  この画像には、完全な URL 形式が表示されています。
 
-![Digital Twins ポータル Management API][2]
+[![Digital Twins ポータル Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 空間インテリジェンス グラフの使用方法について詳しくは、Azure Digital Twins Management API シリーズのプレビューを参照してください。
 
@@ -101,12 +97,8 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 すべての API 呼び出しでは、[OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) を使用して認証を行う必要があります。 API は、[Microsoft REST API ガイドライン規則](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)に従います。 コレクションを返すほとんどの API は、[OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) のシステム クエリ オプションをサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - デバイスの接続と、Digital Twins にテレメトリ メッセージを送信する方法については、[Azure Digital Twins のデバイスの接続性とテレメトリの受信](concepts-device-ingress.md)に関するページを参照してください。
 
 - Management API の制限と調整については、[Azure Digital Twins API の管理と制限](concepts-service-limits.md)に関するページをご覧ください。
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

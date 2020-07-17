@@ -1,5 +1,6 @@
 ---
-title: Azure API Management ポリシーのサンプル - ログ記録のために Stackify にエラーを送信する | Microsoft Docs
+title: サンプルの API 管理ポリシー - ログ記録のために Stackify にエラーを送信する
+titleSuffix: Azure API Management
 description: Azure API Management ポリシーのサンプル - エラー ログ ポリシーを追加して、ログ記録のために Stackify にエラーを送信する　方法を示します。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 07cc83830fe2d467c611622bb66dfbb8c9429c2d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6662761df005211729dffb16282b8e0a8e2a8444
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864878"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75442438"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>ログ記録のために Stackify にエラーを送信する
 
@@ -30,7 +30,7 @@ ms.locfileid: "52864878"
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Log errors to Stackify.policy.xml)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 APIM ポリシーの詳細については、以下をご覧ください。
 

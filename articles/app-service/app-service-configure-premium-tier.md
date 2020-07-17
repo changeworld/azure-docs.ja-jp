@@ -1,27 +1,17 @@
 ---
-title: PremiumV2 レベルの構成 - Azure App Service | Microsoft Docs
+title: PremiumV2 レベルの構成
 description: 新しい PremiumV2 価格レベルにスケーリングすることによって、Azure App Service で Web、モバイル、および API アプリのパフォーマンスを向上させる方法について説明します。
 keywords: App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139749"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74672211"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
 
@@ -51,12 +41,12 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>で App Service プランを構成する場合は、 **[価格レベル]** を選択します。 
 
-**[Production]\(運用\)** を選択してから **[P1V2]**、**[P2V2]**、または **[P3V2]** を選択し、**[適用]** をクリックします。
+**[Production]\(運用\)** を選択してから **[P1V2]** 、 **[P2V2]** 、または **[P3V2]** を選択し、 **[適用]** をクリックします。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> オプションとして **[P1V2]** **[P2V2]**、および **[P3V2]** が表示されない場合、またはこれらのオプションがグレー表示になっている場合、App Service プランが含まれている基になる App Service デプロイで **PremiumV2** を利用できない可能性があります。 詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
+> オプションとして **[P1V2]** **[P2V2]** 、および **[P3V2]** が表示されない場合、またはこれらのオプションがグレー表示になっている場合、App Service プランが含まれている基になる App Service デプロイで **PremiumV2** を利用できない可能性があります。 詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>既存のアプリを PremiumV2 レベルにスケール アップする
 
@@ -66,11 +56,11 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> で、App Service アプリ ページを開きます。
 
-App Service アプリ ページの左側のナビゲーションで、**[スケール アップ (App Service のプラン)]** を選択します。
+App Service アプリ ページの左側のナビゲーションで、 **[スケール アップ (App Service のプラン)]** を選択します。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-**[Production]\(運用\)** を選択してから **[P1V2]**、**[P2V2]**、または **[P3V2]** を選択し、**[適用]** をクリックします。
+**[Production]\(運用\)** を選択してから **[P1V2]** 、 **[P2V2]** 、または **[P3V2]** を選択し、 **[適用]** をクリックします。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -78,7 +68,7 @@ App Service アプリ ページの左側のナビゲーションで、**[スケ�
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
-### <a name="if-you-get-an-error"></a>エラーが発生した場合
+### <a name="if-you-get-an-error"></a>エラーが表示された場合
 
 基になる App Service デプロイが PremiumV2 をサポートしていない場合、一部の App Service プランを PremiumV2 レベルにスケール アップすることはできません。  詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
 
@@ -114,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-次のコマンドは、App Service プランを _P1V2_ で作成します。 `-WorkerSize` のオプションは _[Small]_、_[Medium]_、および _[Large]_ です。
+次のコマンドは、App Service プランを _P1V2_ で作成します。 `-WorkerSize` のオプションは _[Small]_ 、 _[Medium]_ 、および _[Large]_ です。
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
@@ -125,5 +115,5 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>その他のリソース
 
-[Azure でのアプリのスケールアップ](web-sites-scale.md)  
+[Azure でのアプリのスケールアップ](manage-scale-up.md)  
 [手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)

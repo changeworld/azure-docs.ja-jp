@@ -1,8 +1,8 @@
-- name: デバイス管理のドキュメント
+- name: デバイス ID のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure AD のデバイス管理とは
+    - name: デバイス ID とは
       href: overview.md
     - name: Enterprise State Roaming とは
       href: enterprise-state-roaming-overview.md
@@ -18,37 +18,59 @@
     - name: Windows 10 の初回実行時に Azure AD 参加を構成する
       href: azuread-joined-devices-frx.md
 - name: 概念
-  expanded: false
-  items:
-    - name: オンプレミスのリソースへの SSO
-      href: azuread-join-sso.md
-- name: ハウツー ガイド
   expanded: true
   items:
-    - name: Azure portal を使用してデバイスを管理する
+    - name: Azure AD 登録済みデバイス
+      href: concept-azure-ad-register.md
+    - name: Azure AD 参加済みデバイス
+      href: concept-azure-ad-join.md
+    - name: ハイブリッド Azure AD 参加済みデバイス
+      href: concept-azure-ad-join-hybrid.md
+    - name: オンプレミスのリソースへの SSO
+      href: azuread-join-sso.md
+    - name: プライマリ更新トークン
+      href: concept-primary-refresh-token.md
+    - name: Azure マネージド ワークステーション
+      href: concept-azure-managed-workstation.md
+- name: 操作方法ガイド
+  expanded: false
+  items:
+    - name: Azure AD Join の実装を計画する
+      href: azureadjoin-plan.md
+    - name: Azure AD 参加済みデバイスにローカル管理者を割り当てる
+      href: assign-local-admin.md
+    - name: ハイブリッド Azure AD 参加の実装を計画する
+      href: hybrid-azuread-join-plan.md
+    - name: ハイブリッド Azure AD 参加の検証を制御する
+      href: hybrid-azuread-join-control.md
+    - name: デバイス ID を管理する
       href: device-management-azure-portal.md
     - name: 古いデバイスを管理する
       href: manage-stale-devices.md
-    - name: Azure AD Join の実装を計画する
-      href: azureadjoin-plan.md
-    - name: ハイブリッド Azure AD 参加の実装を計画する
-      href: hybrid-azuread-join-plan.md
-    - name: デバイスのハイブリッド Azure AD 参加を制御する
-      href: hybrid-azuread-join-control.md
-    - name: Azure AD 参加済みデバイスにローカル管理者を割り当てる
-      href: assign-local-admin.md
     - name: Enterprise State Roaming を有効にする
       href: enterprise-state-roaming-enable.md
-    - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
-      href: troubleshoot-hybrid-join-windows-current.md
-    - name: ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う
-      href: troubleshoot-hybrid-join-windows-legacy.md
-    - name: Enterprise State Roaming に関する問題のトラブルシューティング
-      href: enterprise-state-roaming-troubleshooting.md
-    - name: FAQ
-      href: faq.md
-    - name: Enterprise State Roaming を有効にする
-      href: enterprise-state-roaming-faqs.md
+    - name: Windows Azure VM と Azure AD
+      href: howto-vm-sign-in-azure-ad-windows.md
+    - name: 仮想デスクトップ インフラストラクチャ
+      href: howto-device-identity-virtual-desktop-infrastructure.md
+    - name: Azure マネージド ワークステーションをデプロイする
+      href: howto-azure-managed-workstation.md
+    - name: デバイス ID のトラブルシューティング
+      items:
+        - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
+          href: troubleshoot-hybrid-join-windows-current.md
+        - name: dsregcmd を使用したトラブルシューティング
+          href: troubleshoot-device-dsregcmd.md
+        - name: ハイブリッド Azure AD 参加済みのダウンレベル Windows デバイスのトラブルシューティング
+          href: troubleshoot-hybrid-join-windows-legacy.md
+        - name: Enterprise State Roaming に関する問題のトラブルシューティング
+          href: enterprise-state-roaming-troubleshooting.md
+    - name: よく寄せられる質問
+      items:
+        - name: FAQ
+          href: faq.md
+        - name: Enterprise State Roaming を有効にする
+          href: enterprise-state-roaming-faqs.md
 - name: リファレンス
   items:
     - name: Enterprise State Roaming GPO の設定
@@ -59,13 +81,13 @@
   items:
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

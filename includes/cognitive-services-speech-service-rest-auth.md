@@ -4,38 +4,43 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145363"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78668304"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 各要求には Authorization ヘッダーが必要です。 次の表は、各サービスでサポートされているヘッダーを示したものです。
 
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | はい | いいえ |
-| Authorization:ベアラー | はい | はい |
+| Authorization: Bearer | はい | はい |
 
-`Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例: 
+`Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 次に例を示します。
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-`Authorization: Bearer` ヘッダーを使用する場合は、`issueToken` エンドポイントに対して要求を実行する必要があります。 この要求では、サブスクリプション キーを、10 分間有効なアクセス トークンと交換します。 以降のいくつかのセクションでは、トークンの取得方法と使用方法、更新方法について説明します。
-
+`Authorization: Bearer` ヘッダーを使用する場合は、`issueToken` エンドポイントに対して要求を実行する必要があります。 この要求では、サブスクリプション キーを、10 分間有効なアクセス トークンと交換します。 以降のいくつかのセクションでは、トークンの取得方法と使用方法について説明します。
 
 ### <a name="how-to-get-an-access-token"></a>アクセス トークンを取得する方法
 
 アクセス トークンを取得するには、`Ocp-Apim-Subscription-Key` とサブスクリプション キーを使用して、`issueToken` エンドポイントに対して要求を実行する必要があります。
 
-次のリージョンとエンドポイントがサポートされています。
+`issueToken` エンドポイントの形式は次のとおりです。
 
-[!INCLUDE [](./cognitive-services-speech-service-endpoints-token-service.md)]
+```http
+https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
+```
+
+次の表に示す、ご利用のサブスクリプションのリージョンと一致する識別子で `<REGION_IDENTIFIER>` を置き換えてください。
+
+[!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
 アクセス トークン要求の作成にあたっては、以下のサンプルを使用してください。
 
@@ -57,7 +62,7 @@ Content-Length: 0
 
 この例は、アクセス トークンを取得するための単純な PowerShell スクリプトです。 `YOUR_SUBSCRIPTION_KEY` は、お使いの Speech Service のサブスクリプション キーに置き換えてください。 必ず、実際のサブスクリプションに合ったリージョンの正しいエンドポイントを使用してください。 この例では現在、米国西部に設定されています。
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -76,7 +81,7 @@ $OAuthToken
 
 cURL は Linux (および Windows Subsystem for Linux) で使用できるコマンドライン ツールです。 この cURL コマンドは、アクセス トークンを取得する方法を示しています。 `YOUR_SUBSCRIPTION_KEY` は、お使いの Speech Service のサブスクリプション キーに置き換えてください。 必ず、実際のサブスクリプションに合ったリージョンの正しいエンドポイントを使用してください。 この例では現在、米国西部に設定されています。
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -88,7 +93,7 @@ curl -v -X POST
 
 この C# クラスは、アクセス トークンを取得する方法を示しています。 クラスをインスタンス化するときに、お使いの Speech Service のサブスクリプション キーを渡す必要があります。 お使いのサブスクリプションが米国西部リージョンにない場合は、実際のサブスクリプションのリージョンに合わせて `FetchTokenUri` の値を変更してください。
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =
@@ -130,6 +135,7 @@ public class Authentication
 import requests
 
 subscription_key = 'REPLACE_WITH_YOUR_KEY'
+
 
 def get_token(subscription_key):
     fetch_token_url = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'

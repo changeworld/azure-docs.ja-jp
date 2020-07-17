@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 74f15452c7def068403b97b11e784170835edc18
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156320"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67133621"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager の要求を認証するための準備
 [Azure Resource Manager][lnk-authenticate-arm] と Azure Active Directory (AD) を使用して、リソース上で実行するすべての操作を認証する必要があります。 これを構成するうえで、PowerShell または Azure CLI を使用するのが最も簡単な方法です。
@@ -42,7 +42,7 @@ ms.locfileid: "66156320"
    
    * **{Display name}:** **MySampleApp** など、アプリケーションの表示名。
    * **{Home page URL}:** **http:\//mysampleapp/home** など、お使いのアプリのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
-   * **{Application identifier}:**  **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Application identifier}:** **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
    * **{Password}:** 自分のアプリで認証に使用するパスワード。
      
      ```powershell
@@ -50,12 +50,12 @@ ms.locfileid: "66156320"
      New-AzADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. 作成したアプリケーションの **ApplicationId** を書き留めておきます。 この情報は後で必要になります。
-5. 次のコマンドを使用して新しいサービス プリンシパルを作成します。**{MyApplicationId}** を前の手順で書き留めた **ApplicationId** と置き換えます。
+5. 次のコマンドを使用して新しいサービス プリンシパルを作成します。 **{MyApplicationId}** を前の手順で書き留めた **ApplicationId** と置き換えます。
    
     ```powershell
     New-AzADServicePrincipal -ApplicationId {MyApplicationId}
     ```
-6. 次のコマンドを使用してロール割り当てを設定します。**{MyApplicationId}** を自分の **ApplicationId** と置き換えます。
+6. 次のコマンドを使用してロール割り当てを設定します。 **{MyApplicationId}** を自分の **ApplicationId** と置き換えます。
    
     ```powershell
     New-AzRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
@@ -66,7 +66,7 @@ ms.locfileid: "66156320"
 * TenantId
 * SubscriptionId
 * ApplicationId
-* パスワード
+* Password
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: /powershell/azure/install-Az-ps
+[lnk-powershell-install]: /powershell/azure/install-az-ps

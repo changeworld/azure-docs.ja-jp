@@ -1,23 +1,18 @@
 ---
 title: Azure Recovery Services コンテナーとサーバーの管理
-description: Azure Recovery Services コンテナーでジョブとアラートを管理します
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+description: この記事では、Recovery Services コンテナーの [概要] ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。
 ms.topic: conceptual
-ms.date: 8/21/2018
-ms.author: raynew
-ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 07/08/2019
+ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268874"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131968"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
-この記事では、Recovery Services コンテナーの **[概要]** ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。 一覧から Recovery Services コンテナーを開くと、選択したコンテナーの **[概要]** ダッシュボードが開きます。 このダッシュボードでは、コンテナーについてのさまざまな詳細が提供されます。 "*タイル*" で、重大アラートと警告アラートの状態、進行中のバックアップ ジョブと失敗したバックアップ ジョブ、使用されているローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の量が示されます。 Azure VM をコンテナーにバックアップする場合、[**[バックアップの事前チェックの状態]** タイルには重大項目または警告項目が表示されます](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。 次の図は、**Contoso-vault** に対する **[概要]** ダッシュボードです。 **[バックアップ項目]** タイルでは、コンテナーに 9 つの項目が登録されていることが示されています。
+この記事では、Recovery Services コンテナーの **[概要]** ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。 一覧から Recovery Services コンテナーを開くと、選択したコンテナーの **[概要]** ダッシュボードが開きます。 このダッシュボードでは、コンテナーについてのさまざまな詳細が提供されます。 "*タイル*" で、重大アラートと警告アラートの状態、進行中のバックアップ ジョブと失敗したバックアップ ジョブ、使用されているローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の量が示されます。 Azure VM をコンテナーにバックアップする場合、[ **[バックアップの事前チェックの状態]** タイルには重大項目または警告項目が表示されます](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)。 次の図は、**Contoso-vault** に対する **[概要]** ダッシュボードです。 **[バックアップ項目]** タイルでは、コンテナーに 9 つの項目が登録されていることが示されています。
 
 ![Recovery Services コンテナーのダッシュボード](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -25,14 +20,13 @@ ms.locfileid: "56268874"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-
 ## <a name="open-a-recovery-services-vault"></a>Recovery Services コンテナーを開く
 
 アラートを監視するには、または Recovery Services コンテナーに関する管理データを表示するには、コンテナーを開きます。
 
 1. Azure サブスクリプションを使用して、[Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. ポータルで、**[すべてのサービス]** をクリックします。
+2. ポータルで、 **[すべてのサービス]** をクリックします。
 
    ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
@@ -55,7 +49,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 [監視] セクションには、定義済みの**バックアップ アラート** クエリおよび**バックアップ ジョブ** クエリの結果が表示されます。 監視タイルでは以下に関する最新情報が提供されます。
 
 * バックアップ ジョブに関する重大アラートと警告アラート (過去 24 時間)
-* Azure VM の事前チェックの状態 - 事前チェックの状態について詳しくは、「[Backup blog on Backup Pre-check status](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)」(バックアップの事前チェックの状態に関するバックアップ ブログ) をご覧ください。
+* Azure VM の事前チェックの状態。 事前チェックの状態の完全な情報については、「[バックアップの事前チェックの状態](#backup-pre-check-status)」を参照してください。
 * 進行中のバックアップ ジョブ、および失敗したジョブ (過去 24 時間)。
 
 使用状況のタイルでは次の情報が提供されます。
@@ -69,6 +63,22 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 上の図の [バックアップ アラート] メニューは、状態がアクティブ、重大度が重大、時刻が過去 24 時間でフィルター処理されています。
 
+### <a name="backup-pre-check-status"></a>バックアップの事前チェックの状態
+
+バックアップの事前チェックでは、VM の構成に、バックアップに悪影響を及ぼす可能性がある問題がないかどうかがチェックされます。 この情報は集計され、Recovery Services コンテナーのダッシュボードから直接表示できます。また、ファイル整合性バックアップやアプリケーション整合性バックアップが正常に行われるようにするための是正措置に関する推奨事項が提供されます。 インフラストラクチャを必要とせず、追加コストもありません。  
+
+バックアップの事前チェックは、Azure VM のスケジュールされたバックアップ操作の一部として実行されます。 これらは、次のいずれかの状態で終了します。
+
+* **合格**: この状態は、この VM の構成であればバックアップが成功すると見なされ、是正措置を実行する必要がないことを示します。
+* **警告**:この状態は、この VM の構成にバックアップの失敗につながる*可能性がある*問題が 1 つ以上存在することを示しています。 バックアップが正常に行われるようにするために*推奨される*手順が示されます。 たとえば、最新の VM エージェントがインストールされていないと、バックアップが断続的に失敗する可能性があります。 このような状況の場合、警告状態が発生します。
+* **[高]** :この状態は、この VM の構成にバックアップの失敗に*つながる*クリティカルな問題が 1 つ以上存在することを示しています。バックアップが正常に行われるようにするための*必要な*手順が示されます。 たとえば、VM の NSG ルールの更新によって発生したあるネットワークの問題により、VM が Azure Backup サービスと通信できなくなるため、バックアップが失敗します。 このような状況の場合、クリティカルな状態が発生します。
+
+次の手順に従って、Recovery Services コンテナーでの VM バックアップのバックアップ事前チェックによって報告された問題の解決を開始します。
+
+* Recovery Services コンテナーのダッシュボードで、 **[バックアップの事前チェックの状態 (Azure VM)]** タイルを選択します。
+* バックアップの事前チェックの状態が **[クリティカル]** または **[警告]** のいずれかである VM を選択します。 この操作により、 **[VM の詳細]** ペインが開きます。
+* ペインの上部にあるペインの通知を選択して、構成の問題の説明と修正手順を表示します。
+
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
 
 [バックアップ アラート] メニューにアクセスするには、[Recovery Services コンテナー] メニューで **[バックアップ アラート]** をクリックします。
@@ -79,19 +89,19 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 バックアップ アラートの一覧には、フィルター処理されたアラートについての選択された情報が表示されます。 [バックアップ アラート] メニューでは、重大アラートまたは警告アラートでフィルター処理できます。
 
 | アラート レベル | アラートを生成するイベント |
 | ----------- | ----------- |
-| 重大 | 重要アラートを受け取るのは、バックアップ ジョブが失敗したとき、回復ジョブが失敗したとき、およびサーバーでの保護を停止したのにデータが保持されているときです。|
+| Critical | 重要アラートを受け取るのは、バックアップ ジョブが失敗したとき、回復ジョブが失敗したとき、およびサーバーでの保護を停止したのにデータが保持されているときです。|
 | 警告 | 警告アラートを受け取るのは、バックアップ ジョブが警告で完了したとき (たとえば、破損の問題のために 100 個未満のファイルがバックアップされていないとき、または 1,000,000 個より多くのファイルが正常にバックアップされたとき) です。 |
-| 情報 | 現在、情報アラートは使用されていません。 |
+| Informational | 現在、情報アラートは使用されていません。 |
 
 ### <a name="viewing-alert-details"></a>アラートの詳細を表示する
 
-バックアップ アラート レポートでは、各アラートに関して 8 項目の詳細が追跡されています。 レポートの詳細を編集するには、**[列の選択]** ボタンを使用します。
+バックアップ アラート レポートでは、各アラートに関して 8 項目の詳細が追跡されています。 レポートの詳細を編集するには、 **[列の選択]** ボタンを使用します。
 
 ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -101,14 +111,14 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 * バックアップ項目
 * 保護されるサーバー
 * 重大度
-* 期間
+* Duration
 * 作成時刻
-* 状態
+* Status
 * 最新発生時刻
 
 ### <a name="change-the-details-in-alerts-report"></a>アラート レポートで詳細を変更する
 
-1. レポートの情報を変更するには、**[バックアップ アラート]** メニューの **[列の選択]** をクリックします。
+1. レポートの情報を変更するには、 **[バックアップ アラート]** メニューの **[列の選択]** をクリックします。
 
    ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
@@ -120,11 +130,11 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 3. **[完了]** をクリックして変更を保存し、[列の選択] メニューを閉じます。
 
-   変更したけれども変更を保存したくない場合は、**[リセット]** をクリックして、選択した列を最後に保存した構成に戻します。
+   変更したけれども変更を保存したくない場合は、 **[リセット]** をクリックして、選択した列を最後に保存した構成に戻します。
 
 ### <a name="change-the-filter-in-alerts-report"></a>アラート レポートでフィルターを変更する
 
-アラートの重大度、状態、開始時刻、終了時刻を変更するには、**[フィルター]** メニューを使用します。
+アラートの重大度、状態、開始時刻、終了時刻を変更するには、 **[フィルター]** メニューを使用します。
 
 > [!NOTE]
 > バックアップ アラートのフィルターを編集しても、コンテナーの [概要] ダッシュボードに表示されている重大アラートまたは警告アラートは変化しません。
@@ -138,7 +148,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
    ![[フィルター] メニューを選択する](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. 重大度、状態、開始時刻、または終了時刻を編集し、**[完了]** をクリックして変更を保存します。
+2. 重大度、状態、開始時刻、または終了時刻を編集し、 **[完了]** をクリックして変更を保存します。
 
 ## <a name="configuring-notifications-for-alerts"></a>アラートの通知を構成する
 
@@ -146,9 +156,9 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
    ![アラートのフィルター処理](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-既定では、メール通知は**オン**になります。 メール通知を停止するには、**[オフ]** をクリックします。
+既定では、メール通知は**オン**になります。 メール通知を停止するには、 **[オフ]** をクリックします。
 
-グループ化したくない場合、またはアラートを生成する項目が多くない場合は、**[通知]** コントロールで **[アラートごと]** を選択します。 アラートごとに 1 つの通知が生成され (既定の設定)、解決策の電子メールが即時に送信されます。
+グループ化したくない場合、またはアラートを生成する項目が多くない場合は、 **[通知]** コントロールで **[アラートごと]** を選択します。 アラートごとに 1 つの通知が生成され (既定の設定)、解決策の電子メールが即時に送信されます。
 
 **[1 時間ごとのダイジェスト]** を選択すると、過去 1 時間に生成されて未解決のアラートを説明するメールが受信者に送信されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
 
@@ -156,7 +166,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ## <a name="manage-backup-items"></a>バックアップ項目の管理
 
-Recovery Services コンテナーには、多くの種類のバックアップ データが保持されます。 バックアップの種類の完全な一覧については、「[バックアップできるアプリケーションとワークロード](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)」をご覧ください。 さまざまなサーバー、コンピューター、データベース、ワークロードを管理するには、**[バックアップ項目]** タイルをクリックして、コンテナーの内容を表示します。
+Recovery Services コンテナーには、多くの種類のバックアップ データが保持されます。 バックアップできる内容の[詳細についてはこちら](backup-overview.md#what-can-i-back-up)を参照してください。 さまざまなサーバー、コンピューター、データベース、ワークロードを管理するには、 **[バックアップ項目]** タイルをクリックして、コンテナーの内容を表示します。
 
 ![Backup items tile](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -168,7 +178,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 ![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-仮想マシンの一覧には、関連付けられているリソース グループ、前回の[バックアップの事前チェック](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)、前回のバックアップの状態、最新の復元ポイントの日時など、有用なデータが表示されます。 最後の列の省略記号をクリックすると、一般的なタスクをトリガーするメニューが開きます。 列で提供される役立つデータは、バックアップの種類ごとに異なります。
+仮想マシンの一覧には、関連付けられているリソース グループ、前回の[バックアップの事前チェック](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)、前回のバックアップの状態、最新の復元ポイントの日時など、有用なデータが表示されます。 最後の列の省略記号をクリックすると、一般的なタスクをトリガーするメニューが開きます。 列で提供される役立つデータは、バックアップの種類ごとに異なります。
 
 ![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -178,7 +188,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-ジョブに関する他の詳細を見るには、**[進行中]** または **[失敗]** をクリックして、その状態でフィルター処理された [バックアップ ジョブ] メニューを開きます。
+ジョブに関する他の詳細を見るには、 **[進行中]** または **[失敗]** をクリックして、その状態でフィルター処理された [バックアップ ジョブ] メニューを開きます。
 
 ### <a name="backup-jobs-menu"></a>[バックアップ ジョブ] メニュー
 
@@ -196,7 +206,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 フィルターを変更するには:
 
-1. コンテナーの [バックアップ ジョブ] メニューで、**[フィルター]** をクリックします。
+1. コンテナーの [バックアップ ジョブ] メニューで、 **[フィルター]** をクリックします。
 
    ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
@@ -204,7 +214,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
    ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. フィルターの設定を選択して、**[完了]** をクリックします。 フィルター処理された一覧が新しい設定に基づいて更新されます。
+2. フィルターの設定を選択して、 **[完了]** をクリックします。 フィルター処理された一覧が新しい設定に基づいて更新されます。
 
 #### <a name="item-type"></a>項目の種類
 
@@ -216,19 +226,19 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * Azure Storage
 * Azure ワークロード
 
-#### <a name="operation"></a>操作
+#### <a name="operation"></a>Operation
 
 1 つの操作またはすべての操作を表示することができます。 2 つまたは 3 つの操作を選択することはできません。 使用可能な操作は次のとおりです。
 
 * すべての操作
-* 登録
+* [登録]
 * バックアップの構成
 * バックアップ
 * 復元
 * バックアップを無効にする
 * バックアップ データの削除
 
-#### <a name="status"></a>状態
+#### <a name="status"></a>Status
 
 すべての状態または 1 つの状態を表示できます。 2 つまたは 3 つの状態を選択することはできません。 使用可能な状態は次のとおりです。
 
@@ -236,7 +246,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * 完了
 * 進行中
 * 失敗
-* キャンセル
+* Canceled
 * 完了 (警告あり)
 
 #### <a name="start-time"></a>開始時刻
@@ -249,9 +259,9 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 ### <a name="export-jobs"></a>ジョブをエクスポートする
 
-すべてのジョブ メニュー情報を含むスプレッドシートを作成するには、**[ジョブのエクスポート]** を使用します。 スプレッドシートには、すべてのジョブの概要を含む 1 つのシートと、ジョブごとに個別のシートがあります。
+すべてのジョブ メニュー情報を含むスプレッドシートを作成するには、 **[ジョブのエクスポート]** を使用します。 スプレッドシートには、すべてのジョブの概要を含む 1 つのシートと、ジョブごとに個別のシートがあります。
 
-ジョブの情報をスプレッドシートにエクスポートするには、**[ジョブのエクスポート]** をクリックします。 サービスにより、コンテナーの名前と日付を使用してスプレッドシートが作成されます。ただし、名前は変更できます。
+ジョブの情報をスプレッドシートにエクスポートするには、 **[ジョブのエクスポート]** をクリックします。 サービスにより、コンテナーの名前と日付を使用してスプレッドシートが作成されます。ただし、名前は変更できます。
 
 ## <a name="monitor-backup-usage"></a>バックアップの利用状況の監視
 
@@ -259,22 +269,6 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 * コンテナーに関連付けられているクラウド LRS ストレージの利用状況
 * コンテナーに関連付けられているクラウド GRS ストレージの利用状況
-
-
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
-Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。
-アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>通知が設定されているのに、電子メールが送信されないことはありますか。
-はい。 次のような状況では、通知は送信されません。
-
-* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した
-* ジョブが取り消された
-* 元のバックアップ ジョブが進行中のために、2 番目のバックアップ ジョブが失敗した
 
 ## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
 
@@ -290,7 +284,7 @@ Azure portal に Azure バックアップ エージェント ジョブの状態�
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`次に例を示します。<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)

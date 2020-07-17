@@ -1,19 +1,18 @@
 ---
-title: Azure Analysis Services サーバーに接続するための .odc ファイルの作成 | Microsoft Docs
+title: .odc ファイルで Azure Analysis Services に接続する | Microsoft Docs
 description: Azure の Analysis Services サーバーに接続してデータを取得するための Office データ接続ファイルを作成する方法を説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37f068be544f964f3aec63d85702098c8f382ab8
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187930"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73572686"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 
@@ -32,7 +31,7 @@ ms.locfileid: "54187930"
 
 4. 拡張子を `.odc` に設定して、C:\Users\\*username*\Documents\My Data Sources フォルダーにファイルを保存します。
 
-5. ファイルを右クリックして、**[Excel で開く]** をクリックします。 または Excel の **[データ]** リボンで、**[既存の接続]** をクリックしてファイルを選択し、**[開く]** をクリックします。
+5. ファイルを右クリックして、 **[Excel で開く]** をクリックします。 または Excel の **[データ]** リボンで、 **[既存の接続]** をクリックしてファイルを選択し、 **[開く]** をクリックします。
 
 
 

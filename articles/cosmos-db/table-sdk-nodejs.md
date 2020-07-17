@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 11/20/2017
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: 1cf72069d545fc1f4c337a1b67f5fd4aa2ef143c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 11/20/2018
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043721"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76771307"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API for Node.js:リリース ノートとリソース
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API for Node.js: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -36,7 +36,7 @@ ms.locfileid: "54043721"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * 一般公開リリース
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
@@ -48,9 +48,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>関連項目
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。 
+## <a name="see-also"></a>参照
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。 
 

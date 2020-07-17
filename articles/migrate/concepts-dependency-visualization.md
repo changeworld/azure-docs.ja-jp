@@ -1,80 +1,84 @@
 ---
-title: Azure Migrate の依存関係の視覚化 | Microsoft Docs
-description: Azure Migrate サービスにおけるアセスメントの計算の概要を説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Azure Migrate Server Assessment での依存関係の分析
+description: Azure Migrate Server Assessment を使用して、評価のために依存関係の分析を使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/15/2020
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004098"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82024763"
 ---
-# <a name="dependency-visualization"></a>依存関係の視覚化
+# <a name="dependency-analysis"></a>依存関係の分析
 
-[Azure Migrate](migrate-overview.md) サービスは、Azure への移行についてオンプレミスのマシンのグループを評価します。 Azure Migrate の依存関係可視化機能を使用して、グループを作成することができます。 この記事では、次の機能に関する情報を提供します。
-
-> [!NOTE]
-> 依存関係可視化機能は、Azure Government では使用できません。
+この記事では、Azure Migrate:Server Assessment での依存関係の分析について説明します。
 
 ## <a name="overview"></a>概要
 
-Azure Migrate の依存関係可視化機能を使用すると、移行評価用の信頼性の高いグループを作成できます。 依存関係の可視化を使用すると、マシンのネットワーク依存関係を表示したり、Azure に一緒に移行するために必要な関連するマシンを特定することができます。 この機能は、アプリケーションが導入されているマシンのノーハウをまったく持っておらず、そのアプリケーションを一緒にAzureに移行する必要がある状況で役立ちます。
+依存関係の分析を行うと、評価して Azure に移行しようとしているオンプレミスのマシン間の依存関係を特定する助けとなります。 
 
-## <a name="how-does-it-work"></a>それはどのように機能しますか?
+- Azure Migrate:Server Assessment では、複数のマシンを 1 つのグループにまとめ、そのグループを評価します。 依存関係の分析は、マシンをより正確にグループ化し、評価の信頼性を高めるために役立ちます。
+- 依存関係の分析によって、一緒に移行する必要があるマシンを特定できます。 コンピューターが使用中かどうか、または移行せずに使用を停止できるかどうかを特定できます。
+- 依存関係を分析すると、忘れたことがないことを確認し、移行時の突然の停止を回避する助けになります。
+- 分析は特に、マシンが、Azure に移行するアプリのデプロイの一部になっているかどうか不明な場合に役立ちます。
+- 依存関係の分析に関する一般的な質問を[確認](common-questions-discovery-assessment.md#what-is-dependency-visualization)してください。
 
-Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)の [Service Map](../operations-management-suite/operations-management-suite-service-map.md) ソリューションを使用します。
-- 依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。
-- 移行プロジェクトが作成された同じサブスクリプション内にのみ、ワークスペースを作成またはアタッチできます。
-- プロジェクトに Log Analytics ワークスペースをアタッチするには、**プロジェクト概要ページで** Essentials **セクションに遷移し**、**「構成が必要です」** をクリックします
+依存関係の分析をデプロイする場合は、2 つのオプションがあります
 
-    ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
-
-- ワークスペースを関連付けるときに、新しいワークスペースを作成するか、既存のワークスペースをアタッチするかを選択できます。
-  - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
-  - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるのは、[Service Map がサポートされている](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)リージョンで作成されたワークスペースのみであることに注意してください。 ワークスペースをアタッチできるようにするには、ワークスペースへの "読み取り" アクセスがあることを確認してください。
-
-  > [!NOTE]
-  > いったんワークスペースをプロジェクトにアタッチすると、後で変更できません。
-
-- Azure portal で検索に使用できるキー**移行プロジェクト**と値**プロジェクト名**に関連付けられているワークスペースがタグ付けされます。
-- プロジェクトに関連付けられているワークスペースに移動するためには、プロジェクト**概要**ページの **Essentials** セクションに遷移し、ワークスペースをアクセスできます。
-
-    ![Log Analytics ワークスペースを操作する](./media/concepts-dependency-visualization/oms-workspace.png)
-
-依存関係の視覚化を使用するには、分析するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。  
-
-- 各マシンに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。
-- 各マシンに [Dependency Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) をインストールする必要があります。
-- また、インターネットに接続されていないマシンの場合、それらに Log Analytics ゲートウェイをダウンロードしてインストールする必要があります。
-
-依存関係の視覚化を使用している場合を除き、評価するマシンにこれらのエージェントは不要です。
-
-## <a name="do-i-need-to-pay-for-it"></a>使用料金が必要になる場合
-
-Azure Migrate は、追加料金なしで利用できます。 Azure Migrate で依存関係可視化機能を使用するには、サービス マップが必要であり、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。 Azure Migrate の依存関係可視化機能は、Azure Migrate の最初の 180 日間無料です。
-
-1. この Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、[標準の Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/)料金が適用されます。
-2. 追加コストなしの移行シナリオをサポートするため、Service Map ソリューションでは、Azure Migrate プロジェクトを Log Analyticsワークスペースに関連付けした後の最初の 180 日間は料金が発生しません。 180 日が経過すると、Log Analytics の標準の料金が適用されます。
-
-ワークスペースにエージェントを登録する際には、エージェントのインストール手順のページで、プロジェクトによって指定された ID とキーを使用します。
-
-Azure Migrate プロジェクトが削除される際、それに伴ってワークスペースが削除されることはありません。 プロジェクトが削除された後は、Service Map を無料で使用することはできず、Log Analytics ワークスペースの有料階層に応じて各ノードが課金されます。
+- **エージェントベース**:エージェントベースの依存関係の分析では、分析するオンプレミスの各マシンにエージェントをインストールする必要があります。
+- **エージェントレス**:エージェントレスの分析では、クロスチェックを行うコンピューターにエージェントをインストールする必要はありません。 このオプションは現在プレビュー段階であり、VMware VM でのみ使用できます。
 
 > [!NOTE]
-> 依存関係の視覚化機能では、サービス マップは Log Analytics ワークスペース経由で使用されます。 Azure Migrate の一般提供が発表された 2018 年 2 月 28 日以降は、この機能を追加料金なしで使用できるようになりました。 無料のワークスペースを使用するには、新しいプロジェクトを作成する必要があります。 一般提供が開始される前の既存のワークスペースは課金対象のままとなるため、新しいプロジェクトに移動することをお勧めします。
+> エージェントベースの依存関係の分析は、Azure Government では使用できません。 エージェントレスの依存関係の分析を使用できます。
 
-Azure Migrate の価格については、[こちら](https://azure.microsoft.com/pricing/details/azure-migrate/)を参照してください。
+## <a name="agentless-analysis"></a>エージェントレスの分析
 
-## <a name="how-do-i-manage-the-workspace"></a>ワークスペースの管理方法
+エージェントレスの依存関係の分析は、それが有効になっているマシンから TCP 接続データをキャプチャすることで機能します。 分析するマシンにエージェントがインストールされている必要はありません。
 
-Azure Migrate 以外で Log Analytics ワークスペースを使用できます。 作成した移行プロジェクトを削除しても、ワークスペースは削除されません。 ワークスペースが不要になった場合は手動で[削除](../azure-monitor/platform/manage-access.md)します。
+### <a name="collected-data"></a>収集されるデータ
 
-移行プロジェクトを削除する場合を除き、Azure Migrate で作成されたワークスペースは削除しないでください。 削除した場合は、依存関係可視化機能は、期待どおりに機能しません。
+依存関係の検出が開始されると、アプライアンスは 5 分ごとにマシンのデータをポーリングし、データを収集します。 このデータは、vSphere API を使用して、vCenter Server 経由でゲスト VM から収集されます。 収集されたデータは、Azure Migrate アプライアンスで処理されて ID 情報が推測され、6 時間おきに Azure Migrate に送信されます。
 
-## <a name="next-steps"></a>次の手順
-- [マシンの依存関係マッピングを使用したマシンのグループ化](how-to-create-group-machine-dependencies.md)
-- [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)、よく寄せられる質問を確認します。
+ポーリングでは、以下のデータがマシンから収集されます。 
+- アクティブな接続が含まれるプロセスの名前。
+- アクティブな接続が含まれるプロセスを実行するアプリケーションの名前。
+- アクティブな接続に関する宛先のポート。
+
+## <a name="agent-based-analysis"></a>エージェントベースの分析
+
+エージェントベースの分析の場合、Server Assessment で Azure Monitor の [Service Map ソリューション](../azure-monitor/insights/service-map.md)を使用して、依存関係の視覚化と分析を可能にします。 分析する各マシンには、[Microsoft Monitoring Agent/Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)と [Dependency Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) をインストールする必要があります。
+
+### <a name="collected-data"></a>収集されるデータ
+
+エージェントベースの分析では、以下のデータが収集されます。
+
+- ソース マシンのサーバー名、プロセス、アプリケーション名。
+- ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。
+- 接続数、待機時間、データ転送に関する情報が収集され、Log Analytics クエリで使用できます。 
+
+
+## <a name="compare-agentless-and-agent-based"></a>エージェントレスとエージェントベースを比較する
+
+エージェントレスの視覚化とエージェントベースの視覚化の違いを次の表にまとめます。
+
+**要件** | **エージェントレス** | **エージェント ベース**
+--- | --- | ---
+サポート | このオプションは現在プレビュー段階であり、VMware VM でのみ使用できます。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)。 | 一般提供 (GA) 中。
+エージェント | クロスチェックを行うマシンにエージェントをインストールする必要はありません。 | 分析するオンプレミスの各マシンにエージェントをインストールします。[Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) と[依存関係エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+Log Analytics | 不要。 | Azure Migrate では、依存関係の分析のために [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)の [Service Map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) ソリューションを使用します。 
+しくみ | 依存関係の視覚化が有効になっているコンピューター上の TCP 接続データをキャプチャします。 検出後は、5 分間隔でデータが収集されます。 | マシンにインストールされている Service Map エージェントにより、TCP プロセスと、各プロセスの受信/送信接続に関するデータが収集されます。
+Data | ソース マシンのサーバー名、プロセス、アプリケーション名。<br/><br/> ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。 | ソース マシンのサーバー名、プロセス、アプリケーション名。<br/><br/> ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。<br/><br/> 接続数、待機時間、データ転送に関する情報が収集され、Log Analytics クエリで使用できます。 
+グラフ | 1 つのサーバーの依存関係マップを、1 時間から 30 日までの範囲で表示できます。 | 1 つのサーバーの依存関係マップ。<br/><br/> マップは 1 時間についてのみ表示できます。<br/><br/> サーバーのグループの依存関係マップ。<br/><br/> マップ ビューからグループのサーバーを追加および削除します。
+データのエクスポート | 現在、表形式でダウンロードすることはできません。 | データは Log Analytics で照会できます。
+
+
+
+## <a name="next-steps"></a>次のステップ
+- [VMware VM](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)、[物理サーバー](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)、および [Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements) に向けてエージェントベースの分析を設定するための要件を確認する。
+- VMware VM のエージェントレスの分析に関する要件を[確認](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)する。
+- エージェントベースの依存関係の視覚化を[設定する](how-to-create-group-machine-dependencies.md)
+- VMware VM のエージェントレスの依存関係の視覚化を[試す](how-to-create-group-machine-dependencies-agentless.md)。
+- 依存関係の視覚化について[よく寄せられる質問](common-questions-discovery-assessment.md#what-is-dependency-visualization)を確認する。
+
+

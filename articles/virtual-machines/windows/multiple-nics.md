@@ -1,25 +1,18 @@
 ---
-title: 複数の NIC を使用する Azure での Windows VM の作成と管理 | Microsoft Docs
+title: 複数の NIC を使用する Azure での Windows VM の作成と管理
 description: Azure PowerShell または Resource Manager テンプレートを使用して、複数の NIC を持つ Windows VM を作成および管理する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: cc4fb07874015112791ef2eaf9c39b31b690006c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978665"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870267"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロントエンドとバックエンドの接続に異なるサブネットを使用する場合です。 VM 上の複数の NIC を複数のサブネットに関連付けることはできますが、それらのサブネットはすべて同じ仮想ネットワーク (vNet) 内に存在する必要があります。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -28,7 +21,7 @@ Azure の仮想マシン (VM) は、複数の仮想ネットワーク インタ�
 
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="create-a-vm-with-multiple-nics"></a>複数 NIC を持つ VM の作成
 まず、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *EastUs* に作成します。
@@ -219,7 +212,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>テンプレートを使用した複数の NIC の作成
-Azure Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。 Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。 詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。 *copy* を使用して、作成するインスタンスの数を指定できます。
+Azure Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。 Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。 詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)」を参照してください。 *copy* を使用して、作成するインスタンスの数を指定できます。
 
 ```json
 "copy": {
@@ -294,7 +287,7 @@ Azure では、既定のゲートウェイが、仮想マシンにアタッチ�
 
     リストされたルートのうち、**Gateway** の値が *192.168.1.1* になっているルートは、プライマリ ネットワーク インターフェイスの既定のルートです。 **Gateway** の値が *192.168.2.1* になっているルートは、追加したルートです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 複数の NIC を持つ VM を作成する場合、「[Windows VM のサイズ](sizes.md)」を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
 
 

@@ -1,25 +1,16 @@
 ---
-title: スタンドアロン Azure Service Fabric クラスターの構成をアップグレードする | Microsoft Docs
+title: スタンドアロン クラスターの構成をアップグレードする
 description: スタンドアロン Service Fabric クラスターを実行する構成をアップグレードする方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665613"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790849"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>スタンドアロン クラスターの構成をアップグレードする 
 
@@ -82,9 +73,9 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 * 証明書の発行者の拇印のアップグレード: アップグレードのパスは、"証明書 CN = A、発行者の拇印 = IT1 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT1、IT2 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT2 (プライマリ)" です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 一部の [Service Fabric クラスター設定](service-fabric-cluster-fabric-settings.md)をカスタマイズする方法を学習します。
-* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)を行う方法を学習します。
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)を行う方法を学習します。
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)を行う方法を学習します。
 
 <!--Image references-->

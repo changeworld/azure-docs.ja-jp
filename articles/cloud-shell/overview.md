@@ -3,7 +3,7 @@ title: Azure Cloud Shell の概要 | Microsoft Docs
 description: Azure Cloud Shell について概説します。
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -12,40 +12,42 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "60199665"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75832465"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
-Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
-Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。
-Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
+Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできる対話形式の認証されたシェルです。
+Bash または PowerShell どちらかのシェル エクスペリエンスを作業方法に合わせて柔軟に選択できます。
 
 下のボタンをクリックし、shell.azure.com からお試しください。
 
-[![起動の埋め込み](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+[![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
 Azure Portal から Cloud Shell アイコンを使用して試してみる。
 
 ![ポータルの起動](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 ### <a name="browser-based-shell-experience"></a>ブラウザーベースのシェル環境
 Cloud Shell は、Azure の管理タスクを視野に入れて開発されたブラウザーベースのコマンド ライン環境です。
 Cloud Shell を利用することで、ローカル コンピューターに拘束されることなくクラウドならではの作業が可能となります。
 
 ### <a name="choice-of-preferred-shell-experience"></a>最適なシェル エクスペリエンスの選択
-ユーザーは、シェルのドロップダウンから Bash または PowerShell を選択できます。
+ユーザーは、Bash または PowerShell のいずれかを選択できます。
+1. **[Cloud Shell]** を選択します。
 
-![Cloud Shell の Bash](media/overview/overview-bash-pic.png)
+    ![[Cloud Shell] アイコン](media/overview/overview-cloudshell-icon.png)
 
-![Cloud Shell の PowerShell](media/overview/overview-ps-pic.png)
+2. **[Bash]** または **[PowerShell]** を選択します。
+
+    ![[Bash] または [PowerShell] を選択する](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>認証済みかつ構成済みの Azure ワークステーション
 Cloud Shell は Microsoft によって管理されており、広く使われているコマンド ライン ツールと言語サポートを提供しています。 さらに、Azure CLI または Azure PowerShell コマンドレットを介してすばやくリソースにアクセスできるよう、Cloud Shell では安全に自動認証が行われます。
@@ -71,11 +73,12 @@ Cloud Shell は、以下から使用できる柔軟なツールです。
 * [Visual Studio Code の Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure Files ストレージの接続
-Cloud Shell マシンは一時的なものであるため、ファイルを永続化するには新規または既存の Azure Files 共有を `clouddrive` としてマウントする必要があります。
+Cloud Shell マシンは一時的ですが、ファイルは、ディスク イメージを使用する方法と、`clouddrive` という名前のマウントされたファイル共有を使用する方法の 2 つの方法で保持されます。  Cloud Shell の初回起動時に、リソース グループ、ストレージ アカウント、Azure Files 共有を作成するように求められます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 1 つのファイル共有をマップすると、Cloud Shell の Bash と PowerShell の両方で使われます。
 
-Cloud Shell の初回起動時に、リソース グループ、ストレージ アカウント、Azure Files 共有を作成するように求められます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 1 つのファイル共有をマップすると、Cloud Shell の Bash と PowerShell の両方で使われます。
+[新規または既存のストレージ アカウント](persisting-shell-storage.md)をマウントする方法または [Cloud Shell で使用される永続化メカニズム](persisting-shell-storage.md#how-cloud-shell-storage-works)に関する記事で詳細をご確認ください。
 
-[新規または既存のストレージ アカウント](persisting-shell-storage.md)をマウントする方法に関するページを参照してください。
+> [!NOTE]
+> Cloud Shell ストレージ アカウントでは Azure Storage ファイアウォールはサポートされません。
 
 ## <a name="concepts"></a>概念
 * Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるホスト上で実行されます。
@@ -91,6 +94,6 @@ Cloud Shell の初回起動時に、リソース グループ、ストレージ 
 ## <a name="pricing"></a>価格
 Cloud Shell のホストとなるマシンは無料です。ただし、前提条件として Azure Files 共有をマウントする必要があります。 ストレージのコストは通常どおりに適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイックスタート](quickstart-powershell.md)

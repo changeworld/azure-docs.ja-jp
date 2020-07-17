@@ -1,19 +1,19 @@
 ---
-title: Swift で Azure Spatial Anchors を使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: Swift でアンカーを作成および配置する
 description: Swift で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5fe3ee8a98b24c26af8b08959d271226bde36cee
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f72e648d8f7cba0af01e7f87827d38368dba698d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244368"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74277318"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Swift で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 

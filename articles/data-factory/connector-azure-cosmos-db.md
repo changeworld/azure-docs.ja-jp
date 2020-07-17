@@ -1,51 +1,58 @@
 ---
-title: Data Factory を使用して Azure Cosmos DB (SQL API) との間でデータを双方向にコピーする | Microsoft Docs
-description: Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Cosmos DB (SQL API) にコピーしたり、Azure Cosmos DB のデータをサポートされるシンク ストアにコピーしたりする方法を説明します。
+title: Azure Cosmos DB のデータをコピーおよび変換する (SQL API)
+description: Azure Cosmos DB (SQL API) との間でデータをコピーする方法、および Data Factory を使用して Azure Cosmos DB (SQL API) のデータを変換する方法について説明します。
 services: data-factory, cosmosdb
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: jingwang
-ms.openlocfilehash: eca5e4cc96996c35e7c2181746cdb3de2e5a602c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.custom: seo-lt-2019
+ms.date: 12/11/2019
+ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820064"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81415382"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) との間でデータを双方向にコピーする
+# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) のデータをコピーおよび変換する
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-documentdb-connector.md)
 > * [現在のバージョン](connector-azure-cosmos-db.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Cosmos DB (SQL API) をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Cosmos DB (SQL API) との間でデータをコピーする方法、および Data Flow を使用して Azure Cosmos DB (SQL API) のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+
+
 
 >[!NOTE]
->このコネクタでは、Cosmos DB SQL API との間でのデータの双方向コピーのみがサポートされます。 MongoDB API については、[Azure Cosmos DB の MongoDB 用の API コネクタ](connector-azure-cosmos-db-mongodb-api.md)に関する記事を参照してください。 現在、他の種類の API はサポートされていません。
+>このコネクタでは、Cosmos DB SQL API のみがサポートされます。 MongoDB API については、[Azure Cosmos DB の MongoDB 用の API コネクタ](connector-azure-cosmos-db-mongodb-api.md)に関する記事を参照してください。 現在、他の種類の API はサポートされていません。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure Cosmos DB (SQL API) のデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Azure Cosmos DB (SQL API) にコピーしたりすることができます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+この Azure Cosmos DB (SQL API) コネクタは、次のアクティビティでサポートされます。
 
-Azure Cosmos DB (SQL API) コネクタを使用して次のことができます。
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [マッピング データ フロー](concepts-data-flow-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
+
+コピー アクティビティの場合、この Azure Cosmos DB (SQL API) コネクタは次のことをサポートします。
 
 - Azure Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction) との間で双方向にデータをコピーします。
 - **挿入**または **upsert** として Azure Cosmos DB に書き込みます。
-- JSON ドキュメントをインポートおよびエクスポートしたり、表形式データセットに、または表形式データセットからデータをコピーしたりします。 例としては、SQL データベースや CSV ファイルなどがあります。 JSON ファイルまたは他の Azure Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「JSON ドキュメントのインポート/エクスポート」を参照してください。
+- JSON ドキュメントをインポートおよびエクスポートしたり、表形式データセットに、または表形式データセットからデータをコピーしたりします。 例としては、SQL データベースや CSV ファイルなどがあります。 JSON ファイルまたは他の Azure Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「[JSON ドキュメントのインポートとエクスポート](#import-and-export-json-documents)」を参照してください。
 
 Data Factory は、Azure Cosmos DB に書き込むときに最適なパフォーマンスを提供できるよう、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)と統合されます。
 
 > [!TIP]
 > [データ移行に関するビデオ](https://youtu.be/5-SRNiC_qOU)では、Azure Blob Storage から Azure Cosmos DB にデータをコピーする手順について説明されています。 また、Azure Cosmos DB にデータを取り込むときのパフォーマンスのチューニングに関する一般的な考慮事項も説明されています。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,8 +65,8 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは **CosmosDb** に設定する必要があります。 | はい |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**メモ**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
-| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ  |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。<br />**注**:後の例で示すように、接続文字列でデータベース情報を指定する必要があります。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 このプロパティを指定しないと、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例**
 
@@ -69,10 +76,7 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
     "properties": {
         "type": "CosmosDb",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
-            }
+            "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -90,10 +94,7 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
     "properties": {
         "type": "CosmosDb",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "AccountEndpoint=<EndpointUrl>;Database=<Database>"
-            },
+            "connectionString": "AccountEndpoint=<EndpointUrl>;Database=<Database>",
             "accountKey": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -113,16 +114,16 @@ Azure Cosmos DB (SQL API) のリンクされたサービスでは、次のプロ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-このセクションでは、Azure Cosmos DB (SQL API) データセットでサポートされているプロパティの一覧を示します。 
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。 
-
-Azure Cosmos DB (SQL API) をコピー元またはコピー先としてデータのコピーを行うには、データセットの **type** プロパティを **DocumentDbCollection** に設定します。 次のプロパティがサポートされています。
+Azure Cosmos DB (SQL API) データセットでは、次のプロパティがサポートされます。 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、**DocumentDbCollection** を設定する必要があります。 |はい |
+| type | データセットの **type** プロパティは、**CosmosDbSqlApiCollection** に設定する必要があります. |はい |
 | collectionName |Azure Cosmos DB ドキュメント コレクションの名前です。 |はい |
+
+"DocumentDbCollection" 型のデータセットを使用する場合、コピーおよび検索のアクティビティの下位互換性のためにそのままサポートされています。Data Flow ではサポートされていません。 今後は新しいモデルを使用することをお勧めします。
 
 **例**
 
@@ -130,11 +131,12 @@ Azure Cosmos DB (SQL API) をコピー元またはコピー先としてデータ
 {
     "name": "CosmosDbSQLAPIDataset",
     "properties": {
-        "type": "DocumentDbCollection",
+        "type": "CosmosDbSqlApiCollection",
         "linkedServiceName":{
             "referenceName": "<Azure Cosmos DB linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [],
         "typeProperties": {
             "collectionName": "<collection name>"
         }
@@ -142,22 +144,9 @@ Azure Cosmos DB (SQL API) をコピー元またはコピー先としてデータ
 }
 ```
 
-### <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
-
-Azure Cosmos DB などのスキーマのないデータ ストアの場合、コピー アクティビティは、次の一覧で説明するいずれかの方法でスキーマを推論します。 [JSON ドキュメントをそのままインポートまたはエクスポートする](#import-or-export-json-documents)場合以外は、**structure** セクションにデータの構造を指定することがベスト プラクティスです。
-
-* データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory はスキーマとしてこの構造を優先します。 
-
-    行に列の値が含まれていない場合、列の値には null 値が指定されます。
-* データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory サービスはデータの最初の行を使用してスキーマを推論します。 
-
-    最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の行が欠落します。
-
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-このセクションでは、Azure Cosmos DB (SQL API) のソースとシンクでサポートされるプロパティの一覧を示します。
-
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。
+このセクションでは、Azure Cosmos DB (SQL API) のソースとシンクでサポートされるプロパティの一覧を示します。 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。
 
 ### <a name="azure-cosmos-db-sql-api-as-source"></a>ソースとしての Azure Cosmos DB (SQL API)
 
@@ -167,9 +156,12 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティは **DocumentDbCollectionSource** に設定する必要があります。 |はい |
-| query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
-| nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Azure Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返される場合、コピー アクティビティは値が "John" である列名 `Name.First` として識別します (**nestedSeparator** の値が **.**  (ドット) のとき)。 |いいえ <br />(既定値は **.**  (ドット) です) |
+| type | コピー アクティビティのソースの **type** プロパティを **CosmosDbSqlApiSource** に設定する必要があります。 |はい |
+| query |データを読み取る Azure Cosmos DB クエリを指定します。<br/><br/>例:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ <br/><br/>指定しないと、SQL ステートメント `select <columns defined in structure> from mycollection` が実行されます |
+| preferredRegions | Cosmos DB からデータを取得するときに接続するリージョンの優先リスト。 | いいえ |
+| PageSize | クエリ結果のページあたりのドキュメント数。 既定値は "-1" で、これはサービス側の動的ページ サイズが最大 1000 まで使用されることを意味します。 | いいえ |
+
+"DocumentDbCollectionSource" 型のソースを使用する場合、下位互換性のためにそのままサポートされます。 Cosmos DB からデータをコピーする豊富な機能を提供する新しいモデルを使用することをお勧めします。
 
 **例**
 
@@ -192,8 +184,11 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
         ],
         "typeProperties": {
             "source": {
-                "type": "DocumentDbCollectionSource",
-                "query": "SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\""
+                "type": "CosmosDbSqlApiSource",
+                "query": "SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"",
+                "preferredRegions": [
+                    "East US"
+                ]
             },
             "sink": {
                 "type": "<sink type>"
@@ -203,6 +198,8 @@ Azure Cosmos DB (SQL API) からデータをコピーするには、コピー �
 ]
 ```
 
+Cosmos DB からデータをコピーする場合、[JSON ドキュメントをそのままエクスポートする](#import-and-export-json-documents)場合を除き、ベスト プラクティスはコピー アクティビティでマッピングを指定することです。 Data Factory では、アクティビティで指定したマッピングが優先されます。行に列の値が含まれていない場合、列の値には null 値が指定されます。 マッピングを指定しない場合、Data Factory では、データの最初の行を使用してスキーマが推論されます。 最初の行に完全なスキーマが含まれていないと、アクティビティ操作の結果で一部の行が欠落します。
+
 ### <a name="azure-cosmos-db-sql-api-as-sink"></a>シンクとしての Azure Cosmos DB (SQL API)
 
 Azure Cosmos DB (SQL API) にデータをコピーするには、コピー アクティビティの **sink** の種類を **DocumentDbCollectionSink** に設定します。 
@@ -211,13 +208,18 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの **type** プロパティは **DocumentDbCollectionSink** に設定する必要があります。 |はい |
-| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**メモ**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ <br />(既定値は **insert** です) |
-| writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ <br />(既定値は **10,000**) |
-| nestingSeparator |入れ子になった文書が必要であることを示す **source** 列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、**nestedSeparator** が **.**  (ドット) の場合は、次の JSON 構造を Azure Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}`  |いいえ <br />(既定値は **.**  (ドット) です) |
+| type | コピー アクティビティのシンクの **type** プロパティは **CosmosDbSqlApiSink** に設定する必要があります。 |はい |
+| writeBehavior |Azure Cosmos DB にデータを書き込む方法を示します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ ID を持つドキュメントが既に存在する場合に、そのドキュメントを置き換えることです。それ以外の場合はドキュメントを挿入します。<br /><br />**注**:元のドキュメントまたは列のマッピングで ID が指定されていない場合、Data Factory によってドキュメントの ID が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBatchSize | Data Factory では、[Azure Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)を使用して Azure Cosmos DB にデータが書き込まれます。 **writeBatchSize** プロパティにより、ADF でライブラリに提供されるドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。以下のヒントをご覧ください。 |いいえ<br />(既定値は **10,000**) |
+| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化と推奨のために、Cosmos DB RU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
+
+>[!TIP]
+>JSON ドキュメントをそのままインポートするには、「[JSON ドキュメントのインポートとエクスポート](#import-and-export-json-documents)」セクションを参照してください。表形式のデータからコピーするには、「[リレーショナル データベースから Cosmos DB への移行](#migrate-from-relational-database-to-cosmos-db)」を参照してください。
 
 >[!TIP]
 >Cosmos DB では、1 つの要求のサイズは 2 MB に制限されます。 式は、"要求サイズ = 1 つのドキュメント サイズ * バッチ書き込みサイズ" です。 "**要求のサイズが大きすぎる**" というエラーが発生する場合は、コピー シンクの構成で **`writeBatchSize` の値を小さくします**。
+
+"DocumentDbCollectionSink" 型のソースを使用する場合、下位互換性のためにそのままサポートされます。 Cosmos DB からデータをコピーする豊富な機能を提供する新しいモデルを使用することをお勧めします。
 
 **例**
 
@@ -243,7 +245,7 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
                 "type": "<source type>"
             },
             "sink": {
-                "type": "DocumentDbCollectionSink",
+                "type": "CosmosDbSqlApiSink",
                 "writeBehavior": "upsert"
             }
         }
@@ -251,19 +253,77 @@ Azure Cosmos DB (SQL API) にデータをコピーするには、コピー ア�
 ]
 ```
 
-## <a name="import-or-export-json-documents"></a>JSON ドキュメントをインポートまたはエクスポートする
+### <a name="schema-mapping"></a>スキーマ マッピング
+
+Azure Cosmos DB から表形式のシンク、あるいはその逆の方向でデータをコピーするには、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)に関するセクションを参照してください。
+
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+マッピング データフローでデータを変換する場合は、Cosmos DB でコレクションの読み取りと書き込みを行うことができます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事を参照してください。
+
+### <a name="source-transformation"></a>ソース変換
+
+Azure Cosmos DB に固有の設定は、ソース変換の **[Source Options]\(ソース オプション\)** タブにあります。 
+
+**Include system columns (システム列を含める):** true にすると、CosmosDB からのデータ フローのメタデータに ```id``` や ```_ts``` といったシステム列が含められます。 コレクションを更新するときは、既存の行 ID を把握できるように、これを含めることが重要となります。
+
+**ページ サイズ:** クエリ結果のページあたりのドキュメント数。 既定値は "-1" で、サービスの動的ページが最大 1000 個使用されます。
+
+**スループット**: このデータ フローの各実行について、CosmosDB コレクションの読み取り操作時に適用したい RU 数に対するオプションの値を設定します。 最小は 400 です。
+
+**Preferred regions (優先リージョン):** このプロセスの優先読み取りリージョンを選択します。
+
+#### <a name="json-settings"></a>JSON 設定
+
+**1 つのドキュメント:** ADF でファイル全体を 1 つの JSON ドキュメントとして扱う場合は、このオプションを選択します。
+
+**引用符で囲まれていない列名:** JSON の列名が引用符で囲まれていない場合は、このオプションを選択します。
+
+**コメントあり:** JSON ドキュメントのデータにコメントが含まれている場合は、このオプションを使用します。
+
+**一重引用符付き:** ドキュメント内の列と値が一重引用符で囲まれている場合は、このオプションを選択する必要があります。
+
+**円記号によるエスケープ:** バックスラッシュを使用して JSON 内の文字をエスケープする場合は、このオプションを選択します。
+
+### <a name="sink-transformation"></a>シンク変換
+
+Azure Cosmos DB に固有の設定は、シンク変換の **[設定]** タブにあります。
+
+**Update method (更新方法):** 対象となるデータベースに対して許可される操作を指定します。 既定では、挿入のみが許可されます。 行を更新、アップサート、または削除するには、それらのアクションに対して行をタグ付けするために行の変更変換が必要になります。 更新、アップサート、削除の場合、1 つまたは複数のキー列を設定して、変更する行を決定する必要があります。
+
+**Collection action (コレクション アクション):** 書き込み前にターゲット コレクションを再作成するかどうかを決定します。
+* なし: コレクションに対してアクションは実行されません。
+* 再作成: コレクションは削除され、再作成されます
+
+**Batch size**: 各バケットに書き込まれる行数を制御します。 バッチ サイズを大きくすると、圧縮とメモリの最適化が向上しますが、データをキャッシュする際にメモリ不足の例外が発生するリスクがあります。
+
+**パーティション キー:** コレクションのパーティション キーを表す文字列を入力します。 例: ```/movies/title```
+
+**スループット**: このデータ フローの実行ごとに CosmosDB コレクションに適用する RU の数のオプション値を設定します。 最小は 400 です。
+
+**Write throughput budget (書き込みスループット予算)** : 一括インジェスト Spark ジョブに割り当てる RU の数を表す整数です。 この数は、コレクションに割り当てられる合計スループットには含まれません。
+
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="import-and-export-json-documents"></a>JSON ドキュメントのインポートとエクスポート
 
 Azure Cosmos DB (SQL API) コネクタを使用して簡単に次のことができます。
 
+* 2 つの Azure Cosmos DB コレクション間でドキュメントをそのままコピーします。
 * Azure Blob Storage、Azure Data Lake Store、Azure Data Factory でサポートされているその他のファイル ベースのストアなどのさまざまなソースから Azure Cosmos DB に JSON ドキュメントをインポートします。
 * JSON ドキュメントを Azure Cosmos DB コレクションからさまざまなファイル ベースのストアにエクスポートします。
-* 2 つの Azure Cosmos DB コレクション間でドキュメントをそのままコピーします。
 
 スキーマに依存しないコピーを実行するには:
 
-* データ コピー ツールを使うときに、**[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションを選択します。
-* アクティビティの作成を使用するときは、Azure Cosmos DB データセットの **structure** (*schema* という名前のこともあります) セクションを指定しないでください。 また、コピー アクティビティの Azure Cosmos DB の source または sink で **nestingSeparator** プロパティを指定しないでください。 JSON ファイルをインポートまたはエクスポートするときは、対応するファイル ストアのデータセットで、**format** の種類を **JsonFormat** として指定し、**filePattern** を「[JSON 形式](supported-file-formats-and-compression-codecs.md#json-format)」セクションで説明されているように構成します。 そして、**structure** セクションを指定せず、書式設定の残りの部分をスキップします。
+* データ コピー ツールを使うときに、 **[Export as-is to JSON files or Cosmos DB collection]\(JSON ファイルまたは Cosmos DB コレクションにそのままエクスポートする\)** オプションを選択します。
+* アクティビティの作成を使用する場合は、ソースまたはシンクの対応するファイル ストアで JSON 形式を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="migrate-from-relational-database-to-cosmos-db"></a>リレーショナル データベースから Cosmos DB への移行
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+SQL Server などのリレーショナル データベースから Azure Cosmos DB に移行する場合、コピー アクティビティを使うと、ソースの表形式のデータを Cosmos DB のフラット化された JSON ドキュメントに簡単にマッピングできます。 場合によっては、たとえば、1 つの JSON ドキュメント内に関連するすべてのサブアイテムを埋め込むことでデータを非正規化するためなどに、データ モデルを再設計し、[Azure Cosmos DB のデータ モデリング](../cosmos-db/modeling-data.md)に従って NoSQL ユース ケースに合わせて最適化することもできます。 そのような場合は、[こちらの記事](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md)を参照してください。Azure Data Factory のコピー操作でこれを行う方法のチュートリアルがあります。
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

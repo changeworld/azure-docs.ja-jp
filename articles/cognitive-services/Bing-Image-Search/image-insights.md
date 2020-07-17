@@ -8,15 +8,15 @@ manager: nitinme
 ms.assetid: 0BCD936E-D4C0-472D-AE40-F4B2AB6912D5
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 33dfbe70d75335eca79d32807407b97e32c2dbbf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440864"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68883427"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Bing Image Search API を利用してイメージに関する分析情報を取得する
 
@@ -26,7 +26,7 @@ ms.locfileid: "57440864"
 
 各イメージには分析情報トークンが含まれており、イメージに関する情報を取得することができます。 たとえば、一連の関連するイメージ、イメージを含む Web ページ、またはイメージで表示される製品を購入できる業者のリストを取得できます。  
 
-イメージに関する分析情報を取得するには、応答でイメージの [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-imageinsightstoken) トークンを取り込みます。
+イメージに関する分析情報を取得するには、応答でイメージの [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image-imageinsightstoken) トークンを取り込みます。
 
 ```json
 "value" : [{
@@ -41,9 +41,9 @@ ms.locfileid: "57440864"
 }],
 ```
 
-次に、Image Details エンドポイントを呼び出し、`imageInsightsToken` のトークンに [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを設定します。  
+次に、Image Details エンドポイントを呼び出し、`imageInsightsToken` のトークンに [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを設定します。  
 
-取得する分析情報を指定するには、`modules` クエリ パラメーターを設定します。 すべての分析情報を取得するには、`modules` を `All` に設定します。 キャプションとコレクションの分析情報のみを取得するには、`modules` を `Caption%2CCollection` に設定します。 使用可能な分析情報の完全なリストについては、「[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested)」を参照してください。 すべてのイメージについて、すべての分析情報を使用できるわけではありません。 応答には要求したすべての分析情報 (使用可能な場合) が含まれます。
+取得する分析情報を指定するには、`modules` クエリ パラメーターを設定します。 すべての分析情報を取得するには、`modules` を `All` に設定します。 キャプションとコレクションの分析情報のみを取得するには、`modules` を `Caption%2CCollection` に設定します。 使用可能な分析情報の完全なリストについては、「[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)」を参照してください。 すべてのイメージについて、すべての分析情報を使用できるわけではありません。 応答には要求したすべての分析情報 (使用可能な場合) が含まれます。
 
 次の例では、前述のイメージについて、使用可能な分析情報をすべて要求します。
 
@@ -59,7 +59,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-insights-of-a-known-image"></a>既知のイメージの分析情報の取得
 
-分析情報を取得するイメージへの URL がある場合は、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) パラメーターではなく、[imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) クエリ パラメーターを使用してイメージを指定します。 または、イメージ ファイルがある場合は、POST 要求の本文でイメージのバイナリを送信できます。 POST 要求を使用する場合は、`Content-Type` ヘッダーを `multipart/data-form` に設定する必要があります。 いずれのオプションの場合でも、イメージのサイズが 1 MB を超えることはできません。  
+分析情報を取得するイメージへの URL がある場合は、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) パラメーターではなく、[imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) クエリ パラメーターを使用してイメージを指定します。 または、イメージ ファイルがある場合は、POST 要求の本文でイメージのバイナリを送信できます。 POST 要求を使用する場合は、`Content-Type` ヘッダーを `multipart/data-form` に設定する必要があります。 いずれのオプションの場合でも、イメージのサイズが 1 MB を超えることはできません。  
 
 イメージへの URL がある場合に、イメージの分析情報を要求する方法の例を以下に示します。
 
@@ -75,7 +75,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-all-image-insights"></a>すべてのイメージの分析情報の取得  
 
-イメージのすべての分析情報を要求するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを `All` に設定します。 関連検索を行うには、要求にユーザーのクエリ文字列を含める必要があります。 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) を使用してイメージを指定する例を以下に示します。  
+イメージのすべての分析情報を要求するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを `All` に設定します。 関連検索を行うには、要求にユーザーのクエリ文字列を含める必要があります。 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) を使用してイメージを指定する例を以下に示します。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&insightsToken=mid_68364D764J...&modules=All&mkt=en-us HTTP/1.1  
@@ -87,7 +87,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-最上位レベルのオブジェクトは、[Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) オブジェクトではなく、[ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) オブジェクトです。  
+最上位レベルのオブジェクトは、[Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) オブジェクトではなく、[ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) オブジェクトです。  
 
 ```json
 {
@@ -174,12 +174,12 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="recognizing-entities-in-an-image"></a>イメージ内のエンティティの認識  
 
-エンティティの認識機能では、イメージ内のエンティティ (現時点では人物のみ) を識別します。 イメージ内のエンティティを識別するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを `RecognizedEntities` に設定します。  
+エンティティの認識機能では、イメージ内のエンティティ (現時点では人物のみ) を識別します。 イメージ内のエンティティを識別するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを `RecognizedEntities` に設定します。  
 
 > [!NOTE]
 > このモジュールを他のモジュールと共に指定することはできません。 このモジュールを他のモジュールと共に指定する場合、応答に認識されたエンティティは含まれません。  
 
-[imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) パラメーターを使用してイメージを指定する方法を以下に示します。 必ず、クエリ パラメーターを URL エンコードしてください。  
+[imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) パラメーターを使用してイメージを指定する方法を以下に示します。 必ず、クエリ パラメーターを URL エンコードしてください。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=faith+hill&insightsToken=mid_68364D764J...&modules=RecognizedEntities&mkt=en-us HTTP/1.1  
@@ -216,23 +216,23 @@ Host: api.cognitive.microsoft.com
 
 四角形の値は、元のイメージの幅と高さに対して相対的であり、0.0 から 1.0 の範囲内にあります。 たとえば、イメージが 300 x 200 で、領域の左上隅の位置が (10, 20)、右下隅の位置が (290, 150) の場合、正規化された四角形は次のようになります。  
 
--   左:10 / 300 = 0.03333...  
--   上:20 / 200 = 0.1  
--   右:290 / 300 = 0.9667...  
--   下:150 / 200 = 0.75  
+-   左: 10 / 300 = 0.03333...  
+-   上: 20 / 200 = 0.1  
+-   右: 290 / 300 = 0.9667...  
+-   下: 150 / 200 = 0.75  
 
 Bing によって後続の分析情報呼び出しで返される領域を使用することができます。 たとえば、認識されたエンティティの視覚的に類似するイメージを取得する場合です。 詳細については、「視覚的に類似するモジュールとエンティティ認識モジュールで使用するイメージのトリミング」を参照してください。 イメージのトリミングに使用する領域フィールドとクエリ パラメーター間のマッピングを以下に示します。  
 
--   左: [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
--   上: [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  
--   右: [car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car)  
--   下: [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
+-   左: [cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+-   上: [cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
+-   右: [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
+-   下: [cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
 
 ## <a name="finding-visually-similar-images"></a>視覚的に類似するイメージの検索  
 
-元のイメージと視覚的に類似するイメージを検索するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを SimilarImages に設定します。  
+元のイメージと視覚的に類似するイメージを検索するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを SimilarImages に設定します。  
 
-次の要求は、視覚的に類似するイメージを取得する方法を示します。 この要求では、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを使用して、元のイメージを識別します。 関連性を向上させるには、ユーザーのクエリ文字列を含める必要があります。  
+次の要求は、視覚的に類似するイメージを取得する方法を示します。 この要求では、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを使用して、元のイメージを識別します。 関連性を向上させるには、ユーザーのクエリ文字列を含める必要があります。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?insightsToken=mid_68364D764J...&modules=SimilarImages&mkt=en-us HTTP/1.1  
@@ -265,7 +265,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>視覚的に類似するモジュールとエンティティ認識モジュールで使用するイメージのトリミング  
 
-Bing で、イメージが視覚的に類似しているかどうかを判断する場合や、エンティティ認識を実行する場合に使用されるイメージの領域を指定するには、[cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)、[cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)、[cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)、[car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car) クエリ パラメーターを使用します。 既定では、Bing でイメージ全体が使用されます。  
+Bing で、イメージが視覚的に類似しているかどうかを判断する場合や、エンティティ認識を実行する場合に使用されるイメージの領域を指定するには、[cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)、[cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)、[cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)、[car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car) クエリ パラメーターを使用します。 既定では、Bing でイメージ全体が使用されます。  
 
 パラメーターでは、Bing で比較するために使用される領域の左上隅と右下隅を指定します。 元のイメージの幅と高さの分数として値を指定します。 小数値は左上隅の (0.0, 0.0) で始まり、右下隅の (1.0, 1.0) で終わります。 たとえば、左上隅が上部から下に 4 分の 1、左側から内側に 4 分の 1 の位置で始まるように指定する場合は、`cal` を 0.25 に、`cat` を 0.25 に設定します。  
 
@@ -374,9 +374,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="finding-visually-similar-products"></a>視覚的に類似する製品の検索  
 
-元のイメージにある製品と視覚的に類似する製品を含むイメージを検索するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを SimilarProducts に設定します。  
+元のイメージにある製品と視覚的に類似する製品を含むイメージを検索するには、[modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) クエリ パラメーターを SimilarProducts に設定します。  
 
-次の要求は、視覚的に類似する製品のイメージを取得する方法を示しています。 この要求では、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを使用して、前述の要求で返された元のイメージを識別します。 関連性を向上させるには、ユーザーのクエリ文字列を含める必要があります。  
+次の要求は、視覚的に類似する製品のイメージを取得する方法を示しています。 この要求では、[insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) クエリ パラメーターを使用して、前述の要求で返された元のイメージを識別します。 関連性を向上させるには、ユーザーのクエリ文字列を含める必要があります。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=anne+klein+dresses&modules=SimilarProducts&insightsToken=ccid_WOeyfoSp*mid_4B0A357&mkt=en-us HTTP/1.1    
@@ -408,7 +408,7 @@ Host: api.cognitive.microsoft.com
 }
 ```
 
-オンラインで製品を提供する業者のリストを取得するには ([offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) フィールドを参照)、API をもう一度呼び出し、`modules` を ShoppingSources に設定します。 次に、`insightsToken` クエリ パラメーターを、製品の概要イメージで検出されたトークンに設定します。  
+オンラインで製品を提供する業者のリストを取得するには ([offerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) フィールドを参照)、API をもう一度呼び出し、`modules` を ShoppingSources に設定します。 次に、`insightsToken` クエリ パラメーターを、製品の概要イメージで検出されたトークンに設定します。  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

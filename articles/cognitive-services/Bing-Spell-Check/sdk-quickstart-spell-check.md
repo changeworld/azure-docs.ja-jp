@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798359"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "78273526"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
 
@@ -70,9 +70,10 @@ Bing Spell Check SDK をプロジェクトに追加するには、Visual Studio 
 2. スペル チェック結果が存在する場合、1 つ目の結果を取得します。 スペル ミスとして返された最初の単語 (トークン)、トークンの種類、修正候補の数を出力します。
 
     ```csharp
-    if (firstspellCheckResult != null){
-        var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
     
+    if (firstspellCheckResult != null)
+    {
         Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
         Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
         Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
@@ -80,23 +81,27 @@ Bing Spell Check SDK をプロジェクトに追加するには、Visual Studio 
     }
     ```
 
-3. 1 つ目の修正候補が存在する場合はそれを取得し、修正候補のスコアと単語を出力します。 
+3. 1 つ目の修正候補が存在する場合はそれを取得します。 修正候補のスコアと単語を出力します。 
 
     ```csharp
-            var suggestions = firstspellCheckResult.Suggestions;
+    var suggestions = firstspellCheckResult.Suggestions;
 
-            if (suggestions?.Count > 0)
-            {
-                var firstSuggestion = suggestions.FirstOrDefault();
-                Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-                Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-            }
-   }
+    if (suggestions?.Count > 0)
+    {
+        var firstSuggestion = suggestions.FirstOrDefault();
+        Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
+        Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
+    }
+    ```
 
-## Next steps
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。 Visual Studio を使用している場合は、**F5** キーを押してファイルをデバッグします。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Create a single page web-app](tutorials/spellcheck.md)
+> [シングル ページ Web アプリを作成する](tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](overview.md)
-- [Bing Spell Check C# SDK reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Spell Check API とは](overview.md)
+- [Bing Spell Check C# SDK リファレンス ガイド](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

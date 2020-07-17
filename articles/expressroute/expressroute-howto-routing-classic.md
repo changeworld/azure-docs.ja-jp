@@ -1,19 +1,18 @@
 ---
-title: '回線のピアリングを構成する - ExpresssRoute: Azure: クラシック | Microsoft Docs'
+title: 'Azure ExpressRoute: ピアリングの構成: クラシック'
 description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 598ddaa98b0c98d2123f0084a0b8b6dfaf615deb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045715"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74931373"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute 回線のピアリングの作成と変更 (クラシック)
 > [!div class="op_single_selector"]
@@ -36,9 +35,6 @@ ms.locfileid: "59045715"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
@@ -46,40 +42,7 @@ ms.locfileid: "59045715"
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>最新の PowerShell コマンドレットをダウンロードする
 
-最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。 次の例を使用する場合は、コマンドレットの新しいバージョンがリリースされると、バージョン番号 (この例では、5.1.1) が変わることに注意してください。
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-詳細については、[Azure PowerShell コマンドレットの概要](/powershell/azure/overview)に関するページで、お使いのコンピューターを構成して Azure PowerShell モジュールを使用する方法のステップ バイ ステップのガイダンスを参照してください。
-
-### <a name="sign-in"></a>サインイン
-
-Azure アカウントにサインインするには、次の例を使用します。
-
-1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. アカウントのサブスクリプションを確認します。
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. 複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. 次に、次のコマンドレットを使用して、Azure サブスクリプションをクラシック デプロイ モデルの PowerShell に追加します。
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Azure プライベート ピアリング
 
@@ -125,7 +88,7 @@ Azure アカウントにサインインするには、次の例を使用しま�
    * セカンダリ リンク用の /30 サブネット。 これを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 を使用していないことを確認します。
-   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能**。
+   * いずれかを使用する場合は、MD5 ハッシュ。 **オプション**。
      
    次の例を使用して、回線用に Azure プライベート ピアリングを構成できます。
 
@@ -188,6 +151,10 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新および削除する方法について説明します。
 
+> [!NOTE]
+> Azure パブリック ピアリングは、新しい回線では非推奨です。
+>
+
 ### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
 
 1. **ExpressRoute 回線の作成**
@@ -228,7 +195,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能**。
+   * いずれかを使用する場合は、MD5 ハッシュ。 **オプション**。
 
    > [!IMPORTANT]
    > 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定していることを確認します。
@@ -333,9 +300,9 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
    * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する計画の場合は、コンマ区切りの一覧を送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
-   * 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスを登録する AS 番号を指定できます。 **省略可能**。
-   * ルーティング レジストリ名: AS 番号とプレフィックスが登録される RIR/IRR を指定できます。
-   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能。**
+   * 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスを登録する AS 番号を指定できます。 **オプション**。
+   * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
+   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可。**
      
    回線用に Microsoft ピアリングを構成するには、次のコマンドレットを実行します。
  
@@ -383,7 +350,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、 [ExpressRoute 回線に VNet をリンクします](expressroute-howto-linkvnet-classic.md)。
 

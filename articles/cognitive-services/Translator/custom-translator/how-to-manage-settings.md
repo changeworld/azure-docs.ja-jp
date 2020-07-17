@@ -2,19 +2,19 @@
 title: 設定を管理する方法 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Custom Translator で設定を管理し、ワークスペースを作成し、ワークスペースを共有し、サブスクリプション キーを管理する方法。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 6e8406cdd265063622bc5dcebbb9f22549b3633a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587242"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 
@@ -29,11 +29,11 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
 ## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator サブスクリプションの関連付け
 
-モデルをトレーニングまたはデプロイするには、ワークスペースに関連付けられた Microsoft Translator Text API サブスクリプション キーが必要です。
+モデルをトレーニングまたはデプロイするには、ワークスペースに関連付けられた Translator サブスクリプション キーが必要です。
 
 サブスクリプションをお持ちでない場合は、次の手順を実行します。
 
-1. Microsoft Translator Text API にサブスクライブします。 この記事では、Microsoft Translator Text API にサブスクライブする方法について説明します。
+1. Translator をサブスクライブします。 この記事では、Translator をサブスクライブする方法について説明します。
 2. 翻訳者のサブスクリプション用キーをメモします。 Key1、Key2 のいずれかを利用できます。
 3. Custom Translator ポータルに戻ります。
 
@@ -101,6 +101,6 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
     ![共有アクセス許可の設定](media/how-to/sharing-permission-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Microsoft Translator Hub](https://hub.microsofttranslator.com) から[ワークスペースとプロジェクトを移行する方法](how-to-migrate.md)について説明します。

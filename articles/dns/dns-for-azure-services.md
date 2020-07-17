@@ -1,11 +1,10 @@
 ---
-title: 他の Azure サービスと共に Azure DNS を使用する | Microsoft Docs
-description: Azure DNS を使用して 他の Azure サービスの名前を解決する方法を理解します
+title: Azure DNS を他の Azure サービスで使用する
+description: このラーニング パスでは、Azure DNS を使用して他の Azure サービスの名前を解決する方法を説明します
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
-editor: ''
+author: rohinkoul
+manager: kumudD
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
@@ -15,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: victorh
-ms.openlocfilehash: dcf209d2036d2686bea0b51380db3cd2473d04a6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: rohink
+ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094445"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76937253"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS を他の Azure サービスと使用する方法
 
@@ -32,7 +31,7 @@ Azure DNS は、ホストされる DNS 管理および名前解決サービス�
 
 次の表は、さまざまな Azure サービスで使用できる、サポートされているレコードの種類の要点を示しています。 表が示すように、Azure DNS は、インターネットに接続するネットワーク リソースの DNS レコードのみをサポートします。 Azure DNS は、内部アドレスやプライベート アドレスの名前解決には使用できません。
 
-| Azure サービス | Linux | 説明 |
+| Azure サービス | ネットワーク インターフェイス | 説明 |
 | --- | --- | --- |
 | Azure Application Gateway |[フロントエンド パブリック IP](dns-custom-domain.md#public-ip-address) |DNS A または CNAME レコードを作成できます。 |
 | Azure Load Balancer |[フロントエンド パブリック IP](dns-custom-domain.md#public-ip-address) |DNS A または CNAME レコードを作成できます。 Load Balancer には、動的に割り当てられる IPv6 パブリック IP アドレスを設定できます。 IPv6 アドレス用の CNAME レコードを作成してください。 |

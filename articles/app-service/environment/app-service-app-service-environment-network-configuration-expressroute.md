@@ -1,30 +1,22 @@
 ---
-title: Azure ExpressRoute のネットワーク構成の詳細 - App Service
-description: Azure ExpressRoute 回線に接続された仮想ネットワーク内の PowerApps 用の App Service Environment のネットワーク構成の詳細です。
-services: app-service
-documentationcenter: ''
+title: Azure ExpressRoute v1 を構成する
+description: Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113381"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804437"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
-顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service Environment は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
+顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service 環境は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
 
 App Service Environment は以下のシナリオで作成できます。
 - Azure Resource Manager の仮想ネットワーク。
@@ -47,7 +39,7 @@ App Service Environment が正常に機能するには、次のネットワー�
 
 * Azure 管理プレーン エンドポイント (Azure クラシック デプロイ モデルと Azure Resource Manager の両方のエンドポイント) に対する発信ネットワーク接続。 これらのエンドポイントへの接続には、management.core.windows.net ドメインと management.azure.com ドメインが含まれます。 
 
-* ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com の各ドメインメッセージに対する発信ネットワーク接続。 これらのドメインへの接続は、SSL 機能をサポートするために必要です。
+* ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com の各ドメインメッセージに対する発信ネットワーク接続。 これらのドメインへの接続は、TLS 機能をサポートするために必要です。
 
 * 仮想ネットワークの DNS 構成は、この記事の前述のすべてのエンドポイントとドメインを解決できるようにする必要があります。 エンドポイントを解決できない場合は、App Service Environment の作成が失敗します。 既存の App Service Environment は異常とマークされています。
 
@@ -95,7 +87,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Azure ダウンロード ページ][AzureDownloads]から Azure PowerShell をインストールします。 2015 年 6 月以降の日付のダウンロードを選択してください。 **[コマンド ライン ツール]** > **[Windows Powershell]** で、**[インストール]** を選択して最新の PowerShell コマンドレットをインストールします。
+* [Azure ダウンロード ページ][AzureDownloads]から Azure PowerShell をインストールします。 2015 年 6 月以降の日付のダウンロードを選択してください。 **[コマンド ライン ツール]**  >  **[Windows Powershell]** で、 **[インストール]** を選択して最新の PowerShell コマンドレットをインストールします。
 
 * App Service Environment が独占的に使用する一意のサブネットを作成します。 一意のサブネットにより、サブネットに適用される UDR で、App Service Environment 用の発信トラフィックのみが開くことが保証されます。
 
@@ -116,7 +108,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 `Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet`
 
-0.0.0.0/0 は広いアドレス範囲です。 この範囲は、より具体的な ExpressRoute からアドバタイズされたアドレス範囲によってオーバーライドされます。 0.0.0.0/0 ルートの UDR は、0.0.0.0/0 のみをアドバタイズする ExressRoute 構成と組み合わせて使用する必要があります。 
+0.0.0.0/0 は広いアドレス範囲です。 この範囲は、より具体的な ExpressRoute からアドバタイズされたアドレス範囲によってオーバーライドされます。 0\.0.0.0/0 ルートの UDR は、0.0.0.0/0 のみをアドバタイズする ExressRoute 構成と組み合わせて使用する必要があります。 
 
 または、Azure で使用されている CIDR 範囲の最新の全一覧をダウンロードしてください。 すべての Azure IP アドレス範囲の XML ファイルは、[Microsoft ダウンロード センター][DownloadCenterAddressRanges]で入手できます。  
 
@@ -146,7 +138,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 これで、App Service Environment をデプロイする準備が整いました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PowerApps 用の App Service Environment の使用を開始するには、[App Service Environment の概要][IntroToAppServiceEnvironment]に関する記事を参照してください。
 

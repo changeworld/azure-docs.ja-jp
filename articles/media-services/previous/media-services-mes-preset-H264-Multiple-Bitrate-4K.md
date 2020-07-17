@@ -1,6 +1,6 @@
 ---
 title: H264 Multiple Bitrate 4K Media Encoder Standard プリセット - Azure | Microsoft Docs
-description: このトピックでは、**H264 Multiple Bitrate 4K** タスク プリセットの概要を説明します。
+description: この記事では、Media Encoder Standard **H264 Multiple Bitrate 4K** タスク プリセットの概要を説明します。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e2c5339731267a00e3423e79bc25b9d03d274bfd
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189429"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74887019"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
@@ -32,7 +32,7 @@ ms.locfileid: "58189429"
 >  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
   
 > [!NOTE]
->  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 例: 1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
+>  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 次に例を示します。1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
   
  XML  
   

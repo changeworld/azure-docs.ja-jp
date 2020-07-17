@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c40d8b93a7487619cc94586c7e6b4cdc550435cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314061"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81681958"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法  
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 * このバージョンでは OSMF 2.0 のみをサポート
 
 ## <a name="supported-features-and-known-issues"></a>サポートされている機能と既知の問題
-サポートされる機能、サポートされていない機能、および既知の問題の一覧については、「 [このドキュメント](https://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)を参照してください。
+サポートされる機能、サポートされていない機能、および既知の問題の一覧については、「 [このドキュメント](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/)を参照してください。
 
 ## <a name="loading-the-plugin"></a>プラグインの読み込み
 OSMF プラグインは、静的 (コンパイル時) または動的 (実行時) に読み込むことができます。 OSMF 用スムーズ ストリーミング プラグインのダウンロードには、静的バージョンと動的バージョンの両方が含まれています。
@@ -331,7 +331,7 @@ package {
 OSMF 用スムーズ ストリーミング動的プラグインには、 [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html)との互換性があります。 OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。 これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
 1. [Strobe Media Playback セットアップ ページ](http://osmf.org/dev/2.0gm/setup.html)に移動します。 
-2. src を Smooth Streaming ソースに設定します (例: http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest))。 
+2. [src] をスムーズ ストリーミング ソース (例: http:\//devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) に設定します。 
 3. 必要な構成変更を行い、[Preview and Update] をクリックします。
    
    **注** : コンテンツ Web サーバーには有効な crossdomain.xml が必要です。 
@@ -391,6 +391,6 @@ OSMF 用スムーズ ストリーミング動的プラグインには、 [Strobe
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [OSMF を更新するためのMicrosoft Adaptive Streamingプラグイン](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
 

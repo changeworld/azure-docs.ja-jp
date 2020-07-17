@@ -1,25 +1,23 @@
 ---
-title: Azure Network Watcher のセキュリティ グループ ビューを使用したネットワーク セキュリティの分析 - PowerShell | Microsoft Docs
+title: ネットワーク セキュリティを分析する - セキュリティ グループ ビュー - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: この記事では、PowerShell を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04e76b49-6a1b-4d0f-9a9b-51cf2f4df5a2
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 389eab13193b313d8609bfa54d5e0dc42329f5ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720777"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76840793"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
@@ -28,7 +26,7 @@ ms.locfileid: "64720777"
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループと VM で構成されている規則を監査および診断して、トラフィックが正しく許可または拒否されていることを確認する際に役立ちます。 この記事では、PowerShell を使用して、仮想マシンに適用される構成済みの効果的なセキュリティ規則を取得する方法を説明します。
+セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループおよび VM に構成されている規則を監査および診断して、トラフィックが正常に許可または拒否されていることを確認する際に役立ちます。 この記事では、PowerShell を使用して、仮想マシンに適用される構成済みの効果的なセキュリティ規則を取得する方法を説明します。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -41,15 +39,14 @@ ms.locfileid: "64720777"
 
 ## <a name="scenario"></a>シナリオ
 
-この記事で取り上げているシナリオでは、特定の仮想マシンに適用される構成済みの効果的なセキュリティ規則を取得します。
+この記事で取り上げているシナリオでは、特定の仮想マシンにおいて構成済みで効果的なセキュリティ規則を取得します。
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher の取得
 
 最初の手順では、Network Watcher インスタンスを取得します。 この変数は、`Get-AzNetworkWatcherSecurityGroupView` コマンドレットに渡されます。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
 ```
 
 ## <a name="get-a-vm"></a>VM の取得
@@ -129,8 +126,8 @@ NetworkInterfaces : [
                     ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-nsg-auditing-powershell.md)に関する記事を参照して、ネットワーク セキュリティ グループの自動検証の方法を確認する。
+[Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-nsg-auditing-powershell.md)にアクセスして、ネットワーク セキュリティ グループの自動検証の方法を確認する。
 
 

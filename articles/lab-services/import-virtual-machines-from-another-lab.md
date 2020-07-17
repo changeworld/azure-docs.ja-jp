@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs で別のラボから仮想マシンをインポートする | Microsoft Docs
-description: 現在のラボに別のラボから仮想マシンをインポートする方法について説明します。
+title: Azure DevTest Labs で別のラボから仮想マシンをインポートする
+description: この記事では、Azure DevTest Labs の現在のラボに、別のラボから仮想マシンをインポートする方法について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 299d5c8758a13edded63b99abb2f12ddf9fa14be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148902"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76759518"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で別のラボから仮想マシンをインポートする
 この記事では、別のラボから自分のラボに仮想マシンをインポートする方法について説明します。
@@ -26,7 +26,7 @@ ms.locfileid: "60148902"
 一部のシナリオでは、あるラボから別のラボに VM をインポートする必要があります。
 
 - チームにいた人が企業内の別のグループに移動するので、新しいチームの DevTest Labs に開発者のデスクトップを持ち込むことを希望しています。
-- そのグループは[サブスクリプションレベルのクォータ](../azure-subscription-service-limits.md)に達しており、いくつかのサブスクリプションに分割したいと考えています。
+- そのグループは[サブスクリプションレベルのクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)に達しており、いくつかのサブスクリプションに分割したいと考えています。
 - 会社は Express Route (またはいくつかその他の新しいネットワーク トポロジ) に移行しており、チームはこの新しいインフラストラクチャへの仮想マシンの移動を希望しています。
 
 ## <a name="solution-and-constraints"></a>ソリューションと制約
@@ -62,7 +62,7 @@ VM をラボ間でインポートする際に注意する 2 つの重要な制�
 ```
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>PowerShell を使用し、インポート元のラボのすべての VM をインポートする
-インポート元の仮想マシンが指定されていない場合、このスクリプトでは、DevTest Labs. のすべての VM が自動的にインポートされます。  例: 
+インポート元の仮想マシンが指定されていない場合、このスクリプトでは、DevTest Labs. のすべての VM が自動的にインポートされます。  次に例を示します。
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -82,8 +82,8 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 }
 ```
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [ラボのポリシーを設定する](devtest-lab-get-started-with-lab-policies.md)
 - [よく寄せられる質問](devtest-lab-faq.md)

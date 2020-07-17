@@ -13,15 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.author: timlt
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326928"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68965113"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概要
 Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミスのデバイスと Microsoft Azure クラウド ストレージとの間で実行されるストレージ タスクを管理する統合ストレージ ソリューションです。 StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れた記憶域ネットワーク (SAN) ソリューションです。 クラウド サービスと連携し、独自開発の StorSimple 8000 シリーズ デバイス、管理ツールを使用して、クラウド ストレージを含め、企業が保有するすべてのストレージをシームレスに表示します。 (Microsoft Azure の Web サイトで発行されている StorSimple のデプロイメントに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。 StorSimple 5000/7000 シリーズ デバイスをご利用の場合、[StorSimple ヘルプ](http://onlinehelp.storsimple.com/)にお進みください。)
 
@@ -29,7 +32,7 @@ StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を�
 
 ストレージ管理に加えて、StorSimple データ保護機能を使用すると、オンデマンド バックアップやスケジュールされたバックアップを作成して、ローカルやクラウドに格納できるようになります。 バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。 クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
 
-![動画アイコン](./media/storsimple-overview/video_icon.png)  この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
+![動画アイコン](./media/storsimple-overview/video_icon.png) この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 
@@ -84,7 +87,7 @@ StorSimple デバイスには、SSD とハード ディスク ドライブ (HDD)
 詳細については、「 [StorSimple のハードウェア コンポーネントと状態](storsimple-8000-monitor-hardware-status.md)」を参照してください。
 
 ## <a name="storsimple-cloud-appliance"></a>StorSimple Cloud Appliance
-StorSimple を使用して、物理的なハイブリッド ストレージ デバイスのアーキテクチャと機能を再現するクラウド アプライアンスを作成できます。 StorSimple Cloud Appliance (StorSimple Virtual Appliance とも言います) は、Azure 仮想マシン内の単一ノードで動作します  (クラウド アプライアンスは、Azure 仮想マシン上にのみ作成できます。 StorSimple デバイスまたはオンプレミス サーバーには作成できません)。
+StorSimple を使用して、物理的なハイブリッド ストレージ デバイスのアーキテクチャと機能を再現するクラウド アプライアンスを作成できます。 StorSimple Cloud Appliance (StorSimple Virtual Appliance とも言います) は、Azure 仮想マシン内の単一ノードで動作します (クラウド アプライアンスは、Azure 仮想マシン上にのみ作成できます。 StorSimple デバイスまたはオンプレミス サーバーには作成できません)。
 
 クラウド アプライアンスには、次の機能があります。
 
@@ -100,7 +103,7 @@ StorSimple Cloud Appliance の詳細については、[Azure での StorSimple C
 Microsoft Azure StorSimple には、データセンターとクラウド ストレージを一元管理できる Web ベースのユーザー インターフェイス (StorSimple デバイス マネージャー サービス) が用意されています。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
 
 * StorSimple デバイスのシステム設定を構成する。
-* StorSimple デバイスのセキュリティ設定を構成および管理する 
+* StorSimple デバイスのセキュリティ設定を構成および管理する
 * クラウドの資格情報とプロパティを構成する。
 * サーバー上のボリュームを構成および管理する。
 * ボリューム グループを構成する。
@@ -212,7 +215,7 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 | コラボレーション |SharePoint |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | アーカイブ |簡易ファイルのアーカイブ |はい | |すべてのバージョン |
 | 仮想化 |仮想マシン |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
-| Database |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
+| データベース |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | ビデオの監視 |ビデオの監視 |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 2 以降 |
 | バックアップ |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
 | バックアップ |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
@@ -310,6 +313,6 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | ボリューム シャドウ コピー サービス (VSS) |VSS 対応アプリケーションとやり取りして増分スナップショットの作成を調整することで、アプリケーション整合性を促進する Windows Server オペレーティング システム サービス。 VSS は、スナップショットの作成時に、アプリケーションが一時的に非アクティブ状態になるようにします。 |
 | StorSimple 用 Windows PowerShell |StorSimple デバイスを操作および管理するために使用される Windows PowerShell ベースのコマンド ライン インターフェイス。 このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple のセキュリティ](storsimple-8000-security.md)の詳細を確認します。
 

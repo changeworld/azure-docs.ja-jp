@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 4/20/2019
+ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: d96f400332b7953b34a157b3b52cf00bb20db76e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012518"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75392437"
 ---
-| Resource | ターゲット        |
+| リソース | 移行先        |
 |----------|---------------|
 | 単一の BLOB コンテナーの最大サイズ | ストレージ アカウントの最大容量と同じ |
 | ブロック BLOB 内または追加 BLOB 内の最大ブロック数 | 50,000 ブロック |
@@ -21,6 +21,8 @@ ms.locfileid: "60012518"
 | 追加 BLOB の最大サイズ | 50,000 x 4 MiB (約 195 GiB) |
 | ページ BLOB の最大サイズ | 8 TiB |
 | BLOB コンテナーごとの保存されるアクセス ポリシーの最大数 | 5 |
-|単一 BLOB のターゲット スループット |ストレージ アカウントイングレス/エグレスの上限まで<sup>1</sup> |
+|1 つの BLOB のターゲット要求率 | 最大 500 要求/秒 |
+|1 つのページ BLOB のターゲット スループット | 最大 60 MiB/秒 |
+|1 つのブロック BLOB のターゲット スループット |ストレージ アカウントイングレス/エグレスの上限まで<sup>1</sup> |
 
-<sup>1</sup> 1 回のオブジェクト スループットはいくつかの要因に左右されます。それにはコンカレンシー、要求サイズ、パフォーマンス レベル、アップロード元の速度、ダウンロード先などがありますが、それらに限定されません。 [高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) パフォーマンス拡張を活用するには、サイズが 4 MiB 以上のプット BLOB またはプット ブロック要求を使用します (プレミアムパフォーマンス ブロック BLOB ストレージや Data Lake Storage Gen2 の場合は 256 MiB 以上)。
+<sup>1</sup> 1 つの BLOB のスループットはいくつかの要因に左右されます。それにはコンカレンシー、要求サイズ、パフォーマンス レベル、アップロード元の速度、ダウンロード先などがありますが、それらに限定されません。 [ 高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) のパフォーマンス機能強化を活用するには、もっと大きな BLOB またはブロックをアップロードします。 具体的には、[Put Blob](/rest/api/storageservices/put-blob) または [Put Block](/rest/api/storageservices/put-block) 操作を呼び出すとき、標準ストレージ アカウントの 4 MiB を超える BLOB またはブロック サイズを指定します。 プレミアム ブロック BLOB や Data Lake Storage Gen2 ストレージ アカウントの場合、256 KiB を超えるブロックまたは BLOB サイズを使用します。

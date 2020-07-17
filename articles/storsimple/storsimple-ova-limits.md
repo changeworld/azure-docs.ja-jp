@@ -12,19 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43f8d338cf07999d7791cbd5d3e8ddcc0d6b2b59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1fe6b614aa05ab3e774aa2f946b78cabbc9f1a3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108590"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "68516722"
 ---
 # <a name="what-are-storsimple-virtual-array-limits"></a>StorSimple Virtual Array の制限とは
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Microsoft Azure StorSimple Virtual Array を計画、デプロイ、および操作する際には、以下の制限事項を考慮してください。 次の表で、仮想デバイスの制限について説明します。
 
 ## <a name="storsimple-virtual-array-limits"></a>StorSimple Virtual Array の制限

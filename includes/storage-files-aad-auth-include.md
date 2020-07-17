@@ -5,24 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/22/2018
+ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0cfa0fdb51969c92e767adfa86a0065d11da56e2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 167d50e5c7f3049f46fd8540630e47044240809f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237744"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536585"
 ---
-[Azure Files](../articles/storage/files/storage-files-introduction.md) は、[Azure Active Directory (Azure AD) Domain Services](../articles/active-directory-domain-services/overview.md) を使用した、SMB (Server Message Block) 上の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、[Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) の資格情報を使用して Azure ファイル共有にアクセスできます。 
+[Azure Files](../articles/storage/files/storage-files-introduction.md) では、[オンプレミス Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) (プレビュー) と[ Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md) を介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。 この記事では、Azure Files がオンプレミスまたは Azure のドメイン サービスを利用し、SMB 経由の Azure ファイル共有への ID ベースのアクセスをサポートする方法に焦点を当てています。 Azure ファイル共有のために ID ベースのアクセスを有効にすると、既存のディレクトリ サービスを置換することなく、既存のファイル サーバーを Azure ファイル共有に置換できます。共有への継ぎ目のないユーザー アクセスを維持できます。 
 
-Azure AD は、[ロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、ユーザー、グループ、サービス プリンシパルなどの ID を認証します。 Azure Files へのアクセスに使用されるアクセス許可の共通セットを含むカスタムの RBAC ロールを定義することができます。 カスタムの RBAC ロールを Azure AD ID に割り当てると、その ID には、それらのアクセス許可に従って Azure ファイル共有へのアクセス権が与えられます。
+Azure Files では、共有とディレクトリ/ファイル レベルの両方へのユーザー アクセスで承認が適用されます。 共有レベルのアクセス許可の割り当ては、[ロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) モデルを使用して管理されている Azure Active Directory (Azure AD) ユーザーまたはグループで実行できます。 RBAC では、ファイルへのアクセスに使用する資格情報を使用できるようにするか、Azure AD に同期する必要があります。 Azure ファイル共有に読み取りアクセス権を付与するには、記憶域ファイル データの SMB 共有の閲覧者などの組み込みの RBAC ロールを Azure AD のユーザーまたはグループに割り当てることができます。
 
-プレビューの一環として、Azure Files は、ファイル共有内のすべてのファイルとディレクトリに対する [NTFS DACL](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) の保持、継承、および適用もサポートしています。 ファイル共有から Azure Files に (または逆方向に) データをコピーする場合、NTFS DACL が保持されるように指定することができます。 このように、Azure Files を使用してバックアップ シナリオを実装し、オンプレミスのファイル共有とクラウドのファイル共有の間で NTFS DACLS を保持することができます。 
-
-> [!NOTE]
-> - SMB 経由の Azure AD 認証は、プレビュー リリースの Linux VM ではサポートされていません。 サポートされているのは Windows Server VM のみです。
-> - SMB 経由の Azure AD 認証は、Azure Files にアクセスするオンプレミスのマシンではサポートされません。
-> - Azure AD 認証は、2018 年 9 月 24 日よりも後に作成されたストレージ アカウントにのみ使用できます。
-> - SMB と永続的 NTFS ACL 経由の Azure AD 認証は、Azure File Sync サービスによって管理されている Azure ファイル共有でサポートされていません。 
+ディレクトリまたはファイル レベルでは、Azure Files は、Windows ファイル サーバーと同様に、[Windows DACL](https://docs.microsoft.com/windows/win32/secauthz/access-control-lists) の保持、継承、および適用をサポートしています。 既存のファイル共有と Azure ファイル共有の間で SMB 経由でデータをコピーするとき、Windows DACL を維持することを選択できます。 承認を適用するかどうかにかかわらず、Azure ファイル共有を利用し、データと共に ACL をバックアップできます。 

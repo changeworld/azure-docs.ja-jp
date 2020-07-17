@@ -1,40 +1,34 @@
 ---
-title: 管理ソリューションでの保存された検索条件とアラート | Microsoft Docs
-description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。 この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを Resource Manager テンプレートで定義する方法について説明します。
-services: monitoring
-documentationcenter: ''
+title: 管理ソリューションでの保存された検索条件 | Microsoft Docs
+description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するための、保存されたログ クエリが含まれています。 この記事では、Log Analytics の保存された検索条件を Resource Manager テンプレートで定義する方法について説明します。
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: monitoring
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/18/2018
 ms.author: bwren
+ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 61fc64e140af091b5ff3f631398daf901557791b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980110"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77663030"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
 > [!IMPORTANT]
-> [Log Analytics のアラートが Azure Monitor に拡張された](../platform/alerts-extend.md)ため、ここに記載されていた、Resource Manager テンプレートを使用したアラートの作成の詳細は古くなりました。 Resource Manager テンプレートを使用したログ アラートの作成の詳細については、「[Azure リソース テンプレートを使用したログ アラートの管理](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)」を参照してください。
+> [前に発表](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)したように、*2019 年 6 月 1 日*以降に作成された Log Analytics ワークスペースでは、Azure scheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)、[Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)、および [PowerShell コマンドレット](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)を使用することによって**のみ**、アラート ルールを管理できます。 お客様は、Azure Monitor scheduledQueryRules が既定として使われるように古いワークスペースに対する[アラート ルール管理の優先的手段を切り替え](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)、ネイティブ PowerShell コマンドレットを使う機能、ルールで長くなったルックバック期間、別のリソース グループまたはサブスクリプションでのルールの作成など、多くの[新しいメリット](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)を利用できます。
 
 > [!NOTE]
 > 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。
 
-通常、[管理ソリューション](solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../../azure-monitor/platform/alerts-overview.md)も定義できます。 この記事では、[管理ソリューション](solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
+通常、[管理ソリューション](solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../../azure-monitor/log-query/log-query-overview.md)が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../../azure-monitor/platform/alerts-overview.md)も定義できます。 この記事では、[管理ソリューション](solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
 
 > [!NOTE]
 > この記事のサンプルでは、「[Azure での管理ソリューションの設計とビルド](solutions-creating.md)」で説明されている、管理ソリューションにとって必須または一般的なパラメーターと変数を使用します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、[管理ソリューションの作成方法](solutions-creating.md)および [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
+この記事では、[管理ソリューションの作成方法](solutions-creating.md)および [Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)とソリューション ファイルの構造を理解していることを前提としています。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
@@ -49,7 +43,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
-| リソースの種類 | API バージョン | Query |
+| リソースの種類 | API バージョン | クエリ |
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 
@@ -85,20 +79,15 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > [!NOTE]
 > JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。 たとえば、**AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 [Azure Log のアラート](../../azure-monitor/platform/alerts-unified-log.md)は、指定されたログ クエリを一定の間隔で実行する Azure Alert ルールによって作成されます。 クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、[アクション グループ](../../azure-monitor/platform/action-groups.md)を使用して 1 つまたは複数のアクションが実行されます。
 
-> [!NOTE]
-> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../../azure-monitor/platform/alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
-
-管理ソリューションのアラート ルールは、次の 3 つの異なるリソースで構成されます。
+Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
+レガシ管理ソリューションのアラート ルールは、次の 3 つの異なるリソースで構成されます。
 
 - **保存された検索条件**。 実行されるログ検索を定義します。 複数のアラート ルールで、1 つの保存された検索条件を共有できます。
 - **スケジュール**。 ログ検索の実行頻度を定義します。 各アラート ルールには、スケジュールが 1 つだけあります。
 - **アラート アクション**。 各アラート ルールには **Alert** 型のアクション グループ リソースまたはアクション リソース (レガシ) が 1 つあり、アラート レコードが作成される条件やアラートの重大度などのアラートの詳細が定義されています。 [アクション グループ](../../azure-monitor/platform/action-groups.md) リソースには、音声通話、SMS、メール、webhook、ITSM ツール、Automation Runbook、ロジック アプリなど、アラート発生時に実行する構成済みアクションのリストを設定できます。
-
-アクション リソース (レガシ) では、必要に応じて、メールと Runbook の応答が定義されます。
-- **webhook アクション (レガシ)** アラート ルールが webhook を呼び出すときは、**Webhook** 型の追加のアクション リソースが必要です。
 
 保存された検索条件リソースについては、上で説明してあります。 他のリソースについては以下で説明します。
 
@@ -120,7 +109,6 @@ Resource Manager テンプレートで定義された Log Analytics リソース
             "enabled": "[variables('Schedule').Enabled]"
         }
     }
-
 次の表では、スケジュール リソースのプロパティについて説明します。
 
 | 要素名 | 必須 | 説明 |
@@ -130,18 +118,12 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 | queryTimeSpan | はい | 結果を評価する期間です (分単位)。 |
 
 スケジュール リソースは保存された検索条件に依存するので、スケジュールの前に作成する必要があります。
-
 > [!NOTE]
 > スケジュール名は、特定のワークスペース内では一意である必要があります。2 つのスケジュールが同じ ID を持つことはできません。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。 また、Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
 
 ### <a name="actions"></a>Actions
 スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。 一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
-
 アクションは、アクション グループ リソースまたはアクション リソースを使って定義できます。
-
-> [!NOTE]
-> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは自動的に Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../../azure-monitor/platform/alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
-
 
 **Type** プロパティによって指定される 2 種類のアクション リソースがあります。 スケジュールには、アラート ルールの詳細と、アラート作成時に実行するアクションが定義されている、1 つの **Alert** アクションが必要です。 アクション リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 型です。
 
@@ -183,31 +165,27 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Type | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
-| Name | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
-| 説明 | いいえ  | アラートに関する省略可能な説明です。 |
-| Severity | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
-
+| `type` | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
+| `name` | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
+| `description` | いいえ | アラートに関する省略可能な説明です。 |
+| `severity` | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
 
 #### <a name="threshold"></a>Threshold
 このセクションは必須です。 アラートのしきい値のプロパティを定義します。
 
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | はい | 結果を比較する値です。 |
+| `Operator` | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| `Value` | はい | 結果を比較する値です。 |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 このセクションは省略可能です。 メトリック測定アラートの場合に指定します。
 
-> [!NOTE]
-> メトリック測定アラートは現在パブリック プレビュー中です。
-
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
-| Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
+| `TriggerCondition` | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
+| `Operator` | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| `Value` | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
 
 
 #### <a name="throttling"></a>Throttling
@@ -225,64 +203,8 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
 | AzNsNotification | はい | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
-| CustomEmailSubject | いいえ  | 関連付けられたアクション グループで指定されているすべてのアドレスに送信されるメールのカスタム件名行です。 |
-| CustomWebhookPayload | いいえ  | 関連付けられたアクション グループで定義されているすべての webhook エンドポイントに送信するカスタマイズされたペイロードです。 形式は、webhook で想定されていることに依存し、有効なシリアル化された JSON である必要があります。 |
-
-#### <a name="actions-for-oms-legacy"></a>OMS のアクション (レガシ)
-
-どのスケジュールも 1 つの**アラート** アクションを保持しています。 アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。 通知は、1 つ以上のアドレスにメールを送信します。 修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
-
-> [!NOTE]
-> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは自動的に Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../../azure-monitor/platform/alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
-
-##### <a name="emailnotification"></a>EmailNotification
- このセクションは省略可能です。アラートによって 1 人以上の受信者にメールを送信する場合に指定します。
-
-| 要素名 | 必須 | 説明 |
-|:--|:--|:--|
-| Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Subject | はい | メールの件名です。 |
-| Attachment | いいえ  | 添付ファイルは現在はサポートされていません。 この要素を指定する場合は、**None** にする必要があります。 |
-
-##### <a name="remediation"></a>Remediation
-このセクションは省略可能です。アラートに応答して Runbook を開始する場合に指定します。 |
-
-| 要素名 | 必須 | 説明 |
-|:--|:--|:--|
-| RunbookName | はい | 開始する Runbook の名前です。 |
-| WebhookUri | はい | Runbook に対する webhook の URI です。 |
-| Expiry | いいえ  | 修復が期限切れになる日付と時刻です。 |
-
-##### <a name="webhook-actions"></a>Webhook アクション
-
-Webhook アクションは、URL を呼び出し、送信されるペイロードをオプションで指定することにより、プロセスを開始します。 これは修復アクションに似ていますが、Azure Automation の Runbook 以外のプロセスを呼び出す可能性のある Webhook に対して使用することを意図しています。 また、リモート プロセスに配信されるペイロードを指定する追加のオプションも用意されています。
-
-アラートが webhook を呼び出す場合は、**アラート** アクション リソースに加えて **Webhook** 型のアクション リソースが必要です。
-
-    {
-      "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
-      "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions/",
-      "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-      "dependsOn": [
-        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
-      ],
-      "properties": {
-        "etag": "*",
-        "type": "[variables('Alert').Webhook.Type]",
-        "name": "[variables('Alert').Webhook.Name]",
-        "webhookUri": "[variables('Alert').Webhook.webhookUri]",
-        "customPayload": "[variables('Alert').Webhook.CustomPayLoad]"
-      }
-    }
-
-次の表では、Webhook アクション リソースのプロパティについて説明します。
-
-| 要素名 | 必須 | 説明 |
-|:--|:--|:--|
-| Type | はい | アクションの種類。 これは、webhook アクションの **Webhook** です。 |
-| name | はい | アクションの表示名です。 コンソールには表示されません。 |
-| webhookUri | はい | webhook の URI です。 |
-| customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
+| CustomEmailSubject | いいえ | 関連付けられたアクション グループで指定されているすべてのアドレスに送信されるメールのカスタム件名行です。 |
+| CustomWebhookPayload | いいえ | 関連付けられたアクション グループで定義されているすべての webhook エンドポイントに送信するカスタマイズされたペイロードです。 形式は、webhook で想定されていることに依存し、有効なシリアル化された JSON である必要があります。 |
 
 ## <a name="sample"></a>サンプル
 
@@ -478,6 +400,6 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 管理ソリューションに[ビューを追加する](solutions-resources-views.md)。
 * 管理ソリューションに [Automation Runbook とその他のリソースを追加する](solutions-resources-automation.md)。

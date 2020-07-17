@@ -1,5 +1,5 @@
 ---
-title: パートナー向けの Microsoft Azure StorSimple とクラウド ソリューション プロバイダー プログラムについてよく寄せられる質問 | Microsoft Docs
+title: 'パートナー向けの FAQ: クラウド ソリューション プロバイダー プログラムの StorSimple'
 description: パートナー向けの StorSimple と CSP について、一般的な質問にお答えします。
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4750ba55c08ebac244e7515cae4e998155a79599
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870628"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77116169"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple:よく寄せられる質問
 
@@ -89,7 +89,7 @@ CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能な�
 CSP フォーラムの StorSimple のグループに参加することで、よく寄せられる質問への回答を得られます。 最初に、[Azure Advisor Yammer グループ](https://www.yammer.com/azureadvisors)に参加する必要があります。 次に、**StorSimple パートナー アドバイザー**というグループを探して参加してください。
 
 ### <a name="how-does-the-support-work-for-storsimple-for-csp"></a>CSP の StorSimple ではサポートのしくみはどうなっていますか。 
-CSP の StorSimple のサポート モデルは、CSP の他の Azure サービスのものと同じです。 詳細については、[CSP のカスタマー サポート](https://msdn.microsoft.com/partner-center/customer-support)に関するページをご覧ください。 
+CSP の StorSimple のサポート モデルは、CSP の他の Azure サービスのものと同じです。 詳細については、[CSP のカスタマー サポート](/partner-center/csp-overview)に関するページをご覧ください。
 
 CSP の StorSimple の詳細については、以下を参照してください。
 
@@ -97,5 +97,5 @@ CSP の StorSimple の詳細については、以下を参照してください�
 - [パートナー センター](https://partnercenter.microsoft.com/) 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

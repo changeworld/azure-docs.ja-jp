@@ -1,18 +1,14 @@
 ---
 title: Azure Blueprints の関数
-description: Azure Blueprints の定義と割り当てで使用する関数について説明します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 04/15/2019
+description: Azure Blueprints の定義と割り当てに使用できる関数について説明します。
+ms.date: 05/22/2020
 ms.topic: reference
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209400"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834783"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数
 
@@ -25,7 +21,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 - [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [サブスクリプション](#subscription)
+- [subscription](#subscription)
 
 ## <a name="artifacts"></a>artifacts
 
@@ -33,9 +29,12 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 そのブループリント アーティファクトの出力が設定されたプロパティのオブジェクトが返されます。
 
-### <a name="parameters"></a>parameters
+> [!NOTE]
+> `artifacts()` 関数は、Resource Manager テンプレート内からは使用できません。 Azure PowerShell または REST API によってブループリントを [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) の一部として管理する場合、関数は、ブループリント定義の JSON 内またはアーティファクト JSON 内のみで使用できます。
 
-| パラメーター | 必須 | Type | 説明 |
+### <a name="parameters"></a>パラメーター
+
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | artifactName |はい |string |ブループリント アーティファクトの名前。 |
 
@@ -107,7 +106,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 _myTemplateArtifact_ サンプルからデータを取得する例を次にいくつか示します。
 
-| 式 | Type | 値 |
+| 式 | 種類 | 値 |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
@@ -122,12 +121,12 @@ _myTemplateArtifact_ サンプルからデータを取得する例を次にい�
 
 複数の文字列値を結合し、連結された文字列を返します。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | string1 |はい |string |連結の最初の値。 |
-| 残りの引数 |いいえ  |string |連結する順番での追加の値 |
+| 残りの引数 |いいえ |string |連結する順番での追加の値 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -147,11 +146,11 @@ Azure Blueprint 関数は、文字列でのみ動作する点が、Azure Resourc
 
 ブループリント パラメーターの値が返されます。 指定するパラメーター名が、ブループリント定義またはブループリント アーティファクトで定義されている必要があります。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |あり |string |返されるパラメーターの名前。 |
+| parameterName |はい |string |返されるパラメーターの名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -268,9 +267,9 @@ Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と�
 
 指定したリソース グループ アーティファクトを表すオブジェクトが返されます。 アーティファクトのコンテキストが必要な `resourceGroup()` とは異なり、この関数は、特定のリソース グループ プレースホルダーのプロパティを、そのリソース グループのコンテキスト内にないときに取得するために使用されます。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |はい |string |取得するリソース グループ アーティファクトのプレースホルダーの名前。 |
 
@@ -324,7 +323,7 @@ Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と�
 }
 ```
 
-## <a name="subscription"></a>サブスクリプション
+## <a name="subscription"></a>subscription
 
 `subscription()`
 
@@ -366,7 +365,7 @@ Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。

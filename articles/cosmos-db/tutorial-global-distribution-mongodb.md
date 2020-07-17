@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API を使用したグローバル分散のチュートリアル
+title: Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散を設定するチュートリアル
 description: Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散を設定する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5ae5923253575fc3dea6b90b599b9fa3d79a85b8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041375"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75444663"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する
 
@@ -88,7 +88,7 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を行いました。
 
@@ -99,4 +99,4 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 これで次のチュートリアルに進むことができます。Azure Cosmos DB ローカル エミュレーターを使用してローカルで開発する方法について学びます。
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB Emulator を使用したローカルでの開発](local-emulator.md)
+> [Azure Cosmos DB エミュレーターを使用したローカルでの開発](local-emulator.md)

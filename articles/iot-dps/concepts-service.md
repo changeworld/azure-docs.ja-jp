@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub Device Provisioning サービスにおけるサービスの概念 | Microsoft Docs
-description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のサービス プロビジョニングの概念を説明します。
+description: デバイス プロビジョニング サービス (DPS) と IoT Hub を備えたデバイスに固有のサービス プロビジョニングの概念を説明します
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792749"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237543"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Azure IoT Hub Device Provisioning サービスの概念
 
@@ -39,11 +39,11 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 サービス レベルの設定では、デバイス プロビジョニング サービスがデバイスを IoT Hub に割り当てる方法を指定します。 次の 3 つの割り当てポリシーがサポートされています。
 
-* **Evenly weighted distribution\(均等に重み付けされた分散\)**: リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 既定の設定です。 デバイスを 1 つの IoT Hub だけにプロビジョニングしている場合、この設定を保持できます。
+* **Evenly weighted distribution\(均等に重み付けされた分散\)** : リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。
 
-* **Lowest latency\(最も短い待機時間\)**: デバイスに対する待機時間が最も短い IoT Hub にデバイスをプロビジョニングします。 複数の IoT Hub にリンクしていて、同様に最も短い待機時間になっている場合、プロビジョニング サービスはそれらのハブ全体のデバイスをハッシュします。
+* **Lowest latency\(最も短い待機時間\)** : デバイスに対する待機時間が最も短い IoT Hub にデバイスをプロビジョニングします。 複数の IoT Hub にリンクしていて、同様に最も短い待機時間になっている場合、プロビジョニング サービスはそれらのハブ全体のデバイスをハッシュします。
 
-* **Static configuration via the enrollment list\(加入契約リストによる静的構成\)**: 加入契約リストの目的の IoT Hub の仕様が、サービス レベルの割り当てポリシーよりも優先されます。
+* **Static configuration via the enrollment list\(加入契約リストによる静的構成\)** : 加入契約リストの目的の IoT Hub の仕様が、サービス レベルの割り当てポリシーよりも優先されます。
 
 ## <a name="enrollment"></a>加入
 
@@ -57,7 +57,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 ### <a name="enrollment-group"></a>加入グループ
 
-加入グループは、特定の構成証明メカニズムを共有するデバイスのグループです。 登録グループ内のすべてのデバイスでは、同じルート証明機関 (CA) または中間 CA によって署名された X.509 証明書を提示します。 加入グループでは、X.509 構成証明メカニズムのみを使用できます。 加入グループ名と証明書の名前は、英数字の小文字でなければならず、ハイフンを含めることができます。
+加入グループは、特定の構成証明メカニズムを共有するデバイスのグループです。 登録グループでは、x.509 と対称の両方がサポートされています。 X.509 登録グループ内のすべてのデバイスでは、同じルートまたは中間の証明機関 (CA) によって署名された X.509 証明書を提示します。 対称キー登録グループ内の各デバイスでは、グループ対称キーから派生した SAS トークンを提示します。 加入グループ名と証明書の名前は、英数字の小文字でなければならず、ハイフンを含めることができます。
 
 > [!TIP]
 > 必要な初期構成を共有するデバイスが多数ある場合や、デバイスがすべて同じテナントに属する予定の場合は、加入グループを使用することをお勧めします。
@@ -73,6 +73,6 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 登録は、デバイス プロビジョニング サービス経由で IoT Hub に正常に登録/プロビジョニングされるデバイスのレコードです。 登録レコードは自動的に作成されます。また、削除はできますが、更新はできません。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>操作
 
 操作は、デバイス プロビジョニング サービスの課金単位です。 1 つの操作は、サービスに対する 1 つの手順の正常な完了です。 操作には、デバイスの登録や再登録などがあります。加入契約リスト エントリの追加や更新といったサービス側の変更も操作に入ります。

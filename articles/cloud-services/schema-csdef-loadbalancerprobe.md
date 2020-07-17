@@ -1,24 +1,20 @@
 ---
-title: Azure Cloud Services の定義LoadBalancerProbe スキーマ | Microsoft Docs
+title: 'Azure Cloud Services の定義: LoadBalancerProbe スキーマ | Microsoft Docs'
+description: 利用者が定義した LoadBalancerProbe は、ロール インスタンス内のエンドポイントの正常性プローブです。 これは、サービス定義ファイルで、Web ロールまたは worker ロールと組み合わされます。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: f7b0ba3b4797149798037dee0188850eff6baf1d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+author: georgewallace
+ms.author: tagore
+ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003290"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537348"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services の定義: LoadBalancerProbe スキーマ
 ロード バランサー プローブは、ロール インスタンスのエンドポイントと UDP エンドポイントに対して利用者が定義する正常性プローブです。 `LoadBalancerProbe` はスタンドアロン要素ではなく、サービス定義ファイルで Web ロールまたは worker ロールと組み合わされます。 1 つの `LoadBalancerProbe` を複数のロールで使用することができます。
@@ -51,15 +47,15 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 - [LoadBalancerProbes 要素](#LoadBalancerProbes)
 - [LoadBalancerProbe 要素](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes 要素
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> LoadBalancerProbes 要素
 `LoadBalancerProbes` 要素は、ロード バランサー プローブのコレクションを表します。 この要素は、[LoadBalancerProbe 要素](#LoadBalancerProbe)の親要素です。 
 
-##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe 要素
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> LoadBalancerProbe 要素
 モデルの正常性プローブは `LoadBalancerProbe` 要素で定義します。 複数のロード バランサー プローブを定義することができます。 
 
 以下の表に、`LoadBalancerProbe` 要素の属性を示します。
 
-|Attribute|Type|説明|
+|属性|Type|説明|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必須。 ロード バランサー プローブの名前です。 名前は一意である必要があります。|
 | `protocol`          | `string` | 必須。 エンド ポイントのプロトコルを指定します。 指定できる値は `http` または `tcp` です。 `tcp` を指定した場合、プローブが成功するためには ACK の受信が必要となります。 `http` を指定した場合、プローブが成功するためには、指定された URI から応答として 200 OK が返される必要があります。|
@@ -68,5 +64,5 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 | `intervalInSeconds` | `integer` | 省略可能。 どのぐらいの頻度でエンドポイントに正常性状態をプローブするかを表す間隔 (秒)。 この間隔は、割り当てられているタイムアウト期間 (秒) の 1/2 よりもわずかに短くするのが一般的です。そうすることで、2 回のプローブを完全に実施したうえで、インスタンスをローテーションから除外することができます。<br /><br /> 既定値は 15、最小値は 5 です。|
 | `timeoutInSeconds`  | `integer` | 省略可能。 プローブに適用されるタイムアウト期間 (秒)。この期間を過ぎると、応答がないと見なされ、そのエンドポイントへのトラフィックのルーティングが停止されます。 エンドポイントをローテーションから除外するタイミングは、この値を指定することで、Azure で使用される標準的な時間 (既定値) よりも早めたり遅らせたりすることができます。<br /><br /> 既定値は 31、最小値は 11 です。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Cloud Service (クラシック) 定義スキーマ](schema-csdef-file.md)

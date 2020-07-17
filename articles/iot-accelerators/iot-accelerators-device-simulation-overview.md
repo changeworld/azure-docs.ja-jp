@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
 ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65464896"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>デバイス シミュレーション ソリューション アクセラレータの概要
@@ -58,9 +58,9 @@ IoT ソリューションを開発するプロセスで不可欠なものは、�
 * カスタム スクリプトを使用して、一定時間デバイスの状態を保持するテレメトリ値を生成します。
 * カスタム スクリプトを使用して、シミュレートされたデバイスがメソッドにどのように応答するかを指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、デバイス シミュレーション ソリューション アクセラレータとその機能について説明しました。 このソリューション アクセラレータの使用を開始するには、「クイック スタート: 
+この記事では、デバイス シミュレーション ソリューション アクセラレータとその機能について説明しました。 このソリューション アクセラレータの使用を開始するには、「クイック スタート:
 
 > [!div class="nextstepaction"]
 > [Azure で IoT デバイス シミュレーションをデプロイして実行する](quickstart-device-simulation-deploy.md)」に進みます。

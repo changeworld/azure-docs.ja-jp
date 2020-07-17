@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153076"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81769747"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
+
+>URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -30,13 +32,156 @@ ms.locfileid: "65153076"
 ## <a name="known-issues"></a>既知の問題
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
+> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
 
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="improvements-in-documentation"></a>ドキュメントの改善
+
+Azure Media Player ドキュメントは、[Azure ドキュメント](../azure-media-player/azure-media-player-overview.md)に移行されました。
+
+## <a name="january-2020"></a>2020 年 1 月
+
+### <a name="improvements-in-media-processors"></a>メディア プロセッサの機能強化
+
+- ビデオ分析でのインターレース ソースのサポートが強化されました。このようなコンテンツは推論エンジンに送信される前に適切にインターレースが解除されるようになりました。
+- "最適" モードでサムネイルを生成すると、エンコーダーでは、モノクロではないフレームの選択にかかる検索時間が 30 秒を超えるようになりました。
+
+### <a name="azure-government-cloud-updates"></a>Azure Government クラウドの更新
+
+Media Services が次の Azure Government リージョンで一般公開されました。*米国政府アリゾナ*および*米国政府テキサス*。
+
+## <a name="december-2019"></a>2019 年 12 月
+
+ライブ ストリーミングとビデオ オンデマンド ストリーミングの両方の *Origin-Assist Prefetch* ヘッダーに対する CDN サポートが追加されました。Akamai CDN と直接契約しているお客様が利用できます。 Origin-Assist CDN-Prefetch 機能には、Akamai CDN と Azure Media Services オリジン間での次の HTTP ヘッダーの交換が含まれます。
+
+|HTTP ヘッダー|値|送信者|受信者|目的|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-Origin-Assist-Prefetch-Enabled | 1 (既定) または 0 |CDN|Origin (配信元)|CDN がプリフェッチ対応であることを示すこと|
+|CDN-Origin-Assist-Prefetch-Path| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|Origin (配信元)|CDN|CDN にプリフェッチ パスを提供すること|
+|CDN-Origin-Assist-Prefetch-Request|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|Origin (配信元)|CDN からの要求がプリフェッチであることを示すこと|
+
+ヘッダー交換の一部を実際に確認するには、次の手順を実行します。
+
+1. Postman または curl を使用して、オーディオまたはビデオのセグメントまたはフラグメントの Media Services 配信元に要求を発行します。 ヘッダー CDN-Origin-Assist-Prefetch-Enabled: 1 を必ず要求に追加してください。
+2. 応答には、その値として相対パスが指定されたヘッダー CDN-Origin-Assist-Prefetch-Path が表示されます。
+
+## <a name="november-2019"></a>2019 年 11 月
+
+### <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
+
+ライブ文字起こしのパブリック プレビューが始まっており、米国西部 2 リージョンでご利用いただけます。
+
+ライブ文字起こしはアドオン機能としてライブ イベントと連動するように設計されています。  パススルーと Standard または Premium のエンコード ライブ イベントの両方でサポートされています。  この機能が有効になっている場合、このサービスでは Cognitive Services の[音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)機能を使用して、受信したオーディオの音声を文字起こししてテキストにします。 その後、このテキストは、MPEG-DASH および HLS プロトコルのビデオとオーディオで配信できるようになります。 課金は、"実行中" 状態のとき、ライブ イベントの追加コストとなる新しいアドオン メーターに基づきます。  ライブ文字起こしと課金の詳細については、「[ライブ文字起こし](live-transcription.md)」を参照してください。
+
+> [!NOTE]
+> 現在、ライブ文字起こしは、米国西部 2 リージョンのプレビュー機能としてのみ提供されています。 現時点では英語 (en-us) 音声の文字起こしのみサポートされています。
+
+### <a name="content-protection"></a>コンテンツの保護
+
+去る 9 月に限定リージョンで公開された "*トークン再生防止*" 機能が全リージョンで利用できるようになりました。
+Media Services をご利用のお客様は、キーまたはライセンスの要求に同じトークンを使用できる回数に上限を設定できるようになりました。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+
+### <a name="new-recommended-live-encoder-partners"></a>新しいおすすめのライブ エンコーダー パートナー
+
+RTMP ライブ ストリーミングで次の新しいおすすめパートナー エンコーダーのサポートが追加されました。
+
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 および Max アクション カメラ](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>ファイル エンコードの機能強化
+
+- 新しいコンテンツに対応したエンコードのプリセットが使用できるようになりました。 これは、コンテンツに対応したエンコードを使用して、GOP がアラインメントされた MP4 セットを生成します。 入力コンテンツが指定されると、サービスは入力コンテンツの最初の軽量分析を実行します。 その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤー数、適切なビット レート、解像度の設定を決定します。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、[オープン API 仕様](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)を参照してください。
+- Standard Encoder のサイズ変更機能の性能とマルチスレッドが改善されました。 特定の条件下では、お客様は 5% から 40% の VOD エンコードで性能向上をご体験いただけます。 複雑性が低いコンテンツが複数のビットレートにエンコードされるとき、最も高い性能アップを確認できます。 
+- 標準のエンコードでは、時間基準の GOP 設定の使用時、VOD エンコード中、可変フレーム レート (VFR) コンテンツで通常の GOP ペースが維持されるようになりました。  つまり、たとえば、15 fps から 30 fps の範囲で変化する混在フレーム レート コンテンツを送信すると、アダプティブ ビットレート ストリーミング MP4 ファイルへの出力に対して通常の GOP 距離が計算されます。 これにより HLS または DASH 経由で配信するときにトラック間で途切れなく切り替える機能が向上します。 
+-  可変フレーム レート (VFR) ソース コンテンツの AV 同期の向上
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer、ビデオ分析
+
+- VideoAnalyzer プリセットで抽出されたキーフレームがサイズ変更なく、動画の元の解像度で与えられるようになりました。 高解像度のキーフレーム抽出により元の画質が与えられ、Microsoft の Computer Vision サービスと Custom Vision サービスで提供される画像を基盤とする人工知能モデルを活用し、動画からさらに踏み込んだ分析情報を得ることができます。
+
+## <a name="september-2019"></a>2019 年 9 月
+
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>ライブ イベントのライブ リニア エンコード
+
+Media Services v3 で、24 時間 365 日のライブ イベントのライブ リニア エンコードのプレビュー版が発表されました。
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
+
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+
+詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+
+## <a name="august-2019"></a>2019 年 8 月
+
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>南アフリカのリージョン ペアで Media Services を提供開始 
+
+Media Services を南アフリカ北部と南アフリカ西部の各リージョンで利用できるようになりました。
+
+詳細については、「[Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
+
+お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、廃止される予定です。 提供終了日については、この[レガシ コンポーネント](../previous/legacy-components.md)に関するトピックを参照してください。
+
+詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
+ 
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="content-protection"></a>コンテンツの保護
+
+トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生の防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+
+7 月の時点では、プレビュー機能は米国中部と米国中西部でのみ利用できました。
+
+## <a name="june-2019"></a>2019 年 6 月
+
+### <a name="video-subclipping"></a>ビデオのサブクリップ
+
+[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を使用してビデオをエンコードする際に、ビデオをトリミングまたはサブクリップできるようになりました。 
+
+この機能は、[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](https://docs.microsoft.com/rest/api/media/transforms)で動作します。 
+
+次の例を参照してください。
+
+* [.NET を使用してビデオをサブクリップする](subclip-video-dotnet-howto.md)
+* [REST を使用してビデオをサブクリップする](subclip-video-rest-howto.md)
+
 ## <a name="may-2019"></a>2019 年 5 月
 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Media Services の診断ログとメトリックに対する Azure Monitor のサポート
+
+Media Services で出力されたテレメトリ データを Azure Monitor を使用して表示できるようになりました。
+
+* Azure Monitor の診断ログを使用して、Media Services のキー配信エンドポイントによって送信された要求を監視します。 
+* Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
+
+詳細については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>ダイナミック パッケージでの複数のオーディオ トラックのサポート 
+
+複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、[ダイナミック パッケージ](dynamic-packaging-overview.md)では、HLS 出力 (バージョン 4 以上) 用の複数のオーディオ トラックがサポートされるようになりました。
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韓国のリージョン ペアで Media Services を提供開始 
+
+Media Services が、韓国中部と韓国南部のリージョンで利用できるようになりました。 
+
+詳細については、「[Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
+
 ### <a name="performance-improvements"></a>パフォーマンスの向上
+
+Media Services のパフォーマンス向上を含む更新が追加されました。
 
 * 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints.md)に関する記事を参照してください。
 * [エンコードの速度の向上](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
@@ -46,13 +191,13 @@ ms.locfileid: "65153076"
 ### <a name="new-presets"></a>新しいプリセット
 
 * [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) が組み込みのアナライザー プリセットに追加されました。
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](cae-experimental.md)に関する記事を参照してください。 
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](content-aware-encoding.md)に関する記事を参照してください。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
+動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs)」を参照してください。
 
-資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associate-filters-with-streaming-locator)に関する記事を参照してください。
+資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associating-filters-with-streaming-locator)に関する記事を参照してください。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
@@ -219,6 +364,8 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[概要](media-services-overview.md)
+- [概要](media-services-overview.md)
+- [Media Services v3 ドキュメントの更新](docs-release-notes.md)
+- [Media Services v2 リリース ノート](../previous/media-services-release-notes.md)

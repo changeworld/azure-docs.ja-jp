@@ -1,25 +1,24 @@
 ---
 title: デシジョン フォレスト回帰:モジュール リファレンス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の 2 クラス平均化パーセプトロン モジュールを使用し、平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の 2 クラス平均化パーセプトロン モジュールを使用し、平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f0fec525ed87f91cf102053383b2934aac4b71c0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027771"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82137673"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 
-この記事では、Azure Machine Learning service のビジュアル インターフェイス (プレビュー) のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
 
 平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成するには、このモジュールを使用します。  
   
@@ -33,11 +32,13 @@ ms.locfileid: "65027771"
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>2 クラス平均化パーセプトロンの構成方法
 
-1.  **2 クラス平均化パーセプトロン** モジュールを実験に追加します。  
+1.  **2 クラス平均化パーセプトロン** モジュールをパイプラインに追加します。  
 
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)**:モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
+    -   **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
+
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
   
 3.  **[Learning rate]\(学習速度\)** に*学習速度*の値を指定します。 学習速度の値は、モデルがテストされて修正される度に確率的勾配降下法で使用されるステップのサイズを制御します。
   
@@ -47,19 +48,25 @@ ms.locfileid: "65027771"
   
      早く停止することで、より優れた一般化がもたらされる場合が多いです。 イテレーションの回数を増やすと適合が向上する反面、過剰適合のおそれがあります。
   
-5.  **[Random number seed]\(乱数シード\)** には、必要に応じて、シードとして使用する整数値を入力します。 繰り返し実行したときの実験の再現性を確保したい場合は、シードを使用することをお勧めします。  
+5.  **[Random number seed]\(乱数シード\)** には、必要に応じて、シードとして使用する整数値を入力します。 繰り返し実行したときのパイプラインの再現性を確保したい場合は、シードを使用することをお勧めします。  
   
-1.  トレーニング データセットと、次のいずれかのトレーニング モジュールを接続します。
+1.  トレーニング データセットを接続し、モデルをトレーニングします。
+
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
   
-    -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
+  
+    > [!NOTE]
+    > 
+    > パラメーター範囲を [[モデルのトレーニング]](train-model.md) に渡すと、単一のパラメーター リストの既定値のみが使用されます。  
+    > 
+    > [[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) モジュールによって、パラメーターごとに設定の範囲が求められているとき、それに単一のパラメーター値セットを渡した場合、それらの値は無視され、学習器の既定値が使用されます。  
+    > 
+    > **[Parameter Range]\(パラメーター範囲\)** オプションを選択し、任意のパラメーターに単一の値を入力した場合、指定した単一の値はスイープ全体で使用されます。これは、他のパラメーターが値の範囲の中で変化する場合でも同様です。
 
-## <a name="results"></a>結果
-
-トレーニングの完了後、次の作業を行います。
-
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックします。
 
 
-## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+## <a name="next-steps"></a>次のステップ
+
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

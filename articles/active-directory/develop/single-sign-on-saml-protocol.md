@@ -1,29 +1,24 @@
 ---
-title: Azure でのシングル サインオンの SAML プロトコル | Microsoft Docs
+title: Azure シングル サインオンの SAML プロトコル
 description: この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
-editor: ''
-ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2017
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437885"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853787"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -49,7 +44,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
-| ID | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
+| id | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | Version | 必須 | このパラメーターは **2.0** に設定する必要があります。 |
 | IssueInstant | 必須 | これは、UTC 値と [ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)の DateTime 文字列です。 Azure AD はこの型の DateTime 値を期待しますが、値を評価または使用することはありません。 |
 | AssertionConsumerServiceUrl | 省略可能 | 指定する場合、このパラメーターは Azure AD でのクラウド サービスの `RedirectUri` と一致する必要があります。 |
@@ -90,7 +85,7 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 Azure AD は `AllowCreate` 属性を無視します。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD がサポートする `AuthnContextClassRef` の値は、`urn:oasis:names:tc:SAML:2.0:ac:classes:Password` のただ 1 つです。
+`RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD では、`urn:oasis:names:tc:SAML:2.0:ac:classes:Password` などの `AuthnContextClassRef` 値をサポートしています。
 
 ### <a name="scoping"></a>Scoping
 ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD に送信される `AuthnRequest` 要素では省略可能です。
@@ -100,7 +95,7 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 ### <a name="signature"></a>署名
 `AuthnRequest` 要素には `Signature` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
 
-### <a name="subject"></a>Subject
+### <a name="subject"></a>サブジェクト
 Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
 ## <a name="response"></a>Response
@@ -158,12 +153,12 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
 ### <a name="issuer"></a>発行者
 
-Azure AD は、`Issuer` 要素を `https://login.microsoftonline.com/<TenantIDGUID>/` に設定します。\<TenantIDGUID> は、Azure AD テナントのテナント ID です。
+Azure AD は、`Issuer` 要素を `https://sts.windows.net/<TenantIDGUID>/` に設定します。\<TenantIDGUID> は、Azure AD テナントのテナント ID です。
 
 たとえば、Issuer 要素を含む応答の例は次のようになります。
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>Status
@@ -196,7 +191,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 この要素は `https://sts.windows.net/<TenantIDGUID>/` に設定されます。\<TenantIDGUID> は Azure AD テナントのテナント ID です。
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>署名
@@ -211,7 +206,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subject
+#### <a name="subject"></a>サブジェクト
 
 この要素は、アサーションのステートメントのサブジェクトであるプリンシパルを指定します。 認証されたユーザーを表す `NameID` 要素が含まれます。 `NameID` の値は、トークンの対象であるサービス プロバイダーに対してのみ送信される限定的な識別子です。 永続的であり、取り消すことはできますが、再割り当てはされません。 また、非透過的であるため、ユーザーについての情報はわからず、属性クエリに対する識別子としては使用できません。
 

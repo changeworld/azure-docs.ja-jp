@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 API に接続する - Java
-description: Java を使用して Media Services v3 API に接続する方法について学習します。
+description: この記事では、Java を使って Azure Media Services v3 API に接続する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 68e09ec6ce4aeb91e00c2a15caa8ec81f40064c1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997191"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74888497"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API に接続する - Java
 
@@ -41,6 +41,9 @@ ms.locfileid: "59997191"
 
 - [Java in Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
 - [Java Project Management in VS Code](https://code.visualstudio.com/docs/java/java-project)
+
+> [!IMPORTANT]
+> [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 
@@ -74,7 +77,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
      <artifactId>azure-client-authentication</artifactId>
      <version>1.6.6</version>
    </dependency>
-```
+    ```
 
 ## <a name="connect-to-the-java-client"></a>Java クライアントに接続する
 
@@ -123,6 +126,8 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 - [Java リファレンス](https://aka.ms/ams-v3-java-ref)
 - [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` を挿入して、エンティティの操作を開始できます。
+
+コードの例について詳しくは、[Java SDK サンプル](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) リポジトリをご覧ください。

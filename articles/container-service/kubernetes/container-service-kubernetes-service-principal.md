@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure Kubernetes クラスターのサービス プリンシパル
 description: Azure Container Service の Kubernetes クラスター用の Azure Active Directory サービス プリンシパルを作成および管理する
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52ed101199126818abaddef47892e1f033eb3968
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371122"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(非推奨) Container Service の Kubernetes クラスター用の Azure AD サービス プリンシパルをセットアップする
 
@@ -33,7 +31,7 @@ Azure Container Service で Kubernetes クラスターを使用するには、Az
 
 次の要件を満たす既存の Azure AD サービス プリンシパルを使用することも、新たに作成することもできます。
 
-* **スコープ**: リソース グループ
+* **[スコープ]** : Resource group
 
 * **ロール**: Contributor
 
@@ -43,7 +41,7 @@ Azure Container Service で Kubernetes クラスターを使用するには、Az
 > サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、サブスクリプション内のロールにアプリケーションを割り当てるためのアクセス許可が必要です。 必要なアクセス許可があるかどうかは、[ポータルで確認](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)します。
 >
 
-## <a name="option-1-create-a-service-principal-in-azure-ad"></a>方法 1: Azure AD でのサービス プリンシパルの作成
+## <a name="option-1-create-a-service-principal-in-azure-ad"></a>オプション 1: Azure AD でのサービス プリンシパルの作成
 
 Kubernetes クラスターをデプロイする前に Azure AD サービス プリンシパルを作成する場合、Azure にはいくつかの方法が用意されています。
 
@@ -80,7 +78,7 @@ Kubernetes クラスターを作成するときに、既存のサービス プ�
 
 1. テンプレート パラメーター ファイル `azuredeploy.parameters.json` を GitHub から[ダウンロード](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)します。
 
-2. サービス プリンシパルを指定するには、ファイルの `servicePrincipalClientId` と `servicePrincipalClientSecret` に値を入力します  (また、`dnsNamePrefix` と `sshRSAPublicKey` に独自の値を指定する必要もあります。 後者は、クラスターにアクセスするための SSH 公開キーです)。ファイルを保存します。
+2. サービス プリンシパルを指定するには、ファイルの `servicePrincipalClientId` と `servicePrincipalClientSecret` に値を入力します (また、`dnsNamePrefix` と `sshRSAPublicKey` に独自の値を指定する必要もあります。 後者は、クラスターにアクセスするための SSH 公開キーです)。ファイルを保存します。
 
     ![サービス プリンシパルのパラメーターを渡す](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +95,7 @@ Kubernetes クラスターを作成するときに、既存のサービス プ�
     ```
 
 
-## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>方法 2: `az acs create` でクラスターを作成するときにサービス プリンシパルを生成する
+## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>オプション 2:`az acs create` でクラスターを作成するときにサービス プリンシパルを生成する
 
 [`az acs create`](/cli/azure/acs#az-acs-create) コマンドを実行して Kubernetes クラスターを作成する場合は、サービス プリンシパルを自動的に生成させることができます。
 
@@ -105,7 +103,7 @@ Kubernetes クラスターを作成するときに、既存のサービス プ�
 
 次のコマンドは、Kubernetes クラスターを作成し、SSH キーとサービス プリンシパル資格情報の両方を生成します。
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 
@@ -113,7 +111,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 > サービス プリンシパルを作成するための Azure AD およびサブスクリプション アクセス許可がアカウントにない場合は、`Insufficient privileges to complete the operation.` (この操作を完了するのに十分な特権がありません) というようなエラーが生成されます。
 >
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 * サブスクリプションにサービス プリンシパルを作成するためのアクセス許可がない場合、必要なアクセス許可の割り当てを Azure AD またはサブスクリプション管理者に依頼するか、Azure Container Service で使用するサービス プリンシパルの提供を管理者に求めなければならないことがあります。
 
@@ -168,7 +166,7 @@ az ad sp reset-credentials --name <appId>
 
 次に、すべてのクラスター ノードの `/etc/kubernetes/azure.json` を新しい資格情報で更新し、ノードを再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * コンテナー サービス クラスターで [Kubernetes を使ってみます](container-service-kubernetes-walkthrough.md)。
 

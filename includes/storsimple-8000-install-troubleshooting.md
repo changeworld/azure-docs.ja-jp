@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171136"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181370"
 ---
 ## <a name="troubleshooting-update-failures"></a>更新プログラムのエラーに関するトラブルシューティング
 **アップグレード前のチェックが失敗したことを示す通知が表示されるとどうなりますか。**

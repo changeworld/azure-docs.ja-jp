@@ -1,5 +1,5 @@
 ---
-title: 高速ネットワークを使った Azure 仮想マシンの作成 | Microsoft Docs
+title: 高速ネットワークを使用する Azure VM を作成する - Azure PowerShell
 description: 高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: ef6086afa17f1ab864d70678a6da6df2a78e0c16
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190292"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225187"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Windows 仮想マシンの作成
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークを備えた Windows 仮想マシンを作成する
 
 このチュートリアルでは、高速ネットワークを使った Windows 仮想マシン (VM) の作成方法について説明します。 高速ネットワークを使って Linux VM を作成する場合は、「[高速ネットワークを使った Linux 仮想マシンの作成](create-vm-accelerated-networking-cli.md)」をご覧ください。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
 
@@ -40,10 +40,11 @@ ms.locfileid: "65190292"
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。
 * **Windows Server 2016 Datacenter** 
 * **Windows Server 2012 R2 Datacenter**
+* **Windows Server 2019 Datacenter**
 
 ### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
 高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です。
@@ -63,8 +64,8 @@ VM インスタンスの詳細については、[Windows VM のサイズ](../vir
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Azure 高速ネットワークが有効な Windows VM を作成する
 ## <a name="portal-creation"></a>ポータルの作成
-この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 portal で仮想マシンを作成するときは、**[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、**[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
-* *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用していて、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
+この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成するときは、 **[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、 **[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
+* *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用しているときに、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
 
 仮想マシンが作成されたら、「高速ネットワークが有効化されていることを確認する」の手順に従って、高速ネットワークが有効であることを確認できます。
 
@@ -211,16 +212,16 @@ New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus
 Azure で VM を作成したら、VM に接続して、Windows でドライバーがインストールされていることを確認します。
 
 1. インターネット ブラウザーから Azure [Portal](https://portal.azure.com) を開いて、自分の Azure アカウントでサインインします。
-2. Azure Portal の上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに「*myVm*」と入力します。 検索結果に **myVm** が表示されたら、それをクリックします。 **[接続]** ボタンの下に **[作成中]** と表示されている場合、Azure による VM の作成がまだ完了していません。 概要の左上隅にある **[接続]** は必ず、**[接続]** ボタンの下の **[作成中]** が見えなくなってからクリックしてください。
+2. Azure Portal の上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに「*myVm*」と入力します。 検索結果に **myVm** が表示されたら、それをクリックします。 **[接続]** ボタンの下に **[作成中]** と表示されている場合、Azure による VM の作成がまだ完了していません。 概要の左上隅にある **[接続]** は必ず、 **[接続]** ボタンの下の **[作成中]** が見えなくなってからクリックしてください。
 3. 「[仮想マシンの作成](#create-the-virtual-machine)」で入力したユーザー名とパスワードを入力します。 Azure で Windows VM に接続したことがない場合は、「[仮想マシンへの接続](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)」を参照してください。
-4. Windows の [スタート] ボタンを右クリックし、**[デバイス マネージャー]** をクリックします。 **[ネットワーク アダプター]** ノードを展開します。 **[Mellanox ConnectX-3 Virtual Function Ethernet Adapter]** が表示されていることを確認します (下図参照)。
+4. Windows の [スタート] ボタンを右クリックし、 **[デバイス マネージャー]** をクリックします。 **[ネットワーク アダプター]** ノードを展開します。 **[Mellanox ConnectX-3 Virtual Function Ethernet Adapter]** が表示されていることを確認します (下図参照)。
 
     ![[デバイス マネージャー]](./media/create-vm-accelerated-networking/device-manager.png)
 
 VM の高速ネットワークが有効になりました。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
-高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができです。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
+高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができます。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
 
 * VM は高速ネットワークがサポートされるサイズである必要があります
 * VM はサポートされる Azure ギャラリー イメージ (および Linux のカーネル バージョン) である必要があります
@@ -230,7 +231,7 @@ VM の高速ネットワークが有効になりました。
 最初に、VM (可用性セットの場合は、セット内のすべての VM) を停止/割り当てを解除します。
 
 ```azurepowershell
-Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
+Stop-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -239,18 +240,18 @@ Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
 停止した後、VM の NIC 上で高速ネットワークを有効にします。
 
 ```azurepowershell
-$nic = Get-AzureRMNetworkInterface -ResourceGroupName "myResourceGroup" `
+$nic = Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic"
 
 $nic.EnableAcceleratedNetworking = $true
 
-$nic | Set-AzureRMNetworkInterface
+$nic | Set-AzNetworkInterface
 ```
 
 VM (可用性セットの場合はセット内のすべての VM) を再起動し、高速ネットワークが有効になっていることを確認します。
 
 ```azurepowershell
-Start-AzureRmVM -ResourceGroup "myResourceGroup" `
+Start-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 

@@ -1,68 +1,143 @@
 ---
-title: PIM で Azure AD ロールの監査履歴を表示する - Azure Active Directory | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールの監査履歴を表示する方法について説明します。
+title: Azure AD PIM で Azure AD ロールの監査ログ レポートを表示する | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールの監査ログ履歴を表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: curtand
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/14/2017
-ms.author: rolyon
+ms.date: 01/07/2019
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576149"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78329514"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールの監査履歴を表示する
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) の監査履歴を使用すると、すべての特権ロールでの特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの監査履歴を表示する
 
-## <a name="navigate-to-audit-history"></a>監査履歴に移動する
-[Azure Portal](https://portal.azure.com) のダッシュボードで、 **Azure AD Privileged Identity Management** アプリを選択します。 次に、PIM ダッシュボードで **[特権ロールの管理]** > **[監査履歴]** の順にクリックして、監査履歴にアクセスします。
+Privileged Identity Management (PIM) の監査履歴を使用すると、すべての特権ロールでの過去 30 日間におけるすべてのロール割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含む Azure Active Directory (Azure AD) 組織内のアクティビティの完全な監査履歴を確認するには、[Azure Active Directory のセキュリティおよびアクティビティ レポート](../reports-monitoring/overview-reports.md)を使用できます。
 
-![監査履歴](media/azure-ad-pim-approval-workflow/image021.png)
+## <a name="determine-your-version-of-pim"></a>PIM のバージョンを判断する
 
-> [!NOTE]
-> [アクション] でデータを並べ替え、[アクティブ化 - 承認済み] を探します。
+2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)が行われます。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-## <a name="audit-history-graph"></a>監査履歴グラフ
-監査履歴を使用すると、合計アクティブ化数、1 日あたりの最大アクティブ化数、1 日あたりの平均アクティブ化数を折れ線グラフで表示できます。  監査履歴に複数のロールがある場合は、ロールによってデータをフィルターすることもできます。
+    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "自分のバージョン用のタブを選択する")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
-**[時間]**、**[アクション]**、および **[ロール]** の各ボタンを使用して、履歴を並べ替えることができます。
+# <a name="new-version"></a>[新しいバージョン](#tab/new)
 
-## <a name="audit-history-list"></a>監査履歴一覧
-監査履歴一覧の列は次のとおりです。
+Azure AD ロールの監査履歴を表示するには、次の手順に従います。
 
-* **要求元** - ロールのアクティブ化または変更を要求したユーザー。  値が "Azure システム" の場合は、Azure 監査履歴で詳細を確認できます。
-* **ユーザー** - ロールをアクティブ化しているユーザー、またはロールに割り当てられているユーザー。
-* **ロール** - ユーザーによって割り当てられたかアクティブ化されたロール。
-* **アクション** - 要求元によって実行されたアクション。 これには、割り当て、割り当て解除、アクティブ化、非アクティブ化などがあります。
-* **時間** - アクションが発生した時刻。
-* **理由** - アクティブ化の間に理由フィールドに入力されたテキスト。
-* **有効期限** - ロールのアクティブ化のみに関連します。
+## <a name="view-resource-audit-history"></a>リソースの監査履歴を表示する
+
+リソースの監査では、自分の Azure AD ロールに関連付けられているすべてのアクティビティを確認できます。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure AD ロール]** を選択します。
+
+1. **[リソースの監査]** を選択します。
+
+1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
+
+    ![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+## <a name="view-my-audit"></a>自分の監査を表示する
+
+自分の監査を使用すると、個人のロール アクティビティを表示できます。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure AD ロール]** を選択します。
+
+1. 監査履歴を表示するリソースを選択します。
+
+1. **[自分の監査]** を選択します。
+
+1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
+
+    ![現在のユーザーに対する監査の一覧](media/azure-pim-resource-rbac/my-audit-time.png)
+
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+
+## <a name="view-audit-history"></a>監査履歴を表示する
+
+Azure AD ロールの監査履歴を表示するには、次の手順に従います。
+
+1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. **[Azure AD Privileged Identity Management]** を開きます。
+
+1. **[Azure AD ロール]** を選択します。
+
+1. **[ディレクトリ ロールの監査履歴]** を選択します。
+
+    監査履歴に応じて、棒グラフ、アクティブ化の合計数、1 日当たりの最大アクティブ化数、および 1 日当たりの平均アクティブ化数が表示されます。
+
+    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "ディレクトリ ロールの監査履歴を表示する")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+
+    ページの下部に、使用可能な監査履歴内の各アクションに関する情報を含む表が表示されます。 列には次の意味があります。
+
+    | 列 | 説明 |
+    | --- | --- |
+    | Time | アクションが発生した時刻。 |
+    | 要求元 | ロールのアクティブ化または変更を要求したユーザー。 値が **[Azure システム]** の場合は、Azure 監査履歴で詳細を確認できます。 |
+    | アクション | 要求元によって実行されたアクション。 アクションには、Assign、Unassign、Activate、Deactivate、または AddedOutsidePIM が含まれます。 |
+    | メンバー | ロールをアクティブ化しているユーザー、またはロールに割り当てられているユーザー。 |
+    | Role | ユーザーによって割り当てられたかアクティブ化されたロール。 |
+    | 理由 | アクティブ化中に、[理由] フィールドに入力されたテキスト。 |
+    | 有効期限 | アクティブ化されたロールが期限切れになる時刻。 資格のあるロールの割り当てにのみ適用されます。 |
+
+1. 履歴を並べ替えるには、 **[時間]** 、 **[アクション]** 、および **[ロール]** の各ボタンを使用できます。
 
 ## <a name="filter-audit-history"></a>監査履歴をフィルター処理する
-**[フィルター]** をクリックすると、監査履歴に表示される情報を絞り込むことができます。  **[グラフ パラメーターの更新]** ブレードが表示されます。
 
-フィルターを設定した後、**[更新]** をクリックすると、履歴のデータがフィルター処理されます。  データがすぐに表示されない場合は、ページを更新してください。
+1. 監査履歴ページの上部にある **[フィルター]** ボタンをクリックします。
 
-### <a name="change-the-date-range"></a>日付範囲を変更する
-**[今日]**、**[過去 1 週間]**、**[過去 1 か月]**、**[カスタム]** のいずれかのボタンを使用して、監査履歴の時間範囲を変更することができます。
+    **[グラフ パラメーターの更新]** ウィンドウが表示されます。
 
-**[カスタム]** をクリックすると、**[開始]** および **[終了]** 日付フィールドが表示され、履歴の日付範囲を指定できます。  MM/DD/YYYY の形式で日付を入力するか、 **カレンダー** アイコンをクリックしてカレンダーから日付を選択できます。
+1. **[時間の範囲]** で、時間の範囲を選択します。
 
-### <a name="change-the-roles-included-in-the-history"></a>履歴に含まれるロールを変更する
-ロールを履歴に含めたり履歴から除外したりするには、各ロールの横にある **[ロール]** チェックボックスをオンまたはオフにします。
+1. **[Roles]\(ロール\)** で、表示するロールを示すチェック ボックスをオンにします。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
+    ![グラフ パラメーター ウィンドウを更新する](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
-- [PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する](azure-pim-resource-rbac.md)
+1. **[完了]** を選択して、フィルター処理された監査履歴を表示します。
+
+## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>承認イベントの理由、承認者、およびチケット番号を取得する
+
+1. 特権ロール管理者ロールのアクセス許可で [Azure portal](https://aad.portal.azure.com) にサインインし、Azure AD を開きます。
+1. **[監査ログ]** を選択します。
+1. **[サービス]** フィルターを使用して、Privileged Identity Management サービスの監査イベントのみを表示します。 **[監査ログ]** ページでは、次のことを実行できます。
+
+    - **[状態の理由]** 列で監査イベントの理由を確認します。
+    - "ロールへのメンバーの追加要求が承認されました" イベントの **[開始者 (アクター)]** 列で承認者を確認します。
+
+    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/filter-audit-logs.png "PIM サービスについて監査ログをフィルターに掛ける")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+
+1. 監査ログ イベントを選択すると、 **[詳細]** ペインの **[アクティビティ]** タブにチケット番号が表示されます。
+  
+    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "監査イベントのチケット番号を確認する")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+
+1. 監査イベントの **[詳細]** ペインの **[ターゲット]** タブに、要求者 (ロールをアクティブにしているユーザー) を表示できます。 Azure AD のロールには、次の 2 つのターゲットの種類があります。
+
+    - ロール (**Type** = Role)
+    - 要求者 (**Type** = User)
+
+通常、承認イベントのすぐ上にある監査ログ イベントは、**開始者 (アクター)** が要求者である "ロールへのメンバーの追加が完了しました" のイベントです。 ほとんどの場合、監査の観点から承認要求で要求者を検索する必要はありません。
+
+---
+
+## <a name="next-steps"></a>次のステップ
+
+- [Privileged Identity Management で Azure リソース ロールのアクティビティおよび監査履歴を表示する](azure-pim-resource-rbac.md)

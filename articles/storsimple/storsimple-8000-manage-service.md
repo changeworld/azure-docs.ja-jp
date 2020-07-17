@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232179"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 
@@ -101,11 +103,11 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 次の手順を実行して、サービス登録キーを再生成します。
 
 ### <a name="to-regenerate-the-service-registration-key"></a>サービス登録キーを再生成するには
-1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt;** **[キー]** の順に移動します。
+1. **[StorSimple デバイス マネージャー]** ブレードで、 **[管理]&gt;** **[キー]** の順に移動します。
     
     ![キー ブレード](./media/storsimple-8000-manage-service/regenregkey2.png)
 
-2. **[キー]** ブレードで、**[再生成]** をクリックします。
+2. **[キー]** ブレードで、 **[再生成]** をクリックします。
 
     ![[再生成] をクリック](./media/storsimple-8000-manage-service/regenregkey3.png)
 3. **[サービス登録キーの再生成]** ブレードで、キーを再生成するときに必要な操作を確認します。 これ以降にこのサービスに登録されるデバイスはすべて、新しい登録キーを使用します。 **[再生成]** をクリックして確定します。 登録が完了すると、その旨が通知されます。
@@ -194,22 +196,22 @@ Azure Portal では、Update 5.0 以降を実行している StorSimple デバ�
 | 更新プログラムのスキャン、ダウンロード、およびインストール                                                                                             | はい            |
 | デバイスの非アクティブ化                                                                                                               | はい            |
 | デバイスの削除                                                                                                                   | はい            |
-| ボリューム コンテナーの作成、変更、および削除                                                                                   | いいえ              |
-| ボリュームの作成、変更、および削除                                                                                             | いいえ              |
-| バックアップ ポリシーの作成、変更、および削除                                                                                      | いいえ              |
-| 手動バックアップの取得                                                                                                            | いいえ              |
-| スケジュールされたバックアップの作成                                                                                                         | 適用不可 |
-| バックアップセットからの復元                                                                                                        | いいえ              |
+| ボリューム コンテナーの作成、変更、および削除                                                                                   | いいえ             |
+| ボリュームの作成、変更、および削除                                                                                             | いいえ             |
+| バックアップ ポリシーの作成、変更、および削除                                                                                      | いいえ             |
+| 手動バックアップの取得                                                                                                            | いいえ             |
+| スケジュールされたバックアップの作成                                                                                                         | 適用なし |
+| バックアップセットからの復元                                                                                                        | いいえ             |
 | Update 3.0 以降を実行しているデバイスへの複製 <br> ソース デバイスは Update 3.0 より前のバージョンを実行しています。                                | はい            |
-| Update 3.0 より前のバージョンを実行しているデバイスへの複製                                                                          | いいえ              |
+| Update 3.0 より前のバージョンを実行しているデバイスへの複製                                                                          | いいえ             |
 | ソース デバイスとしてのフェールオーバー <br> (Update 3.0 より前のバージョンを実行しているデバイスから、Update 3.0 以降を実行しているデバイスに)                                                               | はい            |
-| ターゲット デバイスとしてのフェールオーバー <br> (Update 3.0 より前のソフトウェア バージョンを実行しているデバイスに)                                                                                   | いいえ              |
+| ターゲット デバイスとしてのフェールオーバー <br> (Update 3.0 より前のソフトウェア バージョンを実行しているデバイスに)                                                                                   | いいえ             |
 | アラートのクリア                                                                                                                  | はい            |
 | バックアップ ポリシー、バックアップ カタログ、ボリューム、ボリューム コンテナー、監視チャート、ジョブ、およびクラシック ポータルで作成されたアラートの表示 | はい            |
 | デバイス コントローラーのオンとオフ                                                                                              | はい            |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple デプロイのプロセスの詳細](storsimple-8000-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-8000-manage-storage-accounts.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)

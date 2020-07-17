@@ -1,26 +1,15 @@
 ---
-title: Azure で API Management と Service Fabric を統合する | Microsoft Docs
+title: Azure で API Management と Service Fabric を統合する
 description: Azure API Management をすぐに使い始め、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 9/26/2018
-ms.author: aljo
+ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292142"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -43,7 +32,7 @@ Service Fabric での Azure API Management のデプロイは高度なシナリ�
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
 * ネットワーク セキュリティ グループにセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成します。
-* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
 ## <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -77,7 +66,7 @@ Visual Studio を管理者として起動し、ASP.NET Core サービスを作�
  1. Visual Studio で、[ファイル] の [新しいプロジェクト] を選択します。
  2. [クラウド] の下にある Service Fabric アプリケーション テンプレートを選択し、 **"ApiApplication"** という名前を付けます。
  3. ステートレス ASP.NET Core サービス テンプレートを選択し、プロジェクトに **"WebApiService"** という名前を付けます。
- 4. Web API ASP.NET Core 2.0 プロジェクト テンプレートを選択します。
+ 4. Web API ASP.NET Core 2.1 プロジェクト テンプレートを選択します。
  5. プロジェクトが作成されたら、`PackageRoot\ServiceManifest.xml` を開いて、エンドポイント リソースの構成から `Port` 属性を削除します。
 
     ```xml
@@ -135,7 +124,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 ### <a name="microsoftapimanagementserviceproducts"></a>Microsoft.ApiManagement/service/products
 
-[Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) は製品を作成します。 Azure API Management の成果物には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 成果物が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。
+[Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) は製品を作成します。 Azure API Management の製品には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 製品が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。
 
 製品のわかりやすい **displayName** と **description** を入力します。 この記事では、サブスクリプションは必須ですが、管理者によるサブスクリプションの承認は必須ではありません。  この製品の **state** が "公開" され、サブスクライバーに表示します。
 
@@ -201,13 +190,13 @@ Service Fabric バックエンド ポリシーの全属性については、[API
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|開発者|
+|apimSku|Developer|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
 |serviceFabricCertificate|&lt;base-64 エンコード文字列&gt;|
 |url_path|/api/values|
-|clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.azure.com:19080|
+|clusterHttpManagementEndpoint|`https://mysfcluster.southcentralus.cloudapp.azure.com:19080`|
 |inbound_policy|&lt;XML 文字列&gt;|
 
 *certificatePassword* と *serviceFabricCertificateThumbprint* は、クラスターの設定に使用するクラスター証明書と一致する必要があります。
@@ -284,7 +273,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
     ["value1", "value2"]
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
@@ -300,7 +289,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API Management](/azure/api-management/import-and-publish) の使用方法の詳細を確認する
 

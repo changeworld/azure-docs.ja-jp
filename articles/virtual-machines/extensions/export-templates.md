@@ -1,26 +1,25 @@
 ---
-title: VM 拡張機能を含む Azure リソース グループのエクスポート | Microsoft Docs
+title: VM 拡張機能を含む Azure リソース グループのエクスポート
 description: 仮想マシン拡張機能を含む Resource Manager テンプレートをエクスポートします。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: roiyz
-ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.author: akjosh
+ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451971"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227911"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM 拡張機能を含むリソース グループのエクスポート
 
@@ -51,7 +50,7 @@ Azure リソース グループを、再デプロイ可能な新しい Resource 
 
 リソース グループを再利用可能なテンプレートにエクスポートするには、次の手順を実行します。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインする
 2. ハブ メニューの [リソース グループ] をクリックします。
 3. 一覧から、ターゲット リソース グループを選択します。
 4. [リソース グループ] ブレードで、[Automation スクリプト] をクリックします。

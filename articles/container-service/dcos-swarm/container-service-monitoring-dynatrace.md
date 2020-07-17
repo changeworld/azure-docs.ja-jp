@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターの監視 - Dynatrace
 description: Dynatrace で Azure Container Service (DC/OS) クラスターを監視します。 DC/OS ダッシュボードを使用して Dynatrace OneAgent をデプロイします。
-services: container-service
 author: MartinGoodwell
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ab6bb116c93aad8501da21dc5688d7e39f4195fe
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001992"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166191"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>(非推奨) Dynatrace SaaS/Managed を使用した Azure Container Service DC/OS クラスターの監視
 
@@ -35,15 +33,15 @@ Azure Container Service によって構成されたクラスターに[デプロ�
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Marathon を使用した Dynatrace デプロイメントの構成
 以下の手順は、Marathon を使用して Dynatrace アプリケーションを構成し、クラスターにデプロイする方法を示しています。
 
-1. [http://localhost:80/](http://localhost:80/) で DC/OS の UI にアクセスします。 DC/OS の UI を開いたら、**[Universe (ユニバース)]** タブに移動して、**Dynatrace** を検索します。
+1. `http://localhost:80/` で DC/OS の UI にアクセスします。 DC/OS の UI を開いたら、 **[Universe (ユニバース)]** タブに移動して、**Dynatrace** を検索します。
 
     ![Dynatrace in DC/OS Universe](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
-2. この構成作業には、Dynatrace SaaS アカウントまたは無料試用版アカウントが必要です。 Dynatrace ダッシュボードにログインしたら、**[Deploy Dynatrace (Dynatrace のデプロイ)]** を選択します。
+2. この構成作業には、Dynatrace SaaS アカウントまたは無料試用版アカウントが必要です。 Dynatrace ダッシュボードにログインしたら、 **[Deploy Dynatrace (Dynatrace のデプロイ)]** を選択します。
 
     ![Dynatrace Set up PaaS integration](./media/container-service-monitoring-dynatrace/setup-paas.png)
 
-3. そのページで、**[Set up PaaS integration (PaaS の統合設定)]** を選択します。 
+3. そのページで、 **[Set up PaaS integration (PaaS の統合設定)]** を選択します。 
 
     ![Dynatrace API token](./media/container-service-monitoring-dynatrace/api-token.png) 
 
@@ -55,6 +53,6 @@ Azure Container Service によって構成されたクラスターに[デプロ�
 
     ![Dynatrace configuration in the DC/OS Universe-instances](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パッケージをインストールしたら、Dynatrace ダッシュ ボードに戻ります。 クラスター内のコンテナーのさまざまな利用状況指標をご覧ください。 

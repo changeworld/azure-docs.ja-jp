@@ -4,33 +4,30 @@ description: 起動時に発生する "0x0000005A-CRITICAL SERVICE FAILED" の�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77921455"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Azure VM 起動時に Windows が "CRITICAL SERVICE FAILED" をブルー スクリーンに表示する
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "CRITICAL SERVICE FAILED" エラーについて説明します。 また、この問題の解決するためのトラブルシューティング手順について説明します。 
 
-> [!NOTE] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
 ## <a name="symptom"></a>症状 
 
 Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) のブート スクリーンショットを確認すると、ブルー スクリーンに次のいずれかのエラー メッセージが表示されます。
 
-- "問題が発生したため、PC を再起動する必要があります。 再起動できます。 この問題と可能な解決方法の詳細については、 http://windows.com/stopcode を参照してください。 サポート担当者に電話をかける場合、次の情報を伝えます。停止コード: CRITICAL SERVICE FAILED" 
+- "問題が発生したため、PC を再起動する必要があります。 再起動できます。 この問題と可能な解決方法の詳細については、 https://windows.com/stopcode を参照してください。 サポート担当者に電話をかける場合、次の情報を伝えます。停止コード: CRITICAL SERVICE FAILED" 
 - "問題が発生したため、PC を再起動する必要があります。 エラー情報を収集しています。自動的に再起動します。 詳細については、次のエラーを後からオンラインで検索してください: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>原因
@@ -95,7 +92,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 
 2. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。 VM がセーフ モードで起動します。 依然としてエラーが発生する場合は、省略可能な手順を実行します。
 3. **[実行]** ボックスを開き、**verifier** を実行して、ドライバーの検証マネージャー ツールを起動します。
-4. **[署名されていないドライバーを自動的に選択する]** を選択し、**[次へ]** をクリックします。
+4. **[署名されていないドライバーを自動的に選択する]** を選択し、 **[次へ]** をクリックします。
 5. 署名されていないドライバー ファイルの一覧が表示されます。 ファイル名を覚えます。
 6. これらのファイルの同じバージョンを作業用 VM からコピーし、これらの署名されていないファイルを置き換えます。 
 
@@ -109,16 +106,16 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 ダンプ ログを自分で分析するには、次の手順に従います。
 
 1. 復旧 VM に OS ディスクを接続します。
-2. 接続した OS ディスクで、**\windows\system32\config** を参照します。ロールバックが必要な場合に備えて、すべてのファイルをバックアップとしてコピーします。
+2. 接続した OS ディスクで、 **\windows\system32\config** を参照します。ロールバックが必要な場合に備えて、すべてのファイルをバックアップとしてコピーします。
 3. **レジストリ エディター** (regedit.exe) を起動します。
-4. **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、**[ファイル]** > **[ハイブの読み込み]** を選択します。
-5. 接続した OS ディスクで、**\windows\system32\config\SYSTEM** フォルダーを参照します。 ハイブの名前として、「**BROKENSYSTEM**」と入力します。 **HKEY_LOCAL_MACHINE** キーの下に、新しいレジストリ ハイブが表示されます。
+4. **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、 **[ファイル]**  >  **[ハイブの読み込み]** を選択します。
+5. 接続した OS ディスクで、 **\windows\system32\config\SYSTEM** フォルダーを参照します。 ハイブの名前として、「**BROKENSYSTEM**」と入力します。 **HKEY_LOCAL_MACHINE** キーの下に、新しいレジストリ ハイブが表示されます。
 6. **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** を参照し、次の変更を行います。
 
     Autoreboot = 0
 
     CrashDumpEnabled = 2
-7.  **[BROKENSYSTEM]** を選択します。 メニューから、**[ファイル]** > **[ハイブのアンロード]** を選択します。
+7.  **[BROKENSYSTEM]** を選択します。 メニューから、 **[ファイル]**  >  **[ハイブのアンロード]** を選択します。
 8.  デバッグ モードで起動するように BCD 設定を変更します。 管理者特権のコマンド プロンプトで、次のコマンドを実行します。
 
     ```cmd

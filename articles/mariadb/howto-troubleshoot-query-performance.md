@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB でのクエリのパフォーマンスをトラブルシューティングする方法
-description: この記事では、EXPLAIN を使って Azure Database for MariaDB でのクエリのパフォーマンスをトラブルシューティングする方法について説明します。
+title: クエリ パフォーマンスのトラブルシューティング - Azure Database for MariaDB
+description: EXPLAIN を使って Azure Database for MariaDB でのクエリのパフォーマンスをトラブルシューティングする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.topic: troubleshooting
+ms.date: 3/18/2020
+ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53541083"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79530055"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>EXPLAIN を使用して Azure Database for MariaDB でのクエリのパフォーマンスをプロファイリングする方法
 **EXPLAIN** は、クエリを最適化するための便利なツールです。 EXPLAIN ステートメントを使うと、SQL ステートメントの実行状況に関する情報を取得できます。 EXPLAIN ステートメントを実行したときの出力の例を次に示します。
@@ -163,7 +163,7 @@ EXPLAIN では、MariaDB が結合インデックスを使うようになり、�
  
 ## <a name="conclusion"></a>まとめ
  
-EXPLAIN と異なる種類のインデックスを使うと、パフォーマンスを大幅に向上させることができます。 テーブルにインデックスを作成しただけでは、必ずしも MariaDB がそれを使ってクエリを実行できるわけではありません。 常に、EXPLAIN を使って想定を検証し、インデックスを使ってクエリを最適化する必要があります。
+EXPLAIN と異なる種類のインデックスを使うと、パフォーマンスを大幅に向上させることができます。 テーブルにインデックスを作成しても、必ずしも MariaDB がそれを使ってクエリを実行できるわけではありません。 常に、EXPLAIN を使って想定を検証し、インデックスを使ってクエリを最適化する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb) をご覧ください。

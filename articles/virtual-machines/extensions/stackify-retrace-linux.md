@@ -1,25 +1,24 @@
 ---
-title: Stackify Retrace Azure Linux Agent 拡張機能 | Microsoft Docs
+title: Stackify Retrace Azure Linux Agent 拡張機能
 description: Linux 仮想マシンに Stackify Retrace Linux エージェントをデプロイします｡
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
-ms.author: roiyz
-ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: akjosh
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58792422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227875"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent 拡張機能
 
@@ -44,7 +43,7 @@ Retrace は 1 つのプラットフォーム上のすべての環境にまたが
 
 Retrace エージェントは､次の Linux ディストリビューションに対して実行できます｡
 
-| ディストリビューション | バージョン |
+| Distribution | Version |
 |---|---|
 | Ubuntu | 16.04 LTS､14.04 LTS､16.10､17.04 |
 | Debian | 7.9+ および 8.2+､9 |
@@ -199,4 +198,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | 無効化エラー | サービスの削除に失敗しました |
 | 120 | アンインストール エラー | サービスの停止に失敗しました |
 
-ヘルプが必要な場合は､Stackify サポートに問い合わせることができます (問い合わせ先: https://support.stackify.com)｡
+ヘルプが必要な場合は､Stackify サポートに問い合わせることができます (問い合わせ先: https://support.stackify.com )｡

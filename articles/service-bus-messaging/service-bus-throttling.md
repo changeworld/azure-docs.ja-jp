@@ -1,0 +1,132 @@
+---
+title: Azure Service Bus スロットルの概要 | Microsoft Docs
+description: Service Bus スロットルの概要 - Standard および Premium レベル。
+services: service-bus-messaging
+author: axisc
+editor: spelluru
+ms.service: service-bus-messaging
+ms.topic: article
+ms.date: 10/01/2019
+ms.author: aschhab
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77598291"
+---
+# <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus でのスロットル操作
+
+クラウド ネイティブ ソリューションは、ワークロードに合わせて拡張できる無制限のリソースという概念を提供します。 クラウドでは、オンプレミスのシステムよりもこの概念に真実味がありますが、クラウドにはまだ制限があります。
+
+この記事で説明するように、Standard レベルと Premium レベルの両方で、これらの制限によってクライアント アプリケーションの要求がスロットルされる場合があります。 
+
+## <a name="throttling-in-azure-service-bus-standard-tier"></a>Azure Service Bus Standard レベルでのスロットル
+
+Azure Service Bus Standard レベルは、従量課金制の価格モデルを使用したマルチテナント セットアップとして動作します。 ここでは、同じクラスター内の複数の名前空間が、割り当てられたリソースを共有します。 Standard レベルは、開発者、テスト、QA の各環境に加えて、低スループットの実稼働システムで推奨される選択肢です。
+
+以前の Azure Service Bus には、リソース使用率に厳密に依存する粗いスロットル制限がありました。 ただし、スロットル ロジックを改良し、これらのリソースを共有しているすべての名前空間に対して予測可能なスロットル動作を提供する機会はあります。
+
+同じリソースを使用するすべての Azure Service Bus Standard 名前空間のあいだでリソースの公平な使用と配分を担保するために、スロットル ロジックがクレジットベースに変更されました。
+
+> [!NOTE]
+> 重要な注意点として、スロットルは、Azure Service Bus やクラウド ネイティブ サービスにとって***目新しいものではありません***。
+>
+> クレジットベースのスロットルは、単純に、マルチテナントの Standard レベル環境でさまざまな名前空間がリソースを共有する方法を改良し、リソースを共有するすべての名前空間による公平な使用を実現します。
+
+### <a name="what-is-credit-based-throttling"></a>クレジットベースのスロットルとは
+
+クレジットベースのスロットルは、特定の期間中に特定の名前空間で実行できる操作の数を制限します。 
+
+クレジットベースのスロットルのワークフローを次に示します。 
+
+  * 各期間の開始時に、一定数のクレジットが名前空間ごとに提供されます。
+  * 送信側または受信側のクライアント アプリケーションによって実行される操作は、これらのクレジットに対してカウントされます (また、使用可能なクレジットから差し引かれます)。
+  * クレジットがなくなると、次の期間が始まるまで、後続の操作はスロットルされます。
+  * クレジットは、次の期間の開始時に補充されます。
+
+### <a name="what-are-the-credit-limits"></a>クレジットの制限とは
+
+クレジットの制限は現在、(名前空間ごとに) 毎秒 "1000" クレジットに設定されています。
+
+すべての操作が等しく作成されるわけではありません。 各操作のクレジット コストは次のようになります。 
+
+| 操作 | クレジット コスト|
+|-----------|-----------|
+| データ操作 (Send、SendAsync、Receive、ReceiveAsync、Peek) |メッセージあたり 1 クレジット |
+| 管理操作 (キュー、トピック、サブスクリプション、フィルターに対する作成、読み取り、更新、削除) | 10 クレジット |
+
+> [!NOTE]
+> トピックに送信する場合は、各メッセージがサブスクリプションで使用可能になる前にフィルターに対して評価されることに注意してください。
+> 各フィルター評価は、クレジット制限 (つまり、フィルター評価ごとに 1 クレジット) に対してもカウントされます。
+>
+
+### <a name="how-will-i-know-that-im-being-throttled"></a>スロットルされていることを認識するのはどのような状況ですか?
+
+クライアント アプリケーションの要求がスロットルされると、次のサーバー応答がアプリケーションによって受信され、ログに記録されます。
+
+```
+The request was terminated because the entity is being throttled. Error code: 50009. Please wait 2 seconds and try again.
+```
+
+### <a name="how-can-i-avoid-being-throttled"></a>どのようにすればスロットルを回避できますか?
+
+共有リソースを使用する場合、リソースを共有するさまざまな Service Bus 名前空間のあいだで公平な使用を何らかの形で強制することが重要です。 スロットルは、1 つのワークロードでスパイクが発生しても、同じリソース上の他のワークロードがスロットルされないことを保証します。
+
+この記事で後述するように、クライアント SDK (および、その他の Azure PaaS オファリング) には既定の再試行ポリシーが組み込まれているため、スロットルされることのリスクはありません。 スロットルされた要求はエクスポネンシャル バックオフによって再試行され、最終的にはクレジットが補充されれば完了します。
+
+もちろん、アプリケーションによってはスロットルの影響を受けやすい場合があります。 その場合は、[現在の Service Bus Standard 名前空間を Premium に移行する](service-bus-migrate-standard-premium.md)ことをお勧めします。 
+
+移行の際、専用リソースを Service Bus 名前空間に割り当てて、ワークロードでスパイクが発生する場合はリソースを適切にスケールアップし、スロットルの確率を下げることができます。 さらに、ワークロードが通常レベルに低下したら、名前空間に割り当てているリソースをスケールダウンできます。
+
+## <a name="throttling-in-azure-service-bus-premium-tier"></a>Azure Service Bus Premium レベルでのスロットル
+
+[Azure Service Bus Premium](service-bus-premium-messaging.md) レベルでは、お客様がセットアップした個々の名前空間に、メッセージング ユニットの単位で専用リソースを割り当てます。 これらの専用リソースは予測可能なスループットと待機時間を提供し、スループットまたは機密性が高い実稼働グレードのシステムに推奨されます。
+
+さらに、Premium レベルでは、ワークロードでスパイクが発生したときにお客様がスループット容量をスケールアップすることもできます。
+
+### <a name="how-does-throttling-work-in-service-bus-premium"></a>Service Bus Premium でのスロットルのしくみ
+
+Service Bus Premium の排他的リソース割り当てでは、スロットルは純粋に、名前空間に割り当てられるリソースの制限によって発動します。
+
+現在のリソースが処理できる数よりも要求が多くなると、要求はスロットルされます。
+
+### <a name="how-will-i-know-that-im-being-throttled"></a>スロットルされていることを認識するのはどのような状況ですか?
+
+Azure Service Bus Premium では、スロットルを識別する複数の方法があります。 
+  * **[Throttled Requests]\(スロットルされた要求\)** が [Azure Monitor の [要求] メトリック](service-bus-metrics-azure-monitor.md#request-metrics)に出現し、スロットルされた要求の数を示します。
+  * **[CPU 使用率]** の高い値は、現在のリソース割り当てが高水準であり、現在のワークロードが低下しなければ要求がスロットルされる可能性があることを示します。
+  * **[メモリ使用量]** の高い値は、現在のリソース割り当てが高水準であり、現在のワークロードが低下しなければ要求がスロットルされる可能性があることを示します。
+
+### <a name="how-can-i-avoid-being-throttled"></a>どのようにすればスロットルを回避できますか?
+
+Service Bus Premium 名前空間には既に専用のリソースがあるため、ワークロードでスパイクが発生した (または、発生が予想される) 場合、名前空間に割り当てるメッセージング ユニットの数をスケールアップすることで、スロットルの確率を下げることができます。
+
+スケールアップまたはダウンは、前述したメトリックの変動によって発動可能な [Runbook](../automation/automation-create-alert-triggered-runbook.md) を作成することによって実行できます。
+
+## <a name="faqs"></a>FAQ
+
+### <a name="how-does-throttling-affect-my-application"></a>スロットルがアプリケーションに与える影響は?
+
+要求がスロットルされた場合、要求がリソースの許容量を超えているためサービスがビジー状態であることを意味します。 しばらくしてから同じ操作を再試行した場合、サービスが現在のワークロードの処理を完了してからでないと、要求は受け付けられません。
+
+スロットルはどのようなクラウド ネイティブ サービスでも予想される動作であるため、Azure Service Bus SDK 自体に再試行ロジックが組み込まれています。 既定では、同じ要求が毎回スロットルされないよう、エクスポネンシャル バックオフによって自動再試行するように設定されています。
+
+既定の再試行ロジックは、すべての操作に適用されます。
+
+### <a name="does-throttling-result-in-data-loss"></a>スロットルによってデータが失われますか?
+
+Azure Service Bus は永続化のために最適化されており、Service Bus に送信されるすべてのデータは、サービスが要求の成功を確認する前にストレージにコミットされることが保証されています。
+
+要求が Service Bus によって正常に "ACK" (肯定応答) されると、それは Service Bus が要求を正常に処理したことを意味します。 Service Bus が "NACK" (失敗) を返す場合、それは Service Bus が要求を処理できなかったことを意味し、クライアント アプリケーションは要求を再試行する必要があります。
+
+ただし、要求がスロットルされている場合、サービスが意味しているのは、リソース制限のためサービスは今すぐに要求を受け入れて処理することはできない、ということです。 これは、Service Bus が単に要求を確認していないという意味であり、いかなる種類のデータ損失も意味**しません**。 この場合、Service Bus SDK の既定の再試行ポリシーに従うことで、要求が最終的には処理されることが保証されます。
+
+## <a name="next-steps"></a>次のステップ
+
+Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
+
+* [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
+* [クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
+

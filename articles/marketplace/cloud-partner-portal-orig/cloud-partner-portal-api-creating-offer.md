@@ -1,28 +1,24 @@
 ---
-title: オファーを作成または変更する |Microsoft Docs
+title: オファーを作成または変更する | Azure Marketplace
 description: オファーの新規作成または既存オファーの更新を行うための API です。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c7aed97c442c414e86c9531f9b0a8431e22b8b44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807156"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256350"
 ---
 <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 =========================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更が導入されています。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 この呼び出しでは、パブリッシャーの名前空間内にある特定のオファーが更新されるか、または新しいオファーが作成されます。
 
@@ -36,16 +32,16 @@ ms.locfileid: "48807156"
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  パブリッシャー ID。たとえば、`contoso` |   String |
 | offerId           |  オファー ID                     |   String        |
-| api-version       |  API の最新バージョン            |   日付           |
+| api-version       |  API の最新バージョン            |   Date           |
 |  |  |  |
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**        |  **値**               |
+|  **名前**        |  **Value**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
-| Authorization    | `Bearer YOUR_TOKEN`      |
+| 承認    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
 

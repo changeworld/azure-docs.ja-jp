@@ -1,31 +1,29 @@
 ---
-title: Azure 仮想マシン エージェントの概要 | Microsoft Docs
+title: Azure 仮想マシン エージェントの概要
 description: Azure 仮想マシン エージェントの概要
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: roiyz-msft
-manager: jeconnoc
-editor: tysonn
+author: mimckitt
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
-ms.author: roiyz
-ms.openlocfilehash: d17d7c9d7b57e6ca040e4f81c9665789c8bc26e2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 07/20/2019
+ms.author: akjosh
+ms.openlocfilehash: f29a20ddeb93ec3d4aa98bbcb36f50456b543667
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483252"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452572"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
 
-この記事では、Azure 仮想マシン エージェントのインストール、検出、削除について説明します。
+この記事では、Azure 仮想マシン エージェントのインストールと検出について説明します。
 
 ## <a name="install-the-vm-agent"></a>VM エージェントのインストール
 
@@ -60,13 +58,20 @@ VM を起動するには、VM に PA がインストールされている必要�
 エージェントがインストールされていない場合、Azure Backup や Azure Security など、Azure の一部のサービスを使用できません。 これらのサービスでは、拡張機能をインストールする必要があります。 WinGA なしで VM をデプロイした場合は、最新バージョンのエージェントを後からインストールできます。
 
 ### <a name="manual-installation"></a>手動のインストール
-Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。
+Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM エージェントは、Windows Server 2008 R2 以降でサポートされます。
 
-Windows インストーラー ファイルをダブルクリックすると、VM エージェントをインストールできます。 VM エージェントを自動 (無人) インストールするには、次のコマンドを実行します。
+> [!NOTE]
+> ProvisionVMAgent を有効にせずにイメージからデプロイされた VM に VMAgent を手動でインストールした後は、AllowExtensionOperations オプションを更新することが重要です。
 
-```cmd
-msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
+```powershell
+$vm.OSProfile.AllowExtensionOperations = $true
+$vm | Update-AzVM
 ```
+
+### <a name="prerequisites"></a>前提条件
+- Windows VM エージェントでは、.Net Framework 4.0 を使用して、少なくとも Windows Server 2008 R2 (64 ビット) を実行する必要があります。 「[Azure の仮想マシン エージェントの最小バージョン サポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください
+
+- VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)」をご覧ください。
 
 ## <a name="detect-the-vm-agent"></a>VM エージェントの検出
 
@@ -108,6 +113,8 @@ Windows VM にログインすると、タスク マネージャーを使用し�
 ## <a name="upgrade-the-vm-agent"></a>VM エージェントのアップグレード
 Windows 用の Azure VM エージェントは自動的にアップグレードされます。 新しい VM が Azure にデプロイされると、VM のプロビジョニング時に最新の VM エージェントが提供されます。 カスタム VM イメージの場合は、新しい VM エージェントを含めるために、イメージ作成時に手動で更新する必要があります。
 
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows ゲスト エージェントの自動ログ収集
+Windows ゲスト エージェントには、一部のログを自動的に収集する機能があります。 この機能は、CollectGuestLogs.exe プロセスによって制御されます。 それは PaaS Cloud Services と IaaS Virtual Machines の両方のために存在し、その目的は、VM から診断ログをすばやく自動的に収集し、オフライン分析に使用できるようにすることです。 収集されるログは、イベント ログ、OS ログ、Azure ログ、および一部のレジストリ キーです。 VM のホストに転送される ZIP ファイルが生成されます。 その後、エンジニアリング チームやサポート担当者がこの ZIP ファイルを調べて、VM を所有しているお客様の要求に関する問題を調査できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VM 拡張機能の詳細については、「[Azure 仮想マシンの拡張機能と機能の概要](overview.md)」をご覧ください。

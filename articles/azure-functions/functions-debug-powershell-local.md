@@ -1,27 +1,21 @@
 ---
 title: PowerShell Azure Functions をローカル環境でデバッグする
 description: PowerShell を使用して関数を開発する方法について説明します。
-services: functions
-documentationcenter: na
 author: tylerleonhardt
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: b699379448863c8df84fda0e059fc10846c09931
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78163762"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
 Azure Functions では、関数を PowerShell スクリプトとして開発することができます。
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 次の標準的な開発ツールを使用する PowerShell スクリプトと同様、PowerShell 関数をローカル環境でデバッグできます。
 
@@ -95,21 +89,34 @@ if($name) {
 
 ## <a name="debug-in-visual-studio-code"></a>Visual Studio Code でのデバッグ
 
-Visual Studio Code で PowerShell 関数をデバッグするには、Visual Studio Code 用の次の拡張機能が必要です。
+Visual Studio Code で PowerShell 関数をデバッグするには、以下がインストール済みである必要があります。
 
-* [PowerShell](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions](functions-create-first-function-vs-code.md)
+* [Visual Studio Code 用 PowerShell 拡張機能](/powershell/scripting/components/vscode/using-vscode)
+* [Visual Studio Code 用 Azure Functions 拡張機能](functions-create-first-function-vs-code.md)
+* [PowerShell Core 6.2 以降](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-PowerShell と Azure Functions の拡張機能をインストールした後は、既存の関数アプリ プロジェクトを読み込みます。 [Functions プロジェクトを作成する](functions-create-first-function-vs-code.md)こともできます。
+これらの依存関係をインストールした後、既存の PowerShell 関数プロジェクトを読み込むか、[Azure で初めての PowerShell 関数を作成します](functions-create-first-function-powershell.md)。
 
 >[!NOTE]
 > プロジェクトに必要な構成ファイルがない場合は、追加を求めるメッセージが表示されます。
+
+### <a name="set-the-powershell-version"></a>PowerShell のバージョンを設定する
+
+PowerShell Core は、Windows PowerShell とサイドバイサイドでインストールされます。 Visual Studio Code 用 PowerShell 拡張機能を使用するには、PowerShell のバージョンとして Visual Studio Code を 設定します。
+
+1. F1 キーを押してコマンド パレットを表示し、`Session` を検索します。
+
+1. **[PowerShell:Show Session Menu]\(PowerShell: セッション メニューを表示\)** をクリックします。
+
+1. **[現在のセッション]** が **[PowerShell Core 6]** になっていない場合は、 **[切り替え:PowerShell Core 6]** を選択します。
+
+PowerShell ファイルが開いている場合は、ウィンドウの右下に緑色で表示されているバージョンを確認します。 このテキストの選択でも、セッション メニューが表示されます。 詳細については、「[拡張機能で使用する PowerShell のバージョンの選択](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)」を参照してください。
 
 ### <a name="start-the-function-app"></a>関数アプリを開始する
 
 デバッガーをアタッチしたい関数に、`Wait-Debugger` を設定したことを確認します。  `Wait-Debugger` を追加したら、Visual Studio Code を使って関数アプリをデバッグできます。
 
-**[デバッグ]** ウィンドウを選択し、**[Attach to PowerShell function]\(PowerShell 関数にアタッチする\)** を選択します。
+**[デバッグ]** ウィンドウを選択し、 **[Attach to PowerShell function]\(PowerShell 関数にアタッチする\)** を選択します。
 
 ![デバッガー](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
@@ -120,6 +127,9 @@ F5 キーを押してデバッグを開始することもできます。
 * ターミナルで `func extensions install` が実行され、関数アプリで必要なすべての Azure Functions 拡張機能がインストールされます。
 * ターミナルで `func host start` が実行され、Functions ホストで関数アプリが起動されます。
 * Functions ランタイム内の PowerShell 実行空間に、PowerShell デバッガーがアタッチされます。
+
+>[!NOTE]
+> Visual Studio Code で正しいデバッグのエクスペリエンスを実現するには、PSWorkerInProcConcurrencyUpperBound が 1 に設定されていることを確認する必要があります。 これは既定値です。
 
 関数アプリが実行されたら、別の PowerShell コンソールを開いて、HTTP によってトリガーされる関数を呼び出す必要があります。
 
@@ -140,7 +150,7 @@ Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 * `Invoke-RestMethod` を行った PowerShell コンソールで、結果が返されています
 * Visual Studio Code の PowerShell 統合コンソールで、スクリプトの実行が待機されています
 
-それ以降は、同じ関数を呼び出すたびに、PowerShell 実行のデバッガーは `Wait-Debugger` の直後で中断します。
+その後、同じ関数を呼び出すと、PowerShell 拡張機能のデバッガーは `Wait-Debugger` の直後で中断します。
 
 ## <a name="debugging-in-a-powershell-console"></a>PowerShell コンソールでのデバッグ
 
@@ -233,6 +243,6 @@ Azure Functions ランタイムでは、`run.ps1` スクリプトが実際に呼
 
 この中断が発生した場合は、`continue` または `c` コマンドを実行して、このブレークポイントをスキップします。 その後は、予期されるブレークポイントで停止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PowerShell を使用した Functions の開発の詳細については、「[Azure Functions PowerShell developer guide (Azure Functions PowerShell 開発者ガイド)](functions-reference-powershell.md)」をご覧ください。

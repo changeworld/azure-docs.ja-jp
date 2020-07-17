@@ -1,26 +1,20 @@
 ---
 title: Azure Monitor でカスタム ログを収集する | Microsoft Docs
 description: Azure Monitor は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、Azure Monitor で作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/12/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 09/26/2019
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670595"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
+
 Azure Monitor のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
 
 ![カスタム ログの収集](media/data-sources-custom-logs/overview.png)
@@ -29,17 +23,13 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 
 - ログでは 1 行につき 1 エントリとするか、各エントリの先頭に次のいずれかの形式に一致するタイムスタンプを使用する必要があります。
 
-    YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
+    YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - ログ ファイルでは、新しいエントリでファイルが上書きされる巡回ログまたはログ ローテーションを許可しないでください。
 - ログ ファイルでは、ASCII または UTF-8 エンコードを使用する必要があります。  UTF-16 など他の形式はサポートされていません。
 
 >[!NOTE]
->ログ ファイルに重複するエントリがあると、Azure Monitor によりその重複が収集されます。  ただし、フィルター結果に示されるイベント数がクエリ結果の件数より多いという矛盾が生じます。  重要になるのは、ログを検証して、そのログを作成したアプリケーションがこの動作を引き起こしているかどうか、また、これに対処できるかどうかを、カスタム ログ収集の定義を作成する前に判断することです。  
->
-  
->[!NOTE]
-> アプリケーションが、毎日新しいログ ファイルを作成する場合や、一定のサイズに達する場合、Linux 用の Log Analytics エージェントは再起動されるまでそれらを検出しません。 これは、エージェントは起動時に、指定されたログを使用して、パターンを列挙して監視を開始するだけであるためです。これが理由で、エージェントの再起動を自動化することでこれに関する計画を立てる必要があります。  この制限は、Windows 用の Log Analytics エージェントには存在しません。  
+> ログ ファイルに重複するエントリがあると、Azure Monitor によりその重複が収集されます。 ただし、フィルター結果に示されるイベント数がクエリ結果の件数より多いという矛盾が生じます。 重要になるのは、ログを検証して、そのログを作成したアプリケーションがこの動作を引き起こしているかどうか、また、これに対処できるかどうかを、カスタム ログ収集の定義を作成する前に判断することです。  
 >
 
 >[!NOTE]
@@ -50,15 +40,18 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 > * 列名の最大文字数は 500 です。 
 >
 
+>[!IMPORTANT]
+>カスタム ログの収集では、ログ ファイルを書き込むアプリケーションによって、ログのコンテンツがディスクに定期的にフラッシュされる必要があります。 これは、カスタム ログの収集が、追跡されているログ ファイルのファイル システムの変更通知に依存しているためです。
+
 ## <a name="defining-a-custom-log"></a>カスタム ログを定義する
 次の手順でカスタム ログ ファイルを定義できます。  この記事の最後にカスタム ログ追加のサンプル チュートリアルがあります。
 
 ### <a name="step-1-open-the-custom-log-wizard"></a>手順 1. カスタム ログ ウィザードを開く
 カスタム ログ ウィザードは Azure Portal で実行され、収集する新しいカスタム ログを定義できます。
 
-1. Azure portal で、**[Log Analytics ワークスペース]**、目的のワークスペース、**[詳細設定]** の順に選択します。
-2. **[データ]** > **[カスタム ログ]** をクリックします。
-3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
+1. Azure portal で、 **[Log Analytics ワークスペース]** 、目的のワークスペース、 **[詳細設定]** の順に選択します。
+2. **[データ]**  >  **[カスタム ログ]** をクリックします。
+3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>手順 2. サンプル ログをアップロードし、解析する
@@ -67,7 +60,6 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 **改行**が既定の区切り記号であり、1 行につき 1 エントリのログ ファイルに利用されます。  利用可能な形式の 1 つで表現された日付と時刻で行が始まるとき、区切り記号として**タイムスタンプ**を指定できます。その場合、1 行以上のエントリに対応します。
 
 区切り記号としてタイムスタンプが使用されるとき、Azure Monitor に保存される各レコードの TimeGenerated プロパティに、ログ ファイルでそのエントリに指定された日付/時刻が入力されます。  区切り記号として改行が使用される場合、Azure Monitor がエントリを収集した日付と時刻が TimeGenerated に入力されます。
-
 
 1. **[閲覧]** をクリックし、サンプル ファイルを表示します。  一部のブラウザーでは、このボタンのラベルは **[ファイルの選択]** になっていることがあります。
 2. **[次へ]** をクリックします。
@@ -79,10 +71,6 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 エージェントに 1 つまたは複数のパスを定義する必要があります。エージェントがカスタム ログを見つける場所です。  ログ ファイルの特定のパスか名前を入力するか、名前にワイルドカードを含むパスを指定できます。 毎日新しいファイルを作成するアプリケーションに対応し、1 つのファイルが一定のサイズに到達した場合にも対応します。 また、1 つのログ ファイルに複数のパスを指定できます。
 
 たとえば、ログ ファイルを毎日作成するアプリケーションがあります。log20100316.txt のように、名前に日付を含めます。 このようなログのパターンは、たとえば、*log\*.txt* になります。このアプリケーションの命名規則に従うあらゆるログ ファイルに適用されます。
-
->[!NOTE]
-> アプリケーションが、毎日新しいログ ファイルを作成する場合や、一定のサイズに達する場合、Linux 用の Log Analytics エージェントは再起動されるまでそれらを検出しません。 これは、エージェントは起動時に、指定されたログを使用して、パターンを列挙して監視を開始するだけであるためです。これが理由で、エージェントの再起動を自動化することでこれに関する計画を立てる必要があります。  この制限は、Windows 用の Log Analytics エージェントには存在しません。  
->
 
 次の表は、異なるログ ファイルを指定する有効なパターンの例をまとめたものです。
 
@@ -112,7 +100,6 @@ Azure Monitor がカスタム ログから収集を始めると、そのレコ�
 > [!NOTE]
 > RawData プロパティがクエリに表示されない場合、ブラウザーを閉じて再び開いてみてください。
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>手順 6. カスタム ログ エントリを解析する
 ログ エントリ全体は、 **RawData**と呼ばれる 1 つのプロパティに格納されます。  それぞれのエントリに含まれる異なる情報を、各レコードの個別のプロパティに分けたいと考えるケースが大半でしょう。 **RawData** を解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
 
@@ -122,8 +109,7 @@ Azure Portal で次のプロセスを使用して、これまでに定義した�
 1. ワークスペースの **[詳細設定]** 内の **[データ]** メニューから **[カスタム ログ]** を選択して、すべてのカスタム ログを一覧表示します。
 2. 削除するカスタム ログの横にある **[削除]** をクリックします。
 
-
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 Azure Monitor は約 5 分おきに各カスタム ログから新しいエントリを収集します。  エージェントは、収集元の場所を各ログ ファイルに記録します。  エージェントが一定時間オフラインになった場合、Azure Monitor は中止した箇所からエントリを回収し、オンラインの間に作成されたエントリも回収されます。
 
 ログ エントリのコンテンツ全体は **RawData** という名前の 1 つのプロパティに書き込まれます。  インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
@@ -142,11 +128,11 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>カスタム ログ追加のサンプル チュートリアル
 次のセクションでは、カスタム ログの作成例を段階的に説明します。  収集されるサンプル ログには 1 行につき 1 エントリが与えられます。これは日時で始まり、コード、状態、メッセージがコンマで区切られて続きます。  以下はサンプルのエントリです。
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>サンプル ログをアップロードし、解析する
 ログ ファイルの 1 つをお見せします。ログ ファイルで収集されているイベントを確認できます。  この例の場合、区切り記号には改行を選択して問題ありません。  ログの 1 エントリが複数行にまたがるようであれば、区切り記号としてタイムスタンプを使用する必要があります。
@@ -159,19 +145,15 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ![ログのコレクション パス](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>ログの名前と説明を指定する
-*MyApp_CL* という名前を使用し、**[説明]** に入力します。
+*MyApp_CL* という名前を使用し、 **[説明]** に入力します。
 
 ![ログ名](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>カスタム ログが収集されていることを確認する
-*Type=MyApp_CL* というクエリを使用すると、収集されたログからすべてのレコードが返されます。
+収集されたログからすべてのレコードを返す *MyApp_CL* という単純なクエリを使用します。
 
 ![カスタム フィールドのないログ クエリ](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>カスタム ログ エントリを解析する
-カスタム フィールドを利用し、*EventTime*、*Code*、*Status*、*Message* フィールドを定義します。クエリにより返されるレコードの違いがわかります。
-
-![カスタム フィールドのあるログ クエリ](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>カスタム ログの代替手段
 上記の条件をデータが満たす場合はカスタム ログが便利ですが、次のような状況で別の方法が必要になることがあります。
@@ -183,8 +165,8 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 カスタム ログではデータを収集できない場合、次の代替手段を検討してください。
 
 - カスタム スクリプトまたはその他の手法を使用し、Azure Monitor によって収集される [Windows イベント](data-sources-windows-events.md)または [Syslog](data-sources-syslog.md) にデータを書き込む。 
-- [HTTP Data Collector API](data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 Azure Automation で Runbook を使用する例は、[Azure Automation の Runbook を使用して Azure Monitor でログ データを収集する](runbook-datacollect.md)ことに関するページに記載されています。
+- [HTTP Data Collector API](data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

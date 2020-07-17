@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: bd91d9201e81c884b48b41de27146c186eeb9598
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000846"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77161938"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks クラスターに対するリージョンのディザスター リカバリー
 
@@ -21,7 +21,7 @@ ms.locfileid: "60000846"
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks のアーキテクチャ
 
-アーキテクチャを全体的な視点から眺めてみましょう。Azure portal から Azure Databricks ワークスペースを作成すると、選択した Azure リージョン (米国西部など) に、ご利用のサブスクリプションの Azure リソースとして[マネージド アプライアンス](../managed-applications/overview.md)がデプロイされます。 このアプライアンスは、ご利用のサブスクリプションで利用できる Azure Storage アカウントおよび[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)と共に [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) にデプロイされます。 この仮想ネットワークが Databricks ワークスペースに対する境界レベルのセキュリティを提供し、またネットワーク セキュリティ グループによって保護されることになります。 Databricks クラスターは、ワークスペース内でワーカー VM とドライバー VM の種類、Databricks Runtime のバージョンを指定することによって作成できます。 永続データを格納するストレージ アカウントは、Azure Blob Storage と Azure Data Lake Store のどちらかになります。 クラスターの作成後は、ノートブック、REST API、ODBC/JDBC エンドポイントを特定のクラスターにアタッチすることにより、そのエンドポイントを介してジョブを実行することができます。
+アーキテクチャを全体的な視点から眺めてみましょう。Azure portal から Azure Databricks ワークスペースを作成すると、選択した Azure リージョン (米国西部など) に、ご利用のサブスクリプションの Azure リソースとして[マネージド アプライアンス](../azure-resource-manager/managed-applications/overview.md)がデプロイされます。 このアプライアンスは、ご利用のサブスクリプションで利用できる Azure Storage アカウントおよび[ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)と共に [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) にデプロイされます。 この仮想ネットワークが Databricks ワークスペースに対する境界レベルのセキュリティを提供し、またネットワーク セキュリティ グループによって保護されることになります。 Databricks クラスターは、ワークスペース内でワーカー VM とドライバー VM の種類、Databricks Runtime のバージョンを指定することによって作成できます。 永続データはストレージ アカウント上で利用でき、Azure Blob Storage または Azure Data Lake Store のどちらかになります。 クラスターの作成後は、ノートブック、REST API、ODBC/JDBC エンドポイントを特定のクラスターにアタッチすることにより、そのエンドポイントを介してジョブを実行することができます。
 
 Databricks ワークスペース環境の管理と監視は、Databricks のコントロール プレーンで行います。 クラスターの作成をはじめとするすべての管理操作は、コントロール プレーンから開始されます。 メタデータ (スケジュールされたジョブなど) はすべて Azure Database に格納され、geo レプリケーションによるフォールト トレランスが確保されます。
 
@@ -37,7 +37,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
    1. 複数の Azure Databricks ワークスペースは、別個の Azure リージョンにプロビジョニングします。 たとえばプライマリ Azure Databricks ワークスペースを米国東部 2 に作成するなら、 セカンダリ ディザスター リカバリー Azure Databricks ワークスペースは、別のリージョン (米国西部など) に作成する必要があります。
 
-   2. [geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)を使用します。 Azure Databricks に関連付けられているデータは、既定で Azure Storage に格納されます。 Databricks ジョブの結果も Azure Blob Storage に格納されます。そのため、処理されたデータには持続性があり、クラスターが停止された後も高可用性が保たれます。 Storage と Databricks クラスターは併置されるため、プライマリ リージョンが利用できなくなってもセカンダリ リージョンのデータにアクセスできるよう、geo 冗長ストレージを使用する必要があります。
+   2. [geo 冗長ストレージ](../storage/common/storage-redundancy.md)を使用します。 Azure Databricks に関連付けられているデータは、既定で Azure Storage に格納されます。 Databricks ジョブの結果も Azure Blob Storage に格納されます。そのため、処理されたデータには持続性があり、クラスターが停止された後も高可用性が保たれます。 Storage と Databricks クラスターは併置されるため、プライマリ リージョンが利用できなくなってもセカンダリ リージョンのデータにアクセスできるよう、geo 冗長ストレージを使用する必要があります。
 
    3. セカンダリ リージョンの作成後、ユーザー、ユーザーのフォルダー、ノートブック、クラスター構成、ジョブ構成、ライブラリ、ストレージ、初期化スクリプトを移行し、アクセスの制御を再構成する必要があります。 その他詳しい情報については、次のセクションで取り上げます。
 
@@ -47,7 +47,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
    このコマンド ライン インターフェイスには、Azure Databricks REST API が使いやすいようラップされています。そのためこの記事では、自動化された手順の大半でコマンド ライン インターフェイスを使用したコード例が多くなっています。
 
-   移行手順を実施する前に、実際に作業を行う予定のデスクトップ コンピューターまたは仮想マシンに databricks-cli をインストールしてください。 詳しくは、[Databricks CLI のインストール](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)に関するページをご覧ください。
+   移行手順を実施する前に、実際に作業を行う予定のデスクトップ コンピューターまたは仮想マシンに databricks-cli をインストールしてください。 詳しくは、[Databricks CLI のインストール](/azure/databricks/dev-tools/databricks-cli)に関するページをご覧ください。
 
    ```bash
    pip install databricks-cli
@@ -136,45 +136,84 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
    次の Python スクリプトをファイルにコピーして保存し、Databricks コマンド ラインから実行します。 たとえば、「 `python scriptname.py` 」のように入力します。
 
    ```python
-   from subprocess import call, check_output import json
+   from subprocess import call, check_output
+   import json, os
 
    EXPORT_PROFILE = "primary"
    IMPORT_PROFILE = "secondary"
 
-   # Get all clusters info from old workspace 
-   clusters_out = check_output(["databricks", "clusters", "list", "--profile", EXPORT_PROFILE]) clusters_info_list = clusters_out.splitlines()
+   # Get all clusters info from old workspace
+   clusters_out = check_output(["databricks", "clusters", "list", "--profile", EXPORT_PROFILE])
+   clusters_info_list = clusters_out.splitlines()
 
-   # Create a list of all cluster ids 
-   clusters_list = [] for cluster_info in clusters_info_list:   clusters_list.append(cluster_info.split(None, 1)[0])
+   # Create a list of all cluster ids
+   clusters_list = []
+   ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
+
+   for cluster_info in clusters_info_list: 
+      if cluster_info != '':
+         clusters_list.append(cluster_info.split(None, 1)[0])
 
    # Optionally filter cluster ids out manually, so as to create only required ones in new workspace
 
-   # Create a list of mandatory / optional create request elements 
-   cluster_req_elems = ["num_workers","autoscale","cluster_name","spark_version","spark_conf"," node_type_id","driver_node_type_id","custom_tags","cluster_log_conf","sp ark_env_vars","autotermination_minutes","enable_elastic_disk"]
+   # Create a list of mandatory / optional create request elements
+   cluster_req_elems = ["num_workers","autoscale","cluster_name","spark_version","spark_conf","node_type_id","driver_node_type_id","custom_tags","cluster_log_conf","spark_env_vars","autotermination_minutes","enable_elastic_disk"]
 
+   print(str(len(clusters_list)) + " clusters found in the primary site" )
+
+   print ("---------------------------------------------------------")
    # Try creating all / selected clusters in new workspace with same config as in old one.
-   cluster_old_new_mappings = {} for cluster in clusters_list:   print "Trying to migrate cluster " + cluster
+   cluster_old_new_mappings = {}
+   i = 0
+   for cluster in clusters_list:
+      i += 1
+      print("Checking cluster " + str(i) + "/" + str(len(clusters_list)) + " : " + cluster)
+      cluster_get_out = check_output(["databricks", "clusters", "get", "--cluster-id", cluster, "--profile", EXPORT_PROFILE])
+      print ("Got cluster config from old workspace")
 
-   cluster_get_out = check_output(["databricks", "clusters", "get", "--cluster-id", cluster, "--profile", EXPORT_PROFILE])
-   print "Got cluster config from old workspace"
+       # Remove extra content from the config, as we need to build create request with allowed elements only
+      cluster_req_json = json.loads(cluster_get_out)
+      cluster_json_keys = cluster_req_json.keys()
 
-   # Remove extra content from the config, as we need to build create request with allowed elements only
-   cluster_req_json = json.loads(cluster_get_out)    
-   cluster_json_keys = cluster_req_json.keys()   
+      #Don't migrate Job clusters
+      if cluster_req_json['cluster_source'] == u'JOB' : 
+         print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
+         print ("---------------------------------------------------------")
+         continue
 
-   for key in cluster_json_keys:     
-      if key not in cluster_req_elems:       
-         cluster_req_json.pop(key, None)
-  
-   # Create the cluster, and store the mapping from old to new cluster ids
-   cluster_create_out = check_output(["databricks", "clusters", "create", "--json", json.dumps(cluster_req_json), "--profile", IMPORT_PROFILE]) 
-   cluster_create_out_json = json.loads(cluster_create_out)   
-   cluster_old_new_mappings[cluster] = cluster_create_out_json['cluster_id']
+      for key in cluster_json_keys:
+         if key not in cluster_req_elems:
+            cluster_req_json.pop(key, None)
 
-   print "Sent cluster create request to new workspace successfully"
+      # Create the cluster, and store the mapping from old to new cluster ids
 
-   print "Cluster mappings: " + json.dumps(cluster_old_new_mappings)
-   print "All done"
+      #Create a temp file to store the current cluster info as JSON
+      strCurrentClusterFile = "tmp_cluster_info.json" 
+
+      #delete the temp file if exists
+      if os.path.exists(strCurrentClusterFile) : 
+         os.remove(strCurrentClusterFile)
+
+      fClusterJSONtmp = open(strCurrentClusterFile,"w+")
+      fClusterJSONtmp.write(json.dumps(cluster_req_json))
+      fClusterJSONtmp.close()
+
+      #cluster_create_out = check_output(["databricks", "clusters", "create", "--json", json.dumps(cluster_req_json), "--profile", IMPORT_PROFILE])
+      cluster_create_out = check_output(["databricks", "clusters", "create", "--json-file", strCurrentClusterFile , "--profile", IMPORT_PROFILE])
+      cluster_create_out_json = json.loads(cluster_create_out)
+      cluster_old_new_mappings[cluster] = cluster_create_out_json['cluster_id']
+
+      print ("Cluster create request sent to secondary site workspace successfully")
+      print ("---------------------------------------------------------")
+
+      #delete the temp file if exists
+      if os.path.exists(strCurrentClusterFile) : 
+         os.remove(strCurrentClusterFile)
+
+   print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
+   print ("All done")
+   print ("P.S. : Please note that all the new clusters in your secondary site are being started now!")
+   print ("       If you won't use those new clusters at the moment, please don't forget terminating your new clusters to avoid charges")
    ```
 
 6. **ジョブの構成を移行する**
@@ -245,9 +284,9 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
    現在、ライブラリをワークスペース間で直接移行する方法はありません。 そうしたライブラリは、新しいワークスペースに手動で再インストールする必要があります。 カスタム ライブラリをワークスペースにアップロードする [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) と [Libraries CLI](https://github.com/databricks/databricks-cli#libraries-cli) とを組み合わせて自動化することはできます。
 
-8. **Azure Blob Storage と Azure Data Lake Store のマウントを移行する**
+8. **Azure Blob Storage と Azure Data Lake Storage のマウントを移行する**
 
-   ノートブック ベースのソリューションを使って、[Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) と [Azure Data Lake Store (Gen 2)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
+   Notebook ベースのソリューションを使って、[Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage) と [Azure Data Lake Storage (Gen 2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) のマウント ポイントをすべて手動で再マウントします。 プライマリ ワークスペースにはストレージ リソースがマウント済みかと思いますので、それをセカンダリ ワークスペースについても行う必要があります。 マウントのための外部 API は存在しません。
 
 9. **クラスター初期化スクリプトを移行する**
 
@@ -263,7 +302,7 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 10. **アクセスの制御を手動で再構成して再適用する**
 
-    既存のプライマリ ワークスペースが Premium レベル (SKU) を使用するように構成されている場合、高い確率で [Access Control 機能](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)も使用していることが考えられます。
+    既存のプライマリ ワークスペースが Premium レベル (SKU) を使用するように構成されている場合、高い確率で [Access Control 機能](/azure/databricks/administration-guide/access-control/index)も使用していることが考えられます。
 
     Access Control 機能をご利用の場合は、アクセスの制御を各種リソース (ノートブック、クラスター、ジョブ、テーブル) に手動で再適用してください。
 
@@ -271,6 +310,6 @@ Databricks ワークスペース環境の管理と監視は、Databricks のコ�
 
 他の Azure サービスを使用している場合は、それらのサービスにもディザスター リカバリーのベスト プラクティスを必ず実装してください。 たとえば、外部の Hive metastore インスタンスを使用する場合は、[Azure SQL Server](../sql-database/sql-database-disaster-recovery.md)、[Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)、[Azure Database for MySQL](../mysql/concepts-business-continuity.md) のいずれかまたはすべてのディザスター リカバリーを検討する必要があります。 ディザスター リカバリーの全般的な情報については、「[Azure アプリケーションのディザスター リカバリー](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-詳しくは、[Azure Databricks のドキュメント](https://docs.azuredatabricks.net/user-guide/index.html)をご覧ください。
+詳しくは、[Azure Databricks のドキュメント](index.yml)をご覧ください。

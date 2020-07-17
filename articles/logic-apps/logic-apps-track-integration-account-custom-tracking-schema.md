@@ -1,27 +1,23 @@
 ---
-title: B2B メッセージのカスタム追跡スキーマ - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps と Enterprise Integration Pack の統合アカウントで B2B メッセージを監視するカスタム追跡スキーマを作成します
+title: B2B メッセージのカスタム トラッキング スキーマ
+description: Azure Logic Apps で B2B メッセージを監視するためのカスタム追跡スキーマを作成する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
-ms.date: 01/27/2017
-ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.date: 01/01/2020
+ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192386"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76903057"
 ---
-# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
 
-企業間取引のワークフローにおけるさまざまな部分について、AS2 や X12 メッセージの追跡など、組み込みの追跡を有効にすることができます。 ロジック アプリ、BizTalk Server、SQL Server、またはその他のレイヤーを含むワークフローを作成する場合は、カスタムの追跡を有効にして、ワークフローの最初から最後までのイベントをログに記録することができます。 
-
-この記事では、ロジック アプリの外部レイヤーで使用できるカスタム コードを示します。 
+Azure Logic Apps には、ワークフローの一部に対して有効にできる組み込みの追跡機能があります。 ロジック アプリ、BizTalk Server、SQL Server、またはその他のレイヤーを含むワークフローなどのワークフローの最初から最後までのイベントをログに記録することができるカスタム追跡を設定できます。 この記事では、ロジック アプリの外部レイヤーで使用できるカスタム コードを示します。
 
 ## <a name="custom-tracking-schema"></a>カスタム追跡スキーマ
 
@@ -38,7 +34,7 @@ ms.locfileid: "57192386"
       "operation": {
          "operationName": "",
          "repeatItemScopeName": "",
-         "repeatItemIndex": "",
+         "repeatItemIndex": ,
          "trackingId": "",
          "correlationId": "",
          "clientRequestId": ""
@@ -49,39 +45,37 @@ ms.locfileid: "57192386"
          "eventLevel": "",
          "eventTime": "",
          "recordType": "",
-         "record": {                
-         }
+         "record": {}
       }
    ]
 }
 ```
 
-| プロパティ | type | 説明 |
-| --- | --- | --- |
-| sourceType |   | 実行ソースのタイプ。 許可されている値は、**Microsoft.Logic/workflows** と **custom** です。 (必須) |
-| ソース |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 (必須) |
-| systemId | String | ロジック アプリのシステム ID。 (必須) |
-| runId | String | ロジック アプリの実行 ID。 (必須) |
-| operationName | String | 操作の名前 (アクションやトリガーなど)。 (必須) |
-| repeatItemScopeName | String | アクションが `foreach`/`until` ループ内にある場合の繰り返し項目名。 (必須) |
-| repeatItemIndex | 整数 | アクションが `foreach`/`until` ループ内にあるかどうか。 繰り返される項目のインデックスを示します。 (必須) |
-| trackingId | String | 追跡 ID (メッセージを関連付けるために使用します)。 (省略可能) |
-| correlationId | String | 関連付け ID (メッセージを関連付けるために使用します)。 (省略可能) |
-| clientRequestId | String | クライアントがメッセージを関連付けるために設定できます。 (省略可能) |
-| eventLevel |   | イベントのレベル。 (必須) |
-| eventTime |   | イベントの時刻 (YYYY-MM-DDTHH:MM:SS.00000Z という UTC 形式で示します)。 (必須) |
-| recordType |   | 追跡レコードのタイプ。 許可されている値は **custom** です。 (必須) |
-| record |   | カスタム レコード タイプ。 許可されている形式は、JToken です。 (必須) |
-||||
+| プロパティ | 必須 | Type | 説明 |
+|----------|----------|------|-------------|
+| sourceType | はい | String | 次の許可された値を持つ実行ソースの種類: `Microsoft.Logic/workflows`、`custom` |
+| source | はい | 文字列または JToken | ソースのタイプが `Microsoft.Logic/workflows` である場合、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが `custom` である場合、スキーマは JToken です。 |
+| systemId | はい | String | ロジック アプリのシステム ID |
+| runId | はい | String | ロジック アプリの実行 ID |
+| operationName | はい | String | 操作の名前 (アクションやトリガーなど) |
+| repeatItemScopeName | はい | String | アクションが `foreach` または `until` ループ内にある場合の繰り返し項目名 |
+| repeatItemIndex | はい | Integer | アクションが `foreach` または `until` ループ内にあり、繰り返される項目のインデックス番号を示します |
+| trackingId | いいえ | String | 追跡 ID (メッセージを関連付けるために使用します) |
+| correlationId | いいえ | String | 関連付け ID (メッセージを関連付けるために使用します) |
+| clientRequestId | いいえ | String | クライアントがメッセージを関連付けるためにこのプロパティを設定できます |
+| eventLevel | はい | String | イベントのレベル |
+| eventTime | はい | DateTime | イベントの時刻、UTC 形式:*YYYY-MM-DDTHH:MM:SS.00000Z* |
+| recordType | はい | String | この許可された値のみを持つトラックレコードの種類: `custom` |
+| レコード (record) | はい | JToken | JToken 形式のみのカスタムレコードの種類 |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B プロトコル追跡スキーマ
 
 B2B プロトコル追跡スキーマ について詳しくは、次のページをご覧ください。
 
-* [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 の追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報
-* [Azure Monitor ログでの B2B メッセージの追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)について学習します
+* [Azure Monitor ログで B2B メッセージを監視する](../logic-apps/monitor-b2b-messages-log-analytics.md)方法についての詳細について説明します

@@ -4,23 +4,25 @@ description: Notification Hubs を使用して Node.js アプリケーション�
 keywords: push notification,push notifications,node.js push,ios push
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 04/29/2020
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995005"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592011"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -106,7 +108,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - メッセージの JSON または未加工の文字列ペイロード
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Implementing GCM Server (GCM サーバーの実装)** 」ドキュメントの「 [Payload (ペイロード)](https://developer.android.com/google/gcm/server.html#payload) 」のセクションを参照してください。
+ペイロード形式の詳細については、[ペイロードに関するドキュメント](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)を参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 
@@ -131,7 +133,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 - **Payload** - メッセージの JSON または文字列ペイロード。
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)** 」ドキュメントの「 [Notification Payload (通知ペイロード)](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) 」のセクションを参照してください。
+ペイロード形式の詳細については、[UserNotifications ガイド](https://developer.apple.com/documentation/usernotifications)の「**通知の内容**」セクションを参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `ApnsService` インスタンスを使用して、すべてのクライアントにアラート メッセージを送信します。
 

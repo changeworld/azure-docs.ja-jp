@@ -1,21 +1,20 @@
 ---
 title: Azure Storage Analytics を使用したログとメトリック データの収集 | Microsoft Docs
 description: Storage Analytics では、すべてのストレージ サービスのメトリック データを追跡し、BLOB、キュー、Table Storage のログを収集できます。
-services: storage
 author: normesta
 ms.service: storage
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b588ebe577e61014c6c2bbeaae751b2783dd6f80
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.custom: monitoring
+ms.openlocfilehash: 9a081a28d4c96e3c38986cbb3c0990bc89c5ab99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153922"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684465"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -25,7 +24,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 集計データは、既知の BLOB (ログの場合) と既知のテーブル (メトリックの場合) に格納されます。集計データには、Blob service と Table service の API を使用してアクセスできます。
 
-ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB の制限があります。 ストレージ アカウントの制限の詳細については、「 [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
+ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB の制限があります。 ストレージ アカウントの制限の詳細については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](scalability-targets-standard-account.md)」を参照してください。
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
@@ -42,11 +41,11 @@ Storage Analytics によって実行される次の操作には料金が発生�
 
 ### <a name="understanding-billable-requests"></a>課金の対象となる要求について
 
-アカウントのストレージ サービスに対して実行されるそれぞれの要求は、課金対象の要求とそうでない要求とに分けられます。 Storage Analytics は、サービスに対するすべての要求をそれぞれログに記録します。たとえば、要求がどのように処理されたかを示すステータス メッセージも記録されます。 同様に、Storage Analytics は、サービスに対するメトリックと、そのサービスの API 操作に対するメトリックを保存しています (特定のステータス メッセージの数やパーセンテージなど)。 これらの機能をうまく組み合わせて利用すると、課金対象の要求を分析したり、アプリケーションを改善したり、サービスに対する要求の問題を診断したりできます。 課金の詳細については、「[Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、容量)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」をご覧ください。
+アカウントのストレージ サービスに対して実行されるそれぞれの要求は、課金対象の要求とそうでない要求とに分けられます。 Storage Analytics は、サービスに対するすべての要求をそれぞれログに記録します。たとえば、要求がどのように処理されたかを示すステータス メッセージも記録されます。 同様に、Storage Analytics は、サービスに対するメトリックと、そのサービスの API 操作に対するメトリックを保存しています (特定のステータス メッセージの数やパーセンテージなど)。 これらの機能をうまく組み合わせて利用すると、課金対象の要求を分析したり、アプリケーションを改善したり、サービスに対する要求の問題を診断したりできます。 課金の詳細については、「[Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、容量)](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)」をご覧ください。
 
 Storage Analytics のデータで課金対象の要求を調べるときには、「 [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
 * [Storage Analytics のメトリック](storage-analytics-metrics.md)
 * [Storage Analytics のログ記録](storage-analytics-logging.md)

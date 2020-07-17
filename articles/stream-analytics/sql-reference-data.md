@@ -1,25 +1,24 @@
 ---
-title: SQL Database からの参照データを Azure Stream Analytics ジョブに使用する (プレビュー)
+title: SQL Database 参照データを Azure Stream Analytics ジョブで使用する
 description: この記事では、Azure portal および Visual Studio で Azure Stream Analytics ジョブに対する参照データ入力として SQL Database を使用する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084312"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426497"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する (プレビュー)
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 
 Azure Stream Analytics では、参照データ入力のソースとして Azure SQL Database がサポートされています。 Stream Analytics ツールを使用して、Azure portal および Visual Studio で Stream Analytics ジョブに対する参照データとして SQL Database を使用できます。 この記事では、両方の方法の実行方法を示します。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 Azure portal を使用して参照入力ソースとして Azure SQL Database を追加するには、次の手順のようにします。
 
@@ -33,7 +32,7 @@ Azure portal を使用して参照入力ソースとして Azure SQL Database �
 
 ### <a name="define-sql-database-reference-data-input"></a>SQL Database の参照データ入力を定義する
 
-1. Stream Analytics ジョブで、**[ジョブ トポロジ]** の **[入力]** を選択します。 **[参照入力の追加]** をクリックして、**[SQL Database]** を選択します。
+1. Stream Analytics ジョブで、 **[ジョブ トポロジ]** の **[入力]** を選択します。 **[参照入力の追加]** をクリックして、 **[SQL Database]** を選択します。
 
    ![Stream Analytics ジョブの入力](./media/sql-reference-data/stream-analytics-inputs.png)
 
@@ -45,7 +44,7 @@ Azure portal を使用して参照入力ソースとして Azure SQL Database �
 
 ### <a name="specify-storage-account-in-job-config"></a>ジョブの構成でストレージ アカウントを指定する
 
-**[構成]** で **[ストレージ アカウントの設定]** に移動し、**[ストレージ アカウントの追加]** を選択します。
+**[構成]** で **[ストレージ アカウントの設定]** に移動し、 **[ストレージ アカウントの追加]** を選択します。
 
    ![Stream Analytics のストレージ アカウントの設定](./media/sql-reference-data/storage-account-settings.png)
 
@@ -59,16 +58,14 @@ Visual Studio を使用して参照入力ソースとして Azure SQL Database �
 
 ### <a name="visual-studio-prerequisites"></a>Visual Studio の前提条件
 
-1. Visual Studio 2017 を使用している場合は、15.8.2 以降に更新します。 現時点では、16.0 以降はサポートされていないことに注意してください。
-
-2. [Visual Studio 用の Stream Analytics ツールをインストールします](stream-analytics-tools-for-visual-studio-install.md)。 次のバージョンの Visual Studio がサポートされています。
+1. [Visual Studio 用の Stream Analytics ツールをインストールします](stream-analytics-tools-for-visual-studio-install.md)。 次のバージョンの Visual Studio がサポートされています。
 
    * Visual Studio 2015
-   * Visual Studio 2017
+   * Visual Studio 2019
 
-3. [Visual Studio 用 Stream Analytics ツール](stream-analytics-quick-create-vs.md)のクイック スタートで理解を深めます。
+2. [Visual Studio 用 Stream Analytics ツール](stream-analytics-quick-create-vs.md)のクイック スタートで理解を深めます。
 
-4. ストレージ アカウントを作成します。
+3. ストレージ アカウントを作成します。
 
 ### <a name="create-a-sql-database-table"></a>SQL Database テーブルの作成
 
@@ -84,15 +81,15 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 1. Visual Studio の **[表示]** メニューで **[サーバー エクスプローラー]** を選択します。
 
-2. **[Azure]** を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択して、Azure アカウントでサインインします。
+2. **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択して、Azure アカウントでサインインします。
 
 ### <a name="create-a-stream-analytics-project"></a>Stream Analytics プロジェクトを作成する
 
 1. **[ファイル] > [新しいプロジェクト]** を選択します。 
 
-2. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、**[Azure Stream Analytics アプリケーション]** を選択します。 
+2. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics アプリケーション]** を選択します。 
 
-3. プロジェクトの **[名前]**、**[場所]**、**[ソリューション名]** を入力し、**[OK]** を選択します。
+3. プロジェクトの **[名前]** 、 **[場所]** 、 **[ソリューション名]** を入力し、 **[OK]** を選択します。
 
    ![Visual Studio での新しい Stream Analytics プロジェクト](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
@@ -118,7 +115,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. エディターで SQL ファイルを開き、SQL クエリを記述します。
 
-5. Visual Studio 2017 を使用していて、SQL Server Data Tools をインストールしてある場合は、**[実行]** をクリックしてクエリをテストできます。 SQL Database への接続を支援するウィザード ウィンドウがポップアップし、クエリの結果が下部のウィンドウに表示されます。
+5. Visual Studio 2019 を使用していて、SQL Server Data Tools をインストールしている場合は、 **[実行]** をクリックしてクエリをテストできます。 SQL Database への接続を支援するウィザード ウィンドウがポップアップし、クエリの結果が下部のウィンドウに表示されます。
 
 ### <a name="specify-storage-account"></a>ストレージ アカウントを指定する
 
@@ -128,7 +125,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ### <a name="test-locally-and-deploy-to-azure"></a>ローカル環境でテストして Azure にデプロイする
 
-ジョブを Azure にデプロイする前に、ローカル環境でライブ入力データに対してクエリ ロジックをテストできます。 この機能について詳しくは、「[Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)」をご覧ください。 テストが完了したら、**[Azure に送信]** をクリックします。 ジョブを開始する方法については、「[クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)」をご覧ください。
+ジョブを Azure にデプロイする前に、ローカル環境でライブ入力データに対してクエリ ロジックをテストできます。 この機能について詳しくは、「[Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)」をご覧ください。 テストが完了したら、 **[Azure に送信]** をクリックします。 ジョブを開始する方法については、「[クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)」をご覧ください。
 
 ## <a name="delta-query"></a>デルタ クエリ
 
@@ -159,7 +156,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. デルタ クエリを作成します。 
    
-   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の**_操作_** を返す必要があります。 この列では、**\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 
+   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の **_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 
 
    更新されたレコードの場合、テンポラル テーブルでは挿入と削除の操作をキャプチャすることによってブックキーピングが行われます。 その場合、Stream Analytics ランタイムでは、前のスナップショットにデルタ クエリの結果を適用することによって、参照データが最新の状態に維持されます。 デルタ クエリの例を次に示します。
 
@@ -174,6 +171,9 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
  
    Stream Analytics ランタイムでは、デルタ クエリに加えてスナップショット クエリが定期的に実行されてチェックポイントが保存される場合があることに注意してください。
+
+## <a name="test-your-query"></a>クエリをテストする
+   クエリで、Stream Analytics ジョブによって参照データとして使用される予期されるデータセットが返されることを確認することが重要です。 クエリをテストするには、ポータルの [ジョブ トポロジ] セクションの [入力] に移動します。 SQL Database 参照入力で、サンプル データを選択することができます。 サンプルが利用できるようになったら、ファイルをダウンロードし、返されるデータが予想どおりであるかどうかを確認します。 開発を最適化し、イテレーションをテストする場合、[Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)を使用することをお勧めします。 または希望する他の任意のツールを使用して、まずクエリによって Azure SQL Database から正しい結果が返されることを確認してから、Stream Analytics ジョブでそれを使用することもできます。 
 
 ## <a name="faqs"></a>FAQ
 
@@ -190,20 +190,16 @@ Stream Analytics ジョブでは[ストリーミング ユニットごとにコ�
 
 両方のメトリックの組み合わせを使用して、ジョブで SQL Database のクエリが実行されて参照データ セットがフェッチされ、メモリに読み込まれているかどうかを推論できます。
 
-**特殊な種類の Azure SQL Database が必要ですか?**
+**特殊な種類の Azure SQL Database が必要ですか**
 
 Azure Stream Analytics は、任意の種類の Azure SQL Database で動作します。 ただし、参照データ入力に対して設定されている更新間隔が、クエリの負荷に影響を与える可能性があることを理解しておく必要があります。 デルタ クエリ オプションを使用するには、Azure SQL Database のテンポラル テーブルを使用することをお勧めします。
-
-**SQL Database 参照データ入力からの入力をサンプリングできますか?**
-
-この機能は使用できません。
 
 **Azure Stream Analytics で Azure ストレージ アカウントにスナップショットが格納されるのはなぜですか?**
 
 厳密には、Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。 一時的な問題でジョブが影響を受けた場合、状態を復元するために若干の再生が必要です。 再生を有効にするには、これらのスナップショットが Azure ストレージ アカウントに格納されている必要があります。 チェックポイントの再生について詳しくは、「[Azure Stream Analytics ジョブでのチェックポイントと再生の概念](stream-analytics-concepts-checkpoint-replay.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)
-* [クイック スタート:Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
 * [Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)

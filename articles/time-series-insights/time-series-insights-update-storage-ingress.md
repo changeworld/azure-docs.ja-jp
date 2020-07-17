@@ -1,191 +1,246 @@
 ---
-title: Azure Time Series Insights プレビューのデータ ストレージおよびイングレス | Microsoft Docs
-description: Azure Time Series Insights プレビューのデータ ストレージおよびイングレスについて理解します。
-author: ashannon7
-ms.author: anshan
-ms.workload: big-data
+title: プレビューのデータ ストレージおよびイングレス - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights プレビューのデータ ストレージおよびイングレスについて説明します。
+author: lyrana
+ms.author: lyhughes
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405712"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189183"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
-この記事では、Azure Time Series Insights プレビューからのデータ ストレージとイングレスの変更について説明します。 基になるストレージ構造、ファイル形式、および Time Series ID プロパティについて取り上げます。 さらに、基になるイングレス プロセス、スループット、および制限事項についても説明します。
+この記事では、Azure Time Series Insights プレビューのデータ ストレージとイングレスに対する更新について説明します。 基になるストレージ構造、ファイル形式、Time Series ID プロパティについて説明します。 また、基になるイングレス プロセス、ベスト プラクティス、現在のプレビューの制限事項についても説明します。
 
-## <a name="data-storage"></a>データ ストレージ
+## <a name="data-ingress"></a>データのイングレス
 
-Time Series Insights プレビューの従量課金制 SKU 環境を作成する場合、次の 2 つのリソースを作成します。
+Azure Time Series Insights 環境には、時系列データを収集、処理、格納するための*インジェスト エンジン*が含まれています。
 
-* Time Series Insights 環境。
-* データを格納する Azure Storage 汎用 V1 アカウント。
+[環境を計画する](time-series-insights-update-plan.md)ときは、すべての着信データが確実に処理されるようにし、高いイングレス スケールを実現し、*インジェストの待機時間* (Time Series Insights でイベント ソースからデータが読み取られて処理されるまでに要する時間) を最小限に抑えるために考慮すべき検討事項がいくつかあります。
 
-Time Series Insights プレビューでは、Parquet ファイルの種類で Azure Blob Storage を使用します。 Time Series Insights は、Azure ストレージ アカウント内のデータの BLOB の作成、インデックス作成、パーティション分割などのすべてのデータ操作を管理します。 これらの BLOB を作成するには、Azure Storage アカウントを使用します。
-
-他の Azure Storage BLOB のように、Time Series Insights が作成した BLOB により、それらを読み書きすることで、さまざまな統合シナリオをサポートできます。
-
-> [!TIP]
-> BLOB の読み書きが著しく頻繁な場合に、Time Series Insights のパフォーマンスが影響を受けることがあります。
-
-Azure Blob Storage の概要については、[ストレージ BLOB の概要](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)に関するページを参照してください。
-
-Parquet ファイルの種類の詳細については、[Azure Storage でサポートされているファイルの種類](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#Parquet-format)に関するページを参照してください。
-
-## <a name="parquet-file-format"></a>Parquet ファイル形式
-
-Parquet は、次の目的で設計された列指向のデータ ファイル形式です。
-
-* 相互運用性
-* スペース効率
-* クエリの効率
-
-Time Series Insights では、複雑なデータを一括処理できる拡張されたパフォーマンスで効率的なデータ圧縮とエンコード スキームを提供するために、Parquet が選択されています。
-
-Parquet ファイル形式の理解を深めるには、[Parquet のドキュメント](https://parquet.apache.org/documentation/latest/)を参照してください。
-
-### <a name="event-structure-in-parquet"></a>Parquet のイベント構造
-
-Time Series Insights では、次の 2 つの形式で BLOB のコピーが作成され、格納されます。
-
-1. まず、初期コピーが到着時刻でパーティション分割されます。
-
-    * `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
-    * 到着時刻でパーティション分割された BLOB の BLOB 作成時刻。
-
-1. 2 つ目に、タイム シリーズ ID の動的なグループ化によって、パーティション再分割対象のコピーがパーティション分割されます。
-
-    * `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
-    * タイム シリーズ ID によってパーティション分割された BLOB の BLOB 内で最小のイベント タイムスタンプ。
-
-> [!NOTE]
-> * `<YYYY>` は、4 桁の年表記にマップされます。
-> * `<MM>` は、2 桁の月表記にマップされます。
-> * `<YYYYMMDDHHMMSSfff>` は、4 桁の年 (`YYYY`)、2 桁の月 (`MM`)、2 桁の日 (`DD`)、2 桁の時間 (`HH`)、2 桁の分 (`MM`)、2 桁の秒 (`SS`)、および 3 桁のミリ秒 (`fff`) のタイムスタンプ表記にマップされます。
-
-Time Series Insights イベントは、次のように、Parquet ファイル コンテンツにマップされます。
-
-* 各イベントは、1 行にマップされます。
-* イベントのタイムスタンプを含む組み込みの **Timestamp** 列。 Timestamp プロパティは null にできません。 イベント ソースに Timestamp プロパティが指定されていない場合、既定値は**イベント ソース エンキュー時刻**に設定されます。 Timestamp は UTC です。 
-* 列にマップされているその他のすべてのプロパティは、プロパティの型に応じて、`_string` (文字列)、`_bool` (ブール値)、`_datetime` (datetime)、および `_double` (double) で終わります。
-* それは、最初のバージョンのファイル形式のマッピング スキームであり、それを **V=1** と呼んでいます。 この機能の発展に伴って、名前は **V=2**、**V=3** というように増分されます。
-
-## <a name="partitions"></a>パーティション
-
-各 Time Series Insights プレビュー環境には、それを一意に識別する **Time Series ID** プロパティと **Timestamp** プロパティが必要です。 タイム シリーズ ID は、データの論理パーティションとして機能し、Time Series Insights プレビュー環境に、物理パーティション間でデータを分散するための自然な境界を提供します。 物理パーティション管理は、Azure Storage アカウントで Time Series Insights プレビューによって管理されます。
-
-Time Series Insights は、動的なパーティション分割を使用して、パーティションの削除や再作成によって、ストレージとクエリのパフォーマンスを最適化します。 Time Series Insights プレビューの動的パーティション分割アルゴリズムでは、1 つの物理パーティションが、複数の個別の論理パーティションのデータを保持することがないようにします。 つまり、パーティション分割アルゴリズムでは、他のタイム シリーズ ID とインターリーブされることなく、すべてのデータが、Parquet ファイルに排他的に存在する 1 つのタイム シリーズ ID に固有のものとされます。 さらに、動的パーティション分割アルゴリズムでは、1 つのタイム シリーズ ID 内のイベントの元の順序を維持しようとします。
-
-最初の受信時に、特定の時間範囲内の 1 つの論理パーティションを複数の物理パーティションに分散できるように、データがタイムスタンプによってパーティション分割されます。 1 つの物理パーティションに、多くのまたはすべての論理パーティションが含まれることもあります。 BLOB のサイズ制限のため、最適なパーティション分割でも、1 つの論理パーティションで、複数の物理パーティションを占有することがあります。
-
-> [!NOTE]
-> 既定で、タイムスタンプ値は、構成されているイベント ソースのメッセージ、*エンキューされた時刻*です。
-
-履歴データまたはバッチ メッセージをアップロードしている場合は、データと共に格納する値を、適切なタイムスタンプにマップされる Timestamp プロパティに割り当てます。 Timestamp プロパティ名は大文字と小文字が区別されます。 詳細については、「[Time Series Model](./time-series-insights-update-tsm.md)」(Time Series モデル) を参照してください。
-
-### <a name="physical-partitions"></a>物理パーティション
-
-物理パーティションは、ストレージ アカウントに格納されているブロック BLOB です。 BLOB の実際のサイズはプッシュ率に依存するため、さまざまに異なることがあります。 ただし、BLOB のサイズは約 20 MB から 50 MB になるものと予想されます。 この予想により、Time Series Insights チームでは、クエリ パフォーマンスを最適化するサイズとして 20 MB を選択しました。 このサイズは、ファイル サイズとデータ イングレスの速度に応じて、時間の経過と共に変わる可能性があります。
-
-> [!NOTE]
-> * BLOB のサイズは 20 MB に設定されます。
-> * Azure BLOB は時々、パフォーマンス向上のために、削除および再作成によって、パーティションが再分割されます。
-> * さらに、同じ Time Series Insights データが複数の BLOB に存在する可能性があります。
-
-### <a name="logical-partitions"></a>論理パーティション
-
-論理パーティションは、1 つのパーティション キー値に関連付けられているすべてのデータを格納する物理パーティション内のパーティションです。 Time Series Insights プレビューは、次の 2 つのプロパティに基づいて各 BLOB を論理的にパーティション分割します。
-
-* **Time Series ID**:イベント ストリームとモデル内のすべての Time Series Insights データのパーティション キー。
-* **Timestamp**:初期イングレスに基づいた時間。
-
-Time Series Insights プレビューは、これら 2 つのプロパティに基づいた高いパフォーマンスのクエリを提供します。 これら 2 つのプロパティは、Time Series Insights データを迅速に配信するための最も効果的な方法も提供します。
-
-Time Series ID は不変のプロパティであるため、適切なタイム シリーズ ID を選択することが重要です。 詳細については、[タイム シリーズ ID の選択](./time-series-insights-update-how-to-id.md)に関するページを参照してください。
-
-## <a name="azure-storage"></a>Azure Storage
-
-### <a name="your-storage-account"></a>ストレージ アカウント
-
-Time Series Insights の従量課金制環境を作成する際に、Time Series Insights 環境と、データが格納される Azure Storage 汎用 V1 アカウントの 2 つのリソースを作成します。 相互運用性、価格、およびパフォーマンスのため、Azure Storage 汎用 V1 を既定のリソースとして選択しました。 
-
-Time Series Insights は、Azure Storage アカウントで、各イベントの最大 2 つのコピーを発行します。 初期コピーは常に保持されるため、他のサービスを使用して、すばやく照会できます。 生の Parquet ファイル全体のタイム シリーズ ID 間で、Spark、Hadoop、およびその他の使い慣れたツールを簡単に使用できます。これらのエンジンでは、基本的なファイル名フィルターがサポートされているためです。 年および月で BLOB をグループ化することは、カスタム ジョブの特定の時間範囲内の BLOB を一覧表示する便利な方法です。 
-
-さらに、Time Series Insights は、Parquet ファイルのパーティションを再分割し、Time Series Insights API 用に最適化します。 最新のパーティション再分割されたファイルも保存されます。
-
-パブリック プレビュー中、データは、Azure Storage アカウントに無期限に格納されます。
-
-### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights BLOB の作成と編集
-
-クエリのパフォーマンスとデータの可用性を確保するため、Time Series Insights によって作成されたすべての BLOB を編集または削除しないでください。
-
-### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Time Series Insights プレビューからのデータのアクセスとエクスポート
-
-他のサービスと連携して使用するために、Time Series Insights プレビュー エクスプローラーに格納されているデータにアクセスする場合があります。 たとえば、Power BI でレポートする、Azure Machine Learning Studio を使用して機械学習を実行する、または Jupyter Notebook のノートブック アプリケーションで使用するためにデータを使用することがあります。
-
-次の 3 つの一般的な方法でデータにアクセスできます。
-
-* Time Series Insights プレビュー エクスプローラーから: Time Series Insights プレビュー エクスプローラーから CSV ファイルとして、データをエクスポートできます。 詳細については、[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)に関するページを参照してください。
-* Time Series Insights プレビュー API から: API エンドポイントには、`/getRecorded` で到達できます。 この API の詳細については、[Time Series クエリ](./time-series-insights-update-tsq.md)に関するページを参照してください。
-* Azure Storage アカウントから直接 (下記参照)。
-
-#### <a name="from-an-azure-storage-account"></a>Azure Storage アカウントから
-
-* Time Series Insights データへのアクセスに使用するどのアカウントにも読み取りアクセスが必要です。 詳細については、[ストレージ アカウント リソースへのアクセスの管理](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources)に関するページを参照してください。
-* Azure Blob Storage からデータを読み取る直接の方法の詳細については、[ストレージ アカウントとの間でのデータの移動](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
-* Azure ストレージ アカウントからデータをエクスポートするには:
-    * まず、アカウントがデータをエクスポートするための要件を満たしていることを確認します。 詳細については、[ストレージのインポートとエクスポートの要件](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)に関するページを参照してください。
-    * Azure ストレージ アカウントからデータをエクスポートするその他の方法については、[BLOB からのデータのインポートおよびエクスポート](https://docs.microsoft.com/azure/storage/common/storage-import-export-data-from-blobs)に関するページを参照してください。
-
-### <a name="data-deletion"></a>データの削除
-
-Time Series Insights プレビューでは、BLOB 内に、BLOB に関するメタデータを保持しているため、BLOB を削除しないでください。
-
-## <a name="time-series-insights-data-ingress"></a>Time Series Insights データ イングレス
+Time Series Insights プレビューのデータ イングレス ポリシーにより、データのソースにすることができる場所と、データに必要な形式が決まります。
 
 ### <a name="ingress-policies"></a>イングレス ポリシー
 
-Time Series Insights プレビューは、Time Series Insights が現在サポートしている同じイベント ソースとファイルの種類をサポートします。
+*データのイングレス*には、データが Azure Time Series Insights プレビュー環境に送信される方法が含まれています。
 
-サポートされているイベント ソースは次のとおりです。
+主な構成、書式設定、ベストプラクティスを以下にまとめています。
 
-- Azure IoT Hub
-- Azure Event Hubs
-  
-  > [!NOTE]
-  > Azure Event Hub インスタンスは、Kafka をサポートしています。
+#### <a name="event-sources"></a>イベント ソース
 
-サポートされているファイルの種類は次のとおりです。
+Azure Time Series Insights プレビューでは、次のイベント ソースがサポートされています。
 
-* JSON:処理可能なサポートされている JSON シェイプの詳細については、[JSON のシェイプ方法](./time-series-insights-send-events.md#json)に関するページを参照してください。
+- [Azure IoT Hub](../iot-hub/about-iot-hub.md)
+- [Azure Event Hubs](../event-hubs/event-hubs-about.md)
+
+Azure Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。 イベント ソースに接続すると、TSI 環境は、IoT Hub またはイベント ハブに現在格納されているすべてのイベントを、最も古いイベントから読み取ります。
+
+> [!IMPORTANT]
+>
+> * プレビュー環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。
+> イベント ソースの待機時間は、現在 IoT Hub またはイベント ハブにあるイベントの数によって変わります。
+> * 最初にイベント ソース データが取り込まれた後は、待機時間が短くなります。 長い待機時間が継続する場合は、Azure portal からサポート チケットを送信してください。
+
+#### <a name="supported-data-format-and-types"></a>サポートされるデータの形式と型
+
+Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs から送信される UTF8 でエンコードされた JSON がサポートされます。 
+
+サポートされるデータ型は次のとおりです。
+
+| データ型 | 説明 |
+|---|---|
+| **bool** | 2 つの状態 (`true` または `false`) のいずれかを持つデータ型。 |
+| **dateTime** | 特定の時点を表します。通常、日時形式で表されます。 [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 形式で表されます。 |
+| **double** | 倍精度 64 ビットの [IEEE 754](https://ieeexplore.ieee.org/document/8766229) 浮動小数点。 |
+| **string** | Unicode 文字で構成されるテキスト値。          |
+
+#### <a name="objects-and-arrays"></a>オブジェクトと配列
+
+オブジェクトや配列などの複合型はイベント ペイロードの一部として送信できますが、格納時にはデータのフラット化プロセスが実行されます。
+
+JSON イベントの調整方法、複合型の送信方法、入れ子になったオブジェクトのフラット化の詳細については、計画と最適化を支援する[イングレスとクエリのための JSON の調整方法](./time-series-insights-update-how-to-shape-events.md)に関する記事を参照してください。
+
+### <a name="ingress-best-practices"></a>イングレスのベスト プラクティス
+
+次のベスト プラクティスのようにすることをお勧めします。
+
+* 待機時間が発生する可能性を減らすために、Azure Time Series Insights と IoT Hub またはイベント ハブを同じリージョンに構成します。
+
+* 予想されるインジェスト レートを計算し、以下に示すサポートされるレート内に収まることを確認することで、[スケールのニーズに合うように計画](time-series-insights-update-plan.md)します。
+
+* [イングレスとクエリに対して JSON を整形する方法](./time-series-insights-update-how-to-shape-events.md)に関する記事を読み、Json データを最適化して整形する方法と、プレビューでの現在の制限事項について理解します。
+
+### <a name="ingress-scale-and-preview-limitations"></a>イングレス スケールとプレビューの制限事項
+
+Azure Time Series Insights プレビューのイングレスの制限事項について以下で説明します。
+
+> [!TIP]
+> プレビューのすべての制限の包括的な一覧については、[プレビュー環境の計画](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)に関する記事を参照してください。
+
+#### <a name="per-environment-limitations"></a>環境ごとの制限
+
+一般に、イングレス レートの要因としては、組織内のデバイスの数、イベント出力の頻度、各イベントのサイズがあります。
+
+*  **デバイスの数** × **イベント出力の頻度** × **各イベントのサイズ**。
+
+既定では、Time Series Insights プレビューは、**Time Series Insights 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。 [ハブのパーティションごとに](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)追加の制限があります。
+
+> [!TIP]
+>
+> * 要求により、環境でサポートされる取り込み速度を最大 16 MBps に指定できます。
+> * より高いスループットが必要な場合は、Azure portal からサポート チケットを送信してお問い合わせください。
+ 
+* **例 1:**
+
+    Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つ Iot Hub を Time Series Insights イベント ソースとして使用しています。
+
+    * それらの Time Series Insights 環境のインジェスト率は次のようになります。**100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps**。
+    * パーティションあたりのインジェスト率は 0.25 MBps です。
+    * Contoso Shipping のインジェスト率は、プレビュー スケール制限内になります。
+
+* **例 2:**
+
+    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 60,000 個のデバイスがあります。 それらは、4 つのパーティションを持つイベント ハブを Time Series Insights イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
+
+    * 環境のインジェスト率は次のようになります。**60,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 12 MBps**。
+    * パーティションあたりの率は 3 MBps です。
+    * Contoso Fleet Analytics のインジェスト率は、環境とパーティションの制限を超えています。 Azure portal を介して Time Series Insights に要求を送信して、環境のインジェスト率を上げることができます。また、プレビューの制限内に収まるように、より多くのパーティションを備えたイベント ハブを作成することもできます。
+
+#### <a name="hub-partitions-and-per-partition-limits"></a>ハブのパーティションとパーティションごとの制限
+
+Time Series Insights 環境を計画するときは、Time Series Insights に接続するイベント ソースの構成を考慮することが重要です。 Azure IoT Hub と Event Hubs はどちらもパーティションを使用して、イベント処理のための水平スケールを有効にします。 
+
+*パーティション*は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。
+
+Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)」を参照してください。
+
+> [!NOTE]
+> Azure Time Series Insights で使用されるほとんどの IoT Hub には、4 つのパーティションのみが必要です。
+
+Time Series Insights 環境用の新しいハブを作成する場合でも、既存のハブを使用する場合でも、パーティションごとのインジェスト率を計算して、それがプレビューの制限内にあるかどうかを判断する必要があります。 
+
+Azure Time Series Insights プレビューには現在、一般的な **0.5 MBps のパーティションごとの制限**があります。
+
+#### <a name="iot-hub-specific-considerations"></a>IoT Hub 固有の考慮事項
+
+デバイスは、IoT Hub に作成されるとパーティションに永続的に割り当てられます。 これにより、IoT Hub ではイベントの順序を保証できます (この割り当ては変更されないため)。
+
+固定パーティション割り当ては、IoT Hub のダウンストリームから送信されるデータを取り込んでいる Time Series Insights インスタンスにも影響します。 複数のデバイスからのメッセージが同じゲートウェイ デバイス ID を使用してハブに転送されると、それらは同じパーティションに同時に到着することがあるため、パーティションごとのスケール制限を超える可能性があります。
+
+**影響**:
+
+* 1 つのパーティションでプレビューの制限を超えるインジェスト率が継続的に発生している場合は、IoT Hub のデータ保有期間を超える前に Time Series Insights がすべてのデバイス テレメトリを同期しない可能性があります。 その結果、インジェストの制限を一貫して超えている場合、送信されたデータが失われる可能性があります。
+
+この状況を軽減するために、次のベスト プラクティスが推奨されます。
+
+* ソリューションをデプロイする前に、環境ごとおよびパーティションごとのインジェスト率を計算します。
+* IoT Hub のデバイスを可能な限り負荷分散するようにします。
+
+> [!IMPORTANT]
+> IoT Hub をイベント ソースとして使用している環境では、使用中のハブ デバイスの数を使ってインジェスト率を計算し、プレビューでのパーティションあたりの制限が確実に 0.5 MBps 未満になるようにします。
+>
+> * 複数のイベントが同時に到着した場合でも、プレビューの制限を超えなくなります。
+
+  ![IoT Hub パーティションのダイアグラム](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
+
+ハブのスループットとパーティションの最適化の詳細については、次のリソースを参照してください。
+
+* [IoT Hub のスケール](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [イベント ハブのスケール](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [イベント ハブのパーティション](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
+
+### <a name="data-storage"></a>データ ストレージ
+
+Time Series Insights プレビューの*従量課金制* (PAYG) SKU 環境を作成するときは、次の 2 つの Azure リソースを作成します。
+
+* ウォーム データ ストレージ用に構成できる Azure Time Series Insights プレビュー環境。
+* コールド データ ストレージ用の Azure Storage General Purpose V1 BLOB アカウント。
+
+ウォーム ストア内のデータは、[Time Series Query](./time-series-insights-update-tsq.md) および [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)を使用することによってのみ使用できます。 ウォーム ストアには、Time Series Insights 環境の作成時に選択された[保有期間](./time-series-insights-update-plan.md#the-preview-environment)内の最新のデータが含まれます。
+
+Time Series Insights プレビューを使うと、コールド ストア データが [Parquet ファイル形式](#parquet-file-format-and-folder-structure)で Azure Blob Storage に保存されます。 Time Series Insights プレビューでは、このコールド ストア データが排他的に管理されますが、標準の Parquet ファイルとして直接読み取ることができます。
+
+> [!WARNING]
+> コールド ストア データが存在する Azure Blob ストレージ アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 データが失われる原因になる可能性があるため、Time Series Insights プレビューによって書き込まれたデータを編集または削除しないでください。
 
 ### <a name="data-availability"></a>データの可用性
 
-Time Series Insights プレビューは、BLOB サイズの最適化戦略を使用してデータのインデックスを作成します。 データは、インデックスの作成後、クエリに使用できるようになり、それは取り込むデータの量と速度に基づきます。
+Azure Time Series Insights プレビューでは、最適なクエリ パフォーマンスのために、データのパーティション分割とインデックス付けが行われます。 データは、インデックスが作成された後、ウォーム ストア (有効な場合) とコールド ストアの両方からクエリを実行できるようになります。 取り込まれたされるデータの量は、この可用性に影響を与える可能性があります。
 
 > [!IMPORTANT]
-> * Time Series Insights の一般提供 (GA) リリースでは、イベント ソースのヒットから 60 秒以内でデータを利用できるようになります。 
-> * プレビュー中は、データを利用できるようになるまでにかかる時間が長くなると予想されます。
-> * 大幅な待機時間が発生した場合は、お問い合わせください。
+> プレビュー中は、データが利用可能になるまでに最大 60 秒の期間が発生することがあります。 待機時間が 60 秒を大きく上回る場合は、Azure portal を通じてサポート チケットを送信してください。
 
-### <a name="scale"></a>スケール
+## <a name="azure-storage"></a>Azure Storage
 
-Time Series Insights プレビューは、環境あたり最大 6 MB/秒 (Mbps) の初期イングレス スケールをサポートします。 拡張スケーリング サポートが進行中です。 それらの機能強化を反映するように、ドキュメントを更新する予定です。
+このセクションでは、Azure Time Series Insights プレビューに関連する Azure Storage の詳細について説明します。
 
-## <a name="next-steps"></a>次の手順
+Azure Blob Storage の詳細については、[Storage Blob の概要](../storage/blobs/storage-blobs-introduction.md)に関する記事をご覧ください。
 
-- [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)について確認する。
+### <a name="your-storage-account"></a>ストレージ アカウント
 
-- 新しい[データ モデリング](./time-series-insights-update-tsm.md)について確認する。
+Azure Time Series Insights プレビューの PAYG 環境を作成すると、Azure Storage General Purpose V1 BLOB アカウントが、長期的なコールド ストアとして作成されます。  
 
-<!-- Images -->
-[1]: media/v2-update-storage-ingress/storage-architecture.png
-[2]: media/v2-update-storage-ingress/parquet-files.png
-[3]: media/v2-update-storage-ingress/blob-storage.png
+Azure Time Series Insights プレビューでは、Azure Storage アカウントで、各イベントごとに最大 2 つのコピーが保持されます。 1 つのコピーには、イベントがインジェスト時間によって並べ替えられて格納され、常に時間順に並べられた一連のイベントにアクセスできるようになります。 時間の経過と共に、Time Series Insights プレビューでは、高パフォーマンスの Time Series Insights クエリに最適化するために、データの再パーティション分割コピーも作成されます。
+
+パブリック プレビュー中、データは、Azure Storage アカウントに無期限に格納されます。
+
+#### <a name="writing-and-editing-time-series-insights-blobs"></a>Time Series Insights BLOB の作成と編集
+
+クエリのパフォーマンスとデータの可用性を確保するため、Time Series Insights プレビューによって作成されたすべての BLOB を編集または削除しないでください。
+
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Time Series Insights プレビューのコールド ストア データへのアクセス
+
+[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)および [Time Series Query](./time-series-insights-update-tsq.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
+
+Azure Storage アカウントから直接データにアクセスするには、Time Series Insights プレビュー データを格納するために使用しているアカウントへの読み取りアクセスが必要です。 次に、「[Parquet ファイル形式](#parquet-file-format-and-folder-structure)」セクションで説明されている `PT=Time` フォルダーにある Parquet ファイルの作成時刻に基づいて、選択したデータを読み取ることができます。  ストレージ アカウントへの読み取りアクセスを有効にする方法の詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/storage-manage-access-to-resources.md)に関するページを参照してください。
+
+#### <a name="data-deletion"></a>データの削除
+
+Time Series Insights プレビューのファイルは削除しないでください。 関連するデータは、Time Series Insights プレビュー内からのみ管理します。
+
+### <a name="parquet-file-format-and-folder-structure"></a>Parquet ファイル形式とフォルダー構造
+
+Parquet は、効率的なストレージとパフォーマンスのために設計されている、オープンソースの列指向ファイル形式です。 Time Series Insights プレビューでは、Parquet を使用して、大規模な時系列 ID ベースのクエリ パフォーマンスを実現します。  
+
+Parquet ファイルの種類の詳細については、[Parquet のドキュメント](https://parquet.apache.org/documentation/latest/)を参照してください。
+
+Time Series Insights プレビューでは、次のようにデータのコピーが格納されます。
+
+* 1 つ目の初期コピーは、インジェスト時間によって分割され、データは到着順にほぼ格納されます。 データは次のような `PT=Time` フォルダーにあります。
+
+  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+
+* 2 つ目の再パーティション分割されるコピーは、時系列 ID に応じてグループ化され、`PT=TsId` フォルダーに格納されます。
+
+  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+
+どちらの場合も、Parquet ファイルの time プロパティは BLOB の作成時刻に対応します。 `PT=Time` フォルダー内のデータは、一旦ファイルに書き込まれると、変更されずに保持されます。 `PT=TsId` フォルダー内のデータは、時間の経過と共にクエリに合わせて最適化され、静的ではありません。
+
+> [!NOTE]
+>
+> * `<YYYY>` は、4 桁の年表記に対応します。
+> * `<MM>` は、2 桁の月表記に対応します。
+> * `<YYYYMMDDHHMMSSfff>` は、4 桁の年 (`YYYY`)、2 桁の月 (`MM`)、2 桁の日 (`DD`)、2 桁の時 (`HH`)、2 桁の分 (`MM`)、2 桁の秒 (`SS`)、3 桁のミリ秒 (`fff`) のタイムスタンプ表現に対応します。
+
+Time Series Insights プレビューのイベントは、次のように、Parquet ファイル コンテンツにマップされます。
+
+* 各イベントは、1 行にマップされます。
+* すべての行には、イベントのタイムスタンプの **timestamp** 列が含まれています。 タイムスタンプ プロパティが null になることはありません。 イベント ソースでタイムスタンプ プロパティが指定されていない場合の既定値は、**イベント ソース エンキュー時刻**になります。 格納されているタイムスタンプは、常に UTC 形式です。
+* すべての行には、Time Series Insights 環境の作成時に定義される時系列 ID (TSID) 列が含まれます。 TSID プロパティ名には、サフィックス `_string` が含まれます。
+* テレメトリ データとして送信される他のすべてのプロパティは、プロパティの型に応じて、`_string` (文字列)、`_bool` (ブール値)、`_datetime` (datetime)、または `_double` (double) で終わる列名にマップされます。
+* このマッピング スキーマは、ファイル形式の最初のバージョンに適用され、**V = 1** として参照され、同じ名前のベース フォルダーに格納されます。 この機能が進化するにつれて、このマッピング スキーマが変更され、参照名が増える可能性があります。
+
+## <a name="next-steps"></a>次のステップ
+
+- [イングレスとクエリのための JSON の調整方法](./time-series-insights-update-how-to-shape-events.md)に関するページをお読みください。
+
+- 新しい[データ モデリング](./time-series-insights-update-tsm.md)についてご覧ください。

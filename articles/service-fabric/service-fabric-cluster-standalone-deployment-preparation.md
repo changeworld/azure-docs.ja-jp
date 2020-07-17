@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric スタンドアロン クラスターのデプロイの準備 | Microsoft Docs
+title: スタンドアロン クラスターのデプロイの準備
 description: 運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664822"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75610065"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 
@@ -65,10 +57,11 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 * 40 GB 以上の使用可能なディスク領域
 * 4 コア以上の CPU
 * すべてのマシンのセキュリティで保護された 1 つ以上のネットワークへの接続
-* Windows Server OS がインストールされている (有効なバージョン: 2012 R2、2016、1709、または 1803)
+* Windows Server OS がインストールされている (有効なバージョン: 2012 R2、2016、1709、1803)。 Service Fabric バージョン 6.4.654.9590 以降では、Server 2019 と 1809 もサポートされています。
 * [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773) (フル インストール)
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820)がすべてのマシンで実行されている必要があります。
+* Service Fabric のインストール ドライブは、NTFS ファイル システムでなければなりません
 
 クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
 
@@ -98,7 +91,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 1. クラスターを作成するユーザーには、クラスター構成ファイルにノードとして記載されているすべてのマシンに対する管理者レベルのセキュリティ特権が必要です。
 2. クラスターの作成元になるマシン、および各クラスター ノード マシンでは次の操作を行う必要があります。
    * Service Fabric SDK をアンインストールします。
-   * Service Fabric ランタイムをアンインストールにします。 
+   * Service Fabric ランタイムをアンインストールにします。
    * Windows Firewall サービス (mpssvc) を有効にします。
    * リモート レジストリ サービス (リモート レジストリ) を有効にします。
    * ファイル共有 (SMB) を有効化にします。
@@ -136,7 +129,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 | FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration スクリプトを使用して環境を検証する
-スタンドアロンのパッケージには、TestConfiguration.ps1 スクリプトが含まれています。 このスクリプトは、上記の条件の一部を検証を検証するベスト プラクティス アナライザーとして用いるものであり、サニティ チェックとして使用して指定の環境にクラスターをデプロイできるかどうかを検証する必要があります。 問題が発生した場合は、「[環境のセットアップ](service-fabric-cluster-standalone-deployment-preparation.md)」のリストを参照してトラブルシューティングを行ってください。 
+スタンドアロンのパッケージには、TestConfiguration.ps1 スクリプトが含まれています。 このスクリプトは、上記の条件の一部を検証を検証するベスト プラクティス アナライザーとして用いるものであり、サニティ チェックとして使用して指定の環境にクラスターをデプロイできるかどうかを検証する必要があります。 問題が発生した場合は、「[環境のセットアップ](service-fabric-cluster-standalone-deployment-preparation.md)」のリストを参照してトラブルシューティングを行ってください。
 
 このスクリプトは、クラスター構成ファイルにノードとして列挙されているすべてのマシンに管理者アクセスできれば、どのマシンでも実行できます。 このスクリプトが実行されるマシンがクラスターに属している必要はありません。
 
@@ -159,12 +152,12 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-現在、この構成テスト モジュールではセキュリティ構成は検証されないため、別個に検証を行う必要があります。  
+現在、この構成テスト モジュールではセキュリティ構成は検証されないため、別個に検証を行う必要があります。
 
 > [!NOTE]
-> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/azure/service-fabric/service-fabric-support) からお知らせください。   
-> 
-> 
+> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/azure/service-fabric/service-fabric-support) からお知らせください。
+>
+>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Windows Server で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)

@@ -1,29 +1,25 @@
 ---
-title: Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
+title: Active Directory 接続済みサービスの使用 (Visual Studio)
 description: Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Active Directory を追加する
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bea0a870a6ef0685f4f4bce5ad3b0d1ff1f616a
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414007"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81535827"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
-Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリケーションまたは Web API サービスの Active Directory Authentication のためのシングル サインオン (SSO) をサポートできます。 Azure AD Authentication を使用すると、ユーザーは Azure Active Directory のアカウントを使用して Web アプリケーションに接続できます。 Web API で Azure AD 認証を利用する利点には、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることが含まれます。 Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
+Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリケーションまたは Web API サービスの Active Directory Authentication のためのシングル サインオン (SSO) をサポートできます。 Azure AD Authentication を使用すると、ユーザーは Azure Active Directory のアカウントを使用して Web アプリケーションに接続できます。 Web API で Azure AD Authentication を使用する利点として、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることなどが挙げられます。 Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
 
 この記事と関連記事では、Active Directory に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Visual Studio 2015 以降で利用できます。
 
@@ -40,7 +36,7 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
 1. **[プロジェクト] > [接続済みサービスの追加]** メニュー コマンドを選択するか、ソリューション エクスプローラーでプロジェクト以下にある **[接続済みサービス]** ノードをダブル クリックします。
 
-1. **[接続済みサービス]** ページで、**[Azure Active Directory での認証]** を選択します。
+1. **[接続済みサービス]** ページで、 **[Azure Active Directory での認証]** を選択します。
 
     ![[接続済みサービス] ページ](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
@@ -48,11 +44,11 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
     ![[概要] ページ](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. **[シングル サインオン]** ページで、**[ドメイン]** ドロップダウン リストからドメインを選択します。 このリストには、Visual Studio の [アカウント設定] ダイアログ (**[ファイル] > [アカウント設定]**) に表示されている、アカウントからアクセスできるすべてのドメインが含まれています。探しているドメインが見つからない場合は、代替として `mydomain.onmicrosoft.com` のようなドメイン名を入力できます。 Azure Active Directory アプリを作成したり、既存の Azure Active Directory アプリの設定を使用したりできます。 操作が完了したら、**[次へ]** をクリックします。
+1. **[シングル サインオン]** ページで、 **[ドメイン]** ドロップダウン リストからドメインを選択します。 このリストには、Visual Studio の [アカウント設定] ダイアログ ( **[ファイル] > [アカウント設定]** ) に表示されている、アカウントからアクセスできるすべてのドメインが含まれています。探しているドメインが見つからない場合は、代替として `mydomain.onmicrosoft.com` のようなドメイン名を入力できます。 Azure Active Directory アプリを作成したり、既存の Azure Active Directory アプリの設定を使用したりできます。 操作が完了したら、 **[次へ]** をクリックします。
 
     ![[シングル サインオン] ページ](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
-1. **[ディレクトリ アクセス]** ページで、**[ディレクトリ データの読み取り]** オプションを選択します。 一般的に開発時にはこのオプションを含めます。
+1. **[ディレクトリ アクセス]** ページで、 **[ディレクトリ データの読み取り]** オプションを選択します。 一般的に開発時にはこのオプションを含めます。
 
     ![[ディレクトリ アクセス] ページ](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
 
@@ -69,12 +65,12 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
 ## <a name="how-your-project-is-modified"></a>プロジェクトを変更する方法
 
-ウィザードで接続済みサービスを追加すると、Visual Studio でプロジェクトに Azure Active Directory と関連する参照が追加されます。 プロジェクトの構成ファイルとコード ファイルも変更され、Azure AD のサポートが追加されます。 Visual Studio による特定の変更はプロジェクトの種類によって異なります。 詳細については、次の記事を参照してください。
+ウィザードで接続済みサービスを追加すると、Visual Studio でプロジェクトに Azure Active Directory と関連する参照が追加されます。 プロジェクトの構成ファイルとコード ファイルも変更され、Azure AD のサポートが追加されます。 Visual Studio による特定の変更はプロジェクトの種類によって異なります。 詳しくは、以下の記事を参照してください。
 
 - [.NET MVC プロジェクトの変更点](vs-active-directory-dotnet-what-happened.md)
 - [Web API プロジェクトの変更点](vs-active-directory-webapi-what-happened.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD の認証シナリオ](authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v2-aspnet-webapp.md)

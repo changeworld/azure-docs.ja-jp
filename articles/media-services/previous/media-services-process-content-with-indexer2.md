@@ -11,34 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: adsolank;juliako;
-ms.openlocfilehash: 6a798d0f33ba4d1960f07e670e6e71916f68eff1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 09/22/2019
+ms.author: juliako
+ms.reviewer: adsolank
+ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258272"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78163796"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
-## <a name="overview"></a>概要
+
+> [!NOTE]
+> **Azure Media Indexer 2** メディア プロセッサは廃止予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、この従来のメディア プロセッサに取って代わります。 詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+
 **Azure Media Indexer 2 プレビュー** メディア プロセッサー (MP) を使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 前のバージョンの [Azure Media Indexer](media-services-index-content.md)と比較すると、 **Azure Media Indexer 2 プレビュー** は、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (標準、簡体字)、ポルトガル語、アラビア語、ロシア語、日本語などがサポートされています。
 
 **Azure Media Indexer 2 プレビュー** MP は現在プレビュー段階です。
 
 この記事では、**Azure Media Indexer 2 プレビュー**を使ってインデックス作成ジョブを作成する方法を示します。
 
-> [!NOTE]
-> 次の考慮事項が適用されます。
-> 
-> Indexer 2 は、Azure China と Azure Government ではサポートされません。
-> 
-> コンテンツのインデックスを作成する場合は、クリアな (バック グラウンド ミュージック、ノイズ、特殊効果、またはマイク ヒスノイズなどがない) 音声機能を持つメディア ファイルを使用してください。 適切なコンテンツの例としては、記録された会議、講義またはプレゼンテーションなどがあります。 ムービー、テレビ番組、混合音声とサウンド効果を含むもの、バックグラウンド ノイズ (ヒスノイズ) を含む記録状態が良好でないコンテンツは、インデックス作成に適しません。
-> 
-> 
+## <a name="considerations"></a>考慮事項
 
-ここでは、**Azure Media Indexer 2 プレビュー**の詳細を説明し、Media Services SDK for .NET でのその使用方法を示します
-
+次の考慮事項が適用されます。
+ 
+* Indexer 2 は、Azure China 21Vianet と Azure Government ではサポートされません。
+* コンテンツのインデックスを作成する場合は、クリアな (バック グラウンド ミュージック、ノイズ、特殊効果、またはマイク ヒスノイズなどがない) 音声機能を持つメディア ファイルを使用してください。 適切なコンテンツの例としては、記録された会議、講義またはプレゼンテーションなどがあります。 ムービー、テレビ番組、混合音声とサウンド効果を含むもの、バックグラウンド ノイズ (ヒスノイズ) を含む記録状態が良好でないコンテンツは、インデックス作成に適しません。
+ 
 ## <a name="input-and-output-files"></a>入力ファイルと出力ファイル
 ### <a name="input-files"></a>入力ファイル
 オーディオまたはビデオ ファイル
@@ -46,7 +46,6 @@ ms.locfileid: "58258272"
 ### <a name="output-files"></a>出力ファイル
 インデックス作成ジョブでは、クローズド キャプション ファイルを次の形式で生成できます。  
 
-* **SAMI**
 * **TTML**
 * **WebVTT**
 

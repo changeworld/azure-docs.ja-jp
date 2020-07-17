@@ -1,25 +1,18 @@
 ---
-title: SMB を使用して Linux VM に Azure File Storage をマウントする |Microsoft Docs
+title: SMB を使用して Linux VM に Azure File Storage をマウントする
 description: Azure CLI で SMB を使用して Linux VM に Azure File Storage をマウントする方法
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066647"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -32,11 +25,11 @@ File Storage でホストされている SMB マウントに VM からファイ�
 このガイドでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 *myResourceGroup* という名前のリソース グループを "*米国東部*" に作成します。
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -44,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 [az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -59,7 +52,7 @@ STORAGEACCT=$(az storage account create \
 
 [az storage account keys list](/cli/azure/storage/account/keys) を使用して、ストレージ アカウント キーを表示します。 この例では、**STORAGEKEY** 変数にキー 1 の値を格納しています。
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -74,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 
 この例では、10-GiB クォータを使用して、*myshare* という名前の共有を作成します。 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -110,11 +103,12 @@ Linux VM を再起動すると、マウントされた SMB 共有はシャット
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 実稼働環境のセキュリティを向上させるために、fstab の外部に資格情報を保存する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
 - [Linux VM へのディスクの追加](add-disk.md)
-- [Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md)
+- [Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)
 

@@ -1,25 +1,25 @@
 ---
 title: レビュー ツールを使用してコンテンツ ワークフローを定義して使用する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Content Moderator ワークフロー デザイナーを使用し、コンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: sajagtap
-ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pafarley
+ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72754250"
 ---
 # <a name="define-and-use-moderation-workflows"></a>モデレーション ワークフローを定義して使用する
 
-このガイドでは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトで[ワークフロー](../review-api.md#workflows)を設定して使用する方法について説明します。 ワークフローは、コンテンツをより効率的に処理するために使用できるクラウドベースのカスタマイズされたフィルターです。 ワークフローで、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 このガイドでは、Content Moderator コネクタ (既定で含まれています) を使用してコンテンツをフィルター処理し、一般的なモデレーション シナリオの人間によるレビューを設定する方法について説明します。
+このガイドでは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトで[ワークフロー](../review-api.md#workflows)を設定して使用する方法について説明します。 ワークフローは、コンテンツをより効率的に処理するために使用できるクラウドベースのカスタマイズされたフィルターです。 ワークフローでは、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 このガイドでは、Content Moderator コネクタ (既定で含まれています) を使用してコンテンツをフィルター処理し、一般的なモデレーション シナリオの人間によるレビューを設定する方法について説明します。
 
 ## <a name="create-a-new-workflow"></a>新しいワークフローの作成
 
@@ -39,7 +39,7 @@ ms.locfileid: "59795799"
 
 ### <a name="define-evaluation-criteria"></a>評価基準の定義
 
-次の画面で、**[If]** セクションに移動します。 上部のドロップダウン メニューで **[条件]** を選択します。 これにより、ワークフローがアクションを実行する条件を構成できます。 複数の条件を使用する場合は、代わりに **[Combination]\(組み合わせ\)** を選択します。 
+次の画面で、 **[If]** セクションに移動します。 上部のドロップダウン メニューで **[条件]** を選択します。 これにより、ワークフローがアクションを実行する条件を構成できます。 複数の条件を使用する場合は、代わりに **[Combination]\(組み合わせ\)** を選択します。 
 
 次にコネクタを選択します。 この例では、**Content Moderator** を使用します。 選択するコネクタに応じて、表示されるデータ出力のオプションが変わります。 他のコネクタの設定方法については、レビュー ツールの設定ガイドの「[Connectors](./configure.md#connectors)」セクションを参照してください。
 
@@ -81,6 +81,6 @@ ms.locfileid: "59795799"
 
 ![画像のレビュー](images/image-workflow-review.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からモデレーション ワークフローを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-workflow.md)を参照して、プログラムでワークフローを作成する方法について学習してください。

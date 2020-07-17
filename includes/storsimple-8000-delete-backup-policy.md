@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b7a86963c657524fa91c4eb824ced1a495391f3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66172173"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181369"
 ---
 #### <a name="to-delete-a-storsimple-backup-policy"></a>StorSimple のバックアップ ポリシーを削除するには
 
-1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
+1. StorSimple デバイスに移動して、 **[バックアップ ポリシー]** をクリックします。
 
 2. バックアップ ポリシーの表形式の一覧で、削除するポリシーを選択します。 右クリックしてコンテキスト メニューの **[削除]** を選択します。
 

@@ -1,18 +1,14 @@
 ---
-title: Azure Container Instances から Azure Container Registry の認証を受ける
+title: Container Instances からのアクセス
 description: Azure Active Directory サービス プリンシパルを使用して、Azure Container Instances からプライベート コンテナー レジストリ内のイメージへのアクセスを許可する方法を説明します。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: danlep
-ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390663"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74456505"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances から Azure Container Registry の認証を受ける
 
@@ -51,12 +47,12 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事には、サービス プリンシパルと ACR の使用方法の詳細が含まれています。
 
 * [サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)
-* [Azure Kubernetes Service (AKS) から Azure Container Registry の認証を受ける](container-registry-auth-aks.md)
+* [Azure Kubernetes Service (AKS) から Azure Container Registry の認証を受ける](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

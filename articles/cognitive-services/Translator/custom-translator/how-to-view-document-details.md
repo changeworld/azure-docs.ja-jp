@@ -2,19 +2,19 @@
 title: ドキュメントの詳細 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: ドキュメント一覧ページには、ワークスペースの最初の 10 個のドキュメントが表示されます。 各ドキュメントについて、名前、ペアリング、種類、言語、アップロードのタイム スタンプ、およびドキュメントをアップロードしたユーザーのメール アドレスが表示されます。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d380c8bcdcb4954901df0b460269493c5be0a6de
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cf0d96414c40784210723e315da5d885d61198c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777390"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68595583"
 ---
 # <a name="view-document-details"></a>ドキュメントの詳細の表示
 
@@ -40,6 +40,6 @@ ms.locfileid: "57777390"
 
     ![削除の確認](media/how-to/how-to-delete-document-confirm.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングする方法](how-to-train-model.md)について説明します。

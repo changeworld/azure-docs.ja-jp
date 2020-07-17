@@ -1,72 +1,110 @@
 ---
-title: Azure Data Factory Mapping Data Flow のピボット変換
-description: Azure Data Factory Mapping Data Flow のピボット変換を使用した行から列へのデータのピボット
+title: マッピング データ フローでのピボット変換
+description: Azure Data Factory マッピング データ フローのピボット変換を使用した行から列へのデータのピボット
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794365"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686417"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory のピボット変換
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+# <a name="pivot-transformation-in-mapping-data-flow"></a>マッピング データ フローでのピボット変換
 
-ADF Data Flow のピボットを集計として使用します。この場合、1 つまたは複数のグループ化された列が、個々の列に変換された個別の行の値を持ちます。 基本的には、行の値を新しい列にピボット (データをメタデータに変換) することができます。
 
-![ピボットのオプション](media/data-flow/pivot1.png "ピボット 1")
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="group-by"></a>グループ化
+ピボット変換を使用して、1 つの列の一意の行値から複数の列を作成します。 ピボットは、グループ化列を選択し、[集計関数](data-flow-expression-functions.md#aggregate-functions)を使用してピボット列を生成する集計変換です。
 
-![ピボットのオプション](media/data-flow/pivot2.png "ピボット 2")
+## <a name="configuration"></a>構成
 
-まず、ピボット集計用にグループ化する列を設定します。 ここでは、列の一覧の横にある + 記号を使って、複数の列を設定できます。
+ピボット変換には、グループ化列、ピボット キー、およびピボットされた列の生成方法という 3 つの異なる入力が必要です
 
-## <a name="pivot-key"></a>ピボット キー
+### <a name="group-by"></a>グループ化
 
-![ピボットのオプション](media/data-flow/pivot3.png "ピボット 3")
+![オプションでグループ化する](media/data-flow/pivot2.png "[グループ化オプション")
 
-ピボット キーは、ADF によって行から列にピボットされる列です。 既定では、データセット内のこのフィールドの一意の値が列にピボットされます。 ただし、必要に応じて、データセットから列の値にピボットする値を入力できます。 この列によって、作成される新しい列が決まります。
+ピボットされた列を集計する列を選択します。 出力データは、同じグループ化の値を持つすべての行を 1 つの行にグループ化します。 ピボットされた列で行われる集計は、各グループに対して行われます。
 
-## <a name="pivoted-columns"></a>ピボットされた列
+このセクションは省略可能です。 グループ化列が選択されていない場合は、データ ストリーム全体が集計され、1 つの行だけが出力されます。
 
-![ピボットのオプション](media/data-flow/pivot4.png "ピボット 4")
+### <a name="pivot-key"></a>ピボット キー
 
-最後に、ピボットされた値に対して使用する集計と、変換による新しい出力に列をどのように表示するかを選択します。
+![ピボット キー](media/data-flow/pivot3.png "ピボット キー")
 
-(省略可能) 行の値から作成される新しい列の先頭、中間、および末尾に文字列を追加する名前付けパターンを設定できます。
+ピボット キーは、行の値が新しい列にピボットされる列です。 既定では、ピボット変換によって、一意の行値ごとに新しい列が作成されます。
 
-たとえば、"売上" を "地域" によってピボット処理すると、各売上の値が新しい列の値になります (例:"25"、"50"、"1000" など)。ただし、"売上" というプレフィックス値を設定すれば、各列の値の先頭に "売上" が付加されます。
+**[Value]\(値\)** というラベルが付いたセクションには、ピボットする特定の行値を入力できます。 このセクションに入力された行値だけがピボットされます。 **[Null value]\(Null 値\)** を有効にすると、列の null 値に対するピボットされた列が作成されます。
 
-![ピボットのオプション](media/data-flow/pivot5.png "ピボット 5")
+### <a name="pivoted-columns"></a>ピボットされた列
 
-[Column Arrangement]\(列の配置\) を [Normal]\(標準\) に設定すると、すべてのピボットされた列がグループ化され、それらの値が集計されます。 [Column Arrangement]\(列の配置\) を [Lateral]\(水平\) に設定すると、列と値が入れ替わります。
+![ピボットされた列](media/data-flow/pivot4.png "ピボットされた列")
 
-### <a name="aggregation"></a>集計
+列になる一意のピボット キー値ごとに、各グループの集計された行値を生成します。 ピボット キーごとに複数の列を作成できます。 各ピボット列には、少なくとも 1 つの[集計関数](data-flow-expression-functions.md#aggregate-functions)が含まれている必要があります。
 
-ピボット値に使用する集計を設定するには、[Pivoted Columns]\(ピボットされた列\) ウィンドウの下部にあるフィールドをクリックします。 ADF Data Flow の式ビルダーが開き、そこで集計式を作成し、新しい集計値にわかりやすいエイリアス名を付けることができます。
+**[Column name pattern]\(列名のパターン\):** 各ピボット列の列名の書式を設定する方法を選択します。 出力された列名は、ピボット キー値、列プレフィックス、および省略可能なプレフィックス、サフィックス、中間文字を組み合わせたものになります。 
 
-式ビルダーで、ADF Data Flow 記述言語を使ってピボット列の変換を記述します (https://aka.ms/dataflowexpressions)。
+**[Column arrangement]\(列の配置\):** ピボット キーごとに複数のピボット列を生成する場合は、列の順序付け方法を選択します。 
+
+**[Column prefix]\(列プレフィックス\):** ピボット キーごとに複数のピボット列を生成する場合は、各列の列プレフィックスを入力します。 ピボットされた列が 1 つしかない場合、この設定は省略可能です。
+
+## <a name="help-graphic"></a>ヘルプ グラフィック
+
+次のヘルプ グラフィックは、さまざまなピボット コンポーネントがどのように相互に作用しているかを示しています。
+
+![ピボットのヘルプ グラフィック](media/data-flow/pivot5.png "ピボットのヘルプ グラフィック")
 
 ## <a name="pivot-metadata"></a>ピボットのメタデータ
 
-ピボット変換では、受信データに基づいて動的に変化する新しい列名が生成されます。 ピボット キーによって、新しい列名のそれぞれに値が生成されます。 個々の値を指定せず、ピボット キーの一意の値ごとに動的な列名を作成する場合は、UI の [Inspect]\(検査\) にメタデータが表示されず、シンク変換に列は反映されません。 ピボット キーに値を設定すると、ADF が新しい列名を特定できるようになり、その列名を検査とシンクのマッピングで使用できます。
+ピボット キー構成に値が指定されていない場合、ピボットされた列は実行時に動的に生成されます。 ピボットされた列の数は、一意のピボット キー値の数にピボット列の数を乗算した値と等しくなります。 この数は変わる可能性があるため、UX は **[Inspect]\(検査\)** タブに列のメタデータを表示せず、列の反映は行われません。 これらの列を変換するには、マッピング データ フローの[列パターン](concepts-data-flow-column-pattern.md)機能を使用します。 
 
-### <a name="landing-new-columns-in-sink"></a>シンクでの新しい列の取得
+特定のピボット キー値が設定されている場合、ピボットされた列はメタデータに表示されます。 列名は、検査とシンク マッピングで利用可能になります。
 
-ピボットで動的な列名が使用される場合でも、新しい列名と値を宛先ストアにシンクできます。 シンク設定で、[Allow Schema Drift]\(スキーマの誤差を許可\) をオンに設定します。 列のメタデータ内の新しい動的な名前は表示されませんが、スキーマの誤差のオプションによってデータを取得することができます。
+### <a name="generate-metadata-from-drifted-columns"></a>誤差のある列からメタデータを生成する
 
-### <a name="view-metadata-in-design-mode"></a>デザイン モードでのメタデータの表示
+ピボットでは、行の値に基づいて動的に新しい列名が生成されます。 これらの新しい列は、後でデータ フローで参照できるメタデータに追加できます。 これを行うには、データ プレビューで [[Map Drifted]\(誤差のマップ\)](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) クイック アクションを使用します。 
 
-[Inspect]\(検査\) で新しい列名をメタデータとして表示し、その列をシンク変換へ明示的に反映させる場合は、[Pivot Key]\(ピボット キー\) タブで明示的な値を設定します。
+![列のピボット](media/data-flow/newpivot1.png "誤差のピボット列のマップ")
 
-### <a name="how-to-rejoin-original-fields"></a>元のフィールドを再結合する方法
-ピボット変換では、集計、グループ化、およびピボット操作で使用された列のみが出力されます。 フロー内に前の手順の別の列を含めたい場合は、前の手順からの新しい分岐を使用し、自己結合パターンを使ってフローを元のメタデータと接続します。
+### <a name="sinking-pivoted-columns"></a>ピボットされた列のシンク
 
-## <a name="next-steps"></a>次の手順
+ピボットされた列は動的ですが、宛先のデータ ストアに書き込むことができます。 シンク設定で、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を有効にします。 これにより、メタデータに含まれていない列を書き込むことができます。 列のメタデータですが、[schema drift]\(スキーマの誤差\) オプションを使用すると、データを配置できます。
+
+### <a name="rejoin-original-fields"></a>元のフィールドを再結合する
+
+ピボット変換では、グループ化列とピボットされた列だけが射影されます。 出力データに他の入力列を含めたい場合は、[自己結合](data-flow-join.md#self-join)パターンを使用します。
+
+## <a name="data-flow-script"></a>データ フローのスクリプト
+
+### <a name="syntax"></a>構文
+
+```
+<incomingStreamName>
+    pivot(groupBy(Tm),
+        pivotBy(<pivotKeyColumn, [<specifiedColumnName1>,...,<specifiedColumnNameN>]),
+        <pivotColumnPrefix> = <pivotedColumnValue>,
+        columnNaming: '< prefix >< $N | $V ><middle >< $N | $V >< suffix >',
+        lateral: { 'true' | 'false'}
+    ) ~> <pivotTransformationName
+```
+### <a name="example"></a>例
+
+構成セクションに表示される画面には、次のデータ フロー スクリプトがあります。
+
+```
+BasketballPlayerStats pivot(groupBy(Tm),
+    pivotBy(Pos),
+    {} = count(),
+    columnNaming: '$V$N count',
+    lateral: true) ~> PivotExample
+
+```
+
+## <a name="next-steps"></a>次のステップ
 
 列の値を行の値に変換する[ピボット解除変換](data-flow-unpivot.md)を試します。 

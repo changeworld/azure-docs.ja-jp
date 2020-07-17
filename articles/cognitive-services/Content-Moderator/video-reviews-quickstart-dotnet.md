@@ -1,21 +1,21 @@
 ---
 title: .NET を使用してビデオ レビューを作成する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この記事では、C# で Content Moderator SDK を使用して、ビデオ レビューの作成をすばやく開始するのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
-ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527372"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "72931670"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -61,7 +61,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. お使いのソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
 1. プロジェクトの名前を **VideoReviews** にします。
 
@@ -86,30 +86,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
 ### <a name="add-private-properties"></a>プライベート プロパティを追加する
 
-名前空間 VideoReviews、クラス Program に次のプライベート プロパティを追加します。
+名前空間 **VideoReviews**、クラス **Program** に、次のプライベート プロパティを追加します。 エンドポイント URL とサブスクリプション キーの値を使用して、`AzureEndpoint` および `CMSubscriptionKey` フィールドを更新します。 これらは、Azure portal 内のリソースの **[クイック スタート]** タブで確認できます。
 
-示された場所について、これらのプロパティの例の値を置き換えます。
 
 ```csharp
 namespace VideoReviews
 {
     class Program
     {
-        // NOTE: Replace this example location with the location for your Content Moderator account.
+        // NOTE: Enter a valid endpoint URL
         /// <summary>
-        /// The region/location for your Content Moderator account, 
-        /// for example, westus.
+        /// The endpoint URL of your subscription
         /// </summary>
-        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
-        // NOTE: Replace this example key with a valid subscription key.
+        // NOTE: Enter a valid subscription key.
         /// <summary>
         /// Your Content Moderator subscription key.
         /// </summary>
@@ -126,12 +123,6 @@ namespace VideoReviews
         private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
         /// <summary>
-        /// The base URL fragment for Content Moderator calls.
-        /// </summary>
-        private static readonly string AzureBaseURL =
-            $"{AzureRegion}.api.cognitive.microsoft.com";
-
-        /// <summary>
         /// The minimum amount of time, in milliseconds, to wait between calls
         /// to the Content Moderator APIs.
         /// </summary>
@@ -140,7 +131,7 @@ namespace VideoReviews
 
 ### <a name="create-content-moderator-client-object"></a>Content Moderator クライアントのオブジェクトを作成する
 
-名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
+名前空間 **VideoReviews**、クラス **Program** に、次のメソッド定義を追加します。
 
 ```csharp
 /// <summary>
@@ -154,14 +145,14 @@ public static ContentModeratorClient NewClient()
 {
     return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        Endpoint = AzureBaseURL
+        Endpoint = AzureEndpoint
     };
 }
 ```
 
 ## <a name="create-a-video-review"></a>ビデオ レビューを作成する
 
-**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページをご覧ください。
+**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページを参照してください。
 
 **CreateVideoReviews** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
@@ -174,7 +165,7 @@ public static ContentModeratorClient NewClient()
 - **Status**。 値を "Unpublished" に設定します。 設定しない場合は既定で "Pending" になります。これはビデオ レビューが公開済みで、人間によるレビュー待ちであることを意味します。 ビデオ レビューが公開されると、ビデオ フレーム、トランスクリプト、トランスクリプトのモデレート結果を追加できなくなります。
 
 > [!NOTE]
-> **CreateVideoReviews** は IList<string> を返します。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。 
+> **CreateVideoReviews** により IList\<string> が返されます。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。 
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
@@ -218,7 +209,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 
 ## <a name="add-video-frames-to-the-video-review"></a>ビデオ レビューにビデオ フレームを追加する
 
-**ContentModeratorClient.Reviews.AddVideoFrameUrl** (ビデオ フレームがオンラインにホストされている場合) または **ContentModeratorClient.Reviews.AddVideoFrameStream** (ビデオ フレームがローカルにホストされている場合) を使用して、ビデオ レビューにビデオ フレームを追加します。 このクイック スタートでは、ビデオ フレームがオンラインにホストされていると想定し、**AddVideoFrameUrl** を使用します。 詳しくは、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd)をご覧ください。
+**ContentModeratorClient.Reviews.AddVideoFrameUrl** (ビデオ フレームがオンラインにホストされている場合) または **ContentModeratorClient.Reviews.AddVideoFrameStream** (ビデオ フレームがローカルにホストされている場合) を使用して、ビデオ レビューにビデオ フレームを追加します。 このクイック スタートでは、ビデオ フレームがオンラインにホストされていると想定し、**AddVideoFrameUrl** を使用します。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd)に関するページを参照してください。
 
 **AddVideoFrameUrl** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。
@@ -413,7 +404,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 アプリケーションを実行すると、次の行に出力が表示されます。
 
 ```json
@@ -550,11 +541,11 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>ビデオ レビューを確認する
 
-これで、Content Moderator のレビュー ツール アカウントの **[Review]\(レビュー\)**>**[Video]\(ビデオ\)** 画面にビデオ レビューが表示されます。
+これで、Content Moderator のレビュー ツール アカウントの **[Review]\(レビュー\)** > **[Video]\(ビデオ\)** 画面にビデオ レビューが表示されます。
 
 ![人間のモデレーター用のビデオ レビュー](images/ams-video-review.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
 

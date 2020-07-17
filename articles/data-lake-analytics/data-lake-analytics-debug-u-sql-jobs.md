@@ -1,5 +1,5 @@
 ---
-title: 失敗した Azure Data Lake U-SQL ジョブについてユーザー定義の C# コードをデバッグする
+title: Azure Data Lake U-SQL ジョブの C# コードのデバッグ
 description: この記事では、Azure Data Lake Tools for Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526454"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71315808"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
@@ -28,14 +28,14 @@ U-SQL は C# を使用した機能拡張モデルを提供しています。 U-S
 >
 
 > [!IMPORTANT]
-> Visual Studio では、この機能を使用するための次の 2 つの更新プログラムが必要です。[Microsoft Visual C++ 2015 再頒布可能パッケージの更新プログラム 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows 用ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)。
+> Visual Studio でこの機能を使用するには、[Microsoft Visual C++ 2015 再頒布可能パッケージ Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)の 2 つの更新プログラムが必要です。
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>失敗した頂点をローカル コンピューターにダウンロードする
 
 Azure Data Lake Tools for Visual Studio で失敗したジョブを開くと、詳細なエラー メッセージが記載された警告バーがエラー タブに表示されます。
 
-1. **[ダウンロード]** をクリックして必要なリソースと入力ストリームをすべてダウンロードします。 ダウンロードが完了しない場合は、**[再試行]** をクリックします。
+1. **[ダウンロード]** をクリックして必要なリソースと入力ストリームをすべてダウンロードします。 ダウンロードが完了しない場合は、 **[再試行]** をクリックします。
 
 2. ダウンロードが完了したら **[開く]** をクリックし、ローカルのデバッグ環境を生成します。 新しいデバッグ ソリューションが開きます。Visual Studio で既存のソリューションを開いている場合は、デバッグする前に必ず保存してから閉じてください。
 
@@ -105,7 +105,7 @@ C# ソース コードがキャプチャされるケースは 2 つあります�
 
 3. U-SQL ジョブを再送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 - [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)

@@ -1,5 +1,6 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して Oracle の Azure Database for PostgreSQL へのオンライン移行を実行する | Microsoft Docs
+title: チュートリアル:オンラインで Oracle を Azure Database for PostgreSQL に移行する
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、オンプレミスまたは仮想マシンの Oracle から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: b73249a9f72e4616f6d36e16f110913278f04590
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 01/24/2020
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78255574"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
@@ -24,6 +25,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
+>
 > * ora2pg ツールを使用して移行作業を評価する。
 > * ora2pg ツールを使用して、サンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
@@ -47,24 +49,25 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 * [Oracle 11g Release 2 (Standard Edition、Standard Edition One、または Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html) をダウンロードしてインストールします。
 * サンプルの **HR** データベースを[ここ](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)からダウンロードします。
-* ora2pg をダウンロードして [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) または [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf) のいずれかにインストールします。
+* [ora2pg をダウンロードし、Windows または Linux のいずれかにインストール](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)します。
 * [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * この[ドキュメント](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)の指示に従ってインスタンスに接続しデータベースを作成します。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
   > [!NOTE]
-  > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用した場合、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+  > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+  >
   > * ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
   > * ストレージ エンドポイント
   > * サービス バス エンドポイント
   >
   > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-* VNet のネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソースの Oracle Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1521 が使用されます。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* Azure Database for PostgreSQL のサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
+* Azure Database for PostgreSQL のサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * ソースの Oracle データベースへのアクセスを有効にします。
 
   > [!NOTE]
@@ -165,34 +168,13 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
     `'YES'` 応答を受け取るはずです。
 
-> [!IMPORTANT]
-> このシナリオのパブリック プレビュー リリースでは、Azure Database Migration Service は Oracle バージョン 10g または 11g をサポートしています。 Oracle バージョン 12c 以降を実行しているお客様は、ODBC ドライバーの Oracle への接続に許可される最低限の認証プロトコルが 8 であることに注意してください。 バージョン 12c 以降の Oracle ソースの場合、次のように認証プロトコルを構成する必要があります。
->
-> * SQLNET.ORA を更新します。
->
->    ```
->    SQLNET.ALLOWED_LOGON_VERSION_CLIENT = 8
->    SQLNET.ALLOWED_LOGON_VERSION_SERVER = 8
->    ```
->
-> * 新しい設定を反映するために、コンピューターを再起動します。
-> * 既存ユーザーのパスワードを変更します。
->
->    ```
->    ALTER USER system IDENTIFIED BY {pswd}
->    ```
->
->   詳細については、[この](http://www.dba-oracle.com/t_allowed_login_version_server.htm)ページを参照してください。
->
-> 最後に、認証プロトコルを変更するとクライアント認証に影響する可能性があることに注意してください。
-
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Oracle から Azure Database for PostgreSQL への移行作業の評価
 
 Oracle から Azure Database for PostgreSQL への移行に必要な作業の評価には、ora2pg を使用することをお勧めします。 `ora2pg -t SHOW_REPORT` ディレクティブを使用して、すべての Oracle オブジェクト、推定移行コスト (開発者の日数単位)、変換の一部として特別な注意が必要になる可能性がある特定のデータベース オブジェクトがリストされたレポートを作成します。
 
 ほとんどのお客様は、評価レポートのレビューと自動および手動の変換作業の検討にかなりの時間を費やします。
 
-ora2pg を構成して実行し、評価レポートを作成する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) の「**Premigration: Assessment**」(移行前: 評価) セクションを参照してください。 サンプルの ora2pg 評価レポートは、[ここ](http://ora2pg.darold.net/report.html)で参照できます。
+ora2pg を構成して実行し、評価レポートを作成する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) **の「Premigration: Assessment**」(移行前: 評価) セクションを参照してください。 サンプルの ora2pg 評価レポートは、[ここ](https://ora2pg.darold.net/report.html)で参照できます。
 
 ## <a name="export-the-oracle-schema"></a>Oracle スキーマのエクスポート
 
@@ -204,85 +186,78 @@ ora2pg を実行して、.sql ファイル内の各データベース オブジ�
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-例: 
+次に例を示します。
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-スキーマ変換用に ora2pg を構成して実行する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) の「**Migration: Schema and data**」(移行: スキーマとデータ) セクションを参照してください。
+スキーマ変換用に ora2pg を構成して実行する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) の **「Migration: Schema and data**」(移行: スキーマとデータ) セクションを参照してください。
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのスキーマの設定
 
-既定では、Oracle では schema.table.column はすべて大文字で保持されますが、PostgreSQL では schema.table.column は小文字で保持されます。 Azure Database Migration Service で Oracle から Azure Database for PostgreSQL へのデータの移動を開始するには、schema.table.column を Oracle ソースと同じ文字形式にする必要があります。
+Azure Database Migration Service で移行パイプラインを開始する前に、ora2pg を使用して、Oracle のテーブル スキーマ、ストアド プロシージャ、パッケージなどのデータベース オブジェクトを変換して、Postgres との互換性を確保することができます。 ora2pg の操作方法については、以下のリンクを参照してください。
 
-たとえば、Oracle ソースのスキーマが “HR”.”EMPLOYEES”.”EMPLOYEE_ID” の場合、PostgreSQL スキーマでも同じ形式を使用する必要があります。
+* [ora2pg を Windows にインストールする](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
+* [Oracle から Azure PostgreSQL への移行に関するクックブック](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
-schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL で確実に同じとなるようにするため、次の手順を行うことをお勧めします。
+Azure Database Migration Service で PostgreSQL のテーブル スキーマを作成することもできます。 このサービスでは、接続されている Oracle ソースのテーブル スキーマにアクセスし、互換性のあるテーブル スキーマを Azure Database for PostgreSQL に作成します。 Azure Database Migration Service によるスキーマの作成とデータの移動が完了したら、Azure Database for PostgreSQL のスキーマ形式を検証して確認してください。
+
+> [!IMPORTANT]
+> Azure Database Migration Service によって作成されるのはテーブル スキーマだけです。ストアド プロシージャ、パッケージ、インデックスなど、他のデータベース オブジェクトは作成されません。
+
+また、全体の読み込みを実行するため、ターゲット データベース内の外部キーはドロップしてください。 外部キーのドロップに使用できるスクリプトについては、[ここ](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)の記事の「**サンプル スキーマを移行する**」セクションを参照してください。 Azure Database Migration Service を使い、全体の読み込みと同期を実行します。
+
+### <a name="when-the-postgresql-table-schema-already-exists"></a>PostgreSQL のテーブル スキーマが既に存在する場合
+
+Azure Database Migration Service を使用したデータ移動を開始する前に、ora2pg などのツールを使用して PostgreSQL スキーマを作成する場合、Azure Database Migration Service 内のターゲット テーブルにソース テーブルをマップします。
+
+1. Oracle から Azure Database for PostgreSQL への新しい移行プロジェクトを作成するとき、[スキーマの選択] ステップでターゲット データベースとターゲット スキーマを選択するように求められます。 ターゲット データベースとターゲット スキーマを入力します。
+
+   ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+
+2. **[移行の設定]** 画面に Oracle ソース内のテーブルが一覧表示されます。 Azure Database Migration Service は、テーブル名に基づいてソース テーブルとターゲット テーブルの照合を試みます。 一致するものの大文字と小文字が異なるターゲット テーブルが複数存在した場合は、マップ先となるターゲット テーブルを選択することができます。
+
+    ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 別のアプローチを使用して大文字のスキーマを派生させることができます。 Microsoft は、この手順の改善と自動化に取り組んでいます。
+> ソース テーブルの名前を別の名前のテーブルにマップする必要がある場合は、メール [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) でご連絡ください。そのプロセスを自動化するスクリプトを Microsoft が提供いたします。
 
-1. ora2pg を使用してスキーマを小文字でエクスポートします。 テーブル作成 sql スクリプトで、手動によりスキーマを大文字 "SCHEMA" で作成します。
-2. トリガー、シーケンス、プロシージャ、型、関数などの残りの Oracle オブジェクトを、Azure Database for PostgreSQL にインポートします。
-3. TABLE と COLUMN を大文字にするには、次のスクリプトを実行します。
+### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>PostgreSQL のテーブル スキーマが存在しない場合
 
-   ```
-   -- INPUT: schema name
-   set schema.var = “HR”;
+ターゲット PostgreSQL データベースにテーブル スキーマ情報が存在しない場合、Azure Database Migration Service はソース スキーマを変換してターゲット データベースに再作成します。 Azure Database Migration Service によって作成されるのはテーブル スキーマだけであることに注意してください。ストアド プロシージャ、パッケージ、インデックスなど、他のデータベース オブジェクトは作成されません。
+Azure Database Migration Service でスキーマを自動的に作成するには、既存のテーブルを備えていないスキーマがターゲット環境に含まれている必要があります。 Azure Database Migration Service によってなんらかのテーブルが検出された場合、ora2pg などの外部ツールによってスキーマが作成されたものと見なされます。
 
-   -- Generate statements to rename tables and columns
-   SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-   UNION ALL 
-   SELECT 2, 'alter table "'||c.relname||'" rename '||a.attname||' to "'||upper(a.attname)||'";'
-   FROM pg_class c
-   JOIN pg_attribute a ON a.attrelid = c.oid
-   JOIN pg_type t ON a.atttypid = t.oid
-   LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-    AND r.conname = a.attname
-   WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-   UNION ALL
-   SELECT 3, 'alter table '||c.relname||' rename to "'||upper(c.relname)||'";'
-   FROM pg_catalog.pg_class c
-    LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-   WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-   ORDER BY 1;
-   ```
+> [!IMPORTANT]
+> Azure Database Migration Service では、Azure Database Migration Service またはツール (ora2pg など) のどちらか一方のみを使用し、同じ方法ですべてのテーブルが作成されている必要があります。
 
-* 全体の読み込みを実行するため、外部キーをターゲット データベースにドロップします。 外部キーのドロップに使用できるスクリプトについては、[ここ](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)の記事の「**サンプル スキーマを移行する**」セクションを参照してください。
-* Azure Database Migration Service を使い、全体の読み込みと同期を実行します。
-* ターゲットの Azure Database for PostgreSQL インスタンス内のデータがソースに取り込まれたら、Azure Database Migration Service でデータベース カットオーバーを実行します。
-* SCHEMA、TABLE、COLUMN を小文字にするには (アプリケーションのクエリのために Azure Database for PostgreSQL のスキーマをこのようにする必要がある場合)、次のスクリプトを実行します。
+作業を開始するには:
 
-  ```
-  -- INPUT: schema name
-  set schema.var = hr;
-  
-  -- Generate statements to rename tables and columns
-  SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-  UNION ALL
-  SELECT 2, 'alter table "'||c.relname||'" rename "'||a.attname||'" to '||lower(a.attname)||';'
-  FROM pg_class c
-  JOIN pg_attribute a ON a.attrelid = c.oid
-  JOIN pg_type t ON a.atttypid = t.oid
-  LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-     AND r.conname = a.attname
-  WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-  UNION ALL
-  SELECT 3, 'alter table "'||c.relname||'" rename to '||lower(c.relname)||';'
-  FROM pg_catalog.pg_class c
-     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-  WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-  ORDER BY 1;
-  ```
+1. 実際のアプリケーションの要件に基づいて、ターゲット データベースにスキーマを作成します。 既定では、PostgreSQL のテーブル スキーマと列の名前には小文字が使用されます。 一方、Oracle のテーブル スキーマと列には、既定で全大文字が使用されます。
+2. [スキーマの選択] ステップで、ターゲット データベースとターゲット スキーマを指定します。
+3. Azure Database for PostgreSQL で作成するスキーマに基づいて、Azure Database Migration Service では次の変換規則が使用されます。
+
+    Oracle ソースのスキーマ名が Azure Database for PostgreSQL のものと一致する場合、Azure Database Migration Service では、"*大文字と小文字の区別をターゲット側に合わせてテーブル スキーマを作成*" します。
+
+    次に例を示します。
+
+    | ソース Oracle スキーマ | ターゲット PostgreSQL Database.Schema | DMS によって作成される schema.table.column |
+    | ------------- | ------------- | ------------- |
+    | HR | targetHR.public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.Hr | *大文字と小文字が混在する名前はマップできません |
+
+    *大文字と小文字が混在するスキーマ名とテーブル名をターゲット PostgreSQL に作成する場合は、[dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) にお問い合わせください。 大文字と小文字が混在するテーブル スキーマをターゲット PostgreSQL データベースに設定するためのスクリプトを提供いたします。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、 **[リソース プロバイダー]** を選択します。
 
     ![リソース プロバイダーの表示](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
@@ -296,17 +271,17 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
     ![Azure Marketplace](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-oracle-azure-postgresql-online/dms-create2.png)
   
 3. **[移行サービスの作成]** 画面で、サービスの名前、サブスクリプション、新規または既存のリソース グループを指定します。
 
-4. 既存の VNet を選択するか、新しいものを作成します。
+4. 既存の仮想ネットワークを選択するか、新しく作成します。
 
-    この VNet によって、Azure Database Migration Service に、ソース Oracle とターゲット Azure Database for PostgreSQL インスタンスへのアクセスが提供されます。
+    この仮想ネットワークによって、Azure Database Migration Service に、ソース Oracle とターゲット Azure Database for PostgreSQL インスタンスへのアクセスが提供されます。
 
-    Azure portal で VNet を作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
+    Azure portal で仮想ネットワークを作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
 
 5. 価格レベルを選択します。
 
@@ -320,7 +295,7 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
     ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-oracle-azure-postgresql-online/dms-search.png)
 
@@ -329,15 +304,15 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類を選択する]** テキスト ボックスで **Oracle** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure Database for PostgreSQL** を選択します。
-5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、 **[ソース サーバーの種類を選択する]** テキスト ボックスで **Oracle** を選択した後、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure Database for PostgreSQL** を選択します。
+5. **[アクティビティの種類を選択します]** セクションで、 **[オンライン データの移行]** を選択します。
 
    ![Database Migration Service プロジェクトを作成する](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
 
    > [!NOTE]
-   > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
+   > または、 **[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
 
-6. **[保存]** を選択します。Azure Database Migration Service を使用して正常にオンライン移行を実行するための要件を確認した後、**[アクティビティの作成と実行]** を選択します。
+6. **[保存]** を選択します。Azure Database Migration Service を使用して正常にオンライン移行を実行するための要件を確認した後、 **[アクティビティの作成と実行]** を選択します。
 
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 
@@ -347,7 +322,7 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCI ドライバーをアップロードする
 
-1. **[保存]** を選択し、**[OCI ドライバーのインストール]** 画面でご自分の Oracle アカウントにサインインして、ドライバーの **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 Checksum:865082268) を[ここ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)からダウンロードします。
+1. **[保存]** を選択し、 **[OCI ドライバーのインストール]** 画面でご自分の Oracle アカウントにサインインして、ドライバーの **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 Checksum:865082268) を[ここ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)からダウンロードします。
 2. ドライバーを共有フォルダーにダウンロードします。
 
    このフォルダーが、最低限の読み取り専用アクセスで指定したユーザー名に共有されていることを確認します。 Azure Database Migration Service は指定したユーザー名を偽装してこの共有にアクセスして読み取り、OCI ドライバーを Azure にアップロードします。
@@ -358,17 +333,17 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[ターゲットの詳細]** 画面でターゲット Azure Database for PostgreSQL の接続の詳細を指定します。これは、**HR** スキーマがデプロイされた Azure Database for PostgreSQL の事前プロビジョニング済みのインスタンスです。
+1. **[保存]** を選択し、 **[ターゲットの詳細]** 画面でターゲット Azure Database for PostgreSQL の接続の詳細を指定します。これは、**HR** スキーマがデプロイされた Azure Database for PostgreSQL の事前プロビジョニング済みのインスタンスです。
 
     ![[ターゲットの詳細] 画面](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
-2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
+2. **[保存]** を選択し、 **[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service では、既定でターゲット データベースが選択されます。
 
     ![ターゲット データベースにマップする](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
-3. **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
+3. **[保存]** を選択し、 **[移行の概要]** 画面で、 **[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
     ![移行の概要](media/tutorial-oracle-azure-postgresql-online/dms-migration-summary.png)
 
@@ -396,19 +371,19 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 初回の全体の読み込みが完了すると、データベースは **[一括準備完了]** とマークされます。
 
-1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
+1. データベースの移行を完了する準備ができたら、 **[一括で開始]** を選択します。
 
-2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
+2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。 **[保留中の変更]** カウンターが **0** を示すまで待ってください。
 
    ![一括で開始](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
-3. **[確認]** を選択したら、**[適用]** を選択します。
+3. **[確認]** を選択したら、 **[適用]** を選択します。
 4. データベースの移行状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure Database for PostgreSQL インスタンスに接続します。
 
  > [!NOTE]
  > 既定では PostgreSQL では schema.table.column が小文字で保持されるため、この記事の前出の「**Azure Database for PostgreSQL でのスキーマの設定**」セクションにあるスクリプトを使用して大文字を小文字に戻すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Database for PostgreSQL へのオンライン移行の実行時の既知の問題と制限事項については、[Azure Database for PostgreSQL のオンライン移行に伴う既知の問題と回避策](known-issues-azure-postgresql-online.md)に関する記事を参照してください。
 * Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。

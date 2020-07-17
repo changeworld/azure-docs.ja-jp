@@ -1,26 +1,25 @@
 ---
-title: Azure で Linux VM のカスタム スクリプトを実行する | Microsoft Docs
+title: Azure で Linux VM のカスタム スクリプトを実行する
 description: カスタム スクリプト拡張機能 v1 を使用して Linux VM 構成タスクを自動化します
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882431"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594714"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
 
@@ -119,15 +118,15 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | string |
 | type | CustomScriptForLinux | string |
-| typeHandlerVersion | 1.5 | int |
-| fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| typeHandlerVersion | 1.5 | INT |
+| fileUris (例) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (例) | python MyPythonScript.py \<my-param1\> | string |
-| enableInternalDNSCheck | true | ブール値 |
+| enableInternalDNSCheck | true | boolean |
 | storageAccountName (例) | examplestorageacct | string |
 | storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
@@ -275,7 +274,7 @@ az vm extension set
 
 次のような、拡張機能の実行を特定します。
 
-```text
+```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
 2018/04/26 15:29:44.959605 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Download, message=Download succeeded, duration=59
@@ -306,7 +305,7 @@ az vm extension set
 
 次のような各実行を特定します。
 
-```text
+```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] setting file path is/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2/config/0.settings
@@ -348,12 +347,12 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 出力は次のテキストのようになります。
 
-```azurecli
+```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
 --------------------  -------------------  ------------------------  ---------  -------------------------
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コード、現在の問題、およびバージョンについては、[カスタム スクリプト拡張機能 リポジトリ](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)をご覧ください。

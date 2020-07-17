@@ -1,19 +1,15 @@
 ---
-title: クイック スタート - Azure Container Instances への Docker コンテナーのデプロイ - ポータル
+title: クイックスタート - コンテナー インスタンスに Docker コンテナーをデプロイする - ポータル
 description: このクイック スタートでは、Azure portal を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 008d6d2a9a4a20e9fd083e9e2f009396a7f14df2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995916"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79087963"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする
 
@@ -27,29 +23,30 @@ ms.locfileid: "59995916"
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][azure-free-account]を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-free-account] を作成してください。
 
 ## <a name="create-a-container-instance"></a>コンテナー インスタンスの作成
 
-**[リソースの作成]** > **[コンテナー]** > **[Container Instances]** を選択します。
+**[リソースの作成]**  >  **[コンテナー]**  >  **[Container Instances]** を選択します。
 
 ![Azure ポータルで新しいコンテナー インスタンスの作成を開始][aci-portal-01]
 
-**[基本]** ページで、**[リソース グループ]**、**[コンテナー名]**、および **[コンテナー イメージ]** の各ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
+**[基本]** ページで、 **[リソース グループ]** 、 **[コンテナー名]** 、および **[コンテナー イメージ]** の各ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
 
 * リソース グループ: **新規作成** > `myresourcegroup`
-* [コンテナー 名]: `mycontainer`
-* [Container image] (コンテナー イメージ): `mcr.microsoft.com/azuredocs/aci-helloworld`
+* コンテナー 名: `mycontainer`
+* イメージのソース: **クイックスタートのイメージ**
+* コンテナー イメージ: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 
-このクイック スタートでは、**[イメージの種類]** の設定に既定値の **[パブリック]** を使用して、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 この Linux イメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージ化されています。
+このクイックスタートでは、既定の設定を使用して、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 このサンプル Linux イメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージ化されています。 また、Azure Container Registry、Docker Hub、または他のレジストリに格納されている独自のコンテナー イメージを使用することもできます。
 
 **[Networking]\(ネットワーク\)** ページで、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
-![Azure ポータルでの新しいコンテナー インスタンスの構成][aci-portal-04]
+![Azure portal で新しいコンテナー インスタンスのネットワーク設定を構成する][aci-portal-04]
 
-他の設定は既定値のままにして、**[確認と作成]** を選択します。
+他の設定は既定値のままにして、 **[確認と作成]** を選択します。
 
 検証が完了すると、コンテナーの設定の概要が表示されます。 **[作成]** を選択して、コンテナーのデプロイ要求を送信します。
 
@@ -57,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 デプロイが開始されると、デプロイが進行中であることを示す通知が表示されます。 コンテナー グループがデプロイされると、別の通知が表示されます。
 
-**[リソース グループ]** > **[myresourcegroup]** > **[mycontainer]** の順に移動して、コンテナー グループの概要を開きます。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
+**[リソース グループ]**  >  **[myresourcegroup]**  >  **[mycontainer]** の順に移動して、コンテナー グループの概要を開きます。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
 
 ![Azure ポータルでのコンテナー グループ概要][aci-portal-06]
 
@@ -71,21 +68,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 コンテナー インスタンスのログを表示すると、コンテナーやコンテナーで実行されるアプリケーションの問題をトラブルシューティングする際に役立ちます。
 
-コンテナーのログを表示するには、**[設定]** で **[コンテナー]** を選択し、**[ログ]** を選択します。 ブラウザーでアプリケーションを表示したときに生成された HTTP GET 要求が表示されます。
+コンテナーのログを表示するには、 **[設定]** で **[コンテナー]** を選択し、 **[ログ]** を選択します。 ブラウザーでアプリケーションを表示したときに生成された HTTP GET 要求が表示されます。
 
 ![Azure portal のコンテナー ログ][aci-portal-11]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-コンテナーを使い終えたら、*mycontainer* コンテナー インスタンスの **[概要]** を選択し、**[削除]** を選択します。
+コンテナーを使い終えたら、*mycontainer* コンテナー インスタンスの **[概要]** を選択し、 **[削除]** を選択します。
 
 ![Azure Portal でのコンテナー インスタンスの削除][aci-portal-09]
 
-確認のダイアログが表示されたら、**[はい]** を選択します。
+確認のダイアログが表示されたら、 **[はい]** を選択します。
 
 ![Azure Portal でのコンテナー インスタンスの削除の確認][aci-portal-10]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、パブリック Microsoft イメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 

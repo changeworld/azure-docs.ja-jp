@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server での一括挿入を最適化する
+title: 一括挿入を最適化する - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server での一括挿入操作を最適化する方法について説明します。
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067046"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74770137"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server で一括挿入を最適化し、一時データを使用する 
 この記事では、Azure Database for PostgreSQL サーバーでの一括挿入操作を最適化し、一時データを使用する方法について説明します。
@@ -34,7 +34,7 @@ ms.locfileid: "65067046"
 
 一部のお客様のワークロードでは、ログ記録されないテーブルの使用時に約 15% から 20% にパフォーマンスが向上しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 一時データと大規模な一括挿入の使用について、ワークロードを見直します。 次の PostgreSQL のドキュメントを参照してください。
  
 - [Create Table SQL コマンド](https://www.postgresql.org/docs/current/static/sql-createtable.html)

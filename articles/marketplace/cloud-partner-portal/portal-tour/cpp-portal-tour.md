@@ -1,32 +1,25 @@
 ---
-title: Azure Cloud パートナー ポータル ツアー | Microsoft Docs
-description: 。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: Azure Cloud パートナー ポータル ツアー | Azure Marketplace
+description: Azure Marketplace の Cloud パートナー ポータルのユーザー エクスペリエンスに関する概要です。
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 01b93a667fef8c56d6b7c78e8c6346357a2ff36c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: dsindona
+ms.openlocfilehash: 53378be9b72792b320699341e4b6b16b20217687
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266538"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278316"
 ---
 # <a name="cloud-partner-portal-tour"></a>Cloud パートナー ポータル ツアー
 
 この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com)の概要として、そのコンテンツ、ナビゲーション メカニズム、および機能について説明します。   登録済みのパートナーはこのポータルを使用して、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [AppSource Marketplace](https://azuremarketplace.microsoft.com) の新しいプランを作成したり既存のプランを管理したりできます。  Cloud パートナー ポータルには、登録済みのパートナーのみがアクセス可能です。詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」をご覧ください。
 
 [![[プロファイル] ページを表示した Cloud パートナー ポータル](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
-<br/>   ("*拡大するには、画像をクリックしてください。*")
+<br/>   ("*拡大するには、画像をクリックしてください。* ")
 
 
 ## <a name="section-contents"></a>セクションの内容
@@ -41,6 +34,6 @@ ms.locfileid: "52266538"
 - [[分析情報]](./cpp-insights-page.md) ページには、このポータルの *Seller Insights* 機能を構成する各種のダッシュボードが用意されています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事「[Cloud パートナー ポータルでのナビゲーション](./cpp-portal-navigation.md)」では、サイト上で利用可能な各種のナビゲーション メカニズムについて確認します。

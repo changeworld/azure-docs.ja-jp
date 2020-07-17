@@ -4,7 +4,7 @@ description: Azure での既存の仮想マシンの再起動またはサイズ�
 services: virtual-machines
 documentationcenter: ''
 author: Deland-Han
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 0756b52d-4f5a-4503-ae45-c00a6a2edcdf
@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74ba9b8d0ce86a5c663eb9fbb6190e2bcf4513d7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412683"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75965624"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure での既存の Windows VM の再起動またはサイズ変更に関するデプロイメントの問題のトラブルシューティング
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。 このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
@@ -28,7 +28,7 @@ ms.locfileid: "47412683"
 ## <a name="collect-activity-logs"></a>アクティビティ ログを収集する
 トラブルシューティングを開始するには、アクティビティ ログを収集して問題に関連するエラーを特定します。 このプロセスの詳細については、次のリンクをご覧ください。
 
-[デプロイ操作の表示](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[デプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)
 
 [アクティビティ ログを表示して Azure リソースを管理する](../../resource-group-audit.md)
 
@@ -41,7 +41,7 @@ ms.locfileid: "47412683"
 ### <a name="resolution"></a>解決策
 * 可用性セットのすべての VM を停止し、各 VM を再起動します。
   
-  1. **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+  1. **[リソース グループ]**  > *対象のリソース グループ* >  **[リソース]**  > *対象の可用性セット* >  **[Virtual Machines]**  > *対象の仮想マシン* >  **[停止]** の順にクリックします。
   2. すべての VM が停止したら、停止している各 VM を選択し、[起動] をクリックします。
 * 後で再起動要求を再試行します。
 
@@ -57,10 +57,10 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
   
   1. 可用性セットのすべての VM を停止します。
      
-     * **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+     * **[リソース グループ]**  > *対象のリソース グループ* >  **[リソース]**  > *対象の可用性セット* >  **[Virtual Machines]**  > *対象の仮想マシン* >  **[停止]** の順にクリックします。
   2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../windows/troubleshoot-deployment-new-vm.md)に関する記事を参照してください。
 

@@ -10,11 +10,11 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 386f5af2ef186dcde2971601b44eb9cbd53883dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60686374"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Azure Germany の移行ガイダンスの概要
 
@@ -90,7 +90,7 @@ Azure Germany の移行に関する記事では、以下の用語が使用され
 - **ターゲット テナント名**:グローバル Azure のテナントの名前。
 - **ターゲット テナント ID**:グローバル Azure のテナントの ID。
 - **ターゲット サブスクリプション ID**:グローバル Azure のリソースのサブスクリプション ID。
-- **[Target region]\(ターゲット リージョン\)**:グローバル Azure ではほとんどすべてのリージョンを使用できます。 西ヨーロッパ (**westeurope**) または北ヨーロッパ (**northeurope**) にリソースを移行する可能性もあります。
+- **[Target region]\(ターゲット リージョン\)** :グローバル Azure ではほとんどすべてのリージョンを使用できます。 西ヨーロッパ (**westeurope**) または北ヨーロッパ (**northeurope**) にリソースを移行する可能性もあります。
 
 > [!NOTE]
 > ターゲット リージョンで、移行する Azure サービスが提供されていることを確認します。 Azure Germany で使用できるすべての Azure サービスは、西ヨーロッパで使用できます。 Azure Germany で使用できるすべての Azure サービスは、Azure Machine Learning Studio と Azure Virtual Machines の G/GS VM シリーズを除き、北ヨーロッパで使用できます。

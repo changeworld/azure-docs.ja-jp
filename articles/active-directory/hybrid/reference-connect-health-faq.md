@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331078"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -28,7 +29,7 @@ ms.locfileid: "57852967"
 ## <a name="general-questions"></a>一般的な質問
 **Q:複数の Azure AD ディレクトリを管理しています。どのようにすれば Azure Active Directory Premium のディレクトリに切り替えることができますか。**
 
-Azure AD テナントを切り替えるには、現在サインインしている**ユーザー名**を右上隅で選択して、適切なアカウントを選択します。 ここにアカウントが表示されていない場合は、**[サインアウト]** を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
+Azure AD テナントを切り替えるには、現在サインインしている**ユーザー名**を右上隅で選択して、適切なアカウントを選択します。 ここにアカウントが表示されていない場合は、 **[サインアウト]** を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
 
 **Q:Azure AD Connect Health では、どのバージョンの ID の役割がサポートされていますか。**
 
@@ -65,12 +66,12 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 [同期エラー レポート機能](how-to-connect-health-sync.md#object-level-synchronization-error-report)を除いて、Azure AD Connect Health は、Germany Cloud ではサポートされていません。
 
-| ロール | 機能 | German Cloud でサポートされている |
+| ロール | 特徴 | German Cloud でサポートされている |
 | ------ | --------------- | --- |
-| Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ  |
+| Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ |
 |  | 同期エラー レポート | はい |
-| Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ  |
-| Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ  |
+| Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ |
+| Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ |
 
 同期のための Connect Health のエージェントの接続を確保するには、必要に応じて[インストール要件](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)を構成します。
 
@@ -106,9 +107,9 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 
 エージェントの登録時にプロキシを構成する必要がある場合は、Internet Explorer のプロキシ設定を事前に変更する必要があることがあります。
 
-1. Internet Explorer を開いて、**[設定]** > **[インターネット オプション]** > **[接続]** > **[LAN の設定]** の順に移動します。
+1. Internet Explorer を開いて、 **[設定]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。
 2. **[LAN にプロキシ サーバーを使用する]** をオンにします。
-3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、**[詳細設定]** を選択します。
+3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、 **[詳細設定]** を選択します。
 
 **Q:Azure AD Connect Health では、HTTP プロキシに接続するときの基本認証がサポートされていますか。**
 
@@ -133,7 +134,7 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 Health エージェントの登録は、次の理由により失敗する可能性があります。
 
 * ファイアウォールによってトラフィックがブロックされているため、エージェントが必要なエンドポイントと通信できません。 これは特に、Web アプリケーション プロキシ サーバーで起こりがちです。 必要なエンドポイントとポートへの発信通信が許可されていることを確認してください。 詳しくは、「[必要条件](how-to-connect-health-agent-install.md#requirements)」セクションをご覧ください。
-* 発信通信がネットワーク層による SSL 検査の対象になっています。 これが原因で、エージェントによって使われる証明書が検査サーバー/エンティティによって置き換えられ、エージェントの登録を完了する手順が失敗します。
+* 発信通信がネットワーク層による TLS 検査の対象になっています。 これが原因で、エージェントによって使われる証明書が検査サーバー/エンティティによって置き換えられ、エージェントの登録を完了する手順が失敗します。
 * ユーザーに、エージェントの登録を実行するためのアクセス権がありません。 グローバル管理者には、既定でアクセス権が与えられます。 [ロール ベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)を使って、他のユーザーにアクセスを委任できます。
 
 **Q:"Health サービス データが最新ではありません。" というアラートが通知されます。この問題をトラブルシューティングする方法を教えてください。**

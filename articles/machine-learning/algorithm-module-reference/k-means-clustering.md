@@ -1,25 +1,24 @@
 ---
 title: 'K-Means Clustering (K-Means クラスタリング): モジュール リファレンス'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の K-Means クラスタリング モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の K-Means クラスタリング モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 7e9b7c8f2cf86245322679198b84b50d2c5edce8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+author: likebupt
+ms.author: keli19
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77921166"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
-この記事では、Azure Machine Learning Studio で *K-Means Clustering (K-Means クラスタリング)* モジュールを使用して、トレーニングされていない K-Means クラスタリング モデルを作成する方法について説明します。 
+この記事では、Azure Machine Learning デザイナー (プレビュー) で *K-Means クラスタリング* モジュールを使用して、トレーニングされていない K-Means クラスタリング モデルを作成する方法について説明します。 
  
 K-Means は、最も単純であり、よく知られている "*教師なし*" 学習アルゴリズムの 1 つです。 以下のようなさまざまな機械学習タスクにこのアルゴリズムを使用できます。 
 
@@ -29,7 +28,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 クラスタリング モデルを作成するには、次の手順を実行します。
 
-* このモジュールを実験に追加します。
+* このモジュールをパイプラインに追加します。
 * データセットを接続します。
 * 予想するクラスターの数、クラスターの作成に使用する距離メトリックなどのパラメーターを設定します。 
   
@@ -55,13 +54,13 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
 ## <a name="configure-the-k-means-clustering-module"></a>K-Means クラスタリング モジュールを構成する
   
-1.  **K-Means Clustering (K-Means クラスタリング)** モジュールを自分の実験に追加します。  
+1.  **K-Means Clustering (K-Means クラスタリング)** モジュールを自分のパイプラインに追加します。  
   
-2.  モデルのトレーニング方法を指定するには、**[Create trainer mode]\(トレーナー モードの作成\)** オプションを選択します。  
+2.  モデルのトレーニング方法を指定するには、 **[Create trainer mode]\(トレーナー モードの作成\)** オプションを選択します。  
   
-    -   **Single Parameter (単一パラメーター)**: クラスタリング モデルで使用する正確なパラメーターを把握している場合は、特定の値のセットを引数として指定できます。  
+    -   **Single Parameter (単一パラメーター)** : クラスタリング モデルで使用する正確なパラメーターを把握している場合は、特定の値のセットを引数として指定できます。  
   
-3.  **[Number of Centroids]\(重心の数\)** には、アルゴリズムを開始するクラスターの数を入力します。  
+3.  **[Number of centroids]\(重心の数\)** には、アルゴリズムを開始するクラスターの数を入力します。  
   
      このモデルは、この数のクラスターを正確に生成することが保証されていません。 このアルゴリズムは、この数のデータ ポイントから開始し、反復処理で最適な構成を見つけます。  
   
@@ -75,7 +74,7 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
 
          この方法は "*ランダム パーティション*" 法とも呼ばれます。  
   
-    -   **K-Means++**: これは、クラスターの初期化に対する既定のメソッドです。  
+    -   **K-Means++** : これは、クラスターの初期化に対する既定のメソッドです。  
   
          標準の K-Means アルゴリズムによる低品質なクラスタリングを回避するために、2007 年、**K-Means ++** アルゴリズムが David Arthur と Sergei Vassilvitskii によって提案されました。 **K-Means ++** は、初期クラスターの中心を選択するために異なる方法を使用することで標準の K-Means を改良しています。  
   
@@ -94,13 +93,13 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
      K-Means クラスタリングは教師なしの機械学習メソッドのため、ラベルは省略可能です。 ただし、データセットに既にラベル列がある場合は、それらの値を使用してクラスターの選択をガイドすることや、値を無視するように指定することができます。  
   
-    -   **Ignore label column (ラベル列を無視する)**: ラベル列の値は無視され、モデルのビルドには使用されません。
+    -   **Ignore label column (ラベル列を無視する)** : ラベル列の値は無視され、モデルのビルドには使用されません。
   
-    -   **Fill missing values (欠落値を入力する)**: ラベル列の値は、クラスターのビルドに役立つフィーチャーとして使用されます。 任意の行にラベルが不足している場合は、その値はその他のフィーチャーを使用することで補完されます。  
+    -   **Fill missing values (欠落値を入力する)** : ラベル列の値は、クラスターのビルドに役立つフィーチャーとして使用されます。 任意の行にラベルが不足している場合は、その値はその他のフィーチャーを使用することで補完されます。  
   
-    -   **Overwrite from closest to center (中心に最も近い値から上書きする)**: ラベル列の値は、現在の重心に最も近いポイントのラベルを使用して、予測ラベル値に置き換えられます。  
+    -   **Overwrite from closest to center (中心に最も近い値から上書きする)** : ラベル列の値は、現在の重心に最も近いポイントのラベルを使用して、予測ラベル値に置き換えられます。  
 
-8.  トレーニングの前に特徴を正規化する場合は、**[Normalize features]\(特徴の正規化\)** オプションを選択します。
+8.  トレーニングの前に特徴を正規化する場合は、 **[Normalize features]\(特徴の正規化\)** オプションを選択します。
   
      正規化を適用すると、トレーニングの前に、MinMaxNormalizer によってデータ ポイントが `[0,1]` に正規化されます。
 
@@ -108,27 +107,27 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合、[Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用することで、タグ付けしたデータセットを追加してモデルをトレーニングします。  
   
-### <a name="results"></a>結果
+## <a name="results"></a>結果
 
 モデルの構成とトレーニングが完了したら、スコアの生成に使用できるモデルは完成です。 しかし、モデルのトレーニングには複数の方法があり、結果を表示して使用するには複数の方法があります。 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>ワークスペースでモデルのスナップショットをキャプチャする
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>ワークスペースでモデルのスナップショットをキャプチャする
+
+[Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用した場合:
+
+1. **[Train Clustering Model]\(クラスタリング モデルのトレーニング\)** モジュールを選択し、右側のパネルを開きます。
+
+2. **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、トレーニング済みモデルのコピーを保存します。
+
+保存されるモデルは、モデルを保存した時点のトレーニング データを表します。 パイプラインで使用したトレーニング データを後で更新しても、保存済みのモデルは更新されません。 
+
+### <a name="see-the-clustering-result-dataset"></a>クラスタリングの結果のデータセットを表示する 
 
 [Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用した場合:
 
 1. **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを右クリックします。
 
-2. **[Trained model]\(トレーニング済みのモデル\)** を選択し、**[Save as Trained Model]\(トレーニング済みのモデルとして保存する\)** を選択します。
-
-保存されるモデルは、モデルを保存した時点のトレーニング データを表します。 実験で使用したトレーニング データを後で更新しても、保存済みのモデルは更新されません。 
-
-#### <a name="see-the-clustering-result-dataset"></a>クラスタリングの結果のデータセットを表示する 
-
-[Train Clustering Model (クラスタリング モデルのトレーニング)](train-clustering-model.md) モジュールを使用した場合:
-
-1. **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールを右クリックします。
-
-2. **[Results dataset]\(結果データセット\)** を選択し、**[Visualize]\(視覚化\)** を選択します。
+2. **[可視化]** を選択します。
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>最適なクラスタリング モデルを生成するためのヒント  
 
@@ -142,4 +141,8 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
 -   メトリックを変えるか、さらに反復処理して、複数のモデルを作成します。  
   
-一般に、クラスタリング モデルでは、どのような構成でもローカルで最適化された一連のクラスターが生成される可能性があります。 つまり、モデルから返される一連のクラスターは現在のデータ ポイントのみに適合し、他のデータに一般化することはできません。 別の初期構成を使用した場合、K-Means 法では、別の、場合によっては優れた構成が見つかる可能性があります。 
+一般に、クラスタリング モデルでは、どのような構成でもローカルで最適化された一連のクラスターが生成される可能性があります。 つまり、モデルから返される一連のクラスターは現在のデータ ポイントのみに適合し、他のデータに一般化することはできません。 別の初期構成を使用した場合、K-Means 法では、別の優れた構成が見つかる可能性があります。 
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

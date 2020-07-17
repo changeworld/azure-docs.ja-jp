@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
-description: Service Bus の重複メッセージの検出
+description: この記事では、Azure Service Bus メッセージの重複を検出する方法について説明します。 重複したメッセージは無視して、破棄することができます。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413652"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76760370"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -41,7 +41,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 ## <a name="enable-duplicate-detection"></a>重複検出の有効化
 
-この機能は、ポータルでエンティティの作成する際に、既定ではオフになっている、**[重複データ検出を有効にする]** チェック ボックスをオンにすることで有効にできます。 新しいトピックを作成するための設定と同じです。
+この機能は、ポータルでエンティティの作成する際に、既定ではオフになっている、 **[重複データ検出を有効にする]** チェック ボックスをオンにすることで有効にできます。 新しいトピックを作成するための設定と同じです。
 
 ![][1]
 
@@ -60,13 +60,15 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 時間枠を小さく設定すると、保持し照合する必要があるメッセージ ID 数が減り、スループットへの影響は小さくなります。 スループットの高いエンティティで重複検出が必要な場合は、時間枠を小さく設定してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+クライアント コードによって、以前と同じ *MessageId* を持つメッセージを再送信できない場合は、安全に再処理できるメッセージを設計することが重要です。 このためのさまざまな手法について詳しくは、[冪等性に関するブログ投稿](https://particular.net/blog/what-does-idempotent-mean)をご覧ください。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

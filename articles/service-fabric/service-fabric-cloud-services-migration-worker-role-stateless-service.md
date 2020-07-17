@@ -1,25 +1,16 @@
 ---
-title: Azure Cloud Services アプリの Service Fabric への変換 | Microsoft Docs
+title: Azure Cloud Services アプリの Service Fabric への変換
 description: このガイドでは、Cloud Services から Service Fabric に移行するときのために、Cloud Services の Web ロールと worker ロールと、Service Fabric のステートレス サービスの比較を説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667720"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75463346"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -32,7 +23,7 @@ ms.locfileid: "58667720"
 ![Service Fabric プロジェクトと Cloud Services プロジェクトの比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>worker ロールからステートレス サービスへ
-概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
+概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Cosmos DB などの外部の状態ストアによって管理されます。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
 
 ![worker ロールからステートレス サービスへ][4]
 
@@ -41,7 +32,7 @@ worker ロールと同様に、Web ロールもステートレス ワークロ�
 
 | **Application** | **サポートされています** | **移行パス** |
 | --- | --- | --- |
-| ASP.NET Web Forms |いいえ  |ASP.NET Core 1 MVC への変換 |
+| ASP.NET Web Forms |いいえ |ASP.NET Core 1 MVC への変換 |
 | ASP.NET MVC |移行あり |ASP.NET Core 1 MVC にアップグレードする |
 | ASP.NET Web API |移行あり |自己ホスト型サーバーまたは ASP.NET Core 1 を使用する |
 | ASP.NET Core 1 |はい |該当なし |
@@ -252,7 +243,7 @@ Service Fabric のスタートアップ エントリ ポイントは、ServiceMa
 ## <a name="a-note-about-development-environment"></a>開発環境に関する注意事項
 Cloud Services と Service Fabric は、いずれもプロジェクト テンプレートで Visual Studio と統合され、デバッグ、構成、ローカルと Azure 両方へのデプロイがサポートされています。 また、Cloud Services と Service Fabric のいずれにも、ローカル開発ランタイム環境が用意されています。 違いは、Cloud Services 開発ランタイムは、実行されている Azure 環境をエミュレートしますが、Service Fabric は、エミュレーターを使用しない点です。Service Fabric は、完全な Service Fabric ランタイムを使用します。 ローカル開発コンピューターで実行している Service Fabric 環境は、運用時に実行する環境と同じです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric の全機能を活用できるように、Service Fabric の Reliable Services の詳細と、Cloud Services と Service Fabric アプリケーション アーキテクチャの違いについて説明します。
 
 * [Service Fabric の Reliable Services の概要](service-fabric-reliable-services-quick-start.md)

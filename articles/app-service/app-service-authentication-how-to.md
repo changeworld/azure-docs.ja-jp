@@ -1,25 +1,15 @@
 ---
-title: 認証と認可の高度な使用方法 - Azure App Service | Microsoft Docs
-description: App Service で認証と承認をカスタマイズし、ユーザーの要求とさまざまなトークンを取得する方法を示します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+title: 認証/承認の高度な使用方法
+description: App Service でさまざまなシナリオに合わせて認証および承認機能をカスタマイズし、ユーザーの要求とさまざまなトークンを取得する方法について説明します。
 ms.topic: article
-ms.date: 11/08/2018
-ms.author: cephalin
+ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236195"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -27,7 +17,7 @@ ms.locfileid: "57877309"
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
 * [チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および承認する](containers/tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](configure-authentication-provider-facebook.md)
@@ -41,9 +31,9 @@ ms.locfileid: "57877309"
 
 最初に、Azure Portal の **[認証/承認]** ページで、有効にする各 ID プロバイダーを構成します。
 
-**[要求が認証されない場合に実行するアクション]** で、**[匿名要求を許可する (操作不要)]** を選択します。
+**[要求が認証されない場合に実行するアクション]** で、 **[匿名要求を許可する (操作不要)]** を選択します。
 
-サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 例: 
+サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 次に例を示します。
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -65,7 +55,7 @@ ms.locfileid: "57877309"
 
 クライアント主導のサインインでは、アプリケーションはユーザーをプロバイダーに手動でサインインさせ、検証のために認証トークンを App Service に送信します (「[Authentication flow](overview-authentication-authorization.md#authentication-flow)」をご覧ください)。 この検証自体では、必要なアプリ リソースへのアクセス権が実際には付与されませんが、検証に成功すると、アプリ リソースへのアクセスに使用できるセッション トークンが付与されます。 
 
-プロバイダーのトークンを検証するには、最初に目的のプロバイダーを使用して App Service のアプリが構成されている必要があります。 実行時に、プロバイダーから認証トークンを取得した後、検証のためにトークンを `/.auth/login/<provider>` にポストします。 例:  
+プロバイダーのトークンを検証するには、最初に目的のプロバイダーを使用して App Service のアプリが構成されている必要があります。 実行時に、プロバイダーから認証トークンを取得した後、検証のためにトークンを `/.auth/login/<provider>` にポストします。 次に例を示します。 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -96,7 +86,7 @@ Content-Type: application/json
 }
 ```
 
-このセッション トークンを入手したら、`X-ZUMO-AUTH` ヘッダーを HTTP 要求に追加することで、保護対象のアプリ リソースにアクセスすることができます。 例:  
+このセッション トークンを入手したら、`X-ZUMO-AUTH` ヘッダーを HTTP 要求に追加することで、保護対象のアプリ リソースにアクセスすることができます。 次に例を示します。 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -117,7 +107,7 @@ Web ページの簡単なサインアウト リンクを次に示します。
 <a href="/.auth/logout">Sign out</a>
 ```
 
-既定では、サインアウトに成功すると、クライアントは URL `/.auth/logout/done` にリダイレクトされます。 `post_logout_redirect_uri` クエリ パラメーターを追加して、サインアウト後のリダイレクト ページを変更できます。 例: 
+既定では、サインアウトに成功すると、クライアントは URL `/.auth/logout/done` にリダイレクトされます。 `post_logout_redirect_uri` クエリ パラメーターを追加して、サインアウト後のリダイレクト ページを変更できます。 次に例を示します。
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -131,7 +121,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-[Azure Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行する必要があります。
+[Azure Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -154,7 +144,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-任意の言語またはフレームワークで記述されたコードで、これらのヘッダーから必要な情報を取得できます。 ASP.NET 4.6 アプリの場合は、 **ClaimsPrincipal** が自動的に適切な値に設定されます。
+任意の言語またはフレームワークで記述されたコードで、これらのヘッダーから必要な情報を取得できます。 ASP.NET 4.6 アプリの場合は、 **ClaimsPrincipal** が自動的に適切な値に設定されます。 ただし、ASP.NET Core では、App Service のユーザー要求と統合する認証ミドルウェアが提供されません。 回避策については、「[MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)」を参照してください。
 
 アプリケーションでは、`/.auth/me` を呼び出して認証されたユーザーの追加の詳細を取得することもできます。 Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。 詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)」を参照してください。
 
@@ -182,11 +172,11 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
-- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
+- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページをご覧ください)。
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    2. 左側のブラウザーで、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
+    2. 左側のブラウザーで、**subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings** に移動します。 
     3. **[編集]** をクリックします。
     4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
@@ -231,17 +221,65 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>サインイン アカウントのドメインの制限
 
-Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure Active Directory では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 この動作は、ユーザーが _outlook.com_ アカウントでアクセスすることが望ましくない内部アプリでは望ましくない場合があります。 サインイン アカウントのドメイン名を制限するには、以下の手順に従います。
+Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure AD では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 ただし、ユーザーを独自のブランドの Azure AD サインインページ (`contoso.com`など) に直接誘導することもできます。 サインイン アカウントのドメイン名を提示するには、以下の手順に従います。
 
-[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
+[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >  **_\< subscription\_ name_**  > **resourceGroups** >  **_\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< app\_ name>_**  > **config** > **authsettings** に移動します。 
 
-**[Edit]** をクリックし、次のプロパティを変更し、**[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
+**[Edit]** をクリックし、次のプロパティを変更し、 **[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
-## <a name="next-steps"></a>次の手順
+
+この設定で、`domain_hint` クエリ文字列パラメーターがログイン リダイレクト URL に追加されます。 
+
+> [!IMPORTANT]
+> クライアントは、リダイレクト URL を受け取った後で `domain_hint` パラメーターを削除し、別のドメインでログインできます。 そのため、この機能は便利ですが、セキュリティ機能ではありません。
+>
+
+## <a name="authorize-or-deny-users"></a>ユーザーを承認または拒否する
+
+App Service は最も単純な承認ケース (つまり、認証されていない要求の拒否) を処理しますが、アプリでは、特定のユーザー グループだけにアクセスを制限するなど、よりきめ細かな承認動作が必要になる場合があります。 場合によっては、サインインしたユーザーに対してアクセスを許可または拒否するためのカスタム アプリケーション コードの記述が必要になります。 また、App Service やお使いの ID プロバイダーが、コードの変更を必要とせずにサポートできる場合もあります。
+
+- [サーバー レベル](#server-level-windows-apps-only)
+- [ID プロバイダー レベル](#identity-provider-level)
+- [アプリケーション レベル](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>サーバー レベル (Windows アプリのみ)
+
+Windows アプリでは、*Web.config* ファイルを編集して IIS Web サーバーの承認動作を定義できます。 Linux アプリは、IIS を使用しないため、*Web.config* を使用して構成することはできません。
+
+1. `https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動します
+
+1. App Service ファイルのブラウザー エクスプローラーで、*site/wwwroot* に移動します。 *Web.config* が存在しない場合は、 **+**  >  **[新しいファイル]** を選択して作成します。 
+
+1. *Web.config* の鉛筆を選択して編集します。 次の構成コードを追加し、 **[保存]** をクリックします。 *Web.config* が既に存在する場合は、すべての内容を含めた `<authorization>` 要素を追加するだけです。 許可するアカウントを `<allow>` 要素に追加します。
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>ID プロバイダー レベル
+
+ID プロバイダーによって特定のターンキー承認が提供される場合があります。 次に例を示します。
+
+- [Azure App Service](configure-authentication-provider-aad.md) の場合、Azure AD で直接、[エンタープライズ レベルのアクセスを管理](../active-directory/manage-apps/what-is-access-management.md)できます。 説明については、「[アプリケーションへのユーザー アクセスの削除方法](../active-directory/manage-apps/methods-for-removing-user-access.md)」をご覧ください。
+- [Google](configure-authentication-provider-google.md) の場合、特定の[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)に属する Google API プロジェクトを、その組織内のユーザーだけにアクセスを許可するように構成できます ([Google の「**Setting up OAuth 2.0**」サポート ページ](https://support.google.com/cloud/answer/6158849?hl=en)をご覧ください)。
+
+### <a name="application-level"></a>アプリケーション レベル
+
+他のいずれのレベルでも必要な承認が提供されない場合、またはお使いのプラットフォームまたは ID プロバイダーがサポートされていない場合、[ユーザーの要求](#access-user-claims)に基づいてユーザーを承認するカスタム コードを記述する必要があります。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル: ユーザーをエンド ツー エンドで認証および承認する (Windows)](app-service-web-tutorial-auth-aad.md)
-> [チュートリアル: ユーザーをエンド ツー エンドで認証および承認する (Linux)](containers/tutorial-auth-aad.md)
+> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Windows)](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Linux)](containers/tutorial-auth-aad.md)

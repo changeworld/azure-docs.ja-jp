@@ -1,20 +1,19 @@
 ---
 title: Azure Storage Analytics のメトリック (クラシック)
 description: Azure Storage でメトリックを使用する方法について説明します。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153937"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692734"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -24,7 +23,7 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 
 > [!NOTE]
 > Storage Analytics メトリックは、BLOB、キュー、テーブル、ファイルのサービスごとに利用できます。
-> Storage Analytics メトリックはクラシック メトリックになりました。 Microsoft では、Storage Analytics メトリックの代わりに、[Azure Monitor の Storage メトリック](storage-metrics-in-azure-monitor.md)を使用することをお勧めします。
+> Storage Analytics メトリックはクラシック メトリックになりました。 Microsoft では、Storage Analytics メトリックの代わりに、[Azure Monitor の Storage メトリック](monitor-storage.md)を使用することをお勧めします。
 
 ## <a name="transaction-metrics"></a>トランザクション メトリック  
  各ストレージ サービスと要求された API 操作について、受信/送信、可用性、エラー、分類された要求のパーセンテージを含む信頼性の高いデータのセットが 1 時間または 1 分間隔で記録されます。 トランザクションの詳細の一覧については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema) 」をご覧ください。  
@@ -75,33 +74,39 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 
 [Azure Portal](https://portal.azure.com) では、現在のところ、ストレージ アカウントで分単位のメトリックを構成できません。分単位のメトリックは PowerShell かプログラミングを使用して有効にする必要があります。
 
-> [!NOTE]
->  Azure Portal では、現在のところ、ストレージ アカウントで分単位のメトリックを構成できません。 PowerShell を使用するか、プログラミングによって分単位の分析を有効にする必要があります。
-
 ## <a name="enable-storage-metrics-using-powershell"></a>PowerShell を使用してストレージ メトリックを有効にする  
-ローカル マシンの PowerShell を使用して、ストレージ アカウントのストレージ メトリックを構成できます。Azure PowerShell コマンドレット **Get-AzureStorageServiceMetricsProperty** を使って現在の設定を取得し、コマンドレット **Set-AzureStorageServiceMetricsProperty** を使って現在の設定を変更します。  
+ローカル マシンの PowerShell を使用して、ストレージ アカウントのストレージ メトリックを構成できます。Azure PowerShell コマンドレット **Get-AzStorageServiceMetricsProperty** を使って現在の設定を取得し、コマンドレット **Set-AzStorageServiceMetricsProperty** を使って現在の設定を変更します。  
 
 ストレージ メトリックを制御するコマンドレットでは次のパラメーターが使用されます。  
 
 * **ServiceType**: 指定可能な値は、**Blob**、**Queue**、**Table**、**File** です。
 * **MetricsType**: 指定可能な値は **Hour** と **Minute** です。  
 * **MetricsLevel**: 指定可能な値は次のいずれかです。
-* **なし**:監視しません。
+* **なし**: 監視しません。
 * **サービス**:受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを収集して、BLOB、テーブル、キュー、ファイルのサービスごとに集計します。
 * **ServiceAndApi**:サービス メトリックに加えて、Azure Storage サービス API のストレージ操作ごとに同じメトリックを収集します。
 
-たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。  
+たとえば、次のコマンドは、ストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定された保持期間でオンにします。 
 
+> [!NOTE]
+> このコマンドは、`Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインしていることを想定しています。
+
+```powershell
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute   
--ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5  
-```  
+
+* `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+        
+* `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+
+
 
 次のコマンドは、既定のストレージ アカウントの BLOB サービスの現在の時間単位メトリック レベルとリテンション日数を取得します。  
 
-```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour   
--ServiceType Blob  
+```powershell
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)に関する記事をご覧ください。  
@@ -130,9 +135,9 @@ REST API を使用してストレージ メトリックを構成する方法に�
 ストレージ アカウントを監視するように Storage Analytics メトリックを構成すると、ストレージ アカウントのよく知られたテーブルのセットにメトリックが記録されます。 [Azure Portal](https://portal.azure.com) では、時間単位のメトリックを表示するようにグラフを構成できます。
 
 1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. メトリックを表示するサービスの **[メニュー]** ブレードで、**[メトリック (クラシック)]** を選択します。
+1. メトリックを表示するサービスの **[メニュー]** ブレードで、 **[メトリック (クラシック)]** を選択します。
 1. 構成するグラフをクリックします。
-1. **[グラフの編集]** ブレードで、**[時間の範囲]**、**[グラフの種類]**、およびグラフに表示するメトリックを選択します。
+1. **[グラフの編集]** ブレードで、 **[時間の範囲]** 、 **[グラフの種類]** 、およびグラフに表示するメトリックを選択します。
 
 Azure Portal のストレージ アカウント メニュー ブレードの **[監視 (クラシック)]** セクションで、特定のメトリックが特定の値に達したときに通知するメール アラートの送信など、[アラート ルール](#metrics-alerts)を構成できます。
 
@@ -140,8 +145,8 @@ Azure Portal のストレージ アカウント メニュー ブレードの **[
 
 ||||  
 |-|-|-|  
-|**メトリック**|**テーブル名**|**メモ**|  
-|時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob <br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
+|**Metrics**|**テーブル名**|**メモ**|  
+|時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |分単位のメトリック|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Powershell を使用するか、プログラミングによってのみ有効にできます。<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |容量|$MetricsCapacityBlob|BLOB サービスのみ。|  
 
@@ -226,7 +231,7 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 -   あるサービスがそのサービスのすべての API を毎時間利用する場合、サービス レベルの概要だけを有効にしていれば、約 12 KB のデータがメトリック トランザクション テーブルに毎時間保存されます。  
 -   BLOB の容量テーブルには、毎日、2 つの行が追加されます (ユーザーがログを選択している場合)。 つまり、このテーブルのサイズは、毎日、最大約 300 バイト増えることになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ストレージ アカウントの監視方法](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
 * [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
 * [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   

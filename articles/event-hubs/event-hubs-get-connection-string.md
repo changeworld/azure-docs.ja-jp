@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
-ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158907"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231303"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
 
@@ -38,7 +38,7 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 ## <a name="get-connection-string-from-the-portal"></a>ポータルから接続文字列を取得する
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
-2. 左のナビゲーション メニューから、**[すべてのサービス]** を選択します。 
+2. 左のナビゲーション メニューから、 **[すべてのサービス]** を選択します。 
 3. **[分析]** セクションで **[Event Hubs]** を選択します。 
 4. イベント ハブの一覧で、自分のイベント ハブを選択します。
 6. **[Event Hubs 名前空間]** ページで、左側のメニューの **[共有アクセス ポリシー]** を選択します。
@@ -55,7 +55,7 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下に示すように、[Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
+以下に示すように、[Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey)を使用して、指定するポリシーまたはルール名の接続文字列を取得することができます。
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
@@ -68,9 +68,15 @@ Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummyname
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
+また、次を使用して、EventHub エンティティの接続文字列を取得することもできます。
+
+```azurecli-interactive
+az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
+```
+
 Event Hubs 用の Azure CLI コマンドについて詳しくは、[Event Hubs 用の Azure CLI](/cli/azure/eventhubs) に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 

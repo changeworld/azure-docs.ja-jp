@@ -1,23 +1,23 @@
 ---
-title: Translator Text API の Dictionary Lookup メソッド
-titlesuffix: Azure Cognitive Services
-description: Translator Text API の Dictionary Lookup メソッドを使用します。
+title: Translator の Dictionary Lookup メソッド
+titleSuffix: Azure Cognitive Services
+description: Dictionary Lookup メソッドからは、単語や少数の慣用句に対して代替の翻訳が提供されます。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b844ac4018ef768527ca17bd68ca53baaf5d9552
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.date: 01/21/2020
+ms.author: swmachan
+ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578341"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584741"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: 辞書検索
+# <a name="translator-30-dictionary-lookup"></a>Translator 3.0:辞書検索
 
 単語や少数の慣用句に対し代替の翻訳を提供します。 各翻訳には品詞と、逆翻訳のリストが含まれます。 逆翻訳により、ユーザーはコンテキスト内の翻訳を理解することができます。 [辞書の例](./v3-0-dictionary-examples.md)操作では、さらにドリル ダウンすることで、各翻訳ペアの使用例を参照することができます。
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
-<table width="100%">
-  <th width="20%">Query parameter (クエリ パラメーター)</th>
-  <th>説明</th>
-  <tr>
-    <td>api-version</td>
-    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
-  </tr>
-  <tr>
-    <td>from</td>
-    <td>"*必須のパラメーター*"。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。</td>
-  </tr>
-  <tr>
-    <td>to</td>
-    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`dictionary` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。</td>
-  </tr>
-</table>
+| クエリ パラメーター  | 説明 |
+| ------ | ----------- |
+| api-version <img width=200/>   | "**必須のパラメーター**"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります |
+| from | "**必須のパラメーター**"。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。 |
+| to   | "**必須のパラメーター**"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`dictionary` スコープに含まれている[サポートされている言語](v3-0-languages.md)のいずれかとする必要があります。 |
+
 
 要求ヘッダーには次のものがあります。
 
-<table width="100%">
-  <th width="20%">headers</th>
-  <th>説明</th>
-  <tr>
-    <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
-  </tr>
-</table> 
+| ヘッダー  | 説明 |
+| ------ | ----------- |
+| Authentication header(s) <img width=200/>  | "**必須の要求ヘッダー**" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。 |
+| Content-Type | "**必須の要求ヘッダー**" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json` |
+| Content-Length   | "**必須の要求ヘッダー**" です。<br/>要求本文の長さです。 |
+| X-ClientTraceId   | **オプション**。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。 |
 
 ## <a name="request-body"></a>要求本文
 
@@ -140,13 +116,9 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 この例では、英語の用語 `fly` についてスペイン語での代替翻訳を検索する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
 ```
-
----
 
 応答本文 (わかりやすくするために短縮) は次のとおりです。
 
@@ -191,13 +163,9 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?ap
 
 この例では、検索される用語が有効な辞書ペアに存在しない場合、どうなるかを示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
-
----
 
 辞書内で用語が見つからないため、応答本文には空の `translations` リストが含まれます。
 

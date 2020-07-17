@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services ダイナミック パッケージの概要 | Microsoft Docs
-description: このトピックでは、ダイナミック パッケージの概要について説明します。
+description: この記事では Microsoft Azure Media Services ダイナミック パッケージの概要について説明します。
 author: Juliako
 manager: femila
 editor: ''
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 4b4f2ec779c37f78b371c27df80c354eccb41e7a
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869431"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74901183"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/dynamic-packaging-overview.md)
 > * [Version 2](media-services-dynamic-packaging-overview.md)
 

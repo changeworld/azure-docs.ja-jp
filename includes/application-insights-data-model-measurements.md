@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67180933"
 ---
 カスタム測定値のコレクション。 テレメトリ項目に関連付けられている指定された測定値を報告するには、このコレクションを使用します。 一般的なユース ケースは次のとおりです。
 - 依存関係テレメトリのペイロードのサイズ
@@ -27,4 +27,4 @@ customEvents
  > [!NOTE]
  > カスタム測定値は、属するテレメトリ項目に関連付けられています。 その測定値を含むテレメトリ項目のサンプリング対象となります。 他のテレメトリの種類から独立した値を持つ測定値を追跡するには、[メトリック テレメトリ](../articles/azure-monitor/app/api-custom-events-metrics.md)を使用します。
 
-キーの最大長:150
+キーの最大長: 150

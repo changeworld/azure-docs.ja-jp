@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor における Agent Health ソリューション | Microsoft Docs
 description: この記事の目的は、Log Analytics または System Center Operations Manager に対して直接報告を行うエージェントの正常性を Agent Health ソリューションで監視する方法についてわかりやすく説明することです。
-services: operations-management-suite
-documentationcenter: ''
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: operations-management-suite
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/19/2017
-ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 02/06/2020
+ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426224"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77663260"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor での Agent Health ソリューション
 Azure において Agent Health ソリューションを使用すると、Azure Monitor の Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -41,7 +34,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 [ソリューションの追加](solutions.md)に関するページの手順に従って、Agent Health ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
 
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
@@ -53,17 +46,17 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 ## <a name="using-the-solution"></a>ソリューションの使用
 Log Analytics ワークスペースに Agent Health ソリューションを追加すると、ダッシュボードに **[Agent Health]** タイルが追加されます。 このタイルには、エージェントの総数と直近 24 時間応答していないエージェントの数が表示されます。<br><br> ![ダッシュボードの Agent Health ソリューション タイル](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
-**[Agent Health]** タイルをクリックすると、**[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
+**[Agent Health]** タイルをクリックすると、 **[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
 
 | 列 | 説明 |
 |--------|-------------|
 | Agent count over time (時間の経過に伴うエージェント数) | 7 日間にわたるエージェント数の傾向。Linux エージェントと Windows エージェントの両方が対象となります。|
 | Count of unresponsive agents (応答しないエージェントの数) | 過去 24 時間ハートビートを送信していないエージェントの一覧。|
-| Distribution by OS Type (OS の種類ごとの分布) | 対象の環境に存在する Windows エージェントと Linux エージェントの区分。|
+| OS の種類ごとの分布 | 対象の環境に存在する Windows エージェントと Linux エージェントの区分。|
 | Distribution by Agent Version (エージェントのバージョンごとの分布) | 対象の環境にインストールされている各種エージェント バージョンの区分と各バージョンの数。|
 | Distribution by Agent Category (エージェントのカテゴリごとの分布) | ハートビート イベントを送信するエージェントの各カテゴリの区分 (ダイレクト エージェント、OpsMgr エージェント、または OpsMgr 管理サーバー)。|
-| 管理グループごとの分布 | 対象の環境に存在する各種 Operations Manager 管理グループの区分。|
-| エージェントの地理的な位置 | エージェントが存在する国の区分と、それぞれの国でインストールされているエージェントの総数。|
+| Distribution by Management Group (管理グループごとの分布) | 対象の環境に存在する各種 Operations Manager 管理グループの区分。|
+| エージェントの地理的な位置 | エージェントが存在する国や地域の区分と、それぞれの国や地域でインストールされているエージェントの総数。|
 | Count of Gateways Installed (インストールされたゲートウェイの数) | Log Analytics ゲートウェイがインストールされているサーバーの数とその一覧。|
 
 ![Agent Health ソリューション ダッシュボードの例](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  
@@ -85,7 +78,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 | `Version` | Log Analytics エージェントまたは Operations Manager エージェントのバージョン。|
 | `SCAgentChannel` | *Direct* と *SCManagementServer* のいずれかの値になります。|
 | `IsGatewayInstalled` | Log Analytics ゲートウェイがインストールされている場合、値は *true* です。それ以外の場合は *false* になります。|
-| `ComputerIP` | コンピューターの IP アドレス。|
+| `ComputerIP` | コンピューターのパブリック IP アドレス。 Azure VM では、パブリック IP が使用可能な場合はそれが表示されます。 プライベート IP を使用している VM の場合、Azure SNAT アドレス (プライベート IP アドレスではありません) が表示されます。 |
 | `RemoteIPCountry` | コンピューターがデプロイされている地理的位置。|
 | `ManagementGroupName` | Operations Manager 管理グループの名前。|
 | `SourceComputerId` | コンピューターの一意の ID。|
@@ -97,7 +90,7 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集されたレコードを探すログ検索の例です。
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |エージェントの総数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |直近 24 時間応答がなかったエージェントの数 |
@@ -106,15 +99,15 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 | Heartbeat &#124; where TimeGenerated > ago(24h) and Computer !in ((Heartbeat &#124; where TimeGenerated > ago(30m) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |(直近 24 時間のうち) 直近 30 分間オフライン状態であったエージェントの総数 |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |時間の経過に伴うエージェント数の傾向を OSType ごとに取得|
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |OS の種類ごとの分布 |
-| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |エージェントのバージョンごとの分布 |
-| Heartbeat &#124; summarize AggregatedValue = count() by Category |エージェントのカテゴリごとの分布 |
-| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | 管理グループごとの分布 |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |Distribution by Agent Version (エージェントのバージョンごとの分布) |
+| Heartbeat &#124; summarize AggregatedValue = count() by Category |Distribution by Agent Category (エージェントのカテゴリごとの分布) |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Distribution by Management Group (管理グループごとの分布) |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |エージェントの地理的な位置 |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |インストールされている Log Analytics ゲートウェイの数 |
 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ログ クエリからのアラートの生成について詳しくは、[Azure Monitor でのアラート](../platform/alerts-overview.md)に関する記事をご覧ください。 

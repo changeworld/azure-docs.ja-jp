@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/18/2019
+ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147021"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79117104"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
 それは、ゲートウェイ SKU によって異なります。 サポートされる接続の数の詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
-### <a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
 
 次のクライアント オペレーティング システムがサポートされています。
 
@@ -38,11 +38,13 @@ ms.locfileid: "66147021"
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
 
-Azure では、ポイント対サイト VPN のオプションを 2 種類サポートしています:
+Azure では、次の 3 種類のポイント対サイト VPN オプションをサポートしています。
 
-* Secure Socket Tunneling Protocol (SSTP)。 SSTP は Microsoft 独自の SSL ベースのソリューションです。このソリューションは、ほとんどのファイアウォールが 443 SSL で使用する TCP ポートを開いていることを利用し、ファイアウォールを通過することができるようになっています。
+* Secure Socket Tunneling Protocol (SSTP)。 SSTP は、ほとんどのファイアウォールが 443 SSL で使用される送信 TCP ポートを開いているためにファイアウォールを通過できる、Microsoft 独自の SSL ベースのソリューションです。
 
-* IKEv2 VPN。 IKEv2 VPN は、標準ベースの IPsec VPN ソリューションであり、UDP ポート 500 と 4500 のほか、IP プロトコル番号  50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
+* OpenVPN。 OpenVPN は、ほとんどのファイアウォールが 443 SSL で使用される送信 TCP ポートを開いているためにファイアウォールを通過できる、SSL ベースのソリューションです。
+
+* IKEv2 VPN。 IKEv2 VPN は標準ベースの IPsec VPN ソリューションであり、送信 UDP ポート 500 と 4500 のほか、IP プロトコル番号 50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>ポイント対サイト接続用に構成されたクライアント コンピューターを再起動した場合、VPN は自動的に再接続されますか。
 
@@ -56,9 +58,13 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 
 はい。 Resource Manager デプロイ モデルの場合には、ゲートウェイにルートベースの VPN が必要になります。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、ポリシーベースの VPN ゲートウェイでは、ポイント対サイト接続はサポートされません。
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワーク ゲートウェイに接続するように構成することはできますか。
+
+使用される VPN クライアント ソフトウェアによっては、接続先の仮想ネットワークにおいて、それらの間で、または接続元のクライアントのネットワークとの間で、競合するアドレス空間がない場合、複数の Virtual Network ゲートウェイに接続できることがあります。  Azure VPN クライアントでは多くの VPN 接続がサポートされていますが、一度に接続できる接続は 1 つだけです。
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
-いいえ。 ポイント対サイト接続のクライアントは、仮想ネットワーク ゲートウェイが存在する VNet にあるリソースに接続できるにとどまります。
+はい。他の VNet とピアリングされている VNet にデプロイされている Virtual Network ゲートウェイへのポイント対サイト接続は、ピアリングされた他の VNet にアクセスできる可能性があります。  ピアリングされた VNet が UseRemoteGateway/AllowGatewayTransit 機能を使用している場合、ポイント対サイトクライアントは、ピアリングされた VNet に接続できます。  詳しくは、[こちら](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)の記事を参照してください。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
 
@@ -66,7 +72,7 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
 
-いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
+いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 ただし、すべてのプラットフォーム上で OpenVPN クライアントを使用して、OpenVPN プロトコル経由で接続できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
 
@@ -96,3 +102,21 @@ Azure では、P2S VPN 向けに Windows、Mac、および Linux をサポート
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Azure VPN Gateway を既にデプロイしています。 ここで RADIUS または IKEv2 VPN または両方を有効にできますか。
 
 はい。Powershell または Azure Portal を使用して、既にデプロイされているゲートウェイでこれらの新機能を有効にできます。ただし、ご利用のゲートウェイ SKU が、RADIUS と IKEv2 のいずれかまたは両方をサポートしている必要があります。 たとえば VPN Gateway Basic SKU は、RADIUS と IKEv2 のどちらもサポートしていません。
+
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>P2S 接続の構成を削除するにはどうすればよいですか。
+
+P2S 構成は、次のコマンドを使って Azure CLI と PowerShell を使用して削除できます。
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
+```azurepowershell-interactive
+$gw=Get-AzVirtualNetworkGateway -name <gateway-name>`  
+$gw.VPNClientConfiguration = $null`  
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"
+```

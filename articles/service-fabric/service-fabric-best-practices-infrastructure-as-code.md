@@ -1,25 +1,16 @@
 ---
-title: コードとしての Azure Service Fabric インフラストラクチャに関するベスト プラクティス | Microsoft Docs
-description: インフラストラクチャとしての Service Fabric をコードとして管理するためのベスト プラクティスです。
-services: service-fabric
-documentationcenter: .net
+title: コードとしての Azure Service Fabric インフラストラクチャに関するベスト プラクティス
+description: コードとしてのインフラストラクチャとして Azure Service Fabric を管理するためのベスト プラクティスと設計に関する考慮事項。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159926"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75551830"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -57,25 +48,25 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 
 ```json
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications/services",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
     "location": "[variables('clusterLocation')]"
@@ -86,18 +77,61 @@ Azure Resource Manager を使用してアプリケーションをデプロイす
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
-microservices_sfpkg = zipfile.ZipFile(self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
+microservices_sfpkg = zipfile.ZipFile(
+    self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
 package_length = len(self.microservices_app_package_path)
 
 for root, dirs, files in os.walk(self.microservices_app_package_path):
     root_folder = root[package_length:]
     for file in files:
-        microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
+        microservices_sfpkg.write(os.path.join(
+            root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure Virtual Machine オペレーティング システムの自動アップグレード構成 
+仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとに 1 つずつロールアウトされます。 Service Fabric で OS 自動アップグレードを利用するには、クラスターが、Silver 以上の耐久性レベルを使用するように構成されている必要があります。
+
+次のレジストリ キーが false に設定されていることを確認して、調整されていない更新を Windows ホスト マシンが開始しないようにします。HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
+
+以下は、WindowsUpdate レジストリ キーを false に設定するための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric クラスターのアップグレード構成
+以下は、自動アップグレードを有効にするための、Service Fabric クラスター Resource Manager テンプレートのプロパティです。
+```json
+"upgradeMode": "Automatic",
+```
+クラスターを手動でアップグレードするには、cab/deb 配布をクラスター仮想マシンにダウンロードして、次の PowerShell を実行します。
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
+```
+
+## <a name="next-steps"></a>次のステップ
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)

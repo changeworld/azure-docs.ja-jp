@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB での自動オンライン バックアップとオンデマンドのデータ復元
+title: Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 description: この記事では、Azure Cosmos DB での自動オンライン バックアップとオンデマンドのデータ復元が動作するしくみを説明します。
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 066549f1343eaceb9a47fccc3b5d4508f226a89b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240426"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 
@@ -22,7 +22,7 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 
 Azure Cosmos DB では、データだけでなく、データのバックアップについても、冗長性とリージョンの障害からの回復性が高められています。 以下の手順は、Azure Cosmos DB によるデータのバックアップ方法を示しています。
 
-* Azure Cosmos DB によって、データベースが 4 時間毎と任意の時点で自動的にバックアップされ、最新の 2 回分のバックアップのみが保存されます。す。 ただし、コンテナーまたはデータベースが削除された場合、Azure Cosmos DB には、ある特定のコンテナーまたはデータベースの既存のスナップショットが 30 日間保持されます。
+* Azure Cosmos DB によって、データベースが 4 時間毎と任意の時点で自動的にバックアップされ、最新の 2 回分のバックアップのみが保存されます。 ただし、コンテナーまたはデータベースが削除された場合、Azure Cosmos DB には、ある特定のコンテナーまたはデータベースの既存のスナップショットが 30 日間保持されます。
 
 * Azure Cosmos DB では、これらのバックアップが Azure Blob Storage に保存される一方、実際のデータは Azure Cosmos DB 内にローカルに存在します。
 
@@ -85,12 +85,12 @@ Azure Cosmos データベースが削除されたときに、データベース�
 
 復元したアカウントには引き続き料金が発生するため、移行が完了したらすぐに削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、Azure Cosmos アカウントからデータを復元する方法、またはデータを Azure Cosmos アカウントに移行する方法について学習します。
 
-* 復元要求を行う場合は、Azure サポートに連絡し、[Azure portal からチケットを登録](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* 復元の要請を行うために、Azure サポートに連絡して [Azure portal からチケットを申請](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)する。
 * [Azure Cosmos アカウントからデータを復元する方法](how-to-backup-and-restore.md)
-* [Cosmos DB 変更フィードを使用](change-feed.md)してデータを Azure Cosmos DB に移動
+* [Cosmos DB 変更フィードを使用](change-feed.md)してデータを Azure Cosmos DB に移動する。
 * [Azure Data Factory を使用](../data-factory/connector-azure-cosmos-db.md)してデータを Azure Cosmos DB に移動する。
 

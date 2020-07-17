@@ -1,18 +1,19 @@
 ---
-title: Azure への移行後に Azure Site Recovery を使用して Azure VM のディザスター リカバリーをセットアップする |Microsoft Docs
+title: Azure Site Recovery を使用して Azure に移行した後に ディザスター リカバリーをセットアップする
 description: この記事では、Azure Site Recovery を使用して Azure に移行した後、Azure リージョン間でのディザスター リカバリーをセットアップできるようにマシンを準備する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615916"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74159116"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
@@ -29,13 +30,13 @@ ms.locfileid: "59615916"
 
 各 Azure VM には、[Azure VM エージェント](../virtual-machines/extensions/agent-windows.md)がインストールされている必要があります。 Azure VM をレプリケートするため、Site Recovery によってエージェントに拡張機能がインストールされます。
 
-- マシンがバージョン 9.7.0.0 以降の Site Recovery モビリティ サービスを実行している場合、モビリティ サービスによって Azure VM エージェントが Windows VM に自動的にインストールされます。 以前のバージョンのモビリティ サービスでは、エージェントを自動的にインストールする必要があります。
-- Linux VM の場合は、Azure VM エージェントを手動でインストールする必要があります。Azure VM エージェントをインストールする必要があるのは、移行済みのマシンにインストールされているモビリティ サービスが v9.6 以前の場合のみです。
+- マシンがバージョン 9.7.0.0 以降の Site Recovery モビリティ サービスを実行している場合、モビリティ サービスによって Azure VM エージェントが Windows VM に自動的にインストールされます。 以前のバージョンのモビリティ サービスでは、エージェントを手動でインストールします。
+- Linux VM の場合は、Azure VM エージェントを手動でインストールする必要があります。 Azure VM エージェントをインストールする必要があるのは、移行済みのマシンにインストールされているモビリティ サービスが v9.6 以前の場合のみです。
 
 
 ### <a name="install-the-agent-on-windows-vms"></a>Windows VM にエージェントをインストールする
 
-9.7.0.0 より前のバージョンの Site Recovery モビリティ サービスを実行しているか、またはエージェントを手動でインストールするその他の何らかの必要性がある場合、次の操作を行います。  
+9\.7.0.0 より前のバージョンの Site Recovery モビリティ サービスを実行しているか、またはエージェントを手動でインストールするその他の何らかの必要性がある場合、次の操作を行います。  
 
 1. VM の管理者特権があることを確認します。
 2. [VM エージェント インストーラー](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードします。
@@ -45,7 +46,7 @@ ms.locfileid: "59615916"
 エージェントがインストールされていることを確認するには:
 
 1. Azure VM の C:\WindowsAzure\Packages フォルダーで WaAppAgent.exe ファイルを確認します。
-2. このファイルを右クリックし、**[プロパティ]** で **[詳細]** タブを選択します。
+2. このファイルを右クリックし、 **[プロパティ]** で **[詳細]** タブを選択します。
 3. **[製品バージョン]** フィールドに 2.6.1198.718 以上が表示されていることを確認します。
 
 Windows のエージェントのインストールについては、[こちら](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)をご覧ください。
@@ -75,13 +76,13 @@ Windows のエージェントのインストールについては、[こちら](
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux の場合は、root ユーザーとしてサインインします。 端末で、**/user/local/ASR** に移動して、次のコマンドを実行します。
+    - Linux の場合は、root ユーザーとしてサインインします。 ターミナルで、 **/user/local/ASR** に移動して、次のコマンドを実行します。
         ```
         ./uninstall.sh -Y
         ```
 2. VM を再起動してからレプリケーションを構成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM エージェント上の Site Recovery 拡張機能の[トラブルシューティングを確認](site-recovery-extension-troubleshoot.md)します。
 Azure VM をセカンダリ リージョンに[迅速にレプリケート](azure-to-azure-quickstart.md)します。

@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワーク TAP を作成、変更、削除する - Azure CLI | Microsoft Docs
+title: VNet TAP を作成、変更、または削除する - Azure CLI
 description: Azure CLI を使用して仮想ネットワーク TAP を作成、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188562"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234965"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク TAP の作業を行う
 
@@ -86,6 +86,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
       --query id \
       --out tsv)
       ```
+
    - ターゲットとしてのフロントエンド IP 構成の ID とオプションのポート プロパティを使用して、仮想ネットワーク TAP を作成します。 ポートでは、TAP トラフィックを受信するフロントエンド IP 構成上のターゲット ポートを指定します。  
 
       ```azurecli-interactive
@@ -140,7 +141,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ## <a name="delete-the-tap-configuration-on-a-network-interface"></a>ネットワーク インターフェイス上の TAP 構成を削除する
 
-   ```azure-cli-interactive
+   ```azurecli-interactive
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \

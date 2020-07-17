@@ -1,32 +1,22 @@
 ---
-title: Azure で Service Fabric 上に Windows コンテナー アプリを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に Windows コンテナー アプリを作成する
 description: このチュートリアルでは、Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/31/2019
-ms.author: aljo
+ms.date: 07/10/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110369"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75466269"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Windows コンテナーをデプロイする
 
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
-既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 このクイックスタートでは、あらかじめ用意されている Docker コンテナー イメージを Service Fabric アプリケーションにデプロイする方法を紹介します。 最後まで読み進めていけば、Windows Server Core 2016 Server と IIS コンテナーを稼働状態にすることができます。 このクイックスタートでは、Windows コンテナーのデプロイについて説明しています。Linux コンテナーをデプロイする場合は、[こちらのクイックスタート](service-fabric-quickstart-containers-linux.md)を参照してください。
+既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 このクイックスタートでは、あらかじめ用意されている Docker コンテナー イメージを Service Fabric アプリケーションにデプロイする方法を紹介します。 最後まで読み進めていけば、Windows Server Core 2016 Server と IIS コンテナーを稼働状態にすることができます。 このクイックスタートでは、Windows コンテナーのデプロイについて説明します。 Linux コンテナーをデプロイするには、[こちらのクイックスタート](service-fabric-quickstart-containers-linux.md)を確認してください。
 
 ![IIS の既定の Web ページ][iis-default]
 
@@ -44,22 +34,22 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 * Azure サブスクリプション ([無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます)。
 * 次のものを実行している開発コンピューター。
-  * Visual Studio 2015 または Visual Studio 2017。
+  * Visual Studio 2019 または Windows 2019。
   * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
 
 ## <a name="package-a-docker-image-container-with-visual-studio"></a>Visual Studio で Docker イメージ コンテナーをパッケージ化する
 
 Service Fabric SDK およびツールには、コンテナーを Service Fabric クラスターにデプロイするときに役立つサービスのテンプレートが用意されています。
 
-"管理者" として Visual Studio を起動します。  **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
+"管理者" として Visual Studio を起動します。  **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 
-**[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、**[OK]** をクリックします。
+**[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[作成]** をクリックします。
 
 **[ホスト コンテナーとアプリケーション]** テンプレートから **[コンテナー]** を選択します。
 
-**[イメージ名]** に「mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016」と入力します。これが [Windows Server Core Server と IIS の基本イメージ](https://hub.docker.com/r/microsoft-windows-servercore-iis)になります。
+**[イメージ名]** に「mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016」と入力します。これが [Windows Server Core Server と IIS の基本イメージ](https://hub.docker.com/_/microsoft-windows-servercore-iis)になります。
 
-ポート 80 で受信するサービスへの要求が、コンテナーのポート 80 にマッピングされるように、コンテナーとホストとの間のポート マッピングを構成します。  **[Container Port] (コンテナー ポート)** を "80" に設定し、**[ホスト ポート]** を "80" に設定します。  
+ポート 80 で受信するサービスへの要求が、コンテナーのポート 80 にマッピングされるように、コンテナーとホストとの間のポート マッピングを構成します。  **[Container Port] (コンテナー ポート)** を "80" に設定し、 **[ホスト ポート]** を "80" に設定します。  
 
 サービスに "MyContainerService" という名前を付けて **[OK]** をクリックします。
 
@@ -67,7 +57,7 @@ Service Fabric SDK およびツールには、コンテナーを Service Fabric 
 
 ## <a name="specify-the-os-build-for-your-container-image"></a>コンテナー イメージの OS ビルドを指定する
 
-特定のバージョンの Windows Server で構築されたコンテナーは、異なるバージョンの Windows Server を実行しているホスト上では動作しない可能性があります。 たとえば、Windows Server バージョン 1709 を使用して構築されたコンテナーは、Windows Server 2016 を実行するホスト上では動作しません。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 
+特定のバージョンの Windows Server で構築されたコンテナーは、異なるバージョンの Windows Server を実行しているホスト上では動作しない可能性があります。 たとえば、Windows Server バージョン 1709 を使用して構築されたコンテナーは、Windows Server 2016 を実行しているホスト上では動作しません。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 
 
 Service Fabric ランタイム バージョン 6.1 以降では、コンテナーごとに複数の OS イメージを指定し、それぞれに展開する必要がある OS のビルド バージョンでタグ付けすることができます。 これにより、異なるバージョンの Windows OS を実行しているホスト全体でアプリを実行できるようになります。 詳細については、「[OS ビルド固有のコンテナー イメージを指定する](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)」を参照してください。 
 
@@ -77,14 +67,14 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
     <ContainerHostPolicies CodePackageRef="Code"> 
       <ImageOverrides> 
         ...
-          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1803" /> 
-          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016" Os="14393" /> 
-          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1709" Os="16299" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowsservercore-1803" /> 
+          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016" Os="14393" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowsservercore-1709" Os="16299" /> 
       </ImageOverrides> 
     </ContainerHostPolicies> 
 ```
 
-サービス マニフェストは、引き続きナノサーバーの 1 つのイメージ `mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016` のみを指定します。
+サービス マニフェストは、引き続きナノサーバーの 1 つのイメージ `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016` のみを指定します。
 
 また、*ApplicationManifest.xml* ファイルで、**PasswordEncrypted** を **false** に変更します。 Docker Hub にあるパブリック コンテナー イメージのアカウントとパスワードは空白です。空白のパスワードを暗号化するとビルド エラーが発生するため、暗号化を無効にします。
 
@@ -100,13 +90,13 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 次のスクリプトを実行する前に、PowerShell で `Connect-AzAccount` を実行して Azure との接続を作成します。
 
-次のスクリプトをクリップボードにコピーして、**Windows PowerShell ISE** を開きます。  内容を空の Untitled1.ps1 ウィンドウに貼り付けます。 次に、スクリプト内の変数 (`subscriptionId`、`certpwd`、`certfolder`、`adminuser`、`adminpwd` など) に値を指定します。スクリプトを実行する前に、`certfolder` に指定したディレクトリが存在している必要があります。
+次のスクリプトをクリップボードにコピーして、**Windows PowerShell ISE** を開きます。  内容を空の Untitled1.ps1 ウィンドウに貼り付けます。 次に、スクリプト内の変数 `subscriptionId`、`certpwd`、`certfolder`、`adminuser`、`adminpwd` などに値を指定します。  スクリプトを実行する前に、`certfolder` に指定したディレクトリが存在している必要があります。
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
-変数の値を指定したら、**F5** キーを押してスクリプトを実行します。
+変数に実際の値を指定したら、**F5** キーを押してスクリプトを実行します。
 
-スクリプトを実行してクラスターが作成されたら、出力で `ClusterEndpoint` を検索します。 例: 
+スクリプトを実行してクラスターが作成されたら、出力で `ClusterEndpoint` を検索します。 次に例を示します。
 
 ```powershell
 ...
@@ -115,7 +105,7 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 ### <a name="install-the-certificate-for-the-cluster"></a>クラスターの証明書をインストールする
 
-*CurrentUser\My* 証明書ストアに PFX をインストールします。 PFX ファイルは、上記の PowerShell スクリプトで `certfolder` 環境変数を使用して指定したディレクトリにあります。
+ここで、*CurrentUser\My* 証明書ストアに PFX をインストールします。 PFX ファイルは、上記の PowerShell スクリプトで `certfolder` 環境変数を使用して指定したディレクトリにあります。
 
 そのディレクトリに移動してから、次の PowerShell コマンドを実行します。`certfolder` ディレクトリにある PFX ファイルの名前と、`certpwd` 変数に指定したパスワードは置き換えます。 この例では、現在のディレクトリは、PowerShell スクリプトの `certfolder` 変数で指定されたディレクトリに設定されています。 そこから、`Import-PfxCertificate`コマンドが実行されます。
 
@@ -140,9 +130,9 @@ Thumbprint                                Subject
 
 これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
 
-ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
+ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、 **[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-前に `Import-PfxCertificate` コマンドを実行したときの PowerShell ウィンドウで **CN=** に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 後の手順で必要になるため、この値を覚えておいてください。
+前に `Import-PfxCertificate` コマンドを実行したときの PowerShell ウィンドウで **CN=** に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 この値は、後の手順で必要になるため、覚えておいてください。
 
 **[詳細な接続パラメーター]** をクリックし、接続パラメーターの情報を確認します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順で `Import-PfxCertificate` を実行したときにインストールされた証明書の拇印に一致する必要があります。
 
@@ -160,7 +150,7 @@ Thumbprint                                Subject
 
 クラスターの実行中は、料金が継続的に発生します。 [クラスターの削除](service-fabric-cluster-delete.md)を検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、次の方法について説明しました。
 

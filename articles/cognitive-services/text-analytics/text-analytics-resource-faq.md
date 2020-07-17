@@ -1,7 +1,7 @@
 ---
 title: Text Analytics API に関してよく寄せられる質問
 titleSuffix: Azure Cognitive Services
-description: Text Analytics API に関する一般的な質問の回答を表示します。
+description: Azure Cognitive Services の Text Analytics API に関連する概念、コード、およびシナリオについてよく寄せられる質問に対する回答を示します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: a85fa543a6b26a5ea6452ce99fb91dc1ce465db7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73837121"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service に関してよく寄せられる質問 (FAQ)
 
@@ -47,11 +47,11 @@ ms.locfileid: "57545296"
 
 大きな変更が行われる場合、モデルとアルゴリズムの改良が告知されます。あるいは、重大な更新でなければ、告知されずにサービスに組み込まれます。 ある程度の時間が経過すると、同じテキストを入力したのに、感情スコアやキー フレーズ出力が異なることがあります。 クラウドで管理されている機械学習リソースを利用している結果であり、異常ではありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 不足している機能について質問がある場合は、 [UserVoice Web サイト](https://cognitive.uservoice.com/forums/555922-text-analytics)でご要望またはご投票ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
- [StackOverflow:Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow:Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

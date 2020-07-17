@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace にランディング ページを作成する | Azure
 description: Azure Marketplace と Microsoft AppSource に、アプリとサービスの公開元のランディング ページを作成する方法について説明します。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
-ms.topic: article
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: dsindona
+ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935604"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387803"
 ---
 # <a name="build-your-landing-page"></a>ランディング ページの作成
 
@@ -49,7 +48,7 @@ ms.locfileid: "64935604"
 | **関連する製品名とキーワードを "1 面のトップ" に配置する** | 展示している製品やソリューションを見るために、ユーザーにスクロールさせる |
 | **ソリューションを検証するため、Azure Certified など、Microsoft のブランド化ガイドラインに従ってブランド画像を使う** | 承認されていない Microsoft ブランド画像を使用している。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 *   Azure 認定バッジの詳細については、「[Microsoft Azure Certified ガイドライン](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines)」を参照してください。
 *   ブランド化についての各種リソースについては、[Brand Central](https://microsoft.sharepoint.com/teams/brandcentral) のページを参照してください。

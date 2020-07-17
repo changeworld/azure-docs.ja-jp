@@ -3,24 +3,23 @@ title: Azure VM での Oracle データベースの作成 | Microsoft Docs
 description: Azure 環境で Oracle Database 12c データベースをすばやく起動して実行します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
-manager: jeconnoc
+author: BorisB2015
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: borisb
+ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153887"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683638"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -28,19 +27,18 @@ ms.locfileid: "66153887"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
-
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
+
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
 仮想マシン (VM) を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
@@ -59,7 +57,7 @@ az vm create \
 
 VM を作成すると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` の値をメモします。 このアドレスは、VM へのアクセスに使用します。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/{snip}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -76,7 +74,7 @@ VM を作成すると、Azure CLI によって次の例のような情報が表�
 
 VM との SSH セッションを作成するには、次のコマンドを使用します。 IP アドレスを、VM の `publicIpAddress` 値に置き換えます。
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -93,7 +91,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 
     次のように出力されます。
 
-    ```bash
+    ```output
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
@@ -151,6 +149,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
+
 また、.bashrc ファイルに ORACLE_HOME と ORACLE_SID 変数を追加することもできます。 これにより、これらの環境変数が将来のサインインのために保存されます。任意のエディターを使用して、次のステートメントが `~/.bashrc` ファイルに追加されたことを確認してください。
 
 ```bash
@@ -184,7 +183,7 @@ export ORACLE_SID=cdb1
 
     次のように出力されます。
 
-    ```bash
+    ```output
       CON_ID NAME                           OPEN_MODE 
       ----------- ------------------------- ---------- 
       2           PDB$SEED                  READ ONLY 
@@ -205,6 +204,7 @@ export ORACLE_SID=cdb1
 VM を再起動したとき、既定では、Oracle データベースは自動的には開始しません。 自動的に開始するように Oracle データベースを設定するには、まず root としてサインインします。 次に、いくつかのシステム ファイルを作成および更新します。
 
 1. root としてサインオンします。
+
     ```bash
     sudo su -
     ```
@@ -217,7 +217,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 3.  `/etc/init.d/dbora` というファイルを作成し、次の内容を貼り付けます。
 
-    ```
+    ```bash
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
@@ -307,23 +307,23 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 4.  ブラウザーから EM Express に接続します。 ブラウザーが EM Express と互換性があることを確認してください (Flash のインストールが必要です)。 
 
-    ```
+    ```https
     https://<VM ip address or hostname>:5502/em
     ```
 
-**SYS** アカウントを使用してログインし、**[as sysdba]\(sysdba として\)** チェック ボックスにオンにできます。 インストール時に設定したパスワード **OraPasswd1** を使用します。 
+**SYS** アカウントを使用してログインし、 **[as sysdba]\(sysdba として\)** チェック ボックスにオンにできます。 インストール時に設定したパスワード **OraPasswd1** を使用します。 
 
 ![Oracle OEM Express ログイン ページのスクリーンショット](./media/oracle-quick-start/oracle_oem_express_login.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 これで、Azure での初めての Oracle データベース探索が終了しました。VM は必要なくなりましたので、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、関連するすべてのリソースを削除することができます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 他の [Azure 上での Oracle ソリューション](oracle-considerations.md)について学習します。 
 

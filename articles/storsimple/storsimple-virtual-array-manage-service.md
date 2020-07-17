@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2016
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232079"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
+
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure ポータルでデバイスを管理できます。 このポータルを使用すると、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスを 1 か所から集中的に監視でき、管理の負荷を最小限に抑えることができます。
 
@@ -91,7 +94,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 次の手順を実行して、サービス登録キーを取得します。
 
 #### <a name="to-get-the-service-registration-key"></a>サービス登録キーを取得するには
-1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt;** **[キー]** の順に移動します。
+1. **[StorSimple デバイス マネージャー]** ブレードで、 **[管理]&gt;** **[キー]** の順に移動します。
    
    ![キー ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. **[キー]** ブレードに、サービス登録キーが表示されます。 コピー アイコンを使用して、登録キーをコピーします。 
@@ -104,10 +107,10 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
 次の手順を実行して、サービス登録キーを再生成します。
 
 #### <a name="to-regenerate-the-service-registration-key"></a>サービス登録キーを再生成するには
-1. **[StorSimple デバイス マネージャー]** ブレードで、**[管理]&gt;** **[キー]** の順に移動します。
+1. **[StorSimple デバイス マネージャー]** ブレードで、 **[管理]&gt;** **[キー]** の順に移動します。
    
    ![キー ブレード](./media/storsimple-virtual-array-manage-service/getregkey2.png)
-2. **[キー]** ブレードで、**[再生成]** をクリックします。
+2. **[キー]** ブレードで、 **[再生成]** をクリックします。
    
    ![[再生成] をクリック](./media/storsimple-virtual-array-manage-service/getregkey5.png)
 3. **[サービス登録キーの再生成]** ブレードで、キーを再生成するときに必要な操作を確認します。 このサービスに登録されている以降のデバイスはすべて、新しい登録キーを使用します。 **[再生成]** をクリックして確定します。 登録が完了すると、その旨が通知されます。
@@ -119,7 +122,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
    
    このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * StorSimple Virtual Array の[使用を開始](storsimple-virtual-array-deploy1-portal-prep.md)する方法を確認します。
 * [StorSimple デバイスを管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

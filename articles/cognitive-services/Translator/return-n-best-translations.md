@@ -1,28 +1,29 @@
 ---
-title: N-Best の翻訳結果を返す - Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Microsoft Translator Text API を使用して N-Best の翻訳結果を返します。
+title: N-Best の翻訳結果を返す - Translator
+titleSuffix: Azure Cognitive Services
+description: Translator を使用して N-Best の翻訳結果を返します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 62992122dc16003078bb80ecd87c2bd3692586dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918316"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592680"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-Best の翻訳結果を返す方法
 
 > [!NOTE]
-> このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
+> このメソッドは非推奨とされます。 これは Translator の V3.0 では使用できません。
 
-Microsoft Translator API の GetTranslations() メソッドと GetTranslationsArray() メソッドには、オプションのブール型フラグ "IncludeMultipleMTAlternatives" が含まれます。
+Translator の GetTranslations() メソッドと GetTranslationsArray() メソッドには、オプションのブール型フラグ "IncludeMultipleMTAlternatives" が含まれます。
 トランスレーター エンジンの N-Best 一覧からデルタが提供されるメソッドでは、最大で maxTranslations の候補数まで値が返されます。
 
 シグネチャは次のとおりです。
@@ -57,4 +58,4 @@ Microsoft Translator API の GetTranslations() メソッドと GetTranslationsAr
 返される翻訳候補の数は最大で maxTranslations までですが、それより少ない場合もあります。
 
 ## <a name="language-pairs"></a>言語ペア
-この機能は、簡体字中国語と繁体字中国語の間では、翻訳方向を問わず使用できません。 Microsoft Translator がサポートしている他のすべての言語ペアで使用できます。
+この機能は、簡体中国語と繁体中国語の間では、翻訳方向を問わず使用できません。 Microsoft Translator がサポートしている他のすべての言語ペアで使用できます。

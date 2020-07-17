@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のリージョン プレゼンス
 description: この記事では、Azure Cosmos DB のリージョン プレゼンスとさまざまなクラウド環境について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: rimman
+ms.date: 07/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 787bcc8f0db60868008ec93fcacdec1283946d2f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 95b9a9804fe1a9473d226912f178284f701a1547
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243729"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72753223"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB のリージョン プレゼンス
 
@@ -38,7 +38,7 @@ Cosmos DB は、お客様が利用できる 5 つの異なる Azure クラウド
 
 Azure Cosmos DB は、[グローバルに分散される](distribute-data-globally.md)データベース サービスです。 任意の数の Azure リージョンをお客様の Azure Cosmos アカウントに関連付けることができ、お客様のデータは、自動的かつ透過的にレプリケートされます。 Azure Cosmos アカウントへのリージョンの追加と削除は、いつでも実行できます。 Azure Cosmos DB では、ターンキー グローバル分散機能とマルチマスター レプリケーション プロトコルによって、読み取りと書き込みが 10 ミリ秒未満の待機時間で 99 パーセンタイルで実行され、読み取りと書き込みに対して 99.999 % の可用性が提供され、お客様の Azure Cosmos アカウントに関連付けられたすべてのリージョン間でプロビジョニング スループットを柔軟にスケーリングすることができます。 Azure Cosmos DB では、5 つの明確に定義された整合性モデルも用意されており、お客様は特定の整合性モデルをお客様のデータに適用できます。 最後に、Azure Cosmos DB は、プロビジョニング スループット、99 パーセンタイルの待ち時間、高可用性、および一貫性を含む包括的な[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) を提供する業界唯一のデータベース サービスです。 上記の機能は、すべての Azure クラウドで使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、以下の記事で Azure Cosmos DB のコアとなる概念を確認できます。
 

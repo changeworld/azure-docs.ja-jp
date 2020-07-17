@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - クラスターからのアプリケーションの削除 | Microsoft Docs
+title: PowerShell でクラスターからアプリケーションを削除する
 description: Azure PowerShell のサンプル スクリプト - Service Fabric クラスターからのアプリケーションの削除。
 services: service-fabric
 documentationcenter: ''
@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c8956b8bbbbe6d0928511da3cf75bfd23a76ed21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621776"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75610286"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Service Fabric クラスターからのアプリケーションの削除
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>PowerShell を使用して Service Fabric クラスターからアプリケーションを削除する
 
 このサンプル スクリプトは、実行中の Service Fabric アプリケーション インスタンスを削除し、クラスターからアプリケーションの種類とバージョンの登録を解除します。  アプリケーション インスタンスを削除すると、そのアプリケーションに関連付けられている実行中のサービス インスタンスもすべて削除されます。 必要に応じてパラメーターをカスタマイズします。 
 
@@ -41,7 +40,7 @@ ms.locfileid: "60621776"
 | [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | 実行中の Service Fabric アプリケーション インスタンスをクラスターから削除します。  |
 | [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Service Fabric アプリケーションの種類とバージョンの登録をクラスターから解除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/service-fabric/?view=azureservicefabricps)を参照してください。
 

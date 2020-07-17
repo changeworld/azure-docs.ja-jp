@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL のサーバー パラメーターの構成方法
+title: サーバー パラメーターの構成 - Azure portal - Azure Database for MySQL
 description: この記事では、Azure ポータルを使用して Azure Database for MySQL で使用できる MySQL サーバー パラメータを構成する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 103e09a0e2b9dd409fa2ddaff1c5311ef9936d22
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 4/16/2020
+ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538511"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605153"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database for MySQL のサーバー パラメーターを構成する方法
 
@@ -26,7 +26,7 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 ![列挙ドロップ ダウン](./media/howto-server-parameters/3-toggle_parameter.png)
 4. **[保存]** をクリックして変更を保存します。
 ![変更の保存または破棄](./media/howto-server-parameters/4-save_parameters.png)
-5. パラメーターの新しい値を保存した場合は、**[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
+5. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧
@@ -35,30 +35,23 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 
 ## <a name="non-configurable-server-parameters"></a>構成不可能なサーバー パラメーター
 
-InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-service-tiers.md)に関連付けられています。
+InnoDB バッファー プールのサイズは構成できず、ご自分の[価格レベル](concepts-service-tiers.md)に関連付けられています。
 
-|**価格レベル**| **コンピューティング世代**|**仮想コア数**|**InnoDB バッファー プール (MB)**| **最大接続数**|
-|---|---|---|---|--|
-|Basic| Gen 4| 1| 960| 50|
-|Basic| Gen 4| 2| 2560| 100|
-|Basic| Gen 5| 1| 960| 50|
-|Basic| Gen 5| 2| 2560| 100|
-|汎用| Gen 4| 2| 3584| 300|
-|汎用| Gen 4| 4| 7680| 625|
-|汎用| Gen 4| 8| 15360| 1250|
-|汎用| Gen 4| 16| 31232| 2500|
-|汎用| Gen 4| 32| 62976| 5000|
-|汎用| Gen 5| 2| 3584| 300|
-|汎用| Gen 5| 4| 7680| 625|
-|汎用| Gen 5| 8| 15360| 1250|
-|汎用| Gen 5| 16| 31232| 2500|
-|汎用| Gen 5| 32| 62976| 5000|
-|汎用| Gen 5| 64| 125952| 10000|
-|メモリ最適化| Gen 5| 2| 7168| 600|
-|メモリ最適化| Gen 5| 4| 15360| 1250|
-|メモリ最適化| Gen 5| 8| 30720| 2500|
-|メモリ最適化| Gen 5| 16| 62464| 5000|
-|メモリ最適化| Gen 5| 32| 125952| 10000|
+|**価格レベル**|**仮想コア数**|**InnoDB バッファー プールのサイズ (MB) <br>(最大 4 TB のストレージをサポートするサーバー)**| **InnoDB バッファー プールのサイズ (MB) <br>(最大 16 TB のストレージをサポートするサーバー)**|
+|:---|---:|---:|---:|
+|Basic| 1| 832| |
+|Basic| 2| 2560| |
+|General Purpose| 2| 3584| 7168|
+|General Purpose| 4| 7680| 15360|
+|General Purpose| 8| 15360| 30720|
+|General Purpose| 16| 31232| 62464|
+|General Purpose| 32| 62976| 125952|
+|General Purpose| 64| 125952| 251904|
+|メモリ最適化| 2| 7168| 14336|
+|メモリ最適化| 4| 15360| 30720|
+|メモリ最適化| 8| 30720| 61440|
+|メモリ最適化| 16| 62464| 124928|
+|メモリ最適化| 32| 125952| 251904|
 
 次に示す追加のサーバー パラメーターは、システム内で構成できません。
 
@@ -67,7 +60,8 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 |Basic レベルの innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
-|innodb_log_file_size|512 MB|
+|innodb_log_file_size|256MB|
+|innodb_log_files_in_group|2|
 
 ここに表示されていないその他のサーバー パラメーターはすべて、バージョン [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) および [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) の MySQL の既定値に設定されます。
 
@@ -75,14 +69,17 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 
 ### <a name="populating-the-time-zone-tables"></a>タイム ゾーン テーブルに入力する
 
-サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
+サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
 
 > [!NOTE]
-> MySQL Workbench から `az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
+> MySQL Workbench から `mysql.az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。 サーバーを再起動するには、[Azure portal](howto-restart-server-portal.md) または [CLI](howto-restart-server-cli.md) を使用します。
 
 利用可能なタイム ゾーン値を表示するには、次のコマンドを実行します。
 
@@ -106,6 +103,6 @@ SET time_zone = 'US/Pacific';
 
 [日付と時刻関数](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)については MySQL ドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)

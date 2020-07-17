@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell サンプル スクリプト - Azure Firewall のテスト環境を作成する
-description: Azure PowerShell サンプル スクリプト - Azure Firewall のテスト環境を作成します。
+title: Azure Firewall のテスト環境を作成する
+description: このサンプル スクリプトでは、ファイアウォールとテスト ネットワーク環境を作成します。 ネットワークには、3 つのサブネットを含む 1 つのVNet があります。
 services: virtual-network
 author: vhorne
 ms.service: firewall
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 8/13/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6e85bd6ec51cff27fed6d0b2d9e73f94325e4d4f
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500238"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74195887"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall のテスト環境を作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "58500238"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-ファイアウォールは AzureFirewallSubnet にあり、www.microsoft.com へのアクセスを許可する単一のルールを含むアプリケーション ルール コレクションが構成されています。
+ファイアウォールは AzureFirewallSubnet にあり、`www.microsoft.com` へのアクセスを許可する単一のルールを含むアプリケーション ルール コレクションで構成されています。
 
 ユーザー定義のルートが作成されます。このルートは、ファイアウォール規則が適用されるファイアウォールを経由する ServersSubnet からのネットワーク トラフィックを指します。
 
@@ -77,7 +77,7 @@ Remove-AzResourceGroup -Name AzfwSampleScriptEastUS -Force
 |[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|新しい Azure Firewall アプリケーション ルールを作成します。|
 |[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Azure Firewall オブジェクトへの変更をコミットします。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

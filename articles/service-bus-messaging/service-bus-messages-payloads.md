@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus のメッセージ、ペイロード、およびシリアル化 | Microsoft Docs
-description: Service Bus メッセージのペイロードの概要
+description: この記事では、Azure Service Bus のメッセージ、ペイロード、メッセージ ルーティング、およびシリアル化について概要を説明します。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733928"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76759399"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -52,7 +52,7 @@ Service Bus メッセージは、どのような形式でもサービス側で S
 | [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc)               | このプロパティは、遅延後にのみ取得可能になるメッセージの場合に、メッセージが論理的にエンキューされ、シーケンス処理されて取得可能になる UTC 時刻を定義します。                                                                                                                                                                                                                 |
 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)                        | このシーケンス番号は、メッセージがブローカーおよび関数によって受け入れおよび格納されるときに真の識別子として割り当てられる 64 ビットの整数です。 パーティション分割されたエンティティの場合、最上位の 16 ビットはパーティション識別子を表します。 シーケンス番号はギャップなしで単調に増分されます。 48 - 64 ビット範囲が使い果たされると、0 にロールオーバーされます。 このプロパティは読み取り専用です。                                                                |
 | [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) (group-id)                  | この値はアプリケーションによって定義され、セッションを認識するエンティティの場合に、メッセージのセッションへの所属を指定します。 同じセッション識別子を持つメッセージがまとめてロックされ、正確な順序での処理と多重化が可能になります。 セッションを認識しないエンティティの場合、この値は無視されます。                                                                                                                                     |
-| [サイズ](/dotnet/api/microsoft.azure.servicebus.message.size)                                  | ストレージ クォータに対してカウントされる際に、ブローカー ログに格納されているメッセージのサイズをバイト数で示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                                                                                       |
+| [[サイズ]](/dotnet/api/microsoft.azure.servicebus.message.size)                                  | ストレージ クォータに対してカウントされる際に、ブローカー ログに格納されているメッセージのサイズをバイト数で示します。 このプロパティは読み取り専用です。                                                                                                                                                                                                                                                                                                       |
 | [State](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.state)                                 | ログ内のメッセージの状態を示します。 このプロパティはメッセージの参照中 ("ピーク") にのみ関係し、メッセージがキューの先頭に到達したときに "アクティブ" で取得可能かどうか、メッセージが遅延しているかどうか、またはスケジュールされるのを待機しているかどうかを示します。 このプロパティは読み取り専用です。                                                                                                                                           |
 | [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive)                            | この値は、**EnqueueTimeUtc** でキャプチャされた、メッセージがブローカーによって受け入れおよび格納された時刻から、メッセージが有効期限切れになるまでの相対的な期間です。 明示的に設定しない場合、それぞれのキューまたはトピックの **DefaultTimeToLive** が値として見なされます。 メッセージレベルの **TimeToLive** 値をエンティティの **DefaultTimeToLive** の設定より長くすることはできません。 長くした場合、自動的に調整されます。 |
 | [To](/dotnet/api/microsoft.azure.servicebus.message.to) (to)                               | このプロパティはルーティング シナリオでの将来の使用のために予約されており、現在はブローカー自体で無視されます。 アプリケーションは、ルールに基づく自動転送チェーンのシナリオでこの値を使用して、メッセージの目的の論理送信先を示すことができます。                                                                                                                                                                                   |
@@ -77,7 +77,7 @@ Service Bus 名前空間内のルーティングは、自動転送チェーン�
 
 Java または .NET Standard バージョンとは異なり、.NET Framework バージョンの Service Bus API では、任意の .NET オブジェクトをコンストラクターに渡して **BrokeredMessage** インスタンスを作成することができます。 
 
-レガシ SBMP プロトコルを使用する場合、それらのオブジェクトは、既定のバイナリ シリアライザーまたは外部から提供されたシリアライザーを使用してシリアル化されます。 AMQP プロトコルを使用する場合、オブジェクトは AMQP オブジェクトにシリアル化されます。 受信側は、必要な型を指定して [GetBody<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドを実行することで、これらのオブジェクトを取得できます。 AMQP の場合、オブジェクトは **ArrayList** および **IDictionary<string,object>** の各オブジェクトの AMQP グラフにシリアル化され、どの AMQP クライアントでも復号化できます。 
+レガシ SBMP プロトコルを使用する場合、それらのオブジェクトは、既定のバイナリ シリアライザーまたは外部から提供されたシリアライザーを使用してシリアル化されます。 AMQP プロトコルを使用する場合、オブジェクトは AMQP オブジェクトにシリアル化されます。 受信側は、必要な型を指定して [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドを実行することで、これらのオブジェクトを取得できます。 AMQP の場合、オブジェクトは **ArrayList** および **IDictionary<string,object>** の各オブジェクトの AMQP グラフにシリアル化され、どの AMQP クライアントでも復号化できます。 
 
 この見えないシリアル化のマジックは便利ですが、アプリケーションはオブジェクトのシリアル化を明示的に制御して、オブジェクト グラフをメッセージに含める前にストリームに変換し、受信側ではその逆の操作を行う必要があります。 これは相互運用可能な結果を生成します。 また、AMQP には強力なバイナリ エンコード モデルがありますが、このモデルは AMQP メッセージング エコシステムに関連付けられており、HTTP クライアントがそのようなペイロードをデコードすると問題が発生するという点にも注意してください。 
 
@@ -85,7 +85,7 @@ Java または .NET Standard バージョンとは異なり、.NET Framework バ
 
 .NET Standard および Java バージョンの API はバイト配列しか受け入れません。つまり、アプリケーションはオブジェクトのシリアル化制御を処理する必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

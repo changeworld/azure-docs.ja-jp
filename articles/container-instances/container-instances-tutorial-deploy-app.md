@@ -1,19 +1,15 @@
 ---
-title: チュートリアル - Azure Container Instances にコンテナー アプリをデプロイする
+title: チュートリアル - コンテナー インスタンスにコンテナー アプリをデプロイする
 description: Azure Container Instances チュートリアル 3/3 - Azure Container Instances にコンテナー アプリケーションをデプロイする
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326741"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78249968"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする
 
@@ -36,7 +32,9 @@ ms.locfileid: "56326741"
 
 ### <a name="get-registry-credentials"></a>レジストリ資格情報を取得する
 
-[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 「[Azure Container Instances から Azure Container Registry の認証を受ける](../container-registry/container-registry-auth-aci.md)」に示したように、レジストリへの "*プル*" アクセス許可を持った Azure Active Directory のサービス プリンシパルを作成して構成することが、多くのシナリオにおいてベスト プラクティスとなります。 必要なアクセス許可でサービス プリンシパルを作成するサンプル スクリプトについては、そちらの記事を参照してください。 サービス プリンシパルの ID とパスワードを書き留めておいてください。 これらの資格情報は、コンテナーをデプロイするときに使用します。
+[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート Azure コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 
+
+レジストリへの "*プル*" アクセス許可を持った Azure Active Directory のサービス プリンシパルを作成して構成することが、多くのシナリオにおいてベスト プラクティスとなります。 必要なアクセス許可を持つサービス プリンシパルを作成するためのサンプル スクリプトについては、「[Azure Container Instances から Azure Container Registry の認証を受ける](../container-registry/container-registry-auth-aci.md)」を参照してください。 "*サービス プリンシパル ID*" と "*サービス プリンシパル パスワード*" を書き留めておいてください。 これらの資格情報は、コンテナーをデプロイするときにレジストリにアクセスするために使用します。
 
 また、コンテナー レジストリ ログイン サーバーの完全な名前が必要となります (`<acrName>` は実際のレジストリ名に置き換えてください)。
 
@@ -68,13 +66,12 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 
 デプロイが成功すると、[az container show][az-container-show] コマンドでコンテナーの完全修飾ドメイン名 (FQDN) が表示されます。
 
-```bash
+```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-例: 
-```console
-$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+次に例を示します。
+```output
 "aci-demo.eastus.azurecontainer.io"
 ```
 
@@ -90,14 +87,13 @@ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 
 出力例:
 
-```bash
-$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
+```output
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアル シリーズで作成したリソースのいずれかが不要になった場合は、[az group delete][az-group-delete] コマンドを実行して、リソース グループとそこに含まれているすべてのリソースを削除できます。 このコマンドは、作成したコンテナー レジストリだけでなく、実行中のコンテナーと関連するすべてのリソースを削除します。
 
@@ -105,7 +101,7 @@ listening on port 80
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Container Instances インスタンスにコンテナーをデプロイするプロセスを完了しました。 次の手順を完了しました。
 

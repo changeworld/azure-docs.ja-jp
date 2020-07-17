@@ -1,19 +1,19 @@
 ---
-title: Azure Active Directory ユーザーをクラスターに同期する - Azure HDInsight
-description: Azure Active Directory の認証されたユーザーをクラスターに同期します。
-ms.service: hdinsight
+title: Azure Active Directory ユーザーを HDInsight クラスターに同期する
+description: Azure Active Directory の認証されたユーザーを HDInsight クラスターに同期します。
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
-ms.custom: hdinsightactive
+ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive
+ms.date: 11/21/2019
+ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688544"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75744861"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
@@ -27,15 +27,15 @@ ms.locfileid: "64688544"
 
 ホストを表示するには、Ambari Web UI を開きます。 各ノードが、新しい無人アップグレードの設定で更新されます。
 
-1. [Azure Portal](https://portal.azure.com) で、ESP クラスターに関連付けられた Azure AD ディレクトリに移動します。
+1. [Azure Portal](https://portal.azure.com) から、ESP クラスターに関連付けられた Azure AD ディレクトリに移動します。
 
-2. 左側のメニューから **[すべてのユーザー]** を選択してから、**[New user] (新しいユーザー)** を選択します。
+2. 左側のメニューから **[すべてのユーザー]** を選択してから、 **[New user] (新しいユーザー)** を選択します。
 
-    ![[すべてのユーザー] ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Azure portal のすべてのユーザーとグループ](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ESP クラスターを作成するための[手順の例](hdinsight-domain-joined-configure.md)には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
 
-    ![[New user] (新しいユーザー) ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Azure portal ユーザー ウィンドウのグループの選択](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. **作成** を選択します。
 
@@ -45,27 +45,27 @@ ms.locfileid: "64688544"
 
 次のメソッドは、Ambari REST API で POST を使用します。 詳細については、「[Ambari REST API を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari-rest-api.md)」を参照してください。
 
-1. [SSH でクラスターに接続します](hdinsight-hadoop-linux-use-ssh-unix.md)。 Azure Portal のクラスターの概要ペインから、**[Secure Shell (SSH)]** ボタンを選択します。
+1. [ssh コマンド](hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して `CLUSTERNAME` をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-    ![[Secure Shell (SSH)]](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-2. 表示されている `ssh` コマンドをコピーし、それを SSH クライアントに貼り付けます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
-
-3. 認証の後、次のコマンドを入力します。
+1. 認証の後、次のコマンドを入力します。
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> -sS -H "X-Requested-By: ambari" \
+    curl -u admin:PASSWORD -sS -H "X-Requested-By: ambari" \
     -X POST -d '{"Event": {"specs": [{"principal_type": "groups", "sync_type": "existing"}]}}' \
-    "https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events"
+    "https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events"
     ```
-    
+
     応答は次のようになります。
 
     ```json
     {
       "resources" : [
         {
-          "href" : "http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
+          "href" : "http://<ACTIVE-HEADNODE-NAME>.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
           "Event" : {
             "id" : 1
           }
@@ -74,17 +74,17 @@ ms.locfileid: "64688544"
     }
     ```
 
-4. 同期の状態を表示するには、新しい `curl` コマンドを実行します。
+1. 同期の状態を表示するには、新しい `curl` コマンドを実行します。
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
-    
+
     応答は次のようになります。
-    
+
     ```json
     {
-      "href" : "http://hn0-hadoop.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
+      "href" : "http://<ACTIVE-HEADNODE-NAME>.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
       "Event" : {
         "id" : 1,
         "specs" : [
@@ -120,32 +120,33 @@ ms.locfileid: "64688544"
     }
     ```
 
-5. この結果は、状態が **[完了]** であり、新しいユーザーが 1 人作成され、そのユーザーにメンバシップが割り当てられたことを示しています。 この例では、ユーザーが Azure AD 内の同じグループに追加されたため、ユーザーは "HiveUsers" 同期済み LDAP グループに割り当てられます。
+1. この結果は、状態が **[完了]** であり、新しいユーザーが 1 人作成され、そのユーザーにメンバーシップが割り当てられたことを示しています。 この例では、ユーザーが Azure AD 内の同じグループに追加されたため、ユーザーは "HiveUsers" 同期済み LDAP グループに割り当てられます。
 
-> [!NOTE]  
-> 前のメソッドは、クラスターの作成中にドメイン設定の **[Access user group] (アクセス ユーザー グループ)** プロパティで指定された Azure AD グループのみを同期します。 詳細については、「[create an HDInsight cluster (HDInsight クラスターを作成する)](domain-joined/apache-domain-joined-configure.md)」を参照してください。
+    > [!NOTE]  
+    > 上記の方法では、クラスターの作成時にドメイン設定の**アクセス ユーザー グループ** プロパティに指定されている Azure AD グループのみが同期されます。 詳細については、「[create an HDInsight cluster (HDInsight クラスターを作成する)](domain-joined/apache-domain-joined-configure.md)」を参照してください。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>新しく追加された Azure AD ユーザーを確認する
 
-新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
+新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://CLUSTERNAME.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
 
 1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
-    ![Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Apache Ambari ダッシュボードの Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. ページの左側の **[User + Group Management] (ユーザーとグループの管理)** メニュー グループの下にある **[ユーザー]** を選択します。
 
-    ![[ユーザー] メニュー項目](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![HDInsight の [ユーザーとグループ] メニュー](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. 新しいユーザーが [ユーザー] テーブル内に表示されます。 [種類] は `Local` ではなく、`LDAP` に設定されています。
 
-    ![[ユーザー] ページ](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![HDInsight aad ユーザー ページの概要](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>新しいユーザーとして Ambari にログインする
 
-新しいユーザー (またはその他の任意のドメイン ユーザー) が Ambari にログインしたとき、そのユーザーは自身の完全な Azure AD ユーザー名とドメイン資格情報を使用します。  Ambari は、Azure AD 内のユーザーの表示名であるユーザー エイリアスを表示します。 新しいユーザーの例では、`hiveuser3@contoso.com` というユーザー名を持っています。 Ambari では、この新しいユーザーは `hiveuser3` として表示されますが、このユーザーは `hiveuser3@contoso.com` として Ambari にログインします。
+新しいユーザー (またはその他の任意のドメイン ユーザー) が Ambari にログインしたとき、そのユーザーは自身の完全な Azure AD ユーザー名とドメイン資格情報を使用します。  Ambari は、Azure AD 内のユーザーの表示名であるユーザー エイリアスを表示します。
+新しいユーザーの例では、`hiveuser3@contoso.com` というユーザー名を持っています。 Ambari では、この新しいユーザーは `hiveuser3` として表示されますが、このユーザーは `hiveuser3@contoso.com` として Ambari にログインします。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [ESP HDInsight での Apache Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
 * [ESP を使用する HDInsight クラスターを管理する](hdinsight-domain-joined-manage.md)

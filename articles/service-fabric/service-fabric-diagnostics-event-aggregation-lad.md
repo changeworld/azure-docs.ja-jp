@@ -1,25 +1,16 @@
 ---
-title: Linux Azure Diagnostics を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
+title: Linux Azure Diagnostics を使用したイベントの集計
 description: Azure Service Fabric クラスターの監視と診断に LAD を使用したイベントの集計と収集について説明します。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 212158d9a76fa2e49c60be0b5c52f281497c155b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669420"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75609963"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -45,12 +36,12 @@ Service Fabric では、操作イベントやランタイム イベントなど�
 ## <a name="deploy-the-diagnostics-extension"></a>診断拡張機能のデプロイ
 ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 
 
-クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、**[診断]** を **[オン]** に設定します。 クラスターの作成後、ポータルを使用してこの設定を変更することはできません。そのため、Resource Manager テンプレートで適切な変更を行う必要があります。
+クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、 **[診断]** を **[オン]** に設定します。 クラスターの作成後、ポータルを使用してこの設定を変更することはできません。そのため、Resource Manager テンプレートで適切な変更を行う必要があります。
 
 これにより、LAD エージェントが指定されたログ ファイルを監視するように構成されます。 新しい行がファイルに追加されるたびに、指定したストレージ (テーブル) に送信される syslog エントリが作成されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](https://lttng.org/docs)と [LAD の使用](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)に関するページを参照してください。
 2. メトリックの収集、クラスターにデプロイされた Containers の監視、ログの視覚化に役立つように [Log Analytics エージェントを設定](service-fabric-diagnostics-event-analysis-oms.md)します。 

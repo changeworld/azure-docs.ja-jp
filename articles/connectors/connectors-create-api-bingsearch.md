@@ -1,30 +1,27 @@
 ---
-title: Bing Search への接続 - Azure Logic Apps
-description: Bing Search REST API と Azure Logic Apps を使用してニュースを検索します
+title: Bing Search に接続する
+description: Azure Logic Apps を使用して Bing Search の結果を検索するタスクとワークフローを自動化する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: article
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313551"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75665889"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Search と Azure Logic Apps を使用してニュースを検索する
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Bing Search の結果を検索する
 
 この記事では、Bing Search コネクタを使用してロジック アプリの中から Bing Search によってニュース、ビデオ、その他の項目を検索する方法を示します。 このようにして、検索結果を処理するためのタスクとワークフローを自動化するロジック アプリを作成して、他のアクションがその項目を利用できるように設定できます。 
 
 たとえば、検索条件に基づいてニュース項目を検索し、その項目が Twitter のフィードにツイートとして投稿されるように指定できます。
 
-Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
-コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">Bing Search コネクタ リファレンス</a>に関する記事を参照してください。
+Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+コネクタ固有の技術情報については、[Bing Search コネクタ リファレンス](https://docs.microsoft.com/connectors/bingsearch/)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +41,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 2. 検索ボックスに、フィルターとして「Bing search」と入力します。 トリガーの一覧から、目的のトリガーを選択します。
 
-   この例では、次のトリガーを使用します。**Bing Search - 新しいニュース記事**
+   この例では、 **[Bing Search - On new news article]\(Bing Search - 新しいニュース記事\)** トリガーを使用します
 
    ![Bing Search トリガーを検索する](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -58,17 +55,17 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
    | Search Query | はい | <*search-words*> | 使用する検索キーワードを入力します。 |
    | Market | はい | <*locale*> | 検索ロケール。 既定値は "en-US" ですが、他の値を選択できます。 |
    | Safe Search | はい | <*search-level*> | 成人向けコンテンツを除外するためのフィルター レベル。 既定値は "中" ですが、他のレベルを選択します。 |
-   | Count | いいえ  | <*results-count*> | 返される結果数を指定します。 既定値は 20 ですが、他の値を指定できます。 実際に返される結果の数は、指定した数より少ないことがあります。 |
-   | Offset | いいえ  | <*skip-value*> | 結果が返される前にスキップする結果の数 |
+   | Count | いいえ | <*results-count*> | 返される結果数を指定します。 既定値は 20 ですが、他の値を指定できます。 実際に返される結果の数は、指定した数より少ないことがあります。 |
+   | Offset | いいえ | <*skip-value*> | 結果が返される前にスキップする結果の数 |
    |||||
 
-   例: 
+   次に例を示します。
 
    ![トリガーの設定](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
 4. トリガーが結果をチェックする間隔と頻度を選択します。
 
-5. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
+5. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
 6. トリガーの結果を使用して実行するタスクの 1 つまたは複数のアクションをロジック アプリに追加する操作に進みます。
 
@@ -80,7 +77,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. Azure Portal または Visual Studio で、ロジック アプリをロジック アプリ デザイナーで開きます。 この例では、Azure Portal を使用します。
 
-2. トリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
+2. トリガーまたはアクションで、 **[新しいステップ]**  >  **[アクションの追加]** を選択します。
 
    この例では、次のトリガーを使用します。
 
@@ -89,7 +86,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    ![アクションを追加する](./media/connectors-create-api-bing-search/add-action.png)
 
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
 3. 検索ボックスに、フィルターとして「Bing search」と入力します。
 アクションの一覧から、目的のアクションを選択します。
@@ -109,8 +106,8 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    | Search Query | はい | <*search-expression*> | トリガー結果にクエリを実行する式を入力します。 動的コンテンツ リストのフィールドから選択することも、式ビルダーを使用して式を作成することもできます。 |
    | Market | はい | <*locale*> | 検索ロケール。 既定値は "en-US" ですが、他の値を選択できます。 |
    | Safe Search | はい | <*search-level*> | 成人向けコンテンツを除外するためのフィルター レベル。 既定値は "中" ですが、他のレベルを選択します。 |
-   | Count | いいえ  | <*results-count*> | 返される結果数を指定します。 既定値は 20 ですが、他の値を指定できます。 実際に返される結果の数は、指定した数より少ないことがあります。 |
-   | Offset | いいえ  | <*skip-value*> | 結果が返される前にスキップする結果の数 |
+   | Count | いいえ | <*results-count*> | 返される結果数を指定します。 既定値は 20 ですが、他の値を指定できます。 実際に返される結果の数は、指定した数より少ないことがあります。 |
+   | Offset | いいえ | <*skip-value*> | 結果が返される前にスキップする結果の数 |
    |||||
 
    たとえば、カテゴリ名に "tech" が含まれる結果が返されるようにする必要があるとします。
@@ -131,7 +128,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       ![フィールドを選択する](./media/connectors-create-api-bing-search/expression-select-field.png)
 
-   4. 完了したら、**[OK]** を選びます。
+   4. 終了したら、 **[OK]** を選択します。
 
       **[検索クエリ]** ボックスに、次の形式で式が表示されます。
 
@@ -141,7 +138,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       `"@{contains(triggerBody()?['category'],'tech')}"`
 
-5. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
+5. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
 <a name="create-connection"></a>
 
@@ -154,25 +151,20 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | 接続名 | はい | <*connection-name*> | 作成する接続の名前 |
-   | API バージョン | はい | <*API-version*> | 既定では、Bing Search API バージョンは現在のバージョンに設定されています。 必要に応じて、以前のバージョンを選択できます。 |
+   | API Version | はい | <*API-version*> | 既定では、Bing Search API バージョンは現在のバージョンに設定されています。 必要に応じて、以前のバージョンを選択できます。 |
    | API キー | はい | <*API-key*> | 前に取得した Bing Search API キー。 キーがない場合は、ご自身の [API キーを今すぐ](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)取得します。 |  
    |||||  
 
-   例: 
+   次に例を示します。
 
    ![接続を作成する](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 操作が完了したら、**[作成]** を選択します。
+2. 完了したら **[作成]** を選択します。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/bingsearch/)を参照してください。
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/bingsearch/)を参照してください。
 
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

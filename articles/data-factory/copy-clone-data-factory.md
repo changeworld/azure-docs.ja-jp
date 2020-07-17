@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory のデータ ファクトリをコピーまたは複製する | Microsoft Docs
+title: Azure Data Factory のデータ ファクトリをコピーまたは複製する
 description: Azure Data Factory のデータ ファクトリをコピーまたは複製する方法について説明します
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 5e44bda8648fbf26487b04cf36a8fd0ec085c411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575615"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81414103"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory のデータ ファクトリをコピーまたは複製する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、Azure Data Factory のデータ ファクトリをコピーまたは複製する方法について説明します。
 
@@ -36,7 +38,7 @@ ms.locfileid: "57575615"
 
 1. 前提条件として、Azure portal からターゲット データ ファクトリを作成する必要があります。
 
-1. ご自分のソース ファクトリ内にセルフホステッド統合ランタイムがある場合は、ターゲット ファクトリ内に同じ名前を使用してそれを事前に作成する必要があります。 異なるファクトリでセルフホステッド IR を共有する場合は、[こちら](author-visually.md#best-practices-for-git-integration)で公開されているパターンを使用できます。
+1. ご自分のソース ファクトリ内にセルフホステッド統合ランタイムがある場合は、ターゲット ファクトリ内に同じ名前を使用してそれを事前に作成する必要があります。 異なるファクトリでセルフホステッド IR を共有する場合は、[こちら](source-control.md#best-practices-for-git-integration)で公開されているパターンを使用できます。
 
 1. GIT モードを使用している場合は、ポータルから発行するたびに、ファクトリの Resource Manager テンプレートが、GIT のリポジトリの adf_publish ブランチに保存されます。
 
@@ -46,6 +48,6 @@ ms.locfileid: "57575615"
 
 1. セキュリティ上の理由から、生成された Resource Manager テンプレートには、シークレット情報 (リンクされたサービスのパスワードなど) は一切含まれません。 そのため、それらのパスワードは、デプロイのパラメーターとして指定する必要があります。 パラメーターを指定することが望ましくない場合は、リンクされたサービスの接続文字列とパスワードを Azure Key Vault から取得する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Data Factory UI を使用してデータ ファクトリを作成する](quickstart-create-data-factory-portal.md)」で、Azure portal におけるデータ ファクトリ作成のガイダンスを確認してください。

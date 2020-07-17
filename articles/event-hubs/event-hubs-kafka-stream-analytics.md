@@ -1,29 +1,29 @@
 ---
-title: Stream Analytics を使用して Apache Kafka イベントを処理する - Azure Event Hubs | Microsoft Docs
-description: この記事では、Azure Stream Analytics を使用してイベント ハブを介して取り込まれた Kafka イベントを処理する方法について説明します。
+title: Azure Event Hubs - Apache Kafka イベントを処理する
+description: チュートリアル:この記事では、Azure Stream Analytics を使用してイベント ハブを介して取り込まれた Kafka イベントを処理する方法について説明します。
 services: event-hubs
 documentationcenter: ''
 author: spelluru
 manager: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539159"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632795"
 ---
-# <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
-この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
+# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
+この記事では、データを Event Hubs にストリーム配信し、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
 
-1. Kafka 対応 Event Hubs 名前空間を作成する。
+1. Event Hubs 名前空間を作成します。
 2. イベント ハブにメッセージを送信する Kafka クライアントを作成する。
 3. イベント ハブから AzureBlob ストレージにデータをコピーする Stream Analytics ジョブを作成する。 
 
@@ -38,38 +38,14 @@ ms.locfileid: "57539159"
 * [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
 * Maven バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
 * [Git](https://www.git-scm.com/)
-* **Azure ストレージ アカウント**。 持っていない場合は、次に進む前に[作成します](../storage/common/storage-quickstart-create-account.md)。 このチュートリアルの Stream Analytics ジョブでは、出力データを Azure Blob ストレージに格納します。 
+* **Azure ストレージ アカウント**。 持っていない場合は、次に進む前に[作成します](../storage/common/storage-account-create.md)。 このチュートリアルの Stream Analytics ジョブでは、出力データを Azure Blob ストレージに格納します。 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka 対応 Event Hubs 名前空間の作成
+## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
+**Standard** レベルの Event Hubs 名前空間を作成すると、名前空間の Kafka エンドポイントが自動的に有効になります。 Kafka プロトコルを使用するアプリケーションから Standard レベルの Event Hubs にイベントをストリーム配信できます。 **Standard** レベルの Event Hubs 名前空間を作成するには、[Azure portal を使用したイベント ハブの作成](event-hubs-create.md)に関するページの手順に従います。 
 
-1. [Azure portal](https://portal.azure.com) にサインインし、画面の左上にある **[リソースの作成]** をクリックします。
-2. **Event Hubs** を検索し、以下に示すオプションを選択します。
-    
-    ![ポータルでの Event Hubs の検索](./media/event-hubs-kafka-stream-analytics/select-event-hubs.png) 
-3. **[Event Hubs]** ページで **[作成]** を選択します。
-4. **[名前空間の作成]** ページで、次の操作を行います。 
-    1. 名前空間には一意の**名前**を指定します。 
-    2. **[価格レベル]** を選択します。 
-    3. **[Kafka を有効にする]** を選択します。 これは**重要な**手順です。 
-    4. イベント ハブ名前空間を作成する**サブスクリプション**を選択します。 
-    5. 新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。 
-    6. **場所**を選択します。 
-    7. **Create** をクリックしてください。
-    
-        ![名前空間の作成](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
-4. **通知メッセージ**で、**リソース グループ名**を選択します。 
-
-    ![名前空間の作成](./media/event-hubs-kafka-stream-analytics/creation-station-message.png)
-1. リソース グループ内の**イベント ハブ名前空間**を選択します。 
-2. 名前空間が作成されたら、**[設定]** の **[共有アクセス ポリシー]** を選択します。
-
-    ![[共有アクセス ポリシー] をクリックする](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
-5. 既定値の **RootManageSharedAccessKey** を選択することも、新しいポリシーを追加することもできます。 ポリシー名をクリックして、**接続文字列**をコピーします。 接続文字列を使用して Kafka クライアントを構成します。 
-    
-    ![ポリシーの選択](./media/event-hubs-kafka-stream-analytics/connection-string.png)  
-
-これで、Kafka プロトコルを使用するアプリケーションからイベントを Event Hubs にストリーミングできます。
+> [!NOTE]
+> Kafka 用の Event Hubs は、**Standard** および **Dedicated** レベルでのみ使用できます。 **Basic** レベルでは、Event Hubs 上の Kafka はサポートされません。
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>Event Hubs で Kafka を使用してメッセージを送信する
 
@@ -84,7 +60,7 @@ ms.locfileid: "57539159"
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/com/example/app` に移動し、**TestDataReporter.java** ファイルを任意のエディターで開きます。 
+5. `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/` に移動し、**TestDataReporter.java** ファイルを任意のエディターで開きます。 
 6. 次のコード行をコメント アウトします。
 
     ```java
@@ -97,7 +73,7 @@ ms.locfileid: "57539159"
     ```
 
     このコードはイベント データを **JSON** 形式で送信します。 Stream Analytics ジョブの入力を構成するときは、入力データの形式として JSON を指定します。 
-7. **プロデューサーを実行し**、Kafka 対応イベント ハブにストリーム配信します。 Windows マシンでは、**Node.js コマンド プロンプト**を使用するときに、これらのコマンドを実行する前に `azure-event-hubs-for-kafka/quickstart/java/producer` フォルダーに切り替えます。 
+7. **プロデューサーを実行し**、Event Hubs にストリーム配信します。 Windows マシンでは、**Node.js コマンド プロンプト**を使用するときに、これらのコマンドを実行する前に `azure-event-hubs-for-kafka/quickstart/java/producer` フォルダーに切り替えます。 
    
     ```shell
     mvn clean package
@@ -114,14 +90,14 @@ ms.locfileid: "57539159"
     ![イベント ハブ - メッセージ](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Stream Analytics ジョブを使用してイベント データを処理する
-このセクションでは、Azure Stream Analytics ジョブを作成します。 Kafka クライアントはイベントをイベント ハブに送信します。 イベント データを入力として受け取り、Azure Blob ストレージに出力する Stream Analytics ジョブを作成します。 **Azure ストレージ アカウント**を持っていない場合は、[作成します](../storage/common/storage-quickstart-create-account.md)。
+このセクションでは、Azure Stream Analytics ジョブを作成します。 Kafka クライアントはイベントをイベント ハブに送信します。 イベント データを入力として受け取り、Azure Blob ストレージに出力する Stream Analytics ジョブを作成します。 **Azure ストレージ アカウント**を持っていない場合は、[作成します](../storage/common/storage-account-create.md)。
 
 Stream Analytics ジョブのクエリは、分析を実行せずにデータをパス スルーします。 入力データを変換して、異なる形式で、得られた分析情報を使用して出力データを生成するクエリを作成できます。  
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成 
 
-1. [Azure portal](https://portal.azure.com) で、**[+ リソースの作成]** を選択します。
-2. **[Azure Marketplace]** メニューで **[Analytics]** を選択し、**[Stream Analytics ジョブ]** を選択します。 
+1. [Azure portal](https://portal.azure.com) で、 **[+ リソースの作成]** を選択します。
+2. **[Azure Marketplace]** メニューで **[Analytics]** を選択し、 **[Stream Analytics ジョブ]** を選択します。 
 3. **[新しい Stream Analytics]** ページで、次の手順を実行します。 
     1. ジョブの**名前**を入力します。 
     2. **サブスクリプション**を選択します。
@@ -133,7 +109,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 
 ### <a name="configure-job-input"></a>ジョブの入力を構成する
 
-1. 通知メッセージで、**[リソースに移動]** を選択すると、**[Stream Analytics ジョブ]** ページが表示されます。 
+1. 通知メッセージで、 **[リソースに移動]** を選択すると、 **[Stream Analytics ジョブ]** ページが表示されます。 
 2. 左側のメニューの **[ジョブ トポロジ]** セクションで **[入力]** を選択します。
 3. **[ストリーム入力の追加]** を選択して **[イベント ハブ]** を選択します。 
 
@@ -151,7 +127,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 ### <a name="configure-job-output"></a>ジョブの出力を構成する 
 
 1. メニューの **[ジョブ トポロジ]** セクションで **[出力]** を選択します。 
-2. ツールバーの **[+ 追加]** を選択し、**[BLOB ストレージ]** を選択します。
+2. ツールバーの **[+ 追加]** を選択し、 **[BLOB ストレージ]** を選択します。
 3. BLOB のストレージ出力設定ページで、次の手順を実行します。 
     1. 出力に**エイリアス**を指定します。 
     2. Azure **サブスクリプション**を選択します。 
@@ -163,20 +139,20 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
  
 
 ### <a name="define-a-query"></a>クエリを定義する
-着信データ ストリームを読み取るように Stream Analytics ジョブを設定したら、次の手順として、データをリアルタイムで分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://msdn.microsoft.com/library/dn834998.aspx)を使用します。 このチュートリアルでは、変換を実行せずにデータをパス スルーするクエリを定義します。
+着信データ ストリームを読み取るように Stream Analytics ジョブを設定したら、次の手順として、データをリアルタイムで分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を使用します。 このチュートリアルでは、変換を実行せずにデータをパス スルーするクエリを定義します。
 
 1. **[クエリ]** を選択します。
 2. クエリ ウィンドウで、`[YourOutputAlias]` を前に作成した出力エイリアスで置き換えます。
 3. `[YourInputAlias]` を前に作成した入力エイリアスに置き換えます。 
 4. ツールバーの **[保存]** を選択します。 
 
-    ![Query](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![クエリ](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
 1. 左側のメニューで **[概要]** を選択します。 
-2. **[開始]** を選択します。 
+2. **[スタート]** を選択します。 
 
     ![[スタート] メニュー](./media/event-hubs-kafka-stream-analytics/start-menu.png)
 1. **[ジョブの開始]** ウィンドウで **[開始]** を選択します。 
@@ -204,16 +180,5 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 
 
 
-## <a name="next-steps"></a>次の手順
-この記事では、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を紹介しました。 Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピックを参照してください。  
-
-- [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
-- [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
-- [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka 対応イベント ハブでの Kafka ブローカーのミラーリング](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Kafka 対応イベント ハブへの Apache Spark の接続](event-hubs-kafka-spark-tutorial.md)
-- [Kafka 対応イベント ハブへの Apache Flink の接続](event-hubs-kafka-flink-tutorial.md)
-- [Kafka 対応イベント ハブとの Kafka Connect の統合](event-hubs-kafka-connect-tutorial.md)
-- [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
-- [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka) 
+## <a name="next-steps"></a>次のステップ
+この記事では、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介しました。 Apache Kafka での Event Hubs の詳細については、「[Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)」を参照してください。 

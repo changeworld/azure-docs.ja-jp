@@ -1,20 +1,19 @@
 ---
 title: Azure でのクラウド ストレージ アプリケーションの監視およびトラブルシューティング | Microsoft Docs
 description: クラウド アプリケーションをトラブルシューティングおよび監視するには、診断ツール、メトリック、およびアラートを使用します。
-services: storage
 author: normesta
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: mvc
-ms.openlocfilehash: 1383ccd570e23d80343ccdfd586d08ee25ebbc8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148241"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652162"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -38,11 +37,11 @@ ms.locfileid: "65148241"
 
 ## <a name="turn-on-logging-and-metrics"></a>ログ記録とメトリックを有効にする
 
-左側のメニューから、**[リソース グループ]** を選択し、**[myResourceGroup]** を選択してから、リソース一覧内のストレージ アカウントを選択します。
+左側のメニューから、 **[リソース グループ]** を選択し、 **[myResourceGroup]** を選択してから、リソース一覧内のストレージ アカウントを選択します。
 
-**[診断設定 (クラシック)]** で、**[状態]** を **[オン]** に設定します。 **[BLOB のプロパティ]** のすべてのオプションが有効になっていることを確認します。
+**[診断設定 (クラシック)]** で、 **[状態]** を **[オン]** に設定します。 **[BLOB のプロパティ]** のすべてのオプションが有効になっていることを確認します。
 
-完了したら、**[保存]** をクリックします。
+完了したら、 **[保存]** をクリックします。
 
 ![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -52,9 +51,9 @@ ms.locfileid: "65148241"
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Azure Portal でストレージ アカウントに移動します。
 
-**[監視]** セクションで、**[アラート (クラシック)]** を選択します。
+**[監視]** セクションで、 **[アラート (クラシック)]** を選択します。
 
-**[メトリック アラートの追加 (クラシック)]** を選択し、必要な情報を入力して **[ルールの追加]** フォームを完成させます。 **[メトリック]** ドロップダウンで、`SASClientOtherError` を選択します。 最初のエラー発生時にアラートのトリガーを許可するには、**[条件]** ドロップダウンで **[Greater than or equal to]\(この値以上\)** を選択します。
+**[メトリック アラートの追加 (クラシック)]** を選択し、必要な情報を入力して **[ルールの追加]** フォームを完成させます。 **[メトリック]** ドロップダウンで、`SASClientOtherError` を選択します。 最初のエラー発生時にアラートのトリガーを許可するには、 **[条件]** ドロップダウンで **[Greater than or equal to]\(この値以上\)** を選択します。
 
 ![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
@@ -88,27 +87,27 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer をダウンロードする
 
-[Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) をダウンロードし、アプリケーションをインストールします。
+[Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) をダウンロードし、アプリケーションをインストールします。
 
-アプリケーションを起動し、**[ファイル]** > **[開く]** > **[From Other File Sources] \(他のファイル ソースから)** を選択します。
+アプリケーションを起動し、 **[ファイル]**  >  **[開く]**  >  **[From Other File Sources] \(他のファイル ソースから)** を選択します。
 
-**[File Selector] \(ファイル セレクター)** ダイアログで、**[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名**と**アカウント キー**を入力し、**[OK]** をクリックします。
+**[File Selector] \(ファイル セレクター)** ダイアログで、 **[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名**と**アカウント キー**を入力し、 **[OK]** をクリックします。
 
 ![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
-接続されたら、ストレージ ツリー ビューのコンテナーを展開してログ BLOB を表示します。 最新のログを選択し、**[OK]** をクリックします。
+接続されたら、ストレージ ツリー ビューのコンテナーを展開してログ BLOB を表示します。 最新のログを選択し、 **[OK]** をクリックします。
 
 ![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
-**[New Session] \(新しいセッション)** ダイアログで、**[開始]** をクリックしてログを表示します。
+**[New Session] \(新しいセッション)** ダイアログで、 **[開始]** をクリックしてログを表示します。
 
 ログが開いたら、ストレージ イベントを表示できます。 次の図からわかるように、ストレージ アカウントでトリガーされた `SASClientOtherError` が存在しました。 ストレージのログ記録の詳細については、「[Storage Analytics](../common/storage-analytics.md)」を参照してください。
 
 ![Microsoft Message Analyzer - イベントの表示](media/storage-monitor-troubleshoot-storage-application/figure5.png)
 
-[ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)は、**$logs** コンテナーやそこに含まれているログなど、ストレージ アカウントを操作するために使用できるもう 1 つのツールです。
+[ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)は、 **$logs** コンテナーやそこに含まれているログなど、ストレージ アカウントを操作するために使用できるもう 1 つのツールです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 4 部であり、かつ最後の部分では、次に示すような、ストレージ アカウントを監視およびトラブルシューティングする方法を学習しました。
 

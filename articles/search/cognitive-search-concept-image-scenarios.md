@@ -1,28 +1,25 @@
 ---
-title: コグニティブ検索内の画像からテキストを処理して抽出する - Azure Search
-description: Azure Search のコグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出する方法について説明します。
-services: search
-manager: pablocas
-author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: 画像からテキストを抽出する
+titleSuffix: Azure Cognitive Search
+description: Azure コグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
+manager: nitinme
+author: LuisCabrer
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023762"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76838260"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
-コグニティブ検索では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
+Azure コグニティブ検索では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
 
-この記事では、画像の処理について詳しく説明すると共に、コグニティブ検索パイプラインでの画像の操作方法について、ガイダンスを提供します。
+この記事では、画像の処理について詳しく説明すると共に、AI エンリッチメント パイプラインでの画像の操作方法について、ガイダンスを提供します。
 
 <a name="get-normalized-images"></a>
 
@@ -30,21 +27,20 @@ ms.locfileid: "65023762"
 
 ドキュメント クラッキングでは、ファイルに埋め込まれた画像や画像ファイルを操作するための、新しいインデクサー構成パラメーター セットを使用できます。 これらのパラメーターは、下流の処理で画像を正規化するために使用されます。 画像を正規化することで、画像の画一性が高まります。 大きい画像は、高さと幅の最大値に応じてサイズ変更され、扱いやすくなります。 向きについてのメタデータがある画像は、画像の回転が垂直方向の読み込み用に調整されます。 メタデータの調整結果は、各画像用に作成された複合型に取得されます。 
 
-画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。
+画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。 インデクサーで画像の正規化を有効にするには、そのインデクサーにスキルセットがアタッチされている必要があります。
 
 | 構成パラメーター | 説明 |
 |--------------------|-------------|
 | imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。<br/>"generateNormalizedImagePerPage" に設定すると、正規化された画像の配列が生成され、データ ソース内の PDF は、各ページが 1 つの出力画像にレンダリングされます。  PDF 以外のファイルの種類については、機能は "generateNormalizedImages" の場合と同じです。<br/>"none" ではないすべてのオプションについては、画像が *normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 <br/>特定のドキュメントから最大 1,000 個の画像が抽出されます。 ドキュメントに 1,000 を超える画像がある場合は、最初の 1,000 が抽出され、警告が生成されます。 |
-|  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。|
-|  normalizedImageMaxHeight | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。|
+|  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。 許容される最大値は 10000 です。 | 
+|  normalizedImageMaxHeight | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。 許容される最大値は 10000 です。|
 
 > [!NOTE]
-> *imageAction* プロパティを "none" 以外の値に設定した場合、 *parsingMode* プロパティを "default" 以外に設定することはできなくなります。  インデクサー構成では、これら 2 つのプロパティのうち、いずれか 1 つだけを既定値以外の値に設定できます。
+> *imageAction* プロパティを "none" 以外に設定した場合、*parsingMode* プロパティを "default" 以外に設定することはできなくなります。  インデクサー構成では、これら 2 つのプロパティのうち、いずれか 1 つだけを既定値以外の値に設定できます。
 
 **parsingMode** パラメーターを `json` に設定するか (各 BLOB を 1 つのドキュメントとしてインデックスを付ける場合)、または `jsonArray` に設定します (BLOB に JSON 配列が含まれ、配列の各要素を個別のドキュメントとして扱う必要がある場合)。
 
-正規化された画像の最大幅と最大高さの既定値 (2000 ピクセル) は、 [OCR スキル](cognitive-search-skill-ocr.md)と[画像分析スキル](cognitive-search-skill-image-analysis.md)でサポートされる最大サイズに基づいています。 最大の制限値を引き上げると、より大きい画像で処理が失敗する可能性があります。
-
+正規化された画像の最大幅と最大高さの既定値 (2000 ピクセル) は、 [OCR スキル](cognitive-search-skill-ocr.md)と[画像分析スキル](cognitive-search-skill-image-analysis.md)でサポートされる最大サイズに基づいています。 [OCR のスキル](cognitive-search-skill-ocr.md)では、英語以外の言語の場合は最大の幅と高さ 4200、英語の場合は 10000 がサポートされます。  上限を引き上げると、スキルセットの定義とドキュメントの言語によっては、大きな画像で処理が失敗する可能性があります。 
 
 ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api/searchservice/create-indexer)で次のように指定します。
 
@@ -72,7 +68,8 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 | originalWidth      | 正規化する前の、画像の元の幅。 |
 | originalHeight      | 正規化する前の、画像の元の高さ。 |
 | rotationFromOriginal |  正規化された画像の作成時に発生した、反時計回りの回転角度。 0 ～ 360 度の値になります。 このステップでは、カメラやスキャナーで生成された画像からのメタデータが読み取られます。 通常は、90 度の倍数になります。 |
-| contentOffset |画像が抽出された位置の、content フィールド内での文字オフセット。 このフィールドは、埋め込み画像があるファイルにのみ適用されます。 |
+| contentOffset | 画像が抽出された位置の、content フィールド内での文字オフセット。 このフィールドは、埋め込み画像があるファイルにのみ適用されます。 |
+| pageNumber | 画像が PDF から抽出またはレンダリングされた場合、このフィールドには、抽出元またはレンダリング元の PDF のページ番号 (1 から始まる) が含まれます。  画像が PDF からのものではない場合、このフィールドは 0 になります。  |
 
  *normalized_images* のサンプル値:
 ```json
@@ -84,14 +81,15 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```
 
 ## <a name="image-related-skills"></a>画像関連のスキル
 
-画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています:[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
+画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています。[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
 
 現在のところ、これらのスキルは、ドキュメント クラッキング ステップから生成された画像に対してのみ機能します。 そのため、サポートされている入力は `"/document/normalized_images"` のみです。
 
@@ -102,8 +100,6 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 ### <a name="ocr-skill"></a>OCR スキル
 
 [OCR スキル](cognitive-search-skill-ocr.md)では、JPG、PNG、ビットマップなどの画像ファイルからテキストを抽出できます。 テキストのほかに、レイアウト情報を抽出することもできます。 このレイアウト情報によって、特定された各文字列の境界ボックスが提供されます。
-
-OCR スキルでは、画像内のテキストの検出に使用するアルゴリズムを選択できます。 現在、2 つのアルゴリズムがサポートされています。1 つは印刷されたテキスト用、もう 1 つは手書きの文字用です。
 
 ## <a name="embedded-image-scenario"></a>埋め込み画像のシナリオ
 
@@ -217,7 +213,7 @@ OCR ステップは正規化された画像に対して実行されるため、�
         }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 + [インデクサーの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [画像分析スキル](cognitive-search-skill-image-analysis.md)
 + [OCR スキル](cognitive-search-skill-ocr.md)

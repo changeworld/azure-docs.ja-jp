@@ -2,19 +2,19 @@
 title: ドキュメントの形式と名前付け規則 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: これは Custom Translator でのドキュメントの形式と名前付け規則に関するガイドです。 この概念を利用すると、ドキュメント名を管理しやすくなり、名前の競合を避けることができます。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338056"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "68595855"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>ドキュメントの形式と名前付け規則のガイダンス
 
@@ -22,7 +22,7 @@ ms.locfileid: "58338056"
 
 この表には、翻訳システムの構築に使用できる、サポートされているすべてのファイル形式がまとめられています。
 
-| 形式            | Extensions   | 説明                                                                                                                                                                                                                                                                    |
+| Format            | 拡張機能   | 説明                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 並列ドキュメント形式、翻訳メモリ システムのエクスポート。 使用される言語はファイル内で定義されています。                                                                                                                                                              |
 | TMX               | .TMX         | 並列ドキュメント形式、翻訳メモリ システムのエクスポート。 使用される言語はファイル内で定義されています。                                                                                                                                                              |
@@ -37,7 +37,7 @@ ms.locfileid: "58338056"
 
 ## <a name="dictionary-formats"></a>辞書の形式
 
-辞書の場合、Custom Translator はトレーニング セットでサポートされているすべてのファイル形式をサポートしています。 Excel の辞書を使用している場合は、スプレッドシートの最初の行に言語コードを指定する必要があります。
+辞書の場合、カスタム翻訳ツールはトレーニング セットでサポートされているすべてのファイル形式をサポートしています。 Excel の辞書を使用している場合は、スプレッドシートの最初の行に言語コードを指定する必要があります。
 
 ## <a name="zip-file-formats"></a>zip ファイル形式
 
@@ -51,6 +51,6 @@ TXT、HTML、HTM、PDF、DOCX、ALIGN の拡張子を持つ、ZIP ファイル�
 
 翻訳メモリ ファイル (TMX、XLF、XLIFF、LCL、XLSX) は、必ずしも特定の言語の名前付け規則に準拠している必要はありません。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [プロジェクト](workspace-and-project.md#what-is-a-custom-translator-project)の作成と管理について説明します。

@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132925"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181668"
 ---
 既定では、Mobile Apps バックエンドの API は匿名で呼び出すことができます。 次に、認証されたクライアントのみにアクセスを制限する必要があります。  
 
-* **Node.js バックエンド (Azure Portal 経由)**:  
+* **Node.js バックエンド (Azure Portal 経由)** :  
 
-    Mobile Apps の設定で **[Easy Tables]** をクリックし、目的のテーブルを選択します。 **[アクセス許可の変更]** をクリックし、すべてのアクセス許可に対して **[Authenticated access only (認証済みアクセスのみ)]** を選択し、**[保存]** をクリックします。
-* **.NET バックエンド (C#)**:  
+    Mobile Apps の設定で **[Easy Tables]** をクリックし、目的のテーブルを選択します。 **[アクセス許可の変更]** をクリックし、すべてのアクセス許可に対して **[Authenticated access only (認証済みアクセスのみ)]** を選択し、 **[保存]** をクリックします。
+* **.NET バックエンド (C#)** :  
 
-    サーバー プロジェクトで、**[コントローラー]** > **[TodoItemController.cs]** の順に移動します。 次のように、 `[Authorize]` 属性を **TodoItemController** クラスに追加します。 アクセスを特定のメソッドのみに制限するには、この属性を、クラスではなく、そのメソッドのみに適用するだけです。 サーバー プロジェクトを発行します。
+    サーバー プロジェクトで、 **[コントローラー]**  >  **[TodoItemController.cs]** の順に移動します。 次のように、 `[Authorize]` 属性を **TodoItemController** クラスに追加します。 アクセスを特定のメソッドのみに制限するには、この属性を、クラスではなく、そのメソッドのみに適用するだけです。 サーバー プロジェクトを発行します。
 
         [Authorize]
         public class TodoItemController : TableController<TodoItem>

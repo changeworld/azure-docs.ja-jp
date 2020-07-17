@@ -1,25 +1,16 @@
 ---
-title: Cloud Services と Service Fabric の違い | Microsoft Docs
+title: Cloud Services と Service Fabric の違い
 description: アプリケーションを Cloud Services から Service Fabric に移行する際の概念の概要。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669454"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75463372"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
@@ -29,7 +20,7 @@ Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプ�
 ## <a name="applications-and-infrastructure"></a>アプリケーションとインフラストラクチャ
 Cloud Services と Service Fabric の基本的な違いは、VM、ワークロード、およびアプリケーション間の関係です。 ここでのワークロードとは、特定のタスクを実行したり、サービスを提供したりするために記述されたコードと定義しています。
 
-* **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。**  記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する 1 つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
+* **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。** 記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する 1 つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
 
 ![Cloud Services アプリケーションおよびトポロジ][1]
 
@@ -88,6 +79,24 @@ Cloud Services などのステートレスな環境での階層間の一般的�
 Service Fabric でも同じ通信モデルを使用できます。 これは、既存の Cloud Services アプリケーションを Service Fabric に移行するときに便利です。 
 
 ![Service Fabric の直接的な通信][8]
+
+## <a name="parity"></a>パリティ
+[Cloud Services は、制御の程度と使いやすさの対比では Service Fabric と同等ですが、現在ではレガシ サービスであり、新しい開発には Service Fabric が推奨されます。](https://docs.microsoft.com/azure/app-service/overview-compare)API の比較を次に示します。
+
+
+| **Cloud Services の API** | **Service Fabric の API** | **メモ** |
+| --- | --- | --- |
+| RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId または .NodeName | ID は NodeName のプロパティです |
+| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | NodeName でフィルター処理し、FD プロパティを使用します |
+| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | NodeName でフィルター処理し、Upgrade プロパティを使用します |
+| RoleInstance.GetInstanceEndpoints | FabricRuntime.GetActivationContext または Naming (ResolveService) | FabricRuntime.GetActivationContext によって、およびレプリカ内で .Initialize 中に提供される ServiceInitializationParameters.CodePackageActivationContext 経由の両方で提供される CodePackageActivationContext |
+| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | 種類ごとに同じ種類のフィルター処理を実行する場合は、FabricClient.ClusterManager.GetClusterManifest 経由でクラスター マニフェストからノードの種類の一覧を取得し、そこからロール/ノードの種類を取得できます。 |
+| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster、または特定のノードを指す FabricRuntime を作成する | * |
+| RoleEnvironment.GetLocalResource | CodePackageActivationContext.Log/Temp/Work | * |
+| RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext.Log/Temp/Work | * |
+| LocalResource.GetRootPath | CodePackageActivationContext.Log/Temp/Work | * |
+| Role.GetInstances | FabricClient.QueryManager.GetNodeList または ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime.GetActivationContext または Naming (ResolveService) | * |
 
 ## <a name="next-steps"></a>次の手順
 Cloud Services から Service Fabric への最も単純な移行パスは、Cloud Services デプロイメントのみを Service Fabric アプリケーションに置き換えるものです。これでは、アプリケーションの全体的なアーキテクチャはほぼ同じに維持されます。 次の記事では、Web または Worker ロールを Service Fabric ステートレス サービスに変換する方法について説明します。

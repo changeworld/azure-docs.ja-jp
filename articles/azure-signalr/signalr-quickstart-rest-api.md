@@ -1,17 +1,17 @@
 ---
 title: クイック スタート - Azure SignalR Service REST API
-description: Azure SignalR サービスの REST API を使用するためのクイック スタート。
+description: Azure SignalR Service の REST API を使用する方法をサンプルを使って説明します。 REST API の仕様について詳しく取り上げています。
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530794"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548130"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -23,7 +23,7 @@ Azure SignalR サービスは、ブロードキャストなどのサーバーと
 
 このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-* [.NET コア SDK](https://www.microsoft.com/net/download/core)
+* [.NET Core SDK](https://www.microsoft.com/net/download/core)
 * 任意のテキスト エディターまたはコード エディター。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -111,7 +111,7 @@ broadcast
 
 別のクライアント名を持つ複数のクライアントを開始できます。
 
-## <a name="usage"> </a> サード パーティ サービスとの統合
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> サード パーティ サービスとの統合
 
 Azure SignalR サービスを使用すると、サードパーティのサービスをシステムに統合することができます。
 
@@ -121,8 +121,8 @@ Azure SignalR サービスを使用すると、サードパーティのサービ
 
 Version | API 状態 | Door | 固有
 --- | --- | --- | ---
-`1.0-preview` | 使用可能 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | 使用可能 | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | 利用可能 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | 利用可能 | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 以下に示したのは、特定のバージョンごとに利用可能な API の一覧です。
 
@@ -131,10 +131,17 @@ API | `1.0-preview` | `1.0`
 [全員にブロードキャストする](#broadcast) | **&#x2713;** | **&#x2713;**
 [グループにブロードキャストする](#broadcast-group) | **&#x2713;** | **&#x2713;**
 一部のグループにブロードキャストする | **&#x2713;** (非推奨) | `N / A`
-[特定のユーザーに送信する](#send-user) | **&#x2713;** | **&#x2713;**
+[ユーザーに送信する](#send-user) | **&#x2713;** | **&#x2713;**
 一部のユーザーに送信する | **&#x2713;** (非推奨) | `N / A`
 [ユーザーをグループに追加する](#add-user-to-group) | `N / A` | **&#x2713;**
 [ユーザーをグループから削除する](#remove-user-from-group) | `N / A` | **&#x2713;**
+[ユーザーの存在を確認する](#check-user-existence) | `N / A` | **&#x2713;**
+[ユーザーをすべてのグループから削除する](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[接続に送信する](#send-connection) | `N / A` | **&#x2713;**
+[グループに接続を追加する](#add-connection-to-group) | `N / A` | **&#x2713;**
+[グループから接続を削除する](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[クライアント接続を閉じる](#close-connection) | `N / A` | **&#x2713;**
+[サービス正常性](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>全員にブロードキャストする
@@ -153,7 +160,7 @@ Version | API HTTP メソッド | 要求 URL | 要求本文
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | 同上
 
 <a name="send-user"> </a>
-### <a name="sending-to-specific-users"></a>特定のユーザーに送信する
+### <a name="sending-to-a-user"></a>ユーザーに送信する
 
 Version | API HTTP メソッド | 要求 URL | 要求本文
 --- | --- | --- | ---
@@ -165,18 +172,81 @@ Version | API HTTP メソッド | 要求 URL | 要求本文
 
 Version | API HTTP メソッド | 要求 URL
 --- | --- | ---
-`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>ユーザーをグループから削除する
 
 Version | API HTTP メソッド | 要求 URL
 --- | --- | ---
-`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
+
+<a name="check-user-existence"> </a>
+### <a name="check-user-existence-in-a-group"></a>グループ内のユーザーの存在を確認する
+
+API Version | API HTTP メソッド | 要求 URL
+---|---|---
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
+
+応答の状態コード | 説明
+---|---
+`200` | ユーザーが存在します
+`404` | ユーザーが存在しません
+
+<a name="remove-user-from-all-groups"> </a>
+### <a name="remove-a-user-from-all-groups"></a>ユーザーをすべてのグループから削除する
+
+API Version | API HTTP メソッド | 要求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
+
+<a name="send-connection"> </a>
+### <a name="send-message-to-a-connection"></a>接続にメッセージを送信する
+
+API Version | API HTTP メソッド | 要求 URL | 要求本文
+---|---|---|---
+`1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
+
+<a name="add-connection-to-group"> </a>
+### <a name="add-a-connection-to-a-group"></a>グループに接続を追加する
+
+API Version | API HTTP メソッド | 要求 URL
+---|---|---
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="remove-connection-from-group"> </a>
+### <a name="remove-a-connection-from-a-group"></a>グループから接続を削除する
+
+API Version | API HTTP メソッド | 要求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="close-connection"> </a>
+### <a name="close-a-client-connection"></a>クライアント接続を閉じる
+
+API Version | API HTTP メソッド | 要求 URL
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
+
+<a name="service-health"> </a>
+### <a name="service-health"></a>サービス正常性
+
+API Version | API HTTP メソッド | 要求 URL
+---|---|---                             
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
+
+応答の状態コード | 説明
+---|---
+`200` | サービスは良好
+`503` | サービス利用不可
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、REST API を使用して SignalR Service からクライアントにリアルタイム メッセージをブロードキャストする方法を学習しました。 次は、REST API を基盤に構築されている SignalR Service バインディングを使用して Functions を開発およびデプロイする方法の詳細を学習してください。
 

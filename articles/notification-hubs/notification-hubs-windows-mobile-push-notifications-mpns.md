@@ -4,9 +4,9 @@ description: このチュートリアルでは、Azure Notification Hubs を使�
 services: notification-hubs
 documentationcenter: windows
 keywords: プッシュ通知,プッシュ通知,Windows Phone プッシュ通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: df42a0e2fcc8c139c7a2b6ecfa78ce1780fe54ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843570"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594935"
 ---
-# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -54,7 +56,7 @@ ms.locfileid: "57843570"
 
 ### <a name="configure-windows-phone-mpns-settings"></a>Windows Phone (MPNS) の設定を構成する
 
-1. **[通知設定]** で、**[Windows Phone (MPNS)]** を選択します。
+1. **[通知設定]** で、 **[Windows Phone (MPNS)]** を選択します。
 2. **[Enable authentication push]\(認証プッシュを有効にする)** を選択します。
 3. ツールバーの **[保存]** を選択します。
 
@@ -120,7 +122,7 @@ ms.locfileid: "57843570"
    > [!NOTE]
    > このチュートリアルでは、トースト通知がデバイスに送信されます。 タイル通知を送信する場合は、チャネルの `BindToShellTile` メソッドを呼び出す必要があります。 トースト通知とタイル通知の両方をサポートするには、`BindToShellTile` と `BindToShellToast` の両方を呼び出します。
 
-6. ソリューション エクスプローラーで **[プロパティ]** を展開して `WMAppManifest.xml` ファイルを開き、**[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。 これで、アプリはプッシュ通知を受信できます。
+6. ソリューション エクスプローラーで **[プロパティ]** を展開して `WMAppManifest.xml` ファイルを開き、 **[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。 これで、アプリはプッシュ通知を受信できます。
 
     ![Visual Studio - Windows Phone App Capabilities][14]
 7. `F5` キーを押してアプリケーションを実行します。 登録メッセージがアプリに表示されます。
@@ -137,8 +139,8 @@ ms.locfileid: "57843570"
     ![[テスト送信] ボタン](./media/notification-hubs-windows-phone-get-started/test-send-button.png)
 3. **[テスト送信]** ウィンドウで、次の手順を実行します。
 
-    1. **[プラットフォーム]** として、**[Windows Phone]** を選択します。
-    2. **通知の種類** として、**[トースト]** を選択します。
+    1. **[プラットフォーム]** として、 **[Windows Phone]** を選択します。
+    2. **通知の種類** として、 **[トースト]** を選択します。
     3. **[送信]** を選択します。
     4. ウィンドウの一番下の一覧にある**結果**を確認します。
 
@@ -147,7 +149,7 @@ ms.locfileid: "57843570"
 
     ![Windows Phone 上の通知](./media/notification-hubs-windows-phone-get-started/notification-on-windows-phone.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この簡単な例では、すべての Windows Phone 8 デバイスにプッシュ通知をブロードキャストしました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
@@ -175,4 +177,4 @@ ms.locfileid: "57843570"
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
 [toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[Notification Hubs - Windows Phone Silverlight チュートリアル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+[Notification Hubs - Windows Phone Silverlight チュートリアル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari

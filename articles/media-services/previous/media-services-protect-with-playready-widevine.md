@@ -14,24 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: df967c56d84650894d2e07054e9ec8d6f830192b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78199497"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
 
-> [!div class="op_single_selector"]
-> * [.NET](media-services-protect-with-playready-widevine.md)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
->
-
 > [!NOTE]
-> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
-> Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowsAzure パッケージを検索してください。 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>   
 
 ## <a name="overview"></a>概要
 
@@ -41,7 +35,7 @@ Media Services は、PlayReady および Widevine DRM のライセンスを配�
 
 以下の Media Services パートナーを使用して、Widevine ライセンスを提供することもできます。 
 
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
@@ -77,7 +71,7 @@ Media Services ライセンス配信サービスと動的暗号化を使用し�
 
 5. 資産の配信ポリシーを構成します。 配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、Smooth Streaming、またはすべて) が含まれています。 また、動的暗号化の種類 (Common Encryption など) と、PlayReady または Widevine ライセンス取得 URL も含まれます。
 
-    同じ資産においてプロトコルごとに異なるポリシーを適用できます。 たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES エンベロープを HLS に適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外です。 この場合、すべてのプロトコルが平文で許可されます。
+    同じ資産の各プロトコルに異なるポリシーを適用できます。 たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES エンベロープを HLS に適用できます。 配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。 ただし、資産配信ポリシーをまったく定義していない場合は例外です。 この場合、すべてのプロトコルが平文で許可されます。
 
 6. ストリーミング URL を取得するために、OnDemand ロケーターを作成します。
 
@@ -89,7 +83,7 @@ Media Services ライセンス配信サービスと動的暗号化を使用し�
 
 この記事の残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
 
-## <a name="current-limitations"></a>現時点での制限事項
+## <a name="current-limitations"></a>現在の制限
 資産の配信ポリシーを追加または更新する場合は、関連するすべてのロケーターを削除し、新しいロケーターを作成する必要があります。
 
 現在、Media Services で Widevine を使用して暗号化する場合、複数のコンテンツ キーはサポートされていません。 
@@ -104,17 +98,17 @@ Media Services ライセンス配信サービスと動的暗号化を使用し�
 
 エンコード手順については、[Media Encoder Standard による資産のエンコード](media-services-dotnet-encode-with-media-encoder-standard.md)に関するページを参照してください。
 
-## <a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 Media Services では、コンテンツ キーに、資産を暗号化するときに使用するキーが含まれています。
 
 詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md)に関するページを参照してください。
 
-## <a id="configure_key_auth_policy"></a>コンテンツ キーの承認ポリシーを構成する
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>コンテンツ キーの承認ポリシーを構成する
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。 キーがクライアント (プレーヤー) に配信される前に、クライアントはポリシーの要件を満たす必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。
 
 詳細については、[コンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)に関するページを参照してください。
 
-## <a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
 資産の配信ポリシーを構成します。 資産の配信ポリシーの構成には、次のような内容が含まれます。
 
 * DRM ライセンス取得 URL
@@ -123,7 +117,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 詳細については、[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関するページを参照してください。
 
-## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ストリーミング ロケーターを作成する
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ストリーミング ロケーターを作成する
 Smooth Streaming、DASH、または HLS のストリーミング URL をユーザーに提供する必要があります。
 
 > [!NOTE]
@@ -149,7 +143,7 @@ string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTem
 Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-[Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
+[Azure Media Services Player](https://aka.ms/azuremediaplayer) を使用して、ストリームをテストできます。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
@@ -164,7 +158,7 @@ Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 ## <a name="example"></a>例
 
-次の例では、Media Services SDK for .NET バージョン 3.5.2 で導入された機能を示します  (具体的には、Widevine ライセンス テンプレートを定義し、Media Services から Widevine ライセンスを要求する機能などです)。
+次の例では、Media Services SDK for .NET バージョン 3.5.2 で導入された機能を示します (具体的には、Widevine ライセンス テンプレートを定義し、Media Services から Widevine ライセンスを要求する機能などです)。
 
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
@@ -569,7 +563,7 @@ namespace DynamicEncryptionWithDRM
             // Get a reference to the streaming manifest file from the 
             // collection of files in the asset.
 
-            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+            var assetFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 
@@ -611,7 +605,11 @@ namespace DynamicEncryptionWithDRM
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
@@ -619,6 +617,9 @@ namespace DynamicEncryptionWithDRM
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>関連項目
+
 * [CENC とマルチ DRM およびアクセス制御の使用](media-services-cenc-with-multidrm-access-control.md)
 * [Media Services による Widevine パッケージの構成](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-* [Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
+* [Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
+* Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowsAzure パッケージを検索してください。 
+

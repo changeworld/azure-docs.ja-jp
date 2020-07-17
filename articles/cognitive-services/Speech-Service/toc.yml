@@ -1,321 +1,607 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
-- name: Speech Services のドキュメント
+- name: Speech Service のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Speech Service とは
+    - name: 音声サービスとは
       href: overview.md
-    - name: 音声テキスト変換
-      href: speech-to-text.md
-      displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-    - name: テキスト読み上げ
-      href: text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-    - name: 音声翻訳
-      href: speech-translation.md
-      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-    - name: 音声優先仮想アシスタントのプレビュー
-      href: voice-first-virtual-assistants.md
-      displayName: 'virtual assistants, speech-enabled bots, conversational agents'
-- name: クイック スタート
-  items:
-    - name: Speech SDK
-      items:
-        - name: 音声テキスト変換
-          items:
-            - name: 'C# (.NET Framework Windows)'
-              href: quickstart-csharp-dotnet-windows.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: 'C# (.NET Core Windows)'
-              href: quickstart-csharp-dotnetcore-windows.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: 'C# (UWP)'
-              href: quickstart-csharp-uwp.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform'
-            - name: 'C# (Unity)'
-              href: quickstart-csharp-unity.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, unity 3d, windows, android, universal windows platform, uwp'
-            - name: C++ (Windows)
-              href: quickstart-cpp-windows.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: C++ (Linux)
-              href: quickstart-cpp-linux.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: C++ (macOS)
-              href: quickstart-cpp-macos.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: Java (Android)
-              href: quickstart-java-android.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: Java (Windows、macOS、Linux)
-              href: quickstart-java-jre.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, jre, jvm'
-            - name: JavaScript (ブラウザー)
-              href: quickstart-js-browser.md
-            - name: JavaScript (Node.js)JavaScript (Node.js)
-              href: quickstart-js-node.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-            - name: Objective-C (iOS)
-              href: quickstart-objectivec-ios.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Objective-C (macOS)
-              href: quickstart-objective-c-macos.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Python
-              href: quickstart-python.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-        - name: 音声を翻訳する
-          items:
-            - name: 'C# (.NET Core Windows)'
-              href: quickstart-translate-speech-dotnetcore-windows.md
-            - name: 'C# (.NET Framework Windows)'
-              href: quickstart-translate-speech-dotnetframework-windows.md
-            - name: 'C# (UWP)'
-              href: quickstart-translate-speech-uwp.md
-              displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform'
-            - name: C++ (Windows)
-              href: quickstart-translate-speech-cpp-windows.md
-            - name: Java (Windows、macOS、Linux)
-              href: quickstart-translate-speech-java-jre.md
-        - name: テキスト読み上げ
-          items:
-            - name: 'C# (.NET Framework Windows)'
-              href: quickstart-text-to-speech-dotnet-windows.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: C++ (Windows)
-              href: quickstart-text-to-speech-cpp-windows.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-            - name: C++ (Linux)
-              href: quickstart-text-to-speech-cpp-linux.md
-              displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-        - name: 音声優先仮想アシスタント (プレビュー)
-          items:
-            - name: 'C# (UWP)'
-              href: quickstart-virtual-assistant-csharp-uwp.md
-              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
-            - name: Java (Windows、macOS、Linux)
-              href: quickstart-virtual-assistant-java-jre.md
-              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
-    - name: REST API
-      items:
-        - name: サポートされている声をリージョン別に一覧表示する
-          items:
-            - name: Node.js
-              href: quickstart-nodejs-get-text-to-speech-voices.md
-            - name: Python
-              href: quickstart-python-get-text-to-speech-voices.md
-        - name: テキストを音声に変換する
-          items:
-            - name: 'C# (.NET Core)'
-              href: quickstart-dotnet-text-to-speech.md
-            - name: Node.js
-              href: quickstart-nodejs-text-to-speech.md
-            - name: Python
-              href: quickstart-python-text-to-speech.md
-    - name: Speech Devices SDK
-      href: speech-devices-sdk-android-quickstart.md
-      displayName: 'roobo, speech devices sdk'
-- name: チュートリアル
-  items:
-    - name: 'LUIS、C# を使って音声から意図を認識する'
-      href: how-to-recognize-intents-from-speech-csharp.md
-      displayName: 'recognize intent, intent recognition, language understanding service, luis'
-    - name: テキストを翻訳および合成する Flask アプリを作成する (REST)
-      maintainContext: true
-      href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
-- name: 概念
-  items:
-    - name: 会話の文字起こし
-      href: conversation-transcription-service.md
-    - name: コール センターの文字起こし
-      href: call-center-transcription.md
-- name: ハウツー ガイド
-  items:
-    - name: Speech Services へのサインアップ
+    - name: Speech Service を無料で試す
       href: get-started.md
-    - name: バッチ文字起こし (REST)
-      href: batch-transcription.md
-      displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-    - name: オーディオ入力ストリームの使用 (SDK)
-      href: how-to-use-audio-input-streams.md
-    - name: コーデックにより圧縮されたオーディオ入力ストリームの使用 (SDK)
-      href: how-to-use-codec-compressed-audio-input-streams.md
-      displayName: 'mp3, opus, ogg, flac'
-    - name: オーディオ入力デバイスの選択 (SDK)
-      href: how-to-select-audio-input-devices.md
-      displayName: 'audio, microphone, input, device'
-    - name: ログ記録の有効化
-      href: how-to-use-logging.md
-      displayName: 'debug, log, logging'
-    - name: フレーズ リストを使用して認識を向上させる
-      href: how-to-phrase-lists.md
-      displayname: 'phrase lists, phrase, list, recognition accuracy'
-    - name: 会話の文字起こし (SDK)
-      href: how-to-use-conversation-transcription-service.md
-      displayName: 'conversation, transcription, speech recognition'
+    - name: 言語と音声のサポート
+      displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
+      href: language-support.md
+    - name: リージョンのサポート
+      href: regions.md
+- name: 音声テキスト変換
+  items:
+    - name: 音声テキスト変換のドキュメント
+      href: index-speech-to-text.yml
+    - name: 概要
+      items:
+        - name: リアルタイムの音声テキスト変換とは
+          href: speech-to-text.md
+        - name: 一括音声テキスト変換
+          href: batch-transcription.md
+        - name: 音声認識の基礎
+          href: speech-to-text-basics.md
+    - name: クイック スタート
+      items:
+        - name: マイク入力を使用して音声を認識する
+          href: quickstarts/speech-to-text-from-microphone.md
+        - name: オーディオ ファイルから音声を認識する
+          href: quickstarts/speech-to-text-from-file.md
+        - name: Blob Storage に格納された音声を認識する
+          href: quickstarts/from-blob.md
+    - name: 操作方法ガイド
+      items:
+        - name: 音声認識モードを選択する
+          href: how-to-choose-recognition-mode.md
+        - name: 音声認識のソース言語を変更する
+          href: how-to-specify-source-language.md
+        - name: Custom Speech を使用して精度を向上させる
+          href: how-to-custom-speech.md
+        - name: 圧縮音声入力形式を使用する
+          href: how-to-use-codec-compressed-audio-input-streams.md
+          displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
+        - name: フレーズ リストを使用して精度を向上させる
+          href: how-to-phrase-lists.md
+        - name: 特定のマイク入力デバイスを選択する
+          href: how-to-select-audio-input-devices.md
+        - name: 自動ソース言語検出を使用する
+          href: how-to-automatic-language-detection.md
+    - name: チュートリアル
+      items:
+        - name: テナント モデルを使用して精度を向上させる
+          href: tutorial-tenant-model.md
     - name: カスタマイズ
       items:
-        - name: 音声テキスト変換
+        - name: Custom Speech 用のテスト データを準備する
+          href: how-to-custom-speech-test-and-train.md
+        - name: Custom Speech データを検査する
+          href: how-to-custom-speech-inspect-data.md
+        - name: カスタム音声の正確性を評価する
+          href: how-to-custom-speech-evaluate-data.md
+        - name: カスタム音声の正確性を向上させる
+          href: how-to-custom-speech-improve-accuracy.md
+        - name: Custom Speech 用のモデルをトレーニングする
+          href: how-to-custom-speech-train-model.md
+        - name: カスタム モデルをデプロイする
+          href: how-to-custom-speech-deploy-model.md
+        - name: ヒューマン ラベル付け文字起こしを作成する
+          href: how-to-custom-speech-human-labeled-transcriptions.md
+    - name: リファレンス
+      items:
+        - name: Speech SDK API シリーズ
           items:
-            - name: Custom Speech の概要
-              href: how-to-custom-speech.md
-            - name: データを準備する
-              href: how-to-custom-speech-test-data.md
-            - name: データを検査する
-              href: how-to-custom-speech-inspect-data.md
-            - name: 精度を評価する
-              href: how-to-custom-speech-evaluate-data.md
-            - name: カスタム モデルをトレーニングする
-              href: how-to-custom-speech-train-model.md
-            - name: カスタム モデルをデプロイする
-              href: how-to-custom-speech-deploy-model.md
-            - name: 'ガイド: ヒューマンラベル付け文字起こしの作成'
-              href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: テキスト読み上げ
+            - name: C++
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: リリース ノート
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
+        - name: REST API
+          items:
+            - name: Speech to Text REST API
+              href: rest-speech-to-text.md
+    - name: リソース
+      items:
+        - name: 言語のサポート
+          href: 'language-support.md#speech-to-text'
+        - name: リージョンのサポート
+          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+        - name: 音声テキスト変換のよくあるご質問
+          displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
+          href: faq-stt.md
+- name: テキスト読み上げ
+  items:
+    - name: テキスト読み上げのドキュメント
+      href: index-text-to-speech.yml
+    - name: 概要
+      items:
+        - name: テキスト読み上げの概要
+          href: text-to-speech.md
+        - name: テキスト読み上げの基本
+          href: text-to-speech-basics.md
+    - name: クイック スタート
+      items:
+        - name: スピーカーに音声を合成する
+          href: quickstarts/text-to-speech.md
+        - name: オーディオ ファイルに音声を合成する
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: 長い形式の音声で音声を合成する
+          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: 操作方法ガイド
+      items:
+        - name: SSML を使用して合成を改善する
+          href: speech-synthesis-markup.md
+        - name: Long Audio API を使用して音声を合成する
+          href: long-audio-api.md
+        - name: REST を使用して音声のリストを取得する (Python)
+          href: quickstart-python-get-text-to-speech-voices.md
+        - name: REST を使用してテキストを音声に変換する (Python)
+          href: quickstart-python-text-to-speech.md
+    - name: カスタマイズ
+      items:
+        - name: 責任のあるデプロイ
+          items:
+            - name: Custom Voice のゲーティング
+              href: concepts-gating-overview.md
+            - name: 合成テクノロジのデプロイ
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: ボイス タレント向けの開示
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: 開示設計のガイドライン
+              href: concepts-disclosure-guidelines.md
+            - name: 設計パターンを開示する
+              href: concepts-disclosure-patterns.md
+            - name: 倫理規定
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: Custom Voice ポータル
           items:
             - name: Custom Voice の概要
+              displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
             - name: データを準備する
               href: how-to-custom-voice-prepare-data.md
-            - name: カスタム音声モデルを作成して使用する
+            - name: Custom Voice モデルを作成して使用する
               href: how-to-custom-voice-create-voice.md
             - name: 音声サンプルを録音する
               href: record-custom-voice-samples.md
-            - name: テキスト読み上げの出力を微調整する
-              href: how-to-voice-tuning.md
-        - name: カスタム ウェイク ワードを作成する (キーワード認識)
-          href: speech-devices-sdk-create-kws.md
-          displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
-    - name: 移行
+        - name: Audio Content Creation
+          items:
+            - name: Audio Content Creation
+              href: how-to-audio-content-creation.md
+    - name: リファレンス
       items:
-        - name: Bing Speech から
-          href: how-to-migrate-from-bing-speech.md
-        - name: Custom Speech Service から
-          href: how-to-migrate-from-custom-speech-service.md
-        - name: Translator Speech API から
-          href: how-to-migrate-from-translator-speech-api.md
-    - name: コンテナーの使用
+        - name: Speech SDK
+          items:
+            - name: C++
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: リリース ノート
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
+        - name: REST API
+          items:
+            - name: Text to Speech REST API
+              href: rest-text-to-speech.md
+    - name: リソース
       items:
-        - name: コンテナーのインストールと実行
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-          href: speech-container-howto.md
-        - name: コンテナーを構成する
-          href: speech-container-configuration.md
-          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-- name: サンプル
+        - name: 標準の音声サポート
+          href: 'language-support.md#standard-voices'
+        - name: ニューラルの音声サポート
+          href: 'language-support.md#neural-voices'
+        - name: リージョンのサポート
+          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+        - name: SSML 音素セット
+          href: speech-ssml-phonetic-sets.md
+        - name: 音声テキスト変換のよくあるご質問
+          displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
+          href: faq-text-to-speech.md
+- name: 音声翻訳
   items:
-    - name: Speech SDK
-      href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-    - name: Speech Devices SDK
-      href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: テキスト読み上げ (REST)
-      href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-    - name: バッチ文字起こし (REST)
-      href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-- name: リファレンス
+    - name: 音声翻訳のドキュメント
+      href: index-speech-translation.yml
+    - name: 概要
+      items:
+        - name: 音声翻訳とは何か
+          href: speech-translation.md
+        - name: 音声翻訳の基本
+          href: speech-translation-basics.md
+    - name: クイック スタート
+      items:
+        - name: 音声テキスト変換の翻訳
+          href: quickstarts/translate-speech-to-text.md
+        - name: 音声を複数のターゲット言語に翻訳する
+          href: quickstarts/translate-speech-to-text-multiple-languages.md
+        - name: 音声間翻訳
+          href: quickstarts/translate-speech-to-speech.md
+    - name: チュートリアル
+      items:
+        - name: REST API を使用してテキストを翻訳して合成する
+          href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
+    - name: リファレンス
+      items:
+        - name: Speech SDK
+          items:
+            - name: C++
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: リリース ノート
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
+    - name: リソース
+      items:
+        - name: 言語のサポート
+          href: 'language-support.md#speech-translation'
+        - name: リージョンのサポート
+          href: 'regions.md#speech-to-text-text-to-speech-and-translation'
+        - name: 音声翻訳のよくあるご質問
+          href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: 意図認識
   items:
-    - name: Speech SDK
+    - name: 意図認識のドキュメント
+      href: index-intent-recognition.yml
+    - name: クイック スタート
+      items:
+        - name: 音声、意図、エンティティを認識する
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+          href: quickstarts/intent-recognition.md
+    - name: 操作方法ガイド
+      items:
+        - name: 'LUIS、C# を使って音声から意図を認識する'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: リファレンス
+      items:
+        - name: Speech SDK
+          items:
+            - name: C++
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: 'C#'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://aka.ms/csspeech/pythonref'
+            - name: リリース ノート
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
+        - name: LUIS サービス
+          items:
+            - name: LUIS 開発者向けリソース
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
+    - name: リソース
+      items:
+        - name: 言語のサポート
+          href: ../luis/luis-language-support.md
+        - name: リージョンのサポート
+          href: 'regions.md#intent-recognition'
+- name: 会話のシナリオ
+  items:
+    - name: 会話のシナリオのドキュメント
+      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
+      href: index-conversation-scenarios.yml
+    - name: 会話の文字起こし
       items:
         - name: 概要
+          items:
+            - name: 会話の文字起こしとは
+              href: conversation-transcription.md
+        - name: 操作方法ガイド
+          items:
+            - name: コール センターのシナリオに対応する
+              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+              href: call-center-transcription.md
+            - name: リアルタイムでの会話の文字起こし
+              href: how-to-use-conversation-transcription.md
+            - name: 非同期での会話の文字起こし
+              href: how-to-async-conversation-transcription.md
+        - name: リファレンス
+          items:
+            - name: Speech SDK
+              items:
+                - name: C++
+                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/cppref'
+                - name: 'C#'
+                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/csharpref'
+                - name: Java
+                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/javaref'
+                - name: JavaScript
+                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/javascriptref'
+                - name: Objective-C
+                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/objectivecref'
+                - name: Python
+                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                  href: 'https://aka.ms/csspeech/pythonref'
+                - name: リリース ノート
+                  displayName: 'release notes,updates,what''s new,what is new,changes'
+                  href: releasenotes.md
+            - name: REST API
+              items:
+                - name: Conversation transcription REST API
+                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+    - name: マルチデバイスの会話
+      items:
+        - name: 概要
+          items:
+            - name: マルチデバイスの会話とは
+              href: multi-device-conversation.md
+        - name: クイック スタート
+          items:
+            - name: 会話を開始して参加する
+              href: quickstarts/multi-device-conversation.md
+        - name: リファレンス
+          items:
+            - name: Speech SDK
+              items:
+                - name: C++
+                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
+                - name: 'C#'
+                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
+                - name: Java
+                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
+- name: 音声アシスタント
+  items:
+    - name: 音声アシスタントのドキュメント
+      href: index-voice-assistants.yml
+    - name: 概要
+      items:
+        - name: 音声アシスタントとは
+          href: voice-assistants.md
+    - name: カスタム コマンド (プレビュー)
+      items:
+        - name: カスタム コマンド アプリとは
+          href: custom-commands.md
+        - name: クイックスタート
+          items:
+            - name: カスタム コマンド アプリを作成する
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: パラメーターを使用してカスタム コマンドを作成する
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: カスタム音声でカスタム コマンドを使用する
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: Speech SDK でカスタム コマンドを使用する
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: 操作方法ガイド
+          items:
+            - name: クライアントからコマンドを実行する
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: パラメーターの検証を追加する
+              href: how-to-custom-speech-commands-validations.md
+            - name: 確認を追加する
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: ワンステップ修正を追加する
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line Speech
+      items:
+        - name: Direct Line Speech とは
+          href: direct-line-speech.md
+        - name: クイックスタート
+          items:
+            - name: カスタム音声アシスタントを作成する
+              href: quickstarts/voice-assistants.md
+        - name: チュートリアル
+          items:
+            - name: Speech SDK を使用してボットを音声対応にする
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: リソース
+          items:
+            - name: 音声アシスタントの FAQ
+              href: faq-voice-assistants.md
+    - name: Windows の音声アシスタント
+      items:
+        - name: Windows の音声アシスタントの概要
+          href: windows-voice-assistants-overview.md
+        - name: 操作方法ガイド
+          items:
+            - name: Windows を使用してアシスタントの開発を開始する
+              href: how-to-windows-voice-assistants-get-started.md
+            - name: 音声によるアクティブ化を有効にする
+              href: windows-voice-assistants-implementation-guide.md
+        - name: リソース
+          items:
+            - name: プライバシーの要件とガイドライン
+              href: windows-voice-assistants-automatic-enablement-guidelines.md
+            - name: アシスタント エクスペリエンスのベスト プラクティス
+              href: windows-voice-assistants-best-practices.md
+            - name: サンプルとよく寄せられる質問
+              href: windows-voice-assistants-faq.md
+    - name: カスタム キーワード
+      items:
+        - name: カスタム キーワードの概要
+          href: custom-keyword-overview.md
+        - name: カスタム キーワードの名前付けのガイドライン
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: カスタム キーワードの認識
+          href: speech-devices-sdk-create-kws.md
+- name: Hosting
+  items:
+    - name: ドキュメントのホスト
+      href: index-hosting.yml
+    - name: 操作方法ガイド
+      items:
+        - name: Speech コンテナーをインストールおよび実行する
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Speech コンテナーを構成する
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: Speech コンテナーと Kubernetes および Helm
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Azure Container Instances 上の Speech コンテナー
+          displayName: 'ACI,azure container instances,container instances,containers'
+          href: deploy-speech-on-container-instances.md
+    - name: リソース
+      items:
+        - name: コンテナーの FAQ
+          href: speech-container-faq.md
+- name: Speech SDK
+  items:
+    - name: 概要
+      items:
+        - name: Speech SDK について
           href: speech-sdk.md
-          displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
         - name: シナリオの利用可否
           href: scenario-availability.md
-        - name: リリース ノート
-          href: releasenotes.md
+    - name: クイック スタート
+      items:
+        - name: Speech SDK を設定する
+          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+          href: quickstarts/setup-platform.md
+    - name: 操作方法ガイド
+      items:
+        - name: ログの有効化
+          href: how-to-use-logging.md
+        - name: メモリ使用量の追跡
+          href: how-to-track-speech-sdk-memory-usage.md
+        - name: Linux 用 OpenSSL の構成
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+          href: how-to-configure-openssl-linux.md
+        - name: RHEL/CentOS 7 の構成
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
+    - name: サンプル
+      items:
+        - name: Speech SDK のサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
+        - name: Speech Devices SDK のサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+        - name: 音声アシスタントのサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+    - name: リファレンス
+      items:
         - name: C++
           href: 'https://aka.ms/csspeech/cppref'
         - name: 'C#'
           href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java/Android
+        - name: Java
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript/Node.js
+        - name: JavaScript
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
           href: 'https://aka.ms/csspeech/objectivecref'
         - name: Python
           href: 'https://aka.ms/csspeech/pythonref'
-    - name: Speech Devices SDK
+        - name: Speech SDK リリース ノート
+          href: releasenotes.md
+- name: デバイス
+  items:
+    - name: Speech Devices のドキュメント
+      href: index-devices.yml
+    - name: 概要
       items:
-        - name: Speech Devices SDK を取得する
+        - name: Speech Devices SDK とは
+          href: speech-devices-sdk.md
+        - name: Speech Devices SDK の取得
           href: get-speech-devices-sdk.md
-        - name: リリース ノート
-          href: devices-sdk-release-notes.md
+    - name: ハードウェア
+      items:
+        - name: マイク配列の推奨事項
+          href: speech-devices-sdk-microphone.md
         - name: Roobo v1 の詳細
           href: speech-devices-sdk-roobo-v1.md
-        - name: マイクの仕様
-          href: speech-devices-sdk-microphone.md
-    - name: REST API
+        - name: Roobo v2 の詳細
+          href: speech-devices-sdk-roobo-v2.md
+    - name: 操作方法ガイド
       items:
-        - name: 音声テキスト変換
-          href: rest-speech-to-text.md
-          displayName: 'speech-to-text, speech recognition'
-        - name: テキスト読み上げ
-          href: rest-text-to-speech.md
-          displayName: 'text-to-speech, speech synthesis'
-        - name: 一括文字起こしとカスタマイズ
-          href: 'https://westus.cris.ai/swagger/ui/index'
-          displayName: 'Batch transcription, transcription, custom models, customization, model management'
-        - name: 会話の文字起こし
-          href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-          displayName: 'Conversation transcription, signature generation'
-        - name: Webhook
-          href: webhooks.md
-          displayName: Webhooks
-    - name: Swagger ドキュメント
-      href: swagger-documentation.md
-    - name: 音声合成マークアップ言語 (SSML)
-      href: speech-synthesis-markup.md
-    - name: PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
-    - name: 言語のサポート
-      href: language-support.md
-    - name: リージョン
-      href: regions.md
+        - name: マイク配列を構成する方法
+          href: how-to-devices-microphone-array-configuration.md
+    - name: クイック スタート
+      items:
+        - name: Speech Devices SDK を使用する
+          href: speech-devices-sdk-quickstart.md
+    - name: リソース
+      items:
+        - name: Speech Devices SDK のトラブルシューティング
+          href: speech-devices-sdk-troubleshooting.md
+    - name: リファレンス
+      items:
+        - name: Speech Devices SDK のリリース ノート
+          href: devices-sdk-release-notes.md
+- name: ツール
+  items:
+    - name: Speech CLI
+      displayName: SPX
+      items:
+        - name: Speech CLI とは
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Speech CLI の基本
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio とは
+          href: 'https://speech.microsoft.com'
+        - name: Speech Studio を使用してカスタム コマンド アプリを作成する
+          href: quickstart-custom-speech-commands-create-new.md
+- name: 移行
+  items:
+    - name: Bing Speech から
+      href: how-to-migrate-from-bing-speech.md
+    - name: Translator Speech API から
+      href: how-to-migrate-from-translator-speech-api.md
 - name: リソース
   items:
-    - name: FAQ
-      items:
-        - name: 音声テキスト変換
-          href: faq-stt.md
-          displayName: 'recognize speech, speech recognition, speech-to-text, stt'
-        - name: テキスト読み上げ
-          href: faq-text-to-speech.md
-          displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
-        - name: 音声翻訳
-          href: 'https://www.microsoft.com/translator/faq.aspx'
-          displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-        - name: 音声優先仮想アシスタント (プレビュー)
-          href: faq-voice-first-virtual-assistants.md
-    - name: Speech SDK ライセンス
-      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
-      items:
-        - name: ライセンス
-          href: 'https://aka.ms/csspeech/license201809'
-        - name: サード パーティに関する通知
-          href: 'https://aka.ms/csspeech/toctpn'
-    - name: Speech Devices SDK
-      displayName: 'roobo, speech devices sdk'
-      items:
-        - name: 概要
-          href: speech-devices-sdk.md
-        - name: ライセンス
-          href: 'https://aka.ms/sdsdk-license'
-        - name: サード パーティに関する通知
-          href: 'https://aka.ms/sdsdk-toctpn'
-    - name: Speech SDK のトラブルシューティング
-      href: troubleshooting.md
-    - name: Speech Devices SDK のトラブルシューティング
-      href: speech-devices-sdk-troubleshooting.md
     - name: サポート
+      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
+    - name: リージョン
+      href: regions.md
+    - name: Swagger ドキュメント
+      href: swagger-documentation.md
+    - name: ソブリン クラウド
+      displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
+      href: sovereign-clouds.md
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: speech-encryption-of-data-at-rest.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: プライバシーと Cookie

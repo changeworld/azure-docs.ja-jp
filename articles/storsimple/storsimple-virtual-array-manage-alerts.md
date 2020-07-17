@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array アラートを表示して管理する | Microsoft Docs
+title: StorSimple Virtual Array のアラートを表示し、管理する
 description: StorSimple Virtual Array アラートの状態と重大度について、また StorSimple Manager サービスを使用してアラートを管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895466"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232071"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -34,29 +34,29 @@ StorSimple デバイス マネージャー サービスのアラート機能で�
 
 ## <a name="configure-alert-settings"></a>アラート設定の構成
 
-StorSimple Virtual Array ごとに、アラート状態について電子メールで通知を受けるかどうかを選択できます。 さらに、アラートの受信者を他に指定するには、**[追加の電子メール受信者]** ボックスに、その受信者の電子メール アドレスをセミコロンで区切って入力します。
+StorSimple Virtual Array ごとに、アラート状態について電子メールで通知を受けるかどうかを選択できます。 さらに、アラートの受信者を他に指定するには、 **[追加の電子メール受信者]** ボックスに、その受信者の電子メール アドレスをセミコロンで区切って入力します。
 
 > [!NOTE]
 > 1 つの仮想アレイに対して入力できる電子メール アドレスは最大 20 件です。
 
-仮想アレイの電子メール通知を有効にすると、重大なアラートが発生するたびにアラート リストのメンバーに電子メール メッセージが送信されます。 メッセージは *storsimple-alerts-noreply\@mail.windowsazure.com* から送信され、アラートの状態の詳細が示されます。 受信者が自信を電子メール通知のリストから削除するには、**[受信登録の取り消し]** をクリックします。
+仮想アレイの電子メール通知を有効にすると、重大なアラートが発生するたびにアラート リストのメンバーに電子メール メッセージが送信されます。 メッセージは *storsimple-alerts-noreply\@mail.windowsazure.com* から送信され、アラートの状態の詳細が示されます。 受信者が自信を電子メール通知のリストから削除するには、 **[受信登録の取り消し]** をクリックします。
 
 #### <a name="to-enable-email-notification-for-alerts"></a>アラートに関する電子メール通知を有効にするには
 
-1. StorSimple デバイス マネージャー サービスに移動し、**[管理]** セクションで **[デバイス]** を選択してクリックします。 表示されたデバイスの一覧から、デバイスを選択してクリックします。
+1. StorSimple デバイス マネージャー サービスに移動し、 **[管理]** セクションで **[デバイス]** を選択してクリックします。 表示されたデバイスの一覧から、デバイスを選択してクリックします。
    
     ![[アラートの設定]](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. これにより **[設定]** ブレードが表示されます。 **[デバイス設定]** セクションで **[全般]** を選択します。 これにより **[全般設定]** ブレードが表示されます。
    
     ![アラート通知の構成](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
-3. **[全般設定]** ブレードで、**[アラートの設定]** セクションに移動し、以下を設定します。
+3. **[全般設定]** ブレードで、 **[アラートの設定]** セクションに移動し、以下を設定します。
    
-   1. **[電子メール通知を有効にする]** フィールドで、**[はい]** を選択します。
-   2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、**[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
+   1. **[電子メール通知を有効にする]** フィールドで、 **[はい]** を選択します。
+   2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、 **[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
    3. **[追加の電子メール受信者]** フィールドに、アラートの通知を受信する他の受信者すべての電子メール アドレスを入力します。 名前は *someone\@somewhere.com* の形式で入力します。 電子メール アドレスはセミコロンで区切ります。 1 つの仮想デバイスで構成できる電子メール アドレスは最大 20 件です。
       
        ![アラート通知の構成](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. 電子メールのテスト通知を送信するには、**[テスト電子メールの送信]** をクリックします。 テスト通知を転送すると、StorSimple デバイス マネージャー サービスに状態メッセージが表示されます。
+   4. 電子メールのテスト通知を送信するには、 **[テスト電子メールの送信]** をクリックします。 テスト通知を転送すると、StorSimple デバイス マネージャー サービスに状態メッセージが表示されます。
       
        ![Alerts test notification email sent](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
@@ -91,7 +91,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 ![Alerts dashboard](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
 
-重大度レベルをクリックすると、**[アラート]** ブレードが表示されます。 結果には、その重大度レベルに一致するアラートのみが含まれます。
+重大度レベルをクリックすると、 **[アラート]** ブレードが表示されます。 結果には、その重大度レベルに一致するアラートのみが含まれます。
 
 ![Alerts report scoped to alert type](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
 
@@ -99,7 +99,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 ![アラートの一覧と詳細](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
 
-情報を Microsoft サポートに送信する必要がある場合は、テキスト ファイルにアラートの詳細をコピーできます。 推奨事項に従って、オンプレミスのアラートの状態が解決したら、一覧からアラートをクリアする必要があります。 一覧からアラートを選択し、**[クリア]** をクリックします。 複数のアラートをクリアするには、各アラートを選択し、**[アラート]** 列以外の任意の列をクリックします。クリアするアラートをすべて選択したら、**[クリア]** をクリックします。
+情報を Microsoft サポートに送信する必要がある場合は、テキスト ファイルにアラートの詳細をコピーできます。 推奨事項に従って、オンプレミスのアラートの状態が解決したら、一覧からアラートをクリアする必要があります。 一覧からアラートを選択し、 **[クリア]** をクリックします。 複数のアラートをクリアするには、各アラートを選択し、 **[アラート]** 列以外の任意の列をクリックします。クリアするアラートをすべて選択したら、 **[クリア]** をクリックします。
 
 **[クリア]** をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。
 
@@ -165,6 +165,6 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 |:--- |:--- |:--- |
 | <*デバイス名*\> のパスワードが <*数*\> 日後に有効期限切れとなります。 |パスワードの警告。 |パスワードは <*数*\> 日後に有効期限切れとなります。 パスワードの変更を検討してください。 詳細については、「[StorSimple Virtual Array デバイス管理者パスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)」を参照してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple Virtual Array の詳細](storsimple-ova-overview.md)

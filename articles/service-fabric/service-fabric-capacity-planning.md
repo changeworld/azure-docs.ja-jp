@@ -1,25 +1,14 @@
 ---
-title: Service Fabric アプリの容量計画 | Microsoft Docs
+title: Service Fabric アプリの容量計画
 description: Service Fabric アプリケーションに必要なコンピューティング ノードの数を特定する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: ac8abbdbbe9125ea036d837c08e1089aa6d1e55d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212859"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75377210"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric アプリケーションの容量計画
 このドキュメントでは、Azure Service Fabric アプリケーションを実行するために必要なリソース (CPU、RAM、ディスク ストレージ) の量を見積もる方法について説明します。 リソース要件は、通常、時の経過と共に変化します。 一般的に、サービスの開発およびテスト中はリソースをあまり必要とせず、運用を開始したりアプリケーションが多くのユーザーに使用され始めたりすると、より多くのリソースが必要になります。 アプリケーションを設計するときは、長期的な要件を考慮し、高い顧客要求を満たすためにサービスを拡張できるようにしてください。
@@ -51,7 +40,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ここで前提としているのは、単一のステートフル サービスです。 複数のステートフル サービスがある場合は、他のサービスに関連する DB_Size を式に追加する必要があります。 また、ステートフル サービスごとにノード数を個別に計算することもできます。  サービスに、バランスが取れていないレプリカやパーティションがある場合があります。 あるパーティションのデータが、他のパーティションよりも多い可能性もあります。 パーティション分割の詳細については、[パーティション分割のベスト プラクティス](service-fabric-concepts-partitioning.md)に関するページをご覧ください。 ただし、前述した式は、パーティションやレプリカに依存しません。Service Fabric では、最適化された方法でレプリカが複数のノードに分散されるためです。
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>コスト計算用のスプレッドシートを使用する
-ここで、具体的な数を式に当てはめてみましょう。 [スプレッドシート例](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx) は、3 種類のデータ オブジェクトを含むアプリケーションの容量を計画する方法を示しています。 各オブジェクトで、サイズと、予期されるオブジェクトの数を概算します。 オブジェクトの種類ごとに、必要なレプリカの数も選択しました。 スプレッドシートは、クラスターに格納されるメモリ量の合計を計算します。
+ここで、具体的な数を式に当てはめてみましょう。 [スプレッドシート例](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx) は、3 種類のデータ オブジェクトを含むアプリケーションの容量を計画する方法を示しています。 各オブジェクトで、サイズと、予期されるオブジェクトの数を概算します。 オブジェクトの種類ごとに、必要なレプリカの数も選択しました。 スプレッドシートは、クラスターに格納されるメモリ量の合計を計算します。
 
 次に、VM サイズと毎月のコストを入力します。 スプレッドシートは、VM サイズに基づいて、物理的にノードに収めるためにデータを使用して分割する場合のパーティションの最小数を示します。 アプリケーションの固有の計算とネットワーク トラフィックのニーズに対応するために、多数のパーティションが必要な場合があります。 スプレッドシートは、ユーザー プロファイル オブジェクトを管理しているパーティション数が 1 から 6 に増えたことを示しています。
 
@@ -59,8 +48,8 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 ![コスト計算用のスプレッドシート][Image1]
 
-## <a name="next-steps"></a>次の手順
-サービスのパーティション分割の詳細については、「[Service Fabric サービスのパーティション分割][10]」をご覧ください。
+## <a name="next-steps"></a>次のステップ
+サービスのパーティション分割の詳細については、[Service Fabric サービスのパーティション分割][10]に関するページを参照してください。
 
 <!--Image references-->
 [Image1]: ./media/SF-Cost.png

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 99f756b5415811b3d4c2ee0167f98b31c905df1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793679"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70072319"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
@@ -28,14 +27,14 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー][Control flow] ポリシーや[変数の設定][Set variable]ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー][Advanced policies]」と「[ポリシーの式][Policy expressions]」をご覧ください。
 
-## <a name="sections"> </a>ポリシー構成について
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>ポリシー構成について
 
 ポリシー定義は、一連の受信ステートメントと送信ステートメントが記述された単純な XML ドキュメントです。 XML は、定義ウィンドウで直接編集できます。 ウィンドウの右側にはステートメントの一覧が表示され、現在のスコープに適用できるステートメントが有効になり強調表示されます。
 
 有効なステートメントをクリックすると、定義ビュー内のカーソル位置に適切な XML が追加されます。 
 
 > [!NOTE]
-> 追加するポリシーが有効になっていない場合、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、[ポリシー リファレンス][Policy Reference]に関するページでそのポリシーの**使用例**を参照してください。
+> 追加するポリシーが有効になっていない場合、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、 **ポリシー リファレンス** に関するページでそのポリシーの [使用例][Policy Reference]を参照してください。
 > 
 > 
 
@@ -61,7 +60,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](/azure/api-management/api-management-error-handling-policies)に関するページを参照してください。
 
-## <a name="scopes"> </a>ポリシーの構成方法
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>ポリシーの構成方法
 
 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
 
@@ -93,7 +92,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ### <a name="restrict-incoming-requests"></a>受信要求を制限する
 
-新しいステートメントを追加して受信要求を指定された IP アドレスに制限するには、`inbound` XML 要素内にカーソルを置き、**[Restrict caller IPs]\(呼び出し元 IP の制限\)** ステートメントをクリックします。
+新しいステートメントを追加して受信要求を指定された IP アドレスに制限するには、`inbound` XML 要素内にカーソルを置き、 **[Restrict caller IPs]\(呼び出し元 IP の制限\)** ステートメントをクリックします。
 
 ![制限ポリシー][policies-restrict]
 
@@ -114,7 +113,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 </ip-filter>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 

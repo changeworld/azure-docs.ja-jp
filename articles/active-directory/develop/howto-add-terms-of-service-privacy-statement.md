@@ -2,27 +2,22 @@
 title: アプリのサービス利用規約とプライバシーに関する声明 | Azure
 description: Azure AD を使用するために登録されているアプリに対してサービス利用規約とプライバシーに関する声明を設定する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/22/2019
 ms.author: ryanwi
-ms.reviwer: lenalepa, sureshja
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2242c6fc46f5556de0b0dd63659670e9c3f998d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540170"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80884241"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
 
@@ -46,7 +41,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 
 | ガイドライン     | 説明                           |
 |---------------|---------------------------------------|
-| 形式        | 有効な URL                             |
+| Format        | 有効な URL                             |
 | 有効なスキーマ | HTTP および HTTPS<br/>HTTPS を推奨 |
 | 最大長    | 2048 文字                       |
 
@@ -56,35 +51,22 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 
 サービス利用規約とプライバシーに関する声明の準備ができたら、次のメソッドのいずれかを使用して、自分のアプリにこれらのドキュメントへのリンクを追加できます。
 
-* [Azure portal を使用する](#registered-in-azure-portal)
-* [アプリケーション登録ポータル、またはデベロッパー センター内](#registered-in-app-reg-portal)
+* [Azure portal を使用する](#azure-portal)
 * [アプリ オブジェクト JSON を使用する](#app-object-json)
-* [MSGraph beta REST API を使用する](#msgraph-beta-rest-api)
+* [Microsoft Graph API を使用する](#msgraph-rest-api)
 
-### <a name="registered-in-azure-portal"></a>Azure portal でアプリを登録した場合
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portal を使用する
+Azure portal で次の手順に従います。
 
-Azure portal でアプリを登録した場合、次の手順に従います。
-
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
-3. アプリの **[プロパティ]** セクションを開きます。
+3. **[ブランド]** ウィンドウを開きます。
 4. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
 5. 変更を保存します。
 
-    ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ セクション](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="registered-in-app-reg-portal"></a>アプリケーション登録ポータルでアプリを登録する場合
-
-アプリケーション登録ポータルまたはデベロッパー センターでアプリを登録した場合、次の手順に従います。
-
-1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
-2. 自分のアプリを選択して、**[プロファイル]** セクションまでスクロールします。
-3. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
-4. 変更を保存します。
-
-    ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロファイル セクション](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
-
-### <a name="app-object-json"></a>アプリ オブジェクト JSON を使用する
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>アプリ オブジェクト JSON を使用する
 
 アプリ オブジェクト JSON を直接変更する場合、Azure portal またはアプリケーション登録ポータルでマニフェスト エディターを使用して、自分のアプリのサービス利用規約とプライバシーに関する声明へのリンクを含めることができます。
 
@@ -95,12 +77,12 @@ Azure portal でアプリを登録した場合、次の手順に従います。
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>MSGraph beta REST API を使用する
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>Microsoft Graph API を使用する
 
-プログラムを使用してすべてのアプリを更新するには、MSGraph beta REST API を使用してすべてのアプリを更新し、サービス利用規約とプライバシーに関する声明のドキュメントへのリンクを含めることができます。
+プログラムを使用してすべてのアプリを更新するには、Microsoft Graph API を使用してすべてのアプリを更新し、サービス利用規約とプライバシーに関する声明のドキュメントへのリンクを含めることができます。
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -115,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * 次のフィールド (`supportUrl`、`marketingUrl`、`logoUrl`) に割り当てた既存の値を上書きしないように注意してください。
-> * MSGraph beta REST API は、Azure AD アカウントを使ってサインインしたときにのみ動作します。 個人用 Microsoft アカウントはサポートされていません。
+> * Microsoft Graph API は、Azure AD アカウントを使用してサインインした場合にのみ機能します。 個人用 Microsoft アカウントはサポートされていません。

@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory のデータセット列のマッピング | Microsoft Docs
+title: Azure Data Factory のデータセット列のマッピング
 description: ソース列を変換先列にマップする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017465"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74923868"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>ソース データセット列を変換先のデータセット列にマップする
 > [!NOTE]
@@ -179,7 +178,7 @@ ms.locfileid: "54017465"
 
 ![列マッピングのフロー - 2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティの使用に関するチュートリアルは、次の記事をご覧ください。 
 
 - [Blob Storage から SQL データベースにデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

@@ -1,26 +1,31 @@
 ---
-title: Azure Data Factory の Web アクティビティ | Microsoft Docs
+title: Azure Data Factory の Web アクティビティ
 description: Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: shlo
-ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214302"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81417897"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+
 Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
+
+> [!NOTE]
+> Web アクティビティでは、公開されている URL のみを呼び出すことができます。 プライベート仮想ネットワークでホストされている URL についてはサポートされていません。
 
 ## <a name="syntax"></a>構文
 
@@ -65,12 +70,12 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 -------- | ----------- | -------------- | --------
 name | Web アクティビティの名前 | String | はい
 type | **WebActivity** に設定する必要があります。 | String | はい
-method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | はい
+method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされるタイプ: "GET"、"POST"、"PUT" | はい
 url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | はい
 headers | 要求に送信されるヘッダー。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 `"headers":{ "Content-Type":"application/json"}`
 body | エンドポイントに送信されるペイロードを表します。  | 文字列 (または文字列の resultType を含む式)。 <br/><br/>「[要求ペイロードのスキーマ](#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。 | POST/PUT メソッドには必須です。
-[認証] | エンドポイントを呼び出すために使用される認証方法。 サポートされるタイプは "Basic" または "ClientCertificate" です。 詳細については、「[認証](#authentication)」セクションを参照してください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列 (または文字列の resultType を含む式) | いいえ 
-データセット | エンドポイントに渡されるデータセットの一覧。 | データセット参照の配列。 空の配列にすることができます。 | はい
+認証 | エンドポイントを呼び出すために使用される認証方法。 サポートされるタイプは "Basic" または "ClientCertificate" です。 詳細については、「[認証](#authentication)」セクションを参照してください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列 (または文字列の resultType を含む式) | いいえ
+datasets | エンドポイントに渡されるデータセットの一覧。 | データセット参照の配列。 空の配列にすることができます。 | はい
 linkedServices | エンドポイントに渡されるリンクされたサービスの一覧。 | リンクされたサービスの参照の配列。 空の配列にすることができます。 | はい
 
 > [!NOTE]
@@ -81,17 +86,21 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 | 値の型 | 要求本文 | 応答本文 |
 |---|---|---|
 |JSON オブジェクト | サポートされています | サポートされています |
-|JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていません |
-| JSON 値 | サポートされています | サポートされていません |
-| 非 JSON 型 | サポートされていません | サポートされていません |
+|JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていない |
+| JSON 値 | サポートされています | サポートされていない |
+| 非 JSON 型 | サポートされていない | サポートされていない |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
+
+Web アクティビティでサポートされている認証の種類を以下に示します。
 
 ### <a name="none"></a>なし
+
 認証が必要ない場合は、"authentication" プロパティを含めないでください。
 
 ### <a name="basic"></a>Basic
+
 基本認証で使用するユーザー名とパスワードを指定します。
 
 ```json
@@ -103,6 +112,7 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 ```
 
 ### <a name="client-certificate"></a>クライアント証明書
+
 PFX ファイルの Base64 でエンコードされたコンテンツとパスワードを指定します。
 
 ```json
@@ -123,6 +133,9 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
     "resource": "https://management.azure.com/"
 }
 ```
+
+> [!NOTE]
+> ご利用のデータ ファクトリが git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 Azure Data Factory では、git にパスワードは保存されません。
 
 ## <a name="request-payload-schema"></a>要求ペイロードのスキーマ
 POST/PUT メソッドを使用する場合、body プロパティは、エンドポイントに送信されるペイロードを表します。 そのペイロードの一部としてリンクされたサービスやデータセットを渡すことができます。 ペイロードのスキーマを次に示します。
@@ -241,10 +254,10 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)

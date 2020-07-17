@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics を使って IoT ソリューションをビルドする
 description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321570"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426455"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -44,7 +43,7 @@ ms.locfileid: "54321570"
 ### <a name="entry-data-stream"></a>入口データ ストリーム
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。 出口データ イベントは、サンプル アプリに含まれる Web アプリから Event Hub キューにライブでストリーミングされます。
 
-| TollID | EntryTime | LicensePlate | 状態 | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
+| TollID | EntryTime | LicensePlate | State | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +59,7 @@ ms.locfileid: "54321570"
 | TollID |料金所を一意に識別する料金所 ID |
 | EntryTime |車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate |車両のナンバー プレートの番号 |
-| 状態 |米国の州 |
+| State |米国の州 |
 | Make |自動車の製造元 |
 | モデル |自動車の型式 |
 | VehicleType |1 (乗用車) または 2 (商用車) |
@@ -131,14 +130,15 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
 7. 使用条件に同意して、**チェック ボックスをオン**にします。
 
-8. 後でリソースを簡単に特定できるように、**[ダッシュボードにピン留めする]** を選択します。
+8. 後でリソースを簡単に特定できるように、 **[ダッシュボードにピン留めする]** を選択します。
 
 9. **[購入]** を選択して、サンプル テンプレートをデプロイします。
 
 10. しばらく待つと、**デプロイが成功した**ことを確認する通知が表示されます。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp リソースの確認
-1. Azure Portal にログインする
+
+1. Azure portal にサインインする
 
 2. 前のセクションで名前を付けたリソース グループを見つけます。
 
@@ -152,7 +152,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 ## <a name="examine-the-sample-tollapp-job"></a>サンプル TollApp ジョブを調べる
 1. 前のセクションのリソース グループから始めます。名前が **tollapp** で始まる Stream Analytics ストリーミング ジョブを選択します (名前には一意にするためのランダムな文字が含まれています)。
 
-2. ジョブの **[概要]** ページで、**[クエリ]** ボックスにクエリの構文が表示されていることに注目します。
+2. ジョブの **[概要]** ページで、 **[クエリ]** ボックスにクエリの構文が表示されていることに注目します。
 
    ```sql
    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
@@ -163,7 +163,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
    このクエリの意図は、料金所ブースに入る車両の台数をカウントする必要があると言い換えることができます。 高速道路の料金所ブースには車両が次々と入ってくるため、これらの入り口イベントは、止まることがない流れに似ています。 この流れを定量化するには、測定する "期間" を定義する必要があります。 質問を "3 分間で料金所ブースに入る車両は何台あるか" に絞り込んでみましょう。 これを一般に "タンブリング カウント" といいます。
 
-   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[時間枠](https://msdn.microsoft.com/library/azure/dn835019.aspx)コンストラクトをご覧ください。
+   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)と[時間枠](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)コンストラクトをご覧ください。
 
 3. TollApp サンプル ジョブの入力を調べます。 現在のクエリでは、EntryStream 入力だけが使用されています。
    - **EntryStream** 入力は、車両が高速道路の料金所ブースに入ったことを表すデータをキュー処理する Event Hub 接続です。 このイベントは、サンプルの一部である Web アプリによって作成され、そのデータが Event Hub でキュー処理されます。 この入力がストリーミング クエリの FROM 句でクエリ処理されることに注意してください。
@@ -171,14 +171,14 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
    - **Registration** 入力は、Azure BLOB ストレージ接続であり、静的な registration.json ファイルを指し、必要に応じて検索で使用されます。 この参照データ入力は、後述するさまざまなクエリの構文で使用されます。
 
 4. TollApp サンプル ジョブの出力を調べます。
-   - **Cosmos DB** 出力は、出力シンク イベントを受信する Cosmos データベースのコレクションです。 この出力は、ストリーミング クエリの INTO 句で使用されることに注意してください。
+   - **Cosmos DB** 出力は、出力シンク イベントを受信する Cosmos データベースのコンテナーです。 この出力は、ストリーミング クエリの INTO 句で使用されることに注意してください。
 
 ## <a name="start-the-tollapp-streaming-job"></a>TollApp ストリーミング ジョブを開始する
 ストリーミング ジョブを開始するには、次の手順に従います。
 
-1. ジョブの **[概要]** ページで、**[開始]** を選択します。
+1. ジョブの **[概要]** ページで、 **[開始]** を選択します。
 
-2. **[ジョブの開始]** ウィンドウで、**[Now]\(今すぐ\)** を選択します。
+2. **[ジョブの開始]** ウィンドウで、 **[Now]\(今すぐ\)** を選択します。
 
 3. しばらくしてジョブが実行されたら、ストリーミング ジョブの **[概要]** ページで **[監視]** グラフを表示します。 グラフには、数千の入力イベントと数百の出力イベントが表示されます。
 
@@ -214,7 +214,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>TollApp ストリーミング ジョブ クエリの構文を更新するには:
 
-1. ジョブの **[概要]** ページで、**[停止]** を選択します。
+1. ジョブの **[概要]** ページで、 **[停止]** を選択します。
 
 2. ジョブが停止したことを示す通知が表示されるまで、しばらく待ちます。
 
@@ -224,9 +224,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 5. **[保存]** を選択してクエリを保存します。 **[はい]** を選択して変更を保存します。
 
-6. ジョブの **[概要]** ページで、**[開始]** を選択します。
+6. ジョブの **[概要]** ページで、 **[開始]** を選択します。
 
-7. **[ジョブの開始]** ウィンドウで、**[Now]\(今すぐ\)** を選択します。
+7. **[ジョブの開始]** ウィンドウで、 **[Now]\(今すぐ\)** を選択します。
 
 ### <a name="review-the-total-time-in-the-output"></a>出力内の合計時間を確認する
 前のセクションの手順を繰り返して、ストリーミング ジョブからの CosmosDB 出力データを確認します。 最新の JSON ドキュメントを確認します。
@@ -301,7 +301,7 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 2. **[< > クエリ]** ページでクエリの構文を更新し、変更を保存します。
 
-3. ストリーミング ジョブの [構成] 見出しで、**[スケーリング]** を選択します。
+3. ストリーミング ジョブの [構成] 見出しで、 **[スケーリング]** を選択します。
 
 4. **[ストリーミング ユニット]** スライダーを 1 から 6 にスライドします。 ストリーミング ユニットは、ジョブが使用できる計算能力の量を定義します。 **[保存]** を選択します。
 

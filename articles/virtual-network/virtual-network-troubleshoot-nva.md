@@ -4,7 +4,7 @@ description: Azure でネットワーク仮想アプライアンスの問題を�
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526658"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71056831"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -74,19 +74,26 @@ PowerShell の使用
 3. **EnableIPForwarding** プロパティを確認します。
 4. IP 転送が有効になっていない場合は、次のコマンドを実行して有効にします。
 
-   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName> $nic2.EnableIPForwarding = 1 Set-AzNetworkInterface -NetworkInterface $nic2 Execute: $nic2 #and check for an expected output:EnableIPForwarding   :True NetworkSecurityGroup : null
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
 
 **Standard SKU と Pubilc IP の使用時に NVA を確認する** Standard SKU と Public IP の使用時には、NSG が作成済みで、明示的なルールでトラフィックの NVA へのルーティングが許可されている必要があります。
 
 **トラフィックを NVA にルーティングできるかどうかを確認する**
 
-1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、**[次ホップ]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、 **[次ホップ]** を選択します。
 2. トラフィックを NVA にリダイレクトするように構成された VM と、次ホップを表示する宛先 IP アドレスを指定します。 
 3. NVA が **[次ホップ]** として一覧表示されていない場合は、Azure ルート テーブルを確認して更新します。
 
 **トラフィックで NVA に到達できるかどうかを確認する**
 
-1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、**[IP フローの確認]** を選択します。 
+1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、 **[IP フローの確認]** を選択します。 
 2. VM および NVA の IP アドレスを指定して、トラフィックが任意のネットワーク セキュリティ グループ (NSG) によってブロックされるかどうかを確認します。
 3. トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
 

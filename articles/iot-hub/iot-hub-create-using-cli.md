@@ -1,18 +1,18 @@
 ---
 title: Azure CLI を使用して IoT Hub を作成する | Microsoft Docs
-description: Azure CLI を使用して Azure IoT ハブを作成する方法。
+description: Azure CLI コマンドを使用してリソース グループを作成し、そのリソース グループに IoT ハブを作成する方法を説明します。 また、ハブを削除する方法も説明します。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 78ea9071f220b2a78c6d9260d47145f22284d760
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66166291"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237391"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -85,7 +85,7 @@ az iot hub delete --name {your iot hub name} -\
 az group delete --name {your resource group name}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT ハブの使用について詳しくは、以下の記事をご覧ください。
 

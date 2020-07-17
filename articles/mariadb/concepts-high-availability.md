@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB での高可用性の概念
+title: 高可用性 - Azure Database for MariaDB
 description: このトピックでは、Azure Database for MariaDB を使用する場合の高可用性の情報を提供します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: ba561cba21b0b83b6a19fffc2fdfebe8ec8b8ed9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 3/18/2020
+ms.openlocfilehash: a87646f6195a06cf0a5382cb248efa5516c953f4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61042148"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "79531993"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での高可用性の概念
 Azure Database for MariaDB サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
@@ -31,5 +31,5 @@ HA モデルと同様に、Azure Database for MariaDB がスケールアップ�
 
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの概要については、 [Azure Database for MariaDB の概要](overview.md)に関するページをご覧ください

@@ -1,22 +1,22 @@
 ---
-title: Azure CLI のサンプル スクリプト - リソース グループのサブスクライブとリソースでのフィルタリング | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - リソース グループのサブスクライブとリソースでのフィルタリング
+title: Azure CLI - リソース グループのサブスクライブとリソースでのフィルタリング
+description: この記事では、リソースの Event Grid イベントをサブスクライブして、特定のリソースをフィルターで抽出する方法を示したサンプル Azure CLI スクリプトを紹介しています。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: bc058baa01021f94cf5906dd492153a8d367cc90
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 3dfe31a38d1bc1ba8662246a5dec3f10d0d1c948
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51033981"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76720828"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Azure CLI を使用したリソース グループのイベントのサブスクライブとリソースのフィルタリング
 
@@ -40,12 +40,12 @@ ms.locfileid: "51033981"
 
 このスクリプトは、次のコマンドを使用してイベント サブスクリプションを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Event Grid のサブスクリプションを作成する。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 拡張機能のバージョン | Event Grid のサブスクリプションを作成する。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * サブスクリプションのクエリを実行する方法については、「[Event Grid サブスクリプションのクエリを実行する](../query-event-subscriptions.md)」を参照してください。
 * Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。

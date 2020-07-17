@@ -1,65 +1,91 @@
-- name: Azure リソースの RBAC に関するドキュメント
+- name: Azure RBAC のドキュメント
   href: index.yml
   items: null
 - name: 概要
   items:
-    - name: RBAC とは
+    - name: Azure RBAC とは
       href: overview.md
     - name: 各種ロールについて
       href: rbac-and-directory-admin-roles.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: ユーザーのアクセス権の表示
       href: check-access.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: チュートリアル
   items:
     - name: ユーザーへのアクセス権の付与 - ポータル
       href: quickstart-assign-role-user-portal.md
     - name: ユーザーへのアクセス権の付与 - PowerShell
       href: tutorial-role-assignments-user-powershell.md
-    - name: ユーザーへのアクセス権の付与 - Resource Manager テンプレート
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: グループへのアクセス権の付与 - PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: カスタム ロールの作成 - PowerShell
       href: tutorial-custom-role-powershell.md
     - name: カスタム ロールの作成 - CLI
       href: tutorial-custom-role-cli.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: ロール定義について
-      href: role-definitions.md
-    - name: Azure リソース向けの PIM
-      href: pim-azure-resource.md
+    - name: ベスト プラクティス
+      href: best-practices.md
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: アクセスを管理する
+    - name: ロール定義の一覧表示
+      items:
+        - name: 概要
+          href: role-definitions.md
+        - name: ロール定義の一覧表示
+          href: role-definitions-list.md
+    - name: ロールの割り当ての一覧表示
+      items:
+        - name: ポータル
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: CLI
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: ロールの割り当てを追加または削除する
       items:
         - name: ポータル
           href: role-assignments-portal.md
+        - name: ポータル - ゲスト ユーザー
+          href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
-        - name: Template
+        - name: ARM テンプレート
+          displayName: Resource Manager
           href: role-assignments-template.md
-    - name: アクセス拒否
+    - name: 拒否割り当てを一覧表示する
       items:
-        - name: 拒否割り当て
+        - name: 概要
           href: deny-assignments.md
         - name: ポータル
           href: deny-assignments-portal.md
+        - name: PowerShell
+          href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: カスタム ロール
+    - name: カスタム ロールの作成または更新
       items:
         - name: 概要
           href: custom-roles.md
+        - name: ポータル
+          href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
         - name: Azure CLI
@@ -68,10 +94,8 @@
           href: custom-roles-rest.md
     - name: アクティビティ ログを表示する
       href: change-history-report.md
-    - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
+    - name: アクセス権を昇格する
       href: elevate-access-global-admin.md
-    - name: 外部ユーザーのアクセス権の管理
-      href: role-assignments-external-users.md
     - name: 従来の管理者
       href: classic-administrators.md
     - name: トラブルシューティング
@@ -82,16 +106,16 @@
       href: built-in-roles.md
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
-    - name: RBAC の制限
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure RBAC の制限
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST API
       href: /rest/api/authorization/
-    - name: Resource Manager テンプレート
-      displayName: ARM
+    - name: ARM テンプレート
+      displayName: Resource Manager
       items:
         - name: ロールの割り当て
           href: /azure/templates/microsoft.authorization/roleassignments

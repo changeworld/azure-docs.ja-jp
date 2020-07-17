@@ -1,20 +1,17 @@
 ---
 title: Azure Kubernetes Service (AKS) での OpenFaaS の使用
-description: Azure Kubernetes Service (AKS) での OpenFaaS のデプロイと使用
-services: container-service
+description: コンテナーを使用してサーバーレス関数を作成するために、Azure Kubernetes Service (AKS) クラスターに OpenFaaS をデプロイして使用する方法について説明します。
 author: justindavies
-manager: jeconnoc
-ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571220"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631463"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
@@ -31,9 +28,11 @@ ms.locfileid: "57571220"
 
 ## <a name="add-the-openfaas-helm-chart-repo"></a>OpenFaaS helm チャート リポジトリを追加する
 
+[https://shell.azure.com](https://shell.azure.com) にアクセスし、お使いのブラウザーで Azure Cloud Shell を開きます。
+
 OpenFaaS は、最新の変更をすべて取得するために、独自の helm チャートを保持します。
 
-```azurecli-interactive
+```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
@@ -44,13 +43,13 @@ OpenFaaS と OpenFaaS 関数は、それぞれ独自の Kubernetes 名前空間�
 
 OpenFaaS システムと関数用の名前空間を作成します。
 
-```azurecli-interactive
+```console
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
 OpenFaaS UI ポータルと REST API のパスワードを生成します。
 
-```azurecli-interactive
+```console
 # generate a random password
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
 
@@ -65,7 +64,7 @@ kubectl -n openfaas create secret generic basic-auth \
 
 複製されたリポジトリには、OpenFaaS 用の Helm チャートが含まれています。 このチャートを使用して、OpenFaaS を AKS クラスター内にデプロイします。
 
-```azurecli-interactive
+```console
 helm upgrade openfaas --install openfaas/openfaas \
     --namespace openfaas  \
     --set basic_auth=true \
@@ -75,7 +74,7 @@ helm upgrade openfaas --install openfaas/openfaas \
 
 出力:
 
-```
+```output
 NAME:   openfaas
 LAST DEPLOYED: Wed Feb 28 08:26:11 2018
 NAMESPACE: openfaas
@@ -95,7 +94,7 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-OpenFaaS ゲートウェイにアクセスするためのパブリック IP アドレスが作成されます。 このパブリック IP アドレスを取得するには、[kubectl get service][kubectl-get] コマンドを使います。 IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
+OpenFaaS ゲートウェイにアクセスするためのパブリック IP アドレスが作成されます。 この IP アドレスを取得するには、[kubectl get service][kubectl-get] コマンドを使います。 IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
@@ -103,7 +102,7 @@ kubectl get service -l component=gateway --namespace openfaas
 
 出力。
 
-```console
+```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
 gateway            ClusterIP      10.0.156.194   <none>         8080/TCP         7m
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
@@ -113,7 +112,7 @@ OpenFaaS システムをテストするには、ポート 8080、上の外部 IP
 
 ![OpenFaaS の UI](media/container-service-serverless/openfaas.png)
 
-最後に、OpenFaaS CLI をインストールします。 この例では、brew を使用しました (その他のオプションについては、[OpenFaaS CLI のドキュメント][open-faas-cli]を参照してください)。
+最後に、OpenFaaS CLI をインストールします。 この例では、brew を使用しました。その他のオプションについては、[OpenFaaS CLI のドキュメント][open-faas-cli]を参照してください。
 
 ```console
 brew install faas-cli
@@ -123,7 +122,7 @@ brew install faas-cli
 
 Azure CLI でログインします。
 
-```azurecli-interactive
+```console
 export OPENFAAS_URL=http://52.186.64.52:8080
 echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
@@ -132,19 +131,19 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 OpenFaaS が稼働したら、OpenFaas ポータルを使用して関数を作成します。
 
-**[Deploy New Function]\(新しい関数のデプロイ\)** をクリックし、**Figlet** を検索します。 Figlet 関数を選択し、**[Deploy]\(デプロイ)** をクリックします。
+**[Deploy New Function]\(新しい関数のデプロイ\)** をクリックし、**Figlet** を検索します。 Figlet 関数を選択し、 **[Deploy]\(デプロイ)** をクリックします。
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
 curl を使用して関数を呼び出します。 次の例にある IP アドレスを、OpenFaas ゲートウェイのものに置き換えます。
 
-```azurecli-interactive
+```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 ```
 
 出力:
 
-```console
+```output
  _   _      _ _            _
 | | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
@@ -197,34 +196,34 @@ COSMOS=$(az cosmosdb list-connection-strings \
 
 *mongoimport* ツールを使用して、CosmosDB インスタンスにデータを読み込みます。
 
-必要な場合は、MongoDB をインストールします。 次の例では、brew を使用してこれらのツールをインストールしています (その他のオプションについては、[MongoDB のドキュメント][install-mongo]をご覧ください)。
+必要な場合は、MongoDB をインストールします。 次の例では、brew を使用してこれらのツールをインストールしています。その他のオプションについては、[MongoDB のドキュメント][install-mongo]を参照してください。
 
-```azurecli-interactive
+```console
 brew install mongodb
 ```
 
 データベースにデータを読み込みます。
 
-```azurecli-interactive
+```console
 mongoimport --uri=$COSMOS -c plans < plans.json
 ```
 
 出力:
 
-```console
+```output
 2018-02-19T14:42:14.313+0000    connected to: localhost
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
 次のコマンドを実行して関数を作成します。 `-g` 引数の値を、OpenFaaS ゲートウェイ アドレスに更新します。
 
-```azurecli-interctive
+```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
 デプロイされると、その関数に対して新しく作成された OpenFaaS エンドポイントが表示されます。
 
-```console
+```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```

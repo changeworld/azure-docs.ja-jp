@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 description: この記事では、Azure Stream Analytics ジョブからの Blob Storage 出力のためのカスタム DateTime パス パターンおよびカスタム フィールドまたは属性機能について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982677"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426380"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -26,7 +25,7 @@ Azure Stream Analytics は、カスタム フィールドまたは属性およ�
 
 ### <a name="partition-key-options"></a>パーティション キーのオプション
 
-入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。
+入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX) である必要があります。
 
 ### <a name="example"></a>例
 
@@ -58,11 +57,11 @@ REST API を使用すると、その要求に使用される JSON ファイル�
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData}  
+   * cluster1/{date}/{time}/{aFieldInMyData} 
+   
+2. パーティション キーは大文字と小文字が区別されないため、"John" や "john" などのパーティション キーは同等です。 また、式もパーティション キーとして使用できません。 たとえば、 **{columnA + columnB}** は機能しません。  
 
-2. パーティション キーは大文字と小文字が区別されないため、"John" や "john" などのパーティション キーは同等です。 また、式もパーティション キーとして使用できません。 たとえば、**{columnA + columnB}** は機能しません。  
-
-3. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。  
+3. 入力ストリームが 8000 未満のパーティション キーのカーディナリティを含むレコードで構成されている場合、レコードは既存の BLOB に追加され、新しい BLOB は必要な場合にのみ作成されます。 カーディナリティが 8000 を超える場合、既存の BLOB に書き込まれる保証はなく、同じパーティション キーを含む任意数のレコードに対して新しい BLOB は作成されません。
 
 ## <a name="custom-datetime-path-patterns"></a>カスタム DateTime パス パターン
 
@@ -130,6 +129,6 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ![カスタム パス パターンでの Stream Analytics の BLOB 出力](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics からの出力を理解する](stream-analytics-define-outputs.md)

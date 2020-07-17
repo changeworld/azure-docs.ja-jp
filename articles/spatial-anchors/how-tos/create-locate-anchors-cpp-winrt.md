@@ -1,19 +1,19 @@
 ---
-title: C++/WinRT で Azure Spatial Anchors を使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: C++ と WinRT でアンカーを作成および配置する
 description: C++/WinRT で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 940768f6b6921701a91107a809d6260aa2a51213
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 084058edca59eda776c47a3e20bb49178de78681
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964963"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74790065"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>C++/WinRT で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -45,12 +45,9 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) クラスの詳細を確認してください。
 
 ```cpp
-    SpatialAnchorsFactory m_asafactory{ nullptr };
     CloudSpatialAnchorSession m_cloudSession{ nullptr };
-    winrt::com_ptr<::IUnknown> unk;
-    winrt::check_hresult(ASACreateFactory(unk.put()));
-    m_asafactory = unk.as<SpatialAnchorsFactory>();
-    m_cloudSession = m_asafactory.CreateCloudSpatialAnchorSession();
+
+    m_cloudSession = CloudSpatialAnchorSession();
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
@@ -178,7 +175,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
     // If the user is placing some application content in their environment,
     // you might show content at this anchor for a while, then save when
     // the user confirms placement.
-    CloudSpatialAnchor cloudAnchor = m_asafactory.CreateCloudSpatialAnchor();
+    CloudSpatialAnchor cloudAnchor = CloudSpatialAnchor();
     cloudAnchor.LocalAnchor(localAnchor);
     co_await m_cloudSession.CreateAnchorAsync(cloudAnchor);
     m_feedback = LR"(Created a cloud anchor with ID=)" + cloudAnchor.Identifier();
@@ -199,7 +196,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) メソッドの詳細を確認してください。
 
 ```cpp
-    CloudSpatialAnchor cloudAnchor = m_asafactory.CreateCloudSpatialAnchor();
+    CloudSpatialAnchor cloudAnchor = CloudSpatialAnchor();
     cloudAnchor.LocalAnchor(localAnchor);
     auto properties = m_cloudAnchor.AppProperties();
     properties.Insert(LR"(model-type)", LR"(frame)");
@@ -245,7 +242,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) メソッドの詳細を確認してください。
 
 ```cpp
-    AnchorLocateCriteria criteria = m_asafactory.CreateAnchorLocateCriteria();
+    AnchorLocateCriteria criteria = AnchorLocateCriteria();
     criteria.Identifiers({ LR"(id1)", LR"(id2)", LR"(id3)" });
     auto cloudSpatialAnchorWatcher = m_cloudSession.CreateWatcher(criteria);
 ```

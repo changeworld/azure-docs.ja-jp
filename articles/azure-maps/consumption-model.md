@@ -1,6 +1,6 @@
 ---
-title: Azure Maps の消費モデル | Microsoft Docs
-description: Azure Maps の消費モデルについて説明します
+title: ルート指定のための車両消費モデル | Microsoft Azure Maps
+description: この記事では Microsoft Azure Maps でのルート指定に使用される車両消費モデルについて説明します。
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,24 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301142"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77190244"
 ---
 # <a name="consumption-model"></a>消費モデル
 
-オンライン経路指定では、車両固有の消費モデルの詳細な説明に関するパラメーターのセットが提供されます。
-**vehicleEngineType** の値に応じて、2 つのプリンシパル消費モデルがサポートされます。_Combustion_ と _Electric_ です。 異なるモデルのパラメーターを同じ要求で指定すると、エラーになります。
-**travelMode** の値が _bicycle_ または _pedestrian_ のときは、消費モデルを使用できません。
+ルーティング サービスでは、車両固有の消費モデルの詳細な説明用のパラメーターのセットが提供されます。
+**vehicleEngineType** の値に応じて、_Combustion_ と _Electric_ の 2 つのプリンシパル消費モデルがサポートされます。 異なるモデルに属するパラメーターを同じ要求で指定するのは正しくありません。 また、消費モデルのパラメーターは、**travelMode** 値 _bicycle_ および _pedestrian_ と共に使用することはできません。
 
 ## <a name="parameter-constraints-for-consumption-model"></a>消費モデルのパラメーターの制約
 
-どちらの消費モデルでも、一部のパラメーターを明示的に指定するには、他のパラメーターも指定する必要があります。 次のような依存関係があります。
+どちらの消費モデルでも、パラメーターを指定する際にいくつかの依存関係があります。 つまり、一部のパラメーターを明示的に指定する場合は、他のパラメーターの指定が必要になることがあります。 次に、注意すべきこれらの依存関係を示します。
 
-* ユーザーは、すべてのパラメーターで **constantSpeedConsumption** を指定する必要があります。 **constantSpeedConsumption** を指定しない場合、**vehicleWeight** 以外の他の消費モデル パラメーターを指定するとエラーになります。
+* ユーザーは、すべてのパラメーターで **constantSpeedConsumption** を指定する必要があります。 **constantSpeedConsumption** を指定しない場合、他の消費モデル パラメーターを指定するとエラーになります。 **vehicleWeight** パラメーターは、この要件の例外です。
 * **accelerationEfficiency** と **decelerationEfficiency** は、常に、ペアとして指定する必要があります (つまり、両方とも指定するか、両方とも指定しない)。
 * **accelerationEfficiency** と **decelerationEfficiency** の両方を指定する場合、それらの値の積が 1 を超えてはなりません (永久運動を防ぐため)。
 * **uphillEfficiency** と **downhillEfficiency** は、常に、ペアとして指定する必要があります (つまり、両方とも指定するか、両方とも指定しない)。
@@ -68,5 +67,5 @@ Electric 消費モデルは、**vehicleEngineType** を _electric_ に設定す�
 
 ## <a name="sensible-values-of-consumption-parameters"></a>消費パラメーターの適切な値
 
-消費パラメーターの特定のセットは、上記で指定した明示的な要件をすべて満たしても、拒否される場合があります。 そのようなことが起きるのは、特定のパラメーターの値、または複数のパラメーターの値の組み合わせが、結果として不適切な大きさの消費値になると見なされる場合です。 そのような場合、通常は入力エラーを示すので、消費パラメーターがすべて適切な値になるように注意します。 消費パラメーターの特定のセットが拒否された場合は、関連するエラー メッセージに理由の説明が含まれます。
+消費パラメーターの特定のセットは、セットが明示的な要件をすべて満たしても、拒否される場合があります。 そのようなことが起きるのは、特定のパラメーターの値、または複数のパラメーターの値の組み合わせが、結果として不適切な大きさの消費値になると見なされる場合です。 そのような場合、通常は入力エラーを示すので、消費パラメーターがすべて適切な値になるように注意します。 消費パラメーターの特定のセットが拒否された場合は、関連するエラー メッセージに理由の説明が含まれます。
 パラメーターの詳細な説明には、両方のモデルの適切な値の例が含まれます。

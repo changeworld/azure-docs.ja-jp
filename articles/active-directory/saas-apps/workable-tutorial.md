@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a13d2a62c64ea114e45b49e38eda0ddc686fe7cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143155"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "71091032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>チュートリアル:Azure Active Directory と Workable の統合
 
@@ -113,7 +113,7 @@ Workable で Azure AD シングル サインオンを構成するには、次の
 
     ![[Workable のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://www.workable.com/sso/signin`」と入力します
+    **[サインオン URL]** テキスト ボックスに URL として「`https://www.workable.com/sso/signin`」と入力します。
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 応答 URL 値を実際の応答 URL で更新します。 この値を取得するには、[Workable クライアント サポート チーム](mailto:support@workable.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -142,7 +142,7 @@ Workable 内で SSO を有効にするには、専任の Workable アカウン�
 
 3. ログアウト URL
 
-シングル サインオンが有効になると Workable アカウント マネージャーから通知されるので、[Workable の SSO ページ](https://id.workable.com/sso/signin)で Workable アカウント サブドメインを使用してサインインできます。
+シングル サインオンが有効になると Workable アカウント マネージャーから通知されるので、[Workable の SSO ページ](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro)で Workable アカウント サブドメインを使用してサインインできます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

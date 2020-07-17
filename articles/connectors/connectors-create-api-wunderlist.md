@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から Wunderlist に接続する | Microsoft Docs
+title: Azure Logic Apps から Wunderlist に接続する
 description: Azure Logic Apps を使用して、Wunderlist アカウントの一覧、タスク、リマインダーなどの監視と管理を行うタスクとワークフローを自動化します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+tags: connectors
+ms.openlocfilehash: 5ac13595bd77238aaede5fa3bdc3a35ef69e8504
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230169"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74789122"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Wunderlist の監視と管理を行う
 
@@ -31,7 +27,7 @@ Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist ア�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * Wunderlist アカウントとユーザー資格情報。
 
@@ -45,9 +41,9 @@ Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist ア�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. パスを選択します。 
+1. 以下からパスを選択します。 
 
    * 空のロジック アプリの場合: 検索ボックスに、フィルターとして「Wunderlist」と入力します。 
    トリガーの一覧で、目的のトリガーを選択します。 
@@ -56,12 +52,12 @@ Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist ア�
 
    * 既存のロジック アプリの場合: 
    
-     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+     * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
        または
 
      * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
      
        検索ボックスに、フィルターとして「Wunderlist」と入力します。 
        アクションの一覧で、目的のアクションを選択します。
@@ -79,6 +75,6 @@ Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist ア�
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

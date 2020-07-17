@@ -1,6 +1,6 @@
 ---
-title: Licensing Microsoft® Smooth Streaming Client Porting Kit
-description: Microsoft® Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。
+title: Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
+description: Microsoft&reg; Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294571"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81686912"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス 
 ## <a name="overview"></a>概要
 Microsoft Smooth Streaming Client Porting Kit (**SSPK** ) は、組み込みデバイスのメーカーやケーブル テレビ事業者、携帯電話会社、コンテンツ サービス プロバイダー、携帯電話端末メーカー、独立系ソフトウェア ベンダー (ISV)、ソリューション プロバイダーが、アダプティブ コンテンツをスムーズ ストリーミング形式で配信するための製品やサービスを構築できるように最適化されたスムーズ ストリーミング クライアントの実装です。 SSPK は、デバイスやプラットフォームに依存しないスムーズ ストリーミング クライアントの実装であり、ライセンシーは任意のデバイスやプラットフォームに移植できます。 
 
@@ -73,11 +73,12 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 ## <a name="licensing-procedure-and-sspk-access"></a>ライセンス取得の手順と SSPK の利用
 ライセンスに関するお問い合わせは、[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) 宛てに電子メールでお寄せください。
 
-中間製品契約の登録済みライセンシーは、 [SSPK Distribution ポータル](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) にアクセスできます。
+中間製品契約の登録済みライセンシーは、SSPK Distribution ポータルにアクセスできます。
 
 中間製品契約と最終製品契約を締結済みの SSPK ライセンシーは、技術的な質問を [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)をクリックしてください。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 中間製品契約ライセンシー
+
 * Adroit Business Solutions, Inc
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
@@ -90,10 +91,10 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
+* Guangzhou Shikun Electronics., Ltd.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA S.A. 
 * Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
@@ -104,7 +105,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Top Victory Investments, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -141,6 +141,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Orange SA
 * Saffron Digital Limited
 * Sagemcom Broadband SAS
+* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
@@ -150,7 +151,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
-* TCL Overseas Marketing (Macao Commercial Offshore) Limited
 * Technicolor Delivery Technologies, SAS
 * Tongfang Global Ltd.
 * Top Victory Investments, Ltd.

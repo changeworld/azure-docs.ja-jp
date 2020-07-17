@@ -1,6 +1,6 @@
 ---
 title: Azure Load Balancer 用の高可用性ポートを構成する
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: すべてのポートで内部トラフィックを負荷分散するために高可用性ポートを使用する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
-ms.author: kumud
-ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: c6b8ecb443408f23ae604bd9c8139cb0a2afcd12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122331"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477784"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 
@@ -48,7 +48,7 @@ ms.locfileid: "66122331"
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Azure Portal を使用して高可用性ポートのロード バランサー規則を構成する
 
-Azure Portal を使用して高可用性ポートを構成するには、**[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
+Azure Portal を使用して高可用性ポートを構成するには、 **[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
 
 ![Azure Portal を使用した高可用性ポートの構成](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
@@ -98,9 +98,9 @@ lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfigurati
 [内部ロード バランサー セットの作成](load-balancer-get-started-ilb-arm-cli.md)に関する記事の手順 4. で、次のコマンドを使用して高可用性ポートのロード バランサー規則を作成します。
 
 ```azurecli
-azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
+az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [高可用性ポート](load-balancer-ha-ports-overview.md)の詳細を確認します。

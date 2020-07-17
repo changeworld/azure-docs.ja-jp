@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ccf8014938e813676e9338e9bfc4eaa18f63f9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436950"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74007923"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 - [セキュリティ レポート](#security-reports)
 - [アクティビティ レポート](#activity-reports)
 
-![レポート](./media/overview-reports/01.png)
+![レポーティング](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>セキュリティ レポート
@@ -54,9 +54,9 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 
 - リスクのフラグ付きユーザーと危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**で一覧表示できます。 
 
-- **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
+- **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク検出の一部を調べることができます。 
 
-- **Azure Active Directory Premium 2** エディションでは、基になるリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
+- **Azure Active Directory Premium 2** エディションでは、基になるリスク検出について最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
 
 
 ## <a name="activity-reports"></a>アクティビティ レポート
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 
 Azure AD では、レポート データにユーザー インターフェイスからだけでなく、一連の REST ベースの API を通じて[プログラムからアクセス](concept-reporting-api.md)することもできます。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リスクの高いサインイン レポート](concept-risky-sign-ins.md)
 - [監査ログ レポート](concept-audit-logs.md)

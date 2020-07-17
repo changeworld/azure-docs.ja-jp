@@ -1,10 +1,10 @@
 ---
-title: グループまたはアプリケーションのアクセス レビューを入力する - Azure Active Directory | Microsoft Docs
+title: グループとアプリケーションのアクセス レビューを完了する - Azure AD
 description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューに入力する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,55 +12,83 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/02/2018
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579599"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75932544"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューに入力する
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューに入力する
 
-管理者は、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対する[アクセス レビューを Azure Active Directory (Azure AD) を使用して作成](create-access-review.md)することができます。 レビュー担当者には、アクセス権をレビューするよう促すメールが Azure AD から自動的に送信されます。 メールが届かなかったユーザーには、[グループまたはアプリケーションに対するアクセス権のレビュー](perform-access-review.md)に関するページの手順を送信できます。 (レビュー担当者として割り当てられているが招待状を受け取っていないゲストは、レビューの前にまず招待状を受け取る必要があるため、アクセス レビューから電子メールが送信されません) アクセス レビュー期間が過ぎるか、管理者がアクセス レビューを停止したら、この記事の手順に従って、その結果を確認したうえで適用します。
+管理者が[グループまたはアプリケーションに対するアクセス レビューを作成](create-access-review.md)し、レビュー担当者が[アクセス レビューを実行](perform-access-review.md)します。 この記事では、アクセス レビューの結果を確認し、その結果を適用する方法について説明します。
 
-## <a name="view-an-access-review-in-the-azure-portal"></a>Azure Portal でのアクセス レビューの確認
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-1. [アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動して **[プログラム]** を選択し、アクセス レビュー コントロールが含まれたプログラムを選択します。
+## <a name="prerequisites"></a>前提条件
 
-2. **[管理]** を選択してアクセス レビュー コントロールを選択します。 選択したプログラムにコントロールが多数存在する場合は、特定の種類のコントロールだけをフィルターで抽出したり、コントロールの状態で並べ替えたりすることができます。 アクセス レビュー コントロールの名前またはそれを作成した所有者の表示名で検索することも可能です。 
+- Azure AD Premium P2
+- グローバル管理者、ユーザー管理者、セキュリティ管理者、またはセキュリティ閲覧者
 
-## <a name="stop-a-review-that-hasnt-finished"></a>未完了のレビューの停止
+詳細については、「[License requirements ライセンスの要件](access-reviews-overview.md#license-requirements)」を参照してください。
 
-レビューが終了予定日に達していない場合に、管理者は **[停止]** を選択することで、予定よりも早くレビューを終了することができます。 停止後は、ユーザーをレビューできなくなります。 レビューを停止後に再開することはできません。
+## <a name="view-an-access-review"></a>アクセス レビューの確認
 
-## <a name="apply-the-changes"></a>変更の適用 
+レビュー担当者がレビューを完了したら、その進行状況を追跡できます。
 
-レビューの自動適用が構成されていない場合は、期限に達したことによって、または管理者が手動で停止したことによってアクセス レビューが完了した後に、**[適用]** を選択して手動で変更を適用できます。 レビューの結果が適用されて、グループまたはアプリケーションが更新されます。 レビューでアクセス権が拒否されたユーザーについては、管理者がこのオプションを選択すると、そのメンバーシップまたはアプリケーションへの割り当てが Azure AD によって削除されます。 
+1. Azure portal にサインインして、[[Identity Governance] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)を開きます。
 
-レビューの自動適用が構成されている場合は、アクセス レビューが完了した後に、レビューの状態が、[完了] から、中間の状態を経て、最終的に [適用済み] に変更されます。 拒否されたユーザーが存在する場合は、数分以内にリソース グループ メンバーシップまたはアプリ割り当てから削除されます。
+1. 左側のメニューで **[アクセス レビュー]** をクリックします。
 
-オンプレミス ディレクトリに由来するグループ (動的グループ) は、レビューの自動適用を構成したり、**[適用]** を選択したりしても影響を受けません。 オンプレミス ディレクトリに由来したグループに変更を加える必要がある場合は、結果をダウンロードし、そのディレクトリ内の対応するグループに対して必要な変更を適用してください。
+1. 一覧で、アクセス レビューをクリックします。
 
-## <a name="download-the-results-of-the-review"></a>レビューの結果のダウンロード
+    アクセス レビューの系列を表示するには、アクセス レビューに移動します。スケジュール済みのレビューに、今後予定されている実行が表示されます。
 
-レビューの結果を取得するには、**[承認]** を選択した後で **[ダウンロード]** を選択します。 結果の CSV ファイルは、Excel など、UTF-8 でエンコードされた CSV ファイルを開くことができるプログラムで閲覧できます。
+    **[概要]** ページで、進行状況を確認できます。 ディレクトリのアクセス権は、レビューが完了するまで変更されません。
 
-## <a name="optional-delete-a-review"></a>省略可能:レビューの削除
-そのレビューが今後必要なければ、削除してかまいません。 **[削除]** を選択すると、Azure AD からレビューが削除されます。
+    ![アクセス レビューの進捗状況](./media/complete-access-review/overview-progress.png)
 
-> [!IMPORTANT]
-> 削除する前に警告は表示されないため、そのレビューを削除してよいことを確認してください。
-> 
-> 
+1. 終了予定日の前にアクセス レビューを停止する場合は、 **[停止]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+    レビューを停止すると、レビュー担当者が応答を提供できなくなります。 レビューを停止後に再開することはできません。
+
+1. そのアクセス レビューが今後必要ない場合は、 **[削除]** をクリックして削除できます。
+
+## <a name="apply-the-changes"></a>変更の適用
+
+**[リソースへの結果の自動適用]** が有効の場合は、 **[設定完了時]** での選択に基づいて、レビューの終了日の後、またはレビューを手動で停止したときに自動適用が実行されます。
+
+**[リソースへの結果の自動適用]** がレビューに対して有効になっていない場合は、 **[適用]** をクリックして手動で変更を適用します。 レビューでアクセス権が拒否されたユーザーについては、 **[適用]** をクリックすると、そのメンバーシップまたはアプリケーションへの割り当てが Azure AD によって削除されます。
+
+![アクセス レビューの変更の適用](./media/complete-access-review/apply-changes.png)
+
+レビューの状態は、 **[完了]** から **[適用中]** などの中間状態を経由して、最終的には **[結果を適用済み]** 状態になります。 拒否されたユーザーが存在する場合は、それらのユーザーが数分以内にグループ メンバーシップまたはアプリケーション割り当てから削除されることを確認できます。
+
+オンプレミス ディレクトリに由来するグループ (動的グループ) は、レビューの自動適用を構成したり、 **[適用]** を選択したりしても影響を受けません。 オンプレミス ディレクトリに由来したグループに変更を加える必要がある場合は、結果をダウンロードし、そのディレクトリ内の対応するグループに対して必要な変更を適用してください。
+
+## <a name="retrieve-the-results"></a>結果の取得
+
+1 回限りのアクセス レビューの結果を取得するには、 **[結果]** ページをクリックします。 ユーザーのアクセスのみを表示するには、[検索] ボックスに、レビューされたアクセスのユーザーの表示名またはユーザー プリンシパル名を入力します。
+
+![アクセス レビューの結果を取得](./media/complete-access-review/retrieve-results.png)
+
+定期的に実行されているアクティブなアクセス レビューの進行状況を表示するには、 **[結果]** ページをクリックします。
+
+定期的に実行されているアクセス レビューのうち、完了しているインスタンスの結果を表示するには、 **[レビューの履歴]** をクリックし、完了しているアクセス レビューのインスタンス一覧から、特定のインスタンスをその開始日と終了日に基づいて選択します。 このインスタンスの結果は、 **[結果]** ページから取得できます。
+
+アクセス レビューの結果をすべて取得するには、 **[ダウンロード]** をクリックします。 結果の CSV ファイルは、Excel など、UTF-8 でエンコードされた CSV ファイルを開くことができるプログラムで閲覧できます。
+
+## <a name="remove-users-from-an-access-review"></a>アクセス レビューからのユーザーの削除
+
+ 既定では、削除されたユーザーが Azure AD に 30 日間、削除状態で維持されます。その間は、管理者が必要に応じて復元することができます。  30 日後、そのユーザーは完全に削除されます。  その期間に達していなくても、全体管理者は、Azure Active Directory ポータルを使用して明示的に、[最近削除したユーザーを完全に削除](../fundamentals/active-directory-users-restore.md)することができます。  ユーザーが完全に削除されると、以降そのユーザーに関するデータは、アクティブなアクセス レビューから削除されます。  監査ログには、削除済みユーザーに関する監査情報が維持されます。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD のアクセス レビューでユーザー アクセスを管理する](manage-user-access-with-access-reviews.md)
 - [Azure AD のアクセス レビューでゲスト アクセスを管理する](manage-guest-access-with-access-reviews.md)
-- [Azure AD アクセス レビューに使用するプログラムとコントロールを管理する](manage-programs-controls.md)
 - [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](../privileged-identity-management/pim-how-to-start-security-review.md)

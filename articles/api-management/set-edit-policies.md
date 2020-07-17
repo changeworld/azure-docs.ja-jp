@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008268"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70071700"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ポリシーの設定または編集方法
 
@@ -30,7 +29,7 @@ ms.locfileid: "51008268"
 
 ポリシーを設定または編集するには、次の手順に従います。
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. APIM インスタンスを参照します。
 3. **[API]** タブをクリックします。
 
@@ -38,24 +37,26 @@ ms.locfileid: "51008268"
 
 4. 前にインポートした API の 1 つを選びます。
 5. **[デザイン]** タブを選択します。
-6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、**[すべての操作]** を選択します。
+6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、 **[すべての操作]** を選択します。
 7. **[受信処理]** または **[送信処理]** セクションで、**</>** (コード エディター) アイコンを選択します。
 8. 目的のポリシー コードを適切なブロックのいずれかに貼り付けます。
-         
-        <policies>
-             <inbound>
-                 <base />
-             </inbound>
-             <backend>
-                 <base />
-             </backend>
-             <outbound>
-                 <base />
-             </outbound>
-             <on-error>
-                 <base />
-             </on-error>
-         </policies>
+
+    ```XML
+    <policies>
+        <inbound>
+            <base />
+        </inbound>
+        <backend>
+            <base />
+        </backend>
+        <outbound>
+            <base />
+        </outbound>
+        <on-error>
+            <base />
+        </on-error>
+    </policies>
+    ```
  
 ## <a name="configure-scope"></a>スコープの構成
 
@@ -129,7 +130,7 @@ API スコープは、選択した API の **[すべての操作]** に対して
 5. ポリシーを追加または編集します。
 6. **[保存]** をクリックします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の関連トピックをご覧ください。
 

@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Bing Video Search REST API と C# を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:REST API と C# を使用して動画を検索する - Bing Video Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ea265ab876dffbb4140d8bbc48123eceaadfe34d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798449"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75382703"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>クイック スタート:Bing Video Search REST API と C# を使用して動画を検索する
 
@@ -42,7 +42,7 @@ ms.locfileid: "65798449"
     using System.Collections.Generic;
     ```
 
-2. サブスクリプション キー、エンドポイント、検索語句の変数を追加します。
+2. サブスクリプション キー、エンドポイント、検索語句の変数を追加します。 `uriBase` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -221,7 +221,7 @@ ms.locfileid: "65798449"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)

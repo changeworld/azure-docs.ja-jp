@@ -1,5 +1,5 @@
 ---
-title: Azure リソースのマネージド ID 使用して VM を構成するには、Azure SDK を使用します。
+title: SDK を使用して VM のマネージド ID を構成する - Azure AD
 description: Azure SDK を使用して、Azure VM で Azure リソースのマネージド ID を構成および使用するため手順について説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29446f6f0a86a00cc92fe46211caddd22aaa4859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d11cd51984f82bc20c02669e796d9ba21b9ed5d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66112561"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74183471"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure SDK で Azure リソースのマネージド ID を使用して VM を構成する
 
@@ -44,8 +44,8 @@ Azure は、一連の [Azure SDK](https://azure.microsoft.com/downloads) によ�
 | Java   | [Azure リソースのマネージド ID が有効な VM からストレージを管理する](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
 | Node.js| [システム割り当てマネージド ID が有効な VM を作成する](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
 | Python | [システム割り当てマネージド ID が有効な VM を作成する](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [システム割り当て ID が有効な Azure VM を作成する](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| Ruby   | [システム割り当て ID が有効な Azure VM を作成する](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure portal、PowerShell、CLI、およびリソース テンプレートを使用する方法については、**Azure VM 用の ID の構成**に関するページを参照してください。

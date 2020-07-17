@@ -1,19 +1,19 @@
 ---
-title: HDInsight (Apache Hadoop) 上で Hive と連携する Apache Ambari ビューを使用する - Azure
+title: Azure HDInsight の Apache Hadoop で Apache Ambari Hive ビューを使用する
 description: Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 55f8f453faf35d52c5c292e6b309194443980466
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/23/2020
+ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719574"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192682"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
@@ -23,24 +23,23 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の Hadoop クラスター。 詳細については、[Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
-* Web ブラウザー
+HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
-1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ブレードで開きます。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 このクラスターは、新しいポータル ビューで開かれます。
 
-2. **クラスター ダッシュボード**で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
+1. **クラスター ダッシュボード**で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。 また、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/views` に移動することもできます。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-3. ビューの一覧で、__Hive ビュー__ を選択します。
+1. ビューの一覧で、__Hive ビュー__ を選択します。
 
-    ![Hive ビューを選択する](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
+    ![Apache Ambari の Apache Hive ビューの選択](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
     Hive ビュー ページは次の図のようになります。
 
-    ![Hive ビューのクエリ ワークシートの画像](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+    ![Hive ビューのクエリ ワークシートの画像](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
+1. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,30 +53,27 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
-    これらのステートメントは次のアクションを実行します。
+    これらのステートメントによって次のアクションが実行されます。
 
-   * `DROP TABLE`:テーブルが既に存在する場合は、テーブルとデータ ファイルを削除します。
-
-   * `CREATE EXTERNAL TABLE`:新しい "外部" テーブルを Hive に作成します。
-     外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
-
-   * `ROW FORMAT`:データがどのように書式設定されているかを示します。 ここでは、各ログのフィールドは、スペースで区切られています。
-
-   * `STORED AS TEXTFILE LOCATION`:データが保存されている場所、およびデータがテキストとして保存されていることを示します。
-
-   * `SELECT`:t4 列の値が [ERROR] であるすべての行の数を選択します。
+    |ステートメント | 説明 |
+    |---|---|
+    |DROP TABLE|テーブルが既に存在する場合は、テーブルとデータ ファイルを削除します。|
+    |CREATE EXTERNAL TABLE|新しい "外部" テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。|
+    |ROW FORMAT|データがどのように書式設定されているかを示します。 ここでは、各ログのフィールドは、スペースで区切られています。|
+    |STORED AS TEXTFILE LOCATION|データが保存されている場所、およびデータがテキストとして保存されていることを示します。|
+    |SELECT|t4 列の値が [ERROR] であるすべての行の数を選択します。|
 
    > [!IMPORTANT]  
-   > __[Database]\(データベース\)__ では、__[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
+   > __[Database]\(データベース\)__ では、 __[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
 
-5. クエリを開始するには、ワークシートの下にある **[実行]** を選択します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
+1. クエリを開始するには、ワークシートの下にある **[実行]** を選択します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
 
-6. クエリが完了すると、**[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
+1. クエリが完了すると、 **[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
 
         loglevel       count
         [ERROR]        3
@@ -98,25 +94,25 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 クエリの Tez UI を表示するには、ワークシートの下にある **[Tez UI]** タブを選択します。
 
 > [!IMPORTANT]  
-> Tez を使用してもすべてのクエリが解決するとは限りません。 多くのクエリは、Tez を使用することなく解決できます。 
+> Tez を使用してもすべてのクエリが解決するとは限りません。 多くのクエリは、Tez を使用することなく解決できます。
 
 ## <a name="view-job-history"></a>ジョブ履歴の表示
 
 __[Jobs]\(ジョブ\)__ タブには、Hive クエリの履歴が表示されます。
 
-![ジョブ履歴の画像](./media/apache-hadoop-use-hive-ambari-view/job-history.png)
+![Apache Hive の [ジョブ] タブの履歴の表示](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>データベース テーブル
 
 __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内のテーブルを操作できます。
 
-![[Tables]\(テーブル\) タブの画像](./media/apache-hadoop-use-hive-ambari-view/tables.png)
+![Apache Hive の [テーブル] タブの画像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>保存済みのクエリ
 
-**[Query]\(クエリ\)** タブでは、必要に応じてクエリを保存できます。 クエリを保存すると、__[Saved Queries]\(保存済みクエリ\)__ タブでそのクエリを再利用できます。
+**[Query]\(クエリ\)** タブでは、必要に応じてクエリを保存できます。 クエリを保存すると、 __[Saved Queries]\(保存済みクエリ\)__ タブでそのクエリを再利用できます。
 
-![[Saved Queries]\(保存済みクエリ\) タブの画像](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
+![Apache Hive ビューの [保存済みクエリ] タブ](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > 保存済みのクエリは、既定のクラスター記憶域に格納されます。 保存済みのクエリは、パス `/user/<username>/hive/scripts` の下にあります。 これらはプレーンテキストの `.hql` ファイルとして格納されます。
@@ -129,11 +125,11 @@ __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内�
 
 Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセットを宣言および保存します。 これらの UDF は**クエリ エディター**で使用できます。
 
-![[UDF] タブの画像](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Apache Hive の [UDF] タブの表示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Hive ビューに UDF を追加すると、**[Insert udfs]\(UDF の挿入\)** ボタンが**クエリ エディター**の下部に表示されます。 このエントリを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
+**[Insert udfs] (UDF の挿入)** ボタンは、**クエリ エディター**の下部に表示されます。 このエントリには、Hive ビューで定義された UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 
-たとえば、次のプロパティを持つ UDF を定義したとします。
+たとえば、以下のプロパティで UDF を定義したとします。
 
 * リソース名: myudfs
 
@@ -143,7 +139,7 @@ Hive ビューに UDF を追加すると、**[Insert udfs]\(UDF の挿入\)** �
 
 * UDF のクラス名: com.myudfs.Awesome
 
-**[Insert udfs]\(UDF の挿入\)** ボタンを使用すると、**myudfs** という名前のエントリと、そのリソースに定義されている UDF ごとにドロップダウン リストが表示されます。 この例では **myawesomeudf** です。 このエントリを選択すると、クエリの先頭に次の内容が追加されます。
+**[Insert udfs]\(UDF の挿入\)** ボタンを使用すると、**myudfs** という名前のエントリと、そのリソースに定義されている UDF ごとにドロップダウン リストが表示されます。 この場合は、**myawesomeudf** が表示されます。 このエントリを選択すると、クエリの先頭に次の内容が追加されます。
 
 ```hiveql
 add jar /myudfs.jar;
@@ -155,19 +151,15 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 HDInsight において Hive で UDF を使用する方法の詳細については、以下の記事を参照してください。
 
 * [HDInsight 上の Apache Hive と Apache Pig で Python を使用する](python-udf-hdinsight.md)
-* [HDInsight にカスタムの Apache Hive UDF を追加する方法](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight 上の Apache Hive で Java UDF を使用する](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Hive の設定
 
 Hive の実行エンジンを Tez (既定値) から MapReduce に変更するなど、さまざまな Hive 設定を変更できます。
 
-## <a id="nextsteps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 HDInsight での Hive に関する全般的な情報
 
 * [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
-
-HDInsight での Hadoop のその他の使用方法に関する情報
-
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
-* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
+* [Apache Hive で Apache Beeline クライアントを使用する](apache-hadoop-use-hive-beeline.md)

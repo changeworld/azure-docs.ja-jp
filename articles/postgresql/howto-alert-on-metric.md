@@ -1,17 +1,17 @@
 ---
-title: Azure portal での Azure Database for PostgreSQL - Single Server のメトリック アラートの構成
+title: アラートを構成する - Azure portal -  Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure portal から Azure Database for PostgreSQL - Single Server のメトリック アラートを構成してアクセスする方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067290"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74766839"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のメトリックのアラートを設定する
 
@@ -32,25 +32,25 @@ ms.locfileid: "65067290"
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
 1. [Azure Portal](https://portal.azure.com/) で、監視する Azure Database for PostgreSQL サーバーを選択します。
 
-2. 次のように、サイドバーの **[監視]** セクションで、**[アラート]** を選択します。
+2. 次のように、サイドバーの **[監視]** セクションで、 **[アラート]** を選択します。
 
    ![アラート ルールを選択する](./media/howto-alert-on-metric/2-alert-rules.png)
 
 3. **[メトリック アラートの追加]** (+ アイコン) を選択します。
 
-4. 以下のように、**[ルールの作成]** ページが開きます。 必要な情報を入力します。
+4. 以下のように、 **[ルールの作成]** ページが開きます。 必要な情報を入力します。
 
    ![メトリック アラート フォームを追加する](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-5. **[条件]** セクションで、**[条件の追加]** を選択します。
+5. **[条件]** セクションで、 **[条件の追加]** を選択します。
 
 6. アラート通知のシグナルの一覧からメトリックを選択します。 この例では、[ストレージの割合] を選択します。
    
    ![メトリックを選択する](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
+7. アラート ロジックを構成します。これには、 **[条件]** (例: 「より大きい」)、 **[しきい値]** (例: 85 パーセント)、 **[時間の集計]** 、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
-   完了したら、**[完了]** を選択します。
+   完了したら、 **[完了]** を選択します。
 
    ![メトリックを選択する](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
@@ -58,13 +58,13 @@ ms.locfileid: "65067290"
 
 9. [アクション グループの追加] フォームに、名前、短い名前、サブスクリプション、リソース グループを入力します。
 
-10. アクションの種類で、**[電子メール/SMS/プッシュ/音声]** を構成します。
+10. アクションの種類で、 **[電子メール/SMS/プッシュ/音声]** を構成します。
     
     [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
    
     オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
 
-    完了したら、**[OK]** を選択します。
+    完了したら、 **[OK]** を選択します。
 
     ![アクション グループ](./media/howto-alert-on-metric/10-action-group-type.png)
 
@@ -83,6 +83,6 @@ ms.locfileid: "65067290"
 * アラート ルールを**編集**または**削除**する。
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

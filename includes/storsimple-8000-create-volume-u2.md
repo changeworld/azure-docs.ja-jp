@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66118169"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181228"
 ---
 #### <a name="to-create-a-volume"></a>ボリュームを作成するには
 1. **[デバイス]** ブレードの表形式のデバイス一覧で、デバイスを選択します。 **[+ ボリュームの追加]** をクリックします。

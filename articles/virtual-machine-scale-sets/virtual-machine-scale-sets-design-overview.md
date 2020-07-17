@@ -1,27 +1,21 @@
 ---
-title: Azure 仮想マシン スケール セットの設計上の考慮事項 | Microsoft Docs
-description: Azure 仮想マシン スケール セットの設計上の考慮事項について説明します
+title: Azure Virtual Machine Scale Sets の設計上の考慮事項
+description: Azure Virtual Machine Scale Sets の設計上の考慮事項について説明します。 スケール セットの機能を VM の機能と比較します。
 keywords: Linux 仮想マシン,仮想マシン スケール セット
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 06/01/2017
-ms.author: manayar
-ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791049"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200192"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
@@ -45,7 +39,7 @@ ms.locfileid: "53791049"
 - 個々の VM はネイティブ ディスクからマネージド ディスクに移行できますが、スケール セット内の VM を移行することはできません。
 - 個々の VM の仮想ネットワーク インターフェイスカード (NIC) に IPv6 パブリック IP アドレスを割り当てることはできますが、スケール セット内の VM インスタンスに割り当てることはできません。 個々の VM でもスケール セット内の VM でも、前面のロード バランサーには IPv6 パブリック IP アドレスを割り当てることができます。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Azure Managed Disksでのスケール セット
 スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。

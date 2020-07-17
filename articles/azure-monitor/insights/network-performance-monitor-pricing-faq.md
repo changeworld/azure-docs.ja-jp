@@ -1,25 +1,17 @@
 ---
 title: Azure Network Performance Monitor の価格についてよくあるご質問 | Microsoft Docs
 description: よくあるご質問 - Azure Network Performance Monitor
-services: monitoring-and-diagnostics
-documentationcenter: na
-author: agummadi
-manager: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: agummadi
+ms.author: agummadi
 ms.date: 04/02/2018
-ms.author: ajaycode
-ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005933"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77654394"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更
 
@@ -32,13 +24,13 @@ Network Performance Monitor は 3 つのコンポーネントで構成されま�
 
 以降のセクションで、NPM コンポーネントの価格の変更について説明します。
 
-## <a name="performance-monitor"></a>パフォーマンスの監視
+## <a name="performance-monitor"></a>パフォーマンス モニター
 
 **古いモデルではパフォーマンス モニターの使用量はどのように請求されていましたか。**
 
 NPM の請求は、以下の 2 つのコンポーネントの使用量と消費量に基づいていました。
 * **ノード数**:すべての代理トランザクションは、ノードで開始して終了します。 ノードはエージェントまたは Microsoft Monitoring Agent とも呼ばれます。
-* **データ**:さまざまなネットワーク テストの結果は、Log Analytics ワークスペースに格納されます。
+* **Data**:さまざまなネットワーク テストの結果は、Log Analytics ワークスペースに格納されます。
 
 古いモデルの請求額は、ノードの数と、生成されるデータの量に基づいて計算されました。 
 
@@ -82,12 +74,12 @@ ExpressRoute でプライベート ピアリング接続を監視する場合、
 
 |パーセンタイル      |データ/月 (MB)|
 | :---:          |           ---:|
-|50<sup> </sup> |            192|
-|60<sup> </sup> |            256|
-|70<sup> </sup> |            360|
-|80<sup> </sup> |            498|
-|90<sup> </sup> |            870|
-|95<sup> </sup> |           1560|
+|50<sup></sup> |            192|
+|60<sup></sup> |            256|
+|70<sup></sup> |            360|
+|80<sup></sup> |            498|
+|90<sup></sup> |            870|
+|95<sup></sup> |           1560|
 
 
 上のテーブルに従って、50 パーセンタイルのお客様は、192 MB のデータに対して課金されます。 最初の月は 2.30 米国ドル/GB なので、回線の監視にかかるコストは 0.43 米国ドル (= 192 * 2.30 / 1024) です。
@@ -117,7 +109,7 @@ ExpressRoute でプライベート ピアリング接続を監視する場合、
 
 1 か月間のエンドポイント監視コストについては、「[接続監視](https://azure.microsoft.com/pricing/details/network-watcher/)」セクションをご覧ください。 データの料金については、「データ インジェスト」セクションで、Log Analytics の[価格に関するページ](https://azure.microsoft.com/pricing/details/log-analytics/)をご覧ください。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 [Log Analytics の価格に関する FAQ](https://azure.microsoft.com/pricing/details/log-analytics/):FAQ のセクションには、Free レベル、ノード単位の価格、価格に関するその他の詳細についての情報があります。
 

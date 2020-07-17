@@ -1,32 +1,32 @@
 ---
-title: テキストを変換する - Translator Text API
-titlesuffix: Azure Cognitive Services
-description: Translator Text API を使用してテキストを変換します。
+title: テキストの変換 - Translator
+titleSuffix: Azure Cognitive Services
+description: Translator を使用してテキストを変換します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 1319b7191d9b192897e1e8ab4900239bd9230bce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789354"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592204"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 
 > [!NOTE]
-> このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
+> このメソッドは非推奨とされます。 これは Translator の V3.0 では使用できません。
 
 TransformText メソッドは、ソーシャル メディア用のテキスト正規化関数で、入力を正規化した形式で返します。 このメソッドは、ソーシャル メディアやユーザーが生成したコンテンツでは通常あまり見られないクリーンな入力テキストを必要とする、機械翻訳やその他のアプリケーションの前処理ステップとして使用できます。 この機能は現在、英語入力でのみ動作します。
 
 このメソッドは、HTTP 上で GET を使用する RESTful サービスです。 単純な XML と JSON のシリアル化をサポートしています。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 | パラメーター | 説明 |
 |:---|:---|

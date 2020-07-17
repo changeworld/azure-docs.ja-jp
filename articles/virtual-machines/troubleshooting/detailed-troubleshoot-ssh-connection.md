@@ -5,23 +5,22 @@ keywords: 拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH 接
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77920129"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -34,13 +33,13 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 次の手順は、エラーの原因を分離し、解決策や回避策を見つけ出すのに役立ちます。
 
 1. ポータルで VM の状態を確認します。
-   [[Azure Portal ]](https://portal.azure.com) で **[仮想マシン]** > *[VM 名]* の順に選択します。
+   [[Azure Portal ]](https://portal.azure.com) で **[仮想マシン]**  >  *[VM 名]* の順に選択します。
 
    VM の状態ウィンドウには、" **実行中**" と表示されます。 コンピューティング、ストレージ、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
 
-2. エンドポイント、IP アドレス、ネットワーク セキュリティ グループなどの設定を確認するには、**[設定]** を選択します。
+2. エンドポイント、IP アドレス、ネットワーク セキュリティ グループなどの設定を確認するには、 **[設定]** を選択します。
 
-   VM には、**[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/security-overview.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
+   VM には、 **[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/security-overview.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
 
 ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に接続できるかどうかを確認します。
 
@@ -92,6 +91,9 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 ネットワーク管理者と協力して、インターネットでの SSH トラフィックを許可するように組織のエッジ デバイスの設定を修正します。
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>ソース 3: クラウド サービス エンドポイントと ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
 > このソースは、クラシック デプロイ モデルを使用して作成された VM にのみ適用されます。 Resource Manager を使用して作成された VM については、「 [ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
@@ -103,7 +105,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
-* **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります  (既定のポートは 22 です)。 Azure Portal で **[仮想マシン]** > *[VM 名]* > **[設定]** > **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
+* **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります (既定のポートは 22 です)。 Azure Portal で **[仮想マシン]**  >  *[VM 名]*  >  **[設定]**  >  **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
 * **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](../../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
 
 問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
@@ -131,4 +133,4 @@ NSG 構成の検証に IP Verify を使用することもできます。 詳細�
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたはネットワーク監視ソフトウェアが、SSH 接続を妨げている。
 
 ## <a name="additional-resources"></a>その他のリソース
-アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](../linux/troubleshoot-app-connection.md)」を参照してください。
+アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング](../linux/troubleshoot-app-connection.md)」を参照してください。

@@ -1,7 +1,7 @@
 ---
-title: 例:顔を PersonGroup に追加する方法 - Face API
+title: 例:顔を PersonGroup に追加する方法 - Face
 titleSuffix: Azure Cognitive Services
-description: Face API を使用して画像に顔を追加します。
+description: このガイドでは、Azure Cognitive Services Face サービスを使用して PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 83aef90702e4a4cc4fd9bdfda486841f9b2a63a4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124495"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76169824"
 ---
 # <a name="add-faces-to-a-persongroup"></a>顔を PersonGroup に追加する
 
-このガイドでは、PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。 この同じ戦略は、LargePersonGroup、FaceList、および LargeFaceList の各オブジェクトにも適用されます。 このサンプルは Azure Cognitive Services Face API .NET クライアント ライブラリを使用して C# で記述されています。
+このガイドでは、PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。 この同じ戦略は、LargePersonGroup、FaceList、および LargeFaceList の各オブジェクトにも適用されます。 このサンプルは Azure Cognitive Services Face .NET クライアント ライブラリを使用して C# で記述されています。
 
-## <a name="step-1-initialization"></a>手順 1:初期化する
+## <a name="step-1-initialization"></a>手順 1:初期化
 
 以下のコードは、いくつかの変数を宣言し、顔の追加要求をスケジュール設定するヘルパー関数を実装します。
 
@@ -60,10 +60,12 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>手順 2:API 呼び出しを承認する
 
-クライアント ライブラリを使用するときは、サブスクリプション キーを FaceServiceClient クラスのコンストラクターに渡す必要があります。 例: 
+クライアント ライブラリを使用するときは、サブスクリプション キーを **FaceClient** クラスのコンストラクターに渡す必要があります。 次に例を示します。
 
 ```csharp
-FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
+private readonly IFaceClient faceClient = new FaceClient(
+    new ApiKeyServiceClientCredentials("<SubscriptionKey>"),
+    new System.Net.Http.DelegatingHandler[] { });
 ```
 
 サブスクリプションキー を取得するには、Azure portal から Azure Marketplace にアクセスします。 詳細については、[サブスクリプション](https://www.microsoft.com/cognitive-services/sign-up)に関する記事を参照してください。
@@ -77,7 +79,7 @@ FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>"
 const string personGroupId = "mypersongroupid";
 const string personGroupName = "MyPersonGroup";
 _timeStampQueue.Enqueue(DateTime.UtcNow);
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
+await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
 ## <a name="step-4-create-the-persons-for-the-persongroup"></a>手順 4:PersonGroup に対して人を作成する
@@ -85,13 +87,13 @@ await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 複数の人を同時に作成します。また、`await WaitCallLimitPerSecondAsync()` を適用して、呼び出し制限を超えないようにします。
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();
 
     string personName = $"PersonName#{i}";
-    persons[i] = await faceServiceClient.CreatePersonAsync(personGroupId, personName);
+    persons[i] = await faceClient.PersonGroupPerson.CreateAsync(personGroupId, personName);
 });
 ```
 
@@ -112,7 +114,7 @@ Parallel.For(0, PersonCount, async i =>
 
         using (Stream stream = File.OpenRead(imagePath))
         {
-            await faceServiceClient.AddPersonFaceAsync(personGroupId, personId, stream);
+            await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(personGroupId, personId, stream);
         }
     }
 });

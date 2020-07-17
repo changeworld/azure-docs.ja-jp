@@ -1,7 +1,7 @@
 ---
 title: Bing Custom Search エンドポイント
-titlesuffix: Azure Cognitive Services
-description: Bing Custom Search API エンドポイントの概要。
+titleSuffix: Azure Cognitive Services
+description: 関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成します。 ユーザーには、関心のあるコンテンツに合わせた検索結果が表示されます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8c2c69a81597c2702d608ccac8dceed1e832aff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74072784"
 ---
 # <a name="custom-search"></a>カスタム検索
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 ユーザーは、関係のないコンテンツが含まれる検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。
@@ -28,10 +28,10 @@ Bing Custom Search API を使用して結果を取得するには、次のエン
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-Custom Search ソースの設定方法を説明している礼については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)をご覧ください。 ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Custom Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference) のリファレンスをご覧ください。
+Custom Search ソースの設定方法を説明している礼については、[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)をご覧ください。 ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Custom Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) のリファレンスをご覧ください。
 
 ## <a name="custom-search-response-json"></a>Custom Search の応答 JSON
-カスタム検索要求では、結果を JSON オブジェクトとして返します。[応答オブジェクト](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#response-objects)に関するページをご覧ください。 
+カスタム検索要求では、結果を JSON オブジェクトとして返します。[応答オブジェクト](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects)に関するページをご覧ください。 
 
 ## <a name="custom-autosuggest"></a>Custom Autosuggest
 Custom Autosuggest API によって、部分検索のクエリ用語を Bing に送信すると、構成可能なクエリ候補の一覧が返されます。 Custom Autosuggest を使用した場合、API から返された候補を追加し、Bing によって生成された候補を含めるかどうかを必要に応じて指定します。
@@ -57,7 +57,7 @@ https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 
 Custom Search インスタンスの構成については、「[Configure your custom search experience](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view)」(カスタム検索エクスペリエンスの構成) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。

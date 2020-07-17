@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Visual Search REST API と C# を使用して画像に関する分析情報を取得する
+title: クイック スタート:REST API と C# を使用して画像に関する分析情報を取得する - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: b1518af9c37ffe0b8175e741b363d79941e3caaf
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905710"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75446684"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>クイック スタート:Bing Visual Search REST API と C# を使用して画像に関する分析情報を取得する
 
@@ -41,7 +41,7 @@ ms.locfileid: "65905710"
     using System.Collections.Generic;
     ```
 
-2. サブスクリプション キー、エンドポイント、およびアップロードする画像へのパスを格納する変数を追加します。
+2. サブスクリプション キー、エンドポイント、およびアップロードする画像へのパスを格納する変数を追加します。 `uriBase` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -267,7 +267,7 @@ ms.locfileid: "65905710"
         }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

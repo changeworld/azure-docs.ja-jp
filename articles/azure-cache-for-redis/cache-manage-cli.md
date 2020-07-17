@@ -1,29 +1,21 @@
 ---
-title: Azure クラシック CLI を使用した Azure Cache for Redis の管理 | Microsoft Docs
+title: Azure クラシック CLI を使用して Azure Cache for Redis を管理する
 description: 任意のプラットフォームに Azure クラシック CLI をインストールする方法、Azure クラシック CLI を使って Azure アカウントに接続する方法、クラシック CLI で Azure Cache for Redis を作成および管理する方法。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418603"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010836"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure クラシック CLI](cache-manage-cli.md)
 >
 
@@ -51,7 +43,7 @@ Azure Cache for Redis インスタンスを作成および更新する場合に�
 | location |-l, --location |キャッシュを作成する場所です。 |
 | size |-z, --size |Azure Cache for Redis のサイズです。 有効な値: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |
 | sku |-x, --sku |Redis SKU です。 値は次のいずれかです: [Basic、Standard、Premium] |
-| EnableNonSslPort |-e、--enable-non-ssl-port |Azure Cache for Redis の EnableNonSslPort プロパティです。 キャッシュの非 SSL ポートを有効にする場合は、このフラグを追加します。 |
+| EnableNonSslPort |-e、--enable-non-ssl-port |Azure Cache for Redis の EnableNonSslPort プロパティです。 キャッシュの非 TLS/SSL ポートを有効にする場合は、このフラグを追加します。 |
 | Redis 構成 |-c、--redis-configuration |Redis 構成。 構成のキーと値の JSON 形式の文字列をここに入力します。 形式: "{"":"","":""}" |
 | Redis 構成 |-f、--redis-configuration-file |Redis 構成。 構成キーおよび値を含むファイルのパスをここに入力します。 ファイル エントリの形式: {"":"","":""} |
 | シャード数 |-r、--shard-count |クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
@@ -99,7 +91,7 @@ Azure Cache for Redis を作成するには、次のコマンドを使用しま�
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
-このコマンドの詳細を確認するには、 `azure rediscache create -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache create -h` コマンドを実行します。
 
     C:\>azure rediscache create -h
     help:    Create an Azure Cache for Redis
@@ -116,7 +108,7 @@ Azure Cache for Redis を作成するには、次のコマンドを使用しま�
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache
@@ -132,7 +124,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
 
-このコマンドの詳細を確認するには、 `azure rediscache delete -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache delete -h` コマンドを実行します。
 
     C:\>azure rediscache delete -h
     help:    Delete an existing Azure Cache for Redis
@@ -155,7 +147,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
     azure rediscache list [options]
 
-このコマンドの詳細を確認するには、 `azure rediscache list -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache list -h` コマンドを実行します。
 
     C:\>azure rediscache list -h
     help:    List all Azure Cache for Redis within your Subscription or Resource Group
@@ -177,7 +169,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
-このコマンドの詳細を確認するには、 `azure rediscache show -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache show -h` コマンドを実行します。
 
     C:\>azure rediscache show -h
     help:    Show properties of an existing Azure Cache for Redis
@@ -202,7 +194,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
 
-このコマンドの詳細を確認するには、 `azure rediscache set -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache set -h` コマンドを実行します。
 
     C:\>azure rediscache set -h
     help:    Change settings of an existing Azure Cache for Redis
@@ -229,7 +221,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
 `key-type` に対して、`Primary` または `Secondary` を指定します。
 
-このコマンドの詳細を確認するには、 `azure rediscache renew-key -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache renew-key -h` コマンドを実行します。
 
     C:\>azure rediscache renew-key -h
     help:    Renew the authentication key for an existing Azure Cache for Redis
@@ -253,7 +245,7 @@ Azure Cache for Redis を削除するには、次のコマンドを使用しま�
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 
-このコマンドの詳細を確認するには、 `azure rediscache list-keys -h` コマンドを実行します。
+このコマンドの詳細を確認するには、`azure rediscache list-keys -h` コマンドを実行します。
 
     C:\>azure rediscache list-keys -h
     help:    Lists Primary and Secondary key of an existing Azure Cache for Redis

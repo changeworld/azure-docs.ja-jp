@@ -1,27 +1,26 @@
 ---
-title: Azure Data Factory での Pig アクティビティを使用したデータ変換 | Microsoft Docs
+title: Azure Data Factory での Pig アクティビティを使用したデータ変換
 description: Azure データ ファクトリで Pig アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Pig スクリプトを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997016"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74703205"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md) 
 > * [Pig アクティビティ](data-factory-pig-activity.md)
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
@@ -40,7 +39,7 @@ ms.locfileid: "57997016"
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Pig アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで Pig クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、[初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)に関するチュートリアルを完了してください。 
+> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。 
 
 ## <a name="syntax"></a>構文
 
@@ -86,14 +85,14 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |アクティビティの名前 |はい |
-| description |アクティビティの用途を説明するテキストです。 |いいえ  |
+| description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type |HDInsightPig |はい |
-| inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ  |
+| inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ |
 | outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |はい |
 | linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |はい |
-| script |Pig スクリプトをインラインに指定します |いいえ  |
-| scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
-| defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
+| script |Pig スクリプトをインラインに指定します |いいえ |
+| scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ |
+| defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ |
 
 ## <a name="example"></a>例
 ゲームのログ分析の例について考えてみましょう。ここでは、お客様の会社が発売したゲームをユーザーがプレイした時間を特定します。
@@ -211,7 +210,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
       }
     }
     ```
-* 次の例に示すように、'**$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
+* 次の例に示すように、' **$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
@@ -220,9 +219,9 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Hive アクティビティ](data-factory-hive-activity.md)
 * [MapReduce アクティビティ](data-factory-map-reduce.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
-* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)

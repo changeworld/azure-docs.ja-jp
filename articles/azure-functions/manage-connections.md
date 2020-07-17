@@ -1,19 +1,14 @@
 ---
 title: Azure Functions での接続の管理
 description: 静的接続クライアントを使用して、Azure Functions のパフォーマンスの問題を回避する方法について説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.author: glenga
-ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234847"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -21,9 +16,9 @@ ms.locfileid: "59784927"
 
 ## <a name="connection-limit"></a>接続の制限
 
-使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つは、インスタンスあたりの[接続数の上限 (現在、アクティブな接続数は 600、合計接続数は 1,200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) です。 この制限に達すると、関数ランタイムは `Host thresholds exceeded: Connections` というメッセージでログを作成します。
+使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つに、送信接続数の制限があります。現在は、インスタンスあたり 600 アクティブ (合計 1,200) 接続です。 この制限に達すると、関数ランタイムによって `Host thresholds exceeded: Connections` というメッセージがログに出力されます。 詳細については、[Functions のサービスの制限](functions-scale.md#service-limits)に関する記事を参照してください。
 
-この制限はインスタンスごとに適用されます。  より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
+この制限はインスタンスごとに適用されます。 より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
 
 トラブルシューティングを行う際には、関数アプリに対して Application Insights を有効にしたことを確認します。 Application Insights では、実行など、関数アプリのメトリックを表示できます。 詳細については、「[Application Insights でテレメトリを表示する](functions-monitoring.md#view-telemetry-in-application-insights)」を参照してください。  
 
@@ -116,15 +111,15 @@ public static async Task Run(string input)
 ```javascript
 const cosmos = require('@azure/cosmos');
 const endpoint = process.env.COSMOS_API_URL;
-const masterKey = process.env.COSMOS_API_KEY;
+const key = process.env.COSMOS_API_KEY;
 const { CosmosClient } = cosmos;
 
-const client = new CosmosClient({ endpoint, auth: { masterKey } });
+const client = new CosmosClient({ endpoint, key });
 // All function invocations also reference the same database and container.
 const container = client.database("MyDatabaseName").container("MyContainerName");
 
 module.exports = async function (context) {
-    const { result: itemArray } = await container.items.readAll().toArray();
+    const { resources: itemArray } = await container.items.readAll().fetchAll();
     context.log(itemArray);
 }
 ```
@@ -137,7 +132,7 @@ module.exports = async function (context) {
 > [!TIP]
 > Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の**接続文字列**コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を**アプリケーションの設定**に保存する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 静的クライアントが推奨される理由の詳細については、「[不適切なインスタンス化のアンチパターン](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)」をご覧ください。
 

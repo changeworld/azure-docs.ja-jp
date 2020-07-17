@@ -1,30 +1,26 @@
 ---
-title: アプリケーションの発行元ドメインを構成する | Azure
+title: アプリの発行元ドメインを構成する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーに情報の送信先を知らせるためにアプリケーションの発行元ドメインを構成する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540238"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76697134"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>方法:アプリケーションの発行元ドメインを構成する (プレビュー)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
 
 アプリケーションの発行元ドメインは、ユーザーに情報の送信先を知らせるために[アプリケーションの同意プロンプト](application-consent-experience.md)でユーザーに表示されます。 2019 年 5 月 21 日の後に登録されたマルチテナント アプリケーションのうち、発行元ドメインのないアプリケーションは**未検証**として表示されます。 マルチテナント アプリケーションは、1 つの組織ディレクトリの外部にあるアカウントをサポートするアプリケーションです。たとえば、すべての Azure AD アカウントをサポートするか、またはすべての Azure AD アカウントと個人の Microsoft アカウントをサポートします。
 
@@ -55,19 +51,19 @@ ms.locfileid: "65540238"
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
 1. アカウントが複数の Azure AD テナントに存在する場合:
-   1. ページの右上隅にあるメニューからプロファイルを選択し、**[ディレクトリの切り替え]** を選択します。
+   1. ページの右上隅にあるメニューからプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
    1. アプリケーションを作成する Azure AD テナントにセッションを変更します。
 
 1. [[Azure Active Directory] > [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) に移動し、構成するアプリを見つけて選択します。
 
    アプリを選択すると、アプリの **[概要]** ページが表示されます。
 
-1. アプリの **[概要]** ページから、**[ブランド]** セクションを選択します。
+1. アプリの **[概要]** ページから、 **[ブランド]** セクションを選択します。
 
 1. **[発行元ドメイン]** フィールドを見つけ、次のいずれかのオプションを選択します。
 
-   - ドメインがまだ構成されていない場合は、**[ドメインの構成]** を選択します。
-   - ドメインが既に構成されている場合は、**[ドメインを更新]** を選択します。
+   - ドメインがまだ構成されていない場合は、 **[ドメインの構成]** を選択します。
+   - ドメインが既に構成されている場合は、 **[ドメインを更新]** を選択します。
 
 アプリがテナントで登録されている場合は、選択するタブとして **[確認済みドメインの選択]** と **[新しいドメインの確認]** の 2 つが表示されます。
 
@@ -95,7 +91,13 @@ ms.locfileid: "65540238"
 
 ### <a name="to-select-a-verified-domain"></a>検証済みのドメインを選択するには
 
-- テナントに検証済みのドメインが存在する場合は、**[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
+- テナントに検証済みのドメインが存在する場合は、 **[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
+
+>[!Note]
+> 返される必要がある 'Content-Type' ヘッダーは `application/json` です。 `application/json; charset=utf-8` のようにそれ以外のものを使用すると、以下に示すエラーが発生する場合があります。 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>アプリの同意プロンプトへの影響
 

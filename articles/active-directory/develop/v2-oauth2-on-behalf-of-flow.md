@@ -2,53 +2,46 @@
 title: Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー | Azure
 description: この記事では、HTTP メッセージを使用して、OAuth2.0 On-Behalf-Of フローを使用するサービス間の認証を実装する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
-ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
+author: hpsin
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.author: celested
+ms.date: 1/3/2020
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501605"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689545"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサービス/Web API を呼び出し、それがさらに別のサービス/Web API を呼び出す必要のあるユース ケースを提供します。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Microsoft ID プラットフォームからのアクセス トークンをユーザーに代わってセキュリティ保護する必要があります。
 
+この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
+
 > [!NOTE]
->
-> - Microsoft ID プラットフォームのエンドポイントでは、すべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。 特に、既知のクライアント アプリケーションは、Microsoft アカウント (MSA) と Azure AD の対象ユーザーを含むアプリではサポートされていません。 したがって、OBO の一般的な同意パターンは、個人アカウントと職場または学校のアカウントの両方にサインインするクライアントに対しては機能しません。 フローのこのステップを処理する方法について詳しくは、「[中間層アプリケーションの同意の取得](#gaining-consent-for-the-middle-tier-application)」を参照してください。
-> - 2018 年 5 月の時点では、暗黙的なフローから派生する一部の `id_token` は、OBO フローで使用できません。 シングルページ アプリ (SPA) では、中間層の機密クライアントに**アクセス** トークンを渡して、OBO フローを代わりに実行する必要があります。 OBO 呼び出しを実行できるクライアントの詳細については、[制限事項](#client-limitations)に関する記事を参照してください。
+> 2018 年 5 月の時点では、暗黙的なフローから派生する一部の `id_token` は、OBO フローで使用できません。 シングルページ アプリ (SPA) では、中間層の機密クライアントに**アクセス** トークンを渡して、OBO フローを代わりに実行する必要があります。 OBO 呼び出しを実行できるクライアントの詳細については、[制限事項](#client-limitations)に関する記事を参照してください。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
-[OAuth 2.0 認証コード付与フロー](v2-oauth2-auth-code-flow.md)を使用するアプリケーションで、ユーザーが認証されているとします。 この時点で、そのアプリケーションには、中間層 Web API (API A) にアクセスするためのユーザーの要求と同意を含む *API A の*アクセス トークン (トークン A) があります。 ここで、API A はダウンストリーム Web API (API B) に認証済み要求を発行する必要があります。
+[OAuth 2.0 認証コード付与フロー](v2-oauth2-auth-code-flow.md)または他のログイン フローを使用するアプリケーションで、ユーザーが認証されているとします。 この時点で、そのアプリケーションには、中間層 Web API (API A) にアクセスするためのユーザーの要求と同意を含む *API A の*アクセス トークン (トークン A) があります。 ここで、API A はダウンストリーム Web API (API B) に認証済み要求を発行する必要があります。
 
 以降の手順は OBO フローを構成するものであり、次の図を使用して説明します。
 
-![OAuth2.0 の On-Behalf-Of フロー](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![OAuth2.0 の On-Behalf-Of フローを示します](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. クライアント アプリケーションは、トークン A (API A の `aud` 要求) を使用して API A に要求を発行します。
 1. API A が Microsoft ID プラットフォーム トークン発行エンドポイントに対して認証を行い、API B にアクセスするためのトークンを要求します。
-1. Microsoft ID プラットフォーム トークン発行エンドポイントはトークン A を使用して API A の資格情報を検証し、API B (トークン B) へのアクセス トークンを発行します。
-1. API B への要求の承認ヘッダー内にトークン B が設定されます。
-1. セキュリティで保護されたリソースからのデータが API B によって返されます。
+1. Microsoft ID プラットフォーム トークン発行エンドポイントはトークン A を使用して API A の資格情報を検証し、API B (トークン B) から API B へのアクセス トークンを発行します。
+1. API A によって、API B への要求の承認ヘッダー内にトークン B が設定されます。
+1. セキュリティで保護されたリソースからのデータが API B から API A に返され、そこからクライアントに返されます。
 
 > [!NOTE]
 > このシナリオでは、中間層サービスに、ダウンストリーム API にアクセスするユーザーの同意を得るためのユーザー操作はありません。 そのため、ダウンストリーム API へのアクセス権を付与するオプションは、認証中の同意手順の一部として事前に提供されます。 ご使用のアプリに対してこれを設定する方法について詳しくは、「[中間層アプリケーションの同意の取得](#gaining-consent-for-the-middle-tier-application)」を参照してください。
@@ -72,7 +65,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | `grant_type` | 必須 | トークン要求の種類。 JWT を使用した要求では、この値は `urn:ietf:params:oauth:grant-type:jwt-bearer` にする必要があります。 |
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、アプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `client_secret` | 必須 | Azure portal の [アプリの登録] ページで、アプリ用に生成したクライアント シークレット。 |
-| `assertion` | 必須 | 要求で使用されるトークンの値。 |
+| `assertion` | 必須 | 要求で使用されるトークンの値。  このトークンには、この OBO 要求を行うアプリ (`client-id` フィールドに示されるアプリ) の対象ユーザーが必要です。 |
 | `scope` | 必須 | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。 |
 | `requested_token_use` | 必須 | 要求の処理方法を指定します。 OBO フローでは、この値は `on_behalf_of` に設定する必要があります。 |
 
@@ -80,7 +73,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 次の HTTP POST は、 https://graph.microsoft.com Web API に対する `user.read` スコープを含むアクセス トークンと更新トークンを要求します。
 
-```
+```HTTP
 //line breaks for legibility only
 
 POST /oauth2/v2.0/token HTTP/1.1
@@ -115,7 +108,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 次の HTTP POST は、証明書を使用して https://graph.microsoft.com Web API に対する `user.read` スコープを含むアクセス トークンを要求します。
 
-```
+```HTTP
 // line breaks for legibility only
 
 POST /oauth2/v2.0/token HTTP/1.1
@@ -147,7 +140,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 次の例に、 https://graph.microsoft.com Web API へのアクセス トークン要求に対する成功応答を示します。
 
-```
+```json
 {
   "token_type": "Bearer",
   "scope": "https://graph.microsoft.com/user.read",
@@ -159,13 +152,13 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上記のアクセス トークンは v1.0 でフォーマットされたトークンです。 これは、アクセス対象のリソースに基づいて、トークンが提供されるためです。 Microsoft Graph は v1.0 トークンを要求するため、クライアントが Microsoft Graph のトークンを要求すると、Microsoft ID プラットフォームによって v1.0 アクセス トークンが生成されます。 アクセス トークンを調べる必要があるのはアプリケーションのみです。 クライアントが調べる必要はありません。
+> 上記のアクセス トークンは v1.0 でフォーマットされたトークンです。 これは、アクセス対象の**リソース**に基づいて、トークンが提供されるためです。 Microsoft Graph は v1.0 トークンを受け入れるように設定されているため、クライアントが Microsoft Graph のトークンを要求すると、Microsoft ID プラットフォームによって v1.0 アクセス トークンが生成されます。 アクセス トークンを調べる必要があるのはアプリケーションのみです。 クライアントは、それらを**調べることができません**。
 
 ### <a name="error-response-example"></a>エラー応答の例
 
-ダウンストリーム API に多要素認証などの条件付きアクセス ポリシーが設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスはこのエラーをクライアント アプリケーションに示す必要があります。
+ダウンストリーム API に条件付きアクセス ポリシー (多要素認証など) が設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
 
-```
+```json
 {
     "error":"interaction_required",
     "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
@@ -183,7 +176,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="example"></a>例
 
-```
+```HTTP
 GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
@@ -191,29 +184,24 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>中間層アプリケーションの同意の取得
 
-アプリケーションの対象ユーザーに基づき、OBO フローを確実に成功させるためのさまざまな方法を検討することをお勧めします。 すべての場合において、最終的な目標は適切な同意が得られるようにすることです。 ただし、それがどのように行われるかは、アプリケーションがサポートしているユーザーによって異なります。
+アプリケーションのアーキテクチャまたは使用状況に基づき、OBO フローを確実に成功させるためのさまざまな方法を検討することをお勧めします。 どのような場合でも、最終的な目標は、クライアント アプリから中間層アプリを呼び出すことができ、バックエンド リソースを呼び出すアクセス許可を中間層アプリに持たせるように、適切な同意を与えることです。
 
-### <a name="consent-for-azure-ad-only-applications"></a>Azure AD 専用アプリケーションの同意
+> [!NOTE]
+> 以前は、Microsoft アカウント システム (個人アカウント) は [Known client application]\(既知のクライアント アプリケーション\) フィールドをサポートしていませんでした。また、組み合わせた同意を表示することもできませんでした。  これが追加されたので、Microsoft ID プラットフォーム上のすべてのアプリは、OBO 呼び出しの同意を得るために既知のクライアント アプリケーションの手法を使用できるようになります。
 
-#### <a name="default-and-combined-consent"></a>/.default と組み合わせ同意
+### <a name="default-and-combined-consent"></a>/.default と組み合わせ同意
 
-職場または学校のアカウントにのみサインインする必要のあるアプリケーションの場合、従来の "既知のクライアント アプリケーション" のアプローチで十分です。 中間層アプリケーションは、そのマニフェストの既知のクライアント アプリケーションの一覧にクライアントを追加します。その後、そのクライアントは、それ自体と中間層アプリケーションの両方に対して組み合わせ同意フローをトリガーできます。 Microsoft ID プラットフォームのエンドポイント上では、これは[`/.default`スコープ](v2-permissions-and-consent.md#the-default-scope)を使用して行われます。 既知のクライアント アプリケーションと `/.default` を使用して同意画面をトリガーすると、その同意画面には、クライアントと中間層 API の両方に対するアクセス許可が表示され、その中間層 API で必要となるすべてのアクセス許可が要求されます。 ユーザーが両方のアプリケーションに対して同意を行うと、OBO フローが動作します。
+中間層アプリケーションは、そのマニフェストの既知のクライアント アプリケーションの一覧にクライアントを追加します。その後、そのクライアントは、それ自体と中間層アプリケーションの両方に対して組み合わせ同意フローをトリガーできます。 Microsoft ID プラットフォームのエンドポイント上では、これは[`/.default`スコープ](v2-permissions-and-consent.md#the-default-scope)を使用して行われます。 既知のクライアント アプリケーションと `/.default` を使用して同意画面をトリガーすると、その同意画面には、クライアントと中間層 API の**両方**に対するアクセス許可が表示され、その中間層 API で必要となるすべてのアクセス許可が要求されます。 ユーザーが両方のアプリケーションに対して同意を行うと、OBO フローが動作します。
 
-現時点で、Microsoft 個人アカウント システムは、組み合わせ同意をサポートしていません。そのため、このアプローチは、特に個人アカウントにサインインするアプリに対しては機能しません。 テナントでゲスト アカウントとして使用される Microsoft 個人アカウントは、Azure AD システムを使用して処理され、組み合わせ同意で処理できます。
+### <a name="pre-authorized-applications"></a>事前承認済みアプリケーション
 
-#### <a name="pre-authorized-applications"></a>事前承認済みアプリケーション
+特定のアプリケーションが特定のスコープを受け取る許可を常に持つことをリソースで示すことができます。 これは、フロントエンド クライアントとバックエンド リソース間の接続をよりシームレスに行う場合に主に役立ちます。 1 つのリソースで、複数の事前承認済みアプリケーションを宣言できます。このようなアプリケーションは、OBO フローでこれらのアクセス許可を要求し、ユーザーによる同意なしで、それらのアクセス許可を受け取ることができます。
 
-アプリケーション ポータルの 1 つの機能に、"事前承認済みアプリケーション" があります。 これにより、特定のアプリケーションが特定のスコープを受け取る許可を常に持つことをリソースで示すことができます。 これは、フロントエンド クライアントとバックエンド リソース間の接続をよりシームレスに行う場合に主に役立ちます。 1 つのリソースで、複数の事前承認済みアプリケーションを宣言できます。このようなアプリケーションは、OBO フローでこれらのアクセス許可を要求し、ユーザーによる同意なしで、それらのアクセス許可を受け取ることができます。
-
-#### <a name="admin-consent"></a>管理者の同意
+### <a name="admin-consent"></a>管理者の同意
 
 テナント管理者は、中間層アプリケーションに対して管理者同意を提供することで、アプリケーションが必要な API を呼び出すためのアクセス許可を確実に持つようにすることができます。 これを行うために、管理者は、テナントで中間層アプリケーションを見つけ、必要なアクセス許可ページを開き、アプリに対してアクセス許可を付与することを選択できます。 管理者の同意について詳しくは、[同意とアクセス許可のドキュメント](v2-permissions-and-consent.md)に関する記事を参照してください。
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Azure AD と Microsoft アカウント アプリケーションの同意
-
-個人アカウントのアクセス許可モデルでの制限と、管理テナントの欠落により、個人アカウントの同意要件は、Azure AD とは少し異なります。 テナント全体にわたる同意を提供するテナントは存在しません。また、組み合わせ同意を行う機能もありません。 したがって、他の方法があります。それらは、Azure AD アカウントのサポートのみが求められるアプリケーションにも有効であることに留意してください。
-
-#### <a name="use-of-a-single-application"></a>単一アプリケーションの使用
+### <a name="use-of-a-single-application"></a>単一アプリケーションの使用
 
 一部のシナリオでは、中間層クライアントとフロントエンド クライアントの単一ペアのみ使用する場合があります。 このシナリオでは、これを単一アプリケーションにする方が簡単で、中間層アプリケーションをまったく必要としない場合があります。 フロントエンドと Web API 間で認証を行うために、アプリケーション自体に要求された cookie、id_token、またはアクセス トークンを使用できます。 その後、この単一アプリケーションからバックエンド リソースへの同意を要求します。
 
@@ -221,10 +209,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 クライアントで暗黙的フローを使って id_token を取得する場合、また、応答 URL にワイルドカードが含まれている場合には、id_token を OBO フローで使用することはできません。  ただし、開始元のクライアントが登録済みのワイルドカード応答 URL を持っている場合でも、機密クライアントでは引き続き、暗黙的な付与フローを通じて取得したアクセス トークンを利用することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 OAuth 2.0 プロトコルと、クライアント資格情報を使用したサービス間認証を実行する別の方法について詳しく学びます。
 
 * [Microsoft ID プラットフォームでの OAuth 2.0 クライアント資格情報の付与](v2-oauth2-client-creds-grant-flow.md)
-* [Microsoft ID プラットフォームの OAuth 2.0 コード フロー](v2-oauth2-auth-code-flow.md)
+* [Microsoft ID プラットフォームでの OAuth 2.0 コード フロー](v2-oauth2-auth-code-flow.md)
 * [`/.default` スコープの使用](v2-permissions-and-consent.md#the-default-scope)

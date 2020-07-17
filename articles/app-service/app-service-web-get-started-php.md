@@ -1,26 +1,16 @@
 ---
-title: PHP Web アプリの作成 - Azure App Service | Microsoft Docs
-description: Azure App Service の Web Apps で、初めての PHP の Hello World を数分でデプロイします。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'クイック スタート: PHP Web アプリの作成'
+description: Azure App Service に、初めての PHP の Hello World を数分でデプロイします。 デプロイには、App Service への数あるデプロイ方法の 1 つである Git を使用します。
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/24/2018
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: f1a5c3a57c60b30855f7bfaaa1ee3ab85285011d
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 05/25/2020
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: d9ee9ac3abd7dada8e87bdf5a4385185933fc4ae
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298533"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847866"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -28,7 +18,7 @@ ms.locfileid: "66298533"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[App Service on Linux での PHP Web アプリの作成](./containers/quickstart-php.md)」をご覧ください。
 >
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタート チュートリアルでは、Azure App Service に PHP アプリをデプロイする方法を説明します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイック スタート チュートリアルでは、Azure App Service に PHP アプリをデプロイする方法を説明します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -62,7 +52,7 @@ php -S localhost:8080
 
 Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリに移動します。
 
-サンプル アプリケーションから "**Hello World!** "  というメッセージがページに表示されます。
+サンプル アプリケーションから "**Hello World!** " というメッセージがページに表示されます。
 
 ![ローカルで実行されるサンプル アプリ](media/app-service-web-get-started-php/localhost-hello-world-in-browser.png)
 
@@ -80,19 +70,23 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
+次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) を実行します。 
+
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 ```
+> [!NOTE]
+> 解析停止記号 `(--%)` は、PowerShell のコマンドや式として入力が解釈されないようにするための命令で、PowerShell 3.0 で導入されました。 
+>
 
 Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
+<pre>
+Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -100,15 +94,16 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
+
 Git デプロイが有効な、空の新しい Web アプリが作成されました。
 
 > [!NOTE]
-> Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
+> Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
 >
 
 新しく作成された Web アプリに移動します。 _&lt;app name>_ は、前の手順で作成された一意のアプリ名で置き換えます。
@@ -123,7 +118,7 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
+<pre>
 Counting objects: 2, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
@@ -144,16 +139,16 @@ remote: Ignoring: .git
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
    cc39b1e..25f1805  master -> master
-```
+</pre>
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
 Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
 
 ```
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 PHP のサンプル コードは、Azure App Service の Web アプリで実行されています。
@@ -183,21 +178,23 @@ git push azure master
 
 ## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。 **[App Services]** を検索して選択します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+    ![App Services の検索、Azure portal、PHP Web アプリの作成](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+2. 使用する Azure アプリの名前を選択します。
 
-Web アプリの [概要] ページが表示されます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
+    ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-![Azure Portal の [App Service] ページ](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+    Web アプリの **[概要]** ページが表示されます。 ここでは、**参照**、**停止**、**再開**、**削除**のような基本的な管理タスクを行うことができます。
 
-左側のメニューは、アプリを構成するためのさまざまなオプションを示しています。 
+    ![Azure Portal の [App Service] ページ](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+
+    Web アプリ メニューに、アプリを構成するためのさまざまなオプションが示されます。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [PHP と MySQL](app-service-web-tutorial-php-mysql.md)

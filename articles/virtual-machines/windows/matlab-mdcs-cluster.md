@@ -1,25 +1,19 @@
 ---
-title: 仮想マシン上の MATLAB クラスター | Microsoft Docs
+title: 仮想マシン上の MATLAB クラスター
 description: コンピューティング集中型の並列 MATLAB ワークロードを実行する MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します
-services: virtual-machines-windows
-documentationcenter: ''
 author: mscurrell
-manager: jeconnoc
-editor: ''
-ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: Windows
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a9de0f0021d92c59c44e85f0487cc9a08b6a3099
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497364"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869419"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。
@@ -70,6 +64,6 @@ MATLAB Job Scheduler クラスター プロファイルを作成するには、�
 
 ![クラスター プロファイル マネージャー](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure に MATLAB Distributed Computing Server クラスターをデプロイおよび管理する方法の詳細については、テンプレートとスクリプトを含む [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) リポジトリを参照してください。
 * MATLAB および MATLAB Distributed Computing Server の詳細な説明については、 [MathWorks サイト](https://www.mathworks.com/) を参照してください。

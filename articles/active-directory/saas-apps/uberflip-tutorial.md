@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Uberflip の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Uberflip の統合 | Microsoft Docs'
 description: Azure Active Directory と Uberflip の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,20 +8,21 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 55fa42eb1c35025b1008b3b5d26f61c243ff2b97
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956670"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048469"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>チュートリアル:Azure Active Directory と Uberflip の統合
+# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>チュートリアル: Azure Active Directory と Uberflip の統合
 
 このチュートリアルでは、Uberflip と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -53,7 +54,7 @@ Uberflip では、次の機能をサポートしています。
 
 Azure AD への Uberflip の統合を構成するには、Azure Marketplace からマネージド SaaS アプリの一覧に Uberflip を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 
    ![[Azure Active Directory] オプション](common/select-azuread.png)
@@ -78,7 +79,7 @@ Uberflip で Azure AD のシングル サインオンを構成してテストす
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Uberflip シングル サインオンの構成](#configure-uberflip-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
+1. **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B. Simon で Azure AD のシングル サインオンをテストします。
 1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B. Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Uberflip のテスト ユーザーの作成](#create-an-uberflip-test-user)** - B. Simon という Azure AD ユーザーにリンクされている B. Simon というユーザーが Uberflip に存在するようにします。
 1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
@@ -122,7 +123,7 @@ Uberflip で Azure AD シングル サインオンを構成するには、次の
 
    ![フェデレーション メタデータ XML のダウンロード オプション](common/metadataxml.png)
 
-1. **[Uberflip のセットアップ]** ウィンドウで、必要な URL または URLS をコピーします。
+1. **[Uberflip のセットアップ]** ウィンドウで、必要な URL をコピーします。
 
    * **ログイン URL**
    * **Azure AD 識別子**

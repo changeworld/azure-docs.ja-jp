@@ -14,21 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: dbdfac143cb3254e558622fc1eecfdf95876240e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78268112"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services を使用して DRM ライセンスまたは AES キーを配信する 
 
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
 Azure Media Services を使用すると、コンテンツの取り込み、エンコード、保護の追加、およびストリーミングを行うことができます。 詳細については、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」をご覧ください。 お客様によっては、ライセンスまたはキーの配信のみに Media Services を使用し、エンコード、暗号化、ストリーミングにはオンプレミスのサーバーを使用する場合があります。 この記事では、Media Services を使用して PlayReady または Widevine のライセンスを配信するが、残りの処理はオンプレミスのサーバーで行う方法について説明します。 
+
+このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ## <a name="overview"></a>概要
 Media Services は、PlayReady および Widevine の DRM (デジタル著作権管理) ライセンスと AES-128 キーを配信するためのサービスを提供しています。 また、Media Services で提供される API を使用して、DRM で保護されたコンテンツをユーザーが再生するときに DRM ランタイムが適用する権限と制限を構成できます。 ユーザーが保護されたコンテンツを要求すると、プレーヤー アプリケーションが Media Services ライセンス サービスにライセンスを要求します。 ライセンスが承認されると、Media Services ライセンス サービスはプレーヤーにライセンスを発行します。 PlayReady および Widevine のライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
 
-Media Services では、ライセンスまたはキーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キーの承認ポリシーは自分で構成します。 ポリシーには、1 つまたは複数の制限  (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン (SWT) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。
+Media Services では、ライセンスまたはキーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キーの承認ポリシーは自分で構成します。 ポリシーには、1 つまたは複数の制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン (SWT) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。
 
 次の図は、AMS を使用して PlayReady または Widevine のライセンスを配信するが、残りの処理はオンプレミスのサーバーで行うための主な手順を示しています。
 
@@ -339,6 +344,10 @@ namespace DeliverDRMLicenses
     }
 }
 ```
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

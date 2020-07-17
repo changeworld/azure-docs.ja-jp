@@ -1,19 +1,18 @@
 ---
-title: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法 | Microsoft Docs
-description: デバイス プロビジョニング サービスで X.509 CA 証明書を確認する方法
+title: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書を確認する
+description: Azure IoT Hub Device Provisioning Service (DPS) で X.509 CA 証明書の所有証明を行う方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913616"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74973443"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
 
@@ -33,15 +32,15 @@ ms.locfileid: "54913616"
 1. Azure Portal でプロビジョニング サービスに移動し、左側のメニューから **[証明書]** を開きます。 
 2. **[追加]** をクリックして新しい証明書を追加します。
 3. 証明書のわかりやすい表示名を入力します。 X.509 証明書のパブリック部分を表す .cer または .pem ファイルを参照します。 **[アップロード]** をクリックします。
-4. 証明書が正常にアップロードされたことを示す通知が表示されたら、**[保存]** をクリックします。
+4. 証明書が正常にアップロードされたことを示す通知が表示されたら、 **[保存]** をクリックします。
 
     ![証明書のアップロード](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   証明書が、**[証明書エクスプローラー]** の一覧に表示されます。 この証明書の **[状態]** が *[未確認]* になっていることに注意してください。
+   証明書が、 **[証明書エクスプローラー]** の一覧に表示されます。 この証明書の **[状態]** が *[未確認]* になっていることに注意してください。
 
 5. 前の手順で追加した証明書をクリックします。
 
-6. **[証明書の詳細]** で、**[確認コードを生成します]** をクリックします。
+6. **[証明書の詳細]** で、 **[確認コードを生成します]** をクリックします。
 
 7. プロビジョニング サービスにより、証明書の所有権の検証に使うことができる**確認コード**が作成されます。 このコードをクリップボードにコピーします。 
 
@@ -64,13 +63,13 @@ Microsoft では、署名された検証証明書の作成に役立つツール�
 
 ## <a name="upload-the-signed-verification-certificate"></a>署名された検証証明書をアップロードする
 
-1. 結果の検証証明書としての署名を、ポータルのプロビジョニング サービスにアップロードします。 Azure Portal の **[証明書の詳細]** で、**[.pem または .cer の検証証明書ファイル]** フィールドの隣の _[エクスプローラー]_ アイコンを使って、署名された検証証明書をシステムからアップロードします。
+1. 結果の検証証明書としての署名を、ポータルのプロビジョニング サービスにアップロードします。 Azure Portal の **[証明書の詳細]** で、 **[.pem または .cer の検証証明書ファイル]** フィールドの隣の _[エクスプローラー]_ アイコンを使って、署名された検証証明書をシステムからアップロードします。
 
-2. 証明書が正常にアップロードされたら、**[確認]** をクリックします。 **[証明書エクスプローラー]** の一覧で、証明書の **[状態]** が **_[確認済み]_** に変わります。 自動的に更新されない場合は、**[更新]** をクリックしてください。
+2. 証明書が正常にアップロードされたら、 **[確認]** をクリックします。 **[証明書エクスプローラー]** の一覧で、証明書の **[状態]** が **_確認済み_** に変わります。 自動的に更新されない場合は、 **[更新]** をクリックしてください。
 
    ![証明書のアップロードの確認](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ポータルを使って登録グループを作成する方法について詳しくは、「[Azure Portal でデバイス登録を管理する方法](how-to-manage-enrollments.md)」をご覧ください。
 - サービス SDK を使って登録グループを作成する方法について詳しくは、「[Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法](how-to-manage-enrollments-sdks.md)」をご覧ください。

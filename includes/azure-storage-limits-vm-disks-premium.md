@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
-ms.openlocfilehash: e7e57c6a821731874dcb1d99a3133b6ede1da26e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ef18feb10dabc6a77e6512c6a32ad44b32c6e832
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148186"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334686"
 ---
 **Premium 非管理対象の仮想マシン ディスク: アカウントあたりの制限**
 
-| Resource | 既定の制限 |
+| リソース | 制限 |
 | --- | --- |
 | アカウントごとのディスク容量合計 |35 TB |
 | アカウントごとのスナップショット容量合計 |10 TB |
@@ -32,7 +32,7 @@ ms.locfileid: "66148186"
 
 **Premium 非管理対象の仮想マシン ディスク: VM あたりの制限**
 
-| Resource | 既定の制限 |
+| リソース | 制限 |
 | --- | --- |
 | VM あたりの最大 IOPS |GS5 VM で 80,000 IOPS |
 | VM あたりの最大スループット |GS5 VM で 2,000 MB/秒 |

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9a5a2d92f70c411c46ebb4efb35e17e9b0c477ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d41b86b902d9a58b144e251e6922fbd95d459031
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161586"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67671193"
 ---
 1. dapl、rdmacm、ibverbs、mlx4 をインストールします
 
@@ -44,7 +44,7 @@ ms.locfileid: "66161586"
  
    Intel MPI 5.x ランタイムのみがサポートされています。
  
-   インストール手順については、[Intel MPI ライブラリのインストール ガイド](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)をご覧ください。
+   インストール手順については、[Intel MPI ライブラリのインストール ガイド](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)をご覧ください。
 
 5. (Intel MPI の最新バージョンに必要な) non-root non-debugger プロセスに対して ptrace を有効にします。
  

@@ -1,24 +1,26 @@
 ---
-title: Azure AI Gallery からデータを管理する
-titleSuffix: Azure Machine Learning Studio
+title: Azure AI Gallery データを管理する
+titleSuffix: ML Studio (classic) - Azure
 description: インターフェイスまたは AI Gallery Catalog API を使用して、Azure AI Gallery から製品内ユーザー データをエクスポートおよび削除することができます。 この記事では、その方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204547"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure AI Gallery からの製品内ユーザー データの表示と削除
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 インターフェイスまたは AI Gallery Catalog API を使用して、Azure AI Gallery から製品内ユーザー データを表示および削除することができます。 この記事では、その方法について説明します。
 
@@ -30,22 +32,22 @@ ms.locfileid: "58648111"
 
 Azure AI Gallery の Web サイト UI を使用して公開した項目を表示することができます。 ユーザーは、次のようにして、ソリューション、プロジェクト、実験、およびその他の公開された項目のうち、パブリック項目と一覧にない項目の両方を表示することができます。
 
-1.  [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
-2.  右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
-3.  プロファイル ページには、一覧にないエントリを含め、ギャラリーに公開されたすべての項目が表示されます。
+1.    [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
+2.    右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
+3.    プロファイル ページには、一覧にないエントリを含め、ギャラリーに公開されたすべての項目が表示されます。
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>AI Gallery Catalog API を使用してデータを表示する
 
- https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
+[https://catalog.cortanaanalytics.com/entities](https://catalog.cortanaanalytics.com/entities ) からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
 
 Catalog の応答は JSON 形式で返されます。
 
 ### <a name="get-an-author-id"></a>作成者 ID を取得する
 作成者 ID は、Azure AI Gallery への公開時に使用されたメール アドレスに基づきます。 変更されることはありません。
 
-1.  [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
-2.  右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
-3.  アドレス バーの URL には、`authorId=` の後に英数字の ID が表示されます。 たとえば、次のような URL があるとします。`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
+2.    右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
+3.    アドレス バーの URL には、`authorId=` の後に英数字の ID が表示されます。 たとえば、次のような URL があるとします。`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     この場合、作成者 ID は `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA` となります。
 
@@ -55,12 +57,12 @@ Catalog API を使用して一覧にないエンティティを表示するに�
 
 アクセス トークンを取得するには、ログイン中にブラウザーによる Catalog API への HTTP 要求の `DataLabAccessToken` ヘッダーを検査する必要があります。
 
-1.  [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
-2.  右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
-3.  F12 キーを押して、ブラウザーの開発者ツール ウィンドウを開き、[ネットワーク] タブを選択してページを更新します。 
+1.    [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
+2.    右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
+3.    F12 キーを押して、ブラウザーの開発者ツール ウィンドウを開き、[ネットワーク] タブを選択してページを更新します。 
 4. フィルター テキスト ボックスに *catalog* という文字列を入力して、要求をフィルター処理します。
-5.  URL `https://catalog.cortanaanalytics.com/entities` への要求で、GET 要求を見つけて、*[ヘッダー]* タブを選択します。*[要求ヘッダー]* セクションまで下にスクロールします。
-6.  ヘッダー `DataLabAccessToken` の下に英数字トークンがあります。 データの安全を維持するため、このトークンは共有しないでください。
+5.    URL `https://catalog.cortanaanalytics.com/entities` への要求で、GET 要求を見つけて、 *[ヘッダー]* タブを選択します。 *[要求ヘッダー]* セクションまで下にスクロールします。
+6.    ヘッダー `DataLabAccessToken` の下に英数字トークンがあります。 データの安全を維持するため、このトークンは共有しないでください。
 
 ### <a name="view-user-information"></a>ユーザー情報を表示する
 前の手順で取得した作成者 ID を使用し、次の URL の `[AuthorId]` を置き換えて、ユーザーのプロファイルの情報を表示します。
@@ -84,7 +86,7 @@ Catalog API には、[AI Gallery Web サイト](https://gallery.azure.ai/)で直
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
-例: 
+次に例を示します。
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 
@@ -92,9 +94,9 @@ Catalog API には、[AI Gallery Web サイト](https://gallery.azure.ai/)で直
 
 このクエリでは、パブリック エンティティのみが表示されます。 一覧にないものを含む、すべてのエンティティを表示するには、前のセクションで取得したアクセス トークンを指定します。
 
-1.  [Postman](https://www.getpostman.com) などのツールを使用し、「[アクセス トークンを取得する](#get-your-access-token)」の説明に従って、カタログ URL への HTTP GET 要求を作成します。
-2.  アクセス トークンに設定された値を使用して、`DataLabAccessToken` という HTTP 要求ヘッダーを作成します。
-3.  HTTP 要求を送信します。
+1.    [Postman](https://www.getpostman.com) などのツールを使用し、「[アクセス トークンを取得する](#get-your-access-token)」の説明に従って、カタログ URL への HTTP GET 要求を作成します。
+2.    アクセス トークンに設定された値を使用して、`DataLabAccessToken` という HTTP 要求ヘッダーを作成します。
+3.    HTTP 要求を送信します。
 
 > [!TIP]
 > 一覧にないエンティティが Catalog API からの応答に表示されない場合は、ユーザーのアクセス トークンが無効であるか有効期限が切れている可能性があります。 Azure AI Gallery からサインアウトし、「[アクセス トークンを取得する](#get-your-access-token)」の手順を繰り返してトークンを更新してください。 

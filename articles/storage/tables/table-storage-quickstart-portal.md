@@ -1,21 +1,21 @@
 ---
-title: Azure Table Storage の概要 | Microsoft Docs
-description: Azure portal で Azure Storage Table service テーブルを作成します。
+title: クイックスタート - Azure portal で Azure Storage テーブルを作成する
+description: このクイックスタートでは、Azure portal で Azure Storage Table service テーブルを作成します。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/23/2018
+ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 052a462da5349b0886d6d99cd59d1a4ce816220f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462717"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75979946"
 ---
-# <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Storage テーブルを作成する 
+# <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>クイック スタート: Azure portal で Azure Storage テーブルを作成する 
 
 このクイック スタートでは、Web ベースの Azure portal でテーブルおよびエンティティを作成する方法を示します。 このクイック スタートでは、Azure ストレージ アカウントを作成する方法も示します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "55462717"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、まず、[Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) で Azure ストレージ アカウントを作成します。 アカウントの作成については、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。
+このクイック スタートを完了するには、まず、[Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) で Azure ストレージ アカウントを作成します。 アカウントの作成については、「[ストレージ アカウントの作成](../common/storage-account-create.md)」を参照してください。
 
 ## <a name="add-a-table"></a>テーブルの追加
 
@@ -31,16 +31,16 @@ Azure portal で Table service を使用して、テーブルを作成するこ�
 
 1. [概要] > [テーブル] をクリックします。
 
-   ![Azure ポータル](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. **[+ テーブル]** をクリックします。
 
-   ![Azure ポータル](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
-3. **[テーブル名]** ボックスにテーブルの名前を入力し、**[OK]** をクリックします。 
+3. **[テーブル名]** ボックスにテーブルの名前を入力し、 **[OK]** をクリックします。 
 
-   ![Azure ポータル](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![Azure portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テーブル設計のガイドライン](table-storage-design-guidelines.md)

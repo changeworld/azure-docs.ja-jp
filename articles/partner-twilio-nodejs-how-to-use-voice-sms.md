@@ -3,9 +3,7 @@ title: Azure での音声、VoIP、および SMS メッセージングのため�
 description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Node.js で記述されています。
 services: ''
 documentationcenter: nodejs
-author: devinrader
-manager: wpickett
-editor: ''
+author: georgewallace
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: wpickett
-ms.openlocfilehash: 3434c4712252e52f8a03c729524d116216a64f8d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.author: gwallace
+ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140131"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "69637265"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
 このガイドでは、Azure で Twilio と node.js によって通信するアプリケーションを構築する方法を示します。
@@ -90,7 +88,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 }
 ```
 
-このコードは、一般的な [Express Web フレームワーク][express]および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。  これで設定はすべて終わりました。コードの記述を始めましょう。
+このコードは、一般的な [Express Web フレームワーク][express]および EJS テンプレート エンジンと共に、Twilio モジュールを依存関係として宣言します。  これで設定はすべて終わりました。コードの記述を始めましょう。
 
 <a id="makecall"/>
 
@@ -246,13 +244,13 @@ Azure で node.js と Twilio を活用してください。
 
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml
-[signup]: http://ahoy.twilio.com/azure
+[signup]: https://ahoy.twilio.com/azure
 [azure_new_site]: app-service/app-service-web-get-started-nodejs.md
 [twilio_console]: https://www.twilio.com/console
-[npm]: http://npmjs.org
-[express]: http://expressjs.com
-[voipnode]: http://www.twilio.com/blog/2013/04/introduction-to-twilio-client-with-node-js.html
+[npm]: https://npmjs.org
+[express]: https://expressjs.com
+[voipnode]: https://www.twilio.com/blog/2013/04/introduction-to-twilio-client-with-node-js.html
 [docs]: https://www.twilio.com/docs/libraries/reference/twilio-node/
-[votr]: http://www.twilio.com/blog/2012/09/building-a-real-time-sms-voting-app-part-1-node-js-couchdb.html
-[pair]: http://www.twilio.com/blog/2013/06/pair-programming-in-the-browser-with-twilio.html
+[votr]: https://www.twilio.com/blog/2012/09/building-a-real-time-sms-voting-app-part-1-node-js-couchdb.html
+[pair]: https://www.twilio.com/blog/2013/06/pair-programming-in-the-browser-with-twilio.html
 [azure-admin-console]: ./media/partner-twilio-nodejs-how-to-use-voice-sms/twilio_1.png

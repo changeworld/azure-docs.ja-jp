@@ -1,31 +1,32 @@
 ---
 title: Azure Stream Analytics ジョブの削除
 description: この記事では、Azure Stream Analytics ジョブを削除するさまざまな方法を示します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d99920417f20034da1001a821c02376ac19274d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159444"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75426481"
 ---
-# <a name="clean-up-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの削除
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを停止または削除する
 
-Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SDK for .Net または REST API を使用して簡単に削除できます。 削除した Stream Analytics ジョブは復旧できません。
+Azure Stream Analytics ジョブは、Azure portal、Azure PowerShell、Azure SDK for .Net または REST API を使用して簡単に停止または削除できます。 削除した Stream Analytics ジョブは復旧できません。
 
 >[!NOTE] 
 >Azure Stream Analytics ジョブを停止すると、Event Hubs または Azure SQL Database などの入力および出力ストレージのみでデータが永続化されます。 Azure からデータを削除する必要がある場合は、Stream Analytics ジョブの入力と出力のリソースの削除処理を実行してください。
 
 ## <a name="stop-a-job-in-azure-portal"></a>Azure Portal でジョブを停止する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+ジョブを停止すると、リソースがプロビジョニング解除され、イベントの処理が停止します。 このジョブに関連する課金も停止します。 ただし、構成はすべて保持され、後でジョブを再開できます。 
+
+1. [Azure portal](https://portal.azure.com) にサインインする 
 
 2. 実行されている Stream Analytics ジョブを探し､選択します｡
 
@@ -36,7 +37,10 @@ Azure Stream Analytics ジョブは、Azure Portal、Azure PowerShell、Azure SD
 
 ## <a name="delete-a-job-in-azure-portal"></a>Azure Portal でジョブを削除する
 
-1. Azure ポータルにサインインします。 
+>[!WARNING] 
+>削除した Stream Analytics ジョブは復旧できません。
+
+1. Azure portal にサインインします。 
 
 2. Stream Analytics ジョブがある場所を探し､ジョブを選択します｡
 

@@ -1,31 +1,24 @@
 ---
 title: Azure Log Analytics の Alert Management ソリューション | Microsoft Docs
 description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/19/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/19/2018
+ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77668385"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor では、[SCOM、Zabbix、Nagios などの監視ツール](https://aka.ms/managing-alerts-other-monitoring-services)で生成されたアラートを含め、[アラートを大規模に管理する](https://aka.ms/azure-alerts-overview)ための強化機能がサポートされるようになりました。
+>  Azure Monitor では、[System Center Operations Manager、Zabbix、Nagios などの監視ツール](https://aka.ms/managing-alerts-other-monitoring-services)で生成されたアラートを含め、[アラートを大規模に管理する](https://aka.ms/azure-alerts-overview)ための強化機能がサポートされるようになりました。
 >  
 
 
@@ -48,14 +41,14 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 
 ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」を参照してください。
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 ### <a name="agents"></a>エージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
 | 接続先ソース | サポート | 説明 |
 |:--- |:--- |:--- |
-| [Windows エージェント](agent-windows.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
+| [Windows エージェント](agent-windows.md) | いいえ |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
+| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
 | [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md) |はい |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 
 
@@ -68,13 +61,13 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 ![Alert Management tile](media/alert-management-solution/tile.png)
 
-**[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+**[Alert Management]** (アラート管理) タイルをクリックすると、 **[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | 列 | 説明 |
 |:--- |:--- |
 | 重大なアラート |重大度が "重大" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
 | 警告アラート |重大度が "警告" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
-| アクティブ SCOM アラート |Operations Manager によって収集された *[Closed]\(終了\)* 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
+| アクティブな System Center Operations Manager アラート |Operations Manager によって収集された *[Closed]\(終了\)* 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
 | すべてのアクティブなアラート |重大度に関係なくすべてのアラートがその名前別に表示されます。 対象となるのは *[Closed]\(終了\)* 状態以外の Operations Manager アラートだけです。 |
 
 右へスクロールすると、使用頻度の高いいくつかのクエリがダッシュボードに一覧表示されます。そのクエリをクリックすると、アラート データを探すための[ログ検索](../../azure-monitor/log-query/log-query-overview.md)が実行されます。
@@ -89,26 +82,26 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Type |*アラート:* |
-| SourceSystem |*OpsManager* |
-| AlertContext |アラートが生成されるきっかけとなったデータ項目の詳細 (XML 形式)。 |
-| AlertDescription |アラートの詳しい説明。 |
-| AlertId |アラートの GUID。 |
-| AlertName |アラートの名前。 |
-| AlertPriority |アラートの優先度。 |
-| AlertSeverity |アラートの重大度。 |
-| AlertState |アラートの最新の解決状態。 |
-| LastModifiedBy |アラートを最後に変更したユーザーの名前。 |
-| ManagementGroupName |アラートが生成された管理グループの名前。 |
-| RepeatCount |同じ監視対象オブジェクトについて、同じアラートが前回の解決以降に生成された回数。 |
-| ResolvedBy |アラートを解決したユーザーの名前。 アラートが未解決の場合は空になります。 |
-| SourceDisplayName |アラートの生成元となった監視オブジェクトの表示名。 |
-| SourceFullName |アラートの生成元となった監視オブジェクトの完全名。 |
-| TicketId |アラートのチケット ID (System Center Operations Manager 環境がアラートのチケット割り当てプロセスに統合されている場合)。  チケット ID が割り当てられていない場合は空になります。 |
-| TimeGenerated |アラートが作成された日付と時刻。 |
-| TimeLastModified |アラートが最後に変更された日付と時刻。 |
-| TimeRaised |アラートが生成された日付と時刻。 |
-| TimeResolved |アラートが解決された日付と時刻。 アラートが未解決の場合は空になります。 |
+| `Type` |*Alert* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |アラートが生成されるきっかけとなったデータ項目の詳細 (XML 形式)。 |
+| `AlertDescription` |アラートの詳しい説明。 |
+| `AlertId` |アラートの GUID。 |
+| `AlertName` |アラートの名前。 |
+| `AlertPriority` |アラートの優先度。 |
+| `AlertSeverity` |アラートの重大度。 |
+| `AlertState` |アラートの最新の解決状態。 |
+| `LastModifiedBy` |アラートを最後に変更したユーザーの名前。 |
+| `ManagementGroupName` |アラートが生成された管理グループの名前。 |
+| `RepeatCount` |同じ監視対象オブジェクトについて、同じアラートが前回の解決以降に生成された回数。 |
+| `ResolvedBy` |アラートを解決したユーザーの名前。 アラートが未解決の場合は空になります。 |
+| `SourceDisplayName` |アラートの生成元となった監視オブジェクトの表示名。 |
+| `SourceFullName` |アラートの生成元となった監視オブジェクトの完全名。 |
+| `TicketId` |アラートのチケット ID (System Center Operations Manager 環境がアラートのチケット割り当てプロセスに統合されている場合)。  チケット ID が割り当てられていない場合は空になります。 |
+| `TimeGenerated` |アラートが作成された日付と時刻。 |
+| `TimeLastModified` |アラートが最後に変更された日付と時刻。 |
+| `TimeRaised` |アラートが生成された日付と時刻。 |
+| `TimeResolved` |アラートが解決された日付と時刻。 アラートが未解決の場合は空になります。 |
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。 
@@ -125,5 +118,5 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md) に関するページを参照してください。

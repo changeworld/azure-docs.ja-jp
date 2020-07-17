@@ -1,89 +1,133 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Active Directory B2C のドキュメント
+summary: Azure Active Directory B2C (Azure AD B2C) は、iOS、Android、.NET、シングルページ (SPA) などのアプリケーションを使用している場合に、顧客によるサインアップ、サインイン、プロファイル管理の方法をカスタマイズして制御できる ID 管理サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure AD B2C の使用方法を確認してください。
 metadata:
   title: Azure Active Directory B2C のドキュメント
-  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
+  description: Azure Active Directory B2C を使用して、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御する方法について説明します。
   services: active-directory-b2c
-  author: davidmu1
-  manager: daveba
   ms.service: active-directory
   ms.subservice: B2C
   ms.topic: landing-page
-  ms.date: 03/29/2018
-  ms.author: davidmu
-abstract:
-  description: Azure Active Directory (Azure AD) B2C は、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、同時に顧客の ID を保護します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure AD B2C の使用方法を確認してください。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/active-directory-b2c-video.PNG
-      width: 250
-    title: 'Azure AD B2C での顧客 ID 管理 (20:56)'
-    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory-b2c/active-directory-b2c-overview
-            html: <p>Azure AD B2C とその各種機能について説明します。</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: Azure AD B2C について
-          - href: /azure/active-directory-b2c/solution-articles
-            html: <p>Azure AD B2C を使用するソリューションとトレーニングの機会を調べます。</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: ソリューションとトレーニング
-          - href: /azure/active-directory-b2c/trustframeworkpolicy
-            html: <p>Azure AD B2C でカスタム ポリシーを使用して、高度なサインアップ シナリオとサインイン シナリオを作成します。</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: Identity Experience Framework
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: アプリケーションを使用する顧客の ID 管理を設定する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
-            text: デスクトップ
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
-            text: シングルページ
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: ASP.NET アプリケーション、デスクトップ アプリケーション、またはシングルページ Node.js アプリケーションのサインアップ、サインイン、顧客プロファイルを管理する方法について説明します。
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: ASP.NET
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API アクセスを許可する</a></p>
-          - title: デスクトップ
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API アクセスを許可する</a></p>
-          - title: シングルページ
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">テナントの作成</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API アクセスを許可する</a></p>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: アプリケーションで顧客 ID を管理する方法について説明したサンプルがあります。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/active-directory-b2c/code-samples">モバイル、デスクトップ、Web、シングルページのアプリ</a>
+  ms.collection: collection
+  author: msmimart
+  ms.author: mimart
+  ms.date: 01/28/2020
+  ms.openlocfilehash: fe0fc7f20a81d9b887a61ca382dafcb69fc420d2
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "78187714"
+landingContent:
+- title: 基本を学ぶ
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD B2C とは
+      url: overview.md
+    - text: 技術と機能の概要
+      url: technical-overview.md
+  - linkListType: get-started
+    links:
+    - text: Azure AD B2C テナントを作成する
+      url: tutorial-create-tenant.md
+    - text: アプリケーションを登録する
+      url: tutorial-register-applications.md
+    - text: ユーザー フローを設定する
+      url: tutorial-create-user-flows.md
+  - linkListType: video
+    links:
+    - text: Azure AD B2C とは (9:35)
+      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
+- title: ASP.NET アプリに ID を追加する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サインインを設定する
+      url: quickstart-web-app-dotnet.md
+  - linkListType: tutorial
+    links:
+    - text: .NET Web アプリケーションでユーザーの認証を行う
+      url: tutorial-web-app-dotnet.md
+    - text: .NET Web アプリケーションに API アクセスを許可する
+      url: tutorial-web-api-dotnet.md
+    - text: エンタープライズおよびソーシャル ログインを有効にする
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Web アプリおよび API のコード サンプル
+      url: code-samples.md#web-apps-and-apis
+- title: シングルページ アプリに ID を追加する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サインインを設定する
+      url: quickstart-single-page-app.md
+  - linkListType: tutorial
+    links:
+    - text: シングルページ アプリでユーザーの認証を行う
+      url: tutorial-single-page-app.md
+    - text: シングルページ アプリに API アクセスを許可する
+      url: tutorial-single-page-app-webapi.md
+    - text: エンタープライズおよびソーシャル ログインを有効にする
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: シングルページ アプリのコード サンプル
+      url: code-samples.md#single-page-apps
+- title: デスクトップ アプリに ID を追加する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サインインを設定する
+      url: quickstart-native-app-desktop.md
+  - linkListType: tutorial
+    links:
+    - text: ネイティブ クライアントでユーザーの認証を行う
+      url: tutorial-desktop-app.md
+    - text: ネイティブ クライアントに API アクセスを許可する
+      url: tutorial-desktop-app-webapi.md
+    - text: エンタープライズおよびソーシャル ログインを有効にする
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: モバイルおよびデスクトップ アプリのコード サンプル
+      url: code-samples.md
+- title: 一般的な ID シナリオを構成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ユーザー フローの概要
+      url: user-flow-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: ユーザーのサインアップとサインインを行う
+      url: tutorial-create-user-flows.md
+    - text: ユーザー インターフェイスをカスタマイズする
+      url: customize-ui-overview.md
+    - text: Facebook でサインインを有効にする
+      url: identity-provider-facebook.md
+  - linkListType: video
+    links:
+    - text: 基本ポリシーの構成方法 (9:41)
+      url: https://www.youtube.com/watch?v=nWJ3m82536A
+- title: 高度な ID シナリオを構築する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: カスタム ポリシーの概要
+      url: custom-policy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: ユーザーのサインアップとサインインを行う
+      url: custom-policy-get-started.md
+    - text: ユーザー インターフェイスをカスタマイズする
+      url: custom-policy-ui-customization.md
+    - text: Azure AD マルチテナントでサインインを有効にする
+      url: identity-provider-azure-ad-multi-tenant-custom.md
+    - text: REST API を使用して独自のビジネス ロジックを追加する
+      url: custom-policy-rest-api-claims-validation.md
+  - linkListType: video
+    links:
+    - text: Azure AD B2C を使用した高度なユース ケース (4:54)
+      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y

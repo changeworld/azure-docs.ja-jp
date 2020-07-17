@@ -1,5 +1,6 @@
 ---
-title: API Management 開発者ポータルをテンプレートを使用してカスタマイズする - Azure | Microsoft Docs
+title: API Management 開発者ポータルをテンプレートを使用してカスタマイズする
+titleSuffix: Azure API Management
 description: Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -10,16 +11,15 @@ ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733061"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75430785"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
@@ -27,15 +27,17 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 * [静的なページの内容とページ レイアウト要素を編集する][modify-content-layout]
 * [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
-* [ポータルで生成されるページに使用するテンプレートを変更する][ portal-templates] (このガイドで説明します)
+* [ポータルで生成されるページに使用するテンプレートを変更する][portal-templates] (このガイドで説明します)
 
 テンプレートは、システムで生成された開発者ポータル ページのコンテンツ (API ドキュメント、製品、ユーザー認証など) をカスタマイズするために使用します。 [DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットを使用して、表示されるページの内容を自由に構成できます。
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>開発者ポータル テンプレートの概要
 
-テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
+テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
 
 開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、 **[テンプレート]** をクリックします。
 
@@ -183,7 +185,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 その後、復元したテンプレートを、「 [テンプレートを発行するには](#to-publish-a-template)」の手順に従って、個別にまたはまとめて発行する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 開発者ポータル テンプレート、文字列リソース、アイコン、およびページ コントロールのリファレンス情報については、 [API Management 開発者ポータル テンプレート リファレンスに関するページ](api-management-developer-portal-templates-reference.md)を参照してください。
 
 [modify-content-layout]: api-management-modify-content-layout.md

@@ -1,32 +1,32 @@
 ---
-title: 電子メール検証済みユーザー アカウントのセルフサービス サインアップ - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory (Azure AD) テナントでセルフサービス サインアップを使用します。
+title: 電子メールで確認されたユーザーのセルフサービス サインアップ - Azure AD | Microsoft Docs
+description: Azure Active Directory (Azure AD) 組織でセルフサービス サインアップを使用する
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7aee10780512e284faccadface0dc928ef8270e
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501890"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583002"
 ---
-# <a name="what-is-self-service-signup-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
+# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
 この記事では、セルフサービス サインアップを使用して Azure Active Directory (Azure AD) に組織を設定する方法について説明します。 アンマネージド Azure AD 組織からドメイン名を引き継ぐ場合は、[ ディレクトリを管理者として引き継ぐ方法](domains-admin-takeover.md)に関する記事をご覧ください。
 
-## <a name="why-use-self-service-signup"></a>セルフサービス サインアップを使用する理由
+## <a name="why-use-self-service-sign-up"></a>セルフサービス サインアップを使用する理由
 * 顧客が求めるサービスを迅速に提供できる。
 * サービス提供の電子メール ベース プランを構築できる。
 * ユーザーが覚えやすい職場の電子メールの別名を使用して ID をすばやく作成することを可能にする、電子メール ベースのサインアップ フローを作成できる。
@@ -49,7 +49,7 @@ ms.locfileid: "65501890"
 * **AllowEmailVerifiedUsers** によって、ユーザーがディレクトリを作成または参加できるかを管理できます。 このパラメーターを $false に設定すると、電子メール検証済みのユーザーはディレクトリに参加できません。
 * **AllowAdHocSubscriptions** によって、ユーザーがセルフサービス サインアップを実行できるかどうかを管理できます。 このパラメーターを $false に設定すると、ユーザーはセルフサービス サインアップを実行できません。
   
-AllowEmailVerifiedUsers と AllowAdHocSubscriptions は、管理対象ディレクトリにも管理対象外ディレクトリにも適用できるディレクトリ全体の設定です。 次のような例を示します。
+AllowEmailVerifiedUsers と AllowAdHocSubscriptions は、マネージド ディレクトリにもアンマネージド ディレクトリにも適用できるディレクトリ全体の設定です。 次のような例を示します。
 
 * contoso.com などの検証済みドメインを持つディレクトリを管理します
 * 別のディレクトリから B2B コラボレーションを使用して、contoso.com のホーム ディレクトリにまだ存在しないユーザー (userdoesnotexist@contoso.com) を招待します
@@ -63,7 +63,7 @@ Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscri
 * [組織における Flow の Q&A](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>これらの管理機能の連携について
-これらの 2 つのパラメーターを組み合わせて使用すると、セルフサービス サインアップをさらに細かく管理できるようになります。 たとえば、次のコマンドにより、ユーザーはセルフサービス サインアップを実行できますが、Azure AD のアカウントを既に持っている場合に限られます (つまり、電子メール検証済みのアカウントをまず作成する必要があるユーザーは、セルフサービス サインアップを実行できません)。
+これら 2 つのパラメーターを組み合わせて使用すると、セルフサービス サインアップをさらに細かく管理できるようになります。 たとえば、次のコマンドによりユーザーはセルフサービス サインアップを実行できますが、 Azure AD のアカウントを既に持っている場合に限定されます (つまり、まずメール検証済みのアカウントを作成する必要があるユーザーは、セルフサービス サインアップを実行できません)。
 
 ```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
@@ -75,10 +75,11 @@ Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscri
 
 これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [アンマネージド Azure Active Directory の職場または学校アカウントを削除する](users-close-account.md)

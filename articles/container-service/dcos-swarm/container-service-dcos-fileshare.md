@@ -10,11 +10,11 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329822"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60480386"
 ---
 # <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(非推奨) ファイル共有を作成して DC/OS クラスターにマウントする
 
@@ -62,14 +62,14 @@ az storage share create -n $DCOS_PERS_SHARE_NAME
 
 最初に、Azure ストレージ アカウント名とアクセス キーが必要です。 この情報の取得には、次のコマンドを実行します。 これらの値は、後の手順で使用するのでそれぞれメモしておきます。
 
-ストレージ アカウント名: 
+ストレージ アカウント名:
 
 ```azurecli-interactive
 STORAGE_ACCT=$(az storage account list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[?contains(name, '$DCOS_PERS_STORAGE_ACCOUNT_NAME')].[name]" -o tsv)
 echo $STORAGE_ACCT
 ```
 
-ストレージ アカウント アクセス キー: 
+ストレージ アカウント アクセス キー:
 
 ```azurecli-interactive
 az storage account keys list --resource-group $DCOS_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCT --query "[0].value" -o tsv
@@ -142,7 +142,7 @@ sh ./getNodesRunScript.sh
 
 これで、クラスターの各ノードにある `/mnt/share/dcosshare` にアクセスできるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルは、次の手順を使用して、Azure ファイル共有を DC/OS クラスターで利用できるようにしました。
 

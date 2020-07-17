@@ -1,19 +1,15 @@
 ---
-title: Azure Container Instances とコンテナーのオーケストレーション
+title: Container Instances とコンテナーのオーケストレーション
 description: Azure Container Instances とコンテナー オーケストレーターがどのように対話するかを理解します。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072980"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74533657"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 
@@ -64,13 +60,13 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 Kubernetes API をサーバーレス コンテナー プラットフォーム内に拡張する追加のサンプルについては、[Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) プロジェクトを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [クイック スタート ガイド](container-instances-quickstart.md)を使用して Azure Container Instances で最初のコンテナーを作成します。
 
 <!-- IMAGES -->
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
+[aci-connector-k8s]: https://github.com/virtual-kubelet/azure-aci
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

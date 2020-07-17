@@ -2,18 +2,19 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/26/2018
-ms.author: adgera
+ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: 35078d9cf705351a9f64f52738c9eaca90814f7a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 096e28c875634e248ee95e1010fa915dd35bddab
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157922"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75752357"
 ---
 > [!TIP]
 > API の機能を見ることができる Swagger のプレビューが提供されています。
@@ -21,11 +22,11 @@ ms.locfileid: "66157922"
 
 生成された独自の Management API Swagger ドキュメントには、次の場所からアクセスできます。
 
-```plaintext
+```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | 置換後の文字列 |
+| 名前 | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Azure Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするサーバーのリージョン |

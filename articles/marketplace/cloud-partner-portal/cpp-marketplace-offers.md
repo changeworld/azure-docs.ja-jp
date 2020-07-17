@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace と AppSource Marketplace のオファー
 description: Azure Marketplace と AppSource Marketplace のオファーの作成と管理
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pabutler
-ms.openlocfilehash: 2d440adc5111db11486d1fc606abbda0ffae9595
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: dsindona
+ms.openlocfilehash: 7f6fd723355426a49cff032d51da0e09f13e295d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942542"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278486"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファー
 
@@ -36,7 +36,7 @@ ms.locfileid: "64942542"
 
 "*体験版*" は、顧客に各オファーを "購入する前に試してみる" デモ オプションを提供するマーケットプレース機能です。  体験版の機能は、オファーの種類の次のようなサブセットに限定されています。[Azure アプリケーション](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS アプリケーション](./saas-app/cpp-saas-offer.md)、および[仮想マシン](./virtual-machine/cpp-virtual-machine-offer.md)。  この機能を提供するには、発行元はオファー用にカスタマイズされた体験版テンプレートを作成する必要があります。  詳しくは、「[体験版とは](./test-drive/what-is-test-drive.md)」セクションをご覧ください。
 
-[体験版フィルター](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)を適用することにより、体験版のデモがある既存のマーケットプレース オファーを参照できます。 
+[体験版フィルター](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)を適用することにより、体験版のデモがある既存のマーケットプレース オファーを参照できます。 
 
 
 ## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace および AppSource でのオファーの種類
@@ -51,7 +51,7 @@ ms.locfileid: "64942542"
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | このエンタープライズ リソース プランニング (ERP) およびビジネス管理システムを拡張するパッケージ。 |
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 営業、サービス、プロジェクト サービス、およびフィールド サービス モジュールによってこの顧客リソース管理 (CRM) システムを拡張するパッケージ。  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 高度な財務、経営、製造、およびサプライ チェーン管理をサポートするこのエンタープライズ リソース プランニング (ERP) サービスを拡張するパッケージ。 |
-| [IoT Edge モジュール](./iot-edge-module/cpp-offer-process-parts.md) | Azure | IoT Edge デバイス上で実行される Docker 互換コンテナー。  カスタム コード、他の Azure サービス、サード パーティのサービスの組み合わせを使用する小規模のコンピューティング モジュールが含まれています。 |
+| [IoT Edge モジュール](./iot-edge-module/cpp-offer-process-parts.md) | Azure | IoT Edge デバイス上で実行される Docker 互換コンテナー。  カスタム コード、他の Azure サービス、サードパーティのサービスの組み合わせを使用する小規模のコンピューティング モジュールで構成されます。 |
 | [Power BI アプリ](./power-bi/cpp-power-bi-offer.md) | AppSource | データセット、レポート、およびダッシュボードを含むカスタマイズ可能な Power BI コンテンツをパッケージ化する Power BI アプリ。 |
 | [SaaS アプリ](./saas-app/cpp-saas-offer.md) | Azure | ソリューションはパブリッシャーによって管理されるサービスとしてのソフトウェア サブスクリプションであり、ユーザーは Azure Active Directory を利用するカスタマイズされたインターフェイスを使用してログオンします。 |
 | [仮想マシン](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | ソリューションは、顧客のサブスクリプションにデプロイされる 1 つの仮想マシンに含まれます。  |
@@ -60,6 +60,6 @@ ms.locfileid: "64942542"
 詳細については、「[Publishing guide by offer type](../publisher-guide-by-offer-type.md)」(プランの種類別の公開ガイド) をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [オファーの管理](./manage-offers/cpp-manage-offers.md)に関する記事で、マーケットプレースのオファーに対して実行できる一般的な操作と、一般的な技術属性および資産について学習します。

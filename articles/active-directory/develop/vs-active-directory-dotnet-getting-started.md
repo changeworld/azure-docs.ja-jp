@@ -1,24 +1,21 @@
 ---
-title: Visual Studio .NET MVC プロジェクトで Azure AD の使用を開始する
+title: .NET MVC プロジェクトで Azure AD の使用を開始する | Azure
 description: Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、.NET MVC プロジェクトで Azure AD の使用を開始する方法について説明します。
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bbbef3f48eb55c863fdd286113297d79f9b9e02
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fe408e965c528db1d82b73ee7b20bbe3b3933657
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208505"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80886128"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory (ASP.NET MVC プロジェクト) の使用の開始
 
@@ -83,7 +80,7 @@ ms.locfileid: "56208505"
 </html>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD の認証シナリオ](authentication-scenarios.md)
-- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v1-aspnet-webapp.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v2-aspnet-webapp.md)

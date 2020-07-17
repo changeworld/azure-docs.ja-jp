@@ -1,6 +1,6 @@
 ---
-title: データ変換
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: データ変換 - LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) の予測の前に、発話の変更方法について説明します。
 services: cognitive-services
 author: diberry
@@ -9,32 +9,38 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: bdf2d87e558726937fa4221a0d95179216c66051
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b2455df87c8eae1a48cb6c8b1381dad85d304bf4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859202"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82099242"
 ---
 # <a name="convert-data-format-of-utterances"></a>発話のデータ形式を変換する
-LUIS では、Cognitive Services の音声サービスを使用して、予測の前に音声の発話からテキストの発話に発話を変換します。 
+LUIS では、予測の前に、次のユーザーの発話の変換を提供します。
 
-## <a name="speech-to-intent-conversion-concepts"></a>音声から意図への変換の概念
+* [Cognitive Services の Speech](../Speech-Service/overview.md) サービスを使用した音声テキスト変換。
+
+## <a name="speech-to-text"></a>音声テキスト変換
+
+音声テキスト変換は、LUIS との統合として提供されます。
+
+### <a name="intent-conversion-concepts"></a>意図変換の概念
 LUIS の音声テキスト変換を使用すると、音声の発話をエンドポイントに送信し、LUIS の予測応答を受け取ることができます。 このプロセスは、[音声](https://docs.microsoft.com/azure/cognitive-services/Speech)サービスと LUIS の統合です。 音声意図判定の詳細については、[チュートリアル](../speech-service/how-to-recognize-intents-from-speech-csharp.md)で確認してください。
 
 ### <a name="key-requirements"></a>主な要件
 この統合のために **Bing Speech API** キーを作成する必要はありません。 この統合には、Azure portal で作成された **Language Understanding** キーが使用されます。 LUIS スターター キーは使用しないでください。
 
 ### <a name="pricing-tier"></a>価格レベル
-この統合では、通常の Language Understanding 価格レベルとは別の[価格](luis-boundaries.md#key-limits)モデルを使用します。 
+この統合では、通常の Language Understanding 価格レベルとは別の[価格](luis-limits.md#key-limits)モデルを使用します。
 
 ### <a name="quota-usage"></a>クォータの使用量
-詳細については、[主な制限](luis-boundaries.md#key-limits)に関するページを参照してください。 
+詳細については、[主な制限](luis-limits.md#key-limits)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [音声テキスト変換の使用](luis-tutorial-speech-to-intent.md)
+> [データの抽出](luis-concept-data-extraction.md)
 

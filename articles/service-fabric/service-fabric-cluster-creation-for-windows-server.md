@@ -1,28 +1,19 @@
 ---
-title: スタンドアロン Azure Service Fabric クラスターの作成 | Microsoft Docs
+title: スタンドアロン Azure Service Fabric クラスターを作成する
 description: オンプレミスまたはクラウドにある Windows Server が実行されているマシン (物理コンピューターまたは仮想マシン) で、Azure Service Fabric クラスターを作成します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142688"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189098"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
-Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。
+Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。 Azure 上の従来の Service Fabric クラスターはマネージド サービスとして使用できるのに対して、スタンドアロンの Service Fabric クラスターはセルフサービスです。 違いについては、[Azure とスタンドアロン Service Fabric クラスターの比較](./service-fabric-deploy-anywhere.md)に関する記事をご覧ください。
 
 この記事では、Service Fabric スタンドアロン クラスターの作成手順について説明します。
 
@@ -126,7 +117,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 
 *.\ClusterConfig.json* と *.\MicrosoftAzureServiceFabric.cab* は、それぞれクラスター構成とランタイムの .cab ファイルのパスです。
 
-### <a name="step-2-connect-to-the-cluster"></a>手順 2:クラスターへの接続
+### <a name="step-2-connect-to-the-cluster"></a>手順 2:クラスターに接続する
 クラスターに接続し、クラスターが実行されており使用可能であることを確認します。 Service Fabric ランタイムをインストールすると、ServiceFabric PowerShell モジュールがインストールされます。  クラスター ノードのいずれか、または Service Fabric ランタイムがインストールされたリモート コンピューターから、クラスターに接続できます。  クラスターへの接続は、[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットで確立します。
 
 セキュリティで保護されていないクラスターに接続するには、次の PowerShell コマンドを実行します。
@@ -135,7 +126,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-例: 
+次に例を示します。
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -153,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>手順 3:Service Fabric Explorer を使用したクラスターの視覚化
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、クラスターを視覚化してアプリケーションを管理するための最適なツールです。  Service Fabric Explorer はクラスターで動作するサービスであり、ブラウザーから [http://localhost:19080/Explorer](http://localhost:19080/Explorer) でアクセスすることができます。
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、クラスターを視覚化してアプリケーションを管理するための最適なツールです。  Service Fabric Explorer はクラスターで動作するサービスであり、ブラウザーを使用して `http://localhost:19080/Explorer` にアクセスすることができます。
 
 クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。 ノード ビューには、クラスターの物理的なレイアウトが表示されます。 特定のノードについて、そのノードでコードがデプロイされているアプリケーション、
 
@@ -212,7 +203,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>このパッケージに含まれるプレビュー機能
-なし。
+[なし] :
 
 
 > [!NOTE]
@@ -220,7 +211,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [PowerShell を使用してアプリケーションのデプロイと削除を実行する](service-fabric-deploy-remove-applications.md)
 * [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
 * [スタンドアロン Service Fabric クラスターでノードを追加または削除する](service-fabric-cluster-windows-server-add-remove-nodes.md)

@@ -1,5 +1,5 @@
 ---
-title: Geography V2 作成済みエンティティ
+title: Geography V2 作成済みエンティティ - LUIS
 titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での geographyV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/07/2019
+ms.topic: reference
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 5b9ace8a2402d96c4bb54864eb59a56b46d04067
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65071966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78273492"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの geographyV2 作成済みエンティティ
 作成済みの geographyV2 エンティティは、場所を検出します。 このエンティティは既にトレーニングされているので、GeographyV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 GeographyV2 エンティティは、英語[カルチャ](luis-reference-prebuilt-entities.md)でサポートされています。
@@ -35,162 +35,180 @@ ms.locfileid: "65071966"
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 エンティティの解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+次のエンティティ オブジェクトがクエリに対して返されます。
 
-次の例では、**builtin.geographyV2** エンティティの解決を示します。
+`Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
-```json
-{
-    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-    "topScoringIntent": {
-        "intent": "None",
-        "score": 0.8008023
-    },
-    "intents": [
-        {
-            "intent": "None",
-            "score": 0.8008023
-        }
-    ],
-    "entities": [
-        {
-            "entity": "the sphinx",
-            "type": "builtin.geographyV2.poi",
-            "startIndex": 18,
-            "endIndex": 27
-        },
-        {
-            "entity": "gizah",
-            "type": "builtin.geographyV2.city",
-            "startIndex": 32,
-            "endIndex": 36
-        },
-        {
-            "entity": "egypt",
-            "type": "builtin.geographyV2.countryRegion",
-            "startIndex": 38,
-            "endIndex": 42
-        },
-        {
-            "entity": "africa",
-            "type": "builtin.geographyV2.continent",
-            "startIndex": 47,
-            "endIndex": 52
-        },
-        {
-            "entity": "texas",
-            "type": "builtin.geographyV2.state",
-            "startIndex": 72,
-            "endIndex": 76
-        },
-        {
-            "entity": "carol",
-            "type": "builtin.personName",
-            "startIndex": 0,
-            "endIndex": 4
-        }
-    ]
-} 
-```
-
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-response"></a>[V3 の応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
 ```json
-{
-    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-    "prediction": {
-        "normalizedQuery": "carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5115521
-            }
+"entities": {
+    "geographyV2": [
+        {
+            "value": "the sphinx",
+            "type": "poi"
         },
-        "entities": {
-            "geographyV2": [
-                "the sphinx",
-                "gizah",
-                "egypt",
-                "africa",
-                "texas"
-            ]
+        {
+            "value": "gizah",
+            "type": "city"
+        },
+        {
+            "value": "egypt",
+            "type": "countryRegion"
+        },
+        {
+            "value": "africa",
+            "type": "continent"
+        },
+        {
+            "value": "texas",
+            "type": "state"
         }
-    }
+    ]
 }
 ```
+
+上記の JSON で、`poi` は**目的地 (Point of Interest)** の略です。
+
+#### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 
 次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
 
 ```json
-{
-    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-    "prediction": {
-        "normalizedQuery": "carol is visiting the sphinx in gizah egypt in africa before heading to texas",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5115521
-            }
+"entities": {
+    "geographyV2": [
+        {
+            "value": "the sphinx",
+            "type": "poi"
         },
-        "entities": {
-            "geographyV2": [
-                "the sphinx",
-                "gizah",
-                "egypt",
-                "africa",
-                "texas"
-            ],
-            "$instance": {
-                "geographyV2": [
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "the sphinx",
-                        "startIndex": 18,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "gizah",
-                        "startIndex": 32,
-                        "length": 5,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "egypt",
-                        "startIndex": 38,
-                        "length": 5,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "africa",
-                        "startIndex": 47,
-                        "length": 6,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    },
-                    {
-                        "type": "builtin.geographyV2",
-                        "text": "texas",
-                        "startIndex": 72,
-                        "length": 5,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+        {
+            "value": "gizah",
+            "type": "city"
+        },
+        {
+            "value": "egypt",
+            "type": "countryRegion"
+        },
+        {
+            "value": "africa",
+            "type": "continent"
+        },
+        {
+            "value": "texas",
+            "type": "state"
+        }
+    ],
+    "$instance": {
+        "geographyV2": [
+            {
+                "type": "builtin.geographyV2.poi",
+                "text": "the sphinx",
+                "startIndex": 18,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.city",
+                "text": "gizah",
+                "startIndex": 32,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.countryRegion",
+                "text": "egypt",
+                "startIndex": 38,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.continent",
+                "text": "africa",
+                "startIndex": 47,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.geographyV2.state",
+                "text": "texas",
+                "startIndex": 72,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
-## <a name="next-steps"></a>次の手順
+次の例では、**builtin.geographyV2** エンティティの解決を示します。
 
-[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。 
+```json
+"entities": [
+    {
+        "entity": "the sphinx",
+        "type": "builtin.geographyV2.poi",
+        "startIndex": 18,
+        "endIndex": 27
+    },
+    {
+        "entity": "gizah",
+        "type": "builtin.geographyV2.city",
+        "startIndex": 32,
+        "endIndex": 36
+    },
+    {
+        "entity": "egypt",
+        "type": "builtin.geographyV2.countryRegion",
+        "startIndex": 38,
+        "endIndex": 42
+    },
+    {
+        "entity": "africa",
+        "type": "builtin.geographyV2.continent",
+        "startIndex": 47,
+        "endIndex": 52
+    },
+    {
+        "entity": "texas",
+        "type": "builtin.geographyV2.state",
+        "startIndex": 72,
+        "endIndex": 76
+    },
+    {
+        "entity": "carol",
+        "type": "builtin.personName",
+        "startIndex": 0,
+        "endIndex": 4
+    }
+]
+```
+* * *
+
+## <a name="next-steps"></a>次のステップ
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
+
+[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。

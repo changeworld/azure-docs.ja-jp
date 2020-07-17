@@ -1,7 +1,7 @@
 ---
 title: Custom Autosuggest の検索候補を定義する - Bing Custom Search
-titlesuffix: Azure Cognitive Services
-description: カスタム検索候補を使用して Custom Autosuggest を構成する方法について説明します
+titleSuffix: Azure Cognitive Services
+description: Custom Autosuggest は、検索エクスペリエンスに関連する提案された検索クエリ文字列の一覧を返します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: bbad72b41a177bdbafd6cf98bfd2025190d98b16
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237639"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74072802"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
 
@@ -23,7 +23,7 @@ Custom Autosuggest は、検索エクスペリエンスに関連する提案さ�
 
 カスタム検索候補のみを返すか、Bing の検索候補を含めるかも指定します。 Bing の検索候補を含める場合、カスタム検索候補は Bing の検索候補の前に表示されます。 十分な関連検索候補を提供した場合、返される検索候補の一覧に Bing の検索候補が含まれない可能性があります。 Bing の候補は、Custom Search インスタンスのコンテキスト内に常にあります。 
 
-ユーザーのインスタンス用の検索クエリ候補を構成するには、**[Autosuggest]** タブをクリックします。  
+ユーザーのインスタンス用の検索クエリ候補を構成するには、 **[Autosuggest]** タブをクリックします。  
 
 > [!NOTE]
 > この機能を使用するには、適切なレベルで Custom Search をサブスクライブする必要があります ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)に関するページをご覧ください)。
@@ -32,11 +32,11 @@ Custom Autosuggest は、検索エクスペリエンスに関連する提案さ�
 
 ## <a name="enable-bing-suggestions"></a>Bing の検索候補を有効にする
 
-Bing の検索候補を有効にするには、**[Automatic Bing suggestions]**(Bing の自動検索候補) スライダーをオンの位置にします。 スライダーが青になります。
+Bing の検索候補を有効にするには、 **[Automatic Bing suggestions]** (Bing の自動検索候補) スライダーをオンの位置にします。 スライダーが青になります。
 
 ## <a name="add-your-own-suggestions"></a>独自の検索候補を追加する
 
-独自のクエリ文字列候補を追加するには、**[User-defined suggestions]\(ユーザー定義の検索候補\)** の下の一覧に追加します。 一覧に検索候補を追加した後、Enter キーを押すか、または **[+]** アイコンをクリックします。 任意の言語で検索候補を指定できます。 最大で 5,000 個のクエリ文字列候補を追加できます。
+独自のクエリ文字列候補を追加するには、 **[User-defined suggestions]\(ユーザー定義の検索候補\)** の下の一覧に追加します。 一覧に検索候補を追加した後、Enter キーを押すか、または **[+]** アイコンをクリックします。 任意の言語で検索候補を指定できます。 最大で 5,000 個のクエリ文字列候補を追加できます。
 
 ## <a name="upload-suggestions"></a>検索候補をアップロードする
 
@@ -48,7 +48,7 @@ Bing の検索候補を有効にするには、**[Automatic Bing suggestions]**(
 
 ## <a name="block-suggestions"></a>検索候補をブロックする
 
-Bing の検索候補を含める場合、Bing から返されたくない検索クエリ文字列の一覧を追加できます。 ブロックするクエリ文字列を追加するには、**[Show blocked suggestions]\(ブロックされている検索候補を表示する\)** をクリックします。 一覧にクエリ文字列を追加し、Enter キーを押すか、または **[+]** アイコンをクリックします。 最大で 50 個のブロックするクエリ文字列を追加できます。
+Bing の検索候補を含める場合、Bing から返されたくない検索クエリ文字列の一覧を追加できます。 ブロックするクエリ文字列を追加するには、 **[Show blocked suggestions]\(ブロックされている検索候補を表示する\)** をクリックします。 一覧にクエリ文字列を追加し、Enter キーを押すか、または **[+]** アイコンをクリックします。 最大で 50 個のブロックするクエリ文字列を追加できます。
 
 
 
@@ -60,7 +60,7 @@ Bing の検索候補を含める場合、Bing から返されたくない検索�
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>ホステッド UI で Autosuggest を有効にする
 
-ホステッド UI でクエリ文字列の検索候補を有効にするには、**[Hosted UI]\(ホステッド UI\)** をクリックします。 **[Additional Configuration]\(追加構成\)** セクションまで下にスクロールします。 **[Web search]\(Web 検索\)** で、**[Enable autosuggest]\(Autosuggest を有効にする\)** を **[オン]** にします。 Autosuggest を有効にするには、検索ボックスを含むレイアウトを選択する必要があります。
+ホステッド UI でクエリ文字列の検索候補を有効にするには、 **[Hosted UI]\(ホステッド UI\)** をクリックします。 **[Additional Configuration]\(追加構成\)** セクションまで下にスクロールします。 **[Web search]\(Web 検索\)** で、**[Enable autosuggest]\(Autosuggest を有効にする\)** を **[オン]** にします。 Autosuggest を有効にするには、検索ボックスを含むレイアウトを選択する必要があります。
 
 
 ## <a name="calling-the-autosuggest-api"></a>Autosuggest API を呼び出す
@@ -86,7 +86,7 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions
 ユーザーがドロップダウン リストから検索候補のクエリ文字列を選択する場合は、[Bing Custom Search API](overview.md) を呼び出すときに `query` フィールドのクエリ文字列を使用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カスタム検索候補を取得する](./get-custom-suggestions.md)
 - [カスタム インスタンスを検索する](./search-your-custom-view.md)

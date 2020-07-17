@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993863"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744876"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -36,17 +36,17 @@ DPDK は、複数のオペレーティング システムの配布をサポー�
 **1 秒あたりのパケット数 (PPS) の向上**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
 
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-Azure ギャラリーの次のディストリビューションがサポートされています。
+Azure Marketplace の次のディストリビューションがサポートされています。
 
-| Linux OS     | カーネル バージョン        |
-|--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-azure     |
-| Ubuntu 18.04 | 4.15.0-1015-azure     |
-| SLES 15      | 4.12.14-5.5-azure     |
-| RHEL 7.5     | 3.10.0-862.9.1.el7    |
-| CentOS 7.5   | 3.10.0-862.3.3.el7    |
+| Linux OS     | カーネル バージョン               | 
+|--------------|---------------------------   |
+| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
+| Ubuntu 18.04 | 4.15.0-1014-azure+           |
+| SLES 15 SP1  | 4.12.14-8.27-azure+          | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 
 **カスタムのカーネル サポート**
 
@@ -73,6 +73,7 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev lib
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
+sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
@@ -85,7 +86,7 @@ sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
 yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
 ```
 
-### <a name="sles-15"></a>SLES 15
+### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure のカーネル**
 
@@ -107,7 +108,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>仮想マシン環境のセットアップ (1 回のみ)
 
-1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure にはバージョン 18.02 以降が必要です。
+1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure には、バージョン 18.11 LTS または 19.11 LTS が必要です。
 2. `make config T=x86_64-native-linuxapp-gcc` を使って既定の構成を構築します。
 3. `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` を使って、生成された構成で Mellanox PMD を有効にします。
 4. `make` を使ってコンパイルします。
@@ -119,32 +120,30 @@ zypper \
 
 1. hugepage
 
-   * すべての numanode に対して 1 回、次のコマンドを実行して hugepage を構成します。
+   * NUMA ノードごとに 1 回ずつ次のコマンドを実行して、hugepage を構成します。
 
      ```bash
-     echo 1024 | sudo tee
-     /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
+     echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
    * `mkdir /mnt/huge` を使って、マウント用のディレクトリを作成します。
    * `mount -t hugetlbfs nodev /mnt/huge` を使って hugepage をマウントします。
    * `grep Huge /proc/meminfo` を使って、hugepage が予約されていることを確認します。
 
-     > [!NOTE]
-     > DPDK の[手順](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブートで予約されるように、grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
+     > [注意] DPDK 向けの[手順](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブート時に予約されるように grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
 
-2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 VF インターフェイスは、NETVSC インターフェイスの下位インターフェイスとして実行されています。
+2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 *VF* インターフェイスは、*NETVSC* インターフェイスの下位インターフェイスとして実行されています。
 
 3. PCI アドレス
 
    * `ethtool -i <vf interface name>` を使って *VF* で使用される PCI アドレスを調べます。
-   * *eth0* で高度なネットワークを有効化した場合、testpmd が誤って *eth0* の VF pci デバイスを引き継ぐことはありません。 DPDK アプリケーションが誤って管理ネットワーク インターフェイスを引き継ぎ、SSH 接続が失われた場合、シリアル コンソールを使用して DPDK アプリケーションを停止します。 また、シリアル コンソールを使用して仮想マシンを停止または起動することもできます。
+   * *eth0* で高速ネットワークが有効化されている場合、testpmd が誤って *eth0* の *VF* PCI デバイスを引き継ぐことのないようにしてください。 DPDK アプリケーションが誤って管理ネットワーク インターフェイスを引き継ぎ、SSH 接続が失われた場合、シリアル コンソールを使用して DPDK アプリケーションを停止します。 また、シリアル コンソールを使用して仮想マシンを停止または起動することもできます。
 
 4. `modprobe -a ib_uverbs` を使って、各リブートで *ibuverbs* を読み込みます。 SLES 15 の場合のみ、`modprobe -a mlx4_ib` を使って *mlx4_ib* も読み込みます。
 
 ## <a name="failsafe-pmd"></a>フェールセーフの PMD
 
-DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 VF PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。 
+DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 *VF* PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されるわけではありません。 
 
 DPDK アプリケーションをフェールセーフの PMD 経由で実行すると、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に、引き続き DPDK モードで実行されます。 フェールセーフの PMD の詳細については、[フェールセーフでのポーリング モードのドライバー ライブラリ](https://doc.dpdk.org/guides/nics/fail_safe.html)を参照してください。
 
@@ -216,7 +215,7 @@ testpmd をルート モードで実行するには、*testpmd* コマンドの�
 
 仮想マシン上で上記のコマンドを実行する場合、コンパイルする前に仮想マシンの実際の IP アドレスと一致するように、`app/test-pmd/txonly.c` の *IP_SRC_ADDR* および *IP_DST_ADDR* を変更します。 これを行わない場合、受信者に到着する前に、パケットが削除されます。
 
-### <a name="advanced-single-sendersingle-forwarder"></a>高度: 単一の送信者/単一の転送者
+### <a name="advanced-single-sendersingle-forwarder"></a>詳細: 単一の送信者/単一の転送者
 次のコマンドは、毎秒のパケットの統計情報を定期的に出力します。
 
 1. TX 側で、次のコマンドを実行します。
@@ -252,7 +251,7 @@ testpmd をルート モードで実行するには、*testpmd* コマンドの�
 
 仮想マシン上で上記のコマンドを実行する場合、コンパイルする前に仮想マシンの実際の IP アドレスと一致するように、`app/test-pmd/txonly.c` の *IP_SRC_ADDR* および *IP_DST_ADDR* を変更します。 これを行わない場合、転送者に到着する前に、パケットが削除されます。 *testpmd* 転送者はレイヤー 3 のアドレスを変更しないため、コードに変更を加えない限り、第 3 のマシンで転送されたトラフィックを受信することはできません。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * [EAL オプション](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd コマンド](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

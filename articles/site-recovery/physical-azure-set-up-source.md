@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149021"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229131"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -22,9 +22,9 @@ ms.locfileid: "60149021"
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のものが既にあることを前提としています。
-- Recovery Services コンテナー ([Azure Portal](https://portal.azure.com "Azure Portal") 内)。
+- [Azure portal](https://portal.azure.com "Azure portal") 内の Recovery Services コンテナー。
 - 構成サーバーをインストールするための物理コンピューター。
-- 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を無効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細情報](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
+- 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を有効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
 ### <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
@@ -36,10 +36,10 @@ ms.locfileid: "60149021"
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
 1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
-2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1:インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+2. コンテナーの**リソース** メニューで、 **[作業の開始]**  >  **[Site Recovery]**  >  **[手順 1:インフラストラクチャを準備する]**  >  **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/choose-goals.png)
-3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[非仮想化/その他]** を選択し、**[OK]** をクリックします。
+3. **[保護の目標]** で、 **[To Azure (Azure へ)]** を選択し、 **[非仮想化/その他]** を選択し、 **[OK]** をクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "60149021"
 1. **[ソースの準備]** で、構成サーバーがない場合は **[+ 構成サーバー]** をクリックして追加します。
 
    ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
+2. **[サーバーの追加]** ブレードで、 **[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
 
@@ -63,7 +63,7 @@ ms.locfileid: "60149021"
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーはコマンドラインを使用してインストールすることもできます。 [詳細情報](physical-manage-configuration-server.md#install-from-the-command-line)。
+> 構成サーバーはコマンドラインを使用してインストールすることもできます。 [詳細については、こちらを参照してください](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 
 ## <a name="common-issues"></a>一般的な問題
@@ -71,6 +71,6 @@ ms.locfileid: "60149021"
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のステップでは、Azure で[ターゲット環境をセットアップ](physical-azure-set-up-target.md)します。

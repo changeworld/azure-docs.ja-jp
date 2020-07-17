@@ -1,25 +1,25 @@
 ---
-title: オフライン評価 - Personalizer
+title: オフライン評価方法の使用 - Personalizer
 titleSuffix: Azure Cognitive Services
-description: Personalizer サービスを使用するこの C# のクイック スタートではフィードバック ループを作成します。
+description: この記事では、オフライン評価を使用してご利用のアプリの有用性を測定し、学習ループを分析する方法について説明します。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 29caea481b1999086440db2021b86d949ce6cbc6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.topic: conceptual
+ms.date: 02/20/2020
+ms.author: diberry
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025615"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77623598"
 ---
 # <a name="offline-evaluation"></a>オフライン評価
 
-オフライン評価は、コードを変更したりユーザー エクスペリエンスに影響を与えたりすることなく、Personalizer サービスの有効性をテストおよび評価できるようにする方法です。 オフライン評価では、アプリケーションから Rank API に送信された過去のデータを使用して、さまざまな順位のパフォーマンスを比較します。
+オフライン評価は、コードを変更したりユーザー エクスペリエンスに影響を与えたりすることなく、Personalizer サービスの有効性をテストおよび評価できるようにする方法です。 オフライン評価では、アプリケーションから Rankおよび Reward API に送信された過去のデータを使用して、さまざまな順位のパフォーマンスを比較します。
 
 オフライン評価は、日付の範囲で実行されます。 設定できる範囲の終わりは、現在の時間までです。 範囲の始まりは、[データ保持期間](how-to-settings.md)として指定された日数を超えてはいけません。
 
@@ -48,7 +48,17 @@ ms.locfileid: "65025615"
 
 Personalizer では、オフライン評価プロセスを使用して、最適な学習ポリシーを自動的に発見できます。
 
-オフライン評価を実行した後に、現在のオンライン ポリシーと比較したその新しいポリシーを使用する Personalizer の比較有効性を確認できます。 その後、その学習ポリシーを適用して Personalizer ですぐに有効にすることも、将来の分析または使用のためにダウンロードすることもできます。
+オフライン評価を実行した後に、現在のオンライン ポリシーと比較したその新しいポリシーを使用する Personalizer の比較有効性を確認できます。 その後、その学習ポリシーをダウンロードし、[Models and Policy]\(モデルとポリシー\) パネルでアップロードすることによって、そのポリシーを適用し、Personalizer ですぐに有効にすることができます。 将来の分析または使用のためにダウンロードすることもできます。
+
+評価に含まれる現在のポリシー:
+
+| 学習の設定 | 目的|
+|--|--|
+|**オンライン ポリシー**| Personalizer で使用されている現在の学習ポリシー |
+|**ベースライン**|アプリケーションの既定値 (Rank 呼び出しで送信される最初のアクションによって決定される)|
+|**ランダム ポリシー**|指定されたアクションからランダムに選択したアクションを常に返す仮想的な優先度付け動作。|
+|**カスタム ポリシー**|評価の開始時にアップロードされる追加の学習ポリシー。|
+|**最適化されたポリシー**|最適化されたポリシーを検出するオプションを指定して評価を開始した場合は、それも比較され、ダウンロードしたりオンライン学習ポリシーにしたりして、現在のポリシーを置き換えることができます。|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>オフライン評価の結果の関連性を理解する
 
@@ -56,9 +66,9 @@ Personalizer では、オフライン評価プロセスを使用して、最適�
 
 ## <a name="how-offline-evaluations-are-done"></a>オフライン評価の実行方法
 
-オフライン評価は、**反事実的評価**と呼ばれる方法を使用して行われます。 
+オフライン評価は、**反事実的評価**と呼ばれる方法を使用して行われます。
 
-Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測することが不可能である (ユーザーが自分の見たものと異なる何かを見せられた場合に何が起こったのかを知ることができない) という仮定に基づき、測定された報酬からのみ学習します。 
+Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測することが不可能である (ユーザーが自分の見たものと異なる何かを見せられた場合に何が起こったのかを知ることができない) という仮定に基づき、測定された報酬からのみ学習します。
 
 これは、評価に使用される概念的なプロセスです。
 
@@ -70,11 +80,11 @@ Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.
@@ -92,10 +102,11 @@ Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測
 
 * アプリケーションまたはシステムは、より効果的な特徴に従って他のどのような追加特徴を提供することができますか。
 * 有効性が低いために削除できる特徴は何ですか。 有効性の低い特徴により、機械学習に "_ノイズ_" が追加されます。
-* 誤って含まれている特徴がありますか。 たとえば、個人を特定できる情報 (PII)、重複する ID などです。
+* 誤って含まれている特徴がありますか。 これらの例としては、ユーザーを特定できる情報、重複する ID などがあります。
 * 規制上または責任ある使用上の考慮事項のためにパーソナル化に使用すべきではない、望ましくない特徴はありますか。 望ましくない特徴の代用となる特徴 (よく似ている特徴、関連がある特徴など) はありますか。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[Personalizer を構成する](how-to-settings.md)
+[Personalizer の構成](how-to-settings.md)
+[オフライン評価の実行](how-to-offline-evaluation.md)[Personalizer のしくみ](how-personalizer-works.md)を理解する

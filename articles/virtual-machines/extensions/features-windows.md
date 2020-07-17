@@ -1,27 +1,26 @@
 ---
-title: Windows 用の Azure VM 拡張機能とその機能 | Microsoft Docs
+title: Windows 用の Azure VM 拡張機能とその機能
 description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066849"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -29,15 +28,15 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 
 この記事では、VM 拡張機能の概要と Azure VM 拡張機能を使用する場合の前提条件を示し、VM 拡張機能を検出、管理、および削除する方法についてのガイダンスを提供します。 構成がそれぞれ固有の VM 拡張機能が多数あるため、この記事では一般的な情報を示します。 拡張機能に固有の詳細情報については、それぞれの拡張機能のドキュメントをご覧ください。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="use-cases-and-samples"></a>ユース ケースとサンプル
 
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Windows 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](dsc-overview.md)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../log-analytics/log-analytics-azure-vm-extension.md)に関するページを参照してください。
-- Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](../windows/chef-automation.md)」を参照してください。
+- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../log-analytics/log-analytics-azure-vm-extension.md)に関するページを参照してください。
+- Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](../../chef/chef-automation.md)」を参照してください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 
@@ -55,25 +54,25 @@ Azure VM エージェントは、Azure VM と Azure ファブリック コント
 
 #### <a name="supported-agent-versions"></a>サポートされているエージェントのバージョン
 
-最適なエクスペリエンスを提供するために、エージェントの最小バージョンが用意されています。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。
+最適なエクスペリエンスを提供するために、エージェントの最小バージョンが用意されています。 詳細については、 [こちらの記事](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。
 
 #### <a name="supported-oses"></a>サポート対象の OS
 
-Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )を参照してください。
 
-一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'*" が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
+一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'* " が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
 
 #### <a name="network-access"></a>ネットワーク アクセス
 
-拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [サポートされている](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)バージョンのエージェントを使用する場合、エージェント通信用の Azure ファブリック コントローラーに通信をリダイレクトするためにエージェントを使用できるので、VM リージョン内の Azure Storage へのアクセスを許可する必要はありません。 サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
+拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [サポートされている](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)バージョンのエージェントを使用する場合は、エージェントを使用してエージェント通信用の Azure ファブリック コントローラーに通信をリダイレクトできるので、VM リージョン内の Azure Storage へのアクセスを許可する必要はありません (プライベート IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) での特権チャネル経由の HostGAPlugin 機能)。 サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
 
 > [!IMPORTANT]
-> ゲスト ファイアウォールを使用して *168.63.129.16* へのアクセスをブロックした場合、上記のアクセス許可とは関係なく、拡張機能はエラーになります。
+> ゲスト ファイアウォールまたはプロキシを使用して *168.63.129.16* へのアクセスをブロックした場合、上記とは関係なく、拡張機能はエラーになります。 ポート 80、443、32526 が必要です。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用してアクセスを許可できます。
 
-Windows ゲスト エージェントでは、エージェント トラフィックの要求をリダイレクトするために使用するプロキシ サーバーをサポートしていません。
+Windows ゲスト エージェントには、エージェントのトラフィック要求をリダイレクトするためのプロキシ サーバーのサポートはありません。つまり、Windows ゲスト エージェントでは、カスタムプロキシに依存して (ある場合)、IP 168.63.129.16 経由でインターネット上またはホスト上のリソースにアクセスできます。
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 
@@ -141,9 +140,9 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 `Set-AzVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳細については、[Set-AzVMExtension のリファレンス](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)を参照してください。
 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
-VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、**[拡張機能]** を選択してから、**[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
+VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、 **[拡張機能]** を選択してから、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
 
 次の例は、Azure Portal からの Microsoft Antimalware 拡張機能のインストールを示しています。
 
@@ -253,6 +252,10 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 }
 ```
 
+拡張機能を使用する Azure IaaS VM の証明書コンソールには、 **_Windows Azure CRP Certificate Generator_** という件名の証明書が表示されることがあります。 クラシック RDFE VM の場合、証明書の件名は **_Windows Azure Service Management for Extensions_** になります。
+
+これらの証明書により、拡張機能によって使用される保護された設定 (パスワードやその他の資格情報) の転送中、VM とそのホストの間の通信がセキュリティで保護されます。 証明書は Azure ファブリック コントローラーによって作られ、VM エージェントに渡されます。 VM を毎日起動し、停止する場合、ファブリック コントローラーによって新しい証明書が作成されることがあります。 証明書はコンピューターの個人用証明書ストアに保存されます。 これらの証明書は削除できます。 必要に応じて、VM エージェントにより証明書が再作成されます。
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>エージェントと拡張機能を更新する方法
 
 エージェントと拡張機能は、同じ更新メカニズムを共有します。 一部の更新プログラムでは、追加のファイアウォール規則を必要としません。
@@ -260,7 +263,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
 
 - データ ディスク
-- Extensions
+- 拡張機能
 - ブート診断コンテナー
 - ゲスト OS のシークレット
 - VM サイズ
@@ -350,7 +353,7 @@ AutoUpgradeMinorVersion     : True
 
 次のトラブルシューティング手順は、すべての VM 張機能に適用されます。
 
-1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.txt* で拡張機能がプロビジョニングされたときのアクティビティを確認します。
+1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
 2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します。
 
@@ -400,7 +403,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、VM を選択し、**[拡張機能]** を選択して、目的の拡張機能を選択します。
+拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、VM を選択し、 **[拡張機能]** を選択して、目的の拡張機能を選択します。
 
 ### <a name="rerun-vm-extensions"></a>VM 拡張機能の再実行
 
@@ -420,11 +423,11 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 ## <a name="common-vm-extensions-reference"></a>一般的な VM 拡張機能のリファレンス
 | 拡張機能の名前 | 説明 | 詳細情報 |
 | --- | --- | --- |
-| Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Windows でのカスタムのスクリプト拡張機能](custom-script-windows.md) |
+| Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Windows でのカスタムのスクリプト拡張機能](custom-script-windows.md) |
 | Windows での DSC 拡張機能 |PowerShell DSC (必要な状態の構成) 拡張機能 |[Windows での DSC 拡張機能](dsc-overview.md) |
 | Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure Diagnostics 拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM 拡張機能の詳細については、「[Azure 仮想マシンの拡張機能と機能の概要](overview.md)」をご覧ください。

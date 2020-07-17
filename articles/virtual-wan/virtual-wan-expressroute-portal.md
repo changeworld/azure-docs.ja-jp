@@ -1,88 +1,98 @@
 ---
-title: Azure Virtual WAN を使用して Azure 環境とオンプレミス環境への ExpressRoute 接続を作成する | Microsoft Docs
+title: チュートリアル - Azure Virtual WAN を使用して ExpressRoute 接続を作成する
 description: このチュートリアルでは、Azure Virtual WAN を使用して、Azure 環境とオンプレミス環境への ExpressRoute 接続を作成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 3e6ab347a86aa8d04c8ebd0382178b873c987300
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605432"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77209428"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する (プレビュー)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する
 
-このチュートリアルでは、Virtual WAN で ExpressRoute 回線と関連付けを使用して Azure リソースに接続する方法を示します。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
+このチュートリアルでは、Virtual WAN を使用し、ExpressRoute 回線経由で Azure リソースに接続する方法を示します。 Virtual WAN と Virtual WAN リソースの詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * vWAN を作成する
-> * ハブを作成する
-> * 回線を検索してハブに関連付ける
-> * 回線をハブを関連付ける
+> * 仮想 WAN を作成する
+> * ハブとゲートウェイを作成する
 > * VNet をハブに接続する
-> * 仮想 WAN を表示する
-> * リソースの正常性を表示する
-> * 接続を監視する
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
->
+> * 回線をハブ ゲートウェイに接続する
+> * 接続をテストする
+> * ゲートウェイ サイズを変更する
+> * 既定のルートをアドバタイズする
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+構成を開始する前に、以下の条件を満たしていることを確認します。
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* 接続先の仮想ネットワークが用意されていること。 オンプレミス ネットワークのどのサブネットも接続先の仮想ネットワークと重複していないことを確認してください。 Azure portal で仮想ネットワークを作成するには、[クイックスタート](../virtual-network/quick-create-portal.md)を参照してください。
 
-## <a name="register"></a>この機能を登録する
+* 仮想ネットワークに仮想ネットワーク ゲートウェイが存在しないこと。 仮想ネットワークにゲートウェイ (VPN または ExpressRoute のどちらか) が存在する場合は、すべてのゲートウェイを削除する必要があります。 代わりに、この構成では、仮想ネットワークが Virtual WAN ハブ ゲートウェイに接続されている必要があります。
 
-Virtual WAN を構成する前に、まずプレビューにサブスクリプションを登録する必要があります。 これを行わないと、ポータルで Virtual WAN を使用できません。 登録を行うには、サブスクリプション ID を記載したメールを **azurevirtualwan\@microsoft.com** までお送りください。 サブスクリプションが登録されると、メールが届きます。
+* ハブ リージョンの IP アドレス範囲を取得します。 このハブは、Virtual WAN によって作成および使用される仮想ネットワークです。 ハブに指定するアドレス範囲が、接続先の既存の仮想ネットワークと重複することはできません。 さらに、オンプレミスで接続するアドレス範囲と重複することもできません。 オンプレミス ネットワーク構成に含まれている IP アドレス範囲になじみがない場合は、それらの詳細を提供できるだれかと調整してください。
 
-**プレビュー考慮事項:**
+* ハブ ゲートウェイに接続するには、ExpressRoute 回線は Premium 回線でなければなりません。
 
-[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) がサポートされている国/地域では、ExpressRoute 回線を有効にする必要があります。
+* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="vnet"></a>1.仮想ネットワークの作成
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>仮想 WAN を作成する
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-## <a name="openvwan"></a>2.仮想 WAN を作成する
+1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
+2. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
+3. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 
-ブラウザーから、[Azure Portal (プレビュー)](https://aka.ms/azurevirtualwanpreviewfeatures) に移動し、Azure アカウントでサインインします。
+   ![WAN の作成](./media/virtual-wan-expressroute-portal/createwan.png)
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+   * **[サブスクリプション]** - 使用するサブスクリプションを選択します。
+   * **[リソース グループ]** - 新規に作成するか、既存のものを使用します。
+   * **[リソース グループの場所]** - ドロップダウンからリソースの場所を選択します。 WAN はグローバルなリソースであり、特定のリージョンに存在するものではありません。 ただし、作成する WAN リソースをより簡単に管理および検索するために、リージョンを選択する必要があります。
+   * **[名前]** - WAN に付ける名前を入力します。
+   * **[種類]** - **[標準]** を選択します。 Basic SKU を使用して ExpressRoute ゲートウェイを作成することはできません。
+4. フィールドへの入力を完了したら、 **[確認および作成]** を選択します。
+5. 検証に合格したら、 **[作成]** を選択して仮想 WAN を作成します。
 
-### <a name="getting-started-page"></a>[作業の開始] ページ
+## <a name="create-a-virtual-hub-and-gateway"></a><a name="hub"></a>仮想ハブとゲートウェイを作成する
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-gettingstarted-include.md)]
+仮想ハブは、仮想 WAN によって作成および使用される仮想ネットワークです。 VPN や ExpressRoute など、さまざまなゲートウェイを含めることができます。 このセクションでは、仮想ハブの ExpressRoute ゲートウェイを作成します。 [新しい仮想ハブを作成する](#newhub)ときにゲートウェイを作成するか、[既存のハブ](#existinghub)を編集し、そのゲートウェイを作成できます。 
 
-## <a name="hub"></a>3.ハブを作成する
+ExpressRoute ゲートウェイは 2 Gbps の単位でプロビジョニングされます。 1 スケール ユニット = 2 Gbps で最大 10 スケール ユニットをサポート = 20 Gbps。 仮想ハブとゲートウェイが完全に作成されるまでに約 30 分かかります。
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+### <a name="to-create-a-new-virtual-hub-and-a-gateway"></a><a name="newhub"></a>新しい仮想ハブとゲートウェイを作成するには
 
-## <a name="hub"></a>4.回線を検索してハブに関連付ける
+新しい仮想ハブを作成します。 ハブが作成されると、サイトをアタッチしていない場合でも、ハブに対して課金されます。
 
-1. vWAN を選択し、 **[仮想 WAN のアーキテクチャ]** で **[ExpressRoute 回線]** を選択します。
-1. ExpressRoute 回線が vWAN と同じサブスクリプション内にある場合は、お使いのサブスクリプションで **[ExpressRoute 回線の選択]** をクリックします。 
-1. プルダウンを使用して、ハブに関連付ける ExpressRoute を選択します。
-1. ExpressRoute 回線が同じサブスクリプション内に存在しない場合、または[認証キーとピア ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) が提供されている場合は、 **[Find a circuit redeeming an authorization key]\(認可キーを利用する回線の検出\)** を選択します
-1. 次の詳細を入力します。
-1. **承認キー** - 前述のように、回線の所有者によって生成されます。
-1. **ピア回線 URI** - 回線の所有者によって指定された回線 URI であり、回線の一意の識別子。
-1. **ルーティングの重み** - [ルーティングの重み](../expressroute/expressroute-optimize-routing.md)によって、異なるピアリング場所から複数の回線が同じハブに接続される場合に、特定のパスを優先させることができます
-1. **[Find circuit]\(回線の検索\)** をクリックし、回線を選択します (見つかった場合)。
-1. ドロップダウンから 1 つ以上のハブを選択し、 **[保存]** をクリックします。
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-## <a name="vnet"></a>5.VNet をハブに接続する
+### <a name="to-create-a-gateway-in-an-existing-hub"></a><a name="existinghub"></a>既存のハブでゲートウェイを作成するには
 
-この手順では、ハブと VNet の間にピアリング接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
+既存のハブを編集し、ゲートウェイを作成することもできます。
+
+1. 編集する仮想ハブに移動し、それを選択します。
+2. **[仮想ハブを編集する]** ページで、 **[ExpressRoute ゲートウェイを含める]** オンにします。
+3. **[確定]** を選択して変更を確定します。 ハブとハブ リソースが完全に作成されるまでに約 30 分かかります。
+
+   ![既存のハブ](./media/virtual-wan-expressroute-portal/edithub.png "ハブの編集")
+
+### <a name="to-view-a-gateway"></a>ゲートウェイを表示するには
+
+ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細を表示できます。 ハブに移動し、 **[ExpressRoute]** を選択し、ゲートウェイを表示します。
+
+![ゲートウェイの表示](./media/virtual-wan-expressroute-portal/viewgw.png "ゲートウェイの表示")
+
+## <a name="connect-your-vnet-to-the-hub"></a><a name="connectvnet"></a>VNet をハブに接続する
+
+このセクションでは、ハブと VNet の間にピアリング接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
 
 1. 仮想 WAN のページで、 **[仮想ネットワーク接続]** をクリックします。
 2. 仮想ネットワーク接続のページで、 **[+ 接続の追加]** をクリックします。
@@ -91,44 +101,58 @@ Virtual WAN を構成する前に、まずプレビューにサブスクリプ�
     * **[接続名]** - 接続に名前を付けます。
     * **[ハブ]** - この接続に関連付けるハブを選択します。
     * **[サブスクリプション]** - サブスクリプションを確認します。
-    * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することはできません。
+    * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することは (VPN と ExpressRoute のどちらでも) できません。
 
+## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>回線をハブ ゲートウェイに接続する
 
-## <a name="viewwan"></a>6.仮想 WAN を表示する
+ゲートウェイが作成されたら、[ExpressRoute 回線](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) をそれに接続できます。 ExpressRoute Global Reach 対応の場所にある ExpressRoute Premium 回線は、Virtual WAN ExpressRoute ゲートウェイに接続できます。
 
-1. 仮想 WAN に移動します。
-2. [概要] ページのマップ上の各ポイントは、ハブを表します。 任意のポイントにカーソルを置くと、ハブの正常性の概要が表示されます。
-3. ハブと接続のセクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、および入出力バイト数を表示できます。
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>回線をハブ ゲートウェイに接続するには
 
-## <a name="viewhealth"></a>7.リソースの正常性を表示する
+ポータルで、 **[仮想ハブ]、[接続]、[ExpressRoute]** ページの順に進みます。 サブスクリプションで ExpressRoute 回線にアクセスできる場合、回線の一覧に使用する回線が表示されます。 回線が表示されないが、承認キーとピア回線 URI が与えられている場合、回線を利用して接続できます。 「[承認キーを利用して接続するには](#authkey)」を参照してください。
 
-1. WAN に移動します。
-2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
+1. 回線を選択します。
+2. **[Connect circuit(s)]\(回線の接続\)** を選択します。
 
-## <a name="connectmon"></a>8.接続を監視する
+   ![回線の接続](./media/virtual-wan-expressroute-portal/cktconnect.png "回線の接続")
 
-Azure VM とリモート サイト間の通信を監視するための接続を作成します。 接続モニターを設定する方法については、[ネットワーク通信の監視](~/articles/network-watcher/connection-monitor.md)に関するページを参照してください。 ソース フィールドは Azure の VM IP で、宛先 IP はサイト IP です。
+### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>承認キーを利用して接続するには
 
-## <a name="cleanup"></a>9.リソースのクリーンアップ
+接続するために与えられた承認キーと回線 URI を使用します。
 
-これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+1. [ExpressRoute] ページで、 **[+Redeem authorization key]\(+承認キーを利用する\)** をクリックします。
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   ![利用](./media/virtual-wan-expressroute-portal/redeem.png "利用")
+2. [Redeem authorization key]\(承認キーを利用する\) ページで値を入力します。
 
-## <a name="next-steps"></a>次の手順
+   ![キー値を利用する](./media/virtual-wan-expressroute-portal/redeemkey2.png "キー値を利用する")
+3. **[追加]** を選択してキーを追加します。
+4. 回線を表示します。 利用された回線には、名前のみが表示されます (種類、プロバイダー、その他の情報はありません)。ユーザーのサブスクリプションとはことなるサブスクリプションにあるためです。
 
-このチュートリアルでは、以下の内容を学習しました。
+## <a name="to-test-connectivity"></a>接続をテストするには
 
-> [!div class="checklist"]
-> * vWAN を作成する
-> * ハブを作成する
-> * 回線を検索してハブに関連付ける
-> * 回線をハブを関連付ける
-> * VNet をハブに接続する
-> * 仮想 WAN を表示する
-> * リソースの正常性を表示する
-> * 接続を監視する
+回線接続が確立されたら、ハブ接続の状態に "このハブ" と示されます。これは、ハブ ExpressRoute ゲートウェイへの接続が確立されたことを意味します。 前に作成した VNet の VM など、ExpressRoute 回路の後にあるクライアントからの接続は約 5 分待ってからテストしてください。
+
+ExpressRoute ゲートウェイと同じハブでサイトを Virtual WAN VPN ゲートウェイに接続している場合、VPN と ExpressRoute のエンド ポイント間で双方向接続が与えられます。 動的ルーティング (BGP) がサポートされています。 ハブ内のゲートウェイの ASN は固定であり、この時点では編集できません。
+
+## <a name="to-change-the-size-of-a-gateway"></a>ゲートウェイのサイズを変更するには
+
+ExpressRoute ゲートウェイのサイズを変更する場合、ハブ内で ExpressRoute ゲートウェイを見つけ、ドロップダウンからスケール ユニットを選択します。 変更を保存します。 ハブ ゲートウェイの更新には約 30 分かかります。
+
+![ゲートウェイ サイズの変更](./media/virtual-wan-expressroute-portal/changescale.png "ゲートウェイ サイズの変更")
+
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>既定ルート 0.0.0.0/0 をエンドポイントにアドバタイズするには
+
+Azure 仮想ハブで既定ルート 0.0.0.0/0 を ExpressRoute エンド ポイントにアドバタイズする場合、[Propagate default route]\(既定ルートの伝達\) を有効にする必要があります。
+
+1. **[回線]、[...]、[接続の編集]** の順に選択します。
+
+   ![接続の編集](./media/virtual-wan-expressroute-portal/defaultroute1.png "接続の編集")
+
+2. **[有効にする]** を選択し、既定ルートを伝達します。
+
+   ![既定ルートの伝達](./media/virtual-wan-expressroute-portal/defaultroute2.png "既定ルートの伝達")
+
+## <a name="next-steps"></a>次のステップ
 
 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

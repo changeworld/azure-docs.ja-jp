@@ -1,19 +1,19 @@
 ---
 title: Azure Import/Export のエクスポート ジョブの修復 - v1 | Microsoft Docs
 description: Azure Import/Export サービスを使用して作成し実行したエクスポート ジョブを修復する方法について説明します。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756752"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74978017"
 ---
 # <a name="repairing-an-export-job"></a>Export ジョブの修復
 エクスポート ジョブが完了した後、オンプレミスで Microsoft Azure Import/Export ツールを実行して、次を行うことができます。  
@@ -33,7 +33,7 @@ ms.locfileid: "55756752"
 |パラメーター|説明|  
 |---------------|-----------------|  
 |**/r:<RepairFile\>**|必須。 修復の進行状況を追跡し、中断された修復を再開できる修復ファイルへのパスです。 各ドライブには修復ファイルが 1 つのみ必要です。 特定のドライブの修復を開始する際、まだ存在していない修復ファイルへのパスに渡されます。 中断された修復を再開するには、既存の修復ファイルの名前を指定してください。 ターゲット ドライブに対応する修復ファイルを必ず指定する必要があります。|  
-|**/logdir:<LogDirectory\>**|省略可能。 ログ ディレクトリです。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
+|**/logdir:<LogDirectory\>**|省略可能。 ログ ディレクトリ。 詳細ログ ファイルは、このディレクトリに書き込まれます。 ログ ディレクトリが指定されていない場合、現在のディレクトリがログ ディレクトリとして使用されます。|  
 |**/d:<TargetDirectory\>**|必須。 検証、修復するディレクトリです。 これは通常エクスポート ドライブのルート ディレクトリになりますが、エクスポートされたファイルのコピーを含むネットワーク ファイル共有にもできます。|  
 |**/bk:<BitLockerKey\>**|省略可能。 エクスポート ファイルが格納されている暗号のロックを解除する場合は BitLocker キーを指定する必要があります。|  
 |**/sn:<StorageAccountName\>**|必須。 エクスポート ジョブのストレージ アカウント名です。|  
@@ -83,7 +83,7 @@ Azure Import/Export を **RepairExport** オプションと一緒に使用して
   
 また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、[ サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)に関する記事をご覧ください。  
   
-次の例では、**/ManifestFile** パラメーターと **/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
+次の例では、 **/ManifestFile** パラメーターと **/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
@@ -150,7 +150,7 @@ G:\pictures\wild\canyon.jpg.properties
 
 検証に失敗したコンポーネントはすべて、ツールによってダウンロードされ、ドライブ上の同じファイルに書き換えられます。  
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 * [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

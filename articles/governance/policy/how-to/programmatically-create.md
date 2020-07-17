@@ -1,27 +1,20 @@
 ---
-title: ポリシーをプログラムで作成してコンプライアンス データを表示する
-description: この記事では、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
-author: DCtheGeek
-ms.author: dacoulte
+title: プログラムによるポリシーの作成
+description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 ms.date: 01/31/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: how-to
+ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231183"
 ---
-# <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
+# <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
-この記事では、ポリシーをプログラムで作成して管理する方法について説明します。 ポリシー定義は、リソースに対してさまざまなルールや効果を適用します。 適用することで、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
+この記事では、ポリシーをプログラムで作成して管理する方法について説明します。 Azure Policy の定義によって、さまざまなルールや効果がリソースに適用されます。 適用することで、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
 
-コンプライアンスについては、「[コンプライアンス データの取得](getting-compliance-data.md)」を参照してください。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+コンプライアンスについては、「[コンプライアンス データの取得](get-compliance-data.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,13 +24,13 @@ ms.locfileid: "59276492"
 
 1. Azure PowerShell モジュールを最新バージョンに更新します。 詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 最新バージョンについて詳しくは、[Azure PowerShell](https://github.com/Azure/azure-powershell/releases) をご覧ください。
 
-1. Azure PowerShell を使用して Policy Insights リソース プロバイダーを登録し、サブスクリプションがリソース プロバイダーで確実に動作することを検証します。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
+1. Azure PowerShell を使用して Azure Policy Insights リソース プロバイダーを登録し、サブスクリプションがリソース プロバイダーで確実に動作することを検証します。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+   リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
 1. Azure CLI をまだインストールしていない場合はインストールします。 最新バージョンは、「[Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)」で入手できます。
 
@@ -148,7 +141,7 @@ Azure Resource Manager PowerShell モジュールを使用したリソース ポ
 
    前の {subscriptionId} をサブスクリプションの ID と置き換えるか、{managementGroupId} を[管理部グループ](../../management-groups/overview.md)の ID と置き換えます。
 
-   クエリの構造の詳細については、「[Policy Definitions – Create or Update](/rest/api/resources/policydefinitions/createorupdate)」 (ポリシー定義 - 作成または更新) および「[Policy Definitions – Create or Update At Management Group](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)」 (ポリシー定義 - 管理グループでの作成または更新) をご覧ください。
+   クエリの構造の詳細については、「[Azure Policy Definitions – Create or Update (Azure Policy の定義 - 作成または更新)](/rest/api/resources/policydefinitions/createorupdate)」および「[Policy Definitions – Create or Update At Management Group (ポリシー定義 - 管理グループでの作成または更新)](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)」をご覧ください。
 
 次の手順を使用してポリシー割り当てを作成し、ポリシー定義をリソース グループ レベルに割り当てます。
 
@@ -230,7 +223,7 @@ Azure Resource Manager PowerShell モジュールを使用したリソース ポ
    - サブスクリプション - `/subscriptions/{subID}`
    - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-ポリシー定義 ID は、PowerShell で次のコマンドを実行して取得できます。
+Azure Policy の定義 ID は、PowerShell で次のコマンドを実行して取得できます。
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -244,12 +237,12 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 
 Azure CLI を使用してリソース ポリシーを管理する方法の詳細については、[Azure CLI リソース ポリシー](/cli/azure/policy?view=azure-cli-latest)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事のコマンドとクエリの詳細については、次の記事をご覧ください。
 
 - [Azure REST API リソース](/rest/api/resources/)
 - [Azure PowerShell モジュール](/powershell/module/az.resources/#policies)
 - [Azure CLI Policy コマンド](/cli/azure/policy?view=azure-cli-latest)
-- [Policy Insights Resource Provider REST API リファレンス](/rest/api/policy-insights)
+- [Azure Policy Insights Resource Provider REST API リファレンス](/rest/api/policy-insights)
 - [Azure 管理グループでリソースを整理する](../../management-groups/overview.md)

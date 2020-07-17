@@ -1,25 +1,25 @@
 ---
 title: チュートリアル:カスタム ロゴ検出器を使用して Azure サービスを認識する - Custom Vision
-titlesuffix: Azure Cognitive Services
-description: このチュートリアルでは、ロゴ検出シナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 Custom Vision を他のコンポーネントと共に使用してエンド ツー エンドのアプリケーションを提供する方法を学習します。
+titleSuffix: Azure Cognitive Services
+description: このチュートリアルでは、ロゴ検出シナリオの一部として Custom Vision を使用するサンプル アプリについて見ていきます。 Custom Vision を他のコンポーネントと共に使用してエンド ツー エンドのアプリケーションを提供する方法を学習します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827650"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81403663"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
-このチュートリアルでは、より大きなシナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 モバイル プラットフォーム用の Xamarin.Forms アプリである AI Visual Provision アプリは、Azure サービスのロゴの写真を分析した後、実際のサービスをユーザーの Azure アカウントにデプロイします。 ここでは、このアプリで Custom Vision を他のコンポーネントと共に使用して便利なエンド ツー エンドのアプリケーションを提供する方法を学習します。 自分でアプリのシナリオ全体を実行するか、設定の Custom Vision 部分のみを完成させて、アプリでこの部分がどのように使用されているかを調べます。
+このチュートリアルでは、より大きなシナリオの一部として Custom Vision を使用するサンプル アプリについて見ていきます。 モバイル プラットフォーム用の Xamarin.Forms アプリである AI Visual Provision アプリは、Azure サービスのロゴの写真を分析した後、実際のサービスをユーザーの Azure アカウントにデプロイします。 ここでは、このアプリで Custom Vision を他のコンポーネントと共に使用して便利なエンド ツー エンドのアプリケーションを提供する方法を学習します。 自分でアプリのシナリオ全体を実行するか、設定の Custom Vision 部分のみを完成させて、アプリでこの部分がどのように使用されているかを調べることができます。
 
 ここでは、次の操作方法について説明します。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="get-the-source-code"></a>ソース コードを入手する
 
-提供されている Web アプリを使用する場合は、GitHub 上の [AI Visual Provision](https://github.com/Microsoft/AIVisualProvision) リポジトリからアプリのソース コードを複製またはダウンロードします。 Visual Studio で *Source/VisualProvision.sln* ファイルを開きます。 後で、アプリを実行できるように、一部のプロジェクト ファイルを編集します。
+提供されている Web アプリを使用する場合は、GitHub 上の [AI Visual Provision](https://github.com/Microsoft/AIVisualProvision) リポジトリからアプリのソース コードをクローンまたはダウンロードします。 Visual Studio で *Source/VisualProvision.sln* ファイルを開きます。 後で、アプリを実行できるように、一部のプロジェクト ファイルを編集します。
 
 ## <a name="create-an-object-detector"></a>オブジェクト検出器を作成する
 
@@ -51,41 +51,41 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次に、Azure サービスのロゴの画像をアップロードして、手動でタグ付けすることで、ロゴ検出アルゴリズムをトレーニングします。 AIVisualProvision リポジトリには、開発者が使用できるトレーニング画像のセットが含まれています。 Web サイトで、 **[Training Images]\(トレーニング画像\)** タブの **[Add images]\(画像の追加\)** を選択します。次に、リポジトリの **Documents/Images/Training_DataSet** フォルダーに移動します。 各画像内のロゴに手動でタグを付ける必要があるため、このプロジェクトをテストするだけの場合は画像のサブセットのみをアップロードしてもかまいません。 使用する予定のタグごとに、少なくとも 15 個のインスタンスをアップロードします。
 
-トレーニング画像をアップロードしたら、ディスプレイ上の最初の 1 つを選択します。 これにより、タグ付けウィンドウが表示されます。 各画像内の各ロゴに対して四角形を描画し、タグを割り当てます。 
+トレーニング画像をアップロードしたら、ディスプレイ上の最初の 1 つを選択します。 タグ付けウィンドウが表示されます。 各画像内の各ロゴに対して四角形を描画し、タグを割り当てます。 
 
 ![Custom Vision Web サイトでのロゴのタグ付け](media/azure-logo-tutorial/tag-logos.png)
 
 このアプリは、特定のタグ文字列で機能するように構成されています。 *Source\VisualProvision\Services\Recognition\RecognitionService.cs* ファイル内の定義を参照してください。
 
-[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
+[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?name=snippet_constants)]
 
 1 つの画像にタグを付けたら、右へ移動して次の画像にタグを付けます。 完了したら、タグ付けウィンドウを閉じます。
 
 ## <a name="train-the-object-detector"></a>オブジェクト検出器をトレーニングする
 
-左側のウィンドウで、 **[Tags]\(タグ\)** スイッチを **[Tagged]\(タグ付き\)** に設定し、画像を表示します。 次に、モデルをトレーニングするために、ページ上部にある緑色のボタンを選択します。 これで、新しい画像内の同じタグを認識するようにアルゴリズムに指示します。 さらに、既存の画像のいくつかでモデルがテストされ、精度スコアが生成されます。
+左側のウィンドウで、 **[Tags]\(タグ\)** スイッチを **[Tagged]\(タグ付き\)** に設定し、画像を表示します。 次に、モデルをトレーニングするために、ページ上部にある緑色のボタンを選択します。 このアルゴリズムによって、新しい画像内の同じタグを認識するようにトレーニングされます。 さらに、既存の画像のいくつかでモデルがテストされ、精度スコアが生成されます。
 
 ![Custom Vision Web サイトの [Training Images]\(トレーニング画像\) タブ。このスクリーンショットでは、トレーニング ボタンが枠で囲まれている](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>予測 URL を取得する
 
-モデルのトレーニングが完了したら、それをアプリに統合する準備が整ったことになります。 これを行うには、エンドポイント URL (アプリが照会するモデルのアドレス) と (アプリに予測要求へのアクセスを許可するための) 予測キーを取得する必要があります。 **[Performance]\(パフォーマンス\)** タブで、ページの上部にある **[Prediction URL]\(予測 URL\)** を選択します。
+モデルのトレーニングが完了したら、それをアプリに統合する準備が整ったことになります。 エンドポイント URL (アプリでクエリが実行されるモデルのアドレス) と (アプリに予測要求へのアクセスを許可するための) 予測キーを取得する必要があります。 **[Performance]\(パフォーマンス\)** タブで、ページの上部にある **[Prediction URL]\(予測 URL\)** を選択します。
 
 ![URL アドレスと API キーを示す Prediction API ウィンドウが表示されている Custom Vision Web サイト](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-画像ファイルの URL と **Prediction-Key** の値を *Source\VisualProvision\AppSettings.cs* ファイル内の適切なフィールドにコピーします。
+エンドポイントの URL と **Prediction-Key** の値を *Source\VisualProvision\AppSettings.cs* ファイル内の適切なフィールドにコピーします。
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
 ## <a name="examine-custom-vision-usage"></a>Custom Vision の使用方法を調べる
 
 *Source/VisualProvision/Services/Recognition/CustomVisionService.cs* ファイルを開き、Custom Vision キーとエンドポイント URL がアプリでどのように使用されているかを確認します。 **PredictImageContentsAsync** メソッドは、画像ファイルのバイト ストリームを (非同期タスク管理用の) キャンセル トークンと共に受け取ると、Custom Vision の予測 API を呼び出して、その予測の結果を返します。 
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?name=snippet_prediction)]
 
 この結果は **PredictionResult** インスタンスの形式になっていて、これ自体に **Prediction** インスタンスのリストが含まれます。 **Prediction** には、検出されたタグと、その画像内の境界ボックスの位置が含まれます。
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
 アプリによるこのデータの処理方法について学ぶ場合は、**GetResourcesAsync** メソッドから始めてください。 このメソッドは、*Source/VisualProvision/Services/Recognition/RecognitionService.cs* ファイルで定義されています。  
 
@@ -99,7 +99,7 @@ Computer Vision サービスに登録して、キーとエンドポイント URL
 
 次に、*Source\VisualProvision\AppSettings.cs* ファイルを開き、`ComputerVisionEndpoint` および `ComputerVisionKey` 変数に適切な値を入力します。
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
@@ -107,15 +107,15 @@ Computer Vision サービスに登録して、キーとエンドポイント URL
 
 サービス プリンシパルは、ここで示すように、Azure Cloud Shell または Azure CLI を使用して作成できます。 開始するには、サインインして、使用するサブスクリプションを選択します。
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
 ```
 
-次に、サービス プリンシパルを作成します  (このプロセスは、完了するまでにしばらく時間がかかる場合があります)。
+次に、サービス プリンシパルを作成します (このプロセスは、完了するまでにしばらく時間がかかる場合があります)。
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 
@@ -133,9 +133,9 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 `clientId` と `tenantId` の値を書き留めておきます。 これらを *Source\VisualProvision\AppSettings.cs* ファイルの適切なフィールドに追加します。
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 これで、以下に対するアクセス権がアプリに付与されました。
 
@@ -160,7 +160,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
     
     ![サービス プリンシパルの資格情報のフィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-credentials.png)
 
-1. 次の画面で、ドロップダウン メニューから自分の Azure サブスクリプションを選択します  (このメニューには、サービス プリンシパルでアクセスできるすべてのサブスクリプションが含まれているはずです)。 **[Continue]\(続行\)** を選択します。 この時点で、デバイスのカメラと写真ストレージへのアクセスを許可するように求めるメッセージがアプリに表示される場合があります。 アクセス許可を付与します。
+1. 次の画面で、ドロップダウン メニューから自分の Azure サブスクリプションを選択します (このメニューには、サービス プリンシパルでアクセスできるすべてのサブスクリプションが含まれているはずです)。 **[Continue]\(続行\)** を選択します。 この時点で、デバイスのカメラと写真ストレージへのアクセスを許可するように求めるメッセージがアプリに表示される場合があります。 アクセス許可を付与します。
 
     ![ターゲット Azure サブスクリプションのドロップダウン フィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-az-subscription.png)
 
@@ -171,13 +171,13 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
     ![デプロイ リージョンとリソース グループのフィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このシナリオのすべての手順を実行し、アプリを使用して Azure サービスを自分のアカウントにデプロイした場合は、[Azure portal](https://ms.portal.azure.com/) に移動します。 そこで、使用しないサービスを取り消します。
 
 今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料試用版では、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Custom Vision サービスを使用してモバイル カメラの画像内のロゴを検出する、フル機能の Xamarin.Forms アプリを設定し、詳しく調べました。 次に、自分のアプリ用に作成する Custom Vision モデルを強力かつ正確なモデルにできるように、Custom Vision モデルを構築するためのベスト プラクティスを学習してください。
 

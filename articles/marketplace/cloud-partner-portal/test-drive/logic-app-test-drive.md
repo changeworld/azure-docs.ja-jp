@@ -1,35 +1,28 @@
 ---
-title: ロジック アプリの体験版 | Microsoft Docs
+title: Logic Apps の体験版 | Azure Marketplace
 description: Dynamics AX/CRM インスタンスまたは Azure 以外の他のリソースと接続する体験版を作成する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.author: dsindona
+ms.openlocfilehash: 766f893d71ca0830fe8b69c50145603c6544cc3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278384"
 ---
-<a name="logic-app-test-drive"></a>ロジック アプリの体験版
+<a name="logic-app-test-drive"></a>Logic Apps の体験版
 ====================
 
 この記事は、AppSource にオファーがあり、Dynamics AX/CRM インスタンスまたは Azure 以外の他のリソースと接続する体験版を作成しようと考えている、発行元を対象としたものです。
 
-<a name="how-to-build-a-logic-app-test-drive"></a>ロジック アプリの体験版を作成する方法
+<a name="how-to-build-a-logic-app-test-drive"></a>Logic Apps の体験版を作成する方法
 -----------------------------------
 
-ロジック アプリの体験版に関するドキュメントは、現在はまだ、[Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) と [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) に関するものが GitHub にあります。詳しくはそちらをご覧ください。
+Logic Apps の体験版に関するドキュメントは、現在はまだ、[Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) と [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) に関するものが GitHub にあります。詳しくはそちらをご覧ください。
 
 <a name="how-to-publish-a-test-drive"></a>体験版の発行方法
 ---------------------------
@@ -38,9 +31,9 @@ ms.locfileid: "58338600"
 
 ![体験版の機能を有効にする](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。[はい] を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。**[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
+最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。[はい] を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。 **[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
 
-*メモ*:ユーザーがアクティブに使用している体験版がある場合、それらの体験版はセッションの有効期限が切れるまで引き続き実行します。
+*注*:ユーザーがアクティブに使用している体験版がある場合、それらの体験版はセッションの有効期限が切れるまで引き続き実行します。
 
 ### <a name="details"></a>詳細
 
@@ -48,7 +41,7 @@ ms.locfileid: "58338600"
 
 ![体験版の詳細](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**[Description]\(説明\) -** *[必須フィールド]* 体験版に関する主要な説明をここに記述します。 顧客はここを読んで、体験版でカバーされている製品のシナリオを理解します。 
+**[説明] -** *[必須フィールド]* 体験版に関する主要な説明をここに記述します。 顧客はここを読んで、体験版でカバーされている製品のシナリオを理解します。 
 
 **[User Manual]\(ユーザー マニュアル\) -** *[必須フィールド]* 体験版エクスペリエンスの詳細なチュートリアルです。 顧客はこれを開き、体験版で顧客に行ってもらいたいことの正確な手順を把握します。 この内容は簡単に理解して実行できるものにすることが重要です。 (.pdf ファイルにする必要があります)
 
@@ -64,27 +57,27 @@ ms.locfileid: "58338600"
 
 ### <a name="technical-configuration"></a>技術的構成
 
-次のセクションでは、体験版ロジック アプリを構成し、体験版インスタンスの動作を具体的に定義します。
+次のセクションでは、 Logic Apps の体験版を構成し、体験版インスタンスの動作を具体的に定義します。
 
 ![体験版の技術的構成](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **[Region]\(リージョン\)** - *[必須フィールド]* 選択したリージョンに体験版ロジック アプリのリソースがデプロイされます。
+- **[Region]\(リージョン\)**  -  *[必須フィールド]* 選択したリージョンに Logic Apps の体験版のリソースがデプロイされます。
 
-    *注:* ロジック アプリに、リージョンに格納されるカスタム リソースがある場合は、ここで必ずそのリージョンを選択します。 これを行う最善の方法としては、**ポータルでお使いの Azure サブスクリプションにローカルにロジック アプリを完全にデプロイし、動作を確認**した後で、この値を入力します。
+    *注:* Logic Apps に、リージョンに格納されるカスタム リソースがある場合は、ここで必ずそのリージョンを選択します。 これを行う最善の方法としては、**ポータルでお使いの Azure サブスクリプションにローカルに Logic Apps を完全にデプロイし、動作を確認**した後で、この値を入力します。
 
-- **[Maximum Concurrent Test Drives]\(同時に実行する体験版の最大数\)** - *[必須フィールド]* 選択したリージョンごとに既にデプロイされていてアクセスを待っている体験版インスタンスの数です。 顧客は、デプロイを待つことなくすぐにこの体験版にアクセスできます。
+- **[Maximum Concurrent Test Drives]\(同時に実行する体験版の最大数\)**  -  *[必須フィールド]* 選択したリージョンごとに既にデプロイされていてアクセスを待っている体験版インスタンスの数です。 顧客は、デプロイを待つことなくすぐにこの体験版にアクセスできます。
 
     *注:* ウェビナー/クラスで、N 人の受講者全員に体験版を提供したい場合は、N 個のホット インスタンスで発行した後、クラスが終了したら、再発行して通常の個数のホット インスタンスに戻すことをお勧めします。
 
-- **[Test Drive Duration (hours)]\(体験版期間 (時間)\) -** *[必須フィールド]* 体験版をアクティブなままにしておく期間の時間数です。 この期間が終わると、体験版は自動的に終了します。
+- **[体験版の期間 (時間)] -** *[必須フィールド]* 体験版をアクティブなままにしておく期間の時間数です。 この期間が終わると、体験版は自動的に終了します。
 
-- **[Azure Resource Group Name]\(Azure リソース グループ名\) -** *[必須フィールド]* ロジック アプリの体験版を保存するリソース グループの名前を指定します。
+- **[Azure リソース グループの名前] -** *[必須フィールド]* Logic Apps の体験版を保存するリソース グループの名前を指定します。
 
-- **[Assign Logic App Name]\(ロジック アプリ名の割り当て\) -** *[必須フィールド]* 顧客が取得する前に体験版でユーザーを割り当てるために使用するロジック アプリを指定します。そのロジック アプリの名前を入力します。 このファイルが上記のリソース グループに保存されることを確認します。
+- **[Assign Logic App Name]\(Logic Apps 名の割り当て\) -** *[必須フィールド]* 顧客が取得する前に体験版でユーザーを割り当てるために使用する Logic Apps を指定します。その Logic Apps の名前を入力します。 このファイルが上記のリソース グループに保存されることを確認します。
 
-- **[Deprovision Logic App Name]\(ロジック アプリ名のプロビジョニング解除\) -** *[必須フィールド]* 体験版で作成されたすべてのリソースをプロビジョニング解除するためのロジック アプリの名前を指定します。 このファイルが上記のリソース グループに保存されることを確認します。
+- **[Deprovision Logic App Name]\(Logic Apps 名のプロビジョニング解除\) -** *[必須フィールド]* 体験版で作成されたすべてのリソースをプロビジョニング解除するための Logic Apps の名前を指定します。 このファイルが上記のリソース グループに保存されることを確認します。
 
-- **[Access Information]\(アクセス情報\) -** *[必須フィールド]* 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}**)、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
+- **[Access Information]\(アクセス情報\) -** *[必須フィールド]* 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}** )、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
 
 ### <a name="test-drive-deployment-subscription-details"></a>体験版デプロイ サブスクリプションの詳細
 
@@ -92,12 +85,12 @@ ms.locfileid: "58338600"
 
 ![体験版デプロイ サブスクリプションの詳細](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**[Azure Subscription ID]\(Azure サブスクリプション ID\)** *[必須フィールド]* Azure サービスと Azure portal へのアクセス権を付与します。 このサブスクリプションで、リソースの使用状況が報告され、サービスが課金されます。 体験版 "**専用**" の Azure サブスクリプションがまだない場合は、先に進んで作成してください。 Azure サブスクリプション ID を確認するには、Azure portal にログインし、左側のメニューでサブスクリプションに移動します。
+**[Azure サブスクリプション ID]** *[必須フィールド]* Azure サービスと Azure portal へのアクセス権を付与します。 このサブスクリプションで、リソースの使用状況が報告され、サービスが課金されます。 体験版 "**専用**" の Azure サブスクリプションがまだない場合は、先に進んで作成してください。 Azure サブスクリプション ID を確認するには、Azure portal にログインし、左側のメニューでサブスクリプションに移動します。
 (例: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Azure サブスクリプション](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**[Azure AD Tenant ID]\(Azure AD テナント ID\)** *[必須フィールド]* 使用できるテナント ID が既にある場合は、[プロパティ] -\> [ディレクトリ ID] の下で確認できます。
+**[Azure AD テナント ID]** *[必須フィールド]* 使用できるテナント ID が既にある場合は、[プロパティ] -\> [ディレクトリ ID] の下で確認できます。
 
 ![Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
@@ -132,7 +125,7 @@ ms.locfileid: "58338600"
 1. **共同作成者**としてロールを設定します。
 1. Azure AD アプリケーションの名前を入力し、ロールを割り当てるアプリケーションを選択します。
     ![Azure Active Directory のアクセス許可](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 **[Azure AD App Key]\(Azure AD アプリ キー\)** *[必須フィールド]* 最後のフィールドでは、認証キーを生成します。 キーの下で、キーの説明を追加し、期間を無期限に設定して、[保存] を選択します。 キーの有効期限が切れないようにすることが**重要**です。切れると、運用環境の体験版が中断されます。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
 
@@ -142,7 +135,7 @@ ms.locfileid: "58338600"
 > 現在、Base64 でエンコードされたキーを生成しないため、Azure アプリケーション登録プレビューを使用することはできません。
 
 
-<a name="next-steps"></a>次の手順
+<a name="next-steps"></a>次のステップ
 ----------
 
 体験版のすべてのフィールドを設定したので、オファーを**再発行**します。 体験版が認定プロセスに合格したら、オファーの**プレビュー**で顧客エクスペリエンスを広範にテストする必要があります。 UI で体験版を開始し、体験版が完全に正しくデプロイされていることを確認します。

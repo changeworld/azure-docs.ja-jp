@@ -1,26 +1,17 @@
 ---
-title: Node.js (MEAN.js) と MongoDB - Azure App Service | Microsoft Docs
-description: MongoDB 接続文字列を使用して Cosmos DB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。 このチュートリアルでは MEAN.js を使用します。
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
+title: チュートリアル:Node.js アプリと MongoDB
+description: Azure (Cosmos DB) の MongoDB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。 このチュートリアルでは MEAN.js を使用します。
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138893"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085599"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>チュートリアル:Azure で Node.js と MongoDB のアプリを構築する
 
@@ -96,17 +87,12 @@ npm start
 
 アプリが完全に読み込まれると、次のようなメッセージが表示されます。
 
-```console
+<pre>
 --
 MEAN.JS - Development Environment
 
-Environment:     development
-Server:          http://0.0.0.0:3000
-Database:        mongodb://localhost/mean-dev
-App version:     0.5.0
-MEAN.JS version: 0.5.0
---
-```
+Environment:     development Server:        http://0.0.0.0:3000 Database:        mongodb://localhost/mean-dev App version:   0.5.0 MEAN.JS version:0.5.0 --
+</pre>
 
 ブラウザーで `http://localhost:3000` にアクセスします。 上部のメニューの **[サインアップ]** をクリックし、テスト ユーザーを作成します。 
 
@@ -129,7 +115,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 このチュートリアルでは、MongoDB に [Azure Cosmos DB](/azure/documentdb/) を使用します。 Cosmos DB は MongoDB のクライアント接続をサポートします。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
@@ -141,7 +127,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 Cloud Shell で、[`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) コマンドを使用して Cosmos DB アカウントを作成します。
 
-次のコマンドで、*\<cosmosdb_name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
+次のコマンドで、 *\<cosmosdb_name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
@@ -151,7 +137,7 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
 
 Cosmos DB アカウントが作成されると、Azure CLI によって次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "consistencyPolicy":
   {
@@ -160,12 +146,12 @@ Cosmos DB アカウントが作成されると、Azure CLI によって次の例
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb_name&gt;.documents.azure.com:443/",
   "failoverPolicies": 
   ...
-  < Output truncated for readability >
+  &lt; Output truncated for readability &gt;
 }
-```
+</pre>
 
 ## <a name="connect-app-to-production-mongodb"></a>アプリを運用 MongoDB に接続する
 
@@ -181,23 +167,23 @@ az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 
 Azure CLI によって次の例のような情報が表示されます。
 
-```json
+<pre>
 {
   "primaryMasterKey": "RS4CmUwzGRASJPMoc0kiEvdnKmxyRILC9BWisAYh3Hq4zBYKr0XQiSE4pqx3UchBeO4QRCzUt1i7w0rOkitoJw==",
   "primaryReadonlyMasterKey": "HvitsjIYz8TwRmIuPEUAALRwqgKOzJUjW22wPL2U8zoMVhGvregBkBk9LdMTxqBgDETSq7obbwZtdeFY7hElTg==",
   "secondaryMasterKey": "Lu9aeZTiXU4PjuuyGBbvS1N9IRG3oegIrIh95U6VOstf9bJiiIpw3IfwSUgQWSEYM3VeEyrhHJ4rn3Ci0vuFqA==",
   "secondaryReadonlyMasterKey": "LpsCicpVZqHRy7qbMgrzbRKjbYCwCKPQRl0QpgReAOxMcggTvxJFA94fTi0oQ7xtxpftTJcXkjTirQ0pT7QFrQ=="
 }
-```
+</pre>
 
 `primaryMasterKey` の値をコピーします。 この情報は、次の手順に必要です。
 
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
-ローカルの MEAN.js リポジトリの "_config/env/_" フォルダーに、"_local-production.js_" という名前のファイルを作成します。 既定では、"_.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
+ローカルの MEAN.js リポジトリの "_config/env/_ " フォルダーに、"_local-production.js_" という名前のファイルを作成します。 既定では、" _.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
 
-ここに次のコードをコピーします。 2 つの "*\<cosmosdb_name>*" プレースホルダーを Cosmos DB データベース名で置換し、"*\<primary_master_key>*" プレースホルダーを前の手順でコピーしたキーで置換します。
+ここに次のコードをコピーします。 2 つの " *\<cosmosdb_name>* " プレースホルダーを Cosmos DB データベース名で置換し、" *\<primary_master_key>* " プレースホルダーを前の手順でコピーしたキーで置換します。
 
 ```javascript
 module.exports = {
@@ -207,7 +193,7 @@ module.exports = {
 };
 ```
 
-[Cosmos DB では SSL が必須](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは必須です。 
+`ssl=true` オプションは、[接続文字列の要件](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)のために必要です。 
 
 変更を保存します。
 
@@ -234,16 +220,12 @@ node server.js
 
 アプリが読み込まれたら、運用環境で実行されていることを確認します。
 
-```console
+<pre>
 --
 MEAN.JS
 
-Environment:     production
-Server:          http://0.0.0.0:8443
-Database:        mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
-App version:     0.5.0
-MEAN.JS version: 0.5.0
-```
+Environment:     production Server:        http://0.0.0.0:8443 Database:        mongodb://&lt; cosmosdb_name&gt;:&lt; primary_master_key&gt;@&lt; cosmosdb_name&gt;.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false App version:   0.5.0 MEAN.JS version:0.5.0
+</pre>
 
 ブラウザーで `http://localhost:8443` にアクセスします。 上部のメニューの **[サインアップ]** をクリックし、テスト ユーザーを作成します。 ユーザーの作成とサインインに成功すると、アプリが Azure の Cosmos DB データベースにデータを書き込みます。 
 
@@ -272,7 +254,7 @@ MEAN.JS version: 0.5.0
 
 アプリ設定を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 
 
-次の例では、Azure アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>*、*\<cosmosdb_name>*、および *\<primary_master_key>* プレースホルダーを置き換えます。
+次の例では、Azure アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>* 、 *\<cosmosdb_name>* 、および *\<primary_master_key>* プレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -293,7 +275,7 @@ db: {
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
@@ -309,9 +291,9 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
-``` 
+To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
+ * [new branch]      master -> master
+</pre>
 
 デプロイ プロセスにより、`npm install` の後、[Gulp](https://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
 
@@ -320,7 +302,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 この方法を使用して、Git ベースのデプロイに任意の手順を追加できます。 任意の時点で Azure アプリを再起動しても、これらの自動タスクが App Service によって再び実行されることはありません。
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照 
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する 
 
 Web ブラウザーを使用して、デプロイされたアプリを参照します。 
 
@@ -447,7 +429,7 @@ node server.js
 
 ブラウザーで `http://localhost:8443` にアクセスし、サインインしていることを確認します。
 
-**[管理者] > [Manage Articles]\(記事の管理\)** を選択し、**+** ボタンを選択して記事を追加します。
+**[管理者] > [Manage Articles]\(記事の管理\)** を選択し、 **+** ボタンを選択して記事を追加します。
 
 新しい `Comment` テキスト ボックスが表示されます。
 
@@ -484,7 +466,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 `Ctrl+C` キーを押して、任意のタイミングでログのストリーミングを停止します。 
 
-## <a name="manage-your-azure-app"></a>Azure アプリの管理
+## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
 [Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
 
@@ -499,7 +481,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 

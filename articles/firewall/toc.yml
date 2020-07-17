@@ -5,16 +5,27 @@
     - name: Azure Firewall とは
       href: overview.md
 - name: チュートリアル
-  expanded: true
   items:
     - name: デプロイと構成
       href: tutorial-firewall-deploy-portal.md
     - name: ハイブリッド ネットワークでのデプロイ
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: DNAT で受信トラフィックをフィルター処理する
       href: tutorial-firewall-dnat.md
     - name: 診断ログの監視
       href: tutorial-diagnostics.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: IP グループを使用したデプロイ - ARM テンプレート
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
+    - name: 複数のアドレスを使用したデプロイ - ARM テンプレート
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
+    - name: Availability Zones を使用したデプロイ - ARM テンプレート
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -25,7 +36,7 @@
   items:
     - name: FQDN のタグ
       href: fqdn-tags.md
-    - name: インフラストラクチャの FQDN
+    - name: インフラストラクチャ FQDN
       href: infrastructure-fqdns.md
     - name: ログとメトリック
       href: logs-and-metrics.md
@@ -35,18 +46,42 @@
       href: rule-processing.md
     - name: サービス タグ
       href: service-tags.md
-- name: ハウツー ガイド
+    - name: IP グループ
+      href: ip-groups.md
+    - name: 強制トンネリング
+      href: forced-tunneling.md
+    - name: 認定
+      href: compliance-certifications.md
+    - name: 中央管理
+      href: central-management.md
+    - name: リモート作業のサポート
+      href: remote-work-support.md
+- name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ
       href: deploy-ps.md
-    - name: テンプレートを使用したデプロイ
-      href: deploy-template.md
+    - name: ハイブリッド ネットワークでのデプロイ - PowerShell
+      href: tutorial-hybrid-ps.md
+    - name: Azure CLI を使用したデプロイ
+      href: deploy-cli.md
+    - name: 複数のパブリック IP を使用したデプロイ
+      href: deploy-multi-public-ip-powershell.md
+    - name: Availability Zones を使用したデプロイ
+      href: deploy-availability-zone-powershell.md
     - name: Load Balancer との統合
       href: integrate-lb.md
+    - name: SQL FQDN を使用したアプリケーション規則
+      href: sql-fqdn-filtering.md
+    - name: SNAT プライベート範囲
+      href: snat-private-range.md
+    - name: IP グループの作成
+      href: create-ip-group.md
+    - name: Windows Virtual Desktop の保護
+      href: protect-windows-virtual-desktop.md
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
@@ -60,13 +95,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: firewall-faq.md
     - name: テンプレートの作成
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

@@ -1,25 +1,20 @@
 ---
-title: Azure CLI のサンプル スクリプト - アプリのスケジュールされたバックアップを作成する | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - アプリのスケジュールされたバックアップを作成する
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI:スケジュールされたバックアップを作成する
+description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、アプリのスケジュールされたバックアップを作成する方法を紹介しています。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: msangapu;cephalin
-ms.custom: seodec18
-ms.openlocfilehash: b5f75ded0b51b78d56354bf97b5ebb0488022509
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: msangapu
+ms.reviewer: cephalin
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 327b48052e0134ae97f0a97f0a43f36e75f2e003
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136892"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058770"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLI を使用して App Service アプリのスケジュールされたバックアップを作成する
 
@@ -41,7 +36,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | ストレージ アカウントを作成します。 |
@@ -53,7 +48,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | App Service アプリのバックアップ スケジュールを表示します。 |
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | App Service アプリのバックアップの一覧を取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

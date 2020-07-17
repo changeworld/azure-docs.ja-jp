@@ -1,19 +1,19 @@
 ---
 title: Table API による Azure Cosmos DB グローバル分散のチュートリアル
-description: Table API を使用して Azure Cosmos DB グローバル分散を設定する方法を学習します。
-author: wmengmsft
-ms.author: wmeng
+description: Azure Cosmos DB Table API アカウントにおけるグローバル分散の動作とリージョンの優先リストを構成する方法について説明します
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/13/2017
+ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7d68c2dbdf5ca32fb2936e92daafac838c97a06
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042531"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76900189"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Table API を使用して Azure Cosmos DB グローバル分散を設定する
 
@@ -28,21 +28,19 @@ ms.locfileid: "54042531"
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Table API を使用して優先リージョンに接続する
 
-[グローバル配布](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、[TableConnectionPolicy.PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.table.tableconnectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_CosmosDB_Table_TableConnectionPolicy_PreferredLocations) プロパティを設定することによって行うことができます。 Azure Cosmos DB Table API SDK は、アカウント構成、現在のリージョンの可用性、および指定されている設定一覧に基づいて、通信に最適なエンドポイントを選定します。
+[グローバル分散](distribute-data-globally.md)を活用するためには、クライアント アプリケーションがその現在の実行場所を指定する必要があります。 これは `CosmosExecutorConfiguration.CurrentRegion` プロパティを設定することによって行います。 `CurrentRegion` プロパティには、場所が 1 つだけ格納されている必要があります。 クライアントのインスタンスごとに異なるリージョンを指定して、読み取りの遅延を抑えることができます。 リージョンの指定には、その[表示名](https://msdn.microsoft.com/library/azure/gg441293.aspx) ("米国西部" など) を使用する必要があります。 
 
-PreferredLocations には、読み取りの優先場所 (マルチホーム) のコンマ区切りリストを指定してください。 各クライアント インスタンスは、低待機時間で読み取りを行えるように、優先順位を付けてこれらのリージョンのサブセットを指定できます。 リージョンは[表示名](https://msdn.microsoft.com/library/azure/gg441293.aspx) (`West US` など) を使用して指定する必要があります。
+Azure Cosmos DB Table API SDK は、アカウント構成と現在のリージョンの可用性に基づいて、通信に最適なエンドポイントを自動的に選定します。 クライアントの待ち時間を短くするために、最も近いリージョンが優先されます。 現在の `CurrentRegion` プロパティを設定すると、読み取り要求と書き込み要求が次のように誘導されます。
 
-読み取りはすべて、PreferredLocations リストで使用可能な最初のリージョンに送信されます。 要求が失敗すると、クライアントはリストにある次のリージョンを試します。これが繰り返されます。
+* **読み取り要求:** 読み取り要求はすべて、構成済みの `CurrentRegion` に送信されます。 高可用性を目的に geo レプリケーションされるフォールバック リージョンは、SDK が近接関係に基づいて自動的に選択します。
 
-SDK は、PreferredLocations で指定されたリージョンからの読み取りを試みます。 このため、3 つのリージョンでデータベース アカウントが利用できるものの、クライアントが PreferredLocations の非書き込みリージョンを 2 つだけ指定している場合などには、書き込みリージョンの外で読み取りが処理されません。これはフェールオーバーの場合にもあてはまります。
+* **書き込み要求:** SDK は自動的に、すべての書き込み要求を現在の書き込みリージョンに送信します。 マルチ マスター アカウントの場合も、現在のリージョンが書き込み要求を処理します。 高可用性を目的に geo レプリケーションされるフォールバック リージョンは、SDK が近接関係に基づいて自動的に選択します。
 
-SDK は自動的に、すべての書き込みを現在の書き込みリージョンに送信します。
+`CurrentRegion` プロパティを指定しなかった場合、現在の書き込みリージョンがすべての操作に使用されます。
 
-PreferredLocations プロパティが設定されていない場合、すべての要求が現在の書き込みリージョンから処理されます。
+たとえば、Azure Cosmos アカウントが "米国西部" リージョンと "米国東部" リージョンにあるとします。 "米国西部" が書き込みリージョンで、アプリケーションは "米国東部" に存在するとします。 CurrentRegion プロパティが構成されていない場合、すべての読み取り要求と書き込み要求は常に "米国西部" リージョンに誘導されます。 CurrentRegion プロパティが構成されている場合は、読み取り要求はすべて "米国東部" リージョンで処理されます。
 
-このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を行いました。
 

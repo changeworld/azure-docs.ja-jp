@@ -1,0 +1,38 @@
+- name: Internet Analyzer のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Internet Analyzer について
+      href: internet-analyzer-overview.md
+- name: チュートリアル
+  items:
+    - name: ポータルを使用した Internet Analyzer テストの作成
+      href: internet-analyzer-create-test-portal.md
+    - name: CLI を使用した Internet Analyzer テストの作成
+      href: internet-analyzer-cli.md
+- name: 操作方法ガイド
+  items:
+    - name: クライアントの埋め込み
+      href: internet-analyzer-embed-client.md
+    - name: カスタム エンドポイントの構成
+      href: internet-analyzer-custom-endpoint.md
+    - name: スコアカードの解釈
+      href: internet-analyzer-scorecard.md
+- name: リソース
+  items:
+    - name: Internet Analyzer の FAQ
+      href: internet-analyzer-faq.md
+    - name: Internet Analyzer のトラブルシューティング
+      href: troubleshoot.md
+    - name: Internet Analyzer の CLI リファレンス
+      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: プレビューの SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

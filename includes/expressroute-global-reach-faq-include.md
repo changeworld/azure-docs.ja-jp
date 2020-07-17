@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305125"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67180911"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>ExpressRoute Global Reach とは何ですか。
 
@@ -29,19 +29,19 @@ ExpressRoute 回線が同じ地理的リージョンにある場合は、それ�
 
 ### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>ExpressRoute Global Reach にはどのように課金されますか。
 
-ExpressRoute は、オンプレミスのネットワークから Microsoft クラウド サービスへの接続を可能にします。 ExpressRoute Global Reach は、Microsoft のグローバル ネットワークを活用して、既存の ExpressRoute 回線を介した独自のオンプレミスのネットワーク間の接続を可能にします。 ExpressRoute Global Reach は既存の ExpressRoute サービスとは別個に課金されます。 この機能をそれぞれの ExpressRoute 回線で有効にするためのアドオンの料金があります。 ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のトラフィックは、送信元ではエグレス レートに対して課金され、送信先ではイングレス レートに対して課金されます。 これらのレートは、回線が配置されているゾーンに基づいています。 <pricing page>を参照してください
+ExpressRoute は、オンプレミスのネットワークから Microsoft クラウド サービスへの接続を可能にします。 ExpressRoute Global Reach は、Microsoft のグローバル ネットワークを活用して、既存の ExpressRoute 回線を介した独自のオンプレミスのネットワーク間の接続を可能にします。 ExpressRoute Global Reach は既存の ExpressRoute サービスとは別個に課金されます。 この機能をそれぞれの ExpressRoute 回線で有効にするためのアドオンの料金があります。 ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のトラフィックは、送信元ではエグレス レートに対して課金され、送信先ではイングレス レートに対して課金されます。 これらのレートは、回線が配置されているゾーンに基づいています。
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>ExpressRoute Global Reach はどこでサポートされていますか。
 
-ExpressRoute Global Reach は[選ばれた国や場所](../articles/expressroute/expressroute-global-reach.md)でサポートされています。 ExpressRoute 回線は、これらの国や場所のピアリング拠点に作成する必要があります。
+ExpressRoute Global Reach は、[選定された国/地域または場所](../articles/expressroute/expressroute-global-reach.md)でサポートされています。 ExpressRoute 回線は、これらの国/地域または場所のピアリング拠点に作成する必要があります。
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>3 つ以上のオンプレミスのネットワークがあり、それぞれが ExpressRoute 回線に接続されています。 ExpressRoute Global Reach を使用して、オンプレミスのすべてのネットワークを互いに接続することはできますか。
 
-はい、できます。ただし、サポートされている国にある回線に限ります。 一度に 2 つの ExpressRoute 回線を接続する必要があります。 完全なメッシュ ネットワークを作成するには、すべての回線ペアを列挙し、この構成を繰り返す必要があります。 
+はい、できます。ただし、サポートされている国/地域にある回線に限ります。 一度に 2 つの ExpressRoute 回線を接続する必要があります。 完全なメッシュ ネットワークを作成するには、すべての回線ペアを列挙し、この構成を繰り返す必要があります。 
 
 ### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>同じピアリングの場所にある 2 つの ExpressRoute 回線の間で ExpressRoute Global Reach を有効にすることはできますか。
 
-いいえ。 2 つの回線は異なるピアリングの場所からの回線である必要があります。 サポートされている国の都市に複数の ExpressRoute ピアリングの場所がある場合は、その都市の異なるピアリングの場所に作成された ExpressRoute 回線を互いに接続することができます。 
+いいえ。 2 つの回線は異なるピアリングの場所からの回線である必要があります。 サポートされている国/地域の都市に複数の ExpressRoute ピアリングの場所がある場合は、その都市の異なるピアリングの場所に作成された ExpressRoute 回線を互いに接続できます。 
 
 ### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>ExpressRoute Global Reach が、回線 X と Y の間、および回線 Y と回線 Z の間で有効になっている場合、回線 X と回線 Z に接続されているオンプレミスのネットワークは Microsoft のネットワーク経由で互いに通信しますか。
 

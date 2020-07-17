@@ -1,28 +1,24 @@
 ---
-title: オプションを使用してパブリック クライアント アプリをインスタンス化する (.NET 用 Microsoft Authentication Library) |Azure
+title: パブリック クライアント アプリをインスタンス化する (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft Authentication Library (MSAL.NET) を使用して、構成オプションでパブリック クライアント アプリケーションをインスタンス化する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 125bbf9aed54fb00f039aeffddd5cc1aad3360a6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544401"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77083601"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションでパブリック クライアント アプリケーションをインスタンス化する
 
@@ -32,7 +28,7 @@ ms.locfileid: "65544401"
 
 - クライアント ID (GUID を表す文字列)
 - ID プロバイダーの URL (名前付きインスタンス) とアプリケーションのサインイン対象ユーザー。 これら 2 つのパラメーターは機関と総称されます。
-- 組織専用の基幹業務アプリケーション (シングル テナント アプリケーションとも呼ばれます) を作成している場合はテナント ID。
+- 組織専用の基幹業務アプリケーション (および名前付きシングル テナント アプリケーション) を作成している場合はテナント ID。
 - Web アプリ、および場合によってはパブリック クライアント アプリの場合 (特に、アプリでブローカーを使用する必要がある場合)、ID プロバイダーがセキュリティ トークンを使用してアプリケーションに連絡する redirectUri も設定します。
 
 

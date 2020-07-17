@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/16/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 14793d7f787780bfc8604e4af11eb05f1ff0d937
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8c82e3d2c978a7980d02bc686346acdcb21dd591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170595"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "66425753"
 ---
 |  | **ポイント対サイト** | **サイト間** | **ExpressRoute** |
 | --- | --- | --- | --- |
 | **Azure でサポートされるサービス** |Cloud Services および Virtual Machines |Cloud Services および Virtual Machines |[サービス一覧](../articles/expressroute/expressroute-faqs.md#supported-services) |
 | **一般的な帯域幅** |ゲートウェイの SKU に基づく |一般的には 1 Gbps 未満のアグリゲート |50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps |
-| **サポート対象プロトコル** |Secure Sockets Tunneling Protocol (SSTP) と IPsec |IPsec |VLAN、NSP の VPN テクノロジー (MPLS、VPLS など) 経由の直接接続 |
+| **サポート対象プロトコル** |Secure Sockets Tunneling Protocol (SSTP)、OpenVPN、IPsec |IPsec |VLAN、NSP の VPN テクノロジー (MPLS、VPLS など) 経由の直接接続 |
 | **ルーティング** |RouteBased (動的) |ポリシー ベース (静的ルーティング) およびルート ベース (動的ルーティング VPN) がサポートされます。 |BGP |
 | **接続の弾力性** |アクティブ/パッシブ |アクティブ/パッシブまたはアクティブ/アクティブ |アクティブ/アクティブ |
 | **一般的な使用例** |プロトタイプの作成、クラウド サービスおよび仮想マシンの開発/テスト/ラボ シナリオ |クラウド サービスおよび仮想マシンの開発/テスト/ラボ シナリオおよび小規模実稼動ワークロード |すべての Azure サービス (検証済み一覧)、エンタープライズクラスおよびミッション クリティカルなワークロード、バックアップ、ビッグ データ、DR サイトとしての Azure へのアクセス |

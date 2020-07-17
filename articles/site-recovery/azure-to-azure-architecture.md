@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery での Azure から Azure へのレプリケーション アーキテクチャ | Microsoft Docs
-description: この記事では、Azure Site Recovery サービスを使用して、Azure リージョン間に Azure VM のディザスター リカバリーを設定するときに使用される、コンポーネントとアーキテクチャの概要を説明します。
+title: Azure Site Recovery における Azure から Azure へのディザスター リカバリー アーキテクチャ
+description: Azure Site Recovery サービスを使用して、Azure リージョン間に Azure VM のディザスター リカバリーを設定するときに使用されるアーキテクチャの概要。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540722"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294111"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -26,12 +26,12 @@ ms.locfileid: "58540722"
 
 Azure VM のディザスター リカバリーに関連するコンポーネントを次の表にまとめます。
 
-**コンポーネント** | **要件**
+**コンポーネント** | **必要条件**
 --- | ---
 **ソース リージョンの VM** | [サポートされているソース リージョン](azure-to-azure-support-matrix.md#region-support)内の 1 つ以上の Azure VM。<br/><br/> VM は、[サポートされているオペレーティング システム](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)のうちのどれを実行していてもかまいません。
 **ソース VM ストレージ** | Azure VM では、マネージド ディスクでも、複数のストレージ アカウントに分散するアンマネージド ディスクでも使用できます。<br/><br/>サポートされる Azure ストレージについては[こちらをご覧ください](azure-to-azure-support-matrix.md#replicated-machines---storage)。
 **ソース VM ネットワーク** | VM は、ソース リージョンの仮想ネットワーク (VNet) 内の 1 つまたは複数のサブネット内に存在できます。 ネットワークの要件については[こちらをご覧ください](azure-to-azure-support-matrix.md#replicated-machines---networking)。
-**キャッシュ ストレージ アカウント** | ソース ネットワークにはキャッシュ ストレージ アカウントが必要です。 レプリケーション中に、VM の変更は、ターゲット ストレージに送信される前に、キャッシュに格納されます。<br/><br/> キャッシュを使用することにより、VM で実行されている運用アプリケーションへの影響を最小限に抑えられます。<br/><br/> キャッシュ ストレージの要件について詳しくは、[こちらをご覧ください](azure-to-azure-support-matrix.md#cache-storage)。 
+**キャッシュ ストレージ アカウント** | ソース ネットワークにはキャッシュ ストレージ アカウントが必要です。 レプリケーション中に、VM の変更は、ターゲット ストレージに送信される前に、キャッシュに格納されます。  キャッシュ ストレージ アカウントは Standard である必要があります。<br/><br/> キャッシュを使用することにより、VM で実行されている運用アプリケーションへの影響を最小限に抑えられます。<br/><br/> キャッシュ ストレージの要件について詳しくは、[こちらをご覧ください](azure-to-azure-support-matrix.md#cache-storage)。 
 **ターゲット リソース** | ターゲット リソースは、レプリケーション中およびフェールオーバーの発生時に使用されます。 ターゲット リソースは、Site Recovery によって既定で設定することも、作成/カスタマイズすることもできます。<br/><br/> ターゲット リージョンでは、VM を作成できること、および必要な VM サイズをサポートするのに十分なリソースがサブスクリプションにあることを確認します。 
 
 ![ソースとターゲットのレプリケーション](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
@@ -63,10 +63,10 @@ VM のレプリケーションを有効にすると、Site Recovery でターゲ
 
 Azure VM レプリケーションを有効にするときに、既定で Site Recovery によって、次の表に示す既定の設定で新しいレプリケーション ポリシーが作成されます。
 
-**ポリシーの設定** | **詳細** | **既定値**
+**ポリシーの設定** | **詳細** | **[Default]**
 --- | --- | ---
 **復旧ポイントの保持期間** | Site Recovery で復旧ポイントを保持する長さを指定します | 24 時間
-**アプリ整合性スナップショットの頻度** | Site Recovery でアプリ整合性スナップショットを取得する頻度。 | 60 分ごと。
+**アプリ整合性スナップショットの頻度** | Site Recovery でアプリ整合性スナップショットを取得する頻度。 | 4 時間ごと
 
 ### <a name="managing-replication-policies"></a>レプリケーション ポリシーの管理
 
@@ -91,19 +91,19 @@ Site Recovery では、次のようにスナップショットが作成されま
 1. Site Recovery では、既定でデータのクラッシュ整合性スナップショットが作成され、ユーザーが頻度を指定するとアプリ整合性スナップショットが作成されます。
 2. 復旧ポイントはスナップショットから作成されて、レプリケーション ポリシーでの保持期間の設定に従って格納されます。
 
-### <a name="consistency"></a>整合性
+### <a name="consistency"></a>一貫性
 
 次の表で、整合性の種類について説明します。
 
 ### <a name="crash-consistent"></a>クラッシュ整合性
 
-**説明** | **詳細** | **推奨事項**
+**説明** | **詳細** | **推奨**
 --- | --- | ---
 クラッシュ整合性スナップショットでは、スナップショットが作成されたときにディスクに存在していたデータがキャプチャされます。 メモリ内のものは含まれません。<br/><br/> スナップショットが作成された瞬間に VM がクラッシュしたり、電源コードがサーバーから抜かれたりした場合にディスク上に存在していたデータと同じものが含まれます。<br/><br/> クラッシュ整合性では、オペレーティング システムや VM 上のアプリのデータ整合性は保証されません。 | Site Recovery では、既定で 5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この設定を変更することはできません。<br/><br/>  | 現在、ほとんどのアプリでは、クラッシュ整合性ポイントから十分に復旧できます。<br/><br/> クラッシュ整合性復旧ポイントは、通常、オペレーティング システム、および DHCP サーバーやプリント サーバーなどのアプリの複製に十分です。
 
 ### <a name="app-consistent"></a>アプリ整合性
 
-**説明** | **詳細** | **推奨事項**
+**説明** | **詳細** | **推奨**
 --- | --- | ---
 アプリ整合性復旧ポイントは、アプリ整合性スナップショットから作成されます。<br/><br/> アプリ整合性スナップショットには、クラッシュ整合スナップショット内のすべての情報に加えて、メモリ内のすべてのデータと進行中のトランザクションが含まれます。 | アプリ整合性スナップショットでは、ボリューム シャドウ コピー サービス (VSS) が使用されます。<br/><br/>   1) スナップショットが開始されるとき、VSS によってボリュームでコピーオンライト (COW) 操作が実行されます。<br/><br/>   2) COW を実行する前、VSS はマシン上のすべてのアプリに、メモリ常駐データをディスクにフラッシュする必要があることを通知します。<br/><br/>   3) その後、VSS は、バックアップ/ディザスター リカバリー アプリ (このケースでは Site Recovery) にスナップショット データを読み取って続行することを許可します。 | アプリ整合性スナップショットはユーザーが指定した頻度に従って作成されます。 この頻度は常に、復旧ポイントを保持するための設定より短くする必要があります。 たとえば、復旧ポイントを既定の設定の 24 時間を使用して保持する場合、頻度を 24 時間未満に設定する必要があります。<br/><br/>クラッシュ整合性スナップショットより複雑で、完了に時間がかかります。<br/><br/> レプリケーションが有効な VM で実行されているアプリのパフォーマンスに影響します。 
 
@@ -135,26 +135,35 @@ VM の送信アクセスが URL で制御されている場合は、次の URL �
 | login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証を提供します。 |
 | *.hypervrecoverymanager.windowsazure.com | VM と Site Recovery サービスの通信を許可します。 |
 | *.servicebus.windows.net | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
+| *.vault.azure.net | ADE が有効な仮想マシンのレプリケーションをポータルを介して有効にするためのアクセスを許可します
+| *.automation.ext.azure.com | レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にすることを許可します
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
 IP アドレスを使用して VM の送信接続を制御するには、次のアドレスを許可します。
+ネットワーク接続要件の詳細は[ネットワークに関するホワイトペーパー](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)に記載されていることに注意してください 
 
 #### <a name="source-region-rules"></a>ソース リージョンのルール
 
-**ルール** |  **詳細** | **サービス タグ**
+**Rule** |  **詳細** | **サービス タグ**
 --- | --- | --- 
-HTTPS の送信を許可する: ポート 443 | ソース リージョンのストレージ アカウントに対応する範囲を許可します | Storage.\<region-name>。
-HTTPS の送信を許可する: ポート 443 | Azure Active Directory (Azure AD) に対応する範囲を許可します。<br/><br/> Azure AD のアドレスが後で追加される場合は、新しいネットワーク セキュリティ グループ (NSG) ルールを作成する必要があります。  | AzureActiveDirectory
-HTTPS の送信を許可する: ポート 443 | ターゲットの場所に対応する [Site Recovery エンドポイント](https://aka.ms/site-recovery-public-ips)へのアクセスを許可します。 
+HTTPS の送信を許可する: ポート 443 | ソース リージョンのストレージ アカウントに対応する範囲を許可します | ストレージ。\<リージョン名>
+HTTPS の送信を許可する: ポート 443 | Azure Active Directory (Azure AD) に対応する範囲を許可します  | AzureActiveDirectory
+HTTPS の送信を許可する: ポート 443 | ターゲットリージョンのイベントハブに対応する範囲を許可します。 | イベントハブ。\<リージョン名 >
+HTTPS の送信を許可する: ポート 443 | Azure Site Recovery に対応する範囲を許可します。  | AzureSiteRecovery
+HTTPS の送信を許可する: ポート 443 | Azure Key Vault に対応する範囲を許可します (これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です) | AzureKeyVault
+HTTPS の送信を許可する: ポート 443 | Azure Automation コントローラーに対応する範囲を許可します (これは、レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にする場合にのみ必要です) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>ターゲット リージョンのルール
 
-**ルール** |  **詳細** | **サービス タグ**
+**Rule** |  **詳細** | **サービス タグ**
 --- | --- | --- 
-HTTPS の送信を許可する: ポート 443 | ターゲット リージョンのストレージ アカウントに対応する範囲を許可します。 | Storage.\<region-name>。
-HTTPS の送信を許可する: ポート 443 | Azure AD に対応する範囲を許可します。<br/><br/> Azure AD のアドレスが後で追加される場合は、新しい NSG ルールを作成する必要があります。  | AzureActiveDirectory
-HTTPS の送信を許可する: ポート 443 | ソースの場所に対応する [Site Recovery エンドポイント](https://aka.ms/site-recovery-public-ips)へのアクセスを許可します。 
+HTTPS の送信を許可する: ポート 443 | ターゲット リージョンのストレージ アカウントに対応する範囲を許可します。 | ストレージ。\<リージョン名>
+HTTPS の送信を許可する: ポート 443 | Azure AD に対応する範囲を許可します  | AzureActiveDirectory
+HTTPS の送信を許可する: ポート 443 | ソースリージョンのイベントハブに対応する範囲を許可します。 | イベントハブ。\<リージョン名 >
+HTTPS の送信を許可する: ポート 443 | Azure Site Recovery に対応する範囲を許可します。  | AzureSiteRecovery
+HTTPS の送信を許可する: ポート 443 | Azure Key Vault に対応する範囲を許可します (これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です) | AzureKeyVault
+HTTPS の送信を許可する: ポート 443 | Azure Automation コントローラーに対応する範囲を許可します (これは、レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にする場合にのみ必要です) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>NSG ルールでアクセスを制御する
@@ -167,7 +176,7 @@ HTTPS の送信を許可する: ポート 443 | ソースの場所に対応す�
     - サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えます。
     - Microsoft は、時間の経過と共に、サービス タグを自動的に更新します。 
  
-詳しくは、Site Recovery の[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)に関する記事、および[NSG による接続の制御](concepts-network-security-group-with-site-recovery.md)に関する記事をご覧ください。
+詳しくは、Site Recovery の[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)に関する記事、および[NSG による接続の制御](concepts-network-security-group-with-site-recovery.md)に関する記事をご覧ください。
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>マルチ VM 整合性の接続
@@ -185,6 +194,6 @@ HTTPS の送信を許可する: ポート 443 | ソースの場所に対応す�
 
 ![フェールオーバー プロセス](./media/concepts-azure-to-azure-architecture/failover.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure VM をセカンダリ リージョンに[迅速にレプリケート](azure-to-azure-quickstart.md)します。

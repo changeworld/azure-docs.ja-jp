@@ -1,10 +1,9 @@
 ---
 title: Azure Service Bus と Event Grid の統合の概要 | Microsoft Docs
-description: Service Bus メッセージングと Event Grid の統合の説明
+description: この記事では、Azure Service Bus メッセージングを Azure Event Grid と統合する方法について説明します。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9df321980db3a2481f0d8cc007546822fea46f9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111172"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76773472"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -39,7 +38,7 @@ Service Bus では、レシーバーがない場合にキューまたはサブ�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>共同作成者アクセスがあることの確認
-Service Bus 名前空間に移動して、**[アクセス制御 (IAM)]** を選択し、**[ロールの割り当て]** を選択します。名前空間への共同作成者アクセス権を持っていることを確認します。 
+Service Bus 名前空間に移動して、 **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** を選択します。名前空間への共同作成者アクセス権を持っていることを確認します。 
 
 ### <a name="events-and-event-schemas"></a>イベントとイベント スキーマ
 
@@ -146,12 +145,14 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
  ```azurecli-interactive
 az login
 
-az account set -s “THE SUBSCRIPTION YOU WANT TO USE”
+az account set -s "<Azure subscription name>"
 
-$namespaceid=(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name “<yourNamespace>“--resource-group “<Your Resource Group Name>” --query id --output tsv)
+namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name "<service bus namespace>" --resource-group "<resource group that contains the service bus namespace>" --query id --output tsv
 
-az eventgrid event-subscription create --resource-id $namespaceid --name “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” --endpoint “<your_function_url>” --subject-ends-with “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
+
+BASH を使用している場合 
 
 ## <a name="powershell-instructions"></a>PowerShell の手順
 
@@ -168,12 +169,12 @@ Install-Module Az.ServiceBus
 $NSID = (Get-AzServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
 mespaceName "<YOUR NAMESPACE NAME>").Id
 
-New-AzEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
 ここから、他のセットアップ オプションを調べたり、イベントが送信されていることをテストしたりできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Service Bus と Event Grid の[例](service-bus-to-event-grid-integration-example.md)を確認します。
 * [Event Grid](https://docs.microsoft.com/azure/event-grid/) の詳細を確認します。

@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor ログ クエリの集計 | Microsoft Docs
 description: データ分析のための便利な手段となる Azure Monitor ログ クエリの集計関数について説明します。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 08/16/2018
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77670306"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの集計
 
@@ -79,7 +72,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>サブグループの評価
-ご自身のデータのサブグループでカウントまたはその他の集計を実行するには、`by` キーワードを使用します。 たとえば、ハートビートを送信した個別の Linux コンピューターの数を国ごとにカウントするには、次を使用します。
+ご自身のデータのサブグループでカウントまたはその他の集計を実行するには、`by` キーワードを使用します。 たとえば、ハートビートを送信した個別の Linux コンピューターの数を国や地域ごとにカウントするには、次を使用します。
 
 ```Kusto
 Heartbeat 
@@ -96,7 +89,7 @@ Heartbeat
 |オランダ      | 2                   |
 
 
-ご自身のデータのさらに小さなサブグループを分析するには、追加の列名を `by` セクションに追加します。 たとえば、OSType あたりの個別のコンピューターの数を国ごとにカウントできます。
+ご自身のデータのさらに小さなサブグループを分析するには、追加の列名を `by` セクションに追加します。 たとえば、OSType あたりの個別のコンピューターの数を国や地域ごとにカウントできます。
 
 ```Kusto
 Heartbeat 
@@ -128,7 +121,7 @@ Perf
 
 これは、複数のコンピューター CPU の中央値が似かよっていても、実際は CPU が中央値付近で安定しているコンピューターもあれば、極端に低い CPU または高い CPU 値が報告される、つまりスパイクが発生しているコンピューターもあります。
 
-### <a name="variance"></a>variance
+### <a name="variance"></a>Variance
 値の分散を直接評価するには、標準偏差法と分散法を使用します。
 
 ```Kusto

@@ -1,25 +1,17 @@
 ---
-title: Azure Cache for Redis に関する FAQ | Microsoft Docs
+title: Azure Cache for Redis に関する FAQ
 description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.service: cache
+ms.topic: conceptual
+ms.date: 04/29/2019
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230115"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010224"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -62,7 +54,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [Redis データベースについて](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
-* [Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Redis への接続に非 TLS/SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>運用に関する FAQ
 * [いくつかの運用上のベスト プラクティスについて](#what-are-some-production-best-practices)
@@ -73,7 +65,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [接続のパフォーマンスに関する考慮事項](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>監視とトラブルシューティングに関する FAQ
-このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。 Azure Cache for Redis インスタンスの監視とトラブルシューティングの詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」と [Azure Cache for Redis のトラブルシューティング方法](cache-how-to-troubleshoot.md)についてのページを参照してください。
+このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。 Azure Cache for Redis インスタンスの監視とトラブルシューティングの詳細については、「[Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)」と、さまざまなトラブルシューティングのガイドを参照してください。
 
 * [キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [タイムアウトが発生する理由](#why-am-i-seeing-timeouts)
@@ -104,12 +96,12 @@ Azure Cache for Redis には、さまざまなレベルの**サイズ**、**帯�
 
 Cache のオプションを選択するときの考慮事項を次に示します。
 
-* **メモリ**:Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium レベルでは 530 GB まで提供されます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
+* **メモリ**:Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium サービス レベルでは、最大 1.2 TB (クラスター) または 120 GB (非クラスター) が提供されます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
 * **ネットワーク パフォーマンス**:高いスループットを必要とするワークロードがある場合、Premium レベルでは、Standard や Basic と比較してより広い帯域幅が提供されます。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、[次の表](#cache-performance)を参照してください。
 * **スループット**:Premium レベルでは、提供されているうちで最大のスループットが提供されます。 キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生する場合があります。 詳細については、後の表を参照してください。
 * **高可用性/SLA**:Azure Cache for Redis では、Standard/Premium キャッシュについて、少なくとも 99.9% の可用性を保証しています。 SLA の詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)についてのページを参照してください。 SLA は、Cache エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
 * **Redis データの永続化**:Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基になるインフラストラクチャで問題が発生すると、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、Redis 永続化の RDB オプションと AOF オプション (近日提供予定) が用意されています。 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
-* **Redis クラスター**:Premium レベルで利用可能な Redis クラスタリングを使用すると、53 GB を超えるキャッシュまたは複数の Redis ノード間で共有されるデータを作成できます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、[Premium Azure Cache for Redis のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
+* **Redis クラスター**:Premium サービス レベルで利用可能な Redis クラスタリングを使用すると、120 GB を超えるキャッシュを作成したり、複数の Redis ノード間でデータをシャード化したりできます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、「[How to configure clustering for a Premium Azure Cache for Redis](cache-how-to-premium-clustering.md)」 (Premium Azure Cache for Redis のクラスタリングの構成方法) を参照してください。
 * **セキュリティとネットワークの分離の強化**:Azure Virtual Network (VNET) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。 詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 * **Redis の構成**:Standard レベルと Premium レベルのどちらでも、キースペース通知のために Redis を構成できます。
 * **最大クライアント接続数**:Premium レベルでは、Redis に接続できる最大数のクライアントが提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。 クラスタリングでは、クラスター化されたキャッシュで使用できる接続の数は増加しません。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
@@ -120,7 +112,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Cache for Redis のパフォーマンス
-次の表に、Azure Cache for Redis のエンドポイントに対して IaaS VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 SSL のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
+次の表に、Azure Cache for Redis のエンドポイントに対して IaaS VM から `redis-benchmark.exe` を使用して、Standard および Premium キャッシュのさまざまなサイズをテストした際に測定された最大帯域幅を示します。 TLS のスループットについては、Azure Cache for Redis エンドポイントに接続するため、Redis ベンチマークは stunnel と共に使用されています。
 
 >[!NOTE] 
 >これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。 アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
@@ -133,7 +125,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 個のシャードから成る P4 クラスターを作成すると、利用可能なスループットは 400,000 * 10 = 4 百万 RPS になります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| 価格レベル  | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
+| Pricing tier | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
 | C0 | 250 MB | 共有 | 100 / 12.5  |  15,000 |   7,500 |
@@ -168,7 +160,7 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 | クラウド   | Redis の DNS サフィックス            |
 |---------|---------------------------------|
 | パブリック  | *.redis.cache.windows.net       |
-| 米国政府  | *. redis.cache.usgovcloudapi.net |
+| US Gov  | *. redis.cache.usgovcloudapi.net |
 | ドイツ | *.redis.cache.cloudapi.de       |
 | 中国   | *.redis.cache.chinacloudapi.cn  |
 
@@ -178,7 +170,7 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 - [Azure China 21Vianet Cloud - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany での PowerShell を使用した Azure Cache for Redis の利用の詳細については、[他のクラウドに接続する方法 - Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関するページを参照してください。
+Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany での PowerShell を使用した Azure Cache for Redis の利用の詳細については、[他のクラウドに接続する方法 - Azure Cache for Redis PowerShell](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関するページを参照してください。
 
 <a name="cache-configuration"></a>
 
@@ -197,13 +189,14 @@ StackExchange.Redis には多くのオプションが用意されています。
   * 一般的に ConnectRetry と ConnectTimeout に関しては、フェイル ファストして再試行することをお勧めします。 これは、ワークロードと、クライアントが Redis コマンドを発行してから応答を受け取るまでに要する時間の平均に基づいたガイダンスです。
   * 自分で接続の状態を確認して再接続するのではなく、StackExchange.Redis が自動的に再接続するように設定します。 **ConnectionMultiplexer.IsConnected プロパティは使用しません**。
   * 問題の肥大化 - ある問題が発生し、再試行によって問題が肥大化して、解決しないことがあります。 問題の肥大化が発生した場合は、Microsoft Patterns & Practices グループ発行の「[再試行に関する一般的なガイダンス](../best-practices-retry-general.md)」に説明されている指数バックオフ再試行アルゴリズムの使用を検討する必要があります。
+  
 * **タイムアウト値**
   * ワークロードを考慮したうえで値を適宜設定します。 大きな値を保存する場合は、タイムアウトを大きな値に設定します。
   * StackExchange.Redis が再接続できるように、 `AbortOnConnectFail` を false に設定します。
   * アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「 [ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
   * 診断用には、 `ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
   * カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
-      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 例: 
+      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 次に例を示します。
       * 1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。
       * 1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。
       * 使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
@@ -251,7 +244,7 @@ Azure Cache for Redis のローカル エミュレーターがなくても、ロ
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、ブログ記事「[Announcing ASP.NET Session State Provider for Redis Preview Release (Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表)](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」を参照してください。
+> Redis コマンド ライン ツールは TLS ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを TLS ポートに安全に接続することができます。詳細については、ブログ記事「[Azure Cache for Redis で Redis コマンドライン ツールを使用する方法](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)」の記事を参照してください。
 >
 >
 
@@ -278,7 +271,7 @@ Azure Cache for Redis を PhpRedis クライアントで PHP セッションの�
 
 ### <a name="what-are-redis-databases"></a>Redis データベースとは
 
-Redis データベースとは、単に同じ Redis インスタンス内でデータを論理的に切り離したものです。 キャッシュ メモリは、すべてのデータベースで共有され、特定のデータベースの実際のメモリ使用量は、そのデータベースに格納されているキー/値によって異なります。 たとえば、C6 キャッシュは 53 GB のメモリを備えています。 この 53 GB すべてを 1 つのデータベースに配置することも、複数のデータベースに分割することもできます。 
+Redis データベースとは、単に同じ Redis インスタンス内でデータを論理的に切り離したものです。 キャッシュ メモリは、すべてのデータベースで共有され、特定のデータベースの実際のメモリ使用量は、そのデータベースに格納されているキー/値によって異なります。 たとえば、C6 キャッシュは 53 GB のメモリを備え、P5 の場合は 120 GB になります。 この 53 GB/120 GB すべてを 1 つのデータベースに配置することも、複数のデータベースに分割することもできます。 
 
 > [!NOTE]
 > クラスタリングを有効にして Premium Azure Cache for Redis を使用すると、使用できるのはデータベース 0 だけになります。 これは Redis に固有の制限事項です。Azure Cache for Redis の制限事項ではありません。 詳細については、「 [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -288,15 +281,15 @@ Redis データベースとは、単に同じ Redis インスタンス内でデ�
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Redis への接続に非 SSL ポートを有効にする必要がある状況
-Redis サーバーはネイティブで SSL をサポートしませんが、Azure Cache for Redis では SSL がサポートされます。 Azure Cache for Redis に接続しようとしていて、クライアントが StackExchange.Redis のように SSL をサポートしている場合は、SSL を使用する必要があります。
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Redis への接続に非 TLS/SSL ポートを有効にする必要がある状況
+Redis サーバーはネイティブで TLS をサポートしませんが、Azure Cache for Redis ではサポートされます。 Azure Cache for Redis に接続しようとしていて、クライアントが StackExchange.Redis のように TLS をサポートしている場合は、TLS を使用する必要があります。
 
 >[!NOTE]
->既定では、新しい Azure Cache for Redis インスタンスの SSL 以外のポートは無効になっています。 クライアントが SSL をサポートしていない場合は、[Azure Cache for Redis でのキャッシュの構成](cache-configure.md)に関するページの「[アクセス ポート](cache-configure.md#access-ports)」セクションの指示に従って、非 SSL ポートを有効にする必要があります。
+>既定では、新しい Azure Cache for Redis インスタンスの TLS 以外のポートは無効になっています。 クライアントが TLS をサポートしていない場合は、[Azure Cache for Redis でのキャッシュの構成](cache-configure.md)に関するページの「[アクセス ポート](cache-configure.md#access-ports)」セクションの指示に従って、非 TLS ポートを有効にする必要があります。
 >
 >
 
-`redis-cli` などの Redis ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、ブログ記事「[Announcing ASP.NET Session State Provider for Redis Preview Release (Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表)](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」を参照してください。
+`redis-cli` などの Redis ツールは TLS ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを TLS ポートに安全に接続することができます。詳細については、[Redis のプレビュー リリース用の ASP.NET セッション状態プロバイダーの発表](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
 
 Redis ツールのダウンロードの詳細については、「 [Redis コマンドの実行方法](#cache-commands) 」セクションを参照してください。
 
@@ -319,7 +312,7 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 * [修正プログラムの適用やフェールオーバーによる](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)接続の中断に対応できるようなシステムを開発する。
 
 #### <a name="performance-testing"></a>パフォーマンス テスト
-* 独自のパフォーマンス テストを作成する前に、 `redis-benchmark.exe` を使用して実現可能なスループットを確認してください。 `redis-benchmark` では SSL はサポートされていないため、テストを行うには、[Azure Portal で非 SSL ポートを有効にする](cache-configure.md#access-ports)必要があります。 例については、「 [キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* 独自のパフォーマンス テストを作成する前に、 `redis-benchmark.exe` を使用して実現可能なスループットを確認してください。 `redis-benchmark` では TLS はサポートされていないため、テストを行うには、[Azure portal で非 TLS ポートを有効にする](cache-configure.md#access-ports)必要があります。 例については、「 [キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * テストに使用するクライアント VM は、Azure Cache for Redis インスタンスと同じリージョンにある必要があります。
 * Dv2 VM シリーズはハードウェアが強力であり、最良の結果が得られるため、クライアントにはこれらのシリーズを使用することをお勧めします。
 * クライアント VM については、コンピューティング能力と帯域幅がテスト対象のキャッシュと同等以上であるものを選択してください。
@@ -388,7 +381,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 この設定を構成する方法
 
-* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 例: 
+* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 次に例を示します。
 
 ```cs
 private readonly int minThreads = 200;
@@ -438,12 +431,12 @@ Azure Cache for Redis の **[リソース] メニュー**にも、キャッシ�
 * **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。 Azure Resource Health サービスの詳細については、「 [Azure Resource Health の概要](../resource-health/resource-health-overview.md)」を参照してください。
 * **[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
 
-これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティング設定」を参照してください。
+これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティング設定」を参照してください。
 
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>タイムアウトが発生する理由
-タイムアウトは、Redis との対話に使用されているクライアントで発生します。 Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。 ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。 タイムアウトの問題のトラブルシューティングについては、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」および「[StackExchange.Redis のタイムアウトの例外](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)」を参照してください。
+タイムアウトは、Redis との対話に使用されているクライアントで発生します。 Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。 ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。 タイムアウトの問題のトラブルシューティングについては、[クライアント側のトラブルシューティング](cache-troubleshoot-client.md)に関するページ、および「[StackExchange.Redis のタイムアウトの例外](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions)」を参照してください。
 
 <a name="cache-disconnect"></a>
 
@@ -470,7 +463,7 @@ Azure Cache for Redis の **[リソース] メニュー**にも、キャッシ�
 >
 
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Azure Cache for Redis は、一般公開されていて、最大サイズは 53 GB です。可用性の SLA は 99.9% です。 新しい [Premium レベル](cache-premium-tier-intro.md)は、最大 530 GB のサイズを提供し、クラスタリング、VNET、および永続化を 99.9% の SLA でサポートします。
+Azure Cache for Redis は、一般公開されていて、最大サイズは 120 GB です。可用性の SLA は 99.9% です。 新しい [Premium レベル](cache-premium-tier-intro.md)は、最大 1.2 TB のサイズを提供し、クラスタリング、VNET、および永続化を 99.9% の SLA でサポートします。
 
 Azure Cache for Redis により、お客様は Microsoft によって管理されている、セキュリティで保護された専用の Azure Cache for Redis を使用できるようになります。 このサービスでは、Redis が提供する豊富な機能セットとエコシステムを利用し、Microsoft による信頼性の高いホスティングと監視を受けられます。
 
@@ -478,7 +471,7 @@ Azure Cache for Redis により、お客様は Microsoft によって管理さ�
 
 Redis を成功させているもう 1 つの重要な側面は、その周りに構築される健全で活発なオープン ソース エコシステムです。 また、その環境を複数の言語で使用できる多様な Redis クライアントに反映します。 このエコシステムと幅広いクライアントにより、Azure 内部に構築するほぼすべてのワークロードで Azure Cache for Redis を使用できます。
 
-Azure Cache for Redis の使用を開始することの詳細については、「[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と、[Azure Cache for Redis のドキュメント](index.md)に関するページを参照してください。
+Azure Cache for Redis の使用を開始することの詳細については、「[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と、[Azure Cache for Redis のドキュメント](index.yml)に関するページを参照してください。
 
 ### <a name="managed-cache-service"></a>Managed Cache Service
 [Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

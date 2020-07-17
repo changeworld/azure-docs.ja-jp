@@ -1,26 +1,20 @@
 ---
-title: Azure 仮想マシン スケール セットを変更する | Microsoft Docs
+title: Azure 仮想マシン スケール セットを変更する
 description: REST API、Azure PowerShell、Azure CLI を使って、Azure 仮想マシン スケール セットに変更を加え、更新する方法について説明します
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.subservice: management
+ms.date: 03/10/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873629"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121016"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -318,7 +312,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 >[!NOTE]
 > Service Fabric クラスターは "*自動*" モードのみを使用できますが、更新は別途処理されます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](../service-fabric/service-fabric-application-upgrade.md)」をご覧ください。
 
-グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 スケール セット OS プロファイル (管理者のユーザー名とパスワードなど) に対する変更は、API バージョン *2017-12-01* 以降でのみ実行できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
+グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 スケール セット OS およびデータ ディスク プロファイル (管理者のユーザー名とパスワードなど) に対する変更は、API バージョン *2017-12-01* 以降でのみ実行できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
 
 - REST API ([compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage))
 
@@ -456,5 +450,5 @@ Azure Load Balancer を使用するスケール セットがあり、Azure Load 
 > これらのコマンドでは、スケール セットの IP 構成とロード バランサーが 1 つだけであると想定されます。 複数ある場合は、*0* 以外のリスト インデックスを使用する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スケール セットに関する一般的な管理タスクは、[Azure CLI](virtual-machine-scale-sets-manage-cli.md) または [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) を使用して実行することもできます。

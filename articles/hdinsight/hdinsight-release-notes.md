@@ -7,136 +7,62 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 0beac64ceb0bbf729d2f6d0f6a0ca8d5af499f42
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725420"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084891"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
+# <a name="release-notes"></a>リリース ノート
 
 この記事では、**最近**の Azure HDInsight リリース更新に関する情報を提供します。 以前のリリースについて詳しくは、「[HDInsight リリース ノートのアーカイブ](hdinsight-release-notes-archive.md)」を参照してください。
+
+## <a name="summary"></a>まとめ
+
+Azure HDInsight は、Azure 上でオープン ソース分析を行うエンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
+
+## <a name="release-date-01092020"></a>リリース日: 2020 年 1 月 9 日
+
+このリリースは、HDInsight 3.6 と4.0 の両方に適用されます。 HDInsight リリースは、数日以内にすべてのリージョンでご利用になれます。 ここのリリース日は、最初のリージョンのリリース日です。 以下の変更がない場合は、数日以内にリリースがご自分のリージョンでライブになるまでお待ちください。
 
 > [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
 
-## <a name="summary"></a>まとめ
-
-Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
-
 ## <a name="new-features"></a>新機能
+### <a name="tls-12-enforcement"></a>TLS 1.2 の適用
+TLS (トランスポート層セキュリティ) と SSL (Secure Sockets Layer) は、コンピューター ネットワーク上の通信にセキュリティを確保する暗号プロトコルです。 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0) の詳細を参照してください。 HDInsight はパブリック HTTPs エンドポイントで TLS 1.2 を使用しますが、TLS 1.1 も下位互換性のために引き続きサポートされています。 
 
-HDInsight 4.0 での重要な変更の詳細については、「[HDI 4.0 の新機能](../hdinsight/hdinsight-version-release.md)」を参照してください。
+このリリースでは、お客様はパブリック クラスター エンドポイント経由のすべての接続でのみ TLS 1.2 を選択できます。 これのサポートに、クラスターの作成時に指定できる新しいプロパティ **minSupportedTlsVersion** が導入されました。 このプロパティを設定しない場合、クラスターは TLS 1.0、1.1、1.2 を引き続きサポートします。これは、今日の動作と同じです。 お客様はこのプロパティの値を "1.2" に設定できます。これは、クラスターが TLS 1.2 以降のみをサポートすることを意味します。 詳細については、「[トランスポート層セキュリティ](./transport-layer-security.md)」を参照してください。
 
-## <a name="component-versions"></a>コンポーネントのバージョン
-
-以下に HDInsight 4.0 のすべてのコンポーネントの正式な Apache バージョンを示します。 ここに列挙されているコンポーネントは、利用できる最新の安定したバージョンのリリースです。
-
-- Apache Ambari 2.7.1
-- Apache Hadoop 3.1.1
-- Apache HBase 2.0.0
-- Apache Hive 3.1.0
-- Apache Kafka 1.1.1
-- Apache Mahout 0.9.0+
-- Apache Oozie 4.2.0
-- Apache Phoenix 4.7.0
-- Apache Pig 0.16.0
-- Apache Ranger 0.7.0
-- Apache Slider 0.92.0
-- Apache Spark 2.3.1
-- Apache Sqoop 1.4.7
-- Apache TEZ 0.9.1
-- Apache Zeppelin 0.8.0
-- Apache ZooKeeper 3.4.6
-
-新しいバージョンの Apache のコンポーネントは、上の一覧のバージョンに加えて HDP ディストリビューションにバンドルされていることがあります。 この場合、これらの新しいバージョンの一覧はテクニカル プレビューの表に表示され、運用環境で上の一覧の Apache コンポーネントのバージョンの代替にはなりません。
-
-## <a name="apache-patch-information"></a>Apache のパッチ情報
-
-HDInsight 4.0 で使用可能なパッチの詳細については、以下の表の各製品のパッチ一覧を参照してください。
-
-| 製品名 | パッチ情報 |
-|---|---|
-| Ambari | [Ambari のパッチ情報](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
-| Hadoop | [Hadoop のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| hbase | [HBase のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
-| Hive  | このリリースは Hive 3.1.0 を提供します。Apache の追加パッチはありません。  |
-| Kafka | このリリースは Kafka 1.1.1 を提供します。Apache の追加パッチはありません。 |
-| Oozie | [Oozie のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
-| Phoenix | [Phoenix のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
-| Pig | [Pig のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
-| Ranger | [Ranger のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
-| Spark | [Spark のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
-| Sqoop | このリリースは Sqoop 1.4.7 を提供します。Apache の追加パッチはありません。 |
-| Tez | このリリースは Tez 0.9.1 を提供します。Apache の追加パッチはありません。 |
-| Zeppelin | このリリースは Zeppelin 0.8.0 を提供します。Apache の追加パッチはありません。 |
-| Zookeeper | [Zookeeper のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
-
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
-
-このリリースで解決されたセキュリティの問題の詳細については、Hortonworks の「[Fixed Common Vulnerabilities and Exposures for HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html)」を参照してください。
-
-## <a name="known-issues"></a>既知の問題
-
-### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>既定のインストールで Secure HBase のレプリケーションが破損する
-
-HDInsight 4.0 の場合は、次の手順を実行します。
-
-1. クラスター間通信を有効にします。
-1. アクティブなヘッドノードにサインインします。
-1. 次のコマンドを使用して、スクリプトをダウンロードしてレプリケーションを有効にします。
-
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. コマンド `sudo kinit <domainuser>` を入力します。
-1. 次のコマンドを入力して、スクリプトを実行します。
-
-    ```
-    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-HDInsight 3.6 の場合は、次の手順を実行します。
-
-1. アクティブな HMaster ZK にサインインします。
-1. 次のコマンドを使用して、スクリプトをダウンロードしてレプリケーションを有効にします。
-    ```
-    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
-    ```
-1. コマンド `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>` を入力します。
-1. 次のコマンドを入力します。
-
-    ```bash
-    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
-    ```
-
-### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>HBase クラスターを HDInsight 4.0 に移行した後に Phoenix Sqlline の動作が停止する
-
-次の手順を実行します。
-
-1. 次の Phoenix テーブルを削除します。
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.MUTEX`
-    1. `SYSTEM.CATALOG`
-1. テーブルを削除できない場合は、HBase を再起動してテーブルへの接続をすべて解除してください。
-1. `sqlline.py` をもう一度実行します。 手順 1 で削除されたすべてのテーブルが Phoenix によって再作成されます。
-1. HBase データ用の Phoenix テーブルとビューを再生成します。
-
-### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>HBase Phoenix のメタデータを HDInsight 3.6 から 4.0 にレプリケートした後に Phoenix Sqlline の動作が停止する
-
-次の手順を実行します。
-
-1. レプリケーションを行う前に、宛先の 4.0 クラスターに移動して `sqlline.py` を実行します。 このコマンドによって、4.0 にのみ存在する `SYSTEM.MUTEX` や `SYSTEM.LOG` などのPhoenix テーブルが生成されます。
-1. 次のテーブルを削除します。
-    1. `SYSTEM.FUNCTION`
-    1. `SYSTEM.SEQUENCE`
-    1. `SYSTEM.STATS`
-    1. `SYSTEM.CATALOG`
-1. HBase レプリケーションの起動
+### <a name="bring-your-own-key-for-disk-encryption"></a>Bring Your Own Key でディスクを暗号化する
+HDInsight のマネージド ディスクはすべて、Azure Storage Service Encryption (SSE) で保護されます。 これらのディスク上のデータは、既定で Microsoft が管理するキーを使用して暗号化されます。 このリリース以降、ディスクの暗号化に Bring Your Own Key (BYOK) を使用し、Azure Key Vault を使用して管理することができます。 BYOK 暗号化はクラスターの作成時に 1 回のステップで構成でき、追加コストはかかりません。 Azure Key Vault にマネージド ID として HDInsight を登録し、お使いのクラスターの作成時に暗号化キーを追加するだけです。 詳細については、「[お客様が管理するキー ディスクの暗号化](https://docs.microsoft.com/azure/hdinsight/disk-encryption)」を参照してください。
 
 ## <a name="deprecation"></a>非推奨
+このリリースに非推奨はありません。 今後の非推奨に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
 
-Apache Storm と ML サービスは、HDInsight 4.0 では使用できません。
+## <a name="behavior-changes"></a>動作の変更
+このリリースに動作変更はありません。 今後の変更に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。
+
+## <a name="upcoming-changes"></a>今後の変更
+今後のリリースでは、次の変更が行われます。 
+
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>ヘッド ノードには最低 4 コアの VM が必要 
+HDInsight クラスターの高可用性および信頼性を確保するには、ヘッド ノードに最低 4 コアの VM が必要です。 2020 年 4 月 6 日以降、お客様は新しい HDInsight クラスターのヘッド ノードに、4 コア以上の VM のみを選択することができます。 既存のクラスターは正常に実行されます。 
+
+### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark クラスター ノード サイズの変更 
+今後のリリースで、ESP Spark クラスターに許容される最小ノード サイズは Standard_D13_V2 に変更されます。 A シリーズの VM は、CPU とメモリの容量が比較的少ないため、ESP クラスターで問題が発生する可能性があります。 新しい ESP クラスターの作成に A シリーズの VM は非推奨です。
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
+HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 今後のリリースでは、HDInsight では代わりに Azure 仮想マシン スケール セットを使用します。 Azure 仮想マシン スケール セットの詳細をご確認ください。
+
+### <a name="hbase-20-to-21"></a>HBase 2.0 から 2.1
+今後の HDInsight 4.0 リリースでは、HBase のバージョンがバージョン 2.0 から 2.1 にアップグレードされます。
+
+## <a name="bug-fixes"></a>バグの修正
+HDInsight は引き続き、クラスターの信頼性とパフォーマンスの向上を実現します。 
+
+## <a name="component-version-change"></a>コンポーネントのバージョンの変更
+このリリースでは、コンポーネントのバージョン変更はありません。 HDInsight 4.0 および HDInsight 3.6 の現在のコンポーネント バージョンについては、こちらを参照してください。
+

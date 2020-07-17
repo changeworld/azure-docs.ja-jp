@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを設計する
+title: チュートリアル:Azure Database for PostgreSQL - Single Server を設計する - Azure CLI
 description: このチュートリアルでは、Azure CLI を使用して、初めての Azure Database for PostgreSQL - 単一サーバーを作成、構成、および照会する方法を示します。
 author: rachel-msft
 ms.author: raagyema
@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 5/6/2019
-ms.openlocfilehash: ed272afcfedaf6c781d2a96e5732fe2368914a67
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/25/2019
+ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073064"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75459998"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
@@ -21,8 +21,8 @@ ms.locfileid: "65073064"
 > * Azure Database for PostgreSQL サーバーの作成
 > * サーバーのファイアウォールの構成
 > * [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティを使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > * データの復元
 
@@ -37,8 +37,8 @@ CLI をローカルにインストールして使用する場合、この記事�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
-[az group create](/cli/azure/group) コマンドで [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+[az group create](/cli/azure/group) コマンドで [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
@@ -121,15 +121,21 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
 クライアント コンピューターに PostgreSQL がインストールされている場合は、[psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) のローカル インスタンスまたは Azure Cloud Console を使用して Azure PostgreSQL サーバーに接続できます。 ここでは psql コマンド ライン ユーティリティを使用して、Azure Database for PostgreSQL サーバーに接続しましょう。
 
 1. 次の psql コマンドを実行して Azure Database for PostgreSQL データベースに接続します。
-   ```azurecli-interactive
+   ```
    psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
    ```
 
    たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mydemoserver.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 パスワードの入力を求められたら、選択した `<server_admin_password>` を入力します。
   
-   ```azurecli-interactive
+   ```
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
+
+   > [!TIP]
+   > Postgres への接続に URL パスを使用する場合は、`%40` を使用してユーザー名の @ 記号を URL エンコードします。 たとえば、psql の接続文字列は次のようになります。
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
 
 2. サーバーに接続したら、プロンプトで空のデータベースを作成します。
    ```sql
@@ -193,7 +199,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
 
-| Setting | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
@@ -205,14 +211,14 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 コマンドは同期的であり、サーバーが復元された後に戻ります。 復元が終了した後、作成された新しいサーバーを調べます。 データが期待どおりに復元されたことを確認します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明しました。
 > [!div class="checklist"]
 > * Azure Database for PostgreSQL サーバーの作成
 > * サーバーのファイアウォールの構成
 > * [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティを使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > * データの復元
 

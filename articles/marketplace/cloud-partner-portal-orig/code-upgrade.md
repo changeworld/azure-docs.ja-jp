@@ -1,40 +1,21 @@
 ---
-title: 最新プラットフォームへのコードのアップグレード | Microsoft Docs
-description: このトピックでは、Microsoft Dynamics 365 for Operations プラットフォームのバージョンを最新のプラットフォーム リリースにアップグレードする方法を説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: pbutlerm
-manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
+title: 最新のプラットフォームへのコードのアップグレード | Azure Marketplace
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「このトピックでは、Microsoft Dynamics 365 for Operations プラットフォームのバージョンを最新のプラットフォーム リリースにアップグレードする方法を説明します。」
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 787d9ef509bcafeb6a21d4b0ec952ea1eb4fd52b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 09/30/2019
+ms.author: dsindona
+ms.openlocfilehash: db5ec661e575d7a6d2f994040a9fb452bd87b507
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808016"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276157"
 ---
 # <a name="upgrading-code-to-the-latest-platform"></a>最新プラットフォームへのコードのアップグレード
 
-この記事では、Microsoft Dynamics 365 for Operations プラットフォームのバージョンを最新のプラットフォーム リリースにアップグレードする方法を説明します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 for Finance and Operation オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」を参照してください。
 
-## <a name="overview"></a>概要
-
-Microsoft Dynamics 365 for Operations プラットフォームは、次のコンポーネントで構成されます。
-
-Dynamics 365 for Operations プラットフォーム バイナリ (Application Object Server (AOS)、Data Management Framework、レポート/ビジネス インテリジェンス (BI) フレームワーク、開発ツール、分析サービスなど)。 次のアプリケーション オブジェクト ツリー (AOT) パッケージ。
-
-1. アプリケーション プラットフォーム
-2. アプリケーション基準
-3. Test Essentials
-
-**"重要"**: 最新の Dynamics 365 for Operations プラットフォームに移行するには、お使いの Dynamics 365 for Operations の実装に、プラットフォームに属する AOT パッケージのカスタマイズ (オーバーレイヤー) が含まれていないことが必要です。 この制限は、プラットフォームに対してシームレスで継続的な更新ができるようにするために、プラットフォーム更新プログラム 3 で導入されました。 プラットフォーム更新プログラム 3 よりも以前のプラットフォーム上で実行している場合は、この記事の最後にある、以前のビルドからプラットフォーム更新プログラム 3 へのアップグレードに関するセクションを参照してください。
-
-コードのアップグレードの詳細については、[こちら](https://docs.microsoft.com/dynamics365/operations/dev-itpro/migration-upgrade/upgrade-latest-platform-update)をご覧ください。
+新しい Dynamics 365 for Operations オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」の手順に従って、オファーを作成します。

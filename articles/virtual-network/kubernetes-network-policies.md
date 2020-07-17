@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b4f8577724781e5df10846a5fc4e30c8320403f2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219772"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73159683"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "47219772"
 Azure ネットワーク ポリシーは、VNet 統合をコンテナーに提供する Azure CNI と連携して動作します。 現在、このポリシーは Linux ノードでのみサポートされています。 実装によって Linux IP テーブルの規則が定義済みポリシーに基づいて構成され、トラフィックのフィルター処理が強制されます。
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Kubernetes クラスターのセキュリティの計画
-ご自身のクラスターにセキュリティを実装する場合は、ネットワーク セキュリティ グループ (NSG) を使用して、南北のトラフィック、つまりクラスター サブネットを出入りするトラフィックをフィルター処理します。また、Kubernetes ネットワーク ポリシーを使用して、東西のトラフィック、つまり クラスター内のポッド間のトラフィックをフィルター処理します。
+ご自身のクラスターにセキュリティを実装する場合は、ネットワーク セキュリティ グループ (NSG) を使用して、南北のトラフィック、つまりクラスター サブネットを出入りするトラフィックをフィルター処理します。また、Kubernetes ネットワーク ポリシーを使用して、東西のトラフィック、つまりクラスター内のポッド間のトラフィックをフィルター処理します。
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Azure Kubernetes ネットワーク ポリシーの使用
 次の方法で Azure ネットワーク ポリシーを使用して、ポッドにマイクロセグメンテーションを提供できます。
@@ -42,7 +42,7 @@ ACS エンジンは、Azure での Kubernetes クラスター デプロイ用 Az
 
 ACS エンジンを使用してデプロイされたクラスターでポリシーを有効にするには、クラスター定義ファイルで networkPolicy 設定の値が "azure" になるように指定します。
 
-#### <a name="example-configuration"></a>構成の例
+#### <a name="example-configuration"></a>構成例
 
 次の JSON 構成の例では、新しい仮想ネットワークとサブネットを作成し、Azure CNI を使用して、そこに Kubernetes クラスターをデプロイします。 JSON ファイルの編集には "メモ帳" を使用することをお勧めします。 
 ```json
@@ -51,7 +51,7 @@ ACS エンジンを使用してデプロイされたクラスターでポリシ�
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },
@@ -99,7 +99,7 @@ ACS エンジンを使用してデプロイされたクラスターでポリシ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md) について確認します。
 -  [コンテナー ネットワーク](container-networking-overview.md)について確認します。
 - Kubernetes クラスターまたは Docker コンテナー用の[プラグインをデプロイ](deploy-container-networking.md)します。

@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Python を使ってニュース検索を実行する - Bing News Search REST API
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Python を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7745db722d1862e5254c0e0fb07605799a8f7457
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076719"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448489"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -32,11 +32,9 @@ ms.locfileid: "58076719"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 任意の IDE またはエディターで新しい Python ファイルを作成し、request モジュールをインポートします。 サブスクリプション キー、エンドポイント、検索語句の変数を作成します。 エンドポイントは、Azure ダッシュボードで確認できます。
+1. 任意の IDE またはエディターで新しい Python ファイルを作成し、request モジュールをインポートします。 サブスクリプション キー、エンドポイント、検索語句の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ```python
 import requests
@@ -77,11 +75,12 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 
 ```python
 from IPython.display import HTML
-rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc) for desc in descriptions])
+rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc)
+                  for desc in descriptions])
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

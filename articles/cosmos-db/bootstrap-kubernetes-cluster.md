@@ -3,15 +3,15 @@ title: Azure Cosmos DB で Azure Kubernetes を使用する方法
 description: Azure Cosmos DB (プレビュー) を使用して Azure での Kubernetes クラスターのブートストラップする方法について説明します
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 43aa0956ef1f44fa5705800ff2b424608ec75499
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795610"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70093722"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Cosmos DB (プレビュー) で Azure Kubernetes を使用する方法
 
@@ -29,11 +29,11 @@ Azure Cosmos DB での etcd API の詳細については、[概要](etcd-api-int
 
 1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) の最新バージョンをインストールします。 お使いのオペレーティング システムに固有の Azure CLI をダウンロードしてインストールできます。
 
-1. [v0.32.3](https://github.com/Azure/aks-engine/releases/tag/v0.32.3) バージョンの Azure Kubernetes エンジンをインストールします。 さまざまなオペレーティング システムのインストール手順は、[Azure Kubernetes エンジン](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)のページに記載されています。 リンク先のドキュメントの **AKS エンジンのインストール**に関するセクションの手順だけが必要です。ダウンロード後、zip ファイルを抽出します。
+1. Azure Kubernetes エンジンの[最新バージョン](https://github.com/Azure/aks-engine/releases)をインストールします。 さまざまなオペレーティング システムのインストール手順は、[Azure Kubernetes エンジン](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)のページに記載されています。 リンク先のドキュメントの **AKS エンジンのインストール**に関するセクションの手順だけが必要です。ダウンロード後、zip ファイルを抽出します。
 
    Azure Kubernetes エンジン (**aks-engine**) は、Azure 上の Kubernetes クラスター用の Azure Resource Manager テンプレートを生成します。 aks-engine への入力は、オーケストレーター、フィーチャー、エージェントなど、目的のクラスターを記述したクラスター定義ファイルです。 入力ファイルの構造は、Azure Kubernetes Service のパブリック API に似ています。
 
-1. Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 https://aka.ms/cosmosetcdapi-signup でサインアップしてプレビュー バージョンを使用します。 フォームを送信した後、サブスクリプションは、Azure Cosmos etcd API を使用できるようにホワイトリストに登録されます。 
+1. Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 [https://aka.ms/cosmosetcdapi-signup](https://aka.ms/cosmosetcdapi-signup ) でサインアップしてプレビュー バージョンを使用します。 フォームを送信した後、サブスクリプションは、Azure Cosmos etcd API を使用できるようにホワイトリストに登録されます。 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Azure Cosmos DB でクラスターをデプロイする
 
@@ -77,7 +77,7 @@ Azure Cosmos DB での etcd API の詳細については、[概要](etcd-api-int
 1. コマンド プロンプトから、Azure Kubernetes エンジン実行可能ファイルが配置されているフォルダーに移動します。 たとえば、次のようにコマンド プロンプトでフォルダーに移動することができます。
 
    ```cmd
-   cd "\aks-engine-v0.32.3-windows-amd64\aks-engine-v0.32.3-windows-amd64"
+   cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
 1. 任意のテキスト エディターを開き、Azure Cosmos DB etcd API を使用して、Azure Kubernetes クラスターをデプロイする Resource Manager テンプレートを定義します。 次の JSON 定義をテキスト エディターにコピーし、`apiModel.json` としてファイルに保存します。
@@ -179,7 +179,7 @@ INFO[0587] Finished ARM Deployment (aks-sg-test-546247491). Succeeded
 
 Azure Cosmos アカウントの名前は、k8s が付加された、指定した DNS プレフィックスに一致します。 Azure Cosmos アカウントは、**EtcdDB** という名前のデータベースと **EtcdData** という名前のコンテナーで自動的にプロビジョニングされます。 コンテナーにはすべての etcd 関連データが格納されます。 コンテナーは、特定数の要求ユニットでプロビジョニングされ、ワークロードに基づいて、[スループットを拡大縮小 (増減)](scaling-throughput.md)できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos のデータベース、コンテナー、およびアイテムの操作](databases-containers-items.md)方法について学習する
 * [プロビジョニング スループット コストの最適化](optimize-cost-throughput.md)方法について学習する

@@ -1,26 +1,20 @@
 ---
-title: Azure PowerShell を使用した仮想マシン スケール セットの管理 | Microsoft Docs
+title: Azure PowerShell を使用して仮想マシン スケール セットを管理する
 description: 仮想マシン スケール セットを管理するための一般的な Azure PowerShell コマンドレット (インスタンスを起動および停止したり、スケール セットの容量を変更したりする方法など)。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: c4684dd27aeed4fab4335a93ea5a458b4a9f5d80
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 68b5aa21f861009dd78f48428fa0ffdc5b5ae3a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821185"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124871"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 
@@ -28,7 +22,7 @@ ms.locfileid: "56821185"
 
 仮想マシン スケール セットを作成する必要がある場合は、[Azure PowerShell でスケール セットを作成](quick-create-powershell.md)できます。
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
 スケール セットに関する全体的な情報を表示するには、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) を使用します。 次の例では、*myResourceGroup* リソース グループ内の *myScaleSet* という名前のスケール セットに関する情報を取得します。 独自の名前を次のように入力します。
@@ -45,7 +39,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加し、表示するインスタンスを指定します。 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示します。 独自の名前を次のように入力します。
+特定の VM インスタンスに関する追加情報を表示するには、`-InstanceId`Get-AzVmssVM[ に ](/powershell/module/az.compute/get-azvmssvm) パラメーターを追加し、表示するインスタンスを指定します。 次の例では、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示します。 独自の名前を次のように入力します。
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -111,5 +105,5 @@ Remove-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スケール セットに対する他の一般的なタスクとして、[アプリケーションのデプロイ](virtual-machine-scale-sets-deploy-app.md)や [VM インスタンスのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)があります。 また、Azure PowerShell を使用して、[自動スケールの規則を構成する](virtual-machine-scale-sets-autoscale-overview.md)こともできます。

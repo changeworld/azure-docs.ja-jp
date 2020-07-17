@@ -1,23 +1,18 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
-description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 コンプライアンスの詳細を取得する方法を説明します。
-author: DCtheGeek
-ms.author: dacoulte
+description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
 ms.date: 02/01/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: how-to
+ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263782"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194008"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
-Azure Policy の最大の利点の 1 つは、サブスクリプション内のリソースまたはサブスクリプションの[管理グループ](../../management-groups/overview.md)を介して提供される分析情報と制御です。 この制御は、さまざまな方法で実行できます。たとえば、リソースが誤った場所に作成されるのを防いだり、一般的で一貫性のあるタグの使用を強制したり、既存のリソースの適切な構成と設定を監査したりすることができます。 どの場合でも Policy によってデータが生成され、環境のコンプライアンス状態の理解に役立てることができます。
+Azure Policy の最大の利点の 1 つは、サブスクリプション内のリソースまたはサブスクリプションの[管理グループ](../../management-groups/overview.md)を介して提供される分析情報と制御です。 この制御は、さまざまな方法で実行できます。たとえば、リソースが誤った場所に作成されるのを防いだり、一般的で一貫性のあるタグの使用を強制したり、既存のリソースの適切な構成と設定を監査したりすることができます。 どの場合でも Azure Policy によってデータが生成され、環境のコンプライアンス状態の理解に役立てることができます。
 
 ポリシーとイニシアティブ割り当てによって生成されたコンプライアンス情報には、次のようないくつかの方法でアクセスすることができます。
 
@@ -29,11 +24,9 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 > [!WARNING]
 > コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」をご覧ください)。
 
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
-
 ## <a name="evaluation-triggers"></a>評価のトリガー
 
-完了した評価サイクルの結果は、`PolicyStates` および `PolicyEvents` 操作を通じて `Microsoft.PolicyInsights` リソース プロバイダーで使用可能です。 Policy Insights REST API の操作の詳細については、「[Policy Insights](/rest/api/policy-insights/)」を参照してください。
+完了した評価サイクルの結果は、`PolicyStates` および `PolicyEvents` 操作を通じて `Microsoft.PolicyInsights` リソース プロバイダーで使用可能です。 Azure Policy Insights REST API の操作の詳細については、「[Azure Policy Insights](/rest/api/policy-insights/)」を参照してください。
 
 割り当てられたポリシーとイニシアティブの評価は、次のようなさまざまなイベントの結果として発生します。
 
@@ -66,7 +59,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
   POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-- リソース グループ
+- Resource group
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
@@ -88,9 +81,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>コンプライアンスのしくみ
 
-割り当てのリソースがポリシーや統括ルールに従っていない場合、そのリソースは**非準拠**になります。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
+割り当てのリソースがポリシーや統括ルールに従っていない場合、そのリソースは**非準拠**になります。
+次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
 
-| リソースの状態 | 効果 | ポリシーの評価 | コンプライアンスの状態 |
+| リソースの状態 | 結果 | ポリシーの評価 | コンプライアンスの状態 |
 | --- | --- | --- | --- |
 | Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 準拠していない |
 | Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 対応 |
@@ -102,11 +96,11 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 たとえば、ContosoRG というリソース グループがあり、このリソース グループの一部のストレージ アカウント (赤で強調表示されているアカウント) がパブリック ネットワークに公開されているとします。
 
-![パブリック ネットワークに公開されているストレージ アカウント](../media/getting-compliance-data/resource-group01.png)
+:::image type="content" source="../media/getting-compliance-data/resource-group01.png" alt-text="パブリック ネットワークに公開されるストレージ アカウント" border="false":::
 
 この例では、セキュリティ リスクに注意する必要があります。 これで、作成されたポリシー割り当てが、ContosoRG リソース グループ内のすべてのストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を**非準拠**に変更します。
 
-![監査された非準拠のストレージ アカウント](../media/getting-compliance-data/resource-group03.png)
+:::image type="content" source="../media/getting-compliance-data/resource-group03.png" alt-text="監査対象となった準拠していないストレージ アカウント" border="false":::
 
 **準拠**と**非準拠**の他に、ポリシーとリソースには次の 3 つの状態があります。
 
@@ -114,71 +108,53 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 - **未開始**:ポリシーまたはリソースの評価サイクルが開始されていません。
 - **未登録**:Azure Policy リソース プロバイダーが登録されていないか、ログインしたアカウントにコンプライアンス データを読み取るアクセス許可がありません。
 
-ポリシーでは、定義にある**型**および**名前**フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**または**非準拠**のどちらかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべてのリソースが適用可能と見なされ、評価されます。
+Azure Policy では、定義内の **type** と **name** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**または**非準拠**のどちらかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべてのリソースが適用可能と見なされ、評価されます。
 
 コンプライアンス対応率は、**準拠している**リソースを _リソース合計_ で割って算出されます。
 _リソース合計_ は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
-![[コンプライアンス] ページからのポリシー コンプライアンスの例](../media/getting-compliance-data/simple-compliance.png)
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[コンプライアンス] ページからのポリシー コンプライアンスの例" border="false":::
 
 ## <a name="portal"></a>ポータル
 
-Azure portal には、環境のコンプライアンス状態を視覚化して理解するためのグラフィカルなエクスペリエンスが表示されます。 **[ポリシー]** ページの **[概要]** オプションでは、ポリシーとイニシアティブの両方のコンプライアンスに関して、利用可能なスコープの詳細が表示されます。 コンプライアンス状態および割り当てごとの数と共に、過去 7 日間のコンプライアンスを示すグラフが含まれます。
-**[コンプライアンス]** ページには、この同じ情報の大部分 (グラフを除く) が含まれていますが、フィルター処理と並べ替えのオプションが追加されています。
+Azure portal には、環境のコンプライアンス状態を視覚化して理解するためのグラフィカルなエクスペリエンスが表示されます。 **[ポリシー]** ページの **[概要]** オプションでは、ポリシーとイニシアティブの両方のコンプライアンスに関して、利用可能なスコープの詳細が表示されます。 コンプライアンス状態および割り当てごとの数と共に、過去 7 日間のコンプライアンスを示すグラフが含まれます。 **[コンプライアンス]** ページには、この同じ情報の大部分 (グラフを除く) が含まれていますが、フィルター処理と並べ替えのオプションが追加されています。
 
-![[Policy Compliance]\(ポリシー コンプライアンス\) ページの例](../media/getting-compliance-data/compliance-page.png)
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="[Azure Policy コンプライアンス] ページの例" border="false":::
 
 ポリシーまたはイニシアティブは異なるスコープに割り当てることができるため、表には、各割り当てのスコープと割り当てられた定義の種類が含まれます。 各割り当ての準拠していないリソースおよび準拠していないポリシーの数も提供されます。 表のポリシーまたはイニシアティブをクリックすると、その特定の割り当てのコンプライアンスに関する詳しい情報が表示されます。
 
-![[ポリシー準拠状況の詳細] ページの例](../media/getting-compliance-data/compliance-details.png)
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="[Azure Policy コンプライアンスの詳細] ページの例" border="false":::
 
 **[リソース コンプライアンス]** タブのリソース リストには、現在の割り当てに対する既存のリソースの評価状態が表示されます。 タブでは既定で **[非対応]** に設定されますが、これをフィルター処理することができます。
-リソースの作成要求によってトリガーされるイベント (追加、監査、拒否、デプロイ) は、**[イベント]** タブに表示されます。
+リソースの作成要求によってトリガーされるイベント (追加、監査、拒否、デプロイ) は、 **[イベント]** タブに表示されます。
 
-![ポリシーのコンプライアンスのイベントの例](../media/getting-compliance-data/compliance-events.png)
+> [!NOTE]
+> AKS エンジン ポリシーの場合、表示されるリソースはリソース グループです。
 
-詳細情報を収集するイベントの行を右クリックし、**[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Azure Policy コンプライアンス イベントの例" border="false":::
 
-![ポリシー コンプライアンスのアクティビティ ログの例](../media/getting-compliance-data/compliance-activitylog.png)
+[リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes) リソースについては、 **[リソースのコンプライアンス]** タブで、リソースを選択するか、行を右クリックして **[ポリシー準拠状況の詳細]** を選択すると、コンポーネントのコンプライアンスの詳細が表示されます。 このページには、このリソースに割り当てられているポリシー、イベント、コンポーネント イベント、変更履歴を表示するためのタブも用意されています。
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Azure Policy コンポーネントのコンプライアンスの詳細の例" border="false":::
+
+リソースのコンプライアンス ページに戻って、詳細情報を収集するイベントの行を右クリックし、 **[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
+
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Policy コンプライアンス アクティビティ ログの例" border="false":::
 
 ### <a name="understand-non-compliance"></a>コンプライアンス違反の把握
-
-<a name="change-history-preview"></a>
 
 リソースが**コンプライアンスに違反している**と判断される場合、多くの理由が考えられます。 リソースの**コンプライアンス違反**の理由や、原因となった変更を特定する方法については、「[コンプライアンス違反の原因の特定](./determine-non-compliance.md)」をご覧ください。
 
 ## <a name="command-line"></a>コマンド ライン
 
-ポータルで利用できるのと同じ情報は、REST API を使用して ([ARMClient](https://github.com/projectkudu/ARMClient) を含めて)、または Azure PowerShell を使用して取得することができます。 REST API の完全な詳細情報については、[Policy Insights](/rest/api/policy-insights/) リファレンスを参照してください。 REST API のリファレンス ページには、各操作に緑色の [使ってみる] ボタンがあり、ブラウザーで直接試すことができます。
+ポータルで利用できるのと同じ情報は、REST API ([ARMClient](https://github.com/projectkudu/ARMClient) を使用してなど)、Azure PowerShell、Azure CLI (プレビュー) を使用して取得することができます。
+REST API の完全な詳細については、[Azure Policy Insights](/rest/api/policy-insights/) リファレンスを参照してください。 REST API のリファレンス ページには、各操作に緑色の [使ってみる] ボタンがあり、ブラウザーで直接試すことができます。
 
-Azure PowerShell で次の例を使用するには、この例のコードを使用して認証トークンを構築します。 次に、後で解析できる JSON オブジェクトを取得するために、例の $restUri を文字列に置き換えます。
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-
-$azContext = Get-AzContext
-$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
-$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
-$authHeader = @{
-    'Content-Type'='application/json'
-    'Authorization'='Bearer ' + $token.AccessToken
-}
-
-# Define the REST API to communicate with
-# Use double quotes for $restUri as some endpoints take strings passed in single quotes
-$restUri = "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04"
-
-# Invoke the REST API
-$response = Invoke-RestMethod -Uri $restUri -Method POST -Headers $authHeader
-
-# View the response object (as JSON)
-$response
-```
+REST API の例については、ARMClient または同様のツールを使用して Azure に対する認証を処理します。
 
 ### <a name="summarize-results"></a>結果の要約
 
-REST API を使用すると、コンテナー、定義、または割り当てごとに要約を実行できます。 Policy Insight の [Summarize For Subscription](/rest/api/policy-insights/policystates/summarizeforsubscription) を使用した、サブスクリプション レベルの要約の例を次に示します。
+REST API を使用すると、コンテナー、定義、または割り当てごとに要約を実行できます。 Azure Policy Insights の [[Summarize For Subscription]\(サブスクリプションの要約\)](/rest/api/policy-insights/policystates/summarizeforsubscription) を使用した、サブスクリプション レベルでの要約の例を次に示します。
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -288,11 +264,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-ポリシー イベントについてクエリを実行する方法の詳細については、[ポリシー イベント](/rest/api/policy-insights/policyevents)に関する API リファレンスの記事を参照してください。
+ポリシー イベントについてクエリを実行する方法の詳細については、[Azure Policy のイベント](/rest/api/policy-insights/policyevents)に関する API リファレンスの記事を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Policy 用の Azure PowerShell モジュールは PowerShell ギャラリーで [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights) として入手することができます。 PowerShellGet では、`Install-Module -Name Az.PolicyInsights` を使用してモジュールをインストールできます (最新の [Azure PowerShell](/powershell/azure/install-az-ps) がインストールされていることを確認してください)。
+Azure Policy 用の Azure PowerShell モジュールは、PowerShell ギャラリーで [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights) として入手できます。
+PowerShellGet では、`Install-Module -Name Az.PolicyInsights` を使用してモジュールをインストールできます (最新の [Azure PowerShell](/powershell/azure/install-az-ps) がインストールされていることを確認してください)。
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -415,15 +392,15 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/collect-activity-logs.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log-collect.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
-![Azure Monitor ログを使用したポリシーのコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Monitor ログを使用した Azure Policy のコンプライアンス" border="false":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy のサンプル](../samples/index.md)を確認する
-- [ポリシー定義の構造](../concepts/definition-structure.md)を確認する
-- [ポリシーの効果について](../concepts/effects.md)確認する
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解する
-- [準拠していないリソースを修復する](remediate-resources.md)方法を確認する
+- [Azure Policy のサンプル](../samples/index.md)を確認します。
+- 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
+- 「[Policy の効果について](../concepts/effects.md)」を確認します。
+- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
+- [準拠していないリソースを修復する](remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL での高可用性の概念
-description: この記事では、Azure Database for PostgreSQL を使用する場合の高可用性の情報を提供します。
+title: 高可用性 - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure Database for PostgreSQL - Single Server での高可用性について情報を提供します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: d43647b57469efa4581dc1c74a842a51e9d54ad7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 5/6/2019
+ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699818"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74768573"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での高可用性の概念
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性の概念
 Azure Database for PostgreSQL サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
 
 ## <a name="high-availability"></a>高可用性
@@ -31,6 +31,6 @@ HA モデルと同様に、Azure Database for PostgreSQL がスケールアッ�
 
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [一時的な接続エラーへの対処](concepts-connectivity.md)について学習する
 - [読み取りレプリカを使用してデータをレプリケートする](howto-read-replicas-portal.md)方法を学習する

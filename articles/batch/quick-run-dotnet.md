@@ -1,23 +1,17 @@
 ---
 title: Azure クイック スタート - Batch ジョブの実行 - .NET
-description: Batch .NET クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.devlang: dotnet
+description: C# アプリケーションから Batch .NET クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595350"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117218"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート: .NET API で最初の Azure Batch ジョブを実行する
 
 このクイック スタートでは、Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -47,7 +41,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Visual Studio ソリューション ファイル `BatchDotNetQuickstart.sln` が含まれているディレクトリに移動します。
 
-Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例: 
+Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 次に例を示します。
 
 ```csharp
 // Batch account credentials
@@ -208,7 +202,7 @@ try
 
 ### <a name="create-tasks"></a>タスクの作成
 
-このアプリでは、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧を作成します。 各タスクは、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用して入力の `ResourceFile` オブジェクトを処理します。 このサンプルのコマンド ラインでは、Windows の `type` コマンドを実行して入力ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
+このアプリでは、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧を作成します。 各タスクは、`ResourceFile`CommandLine[ プロパティを使用して入力の ](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) オブジェクトを処理します。 このサンプルのコマンド ラインでは、Windows の `type` コマンドを実行して入力ファイルを表示します。 このコマンドは、デモンストレーション用の簡単な例です。 Batch を使用する場合、コマンド ラインは、アプリまたはスクリプトを指定する場所です。 Batch には、アプリやスクリプトをコンピューティング ノードにデプロイする方法が多数用意されています。
 
 その後、このアプリは、[AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。
 
@@ -242,13 +236,13 @@ foreach (CloudTask task in completedtasks)
 }
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリは自動的に、作成された入力用ストレージ コンテナーを削除し、Batch プールとジョブを削除するためのオプションを表示します。 ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールは不要になったら、削除してください。 プールを削除すると、ノード上のタスク出力はすべて削除されます。
 
 リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** をクリックしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Batch .NET API を使用して構築された小さいアプリを実行し、Batch プールと Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行され、作成された出力がノードにダウンロードされました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細を確認し、実際のアプリケーションで並列ワークロードを詳しく見てみるには、Batch .NET のチュートリアルに進んでください。
 

@@ -1,23 +1,23 @@
 ---
-title: Translator Text API の Translate メソッド
+title: Translator の Translate メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の Translate メソッドを使用します。
+description: Azure Cognitive Services のテキストを翻訳するための Translator の Translate メソッド用のパラメーター、ヘッダー、および本文のメッセージを理解します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/17/2020
+ms.author: swmachan
+ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722426"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584639"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
+# <a name="translator-30-translate"></a>Translator 3.0:Translate
 
 テキストを翻訳します。
 
@@ -33,6 +33,8 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
+### <a name="required-parameters"></a>必須のパラメーター
+
 <table width="100%">
   <th width="20%">Query parameter (クエリ パラメーター)</th>
   <th>説明</th>
@@ -41,48 +43,55 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>"<em>必須のパラメーター</em>"。<br/>クライアントによって要求される API のバージョン。 値は <code>3.0</code> とする必要があります。</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して<a href="./v3-0-languages.md">サポートされている言語</a>を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
-  </tr>
-  <tr>
     <td>to</td>
     <td>"<em>必須のパラメーター</em>"。<br/>出力テキストの言語を指定します。 ターゲット言語は、<code>translation</code> スコープに含まれている<a href="./v3-0-languages.md">サポートされている言語</a>のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには <code>to=de</code> を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、<code>to=de&to=it</code> を使用します。</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>省略可能なパラメーター
+
+<table width="100%">
+  <th width="20%">Query parameter (クエリ パラメーター)</th>
+  <th>説明</th>
+  <tr>
+    <td>from</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して<a href="./v3-0-languages.md">サポートされている言語</a>を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。 <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動的ディクショナリ</a>機能を使用する場合は、自動検出ではなく、<code>from</code> パラメーターを使用する必要があります。</td>
+  </tr>  
   <tr>
     <td>textType</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>
   </tr>
   <tr>
     <td>category</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール プロジェクトからこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">プロジェクトの詳細</a>からこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳での不適切な表現の処理方法を指定します。 指定できる値は <code>NoAction</code> (既定値)、<code>Marked</code>、または <code>Deleted</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳での不適切な表現の処理方法を指定します。 指定できる値は <code>NoAction</code> (既定値)、<code>Marked</code>、または <code>Deleted</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は <code>Asterisk</code> (既定値) または <code>Tag</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は <code>Asterisk</code> (既定値) または <code>Tag</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td><em>省略可能なパラメーター</em>。<br/>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。 </td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。 </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td><em>省略可能なパラメーター</em>。<br/>入力テキストと翻訳済みテキストに対して文の境界を含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストと翻訳済みテキストに対して文の境界を含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td><em>省略可能なパラメーター</em>。<br/>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 <code>from</code> パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、<code>suggestedFrom</code> 言語と見なされます。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 <code>from</code> パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、<code>suggestedFrom</code> 言語と見なされます。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td><em>省略可能なパラメーター</em>。<br/>入力テキストのスクリプトを指定します。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストのスクリプトを指定します。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳済みテキストのスクリプトを指定します。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳済みテキストのスクリプトを指定します。</td>
   </tr>
   <tr>
     <td>allowFallback</td>
@@ -94,7 +103,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
@@ -102,7 +111,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。<code>application/json</code></td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/>ペイロードのコンテンツ タイプを指定します。<br/> 指定できる値は <code>application/json; charset=UTF-8</code> です。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -110,7 +119,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>省略可能</em>。<br/>要求を一意に識別する、クライアントで生成された GUID。 <code>ClientTraceId</code> という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
+    <td><em>オプション</em>。<br/>要求を一意に識別する、クライアントで生成された GUID。 <code>ClientTraceId</code> という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
   </tr>
 </table> 
 
@@ -155,7 +164,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
     翻訳が実行されない場合、`transliteration` オブジェクトは含められません。
 
-    * `alignment`:`proj` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、入力テキストが翻訳済みテキストにマッピングされます。 アライメント情報は、要求パラメーター `includeAlignment` が `true` である場合に提供されるだけとなります。 アライメントは、次の形式の文字列値として返されます: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 個の単語が他の言語の 0 個、1 個、または複数個の単語にアライメントされる場合があります。さらに、アライメントされる単語が連続していない場合もあります。 アライメント情報が使用できない場合、アライメント要素は空になります。 例と制限事項については、「[アライメント情報を取得する](#obtain-alignment-information)」を参照してください。
+    * `alignment`:`proj` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、入力テキストが翻訳済みテキストにマッピングされます。 アライメント情報は、要求パラメーター `includeAlignment` が `true` である場合に提供されるだけとなります。 アライメントは、次の形式の文字列値として返されます: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 つの単語が他の言語では 0 個、1 個、または複数個の単語にアライメントされる場合があり、アライメントされた単語が連続していない場合もあります。 アライメント情報が使用できない場合、アライメント要素は空になります。 例と制限事項については、「[アライメント情報を取得する](#obtain-alignment-information)」を参照してください。
 
     * `sentLen`:入力テキストと出力テキスト内で文の境界を返すオブジェクトです。
 
@@ -172,7 +181,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
     <tr>
     <td>X-RequestId</td>
@@ -193,7 +202,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>400</td>
@@ -213,7 +222,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -225,21 +234,17 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator Text API のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
 
 ## <a name="examples"></a>例
 
 ### <a name="translate-a-single-input"></a>単一の入力を翻訳する
 
-この例では、1 つの文を英語から簡体字中国語に翻訳する方法を示します。
+この例では、1 つの文を英語から簡体中国語に翻訳する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
-```
-
----
 
 応答本文を次に示します。
 
@@ -257,15 +262,11 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-a-single-input-with-language-auto-detection"></a>言語自動検出を使用して単一の入力を翻訳する
 
-この例では、1 つの文を英語から簡体字中国語に翻訳する方法を示します。 要求では入力言語が指定されていません。 代わりに、ソース言語の自動検出が使用されます。
+この例では、1 つの文を英語から簡体中国語に翻訳する方法を示します。 要求では入力言語が指定されていません。 代わりに、ソース言語の自動検出が使用されます。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
-```
-
----
 
 応答本文を次に示します。
 
@@ -285,13 +286,9 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 音訳を追加して、前の例を拡張してみましょう。 次の要求では、ラテン文字で記述する、中国語の翻訳が求められています。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
-```
-
----
 
 応答本文を次に示します。
 
@@ -316,13 +313,9 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 一度に複数の文字列を翻訳するには、要求本文に文字列の配列を指定するだけです。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
-```
-
----
 
 応答本文を次に示します。
 
@@ -345,13 +338,9 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 この例では、1 つの要求で同じ入力を複数の言語に翻訳する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
-```
-
----
 
 応答本文を次に示します。
 
@@ -374,7 +363,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Action</th>
+  <th>アクション</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>これは既定の動作です。 不適切な表現はソースからターゲットに渡されます。<br/><br/>
@@ -401,16 +390,11 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   </tr>
 </table> 
 
-例: 
+次に例を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
-```
-
----
-
 次が返されます。
 
 ```
@@ -425,13 +409,9 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 次の場合と比較します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
-```
-
----
 
 その最後の要求では次が返されます。
 
@@ -447,7 +427,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>マークアップを含むコンテンツの翻訳および翻訳対象の決定
 
-HTML ページからのコンテンツや XML ドキュメントからのコンテンツなど、マークアップを含むコンテンツを翻訳するのが一般的です。 タグ付きのコンテンツを翻訳する場合は、クエリ パラメーター `textType=html` を含めます。 さらに、特定のコンテンツを翻訳から除外すると便利な場合があります。 属性 `class=notranslate` を使用すると、元の言語のまま残す必要があるコンテンツを指定できます。 次の例では、1 番目の `div` 要素内のコンテンツは翻訳されませんが、2 番目の `div` 要素内のコンテンツは変換されます。
+HTML ページからのコンテンツや XML ドキュメントからのコンテンツなど、マークアップを含むコンテンツを翻訳するのが一般的です。 タグ付きのコンテンツを翻訳する場合は、クエリ パラメーター `textType=html` を含めます。 さらに、特定のコンテンツを翻訳から除外すると便利な場合があります。 属性 `class=notranslate` を使用すると、元の言語のまま残す必要があるコンテンツを指定できます。 次の例では、1 番目の `div` 要素内のコンテンツは翻訳されませんが、2 番目の `div` 要素内のコンテンツは翻訳されます。
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -456,13 +436,9 @@ HTML ページからのコンテンツや XML ドキュメントからのコン�
 
 要求の例を次に示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
-```
-
----
 
 応答は次のとおりです。
 
@@ -478,15 +454,19 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="obtain-alignment-information"></a>アラインメント情報を取得する
 
+アライメントは、ソースのすべての単語について、次の形式の文字列値として返されます。 各単語の情報は、中国語のようなスペースで区切られない言語 (書記法) の場合を含め、スペースで区切られます。
+
+[[SourceTextStartIndex]\:[SourceTextEndIndex]–[TgtTextStartIndex]\:[TgtTextEndIndex]] *
+
+アラインメント文字列は、たとえば、"0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21" のようになります。
+
+言い換えると、コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 つの単語が他の言語では 0 個、1 個、または複数個の単語にアライメントされる場合があり、アライメントされた単語が連続していない場合もあります。 アライメント情報を使用できない場合は、Alignment 要素が空になります。 このメソッドは、その場合にエラーを返しません。
+
 アライメント情報を受信するには、クエリ文字列上で `includeAlignment=true` を指定します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
-```
-
----
 
 応答は次のとおりです。
 
@@ -506,25 +486,25 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 アライメント情報は `0:2-0:1` で始まっています。これは、ソース テキスト内の最初の 3 文字 (`The`) が翻訳済みテキスト内の最初の 2 文字 (`La`) にマッピングされていることを意味します。
 
-次の制限事項に注意してください。
+#### <a name="limitations"></a>制限事項
+アラインメント情報の取得は、フレーズ マッピングの可能性があるプロトタイプの研究とエクスペリエンスのために有効にされている試験的な機能です。 今後、このサポートは停止される可能性があります。 アラインメントがサポートされない場合の重要な制限事項を次に示します。
 
+* HTML 形式のテキスト、つまり textType=html の場合、配置は使用できません。
 * アライメントは言語ペアのサブセットに対してのみ返されます。
-  - 英語から他の任意の言語へ
-  - 他の任意の言語から英語へ。ただし、繁体字中国語、繁体字中国語、およびラトビア語から英語については除く
+  - 英語から他の言語へ (繁体字中国語、広東語 (繁体字)、またはセルビア語 (キリル) 以外)、またはその逆。
   - 日本語から韓国語へ、または韓国語から日本語へ
+  - 日本語から簡体字中国語へ、または簡体字中国語から日本語へ。 
+  - 簡体字中国語から繁体字中国語へ、または繁体字中国語から簡体字中国語へ。 
 * 文があらかじめ用意された翻訳である場合、アラインメントは返されません。 あらかじめ用意された翻訳には、"This is a test" や "I love you" など高い頻度で出現する文があります。
+* [こちら](../prevent-translation.md)で説明されているように、翻訳を禁止するためのいずれかのアプローチを適用する場合、アラインメントは使用できません
 
 ### <a name="obtain-sentence-boundaries"></a>文の境界を取得する
 
 ソース テキストと翻訳済みテキストの文の長さに関する情報を受信するには、クエリ文字列上で `includeSentenceLength=true` を指定します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
+```curl
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
-```
-
----
 
 応答は次のとおりです。
 
@@ -544,18 +524,18 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>動的ディクショナリを使用して翻訳する
 
-単語や語句に適用する翻訳があらかじめわかっている場合は、それを要求内でマークアップとして指定することができます。 動的ディクショナリは、固有名詞や製品名のような複合名詞に対してのみ安全に使用できます。
+単語や語句に適用する翻訳があらかじめわかっている場合は、それを要求内でマークアップとして指定することができます。 動的ディクショナリは、人名や製品名などの固有名詞に対してのみ安全に使用できます。
 
 指定するマークアップでは、次の構文を使用します。
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 たとえば、"The word wordomatic is a dictionary entry." という英文を考えてみます。 単語 _wordomatic_ を翻訳内でそのまま使用するには、次の要求を送信します。
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 結果は次のとおりです。
@@ -564,16 +544,10 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]
 ```
 
 この機能は、`textType=text` または `textType=html` の場合も同じように動作します。 この機能は慎重に使用する必要があります。 翻訳をカスタマイズするには、Custom Translator を使用するのが適切で望ましい方法です。 Custom Translator では、コンテキストおよび統計的確率を最大限に活用します。 コンテキスト内の単語または語句を表示するトレーニング データを作成する余裕がある場合、非常に良い結果が得られます。 [Custom Translator の詳細については、こちらを参照してください](../customization.md)。
- 
-
-
-
-
-

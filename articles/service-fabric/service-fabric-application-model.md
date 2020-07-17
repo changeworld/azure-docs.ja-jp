@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric アプリケーション モデル | Microsoft Docs
-description: Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Service Fabric のアプリケーション モデル
+description: アプリケーションとサービスのマニフェスト ファイルを使用して、Azure Service Fabric のアプリケーションとサービスをモデル化および記述する方法について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 750970233cbcb14d901dbb5fa94f649f6ff8ae6c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666275"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75551881"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Service Fabric でのアプリケーションのモデル化
 ここでは、Azure Service Fabric のアプリケーション モデルの概要と、マニフェスト ファイルを使用してアプリケーションとサービスを定義する方法について説明します。
@@ -49,7 +38,7 @@ ms.locfileid: "58666275"
 > 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。
 - サービスの[状態](service-fabric-concepts-state.md)、[パーティション分割](service-fabric-concepts-partitioning.md)、[可用性](service-fabric-availability-services.md)について学習します。
 - [アプリケーションとサービスのマニフェスト](service-fabric-application-and-service-manifests.md)でのアプリケーションおよびサービスの定義方法を理解します。

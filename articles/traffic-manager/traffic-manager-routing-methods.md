@@ -2,20 +2,20 @@
 title: Azure Traffic Manager - トラフィックのルーティング方法
 description: この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。
 services: traffic-manager
-author: KumudD
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.author: rohink
+ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226987"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager のルーティング方法
 
@@ -23,17 +23,17 @@ Azure Traffic Manager では、さまざまなサービス エンドポイント
 
 Traffic Manager では、次のトラフィック ルーティング方法を使用できます。
 
-* **[[優先順位]](#priority):** すべてのトラフィックにプライマリ サービス エンドポイントを使用し、プライマリまたはバックアップ エンドポイントが使用できない場合に備えてバックアップを提供する場合は、**[優先順位]** を選択します。
-* **[[重み付け]](#weighted):** 一連のエンドポイントにまたがって均等に、またはユーザーが定義する重みに従ってトラフィックを分散させる場合は、**[重み付け]** を選択します。
-* **[[パフォーマンス]](#performance):** 地理的にさまざまな場所にエンドポイントがあり、エンド ユーザーがネットワーク待ち時間が最も短いという点で "最も近い" エンドポイントを使用するようにしたい場合は、**[パフォーマンス]** を選択します。
-* **[[Geographic] (地理的)](#geographic):** DNS クエリの発信元の地理的な場所に基づいて、ユーザーを特定の (Azure、外部、または入れ子になった) エンドポイントに割り当てる場合は、**[Geographic] (地理的)** を選択します。 こうすることで、Traffic Manager の利用者は、ユーザーのリージョンを把握し、そのリージョンに基づいてユーザーをルーティングすることが重要なシナリオを実現できます。 データ主権規制、コンテンツおよびユーザー エクスペリエンスのローカライズ、さまざまなリージョンからのトラフィックの測定がその例に挙げられます。
-* **[[複数値]](#multivalue):** エンドポイントとして IPv4/IPv6 アドレスしか持てない Traffic Manager プロファイルの場合は、**[複数値]** を選択します。 このプロファイルに対するクエリが受信されると、正常なエンドポイントがすべて返されます。
-* **[[サブネット]](#subnet):** エンド ユーザーの一連の IP アドレス範囲を Traffic Manager プロファイル内の特定のエンドポイントにマップする場合は、**[サブネット]** のトラフィック ルーティング方法を選択します。 要求が受信されたときに返されるエンドポイントは、その要求の送信元 IP アドレスにマップされているものです。 
+* **[優先順位](#priority-traffic-routing-method):** すべてのトラフィックにプライマリ サービス エンドポイントを使用し、プライマリ エンドポイントまたはバックアップ エンドポイントが使用できない場合に備えてバックアップを用意する場合は、"**優先順位**" を選択します。
+* **[重み付け](#weighted):** 一連のエンドポイントに、均等にまたは定義した重みに従ってトラフィックを分散させる場合は、"**重み付け**" を選択します。
+* **[パフォーマンス](#performance):** 複数のエンドポイントが地理的に異なる場所にあり、エンド ユーザーが、ネットワーク待ち時間が最も短いという意味で "最も近い" エンドポイントを使用できるようにする場合は、"**パフォーマンス**" を選択します。
+* **[地理的](#geographic):** DNS クエリの発信元の地理的な場所に基づいてユーザーを特定のエンドポイント (Azure、外部、または入れ子になっているエンドポイント) に割り当てる場合は、"**地理的**" を選択します。 こうすることで、Traffic Manager の利用者は、ユーザーのリージョンを把握し、そのリージョンに基づいてユーザーをルーティングすることが重要なシナリオを実現できます。 データ主権規制、コンテンツおよびユーザー エクスペリエンスのローカライズ、さまざまなリージョンからのトラフィックの測定がその例に挙げられます。
+* **[複数値](#multivalue):** エンドポイントとして IPv4 および IPv6 アドレスしか割り当てることのできない Traffic Manager プロファイルには、 **[複数値]** を選択します。 このプロファイルに対するクエリが受信されると、正常なエンドポイントがすべて返されます。
+* **[[サブネット]](#subnet):** Traffic Manager プロファイル内の特定のエンドポイントにエンドユーザーの一連の IP アドレス範囲をマップする場合は、トラフィック ルーティング方法として **[サブネット]** を選択します。 要求が受信されたときに返されるエンドポイントは、その要求の送信元 IP アドレスにマップされているものです。 
 
 
 すべての Traffic Manager プロファイルには、エンドポイントの正常性とエンドポイントの自動フェールオーバーの監視が含まれます。 詳細については、 [Traffic Manager のエンドポイント監視](traffic-manager-monitoring.md)に関する記事をご覧ください。 1 つの Traffic Manager プロファイルで使用できるトラフィック ルーティング方法は 1 つに限られます。 プロファイルの別のトラフィック ルーティング方法をいつでも選択できます。 変更は 1 分以内に適用され、ダウンタイムは発生しません。 入れ子になった Traffic Manager プロファイルを使用することで、トラフィック ルーティング方法を組み合わせることができます。 入れ子にすることで、高度で柔軟性のあるトラフィック ルーティング構成が可能になり、より大規模で複雑なアプリケーションのニーズに対応できます。 詳細については、「 [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」をご覧ください。
 
-## <a name = "priority"></a>優先順位トラフィック ルーティング方法
+## <a name="priority-traffic-routing-method"></a>優先順位トラフィック ルーティング方法
 
 多くの場合、組織ではサービスの信頼性を提供したいと考えており、主要なサービスがダウンした場合に備えて 1 つ以上のバックアップ サービスをデプロイすることでこれを実行しています。 "優先順位" トラフィック ルーティング方法を使用すると、Azure ユーザーはこのフェールオーバー パターンを簡単に実装できます。
 
@@ -45,7 +45,7 @@ Traffic Manager プロファイルには、サービス エンドポイントの
 
 Azure Resource Manager では、エンドポイントごとに "priority" プロパティを使用して、エンドポイントの優先順位を明示的に構成します。 このプロパティの値の範囲は、1 ～ 1000 です。 値が小さいほど、優先順位が高くなります。 同じ優先順位の値を複数のエンドポイントに指定することはできません。 プロパティの設定は省略可能です。 省略した場合、エンドポイントの順序に基づく既定の優先順位が使用されます。
 
-## <a name = "weighted"></a>重み付けトラフィック ルーティング方法
+## <a name="weighted-traffic-routing-method"></a><a name = "weighted"></a>重み付けトラフィック ルーティング方法
 "重み付け" トラフィック ルーティング方法を使用すると、トラフィックを均等に分散したり、定義済みの重み付けを使用したりできます。
 
 ![Azure Traffic Manager の "重み付け" トラフィック ルーティング方法](media/traffic-manager-routing-methods/weighted.png)
@@ -56,9 +56,9 @@ Traffic Manager では、受信する DNS クエリごとに、使用可能な�
 
 重み付け方式を使用することで、有用なシナリオをいくつか実現できます。
 
-* アプリケーションの段階的アップグレード: 新しいエンドポイントにルーティングするトラフィックの割合 (%) を割り当て、トラフィックを徐々に 100% まで増やします。
-* Azure へのアプリケーションの移行: Azure と外部エンドポイントの両方を含むプロファイルを作成します。 エンドポイントの重みを調整して新しいエンドポイントを優先します。
-* 追加容量のクラウド バースト: Traffic Manager プロファイルの背後に配置することによって、オンプレミスのデプロイをクラウドにすばやく拡張します。 クラウドに追加容量が必要なとき、エンドポイントを追加または有効にして、各エンドポイントに送るトラフィックの割り当てを指定します。
+* アプリケーションの段階的アップグレード: 新しいエンドポイントにルーティングするトラフィックのパーセンテージを割り当て、時間と共に 100% までトラフィックを徐々に増やします。
+* Azure へのアプリケーション移行: Azure と外部エンドポイントの両方を含むプロファイルを作成します。 エンドポイントの重みを調整して新しいエンドポイントを優先します。
+* 追加容量のクラウド バースト: Traffic Manager プロファイルに対応させることで、オンプレミスのデプロイメントをクラウドにすばやく拡張します。 クラウドに追加容量が必要なとき、エンドポイントを追加または有効にして、各エンドポイントに送るトラフィックの割り当てを指定します。
 
 重みは、Azure portal を使用して構成できるほか、Azure PowerShell、CLI、REST API を使用して構成することもできます。
 
@@ -72,7 +72,7 @@ Traffic Manager では、受信する DNS クエリごとに、使用可能な�
 
 これらの DNS キャッシュの影響は、Azure Traffic Manager だけでなく、DNS ベースのすべてのトラフィック ルーティング システムに共通するものです。 DNS キャッシュの明示的なクリアが回避策になる場合もあれば、 別のトラフィック ルーティング方法の方が適している場合もあります。
 
-## <a name = "performance"></a>パフォーマンス トラフィック ルーティング方法
+## <a name="performance-traffic-routing-method"></a><a name = "performance"></a>パフォーマンス トラフィック ルーティング方法
 
 世界中の複数の場所にエンドポイントをデプロイすると、ユーザーに "最も近い" 場所にトラフィックをルーティングすることで、多くのアプリケーションの応答性を向上させることができます。 "パフォーマンス" トラフィック ルーティング方法が、この機能を提供します。
 
@@ -96,7 +96,7 @@ Traffic Manager は、インターネット待機時間テーブルを定期的�
 * エンドポイントを選択するアルゴリズムは確定的です。 同じクライアントからの反復 DNS クエリは、同じエンドポイントに送信されます。 通常、クライアントは、出張中に別の再帰 DNS サーバーを使用します。 このクライアントは、別のエンドポイントにルーティングされる可能性があります。 また、ルーティングは、インターネット待機時間テーブルの更新の影響を受ける場合もあります。 そのため、パフォーマンス トラフィック ルーティング方法では、クライアントが常に同じエンドポイントにルーティングされる保証はありません。
 * インターネット待機時間テーブルが変更されたときに、一部のクライアントが別のエンドポイントにルーティングされていることに気付く場合があります。 このルーティングの変更は、最新の待機時間データに基づいてより厳密に行われます。 これらの更新は、インターネットが継続的に発展する中で、パフォーマンス トラフィック ルーティングの精度を維持するために不可欠となります。
 
-## <a name = "geographic"></a>地理的トラフィック ルーティング方法
+## <a name="geographic-traffic-routing-method"></a><a name = "geographic"></a>地理的トラフィック ルーティング方法
 
 Traffic Manager プロファイルで地理的ルーティング方法を使用するように構成できます。これにより、DNS クエリの発信元の地理的な場所に基づいて、ユーザーを特定のエンドポイント (Azure、外部、または入れ子) にルーティングされます。 こうすることで、Traffic Manager の利用者は、ユーザーのリージョンを把握し、そのリージョンに基づいてユーザーをルーティングすることが重要なシナリオを実現できます。 データ主権規制、コンテンツおよびユーザー エクスペリエンスのローカライズ、さまざまなリージョンからのトラフィックの測定がその例に挙げられます。
 地理的ルーティング用にプロファイルを構成したら、そのプロファイルに関連付けられた各エンドポイントに地理的なリージョンのセットを割り当てる必要があります。 リージョンは、次のレベルの粒度で指定できます。 
@@ -123,10 +123,40 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 
 [Traffic Manager の動作のしくみ](traffic-manager-how-it-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、リージョンの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
 
-## <a name = "multivalue"></a>複数値トラフィック ルーティング方法
+### <a name="faqs"></a>FAQ
+
+* [地理的ルーティングが役立つ例を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+
+* [パフォーマンス ルーティング方法を使用するか、地理的ルーティング方法を使用するかを判断する方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+
+* [Traffic Manager の地理的ルーティングがサポートされる地域を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+
+* [ユーザーがどこからクエリを実行しているのかを Traffic Manager はどのようにして判別しているのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+
+* [Traffic Manager では、どのような場合でもユーザーの正確な地理的場所を正しく特定できることが保証されていますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+
+* [地理的ルーティングでは、エンドポイントが、その構成に使用された地域と物理的に同じ地域に存在する必要があるのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+
+* [地理的ルーティングを行うための構成がなされていないプロファイルのエンドポイントにリージョンを割り当てることはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+
+* [既存のプロファイルのルーティング方法を地理的ルーティングに変更しようとしたときにエラーが発生するのはなぜですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+
+* [地理的ルーティングを有効にしたプロファイルには、エンドポイントではなく、入れ子にしたプロファイルを作成することが強く推奨されているのはなぜですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+
+* [このルーティング タイプをサポートする API バージョンに制限はありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+
+## <a name="multivalue-traffic-routing-method"></a><a name = "multivalue"></a>複数値トラフィック ルーティング方法
 **複数値**トラフィック ルーティング方法では、1 回の DNS クエリ応答で複数の正常なエンドポイントを取得することができます。 これにより呼び出し元は、返されたエンドポイントが無応答であった場合でも、他のエンドポイントとの間で、クライアント側の再試行を実行することができます。 このパターンを使用すると、サービスの可用性を高めることができ、また、新しい DNS クエリで正常なエンドポイントを取得することによって生じる待ち時間を減らすことができます。 複数値ルーティング方法を使用するためには、すべてのエンドポイントが "外部" タイプで、かつ IPv4 または IPv6 アドレスとして指定されている必要があります。 このプロファイルに対するクエリが受信されると、構成可能な最大リターン数を上限として、正常なエンドポイントがすべて返されます。
 
-## <a name = "subnet"></a>サブネット トラフィック ルーティング方法
+### <a name="faqs"></a>FAQ
+
+* [複数値ルーティングが役立つユース ケースを教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+
+* [複数値ルーティングを使用する場合、何個のエンドポイントが返されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+
+* [複数値ルーティングを使用する場合、同じエンドポイントのセットが取得されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+
+## <a name="subnet-traffic-routing-method"></a><a name = "subnet"></a>サブネット トラフィック ルーティング方法
 **サブネット** トラフィック ルーティング方法では、特定のエンドポイントにエンド ユーザーの一連の IP アドレス範囲をマップすることができます。 以後、Traffic Manager は、該当するプロファイルの DNS クエリを受信した場合、その要求の送信元 IP アドレス (ほとんどの場合、呼び出し元によって使用されている DNS リゾルバの送信 IP アドレス) を調査して、マップ先のエンドポイントを決め、クエリの応答としてそのエンドポイントを返します。 
 
 エンドポイントにマップされる IP アドレスは、CIDR 範囲 (例: 1.2.3.0/24) またはアドレスの範囲 (例: 1.2.3.4-5.6.7.8) として指定できます。 エンドポイントに関連付ける IP 範囲は、そのプロファイル内で一意であることが必要です。同じプロファイル内の別のエンドポイントの IP アドレス セットと重複した範囲は使用できません。
@@ -134,9 +164,22 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 
 サブネット ルーティングを使えば、特定の IP 空間から接続してきているユーザーに異なるエクスペリエンスを提供することができます。 たとえば、サブネット ルーティングを使用すると、自社のオフィスから送信されたすべての要求を異なるエンドポイントにルーティングし、そこで社内限定版のアプリをテストすることができます。 また、特定の ISP から接続してきているユーザー (たとえば、特定の ISP のブロック ユーザー) に対して異なるエクスペリエンスを提供するシナリオにも対応できます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="faqs"></a>FAQ
 
- [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
+* [サブネット ルーティングが役立つユース ケースを教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+
+* [Traffic Manager はどのような方法でエンド ユーザーの IP アドレスを把握するのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+
+* [サブネット ルーティングを使用する場合に IP アドレスを指定するにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+
+* [サブネット ルーティングを使用する場合にフォールバック エンドポイントを指定するにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+
+* [サブネット ルーティング型のプロファイルでエンドポイントが無効になっている場合はどうなりますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+
+
+## <a name="next-steps"></a>次のステップ
+
+[Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 印刷されたテキストと手書きのテキストの認識、Computer Vision
+title: 印刷されたテキストと手書きのテキストの認識 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: 画像に含まれる印刷されたテキストと手書きのテキストの Computer Vision API を使用した認識に関する概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998242"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589858"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
 
@@ -24,19 +24,18 @@ Computer Vision では、画像に出現する印刷されたテキストまた�
 
 ## <a name="read-api"></a>Read API
 
-Read API では、最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはコンピューターで読み取り可能な文字ストリームに変換されます。 テキスト量が多い画像 (デジタル スキャンされたドキュメントなど) およびビジュアル ノイズの多い画像に最適化されています。 大きいドキュメントでは結果が返るまでに数分かかるため、非同期的に実行されます。
+Read API では、最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはコンピューターで読み取り可能な文字ストリームに変換されます。 これは、テキストが多く含まれる画像 (デジタル スキャンされたドキュメントなど) や、視覚ノイズが多く含まれる画像向けに最適化されています。 各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。 大きなドキュメントは結果を返すまでに数分かかる場合があるため、Read API は非同期的に実行されます。
 
-読み取り操作では、認識された単語の元の行グループが出力で維持されます。 各行は境界ボックスの座標を持ち、行内の各単語もそれ自体の座標を持っています。 単語が低い信頼度で認識された場合は、その情報も伝えられます。 詳しくは、[Read API のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)をご覧ください。
+読み取り操作では、認識された単語の元の行グループが出力で維持されます。 各行は境界ボックスの座標を持ち、行内の各単語もそれ自体の座標を持っています。 単語が低い信頼度で認識された場合は、その情報も伝えられます。 詳細については、[Read API v2.0 のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)と [Read API v3.0 のリファレンス ドキュメント](https://aka.ms/computer-vision-v3-ref)をご覧ください。
 
-> [!NOTE]
-> この機能は現在、プレビュー段階であり、英語のテキストでのみお使いいただけます。
+Read 操作では、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語のテキストを認識できます。
 
 ### <a name="image-requirements"></a>イメージの要件
 
 Read API は、次の要件を満たす画像で動作します。
 
 - 画像は、JPEG、PNG、BMP、PDF、または TIFF 形式である必要があります。
-- 画像の寸法は、50 x 50 から 4200 x 4200 ピクセルの間である必要があります。 PDF ページは、17 x 17 インチ以下である必要があります。
+- 画像の寸法は、50 x 50 から 10000 x 10000 ピクセルの間である必要があります。 PDF ページは、17 x 17 インチ以下である必要があります。
 - 画像のファイル サイズは、20 メガバイト (MB) 未満である必要があります。
 
 ### <a name="limitations"></a>制限事項
@@ -80,7 +79,7 @@ Recognize Text API は、次の要件を満たす画像で動作します。
 - 画像の寸法は、50 x 50 から 4200 x 4200 ピクセルの間である必要があります。
 - 画像のファイル サイズは、4 メガバイト (MB) 未満である必要があります。
 
-## <a name="improve-results"></a>結果を改善する
+## <a name="limitations"></a>制限事項
 
 テキスト認識操作の精度は、画像の品質によって異なります。 次の要因によって読み取りが不正確になる可能性があります。
 
@@ -92,6 +91,6 @@ Recognize Text API は、次の要件を満たす画像で動作します。
 * 単語の先頭の大文字のサイズが大きすぎるか欠落している。
 * 下付き、上付き、または取り消し線テキスト。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[印刷されたテキストの抽出 (OCR)](./quickstarts/csharp-print-text.md) に関するクイック スタートに従って、簡単な C# アプリにテキストの認識を実装します。
+[テキストの抽出 (読み取り)](./QuickStarts/CSharp-hand-text.md) に関するクイック スタートに従って、簡単な C# アプリにテキスト認識を実装します。

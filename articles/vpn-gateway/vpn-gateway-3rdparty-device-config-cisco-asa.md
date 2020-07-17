@@ -1,5 +1,5 @@
 ---
-title: Cisco ASA デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成 | Microsoft Docs
+title: Cisco ASA デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成
 description: この記事では、Cisco ASA デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。
 services: vpn-gateway
 author: yushwang
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817242"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75778084"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成:Cisco ASA デバイス (IKEv2/BGP なし)
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成: Cisco ASA デバイス (IKEv2/BGP なし)
 この記事では、Cisco Adaptive Security Appliance (ASA) デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。 この例は、ボーダー ゲートウェイ プロトコル (BGP) を使用せずに IKEv2 を実行する Cisco ASA デバイスに適用されます。 
 
 ## <a name="device-at-a-glance"></a>デバイスの概略
@@ -27,7 +27,7 @@ ms.locfileid: "55817242"
 | テスト済みのモデル           | ASA 5505                          |
 | テスト済みのバージョン         | 9.2                               |
 | IKE バージョン            | IKEv2                             |
-| BGP                    | いいえ                                 |
+| BGP                    | いいえ                                |
 | Azure VPN ゲートウェイの種類 | ルートベースの VPN ゲートウェイ           |
 |                        |                                   |
 
@@ -53,10 +53,10 @@ Azure の構成を作成する具体的な手順については、[単一の VPN
 ### <a name="virtual-network-and-vpn-gateway-information"></a>仮想ネットワークと VPN ゲートウェイの情報
 このセクションでは、サンプルのパラメーターの一覧を示します。
 
-| **パラメーター**                | **値**                    |
+| **パラメーター**                | **Value**                    |
 | ---                          | ---                          |
 | 仮想ネットワーク アドレス プレフィックス        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Azure VPN ゲートウェイ IP         | Azure_Gateway_Public_IP      |
+| Azure VPN Gateway IP         | Azure_Gateway_Public_IP      |
 | オンプレミス アドレス プレフィックス | 10.51.0.0/16<br>10.52.0.0/16 |
 | オンプレミス VPN デバイス IP    | OnPrem_Device_Public_IP     |
 | * 仮想ネットワーク BGP ASN                | 65010                        |
@@ -70,7 +70,7 @@ Azure の構成を作成する具体的な手順については、[単一の VPN
 ### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE のポリシーとパラメーター
 以下の表に、サンプルで使用されている IPsec/IKE のアルゴリズムとパラメーターの一覧を示します。 これらのアルゴリズムが VPN デバイスのモデルとファームウェア バージョンでサポートされていることを、ご使用の VPN デバイスの仕様で確認してください。
 
-| **IPsec/IKEv2**  | **値**                            |
+| **IPsec/IKEv2**  | **Value**                            |
 | ---              | ---                                  |
 | IKEv2 暗号化 | AES256                               |
 | IKEv2 整合性  | SHA384                               |
@@ -114,8 +114,8 @@ Azure の構成を作成する具体的な手順については、[単一の VPN
   - 外部インターフェイスの名前: **outside**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
-  - IKE:**Pre_Shared_Key**
-  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前:**VNetName** と **LNGName**
+  - IKE: **Pre_Shared_Key**
+  - 仮想ネットワークおよびローカル ネットワーク ゲートウェイの名前: **VNetName** と **LNGName**
   - 仮想ネットワークおよびオンプレミスのネットワーク アドレス **プレフィックス**
   - 適切な**ネットマスク**
 
@@ -300,5 +300,5 @@ sysopt connection tcpmss 1350
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する方法については、[アクティブ/アクティブの VPN ゲートウェイの構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。

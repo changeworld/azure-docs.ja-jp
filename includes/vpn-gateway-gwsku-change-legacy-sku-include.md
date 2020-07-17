@@ -9,11 +9,11 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159258"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181055"
 ---
 Resource Manager デプロイ モデルを使用している場合は、新しいゲートウェイ SKU に変更することができます。 従来のゲートウェイ SKU から新しい SKU に変更するときに、既存の VPN ゲートウェイを削除し、新しい VPN ゲートウェイを作成します。
 

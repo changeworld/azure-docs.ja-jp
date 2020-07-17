@@ -1,26 +1,17 @@
 ---
-title: Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームを使用する | Microsoft Docs
+title: Service Fabric Mesh アプリで Azure Files ベースのボリュームを使用する
 description: Azure CLI を使用して、Azure Files ベースのボリュームをサービス内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335965"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76718822"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
@@ -29,6 +20,17 @@ ms.locfileid: "58335965"
 サービスにボリュームをマウントするには、Service Fabric Mesh アプリケーションでボリューム リソースを作成し、サービスでそのボリュームを参照します。  ボリューム リソースを宣言し、それをサービス リソースで参照する作業は、[YAML ベースのリソース ファイル](#declare-a-volume-resource-and-update-the-service-resource-yaml)か [JSON ベースのデプロイ テンプレート](#declare-a-volume-resource-and-update-the-service-resource-json)で行うことができます。 ボリュームをマウントする前に、最初に Azure ストレージ アカウントと[ファイル共有を Azure Files](/azure/storage/files/storage-how-to-create-file-share) で作成します。
 
 ## <a name="prerequisites"></a>前提条件
+> [!NOTE]
+> **Windows RS5 開発マシンへのデプロイに関する既知の問題:** RS5 Windows マシンの PowerShell コマンドレット New-SmbGlobalMapping には、Azurefile ボリュームのマウントに支障をきたす未解決のバグがあります。 以下に示したのは、AzureFile ベースのボリュームをローカル開発マシンにマウントしているときに発生したエラーの例です。
+```
+Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
+There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
+Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
+```
+この問題を回避するには、1) 次のコマンドを PowerShell 管理者として実行し、2) マシンを再起動します。
+```powershell
+PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
+```
 
 Azure Cloud Shell または Azure CLI のローカル インストールを使用し、この記事の作業を完了できます。 
 
@@ -74,8 +76,8 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 これらの値は [Azure portal](https://portal.azure.com) でも見つけることができます。
 * `<storageAccountName>` - **[ストレージ アカウント]** に、ファイル共有を作成するときに使用したストレージ アカウントの名前があります。
-* `<storageAccountKey>` - **[ストレージ アカウント]** でストレージ アカウントを選択し、**[アクセス キー]** を選択して **key1** の下の値を使用します。
-* `<fileShareName>` - **[ストレージ アカウント名]** でストレージ アカウントを選択し、**[ファイル]** を選択します。 使用する名前は、作成したファイル共有の名前です。
+* `<storageAccountKey>` - **[ストレージ アカウント]** でストレージ アカウントを選択し、 **[アクセス キー]** を選択して **key1** の下の値を使用します。
+* `<fileShareName>` - **[ストレージ アカウント名]** でストレージ アカウントを選択し、 **[ファイル]** を選択します。 使用する名前は、作成したファイル共有の名前です。
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>ボリューム リソースを宣言し、サービス リソース (JSON) を更新する
 
@@ -244,8 +246,8 @@ application:
             - name: VolumeTestNetwork
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) 上の Azure Files ボリューム サンプル アプリケーションを確認します。
-- Service Fabric リソース モデルの詳細については、[Service Fabric メッシュ リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
+- Service Fabric リソース モデルの詳細については、[Service Fabric Mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
 - Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。

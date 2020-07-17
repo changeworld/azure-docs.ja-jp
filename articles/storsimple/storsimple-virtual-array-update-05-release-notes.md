@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4d020ff2b998da4cb52fe91e4d7d4b93544965a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110230"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60870674"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple Virtual Array Update 0.5 のリリース ノート
 
@@ -47,7 +47,7 @@ Update 0.5 は主にバグ修正ビルドです。 主な機能強化および�
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| 番号 | 機能 | 問題 |
+| いいえ。 | 機能 | 問題 |
 | --- | --- | --- |
 | 1 |バックアップの回復性| 以前のリリースでは、バックアップは特定の例外に対してのみ再試行されました。 このリリースには、バックアップの例外のすべてを再試行することによりバックアップの回復性を高くする修正が含まれています。|
 | 2 |監視| StorSimple 仮想デバイス シリーズの記憶域使用率の監視は、2017 年 6 月 30 日をもって廃止されます。 この変更は、StorSimple Virtual Array で実行されている StorSimple デバイス マネージャー サービス上の監視チャートに影響を与えます (1200 モデル)。 このリリースには、ユーザーが 2017 年 6 月 30 日以降も仮想アレイ上の記憶域使用率の監視を引き続き使用できるようにする更新プログラムが含まれています。|
@@ -58,7 +58,7 @@ Update 0.5 は主にバグ修正ビルドです。 主な機能強化および�
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。
 
-| No. | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想デバイスは、サポートされている一般提供版に更新することはできません。 |これらの仮想デバイスは、障害復旧 (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple 仮想デバイスを作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
@@ -80,7 +80,7 @@ Update 0.5 は主にバグ修正ビルドです。 主な機能強化および�
 ## <a name="next-step"></a>次のステップ
 StorSimple Virtual Array に [Update 0.5 をインストール](storsimple-virtual-array-install-update-05.md)します。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 以前のリリース ノートをお探しですか。 参照先:
 
 * [StorSimple Virtual Array Update 0.4 のリリース ノート](storsimple-virtual-array-update-04-release-notes.md)

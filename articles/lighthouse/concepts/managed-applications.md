@@ -1,0 +1,50 @@
+---
+title: Azure Lighthouse と Azure Managed Applications
+description: Azure Lighthouse と Azure Managed Applications...
+ms.date: 05/01/2020
+ms.topic: conceptual
+ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82782584"
+---
+# <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
+
+Azure Managed Applications と Azure Lighthouse はどちらも、サービス プロバイダーがお客様のテナントに存在するリソースにアクセスできるようにします。 機能の違いや、有効にするために役立つシナリオの違い、そしてこれらを組み合わせて使用する方法について理解すると、役立つ場合があります。
+
+## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications の比較
+
+### <a name="azure-lighthouse"></a>Azure Lighthouse
+
+[Azure Lighthouse](../overview.md) により、サービス プロバイダーはお客様のサブスクリプション (またはリソース グループ) でさまざまな管理タスクを直接実行できます。 このアクセスは、サービス プロバイダーが独自のテナントにサインインして、お客様のテナントに属するリソースにアクセスできる、論理プロジェクションによって達成されます。 お客様は、サービス プロバイダーに委任するサブスクリプションまたはリソース グループを決定でき、これらのリソースへのフル アクセスはお客様が保持します。 また、サービス プロバイダーのアクセス権をいつでも削除することができます。
+
+Azure Lighthouse を使用するため、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure 委任リソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)ことで、顧客エンゲージメントへの影響を追跡できます。
+
+Azure Lighthouse は通常、サービス プロバイダーがお客様の管理タスクを継続的に実行するときに使用されます。
+
+### <a name="azure-managed-applications"></a>Azure Managed Applications
+
+[Azure Managed Applications](../../azure-resource-manager/managed-applications/overview.md) により、サービス プロバイダーや ISV は、お客様が自分のサブスクリプションで簡単にデプロイして使用できるクラウド ソリューションを提供できます。
+
+マネージド アプリケーションでは、アプリケーションによって使用されるリソースがまとめられ、発行元によって管理されているリソース グループにデプロイされます。 このリソース グループはお客様のサブスクリプション内に存在しますが、それにアクセスできるのは、発行元のテナントの ID です。 ISV は引き続きマネージド アプリケーションの管理と保守を行いますが、お客様はリソース グループでの作業に直接アクセスすることも、リソースへのアクセス権も持っていません。
+
+マネージド アプリケーションは、[カスタマイズされた Azure portal エクスペリエンス](../../azure-resource-manager/managed-applications/concepts-view-definition.md)と、[カスタム プロバイダー](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)との統合をサポートします。 これらのオプションは、カスタマイズされた統合されたエクスペリエンスを提供するために使用でき、お客様が一部の管理タスクを自分で簡単に実行できるようになります。
+
+マネージド アプリケーションは、特定のお客様専用のプライベート オファーとして、または複数のお客様が購入できるパブリック オファーとして、[Azure Marketplace に公開](../../azure-resource-manager/managed-applications/publish-marketplace-app.md)することができます。 また、[マネージド アプリケーションをサービス カタログに公開する](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)ことによって、組織内のユーザーに提供することもできます。 ARM テンプレートを使用して、サービス カタログと Marketplace の両方のインスタンスをデプロイできます。このテンプレートには、[お客様の使用状況の属性](../../marketplace/azure-partner-customer-usage-attribution.md)を追跡するための、コマーシャル マーケットプレース パートナーの一意識別子を含めることができます。
+
+通常、Azure Managed Applications は、サービス プロバイダーによって完全に管理されるターンキー ソリューションによって満たすことができる、具体的なお客様のニーズのために使用されます。
+
+## <a name="using-azure-lighthouse-and-azure-managed-applications-together"></a>Azure Lighthouse と Azure Managed Applications を組み合わせて使用する
+
+Azure Lighthouse と Azure Managed Applications は異なるアクセス メカニズムを使用してさまざまな目標を達成しますが、サービス プロバイダーが同じお客様に対してこれら両方を使用することが理にかなっている場合もあります。
+
+たとえば、お客様がパートナーのアクションを把握でき、かつ委任されたサブスクリプションを継続的に制御することができるよう、サービス プロバイダーが Azure Lighthouse を通じてマネージド サービスを提供することが求められる場合などです。 ただし、サービス プロバイダーは、お客様のテナントに格納されている特定のリソースにお客様がアクセスしたり、これらのリソースに対してカスタマイズされたアクションを許可することを望まないとします。 これらの目標を達成するために、サービス プロバイダーは、プライベート オファーをマネージド アプリケーションとして公開できます。 マネージド アプリケーションには、お客様のテナントにデプロイされているリソース グループを含めることができますが、お客様はこれに直接アクセスすることはできません。
+
+また、お客様は複数のサービス プロバイダーが提供するマネージド アプリケーションに関心がある場合もあります。これらのサービス プロバイダーが Azure Lighthouse 経由でマネージド サービスも使用しているかどうかは関係ありません。 さらに、クラウド ソリューション プロバイダー (CSP) プログラムのパートナーは、他の ISV によって公開された特定のマネージド アプリケーションを、サポートするお客様に Azure Lighthouse を通じて再販できます。 さまざまなオプションを使用して、サービス プロバイダーはお客様のニーズに合わせて適切なバランスを模索し、必要に応じてリソースへのアクセスを制限することができます。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Managed Applications](../../azure-resource-manager/managed-applications/overview.md) の詳細について説明します。
+- [Azure の委任されたリソース管理にサブスクリプションをオンボード](../how-to/onboard-customer.md)する方法について説明します。

@@ -9,11 +9,11 @@ ms.date: 03/11/2018
 ms.author: jdial
 ms.custom: include file
 ms.openlocfilehash: d1d75b51ee008a9d8c86dce003a98a820c83cef9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116884"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181090"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/quick-create-portal.md)

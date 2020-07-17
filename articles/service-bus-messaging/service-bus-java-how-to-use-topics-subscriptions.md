@@ -1,6 +1,6 @@
 ---
-title: Java で Azure Service Bus トピックを使用する方法 | Microsoft Docs
-description: Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。
+title: Java で Azure Service Bus のトピックとサブスクリプションを使用する
+description: このクイックスタートでは、Azure Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,21 +11,22 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 46891a60e6fd36ec0bc19d4b52de87d18e2b6793
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: e025adfd3d8a29bc07cf14803f572dcba1097fd6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510292"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791070"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Java で Service Bus のトピックとサブスクリプションを使用する方法
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>クイック スタート:Java で Service Bus のトピックとサブスクリプションを使用する
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-このクイック スタートでは、Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。 
+このクイックスタートでは、Azure Service Bus トピックにメッセージを送信し、サブスクリプションからそのトピックにメッセージを受信する Java コードを記述します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,9 +39,9 @@ ms.locfileid: "65510292"
 3. [Azure SDK for Java][Azure SDK for Java]。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
-このサンプルを作成する前に、[Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
+このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
 
-![Eclipse ビルド パス内のライブラリ](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加する](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 以下の JAR を Java ビルド パスに追加する必要もあります。
 
@@ -181,7 +182,7 @@ public class MyServiceBusTopicClient {
         receiveClient.registerMessageHandler(
                     messageHandler,
                     // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages are auto-completed, auto-renew duration
+                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
                 new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
 
     }
@@ -454,12 +455,14 @@ Message sending: Id = 9
                         Content: [ firstName = Werner, name = Heisenberg ]
 ```
 
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、「[Service Bus のキュー、トピック、サブスクリプション][Service Bus queues, topics, and subscriptions]」を参照してください。
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
-[Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
+[Azure Toolkit for Eclipse]: https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression

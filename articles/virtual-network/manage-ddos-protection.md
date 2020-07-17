@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2018
+ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203522"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182941"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
 分散型サービス拒否 (DDoS) Protection の有効と無効を切り替える方法と、テレメトリを使用して Azure DDoS Protection Standard で DDoS 攻撃を軽減する方法について説明します。 DDoS Protection Standard は、Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられた Azure リソース (仮想マシン、ロード バランサー、アプリケーション ゲートウェイなど) を保護します。 DDoS Protection Standard とその機能の詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。
 
-このチュートリアルの手順を始める前に、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられたアカウントを使って、Azure portal (https://portal.azure.com) にログインします。
+このチュートリアルの手順を始める前に、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられたアカウントを使って、Azure portal (https://portal.azure.com ) にログインします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -39,29 +39,29 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 2. *DDoS* を検索します。 検索結果に **[DDoS protection plan]\(DDoS Protection プラン\)** が表示されたら、それを選択します。
-3. **作成** を選択します。
-4. 独自の値を入力または選択するか次の例の値を入力または選択し、**[作成]** を選択します。
+3. **［作成］** を選択します
+4. 独自の値を入力または選択するか次の例の値を入力または選択し、 **[作成]** を選択します。
 
-    |Setting        |値                                              |
+    |設定        |値                                              |
     |---------      |---------                                          |
-    |Name           | myDdosProtectionPlan                              |
+    |名前           | myDdosProtectionPlan                              |
     |サブスクリプション   | サブスクリプションを選択します。                         |
-    |リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*」と入力します |
-    |Location       | 米国東部                                           |
+    |Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力します |
+    |場所       | 米国東部                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>新しい仮想ネットワークに対して DDoS を有効にする
 
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-2. **[ネットワーク]** を選択してから、**[仮想ネットワーク]** を選択します。
-3. 独自の値を入力または選択するか次の例の値を入力または選択し、残りの既定値はそのまま受け入れて、**[作成]** を選択します。
+2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
+3. 独自の値を入力または選択するか次の例の値を入力または選択し、残りの既定値はそのまま受け入れて、 **[作成]** を選択します。
 
-    | Setting         | 値                                                        |
+    | 設定         | 値                                                        |
     | ---------       | ---------                                                    |
-    | Name            | myVirtualNetwork                                             |
+    | 名前            | myVirtualNetwork                                             |
     | サブスクリプション    | サブスクリプションを選択します。                                    |
-    | リソース グループ  | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します |
-    | Location        | 米国東部                                                      |
-    | DDos Protection | **[DDos Protection]** で **[Standard]** を選択し、**[myDdosProtectionPlan]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
+    | Resource group  | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
+    | 場所        | 米国東部                                                      |
+    | DDos Protection | **[DDos Protection]** で **[Standard]** を選択し、 **[myDdosProtectionPlan]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
 
 仮想ネットワークに対して DDoS Standard が有効になっている場合、仮想ネットワークを別のリソース グループまたはサブスクリプションに移動することはできません。 DDoS Standard が有効になっている仮想ネットワークを移動する必要がある場合は、まず DDoS Standard を無効にし、仮想ネットワークを移動してから、DDoS Standard を有効にします。 移動後に、仮想ネットワーク内のすべての保護されたパブリック IP アドレスの自動調整されたポリシーしきい値がリセットされます。
 
@@ -70,14 +70,23 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 1. 既存の DDoS Protection プランがない場合は、「[DDoS Protection プランを作成する](#create-a-ddos-protection-plan)」の手順を実行して DDoS Protection プランを作成します。
 2. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 3. ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\) ボックス**に、DDoS Protection Standard を有効にする仮想ネットワークの名前を入力します。 仮想ネットワークの名前が検索結果に表示されたら、それを選びます。
-4. **[設定]** で、**[DDoS Protection]** を選択します。
-5. **[Standard]** を選択します。 **[DDoS protection plan]\(DDoS Protection プラン\)** で、既存の DDoS Protection プランまたは手順 1. で作成したプランを選び、**[保存]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。
+4. **[設定]** で、 **[DDoS Protection]** を選択します。
+5. **[Standard]** を選択します。 **[DDoS protection plan]\(DDoS Protection プラン\)** で、既存の DDoS Protection プランまたは手順 1. で作成したプランを選び、 **[保存]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。
+
+**コマンド** 
+- Azure CLI: [az network ddos-protection create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
+- Powershell:[New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0)
+ 
 
 ## <a name="disable-ddos-for-a-virtual-network"></a>新しい仮想ネットワークに対して DDoS を無効にする
 
 1. ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\) ボックス**に、DDoS Protection Standard を無効にする仮想ネットワークの名前を入力します。 仮想ネットワークの名前が検索結果に表示されたら、それを選びます。
-2. **[設定]** で、**[DDoS Protection]** を選択します。
-3. **[DDoS protection plan]\(DDoS Protection プラン\)** で **[Basic]** を選択し、**[保存]** を選択します。
+2. **[設定]** で、 **[DDoS Protection]** を選択します。
+3. **[DDoS protection plan]\(DDoS Protection プラン\)** で **[Basic]** を選択し、 **[保存]** を選択します。
+
+**コマンド** 
+- Azure CLI: [az network ddos-protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
+- Powershell:[Remove-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/remove-azddosprotectionplan?view=azps-3.2.0)
 
 ## <a name="work-with-ddos-protection-plans"></a>DDoS Protection プランを処理する
 
@@ -94,14 +103,14 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 1. ポータルの左上にある **[すべてのサービス]** を選択します。
 2. **[フィルター]** ボックスに「*Monitor*」と入力します。 結果に **[Monitor]** が表示されたら、それを選択します。
 3. **[共有サービス]** で **[メトリック]** を選択します。
-4. 独自の値を入力または選択するか次の例の値を入力し、残りの既定値はそのまま受け入れて、**[OK]** を選択します。
+4. 独自の値を入力または選択するか次の例の値を入力し、残りの既定値はそのまま受け入れて、 **[OK]** を選択します。
 
-    |Setting                  |値                                                                                               |
+    |設定                  |値                                                                                               |
     |---------                |---------                                                                                           |
-    |Name                     | myDdosAlert                                                                                        |
+    |名前                     | myDdosAlert                                                                                        |
     |サブスクリプション             | アラートを受信するパブリック IP アドレスを含むサブスクリプションを選択します。        |
-    |リソース グループ           | アラートを受信するパブリック IP アドレスを含むリソース グループを選択します。      |
-    |Resource                 | アラートを受信するパブリック IP アドレスを含むパブリック IP アドレスを選択します。 DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment と Azure VPN Gateway を除き、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページに一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされているすべてのリソースのパブリック IP アドレスを監視できます。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。                   |
+    |Resource group           | アラートを受信するパブリック IP アドレスを含むリソース グループを選択します。      |
+    |リソース                 | アラートを受信するパブリック IP アドレスを含むパブリック IP アドレスを選択します。 DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment と Azure VPN Gateway を除き、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページに一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされているすべてのリソースのパブリック IP アドレスを監視できます。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。                   |
     |メトリック                   | DDoS 攻撃中かどうか                                                                            |
     |Threshold                | 1 - **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。                         |
     |期間                   | 選んだ任意の値を選択します。                                                                   |
@@ -139,7 +148,7 @@ DDoS 攻撃をシミュレートしてテレメトリを検証するには、「
 
 ## <a name="view-ddos-mitigation-policies"></a>DDoS 軽減ポリシーを表示する
 
-DDoS Protection Standard は、DDoS が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP アドレスごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 次の図に示すように、**[Inbound TCP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 TCP パケット数\)** と **[Inbound UDP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 UDP パケット数\)** のメトリックを選択し、**集計**の種類を [最大] にして、ポリシーのしきい値を表示することができます。
+DDoS Protection Standard は、DDoS が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP アドレスごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 次の図に示すように、 **[Inbound TCP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 TCP パケット数\)** と **[Inbound UDP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 UDP パケット数\)** のメトリックを選択し、**集計**の種類を [最大] にして、ポリシーのしきい値を表示することができます。
 
 ![軽減ポリシーを表示する](./media/manage-ddos-protection/view-mitigation-policies.png)
 
@@ -158,9 +167,9 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 5. **[リソースの種類]** に **[パブリック IP アドレス]** を選択し、メトリックをログに記録する特定のパブリック IP アドレスを選択します。
 6. **[Turn on diagnostics to collect the DDoSMitigationReports log]\(診断を有効にして DDoSMitigationReports ログを収集する\)** を選択し、必要に応じて次のオプションを任意の数だけ選択します。
 
-    - **ストレージ アカウントへのアーカイブ**:データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **[Log Analytics への送信]**:Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[ストレージ アカウントへのアーカイブ]** :データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[リソース ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[イベント ハブへのストリーム]** :ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへのリソース ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[Log Analytics への送信]** :Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 増分レポートと攻撃の軽減策後のレポートには、両方とも次のフィールドが含まれます。
 - 攻撃ベクトル
@@ -180,9 +189,9 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 5. **[リソースの種類]** に **[パブリック IP アドレス]** を選択し、メトリックをログに記録する特定のパブリック IP アドレスを選択します。
 6. **[Turn on diagnostics to collect the DDoSMitigationFlowLogs log]\(診断を有効にして DDoSMitigationFlowLogs ログを収集する\)** を選択し、必要に応じて次のオプションを任意の数だけ選択します。
 
-    - **ストレージ アカウントへのアーカイブ**:データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **イベント ハブへのストリーム配信**:ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **[Log Analytics への送信]**:Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[ストレージ アカウントへのアーカイブ]** :データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[リソース ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[イベント ハブへのストリーム]** :ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへのリソース ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[Log Analytics への送信]** :Azure Monitor サービスにログを書き込みます。 このオプションについて詳しくは、[Azure Monitor ログで使用するログの収集](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 1. Azure analytics ダッシュボードでフロー ログ データを表示するには、 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip からサンプル ダッシュボードをインポートします。
 
 フロー ログには次のフィールドがあります。 
@@ -193,22 +202,35 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 - プロトコルの種類 
 - 軽減時に実行されたアクション
 
-
+攻撃分析は、パブリック IP アドレスの仮想ネットワークで DDoS Protection Standard が有効になっている場合にのみ機能します。 
 
 ## <a name="validate-ddos-detection"></a>DDoS 検出を検証する
 
-マイクロソフトは [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) と提携して、シミュレーションのために DDoS Protection を有効にしたパブリック IP アドレスに対してトラフィックを生成できるインターフェイスを構築しました。 BreakPoint Cloud シミュレーションを使用して、以下の操作を行うことができます。
+Microsoft は [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) と提携して、シミュレーションのために DDoS Protection を有効にしたパブリック IP アドレスに対してトラフィックを生成できるインターフェイスを構築しました。 BreakPoint Cloud シミュレーションを使用して、以下の操作を行うことができます。
 
 - Microsoft Azure DDoS Protection が Azure リソースを DDoS 攻撃から保護する方法を検証します
-- DDoS 攻撃を受けているときのインシデント対応プロセスを最適化します
+- DDoS 攻撃を受けているときにインシデント レスポンス プロセスを最適化します
 - DDoS コンプライアンスを文書化します
 - ネットワーク セキュリティ チームのトレーニングを行います
+
+## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Azure Security Center の DDoS 保護アラートを表示する
+
+Azure Security Center は、[セキュリティ アラート](/azure/security-center/security-center-managing-and-responding-alerts)の一覧と、問題の調査および修復に役立つ情報を提供します。 この機能により、DDoS 攻撃に関連するアラートや、ほぼリアルタイムで攻撃を軽減するために実行されるアクションを含んだ、アラートの統合ビューが得られます。
+DDoS 攻撃の検出と軽減に対して表示される 2 つの特定のアラートがあります。
+
+- **パブリック IP に対して検出された DDoS 攻撃**:DDoS Protection サービスにより、パブリック IP アドレスのいずれかが DDoS 攻撃の対象であることが検出されると、このアラートが生成されます。
+- **パブリック IP に対して軽減された DDoS 攻撃**:このアラートは、パブリック IP アドレスへの攻撃が軽減された場合に生成されます。
+アラートを表示するには、Azure portal で **[Security Center]** を開きます。 **[脅威の防止]** で、 **[セキュリティ アラート]** を選択します。 次のスクリーンショットは、DDoS 攻撃アラートの例を示します。
+
+![Azure Security Center での DDoS アラート](./media/manage-ddos-protection/ddos-alert-asc.png)
+
+アラートには、攻撃、地域および脅威インテリジェンス情報、修復手順の下にあるパブリック IP アドレスの全般的な情報が含まれます。
 
 ## <a name="permissions"></a>アクセス許可
 
 DDoS 保護プランに関する作業を行うには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| Action                                            | Name                                     |
+| アクション                                            | 名前                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | DDoS 保護プランを読み取る              |
 | Microsoft.Network/ddosProtectionPlans/write       | DDoS 保護プランを作成または更新する  |
@@ -217,6 +239,6 @@ DDoS 保護プランに関する作業を行うには、使用するアカウン
 
 仮想ネットワークに対する DDoS 保護を有効にするには、使うアカウントに[仮想ネットワークの適切なアクション](manage-virtual-network.md#permissions)も割り当てられている必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します
+- 仮想ネットワーク用に [Azure Policy 定義](policy-samples.md)を作成して割り当てる

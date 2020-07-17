@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
-ms.author: vidarmsft
-ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: alkohli
+ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66150705"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67875391"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 
@@ -44,7 +44,7 @@ StorSimple ストレージでホストされているファイル共有向けに
    - Azure StorSimple Manager に登録されたオンプレミスの StorSimple ストレージ デバイス
    - Azure StorSimple Manager で作成した StorSimple Cloud Appliance。 アプライアンスは、シャットダウン状態でも保持されます。
    - StorSimple ストレージ デバイスで構成されたボリュームでホストされているファイル共有
-   - [Azure Site Recovery Services コンテナー](../site-recovery/site-recovery-vmm-to-vmm.md) 
+   - [Azure Site Recovery Services コンテナー](../site-recovery/site-recovery-vmm-to-vmm.md)
 
 さらに、Azure が復旧サイトに設定されている場合は、 [Azure Virtual Machines 準備状況評価ツール](https://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
 
@@ -92,7 +92,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
          > バージョンによって、ファイル名が異なる場合があります。
       
 1. **[次へ]** をクリックします。
-1. **[契約の条項]** をクリックして、**[次へ]** をクリックします。
+1. **[契約の条項]** をクリックして、 **[次へ]** をクリックします。
 1. **[完了]** をクリックします。
 1. StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。 詳細については、「 [StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes.md)」を参照してください。
    
@@ -101,13 +101,13 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    1. **[構成]** タブを選択 し、イニシエーターの名前をコピーします。
    1. [Azure Portal](https://portal.azure.com/) にログインします。
    1. **[StorSimple]** タブを選択してから、物理デバイスを含む StorSimple Manager Service を選択します。
-   1. ボリューム コンテナーを作成してから、ボリュームを作成します  (これらのボリュームは、ファイル サーバー VM でのファイル共有に使用します)。 イニシエーター名をコピーし、ボリューム作成時にアクセス制御レコードに適切な名前を付けます。
+   1. ボリューム コンテナーを作成してから、ボリュームを作成します (これらのボリュームは、ファイル サーバー VM でのファイル共有に使用します)。 イニシエーター名をコピーし、ボリューム作成時にアクセス制御レコードに適切な名前を付けます。
    1. **[構成]** タブを選択し、デバイスの IP アドレスを書き留めます。
    1. 使用しているオンプレミスの VM で **[iSCSI イニシエーター]** に再び移動し、[クイック接続] セクションに IP アドレスを入力します。 **[クイック接続]** をクリックします (デバイスが接続されます)。
-   1. Azure ポータルを開き、**[ボリュームとデバイス]** タブを選択します。**[自動構成]** をクリックします。 作成したボリュームが表示されます。
-   1. ポータルで **[デバイス]** タブを選択してから、**[Create a New Virtual Device (新しい仮想デバイスの作成)]** を選択します  (フェールオーバーが発生した場合にこの仮想デバイスが使用されます)。 この新しい仮想デバイスはオフラインで維持できるため、余分なコストがかかりません。 仮想デバイスをオフラインにするには、ポータルの **[Virtual Machines]** セクションでデバイスをシャットダウンします。
+   1. Azure ポータルを開き、 **[ボリュームとデバイス]** タブを選択します。 **[自動構成]** をクリックします。 作成したボリュームが表示されます。
+   1. ポータルで **[デバイス]** タブを選択してから、 **[Create a New Virtual Device (新しい仮想デバイスの作成)]** を選択します  (フェールオーバーが発生した場合にこの仮想デバイスが使用されます)。 この新しい仮想デバイスはオフラインで維持できるため、余分なコストがかかりません。 仮想デバイスをオフラインにするには、ポータルの **[Virtual Machines]** セクションでデバイスをシャットダウンします。
    1. オンプレミスの VM に戻って [ディスクの管理] を開きます (Windows キー + X キーを押してから、 **[ディスクの管理]** を 選択します)。
-   1. 余分なディスクが表示される場合があります (作成したボリュームの数によって異なります)。 1 つ目のディスクを右クリックして **[ディスクの初期化]** を選択し、**[OK]** をクリックします。 **[未割り当て]** セクションを右クリックして **[新しいシンプル ボリューム]** を選択し、ドライブ文字を割り当ててからウィザードを終了します。
+   1. 余分なディスクが表示される場合があります (作成したボリュームの数によって異なります)。 1 つ目のディスクを右クリックして **[ディスクの初期化]** を選択し、 **[OK]** をクリックします。 **[未割り当て]** セクションを右クリックして **[新しいシンプル ボリューム]** を選択し、ドライブ文字を割り当ててからウィザードを終了します。
    1. すべてのディスクに対して手順 l を繰り返します。 これで、エクスプ ローラーの **[PC]** にすべてのディスクが表示されます。
    1. ファイル サービスおよびストレージ サービス ロールを使用して、これらのボリュームでファイル共有を作成します。
 
@@ -142,7 +142,7 @@ StorSimple ボリュームの **[このボリュームの既定のバックア�
 ASR で復旧計画を作成し、ファイル共有のフェールオーバー プロセスを自動化することができます。 障害が発生した場合は、ワンクリックするだけで数分以内にファイル共有を稼働できます。 この自動化を有効にするには、Azure オートメーション アカウントが必要です。
 
 #### <a name="to-create-an-automation-account"></a>オートメーション アカウントを作成するには
-1. Azure ポータル &gt; **[Automation]** セクションに移動します。
+1. Azure portal &gt; **[Automation]** セクションに移動します。
 1. **[+ 追加]** ボタンをクリックして、以下のブレードを開きます。
    
    ![Automation アカウントの追加](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
@@ -153,7 +153,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    - 場所 - 場所を選んで、StorSimple Cloud Appliance とストレージ アカウントが作成されたのと同じ geo/リージョンに設定してください。
    - Azure 実行アカウントを作成する - **[はい]** オプションを選択します。
    
-1. Automation アカウントに移動し、**[Runbook]** &gt; **[ギャラリーの参照]** をクリックして、必要なすべての Runbook をオートメーション アカウントにインポートします。
+1. Automation アカウントに移動し、 **[Runbook]** &gt; **[ギャラリーの参照]** をクリックして、必要なすべての Runbook をオートメーション アカウントにインポートします。
 1. ギャラリーで **[ディザスター リカバリー]** タグを見つけて、次の Runbook を追加します。
    
    - テスト フェールオーバー (TFO) 後の StorSimple ボリュームのクリーンアップ
@@ -164,25 +164,25 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    
       ![ギャラリーの参照](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
-1. オートメーション アカウントで Runbook を選択してすべてのスクリプトを発行し、**[編集]** &gt; **[発行]** をクリックした後、確認メッセージに対して **[はい]** をクリックします。 この手順の後、 **[Runbook]** タブは次のように表示されます。
+1. オートメーション アカウントで Runbook を選択してすべてのスクリプトを発行し、 **[編集]** &gt; **[発行]** をクリックした後、確認メッセージに対して **[はい]** をクリックします。 この手順の後、 **[Runbook]** タブは次のように表示されます。
    
    ![Runbooks](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
-1. オートメーション アカウントで、**[変数]** &gt; **[変数の追加]** とクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 次の手順で作成する復旧計画の名前が TestPlan の場合、変数は TestPlan-StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
+1. オートメーション アカウントで、 **[変数]** &gt; **[変数の追加]** とクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 次の手順で作成する復旧計画の名前が TestPlan の場合、変数は TestPlan-StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
    - **BaseUrl**: Azure Cloud の Resource Manager URL。 **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
-   - *RecoveryPlanName***-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
-   - *RecoveryPlanName***-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
-   - *RecoveryPlanName***-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
-   - *RecoveryPlanName***-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
-   - *RecoveryPlanName***-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
-   - *RecoveryPlanName***-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
-   - *RecoveryPlanName***-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、**[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
-   - *RecoveryPlanName***-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
-   - *RecoveryPlanName***-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
-   - *RecoveryPlanName***-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
+   - _RecoveryPlanName_ **-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
+   - _RecoveryPlanName_ **-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
+   - _RecoveryPlanName_ **-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
+   - _RecoveryPlanName_ **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
+   - _RecoveryPlanName_ **-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
+   - _RecoveryPlanName_ **-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、 **[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
+   - _RecoveryPlanName_ **-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
+   - _RecoveryPlanName_ **-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
+   - _RecoveryPlanName_ **-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、 **[Recovery Services]** タブを選択して、 **[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
 
-     たとえば、復旧計画の名前が fileServerpredayRP である場合、すべての資産を追加し終えたら **[変数]**、**[接続]** および **[証明書]** タブは次のように表示されます。
+     たとえば、復旧計画の名前が fileServerpredayRP である場合、すべての資産を追加し終えたら **[変数]** 、 **[接続]** および **[証明書]** タブは次のように表示されます。
 
       ![アセット](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
@@ -230,9 +230,9 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
             compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
       ```
          
-   1. 上記手順で作成した Azure Automation モジュール zip ファイル (Microsoft.Azure.Management.StorSimple8000Series.zip) をインポートします。 これを行うには、Automation アカウントを選択して、SHARED RESOURCES の下で **[モジュール]** をクリックしてから、**[モジュールの追加]** をクリックします。
+   1. 上記手順で作成した Azure Automation モジュール zip ファイル (Microsoft.Azure.Management.StorSimple8000Series.zip) をインポートします。 これを行うには、Automation アカウントを選択して、SHARED RESOURCES の下で **[モジュール]** をクリックしてから、 **[モジュールの追加]** をクリックします。
    
-   StorSimple 8000 シリーズ モジュールをインポートしたら、**[モジュール]** タブは下記のように表示されます。
+   StorSimple 8000 シリーズ モジュールをインポートしたら、 **[モジュール]** タブは下記のように表示されます。
    
       ![モジュール](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
@@ -245,17 +245,17 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
       
    - 復旧計画名を入力し、ソース、ターゲット、およびデプロイ モデルの値を選択します。
    
-   - 復旧計画に含める保護グループから VM を選択し、**[OK]** ボタンをクリックします。
+   - 復旧計画に含める保護グループから VM を選択し、 **[OK]** ボタンをクリックします。
    
-   - 前に作成した復旧計画を選択し、**[カスタマイズ]** ボタンをクリックして復旧計画のカスタマイズ ビューを開きます。
+   - 前に作成した復旧計画を選択し、 **[カスタマイズ]** ボタンをクリックして復旧計画のカスタマイズ ビューを開きます。
    
-   - **[すべてのグループのシャットダウン]** を右クリックし、**[事前アクションの追加]** をクリックします。
+   - **[すべてのグループのシャットダウン]** を右クリックし、 **[事前アクションの追加]** をクリックします。
    
    - [挿入] アクション ブレードを開き、名前を入力し、[実行する場所] オプションで **[プライマリ側]** オプションを選択し、(Runbook を追加した) Automation アカウントを選択してから **[Failover-StorSimple-Volume-Containers]** Runbook を選択します。
    
-   - **[グループ 1: 開始]** を右クリックし、**[保護された項目の追加]** オプションをクリックしてから、復旧計画で保護する VM を選択し、**[OK]** ボタンをクリックします。 既に選択済みの VM の場合は、省略可能です。
+   - **[グループ 1: 開始]** を右クリックし、 **[保護された項目の追加]** オプションをクリックしてから、復旧計画で保護する VM を選択し、 **[OK]** ボタンをクリックします。 既に選択済みの VM の場合は、省略可能です。
    
-   - **[グループ 1: 開始]** を右クリックし、**[事後アクション]** オプションをクリックしてから、次のすべてのスクリプトを追加します。  
+   - **[グループ 1: 開始]** を右クリックし、 **[事後アクション]** オプションをクリックしてから、次のすべてのスクリプトを追加します。  
       
       - Start-StorSimple-Virtual-Appliance runbook  
       - Fail over-StorSimple-volume-containers runbook  
@@ -282,17 +282,17 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    
    ![フェールオーバーの開始](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名 &gt; をクリックし、**[ジョブ]** &gt; **[Site Recovery ジョブ]** の順にクリックして **[テスト フェールオーバー]** ジョブをクリックします。
-1. フェールオーバーの完了後は、Azure ポータル &gt; **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 検証を実行できます。
-1. 検証が完了したら、**[Validations Complete (検証完了)]** をクリックします。 これで、StorSimple ボリュームが削除され、StorSimple Cloud Appliance がシャットダウンされます。
+1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名 &gt; **[ジョブ]** &gt; **[Site Recovery ジョブ]** の順にクリックして、 **[テスト フェールオーバー]** ジョブをクリックします。
+1. フェールオーバーの完了後は、Azure portal &gt; **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 検証を実行できます。
+1. 検証が完了したら、 **[Validations Complete (検証完了)]** をクリックします。 これで、StorSimple ボリュームが削除され、StorSimple Cloud Appliance がシャットダウンされます。
 1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 [メモ] を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
 
 ## <a name="perform-a-planned-failover"></a>計画フェールオーバーの実行
    計画フェールオーバーでは、オンプレミスのファイル サーバー VM が正常にシャットダウンされ、StorSimple デバイス上のボリュームのクラウド バックアップ スナップショットが取得されます。 StorSimple ボリュームが仮想デバイスにフェールオーバーされ、Azure でレプリカ VM が稼働した後に、これらのボリュームが VM に接続されます。
 
 #### <a name="to-perform-a-planned-failover"></a>計画フェールオーバーを実行するには
-1. Azure ポータルで、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
-1. [復旧計画] ブレードで、**[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
+1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
+1. [復旧計画] ブレードで、 **[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
 
    ![復旧計画](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. **[計画されたフェールオーバーの確認]** ブレードで、ソースとターゲットの場所を選択し、ターゲット ネットワークを選択し、チェック マーク アイコン ✓ をクリックしてフェールオーバー プロセスを開始します。
@@ -303,8 +303,8 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 計画外フェールオーバーでは、StorSimple ボリュームが仮想デバイスにフェールオーバーされ、レプリカ VM が Azure で稼働した後に、これらのボリュームが VM に接続されます。
 
 #### <a name="to-perform-a-failover"></a>フェールオーバーを実行するには
-1. Azure ポータルで、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
-1. [復旧計画] ブレードで、**[詳細]** &gt; **[フェールオーバー]** をクリックします。
+1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
+1. [復旧計画] ブレードで、 **[詳細]** &gt; **[フェールオーバー]** をクリックします。
 1. **[フェールオーバーの確認]** ブレードで、ソースとターゲットの場所を選択します。
 1. **[仮想マシンをシャットダウンして最新のデータを同期]** を選択し、Site Recovery が保護された仮想マシンをシャットダウンしてデータを同期するように指定することで、最新バージョンのデータをフェールオーバーします。
 1. フェールオーバーの後、仮想マシンはコミット保留中の状態です。 **[コミット]** をクリックして、フェールオーバーをコミットします。
@@ -314,8 +314,8 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 フェールバックでは、バックアップの作成後に、StorSimple ボリューム コンテナーが元の物理デバイスにフェールオーバーされます。
 
 #### <a name="to-perform-a-failback"></a>フェールバックを実行するには
-1. Azure ポータルで、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
-1. [復旧計画] ブレードで、**[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
+1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
+1. [復旧計画] ブレードで、 **[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
 1. ソースとターゲットの場所を選択し、適切なデータ同期と VM 作成のオプションを選択します。
 1. **[OK]** ボタンをクリックして、フェールバック プロセスを開始します。
    

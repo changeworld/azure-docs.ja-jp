@@ -1,19 +1,18 @@
 ---
-title: Azure Files のスケーラビリティとパフォーマンスのターゲット | Microsoft Docs
+title: Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 description: Azure Files のスケーラビリティとパフォーマンスのターゲットについて、容量、要求レート、送受信の帯域幅の制限を含めて、説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
-ms.date: 5/5/2019
+ms.topic: conceptual
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c4928050f945ac88dd1f86e2a13b5d26d385e55a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190032"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536442"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -25,7 +24,7 @@ ms.locfileid: "65190032"
 
 Azure ファイル共有の親リソースは、Azure ストレージ アカウントです。 ストレージ アカウントとは、Azure Files を含む複数のストレージ サービスがデータを格納するために使用できる、Azure 内のストレージのプールを意味しています。 ストレージ アカウントにデータを格納する他のサービスには、Azure Blob Storage、Azure Queue Storage、Azure Table Storage があります。 次のターゲットは、ストレージ アカウントにデータを格納するすべてのストレージ サービスに適用されます。
 
-[!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -34,24 +33,33 @@ Azure ファイル共有の親リソースは、Azure ストレージ アカウ�
 
 ## <a name="azure-files-scale-targets"></a>Azure Files のスケール ターゲット
 
-### <a name="premium-scale-targets"></a>Premium のスケール ターゲット
+Azure Files については、ストレージ アカウント、共有、ファイルという 3 つの制限カテゴリについて考慮する必要があります。
 
-Premium ファイル共有で考慮すべき制限のカテゴリには、ストレージ アカウント、共有、およびファイルの 3 つがあります。
+次に例を示します。Premium ファイル共有では、1 つの共有で 100,000 IOPS を達成でき、1 つのファイルで最大 5,000 IOPS までスケールアップできます。 そのため、1 つの共有に 3 つのファイルを置くと、その共有から得られる最大 IOPS は 15,000 となります。
 
-例: 1 つの共有で 100,000 IOPS を達成でき、1 つのファイルで最大 5,000 IOPS までスケールアップできます。 そのため、たとえば 1 つの共有に 3 つのファイルを置くと、その共有から得られる最大 IOPS は 15,000 となります。
+### <a name="standard-storage-account-limits"></a>Standard ストレージ アカウントの制限
+
+これらの制限については、「[Azure ストレージ アカウントのスケール ターゲット](#azure-storage-account-scale-targets)」セクションを参照してください。
 
 ### <a name="premium-filestorage-account-limits"></a>Premium FileStorage アカウントの制限
 
-Premium ファイル共有は、**FileStorage (プレビュー)** と呼ばれる特殊なストレージ アカウントでプロビジョニングされます。 このアカウントは、標準ファイル共有で使用されるストレージ アカウントとは少し異なるスケール ターゲットです。 ストレージ アカウント スケール ターゲットについては、「[Azure ストレージ アカウントのスケール ターゲット](#azure-storage-account-scale-targets)」セクションの表を参照してください。
+[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> ストレージ アカウントの制限はすべての共有に適用されます。 ストレージ アカウントを最大までスケールアップすることは、ストレージ アカウントごとの共有が 1 つだけの場合にのみ達成できます。
+> ストレージ アカウントの制限はすべての共有に適用されます。 FileStorage アカウントを最大までスケールアップすることは、FileStorage アカウントごとの共有が 1 つだけの場合にのみ達成できます。
+
+### <a name="file-share-and-file-scale-targets"></a>ファイル共有とファイルのスケール ターゲット
+
+> [!NOTE]
+> 5 TiB を超える標準ファイル共有は、いくつかの制限事項があります。 制限事項の一覧と、これらの大きなファイル共有サイズを有効にするための手順については、計画ガイドの[Standard ファイル共有での大きいファイル共有の有効化](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)に関するセクションを参照してください。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+
 ## <a name="azure-file-sync-scale-targets"></a>Azure File Sync のスケール ターゲット
 
-Azure File Sync では、できる限り使用量無制限を目指して設計しましたが、それを実現できない場合もあります。 弊社のテストの境界線と、どのターゲットが実際のハード制限かを次の表に示します。
+Azure File Sync は使用量無制限を目標に設計されていますが、使用量無制限が常に可能なわけではありません。 次の表では、Microsoft のテストの境界と、どのターゲットがハード制限かを示します。
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -79,20 +87,20 @@ Azure File Sync の場合、2 つのステージで重要です。
 | オブジェクトの数 | 2,500 万オブジェクト |
 | データセットのサイズ| 約 4.7 TiB |
 | 平均ファイル サイズ | 約 200 KiB (最大ファイル:100 GiB) |
-| アップロードのスループット | 20 オブジェクト/秒 |
+| アップロードのスループット | 同期グループごとに 20 オブジェクト/秒 |
 | 名前空間ダウンロードのスループット* | 400 オブジェクト/秒 |
 
-* 新しいサーバー エンドポイントが作成されるとき、Azure File Sync エージェントはファイルの内容を何もダウンロードしません。 最初に完全な名前空間を同期した後、バックグラウンドでの呼び戻しをトリガーして、ファイル全体をダウンロードするか、またはクラウドの階層化が有効になっている場合は、サーバー エンドポイントに設定されているクラウド階層化ポリシーまでダウンロードします。
+\* 新しいサーバー エンドポイントが作成されるとき、Azure File Sync エージェントはファイルの内容を何もダウンロードしません。 最初に完全な名前空間を同期した後、バックグラウンドでの呼び戻しをトリガーして、ファイル全体をダウンロードするか、またはクラウドの階層化が有効になっている場合は、サーバー エンドポイントに設定されているクラウド階層化ポリシーまでダウンロードします。
 
 | 継続的な同期  |   |
 |-|--|
 | 同期されるオブジェクトの数| 125,000 オブジェクト (約 1 % のチャーン) |
 | データセットのサイズ| 50 GiB |
 | 平均ファイル サイズ | ～ 500 KiB |
-| アップロードのスループット | 30 オブジェクト/秒 |
+| アップロードのスループット | 同期グループごとに 20 オブジェクト/秒 |
 | 完全なダウンロードのスループット* | 60 オブジェクト/秒 |
 
-* クラウド階層化が有効になっている場合、ファイル データの一部のみがダウンロードされるため、パフォーマンスが向上する可能性があります。 Azure File Sync は、いずれかのエンドポイントで変更されたときにのみ、キャッシュされたファイルのデータをダウンロードします。 階層化されたファイルまたは新しく作成されたファイルについては、エージェントはファイル データをダウンロードせず、代わりにすべてのサーバー エンドポイントへの名前空間の同期のみを行います。 また、エージェントは、ユーザーがアクセスした階層化されたファイルの部分的なダウンロードもサポートします。 
+\* クラウド階層化が有効になっている場合、ファイル データの一部のみがダウンロードされるため、パフォーマンスが向上する可能性があります。 Azure File Sync は、いずれかのエンドポイントで変更されたときにのみ、キャッシュされたファイルのデータをダウンロードします。 階層化されたファイルまたは新しく作成されたファイルについては、エージェントはファイル データをダウンロードせず、代わりにすべてのサーバー エンドポイントへの名前空間の同期のみを行います。 また、エージェントは、ユーザーがアクセスした階層化されたファイルの部分的なダウンロードもサポートします。 
 
 > [!Note]  
 > 上に示した値は、実際のパフォーマンスを示すものではありません。 実際のパフォーマンスは、このセクションの最初で説明したような複数の要因によって左右されます。
@@ -106,4 +114,3 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 - [Azure Files のデプロイの計画](storage-files-planning.md)
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-- [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md)

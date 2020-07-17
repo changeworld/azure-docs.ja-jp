@@ -1,19 +1,19 @@
 ---
-title: Azure Virtual WAN パートナーの場所 | Microsoft Docs
+title: Azure Virtual WAN パートナーと場所 | Microsoft Docs
 description: この記事には、Azure Virtual WAN パートナーおよびハブの場所の一覧が含まれています。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: f38cd0565b2e90fe0803d8e815c622e22e954a18
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
+ms.openlocfilehash: 3976f4114df6222d34f19e2bb44fd05d53057321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409705"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123292"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -23,7 +23,7 @@ Azure Virtual WAN は、Azure を介して支店間接続を最適化し、自�
 
 オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 ハブはリージョンごとに 1 つしか存在できません。
 
-## <a name="automation"></a>接続パートナーからの自動化
+## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>接続パートナーからの自動化
 
 Azure Virtual WAN に接続するデバイスには、接続の自動化が組み込まれています。 これは通常、VPN ブランチ デバイスと Azure Virtual Hub VPN エンドポイント (VPN ゲートウェイ) 間の接続および構成管理を設定するデバイス管理 UI (または同等の機能) で設定されます。
 
@@ -34,18 +34,20 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 * Azure 接続情報の自動ダウンロード
 * オンプレミス ブランチ デバイスの構成 
 
-接続パートナーによっては、自動化を拡張して Azure Virtual Hub VNet および VPN Gateway の作成を含める場合があります。 自動化の詳細については、[Configure Automation – WAN Partners](virtual-wan-configure-automation-providers.md)\(自動化の構成 – WAN パートナー\) を参照してください。
+接続パートナーによっては、自動化を拡張して Azure Virtual Hub VNet および VPN Gateway の作成を含める場合があります。 自動化の詳細については、[仮想 WAN パートナー向けの自動化ガイドライン](virtual-wan-configure-automation-providers.md)を参照してください。
 
-## <a name="partners"></a>パートナー経由の接続
+## <a name="connectivity-through-partners"></a><a name="partners"></a>パートナー経由の接続
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-## <a name="locations"></a>場所
+次のパートナーが近い将来のロードマップに追加されることが予定されています。128 Technologies、Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink、VMWare Velocloud。
+
+## <a name="locations"></a><a name="locations"></a>場所
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[Virtual WAN FAQ](virtual-wan-faq.md) を参照してください。
 
-* Azure Virtual WAN への接続を自動化する方法については、[Virtual WAN Partners - How to automate](virtual-wan-configure-automation-providers.md)\(Virtual WAN パートナー - 自動化の方法\) を参照してください。
+* Azure Virtual WAN への接続を自動化する方法については、[仮想 WAN パートナー向けの自動化ガイドライン](virtual-wan-configure-automation-providers.md)を参照してください。

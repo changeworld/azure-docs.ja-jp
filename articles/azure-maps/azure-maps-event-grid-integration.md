@@ -1,26 +1,26 @@
 ---
-title: Event Grid を使用して Azure Maps イベントに反応する | Microsoft Docs
-description: Event Grid を使用して Azure Maps のイベントに対応する方法を説明します。
-author: walsehgal
-ms.author: v-musehg
+title: Event Grid を使用してマップ イベントに対応する | Microsoft Azure Maps
+description: この記事では、Event Grid を使用して Microsoft Azure Maps イベントに対応する方法について説明します。
+author: philmea
+ms.author: philmea
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007840"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335714"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する 
 
-他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure Maps は Azure Event Grid と統合します。 この記事では、信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、Azure Maps のイベントをリッスンするようにビジネス アプリケーションを構成する方法を説明します。 たとえば、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、メール通知の配信などの複数のアクションを実行するアプリケーションを構築します。
+Azure Maps は Azure Event Grid と統合されているため、ユーザーは他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーすることができます。 この記事の目的は、ご利用のビジネス アプリケーションを構成して Azure Maps イベントをリッスンできるようにすることです。 これにより、ユーザーは信頼性が高く、スケーラブルで安全な方法で重要なイベントに対応することができます。 たとえば、ユーザーは、デバイスがジオフェンスに入るたびに、データベースの更新、チケットの作成、電子メール通知の配信を実行するアプリケーションを構築できます。
 
-Azure Event Grid は、パブリッシュ - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) や [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)」をご覧ください。
+Azure Event Grid は、発行 - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid には、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) や [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview) のような Azure サービスのサポートが組み込まれています。 また、Webhook を使用することで、Azure 以外のサービスにイベント アラートを配信することもできます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](https://docs.microsoft.com/azure/event-grid/overview)」をご覧ください。
 
 
 ![Azure Event Grid の機能モデル](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -38,7 +38,7 @@ Event Grid は、[イベント サブスクリプション](https://docs.microso
 
 ## <a name="event-schema"></a>イベント スキーマ
 
-次の例では、GeofenceResult のスキーマを示します
+次の例では、GeofenceResult のスキーマを示します。
 
 ```JSON
 {   
@@ -80,11 +80,11 @@ Event Grid は、[イベント サブスクリプション](https://docs.microso
 
 Azure Maps ジオフェンス イベントを処理するアプリケーションでは、いくつかの推奨される手法に従う必要があります。
 
-* 同じイベント ハンドラーにイベントをルーティングするように、複数のサブスクリプションを構成できます。 イベントが特定のソースからのものであると想定しないことが重要です。 常にメッセージ トピックをチェックし、予期されるソースからものであることを確認します。
-* メッセージは、順不同で、または遅延の後に、到着する場合があります。 応答ヘッダーの `X-Correlation-id` フィールドを使用して、オブジェクトに関する情報が最新かどうかを確認します。
-* モード パラメーターを `EnterAndExit` に設定して Get および POST Geofence API を呼び出すと、前回の Geofence API 呼び出しの後で状態が変化したジオフェンスのジオメトリごとに、Enter または Exit イベントが生成されます。
+* 同じイベント ハンドラーにイベントをルーティングするように、複数のサブスクリプションを構成します。 イベントが特定のソースからのものであると想定しないことが重要です。 常にメッセージ トピックをチェックして、メッセージが予期されたソースからのものであることを確認します。
+* 応答ヘッダーの `X-Correlation-id` フィールドを使用して、オブジェクトに関する情報が最新かどうかを確認します。 メッセージは、順不同で、または遅延の後に、到着する場合があります。
+* モード パラメーターを `EnterAndExit` に設定して Geofence API 内の GET または POST 要求を呼び出すと、前回の Geofence API 呼び出しから状態が変化したジオフェンス内のジオメトリごとに、Enter または Exit イベントが生成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ジオフェンシングを使用して建設現場での操作を制御する方法について詳しくは、以下をご覧ください。
 

@@ -1,24 +1,24 @@
 ---
-title: Azure Database Migration Service を使用して移行アクティビティを監視する | Microsoft Docs
+title: 移行アクティビティの監視 - Azure Database Migration Service
 description: Azure Database Migration Service を使用して移行アクティビティを監視する方法について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77648514"
 ---
-# <a name="monitor-migration-activity"></a>移行アクティビティの監視
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用して移行アクティビティを監視する
 この記事では、データベース レベルとテーブル レベルの両方で移行の進行状況を監視する方法について説明します。
 
 ## <a name="monitor-at-the-database-level"></a>データベース レベルの監視
@@ -133,13 +133,13 @@ ms.locfileid: "58173857"
 | ------------- | ------------- |
 | **状態 - 同期中**      | 継続的同期が実行されています。 |
 | **挿入**      | ターゲットに適用された行に含まれている CDC 挿入の数。      |
-| **Update** | ターゲットに適用された行に含まれている CDC 更新の数。      |
+| **アップデート** | ターゲットに適用された行に含まれている CDC 更新の数。      |
 | **削除**      | ターゲットに適用された行に含まれている CDC 削除の数。 |
 | **適用の合計**      | ターゲットに適用された行に含まれている CDC の更新、挿入、削除の総数。 |
-| **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、*"511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました"* があります。  Azure ターゲットの dms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
+| **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、"*511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました*" などがあります。  Azure ターゲットの dms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
 
 > [!NOTE]
 > [挿入]、[更新]、[削除]、[適用の合計] の CDC 値は、データベースが一括移行されたとき、または移行が再起動されたときに減少することがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する。

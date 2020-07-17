@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149596"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67181374"
 ---
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
 
@@ -20,7 +20,7 @@ ms.locfileid: "66149596"
 
     ![カタログのインストール](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**4011839** など) を入力して、**[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**4011839** など) を入力して、 **[検索]** をクリックします。
    
     "**Cumulative Software Bundle Update 4.0 for StorSimple 8000 Series**" のような修正プログラムの一覧が表示されます。
    
@@ -92,7 +92,7 @@ ms.locfileid: "66149596"
     > [!NOTE]
     > 場合によっては、更新がまだ進行中であっても、コマンドレットは `False` とレポートします。 修正プログラムが完了したことを確認するには、数分待ってから、このコマンドを再実行し、`RunInProgress` が `False` になっていることを確認します。 False の場合、修正プログラムは完了しています。
 
-6. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 型: 
+6. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 型:
    
     `Get-HcsSystem`
    
@@ -123,7 +123,7 @@ KB4011837 を使用して、ディスク ファームウェアの更新プログ
 
 ディスク ファームウェアの更新プログラムをインストールするには、次の指示に従います。
 
-1. デバイスをメンテナンス モードにします。 **デバイスにメンテナンス モードで接続するときは、Windows PowerShell リモート処理を使用しないでください。デバイスのシリアル コンソールを通して接続したときは、代わりにデバイス コントローラーでこのコマンドレットを実行します。** 型: 
+1. デバイスをメンテナンス モードにします。 **デバイスにメンテナンス モードで接続するときは、Windows PowerShell リモート処理を使用しないでください。デバイスのシリアル コンソールを通して接続したときは、代わりにデバイス コントローラーでこのコマンドレットを実行します。** 型:
    
     `Enter-HcsMaintenanceMode`
    
@@ -164,7 +164,7 @@ KB4011837 を使用して、ディスク ファームウェアの更新プログ
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. `Get-HcsUpdateStatus` コマンドを使用して、インストールの進行状況を監視します。 更新が完了すると、`RunInProgress` が `False` に変わります。
-4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 型: 
+4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 型:
    
    `Get-HcsFirmwareVersion`
    

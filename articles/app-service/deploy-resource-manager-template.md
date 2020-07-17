@@ -1,23 +1,17 @@
 ---
-title: テンプレートを使ったアプリのデプロイに関するガイダンス - Azure App Service | Microsoft Docs
-description: Web アプリをデプロイするための Azure Resource Manager テンプレートの作成に関する推奨事項です。
-services: app-service
-documentationcenter: app-service
+title: テンプレートでアプリをデプロイする
+description: App Service アプリをプロビジョニングしてデプロイするための Azure Resource Manager テンプレートの作成に関するガイダンスを紹介します。
 author: tfitzmac
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d8fa8b216ca6044adefe1398b58f5d14630540e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66137162"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637922"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -47,7 +41,7 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 **レベル 3**
 * ソース管理 - Web アプリに依存。
 * MSDeploy サイト拡張機能 - Web アプリに依存。
-* サーバー ファームを対象とする Application Insights インスタンス - Web アプリに依存。
+* Web アプリをターゲットとする Azure Application Insights インスタンス - Web アプリに依存。
 
 **レベル 4**
 * App Service 証明書 - ソース管理または MSDeploy に依存 (いずれかが存在する場合)。 存在しない場合は Web アプリに依存。
@@ -96,11 +90,11 @@ Resource Manager テンプレートで MSDeploy が使用されている場合�
 
 1. サイトの [Kudu コンソール](https://github.com/projectkudu/kudu/wiki/Kudu-console)に移動します。
 2. D:\home\LogFiles\SiteExtensions\MSDeploy のフォルダーを参照します。
-3. appManagerStatus.xml および appManagerLog.xml ファイルを探します。 最初のファイルには、状態が記録されます。 2 番目のファイルには、エラーに関する情報が記録されます。 エラーが明確でない場合は、フォーラムに支援を求めるときに、そのファイルを含めることができます。
+3. appManagerStatus.xml および appManagerLog.xml ファイルを探します。 最初のファイルには、状態が記録されます。 2 番目のファイルには、エラーに関する情報が記録されます。 エラーが明確でない場合は、[フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)に支援を求めるときに、そのファイルを含めることができます。
 
 ## <a name="choose-a-unique-web-app-name"></a>一意の Web アプリ名の選択
 
-Web アプリの名前は、グローバルに一意である必要があります。 一意になると思われる命名規則を使用するか、[uniqueString 関数](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring)を使用して一意の名前の生成を支援することができます。
+Web アプリの名前は、グローバルに一意である必要があります。 一意になると思われる命名規則を使用するか、[uniqueString 関数](../azure-resource-manager/templates/template-functions-string.md#uniquestring)を使用して一意の名前の生成を支援することができます。
 
 ```json
 {
@@ -115,7 +109,7 @@ Web アプリの名前は、グローバルに一意である必要がありま�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-テンプレートに SSL バインディングの [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) リソースが含まれ、証明書が Key Vault に格納されている場合、App Service の ID が証明書にアクセスできることを確認する必要があります。
+テンプレートに TLS/SSL バインディングの [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) リソースが含まれ、証明書が Key Vault に格納されている場合、App Service の ID が証明書にアクセスできることを確認する必要があります。
 
 グローバル Azure では、App Service サービス プリンシパルの ID は **abfa0a7c-a6b6-4736-8310-5855508787cd** です。 App Service サービス プリンシパルに Key Vault へのアクセスを許可するには、次を使用します。
 
@@ -137,7 +131,7 @@ Azure Government では、App Service サービス プリンシパルの ID は 
 
 テンプレートの例については、「[Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)」(Key Vault シークレットから Web アプリ証明書を展開し、SSL バインディングの作成に使用する) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * テンプレートを使用して Web アプリをデプロイするチュートリアルについては、「[Azure でマイクロサービスを予測どおりにデプロイする](deploy-complex-application-predictably.md)」を参照してください。
 * テンプレート内のリソースの種類用の JSON 構文とプロパティの詳細については、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

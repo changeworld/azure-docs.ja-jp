@@ -2,24 +2,17 @@
 title: クラウド サービスの更新方法 | Microsoft Docs
 description: Azure のクラウド サービスの更新方法について説明します。 クラウド サービスで更新が処理され、可用性が確保されるしくみについて説明します。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: tagore
+ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917228"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75360346"
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
 
@@ -28,7 +21,7 @@ ms.locfileid: "58917228"
 ## <a name="update-an-azure-service"></a>Azure サービスを更新する
 Azure では、ロール インスタンスが、アップグレード ドメイン (UD) と呼ばれる論理的なグループに編成されます。 アップグレード ドメイン (UD) は、1 つのグループとして更新されるロール インスタンスの論理セットです。  Azure ではクラウド サービスの更新を一度に 1 つの UD に対して行います。そのため、他の UD 内のインスタンスは引き続きトラフィックを処理できます。
 
-アップグレード ドメインの既定の数は 5 です。 アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。 upgradeDomainCount 属性の詳細については、「[WebRole Schema (WebRole スキーマ)](/previous-versions/azure/reference/gg557553(v=azure.100))」または「[WorkerRole Schema (WorkerRole スキーマ)](/previous-versions/azure/reference/gg557552(v=azure.100))」を参照してください。
+アップグレード ドメインの既定の数は 5 です。 アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。 upgradeDomainCount 属性について詳しくは、「[Azure Cloud Services 定義スキーマ (.csdef ファイル)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)」をご覧ください。
 
 サービス内の 1 つ以上のロールをインプレースで更新すると、Azure では、そのロールが属するアップグレード ドメインに相当するロール インスタンスのセットが更新されます。 Azure は、1 つのアップグレード ドメイン内のすべてのインスタンスを更新してから (つまり、インスタンスを停止し、更新して、オンラインに復帰させてから)、次のドメインの処理に移ります。 現在のアップグレード ドメインで実行されているインスタンスのみを停止することで、更新が実行中のサービスに与える影響を最小限に抑えています。 詳細については、この記事で後ほど説明する「 [アップグレードの処理のしくみ](#howanupgradeproceeds) 」を参照してください。
 
@@ -60,7 +53,7 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 | ローカル ストレージの設定 |増加のみ<sup>2</sup> |はい |はい |
 | サービス内のロールの追加または削除 |はい |はい |はい |
 | 特定のロールのインスタンスの数 |はい |はい |はい |
-| サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ  |はい |
+| サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ |はい |
 | 構成設定の名前と値 |はい |はい |はい |
 | 構成設定の値 (名前は不可) |はい |はい |はい |
 | 新しい証明書の追加 |はい |はい |はい |
@@ -114,7 +107,7 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 |インプレース アップグレード|保持される|保持される|破棄される|
 |ノードの移行|破棄される|破棄される|破棄される|
 
-上の一覧中の E: ドライブはロールのルート ドライブを表しているため、ハードコーディングしないように注意してください。 代わりに、**%RoleRoot%** 環境変数を使用してドライブを表してください。
+上の一覧中の E: ドライブはロールのルート ドライブを表しているため、ハードコーディングしないように注意してください。 代わりに、 **%RoleRoot%** 環境変数を使用してドライブを表してください。
 
 単一のインスタンスのみで構成されるサービスをアップグレードする場合にダウンタイムを最小限に抑えるには、複数のインスタンスで構成される新しいサービスをステージング サーバーにデプロイし、VIP スワップを実行します。
 
@@ -141,7 +134,7 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
   1. Locked 要素を使用すると、特定のデプロイで変更操作を呼び出すことができるタイミングを検出できます。
   2. RollbackAllowed 要素を使用すると、特定のデプロイで [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) 操作を呼び出すことができるタイミングを検出できます。
 
-  ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。 RollbackAllowed が true に設定されていることを確認するだけで十分です。 次のように設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、これらの要素が返されます: "x-ms-version: 2011-10-01" 以降のバージョン。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
+  ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。 RollbackAllowed が true に設定されていることを確認するだけで十分です。 "x-ms-version: 2011-10-01" またはそれ以降のバージョンに設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、この 2 つの要素が返されます。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
 
 更新やアップグレードのロールバックがサポートされないのは、次のような場合です。
 
@@ -162,11 +155,11 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
 
 最初の更新の進行中に 2 つ目の更新操作を開始すると、ロールバック操作と似た方法で処理が実行されます。 2 番目の更新が自動モードである場合、最初のアップグレード ドメインが直ちにアップグレードされ、複数のアップグレード ドメインのインスタンスが同時にオフラインになる可能性があります。
 
-次のような変更操作があります: [Change Deployment Configuration](/previous-versions/azure/reference/ee460809(v=azure.100))、[Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100))、[Update Deployment Status](/previous-versions/azure/reference/ee460808(v=azure.100))、[Delete Deployment](/previous-versions/azure/reference/ee460815(v=azure.100))、および [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100))。
+変更操作には、[Change Deployment Configuration](/previous-versions/azure/reference/ee460809(v=azure.100))、[Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100))、[Update Deployment Status](/previous-versions/azure/reference/ee460808(v=azure.100))、[Delete Deployment](/previous-versions/azure/reference/ee460815(v=azure.100))、および [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) があります。
 
 [Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) と [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) の 2 つの操作は Locked フラグを返します。このフラグを調べることで、特定のデプロイに対して変更操作を呼び出すことができるかどうかを判断できます。
 
-これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーを次のように設定する必要があります: "x-ms-version: 2011-10-01" 以降。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
+これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーに "x-ms-version: 2011-10-01" 以降を設定する必要があります。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
 
 <a name="distributiondfroles"></a>
 
@@ -186,7 +179,10 @@ Azure では、設定された数のアップグレード ドメイン全体に�
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)  
 [クラウド サービスの監視方法](cloud-services-how-to-monitor.md)  
 [Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)  
+
+
+

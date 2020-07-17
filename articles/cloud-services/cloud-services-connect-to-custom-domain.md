@@ -2,24 +2,17 @@
 title: カスタムのドメイン コント ローラーにクラウド サービスを接続する | Microsoft Docs
 description: PowerShell と AD ドメイン拡張機能を使ってカスタム AD ドメインに Web ロールまたは worker ロールを接続する方法について説明します
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: tagore
+ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530060"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75387022"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
 最初に、Azure に Virtual Network (VNet) を設定します。 次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNet に追加します。 次に、事前に作成した VNet に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。
@@ -34,7 +27,7 @@ ms.locfileid: "57530060"
 クラウド サービスによって参照されるネットワークは、**従来の仮想ネットワーク**にする必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークを作成します
-Azure に Virtual Network を作成するには、Azure Portal か PowerShell を使います。 このチュートリアルでは、PowerShell を使用します。 Azure Portal を使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事をご覧ください。 この記事では、仮想ネットワークの作成 (Resource Manager) について説明しますが、クラウド サービス用の仮想ネットワーク (クラシック) はお客様が作成する必要があります。 これには、ポータルで **[リソースの作成]** を選択し、**[検索]** ボックスに「*仮想ネットワーク*」と入力して、**Enter** キーを押します。 検索結果の **[すべて]** の下で **[仮想ネットワーク]** を選択します。 **[デプロイ モデルの選択]** で **[クラシック]** を選択し、**[作成]** をクリックします。 その後は、この記事の手順を実行できます。
+Azure に Virtual Network を作成するには、Azure Portal か PowerShell を使います。 このチュートリアルでは、PowerShell を使用します。 Azure Portal を使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事をご覧ください。 この記事では、仮想ネットワークの作成 (Resource Manager) について説明しますが、クラウド サービス用の仮想ネットワーク (クラシック) はお客様が作成する必要があります。 これには、ポータルで **[リソースの作成]** を選択し、 **[検索]** ボックスに「*仮想ネットワーク*」と入力して、**Enter** キーを押します。 検索結果の **[すべて]** の下で **[仮想ネットワーク]** を選択します。 **[デプロイ モデルの選択]** で **[クラシック]** を選択し、 **[作成]** をクリックします。 その後は、この記事の手順を実行できます。
 
 ```powershell
 #Create Virtual Network
@@ -156,3 +149,6 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+

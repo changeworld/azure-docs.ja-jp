@@ -1,46 +1,38 @@
 ---
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: このクイック スタートでは、LUIS ポータルで新しいアプリを作成します。 アプリ、意図、エンティティの基本パーツを作成します。 インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。 アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
+description: このクイックスタートでは、アプリの基本パーツ、意図、エンティティを作成すると共に、LUIS ポータルからサンプル発話を使ってテストを行います。
 ms.topic: quickstart
-ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146526"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697278"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
-このクイック スタートでは、[LUIS ポータル](https://www.luis.ai)で新しいアプリを構築します。 最初に、アプリ、**意図**、**エンティティ**の基本パーツを作成します。 その後インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。
+このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 まず、アプリ、**意図**、および**エンティティ**の基本パーツを作成します。 次いで、インタラクティブ テスト パネルにユーザーの発話例を入力し、予測される意図を取得して、アプリをテストします。
 
-アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。 アプリをデプロイする準備ができたら、[アプリをデプロイするためのクイック スタート](get-started-portal-deploy-app.md)を参照します。 この記事では、Azure Cognitive Services リソースを作成し、アプリに割り当てる方法が説明されています。
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>アプリを作成する
 
-1. ブラウザー内で [LUIS ポータル](https://www.luis.ai)を開き、サインインします。 初めてサインインする場合は、LUIS ポータルの無料のユーザー アカウントを作成する必要があります。
+1. コンテキスト ツールバーの **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、再び **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択します。
 
-1. コンテキスト ツールバーから **[新しいアプリの作成]** を選択します。
+    > [!div class="mx-imgBorder"]
+    > [![LUIS ポータルのアプリ新規作成のスクリーンショット](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
-   [![LUIS ポータルで新しいアプリを作成する](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
-
-1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、**[完了]** を選択します。
+1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、 **[完了]** を選択します。
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |Name|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
-   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>必須|
-   |説明|`App made with LUIS Portal`|アプリの説明<br>省略可能|
-   | | | |
+   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
+   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
+   |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
+   |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
 
-   ![新しいアプリ設定を入力する](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![新規アプリの設定入力のスクリーンショット](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>意図の作成
 
@@ -49,22 +41,20 @@ LUIS アプリを作成したら、意図を作成する必要があります。
  1. 仕事を探し、応募する
  1. 仕事に応募するためのフォームを探す
 
-アプリの 2 つの_目的_は次の意図に対応しています。
+アプリの 2 つの _目的_ は次の意図に対応しています。
 
-|意図|ユーザーから発せられたテキストの例<br>"_発話_" と呼ばれる|
+|Intent|ユーザーから発せられたテキストの例<br>"_発話_" と呼ばれる|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、**[ビルド]** セクションに **[意図]** ページが表示されます。 **[Create new intent]\(意図の新規作成\)** を選択します。
+1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **［作成］** を選択します
 
-   [![[Create new intent]\(意図の新規作成\) ボタンを選択する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![新しい意図を作成するために [作成] が選択されているスクリーンショット](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. 意図の名前として `FindForm` を入力し、**[完了]** を選択します。
-
-   ![意図の名前として「FindForm」を入力する](./media/get-started-portal-build-app/create-new-intent-dialog.png)
+1. 意図の名前として `FindForm` を入力し、 **[完了]** を選択します。
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
@@ -72,51 +62,55 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 このアプリケーション例の `FindForm` 意図では、発話の例にフォーム番号を含めます。 ユーザーの要求を実行するためにクライアント アプリケーションはフォーム番号が必要なので、発話にそれを含めることは重要です。
 
-[![FindForm 意図に発話の例を入力する](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![FindForm 意図に発話の例を入力しているスクリーンショット](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 `FindForm` 意図に次の 15 の発話の例を追加します。
 
 |#|発話の例|
 |--|--|
-|1|hrf-123456 を探しています|
-|2|人事フォーム hrf-234591 はどこにありますか?|
-|3|hrf-345623 はどこにありますか|
-|4|hrf-345794 を私に送付していただくことは可能ですか|
-|5|内部のジョブに申し込むには hrf-234695 が必要ですか?|
-|6|hrf-234091 を使用して私がジョブに申し込みをしていることを、マネージャーは知る必要はありますか|
-|7|hrf-234918 はどこに送信しますか? メールを受信したという応答は届きますか?|
-|8|hrf-234555|
-|9|hrf-234987 はいつ更新されましたか?|
-|10|エンジニア リング職に申し込む際は、フォーム hrf-876345 を使用しますか|
-|11|私のオープン要求に対して、新しいバージョンの hrf-765234 が送信されましたか?|
-|12|国際的なジョブには、hrf-234234 を使用しますか?|
-|13|hrf-234598 のスペル ミス|
-|14|hrf-234567 は、新しい要件に応じて編集されますか|
-|15|hrf-123456、hrf-123123、hrf-234567|
+|1|`Looking for hrf-123456`|
+|2|`Where is the human resources form hrf-234591?`|
+|3|`hrf-345623, where is it`|
+|4|`Is it possible to send me hrf-345794`|
+|5|`Do I need hrf-234695 to apply for an internal job?`|
+|6|`Does my manager need to know I'm applying for a job with hrf-234091`|
+|7|`Where do I send hrf-234918? Do I get an email response it was received?`|
+|8|`hrf-234555`|
+|9|`When was hrf-234987 updated?`|
+|10|`Do I use form hrf-876345 to apply for engineering positions`|
+|11|`Was a new version of hrf-765234 submitted for my open req?`|
+|12|`Do I use hrf-234234 for international jobs?`|
+|13|`hrf-234598 spelling mistake`|
+|14|`will hrf-234567 be edited for new requirements`|
+|15|`hrf-123456, hrf-123123, hrf-234567`|
 
 これらの発話の例は、次の点を意図的に変化させています。
 
 * 発話の長さ
-* 句読点
+* [句読点](luis-reference-application-settings.md#punctuation-normalization)
 * 単語の選択
 * 動詞の時制 (現在、過去、未来)
 * 単語の順序
 
 
-
 ## <a name="create-a-regular-expression-entity"></a>正規表現エンティティを作成する
 
-実行時の予測応答としてフォーム番号を返すには、フォームをエンティティとしてマークする必要があります。 フォーム番号のテキストは、高度に構造化されているため、正規表現エンティティを使用してマークできます。 エンティティを作成するには、以下の手順に従います。
+実行時の予測応答としてフォーム番号を返すには、フォーム番号をエンティティとして抽出する必要があります。 フォーム番号のテキストは、高度に構造化されているため、正規表現エンティティを使用できます。 正規表現エンティティを作成するには、以下の手順に従います。
 
 1. 左側のメニューから **[エンティティ]** を選択します。
 
-1. **[エンティティ]** ページ上で **[新しいエンティティを作成する]** を選択します。
+1. **[エンティティ]** ページの **[作成]** を選択します。
 
-1. 名前として「`Human Resources Form Number`」を入力し、エンティティ型として **[正規表現]** を選択します。また、正規表現として「`hrf-[0-9]{6}`」を入力します。 これは、リテラル文字 `hrf-` と同じで、6 桁に対応します。
+1. 「`FormNumber`」という名前を入力し、 **[Regex]\(正規表現\)** エンティティ型を選択します。
 
-   ![正規表現エンティティのエンティティ情報を入力する](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+1. 正規表現 `hrf-[0-9]{6}` を **[Regex]\(正規表現\)** フィールドに入力します。 このエントリは、リテラル文字 `hrf-` と一致し、厳密に 6 桁に対応します。続けて **[作成]** を選択します。
 
-1. **[完了]** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![正規表現エンティティを作成しているスクリーンショット](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+
+
+    このエンティティは、任意の意図で、この正規表現と一致するテキストをすべて抽出します。
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する
 
@@ -130,23 +124,23 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
    |None 意図の発話の例|
    |--|
-   |吠える犬はうっとうしい|
-   |ピザを注文して|
-   |海の中のペンギン|
+   |`Barking dogs are annoying`|
+   |`Penguins in the ocean`|
 
-   この人事管理アプリの場合、これらの発話の例は、ドメイン外です。 人事ドメインに動物、食品、または海洋が含まれる場合、**None** 意図には別の発話の例を使用する必要があります。
+   このアプリの場合、これらの発話の例は、ドメイン外です。 ドメインに動物または海洋が含まれる場合、**None** 意図には別の発話の例を使用する必要があります。
 
 ## <a name="train-the-app"></a>アプリをトレーニングする
 
-右上のナビゲーションで **[トレーニング]** を選択すると、意図およびエンティティ モデルの変更が現在のバージョンのアプリに適用されます。
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>発話の例内の正規表現エンティティを見る
 
 1. 左側のメニューから **[意図]** を選択して、エンティティが **FindForm** 意図内にあることを確認します。 その後、**FindForm** 意図を選択します。
 
-   エンティティは、発話の例の中の出現箇所でマークされます。 エンティティ名ではなく、元のテキストを表示する場合は、ツールバーから **[エンティティ ビュー]** を切り替えます。
+   エンティティは、発話の例の中の出現箇所でマークされます。
 
-   [![エンティティによってマークが付けられたすべての発話の例](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [!div class="mx-imgBorder"]
+   > [![エンティティによってマークが付けられたすべての発話の例のスクリーンショット](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>インタラクティブな [テスト] ウィンドウを使用して新しいアプリをテストする
 
@@ -158,17 +152,18 @@ LUIS ポータル内のインタラクティブな **[テスト]** ウィンド�
 
    ```Is there a form named hrf-234098```
 
-   ![[テスト] ウィンドウで新しい発話をテストする](./media/get-started-portal-build-app/test-new-utterance.png)
+    **[検査]** を選択してエンティティの予測を表示します。
 
-   予測意図の上位は正しく **FindForm** になっており、信頼度は 90% を超えています (0.977)。 抽出された **Human Resources Form Number** エンティティの値は hrf-234098 です。
+   > [!div class="mx-imgBorder"]
+   > ![テスト ウィンドウで新しい発話をテストしているスクリーンショット](./media/get-started-portal-build-app/test-new-utterance.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+   予測意図の上位は正しく **FindForm** になっており、信頼度は 90% を超えています (0.977)。 抽出された **FormNumber** エンティティの値は hrf-234098 です。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートが完了し、次のクイック スタートに進まない場合は、上部のナビゲーション メニューから **[マイ アプリ]** を選択します。 次に、一覧からアプリの左側にあるチェック ボックスをオンにし、一覧の上にあるコンテキスト ツール バーから **[削除]** を選択します。
 
-[![[マイ アプリ] 一覧からアプリを削除する](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [2.アプリのデプロイ](get-started-portal-deploy-app.md)

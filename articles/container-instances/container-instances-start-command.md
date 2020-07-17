@@ -1,18 +1,14 @@
 ---
-title: Azure Container Instances で開始コマンド ラインを使用する
-description: Azure コンテナー インスタンスのデプロイ時にコンテナー イメージに構成されているエントリポイントをオーバーライドする
-services: container-instances
-author: dlepow
-ms.service: container-instances
+title: コンテナー インスタンスのエントリポイントをオーバーライドする
+description: Azure コンテナー インスタンスのデプロイ時にコンテナー イメージのエントリポイントをオーバーライドするためのコマンド ラインを設定する
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011012"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225823"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>コンテナー インスタンスにコマンド ラインを設定して既定のコマンド ライン操作をオーバーライドする
 
@@ -22,9 +18,17 @@ ms.locfileid: "60011012"
 
 ## <a name="command-line-guidelines"></a>コマンドラインのガイドライン
 
-* 既定では、このコマンド ラインでは、コンテナーで*シェルを使用せずに開始する単一のプロセス*を指定します。 たとえば、コマンド ラインにより Python スクリプトまたは実行ファイルを実行できます。 
+* 既定では、このコマンド ラインでは、コンテナーで*シェルを使用せずに開始する単一のプロセス*を指定します。 たとえば、コマンド ラインにより Python スクリプトまたは実行ファイルを実行できます。 このプロセスでは、追加のパラメーターまたは引数を指定できます。
 
-* 複数のコマンドを実行するには、コンテナーのオペレーティング システムでシェル環境を設定することで、コマンド ラインを開始します (例: `bin/sh`、`/bin/bash`、`cmd`)。 シェルの表記規則に従って、複数のコマンドを順番に実行します。
+* 複数のコマンドを実行するには、コンテナーのオペレーティング システムでサポートされるシェル環境を設定することで、コマンド ラインを開始します。 例 :
+
+  |オペレーティング システム  |既定のシェル  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  シェルの表記規則に従って、複数のコマンドを順番に実行します。
 
 * コンテナーの構成によっては、コマンドライン実行可能ファイルへの完全パスまたは引数を設定する必要があります。
 
@@ -50,8 +54,8 @@ ms.locfileid: "60011012"
 
 |    |  Azure CLI   | ポータル | Template | 
 | ---- | ---- | --- | --- |
-| 単一のコマンド | `--command-line "python myscript.py arg1 arg2"` | **[Command override]\(コマンドのオーバーライド\)**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| 複数のコマンド | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**[Command override]\(コマンドのオーバーライド\)**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| 単一のコマンド | `--command-line "python myscript.py arg1 arg2"` | **[Command override]\(コマンドのオーバーライド\)** : `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| 複数のコマンド | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**[Command override]\(コマンドのオーバーライド\)** : `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI の例
 
@@ -106,7 +110,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 複数のコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、実行時にカスタムのコマンド ラインを使用するとメリットがあります。 タスク ベースのコンテナーの実行に関する詳細については、「[再起動ポリシーによるコンテナー化タスクの実行](container-instances-restart-policy.md)」を参照してください。
 

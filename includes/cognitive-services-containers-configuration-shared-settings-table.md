@@ -1,25 +1,25 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/15/2019
-ms.openlocfilehash: c4abc5fa89b48b6fc55637e9ff3b259387d0d410
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116741"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73484089"
 ---
 このコンテナーには、次の構成設定があります。
 
-|必須|Setting|目的|
+|必須|設定|目的|
 |--|--|--|
-|はい|[ApiKey](#apikey-configuration-setting)|課金情報の追跡に使用されます。|
-|いいえ |[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|はい|[課金](#billing-configuration-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|はい|[ApiKey](#apikey-configuration-setting)|課金情報を追跡します。|
+|いいえ|[ApplicationInsights](#applicationinsights-setting)|お客様のコンテナーに対する [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートの追加を有効にします。|
+|はい|[Billing](#billing-configuration-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
-|いいえ |[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
-|いいえ |HTTP プロキシ|送信要求を行うために、HTTP プロキシを構成します。|
-|いいえ |[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
-|いいえ |[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
+|いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
+|いいえ|HTTP Proxy|送信要求を行うために、HTTP プロキシを構成します。|
+|いいえ|[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
+|いいえ|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|

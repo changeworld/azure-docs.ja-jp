@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB サーバーのファイアウォール規則
-description: Azure Database for MariaDB サーバーのファイアウォール規則について説明します。
+title: ファイアウォール規則 - Azure Database for MariaDB
+description: ファイアウォール規則を使用して、ご利用の Azure Database for MariaDB サーバーへの接続を有効にする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6fb9099ebfe884fc6eee58882ee23e46ba550e13
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 3/18/2020
+ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546251"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532044"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -35,20 +35,25 @@ ms.locfileid: "53546251"
 要求の IP アドレスがデータベース レベルのファイアウォール規則またはサーバー レベルのファイアウォール規則で指定された IP アドレス範囲外にある場合、接続要求は失敗します。
 
 ## <a name="connecting-from-azure"></a>Azure からの接続
-Azure からアプリケーションが Azure Database for MariaDB サーバーに接続できるようにするには、Azure 接続を有効にする必要があります。 たとえば、Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションをホストしたり、Azure Data Factory データ管理ゲートウェイから接続したりするためです。 ファイアウォール規則でこれらの接続を有効にするために、リソースが同じ仮想ネットワーク (VNet) またはリソース グループに存在する必要はありません。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これらの種類の接続を有効にするには、いくつかの方法があります。 開始アドレスと終了アドレスが 0.0.0.0 であるファイアウォール設定は、これらの接続が許可されていることを示します。 あるいは、ポータルの **[接続のセキュリティ]** ウィンドウから **[Azure サービスへのアクセスを許可]** オプションを **[オン]** に設定し、**[保存]** をクリックすることもできます。 接続試行が許可されていない場合、この要求は Azure Database for MariaDB サーバーに到達しません。
+任意のアプリケーションまたはサービスの発信 IP アドレスを見つけ、これらの個々の IP アドレスまたは範囲へのアクセスを明示的に許可することをお勧めします。 たとえば、Azure App Service の発信 IP アドレスを見つけることも、仮想マシンまたはその他のリソースに関連付けられているパブリック IP を使用することもできます (サービス エンドポイントを介した仮想マシンのプライベート IP との接続の詳細については、以下を参照してください)。 
+
+ご使用の Azure サービスに対して固定の発信 IP アドレスが使用できない場合は、すべての Azure データセンターの IP アドレスからの接続を有効にすることを検討できます。 この設定は、Azure portal から **[接続のセキュリティ]** ウィンドウで、 **[Azure サービスへのアクセス許可]** オプションを **[オン]** にし、 **[保存]** を押すことで設定できます。 Azure CLI からは、ファイアウォール規則の設定で開始アドレスと終了アドレスを 0.0.0.0 にすることで同じことができます。 接続試行が許可されていない場合、この要求は Azure Database for MariaDB サーバーに到達しません。
 
 > [!IMPORTANT]
-> このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> **[Azure サービスへのアクセス許可]** オプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 > 
 
 ![ポータルで [Azure サービスへのアクセスを許可] を構成する](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>VNet からの接続
+VNet から Azure Database for MariaDB サーバーに安全に接続するには、[VNet サービス エンドポイント](./concepts-data-access-security-vnet.md)の使用を検討してください。 
+
 ## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
 ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。 
 
-<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+「[Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-cli.md)」も参照してください。
 
-## <a name="troubleshooting-the-database-firewall"></a>データベース ファイアウォールのトラブルシューティング
+## <a name="troubleshooting-firewall-issues"></a>ファイアウォールの問題のトラブルシューティング
 Microsoft Azure Database for MariaDB サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
 
 * **許可一覧に変更が反映されない:** Azure Database for MariaDB サーバー ファイアウォールの構成に対する変更が反映されるまで最大 5 分の遅延が発生する場合があります。
@@ -57,12 +62,13 @@ Microsoft Azure Database for MariaDB サーバー サービスに期待どおり
 
 * **動的 IP アドレス:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
 
-* Azure Database for MariaDB サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、IP アドレス範囲を追加してください。
+   * Azure Database for MariaDB サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
-* 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
+   * 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
-## <a name="next-steps"></a>次の手順
+* **サーバーの IP がパブリックのように見える:** Azure Database for MariaDB サーバーへの接続は、パブリックにアクセス可能な Azure ゲートウェイ経由でルーティングされます。 しかし、実際のサーバー IP は、ファイアウォールによって保護されています。 詳細については、[接続アーキテクチャに関する記事](concepts-connectivity-architecture.md)をご覧ください。 
+
+## <a name="next-steps"></a>次のステップ
 - [Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-portal.md)
-
-<!--
-- [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) -->
+- [Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-cli.md)
+- [Azure Database for MariaDB での VNet サービス エンドポイント](./concepts-data-access-security-vnet.md)

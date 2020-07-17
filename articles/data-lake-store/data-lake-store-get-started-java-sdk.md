@@ -1,23 +1,17 @@
 ---
-title: Java SDK:Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 Java SDK を使用して、Data Lake Storage Gen1 に対してフォルダーの作成などのファイルシステム操作を実行します。
-services: data-lake-store
-documentationcenter: ''
+title: Java SDK - Data Lake Storage Gen1 に対するファイルシステム操作 - Azure
+description: Azure Data Lake Storage Gen1 用の Java SDK を使用して、Data Lake Storage Gen1 に対して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどのファイルシステム操作を実行します。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883549"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691773"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -58,7 +52,7 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
           </dependency>
         </dependencies>
    
-    最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[slf4j](https://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](https://www.slf4j.org/manual.html#projectDep)をご覧ください。
+    最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[SLF4J](https://www.slf4j.org/) ログ ファサードを使用します。それを使用すると、Log4j、Java ログ、Logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](https://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 3. アプリケーションに次の import ステートメントを追加します。
 
@@ -73,7 +67,7 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 * アプリケーションのエンドユーザー認証については、[Data Lake Storage Gen1 による Java を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)に関する記事をご覧ください。
 * アプリケーションのサービス間認証については、[Data Lake Storage Gen1 による Java を使用したサービス間認証](data-lake-store-service-to-service-authenticate-java.md)に関する記事をご覧ください。
@@ -205,10 +199,10 @@ Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成
     promptEnterKey();
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
-1. IDE 内から実行するには、**[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。
+1. IDE 内から実行するには、 **[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。
 2. コマンド ラインから実行できるスタンドアロン jar を生成するには、[Maven アセンブリ プラグイン](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)を使用して、すべての依存関係を含めて jar をビルドします。 [GitHub のサンプル ソース コード](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)の pom.xml に例が含まれています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Java SDK の JavaDoc を確認する](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 

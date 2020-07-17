@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zoho の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zoho の統合 | Microsoft Docs'
 description: Azure Active Directory と Zoho の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b5d0e52e927a44d5bce5314e724c1c753809ce0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865124"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74231941"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル:Azure Active Directory と Zoho の統合
+# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル: Azure Active Directory と Zoho の統合
 
 このチュートリアルでは、Zoho と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zoho と Azure AD の統合には、次の利点があります。
@@ -53,11 +54,11 @@ Azure AD への Zoho の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Zoho を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ Azure AD への Zoho の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zoho**」と入力し、結果パネルで **[Zoho]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Zoho**」と入力し、結果パネルで **[Zoho]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Zoho](common/search-new-app.png)
 
@@ -89,15 +90,15 @@ Zoho で Azure AD のシングル サインオンを構成してテストする�
 
 Zoho で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Zoho** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Zoho** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -110,7 +111,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Zoho クライアント サポート チーム](https://www.zoho.com/mail/contact.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -130,15 +131,15 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
 2. **コントロール パネル**に移動します。
    
-    ![コントロール パネル](./media/zoho-mail-tutorial/ic789607.png "Control Panel")
+    ![コントロール パネル](./media/zoho-mail-tutorial/ic789607.png "コントロール パネル")
 
 3. **[SAML 認証]** タブをクリックします。
    
-    ![SAML Authentication](./media/zoho-mail-tutorial/ic789608.png "SAML Authentication")
+    ![SAML 認証](./media/zoho-mail-tutorial/ic789608.png "[SAML 認証]")
 
 4. **[SAML 認証の詳細]** セクションで、次の手順に従います。
    
-    ![SAML 認証の詳細](./media/zoho-mail-tutorial/ic789609.png "SAML Authentication Details")
+    ![SAML 認証の詳細](./media/zoho-mail-tutorial/ic789609.png "[SAML 認証の詳細]")
    
     a. **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
    
@@ -150,13 +151,13 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
    
     e. **[アルゴリズム]** として **[RSA]** を選択します。
    
-    f. Click **OK**.
+    f. **[OK]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -181,7 +182,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、Britta Simon に Zoho へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Zoho]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Zoho]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -193,22 +194,22 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-zoho-test-user"></a>Zoho テスト ユーザーの作成
 
 Azure AD ユーザーが Zoho Mail にログインできるようにするには、そのユーザーを Zoho Mail にプロビジョニングする必要があります。 Zoho Mail の場合、プロビジョニングは手動で行います。
 
 > [!NOTE]
-> Zoho Mail から提供されている他の Zoho Mail ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Zoho Mail ユーザー アカウント作成ツールや、Zoho Mail から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
@@ -218,11 +219,11 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 1. **[ユーザーの詳細] \> [ユーザーの追加]** の順に移動します。
    
-    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789611.png "Add User")
+    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789611.png "ユーザーの追加")
 
 1. **[ユーザーの追加]** ダイアログで、次の手順を実行します。
    
-    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789612.png "Add User")
+    ![ユーザーの追加](./media/zoho-mail-tutorial/ic789612.png "ユーザーの追加")
    
     a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
 
@@ -232,7 +233,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
     d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
    
-    e. Click **OK**.  
+    e. **[OK]** をクリックします。  
       
     > [!NOTE]
     > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。

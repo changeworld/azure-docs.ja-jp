@@ -1,18 +1,16 @@
 ---
-title: レンダー マネージャーのサポート - Azure Batch
-description: Azure Batch のレンダー マネージャーの統合を使用してレンダリングに Azure を使用する
-services: batch
-ms.service: batch
+title: レンダー マネージャーのサポート
+description: Azure Batch レンダー マネージャーの統合を使用します。 一般的なレンダー マネージャーのビルトイン サポートまたはアドオンについて説明します。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: bcc66a73e3d7986b177b13eb309ad664a006b960
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.topic: how-to
+ms.openlocfilehash: c44cbf86d8bf2fe83a6dc91dee1c4f58eec156c0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790062"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726453"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>レンダー ファーム マネージャーで Azure Batch を使用する
 
@@ -23,23 +21,29 @@ Azure では、一般的なレンダー マネージャーのビルトイン サ
 次のレンダー マネージャーがサポートされています。
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Royal Render](http://www.royalrender.de/)
+* [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
+
+## <a name="azure-render-hub"></a>Azure Render Hub
+
+Azure Render Hub を使用すると、Azure レンダー ファームの作成と管理が簡単になります。  Render Hub では、PipelineFx Qube と Deadline 10 がネイティブにサポートされています。  詳細情報と詳細な手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
 
 ## <a name="using-azure-with-pipelinefx-qube"></a>Azure を PipelineFX Qube で使用する
 
-Azure Batch のプール VM を Qube のワーカーとして使用することを有効にするスクリプトや手順は、[GitHub のリポジトリ](https://github.com/Azure/azure-qube)に用意されています。
+Azure Render Hub は、Deadline を含む一般的なレンダー マネージャーをサポートしています。  Render Hub をデプロイして使用する手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
+
+Azure Batch のプール VM を Qube のワーカーとして使用することを有効にするスクリプトや手順は、[GitHub のリポジトリ](https://github.com/Azure/azure-qube)でも入手できます。
 
 ## <a name="using-azure-with-royal-render"></a>Azure を Royal Render で使用する
 
-Royal Render には Azure や Azure Batch の統合が組み込まれており、Azure ベースの VM を使用してレンダー ファームを拡張できます。 概要については、[ヘルプ ファイル](http://www.royalrender.de/help8/index.html?Cloudrendering.html)をご覧ください。
+Royal Render には Azure や Azure Batch の統合が組み込まれており、Azure ベースの VM を使用してレンダー ファームを拡張できます。 概要については、[ヘルプ ファイル](https://www.royalrender.de/help8/index.html?Cloudrendering.html)をご覧ください。
 
 Azure の統合を使用する Royal Render のお客様の例については、[Jellyfish Pictures のカスタマー ストーリー](https://customers.microsoft.com/story/jellyfishpictures)をご覧ください。
 
 ## <a name="using-azure-with-thinkbox-deadline"></a>Thinkbox Deadline で Azure を使用する
 
-Azure Batch のプール VM を Deadline のスレーブとして使用することを有効にするスクリプトや手順は、[GitHub のリポジトリ](https://github.com/Azure/azure-deadline)に用意されています。
+Azure Render Hub は、Deadline を含む一般的なレンダー マネージャーをサポートしています。  Render Hub をデプロイして使用する手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 必要に応じて GitHub の該当するプラグインや手順を使用して、お使いのレンダー マネージャーの Azure Batch の統合をお試しください。

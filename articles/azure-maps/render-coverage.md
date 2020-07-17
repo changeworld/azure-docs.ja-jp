@@ -1,29 +1,29 @@
 ---
-title: Azure Maps のレンダリング範囲 | Microsoft Docs
-description: Azure Maps のレンダリング範囲について説明します
-author: jingjing-z
-ms.author: jinzh
+title: レンダリング範囲 | Microsoft Azure Maps
+description: この記事では、Microsoft Azure Maps のレンダリング範囲となるリージョンと、レンダリングの詳細レベルについて説明します。
+author: Philmea
+ms.author: philmea
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869990"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123940"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
-Azure Maps は、ラスター タイルとベクター タイルの両方を使用してマップを作成します。 最低解像度では、世界全体が 1 つのタイルに収まります。 最高解像度では、1 つのタイルは 38 平方メートルを表します。 そのため、マップを拡大するにつれて、大陸、地域、都市、個々の通りの詳細が見えるようになります。 詳細については、「[Zoom levels and tile grid](zoom-levels-and-tile-grid.md)」(ズーム レベルとタイル グリッド) を参照してください。
+Azure Maps は、ラスター タイルとベクター タイルの両方を使用してマップを作成します。 最低解像度では、世界全体が 1 つのタイルに収まります。 最高解像度では、1 つのタイルは 38 平方メートルを表します。 マップを拡大すると、大陸、地域、都市、個々の道路に関する詳細が表示されます。 タイルの詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
 
-ただし、Maps は、すべての地域に対して同じレベルの情報と精度を備えているわけではありません。 次の表は、各地域で期待できるレンダリングの詳細レベルに関する情報をまとめたものです。
+しかし、Maps は、すべての地域に対して同じレベルの情報と精度を備えているわけではありません。 次の表は、各リージョンに表示できる情報のレベルを示しています。
 
 ## <a name="legend"></a>凡例
 
-| シンボル | 意味 |
+| Symbol | 意味 |
 |--------|---------|
 | ✓ | 地域は詳細なデータで表されます。   |
 | Ø | 地域は簡略化されたデータで表されます。 |
@@ -90,7 +90,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | ザンビア                           | ✓ | ✓ |
 | ジンバブエ                         | ✓ | ✓ |
 
-## <a name="americas"></a>アメリカ合衆国
+## <a name="americas"></a>アメリカ
 
 | 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |
@@ -166,7 +166,6 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | 中国                     |   | Ø |
 | ココス諸島   |   | Ø |
 | 韓国 |   | Ø |
-| 竹島と独島       |   | Ø |
 | 香港特別行政区             | ✓ | ✓ |
 | インド                     | Ø | ✓ | 
 | インドネシア                 | ✓ | ✓ |
@@ -299,7 +298,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | イギリス            | ✓ | ✓ |
 | バチカン              | ✓ | ✓ |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps のレンダリングの詳細については、「[Zoom levels and tile grid](zoom-levels-and-tile-grid.md)」(ズーム レベルとタイル グリッド) を参照してください。
 

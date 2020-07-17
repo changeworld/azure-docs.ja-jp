@@ -5,20 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/19/2018
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 03a4005da7794a989166f914e4ba4d03f93ae8b9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170134"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "73523233"
 ---
-1. ポータルで **+ [リソースの作成]** をクリックします。
-2. 検索ボックスに「**ローカル ネットワーク ゲートウェイ**」と入力し、**Enter** キーを押して検索します。 これにより、結果の一覧が返されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックし、**[作成]** ボタンをクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
+1. [Azure portal](https://portal.azure.com) メニューから **[リソースの作成]** を選択します。 
 
-   ![ローカル ネットワーク ゲートウェイの作成](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "ローカル ネットワーク ゲートウェイの作成")
+   ![Azure portal でリソースを作成する](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. **[マーケットプレースを検索]** フィールドに「**ローカル ネットワーク ゲートウェイ**」と入力し、**Enter** キーを押して、検索します。 これにより、結果の一覧が返されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックし、 **[作成]** ボタンをクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
+
+   ![ローカル ネットワーク ゲートウェイを作成する](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "ローカル ネットワーク ゲートウェイを作成する")
 
 3. **[ローカル ネットワーク ゲートウェイの作成]** ページで、ローカル ネットワーク ゲートウェイの値を指定します。
 
@@ -28,6 +30,6 @@ ms.locfileid: "66170134"
    - **[BGP 設定の構成]:** BGP を構成する場合にのみ使用します。 それ以外の場合は選択しないでください。
    - **サブスクリプション:** 正しいサブスクリプションが表示されていることを確認します。
    - **[リソース グループ]:** 使用するリソース グループを選択します。 新しいリソース グループを作成することも、作成済みのリソース グループを選択することもできます。
-   - **[場所]:** このオブジェクトが作成される場所を選択します。 VNet が存在するのと同じ場所を選択することもできますが、必須ではありません。
+   - **[場所]:** この場所は、他の設定の**リージョン**と同じです。 このオブジェクトが作成される場所を選択します。 VNet が存在するのと同じ場所を選択することもできますが、必須ではありません。
 
 4. 値の指定が完了したら、ページの下部にある **[作成]** ボタンをクリックして、ローカル ネットワーク ゲートウェイを作成します。

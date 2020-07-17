@@ -1,22 +1,16 @@
 ---
 title: Azure Functions における Notification Hubs のバインド
 description: Azure Functions で Azure Notification Hub のバインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 79ea9455fec7d31f800b2b5d36df6a2a53f502c3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235103"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -35,9 +29,9 @@ Notification Hubs バインディングは [Microsoft.Azure.WebJobs.Extensions.N
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
-このバインディングは、Functions 2.x では使用できません。
+このバインディングは、Functions 2.x 以降では使用できません。
 
 ## <a name="example---template"></a>例 - テンプレート
 
@@ -255,8 +249,8 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
-|**type** |該当なし| "notificationHub" に設定する必要があります。 |
-|**direction** |該当なし| "out" に設定する必要があります。 | 
+|**type** |該当なし| `notificationHub` に設定する必要があります。 |
+|**direction** |該当なし| `out` に設定する必要があります。 | 
 |**name** |該当なし| 通知ハブ メッセージの関数コードで使用される変数名。 |
 |**tagExpression** |**TagExpression** | タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。  詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。 |
 |**hubName** | **HubName** | Azure Portal 内の通知ハブ リソースの名前。 |
@@ -292,9 +286,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 既存の通知ハブに対する接続文字列を構成するには:
 
-1. [Azure Portal](https://portal.azure.com) で通知ハブに移動し、**[アクセスポリシー]** を選択して、**[DefaultFullSharedAccessSignature]** ポリシーの横にあるコピー ボタンを選択します。 これにより、*DefaultFullSharedAccessSignature* ポリシーの接続文字列が通知ハブにコピーされます。 この接続文字列を使用して、関数からハブに通知メッセージを送信できます。
+1. [Azure Portal](https://portal.azure.com) で通知ハブに移動し、 **[アクセスポリシー]** を選択して、 **[DefaultFullSharedAccessSignature]** ポリシーの横にあるコピー ボタンを選択します。 これにより、*DefaultFullSharedAccessSignature* ポリシーの接続文字列が通知ハブにコピーされます。 この接続文字列を使用して、関数からハブに通知メッセージを送信できます。
     ![通知ハブの接続文字列をコピーする](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Azure Portal の関数アプリに移動し、**[アプリケーション設定]** を選択し、**MyHubConnectionString** などのキーを追加します。次に、通知ハブ用にコピーされた *DefaultFullSharedAccessSignature* を値として貼り付けて、**[保存]** をクリックします。
+1. Azure Portal の関数アプリに移動し、 **[アプリケーション設定]** を選択し、**MyHubConnectionString** などのキーを追加します。次に、通知ハブ用にコピーされた *DefaultFullSharedAccessSignature* を値として貼り付けて、 **[保存]** をクリックします。
 
 このアプリケーション設定の名前が、*function.json* または .NET 属性の出力バインディング接続設定で使用されます。 この記事で前述した「[構成](#configuration)」セクションをご覧ください。
 
@@ -306,7 +300,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 |---|---|
 | Notification Hub | [運用ガイド](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

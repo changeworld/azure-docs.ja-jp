@@ -1,21 +1,17 @@
 ---
-title: チュートリアル - Azure Container Instances に使用するコンテナー イメージを準備する
+title: チュートリアル - デプロイ用のコンテナー イメージを準備する
 description: Azure Container Instances チュートリアル第 1 部 (全 3 部) - Azure Container Instances にデプロイするアプリをコンテナー イメージとして準備します
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f5d6ac81cc2553cc4a2d7b86c21417aa5ab1d572
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990640"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74533338"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>チュートリアル: Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する
 
 Azure Container Instances では、仮想マシンをプロビジョニングしたり、上位レベルのサービスを採用したりせずに、Azure のインフラストラクチャ上に Docker コンテナーをデプロイすることができます。 このチュートリアルでは、小さな Node.js Web アプリケーションを、Azure Container Instances を使用して実行できるコンテナー イメージにパッケージ化します。
 
@@ -44,7 +40,7 @@ Azure Container Instances では、仮想マシンをプロビジョニングし
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-GitHub から直接 [ZIP アーカイブ][aci-helloworld-zip]をダウンロードすることもできます。
+GitHub から直接 [ZIP アーカイブをダウンロード][aci-helloworld-zip]することもできます。
 
 ## <a name="build-the-container-image"></a>コンテナー イメージを構築する
 
@@ -120,7 +116,7 @@ a2e3e4435db58ab0c664ce521854c2e1a1bda88c9cf2fcff46aedf48df86cccf
 
 ![ブラウザーでのアプリのローカル実行][aci-tutorial-app-local]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Container Instances にデプロイできるコンテナー イメージを作成し、ローカルで実行されていることを確認しました。 ここで行った作業は次のとおりです。
 

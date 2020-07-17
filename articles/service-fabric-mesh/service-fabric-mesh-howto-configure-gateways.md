@@ -1,26 +1,17 @@
 ---
-title: 要求をルーティングするようにゲートウェイを構成する | Microsoft Docs
+title: 要求をルーティングするようにゲートウェイを構成する
 description: Service Fabric Mesh で実行されているアプリケーションに対する受信トラフィックを処理するゲートウェイを構成する方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528120"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75461951"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>要求をルーティングするようにゲートウェイ リソースを構成する
 
@@ -231,5 +222,5 @@ HTTP のルーティング規則は、次のプロパティで構成されます
 * "\<IPAddress>:80/helloWorld/\<要求\>" の場合は、要求は helloWorldService の "helloWorldListener" に送られます。 
 * "\<IPAddress>:80/counter/\<要求\>" の場合は、要求は counterService の "counterListener" に送られます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Ingress サンプル](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)をデプロイして、ゲートウェイの動作を確認する

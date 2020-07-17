@@ -1,18 +1,18 @@
 - name: Cloud Services のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: Cloud Services とは
       href: cloud-services-choose-me.md
     - name: クラウド サービスの構成ファイルとパッケージ化
       href: cloud-services-model-and-package.md
-- name: 作業の開始
+- name: 開始するには
   items:
     - name: .NET クラウド サービスの例
       href: cloud-services-dotnet-get-started.md
     - name: Python for Visual Studio クラウド サービスの例
       href: cloud-services-python-ptvs.md
-- name: 方法
+- name: 操作方法
   items:
     - name: プラン
       items:
@@ -58,9 +58,9 @@
               href: cloud-services-role-enable-remote-desktop-new-portal.md
             - name: PowerShell
               href: cloud-services-role-enable-remote-desktop-powershell.md
-            - name: Visual Studio
+            - name: "Visual\_Studio"
               href: cloud-services-role-enable-remote-desktop-visual-studio.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: ポータルでのクラウド サービスの作成とデプロイ
           href: cloud-services-how-to-create-deploy-portal.md
@@ -102,7 +102,7 @@
           href: cloud-services-certs-create.md
         - name: SSL の構成
           href: cloud-services-configure-ssl-certificate-portal.md
-    - name: 監視
+    - name: モニター
       items:
         - name: クラウド サービスの監視
           href: cloud-services-how-to-monitor.md
@@ -119,10 +119,10 @@
               href: cloud-services-diagnostics-powershell.md
             - name: .NET
               href: cloud-services-dotnet-diagnostics.md
-            - name: Visual Studio
+            - name: "Visual\_Studio"
               href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
         - name: Azure Storage への診断データの保存と表示
-          href: ../azure-monitor/platform/diagnostics-extension-to-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json
+          href: diagnostics-extension-to-storage.md
         - name: 診断を使用したクラウド サービスのトレース
           href: cloud-services-dotnet-diagnostics-trace-flow.md
     - name: トラブルシューティング
@@ -139,6 +139,8 @@
           href: cloud-services-allocation-failures.md
         - name: クラウド サービス ロールがリサイクルされる一般的な原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: アプリケーションで TLS 1.2 がサポートされていない
+          href: applications-dont-support-tls-1-2.md
         - name: ロールに対する既定の一時フォルダーのサイズが小さすぎる
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 一般的なデプロイの問題
@@ -189,8 +191,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: ラーニング パス
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 料金計算ツール

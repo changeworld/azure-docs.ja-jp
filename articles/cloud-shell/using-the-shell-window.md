@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
-ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699221"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "70860327"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
 
@@ -48,7 +48,7 @@ Bash 環境と PowerShell 環境をスワップするには、Cloud Shell ツー
 ウィンドウの左上にあるファイルのアップロード/ダウンロード アイコンをクリックし、アップロードまたはダウンロードを選択します。  
 ![ファイルのアップロード/ダウンロード](media/using-the-shell-window/uploaddownload.png)
 * ファイルをアップロードする場合は、ポップアップを使用して、ローカル コンピューター上のファイルを参照し、目的のファイルを選択して、[開く] ボタンをクリックします。  ファイルが `/home/user` ディレクトリにアップロードされます。
-* ファイルをダウンロードする場合は、ポップアップ ウィンドウに完全修飾ファイル パスを入力し、[ダウンロード] ボタンをクリックします。  
+* ファイルをダウンロードする場合は、ポップアップ ウィンドウに完全修飾ファイル パス (つまり、基本的には既定で表示される `/home/user` ディレクトリの下のパス) を入力し、[ダウンロード] ボタンを選択します。  
 > [!NOTE] 
 > Cloud Shell では、ファイルとファイル パスの大文字と小文字が区別されます。 ファイル パスの大文字と小文字の区別をよく確認してください。
 
@@ -81,12 +81,12 @@ Cloud Shell では、各セッションが別のプロセスとして存在で�
 ツールバーの上端をクリックしてから、上下にドラッグして Cloud Shell ウィンドウのサイズを変更します。
 
 ## <a name="scrolling-text-display"></a>テキスト表示のスクロール
-マウスまたはタッチパッドを使用してスクロールし、端末のテキストを移動します。
+マウスまたはタッチパッドを使用して、ターミナルのテキストをスクロールできます。
 
 ## <a name="exit-command"></a>exit コマンド
 `exit` を実行すると、アクティブなセッションが終了します。 この動作は、操作が行われていない状態で 20 分経過した場合も発生します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md)

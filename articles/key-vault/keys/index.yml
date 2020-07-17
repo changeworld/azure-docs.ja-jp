@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: 主要なドキュメント
+summary: Azure Key Vault では、Microsoft Azure アプリケーションとユーザーがキーを保存して使用できます。 複数のキーの種類とアルゴリズムがサポートされ、価値の高いキーにハードウェア セキュリティ モジュール (HSM) が使用できるようになります。
+metadata:
+  title: '[キー]'
+  description: Azure Key Vault では、Microsoft Azure アプリケーションとユーザーがキーを保存して使用できます。 複数のキーの種類とアルゴリズムがサポートされ、価値の高いキーにハードウェア セキュリティ モジュール (HSM) が使用できるようになります。
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: keys
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: d5394200164d4f254ceca7a18035df95cc401747
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423362"
+landingContent:
+- title: '[キー]'
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault キーとは
+      url: about-keys.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: ポータル
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+- title: チュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: HSM で保護されたキーを Key Vault にインポートする
+      url: hsm-protected-keys.md
+    - text: ベンダーに依存しない HSM で保護されたキーをインポートする
+      url: hsm-protected-keys-vendor-agnostic-byok.md
+- title: Key Vault の詳細
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault の概要
+      url: ../general/overview.md
+    - text: 基本的な概念
+      url: ../general/basic-concepts.md
+    - text: 論理的な削除の概要
+      url: ../general/overview-soft-delete.md
+    - text: セキュリティの概要
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Key Vault を使用してサーバー アプリでシークレットを管理する
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

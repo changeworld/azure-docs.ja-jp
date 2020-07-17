@@ -1,23 +1,22 @@
 ---
-title: Data Management Gateway のリリース ノート | Microsoft Docs
+title: Data Management Gateway のリリース ノート
 description: Data Management Gateway のリリース ノート
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064994"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -41,28 +40,28 @@ Data Management Gateway とその使用方法の詳細については、次の�
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>強化された機能
 - ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
-- HDFS コネクタでは、SSL 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
-- 修正済み:(クロック スキューによる) 更新中のゲートウェイ オフラインの問題
+- HDFS コネクタでは、TLS 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
+- 固定:(クロック スキューによる) 更新中のゲートウェイ オフラインの問題
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>強化された機能
 -   ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
 -   1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
--   修正済み:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
--   修正済み:べき等性を利用して Document DB からオンプレミス SQL Server にコピーするときの範囲外のインデックスの問題。
--   修正済み:コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL Server で機能しない問題。
--   修正済み:末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
+-   固定:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
+-   固定:べき等性を利用して Document DB からオンプレミス SQL Server にコピーするときの範囲外のインデックスの問題。
+-   固定:コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL Server で機能しない問題。
+-   固定:末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>強化された機能
-- 修正済み:ゲートウェイ コンピューターの再起動時に資格情報が見つからない問題。
-- 修正済み:バックアップ ファイルを使用したゲートウェイの復元時の登録に関する問題。
+- 固定:ゲートウェイ コンピューターの再起動時に資格情報が見つからない問題。
+- 固定:バックアップ ファイルを使用したゲートウェイの復元時の登録に関する問題。
 
 
 ## <a name="2762401"></a>2.7.6240.1
 ### <a name="enhancements-"></a>強化された機能
-- 修正済み:ソースである Oracle から 10 進数の null 値が正しく読み取られない問題。
+- 固定:ソースである Oracle から 10 進数の null 値が正しく読み取られない問題。
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>新機能
@@ -75,7 +74,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>強化された機能
+### <a name="enhancements"></a>機能強化
 - 向上された、より堅牢なゲートウェイの登録エクスペリエンス: ゲートウェイの登録プロセス中に進行状況を追跡できます。これにより、登録エクスペリエンスの応答性を高めます。
 - ゲートウェイ復元プロセスの向上: この更新プログラムを使用したゲートウェイのバックアップ ファイルがない場合でも、ゲートウェイを回復できます。 これにより、ポータルでリンクされたサービスの資格情報をリセットするように要求されます。
 - バグの修正。
@@ -103,7 +102,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 *  Gateway 構成マネージャーを使用して、ゲートウェイ用の HTTP プロキシを設定できます。 構成されている場合、Azure BLOB、Azure テーブル、Azure Data Lake、および Document DB には HTTP プロキシでアクセスします。
 *  Azure BLOB、Azure Data Lake Store、オンプレミスのファイル システム、およびオンプレミスの HDFS との間でデータをコピーするときに、TextFormat のヘッダーを処理できます。
 *  既にサポートされているブロック BLOB のほか、追加 Blob とページ BLOB からのデータのコピーがサポートされています。
-*  新しいゲートウェイの状態 "**オンライン (制限付き)**" が導入されました。この状態は、ゲートウェイの主な機能が、コピー ウィザードの対話型操作のサポートを除いて動作することを示します。
+*  新しいゲートウェイの状態 "**オンライン (制限付き)** " が導入されました。この状態は、ゲートウェイの主な機能が、コピー ウィザードの対話型操作のサポートを除いて動作することを示します。
 *  登録キーにより、ゲートウェイ登録の堅牢性が向上しました。
 
 ## <a name="216040"></a>2.1.6040。

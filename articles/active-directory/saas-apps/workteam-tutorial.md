@@ -1,264 +1,198 @@
 ---
-title: チュートリアル:Azure Active Directory と Workteam の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workteam の統合 | Microsoft Docs
 description: Azure Active Directory と Workteam の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 41df17a1-ba69-414f-8ec3-11079b030df6
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/28/2018
+ms.topic: tutorial
+ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7cd986544dfb1472f5cc8a013fec951dca42a59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0b14c08604fcc0f6d2550127ca1f1aa053172b75
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898654"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "72026739"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>チュートリアル:Azure Active Directory と Workteam の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workteam の統合
 
-このチュートリアルでは、Workteam と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Workteam と Azure Active Directory (Azure AD) を統合する方法について説明します。 Workteam を Azure AD と統合すると、次のことができます。
 
-Workteam と Azure AD の統合には、次の利点があります。
+* Workteam にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで自動的に Workteam にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-- Workteam にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Workteam にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Workteam と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-- Azure AD サブスクリプション
-- Workteam でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Workteam でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Workteam の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+
+* Workteam では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-workteam-from-the-gallery"></a>ギャラリーからの Workteam の追加
+
 Azure AD への Workteam の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Workteam を追加する必要があります。
 
-**ギャラリーから Workteam を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Workteam**」と入力します。
+1. 結果のパネルから **[Workteam]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-workteam"></a>Workteam の Azure AD シングル サインオンの構成とテスト
 
-    ![Azure Active Directory のボタン][1]
+**B.Simon** というテスト ユーザーを使用して、Workteam に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Workteam の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+Workteam で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Workteam の SSO の構成](#configure-workteam-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Workteam テスト ユーザーの作成](#create-workteam-test-user)** - Workteam で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] ボタン][3]
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「**Workteam**」と入力し、結果パネルで **[Workteam]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-    ![結果一覧の Workteam](./media/workteam-tutorial/tutorial_workteam_addfromgallery.png)
+1. [Azure portal](https://portal.azure.com/) の **Workteam** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Workteam で Azure AD のシングル サインオンを構成し、テストします。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Workteam ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Workteam の関連ユーザーの間で、リンク関係が確立されている必要があります。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-Workteam で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+    **[サインオン URL]** テキスト ボックスに URL として「`https://app.workte.am`」と入力します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Workteam テスト ユーザーの作成](#create-a-workteam-test-user)** - Workteam で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、Workteam アプリケーションでシングル サインオンを構成します。
+1. **[Workteam のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-**Workteam で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-1. Azure portal の **Workteam** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    ![シングル サインオン構成のリンク][4]
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/workteam-tutorial/tutorial_workteam_samlbase.png)
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-3. アプリケーションは Azure と事前に統合済みであるため、**[Workteam のドメインと URL]** セクションで実行が必要な手順はありません。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-    ![[Workteam のドメインと URL] のシングル サインオン情報](./media/workteam-tutorial/tutorial_workteam_url.png)
+このセクションでは、B. Simon に Workteam へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Workteam]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[Workteam のドメインと URL] のシングル サインオン情報](./media/workteam-tutorial/tutorial_workteam_url1.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-    **[サインオン URL]** ボックスに、「`https://app.workte.am`」と入力します。
-     
-5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![証明書のダウンロードのリンク](./media/workteam-tutorial/tutorial_workteam_certificate.png) 
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-6. **[保存]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/workteam-tutorial/tutorial_general_400.png)
-    
-7. **[Workteam 構成]** セクションで、**[Workteam の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+### <a name="configure-workteam-sso"></a>Workteam の SSO の構成
 
-    ![Workteam 構成](./media/workteam-tutorial/tutorial_workteam_configure.png) 
+1. Workteam 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-8. 別の Web ブラウザー ウィンドウで、Workteam にセキュリティ管理者としてログインします。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-9. 右上隅にある**プロファイル ロゴ**をクリックし、**[Organization settings]\(組織の設定\)** をクリックします。 
+2. ブラウザーに拡張機能を追加した後、 **[Workteam のセットアップ]** をクリックすると、Workteam アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Workteam にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Workteam を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Workteam 企業サイトにサインインして、次の手順を実行します。
+
+4. 右上隅にある**プロファイル ロゴ**をクリックし、 **[Organization settings]\(組織の設定\)** をクリックします。 
 
     ![Workteam の設定](./media/workteam-tutorial/tutorial_workteam_settings.png)
 
-10. **[AUTHENTICATION]\(認証\)** セクションで、**設定ロゴ**をクリックします。
+5. **[AUTHENTICATION]\(認証\)** セクションで、**設定ロゴ**をクリックします。
 
      ![Workteam - Azure](./media/workteam-tutorial/tutorial_workteam_azure.png)
 
-11. **[SAML Settings]** ページで、次の手順を実行します。
+6. **[SAML Settings]** ページで、次の手順を実行します。
 
      ![Workteam - SAML](./media/workteam-tutorial/tutorial_workteam_saml.png)
 
     a. **[SAML IdP]** で **[AD Azure]** を選択します。
 
-    b. **[SAML Single Sign-On Service URL]\(SAML シングル サインオン サービス URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    b. **[SAML Single Sign-On Service URL]\(SAML シングル サインオン サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    c. **[SAML Entity ID]\(SAML エンティティ ID\)** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    c. **[SAML Entity ID]\(SAML エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    d. Azure portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[SAML Signing Certificate (Base64)]\(SAML 署名証明書 (Base64)\)** ボックスに貼り付けます。
+    d. Azure portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[SAML Signing Certificate (Base64)]\(SAML 署名証明書 (Base64)\)** ボックスに貼り付けます。
 
-    e. Click **OK**.
+    e. **[OK]** をクリックします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-workteam-test-user"></a>Workteam のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-   ![Azure AD のテスト ユーザーの作成][100]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
-
-    ![Azure Active Directory のボタン](./media/workteam-tutorial/create_aaduser_01.png)
-
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/workteam-tutorial/create_aaduser_02.png)
-
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
-
-    ![[追加] ボタン](./media/workteam-tutorial/create_aaduser_03.png)
-
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/workteam-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
- 
-### <a name="create-a-workteam-test-user"></a>Workteam テスト ユーザーの作成
-
-Azure AD ユーザーが Workteam にログインできるようにするには、ユーザーを Workteam にプロビジョニングする必要があります。 Workteam では、プロビジョニングは手動で行います。
+Azure AD ユーザーが Workteam にサインインできるようにするには、そのユーザーを Workteam にプロビジョニングする必要があります。 Workteam では、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
-1. セキュリティ管理者として Workteam にログインします。
+1. セキュリティ管理者として Workteam にサインインします。
 
-2. **[Organization settings]\(組織の設定\)** ページで、上部中央の **[USERS]\(ユーザー\)** をクリックし、**[NEW USER]\(新しいユーザー\)** をクリックします。
+2. **[Organization settings]\(組織の設定\)** ページで、上部中央の **[USERS]\(ユーザー\)** をクリックし、 **[NEW USER]\(新しいユーザー\)** をクリックします。
 
     ![Workteam - ユーザー](./media/workteam-tutorial/tutorial_workteam_user.png)
 
 3. **[New employee]\(新しい従業員\)** ページで、次の手順を実行します。
 
-    ![Workteam - 新しい従業員](./media/workteam-tutorial/tutorial_workteam_newuser.png)
+    ![Workteam の新しいユーザー](./media/workteam-tutorial/tutorial_workteam_newuser.png)
 
-    a. **[Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Brittasimon**)。
+    a. **[Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **B.Simon**)。
 
-    b. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
+    b. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon\@contoso.com`)。
 
-    c. Click **OK**.
+    c. **[OK]** をクリックします。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Workteam へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-![ユーザー ロールを割り当てる][200] 
-
-**Workteam に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
-
-2. アプリケーションの一覧で **[Workteam]** を選択します。
-
-    ![アプリケーションの一覧の Workteam のリンク](./media/workteam-tutorial/tutorial_workteam_app.png)  
-
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
-
-    ![[ユーザーとグループ] リンク][202]
-
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ][203]
-
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Workteam] タイルをクリックすると、自動的に Workteam アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルで [Workteam] タイルをクリックすると、SSO を設定した Workteam に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-<!--Image references-->
-
-[1]: ./media/workteam-tutorial/tutorial_general_01.png
-[2]: ./media/workteam-tutorial/tutorial_general_02.png
-[3]: ./media/workteam-tutorial/tutorial_general_03.png
-[4]: ./media/workteam-tutorial/tutorial_general_04.png
-
-[100]: ./media/workteam-tutorial/tutorial_general_100.png
-
-[200]: ./media/workteam-tutorial/tutorial_general_200.png
-[201]: ./media/workteam-tutorial/tutorial_general_201.png
-[202]: ./media/workteam-tutorial/tutorial_general_202.png
-[203]: ./media/workteam-tutorial/tutorial_general_203.png
+- [Azure AD を使用して Workteam を試す](https://aad.portal.azure.com/)
 

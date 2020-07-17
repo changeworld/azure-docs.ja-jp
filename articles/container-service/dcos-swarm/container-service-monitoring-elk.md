@@ -1,20 +1,18 @@
 ---
 title: (非推奨) Azure DC/OS クラスターを監視する - ELK スタック
 description: ELK (Elasticsearch、Logstash、Kibana) を使って Azure Container Service クラスター内の DC/OS クラスターを監視します。
-services: container-service
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 586b8d25a9f391487640e9b1f8adb3be0e4be6db
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998132"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166174"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(非推奨) ELK を使って Azure Container Service クラスターを監視します
 
@@ -30,11 +28,11 @@ Azure Container Service によって構成された DC/OS クラスターを[デ
 ELK スタックは、クラスター内のログの監視および分析に使用できるエンド ツー エンドのスタックを提供する、Elasticsearch、Logstash、Kibana の組み合わせです。
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>DC/OS クラスターで ELK スタックを構成する
-[http://localhost:80/](http://localhost:80/) を介して DC/OS UI にアクセスしたら、**Universe** に移動します。 DC/OS Universe から Elasticsearch、Logstash、Kibana を検索し、この順序でインストールします。 **[Advanced Installation (高度なインストール)]** のリンクに移動すると、構成の詳細を確認できます。
+`http://localhost:80/` を介して DC/OS UI にアクセスしたら、**Universe** に移動します。 DC/OS Universe から Elasticsearch、Logstash、Kibana を検索し、この順序でインストールします。 **[Advanced Installation (高度なインストール)]** のリンクに移動すると、構成の詳細を確認できます。
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-ELK コンテナーが起動して実行されると、Marathon LB を介して Kibana にアクセスできるようにする必要があります。 次のように、**[サービス]** > **[kibana]** の順に移動し、**[編集]** をクリックします。
+ELK コンテナーが起動して実行されると、Marathon LB を介して Kibana にアクセスできるようにする必要があります。 次のように、 **[サービス]**  >  **[kibana]** の順に移動し、 **[編集]** をクリックします。
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 
@@ -58,7 +56,7 @@ HAPROXY ダッシュボードにアクセスするには、`http://$PUBLIC_NODE_
 
 Kibana ダッシュボードはポート 5601 でデプロイされるため、アクセスするには ポート 5601 を開く必要があります。 [こちら](container-service-enable-public-access.md)で説明されている手順に従います。 次に、`http://localhost:5601` で Kibana ダッシュボードを開きます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * システムおよびアプリケーションのログ転送とセットアップについては、「[Log Management in DC/OS with ELK (ELK での DC/OS のログ管理)](https://docs.mesosphere.com/1.8/administration/logging/elk/)」を参照してください。
 

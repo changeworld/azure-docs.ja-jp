@@ -1,20 +1,14 @@
 ---
-title: Azure Service Fabric Mesh アプリケーションのシークレットを管理する | Microsoft Docs
+title: Azure Service Fabric Mesh のアプリケーション シークレットを管理する
 description: アプリケーション シークレットを管理して、Service Fabric Mesh アプリケーションの作成やデプロイを安全に行えるようにします。
-services: service-fabric-mesh
-keywords: secrets
-author: aljo-microsoft
-ms.author: aljo
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chackdan
-ms.openlocfilehash: 251611e814f890e3cebf0fda2d33ab548a8ff213
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506444"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75461921"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Azure Service Fabric Mesh アプリケーションのシークレットを管理する
 Service Fabric Mesh では、Azure リソースとしてシークレットがサポートされています。 Service Fabric Mesh のシークレットには、格納や送信を安全に行う必要がある、機密性の高いテキスト情報を指定できます (ストレージ接続文字列やパスワードなど)。 この記事では、Service Fabric Secure Store Service を使用して、シークレットをデプロイし、保持する方法について説明します。
@@ -206,9 +200,9 @@ az mesh deployment create –-<template-file> or --<template-uri>
 ```
 **template-file** か **template-uri** のいずれかを渡します (両方ではありません)。
 
-例: 
+次に例を示します。
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- az mesh deployment create -- https://www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az mesh deployment create --https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>シークレットを表示する
 シークレットの説明が返されます (値ではありません)。
@@ -247,6 +241,6 @@ az mesh secretvalue show --Resource-group <myResourceGroup> --secret-name <mySec
 az mesh secretvalue delete --Resource-group <myResourceGroup> --secret-name <mySecret> --version <N>
 ```
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
 - [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)

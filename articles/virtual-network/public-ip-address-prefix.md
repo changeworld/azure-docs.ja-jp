@@ -1,26 +1,27 @@
 ---
-title: Azure パブリック IP アドレス プレフィックス | Microsoft Docs
+title: Azure パブリック IP アドレス プレフィックス
 description: Azure パブリック IP アドレス プレフィックスとはどのようなもので、予測可能なパブリック IP アドレスをリソースに割り当てるのにどのように役立つのかについて説明します。
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 04/08/2020
+ms.author: allensu
+ms.openlocfilehash: 0f71f845ef3209146ead79cafae2f3aa5c8c6d7d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154480"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82144521"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 
@@ -39,31 +40,31 @@ Azure リージョンおよびサブスクリプションでパブリック IP �
 - 既知の範囲からパブリック IP アドレス リソースを作成できます。
 - ユーザーまたはユーザーのビジネス パートナーは、現在割り当ててあるパブリック IP アドレスだけでなく、まだ割り当てていないアドレスも含まれる範囲で、ファイアウォール規則を作成できます。 これにより、新しいリソースに IP アドレスを割り当てるときにファイアウォール規則を変更する必要がなくなります。
 - 作成できる範囲の既定のサイズは /28 つまり 16 個の IP アドレスです。
-- 作成できる範囲の数に制限はありませんが、Azure サブスクリプションで使用できる静的パブリック IP アドレスの数には上限があります。 その結果、サブスクリプションで使用できる数より多くの静的パブリック IP アドレスが含まれるような数の範囲を作成することはできません。 詳しくは、[Azure での制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
+- 作成できる範囲の数に制限はありませんが、Azure サブスクリプションで使用できる静的パブリック IP アドレスの数には上限があります。 その結果、サブスクリプションで使用できる数より多くの静的パブリック IP アドレスが含まれるような数の範囲を作成することはできません。 詳しくは、[Azure での制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
 - プレフィックスのアドレスを使用して作成したアドレスは、パブリック IP アドレスを割り当てることができる任意の Azure リソースに割り当てることができます。
 - 範囲内で割り当てられている IP アドレスおよびまだ割り当てられていない IP アドレスを、簡単に確認することができます。
 
 ## <a name="scenarios"></a>シナリオ
 プレフィックスの静的パブリック IP アドレスには、次のリソースを関連付けることができます。
 
-|Resource|シナリオ|手順|
+|リソース|シナリオ|手順|
 |---|---|---|
-|Virtual Machines| プレフィックスのパブリック IP アドレスを、Azure の仮想マシンに関連付けると、ファイアウォールで IP アドレスをホワイトリストに登録するときの管理オーバーヘッドが軽減されます。 単一のファイアウォール規則でプレフィックス全体をホワイトリストに簡単に登録できます。 Azure で仮想マシンをスケーリングするときは、同じプレフィックスから IP アドレスを関連付けることで、コスト、時間、管理オーバーヘッドを節約できます。| プレフィックスから仮想マシンに IP アドレスを関連付けるには:1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. [仮想マシンのネットワーク インターフェイスに IP アドレスを関連付けます。](virtual-network-network-interface-addresses.md#add-ip-addresses)
-| ロード バランサー | プレフィックスのパブリック IP アドレスを、ロード バランサーのフロントエンド IP 構成またはアウトバウンド規則に関連付けると、Azure のパブリック IP アドレス空間が単純化されます。 パブリック IP アドレス プレフィックスによって定義されている連続した IP アドレスの範囲から発信されるように送信接続をグルーミングすることで、シナリオを単純化できます。 | プレフィックスからロード バランサーに IP アドレスを関連付けるには:1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. ロード バランサーを作成するときに、ロード バランサーのフロントエンド IP アドレスとして、上の手順 2 で作成した IP アドレスを選択または更新します。 |
-| Azure Firewall | 送信 SNAT に対してプレフィックスのパブリック IP アドレスを使用できます。 これは、すべての送信仮想ネットワーク トラフィックが [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) のパブリック IP アドレスに変換されることを意味します。 この IP アドレスは事前に決定されたプレフィックスのものなので、Azure でのパブリック IP アドレスのフットプリントがどのようになるかが、事前に非常に簡単にわかります。 | 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 手順 3. [Azure Firewall をデプロイする](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)ときに、前にプレフィックスから割り当てた IP アドレスを選択します。|
+|Virtual Machines| プレフィックスのパブリック IP アドレスを、Azure の仮想マシンに関連付けると、ファイアウォールで IP アドレスをホワイトリストに登録するときの管理オーバーヘッドが軽減されます。 単一のファイアウォール規則でプレフィックス全体をホワイトリストに簡単に登録できます。 Azure で仮想マシンをスケーリングするときは、同じプレフィックスから IP アドレスを関連付けることで、コスト、時間、管理オーバーヘッドを節約できます。| プレフィックスから仮想マシンに IP アドレスを関連付けるには:1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 3. [仮想マシンのネットワーク インターフェイスに IP アドレスを関連付けます。](virtual-network-network-interface-addresses.md#add-ip-addresses) [仮想マシン スケール セットに IP を関連付ける](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)こともできます。
+| Standard Load Balancer | プレフィックスのパブリック IP アドレスを、ロード バランサーのフロントエンド IP 構成またはアウトバウンド規則に関連付けると、Azure のパブリック IP アドレス空間が単純化されます。 パブリック IP アドレス プレフィックスによって定義されている連続した IP アドレスの範囲から発信されるように送信接続をグルーミングすることで、シナリオを単純化できます。 | プレフィックスからロード バランサーに IP アドレスを関連付けるには:1. [プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 3. ロード バランサーを作成するときに、ロード バランサーのフロントエンド IP アドレスとして、上の手順 2 で作成した IP アドレスを選択または更新します。 |
+| Azure Firewall | 送信 SNAT に対してプレフィックスのパブリック IP アドレスを使用できます。 これは、すべての送信仮想ネットワーク トラフィックが [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) のパブリック IP アドレスに変換されることを意味します。 この IP アドレスは事前に決定されたプレフィックスのものなので、Azure でのパブリック IP アドレスのフットプリントがどのようになるかが、事前に非常に簡単にわかります。 | 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 3. [Azure Firewall をデプロイする](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)ときに、前にプレフィックスから割り当てた IP アドレスを選択します。|
+| Application Gateway v2 | 自動スケーリングとゾーン冗長 Application Gateway v2 に対してプレフィックスのパブリック IP を使用できます。 この IP アドレスは事前に決定されたプレフィックスのものなので、Azure でのパブリック IP アドレスのフットプリントがどのようになるかが、事前に非常に簡単にわかります。 | 1.[プレフィックスを作成します。](manage-public-ip-address-prefix.md) 2. [プレフィックスから IP アドレスを作成します。](manage-public-ip-address-prefix.md) 3. [Application Gateway をデプロイする](../application-gateway/quick-create-portal.md#create-an-application-gateway)ときに、前にプレフィックスから割り当てた IP アドレスを選択します。|
 
 ## <a name="constraints"></a>制約
 
 - プレフィックスに対して IP アドレスを指定することはできません。 プレフィックスの IP アドレスは、ユーザーが指定したサイズに基づいて、Azure によって割り当てられます。
-- プレフィックスの既定のサイズは /28、または 16 個のパブリック IP アドレスです。
+- 既定では、最大 16 個の IP アドレスまたは /28 のプレフィックスを作成できます。 詳細については、[ネットワークの上限の引き上げ要求](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)に関するページおよび [Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
 - プレフィックスを作成した後で、範囲を変更することはできません。
-- 範囲は、IPv4 アドレスに対するもののみです。 範囲には IPv6 アドレスは含まれません。
 - プレフィックスの範囲から割り当てることができるのは、Standard SKU で作成された静的パブリック IP アドレスのみです。 パブリック IP アドレスの SKU の詳細については、「[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)」をご覧ください。
 - 範囲のアドレスを割り当てることができるのは、Azure Resource Manager リソースのみです。 クラシック デプロイ モデルのリソースにアドレスを割り当てることはできません。
 - プレフィックスから作成されるすべてのパブリック IP アドレスは、プレフィックスと同じ Azure リージョンおよびサブスクリプションに存在する必要があり、同じリージョンおよびサブスクリプション内のリソースに割り当てられる必要があります。
 - 範囲内のいずれかのアドレスが、リソースに関連付けられているパブリック IP アドレス リソースに割り当てられている場合は、プレフィックスを削除できません。 最初に、プレフィックスの IP アドレスを割り当てられているすべてのパブリック IP アドレス リソースの関連付けを解除する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - パブリック IP アドレス プレフィックスを[作成](manage-public-ip-address-prefix.md)する

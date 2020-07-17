@@ -1,138 +1,107 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Monitor のドキュメント
+summary: Azure とオンプレミスのサービスを監視します。 メトリック、ログ、およびトレースを集計して分析します。 アラートを発生させ、通知を送信するか、自動ソリューションを呼び出します。
 metadata:
-  title: Azure Monitor のドキュメント | Microsoft Docs
+  title: Azure Monitor のドキュメント
   description: 今回 Log Analytics と Application Insights が追加された Azure Monitor は、利用統計情報を収集して分析するための高度なツールです。このツールでは、ご利用のクラウドとオンプレミスのリソースおよびアプリケーションのパフォーマンスと可用性を最大限に高めることができます。
-  services: azure-monitor
-  author: bwren
-  manager: carmonm
-  ms.service: azure-monitor
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 01/25/2019
-  ms.author: bwren
-abstract:
-  description: 今回 Log Analytics と Application Insights が追加された Azure Monitor は、利用統計情報を収集して分析するための高度なツールです。このツールでは、ご利用のクラウドとオンプレミスのリソースおよびアプリケーションのパフォーマンスと可用性を最大限に高めることができます。 このツールは、ご利用のアプリケーションがどのように実行されているかを把握するのに役立ちます。さらに、このツールにより、そのアプリケーションに影響している問題点およびアプリケーションが依存しているリソースを事前に明らかにしておくことができます。
-sections:
-  - title: 推奨されるコンテンツ
-    items:
-      - type: paragraph
-        text: Log Analytics と Application Insights に関して推奨されるコンテンツの一覧を参照するには、次のリンクを使用してください。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
-          - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure リソースからメトリックおよびログを収集し、それらを分析する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/Chart.svg'
-            text: 監視メトリック
-            href: /azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal
-          - image:
-              src: /azure/azure-monitor/media/index/log-analytics.svg
-            text: ログの分析
-            href: /azure/log-analytics/query-language/get-started-analytics-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/virtualmachine.svg'
-            text: Azure VM
-            href: /azure/log-analytics/log-analytics-quick-collect-azurevm
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Linux コンピューター
-            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows コンピューター
-            href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
-            text: サブスクリプションの監査とアラート
-            href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
-      - type: paragraph
-        text: Azure Monitor Application Insights を使ってアプリケーションの監視を開始する方法を確認できます。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
-            text: .NET
-            href: /azure/application-insights/quick-monitor-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: .NET Core
-            href: /azure/application-insights/app-insights-dotnetcore-quick-start
-          - image:
-              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
-            text: Node.js
-            href: /azure/application-insights/app-insights-nodejs-quick-start
-          - image:
-              src: 'https://docs.microsoft.com/media/common/java.svg'
-            text: Java
-            href: /azure/application-insights/app-insights-java-quick-start
-          - image:
-              src: /azure/application-insights/media/index/mobile-center.png
-            text: モバイル
-            href: /azure/application-insights/app-insights-mobile-center-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_web-color.svg'
-            text: Web サイト
-            href: /azure/application-insights/app-insights-website-monitoring
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: 収集したデータを分析、視覚化、操作する方法を説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">収集したデータを表示または分析する</a>
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">ダッシュボードを作成して共有する</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">スケジュールまたはアプリケーションのパフォーマンスに基づく自動スケール</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">監視データをアーカイブする</a>
-      - type: paragraph
-        text: ご利用の Web アプリケーションのパフォーマンスと使用状況を継続的に向上させる方法を確認できます。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">実行時の例外の特定と診断</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-performance">パフォーマンスの問題の特定と診断</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-alert">アプリケーション正常性の監視とアラート通知</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-users">顧客の使用状況と情報の分析</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">カスタム KPI ダッシュボードの作成</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理者
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 次のサンプルを使用して、Log Analytics を構成および管理します。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/powershell/module/az.operationalinsights">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/loganalytics">REST API リファレンス</a></p>
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: bc7366d158cbe1ee90d95c7edea2e9562403bcbc
+  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84118330"
+landingContent:
+- title: Azure Monitor について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Monitor とは
+      url: overview.md
+    - text: Azure Monitor ログ/Log Analytics とは
+      url: platform/data-platform-logs.md
+    - text: Azure Monitor ログ/Log Analytics のコンテンツ ハブ ページ
+      url: azure-monitor-log-hub.md
+    - text: Application Insights とは何か?
+      url: app/app-insights-overview.md
+    - text: Application Insights のコンテンツ ハブ ページ
+      url: azure-monitor-app-hub.yml
+- title: データの監視について
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データ ソースの概要
+      url: platform/data-sources.md
+    - text: データ プラットフォームの概要
+      url: platform/data-platform.md
+- title: 10 分間のクイック スタート
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: メトリックの監視とアラート
+      url: platform/alerts-metric.md
+    - text: ログの分析
+      url: log-query/get-started-portal.md
+    - text: Log Analytics での Azure VM
+      url: learn/quick-collect-azurevm.md
+    - text: Log Analytics での Linux VM
+      url: learn/quick-collect-linux-computer.md
+    - text: Log Analytics での Windows VM
+      url: learn/quick-collect-windows-computer.md
+    - text: サブスクリプションのイベントに基づくアラート
+      url: platform/alerts-activity-log.md
+- title: アプリケーションの監視
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: .NET
+      url: learn/quick-monitor-portal.md
+    - text: .NET Core
+      url: learn/dotnetcore-quick-start.md
+    - text: Node.js
+      url: learn/nodejs-quick-start.md
+    - text: モバイル
+      url: learn/mobile-center-quickstart.md
+    - text: Web サイト
+      url: app/website-monitoring.md
+- title: トレーニング
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 無料の Pluralsight トレーニング - Azure 管理者
+      url: https://go.microsoft.com/fwlink/?linkid=2012827
+- title: リファレンス - CLI
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: メトリック、自動スケール、診断設定、アラート
+      url: /cli/azure/monitor?view=azure-cli-latest
+    - text: Log Analytics
+      url: /cli/azure/ext/log-analytics/monitor?view=azure-cli-latest
+    - text: Application Insights
+      url: /cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest
+- title: リファレンス - PowerShell
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: メトリック、自動スケール、診断設定、アラート
+      url: /powershell/module/az.monitor/?view=azps-2.6.0
+    - text: Log Analytics
+      url: /powershell/module/az.operationalinsights
+    - text: Application Insights
+      url: /powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.7.0&viewFallbackFrom=azps-2.5.0
+- title: リファレンス - REST API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: メトリック、自動スケール、診断設定、アラート
+      url: /rest/api/monitor
+    - text: Log Analytics
+      url: /rest/api/loganalytics
+    - text: Application Insights
+      url: /rest/api/application-insights/
+    - text: Application Insights REST API サンドボックス
+      url: https://dev.applicationinsights.io

@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002665"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74968700"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/offline-fairplay-for-ios.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -42,8 +43,8 @@ Azure Media Services では、次のものを対象にして、適切に設計�
 さまざまなストリーミング プロトコルでのオンライン ストリーミングのコンテンツの保護だけでなく、保護されたコンテンツのオフライン モードも、よく要求される機能です。 オフライン モードのサポートは、次のシナリオで必要です。
 
 * 旅行中など、インターネット接続を利用できないときに再生します。
-* コンテンツ プロバイダーによっては、国境を越えた DRM ライセンス配信を許可しないことがあります。 海外旅行中にコンテンツを視聴したい場合は、オフライン ダウンロードが必要です。
-* 一部の国では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
+* コンテンツ プロバイダーによっては、国/地域の境を越えた DRM ライセンス配信を許可しないことがあります。 国/地域の外部を旅行中にコンテンツを視聴したい場合は、オフライン ダウンロードが必要です。
+* 一部の国/地域では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
 
 この記事では、iOS 10 以降を搭載するデバイスを対象とする FairPlay Streaming (FPS) のオフライン モードのサポートについて説明します。 この機能は、watchOS、tvOS、Safari on macOS など、他の Apple プラットフォームではサポートされていません。
 
@@ -200,14 +201,14 @@ Media Services の 3 つのテスト サンプルには、次の 3 つのシナ�
 これらのサンプルはこちらの[デモ サイト](https://aka.ms/poc#22)にあり、対応するアプリケーション証明書は Azure Web アプリでホストされています。
 FPS Server SDK のバージョン 3 またはバージョン 4 サンプルでは、マスター再生リストに代替オーディオが含まれる場合、オフライン モードのときに、オーディオのみが再生されます。 そのため、代替オーディオを削除する必要があります。 つまり、前述の 2 番目と 3 番目のサンプルは、オンライン モードとオフライン モードで動作します。 最初のサンプルは、オフライン モードでのみオーディオが再生され、オンライン ストリーミングは正常に動作します。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 次のよく寄せられる質問は、トラブルシューティングに役立ちます。
 
 - **オフライン モードの間は、オーディオのみが再生されて、ビデオは再生されないのはなぜですか。** この動作は、サンプル アプリの本来の設計のようです。 代替オーディオ トラックがある場合 (HLS の場合)、オフライン モードでは、iOS 10 と iOS 11 の両方が、既定で代替オーディオ トラックになります。FPS オフライン モードでこの動作を補正するには、ストリームから代替オーディオ トラックを削除します。 Media Services 側でこれを行うには、動的マニフェスト フィルター "audio-only=false" を追加します。 つまり、HLS URL の最後が .ism/manifest(format=m3u8-aapl,audio-only=false) になります。 
 - **audio-only=false を追加した後もまだ、オフライン モードの間は、オーディオのみが再生されて、ビデオが再生されないのはなぜですか。** コンテンツ配信ネットワーク (CDN) キャッシュ キーの設計によっては、コンテンツがキャッシュされることがあります。 キャッシュを消去します。
 - **FPS オフライン モードは、iOS 10 だけでなく iOS 11 でもサポートされますか。** はい。 FPS オフライン モードは iOS 10 と iOS 11 でサポートされています。
 - **ドキュメント『Offline Playback with FairPlay Streaming and HTTP Live Streaming』(FairPlay Streaming と HTTP ライブ ストリーミングでのオフライン再生) が FPS Server SDK で見つからないのはなぜですか。** FPS Server SDK バージョン 4 以降、このドキュメントは『FairPlay Streaming Programming Guide』(FairPlay Streaming プログラミング ガイド) にまとめられています。
-- **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。**
+- **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     この API のドキュメントについては、「[FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)」(FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration メソッド) を参照してください。 このパラメーターはオフライン レンタルの期間を表します (単位は時間)。
@@ -244,6 +245,10 @@ boot.xml ファイルのサンプル:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+
 ## <a name="summary"></a>まとめ
 このドキュメントには、FPS オフライン モードを実装するために使用できる以下の手順と情報が含まれています。
 
@@ -251,3 +256,7 @@ boot.xml ファイルのサンプル:
 * FPS Server SDK のサンプルに基づく iOS プレーヤーで、オンライン ストリーミング モードまたはオフライン モードのいずれかで FPS コンテンツを再生できる iOS プレーヤーを設定します。
 * サンプル FPS ビデオは、オフライン モードとオンライン ストリーミングのテストに使用されます。
 * FAQ では、FPS オフライン モードに関する質問の回答を確認できます。
+
+## <a name="next-steps"></a>次のステップ
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

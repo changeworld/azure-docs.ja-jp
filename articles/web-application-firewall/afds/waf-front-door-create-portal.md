@@ -1,0 +1,83 @@
+---
+title: チュートリアル:Azure Front Door 用の WAF ポリシーを作成する - Azure portal
+description: このチュートリアルでは、Azure portal を使用して Web アプリケーション ファイアウォール (WAF) ポリシーを作成する方法について説明します。
+author: vhorne
+ms.service: web-application-firewall
+services: web-application-firewall
+ms.topic: tutorial
+ms.date: 03/10/2020
+ms.author: victorh
+ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475843"
+---
+# <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Front Door で Web アプリケーション ファイアウォール ポリシーを作成する
+
+このチュートリアルでは、基本的な Azure Web アプリケーション ファイアウォール (WAF) ポリシーを作成し、Azure Front Door でフロントエンド ホストに適用する方法について説明します。
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * WAF ポリシーを作成する
+> * フロントエンド ホストに関連付ける
+> * WAF 規則を構成する
+
+## <a name="prerequisites"></a>前提条件
+
+Front Door プロファイルを作成するには、[Front Door プロファイルの作成に関するクイック スタート](../../frontdoor/quickstart-create-front-door.md)で説明されている手順に従います。 
+
+## <a name="create-a-web-application-firewall-policy"></a>Web アプリケーション ファイアウォールのポリシーを作成します
+
+最初に、ポータルを使用して管理された既定の規則セット (DRS) で基本的な WAF ポリシーを作成します。 
+
+1. 画面の左上で **[リソースの作成]** を選択し、**WAF** を検索して、 **[Web application firewall (Preview)]\(Web アプリケーション ファイアウォール (プレビュー)\)** を選択して、 **[作成]** を選択します。
+2. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
+
+    | 設定                 | Value                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション            |Front Door のサブスクリプションの名前を選択します。|
+    | Resource group          |Front Door のリソース グループの名前を選択します。|
+    | ポリシー名             |WAF ポリシーの一意の名前を入力します。|
+
+   ![WAF ポリシーを作成する](../media/waf-front-door-create-portal/basic.png)
+
+3. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[関連付け]** タブで、 **[フロントエンド ホストの追加]** を選択し、次の設定を入力して、 **[追加]** を選択します。
+
+    | 設定                 | Value                                              |
+    | ---                     | ---                                                |
+    | フロント ドア              | Front Door プロファイルの名前を選択します。|
+    | フロントエンド ホスト           | Front Door ホストの名前を選択し、 **[追加]** を選択します。|
+    
+    > [!NOTE]
+    > フロントエンド ホストが WAF ポリシーに関連付けられている場合は、淡色表示になります。最初に関連付けられているポリシーからフロントエンド ホストを削除してから、新しい WAF ポリシーにフロントエンド ホストを再度関連付ける必要があります。
+1. **[Review + create]\(確認と作成\)** を選択し、次に **[作成]** を選択します。
+
+## <a name="configure-web-application-firewall-rules-optional"></a>Web アプリケーション ファイアウォール規則を構成する (省略可能)
+
+### <a name="change-mode"></a>モードを変更する
+
+WAF ポリシーを作成するとき、既定では WAF ポリシーは**検出**モードになります。 **検出**モードでは、WAF はすべての要求をブロックせず、代わりに、WAF 規則に一致する要求は WAF ログに記録されます。
+WAF の動作を確認するには、モードの設定を **[検出]** から **[防止]** に変更できます。 **防止**モードでは、既定の規則セット (DRS) で定義されている規則に一致する要求はブロックされ、WAF ログに記録されます。
+
+ ![WAF ポリシー モードを変更する](../media/waf-front-door-create-portal/policy.png)
+
+### <a name="custom-rules"></a>カスタム規則
+
+**[カスタム ルール]** セクションの下の **[Add custom rule]\(カスタム ルールの追加\)** を選択することで、カスタム ルールを作成できます。 これで、カスタム ルールの構成ページが起動されます。 次に示すのは、クエリ文字列に **blockme** が含まれているときに要求をブロックするというカスタム ルールの構成方法の例です。
+
+![WAF ポリシー モードを変更する](../media/waf-front-door-create-portal/customquerystring2.png)
+
+### <a name="default-rule-set-drs"></a>既定の規則セット (DRS)
+
+Azure で管理される既定の規則セットは既定で有効になります。 規則グループ内の個々の規則を無効にするには、その規則グループ内の規則を展開し、規則番号の前の**チェック ボックス**をオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
+
+ ![WAF 規則セットを変更する](../media/waf-front-door-create-portal/managed2.png)
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [Azure Web アプリケーション ファイアウォールについて確認する](../overview.md)
+> [Azure Front Door の詳細を確認する](../../frontdoor/front-door-overview.md)

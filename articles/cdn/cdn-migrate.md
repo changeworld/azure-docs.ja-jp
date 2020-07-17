@@ -1,26 +1,26 @@
 ---
-title: Verizon Standard から Verizon Premium に Azure CDN プロファイルを移行する | Microsoft Docs
+title: Verizon Standard から Verizon Premium に Azure CDN プロファイルを移行する
 description: Verizon Standard から Verizon Premium へのプロファイルの移行について詳しく説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 61c472281c64fba451bb9b05f69ebee09bc763fd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81260452"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する
 
@@ -36,7 +36,7 @@ Azure Content Delivery Network (CDN) プロファイルを作成してエンド�
 
 ## <a name="profile-comparison"></a>プロファイルの比較
 **Azure CDN Premium from Verizon** プロファイルは、主に次の点で **Azure CDN Standard from Verizon** プロファイルと異なります。
-- [圧縮](cdn-improve-performance.md)、[キャッシュ規則](cdn-caching-rules.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、一部の Azure CDN 機能について、Azure CDN インターフェイスを使用できません。**[管理]** ボタン経由で Verizon ポータルを使用する必要があります。
+- [圧縮](cdn-improve-performance.md)、[キャッシュ規則](cdn-caching-rules.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、一部の Azure CDN 機能について、Azure CDN インターフェイスを使用できません。 **[管理]** ボタン経由で Verizon ポータルを使用する必要があります。
 - API: Standard Verizon と異なり、Premium Verizon ポータルからアクセスされるこれらの機能の制御には、API を使用することができません。 ただし、エンドポイントの作成/削除、キャッシュされた資産の消去/読み込み、カスタム ドメインの有効化/無効化など、その他の一般的な機能を制御するために API を使用することはできます。
 - 価格: Premium Verizon では、データ転送に関する料金体系が Standard Verizon と異なります。 詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
 
@@ -49,6 +49,6 @@ Azure Content Delivery Network (CDN) プロファイルを作成してエンド�
    - [リアルタイム分析](cdn-real-time-alerts.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ルール エンジンの詳細については、「[Azure CDN ルール エンジンのリファレンス](cdn-rules-engine-reference.md)」をご覧ください。
 

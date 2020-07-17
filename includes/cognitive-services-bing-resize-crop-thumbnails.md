@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124714"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181456"
 ---
 Bing の応答には、Bing が提供するサムネイル イメージへの URL を含むものがあります。 サムネイル イメージはサイズ変更とトリミングが可能です。 
 
@@ -17,7 +17,7 @@ Bing の応答には、Bing が提供するサムネイル イメージへの UR
 > Bing Search API の使用要件と表示要件で定められているように、サムネイルのサイズとトリミングでは検索シナリオを提供し、第三者の権利を尊重するようにしてください。
 
 
-イメージのサイズを変更するには、サムネイルの URL に w (幅) クエリ パラメーター、h (高さ) クエリ パラメーター、またはその両方を含めます。 幅と高さはピクセル単位で指定します。 例:   
+イメージのサイズを変更するには、サムネイルの URL に w (幅) クエリ パラメーター、h (高さ) クエリ パラメーター、またはその両方を含めます。 幅と高さはピクセル単位で指定します。 例:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   

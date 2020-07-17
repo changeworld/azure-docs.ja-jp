@@ -1,44 +1,62 @@
 ---
-title: Azure Service Fabric CLI- sfctl node | Microsoft Docs
-description: Service Fabric CLI sfctl node のコマンドについて説明します。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI- sfctl node
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 クラスター ノードを管理するためのコマンドの一覧が含まれています。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 08ea0081c84ea31b2b71d03679b1b527cf94c075
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662892"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76905881"
 ---
 # <a name="sfctl-node"></a>sfctl node
 クラスターを形成するノードを管理します。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
 |command|説明|
 | --- | --- |
-| disable | 指定した非アクティブ化インテントを使用して、Service Fabric クラスターのノードを非アクティブ化します。 |
-| enable | 現在非アクティブ化されている Service Fabric クラスター ノードをアクティブにします。 |
+| add-configuration-parameter-overrides | 指定されたノードの構成オーバーライドの一覧を追加します。 |
+| 無効化 (disable) | 指定した非アクティブ化インテントを使用して、Service Fabric クラスターのノードを非アクティブ化します。 |
+| 有効化 (enable) | 現在非アクティブ化されている Service Fabric クラスター ノードをアクティブにします。 |
+| get-configuration-overrides | 指定されたノードの構成オーバーライドの一覧を取得します。 |
 | health | Service Fabric ノードの正常性を取得します。 |
 | info | Service Fabric クラスター内の特定のノードに関する情報を取得します。 |
 | list | Service Fabric クラスター内のノードの一覧を取得します。 |
 | load | Service Fabric ノードの読み込み情報を取得します。 |
+| remove-configuration-overrides | 指定されたノードの構成オーバーライドを削除します。 |
 | remove-state | ノード上の永続化状態が完全に削除または失われたことを Service Fabric に通知します。 |
 | report-health | Service Fabric ノードの正常性レポートを送信します。 |
 | restart | Service Fabric クラスター ノードを再起動します。 |
 | transition | クラスター ノードを開始または停止します。 |
 | transition-status | StartNodeTransition を使用して開始された操作の進行状況を取得します。 |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl node add-configuration-parameter-overrides
+指定されたノードの構成オーバーライドの一覧を追加します。
+
+この API は、指定されたノードに既存のすべての構成オーバーライドを追加できるようにします。
+
+### <a name="arguments"></a>引数
+
+|引数|説明|
+| --- | --- |
+| --config-parameter-override-list [必須] | 構成オーバーライドの一覧を追加するための説明。 |
+| --node-name                      [必須] | ノード名。 |
+| --force | 指定されたノードに構成オーバーライドを強制的に追加します。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
+
+### <a name="global-arguments"></a>グローバル引数
+
+|引数|説明|
+| --- | --- |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
+| --help -h | このヘルプ メッセージを表示して終了します。 |
+| --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
+| --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-disable"></a>sfctl node disable
 指定した非アクティブ化インテントを使用して、Service Fabric クラスターのノードを非アクティブ化します。
@@ -51,17 +69,17 @@ ms.locfileid: "58662892"
 | --- | --- |
 | --node-name [必須] | ノード名。 |
 | --deactivation-intent | ノードを非アクティブ化するインテントまたは理由について記述します。 指定できる値は次のとおりです。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-enable"></a>sfctl node enable
 現在非アクティブ化されている Service Fabric クラスター ノードをアクティブにします。
@@ -73,17 +91,39 @@ ms.locfileid: "58662892"
 |引数|説明|
 | --- | --- |
 | --node-name [必須] | ノード名。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl node get-configuration-overrides
+指定されたノードで構成オーバーライドの一覧を取得します。
+
+この API は、指定されたノードで既存のすべての構成オーバーライドを取得できるようにします。
+
+### <a name="arguments"></a>引数
+
+|引数|説明|
+| --- | --- |
+| --node-name [必須] | ノード名。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
+
+### <a name="global-arguments"></a>グローバル引数
+
+|引数|説明|
+| --- | --- |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
+| --help -h | このヘルプ メッセージを表示して終了します。 |
+| --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
+| --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-health"></a>sfctl node health
 Service Fabric ノードの正常性を取得します。
@@ -96,17 +136,17 @@ Service Fabric ノードの正常性を取得します。 正常性状態に基�
 | --- | --- |
 | --node-name       [必須] | ノード名。 |
 | --events-health-state-filter | 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントが集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。  <br> - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。  <br> - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。  <br> - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。  <br> - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。  <br> - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。  <br> - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-info"></a>sfctl node info
 Service Fabric クラスター内の特定のノードに関する情報を取得します。
@@ -118,17 +158,17 @@ Service Fabric クラスター内の特定のノードに関する情報を取�
 |引数|説明|
 | --- | --- |
 | --node-name [必須] | ノード名。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-list"></a>sfctl node list
 Service Fabric クラスター内のノードの一覧を取得します。
@@ -142,17 +182,17 @@ Service Fabric クラスター内のノードの一覧を取得します。
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
 | --node-status-filter | NodeStatus に基づいてノードをフィルターできます。 指定したフィルター値に一致するノードだけが返されます。 フィルター値には、次のいずれかを指定できます。  既定値\: default。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-load"></a>sfctl node load
 Service Fabric ノードの読み込み情報を取得します。
@@ -164,39 +204,61 @@ Service Fabric ノードの読み込み情報を取得します。
 |引数|説明|
 | --- | --- |
 | --node-name [必須] | ノード名。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
-## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
-ノード上の永続化状態が完全に削除または失われたことを Service Fabric に通知します。
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl node remove-configuration-overrides
+指定されたノードの構成オーバーライドを削除します。
 
-これは、そのノードの永続化状態を復旧できないことを意味します。 これは一般に、ハード ディスクがクリーンにワイプされた場合、またはハード ディスクがクラッシュした場合に発生します。 この操作が成功するには、ノードがダウンしている必要があります。 この操作を使用すると、Service Fabric は、そのノード上のレプリカが存在しなくなったこと、およびそれらのレプリカの復元の待機を停止する必要があることを認識します。 ノードの状態が削除されておらず、ノードがそのままの状態で復元する可能性がある場合は、このコマンドレットを実行しないでください。
+この API は、指定されたノードで既存のすべての構成オーバーライドを削除できるようにします。
 
 ### <a name="arguments"></a>引数
 
 |引数|説明|
 | --- | --- |
 | --node-name [必須] | ノード名。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
+
+## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
+ノード上の永続化状態が完全に削除または失われたことを Service Fabric に通知します。
+
+これは、そのノードの永続化状態を復旧できないことを意味します。 これは一般に、ハード ディスクがクリーンにワイプされた場合、またはハード ディスクがクラッシュした場合に発生します。 この操作が成功するには、ノードがダウンしている必要があります。 この操作を使用すると、Service Fabric は、そのノード上のレプリカが存在しなくなったこと、およびそれらのレプリカの復元の待機を停止する必要があることを認識します。 ノードの状態が削除されておらず、ノードがそのままの状態で復元する可能性がある場合は、このコマンドレットを実行しないでください。 Service Fabric 6.5 以降、シード ノードにこの API を使用する場合は、シード ノードを通常の (非シード) ノードに変更した後、この API を呼び出して、ノードの状態を削除してください。 クラスターが Azure で実行されている場合、シード ノードが停止した後、Service Fabric は自動的にそれを非シード ノードに変更しようとします。 そうなるようにするには、プライマリ ノード タイプの非シード ノードの数が、ダウンしているシード ノードの数以上になるようにします。 そのために、必要に応じて、プライマリ ノード タイプにノードを追加します。 スタンドアロン クラスターの場合、ダウンしているシード ノードがその状態のままで復帰が予想されない場合は、クラスターからノードを削除してください。https\://docs.microsoft.com/ja-JP/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes を参照してください。
+
+### <a name="arguments"></a>引数
+
+|引数|説明|
+| --- | --- |
+| --node-name [必須] | ノード名。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
+
+### <a name="global-arguments"></a>グローバル引数
+
+|引数|説明|
+| --- | --- |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
+| --help -h | このヘルプ メッセージを表示して終了します。 |
+| --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
+| --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-report-health"></a>sfctl node report-health
 Service Fabric ノードの正常性レポートを送信します。
@@ -215,18 +277,18 @@ Service Fabric ノードの正常性レポートを送信します。
 | --immediate | レポートをすぐに送信する必要があるかどうかを示すフラグ。 <br><br> 正常性レポートは Service Fabric ゲートウェイ アプリケーションに送信され、これにより正常性ストアに転送されます。 Immediate が true に設定された場合、HTTP ゲートウェイ アプリケーションで使用されているファブリック クライアント設定に関係なく、このレポートはすぐに HTTP ゲートウェイから正常性ストアに送信されます。 これは、できるだけ早く送信する必要がある重要なレポートに役立ちます。 タイミングやその他の条件に応じて、レポートの送信は依然として失敗する可能性があります。たとえば、HTTP ゲートウェイが閉じている場合やメッセージがゲートウェイに到達しない場合です。 Immediate が false に設定された場合、レポートは、正常性クライアントの設定に基づいて HTTP ゲートウェイから送信されます。 その結果、HealthReportSendInterval の構成に従ってバッチ処理されます。 この設定が推奨されているのは、正常性クライアントが正常性ストアへの正常性レポート メッセージに加えて正常性レポート処理を最適化できるようになるためです。 既定では、レポートはすぐに送信されません。 |
 | --remove-when-expired | 有効期限が切れたときにレポートを正常性ストアから削除するかどうかを示す値。 <br><br> true に設定した場合、レポートは、有効期限が切れると正常性ストアから削除されます。 false に設定した場合、レポートは、有効期限が切れるとエラーとして処理されます。 既定では、このプロパティの値は false です。 クライアントは、定期的にレポートする場合、RemoveWhenExpired を false (既定値) に設定する必要があります。 こうすることで、レポーターで問題 (デッドロックなど) が発生していてレポートできない場合に、正常性レポートの有効期限が切れると、エンティティはエラーと評価されます。 これにより、このエンティティの正常性はエラー状態と見なされます。 |
 | --sequence-number | 数値文字列で表された、この正常性レポートのシーケンス番号。 <br><br> レポートのシーケンス番号は、古いレポートを検出するために正常性ストアによって使用されます。 指定しない場合、シーケンス番号は、レポートが追加されたときに正常性クライアントによって自動的に生成されます。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 | --ttl | この正常性レポートの有効期間。 このフィールドでは、この期間の指定に ISO8601 形式が使用されます。 <br><br> クライアントは、定期的にレポートする場合、レポートの送信頻度を有効期間よりも高くする必要があります。 クライアントは、遷移時にレポートする場合、有効期間を無限に設定できます。 有効期間が期限切れになると、正常性に関する情報を含む正常性イベントは、正常性ストアから削除される (RemoveWhenExpired が true の場合) か、エラーと評価されます (RemoveWhenExpired が false の場合)。 指定しない場合、有効期間の既定値は無限になります。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-restart"></a>sfctl node restart
 Service Fabric クラスター ノードを再起動します。
@@ -240,17 +302,17 @@ Service Fabric クラスター ノードを再起動します。
 | --node-name [必須] | ノード名。 |
 | --create-fabric-dump | Fabric ノード プロセスのダンプを作成する場合は True を指定します。 これは大文字小文字を区別します。  既定値\: False。 |
 | --node-instance-id | ターゲット ノードのインスタンス ID。 インスタンス ID が指定されている場合、ノードの現在のインスタンスと一致する場合にのみ、ノードが再起動されます。 既定値の "0" は任意のインスタンス ID に一致します。 インスタンス ID は、get node query を使用して取得できます。  既定値\: 0。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-transition"></a>sfctl node transition
 クラスター ノードを開始または停止します。
@@ -266,17 +328,17 @@ Service Fabric クラスター ノードを再起動します。
 | --node-transition-type     [必須] | 実行する移行の種類を示します。  NodeTransitionType.Start は、停止したノードを開始します。 NodeTransitionType.Stop は、稼働しているノードを停止します。 |
 | --operation-id             [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
 | --stop-duration-in-seconds [必須] | ノードを停止させたままにする期間 (秒単位)。  最小値は 600、最大値は 14400 です。  この時間を過ぎると、ノードは自動的に復帰します。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 ## <a name="sfctl-node-transition-status"></a>sfctl node transition-status
 StartNodeTransition を使用して開始された操作の進行状況を取得します。
@@ -289,19 +351,19 @@ StartNodeTransition を使用して開始された操作の進行状況を取得
 | --- | --- |
 | --node-name    [必須] | ノード名。 |
 | --operation-id [必須] | この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
 |引数|説明|
 | --- | --- |
-| --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。 |
+| --debug | すべてのデバッグ ログを表示するようにログの詳細レベルを上げます。 |
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+| --verbose | ログの詳細レベルを上げます。 詳細なデバッグ ログを表示するには --debug を使います。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

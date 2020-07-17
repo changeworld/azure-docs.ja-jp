@@ -1,0 +1,86 @@
+### YamlMime:Landing
+title: 音声アシスタントのドキュメント
+summary: 音声サービスを使用した音声アシスタントにより、開発者は、そのアプリケーションとエクスペリエンスのための自然で人間のような会話型インターフェイスを作成できます。
+metadata:
+  title: 音声アシスタントのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/10/2020
+  ms.author: trbye
+  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82106204"
+landingContent:
+- title: 音声アシスタントについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 音声アシスタントとは
+      url: voice-assistants.md
+    - text: カスタム コマンド アプリとは
+      url: custom-commands.md
+    - text: Direct Line Speech とは
+      url: direct-line-speech.md
+  - linkListType: reference
+    links:
+    - text: 音声アシスタントの FAQ
+      url: faq-voice-assistants.md
+    - text: 音声アシスタントの価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+  - linkListType: get-started
+    links:
+    - text: サンプル音声アシスタントをビルドして Azure サブスクリプションにデプロイする (GitHub)
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
+- title: カスタム コマンドを使用して開発する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: カスタム コマンド アプリを作成する
+      url: quickstart-custom-speech-commands-create-new.md
+    - text: パラメーターを使用してカスタム コマンドを作成する
+      url: quickstart-custom-speech-commands-create-parameters.md
+    - text: カスタム音声でカスタム コマンドを使用する
+      url: quickstart-custom-speech-commands-select-custom-voice.md
+    - text: Speech SDK でカスタム コマンドを使用する
+      url: quickstart-custom-speech-commands-speech-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: クライアントからコマンドを実行する
+      url: how-to-custom-speech-commands-fulfill-sdk.md
+    - text: パラメーターの検証を追加する
+      url: how-to-custom-speech-commands-validations.md
+    - text: 確認を追加する
+      url: how-to-custom-speech-commands-confirmations.md
+    - text: ワンステップ修正を追加する
+      url: how-to-custom-speech-commands-one-step-correction.md
+- title: Direct Line Speech を使用して開発する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# (UWP)
+      url: quickstart-voice-assistant-csharp-uwp.md
+    - text: Java (Windows、macOS、Linux)
+      url: quickstart-voice-assistant-java-jre.md
+    - text: Java (Android)
+      url: quickstart-voice-assistant-java-android.md
+  - linkListType: tutorial
+    links:
+    - text: Speech SDK を使用してボットを音声対応にする
+      url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: カスタム キーワードを使用して開発する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム キーワードを作成する
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: カスタム キーワードの名前付けのガイドライン
+      url: speech-devices-sdk-kws-guidelines.md

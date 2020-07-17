@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor の Capacity and Performance ソリューション | Microsoft Docs
 description: Monitor の Capacity and Performance ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.author: magoedte
-ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77666945"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Capacity and Performance ソリューション (非推奨) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -49,9 +42,9 @@ Monitor の Capacity and Performance ソリューションを使用すると、H
 | 接続先ソース | サポート | 説明 |
 |---|---|---|
 | [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ     | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
 | [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
-| [Azure Storage アカウント](../../azure-monitor/platform/collect-azure-metrics-logs.md) | いいえ  | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
+| [Azure Storage アカウント](../../azure-monitor/platform/collect-azure-metrics-logs.md) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -124,7 +117,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
 
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:--- |:--- |
 | ホストのメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | VM のメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
@@ -135,5 +128,5 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 | 全 CSV の合計待機時間の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Read Latency" or CounterName == "CSV Write Latency") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](../../azure-monitor/log-query/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。

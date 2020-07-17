@@ -1,21 +1,21 @@
 ---
 title: Text Analytics API を呼び出す
-titlesuffix: Azure Cognitive Services
-description: Text Analytics REST API を呼び出す方法について説明します。
+titleSuffix: Azure Cognitive Services
+description: この記事では、Azure Cognitive Services Text Analytics REST API と Postman を呼び出す方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011254"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218553"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -25,12 +25,11 @@ ms.locfileid: "60011254"
 
 Text Analytics はステートレスであるため、管理するデータ資産がないことを忘れないでください。 テキストがアップロードされ、受信されると分析され、結果は呼び出し元のアプリケーションにすぐに返されます。
 
-> [!Tip]
-> API の動作を確認するための 1 回限りの呼び出しの場合は、任意の [API ドキュメント ページ](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)で利用可能な組み込み **API テスト コンソール**から POST 要求を送信できます。 セットアップは必要なく、唯一の要件は要求にアクセス キーと JSON ドキュメントを貼り付けることのみです。 
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-Text Analytics API を使用する [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)のほか、Cognitive Services にサインアップするときに生成される[エンドポイントとアクセス キー](text-analytics-how-to-access-key.md)が必要です。 
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="json-schema"></a>
 
@@ -44,7 +43,7 @@ Text Analytics API を使用する [Cognitive Services API アカウント](http
 |---------|--------------|-----------|-------|
 |`id` |データ型は文字列ですが、実際にはドキュメント ID は整数になる傾向があります。 | 必須 | 構造体に提供する ID が出力に使用されます。 言語コード、キー フレーズ、およびセンチメント スコアが、要求の各 ID に対して生成されます。|
 |`text` | 最大 5,120 文字の、構造化されていない生のテキスト。 | 必須 | 言語の検出では、任意の言語でテキストを表現できます。 センチメント分析、キー フレーズ抽出、およびエンティティ識別の場合、テキストは[サポートされている言語](../text-analytics-supported-languages.md)である必要があります。 |
-|`language` | [サポートされている言語](../text-analytics-supported-languages.md)の 2 文字の [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) コード | 多様 | センチメント分析、キー フレーズ抽出、およびエンティティ リンク設定には必須。言語検出には省略可能。 除外してもエラーにはなりませんが、それなしでは分析力は低下します。 言語コードは提供した `text` に対応する必要があります。 |
+|`language` | [サポートされている言語](../text-analytics-supported-languages.md)の 2 文字の [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) コード | 場合により異なる | センチメント分析、キー フレーズ抽出、およびエンティティ リンク設定には必須。言語検出には省略可能。 除外してもエラーにはなりませんが、それなしでは分析力は低下します。 言語コードは提供した `text` に対応する必要があります。 |
 
 制限の詳細については、[テキスト分析の概要 > データ制限](../overview.md#data-limits)を参照してください。 
 
@@ -87,16 +86,16 @@ Text Analytics API を使用する [Cognitive Services API アカウント](http
   + [エンティティの認識](text-analytics-how-to-entity-linking.md)  
 
 
-6. **[保存]** をクリックして、要求を送信します。 1 分あたり最大 100 個の要求を送信できます。 
+6. **[保存]** をクリックして、要求を送信します。 分単位および秒単位で送信できる要求の数については、概要の「[データ制限](../overview.md#data-limits)」セクションを参照してください。
 
    Postman では、応答は、次のウィンドウに単一の JSON ドキュメントとして、要求に指定された各ドキュメント ID の項目とともに表示されます。
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [言語を検出する](text-analytics-how-to-language-detection.md)

@@ -1,75 +1,116 @@
 ---
 title: Azure Data Lake Storage Gen2 に関する既知の問題 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 に関する制限と既知の問題について説明します
-services: storage
+description: Azure Data Lake Storage Gen2 に関する制限と既知の問題について説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 03/20/2020
 ms.author: normesta
-ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.reviewer: jamesbak
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464718"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81767965"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
-この記事では、階層型名前空間を持つストレージ アカウント (Azure Data Lake Storage Gen2) でまだサポートされていないか部分的にサポートされている機能とツールについて説明します。
+この記事では、Azure Data Lake Storage Gen2 に関する制限と既知の問題について説明します。
 
-<a id="blob-apis-disabled" />
+## <a name="supported-blob-storage-features"></a>サポートされる BLOB ストレージの機能
+
+階層型名前空間を持つアカウントで、より多くの BLOB ストレージ機能が動作するようになりました。 完全な一覧については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)」を参照してください。
+
+## <a name="supported-azure-service-integrations"></a>サポートされる Azure サービスの統合
+
+Azure Data Lake Storage Gen2 は、データの取り込み、分析の実行、およびビジュアル表現の作成に使用できるいくつかの Azure サービスをサポートしています。 サポートされる Azure サービスの一覧については、「[Azure Data Lake Storage Gen2 をサポートする Azure サービス](data-lake-storage-supported-azure-services.md)」を参照してください。
+
+「[Azure Data Lake Storage Gen2 をサポートするAzure サービス](data-lake-storage-supported-azure-services.md)」を参照してください。
+
+## <a name="supported-open-source-platforms"></a>サポートされるオープン ソース プラットフォーム
+
+一部のオープン ソース プラットフォームは Data Lake Storage Gen2 をサポートしています。 完全な一覧については、「[Data Lake Storage Gen2 をサポートするオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)」を参照してください。
+
+「[Azure Data Lake Storage Gen2 をサポートするオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)」を参照してください。
 
 ## <a name="blob-storage-apis"></a>BLOB ストレージ API
 
-BLOB Storage API と Azure Data Lake Gen2 API 間の相互運用性がまだ不十分なために発生する可能性のある不適切なデータ アクセスの問題を防ぐために、BLOB Storage API は無効になっています。
+BLOB API と Data Lake Storage Gen2 API では、同じデータを処理できます。
 
-### <a name="what-to-do-with-existing-tools-applications-and-services"></a>既存のツール、アプリケーション、サービスがある場合の対処方法
+このセクションでは、BLOB API と Data Lake Storage Gen2 API を使用して同じデータを操作する場合の問題と制限事項について説明します。
 
-これらのいずれかで BLOB API を使用しており、それらを使用して、アカウントにアップロードするすべてのコンテンツを処理する場合、BLOB API が Azure Data Lake Gen2 API と相互運用可能になるまで、お使いの BLOB ストレージ アカウントで階層型名前空間は有効にしないでください。
+* BLOB API と Data Lake Storage API の両方を使用して、ファイルの同じインスタンスに書き込むことはできません。 Data Lake Storage Gen2 API を使用してファイルに書き込むと、そのファイルのブロックは、[Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) BLOB API への呼び出しで認識されなくなります。 Data Lake Storage Gen2 API または BLOB API のいずれかを使用して、ファイルを上書きできます。 これはファイルのプロパティには影響しません。
 
-階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやファイル システムのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
+* 区切り記号を指定せずに [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作を使用した場合、結果にはディレクトリと BLOB の両方が含まれます。 区切り記号を使用する場合は、スラッシュ (`/`) のみを使用してください。 サポートされている区切り記号はこれだけです。
 
-### <a name="what-to-do-with-unmanaged-virtual-machine-vm-disks"></a>アンマネージド仮想マシン (VM) ディスクがある場合の対処方法
+* [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API を使用してディレクトリを削除した場合、そのディレクトリは空の場合にのみ削除されます。 これは、Blob API を使用してディレクトリを再帰的に削除することはできないことを意味します。
 
-これらは無効にされた BLOB Storage API に依存しているため、ストレージ アカウントで階層型名前空間を有効にする場合は、これらを階層型名前空間機能が有効ではないストレージ アカウントに配置することを検討してください。
+次の BLOB REST API はサポートされていません。
 
-### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>BLOB API が無効にされる前に BLOB API を使ってデータを読み込んでいた場合の対処方法
+* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-これらの API を使用して、データが無効にされる前に、データを読み込んでおり、そのデータにアクセスする運用上の要件がある場合は、次の情報を用意して Microsoft サポートにお問い合わせください。
+アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
 
-> [!div class="checklist"]
-> * サブスクリプション ID (名前ではなく GUID)。
-> * ストレージ アカウント名。
-> * 運用に大きな影響があるかどうか。その場合は、どのストレージ アカウントか。
-> * 運用に大きな影響がない場合でも、何らかの理由でこのデータを別のストレージ アカウントにコピーする必要があるかどうか、ある場合はその理由をお伝えください。
+<a id="api-scope-data-lake-client-library" />
 
-このような状況では、階層型名前空間機能が有効にされていないストレージ アカウントにこのデータをコピーできるように、一定の期間 BLOB API へのアクセスを復元できます。
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell、Azure CLI でのファイル システムのサポート
 
-## <a name="all-other-features-and-tools"></a>その他すべての機能とツール
+- get および set ACL 操作は現在、再帰的ではありません。
+- [Azure CLI](data-lake-storage-directory-file-acl-cli.md) のサポートはパブリック プレビュー段階です。
 
-階層型名前空間を持つストレージ アカウント (Azure Data Lake Storage Gen2) でまだサポートされていないか部分的にサポートされているその他すべての機能とツールを次の表に示します。
 
-| 機能 / ツール    | 詳細情報    |
-|--------|-----------|
-| **Data Lake Storage Gen2 ストレージ アカウントの API** | 部分的にサポート <br><br>Data Lake Storage Gen2 の **REST** API は利用できますが、他の BLOB SDK (.NET、Java、Python の SDK など) の API はまだ利用できません。|
-| **AzCopy** | バージョン固有のサポート <br><br>AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用します。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。|
-| **Azure Blob Storage ライフサイクル管理ポリシー** | まだサポートされていません |
-| **Azure Content Delivery Network (CDN)** | まだサポートされていません|
-| **Azure Event Grid** | まだサポートされていません |
-| **Azure Search** |まだサポートされていません|
-| **Azure Storage Explorer** | バージョン固有のサポート <br><br>バージョン `1.6.0` 以降のみを使用します。 <br>バージョン `1.6.0` は[無料のダウンロード](https://azure.microsoft.com/features/storage-explorer/)として提供されています。|
-| **BLOB コンテナーの ACL** |まだサポートされていません|
-| **Blobfuse** |まだサポートされていません|
-| **カスタム ドメイン** |まだサポートされていません|
-| **診断ログ** |まだサポートされていません|
-| **ファイル システム エクスプローラー** | 制限付きサポート |
-| **不変ストレージ** |まだサポートされていません <br><br>不変ストレージでは、[WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) 状態でデータを格納できます。|
-| **オブジェクト レベルの階層** |まだサポートされていません <br><br>例: Premium、ホット、クール、アーカイブの各階層。|
-| **Powershell と CLI のサポート** | 機能の制限あり <br><br>Powershell または CLI を使用してアカウントを作成できます。 ファイル システム、ディレクトリ、ファイルに対して操作を実行したり、アクセス制御リストを設定したりすることはできません。|
-| **静的な Web サイト** |まだサポートされていません <br><br>具体的には、[静的な Web サイト](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)にファイルを提供する機能です。|
-| **サード パーティ製アプリケーション** | 制限付きサポート <br><br>REST API を使用して動作するサード パーティ製アプリケーションは、Data Lake Storage Gen2 と使用しても引き続き機能します。 <br>BLOB API を使用するアプリケーションがある場合、そのアプリケーションを Data Lake Storage Gen2 と使用すると、高い確率でアプリケーションに問題が発生します。 詳細については、この記事の [Data Lake Storage Gen2 ストレージ アカウントでの BLOB Storage API の無効化](#blob-apis-disabled)に関するセクションを参照してください。|
-| **バージョン管理機能** |まだサポートされていません <br><br>これには、[スナップショット](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)と[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)が含まれます。|
-|
+## <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 
+* BLOB スナップショットの削除は、まだサポートされていません。  
+
+## <a name="archive-tier"></a>アーカイブ層
+
+現在、アーカイブ アクセス層に影響するバグがあります。
+
+
+## <a name="blobfuse"></a>blobfuse
+
+Blobfuse はサポートされていません。
+
+<a id="known-issues-tools" />
+
+## <a name="azcopy"></a>AzCopy
+
+AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用してください。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。
+
+<a id="storage-explorer" />
+
+## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+
+バージョン  `1.6.0` 以降のみを使用します。
+
+<a id="explorer-in-portal" />
+
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure portal での Storage Explorer
+
+ACL はまだサポートされていません。
+
+<a id="third-party-apps" />
+
+## <a name="thirdpartyapplications"></a>サード パーティ製アプリケーション
+
+REST API を使用して動作するサード パーティ製アプリケーションは、Blob API を呼び出す Data Lake Storage Gen2 アプリケーションと一緒に使用すると、そのアプリケーションが動作するのと同じように引き続き動作します。
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>アクセス制御リスト (ACL) と匿名読み取りアクセス
+
+コンテナーへの[匿名読み取りアクセス](storage-manage-access-to-resources.md)が許可されている場合、そのコンテナーやコンテナーに含まれているファイルには ACL は作用しません。
+
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) ドライバー (Data Lake Storage Gen2 ではサポートされていません)
+
+現時点では、BLOB API のみで動作するように設計された WASB ドライバーでは、いくつかの一般的なシナリオで問題が発生します。 特に、階層型名前空間が有効なストレージ アカウントのクライアントである場合です。 これらの問題は、Data Lake Storage のマルチプロトコル アクセスによっても軽減されません。 
+
+しばらく (おそらく当面) の間は、階層型名前空間が有効なストレージ アカウントのクライアントとして、WASB ドライバーを使用しているお客様はサポートされません。 代わりに、Hadoop 環境で [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ドライバーを使用することをお勧めします。 Hadoop branch 3 より前のバージョンを使用するオンプレミスの Hadoop 環境から移行しようとしている場合は、お客様と組織にとって適切な方法についてご連絡できるように、Azure サポート チケットを開いてください。

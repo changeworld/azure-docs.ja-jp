@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid のイベント ドメイン
-description: イベント ドメインを使用して、Azure Event Grid のトピックを管理する方法について説明します。
+description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 131a55d130e7ebf619ee283e943c0b0a7b45edfd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/21/2020
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472859"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78898860"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -22,8 +22,6 @@ ms.locfileid: "54472859"
 * 承認と認証を管理する。
 * 各トピックを個別に管理するのではなく、パーティション分割する。
 * 各トピック エンドポイントへの個別の発行を回避する。
-
-この機能はプレビュー段階にあります。 これを使用するには、プレビュー拡張機能またはモジュールをインストールする必要があります。 方法については、「[イベント ドメインを使用してトピックを管理し、イベントを発行する](how-to-event-domains.md)」をご覧ください。
 
 ## <a name="event-domain-overview"></a>イベント ドメインの概要
 
@@ -45,13 +43,13 @@ ms.locfileid: "54472859"
 
 ドメインでは、Azure のロールベースのアクセス制御 (RBAC) を使用して、各トピックの承認と認証を細かく制御することができます。 これらのロールを使用することで、アプリケーションの各テナントを、アクセスを許可するトピックにのみ制限することができます。
 
-イベント ドメインでの RBAC は、他の Event Grid や Azure での[マネージド アクセス制御](security-authentication.md#management-access-control)の動作と同じように動作します。 RBAC を使用して、イベント ドメインでカスタム ロール定義を作成して適用します。
+イベント ドメインでの RBAC は、他の Event Grid や Azure での[マネージド アクセス制御](security-authorization.md)の動作と同じように動作します。 RBAC を使用して、イベント ドメインでカスタム ロール定義を作成して適用します。
 
 ### <a name="built-in-roles"></a>組み込みロール
 
 Event Grid には、RBAC がイベント ドメインでより簡単に動作するように、2 つの組み込みロール定義があります。 **EventGrid EventSubscription 共同作成者 (プレビュー)** ロールと、**EventGrid EventSubscription 閲覧者 (プレビュー)** ロールです。 イベント ドメインでトピックをサブスクライブする必要があるユーザーに、これらのロールを割り当てます。 ロールの割り当てのスコープは、ユーザーがサブスクライブする必要があるトピックだけにします。
 
-これらのロールについては、[Event Grid の組み込みロール](security-authentication.md#built-in-roles)に関する記事をご覧ください。
+これらのロールについては、[Event Grid の組み込みロール](security-authorization.md#built-in-roles)に関する記事をご覧ください。
 
 ## <a name="subscribing-to-topics"></a>トピックのサブスクライブ
 
@@ -99,21 +97,21 @@ Event Grid には、RBAC がイベント ドメインでより簡単に動作す
 イベント ドメインにより、トピックへの発行が自動的に処理されます。 管理する各トピックに個別にイベントを発行するのではなく、すべてのイベントをドメインのエンドポイントに対して発行することができます。 Event Grid によって、各イベントは正しいトピックに確実に送信されます。
 
 ## <a name="limits-and-quotas"></a>制限とクォータ
+イベント ドメインに関連した制限とクォータを次に示します。
 
-### <a name="control-plane"></a>コントロール プレーン
+- イベント ドメインあたり 100,000 トピック 
+- Azure サブスクリプションあたり 100 イベント ドメイン 
+- イベント ドメイン内のトピックあたり 500 イベント サブスクリプション
+- 50 のドメイン スコープ サブスクリプション 
+- 毎秒 5,000 イベントのインジェスト速度 (ドメインへの取り込み)
 
-プレビュー期間中、イベント ドメインはドメイン内の 1,000 個のトピックに制限され、ドメイン内のトピックごとに 50 個のイベント サブスクリプションに制限されます。 イベント ドメイン スコープ サブスクリプションも 50 に制限されます。
-
-### <a name="data-plane"></a>データ プレーン
-
-プレビュー期間中、イベント ドメインのイベント スループットは、カスタム トピックが制限されるのと同じ 5,000 イベント/秒の取り込み率に制限されます。
+これらの制限が実情に沿わない場合は、サポート チケットを開くか、[askgrid@microsoft.com](mailto:askgrid@microsoft.com) 宛てにメールを送信して製品チームにご相談ください。 
 
 ## <a name="pricing"></a>価格
-
-プレビュー期間中、イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。
+イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。
 
 イベント ドメインでの操作は、カスタム トピックの場合と同じように動作します。 イベント ドメインへのイベントの各取り込みは 1 回の操作であり、イベントの各配信試行も 1 回の操作となります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * イベント ドメインの設定、トピックの作成、イベント サブスクリプションの作成、イベントの発行の詳細については、[イベント ドメインの管理](./how-to-event-domains.md)に関するページを参照してください。

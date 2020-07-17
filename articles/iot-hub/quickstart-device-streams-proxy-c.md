@@ -1,101 +1,101 @@
 ---
-title: SSH または RDP 用の Azure IoT Hub デバイス ストリームの C クイック スタート (プレビュー) | Microsoft Docs
-description: このクイック スタートでは、IoT Hub デバイス ストリームを介した SSH シナリオまたは RDP シナリオを有効にするためにプロキシとして機能するサンプル C アプリケーションを実行します。
-author: rezasherafat
-manager: briz
+title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの C クイックスタート
+description: このクイックスタートでは、IoT Hub デバイス ストリームを介した SSH および RDP シナリオを有効にするためにプロキシとして機能するサンプル C アプリケーションを実行します。
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: ae5db52d7ac00080c2a740820debe6384cfa8dff
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.author: robinsh
+ms.openlocfilehash: b8cba8f7a21b04dc722124eb2873c64f67fd6def
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872663"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727133"
 ---
-# <a name="quickstart-sshrdp-over-an-iot-hub-device-stream-using-a-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
+Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 設定の概要については、[ローカル プロキシのサンプル ページ](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
+[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 設定の概要については、[ローカル プロキシのサンプルに関するページ](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
 
-このドキュメントでは、デバイス ストリームを通じて SSH トラフィック (ポート 22 を使用) をトンネリングするための設定について説明します。 RDP トラフィック用の設定も同様ですが、簡単な構成変更が必要です。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、このクイック スタートは、(通信ポートを変更することによって) 他の種類のアプリケーション トラフィックに対応するように変更できます。
+このクイックスタートでは、デバイス ストリームを通じて Secure Shell (SSH) トラフィック (ポート 22 を使用) をトンネリングするための設定について説明します。 リモート デスクトップ プロトコル (RDP) トラフィック用の設定も同様ですが、簡単な構成変更が必要です。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、このクイックスタートを他の種類のアプリケーション トラフィックに対応するように変更できます。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
-次の図は、デバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする設定を示しています。 パブリック プレビュー中、C SDK ではデバイス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、デバイスローカルのプロキシ アプリケーションを実行する手順についてのみ説明しています。 以下のサービス側のクイックスタートのいずれかを実行する必要があります。
+次の図は、デバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする方法を示しています。 パブリック プレビュー中、C SDK ではデバイス側のみのデバイス ストリームがサポートされます。 そのため、このクイックスタートでは、デバイスローカルのプロキシ アプリケーションのみを実行する手順について説明しています。 対応するサービス側アプリケーションをビルドして実行するには、次のいずれかのクイックスタートの手順に従ってください。
 
 * [C# プロキシを使用した IoT Hub デバイス ストリーム経由の SSH または RDP](./quickstart-device-streams-proxy-csharp.md)
-
 * [NodeJS プロキシを使用した IoT Hub デバイス ストリーム経由の SSH または RDP](./quickstart-device-streams-proxy-nodejs.md)
 
-![ローカル プロキシの設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![ローカル プロキシの設定](./media/quickstart-device-streams-proxy-c/device-stream-proxy-diagram.png)
 
 1. サービスローカルのプロキシによって IoT ハブへの接続が行われ、ターゲット デバイスへのデバイス ストリームが開始されます。
 
-2. デバイスローカルのプロキシによって、ストリームの開始ハンドシェイクが完了され、サーバー側への IoT Hub のストリーミング エンドポイントを通じてエンドツーエンドのストリーミング トンネルが確立されます。
+2. デバイスローカルのプロキシによって、ストリームの開始ハンドシェイクが完了され、サーバー側への IoT ハブのストリーミング エンドポイントを通じてエンドツーエンドのストリーミング トンネルが確立されます。
 
-3. デバイスローカルのプロキシによって、デバイス上のポート 22 をリッスンする SSH デーモン (SSHD) への接続が行われます ([*デバイスローカルのプロキシ アプリケーションの実行*に関するセクション](#run-the device-local-proxy-application)で説明するように、これは構成可能です)。
+3. デバイスローカル プロキシは、デバイス上のポート 22 をリッスンする SSH デーモンに接続されます。 「デバイスローカルのプロキシ アプリケーションの実行」セクションで説明されているように、この設定は構成可能です。
 
-4. サービスローカルのプロキシは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します ([デバイスローカルのプロキシ アプリケーションの実行に関するセクション](#run-the-device-local-proxy-application)で説明するように、これも構成可能です)。 ユーザーが SSH クライアントを介して接続すると、トンネルによって SSH アプリケーション トラフィックが SSH クライアントとサーバー プログラムの間で転送されるようになります。
+4. サービスローカルのプロキシは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します。 「デバイスローカルのプロキシ アプリケーションの実行」セクションで説明されているように、この設定は構成可能です。 ユーザーが SSH クライアントを介して接続すると、トンネルによって SSH アプリケーション トラフィックが SSH クライアントとサーバー プログラムの間で転送されるようになります。
 
 > [!NOTE]
-> デバイス ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT Hub のストリーミング エンドポイントを介してトンネリングされます。 詳細については、[IoT Hub デバイス ストリームを使用する利点](iot-hub-device-streams-overview.md#benefits)に関する記事を参照してください。 さらに、図ではデバイスローカルのプロキシと同じデバイス (またはマシン) 上で実行されている SSH デーモンが示されています。 このクイック スタートでは、SSH デーモンの IP アドレスを指定することで、デバイスローカルのプロキシとデーモンを異なるマシン上で実行することもできます。
+> デバイス ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT ハブのストリーミング エンドポイントを介してトンネリングされます。 詳細については、[IoT Hub デバイス ストリームを使用する利点](iot-hub-device-streams-overview.md#benefits)に関するページを参照してください。 さらに、図ではデバイスローカルのプロキシと同じデバイス (またはマシン) 上で実行されている SSH デーモンが示されています。 このクイックスタートでは、SSH デーモンの IP アドレスを指定することで、デバイスローカルのプロキシとデーモンを異なるマシン上で実行することもできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+* デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
 
-   * **米国中部**
+  * 米国中部
+  * 米国中部 EUAP
+  * 北ヨーロッパ
+  * 東南アジア
 
-   * **米国中部 EUAP**
-
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした [Visual Studio 2019](https://www.visualstudio.com/vs/) をインストールします。
+* [C++ によるデスクトップ開発](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)ワークロードを有効にした [Visual Studio 2019](https://www.visualstudio.com/vs/) をインストールします。
 * 最新バージョンの [Git](https://git-scm.com/download/) をインストールします。
 
-* 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+* 次のコマンドを実行して、Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-このクイック スタートでは、[C 対応の Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を GitHub から複製してビルドするために使用される開発環境を準備します。 GitHub 上の SDK には、このクイック スタートで使用されるサンプル コードが含まれます。 
-
+このクイックスタートでは、[C 用 Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を GitHub から複製してビルドするために使用される開発環境を準備します。 GitHub 上の SDK には、このクイックスタートで使用されるサンプル コードが含まれています。
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    CMake のインストールを開始する "*前*" に、Visual Studio の前提条件 (Visual Studio と "*C++ によるデスクトップ開発*" ワークロード) がマシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールできます。
 
-2. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+1. コマンド プロンプトまたは Git Bash シェルを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
 
-    
-   ```
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-   ```
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
 
-   この操作は、完了するまでに数分かかります。
+    この操作には数分かかるはずです。
 
-3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
+1. git リポジトリのルート ディレクトリに *cmake* サブディレクトリを作成し、そのフォルダーに移動します。 *azure-iot-sdk-c* ディレクトリから次のコマンドを実行します。
 
-   ```
-   cd azure-iot-sdk-c
-   mkdir cmake
-   cd cmake
-   ```
+    ```cmd/sh
+    mkdir cmake
+    cd cmake
+    ```
 
-4. `cmake` ディレクトリから次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。
+1. *cmake* ディレクトリから次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。
 
    * Linux の場合:
 
@@ -104,7 +104,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
       make -j
       ```
 
-   * Windows では、Visual Studio 2015 または 2017 用の開発者コマンド プロンプトで、次のコマンドを実行します。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。
+   * Windows では、Visual Studio 2015 または 2017 用の開発者コマンド プロンプトで、次のコマンドを実行します。 シミュレートされたデバイスの Visual Studio ソリューションが *cmake* ディレクトリに生成されます。
 
       ```cmd
       rem For VS2015
@@ -113,41 +113,43 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
 
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
+
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release
       ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
+1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
-
-   **MyDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
-    ```
-
-2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します。
-
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   > [!NOTE]
+   > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
+   > * 登録しているデバイスの名前については、示されているように、*MyDevice* を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-    次の例のような、デバイスの接続文字列をメモしておきます。
+1. 先ほど登録したデバイスの "*デバイス接続文字列*" を取得するには、Cloud Shell で次のコマンドを実行します。
+
+   > [!NOTE]
+   > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
+
+    ```azurecli-interactive
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    ```
+
+    このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
-
-    この値は、このクイック スタートの後の方で使います。
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
 
@@ -155,16 +157,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-device-local-proxy-application"></a>デバイスローカルのプロキシ アプリケーションの実行
 
-1. フォルダー `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/` 内のソース ファイル `iothub_client_c2d_streaming_proxy_sample.c` を編集して、お客様のデバイスの接続文字列、ターゲット デバイスの IP またはホスト名、SSH ポート 22 を指定します。
+1. フォルダー `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 内のソース ファイル **iothub_client_c2d_streaming_proxy_sample.c** を編集して、お客様のデバイスの接続文字列、ターゲット デバイスの IP またはホスト名、および SSH ポート 22 を指定します。
 
    ```C
-   /* Paste in the your iothub connection string  */
-   static const char* connectionString = "[Connection string of IoT Hub]";
-   static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
+   /* Paste in your device connection string  */
+   static const char* connectionString = "{DeviceConnectionString}";
+   static const char* localHost = "{IP/Host of your target machine}"; // Address of the local server to connect to.
    static const size_t localPort = 22; // Port of the local server to connect to.
    ```
 
-2. サンプルをコンパイルします。
+1. サンプルをコンパイルします。
 
    ```bash
    # In Linux
@@ -178,7 +180,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    cmake --build . -- /m /p:Configuration=Release
    ```
 
-3. デバイス上で、コンパイル済みプログラムを実行します。
+1. デバイス上で、コンパイル済みプログラムを実行します。
 
    ```bash
    # In Linux
@@ -194,10 +196,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-service-local-proxy-application"></a>サービスローカルのプロキシ アプリケーションの実行
 
-[動作のしくみ](#how-it-works)で説明したように、SSH トラフィックをトンネリングするためにエンドツーエンドのストリームを確立するには、両端 (サービスとデバイスの両方) にローカル プロキシが必要です。 パブリック プレビュー中、IoT Hub C SDK ではデバイス側のデバイス ストリームのみがサポートされます。 サービスローカル プロキシを構築して実行するには、以下のクイックスタートのいずれかで、サービスローカル プロキシを実行するために使用可能な手順に従います。
+「動作のしくみ」セクションで説明したように、SSH トラフィックをトンネリングするためにエンドツーエンドのストリームを確立するには、両端 (サービスとデバイスの両側) にローカル プロキシが必要です。 パブリック プレビュー中、IoT Hub C SDK ではデバイス側のみのデバイス ストリームがサポートされます。 サービスローカル プロキシをビルドして実行するには、次のいずれかのクイックスタートの手順に従ってください。
 
    * [C# プロキシ アプリを使用した IoT Hub デバイス ストリーム経由の SSH または RDP](./quickstart-device-streams-proxy-csharp.md)
-
    * [Node.js プロキシ アプリを使用した IoT Hub デバイス ストリーム経由の SSH または RDP](./quickstart-device-streams-proxy-nodejs.md)
 
 ### <a name="establish-an-ssh-session"></a>SSH セッションの確立
@@ -205,24 +206,28 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 デバイスローカルとサービスローカルの両方のプロキシが実行されていると、お客様の SSH クライアント プログラムを使用して、(SSH デーモンに直接ではなく) ポート 2222 でサービスローカルのプロキシに接続します。
 
 ```cmd/sh
-ssh <username>@localhost -p 2222
+ssh {username}@localhost -p 2222
 ```
 
-この時点で、お客様の資格情報を入力するための SSH ログイン プロンプトが表示されます。
+この時点で、SSH サインイン ウィンドウで資格情報の入力を求められます。
 
-`IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:![デバイスローカルのプロキシの出力](./media/quickstart-device-streams-proxy-c/device-console-output.png)
+次の図は、`IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力を示しています。
 
-SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):![SSH クライアントの出力](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
+![デバイスローカルのプロキシの出力](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+次の図は、SSH クライアント プログラムのコンソール出力を示しています。 SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します。
+
+![SSH クライアントの出力](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、IoT ハブの設定、デバイスの登録、デバイスローカルおよびサービスローカルのプロキシ プログラムのデプロイによる IoT Hub を通じたデバイス ストリームの確立、およびプロキシの使用による SSH トラフィックのトンネリングを行いました。
+このクイックスタートでは、IoT ハブの設定、デバイスの登録、デバイスローカルおよびサービスローカルのプロキシ プログラムのデプロイによる IoT Hub を通じたデバイス ストリームの確立、およびプロキシの使用による SSH トラフィックのトンネリングを行いました。
 
-以下のリンクを使用して、デバイス ストリームについてさらに詳しく学習します。
+デバイス ストリームについて詳しく学習するには、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [デバイス ストリームの概要](./iot-hub-device-streams-overview.md)

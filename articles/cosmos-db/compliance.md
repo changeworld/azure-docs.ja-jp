@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のコンプライアンス
 description: この記事では、Azure Cosmos DB のコンプライアンス認証の範囲について説明します。
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
-ms.author: dharmas
+ms.date: 03/18/2020
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527369"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB は、すべての Azure リージョンで利用できます。
 
 * **Azure パブリック** クラウドは、グローバルに利用できます。
 
-* **Azure China** は、マイクロソフトと中国最大のインターネット プロバイダーの 1 つである 21Vianet との間の独自のパートナーシップを通して利用できます。
+* **Azure China 21Vianet** は、Microsoft と最大のインターネット プロバイダーの 1 つである 21Vianet との間の独自のパートナーシップを通して利用できます。
 
 * **Azure Germany** では、データ保護受託者モデルに沿ってサービスが提供され、お客様のデータは、ドイツ国内でデータ保護受託者の役目を務める T-Systems International GmbH (Deutsche Telekom の子会社) の管理下で、ドイツ国外に移転されないことが保証されます。
 
@@ -28,7 +28,7 @@ Azure Cosmos DB は、すべての Azure リージョンで利用できます。
 
 * **米国国防総省 (DoD) 向け Azure Government** は、米国内の 2 つのリージョンで米国国防総省が利用できます。
 
-規制の対象となる業界や世界中の市場におけるお客様各自の遵守義務を満たすことを支援するために、Azure では、その幅の広さ (認証の総数) と深さ (評価対象である顧客向けサービスの数) の両方に関して、業界最大のコンプライアンス ポートフォリオを保持しています。  Azure のコンプライアンス認証は、4 つのセグメント (グローバルに適用可能、米国政府、業界に固有、および地域/国に固有) にグループ化されています。  コンプライアンス認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。
+規制の対象となる業界や世界中の市場におけるお客様各自の遵守義務を満たすことを支援するために、Azure では、その幅の広さ (認証の総数) と深さ (評価対象である顧客向けサービスの数) の両方に関して、業界最大のコンプライアンス ポートフォリオを保持しています。  Azure のコンプライアンス認証は、4 つのセグメント (グローバルに適用可能、米国政府、業界に固有、および国や地域に固有) にグループ化されています。  コンプライアンス認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB の認証  
 
@@ -36,22 +36,40 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 
 | **グローバルに適用可能** | **米国政府** | **業界に固有** | **地域/国に固有** |
 | --- | --- | --- | --- |
-| CSA STAR 認証<br/><br/>CSA STAR 証明<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1、2、3| DoD SRG Level 2<br/><br/>FedRAMP Moderate<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | オーストラリアの IRAP Unclassified<br/><br/>ドイツの C5<br/><br/>シンガポールの MTCS Level 3<br/><br/>スペインの ENS High|
+| CSA STAR 認証 | DoD SRG Level 2 | HIPAA BAA | オーストラリアの IRAP |
+| CSA STAR 証明 | FedRAMP Moderate | HITRUST | ドイツの C5|
+| ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | シンガポールの MTCS Level 3 |
+| ISO 22301:2012 | | | スペインの ENS High|
+| ISO 27001:2013| | | |
+| ISO 27017:2015 | | | |
+| ISO 27018:2014 | | | |
+| ISO 9001:2015 | | | |
+| ISO 27701:2019| | | |
+| SOC 1、2、3 | | | |
 
 これらのコンプライアンス認証とそれらのメリットの詳細については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure のコンプライアンスの概要) ページをご覧ください。
 
 次の表に、Azure Government 上で Azure Cosmos DB によってサポートされている認証を示します。
 
-| **グローバルに適用可能** | **米国政府** | **業界に固有** | **地域/国に固有** |
+| **グローバルに適用可能** | **米国政府** | **業界に固有** | 
 | --- | --- | --- | --- |
-| CSA STAR 認証<br/><br/>CSA STAR 証明<br/><br/>ISO 20000-1:2011<br/><br/>ISO 9001:2015<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1、2、3 | DoD SRG Level 2<br/><br/>DoD SRG Level 5<br/><br/>CJIS<br/><br/>FedRAMP High<br/><br/>IRS 1075<br/><br/>NIST CSF<br/><br/>NIST SP 800-171| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | オーストラリアの IRAP Unclassified<br/><br/>ドイツの C5<br/><br/>シンガポールの MTCS Level 3<br/><br/>スペインの ENS High|
+| CSA STAR 認証 | CJIS| HIPAA BAA | 
+| CSA STAR 証明| DoD SRG Level 2| HITRUST  | 
+| ISO 20000-1:2011 | DoD SRG Level 4 | PCI DSS | 
+| ISO 9001:2012 | DoD SRG Level 5 | | 
+| ISO 27001:2013 | FedRAMP High | |
+| ISO 9001:2015 | IRS 1075|  |
+| ISO 27017:2014 | NIST CSF | |
+| ISO 27018:2015 | NIST SP 800-171 | |
+| SOC 1、2、3 | | |
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 
 Azure のコンプライアンス認証の詳細については、以下の記事を参照してください。
 
 * Azure Cosmos DB の最新のコンプライアンス認証を確認するには、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure のコンプライアンスの概要) ページを参照してください。  
 
-* Azure Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB データベースのセキュリティ](database-security.md)」を参照してください。
+* Azure Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB のセキュリティ - 概要](database-security.md)」を参照してください。
 
-* マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure Security Center](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。

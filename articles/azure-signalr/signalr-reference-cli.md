@@ -1,17 +1,17 @@
 ---
 title: Azure CLI のサンプル - Azure SignalR Service
-description: Azure CLI のサンプル - Azure SignalR Service
+description: 実際のサンプルに従って、Azure SignalR サービスの Azure CLI について学習します。 多くの Azure サービスを使用して SignalR サービスを作成する方法についても説明します。
 author: sffamily
 ms.service: signalr
 ms.topic: reference
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 1fbe96d827bcf6bb39a6cf7a4e6811174b862d59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c28781362e60d22b0d9a4e3754daaa24e5b61ee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992198"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74158132"
 ---
 # <a name="azure-cli-reference"></a>Azure CLI リファレンス
 

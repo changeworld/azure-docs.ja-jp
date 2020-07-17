@@ -1,28 +1,30 @@
 ---
-title: VM に Trend Micro Deep Security をインストールする | Microsoft Docs
+title: VM に Trend Micro Deep Security をインストールする
 description: この記事では、Azure でクラシック デプロイ モデルを使用して作成された VM で Trend Micro のセキュリティをインストールして構成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: roiyz
-ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: akjosh
+ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77919925"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
 この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい VM に Trend Micro Deep Security as a Service をインストールして構成する方法を説明します。 Deep Security as a Service には、ウイルス対策、ファイアウォール、侵入防止システム、変更監視が含まれています。
 
@@ -44,11 +46,11 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
    ![拡張機能の追加開始][1]
 
-2. **[新しいリソース]** ウィンドウで **Deep Security Agent** を選択します。 Deep Security Agent ウィンドウで、**[作成]** をクリックします。
+2. **[新しいリソース]** ウィンドウで **Deep Security Agent** を選択します。 Deep Security Agent ウィンドウで、 **[作成]** をクリックします。
 
    ![Deep Security Agent の識別][2]
 
-3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、**[OK]** をクリックして、クライアントを追加します。
+3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、 **[OK]** をクリックして、クライアントを追加します。
 
    ![拡張機能の詳細提示][3]
 
@@ -75,7 +77,7 @@ VM エージェントがインストールされている場合は、次のコ�
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 エージェントがインストールされると、起動までに数分かかります。 起動後、仮想マシン上で Deep Security をアクティブにする必要があります。これは Deep Security Manager で管理できるようにするためです。 詳しくは、次の記事をご覧ください。
 
 * このソリューションに関する Trend の記事「 [Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)](https://go.microsoft.com/fwlink/?LinkId=404101)

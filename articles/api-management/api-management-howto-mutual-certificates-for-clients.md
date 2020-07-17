@@ -1,5 +1,6 @@
 ---
-title: API Management でのクライアント証明書認証を使用した API の保護 - Azure API Management | Microsoft Docs
+title: API Management でクライアント証明書認証を使用して API を保護する
+titleSuffix: Azure API Management
 description: クライアント証明書を使用して API へのアクセスを保護する方法の詳細
 services: api-management
 documentationcenter: ''
@@ -9,36 +10,31 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: ac9910358cf19eac3f704f1bf3e259e9a1543dcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141511"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "76713137"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 
-API Management には、クライアント証明書を使用して API (つまりクライアントから API Management) へのアクセスを保護する機能が備わっています。 現時点では、クライアント証明書の拇印が目的の値であるかを確認できます。 API Management にアップロードした既存の証明書に対する拇印を確認することもできます。  
+API Management には、クライアント証明書を使用して API (つまりクライアントから API Management) へのアクセスを保護する機能が備わっています。 受信証明書を検証し、ポリシー式を使用してその証明書のプロパティを目的の値に対して確認することができます。
 
-クライアント証明書を使用して API のバックエンド サービスへのアクセス (つまり API Management からバックエンド) を保護する方法については、[クライアント証明書認証を使用して、バックエンド サービスを保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)に関するページを参照してください。
+クライアント証明書を使用して API のバックエンド サービスへの (つまり、API Management からバックエンドへの) アクセスをセキュリティで保護する方法については、[クライアント証明書認証を使用してバックエンド サービスをセキュリティで保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)に関するページを参照してください。
 
-## <a name="checking-the-expiration-date"></a>有効期限の確認
+> [!IMPORTANT]
+> Developer、Basic、Standard、または Premium レベルで HTTP/2 経由でクライアント証明書を受信して確認するには、次に示すように、[カスタム ドメイン] ブレードで [クライアント証明書のネゴシエート] 設定を有効にする必要があります。
 
-以下のポリシーを構成して、証明書が有効期限切れかどうかを確認することができます。
+![[Negotiate client certificate] (クライアント証明書をネゴシエートする)](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
-```xml
-<choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter < DateTime.Now)" >
-        <return-response>
-            <set-status code="403" reason="Invalid client certificate" />
-        </return-response>
-    </when>
-</choose>
-```
+> [!IMPORTANT]
+> Consumption レベルでクライアント証明書を受信して確認するには、下に示すように、[カスタム ドメイン] ブレードにある [Request client certificate] (クライアント証明書を要求する) の設定を有効にする必要があります。
+
+![[Request client certificate] (クライアント証明書を要求する)](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>発行者とサブジェクトの確認
 
@@ -46,13 +42,17 @@ API Management には、クライアント証明書を使用して API (つま�
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify() || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
     </when>
 </choose>
 ```
+
+> [!NOTE]
+> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.Verify()` の代わりに `context.Request.Certificate.VerifyNoRevocation()` を使用します。
+> クライアント証明書が自己署名済みである場合、`context.Request.Certificate.Verify()` と `context.Request.Certificate.VerifyNoRevocation()` が機能するには、ルート (または中間) の CA 証明書を API Management に[アップロード](api-management-howto-ca-certificates.md)する必要があります。
 
 ## <a name="checking-the-thumbprint"></a>拇印の確認
 
@@ -60,21 +60,25 @@ API Management には、クライアント証明書を使用して API (つま�
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != "desired-thumbprint")" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify() || context.Request.Certificate.Thumbprint != "DESIRED-THUMBPRINT-IN-UPPER-CASE")" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
     </when>
 </choose>
 ```
+
+> [!NOTE]
+> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.Verify()` の代わりに `context.Request.Certificate.VerifyNoRevocation()` を使用します。
+> クライアント証明書が自己署名済みである場合、`context.Request.Certificate.Verify()` と `context.Request.Certificate.VerifyNoRevocation()` が機能するには、ルート (または中間) の CA 証明書を API Management に[アップロード](api-management-howto-ca-certificates.md)する必要があります。
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>API Management にアップロードされた証明書に対する拇印の確認
 
-以下の例では、API Management にアップロードされた証明書に対して、クライアント証明書の拇印を確認する方法を示しています。 
+以下の例では、API Management にアップロードされた証明書に対して、クライアント証明書の拇印を確認する方法を示しています。
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify()  || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
@@ -83,8 +87,17 @@ API Management には、クライアント証明書を使用して API (つま�
 
 ```
 
-## <a name="next-step"></a>次のステップ
+> [!NOTE]
+> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.Verify()` の代わりに `context.Request.Certificate.VerifyNoRevocation()` を使用します。
+> クライアント証明書が自己署名済みである場合、`context.Request.Certificate.Verify()` と `context.Request.Certificate.VerifyNoRevocation()` が機能するには、ルート (または中間) の CA 証明書を API Management に[アップロード](api-management-howto-ca-certificates.md)する必要があります。
 
-*  [クライアント証明書認証を使用してバックエンド サービスを保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-*  [証明書のアップロード方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+> [!TIP]
+> この[記事](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)で説明されているクライアント証明書のデッドロックに関する問題が、要求が凍結する、要求がタイムアウト後に `403 Forbidden` 状態コードになる、`context.Request.Certificate` が `null` である、などのいくつかの形で現れる場合があります。 この問題は通常、コンテンツの長さが約 60KB 以上ある `POST` および `PUT` 要求に影響を与えます。
+> この問題が発生しないようにするには、下に示すように、[カスタム ドメイン] ブレードにある目的のホスト名の [Negotiate client certificate]\(クライアント証明書をネゴシエートする\) の設定を有効にします。 この機能は、Consumption レベルでは使用できません。
 
+![[Negotiate client certificate] (クライアント証明書をネゴシエートする)](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+## <a name="next-steps"></a>次のステップ
+
+-   [クライアント証明書認証を使用してバックエンド サービスを保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [証明書のアップロード方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

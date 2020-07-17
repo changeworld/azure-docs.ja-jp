@@ -4,7 +4,7 @@
   items:
     - name: Azure リソースのマネージド ID について
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: VM マネージド ID を使用した Azure Resource Manager へのアクセス
       items:
@@ -20,18 +20,12 @@
           href: tutorial-windows-vm-access-datalake.md
         - name: Azure Storage へのアクセス
           href: tutorial-vm-windows-access-storage.md
-        - name: アクセス キーを使用した Azure Storage へのアクセス
-          href: tutorial-windows-vm-access-storage.md
-        - name: SAS を使用した Azure Storage へのアクセス
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: Azure SQL へのアクセス
           href: tutorial-windows-vm-access-sql.md
         - name: Azure Key Vault へのアクセス
           href: tutorial-windows-vm-access-nonaad.md
         - name: Azure Cosmos DB へのアクセス
           href: tutorial-windows-vm-access-cosmos-db.md
-        - name: Azure AD Graph API へのアクセス
-          href: tutorial-windows-vm-access-azure-ad-graph.md
         - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
           href: tutorial-windows-vm-ua-arm.md
     - name: Linux VM/VMSS
@@ -50,8 +44,6 @@
           href: tutorial-linux-vm-access-cosmos-db.md
         - name: Azure Container Registry へのアクセス
           href: /azure/container-registry/container-registry-authentication-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-        - name: Azure AD Graph API へのアクセス
-          href: tutorial-linux-vm-access-azure-ad-graph.md
         - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure Service Bus
@@ -59,10 +51,10 @@
     - name: Azure App Service と Azure Functions
       href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Event Hubs
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+      href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: VM でのマネージド ID の構成
       items:
@@ -139,20 +131,20 @@
     - name: Java
       href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
     - name: Python
-      href: /python/api/azure.mgmt.msi
+      href: 'https://docs.microsoft.com/windows/python/'
     - name: Ruby
       href: 'https://rubygems.org/gems/azure_mgmt_msi'
     - name: Node.js
-      href: /javascript/api/ms-rest-azure
+      href: 'https://nodejs.org/en/docs/'
     - name: Go
-      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'
+      href: 'https://golang.org/doc/'
 - name: リソース
   items:
     - name: FAQ と既知の問題
       href: known-issues.md
     - name: Azure リソースのマネージド ID をサポートする Azure サービス
       href: services-support-managed-identities.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-msi'
     - name: AAD 開発者フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

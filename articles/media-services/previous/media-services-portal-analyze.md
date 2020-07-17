@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619443"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74462619"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
-> [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
-> 
-> 
+
+> [!IMPORTANT]
+> 一部のメディア プロセッサの[提供終了計画](media-services-analytics-overview.md#retirement-plans)を確認します。
 
 ## <a name="overview"></a>概要
 Azure Media Services Analytics は、組織や企業がビデオ ファイルからアクションにつながる分析データを簡単に得られるようにする、(エンタープライズ向けの規模、コンプライアンス、セキュリティ、グローバルな展開で使用できる) 音声コンポーネントと視覚コンポーネントのコレクションです。 Azure Media Services Analytics の概要について、詳しくは[こちら](media-services-analytics-overview.md)のトピックを参照してください。 
@@ -34,10 +33,10 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>分析する資産を選択する
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** ウィンドウで、**[資産]** を選択します。  
+2. **[設定]** ウィンドウで、 **[資産]** を選択します。  
    
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. 分析する資産を選択し、**[分析]** をクリックします。
+3. 分析する資産を選択し、 **[分析]** をクリックします。
    
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
 4. **[メディア分析を使用したメディア資産の処理]** ウィンドウでプロセッサを選択します。 
@@ -55,17 +54,13 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ### <a name="captions"></a>字幕
 コンテンツから生成される字幕形式を選択できます。 インデックス作成ジョブでは、クローズド キャプション ファイルを次の形式で生成できます。  
-
-* **SAMI**
+ 
 * **TTML**
 * **WebVTT**
 
 これらの形式のクローズド キャプション (CC) ファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。
 
-### <a name="aib-file"></a>AIB ファイル
-カスタム SQL Server IFilter と併用するオーディオ インデックス BLOB ファイルを生成する場合にこのオプションを選択します。 詳細については、 [このブログ](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) をご覧ください。
-
-### <a name="keywords"></a>キーワード
+### <a name="keywords"></a>Keywords
 キーワード XML ファイルを生成する場合にこのオプションを選択します。 キーワード XML ファイルには音声コンテンツから抽出されるキーワードと、頻度とオフセットの情報が含まれます。
 
 ### <a name="job-name"></a>ジョブ名
@@ -136,13 +131,13 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ![ビデオのモデレート](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>バージョン 
+### <a name="version"></a>Version 
 "2.0" を使用しています。
 
-### <a name="mode"></a>Mode
+### <a name="mode"></a>モード
 バージョン 2.0 では `Mode` 設定が無視されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

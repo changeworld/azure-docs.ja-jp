@@ -1,24 +1,23 @@
 ---
-title: 'プライベート接続でオンプレミスのネットワークを Azure に拡張する - ExpressRoute の概要: Azure | Microsoft Docs'
+title: Azure ExpressRoute の概要プライベート接続を介して接続する
 description: ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 9b13c57728c43e02f7ebf9d7730d82d681f5fc1f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965883"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75770953"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
-ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
+ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
-接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute connectivity models](expressroute-connectivity-models.md)」(ExpressRoute 接続モデル) をご覧ください。
+接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 これにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一定しており、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute 接続モデル](expressroute-connectivity-models.md)」を参照してください。
 
 ![ExpressRoute 接続の概要](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -40,13 +39,12 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 Microsoft は業界標準の動的ルーティング プロトコル (BGP) を利用し、オンプレミス ネットワーク、Azure のインスタンス、および Microsoft パブリック アドレスの間でルートを交換します。 さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。
 
 ### <a name="redundancy"></a>冗長性
-各 ExpressRoute 回線は、接続プロバイダー/ネットワーク エッジから 2 つの Microsoft Enterprise エッジ ルーター (MSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/ネットワーク エッジから 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
+各 ExpressRoute 回線は、接続プロバイダーまたはネットワーク エッジから、[ExpressRoute の場所](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations)にある 2 つの Microsoft Enterprise エッジ ルーター (MSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/ネットワーク エッジから 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Microsoft クラウド サービスへの接続
 ExpressRoute 接続によって、次のようなサービスにアクセスできます。
 * Microsoft Azure サービス
 * Microsoft Office 365 サービス
-* Microsoft Dynamics 365
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -87,7 +85,7 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 詳細については、[ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973) に関するページを参照してください。
 
 ### <a name="bandwidth-options"></a>帯域幅のオプション
-さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は次のとおりです。 サポートされる帯域幅は接続パートナーに必ず確認してください。
+さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は次のとおりです。 サポートされる帯域幅については接続プロバイダーに必ず確認してください。
 
 * 50 Mbps
 * 100 Mbps
@@ -109,12 +107,12 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 * **ExpressRoute Premium アドオン**。 ExpressRoute Premiumは ExpressRoute 回線のアドオンです。 ExpressRoute Premium アドオンには次の機能があります。 
   * Azure パブリックと Azure プライベートのピアリングのルート上限の増加 (4,000 ルートから 10,000 ルートに)。
   * サービスのグローバル接続。 (国内のクラウドを除く) あらゆるリージョンで作成された ExpressRoute 回線に与えられる世界中の他のリージョンにあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
-  * ExpressRoute ごとの VNet リンクの増加 (回線の帯域幅にもよりますが、10 からそれ以上に)。
+  * ExpressRoute ごとの VNet リンクの上限数が 10 からより大きな数に増加 (回線の帯域幅によって異なる)。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 ExpressRoute に関してよく寄せられる質問については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ExpressRoute 接続モデル](expressroute-connectivity-models.md)について説明します。
 * ExpressRoute 接続とルーティング ドメインについて説明します。 「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 * サービス プロバイダーを検索します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。

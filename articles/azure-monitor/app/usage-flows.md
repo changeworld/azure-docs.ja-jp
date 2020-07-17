@@ -1,24 +1,17 @@
 ---
-title: Azure Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する | Microsoft docs
+title: Azure Application Insights User Flows によるナビゲーション フローの分析
 description: ユーザーが Web アプリのページ間および機能間をどのように移動しているかを分析します。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 91274fad4e56c69777333c81ea3b32dccdcf64ff
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045260"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892446"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 
@@ -44,7 +37,7 @@ ms.locfileid: "54045260"
 
 ユーザー フロー ツールを使って前に示したような疑問への回答を始めるには、まず、表示の起点となる最初のページ ビュー、カスタム イベント、または例外を選びます。
 
-1. **[その後ユーザーがすること]** というタイトルのリンクをクリックするか、**[編集]** をクリックします。
+1. **[その後ユーザーがすること]** というタイトルのリンクをクリックするか、 **[編集]** をクリックします。
 2. **[初期イベント]** ボックスの一覧から、ページ ビュー、カスタム イベント、または例外を選びます。
 3. **[グラフの作成]** をクリックします。
 
@@ -52,13 +45,13 @@ ms.locfileid: "54045260"
 
 既定では、ユーザー フロー ツールはサイトから過去 24 時間だけのページ ビューとカスタム イベントをランダムにサンプリングします。 [Edit]\(編集\) メニューで、時間範囲を広げたり、ランダム サンプリングのパフォーマンスと精度のバランスを変更したりできます。
 
-ページ ビュー、カスタム イベント、または例外に関係のないものが含まれる場合は、ノードの **[X]** をクリックして非表示にできます。 非表示にするノードを選んだ後は、視覚化の下の **[グラフの作成]** ボタンをクリックします。 非表示にしたノードをすべて確認するには、**[編集]** ボタンをクリックし、**[除外されたイベント]** セクションを見ます。
+ページ ビュー、カスタム イベント、または例外に関係のないものが含まれる場合は、ノードの **[X]** をクリックして非表示にできます。 非表示にするノードを選んだ後は、視覚化の下の **[グラフの作成]** ボタンをクリックします。 非表示にしたノードをすべて確認するには、 **[編集]** ボタンをクリックし、 **[除外されたイベント]** セクションを見ます。
 
 視覚化に表示する必要があるページ ビューまたはカスタム イベントが表示されていない場合は、次のようにします。
 
 * **[編集]** メニューの **[除外されたイベント]** セクションを確認します。
-* 頻繁の低いイベントを視覚化に含めるには、**[その他]** ノードのプラス ボタンを使用します。
-* 予想されるページ ビューまたはカスタム イベントがユーザーによってあまり送信されない場合は、**[編集]** メニューで視覚化の時間範囲を広げてみます。
+* 頻繁の低いイベントを視覚化に含めるには、 **[その他]** ノードのプラス ボタンを使用します。
+* 予想されるページ ビューまたはカスタム イベントがユーザーによってあまり送信されない場合は、 **[編集]** メニューで視覚化の時間範囲を広げてみます。
 * 予想されるページ ビュー、カスタム イベント、または例外が、サイトのソース コードで Application Insights SDK によって収集されるように設定されていることを確認します。 [カスタム イベントの収集について詳しくは、こちらをご覧ください。](../../azure-monitor/app/api-custom-events-metrics.md)
 
 視覚化の手順をさらに参照する場合は、視覚化の上の **[前のステップ]** と **[次のステップ]** の各ドロップダウン リストを使用します。
@@ -94,7 +87,7 @@ ms.locfileid: "54045260"
 1. **[イベント]** メニューで、分割するイベントを選択します。
 2. **[ディメンション]** メニューでディメンションを選択します。 たとえば、「ボタンがクリックされました」というイベントがある場合は、「ボタン名」というカスタム プロパティを試してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [利用状況の概要](usage-overview.md)
 * [ユーザー、セッション、およびイベント](usage-segmentation.md)

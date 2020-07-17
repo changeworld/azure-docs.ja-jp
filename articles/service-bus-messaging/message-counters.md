@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus のメッセージ数 | Microsoft Docs
-description: Azure Service Bus のメッセージ数の取得
+title: Azure Service Bus - メッセージ数
+description: Azure Resource Manager および Azure Service Bus NamespaceManager API を使用して、キューおよびサブスクリプションに保持されているメッセージの数を取得します。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: adfd8c5849cfee69805715378a3f56ec9f685b00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050749"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891766"
 ---
 # <a name="message-counters"></a>メッセージ カウンター
 
@@ -44,7 +44,12 @@ PowerShell を使用して、次のように、メッセージ数を取得でき
 
 アプリケーションで、キューの長さに基づいてリソースを拡張する必要がある場合は、正確に測定された間隔で実行する必要があります。 メッセージ カウンターの取得は、メッセージ ブローカー内で多くのリソースを必要とする操作であり、頻繁に実行すると、エンティティ パフォーマンスに直接的な悪影響を及ぼします。
 
-## <a name="next-steps"></a>次の手順
+> [!NOTE]
+> Service Bus トピックに送信されたメッセージは、そのトピックのサブスクリプションに転送されます。 したがって、これらのメッセージはサブスクリプションに正常に転送されているため、そのトピック自体のアクティブなメッセージ数は 0 です。 サブスクリプションにあるメッセージ数を取得し、それが 0 より大きいことを確認してください。 サブスクリプションにメッセージがあるとしても、実際には、それらはトピックが所有しているストレージに格納されています。 
+
+サブスクリプションを見てみると、0 以外のメッセージ数があります (それにより、このエンティティ全体に対して最大 323 MB の領域が追加されます)。
+
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

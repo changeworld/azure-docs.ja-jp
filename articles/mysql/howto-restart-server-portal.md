@@ -1,17 +1,17 @@
 ---
-title: Azure portal を使用して Azure Database for MySQL サーバーを再起動する
+title: サーバーを再起動する - Azure portal - Azure Database for MySQL
 description: この記事では、Azure portal を使用して Azure Database for MySQL サーバーを再起動する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: a20030a1dc6cd8b89064731c283f9b462d30ec8f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 3/18/2020
+ms.openlocfilehash: d7e158124347b302492364df46ccf5b5e78e75c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "61422572"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80063293"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーを再起動する
 このトピックでは、Azure Database for MySQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -30,7 +30,7 @@ ms.locfileid: "61422572"
 
 1. Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。
 
-2. サーバーの **[概要]** ページのツール バーで、**[再起動]** をクリックします。
+2. サーバーの **[概要]** ページのツール バーで、 **[再起動]** をクリックします。
 
    ![Azure Database for MySQL - [概要] - [再起動] ボタン](./media/howto-restart-server-portal/2-server.png)
 
@@ -46,6 +46,6 @@ ms.locfileid: "61422572"
 
    ![Azure Database for MySQL - 再起動の成功](./media/howto-restart-server-portal/5-restart-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[クイック スタート:Azure portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[クイックスタート: Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)

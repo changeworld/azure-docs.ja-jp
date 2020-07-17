@@ -3,24 +3,23 @@ title: Azure 環境における Oracle ディザスター リカバリー シナ
 description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
-manager: jeconnoc
+author: BorisB2015
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.author: borisb
+ms.openlocfilehash: adf4c54d4f43f806ae985f7c1523303cf574b4c1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495029"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687466"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -32,7 +31,7 @@ ms.locfileid: "39495029"
 ## <a name="goals"></a>目標
 - ディザスター リカバリー (DR) の要件を満たすトポロジと構成を設計すること
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>シナリオ 1: Azure 上のプライマリ サイトと DR サイト
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>シナリオ 1:Azure 上のプライマリ サイトと DR サイト
 
 Oracle データベースがプライマリ サイトにセットアップされています。 DR サイトは別のリージョンにあります。 Oracle Data Guard はこれらのサイト間での迅速な回復に使用されます。 また、プライマリ サイトにはレポートの作成や他の用途のためにセカンダリ データベースが用意されています。 
 
@@ -78,7 +77,7 @@ Azure セットアップの概要は次のとおりです。
 
 ![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>アプローチ 2: サイト対サイト VPN
+### <a name="approach-2-site-to-site-vpn"></a>アプローチ 2: サイト間 VPN
 サイト対サイト VPN は、より優れたアプローチです。 VPN の設定に関する詳細については、「[CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)」を参照してください。
 
 #### <a name="topology"></a>トポロジ
@@ -104,7 +103,7 @@ Azure セットアップの概要は次のとおりです。
 - [Oracle のバックアップと回復](oracle-backup-recovery.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
+- [チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
 - [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)

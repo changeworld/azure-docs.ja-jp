@@ -1,213 +1,230 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 'Microsoft ID プラットフォーム (旧称: 開発者向け Azure Active Directory)'
+### YamlMime:Landing
+title: Microsoft ID プラットフォームのドキュメント
+summary: Microsoft ID プラットフォームでは、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph など) や自社開発 API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 これはフル機能を備えたプラットフォームであり、OAuth 2.0 および OpenID Connect 標準に準拠した認証サービス、オープンソース ライブラリ、アプリケーションの登録および構成、充実した概念とリファレンスのドキュメント、クイックスタート、コード サンプル、チュートリアル、攻略ガイドによって構成されています。
 metadata:
-  title: Microsoft ID プラットフォーム (開発者向け Azure Active Directory)
-  description: Microsoft ID プラットフォームを使用することで、すべての Microsoft ID 内のユーザーに安全にサインインして、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得するアプリを構築する方法について説明します。
-  services: active-directory
+  ms.topic: landing-page
+  ms.date: 06/22/2019
   author: CelesteDG
-  manager: CelesteDG
+  ms.author: celested
   ms.service: active-directory
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: celested
-abstract:
-  description: Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 これはフル機能を備えたプラットフォームであり、OAuth 2.0 および OpenID Connect 標準に準拠した認証サービス、オープンソース ライブラリ、アプリケーションの登録および構成、充実した概念とリファレンスのドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、攻略ガイドによって構成されています。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/identity-platform-thumbnail.png
-      width: 250
-    title: 'Microsoft ID プラットフォームの概要 (2:20)'
-    href: 'https://youtu.be/y_fgJAatVhk'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory/develop/about-microsoft-identity-platform
-            html: <p>Microsoft ID プラットフォームとその機能について説明します。</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: Microsoft ID プラットフォームの進化
-          - href: /azure/active-directory/develop/v2-overview
-            html: <p>すべての Microsoft ID にサインインして、Microsoft API シリーズ (Microsoft Graph など) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを構築します。</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: v2.0
-          - href: /azure/active-directory/develop/azure-ad-developers-guide/
-            html: <p>Azure AD Authentication Library (ADAL)、Azure portal、および Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントにトークンを要求し、Azure AD の ID (職場および学校のアカウント) を認証します。</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: v1.0
-  - title: アプリケーションのシナリオ
-    items:
-      - type: paragraph
-        text: ID の処理は難しくありません。 ご自身に該当するシナリオを選んでください。各シナリオのパスには、概要、アプリの登録とアプリ コードの構成のガイダンス、トークンの取得と API の呼び出しを行うためのコード例、ご自分のアプリを運用環境に移行する際の推奨事項が含まれています。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/develop/scenario-spa-overview">シングルページ アプリケーション</a>
-          - html: <a href="/azure/active-directory/develop/scenario-web-app-sign-user-overview">ユーザーをサインインさせる Web アプリ</a>
-          - html: <a href="/azure/active-directory/develop/scenario-web-app-call-api-overview">Web API を呼び出す Web アプリ</a>
-          - html: <a href="/azure/active-directory/develop/scenario-protected-web-api-overview">保護された Web API</a>
-          - html: <a href="/azure/active-directory/develop/scenario-web-api-call-api-overview">ダウンストリーム Web API を呼び出す Web API</a>
-          - html: <a href="/azure/active-directory/develop/scenario-desktop-overview">Web API を呼び出すデスクトップ アプリ</a>
-          - html: <a href="/azure/active-directory/develop/scenario-daemon-overview">デーモン アプリケーション</a>
-          - html: <a href="/azure/active-directory/develop/scenario-mobile-overview">モバイル アプリケーション</a>
-  - title: クイック スタート
-    items:
-      - type: paragraph
-        text: これらのクイック スタートに従って、ユーザーのサインイン、Microsoft Graph API や任意の Web API を呼び出すためのアクセス トークンの取得をアプリから行う方法などを示すサンプル コードの使用方法について学習します。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_js.svg
-            title: JavaScript
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_NETcore.svg
-            title: ASP .NET Core
-          - image:
-              src: ./media/index/logo_nodejs.svg
-            title: NodeJS
-          - image:
-              src: ./media/index/logo_android.svg
-            title: Android
-          - image:
-              src: ./media/index/logo_ios.svg
-            title: iOS
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: ユニバーサル Windows プラットフォーム
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Windows デスクトップ .NET
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: .NET
-        rows:
-          - title: シングルページ アプリ
-            values:
-              - href: quickstart-v2-javascript.md
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Web アプリ
-            values:
-              - href: null
-              - href: quickstart-v2-aspnet-webapp.md
-              - href: quickstart-v2-aspnet-core-webapp.md
-              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Web API
-            values:
-              - href: null
-              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
-              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: モバイルおよびデスクトップ アプリ
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-v2-android.md
-              - href: quickstart-v2-ios.md
-              - href: quickstart-v2-uwp.md
-              - href: quickstart-v2-windows-desktop.md
-              - href: null
-          - title: デーモン アプリ
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-v2-netcore-daemon.md
-  - title: チュートリアル
-    items:
-      - type: paragraph
-        text: Microsoft ID プラットフォームを使用し、ユーザーのサインイン、Microsoft Graph API を呼び出すためのアクセス トークンの取得、Microsoft Graph API への基本的な要求の実行など、開発者の上位認証タスクに対するシナリオベースの詳細な手順に従います。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_js.svg
-            title: JavaScript
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_android.svg
-            title: Android
-          - image:
-              src: ./media/index/logo_ios.svg
-            title: iOS
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: ユニバーサル Windows プラットフォーム
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Windows デスクトップ .NET
-        rows:
-          - title: シングルページ アプリ
-            values:
-              - href: tutorial-v2-javascript-spa.md
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Web アプリ
-            values:
-              - href: null
-              - href: tutorial-v2-asp-webapp.md
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: モバイルおよびデスクトップ アプリ
-            values:
-              - href: null
-              - href: null
-              - href: tutorial-v2-android.md
-              - href: tutorial-v2-ios.md
-              - href: tutorial-v2-windows-uwp.md
-              - href: tutorial-v2-windows-desktop.md
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 開発中のアプリ、ご利用のプラットフォーム、および使用している API の種類に基づいてコード サンプルを検索します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/develop/sample-v2-code">シナリオ別の v2.0 コード サンプル</a>
-          - html: <a href="/azure/active-directory/develop/sample-v1-code">シナリオ別の v1.0 コード サンプル</a>
+  ms.workload: identity
+  ms.openlocfilehash: 71f591f04e8762761c449ca4924db5edb4de3f6c
+  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83681768"
+landingContent:
+- title: Microsoft ID プラットフォームについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft ID プラットフォーム (v2.0)
+      url: v2-overview.md
+    - text: Microsoft ID プラットフォームの進化
+      url: about-microsoft-identity-platform.md
+    - text: 開発者のための Azure Active Directory (v1.0)
+      url: ../azuread-dev/v1-overview.md
+  - linkListType: concept
+    links:
+    - text: 認証の基本
+      url: authentication-scenarios.md
+    - text: 認証フローとアプリ シナリオ
+      url: authentication-flows-app-scenarios.md
+    - text: ベスト プラクティスと推奨事項
+      url: identity-platform-integration-checklist.md
+  - linkListType: video
+    links:
+    - text: 系列:開発者向け ID プラットフォーム
+      url: identity-videos.md
+- title: シングルページ アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-spa-overview.md
+  - linkListType: quickstart
+    links:
+    - text: JavaScript - 認証コード
+      url: quickstart-v2-javascript-auth-code.md
+    - text: JavaScript - 暗黙的
+      url: quickstart-v2-javascript.md
+    - text: Angular
+      url: quickstart-v2-angular.md
+  - linkListType: tutorial
+    links:
+    - text: JavaScript - 認証コード
+      url: tutorial-v2-javascript-auth-code.md
+    - text: JavaScript - 暗黙的
+      url: tutorial-v2-javascript-spa.md
+  - linkListType: download
+    links:
+    - text: サンプル - JavaScript、Angular
+      url: sample-v2-code.md#single-page-applications
+    - text: サンプル - Azure AD B2C を使用する SPA
+      url: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+- title: ユーザーをサインインさせる Web アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-web-app-sign-user-overview.md
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core
+      url: quickstart-v2-aspnet-core-webapp.md
+    - text: ASP.NET
+      url: quickstart-v2-aspnet-webapp.md
+    - text: Java
+      url: quickstart-v2-java-webapp.md
+    - text: Python
+      url: quickstart-v2-python-webapp.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core
+      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET Core、ASP.NET、Java、Python
+      url: sample-v2-code.md#web-applications
+- title: Web API を呼び出す Web アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-web-app-call-api-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Java
+      url: quickstart-v2-java-webapp.md
+    - text: Python
+      url: quickstart-v2-python-webapp.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core
+      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET Core、ASP.NET、Node.js、Ruby、Java、Python
+      url: sample-v2-code.md#web-applications
+- title: 保護された Web API の構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-protected-web-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core Web API
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
+- title: Web API を呼び出す Web API
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-web-api-call-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Microsoft Graph を呼び出す ASP.NET Core Web API
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
+    - text: Microsoft Graph を呼び出す Java Web API
+      url: https://github.com/Azure-Samples/ms-identity-java-webapi
+- title: Web API を呼び出すデスクトップ アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-desktop-overview.md
+  - linkListType: quickstart
+    links:
+    - text: トークンを取得して Microsoft Graph API を呼び出す (Windows デスクトップ)
+      url: quickstart-v2-windows-desktop.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (UWP)
+      url: quickstart-v2-uwp.md
+  - linkListType: tutorial
+    links:
+    - text: Microsoft Graph API を呼び出す (Windows デスクトップ)
+      url: tutorial-v2-windows-desktop.md
+    - text: Microsoft Graph API を呼び出す (UWP)
+      url: tutorial-v2-windows-uwp.md
+  - linkListType: download
+    links:
+    - text: サンプル - .NET、.NET Core、Java、Python
+      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
+- title: Web API を呼び出すデーモン アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-daemon-overview.md
+  - linkListType: quickstart
+    links:
+    - text: トークンを取得して Microsoft Graph API を呼び出す (.NET Core コンソール)
+      url: quickstart-v2-netcore-daemon.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (ASP.NET Web アプリ)
+      url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
+  - linkListType: download
+    links:
+    - text: サンプル - ASP.NET コンソール、ASP.NET Web、Java、Python
+      url: sample-v2-code.md#daemon-applications
+- title: Web API を呼び出すモバイル アプリの構築
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: シナリオの概要
+      url: scenario-mobile-overview.md
+  - linkListType: quickstart
+    links:
+    - text: トークンを取得して Microsoft Graph API を呼び出す (Android)
+      url: quickstart-v2-android.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (iOS)
+      url: quickstart-v2-ios.md
+    - text: トークンを取得して Microsoft Graph API を呼び出す (Xamarin iOS と Android)
+      url: https://github.com/Azure-Samples/active-directory-xamarin-native-v2
+  - linkListType: tutorial
+    links:
+    - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (Android)
+      url: tutorial-v2-android.md
+    - text: ユーザーをサインインさせて Microsoft Graph API を呼び出す (iOS)
+      url: tutorial-v2-ios.md
+  - linkListType: download
+    links:
+    - text: サンプル - Android、iOS、Xamarin
+      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
+- title: Microsoft Graph API を呼び出す
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft Graph について
+      url: https://docs.microsoft.com/graph/overview
+  - linkListType: quickstart
+    links:
+    - text: 3 分で起動して実行する
+      url: https://developer.microsoft.com/graph/get-started
+  - linkListType: learn
+    links:
+    - text: API の使用
+      url: https://docs.microsoft.com/graph/use-the-api
+    - text: Microsoft Graph REST API v1.0
+      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0
+    - text: Microsoft Graph REST API ベータ版
+      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta
+  - linkListType: deploy
+    links:
+    - text: Graph エクスプローラー
+      url: https://developer.microsoft.com/graph/graph-explorer/
+- title: ソーシャルとローカルの ID でサインインする顧客向けアプリの構築
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD B2C について
+      url: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
+  - linkListType: tutorial
+    links:
+    - text: Azure AD B2C のアプリに ID プロバイダーを追加する
+      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers

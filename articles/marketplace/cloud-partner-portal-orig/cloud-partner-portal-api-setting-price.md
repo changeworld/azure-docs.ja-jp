@@ -1,28 +1,24 @@
 ---
-title: 仮想マシン プランの価格 | Microsoft Docs
+title: 仮想マシン プランの価格 | Azure Marketplace
 description: 仮想マシン プランの価格を指定する 3 つの方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.date: 04/08/2020
+ms.author: dsindona
+ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607797"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255891"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 ==================================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 仮想マシン プランの価格を指定する方法は、カスタマイズされたコア価格、コアごとの価格、およびスプレッドシート価格の 3 つを提供します。
 
@@ -41,21 +37,31 @@ ms.locfileid: "59607797"
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -97,12 +103,18 @@ ms.locfileid: "59607797"
      }
 ```
 
+<a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日に追加された新しいコア サイズ
+---------------------------
+
+2019 年 7 月 2 日に、(コア数に基づく) 新しい Azure 仮想マシン サイズに対する新しい料金の追加が VM の発行元に通知されました。  新しい料金は、コア サイズが 10、44、48、60、120、208、416 に対するものです。  既存の VM の場合、これらのコア サイズの新しい価格は、現在の価格に基づいて自動的に計算されます。  発行元は、2019 年 8 月 1 日までに追加料金を確認し、必要な変更を行う必要があります。  この日を過ぎて、発行元がまだ再パブリッシュを行っていない場合、これらの新しいコア サイズに対して自動的に計算された価格が有効になります。
+
+
 <a name="regions"></a>リージョン
 -------
 
 次の表は、カスタマイズされたコア価格に対して指定できるさまざまなリージョンと、それぞれに対応する通貨コードを示します。
 
-| **[リージョン]** | **Name**             | **通貨コード** |
+| **リージョン** | **名前**             | **通貨コード** |
 |------------|----------------------|-------------------|
 | DZ         | アルジェリア              | DZD               |
 | AR         | アルゼンチン            | ARS               |
@@ -135,7 +147,7 @@ ms.locfileid: "59607797"
 | HU         | ハンガリー              | HUF               |
 | IS         | アイスランド              | ISK               |
 | IN         | インド                | INR               |
-| ID         | インドネシア            | IDR               |
+| id         | インドネシア            | IDR               |
 | IE         | アイルランド              | EUR               |
 | IL         | イスラエル               | ILS               |
 | IT         | イタリア                | EUR               |

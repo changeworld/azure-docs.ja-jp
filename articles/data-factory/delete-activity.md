@@ -1,31 +1,32 @@
 ---
-title: Azure Data Factory の Delete アクティビティ | Microsoft Docs
+title: Azure Data Factory の Delete アクティビティ
 description: Azure Data Factory の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
-ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/20/2019
+ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881785"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81416379"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 Azure Data Factory の Delete アクティビティを使用して、オンプレミス ストレージ ストアやクラウド ストレージ ストアからファイルやフォルダーを削除することができます。 このアクティビティを使用して、必要なくなったときにファイルをクリーンアップしたりアーカイブしたりします。
 
 > [!WARNING]
-> 削除されたファイルまたはフォルダーは復元できません。 Delete アクティビティを使用してファイルまたはフォルダーを削除するときは注意してください。
+> 削除されたファイルまたはフォルダーを復元することはできません (記憶域で論理的な削除が有効になっている場合を除きます)。 Delete アクティビティを使用してファイルまたはフォルダーを削除するときは注意してください。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
@@ -44,6 +45,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [Azure BLOB Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+-   [Azure File Storage](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>ファイル システムのデータ ストア
 
@@ -51,6 +53,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Google Cloud Storage](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>構文
 
@@ -84,10 +87,10 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 | dataset | 削除するファイルまたはフォルダーを決定するデータセット参照を指定します。 | はい |
 | recursive | ファイルをサブフォルダーから再帰的に削除するか、指定したフォルダーからのみ削除するかを指定します。  | いいえ。 既定では、 `false`です。 |
 | maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  いいえ。 既定では、 `1`です。 |
-| enablelogging | 削除されたフォルダーまたはファイルの名前を記録する必要があるかどうかを示します。 true の場合は、さらに、ログ ファイルを保存するストレージ アカウントを指定する必要があります。それにより、ログ ファイルを読み取って Delete アクティビティの動作を追跡することができます。 | いいえ  |
-| logStorageSettings | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルの保存場所を指定できるストレージ プロパティのグループ。 | いいえ  |
-| linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 | いいえ  |
-| path | enablelogging = true の場合にのみ適用されます。<br/><br/>ストレージ アカウント内のログ ファイルを保存するパス。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ  |
+| enablelogging | 削除されたフォルダーまたはファイルの名前を記録する必要があるかどうかを示します。 true の場合は、さらに、ログ ファイルを保存するストレージ アカウントを指定する必要があります。それにより、ログ ファイルを読み取って Delete アクティビティの動作を追跡することができます。 | いいえ |
+| logStorageSettings | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルの保存場所を指定できるストレージ プロパティのグループ。 | いいえ |
+| linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 ファイルを削除するには、delete アクティビティによって使用されるものと同じ種類の Integration Runtime で構成する必要があることに注意してください。 | いいえ |
+| path | enablelogging = true の場合にのみ適用されます。<br/><br/>ストレージ アカウント内のログ ファイルを保存するパス。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ |
 
 ## <a name="monitoring"></a>監視
 
@@ -115,7 +118,7 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete アクティビティのログ ファイル例
 
-| Name | Category | Status | Error |
+| 名前 | カテゴリ | Status | エラー |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | ファイル | Deleted |  |
 | test2/hello789.txt | ファイル | Deleted |  |
@@ -132,7 +135,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 次に、データ セットおよび Delete アクティビティからのさまざまなプロパティ値の組み合わせにより、Delete アクティビティを使用してフォルダーまたはファイルを削除します。
 
-| folderPath (データ セットから) | fileName (データ セットから) | recursive (Delete アクティビティから) | Output |
+| folderPath (データ セットから) | fileName (データ セットから) | recursive (Delete アクティビティから) | 出力 |
 |:--- |:--- |:--- |:--- |
 | Root/ Folder_A_2 | NULL | False | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Root/ Folder_A_2 | NULL | True | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
@@ -563,13 +566,16 @@ Copy アクティビティによって使用されるデータ宛先のデータ
     }
 }
 ```
+
+[ここから](solution-template-move-files.md)ファイルを移動するためのテンプレートを入手することもできます。
+
 ## <a name="known-limitation"></a>既知の制限事項
 
 -   削除アクティビティでは、ワイルドカードで記述されるフォルダーの一覧は削除されません。
 
 -   ファイル属性のフィルターを使用する場合: modifiedDatetimeStart と modifiedDatetimeEnd により削除するファイルを選択します。データセットで必ず "fileName" に設定してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Data Factory でのファイルの移動方法の詳細について説明します。
 

@@ -1,55 +1,63 @@
 ---
-title: Azure Data Factory を使用して DB2 のデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して DB2 からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、DB2 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 02/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2c2071e4b2a3daa528c7d01f64e38247b063e6f1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019624"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81417413"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-db2-connector.md)
 > * [現在のバージョン](connector-db2.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、DB2 データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
+この DB2 データベース コネクタは、以下のアクティビティでサポートされています。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
+
 DB2 データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この DB2 コネクタは、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 9、10、および 11 に対応した、次の IBM DB2 のプラットフォームとバージョンをサポートしています。
 
+* IBM DB2 for z/OS 12.1
 * IBM DB2 for z/OS 11.1
 * IBM DB2 for z/OS 10.1
+* IBM DB2 for i 7.3
 * IBM DB2 for i 7.2
 * IBM DB2 for i 7.1
 * IBM DB2 for LUW 11
 * IBM DB2 for LUW 10.5
 * IBM DB2 for LUW 10.1
 
-> [!TIP]
-> "SQL ステートメント実行要求に対応するパッケージが見つかりませんでした。 SQLSTATE=51002 SQLCODE=-805" というエラー メッセージは、その OS で通常のユーザー用に必要なパッケージが作成されなかったために表示されます。 DB2 サーバーの種類に応じて、次の手順に従います。
-> - DB2 for i (AS400): コピー アクティビティを使用する前に、パワー ユーザーにログイン ユーザー用のコレクションを作成できるようにします。 コマンド: `create collection <username>`
-> - DB2 for Z/OS または LUW: 高い特権を持つアカウント (パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を持つパワー ユーザーまたは管理者) を使用して、コピー アクティビティを 1 回実行します。コピー中に、必要なパッケージが自動的に作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
+>[!TIP]
+>DB2 コネクタは、Microsoft OLE DB Provider for DB2 の上に構築されています。 DB2 コネクタのエラーのトラブルシューティングを行うには、「[データ プロバイダーのエラー コード](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-パブリックにアクセスできない DB2 データベースからコピーしたデータを使用するには、セルフホステッド統合ランタイムを設定する必要があります。 セルフホステッド統合ランタイムの詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事を参照してください。 統合ランタイムには DB2 ドライバーが組み込まれているため、DB2 からデータをコピーするときにドライバーを手動でインストールする必要はありません。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>使用の開始
+統合ランタイムには DB2 ドライバーが組み込まれているため、DB2 からデータをコピーするときにドライバーを手動でインストールする必要はありません。
+
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -67,7 +75,12 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 | いいえ |
+| certificateCommonName | Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) 暗号化を使用する場合は、証明書共通名の値を入力する必要があります。 | いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+
+> [!TIP]
+> `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` というエラー メッセージが表示された場合は、そのユーザーに必要なパッケージが作成されていません。 既定の場合、ADF では、DB2 への接続に使用したユーザーの名前が付けられたコレクションの下にパッケージを作成しようとします。 データベースに対してクエリを実行するときに、ADF によって必要なパッケージを作成する場所を示すパッケージ コレクション プロパティを指定してください。
 
 **例:**
 
@@ -96,14 +109,16 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、DB2 データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、DB2 データセット でサポートされるプロパティの一覧を示します。
 
-DB2 からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
+DB2 からのデータ コピーについては、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | はい |
-| tableName | DB2 データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+| type | データセットの type プロパティは、次のように設定する必要があります:**Db2Table** | はい |
+| schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -112,15 +127,18 @@ DB2 からデータをコピーするには、データセットの type プロ�
     "name": "DB2Dataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "Db2Table",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<DB2 linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+`RelationalTable` 型のデータセットを使用していた場合、現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
@@ -128,11 +146,11 @@ DB2 からデータをコピーするには、データセットの type プロ�
 
 ### <a name="db2-as-source"></a>ソースとしての DB2
 
-DB2 からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+DB2 からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**RelationalSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**Db2Source** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -156,7 +174,7 @@ DB2 からデータをコピーするには、コピー アクティビティの
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "Db2Source",
                 "query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""
             },
             "sink": {
@@ -166,6 +184,8 @@ DB2 からデータをコピーするには、コピー アクティビティの
     }
 ]
 ```
+
+`RelationalSource` 型のソースを使用していた場合は現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
 ## <a name="data-type-mapping-for-db2"></a>DB2 のデータ型のマッピング
 
@@ -178,7 +198,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | BLOB |Byte[] |
 | Char |String |
 | Clob |String |
-| Date |DateTime |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -190,16 +210,19 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
-| Numeric |Decimal |
+| 数値 |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
-| Time |timespan |
-| Timestamp |Datetime |
+| Time |TimeSpan |
+| Timestamp |DateTime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
 | xml |Byte[] |
 
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

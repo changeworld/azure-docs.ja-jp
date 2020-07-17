@@ -4,21 +4,21 @@ description: ユーザー割り当てマネージド ID を使って Azure Stora
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: b0a6c016b2be12ac6686b3748b4b16281899323e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.subservice: imaging
+ms.openlocfilehash: d8e897d2736202f1fb6c5cb8a6497c5c886acef8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511056"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792430"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
 Azure Image Builder では、スクリプトの使用、または GitHub や Azure Storage などの複数の場所からのファイルのコピーがサポートされています。これらを使うには、それらが Azure Image Builder に外部からアクセスできる必要がありますが、SAS トークンを使って Azure Storage BLOB を保護できます。
 
-この記事で説明する、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法では、サービスは[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使ってイメージのカスタマイズのために Azure Storage 内のファイルにアクセスするので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要はありません。
+この記事では、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法を示します。ここで、サービスにより、イメージをカスタマイズするために[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使って Azure Storage 内のファイルにアクセスされるので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要がありません。
 
 次の例では、2 つのリソース グループを作成します。1 つはカスタム イメージ用に使われ、もう 1 つはスクリプト ファイルを含む Azure ストレージ アカウントをホストします。 これは、ビルド成果物またはイメージ ファイルが Image Builder の外部の別のストレージ アカウントに存在することがある、現実のシナリオをシミュレートするものです。 ユーザー割り当て ID を作成した後、それにスクリプト ファイルに対する読み取りアクセス許可を付与しますが、そのファイルへのパブリック アクセスは設定しません。 その後、シェル カスタマイザーを使ってそのスクリプトをストレージ アカウントからダウンロードし、実行します。
 
@@ -57,12 +57,12 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。
 
 
-```azurecli-interactive
+```console
 # Image resource group name 
 imageResourceGroup=aibmdimsi
 # storage resource group
@@ -75,15 +75,15 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-サブスクリプション ID の変数を作成します。 `az account show | grep id` を使ってこれを取得できます。
+サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
 イメージとスクリプト ストレージの両方に対してリソース グループを作成します。
 
-```azurecli-interactive
+```console
 # create resource group for image template
 az group create -n $imageResourceGroup -l $location
 # create resource group for the script storage
@@ -118,7 +118,7 @@ az storage blob copy start \
 
 
 
-イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` の値は、Image Builder サービスのアプリ登録 ID です。 
+イメージ リソース グループにリソースを作成するためのアクセス許可を Image Builder に付与します。 `--assignee` 値は、Image Builder サービスのアプリ登録 ID です。 
 
 ```azurecli-interactive
 az role assignment create \
@@ -151,7 +151,7 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 
 .json ファイルの例をダウンロードし、作成した変数を使用して構成します。
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
@@ -191,7 +191,7 @@ az resource invoke-action \
 
 イメージから VM を作成します。 
 
-```bash
+```azurecli
 az vm create \
   --resource-group $imageResourceGroup \
   --name aibImgVm00 \
@@ -203,13 +203,13 @@ az vm create \
 
 VM が作成された後、VM で SSH セッションを開始します。
 
-```azurecli-interactive
+```console
 ssh aibuser@<publicIp>
 ```
 
 SSH 接続が確立されるとすぐに、イメージが当日のメッセージでカスタマイズされたことがわかります。
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -232,6 +232,6 @@ az group delete -n $imageResourceGroup
 az group delete -n $strResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Image Builder の使用に関して問題がある場合は、「[Troubleshooting (トラブルシューティング)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)」をご覧ください。

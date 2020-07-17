@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK バージョン 3 へのアップグレード - Azure Search
+title: Azure Search .NET SDK バージョン 3 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Search .NET SDK バージョン 3 にコードを移行します。 新機能と必要なコード変更について説明します。
+manager: nitinme
 author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d41c2b541bf80448d180a1d081c255e5bf754e5e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/04/2019
+ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147328"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "72792980"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -33,7 +32,7 @@ the data source API will no longer return in the response of any REST operation,
 Azure Search .NET SDK のバージョン 3 には、以前のバージョンからの変更がいくつか含まれています。 ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。 新しいバージョンの SDK を使用するようにコードを変更する方法については、「 [アップグレードの手順](#UpgradeSteps) 」を参照してください。
 
 > [!NOTE]
-> 1.0.2-preview 以前のバージョンを使用している場合は、まずバージョン 1.1 にアップグレードしてから、バージョン 3 にアップグレードする必要があります。 手順については、「[Azure Search .NET SDK バージョン 1.1 へのアップグレード](search-dotnet-sdk-migration-version-1.md)」をご覧ください。
+> 1\.0.2-preview 以前のバージョンを使用している場合は、まずバージョン 1.1 にアップグレードしてから、バージョン 3 にアップグレードする必要があります。 手順については、「[Azure Search .NET SDK バージョン 1.1 へのアップグレード](search-dotnet-sdk-migration-version-1.md)」をご覧ください。
 >
 > Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
 

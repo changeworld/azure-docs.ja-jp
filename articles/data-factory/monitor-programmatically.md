@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory をプログラムで監視する | Microsoft Docs
+title: Azure Data Factory をプログラムで監視する
 description: さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66167047"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81398845"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 この記事では、さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法について説明します。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -73,11 +75,13 @@ Python SDK を使用して、パイプラインを作成し監視する完全な
 パイプラインの実行を監視するには、次のコードを追加します。
 
 ```python
-#Monitor the pipeline run
+# Monitor the pipeline run
 time.sleep(30)
-pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+pipeline_run = adf_client.pipeline_runs.get(
+    rg_name, df_name, run_response.run_id)
 print("\n\tPipeline run status: {}".format(pipeline_run.status))
-activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
+    rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
 print_activity_run_details(activity_runs_paged[0])
 ```
 
@@ -150,6 +154,6 @@ PowerShell を使用して、パイプラインを作成し監視する完全な
 
 PowerShell コマンドレットの詳細については、[データ ファクトリの PowerShell コマンドレット リファレンス](/powershell/module/az.datafactory)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor を使って Data Factory のパイプラインを監視する方法については、[Azure Monitor を使ったパイプラインの監視](monitor-using-azure-monitor.md)に関する記事をご覧ください。 
 

@@ -1,26 +1,15 @@
 ---
-title: タスクの並列実行によるコンピューティング リソースの効率的な使用 - Azure Batch | Microsoft Docs
+title: タスクを並列実行し、コンピューティング リソースを最適化する
 description: Azure Batch プール内の各ノードで同時実行タスクを実行し、使用するコンピューティング ノードの数を減らすことで、効率を高めて、コストを削減します。
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 05/22/2017
-ms.author: lahugh
+ms.topic: how-to
+ms.date: 04/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583ccb6076dae2f33e265b95387bcd35aa9fa4d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8d38076396ea89eed9e1ef0c2e9ba14cddfd7cc6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547284"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724192"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>タスクの同時実行による Batch コンピューティング ノードの使用率の最大化 
 
@@ -41,7 +30,7 @@ Azure Batch プールでは、各コンピューティング ノードで複数�
 ## <a name="enable-parallel-task-execution"></a>並列タスク実行を有効にする
 並列タスク実行のためのコンピューティング ノードの構成は、プール レベルで行います。 Batch .NET ライブラリを使用する場合は、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。 Batch REST API を使用する場合は、プール作成時の要求本文に [maxTasksPerNode][rest_addpool] 要素を設定します。
 
-Azure Batch では、ノードあたりの最大タスク数を、ノード コアの数の最大 4 倍まで設定できます。 たとえば、プールをノード サイズ "Large" (4 コア) で構成した場合、 `maxTasksPerNode` は 16 に設定できます。 各ノード サイズのコア数の詳細については、「 [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。 サービスの制限の詳細については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+Azure Batch では、ノードあたりのタスク数をコア ノードの数の最大 4 倍まで設定できます。 たとえば、プールをノード サイズ "Large" (4 コア) で構成した場合、 `maxTasksPerNode` は 16 に設定できます。 ただし、ノードのコア数には関係なく、ノードあたり 256 タスクを超えることはできません。 各ノード サイズのコア数の詳細については、「 [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。 サービスの制限の詳細については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 > [!TIP]
 > プールの[自動スケールの数式][enable_autoscaling]を作成するときは、`maxTasksPerNode` の値を考慮してください。 たとえば、 `$RunningTasks` を評価する式は、ノードあたりのタスク数の増加によって大きな影響を受ける可能性があります。 詳細については、「 [Azure Batch プール内のコンピューティング ノードの自動スケール](batch-automatic-scaling.md) 」を参照してください。
@@ -53,10 +42,10 @@ Azure Batch では、ノードあたりの最大タスク数を、ノード コ�
 
 [CloudPool.TaskSchedulingPolicy][task_schedule] プロパティを使用することで、プール内のすべてのノードに対して均等にタスクを割り当てるように指定できます ("分散")。 または、1 つのノードにできる限り多くのタスクを割り当ててから、プール内の別のノードにタスクを割り当てるように指定することもできます ("圧縮")。
 
-この機能の有効性を示す例として、前述の [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) ノードのプールを [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 値 16 で構成した場合について考えます。 [ComputeNodeFillType][fill_type] に *Pack* を指定して [CloudPool.TaskSchedulingPolicy][task_schedule] を構成した場合、各ノードの 16 コアすべての使用率が最大になり、[自動スケール プール](batch-automatic-scaling.md)が未使用ノード (タスクが割り当てられていないノード) をプールから削除できます。 これによってリソース使用率は最小になり、コストを節約できます。
+この機能の有効性を示す例として、前述の [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) ノードのプールを [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 値 16 で構成した場合について考えます。 [ComputeNodeFillType][fill_type] に *Pack* を指定して [CloudPool.TaskSchedulingPolicy][task_schedule] を構成した場合、各ノードの 16 コアすべての使用率が最大になり、[自動スケーリング プール](batch-automatic-scaling.md)が未使用ノード (タスクが割り当てられていないノード) をプールから削除できます。 これによってリソース使用率は最小になり、コストを節約できます。
 
 ## <a name="batch-net-example"></a>Batch .NET の例
-次の [Batch .NET][api_net] API コード スニペットは、ノードごとの最大タスク数が 4 である 4 個のノードを含むプールの作成要求を示しています。 ここでは、1 つのノードがタスクでいっぱいになってからプール内の別のノードにタスクを割り当てるタスク スケジュール ポリシーが指定されています。 Batch .NET API を使用したプールの追加方法の詳細については、「[BatchClient.PoolOperations.CreatePool][poolcreate_net]」を参照してください。
+次の [Batch .NET][api_net] API コード スニペットは、ノードごとの最大タスク数が 4 である 4 個のノードを含むプールの作成要求を示しています。 ここでは、1 つのノードがタスクでいっぱいになってからプール内の別のノードにタスクを割り当てるタスク スケジュール ポリシーが指定されています。 Batch .NET API を使用したプールの追加方法の詳細については、[BatchClient.PoolOperations.CreatePool][poolcreate_net] に関するページを参照してください。
 
 ```csharp
 CloudPool pool =
@@ -72,7 +61,7 @@ pool.Commit();
 ```
 
 ## <a name="batch-rest-example"></a>Batch REST の例
-次の [Batch REST][api_rest] API スニペットには、ノードごとの最大タスク数が 4 である 2 個の大きいノードを含むプールの作成要求を示します。 REST API を使用したプールの追加方法の詳細については、「[Add a pool to an account (アカウントにプールを追加する)][rest_addpool]」を参照してください。
+次の [Batch REST][api_rest] API スニペットには、ノードごとの最大タスク数が 4 である 2 個の大きいノードを含むプールの作成要求を示します。 REST API を使用したプールの追加方法の詳細については、[アカウントへのプールの追加][rest_addpool]に関するページを参照してください。
 
 ```json
 {
@@ -94,7 +83,7 @@ pool.Commit();
 >
 >
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティの使用方法は、GitHub の [ParallelNodeTasks][parallel_tasks_sample] プロジェクトで紹介されています。
 
 この C# コンソール アプリケーションでは、[Batch .NET][api_net] ライブラリを使用して、1 つ以上のコンピューティング ノードを含むプールを作成します。 さらに、これらのノードで構成可能な数のタスクを実行して、可変負荷をシミュレートします。 アプリケーションの出力には、各タスクを実行したノードが示されます。 また、ジョブのパラメーターと実行時間の概要も出力されます。 サンプル アプリケーションの 2 つの異なる実行からの出力の概要部分を以下に示します。
@@ -124,7 +113,7 @@ Duration: 00:08:48.2423500
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ### <a name="batch-explorer-heat-map"></a>Batch Explorer のヒート マップ
 [Batch Explorer][batch_labs] は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Batch Explorer には、タスクの実行を視覚化する "*ヒート マップ*" 機能が含まれます。 [ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行すると、ヒート マップ機能を使用し、各ノードでの並列タスクの実行を簡単に視覚化できます。
 

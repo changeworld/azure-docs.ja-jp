@@ -8,26 +8,26 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
-ms.author: zchia
-ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.author: jeedes
+ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508522"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77057524"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループを Keeper Password Manager & Digital Vault に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Keeper Password Manager & Digital Vault と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 >
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
@@ -45,11 +45,11 @@ Azure AD で自動ユーザー プロビジョニング用に Keeper Password Ma
 
 **Azure AD アプリケーション ギャラリーから Keeper Password Manager & Digital Vault を追加するには、次の手順に従います。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** を選択します。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -57,7 +57,7 @@ Azure AD で自動ユーザー プロビジョニング用に Keeper Password Ma
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Keeper Password Manager & Digital Vault**」と入力し、結果パネルで **[Keeper Password Manager & Digital Vault]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Keeper Password Manager & Digital Vault**」と入力し、結果パネルで **[Keeper Password Manager & Digital Vault]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の Keeper Password Manager & Digital Vault](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Azure AD で Keeper Password Manager & Digital Vault 用に自動ユーザー プロビジョニングを構成するには
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -102,7 +102,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明するように、Keeper Password Manager & Digital Vault アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. [Keeper 管理コンソール](https://keepersecurity.com/console/#login)にサインインします。 **[Admin]\(管理者\)** をクリックし、既存のノードを選択するか、または新しく作成します。 **[Provisioning]\(プロビジョニング\)** タブに移動し、**[Add Method]\(メソッドの追加\)** を選択します。
+6. [Keeper 管理コンソール](https://keepersecurity.com/console/#login)にサインインします。 **[Admin]\(管理者\)** をクリックし、既存のノードを選択するか、または新しく作成します。 **[Provisioning]\(プロビジョニング\)** タブに移動し、 **[Add Method]\(メソッドの追加\)** を選択します。
 
     ![Keeper 管理コンソール](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
@@ -118,17 +118,17 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Keeper でのトークンの作成](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
-7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Keeper Password Manager & Digital Vault に接続できることを確認します。 接続できない場合は、使用中の Keeper Password Manager & Digital Vault アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Keeper Password Manager & Digital Vault に接続できることを確認します。 接続できない場合は、使用中の Keeper Password Manager & Digital Vault アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
-9. **[Save]** をクリックします。
+9. **[保存]** をクリックします。
 
-10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Keeper Password Manager & Digital Vault]\(Azure Active Directory ユーザーを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
+10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to Keeper Password Manager & Digital Vault]\(Azure Active Directory ユーザーを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
 
     ![Keeper ユーザー マッピング](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
@@ -136,7 +136,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Keeper ユーザーの属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Groups to Keeper Password Manager & Digital Vault]\(Azure Active Directory グループを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
+12. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to Keeper Password Manager & Digital Vault]\(Azure Active Directory グループを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
 
     ![Keeper グループ マッピング](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
@@ -144,9 +144,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Keeper グループ属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
-14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-15. Keeper Password Manager & Digital Vault に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+15. Keeper Password Manager & Digital Vault に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -154,13 +154,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-17. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+17. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Keeper Password Manager & Digital Vault に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Keeper Password Manager & Digital Vault に対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
@@ -169,10 +169,10 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 

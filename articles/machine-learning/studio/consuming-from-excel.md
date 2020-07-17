@@ -1,25 +1,27 @@
 ---
 title: Excel で Web サービスを使用する
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
+titleSuffix: ML Studio (classic) - Azure
+description: Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 333ed411ab818cff77a7cba6c7de4f42c36f5b6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855199"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218226"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio Web サービスの使用
+# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio (クラシック) Web サービスの使用
 
- Azure Machine Learning Studio では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Azure Machine Learning Studio (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 
 Excel 2013 (またはそれ以降) または Excel Online を使用している場合は、Excel の [Excel アドイン](excel-add-in-for-web-services.md)を使用することをお勧めします。
 
@@ -34,7 +36,7 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 
 1. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。 このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
 
-    ![Studio Web サービス ポータルを使用して Excel ブックをダウンロードする](./media/consuming-from-excel/excellink.png)
+    ![Studio (クラシック) Web サービス ポータルを使用して Excel ブックをダウンロードする](./media/consuming-from-excel/excellink.png)
 2. **[Excel ブックのダウンロード]** をクリックします。
 
 **新しい Web サービス**
@@ -45,7 +47,7 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 **ブックを使用する**
 
 1. ブックを開きます。
-2. セキュリティの警告が表示されます。**[編集を有効にする]** ボタンをクリックします。
+2. セキュリティの警告が表示されます。 **[編集を有効にする]** ボタンをクリックします。
 
     ![編集を有効にして、保護されたビューのセキュリティ警告を削除する](./media/consuming-from-excel/enableeditting.png)
 3. セキュリティの警告が表示されます。 **[コンテンツの有効化]** ボタンをクリックして、スプレッドシートのマクロを実行します。

@@ -4,25 +4,24 @@ description: Azure Availability Zones を使用した SAP NetWeaver のための
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "78675606"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
@@ -58,8 +57,8 @@ Azure VM を複数の Availability Zones にデプロイして、同じ Azure �
 
 - Azure Availability Zones にデプロイするときは [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 
 - 物理ゾーンに対するゾーン列挙のマッピングは、Azure サブスクリプションごとに固定されています。 さまざまなサブスクリプションを使用して SAP システムをデプロイする場合は、サブスクリプションごとに最適なゾーンを定義する必要があります。
-- 1 つの Azure Availability Zone 内に Azure 可用性セットをデプロイすることはできません。 仮想マシンのデプロイ フレームワークとしてどちらかを選択してください。
-- [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) を使用して Windows Server フェールオーバー クラスタリングまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。
+- [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用しない場合、1 つの Azure Availability Zone 内に Azure 可用性セットをデプロイすることはできません。 SAP DBMS レイヤーとセントラル サービスを複数のゾーンにわたってデプロイすると同時に、可用性セットを使用して SAP アプリケーション レイヤーをデプロイし、さらに VM の近接通信も実現する方法については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明しています。 Azure 近接通信配置グループを利用していない場合は、仮想マシンのデプロイ フレームワークとして、いずれかを選択する必要があります。
+- [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) を使用して Windows Server フェールオーバー クラスタリングまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。
 
 
 
@@ -76,6 +75,8 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 - DBMS インスタンスに使用する VM SKU を 3 つのゾーンすべてにデプロイします。 この測定を実行するときは、[Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) が有効になっていることを確認します。
 - ネットワーク待ち時間が最も短い 2 つのゾーンがわかったら、アプリケーション レイヤー VM として使用する VM SKU の別の 3 つの VM を 3 つの Availability Zones にデプロイします。 選択した 2 つの DBMS ゾーン内の 2 つの DBMS VM に対して、ネットワーク待ち時間を測定します。 
 - 測定ツールとして **niping** を使用します。 SAP 提供のこのツールの説明は、SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) と [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) をご覧ください。 待ち時間測定用に記載されているコマンドに注目してください。 **ping** は Azure Accelerated Networking コード パスでは機能しないので、ping の使用は推奨されません。
+
+これらのテストを手動で実行する必要はありません。 説明されている待機時間のテストを自動化する、PowerShell プロシージャの[可用性ゾーンの待機時間テスト](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test)を使用できます。 
 
 測定値と Availability Zones での VM SKU の可用性に基づいて、いくつかの決定を行う必要があります。
 
@@ -103,7 +104,8 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 
 この構成には、次の考慮事項が適用されます。
 
-- 可用性セットは Azure Availability Zones にデプロイできないため、Azure Availability Zones をすべての VM に対する障害ドメインおよび更新ドメインとして扱います。
+- [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用しない場合、可用性セットは Azure Availability Zones にデプロイできないため、Azure Availability Zones をすべての VM に対する障害ドメインおよび更新ドメインとして扱います。
+- DBMS レイヤーとセントラル サービス用にゾーン デプロイを組み合わせたい一方で、アプリケーション レイヤーには Azure 可用性セットを使用したい場合は、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明しているように、Azure 近接通信グループを使用する必要があります。
 - SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
@@ -114,8 +116,11 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
     
     現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
 - 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
-- 重要なビジネス プロセスの実行時間の整合性を達成するには、SAP バッチ サーバー グループ、ログオン グループ、または RFC グループを使用して、アクティブな DBMS インスタンスを含むゾーン内のアプリケーション インスタンスに、特定のバッチ ジョブとユーザーを直接送ることができます。 ただし、ゾーン ベースのフェールオーバーの場合は、アクティブ DB VM を含むゾーン内の VM で実行されているインスタンスにこれらのグループを手動で移動する必要があります。  
+- 重要なビジネス プロセスの実行時間の整合性を達成するには、SAP バッチ サーバー グループ、SAP ログオン グループ、または RFC グループを使用して、アクティブな DBMS インスタンスを含むゾーン内のアプリケーション インスタンスに、特定のバッチ ジョブとユーザーを直接送ることができます。 ただし、ゾーン ベースのフェールオーバーの場合は、アクティブ DB VM を含むゾーン内の VM で実行されているインスタンスにこれらのグループを手動で移動する必要があります。  
 - 各ゾーンに休止状態のダイアログ インスタンスをデプロイすることをお勧めします。 これは、アプリケーション インスタンスの一部で使用されているゾーンが稼働していない場合に、以前のリソース容量にすぐに回復できるようにするためです。
+
+> [!IMPORTANT]
+> このアクティブ/アクティブ シナリオでは、帯域幅に対する追加料金が 2020 年 4 月 1 日以降に Microsoft から発表されます。 「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」のドキュメントを確認してください。 SAP アプリケーション レイヤーと SAP DBMS レイヤー間のデータ転送には、非常に大きな負荷がかかります。 そのため、アクティブ/アクティブ シナリオでは、かなりのコストがかかる可能性があります。 常にこちらの記事を確認して、正確なコストを把握してください 
 
 
 ## <a name="activepassive-deployment"></a>アクティブ/パッシブ デプロイ
@@ -127,7 +132,7 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 
 この構成には、次の考慮事項が適用されます。
 
-- 可用性セットを Azure Availability Zones にデプロイすることはできません。 したがって、この場合、アプリケーション レイヤーの更新ドメインと障害ドメインは 1 つになります。 1 つのゾーンのみにデプロイされるためです。 この構成は、Azure 可用性セットにアプリケーション レイヤーをデプロイすることを推奨する参照アーキテクチャと比較すると、やや望ましくありません。
+- 可用性セットを Azure Availability Zones にデプロイすることはできません。 それを補うために、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明されているように Azure 近接通信配置グループを使用できます。
 - このアーキテクチャを使用する場合は、状態を注意深く監視し、デプロイしたアプリケーション レイヤーと同じゾーン内にアクティブな DBMS と SAP セントラル サービスのインスタンスを維持する必要があります。 SAP セントラル サービスまたは DBMS インスタンスのフェールオーバーの場合は、できるだけ早く SAP アプリケーション レイヤーがデプロイされたゾーンに手動でフェールバックできるようにする必要があります。
 - SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
@@ -155,7 +160,7 @@ Microsoft は、Azure リージョン内のさまざまな Azure Availability Zo
 
 この構成には、次の考慮事項が適用されます。
 
-- Availability Zones をホストしている施設の間に大きな距離があるか、ユーザーが特定の Azure リージョン内にとどまることを余儀なくされているものと想定します。 可用性セットを Azure Availability Zones にデプロイすることはできません。 したがって、この場合、アプリケーション レイヤーの更新ドメインと障害ドメインは 1 つになります。 1 つのゾーンのみにデプロイされるためです。 この構成は、Azure 可用性セットにアプリケーション レイヤーをデプロイすることを推奨する参照アーキテクチャと比較すると、やや望ましくありません。
+- Availability Zones をホストしている施設の間に大きな距離があるか、ユーザーが特定の Azure リージョン内にとどまることを余儀なくされているものと想定します。 可用性セットを Azure Availability Zones にデプロイすることはできません。 それを補うために、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明されているように Azure 近接通信配置グループを使用できます。
 - このアーキテクチャを使用する場合は、状態を注意深く監視し、デプロイしたアプリケーション レイヤーと同じゾーン内にアクティブな DBMS と SAP セントラル サービスのインスタンスを維持する必要があります。 SAP セントラル サービスまたは DBMS インスタンスのフェールオーバーの場合は、できるだけ早く SAP アプリケーション レイヤーがデプロイされたゾーンに手動でフェールバックできるようにする必要があります。
 - アクティブな QA アプリケーション インスタンスを実行する VM に、運用アプリケーションのインスタンスがプレインストールされている必要があります。
 - ゾーンの障害が発生した場合は、QA アプリケーションのインスタンスをシャットダウンし、代わりに運用インスタンスを開始します。 これを行うには、アプリケーション インスタンスの仮想名を使用する必要があることに注意してください。
@@ -174,7 +179,7 @@ Microsoft は、Azure リージョン内のさまざまな Azure Availability Zo
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 以下に、Azure Availability Zones 間でデプロイするための次の手順を示します。
 
 - [Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)

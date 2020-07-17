@@ -1,23 +1,17 @@
 ---
-title: Stream Analytics から Azure Data Lake Storage Gen1 へのデータのストリーム | Microsoft Docs
-description: Azure Stream Analytics を使用した Azure Data Lake Storage Gen1 へのデータのストリーム
-services: data-lake-store,stream-analytics
-documentationcenter: ''
+title: Stream Analytics から Data Lake Storage Gen1 へのデータのストリーム - Azure
+description: Azure Stream Analytics を使用して Azure Data Lake Storage Gen1 にデータをストリーミングします。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877552"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690973"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage Blob から Azure Data Lake Storage Gen1 へのデータ ストリーム
 この記事では、Azure Data Lake Storage Gen1 を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Azure Data Lake Storage Gen1 (出力) に書き込む簡単なシナリオを紹介します。
@@ -36,9 +30,9 @@ ms.locfileid: "58877552"
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 
-2. 左側のウィンドウで、**[Stream Analytics ジョブ]** をクリックし、**[追加]** をクリックします。
+2. 左側のウィンドウで、 **[Stream Analytics ジョブ]** をクリックし、 **[追加]** をクリックします。
 
-    ![Stream Analytics ジョブの作成](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics ジョブの作成")
+    ![Stream Analytics ジョブの作成](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics のジョブの作成")
 
     > [!NOTE]
     > ストレージ アカウントと同じリージョンにジョブを作成していることを確認してください。そうでない場合、リージョン間でのデータ転送で追加料金が発生します。
@@ -46,59 +40,59 @@ ms.locfileid: "58877552"
 
 ## <a name="create-a-blob-input-for-the-job"></a>ジョブに BLOB 入力を作成
 
-1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、**[追加]** をクリックします。
+1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、 **[追加]** をクリックします。
 
-    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.1.png "ジョブへの入力の追加")
+    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.1.png "入力をジョブに追加")
 
 2. **[新しい入力]** ブレードで、次の値を指定します。
 
-    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "ジョブへの入力の追加")
+    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "入力をジョブに追加")
 
    * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
-   * **[ソースの種類]** で、**[データ ストリーム]** を選択します。
-   * **[ソース]** で、**[BLOB ストレージ]** を選択します。
-   * **[サブスクリプション]** で、**[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
+   * **[ソースの種類]** で、 **[データ ストリーム]** を選択します。
+   * **[ソース]** で、 **[BLOB ストレージ]** を選択します。
+   * **[サブスクリプション]** で、 **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
    * **[ストレージ アカウント]** で、前提条件の一部として作成したストレージ アカウントを選択します。 
    * **[コンテナー]** で、選択したストレージ アカウント内に作成したコンテナーを選択します。
-   * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
-   * **[区切り記号]** で、**[タブ]** を選択します。
-   * **[エンコード]** で、**[UTF-8]** を選択します。
+   * **[イベントのシリアル化の形式]** で、 **[CSV]** を選択します。
+   * **[区切り記号]** で、 **[タブ]** を選択します。
+   * **[エンコード]** で、 **[UTF-8]** を選択します。
 
      **Create** をクリックしてください。 これで、ポータルは、この入力を追加して接続をテストします。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>ジョブに Data Lake Storage Gen1 出力を作成
 
-1. Stream Analytics ジョブのページを開き、**[出力]** タブをクリックしてから **[追加]** をクリックし、**[Data Lake Storage Gen1]** を選択します。
+1. Stream Analytics ジョブのページを開き、 **[出力]** タブをクリックしてから **[追加]** をクリックし、 **[Data Lake Storage Gen1]** を選択します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "ジョブへの出力の追加")
+    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "出力をジョブに追加")
 
 2. **[新しい出力]** ブレードで、次の値を指定します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "ジョブへの出力の追加")
+    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "出力をジョブに追加")
 
     * **[出力のエイリアス]** で、このジョブ出力の一意名を入力します。 クエリの出力をこの Data Lake Storage Gen1 アカウントに出力するためにクエリで使用されるわかりやすい名前です。
     * Data Lake Storage Gen1 アカウントへのアクセスを承認することを求められます。 **[承認]** をクリックします。
 
 3. **[新しい出力]** ブレードで、引き続き次の値を指定します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "ジョブへの出力の追加")
+    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "出力をジョブに追加")
 
    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
    * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。
-   * プレフィックス パスで日付トークンを使用する場合は、**[日付形式]** でファイルを編成する日付形式を選択できます。
-   * プレフィックス パスで時刻トークンを使用する場合は、**[時刻形式]** でファイルを編成する時刻形式を選択できます。
-   * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
-   * **[区切り記号]** で、**[タブ]** を選択します。
-   * **[エンコード]** で、**[UTF-8]** を選択します。
+   * プレフィックス パスで日付トークンを使用する場合は、 **[日付形式]** でファイルを編成する日付形式を選択できます。
+   * プレフィックス パスで時刻トークンを使用する場合は、 **[時刻形式]** でファイルを編成する時刻形式を選択できます。
+   * **[イベントのシリアル化の形式]** で、 **[CSV]** を選択します。
+   * **[区切り記号]** で、 **[タブ]** を選択します。
+   * **[エンコード]** で、 **[UTF-8]** を選択します。
     
      **Create** をクリックしてください。 これで、ポータルは、この出力を追加して接続をテストします。
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
-1. Stream Analytics ジョブを実行するには、**[クエリ]** タブからクエリを実行する必要があります。このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
+1. Stream Analytics ジョブを実行するには、 **[クエリ]** タブからクエリを実行する必要があります。このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
 
-    ![クエリの実行](./media/data-lake-store-stream-analytics/run.query.png "クエリの実行")
+    ![クエリの実行](./media/data-lake-store-stream-analytics/run.query.png "Run query")
 
 2. 画面上部の **保存** をクリックした後、**概要** タブで **開始** をクリックします。 ダイアログ ボックスで **[ユーザー設定時刻]** を選択し、現在の日付と時刻を設定します。
 

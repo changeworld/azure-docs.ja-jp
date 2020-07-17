@@ -1,34 +1,39 @@
 ---
-title: ExpressRoute Direct の構成 - Azure | Microsoft Docs
+title: 'Azure ExpressRoute: ExpressRoute Direct を構成する'
 description: このページは、ExpressRoute Direct の構成に役立ちます。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 01/22/2020
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 1d7bb72dab622cd0b18d1da1aa34a651e1443997
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095536"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "77031614"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
-ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳細については、[ExpressRoute Direct](expressroute-erdirect-about.md) に関するページを参照してください。
 
-## <a name="resources"></a>リソースを作成する
+## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
 1. Azure にサインインしてサブスクリプションを選択します。 ExpressRoute Direct リソースおよび ExpressRoute 回線は、同じサブスクリプション内にある必要があります。
 
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
+   
+2. Expressrouteportslocation および expressrouteport API にアクセスするには、Microsoft.Network へのサブスクリプションを再登録してください。
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. ExpressRoute Direct がサポートされるすべての場所を一覧表示します。
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -61,7 +66,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. 上記で表示された場所に使用可能な帯域幅があるかどうか確認します。
+4. 上記で表示された場所に使用可能な帯域幅があるかどうか確認します。
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -83,7 +88,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
                           }
                         ]
    ```
-4. 上記で選択した場所に基づいて ExpressRoute Direct リソースを作成します。
+5. 上記で選択した場所に基づいて ExpressRoute Direct リソースを作成します。
 
    ExpressRoute Direct では、QinQ と Dot1Q 両方のカプセル化がサポートされます。 QinQ を選択した場合、各 ExpressRoute 回線に S-Tag が動的に割り当てられ、ExpressRoute Direct リソース全体で一意になります。 回線上の各 C-Tag はその回線で一意である必要がありますが、ExpressRoute Direct 全体ではありません。  
 
@@ -150,7 +155,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Circuits                   : []
    ```
 
-## <a name="state"></a>リンクの管理状態を変更する
+## <a name="change-admin-state-of-links"></a><a name="state"></a>リンクの管理状態を変更する
 
   このプロセスは、レイヤー 1 のテストを実施して、各相互接続がプライマリとセカンダリの各ルーターに適切に接続されていることを確認するために使用する必要があります。
 1. ExpressRoute Direct の詳細を取得します。
@@ -163,10 +168,10 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Links[0] はプライマリ ポート、Links[1] はセカンダリ ポートです。
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **出力例:**
@@ -218,15 +223,17 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
    Circuits                   : []
    ```
 
-   同じ手順を `AdminState = “Disabled”` について使用して、ポートを停止します。
+   同じ手順を `AdminState = "Disabled"` について使用して、ポートを停止します。
 
-## <a name="circuit"></a>回線を作成する
+## <a name="create-a-circuit"></a><a name="circuit"></a>回線を作成する
 
 既定では、ExpressRoute Direct リソースがあるサブスクリプション内に 10 個の回線を作成できます。 これはサポートによって増やすことができます。 プロビジョニング済みの帯域幅と使用済みの帯域幅の両方を追跡してください。 プロビジョニング済み帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。使用済み帯域幅は、基になる物理インターフェイスの物理的な使用量です。
 
 ExpressRoute Direct には、前述したシナリオをサポートするために利用できるだけの追加の回線帯域幅があります。 次のとおりです。40 Gbps と 100 Gbps です。
 
-Standard 回線または Premium 回線を作成できます。 Standard 回線は料金に含まれていますが、Premium 回線には選択した帯域幅に基づいた費用がかかります。 回線は従量制のみで作成でき、無制限は ExpressRoute Direct ではサポートされません。
+**SkuTier** には Local、Standard、または Premium を使用できます。
+
+ExpressRoute Direct では無制限がサポートされていないため、**SkuFamily** には MeteredData のみを使用できます。
 
 ExpressRoute Direct リソース上に回線を作成します。
 
@@ -268,6 +275,6 @@ ExpressRoute Direct リソース上に回線を作成します。
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute Direct について詳しくは、[概要](expressroute-erdirect-about.md)のページをご覧ください。

@@ -11,11 +11,11 @@ ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013069"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "62114157"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>インストール時のソース アンカーに関する問題のトラブルシューティング
 この記事では、インストール時に発生する可能性のあるソース アンカーに関するさまざまな問題について説明し、これらの問題を解決する方法を示します。
@@ -45,5 +45,5 @@ ms.locfileid: "60013069"
 ![予期しない](media/tshoot-connect-source-anchor/source4.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

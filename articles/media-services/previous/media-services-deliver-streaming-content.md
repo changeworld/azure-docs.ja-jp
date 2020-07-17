@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 49e9fbc3f8d10dd1e272f5f9bc5a542328a3ddb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181913"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476691"
 ---
 # <a name="publish-media-services-content-using-net"></a>.NET を使用して Media Services コンテンツを発行する  
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ ms.locfileid: "58181913"
 
         // Get a reference to the streaming manifest file from the  
         // collection of files in the asset. 
-        var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+        var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                                     EndsWith(".ism")).
                                     FirstOrDefault();
 
@@ -108,7 +108,7 @@ ms.locfileid: "58181913"
 
 
 > [!NOTE]
-> SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。
+> TLS 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した TLS はサポートされていません。
 > 
 > 
 
@@ -178,7 +178,7 @@ ms.locfileid: "58181913"
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [資産をダウンロードする](media-services-deliver-asset-download.md)
 * [資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 

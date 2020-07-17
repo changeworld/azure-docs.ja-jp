@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a1d1488840ca2b17c83f380af4fa24105bb36202
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729486"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233591"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -40,9 +40,9 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
     __[OK]__ をクリックして構成を保存します。
 
-3. __[Analyze] \(分析)__ > __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__ を選択します。 ソリューションを含むアセンブリを選択して、__[開く] \(Open)__ を選択して分析を開始します。
+3. __[Analyze] \(分析)__  >  __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__ を選択します。 ソリューションを含むアセンブリを選択して、 __[開く] \(Open)__ を選択して分析を開始します。
 
-4. 分析が完了したら、__[Analyze] \(分析)__ > __[View analysis reports] \(分析レポートを表示)__ を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__ で、__[Open report] \(レポートを開く)__ を選択してレポートを開きます。
+4. 分析が完了したら、 __[Analyze] \(分析)__  >  __[View analysis reports] \(分析レポートを表示)__ を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__ で、 __[Open report] \(レポートを開く)__ を選択してレポートを開きます。
 
     ![移植性アナライザーの結果ダイアログ](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
@@ -65,7 +65,7 @@ Visual Studio を引き続き使用して、HDInsight 用の .NET ソリュー�
 
 * [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight の MapReduce での C# の使用](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 

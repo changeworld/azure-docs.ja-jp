@@ -1,25 +1,16 @@
 ---
-title: Eclipse での Azure Service Fabric アプリケーションのデバッグ| Microsoft Docs
+title: Eclipse でアプリケーションをデバッグする
 description: Eclipse とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。
-services: service-fabric
-documentationcenter: .net
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880301"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75614487"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Eclipse を使用して Java Service Fabric アプリケーションをデバッグする
 > [!div class="op_single_selector"]
@@ -38,7 +29,7 @@ ms.locfileid: "58880301"
 
 4. アプリケーションをデプロイします。
 
-5. Eclipse IDE で、**[実行] -> [デバッグ構成] -> [リモート Java アプリケーション]** を選択し、接続プロパティを次のように設定します。
+5. Eclipse IDE で、 **[実行] -> [デバッグ構成] -> [リモート Java アプリケーション]** を選択し、接続プロパティを次のように設定します。
 
    ```
    Host: ipaddress
@@ -48,7 +39,7 @@ ms.locfileid: "58880301"
 
 アプリケーションがクラッシュする場合は、コアダンプを有効にすることもできます。 シェル内で `ulimit -c` を実行し、ゼロが返された場合は、コアダンプが無効になっています。 無制限コアダンプを有効にするには、次のコマンドを実行します: `ulimit -c unlimited`。 また、コマンド `ulimit -a` を使用して状態を確認することもできます。  コアダンプの生成パスを更新する場合は、`echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` を実行します。 
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 * [Linux Azure Diagnostics でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)。
 * [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。

@@ -1,26 +1,15 @@
 ---
 title: Visual Studio テンプレートを使用してソリューションを構築する - Azure Batch | Microsoft Docs
 description: Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装して実行する方法について説明します。
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
-ms.service: batch
-ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538125"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82117524"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
@@ -68,8 +57,8 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
 ## <a name="preparation"></a>準備
 ソリューションを 1 つ作成してそこにジョブ マネージャーとタスク プロセッサを含めることをお勧めします。そうすることで、ジョブ マネージャーとタスク プロセッサのプログラム間でコードを共有しやすくなります。 このソリューションの作成手順は次のとおりです。
 
-1. Visual Studio を開き、**[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
-2. **[テンプレート]** の **[その他のプロジェクトの種類]** を展開し、**[Visual Studio ソリューション]** をクリックして **[空のソリューション]** を選択します。
+1. Visual Studio を開き、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
+2. **[テンプレート]** の **[その他のプロジェクトの種類]** を展開し、 **[Visual Studio ソリューション]** をクリックして **[空のソリューション]** を選択します。
 3. アプリケーションの内容とこのソリューションの目的とを表す名前を入力します (例: "LitwareBatchTaskPrograms")。
 4. 新しいソリューションを作成する場合は **[OK]** をクリックします。
 
@@ -88,8 +77,8 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
 先ほど作成したソリューションにジョブ マネージャーを追加するには、次の手順を実行します。
 
 1. 既にあるソリューションを Visual Studio で開きます。
-2. ソリューション エクスプローラーでソリューションを右クリックし、**[追加]** > **[新しいプロジェクト]** の順にクリックします。
-3. **[Visual C#]** の **[クラウド]** をクリックし、**[Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)]** をクリックします。
+2. ソリューション エクスプローラーでソリューションを右クリックし、 **[追加]**  >  **[新しいプロジェクト]** の順にクリックします。
+3. **[Visual C#]** の **[クラウド]** をクリックし、 **[Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)]** をクリックします。
 4. アプリケーションを表す名前を入力し、このプロジェクトをジョブ マネージャーとして指定します (例: "LitwareJobManager")。
 5. プロジェクトを作成する場合は **[OK]** をクリックします。
 6. 最後に、プロジェクトをビルドします。プロジェクトの編集を開始する前に、参照設定されているすべての NuGet パッケージを Visual Studio で強制的に読み込んで、プロジェクトが有効であることを確認してください。
@@ -199,7 +188,7 @@ Split() の実装コードからは次のデータにアクセスできます。
 
 ジョブ マネージャー タスクが失敗しても、一部のタスクはエラーの発生前に既に追加されている可能性があります。 これらのタスクは、通常どおり実行されます。 このコード パスについて詳しくは、「ジョブ スプリッターのエラー」をご覧ください。
 
-例外によって返されたすべての情報は、stdout.txt ファイルと stderr.txt ファイルに書き込まれます。 詳しくは、「 [エラー処理](batch-api-basics.md#error-handling)」をご覧ください。
+例外によって返されたすべての情報は、stdout.txt ファイルと stderr.txt ファイルに書き込まれます。 詳細については、「[エラー処理](batch-api-basics.md#error-handling)」を参照してください。
 
 ### <a name="client-considerations"></a>クライアントの考慮事項
 ここでは、クライアントの実装に関して、このテンプレートに基づいてジョブ マネージャーを呼び出す際のいくつかの要件について説明します。 パラメーターと環境設定の受け渡しについて詳しくは、 [クライアント コードからパラメーターと環境変数を渡す方法](#pass-environment-settings) をご覧ください。
@@ -257,8 +246,8 @@ Batch でタスクを実行するために必ずしもタスク プロセッサ�
 先ほど作成したソリューションにタスク プロセッサを追加するには、次の手順を実行します。
 
 1. 既にあるソリューションを Visual Studio で開きます。
-2. ソリューション エクスプローラーで該当ソリューションを右クリックして **[追加]** をクリックし、**[新しいプロジェクト]** をクリックします。
-3. **[Visual C#]** の **[クラウド]** をクリックし、**[Azure Batch Task Processor (Azure Batch タスク プロセッサ)]** をクリックします。
+2. ソリューション エクスプローラーで該当ソリューションを右クリックして **[追加]** をクリックし、 **[新しいプロジェクト]** をクリックします。
+3. **[Visual C#]** の **[クラウド]** をクリックし、 **[Azure Batch Task Processor (Azure Batch タスク プロセッサ)]** をクリックします。
 4. アプリケーションを表す名前を入力し、このプロジェクトをタスク プロセッサとして指定します (例: "LitwareTaskProcessor")。
 5. プロジェクトを作成する場合は **[OK]** をクリックします。
 6. 最後に、プロジェクトをビルドします。プロジェクトの編集を開始する前に、参照設定されているすべての NuGet パッケージを Visual Studio で強制的に読み込んで、プロジェクトが有効であることを確認してください。
@@ -435,7 +424,7 @@ parameters.json というリソース ファイルを探し、見つかった場
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>ジョブやタスクからの出力を Azure Storage に保存する
 Batch ソリューション開発に有効活用できるもう 1 つのツールとして、[Azure Batch ファイル規則][nuget_package]があります。 Batch .NET アプリケーションにこの .NET クラス ライブラリ (現在はプレビュー段階) を使用することで、タスクからの出力を Azure Storage との間で簡単に保存したり取り出したりすることができます。 [Azure Batch のジョブとタスクの出力の保持](batch-task-output.md) 」をご覧ください。
 
@@ -445,7 +434,7 @@ Batch ソリューション開発に有効活用できるもう 1 つのツー�
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

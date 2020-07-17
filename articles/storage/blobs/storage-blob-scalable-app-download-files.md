@@ -1,21 +1,18 @@
 ---
 title: Azure Storage から大量のランダム データをダウンロードする | Microsoft Docs
 description: Azure SDK を使用して Azure Storage アカウントから大量のランダム データをダウンロードする方法を説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794579"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75372093"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -30,7 +27,7 @@ ms.locfileid: "65794579"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、前の Storage のチュートリアル「[Azure Storage に大量のランダム データを並行でアップロードする][previous-tutorial]」を完了している必要があります。
+このチュートリアルを完了するには、前の Storage のチュートリアル「[Azure Storage に大量のランダム データを並列でアップロードする][previous-tutorial]」を完了している必要があります。
 
 ## <a name="remote-into-your-virtual-machine"></a>仮想マシンへのリモート接続
 
@@ -101,7 +98,7 @@ dotnet run
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 コンテナー内の [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) メソッドを使用して一度に 10 個の BLOB を反復処理し、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してローカル コンピューターにダウンロードします。
 次の表に、ダウンロード時に各 BLOB に対して定義される [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) を示します。
 
-|プロパティ|値|説明|
+|プロパティ|Value|説明|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。 |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| このプロパティは、MD5 ハッシュが計算されて格納されるかどうかを示します。   |
@@ -201,7 +198,7 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 3 部では、ストレージ アカウントから大量のランダム データをダウンロードする方法について学びました。
 

@@ -1,83 +1,204 @@
 ---
-title: Web API を呼び出すデーモン アプリ (アプリの構成) - Microsoft ID プラットフォーム
-description: Web API を呼び出すデーモン アプリをビルドする方法について説明します (アプリの構成)
+title: Web API を呼び出すデーモン アプリを構成する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出すデーモン アプリケーション用のコードを構成する (アプリ構成) 方法について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080161"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81868968"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
 Web API を呼び出すデーモン アプリケーションのコードを構成する方法について説明します。
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>デーモン アプリをサポートする MSAL ライブラリ
+## <a name="msal-libraries-that-support-daemon-apps"></a>デーモン アプリをサポートする MSAL ライブラリ
 
-デーモン アプリをサポートしている Microsoft ライブラリは次のとおりです。
+これらの Microsoft ライブラリでデーモン アプリがサポートされています。
 
   MSAL ライブラリ | 説明
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | デーモン アプリケーションの構築でサポートされているプラットフォームは、.NET Framework と .NET Core プラットフォームです (UWP、Xamarin.iOS、Xamarin.Android はサポートされていません。これらのプラットフォームはパブリック クライアント アプリケーションをビルドするために使用されるからです)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | 進行中の開発 - パブリック プレビュー中
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | 進行中の開発 - パブリック プレビュー中
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | デーモン アプリケーションの作成に対して .NET Framework プラットフォームと .NET Core プラットフォームがサポートされています。 (UWP、Xamarin.iOS、Xamarin.Android の各プラットフォームは、パブリック クライアント アプリケーションの構築に使用されるため、サポートされていません。)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python でのデーモン アプリケーションのサポート。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java でのデーモン アプリケーションのサポート。
 
-## <a name="configuration-of-the-authority"></a>機関の構成
+## <a name="configure-the-authority"></a>機関を構成する
 
-デーモン アプリケーションが、委任されたアクセス許可を使用せず、アプリケーションのアクセス許可を使用することを考慮すると、それらの*サポートされているアカウントの種類*を、*任意の組織のディレクトリ内のアカウントおよび個人の Microsoft アカウント (たとえば、Skype、Xbox、Outlook.com)* にすることはできません。 実際、Microsoft の個人アカウントについてデーモン アプリケーションに同意を付与するテナント管理者がいないのです。 *自分の所属組織のアカウント*または*任意の組織のアカウント*を選択する必要があります。
+デーモン アプリケーションでは、委任されたアクセス許可ではなく、アプリケーションのアクセス許可が使用されます。 そのため、サポートされているアカウントの種類を、組織のディレクトリ内のアカウントまたは個人用 Microsoft アカウント (例: Skype、Xbox、Outlook.com) にすることはできません。 Microsoft の個人アカウントの場合、デーモン アプリケーションに同意を付与するテナント管理者はいません。 *自分の所属組織のアカウント*または*任意の組織のアカウント*を選択する必要があります。
 
-したがって、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。 マルチテナント ツールを提供する ISV の場合は、`organizations` を使用することができます。 ただし、管理者の同意を付与する方法をお客様に説明することも必要になる点に留意してください。 詳細については、「[テナント全体の同意を要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」を参照してください。
+そのため、アプリケーション構成に指定された機関は、(組織に関連付けられたテナント ID またはドメイン名を指定して) テナント化する必要があります。
 
-## <a name="application-configuration-and-instantiation"></a>アプリケーションの構成とインスタンス化
+マルチテナント ツールを提供する ISV の場合は、`organizations` を使用することができます。 ただし、管理者の同意を付与する方法をお客様に説明することも必要になる点に留意してください。 詳細については、「[テナント全体の同意の要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」を参照してください。 また、現在、MSAL には、クライアント資格情報が (証明書ではなく) アプリケーション シークレットである場合にのみ、`organizations` が許可されるという制限があります。
+
+## <a name="configure-and-instantiate-the-application"></a>アプリケーションを構成してインスタンス化する
 
 MSAL ライブラリでは、クライアントの資格情報 (シークレットまたは証明書) は、機密クライアント アプリケーション構築のパラメーターとして渡されます。
 
 > [!IMPORTANT]
 > アプリケーションが、サービスとして実行されているコンソール アプリケーションであっても、それがデーモン アプリケーションの場合は、機密クライアント アプリケーションである必要があります。
 
-### <a name="msalnet"></a>MSAL.NET
+### <a name="configuration-file"></a>構成ファイル
 
-[Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet パッケージをアプリケーションに追加します。
+構成ファイルでは、以下を定義します。
 
-MSAL.NET 名前空間を使用します
+- 機関またはクラウド インスタンスとテナント ID。
+- アプリケーションの登録から返されたクライアント ID。
+- クライアント シークレットまたは証明書のいずれか。
 
-```CSharp
-using Microsoft.Identity.Client;
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+[.NET Core コンソール デーモン](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)のサンプルからの [appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)。
+
+```json
+{
+  "Instance": "https://login.microsoftonline.com/{0}",
+  "Tenant": "[Enter here the tenantID or domain name for your Azure AD tenant]",
+  "ClientId": "[Enter here the ClientId for your application]",
+  "ClientSecret": "[Enter here a client secret for your application]",
+  "CertificateName": "[Or instead of client secret: Enter here the name of a certificate (from the user cert store) as registered with your application]"
+}
 ```
 
-デーモン アプリケーションが `IConfidentialClientApplication` によって提示されます。
+`ClientSecret` または `CertificateName` のいずれかを指定します。 両方を同時に設定することはできません。
 
-```CSharp
+# <a name="python"></a>[Python](#tab/python)
+
+クライアント シークレットを使用して機密クライアントをビルドしているとき、[Python デーモン](https://github.com/Azure-Samples/ms-identity-python-daemon) サンプルの [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) 構成ファイルは次のようになります。
+
+```Json
+{
+  "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here",
+  "client_id": "your_client_id",
+  "scope": [ "https://graph.microsoft.com/.default" ],
+  "secret": "The secret generated by AAD during your confidential app registration",
+  "endpoint": "https://graph.microsoft.com/v1.0/users"
+}
+```
+
+証明書を使用して機密クライアントをビルドしているとき、[Python デーモン](https://github.com/Azure-Samples/ms-identity-python-daemon) サンプルの [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) 構成ファイルは次のようになります。
+
+```Json
+{
+  "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here",
+  "client_id": "your_client_id",
+  "scope": [ "https://graph.microsoft.com/.default" ],
+  "thumbprint": "790E... The thumbprint generated by AAD when you upload your public cert",
+  "private_key_file": "server.pem",
+  "endpoint": "https://graph.microsoft.com/v1.0/users"
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+ private final static String CLIENT_ID = "";
+ private final static String AUTHORITY = "https://login.microsoftonline.com/<tenant>/";
+ private final static String CLIENT_SECRET = "";
+ private final static Set<String> SCOPE = Collections.singleton("https://graph.microsoft.com/.default");
+```
+
+---
+
+### <a name="instantiate-the-msal-application"></a>MSAL アプリケーションをインスタンス化する
+
+MSAL アプリケーションをインスタンス化するには、(言語に応じて) MSAL パッケージを追加、参照、またはインポートする必要があります。
+
+使用しているのがクライアント シークレットか証明書か (または高度なシナリオとして、署名付きアサーションか) によって、構築に違いがあります。
+
+#### <a name="reference-the-package"></a>パッケージの参照
+
+アプリケーション コードで MSAL パッケージを参照します。
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+[Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet パッケージをアプリケーションに追加します。
+MSAL.NET では、機密クライアント アプリケーションは `IConfidentialClientApplication` インターフェイスによって表されます。
+ソース コードで MSAL.NET 名前空間を使用します。
+
+```csharp
+using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
 
-アプリケーション シークレットを使用してアプリケーションをビルドするコードを次に示します。
+# <a name="python"></a>[Python](#tab/python)
 
-```CSharp
+```python
+import msal
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+import com.microsoft.aad.msal4j.ClientCredentialFactory;
+import com.microsoft.aad.msal4j.ClientCredentialParameters;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication;
+import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCredential;
+import com.microsoft.aad.msal4j.MsalException;
+import com.microsoft.aad.msal4j.SilentParameters;
+```
+
+---
+
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>クライアント シークレットを使用して機密クライアント アプリケーションをインスタンス化する
+
+クライアント シークレットを使用して機密クライアント アプリケーションをインスタンス化するコードを次に示します。
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+# Create a preferably long-lived app instance that maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    config["client_id"], authority=config["authority"],
+    client_credential=config["secret"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
+
+---
+
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>クライアント証明書を使用して機密クライアント アプリケーションをインスタンス化する
+
 証明書を使用してアプリケーションをビルドするコードを次に示します。
 
-```CSharp
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -85,37 +206,140 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-### <a name="msalpython"></a>MSAL.Python
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
-# Create a preferably long-lived app instance which maintains a token cache.
+config = json.load(open(sys.argv[1]))
 
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
-    client_credential=config["secret"],
+    client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
     # token_cache=...  # Default cache is in memory only.
                        # You can learn how to use SerializableTokenCache from
                        # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
-
     )
 ```
 
-### <a name="msaljava"></a>MSAL.Java
+# <a name="java"></a>[Java](#tab/java)
+
+MSAL Java では、証明書を使用して機密クライアント アプリケーションをインスタンス化するには、次の 2 つのビルダーがあります。
 
 ```Java
-PrivateKey key = getPrivateKey();
-X509Certificate publicCertificate = getPublicCertificate();
 
-// create clientCredential with public and private key
-IClientCredential credential = ClientCredentialFactory.create(key, publicCertificate);
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
-ConfidentialClientApplication cca = ConfidentialClientApplication
-  .builder(CLIENT_ID, credential)
-  .authority(AUTHORITY_MICROSOFT)
-  .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(pkcs12Certificate, certificatePassword);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
-## <a name="next-steps"></a>次の手順
+or
+
+```Java
+PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
+X509Certificate publicCertificate = getPublicCertificate(); /* x509 public certificate used as a thumbprint */
+
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(key, publicCertificate);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
+
+---
+
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高度なシナリオ: クライアント アサーションを使用して機密クライアント アプリケーションをインスタンス化する
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+機密クライアント アプリケーションでは、クライアント シークレットまたは証明書ではなく、クライアント アサーションを使用してその ID を証明することもできます。
+
+MSAL.NET には、機密クライアント アプリに署名付きアサーションを提供する方法が 2 つあります。
+
+- `.WithClientAssertion()`
+- `.WithClientClaims()`
+
+`WithClientAssertion` を使用する場合は、署名付き JWT を提供する必要があります。 この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください。
+
+```csharp
+string signedClientAssertion = ComputeAssertion();
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithClientAssertion(signedClientAssertion)
+                                          .Build();
+```
+
+`WithClientClaims` を使用する場合は、Azure AD で想定される要求と、送信する追加のクライアント要求を含む署名付きアサーションが、MSAL.NET によって生成されます。
+次のコードでは、それを行う方法を示します。
+
+```csharp
+string ipAddress = "192.168.1.2";
+var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
+X509Certificate2 certificate = ReadCertificate(config.CertificateName);
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithAuthority(new Uri(config.Authority))
+                                          .WithClientClaims(certificate, claims)
+                                          .Build();```
+```
+
+ここでも、詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関するページを参照してください。
+
+# <a name="python"></a>[Python](#tab/python)
+
+MSAL Python では、この `ConfidentialClientApplication` の秘密キーによって署名される要求を使用して、クライアント要求を提供できます。
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+# Create a preferably long-lived app instance that maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    config["client_id"], authority=config["authority"],
+    client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
+    client_claims = {"client_ip": "x.x.x.x"}
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+詳細については、[ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__) に関する MSAL Python のリファレンス ドキュメントを参照してください。
+
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromClientAssertion(assertion);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
+
+---
+
+## <a name="next-steps"></a>次のステップ
+
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [デーモン アプリ - アプリのトークンの取得](./scenario-daemon-acquire-token.md)
+> [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="java"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [デーモン アプリ - アプリのトークンの取得](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

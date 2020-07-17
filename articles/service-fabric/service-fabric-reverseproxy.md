@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のリバース プロキシ | Microsoft Docs
+title: Azure Service Fabric のリバース プロキシ
 description: Service Fabric のリバース プロキシを使用して、クラスターの内外からマイクロサービスとの通信を行います。
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661923"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236623"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -44,8 +35,8 @@ Service Fabric のマイクロサービスは、クラスター内のノード �
 > **サポートされているプラットフォーム**
 >
 > Service Fabric のリバース プロキシでは現在、次のプラットフォームがサポートされています。
-> * "*Windows クラスター*":Windows 8 以降または Windows Server 2012 以降
-> * "*Linux クラスター*":現在、リバース プロキシは Linux クラスターでは使用できません
+> * *Windows クラスター*: Windows 8 以降または Windows Server 2012 以降
+> * *Linux クラスター*: 現在、リバース プロキシは Linux クラスターでは使用できません
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>クラスターの外部からのマイクロサービスへの到達
@@ -74,10 +65,10 @@ Load Balancer で個々のサービスのポートを構成するのではなく
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http(s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
+* **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
 * **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。 既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
-* **Port:** リバース プロキシ用に指定されているポートです (例: 19081)。
-* **ServiceInstanceName:**"fabric:/" スキームなしで到達しようとしているデプロイ済みのサービス インスタンスの完全修飾名です。 たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
+* **Port:** リバース プロキシに指定されているポートです (例: 19081)。
+* **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているデプロイ済みのサービス インスタンスの完全修飾名です。 たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
 
     サービス インスタンス名は、大文字小文字が区別されます。 URL のサービス インスタンス名に使用されている大文字小文字が異なる場合、要求は 404 (Not Found) で失敗します。
 * **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
@@ -132,8 +123,8 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 この状況では、Web サーバーはホスト プロセスで要求に応答することができますが、解決されたサービス インスタンスまたはレプリカはホストで使用できなくなっています。 この場合、ゲートウェイは Web サーバーから HTTP 404 応答を受信します。 そのため、HTTP 404 応答は 2 つの異なる意味を持つ可能性があります。
 
-- ケース 1:サービス アドレスは正しいが、ユーザーから要求されたリソースが存在しない。
-- ケース 2:サービス アドレスが間違っており、ユーザーから要求されたリソースが、実際には別のノードに存在する可能性がある。
+- ケース 1: サービス アドレスは正しいが、ユーザーから要求されたリソースが存在しない。
+- ケース 2: サービス アドレスが間違っており、ユーザーから要求されたリソースが、実際には別のノードに存在する可能性がある。
 
 最初のケースは通常の HTTP 404 であり、ユーザー エラーと見なされます。 ただし、2 番目のケースでは、ユーザーは存在するリソースを要求しています。 サービス自体が移動しているため、リバース プロキシがリソースを見つけることができませんでした。 この場合、リバース プロキシはアドレスを再度解決し、要求を再試行する必要があります。
 
@@ -158,7 +149,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 
 Docker Compose コンテナー内で実行される Service Fabric サービスには、特別な docker-compose.yml の*ポート セクション* http: または https: 構成が必要です。 詳細については、[Azure Service Fabric での Docker Compose デプロイのサポート](service-fabric-docker-compose.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)
 * [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送の設定](service-fabric-reverseproxy-configure-secure-communication.md)
 * [リバース プロキシ イベントの診断](service-fabric-reverse-proxy-diagnostics.md)

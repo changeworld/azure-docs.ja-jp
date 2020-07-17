@@ -1,22 +1,21 @@
 ---
-title: Linux VM 向けの Ultra Disks - Azure マネージド ディスク | Microsoft Docs
-description: Azure VM 向けの Ultra マネージド ディスクについて説明します
-services: virtual-machines-linux
+title: Linux VM 用の Ultra ディスク - Azure マネージド ディスク
+description: Azure VM 用の Ultra ディスクについて説明します。
 author: roygara
-ms.service: virtual-machines-linux
-ms.workload: storage
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2019
+ms.service: virtual-machines
+ms.topic: conceptual
+ms.date: 05/11/2020
 ms.author: rogarana
-ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: 8683515f9b56990028f43d6f131e68efe102b435
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 35eeab099f988941c5acd7ef3da9aa818193bbef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550297"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197370"
 ---
+# <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
+
+この記事では、Ultra ディスクをデプロイして使用する方法を説明します。Ultra ディスクに関する概念的な情報については、「[Azure で使用できるディスクの種類](disks-types.md#ultra-disk)」を参照してください。
+
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

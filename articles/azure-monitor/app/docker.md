@@ -1,23 +1,14 @@
 ---
 title: Application Insights で Docker アプリケーションを監視する | Microsoft Docs
 description: Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77669609"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights で Docker アプリケーションを監視する (非推奨)
 
@@ -38,7 +29,7 @@ Docker ホストで [Application Insights イメージ](https://hub.docker.com/r
 
 1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](../../azure-monitor/app/create-new-resource.md )します。 
    
-    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )必要があります。 テレメトリの表示と分析はこの場所で行います  (アプリの種類には [General (一般)] を選択します)。
+    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )必要があります。 テレメトリの表示と分析はこの場所で行います (アプリの種類には [General (一般)] を選択します)。
    
     ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](../../azure-monitor/app/java-get-started.md) ことをお勧めします。 すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。 
    
@@ -99,13 +90,13 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 *アプリ自体からテレメトリを取得するにはどうすればよいですか*
 
-* Application Insights SDK をアプリにインストールします。 詳細情報:[Java Web アプリ](../../azure-monitor/app/java-get-started.md)、[Windows Web アプリ](../../azure-monitor/app/asp-net.md)。
+* Application Insights SDK をアプリにインストールします。 詳細情報: [Java Web アプリ](../../azure-monitor/app/java-get-started.md)、[Windows Web アプリ](../../azure-monitor/app/asp-net.md)。
 
 ## <a name="video"></a>ビデオ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Java 向けの Application Insights](../../azure-monitor/app/java-get-started.md)
 * [Node.js 向けの Application Insights](../../azure-monitor/app/nodejs.md)

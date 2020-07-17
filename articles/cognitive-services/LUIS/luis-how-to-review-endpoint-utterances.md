@@ -1,96 +1,70 @@
 ---
-title: ユーザーの発話を確認する
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: アクティブ ラーニングでは、エンドポイント クエリがキャプチャされ、ユーザーの不確かなエンドポイントの発話が選択されます。 これらの発話をレビューして、意図を選択し、文字にされた発話に対応するエンティティをマークすることになります。 それらの変更を承認して発話の例に追加したら、トレーニングして公開します。 そうすることで、LUIS による発話の識別の精度が向上していきます。
+title: ユーザーの発話を確認する - LUIS
+titleSuffix: Azure Cognitive Services
+description: アクティブ ラーニングによってキャプチャされた発話を確認し、意図を選択して、文字にされた発話に対応するエンティティをマークします。その後、変更を承認し、トレーニングして公開することになります。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/25/2019
+ms.topic: conceptual
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c976d3b74badc4eeb5978af352fe425089f2fbfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791053"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584969"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>アクティブ ラーニングのためにエンドポイント発話を LUIS ポータルでレビューする方法
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>エンドポイントの発話を見直し、LUIS アプリを改善する方法
 
-[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)では、エンドポイント クエリがキャプチャされ、ユーザーの不確かなエンドポイントの発話が選択されます。 これらの発話をレビューして、意図を選択し、文字にされた発話に対応するエンティティをマークすることになります。 それらの変更を承認して発話の例に追加したら、トレーニングして公開します。 そうすることで、LUIS による発話の識別の精度が向上していきます。
-
+正しく予測するためにエンドポイントの発話を見直すプロセスは[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)と呼ばれています。 アクティブ ラーニングでは、エンドポイント クエリがキャプチャされ、ユーザーの不確かなエンドポイントの発話が選択されます。 これらの発話をレビューして、意図を選択し、文字にされた発話に対応するエンティティをマークすることになります。 それらの変更を承認して発話の例に追加したら、トレーニングして公開します。 そうすることで、LUIS による発話の識別の精度が向上していきます。
 
 ## <a name="enable-active-learning"></a>アクティブ ラーニングを有効にする
 
-アクティブ ラーニングを有効にするには、ユーザーのクエリをログします。 そのためには、`log=true` という querystring パラメーターと値を使って、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)を設定します。
+アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、`log=true` という querystring パラメーターと値を指定し、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)を呼び出します。
 
-## <a name="disable-active-learning"></a>アクティブ ラーニングを無効にする
+LUIS ポータルを使用して、正しいエンドポイント クエリを作成します。
 
-アクティブ ラーニングを無効にするには、ユーザーのクエリがログされないようにします。 そのためには、`log=false` という querystring パラメーターと値を使って、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)を設定します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. **[Manage]\(管理\)** セクションに移動し、 **[Azure resources]\(Azure リソース\)** を選択します。
+1. 割り当てられた予測リソースについて、 **[Change query parameters]\(クエリ パラメーターの変更\)** を選択します。
 
-## <a name="filter-utterances"></a>発話をフィルター処理する
+    > [!div class="mx-imgBorder"]
+    > ![LUIS ポータルを使用してログを保存します。これはアクティブ ラーニングに必要です。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
-1. **[My Apps]\(マイ アプリ\)** ページでアプリ名を選択してアプリ (例: TravelAgent) を開き、上部のバーの **[Build]\(ビルド\)** を選択します。
+1. **[Save logs]\(ログの保存\)** を切り替え、 **[Done]\(完了\)** を選択して保存します。
 
-1. **[Improve app performance]\(アプリのパフォーマンス向上\)** で **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。
+    > [!div class="mx-imgBorder"]
+    > ![LUIS ポータルを使用してログを保存します。これはアクティブ ラーニングに必要です。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-1. **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで、**[Filter list by intent or entity]\(意図またはエンティティでリストをフィルター処理する\)** テキスト ボックス内を選択します。 このドロップダウン リストでは、**[INTENTS]\(意図\)** にすべての意図が含まれ、**[ENTITIES]\(エンティティ\)** にすべてのエンティティが含まれています。
+     この操作によって `log=true` querystring パラメーターが追加され、サンプル URL が変更されます。 ランタイム エンドポイントに対する予測クエリを実行するときに、変更したサンプル クエリ URL をコピーして使用します。
 
-    ![発話フィルター](./media/label-suggested-utterances/filter.png)
+## <a name="correct-intent-predictions-to-align-utterances"></a>正しい意図予測で発話を調整する
 
-1. ドロップダウン リストでカテゴリ (意図またはエンティティ) を選択し、発話を確認します。
+各発話では、 **[Aligned intent]\(配置される意図\)** 列に意図の候補が表示されます。
 
-    ![意図の発話](./media/label-suggested-utterances/intent-utterances.png)
+> [!div class="mx-imgBorder"]
+> [![LUIS で理解されないエンドポイントの発話を見直す](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-## <a name="label-entities"></a>エンティティにラベルを付ける
-LUIS では、エンティティ トークン (単語) が、青色で強調表示されたエンティティ名に置き換えられます。 発話にラベル付けされていないエンティティが含まれている場合は、発話内のそれらのエンティティにラベルを付けます。 
+その意図に納得できない場合、チェック マークを選択します。 候補に同意しない場合は、配置される意図のドロップダウン リストから適切な意図を選択し、その配置される意図の右側にあるチェック マークをオンにします。 チェック マークを選択すると、発話が意図に移動し、 **[Review Endpoint Utterances]\(エンドポイントの発話を見直す\)** リストから削除されます。
 
-1. 発話内の単語を選択します。 
-
-1. 一覧からエンティティを選択します。
-
-    ![エンティティにラベルを付ける](./media/label-suggested-utterances/label-entity.png)
-
-## <a name="align-single-utterance"></a>1 つの発話を配置する
-
-各発話では、**[Aligned intent]\(配置される意図\)** 列に意図の候補が表示されます。 
-
-1. その候補に同意する場合は、チェック マークをオンにします。
-
-    ![配置される意図を保持する](./media/label-suggested-utterances/align-intent-check.png)
-
-1. 候補に同意しない場合は、配置される意図のドロップダウン リストから適切な意図を選択し、その配置される意図の右側にあるチェック マークをオンにします。 
-
-    ![意図を配置する](./media/label-suggested-utterances/align-intent.png)
-
-1. チェック マークをオンにすると、その発話はリストから削除されます。 
-
-## <a name="align-several-utterances"></a>複数の発話を配置する
-
-複数の発話を配置するには、発話の左側のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択します。 
-
-![複数の発話を配置する](./media/label-suggested-utterances/add-selected.png)
-
-## <a name="verify-aligned-intent"></a>配置された意図を確認する
-
-発話に適切な意図が配置されていることを確認するには、**[Intents]\(意図\)** ページに移動し、意図名を選択して、発話を確認します。 **[Review endpoint utterances]\(エンドポイントの発話の確認\)** の発話がリストに含まれています。
+> [!TIP]
+> [Intent detail]\(意図の詳細\) ページに進み、 **[Review Endpoint Utterances]\(エンドポイントの発話を見直す\)** リストの全サンプル発話のエンティティ予測を見直し、修正することが重要です。
 
 ## <a name="delete-utterance"></a>発話を削除する
 
-各発話は、レビュー リストから削除できます。 一度削除すると、リストに再び表示されることはなくなります。 ユーザーがエンドポイントから同じ発話を入力したとしても同様です。 
+各発話は、レビュー リストから削除できます。 一度削除すると、リストに再び表示されることはなくなります。 ユーザーがエンドポイントから同じ発話を入力したとしても同様です。
 
-発話を削除する必要があるかどうかわからない場合は、その発話を意図 [None]\(なし\) に移動するか、"その他" などの新しい意図を作成し、その意図に発話を移動します。 
+発話を削除すべきかわからない場合、None 意図に移動するか、`miscellaneous` のような新しい意図を作成し、その意図に発話を移動してください。
 
-## <a name="delete-several-utterances"></a>複数の発話を削除する
+## <a name="disable-active-learning"></a>アクティブ ラーニングを無効にする
 
-複数の発話を削除するには、各項目を選択し、**[Add selected]\(選択項目の追加\)** の右側にあるごみ箱を選択します。
+アクティブ ラーニングを無効にするには、ユーザーのクエリがログされないようにします。 これを行うには、`log=false` querystring パラメーターと値を指定して[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)を設定します。既定値が false のため、querystring 値は使用しません。
 
-![複数の発話を削除する](./media/label-suggested-utterances/delete-several.png)
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 推奨される発話にラベル付けした後にパフォーマンスがどのように向上するかをテストするには、上部のパネルの **[Test]\(テスト\)** を選択してテスト コンソールにアクセスします。 テスト コンソールを使用してアプリをテストする手順については、[アプリのトレーニングとテスト](luis-interactive-test.md)に関する記事をご覧ください。

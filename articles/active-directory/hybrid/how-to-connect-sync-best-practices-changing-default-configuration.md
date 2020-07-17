@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 940a35d89996b1eb9600fe4214863d2b5304750e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168648"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "60242169"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成の変更するためのベスト プラクティス
 このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
@@ -71,7 +71,7 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 
 このコピーした規則のスコープ、結合、変換について必要な変更を加えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
 * [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)

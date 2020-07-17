@@ -1,25 +1,19 @@
 ---
 title: Azure Blockchain Workbench データベースに関する詳細の取得
-description: Azure Blockchain Workbench データベースおよびデータベース サーバーに関する情報の取得方法を説明しています。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
+description: Azure Blockchain Workbench Preview データベースおよびデータベース サーバーに関する情報の取得方法を説明しています。
+ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 42d119acd8880458eadc1760a7cb9713f91e3f6f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2b3190a9d042be8ead1ff3d5ef48d4a2a19e8963
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509977"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74324687"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Azure Blockchain Workbench データベースに関する情報の取得
 
-Azure Blockchain Workbench データベースに関する情報の取得方法を説明しています。
+Azure Blockchain Workbench Preview データベースに関する情報の取得方法を説明しています。
 
 ## <a name="overview"></a>概要
 
@@ -35,7 +29,7 @@ Azure Blockchain Workbench データベースに関する情報の取得方法�
 データベースに接続する手順は以下の通りです｡
 
 1. Azure Blockchain Workbench リソースの**所有者**アクセス許可を持つアカウントで Azure portal にサインインします。
-2. 左側のナビゲーション ペインで、**[リソース グループ]** を選択します。
+2. 左側のナビゲーション ペインで、 **[リソース グループ]** を選択します。
 3. Blockchain Workbench のデプロイにリソース グループの名前を選択します。
 4. **Type** を選択してリソース一覧を並べ替え､**SQL server** を選択します｡ 次図は並べ替えられた一覧の画面キャプチャーで､｢master｣と､ **Resource プレフィックス** が｢lhgn｣の 2 つの SQL データベースがあります｡
 
@@ -47,7 +41,7 @@ Azure Blockchain Workbench データベースに関する情報の取得方法�
 
 開発ツールやレポート ツールでは､データベース サーバー名とデータベース名を使って Blockchain Workbench データベースに接続することができます｡
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench のデータベース ビュー](database-views.md)

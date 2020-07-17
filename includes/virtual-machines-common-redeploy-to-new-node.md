@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160282"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181180"
 ---
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
-1. 再デプロイする VM を選択し、*[設定]* ブレードで *[再デプロイ]* をクリックします。 次の例に示すように、[再デプロイ] が含まれる **[サポート + トラブルシューティング]** セクションが表示されるまで必要に応じてスクロールしてください。
+1. 再デプロイする VM を選択し、 *[設定]* ブレードで *[再デプロイ]* をクリックします。 次の例に示すように、[再デプロイ] が含まれる **[サポート + トラブルシューティング]** セクションが表示されるまで必要に応じてスクロールしてください。
    
     ![Azure VM ブレード](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
 2. *[再デプロイ]* をクリックして、操作を確定します。

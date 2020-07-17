@@ -8,7 +8,7 @@
       href: app-service-linux-intro.md
     - name: ホスティング オプションの比較
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: .NET Core アプリの作成
@@ -24,7 +24,7 @@
     - name: Ruby アプリの作成
       href: quickstart-ruby.md
     - name: カスタム コンテナーの実行
-      href: quickstart-docker-go.md
+      href: quickstart-docker.md
     - name: 複数コンテナー アプリの作成
       href: quickstart-multi-container.md
 - name: チュートリアル
@@ -43,20 +43,22 @@
           href: tutorial-python-postgresql-app.md
         - name: Java と Spring データ
           href: tutorial-java-spring-cosmosdb.md
-        - name: Java Enterprise と Postgres
-          href: tutorial-java-enterprise-postgresql-app.md
     - name: 複数コンテナー アプリ
       href: tutorial-multi-container-app.md
     - name: ACR からのコンテナーの実行
       href: tutorial-custom-docker-image.md
     - name: カスタム ドメインのマップ
       href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: SSL 証明書のバインド
-      href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: ドメインの SSL バインディングの作成
+      href: ../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: CDN の追加
       href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: ユーザーを認証する
       href: tutorial-auth-aad.md
+    - name: メール/ツイートの送信
+      href: ../tutorial-send-email.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: エラーをトラブルシューティングする
+      href: tutorial-troubleshoot-monitor.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -65,8 +67,6 @@
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: 概念
   items:
-    - name: App Service の特長
-      href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: App Service プラン
       href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: App Service 環境
@@ -105,6 +105,8 @@
       items:
         - name: アプリケーションのデプロイ
           items:
+            - name: パッケージから実行
+              href: ../deploy-run-package.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: FTP 経由でのデプロイ
               href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: クラウドの同期を使用したデプロイ
@@ -113,6 +115,8 @@
               href: ../containers/app-service-linux-ci-cd.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: ローカル Git からのデプロイ
               href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: GitHub Actions を使用したデプロイ
+              href: deploy-container-github-action.md
             - name: テンプレートを使用したデプロイ
               href: ../deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: Java SE と Maven
@@ -126,13 +130,13 @@
         - name: ドメインの購入
           href: ../manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Traffic Manager を使用したドメインのマップ
-          href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+          href: ../configure-domain-traffic-manager.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: アクティブなドメインの移行
           href: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: アプリのセキュリティ保護
       items:
-        - name: SSL 証明書の購入
-          href: ../web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: SSL 証明書の追加
+          href: ../configure-ssl-certificate.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: ユーザーを認証する
           items:
             - name: Azure AD による認証
@@ -152,7 +156,7 @@
     - name: アプリのスケール
       items:
         - name: サーバー容量のスケールアップ
-          href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+          href: ../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: 複数のインスタンスへのスケールアウト
           href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: 高密度ホスティング
@@ -169,18 +173,18 @@
       items:
         - name: アプリのバックアップ
           href: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: バックアップの復元
+        - name: バックアップを復元する
           href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: アプリの複製
           href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: リソースの移動
-          href: '../../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations'
+          href: '../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#checklist-before-moving-resources'
 - name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
-      href: /powershell
+      href: '/powershell/module/az.websites/#app_service'
     - name: REST API
       href: /rest/api/appservice/
 - name: リソース
@@ -192,9 +196,11 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: クォータの情報
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
+      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Migration Assistant のガイド
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: ベスト プラクティス
       href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: サンプル
@@ -204,7 +210,7 @@
     - name: クックブック
       items:
         - name: 参照アーキテクチャ
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: デプロイ スクリプト
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング
@@ -217,7 +223,7 @@
           href: ../troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: パフォーマンスに関する問題のトラブルシューティング
           href: ../troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: FAQ
+        - name: よく寄せられる質問
           items:
             - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
               href: ../faq-availability-performance-application-issues.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

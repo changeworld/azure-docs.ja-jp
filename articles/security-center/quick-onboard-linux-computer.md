@@ -1,11 +1,10 @@
 ---
-title: Azure Security Center クイックスタート - Linux コンピューターでの Security Center の利用開始 | Microsoft Docs
+title: Linux コンピューターを Azure Security Center にオンボードする | Microsoft Docs
 description: このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,18 +13,18 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: memildin
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521922"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435975"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
-Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
+Azure サブスクリプションの利用を開始した後で、エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。 このエージェントは Log Analytics エージェントと呼ばれていますが、OMS エージェントとも呼ばれます。
 
-このクイックスタートでは、Linux コンピューターに Linux エージェントをインストールする方法を示します。
+このクイックスタートでは、Linux コンピューターにエージェントをインストールする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -46,7 +45,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
     ![Azure 以外のコンピューターの追加](./media/quick-onboard-linux-computer/non-azure.png)
 
-6. **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
+6. **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、 **[コピー]** を選択して *wget*コマンドをコピーします。
 
 7. メモ帳を開き、このコマンドを貼り付けます。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
 
@@ -57,7 +56,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
    ![エージェントをインストールする][5]
 
-Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/\<ワークスペース ID>/log/* にあります
+エージェントのログは */var/opt/microsoft/omsagent/\<ワークスペース ID>/log/* にあります
 
   ![エージェントのログ][6]
 
@@ -71,7 +70,7 @@ Linux 用の Security Center エージェントのログは */var/opt/microsoft/
 
   ![アイコン 2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 不要になった場合、Linux コンピューターからエージェントを削除できます。
 
 エージェントを削除するには:
@@ -81,8 +80,8 @@ Linux 用の Security Center エージェントのログは */var/opt/microsoft/
 
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
-## <a name="next-steps"></a>次の手順
-このクイック スタートでは、Linux コンピューターでエージェントをプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
+## <a name="next-steps"></a>次のステップ
+このクイックスタートでは、Linux コンピューター上でエージェントをプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)

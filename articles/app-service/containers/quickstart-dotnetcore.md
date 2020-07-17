@@ -1,27 +1,18 @@
 ---
-title: Linux で ASP.NET Core アプリを作成する - Azure App Service | Microsoft Docs
-description: App Service on Linux で、初めての .NET Core の Hello World アプリを数分でデプロイします。
+title: クイック スタート:Linux ASP.NET Core アプリを実行する
+description: App Service で Linux コンテナーに初めての ASP.NET Core アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 keywords: Azure App Service, Web アプリ, .NET, コア, Linux, OSS
-services: app-service
-documentationCenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
-ms.service: app-service
-ms.workload: web
 ms.tgt_pltfrm: linux
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 04/22/2020
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 1eeb5bbd4b10ef660a50f40d6c1300b0ca214561
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543895"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206674"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>App Service on Linux で ASP.NET Core アプリを作成する
 
@@ -42,7 +33,7 @@ ms.locfileid: "59543895"
 このクイック スタートを完了するには、以下が必要です。
 
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core をインストールする</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">最新の .NET Core 3.1 SDK をインストールする</a>
 
 ## <a name="create-the-app-locally"></a>アプリをローカルで作成する
 
@@ -95,10 +86,10 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-新しく作成されたアプリに移動します。 _&lt;app name>_ は、アプリの名前に置き換えます。
+新しく作成されたアプリに移動します。 _&lt;app_name>_ は、自分のアプリの名前に置き換えます。
 
 ```bash
-http://<app name>.azurewebsites.net
+https://<app-name>.azurewebsites.net
 ```
 
 新しいアプリは次のようになります。
@@ -107,34 +98,32 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
-Counting objects: 22, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (18/18), done.
-Writing objects: 100% (22/22), 51.21 KiB | 3.94 MiB/s, done.
-Total 22 (delta 1), reused 0 (delta 0)
+<pre>
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Deploy Async
 remote: Updating branch 'master'.
 remote: Updating submodules.
-remote: Preparing deployment for commit id '741f16d1db'.
-remote: Generating deployment script.
-remote: Project file path: ./hellodotnetcore.csproj
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
-remote: ...............................................................................................
-remote:   Restoring packages for /home/site/repository/hellodotnetcore.csproj...
-remote: ....................................
-remote:   Installing System.Xml.XPath 4.0.1.
-remote:   Installing System.Diagnostics.Tracing 4.1.0.
-remote:   Installing System.Threading.Tasks.Extensions 4.0.0.
-remote:   Installing System.Reflection.Emit.ILGeneration 4.0.1.
-remote:   ...
-remote: Finished successfully.
-remote: Running post deployment command(s)...
+remote: Preparing deployment for commit id 'd6b54472f7'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
+remote:
+remote: Oryx Version      : 0.2.20200114.13, Commit: 204922f30f8e8d41f5241b8c218425ef89106d1d, ReleaseTagName: 20200114.13
+remote: Build Operation ID: |imoMY2y77/s=.40ca2a87_
+remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
+.
+.
+.
 remote: Deployment successful.
-To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
- * [new branch]      master -> master
-```
+remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
+To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
+   d87e6ca..d6b5447  master -> master
+</pre>
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
@@ -185,7 +174,7 @@ git push azure master
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:ASP.NET Core アプリと SQL Database](tutorial-dotnetcore-sqldb-app.md)

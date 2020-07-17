@@ -1,21 +1,21 @@
 ---
 title: Bing News Search エンドポイント
-titlesuffix: Azure Cognitive Services
-description: News Search API エンドポイントの概要。
+titleSuffix: Azure Cognitive Services
+description: この記事では、ニュース、トップ ニュース、トレンド ニュースなどの News Search API エンドポイントの概要について説明します。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: a3badf7772c6be6509608fbdb305dc3bc225acc0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: aahi
+ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "74111484"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing News Search API エンドポイント
 
@@ -31,7 +31,7 @@ Bing News Search API を使用してニュース検索の結果を取得する�
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-検索クエリに基づいてニュース項目を返します。 検索クエリが空の場合、API はさまざまなカテゴリのトップ ニュース記事を返します。 検索語を URL エンコードし、それを `q=""` パラメーターに追加することで、クエリを送信します。 可用性については、[サポートされている国と市場](language-support.md#supported-markets-for-news-search-endpoint)に関する記事をご覧ください。
+検索クエリに基づいてニュース項目を返します。 検索クエリが空の場合、API はさまざまなカテゴリのトップ ニュース記事を返します。 検索語を URL エンコードし、それを `q=""` パラメーターに追加することで、クエリを送信します。 可用性については、[サポートされている国/地域と市場](language-support.md#supported-markets-for-news-search-endpoint)に関する記事を参照してください。
 
 ### <a name="top-news-items-by-category"></a>カテゴリ別のトップ ニュース項目
 
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-カテゴリ別にトップ ニュース項目を返します。 `category=business`、`category=sports`、または `category=entertainment` を使用してビジネス、スポーツ、またはエンターテイメントのトップ記事を具体的に要求できます。  `category` パラメーターは、`/news` URL でのみ使用できます。 カテゴリを指定するための正式な要件がいくつかあります。[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters)に関するドキュメントの `category` に関するページをご覧ください。 検索語を URL エンコードし、それを `q=""` パラメーターに追加することで、クエリを送信します。 可用性については、[サポートされている国と市場](language-support.md#supported-markets-for-news-endpoint)に関する記事をご覧ください。
+カテゴリ別にトップ ニュース項目を返します。 `category=business`、`category=sports`、または `category=entertainment` を使用してビジネス、スポーツ、またはエンターテイメントのトップ記事を具体的に要求できます。  `category` パラメーターは、`/news` URL でのみ使用できます。 カテゴリを指定するための正式な要件がいくつかあります。[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)に関するドキュメントの `category` に関するページをご覧ください。 検索語を URL エンコードし、それを `q=""` パラメーターに追加することで、クエリを送信します。 可用性については、[サポートされている国/地域と市場](language-support.md#supported-markets-for-news-endpoint)に関する記事を参照してください。
 
 ### <a name="trending-news-topics"></a>ニュース トピックのトレンド 
 
@@ -47,11 +47,11 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-ソーシャル ネットワークで現在注目されているニュース トピックを返します。 `/trendingtopics` オプションが含まれている場合、Bing 検索は `freshness` や `?q=""` などの他のいくつかのパラメーターを無視します。 可用性については、[サポートされている国と市場](language-support.md#supported-markets-for-news-trending-endpoint)に関する記事をご覧ください。
+ソーシャル ネットワークで現在注目されているニュース トピックを返します。 `/trendingtopics` オプションが含まれている場合、Bing 検索は `freshness` や `?q=""` などの他のいくつかのパラメーターを無視します。 可用性については、[サポートされている国/地域と市場](language-support.md#supported-markets-for-news-trending-endpoint)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) のリファレンスをご覧ください。
+ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンスをご覧ください。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。
 News Search API を使用した基本的な要求の例については、[Bing News Search クイック スタート](https://docs.microsoft.com/azure/cognitive-services/bing-news-search)のページをご覧ください。

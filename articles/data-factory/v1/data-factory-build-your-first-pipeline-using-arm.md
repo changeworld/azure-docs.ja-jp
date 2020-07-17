@@ -1,30 +1,26 @@
 ---
-title: 初めてのデータ ファクトリの作成 (Resource Manager テンプレート) | Microsoft Docs
+title: 初めてのデータ ファクトリを作成する (Resource Manager テンプレート)
 description: このチュートリアルでは、Azure Resource Manager テンプレートを使用して、サンプルの Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 9e5a3deb66c0f6da6c8a253840058c10fc445553
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6a14cbb758426203a46ac508fe8e4bfdf3090cf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66147147"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203898"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -32,14 +28,14 @@ ms.locfileid: "66147147"
 > 
  
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Azure Data Factory を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 この記事では、Azure Resource Manager テンプレートを使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 
 このチュートリアルのパイプラインには、1 つのアクティビティ (**HDInsight Hive アクティビティ**) が含まれます。 このアクティビティは、入力データを変換して出力データを生成する Hive スクリプトを Azure HDInsight クラスターで実行します。 このパイプラインは、指定した開始時刻と終了時刻の間で、月 1 回実行されるようスケジュールされています。 
 
 > [!NOTE]
-> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+> このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database へのデータのコピーのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
 > 
 > このチュートリアルのパイプラインには、種類が HDInsightHive のアクティビティが 1 つだけ含まれます。 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、[Data Factory のスケジュール設定と実行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)に関するページを参照してください。 
 
@@ -49,11 +45,11 @@ ms.locfileid: "66147147"
 
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
 * 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
-* Azure Resource Manager テンプレートについては、「 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md) 」を参照してください。 
+* Azure Resource Manager テンプレートについては、「 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md) 」を参照してください。 
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 
-| エンティティ | 説明 |
+| Entity | 説明 |
 | --- | --- |
 | Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。 |
 | HDInsight のオンデマンドのリンクされたサービス |オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 クラスターは、データ処理のために自動的に作成され、処理が終了すると削除されます。 |
@@ -80,7 +76,7 @@ ms.locfileid: "66147147"
         {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "westus",
             "resources": [
                 { ... },
@@ -120,7 +116,7 @@ ms.locfileid: "66147147"
       {
         "name": "[variables('dataFactoryName')]",
         "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
+        "type": "Microsoft.DataFactory/factories",
         "location": "West US",
         "resources": [
           {
@@ -265,7 +261,7 @@ ms.locfileid: "66147147"
 ```
 
 > [!NOTE]
-> Azure データ ファクトリを作成するための Resource Manager テンプレートのその他の例については、[Azure Resource Manager テンプレートを使用してコピー アクティビティを含むパイプラインを作成する方法のチュートリアル](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)を参照してください。  
+> Azure Data Factory を作成するための Resource Manager テンプレートのその他の例については、「[Tutorial: Create a pipeline with Copy Activity using an Azure Resource Manager template (チュートリアル: Azure Resource Manager テンプレートを使用してコピー アクティビティでパイプラインを作成する)](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)」を参照してください。  
 > 
 > 
 
@@ -336,7 +332,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
     ```
 
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
-1. [Azure Portal](https://portal.azure.com/) にログインした後、**[参照]** をクリックして **[データ ファクトリ]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) にログインした後、 **[参照]** をクリックして **[データ ファクトリ]** を選択します。
      ![[参照] > [データ ファクトリ]](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. **[データ ファクトリ]** ブレードで、作成したデータ ファクトリ (**TutorialFactoryARM**) をクリックします。    
 3. 該当するデータ ファクトリの **[Data Factory]** ブレードで **[ダイアグラム]** をクリックします。
@@ -347,10 +343,10 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
    ![Diagram view](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. ダイアグラム ビューで、 **AzureBlobOutput**データセットをダブルクリックします。 現在処理中のスライスが表示されます。
    
-    ![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![データセット](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。 オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。
    
-    ![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
+    ![データセット](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
 7. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
 
 Azure ポータル ブレードを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、 [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md) に関するページを参照してください。
@@ -371,7 +367,7 @@ Azure ポータル ブレードを使用して、このチュートリアルで�
 {
     "name": "[variables('dataFactoryName')]",
     "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
+    "type": "Microsoft.DataFactory/factories",
     "location": "West US"
 }
 ```
@@ -602,11 +598,11 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
         {
             "name": "[variables('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "eastus",
             "resources": [
                 {
-                    "dependsOn": [ "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]" ],
+                    "dependsOn": [ "[concat('Microsoft.DataFactory/factories/', variables('dataFactoryName'))]" ],
                     "type": "gateways",
                     "apiVersion": "[variables('apiVersion')]",
                     "name": "GatewayUsingARM",
@@ -619,9 +615,9 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
     ]
 }
 ```
-このテンプレートでは、GatewayUsingArmDF という名前のデータ ファクトリと GatewayUsingARM という名前のゲートウェイを作成します。 
+このテンプレートでは、GatewayUsingARM という名前のゲートウェイで GatewayUsingArmDF という名前のデータ ファクトリを作成しています。 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 | トピック | 説明 |
 |:--- |:--- |

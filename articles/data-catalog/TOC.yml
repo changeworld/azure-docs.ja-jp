@@ -4,7 +4,7 @@
   items:
     - name: Data Catalog とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Azure データ カタログを作成する
       href: data-catalog-get-started.md
@@ -22,9 +22,9 @@
       href: data-catalog-adopting-data-catalog.md
     - name: 前提条件
       href: data-catalog-prerequisites.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: data-catalog-frequently-asked-questions.md
-- name: 方法
+- name: 操作方法
   items:
     - name: データ ソースの登録
       href: data-catalog-how-to-register.md
@@ -34,7 +34,7 @@
       href: data-catalog-how-to-annotate.md
     - name: データ ソースの文書化
       href: data-catalog-how-to-documentation.md
-    - name: データ ソースへの接続
+    - name: データ ソースに接続する
       href: data-catalog-how-to-connect.md
     - name: ビッグ データの操作
       href: data-catalog-how-to-big-data.md
@@ -55,11 +55,9 @@
 - name: リファレンス
   items:
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=data-catalog'
+      href: data-catalog-samples.md
     - name: REST
       href: /rest/api/datacatalog/
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.datacatalog/catalogs
     - name: 検索構文リファレンス
       href: /rest/api/datacatalog/data-catalog-search-syntax-reference
     - name: 開発者の概念
@@ -70,15 +68,15 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure Data Catalog 用のキーボード ショートカット
       href: data-catalog-keyboard-shortcuts.md
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-catalog'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-catalog'
-    - name: 用語集
+    - name: 用語
       href: data-catalog-terminology.md

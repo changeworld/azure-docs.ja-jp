@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159688"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67181233"
 ---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>クラウド アプライアンスを停止および開始するには
 
@@ -28,7 +28,7 @@ ms.locfileid: "66159688"
 
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 
-5. VM が停止したら、**[開始]**(ボタンが使用可能になっている) をクリックして VM を起動します。 クラウド アプライアンスが開始されると、状態は **[開始済み]** になります。
+5. VM が停止したら、 **[開始]** (ボタンが使用可能になっている) をクリックして VM を起動します。 クラウド アプライアンスが開始されると、状態は **[開始済み]** になります。
 
     ![StorSimple Cloud Appliance 仮想マシン](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
 

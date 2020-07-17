@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: c3c962457fd6aef387a250e1719ff5904d3d4f57
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120726"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67180920"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/cosmos-db/table-storage-how-to-use-dotnet.md)
-> * [Node.JS](../articles/cosmos-db/table-storage-how-to-use-nodejs.md)
+> * [Node.js](../articles/cosmos-db/table-storage-how-to-use-nodejs.md)
 > * [Java](../articles/cosmos-db/table-storage-how-to-use-java.md)
 > * [C++](../articles/cosmos-db/table-storage-how-to-use-c-plus.md)
 > * [PHP](../articles/cosmos-db/table-storage-how-to-use-php.md)

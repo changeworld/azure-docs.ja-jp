@@ -1,24 +1,24 @@
 ---
-title: 利用可能な地域と通貨サポート | Azure
-description: Azure Marketplace と AppSource の利用可能な地域
-services: Azure, Marketplace, Compute, Storage, Networking
+title: コマーシャル マーケットプレースで利用可能な地域と通貨のサポート | Azure Marketplace
+description: コマーシャル マーケットプレースで利用可能な地域
 author: qianw211
 ms.service: marketplace
-ms.topic: article
-ms.date: 02/28/2019
-ms.author: ellacroi
-ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 01/29/2020
+ms.author: dsindona
+ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938252"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81687583"
 ---
-# <a name="geographic-availability-and-currency-support"></a>利用可能な地域と通貨サポート
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
-Azure Marketplace オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
+コマーシャル マーケットプレース オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
 
-|   国/地域名               |   ISO-2   |   通貨   |
+|   国/地域名               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
 | アフガニスタン                         | AF        | USD          |
 | アルバニア                             | AL        | USD          |
@@ -48,6 +48,7 @@ Azure Marketplace オファリングは、顧客の請求先住所で定義さ�
 | カーボベルデ                          | CV        | USD          |
 | ケイマン諸島                      | KY        | USD          |
 | チリ                               | CL        | USD          |
+| 中国\**                            | CN        | 該当なし          |
 | コロンビア                            | CO        | USD          |
 | コスタリカ                          | CR        | USD          |
 | コートジボワール                       | CI        | USD          |
@@ -76,7 +77,7 @@ Azure Marketplace オファリングは、顧客の請求先住所で定義さ�
 | ハンガリー                             | HU        | EUR          |
 | アイスランド                             | IS        | EUR          |
 | インド                               | IN        | INR          |
-| インドネシア                           | ID        | USD          |
+| インドネシア                           | id        | USD          |
 | イラク                                | IQ        | USD          |
 | アイルランド                             | IE        | EUR          |
 | イスラエル                              | IL        | USD          |
@@ -164,3 +165,5 @@ Azure Marketplace オファリングは、顧客の請求先住所で定義さ�
 |   |   |   |
 
 \* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由のマーケットプレースでは USD が使用されます。
+
+\** Free および BYOL VM イメージのみ。

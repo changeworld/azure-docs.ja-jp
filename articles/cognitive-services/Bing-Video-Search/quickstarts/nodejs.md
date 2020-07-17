@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+title: クイック スタート:REST API と Node.js を使用して動画を検索する - Bing Video Search
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、JavaScript を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077311"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75382669"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 
@@ -39,7 +39,7 @@ ms.locfileid: "58077311"
     let https = require('https');
     ```
 
-2. API エンドポイント、サブスクリプション キー、検索語句を格納する変数を作成します。
+2. API エンドポイント、サブスクリプション キー、検索語句を格納する変数を作成します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -75,7 +75,7 @@ ms.locfileid: "58077311"
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>検索要求を作成して送信する
+## <a name="create-and-send-the-search-request"></a>検索要求を作成して送信する
 
 1. `bing_video_search()` という関数を作成します。 ホスト名やヘッダーなど、実際の要求のパラメーターを追加してください。 検索語句はエンコードし、`?q=` パラメーターを使用して path パラメーターに追加します。 その後、`req.end()` を使用して要求を送信します。
 
@@ -205,7 +205,7 @@ ms.locfileid: "58077311"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)

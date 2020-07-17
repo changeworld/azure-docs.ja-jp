@@ -1,26 +1,18 @@
 ---
-title: StorSimple デバイスにリモート接続する | Microsoft Docs
+title: StorSimple デバイスにリモート接続する
 description: リモート管理用にデバイスを構成する方法と、HTTP または HTTPS を介して StorSimple 用 Windows PowerShell に接続する方法について説明します。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80299004"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -61,13 +53,13 @@ Azure Portal で、次の手順に従って、HTTP 経由でのリモート管�
 
 1. StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、リモート管理で構成するデバイスを選択してクリックします。 **[デバイスの設定] > [セキュリティ]** に移動します。
 2. **[セキュリティの設定]** ブレードで **[リモート管理]** をクリックします。
-3. **[リモート管理]** ブレードで、**[リモート管理を有効にする]** を **[はい]** に設定します。
+3. **[リモート管理]** ブレードで、 **[リモート管理を有効にする]** を **[はい]** に設定します。
 4. これで、HTTP を使用した接続を選択できるようになります。 (既定の設定は HTTPS 経由での接続です)。HTTP が選択されていることを確認します。
    
    > [!NOTE]
    > HTTP 経由での接続は、信頼のおけるネットワークでのみ許容されます。
    
-5. **[保存]** をクリックし、確認を求められたら、**[はい]** を選択します。
+5. **[保存]** をクリックし、確認を求められたら、 **[はい]** を選択します。
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>シリアル コンソールを使用して HTTP 経由でリモート管理を有効にする
 デバイスのシリアル コンソールで、次の手順を実行して、リモート管理を有効にします。
@@ -141,8 +133,8 @@ Azure Portal で、次の手順に従って、HTTPS 経由でのリモート管�
 1. StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、リモート管理で構成するデバイスを選択してクリックします。 **[デバイスの設定] > [セキュリティ]** に移動します。
 2. **[セキュリティの設定]** ブレードで **[リモート管理]** をクリックします。
 3. **[リモート管理を有効にする]** を **[はい]** に設定します。
-4. これで、HTTPS を使用した接続を選択できるようになります  (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。
-5. [...] をクリックし、**[リモート管理証明書をダウンロードする]** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
+4. これで、HTTPS を使用した接続を選択できるようになります (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。
+5. [...] をクリックし、 **[リモート管理証明書をダウンロードする]** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
 6. **[保存]** をクリックし、確認を求められたら **[はい]** をクリックします。
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする
@@ -175,7 +167,7 @@ Azure Portal で、次の手順に従って、HTTPS 経由でのリモート管�
     証明書は、次の画面に似たものになります。
    
     ![リモート管理証明書の取得](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. **-----BEGIN CERTIFICATE-----** から **-----END CERTIFICATE-----** までの証明書の情報をメモ帳などのテキスト エディターにコピーし、.cer ファイルとして保存します  (このファイルは、ホストを準備するときにリモート ホストにコピーします)。
+6. **-----BEGIN CERTIFICATE-----** から **-----END CERTIFICATE-----** までの証明書の情報をメモ帳などのテキスト エディターにコピーし、.cer ファイルとして保存します (このファイルは、ホストを準備するときにリモート ホストにコピーします)。
    
    > [!NOTE]
    > 新しい証明書を生成する場合は、`Set-HcsRemoteManagementCert` コマンドレットを使用します。
@@ -193,8 +185,8 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 1. .cer ファイルを右クリックし、 **[証明書のインストール]** を選択します。 これにより、証明書のインポート ウィザードが開始されます。
    
     ![証明書インポート ウィザード (その 1)](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. **[ストアの場所]** で **[ローカル マシン]** を選択し、**[次へ]** をクリックします。
-3. **[証明書をすべて次のストアに配置する]** を選択し、**[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
+2. **[ストアの場所]** で **[ローカル マシン]** を選択し、 **[次へ]** をクリックします。
+3. **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
    
     ![証明書インポート ウィザード (その 2)](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
 4. **[完了]** をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
@@ -211,11 +203,11 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 
 ### <a name="connect-to-the-device-from-the-remote-host"></a>リモート ホストからデバイスに接続する
 
-Windows PowerShell と SSL を使用して、リモート ホストまたはクライアントからデバイスの SSAdmin セッションに移行します。 この SSAdmin セッションは、デバイスの[シリアル コンソール](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) メニューのオプション 1 に対応します。
+Windows PowerShell と TLS を使用して、リモート ホストまたはクライアントからデバイス上の SSAdmin セッションに移動します。 この SSAdmin セッションは、デバイスの[シリアル コンソール](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) メニューのオプション 1 に対応します。
 
 Windows PowerShell のリモート接続元にするコンピューターで次の手順を実行します。
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Windows PowerShell と SSL を使用してデバイスの SSAdmin セッションに移行するには
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>Windows PowerShell と TLS を使用してデバイス上の SSAdmin セッションに移動するには
 1. Windows PowerShell セッションを管理者として開始します。 Windows 10 クライアントを使用している場合、Windows リモート管理サービスは、既定で手動に設定されています。 サービスを起動するには、次を入力してください。
 
     `Start-Service WinRM`
@@ -224,7 +216,7 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-    <*device_ip*> はデバイスの IP アドレスです。例:  
+    <*device_ip*> はデバイスの IP アドレスです。例: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
 3. 新しい資格情報を作成するには、次のように入力します。
@@ -237,15 +229,15 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     コマンドレットの -ComputerName パラメーターには、<*ターゲット デバイスのシリアル番号*> を指定します。 このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
-5. 次のコマンドを入力します: 
+5. 型:
    
      `Enter-PSSession $session`
-6. 数分間待機する必要があります。その後、HTTPS 経由の SSL でデバイスに接続されます。 デバイスに接続されたことを示すメッセージが表示されます。
+6. 数分待つ必要があります。その後、HTTPS over TLS 経由でデバイスに接続されます。 デバイスに接続されたことを示すメッセージが表示されます。
    
-    ![HTTPS と SSL を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![HTTPS と TLS を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-8000-windows-powershell-administration.md)の詳細を確認する。
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細を確認する。
+* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

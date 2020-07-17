@@ -1,119 +1,211 @@
 ---
 title: Azure Monitor で使用するデータのソース | Microsoft Docs
 description: Azure リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために使用できるデータについて説明します。
-documentationcenter: ''
+ms.subservice: ''
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: azure-monitor
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 12/19/2019
+ms.openlocfilehash: d1c0652844556b545cf0617032d21b80dd67d198
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790878"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479843"
 ---
-# <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor で使用するデータのソース
-この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](data-platform.md)に関する記事をご覧ください。
+# <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
+Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
 
-Azure における監視データはさまざまなソースから取得されます。データは複数の階層に分類できます。最上位の階層はアプリケーションとオペレーティング システム、下位の階層は Azure プラットフォームのコンポーネントです。 データの階層を次の図に示します。各階層については、以降のセクションで詳しく説明します。
+この記事では、Azure リソースによって作成される監視データのほかにも、Azure Monitor によって収集されるさまざまな監視データのソースについて説明します。 このデータをさまざまな場所で収集するために必要な構成について、詳しい情報が書かれているページへのリンクを掲載しています。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="application-tiers"></a>アプリケーション層
 
-![監視データの階層](media/data-sources/monitoring-tiers.png)
+Azure アプリケーションの監視データのソースは階層に分類できます。最上位の階層はアプリケーション自体で、その下にある各階層は Azure プラットフォームのコンポーネントです。 階層によって、データへのアクセス方法が異なります。 以下の表にアプリケーションの各階層をまとめ、それぞれの階層の監視データのソースを後続のセクションで取り上げます。 それぞれのデータの場所とそのアクセス方法の説明については、[Azure における監視データの場所](data-locations.md)に関するページを参照してください。
+
+
+![監視の階層](../media/overview/overview.png)
+
+
+### <a name="azure"></a>Azure
+Azure に固有のアプリケーションの階層について、次の表で簡単に説明します。 リンクを辿って、後続のセクションに示されているそれぞれの詳細を確認してください。
+
+| レベル | 説明 | 収集方法 |
+|:---|:---|:---|
+| [Azure テナント](#azure-tenant) | Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。 | AAD データをポータルで確認するか、テナントの診断設定を使用して Azure Monitor への収集を構成します。 |
+| [Azure サブスクリプション](#azure-subscription) | Azure サブスクリプションにおけるリソース横断的なサービス (Resource Manager、Service Health など) の正常性と管理に関連するデータ。 | ポータルで確認するか、ログ プロファイルを使用して Azure Monitor への収集を構成します。 |
+| [Azure リソース](#azure-resources) |  各 Azure リソースの運用とパフォーマンスに関するデータ。 | 自動的に収集されたメトリックをメトリックス エクスプローラーで確認します。<br>Azure Monitor でログを収集するように診断設定を構成します。<br>各種の監視ソリューションと Insights を利用すれば、特定の種類のリソースをさらに詳しく監視することができます。 |
+
+### <a name="azure-other-cloud-or-on-premises"></a>Azure やその他のクラウド、またはオンプレミス 
+Azure やその他のクラウド、またはオンプレミスに存在する可能性のあるアプリケーションの階層について、次の表で簡単に説明します。 リンクを辿って、後続のセクションに示されているそれぞれの詳細を確認してください。
+
+| レベル | 説明 | 収集方法 |
+|:---|:---|:---|
+| [オペレーティング システム (ゲスト)](#operating-system-guest) | オペレーティング システムのコンピューティング リソースに関するデータ。 | Log Analytics エージェントをインストールして Azure Monitor にクライアント データ ソースを収集すると共に、Dependency Agent をインストールして Azure Monitor for VMs をサポートする依存関係を収集します。<br>Azure 仮想マシンについては、Azure Diagnostics 拡張機能をインストールして、ログとメトリックを Azure Monitor に収集します。 |
+| [アプリケーション コード](#application-code) | 実際のアプリケーションとコードのパフォーマンスと機能に関するデータ (パフォーマンス トレース、アプリケーション ログ、ユーザー テレメトリを含む)。 | Application Insights にデータを収集するためにコードをインストルメント化します。 |
+| [カスタム ソース](#custom-sources) | 外部サービスからのデータや、他のコンポーネントまたはデバイスからのデータ。 | 任意の REST クライアントからログまたはメトリック データを Azure Monitor に収集します。 |
 
 ## <a name="azure-tenant"></a>Azure テナント
 Azure テナントに関連するテレメトリは、Azure Active Directory などのテナント全体のサービスから収集されます。
 
-![Azure テナントの収集](media/data-sources/tenant-collection.png)
+![Azure テナントの収集](media/data-sources/tenant.png)
 
 ### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログ
-[Azure Active Directory レポート](../../active-directory/reports-monitoring/overview-reports.md)には、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。 これらの監査ログは、他のログ データと共に分析するために、Azure Monitor ログに書き込むことができます。
+[Azure Active Directory レポート](../../active-directory/reports-monitoring/overview-reports.md)には、サインイン アクティビティの履歴と、特定のテナント内で行われた変更の監査証跡が含まれています。 
+
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor ログ | Azure AD ログを Azure Monitor で収集して他の監視データと共に分析するように構成します。 | [Azure AD ログを Azure Monitor ログと統合する (プレビュー)](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
+| Azure Storage | アーカイブのために Azure AD ログを Azure Storage にエクスポートします。 | [チュートリアル:Azure AD ログを Azure ストレージ アカウントにアーカイブする (プレビュー)](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| イベント ハブ | Event Hubs を使用して Azure AD ログを他の場所にストリーム配信します。 | [チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する (プレビュー)](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
 
 
-## <a name="azure-platform"></a>Azure プラットフォーム
-Azure 自体の正常性と操作に関連するテレメトリには、Azure サブスクリプションの操作と管理に関するデータが含まれています。 また、Azure アクティビティ ログと Azure Active Directory からの監査ログに格納されているサービスの正常性データが含まれています。
 
-![Azure サブスクリプションの収集](media/data-sources/azure-collection.png)
+## <a name="azure-subscription"></a>Azure サブスクリプション
+Azure サブスクリプションの正常性と運用に関連したテレメトリです。
+
+![Azure サブスクリプション](media/data-sources/azure-subscription.png)
+
+### <a name="azure-activity-log"></a>Azure アクティビティ ログ 
+[Azure アクティビティ ログ](platform-logs-overview.md)には、サービスの正常性レコードのほか、ご自分の Azure サブスクリプションのリソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの _外部_  ビューを表します。
+
+| 宛先 | 説明 | リファレンス |
+|:---|:---|
+| アクティビティ ログ | アクティビティ ログは、その独自のデータ ストアに収集されます。それを Azure Monitor のメニューから表示したり、それを使ってアクティビティ ログ アラートを作成したりできます。 | [Azure portal でアクティビティ ログに対してクエリを実行する](activity-log-view.md#azure-portal) |
+| Azure Monitor ログ | アクティビティ ログを収集して他の監視データと共に分析するように Azure Monitor ログを構成します。 | [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する](activity-log-collect.md) |
+| Azure Storage | アーカイブのためにアクティビティ ログを Azure Storage にエクスポートします。 | [アクティビティ ログをアーカイブする](resource-logs-collect-storage.md)  |
+| Event Hubs | Event Hubs を使用してアクティビティ ログを他の場所にストリーム配信します。 | [アクティビティ ログをイベント ハブにストリーム配信する](resource-logs-stream-event-hubs.md)。 |
 
 ### <a name="azure-service-health"></a>Azure Service Health
-[Azure Service Health](service-notifications.md) は、アプリケーションとリソースが依存するサブスクリプション内の Azure サービスの正常性に関する情報を提供します。 アプリケーションに影響を及ぼす可能性のある現在の問題および予測される重大な問題について通知するアラートを作成できます。 Service Health レコードは、アクティビティ ログ エクスプローラーで表示したり、Azure Monitor ログにコピーしたりできるように、[Azure アクティビティ ログ](activity-logs-overview.md)に格納されます。
+[Azure Service Health](../../service-health/service-health-overview.md) は、アプリケーションとリソースが依存するサブスクリプション内の Azure サービスの正常性に関する情報を提供します。
 
-### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
-[Azure アクティビティ ログ](activity-logs-overview.md)には、サービスの正常性レコードと Azure リソースに対して行われた構成の変更に関するレコードが含まれています。 アクティビティ ログは、すべての Azure リソースについて記録されます。このログはリソースの _外部_  ビューを表します。 アクティビティ ログにおける各種のレコードについては、「[Azure アクティビティ ログのイベント スキーマ](activity-log-schema.md)」をご覧ください。
-
-特定のリソースのアクティビティ ログは Azure Portal のそのリソースのページで確認できます。また、[アクティビティ ログ エクスプローラー](activity-logs-overview.md)では、複数のリソースのログを表示できます。 これは、ログ エントリを Azure Monitor にコピーして他の監視データと結合するために特に役立ちます。 [Event Hubs](activity-logs-stream-event-hubs.md) を使用して、ログ エントリを他の場所に送信することもできます。
-
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| アクティビティ ログ<br>Azure Monitor ログ | Service Health のレコードは、Azure のアクティビティ ログに保存されるため、Azure portal で表示したり、アクティビティ ログを使って実行できる他のあらゆるアクティビティを実行したりすることができます。 | [Azure Portal を使用したサービス正常性通知の表示](service-notifications.md) |
 
 
-## <a name="azure-services"></a>Azure サービス
-メトリックおよびリソース レベルの診断ログは、Azure リソースの_内部_操作に関する情報を提供します。 これらはほとんどの Azure サービスで利用できます。特定のサービスに関する追加の分析情報は管理ソリューションが提供します。
+## <a name="azure-resources"></a>Azure リソース
+メトリックおよびリソースのログは、Azure リソースの _内部_ 操作に関する情報を提供します。 これらはほとんどの Azure サービスで利用できます。また、特定のサービスについては、さらに詳しいデータが監視ソリューションおよび Insights によって収集されます。
 
-![Azure リソースの収集](media/data-sources/azure-resource-collection.png)
-
-
-### <a name="metrics"></a>メトリック
-ほとんどの Azure サービスでは、そのパフォーマンスと操作を反映する[プラットフォーム メトリック](data-platform-metrics.md)が生成されます。 [リソースの種類によってメトリックは異なります](metrics-supported.md)。  それらにはメトリック分析からアクセスできます。また、Log Analytics を使用した傾向分析やその他の分析のために、ログにコピーできます。
+![Azure リソースの収集](media/data-sources/azure-resources.png)
 
 
-### <a name="resource-diagnostic-logs"></a>リソース診断ログ
-アクティビティ ログは Azure リソースで実行される操作に関する情報を提供しますが、リソース レベルの[診断ログ](diagnostic-logs-overview.md)はリソース自体の操作に関する分析情報を提供します。   これらのログの構成の要件とコンテンツは[リソースの種類によって異なります](diagnostic-logs-schema.md)。
+### <a name="platform-metrics"></a>プラットフォームのメトリック 
+ほとんどの Azure サービスからは、そのパフォーマンスと操作を反映する[プラットフォーム メトリック](data-platform-metrics.md)が直接メトリック データベースに送信されます。 [リソースの種類によってメトリックは異なります](metrics-supported.md)。 
 
-診断ログを Azure portal で直接表示することはできませんが、[診断ログを Azure ストレージに送信してアーカイブ](archive-diagnostic-logs.md)したり、[イベント ハブ](../../event-hubs/event-hubs-about.md)にエクスポートして他のサービスにリダイレクトしたり、[Azure Monitor](diagnostic-logs-stream-log-store.md) にコピーして分析に使用したりできます。 Azure Monitor に直接書き込むことのできるリソースと、ストレージ アカウントに書き込んでから [Log Analytics にインポートする](azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)リソースがあります。
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor メトリック | プラットフォームのメトリックは、何も構成しなくても、Azure Monitor メトリック データベースに書き込まれます。 プラットフォームのメトリックには、メトリックス エクスプローラーからアクセスします。  | [Azure メトリックス エクスプローラーの概要](metrics-getting-started.md)<br>[Azure Monitor のサポートされるメトリック](metrics-supported.md) |
+| Azure Monitor ログ | プラットフォームのメトリックをログにコピーし、Log Analytics を使用して傾向分析など各種の分析を実行します。 | [Azure Diagnostics から Log Analytics に直接](resource-logs-collect-workspace.md) |
+| Event Hubs | Event Hubs を使用してメトリックを他の場所にストリーム配信します。 |[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](stream-monitoring-data-event-hubs.md) |
 
-### <a name="monitoring-solutions"></a>監視ソリューション
- [監視ソリューション](../../azure-monitor/insights/solutions.md)は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 これらは、データを Azure Monitor ログに収集します。そこで、そのデータを[クエリ言語](../../azure-monitor/log-query/log-query-overview.md)や、通常はソリューションに含まれている[ビュー](view-designer.md)を使用して分析できます。
+### <a name="resource-logs"></a>リソース ログ
+[リソース ログ](platform-logs-overview.md)からは、Azure リソースの "_内部_" 操作に関する分析情報が得られます。  リソース ログは自動的に作成されますが、診断設定を作成して、各リソースのログの収集先を指定する必要があります。
 
+リソース ログの構成要件と内容はリソースの種類によって異なり、まだリソース ログの作成に対応していないサービスもあります。 それぞれのサービスについての詳細と詳しい構成手順へのリンクについては、[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](diagnostic-logs-schema.md)に関する記事を参照してください。 この記事に掲載されていないサービスは現在、リソース ログの作成に対応していません。
 
-## <a name="guest-operating-system"></a>ゲスト オペレーティング システム
-Azure、他のクラウド、オンプレミスのコンピューティング リソースには、監視対象のゲスト オペレーティング システムがあります。 1 つ以上のエージェントをインストールすると、ゲストから同じ監視ツール (たとえば、Azure サービス自体) にテレメトリを収集できます。
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor ログ | リソース ログを Azure Monitor ログに送信して、収集された他のログ データと共に分析します。 | [Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](resource-logs-collect-storage.md) |
+| ストレージ | アーカイブのためにリソース ログを Azure Storage に送信します。 | [Azure リソース ログのアーカイブ](resource-logs-collect-workspace.md) |
+| Event Hubs | Event Hubs を使用してリソース ログを他の場所にストリーム配信します。 |[Azure リソース ログをイベント ハブにストリーミングする](resource-logs-stream-event-hubs.md) |
 
-![Azure コンピューティング リソースの収集](media/data-sources/compute-resource-collection.png)
+## <a name="operating-system-guest"></a>オペレーティング システム (ゲスト)
+Azure、他のクラウド、オンプレミスのコンピューティング リソースには、監視対象のゲスト オペレーティング システムがあります。 1 つ以上のエージェントがインストールされている場合、ゲストからのテレメトリを Azure Monitor に収集し、Azure サービス本体と同じ監視ツールを使用して分析することができます。
+
+![Azure コンピューティング リソースの収集](media/data-sources/compute-resources.png)
 
 ### <a name="azure-diagnostic-extension"></a>Azure 診断の拡張機能
-Azure Diagnostics の拡張機能では、Azure コンピューティング リソースのクライアント オペレーティング システムからログとパフォーマンス データを収集することで、基本的なレベルの監視を実現できます。   
+Azure 仮想マシンに対して Azure Diagnostics 拡張機能を有効にすると、Azure Cloud Services (クラシック) の Web ロールと worker ロール、Virtual Machines、仮想マシン スケール セット、Service Fabric など、Azure コンピューティング リソースのゲスト オペレーティング システムからログとメトリックを収集することができます。
 
-### <a name="log-analytics-agent"></a>Log Analytics エージェント
-Windows または Linux の仮想マシンまたは物理コンピューターを包括的に監視および管理するには、Log Analytics エージェントを使用します。 仮想マシンは、Azure、別のクラウド、またはオンプレミスで実行できます。エージェントは、直接または System Center Operations Manager 経由で Azure Monitor に接続し、ユーザーが構成済みの[データ ソース](agent-data-sources.md)や、仮想マシン上で実行されているアプリケーションに追加の分析情報を提供する[監視ソリューション](../../azure-monitor/insights/solutions.md)からデータを収集できるようにします。
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| ストレージ | Azure 診断拡張機能は、常に Azure Storage アカウントに書き込みます。 | [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](diagnostics-extension-windows-install.md)<br>[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
+| Azure Monitor メトリック | パフォーマンス カウンターを収集するように Diagnostics 拡張機能を構成した場合、それらは Azure Monitor メトリック データベースに書き込まれます。 | [Windows 仮想マシンの Resource Manager テンプレートを使用してゲスト OS メトリックを Azure Monitor メトリック ストアに送信する](collect-custom-metrics-guestos-resource-manager-vm.md) |
+| Event Hubs | Event Hubs を使用して他の場所にデータをストリーム配信するように Diagnostics 拡張機能を構成します。  | [Event Hubs を使用して、Azure Diagnostics データをストリーミングする](diagnostics-extension-stream-event-hubs.md)<br>[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md) |
+| Application Insights のログ | アプリケーションをサポートするコンピューティング リソースからログとパフォーマンス カウンターを収集して、他のアプリケーション データと共に分析します。 | [Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](diagnostics-extension-to-application-insights.md) |
 
 
-### <a name="dependency-agent"></a>依存関係エージェント
-[Service Map](../insights/service-map.md) と [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) には、Windows および Linux 仮想マシン上の Dependency Agent が必要です。 これは Log Analytics エージェントと統合され、仮想マシンで実行されているプロセスおよび外部プロセスの依存関係に関する検出データが収集されます。 これは、このデータを Azure Monitor に格納し、検出された相互接続コンポーネントを視覚化します。  
+### <a name="log-analytics-agent"></a>Log Analytics エージェント 
+Windows 仮想マシンまたは Linux 仮想マシンを包括的に監視および管理するには、Log Analytics エージェントをインストールします。 仮想マシンは Azure、別のクラウド、またはオンプレミスで実行できます。
 
-エージェント間の違いと監視要件に応じて何を使用するかについては、[監視エージェントの概要](agents-overview.md)に関するページを参照してください。
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor ログ | Log Analytics エージェントは、Azure Monitor に直接接続するか、System Center Operations Manager を経由して接続します。エージェントを使用すると、自分が構成したデータ ソースのほか、仮想マシン上で実行されているアプリケーションについての追加の分析情報が得られる監視ソリューションから、データを収集することができます。 | [Azure Monitor のエージェント データ ソース](agent-data-sources.md)<br>[Operations Manager を Azure Monitor に接続する](om-agents.md) |
+| VM ストレージ | Azure Monitor for VMs は、Log Analytics エージェントを使用して、ヘルス状態情報をカスタムの場所に格納します。 詳細については、次のセクションを参照してください。  |
 
-## <a name="applications"></a>[アプリケーション]
-アプリケーションがゲスト オペレーティング システムに書き込むことのできるテレメトリに加え、アプリケーションの詳細な監視が [Application Insights](https://docs.microsoft.com/azure/application-insights/) を使用して行われます。 Application Insights では、さまざまなプラットフォームで実行されているアプリケーションからデータを収集できます。 アプリケーションは Azure、別のクラウド、またはオンプレミスで実行できます。
 
-![アプリケーション データの収集](media/data-sources/application-collection.png)
+### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor 
+[Azure Monitor for VMs](../insights/vminsights-overview.md) は、Azure Monitor の主要機能を超える機能を提供して、仮想マシンに対するカスタマイズされた監視エクスペリエンスを提供します。 Windows 仮想マシンおよび Linux 仮想マシンには Dependency Agent が必要となります。これが Log Analytics エージェントと統合されて、仮想マシン上で実行されているプロセスや外部プロセスの依存関係について検出されたデータを収集します。
+
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor ログ | プロセスや依存関係についてのデータをエージェントに格納します。 | [Azure Monitor for VMs (プレビュー) のマップを使用してアプリケーション コンポーネントを把握する](../insights/vminsights-maps.md) |
+
+
+
+## <a name="application-code"></a>アプリケーション コード
+Azure Monitor における詳しいアプリケーションの監視は、さまざまなプラットフォーム上で動作するアプリケーションからデータを収集する [Application Insights](https://docs.microsoft.com/azure/application-insights/) を通じて行われます。 アプリケーションは Azure、別のクラウド、またはオンプレミスで実行できます。
+
+![アプリケーション データの収集](media/data-sources/applications.png)
 
 
 ### <a name="application-data"></a>アプリケーション データ
-インストルメンテーション パッケージをインストールすることでアプリケーションに対して有効にした Application Insights は、アプリケーションのパフォーマンスおよび操作に関連するメトリックとログを収集します。 これには、ページ ビュー、アプリケーションの要求、および例外に関する詳細情報が含まれます。 Application Insights は、収集したデータを Azure Monitor に格納します。 ここには、このデータを分析するためのさまざまなツールが含まれていますが、メトリック分析やログ分析などのツールを使用して、他のソースからのデータと共に分析することもできます。
+インストルメンテーション パッケージをインストールすることでアプリケーションに対して有効にした Application Insights は、アプリケーションのパフォーマンスおよび操作に関連するメトリックとログを収集します。 Application Insights によって収集されたデータは、他のデータ ソースによって使用されるのと同じ Azure Monitor データ プラットフォームに格納されます。 このデータを分析するためのさまざまなツールが用意されていますが、メトリックス エクスプローラーや Log Analytics などのツールを使用して、他のソースのデータと共に分析を行うこともできます。
 
-Application Insights を使用して[カスタム メトリックを作成する](../../application-insights/app-insights-api-custom-events-metrics.md)こともできます。  これにより、数値を算出して他のメトリックと共に格納するための独自のロジックを定義できます。これにはメトリック分析からアクセスでき、[自動スケーリング](autoscale-custom-metric.md)やメトリック アラートのために使用できます。
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor ログ | アプリケーションについての運用データ (ページ ビュー、アプリケーション要求、例外、トレースなど)。 | [Azure Monitor でログ データを分析する](../log-query/log-query-overview.md) |
+|                    | アプリケーション マップとテレメトリの関連付けをサポートするアプリケーション コンポーネント間の依存関係情報。 | [Application Insights におけるテレメトリの相関付け](../app/correlation.md) <br> [アプリケーション マップ](../app/app-map.md) |
+|            | パブリック インターネット上のさまざまな場所からアプリケーションの可用性と応答性をテストする可用性テストの結果。 | [Web サイトの可用性と応答性の監視](../app/monitor-web-app-availability.md) |
+| Azure Monitor メトリック | Application Insights は、アプリケーションに定義されたカスタム メトリックに加え、アプリケーションのパフォーマンスと動作を表すメトリックを Azure Monitor メトリック データベースに収集します。 | [Application Insights のログベースのメトリックと事前に集計されたメトリック](../app/pre-aggregated-metrics-log-metrics.md)<br>[カスタムのイベントとメトリックのための Application Insights API](../app/api-custom-events-metrics.md) |
+| Azure Storage | アーカイブのためにアプリケーション データを Azure Storage に送信します。 | [Application Insights からのテレメトリのエクスポート](../app/export-telemetry.md) |
+|            | 可用性テストの詳細は Azure Storage に格納されます。 Azure portal で Application Insights を使用してダウンロードし、ローカル分析を行います。 可用性テストの結果は Azure Monitor ログに格納されます。 | [Web サイトの可用性と応答性の監視](../app/monitor-web-app-availability.md) |
+|            | プロファイラーのトレース データは Azure Storage に格納されます。 Azure portal で Application Insights を使用してダウンロードし、ローカル分析を行います。  | [Application Insights を使用した Azure のプロファイル運用アプリケーション](../app/profiler-overview.md) 
+|            | 例外のサブセットを得るためにキャプチャされたデバッグのスナップショット データは、Azure Storage に格納されます。 Azure portal で Application Insights を使用してダウンロードし、ローカル分析を行います。  | [スナップショットのしくみ](../app/snapshot-debugger.md#how-snapshots-work) |
+
+## <a name="monitoring-solutions-and-insights"></a>監視ソリューションと Insights
+[監視ソリューション](../insights/solutions.md)と [Insights](../insights/insights-overview.md) は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 アプリケーションのさまざまな階層 (場合によっては複数の階層) に存在するリソースに対応することもできます。
+
+### <a name="monitoring-solutions"></a>監視ソリューション
+
+| 宛先 | 説明 | リファレンス
+|:---|:---|:---|
+| Azure Monitor ログ | 監視ソリューションは、データを Azure Monitor ログに収集します。そこで、クエリ言語や、通常はソリューションに含まれている[ビュー](view-designer.md)を使用して、そのデータを分析できます。 | [Azure における監視ソリューションのデータ収集の詳細](../insights/solutions-inventory.md) |
 
 
-### <a name="dependencies"></a>依存関係
-アプリケーションのさまざまな論理操作を監視するには、[複数のコンポーネントにわたってテレメトリを収集する](../../application-insights/app-insights-transaction-diagnostics.md)必要があります。 Application Insights では、[分散したテレメトリの関連付け](../../application-insights/application-insights-correlation.md)をサポートします。これにより、コンポーネント間の依存関係を識別し、それらをまとめて分析できます。
+### <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
+[Azure Monitor for Containers](../insights/container-insights-overview.md) では、[Azure Kubernetes Service (AKS)](/azure/aks/) 用にカスタマイズされた監視エクスペリエンスを提供します。 次の表に示すリソースについての追加データが収集されます。
 
-### <a name="availability-tests"></a>可用性テスト
-Application Insights の[可用性テスト](../../application-insights/app-insights-monitor-web-app-availability.md)では、パブリック インターネット上のさまざまな場所からアプリケーションの可用性と応答性をテストできます。 シンプルな ping テストを実行してアプリケーションが動作していることを確認したり、Visual Studio を使用してユーザー シナリオをシミュレートする Web テストを作成したりできます。  可用性テストには、アプリケーションでのインストルメンテーションは必要ありません。
+| 宛先 | 説明 | リファレンス |
+|:---|:---|:---|
+| Azure Monitor ログ | インベントリ、ログ、イベントといった AKS の監視データを格納します。 ポータルでログの分析機能を活用するために、メトリック データはログにも格納されます。 | [コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する](../insights/container-insights-analyze.md) |
+| Azure Monitor メトリック | メトリック データはメトリック データベースに格納されて、可視化とアラートの源泉となります。 | [メトリックス エクスプローラーでコンテナーのメトリックを表示する](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
+| Azure Kubernetes Service | ポータルの Azure Kubernetes Service (AKS) コンテナー ログ (stdout/stderror)、イベント、ポッド メトリックに直接アクセスできるようになります。 | [Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法](../insights/container-insights-livedata-overview.md) |
+
+### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
+[Azure Monitor for VMs](../insights/vminsights-overview.md) は、仮想マシンの監視用にカスタマイズされたエクスペリエンスを備えています。 Azure Monitor for VMs によって収集されるデータについては、前出の「[オペレーティング システム (ゲスト)](#operating-system-guest)」セクションで説明しています。
 
 ## <a name="custom-sources"></a>カスタム ソース
-アプリケーションの標準的な階層に加え、他のデータ ソースで収集できないテレメトリがある他のリソースを監視することが必要な場合があります。 これらのリソースについては、Azure Monitor API を使用してこのデータを書き込む必要があります。
+アプリケーションの標準的な階層に加え、他のデータ ソースで収集できないテレメトリがある他のリソースを監視することが必要な場合があります。 これらのリソースについては、Azure Monitor API を使用してこのデータをメトリックまたはログに書き込んでください。
 
-![カスタム データの収集](media/data-sources/custom-collection.png)
+![カスタムの収集](media/data-sources/custom.png)
 
-### <a name="data-collector-api"></a>データ コレクター API
-Azure Monitor では、[Data Collector API](../../azure-monitor/platform/data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。
+| 宛先 | Method | 説明 | リファレンス |
+|:---|:---|:---|:---|
+| Azure Monitor ログ | データ コレクター API | ログ データを任意の REST クライアントから収集して、Log Analytics ワークスペースに格納します。 | [HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (パブリック プレビュー)](data-collector-api.md) |
+| Azure Monitor メトリック | カスタム メトリックス API | メトリック データを任意の REST クライアントから収集して、Azure Monitor メトリック データベースに格納します。 | [REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する](metrics-store-custom-rest-api.md) |
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="other-services"></a>その他のサービス
+Azure のその他のサービスでは、Azure Monitor データ プラットフォームにデータが書き込まれます。 そのため、これらのサービスによって収集されたデータは、Azure Monitor によって収集されるデータと一緒に分析でき、同じ分析ツールと可視化ツールを活用することができます。
+
+| サービス | 宛先 | 説明 | リファレンス |
+|:---|:---|:---|:---|
+| [Azure Security Center](/azure/security-center/) | Azure Monitor ログ | Azure Security Center によって収集されたセキュリティ データは Log Analytics ワークスペースに格納され、Azure Monitor によって収集される他のログ データと一緒に分析することができます。  | [Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md) |
+| [Azure Sentinel](/azure/sentinel/) | Azure Monitor ログ | Azure Sentinel によってさまざまなデータ ソースから収集されたデータは Log Analytics ワークスペースに格納され、Azure Monitor によって収集される他のログ データと一緒に分析することができます。  | [データ ソースの接続](/azure/sentinel/quickstart-onboard) |
+
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor によって収集される監視データの種類](data-platform.md)と、このデータを表示および分析する方法の詳細を確認します。
+- [Azure リソースからのデータが格納されるさまざまな場所](data-locations.md)とそのアクセス方法を列挙します。 

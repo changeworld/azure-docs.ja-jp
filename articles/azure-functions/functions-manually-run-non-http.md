@@ -1,20 +1,16 @@
 ---
 title: HTTP によってトリガーされない Azure 関数を手動で実行する
 description: HTTP 要求を使用して HTTP によってトリガーされない Azure 関数を実行する
-services: functions
-keywords: ''
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.topic: tutorial
+ms.topic: article
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466884"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80892361"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
 
@@ -41,11 +37,11 @@ HTTP によってトリガーされない関数を実行するには、関数を
 
 ## <a name="get-the-functions-master-key"></a>関数のマスター キーを取得する
 
-Azure portal で関数に移動し、**[管理]** をクリックし、**[ホスト キー]** セクションを見つけます。 *_master* 行で **[コピー]** ボタンをクリックして、マスター キーをクリップボードにコピーします。
+Azure portal で関数に移動し、 **[管理]** をクリックし、 **[ホスト キー]** セクションを見つけます。 *_master* 行で **[コピー]** ボタンをクリックして、マスター キーをクリップボードにコピーします。
 
 ![関数の [管理] 画面からマスター キーをコピーする](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-マスター キーをコピーしたら、関数名をクリックしてコード ファイル ウィンドウに戻ります。 次に、**[ログ]** タブをクリックします。Postman から手動で関数を実行すると、ログに記録された関数のメッセージがここに表示されます。
+マスター キーをコピーしたら、関数名をクリックしてコード ファイル ウィンドウに戻ります。 次に、 **[ログ]** タブをクリックします。Postman から手動で関数を実行すると、ログに記録された関数のメッセージがここに表示されます。
 
 > [!CAUTION]  
 > マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、アプリケーションに配布したりしないでください。
@@ -57,13 +53,13 @@ Postman を開き、次の手順を実行します。
 1. **[URL] テキスト ボックスに要求の場所**を入力します。
 2. HTTP メソッドが **[POST]** に設定されていることを確認します。
 3. **[ヘッダー]** タブを**クリック**します。
-4. 最初の **[キー]** に「**x-functions-key**」と入力し、**[値]** ボックスに (クリップボードから) マスター キーを貼り付けます。
-5. 2 番目の **[キー]** に「**Content-Type**」と入力し、**[値]** に「**application/json**」と入力します。
+4. 最初の **[キー]** に「**x-functions-key**」と入力し、 **[値]** ボックスに (クリップボードから) マスター キーを貼り付けます。
+5. 2 番目の **[キー]** に「**Content-Type**」と入力し、 **[値]** に「**application/json**」と入力します。
 
     ![Postman のヘッダーの設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
 6. **[本文]** タブを**クリック**します。
-7. 要求の本文に「**{ "input": "test" }**」と入力します。
+7. 要求の本文に「 **{ "input": "test" }** 」と入力します。
 
     ![Postman の本文の設定](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
@@ -77,7 +73,7 @@ Postman から **202 Accepted** の状態が報告されます。
 
 ![手動呼び出しの関数ログの結果](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Functions のコードをテストするための戦略](./functions-test-a-function.md)
 - [Azure Functions の Event Grid トリガーのローカル デバッグ](./functions-debug-event-grid-trigger-local.md)

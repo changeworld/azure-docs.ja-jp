@@ -1,27 +1,26 @@
 ---
 title: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする | Microsoft Docs
-description: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイします
+description: Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77616705"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して、SQL Server および Windows オペレーティング システムで実行されている SAP IDES システムを Azure にデプロイする方法について説明します。 手順をスクリーンショットに示します。 別のソリューションをデプロイするには、同じ手順に従います。
@@ -49,7 +48,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
    > [!NOTE]
    >  次の手順では、Resource Manager デプロイメント用の SAP CAL アカウントを作成する方法を示します。 クラシック デプロイ モデルにリンクされている SAP CAL アカウントが既にある場合は、次の手順に従って新しい SAP CAL アカウントを作成する "*必要があります*"。 新しい SAP CAL アカウントは、Resource Manager モデルにデプロイする必要があります。
 
-1. 新しい SAP CAL アカウントを作成する方法として、**[Accounts]\(アカウント\)** ページに次の 2 つの選択肢が用意されています。 
+1. 新しい SAP CAL アカウントを作成する方法として、 **[Accounts]\(アカウント\)** ページに次の 2 つの選択肢が用意されています。 
 
     a. **[Microsoft Azure (classic)]\(Microsoft Azure (クラシック)\)** はクラシック デプロイ モデルで、推奨されなくなりました。
 
@@ -57,7 +56,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
     ![SAP CAL アカウント](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
-    Resource Manager モデルでデプロイするには、**[Microsoft Azure]** を選択します。
+    Resource Manager モデルでデプロイするには、 **[Microsoft Azure]** を選択します。
 
     ![SAP CAL アカウント](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
@@ -65,7 +64,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
     ![SAP CAL のサブスクリプション ID](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-1. SAP CAL を承認し、定義した Azure サブスクリプションにデプロイするには、**[Authorize]\(承認\)** をクリックします。 次のページがブラウザー タブに表示されます。
+1. SAP CAL を承認し、定義した Azure サブスクリプションにデプロイするには、 **[Authorize]\(承認\)** をクリックします。 次のページがブラウザー タブに表示されます。
 
     ![Internet Explorer のクラウド サービスのサインイン](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
@@ -75,13 +74,13 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
 1. **[Accept]\(受け入れる\)** をクリックします。 承認が成功した場合は、SAP CAL アカウントの定義が再び表示されます。 短い時間が経過すると、承認プロセスが成功したことを示すメッセージが表示されます。
 
-1. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに**ユーザー ID** を入力し、**[Add]\(追加\)** をクリックします。 
+1. ユーザーに新しく作成した SAP CAL アカウントを割り当てるには、右のテキスト ボックスに**ユーザー ID** を入力し、 **[Add]\(追加\)** をクリックします。 
 
     ![アカウントからユーザーへの関連付け](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
-1. アカウントを SAP CAL へのサインインに使用するユーザーに関連付けるには、**[Review]\(レビュー\)** をクリックします。 
+1. アカウントを SAP CAL へのサインインに使用するユーザーに関連付けるには、 **[Review]\(レビュー\)** をクリックします。 
 
-1. ユーザーと新しく作成した SAP CAL アカウントの間の関連付けを作成するには、**[Create]\(作成\)** をクリックします。
+1. ユーザーと新しく作成した SAP CAL アカウントの間の関連付けを作成するには、 **[Create]\(作成\)** をクリックします。
 
     ![ユーザーからアカウントへの関連付け](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
 
@@ -94,7 +93,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 > Windows や SQL Server に基づく SAP IDES ソリューションをデプロイする前に、SAP CAL サブスクリプションにサインアップする必要がある場合があります。 サインアップしないと、概要ページでソリューションが **[ロック]\(Locked\)** と表示される場合があります。
 
 ### <a name="deploy-a-solution"></a>ソリューションのデプロイ
-1. SAP CAL アカウントをセットアップしたら、**[The SAP IDES solution on Windows and SQL Server]\(Windows および SQL Server 上の SAP IDES ソリューション\)** ソリューションを選択します。 **[Create Instance]\(インスタンスの作成\)** をクリックし、使用状況と使用条件を確認します。 
+1. SAP CAL アカウントをセットアップしたら、 **[The SAP IDES solution on Windows and SQL Server]\(Windows および SQL Server 上の SAP IDES ソリューション\)** ソリューションを選択します。 **[Create Instance]\(インスタンスの作成\)** をクリックし、使用状況と使用条件を確認します。 
 
 1. **[Basic Mode: Create Instance]\(基本モード: インスタンスの作成\)** ページでは、次のことを行う必要があります。
 
@@ -104,7 +103,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
     c.  ソリューションのマスター **パスワード**を、次のように入力します。
 
-    ![SAP CAL の [Basic Mode: Create Instance]\(基本モード: インスタンスの作成\)](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL の基本モード: インスタンスの作成](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. **Create** をクリックしてください。 ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、状態がアクティブであることが示され、使用する準備が整います。 
 
@@ -114,11 +113,11 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
     ![リソース グループ オブジェクト](./media/cal-ides-erp6-ehp7-sp3-sql/ides_resource_group.PNG)
 
-1. SAP CAL ポータルで、デプロイ済みのインスタンスにアクセスし、**[Connect]\(接続\)** をクリックします。 次のポップアップ ウィンドウが表示されます。 
+1. SAP CAL ポータルで、デプロイ済みのインスタンスにアクセスし、 **[Connect]\(接続\)** をクリックします。 次のポップアップ ウィンドウが表示されます。 
 
     ![インスタンスに接続する](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
 
-1. いずれかのオプションを使用してデプロイ済みのシステムに接続する前に、**[Getting Started Guide]\(ファースト ステップ ガイド\)** をクリックします。 ドキュメントによって各接続メソッドのユーザーが命名されます。 これらのユーザーのパスワードはデプロイ プロセスの最初に定義したマスター パスワードに設定されます。 ドキュメントにはより高機能なユーザーがパスワードとともに列挙されており、これを使用してデプロイ済みのシステムにサインインできます。
+1. いずれかのオプションを使用してデプロイ済みのシステムに接続する前に、 **[Getting Started Guide]\(ファースト ステップ ガイド\)** をクリックします。 ドキュメントによって各接続メソッドのユーザーが命名されます。 これらのユーザーのパスワードはデプロイ プロセスの最初に定義したマスター パスワードに設定されます。 ドキュメントにはより高機能なユーザーがパスワードとともに列挙されており、これを使用してデプロイ済みのシステムにサインインできます。
 
     ![SAP のようこそドキュメント](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 

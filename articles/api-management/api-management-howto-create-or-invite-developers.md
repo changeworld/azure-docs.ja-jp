@@ -9,20 +9,19 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 362df8cee163bcd2d1dac73c650e42ee4f0f7751
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920101"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81260974"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
 
-API Management では、開発者は、API Management を使用して公開された API のユーザーになります。 このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。 プログラムによるユーザー アカウントの管理については、「[API Management REST (API Management REST)](/rest/api/apimanagement/)」リファレンスの[ユーザー エンティティ](https://docs.microsoft.com/rest/api/apimanagement/user)に関するドキュメントを参照してください。
+API Management では、開発者は、API Management を使用して公開された API のユーザーになります。 このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。 プログラムによるユーザー アカウントの管理については、「[API Management REST (API Management REST)](/rest/api/apimanagement/)」リファレンスの[ユーザー エンティティ](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)に関するドキュメントを参照してください。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -32,7 +31,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-developer"> </a>新しい開発者の作成
+## <a name="create-a-new-developer"></a><a name="create-developer"> </a>新しい開発者を作成する
 
 新しいユーザーを追加するには、このセクションの手順に従います。
 
@@ -43,9 +42,9 @@ API Management では、開発者は、API Management を使用して公開さ�
 
     ![新しいユーザーの追加](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「[グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
+既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「 [グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
 
-## <a name="invite-developer"> </a>開発者の招待
+## <a name="invite-a-developer"></a><a name="invite-developer"> </a>開発者を招待する
 開発者を招待するには、このセクションの手順に従います。
 
 1. 画面の左にある **[ユーザー]** タブを選択します。
@@ -53,11 +52,11 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 確認メッセージが表示されます。ただし、新しく招待した開発者は、招待を受け入れるまで一覧に表示されません。 
 
-開発者を招待すると、招待された開発者に電子メールが送信されます。 この電子メールはテンプレートを使用して生成され、カスタマイズできます。 詳細については、「[電子メール テンプレートの構成][Configure email templates]」を参照してください。
+開発者を招待すると、招待された開発者に電子メールが送信されます。 この電子メールはテンプレートを使用して生成され、カスタマイズできます。 詳細については、「 [電子メール テンプレートの構成][Configure email templates]」を参照してください。
 
 招待が受け入れられると、そのアカウントがアクティブになります。
 
-## <a name="block-developer"> </a> 開発者アカウントの非アクティブ化および再アクティブ化
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> 開発者アカウントを非アクティブ化するか再アクティブ化する
 
 既定では、新しく作成または招待された開発者アカウントは **アクティブ**になります。 開発者アカウントを非アクティブ化するには、 **[ブロック]** をクリックします。 ブロックされている開発者アカウントを再アクティブ化するには、 **[アクティブ化]** をクリックします。 ブロックされている開発者アカウントは、開発者ポータルにアクセスすることも、API を呼び出すこともできません。 ユーザー アカウントを削除するには、 **[削除]** をクリックします。
 
@@ -69,10 +68,10 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ## <a name="reset-a-user-password"></a>ユーザーのパスワードのリセット
 
-プログラムによってユーザー アカウントを操作するには、「[API Management REST (API Management REST)](/rest/api/apimanagement/)」リファレンスの[ユーザー エンティティ](https://docs.microsoft.com/rest/api/apimanagement/user)に関するドキュメントを参照してください。 ユーザー アカウントのパスワードを特定の値にリセットするには、 [ユーザーの更新](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 操作を使用して目的のパスワードを指定します。
+プログラムによってユーザー アカウントを操作するには、「[API Management REST API](/rest/api/apimanagement/)」リファレンスのユーザー エンティティに関するドキュメントを参照してください。 ユーザー アカウントのパスワードを特定の値にリセットするには、 [ユーザーの更新](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 操作を使用して目的のパスワードを指定します。
 
-## <a name="next-steps"> </a>次のステップ
-開発者アカウントを作成した後は、このアカウントをロールに関連付け、成果物と API をサブスクライブできます。 詳細については、[グループを作成して使用する方法][How to create and use groups]に関するページを参照してください。
+## <a name="next-steps"></a><a name="next-steps"> </a>次の手順
+開発者アカウントを作成した後は、このアカウントをロールに関連付け、成果物と API をサブスクライブできます。 詳細については、「 [How to create and use groups (グループを作成して使用する方法)][How to create and use groups]」をご覧ください。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

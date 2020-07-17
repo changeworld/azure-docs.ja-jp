@@ -3,20 +3,20 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: cdn
 author: SyntaxC4
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: cfowler
+ms.date: 11/15/2019
+ms.author: magattus
 ms.custom: include file
-ms.openlocfilehash: a0edb0a2017466ded4709dbf09dbb8ff940b8f20
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5c6f79cb7ad0a31eb3461d6d8e54307537f0491e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125433"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "74284129"
 ---
 > [!IMPORTANT]
-> これは、**Azure CDN Premium from Verizon**のみの機能です。Azure CDN Standard 製品では利用できません。 CDN の機能の比較については、「[Azure CDN product features](../articles/cdn/cdn-features.md)」(Azure CDN 製品の機能) を参照してください。 
+> これは、**Azure CDN Premium from Verizon** 独自の機能です。**Microsoft の Azure CDN** のルールを構成するには [Standard ルール エンジン](../articles/cdn/cdn-standard-rules-engine-reference.md)を使用してください。 **Azure CDN from Akamai** では、高度なルールは使用できません。 CDN の機能の完全な比較については、[Azure CDN 製品の機能](../articles/cdn/cdn-features.md)に関する記事を参照してください。 
 > 
 > 
 

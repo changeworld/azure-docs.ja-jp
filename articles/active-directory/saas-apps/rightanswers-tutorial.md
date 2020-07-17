@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と RightAnswers の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と RightAnswers の統合 | Microsoft Docs'
 description: Azure Active Directory と RightAnswers の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: b45c88ddf3e4a5781e48641d26a9487e5861880c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b83c080b692802c4361165f5f60b45172969abaa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890032"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475738"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>チュートリアル:Azure Active Directory と RightAnswers の統合
+# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>チュートリアル: Azure Active Directory と RightAnswers の統合
 
 このチュートリアルでは、RightAnswers と Azure Active Directory (Azure AD) を統合する方法について説明します。
 RightAnswers と Azure AD の統合には、次の利点があります。
@@ -110,7 +110,7 @@ RightAnswers で Azure AD シングル サインオンを構成するには、�
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.rightanswers.com:<identifier>/portal`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[RightAnswers クライアント サポート チーム](https://www.rightanswers.com/contact-us/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[RightAnswers クライアント サポート チーム](https://uplandsoftware.com/rightanswers/contact/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -128,7 +128,7 @@ RightAnswers で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-rightanswers-single-sign-on"></a>RightAnswers シングル サインオンの構成
 
-**RightAnswers** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [RightAnswers サポート チーム](https://www.rightanswers.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**RightAnswers** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [RightAnswers サポート チーム](https://uplandsoftware.com/rightanswers/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!NOTE]
 > RightAnswers サポート チームが、実際に SSO を構成する必要があります。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
@@ -191,7 +191,7 @@ Azure AD ユーザーが RightAnswers にサインインできるようにする
 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
 
 > [!NOTE]
-> RightAnswers から提供されている他の RightAnswers ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の RightAnswers ユーザー アカウント作成ツールや、RightAnswers から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

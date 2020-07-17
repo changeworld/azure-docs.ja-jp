@@ -1,61 +1,104 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Security Center for IoT プレビューのドキュメント
+### YamlMime:Landing
+title: Azure Security Center for IoT のドキュメント
+summary: Azure Security Center for IoT は、包括的な IoT デバイス脅威保護を提供する Azure ベースのクラウド セキュリティ サービスです。
 metadata:
-  title: Azure Security Center for IoT プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
-  services: asc-for-iot
-  author: mlottner
-  manager: rkarlin
-  ms.service: ascforiot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Azure Security Center for IoT のドキュメント
+  description: Azure Security Center for IoT (Azure ベースのクラウド セキュリティ サービス) が包括的な IoT デバイス脅威保護を提供するしくみについて説明します。
+  services: service
+  ms.service: asc-for-iot
   ms.topic: landing-page
-  ms.date: 03/26/19
-  ms.author: rkarlin
-abstract:
-  description: "Azure Security Center (ASC) for IoT プレビューを使用して、既存のサイバーセキュリティ ビューを IoT ソリューション全体に拡張しましょう。 Azure に関連するすべてのリソースのセキュリティを完全に概観できるようになります。 迅速なデプロイ オプションがあり、IoT Hub モジュール ツインとの完全な統合が行われるため、幅広いカスタム オプションを利用し、現在のデバイス管理ツールと容易に統合できます。\_"
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: ASC for IoT に対して IoT Hub を有効にする方法、ASC for IoT エージェントをインストールする方法、データと潜在的な脅威を視覚化する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: ASC for IoT を有効にする
-            href: /azure/asc-for-iot/quickstart-onboard-iot-hub
-          - image:
-              src: media/index/get-started.svg
-            text: ASC for IoT を使用して作業を開始する
-            href: /azure/asc-for-iot/getting-started
-  - title: ハウツー ガイド
-    items:
-      - type: paragraph
-        text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからデバイスを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">ASC for IoT を使用して脅威を検出する</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure のセキュリティの概要
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=iotsecurity">サービスの更新情報</a>'
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/23/2019
+  ms.openlocfilehash: 5a9f5c9d919c6c30c6318749ad2a62d40865e573
+  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/07/2020
+  ms.locfileid: "82890901"
+landingContent:
+- title: Azure Security Center for IoT について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Security Center for IoT とは
+      url: overview.md
+    - text: ソリューションの計画
+      url: service-prerequisites.md
+  - linkListType: architecture
+    links:
+    - text: Azure Security Center for IoT のアーキテクチャの理解
+      url: architecture.md
+    - text: Azure Security Center for IoT エージェント
+      url: security-agent-architecture.md
+    - text: Edge のセキュリティ モジュール
+      url: security-edge-architecture.md
+- title: Azure Security Center for IoT を IoT Hub にオンボードする
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Security Center for IoT の使用を開始する
+      url: getting-started.md
+    - text: IoT Hub
+      url: iot-hub-integration.md
+    - text: セキュリティ エージェント
+      url: security-agents.md
+- title: ソリューションを構成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: IoT Hub 内で Azure Security Center for IoT を有効にする
+      url: quickstart-onboard-iot-hub.md
+    - text: ソリューションを構成する
+      url: quickstart-configure-your-solution.md
+    - text: Azure Security Center for IoT モジュール ツインを作成する
+      url: quickstart-create-security-twin.md
+    - text: カスタムのセキュリティのアラートを作成する
+      url: quickstart-create-custom-alerts.md
+- title: ソリューションをカスタマイズする
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: エージェントを選択する
+      url: how-to-deploy-agent.md
+    - text: Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
+      url: how-to-deploy-windows-cs.md
+    - text: Linux 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
+      url: how-to-deploy-linux-cs.md
+    - text: Linux 用の Azure Security Center for IoT の C ベースのセキュリティ エージェントをデプロイする
+      url: how-to-deploy-linux-c.md
+    - text: Edge のセキュリティ モジュールをデプロイする
+      url: how-to-deploy-edge.md
+    - text: セキュリティ エージェントを構成する
+      url: how-to-agent-configuration.md
+    - text: 独自のセキュリティ メッセージを送信する
+      url: how-to-send-security-messages.md
+    - text: 未加工のセキュリティ データにアクセスする
+      url: how-to-security-data-access.md
+    - text: デバイスを調査する
+      url: how-to-investigate-device.md
+- title: セキュリティ エージェントのトラブルシューティングを行う
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: セキュリティ エージェントのトラブルシューティング ガイド (Linux)
+      url: troubleshoot-agent.md
+    - text: LocalConfiguration.json ファイルについて - C エージェント
+      url: azure-iot-security-local-configuration-c.md
+    - text: ローカル構成ファイルについて - C# エージェント
+      url: azure-iot-security-local-configuration-csharp.md
+- title: Azure Security Center for IoT ソリューションのリソース
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Azure Security Center for IoT とは
+      url: https://youtu.be/pq5uSp9u_x0
+    - text: Azure Security Center for IoT の概要
+      url: https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: resources-frequently-asked-questions.md
+    - text: 価格と関連コスト
+      url: concept-pricing.md

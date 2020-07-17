@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
+title: チュートリアル:REST API と C# を使用して画像の詳細を抽出する - Bing Image Search
 titleSuffix: Azure Cognitive Services
-description: この記事では、Bing Image Search API を使用して画像の詳細を抽出する C# アプリケーションを作成します。
+description: このチュートリアルでは、Bing Image Search API を使用して画像の詳細を抽出する C# アプリケーションを作成します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790045"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75383877"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 
@@ -42,7 +42,7 @@ Bing Image Search API で使用できる[エンドポイント](https://docs.mic
 
 ## <a name="construct-an-image-details-search-request"></a>画像の詳細の検索要求を構築する
 
-以下は、要求の本文に画像データがある POST 要求を受け取る `/details` エンドポイントです。
+以下は、要求の本文に画像データがある POST 要求を受け取る `/details` エンドポイントです。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -98,7 +98,7 @@ var searchResult = new SearchResult()
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>要求に画像の分析情報トークンを使用する
 
-`POST` の結果で返された `ImageInsightsToken` を使用するには、`GET` 要求に追加することができます。 例: 
+`POST` の結果で返された `ImageInsightsToken` を使用するには、`GET` 要求に追加することができます。 次に例を示します。
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2
@@ -106,7 +106,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 画像内に識別可能な人物または場所が含まれる場合、この要求はそれらに関する情報を返します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリで画像と検索オプションを表示する](tutorial-bing-image-search-single-page-app.md)

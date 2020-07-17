@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric ステートフル サービスの Reliable Collection の概要 | Microsoft Docs
+title: Reliable Collections の概要
 description: Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
-ms.date: 1/3/2019
-ms.author: aljo
-ms.openlocfilehash: 4ed76b207db4712058b5524cd1b31fd65b0e19a4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664410"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398430"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric ステートフル サービスの Reliable Collection の概要
 
@@ -35,10 +24,9 @@ Reliable Collection とその他の高可用性テクノロジ (Redis、Azure Ta
 Reliable Collection は **System.Collections** クラスが自然に進化したものと考えることができます。つまり、開発者の作業を複雑にせずに、クラウド アプリケーションや複数コンピューター アプリケーション向けに設計された一連の新しいコレクションです。 そのため Reliable Collection は
 
 * レプリケートされる:状態の変更がレプリケートされるため、高可用性を実現できる。
-* 永続化される:データがディスクに永続化されるため、大規模な障害 (例: データセンターの電源障害) が発生しても影響を受けない。
-* 書き込みが永続化されてレプリケートされるため、揮発性の ReliableDictionary、ReliableQueueや、メモリ内のデータのみを永続化する信頼性の高いその他のコレクションは作成できません。
 * 非同期:API は非同期であるため、IO の実行時にスレッドがブロックされない。
 * トランザクション:API ではトランザクションの抽象化が使用できるため、サービス内で複数の Reliable Collection を簡単に管理できる。
+* 永続化または揮発性:データはディスクに永続化できるため、大規模な障害 (例: データセンターの電源障害) が発生しても影響を受けない。 一部の Reliable Collection では、揮発性モードもサポートされています ([注意事項](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)あり)。このモードでは、レプリケートされたメモリ内キャッシュなど、すべてのデータがメモリ内に保持されます。
 
 Reliable Collection では追加設定なしで強力な整合性が保証されるため、アプリケーションの状態を判断するのが簡単です。
 強力な整合性は、プライマリ レプリカを含むレプリカのマジョリティ クォーラムにトランザクション全体が適用された後にのみ、トランザクション コミットが完了するようにすることで実現されています。
@@ -56,17 +44,17 @@ Reliable Collection API は同時実行コレクション API ( **System.Collect
 * [リライアブル キュー](https://msdn.microsoft.com/library/azure/dn971527.aspx):レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。 **ConcurrentQueue**と同様に、値には任意の型を使用できます。
 * [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md):高スループットのためにレプリケートされたトランザクションの非同期のベスト エフォートで順序付けされるキューを表します。 **ConcurrentQueue** と同様に、値には任意の型を使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Reliable Collection のガイドラインと推奨事項](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
 * [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * データの管理
   * [バックアップと復元](service-fabric-reliable-services-backup-restore.md)
-  * [Notifications](service-fabric-reliable-services-notifications.md)
+  * [通知](service-fabric-reliable-services-notifications.md)
   * [Reliable Collection のシリアル化](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他
-  * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
   * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

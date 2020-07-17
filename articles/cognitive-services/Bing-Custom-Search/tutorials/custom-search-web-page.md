@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:カスタム検索 Web ページを作成する - Bing Custom Search
-titlesuffix: Azure Cognitive Services
-description: カスタム検索インスタンスを構成して、Web ページに統合する方法について説明します。
+titleSuffix: Azure Cognitive Services
+description: このチュートリアルでは、カスタム Bing Search インスタンスを構成して、Web ページに統合する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 0870983fe9f0ae64090652f02c526a370064b8ab
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595891"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "78943910"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 
@@ -34,7 +34,7 @@ Bing Custom Search を使用すると、関心のあるトピックに合わせ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)」を参照してください。
+- チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、Azure portal で [Bing Custom Search リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services)を使用することもできます。
 - まだ Visual Studio 2017 以降をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
 
 ## <a name="create-a-custom-search-instance"></a>カスタム検索インスタンスの作成
@@ -47,7 +47,7 @@ Bing Custom Search インスタンスを作成するには:
   
 3. Microsoft アカウント (MSA) を使用して、ポータルにサインインします。 MSA を持っていない場合は、 **[Microsoft アカウントの作成]** をクリックします。 初めてポータルを使用する場合、データにアクセスするための権限を求められます。 **[はい]** をクリックします。  
   
-4. サインイン後、 **[New custom search]** (新しいカスタム検索) をクリックします。 **[Create a new custom search instance]** (新しいカスタム検索インスタンスの作成) ウィンドウで、検索で返されるコンテンツの種類を説明するわかりやすい名前を入力します。 名前はいつでも変更できます。  
+4. サインイン後、 **[New custom search]** (新しいカスタム検索) をクリックします。 **[Create a new custom search instance]\(新しいカスタム検索インスタンスの作成\)** ウィンドウで、検索で返されるコンテンツの種類を説明するわかりやすい名前を入力します。 名前はいつでも変更できます。  
   
    ![新しいカスタム検索インスタンスの作成ボックスのスクリーンショット](../media/newCustomSrch.png)  
   
@@ -60,11 +60,11 @@ Bing Custom Search インスタンスを作成するには:
 
 特定の Web サイトや URL からの結果を含めるには、それらを **[アクティブ]** タブに追加します。
 
-1.  **[構成]** ページで **[アクティブ]** タブをクリックし、検索に含める 1 つまたは複数の Web サイトの URL を入力します。
+1.       **[構成]** ページで **[アクティブ]** タブをクリックし、検索に含める 1 つまたは複数の Web サイトの URL を入力します。
 
     ![定義エディターのアクティブ タブのスクリーンショット](../media/customSrchEditor.png)
 
-2.  インスタンスが結果を返すことを確認するには、右側のプレビュー ウィンドウにクエリを入力します。 Bing は、インデックスが付けられている公開 Web サイトの結果のみを返します。
+2.       インスタンスが結果を返すことを確認するには、右側のプレビュー ウィンドウにクエリを入力します。 Bing は、インデックスが付けられている公開 Web サイトの結果のみを返します。
 
 ## <a name="add-blocked-entries"></a>ブロックするエントリの追加
 
@@ -127,7 +127,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ホステッド UI は、2 つの方法で使用することができます。  
 
-- オプション 1:提供される JavaScript スニペットをアプリケーションに統合する。
+- オプション 1: 提供される JavaScript スニペットをアプリケーションに統合する。
 - オプション 2:提供される HTML エンドポイントを使用する。
 
 このチュートリアルの残りの部分では、**オプション 1: Javascript スニペット**について説明します。  
@@ -209,7 +209,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ![カスタム検索結果のスクリーンショット](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Custom Search エンドポイントを呼び出す (C#)](../call-endpoint-csharp.md)

@@ -1,25 +1,25 @@
 ---
 title: 目視レビューによるビデオのモデレート - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: マシンによるビデオのモデレートと目視レビュー ツールを使用して、不適切なコンテンツをモデレートします
+titleSuffix: Azure Cognitive Services
+description: コンピューター支援型ビデオ モデレーションとレビュー ツールを使用して、不適切なコンテンツをモデレートします
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.author: sajagtap
-ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228117"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404252"
 ---
 # <a name="video-moderation-with-human-review"></a>目視レビューによるビデオのモデレート
 
-Content Moderator のマシンによる[ビデオのモデレート](video-moderation-api.md)と[目視レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツ (明示的) やわいせつなコンテンツ (推奨) のビデオとトランスクリプトをモデレートし、ビジネスに最適な結果を取得します。
+Content Moderator のコンピューター支援型[ビデオ モデレーション](video-moderation-api.md)と[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツ (明示的) やわいせつなコンテンツ (推奨) のビデオとトランスクリプトをモデレートし、ビジネスに最適な結果を取得します。
 
 ## <a name="video-trained-classifier-preview"></a>ビデオ トレーニング分類子 (プレビュー)
 
@@ -94,13 +94,13 @@ Content Moderator のマシンによる[ビデオのモデレート](video-moder
 
 ![ビデオ レビュー ツールのフレーム ビュー](images/video-review-frames-view-apply-tags.PNG)
 
-## <a name="transcript-moderation"></a>トランスクリプトのモデレート
+## <a name="transcript-moderation"></a>トランスクリプトのモデレーション
 
 通常、ビデオにはボイスオーバーがあり、これも不快感を与える音声に対するモデレートが必要です。 Azure Media Indexer サービスを使用して、音声をテキストに変換し、Content Moderator のレビュー API を使用して、レビュー ツール内でテキストのモデレートを行うためにトランスクリプトを送信します。
 
 ![ビデオ レビュー ツールのトランスクリプト ビュー](images/video-review-transcript-view.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ビデオのモデレートのクイック スタート](video-moderation-api.md)を開始する。
 - モデレート済みの出力からレビュー担当者のために[ビデオのレビュー](video-reviews-quickstart-dotnet.md)を生成する方法を学ぶ。

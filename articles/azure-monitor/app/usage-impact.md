@@ -1,24 +1,17 @@
 ---
 title: Azure Application Insights の使用の影響 | Microsoft Docs
 description: さまざまなプロパティがアプリの各部のコンバージョン率に潜在的に及ぼす影響について分析します。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 8efab173f464b67c0c88c87ee28ea7fa19980501
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154999"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797901"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -46,7 +39,7 @@ ms.locfileid: "54154999"
 ![影響ツール](./media/usage-impact/0002-dropdown.png)
 
 1. **[For the page view]\(ページ ビューについて\)** ドロップダウンからページ ビューを選択します。
-2. **[次を分析]** ドロップダウンを既定の選択である **[期間]** のままにします (このコンテキストでは、**[期間]** は**ページの読み込み時間**のエイリアスです)。
+2. **[次を分析]** ドロップダウンを既定の選択である **[期間]** のままにします (このコンテキストでは、 **[期間]** は**ページの読み込み時間**のエイリアスです)。
 3. **[次の使用への影響]** ドロップダウンで、カスタム イベントを選択します。 このイベントは、手順 1. で選択したページ ビューの UI 要素に対応する必要があります。
 
 ![結果のスクリーンショット](./media/usage-impact/0003-results.png)
@@ -63,7 +56,7 @@ ms.locfileid: "54154999"
 2. **[次を分析]** ドロップダウンで [国またはリージョン] を選択します
 3. **[次の使用への影響]** ドロップダウンでは、手順 1. で選択したページ ビューの UI 要素に対応するカスタム イベントを選択します。
 
-この場合の結果は、最初の例のような連続する x 軸のモデルに適合しません。 その代わり、セグメント化されたファネルに似た視覚化が表示されます。 **[Usage]\(使用\)** で並べ替えて、国に基づいたカスタム イベントへのコンバージョンのバリエーションを表示します。
+この場合の結果は、最初の例のような連続する x 軸のモデルに適合しません。 その代わり、セグメント化されたファネルに似た視覚化が表示されます。 **[Usage]\(使用\)** で並べ替えて、国や地域に基づいたカスタム イベントへのコンバージョンのバリエーションを表示します。
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>影響ツールによってこれらのコンバージョン率が計算される方法
@@ -85,12 +78,12 @@ _B_ = 選択する 2 つ目のページ ビュー/カスタム イベント (**�
 
 最終的に影響がどのように計算されるかは、メトリックにより分析しているのか、それともディメンションにより分析しているのかに基づいて異なります。 メトリックでは、サブセッション内のすべての _A_ は平均化されます。 一方ディメンションでは、各 _A_ の値は、_B_ に割り当てられた値への _1/N_ に貢献します。ここで、_N_ はサブセッション内の _A_ の数です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../../azure-monitor/app/usage-workbooks.md)
+    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)

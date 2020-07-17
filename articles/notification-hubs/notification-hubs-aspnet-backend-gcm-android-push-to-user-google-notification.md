@@ -1,11 +1,11 @@
 ---
-title: Azure Notification Hubs を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs を使用して特定の Android アプリケーションに通知を送信する
 description: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する方法について説明します。
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,22 +14,24 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: d125e0c0818efbc6ec8f317122859411a37a0d20
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232753"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127360"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs および Google Cloud Messaging を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する (非推奨)
+# <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging (非推奨) を使用して特定の Android ユーザーにプッシュ通知を送信する
 
 > [!WARNING]
 > 2018 年 4 月 10 日に、Google は Google Cloud Messaging (GCM) を非推奨としました。 GCM サーバーおよびクライアント API は非推奨となり、早ければ 2019 年 5 月 29日に削除されます。 詳しくは、[GCM and FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq) を参照してください。
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 ASP.NET WebAPI バックエンドは、[アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)に関するガイダンス記事に示すように、クライアントを認証したり、通知を生成したりするために使用されます。 このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-gcm-get-started.md)」で作成した通知ハブが基になっています。
+このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 ASP.NET WebAPI バックエンドは、[アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)に関するガイダンス記事に示すように、クライアントを認証したり、通知を生成したりするために使用されます。 このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-gcm-get-started.md)」で作成された Android アプリケーションを更新します。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -40,7 +42,7 @@ ms.locfileid: "65232753"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行する前に、「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-gcm-get-started.md)」を完了してください。
+「[チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-gcm-get-started.md)」を完了してください。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -322,7 +324,7 @@ ms.locfileid: "65232753"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. その後、**[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
+9. その後、 **[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -470,7 +472,7 @@ ms.locfileid: "65232753"
 
 1. デバイスまたは Android Studio を使用したエミュレーターでアプリケーションを実行します。
 2. Android アプリケーションで、ユーザー名とパスワードを入力します。 どちらも同じ文字列値にする必要があり、空白や特殊文字が含まれることはありません。
-3. Android アプリケーションで、 **[サインイン]** をクリックします。 「 **Logged in and registered (ログイン・登録済み)**」というトースト メッセージが表示されるまで待機します。 これは、**[Send Notification] (通知の送信)** ボタンを有効にします。
+3. Android アプリケーションで、 **[サインイン]** をクリックします。 「 **Logged in and registered (ログイン・登録済み)** 」というトースト メッセージが表示されるまで待機します。 これは、 **[Send Notification] (通知の送信)** ボタンを有効にします。
 
     ![][A2]
 4. トグル ボタンをクリックして、アプリを実行し、ユーザーを登録したすべてのプラットフォームを有効にします。
@@ -478,7 +480,7 @@ ms.locfileid: "65232753"
 6. プッシュ通知メッセージとしてユーザーが受信するメッセージを入力します。
 7. **[Send Notification (通知の送信)]** をクリックします。  一致するユーザー名のタグで登録されている各デバイスがプッシュ通知を受信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

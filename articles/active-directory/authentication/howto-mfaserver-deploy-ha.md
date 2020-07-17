@@ -1,26 +1,29 @@
 ---
-title: 高可用性のための Azure MFA Server の構成 - Azure Active Directory
+title: Azure MFA Server の高可用性 - Azure Active Directory
 description: 高可用性を提供する構成で Azure Multi-Factor Authentication Server の複数のインスタンスをデプロイします。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547007"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80653375"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 
 Azure サーバーの MFA のデプロイで高可用性を実現するには、複数の MFA サーバーをデプロイする必要があります。 このセクションでは、Azure MFS サーバーのデプロイで高可用性の目標を達成するための負荷分散設計について説明します。
+
+> [!IMPORTANT]
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="mfa-server-overview"></a>MFA サーバーの概要
 
@@ -38,7 +41,7 @@ AD による認証が成功した後、MFA サーバーは MFA サービスと�
 
 MFA マスター サーバーがオフラインになった場合、認証はまだ処理できますが、MFA データベースへの変更を必要とする操作は処理できません。 (例: ユーザーの追加、セルフサービス PIN の変更、ユーザー情報の変更、ユーザー ポータルへのアクセスなど)
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 Azure MFA サーバーとその関連コンポーネントの負荷分散では、次の重要な点を考慮してください。
 
@@ -63,12 +66,12 @@ Azure MFA サーバーとその関連コンポーネントの負荷分散では�
    ![Azure MFA サーバー - アプリケーション サーバーの HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > RPC では動的ポートが使われるため、RPC で使われる可能性がある動的ポートの範囲までファイアウォールを開くことはお勧めしません。 MFA アプリケーション サーバー**間**にファイアウォールがある場合は、下位サーバーとマスター サーバーとの間のレプリケーション トラフィックについては静的ポートで通信し、ファイアウォール上でそのポートを開くように、MFA サーバーを構成する必要があります。 ```Pfsvc_ncan_ip_tcp_port``` という ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` で DWORD レジストリ値を作成し、その値を、使用可能な静的ポートに設定すると、静的ポートを強制できます。 接続は必ず下位サーバー MFA サーバーからマスターに対して開始され、静的ポートはマスターのみで必要となりますが、いつでも下位サーバーをマスターに昇格できるため、すべての MFA サーバーで静的ポートを設定する必要があります。
+   > RPC では動的ポートが使われるため、RPC で使われる可能性がある動的ポートの範囲までファイアウォールを開くことはお勧めしません。 MFA アプリケーション サーバー**間**にファイアウォールがある場合は、下位サーバーとマスター サーバーとの間のレプリケーション トラフィックについては静的ポートで通信し、ファイアウォール上でそのポートを開くように、MFA サーバーを構成する必要があります。 ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` という ```Pfsvc_ncan_ip_tcp_port``` で DWORD レジストリ値を作成し、その値を、使用可能な静的ポートに設定すると、静的ポートを強制できます。 接続は必ず下位サーバー MFA サーバーからマスターに対して開始され、静的ポートはマスターのみで必要となりますが、いつでも下位サーバーをマスターに昇格できるため、すべての MFA サーバーで静的ポートを設定する必要があります。
 
 2. 2 台のユーザー ポータル/MFA モバイル アプリ サーバー (MFA-UP-MAS1 および MFA-UP-MAS2) は、**ステートフル**な構成 (mfa.contoso.com) で負荷分散されます。 スティッキー セッションが MFA ユーザー ポータルとモバイル アプリ サービスの負荷分散の要件であることに注意してください。
    ![Azure MFA サーバー - ユーザー ポータルとモバイル アプリ サービスの HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
 3. ADFS サーバー ファームは、負荷分散され、境界ネットワーク内の負荷分散された ADFS プロキシを介してインターネットに公開されます。 各 ADFS サーバーは、ADFS エージェントを使い、TCP ポート 443 経由で 1 つの負荷分散された URL (mfaapp.contoso.com) を使って Azure MFA サーバーと通信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure MFA Server のインストールと構成](howto-mfaserver-deploy.md)

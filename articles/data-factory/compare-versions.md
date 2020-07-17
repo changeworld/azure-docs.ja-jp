@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory と Data Factory バージョン 1 の比較 | Microsoft Docs
+title: Azure Data Factory と Data Factory バージョン 1 の比較
 description: この記事では、Azure Data Factory と Azure Data Factory バージョン 1 を比較します。
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432704"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81415565"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 この記事では、Data Factory と Azure Data Factory バージョン 1 を比較します。 Data Factory の概要については、[Data Factory の概要](introduction.md)に関するページを参照してください。Data Factory バージョン 1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 
 
 ## <a name="feature-comparison"></a>機能の比較
@@ -26,12 +28,12 @@ ms.locfileid: "57432704"
 
 | 機能 | Version 1 | 現在のバージョン | 
 | ------- | --------- | --------- | 
-| データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#triggers)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
+| データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
 | リンクされたサービス | リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 | リンクされたサービスは Data Factory V1 と同じですが、現在のバージョン の Data Factory の Integration Runtime コンピューティング環境を利用するための新しい **connectVia** プロパティがあります。 詳細については、[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)に関するページと、[Azure Blob Storage のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。 |
 | パイプライン | データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプラインをスケジュールして実行するには、startTime、endTime、isPaused を使用します。 | パイプラインは、データに対して実行されるアクティビティのグループです。 ただし、パイプライン内のアクティビティのスケジュールは、新しいトリガー リソースに分割されています。 現在のバージョンの Data Factory のパイプラインは、むしろ、トリガーを介して個別にスケジュールされる "ワークフロー単位" として考えることができます。 <br/><br/>現在のバージョンの Data Factory では、パイプラインに実行時間の "枠" がありません。 Data Factory V1 の概念である startTime、endTime、isPaused は、現在のバージョンの Data Factory にはなくなりました。 詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページと、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関するページを参照してください。 |
-| Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | 現在のバージョンの Data Factory では、アクティビティは引き続き、パイプライン内に定義されたアクションです。現在のバージョンの Data Factory では、[制御フロー アクティビティ](concepts-pipelines-activities.md#control-activities)が新たに導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
+| Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | Data Factory の現在のバージョンでも、アクティビティはパイプライン内の定義されたアクションです。 Data Factory の現在のバージョンには、新しい[制御フロー アクティビティ](concepts-pipelines-activities.md#control-flow-activities)が導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
 | ハイブリッド データ移動とアクティビティのディスパッチ | [Data Management Gateway](v1/data-factory-data-management-gateway.md) (現在は Integration Runtime と呼ばれます) は、オンプレミスとクラウドの間のデータ移動をサポートしていました。| Data Management Gateway は、セルフホステッド Integration Runtime と呼ばれるようになりました。 機能は V1 と同じです。 <br/><br/> 現在のバージョンの Data Factory の Azure-SSIS Integration Runtime では、クラウドでの SQL Server Integration Services (SSIS) パッケージのデプロイと実行もサポートされています。 詳細については、「[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)」を参照してください。|
-| parameters | NA | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
+| パラメーター | NA | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
 | 式 | Data Factory V1 では、データ選択クエリやアクティビティ/データセットのプロパティに関数やシステム変数を使用できます。 | 現在のバージョンの Data Factory では、JSON 文字列値の任意の場所で式を使用できます。 詳細については、[現在のバージョンの Data Factory の式と関数](control-flow-expression-language-functions.md)に関するページを参照してください。|
 | パイプライン実行 | NA | パイプライン実行の単一のインスタンスです。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 ここでは、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 それぞれが特定のパイプライン実行を一意に定義する GUID です。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 |
 | アクティビティの実行 | NA | パイプライン内のアクティビティ実行のインスタンス。 | 
@@ -49,7 +51,7 @@ V1 では、アクティビティの出力を別のアクティビティの入�
 ### <a name="branching-activities"></a>アクティビティの分岐
 現在のバージョンでは、パイプライン内でアクティビティを分岐できるようになりました。 [If-condition アクティビティ](control-flow-if-condition-activity.md)は、プログラミング言語における `if` ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 アクティビティの分岐の例については、[アクティビティの分岐と連鎖](tutorial-control-flow.md)に関するチュートリアルを参照してください。
 
-### <a name="parameters"></a>parameters 
+### <a name="parameters"></a>パラメーター 
 パイプライン レベルでパラメーターを定義し、パイプラインをオンデマンドで起動するかトリガーから起動するときに引数を渡すことができます。 アクティビティは、パイプラインに渡される引数を使用できます。 詳細については、[パイプラインとトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。 
 
 ### <a name="custom-state-passing"></a>カスタム状態の受け渡し
@@ -130,11 +132,11 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| Azure ポータル | [はい](quickstart-create-data-factory-portal.md) | [はい](data-factory-build-your-first-pipeline-using-editor.md) |
+| Azure portal | [はい](quickstart-create-data-factory-portal.md) | いいえ |
 | Azure PowerShell | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [はい](quickstart-create-data-factory-python.md) | いいえ  |
+| Python SDK | [はい](quickstart-create-data-factory-python.md) | いいえ |
 | Resource Manager テンプレート | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
@@ -145,5 +147,5 @@ Data Factory バージョン 1 の共同作成者ロールを使って、現在�
 現在のバージョンでは、[Azure Monitor](monitor-using-azure-monitor.md) を使用してデータ ファクトリを監視することもできます。 新しい PowerShell コマンドレットでは、[統合ランタイム](monitor-integration-runtime.md)の監視がサポートされています。 V1 と V2 のどちらでも、Azure Portal から起動できる監視アプリケーションによる視覚的な監視がサポートされています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ファクトリの作成手順について、[PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md) の各クイック スタートを参照してください。 

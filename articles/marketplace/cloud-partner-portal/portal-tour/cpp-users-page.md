@@ -1,40 +1,19 @@
 ---
-title: Azure Marketplace の [ユーザー] ページ | Microsoft Docs
-description: 。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: Azure Marketplace の [ユーザー] ページ | Azure Marketplace
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「Azure Marketplace の Cloud パートナー ポータルの [ユーザー] ページに関する概要。」
+author: dsindona
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 22768e90a419e7a5c3c9e286953afbf3ba2ab311
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 11/27/2019
+ms.author: dsindona
+ms.openlocfilehash: 2c55c3bd718370a35f46f172d29d60afe632d7cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278282"
 ---
 # <a name="users-page"></a>[ユーザー] ページ
 
-[**[ユーザー]** ](https://cloudpartner.azure.com/#users)ページには、Cloud パートナー ポータルに登録済みの全ユーザーの一覧が表示されます。  列には、各ユーザーの電子メール アドレス、ポータル ロール、プランの種類、および発行組織が含まれます。 結果は、列ごとに並べ替えたり、指定した文字列でフィルター処理したりできます。  
-
-また、このページには、発行組織にユーザーを追加するための **[ユーザーの追加]** ボタンも表示されます。  詳細については、「[クラウド パートナー ポータルでのユーザーの管理](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)」をご覧ください。
-
-
-## <a name="example-page"></a>ページの例
-
-次の画像は、文字列 `contoso` でフィルター処理した **[ユーザー]** ページを示しています。
-
-![[ユーザー] ページ](./media/users-page1.png)
-
-
-## <a name="next-steps"></a>次の手順
-
-次のナビゲーション メニュー バー項目には、すべてのプランの発行イベントを一覧表示する [[監査履歴] ページ](./cpp-history-page.md)が表示されます。 
+この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/) に移行されました。 詳細については、「[商業マーケットプレース アカウントをパートナー センターに作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)」を参照してください。

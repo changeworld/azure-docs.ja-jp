@@ -1,22 +1,18 @@
 ---
 title: Azure Monitor リソース グループの分析情報 | Microsoft Docs
 description: Azure Monitor によるリソース グループ レベルで分散アプリケーションとサービスの正常性とパフォーマンスの概要
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
-ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997024"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798124"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -117,10 +113,10 @@ Azure Monitor でリソース グループのアラートを確認するには�
 
 Azure Monitor for Resource Groups は、Azure Monitor Alerts Management システムに依存して、アラート ステータスを取得します。 Alerts Management は、既定でどのリソース グループおよびサブスクリプションにも構成されているわけではなく、所有者または共同作成者ロールを持つユーザーしか有効化できません。 次のいずれかの方法で、有効化できます。
 * サブスクリプション内の任意のリソース グループに対して Azure Monitor for Resource Groups を開く。
-* サブスクリプションに移動して、**[リソース プロバイダー]** をクリックしてから、**[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
+* サブスクリプションに移動して、 **[リソース プロバイダー]** をクリックしてから、 **[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ブック](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Azure Monitor アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

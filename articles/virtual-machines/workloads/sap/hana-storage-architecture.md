@@ -3,23 +3,22 @@ title: SAP HANA on Azure (L インスタンス) のストレージ アーキテ�
 description: SAP HANA on Azure (L インスタンス) をデプロイする方法のストレージ アーキテクチャ。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/05/2019
-ms.author: rclaus
+ms.date: 02/20/2020
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "77616885"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (Large Instances) のストレージ アーキテクチャ
 
@@ -37,6 +36,8 @@ Type I クラスの HANA L インスタンスは、ストレージ ボリュー�
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
+| S224 |  4,224 GB |  512 GB |  1,024 GB |  512 GB |
+| S224m |  8,448 GB |  512 GB |  1,024 GB |  512 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
@@ -73,9 +74,9 @@ HANA L インスタンス SKU を分割する場合、考えられる各分割�
 
 HANA L インスタンス ユニットで複数のアクティブな SAP HANA インスタンスをホストできます。 ストレージ スナップショットとディザスター リカバリーの機能を提供するために、このような構成ではインスタンスごとにボリューム セットが必要になります。 現時点では、HANA L インスタンス ユニットを次のように分けることができます。
 
-- **S72、S72m、S96、S144、S192**:256 GB の最小ユニットから 256 GB ずつ増加。 256 GB、512 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
-- **S144m および S192m**:512 GB の最小ユニットから 256 GB ずつ増加。 512 GB、768 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
-- **Type II クラス**:2 TB の最小ユニットから 512 GB ずつ増加。 512 GB、1 TB、1.5 TB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
+- **S72、S72m、S96、S144、S192**: 256 GB の最小ユニットから 256 GB ずつ増加。 256 GB、512 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
+- **S144m、S192m**: 512 GB の最小ユニットから 256 GB ずつ増加。 512 GB、768 GB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
+- **Type II クラス**: 2 TB の最小ユニットから 512 GB ずつ増加。 512 GB、1 TB、1.5 TB などの異なる増分値をユニットの最大メモリまで組み合わせることができます。
 
 複数の SAP HANA インスタンスの実行例は次のようになります。
 
@@ -90,9 +91,9 @@ HANA L インスタンス ユニットで複数のアクティブな SAP HANA �
 他のバリエーションもあります。 
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
-HANA L インスタンスに使用されるストレージでは、ディスクに保存されているデータを透過的に暗号化することができます。 HANA L インスタンス ユニットのデプロイ時に、この種の暗号化を有効にすることができます。 また、デプロイの実行後に暗号化されたボリュームを変更することもできます。 暗号化されていないボリュームから暗号化されたボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
+HANA L インスタンスに使用されるストレージでは、2018 年末以降、データがディスクに格納されているため、データに対して透過的な暗号化が使用されます。 以前のデプロイでは、ボリュームを暗号化するように選択できました。 そのオプションを使用していない場合は、オンラインで暗号化されたボリュームを取得するように要求できます。 暗号化されていないボリュームから暗号化されたボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
 
-Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 HANA L インスタンスの Type II クラスの SKU の場合、OS 方式でブート LUN を暗号化する必要があります。 詳細については、Microsoft のサービス管理チームに問い合わせてください。
+Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 Hana L インスタンスの SKU の Type II クラスを使用しているリビジョン 3 HANA L インスタンス スタンプでは、OS 方式でブート LUN を暗号化する必要があります。 Type II ユニットを使用しているリビジョン 4 HANA L インスタンス スタンプでは、ブート LUN が格納されているボリュームも、既定で保存時に暗号化されます。 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA L インスタンス上のさらに大きい HANA インスタンスに対する必要な設定
 HANA L インスタンスで使用されるストレージには、ファイル サイズの制限があります。 ファイルごとの[サイズの制限は 16 TB です](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)。 EXT3 ファイル システムのファイル サイズ制限とは異なり、HANA は、HANA L インスタンスのストレージによって強制されるストレージ制限を暗黙的に認識しません。 そのため、HANA ではファイル サイズ制限の16 TB に達したときに新しいデータ ファイルが自動的に作成されません。 HANA は 16 TB を超えるサイズへファイルを拡大しようとするため、HANA でエラーが報告され、最終的にはインデックス サーバーがクラッシュします。
@@ -108,5 +109,5 @@ HANA L インスタンスで使用されるストレージには、ファイル 
 
 
 
-**次のステップ**
+**次の手順**
 - [HANA L インスタンスのサポートされるシナリオ](hana-supported-scenario.md)を参照

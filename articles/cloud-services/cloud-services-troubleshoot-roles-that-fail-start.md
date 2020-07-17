@@ -4,23 +4,22 @@ description: クラウド サービス ロールが起動に失敗する一般�
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792778"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "71122725"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -28,11 +27,11 @@ ms.locfileid: "59792778"
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-dlls-or-dependencies"></a>DLL または依存コンポーネントの欠落
-ロールが応答しない、**[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
+ロールが応答しない、 **[初期化しています]** 、 **[ビジー]** 、 **[停止しています]** の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
 
 DLL やアセンブリの不足は、次のような症状を引き起こします。
 
-* ロール インスタンスが **[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す。
+* ロール インスタンスが **[初期化しています]** 、 **[ビジー]** 、 **[停止しています]** の状態を繰り返す。
 * ロール インスタンスが **[準備完了]** 状態に移行したにもかかわらず、Web アプリケーションにアクセスしてもページが表示されない。
 
 これらの問題に関して推奨される調査方法がいくつかあります。
@@ -67,18 +66,18 @@ Web ロールの web.config でカスタム エラー モードをオフに設�
 3. Microsoft Azure Portal で、インスタンスのステータスが **[準備完了]** と表示されたら、インスタンスにリモート接続します。 Cloud Services でリモート デスクトップを使う方法について詳しくは、「[ロール インスタンスへのリモート接続](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)」をご覧ください。
 5. リモート デスクトップの構成中に指定した資格情報を使用して仮想マシンにサインインします。
 6. コマンド ウィンドウを開きます。
-7. 「 `IPconfig`」と入力します。
+7. 「`IPconfig`.
 8. IPV4 アドレスの値をメモします。
-9. Internet Explorer を起動します。
-10. Web アプリケーションのアドレスと名前を入力します。 たとえば、「 `http://<IPV4 Address>/default.aspx`」のように入力します。
+9. Internet Explorer を開きます。
+10. Web アプリケーションのアドレスと名前を入力します。 たとえば、「 `http://<IPV4 Address>/default.aspx` 」のように入力します。
 
 Web サイトにアクセスすると、詳しいエラー メッセージが表示されます。
 
 * Server Error in '/' Application.
-* 説明:現在の Web 要求の実行中に、処理されない例外が発生しました。 エラーに関する詳細および例外の発生場所については、スタック トレースを参照してください。
-* 例外の詳細: System.IO.FIleNotFoundException: ファイルまたはアセンブリ "Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35"、またはその依存関係の 1 つが読み込めませんでした。 指定されたファイルが見つかりません。
+* 説明: 現在の Web 要求を実行中に、ハンドルされていない例外が発生しました。 エラーに関する詳細および例外の発生場所については、スタック トレースを参照してください。
+* 例外の詳細: System.IO.FIleNotFoundException: ファイルまたはアセンブリ ’Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’、またはその依存関係の 1 つが読み込めませんでした。 指定されたファイルが見つかりません。
 
-例: 
+次に例を示します。
 
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -92,7 +91,7 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 3. エクスプローラーで、クラウド サービス プロジェクトの bin\debug フォルダーに移動します。
 4. デバッグ用のコンピューターに .csx フォルダーと .cscfg ファイルをコピーします。
 5. クリーン インストールされたコンピューターで Azure SDK コマンド プロンプト ウィンドウを開き、「 `csrun.exe /devstore:start`」と入力します。
-6. コマンド プロンプトで「 `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`」と入力します。
+6. コマンド プロンプトで、「`run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`」と入力します。
 7. ロールが起動すると、詳しいエラー情報が Internet Explorer に表示されます。 Windows の標準的なトラブルシューティング ツールを使用して、さらに詳しく問題を診断することもできます。
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>IntelliTrace を使用して問題を診断する
@@ -122,7 +121,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 すべてのエラーを修正済みであることが確認できたら、 **[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオフにしてサービスをデプロイできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。

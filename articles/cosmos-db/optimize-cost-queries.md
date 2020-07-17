@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB でクエリを実行するために要求ユニットとコストを最適化する
+title: Azure Cosmos DB でクエリを実行するためのコストと要求ユニット (RU) を最適化する
 description: クエリの要求ユニット使用量を評価し、パフォーマンスとコストの観点からクエリを最適化する方法について説明します。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2d1ac054abf4bb8228bdb5cc20d79cb751af7a33
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 08/01/2019
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967449"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75445126"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 
@@ -99,7 +99,7 @@ Total Query Execution Time               :   �
 
    要求ヘッダーで返される要求使用量は、特定のクエリのコストを示します。 たとえば、クエリで 1 KB の項目が 1000 個返された場合、操作のコストは 1000 となります。 そのため、後続の要求をレート制限する前に、サーバーは 1 秒以内にこのような要求を 2 つだけ受け付けます。 詳細については、[要求ユニット](request-units.md)に関する記事と要求ユニット計算ツールのページを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、先に進み、以下の各記事で Azure Cosmos DB でのコストの最適化の詳細について学習することができます。
 

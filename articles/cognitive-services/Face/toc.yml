@@ -1,20 +1,14 @@
-- name: Face API のドキュメント
+- name: Face のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Face API とは
+    - name: Face サービスとは
       href: Overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
-    - name: クライアント SDK の使用
-      items:
-        - name: 画像内の顔を検出する
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+    - name: クライアント ライブラリの使用
+      href: Quickstarts/client-libraries.md
     - name: REST API の使用
       items:
         - name: 画像内の顔を検出する
@@ -51,7 +45,7 @@
       href: concepts/face-detection.md
     - name: 顔認識
       href: concepts/face-recognition.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 顔を検出する
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
@@ -59,10 +53,12 @@
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: 顔を追加する
       href: Face-API-How-to-Topics/how-to-add-faces.md
-    - name: HeadPose を使用して四角形を回転させる
+    - name: HeadPose 属性を使用する
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: 顔認識モデルを指定する
       href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: 顔検出モデルを指定する
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: 大規模なフィーチャーを使用する
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: リアルタイムでビデオを分析する
@@ -75,8 +71,8 @@
           href: face-how-to-install-containers.md
         - name: コンテナーを構成する
           href: face-resource-container-config.md
-    - name: Face API Connected Service を使用する
-      href: vs-face-connected-service.md
+        - name: Container Instances の使用
+          href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
 - name: リファレンス
   items:
     - name: Face API
@@ -84,28 +80,28 @@
     - name: SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet'
-        - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
-        - name: Android (Java)
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable'
         - name: iOS
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: リソース
   items:
     - name: サンプル
       items:
-        - name: Face API のサンプル
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
+        - name: Face のサンプル
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430315-face-api'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
@@ -113,5 +109,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 暗号化
+      href: face-encryption-of-data-at-rest.md
     - name: リリース ノート
       href: ReleaseNotes.md

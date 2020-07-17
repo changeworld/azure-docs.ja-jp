@@ -3,20 +3,20 @@ title: Azure でデータ サイエンス環境を設定する - Team Data Scien
 description: Team Data Science Process で使うためのデータ サイエンス環境を Azure で設定します。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2c66da6717018237aebaf5fdaf803a8ac98f82be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6d1185e13397b3e466bd1e8d609a46f2f68bf390
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063950"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Team Data Science Process で使用するためのデータ サイエンス環境の設定
 Team Data Science Process は、データの格納、処理、および分析のために、さまざまなデータ サイエンス環境を使用します。 たとえば、Azure Blob Storage、いくつかの種類の Azure 仮想マシン、HDInsight (Hadoop) クラスター、Azure Machine Learning ワークスペースなどです。 使用する環境を決定する方法は、モデル化するデータの種類と量、さらにクラウド内でのデータの宛先によって異なります。 
@@ -26,9 +26,9 @@ Team Data Science Process は、データの格納、処理、および分析の
 
 以下の記事では、Team Data Science Process によって使用されるさまざまなデータ サイエンス環境の設定方法が説明されています。
 
-* [Azure のストレージ アカウント](../../storage/common/storage-quickstart-create-account.md)
+* [Azure のストレージ アカウント](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop) クラスター](customize-hadoop-cluster.md)
-* [Azure Machine Learning Studio ワークスペース](../studio/create-workspace.md)
+* [Azure Machine Learning Studio (クラシック) ワークスペース](../studio/create-workspace.md)
 
 **Microsoft データ サイエンス仮想マシン (DSVM)** は、Azure Virtual Machine (VM) イメージとしても利用できます。 VM は、あらかじめインストールされており、データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 DSVM は、Windows と Linux の両方で使用できます。 詳しくは、[Linux および Windows 用のクラウドベースの Data Science Virtual Machine の概要](../data-science-virtual-machine/overview.md)に関するページをご覧ください。
 
@@ -37,4 +37,3 @@ Team Data Science Process は、データの格納、処理、および分析の
 - [Windows DSVM](../data-science-virtual-machine/provision-vm.md)
 - [Ubuntu DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
 - [CentOS DSVM](../data-science-virtual-machine/linux-dsvm-intro.md)
-- [ディープ ラーニング VM](../data-science-virtual-machine/provision-deep-learning-dsvm.md)

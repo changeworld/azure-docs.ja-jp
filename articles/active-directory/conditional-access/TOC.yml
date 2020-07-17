@@ -1,86 +1,120 @@
 - name: 条件付きアクセスのドキュメント
   href: index.yml
-- name: ユーザーとグループ
+- name: 概要
   items:
     - name: 条件付きアクセスとは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
-    - name: 特定のアプリで MFA を必須にする
-      href: app-based-mfa.md
     - name: 使用条件への同意を必須にする
       href: require-tou.md
     - name: セッションのリスクが検出されたときにアクセスをブロックする
       href: app-sign-in-risk.md
 - name: チュートリアル
   items:
-    - name: クラシック MFA ポリシーの移行
-      href: policy-migration-mfa.md
+    - name: Azure Multi-Factor Authentication を必須とする
+      href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:
-    - name: ベースライン保護ポリシー
-      href: concept-baseline-protection.md
-    - name: 条件
-      href: conditions.md
-    - name: 場所の条件
-      href: location-condition.md
-    - name: コントロール
-      href: controls.md
+    - name: 一般的な条件付きアクセス ポリシー
+      href: concept-conditional-access-policy-common.md
+    - name: 条件付きアクセス ポリシーのコンポーネント
+      href: concept-conditional-access-policies.md
+    - name: 代入
+      items:
+        - name: ユーザーとグループ
+          href: concept-conditional-access-users-groups.md
+        - name: クラウド アプリまたはアクション
+          href: concept-conditional-access-cloud-apps.md
+        - name: 条件
+          href: concept-conditional-access-conditions.md
+    - name: アクセス制御
+      items:
+        - name: Grant
+          href: concept-conditional-access-grant.md
+        - name: Session
+          href: concept-conditional-access-session.md
+    - name: 分析情報とレポート
+      href: howto-conditional-access-insights-reporting.md
+    - name: レポート専用モード
+      href: concept-conditional-access-report-only.md
     - name: サービスの依存関係
       href: service-dependencies.md
+    - name: 場所の条件
+      href: location-condition.md
     - name: What if ツール
       href: what-if-tool.md
-- name: ハウツー ガイド
+    - name: カスタム コントロール
+      href: controls.md
+    - name: クラシック ポリシーの移行
+      href: policy-migration.md
+    - name: ベースライン保護ポリシー
+      href: concept-baseline-protection.md
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: 条件付きアクセスのデプロイを計画する
       href: plan-conditional-access.md
     - name: ベスト プラクティス
       href: best-practices.md
-    - name: ベースライン ポリシー
+    - name: 一般的な条件付きアクセス ポリシー
       items:
-        - name: Require MFA for admins \(管理者に MFA を要求する\)
-          href: howto-baseline-protect-administrators.md
-        - name: エンド ユーザーの保護
-          href: howto-baseline-protect-end-users.md
         - name: レガシ認証をブロックする
-          href: howto-baseline-protect-legacy-auth.md
-        - name: サービス管理のために MFA を要求する
-          href: howto-baseline-protect-azure.md
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: 管理者に対して MFA を必須にする
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Azure 管理のために MFA を必須にする
+          href: howto-conditional-access-policy-azure-management.md
+        - name: すべてのユーザーに対して MFA を必須にする
+          href: howto-conditional-access-policy-all-users-mfa.md
+        - name: リスクベースの条件付きアクセス
+          href: howto-conditional-access-policy-risk.md
+        - name: セキュリティ情報の登録のセキュリティ保護
+          href: howto-conditional-access-policy-registration.md
+        - name: 場所ごとにアクセスをブロックする
+          href: howto-conditional-access-policy-location.md
+        - name: Require compliant devices (準拠しているデバイスが必須)
+          href: howto-conditional-access-policy-compliant-device.md
+        - name: アクセスのブロック
+          href: howto-conditional-access-policy-block-access.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
-    - name: クラシック ポリシーを移行する
-      href: policy-migration.md
-    - name: サインインの頻度とブラウザーの永続性の制御
-      href: howto-conditional-access-session-lifetime.md
     - name: 承認済みクライアント アプリを必須にする
       href: app-based-conditional-access.md
     - name: アプリの保護ポリシーを必須にする
       href: app-protection-based-conditional-access.md
     - name: マネージド デバイスを必須にする
       href: require-managed-devices.md
-    - name: 信頼されたネットワークを MFA 登録で必須にする
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
       href: untrusted-networks.md
     - name: 利用規約が必須
       href: terms-of-use.md
-- name: リファレンス
-  items:
-    - name: テクニカル リファレンス
-      href: technical-reference.md
+    - name: レポート専用モードの構成
+      href: howto-conditional-access-report-only.md
+    - name: サインインの頻度とブラウザーの永続性の制御
+      href: howto-conditional-access-session-lifetime.md
+    - name: クラシック ポリシーを移行する
+      href: policy-migration-mfa.md
+    - name: トラブルシューティング
+      items:
+        - name: サインインに関する問題のトラブルシューティング
+          href: troubleshoot-conditional-access.md
+        - name: What If ツールを使用したトラブルシューティング
+          href: troubleshoot-conditional-access-what-if.md
+        - name: よく寄せられる質問
+          href: faqs.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 質問ページ
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報
       href: ../fundamentals/whats-new.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

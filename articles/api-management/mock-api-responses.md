@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412746"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "70067940"
 ---
 # <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
 
@@ -51,11 +50,11 @@ ms.locfileid: "50412746"
 ![空の API を作成](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
 1. **API Management** サービスから **[API]** を選択します。
-2. 左側のメニューで、**[+ API の追加]** を選びます。
-3. 一覧から **[空の API]** を選択します。
+2. 左側のメニューで、 **[+ API の追加]** を選びます。
+3. 一覧から **[空の API]** を選びます。
 4. **[表示名]** に「*テスト API*」と入力します。
 5. **[製品]** に「*無制限*」と入力します。
-6. **作成**を選択します。
+6. **作成** を選択します。
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
 
@@ -64,11 +63,11 @@ ms.locfileid: "50412746"
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
 
-    | Setting             | 値                             | 説明                                                                                                                                                                                   |
+    | 設定             | 値                             | 説明                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **[表示名]**    | "*テスト呼び出し*"                       | **開発者ポータル**に表示される名前。                                                                                                                                       |
     | **URL** (HTTP 動詞) | GET                               | 定義済み HTTP 動詞のいずれかを選択できます。                                                                                                                                         |
-    | **URL**             | */test*                           | API の URL パス。                                                                                                                                                                       |
+    | **[URL]**             | */test*                           | API の URL パス。                                                                                                                                                                       |
     | **説明**     |                                   | **開発者ポータル**でこの API を使用する開発者にドキュメントを提供するために使用される操作の説明を指定します。                                                    |
     | **[クエリ]** タブ       |                                   | クエリ パラメーターを追加できます。 名前と説明を提供するだけでなく、このパラメーターに割り当て可能な値を指定することもできます。 値の 1 つを既定値としてマークすることができます (オプション)。 |
     | **[要求]** タブ     |                                   | 要求のコンテンツの種類、例、およびスキーマを定義できます。                                                                                                                                  |
@@ -77,10 +76,10 @@ ms.locfileid: "50412746"
 3. URL、表示名、および説明の各フィールドの下にある **[応答]** タブを選択します。
 4. **[+ 応答の追加]** をクリックします。
 5. 一覧から **[200 OK]** を選択します。
-6. 右側の **[表現]** 見出しで、**[+ 表現の追加]** を選択します。
+6. 右側の **[表現]** 見出しで、 **[+ 表現の追加]** を選択します。
 7. 検索ボックスに「*application/json*」と入力し、コンテンツの種類として **application/json** を選択します。
-8. **[サンプル]** テキスト ボックスに「`{ 'sampleField' : 'test' }`」と入力します。
-9. **作成**を選択します。
+8. **[サンプル]** テキスト ボックスに「`{ "sampleField" : "test" }`」と入力します。
+9. **作成** を選択します。
 
 ## <a name="enable-response-mocking"></a>応答のモック作成を有効にする
 
@@ -89,7 +88,7 @@ ms.locfileid: "50412746"
 1. 「テスト API を作成する」の手順で作成した API を選択します。
 2. 追加したテスト操作を選択します。
 3. 右側のウィンドウで **[デザイン]** タブをクリックします。
-4. **[受信処理]** ウィンドウで、**[+ ポリシーの追加]** をクリックします。
+4. **[受信処理]** ウィンドウで、 **[+ ポリシーの追加]** をクリックします。
 5. ギャラリーから **[Mock responses]\(モック応答\)** タイルを選択します。
 
     ![モック応答ポリシー タイル](./media/mock-api-responses/mock-responses-policy-tile.png)
@@ -98,7 +97,7 @@ ms.locfileid: "50412746"
 
     ![応答のモック作成を有効にする](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 ## <a name="test-the-mocked-api"></a>モック API をテストする
 
@@ -120,7 +119,7 @@ ms.locfileid: "50412746"
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
